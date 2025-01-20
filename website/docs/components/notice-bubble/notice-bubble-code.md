@@ -81,7 +81,7 @@ Parent should have `position: relative` and `overflow` with scroll.
 
 :::
 
-## Notice with loading state
+## Loading state
 
 Activate the **Try again** button in the notice to see the loading state.
 
@@ -93,7 +93,7 @@ Activate the **Try again** button in the notice to see the loading state.
 
 :::
 
-## Special events notice
+## Special event notice
 
 ::: sandbox
 
@@ -103,7 +103,7 @@ Activate the **Try again** button in the notice to see the loading state.
 
 :::
 
-## No connection notice
+## No connection
 
 Use `type="warning"` for this case.
 
@@ -115,7 +115,7 @@ Use `type="warning"` for this case.
 
 :::
 
-## No connection notice with action
+## No connection with action
 
 Use `type="warning"` for this case.
 

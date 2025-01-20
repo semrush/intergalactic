@@ -1,6 +1,6 @@
 First of all, thank you for your interest in the library. We'd love to accept your fixes and improvements ✨
 
-### Prerequisites
+## Prerequisites
 
 1. Install the latest LTS version of [Node.js](https://nodejs.org/en).
 2. Install [pnpm](https://pnpm.js.org) globally by running: `npm i -g pnpm@8`.
@@ -11,7 +11,7 @@ First of all, thank you for your interest in the library. We'd love to accept yo
 
 Please note that our maintainers primarily develop on macOS. While developing on Linux or Windows is possible, there might be unintended issues. Don't hesitate to [reach out for help](https://github.com/semrush/intergalactic/issues/new/choose) if you encounter any problems.
 
-### Getting Started
+## Getting started
 
 1. Clone the repository by running: `git clone git@github.com:semrush/intergalactic.git && cd intergalactic`.
 2. Install project dependencies using: `pnpm install`.
@@ -20,7 +20,7 @@ Please note that our maintainers primarily develop on macOS. While developing on
 
 3. Build components with: `pnpm build`.
 
-### Submitting Changes
+## Submitting changes
 
 Follow these steps to submit your changes:
 
@@ -51,7 +51,7 @@ We use [vitest](https://vitest.dev/) for our testing needs.
 - To run tests for a specific component, use `pnpm test:docker button`.
 - To update snapshots for a specific component, use `pnpm test:docker button -- -u`.
 
-## Formatting & Linting
+## Formatting & linting
 
 We rely on [biome](https://biomejs.dev/) for formatting and linting. It is integrated into our Git hooks and also offers a [VS Code Extension](https://marketplace.visualstudio.com/items?itemName=biomejs.biome). It's going to get IntelliJ Platform LSP very soon: [https://github.com/biomejs/biome/pull/185](https://github.com/biomejs/biome/pull/185).
 
@@ -59,7 +59,7 @@ We rely on [biome](https://biomejs.dev/) for formatting and linting. It is integ
 
 To preview the website locally, run `pnpm website`. The site will be accessible at `http://localhost:3000`. Keep in mind that you may need to reload the page to see any changes made to the documentation.
 
-## Screen Reader Tests
+## Screen reader tests
 
 Ensuring the accessibility of our components is a priority. We conduct automated screen reader tests, focusing on VoiceOver screen reader in Safari on macOS. Here's how to set up and run these tests:
 
@@ -69,37 +69,37 @@ Ensuring the accessibility of our components is a priority. We conduct automated
 
 ## Caveats
 
-### Prebuilt Icons
+### Prebuilt icons
 
 For rapid rebuilding of the playground and website, we use `esbuild` to efficiently transform components on-the-fly. However, the build process for `icon` and `illustration` components is time-consuming and cannot be performed on-the-fly. Therefore, before running the playground or website, it's essential to pre-build icons and illustrations. You can accomplish this using the command `pnpm build` (or `pnpm build:icons` and `pnpm build:illustration`).
 
-### Unstable Screenshot Service
+### Unstable screenshot service
 
 To facilitate screenshot tests for components, we use our own screenshot service in the cloud. Occasionally, this service might yield slight pixel variations for the same code submitted to it. In such cases, you may need to restart CI/CD workflows several times until the tests pass. We acknowledge this issue and intend to address it in the future.
 
-### Text Translation
+### Text translation
 
 Certain components have text translations in multiple languages. When adding or modifying text, focus on English only. Following the pull request review, core maintainers will handle translations for other languages using [Crowdin](https://crowdin.com).
 
-### Unconventional Website Code
+### Unconventional website code
 
 Our documentation website's foundation has undergone several iterations and may appear unconventional due to underlying changes. Knowing about its imperfections, we are actively working on migrating to [VitePress](https://vitepress.dev/) for a more streamlined development experience.
 
-### Publishing Process
+### Publishing process
 
 The main way to deliver components is `intergalactic` npm package.
 
 Also each component is published as a distinct npm package, while a special `@semcore/ui` package re-exports them collectively. The complex publishing process is fully automated through our CI/CD pipeline.
 
-### Default Theme
+### Default theme
 
 We rely on a [set of design tokens](https://www.figma.com/community/file/1274028958101796491/Semrush---Design-Tokens) to generate CSS variables (refer to `semcore/utils/src/themes/default.css`). Although all components use these variables, for users it's not mandatory to declare them at the root level of the page. For proper component display, CSS variables' default theme is always included as a fallback value in the `var` function (for example, `color: var(--intergalactic-text-secondary, #6c6e79);`). After modifying the name of any CSS variable in component styles, running the `pnpm process-theme` command is necessary. This command updates the fallback value in `var` function and is integrated into the pre-commit hook.
 
-### Performance Considerations
+### Performance considerations
 
 Current components have performance issues, primarily tied to a 5000-character regular expression in `semcore/utils/src/propsForElement.ts` and the declaration of class-based components.
 
-### Implicit Code Transformations
+### Implicit code transformations
 
 Due to historical reasons, our code goes through specific Babel plugins (`babel-plugin-root` and `babel-plugin-styles`) that result in the final code functioning differently than it may initially appear. Below is a simplified example of the `Link` component's code:
 

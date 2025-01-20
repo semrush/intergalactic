@@ -103,7 +103,9 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
 
 **Textarea** is a multiline text field designed for capturing a large amount of data, such as comments or descriptions.
 
-## Sizes
+## Appearance
+
+### Sizes
 
 Table: Textarea sizes
 

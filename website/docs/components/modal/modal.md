@@ -14,11 +14,13 @@ For general recommendations on modal content styles, refer to [Content in modal 
 
 It always disables user interaction with the main page content but keeps it visible. The modal dialog remains on the screen until the user performs the required action or closes the dialog.
 
-::: tip
+::: info
 _🐈 A modal dialog is like my cat, Emma – who meows at 7am every morning to prompt me to feed <!-- vale DevDocs.Gender = NO -->her<!-- vale DevDocs.Gender = NO -->. I might be trying to sleep or get ready for the day, but my cat will place herself in front of me, then meow louder and incessantly until I look at <!-- vale DevDocs.Gender = NO -->her<!-- vale DevDocs.Gender = NO -->. I have to stop what I am doing to address the cat immediately if I ever hope to finish my task._
 
 Article at [NNGroup](https://www.nngroup.com/articles/modal-nonmodal-dialog/)
 :::
+
+### Usage recommendations
 
 **Use modal:**
 

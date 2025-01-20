@@ -18,7 +18,7 @@ The ScrollArea consists of the following elements:
 - Scroll indicator (`ScrollArea.Bar`).
 - Slider (`ScrollArea.Bar.Slider`).
 
-## Styles
+## Appearance
 
 Table: ScrollArea styles
 

@@ -3,7 +3,7 @@ title: Summary
 tabs: Design('summary'), Example('summary-code')
 ---
 
-## Basic example
+## Basic usage
 
 Display [Skeleton](/components/skeleton/skeleton) during initial data loading.
 
