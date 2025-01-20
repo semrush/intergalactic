@@ -521,7 +521,7 @@ test.describe('Steps and buttons states', () => {
 
         const content = await page.content();
 
-        const { trigger, modal, steps, nextButton, prevButton, input } = locators;
+        const { trigger, modal, steps } = locators;
         const stepperTabs = steps(page);
         const checkedStep = stepperTabs.nth(0);
         const subMenuStep = stepperTabs.nth(1);
