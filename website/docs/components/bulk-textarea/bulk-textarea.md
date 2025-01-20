@@ -120,7 +120,7 @@ BulkTextarea has the same states and styles as [Textarea](/components/textarea/t
 
 ### Validation
 
-**CHECK THIS** You can define your own validation rules for the input: instant, on submit, onBlur, or on new line. By default, our component uses on new line validation.
+You can define your own validation rules for the input: on submit, on blur, or on row blur. By default, our component uses on blur validation.
 
 ### Tooltips
 
