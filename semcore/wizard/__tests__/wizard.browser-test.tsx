@@ -2,15 +2,15 @@ import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 const locators = {
-  trigger: (page, name = 'Open modal') => page.getByRole('button', { name }),
-  modal: (page) => page.locator('div[data-ui-name="Wizard"]'),
-  sidebar: (page) => page.locator('[data-ui-name="Wizard.Sidebar"]'),
-  stepperTabs: (page) => page.locator('[data-ui-name="Wizard.Stepper"]'),
-  contentPanel: (page) => page.locator('[data-ui-name="Wizard.Content"]'),
-  nextButton: (page, name) => page.getByRole('button', { name }),
-  prevButton: (page, name) => page.getByRole('button', { name }),
-  input: (page, name) => page.getByRole('textbox', { name }),
-  steps: (page) => locators.stepperTabs(page),
+  trigger: (page: any, name = 'Open modal') => page.getByRole('button', { name }),
+  modal: (page: any) => page.locator('div[data-ui-name="Wizard"]'),
+  sidebar: (page: any) => page.locator('[data-ui-name="Wizard.Sidebar"]'),
+  stepperTabs: (page: any) => page.locator('[data-ui-name="Wizard.Stepper"]'),
+  contentPanel: (page: any) => page.locator('[data-ui-name="Wizard.Content"]'),
+  nextButton: (page: any, name: string) => page.getByRole('button', { name }),
+  prevButton: (page: any, name: string) => page.getByRole('button', { name }),
+  input: (page: any, name: string) => page.getByRole('textbox', { name }),
+  steps: (page: any) => locators.stepperTabs(page),
 };
 
 test.describe('Base example', () => {
