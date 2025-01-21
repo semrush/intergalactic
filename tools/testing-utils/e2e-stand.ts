@@ -20,18 +20,15 @@ export const e2eStandToHtml = async (standFilePath: string, locale: string) => {
           build.onLoad({ filter: /^@test-entrypoint$/, namespace: 'test-entrypoint' }, () => {
             const contents = `
               import React from 'react';
-              import { createRoot } from 'react-dom/client';
+              import ReactDOM from 'react-dom';
               import App from '${resolvePath(standFilePath)}';
               import { I18nProvider } from '@semcore/utils/lib/enhances/WithI18n';
 
-              const container = document.querySelector('#root') || document.body.appendChild(document.createElement('div'));
-              container.id = 'root';
-
-              const root = createRoot(container); 
-              root.render(
+              ReactDOM.render(
                 <I18nProvider value='${locale}'>
                   <App />
-                </I18nProvider>
+                </I18nProvider>,
+                document.querySelector('#root')
               );
             `;
 
@@ -68,17 +65,17 @@ export const e2eStandToHtml = async (standFilePath: string, locale: string) => {
     .map((file) => file.text);
 
   const htmlContent = `
-    <!DOCTYPE html>
-    <html lang="${locale}">
-      <head>
-        ${cssFiles} 
-      </head>
-      <body>
-        <div id="root"></div>
-        <script>${jsFiles.join('\n')}</script>
-      </body>
-    </html>
-  `;
+      <!DOCTYPE html>
+      <html lang="${locale}">
+        <head>
+          <style>${cssFiles.join('\n')}</style>
+        </head>
+        <body>
+          <div id="root"></div>
+          <script>${jsFiles.join('\n')}</script>
+        </body>
+      </html>
+    `;
 
   return htmlContent;
 };
