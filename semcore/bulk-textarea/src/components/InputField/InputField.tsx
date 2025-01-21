@@ -8,7 +8,6 @@ import Tooltip from '@semcore/tooltip';
 import { InputFieldProps, ErrorItem } from './InputField.types';
 import { extractAriaProps } from '@semcore/utils/lib/ariaProps';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
-import rafTrottle from '@semcore/utils/lib/rafTrottle';
 
 type IndexKeys = 'keyboardRowIndex' | 'mouseRowIndex';
 
@@ -646,6 +645,10 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       }
     } else if (event.key === 'z' && (event.ctrlKey || event.metaKey)) {
       event.preventDefault();
+    } else if (event.key === 'c' && (event.ctrlKey || event.metaKey)) {
+      event.preventDefault();
+      const data = this.getRowsValue().join(this.delimiter);
+      navigator.clipboard.writeText(data);
     }
   }
 
