@@ -81,14 +81,14 @@ To include an ellipsis, use `…` (HTML symbol `&hellip;`).
 
 ## Types
 
-Ellipsis has two types of text truncation:
+Ellipsis has two types of text truncation (`trim` property in API):
 
 Table: Ellipsis types
 
-| Type     | Appearance example                                                                                                       | Description                                                                                                                                                                                                                                                           |
-| -------- | ------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `End`    | ![](static/ellipsis-end.png) ![ellipsis at the end with tooltip](static/ellipsis-end-tooltp.png)      | Truncates the end of the text string. It's the most common case. Use an ellipsis at the end of a text string or paragraph to indicate that there is more content, or to shorten a long text string.                                                                   |
-| `Middle` | ![](static/ellipsis-middle.png) ![ellipsis at the middle with tooltip](static/ellipsis-middle-tooltp.png) | Truncates the middle of the text string. Use when several text strings have different beginnings and/or endings but the exact same middle characters. Can also be used to shorten a phrase or text string when the end of a string can't be truncated by an ellipsis. |
+| Trimming type | Appearance example                                                                                        | Description                                                                                                                                                                                                                                                           |
+| ------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `end`         | ![](static/ellipsis-end.png) ![ellipsis at the end with tooltip](static/ellipsis-end-tooltp.png)          | Truncates the end of the text string. It's the most common case. Use an ellipsis at the end of a text string or paragraph to indicate that there is more content, or to shorten a long text string.                                                                   |
+| `middle`      | ![](static/ellipsis-middle.png) ![ellipsis at the middle with tooltip](static/ellipsis-middle-tooltp.png) | Truncates the middle of the text string. Use when several text strings have different beginnings and/or endings but the exact same middle characters. Can also be used to shorten a phrase or text string when the end of a string can't be truncated by an ellipsis. |
 
 ## Tooltip
 
@@ -106,7 +106,7 @@ Usually, long URL links are most common for tables and other widgets. Read the d
 
 ![](static/ellipsis-end-tooltp.png)
 
-### Table Head
+### Table head
 
 To show more data in the limited space you can truncate the text in the table head. In this case always show a tooltip on hover to show the entire text string, or phrase.
 
@@ -131,4 +131,3 @@ To show more data in a limited space you can truncate the [Card](/components/car
 To show more data in a limited space you can truncate paragraphs at the end. In this case, a tooltip with the full paragraph on hover is unnecessary.
 
 ![](static/ellipsis-pharagraph.png)
-

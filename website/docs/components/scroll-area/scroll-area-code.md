@@ -16,7 +16,7 @@ To use the ScrollArea component, wrap your content with `ScrollArea`. It will cr
 
 :::
 
-## Synchronized scroll on two different screens
+## Synchronized scroll
 
 ::: sandbox
 
@@ -26,7 +26,7 @@ To use the ScrollArea component, wrap your content with `ScrollArea`. It will cr
 
 :::
 
-## Synchronized reverse scroll on two different screens
+## Synchronized reverse scroll
 
 ::: sandbox
 

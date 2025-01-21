@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.37.2] - 2024-01-17
+
+### Changed
+
+- `white-space` property to `pre` for preserve spacing.
+
 ## [2.37.1] - 2024-12-30
 
 ### Changed

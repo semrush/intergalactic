@@ -1,6 +1,6 @@
 import React from 'react';
-import LinkExternalM from 'intergalactic/icon/LinkExternal/m';
-import { Hint } from 'intergalactic/tooltip';
+import LinkExternalM from '@semcore/icon/LinkExternal/m';
+import { Hint } from '@semcore/tooltip';
 
 const Demo = () => (
   <Hint

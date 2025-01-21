@@ -104,14 +104,12 @@ align-items: center;
 
 ![](static/footer-paddings.png)
 
-## Interaction
-
-### Placement in the interface
+## Placement
 
 - You can customize whether the panel should open in the product area or over the entire website (as modal windows do). If the SidePanel refers to a specific product, it should be rendered in the product under the main header.
 - The focus remains inside the panel and doesn't move to the page content. You can navigate through the controls inside the SidePanel using `Tab`.
 
-### Page scroll
+## Page scroll
 
 Page scroll is disabled by default. We recommend you to enable it only when SidePanel has some tips and additional information for the page, and no overlay is enabled.
 
@@ -119,18 +117,18 @@ Page scroll is disabled by default. We recommend you to enable it only when Side
 Always disable page scroll for SidePanel with an overlay.
 :::
 
-### SidePanel opening and closing
+## Displaying and hiding
 
-You can close the panel with:
+The SidePanel can be opened either by the user clicking on the corresponding trigger or by the system in special cases to draw attention to the information in the panel.
+
+The panel can be closed with:
 
 - CTA control;
 - **Close** button;
 - Clicking outside the area of the panel (at overlay), optional;
 - `Esc` key.
 
-SidePanel can be opened either by the user clicking on the corresponding trigger or by the system in special cases to draw attention to the information in the panel.
-
-### Animation of appearance and hiding
+### Animation
 
 SidePanel opens and closes with the animation: `transition: all 350ms ease-in-out`.
 
@@ -141,7 +139,7 @@ SidePanel opens and closes with the animation: `transition: all 350ms ease-in-ou
 
 ![](static/320-width.png)
 
-## Edge cases
+## Interaction
 
 `SidePanel.Header` should be visible even in loading, empty and error states.
 

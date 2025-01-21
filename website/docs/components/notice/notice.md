@@ -153,16 +153,21 @@ Component consists of the following:
 5. `Notice.Text`.
 6. `Notice.Actions` (optional).
 
-## Notice content examples
+## Themes
 
-Table: Notice content examples
+Table: Notice themes
 
-| Case                      | Appearance example             |
-| ------------------------- | ------------------------------ |
-| Minimum possible elements | ![](static/notice-minimal.png) |
-| Maximum possible elements | ![](static/notice-monster.png) |
+| Theme       | Usage and appearance example                                                                                                                                                                                                                                                |
+| ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Muted**   | Used for regular messages and hints. ![](static/muted.png)                                                                                                                                                                                                                  |
+| **Info**    | Used for neutral and important information, and collecting feedback. For announcing new features or other products, consider using this notice with a large image (often referred to as [advertising notices](/components/notice/notice#advertising)). ![](static/info.png) |
+| **Success** | Used for triggers related to purchasing or taking a trial, as well as displaying successful completion of forms, for example. ![](static/success.png)                                                                                                                       |
+| **Warning** | Suitable for important but non-critical errors or warnings, such as service reports, unavailable functionality, or temporary failures. ![](static/warning.png)                                                                                                              |
+| **Danger**  | Intended for serious errors, problems, or actions that prevent users from continuing their work or result in data loss. ![](static/danger.png)                                                                                                                              |
 
-## Sizes, paddings and margins
+## Appearance
+
+### Margins and paddings
 
 If your `Notice` has an icon and/or the **Close** button, add `2px` top and bottom margins to the title, and `4px` margins to the main text to align the elements visually.
 
@@ -185,19 +190,16 @@ We recommend to set the maximum width of the notice message to 650-800px.
 
 ![](static/notice-text-yes-no.png)
 
-## Themes
+## Notice content examples
 
-Table: Notice themes
+Table: Notice content examples
 
-| Theme       | Usage and appearance example                                                                                                                                                                                                                                                |
-| ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Muted**   | Used for regular messages and hints. ![](static/muted.png)                                                                                                                                                                                                                  |
-| **Info**    | Used for neutral and important information, and collecting feedback. For announcing new features or other products, consider using this notice with a large image (often referred to as [advertising notices](/components/notice/notice#advertising)). ![](static/info.png) |
-| **Success** | Used for triggers related to purchasing or taking a trial, as well as displaying successful completion of forms, for example. ![](static/success.png)                                                                                                                       |
-| **Warning** | Suitable for important but non-critical errors or warnings, such as service reports, unavailable functionality, or temporary failures. ![](static/warning.png)                                                                                                              |
-| **Danger**  | Intended for serious errors, problems, or actions that prevent users from continuing their work or result in data loss. ![](static/danger.png)                                                                                                                              |
+| Case                      | Appearance example             |
+| ------------------------- | ------------------------------ |
+| Minimum possible elements | ![](static/notice-minimal.png) |
+| Maximum possible elements | ![](static/notice-monster.png) |
 
-## Placement in interface
+## Placement
 
 ### On page
 
@@ -225,7 +227,7 @@ If the notice only relates to the component, position it at the top or bottom of
 
 ## Interaction
 
-### Opening
+### Displaying
 
 The notice should appear instantaneously without any delays or visual effects. It should be displayed immediately upon the loading of the page or component.
 
@@ -281,7 +283,7 @@ Avoid using an advertising notice for an "empty" state on a page or inside a com
 - Typically, notices are replaced by others based on priority: danger > warning > success > info.
 - Be concise and avoid overshadowing other widgets or report functionalities. Strive to convey the message to users within two lines for notices, and within four lines for notices within blocks or other components.
 
-### Incorrect use
+### Incorrect usage
 
 A notice shouldn't be mistaken for other components:
 
@@ -289,7 +291,7 @@ A notice shouldn't be mistaken for other components:
 - **[Tooltip](/components/tooltip/tooltip)**: Tooltips are used to provide hints or descriptions of functionality and are permanently displayed upon hover. On the other hand, notices are temporary components that typically appear immediately after user actions.
 - **[Notes, hints](/style/typography/typography#hints_hint_links)**: Notes and hints provide additional information about functionality and are permanent in nature. In contrast, notices are temporary and don’t explain the functionality itself. At most, they may provide guidance on resolving reported problems or performing required actions.
 
-### Examples of incorrect usage
+#### Examples of incorrect usage
 
 Avoid using notice to show permanent informational message within a form.
 

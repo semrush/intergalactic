@@ -25,7 +25,7 @@ The fullscreen modal dialog includes:
 
 ![](static/fullscreen-modal.png)
 
-## Content styles
+### Content styles
 
 - Use 20px (`--fs-500`) or smaller text sizes for headings in the content area to ensure correct hierarchy with the modal header.
 - You can divide content area into several areas. To visually separate them, use `--bg-secondary-neutral` token as a background color for one of them.
@@ -36,7 +36,7 @@ Table: Content styles for single-zone and dual-zone modal windows
 | ---------------------------------- | ---------------------------------- |
 | ![](static/fullscreen-modal-3.png) | ![](static/fullscreen-modal-2.png) |
 
-### Paddings
+### Content paddings
 
 Table: Paddings for single-zone and dual-zone modal windows
 
@@ -55,7 +55,7 @@ Table: Content alignment for single-zone and dual-zone modal windows
 | ------------------------- | ------------------------- |
 | ![](static/content-1.png) | ![](static/content-2.png) |
 
-## CTA buttons
+### CTA buttons
 
 You can use either size M or size L buttons, depending on your case.
 
@@ -78,21 +78,21 @@ Fullscreen modal window can be closed:
 When the fullscreen modal window is closed, focus always returns to its trigger.
 :::
 
-## Edge cases
+### States
 
-### Loading
+#### Loading
 
 When loading and reloading the content of the window, use [SpinContainer](../spin-container/spin-container) with XXL size.
 
 ![](static/loading.png)
 
-### Error
+#### Error
 
 If an error occurred during data loading, show an error message with the **Reload** button.
 
 For error messages use [Widget empty state](/components/widget-empty/widget-empty) component.
 
-### Limit
+#### Limit
 
 ![](static/limit.png)
 

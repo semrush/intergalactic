@@ -90,7 +90,7 @@ If a cell is colored, it remains colored when you hover over it. Users shouldn't
 
 ![](static/td-style-hover.png)
 
-## Content alignment inside cell
+## Cell content alignment
 
 Text inside cells in rows and headers is aligned according to these rules.
 

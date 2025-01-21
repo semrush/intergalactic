@@ -4,6 +4,8 @@ fileSource: flex-box
 tabs: Design('box-system'), API('box-api'), Changelog('box-changelog')
 ---
 
+## Description
+
 **Flex-box** is a component for managing arrangement and alignment of other components and elements in the interface.
 
 ## Box

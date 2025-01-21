@@ -10,7 +10,7 @@ If you want an interactive icon that changes when hovered over (such as color an
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/interactive.tsx';
+  export Demo from 'stories/components/icon/docs/examples/interactive.tsx';
 </script>
 
 :::

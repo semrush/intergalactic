@@ -4,7 +4,7 @@ fileSource: widget-empty
 tabs: Design('widget-empty'), A11y('widget-empty-a11y'), API('widget-empty-api'), Example('widget-empty-code'), Changelog('widget-empty-changelog')
 ---
 
-## NoData example
+## NoData state
 
 The template already includes a `title` and default `description`, you only need to specify the [illustration](/style/illustration/illustration) `type`. You can provide a custom `description` and additional elements, if you need.
 
@@ -20,7 +20,7 @@ The locale can be passed directly to the component or wrap your application in `
 
 :::
 
-## Error example
+## Error state
 
 The template already includes default `title`, `icon` and `description`. You can provide a custom `description` and additional elements if you need.
 
@@ -32,7 +32,7 @@ The template already includes default `title`, `icon` and `description`. You can
 
 :::
 
-## Custom examples
+## Custom states
 
 You can create custom messages, such as the "[Set up your tool](/components/widget-empty/widget-empty#set_up_your_product)" message.
 
