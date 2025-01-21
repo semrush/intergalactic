@@ -1,3 +1,63 @@
+## [15.122.0] - 2025-01-21
+
+### @semcore/data-table
+
+- **Fixed** Incorrect calculation sizes for fixed (in right place) columns.
+
+### @semcore/drag-and-drop
+
+- **Changed** Consider only elements with `draggable` attribute in calculations indexes.
+- **Added** `stopPropagation` for keydown events with `Arrow-*` as a `e.key`.
+
+### @semcore/dropdown
+
+- **Fixed** styles for use with DnD.
+
+### @semcore/ellipsis
+
+- **Changed** `white-space` property to `pre` for preserve spacing.
+
+### @semcore/feedback-form
+
+- **Added** `aria-describedby`, that refers to ScreenRiderOnly text, `aria-labelledby` referring to the notice text, `aria-valuetext` to SliderRating.
+- **Added** `role="image"` and `aria-label` for SliderRating's readonly mode
+- **Added** `role="none"` to SVGs in SliderRating.
+- **Added** `aria-labelledby` for the FeedbackRating's modal container, that refers to Header of it
+- **Added** autofocus to first checkbox. Moved from `textarea`.
+- **Added** `aria-describedby`, that connects privacy-description text and related form control in FeedbackRating form.
+- **Added** same visual feedback for keyboard interactions to SliderRating same as on hover.
+- **Changed** color of privacy-description text to the `text-secondary` token in FeedbackRating form.
+- **Changed** `FeedbackRating.Header` as optional, when specifying FeedbackRating's `header` prop.
+- **Removed** `title` attribute from FeedbackRating form.
+- **Removed** `<ul><li>` structure from checkboxes, leaving only `div role="group"` in FeedbackRating form.
+- **Removed** unnecessary tooltip around `input[type="hidden"]`.
+- **Removed** `line-height` from privacy-description text in FeedbackRating form.
+- **Removed** `aria-invalid` from checkbox's parent elements.
+- **Removed** `aria-haspop` from tooltip of field controls
+
+### @semcore/icon
+
+- **Added** New `ChatGPT` icon.
+- **Added** New `VideoList`, `VideoStreaming` icons.
+
+### @semcore/notice
+
+- **Added** `Notice.Title` and `Notice.Text` components.
+- **Added** `title` props to `NoticeSmart`.
+
+### @semcore/skeleton
+
+- **Removed** `aria-busy` attribute as unnecessary.
+
+### @semcore/spin
+
+- **Removed** `aria-busy` attribute as unnecessary.
+- **Added** `role="img"` for correct recognition by assistive technology and to avoid double reading.
+
+### @semcore/spin-container
+
+- **Removed** `aria-busy` attribute as unnecessary.
+
 ## [15.121.0] - 2024-12-30
 
 ### @semcore/breadcrumbs
