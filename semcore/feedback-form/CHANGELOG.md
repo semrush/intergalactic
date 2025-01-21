@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.38.2] - 2024-01-21
+
+### Added
+
+- type `email` for config in `FeedbackRating.Item`.
+
 ## [6.38.1] - 2024-12-19
 
 ### Added
