@@ -140,7 +140,11 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         const paragraph = this.textarea.childNodes.item(prevState.keyboardRowIndex);
 
         if (paragraph instanceof HTMLParagraphElement) {
-          paragraph.replaceChild(newValueTextNode, paragraph.childNodes.item(0));
+          if (newValue === '') {
+            paragraph.innerHTML = this.emptyRowValue;
+          } else {
+            paragraph.replaceChild(newValueTextNode, paragraph.childNodes.item(0));
+          }
         }
       }
 
@@ -606,11 +610,17 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       if (currentNode.textContent?.trim() === '' && !this.isRangeSelection()) {
         // Backspace on empty row
         const prevNode = currentNode.previousSibling;
-        if (prevNode) {
+        if (prevNode instanceof HTMLParagraphElement) {
           event.preventDefault();
           this.textarea.removeChild(currentNode);
           this.toggleErrorsPopperByKeyboard(0);
-          this.setSelection(prevNode, 1, 1);
+
+          if (prevNode.textContent?.trim() === '' && prevNode.previousSibling === null) {
+            this.textarea.textContent = '';
+            this.setSelection(this.textarea, 0, 0);
+          } else {
+            this.setSelection(prevNode, 1, 1);
+          }
         }
       } else if (this.isRangeSelection()) {
         // Backspace on selected full row
@@ -811,10 +821,17 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       this.changeTriggerTimeout = window.setTimeout(() => {
         const targetElement = target === this.textarea ? this.getNodeFromSelection() : target;
 
-        if (targetElement instanceof HTMLParagraphElement) {
-          const isInvalidRow = targetElement.getAttribute('aria-invalid') === 'true';
-          const rowIndex = Array.from(this.textarea.childNodes).indexOf(targetElement);
+        let rowIndex = -1;
+        let isInvalidRow = false;
 
+        if (targetElement instanceof HTMLParagraphElement) {
+          isInvalidRow = targetElement.getAttribute('aria-invalid') === 'true';
+          rowIndex = Array.from(this.textarea.childNodes).indexOf(targetElement);
+        } else if (targetElement === this.textarea) {
+          rowIndex = 0;
+        }
+
+        if (targetElement instanceof HTMLElement) {
           this.setState(
             (prevState) => {
               const newState: State = {
