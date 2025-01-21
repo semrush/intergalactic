@@ -4,8 +4,8 @@ import { Box } from '@semcore/flex-box';
 
 const Demo = () => {
   return (
-    <Box w={150}>
-      <Ellipsis trim='middle'>Source page with a very long title and URL</Ellipsis>
+    <Box w={120}>
+      <Ellipsis trim='middle'>Page with a very long URL</Ellipsis>
     </Box>
   );
 };
