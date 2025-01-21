@@ -15,6 +15,8 @@ export type ErrorsNavigationProps = {
   showErrors: boolean;
   getI18nText: ReturnType<typeof useI18n>;
   disabled: boolean;
+  nextButtonRef: React.RefObject<HTMLButtonElement>;
+  prevButtonRef: React.RefObject<HTMLButtonElement>;
 };
 
 export function ErrorsNavigation(props: ErrorsNavigationProps) {
@@ -27,10 +29,9 @@ export function ErrorsNavigation(props: ErrorsNavigationProps) {
     showErrors,
     getI18nText,
     disabled,
+    nextButtonRef,
+    prevButtonRef,
   } = props;
-  const currentIndex = errorIndex + 1;
-  const nextIndex = currentIndex === errorsCount || errorIndex === -1 ? 1 : currentIndex + 1;
-  const prevIndex = currentIndex === 1 || errorIndex === -1 ? errorsCount : currentIndex - 1;
   return (
     <Flex alignItems='center'>
       {errorsCount > 0 && showErrors && (
@@ -43,6 +44,7 @@ export function ErrorsNavigation(props: ErrorsNavigationProps) {
             aria-label={getI18nText('BulkTextarea.ErrorsNavigation.nextError:aria-label')}
             hintPlacement={'bottom'}
             disabled={disabled}
+            ref={nextButtonRef}
           />
           <Button
             onClick={onPrevError}
@@ -52,6 +54,7 @@ export function ErrorsNavigation(props: ErrorsNavigationProps) {
             aria-label={getI18nText('BulkTextarea.ErrorsNavigation.previousError:aria-label')}
             hintPlacement={'bottom'}
             disabled={disabled}
+            ref={prevButtonRef}
           />
           <Text size={size === 'l' ? 300 : 200} color='text-critical' ml={1} disabled={disabled}>
             {errorIndex === -1

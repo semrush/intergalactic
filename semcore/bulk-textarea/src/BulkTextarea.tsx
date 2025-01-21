@@ -44,6 +44,8 @@ class BulkTextareaRoot extends Component<
 
   inputFieldRef = React.createRef<HTMLDivElement>();
   clearAllButtonRef = React.createRef<HTMLButtonElement>();
+  nextButtonRef = React.createRef<HTMLButtonElement>();
+  prevButtonRef = React.createRef<HTMLButtonElement>();
 
   state: State = {
     rowsCount: 0,
@@ -108,6 +110,12 @@ class BulkTextareaRoot extends Component<
           (this.asProps.focusSourceRef.current === 'keyboard' ||
             (event instanceof FocusEvent && event.relatedTarget !== this.clearAllButtonRef.current))
         ) {
+          if (this.state.showErrors === false) {
+            setTimeout(() => {
+              this.nextButtonRef.current?.focus();
+            }, 50);
+          }
+
           this.setState({ showErrors: true });
         }
 
@@ -193,6 +201,8 @@ class BulkTextareaRoot extends Component<
       errorsCount: errors.map(Boolean).length,
       showErrors,
       disabled: disabled || readonly || false,
+      nextButtonRef: this.nextButtonRef,
+      prevButtonRef: this.prevButtonRef,
     };
   }
 
