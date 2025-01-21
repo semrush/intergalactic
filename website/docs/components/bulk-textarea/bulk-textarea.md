@@ -45,7 +45,6 @@ Each row is numbered. Rows that fail validation are marked with a `Warning` icon
 
 ![](static/bulktextarea-rows.png)
 
-
 ### Width and height
 
 Avoid making the textarea smaller than 160–200px in width and 3–4 rows in height. Working with large amounts of data in smaller sizes can be challenging, especially when it serves as a primary input in a form.
