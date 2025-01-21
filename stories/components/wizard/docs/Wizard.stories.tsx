@@ -7,6 +7,8 @@ import CustomStepExample from './examples/custom_step';
 import CustomStepperExample from './examples/custom_stepper';
 
 import { BasicExampleTest } from './__tests__/basic_example_test.test';
+import { CustomStepExampleTest } from './__tests__/custom_step_test.test';
+import { CustomStepperExampleTest } from './__tests__/custom_stepper_test.test';
 import { playWrapper } from '../../../utils/playWrapper';
 
 const meta: Meta<typeof Wizard> = {
@@ -25,8 +27,10 @@ export const Basic: Story = {
 
 export const CustomStep: Story = {
   render: CustomStepExample,
+  play: playWrapper(CustomStepExampleTest),
 };
 
 export const CustomStepper: Story = {
   render: CustomStepperExample,
+  play: playWrapper(CustomStepperExampleTest),
 };

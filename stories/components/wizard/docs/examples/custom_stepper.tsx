@@ -71,8 +71,8 @@ const Demo = () => {
                 <Radio.Text>From TXT</Radio.Text>
               </Radio>
               <Radio mr={2} mb={3}>
-                <Radio.Value value="From SCV" />
-                <Radio.Text>From SCV</Radio.Text>
+                <Radio.Value value="From CSV" />
+                <Radio.Text>From CSV</Radio.Text>
               </Radio>
             </RadioGroup>
           </Wizard.Step>

@@ -1,6 +1,6 @@
 import { expect, userEvent, within } from '@storybook/test';
 
-export async function BasicExampleTest({ canvasElement }: { canvasElement: HTMLElement }) {
+export async function CustomStepperExampleTest({ canvasElement }: { canvasElement: HTMLElement }) {
   const canvas = within(canvasElement);
 
   // Helper function to wait briefly if required
@@ -39,23 +39,22 @@ export async function BasicExampleTest({ canvasElement }: { canvasElement: HTMLE
   expect(firstStep).toHaveAttribute('aria-selected', 'false');
   expect(thirdStep).toHaveAttribute('aria-selected', 'true');
 
-  // Verify panel content updates
-  const tabPanel = canvas.getByRole('tabpanel', { name: /Schedule/i });
-  expect(tabPanel).toBeVisible();
-  expect(tabPanel).toHaveAttribute('aria-labelledby', thirdStep.id);
+  // Click on checkboxes and verofu selection in steps
+  const group = canvas.getByRole('group')
+  const radios = within(group).getAllByRole('radio');
+  await userEvent.click(radios[0]);
+  expect(thirdStep).toHaveTextContent(/Manually/);
+  await userEvent.click(radios[2]);
+  expect(thirdStep).toHaveTextContent(/From CSV/);
 
-  // Navigate back to the second step
-  const prevButtonOnLastStep = canvas.getByRole('button', { name: /Back to Keywords/i });
+  // Navigate back to the second step and check title of the step not changed
+  const prevButtonOnLastStep = canvas.getByRole('button', { name: /Back to {buttonName}/i });
   await userEvent.click(prevButtonOnLastStep);
 
   expect(secondStep).toHaveAttribute('aria-selected', 'true');
   expect(thirdStep).toHaveAttribute('aria-selected', 'false');
-
-  // Verify controls visibility on the second step
-  const prevButtonOnSecondStep = canvas.getByRole('button', { name: /Back to Location/i });
-  const nextButtonOnSecondStep = canvas.getByRole('button', { name: /Go to Schedule/i });
-  expect(prevButtonOnSecondStep).toBeVisible();
-  expect(nextButtonOnSecondStep).toBeVisible();
+  expect(thirdStep).toHaveTextContent(/From CSV/);
+  const tabPanel = canvas.getByRole('tabpanel');
   expect(tabPanel).toHaveAttribute('aria-labelledby', secondStep.id);
 
   // Close the modal
@@ -80,34 +79,40 @@ export async function BasicExampleTest({ canvasElement }: { canvasElement: HTMLE
   expect(document.activeElement).toBe(secondStepFocused);
 
   await userEvent.keyboard('{Tab}');
-  const prevButtonOnSecondStepFocus = canvas.getByRole('button', { name: /Back to Location/i });
+  const prevButtonOnSecondStepFocus = canvas.getByRole('button', { name: /Back to {buttonName}/i });
   expect(document.activeElement).toBe(prevButtonOnSecondStepFocus);
   expect(prevButtonOnSecondStepFocus).toHaveAttribute('tabindex', '0');
 
   await userEvent.keyboard('{Tab}');
-  const nextButtonOnSecondStepFocus = canvas.getByRole('button', { name: /Go to Schedule/i });
+  const nextButtonOnSecondStepFocus = canvas.getByRole('button', { name: /Go to {buttonName}/i });
   expect(document.activeElement).toBe(nextButtonOnSecondStepFocus);
 
-  // Navigate to the first step using keyboard
+  // Navigate to the first step using keyboard and check focus order
   await userEvent.keyboard('{Tab}');
   await userEvent.keyboard('{Tab}');
   await userEvent.keyboard('{ArrowUp}');
-  const firstStepFocused = canvas.getByRole('tab', { name: /Completed step Location/i });
+  const firstStepFocused = canvas.getByRole('tab', { name: /Personal/i });
   expect(document.activeElement).toBe(firstStepFocused);
 
   await userEvent.keyboard('{Enter}');
-  const nextButtonOnFirstStepFocus = canvas.getByRole('button', { name: /Go to Keywords/i });
+  const firstInput = canvas.getByPlaceholderText('Your name');
+  expect(document.activeElement).toBe(firstInput);
+  await userEvent.keyboard('{Tab}');
+  const secondtInput = canvas.getByPlaceholderText('Your email');
+  expect(document.activeElement).toBe(secondtInput);
+  await userEvent.keyboard('{Tab}');
+  const nextButtonOnFirstStepFocus = canvas.getByRole('button', { name: /Go to {buttonName}/i });
   expect(document.activeElement).toBe(nextButtonOnFirstStepFocus);
 
-  // Navigate to the last step using keyboard
+  // Navigate to the last step using keyboard and check Focus on 1st checkbox
   await userEvent.keyboard('{Tab}');
   await userEvent.keyboard('{Tab}');
   await userEvent.keyboard('{ArrowDown}');
   await userEvent.keyboard('{ArrowDown}');
-  const lastStepFocused = canvas.getByRole('tab', { name: /Schedule/i });
+  const lastStepFocused = canvas.getByRole('tab', { name: /Import source/i });
   expect(document.activeElement).toBe(lastStepFocused);
 
   await userEvent.keyboard('{Enter}');
-  const prevButtonOnLastStepFocus = canvas.getByRole('button', { name: /Back to Keywords/i });
-  expect(document.activeElement).toBe(prevButtonOnLastStepFocus);
+  const firstRadioChecked = canvas.getByRole('radio', { name: /Manually/i })
+  expect(document.activeElement).toBe(firstRadioChecked);
 }
