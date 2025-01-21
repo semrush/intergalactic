@@ -6,6 +6,9 @@ import BasicExample from './examples/basic_example';
 import CustomStepExample from './examples/custom_step';
 import CustomStepperExample from './examples/custom_stepper';
 
+import { BasicExampleTest } from './__tests__/basic_example_test.test';
+import { playWrapper } from '../../../utils/playWrapper';
+
 const meta: Meta<typeof Wizard> = {
   title: 'Components/Wizard/Documentation',
   component: Wizard,
@@ -17,6 +20,7 @@ type Story = StoryObj<typeof Wizard>;
 
 export const Basic: Story = {
   render: BasicExample,
+  play: playWrapper(BasicExampleTest),
 };
 
 export const CustomStep: Story = {
