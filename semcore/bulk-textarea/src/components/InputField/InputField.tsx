@@ -259,6 +259,8 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     if (element instanceof HTMLElement) {
       // we need to change keyboardRowIndex, because the caret in real on that current row
       this.toggleErrorsPopper('keyboardRowIndex', element);
+
+      this.setErrorIndex(element);
     }
   }
 
@@ -959,17 +961,21 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
 
       this.setSelection(nodeToSetSelection, offset, offset, 'nearest');
 
-      const errorIndex = Array.from(this.textarea.childNodes)
-        .filter((node) => {
-          return node instanceof Element && node.getAttribute('aria-invalid') === 'true';
-        })
-        .findIndex((node) => {
-          return node === nextNode;
-        });
+      this.setErrorIndex(nextNode);
+    }
+  }
 
-      if (errorIndex !== -1) {
-        this.handlers.errorIndex(errorIndex);
-      }
+  private setErrorIndex(nodeToCompare: Node): void {
+    const errorIndex = Array.from(this.textarea.childNodes)
+      .filter((node) => {
+        return node instanceof Element && node.getAttribute('aria-invalid') === 'true';
+      })
+      .findIndex((node) => {
+        return node === nodeToCompare;
+      });
+
+    if (errorIndex !== -1) {
+      this.handlers.errorIndex(errorIndex);
     }
   }
 
