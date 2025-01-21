@@ -387,7 +387,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
 
   handleChange(event: Event) {
     const target = event.target;
-    if (target instanceof HTMLDivElement) {
+    if (target instanceof HTMLDivElement && event instanceof InputEvent) {
       const nodes = this.textarea.childNodes;
       const firstNode = nodes.item(0);
       const secondNode = nodes.item(1);
@@ -442,7 +442,11 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
             let offset: number | null = null;
             if (firstSymbol === this.getEmptyParagraph().textContent) {
               rowNode.textContent = textContent.substring(1);
-              offset = 0;
+              offset =
+                event.inputType === 'deleteContentBackward' ||
+                event.inputType === 'deleteContentForward'
+                  ? 0
+                  : rowNode.textContent.length;
             } else if (lastSymbol === this.getEmptyParagraph().textContent) {
               rowNode.textContent = textContent.substring(0, textContent.length - 1);
               offset = rowNode.textContent.length;
