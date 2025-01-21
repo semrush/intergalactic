@@ -1,4 +1,3 @@
-import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import ScrollArea from '@semcore/scroll-area';
 
@@ -16,7 +15,7 @@ export default meta;
 type Story = StoryObj<typeof ScrollArea>;
 
 export const BasicUsage: Story = {
-  render: () => <BasicUsageExample />,
+  render: BasicUsageExample,
 };
 
 export const DynamicVirtualList: Story = {
@@ -24,9 +23,9 @@ export const DynamicVirtualList: Story = {
 };
 
 export const SynchronizedReverseScrollOnTwoDifferentScreens: Story = {
-  render: () => <SynchronizedReverseScrollOnTwoDifferentScreensExample />,
+  render: SynchronizedReverseScrollOnTwoDifferentScreensExample,
 };
 
 export const SynchronizedScrollOnTwoDifferentScreens: Story = {
-  render: () => <SynchronizedScrollOnTwoDifferentScreensExample />,
+  render: SynchronizedScrollOnTwoDifferentScreensExample,
 };
