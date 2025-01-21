@@ -3,10 +3,10 @@ import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 const locators = {
   trigger: (page: any, name = 'Open modal') => page.getByRole('button', { name }),
-  modal: (page: any) => page.locator('div[data-ui-name="Wizard"]'),
-  sidebar: (page: any) => page.locator('[data-ui-name="Wizard.Sidebar"]'),
-  stepperTabs: (page: any) => page.locator('[data-ui-name="Wizard.Stepper"]'),
-  contentPanel: (page: any) => page.locator('[data-ui-name="Wizard.Content"]'),
+  modal: (page: any) => page.locator("div[data-ui-name='Wizard']"),
+  sidebar: (page: any) => page.locator("[data-ui-name='Wizard.Sidebar']"),
+  stepperTabs: (page: any) => page.locator("[data-ui-name='Wizard.Stepper']"),
+  contentPanel: (page: any) => page.locator("[data-ui-name='Wizard.Content']"),
   nextButton: (page: any, name: string) => page.getByRole('button', { name }),
   prevButton: (page: any, name: string) => page.getByRole('button', { name }),
   input: (page: any, name: string) => page.getByRole('textbox', { name }),
@@ -18,7 +18,6 @@ test.describe('Base example', () => {
     const standPath = 'stories/components/wizard/docs/examples/basic_example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
-
     const { trigger, modal, sidebar, steps, contentPanel, nextButton, prevButton } = locators;
     const stepperTabs = steps(page);
     const firstStep = stepperTabs.nth(0);
@@ -342,9 +341,8 @@ test.describe('Custom step example', () => {
     const middleStep = stepperTabs.nth(1);
     const lastStep = stepperTabs.nth(2);
 
-    await test.step('Open modal using mouse and verify', async () => {
+    await test.step('Open modal using mouse', async () => {
       await trigger(page).click();
-      await page.waitForTimeout(50);
       await page.waitForTimeout(50);
       await expect(modal(page)).toBeVisible();
     });
@@ -389,126 +387,120 @@ test.describe('Custom step example', () => {
       await expect(input(page, 'Keyword 2')).not.toBeFocused();
     });
   });
+});
 
-  test.describe('Custom step example', () => {
-    test('Custom step Keyboard interactions', async ({ page }) => {
-      const standPath = 'stories/components/wizard/docs/examples/custom_step.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en');
-      await page.setContent(htmlContent);
+test.describe('Custom stepper example', () => {
+  test('Custom steper - Change values by mouse', async ({ page }) => {
+    const standPath = 'stories/components/wizard/docs/examples/custom_stepper.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
 
-      const { trigger, modal, steps, nextButton, prevButton, input } = locators;
-      const stepperTabs = steps(page);
-      const firstStep = stepperTabs.nth(0);
-      const middleStep = stepperTabs.nth(1);
-      const lastStep = stepperTabs.nth(2);
+    const { trigger, modal, steps, nextButton, prevButton, input } = locators;
+    const stepperTabs = steps(page);
+    const firstStep = stepperTabs.nth(0);
+    const middleStep = stepperTabs.nth(1);
+    const lastStep = stepperTabs.nth(2);
 
-      await test.step('Open modal using keyboard and verify focus', async () => {
-        await page.keyboard.press('Tab');
-        await page.keyboard.press('Enter');
-        await page.waitForTimeout(50);
-        await expect(modal(page)).toBeVisible();
-        await expect(nextButton(page, 'Close')).toBeFocused();
-      });
-
-      await test.step('Close modal with Escape key', async () => {
-        await page.keyboard.press('Escape');
-        await expect(modal(page)).toBeHidden();
-        await expect(trigger(page)).toBeFocused();
-      });
-
-      await test.step('Verify keyboard navigation on 1st page with inputs by TAB after modal just opened', async () => {
-        await page.keyboard.press('Enter');
-        await page.waitForTimeout(50);
-        await expect(nextButton(page, 'Close')).toBeFocused();
-        await page.keyboard.press('Tab');
-        await expect(firstStep).toBeFocused();
-        await expect(firstStep).toHaveAttribute('aria-selected', 'true');
-        await expect(middleStep).toHaveAttribute('aria-selected', 'false');
-        await expect(lastStep).toHaveAttribute('aria-selected', 'false');
-
-        await page.keyboard.press('Tab');
-        await expect(input(page, 'Keyword 1')).toBeFocused();
-        await input(page, 'Keyword 1').fill('Test');
-        await page.keyboard.press('Tab');
-        await expect(input(page, 'Keyword 2')).toBeFocused();
-        await page.keyboard.press('Tab');
-        await expect(nextButton(page, 'Go to Location')).toBeFocused();
-
-        await page.keyboard.press('Tab');
-        await expect(nextButton(page, 'Close')).toBeFocused();
-      });
-
-      await test.step('Verify navigation between pages by pressing Steps in sidebar ', async () => {
-        await page.keyboard.press('Tab');
-        await page.keyboard.press('ArrowDown');
-        await page.keyboard.press('Enter');
-        await expect(firstStep).toHaveAttribute('aria-selected', 'false');
-        await expect(middleStep).toHaveAttribute('aria-selected', 'true');
-        await expect(lastStep).toHaveAttribute('aria-selected', 'false');
-
-        await expect(prevButton(page, 'Back to Keywords')).toBeFocused();
-        await page.keyboard.press('Enter');
-        await expect(input(page, 'Keyword 1')).toBeFocused();
-      });
+    await test.step('Open modal using mouse', async () => {
+      await trigger(page).click();
+      await page.waitForTimeout(50);
+      await expect(modal(page)).toBeVisible();
     });
 
-    test('Custom step - Mouse interactions', async ({ page }) => {
-      const standPath = 'stories/components/wizard/docs/examples/custom_step.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en');
-      await page.setContent(htmlContent);
+    await test.step('Verify content on the custom stepper', async () => {
+      await expect(firstStep).toHaveText(/1.*Personal.*optional/);
+      await expect(lastStep).toHaveText(/2\.1.*Import source.*Not selected/);
+    });
 
-      const { trigger, modal, steps, nextButton, prevButton, input } = locators;
-      const stepperTabs = steps(page);
-      const firstStep = stepperTabs.nth(0);
-      const middleStep = stepperTabs.nth(1);
-      const lastStep = stepperTabs.nth(2);
+    await test.step('Click inside text fields and check focus', async () => {
+      await input(page, 'Your name').click();
+      await expect(input(page, 'Your name')).toBeFocused();
+      await input(page, 'Your name').fill('Test');
+      await input(page, 'Your email').click();
+      await expect(input(page, 'Your email')).toBeFocused();
+    });
 
-      await test.step('Open modal using mouse and verify', async () => {
-        await trigger(page).click();
-        await page.waitForTimeout(50);
-        await page.waitForTimeout(50);
-        await expect(modal(page)).toBeVisible();
-      });
+    await test.step('Verify navigation between pages by pressing Steps in sidebar ', async () => {
+      await middleStep.click();
+      await expect(firstStep).toHaveAttribute('aria-selected', 'false');
+      await expect(middleStep).toHaveAttribute('aria-selected', 'true');
+      await expect(lastStep).toHaveAttribute('aria-selected', 'false');
 
-      await test.step('Click inside text fields and check focus', async () => {
-        await input(page, 'Keyword 1').click();
-        await expect(input(page, 'Keyword 1')).toBeFocused();
-        await input(page, 'Keyword 1').fill('Test');
-        await input(page, 'Keyword 2').click();
-        await expect(input(page, 'Keyword 2')).toBeFocused();
-      });
+      await expect(prevButton(page, 'Back to {buttonName}')).toHaveText(/Personal/);
+      await expect(nextButton(page, 'Go to {buttonName}')).toHaveText(/Import source/);
+    });
 
-      await test.step('Verify navigation between pages by pressing Steps in sidebar ', async () => {
-        await middleStep.click();
-        await expect(firstStep).toHaveAttribute('aria-selected', 'false');
-        await expect(middleStep).toHaveAttribute('aria-selected', 'true');
-        await expect(lastStep).toHaveAttribute('aria-selected', 'false');
+    await test.step('Verify navigation between pages by pressing Prev/Next steps ', async () => {
+      await nextButton(page, 'Go to {buttonName}').click();
+      await expect(prevButton(page, 'Back to {buttonName}')).toHaveText(/Keywords/);
+      await expect(nextButton(page, 'Go to {buttonName}')).not.toBeVisible();
+      await expect(firstStep).toHaveAttribute('aria-selected', 'false');
+      await expect(middleStep).toHaveAttribute('aria-selected', 'false');
+      await expect(lastStep).toHaveAttribute('aria-selected', 'true');
+    });
 
-        await expect(prevButton(page, 'Back to Keywords')).toBeVisible();
-        await expect(nextButton(page, 'Go to Schedule')).toBeVisible();
-      });
+    await test.step('Verify that last step title changes when selecting radio buttons', async () => {
+      await page.locator('label >> text=Manually').click();
+      await expect(lastStep).toHaveText(/2\.1.*Import source.*Manually/);
+      await page.locator('label >> text=From CSV').click();
+      await expect(lastStep).toHaveText(/2\.1.*Import source.*From CSV/);
+    });
 
-      await test.step('Verify navigation between pages by pressing Prev/Next steps ', async () => {
-        await nextButton(page, 'Go to Schedule').click();
-        await expect(prevButton(page, 'Back to Location')).toBeVisible();
-        await expect(firstStep).toHaveAttribute('aria-selected', 'false');
-        await expect(middleStep).toHaveAttribute('aria-selected', 'false');
-        await expect(lastStep).toHaveAttribute('aria-selected', 'true');
-        //add screenshot here
-        await prevButton(page, 'Back to Location').click();
-        await expect(prevButton(page, 'Back to Keywords')).toBeVisible();
-        await expect(nextButton(page, 'Go to Schedule')).toBeVisible();
-      });
+    await test.step('Verify value changes on subtitle of the 3rd step after navigation', async () => {
+      await firstStep.click();
+      await expect(lastStep).toHaveText(/2\.1.*Import source.*From CSV/);
+      await expect(firstStep).toHaveAttribute('aria-selected', 'true');
+      await expect(middleStep).toHaveAttribute('aria-selected', 'false');
+      await expect(lastStep).toHaveAttribute('aria-selected', 'false');
+    });
+  });
 
-      await test.step('Back to 1st step and check focus', async () => {
-        await firstStep.click();
-        await expect(firstStep).toHaveAttribute('aria-selected', 'true');
-        await expect(middleStep).toHaveAttribute('aria-selected', 'false');
-        await expect(lastStep).toHaveAttribute('aria-selected', 'false');
+  test('Custom Stepper - Change value by Keyboard interactions', async ({ page }) => {
+    const standPath = 'stories/components/wizard/docs/examples/custom_stepper.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
 
-        await expect(input(page, 'Keyword 1')).toBeFocused();
-        await expect(input(page, 'Keyword 2')).not.toBeFocused();
-      });
+    const { trigger, modal, steps, prevButton } = locators;
+    const stepperTabs = steps(page);
+    const firstStep = stepperTabs.nth(0);
+    const middleStep = stepperTabs.nth(1);
+    const lastStep = stepperTabs.nth(2);
+
+    await test.step('Open modal using keyboard and verify focus', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await page.waitForTimeout(50);
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('Enter');
+      await expect(firstStep).toHaveAttribute('aria-selected', 'false');
+      await expect(middleStep).toHaveAttribute('aria-selected', 'false');
+      await expect(lastStep).toHaveAttribute('aria-selected', 'true');
+      await expect(firstStep).toHaveText(/1.*Personal.*optional/);
+      await expect(lastStep).toHaveText(/2\.1.*Import source.*Not selected/);
+    });
+
+    await test.step('Verofy step text changes when selection radios ', async () => {
+      await expect(page.locator("input[type='radio'][value='Manually']")).toBeFocused();
+      await page.keyboard.press('Space');
+      await expect(lastStep).toHaveText(/2\.1.*Import source.*Manually/);
+      await page.keyboard.press('ArrowDown');
+      await expect(lastStep).toHaveText(/2\.1.*Import source.*From TXT/);
+      await expect(page.locator("input[type='radio'][value='From TXT']")).toBeFocused();
+    });
+
+    await test.step('Verify last step text not changes navigate to other step', async () => {
+      await page.keyboard.press('Tab');
+      await expect(prevButton(page, 'Back to {buttonName}')).toHaveText(/Keywords/);
+      await expect(prevButton(page, 'Back to {buttonName}')).toBeFocused();
+      await page.keyboard.press('Enter');
+      await expect(lastStep).toHaveText(/2\.1.*Import source.*From TXT/);
+      await expect(prevButton(page, 'Back to {buttonName}')).toHaveText(/Personal/);
+      await expect(prevButton(page, 'Back to {buttonName}')).toBeFocused();
+      await expect(firstStep).toHaveAttribute('aria-selected', 'false');
+      await expect(middleStep).toHaveAttribute('aria-selected', 'true');
+      await expect(lastStep).toHaveAttribute('aria-selected', 'false');
     });
   });
 });
