@@ -481,7 +481,7 @@ test.describe('Custom stepper example', () => {
       await expect(lastStep).toHaveText(/2\.1.*Import source.*Not selected/);
     });
 
-    await test.step('Verofy step text changes when selection radios ', async () => {
+    await test.step('Verify step text changes when selection radios ', async () => {
       await expect(page.locator("input[type='radio'][value='Manually']")).toBeFocused();
       await page.keyboard.press('Space');
       await expect(lastStep).toHaveText(/2\.1.*Import source.*Manually/);
