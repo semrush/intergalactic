@@ -872,6 +872,7 @@ const MaskedInput = ({
       noHumanizedDate={!humanizedDate}
       animationsDisabled={animationsDisabled}
       inputRole={inputRole}
+      inputmode={'numeric'}
     >
       {humanizedDate && <SHumanizedDate>{humanizedDate}</SHumanizedDate>}
     </InputMask.Value>,
