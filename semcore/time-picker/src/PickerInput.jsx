@@ -119,6 +119,7 @@ class ItemPicker extends Component {
           render={Select.Trigger}
           tag={Input.Value}
           ref={this.inputRef}
+          inputmode={'numeric'}
           size={size}
           disabled={disabled}
           neighborLocation={false}
