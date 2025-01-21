@@ -4,5 +4,9 @@
   "formTitle": "フィードバックのフォーム",
   "submitButton": "フィードバックを送信",
   "successMessage": "フィードバックをお送りいただき、ありがとうございます！",
-  "errorMessage": "エラーが発生しました。もう一度お試しいただくか、{email}までお問い合わせください。"
+  "errorMessage": "エラーが発生しました。もう一度お試しいただくか、{email}までお問い合わせください。",
+  "FeedbackRating.SliderRating.ScreenReaderOnly.sliderDescriber": "レーティングを選択するにはEnterキーを押します",
+  "FeedbackRating.SliderRating.aria-valuetext.readonly": "あなたのレーティング：{selectedRating}/{max}",
+  "FeedbackRating.SliderRating.aria-valuetext.empty": "未設定",
+  "FeedbackRating.SliderRating.aria-valuetext": "{selectedRating}/{max}"
 }

@@ -28,7 +28,7 @@ The pattern includes the following components:
 
 ![](static/summary-metric.png)
 
-## Styles, margins and paddings
+## Appearance
 
 ### Margins and paddings
 
@@ -66,7 +66,7 @@ When metrics need to be grouped, avoid using dividers to separate metrics belong
 
 ![](static/dividers.png)
 
-## Horizontal & vertical layout
+## Horizontal and vertical layout
 
 Main report/widget metrics can be arranged either horizontally or vertically, depending on the layout requirement. The vertical layout is more space-efficient and compact.
 

@@ -30,7 +30,7 @@ If the input is in a loading state while searching, sending, or entering data dy
 
 :::
 
-## Input with clearing ability
+## Input with clear button
 
 The input field may have a **Clear** button inside it to clear the entered value. This button is only visible when there is some typed text or values in the input field, regardless of its status.
 
@@ -42,7 +42,7 @@ The input field may have a **Clear** button inside it to clear the entered value
 
 :::
 
-## Input with submit button inside
+## Input with submit button
 
 You can place a submit button inside the input as the right addon. It's only visible when the input has a nonempty value.
 
@@ -78,7 +78,7 @@ When stacking two addons, the indents of the adjacent addons should be divided i
 
 :::
 
-## Input with other component inside
+## Input with other components
 
 You can also place a [Badge](/components/badge/badge) or a [Tag](/components/tag/tag) inside the input.
 

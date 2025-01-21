@@ -21,12 +21,12 @@ Table: Form layout types
 
 ## Input labels
 
-Input should have accompanying text label.
+Input should have an accompanying text label.
 
 - The font weight should be set to `regular`. Use `bold` font-weight sparingly for emphasizing input labels.
-- Omit the use of a colon after the text label.
-  
-You also could mark the input as an optional.
+- Omit colons after text labels.
+
+You also could mark an input as optional.
 
 | Input size | Vertical layout    | Horizontal layout        | Font size         |
 | ---------- | ------------------ | ------------------------ | ----------------- |
@@ -48,11 +48,11 @@ Placeholders are necessary to guide users on the expected data input.
 - Relying solely on placeholders for inputs isn't user-friendly, as the completed form can become difficult to read.
 - Avoid using specific values as placeholders, as users might think the input is pre-filled.
 
-Placeholders can be omitted when the input's purpose is self-evident.
+Placeholders can be omitted when the input purpose is self-evident.
 
-For formatting user-entered values, use the [InputMask](/components/input-mask/input-mask).
+For formatting entered values, use [InputMask](/components/input-mask/input-mask).
 
-## Margins between inputs
+## Input margins
 
 The key unit in the design system is 4. All spacings between components and widgets should be multiples of this unit. Refer to the [Spacing system](/layout/box-system/box-system#spacing_system) for further information.
 
@@ -65,7 +65,7 @@ Table: Margins between inputs
 
 ## Form validation
 
-Find detailed information about form validation in the [Validation](/patterns/validation-form/validation-form).
+Find detailed information about form validation in [Validation](/patterns/validation-form/validation-form).
 
 ## Usage in UX/UI
 
@@ -115,7 +115,7 @@ In brief:
 **Disadvantages of horizontal form layout with left label alignment**
 
 - Requires more horizontal space.
-- Takes longer to complete (see [research](https://www.uxmatters.com/mt/archives/2006/07/label-placement-in-forms.php)).
+- Takes longer to complete (read [research](https://www.uxmatters.com/mt/archives/2006/07/label-placement-in-forms.php)).
 - Less suitable for multilingual interfaces.
 - Users who magnify their screens may struggle to match labels with inputs, given their limited screen visibility.
 
@@ -131,7 +131,7 @@ In brief:
 **Advantages of horizontal form layout with right label alignment**
 
 - Improved visual connection between labels and inputs.
-- Higher completion rates compared to the previous layout (see [research](https://www.uxmatters.com/mt/archives/2006/07/label-placement-in-forms.php)).
+- Higher completion rates compared to the previous layout (read [research](https://www.uxmatters.com/mt/archives/2006/07/label-placement-in-forms.php)).
 - Potentially more compact than vertical layouts.
 
 **Disadvantages of horizontal form layout with right label alignment**

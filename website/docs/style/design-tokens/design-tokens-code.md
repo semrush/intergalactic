@@ -3,7 +3,7 @@ title: Design tokens
 tabs: Tokens('design-tokens'), Usage in design('design-tokens-usage'), Usage in development('design-tokens-usage-development'), Example('design-tokens-code'), Changelog('design-tokens-changelog')
 ---
 
-## Tokens with custom component
+## Custom components
 
 Design tokens are recommended when creating a custom component to ensure a consistent look and reducing the time and effort spent on manual updates.
 
@@ -15,7 +15,7 @@ Design tokens are recommended when creating a custom component to ensure a consi
 
 :::
 
-## Transforming JSON files to ready to use files in your code
+## Transforming JSON files
 
 Design token JSON-files [produced by Figma plugin](/style/design-tokens/design-tokens-usage#how_to_make_a_new_theme) can't be used as is in Frontend application. Use the widgets below to transform output of Figma plugin to [ready to import CSS file](/style/design-tokens/design-tokens-usage-development#global_theme) or [ready to use JSON files](/style/design-tokens/design-tokens-usage-development#global_theme).
 

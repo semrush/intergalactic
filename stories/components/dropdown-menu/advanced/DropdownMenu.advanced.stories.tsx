@@ -5,6 +5,7 @@ import DropdownMenu from '@semcore/dropdown-menu';
 import ModalInItemExample from './examples/modal-in-dd-item';
 import ModalInNestedDdItemExample from './examples/modal-in-nested-dd-item';
 import ModalInDDNoticeExample from './examples/modal-in-dd-notice';
+import LeftPlacementExample from './examples/left-placement';
 
 const meta: Meta<typeof DropdownMenu> = {
   title: 'Components/Dropdown Menu/Advanced',
@@ -24,4 +25,8 @@ export const ModalInNestedItem: Story = {
 
 export const ModalInDDNotice: Story = {
   render: ModalInDDNoticeExample,
+};
+
+export const LeftPlacement: Story = {
+  render: LeftPlacementExample,
 };

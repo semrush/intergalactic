@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.42.1] - 2025-01-08
+
+### Fixed
+
+- styles for use with DnD.
+
 ## [4.42.0] - 2024-12-23
 
 ### Added

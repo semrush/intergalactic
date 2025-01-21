@@ -51,7 +51,7 @@ Use the [InputNumber](/components/input-number/input-number), if the filter has 
 - The filter can be closed by clicking outside the dropdown. If the user didn't select anything, no values are applied.
 - Also, if the user hasn't selected anything or there is no data in the custom range inputs, clicking "Apply" button closes the dropdown and nothing is applied.
 
-### Opening the filter for the first time
+### Opening filter for the first time
 
 **Preset values**
 
@@ -74,7 +74,7 @@ User-selected values are duplicated in the trigger.
 - Don't duplicate selected preset values in the custom range.
 - Clicking on the filter clear cross clears the filter from the selected values. It's not depend on whether the filter is open or closed.
 
-### Choosing a custom range
+### Choosing custom range
 
 **Custom range**
 
@@ -91,6 +91,8 @@ The user can copy/paste values into the input, increase/decrease them by the ste
 - Keep user-entered data in Custom Range before refreshing the page if the user has entered something but not applied.
 
 ## Trigger states
+
+Table: Trigger states
 
 | State          | Appearance example                           |
 | -------------- | -------------------------------------------- |

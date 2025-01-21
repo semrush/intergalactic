@@ -16,7 +16,7 @@ These components are employed to manage user expectations:
 Ensure that the container housing the loading message has margins. This prevents the container from becoming tightly attached to other elements on the page during cases like viewport size adjustments. The margin values are usually multiples of 4 (for example, for the spinner, we recommend using `margin: 40px`).
 :::
 
-## Response from the system
+## Response from system
 
 ### Lazy loading
 

@@ -3,7 +3,7 @@ title: Advanced filters
 tabs: Design('advanced-filters'), Example('advanced-filters-code')
 ---
 
-## Basic example
+## Basic usage
 
 This pattern is built using the [FilterTrigger component](../../components/filter-trigger/filter-trigger-code.md).
 

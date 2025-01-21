@@ -161,7 +161,7 @@ If the list has more than three values, add the **Select all** option at the ver
 
 ![](static/multiselect-all.png)
 
-## Specific cases for multiselect
+## Specific multiselect cases
 
 In long lists (for example, countries or time zones), selected values should be placed at the top of the list when the list is opened.
 
