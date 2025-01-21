@@ -52,7 +52,24 @@ const Demo = () => {
   );
 };
 
-const pipeExpireDate = (value) => {
+const pipeExpireDate = (maskedValue: string, conf: { rawValue: string }) => {
+  let value = maskedValue;
+
+  if (conf.rawValue.length === 7) {
+    value = conf.rawValue
+      .split('/')
+      .map((valueItem, index) => {
+        if (valueItem.length === 2) {
+          return valueItem;
+        }
+
+        if (valueItem.length === 4 && index === 1) {
+          return valueItem.toString().substring(2);
+        }
+      })
+      .join('/');
+  }
+
   const indexesOfPipedChars = [];
   const firstMonthDigit = parseInt(value[0], 10);
   if (firstMonthDigit > 1) {

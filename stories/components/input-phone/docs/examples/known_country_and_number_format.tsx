@@ -69,7 +69,7 @@ const Demo = () => {
               onChange={setPhoneNumber}
               mask={phoneMask.replace(/_/g, '9')}
               type='tel'
-              autoComplete='tel-national'
+              autoComplete='tel'
               title='10 digits, without country code'
             />
             {phoneNumber !== prefix && (
