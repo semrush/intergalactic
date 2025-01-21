@@ -1,7 +1,7 @@
 {
   "name": "@semcore/ellipsis",
   "description": "Semrush Ellipsis Component",
-  "version": "2.37.1",
+  "version": "2.37.2",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
