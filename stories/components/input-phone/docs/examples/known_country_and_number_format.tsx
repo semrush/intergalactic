@@ -2,7 +2,6 @@ import React from 'react';
 import Input from '@semcore/input';
 import InputMask from '@semcore/input-mask';
 import Select from '@semcore/select';
-import { Hint } from '@semcore/tooltip';
 import { ButtonLink } from '@semcore/button';
 import NeighborLocation from '@semcore/neighbor-location';
 import Flag from '@semcore/flags';

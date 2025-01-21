@@ -152,7 +152,6 @@ const Demo = () => {
                   name='email'
                   type='email'
                   autoComplete='email'
-                  placeholder='E-mail'
                   value={valueTag}
                   onChange={handleInputChange}
                   onBlur={handleInputBlur}
