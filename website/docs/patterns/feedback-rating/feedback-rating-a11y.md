@@ -11,13 +11,21 @@ The following list describes roles and attributes that component already has.
 
 Table: Roles and attributes
 
-| Component      | Role     | Attribute                                                                                   |
-| -------------- | -------- | ------------------------------------------------------------------------------------------- |
-| `Notice`       | `region` | `aria-label="Leave feedback"`                                                               |
-| `Notice.Label` |          | `aria-hidden={true}`                                                                        |
-| `Notice.Close` | `button` | `aria-label` comes from [Notice](/components/notice/notice-a11y).                           |
-| `SliderRating` | `slider` | `aria-label={notificationText}`                                                             |
-| `SliderRating` | `slider` | All aria attributes are the same as those the [Slider](/components/slider/slider-a11y) has. |
+| Element                  | Attribute                                                              | Usage                                                                                                                                                      |
+| ------------------------ | ---------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Notice`                 | `aria-label="Leave feedback"`                                          | Defines an accessible name for the notice.                                                                                                                 |
+|                          | `role="region"`                                                        | Defines an ARIA landmark, allowing quick navigation to the element. Inherited from [Notice](/components/notice/notice-a11y).                               |
+| `SliderRating`           | `aria-labelledby="IDREF"`                                              | Defines an accessible name for the slider by referring to the `notificationText` content.                                                                  |
+|                          | `aria-valuetext="Not set"`                                             | **When `value = 0`.** Converts the current slider value to human readable format.                                                                          |
+|                          | `aria-valuetext="{value} out of 5. Press Enter to select the rating."` | **When `value > 0`.** Converts the current slider value to human readable format and adds an instruction for the user.                                     |
+|                          |                                                                        | Other attributes in [Slider A11y](/components/slider/slider-a11y).                                                                                         |
+| `Modal`                  | `aria-labelledby="IDREF"`                                              | Defines an accessible name for the modal by referring to its title.                                                                                        |
+|                          |                                                                        | Other attributes in [Modal A11y](/components/modal/modal-a11y).                                                                                     |
+| `Modal` > `SliderRating` | `role="img"`                                                           | Presents the noninteractive slider as an image.                                                                                                            |
+|                          | `aria-label="Your rating: {value} out of 5"`                           | Defines an accessible name for the noninteractive slider.                                                                                                  |
+| `Modal` > `div`          | `role="group"`                                                         | Groups the checkboxes together.                                                                                                                            |
+|                          | `aria-labelledby="IDREF"`                                              | Defines an accessible name for the checkbox group by referring to the dialog title.                                                                        |
+| `Modal` > `input#email`  | `aria-describedby="IDREF"`                                             | Provides an accessible description for the email input.<br/>In valid state, refers to the privacy text.<br/>In invalid state, refers to the error message. |
 
 FeedbackRating form pattern consists of several components that have their own accessibility requirements. You can find more about each of them in their guides:
 
@@ -34,10 +42,8 @@ FeedbackRating form pattern consists of several components that have their own a
 
 ## Keyboard support
 
-See detailed information about the keyboard support for the all form elements in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard).
-
-## Considerations for designers & developers
+Find detailed information about the keyboard support for all form elements in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard).
 
 ## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
+For more accessibility recommendations, refer to the common [Accessibility guide](/core-principles/a11y/a11y).

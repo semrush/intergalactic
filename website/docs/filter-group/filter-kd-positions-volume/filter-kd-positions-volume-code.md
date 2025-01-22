@@ -3,7 +3,7 @@ title: Keyword Difficulty, Positions, Volume
 tabs: Design('filter-kd-positions-volume'), Example('filter-kd-positions-volume-code')
 ---
 
-## Basic example
+## Basic usage
 
 ::: sandbox
 

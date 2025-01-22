@@ -10,7 +10,7 @@ tabs: Design('feedback-yes-no'), A11y('feedback-yes-no-a11y'), Example('feedback
 
 This pattern consists of [Notice](/components/notice/notice) and [Feedback form](/components/feedback-form/feedback-form). Its purpose is to introduce a new feature to the user and pose a straightforward question about the product's performance. _For instance, "Discover our new Dashboard! Is it functioning effectively for you?"_
 
-## Styles
+## Appearance
 
 Show [Feedback illustration](/style/illustration/illustration) on the left to the text.
 
@@ -29,7 +29,7 @@ There are two potential variants for the notice to appear:
 
 Session length can be defined as a time interval, the next page load, or an update of company data.
 
-### Location
+### Placement
 
 Typically, this component is positioned at the top of a report or product.
 

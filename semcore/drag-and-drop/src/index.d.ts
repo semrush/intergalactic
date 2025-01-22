@@ -56,6 +56,10 @@ export type DraggableProps = BoxProps & {
    * Used for add zoneName in a11y hints
    */
   zoneName?: string;
+  /**
+   * Flag for disable keyboardFocused style form DnD.Draggable element
+   */
+  isCustomFocus?: boolean;
 };
 
 /** @deprecated */

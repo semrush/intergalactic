@@ -35,14 +35,16 @@ which describes how the time taken to perform an action depends on the thickness
 Larger slider knobs and bars make using sliders easier and faster.
 :::
 
-## Sizes
+## Appearance
+
+### Sizes
 
 Default component sizes:
 
 - Bar height: 4px
 - Knob size: 20px * 20px
 
-## Styles
+### Styles
 
 Default component styles:
 
@@ -101,7 +103,7 @@ show a warning tooltip with an appropriate message.
 
 ## Usage in UX/UI
 
-### When to use the slider
+### When to use slider
 
 This input works best when the user doesn't need to enter a specific value
 but wants to choose an approximate value.
@@ -116,7 +118,7 @@ Clicking and dragging a control to an exact location on mobile devices can be ch
 Many users accidentally move the slider knob off the value they were trying to select
 when lifting their finger off the screen, [as mentioned by Nielsen Norman Group](https://www.nngroup.com/articles/sliders-knobs/).
 
-### Input values placement
+### Input values location
 
 Consider how users will interact with the control.
 Avoid placing value labels under the input on mobile devices,

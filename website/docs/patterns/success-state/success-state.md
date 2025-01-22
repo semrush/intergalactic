@@ -8,7 +8,7 @@ tabs: Design('success-state'), A11y('success-state-a11y')
 A success state is a message from the system confirming that an action has been completed.
 When a user interacts with a product, they want to achieve a specific goal, and success states help them understand that they have achieved it.
 
-## Styles
+## Appearance
 
 When designing a success message, keep the following principles in mind:
 

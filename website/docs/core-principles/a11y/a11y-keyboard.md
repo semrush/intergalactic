@@ -39,7 +39,7 @@ Keyboard control should be performed sequentially across all interactive element
 - The focus inside groups of controls is consistent. After the last control in the group, the focus should move to the next control in the interface.
 - If the control has a tooltip in the `hover` state, it should appear on focus with `Tab`.
 
-## Keyboard support for button, link, input, etc.
+## Keyboard support for controls
 
 ### Link
 

@@ -41,7 +41,7 @@ Notices should be positioned next to the element that triggers the alert. For in
 
 ![](static/m-notice.png)
 
-## Dual-zone modal window
+## Dual-zone modal
 
 For dual-zone modal window use:
 
