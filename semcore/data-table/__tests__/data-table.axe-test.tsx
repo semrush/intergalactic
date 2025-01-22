@@ -122,13 +122,6 @@ test.describe('DataTable', () => {
 
     expect(violations).toEqual([]);
   });
-  test.skip('fixed header with spin overlay', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/docs/examples/fixed-header-with-spin-overlay.tsx';
-    const violations = await checkAxe(page, standPath);
-
-    expect(violations).toEqual([]);
-  });
   test('fixed header', async ({ page }) => {
     const standPath = 'stories/components/data-table/docs/examples/fixed-header.tsx';
     const violations = await checkAxe(page, standPath);

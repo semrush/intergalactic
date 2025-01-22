@@ -20,7 +20,6 @@ import CustomizingHeaderExample from './examples/customizing-header';
 import ExportInImageExample from './examples/export-in-image';
 import FixedColumnsExample from './examples/fixed-columns';
 import FixedHeaderExample from './examples/fixed-header';
-import FixedHeaderWithSpinOverlayExample from './examples/fixed-header-with-spin-overlay';
 import MultiLevelHeaderExample from './examples/multi-level-header';
 import PaginationExample from './examples/pagination';
 import RowsMergingExample from './examples/rows-merging';
@@ -113,10 +112,6 @@ export const FixedColumns: Story = {
 
 export const FixedHeader: Story = {
   render: FixedHeaderExample,
-};
-
-export const FixedHeaderWithSpinOverlay: Story = {
-  render: FixedHeaderWithSpinOverlayExample,
 };
 
 export const MultiLevelHeader: Story = {
