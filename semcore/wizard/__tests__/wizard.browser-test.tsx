@@ -166,10 +166,8 @@ test.describe('Base example', () => {
       await expect(firstStep).toHaveAttribute('aria-selected', 'true');
       await expect(middleStep).toHaveAttribute('aria-selected', 'false');
       await expect(lastStep).toHaveAttribute('aria-selected', 'false');
-
       await page.keyboard.press('Tab');
       await expect(nextButton(page, 'Go to Keywords')).toBeFocused();
-
       await page.keyboard.press('Tab');
       await expect(nextButton(page, 'Close')).toBeFocused();
     });
@@ -211,7 +209,6 @@ test.describe('Base example', () => {
       await expect(firstStep).toHaveAttribute('aria-selected', 'false');
       await expect(middleStep).toHaveAttribute('aria-selected', 'false');
       await expect(lastStep).toHaveAttribute('aria-selected', 'true');
-
       await expect(prevButton(page, 'Back to Keywords')).toBeFocused();
 
       await page.keyboard.press('Tab');
@@ -223,7 +220,6 @@ test.describe('Base example', () => {
       await page.keyboard.press('ArrowUp');
       await page.keyboard.press('Enter');
       await expect(firstStep).toHaveAttribute('aria-selected', 'true');
-
       await expect(nextButton(page, 'Go to Keywords')).toBeFocused();
 
       await page.keyboard.press('Tab');
@@ -233,7 +229,7 @@ test.describe('Base example', () => {
       await expect(prevButton(page, 'Back to Location')).toBeFocused();
     });
 
-    await test.step('Verify navigation between pages by pressing Next and Prev buttons ', async () => {
+    await test.step('Verify navigation between pages by pressing Next and Prev buttons', async () => {
       await page.keyboard.press('Enter');
       await expect(nextButton(page, 'Go to Keywords')).toBeFocused();
       await expect(firstStep).toHaveAttribute('aria-selected', 'true');
@@ -306,6 +302,7 @@ test.describe('Custom step example', () => {
 
       await page.keyboard.press('Tab');
       await expect(input(page, 'Keyword 1')).toBeFocused();
+      await expect(page).toHaveScreenshot();
       await input(page, 'Keyword 1').fill('Test');
       await page.keyboard.press('Tab');
       await expect(input(page, 'Keyword 2')).toBeFocused();
@@ -371,7 +368,6 @@ test.describe('Custom step example', () => {
       await expect(firstStep).toHaveAttribute('aria-selected', 'false');
       await expect(middleStep).toHaveAttribute('aria-selected', 'false');
       await expect(lastStep).toHaveAttribute('aria-selected', 'true');
-      //add screenshot here
       await prevButton(page, 'Back to Location').click();
       await expect(prevButton(page, 'Back to Keywords')).toBeVisible();
       await expect(nextButton(page, 'Go to Schedule')).toBeVisible();
@@ -382,7 +378,6 @@ test.describe('Custom step example', () => {
       await expect(firstStep).toHaveAttribute('aria-selected', 'true');
       await expect(middleStep).toHaveAttribute('aria-selected', 'false');
       await expect(lastStep).toHaveAttribute('aria-selected', 'false');
-
       await expect(input(page, 'Keyword 1')).toBeFocused();
       await expect(input(page, 'Keyword 2')).not.toBeFocused();
     });
@@ -485,6 +480,7 @@ test.describe('Custom stepper example', () => {
       await expect(page.locator("input[type='radio'][value='Manually']")).toBeFocused();
       await page.keyboard.press('Space');
       await expect(lastStep).toHaveText(/2\.1.*Import source.*Manually/);
+      await expect(page).toHaveScreenshot();
       await page.keyboard.press('ArrowDown');
       await expect(lastStep).toHaveText(/2\.1.*Import source.*From TXT/);
       await expect(page.locator("input[type='radio'][value='From TXT']")).toBeFocused();
@@ -511,8 +507,6 @@ test.describe('Steps and buttons states', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
-    const content = await page.content();
-
     const { trigger, modal, steps } = locators;
     const stepperTabs = steps(page);
     const checkedStep = stepperTabs.nth(0);
@@ -520,50 +514,47 @@ test.describe('Steps and buttons states', () => {
     const normalStep = stepperTabs.nth(5);
     const disabledStep = stepperTabs.nth(8);
 
-    await test.step('Open modal and check all states look good', async () => {
+    await test.step('Hover active', async () => {
       await trigger(page).click();
       await page.waitForTimeout(50);
       await expect(modal(page)).toBeVisible();
-      //screenshot
-    });
-
-    await test.step('Hover active', async () => {
       await checkedStep.hover();
-      //screenshot
+      await expect(page).toHaveScreenshot();
     });
 
     await test.step('Hover normal', async () => {
       await normalStep.hover();
-      //screenshot
+      await expect(page).toHaveScreenshot();
     });
 
     await test.step('Hover submenu', async () => {
       await subMenuStep.hover();
-      //screenshot
+      await expect(page).toHaveScreenshot();
     });
 
-    // await test.step('Hover disabled', async () => {
-    //   await disabledStep.hover();
-    //   //screenshot
-    // });
+     await test.step('Verify disabled state', async () => {
+       await expect(disabledStep).toHaveAttribute('aria-disabled', 'true');
+       // will add more casses after fixing the bug UIK-3191
+     });
 
     await test.step('Click submenu', async () => {
       await subMenuStep.click();
-      //screenshot
+      await expect(page).toHaveScreenshot();
     });
 
-    await test.step('Click normal', async () => {
-      await normalStep.click();
-      //screenshot
-    });
+    await test.step('Focus on the normal menu', async () => {
+        await normalStep.click();
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Tab');
+        await expect(page).toHaveScreenshot();
+      });
 
-    // await test.step('Click disabled', async () => {
-    //   await disabledStep.click();
-    //   await expect(normalStep).toHaveAttribute('aria-selected', 'true');
-    //   await expect(subMenuStep).toHaveAttribute('aria-selected', 'false');
-    //   await expect(checkedStep).toHaveAttribute('aria-selected', 'false');
-    //   await expect(disabledStep).toHaveAttribute('aria-disabled', 'true');
-    // });
+      await test.step('Focus on the submenu', async () => {
+        await page.keyboard.press('ArrowUp');
+        await page.keyboard.press('ArrowUp');
+        await expect(page).toHaveScreenshot();
+      });
   });
 
   test('Steps on hover and focus - small state', async ({ page }) => {
@@ -585,45 +576,41 @@ test.describe('Steps and buttons states', () => {
       await trigger(page).click();
       await page.waitForTimeout(50);
       await expect(modal(page)).toBeVisible();
-      //await expect(page).toHaveScreenshot();
+      await expect(page).toHaveScreenshot();
     });
 
     await test.step('Hover active', async () => {
       await checkedStep.hover();
-      //await expect(page).toHaveScreenshot();
+      await expect(page).toHaveScreenshot();
     });
 
     await test.step('Hover normal', async () => {
       await normalStep.hover();
-      // await expect(page).toHaveScreenshot();
+      await expect(page).toHaveScreenshot();
     });
 
     await test.step('Hover submenu', async () => {
       await subMenuStep.hover();
-      //await expect(page).toHaveScreenshot();
+      await expect(page).toHaveScreenshot();
     });
-
-    // await test.step('Hover disabled', async () => {
-    //   await disabledStep.hover();
-    //   //screenshot
-    // });
 
     await test.step('Click submenu', async () => {
       await subMenuStep.click();
-      //screenshot
+      await expect(page).toHaveScreenshot();
     });
 
-    await test.step('Click normal', async () => {
-      await normalStep.click();
-      //screenshot
-    });
+    await test.step('Focus on the active normal menu', async () => {
+        await normalStep.click();
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Tab');
+        await expect(page).toHaveScreenshot();
+      });
 
-    // await test.step('Click disabled', async () => {
-    //   await disabledStep.click();
-    //   await expect(normalStep).toHaveAttribute('aria-selected', 'true');
-    //   await expect(subMenuStep).toHaveAttribute('aria-selected', 'false');
-    //   await expect(checkedStep).toHaveAttribute('aria-selected', 'false');
-    //   await expect(disabledStep).toHaveAttribute('aria-disabled', 'true');
-    // });
+      await test.step('Focus on the not active submenu', async () => {
+        await page.keyboard.press('ArrowUp');
+        await page.keyboard.press('ArrowUp');
+        await expect(page).toHaveScreenshot();
+      });
   });
 });
