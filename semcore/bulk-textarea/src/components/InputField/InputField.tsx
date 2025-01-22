@@ -691,12 +691,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
             return <Tooltip.Popper id={this.popperDescribedId}>{errorMessage}</Tooltip.Popper>;
           }}
         </Tooltip>
-        <SInputField
-          render={Box}
-          ref={this.containerRef}
-          id={'boundary'}
-          __excludeProps={['onBlur', 'value']}
-        />
+        <SInputField render={Box} ref={this.containerRef} __excludeProps={['onBlur', 'value']} />
       </>,
     );
   }
@@ -872,8 +867,8 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
 
   private toggleAriaInvalid(showErrors: boolean, errorsLength: number): void {
     if (showErrors && errorsLength > 0) {
-      this.textarea.setAttribute('aria-invalid', 'true');
       this.textarea.setAttribute('aria-describedby', this.popperDescribedId);
+      this.textarea.setAttribute('aria-invalid', 'true');
     } else {
       this.textarea.removeAttribute('aria-invalid');
       this.textarea.removeAttribute('aria-describedby');

@@ -228,10 +228,9 @@ class BulkTextareaRoot extends Component<
     this.setState({ errorIndex: -1 });
     this.handlers.value('', e);
     this.handlers.state('normal');
-    if (this.asProps.focusSourceRef.current === 'keyboard') {
-      const textarea = this.inputFieldRef.current?.querySelector('[role="textbox"]');
-      textarea instanceof HTMLDivElement && textarea.focus();
-    }
+
+    const textarea = this.inputFieldRef.current?.querySelector('[role="textbox"]');
+    textarea instanceof HTMLDivElement && textarea.focus();
   };
 
   handleChangeErrorIndex = (amount: number) => () => {
