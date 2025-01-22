@@ -554,14 +554,14 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
               : selection?.focusNode?.childNodes.item(0);
           const selectionOffset = selection?.focusOffset;
 
-          let defaultInnerHTML = this.emptyRowValue;
+          let newRowValue = '';
 
           if (
             selectionNode instanceof Text &&
             selectionOffset !== undefined &&
             selectionOffset !== selectionNode.textContent?.length
           ) {
-            defaultInnerHTML =
+            newRowValue =
               selectionNode.textContent?.substring(selectionOffset) ?? this.emptyRowValue;
 
             if (selectionNode.textContent) {
@@ -574,7 +574,11 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
           }
 
           const row = document.createElement('p');
-          row.innerHTML = defaultInnerHTML;
+          if (newRowValue) {
+            row.textContent = newRowValue;
+          } else {
+            row.innerHTML = this.emptyRowValue;
+          }
           currentNode.after(row);
 
           this.setSelection(row, 0, 0);
