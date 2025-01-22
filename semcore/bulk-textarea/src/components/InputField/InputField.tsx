@@ -150,6 +150,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       if (!showErrors) {
         this.recalculateErrors();
       }
+      this.recalculateRowsCount();
       this.asProps.onChangeRowIndex(this.state.keyboardRowIndex);
     }
   }
