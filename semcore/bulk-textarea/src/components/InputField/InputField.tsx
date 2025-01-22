@@ -625,6 +625,12 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
           } else {
             this.setSelection(prevNode, 1, 1);
           }
+
+          setTimeout(() => {
+            this.recalculateErrors();
+          }, 0);
+
+          this.toggleErrorsPopperByKeyboard(0);
         }
       } else if (this.isRangeSelection()) {
         // Backspace on selected full row
