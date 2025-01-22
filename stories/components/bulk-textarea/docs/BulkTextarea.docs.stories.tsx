@@ -16,7 +16,7 @@ export const BasicUsage: StoryObj<typeof BulkTextarea> = {
     ofRows: 30,
     size: 'm',
     rowsDelimiters: [','],
-    readonly: true,
+    readonly: false,
     disabled: false,
     placeholder: 'Placeholder',
     minRows: 2,

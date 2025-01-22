@@ -875,8 +875,9 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
 
   private handleChangeErrorIndex(errorIndex: number): void {
     const error: ErrorItem | undefined = this.asProps.errors[errorIndex];
+    const childNodes = this.textarea.childNodes;
 
-    const node = error?.rowNode;
+    const node = error ? error.rowNode ?? childNodes.item(error.rowIndex) : null;
     const selection = document.getSelection();
 
     if (selection && node instanceof HTMLParagraphElement) {

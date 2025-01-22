@@ -17,8 +17,6 @@ type State = {
   isEmptyText: boolean;
   errorIndex: number;
   highlightErrorIndex: boolean;
-  errors: InputFieldProps['errors'];
-  showErrors: boolean;
   lastError?: InputFieldProps['errors'][number];
 };
 
@@ -38,6 +36,8 @@ class BulkTextareaRoot extends Component<
     ofRows: 100,
     validateOn: 'blur',
     locale: 'en',
+    defaultErrors: [],
+    defaultShowErrors: false,
   };
 
   static enhance = [i18nEnhance(localizedMessages), focusSourceEnhance()] as const;
@@ -52,14 +52,14 @@ class BulkTextareaRoot extends Component<
     isEmptyText: true,
     errorIndex: -1,
     highlightErrorIndex: false,
-    errors: [],
-    showErrors: false,
   };
 
   uncontrolledProps() {
     return {
       value: null,
       state: null,
+      showErrors: null,
+      errors: null,
     };
   }
 
@@ -80,14 +80,15 @@ class BulkTextareaRoot extends Component<
       readonly,
       pasteProps,
       rowProcessing,
+      errors = [],
+      showErrors,
     } = this.asProps;
-    const { errors, errorIndex, showErrors, lastError, rowsCount, highlightErrorIndex } =
-      this.state;
+    const { errorIndex, lastError, rowsCount, highlightErrorIndex } = this.state;
 
     return {
       value,
       size,
-      state,
+      state: showErrors && errors?.length > 0 ? 'invalid' : 'normal',
       disabled,
       readonly,
       minRows,
@@ -101,7 +102,7 @@ class BulkTextareaRoot extends Component<
       onChangeRowsCount: this.handleChangeRowsCount,
       onChangeRowIndex: () => {
         if (validateOn?.includes('blurRow')) {
-          this.setState({ showErrors: true });
+          this.handlers.showErrors(true);
         }
       },
       onBlur: (value: string, event: Event) => {
@@ -110,13 +111,13 @@ class BulkTextareaRoot extends Component<
           (this.asProps.focusSourceRef.current === 'keyboard' ||
             (event instanceof FocusEvent && event.relatedTarget !== this.clearAllButtonRef.current))
         ) {
-          if (this.state.showErrors === false) {
+          if (showErrors === false) {
             setTimeout(() => {
               this.nextButtonRef.current?.focus();
             }, 50);
           }
 
-          this.setState({ showErrors: true });
+          this.handlers.showErrors(true);
         }
 
         onChange?.(value, event);
@@ -126,18 +127,19 @@ class BulkTextareaRoot extends Component<
       rowValidation,
       errors,
       onErrorsChange: (errors: InputFieldProps['errors']) => {
-        const lastError = errors.length === 0 ? this.state.errors[0] : undefined;
-        const currentLength = this.state.errors.length;
-        this.setState({ errors: errors, lastError });
+        const lastError = errors.length === 0 ? errors[0] : undefined;
+        const currentLength = errors.length;
+        this.handlers.errors(errors);
+        this.setState({ lastError });
         if (currentLength !== errors.length) {
           this.setState({ errorIndex: -1 });
         }
         setTimeout(() => {
-          if (this.state.showErrors) {
+          if (showErrors) {
             this.handlers.state(errors.length === 0 ? 'normal' : 'invalid');
           }
           if (errors.length === 0) {
-            this.setState({ showErrors: false });
+            this.handlers.showErrors(false);
 
             setTimeout(() => {
               this.setState({ lastError: undefined });
@@ -190,8 +192,8 @@ class BulkTextareaRoot extends Component<
   }
 
   getErrorsNavigationProps() {
-    const { size, getI18nText, disabled, readonly } = this.asProps;
-    const { errors, errorIndex, showErrors } = this.state;
+    const { size, getI18nText, disabled, readonly, errors = [], showErrors } = this.asProps;
+    const { errorIndex } = this.state;
     return {
       size,
       getI18nText,
@@ -211,13 +213,16 @@ class BulkTextareaRoot extends Component<
     this.setState({ rowsCount, isEmptyText: isEmpty });
 
     if (isEmpty) {
-      this.setState({ showErrors: false, errors: [] });
+      this.handlers.showErrors(false);
+      this.handlers.errors([]);
       this.handlers.state('normal');
     }
   };
 
   handleClickClearAllButton = (e: Event) => {
-    this.setState({ showErrors: false, errorIndex: -1, errors: [] });
+    this.handlers.showErrors(false);
+    this.handlers.errors([]);
+    this.setState({ errorIndex: -1 });
     this.handlers.value('', e);
     this.handlers.state('normal');
     if (this.asProps.focusSourceRef.current === 'keyboard') {
@@ -227,7 +232,8 @@ class BulkTextareaRoot extends Component<
   };
 
   handleChangeErrorIndex = (amount: number) => () => {
-    const { errors, errorIndex } = this.state;
+    const { errors = [] } = this.asProps;
+    const { errorIndex } = this.state;
     const itemsIndex = errors.length - 1;
     let newIndex = errorIndex + amount;
 
@@ -240,8 +246,12 @@ class BulkTextareaRoot extends Component<
     if (!errors[newIndex]) {
       this.handleChangeErrorIndex(amount < 0 ? amount - 1 : amount + 1)();
     } else {
-      this.setState({ showErrors: false, errorIndex: -1 }, () => {
-        this.setState({ showErrors: true, errorIndex: newIndex, highlightErrorIndex: true });
+      this.handlers.showErrors(false);
+      this.setState({ errorIndex: -1 });
+
+      setTimeout(() => {
+        this.handlers.showErrors(true);
+        this.setState({ errorIndex: newIndex, highlightErrorIndex: true });
       });
     }
   };

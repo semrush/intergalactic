@@ -24,6 +24,12 @@ export type BulkTextareaProps = {
 
   ofRows?: InputFieldProps['ofRows'];
   rowProcessing?: InputFieldProps['rowProcessing'];
+
+  errors?: InputFieldProps['errors'];
+  showErrors?: boolean;
+
+  onErrorsChange?: InputFieldProps['onErrorsChange'];
+  onShowErrorsChange?: InputFieldProps['onShowErrorsChange'];
 };
 
 export type BulkTextareaType = Intergalactic.Component<'div', BoxProps & BulkTextareaProps> & {

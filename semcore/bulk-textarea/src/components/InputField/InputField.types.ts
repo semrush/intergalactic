@@ -15,7 +15,7 @@ type PasteProps = {
 
 export type ErrorItem = {
   rowIndex: number;
-  rowNode: Node;
+  rowNode?: Node;
   errorMessage: string;
 };
 
@@ -156,6 +156,10 @@ export type InputFieldProps = {
    * Internal
    */
   onErrorsChange: (errors: ErrorItem[]) => void;
+  /**
+   * Internal
+   */
+  onShowErrorsChange: (showErrors: boolean) => void;
   /**
    * Internal
    */
