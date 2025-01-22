@@ -421,14 +421,14 @@ test.describe('Custom stepper example', () => {
       await expect(middleStep).toHaveAttribute('aria-selected', 'true');
       await expect(lastStep).toHaveAttribute('aria-selected', 'false');
 
-      await expect(prevButton(page, 'Back to {buttonName}')).toHaveText(/Personal/);
-      await expect(nextButton(page, 'Go to {buttonName}')).toHaveText(/Import source/);
+      await expect(prevButton(page, 'Back to ')).toHaveText(/Personal/);
+      await expect(nextButton(page, 'Go to ')).toHaveText(/Import source/);
     });
 
     await test.step('Verify navigation between pages by pressing Prev/Next steps ', async () => {
-      await nextButton(page, 'Go to {buttonName}').click();
-      await expect(prevButton(page, 'Back to {buttonName}')).toHaveText(/Keywords/);
-      await expect(nextButton(page, 'Go to {buttonName}')).not.toBeVisible();
+      await nextButton(page, 'Go to ').click();
+      await expect(prevButton(page, 'Back to ')).toHaveText(/Keywords/);
+      await expect(nextButton(page, 'Go to ')).not.toBeVisible();
       await expect(firstStep).toHaveAttribute('aria-selected', 'false');
       await expect(middleStep).toHaveAttribute('aria-selected', 'false');
       await expect(lastStep).toHaveAttribute('aria-selected', 'true');
@@ -488,12 +488,12 @@ test.describe('Custom stepper example', () => {
 
     await test.step('Verify last step text not changes navigate to other step', async () => {
       await page.keyboard.press('Tab');
-      await expect(prevButton(page, 'Back to {buttonName}')).toHaveText(/Keywords/);
-      await expect(prevButton(page, 'Back to {buttonName}')).toBeFocused();
+      await expect(prevButton(page, 'Back to ')).toHaveText(/Keywords/);
+      await expect(prevButton(page, 'Back to ')).toBeFocused();
       await page.keyboard.press('Enter');
       await expect(lastStep).toHaveText(/2\.1.*Import source.*From TXT/);
-      await expect(prevButton(page, 'Back to {buttonName}')).toHaveText(/Personal/);
-      await expect(prevButton(page, 'Back to {buttonName}')).toBeFocused();
+      await expect(prevButton(page, 'Back to ')).toHaveText(/Personal/);
+      await expect(prevButton(page, 'Back to ')).toBeFocused();
       await expect(firstStep).toHaveAttribute('aria-selected', 'false');
       await expect(middleStep).toHaveAttribute('aria-selected', 'true');
       await expect(lastStep).toHaveAttribute('aria-selected', 'false');
