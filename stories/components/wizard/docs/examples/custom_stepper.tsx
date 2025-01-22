@@ -1,10 +1,10 @@
 import React from 'react';
-import Wizard from 'intergalactic/wizard';
-import Button from 'intergalactic/button';
-import { Text } from 'intergalactic/typography';
-import { Flex } from 'intergalactic/flex-box';
-import Input from 'intergalactic/input';
-import Radio, { RadioGroup } from 'intergalactic/radio';
+import Wizard from '@semcore/wizard';
+import Button from '@semcore/button';
+import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/flex-box';
+import Input from '@semcore/input';
+import Radio, { RadioGroup } from '@semcore/radio';
 
 const Step1 = React.forwardRef(function (_props, ref: React.Ref<HTMLDivElement>) {
   return (
@@ -28,21 +28,25 @@ const Demo = () => {
   const handleOpen = () => setVisible(true);
   const handleClose = () => setVisible(false);
 
+  const handleStepChange = (newStep: number) => {
+    return () => setStep(newStep); 
+  };
+
   return (
     <>
       <Button onClick={handleOpen}>Open modal</Button>
       <Wizard visible={visible} step={step} w={600} onClose={handleClose}>
         <Wizard.Sidebar title='Site Audit Settings'>
-          <Wizard.Stepper step={1} onActive={setStep}>
+          <Wizard.Stepper step={1} onActive={handleStepChange(1)}>
             Personal
             <Text color='text-secondary-invert' fontWeight={400} tag='div'>
               optional
             </Text>
           </Wizard.Stepper>
-          <Wizard.Stepper step={2} onActive={setStep}>
+          <Wizard.Stepper step={2} onActive={handleStepChange(2)}>
             Keywords
           </Wizard.Stepper>
-          <Wizard.Stepper step={3} onActive={setStep} number={2.1}>
+          <Wizard.Stepper step={3} onActive={handleStepChange(3)} number={2.1}>
             Import source
             <Text color='text-secondary-invert' fontWeight={400} tag='div'>
               {value === '' ? 'Not selected' : value}
@@ -52,7 +56,7 @@ const Demo = () => {
         <Wizard.Content tag={Flex} direction='column' justifyContent='space-between'>
           <Wizard.Step tag={Step1} step={1} />
           <Wizard.Step step={2}>
-            {(props, handlers) => {
+            {(props: any, handlers: any) => {
               return 'Keywords';
             }}
           </Wizard.Step>
@@ -67,17 +71,19 @@ const Demo = () => {
                 <Radio.Text>From TXT</Radio.Text>
               </Radio>
               <Radio mr={2} mb={3}>
-                <Radio.Value value='From SCV' />
-                <Radio.Text>From SCV</Radio.Text>
+                <Radio.Value value='From CSV' />
+                <Radio.Text>From CSV</Radio.Text>
               </Radio>
             </RadioGroup>
           </Wizard.Step>
           <Flex mt={5}>
             {step > 1 && (
-              <Wizard.StepBack onActive={setStep}>{steps[step - 2].title}</Wizard.StepBack>
+              <Wizard.StepBack onActive={handleStepChange(step - 1)}>
+                {steps[step - 2].title}
+              </Wizard.StepBack>
             )}
             {step !== steps.length && (
-              <Wizard.StepNext ml='auto' onActive={setStep}>
+              <Wizard.StepNext ml='auto' onActive={handleStepChange(step + 1)}>
                 {steps[step].title}
               </Wizard.StepNext>
             )}
