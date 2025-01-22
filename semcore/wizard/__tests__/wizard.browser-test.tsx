@@ -532,10 +532,10 @@ test.describe('Steps and buttons states', () => {
       await expect(page).toHaveScreenshot();
     });
 
-     await test.step('Verify disabled state', async () => {
-       await expect(disabledStep).toHaveAttribute('aria-disabled', 'true');
-       // will add more casses after fixing the bug UIK-3191
-     });
+    await test.step('Verify disabled state', async () => {
+      await expect(disabledStep).toHaveAttribute('aria-disabled', 'true');
+      // will add more casses after fixing the bug UIK-3191
+    });
 
     await test.step('Click submenu', async () => {
       await subMenuStep.click();
@@ -543,18 +543,18 @@ test.describe('Steps and buttons states', () => {
     });
 
     await test.step('Focus on the normal menu', async () => {
-        await normalStep.click();
-        await page.keyboard.press('Tab');
-        await page.keyboard.press('Tab');
-        await page.keyboard.press('Tab');
-        await expect(page).toHaveScreenshot();
-      });
+      await normalStep.click();
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await expect(page).toHaveScreenshot();
+    });
 
-      await test.step('Focus on the submenu', async () => {
-        await page.keyboard.press('ArrowUp');
-        await page.keyboard.press('ArrowUp');
-        await expect(page).toHaveScreenshot();
-      });
+    await test.step('Focus on the submenu', async () => {
+      await page.keyboard.press('ArrowUp');
+      await page.keyboard.press('ArrowUp');
+      await expect(page).toHaveScreenshot();
+    });
   });
 
   test('Steps on hover and focus - small state', async ({ page }) => {
@@ -600,17 +600,17 @@ test.describe('Steps and buttons states', () => {
     });
 
     await test.step('Focus on the active normal menu', async () => {
-        await normalStep.click();
-        await page.keyboard.press('Tab');
-        await page.keyboard.press('Tab');
-        await page.keyboard.press('Tab');
-        await expect(page).toHaveScreenshot();
-      });
+      await normalStep.click();
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await expect(page).toHaveScreenshot();
+    });
 
-      await test.step('Focus on the not active submenu', async () => {
-        await page.keyboard.press('ArrowUp');
-        await page.keyboard.press('ArrowUp');
-        await expect(page).toHaveScreenshot();
-      });
+    await test.step('Focus on the not active submenu', async () => {
+      await page.keyboard.press('ArrowUp');
+      await page.keyboard.press('ArrowUp');
+      await expect(page).toHaveScreenshot();
+    });
   });
 });

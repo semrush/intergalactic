@@ -19,7 +19,7 @@ const Demo = () => {
     <>
       <Button onClick={handleOpen}>Open modal</Button>
       <Wizard visible={visible} step={step} w={600} onClose={handleClose}>
-        <Wizard.Sidebar title="Site Audit Settings">
+        <Wizard.Sidebar title='Site Audit Settings'>
           <Wizard.Stepper step={1} onActive={() => setStep(1)} completed>
             {steps[0].title}
           </Wizard.Stepper>
@@ -30,7 +30,7 @@ const Demo = () => {
             {steps[2].title}
           </Wizard.Stepper>
         </Wizard.Sidebar>
-        <Wizard.Content tag={Flex} direction="column" justifyContent="space-between">
+        <Wizard.Content tag={Flex} direction='column' justifyContent='space-between'>
           <Wizard.Step step={1}>
             <Text size={500} tag={'h3'}>
               {steps[0].title}

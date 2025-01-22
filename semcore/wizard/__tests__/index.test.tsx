@@ -9,7 +9,7 @@ describe('Wizard', () => {
   test('Should support sidebar and content', async () => {
     const { getByText } = render(
       <Wizard disablePortal visible step={2}>
-        <Wizard.Sidebar title="Header">
+        <Wizard.Sidebar title='Header'>
           <Wizard.Stepper step={1}>Step 1</Wizard.Stepper>
           <Wizard.Stepper step={2}>Step 2</Wizard.Stepper>
         </Wizard.Sidebar>
@@ -33,9 +33,9 @@ describe('Wizard', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Wizard disablePortal visible step={1}>
-        <Wizard.Sidebar title="Header">
+        <Wizard.Sidebar title='Header'>
           <Wizard.Stepper step={1}>Step 1</Wizard.Stepper>
-          <Wizard.Stepper step={2} data-testid="second-step" onActive={spy}>
+          <Wizard.Stepper step={2} data-testid='second-step' onActive={spy}>
             Step 2
           </Wizard.Stepper>
         </Wizard.Sidebar>
@@ -54,9 +54,9 @@ describe('Wizard', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Wizard disablePortal visible step={1}>
-        <Wizard.Sidebar title="Header">
+        <Wizard.Sidebar title='Header'>
           <Wizard.Stepper step={1}>Step 1</Wizard.Stepper>
-          <Wizard.Stepper step={2} data-testid="second-step" onActive={spy}>
+          <Wizard.Stepper step={2} data-testid='second-step' onActive={spy}>
             Step 2
           </Wizard.Stepper>
         </Wizard.Sidebar>
