@@ -58,16 +58,7 @@ class BulkTextareaRoot extends Component<
     return {
       value: null,
       state: null,
-      showErrors: [
-        null,
-        (show: boolean) => {
-          if (show) {
-            setTimeout(() => {
-              this.nextButtonRef.current?.focus();
-            }, 50);
-          }
-        },
-      ],
+      showErrors: null,
       errors: null,
     };
   }
@@ -121,6 +112,15 @@ class BulkTextareaRoot extends Component<
             (event instanceof FocusEvent && event.relatedTarget !== this.clearAllButtonRef.current))
         ) {
           this.handlers.showErrors(true);
+        }
+
+        if (
+          this.asProps.showErrors === false &&
+          (validateOn?.includes('blur') || validateOn?.includes('blurRow'))
+        ) {
+          setTimeout(() => {
+            this.nextButtonRef.current?.focus();
+          }, 250);
         }
 
         onChange?.(value, event);
