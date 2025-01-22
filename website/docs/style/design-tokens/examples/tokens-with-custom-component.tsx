@@ -1,13 +1,13 @@
 import React from 'react';
-import Button from 'intergalactic/button';
 import Switch from 'intergalactic/switch';
 import { Box, Flex } from 'intergalactic/flex-box';
 import { ThemeProvider } from '@semcore/utils/lib/ThemeProvider';
 
 const styles = `
     .popper {
-      box-shadow: var(--intergalactic-box-shadow-popper, 0px 1px 12px 0px rgba(25, 27, 35, 0.15));
-      padding: var(--intergalactic-form-control-m, 28px) var(--intergalactic-form-control-l, 40px);
+      box-shadow: var(--intergalactic-box-shadow-card);
+      padding: var(--intergalactic-spacing-8x, 32px) var(--intergalactic-spacing-10x, 40px);
+      border-radius: var(---intergalactic-popper-rounded, 6px);
     }
     .kraken {
       position: absolute;
@@ -40,18 +40,15 @@ const CustomComponent = () => {
 
   return (
     <ThemeProvider tokens={violetPrimaryButtonTheme}>
-      <Flex className='wrapper' h={220} alignItems='flex-end'>
+      <Flex className='wrapper' h={180} alignItems='flex-end'>
         <Box className='kraken' style={{ display: visible ? 'block' : 'none' }}>
           <Kraken />
         </Box>
         <Flex className='popper' h={40} alignItems='center'>
-          <Switch size='xl' mr={2}>
+          <Switch size='xl'>
             <Switch.Value onChange={toggleVisible} />
             <Switch.Addon>Release the Kraken!</Switch.Addon>
           </Switch>
-          <Button size='l' theme='muted' use='tertiary' ml={10}>
-            Close
-          </Button>
         </Flex>
       </Flex>
     </ThemeProvider>
