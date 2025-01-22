@@ -40,21 +40,15 @@ const ExternalModalComponent: React.FC<ExternalModalComponentProps> = ({ onClose
   return (
     <Modal visible={visible} onClose={handleClose}>
       <Modal.Title>Do you want to save your changes?</Modal.Title>
-      <Text size={200} mb={4} tag='p'>
-        Your changes will be lost if you don't save them.
-      </Text>
-      <Textarea autoFocus />
       <Select popperMargin={20}>
-        {({ popper, ...other }) => {
-          console.log(other, popper);
+        {({ popper }) => {
           const popperRect = popper.current?.state.rects.popper;
-          const h = popperRect?.height - 8;
-          console.log(h);
-          // popper.current?.update();
+          const height = popperRect?.height - 8;
+          const hMax = height < 180 ? height : 180;
           return (
             <>
               <Select.Trigger />
-              <Select.Menu h={h}>
+              <Select.Menu h={height} hMax={hMax}>
                 {options.map((option) => (
                   <Select.Option key={option.value} value={option.value}>
                     {option.children}
@@ -65,12 +59,6 @@ const ExternalModalComponent: React.FC<ExternalModalComponentProps> = ({ onClose
           );
         }}
       </Select>
-      <Button use='primary' theme='success' size='l' onClick={handleClose}>
-        Save changes
-      </Button>
-      <Button size='l' ml={2} onClick={handleClose}>
-        Don't save
-      </Button>
     </Modal>
   );
 };

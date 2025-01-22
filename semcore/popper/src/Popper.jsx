@@ -207,6 +207,7 @@ class PopperRoot extends Component {
         enabled: true,
         options: {
           margin: this.asProps.popperMargin,
+          popperCtx: this,
         },
       });
     }

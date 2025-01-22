@@ -2,7 +2,7 @@ import { Modifier } from '@popperjs/core';
 
 type Options = {
   margin?: number;
-  minSize?: number;
+  popperCtx?: React.Component;
 };
 
 export const applyMaxSize: Modifier<'applyMaxSize', Options> = {
@@ -11,7 +11,7 @@ export const applyMaxSize: Modifier<'applyMaxSize', Options> = {
   phase: 'beforeWrite',
   requires: ['maxSize'],
   fn({ state, options }) {
-    const { margin = 0 } = options;
+    const { margin = 0, popperCtx } = options;
     const { width, height } = state.modifiersData.maxSize;
 
     const styles = { ...state.styles.popper };
@@ -23,5 +23,7 @@ export const applyMaxSize: Modifier<'applyMaxSize', Options> = {
     }
 
     state.styles.popper = styles;
+
+    popperCtx?.forceUpdate();
   },
 };
