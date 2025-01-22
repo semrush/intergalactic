@@ -76,6 +76,8 @@ const App = PlaygroundGeneration(Preview, {
 
 **InputNumber** is a numeric input field that accepts numeric values only.
 
+### Usage recommendations
+
 **Use this type of input in the following cases:**
 
 - When it's beneficial for the user to increment/decrement the value using stepper buttons.

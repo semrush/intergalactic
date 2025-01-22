@@ -77,7 +77,7 @@ Table: Card paddings
 
 ![](static/card-margins2.png)
 
-### Layout
+### Layout with sections
 
 You can divide content into sections if needed.
 

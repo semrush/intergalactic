@@ -19,7 +19,7 @@ We recommend using red carefully, as it is typically reserved for destructive ac
 
 For chart-related elements, refer to the [tokens list](/style/design-tokens/design-tokens#semantic_tokens) containing tokens with `chart` in their names.
 
-## Tokens for text and additional information
+## Text and grid tokens
 
 Table: Tokens for text and additional information
 
@@ -30,7 +30,7 @@ Table: Tokens for text and additional information
 | `--chart-grid-line`   | Grid lines for the X-axis and accent lines, if necessary |
 | `--chart-grid-x-axis` | Additional guide lines for X-axis                        |
 
-## Colors usage
+## Color usage
 
 There are two approaches for applying colors from our palette:
 

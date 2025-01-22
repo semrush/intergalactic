@@ -65,13 +65,13 @@ Table: Heading from 20px to 16px styles
 | ![](static/h5.png) | `font-size: 20px`, `line-height: 1.2`, `font-weight: semibold` | `--fs-400`, `--lh-400` |
 | ![](static/h6.png) | `font-size: 16px`, `line-height: 1.5`, `font-weight: bold` | `--fs-300`, `--lh-300` |
 
-## Heading with counter
+### Heading with counter
 
 In certain cases, headings can include additional information, such as a counter of results found. These are often used in table headings. In such cases, the additional information is presented using the secondary text (`--text-secondary` token) and `regular` font-weight (`--regular` token).
 
 ![](static/secondary-info.png)
 
-## Headings for mobile devices
+### Headings for mobile devices
 
 To improve readability on different screens, adjust the size of headings based on the [breakpoints](/layout/grid-system/grid-system).
 
@@ -114,13 +114,31 @@ There are three text sizes commonly used in our products:
 
 :::
 
-## Paragraph margins
+### Paragraph margins
 
 Paragraphs have a `margin-bottom`, and each paragraph size has its own specific `margin`. For instance, a paragraph with a 16px font size has a `margin-bottom: 14px`, a paragraph with a 14px font size has a `margin-bottom: 12px`, and a paragraph with a 12px font size has a `margin-bottom: 8px`.
 
 These margins can also be applied when a paragraph is followed by a paragraph with a smaller font size.
 
 ![](static/paragraph_margins.png)
+
+### Headings and paragraph sizes
+
+**Use a 16px paragraph with the following headings:**
+
+![](static/h1-p.png)
+
+![](static/h2-p.png)
+
+![](static/h3-p.png)
+
+**Use a 14px paragraph with the following headings:**
+
+![](static/h4-p.png)
+
+![](static/h5-p.png)
+
+![](static/h6-p.png)
 
 ## Metric
 
@@ -166,7 +184,7 @@ Table: Font styles for lists
 | 14px | `--fs-200`, `--lh-200` | `margin-bottom: 8px`, `padding-right: 8px` | ![](static/ol-14.png) | ![](static/ul-14.png) | ![](static/checklist-14.png) |
 | 12px | `--fs-100`, `--lh-100` | `margin-bottom: 8px`, `padding-right: 8px` | ![](static/ol-12.png) | ![](static/ul-12.png) | ![](static/checklist-12.png) |
 
-## Nested list
+### Nested list
 
 Each subsequent level of the nested list is indented to the left. The `margin` between list levels for all font sizes are 8px.
 
@@ -189,22 +207,3 @@ We have specific styles for highlighting quotes in paragraphs.
 ::: warning
 The [ButtonLink](../../components/button/button.md#button-with-link-styles) component has been implemented to replace the `Hint` component. Using `Hint` as a button or pseudo-link is no longer recommended.
 :::
-
-## Which heading with which paragraph size shall be used
-
-**Use a 16px paragraph with the following headings:**
-
-![](static/h1-p.png)
-
-![](static/h2-p.png)
-
-![](static/h3-p.png)
-
-**Use a 14px paragraph with the following headings:**
-
-![](static/h4-p.png)
-
-![](static/h5-p.png)
-
-![](static/h6-p.png)
-

@@ -12,7 +12,7 @@ It's a component for building a 12-column grid.
 In the product interface we use a 12-column grid with a fixed 24px gutter between columns. The columns stretch.
 :::
 
-## Example use
+## Basic usage
 
 The `Row` component accepts all the properties of the `Flex` component, and the `Col` component accepts all the properties of the `Box` component.
 
@@ -24,7 +24,7 @@ The `Row` component accepts all the properties of the `Flex` component, and the 
 
 :::
 
-## Change in general offset
+## Column offset
 
 Arranging offsets for each column to the left.
 
@@ -36,7 +36,7 @@ Arranging offsets for each column to the left.
 
 :::
 
-## Change in the general gutter between the columns
+## Row gutter
 
 You can change gutters between the columns, which gives flexibility in use.
 
@@ -48,7 +48,7 @@ You can change gutters between the columns, which gives flexibility in use.
 
 :::
 
-## Automatic column size detection
+## Automatic column size
 
 ::: sandbox
 
@@ -58,7 +58,7 @@ You can change gutters between the columns, which gives flexibility in use.
 
 :::
 
-## Responsive
+## Responsive layout
 
 The grid has functionality for responsive layouts. You can change width and offsets of the columns depending on the screen size.
 
@@ -74,7 +74,7 @@ The grid works as desktop first, as our core products are designed to work prima
 
 :::
 
-## Responsive alternative API
+## Shorthand responsive props
 
 We have added an alternative API for responsive grids. It's more laconic.
 

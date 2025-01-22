@@ -165,11 +165,13 @@ Table: Tooltip themes
 | `invert` | ![](static/invert-theme.png)   | `background-color: var(--tooltip-invert)`, `border: 1px solid var(--border-tooltip-invert)`, `box-shadow: var(--box-shadow-popper)` |
 | `warning` | ![](static/alert-theme.png)     | `background-color: var(--tooltip-warning)`, `border: 1px solid var(--border-danger-active)`, `box-shadow: var(--box-shadow-popper)` |
 
-## Maximum width and offset
+## Appearance
+
+### Maximum width and offset
 
 By default, the Tooltip has a maximum width of 228px, but you can set a different width if needed.
 
-### Offset and arrow placement
+#### Offset and arrow placement
 
 The distance between the trigger and the tooltip is 4px.
 
@@ -179,13 +181,13 @@ The placement of the arrow depends on the `placement` property, refer to the liv
 
 ![](static/tooltip-arrow-paddings.png)
 
-## Paddings and margins
+### Paddings and margins
 
 The content area of the tooltip has a default padding of 12px.
 
 ![](static/tooltip-content-paddings.png)
 
-### Content margins and paddings
+#### Content margins and paddings
 
 ![](static/tooltip-button.png)
 
@@ -197,7 +199,7 @@ The image inside the tooltip has a size of 130px * 130px.
 
 ![](static/tooltip-pic-paddings.png)
 
-### Data margins
+#### Data margins
 
 To improve readability, it's recommended to use specific margins between labels and values inside the tooltip. Detailed recommendations for tooltip margins can be found in [Data visualization](/data-display/d3-chart/d3-chart#tooltip) and [Summary](/patterns/summary/summary#difference_value).
 

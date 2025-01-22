@@ -23,7 +23,9 @@ It's always positioned below the main Semrush header and searchbar.
 5. `Info`: It's a row with global filters and/or additional information.
 6. `Info.Item`: An item with the information on the project or global filter.
 
-## Margins and paddings
+## Appearance
+
+### Marings and paddings
 
 ![product-head paddings](static/padding-left-right.png)
 
@@ -37,9 +39,9 @@ If there is a [Notice](/components/notice/notice) in the header, it has an 8px m
 
 ![product-head element sizes](static/elements-margins.png)
 
-## Styles
+### Styles
 
-### Breadcrumbs and additional links
+#### Breadcrumbs and additional links
 
 ::: tip
 Use the [ButtonLink](../../components/button/button#button-with-link-styles) component if the element acts as a button, that's opens a dialog or changes the page.
@@ -49,7 +51,7 @@ Use the [ButtonLink](../../components/button/button#button-with-link-styles) com
 - [Links](/components/link/link) have a size of 14px.
 - The margin between the links is 20px.
 
-### Heading and main controls
+#### Heading and main controls
 
 - The heading, buttons, and labels are center-aligned with respect to each other.
 - For the title, use text with a size of 20px (use `--fs-400`, `--lh-400` tokens).
@@ -58,13 +60,13 @@ Use the [ButtonLink](../../components/button/button#button-with-link-styles) com
 - The icons are aligned with the title's baseline.
 - [Button](/components/button/button) has a size of M.
 
-### Filters and/or additional information
+#### Filters and/or additional information
 
 - All elements are center-aligned.
 - For text, use a size of 14px (use `--fs-200`, `--lh-200` tokens) and `--text-primary` token for the color.
 - Icons have a size of M.
 
-## ProductHead variants
+## Component variants
 
 ### Maximum set of elements inside
 

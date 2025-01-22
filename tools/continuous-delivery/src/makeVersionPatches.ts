@@ -50,10 +50,10 @@ export const makeVersionPatches = (packages: Package[]) => {
 
     if (!lastChangelog) continue;
 
-    if (packageFile.lastPublishedVersion === null) {
-      throw new Error(`${packageFile.name} not found in npm registry`);
-    }
-    const newVersion = maxSemver(packageFile.currentVersion, packageFile.lastPublishedVersion);
+    const newVersion =
+      packageFile.lastPublishedVersion === null
+        ? packageFile.currentVersion
+        : maxSemver(packageFile.currentVersion, packageFile.lastPublishedVersion);
     const hasNewerVersion = semver.compare(newVersion, lastChangelog.version) === -1;
 
     if (!hasNewerVersion) continue;

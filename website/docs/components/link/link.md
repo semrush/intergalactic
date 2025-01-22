@@ -117,7 +117,7 @@ const App = PlaygroundGeneration(Preview);
 
 ![](static/custom-link.png)
 
-## Sizes and margins
+### Sizes and margins
 
 You can add addons before and after the link text. Addons always have a 4px margin from the link text.
 
@@ -131,17 +131,32 @@ Table: Link text and addon sizes and margins
 | 12-16px (`--fs-100`-`--fs-300` tokens)  | ![](static/link-m.png) | M         |
 | 20px and bigger (from `--fs-400` token) | ![](static/link-l.png) | L         |
 
+### Links on dark and colored background
+
+Default links can be used on a colored background within a [Notice](/components/notice/notice) component.
+
+![](static/default-yes.png)
+
+## Grouped links
+
+For links placed in one line, maintain a margin between them that's a multiple of 4px:
+
+- 20px for sufficient space
+- 12px for limited space
+
+![](static/link-margin.png)
+
 ## Interaction
 
 Table: Default link states
 
-| State         | Appearance    | Description     | Cursor    |
-| ------------- | ------------- | --------------- | --------- |
-| Normal        | ![](static/default.png)                     | The link uses the `--text-link` token for color without underline.  | `pointer` |
-| Active/hover  | ![](static/hover-active.png)                 | The link changes its color to `--text-link-hover-active` and displays a solid underline on hover. If the link includes an icon, the icon's color changes alongside the text as they share the same active zone. | `pointer` |
-| Disabled      | ![](static/disabled.png)                  | The component's transparency decreases from 100% to 30% to indicate the disabled state. Use this state sparingly and provide a tooltip with a message for the disabled link.   | `default` |
-| Visited       | ![](static/default-visited.png)            | The link uses the `--text-link-visited` token for color. This state is optional. | `pointer` |
-| Visited (hover) | ![](static/hover-active-visited.png) | The link uses the `--text-link-visited` token for color and displays a solid underline on hover. This state is optional. | `pointer` |
+| State           | Appearance                           | Description                                                                                                                                                                                                     | Cursor    |
+| --------------- | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
+| Normal          | ![](static/default.png)              | The link uses the `--text-link` token for color without underline.                                                                                                                                              | `pointer` |
+| Active/hover    | ![](static/hover-active.png)         | The link changes its color to `--text-link-hover-active` and displays a solid underline on hover. If the link includes an icon, the icon's color changes alongside the text as they share the same active zone. | `pointer` |
+| Disabled        | ![](static/disabled.png)             | The component's transparency decreases from 100% to 30% to indicate the disabled state. Use this state sparingly and provide a tooltip with a message for the disabled link.                                    | `default` |
+| Visited         | ![](static/default-visited.png)      | The link uses the `--text-link-visited` token for color. This state is optional.                                                                                                                                | `pointer` |
+| Visited (hover) | ![](static/hover-active-visited.png) | The link uses the `--text-link-visited` token for color and displays a solid underline on hover. This state is optional.                                                                                        | `pointer` |
 
 <!--
 Hided this section because it's for the dark theme.
@@ -156,13 +171,7 @@ Hided this section because it's for the dark theme.
 | visited       | ![visited](static/default-invert-visited.png)            | Link has `--purple-500` color. This state is an optional.                                                                                                                                     | `pointer` |
 | visited hover | ![visited-hover](static/hover-active-invert-visited.png) | Link has `--purple-500` color with a solid underline. This state is optional.                                                                                                                 | `pointer` | -->
 
-## Links on dark and colored background
-
-Default links can be used on a colored background within a [Notice](/components/notice/notice) component.
-
-![](static/default-yes.png)
-
-## Link text and target zone
+### Link text and target zone
 
 ::: tip
 _Link sizes should be generous. Large link sizes make it easier for users with low coordination or on mobile devices to activate links. Link size consideration is most important for links that aren't contained within blocks or paragraphs of text, such as call to action links. Links should be at least 44px wide and 22px tall._
@@ -200,15 +209,6 @@ If a link spans two lines, ensure that the cursor remains consistent throughout 
 
 ![](static/name-example-7.png)
 
-## Margin between links
-
-For links placed in one line, maintain a margin between them that's a multiple of 4px:
-
-- 20px for sufficient space
-- 12px for limited space
-
-![](static/link-margin.png)
-
 ## Default link or ButtonLink?
 
 ::: tip
@@ -220,19 +220,19 @@ For more information refer to [ButtonLink](../button/button.md#button-with-link-
 
 Table: How to choose what type of link you should use
 
-| Action on the page                     | Default link       | ButtonLink |
-| -------------------------------------- | ------------------ | ---------- |
-| Internal transition                    | ✅                 | ❌         |
-| External transition                    | ✅                 | ❌         |
-| Clickable email                        | ✅                 | ❌         |
-| Reloading the page                     | ❌                 | ✅         |
-| Updating data in a small block/widget  | ❌                 | ✅         |
-| Updating data in a table row           | ❌                 | ✅         |
-| Opening a modal window                 | ❌                 | ✅         |
-| Opening a dropdown                     | ❌                 | ✅         |
-| Opening an accordion                   | ❌                 | ✅         |
-| Opening the full text on the same page | ❌                 | ✅         |
-| `DescriptionTooltip` on click          | ❌                 | ✅         |
+| Action on the page                     | Default link | ButtonLink |
+| -------------------------------------- | ------------ | ---------- |
+| Internal transition                    | ✅           | ❌         |
+| External transition                    | ✅           | ❌         |
+| Clickable email                        | ✅           | ❌         |
+| Reloading the page                     | ❌           | ✅         |
+| Updating data in a small block/widget  | ❌           | ✅         |
+| Updating data in a table row           | ❌           | ✅         |
+| Opening a modal window                 | ❌           | ✅         |
+| Opening a dropdown                     | ❌           | ✅         |
+| Opening an accordion                   | ❌           | ✅         |
+| Opening the full text on the same page | ❌           | ✅         |
+| `DescriptionTooltip` on click          | ❌           | ✅         |
 
 ## Links in tables
 
@@ -249,11 +249,11 @@ External links always open in a new tab.
 
 Table: Cases for appearance of external links
 
-| Case description     | Transition inside product | Transition to external resource | Appearance example     |
-| ---- | ------------------------------------------------ | ---------------------- | --------------------------------------------- |
-| Link leads to a page within the product. In this case, you don't need to add the `LinkExternal` icon to the link. Add URL only to the link text.      | ✅         | ❌                                            | ![](static/link-example-1.png) |
-| If the link leads to an external website or product, then only the `LinkExternal` icon next to the link should have a URL. The icon is always gray.          | ❌                                               | ✅                                            | ![](static/link-example-2.png)                                                                           |
-| If the link leads to both a page within the product and an external resource, the text and `LinkExternal` icon must have a different URL and color. The text always leads to a page within the product, and `LinkExternal` icon always leads to an external resource. | ✅                                               | ✅                                            | ![](static/link-example-3.png)                                                                           |
+| Case description                                                                                                                                                                                                                                                      | Transition inside product | Transition to external resource | Appearance example             |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- | ------------------------------- | ------------------------------ |
+| Link leads to a page within the product. In this case, you don't need to add the `LinkExternal` icon to the link. Add URL only to the link text.                                                                                                                      | ✅                        | ❌                              | ![](static/link-example-1.png) |
+| If the link leads to an external website or product, then only the `LinkExternal` icon next to the link should have a URL. The icon is always gray.                                                                                                                   | ❌                        | ✅                              | ![](static/link-example-2.png) |
+| If the link leads to both a page within the product and an external resource, the text and `LinkExternal` icon must have a different URL and color. The text always leads to a page within the product, and `LinkExternal` icon always leads to an external resource. | ✅                        | ✅                              | ![](static/link-example-3.png) |
 
 ### Styles
 
@@ -267,4 +267,3 @@ Table: Cases for appearance of external links
 Avoid using the link component for text that doesn't lead to another page or perform an action to prevent misleading users.
 
 ![](static/yes-no-link.png)
-

@@ -11,7 +11,7 @@ export const e2eStandToHtml = async (standFilePath: string, locale: string) => {
     entryPoints: ['@test-entrypoint'],
     plugins: [
       {
-        name: 'test-entrypint',
+        name: 'test-entrypoint',
         setup(build) {
           build.onResolve({ filter: /^@test-entrypoint$/ }, ({ path }) => ({
             path,
