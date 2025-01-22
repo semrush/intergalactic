@@ -656,10 +656,6 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       }
     } else if (event.key === 'z' && (event.ctrlKey || event.metaKey)) {
       event.preventDefault();
-    } else if (event.key === 'c' && (event.ctrlKey || event.metaKey)) {
-      event.preventDefault();
-      const data = this.getRowsValue().join(this.delimiter);
-      navigator.clipboard.writeText(data);
     }
   }
 
