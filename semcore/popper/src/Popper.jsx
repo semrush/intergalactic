@@ -95,6 +95,7 @@ class PopperRoot extends Component {
     excludeRefs: [],
     focusLoop: true,
     cursorAnchoring: false,
+    popperMargin: null,
   };
 
   static enhance = [
@@ -196,6 +197,16 @@ class PopperRoot extends Component {
         options: {
           cursorAnchoring: this.asProps.cursorAnchoring,
           mouseEnterCursorPositionRef: this.mouseEnterCursorPositionRef,
+        },
+      });
+    }
+
+    if (this.asProps.popperMargin) {
+      modifiersOptions.push({
+        name: 'applyMaxSize',
+        enabled: true,
+        options: {
+          margin: this.asProps.popperMargin,
         },
       });
     }
