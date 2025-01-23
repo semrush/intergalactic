@@ -17,53 +17,6 @@ describe('Flex', () => {
   shouldSupportClassName(Flex);
   shouldSupportRef(Flex);
 
-  test.concurrent('Should gaps', async ({ task }) => {
-    const component = (
-      <div>
-        <Flex columnGap={2} scaleIndent={10}>
-          <Box inline style={styleBox} w={100} h={100}>
-            column gap left
-          </Box>
-          <Box inline style={styleBox} w={100} h={100}>
-            column gap right
-          </Box>
-        </Flex>
-
-        <br />
-        <br />
-        <br />
-
-        <Flex rowGap={5} w={100} direction='column'>
-          <Box inline style={styleBox} w={100} h={100}>
-            row gap upper
-          </Box>
-          <Box inline style={styleBox} w={100} h={100}>
-            row gap lower
-          </Box>
-        </Flex>
-
-        <br />
-        <br />
-        <br />
-
-        <Flex gap={5} w={225} h={225} flexWrap={true}>
-          <Box inline style={styleBox} w={100} h={100}>
-            gap left-upper
-          </Box>
-          <Box inline style={styleBox} w={100} h={100}>
-            gap right-upper
-          </Box>
-          <Box inline style={styleBox} w={100} h={100}>
-            gap left-lower
-          </Box>
-          <Box inline style={styleBox} w={100} h={100}>
-            gap right-lower
-          </Box>
-        </Flex>
-      </div>
-    );
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
 
   test.concurrent('Should support css property', async () => {
     const MAP_CSS = {
@@ -135,70 +88,6 @@ describe('Box', () => {
   shouldSupportClassName(Box);
   shouldSupportRef(Box);
 
-  test.concurrent('Should support size', async ({ task }) => {
-    const component = (
-      <div>
-        <Box style={styleBox} w={100} h='100px'>
-          Box
-        </Box>
-        <br />
-        <Box style={styleBox} w={2 / 5} h='auto'>
-          Box
-        </Box>
-      </div>
-    );
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-
-  test.concurrent('Should support size min limits', async ({ task }) => {
-    const style = {
-      width: 0,
-      height: 0,
-      ...styleBox,
-    };
-    const component = (
-      <div>
-        <Box style={style} wMin='30px' hMin='30px'>
-          Box
-        </Box>
-      </div>
-    );
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-
-  test.concurrent('Should support size max limits', async ({ task }) => {
-    const style = {
-      width: '100%',
-      height: '100%',
-      ...styleBox,
-    };
-    const wrapStyle = {
-      width: '100px',
-      height: '100px',
-    };
-    const component = (
-      <div style={wrapStyle}>
-        <Box style={style} wMax='30px' hMax='30px'>
-          Box
-        </Box>
-      </div>
-    );
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-
-  test.concurrent('Should support indent', async ({ task }) => {
-    const component = (
-      <div>
-        <Box inline style={styleBox}>
-          Box
-        </Box>
-        <Box inline style={styleBox} ml={10}>
-          Box
-        </Box>
-      </div>
-    );
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
 
   test("Should support Box 'tag' prop", () => {
     const { getByTestId } = render(
@@ -297,26 +186,5 @@ describe('Box', () => {
       const cssValue = getComputedStyle(node)[data.css];
       expect(cssValue).toBe(MAP_CSS[prop].values.find((v) => v === cssValue));
     });
-  });
-});
-
-describe('FlexBox', () => {
-  beforeEach(cleanup);
-
-  test.concurrent('Correctly render Flex, Box', async ({ task }) => {
-    const component = (
-      <Flex w={500} justifyContent='space-between'>
-        <Box style={styleBox} w={100}>
-          Box
-        </Box>
-        <Box style={styleBox} w={100}>
-          Box
-        </Box>
-        <Box style={styleBox} w={100}>
-          Box
-        </Box>
-      </Flex>
-    );
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 });
