@@ -17,7 +17,6 @@ describe('Flex', () => {
   shouldSupportClassName(Flex);
   shouldSupportRef(Flex);
 
-
   test.concurrent('Should support css property', async () => {
     const MAP_CSS = {
       reverse: {
@@ -87,7 +86,6 @@ describe('Box', () => {
 
   shouldSupportClassName(Box);
   shouldSupportRef(Box);
-
 
   test("Should support Box 'tag' prop", () => {
     const { getByTestId } = render(
