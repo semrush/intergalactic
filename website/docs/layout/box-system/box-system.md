@@ -17,7 +17,7 @@ Example below shows how to implement equal margins between form components.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/box.tsx';
+  export Demo from 'stories/components/flex-box/docs/examples/box.tsx';
 </script>
 
 :::
@@ -27,7 +27,7 @@ Example below shows how a component creates indents using dynamically generated 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/box.tsx';
+  export Demo from 'stories/components/flex-box/docs/examples/box.tsx';
 </script>
 
 :::
@@ -41,7 +41,7 @@ Example below shows how Flex component takes all properties of a Box component.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/flex.tsx';
+  export Demo from 'stories/components/flex-box/docs/examples/flex.tsx';
 </script>
 
 :::

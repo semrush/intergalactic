@@ -1,5 +1,5 @@
 import React from 'react';
-import { createBreakpoints } from 'intergalactic/breakpoints';
+import { createBreakpoints } from '@semcore/breakpoints';
 
 const meadiaQueries = [
   '(max-width: 300px)',
@@ -35,7 +35,7 @@ const Breakpoints = createBreakpoints(meadiaQueries);
 const Example = () => {
   const index = React.useContext(Breakpoints.Context);
 
-  return <div>Media matches "{meadiaQueries[index] || 'ZOOM WINDOW'}"</div>;
+  return <div>Media matches '{meadiaQueries[index] || 'ZOOM WINDOW'}'</div>;
 };
 
 const Demo = () => {
