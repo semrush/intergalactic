@@ -1,22 +1,22 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import TestExample from './examples/flex-gaps-test';
-import TestExample2 from './examples/flex-box-width-height-test';
-import TestExample3 from './examples/box-margins-and-paddings';
+import FlexGapsExample from './examples/flex-gaps-test';
+import BoxWigthHeightExamples from './examples/flex-box-width-height-test';
+import BoxMarginsPaddingsExample from './examples/box-margins-and-paddings';
 
 const meta: Meta = {
   title: 'Components/FlexBox/Tests',
 };
 
-export const Test: StoryObj = {
-  render: TestExample,
+export const FlexGaps: StoryObj = {
+  render: FlexGapsExample,
 };
 
-export const Test2: StoryObj = {
-    render: TestExample2,
+export const BoxWigthHeight: StoryObj = {
+    render: BoxWigthHeightExamples,
   };
-  export const Test3: StoryObj = {
-    render: TestExample3,
+  export const BoxMarginsPaddings: StoryObj = {
+    render: BoxMarginsPaddingsExample,
   };
 
 export default meta;
