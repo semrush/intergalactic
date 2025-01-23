@@ -95,7 +95,6 @@ class PopperRoot extends Component {
     excludeRefs: [],
     focusLoop: true,
     cursorAnchoring: false,
-    // popperPadding: undefined,
   };
 
   static enhance = [
@@ -197,26 +196,6 @@ class PopperRoot extends Component {
         options: {
           cursorAnchoring: this.asProps.cursorAnchoring,
           mouseEnterCursorPositionRef: this.mouseEnterCursorPositionRef,
-        },
-      });
-    }
-
-    const { p, pt, pr, pb, pl, px, py, scaleIndent } = this.asProps;
-
-    if (p || pt || pr || pb || pl) {
-      modifiersOptions.push({
-        name: 'applyPaddings',
-        enabled: true,
-        options: {
-          p,
-          pt,
-          pr,
-          pb,
-          pl,
-          px,
-          py,
-          scaleIndent,
-          popperCtx: this,
         },
       });
     }
