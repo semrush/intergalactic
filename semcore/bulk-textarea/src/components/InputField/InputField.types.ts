@@ -164,4 +164,9 @@ export type InputFieldProps = {
    * Internal
    */
   onErrorIndexChange: (errorIndex: number) => void;
+
+  /**
+   * Internal
+   */
+  'aria-describedby'?: string;
 };

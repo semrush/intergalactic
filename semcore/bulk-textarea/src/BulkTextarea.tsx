@@ -11,6 +11,7 @@ import { ErrorsNavigation } from './components/ErrorsNavigation';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import focusSourceEnhance from '@semcore/utils/lib/enhances/focusSourceEnhance';
+import uniqueIdEnhance from '@semcore/utils/lib/uniqueID';
 
 type State = {
   rowsCount: number;
@@ -40,12 +41,17 @@ class BulkTextareaRoot extends Component<
     defaultShowErrors: false,
   };
 
-  static enhance = [i18nEnhance(localizedMessages), focusSourceEnhance()] as const;
+  static enhance = [
+    i18nEnhance(localizedMessages),
+    focusSourceEnhance(),
+    uniqueIdEnhance(),
+  ] as const;
 
   inputFieldRef = React.createRef<HTMLDivElement>();
   clearAllButtonRef = React.createRef<HTMLButtonElement>();
   nextButtonRef = React.createRef<HTMLButtonElement>();
   prevButtonRef = React.createRef<HTMLButtonElement>();
+  counterRef = React.createRef<HTMLDivElement>();
 
   state: State = {
     rowsCount: 0,
@@ -63,11 +69,14 @@ class BulkTextareaRoot extends Component<
     };
   }
 
+  get counterId() {
+    return `${this.asProps.uid}_counter`;
+  }
+
   getInputFieldProps() {
     const {
       value,
       size,
-      state,
       minRows,
       maxRows,
       rowValidation,
@@ -157,6 +166,7 @@ class BulkTextareaRoot extends Component<
       },
       rowsDelimiters,
       ref: this.inputFieldRef,
+      ['aria-describedby']: this.counterId,
     };
   }
 
@@ -173,6 +183,8 @@ class BulkTextareaRoot extends Component<
     }
 
     return {
+      id: this.counterId,
+      ref: this.counterRef,
       getI18nText,
       theme: counterTheme,
       rowsCount: isEmptyText ? 0 : rowsCount,

@@ -104,6 +104,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       readonly,
       highlightErrorIndex,
       rowProcessing,
+      ['aria-describedby']: ariaDescribedby = '',
     } = this.props;
 
     if (prevProps.value !== value && value !== this.getRowsValue().join(this.delimiter)) {
@@ -112,6 +113,10 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
 
     if (prevProps.showErrors !== showErrors || prevProps.errors.length !== errors.length) {
       this.toggleAriaInvalid(showErrors, errors.length);
+
+      if (showErrors === false) {
+        this.textarea.setAttribute('aria-describedby', ariaDescribedby);
+      }
     }
 
     if (prevProps.errorIndex !== errorIndex && highlightErrorIndex) {
