@@ -38,16 +38,16 @@ const App = PlaygroundGeneration(
       label: 'Disabled',
     });
 
-    const children = text({
-      key: 'children',
-      defaultValue: 'Value 2',
-      label: 'Children',
+    const label = text({
+      key: 'label',
+      defaultValue: 'Value',
+      label: 'Label',
     });
 
     return (
-      <RadioGroup size={size} state={state} disabled={disabled}>
-        <Radio mb={3} value={'1'} label={'Value 1'} />
-        <Radio mb={3} value={'2'} label={children} />
+      <RadioGroup size={size} state={state} disabled={disabled} aria-label='RadioGroup example'>
+        <Radio mb={3} value={'1'} label={`${label} 1`} />
+        <Radio mb={3} value={'2'} label={`${label} 2`} />
       </RadioGroup>
     );
   },

@@ -25,7 +25,6 @@ const App = PlaygroundGeneration((preview) => {
     direction,
     alignItems,
     showTotalInTooltip,
-    justifyContent,
     showXAxis,
     showYAxis,
     showTooltip,
@@ -45,7 +44,6 @@ const App = PlaygroundGeneration((preview) => {
     showXAxis,
     showYAxis,
     alignItems,
-    justifyContent,
     patterns,
   };
 

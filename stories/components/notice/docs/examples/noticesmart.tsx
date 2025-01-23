@@ -9,7 +9,6 @@ import Button from '@semcore/button';
 const Demo = () => {
   const [firstHidden, setFirstHidden] = React.useState(false);
   const [secondHidden, setSecondHidden] = React.useState(false);
-  const [thirdHidden, setThirdHidden] = React.useState(false);
 
   return (
     <Flex direction='column' gap={3}>
@@ -23,13 +22,7 @@ const Demo = () => {
       >
         Hi there! There a cool new tool was launched. Take a look!
       </NoticeSmart>
-      <NoticeSmart
-        theme='muted'
-        label={<QuestionAltM />}
-        closable
-        onClose={() => setSecondHidden(true)}
-        hidden={secondHidden}
-      >
+      <NoticeSmart theme='muted' label={<QuestionAltM />} hidden={secondHidden}>
         It's just a regular message or hint.
       </NoticeSmart>
       <NoticeSmart
@@ -38,8 +31,8 @@ const Demo = () => {
         label={<ThumbUpM />}
         title="We've released a cool new feature!"
         closable
-        onClose={() => setThirdHidden(true)}
-        hidden={thirdHidden}
+        onClose={() => setSecondHidden(true)}
+        hidden={secondHidden}
         actions={
           <Button use='primary' theme='success'>
             Learn more

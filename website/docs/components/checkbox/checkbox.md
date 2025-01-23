@@ -50,10 +50,10 @@ const App = PlaygroundGeneration(
       label: 'Disabled',
     });
 
-    const children = text({
-      key: 'children',
+    const label = text({
+      key: 'label',
       defaultValue: 'Label text',
-      label: 'Children',
+      label: 'Label',
     });
 
     return (
@@ -64,7 +64,7 @@ const App = PlaygroundGeneration(
         checked={checked}
         onChange={(v) => onChange('checked', v)}
         indeterminate={indeterminate}
-        label={children}
+        label={label}
       />
     );
   },

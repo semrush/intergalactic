@@ -10,6 +10,7 @@ tabs: Design('switch'), A11y('switch-a11y'), API('switch-api'), Example('switch-
 import React from 'react';
 import Switch from '@semcore/ui/switch';
 import CheckM from '@semcore/ui/icon/Check/m';
+import CloseM from '@semcore/ui/icon/Close/m';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 const App = PlaygroundGeneration(
@@ -38,16 +39,10 @@ const App = PlaygroundGeneration(
 
     const icon = bool({ key: 'children', defaultValue: false, label: 'Icon' });
 
-    const before = text({
-      key: 'before',
-      label: 'AddonLeft',
-      defaultValue: '',
-    });
-
-    const after = text({
-      key: 'after',
-      label: 'AddonRight',
-      defaultValue: 'On',
+    const textValue = text({
+      key: 'textValue',
+      label: 'Text',
+      defaultValue: 'Notifications',
     });
 
     const disabled = bool({
@@ -58,15 +53,14 @@ const App = PlaygroundGeneration(
 
     return (
       <Switch theme={theme} size={size}>
-        {before && <Switch.Addon>{before}</Switch.Addon>}
         <Switch.Value
           disabled={disabled}
           checked={checked}
           onChange={(value) => onChange('checked', value)}
         >
-          {icon && <CheckM />}
+          {icon && (checked ? <CheckM /> : <CloseM />)}
         </Switch.Value>
-        {after && <Switch.Addon>{after}</Switch.Addon>}
+        {textValue && <Switch.Addon>{textValue}</Switch.Addon>}
       </Switch>
     );
   },

@@ -1,5 +1,5 @@
 import React from 'react';
-import Tag, { TagContainer } from '@semcore/tag';
+import { TagContainer } from '@semcore/tag';
 import { Box } from '@semcore/flex-box';
 
 const Demo = () => {

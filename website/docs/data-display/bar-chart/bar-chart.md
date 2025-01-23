@@ -39,7 +39,6 @@ const App = PlaygroundGeneration((preview) => {
   const {
     direction,
     alignItems,
-    justifyContent,
     showTotalInTooltip,
     showXAxis,
     showYAxis,
@@ -52,7 +51,7 @@ const App = PlaygroundGeneration((preview) => {
   const withTrend = bool({
     key: 'withTrend',
     defaultValue: false,
-    label: 'With trend',
+    label: 'Trend',
   });
 
   const chartProps: BarChartProps = {
@@ -66,7 +65,6 @@ const App = PlaygroundGeneration((preview) => {
     showXAxis,
     showYAxis,
     alignItems,
-    justifyContent,
     trend: withTrend ? trendData : undefined,
     patterns,
   };

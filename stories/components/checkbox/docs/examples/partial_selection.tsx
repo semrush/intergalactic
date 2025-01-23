@@ -22,7 +22,7 @@ const Demo = () => {
       <Flex>
         <Checkbox
           mb={3}
-          label='Options group'
+          label='Group of options'
           onChange={handleGroupChange}
           indeterminate={checked.includes(false) && checked.includes(true)}
           checked={checked.includes(true)}

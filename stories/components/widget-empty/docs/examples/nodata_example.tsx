@@ -5,6 +5,7 @@ import { NoData } from '@semcore/widget-empty';
 import Card from '@semcore/card';
 import Button from '@semcore/button';
 import { Box } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
 
 const options = [
   'en',
@@ -31,7 +32,10 @@ const Demo = () => {
 
   return (
     <div>
-      Select language: <Select options={options} value={lang} onChange={setLang} />
+      <Text size={200} tag='label' mr={2} htmlFor='select-language'>
+        Language
+      </Text>
+      <Select id='select-language' options={options} value={lang} onChange={setLang} />
       <I18nProvider value={lang}>
         <Card mt={4}>
           <Card.Header>

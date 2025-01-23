@@ -1,20 +1,20 @@
 import React from 'react';
-import { Box } from 'intergalactic/flex-box';
-import Button from 'intergalactic/button';
+import { Box } from '@semcore/flex-box';
+import Button from '@semcore/button';
 
 const Demo = () => (
   <div>
     <Box tag={Button} mr={2}>
-      Button
+      Button 1
     </Box>
     <Box tag={Button} mr={2}>
-      Button
+      Button 2
     </Box>
     <Box tag={Button} mr={2}>
-      Button
+      Button 3
     </Box>
     <Box tag={Button} mr={2}>
-      Button
+      Button 4
     </Box>
   </div>
 );

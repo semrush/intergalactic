@@ -92,14 +92,6 @@ Inside the function, the first argument provides the component props and the `ge
 
 **For example**, `getPopperProps()` will return style and ref, if we do `<input {...getPopperProps()} ref={myRef}/>`, this will not work since we will overwrite `ref`. And if we pass `ref` inside the function, `<input {... getPopperProps ({ref: myRef})} />`, then we call two functions one after another, and everything will function.
 
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/render-functions.tsx';
-</script>
-
-:::
-
 ::: tip
 The second argument of the render-function will provide `handlers`, functions for changing the internal state of the component.
 :::
@@ -119,7 +111,7 @@ The popper is rendered in the end of the `body` and absolutely positioned. to re
 This is usually needed to optimize position recalculation when the `Trigger` is located in a block that scrolls separately from the page.
 
 ::: tip
-Where the `Popper` are located, see in dev-inspector.
+Inspect the page to find out where the popper is located.
 :::
 
 ::: sandbox

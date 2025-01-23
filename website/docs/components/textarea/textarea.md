@@ -42,7 +42,7 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
   const min = select({
     key: 'min',
     defaultValue: 2,
-    label: 'Min rows',
+    label: 'Min lines',
     options: [...Array(10)].map((_, i) => ({
       name: i + 1,
       value: i + 1,
@@ -52,7 +52,7 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
   const max = select({
     key: 'max',
     defaultValue: 10,
-    label: 'Max rows',
+    label: 'Max lines',
     options: [...Array(10)].map((_, i) => ({
       name: i + 1,
       value: i + 1,
@@ -91,7 +91,7 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
       minRows={min}
       maxRows={max}
       placeholder='Placeholder'
-      aria-label='Label for textarea'
+      aria-label='Textarea example'
     />
   );
 });

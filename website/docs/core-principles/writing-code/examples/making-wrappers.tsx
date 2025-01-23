@@ -1,6 +1,6 @@
 import React from 'react';
-import { wrapIntergalacticComponent } from 'intergalactic/core';
-import Button from 'intergalactic/button';
+import { wrapIntergalacticComponent } from '@semcore/core';
+import Button from '@semcore/button';
 
 const AlertButton = wrapIntergalacticComponent<
   typeof Button,
@@ -25,7 +25,7 @@ const AlertButton = wrapIntergalacticComponent<
 
 const Demo = () => (
   <AlertButton handle={['click']} message='Hello world'>
-    Click me
+    Show alert
   </AlertButton>
 );
 

@@ -13,25 +13,16 @@ const options = Array(6)
   }));
 
 const Demo = () => (
-  <Flex gap={4} flexWrap direction='column'>
-    <Flex direction='column'>
-      <Text tag='label' size={200} htmlFor='button-trigger-select'>
-        Button trigger select
-      </Text>
-      {/* ButtonTrigger is the default trigger */}
-      <Select
-        tag={ButtonTrigger}
-        options={options}
-        id='button-trigger-select'
-        placeholder='Select option'
-        mt={2}
-        mr='auto'
-        w='100%'
-      />
-    </Flex>
-    <Flex direction='column'>
-      <Select tag={LinkTrigger} options={options} placeholder='Select option' mt={2} mr='auto' />
-    </Flex>
+  <Flex gap={2} direction='column' alignItems='start'>
+    <Text tag='label' size={200} htmlFor='button-trigger-select'>
+      ButtonTrigger Select
+    </Text>
+    {/* ButtonTrigger is the default trigger */}
+    <Select tag={ButtonTrigger} options={options} id='button-trigger-select' />
+    <Text tag='label' size={200} htmlFor='link-trigger-select' mt={2}>
+      LinkTrigger Select
+    </Text>
+    <Select tag={LinkTrigger} options={options} id='link-trigger-select' />
   </Flex>
 );
 

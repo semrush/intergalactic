@@ -55,7 +55,12 @@ const App = PlaygroundGeneration(
     });
 
     return (
-      <Pills size={size} onChange={(v) => onChange('selected', v)} value={selected}>
+      <Pills
+        size={size}
+        onChange={(v) => onChange('selected', v)}
+        value={selected}
+        aria-label='Pills example'
+      >
         <Pills.Item value={1}>
           {before && <Pills.Item.Addon>{SIZE_ADDON[size]}</Pills.Item.Addon>}
           <Pills.Item.Text>Pill 1</Pills.Item.Text>

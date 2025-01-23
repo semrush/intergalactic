@@ -24,7 +24,6 @@ const App = PlaygroundGeneration((preview) => {
   const {
     direction,
     alignItems,
-    justifyContent,
     showXAxis,
     showYAxis,
     showTooltip,
@@ -33,18 +32,18 @@ const App = PlaygroundGeneration((preview) => {
     patterns,
   } = chartPlayground({ select, radio, label, bool });
 
-  label({ label: 'Linear chart props', key: 'linearChartProps' });
+  label({ label: 'Radar chart props', key: 'radarChartProps' });
 
   const showDots = bool({
     key: 'showDots',
     defaultValue: true,
-    label: 'Show dots',
+    label: 'Dots',
   });
 
   const circle = bool({
     key: 'circle',
     defaultValue: false,
-    label: 'Circle',
+    label: 'Circular grid',
   });
 
   const chartProps: RadarChartProps = {
@@ -57,7 +56,6 @@ const App = PlaygroundGeneration((preview) => {
     showXAxis,
     showYAxis,
     alignItems,
-    justifyContent,
     showDots,
     circle,
     patterns,
