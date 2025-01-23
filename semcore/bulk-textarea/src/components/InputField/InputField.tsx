@@ -515,6 +515,8 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
 
     if (this.asProps.showErrors) {
       this.toggleErrorsPopperByKeyboard(150);
+    } else {
+      this.toggleErrorsPopper('keyboardRowIndex', this.textarea);
     }
   }
 
