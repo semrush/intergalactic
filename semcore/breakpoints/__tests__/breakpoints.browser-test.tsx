@@ -106,14 +106,16 @@ test.describe('Custom media - Breakpoints Text', () => {
       const htmlContent = await e2eStandToHtml(standPath, 'en');
       await page.setContent(htmlContent);
 
-       if(browserName!='webkit') //the webkit skipped temporary because it doesnt update the size, in debug mode all words well
-       {
-       await page.setViewportSize({ width, height: 800 });
-       await page.waitForTimeout(100);
+      if (browserName !== 'webkit') {
+        //the webkit skipped temporary because it doesnt update the size, in debug mode all words well
+        await page.setViewportSize({ width, height: 800 });
+        await page.waitForTimeout(100);
 
-      const mediaTextLocator = page.locator('div', { hasText: ` Media matches "${expectedText}"` });
-      await expect(mediaTextLocator.nth(1)).toBeVisible();
-    }
+        const mediaTextLocator = page.locator('div', {
+          hasText: ` Media matches "${expectedText}"`,
+        });
+        await expect(mediaTextLocator.nth(1)).toBeVisible();
+      }
     });
   });
 });
