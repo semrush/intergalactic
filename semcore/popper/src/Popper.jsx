@@ -95,7 +95,7 @@ class PopperRoot extends Component {
     excludeRefs: [],
     focusLoop: true,
     cursorAnchoring: false,
-    popperMargin: null,
+    // popperPadding: undefined,
   };
 
   static enhance = [
@@ -201,12 +201,21 @@ class PopperRoot extends Component {
       });
     }
 
-    if (this.asProps.popperMargin) {
+    const { p, pt, pr, pb, pl, px, py, scaleIndent } = this.asProps;
+
+    if (p || pt || pr || pb || pl) {
       modifiersOptions.push({
-        name: 'applyMaxSize',
+        name: 'applyPaddings',
         enabled: true,
         options: {
-          margin: this.asProps.popperMargin,
+          p,
+          pt,
+          pr,
+          pb,
+          pl,
+          px,
+          py,
+          scaleIndent,
           popperCtx: this,
         },
       });

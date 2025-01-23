@@ -6,6 +6,6 @@ export { default as Flex } from './Flex';
 // export * from './Flex';
 export { default as useFlex } from './Flex/useFlex';
 export * from './Flex/useFlex';
-
+export { getAutoOrScaleIndent } from './utils';
 export { InvalidStateBox } from './invalid-state-box/InvalidStateBox';
 export { ScreenReaderOnly } from './screen-reader-only-box/ScreenReaderOnlyBox';

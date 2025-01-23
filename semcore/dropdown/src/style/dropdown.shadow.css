@@ -1,4 +1,4 @@
-SDropdownPopper {
+SDropdownPopperContent {
   position: relative;
   background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
   border-radius: var(--intergalactic-popper-rounded, 6px);

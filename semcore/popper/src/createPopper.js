@@ -12,7 +12,7 @@ import {
 } from '@popperjs/core';
 import maxSize from 'popper-max-size-modifier';
 import arrowOffset from './arrowOffset';
-import { applyMaxSize } from './modifiers/applyMaxSize';
+import { applyPaddings } from './modifiers/applyPadding';
 import { cursorAnchoringModifier } from './modifiers/cursorAnchoring';
 
 const defaultModifiers = [
@@ -28,7 +28,7 @@ const defaultModifiers = [
   arrowOffset,
   hide,
   maxSize,
-  applyMaxSize,
+  applyPaddings,
 ];
 
 export default popperGenerator({ defaultModifiers });

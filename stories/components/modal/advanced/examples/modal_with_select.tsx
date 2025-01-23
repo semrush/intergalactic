@@ -40,24 +40,15 @@ const ExternalModalComponent: React.FC<ExternalModalComponentProps> = ({ onClose
   return (
     <Modal visible={visible} onClose={handleClose}>
       <Modal.Title>Do you want to save your changes?</Modal.Title>
-      <Select popperMargin={20}>
-        {({ popper }) => {
-          const popperRect = popper.current?.state.rects.popper;
-          const height = popperRect?.height - 8;
-          const hMax = height < 180 ? height : 180;
-          return (
-            <>
-              <Select.Trigger />
-              <Select.Menu h={height} hMax={hMax}>
-                {options.map((option) => (
-                  <Select.Option key={option.value} value={option.value}>
-                    {option.children}
-                  </Select.Option>
-                ))}
-              </Select.Menu>
-            </>
-          );
-        }}
+      <Select pb={'40px'}>
+        <Select.Trigger />
+        <Select.Menu>
+          {options.map((option) => (
+            <Select.Option key={option.value} value={option.value}>
+              {option.children}
+            </Select.Option>
+          ))}
+        </Select.Menu>
       </Select>
     </Modal>
   );
