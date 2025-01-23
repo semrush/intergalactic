@@ -50,6 +50,26 @@ const ExternalModalComponent: React.FC<ExternalModalComponentProps> = ({ onClose
           ))}
         </Select.Menu>
       </Select>
+
+      <Select popperMargin={40}>
+        {({ popper }) => {
+          const heightFromPopper = popper.current?.state.rects.popper.height ?? 0;
+          const hMax = heightFromPopper > 180 ? 180 : heightFromPopper;
+          const height = heightFromPopper > 80 ? heightFromPopper : 80;
+          return (
+            <>
+              <Select.Trigger />
+              <Select.Menu h={height} hMax={hMax} hMin={80}>
+                {options.map((option) => (
+                  <Select.Option key={option.value} value={option.value}>
+                    {option.children}
+                  </Select.Option>
+                ))}
+              </Select.Menu>
+            </>
+          );
+        }}
+      </Select>
     </Modal>
   );
 };
