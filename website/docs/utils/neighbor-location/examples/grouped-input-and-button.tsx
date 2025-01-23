@@ -8,13 +8,19 @@ const Demo = () => {
     <>
       <Flex mb={4}>
         <Input neighborLocation='right' w={200}>
-          <Input.Value placeholder='Placeholder' aria-label={'Input with secondary button'} />
+          <Input.Value
+            placeholder='Placeholder'
+            aria-label={'Label for input with default button'}
+          />
         </Input>
         <Button neighborLocation='left'>Button</Button>
       </Flex>
       <Flex mb={4}>
         <Input neighborLocation='right' w={200}>
-          <Input.Value placeholder='Placeholder' aria-label={'Input with primary button'} />
+          <Input.Value
+            placeholder='Placeholder'
+            aria-label={'Label for input with primary button'}
+          />
         </Input>
         <Button neighborLocation='left' use='primary'>
           Button
@@ -22,7 +28,10 @@ const Demo = () => {
       </Flex>
       <Flex>
         <Input neighborLocation='right' w={200}>
-          <Input.Value placeholder='Placeholder' aria-label={'Input with success button'} />
+          <Input.Value
+            placeholder='Placeholder'
+            aria-label={'Label for input with success button'}
+          />
         </Input>
         <Button neighborLocation='left' use='primary' theme='success'>
           Button

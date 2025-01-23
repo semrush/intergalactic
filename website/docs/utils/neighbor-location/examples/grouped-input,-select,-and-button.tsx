@@ -8,10 +8,12 @@ const Demo = () => {
   return (
     <Flex>
       <Input neighborLocation='right' w={200}>
-        <Input.Value placeholder='Placeholder' aria-label={'Input with select and button'} />
+        <Input.Value
+          placeholder='Placeholder'
+          aria-label={'Label for input with select and button'}
+        />
       </Input>
       <Select
-        aria-label='Select with input and button'
         neighborLocation='both'
         options={[
           { value: 'Option 1', children: 'Option 1' },
