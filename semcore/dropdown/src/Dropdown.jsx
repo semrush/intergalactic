@@ -150,16 +150,9 @@ function DropdownTrigger({ styles, tag: Tag }) {
   );
 }
 
-function DropdownPopper({ styles, Children }) {
+function DropdownPopper({ styles }) {
   const SDropdownPopper = Root;
-  const SDropdownPopperContent = Box;
-  return sstyled(styles)(
-    <SDropdownPopper render={Popper.Popper}>
-      <SDropdownPopperContent>
-        <Children />
-      </SDropdownPopperContent>
-    </SDropdownPopper>,
-  );
+  return sstyled(styles)(<SDropdownPopper render={Popper.Popper} />);
 }
 
 function DropdownGroup(props) {
