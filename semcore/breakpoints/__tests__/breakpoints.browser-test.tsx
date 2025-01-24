@@ -3,10 +3,10 @@ import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 test.describe('Simple-use - Breakpoints Button Size', () => {
   const breakpoints = [
-    { width: 320, expectedSize: 'l', expectedHeight: '40px' },
-    { width: 768, expectedSize: 'm', expectedHeight: '28px' },
-    { width: 1200, expectedSize: 'm', expectedHeight: '28px' },
-    { width: 1920, expectedSize: 'm', expectedHeight: '28px' },
+    { width: 320, expectedSize: 'L', expectedHeight: '40px' },
+    { width: 768, expectedSize: 'M', expectedHeight: '28px' },
+    { width: 1200, expectedSize: 'M', expectedHeight: '28px' },
+    { width: 1920, expectedSize: 'M', expectedHeight: '28px' },
   ];
 
   breakpoints.forEach(({ width, expectedSize, expectedHeight }) => {
@@ -21,7 +21,7 @@ test.describe('Simple-use - Breakpoints Button Size', () => {
       const button = page.locator('[data-ui-name="Button"]');
 
       const buttonText = await button.locator('[data-ui-name="Button.Text"]').textContent();
-      expect(buttonText?.trim()).toBe(`Button size ${expectedSize}`);
+      expect(buttonText?.trim()).toBe(`Size ${expectedSize}`);
 
       const buttonHeight = await button.evaluate((el) => getComputedStyle(el).height);
       expect(buttonHeight).toBe(expectedHeight);
@@ -31,10 +31,10 @@ test.describe('Simple-use - Breakpoints Button Size', () => {
 
 test.describe('Manual control - Breakpoints Button Size', () => {
   const breakpoints = [
-    { width: 320, expectedSize: 'l', expectedHeight: '40px' },
-    { width: 768, expectedSize: 'm', expectedHeight: '28px' },
-    { width: 1200, expectedSize: 'm', expectedHeight: '28px' },
-    { width: 1920, expectedSize: 'm', expectedHeight: '28px' },
+    { width: 320, expectedSize: 'L', expectedHeight: '40px' },
+    { width: 768, expectedSize: 'M', expectedHeight: '28px' },
+    { width: 1200, expectedSize: 'M', expectedHeight: '28px' },
+    { width: 1920, expectedSize: 'M', expectedHeight: '28px' },
   ];
 
   breakpoints.forEach(({ width, expectedSize, expectedHeight }) => {
@@ -49,7 +49,7 @@ test.describe('Manual control - Breakpoints Button Size', () => {
       const button = page.locator('[data-ui-name="Button"]');
 
       const buttonText = await button.locator('[data-ui-name="Button.Text"]').textContent();
-      expect(buttonText?.trim()).toBe(`Button size ${expectedSize}`);
+      expect(buttonText?.trim()).toBe(`Size ${expectedSize}`);
 
       const buttonHeight = await button.evaluate((el) => getComputedStyle(el).height);
       expect(buttonHeight).toBe(expectedHeight);
