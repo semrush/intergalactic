@@ -16,9 +16,6 @@ test.describe('Simple-use - Breakpoints Button Size', () => {
       await page.setContent(htmlContent);
 
       await page.setViewportSize({ width, height: 800 });
-      await page.evaluate(() => {
-        window.dispatchEvent(new Event('resize'));
-      });
       await page.waitForTimeout(100);
 
       const button = page.locator('[data-ui-name="Button"]');
@@ -47,9 +44,6 @@ test.describe('Manual control - Breakpoints Button Size', () => {
       await page.setContent(htmlContent);
 
       await page.setViewportSize({ width, height: 800 });
-      await page.evaluate(() => {
-        window.dispatchEvent(new Event('resize'));
-      });
       await page.waitForTimeout(100);
 
       const button = page.locator('[data-ui-name="Button"]');
