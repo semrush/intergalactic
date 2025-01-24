@@ -139,7 +139,7 @@ class BulkTextareaRoot extends Component<
       rowValidation,
       errors,
       onErrorsChange: (newErrors: InputFieldProps['errors']) => {
-        const lastError = newErrors.length === 0 ? { ...errors[0] } : undefined;
+        const lastError = newErrors.length === 0 ? errors[0] : undefined;
         this.handlers.errors(newErrors);
         this.setState({ lastError });
         setTimeout(() => {
