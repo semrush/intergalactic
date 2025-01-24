@@ -134,7 +134,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       }
 
       if (disabled) {
-        this.textarea.removeAttribute('tabindex');
+        this.textarea.setAttribute('tabindex', '-1');
       } else {
         this.textarea.setAttribute('tabindex', '0');
       }
@@ -232,6 +232,8 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
 
     if (!props.disabled) {
       textarea.setAttribute('tabIndex', '0');
+    } else {
+      textarea.setAttribute('tabIndex', '-1');
     }
 
     if (!props.disabled && !props.readonly) {
