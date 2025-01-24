@@ -360,8 +360,8 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         focusNode instanceof HTMLParagraphElement &&
         anchorNode instanceof HTMLParagraphElement
       ) {
-        const before = anchorNode?.textContent?.trim().substring(0, fromOffset) ?? '';
-        const after = focusNode?.textContent?.trim().substring(toOffset) ?? '';
+        const before = anchorNode?.textContent?.substring(0, fromOffset) ?? '';
+        const after = focusNode?.textContent?.substring(toOffset) ?? '';
 
         selection.deleteFromDocument();
 
