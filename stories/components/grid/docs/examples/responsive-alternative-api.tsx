@@ -1,6 +1,6 @@
 import React from 'react';
-import { Col, Row } from 'intergalactic/grid';
-import { Box } from 'intergalactic/flex-box';
+import { Col, Row } from '@semcore/grid';
+import { Box } from '@semcore/flex-box';
 
 const Demo = () => {
   const styleBox = {
@@ -11,16 +11,16 @@ const Demo = () => {
   };
   return (
     <Row gutter={4}>
-      <Col span={8} md={10} sm={6} xs={12} offset={2} mdOffset={1} smOffset={0}>
+      <Col span={[8, 10, 6, 12]} offset={[2, 1, 0]}>
         <Box style={styleBox} />
       </Col>
-      <Col span={8} md={10} sm={6} xs={12} offset={2} mdOffset={1} smOffset={0}>
+      <Col span={[8, 10, 6, 12]} offset={[2, 1, 0]}>
         <Box style={styleBox} />
       </Col>
-      <Col span={8} md={10} sm={6} xs={12} offset={2} mdOffset={1} smOffset={0}>
+      <Col span={[8, 10, 6, 12]} offset={[2, 1, 0]}>
         <Box style={styleBox} />
       </Col>
-      <Col span={8} md={10} sm={6} xs={12} offset={2} mdOffset={1} smOffset={0}>
+      <Col span={[8, 10, 6, 12]} offset={[2, 1, 0]}>
         <Box style={styleBox} />
       </Col>
     </Row>
