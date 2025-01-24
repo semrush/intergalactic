@@ -184,9 +184,9 @@ test('Check Flexbox gaps for all boxes', async ({ page }) => {
 });
 
 test('Check Flexbox example', async ({ page }) => {
-    const standPath = 'stories/components/flex-box/docs/examples/flex.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-  
-    await expect(page).toHaveScreenshot();
-  });
+  const standPath = 'stories/components/flex-box/docs/examples/flex.tsx';
+  const htmlContent = await e2eStandToHtml(standPath, 'en');
+  await page.setContent(htmlContent);
+
+  await expect(page).toHaveScreenshot();
+});
