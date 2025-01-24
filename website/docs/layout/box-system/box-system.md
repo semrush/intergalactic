@@ -15,7 +15,7 @@ tabs: Design('box-system'), API('box-api'), Changelog('box-changelog')
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/box.tsx';
+  export Demo from 'stories/components/flex-box/docs/examples/box.tsx';
 </script>
 
 :::
@@ -27,7 +27,7 @@ tabs: Design('box-system'), API('box-api'), Changelog('box-changelog')
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/flex.tsx';
+  export Demo from 'stories/components/flex-box/docs/examples/flex.tsx';
 </script>
 
 :::

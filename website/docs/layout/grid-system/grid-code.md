@@ -19,7 +19,7 @@ The `Row` component accepts all the properties of the `Flex` component, and the 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/example-use.tsx';
+  export Demo from 'stories/components/grid/docs/examples/example-use.tsx';
 </script>
 
 :::
@@ -31,7 +31,7 @@ Arranging offsets for each column to the left.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/change-in-general-offset.tsx';
+  export Demo from 'stories/components/grid/docs/examples/change-in-general-offset.tsx';
 </script>
 
 :::
@@ -43,7 +43,7 @@ You can change gutters between the columns, which gives flexibility in use.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/change-in-the-general-gutter-between-the-columns.tsx';
+  export Demo from 'stories/components/grid/docs/examples/change-in-the-general-gutter-between-the-columns.tsx';
 </script>
 
 :::
@@ -53,7 +53,7 @@ You can change gutters between the columns, which gives flexibility in use.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/automatic-column-size-detection.tsx';
+  export Demo from 'stories/components/grid/docs/examples/automatic-column-size-detection.tsx';
 </script>
 
 :::
@@ -69,7 +69,7 @@ The grid works as desktop first, as our core products are designed to work prima
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/responsive.tsx';
+  export Demo from 'stories/components/grid/docs/examples/responsive.tsx';
 </script>
 
 :::
@@ -81,7 +81,7 @@ We have added an alternative API for responsive grids. It's more laconic.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/responsive-alternative-api.tsx';
+  export Demo from 'stories/components/grid/docs/examples/responsive-alternative-api.tsx';
 </script>
 
 :::
