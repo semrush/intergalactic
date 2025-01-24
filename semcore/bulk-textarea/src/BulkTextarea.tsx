@@ -140,12 +140,8 @@ class BulkTextareaRoot extends Component<
       errors,
       onErrorsChange: (newErrors: InputFieldProps['errors']) => {
         const lastError = newErrors.length === 0 ? { ...errors[0] } : undefined;
-        const currentLength = errors.length;
         this.handlers.errors(newErrors);
         this.setState({ lastError });
-        if (currentLength !== errors.length) {
-          this.setState({ errorIndex: -1 });
-        }
         setTimeout(() => {
           if (showErrors) {
             this.handlers.state(newErrors.length === 0 ? 'normal' : 'invalid');

@@ -927,6 +927,8 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         node.removeAttribute('aria-errormessage');
       }
 
+      this.setErrorIndex(node);
+
       return isValid;
     }
 
@@ -1024,9 +1026,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         return node === nodeToCompare;
       });
 
-    if (errorIndex !== -1) {
-      this.handlers.errorIndex(errorIndex);
-    }
+    this.handlers.errorIndex(errorIndex);
   }
 
   private getEmptyParagraph() {
