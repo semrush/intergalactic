@@ -8,7 +8,6 @@ import Tooltip from '@semcore/tooltip';
 import { InputFieldProps, ErrorItem } from './InputField.types';
 import { extractAriaProps } from '@semcore/utils/lib/ariaProps';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
-import textarea from '@tools/playground/examples/textarea';
 
 type IndexKeys = 'keyboardRowIndex' | 'mouseRowIndex';
 
