@@ -35,7 +35,7 @@ const Demo = () => {
         </Flex>
         <Flex direction="row"  alignItems="flex-start"  w='400px' h='100px'>
         <Box style={styleBox} wMax='100px' hMax='50px'>
-        wMax='100px' hMax='50px'
+        wMax='100px' hMax='50px' test max dimensions
         </Box>
         </Flex>
         <Flex direction="row"  alignItems="flex-start"  w='400px' h='100px'>
