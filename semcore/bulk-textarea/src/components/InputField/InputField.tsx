@@ -675,6 +675,8 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     const visibleErrorTooltip =
       showErrors && visibleErrorPopper && Boolean(errorMessage) && !this.isDisabled;
 
+    const { __excludeProps } = extractAriaProps(this.asProps);
+
     return sstyled(styles)(
       <>
         <Tooltip
@@ -698,7 +700,11 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
             return <Tooltip.Popper id={this.popperDescribedId}>{errorMessage}</Tooltip.Popper>;
           }}
         </Tooltip>
-        <SInputField render={Box} ref={this.containerRef} __excludeProps={['onBlur', 'value']} />
+        <SInputField
+          render={Box}
+          ref={this.containerRef}
+          __excludeProps={['onBlur', 'value', ...__excludeProps]}
+        />
       </>,
     );
   }
