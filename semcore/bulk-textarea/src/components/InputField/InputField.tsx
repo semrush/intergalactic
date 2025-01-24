@@ -8,6 +8,7 @@ import Tooltip from '@semcore/tooltip';
 import { InputFieldProps, ErrorItem } from './InputField.types';
 import { extractAriaProps } from '@semcore/utils/lib/ariaProps';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
+import textarea from '@tools/playground/examples/textarea';
 
 type IndexKeys = 'keyboardRowIndex' | 'mouseRowIndex';
 
@@ -131,6 +132,12 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         this.textarea.setAttribute('contenteditable', 'true');
         this.addEventListeners(this.textarea);
       }
+
+      if (disabled) {
+        this.textarea.removeAttribute('tabindex');
+      } else {
+        this.textarea.setAttribute('tabindex', '0');
+      }
     }
 
     if (
@@ -208,7 +215,6 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     textarea.setAttribute('contentEditable', props.disabled || props.readonly ? 'false' : 'true');
     textarea.setAttribute('role', 'textbox');
     textarea.setAttribute('classname', 'editable');
-    textarea.setAttribute('tabIndex', '0');
 
     if (props.id) {
       textarea.setAttribute('id', props.id);
@@ -222,6 +228,10 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       if (ariaProp) {
         textarea.setAttribute(key, ariaProp);
       }
+    }
+
+    if (!props.disabled) {
+      textarea.setAttribute('tabIndex', '0');
     }
 
     if (!props.disabled && !props.readonly) {
