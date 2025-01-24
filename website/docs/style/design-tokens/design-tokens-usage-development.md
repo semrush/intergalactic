@@ -99,14 +99,6 @@ const FileInput = ({ id, onFile, multiple, accept }) => {
   return (
     <div className={cx(styles.dropzone, dragging && styles.dropzoneDragging)}>
       <div />
-      <div className={styles.dropzoneInner}>
-        <div>Drag files here</div>
-        <div>or</div>
-        <Button theme='success' use='primary' size='l' mb={4}>
-          Browse files
-        </Button>
-      </div>
-      <div>Upload files, uncompressed, less than 1 GB in size</div>
       <input
         className={styles.fileInput}
         id={id}
@@ -115,6 +107,14 @@ const FileInput = ({ id, onFile, multiple, accept }) => {
         accept={accept}
         onChange={(event) => onFile([...(event.target.files ?? [])])}
       />
+      <div className={styles.dropzoneInner}>
+        <div>Drag files here</div>
+        <div>or</div>
+        <Button theme='success' use='primary' size='l' mb={4}>
+          Browse files
+        </Button>
+      </div>
+      <div>Upload files, uncompressed, less than 1 GB in size</div>
     </div>
   );
 };
@@ -166,7 +166,7 @@ const DesignTokensProcessor = () => {
   return (
     <div className={styles.container}>
       <Box mb={2}>
-        <label htmlFor='base-tokens-file'>Base tokens JSON file:</label>
+        <label htmlFor='base-tokens-file'>Upload base tokens JSON file</label>
         {!baseTokens && (
           <>
             <FileInput
@@ -180,19 +180,14 @@ const DesignTokensProcessor = () => {
         {baseTokens && (
           <div className={styles.uploadedFileBlock}>
             <CheckM color='icon-primary-success' /> File selected{' '}
-            <button
-              type='button'
-              className={styles.changeFileButton}
-              id='base-tokens-file'
-              onClick={handleChangeBaseTokensFile}
-            >
-              replace file
-            </button>
+            <Button id='base-tokens-file' onClick={handleChangeBaseTokensFile} ml={2}>
+              Replace file
+            </Button>
           </div>
         )}
       </Box>
       <Box mb={2}>
-        <label htmlFor='design-tokens-file'>Semantic tokens JSON file:</label>
+        <label htmlFor='design-tokens-file'>Upload semantic tokens JSON file</label>
         {!designTokens && (
           <>
             <FileInput
@@ -206,14 +201,9 @@ const DesignTokensProcessor = () => {
         {designTokens && (
           <div className={styles.uploadedFileBlock}>
             <CheckM color='icon-primary-success' /> File selected{' '}
-            <button
-              type='button'
-              className={styles.changeFileButton}
-              id='base-tokens-file'
-              onClick={handleChangeDesignTokensFile}
-            >
-              replace file
-            </button>
+            <Button id='base-tokens-file' onClick={handleChangeBaseTokensFile} ml={2}>
+              Replace file
+            </Button>
           </div>
         )}
       </Box>
@@ -231,7 +221,7 @@ const DesignTokensProcessor = () => {
               Processed
               <span className={styles.extension}>.css</span>
               <Copy copiedToast='Copied!' toCopy={css} trigger='click'>
-                <span className={styles.clickToCopy}>click copy</span>
+                <span className={styles.clickToCopy}>Copy to clipboard</span>
               </Copy>
             </h4>
             <code className={styles.codeBlock}>{css}</code>
@@ -241,7 +231,7 @@ const DesignTokensProcessor = () => {
               Processed
               <span className={styles.extension}>.json</span>
               <Copy copiedToast='Copied!' toCopy={json} trigger='click'>
-                <span className={styles.clickToCopy}>click copy</span>
+                <span className={styles.clickToCopy}>Copy to clipboard</span>
               </Copy>
             </h4>
             <code lang='css' className={styles.codeBlock}>

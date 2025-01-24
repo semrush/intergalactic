@@ -36,7 +36,7 @@ const BaseTokens = ({ tokens }) => {
           placeholder='Enter color name to find token'
           value={filter}
           onChange={setFilter}
-          aria-label={'Search tokens'}
+          aria-label={'Search basic tokens'}
         />
       </Input>
       <DataTable data={filteredTokens}>
