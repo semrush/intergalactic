@@ -41,7 +41,7 @@ SInputField > div {
     margin: 0 0 var(--intergalactic-spacing-1x, 4px) 0;
     position: relative;
     word-break: break-all;
-    white-space: pre;
+    white-space: pre-wrap;
     padding-right: 20px;
 
     &:last-of-type {
