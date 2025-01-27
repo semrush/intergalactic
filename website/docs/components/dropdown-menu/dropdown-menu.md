@@ -12,7 +12,9 @@ tabs: Design('dropdown-menu'), A11y('dropdown-menu-a11y'), API('dropdown-menu-ap
 Note that the DropdownMenu component doesn't handle the value change in the trigger. This mechanism is implemented in the [Select](/components/select/select#a24650).
 :::
 
-## Sizes and indents
+## Appearance
+
+### Sizes
 
 The DropdownMenu has two sizes.
 
@@ -212,7 +214,7 @@ If you want to add a tooltip to an item, apply it to the entire item. We don't r
 
 ![](static/info-icon-tooltip.png)
 
-## Nested menu
+## Nested menus
 
 The item can have a nested menu. In this case, it should have the `ChevronRight` icon to indicate the nesting.
 

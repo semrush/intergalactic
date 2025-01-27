@@ -5,12 +5,12 @@ tabs: Design('wizard'), A11y('wizard-a11y'), API('wizard-api'), Example('wizard-
 
 The Wizard component inherits from the [Modal](/components/modal/modal-api) component, so you can use all of its properties.
 
-## Basic example
+## Basic usage
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/basic_example.tsx';
+  export Demo from 'stories/components/wizard/docs/examples/basic_example.tsx';
 </script>
 
 :::
@@ -22,7 +22,7 @@ As the Wizard is typically a complex component, you have the flexibility to use 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/custom_step.tsx';
+  export Demo from 'stories/components/wizard/docs/examples/custom_step.tsx';
 </script>
 
 :::
@@ -34,7 +34,7 @@ The stepper can also be customized.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/custom_stepper.tsx';
+  export Demo from 'stories/components/wizard/docs/examples/custom_stepper.tsx';
 </script>
 
 :::

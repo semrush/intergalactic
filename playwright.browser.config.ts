@@ -1,5 +1,5 @@
 import { PlaywrightTestConfig, devices } from '@playwright/test';
-import { testPlanFilter } from "allure-playwright/testplan";
+import { testPlanFilter } from 'allure-playwright/testplan';
 
 const config: PlaywrightTestConfig = {
   testMatch: /\.browser-test.ts(x){0,1}$/,
@@ -29,17 +29,17 @@ const config: PlaywrightTestConfig = {
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'], hasTouch: true },
+      use: { ...devices['Desktop Chrome'] },
     },
 
     {
       name: 'firefox',
-      use: { ...devices['Desktop Firefox'], hasTouch: true },
+      use: { ...devices['Desktop Firefox'] },
     },
 
     {
       name: 'webkit',
-      use: { ...devices['Desktop Safari'], hasTouch: true },
+      use: { ...devices['Desktop Safari'] },
     },
   ],
 };

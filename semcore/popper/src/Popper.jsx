@@ -200,6 +200,17 @@ class PopperRoot extends Component {
       });
     }
 
+    if (this.asProps.popperMargin) {
+      modifiersOptions.push({
+        name: 'applyMaxSize',
+        enabled: true,
+        options: {
+          margin: this.asProps.popperMargin,
+          popperCtx: this,
+        },
+      });
+    }
+
     const modifiersMerge = [...modifiersFallback, ...modifiersOptions].concat(modifiers);
 
     return {

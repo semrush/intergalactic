@@ -25,7 +25,7 @@ These examples use [`react-hook-form@6`](https://github.com/react-hook-form/reac
 
 :::
 
-## DatePicker and Timepicker
+## DatePicker and TimePicker
 
 ::: sandbox
 

@@ -15,6 +15,8 @@ This component helps users to:
 
 ## Appearance
 
+### Sizes
+
 FilterTrigger has two sizes. Note that all sizes use `Close` and `ChevronDown` icons with M size.
 
 Table: FilterTrigger sizes
@@ -24,22 +26,24 @@ Table: FilterTrigger sizes
 | M (28px)  | ![](static/filter-default-m.png) | ![](static/filter-active-m.png) | ![](static/filter-active-counter-m.png) |
 | L (40px)  | ![](static/filter-default-l.png) | ![](static/filter-active-l.png) | ![](static/filter-active-counter-l.png) |
 
-Show [counter](/components/counter/counter) only for **Advanced filters** and filters that have several additional filters inside. The counter in the FilterTrigger respectively indicates the number of additional filters applied.
-
-![](static/counter-or-not.png)
-
-## Margins between FilterTriggers
+## Grouped filters
 
 Use the same margins as other inputs and [buttons](/components/button/button#margins_between_buttons) have.
 
-Table: Margins between FilterTriggers
+Table: Grouped filters
 
 | Size (height in px)  | Margins between controls   |
 | -------------------- | -------------------------- |
 | M (28px)             | ![](static/sizes-m.png)    |
 | L (40px)             | ![](static/sizes-l.png)    |
 
-## States and interaction
+## Counter
+
+Show [counter](/components/counter/counter) only for **Advanced filters** and filters that have several additional filters inside. The counter in the FilterTrigger respectively indicates the number of additional filters applied.
+
+![](static/counter-or-not.png)
+
+## Interaction
 
 <!-- > There were doubts that if there is no chevron in the active state of the filter, the user will not understand how to change the filter. However, **corridor tests** and user’s work with the filter at the production did not confirm the doubts. -->
 

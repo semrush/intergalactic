@@ -366,14 +366,14 @@ export const sideBarConfig: SidebarConfig = [
             text: 'Radio',
           },
           {
-            link: '/components/select/select',
-            activeMatch: '/components/select/',
-            text: 'Select / Multiselect',
-          },
-          {
             link: '/components/scroll-area/scroll-area',
             activeMatch: '/components/scroll-area/',
             text: 'ScrollArea',
+          },
+          {
+            link: '/components/select/select',
+            activeMatch: '/components/select/',
+            text: 'Select / Multiselect',
           },
           {
             link: '/components/side-panel/side-panel',

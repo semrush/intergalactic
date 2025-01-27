@@ -4,11 +4,9 @@ fileSource: input-mask
 tabs: Design('input-mask'), A11y('input-mask-a11y'), API('input-mask-api'), Example('input-mask-code'), Changelog('input-mask-changelog')
 ---
 
-## InputMask
+## Mask
 
 This component is a wrapper that allows you to set the format for the input value.
-
-## Mask
 
 This is an example of a basic input with a `mask` feature. The mask is defined using the mask property, which specifies the input format and validates the entered value.
 

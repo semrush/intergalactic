@@ -21,7 +21,9 @@ Component consists of the following:
 - [Illustration](/style/illustration/illustration)
 - Controls
 
-## Styles
+## Appearance
+
+### Styles
 
 We recommend restricting maximum width of the message text to 400px to ensure readability.
 

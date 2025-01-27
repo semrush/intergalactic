@@ -219,7 +219,9 @@ You can add addons before and after the text. As addons you can use:
 - [Badge](/components/badge/badge)
 - [Flag](/components/flags/flags)
 
-## Sizes and margins
+## Appearance
+
+### Sizes
 
 Table: Button sizes and margins
 
@@ -227,8 +229,6 @@ Table: Button sizes and margins
 | -------------------------- | --------- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------ |
 | **M (28px)**               | M         | ![](static/size-m.png) | This is the default size of the button. Use it freely in filters, dropdowns, tables, etc.                                |
 | **L (40px)**               | M         | ![](static/size-l.png) | Use this size in modal windows for main actions, empty pages and page states that need to focus user on the main action. |
-
-## Button types and themes
 
 ### Types
 
@@ -242,7 +242,7 @@ All button types can be used on a white and gray background, as well as on a tra
 
 Table: Button types
 
-| Button type | Appearance example               |
+| `use`       | Appearance example               |
 | ----------- | -------------------------------- |
 | `primary`   | ![](static/button-primary.png)   |
 | `secondary` | ![](static/button-secondary.png) |
@@ -250,19 +250,20 @@ Table: Button types
 
 ### Themes
 
-You can use themes for the buttons according to the visual hierarchy on the page. See the [visual loudness scale](/core-principles/visual-loudness-scale/visual-loudness-scale) guide.
+You can use themes (`theme` property in API) for the buttons according to the visual hierarchy on the page. See the [visual loudness scale](/core-principles/visual-loudness-scale/visual-loudness-scale) guide.
 
 Invert theme button is used on dark or colored background. For example in [Tooltip](/components/tooltip/tooltip), [NoticeBubble](/components/notice-bubble/notice-bubble), etc.
 
 Table: Button themes
 
-| Button type | `muted`                         | `info`                        | `success`                    | `danger`                    | `invert`                               |
+|             | `muted`                         | `info`                        | `success`                    | `danger`                    | `invert`                               |
 | ----------- | ------------------------------- | ----------------------------- | ---------------------------- | --------------------------- | -------------------------------------- |
 | `primary`   | _no theme_                      | ![](static/info-butt.png)     | ![](static/success-butt.png) | ![](static/danger-butt.png) | ![](static/invert-normal.png)          |
 | `secondary` | ![](static/secondary-muted.png) | _deprecated_                  | _no theme_                   | _no theme_                  | ![](static/invert-second-normal.png)   |
 | `tertiary`  | ![](static/tertiary-muted.png)  | ![](static/tertiary-info.png) | _no theme_                   | _no theme_                  | ![](static/invert-tertiary-normal.png) |
 
-## Button states
+<!-- I'D REMOVED THIS SECTION BECAUSE IMO SHOWING STATIC IMAGES OF BUTTON STATES IS A BAD PRACTICE
+## States
 
 Table: States for all buttons types and themes
 
@@ -270,7 +271,7 @@ Table: States for all buttons types and themes
 | ----------- | ----------------------------- | ------------------------------- | -------------------------------- | --------------------------------- | ---------------------------------- |
 | `primary`   | ![](static/button-normal.png) | ![](static/button-hover.png)    | ![](static/button-active.png)    | ![](static/button-loading.png)    | ![](static/button-disabled.png)    |
 | `secondary` | ![](static/secondary.png)     | ![](static/secondary-hover.png) | ![](static/secondary-active.png) | ![](static/secondary-loading.png) | ![](static/secondary-disabled.png) |
-| `tertiary`  | ![](static/tertiary.png)      | ![](static/tertiary-hover.png)  | ![](static/tertiary-active.png)  | ![](static/tertiary-loading.png)  | ![](static/tertiary-disabled.png)  |
+| `tertiary`  | ![](static/tertiary.png)      | ![](static/tertiary-hover.png)  | ![](static/tertiary-active.png)  | ![](static/tertiary-loading.png)  | ![](static/tertiary-disabled.png)  | -->
 
 ## Button with Link styles
 
@@ -322,22 +323,29 @@ If you need to use a single button we recommend you to set it's width to at leas
 
 ![](static/button-width3.png)
 
-## Margins between buttons
+## Button label
 
-**The margin between buttons shall be [multiple of 4](/layout/box-system/box-system#spacing_system)**. If there are several buttons next to each other, use the recommended margins shown in table below.
+Button label always starts with a capital letter.
 
-Table: Margins between buttons
+![](static/capitalize.png)
+
+**Button label shall not exceed three words.** Too wordy controls are difficult to read. Try to fit the desired meaning into the short label.
+
+![](static/max-length.png)
+
+The label of the button should clearly indicate what happens after user clicks it.
+
+![](static/define-action.png)
+
+## Grouped buttons
+
+**The margin between buttons should be [multiple of 4](/layout/box-system/box-system#spacing_system)**. If there are several buttons next to each other, use the recommended margins shown in table below.
+
+Table: Grouped buttons
 
 | L (40px)                 | M (28px)                 |
 | ------------------------ | ------------------------ |
 | ![](static/margin-1.png) | ![](static/margin-2.png) |
-
-## Usage in UX/UI
-
-- Try to have one call-to-action button on the page in the modal window. _For example, one green button._
-- We recommend you don’t disable CTA, even if something went wrong (especially in filters and modal windows with a single CTA). User needs to understand that the product/service is working. When user clicks on the button, add a message about the error or what user needs to do in this case.
-- If you can't do without a button in the disabled state, be sure to include a tooltip for it explaining why the primary action is disabled.
-- If there are a lot of actions in your interface, first of all set your priorities. Place controls in your interface according to the [visual loudness scale](/core-principles/visual-loudness-scale/visual-loudness-scale) guide. Use inactive "quiet" buttons in the interface. Don't "shout" at the user with your interface, let them work with your product in visual "silence" and comfort.
 
 ## Button variations
 
@@ -365,21 +373,7 @@ We recommend using the icon-only button if:
 **Add a tooltip with information about button's function to the icon-only buttons**. It helps user to understand functionality of the button if the icon isn’t the obvious one.
 :::
 
-## Button label
-
-Button label always starts with a capital letter.
-
-![](static/capitalize.png)
-
-**Button label shall not exceed three words.** Too wordy controls are difficult to read. Try to fit the desired meaning into the short label.
-
-![](static/max-length.png)
-
-The label of the button should clearly indicate what happens after user clicks it.
-
-![](static/define-action.png)
-
-## Branded buttons
+### Branded buttons
 
 In case when you need to show that button connects or links to some other service, use a branded color for the background or the corresponding color icon of the service.
 
@@ -398,6 +392,9 @@ It may also be helpful checking the following branding guidelines:
 - Youtube – [Branding Guidelines](https://developers.google.com/youtube/terms/branding-guidelines) and [Brand resources](https://www.youtube.com/howyoutubeworks/resources/brand-resources/#overview)
 - Pinterest – [How to use the Pinterest brand in your marketing](https://business.pinterest.com/en-us/brand-guidelines/)
 
-## Grouped buttons
+## Usage in UX/UI
 
-To combine the components such as Button, [Input](/components/input/input), and [Select](/components/select/select), use the [`neighborLocation`](/components/button/button-api) property.
+- Try to have one call-to-action button on the page in the modal window. _For example, one green button._
+- We recommend you don’t disable CTA, even if something went wrong (especially in filters and modal windows with a single CTA). User needs to understand that the product/service is working. When user clicks on the button, add a message about the error or what user needs to do in this case.
+- If you can't do without a button in the disabled state, be sure to include a tooltip for it explaining why the primary action is disabled.
+- If there are a lot of actions in your interface, first of all set your priorities. Place controls in your interface according to the [visual loudness scale](/core-principles/visual-loudness-scale/visual-loudness-scale) guide. Use inactive "quiet" buttons in the interface. Don't "shout" at the user with your interface, let them work with your product in visual "silence" and comfort.

@@ -14,7 +14,9 @@ Typically, users encounter this state when certain actions are necessary to init
 - Absence of displayed data because the user has not yet created or configured anything within the product.
 - A placeholder for an upcoming feature, such as "An exciting report will be available here soon," which functions as a preview for future features.
 
-## Default styles
+## Appearance
+
+### Default styles
 
 1. The illustration consistently resides to the left of the message, sized at 300px by 230px.
 2. For the title, use text with a font size of 20px (`--fs-400`, `--lh-400` tokens).
@@ -25,7 +27,7 @@ Typically, users encounter this state when certain actions are necessary to init
 
 As an option, consider adding a tertiary button that opens a dropdown with supplementary information.
 
-### Margins and sizes
+#### Margins and sizes
 
 ![](static/empty-page-1.png)
 
