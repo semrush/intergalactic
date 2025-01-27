@@ -5,6 +5,10 @@ tabs: Design('feedback-rating'), A11y('feedback-rating-a11y'), Example('feedback
 
 ## What component has
 
+### Keyboard support
+
+Find detailed information about the keyboard support for all form elements in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard).
+
 ### Roles and attributes
 
 The following list describes roles and attributes that component already has.
@@ -40,9 +44,9 @@ FeedbackRating form pattern consists of several components that have their own a
 - [Feedback form](/components/feedback-form/feedback-form-a11y)
 - [Form](/patterns/form/form-a11y)
 
-## Keyboard support
+## Considerations for developers
 
-Find detailed information about the keyboard support for all form elements in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard).
+Use `type: 'email'` for the email input to ensure correct functioning of the browser's autofill feature, [as in the example](./feedback-rating-code.md).
 
 ## Other recommendations
 

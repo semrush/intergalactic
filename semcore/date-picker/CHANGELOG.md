@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.54.9] - 2025-01-21
+
+### Added
+
+- `inputmode=numeric` for the DatePicker inputs.
+
 ## [4.54.8] - 2025-01-21
 
 ### Changed

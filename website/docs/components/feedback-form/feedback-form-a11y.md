@@ -23,8 +23,9 @@ Feedback pattern consists of several components that have their own accessibilit
 
 - Use the `label` element, and, in specific cases, other mechanisms (for example, title attribute, etc.), to identify each form control.
 - Use the `fieldset` and `legend` elements to group and associate related form controls.
+- Ensure that the browser's autofill feature works correctly for the email input. Usually, this is achieved by setting `type="email"`, `autocomplete="email"`, and `id` or `name="email"` attributes, [as in the example](./feedback-form-code.md).
 
-See [Forms Tutorial from W3](https://www.w3.org/WAI/tutorials/forms/) for the detailed information and links.
+Read [Forms Tutorial from W3](https://www.w3.org/WAI/tutorials/forms/) for the detailed information and links.
 
 <!-- ### Keyboard support
 
@@ -38,4 +39,4 @@ See detailed information about the keyboard support for the all form elements in
 
 ## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
+Find more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
