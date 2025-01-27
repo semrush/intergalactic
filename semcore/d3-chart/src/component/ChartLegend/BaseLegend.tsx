@@ -1,4 +1,4 @@
-import type React from 'react';
+import React from 'react';
 import { Component, type Intergalactic } from '@semcore/core';
 import type { LegendItemKey, LegendItemProps } from './LegendItem/LegendItem.type';
 import type { LegendProps } from './BaseLegend.type';

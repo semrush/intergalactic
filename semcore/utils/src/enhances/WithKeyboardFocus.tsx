@@ -1,4 +1,4 @@
-import type React from 'react';
+import React from 'react';
 import { PureComponent } from 'react';
 import createHoc from '../createHoc';
 import { internalSetState } from '../uncontroll';

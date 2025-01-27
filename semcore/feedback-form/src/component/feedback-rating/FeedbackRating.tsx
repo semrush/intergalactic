@@ -183,8 +183,9 @@ class FeedbackRatingRoot extends Component<
           flip={{
             fallbackPlacements: ['right-start', 'bottom'],
           }}
-          aria-describedby={config.description ? config.key + '-description' : undefined}
+          aria-describedby={config.description ? `${config.key}-description` : undefined}
         >
+          {/* @ts-ignore */}
           {({ input }) => {
             if (config.type === 'textarea') {
               return (

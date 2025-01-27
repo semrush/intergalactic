@@ -11,7 +11,7 @@ import {
   scaleBand,
   scaleSqrt,
 } from 'd3-scale';
-import type React from 'react';
+import React from 'react';
 
 export const eventToPoint = (event: React.MouseEvent<HTMLElement>, svgRoot: SVGElement) => {
   const node = (event.currentTarget || event.target) as HTMLElement;

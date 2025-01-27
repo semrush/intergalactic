@@ -1,4 +1,4 @@
-import type React from 'react';
+import React from 'react';
 import { transition } from 'd3-transition';
 import {
   Component,

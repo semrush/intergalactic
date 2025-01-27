@@ -1,4 +1,4 @@
-import type React from 'react';
+import React from 'react';
 import type { Intergalactic, UnknownProperties, PropGetterFn } from '@semcore/core';
 import type Popper from '@semcore/popper';
 import type {

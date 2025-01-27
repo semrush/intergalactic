@@ -1,4 +1,4 @@
-import type React from 'react';
+import React from 'react';
 import type { Intergalactic, UnknownProperties } from '@semcore/utils/lib/core';
 import Popper, {
   type PopperContext,

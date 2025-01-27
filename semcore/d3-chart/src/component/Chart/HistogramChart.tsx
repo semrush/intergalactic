@@ -1,4 +1,4 @@
-import type React from 'react';
+import React from 'react';
 import createComponent from '@semcore/core';
 import { scaleBand, scaleLinear, type ScaleLinear, scaleTime } from 'd3-scale';
 // @ts-ignore

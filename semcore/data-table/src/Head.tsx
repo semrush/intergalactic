@@ -1,4 +1,4 @@
-import type React from 'react';
+import React from 'react';
 import { Component, sstyled, Root } from '@semcore/core';
 import { Box, Flex } from '@semcore/flex-box';
 import ScrollArea, { hideScrollBarsFromScreenReadersContext } from '@semcore/scroll-area';

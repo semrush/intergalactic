@@ -1,4 +1,4 @@
-import type React from 'react';
+import React from 'react';
 import { snapshot } from '@semcore/testing-utils/snapshot';
 import { expect, test, describe, beforeEach, vi, assertType } from '@semcore/testing-utils/vitest';
 import { render, fireEvent, cleanup, userEvent } from '@semcore/testing-utils/testing-library';

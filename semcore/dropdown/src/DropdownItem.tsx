@@ -1,4 +1,4 @@
-import type React from 'react';
+import React from 'react';
 import { Root, sstyled } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 

@@ -6,7 +6,7 @@ import type {
   TrendNode,
 } from './insights';
 
-import type React from 'react';
+import React from 'react';
 import type { DataSummarizationConfig } from './hints';
 import { getIntl, type Intl } from './intl';
 

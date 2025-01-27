@@ -1,4 +1,4 @@
-import type React from 'react';
+import React from 'react';
 import { type ChangeEvent, ComponentProps } from 'react';
 import type dayjs from 'dayjs';
 import type { Flex, Box, BoxProps } from '@semcore/flex-box';

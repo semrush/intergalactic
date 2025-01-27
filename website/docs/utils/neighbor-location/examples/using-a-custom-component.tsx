@@ -1,4 +1,4 @@
-import type React from 'react';
+import React from 'react';
 import NeighborLocation from 'intergalactic/neighbor-location';
 
 const CustomComponent: React.FC<{ neighborLocation?: string }> = ({ neighborLocation }) => {

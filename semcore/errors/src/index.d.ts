@@ -1,4 +1,4 @@
-import type React from 'react';
+import React from 'react';
 import type { Box, FlexProps } from '@semcore/flex-box';
 import type { Intergalactic, PropGetterFn, UnknownProperties } from '@semcore/core';
 import type { TIllustrationNamesErrors } from '@semcore/illustration';

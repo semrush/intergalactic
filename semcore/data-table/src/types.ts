@@ -1,4 +1,4 @@
-import type React from 'react';
+import React from 'react';
 import { ROW_GROUP } from './DataTable';
 import type { Property } from 'csstype';
 import type { FlexProps } from '@semcore/flex-box';

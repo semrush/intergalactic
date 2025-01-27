@@ -1,4 +1,4 @@
-import type React from 'react';
+import React from 'react';
 import { Chart } from 'intergalactic/d3-chart';
 
 type KEY = string;

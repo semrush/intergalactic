@@ -1,4 +1,4 @@
-import type React from 'react';
+import React from 'react';
 import createComponent from '@semcore/core';
 import { scaleLinear, type ScaleLinear } from 'd3-scale';
 import { AbstractChart } from './AbstractChart';

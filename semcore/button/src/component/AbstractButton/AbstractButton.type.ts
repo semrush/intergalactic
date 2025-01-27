@@ -1,4 +1,4 @@
-import type React from 'react';
+import React from 'react';
 import type { PropGetterFn } from '@semcore/core';
 import type { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import type { BoxProps } from '@semcore/flex-box';

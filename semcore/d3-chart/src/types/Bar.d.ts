@@ -1,4 +1,4 @@
-import type React from 'react';
+import React from 'react';
 import type { UnknownProperties } from '@semcore/core';
 import type { Context } from './context';
 import type { IntergalacticD3Component } from './Plot';

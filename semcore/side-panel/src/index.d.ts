@@ -1,4 +1,4 @@
-import type React from 'react';
+import React from 'react';
 import type { PortalProps } from '@semcore/portal';
 import type { FadeInOutProps, SlideProps } from '@semcore/animation';
 import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';

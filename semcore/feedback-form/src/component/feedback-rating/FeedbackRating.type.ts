@@ -1,4 +1,4 @@
-import type React from 'react';
+import React from 'react';
 import type { FeedbackFormProps } from '../../index';
 import type { FieldProps } from 'react-final-form';
 

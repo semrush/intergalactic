@@ -1,4 +1,4 @@
-import type React from 'react';
+import React from 'react';
 
 export type IfChildrenType<T> = ((props: T) => React.ReactNode) | React.ReactNode;
 

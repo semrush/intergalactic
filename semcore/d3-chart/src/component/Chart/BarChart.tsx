@@ -1,4 +1,4 @@
-import type React from 'react';
+import React from 'react';
 import createComponent from '@semcore/core';
 import type { BaseLegendProps } from './AbstractChart.type';
 import type { BarChartData, BarChartProps, BarChartType } from './BarChart.type';

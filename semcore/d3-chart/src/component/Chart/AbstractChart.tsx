@@ -2,7 +2,7 @@ import { makeDataHintsContainer } from '../../a11y/hints';
 import type { LegendItem } from '../ChartLegend/LegendItem/LegendItem.type';
 import type { ScaleBand, ScaleLinear, ScaleTime } from 'd3-scale';
 import { interpolateValue } from '../../utils';
-import type React from 'react';
+import React from 'react';
 import { Component, Root, sstyled } from '@semcore/core';
 import type { BaseChartProps, BaseLegendProps, ListData, ObjectData } from './AbstractChart.type';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';

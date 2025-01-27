@@ -1,4 +1,4 @@
-import type React from 'react';
+import React from 'react';
 import type { FlexProps } from '@semcore/flex-box';
 import type { LegendItemKey } from '../ChartLegend/LegendItem/LegendItem.type';
 import type Icon from '@semcore/icon';

@@ -1,4 +1,4 @@
-import type React from 'react';
+import React from 'react';
 import type { Intergalactic } from '@semcore/core';
 import type { Flex } from '@semcore/flex-box';
 import type { ScaleLinear } from 'd3-scale';

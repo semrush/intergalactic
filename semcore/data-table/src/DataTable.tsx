@@ -295,7 +295,7 @@ class RootDefinitionTable extends Component<AsProps> {
       .flatMap((column) => column.props.ref.current?.getAnimations?.())
       .filter((a) => a !== undefined) as Animation[];
 
-    let animationPromise: Promise<Animation[] | undefined> = Promise.resolve();
+    let animationPromise: Promise<Animation[] | undefined> = Promise.resolve(undefined);
 
     if (animations.length > 0) {
       animationPromise = Promise.all(

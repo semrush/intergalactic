@@ -149,6 +149,7 @@ class Body extends Component<AsProps, {}, State> {
 
       let props: CellProps = {
         name: cell.name,
+        // @ts-ignore
         children: <>{cell.data}</>,
         justifyContent: column?.props?.justifyContent,
         alignItems: column?.props?.alignItems,
