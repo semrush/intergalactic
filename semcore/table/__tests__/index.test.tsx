@@ -6,7 +6,7 @@ import { render, cleanup } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
 
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
-import Table, { RowTheme } from '../src';
+import Table, { type RowTheme } from '../src';
 
 describe('Table', () => {
   beforeEach(cleanup);

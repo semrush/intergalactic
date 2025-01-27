@@ -1,5 +1,5 @@
-import fs from 'fs/promises';
-import { resolve as resolvePath } from 'path';
+import fs from 'node:fs/promises';
+import { resolve as resolvePath } from 'node:path';
 import svgToJsx from 'svg-to-jsx';
 import { Window } from 'happy-dom';
 import esbuild from 'esbuild';
@@ -32,7 +32,7 @@ await Promise.all(
     }
     let illustrationPrimaryColor: undefined | string;
     let illustrationSecondaryColor: undefined | string;
-    let secondaryColorDarkness = Infinity;
+    let secondaryColorDarkness = Number.POSITIVE_INFINITY;
     const traverseSvgChildren = (element: Element) => {
       if (element.tagName === 'MASK') return;
       for (let i = 0; i < element.children.length; i++) {

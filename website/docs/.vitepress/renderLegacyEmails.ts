@@ -1,6 +1,6 @@
 import { createMarkdownRenderer } from 'vitepress/dist/node/index';
-import fs from 'fs';
-import { resolve as resolvePath } from 'path';
+import fs from 'node:fs';
+import { resolve as resolvePath } from 'node:path';
 
 const markdownRenderer = await createMarkdownRenderer(resolvePath(__dirname, '..'));
 

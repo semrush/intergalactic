@@ -1,8 +1,8 @@
-import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import { ModalProps } from '@semcore/modal';
-import { Flex, Box, BoxProps } from '@semcore/flex-box';
-import Button from '@semcore/button';
-import { Text } from '@semcore/typography';
+import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import type { ModalProps } from '@semcore/modal';
+import type { Flex, Box, BoxProps } from '@semcore/flex-box';
+import type Button from '@semcore/button';
+import type { Text } from '@semcore/typography';
 
 /** @deprecated */
 export interface IFullscreenModalProps extends FullscreenModalProps, UnknownProperties {}

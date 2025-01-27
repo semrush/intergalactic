@@ -1,6 +1,6 @@
 import Git from 'simple-git';
 import { log, prerelaseSuffix } from '../utils';
-import * as crypto from 'crypto';
+import * as crypto from 'node:crypto';
 import { allowedScopes } from '../utils/allowedScopes';
 
 const git = Git();

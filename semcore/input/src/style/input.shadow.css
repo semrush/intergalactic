@@ -51,8 +51,8 @@ SValue {
   }
 }
 
-SInput[disabled] SOutline, SValue:disabled ~ SOutline {
-
+SInput[disabled] SOutline,
+SValue:disabled ~ SOutline {
   opacity: var(--intergalactic-disabled-opacity, 0.3);
   cursor: default;
   pointer-events: none;
@@ -94,10 +94,10 @@ SAddon[disabled] {
   pointer-events: none;
 }
 
-SAddon[size='m']:not(SButton) {
+SAddon[size="m"]:not(SButton) {
   padding: 0 var(--intergalactic-spacing-2x, 8px);
 }
-SAddon[size='l']:not(SButton) {
+SAddon[size="l"]:not(SButton) {
   padding: 0 var(--intergalactic-spacing-2x, 8px) 0 var(--intergalactic-spacing-3x, 12px);
 }
 
@@ -105,19 +105,19 @@ SInput SAddon:nth-last-child(2) {
   margin-right: -1px;
 }
 
-SValue[size='m'] {
+SValue[size="m"] {
   padding: 0 var(--intergalactic-spacing-2x, 8px);
 }
-SValue[size='l'] {
+SValue[size="l"] {
   padding: 0 var(--intergalactic-spacing-3x, 12px);
 }
 
-SInput[size='m'] {
+SInput[size="m"] {
   font-size: var(--intergalactic-fs-200, 14px);
   height: var(--intergalactic-form-control-m, 28px);
 }
 
-SInput[size='l'] {
+SInput[size="l"] {
   font-size: var(--intergalactic-fs-300, 16px);
   height: var(--intergalactic-form-control-l, 40px);
 }
@@ -126,7 +126,7 @@ SInput[focused] {
   z-index: 1;
 }
 
-SInput[state='normal'] {
+SInput[state="normal"] {
   & SOutline {
     border-color: var(--intergalactic-border-primary, #c4c7cf);
   }
@@ -136,7 +136,7 @@ SInput[state='normal'] {
     box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
   }
 }
-SInput[state='valid'] {
+SInput[state="valid"] {
   & SOutline {
     border-color: var(--intergalactic-border-success-active, #007c65);
   }
@@ -146,7 +146,7 @@ SInput[state='valid'] {
     box-shadow: var(--intergalactic-keyboard-focus-valid, 0px 0px 0px 3px rgba(0, 159, 129, 0.5));
   }
 }
-SInput[state='invalid'] {
+SInput[state="invalid"] {
   & SOutline {
     border-color: var(--intergalactic-border-critical-active, #d1002f);
   }
@@ -157,19 +157,19 @@ SInput[state='invalid'] {
   }
 }
 
-SInput[neighborLocation='right'] {
+SInput[neighborLocation="right"] {
   & SOutline {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
 }
-SInput[neighborLocation='both'] {
+SInput[neighborLocation="both"] {
   & SOutline {
     border-radius: 0;
     border-left: none;
   }
 }
-SInput[neighborLocation='left'] {
+SInput[neighborLocation="left"] {
   & SOutline {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
@@ -177,15 +177,15 @@ SInput[neighborLocation='left'] {
   }
 }
 
-SValue[neighborLocation='right'] {
+SValue[neighborLocation="right"] {
   padding-right: 0;
 }
 
-SValue[neighborLocation='both'] {
+SValue[neighborLocation="both"] {
   padding-left: 0;
   padding-right: 0;
 }
 
-SValue[neighborLocation='left'] {
+SValue[neighborLocation="left"] {
   padding-left: 0;
 }

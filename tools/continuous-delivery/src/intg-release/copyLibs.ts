@@ -1,6 +1,6 @@
-import path from 'path';
+import path from 'node:path';
 import fs from 'fs-extra';
-import { fileURLToPath } from 'url';
+import { fileURLToPath } from 'node:url';
 import { log } from '../utils';
 
 const filename = fileURLToPath(import.meta.url);

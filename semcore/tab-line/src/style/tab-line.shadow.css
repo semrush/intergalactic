@@ -49,7 +49,7 @@ STabLineItem {
 
   &::before,
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     left: 0;
     bottom: -1px;
@@ -116,7 +116,7 @@ SAddon {
   justify-content: center;
 }
 
-STabLineItem[size='m'] {
+STabLineItem[size="m"] {
   height: 28px;
   min-width: 18px;
 
@@ -126,7 +126,7 @@ STabLineItem[size='m'] {
   }
 }
 
-STabLineItem[size='l'] {
+STabLineItem[size="l"] {
   height: 40px;
   min-width: 26px;
 
@@ -136,13 +136,12 @@ STabLineItem[size='l'] {
   }
 }
 
-STabLineItem[neighborLocation='left'] {
+STabLineItem[neighborLocation="left"] {
   margin-right: 0;
 }
 
 @media (prefers-reduced-motion) {
   STabLineItem {
-
     &::before,
     &::after {
       transition: none;

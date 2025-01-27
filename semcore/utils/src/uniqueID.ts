@@ -1,5 +1,5 @@
 import React from 'react';
-import { UnknownProperties, register } from './core/index';
+import { type UnknownProperties, register } from './core/index';
 import useEnhancedEffect from './use/useEnhancedEffect';
 
 type ContextType = {

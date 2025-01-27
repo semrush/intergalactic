@@ -1,6 +1,6 @@
 import semver from 'semver';
-import { ChangelogChange } from '@semcore/changelog-handler';
-import { Package } from './collectPackages';
+import type { ChangelogChange } from '@semcore/changelog-handler';
+import type { Package } from './collectPackages';
 import { log, normalizeSemver, prerelaseSuffix, prereleaseBaseIndex } from './utils';
 import dayjs from 'dayjs';
 import { reversedTopologicalSort } from './reversedTolopologicalSort';

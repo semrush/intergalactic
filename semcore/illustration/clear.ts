@@ -1,5 +1,5 @@
-import fs from 'fs/promises';
-import { resolve as resolvePath } from 'path';
+import fs from 'node:fs/promises';
+import { resolve as resolvePath } from 'node:path';
 
 const fsEntities = await fs.readdir('.');
 const arraysShallowEqual = <T>(a: T[], b: T[]) =>

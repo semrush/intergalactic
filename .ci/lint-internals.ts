@@ -1,4 +1,4 @@
-import fs from 'fs/promises';
+import fs from 'node:fs/promises';
 const stagedFiles = process.argv.slice(2);
 
 const bannedTokens = ['semrush[dot]net'.replace('[dot]', '.')];

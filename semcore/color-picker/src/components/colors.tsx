@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 import { Root, sstyled } from '@semcore/core';
 import { Box, Flex } from '@semcore/flex-box';
 import MathPlusM from '@semcore/icon/MathPlus/m';

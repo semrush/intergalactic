@@ -27,13 +27,13 @@ SPickerInput {
   }
 }
 
-SPickerInput[size='m'] {
+SPickerInput[size="m"] {
   width: 19px;
   margin: 0 var(--intergalactic-spacing-2x, 8px);
   padding: 0;
 }
 
-SPickerInput[size='l'] {
+SPickerInput[size="l"] {
   width: 21px;
   margin: 0 var(--intergalactic-spacing-2x, 8px);
   padding: 0;
@@ -81,7 +81,7 @@ SPickerFormat {
   }
 }
 
-SPickerFormat[size='m'] {
+SPickerFormat[size="m"] {
   height: var(--intergalactic-form-control-m, 28px);
   font-size: var(--intergalactic-fs-200, 14px);
   /* disable-tokens-validator */
@@ -91,7 +91,7 @@ SPickerFormat[size='m'] {
   }
 }
 
-SPickerFormat[size='l'] {
+SPickerFormat[size="l"] {
   height: var(--intergalactic-form-control-l, 40px);
   font-size: var(--intergalactic-fs-300, 16px);
   margin: 0 calc(-1 * var(--intergalactic-spacing-1x, 4px)) 0 0;

@@ -1,5 +1,5 @@
-const fs = require('fs');
-const path = require('path');
+const fs = require('node:fs');
+const path = require('node:path');
 const semver = require('semver');
 const finderPackageJson = require('find-package-json');
 const parse = require('./process');
@@ -114,7 +114,7 @@ const DEFAULT_OPTIONS = {
   },
 };
 
-module.exports = function ({ types: t }, opts) {
+module.exports = ({ types: t }, opts) => {
   const options = Object.assign({}, DEFAULT_OPTIONS, opts);
 
   function log(msg, level = 'info') {

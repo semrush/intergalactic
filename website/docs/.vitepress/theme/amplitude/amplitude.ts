@@ -1,5 +1,5 @@
 import { watch } from 'vue';
-import { Router } from 'vitepress';
+import type { Router } from 'vitepress';
 import amplitudeHttp from './amplitude-client';
 
 const clickedPlaygrounds = new Set<string>();
@@ -32,9 +32,8 @@ const findPreviousHeader = (node: Element): Element | null => {
   if (prevElement) {
     if (prevElement.tagName === 'H2') {
       return prevElement;
-    } else {
-      return findPreviousHeader(prevElement);
     }
+    return findPreviousHeader(prevElement);
   }
   return null;
 };
@@ -228,15 +227,12 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
       });
     }
   }
+  // External links
+  if (node.tagName === 'A' && !node.classList.contains('page-top-tabs-tab')) {
+    const link = node.getAttribute('href');
 
-  {
-    // External links
-    if (node.tagName === 'A' && !node.classList.contains('page-top-tabs-tab')) {
-      const link = node.getAttribute('href');
-
-      if (link && new URL(link).host !== window.location.host) {
-        return logEvent('links:click', { pathname, link });
-      }
+    if (link && new URL(link).host !== window.location.host) {
+      return logEvent('links:click', { pathname, link });
     }
   }
 };

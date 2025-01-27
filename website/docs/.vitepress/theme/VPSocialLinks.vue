@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-import type { DefaultTheme } from 'vitepress/theme'
-import VPSocialLink from 'vitepress/dist/client/theme-default/components/VPSocialLink.vue'
-import Tooltip from './Tooltip.vue'
+import type { DefaultTheme } from 'vitepress/theme';
+import VPSocialLink from 'vitepress/dist/client/theme-default/components/VPSocialLink.vue';
+import Tooltip from './Tooltip.vue';
 
 defineProps<{
-  links: DefaultTheme.SocialLink[]
-}>()
+  links: DefaultTheme.SocialLink[];
+}>();
 </script>
 
 <template>

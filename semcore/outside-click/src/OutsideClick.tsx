@@ -1,6 +1,10 @@
 import React, { cloneElement, useEffect } from 'react';
-import createComponent, { IFunctionProps, Intergalactic, UnknownProperties } from '@semcore/core';
-import { getNodeByRef, NodeByRef, useForkRef } from '@semcore/utils/lib/ref';
+import createComponent, {
+  type IFunctionProps,
+  type Intergalactic,
+  type UnknownProperties,
+} from '@semcore/core';
+import { getNodeByRef, type NodeByRef, useForkRef } from '@semcore/utils/lib/ref';
 import ownerDocument from '@semcore/utils/lib/ownerDocument';
 import useEventCallback from '@semcore/utils/lib/use/useEventCallback';
 import getOriginChildren from '@semcore/utils/lib/getOriginChildren';

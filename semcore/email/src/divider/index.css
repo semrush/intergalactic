@@ -1,4 +1,4 @@
-@import '../core/var.css';
+@import "../core/var.css";
 
 .divider {
   border-color: var(--stroke-gray);

@@ -40,9 +40,7 @@ function isObject(obj) {
 }
 
 function someArray(arr1, arr2) {
-  return arr1.filter(function (i) {
-    return arr2.indexOf(i) !== -1;
-  });
+  return arr1.filter((i) => arr2.indexOf(i) !== -1);
 }
 
 const useUpdatePopperEveryFrame = (popperRef) => {

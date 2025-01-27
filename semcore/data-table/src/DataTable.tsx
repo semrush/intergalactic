@@ -1,14 +1,14 @@
 import React from 'react';
-import { Property } from 'csstype';
+import type { Property } from 'csstype';
 import createComponent, {
   Component,
-  PropGetterFn,
+  type PropGetterFn,
   Root,
   sstyled,
-  UnknownProperties,
-  Intergalactic,
+  type UnknownProperties,
+  type Intergalactic,
 } from '@semcore/core';
-import { Box, BoxProps, FlexProps } from '@semcore/flex-box';
+import { Box, type BoxProps, type FlexProps } from '@semcore/flex-box';
 import syncScroll from '@semcore/utils/lib/syncScroll';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import fire from '@semcore/utils/lib/fire';
@@ -295,7 +295,7 @@ class RootDefinitionTable extends Component<AsProps> {
       .flatMap((column) => column.props.ref.current?.getAnimations?.())
       .filter((a) => a !== undefined) as Animation[];
 
-    let animationPromise: Promise<Animation[] | void> = Promise.resolve();
+    let animationPromise: Promise<Animation[] | undefined> = Promise.resolve();
 
     if (animations.length > 0) {
       animationPromise = Promise.all(

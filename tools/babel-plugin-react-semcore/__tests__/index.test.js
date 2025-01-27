@@ -1,5 +1,5 @@
 import pluginTester from 'babel-plugin-tester';
-import path from 'path';
+import path from 'node:path';
 import { describe, it } from 'vitest';
 const plugin = require('../src/index');
 

@@ -1,9 +1,9 @@
-import React from 'react';
-import { PropGetterFn } from '@semcore/core';
-import { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
-import { BoxProps } from '@semcore/flex-box';
-import { NeighborItemProps } from '@semcore/neighbor-location';
-import { TooltipHintProps } from '@semcore/tooltip';
+import type React from 'react';
+import type { PropGetterFn } from '@semcore/core';
+import type { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import type { BoxProps } from '@semcore/flex-box';
+import type { NeighborItemProps } from '@semcore/neighbor-location';
+import type { TooltipHintProps } from '@semcore/tooltip';
 
 export type AbstractButtonProps<S, U, T> = BoxProps &
   NeighborItemProps &

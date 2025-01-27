@@ -628,20 +628,20 @@ const MaskedInput = ({
       let { year, month, day } = parsed;
 
       if (allowedParts.month) {
-        if (month[0] !== '_' && parseInt(month[0], 10) > 1) {
+        if (month[0] !== '_' && Number.parseInt(month[0], 10) > 1) {
           month = `0${month[0]}`;
           indexesOfPipedChars.push(getOffsetTo('month'));
         }
         if (month === '00') month = '01';
-        if (month[0] !== '_' && month[1] !== '_' && parseInt(month, 10) > 12) return false;
+        if (month[0] !== '_' && month[1] !== '_' && Number.parseInt(month, 10) > 12) return false;
       }
       if (allowedParts.day) {
-        if (day[0] !== '_' && parseInt(day[0], 10) > 3) {
+        if (day[0] !== '_' && Number.parseInt(day[0], 10) > 3) {
           day = `0${day[0]}`;
           indexesOfPipedChars.push(getOffsetTo('day'));
         }
         if (day === '00') day = '01';
-        if (day[0] !== '_' && day[1] !== '_' && parseInt(day, 10) > 31) return false;
+        if (day[0] !== '_' && day[1] !== '_' && Number.parseInt(day, 10) > 31) return false;
       }
 
       year = year
@@ -667,9 +667,9 @@ const MaskedInput = ({
 
       if (fulfilled) {
         const date = new Date(0, 0, 0, 0, 0, 0, 0);
-        const yearParsed = allowedParts.year ? parseInt(year, 10) : 0;
-        const monthParsed = allowedParts.month ? parseInt(month, 10) - 1 : 0;
-        const dayParsed = allowedParts.day ? parseInt(day, 10) : 1;
+        const yearParsed = allowedParts.year ? Number.parseInt(year, 10) : 0;
+        const monthParsed = allowedParts.month ? Number.parseInt(month, 10) - 1 : 0;
+        const dayParsed = allowedParts.day ? Number.parseInt(day, 10) : 1;
 
         date.setFullYear(yearParsed, monthParsed, dayParsed);
 
@@ -679,7 +679,7 @@ const MaskedInput = ({
         }
 
         if (allowedParts.day) {
-          if (date.getDate() !== parseInt(day, 10)) {
+          if (date.getDate() !== Number.parseInt(day, 10)) {
             onMaskPipeBlock?.(date);
             return false;
           }
@@ -721,9 +721,9 @@ const MaskedInput = ({
       const fulfilled = yearFulfilled && monthFulfilled && dayFulfilled;
       if (fulfilled) {
         const date = new Date(0, 0, 0, 0, 0, 0, 0);
-        const yearParsed = allowedParts.year ? parseInt(year, 10) : 0;
-        const monthParsed = allowedParts.month ? parseInt(month, 10) - 1 : 0;
-        const dayParsed = allowedParts.day ? parseInt(day, 10) : 1;
+        const yearParsed = allowedParts.year ? Number.parseInt(year, 10) : 0;
+        const monthParsed = allowedParts.month ? Number.parseInt(month, 10) - 1 : 0;
+        const dayParsed = allowedParts.day ? Number.parseInt(day, 10) : 1;
 
         date.setFullYear(yearParsed, monthParsed, dayParsed);
 
@@ -739,9 +739,9 @@ const MaskedInput = ({
 
       if (yearFulfilled && allowedParts.year) {
         const date = new Date(0, 0, 0, 0, 0, 0, 0);
-        date.setFullYear(parseInt(year, 10));
+        date.setFullYear(Number.parseInt(year, 10));
         if (monthFulfilled && allowedParts.month) {
-          date.setMonth(parseInt(month, 10) - 1);
+          date.setMonth(Number.parseInt(month, 10) - 1);
         }
         onDisplayedPeriodChange(date);
       }

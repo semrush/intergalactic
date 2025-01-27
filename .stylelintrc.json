@@ -1,6 +1,7 @@
 {
   "extends": "stylelint-config-recommended",
   "rules": {
+    "declaration-property-value-no-unknown": null,
     "selector-type-no-unknown": null,
     "no-descending-specificity": null,
     "property-no-unknown": [
@@ -15,7 +16,6 @@
         "ignorePseudoClasses": ["global"]
       }
     ],
-    "font-family-no-missing-generic-family-keyword": null,
-    "indentation": 2
+    "font-family-no-missing-generic-family-keyword": null
   }
 }

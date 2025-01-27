@@ -5,7 +5,7 @@ const COLORS = preval`
 `;
 
 function shadeHexColor(color: string, percent: number) {
-  const f = parseInt(color.slice(1), 16);
+  const f = Number.parseInt(color.slice(1), 16);
   const t = percent < 0 ? 0 : 255;
   const p = percent < 0 ? percent * -1 : percent;
   const R = f >> 16;
@@ -39,8 +39,8 @@ export function shade(color?: string, percent = 1) {
 }
 
 function blendHexColors(colorOne: string, colorTwo: string, percent: number) {
-  const f = parseInt(colorOne.slice(1), 16);
-  const t = parseInt(colorTwo.slice(1), 16);
+  const f = Number.parseInt(colorOne.slice(1), 16);
+  const t = Number.parseInt(colorTwo.slice(1), 16);
   const R1 = f >> 16;
   const G1 = (f >> 8) & 0x00ff;
   const B1 = f & 0x0000ff;
@@ -61,9 +61,9 @@ function blendRGBColors(colorOne: string, colorTwo: string, percent: number) {
   const [R, G, B] = colorRGB(colorOne);
   const t = colorTwo.split(',');
 
-  return `rgb(${Math.round((parseInt(t[0].slice(4)) - R) * percent) + R},${
-    Math.round((parseInt(t[1]) - G) * percent) + G
-  },${Math.round((parseInt(t[2]) - B) * percent) + B})`;
+  return `rgb(${Math.round((Number.parseInt(t[0].slice(4)) - R) * percent) + R},${
+    Math.round((Number.parseInt(t[1]) - G) * percent) + G
+  },${Math.round((Number.parseInt(t[2]) - B) * percent) + B})`;
 }
 
 export function blend(colorOne?: string, colorTwo?: string, percent = 1) {
@@ -83,9 +83,9 @@ export function blend(colorOne?: string, colorTwo?: string, percent = 1) {
 
 function colorRGB(color: string) {
   const f = color.split(',');
-  const R = parseInt(f[0].slice(4));
-  const G = parseInt(f[1]);
-  const B = parseInt(f[2]);
+  const R = Number.parseInt(f[0].slice(4));
+  const G = Number.parseInt(f[1]);
+  const B = Number.parseInt(f[2]);
   return [R, G, B];
 }
 
@@ -94,7 +94,7 @@ function hex2rgb(hex: string) {
     .replace(/^#?([a-f\d])([a-f\d])([a-f\d])$/i, (m, r, g, b) => `#${r}${r}${g}${g}${b}${b}`)
     .substring(1)
     .match(/.{2}/g)
-    ?.map((x) => parseInt(x, 16))!;
+    ?.map((x) => Number.parseInt(x, 16))!;
 }
 
 export function opacity(color?: string, percent = 1) {
@@ -117,7 +117,10 @@ export function brightness(color: any) {
     color = colorRGB(color);
   }
   return Math.round(
-    (parseInt(color[0]) * 299 + parseInt(color[1]) * 587 + parseInt(color[2]) * 114) / 1000,
+    (Number.parseInt(color[0]) * 299 +
+      Number.parseInt(color[1]) * 587 +
+      Number.parseInt(color[2]) * 114) /
+      1000,
   );
 }
 
@@ -146,20 +149,20 @@ export const light = (color?: string, factor = 1) => {
       throw new Error(`Got invalid color ${color}`);
     }
     const partSize = color.length === 4 ? 1 : 2;
-    r = parseInt(color.substring(1, 1 + partSize), 16);
-    g = parseInt(color.substring(1 + partSize, 1 + partSize * 2), 16);
-    b = parseInt(color.substring(1 + partSize * 2, 1 + partSize * 3), 16);
+    r = Number.parseInt(color.substring(1, 1 + partSize), 16);
+    g = Number.parseInt(color.substring(1 + partSize, 1 + partSize * 2), 16);
+    b = Number.parseInt(color.substring(1 + partSize * 2, 1 + partSize * 3), 16);
     a = 1; // not handled for now
   } else if (color.startsWith('rgb(')) {
     const trimmed = color.substring('rgb('.length, color.length - ')'.length);
-    const parts = trimmed.split(',').map((part) => parseInt(part.trim(), 10));
+    const parts = trimmed.split(',').map((part) => Number.parseInt(part.trim(), 10));
     r = parts[0];
     g = parts[1];
     b = parts[2];
     a = 1;
   } else if (color.startsWith('rgba(')) {
     const trimmed = color.substring('rgba('.length, color.length - ')'.length);
-    const parts = trimmed.split(',').map((part) => parseInt(part.trim(), 10));
+    const parts = trimmed.split(',').map((part) => Number.parseInt(part.trim(), 10));
     r = parts[0];
     g = parts[1];
     b = parts[2];

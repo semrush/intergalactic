@@ -29,7 +29,7 @@
 }
 
 .christmasLights li:before {
-  content: '';
+  content: "";
   position: absolute;
   background: #505050;
   width: 10px;
@@ -41,7 +41,7 @@
 }
 
 .christmasLights li:after {
-  content: '';
+  content: "";
   top: calc(-1 * (var(--intergalactic-spacing-6x) - 1px));
   left: calc(var(--intergalactic-spacing-2x) + 2px);
   position: absolute;

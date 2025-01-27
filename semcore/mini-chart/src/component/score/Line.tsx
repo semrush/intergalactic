@@ -4,7 +4,7 @@ import { Box, Flex } from '@semcore/flex-box';
 import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
 
 import style from './line.shadow.css';
-import {
+import type {
   ScoreLineComponent,
   ScoreLineGaugeProps,
   SegmentProps,

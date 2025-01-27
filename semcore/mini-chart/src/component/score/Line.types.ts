@@ -1,8 +1,8 @@
-import { Intergalactic, ComponentType } from '@semcore/utils/lib/core';
-import { CommonScoreProps } from './Score';
-import React from 'react';
-import { BoxProps, Box } from '@semcore/flex-box';
-import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
+import type { Intergalactic, ComponentType } from '@semcore/utils/lib/core';
+import type { CommonScoreProps } from './Score';
+import type React from 'react';
+import type { BoxProps, Box } from '@semcore/flex-box';
+import type resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
 
 type Enumerate<N extends number, Acc extends number[] = []> = Acc['length'] extends N
   ? Acc[number]

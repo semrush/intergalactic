@@ -1,5 +1,5 @@
-const fs = require('fs');
-const path = require('path');
+const fs = require('node:fs');
+const path = require('node:path');
 const stringHash = require('string-hash');
 const replaceAll = require('string.prototype.replaceall');
 const { postcss } = require('@semcore/babel-plugin-styles');
@@ -32,11 +32,11 @@ function createImports(paths) {
 
 const storage = new Cache();
 
-module.exports = function (baseImport, themeImports, pluginOptions) {
+module.exports = (baseImport, themeImports, pluginOptions) => {
   pluginOptions.postcss.shadow = Object.assign(
     {},
     {
-      generateHash: function (css, filename) {
+      generateHash: (css, filename) => {
         const packageJson = finderPackageJson(filename).next();
         const relativeFilename = path.relative(packageJson.filename, filename);
         // replace for tests

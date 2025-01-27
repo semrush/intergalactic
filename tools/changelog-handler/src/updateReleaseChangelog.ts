@@ -1,5 +1,5 @@
-import { resolve as resolvePath } from 'path';
-import { fileURLToPath } from 'url';
+import { resolve as resolvePath } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import fs from 'fs-extra';
 import { patchReleaseChangelog } from './patchers/patchReleaseChangelog';
 import { toMarkdown } from 'marked-ast-markdown';

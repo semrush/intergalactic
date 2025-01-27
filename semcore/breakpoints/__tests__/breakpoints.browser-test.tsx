@@ -10,7 +10,9 @@ test.describe('Simple-use - Breakpoints Button Size', () => {
   ];
 
   breakpoints.forEach(({ width, expectedSize, expectedHeight }) => {
-    test(`Should render button with size '${expectedSize}' at viewport width ${width}px`, async ({ page }) => {
+    test(`Should render button with size '${expectedSize}' at viewport width ${width}px`, async ({
+      page,
+    }) => {
       const standPath = 'stories/components/breakpoints/docs/examples/simple-use.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
       await page.setContent(htmlContent);
@@ -38,7 +40,9 @@ test.describe('Manual control - Breakpoints Button Size', () => {
   ];
 
   breakpoints.forEach(({ width, expectedSize, expectedHeight }) => {
-    test(`Should render button with size '${expectedSize}' at viewport width ${width}px`, async ({ page }) => {
+    test(`Should render button with size '${expectedSize}' at viewport width ${width}px`, async ({
+      page,
+    }) => {
       const standPath = 'stories/components/breakpoints/docs/examples/simple-use.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
       await page.setContent(htmlContent);
@@ -95,7 +99,10 @@ test.describe('Custom media - Breakpoints Text', () => {
   ];
 
   breakpoints.forEach(({ width, expectedText }) => {
-    test(`Should render  '${expectedText}' at viewport width ${width}px`, async ({ page, browserName }) => {
+    test(`Should render  '${expectedText}' at viewport width ${width}px`, async ({
+      page,
+      browserName,
+    }) => {
       const standPath = 'stories/components/breakpoints/docs/examples/custom-media.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
       await page.setContent(htmlContent);

@@ -4,7 +4,7 @@ import { Box } from '@semcore/flex-box';
 import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
 
 import style from './style/counter.shadow.css';
-import { CounterProps } from './index';
+import type { CounterProps } from './index';
 
 const enhance = [resolveColorEnhance()] as const;
 

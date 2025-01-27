@@ -1,7 +1,7 @@
-import { Intergalactic, UnknownProperties } from '@semcore/core';
-import { Flex } from '@semcore/flex-box';
-import { IconProps } from '@semcore/icon';
-import { FadeInOutProps } from '@semcore/animation';
+import type { Intergalactic, UnknownProperties } from '@semcore/core';
+import type { Flex } from '@semcore/flex-box';
+import type { IconProps } from '@semcore/icon';
+import type { FadeInOutProps } from '@semcore/animation';
 
 export type NoticeGlobalTheme = 'danger' | 'warning' | 'success' | 'info' | 'neutral';
 

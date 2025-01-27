@@ -399,9 +399,7 @@ function Checkbox(providedProps) {
   );
 }
 
-const InputSearchWrapper = function () {
-  return <Root render={InputSearch} />;
-};
+const InputSearchWrapper = () => <Root render={InputSearch} />;
 
 const Select = createComponent(
   RootSelect,

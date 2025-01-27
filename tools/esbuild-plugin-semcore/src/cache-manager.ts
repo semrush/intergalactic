@@ -5,9 +5,9 @@ import {
   writeFile,
   rm as removeFile,
   mkdir as createDir,
-} from 'fs/promises';
-import { relative as resolveRelativePath, resolve as resolvePath } from 'path';
-import { createHash } from 'crypto';
+} from 'node:fs/promises';
+import { relative as resolveRelativePath, resolve as resolvePath } from 'node:path';
+import { createHash } from 'node:crypto';
 
 const verbose = false;
 
@@ -72,7 +72,7 @@ export const makeCacheManager = (id: string, cwd = '.', cacheTtl = 1000 * 60 * 6
       )
         .map((textDate, index) => ({
           filename: lastUseFiles[index],
-          lastUse: parseInt(textDate, 10),
+          lastUse: Number.parseInt(textDate, 10),
           textDate,
         }))
         .filter(({ lastUse, textDate }) => {
@@ -127,7 +127,7 @@ export const makeCacheManager = (id: string, cwd = '.', cacheTtl = 1000 * 60 * 6
         return null;
       }
       const lastUseString = await readFile(cachedLastUseFilePath, 'utf-8');
-      const lastUse = parseInt(lastUseString, 10);
+      const lastUse = Number.parseInt(lastUseString, 10);
       if (Number.isNaN(lastUse) || Date.now() - lastUse > cacheTtl) {
         return null;
       }

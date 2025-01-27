@@ -6,7 +6,7 @@ import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import useEnhancedEffect from '@semcore/utils/lib/use/useEnhancedEffect';
 
 import style from './style/drag-and-drop.shadow.css';
-import { DropZoneProps } from './index';
+import type { DropZoneProps } from './index';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import { ScreenReaderOnly } from '@semcore/flex-box';
 import uniqueIDEnhance from '@semcore/utils/lib/uniqueID';
@@ -166,8 +166,8 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     const i18nKey = !zoneName
       ? 'grabbing'
       : currentItem.isDropZone
-      ? 'grabbingJustWithZone'
-      : 'grabbingFullWithZone';
+        ? 'grabbingJustWithZone'
+        : 'grabbingFullWithZone';
 
     this.setA11yHint(i18nKey, {
       itemText,
@@ -202,8 +202,8 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     const i18nKey = !zoneName
       ? 'dropped'
       : currentItem.isDropZone
-      ? 'droppedJustWithZone'
-      : 'droppedFullWithZone';
+        ? 'droppedJustWithZone'
+        : 'droppedFullWithZone';
 
     this.setA11yHint(i18nKey, {
       itemText,
@@ -331,7 +331,8 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
         this.updateItemScaling();
       }
       return false;
-    } else if (event.key === 'Escape' && this.state.dragging) {
+    }
+    if (event.key === 'Escape' && this.state.dragging) {
       event.preventDefault();
       event.stopPropagation();
 
@@ -356,7 +357,8 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
       }
 
       return false;
-    } else if (event.key.startsWith('Arrow') && this.state.dragging) {
+    }
+    if (event.key.startsWith('Arrow') && this.state.dragging) {
       if (this.state.animatedScaling !== null) {
         this.setState({ animatedScaling: null });
       }
@@ -599,7 +601,7 @@ const findNextRectangleIndex = <
   direction: DirectionArrows,
 ): number => {
   let candidate: Rectangle | null = null;
-  let minDistance: number = Infinity;
+  let minDistance: number = Number.POSITIVE_INFINITY;
 
   for (let i = 0; i < rectangles.length; i++) {
     const rect = rectangles[i];

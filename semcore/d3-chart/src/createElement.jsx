@@ -10,71 +10,70 @@ import Plot from './Plot';
 const EXCLUDE_PROPS = ['data', 'scale'];
 
 function createElementRender() {
-  const Element = React.forwardRef(function (
-    { render, childrenPosition = 'below', x: xS, y: yS, ...source },
-    ref,
-  ) {
-    const {
-      forwardRef = null,
+  const Element = React.forwardRef(
+    ({ render, childrenPosition = 'below', x: xS, y: yS, ...source }, ref) => {
+      const {
+        forwardRef = null,
 
-      children: _children,
-      Children,
-      x = xS,
-      y = yS,
-      ...props
-    } = Element.props;
-    let children = getOriginChildren(Children);
+        children: _children,
+        Children,
+        x = xS,
+        y = yS,
+        ...props
+      } = Element.props;
+      let children = getOriginChildren(Children);
 
-    let mergedProps = assignProps(
-      {
-        x: xS,
-        y: yS,
-        ...props,
-        ref: useForkRef(forwardRef, ref),
-      },
-      {
-        x,
-        y,
-        ...source,
-      },
-    );
+      let mergedProps = assignProps(
+        {
+          x: xS,
+          y: yS,
+          ...props,
+          ref: useForkRef(forwardRef, ref),
+        },
+        {
+          x,
+          y,
+          ...source,
+        },
+      );
 
-    if (typeof children === 'function') {
-      const _child = mergedProps.children;
-      mergedProps = assignProps(children(mergedProps), mergedProps);
-      children = mergedProps.children;
-      mergedProps.children = _child;
-    }
+      if (typeof children === 'function') {
+        const _child = mergedProps.children;
+        mergedProps = assignProps(children(mergedProps), mergedProps);
+        children = mergedProps.children;
+        mergedProps.children = _child;
+      }
 
-    const Tag = typeof render === 'string' ? mergedProps.tag || render : render;
+      const Tag = typeof render === 'string' ? mergedProps.tag || render : render;
 
-    if (childrenPosition === 'inside') {
-      mergedProps.children = children === undefined ? mergedProps.children : children;
-    }
+      if (childrenPosition === 'inside') {
+        mergedProps.children = children === undefined ? mergedProps.children : children;
+      }
 
-    if (!Tag) {
-      throw new Error('Element expected render prop to be passed');
-    }
-    return [
-      <React.Fragment key='child-above'>
-        {childrenPosition === 'above' ? children : null}
-      </React.Fragment>,
-      <Tag
-        aria-hidden
-        {...propsForElement(
-          {
-            __excludeProps: EXCLUDE_PROPS,
-            ...mergedProps,
-          },
-          Tag,
-        )}
-        key='element'
-      />,
-      <React.Fragment key='child-below'>
-        {childrenPosition === 'below' ? children : null}
-      </React.Fragment>,
-    ];
-  });
+      if (!Tag) {
+        throw new Error('Element expected render prop to be passed');
+      }
+      return [
+        <React.Fragment key='child-above'>
+          {childrenPosition === 'above' ? children : null}
+        </React.Fragment>,
+        <Tag
+          aria-hidden
+          {...propsForElement(
+            {
+              __excludeProps: EXCLUDE_PROPS,
+              ...mergedProps,
+            },
+            Tag,
+          )}
+          key='element'
+        />,
+        <React.Fragment key='child-below'>
+          {childrenPosition === 'below' ? children : null}
+        </React.Fragment>,
+      ];
+    },
+  );
 
   Element.props = {};
   return Element;

@@ -7,7 +7,7 @@ import dataIllustrations from '../docs/style/illustration/components/illustratio
 
 import algoliasearch from 'algoliasearch';
 import { buildNavigation } from '../builder/navigation';
-import { resolve as resolvePath } from 'path';
+import { resolve as resolvePath } from 'node:path';
 import { buildArticle } from '../builder/build-article/build-article';
 
 dotenv.config();

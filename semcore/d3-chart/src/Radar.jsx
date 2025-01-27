@@ -637,15 +637,14 @@ class Hover extends Component {
             d={circle()}
           />,
         );
-      } else {
-        return sstyled(styles)(
-          <SPieRect
-            render='path'
-            // @ts-ignore
-            d={line()(this.getPolygon(index))}
-          />,
-        );
       }
+      return sstyled(styles)(
+        <SPieRect
+          render='path'
+          // @ts-ignore
+          d={line()(this.getPolygon(index))}
+        />,
+      );
     }
 
     return null;

@@ -10,7 +10,7 @@ SNotice {
   color: var(--intergalactic-text-primary, #191b23);
 }
 
-SNotice[theme='info'] {
+SNotice[theme="info"] {
   background-color: var(--intergalactic-bg-secondary-info, #e9f7ff);
   border-color: var(--intergalactic-border-info, #8ecdff);
 
@@ -23,7 +23,7 @@ SNotice[theme='info'] {
   }
 }
 
-SNotice[theme='danger'] {
+SNotice[theme="danger"] {
   background-color: var(--intergalactic-bg-secondary-critical, #fff0f7);
   border-color: var(--intergalactic-border-critical, #ffaeb5);
 
@@ -36,7 +36,7 @@ SNotice[theme='danger'] {
   }
 }
 
-SNotice[theme='warning'] {
+SNotice[theme="warning"] {
   background-color: var(--intergalactic-bg-secondary-warning, #fff3d9);
   border-color: var(--intergalactic-border-warning, #ffb26e);
 
@@ -49,7 +49,7 @@ SNotice[theme='warning'] {
   }
 }
 
-SNotice[theme='success'] {
+SNotice[theme="success"] {
   background-color: var(--intergalactic-bg-secondary-success, #dbfee8);
   border-color: var(--intergalactic-border-success, #59ddaa);
 
@@ -62,7 +62,7 @@ SNotice[theme='success'] {
   }
 }
 
-SNotice[theme='muted'] {
+SNotice[theme="muted"] {
   background-color: var(--intergalactic-bg-secondary-neutral, #f4f5f9);
   border-color: var(--intergalactic-border-secondary, #e0e1e9);
 
@@ -93,27 +93,27 @@ SLabel {
   align-items: center;
 }
 
-SLabel[theme='info'] {
+SLabel[theme="info"] {
   color: var(--intergalactic-icon-primary-neutral, #6c6e79);
 }
 
-SLabel[theme='danger'] {
+SLabel[theme="danger"] {
   color: var(--intergalactic-icon-primary-critical, #ff4953);
 }
 
-SLabel[theme='warning'] {
+SLabel[theme="warning"] {
   color: var(--intergalactic-icon-primary-warning, #ff642d);
 }
 
-SLabel[theme='success'] {
+SLabel[theme="success"] {
   color: var(--intergalactic-icon-primary-success, #009f81);
 }
 
-SLabel[theme='muted'] {
+SLabel[theme="muted"] {
   color: var(--intergalactic-icon-primary-neutral, #6c6e79);
 }
 
-SLabel[theme='custom'] {
+SLabel[theme="custom"] {
   color: var(--color);
 }
 
@@ -122,7 +122,7 @@ SCloseIcon {
   margin-left: var(--intergalactic-spacing-4x, 16px);
 }
 
-SNotice[theme='custom'] {
+SNotice[theme="custom"] {
   background-color: var(--backgroundColor);
   border-color: var(--backgroundColor);
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import Button from 'intergalactic/button';
 import { Text } from 'intergalactic/typography';
 import Select from 'intergalactic/select';
-import SidePanel, { SidePanelPlacement } from 'intergalactic/side-panel';
+import SidePanel, { type SidePanelPlacement } from 'intergalactic/side-panel';
 
 const placements: SidePanelPlacement[] = ['left', 'right', 'bottom'];
 

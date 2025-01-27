@@ -1,10 +1,10 @@
 // Forked from https://gitlab.com/hesxenon/esbuild-plugin-simple-css-modules
 
 import type * as Esbuild from 'esbuild';
-import * as Path from 'path';
+import * as Path from 'node:path';
 import * as PostCss from 'postcss';
-import { readFile } from 'fs/promises';
-import { createHash } from 'crypto';
+import { readFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
 
 export const esbuildPluginCssModules = (): Esbuild.Plugin => ({
   name: 'simple-css-modules',

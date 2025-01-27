@@ -27,8 +27,8 @@ SEllipsis[maxLine] {
   overflow-wrap: break-word;
 }
 
-SContainerMiddle> :has(SBeginning),
-SContainerMiddle> :has(STail) {
+SContainerMiddle > :has(SBeginning),
+SContainerMiddle > :has(STail) {
   display: flex;
   width: 100%;
 }

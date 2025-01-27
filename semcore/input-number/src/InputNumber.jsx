@@ -238,10 +238,9 @@ class Value extends Component {
       if (value.length > prevValue.length) {
         this.handlers.displayValue(numberFormatter.format(value) + this.separatorDecimal);
         return false;
-      } else {
-        this.handlers.value(value.slice(0, -1), event);
-        return false;
       }
+      this.handlers.value(value.slice(0, -1), event);
+      return false;
     }
 
     const digits = /[0-9.-]+/.test(value);

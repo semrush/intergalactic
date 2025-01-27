@@ -1,13 +1,13 @@
-import { access as fsAccess } from 'fs/promises';
+import { access as fsAccess } from 'node:fs/promises';
 
 import { fromMarkdown } from 'mdast-util-from-markdown';
 
-import { Content as MarkdownToken, Root as MarkdownRoot } from 'mdast';
+import type { Content as MarkdownToken, Root as MarkdownRoot } from 'mdast';
 import { gfm } from 'micromark-extension-gfm';
 import { gfmFromMarkdown } from 'mdast-util-gfm';
 import { toHast } from 'mdast-util-to-hast';
 import { toHtml } from 'hast-util-to-html';
-import { createHash } from 'crypto';
+import { createHash } from 'node:crypto';
 import type { HastNode } from 'mdast-util-to-hast/lib';
 
 const cyrillicFallback = {

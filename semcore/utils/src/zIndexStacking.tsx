@@ -22,7 +22,7 @@ export const useZIndexStacking = (designToken?: ZIndexDesignTokens) => {
     const tokenName = designToken.startsWith('--intergalactic-')
       ? designToken
       : `--intergalactic-${designToken}`;
-    const tokenValue = parseInt(
+    const tokenValue = Number.parseInt(
       contextTokens?.[tokenName] || defaultDesignThemeTokens[tokenName],
       10,
     );

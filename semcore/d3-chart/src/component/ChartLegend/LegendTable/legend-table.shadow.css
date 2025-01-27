@@ -8,12 +8,12 @@ SLegendTable[columns-count] {
   grid-row-gap: 8px;
 }
 
-SColumnItem[size='l'] {
+SColumnItem[size="l"] {
   font-size: var(--intergalactic-fs-300, 16px);
   text-align: right;
 }
 
-SColumnItem[size='m'] {
+SColumnItem[size="m"] {
   font-size: var(--intergalactic-fs-200, 14px);
   text-align: right;
 }

@@ -96,7 +96,7 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
     }
     if (color.startsWith('rgba(') && color.endsWith(')')) {
       const lastComa = color.lastIndexOf(',');
-      const alpha = parseFloat(color.substring(lastComa + 1, color.length - 1));
+      const alpha = Number.parseFloat(color.substring(lastComa + 1, color.length - 1));
       if (Number.isNaN(alpha)) {
         throw new Error(`Unable to parse rgba of ${color}`);
       }
@@ -106,7 +106,7 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
       if (resolvedColor.startsWith('#')) {
         if (resolvedColor.length === 1 + 3) {
           resolvedColor = [resolvedColor[1], resolvedColor[2], resolvedColor[3]]
-            .map((hex) => parseInt(hex, 16))
+            .map((hex) => Number.parseInt(hex, 16))
             .join(', ');
         } else if (resolvedColor.length === 1 + 6) {
           resolvedColor = [
@@ -114,7 +114,7 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
             resolvedColor.substring(3, 5),
             resolvedColor.substring(5, 7),
           ]
-            .map((hex) => parseInt(hex, 16))
+            .map((hex) => Number.parseInt(hex, 16))
             .join(', ');
         } else {
           throw new Error(
@@ -135,8 +135,8 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
         baseColor.length === 4
           ? [baseColor[1], baseColor[2], baseColor[3]]
           : [baseColor.substring(1, 3), baseColor.substring(3, 5), baseColor.substring(5, 7)]
-      ).map((chunk) => parseInt(chunk, 16));
-      const a = parseFloat(color.split(', ')[1]);
+      ).map((chunk) => Number.parseInt(chunk, 16));
+      const a = Number.parseFloat(color.split(', ')[1]);
 
       return `rgba(${r}, ${g}, ${b}, ${a})`;
     }
@@ -170,8 +170,9 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
       if (!resolvedValue.endsWith('px')) {
         throw new Error(`Unsupported expression ${token}`);
       }
-      return `${parseFloat(resolvedValue) * parseFloat(factor)}px`;
-    } else if (token.includes('{') && token.includes('}')) {
+      return `${Number.parseFloat(resolvedValue) * Number.parseFloat(factor)}px`;
+    }
+    if (token.includes('{') && token.includes('}')) {
       const reference = token
         .substring(token.indexOf('{') + 1, token.indexOf('}'))
         .replace(/\./g, '-');
@@ -183,9 +184,8 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
         throw new Error(`On moment of resolving ${token}, ${resolvedToken} was not resolved yet`);
       }
       return resolvedToken;
-    } else {
-      return token;
     }
+    return token;
   };
   const replaceColors = (str: string) => {
     let result = '';

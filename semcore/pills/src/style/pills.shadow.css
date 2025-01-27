@@ -64,7 +64,7 @@ SPill[disabled] {
   /* Disable link interactions */
   pointer-events: none;
 
-  &>* {
+  & > * {
     opacity: var(--intergalactic-disabled-opacity, 0.3);
   }
 }
@@ -86,7 +86,7 @@ SAddon {
   justify-content: center;
 }
 
-SPill[size='m'] {
+SPill[size="m"] {
   height: var(--intergalactic-form-control-m, 28px);
   min-width: var(--intergalactic-form-control-m, 28px);
   font-size: var(--intergalactic-fs-200, 14px);
@@ -112,7 +112,7 @@ SPill[size='m'] {
   }
 }
 
-SPill[size='l'] {
+SPill[size="l"] {
   height: var(--intergalactic-form-control-l, 40px);
   min-width: var(--intergalactic-form-control-l, 40px);
   font-size: var(--intergalactic-fs-300, 16px);
@@ -143,18 +143,18 @@ SPill[size='l'] {
   }
 }
 
-SPill[neighborLocation='right'] {
+SPill[neighborLocation="right"] {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
 
-SPill[neighborLocation='both'] {
+SPill[neighborLocation="both"] {
   border-radius: 0;
   /* disable-tokens-validator */
   margin-left: -1px;
 }
 
-SPill[neighborLocation='left'] {
+SPill[neighborLocation="left"] {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   /* disable-tokens-validator */

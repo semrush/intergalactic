@@ -6,7 +6,7 @@ import TabLine from '../src';
 
 import { render, fireEvent, cleanup } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
-import { Intergalactic } from '@semcore/core';
+import type { Intergalactic } from '@semcore/core';
 import { assertType } from 'vitest';
 
 describe('TabLine', () => {
@@ -101,13 +101,11 @@ describe('TabLine', () => {
   });
 
   test.concurrent('Should support Addon', async ({ task }) => {
-    const Addon = React.forwardRef<HTMLSpanElement>(function (props, ref) {
-      return (
-        <span ref={ref} {...propsForElement(props)}>
-          Addon prop
-        </span>
-      );
-    });
+    const Addon = React.forwardRef<HTMLSpanElement>((props, ref) => (
+      <span ref={ref} {...propsForElement(props)}>
+        Addon prop
+      </span>
+    ));
     const component = (
       <TabLine value={1}>
         <TabLine.Item value={1} addonLeft={Addon} addonRight={Addon}>

@@ -13,7 +13,7 @@ import assignProps, { assignHandlers } from '../src/assignProps';
 import reactToText from '../src/reactToText';
 import { getRef, setRef, getNodeByRef } from '../src/ref';
 import keyboardFocusEnhance, {
-  KeyboardFocusEnhanceHook,
+  type KeyboardFocusEnhanceHook,
 } from '../src/enhances/keyboardFocusEnhance';
 
 describe('Utils CSS in JS', () => {
@@ -297,7 +297,7 @@ describe('Utils isNode', () => {
   beforeEach(cleanup);
 
   test.concurrent('should return false for invalid React elements', () => {
-    const nodes = [Infinity, undefined, false, null];
+    const nodes = [Number.POSITIVE_INFINITY, undefined, false, null];
     const factory = (node: any) => {
       expect(isNode(node)).toBeFalsy();
     };
@@ -312,8 +312,8 @@ describe('Utils isNode', () => {
     const nodes = [
       'test',
       1,
-      <div>test</div>,
-      [<div>test</div>, <div>test2</div>, <div>test3</div>],
+      <div key={'single'}>test</div>,
+      [<div key={1}>test</div>, <div key={2}>test2</div>, <div key={3}>test3</div>],
     ];
     const factory = (node: any) => {
       expect(isNode(node)).toBeTruthy();
@@ -406,7 +406,7 @@ describe('Utils reactToText', () => {
   test.concurrent('support undefined types', () => {
     expect(reactToText(undefined)).toBe('');
     expect(reactToText(null)).toBe('');
-    expect(reactToText(NaN)).toBe('');
+    expect(reactToText(Number.NaN)).toBe('');
   });
 
   test.concurrent('support array and obj', () => {

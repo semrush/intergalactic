@@ -1,8 +1,8 @@
 import dayjs from 'dayjs';
 import { parse as parseMarkdown } from 'marked-ast';
-import { Token, toMarkdown } from 'marked-ast-markdown';
+import { type Token, toMarkdown } from 'marked-ast-markdown';
 import { isValidSemver } from '../utils';
-import { Changelog, ChangelogChangeLabel } from '../types';
+import type { Changelog, ChangelogChangeLabel } from '../types';
 
 export const releaseChangelogParser = (
   changelogText: string,

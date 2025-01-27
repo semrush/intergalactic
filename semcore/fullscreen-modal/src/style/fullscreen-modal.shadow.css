@@ -75,7 +75,7 @@ SDescription {
   color: var(--intergalactic-text-secondary, #6c6e79);
 
   &::before {
-    content: '';
+    content: "";
     position: relative;
     top: var(--intergalactic-spacing-1x, 4px);
     display: block;
@@ -92,9 +92,7 @@ SHeader {
   align-items: baseline;
   padding-left: var(--intergalactic-spacing-8x, 32px);
   padding-bottom: var(--intergalactic-spacing-2x, 8px);
-  padding-right: calc(
-    var(--intergalactic-spacing-20x, 80px) - var(--intergalactic-spacing-2x, 8px)
-  );
+  padding-right: calc(var(--intergalactic-spacing-20x, 80px) - var(--intergalactic-spacing-2x, 8px));
   padding-top: var(--intergalactic-spacing-10x, 40px);
   min-height: 76px;
   box-shadow: inset 0 -1px 0 var(--intergalactic-border-primary, #c4c7cf);

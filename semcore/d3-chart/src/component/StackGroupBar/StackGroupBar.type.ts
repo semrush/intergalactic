@@ -1,7 +1,7 @@
-import { ScaleBand, ScaleLinear } from 'd3-scale';
-import { Stack } from 'd3-shape';
+import type { ScaleBand, ScaleLinear } from 'd3-scale';
+import type { Stack } from 'd3-shape';
 // @ts-ignore
-import { IntergalacticD3Component } from '../../Plot';
+import type { IntergalacticD3Component } from '../../Plot';
 
 type StackGroupData = {
   [key: string]: number;

@@ -1,8 +1,8 @@
-import React from 'react';
-import { UnknownProperties, Intergalactic } from '@semcore/core';
-import { Box, BoxProps } from '@semcore/flex-box';
-import { ButtonProps } from '@semcore/button';
-import { ModalProps } from '@semcore/modal';
+import type React from 'react';
+import type { UnknownProperties, Intergalactic } from '@semcore/core';
+import type { Box, BoxProps } from '@semcore/flex-box';
+import type { ButtonProps } from '@semcore/button';
+import type { ModalProps } from '@semcore/modal';
 
 export type WizardStep = string | number | boolean;
 

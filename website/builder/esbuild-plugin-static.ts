@@ -1,7 +1,7 @@
-import { Plugin } from 'esbuild';
-import { readFile } from 'fs/promises';
-import { resolve as resolvePath, dirname as resolveDirname } from 'path';
-import { fileURLToPath } from 'url';
+import type { Plugin } from 'esbuild';
+import { readFile } from 'node:fs/promises';
+import { resolve as resolvePath, dirname as resolveDirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import glob from 'fast-glob';
 
 const __dirname = resolveDirname(fileURLToPath(import.meta.url));

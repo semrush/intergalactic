@@ -1,12 +1,12 @@
-import React from 'react';
+import type React from 'react';
 import createComponent from '@semcore/core';
-import { scaleLinear, ScaleLinear } from 'd3-scale';
+import { scaleLinear, type ScaleLinear } from 'd3-scale';
 // @ts-ignore
 import { Bubble, calculateBubbleDomain } from '../..';
 import { AbstractChart } from './AbstractChart';
-import { BubbleChartData, BubbleChartProps, BubbleChartType } from './BubbleChart.type';
+import type { BubbleChartData, BubbleChartProps, BubbleChartType } from './BubbleChart.type';
 import { Text } from '@semcore/typography';
-import { LegendItem } from '../ChartLegend/LegendItem/LegendItem.type';
+import type { LegendItem } from '../ChartLegend/LegendItem/LegendItem.type';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 
@@ -51,8 +51,8 @@ class BubbleChartComponent extends AbstractChart<
         dataDefinition.additionalInfo = legendData.additionalInfo
           ? { label: legendData.additionalInfo }
           : legendData.count
-          ? { count: legendData.count }
-          : undefined;
+            ? { count: legendData.count }
+            : undefined;
       }
 
       return dataDefinition;

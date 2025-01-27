@@ -1,16 +1,16 @@
 <script lang="ts" setup>
-import type { ButtonTranslations } from 'vitepress/types/local-search'
-import { createSearchTranslate } from 'vitepress/dist/client/theme-default/support/translation'
+import type { ButtonTranslations } from 'vitepress/types/local-search';
+import { createSearchTranslate } from 'vitepress/dist/client/theme-default/support/translation';
 
 // Button-Translations
 const defaultTranslations: { button: ButtonTranslations } = {
   button: {
     buttonText: 'Search',
-    buttonAriaLabel: 'Search'
-  }
-}
+    buttonAriaLabel: 'Search',
+  },
+};
 
-const translate = createSearchTranslate(defaultTranslations)
+const translate = createSearchTranslate(defaultTranslations);
 </script>
 
 <template>

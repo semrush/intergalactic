@@ -10,7 +10,7 @@ SBlockquote {
 SDoubleQuotation {
   position: relative;
   margin-right: var(--intergalactic-spacing-5x, 20px);
-  font-family: 'Times New Roman', serif;
+  font-family: "Times New Roman", serif;
   font-style: normal;
   /* disable-tokens-validator */
   font-size: 68px;

@@ -1,4 +1,4 @@
-@import '../skeleton/skeleton.shadow.css';
+@import "../skeleton/skeleton.shadow.css";
 
 SDonutContainer[semi] {
   g {
@@ -8,7 +8,7 @@ SDonutContainer[semi] {
 
 SDonutContainer {
   g {
-    transform: rotate(-90deg) translate(-24px)
+    transform: rotate(-90deg) translate(-24px);
   }
 }
 

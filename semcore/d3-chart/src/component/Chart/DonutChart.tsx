@@ -5,7 +5,7 @@ import { scaleLinear } from 'd3-scale';
 import { Donut } from '../..';
 import { AbstractChart } from './AbstractChart';
 import { Text } from '@semcore/typography';
-import { DonutChartData, DonutChartProps, DonutChartType } from './DonutChart.type';
+import type { DonutChartData, DonutChartProps, DonutChartType } from './DonutChart.type';
 import { Flex } from '@semcore/flex-box';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';

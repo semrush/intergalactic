@@ -1,15 +1,15 @@
 import {
-  FormProps,
-  FieldProps,
-  FieldInputProps,
-  FieldMetaState,
+  type FormProps,
+  type FieldProps,
+  type FieldInputProps,
+  type FieldMetaState,
   FieldRenderProps,
 } from 'react-final-form';
 
-import { Intergalactic } from '@semcore/core';
-import Button from '@semcore/button';
-import { NoticeSmart } from '@semcore/notice';
-import { Box } from '@semcore/flex-box';
+import type { Intergalactic } from '@semcore/core';
+import type Button from '@semcore/button';
+import type { NoticeSmart } from '@semcore/notice';
+import type { Box } from '@semcore/flex-box';
 
 import { default as FeedbackRating } from './component/feedback-rating/FeedbackRating';
 
@@ -17,7 +17,11 @@ import { default as FeedbackRating } from './component/feedback-rating/FeedbackR
 export type IFeedbackForm = FeedbackFormProps;
 export type FeedbackFormProps = FormProps & {
   /* The event is called when the form is submitted */
-  onSubmit: (values: any, form: any, callback?: (errors?: {}) => void) => {} | Promise<{}> | void;
+  onSubmit: (
+    values: any,
+    form: any,
+    callback?: (errors?: {}) => void,
+  ) => {} | Promise<{}> | undefined;
   /**
    * The property is in charge of the spinner showing
    * */

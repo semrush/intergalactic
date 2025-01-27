@@ -43,7 +43,7 @@ function transitionAnglePie({
       }
       const iStartAngle = interpolate(prevStartAngle, d.startAngle);
       const iEndAngle = interpolate(prevEndAngle, d.endAngle);
-      return function (t) {
+      return (t) => {
         d.startAngle = iStartAngle(t);
         d.endAngle = iEndAngle(t);
         self.arc = d;
@@ -67,10 +67,10 @@ function transitionRadiusPie({
     .interrupt()
     .transition()
     .duration(duration)
-    .attrTween('d', function () {
+    .attrTween('d', () => {
       const [start, end] = outerRadiusStartEnd;
       const iOuterRadius = interpolate(start, end);
-      return function (t) {
+      return (t) => {
         const outerRadiusPX = iOuterRadius(t);
         element.dataset['currentRadius'] = outerRadiusPX;
         const d3ArcOut = arc()
@@ -169,13 +169,15 @@ class DonutRoot extends Component {
     return d3Pie(pieData);
   }
 
-  bindHandlerTooltip = (visible, props, tooltipProps) => ({ clientX, clientY }) => {
-    const { eventEmitter } = this.asProps;
+  bindHandlerTooltip =
+    (visible, props, tooltipProps) =>
+    ({ clientX, clientY }) => {
+      const { eventEmitter } = this.asProps;
 
-    eventEmitter.emit('setTooltipPosition', clientX, clientY);
-    eventEmitter.emit('setTooltipRenderingProps', props, tooltipProps);
-    eventEmitter.emit('setTooltipVisible', visible);
-  };
+      eventEmitter.emit('setTooltipPosition', clientX, clientY);
+      eventEmitter.emit('setTooltipRenderingProps', props, tooltipProps);
+      eventEmitter.emit('setTooltipVisible', visible);
+    };
 
   animationActivePie = ({ data, active, selector, element }) => {
     const { duration, innerRadius, d3Arc, paddingAngle } = this.asProps;

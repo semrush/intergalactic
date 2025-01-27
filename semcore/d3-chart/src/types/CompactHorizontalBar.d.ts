@@ -1,11 +1,11 @@
 import React from 'react';
 import { UnknownProperties } from '@semcore/core';
-import { Context } from './context';
-import { BackgroundProps } from './Bar';
-import { IntergalacticD3Component } from './Plot';
-import { PatternsConfig } from './Pattern';
-import { BoxProps } from '@semcore/flex-box';
-import { TooltipType } from './Tooltip';
+import type { Context } from './context';
+import type { BackgroundProps } from './Bar';
+import type { IntergalacticD3Component } from './Plot';
+import type { PatternsConfig } from './Pattern';
+import type { BoxProps } from '@semcore/flex-box';
+import type { TooltipType } from './Tooltip';
 
 export type CompactHorizontalBarProps = Context & {
   /** Field name from `data` array item for the XAxis */

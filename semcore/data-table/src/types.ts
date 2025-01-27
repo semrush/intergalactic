@@ -1,7 +1,7 @@
-import React from 'react';
+import type React from 'react';
 import { ROW_GROUP } from './DataTable';
-import { Property } from 'csstype';
-import { FlexProps } from '@semcore/flex-box';
+import type { Property } from 'csstype';
+import type { FlexProps } from '@semcore/flex-box';
 
 export type PseudoChildPropsGetter = (
   props: { [propName: string]: unknown },

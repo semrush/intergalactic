@@ -37,8 +37,8 @@ function uncontrolledProp(
     return isControlled(propValue)
       ? propValue
       : propName in self.state
-      ? self.state[propName]
-      : propDefaultValue;
+        ? self.state[propName]
+        : propDefaultValue;
   }
 
   return [
@@ -109,9 +109,7 @@ function uncontrolled(self: any, props: any, config: any) {
 
 function Enhancement() {
   return {
-    condition: function (Component: any) {
-      return Boolean(Component.prototype.uncontrolledProps);
-    },
+    condition: (Component: any) => Boolean(Component.prototype.uncontrolledProps),
     init: function (this: any) {
       this.state = this.state || {};
       assign(this, {

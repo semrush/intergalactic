@@ -46,7 +46,7 @@ class DropdownRoot extends Component {
       name: 'stretch',
       phase: 'beforeRead',
       enabled: true,
-      fn: function ({ state, options }) {
+      fn: ({ state, options }) => {
         const [position] = state.placement.split('-');
 
         const isVertical = ['left', 'right'].indexOf(position) !== -1;

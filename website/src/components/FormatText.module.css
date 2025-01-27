@@ -24,11 +24,11 @@
   border-radius: var(--intergalactic-rounded-medium);
   background-color: #ffffff;
 }
-.formatText img [alt$='#center'] {
+.formatText img [alt$="#center"] {
   display: block;
   margin: auto;
 }
-.formatText img [alt$='#nomargin'] {
+.formatText img [alt$="#nomargin"] {
   margin: 0;
 }
 
@@ -281,7 +281,7 @@
 .formatText code {
   background-color: var(--intergalactic-tag-primary-violet-normal);
   border-radius: var(--intergalactic-rounded-small);
-  font-family: Consolas, 'Roboto Mono', 'Liberation Mono', Menlo, Courier, monospace;
+  font-family: Consolas, "Roboto Mono", "Liberation Mono", Menlo, Courier, monospace;
   padding: calc(0.5 * var(--intergalactic-spacing-1x));
 }
 

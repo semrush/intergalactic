@@ -1,9 +1,10 @@
-import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import { BoxProps } from '@semcore/flex-box';
-import Input, { InputProps } from '@semcore/input';
-import { TextProps } from '@semcore/typography';
-import Button from '@semcore/button';
-import { WithI18nEnhanceProps } from '@semcore/utils/lib/enhances/i18nEnhance';
+import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import type { BoxProps } from '@semcore/flex-box';
+import type Input from '@semcore/input';
+import type { InputProps } from '@semcore/input';
+import type { TextProps } from '@semcore/typography';
+import type Button from '@semcore/button';
+import type { WithI18nEnhanceProps } from '@semcore/utils/lib/enhances/i18nEnhance';
 
 /** @deprecated */
 export interface IPaginationProps extends PaginationProps, UnknownProperties {}

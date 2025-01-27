@@ -1,7 +1,7 @@
-import React from 'react';
+import type React from 'react';
 import createComponent from '@semcore/core';
-import { BaseChartProps, BaseLegendProps } from './AbstractChart.type';
-import {
+import type { BaseChartProps, BaseLegendProps } from './AbstractChart.type';
+import type {
   CompactHorizontalBarChartData,
   CompactHorizontalBarChartProps,
   CompactHorizontalBarChartType,

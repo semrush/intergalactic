@@ -1,4 +1,4 @@
-@import '../core/var.css';
+@import "../core/var.css";
 
 .text-size-100 {
   font-size: var(--fs-100);

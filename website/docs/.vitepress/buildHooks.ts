@@ -1,8 +1,8 @@
-import { createWriteStream } from 'fs';
-import { resolve as resolvePath } from 'path';
+import { createWriteStream } from 'node:fs';
+import { resolve as resolvePath } from 'node:path';
 import { SitemapStream } from 'sitemap';
-import { UserConfig, DefaultTheme } from 'vitepress';
-import fs from 'fs/promises';
+import type { UserConfig, DefaultTheme } from 'vitepress';
+import fs from 'node:fs/promises';
 import algoliasearch from 'algoliasearch';
 import parseMarkdownMetadata from 'parse-md';
 import iconsList from '../style/icon/icons-list.js';

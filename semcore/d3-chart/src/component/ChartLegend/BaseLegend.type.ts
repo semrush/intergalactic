@@ -1,8 +1,8 @@
-import { BoxProps, FlexProps } from '@semcore/flex-box';
-import { LegendItem, LegendItemKey, ShapeType } from './LegendItem/LegendItem.type';
-import { DataStructureHints } from '../../a11y/hints';
+import type { BoxProps, FlexProps } from '@semcore/flex-box';
+import type { LegendItem, LegendItemKey, ShapeType } from './LegendItem/LegendItem.type';
+import type { DataStructureHints } from '../../a11y/hints';
 import type { PatternsConfig } from '../../Pattern';
-import { AriaNameProps } from '../Chart/AbstractChart.type';
+import type { AriaNameProps } from '../Chart/AbstractChart.type';
 
 export type LSize = 'm' | 'l';
 

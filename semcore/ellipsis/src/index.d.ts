@@ -1,7 +1,8 @@
-import { UnknownProperties, Intergalactic } from '@semcore/core';
-import { RefObject } from 'react';
-import { Box, BoxProps } from '@semcore/flex-box';
-import Tooltip, { TooltipProps } from '@semcore/tooltip';
+import type { UnknownProperties, Intergalactic } from '@semcore/core';
+import type { RefObject } from 'react';
+import type { Box, BoxProps } from '@semcore/flex-box';
+import type Tooltip from '@semcore/tooltip';
+import type { TooltipProps } from '@semcore/tooltip';
 
 /** @deprecated */
 export interface IEllipsisProps extends EllipsisProps, UnknownProperties {}

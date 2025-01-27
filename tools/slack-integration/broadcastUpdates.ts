@@ -1,5 +1,5 @@
 import { makeMessageFromChangelogs } from './makeMessage';
-import { Changelog, collectComponentChangelogs } from '@semcore/changelog-handler';
+import { type Changelog, collectComponentChangelogs } from '@semcore/changelog-handler';
 import { sendMessage } from './sendMessage';
 import dayjs from 'dayjs';
 import isBetween from 'dayjs/plugin/isBetween.js';

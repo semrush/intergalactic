@@ -1,9 +1,9 @@
-import { UnknownProperties } from '@semcore/core';
-import { Context } from './context';
-import { curveCardinal, CurveFactory } from 'd3-shape';
-import { FadeInOutProps } from '@semcore/animation';
-import { IntergalacticD3Component } from './Plot';
-import { PatternsConfig } from './Pattern';
+import type { UnknownProperties } from '@semcore/core';
+import type { Context } from './context';
+import { curveCardinal, type CurveFactory } from 'd3-shape';
+import type { FadeInOutProps } from '@semcore/animation';
+import type { IntergalacticD3Component } from './Plot';
+import type { PatternsConfig } from './Pattern';
 
 /** @deprecated */
 export interface ILineProps extends LineProps, UnknownProperties {}

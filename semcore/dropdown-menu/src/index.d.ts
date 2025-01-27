@@ -1,15 +1,16 @@
-import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import Dropdown, {
+import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import type Dropdown from '@semcore/dropdown';
+import type {
   DropdownContext,
   DropdownProps,
   DropdownHandlers,
   DropdownTriggerProps,
   DropdownPopperAriaProps,
 } from '@semcore/dropdown';
-import { Box, BoxProps, FlexProps, Flex } from '@semcore/flex-box';
-import { ScrollAreaProps } from '@semcore/scroll-area';
-import { Text } from '@semcore/typography';
-import { eventInteraction } from '@semcore/popper';
+import type { Box, BoxProps, FlexProps, Flex } from '@semcore/flex-box';
+import type { ScrollAreaProps } from '@semcore/scroll-area';
+import type { Text } from '@semcore/typography';
+import type { eventInteraction } from '@semcore/popper';
 
 export type DropdownMenuSize = 'm' | 'l';
 

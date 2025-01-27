@@ -1,8 +1,8 @@
-import React from 'react';
+import type React from 'react';
 import createComponent from '@semcore/core';
-import { scaleLinear, ScaleLinear } from 'd3-scale';
+import { scaleLinear, type ScaleLinear } from 'd3-scale';
 import { AbstractChart } from './AbstractChart';
-import { RadarChartData, RadarChartProps, RadarChartType } from './RadarChart.type';
+import type { RadarChartData, RadarChartProps, RadarChartType } from './RadarChart.type';
 // @ts-ignore
 import { Radar } from '../..';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';

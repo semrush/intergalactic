@@ -1,10 +1,10 @@
-import { Intergalactic } from '@semcore/core';
-import { Flex } from '@semcore/flex-box';
-import { interpolateValue } from '../../utils';
-import { ScaleLinear, ScaleTime } from 'd3-scale';
-import { CurveFactory } from 'd3-shape';
-import { BaseChartProps } from './AbstractChart.type';
-import { LegendItemKey } from '../ChartLegend/LegendItem/LegendItem.type';
+import type { Intergalactic } from '@semcore/core';
+import type { Flex } from '@semcore/flex-box';
+import type { interpolateValue } from '../../utils';
+import type { ScaleLinear, ScaleTime } from 'd3-scale';
+import type { CurveFactory } from 'd3-shape';
+import type { BaseChartProps } from './AbstractChart.type';
+import type { LegendItemKey } from '../ChartLegend/LegendItem/LegendItem.type';
 
 type AreaItem = {
   x: number;

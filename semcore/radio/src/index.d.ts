@@ -1,8 +1,8 @@
-import React from 'react';
-import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import { Box, BoxProps, Flex } from '@semcore/flex-box';
-import { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
-import { Text } from '@semcore/typography';
+import type React from 'react';
+import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import type { Box, BoxProps, Flex } from '@semcore/flex-box';
+import type { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import type { Text } from '@semcore/typography';
 
 export type RadioSize = 'm' | 'l';
 export type RadioState = 'normal' | 'invalid';

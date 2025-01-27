@@ -1,6 +1,6 @@
 #!/usr/bin/env tsm
 
-const { execSync } = require('child_process');
+const { execSync } = require('node:child_process');
 const pc = require('picocolors');
 const log = console.log;
 

@@ -1,6 +1,6 @@
-import esbuild from 'esbuild';
-import { dirname as resolveDirname, resolve as resolvePath } from 'path';
-import { readFile } from 'fs/promises';
+import type esbuild from 'esbuild';
+import { dirname as resolveDirname, resolve as resolvePath } from 'node:path';
+import { readFile } from 'node:fs/promises';
 
 type EsbuildResolver = (
   path: string,

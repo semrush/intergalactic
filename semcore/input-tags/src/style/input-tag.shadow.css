@@ -22,23 +22,23 @@ SContainer {
   border-top: 1px solid transparent;
 }
 
-SInputTags>div>div {
+SInputTags > div > div {
   display: flex;
   align-items: center;
   flex-flow: row wrap;
 }
 
-SInputTags>div[data-ui-name='ScrollArea.Bar'][orientation='vertical'] {
+SInputTags > div[data-ui-name="ScrollArea.Bar"][orientation="vertical"] {
   right: 1px !important;
 }
 
-SInputTags[size='m'] {
+SInputTags[size="m"] {
   min-height: var(--intergalactic-form-control-m, 28px);
   height: auto;
   padding: 0 calc(var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px));
 }
 
-SInputTags[size='l'] {
+SInputTags[size="l"] {
   min-height: var(--intergalactic-form-control-l, 40px);
   height: auto;
   padding: 0 calc(var(--intergalactic-spacing-2x, 8px) + var(--intergalactic-spacing-05x, 2px));
@@ -52,11 +52,11 @@ STagContainer[editable] {
   cursor: pointer;
 }
 
-SInputTags[size='m'] SValue {
+SInputTags[size="m"] SValue {
   height: calc(var(--intergalactic-form-control-m, 28px) - var(--intergalactic-spacing-1x, 4px));
 }
 
-SInputTags[size='l'] SValue {
+SInputTags[size="l"] SValue {
   height: calc(var(--intergalactic-form-control-l, 40px) - var(--intergalactic-spacing-1x, 4px));
 }
 

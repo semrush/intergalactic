@@ -1,40 +1,40 @@
 <script lang="ts" setup>
-import { useScrollLock } from '@vueuse/core'
-import { inBrowser } from 'vitepress'
-import { ref, watch } from 'vue'
-import { useSidebar } from 'vitepress/dist/client/theme-default/composables/sidebar'
-import VPSidebarGroup from 'vitepress/dist/client/theme-default/components/VPSidebarGroup.vue'
+import { useScrollLock } from '@vueuse/core';
+import { inBrowser } from 'vitepress';
+import { ref, watch } from 'vue';
+import { useSidebar } from 'vitepress/dist/client/theme-default/composables/sidebar';
+import VPSidebarGroup from 'vitepress/dist/client/theme-default/components/VPSidebarGroup.vue';
 
-const { sidebarGroups, hasSidebar } = useSidebar()
+const { sidebarGroups, hasSidebar } = useSidebar();
 
 const props = defineProps<{
-  open: boolean
-}>()
+  open: boolean;
+}>();
 
 // a11y: focus Nav element when menu has opened
-const navEl = ref<HTMLElement | null>(null)
-const isLocked = useScrollLock(inBrowser ? document.body : null)
+const navEl = ref<HTMLElement | null>(null);
+const isLocked = useScrollLock(inBrowser ? document.body : null);
 
 watch(
   [props, navEl],
   () => {
     if (props.open) {
-      isLocked.value = true
-      navEl.value?.focus()
-    } else isLocked.value = false
+      isLocked.value = true;
+      navEl.value?.focus();
+    } else isLocked.value = false;
   },
-  { immediate: true, flush: 'post' }
-)
+  { immediate: true, flush: 'post' },
+);
 
-const key = ref(0)
+const key = ref(0);
 
 watch(
   sidebarGroups,
   () => {
-    key.value += 1
+    key.value += 1;
   },
-  { deep: true }
-)
+  { deep: true },
+);
 </script>
 
 <template>

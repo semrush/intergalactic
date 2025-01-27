@@ -8,14 +8,15 @@ SError {
   }
 
   @media (max-width: 320px) {
-    padding: var(--intergalactic-spacing-10x, 40px) var(--intergalactic-spacing-5x, 20px) var(--intergalactic-spacing-20x, 80px);
+    padding: var(--intergalactic-spacing-10x, 40px) var(--intergalactic-spacing-5x, 20px)
+      var(--intergalactic-spacing-20x, 80px);
   }
 
   SControls {
     display: flex;
     align-items: center;
 
-    &>*:not(:last-child) {
+    & > *:not(:last-child) {
       margin-right: var(--intergalactic-spacing-3x, 12px);
     }
   }

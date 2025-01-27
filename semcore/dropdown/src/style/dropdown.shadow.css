@@ -8,7 +8,6 @@ SDropdownPopper {
   box-shadow: var(--intergalactic-box-shadow-popper, 0px 1px 12px 0px rgba(25, 27, 35, 0.15));
   color: var(--intergalactic-text-primary, #191b23);
 
-
   SDropdownItem {
     position: relative;
     text-decoration: none;
@@ -29,8 +28,9 @@ SDropdownPopper {
   }
 
   SDropdownItem[isMenuItemCheckbox] {
-    &::before, &[selected]::after {
-      content: '';
+    &::before,
+    &[selected]::after {
+      content: "";
       position: absolute;
       border: 1px solid;
       border-radius: var(--intergalactic-addon-rounded, 4px);
@@ -49,7 +49,7 @@ SDropdownPopper {
       background-position: center center;
       background-color: var(--intergalactic-control-primary-info, #008ff8);
       border-color: var(--intergalactic-control-primary-info, #008ff8);
-      background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iNyIgdmlld0JveD0iMCAwIDEwIDciIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik04LjI1IDFMNCA1LjI1TDEuNzUgMyIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==');
+      background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iNyIgdmlld0JveD0iMCAwIDEwIDciIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik04LjI1IDFMNCA1LjI1TDEuNzUgMyIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==");
     }
   }
 
@@ -76,7 +76,7 @@ SDropdownPopper {
     pointer-events: none;
   }
 
-  SDropdownItem[size='l'] {
+  SDropdownItem[size="l"] {
     font-size: var(--intergalactic-fs-300, 16px);
     line-height: var(--intergalactic-lh-300, 150%);
     padding: var(--intergalactic-spacing-2x, 8px) var(--intergalactic-spacing-3x, 12px);
@@ -85,7 +85,8 @@ SDropdownPopper {
     &[isMenuItemCheckbox] {
       padding-left: calc(var(--intergalactic-spacing-3x, 12px) * 2 + 16px + 2px); /* padding*2 (parent item and from checkbox to content) + checkboxWidth + border*2 */
 
-      &::before, &::after {
+      &::before,
+      &::after {
         width: 20px;
         height: 20px;
         top: calc(var(--intergalactic-spacing-2x, 8px) - 1px);
@@ -94,16 +95,18 @@ SDropdownPopper {
     }
   }
 
-  SDropdownItem[size='m'] {
+  SDropdownItem[size="m"] {
     font-size: var(--intergalactic-fs-200, 14px);
     line-height: var(--intergalactic-lh-200, 142%);
-    padding: calc(var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px)) var(--intergalactic-spacing-2x, 8px);
+    padding: calc(var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px))
+      var(--intergalactic-spacing-2x, 8px);
     min-height: 32px;
 
     &[isMenuItemCheckbox] {
       padding-left: calc(var(--intergalactic-spacing-2x, 8px) * 2 + 16px + 2px); /* padding*2 (parent item and from checkbox to content) + checkboxWidth + border*2 */
 
-      &::before, &::after {
+      &::before,
+      &::after {
         width: 16px;
         height: 16px;
         top: calc(var(--intergalactic-spacing-2x, 8px) - 1px);
@@ -120,7 +123,7 @@ SDropdownPopper {
     }
   }
 
-  SDropdownItem[variant='hint'] {
+  SDropdownItem[variant="hint"] {
     color: var(--intergalactic-text-secondary, #6c6e79);
     cursor: default;
 
@@ -129,7 +132,7 @@ SDropdownPopper {
     }
   }
 
-  SDropdownItem[variant='title'] {
+  SDropdownItem[variant="title"] {
     font-weight: var(--intergalactic-bold, 700);
     cursor: default;
 

@@ -6,11 +6,11 @@ import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhan
 import style from './button.shadow.css';
 import { AbstractButton } from '../AbstractButton/AbstractButton';
 import {
-  ButtonAddonProps,
+  type ButtonAddonProps,
   ButtonChildren,
-  ButtonComponent,
+  type ButtonComponent,
   ButtonProps,
-  ButtonTextProps,
+  type ButtonTextProps,
 } from './Button.type';
 
 class RootButton extends AbstractButton {

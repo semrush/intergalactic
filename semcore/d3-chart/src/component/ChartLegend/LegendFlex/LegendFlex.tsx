@@ -2,7 +2,7 @@ import React from 'react';
 import createComponent, { sstyled, Root } from '@semcore/core';
 import { Flex } from '@semcore/flex-box';
 import style from './legend-flex.shadow.css';
-import { LegendFlexType, LegendFlexProps, TrendProps } from './LegendFlex.type';
+import type { LegendFlexType, LegendFlexProps, TrendProps } from './LegendFlex.type';
 import { LegendItemComponent } from '../LegendItem/LegendItem';
 import Divider from '@semcore/divider';
 import Checkbox from '@semcore/checkbox';

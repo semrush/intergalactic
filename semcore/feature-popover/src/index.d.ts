@@ -1,6 +1,7 @@
-import { Intergalactic, PropGetterFn, UnknownProperties } from '@semcore/core';
-import Popper, { PopperContext, PopperPopperProps, PopperProps } from '@semcore/popper';
-import { Box } from '@semcore/flex-box';
+import type { Intergalactic, PropGetterFn, UnknownProperties } from '@semcore/core';
+import type Popper from '@semcore/popper';
+import type { PopperContext, PopperPopperProps, PopperProps } from '@semcore/popper';
+import type { Box } from '@semcore/flex-box';
 
 /**
  * Popper must have an accessible names (aria-group-name).

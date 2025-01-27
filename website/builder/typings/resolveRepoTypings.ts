@@ -1,8 +1,8 @@
 import ts from 'typescript';
-import { resolve as resolvePath, dirname as resolveDirname } from 'path';
-import { readFile } from 'fs/promises';
+import { resolve as resolvePath, dirname as resolveDirname } from 'node:path';
+import { readFile } from 'node:fs/promises';
 import glob from 'fast-glob';
-import { fileURLToPath } from 'url';
+import { fileURLToPath } from 'node:url';
 import { serializeInterfaceDeclaration } from './interfaces';
 import { serializeTypeDeclaration } from './typeAliases';
 

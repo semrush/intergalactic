@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import { useData } from 'vitepress/dist/client/theme-default/composables/data'
-import { useSidebar } from 'vitepress/dist/client/theme-default/composables/sidebar'
-import VPImage from 'vitepress/dist/client/theme-default/components/VPImage.vue'
+import { useData } from 'vitepress/dist/client/theme-default/composables/data';
+import { useSidebar } from 'vitepress/dist/client/theme-default/composables/sidebar';
+import VPImage from 'vitepress/dist/client/theme-default/components/VPImage.vue';
 
-const { site, theme } = useData()
-const { hasSidebar } = useSidebar()
-
+const { site, theme } = useData();
+const { hasSidebar } = useSidebar();
 </script>
 
 <template>

@@ -16,7 +16,7 @@ const syncPlugin = (plugin) => (root, result) => {
   global.Promise = realPromise;
 };
 
-module.exports = function (options) {
+module.exports = (options) => {
   const processorPlugins = [
     atImport({
       ...options.import,

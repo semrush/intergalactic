@@ -1,10 +1,10 @@
-import { Context } from './context';
-import { UnknownProperties } from '@semcore/core';
-import { CurveFactory } from 'd3-shape';
-import { TooltipType } from './Tooltip';
-import { IntergalacticD3Component } from './Plot';
-import { BoxProps } from '@semcore/flex-box';
-import { PatternsConfig } from './Pattern';
+import type { Context } from './context';
+import type { UnknownProperties } from '@semcore/core';
+import type { CurveFactory } from 'd3-shape';
+import type { TooltipType } from './Tooltip';
+import type { IntergalacticD3Component } from './Plot';
+import type { BoxProps } from '@semcore/flex-box';
+import type { PatternsConfig } from './Pattern';
 
 /** @deprecated */
 export interface IRadarProps extends RadarProps, UnknownProperties {}

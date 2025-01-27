@@ -1,7 +1,7 @@
 import fs from 'fs-extra';
 import glob from 'fast-glob';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.resolve(filename, '..');

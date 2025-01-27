@@ -3,174 +3,227 @@
 </template>
 
 <script setup>
-import OriginalNotFoundPate from 'vitepress/dist/client/theme-default/NotFound.vue'
+import OriginalNotFoundPate from 'vitepress/dist/client/theme-default/NotFound.vue';
 import { onMounted } from 'vue';
 import { logEvent } from './amplitude/amplitude';
 
 const redirects = {
-  "/intergalactic/bug-reporting/report-bug": "/intergalactic/bug-reporting/report-bug/report-bug",
-  "/intergalactic/components/accordion": "/intergalactic/components/accordion/accordion",
-  "/intergalactic/components/auto-suggest": "/intergalactic/components/auto-suggest/auto-suggest",
-  "/intergalactic/components/badge": "/intergalactic/components/badge/badge",
-  "/intergalactic/components/base-trigger": "/intergalactic/components/base-trigger/base-trigger",
-  "/intergalactic/components/breadcrumbs": "/intergalactic/components/breadcrumbs/breadcrumbs",
-  "/intergalactic/components/button": "/intergalactic/components/button/button",
-  "/intergalactic/components/card": "/intergalactic/components/card/card",
-  "/intergalactic/components/carousel": "/intergalactic/components/carousel/carousel",
-  "/intergalactic/components/checkbox": "/intergalactic/components/checkbox/checkbox",
-  "/intergalactic/components/color-picker": "/intergalactic/components/color-picker/color-picker",
-  "/intergalactic/components/counter": "/intergalactic/components/counter/counter",
-  "/intergalactic/components/date-picker": "/intergalactic/components/date-picker/date-picker",
-  "/intergalactic/components/divider": "/intergalactic/components/divider/divider",
-  "/intergalactic/components/dot": "/intergalactic/components/dot/dot",
-  "/intergalactic/components/drag-and-drop": "/intergalactic/components/drag-and-drop/drag-and-drop",
-  "/intergalactic/components/dropdown-menu": "/intergalactic/components/dropdown-menu/dropdown-menu",
-  "/intergalactic/components/dropdown": "/intergalactic/components/dropdown/dropdown",
-  "/intergalactic/components/ellipsis": "/intergalactic/components/ellipsis/ellipsis",
-  "/intergalactic/components/feature-popover": "/intergalactic/components/feature-popover/feature-popover",
-  "/intergalactic/components/feedback": "/intergalactic/components/feedback/feedback",
-  "/intergalactic/components/filter-trigger": "/intergalactic/components/filter-trigger/filter-trigger",
-  "/intergalactic/components/flags": "/intergalactic/components/flags/flags",
-  "/intergalactic/components/fullscreen-modal": "/intergalactic/components/fullscreen-modal/fullscreen-modal",
-  "/intergalactic/components/inline-edit": "/intergalactic/components/inline-edit/inline-edit",
-  "/intergalactic/components/inline-input": "/intergalactic/components/inline-input/inline-input",
-  "/intergalactic/components/input-mask": "/intergalactic/components/input-mask/input-mask",
-  "/intergalactic/components/input-number": "/intergalactic/components/input-number/input-number",
-  "/intergalactic/components/input-phone": "/intergalactic/components/input-phone/input-phone",
-  "/intergalactic/components/input-tags": "/intergalactic/components/input-tags/input-tags",
-  "/intergalactic/components/input": "/intergalactic/components/input/input",
-  "/intergalactic/components/link": "/intergalactic/components/link/link",
-  "/intergalactic/components/modal": "/intergalactic/components/modal/modal",
-  "/intergalactic/components/notice-bubble": "/intergalactic/components/notice-bubble/notice-bubble",
-  "/intergalactic/components/notice-global": "/intergalactic/components/notice-global/notice-global",
-  "/intergalactic/components/notice": "/intergalactic/components/notice/notice",
-  "/intergalactic/components/pagination": "/intergalactic/components/pagination/pagination",
-  "/intergalactic/components/pills": "/intergalactic/components/pills/pills",
-  "/intergalactic/components/product-head": "/intergalactic/components/product-head/product-head",
-  "/intergalactic/components/progress-bar": "/intergalactic/components/progress-bar/progress-bar",
-  "/intergalactic/components/radio": "/intergalactic/components/radio/radio",
-  "/intergalactic/components/scroll-area": "/intergalactic/components/scroll-area/scroll-area",
-  "/intergalactic/components/select": "/intergalactic/components/select/select",
-  "/intergalactic/components/side-panel": "/intergalactic/components/side-panel/side-panel",
-  "/intergalactic/components/skeleton": "/intergalactic/components/skeleton/skeleton",
-  "/intergalactic/components/slider": "/intergalactic/components/slider/slider",
-  "/intergalactic/components/spin-container": "/intergalactic/components/spin-container/spin-container",
-  "/intergalactic/components/spin": "/intergalactic/components/spin/spin",
-  "/intergalactic/components/switch": "/intergalactic/components/switch/switch",
-  "/intergalactic/components/tab-line": "/intergalactic/components/tab-line/tab-line",
-  "/intergalactic/components/tab-panel": "/intergalactic/components/tab-panel/tab-panel",
-  "/intergalactic/components/tag": "/intergalactic/components/tag/tag",
-  "/intergalactic/components/textarea": "/intergalactic/components/textarea/textarea",
-  "/intergalactic/components/time-picker": "/intergalactic/components/time-picker/time-picker",
-  "/intergalactic/components/tooltip": "/intergalactic/components/tooltip/tooltip",
-  "/intergalactic/components/widget-empty": "/intergalactic/components/widget-empty/widget-empty",
-  "/intergalactic/components/wizard": "/intergalactic/components/wizard/wizard",
-  "/intergalactic/core-principles/a11y": "/intergalactic/core-principles/a11y/a11y",
-  "/intergalactic/core-principles/motion-principles-guide": "/intergalactic/core-principles/motion-principles-guide/motion-principles-guide",
-  "/intergalactic/core-principles/principles": "/intergalactic/core-principles/principles/principles",
-  "/intergalactic/core-principles/visual-loudness-scale": "/intergalactic/core-principles/visual-loudness-scale/visual-loudness-scale",
-  "/intergalactic/data-display/alluvial-chart": "/intergalactic/data-display/alluvial-chart/alluvial-chart",
-  "/intergalactic/data-display/area-chart": "/intergalactic/data-display/area-chart/area-chart",
-  "/intergalactic/data-display/bar-chart": "/intergalactic/data-display/bar-chart/bar-chart",
-  "/intergalactic/data-display/bar-horizontal": "/intergalactic/data-display/bar-horizontal/bar-horizontal",
-  "/intergalactic/data-display/bubble-chart": "/intergalactic/data-display/bubble-chart/bubble-chart",
-  "/intergalactic/data-display/chart-controls": "/intergalactic/data-display/chart-controls/chart-controls",
-  "/intergalactic/data-display/chart-legend": "/intergalactic/data-display/chart-legend/chart-legend",
-  "/intergalactic/data-display/chart-showcase": "/intergalactic/data-display/chart-showcase/chart-showcase",
-  "/intergalactic/data-display/choropleth-map": "/intergalactic/data-display/choropleth-map/choropleth-map",
-  "/intergalactic/data-display/color-palette": "/intergalactic/data-display/color-palette/color-palette",
-  "/intergalactic/data-display/d3-chart": "/intergalactic/data-display/d3-chart/d3-chart",
-  "/intergalactic/data-display/donut-chart": "/intergalactic/data-display/donut-chart/donut-chart",
-  "/intergalactic/data-display/funnel-chart": "/intergalactic/data-display/funnel-chart/funnel-chart",
-  "/intergalactic/data-display/heatmap": "/intergalactic/data-display/heatmap/heatmap",
-  "/intergalactic/data-display/histogram-chart": "/intergalactic/data-display/histogram-chart/histogram-chart",
-  "/intergalactic/data-display/kagi-chart": "/intergalactic/data-display/kagi-chart/kagi-chart",
-  "/intergalactic/data-display/line-chart": "/intergalactic/data-display/line-chart/line-chart",
-  "/intergalactic/data-display/lollipop-chart": "/intergalactic/data-display/lollipop-chart/lollipop-chart",
-  "/intergalactic/data-display/notes": "/intergalactic/data-display/notes/notes",
-  "/intergalactic/data-display/polar-chart": "/intergalactic/data-display/polar-chart/polar-chart",
-  "/intergalactic/data-display/quadrant-chart": "/intergalactic/data-display/quadrant-chart/quadrant-chart",
-  "/intergalactic/data-display/radar-chart": "/intergalactic/data-display/radar-chart/radar-chart",
-  "/intergalactic/data-display/radial-tree-chart": "/intergalactic/data-display/radial-tree-chart/radial-tree-chart",
-  "/intergalactic/data-display/scatterplot-chart": "/intergalactic/data-display/scatterplot-chart/scatterplot-chart",
-  "/intergalactic/data-display/stacked-area-chart": "/intergalactic/data-display/stacked-area-chart/stacked-area-chart",
-  "/intergalactic/data-display/stacked-bar-chart": "/intergalactic/data-display/stacked-bar-chart/stacked-bar-chart",
-  "/intergalactic/data-display/stacked-horizontal-bar": "/intergalactic/data-display/stacked-horizontal-bar/stacked-horizontal-bar",
-  "/intergalactic/data-display/venn-chart": "/intergalactic/data-display/venn-chart/venn-chart",
-  "/intergalactic/filter-group/advanced-filters": "/intergalactic/filter-group/advanced-filters/advanced-filters",
-  "/intergalactic/filter-group/filter-category": "/intergalactic/filter-group/filter-category/filter-category",
-  "/intergalactic/filter-group/filter-cp-cd-cpc": "/intergalactic/filter-group/filter-cp-cd-cpc/filter-cp-cd-cpc",
-  "/intergalactic/filter-group/filter-include-exclude": "/intergalactic/filter-group/filter-include-exclude/filter-include-exclude",
-  "/intergalactic/filter-group/filter-kd-positions-volume": "/intergalactic/filter-group/filter-kd-positions-volume/filter-kd-positions-volume",
-  "/intergalactic/filter-group/filter-rules": "/intergalactic/filter-group/filter-rules/filter-rules",
-  "/intergalactic/filter-group/filter-search": "/intergalactic/filter-group/filter-search/filter-search",
-  "/intergalactic/filter-group/filter-serp-features": "/intergalactic/filter-group/filter-serp-features/filter-serp-features",
-  "/intergalactic/filter-group/filter-tags": "/intergalactic/filter-group/filter-tags/filter-tags",
-  "/intergalactic/get-started-guide/dev-starter-guide": "/intergalactic/get-started-guide/dev-starter-guide/dev-starter-guide",
-  "/intergalactic/get-started-guide/dis-starter-guide": "/intergalactic/get-started-guide/dis-starter-guide/dis-starter-guide",
-  "/intergalactic/get-started-guide/work-figma": "/intergalactic/get-started-guide/work-figma/work-figma",
-  "/intergalactic/layout/box-system": "/intergalactic/layout/box-system/box-system",
-  "/intergalactic/layout/breakpoints": "/intergalactic/layout/breakpoints/breakpoints",
-  "/intergalactic/layout/grid-system": "/intergalactic/layout/grid-system/grid-system",
-  "/intergalactic/patterns/confirm-dialog": "/intergalactic/patterns/confirm-dialog/confirm-dialog",
-  "/intergalactic/patterns/empty-page": "/intergalactic/patterns/empty-page/empty-page",
-  "/intergalactic/patterns/export": "/intergalactic/patterns/export/export",
-  "/intergalactic/patterns/feedback-yes-no": "/intergalactic/patterns/feedback-yes-no/feedback-yes-no",
-  "/intergalactic/patterns/form": "/intergalactic/patterns/form/form",
-  "/intergalactic/patterns/global-errors": "/intergalactic/patterns/global-errors/global-errors",
-  "/intergalactic/patterns/informer": "/intergalactic/patterns/informer/informer",
-  "/intergalactic/patterns/links-order": "/intergalactic/patterns/links-order/links-order",
-  "/intergalactic/patterns/loading-states": "/intergalactic/patterns/loading-states/loading-states",
-  "/intergalactic/patterns/modal-content": "/intergalactic/patterns/modal-content/modal-content",
-  "/intergalactic/patterns/project-create": "/intergalactic/patterns/project-create/project-create",
-  "/intergalactic/patterns/project-select": "/intergalactic/patterns/project-select/project-select",
-  "/intergalactic/patterns/success-state": "/intergalactic/patterns/success-state/success-state",
-  "/intergalactic/patterns/summary": "/intergalactic/patterns/summary/summary",
-  "/intergalactic/patterns/validation-form": "/intergalactic/patterns/validation-form/validation-form",
-  "/intergalactic/patterns/web-performance": "/intergalactic/patterns/web-performance/web-performance",
-  "/intergalactic/product-emails/badge-email": "/intergalactic/product-emails/badge-email/badge-email",
-  "/intergalactic/product-emails/button-email": "/intergalactic/product-emails/button-email/button-email",
-  "/intergalactic/product-emails/core-email": "/intergalactic/product-emails/core-email/core-email",
-  "/intergalactic/product-emails/divider-email": "/intergalactic/product-emails/divider-email/divider-email",
-  "/intergalactic/product-emails/grid-email": "/intergalactic/product-emails/grid-email/grid-email",
-  "/intergalactic/product-emails/notice-email": "/intergalactic/product-emails/notice-email/notice-email",
-  "/intergalactic/product-emails/summary-email": "/intergalactic/product-emails/summary-email/summary-email",
-  "/intergalactic/product-emails/table-email": "/intergalactic/product-emails/table-email/table-email",
-  "/intergalactic/product-emails/typography-email": "/intergalactic/product-emails/typography-email/typography-email",
-  "/intergalactic/style/css-injection": "/intergalactic/style/css-injection/css-injection",
-  "/intergalactic/style/design-tokens": "/intergalactic/style/design-tokens/design-tokens",
-  "/intergalactic/style/icon": "/intergalactic/style/icon/icon",
-  "/intergalactic/style/illustration": "/intergalactic/style/illustration/illustration",
-  "/intergalactic/style/typography": "/intergalactic/style/typography/typography",
-  "/intergalactic/table-group/data-table": "/intergalactic/table-group/data-table/data-table",
-  "/intergalactic/table-group/table-controls": "/intergalactic/table-group/table-controls/table-controls",
-  "/intergalactic/table-group/table-old": "/intergalactic/table-group/table-old/table-old",
-  "/intergalactic/table-group/table-primary": "/intergalactic/table-group/table-primary/table-primary",
-  "/intergalactic/table-group/table-secondary": "/intergalactic/table-group/table-secondary/table-secondary",
-  "/intergalactic/table-group/table-showcase": "/intergalactic/table-group/table-showcase/table-showcase",
-  "/intergalactic/table-group/table-states": "/intergalactic/table-group/table-states/table-states",
-  "/intergalactic/table-group/table": "/intergalactic/table-group/data-table/data-table",
-  "/intergalactic/terms/privacy": "/intergalactic/terms/terms-of-use/terms-of-use",
-  "/intergalactic/terms/privacy/privacy": "/intergalactic/terms/terms-of-use/terms-of-use",
-  "/intergalactic/terms/terms-of-use": "/intergalactic/terms/terms-of-use/terms-of-use",
-  "/intergalactic/utils/i18n": "/intergalactic/utils/i18n/i18n",
-  "/intergalactic/utils/neighbor-location": "/intergalactic/utils/neighbor-location/neighbor-location",
-  "/intergalactic/utils/popper": "/intergalactic/utils/popper/popper",
-  "/intergalactic/utils/portal": "/intergalactic/utils/portal/portal"
-}
+  '/intergalactic/bug-reporting/report-bug': '/intergalactic/bug-reporting/report-bug/report-bug',
+  '/intergalactic/components/accordion': '/intergalactic/components/accordion/accordion',
+  '/intergalactic/components/auto-suggest': '/intergalactic/components/auto-suggest/auto-suggest',
+  '/intergalactic/components/badge': '/intergalactic/components/badge/badge',
+  '/intergalactic/components/base-trigger': '/intergalactic/components/base-trigger/base-trigger',
+  '/intergalactic/components/breadcrumbs': '/intergalactic/components/breadcrumbs/breadcrumbs',
+  '/intergalactic/components/button': '/intergalactic/components/button/button',
+  '/intergalactic/components/card': '/intergalactic/components/card/card',
+  '/intergalactic/components/carousel': '/intergalactic/components/carousel/carousel',
+  '/intergalactic/components/checkbox': '/intergalactic/components/checkbox/checkbox',
+  '/intergalactic/components/color-picker': '/intergalactic/components/color-picker/color-picker',
+  '/intergalactic/components/counter': '/intergalactic/components/counter/counter',
+  '/intergalactic/components/date-picker': '/intergalactic/components/date-picker/date-picker',
+  '/intergalactic/components/divider': '/intergalactic/components/divider/divider',
+  '/intergalactic/components/dot': '/intergalactic/components/dot/dot',
+  '/intergalactic/components/drag-and-drop':
+    '/intergalactic/components/drag-and-drop/drag-and-drop',
+  '/intergalactic/components/dropdown-menu':
+    '/intergalactic/components/dropdown-menu/dropdown-menu',
+  '/intergalactic/components/dropdown': '/intergalactic/components/dropdown/dropdown',
+  '/intergalactic/components/ellipsis': '/intergalactic/components/ellipsis/ellipsis',
+  '/intergalactic/components/feature-popover':
+    '/intergalactic/components/feature-popover/feature-popover',
+  '/intergalactic/components/feedback': '/intergalactic/components/feedback/feedback',
+  '/intergalactic/components/filter-trigger':
+    '/intergalactic/components/filter-trigger/filter-trigger',
+  '/intergalactic/components/flags': '/intergalactic/components/flags/flags',
+  '/intergalactic/components/fullscreen-modal':
+    '/intergalactic/components/fullscreen-modal/fullscreen-modal',
+  '/intergalactic/components/inline-edit': '/intergalactic/components/inline-edit/inline-edit',
+  '/intergalactic/components/inline-input': '/intergalactic/components/inline-input/inline-input',
+  '/intergalactic/components/input-mask': '/intergalactic/components/input-mask/input-mask',
+  '/intergalactic/components/input-number': '/intergalactic/components/input-number/input-number',
+  '/intergalactic/components/input-phone': '/intergalactic/components/input-phone/input-phone',
+  '/intergalactic/components/input-tags': '/intergalactic/components/input-tags/input-tags',
+  '/intergalactic/components/input': '/intergalactic/components/input/input',
+  '/intergalactic/components/link': '/intergalactic/components/link/link',
+  '/intergalactic/components/modal': '/intergalactic/components/modal/modal',
+  '/intergalactic/components/notice-bubble':
+    '/intergalactic/components/notice-bubble/notice-bubble',
+  '/intergalactic/components/notice-global':
+    '/intergalactic/components/notice-global/notice-global',
+  '/intergalactic/components/notice': '/intergalactic/components/notice/notice',
+  '/intergalactic/components/pagination': '/intergalactic/components/pagination/pagination',
+  '/intergalactic/components/pills': '/intergalactic/components/pills/pills',
+  '/intergalactic/components/product-head': '/intergalactic/components/product-head/product-head',
+  '/intergalactic/components/progress-bar': '/intergalactic/components/progress-bar/progress-bar',
+  '/intergalactic/components/radio': '/intergalactic/components/radio/radio',
+  '/intergalactic/components/scroll-area': '/intergalactic/components/scroll-area/scroll-area',
+  '/intergalactic/components/select': '/intergalactic/components/select/select',
+  '/intergalactic/components/side-panel': '/intergalactic/components/side-panel/side-panel',
+  '/intergalactic/components/skeleton': '/intergalactic/components/skeleton/skeleton',
+  '/intergalactic/components/slider': '/intergalactic/components/slider/slider',
+  '/intergalactic/components/spin-container':
+    '/intergalactic/components/spin-container/spin-container',
+  '/intergalactic/components/spin': '/intergalactic/components/spin/spin',
+  '/intergalactic/components/switch': '/intergalactic/components/switch/switch',
+  '/intergalactic/components/tab-line': '/intergalactic/components/tab-line/tab-line',
+  '/intergalactic/components/tab-panel': '/intergalactic/components/tab-panel/tab-panel',
+  '/intergalactic/components/tag': '/intergalactic/components/tag/tag',
+  '/intergalactic/components/textarea': '/intergalactic/components/textarea/textarea',
+  '/intergalactic/components/time-picker': '/intergalactic/components/time-picker/time-picker',
+  '/intergalactic/components/tooltip': '/intergalactic/components/tooltip/tooltip',
+  '/intergalactic/components/widget-empty': '/intergalactic/components/widget-empty/widget-empty',
+  '/intergalactic/components/wizard': '/intergalactic/components/wizard/wizard',
+  '/intergalactic/core-principles/a11y': '/intergalactic/core-principles/a11y/a11y',
+  '/intergalactic/core-principles/motion-principles-guide':
+    '/intergalactic/core-principles/motion-principles-guide/motion-principles-guide',
+  '/intergalactic/core-principles/principles':
+    '/intergalactic/core-principles/principles/principles',
+  '/intergalactic/core-principles/visual-loudness-scale':
+    '/intergalactic/core-principles/visual-loudness-scale/visual-loudness-scale',
+  '/intergalactic/data-display/alluvial-chart':
+    '/intergalactic/data-display/alluvial-chart/alluvial-chart',
+  '/intergalactic/data-display/area-chart': '/intergalactic/data-display/area-chart/area-chart',
+  '/intergalactic/data-display/bar-chart': '/intergalactic/data-display/bar-chart/bar-chart',
+  '/intergalactic/data-display/bar-horizontal':
+    '/intergalactic/data-display/bar-horizontal/bar-horizontal',
+  '/intergalactic/data-display/bubble-chart':
+    '/intergalactic/data-display/bubble-chart/bubble-chart',
+  '/intergalactic/data-display/chart-controls':
+    '/intergalactic/data-display/chart-controls/chart-controls',
+  '/intergalactic/data-display/chart-legend':
+    '/intergalactic/data-display/chart-legend/chart-legend',
+  '/intergalactic/data-display/chart-showcase':
+    '/intergalactic/data-display/chart-showcase/chart-showcase',
+  '/intergalactic/data-display/choropleth-map':
+    '/intergalactic/data-display/choropleth-map/choropleth-map',
+  '/intergalactic/data-display/color-palette':
+    '/intergalactic/data-display/color-palette/color-palette',
+  '/intergalactic/data-display/d3-chart': '/intergalactic/data-display/d3-chart/d3-chart',
+  '/intergalactic/data-display/donut-chart': '/intergalactic/data-display/donut-chart/donut-chart',
+  '/intergalactic/data-display/funnel-chart':
+    '/intergalactic/data-display/funnel-chart/funnel-chart',
+  '/intergalactic/data-display/heatmap': '/intergalactic/data-display/heatmap/heatmap',
+  '/intergalactic/data-display/histogram-chart':
+    '/intergalactic/data-display/histogram-chart/histogram-chart',
+  '/intergalactic/data-display/kagi-chart': '/intergalactic/data-display/kagi-chart/kagi-chart',
+  '/intergalactic/data-display/line-chart': '/intergalactic/data-display/line-chart/line-chart',
+  '/intergalactic/data-display/lollipop-chart':
+    '/intergalactic/data-display/lollipop-chart/lollipop-chart',
+  '/intergalactic/data-display/notes': '/intergalactic/data-display/notes/notes',
+  '/intergalactic/data-display/polar-chart': '/intergalactic/data-display/polar-chart/polar-chart',
+  '/intergalactic/data-display/quadrant-chart':
+    '/intergalactic/data-display/quadrant-chart/quadrant-chart',
+  '/intergalactic/data-display/radar-chart': '/intergalactic/data-display/radar-chart/radar-chart',
+  '/intergalactic/data-display/radial-tree-chart':
+    '/intergalactic/data-display/radial-tree-chart/radial-tree-chart',
+  '/intergalactic/data-display/scatterplot-chart':
+    '/intergalactic/data-display/scatterplot-chart/scatterplot-chart',
+  '/intergalactic/data-display/stacked-area-chart':
+    '/intergalactic/data-display/stacked-area-chart/stacked-area-chart',
+  '/intergalactic/data-display/stacked-bar-chart':
+    '/intergalactic/data-display/stacked-bar-chart/stacked-bar-chart',
+  '/intergalactic/data-display/stacked-horizontal-bar':
+    '/intergalactic/data-display/stacked-horizontal-bar/stacked-horizontal-bar',
+  '/intergalactic/data-display/venn-chart': '/intergalactic/data-display/venn-chart/venn-chart',
+  '/intergalactic/filter-group/advanced-filters':
+    '/intergalactic/filter-group/advanced-filters/advanced-filters',
+  '/intergalactic/filter-group/filter-category':
+    '/intergalactic/filter-group/filter-category/filter-category',
+  '/intergalactic/filter-group/filter-cp-cd-cpc':
+    '/intergalactic/filter-group/filter-cp-cd-cpc/filter-cp-cd-cpc',
+  '/intergalactic/filter-group/filter-include-exclude':
+    '/intergalactic/filter-group/filter-include-exclude/filter-include-exclude',
+  '/intergalactic/filter-group/filter-kd-positions-volume':
+    '/intergalactic/filter-group/filter-kd-positions-volume/filter-kd-positions-volume',
+  '/intergalactic/filter-group/filter-rules':
+    '/intergalactic/filter-group/filter-rules/filter-rules',
+  '/intergalactic/filter-group/filter-search':
+    '/intergalactic/filter-group/filter-search/filter-search',
+  '/intergalactic/filter-group/filter-serp-features':
+    '/intergalactic/filter-group/filter-serp-features/filter-serp-features',
+  '/intergalactic/filter-group/filter-tags': '/intergalactic/filter-group/filter-tags/filter-tags',
+  '/intergalactic/get-started-guide/dev-starter-guide':
+    '/intergalactic/get-started-guide/dev-starter-guide/dev-starter-guide',
+  '/intergalactic/get-started-guide/dis-starter-guide':
+    '/intergalactic/get-started-guide/dis-starter-guide/dis-starter-guide',
+  '/intergalactic/get-started-guide/work-figma':
+    '/intergalactic/get-started-guide/work-figma/work-figma',
+  '/intergalactic/layout/box-system': '/intergalactic/layout/box-system/box-system',
+  '/intergalactic/layout/breakpoints': '/intergalactic/layout/breakpoints/breakpoints',
+  '/intergalactic/layout/grid-system': '/intergalactic/layout/grid-system/grid-system',
+  '/intergalactic/patterns/confirm-dialog': '/intergalactic/patterns/confirm-dialog/confirm-dialog',
+  '/intergalactic/patterns/empty-page': '/intergalactic/patterns/empty-page/empty-page',
+  '/intergalactic/patterns/export': '/intergalactic/patterns/export/export',
+  '/intergalactic/patterns/feedback-yes-no':
+    '/intergalactic/patterns/feedback-yes-no/feedback-yes-no',
+  '/intergalactic/patterns/form': '/intergalactic/patterns/form/form',
+  '/intergalactic/patterns/global-errors': '/intergalactic/patterns/global-errors/global-errors',
+  '/intergalactic/patterns/informer': '/intergalactic/patterns/informer/informer',
+  '/intergalactic/patterns/links-order': '/intergalactic/patterns/links-order/links-order',
+  '/intergalactic/patterns/loading-states': '/intergalactic/patterns/loading-states/loading-states',
+  '/intergalactic/patterns/modal-content': '/intergalactic/patterns/modal-content/modal-content',
+  '/intergalactic/patterns/project-create': '/intergalactic/patterns/project-create/project-create',
+  '/intergalactic/patterns/project-select': '/intergalactic/patterns/project-select/project-select',
+  '/intergalactic/patterns/success-state': '/intergalactic/patterns/success-state/success-state',
+  '/intergalactic/patterns/summary': '/intergalactic/patterns/summary/summary',
+  '/intergalactic/patterns/validation-form':
+    '/intergalactic/patterns/validation-form/validation-form',
+  '/intergalactic/patterns/web-performance':
+    '/intergalactic/patterns/web-performance/web-performance',
+  '/intergalactic/product-emails/badge-email':
+    '/intergalactic/product-emails/badge-email/badge-email',
+  '/intergalactic/product-emails/button-email':
+    '/intergalactic/product-emails/button-email/button-email',
+  '/intergalactic/product-emails/core-email': '/intergalactic/product-emails/core-email/core-email',
+  '/intergalactic/product-emails/divider-email':
+    '/intergalactic/product-emails/divider-email/divider-email',
+  '/intergalactic/product-emails/grid-email': '/intergalactic/product-emails/grid-email/grid-email',
+  '/intergalactic/product-emails/notice-email':
+    '/intergalactic/product-emails/notice-email/notice-email',
+  '/intergalactic/product-emails/summary-email':
+    '/intergalactic/product-emails/summary-email/summary-email',
+  '/intergalactic/product-emails/table-email':
+    '/intergalactic/product-emails/table-email/table-email',
+  '/intergalactic/product-emails/typography-email':
+    '/intergalactic/product-emails/typography-email/typography-email',
+  '/intergalactic/style/css-injection': '/intergalactic/style/css-injection/css-injection',
+  '/intergalactic/style/design-tokens': '/intergalactic/style/design-tokens/design-tokens',
+  '/intergalactic/style/icon': '/intergalactic/style/icon/icon',
+  '/intergalactic/style/illustration': '/intergalactic/style/illustration/illustration',
+  '/intergalactic/style/typography': '/intergalactic/style/typography/typography',
+  '/intergalactic/table-group/data-table': '/intergalactic/table-group/data-table/data-table',
+  '/intergalactic/table-group/table-controls':
+    '/intergalactic/table-group/table-controls/table-controls',
+  '/intergalactic/table-group/table-old': '/intergalactic/table-group/table-old/table-old',
+  '/intergalactic/table-group/table-primary':
+    '/intergalactic/table-group/table-primary/table-primary',
+  '/intergalactic/table-group/table-secondary':
+    '/intergalactic/table-group/table-secondary/table-secondary',
+  '/intergalactic/table-group/table-showcase':
+    '/intergalactic/table-group/table-showcase/table-showcase',
+  '/intergalactic/table-group/table-states': '/intergalactic/table-group/table-states/table-states',
+  '/intergalactic/table-group/table': '/intergalactic/table-group/data-table/data-table',
+  '/intergalactic/terms/privacy': '/intergalactic/terms/terms-of-use/terms-of-use',
+  '/intergalactic/terms/privacy/privacy': '/intergalactic/terms/terms-of-use/terms-of-use',
+  '/intergalactic/terms/terms-of-use': '/intergalactic/terms/terms-of-use/terms-of-use',
+  '/intergalactic/utils/i18n': '/intergalactic/utils/i18n/i18n',
+  '/intergalactic/utils/neighbor-location':
+    '/intergalactic/utils/neighbor-location/neighbor-location',
+  '/intergalactic/utils/popper': '/intergalactic/utils/popper/popper',
+  '/intergalactic/utils/portal': '/intergalactic/utils/portal/portal',
+};
 
 onMounted(() => {
-  const url = new URL(location.href)
-  let pathName = url.pathname
+  const url = new URL(location.href);
+  let pathName = url.pathname;
   if (pathName.endsWith('/')) {
     pathName = pathName.substring(0, pathName.length - 1);
   }
   if (redirects[pathName]) {
-    url.pathname = redirects[pathName]
-    window.location.href = url.toString()
+    url.pathname = redirects[pathName];
+    window.location.href = url.toString();
   } else {
     logEvent('error_404', { pathname: pathName, referrer: document.referrer });
   }
-})
-
+});
 </script>

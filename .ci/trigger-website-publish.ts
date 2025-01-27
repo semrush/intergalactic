@@ -2,8 +2,8 @@
 
 import Git from 'simple-git';
 import semver from 'semver';
-import { resolve as resolvePath } from 'path';
-import { fileURLToPath } from 'url';
+import { resolve as resolvePath } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import fs from 'fs-extra';
 import inquirer from 'inquirer';
 import picocolors from 'picocolors';

@@ -4,7 +4,7 @@ import { test as base } from '@playwright/test';
 import { voiceOverTest as voiceOverBase } from '@guidepup/playwright';
 import { allure } from 'allure-playwright';
 import type { TestInfo } from 'playwright/types/test';
-import axe from 'axe-core';
+import type axe from 'axe-core';
 
 type GetAccessibilityViolations = (params: { page: Page }) => Promise<axe.AxeResults['violations']>;
 
@@ -54,11 +54,11 @@ const beforeEachTests = async ({}, use: () => Promise<void>, testInfo: TestInfo)
   await use();
 };
 
-const test = base.extend<{ testHook: void }>({
+const test = base.extend<{ testHook: undefined }>({
   testHook: [beforeEachTests, { auto: true }],
 });
 
-const voiceOverTest = voiceOverBase.extend<{ testHook: void }>({
+const voiceOverTest = voiceOverBase.extend<{ testHook: undefined }>({
   testHook: [beforeEachTests, { auto: true }],
 });
 

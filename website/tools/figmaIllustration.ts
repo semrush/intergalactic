@@ -1,5 +1,5 @@
 import fetch from 'node-fetch';
-import * as fs from 'fs';
+import * as fs from 'node:fs';
 import sharp from 'sharp';
 import * as dotenv from 'dotenv';
 import pLimit from 'p-limit';

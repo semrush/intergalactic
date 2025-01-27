@@ -1,8 +1,8 @@
 import React from 'react';
-import { Box, BoxProps } from '@semcore/flex-box';
+import { Box, type BoxProps } from '@semcore/flex-box';
 import createComponent, {
-  UnknownProperties,
-  Intergalactic,
+  type UnknownProperties,
+  type Intergalactic,
   Component,
   sstyled,
   Root,

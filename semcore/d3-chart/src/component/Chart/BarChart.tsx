@@ -1,15 +1,15 @@
-import React from 'react';
+import type React from 'react';
 import createComponent from '@semcore/core';
-import { BaseLegendProps } from './AbstractChart.type';
-import { BarChartData, BarChartProps, BarChartType } from './BarChart.type';
+import type { BaseLegendProps } from './AbstractChart.type';
+import type { BarChartData, BarChartProps, BarChartType } from './BarChart.type';
 import { scaleBand, scaleLinear, scaleTime } from 'd3-scale';
 // @ts-ignore
 import { minMax, GroupBar, HoverRect, StackBar, Line } from '../..';
 import { AbstractChart } from './AbstractChart';
-import { BarProps } from '../../types';
+import type { BarProps } from '../../types';
 import { Box, Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
-import { LegendItemKey } from '../ChartLegend/LegendItem/LegendItem.type';
+import type { LegendItemKey } from '../ChartLegend/LegendItem/LegendItem.type';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 

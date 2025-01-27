@@ -1,4 +1,4 @@
-import fs from 'fs/promises';
+import fs from 'node:fs/promises';
 
 export const allowedScopes = async () => {
   const filterFsEntries = (scopeName: string) =>

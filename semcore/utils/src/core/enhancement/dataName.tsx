@@ -1,11 +1,9 @@
 function Enhancement() {
   return {
-    wrapperProps: function (props: any, WrapperComponent: any) {
-      return {
-        'data-ui-name': WrapperComponent.displayName,
-        ...props,
-      };
-    },
+    wrapperProps: (props: any, WrapperComponent: any) => ({
+      'data-ui-name': WrapperComponent.displayName,
+      ...props,
+    }),
   };
 }
 

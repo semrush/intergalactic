@@ -17,12 +17,12 @@ SRadio[disabled] {
   pointer-events: none;
 }
 
-SText[size='m'] {
+SText[size="m"] {
   font-size: var(--intergalactic-fs-200, 14px);
   line-height: var(--intergalactic-lh-200, 142%);
 }
 
-SText[size='l'] {
+SText[size="l"] {
   font-size: var(--intergalactic-fs-300, 16px);
   line-height: var(--intergalactic-lh-300, 150%);
 }
@@ -37,7 +37,7 @@ SValue {
   margin-top: var(--intergalactic-spacing-05x, 2px);
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -50,7 +50,7 @@ SValue {
   }
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     right: 0;
     bottom: 0;
@@ -71,7 +71,7 @@ SValue[disabled] {
   user-select: none;
 }
 
-SValue[size='m'] {
+SValue[size="m"] {
   width: 16px;
   height: 16px;
 
@@ -81,7 +81,7 @@ SValue[size='m'] {
   }
 }
 
-SValue[size='l'] {
+SValue[size="l"] {
   width: 20px;
   height: 20px;
 
@@ -91,11 +91,11 @@ SValue[size='l'] {
   }
 }
 
-SValue[state='normal']::before {
+SValue[state="normal"]::before {
   border-color: var(--intergalactic-border-primary, #c4c7cf);
 }
 
-SValue[state='invalid']::before {
+SValue[state="invalid"]::before {
   border-color: var(--intergalactic-border-critical-active, #d1002f);
 }
 
@@ -104,36 +104,36 @@ SControl {
   clip: rect(1px, 1px, 1px, 1px);
 }
 
-SControl:checked~SValue::before {
+SControl:checked ~ SValue::before {
   border-color: var(--intergalactic-control-primary-info, #008ff8);
   background-color: var(--intergalactic-control-primary-info, #008ff8);
 }
 
-SControl:checked~SValue[size='m']::after {
+SControl:checked ~ SValue[size="m"]::after {
   width: 6px;
   height: 6px;
 }
 
-SControl:checked~SValue[size='l']::after {
+SControl:checked ~ SValue[size="l"]::after {
   width: 8px;
   height: 8px;
 }
 
-SValue[state='normal'][keyboardFocused]::before {
+SValue[state="normal"][keyboardFocused]::before {
   box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
   border-color: var(--intergalactic-border-info-active, #006dca);
 }
 
-SValue[state='invalid'][keyboardFocused]::before {
+SValue[state="invalid"][keyboardFocused]::before {
   box-shadow: var(--intergalactic-keyboard-focus-invalid, 0px 0px 0px 3px rgba(255, 73, 83, 0.5));
 }
 
-SControl:checked~SValue[theme]::before {
+SControl:checked ~ SValue[theme]::before {
   border-color: var(--theme);
   background-color: var(--theme);
 }
 
-SValue[state='normal'][theme]::before {
+SValue[state="normal"][theme]::before {
   border-color: var(--theme);
 }
 
@@ -147,7 +147,16 @@ SInvalidPattern {
     top: 1px;
     left: 1px;
     border-radius: 50%;
-    background-image: var(--intergalactic-border-critical-pattern, repeating-linear-gradient(315deg, rgba(209, 0, 47, 1) 0, rgba(209, 0, 47, 1) 2px, transparent 0, transparent 50%));
+    background-image: var(
+      --intergalactic-border-critical-pattern,
+      repeating-linear-gradient(
+        315deg,
+        rgba(209, 0, 47, 1) 0,
+        rgba(209, 0, 47, 1) 2px,
+        transparent 0,
+        transparent 50%
+      )
+    );
     background-size: 6px 6px;
     background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
   }

@@ -3,7 +3,7 @@ SScrollBar {
   display: flex;
 }
 
-SScrollBar[orientation='vertical'] {
+SScrollBar[orientation="vertical"] {
   top: var(--intergalactic-spacing-1x, 4px);
   right: 0;
   width: 8px;
@@ -11,7 +11,7 @@ SScrollBar[orientation='vertical'] {
   justify-content: center;
 }
 
-SScrollBar[orientation='horizontal'] {
+SScrollBar[orientation="horizontal"] {
   bottom: 0;
   height: 12px;
   align-items: center;

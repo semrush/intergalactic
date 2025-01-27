@@ -1,7 +1,7 @@
 import { Storage } from '@google-cloud/storage';
-import path from 'path';
+import path from 'node:path';
 import fs from 'fs-extra';
-import { fileURLToPath } from 'url';
+import { fileURLToPath } from 'node:url';
 import pLimit from 'p-limit';
 
 const filename = fileURLToPath(import.meta.url);

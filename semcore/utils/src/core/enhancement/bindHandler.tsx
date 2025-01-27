@@ -7,7 +7,7 @@ function arraysEqual(a: any, b: any) {
 }
 
 function handlerBinder(fn: any) {
-  return function (...depsArgs: any[]) {
+  return (...depsArgs: any[]) => {
     let memoizeds = [];
     if (handlerBinder.hasher.has(fn)) {
       memoizeds = handlerBinder.hasher.get(fn);
@@ -29,9 +29,7 @@ handlerBinder.hasher = new WeakMap();
 
 function Enhancement() {
   return {
-    condition: function (Component: any, isFunction: boolean) {
-      return !isFunction;
-    },
+    condition: (Component: any, isFunction: boolean) => !isFunction,
     init: function (this: any) {
       Object.keys(this)
         .filter((field) => field.startsWith('bindHandler'))

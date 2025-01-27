@@ -1,4 +1,4 @@
-import { DataStructureHints, DataSummarizationConfig } from './hints';
+import type { DataStructureHints, DataSummarizationConfig } from './hints';
 import { extractDataInsights } from './insights';
 import { serialize } from './serialize';
 

@@ -97,9 +97,7 @@ describe('Box', () => {
   });
 
   test("Should support Box 'tag' prop component", () => {
-    const Span = function (props) {
-      return <span {...props} />;
-    };
+    const Span = (props) => <span {...props} />;
     const { getByTestId } = render(
       <Box tag={Span} data-testid='box'>
         tag

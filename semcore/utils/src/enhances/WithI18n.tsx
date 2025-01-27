@@ -1,7 +1,7 @@
 import React, { Component, createContext } from 'react';
 import createHoc from '../createHoc';
 import { interpolate, useAsyncI18nMessages } from './i18nEnhance';
-import { UnknownProperties } from '../core';
+import type { UnknownProperties } from '../core';
 
 export type LocaleKeys = string;
 export type DictionaryItem = { [key: string]: string };
@@ -10,7 +10,7 @@ export const Context = createContext<LocaleKeys | undefined>(undefined);
 const { Provider: I18nProvider, Consumer: I18nConsumer } = Context;
 
 function getText(dictionaries: Dictionary, locale: LocaleKeys) {
-  return function (key: keyof DictionaryItem) {
+  return (key: keyof DictionaryItem) => {
     const dictionary = dictionaries[locale];
     return dictionary ? (dictionary as any)[key] : (dictionaries as any)['en'][key];
   };

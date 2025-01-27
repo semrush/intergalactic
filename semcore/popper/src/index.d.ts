@@ -1,20 +1,20 @@
-import { DOMAttributes } from 'react';
-import { Options, Instance } from '@popperjs/core/lib/types';
-import { Options as OptionsOffset } from '@popperjs/core/lib/modifiers/offset';
-import { Options as OptionsPreventOverflow } from '@popperjs/core/lib/modifiers/preventOverflow';
-import { Options as OptionsArrow } from '@popperjs/core/lib/modifiers/arrow';
-import { Options as OptionsFlip } from '@popperjs/core/lib/modifiers/flip';
-import { Options as OptionsComputeStyles } from '@popperjs/core/lib/modifiers/computeStyles';
-import { Options as OptionsEventListeners } from '@popperjs/core/lib/modifiers/eventListeners';
+import type { DOMAttributes } from 'react';
+import type { Options, Instance } from '@popperjs/core/lib/types';
+import type { Options as OptionsOffset } from '@popperjs/core/lib/modifiers/offset';
+import type { Options as OptionsPreventOverflow } from '@popperjs/core/lib/modifiers/preventOverflow';
+import type { Options as OptionsArrow } from '@popperjs/core/lib/modifiers/arrow';
+import type { Options as OptionsFlip } from '@popperjs/core/lib/modifiers/flip';
+import type { Options as OptionsComputeStyles } from '@popperjs/core/lib/modifiers/computeStyles';
+import type { Options as OptionsEventListeners } from '@popperjs/core/lib/modifiers/eventListeners';
 
-import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import { OutsideClickProps } from '@semcore/outside-click';
-import { PortalProps } from '@semcore/portal';
-import { BoxProps } from '@semcore/flex-box';
-import { ScaleProps } from '@semcore/animation';
-import { NeighborLocationProps } from '@semcore/neighbor-location';
-import { UniqueIDProps } from '@semcore/utils/lib/uniqueID';
-import { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import type { OutsideClickProps } from '@semcore/outside-click';
+import type { PortalProps } from '@semcore/portal';
+import type { BoxProps } from '@semcore/flex-box';
+import type { ScaleProps } from '@semcore/animation';
+import type { NeighborLocationProps } from '@semcore/neighbor-location';
+import type { UniqueIDProps } from '@semcore/utils/lib/uniqueID';
+import type { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
 export type eventInteraction = {
   trigger: [Array<keyof DOMAttributes<unknown>>, Array<keyof DOMAttributes<unknown>>];
@@ -59,7 +59,7 @@ export type PopperProps = OutsideClickProps &
      * @default false */
     defaultVisible?: boolean;
     /** Function called when visibility changes */
-    onVisibleChange?: (visible: boolean, e?: Event) => boolean | void;
+    onVisibleChange?: (visible: boolean, e?: Event) => boolean | undefined;
     /** PopperJS modifier settings for popper indent */
     offset?: Partial<OptionsOffset> | number | [number, number];
     /** PopperJS modifier settings for finding borders */

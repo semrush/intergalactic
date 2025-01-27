@@ -1,11 +1,11 @@
-import { Plugin } from 'esbuild';
-import { readFile } from 'fs/promises';
+import type { Plugin } from 'esbuild';
+import { readFile } from 'node:fs/promises';
 import {
   resolve as resolvePath,
   dirname as resolveDirname,
   relative as resolveRelativePath,
-} from 'path';
-import { fileURLToPath } from 'url';
+} from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { serializeNavigation } from './navigation';
 import { bundleArticle, getRepoTyping } from './build-article/build-article';
 

@@ -1,4 +1,4 @@
-import React, { ComponentClass, ComponentType, PureComponent } from 'react';
+import React, { type ComponentClass, type ComponentType, PureComponent } from 'react';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import getDisplayName from './getDisplayName';
 

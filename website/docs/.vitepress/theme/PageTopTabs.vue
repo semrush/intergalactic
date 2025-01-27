@@ -62,24 +62,27 @@
 
 </style>
 <script setup>
-import { computed } from 'vue'
-import { useData, useRoute, useRouter } from 'vitepress'
+import { computed } from 'vue';
+import { useData, useRoute, useRouter } from 'vitepress';
 const { frontmatter } = useData();
 const route = useRoute();
 const router = useRouter();
-const tabs = computed(() => (typeof frontmatter.value.tabs === 'string') ? frontmatter.value.tabs.split(',').map(tab => {
-  const urlLastPart = tab.substring(tab.lastIndexOf("('") + 2, tab.lastIndexOf("')")).trim()
-  const title = tab.substring(0, tab.indexOf("('")).trim()
-  const url = route.path.split('/').slice(0, -1).join('/') + '/' + urlLastPart
-  const current = route.path === url || route.path === (url + '.html');
-  return { url, title, current }
-}) : []);
+const tabs = computed(() =>
+  typeof frontmatter.value.tabs === 'string'
+    ? frontmatter.value.tabs.split(',').map((tab) => {
+        const urlLastPart = tab.substring(tab.lastIndexOf("('") + 2, tab.lastIndexOf("')")).trim();
+        const title = tab.substring(0, tab.indexOf("('")).trim();
+        const url = route.path.split('/').slice(0, -1).join('/') + '/' + urlLastPart;
+        const current = route.path === url || route.path === url + '.html';
+        return { url, title, current };
+      })
+    : [],
+);
 const title = computed(() => frontmatter.value.title);
 
 async function handleClick(event) {
-    event.preventDefault();
-    await router.go(event.target.href);
-    event.target.focus()
+  event.preventDefault();
+  await router.go(event.target.href);
+  event.target.focus();
 }
-
 </script>

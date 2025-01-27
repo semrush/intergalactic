@@ -1,6 +1,6 @@
 import React from 'react';
-import { DataStructureHints, DataSummarizationConfig } from './hints';
-import { Intl } from './intl';
+import type { DataStructureHints, DataSummarizationConfig } from './hints';
+import type { Intl } from './intl';
 import { defaultValueFormatter } from './serialize';
 
 export const DataAccessibilityTable: React.FC<{

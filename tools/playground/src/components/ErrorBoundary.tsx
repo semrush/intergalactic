@@ -21,9 +21,8 @@ export class ErrorBoundary extends React.Component<Props, State> {
         errorInfo: null,
         id: props.id,
       };
-    } else {
-      return null;
     }
+    return null;
   }
 
   componentDidCatch(error: Error, info: React.ErrorInfo) {

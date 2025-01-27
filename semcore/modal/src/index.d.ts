@@ -1,10 +1,10 @@
-import React from 'react';
-import { FadeInOutProps, SlideProps } from '@semcore/animation';
-import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import { PortalProps } from '@semcore/portal';
-import { Box, BoxProps } from '@semcore/flex-box';
-import { TextProps } from '@semcore/typography';
-import Button from '@semcore/button';
+import type React from 'react';
+import type { FadeInOutProps, SlideProps } from '@semcore/animation';
+import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import type { PortalProps } from '@semcore/portal';
+import type { Box, BoxProps } from '@semcore/flex-box';
+import type { TextProps } from '@semcore/typography';
+import type Button from '@semcore/button';
 
 /** @deprecated */
 export interface IModalProps extends ModalProps, UnknownProperties {}

@@ -1,8 +1,8 @@
 import { createMarkdownRenderer } from 'vitepress/dist/node/index';
-import { resolve as resolvePath } from 'path';
+import { resolve as resolvePath } from 'node:path';
 import parseImports from 'parse-es-import';
 import { transformSync } from 'esbuild';
-import fs from 'fs';
+import fs from 'node:fs';
 import { codeTheme } from './code-theme';
 
 const markdownRenderer = await createMarkdownRenderer(resolvePath(__dirname, '..'), {
@@ -161,9 +161,8 @@ export const renderSandbox = (
           .map((token) => token.executableCode)
           .filter(Boolean)
           .join(';\n');
-        tokens[
-          idx + 1
-        ].content = `<script lang="tsx">${allExecutableCode};${executableCode}</script>`;
+        tokens[idx + 1].content =
+          `<script lang="tsx">${allExecutableCode};${executableCode}</script>`;
       } else {
         tokens[idx + 1].content = '';
         tokens[idx + 1].executableCode = executableCode;

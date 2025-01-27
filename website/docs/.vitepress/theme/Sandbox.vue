@@ -10,7 +10,7 @@
 
 <script setup lang="ts">
 import { computed, onMounted } from 'vue';
-import { createRoot as createReactRoot } from 'react-dom/client'
+import { createRoot as createReactRoot } from 'react-dom/client';
 import lzString from 'lz-string';
 import { isolateStyles } from './isolateStyles';
 const { compressToBase64: lzCompressToBase64 } = lzString;
@@ -32,13 +32,25 @@ const dataToLzCompressedJson = (data) => {
   return base64;
 };
 
-const { playgroundId, htmlCode: codeEncoded, rawCode: rawCodeEncoded, hideCode: hideCodeEncoded, stylesIsolation } = defineProps({ playgroundId: String, htmlCode: String, rawCode: String, hideCode: String, stylesIsolation: Boolean })
+const {
+  playgroundId,
+  htmlCode: codeEncoded,
+  rawCode: rawCodeEncoded,
+  hideCode: hideCodeEncoded,
+  stylesIsolation,
+} = defineProps({
+  playgroundId: String,
+  htmlCode: String,
+  rawCode: String,
+  hideCode: String,
+  stylesIsolation: Boolean,
+});
 const htmlCode = computed(() => {
-  let code = atob(codeEncoded!).replace(/intergalactic\//g, "@semcore/ui/");
+  const code = atob(codeEncoded!).replace(/intergalactic\//g, '@semcore/ui/');
   return code.replace('tabindex="0" v-pre=""><code>', 'v-pre=""><code>');
 });
 const codesandboxUrl = computed(() => {
-  let code = rawCode.replace(/'intergalactic\//g, "'@semcore/ui/");
+  const code = rawCode.replace(/'intergalactic\//g, "'@semcore/ui/");
   const dependencies = {};
   const lines = code!.split('\n');
   for (const line of lines) {
@@ -75,7 +87,7 @@ const codesandboxUrl = computed(() => {
             react: '18',
             'react-dom': '18',
             '@types/react': '18',
-            '@fontsource/inter': '5'
+            '@fontsource/inter': '5',
           },
         },
       },
@@ -93,7 +105,7 @@ root.render(<App />);
       'src/styles.css': {
         content: `body {
   font-family: 'Inter', sans-serif;
-}`
+}`,
       },
       'src/App.tsx': {
         content: code + '\n\nexport const App = () => <Demo />;\n',
@@ -102,17 +114,17 @@ root.render(<App />);
   });
 
   return `https://codesandbox.io/api/v1/sandboxes/define?parameters=${codesandboxParameters}`;
-})
+});
 
-let rawCode = atob(rawCodeEncoded!);
+const rawCode = atob(rawCodeEncoded!);
 const hideCode = hideCodeEncoded === 'true';
 
 onMounted(() => {
   if (!playgroundId) return;
   const wrapper = document.querySelector(`#${playgroundId}`) as HTMLDivElement | undefined;
   if (!wrapper) return;
-  let element = stylesIsolation ? isolateStyles(wrapper) : wrapper;
+  const element = stylesIsolation ? isolateStyles(wrapper) : wrapper;
 
-  globalThis[`render_${playgroundId}`]?.(element)
-})
+  globalThis[`render_${playgroundId}`]?.(element);
+});
 </script>

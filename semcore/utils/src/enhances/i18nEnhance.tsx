@@ -1,6 +1,6 @@
 import React from 'react';
-import { LocaleKeys, useI18n } from './WithI18n';
-import { UnknownProperties } from '../core';
+import { type LocaleKeys, useI18n } from './WithI18n';
+import type { UnknownProperties } from '../core';
 
 const interpolationRegex = /{(.*?)}/g;
 

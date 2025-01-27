@@ -1,17 +1,17 @@
 import EventEmitter from '@semcore/utils/lib/eventEmitter';
-import { extent, bisector, Numeric } from 'd3-array';
+import { extent, bisector, type Numeric } from 'd3-array';
 import {
   scaleQuantize,
-  ScaleIdentity,
-  ScaleTime,
-  ScaleContinuousNumeric,
-  ScaleBand,
-  ScalePoint,
-  NumberValue,
+  type ScaleIdentity,
+  type ScaleTime,
+  type ScaleContinuousNumeric,
+  type ScaleBand,
+  type ScalePoint,
+  type NumberValue,
   scaleBand,
   scaleSqrt,
 } from 'd3-scale';
-import React from 'react';
+import type React from 'react';
 
 export const eventToPoint = (event: React.MouseEvent<HTMLElement>, svgRoot: SVGElement) => {
   const node = (event.currentTarget || event.target) as HTMLElement;
@@ -136,12 +136,12 @@ export const getIndexFromData = <
     return bisect(data, value);
   }
   // detect bar chart
-  else if ('step' in scale && typeof scale.step !== 'undefined' && Array.isArray(data)) {
+  if ('step' in scale && typeof scale.step !== 'undefined' && Array.isArray(data)) {
     const index = data.findIndex((d) => d[key] === value);
     return index >= 0 ? index : null;
   }
   // detect cigarette chart
-  else if ('invert' in scale && typeof scale.invert === 'function' && !Array.isArray(data)) {
+  if ('invert' in scale && typeof scale.invert === 'function' && !Array.isArray(data)) {
     const keys = Object.keys(data);
     const domain = keys.map((key, index) => {
       return keys.slice(0, index).reduce((acc, item) => {
@@ -173,10 +173,9 @@ export const getIndexFromData = <
     }
 
     return key;
-  } else {
-    console.warn('[d3-chart/utils/getIndexFromData] encountered incompatible scale type');
-    return null;
   }
+  console.warn('[d3-chart/utils/getIndexFromData] encountered incompatible scale type');
+  return null;
 };
 
 export const roundedPath = (

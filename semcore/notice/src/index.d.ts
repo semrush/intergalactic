@@ -1,9 +1,9 @@
-import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import { Box, BoxProps } from '@semcore/flex-box';
-import Button from '@semcore/button';
-import { IconProps } from '@semcore/icon';
-import { FadeInOutProps } from '@semcore/animation';
-import { Text } from '@semcore/typography';
+import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import type { Box, BoxProps } from '@semcore/flex-box';
+import type Button from '@semcore/button';
+import type { IconProps } from '@semcore/icon';
+import type { FadeInOutProps } from '@semcore/animation';
+import type { Text } from '@semcore/typography';
 
 export type NoticeTheme = 'danger' | 'warning' | 'success' | 'info' | 'muted';
 export type NoticeUse = 'primary' | 'secondary';

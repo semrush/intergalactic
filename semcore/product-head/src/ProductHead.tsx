@@ -1,6 +1,6 @@
 import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
-import { Box, IBoxProps } from '@semcore/flex-box';
+import { Box, type IBoxProps } from '@semcore/flex-box';
 
 import style from './style/product-head.shadow.css';
 

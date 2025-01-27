@@ -1,8 +1,8 @@
-import { BoxProps, FlexProps, Flex } from '@semcore/flex-box';
-import { PropGetterFn, Intergalactic, UnknownProperties } from '@semcore/core';
-import { CollapseProps } from '@semcore/animation';
-import { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
-import { Text } from '@semcore/typography';
+import type { BoxProps, FlexProps, Flex } from '@semcore/flex-box';
+import type { PropGetterFn, Intergalactic, UnknownProperties } from '@semcore/core';
+import type { CollapseProps } from '@semcore/animation';
+import type { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import type { Text } from '@semcore/typography';
 
 export type AccordionValue = null | number | string | Array<number | string | null>;
 

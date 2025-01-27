@@ -1,6 +1,6 @@
-import React from 'react';
-import createComponent, { Component, Root, sstyled, Intergalactic } from '@semcore/core';
-import { Flex, Box, BoxProps } from '@semcore/flex-box';
+import type React from 'react';
+import createComponent, { Component, Root, sstyled, type Intergalactic } from '@semcore/core';
+import { Flex, Box, type BoxProps } from '@semcore/flex-box';
 import style from '../../style/slider-rating.shadow.css';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
@@ -203,7 +203,6 @@ function Star(props: StarProps) {
     <SStar
       render={Box}
       tag={'svg'}
-      role='none'
       width='22'
       height='21'
       viewBox='0 0 22 21'

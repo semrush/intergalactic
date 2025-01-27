@@ -6,7 +6,7 @@ import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
 import logger from '@semcore/utils/lib/logger';
 import SpinButton from './SpinButton';
 import hasLabels from '@semcore/utils/lib/hasLabels';
-import { AbstractButtonProps } from './AbstractButton.type';
+import type { AbstractButtonProps } from './AbstractButton.type';
 import { Component, CORE_INSTANCE, Root, sstyled } from '@semcore/core';
 
 export const MAP_USE_DEFAULT_THEME: Record<string, string> = {

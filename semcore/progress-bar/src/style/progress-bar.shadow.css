@@ -5,7 +5,7 @@ SProgressBar {
   background-color: var(--intergalactic-progress-bar-bg, #e0e1e9);
 }
 
-SProgressBar[theme='dark'] {
+SProgressBar[theme="dark"] {
   background-color: var(--intergalactic-progress-bar-bg-invert, rgba(255, 255, 255, 0.2));
 }
 
@@ -14,8 +14,18 @@ SValue {
   top: 0;
   left: 0;
   background-color: var(--intergalactic-progress-bar-value-bg, #000000);
-  background-image: var(--intergalactic-progress-bar-value-gradient,
-  linear-gradient(-45deg, rgba(0, 159, 129, 0.9) 25%, rgba(0, 159, 129, 1) 0%, rgba(0, 159, 129, 1) 50%, rgba(0, 159, 129, 0.9) 0%, rgba(0, 159, 129, 0.9) 75%, rgba(0, 159, 129, 1) 0%));
+  background-image: var(
+    --intergalactic-progress-bar-value-gradient,
+    linear-gradient(
+      -45deg,
+      rgba(0, 159, 129, 0.9) 25%,
+      rgba(0, 159, 129, 1) 0%,
+      rgba(0, 159, 129, 1) 50%,
+      rgba(0, 159, 129, 0.9) 0%,
+      rgba(0, 159, 129, 0.9) 75%,
+      rgba(0, 159, 129, 1) 0%
+    )
+  );
   overflow: hidden;
 
   animation-name: loading;
@@ -33,30 +43,28 @@ SValue[theme] {
   background-image: var(--colorBg);
 }
 
-SProgressBar[size='s'],
-SValue[size='s'] {
+SProgressBar[size="s"],
+SValue[size="s"] {
   height: 4px;
   border-radius: var(--intergalactic-progress-bar-rounded, 6px);
   background-size: 8px 8px;
 }
 
-SProgressBar[size='m'],
-SValue[size='m'] {
+SProgressBar[size="m"],
+SValue[size="m"] {
   height: 8px;
   border-radius: var(--intergalactic-progress-bar-rounded, 6px);
   background-size: 12px 12px;
 }
 
-SProgressBar[size='l'],
-SValue[size='l'] {
+SProgressBar[size="l"],
+SValue[size="l"] {
   height: 12px;
   border-radius: var(--intergalactic-progress-bar-rounded, 6px);
   background-size: 16px 16px;
 }
 
-
-
-SProgressBar[theme='invert'] {
+SProgressBar[theme="invert"] {
   background-color: var(--intergalactic-progress-bar-bg, #e0e1e9);
 }
 
@@ -72,19 +80,28 @@ SProgressBar[theme='invert'] {
 
 SProgressBar[animation] {
   background-color: var(--intergalactic-progress-bar-value-bg, #000000);
-  background-image: var(--intergalactic-progress-bar-pattern-gradient,
-  linear-gradient(-45deg, rgba(224, 225, 233, 0.9) 25%, rgba(224, 225, 233, 1) 0%, rgba(224, 225, 233, 1) 50%, rgba(224, 225, 233, 0.9) 0%, rgba(224, 225, 233, 0.9) 75%, rgba(224, 225, 233, 1) 0%));
+  background-image: var(
+    --intergalactic-progress-bar-pattern-gradient,
+    linear-gradient(
+      -45deg,
+      rgba(224, 225, 233, 0.9) 25%,
+      rgba(224, 225, 233, 1) 0%,
+      rgba(224, 225, 233, 1) 50%,
+      rgba(224, 225, 233, 0.9) 0%,
+      rgba(224, 225, 233, 0.9) 75%,
+      rgba(224, 225, 233, 1) 0%
+    )
+  );
   animation-name: loading;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-duration: var(--duration);
 }
 
-SProgressBar[theme='custom'] {
+SProgressBar[theme="custom"] {
   background-color: var(--colorBg);
   background-image: var(--colorBg);
 }
-
 
 @media (prefers-reduced-motion) {
   SValue {

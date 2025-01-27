@@ -13,7 +13,7 @@ SDot {
   isolation: isolate;
 }
 
-SDot[size='xl'] {
+SDot[size="xl"] {
   height: 16px;
   min-width: 16px;
   /* disable-tokens-validator */
@@ -21,13 +21,13 @@ SDot[size='xl'] {
   border-radius: var(--intergalactic-counter-rounded, 12px);
 }
 
-SDot[size='l'] {
+SDot[size="l"] {
   height: 12px;
   min-width: 12px;
   border-radius: 100%;
 }
 
-SDot[size='m'] {
+SDot[size="m"] {
   height: 6px;
   min-width: 6px;
   /* disable-tokens-validator */

@@ -83,7 +83,7 @@ class Feedback extends React.PureComponent<FeedbackProps> {
               flip={{
                 fallbackPlacements: ['right-start', 'bottom'],
               }}
-              validateOnBlur={value.description === '' ? false : true}
+              validateOnBlur={value.description !== ''}
             >
               {({ input }) => (
                 <Textarea
@@ -104,7 +104,7 @@ class Feedback extends React.PureComponent<FeedbackProps> {
               name='email'
               validate={validate.email}
               initialValue={''}
-              validateOnBlur={value.email === '' ? false : true}
+              validateOnBlur={value.email !== ''}
             >
               {({ input }) => (
                 <Input state={input.state}>

@@ -7,7 +7,7 @@ import { sideBarConfig } from './sidebarConfig';
 import { buildHooks } from './buildHooks';
 import { algoliaConfig } from '../../algoliaConfig';
 import { figmaIcon } from './figma-icon';
-import { resolve as resolvePath } from 'path';
+import { resolve as resolvePath } from 'node:path';
 
 const gtmKey = 'GTM-PP7RKT7';
 

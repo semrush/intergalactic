@@ -3,17 +3,14 @@ import propsForElement from '@semcore/utils/lib/propsForElement';
 import { NavLink as RouterNavLink } from 'react-router-dom';
 import styles from './NavLink.module.css';
 
-const NavLink = React.forwardRef(function (
-  { neighborLocation, keyboardFocused, highlighted, active, ...other },
-  ref,
-) {
-  return (
+const NavLink = React.forwardRef(
+  ({ neighborLocation, keyboardFocused, highlighted, active, ...other }, ref) => (
     <RouterNavLink
       className={styles.navLink}
       ref={ref}
       {...propsForElement(other, other.component)}
     />
-  );
-});
+  ),
+);
 
 export default NavLink;

@@ -24,13 +24,15 @@ class BubbleRoot extends Component {
     return () => ({ width: 0, height: 0, top: y, right: x, bottom: y, left: x });
   }
 
-  bindHandlerTooltip = (visible, props, tooltipProps) => ({ clientX, clientY }) => {
-    const { eventEmitter } = this.asProps;
+  bindHandlerTooltip =
+    (visible, props, tooltipProps) =>
+    ({ clientX, clientY }) => {
+      const { eventEmitter } = this.asProps;
 
-    eventEmitter.emit('setTooltipPosition', clientX, clientY);
-    eventEmitter.emit('setTooltipRenderingProps', props, tooltipProps);
-    eventEmitter.emit('setTooltipVisible', visible);
-  };
+      eventEmitter.emit('setTooltipPosition', clientX, clientY);
+      eventEmitter.emit('setTooltipRenderingProps', props, tooltipProps);
+      eventEmitter.emit('setTooltipVisible', visible);
+    };
 
   animationCircle() {
     const { duration, uid, data, value } = this.asProps;
@@ -43,9 +45,7 @@ class BubbleRoot extends Component {
       selectRect
         .transition()
         .duration(duration)
-        .attr('r', function (_, ind) {
-          return z(data[ind]?.[value]);
-        });
+        .attr('r', (_, ind) => z(data[ind]?.[value]));
     }
   }
 

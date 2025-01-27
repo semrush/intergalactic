@@ -1,4 +1,4 @@
-@import './var.css';
+@import "./var.css";
 
 SScatterPlot {
   fill: var(--intergalactic-chart-palette-order-1, #2bb3ff);

@@ -1,9 +1,10 @@
-import React from 'react';
-import Popper, { PopperProps, PopperTriggerProps } from '@semcore/popper';
-import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import { Box, BoxProps } from '@semcore/flex-box';
-import { Context } from './context';
-import { IntergalacticD3Component } from './Plot';
+import type React from 'react';
+import type Popper from '@semcore/popper';
+import type { PopperProps, PopperTriggerProps } from '@semcore/popper';
+import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import type { Box, BoxProps } from '@semcore/flex-box';
+import type { Context } from './context';
+import type { IntergalacticD3Component } from './Plot';
 
 /** @deprecated */
 export interface ITooltipChartProps extends TooltipChartProps, UnknownProperties {}

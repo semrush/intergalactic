@@ -1,8 +1,8 @@
-import { VersionPatch } from './makeVersionPatches';
-import { resolve as resolvePath } from 'path';
+import type { VersionPatch } from './makeVersionPatches';
+import { resolve as resolvePath } from 'node:path';
 import fs from 'fs-extra';
 import {
-  Changelog,
+  type Changelog,
   componentChangelogParser,
   serializeComponentChangelog,
   toMarkdown,

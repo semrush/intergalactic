@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { type ReactElement } from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Field, Form } from 'react-final-form';
 import createFocusDecorator from 'final-form-focus';
@@ -17,7 +17,11 @@ import Textarea from '@semcore/textarea';
 import { Box, Flex } from '@semcore/flex-box';
 import { FeedbackItem } from '../feedback-item/FeedbackItem';
 import { SubmitButton } from '../submit-button/SubmitButton';
-import { FeedbackRatingProps, FeedbackRatingType, FormConfigItem } from './FeedbackRating.type';
+import type {
+  FeedbackRatingProps,
+  FeedbackRatingType,
+  FormConfigItem,
+} from './FeedbackRating.type';
 import CheckboxButton from '../checkbox-button/CheckboxButton';
 import Input from '@semcore/input';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
@@ -46,18 +50,22 @@ class FeedbackRatingRoot extends Component<
   };
 
   static validate = {
-    description: (error: Error | string) => (value = '') => {
-      const words = value.split(/\s+/);
-      const symbols = words.join(' ');
-      if (Boolean(value) && (symbols.length < 10 || words.length < 3)) {
-        return error;
-      }
-    },
-    email: (error: Error | string) => (value = '') => {
-      if (Boolean(value) && !/.+@.+\..+/i.test(String(value).toLowerCase())) {
-        return error;
-      }
-    },
+    description:
+      (error: Error | string) =>
+      (value = '') => {
+        const words = value.split(/\s+/);
+        const symbols = words.join(' ');
+        if (Boolean(value) && (symbols.length < 10 || words.length < 3)) {
+          return error;
+        }
+      },
+    email:
+      (error: Error | string) =>
+      (value = '') => {
+        if (Boolean(value) && !/.+@.+\..+/i.test(String(value).toLowerCase())) {
+          return error;
+        }
+      },
   };
 
   state: State = {

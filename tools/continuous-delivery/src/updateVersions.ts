@@ -1,8 +1,8 @@
-import { dirname as resolveDirname, resolve as resolvePath } from 'path';
+import { dirname as resolveDirname, resolve as resolvePath } from 'node:path';
 import fs from 'fs-extra';
 import semver from 'semver';
 import { carefulVersionUpdate, log } from './utils';
-import { fileURLToPath } from 'url';
+import { fileURLToPath } from 'node:url';
 
 type VersionPatch =
   | {

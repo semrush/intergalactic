@@ -1,8 +1,8 @@
-import { UnknownProperties } from '@semcore/core';
-import { Context } from './context';
-import { TooltipType } from './Tooltip';
-import { IntergalacticD3Component } from './Plot';
-import { PatternsConfig } from './Pattern';
+import type { UnknownProperties } from '@semcore/core';
+import type { Context } from './context';
+import type { TooltipType } from './Tooltip';
+import type { IntergalacticD3Component } from './Plot';
+import type { PatternsConfig } from './Pattern';
 
 /** @deprecated */
 export interface IScatterPlotProps extends ScatterPlotProps, UnknownProperties {}

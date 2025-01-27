@@ -41,9 +41,8 @@ const SELF_GETTER_METHOD = Symbol('SELF_GETTER_METHOD');
 function Enhancement(childComponents: any, createComponent: any, options: any) {
   const getterMethodNames = flatGetterMethodNames(childComponents);
   return {
-    condition: function (Component: any) {
-      return Boolean(Component[STATIC_COMPONENT] || Object.keys(childComponents).length);
-    },
+    condition: (Component: any) =>
+      Boolean(Component[STATIC_COMPONENT] || Object.keys(childComponents).length),
     init: function (this: any, props: any, WrapperComponent: any) {
       const getterMethods: any = pick(this, getterMethodNames);
       this[SELF_GETTER_METHOD] = () => {
@@ -69,7 +68,7 @@ function Enhancement(childComponents: any, createComponent: any, options: any) {
         }, {}),
       );
     },
-    static: function (WrapperComponent: any, Component: any) {
+    static: (WrapperComponent: any, Component: any) => {
       if (Object.keys(childComponents).length && !WrapperComponent.displayName) {
         throw new Error('"displayName" is not defined');
       }

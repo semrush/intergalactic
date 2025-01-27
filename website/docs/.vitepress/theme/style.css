@@ -1,4 +1,6 @@
-@import url('../../../../semcore/utils/lib/themes/auto.css');
+
+/* stylelint-disable no-duplicate-selectors */
+@import url("../../../../semcore/utils/lib/themes/auto.css");
 
 /**
  * Customize default theme styling by overriding CSS variables:
@@ -31,9 +33,8 @@
   --vp-shadow-1: 0px 1px 2px 0px rgba(25, 27, 35, 0.12), 0px 0px 1px 0px rgba(25, 27, 35, 0.16);
   --vp-shadow-2: 0px 3px 12px 0px rgba(25, 27, 35, 0.07), 0px 1px 4px 0px rgba(25, 27, 35, 0.07);
   --vp-shadow-3: 0px 1px 12px 0px rgba(25, 27, 35, 0.15);
-  --vp-shadow-4: 0px 3px 8px 0px rgba(25, 27, 35, 0.20);
+  --vp-shadow-4: 0px 3px 8px 0px rgba(25, 27, 35, 0.2);
   --vp-shadow-5: 0px 12px 40px 0px rgba(25, 27, 35, 0.16), 0px 0px 1px 0px rgba(25, 27, 35, 0.16);
-
 }
 
 .dark {
@@ -64,9 +65,9 @@
 
 :root {
   --vp-home-hero-name-color: transparent;
-  --vp-home-hero-name-background: -webkit-linear-gradient(315deg, #8932FF 35%, #4FD3FE 96%);
+  --vp-home-hero-name-background: -webkit-linear-gradient(315deg, #8932ff 35%, #4fd3fe 96%);
 
-  --vp-home-hero-image-background-image: linear-gradient(315deg, #8932FF 35%, #91E4FF 65%);
+  --vp-home-hero-image-background-image: linear-gradient(315deg, #8932ff 35%, #91e4ff 65%);
   --vp-home-hero-image-filter: blur(40px);
 }
 
@@ -138,18 +139,18 @@
   --vp-sidebar-width: 312px;
 }
 
-.VPSidebarItem.level-0>.item>.text:hover,
-.VPSidebarItem.level-1>.item>.text:hover,
-.VPSidebarItem.level-2>.item>.text:hover,
-.VPSidebarItem.level-3>.item>.text:hover,
-.VPSidebarItem.level-4>.item>.text:hover,
-.VPSidebarItem.level-5>.item>.text:hover,
-.VPSidebarItem.level-0>.item>.link>.text:hover,
-.VPSidebarItem.level-1>.item>.link>.text:hover,
-.VPSidebarItem.level-2>.item>.link>.text:hover,
-.VPSidebarItem.level-3>.item>.link>.text:hover,
-.VPSidebarItem.level-4>.item>.link>.text:hover,
-.VPSidebarItem.level-5>.item>.link>.text:hover {
+.VPSidebarItem.level-0 > .item > .text:hover,
+.VPSidebarItem.level-1 > .item > .text:hover,
+.VPSidebarItem.level-2 > .item > .text:hover,
+.VPSidebarItem.level-3 > .item > .text:hover,
+.VPSidebarItem.level-4 > .item > .text:hover,
+.VPSidebarItem.level-5 > .item > .text:hover,
+.VPSidebarItem.level-0 > .item > .link > .text:hover,
+.VPSidebarItem.level-1 > .item > .link > .text:hover,
+.VPSidebarItem.level-2 > .item > .link > .text:hover,
+.VPSidebarItem.level-3 > .item > .link > .text:hover,
+.VPSidebarItem.level-4 > .item > .link > .text:hover,
+.VPSidebarItem.level-5 > .item > .link > .text:hover {
   color: var(--vp-c-text-1) !important;
 }
 
@@ -183,16 +184,16 @@
   border-radius: 6px;
 }
 
-.DocSearch-Modal[class*='DocSearch'] {
+.DocSearch-Modal[class*="DocSearch"] {
   --docsearch-modal-background: var(--vp-c-bg-elv) !important;
 }
 
-.dark .DocSearch-Modal[class*='DocSearch'] {
+.dark .DocSearch-Modal[class*="DocSearch"] {
   --docsearch-modal-background: var(--vp-c-bg-soft) !important;
   --docsearch-modal-shadow: 0 3px 8px 0 #030304 !important;
 }
 
-.dark .DocSearch-Hit[aria-selected=true] a {
+.dark .DocSearch-Hit[aria-selected="true"] a {
   background-color: var(--vp-c-brand-2);
 }
 
@@ -231,7 +232,6 @@
   animation-fill-mode: forwards;
 }
 
-
 .vp-doc dialog.closing {
   animation: hide-vp-dialog 0.1s ease-out normal;
   animation-fill-mode: forwards;
@@ -256,7 +256,6 @@
     opacity: 0;
   }
 }
-
 
 .vp-doc dialog::backdrop {
   background-color: rgba(0, 0, 0, 0.5);
@@ -300,13 +299,13 @@
 }
 
 /* Dividers in the header */
-.menu+.appearance:before,
-.appearance+.social-links:before {
+.menu + .appearance:before,
+.appearance + .social-links:before {
   height: 20px !important;
 }
 
 .VPSwitch.VPSwitchAppearance:before {
-  content: '';
+  content: "";
   position: absolute;
   top: -20px;
   left: -10px;
@@ -345,12 +344,12 @@
   color: var(--vp-c-sponsor) !important;
 }
 
-.VPSidebarItem.level-0.is-link>.item>.link:hover .text,
-.VPSidebarItem.level-1.is-link>.item>.link:hover .text,
-.VPSidebarItem.level-2.is-link>.item>.link:hover .text,
-.VPSidebarItem.level-3.is-link>.item>.link:hover .text,
-.VPSidebarItem.level-4.is-link>.item>.link:hover .text,
-.VPSidebarItem.level-5.is-link>.item>.link:hover .text {
+.VPSidebarItem.level-0.is-link > .item > .link:hover .text,
+.VPSidebarItem.level-1.is-link > .item > .link:hover .text,
+.VPSidebarItem.level-2.is-link > .item > .link:hover .text,
+.VPSidebarItem.level-3.is-link > .item > .link:hover .text,
+.VPSidebarItem.level-4.is-link > .item > .link:hover .text,
+.VPSidebarItem.level-5.is-link > .item > .link:hover .text {
   color: var(--vp-c-sponsor) !important;
 }
 
@@ -498,13 +497,13 @@ video {
   }
 }
 
-.vp-doc div[class*='language-'],
+.vp-doc div[class*="language-"],
 .vp-block {
   border-radius: 6px;
   margin: 16px 0 0;
 }
 
-.vp-doc .documentation-sandbox div[class*='language-'] {
+.vp-doc .documentation-sandbox div[class*="language-"] {
   border-radius: 0;
   /* overflow: auto;
   max-width: 100%; */
@@ -514,7 +513,7 @@ video {
   position: relative;
 }
 
-.vp-doc div[class*='language-'] code {
+.vp-doc div[class*="language-"] code {
   max-height: 500px;
   width: 100%;
   position: relative;
@@ -575,7 +574,7 @@ h3[class],
 h4[class],
 h5[class],
 h6[class] {
-  font-family: 'Inter', -apple-system, sans-serif, Arial;
+  font-family: "Inter", -apple-system, sans-serif, Arial;
   font-weight: var(--intergalactic-bold, 700);
 }
 
@@ -585,7 +584,7 @@ h6[class] {
 .vp-doc h4[class],
 .vp-doc h5[class],
 .vp-doc h6[class] {
-  font-family: 'Inter', -apple-system, sans-serif, Arial;
+  font-family: "Inter", -apple-system, sans-serif, Arial;
   margin: unset;
 }
 
@@ -617,7 +616,7 @@ h6[class] {
   color: var(--vp-c-indigo-1);
 }
 
-.vp-doc li[class]+li[class]:not([data-ui-name="InputTags.Tag"]) {
+.vp-doc li[class] + li[class]:not([data-ui-name="InputTags.Tag"]) {
   margin: unset;
 }
 
@@ -751,7 +750,7 @@ h6[class] {
   --vp-c-brand: var(--vp-c-brand-1);
   --vp-c-brand-1: #5925ab;
   --vp-c-brand-2: #8649e1;
-  --vp-c-brand-3: #A56EF5;
+  --vp-c-brand-3: #a56ef5;
   --vp-c-brand-soft: #5925ab24;
   --vp-c-danger-1: var(--vp-c-red-1);
   --vp-c-danger-2: var(--vp-c-red-2);
@@ -892,7 +891,6 @@ h6[class] {
   --docsearch-modal-background: var(--vp-c-bg-elv);
   --docsearch-container-background: rgba(25, 27, 35, 0.6);
 }
-
 
 .dark {
   /* base */
@@ -1080,16 +1078,16 @@ h6[class] {
   margin-right: 10px;
 }
 
-.vp-doc [class*='language-'] pre {
+.vp-doc [class*="language-"] pre {
   padding: 0;
   overflow: hidden;
 }
 
-.vp-doc [class*='language-'] code {
+.vp-doc [class*="language-"] code {
   overflow: auto;
   padding: 20px;
 }
 
-.vp-doc li[data-ui-name]+li[data-ui-name] {
+.vp-doc li[data-ui-name] + li[data-ui-name] {
   margin-top: 2px;
 }

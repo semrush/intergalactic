@@ -1,5 +1,5 @@
-import { ListItem, Token } from 'marked-ast-markdown';
-import { Changelog, ChangelogChange, ChangelogChangeLabel } from '../types';
+import type { ListItem, Token } from 'marked-ast-markdown';
+import type { Changelog, ChangelogChange, ChangelogChangeLabel } from '../types';
 
 export const serializeComponentChangelog = (changelogs: (Changelog | string)[]): Token[] => {
   const heading: Token[] = [

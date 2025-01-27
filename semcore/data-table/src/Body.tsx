@@ -3,9 +3,9 @@ import { Component, sstyled, Root } from '@semcore/core';
 import { Box, Flex } from '@semcore/flex-box';
 import ScrollArea, { hideScrollBarsFromScreenReadersContext } from '@semcore/scroll-area';
 import { getFixedStyle, getScrollOffsetValue } from './utils';
-import { RowData, Column, NestedCells, PropsLayer, Cell } from './types';
+import type { RowData, Column, NestedCells, PropsLayer, Cell } from './types';
 import assignProps, { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
-import syncScroll from '@semcore/utils/lib/syncScroll';
+import type syncScroll from '@semcore/utils/lib/syncScroll';
 import trottle from '@semcore/utils/lib/rafTrottle';
 import { forkRef } from '@semcore/utils/lib/ref';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
@@ -126,79 +126,78 @@ class Body extends Component<AsProps, {}, State> {
             {this.renderRows(cell as NestedCells[], true)}
           </SGroupCell>,
         );
-      } else {
-        const nameParts = cell.name.split('/');
-        const firstName = nameParts[0];
-        const lastName = nameParts[nameParts.length - 1];
-        const firstColumn = columns.find((c) => c.name === firstName);
-        const lastColumn = columns.find((c) => c.name === lastName);
-        const column = columns.find((c) => c.name === cell.name);
-        const [name, value] = getFixedStyle(cell, columns);
-        const parentColumnNames = column?.parentColumns.map((column) => column.name) ?? [];
-        const vars = (Array.isArray(cell.cssVar) ? cell.cssVar : [cell.cssVar]).map(
-          (name) => `var(${name})`,
-        );
-        type CellProps = any & {
-          name: string;
-          children: React.ReactNode;
-          style: React.CSSProperties;
-        };
-
-        const columnWMin = column?.props?.ref.current?.style.getPropertyValue('min-width');
-        const columnWMax = column?.props?.ref.current?.style.getPropertyValue('max-width');
-
-        let props: CellProps = {
-          name: cell.name,
-          children: <>{cell.data}</>,
-          justifyContent: column?.props?.justifyContent,
-          alignItems: column?.props?.alignItems,
-          borderLeft: firstColumn?.borderLeft,
-          borderRight: lastColumn?.borderRight,
-          style: {
-            width: vars.length === 1 ? vars[0] : `calc(${vars.join(' + ')})`,
-            minWidth: columnWMin,
-            maxWidth:
-              columnWMax && column?.sortable
-                ? `calc(${SORT_ICON_WIDTH}px + ${columnWMax})`
-                : columnWMax,
-          },
-        };
-        if (name !== undefined && value !== undefined) {
-          props.style[name] = value;
-        }
-
-        for (const cellPropLayer of cell.cellPropsLayers || []) {
-          const { childrenPropsGetter = (p) => p, ...other } = cellPropLayer;
-          const propsCell = assignProps(other, props);
-          props = assignProps(childrenPropsGetter(propsCell, rowData, dataIndex), propsCell);
-        }
-
-        const headerIds = [cell.name, ...parentColumnNames]
-          .filter(Boolean)
-          .map((name) => `igc-table-${uid}-${name}`);
-
-        const ariaColspan = nameParts.length;
-
-        return sstyled(styles)(
-          <SCell
-            key={cell.name}
-            role='gridcell'
-            headers={headerIds.join(' ')}
-            __excludeProps={['data']}
-            {...props}
-            fixed={cell.fixed}
-            theme={props.theme}
-            use={use}
-            borderLeft={props.borderLeft}
-            borderRight={props.borderRight}
-            tabIndex={-1}
-            onKeyDown={this.handleKeyDown}
-            onFocus={this.onFocusCell}
-            aria-colindex={cellIndex + 1}
-            aria-colspan={ariaColspan === 1 ? undefined : ariaColspan}
-          />,
-        ) as React.ReactElement;
       }
+      const nameParts = cell.name.split('/');
+      const firstName = nameParts[0];
+      const lastName = nameParts[nameParts.length - 1];
+      const firstColumn = columns.find((c) => c.name === firstName);
+      const lastColumn = columns.find((c) => c.name === lastName);
+      const column = columns.find((c) => c.name === cell.name);
+      const [name, value] = getFixedStyle(cell, columns);
+      const parentColumnNames = column?.parentColumns.map((column) => column.name) ?? [];
+      const vars = (Array.isArray(cell.cssVar) ? cell.cssVar : [cell.cssVar]).map(
+        (name) => `var(${name})`,
+      );
+      type CellProps = any & {
+        name: string;
+        children: React.ReactNode;
+        style: React.CSSProperties;
+      };
+
+      const columnWMin = column?.props?.ref.current?.style.getPropertyValue('min-width');
+      const columnWMax = column?.props?.ref.current?.style.getPropertyValue('max-width');
+
+      let props: CellProps = {
+        name: cell.name,
+        children: <>{cell.data}</>,
+        justifyContent: column?.props?.justifyContent,
+        alignItems: column?.props?.alignItems,
+        borderLeft: firstColumn?.borderLeft,
+        borderRight: lastColumn?.borderRight,
+        style: {
+          width: vars.length === 1 ? vars[0] : `calc(${vars.join(' + ')})`,
+          minWidth: columnWMin,
+          maxWidth:
+            columnWMax && column?.sortable
+              ? `calc(${SORT_ICON_WIDTH}px + ${columnWMax})`
+              : columnWMax,
+        },
+      };
+      if (name !== undefined && value !== undefined) {
+        props.style[name] = value;
+      }
+
+      for (const cellPropLayer of cell.cellPropsLayers || []) {
+        const { childrenPropsGetter = (p) => p, ...other } = cellPropLayer;
+        const propsCell = assignProps(other, props);
+        props = assignProps(childrenPropsGetter(propsCell, rowData, dataIndex), propsCell);
+      }
+
+      const headerIds = [cell.name, ...parentColumnNames]
+        .filter(Boolean)
+        .map((name) => `igc-table-${uid}-${name}`);
+
+      const ariaColspan = nameParts.length;
+
+      return sstyled(styles)(
+        <SCell
+          key={cell.name}
+          role='gridcell'
+          headers={headerIds.join(' ')}
+          __excludeProps={['data']}
+          {...props}
+          fixed={cell.fixed}
+          theme={props.theme}
+          use={use}
+          borderLeft={props.borderLeft}
+          borderRight={props.borderRight}
+          tabIndex={-1}
+          onKeyDown={this.handleKeyDown}
+          onFocus={this.onFocusCell}
+          aria-colindex={cellIndex + 1}
+          aria-colspan={ariaColspan === 1 ? undefined : ariaColspan}
+        />,
+      ) as React.ReactElement;
     }, [] as React.ReactElement[]);
   }
 

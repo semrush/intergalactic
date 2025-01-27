@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import VPHomeHero from 'vitepress/dist/client/theme-default/components/VPHomeHero.vue'
-import VPHomeFeatures from 'vitepress/dist/client/theme-default/components/VPHomeFeatures.vue'
-import VPHomeContent from 'vitepress/dist/client/theme-default/components/VPHomeContent.vue'
-import { useData } from 'vitepress/dist/client/theme-default/composables/data'
+import VPHomeHero from 'vitepress/dist/client/theme-default/components/VPHomeHero.vue';
+import VPHomeFeatures from 'vitepress/dist/client/theme-default/components/VPHomeFeatures.vue';
+import VPHomeContent from 'vitepress/dist/client/theme-default/components/VPHomeContent.vue';
+import { useData } from 'vitepress/dist/client/theme-default/composables/data';
 
-const { frontmatter } = useData()
+const { frontmatter } = useData();
 </script>
 
 <template>

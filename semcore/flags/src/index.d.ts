@@ -1,5 +1,5 @@
-import { BoxProps } from '@semcore/flex-box';
-import { UnknownProperties, Intergalactic } from '@semcore/core';
+import type { BoxProps } from '@semcore/flex-box';
+import type { UnknownProperties, Intergalactic } from '@semcore/core';
 
 export declare const iso2Name: Record<FlagsIso2, string>;
 

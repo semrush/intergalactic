@@ -1,6 +1,6 @@
-import { IntergalacticD3Component } from './Plot';
-import { Context } from './context';
-import { UnknownProperties } from '@semcore/core';
+import type { IntergalacticD3Component } from './Plot';
+import type { Context } from './context';
+import type { UnknownProperties } from '@semcore/core';
 
 /** @deprecated */
 export interface IXAxisProps extends XAxisProps, UnknownProperties {}

@@ -1,9 +1,9 @@
-import React from 'react';
-import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import type React from 'react';
+import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
 
-import { Property } from 'csstype';
-import { Box, BoxProps, Flex, FlexProps } from '@semcore/flex-box';
-import { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import type { Property } from 'csstype';
+import type { Box, BoxProps, Flex, FlexProps } from '@semcore/flex-box';
+import type { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
 /** @deprecated */
 export interface ITextProps extends TextProps, UnknownProperties {}

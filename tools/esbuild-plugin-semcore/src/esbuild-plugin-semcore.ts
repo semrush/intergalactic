@@ -1,6 +1,6 @@
-import { Loader, Plugin } from 'esbuild';
-import { readFile, access } from 'fs/promises';
-import { dirname as resolveDirname } from 'path';
+import type { Loader, Plugin } from 'esbuild';
+import { readFile, access } from 'node:fs/promises';
+import { dirname as resolveDirname } from 'node:path';
 import { makeCacheManager } from './cache-manager';
 import { extractSemcoreImplicitDependencies } from './semcore-implicit-dependncies-resolver';
 export { esbuildPluginSemcoreSourcesResolve } from './esbuild-plugin-semcore-sources-resolve';

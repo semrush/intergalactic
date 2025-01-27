@@ -1,8 +1,8 @@
 import React from 'react';
 
 import cn from 'classnames';
-import { Properties, Property } from 'csstype';
-import { sstyled, StyledProps, UnknownProperties } from '@semcore/core';
+import type { Properties, Property } from 'csstype';
+import { sstyled, type StyledProps, type UnknownProperties } from '@semcore/core';
 import propsForElement from '@semcore/utils/lib/propsForElement';
 import logger from '@semcore/utils/lib/logger';
 

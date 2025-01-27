@@ -8,18 +8,19 @@
   </a>
 </template>
 <script setup lang="ts">
-
 import { useRouter } from 'vitepress';
 import { onMounted, onUnmounted } from 'vue';
 import {
-  initAmplitude, initGlobalEventsHandler, disposeGlobalEventsHandler
-} from './amplitude/amplitude'
+  initAmplitude,
+  initGlobalEventsHandler,
+  disposeGlobalEventsHandler,
+} from './amplitude/amplitude';
 
 onMounted(() => {
   const router = useRouter();
   initAmplitude();
   initGlobalEventsHandler(router);
-})
+});
 onUnmounted(() => {
   disposeGlobalEventsHandler();
 });

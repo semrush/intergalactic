@@ -4,10 +4,10 @@ import createElement from '../../createElement';
 import { getChartDefaultColorName, scaleToBand } from '../../utils';
 // @ts-ignore
 import Bar, { MIN_HEIGHT } from '../../Bar';
-import { ScaleBand, scaleBand } from 'd3-scale';
+import { type ScaleBand, scaleBand } from 'd3-scale';
 
-import { StackGroupProps, StackGroupBarProps, StackGroupType } from './StackGroupBar.type';
-import { Stack, stack as d3Stack } from 'd3-shape';
+import type { StackGroupProps, StackGroupBarProps, StackGroupType } from './StackGroupBar.type';
+import { type Stack, stack as d3Stack } from 'd3-shape';
 
 const XY0 = Symbol('XY0');
 
@@ -69,7 +69,7 @@ class StackGroupBarRoot extends Component<StackGroupProps> {
   }
 
   getBarProps({ y, group, hMin = MIN_HEIGHT }: StackGroupBarProps, index: number) {
-    const { x, r, scale, maxBarSize = Infinity, patterns } = this.asProps;
+    const { x, r, scale, maxBarSize = Number.POSITIVE_INFINITY, patterns } = this.asProps;
     const [, yScale] = scale!; // scale always will be because of CreateElement wrapper
 
     const allGroupSeries = this.getSeries(group);

@@ -1,11 +1,11 @@
-SLegendFlex[direction='row'] {
+SLegendFlex[direction="row"] {
   align-items: flex-start;
   align-content: flex-start;
   flex-wrap: wrap;
   gap: 8px 16px;
 }
 
-SLegendFlex[direction='column'] {
+SLegendFlex[direction="column"] {
   align-items: flex-start;
   flex-wrap: wrap;
   gap: 8px;

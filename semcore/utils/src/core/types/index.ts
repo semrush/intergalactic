@@ -2,4 +2,4 @@ import type { UnknownProperties } from './UnknownProperties';
 
 export * from './Component';
 
-export { UnknownProperties };
+export type { UnknownProperties };

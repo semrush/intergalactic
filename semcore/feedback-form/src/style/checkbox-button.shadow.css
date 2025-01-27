@@ -10,12 +10,13 @@ SCheckboxButton {
   }
 }
 
-SCheckboxButton:hover, SCheckboxButton[checked] {
+SCheckboxButton:hover,
+SCheckboxButton[checked] {
   cursor: pointer;
   border-color: var(--intergalactic-border-info-active, #006dca);
-  background-color: rgba(0, 143, 248, 0.10);
+  background-color: rgba(0, 143, 248, 0.1);
 }
 
 SCheckboxButton[checked]:hover {
-  background-color: rgba(0, 143, 248, 0.20);
+  background-color: rgba(0, 143, 248, 0.2);
 }

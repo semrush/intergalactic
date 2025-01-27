@@ -1,9 +1,9 @@
-import { BoxProps } from '@semcore/flex-box';
-import { UnknownProperties, Intergalactic } from '@semcore/core';
-import { Context } from './context';
-import { DataStructureHints } from './a11y/hints';
-import { PatternsConfig } from './Pattern';
-import { PlotEventEmitter } from './utils';
+import type { BoxProps } from '@semcore/flex-box';
+import type { UnknownProperties, Intergalactic } from '@semcore/core';
+import type { Context } from './context';
+import type { DataStructureHints } from './a11y/hints';
+import type { PatternsConfig } from './Pattern';
+import type { PlotEventEmitter } from './utils';
 
 /** @deprecated */
 export interface IPlotProps extends PlotProps, UnknownProperties {}

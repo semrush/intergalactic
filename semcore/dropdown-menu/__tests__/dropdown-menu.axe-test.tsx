@@ -1,4 +1,9 @@
-import { expect, getAccessibilityViolations, test, Page } from '@semcore/testing-utils/playwright';
+import {
+  expect,
+  getAccessibilityViolations,
+  test,
+  type Page,
+} from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 async function checkByAxe(page: Page) {
@@ -23,11 +28,7 @@ test.describe('Dropdown-menu', () => {
 
       expect(violations).toEqual([]);
     }
-
-    // opened dropdown check
-    {
-      expect(await checkByAxe(page)).toEqual([]);
-    }
+    expect(await checkByAxe(page)).toEqual([]);
   });
 
   test('Nested', async ({ page }) => {

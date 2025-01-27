@@ -1,4 +1,4 @@
-@import './var.css';
+@import "./var.css";
 
 SCircle {
   fill: var(--intergalactic-chart-palette-order-2, #59ddaa);

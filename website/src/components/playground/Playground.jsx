@@ -4,13 +4,11 @@ import reactElementToJSXString from 'react-element-to-jsx-string';
 class Playground extends Component {
   static widgets = {};
 
-  static createWidget = function (widgetType, fn) {
+  static createWidget = (widgetType, fn) => {
     Playground.widgets[widgetType] = fn;
   };
 
-  static getState = function (preview, controls) {
-    return getState(preview, controls);
-  };
+  static getState = (preview, controls) => getState(preview, controls);
 
   controlsOptionsToControlsWidgets(controls) {
     return controls.map((control, i) => ({
@@ -52,20 +50,19 @@ class Playground extends Component {
             const value = prevControl ? prevControl.options[key].value : defaultValue;
             if (options[key]) {
               throw new Error(`key="${key}" already exists, "key" unique property.`);
-            } else {
-              options[key] = {
-                ...rest,
-                widgetType: type,
-                value,
-                key,
-              };
             }
+            options[key] = {
+              ...rest,
+              widgetType: type,
+              value,
+              key,
+            };
             return value;
           };
           return widgetsType;
         },
         {
-          onChange: function (key, value) {
+          onChange: (key, value) => {
             onChangeControls(
               controls.map((control) => {
                 if (control.name === groupName && control.options[key]) {

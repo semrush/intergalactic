@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import VPDocAsideOutline from 'vitepress/dist/client/theme-default/components/VPDocAsideOutline.vue'
-
+import VPDocAsideOutline from 'vitepress/dist/client/theme-default/components/VPDocAsideOutline.vue';
 </script>
 
 <template>

@@ -29,13 +29,15 @@ class VennRoot extends Component {
     return () => ({ width: 0, height: 0, top: y, right: x, bottom: y, left: x });
   }
 
-  bindHandlerTooltip = (visible, props, tooltipProps) => ({ clientX, clientY }) => {
-    const { eventEmitter } = this.asProps;
+  bindHandlerTooltip =
+    (visible, props, tooltipProps) =>
+    ({ clientX, clientY }) => {
+      const { eventEmitter } = this.asProps;
 
-    eventEmitter.emit('setTooltipPosition', clientX, clientY);
-    eventEmitter.emit('setTooltipRenderingProps', props, tooltipProps);
-    eventEmitter.emit('setTooltipVisible', visible);
-  };
+      eventEmitter.emit('setTooltipPosition', clientX, clientY);
+      eventEmitter.emit('setTooltipRenderingProps', props, tooltipProps);
+      eventEmitter.emit('setTooltipVisible', visible);
+    };
 
   getVennData() {
     const { data, orientation, orientationOrder, size } = this.asProps;

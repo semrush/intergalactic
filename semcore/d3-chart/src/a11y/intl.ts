@@ -1,8 +1,8 @@
-import { createIntl, createIntlCache, IntlShape } from '@formatjs/intl';
+import { createIntl, createIntlCache, type IntlShape } from '@formatjs/intl';
 import { normalizeLocale } from './locale';
 import type { localizedMessages as localizedMessagesTypeBase } from './translations/view/__intergalactic-dynamic-locales';
 
-export type Intl = IntlShape<typeof localizedMessagesTypeBase['en']>;
+export type Intl = IntlShape<(typeof localizedMessagesTypeBase)['en']>;
 const messagesCache = createIntlCache();
 const intlCache: { [locale: string]: ReturnType<typeof createIntl> } = {};
 export const getIntl = (

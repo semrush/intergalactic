@@ -1,6 +1,6 @@
-import { UnknownProperties, Intergalactic } from '@semcore/core';
+import type { UnknownProperties, Intergalactic } from '@semcore/core';
 
-import {
+import type {
   AbstractButtonAddonProps,
   AbstractButtonContext,
   AbstractButtonTextProps,

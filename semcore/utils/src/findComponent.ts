@@ -1,4 +1,4 @@
-import React, { ReactElement, ReactNode, MutableRefObject } from 'react';
+import React, { type ReactElement, type ReactNode, type MutableRefObject } from 'react';
 import { CHILDREN_COMPONENT, INHERITED_NAME } from './core/index';
 import getOriginChildren from './getOriginChildren';
 

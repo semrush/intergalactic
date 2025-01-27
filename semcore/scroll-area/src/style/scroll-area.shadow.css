@@ -6,10 +6,9 @@ SScrollArea {
 
 SShadowHorizontal,
 SShadowVertical {
-
   &:before,
   &:after {
-    content: '';
+    content: "";
     position: absolute;
     display: none;
     pointer-events: none;
@@ -17,7 +16,6 @@ SShadowVertical {
 }
 
 SShadowHorizontal {
-
   &:before,
   &:after {
     top: 0;
@@ -26,37 +24,45 @@ SShadowHorizontal {
   }
 }
 
-SShadowHorizontal[position='median'] {
+SShadowHorizontal[position="median"] {
   &:before {
     left: 0;
     display: block;
-    background: var(--intergalactic-scroll-area-shadow-left,
-    linear-gradient(to right, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%));
+    background: var(
+      --intergalactic-scroll-area-shadow-left,
+      linear-gradient(to right, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%)
+    );
   }
 
   &:after {
     right: 0;
     display: block;
-    background: var(--intergalactic-scroll-area-shadow-right,
-    linear-gradient(to left, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%));
+    background: var(
+      --intergalactic-scroll-area-shadow-right,
+      linear-gradient(to left, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%)
+    );
   }
 }
 
-SShadowHorizontal[position='start'] {
+SShadowHorizontal[position="start"] {
   &:before {
     left: 0;
     display: block;
-    background: var(--intergalactic-scroll-area-shadow-left,
-    linear-gradient(to right, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%));
+    background: var(
+      --intergalactic-scroll-area-shadow-left,
+      linear-gradient(to right, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%)
+    );
   }
 }
 
-SShadowHorizontal[position='end'] {
+SShadowHorizontal[position="end"] {
   &:after {
     right: 0;
     display: block;
-    background: var(--intergalactic-scroll-area-shadow-right,
-    linear-gradient(to left, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%));
+    background: var(
+      --intergalactic-scroll-area-shadow-right,
+      linear-gradient(to left, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%)
+    );
   }
 }
 
@@ -69,7 +75,6 @@ SShadowHorizontal[rightOffset]:after {
 }
 
 SShadowVertical {
-
   &:before,
   &:after {
     left: 0;
@@ -78,37 +83,45 @@ SShadowVertical {
   }
 }
 
-SShadowVertical[position='median'] {
+SShadowVertical[position="median"] {
   &:before {
     top: 0;
     display: block;
-    background: var(--intergalactic-scroll-area-shadow-top,
-    linear-gradient(to bottom, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%));
+    background: var(
+      --intergalactic-scroll-area-shadow-top,
+      linear-gradient(to bottom, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%)
+    );
   }
 
   &:after {
     bottom: 0;
     display: block;
-    background: var(--intergalactic-scroll-area-shadow-bottom,
-    linear-gradient(to top, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%));
+    background: var(
+      --intergalactic-scroll-area-shadow-bottom,
+      linear-gradient(to top, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%)
+    );
   }
 }
 
-SShadowVertical[position='start'] {
+SShadowVertical[position="start"] {
   &:before {
     top: 0;
     display: block;
-    background: var(--intergalactic-scroll-area-shadow-top,
-    linear-gradient(to bottom, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%));
+    background: var(
+      --intergalactic-scroll-area-shadow-top,
+      linear-gradient(to bottom, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%)
+    );
   }
 }
 
-SShadowVertical[position='end'] {
+SShadowVertical[position="end"] {
   &:after {
     bottom: 0;
     display: block;
-    background: var(--intergalactic-scroll-area-shadow-bottom,
-    linear-gradient(to top, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%));
+    background: var(
+      --intergalactic-scroll-area-shadow-bottom,
+      linear-gradient(to top, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%)
+    );
   }
 }
 
@@ -143,7 +156,7 @@ SContainer {
 SContainer[keyboardFocused]:focus::after {
   position: absolute;
   display: block;
-  content: '';
+  content: "";
   inset: 0;
   top: var(--focusRingTopOffset);
   right: var(--focusRingRightOffset);

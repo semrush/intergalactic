@@ -8,7 +8,7 @@ import { render, fireEvent, cleanup, act, userEvent } from '@semcore/testing-uti
 import { axe } from '@semcore/testing-utils/axe';
 
 import Pills from '../src';
-import { Intergalactic } from '@semcore/core';
+import type { Intergalactic } from '@semcore/core';
 import { assertType } from 'vitest';
 import ThumbUpM from '@semcore/icon/ThumbUp/m';
 import ThumbDownM from '@semcore/icon/ThumbDown/m';
@@ -261,13 +261,11 @@ describe('PillGroup', () => {
   });
 
   test.concurrent('should support additional elements as props', async ({ task }) => {
-    const Addon = React.forwardRef(function ({ forwardRef, Children, Root, ...p }: any, ref) {
-      return (
-        <span ref={ref} {...p}>
-          Addon prop
-        </span>
-      );
-    });
+    const Addon = React.forwardRef(({ forwardRef, Children, Root, ...p }: any, ref) => (
+      <span ref={ref} {...p}>
+        Addon prop
+      </span>
+    ));
     const component = (
       <Pills value={0}>
         <Pills.Item value={1} addonLeft={Addon} addonRight={Addon}>

@@ -30,7 +30,7 @@ const Notices = (props) => {
   const { styles, data = [], tag: SView = ViewInfo } = props;
   const ref = React.useRef();
   const durationStr = useCssVariable('--intergalactic-duration-popper', '200', ref);
-  const duration = React.useMemo(() => parseInt(durationStr, 10), [durationStr]);
+  const duration = React.useMemo(() => Number.parseInt(durationStr, 10), [durationStr]);
 
   return data.map((notice) => {
     return sstyled(styles)(

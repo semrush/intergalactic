@@ -20,8 +20,8 @@ import { LinkTrigger } from '@semcore/base-trigger';
 import resolveColor from '@semcore/utils/lib/color';
 
 import { assertType } from 'vitest';
-import { Intergalactic } from '@semcore/core';
-import DataTable, { ROW_GROUP, DataTableTheme } from '../src';
+import type { Intergalactic } from '@semcore/core';
+import DataTable, { ROW_GROUP, type DataTableTheme } from '../src';
 
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
@@ -511,17 +511,14 @@ describe('DataTable', () => {
   });
 
   test.concurrent('Accordion in the table', async ({ task }) => {
-    const RowAccordion = React.forwardRef(function (
-      { value, collapse = {}, ...props }: any,
-      ref: React.Ref<HTMLDivElement>,
-    ) {
-      return (
+    const RowAccordion = React.forwardRef(
+      ({ value, collapse = {}, ...props }: any, ref: React.Ref<HTMLDivElement>) => (
         <Accordion.Item value={value} ref={ref}>
           <Accordion.Item.Toggle {...props} />
           <Accordion.Item.Collapse {...collapse} />
         </Accordion.Item>
-      );
-    });
+      ),
+    );
 
     const component = (
       <div style={{ width: 800 }}>
@@ -576,17 +573,14 @@ describe('DataTable', () => {
   });
 
   test.concurrent('Table in table', async ({ task }) => {
-    const RowAccordion = React.forwardRef(function (
-      { value, collapse = {}, ...props }: any,
-      ref: React.Ref<HTMLDivElement>,
-    ) {
-      return (
+    const RowAccordion = React.forwardRef(
+      ({ value, collapse = {}, ...props }: any, ref: React.Ref<HTMLDivElement>) => (
         <Accordion.Item value={value} ref={ref}>
           <Accordion.Item.Toggle {...props} />
           <Accordion.Item.Collapse {...collapse} />
         </Accordion.Item>
-      );
-    });
+      ),
+    );
 
     const component = (
       <div style={{ width: 800 }}>

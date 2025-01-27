@@ -193,9 +193,8 @@ export const serializeTsNode = (node: ts.Node, genericsMap = {}, minimizeMembers
 
         if (parameterValue) {
           return [parameterName, ': ', parameterValue];
-        } else {
-          return [parameterName];
         }
+        return [parameterName];
       }
       case ts.SyntaxKind.IndexedAccessType: {
         const { objectType, indexType } = node as ts.IndexedAccessTypeNode;
@@ -309,7 +308,7 @@ export const serializeTsNode = (node: ts.Node, genericsMap = {}, minimizeMembers
   };
 
   const nestedList = [traverse(node)];
-  const flatList = nestedList.flat(Infinity);
+  const flatList = nestedList.flat(Number.POSITIVE_INFINITY);
   const joinedList = flatList.reduce((acc, item) => {
     if (typeof item === 'string' && typeof acc[acc.length - 1] === 'string') {
       acc[acc.length - 1] += item;

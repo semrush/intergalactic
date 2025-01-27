@@ -1,16 +1,16 @@
 import React from 'react';
 import createComponent from '@semcore/core';
-import { ScaleLinear, scaleLinear, scaleTime } from 'd3-scale';
+import { type ScaleLinear, scaleLinear, scaleTime } from 'd3-scale';
 // @ts-ignore
 import { minMax, ScatterPlot, getScatterPlotRadius } from '../..';
 import { AbstractChart } from './AbstractChart';
-import {
+import type {
   ScatterPlotChartData,
   ScatterPlotChartProps,
   ScatterPlotChartType,
 } from './ScatterPlotChart.type';
 import { Text } from '@semcore/typography';
-import { BaseChartProps, ListData } from './AbstractChart.type';
+import type { BaseChartProps, ListData } from './AbstractChart.type';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 

@@ -6,7 +6,7 @@ SPopper {
 SPopper[keyboardFocused]:focus:after {
   position: absolute;
   display: block;
-  content: '';
+  content: "";
   inset: 0;
   box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
   pointer-events: none;

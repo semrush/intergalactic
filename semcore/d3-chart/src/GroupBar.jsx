@@ -39,7 +39,7 @@ class GroupBarRoot extends Component {
   }
 
   getBarProps({ y }, index) {
-    const { x, maxBarSize = Infinity, patterns } = this.asProps;
+    const { x, maxBarSize = Number.POSITIVE_INFINITY, patterns } = this.asProps;
 
     const bandWidth = this.scaleGroup.bandwidth();
     const width = Math.min(bandWidth, maxBarSize);
@@ -56,7 +56,7 @@ class GroupBarRoot extends Component {
   }
 
   getHorizontalBarProps({ x }, index) {
-    const { y, maxBarSize = Infinity } = this.asProps;
+    const { y, maxBarSize = Number.POSITIVE_INFINITY } = this.asProps;
 
     const bandWidth = this.scaleGroup.bandwidth();
     const height = Math.min(bandWidth, maxBarSize);

@@ -1,4 +1,4 @@
-import React, { RefObject } from 'react';
+import React, { type RefObject } from 'react';
 import useEnhancedEffect from '@semcore/utils/lib/use/useEnhancedEffect';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 

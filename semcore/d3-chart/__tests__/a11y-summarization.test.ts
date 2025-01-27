@@ -1,16 +1,16 @@
 import { expect, test, describe } from '@semcore/testing-utils/vitest';
 
 import {
-  DataStructureHints,
+  type DataStructureHints,
   makeDataHintsContainer as makeHints,
   makeDataSummarizationConfig as makeConfig,
 } from '../src/a11y/hints';
 import {
-  AnalyzedData,
-  ClusterNode,
-  ComparisonNode,
+  type AnalyzedData,
+  type ClusterNode,
+  type ComparisonNode,
   extractDataInsights,
-  Insight,
+  type Insight,
 } from '../src/a11y/insights';
 import { serialize } from '../src/a11y/serialize';
 import { localizedMessages as translations } from '../src/a11y/translations/view/__intergalactic-dynamic-locales';
@@ -1123,7 +1123,7 @@ describe('Plot a11y summarization', () => {
         makeHints(),
         makeConfig(),
       ),
-      makeConfig({ clustersLimit: Infinity }),
+      makeConfig({ clustersLimit: Number.POSITIVE_INFINITY }),
       locale,
     );
     serialize(

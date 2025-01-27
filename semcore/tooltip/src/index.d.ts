@@ -1,10 +1,10 @@
-import React from 'react';
-import { Intergalactic, UnknownProperties } from '@semcore/utils/lib/core';
+import type React from 'react';
+import type { Intergalactic, UnknownProperties } from '@semcore/utils/lib/core';
 import Popper, {
-  PopperContext,
-  PopperProps,
-  PopperTriggerProps,
-  eventInteraction,
+  type PopperContext,
+  type PopperProps,
+  type PopperTriggerProps,
+  type eventInteraction,
 } from '@semcore/popper';
 
 export type ArrowCustom = {

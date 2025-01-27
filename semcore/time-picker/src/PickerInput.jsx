@@ -71,7 +71,7 @@ class ItemPicker extends Component {
   handleChange = (value, event) => {
     /* hide props for bubbling events */
     event.stopPropagation();
-    const numberValue = intOrDefault(Number(value), NaN);
+    const numberValue = intOrDefault(Number(value), Number.NaN);
 
     if (!Number.isNaN(numberValue)) {
       this.setState({ dirtyValue: value.slice(-2) });
@@ -145,9 +145,8 @@ class Hours extends ItemPicker {
     const { is12Hour } = this.asProps;
     if (is12Hour) {
       return [1, 12];
-    } else {
-      return [0, 23];
     }
+    return [0, 23];
   }
 
   focusNext() {

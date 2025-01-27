@@ -1,4 +1,4 @@
-@import './var.css';
+@import "./var.css";
 
 STooltip {
   font-size: var(--intergalactic-fs-100, 12px);
@@ -33,10 +33,11 @@ SDotCircle[color] {
   border-radius: 50%;
 }
 
-
 SFooter {
   background: var(--intergalactic-bg-secondary-neutral, #f4f5f9);
   padding: var(--intergalactic-spacing-1x, 4px) var(--intergalactic-spacing-3x, 12px);
-  border-radius: 0 0 var(--intergalactic-rounded-medium, 6px) var(--intergalactic-rounded-medium, 6px);
-  margin: var(--intergalactic-spacing-3x, 12px) calc(-1 * var(--intergalactic-spacing-3x, 12px)) calc(-1 * var(--intergalactic-spacing-3x, 12px));
+  border-radius: 0 0 var(--intergalactic-rounded-medium, 6px)
+    var(--intergalactic-rounded-medium, 6px);
+  margin: var(--intergalactic-spacing-3x, 12px) calc(-1 * var(--intergalactic-spacing-3x, 12px))
+    calc(-1 * var(--intergalactic-spacing-3x, 12px));
 }

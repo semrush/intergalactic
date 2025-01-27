@@ -1,18 +1,18 @@
 import { makeDataHintsContainer } from '../../a11y/hints';
-import { LegendItem } from '../ChartLegend/LegendItem/LegendItem.type';
-import { ScaleBand, ScaleLinear, ScaleTime } from 'd3-scale';
+import type { LegendItem } from '../ChartLegend/LegendItem/LegendItem.type';
+import type { ScaleBand, ScaleLinear, ScaleTime } from 'd3-scale';
 import { interpolateValue } from '../../utils';
-import React from 'react';
+import type React from 'react';
 import { Component, Root, sstyled } from '@semcore/core';
-import { BaseChartProps, BaseLegendProps, ListData, ObjectData } from './AbstractChart.type';
+import type { BaseChartProps, BaseLegendProps, ListData, ObjectData } from './AbstractChart.type';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import ChartLegend, { ChartLegendTable } from '../ChartLegend';
 import { Flex } from '@semcore/flex-box';
 // @ts-ignore
 import { Plot, XAxis, YAxis } from '../..';
 import { Text } from '@semcore/typography';
-import { LegendFlexProps } from '../ChartLegend/LegendFlex/LegendFlex.type';
-import { LegendTableProps } from '../ChartLegend/LegendTable/LegendTable.type';
+import type { LegendFlexProps } from '../ChartLegend/LegendFlex/LegendFlex.type';
+import type { LegendTableProps } from '../ChartLegend/LegendTable/LegendTable.type';
 import { extractAriaProps } from '@semcore/utils/lib/ariaProps';
 
 type ChartState = {
@@ -85,8 +85,8 @@ export abstract class AbstractChart<
         dataDefinition.additionalInfo = legendData.additionalInfo
           ? { label: legendData.additionalInfo }
           : legendData.count
-          ? { count: legendData.count }
-          : undefined;
+            ? { count: legendData.count }
+            : undefined;
       }
 
       if (legendData && 'columns' in legendData) {
@@ -155,7 +155,8 @@ export abstract class AbstractChart<
     if (Array.isArray(data) && 'ticks' in scale) {
       if (invertAxis && yTicksCount) {
         return scale.ticks(yTicksCount);
-      } else if (xTicksCount) {
+      }
+      if (xTicksCount) {
         return scale.ticks(xTicksCount);
       }
 
@@ -173,7 +174,8 @@ export abstract class AbstractChart<
     if (Array.isArray(data) && 'ticks' in scale) {
       if (invertAxis && xTicksCount) {
         return scale.ticks(xTicksCount);
-      } else if (yTicksCount) {
+      }
+      if (yTicksCount) {
         return scale.ticks(yTicksCount);
       }
 

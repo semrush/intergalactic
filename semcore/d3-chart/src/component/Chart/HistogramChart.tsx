@@ -1,10 +1,14 @@
-import React from 'react';
+import type React from 'react';
 import createComponent from '@semcore/core';
-import { scaleBand, scaleLinear, ScaleLinear, scaleTime } from 'd3-scale';
+import { scaleBand, scaleLinear, type ScaleLinear, scaleTime } from 'd3-scale';
 // @ts-ignore
-import { Bar, minMax, HoverRect, StackBar, BarProps } from '../..';
+import { Bar, minMax, HoverRect, StackBar, type BarProps } from '../..';
 import { AbstractChart } from './AbstractChart';
-import { HistogramChartData, HistogramChartProps, HistogramChartType } from './HistogramChart.type';
+import type {
+  HistogramChartData,
+  HistogramChartProps,
+  HistogramChartType,
+} from './HistogramChart.type';
 import { Box, Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';

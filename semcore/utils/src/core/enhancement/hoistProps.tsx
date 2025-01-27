@@ -21,11 +21,10 @@ function flatChildComponent(childComponents: any) {
 /** @deprecated Doesn't work in ssr and sometimes breakes rulles of hooks. We should never use it. */
 function Enhancement(childComponents: any, Context: any) {
   return {
-    condition: function (Component: any) {
-      return [Component, ...flatChildComponent(childComponents)].some((Component) =>
+    condition: (Component: any) =>
+      [Component, ...flatChildComponent(childComponents)].some((Component) =>
         Boolean(Component.hoistProps?.length),
-      );
-    },
+      ),
     init: function (this: any, props: any, WrapperComponent: any, isFunction: boolean) {
       if (isFunction) {
         // TODO: might breake rules of hooks (by lsroman)
@@ -56,7 +55,7 @@ function Enhancement(childComponents: any, Context: any) {
       // TODO: need to check for no props overwriting (by lsroman)
       return assignProps(this[HOIST_SELF][0], props);
     },
-    wrapperProps: function (props: any, WrapperComponent: any) {
+    wrapperProps: (props: any, WrapperComponent: any) => {
       if (WrapperComponent.hoistProps?.length) {
         const context: any = React.useContext(Context);
         const renameProps: any = WrapperComponent.hoistProps.reduce((acc: any, propName: any) => {

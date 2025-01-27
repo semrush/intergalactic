@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 import { Component, sstyled, Root } from '@semcore/core';
 import { Box, Flex } from '@semcore/flex-box';
 import ScrollArea, { hideScrollBarsFromScreenReadersContext } from '@semcore/scroll-area';
@@ -6,7 +6,7 @@ import SortDesc from '@semcore/icon/SortDesc/m';
 import SortAsc from '@semcore/icon/SortAsc/m';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import { flattenColumns, getFixedStyle, getScrollOffsetValue } from './utils';
-import { ColIndex, Column } from './types';
+import type { ColIndex, Column } from './types';
 import logger from '@semcore/utils/lib/logger';
 import { setRef } from '@semcore/utils/lib/ref';
 import { getFocusableIn } from '@semcore/utils/lib/focus-lock/getFocusableIn';
@@ -25,7 +25,7 @@ const ariaSort = {
 const displayContents = { display: 'contents' };
 
 function cssToIntDefault(value: string, defaultValue = 0) {
-  let result = parseFloat(value);
+  let result = Number.parseFloat(value);
   if (Number.isNaN(result)) {
     result = defaultValue;
   }

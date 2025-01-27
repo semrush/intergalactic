@@ -20,7 +20,7 @@ SItemContainer {
   }
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     width: 22px;
     height: 22px;
@@ -30,7 +30,7 @@ SItemContainer {
   }
 }
 
-SItemContainer:hover>SCloseIcon {
+SItemContainer:hover > SCloseIcon {
   opacity: 1;
 }
 
@@ -55,7 +55,8 @@ SItemContainer:not([value]) {
   }
 }
 
-SColorsContainer, SColors {
+SColorsContainer,
+SColors {
   display: flex;
   flex-wrap: wrap;
   align-items: center;

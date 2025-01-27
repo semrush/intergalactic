@@ -1,6 +1,6 @@
-import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import { Box, BoxProps } from '@semcore/flex-box';
-import { NodeByRef } from '@semcore/utils/lib/ref';
+import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import type { Box, BoxProps } from '@semcore/flex-box';
+import type { NodeByRef } from '@semcore/utils/lib/ref';
 
 /** @deprecated */
 export interface IScrollAreaProps extends ScrollAreaProps, UnknownProperties {}

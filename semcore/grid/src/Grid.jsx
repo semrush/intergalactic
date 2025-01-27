@@ -44,10 +44,10 @@ function Col(props) {
     offset !== undefined
       ? offset
       : mdOffset !== undefined
-      ? mdOffset
-      : smOffset !== undefined
-      ? smOffset
-      : xsOffset;
+        ? mdOffset
+        : smOffset !== undefined
+          ? smOffset
+          : xsOffset;
 
   return sstyled(styles)(
     <SCol

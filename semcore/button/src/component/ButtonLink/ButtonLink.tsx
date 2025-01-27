@@ -5,7 +5,11 @@ import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhan
 import { Box } from '@semcore/flex-box';
 import { AbstractButton } from '../AbstractButton/AbstractButton';
 import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
-import { ButtonLinkAddonProps, ButtonLinkComponent, ButtonLinkTextProps } from './ButtonLink.type';
+import type {
+  ButtonLinkAddonProps,
+  ButtonLinkComponent,
+  ButtonLinkTextProps,
+} from './ButtonLink.type';
 
 const enhance = {
   keyboardFocused: keyboardFocusEnhance(),

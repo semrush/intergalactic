@@ -1,4 +1,4 @@
-@import '../skeleton/skeleton.shadow.css';
+@import "../skeleton/skeleton.shadow.css";
 
 SLineGauge {
   height: 8px;
@@ -17,7 +17,8 @@ SLineValue[percent] {
   width: var(--percent);
 }
 
-SLineValue[color], SLineSegmentItem[color] {
+SLineValue[color],
+SLineSegmentItem[color] {
   background-color: var(--color, var(--intergalactic-chart-palette-order-1, #2bb3ff));
 }
 
@@ -25,7 +26,8 @@ SLineGauge[segments] {
   border-radius: var(--intergalactic-progress-bar-rounded, 6px);
 }
 
-SLineGaugeSegment, SAnimationLine {
+SLineGaugeSegment,
+SAnimationLine {
   position: absolute;
   top: 0;
   left: 0;
@@ -57,6 +59,10 @@ SAnimationLine {
 }
 
 @keyframes move-line {
-  0% {transform: translateX(0);}
-  100% {transform: translateX(100%);}
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
 }

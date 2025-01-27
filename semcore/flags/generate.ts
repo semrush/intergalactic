@@ -1,11 +1,11 @@
 import { PNG } from 'pngjs';
-import fs from 'fs/promises';
+import fs from 'node:fs/promises';
 import imagemin from 'imagemin';
 import imageminPngquant from 'imagemin-pngquant';
 import expectedOutputRequirements from './src/countries.json';
 import aliases from './src/aliases.json';
-import { fileURLToPath } from 'url';
-import { resolve as resolvePath } from 'path';
+import { fileURLToPath } from 'node:url';
+import { resolve as resolvePath } from 'node:path';
 import { version } from './package.json';
 
 const __dirname = resolvePath(fileURLToPath(import.meta.url), '..');

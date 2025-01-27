@@ -5,7 +5,7 @@ import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import { isFocusInside, setFocus } from '@semcore/utils/lib/use/useFocusLock';
 import focusSourceEnhance from '@semcore/utils/lib/enhances/focusSourceEnhance';
-import { DropdownProps } from './index';
+import type { DropdownProps } from './index';
 import { getAccessibleName } from '@semcore/utils/lib/getAccessibleName';
 
 type AbstractDDProps = {
@@ -222,11 +222,11 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
 
     if (this.itemProps[newIndex]?.disabled) {
       return this.getHighlightedIndex(amount < 0 ? amount - 1 : amount + 1);
-    } else if (!this.itemProps[newIndex]) {
-      return -1;
-    } else {
-      return newIndex;
     }
+    if (!this.itemProps[newIndex]) {
+      return -1;
+    }
+    return newIndex;
   }
 
   componentDidUpdate(prevProps: AbstractDDProps) {

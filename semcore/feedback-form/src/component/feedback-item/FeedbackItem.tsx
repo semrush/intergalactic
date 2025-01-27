@@ -48,7 +48,7 @@ export function FeedbackItem({
           {
             ...propsForElement(other),
             state: errorState ? 'invalid' : 'normal',
-            'aria-invalid': errorState ? true : false,
+            'aria-invalid': !!errorState,
             'aria-describedby': meta.active ? (errorState ? popperId : ariaDescribedBy) : undefined,
           },
           input,
@@ -68,7 +68,6 @@ export function FeedbackItem({
           >
             <Tooltip.Trigger
               inline={false}
-              role={undefined}
               tag={tag}
               {...(tag ? inputProps : {})}
               __excludeProps={['type', 'aria-describedby']}

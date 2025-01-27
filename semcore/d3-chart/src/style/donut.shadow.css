@@ -1,4 +1,4 @@
-@import './var.css';
+@import "./var.css";
 
 SPie {
   stroke: var(--intergalactic-chart-grid-border, #ffffff);
@@ -32,5 +32,4 @@ SLabel {
   vertical-anchor: middle;
   font-size: var(--intergalactic-fs-200, 14px);
   line-height: var(--intergalactic-lh-200, 142%);
-
 }

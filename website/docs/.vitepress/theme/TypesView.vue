@@ -28,6 +28,6 @@ if (!types[type]) {
   throw new Error(`Unable to render type ${type} view. Probably you forgot to add
 \<script setup\>
   import { data as types } from '@types.data.ts';
-\</script\> to the end of markdown file that contains <TypesView type="${type}" :types={...types} />`)
+\</script\> to the end of markdown file that contains <TypesView type="${type}" :types={...types} />`);
 }
 </script>

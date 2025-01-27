@@ -1,5 +1,5 @@
 import * as fs from 'fs-extra';
-import * as path from 'path';
+import * as path from 'node:path';
 import { js, jsx, ts, tsx } from '@ast-grep/napi';
 import { log } from './logger';
 

@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 /** @ts-ignore */
 import { getStyles as reshadowGetStyles } from '@reshadow/core';
 
@@ -37,7 +37,7 @@ function insert(code: any, hash: any) {
     if (document.head) {
       document.head.appendChild(container);
     } else {
-      document.addEventListener('DOMContentLoaded', function () {
+      document.addEventListener('DOMContentLoaded', () => {
         document.head.appendChild(container as any);
       });
     }
@@ -57,14 +57,17 @@ function insert(code: any, hash: any) {
 }
 
 function merge(s1 = {}, s2 = {}) {
-  return Object.entries(s2).reduce((acc: any, [key, value]: any) => {
-    if (key.startsWith('@') || key.startsWith('--')) {
-      acc[key] = value;
-    } else {
-      acc[key] = cn(acc[key], value);
-    }
-    return acc;
-  }, Object.assign({}, s1));
+  return Object.entries(s2).reduce(
+    (acc: any, [key, value]: any) => {
+      if (key.startsWith('@') || key.startsWith('--')) {
+        acc[key] = value;
+      } else {
+        acc[key] = cn(acc[key], value);
+      }
+      return acc;
+    },
+    Object.assign({}, s1),
+  );
 }
 
 function getClassAndVars(styles: any, name: any, props: any) {
@@ -137,7 +140,7 @@ function sstyled(styles = {}): ((ReactNode: any) => ReactNode) & {
   };
 }
 
-sstyled.css = function (css: any): { [key: string]: string } {
+sstyled.css = (css: any): { [key: string]: string } => {
   throw new Error('Enable babel plugin');
 };
 sstyled.insert = insert;

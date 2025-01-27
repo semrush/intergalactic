@@ -17,49 +17,49 @@ SPointShape[color] {
   flex-shrink: 0;
 }
 
-SPointShape[shape='Circle'][size='l'] {
+SPointShape[shape="Circle"][size="l"] {
   width: 16px;
   height: 16px;
   border-radius: 8px;
   margin-top: 4px;
 }
 
-SPointShape[shape='Circle'][size='m'] {
+SPointShape[shape="Circle"][size="m"] {
   width: 12px;
   height: 12px;
   border-radius: 6px;
   margin-top: 4px;
 }
 
-SPointShape[shape='Line'][size='l'] {
+SPointShape[shape="Line"][size="l"] {
   width: 16px;
   height: 4px;
   border-radius: 3px;
   margin-top: 9px;
 }
 
-SPointShape[shape='Line'][size='m'] {
+SPointShape[shape="Line"][size="m"] {
   width: 12px;
   height: 4px;
   border-radius: 3px;
   margin-top: 8px;
 }
 
-SPointShape[shape='Square'][size='l'] {
+SPointShape[shape="Square"][size="l"] {
   width: 16px;
   height: 16px;
   border-radius: 2px;
   margin-top: 4px;
 }
 
-SPointShape[shape='Square'][size='m'] {
+SPointShape[shape="Square"][size="m"] {
   width: 12px;
   height: 12px;
   border-radius: 2px;
   margin-top: 4px;
 }
 
-SPointShape[shape='Pattern'] {
+SPointShape[shape="Pattern"] {
   background-color: transparent;
   margin-right: 4px;
 }
@@ -69,11 +69,11 @@ SIcon {
   margin-right: 4px;
 }
 
-SIcon[size='l'] {
+SIcon[size="l"] {
   margin-top: 4px;
 }
 
-SIcon[size='m'] {
+SIcon[size="m"] {
   margin-top: 2px;
 }
 
@@ -81,16 +81,16 @@ SLabel {
   min-width: 0;
 }
 
-SLabel[size='l'],
-SAdditionalLabel[size='l'],
-SCount[size='l'] {
+SLabel[size="l"],
+SAdditionalLabel[size="l"],
+SCount[size="l"] {
   font-size: var(--intergalactic-fs-300, 16px);
   line-height: var(--intergalactic-lh-300, 150%);
 }
 
-SLabel[size='m'],
-SAdditionalLabel[size='m'],
-SCount[size='m'] {
+SLabel[size="m"],
+SAdditionalLabel[size="m"],
+SCount[size="m"] {
   font-size: var(--intergalactic-fs-200, 14px);
   line-height: var(--intergalactic-lh-200, 142%);
 }
@@ -107,7 +107,7 @@ SAdditionalLabel {
 }
 
 SAdditionalLabel::before {
-  content: '';
+  content: "";
   display: inline-block;
   background-color: var(--intergalactic-text-secondary, #6c6e79);
   height: 4px;
@@ -116,11 +116,11 @@ SAdditionalLabel::before {
   margin-right: 4px;
 }
 
-SAdditionalLabel[size='l']::before {
+SAdditionalLabel[size="l"]::before {
   margin-top: 10px;
 }
 
-SAdditionalLabel[size='m']::before {
+SAdditionalLabel[size="m"]::before {
   margin-top: 8px;
 }
 

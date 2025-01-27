@@ -1,8 +1,8 @@
 import glob from 'fast-glob';
-import { readFile } from 'fs/promises';
+import { readFile } from 'node:fs/promises';
 import finderPackageJson from 'find-package-json';
-import { dirname as resolveDirname, resolve as resolvePath } from 'path';
-import { fileURLToPath } from 'url';
+import { dirname as resolveDirname, resolve as resolvePath } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { parseMarkdownMeta, removeMarkdownMeta } from './utils';
 
 const __dirname = resolveDirname(fileURLToPath(import.meta.url));

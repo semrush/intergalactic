@@ -108,7 +108,7 @@ const Demo = () => {
               {Object.keys(data[0])
                 .slice(1)
                 .map((name) => (
-                  <Table.CellHead width='200' align='right'>
+                  <Table.CellHead width='200' align='right' key={name}>
                     <Hint title='Lorem ipsum'>
                       <span tabIndex={0}>
                         {name.toUpperCase()} {['kd', 'traffic'].includes(name) && '%'}
@@ -137,7 +137,7 @@ const Demo = () => {
                 {Object.keys(data[0])
                   .slice(1)
                   .map((name) => (
-                    <Table.Cell align='right' theme={row.kd === '-' ? false : 'default'}>
+                    <Table.Cell align='right' theme={row.kd === '-' ? false : 'default'} key={name}>
                       {row[name]}
                     </Table.Cell>
                   ))}

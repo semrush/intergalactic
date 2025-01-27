@@ -1,4 +1,9 @@
-import { expect, getAccessibilityViolations, test, Page } from '@semcore/testing-utils/playwright';
+import {
+  expect,
+  getAccessibilityViolations,
+  test,
+  type Page,
+} from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 async function checkAxe(page: Page, standPath: string) {

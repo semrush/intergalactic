@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChartLegend, LegendItem } from '@semcore/d3-chart';
+import { ChartLegend, type LegendItem } from '@semcore/d3-chart';
 import { useColorResolver } from '@semcore/utils/lib/use/useColorResolver';
 
 const data = [...Array(5).keys()].map((d, i) => ({

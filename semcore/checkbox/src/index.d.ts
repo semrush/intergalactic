@@ -1,8 +1,8 @@
-import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import { Box, BoxProps, FlexProps } from '@semcore/flex-box';
-import { TextProps } from '@semcore/typography';
-import { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
-import { WithAutoFocusEnhanceProps } from '@semcore/utils/lib/enhances/autoFocusEnhance';
+import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import type { Box, BoxProps, FlexProps } from '@semcore/flex-box';
+import type { TextProps } from '@semcore/typography';
+import type { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import type { WithAutoFocusEnhanceProps } from '@semcore/utils/lib/enhances/autoFocusEnhance';
 
 export type CheckboxSize = 'm' | 'l';
 export type CheckboxState = 'normal' | 'invalid';

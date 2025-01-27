@@ -38,15 +38,14 @@ function mergeObjects(a: any = {}, b: any = {}) {
 }
 
 function assignGettersChain(getters: Array<Function>) {
-  return function (props = {}) {
-    return getters.reduce((acc, getter) => {
+  return (props = {}) =>
+    getters.reduce((acc, getter) => {
       return getter(acc);
     }, props);
-  };
 }
 
 function createChildren(Context: any, contexts: any) {
-  const Children: any = function () {
+  const Children: any = () => {
     const children = Children.origin;
     if (typeof children === 'function') {
       const {
@@ -69,7 +68,8 @@ function createChildren(Context: any, contexts: any) {
       }, {});
 
       return children({ ...props, ...mergedGetters }, handlers);
-    } else if (children === undefined) {
+    }
+    if (children === undefined) {
       return null;
     }
     return children;

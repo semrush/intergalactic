@@ -2,7 +2,7 @@ import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Box, InvalidStateBox } from '@semcore/flex-box';
 import autoFocusEnhance from '@semcore/utils/lib/enhances/autoFocusEnhance';
-import Tooltip, { ITooltipProps } from '@semcore/tooltip';
+import Tooltip, { type ITooltipProps } from '@semcore/tooltip';
 import style from './style/inline-input.shadow.css';
 import CheckM from '@semcore/icon/Check/m';
 import CloseM from '@semcore/icon/Close/m';
@@ -10,8 +10,8 @@ import Spin from '@semcore/spin';
 import { ButtonLink } from '@semcore/button';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
-import InputNumber, { InputNumberValueProps } from '@semcore/input-number';
-import { IRootComponentHandlers } from '@semcore/core';
+import InputNumber, { type InputNumberValueProps } from '@semcore/input-number';
+import type { IRootComponentHandlers } from '@semcore/core';
 import { hasParent } from '@semcore/utils/lib/hasParent';
 
 type OnConfirm = (

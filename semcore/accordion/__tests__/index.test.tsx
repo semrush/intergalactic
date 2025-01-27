@@ -1,11 +1,11 @@
-import React from 'react';
+import type React from 'react';
 import { snapshot } from '@semcore/testing-utils/snapshot';
 import { expect, test, describe, beforeEach, vi, assertType } from '@semcore/testing-utils/vitest';
 import { render, fireEvent, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
 
 import Accordion from '../src';
-import { Intergalactic } from '@semcore/core';
+import type { Intergalactic } from '@semcore/core';
 import Button from '@semcore/button';
 
 describe('Accordion', () => {

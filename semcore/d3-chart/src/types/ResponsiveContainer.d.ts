@@ -1,6 +1,6 @@
-import { BoxProps } from '@semcore/flex-box';
-import { UnknownProperties } from '@semcore/core';
-import { IntergalacticD3Component } from './Plot';
+import type { BoxProps } from '@semcore/flex-box';
+import type { UnknownProperties } from '@semcore/core';
+import type { IntergalacticD3Component } from './Plot';
 
 /** @deprecated */
 export interface IResponsiveContainerProps extends ResponsiveContainerProps, UnknownProperties {}

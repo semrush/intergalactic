@@ -3,11 +3,11 @@ import createComponent, {
   Component,
   sstyled,
   Root,
-  Intergalactic,
-  PropGetterFn,
+  type Intergalactic,
+  type PropGetterFn,
 } from '@semcore/core';
-import { Box, BoxProps } from '@semcore/flex-box';
-import { FadeInOut, FadeInOutProps } from '@semcore/animation';
+import { Box, type BoxProps } from '@semcore/flex-box';
+import { FadeInOut, type FadeInOutProps } from '@semcore/animation';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { useCssVariable } from '@semcore/utils/lib/useCssVariable';
@@ -129,7 +129,7 @@ const Edit: React.FC<AsProps> = (props) => {
   const SEdit = Root;
   const ref = React.useRef();
   const durationStr = useCssVariable('--intergalactic-duration-control', '200', ref);
-  const duration = React.useMemo(() => parseInt(durationStr, 10), [durationStr]);
+  const duration = React.useMemo(() => Number.parseInt(durationStr, 10), [durationStr]);
   const hidden = useHidden(Boolean(visible));
 
   return sstyled(props.styles)(

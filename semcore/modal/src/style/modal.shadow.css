@@ -22,7 +22,7 @@ SWindow {
   }
 
   STitle[color] {
-    color: var(--color)
+    color: var(--color);
   }
 
   SClose {

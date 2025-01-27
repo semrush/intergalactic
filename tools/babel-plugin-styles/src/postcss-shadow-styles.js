@@ -1,7 +1,7 @@
 const Tokenizer = require('css-selector-tokenizer');
 const ValueParser = require('postcss-value-parser');
 const stringHash = require('string-hash');
-const path = require('path');
+const path = require('node:path');
 const finderPackageJson = require('find-package-json');
 
 const PLACEHOLDER_REPLACER = '_gg_';
@@ -74,7 +74,7 @@ function walkAnimation(nodes, hash) {
 }
 
 const DEFAULT_OPTS = {
-  generateScopedName: function ([el, mod, value], filename, css, hashFile) {
+  generateScopedName: ([el, mod, value], filename, css, hashFile) => {
     if (value) {
       return `_${mod}_${value}_${hashFile}${PLACEHOLDER_REPLACER}`;
     }
@@ -83,7 +83,7 @@ const DEFAULT_OPTS = {
     }
     return `___${el}_${hashFile}${PLACEHOLDER_REPLACER}`;
   },
-  generateHash: function (css, filename) {
+  generateHash: (css, filename) => {
     const packageJson = finderPackageJson(filename).next();
     const relativeFilename = path.relative(packageJson.filename, filename);
     return stringHash(css + relativeFilename)

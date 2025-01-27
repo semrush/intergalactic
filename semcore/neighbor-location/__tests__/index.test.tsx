@@ -3,17 +3,15 @@ import NeighborLocation from '../src';
 import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
 import { cleanup, render } from '@semcore/testing-utils/testing-library';
 
-const NeighborLocationItem: any = function ({ neighborlocation, ...other }: any) {
-  return (
-    <NeighborLocation.Detect neighborLocation={neighborlocation}>
-      {(neighborLocation) => <CustomComponent {...other} neighborLocation={neighborLocation} />}
-    </NeighborLocation.Detect>
-  );
-};
+const NeighborLocationItem: any = ({ neighborlocation, ...other }: any) => (
+  <NeighborLocation.Detect neighborLocation={neighborlocation}>
+    {(neighborLocation) => <CustomComponent {...other} neighborLocation={neighborLocation} />}
+  </NeighborLocation.Detect>
+);
 
-const CustomComponent: any = function ({ neighborLocation, ...other }: any) {
-  return <div {...other} data-neighborlocation={neighborLocation} />;
-};
+const CustomComponent: any = ({ neighborLocation, ...other }: any) => (
+  <div {...other} data-neighborlocation={neighborLocation} />
+);
 
 describe('neighbor-location', () => {
   beforeEach(cleanup);

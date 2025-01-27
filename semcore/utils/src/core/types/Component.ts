@@ -1,12 +1,13 @@
-import React, {
-  AllHTMLAttributes,
-  ForwardRefExoticComponent,
+import type React from 'react';
+import {
+  type AllHTMLAttributes,
+  type ForwardRefExoticComponent,
   PureComponent,
-  ReactNode,
-  RefAttributes,
-  RefObject,
+  type ReactNode,
+  type RefAttributes,
+  type RefObject,
 } from 'react';
-import { IStyledProps } from '../styled/index';
+import type { IStyledProps } from '../styled/index';
 import { CORE_COMPONENT, CREATE_COMPONENT } from './symbols';
 
 /** @deprecated */
@@ -24,7 +25,7 @@ export type ChildrenType<Props = {}, Ctx = {}, UCProps = {}> =
   | ReactNode;
 
 /** @deprecated */
-export type RootComponentHandler = (...args: any[]) => void | false;
+export type RootComponentHandler = (...args: any[]) => undefined | false;
 
 /** @deprecated */
 export interface IRootComponentHandlers {
@@ -174,45 +175,45 @@ export namespace Intergalactic {
       F['length'] extends 0
         ? {}
         : F['length'] extends 1
-        ? {
-            [K in keyof ReturnType<F[0]>]: ReturnType<F[0]>[K];
-          }
-        : F['length'] extends 2
-        ? {
-            [K in keyof ReturnType<F[0]>]: ReturnType<F[0]>[K];
-          } & {
-            [K in keyof ReturnType<F[1]>]: ReturnType<F[1]>[K];
-          }
-        : F['length'] extends 3
-        ? {
-            [K in keyof ReturnType<F[0]>]: ReturnType<F[0]>[K];
-          } & {
-            [K in keyof ReturnType<F[1]>]: ReturnType<F[1]>[K];
-          } & {
-            [K in keyof ReturnType<F[2]>]: ReturnType<F[2]>[K];
-          }
-        : F['length'] extends 4
-        ? {
-            [K in keyof ReturnType<F[0]>]: ReturnType<F[0]>[K];
-          } & {
-            [K in keyof ReturnType<F[1]>]: ReturnType<F[1]>[K];
-          } & {
-            [K in keyof ReturnType<F[2]>]: ReturnType<F[2]>[K];
-          } & {
-            [K in keyof ReturnType<F[3]>]: ReturnType<F[3]>[K];
-          }
-        : {};
+          ? {
+              [K in keyof ReturnType<F[0]>]: ReturnType<F[0]>[K];
+            }
+          : F['length'] extends 2
+            ? {
+                [K in keyof ReturnType<F[0]>]: ReturnType<F[0]>[K];
+              } & {
+                [K in keyof ReturnType<F[1]>]: ReturnType<F[1]>[K];
+              }
+            : F['length'] extends 3
+              ? {
+                  [K in keyof ReturnType<F[0]>]: ReturnType<F[0]>[K];
+                } & {
+                  [K in keyof ReturnType<F[1]>]: ReturnType<F[1]>[K];
+                } & {
+                  [K in keyof ReturnType<F[2]>]: ReturnType<F[2]>[K];
+                }
+              : F['length'] extends 4
+                ? {
+                    [K in keyof ReturnType<F[0]>]: ReturnType<F[0]>[K];
+                  } & {
+                    [K in keyof ReturnType<F[1]>]: ReturnType<F[1]>[K];
+                  } & {
+                    [K in keyof ReturnType<F[2]>]: ReturnType<F[2]>[K];
+                  } & {
+                    [K in keyof ReturnType<F[3]>]: ReturnType<F[3]>[K];
+                  }
+                : {};
     export type ComponentPropsNesting<Tag extends InternalTypings.ComponentTag> = Omit<
       MergeProps<
         Tag extends React.FC
           ? ReactFCProps<Tag>
           : Tag extends React.ComponentClass
-          ? ReactComponentProps<Tag>
-          : Tag extends ReactFCLike
-          ? ReactFCLikeProps<Tag>
-          : Tag extends keyof JSX.IntrinsicElements
-          ? JSX.IntrinsicElements[Tag]
-          : {},
+            ? ReactComponentProps<Tag>
+            : Tag extends ReactFCLike
+              ? ReactFCLikeProps<Tag>
+              : Tag extends keyof JSX.IntrinsicElements
+                ? JSX.IntrinsicElements[Tag]
+                : {},
         Tag extends { __nestedProps: infer NestedProps } ? NestedProps : {}
       >,
       'children' | 'tag'
@@ -293,8 +294,8 @@ export namespace Intergalactic {
       Tag extends keyof JSX.IntrinsicElements
         ? InferJsxIntrinsicElement<JSX.IntrinsicElements[Tag]>
         : Tag extends { __nestedProps: infer NestedProps }
-        ? InferRefElementFromProps<NestedProps>
-        : HTMLElement;
+          ? InferRefElementFromProps<NestedProps>
+          : HTMLElement;
     export type UntypeRefAndTag<Props> = Intergalactic.InternalTypings.EfficientOmit<
       Props,
       'ref' | 'tag'

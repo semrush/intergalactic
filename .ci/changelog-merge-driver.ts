@@ -1,5 +1,5 @@
 import { mergeChangelogs } from '../tools/changelog-handler/index';
-import fs from 'fs/promises';
+import fs from 'node:fs/promises';
 
 try {
   const merge = await mergeChangelogs(process.argv[2], process.argv[3], '', '');

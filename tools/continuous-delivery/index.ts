@@ -16,7 +16,7 @@ import {
 import semver from 'semver';
 import { gitUtils } from './src/utils/gitUtils';
 import { NpmUtils } from './src/utils/npmUtils';
-import * as process from 'process';
+import * as process from 'node:process';
 import { closeTasks } from './src/intg-release/closeTasks';
 import {
   updateIntergalacticChangelog,

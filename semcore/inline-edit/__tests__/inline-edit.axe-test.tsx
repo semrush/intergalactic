@@ -1,4 +1,4 @@
-import { platform } from 'os';
+import { platform } from 'node:os';
 import { expect, getAccessibilityViolations, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 

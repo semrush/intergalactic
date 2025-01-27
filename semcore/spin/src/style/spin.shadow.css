@@ -18,11 +18,11 @@ SSpin {
   fill: var(--theme);
 }
 
-SSpin[theme='dark'] {
+SSpin[theme="dark"] {
   fill: var(--intergalactic-border-primary, #c4c7cf);
 }
 
-SSpin[theme='invert'] {
+SSpin[theme="invert"] {
   fill: var(--intergalactic-border-primary-invert, #ffffff);
 }
 
@@ -30,32 +30,32 @@ SSpin[centered] {
   margin: auto;
 }
 
-SSpin[size='xs'] {
+SSpin[size="xs"] {
   width: 16px;
   height: 16px;
 }
 
-SSpin[size='s'] {
+SSpin[size="s"] {
   width: 20px;
   height: 20px;
 }
 
-SSpin[size='m'] {
+SSpin[size="m"] {
   width: 24px;
   height: 24px;
 }
 
-SSpin[size='l'] {
+SSpin[size="l"] {
   width: 32px;
   height: 32px;
 }
 
-SSpin[size='xl'] {
+SSpin[size="xl"] {
   width: 48px;
   height: 48px;
 }
 
-SSpin[size='xxl'] {
+SSpin[size="xxl"] {
   width: 72px;
   height: 72px;
 }

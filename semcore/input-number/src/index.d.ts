@@ -1,6 +1,6 @@
-import React from 'react';
-import { Intergalactic, PropGetterFn, UnknownProperties } from '@semcore/core';
-import { InputAddonProps, InputProps, InputValueProps } from '@semcore/input';
+import type React from 'react';
+import type { Intergalactic, PropGetterFn, UnknownProperties } from '@semcore/core';
+import type { InputAddonProps, InputProps, InputValueProps } from '@semcore/input';
 
 export type InputNumberValue = string;
 export type InputNumberSize = 'm' | 'l';

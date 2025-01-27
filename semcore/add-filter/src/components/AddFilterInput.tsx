@@ -1,8 +1,8 @@
-import React from 'react';
+import type React from 'react';
 import createComponent, { Component, Root } from '@semcore/core';
 import Input from '@semcore/input';
-import { AddFilterItemProps } from '../AddFilter.types';
-import { InputValueProps } from '@semcore/input';
+import type { AddFilterItemProps } from '../AddFilter.types';
+import type { InputValueProps } from '@semcore/input';
 import { ButtonLink } from '@semcore/button';
 
 type AsPropsWithOnClear<T> = T & {

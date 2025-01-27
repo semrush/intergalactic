@@ -13,25 +13,27 @@ SCounter {
   border: 1px solid var(--intergalactic-border-primary, #c4c7cf);
 }
 
-SCounter[size='m'] {
+SCounter[size="m"] {
   height: 16px;
   min-width: 16px;
   font-size: var(--intergalactic-fs-50, 10px);
   padding: var(--intergalactic-spacing-1x, 4px);
 }
 
-SCounter[size='l'] {
+SCounter[size="l"] {
   height: 20px;
   min-width: 20px;
   font-size: var(--intergalactic-fs-100, 12px);
-  padding: var(--intergalactic-spacing-05x, 2px) calc(var(--intergalactic-spacing-05x, 2px) + var(--intergalactic-spacing-1x, 4px));
+  padding: var(--intergalactic-spacing-05x, 2px)
+    calc(var(--intergalactic-spacing-05x, 2px) + var(--intergalactic-spacing-1x, 4px));
 }
 
-SCounter[size='xl'] {
+SCounter[size="xl"] {
   height: 24px;
   min-width: 24px;
   font-size: var(--intergalactic-fs-200, 14px);
-  padding: var(--intergalactic-spacing-05x, 2px) calc(var(--intergalactic-spacing-05x, 2px) + var(--intergalactic-spacing-1x, 4px));
+  padding: var(--intergalactic-spacing-05x, 2px)
+    calc(var(--intergalactic-spacing-05x, 2px) + var(--intergalactic-spacing-1x, 4px));
 }
 
 SCounter[theme] {
@@ -49,17 +51,17 @@ SText {
   display: inline;
 }
 
-SCounter[theme='info'] {
+SCounter[theme="info"] {
   border-color: transparent;
   background: var(--intergalactic-bg-primary-info, #008ff8);
 }
 
-SCounter[theme='warning'] {
+SCounter[theme="warning"] {
   border-color: transparent;
   background: var(--intergalactic-bg-primary-warning, #ff642d);
 }
 
-SCounter[theme='danger'] {
+SCounter[theme="danger"] {
   border-color: transparent;
   background: var(--intergalactic-bg-primary-critical, #ff4953);
 }

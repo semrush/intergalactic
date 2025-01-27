@@ -11,7 +11,6 @@ const Demo = () => (
       <Flags
         key={country}
         name={country as keyof typeof iso2Name}
-        role='image'
         aria-label={iso2Name[country]}
         mr={1}
         mb={3}
@@ -19,11 +18,7 @@ const Demo = () => (
     ))}
     {countries.map((country) => (
       <Flex alignItems='center' gap={1} key={country}>
-        <Flags
-          name={country as keyof typeof iso2Name}
-          role='image'
-          aria-label={iso2Name[country]}
-        />
+        <Flags name={country as keyof typeof iso2Name} aria-label={iso2Name[country]} />
         <Text aria-hidden>{country}</Text>
       </Flex>
     ))}

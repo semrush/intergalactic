@@ -1,6 +1,6 @@
 import React from 'react';
 import Portal from 'intergalactic/portal';
-import NoticeGlobal, { NoticeGlobalTheme } from 'intergalactic/notice-global';
+import NoticeGlobal, { type NoticeGlobalTheme } from 'intergalactic/notice-global';
 import Button from 'intergalactic/button';
 import Select from 'intergalactic/select';
 

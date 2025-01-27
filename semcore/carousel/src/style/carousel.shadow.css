@@ -4,19 +4,19 @@ SCarousel {
   user-select: none;
 }
 
-
 SContainer {
   display: flex;
   transition: transform var(--duration) ease-in-out;
 }
 
-SContentBox, SModalBox {
+SContentBox,
+SModalBox {
   position: relative;
   overflow: hidden;
   border-radius: var(--intergalactic-surface-rounded, 6px);
   &:has(SItem[keyboardFocused]) {
     &:after {
-      content: '';
+      content: "";
       display: block;
       position: absolute;
       box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
@@ -60,7 +60,7 @@ SIndicators {
 }
 
 SIndicators[keyboardFocused]:after {
-  content: '';
+  content: "";
   display: block;
   position: absolute;
   box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
@@ -104,17 +104,19 @@ SNext {
   cursor: pointer;
   color: var(--intergalactic-icon-primary-neutral, #6c6e79);
 
-  SPrevButton span:has(> svg:only-child), SNextButton span:has(> svg:only-child) {
+  SPrevButton span:has(> svg:only-child),
+  SNextButton span:has(> svg:only-child) {
     margin-left: calc(2 * var(--intergalactic-spacing-1x, 4px) - 1px);
     margin-right: calc(2 * var(--intergalactic-spacing-1x, 4px) - 1px);
   }
 }
 
-SPrevButton, SNextButton {
+SPrevButton,
+SNextButton {
   &:focus-visible {
     box-shadow: none;
     &:after {
-      content: '';
+      content: "";
       display: block;
       position: absolute;
       box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));

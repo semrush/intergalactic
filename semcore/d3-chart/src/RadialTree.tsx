@@ -1,14 +1,20 @@
-import React from 'react';
+import type React from 'react';
 import { transition } from 'd3-transition';
-import { Component, sstyled, ReturnEl, UnknownProperties, Intergalactic } from '@semcore/core';
+import {
+  Component,
+  sstyled,
+  ReturnEl,
+  type UnknownProperties,
+  type Intergalactic,
+} from '@semcore/core';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import assignProps from '@semcore/utils/lib/assignProps';
 import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import createElement from './createElement';
 import { getChartDefaultColorName, measureText } from './utils';
-import { DataHintsHandler } from './a11y/hints';
-import { PatternFill, PatternSymbol, PatternsConfig, getPatternSymbolSize } from './Pattern';
+import type { DataHintsHandler } from './a11y/hints';
+import { PatternFill, PatternSymbol, type PatternsConfig, getPatternSymbolSize } from './Pattern';
 
 import style from './style/radial-tree.shadow.css';
 
@@ -198,7 +204,7 @@ class RadialTreeBase extends Component<RootAsProps> {
 
     if (circlesNodes.length > 0) {
       const attrs = circlesNodes.map((node) => {
-        const radianIndex = parseInt(node.dataset.radianIndex!, 10);
+        const radianIndex = Number.parseInt(node.dataset.radianIndex!, 10);
         const lineNode = linesNodes[radianIndex];
         return {
           from: {
@@ -226,7 +232,7 @@ class RadialTreeBase extends Component<RootAsProps> {
       const attrs = iconsNodes.map((node) => {
         const width = node.width?.baseVal?.value;
         const height = node.height?.baseVal?.value;
-        const radianIndex = parseInt(node.dataset.radianIndex!, 10);
+        const radianIndex = Number.parseInt(node.dataset.radianIndex!, 10);
         const lineNode = linesNodes[radianIndex];
         return {
           from: {

@@ -1,8 +1,9 @@
-import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import { BoxProps } from '@semcore/flex-box';
-import Dropdown, { DropdownProps, DropdownHandlers } from '@semcore/dropdown';
-import Popper from '@semcore/popper';
-import { InputProps } from '@semcore/input';
+import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import type { BoxProps } from '@semcore/flex-box';
+import type Dropdown from '@semcore/dropdown';
+import type { DropdownProps, DropdownHandlers } from '@semcore/dropdown';
+import type Popper from '@semcore/popper';
+import type { InputProps } from '@semcore/input';
 
 /** @deprecated */
 export interface IItemProps extends ItemProps, UnknownProperties {}

@@ -1,4 +1,4 @@
-import * as path from 'path';
+import * as path from 'node:path';
 import * as React from 'react';
 import { createRoot } from 'react-dom/client';
 import { act } from './testing-library';
@@ -122,7 +122,7 @@ export const snapshot = async (
   return screenshot;
 };
 
-snapshot.ProxyProps = function (props: any) {
+snapshot.ProxyProps = (props: any) => {
   const { children, ...others } = props;
   return React.Children.map(children, (child: any, i: number) =>
     React.cloneElement(child, {

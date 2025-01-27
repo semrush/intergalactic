@@ -1,5 +1,5 @@
-import { resolve as resolvePath } from 'path';
-import { access as fsAccess, stat as fsStat, readdir } from 'fs/promises';
+import { resolve as resolvePath } from 'node:path';
+import { access as fsAccess, stat as fsStat, readdir } from 'node:fs/promises';
 
 const fsExists = async (path: string) => {
   try {

@@ -2,8 +2,8 @@
 
 import execa from 'execa';
 import mri from 'mri';
-import { resolve as resolvePath } from 'path';
-import { fileURLToPath } from 'url';
+import { resolve as resolvePath } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const argv = mri<{
   source: string;
@@ -36,7 +36,7 @@ type ArgumentTypes<F extends Function> = F extends (...args: infer A) => any ? A
 
 const runCommand = async <Command extends keyof typeof makeCommand>(
   commandName: Command,
-  ...args: ArgumentTypes<typeof makeCommand[Command]>
+  ...args: ArgumentTypes<(typeof makeCommand)[Command]>
 ) => {
   return await execa.commandSync(makeCommand[commandName].apply(null, args), { shell: true });
 };

@@ -1,8 +1,12 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
-import createComponent, { register, UnknownProperties, Intergalactic } from '@semcore/core';
+import createComponent, {
+  register,
+  type UnknownProperties,
+  type Intergalactic,
+} from '@semcore/core';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
-import { getNodeByRef, NodeByRef } from '@semcore/utils/lib/ref';
+import { getNodeByRef, type NodeByRef } from '@semcore/utils/lib/ref';
 
 /** @deprecated */
 export interface IPortalProps extends PortalProps, UnknownProperties {}

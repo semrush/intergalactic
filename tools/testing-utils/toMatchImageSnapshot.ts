@@ -1,8 +1,8 @@
-import { resolve as resolvePath, dirname as resolveDirname } from 'path';
-import fs from 'fs';
+import { resolve as resolvePath, dirname as resolveDirname } from 'node:path';
+import fs from 'node:fs';
 import pixelmatch from 'pixelmatch';
 import { PNG } from 'pngjs';
-import { promisify } from 'util';
+import { promisify } from 'node:util';
 
 const mkdir = promisify(fs.mkdir);
 const stat = promisify(fs.stat);
@@ -48,7 +48,10 @@ export async function toMatchImageSnapshot(
     testName = `${suite.name} ${testName}`;
     suite = suite.suite;
   }
-  testName = testName.replace(/[\W\s_]/g, '-').replace(/-+/g, '-').toLowerCase();
+  testName = testName
+    .replace(/[\W\s_]/g, '-')
+    .replace(/-+/g, '-')
+    .toLowerCase();
   if (snapshotIndex !== 1) {
     testName += `-${snapshotIndex}`;
   }
@@ -70,12 +73,11 @@ export async function toMatchImageSnapshot(
         pass: true,
         message: () => 'ok',
       };
-    } else {
-      return {
-        pass: false,
-        message: () => `Snapshot ${snapshotPath} not found.`,
-      };
     }
+    return {
+      pass: false,
+      message: () => `Snapshot ${snapshotPath} not found.`,
+    };
   }
   const savedSnapshot = await readFile(snapshotPath);
   let snapshotImage: any = PNG.sync.read(snapshot);

@@ -22,14 +22,14 @@ SOverlay {
   left: 0;
 }
 
-SOverlay[theme='invert'] {
+SOverlay[theme="invert"] {
   background-color: var(--intergalactic-overlay-secondary, rgba(25, 27, 35, 0.4));
 }
 
-SOverlay[theme='dark'] {
+SOverlay[theme="dark"] {
   background-color: var(--intergalactic-overlay-limitation-secondary, rgba(255, 255, 255, 0.85));
 }
 
-SOverlay[theme='custom'] {
+SOverlay[theme="custom"] {
   background-color: var(--background);
 }

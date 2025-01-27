@@ -1,6 +1,6 @@
 #!/usr/bin/env tsm
 
-import fs from 'fs/promises';
+import fs from 'node:fs/promises';
 import pc from 'picocolors';
 import { allowedScopes } from '../tools/continuous-delivery/src/utils/allowedScopes';
 

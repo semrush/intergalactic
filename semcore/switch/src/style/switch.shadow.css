@@ -12,7 +12,7 @@ SSwitch[size] {
   }
 }
 
-SSwitch[size='m'] {
+SSwitch[size="m"] {
   font-size: var(--intergalactic-fs-100, 12px);
   line-height: var(--intergalactic-lh-100, 133%);
 
@@ -29,7 +29,7 @@ SSwitch[size='m'] {
   }
 }
 
-SSwitch[size='l'] {
+SSwitch[size="l"] {
   font-size: var(--intergalactic-fs-200, 14px);
   line-height: var(--intergalactic-lh-200, 142%);
 
@@ -46,7 +46,7 @@ SSwitch[size='l'] {
   }
 }
 
-SSwitch[size='xl'] {
+SSwitch[size="xl"] {
   font-size: var(--intergalactic-fs-300, 16px);
   line-height: var(--intergalactic-lh-300, 150%);
 
@@ -84,16 +84,16 @@ SToggle {
   justify-content: space-around;
 }
 
-SToggle[checked][theme='info'] {
+SToggle[checked][theme="info"] {
   color: var(--intergalactic-control-primary-info, #008ff8);
   background-color: var(--intergalactic-control-primary-info, #008ff8);
 }
-SToggle[checked][theme='success'] {
+SToggle[checked][theme="success"] {
   color: var(--intergalactic-control-primary-success, #009f81);
   background-color: var(--intergalactic-control-primary-success, #009f81);
 }
 
-SToggle[checked][theme='custom'] {
+SToggle[checked][theme="custom"] {
   color: var(--color);
   background-color: var(--color);
 }
@@ -102,16 +102,16 @@ SToggle[keyboardFocused] {
   box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
 }
 
-SToggle[neighborLocation='left'] {
+SToggle[neighborLocation="left"] {
   margin-left: var(--intergalactic-spacing-2x, 8px);
 }
 
-SToggle[neighborLocation='both'] {
+SToggle[neighborLocation="both"] {
   margin-right: var(--intergalactic-spacing-2x, 8px);
   margin-left: var(--intergalactic-spacing-2x, 8px);
 }
 
-SToggle[neighborLocation='right'] {
+SToggle[neighborLocation="right"] {
   margin-right: var(--intergalactic-spacing-2x, 8px);
 }
 
@@ -145,27 +145,27 @@ SAddon {
   cursor: pointer;
 }
 
-SAddon[neighborLocation='right'] {
+SAddon[neighborLocation="right"] {
   color: var(--intergalactic-text-primary, #191b23);
 }
 
-SAddon[neighborLocation='left'] {
+SAddon[neighborLocation="left"] {
   color: var(--intergalactic-text-secondary, #6c6e79);
 }
 
-SAddon[neighborLocation='left']:nth-child(2) {
+SAddon[neighborLocation="left"]:nth-child(2) {
   color: var(--intergalactic-text-primary, #191b23);
 }
 
 SSwitch[checked] {
-  & SAddon[neighborLocation='right'] {
+  & SAddon[neighborLocation="right"] {
     color: var(--intergalactic-text-secondary, #6c6e79);
   }
-  & SAddon[neighborLocation='right']:nth-last-child(2) {
+  & SAddon[neighborLocation="right"]:nth-last-child(2) {
     color: var(--intergalactic-text-primary, #191b23);
   }
 
-  & SAddon[neighborLocation='left'] {
+  & SAddon[neighborLocation="left"] {
     color: var(--intergalactic-text-primary, #191b23);
   }
 }

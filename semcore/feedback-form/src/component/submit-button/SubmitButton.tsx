@@ -1,6 +1,6 @@
 import Button from '@semcore/button';
 import React from 'react';
-import { Root, sstyled, IRootComponentProps } from '@semcore/core';
+import { Root, sstyled, type IRootComponentProps } from '@semcore/core';
 
 export function SubmitButton(props: IRootComponentProps) {
   const { styles } = props;

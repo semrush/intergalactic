@@ -5,11 +5,11 @@ import createComponent, {
   Component,
   sstyled,
   Root,
-  PropGetterFn,
-  UnknownProperties,
-  Intergalactic,
+  type PropGetterFn,
+  type UnknownProperties,
+  type Intergalactic,
 } from '@semcore/core';
-import Input, { InputProps, IInputProps, InputValueProps } from '@semcore/input';
+import Input, { type InputProps, type IInputProps, type InputValueProps } from '@semcore/input';
 import fire from '@semcore/utils/lib/fire';
 import logger from '@semcore/utils/lib/logger';
 import NeighborLocation from '@semcore/neighbor-location';
@@ -253,17 +253,15 @@ class Value extends Component<InputMaskValueProps, {}, {}, typeof Value.enhance>
             this.setState({ lastConformed: conformedValueBeforPiping });
             if (indexesOfPipedChars !== null) {
               return { value: conformedValueBeforPiping, indexesOfPipedChars };
-            } else {
-              return conformedValueBeforPiping;
             }
+            return conformedValueBeforPiping;
           }
 
           this.setState({ lastConformed: this.prevConfirmedValue });
           if (indexesOfPipedChars !== null) {
             return { value: conformedValue, indexesOfPipedChars };
-          } else {
-            return conformedValue;
           }
+          return conformedValue;
         }
         initiated = true;
 
@@ -275,9 +273,8 @@ class Value extends Component<InputMaskValueProps, {}, {}, typeof Value.enhance>
 
         if (indexesOfPipedChars !== null) {
           return { value: userInput, indexesOfPipedChars };
-        } else {
-          return userInput;
         }
+        return userInput;
       },
     });
 

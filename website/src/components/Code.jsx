@@ -13,10 +13,10 @@ export default function ({ children, lang, block, className }) {
           style={{ ...style, display: block ? 'block' : 'inline-block' }}
         >
           {tokens.map((line, i) => (
-            <div {...getLineProps({ line, key: i })}>
+            <div {...getLineProps({ line, key: i })} key={i}>
               {line.map((token, key) => {
                 const { className, ...other } = getTokenProps({ token, key });
-                return <span {...other} />;
+                return <span {...other} key={token} />;
               })}
             </div>
           ))}

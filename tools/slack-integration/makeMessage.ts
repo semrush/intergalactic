@@ -1,4 +1,4 @@
-import { ChangelogChangeLabel } from '@semcore/changelog-handler';
+import type { ChangelogChangeLabel } from '@semcore/changelog-handler';
 
 const type2SectionLabel: Record<string, string> = {
   added: ':white_check_mark: ADDED',

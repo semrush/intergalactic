@@ -12,9 +12,8 @@ const Demo = () => {
       setSelected((selected) => {
         if (selected.includes(name)) {
           return selected.filter((selectedName) => selectedName !== name);
-        } else {
-          return [...selected, name];
         }
+        return [...selected, name];
       });
     },
     [setSelected],

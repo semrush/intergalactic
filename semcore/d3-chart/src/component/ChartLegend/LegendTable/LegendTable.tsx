@@ -1,7 +1,7 @@
 import React from 'react';
-import createComponent, { sstyled, Root, IRootComponentProps } from '@semcore/core';
+import createComponent, { sstyled, Root, type IRootComponentProps } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
-import { LegendTableType, LegendTableProps, LegendColumnProps } from './LegendTable.type';
+import type { LegendTableType, LegendTableProps, LegendColumnProps } from './LegendTable.type';
 import style from './legend-table.shadow.css';
 import { LegendItemComponent } from '../LegendItem/LegendItem';
 import { BaseLegend } from '../BaseLegend';

@@ -9,7 +9,7 @@ const seed = 0;
 import glob from 'fast-glob';
 import esbuild from 'esbuild';
 import { fastHashCode as hash } from 'fast-hash-code';
-import fs from 'fs/promises';
+import fs from 'node:fs/promises';
 import { esbuildPluginSemcoreSourcesResolve } from '../tools/esbuild-plugin-semcore/src/esbuild-plugin-semcore-sources-resolve';
 
 export const generateVoTestsHash = async () => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import createComponent from '@semcore/core';
-import { LineChartData, LineChartProps, LineChartType } from './LineChart.type';
-import { ScaleLinear, scaleLinear, scaleTime } from 'd3-scale';
+import type { LineChartData, LineChartProps, LineChartType } from './LineChart.type';
+import { type ScaleLinear, scaleLinear, scaleTime } from 'd3-scale';
 // @ts-ignore
 import { Line, minMax, HoverLine } from '../..';
 import { AbstractChart } from './AbstractChart';

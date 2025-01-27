@@ -62,10 +62,7 @@ STagContainerClose {
   color: var(--tag-color);
 
   &[interactive][keyboardFocused] {
-    box-shadow: var(
-      --intergalactic-keyboard-focus,
-      0px 0px 0px 3px rgba(0, 143, 248, 0.5)
-    );
+    box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
     z-index: 1;
   }
 
@@ -214,10 +211,7 @@ STagContainerClose[theme="additional-invert"] {
 
 STag[theme="primary-invert"],
 STagContainerClose[theme="primary-invert"] {
-  background-color: var(
-    --intergalactic-tag-primary-white-normal,
-    rgba(255, 255, 255, 0.15)
-  );
+  background-color: var(--intergalactic-tag-primary-white-normal, rgba(255, 255, 255, 0.15));
   color: var(--intergalactic-text-primary-invert, #ffffff);
 }
 
@@ -246,10 +240,7 @@ SText {
 }
 
 SText[keyboardFocused] {
-  box-shadow: var(
-    --intergalactic-keyboard-focus,
-    0px 0px 0px 3px rgba(0, 143, 248, 0.5)
-  );
+  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
   z-index: 1;
 }
 

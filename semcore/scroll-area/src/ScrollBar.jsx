@@ -83,7 +83,8 @@ class ScrollBarRoot extends Component {
 
     if (horizontal && orientation === 'horizontal') {
       return true;
-    } else if (vertical && orientation === 'vertical') {
+    }
+    if (vertical && orientation === 'vertical') {
       return true;
     }
 

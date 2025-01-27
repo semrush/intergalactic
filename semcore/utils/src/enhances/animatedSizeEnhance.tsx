@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForkRef } from '../ref';
 import useEnhancedEffect from '../use/useEnhancedEffect';
-import { UnknownProperties } from '../core';
+import type { UnknownProperties } from '../core';
 
 /** @deprecated */
 export interface IWithAnimatedSizeEnhanceProps

@@ -1,10 +1,10 @@
-import React from 'react';
-import { UnknownProperties, Intergalactic, Root } from '@semcore/core';
-import { Box, BoxProps } from '@semcore/flex-box';
-import { DotProps } from '@semcore/dot';
-import { NeighborItemProps } from '@semcore/neighbor-location';
-import { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
-import { WithAnimatedSizeEnhanceProps } from '@semcore/utils/lib/enhances/animatedSizeEnhance';
+import type React from 'react';
+import { type UnknownProperties, type Intergalactic, Root } from '@semcore/core';
+import type { Box, BoxProps } from '@semcore/flex-box';
+import type { DotProps } from '@semcore/dot';
+import type { NeighborItemProps } from '@semcore/neighbor-location';
+import type { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import type { WithAnimatedSizeEnhanceProps } from '@semcore/utils/lib/enhances/animatedSizeEnhance';
 
 /** @deprecated */
 export interface IBaseTriggerProps extends BaseTriggerProps, UnknownProperties {}

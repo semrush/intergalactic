@@ -119,15 +119,14 @@ class TabLineRoot extends Component {
         },
         onTransitionEnd: this.handleAnimationEnd,
       };
-    } else {
-      return {
-        style: {
-          left: animation.fromLeft,
-          width: animation.fromWidth,
-        },
-        onTransitionEnd: this.handleAnimationEnd,
-      };
     }
+    return {
+      style: {
+        left: animation.fromLeft,
+        width: animation.fromWidth,
+      },
+      onTransitionEnd: this.handleAnimationEnd,
+    };
   }
 
   render() {

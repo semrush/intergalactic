@@ -1,9 +1,9 @@
-import { UnknownProperties } from '@semcore/core';
-import { Context } from './context';
-import { BarContext, BarProps } from './Bar';
-import { HorizontalBarProps } from './HorizontalBar';
-import { IntergalacticD3Component } from './Plot';
-import { PatternsConfig } from './Pattern';
+import type { UnknownProperties } from '@semcore/core';
+import type { Context } from './context';
+import type { BarContext, BarProps } from './Bar';
+import type { HorizontalBarProps } from './HorizontalBar';
+import type { IntergalacticD3Component } from './Plot';
+import type { PatternsConfig } from './Pattern';
 
 /** @deprecated */
 export interface IStackBarProps extends StackBarProps, UnknownProperties {}

@@ -1,6 +1,6 @@
 import { Plugin } from 'esbuild';
-import { resolve as resolvePath, dirname as resolveDirname } from 'path';
-import { fileURLToPath } from 'url';
+import { resolve as resolvePath, dirname as resolveDirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import glob from 'fast-glob';
 import { createUnplugin } from 'unplugin';
 
@@ -28,9 +28,8 @@ export const unpluginIcons = createUnplugin(() => ({
       const parts = path.split('/');
       if (!['xxl', 'xl', 'l', 'm', 's', 'xs', 'xxs'].includes(parts[parts.length - 2])) {
         return parts[parts.length - 2];
-      } else {
-        return parts[parts.length - 3];
       }
+      return parts[parts.length - 3];
     });
 
     const imports = iconPaths.map(

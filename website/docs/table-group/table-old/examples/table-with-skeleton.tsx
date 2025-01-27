@@ -46,7 +46,7 @@ const Demo = () => (
         {Object.keys(data[0])
           .slice(1)
           .map((name) => (
-            <Table.CellHead>
+            <Table.CellHead key={name}>
               <Hint title='Lorem ipsum'>
                 <span tabIndex={0}>
                   {name.toUpperCase()} {['kd', 'traffic'].includes(name) && '%'}
@@ -57,8 +57,8 @@ const Demo = () => (
       </Table.Row>
     </Table.Head>
     <Table.Body>
-      {[...new Array(10)].map(() => (
-        <Table.Row theme={false}>
+      {[...new Array(10)].map((_, index) => (
+        <Table.Row theme={false} key={index}>
           {fetchData()}
           {Object.keys(data[0]).map(() => fetchData())}
         </Table.Row>

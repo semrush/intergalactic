@@ -1,5 +1,5 @@
-import { Plugin } from 'esbuild';
-import { readdir } from 'fs/promises';
+import type { Plugin } from 'esbuild';
+import { readdir } from 'node:fs/promises';
 
 export const esbuildPluginPlaygroundsLoader = (playgroundsDir: string): Plugin => ({
   name: 'esbuild-plugin-playgrounds-loader',

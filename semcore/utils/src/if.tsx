@@ -1,5 +1,5 @@
-import { UnknownProperties } from './core/index';
-import { FC, ReactNode } from 'react';
+import type { UnknownProperties } from './core/index';
+import type { FC, ReactNode } from 'react';
 
 /** @deprecated */
 export interface IIfProps extends IfProps, UnknownProperties {}

@@ -1,10 +1,10 @@
-import React from 'react';
-import { UnknownProperties } from '@semcore/core';
-import { Context } from './context';
-import { ReturnEl } from '@semcore/core';
-import { TooltipTypeBase } from './Tooltip';
-import { BoxProps } from '@semcore/flex-box';
-import { IntergalacticD3Component } from './Plot';
+import type React from 'react';
+import type { UnknownProperties } from '@semcore/core';
+import type { Context } from './context';
+import type { ReturnEl } from '@semcore/core';
+import type { TooltipTypeBase } from './Tooltip';
+import type { BoxProps } from '@semcore/flex-box';
+import type { IntergalacticD3Component } from './Plot';
 
 /** @deprecated */
 export interface IHoverProps extends HoverProps, UnknownProperties {}

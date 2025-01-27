@@ -90,8 +90,8 @@ module.exports = () => {
             const customPropertiesObject = isHtmlRule(rule)
               ? customPropertiesFromHtmlElement
               : isRootRule(rule)
-              ? customPropertiesFromRootPseudo
-              : null;
+                ? customPropertiesFromRootPseudo
+                : null;
 
             // for each custom property
             if (customPropertiesObject) {

@@ -7,9 +7,7 @@ const STYLES_SELF = Symbol('STYLES_SELF');
 
 function Enhancement(childComponents: any, Context: any) {
   return {
-    condition: function (Component: any) {
-      return Boolean(Component.style || Component[STATIC_COMPONENT]);
-    },
+    condition: (Component: any) => Boolean(Component.style || Component[STATIC_COMPONENT]),
     init: function (this: any, props: any, WrapperComponent: any) {
       if (props.styles) {
         this[STYLES_SELF] = props.styles;

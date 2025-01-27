@@ -1,5 +1,5 @@
 import { makeBezier } from './bezier';
-import { DataStructureHints, DataSummarizationConfig } from './hints';
+import type { DataStructureHints, DataSummarizationConfig } from './hints';
 
 export type TrendNode = {
   type: 'trend';
@@ -200,9 +200,9 @@ export const extractDataInsights = (
         const table = [];
         for (const i in values) {
           table.push({
-            value: (values[i] ?? NaN).toFixed(2),
-            long: (longMovingAverage[i] ?? NaN).toFixed(2),
-            short: (shortMovingAverage[i] ?? NaN).toFixed(2),
+            value: (values[i] ?? Number.NaN).toFixed(2),
+            long: (longMovingAverage[i] ?? Number.NaN).toFixed(2),
+            short: (shortMovingAverage[i] ?? Number.NaN).toFixed(2),
           });
         }
 
@@ -404,8 +404,8 @@ export const extractDataInsights = (
         grid[gridX][gridY].members.push(normalized[i]);
       }
       const clusters: { [clusterId: string]: typeof normalized } = {};
-      for (const x of Object.keys(grid).map((x) => parseInt(x, 10))) {
-        for (const y of Object.keys(grid[x]).map((y) => parseInt(y, 10))) {
+      for (const x of Object.keys(grid).map((x) => Number.parseInt(x, 10))) {
+        for (const y of Object.keys(grid[x]).map((y) => Number.parseInt(y, 10))) {
           let pointHandled = false;
           for (const xNeighbour of [x - 1, x, x + 1]) {
             for (const yNeighbour of [y - 1, y, y + 1]) {
@@ -453,13 +453,13 @@ export const extractDataInsights = (
       clustersInsights.sort((a, b) => b.size - a.size);
 
       const relativeSizeDistrivution = {
-        ['significantly-bigger']: { max: Infinity, min: 0.85 },
+        ['significantly-bigger']: { max: Number.POSITIVE_INFINITY, min: 0.85 },
         ['bigger']: { min: 0.7, max: 0.85 },
         ['slightly-bigger']: { min: 0.6, max: 0.7 },
         ['average']: { min: 0.4, max: 0.6 },
         ['slightly-smaller']: { max: 0.4, min: 0.3 },
         ['smaller']: { min: 0.15, max: 0.3 },
-        ['significantly-smaller']: { min: -Infinity, max: 0.15 },
+        ['significantly-smaller']: { min: Number.NEGATIVE_INFINITY, max: 0.15 },
       } as { [key in ClusterRelativeSize]: { min: number; max: number } };
       const averageSize =
         clustersInsights.reduce((sum, cluster) => sum + cluster.size, 0) / clustersInsights.length;

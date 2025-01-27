@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require('node:path');
 const syntaxJsx = require('@babel/plugin-syntax-jsx').default;
 const { addNamed } = require('@babel/helper-module-imports');
 const fs = require('fs-extra');
@@ -14,9 +14,8 @@ function StylesPlugin({ types: t }, opts) {
   function getAttrKey(name) {
     if (t.isJSXNamespacedName(name)) {
       return `${name.namespace.name}:${name.name.name}`;
-    } else {
-      return name.name;
     }
+    return name.name;
   }
 
   function importProcessing(p, ident, cssPath) {

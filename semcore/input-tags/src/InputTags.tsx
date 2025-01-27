@@ -3,14 +3,14 @@ import createComponent, {
   Component,
   sstyled,
   Root,
-  PropGetterFn,
-  UnknownProperties,
-  Intergalactic,
-  IRootComponentProps,
+  type PropGetterFn,
+  type UnknownProperties,
+  type Intergalactic,
+  type IRootComponentProps,
 } from '@semcore/core';
-import Input, { InputProps, InputValueProps } from '@semcore/input';
-import ScrollArea, { ScrollAreaProps } from '@semcore/scroll-area';
-import Tag, { TagProps, TagContainer, TagTextProps, TagContext } from '@semcore/tag';
+import Input, { type InputProps, type InputValueProps } from '@semcore/input';
+import ScrollArea, { type ScrollAreaProps } from '@semcore/scroll-area';
+import Tag, { type TagProps, TagContainer, type TagTextProps, type TagContext } from '@semcore/tag';
 import fire from '@semcore/utils/lib/fire';
 import { ScreenReaderOnly } from '@semcore/flex-box';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';

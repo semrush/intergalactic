@@ -1,5 +1,5 @@
-import { ListItem, Token } from 'marked-ast-markdown';
-import { Changelog, ChangelogChange } from '../types';
+import type { ListItem, Token } from 'marked-ast-markdown';
+import type { Changelog, ChangelogChange } from '../types';
 
 export const serializeReleaseChangelog = (changelogs: Changelog[]): Token[] =>
   changelogs.flatMap((changelog): Token[] => {

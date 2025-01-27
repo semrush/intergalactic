@@ -1,5 +1,5 @@
-import { execSync } from 'child_process';
-import { VersionPatch } from './makeVersionPatches';
+import { execSync } from 'node:child_process';
+import type { VersionPatch } from './makeVersionPatches';
 import Git from 'simple-git';
 import dotenv from 'dotenv';
 

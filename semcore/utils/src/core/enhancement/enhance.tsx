@@ -1,11 +1,8 @@
 function Enhancement() {
   return {
-    condition: function (Component: any) {
-      return Boolean(Component.enhance?.length);
-    },
-    wrapperProps: function (props: any, WrapperComponent: any) {
-      return WrapperComponent.enhance.reduce((acc: any, enhance: any) => enhance(acc), props);
-    },
+    condition: (Component: any) => Boolean(Component.enhance?.length),
+    wrapperProps: (props: any, WrapperComponent: any) =>
+      WrapperComponent.enhance.reduce((acc: any, enhance: any) => enhance(acc), props),
   };
 }
 

@@ -1,16 +1,16 @@
 import esbuild from 'esbuild';
-import fs from 'fs/promises';
+import fs from 'node:fs/promises';
 import { websiteEsbuildConfig } from './esbuild.config';
 import { buildNavigation } from './navigation';
 import {
   resolve as resolvePath,
   relative as resolveRelativePath,
   dirname as resolveDirname,
-} from 'path';
+} from 'node:path';
 import { buildArticle, serializeArticle } from './build-article/build-article';
-import { createHash } from 'crypto';
+import { createHash } from 'node:crypto';
 import { SitemapStream, streamToPromise } from 'sitemap';
-import { Readable } from 'stream';
+import { Readable } from 'node:stream';
 
 const fsExists = async (path: string) => {
   try {
@@ -145,6 +145,7 @@ const preprocessArticleData = (navigationNode, pageData) => {
   return {
     codeEntry: `__ssr_preloaded_page_route="${route}";
      __ssr_preloaded_page_data=(${preloadedPageData});`,
+    /* biome-ignore lint/security/noGlobalEval: */
     preloadPageData: eval(preloadedPageData),
   };
 };

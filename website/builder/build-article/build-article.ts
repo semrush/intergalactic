@@ -1,5 +1,5 @@
 import glob from 'fast-glob';
-import {
+import type {
   Content as MarkdownToken,
   Root as MarkdownRoot,
   Paragraph as MarkdownParagraph,
@@ -8,7 +8,7 @@ import {
   resolve as resolvePath,
   dirname as resolveDirname,
   relative as resolveRelativePath,
-} from 'path';
+} from 'node:path';
 import {
   fsExists,
   generateHeadingId,
@@ -18,8 +18,8 @@ import {
   parseMarkdownMeta,
   removeMarkdownMeta,
 } from '../utils';
-import { readFile } from 'fs/promises';
-import { fileURLToPath } from 'url';
+import { readFile } from 'node:fs/promises';
+import { fileURLToPath } from 'node:url';
 import { resolveRepoTypings } from '../typings/resolveRepoTypings';
 // @ts-ignore
 import { makeCacheManager } from '../../../tools/esbuild-plugin-semcore/cache-manager';
@@ -570,7 +570,8 @@ export const buildArticle = async (
                   throw new Error(
                     `Unable to find changelog for "${componentName}" (searching for "${searchPattern}" from ${repoRoot}) from ${position}`,
                   );
-                } else if (files.length > 1) {
+                }
+                if (files.length > 1) {
                   const filesList = files.join(', ');
                   throw new Error(
                     `Unable to find changelog for "${componentName}" cause found multiple matching changelogs (${filesList}) from ${position}`,
@@ -600,24 +601,23 @@ export const buildArticle = async (
                   type: 'changelogByComponent',
                   blocks,
                 };
-              } else {
-                const route = resolveDirname(relativePath);
-                const blocks = makeChangelog(markdownAst, fullPath, metaHeight, route);
-                blocks.forEach((block) => {
-                  const tokenHead = {
-                    type: 'heading',
-                    level: block.level,
-                    id: block.id,
-                    html: block.title,
-                  };
-                  headingsChangelog.push(tokenHead);
-                });
-
-                return {
-                  type: 'changelog',
-                  blocks,
-                };
               }
+              const route = resolveDirname(relativePath);
+              const blocks = makeChangelog(markdownAst, fullPath, metaHeight, route);
+              blocks.forEach((block) => {
+                const tokenHead = {
+                  type: 'heading',
+                  level: block.level,
+                  id: block.id,
+                  html: block.title,
+                };
+                headingsChangelog.push(tokenHead);
+              });
+
+              return {
+                type: 'changelog',
+                blocks,
+              };
             }
             if (text.startsWith('@typescript ')) {
               const typingName = text.substring('@typescript '.length);

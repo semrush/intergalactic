@@ -24,9 +24,8 @@ function addonTextChildren(
       const wrapChildren: any = addonTextChildren(element.type, Text, Addon);
       if (wrapChildren.type[CHILDREN_COMPONENT]) {
         return true;
-      } else {
-        element = wrapChildren;
       }
+      element = wrapChildren;
     }
     // @ts-ignore
     const inheritedNames = element.type[INHERITED_NAME] || [element.type.displayName];

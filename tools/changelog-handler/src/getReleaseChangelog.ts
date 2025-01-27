@@ -1,7 +1,7 @@
-import { resolve as resolvePath } from 'path';
+import { resolve as resolvePath } from 'node:path';
 import fs from 'fs-extra';
 import { releaseChangelogParser } from './parsers/releaseChangelogParser';
-import { fileURLToPath } from 'url';
+import { fileURLToPath } from 'node:url';
 
 const filename = fileURLToPath(import.meta.url);
 

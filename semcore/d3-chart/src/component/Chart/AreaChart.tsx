@@ -1,10 +1,10 @@
 import React from 'react';
 import createComponent from '@semcore/core';
-import { ScaleLinear, scaleLinear, scaleTime } from 'd3-scale';
+import { type ScaleLinear, scaleLinear, scaleTime } from 'd3-scale';
 // @ts-ignore
 import { Area, minMax, HoverLine, StackedArea } from '../..';
 import { AbstractChart } from './AbstractChart';
-import { AreaChartData, AreaChartProps, AreaChartType } from './AreaChart.type';
+import type { AreaChartData, AreaChartProps, AreaChartType } from './AreaChart.type';
 import { Flex, Box } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';

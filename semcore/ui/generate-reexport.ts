@@ -1,8 +1,8 @@
-import path from 'path';
+import path from 'node:path';
 import fs from 'fs-extra';
 import glob from 'fast-glob';
-import { fileURLToPath } from 'url';
-import { createRequire } from 'module';
+import { fileURLToPath } from 'node:url';
+import { createRequire } from 'node:module';
 import { Parser } from 'acorn';
 import acornJSX from 'acorn-jsx';
 

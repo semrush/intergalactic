@@ -1,5 +1,5 @@
-import React from 'react';
-import { Intergalactic, ReturnEl, UnknownProperties } from '@semcore/core';
+import type React from 'react';
+import type { Intergalactic, ReturnEl, UnknownProperties } from '@semcore/core';
 
 /** @deprecated */
 export interface INeighborLocationProps extends NeighborLocationProps, UnknownProperties {

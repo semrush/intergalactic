@@ -1,4 +1,4 @@
-@import './var.css';
+@import "./var.css";
 
 SBubble {
   fill: var(--intergalactic-chart-palette-order-1, #2bb3ff);
@@ -47,11 +47,11 @@ SLabel {
   fill: var(--intergalactic-chart-palette-order-1, #2bb3ff);
 }
 
-SLabel[position='right'] {
+SLabel[position="right"] {
   text-anchor: end;
 }
 
-SLabel[position='left'] {
+SLabel[position="left"] {
   text-anchor: start;
 }
 

@@ -46,7 +46,7 @@
 }
 .descriptionCell code::before,
 .descriptionCell code::after {
-  content: '';
+  content: "";
   display: inline;
   padding-right: 0.2em;
 }

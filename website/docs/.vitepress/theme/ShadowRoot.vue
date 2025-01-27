@@ -5,8 +5,7 @@
 </template>
 
 <script setup lang="ts">
-
-import { ref, onMounted } from 'vue'
+import { ref, onMounted } from 'vue';
 const containerRef = ref<HTMLElement>();
 
 onMounted(() => {
@@ -15,7 +14,5 @@ onMounted(() => {
   if (shadowRoot) {
     shadowRoot.innerHTML = innerHTML || '';
   }
-})
-
-
+});
 </script>

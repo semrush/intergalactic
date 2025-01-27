@@ -1,4 +1,4 @@
-import { Token } from 'marked-ast';
+import type { Token } from 'marked-ast';
 
 export type ChangelogChangeLabel = 'Added' | 'Changed' | 'Fixed' | 'BREAK';
 

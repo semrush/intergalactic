@@ -1,6 +1,6 @@
 import type { Intergalactic } from '../src';
 import { test, describe, assertType } from '@semcore/testing-utils/vitest';
-import * as React from 'react';
+import type * as React from 'react';
 
 describe('Core types', () => {
   const any: any = null;

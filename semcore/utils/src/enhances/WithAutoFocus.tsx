@@ -1,7 +1,8 @@
-import React, { PureComponent } from 'react';
+import type React from 'react';
+import { PureComponent } from 'react';
 import { findDOMNode } from 'react-dom';
 import createHoc from '../createHoc';
-import { UnknownProperties } from '../core';
+import type { UnknownProperties } from '../core';
 
 /** @deprecated */
 export interface IEnhancedWithAutoFocusProps

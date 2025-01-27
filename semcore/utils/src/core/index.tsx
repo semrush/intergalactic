@@ -1,4 +1,4 @@
-import React, { ForwardRefExoticComponent, RefAttributes } from 'react';
+import React, { type ForwardRefExoticComponent, type RefAttributes } from 'react';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 
 import { useForkRef } from '../ref';
@@ -7,7 +7,7 @@ import _assignProps from '../assignProps';
 
 import {
   Component,
-  PropsWithRenderFnChildren,
+  type PropsWithRenderFnChildren,
   wrapIntergalacticComponent,
 } from './types/Component';
 import register from './register';
@@ -178,9 +178,8 @@ function wrapClass(OriginComponent: any, enhancements: any, Context: any) {
       );
       if (!WrapperComponent[STATIC_COMPONENT] && !isEmptyObject(ctx)) {
         return <Context.Provider value={{ ...asProps, ...ctx }}>{render}</Context.Provider>;
-      } else {
-        return render;
       }
+      return render;
     }
   }
 
@@ -232,9 +231,8 @@ function wrapFunction(OriginComponent: any, enhancements: any, Context: any) {
 
     if (!WrapperComponent[STATIC_COMPONENT] && !isEmptyObject(ctx)) {
       return <Context.Provider value={{ ...asProps, ...ctx }}>{render}</Context.Provider>;
-    } else {
-      return render;
     }
+    return render;
   });
   Object.assign(Component, OriginComponent);
   const WrapperComponent: any = createForwardWrapper(Component, wrapperProps, statics, true);
@@ -242,7 +240,7 @@ function wrapFunction(OriginComponent: any, enhancements: any, Context: any) {
 }
 
 function wrapCore(OriginComponent: any, enhancements: any, Context: any) {
-  const Component = function ({ Root }: any) {
+  const Component = ({ Root }: any) => {
     const defaultProps = OriginComponent.defaultProps || {};
     return <Root {...defaultProps} render={OriginComponent} />;
   };
@@ -258,16 +256,16 @@ function createComposeComponent(OriginComponent: any, Context: any, enhancements
   ) {
     if (OriginComponent.prototype instanceof Component) {
       return wrapClass(OriginComponent, enhancements, Context);
-    } else {
-      throw new Error('Must inherit from our component');
     }
-  } else if (typeof OriginComponent === 'function') {
-    return wrapFunction(OriginComponent, enhancements, Context);
-  } else if (OriginComponent[CORE_COMPONENT]) {
-    return wrapCore(OriginComponent, enhancements, Context);
-  } else {
-    throw new Error('Must be a React component');
+    throw new Error('Must inherit from our component');
   }
+  if (typeof OriginComponent === 'function') {
+    return wrapFunction(OriginComponent, enhancements, Context);
+  }
+  if (OriginComponent[CORE_COMPONENT]) {
+    return wrapCore(OriginComponent, enhancements, Context);
+  }
+  throw new Error('Must be a React component');
 }
 
 export type PropsAndRef<T, Ctx, UCProps> = PropsWithRenderFnChildren<T, Ctx, UCProps> &
@@ -371,13 +369,11 @@ function createComponent<ComponentProps, ChildComponentProps = {}, ContextType =
   ]);
   Component[CONTEXT_COMPONENT] = context;
   Component._______childrenComponents = childComponents;
-  Component[CREATE_COMPONENT] = function (
+  Component[CREATE_COMPONENT] = (
     _OriginComponent = OriginComponent,
     _childComponents = childComponents,
     _options = options,
-  ) {
-    return createComponent(_OriginComponent, _childComponents, _options);
-  };
+  ) => createComponent(_OriginComponent, _childComponents, _options);
   Component[CORE_COMPONENT] = true;
   return Component;
 }

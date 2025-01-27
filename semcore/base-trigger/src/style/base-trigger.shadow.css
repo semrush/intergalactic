@@ -95,7 +95,7 @@ SBaseAddon {
   height: 12px;
 }
 
-SBaseTrigger[size='m'] {
+SBaseTrigger[size="m"] {
   min-width: 26px;
   height: 28px;
   border-radius: var(--intergalactic-control-rounded, 6px);
@@ -118,7 +118,7 @@ SBaseTrigger[size='m'] {
   }
 }
 
-SBaseTrigger[size='l'] {
+SBaseTrigger[size="l"] {
   min-width: 32px;
   height: 40px;
   border-radius: var(--intergalactic-control-rounded, 6px);
@@ -141,18 +141,18 @@ SBaseTrigger[size='l'] {
   }
 }
 
-SBaseTrigger[neighborLocation='right'] {
+SBaseTrigger[neighborLocation="right"] {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
 
-SBaseTrigger[neighborLocation='both'] {
+SBaseTrigger[neighborLocation="both"] {
   border-radius: 0;
   /* disable-tokens-validator */
   margin-left: -1px;
 }
 
-SBaseTrigger[neighborLocation='left'] {
+SBaseTrigger[neighborLocation="left"] {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   /* disable-tokens-validator */
@@ -163,11 +163,11 @@ SText[display-placeholder] {
   color: var(--intergalactic-text-placeholder, #8a8e9b);
 }
 
-SBaseTrigger[state='valid'] {
+SBaseTrigger[state="valid"] {
   border-color: var(--intergalactic-border-success-active, #007c65);
 }
 
-SBaseTrigger[state='invalid'] {
+SBaseTrigger[state="invalid"] {
   border-color: var(--intergalactic-border-critical-active, #d1002f);
 
   &[keyboardFocused] {
@@ -176,10 +176,10 @@ SBaseTrigger[state='invalid'] {
   }
 }
 
-SInvalidPattern[size='m'] {
+SInvalidPattern[size="m"] {
   margin-left: calc(-1 * var(--intergalactic-spacing-2x, 8px));
 }
 
-SInvalidPattern[size='l'] {
+SInvalidPattern[size="l"] {
   margin-left: calc(-1 * var(--intergalactic-spacing-3x, 12px));
 }

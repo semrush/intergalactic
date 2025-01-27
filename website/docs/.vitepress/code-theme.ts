@@ -1,4 +1,4 @@
-import { ThemeRegistrationAny } from 'shiki/core';
+import type { ThemeRegistrationAny } from 'shiki/core';
 
 const lightTheme: ThemeRegistrationAny = {
   colors: {

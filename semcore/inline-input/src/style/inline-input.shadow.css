@@ -72,7 +72,7 @@ SValue {
     margin: 0;
   }
 
-  &[type='number'] {
+  &[type="number"] {
     -moz-appearance: textfield;
   }
 }
@@ -114,28 +114,27 @@ SInlineInput[focused] SUnderline {
   box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
 }
 
-SInlineInput[state='valid'] SUnderline {
+SInlineInput[state="valid"] SUnderline {
   border-bottom-color: var(--intergalactic-border-success-active, #007c65);
 }
 
-SInlineInput[state='valid'][focused] SUnderline {
+SInlineInput[state="valid"][focused] SUnderline {
   border-bottom-color: var(--intergalactic-border-success-active, #007c65);
   box-shadow: var(--intergalactic-keyboard-focus-valid, 0px 0px 0px 3px rgba(0, 159, 129, 0.5));
 }
 
-SInlineInput[state='invalid'] SUnderline {
+SInlineInput[state="invalid"] SUnderline {
   border-bottom-color: var(--intergalactic-border-critical-active, #d1002f);
 }
 
-SInlineInput[state='invalid'][focused] SUnderline {
+SInlineInput[state="invalid"][focused] SUnderline {
   border-bottom-color: var(--intergalactic-border-critical-active, #d1002f);
   box-shadow: var(--intergalactic-keyboard-focus-invalid, 0px 0px 0px 3px rgba(255, 73, 83, 0.5));
 }
 
-SValue:focus~SControls {
+SValue:focus ~ SControls {
   display: flex;
 }
-
 
 SInvalidPattern {
   margin-left: -1px;

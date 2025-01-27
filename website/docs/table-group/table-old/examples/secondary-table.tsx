@@ -53,8 +53,8 @@ const Demo = () => (
       </Table.Row>
     </Table.Head>
     <Table.Body>
-      {data.map((row) => (
-        <Table.Row>
+      {data.map((row, index) => (
+        <Table.Row key={index}>
           {Object.keys(row).map((name) => (
             <Table.Cell key={row[name]}>{row[name]}</Table.Cell>
           ))}

@@ -1,4 +1,4 @@
-import React, { HTMLAttributes } from 'react';
+import React, { type HTMLAttributes } from 'react';
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
@@ -7,7 +7,7 @@ const { shouldSupportRef } = sharedTests;
 import createComponent, {
   createBaseComponent,
   Component,
-  IComponentProps,
+  type IComponentProps,
   CORE_COMPONENT,
 } from '../src';
 

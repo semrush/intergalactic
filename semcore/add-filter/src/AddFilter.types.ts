@@ -1,10 +1,11 @@
-import { Intergalactic } from '@semcore/utils/lib/core';
-import { FlexProps } from '@semcore/flex-box';
-import Select from '@semcore/select';
-import Input from '@semcore/input';
-import Dropdown, { DropdownTriggerProps } from '@semcore/dropdown';
-import { FilterTrigger } from '@semcore/base-trigger';
-import { ButtonLink } from '@semcore/button';
+import type { Intergalactic } from '@semcore/utils/lib/core';
+import type { FlexProps } from '@semcore/flex-box';
+import type Select from '@semcore/select';
+import type Input from '@semcore/input';
+import type Dropdown from '@semcore/dropdown';
+import type { DropdownTriggerProps } from '@semcore/dropdown';
+import type { FilterTrigger } from '@semcore/base-trigger';
+import type { ButtonLink } from '@semcore/button';
 
 export type AddFilterItemProps = {
   /**

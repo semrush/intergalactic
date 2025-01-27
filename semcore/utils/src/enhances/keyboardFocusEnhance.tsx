@@ -1,6 +1,6 @@
 import React from 'react';
 import assignProps from '../assignProps';
-import { UnknownProperties } from '../core';
+import type { UnknownProperties } from '../core';
 import { useFocusSource } from './focusSourceEnhance';
 export { useFocusSource };
 

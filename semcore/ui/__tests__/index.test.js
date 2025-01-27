@@ -1,5 +1,5 @@
 import { packages } from '../components.json';
-import path from 'path';
+import path from 'node:path';
 import fs from 'fs-extra';
 import glob from 'fast-glob';
 import { expect, test, describe } from '@semcore/testing-utils/vitest';
@@ -69,10 +69,9 @@ describe('Utils', () => {
 
     test(`file ${utilsModule} provides correct exports to release system`, () => {
       const source = require(`disable-jest-mapper:@semcore/utils/lib/${utilsModule}`);
-      const rscUi = require(`disable-jest-mapper:${path.resolve(
-        __dirname,
-        `../utils/lib/${utilsModule}`,
-      )}`);
+      const rscUi = require(
+        `disable-jest-mapper:${path.resolve(__dirname, `../utils/lib/${utilsModule}`)}`,
+      );
 
       expect(sortObjKeys(source)).toStrictEqual(sortObjKeys(rscUi));
     });

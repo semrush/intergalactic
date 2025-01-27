@@ -1,6 +1,6 @@
-const os = require('os');
-const fs = require('fs');
-const path = require('path');
+const os = require('node:os');
+const fs = require('node:fs');
+const path = require('node:path');
 const mkdirp = require('mkdirp');
 const loaderUtils = require('loader-utils');
 const findCacheDir = require('find-cache-dir');
@@ -97,7 +97,10 @@ async function loader(source) {
       (match, codeBlock) => {
         let [, code] = codeBlock.match(/__inner_css_start__\*\/([\s\S]*?)\/\*__inner_css_end__/);
         // also remove ',' in the end of line
-        code = code.trim().replace(/,$/, '').replace(/^[`'"]([\s\S]*?)[`'"]$/, '$1');
+        code = code
+          .trim()
+          .replace(/,$/, '')
+          .replace(/^[`'"]([\s\S]*?)[`'"]$/, '$1');
         const filepath = options.getFilepath(resourcePath, code);
         queue.push(
           writeModule(

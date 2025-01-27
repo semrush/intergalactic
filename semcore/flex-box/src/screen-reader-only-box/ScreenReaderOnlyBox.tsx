@@ -1,5 +1,5 @@
 import React from 'react';
-import createComponent, { sstyled, Root, Intergalactic } from '@semcore/core';
+import createComponent, { sstyled, Root, type Intergalactic } from '@semcore/core';
 import style from './screenReaderOnlyBox.shadow.css';
 import Box from '../Box';
 

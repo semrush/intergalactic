@@ -173,7 +173,7 @@ export function Trigger(props: TriggerAsProps) {
 
 Trigger.enhance = [keyboardFocusEnhance()];
 
-const DefaultTrigger = React.forwardRef(function (props: TriggerAsProps, ref) {
+const DefaultTrigger = React.forwardRef((props: TriggerAsProps, ref) => {
   const { styles, value } = props;
   const SDefaultTrigger = Root;
   const STriggerCircle = Box;

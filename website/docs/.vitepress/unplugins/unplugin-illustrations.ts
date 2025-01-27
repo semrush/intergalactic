@@ -1,6 +1,6 @@
 import { Plugin } from 'esbuild';
-import { resolve as resolvePath, dirname as resolveDirname } from 'path';
-import { fileURLToPath } from 'url';
+import { resolve as resolvePath, dirname as resolveDirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import glob from 'fast-glob';
 import { createUnplugin } from 'unplugin';
 

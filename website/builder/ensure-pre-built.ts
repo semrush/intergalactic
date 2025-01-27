@@ -1,7 +1,7 @@
-import fs from 'fs/promises';
-import { resolve as resolvePath } from 'path';
+import fs from 'node:fs/promises';
+import { resolve as resolvePath } from 'node:path';
 import { execa } from 'execa';
-import { fileURLToPath } from 'url';
+import { fileURLToPath } from 'node:url';
 
 async function preBuildIcon() {
   const referenceIconName = 'Info';

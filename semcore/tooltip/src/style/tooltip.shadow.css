@@ -19,13 +19,13 @@ STooltip {
   border: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
 }
 
-STooltip[theme='invert'] {
+STooltip[theme="invert"] {
   color: var(--intergalactic-text-primary-invert, #ffffff);
   background-color: var(--intergalactic-tooltip-invert, #191b23);
   border: 1px solid var(--intergalactic-border-tooltip-invert, #6c6e79);
 }
 
-STooltip[theme='warning'] {
+STooltip[theme="warning"] {
   background-color: var(--intergalactic-tooltip-warning, #ffd7df);
   border: 1px solid var(--intergalactic-border-critical-active, #d1002f);
 }
@@ -35,7 +35,7 @@ SArrow {
   border: 6px solid;
 
   &:before {
-    content: '';
+    content: "";
     position: absolute;
     border: 6px solid;
   }
@@ -51,7 +51,7 @@ SArrow {
   }
 }
 
-SArrow[theme='invert'] {
+SArrow[theme="invert"] {
   border-color: var(--intergalactic-border-tooltip-invert, #6c6e79);
 
   &::before {
@@ -59,7 +59,7 @@ SArrow[theme='invert'] {
   }
 }
 
-SArrow[theme='warning'] {
+SArrow[theme="warning"] {
   border-color: var(--intergalactic-border-critical-active, #d1002f);
 
   &::before {
@@ -75,7 +75,7 @@ SArrow[bgColor] {
   }
 }
 
-STooltip[data-popper-placement^='top'] SArrow {
+STooltip[data-popper-placement^="top"] SArrow {
   top: 100%;
 
   border-bottom: 0 transparent;
@@ -92,7 +92,7 @@ STooltip[data-popper-placement^='top'] SArrow {
   }
 }
 
-STooltip[data-popper-placement^='bottom'] SArrow {
+STooltip[data-popper-placement^="bottom"] SArrow {
   bottom: 100%;
 
   border-top: 0 transparent;
@@ -109,7 +109,7 @@ STooltip[data-popper-placement^='bottom'] SArrow {
   }
 }
 
-STooltip[data-popper-placement^='left'] SArrow {
+STooltip[data-popper-placement^="left"] SArrow {
   left: 100%;
 
   border-right: 0 transparent;
@@ -126,7 +126,7 @@ STooltip[data-popper-placement^='left'] SArrow {
   }
 }
 
-STooltip[data-popper-placement^='right'] SArrow {
+STooltip[data-popper-placement^="right"] SArrow {
   right: 100%;
 
   border-left: 0 transparent;
@@ -148,4 +148,3 @@ STooltipPortalledWrapper {
   width: 100vw;
   left: calc(-50vw + 50%);
 }
-

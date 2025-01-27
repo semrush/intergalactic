@@ -1,8 +1,14 @@
-import { AnalyzedData, ClusterNode, ComparisonNode, GeneralTrendNode, TrendNode } from './insights';
+import type {
+  AnalyzedData,
+  ClusterNode,
+  ComparisonNode,
+  GeneralTrendNode,
+  TrendNode,
+} from './insights';
 
-import React from 'react';
-import { DataSummarizationConfig } from './hints';
-import { getIntl, Intl } from './intl';
+import type React from 'react';
+import type { DataSummarizationConfig } from './hints';
+import { getIntl, type Intl } from './intl';
 
 const formatLimitedSizeList = (
   items: unknown[],
@@ -203,7 +209,7 @@ export const serialize = (
       const secondaryTrends: (TrendNode | GeneralTrendNode)[] = insights.filter(
         (insight) => insight !== primaryTrend,
       );
-      const summaryDataKey = entitiesCount !== 1 ? primaryTrend.label ?? dataKey : '';
+      const summaryDataKey = entitiesCount !== 1 ? (primaryTrend.label ?? dataKey) : '';
       const mainSummary: string = intl.formatMessage(
         { id: 'time-series-general-trend' },
         {
@@ -269,7 +275,8 @@ export const serialize = (
     }
 
     return summary;
-  } else if (dataType === 'points-cloud') {
+  }
+  if (dataType === 'points-cloud') {
     const clustersInsights = insights as ClusterNode[];
     const biggestClusters = clustersInsights.slice(0, clustersLimit);
 
@@ -333,7 +340,8 @@ export const serialize = (
     }
 
     return summary;
-  } else if (dataType === 'values-set') {
+  }
+  if (dataType === 'values-set') {
     const [valuesInsight] = insights as [ComparisonNode];
     const entities = intl.formatMessage({ id: 'entity-type-values' }, { count: entitiesCount });
     const entitiesList = formatValuesList(valuesInsight.values, {
@@ -347,7 +355,8 @@ export const serialize = (
       { id: dataTitle ? 'chart-summary' : 'chart-summary-no-label' },
       { entities, entitiesList: entitiesList, label: titlesFormatter?.(dataTitle!) ?? dataTitle },
     );
-  } else if (dataType === 'grouped-values' || dataType === 'indexed-groups') {
+  }
+  if (dataType === 'grouped-values' || dataType === 'indexed-groups') {
     const groupInsights = insights as ComparisonNode[];
     const valueCounts = groupInsights.map((group) => group.values.length);
     const minValuesCount = Math.min(...valueCounts);

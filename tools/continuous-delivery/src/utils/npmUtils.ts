@@ -1,5 +1,5 @@
 import { log } from '../utils';
-import { execSync } from 'child_process';
+import { execSync } from 'node:child_process';
 
 export class NpmUtils {
   public static async publish(packages: string[], prerelease?: boolean) {
@@ -29,10 +29,10 @@ export class NpmUtils {
         await NpmUtils.uploadStatic(pnpmFilter);
       }
 
-      await this.publishComponents(pnpmFilter, pnpmOptions);
+      await NpmUtils.publishComponents(pnpmFilter, pnpmOptions);
     }
     if (hasSemcoreUi) {
-      await this.publishSemcoreUi(pnpmOptions);
+      await NpmUtils.publishSemcoreUi(pnpmOptions);
     }
   }
 

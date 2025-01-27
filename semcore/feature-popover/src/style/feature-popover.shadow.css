@@ -60,7 +60,7 @@ SSpot {
   height: 12px;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -77,7 +77,7 @@ SSpot {
   }
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;

@@ -177,7 +177,6 @@ const Search = ({
           return (
             <>
               <input
-                role='search'
                 aria-label='Search for a component'
                 value={value}
                 onChange={(e) => {

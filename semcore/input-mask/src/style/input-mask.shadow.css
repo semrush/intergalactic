@@ -14,8 +14,8 @@ SMask {
   color: var(--intergalactic-text-primary, #191b23);
 }
 
-SMask[data-neighbor-location='left'],
-SMask[data-neighbor-location='both'] {
+SMask[data-neighbor-location="left"],
+SMask[data-neighbor-location="both"] {
   left: 0;
 }
 

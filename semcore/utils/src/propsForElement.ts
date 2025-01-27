@@ -1,4 +1,4 @@
-import { ElementType } from 'react';
+import type { ElementType } from 'react';
 
 const allowedAttributes = new Set([
   'children',
@@ -591,18 +591,17 @@ export default function propsForElement<T extends {}>(
 ): Partial<T> {
   if (element && typeof element !== 'string') {
     return props;
-  } else {
-    // @ts-ignore
-    const { __excludeProps = [], ...other } = props as any;
-    const validProps = Object.keys(other).reduce((acc: any, propName) => {
-      if (!__excludeProps.includes(propName) && validAttr(propName)) {
-        acc[propName] = other[propName];
-      }
-      return acc;
-    }, {});
-    if (element && (omittedCloseTags as any)[element as any]) {
-      validProps['children'] = undefined;
-    }
-    return validProps;
   }
+  // @ts-ignore
+  const { __excludeProps = [], ...other } = props as any;
+  const validProps = Object.keys(other).reduce((acc: any, propName) => {
+    if (!__excludeProps.includes(propName) && validAttr(propName)) {
+      acc[propName] = other[propName];
+    }
+    return acc;
+  }, {});
+  if (element && (omittedCloseTags as any)[element as any]) {
+    validProps['children'] = undefined;
+  }
+  return validProps;
 }

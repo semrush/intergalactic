@@ -1,9 +1,9 @@
-const path = require('path');
+const path = require('node:path');
 const fs = require('fs-extra');
 const glob = require('glob');
 const cheerio = require('cheerio');
 const { configFile } = require('mri')(process.argv.slice(2));
-const util = require('util');
+const util = require('node:util');
 const config = require('./config');
 const babel = require('@babel/core');
 
@@ -167,7 +167,7 @@ function getDescriptionPayIcons(iconPath, outLib) {
   };
 }
 
-module.exports = function () {
+module.exports = () => {
   Promise.all(
     tasks({
       generateIcons,

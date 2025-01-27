@@ -8,7 +8,7 @@ import TabPanel from '../src';
 import { render, fireEvent, cleanup } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
 import { assertType } from 'vitest';
-import { Intergalactic } from '@semcore/core';
+import type { Intergalactic } from '@semcore/core';
 
 describe('TabPanel', () => {
   describe('types', () => {
@@ -109,13 +109,11 @@ describe('TabPanel', () => {
   });
 
   test.concurrent('Should support Addon', async ({ task }) => {
-    const Addon = React.forwardRef<HTMLSpanElement>(function (props, ref) {
-      return (
-        <span ref={ref} {...propsForElement(props)}>
-          Addon prop
-        </span>
-      );
-    });
+    const Addon = React.forwardRef<HTMLSpanElement>((props, ref) => (
+      <span ref={ref} {...propsForElement(props)}>
+        Addon prop
+      </span>
+    ));
     const component = (
       <TabPanel value={1}>
         <TabPanel.Item value={1} addonLeft={Addon} addonRight={Addon}>

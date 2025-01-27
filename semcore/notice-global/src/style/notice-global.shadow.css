@@ -11,32 +11,32 @@ SCloseIcon {
   margin-left: var(--intergalactic-spacing-4x, 16px);
 }
 
-SNoticeGlobal[theme='neutral'] {
+SNoticeGlobal[theme="neutral"] {
   background-color: var(--intergalactic-bg-primary-muted, #6c6e79);
   color: var(--intergalactic-text-primary-invert, #ffffff);
 }
 
-SNoticeGlobal[theme='info'] {
+SNoticeGlobal[theme="info"] {
   background-color: var(--intergalactic-bg-primary-info, #008ff8);
   color: var(--intergalactic-text-primary-invert, #ffffff);
 }
 
-SNoticeGlobal[theme='danger'] {
+SNoticeGlobal[theme="danger"] {
   background-color: var(--intergalactic-bg-primary-critical, #ff4953);
   color: var(--intergalactic-text-primary-invert, #ffffff);
 }
 
-SNoticeGlobal[theme='warning'] {
+SNoticeGlobal[theme="warning"] {
   background-color: var(--intergalactic-bg-primary-warning, #ff642d);
   color: var(--intergalactic-text-primary-invert, #ffffff);
 }
 
-SNoticeGlobal[theme='success'] {
+SNoticeGlobal[theme="success"] {
   background-color: var(--intergalactic-bg-primary-success, #009f81);
   color: var(--intergalactic-text-primary-invert, #ffffff);
 }
 
-SNoticeGlobal[theme='custom'] {
+SNoticeGlobal[theme="custom"] {
   background-color: var(--backgroundColor);
 }
 

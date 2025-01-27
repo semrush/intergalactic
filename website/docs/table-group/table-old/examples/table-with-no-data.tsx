@@ -10,7 +10,7 @@ const Demo = () => {
       <Table.Head>
         <Table.Row>
           {data.map((_, indCell) => (
-            <Table.CellHead>Cell - {indCell + 1}</Table.CellHead>
+            <Table.CellHead key={indCell}>Cell - {indCell + 1}</Table.CellHead>
           ))}
         </Table.Row>
       </Table.Head>

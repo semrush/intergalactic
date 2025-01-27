@@ -1,9 +1,9 @@
-import fs from 'fs/promises';
+import fs from 'node:fs/promises';
 import { componentChangelogParser } from './parsers/componentChangelogParser';
 import equal from 'fast-deep-equal';
 import { serializeComponentChangelog } from './serializers/serializeComponentChangelog';
 import { toMarkdown } from 'marked-ast-markdown';
-import { Changelog } from './types';
+import type { Changelog } from './types';
 import semver from 'semver';
 
 export const mergeChangelogs = async (

@@ -1,6 +1,6 @@
 import ts from 'typescript';
-import { resolve as resolvePath } from 'path';
-import { readFile } from 'fs/promises';
+import { resolve as resolvePath } from 'node:path';
+import { readFile } from 'node:fs/promises';
 import { serializeInterfaceDeclaration } from './interfaces';
 import { serializeTypeDeclaration } from './typeAliases';
 import { serializeClassDeclaration } from './classes';

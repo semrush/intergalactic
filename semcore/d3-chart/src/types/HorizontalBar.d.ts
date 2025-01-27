@@ -1,9 +1,9 @@
-import React from 'react';
-import { UnknownProperties } from '@semcore/core';
-import { Context } from './context';
-import { BarContext, BackgroundProps } from './Bar';
-import { IntergalacticD3Component } from './Plot';
-import { PatternsConfig } from './Pattern';
+import type React from 'react';
+import type { UnknownProperties } from '@semcore/core';
+import type { Context } from './context';
+import type { BarContext, BackgroundProps } from './Bar';
+import type { IntergalacticD3Component } from './Plot';
+import type { PatternsConfig } from './Pattern';
 
 /** @deprecated */
 export interface IHorizontalBarProps extends HorizontalBarProps, UnknownProperties {}

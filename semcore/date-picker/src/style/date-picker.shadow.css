@@ -54,7 +54,8 @@ SInputMask {
   color: var(--intergalactic-text-primary, #191b23);
   line-height: normal;
   padding-right: var(--intergalactic-spacing-2x, 8px);
-  transition: width calc(var(--intergalactic-duration-medium, 300) * 1ms) ease, min-width calc(var(--intergalactic-duration-medium, 300) * 1ms) ease;
+  transition: width calc(var(--intergalactic-duration-medium, 300) * 1ms) ease, min-width
+    calc(var(--intergalactic-duration-medium, 300) * 1ms) ease;
 }
 
 SInputMask[animationsDisabled] {
@@ -74,11 +75,11 @@ SRangeIndicator {
   flex-shrink: 0;
 }
 
-SRangeIndicator[range='value'] {
+SRangeIndicator[range="value"] {
   background-color: var(--intergalactic-date-picker-cell-active, #2bb3ff);
 }
 
-SRangeIndicator[range='compare'] {
+SRangeIndicator[range="compare"] {
   background-color: var(--intergalactic-date-picker-cell-comparison-active, #8649e1);
 }
 

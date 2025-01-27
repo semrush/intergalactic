@@ -1,27 +1,21 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-import { useData } from 'vitepress/dist/client/theme-default/composables/data'
-import { useEditLink } from 'vitepress/dist/client/theme-default/composables/edit-link'
-import { usePrevNext } from 'vitepress/dist/client/theme-default/composables/prev-next'
-import VPLink from 'vitepress/dist/client/theme-default/components/VPLink.vue'
-import VPDocFooterLastUpdated from 'vitepress/dist/client/theme-default/components/VPDocFooterLastUpdated.vue'
+import { computed } from 'vue';
+import { useData } from 'vitepress/dist/client/theme-default/composables/data';
+import { useEditLink } from 'vitepress/dist/client/theme-default/composables/edit-link';
+import { usePrevNext } from 'vitepress/dist/client/theme-default/composables/prev-next';
+import VPLink from 'vitepress/dist/client/theme-default/components/VPLink.vue';
+import VPDocFooterLastUpdated from 'vitepress/dist/client/theme-default/components/VPDocFooterLastUpdated.vue';
 
-const { theme, page, frontmatter } = useData()
+const { theme, page, frontmatter } = useData();
 
-const editLink = useEditLink()
-const control = usePrevNext()
+const editLink = useEditLink();
+const control = usePrevNext();
 
-const hasEditLink = computed(
-  () => theme.value.editLink && frontmatter.value.editLink !== false
-)
-const hasLastUpdated = computed(() => page.value.lastUpdated)
+const hasEditLink = computed(() => theme.value.editLink && frontmatter.value.editLink !== false);
+const hasLastUpdated = computed(() => page.value.lastUpdated);
 const showFooter = computed(
-  () =>
-    hasEditLink.value ||
-    hasLastUpdated.value ||
-    control.value.prev ||
-    control.value.next
-)
+  () => hasEditLink.value || hasLastUpdated.value || control.value.prev || control.value.next,
+);
 </script>
 
 <template>

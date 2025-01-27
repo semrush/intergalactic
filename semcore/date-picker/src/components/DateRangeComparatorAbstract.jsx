@@ -278,11 +278,7 @@ class DateRangeComparatorAbstract extends Component {
           ];
           changedDate = next_highlighted[1];
         } else {
-          next_highlighted = [
-            dayjs(highlighted[0])
-              .add(day, this.keyStep)
-              .toDate(),
-          ];
+          next_highlighted = [dayjs(highlighted[0]).add(day, this.keyStep).toDate()];
           changedDate = next_highlighted[0];
         }
         if (focusedRange === 'compare') {

@@ -27,7 +27,8 @@
       "./tools/entry-point/**/*.mjs",
       "./tools/entry-point/**/*.d.ts",
       "./tools/intg-release-migrator/tools/*.js",
-      "./tools/playground/examples/**"
+      "./tools/playground/examples/**",
+      "**/*.css"
     ],
     "lineWidth": 100,
     "indentStyle": "space"
@@ -35,7 +36,6 @@
   "javascript": {
     "formatter": {
       "quoteStyle": "single",
-      "trailingComma": "all",
       "jsxQuoteStyle": "single"
     }
   },
@@ -63,7 +63,8 @@
       "./tools/entry-point/**/*.js",
       "./tools/entry-point/**/*.mjs",
       "./tools/entry-point/**/*.d.ts",
-      "./tools/intg-release-migrator/tools/*.js"
+      "./tools/intg-release-migrator/tools/*.js",
+      "**/*.css"
     ],
     "rules": {
       "suspicious": {
@@ -73,7 +74,8 @@
         "noRedeclare": "off",
         "noShadowRestrictedNames": "off",
         "noArrayIndexKey": "off",
-        "noConsoleLog": "error"
+        "noConsoleLog": "error",
+        "noImplicitAnyLet": "off"
       },
       "style": {
         "noParameterAssign": "off",
@@ -84,12 +86,18 @@
       "correctness": {
         "noChildrenProp": "off",
         "noUnreachableSuper": "off",
-        "noConstructorReturn": "off"
+        "noConstructorReturn": "off",
+        "useExhaustiveDependencies": "off",
+        "noInvalidUseBeforeDeclaration": "off",
+        "useJsxKeyInIterable": "warn"
       },
       "a11y": {
         "useAnchorContent": "off",
         "noSvgWithoutTitle": "off",
-        "noNoninteractiveTabindex": "off"
+        "noNoninteractiveTabindex": "off",
+        "useSemanticElements": "off",
+        "useFocusableInteractive": "off",
+        "noLabelWithoutControl": "off"
       },
       "complexity": {
         "useFlatMap": "off",
@@ -102,6 +110,9 @@
       },
       "security": {
         "noDangerouslySetInnerHtml": "off"
+      },
+      "performance": {
+        "noAccumulatingSpread": "warn"
       }
     }
   }

@@ -1,6 +1,6 @@
 import { copyLib } from './copyLibs';
 import { updateReleaseChangelog } from './updateReleaseChangelog';
-import path from 'path';
+import path from 'node:path';
 import fs from 'fs-extra';
 import { publishTarball } from './publishTarball';
 import Git from 'simple-git';

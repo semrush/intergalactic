@@ -271,8 +271,9 @@ function StickyHeadInner(props, ref) {
     disablePortal,
     ...other
   } = props;
-  const top = typeof offsetTop === 'number' ? offsetTop : parseInt(offsetTop, 10);
-  const bottom = typeof offsetBottom === 'number' ? offsetBottom : parseInt(offsetBottom, 10);
+  const top = typeof offsetTop === 'number' ? offsetTop : Number.parseInt(offsetTop, 10);
+  const bottom =
+    typeof offsetBottom === 'number' ? offsetBottom : Number.parseInt(offsetBottom, 10);
 
   const [positionFixed, setPositionFixed] = React.useState('top');
   const [refScrollContainer, setRefScrollContainer] = React.useState(null);

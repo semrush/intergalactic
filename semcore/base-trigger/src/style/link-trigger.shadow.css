@@ -85,11 +85,11 @@ SLinkAddon {
   height: 16px;
 }
 
-SLinkTrigger[size='m'] {
+SLinkTrigger[size="m"] {
   font-size: var(--intergalactic-fs-200, 14px);
 }
 
-SLinkTrigger[size='l'] {
+SLinkTrigger[size="l"] {
   font-size: var(--intergalactic-fs-300, 16px);
 }
 

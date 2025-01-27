@@ -1,8 +1,8 @@
-import { fileURLToPath } from 'url';
-import { resolve as resolvePath } from 'path';
+import { fileURLToPath } from 'node:url';
+import { resolve as resolvePath } from 'node:path';
 import { log } from '../utils';
 import fs from 'fs-extra';
-import path from 'path';
+import path from 'node:path';
 
 const filename = fileURLToPath(import.meta.url);
 const releasePackageDir = resolvePath(filename, '..', '..', '..', '..', 'entry-point');

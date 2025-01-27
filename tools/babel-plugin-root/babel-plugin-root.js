@@ -13,9 +13,8 @@ function RootPlugin({ types: t }, opts) {
   function getAttrKey(name) {
     if (t.isJSXNamespacedName(name)) {
       return `${name.namespace.name}:${name.name.name}`;
-    } else {
-      return name.name;
     }
+    return name.name;
   }
 
   return {

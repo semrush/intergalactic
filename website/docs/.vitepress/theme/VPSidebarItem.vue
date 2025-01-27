@@ -3,45 +3,39 @@ To remove after merge of https://github.com/vuejs/vitepress/issues/2257
 Same to https://github.com/vuejs/vitepress/blob/main/src/client/theme-default/components/VPSidebarItem.vue but also support `activeMatch`
 -->
 <script setup lang="ts">
-import { computed, ref } from 'vue'
-import type { DefaultTheme } from 'vitepress/theme'
+import { computed, ref } from 'vue';
+import type { DefaultTheme } from 'vitepress/theme';
 import { useSidebarControl } from 'vitepress/dist/client/theme-default/composables/sidebar.js';
 import VPIconChevronRight from 'vitepress/dist/client/theme-default/components/icons/VPIconChevronRight.vue';
 import VPLink from 'vitepress/dist/client/theme-default/components/VPLink.vue';
 
 import { useData } from 'vitepress';
 
-type Item = { activeMatch?: string; items?: Item[] }
+type Item = { activeMatch?: string; items?: Item[] };
 
 const props = defineProps<{
-  item: DefaultTheme.SidebarItem & Item
-  depth: number
-}>()
+  item: DefaultTheme.SidebarItem & Item;
+  depth: number;
+}>();
 
-const computeActiveMatch = (item: Item) => item.activeMatch ? (`/${page.value.relativePath}`).startsWith(item.activeMatch) : false
+const computeActiveMatch = (item: Item) =>
+  item.activeMatch ? `/${page.value.relativePath}`.startsWith(item.activeMatch) : false;
 const computeChildrenActiveMatch = (item: Item) => {
   if (item?.items?.some(computeChildrenActiveMatch)) return true;
   return computeActiveMatch(item);
-}
+};
 
 const { page } = useData();
 const activeMatch = computed(() => computeActiveMatch(props.item));
 
-const activeMatchedChildrenUncollapse = ref(computeChildrenActiveMatch(props.item))
+const activeMatchedChildrenUncollapse = ref(computeChildrenActiveMatch(props.item));
 
-const {
-  collapsed,
-  collapsible,
-  isLink,
-  isActiveLink,
-  hasActiveLink,
-  hasChildren,
-  toggle,
-} = useSidebarControl(computed(() => props.item))
+const { collapsed, collapsible, isLink, isActiveLink, hasActiveLink, hasChildren, toggle } =
+  useSidebarControl(computed(() => props.item));
 
-const sectionTag = computed(() => (hasChildren.value ? 'section' : `div`))
+const sectionTag = computed(() => (hasChildren.value ? 'section' : 'div'));
 
-const linkTag = computed(() => (isLink.value ? 'a' : 'div'))
+const linkTag = computed(() => (isLink.value ? 'a' : 'div'));
 
 const textTag = computed(() => {
   if (!hasChildren.value) return 'p';
@@ -52,9 +46,9 @@ const textTag = computed(() => {
   //   : props.depth + 2 === 7
   //     ? 'p'
   //     : `h${props.depth + 2}`
-})
+});
 
-const itemRole = computed(() => (isLink.value ? undefined : 'button'))
+const itemRole = computed(() => (isLink.value ? undefined : 'button'));
 
 const classes = computed(() => [
   [`level-${props.depth}`],
@@ -62,8 +56,8 @@ const classes = computed(() => [
   { collapsed: collapsed.value && !activeMatchedChildrenUncollapse.value },
   { 'is-link': isLink.value },
   { 'is-active': isActiveLink.value || activeMatch.value },
-  { 'has-active': hasActiveLink.value }
-])
+  { 'has-active': hasActiveLink.value },
+]);
 
 function collapse() {
   if (!collapsed.value) {
@@ -72,13 +66,14 @@ function collapse() {
 }
 if (globalThis.window) {
   (globalThis.window as any).sidebarItems ??= [];
-  (globalThis.window as any).sidebarItems.push({ item: props.item, collapse })
+  (globalThis.window as any).sidebarItems.push({ item: props.item, collapse });
 }
 
-const isParentItem = (item: Item) => item.items?.some(children => children === props.item || isParentItem(children))
+const isParentItem = (item: Item) =>
+  item.items?.some((children) => children === props.item || isParentItem(children));
 
 function collapseAllOthers() {
-  for (let { item, collapse: collapseItem } of (globalThis.window as any).sidebarItems) {
+  for (const { item, collapse: collapseItem } of (globalThis.window as any).sidebarItems) {
     if (!isParentItem(item) && item !== props.item) {
       collapseItem();
     }
@@ -87,25 +82,24 @@ function collapseAllOthers() {
 
 function onItemInteraction(e: MouseEvent | Event) {
   if ('key' in e && e.key !== 'Enter') {
-    return
+    return;
   }
   if (!props.item.link) {
-    collapseAllOthers()
-    toggle()
+    collapseAllOthers();
+    toggle();
   }
   activeMatchedChildrenUncollapse.value = false;
 }
 
 function onCaretClick() {
   if (props.item.link) {
-    collapseAllOthers()
-    toggle()
+    collapseAllOthers();
+    toggle();
   }
   activeMatchedChildrenUncollapse.value = false;
 }
 
 // window.
-
 </script>
 
 <template>

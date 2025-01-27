@@ -2,16 +2,16 @@
 import { esbuildPluginSemcore } from '../../tools/esbuild-plugin-semcore/src/esbuild-plugin-semcore';
 // @ts-ignore
 import { esbuildPluginSemcoreSourcesResolve } from '../../tools/esbuild-plugin-semcore/src/esbuild-plugin-semcore-sources-resolve';
-import esbuild from 'esbuild';
+import type esbuild from 'esbuild';
 import esbuildPluginAlias from 'esbuild-plugin-alias';
-import { resolve as resolvePath } from 'path';
+import { resolve as resolvePath } from 'node:path';
 import { esbuildPluginDocs } from './esbuild-plugin-docs';
 import { esbuildPluginStatic } from './esbuild-plugin-static';
 import { esbuildPluginIcons } from './esbuild-plugin-icons';
 import { esbuildPluginIllustrations } from './esbuild-plugin-illustrations';
 import { esbuildPluginCssModules } from './esbuild-plugin-css-modules';
 import { esbuildPluginCrutches } from './esbuild-intergalactic-crutches';
-import { fileURLToPath } from 'url';
+import { fileURLToPath } from 'node:url';
 
 export const websiteEsbuildConfig: esbuild.BuildOptions = {
   entryPoints: ['./src/main-render.jsx'],

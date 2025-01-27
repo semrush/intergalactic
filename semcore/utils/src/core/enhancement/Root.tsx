@@ -4,7 +4,7 @@ import { useForkRef } from '../../ref';
 
 function createRootRender() {
   // @ts-ignore
-  const Root = React.forwardRef(function ({ render: Tag, ...source }, ref) {
+  const Root = React.forwardRef(({ render: Tag, ...source }, ref) => {
     const {
       Root: _Root,
 

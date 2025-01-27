@@ -1,4 +1,4 @@
-import { expect, Locator, Page, test } from '@semcore/testing-utils/playwright';
+import { expect, Locator, type Page, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 const getLocators = (page: Page) => ({

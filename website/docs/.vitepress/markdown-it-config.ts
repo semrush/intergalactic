@@ -1,5 +1,5 @@
 import container from 'markdown-it-container';
-import MarkdownIt from 'markdown-it';
+import type MarkdownIt from 'markdown-it';
 import { renderSandbox } from './renderSandbox';
 import { renderLoomVideo } from './renderLoomVideo';
 
@@ -9,9 +9,7 @@ import { renderLegacyEmails } from './renderLegacyEmails';
 import { renderIframe } from './renderIframe';
 
 export const configureMarkdownIt = (md: MarkdownIt, plainTextOnly = false) => {
-  md.renderer.rules.table_open = function (tokens, idx) {
-    return '<table>';
-  };
+  md.renderer.rules.table_open = (tokens, idx) => '<table>';
 
   md.use(container, 'sandbox', {
     render(tokens, idx, _, state) {

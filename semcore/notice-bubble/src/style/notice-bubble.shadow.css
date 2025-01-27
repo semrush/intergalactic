@@ -11,11 +11,11 @@ SView {
   color: var(--intergalactic-text-primary-invert, #ffffff);
   gap: var(--intergalactic-spacing-2x, 8px);
 
-  &[type='info'] {
+  &[type="info"] {
     background: var(--intergalactic-bg-primary-invert, #191b23);
   }
 
-  &[type='warning'] {
+  &[type="warning"] {
     background: var(--intergalactic-bg-primary-critical, #ff4953);
   }
 }

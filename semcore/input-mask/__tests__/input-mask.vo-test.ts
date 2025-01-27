@@ -1,7 +1,7 @@
 import { expect, voiceOverTest as test } from '@semcore/testing-utils/playwright';
 
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
-import { writeFile } from 'fs/promises';
+import { writeFile } from 'node:fs/promises';
 import { getReportHeader, makeVoiceOverReporter } from '@semcore/testing-utils/vo-reporter';
 
 test('Users can interact with InputMask via VoiceOver', async ({

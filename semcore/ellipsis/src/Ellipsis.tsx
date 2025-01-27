@@ -1,7 +1,7 @@
-import React, { RefObject } from 'react';
-import createComponent, { Component, Intergalactic, Root, sstyled } from '@semcore/core';
-import Tooltip, { TooltipProps } from '@semcore/tooltip';
-import { Box, BoxProps } from '@semcore/flex-box';
+import React, { type RefObject } from 'react';
+import createComponent, { Component, type Intergalactic, Root, sstyled } from '@semcore/core';
+import Tooltip, { type TooltipProps } from '@semcore/tooltip';
+import { Box, type BoxProps } from '@semcore/flex-box';
 import { useResizeObserver } from './useResizeObserver';
 import useEnhancedEffect from '@semcore/utils/lib/use/useEnhancedEffect';
 import findComponent, { isAdvanceMode } from '@semcore/utils/lib/findComponent';

@@ -1,17 +1,19 @@
-import React from 'react';
-import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import DropdownMenu, {
+import type React from 'react';
+import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import type DropdownMenu from '@semcore/dropdown-menu';
+import type {
   DropdownMenuContext,
   DropdownMenuItemProps,
   DropdownMenuProps,
   DropdownMenuHandlers,
   DropdownMenuTriggerProps,
 } from '@semcore/dropdown-menu';
-import Dropdown from '@semcore/dropdown';
-import { ButtonTrigger, BaseTriggerProps, ButtonTriggerProps } from '@semcore/base-trigger';
-import Divider from '@semcore/divider';
-import Input, { InputValueProps } from '@semcore/input';
-import { BoxProps, Flex } from '@semcore/flex-box';
+import type Dropdown from '@semcore/dropdown';
+import type { ButtonTrigger, BaseTriggerProps, ButtonTriggerProps } from '@semcore/base-trigger';
+import type Divider from '@semcore/divider';
+import type Input from '@semcore/input';
+import type { InputValueProps } from '@semcore/input';
+import type { BoxProps, Flex } from '@semcore/flex-box';
 
 /** @deprecated */
 export interface ISelectInputSearch extends SelectInputSearch, UnknownProperties {}
@@ -49,7 +51,7 @@ export type SelectProps<T extends SelectValue = SelectValue> = DropdownMenuProps
      * @type (value: SelectValue, e: React.SyntheticEvent) => boolean | void
      */
     onChange?:
-      | ((value: T, e: React.SyntheticEvent) => boolean | void)
+      | ((value: T, e: React.SyntheticEvent) => boolean | undefined)
       | React.Dispatch<React.SetStateAction<T>>;
     /**
      * Trigger placeholder at not selected value
