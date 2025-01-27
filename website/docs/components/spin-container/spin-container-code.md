@@ -9,7 +9,7 @@ tabs: Design('spin-container'), A11y('spin-container-a11y'), API('spin-container
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/usage_in_content.tsx';
+  export Demo from 'stories/components/spin-container/docs/examples/usage_in_content.tsx';
 </script>
 
 :::
@@ -21,7 +21,7 @@ This example demonstrates how to resize and display content within the SpinConta
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/usage_in_dropdown_lists.tsx';
+  export Demo from 'stories/components/spin-container/docs/examples/usage_in_dropdown_lists.tsx';
 </script>
 
 :::
