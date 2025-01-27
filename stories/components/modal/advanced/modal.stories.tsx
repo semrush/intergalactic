@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import ModalWithSelectExample from './examples/modal_with_select';
-import ModalWithDatePickerExample from './examples/modal_open_dynamically';
+import OpenModalDynamicallyExample from './examples/modal_open_dynamically';
 import ModalPreventFocusExample from './examples/modal_prevent_focus';
 import ModaliFrameExample from './examples/modal_iframe';
 
@@ -15,8 +15,8 @@ export const ModalWithSelect: StoryObj = {
   render: ModalWithSelectExample,
 };
 
-export const ModalWithDatePicker: StoryObj = {
-  render: ModalWithDatePickerExample,
+export const OpenModalDynamically: StoryObj = {
+  render: OpenModalDynamicallyExample,
 };
 
 export const ModalPreventFocus: StoryObj = {
