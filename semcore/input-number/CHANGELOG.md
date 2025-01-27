@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.40.3] - 2025-01-21
+
+### Changed
+
+- Set `inputMode` to `numeric` if `step` is an integer, otherwise to `decimal`.
+
 ## [5.40.2] - 2024-12-30
 
 ### Changed

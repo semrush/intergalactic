@@ -12,14 +12,14 @@ const meta: Meta = {
 
 export default meta;
 
-export const KnownCountryAndNumberFormat = {
+export const KnownCountryAndNumberFormat : StoryObj= {
   render: KnownCountryAndNumberFormatExample,
 };
 
-export const KnownCountryButNumberFormatUnknown = {
+export const KnownCountryButNumberFormatUnknown : StoryObj= {
   render: KnownCountryButNumberFormatUnknownExample,
 };
 
-export const UnknownCountryAndNumberFormat = {
+export const UnknownCountryAndNumberFormat: StoryObj = {
   render: UnknownCountryAndNumberFormatExample,
 };
