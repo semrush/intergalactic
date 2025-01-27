@@ -10,7 +10,7 @@ import Checkbox, { CheckboxProps } from '@semcore/checkbox';
 export type FormConfigItem = {
   key: string;
   label: React.ReactNode;
-  type: 'input' | 'checkbox' | 'textarea';
+  type: 'input' | 'checkbox' | 'textarea' | 'email';
   description?: React.ReactNode;
   validate?: (value: any) => Error | string | undefined;
 };

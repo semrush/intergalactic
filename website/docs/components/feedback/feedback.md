@@ -42,7 +42,7 @@ When the link that triggers the feedback form is placed in the [ProductHead](/co
 
 ## Placement
 
-In most cases the feedback form opens from the "Send feedback" link at the upper right of the page or from the "Send feedback" buttons inside a [notice for feedback collection](/patterns/feedback-yes-no/feedback-yes-no).
+In most cases, the feedback form is opened by the **Send feedback** button in the upper right corner of the page, or from a [feedback notice](/patterns/feedback-yes-no/feedback-yes-no).
 
 ![](static/send-feedback.png)
 
@@ -60,7 +60,7 @@ If the user closes the form and then opens it again, save the content previously
 
 - After opening the form set the focus on the textarea.
 - **There is a limitation for a minimum of 10 symbols and not less than 3 words in this textarea for submitting it.** If the entered message doesn't match these rules, after submitting it user gets an error with the tooltip describing how many symbols/words are required for submitting feedback.
-- User cannot expand this textarea manually (use `noresize` property). But if the user entered more than 4 lines, the textarea grows in height itself according to the number of the lines entered. After 8 lines scroll appears.
+- User can't expand this textarea manually (use `noresize` property). But if the user entered more than 4 lines, the textarea grows in height itself according to the number of the lines entered. After 8 lines scroll appears.
 
 Label this textarea with the text: "Tell us your suggestion or report an issue".
 
