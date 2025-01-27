@@ -22,7 +22,7 @@ const Demo = () => {
         />
       </InputMask>
       <Text size={100} color='gray-500' id='aliases-example-hint'>
-        Write any 4 digits
+        Enter any 4 digits
       </Text>
     </Flex>
   );
