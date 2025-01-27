@@ -4,7 +4,6 @@ import { Flex } from '@semcore/ui/flex-box';
 import LinkExternalM from '@semcore/ui/icon/LinkExternal/m';
 import Link from '@semcore/ui/link';
 import Ellipsis from '@semcore/ui/ellipsis';
-import Button from '@semcore/ui/button';
 
 const Demo = () => {
   return (
@@ -18,17 +17,15 @@ const Demo = () => {
             return {
               children: (
                 <Flex>
-                  dsome asd
-                  {/*<Ellipsis>{row[props.name]}</Ellipsis>*/}
-                  {/*<Link*/}
-                  {/*  href='#'*/}
-                  {/*  target='_blank'*/}
-                  {/*  rel='noreferrer'*/}
-                  {/*  addonLeft={LinkExternalM}*/}
-                  {/*  color='gray-300'*/}
-                  {/*  ml={1}*/}
-                  {/*/>*/}
-                  <Button>QQQ</Button>
+                  <Ellipsis>{row[props.name]}</Ellipsis>
+                  <Link
+                    href='#'
+                    target='_blank'
+                    rel='noreferrer'
+                    addonLeft={LinkExternalM}
+                    color='gray-300'
+                    ml={1}
+                  />
                 </Flex>
               ),
             };
