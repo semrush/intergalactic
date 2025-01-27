@@ -11,7 +11,7 @@ export const BaseTrigger : StoryObj  = {
   render: BaseTriggerExample,
 };
 
-export const LinkTriggerAndEllipsis = {
+export const LinkTriggerAndEllipsis : StoryObj = {
   render: LinkTriggerAndEllipsisExample,
 };
 
