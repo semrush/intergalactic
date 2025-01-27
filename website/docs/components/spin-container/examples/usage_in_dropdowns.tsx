@@ -5,7 +5,7 @@ import Dropdown from '@semcore/dropdown';
 import Button from '@semcore/button';
 
 class Demo extends React.PureComponent {
-  state = { loading: true };
+  state = { loading: true, visible: false };
   timer: any;
   textRef = React.createRef<HTMLDivElement>();
 
@@ -13,19 +13,22 @@ class Demo extends React.PureComponent {
     clearTimeout(this.timer);
   }
 
-  fetchData = () => {
-    clearTimeout(this.timer);
-    this.setState({ loading: true });
-    this.timer = setTimeout(() => {
-      this.setState({ loading: false }, () => this.textRef.current?.focus());
-    }, 1500);
+  fetchData = (loading, visible) => {
+    this.setState({ loading, visible: !visible });
+    if (!visible) {
+      clearTimeout(this.timer);
+      this.setState({ loading: true });
+      this.timer = setTimeout(() => {
+        this.setState({ loading: false }, () => this.textRef.current?.focus());
+      }, 1500);
+    }
   };
 
   render() {
-    const { loading } = this.state;
+    const { loading, visible } = this.state;
 
     return (
-      <Dropdown onVisibleChange={this.fetchData}>
+      <Dropdown onVisibleChange={() => this.fetchData(loading, visible)} visible={visible}>
         <Dropdown.Trigger tag={Button} id='dropdown-trigger'>
           Dropdown with SpinContainer
         </Dropdown.Trigger>
