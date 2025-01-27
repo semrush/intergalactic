@@ -3232,6 +3232,9 @@ importers:
       '@storybook/icons':
         specifier: 1.2.12
         version: 1.2.12(react-dom@16.14.0)(react@16.14.0)
+      '@storybook/theming':
+        specifier: 8.5.2
+        version: 8.5.2(storybook@8.3.5)
       d3-scale:
         specifier: 3.3.0
         version: 3.3.0
@@ -11106,6 +11109,14 @@ packages:
     dependencies:
       storybook: 8.3.5
     dev: true
+
+  /@storybook/theming@8.5.2(storybook@8.3.5):
+    resolution: {integrity: sha512-vro8vJx16rIE0UehawEZbxFFA4/VGYS20PMKP6Y6Fpsce0t2/cF/U9qg3jOzVb/XDwfx+ne3/V+8rjfWx8wwJw==}
+    peerDependencies:
+      storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
+    dependencies:
+      storybook: 8.3.5
+    dev: false
 
   /@szmarczak/http-timer@1.1.2:
     resolution: {integrity: sha512-XIB2XbzHTN6ieIjfIMV9hlVcfPU26s2vafYWQcZHWXHOxiaRZYEDKEwdl129Zyg50+foYV2jCgtrqSA6qNuNSA==}
