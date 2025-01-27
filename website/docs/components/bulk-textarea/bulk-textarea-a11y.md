@@ -3,8 +3,6 @@ title: BulkTextarea
 tabs: Design('bulk-textarea'), A11y('bulk-textarea-a11y'), API('bulk-textarea-api'), Example('bulk-textarea-code'), Changelog('bulk-textarea-changelog')
 ---
 
-_**THIS DOCUMENTATION SHOULD BE DOUBLE CHECKED ONCE MORE AFTER THE COMPONENT WILL BE READY FOR RELEASE.**_
-
 ## What component has
 
 ### Roles and attributes
@@ -13,20 +11,20 @@ The following list describes roles and attributes that component already has.
 
 Table: Roles and attributes
 
-| Component               | Role / Attribute        | Usage                                                        |
-| ----------------------- | ----------------------- | ------------------------------------------------------------ |
-| `BulkTextarea.InputField > div` | `textbox`               | Identifies a field that allows the input of free-form text. |
-|                         | `aria-multiline=”true”` | Indicates that a textbox accepts multiple lines of input.    |
-| | `aria-labelledby="IDREF"` | Refers to the element that contains the label of field. |
-| | `aria-describedby="IDREF"` | Gives the item an accessible description by referring to the `aria-errormessage`, the tooltip, or both, describing the primary message or purpose of the item. |
-| `BulkTextarea.InputField > div > p` | `aria-invalid="true"` | A row gets this property when it gets the `invalid` status. |
-| | `aria-errormessage="[Your message here]"` | Identifies the element that provides an error message for the . |
-| `BulkTextarea.Counter` | `aria-label="{n} out of {n}"` | Sets an accessible name for the element. |
-| | `"aria-label={n} out of {n}, limit reached"` | Sets an accessible name for the element. |
-| | `"aria-label={n} out of {n}, limit exceeded"` | Sets an accessible name for the element. |
-| Buttons inside `BulkTextarea.ErrorsNavigation` | `aria-label="Next error"`, `aria-label="Previous error"` | Sets an accessible names for the buttons with no text. |
+| Component                                      | Role / Attribute                                         | Usage                                                                                                                                                          |
+| ---------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `BulkTextarea.InputField > div`                | `textbox`                                                | Identifies a field that allows the input of free-form text.                                                                                                    |
+|                                                | `aria-multiline=”true”`                                  | Indicates that a textbox accepts multiple lines of input.                                                                                                      |
+|                                                | `aria-labelledby="IDREF"`                                | Refers to the element that contains the label of field.                                                                                                        |
+|                                                | `aria-describedby="IDREF"`                               | Gives the item an accessible description by referring to the `aria-errormessage`, the tooltip, or both, describing the primary message or purpose of the item. |
+| `BulkTextarea.InputField > div > p`            | `aria-invalid="true"`                                    | A row gets this property when it gets the `invalid` status.                                                                                                    |
+|                                                | `aria-errormessage="[Your message here]"`                | Identifies the element that provides an error message for the .                                                                                                |
+| `BulkTextarea.Counter`                         | `aria-label="{n} out of {n}"`                            | Sets an accessible name for the element.                                                                                                                       |
+|                                                | `"aria-label={n} out of {n}, limit reached"`             | Sets an accessible name for the element.                                                                                                                       |
+|                                                | `"aria-label={n} out of {n}, limit exceeded"`            | Sets an accessible name for the element.                                                                                                                       |
+| Buttons inside `BulkTextarea.ErrorsNavigation` | `aria-label="Next error"`, `aria-label="Previous error"` | Sets an accessible names for the buttons with no text.                                                                                                         |
 
-<!-- | CHECK p rows | `aria-live="polite"` | Identifies the container element as a live region in the "polite" state, meaning assistive technology users are informed of changes to the region at the next available opportunity. Announces live message:"Keyword {2}", on each keyboard navigation (Up/Down key) within the textbox rows without errors. | 
+<!-- | CHECK p rows | `aria-live="polite"` | Identifies the container element as a live region in the "polite" state, meaning assistive technology users are informed of changes to the region at the next available opportunity. Announces live message:"Keyword {2}", on each keyboard navigation (Up/Down key) within the textbox rows without errors. |
 | CHECK IF NEEDED `BulkTextarea.ErrorItem` | `aria-hidden="true"` | Hides noninteractive icon from the assistive technologies.
 | CHECK | `aria-live="polite"` | Identifies the container element as a live region in the "polite" state, meaning assistive technology users are informed of changes to the region at the next available opportunity. Announces live message:"Error {n} out of {n}", while navigating between the errors using buttons. | |
 -->
@@ -37,21 +35,14 @@ For detailed information about keyboard support for the Input, refer to the [Key
 
 ## Considerations for developers and designers
 
-### Error messages
-
 ::: tip
-These messages aren't set by default in the component.
+Error messages aren't set by default in the component.
 :::
 
-Set up error messages for tooltips that will be visible to sighted users and announced by assistive technologies:
+Configure error messages for tooltips so they are visible to sighted users and announced by assistive technologies:
 
-- A message for specific errors in invalid rows based on your validation rules
-- A message for the entire input if you’re validating the whole thing
-
-## Resources
-
-- [A11y style guide](https://a11y-style-guide.com/style-guide/section-forms.html#kssref-forms-text-fields) describes core principles for the accessible inputs and textarea.
-- Find live examples of accessible inputs with different types in [DigitalA11y project](https://www.digitala11y.com/demos/accessibility-of-html-input-types-examples/).
+- A message for specific errors in invalid rows, based on your validation rules.
+- A message for the entire input if you’re validating the entire field.
 
 ## Other recommendations
 
