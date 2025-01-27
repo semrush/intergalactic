@@ -17,14 +17,12 @@ This component also provides the possibility to validate every row and the whole
 
 Component consists of the following:
 
-**_(THESE NAMES ARE TEMPORARY, WILL BE UPDATED ACCORDING TO THE ACTUAL COMPONENT)_**
-
-- `BulkTextarea.Label`
-- `BulkTextarea.Textarea`
-- `BulkTextarea.TextareaRows`
-- `BulkTextarea.TextareaRowsItem`
-- `BulkTextarea.Navigation`
-- `BulkTextarea.ClearButton`
+- `BulkTextarea.InputField`
+- `BulkTextarea.Counter`
+- `BulkTextarea.InputField.Row`
+- `BulkTextarea.ErrorItem`
+- `BulkTextarea.ErrorsNavigation`
+- `BulkTextarea.ClearAllButton`
 
 ## Appearance
 
@@ -66,7 +64,6 @@ Table: BulkTextarea with counter
 2. The counter updates if the user deletes a character and a line.
 3. If the user presses **Enter** or types a comma on an empty line, they stay on the same line. This helps avoid adding unnecessary blank lines.
 4. For now duplicate lines are counted.
-5. You can set your own validation rules for how invalid values are counted in the counter.
 
 ### Values near and above limit
 
@@ -119,11 +116,11 @@ BulkTextarea has the same states and styles as [Textarea](/components/textarea/t
 
 ### Validation
 
-You can define your own validation rules for the input: on submit, on blur, or on row blur. By default, our component uses on blur validation.
+You can define your own validation rules for the input: on submit, on blur, or on row blur. By default, our component uses on blur validation. **UPDATE THIS WHEN EXAMPLE WILL BE READY**
 
 ### Tooltips
 
-If there are invalid values in the textarea after validation, you can show a tooltip for the entire textarea or for individual rows when the cursor is on them.
+If there are invalid values in the textarea after validation, you can display a tooltip for the entire textarea or for individual rows when the cursor hovers over them or when the caret is positioned in the line.
 
 ![](static/bulktextarea-tooltip.png)
 
