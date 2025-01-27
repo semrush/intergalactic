@@ -15,8 +15,8 @@ import { HistogramChartProps } from '@semcore/d3-chart/src/component/Chart/Histo
 
 const data = [...Array(5).keys()].map((d, i) => ({
   x: i,
-  Line1: Math.random() * 10,
-  Line2: Math.random() * 10,
+  Category1: Math.random() * 10,
+  Category2: Math.random() * 10,
 }));
 
 const App = PlaygroundGeneration((preview) => {

@@ -31,24 +31,24 @@ const App = PlaygroundGeneration(
       options: ['info', 'success'].map((v) => ({ value: v, name: v })),
     });
 
-    const checked = bool({
-      key: 'checked',
-      defaultValue: false,
-      label: 'Checked',
-    });
-
     const icon = bool({ key: 'children', defaultValue: false, label: 'Icon' });
 
-    const textValue = text({
-      key: 'textValue',
-      label: 'Text',
-      defaultValue: 'Notifications',
+    const checked = bool({
+      key: 'checked',  
+      defaultValue: false,
+      label: 'Checked',
     });
 
     const disabled = bool({
       key: 'disabled',
       defaultValue: false,
       label: 'Disabled',
+    });
+
+    const textValue = text({
+      key: 'textValue',
+      label: 'Label',
+      defaultValue: 'Notifications',
     });
 
     return (

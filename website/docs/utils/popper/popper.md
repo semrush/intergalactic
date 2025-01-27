@@ -8,7 +8,7 @@ The component is our `React`-wrapper over the popular [popper.js](https://popper
 
 We use it in all pop-ups: [dropdown](/components/dropdown/dropdown), [tooltip](/components/tooltip/tooltip), [select](/components/select/select), etc.
 
-## Show/hide
+## Controlled and uncontrolled mode
 
 The component can function in both `uncontrolled` and `controlled` modes.
 
@@ -20,7 +20,7 @@ The component can function in both `uncontrolled` and `controlled` modes.
 
 :::
 
-## Events trigger
+## Trigger event
 
 Using the `interaction` prop, you can specify trigger events which are to be subscribed to to show and hide the popper.
 
@@ -34,7 +34,7 @@ When these events are activated, the `onVisibleChange` handler is called with th
 
 :::
 
-## Click outside
+## Outside click
 
 You can subscribe to the `onOutsideClick` event. It will be called when a clicked is made on any element other than `Trigger` and `Popper`.
 
@@ -82,7 +82,7 @@ The `tag` for `Trigger` and `Popper` is a `Box` by default, so all props from th
 
 :::
 
-## Render-functions
+## Render functions
 
 You can change the trigger by passing a function instead of the `Popper` body.
 
