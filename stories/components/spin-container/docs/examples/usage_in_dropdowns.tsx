@@ -13,7 +13,7 @@ class Demo extends React.PureComponent {
     clearTimeout(this.timer);
   }
 
-  fetchData = (loading, visible) => {
+  fetchData = (loading: boolean, visible: boolean) => {
     this.setState({ loading, visible: !visible });
     if (!visible) {
       clearTimeout(this.timer);
@@ -51,4 +51,4 @@ class Demo extends React.PureComponent {
   }
 }
 
-export default Demo;
+export default () => <Demo />;
