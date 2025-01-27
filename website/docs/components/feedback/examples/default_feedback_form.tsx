@@ -112,6 +112,8 @@ class Feedback extends React.PureComponent<FeedbackProps> {
                     {...input}
                     onChange={this.handleChange(input.onChange)}
                     id='email'
+                    type='email'
+                    autoComplete='email'
                     aria-describedby='email-description'
                   />
                 </Input>

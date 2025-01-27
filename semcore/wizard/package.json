@@ -1,7 +1,7 @@
 {
   "name": "@semcore/wizard",
   "description": "Semrush Wizard Component",
-  "version": "2.48.1",
+  "version": "2.49.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -14,8 +14,8 @@
   "dependencies": {
     "@semcore/utils": "4.44.1",
     "@semcore/flex-box": "5.39.1",
-    "@semcore/icon": "4.53.1",
-    "@semcore/modal": "4.50.1"
+    "@semcore/icon": "4.55.0",
+    "@semcore/modal": "4.51.0"
   },
   "peerDependencies": {
     "@semcore/core": "^2.17.5",
