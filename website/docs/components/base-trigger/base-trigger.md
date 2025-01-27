@@ -14,7 +14,7 @@ tabs: Design('base-trigger'), A11y('base-trigger-a11y'), API('base-trigger-api')
 - `FilterTrigger`
 - `LinkTrigger`
 
-## Sizes, margins and paddings
+## Appearance
 
 Table: BaseTrigger sizes, margins and paddings
 

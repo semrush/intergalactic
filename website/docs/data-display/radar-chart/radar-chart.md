@@ -90,6 +90,8 @@ It is designed to show similarities, differences, and outliers, or any other ite
 The radar chart is also known as web chart, spider chart, spider graph, spider web chart, star chart, star plot, cobweb chart, irregular polygon, polar chart, or Kiviat diagram. It is equivalent to a parallel coordinates plot, with the axes arranged radially.
 :::
 
+### Usage recommendations
+
 **Use radar chart when:**
 
 - There are multivariate data.

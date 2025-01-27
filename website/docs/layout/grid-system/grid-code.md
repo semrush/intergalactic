@@ -12,53 +12,53 @@ It's a component for building a 12-column grid.
 In the product interface we use a 12-column grid with a fixed 24px gutter between columns. The columns stretch.
 :::
 
-## Example use
+## Basic usage
 
 The `Row` component accepts all the properties of the `Flex` component, and the `Col` component accepts all the properties of the `Box` component.
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/example-use.tsx';
+  export Demo from 'stories/components/grid/docs/examples/example-use.tsx';
 </script>
 
 :::
 
-## Change in general offset
+## Column offset
 
 Arranging offsets for each column to the left.
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/change-in-general-offset.tsx';
+  export Demo from 'stories/components/grid/docs/examples/change-in-general-offset.tsx';
 </script>
 
 :::
 
-## Change in the general gutter between the columns
+## Row gutter
 
 You can change gutters between the columns, which gives flexibility in use.
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/change-in-the-general-gutter-between-the-columns.tsx';
+  export Demo from 'stories/components/grid/docs/examples/change-in-the-general-gutter-between-the-columns.tsx';
 </script>
 
 :::
 
-## Automatic column size detection
+## Automatic column size
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/automatic-column-size-detection.tsx';
+  export Demo from 'stories/components/grid/docs/examples/automatic-column-size-detection.tsx';
 </script>
 
 :::
 
-## Responsive
+## Responsive layout
 
 The grid has functionality for responsive layouts. You can change width and offsets of the columns depending on the screen size.
 
@@ -69,19 +69,19 @@ The grid works as desktop first, as our core products are designed to work prima
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/responsive.tsx';
+  export Demo from 'stories/components/grid/docs/examples/responsive.tsx';
 </script>
 
 :::
 
-## Responsive alternative API
+## Shorthand responsive props
 
 We have added an alternative API for responsive grids. It's more laconic.
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/responsive-alternative-api.tsx';
+  export Demo from 'stories/components/grid/docs/examples/responsive-alternative-api.tsx';
 </script>
 
 :::

@@ -18,7 +18,7 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 
 :::
 
-## Donut
+## Advanced usage
 
 - You can draw donut and pie charts with the `Donut` component.
 - `Pie` is a separate sector.
@@ -32,7 +32,7 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 
 :::
 
-## Donut controlled highlight
+## Controlled highlight
 
 Use `active` property to control segments highlight.
 

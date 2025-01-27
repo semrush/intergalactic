@@ -188,7 +188,12 @@ class FeedbackRatingRoot extends Component<
                 />
               );
             }
-            if (config.type === 'input') {
+            if (config.type === 'input' || config.type === 'email') {
+              if (config.type === 'email') {
+                input.autoComplete = 'email';
+                input.type = 'email';
+              }
+
               return (
                 <Input state={input.state}>
                   <Input.Value
@@ -245,7 +250,7 @@ class FeedbackRatingRoot extends Component<
     const SFeedbackRating = Root;
     const checkboxFields = formConfig.filter((item) => item.type === 'checkbox');
     const textFields = formConfig.filter(
-      (item) => item.type === 'textarea' || item.type === 'input',
+      (item) => item.type === 'textarea' || item.type === 'input' || item.type === 'email',
     );
     const notificationId = this.getNoticeTextId();
 

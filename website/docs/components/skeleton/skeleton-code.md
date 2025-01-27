@@ -4,7 +4,7 @@ fileSource: skeleton
 tabs: Design('skeleton'), A11y('skeleton-a11y'), API('skeleton-api'), Example('skeleton-code'), Changelog('skeleton-changelog')
 ---
 
-## Text initial loading
+## Loading text
 
 ::: sandbox
 
@@ -14,7 +14,7 @@ tabs: Design('skeleton'), A11y('skeleton-a11y'), API('skeleton-api'), Example('s
 
 :::
 
-## Usage with other elements
+## Custom shapes
 
 ::: sandbox
 
@@ -24,7 +24,7 @@ tabs: Design('skeleton'), A11y('skeleton-a11y'), API('skeleton-api'), Example('s
 
 :::
 
-## Skeleton examples for charts
+## Chart Skeleton
 
 Use `h={100}` and `w={100}` to adjust the height and width of the skeleton.
 

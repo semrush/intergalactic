@@ -137,7 +137,9 @@ Component consists of the following:
 - `Tag.Close` — a button that removes the tag
 - `Tag.Circle` — a round addon, usually an image.
 
-## Sizes
+## Appearance
+
+### Sizes
 
 Table: Tag sizes
 
@@ -147,7 +149,7 @@ Table: Tag sizes
 | L (28px)            | ![](static/tag-L.png) ![](static/tag2-L.png)   |
 | XL (40px)           | ![](static/tag-XL.png) ![](static/tag2-XL.png) |
 
-## Themes
+### Themes
 
 The component offers several themes for tags.
 
@@ -162,7 +164,7 @@ Table: Tag themes
 | `additional`                      | ![](static/additional.png)        | Ideal for special tags that are added to other tags.                                                                      |
 | `additional` with `color:"white"` | ![](static/additional-invert.png) | An inversion of the `additional` theme used for special tags that are added to other tags.                                |
 
-### Tag colors
+#### Tag colors
 
 To change tag color, use colors with 500 tone from [our palette tokens](/style/design-tokens/design-tokens#base-tokens-palette), since they are selected with the 60Lc contrast (according to APCA) between the text and background. Refer to [Custom color example](/components/tag/tag-code#custom-color).
 
@@ -188,6 +190,16 @@ Upon clicking the `Check` icon or pressing `Enter`, the input value is saved and
 
 If space for tag placement is limited, the text should be truncated with an `ellipsis`. Hovering over a tag with an `ellipsis` should display a tooltip with the full tag label.
 
+## Grouped tags
+
+Table: Grouped tags
+
+| Size (height in px) | Margins                        |
+| ------------------- | ------------------------------ |
+| M (20px)            | ![](static/tag-margins-M.png)  |
+| L (28px)            | ![](static/tag-margins-L.png)  |
+| XL (40px)           | ![](static/tag-margins-XL.png) |
+
 ## Editing tag
 
 For editable tags, use the [InlineInput](/components/inline-input/inline-input) component. Refer to the [live example](/components/tag/tag-code#editing_tag).
@@ -207,16 +219,6 @@ Unfortunately, this solution can be found in several places so far.
 :::
 
 ![more tags example](static/more-tags.png) -->
-
-## Margins between tags
-
-Table: Margins between tags
-
-| Size (height in px) | Margins                        |
-| ------------------- | ------------------------------ |
-| M (20px)            | ![](static/tag-margins-M.png)  |
-| L (28px)            | ![](static/tag-margins-L.png)  |
-| XL (40px)           | ![](static/tag-margins-XL.png) |
 
 ## Usage in UX/UI
 

@@ -15,7 +15,7 @@ Our typography primitives have no margins as they may differ in the end products
 
 :::
 
-## List with custom bullets
+## Custom list bullets
 
 Using the example below, you can easily create lists with custom bullets.
 
@@ -27,7 +27,7 @@ Using the example below, you can easily create lists with custom bullets.
 
 :::
 
-## List with custom content render
+## Custom list content render
 
 ::: sandbox
 
