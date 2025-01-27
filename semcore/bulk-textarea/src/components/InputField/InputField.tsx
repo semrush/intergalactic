@@ -910,7 +910,12 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       this.setState({ visibleErrorPopper: false });
 
       setTimeout(() => {
-        this.setSelection(node, 0, 1);
+        const text = node.childNodes.item(0);
+        if (text instanceof Text) {
+          this.setSelection(text, 0, text.length);
+        } else {
+          this.setSelection(node, 0, 1);
+        }
       }, 150);
     }
   }
