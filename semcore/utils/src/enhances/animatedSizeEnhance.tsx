@@ -42,6 +42,7 @@ function animatedSizeEnhance({
       const node = nodeRef.current;
       if (lastSizesRef.current.every((value) => value === undefined)) {
         for (let i = 0; i < animateProps.length; i++) {
+          // @ts-ignore
           lastSizesRef.current[i] = node.getBoundingClientRect()[animateProps[i]];
         }
         return;

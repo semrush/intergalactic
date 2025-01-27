@@ -37,7 +37,7 @@ module.exports = (options) => {
       ...options.presetEnv,
     }),
     inlineCssVariables(),
-    syncPlugin(postcssColorMod()),
+    syncPlugin(postcssColorMod),
     shadowStyles(options.shadow),
     postcssHoverMediaFeature(),
     csso,
