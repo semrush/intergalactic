@@ -25,6 +25,10 @@
 .dropzone:hover {
   background: var(--intergalactic-bg-primary-neutral-hover);
 }
+.dropzone:focus-within {
+  border: 1px solid var(--intergalactic-border-info-active, #006dca);
+  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
+}
 .dropzoneDragging {
   background: var(--intergalactic-bg-primary-neutral-active);
 }
@@ -44,6 +48,7 @@
   height: 100%;
   top: 0;
   left: 0;
+  border-radius: var(--intergalactic-rounded-medium);
 }
 .changeFileButton {
   display: inline;
@@ -60,7 +65,7 @@
   cursor: pointer;
 }
 .uploadedFileBlock {
-  margin: var(--intergalactic-spacing-2x) 0;
+  margin: var(--intergalactic-spacing-2x) 0 var(--intergalactic-spacing-5x);
   display: flex;
   align-items: center;
   gap: var(--intergalactic-spacing-1x);
