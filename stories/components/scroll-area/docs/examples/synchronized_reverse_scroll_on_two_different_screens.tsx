@@ -82,4 +82,4 @@ class Demo extends React.PureComponent {
   }
 }
 
-export default Demo;
+export default () => <Demo />;

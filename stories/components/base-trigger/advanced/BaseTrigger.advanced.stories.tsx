@@ -1,17 +1,17 @@
-import type { Meta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import BaseTriggerExample from './examples/base-trigger';
 import LinkTriggerAndEllipsisExample from './examples/LinkTriggerAndEllipsis';
 
-const meta: Meta<typeof BaseTrigger> = {
+const meta: Meta = {
   title: 'Components/BaseTrigger/Advanced',
 };
 
-export const BaseTrigger = {
+export const BaseTrigger : StoryObj  = {
   render: BaseTriggerExample,
 };
 
-export const LinkTriggerAndEllipsis = {
+export const LinkTriggerAndEllipsis : StoryObj = {
   render: LinkTriggerAndEllipsisExample,
 };
 

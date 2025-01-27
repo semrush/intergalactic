@@ -71,16 +71,14 @@ const DesignTokens = ({ tokens }) => {
     <div>
       <div className={styles.filters}>
         <Input className={styles.nameFilterInput} size='l'>
-          <Input.Addon
-            className={styles.nameFilterInputIcon}
-            tag={SearchIcon}
-            use:aria-hidden={undefined}
-          />
+          <Input.Addon>
+            <SearchIcon />
+          </Input.Addon>
           <Input.Value
             placeholder='Enter component or element name to find token'
             value={nameFilter}
             onChange={setNameFilter}
-            aria-label={'Search tokens'}
+            aria-label={'Search semantic tokens'}
           />
         </Input>
         <Select
