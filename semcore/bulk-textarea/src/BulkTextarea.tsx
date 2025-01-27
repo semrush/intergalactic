@@ -143,10 +143,12 @@ class BulkTextareaRoot extends Component<
         this.handlers.errors(newErrors);
         this.setState({ lastError });
         setTimeout(() => {
+          const { showErrors, errors } = this.asProps;
           if (showErrors) {
-            this.handlers.state(newErrors.length === 0 ? 'normal' : 'invalid');
+            const newState = newErrors.length === 0 ? 'normal' : 'invalid';
+            this.handlers.state(newState);
           }
-          if (newErrors.length === 0) {
+          if (errors?.length === 0) {
             this.handlers.showErrors(false);
 
             setTimeout(() => {

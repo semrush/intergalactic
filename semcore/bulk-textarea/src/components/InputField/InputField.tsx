@@ -139,10 +139,9 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       }
     }
 
-    if (
-      prevState.keyboardRowIndex !== -1 &&
-      prevState.keyboardRowIndex !== this.state.keyboardRowIndex
-    ) {
+    const { keyboardRowIndex } = this.state;
+
+    if (prevState.keyboardRowIndex !== -1 && prevState.keyboardRowIndex !== keyboardRowIndex) {
       if (rowProcessing) {
         const rows = this.getRowsValue();
         const newValue = rowProcessing(rows[prevState.keyboardRowIndex] ?? '', rows);
@@ -156,13 +155,20 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
             paragraph.replaceChild(newValueTextNode, paragraph.childNodes.item(0));
           }
         }
+
+        this.validateRow(paragraph);
+
+        setTimeout(() => {
+          const newNode = this.textarea.childNodes.item(keyboardRowIndex);
+          this.setErrorIndex(newNode);
+        }, 0); // need this timeout to update errorIndex to the new (usually empty) line
       }
 
       if (!showErrors) {
         this.recalculateErrors();
       }
       this.recalculateRowsCount();
-      this.asProps.onChangeRowIndex(this.state.keyboardRowIndex);
+      this.asProps.onChangeRowIndex(keyboardRowIndex);
     }
   }
 
@@ -423,9 +429,11 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         selection?.setPosition(firstRow, nodeText.length);
       } else if (!firstNode || (firstNode instanceof HTMLBRElement && nodes.length === 1)) {
         this.textarea.textContent = '';
+        this.setState({ keyboardRowIndex: 0 });
       } else if (firstNode instanceof HTMLParagraphElement && !firstNode.textContent?.trim()) {
         if (nodes.length <= 1 || secondNode instanceof HTMLBRElement) {
           this.textarea.textContent = '';
+          this.setState({ keyboardRowIndex: 0 });
         }
       }
 
@@ -641,7 +649,13 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
             this.textarea.textContent = '';
             this.setSelection(this.textarea, 0, 0);
           } else {
-            this.setSelection(prevNode, 1, 1);
+            if (prevNode instanceof HTMLParagraphElement) {
+              const text = prevNode.childNodes.item(0);
+              const offset = text.textContent?.length ?? 0;
+              this.setSelection(text, offset, offset);
+            } else {
+              console.warn('incorrect prevNode type', prevNode);
+            }
           }
 
           setTimeout(() => {
