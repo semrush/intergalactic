@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import DataTable from '@semcore/data-table';
 
 import FixedColumnsWithDiffWidthsExample from './examples/fixed_columns_with_diff_widths';
+import LinkInTableExample from './examples/link_in_table';
 
 const meta: Meta<typeof DataTable> = {
   title: 'Components/DataTable/Advanced',
@@ -14,4 +15,8 @@ type Story = StoryObj<typeof DataTable>;
 
 export const FixedColumnsWithDiffWidths: Story = {
   render: FixedColumnsWithDiffWidthsExample,
+};
+
+export const LinkInTable: Story = {
+  render: LinkInTableExample,
 };

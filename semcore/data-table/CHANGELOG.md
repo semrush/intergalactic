@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.47.9] - 2025-01-27
+
+### Fixed
+
+- Handle table cell focus for any interactions. Now works only for keyboard.
+
 ## [4.47.8] - 2025-01-10
 
 ### Fixed
