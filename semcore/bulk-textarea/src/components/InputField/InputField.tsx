@@ -160,7 +160,9 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
 
         setTimeout(() => {
           const newNode = this.textarea.childNodes.item(keyboardRowIndex);
-          this.setErrorIndex(newNode);
+          if (newNode) {
+            this.setErrorIndex(newNode);
+          }
         }, 0); // need this timeout to update errorIndex to the new (usually empty) line
       }
 
@@ -536,10 +538,6 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
 
     if (this.asProps.showErrors) {
       this.toggleErrorsPopperByKeyboard(150);
-      const focusedParagraph = document.getSelection()?.focusNode;
-      if (focusedParagraph instanceof HTMLParagraphElement) {
-        this.setErrorIndex(focusedParagraph);
-      }
     } else {
       this.toggleErrorsPopper('keyboardRowIndex', this.textarea);
     }
