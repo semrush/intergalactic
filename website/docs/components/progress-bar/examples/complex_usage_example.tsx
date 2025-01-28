@@ -1,34 +1,45 @@
 import React from 'react';
-import { Box } from 'intergalactic/flex-box';
-import { Text } from 'intergalactic/typography';
-import ProgressBar from 'intergalactic/progress-bar';
+import { Flex } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
+import ProgressBar from '@semcore/progress-bar';
+import Button from '@semcore/button';
 
 const maxValue = 2000;
 
 const Demo = () => {
+  const barRef = React.useRef(null);
   const [value, setValue] = React.useState(0);
 
+  const restart = () => {
+    setValue(0);
+    barRef.current?.focus();
+  };
+
   React.useEffect(() => {
-    const timerFetch = setInterval(() => {
-      setValue((value) => (value < maxValue ? value + 400 : 0));
-    }, 2000);
-    return () => {
-      clearInterval(timerFetch);
-    };
-  }, []);
+    if (value < maxValue) {
+      const timerFetch = setInterval(() => {
+        setValue((value) => value + 400);
+      }, 2000);
+      return () => {
+        clearInterval(timerFetch);
+      };
+    }
+  }, [value]);
 
   return (
-    <div>
-      <Box mb={1}>
-        <Text size={200}>{value ? `${value}/${maxValue}` : 'Starting...'}</Text>
-      </Box>
+    <Flex gap={2} direction='column' alignItems='start'>
+      <Text size={200}>{value ? `${value}/${maxValue}` : 'Starting...'}</Text>
       <ProgressBar
         tabIndex={0}
         value={(value / maxValue) * 100}
         aria-valuetext={`${value} of ${maxValue}`}
-        aria-label='Infinite emails processing'
+        aria-label='Basic ProgressBar example'
+        ref={barRef}
       />
-    </div>
+      <Button onClick={restart} mt={2}>
+        Restart progress
+      </Button>
+    </Flex>
   );
 };
 
