@@ -521,6 +521,8 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
           if (emptyParagraph) {
             this.setSelection(emptyParagraph, 0, 0);
           }
+        } else {
+          this.setSelection(this.textarea, 0, 0);
         }
       }
 
