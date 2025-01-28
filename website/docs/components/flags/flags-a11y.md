@@ -11,7 +11,7 @@ The `Flags` component doesn't have an `aria-label` by default to avoid double re
 If you use `Flags` without the full country name, you should set the following attributes to the component:
 
 - `aria-label` with the full country name,
-- `role="image"`.
+- `role="img"`.
 
 If you use `Flags` with the short country code, do the same, and also hide the country code with `aria-hidden`.
 

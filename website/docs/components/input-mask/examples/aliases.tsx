@@ -19,11 +19,10 @@ const Demo = () => {
           value={value}
           onChange={setValue}
           aria-describedby='aliases-example-hint'
-          title='4-digit number'
         />
       </InputMask>
       <Text size={100} color='gray-500' id='aliases-example-hint'>
-        Write any 4 digits and after
+        Enter any 4 digits
       </Text>
     </Flex>
   );
