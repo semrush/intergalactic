@@ -17,12 +17,19 @@ const searchClient = algoliasearch(algoliaConfig.appName, algoliaConfig.openKey)
 
 const SuggestSearch = connectAutoComplete(
   ({ currentRefinement, refine, hits, filteredIcons, onChangeValue, ...others }) => {
+    const [message, setMessage] = React.useState('');
+
     const handleChangeValue = (value) => {
       onChangeValue(value);
       return refine(value);
     };
     useEffect(() => {
       filteredIcons(hits);
+      if (currentRefinement)
+        setMessage(
+          `${hits.length ? `${hits.length} icon${hits.length === 1 ? '' : 's'}` : 'Nothing'} found`,
+        );
+      else setMessage('');
     });
 
     return (
@@ -36,7 +43,11 @@ const SuggestSearch = connectAutoComplete(
           value={currentRefinement}
           placeholder='What icon are you looking for?'
           aria-label={'Search icons'}
+          aria-describedby={'search-count'}
         />
+        <Input.Addon id='search-count' role='status' key='search-count'>
+          {message}
+        </Input.Addon>
         {!!currentRefinement && (
           <Input.Addon>
             <ButtonLink
