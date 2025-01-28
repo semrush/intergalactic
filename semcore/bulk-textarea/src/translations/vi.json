@@ -1,1 +1,10 @@
-{}
+{
+  "BulkTextarea.ClearAllButton.buttonText": "Xóa tất cả",
+  "BulkTextarea.Counter.ofAllowedRows:sr-message": "trên tổng số {rowsNumber} dòng",
+  "BulkTextarea.Counter.limitReached:sr-message": "Đã đạt đến giới hạn",
+  "BulkTextarea.Counter.limitExceeded:sr-message": "Đã vượt quá giới hạn",
+  "BulkTextarea.ErrorsNavigation.totalErrors": "{errorsCount} {errorsCount, plural, other {lỗi}}",
+  "BulkTextarea.ErrorsNavigation.selectedError": "Lỗi {errorIndex} trên tổng số {errorsCount}",
+  "BulkTextarea.ErrorsNavigation.nextError:aria-label": "Lỗi tiếp theo",
+  "BulkTextarea.ErrorsNavigation.previousError:aria-label": "Lỗi trước"
+}

@@ -1,1 +1,10 @@
-{}
+{
+  "BulkTextarea.ClearAllButton.buttonText": "모두 지우기",
+  "BulkTextarea.Counter.ofAllowedRows:sr-message": "행 {rowsNumber}개",
+  "BulkTextarea.Counter.limitReached:sr-message": "한도에 도달했습니다",
+  "BulkTextarea.Counter.limitExceeded:sr-message": "한도 초과",
+  "BulkTextarea.ErrorsNavigation.totalErrors": "{errorsCount, plural, other {오류}} {errorsCount}개",
+  "BulkTextarea.ErrorsNavigation.selectedError": "오류 {errorsCount}개 중 {errorIndex}개",
+  "BulkTextarea.ErrorsNavigation.nextError:aria-label": "다음 오류",
+  "BulkTextarea.ErrorsNavigation.previousError:aria-label": "이전 오류"
+}

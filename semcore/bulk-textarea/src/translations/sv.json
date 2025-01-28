@@ -1,1 +1,10 @@
-{}
+{
+  "BulkTextarea.ClearAllButton.buttonText": "Rensa allt",
+  "BulkTextarea.Counter.ofAllowedRows:sr-message": "av {rowsNumber} rader",
+  "BulkTextarea.Counter.limitReached:sr-message": "Gränsen är nådd",
+  "BulkTextarea.Counter.limitExceeded:sr-message": "Gränsen är överskriden",
+  "BulkTextarea.ErrorsNavigation.totalErrors": "{errorsCount} {errorsCount, plural, one {fel} other {fel}}",
+  "BulkTextarea.ErrorsNavigation.selectedError": "Fel {errorIndex} av {errorsCount}",
+  "BulkTextarea.ErrorsNavigation.nextError:aria-label": "Nästa fel",
+  "BulkTextarea.ErrorsNavigation.previousError:aria-label": "Föregående fel"
+}

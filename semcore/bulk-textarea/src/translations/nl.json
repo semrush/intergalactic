@@ -1,1 +1,10 @@
-{}
+{
+  "BulkTextarea.ClearAllButton.buttonText": "Alles wissen",
+  "BulkTextarea.Counter.ofAllowedRows:sr-message": "van {rowsNumber} rijen",
+  "BulkTextarea.Counter.limitReached:sr-message": "Limiet bereikt",
+  "BulkTextarea.Counter.limitExceeded:sr-message": "Limiet overschreden",
+  "BulkTextarea.ErrorsNavigation.totalErrors": "{errorsCount} {errorsCount, plural, one {fout} other {fouten}}",
+  "BulkTextarea.ErrorsNavigation.selectedError": "Fout {errorIndex} van {errorsCount}",
+  "BulkTextarea.ErrorsNavigation.nextError:aria-label": "Volgende fout",
+  "BulkTextarea.ErrorsNavigation.previousError:aria-label": "Vorige fout"
+}

@@ -1,1 +1,10 @@
-{}
+{
+  "BulkTextarea.ClearAllButton.buttonText": "清除全部",
+  "BulkTextarea.Counter.ofAllowedRows:sr-message": "/ {rowsNumber} 行",
+  "BulkTextarea.Counter.limitReached:sr-message": "达到限额",
+  "BulkTextarea.Counter.limitExceeded:sr-message": "已超出限额",
+  "BulkTextarea.ErrorsNavigation.totalErrors": "{errorsCount} {errorsCount, plural, other {个错误}}",
+  "BulkTextarea.ErrorsNavigation.selectedError": "错误 {errorIndex} / {errorsCount}",
+  "BulkTextarea.ErrorsNavigation.nextError:aria-label": "下一个错误",
+  "BulkTextarea.ErrorsNavigation.previousError:aria-label": "上一个错误"
+}

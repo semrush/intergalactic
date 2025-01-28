@@ -1,1 +1,10 @@
-{}
+{
+  "BulkTextarea.ClearAllButton.buttonText": "すべてクリア",
+  "BulkTextarea.Counter.ofAllowedRows:sr-message": "上限は{rowsNumber}行",
+  "BulkTextarea.Counter.limitReached:sr-message": "制限に達しました",
+  "BulkTextarea.Counter.limitExceeded:sr-message": "制限を超えました",
+  "BulkTextarea.ErrorsNavigation.totalErrors": "{errorsCount}{errorsCount, plural, other {件のエラー}}",
+  "BulkTextarea.ErrorsNavigation.selectedError": "エラー{errorIndex}/{errorsCount}",
+  "BulkTextarea.ErrorsNavigation.nextError:aria-label": "次のエラー",
+  "BulkTextarea.ErrorsNavigation.previousError:aria-label": "前のエラー"
+}
