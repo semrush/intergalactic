@@ -44,7 +44,7 @@ const group = {
     route: '/intergalactic/components/breadcrumbs/breadcrumbs',
     type: 'components',
   },
-    bulkTextarea: {
+  bulkTextarea: {
     title: 'BulkTextarea',
     route: '/intergalactic/components/bulk-textarea/bulk-textarea',
     disabled: false,
