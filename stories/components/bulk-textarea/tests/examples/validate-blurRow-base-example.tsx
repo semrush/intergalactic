@@ -54,7 +54,7 @@ const Demo = (props: BulkTextareaProps) => {
         rowValidation={validateRow}
         rowsDelimiters={[',']}
         placeholder={'Placeholder'}
-        validateOn ='blurRow'
+        validateOn = {['blurRow']}
         {...props}
         errors={errors}
         showErrors={showErrors}
