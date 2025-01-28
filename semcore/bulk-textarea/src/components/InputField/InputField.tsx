@@ -449,7 +449,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         maxDeep--;
       }
 
-      if (rowNode instanceof HTMLElement) {
+      if (rowNode instanceof HTMLParagraphElement) {
         const childNodes = rowNode.childNodes;
         const textContent = rowNode.textContent ?? '';
 

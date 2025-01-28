@@ -23,209 +23,207 @@ const Demo = (props: BulkTextareaProps) => {
   const [errors, setErrors] = React.useState<ErrorItem[]>([]);
   const [showErrors, setShowErrors] = React.useState(false);
 
-
   return (
     <div>
-    <Flex direction="row" gap={4}>
-    <Box mb={4}>
-      <BulkTextarea
-        w={200}
-        ofRows={100}
-        minRows={1}
-        maxRows={1}
-        value={value}
-        onChange={setValue}
-        readonly={true}
-        rowValidation={validateRow}
-        rowsDelimiters={[',']}
-        placeholder={'Placeholder'}
-        errors={errors}
-        showErrors={showErrors}
-        onErrorsChange={setErrors}
-        onShowErrorsChange={setShowErrors}
-      >
-        <Flex alignItems='center' justifyContent='flex-start' mb={2} gap={1}>
-          <Text tag={'label'} size={200} id={'keywords-label'}>
-           Readonly state of bulk textarea
-          </Text>
-          <BulkTextarea.Counter />
-        </Flex>
-        <BulkTextarea.InputField
-          aria-labelledby={'keywords-label'}
-          commonErrorMessage={'some global error'}
-        />
-        <Flex alignItems='center' justifyContent='space-between' mt={2}>
-          <BulkTextarea.ErrorsNavigation />
-          <BulkTextarea.ClearAllButton />
-        </Flex>
-      </BulkTextarea>
-    </Box>
+      <Flex direction='row' gap={4}>
+        <Box mb={4}>
+          <BulkTextarea
+            w={200}
+            ofRows={100}
+            minRows={1}
+            maxRows={1}
+            value={value}
+            onChange={setValue}
+            readonly={true}
+            rowValidation={validateRow}
+            rowsDelimiters={[',']}
+            placeholder={'Placeholder'}
+            errors={errors}
+            showErrors={showErrors}
+            onErrorsChange={setErrors}
+            onShowErrorsChange={setShowErrors}
+          >
+            <Flex alignItems='center' justifyContent='flex-start' mb={2} gap={1}>
+              <Text tag={'label'} size={200} id={'keywords-label'}>
+                Readonly state of bulk textarea
+              </Text>
+              <BulkTextarea.Counter />
+            </Flex>
+            <BulkTextarea.InputField
+              aria-labelledby={'keywords-label'}
+              commonErrorMessage={'some global error'}
+            />
+            <Flex alignItems='center' justifyContent='space-between' mt={2}>
+              <BulkTextarea.ErrorsNavigation />
+              <BulkTextarea.ClearAllButton />
+            </Flex>
+          </BulkTextarea>
+        </Box>
 
-    <Box mb={8}>
-      <BulkTextarea
-        w={300}
-        ofRows={10}
-        minRows={5}
-        maxRows={5}
-        value={value}
-        onChange={setValue}
-        rowValidation={validateRow}
-        disabled={true}
-        rowsDelimiters={[',']}
-        placeholder={'Long Long Placeholder'}
-        errors={errors}
-        showErrors={showErrors}
-        onErrorsChange={setErrors}
-        onShowErrorsChange={setShowErrors}
-      >
-        <Flex alignItems='center' justifyContent='flex-start' mb={2} gap={1}>
-          <Text tag={'label'} size={200} id={'keywords-label'}>
-          Disabled state of bulk textarea
-          </Text>
-          <BulkTextarea.Counter />
-        </Flex>
-        <BulkTextarea.InputField
-          aria-labelledby={'keywords-label'}
-          commonErrorMessage={'some global error'}
-        />
-        <Flex alignItems='center' justifyContent='space-between' mt={2}>
-          <BulkTextarea.ErrorsNavigation />
-          <BulkTextarea.ClearAllButton />
-        </Flex>
-      </BulkTextarea>
-    </Box>
+        <Box mb={8}>
+          <BulkTextarea
+            w={300}
+            ofRows={10}
+            minRows={5}
+            maxRows={5}
+            value={value}
+            onChange={setValue}
+            rowValidation={validateRow}
+            disabled={true}
+            rowsDelimiters={[',']}
+            placeholder={'Long Long Placeholder'}
+            errors={errors}
+            showErrors={showErrors}
+            onErrorsChange={setErrors}
+            onShowErrorsChange={setShowErrors}
+          >
+            <Flex alignItems='center' justifyContent='flex-start' mb={2} gap={1}>
+              <Text tag={'label'} size={200} id={'keywords-label'}>
+                Disabled state of bulk textarea
+              </Text>
+              <BulkTextarea.Counter />
+            </Flex>
+            <BulkTextarea.InputField
+              aria-labelledby={'keywords-label'}
+              commonErrorMessage={'some global error'}
+            />
+            <Flex alignItems='center' justifyContent='space-between' mt={2}>
+              <BulkTextarea.ErrorsNavigation />
+              <BulkTextarea.ClearAllButton />
+            </Flex>
+          </BulkTextarea>
+        </Box>
 
-    <Box mb={6}>
-      <BulkTextarea 
-        value={value}
-        onChange={setValue}
-        rowValidation={validateRow}
-        placeholder={'Placeholder'}
-        errors={errors}
-        showErrors={showErrors}
-        onErrorsChange={setErrors}
-        onShowErrorsChange={setShowErrors}
-      >
-        <Flex alignItems='center' justifyContent='flex-start' mb={2} gap={1}>
-          <Text tag={'label'} id={'keywords-label'}>
-          Default props
-          </Text>
-          <BulkTextarea.Counter />
-        </Flex>
-        <BulkTextarea.InputField
-          aria-labelledby={'keywords-label'}
-          commonErrorMessage={'some global error'}
-        />
-        <Flex alignItems='center' justifyContent='space-between' mt={2}>
-          <BulkTextarea.ErrorsNavigation />
-          <BulkTextarea.ClearAllButton />
-        </Flex>
-      </BulkTextarea>
-    </Box>
-    </Flex>
+        <Box mb={6}>
+          <BulkTextarea
+            value={value}
+            onChange={setValue}
+            rowValidation={validateRow}
+            placeholder={'Placeholder'}
+            errors={errors}
+            showErrors={showErrors}
+            onErrorsChange={setErrors}
+            onShowErrorsChange={setShowErrors}
+          >
+            <Flex alignItems='center' justifyContent='flex-start' mb={2} gap={1}>
+              <Text tag={'label'} id={'keywords-label'}>
+                Default props
+              </Text>
+              <BulkTextarea.Counter />
+            </Flex>
+            <BulkTextarea.InputField
+              aria-labelledby={'keywords-label'}
+              commonErrorMessage={'some global error'}
+            />
+            <Flex alignItems='center' justifyContent='space-between' mt={2}>
+              <BulkTextarea.ErrorsNavigation />
+              <BulkTextarea.ClearAllButton />
+            </Flex>
+          </BulkTextarea>
+        </Box>
+      </Flex>
 
-    <Flex direction="row" gap={4} >
-    <Box>
-      <BulkTextarea
-        w={200}
-        ofRows={8}
-        minRows={5}
-        maxRows={5}
-        value={value}
-        onChange={setValue}
-        rowValidation={validateRow}
-        rowsDelimiters={[',']}
-        placeholder={'Placeholder'}
-        errors={errors}
-        showErrors={showErrors}
-        onErrorsChange={setErrors}
-        onShowErrorsChange={setShowErrors}
-      >
-        <Flex alignItems='center' justifyContent='flex-start' mb={2} gap={1}>
-          <Text tag={'label'} size={200} id={'keywords-label'}>
-           Active state of bulk textarea
-          </Text>
-          <BulkTextarea.Counter />
-        </Flex>
-        <BulkTextarea.InputField
-          aria-labelledby={'keywords-label'}
-          commonErrorMessage={'some global error'}
-        />
-        <Flex alignItems='center' justifyContent='space-between' mt={2}>
-          <BulkTextarea.ErrorsNavigation />
-          <BulkTextarea.ClearAllButton />
-        </Flex>
-      </BulkTextarea>
-    </Box>
+      <Flex direction='row' gap={4}>
+        <Box>
+          <BulkTextarea
+            w={200}
+            ofRows={8}
+            minRows={5}
+            maxRows={5}
+            value={value}
+            onChange={setValue}
+            rowValidation={validateRow}
+            rowsDelimiters={[',']}
+            placeholder={'Placeholder'}
+            errors={errors}
+            showErrors={showErrors}
+            onErrorsChange={setErrors}
+            onShowErrorsChange={setShowErrors}
+          >
+            <Flex alignItems='center' justifyContent='flex-start' mb={2} gap={1}>
+              <Text tag={'label'} size={200} id={'keywords-label'}>
+                Active state of bulk textarea
+              </Text>
+              <BulkTextarea.Counter />
+            </Flex>
+            <BulkTextarea.InputField
+              aria-labelledby={'keywords-label'}
+              commonErrorMessage={'some global error'}
+            />
+            <Flex alignItems='center' justifyContent='space-between' mt={2}>
+              <BulkTextarea.ErrorsNavigation />
+              <BulkTextarea.ClearAllButton />
+            </Flex>
+          </BulkTextarea>
+        </Box>
 
-    <Box>
-      <BulkTextarea
-        w={300}
-        size = 'l'
-        ofRows={10}
-        minRows={5}
-        maxRows={10}
-        value={value}
-        onChange={setValue}
-        rowValidation={validateRow}
-        disabled={true}
-        rowsDelimiters={[',']}
-        placeholder={'Long Long Long Placeholder Enter text here'}
-        errors={errors}
-        showErrors={showErrors}
-        onErrorsChange={setErrors}
-        onShowErrorsChange={setShowErrors}
-      >
-        <Flex alignItems='center' justifyContent='flex-start' mb={2} gap={1}>
-          <Text tag={'label'} size={200} id={'keywords-label'}>
-          Active state of bulk textarea
-          </Text>
-          <BulkTextarea.Counter />
-        </Flex>
-        <BulkTextarea.InputField
-          aria-labelledby={'keywords-label'}
-          commonErrorMessage={'some global error'}
-        />
-        <Flex alignItems='center' justifyContent='space-between' mt={2}>
-          <BulkTextarea.ErrorsNavigation />
-          <BulkTextarea.ClearAllButton />
-        </Flex>
-      </BulkTextarea>
-    </Box>
+        <Box>
+          <BulkTextarea
+            w={300}
+            size='l'
+            ofRows={10}
+            minRows={5}
+            maxRows={10}
+            value={value}
+            onChange={setValue}
+            rowValidation={validateRow}
+            disabled={true}
+            rowsDelimiters={[',']}
+            placeholder={'Long Long Long Placeholder Enter text here'}
+            errors={errors}
+            showErrors={showErrors}
+            onErrorsChange={setErrors}
+            onShowErrorsChange={setShowErrors}
+          >
+            <Flex alignItems='center' justifyContent='flex-start' mb={2} gap={1}>
+              <Text tag={'label'} size={200} id={'keywords-label'}>
+                Active state of bulk textarea
+              </Text>
+              <BulkTextarea.Counter />
+            </Flex>
+            <BulkTextarea.InputField
+              aria-labelledby={'keywords-label'}
+              commonErrorMessage={'some global error'}
+            />
+            <Flex alignItems='center' justifyContent='space-between' mt={2}>
+              <BulkTextarea.ErrorsNavigation />
+              <BulkTextarea.ClearAllButton />
+            </Flex>
+          </BulkTextarea>
+        </Box>
 
-    <Box>
-      <BulkTextarea
-        w={300}
-        ofRows={15}
-        minRows={5}
-        maxRows={10}
-        value={value}
-        onChange={setValue}
-        rowValidation={validateRow}
-        rowsDelimiters={[',']}
-        errors={errors}
-        showErrors={showErrors}
-        onErrorsChange={setErrors}
-        onShowErrorsChange={setShowErrors}
-      >
-        <Flex alignItems='center' justifyContent='flex-start' mb={2} gap={1}>
-          <Text tag={'label'} size={200} id={'keywords-label'}>
-          Active state of bulk textarea without Placeholder
-          </Text>
-          <BulkTextarea.Counter />
-        </Flex>
-        <BulkTextarea.InputField
-          aria-labelledby={'keywords-label'}
-          commonErrorMessage={'some global error'}
-        />
-        <Flex alignItems='center' justifyContent='space-between' mt={2}>
-          <BulkTextarea.ErrorsNavigation />
-          <BulkTextarea.ClearAllButton />
-        </Flex>
-      </BulkTextarea>
-    </Box>
-    </Flex>
-
+        <Box>
+          <BulkTextarea
+            w={300}
+            ofRows={15}
+            minRows={5}
+            maxRows={10}
+            value={value}
+            onChange={setValue}
+            rowValidation={validateRow}
+            rowsDelimiters={[',']}
+            errors={errors}
+            showErrors={showErrors}
+            onErrorsChange={setErrors}
+            onShowErrorsChange={setShowErrors}
+          >
+            <Flex alignItems='center' justifyContent='flex-start' mb={2} gap={1}>
+              <Text tag={'label'} size={200} id={'keywords-label'}>
+                Active state of bulk textarea without Placeholder
+              </Text>
+              <BulkTextarea.Counter />
+            </Flex>
+            <BulkTextarea.InputField
+              aria-labelledby={'keywords-label'}
+              commonErrorMessage={'some global error'}
+            />
+            <Flex alignItems='center' justifyContent='space-between' mt={2}>
+              <BulkTextarea.ErrorsNavigation />
+              <BulkTextarea.ClearAllButton />
+            </Flex>
+          </BulkTextarea>
+        </Box>
+      </Flex>
     </div>
   );
 };
