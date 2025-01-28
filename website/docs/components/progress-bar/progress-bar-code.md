@@ -9,7 +9,7 @@ tabs: Design('progress-bar'), A11y('progress-bar-a11y'), API('progress-bar-api')
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/complex_usage_example.tsx';
+  export Demo from './examples/basic-usage.tsx';
 </script>
 
 :::
