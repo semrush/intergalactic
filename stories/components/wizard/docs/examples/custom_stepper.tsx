@@ -8,12 +8,18 @@ import Radio, { RadioGroup } from '@semcore/radio';
 
 const Step1 = React.forwardRef(function (_props, ref: React.Ref<HTMLDivElement>) {
   return (
-    <Flex ref={ref} direction='column'>
-      <Input mb={4}>
-        <Input.Value placeholder='Your name' />
+    <Flex ref={ref} direction='column' gap={2}>
+      <Text size={200} tag='label' htmlFor='name'>
+        Name
+      </Text>
+      <Input mb={2}>
+        <Input.Value id='name' autoComplete='name' />
       </Input>
+      <Text size={200} tag='label' htmlFor='email'>
+        Email
+      </Text>
       <Input>
-        <Input.Value placeholder='Your email' />
+        <Input.Value id='email' type='email' autoComplete='email' />
       </Input>
     </Flex>
   );

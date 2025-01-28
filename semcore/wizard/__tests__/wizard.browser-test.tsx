@@ -408,11 +408,11 @@ test.describe('Custom stepper example', () => {
     });
 
     await test.step('Click inside text fields and check focus', async () => {
-      await input(page, 'Your name').click();
-      await expect(input(page, 'Your name')).toBeFocused();
-      await input(page, 'Your name').fill('Test');
-      await input(page, 'Your email').click();
-      await expect(input(page, 'Your email')).toBeFocused();
+      await input(page, 'Name').click();
+      await expect(input(page, 'Name')).toBeFocused();
+      await input(page, 'Name').fill('Test');
+      await input(page, 'Email').click();
+      await expect(input(page, 'Email')).toBeFocused();
     });
 
     await test.step('Verify navigation between pages by pressing Steps in sidebar ', async () => {
