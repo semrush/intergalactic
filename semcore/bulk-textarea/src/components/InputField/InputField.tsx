@@ -536,6 +536,10 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
 
     if (this.asProps.showErrors) {
       this.toggleErrorsPopperByKeyboard(150);
+      const focusedParagraph = document.getSelection()?.focusNode;
+      if (focusedParagraph instanceof HTMLParagraphElement) {
+        this.setErrorIndex(focusedParagraph);
+      }
     } else {
       this.toggleErrorsPopper('keyboardRowIndex', this.textarea);
     }
@@ -1034,8 +1038,6 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       }
 
       this.setSelection(nodeToSetSelection, offset, offset, 'nearest');
-
-      this.setErrorIndex(nextNode);
     }
   }
 
