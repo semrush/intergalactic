@@ -8,6 +8,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - `plural`, `selectordinal` and others Intl formatting for translations.
 
+## [4.44.2] - 2025-01-21
+
+### Added
+
+- `inputMode` and `autoComplete` as an item of default input props.
+
 ## [4.44.1] - 2024-12-20
 
 ### Fixed

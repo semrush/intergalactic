@@ -10,6 +10,10 @@ This pattern is built with Input, InputMask and Select components. For the detai
 - [InputMask](/components/input-mask/input-mask-a11y)
 - [Select](/components/select/select-a11y)
 
+## Considerations for developers
+
+Make sure the browser's autofill feature works correctly in phone inputs, and the appropriate virtual keyboard is displayed on focus. Usually, this is done by adding `type="tel"` and `autocomplete="tel"` attributes, as [in the examples](./input-phone-code.md).
+
 ## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
+Find more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).

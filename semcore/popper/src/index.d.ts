@@ -96,6 +96,8 @@ export type PopperProps = OutsideClickProps &
      * If set, popper will be placed near the place mouse cursor entered the trigger
      */
     cursorAnchoring?: boolean;
+
+    popperMargin?: number;
   };
 
 /** @deprecated */

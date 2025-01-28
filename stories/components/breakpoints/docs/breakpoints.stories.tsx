@@ -10,19 +10,21 @@ import SimpleUseExample from './examples/simple-use';
 
 const meta: Meta<typeof Breakpoints> = {
   title: 'Components/Breakpoints/Documentation',
+  component: Breakpoints,
 };
 
 export default meta;
+type Story = StoryObj<typeof Breakpoints>;
 
-export const CustomMedia: StoryObj<typeof Breakpoints> = {
+export const CustomMedia: StoryObj = {
   render: CustomMediaExample,
 };
 
-export const ManualControl: StoryObj<typeof Breakpoints> = {
+export const ManualControl: StoryObj = {
   render: ManualControlExample,
 };
 
-export const Mocking: StoryObj<typeof Breakpoints> = {
+export const Mocking: StoryObj = {
     render: MockingExample,
   };
 
