@@ -677,9 +677,9 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         const selection = document.getSelection();
         if (
           selection?.focusNode === selection?.anchorNode &&
-          selection?.focusNode === currentNode &&
           selection?.anchorOffset === 0 &&
-          selection?.focusOffset === 1
+          ((selection?.focusNode === currentNode && selection?.focusOffset === 1) ||
+            selection?.focusOffset === currentNode.textContent?.length)
         ) {
           event.preventDefault();
           currentNode.innerHTML = this.emptyRowValue;
