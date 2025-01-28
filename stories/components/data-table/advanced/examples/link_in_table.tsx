@@ -1,7 +1,7 @@
 import React from 'react';
 import DataTable from '@semcore/data-table';
 import { Flex } from '@semcore/ui/flex-box';
-import LinkExternalM from '@semcore/ui/icon/LinkExternal/m';
+import LinkExternalM from '@semcore/icon/LinkExternal/m';
 import Link from '@semcore/ui/link';
 import Ellipsis from '@semcore/ui/ellipsis';
 
