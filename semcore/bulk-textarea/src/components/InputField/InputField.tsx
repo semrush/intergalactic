@@ -495,9 +495,9 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         const { errors, showErrors } = this.asProps;
         const isValid = this.validateRow(rowNode);
         this.recalculateErrors();
+        this.setErrorIndex(rowNode);
 
         if (!isValid && showErrors) {
-          this.setErrorIndex(rowNode);
           this.toggleErrorsPopper('keyboardRowIndex', rowNode, 0);
         }
 
