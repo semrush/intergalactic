@@ -5,8 +5,10 @@ tabs: Design('bulk-textarea'), A11y('bulk-textarea-a11y'), API('bulk-textarea-ap
 
 ## Basic example
 
-_HERE, WE SHOULD PLACE A BASIC EXAMPLE._
+::: sandbox
 
-## Expanded example
+<script lang="tsx">
+  export Demo from 'stories/components/bulk-textarea/docs/examples/BaseExample.tsx';
+</script>
 
-_HERE, WE SHOULD ADD AN EXAMPLE OF HOW OUR USERS CAN EXPAND THE COMPONENT IF THEY NEED TO CHANGE THE PLACEMENT OF THE CONTROLS._
+:::

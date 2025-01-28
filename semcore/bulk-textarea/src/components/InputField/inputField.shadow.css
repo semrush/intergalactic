@@ -1,4 +1,5 @@
 SInputField > div {
+  box-sizing: content-box;
   outline: none;
   border-radius: var(--intergalactic-control-rounded, 6px);
   border-color: var(--intergalactic-border-primary, #c4c7cf);
