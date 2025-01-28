@@ -389,12 +389,14 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
           position = (lastNodeToInsert.textContent ?? '').length;
 
           this.validateRow(lastNodeToInsert);
+          this.setErrorIndex(lastNodeToInsert);
         } else {
           position = (anchorNode.textContent ?? '').length;
           anchorNode.textContent = (anchorNode.textContent ?? '') + after;
           textNode = anchorNode.childNodes.item(0);
 
           this.validateRow(anchorNode);
+          this.setErrorIndex(anchorNode);
         }
       }
 
@@ -495,6 +497,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         this.recalculateErrors();
 
         if (!isValid && showErrors) {
+          this.setErrorIndex(rowNode);
           this.toggleErrorsPopper('keyboardRowIndex', rowNode, 0);
         }
 
@@ -618,6 +621,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
           if (currentNode.previousSibling) {
             this.validateRow(currentNode.previousSibling);
           }
+          this.setErrorIndex(row);
 
           if (row.textContent?.trim() !== '') {
             this.recalculateRowsCount();
@@ -681,6 +685,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
           currentNode.innerHTML = this.emptyRowValue;
 
           this.validateRow(currentNode);
+          this.setErrorIndex(currentNode);
           this.recalculateRowsCount();
 
           setTimeout(() => {
@@ -950,8 +955,6 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         node.removeAttribute('aria-invalid');
         node.removeAttribute('aria-errormessage');
       }
-
-      this.setErrorIndex(node);
 
       return isValid;
     }
