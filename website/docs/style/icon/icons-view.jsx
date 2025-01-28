@@ -2,15 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { InstantSearch } from 'react-instantsearch/dom';
 import { connectAutoComplete } from 'react-instantsearch/connectors';
 import algoliasearch from 'algoliasearch/lite';
-import { Flex } from '@semcore/flex-box';
+import { Box } from '@semcore/flex-box';
 
 import IconGroup, { IconGroups, ListIcons } from './icon-group';
 import Input from '@semcore/input';
 import { ButtonLink } from '@semcore/button';
-import { Text } from '@semcore/typography';
+import { NoData } from '@semcore/widget-empty';
 import SearchM from '@semcore/icon/Search/m';
 import CloseM from '@semcore/icon/Close/m';
-import staticFiles from '@static';
 import { algoliaConfig } from '../../../algoliaConfig';
 
 const searchClient = algoliasearch(algoliaConfig.appName, algoliaConfig.openKey);
@@ -83,21 +82,14 @@ export default function ({ icons, old, json }) {
         filterIcons.length ? (
           <ListIcons data={filterIcons} icons={icons} old={old} json={json} />
         ) : (
-          <Flex
-            justifyContent='center'
-            alignItems='center'
-            direction='column'
-            p={5}
+          <Box
             style={{
               borderRadius: 'var(--intergalactic-rounded-medium)',
               border: 'solid 1px var(--intergalactic-border-secondary)',
             }}
           >
-            <img src={staticFiles['search/observatory.svg']} alt='observatory' />
-            <Text size={300} mt={2}>
-              We found something… it's nothing
-            </Text>
-          </Flex>
+            <NoData my={10} mx='auto' type='nothing-found' />
+          </Box>
         )
       ) : (
         <IconGroups icons={icons} old={old} json={json}>
