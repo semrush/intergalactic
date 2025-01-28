@@ -42,7 +42,7 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
   const min = select({
     key: 'min',
     defaultValue: 2,
-    label: 'Min lines',
+    label: 'Min rows',
     options: [...Array(10)].map((_, i) => ({
       name: i + 1,
       value: i + 1,
@@ -52,7 +52,7 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
   const max = select({
     key: 'max',
     defaultValue: 10,
-    label: 'Max lines',
+    label: 'Max rows',
     options: [...Array(10)].map((_, i) => ({
       name: i + 1,
       value: i + 1,
@@ -118,10 +118,10 @@ Size (height in px for one row of text) | Appearance example                 |
 
 You can enable the resize control for the textarea to allow users to adjust its size. They can stretch it horizontally, vertically, or both ways.
 
-When the textarea cannot be stretched, a scrollbar will appear after a certain number of lines. We recommended adding scrollbars when the textarea has at least 4-5 lines.
+When the textarea cannot be stretched, a scrollbar will appear after a certain number of rows. We recommended adding scrollbars when the textarea has at least 4-5 rows.
 
 ::: tip
-Avoid making the textarea smaller than 160-200px in width and 3-4 lines in height. Working with large amounts of data in smaller sizes can be challenging, especially when it serves as a primary input in a form.
+Avoid making the textarea smaller than 160-200px in width and 3-4 rows in height. Working with large amounts of data in smaller sizes can be challenging, especially when it serves as a primary input in a form.
 :::
 
 ## Counter
