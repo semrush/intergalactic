@@ -60,13 +60,13 @@ const Demo = (props: BulkTextareaProps) => {
         showErrors={showErrors}
         onErrorsChange={setErrors}
         onShowErrorsChange={setShowErrors}
-        lineProcessing={(row) => {
-          return row.replace(/http:\/\//, '');
+        lineProcessing={(line: string) => {
+          return line.replace(/http:\/\//, '');
         }}
         pasteProps={{
           delimiter: '\n',
           skipEmptyLines: false,
-          lineProcessing: (row) => row.replace(/http:\/\//, 'PASTE'),
+          lineProcessing: (line: string) => line.replace(/http:\/\//, 'PASTE'),
         }}
       >
         <Flex alignItems='center' justifyContent='flex-start' mb={2} gap={1}>
