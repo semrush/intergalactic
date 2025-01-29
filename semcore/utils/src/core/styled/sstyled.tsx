@@ -1,13 +1,12 @@
 import cn from 'classnames';
 import type { ReactNode } from 'react';
-/** @ts-ignore */
-import ReshadowCore from '@reshadow/core';
+import { getStyles as gs } from './reshadow-core';
 
 const RESHADOW_ID = '__reshadow__';
 
 const isSSR = !(typeof window !== 'undefined' && window.document && window.document.createElement);
 
-const serverMap = ReshadowCore.getStyles().map;
+const serverMap: any = gs().map;
 
 const getStyles = () => ({
   map: serverMap,

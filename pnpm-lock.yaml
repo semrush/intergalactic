@@ -3116,8 +3116,8 @@ importers:
         specifier: 5.3.7
         version: 5.3.7(react-dom@18.2.0)(react@18.2.0)
       '@reshadow/core':
-        specifier: 0.0.1-alpha.74
-        version: 0.0.1-alpha.74
+        specifier: 0.0.1
+        version: 0.0.1
       classnames:
         specifier: 2.2.6
         version: 2.2.6
@@ -8386,6 +8386,10 @@ packages:
       invariant: 2.2.4
       nullthrows: 1.1.1
       react-native: 0.72.4(@babel/core@7.19.1)(@babel/preset-env@7.19.1)(react@18.2.0)
+    dev: false
+
+  /@reshadow/core@0.0.1:
+    resolution: {integrity: sha512-Wv4tT8tVmaLDb3iTeLk9/EVfewwmuTG6nrkUAmbOt/6Ho+1zerO8U2hSjsraFs3lvU2xWohamYUCpOzFTiacIg==}
     dev: false
 
   /@reshadow/core@0.0.1-alpha.74:
