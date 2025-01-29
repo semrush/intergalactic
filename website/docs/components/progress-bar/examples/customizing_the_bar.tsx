@@ -1,9 +1,9 @@
 import React from 'react';
-import ProgressBar from 'intergalactic/progress-bar';
+import ProgressBar from '@semcore/progress-bar';
 
 const Demo = () => {
   return (
-    <ProgressBar tabIndex={0} value={80} theme='violet-100' aria-label='Email processing'>
+    <ProgressBar tabIndex={0} value={80} theme='violet-100' aria-label='Custom theme example'>
       <ProgressBar.Value theme='violet-500' />
     </ProgressBar>
   );
