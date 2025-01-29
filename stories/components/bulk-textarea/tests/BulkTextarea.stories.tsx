@@ -35,11 +35,11 @@ export const BasicUsage: StoryObj<typeof BulkTextarea> = {
           delimiter: '\n',
           skipEmptyRows: true,
           rowProcessing: (row) => {
-            return row.replace(/http:\/\//, '[]');
+            return row.replace(/http:\/\//, '');
           },
         },
         rowProcessing: (row) => {
-          return row.replace(/http:\/\//, '[]');
+          return row.replace(/http:\/\//, '');
         },
       },
     render: BaseExample,
