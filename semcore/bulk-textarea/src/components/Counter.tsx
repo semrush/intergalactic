@@ -6,20 +6,20 @@ import { useI18n } from '@semcore/utils/lib/enhances/WithI18n';
 
 export type CounterProps = {
   theme: CounterPropsKit['theme'];
-  rowsCount: number;
-  ofRows: number;
+  linesCount: number;
+  maxLines: number;
   getI18nText: ReturnType<typeof useI18n>;
 };
 
 export function Counter(props: CounterProps) {
-  const { theme, rowsCount, ofRows, getI18nText } = props;
+  const { theme, linesCount, maxLines, getI18nText } = props;
 
   return (
     <Root render={CounterKit} ml={1} theme={theme}>
-      {rowsCount}
-      <span aria-hidden='true'>/{ofRows}</span>
+      {linesCount}
+      <span aria-hidden='true'>/{maxLines}</span>
       <ScreenReaderOnly>
-        {getI18nText('BulkTextarea.Counter.ofAllowedRows:sr-message', { rowsNumber: ofRows })}
+        {getI18nText('BulkTextarea.Counter.ofAllowedRows:sr-message', { rowsNumber: maxLines })}
       </ScreenReaderOnly>
       {theme === 'warning' && (
         <ScreenReaderOnly>

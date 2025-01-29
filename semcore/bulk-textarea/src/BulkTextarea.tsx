@@ -185,17 +185,17 @@ class BulkTextareaRoot extends Component<
       ref: this.counterRef,
       getI18nText,
       theme: counterTheme,
-      rowsCount: isEmptyText ? 0 : linesCount,
+      linesCount: isEmptyText ? 0 : linesCount,
       maxLines,
       size,
     };
   }
 
-  getClearAllButtonProps() {
+  getClearAllProps() {
     const { size, getI18nText, disabled, readonly } = this.asProps;
 
     return {
-      onClick: this.handleClickClearAllButton,
+      onClick: this.handleClickClearAll,
       isHidden: this.state.isEmptyText,
       size,
       getI18nText,
@@ -232,7 +232,7 @@ class BulkTextareaRoot extends Component<
     }
   };
 
-  handleClickClearAllButton = (e: Event) => {
+  handleClickClearAll = (e: Event) => {
     this.handlers.showErrors(false);
     this.handlers.errors([]);
     this.setState({ errorIndex: -1 });
