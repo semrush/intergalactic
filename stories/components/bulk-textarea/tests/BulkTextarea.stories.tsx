@@ -33,12 +33,12 @@ export const BasicUsage: StoryObj<typeof BulkTextarea> = {
     pasteProps: {
       delimiter: '\n',
       skipEmptyLines: true,
-      lineProcessing: (row) => {
-        return row.replace(/http:\/\//, '');
+      lineProcessing: (line: string) => {
+        return line.replace(/http:\/\//, '');
       },
     },
-    lineProcessing: (row) => {
-      return row.replace(/http:\/\//, '');
+    lineProcessing: (line: string) => {
+      return line.replace(/http:\/\//, '');
     },
   },
   render: BaseExample,

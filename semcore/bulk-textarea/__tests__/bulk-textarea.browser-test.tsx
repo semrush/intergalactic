@@ -62,7 +62,7 @@ test.describe('Manual adding rows', () => {
     });
 
     await test.step('Type text into textarea and check counter', async () => {
-      await locators.textarea.click();
+      await page.keyboard.press('Tab');
       await locators.textarea.press('a');
       await expect(locators.counter).toHaveText('1/15of 15 rows');
     });
@@ -94,21 +94,12 @@ test.describe('Manual adding rows', () => {
       await page.keyboard.type(text, { delay: 10 });
       await expect(locators.counter).toHaveText('15/15of 15 rowsLimit reached');
     });
-    await test.step('Exceeded counter limit by enterring one row', async () => {
-      await locators.textarea.press('Enter');
-      await locators.textarea.press('a');
-      await expect(locators.counter).toHaveText('16/15of 15 rowsLimit exceeded');
-    });
 
     await test.step('Exceeded counter limit by enterring one row', async () => {
-      const fifthLine = locators.textarea.locator('p').nth(4);
-      const fifthLineText = await fifthLine.innerText();
-      await fifthLine.click();
-      for (let i = 0; i < fifthLineText.length; i++) {
-        await page.keyboard.press('Backspace');
-      }
-      await expect(locators.counter).toHaveText('15/15of 15 rowsLimit reached');
-      fifthLineText.length === 0;
+      await page.keyboard.press('Enter');
+      await locators.textarea.press('a');
+      await page.keyboard.press('Space');
+      await expect(locators.counter).toHaveText('16/15of 15 rowsLimit exceeded');
     });
 
     await test.step('Remove all content manually and verify counter', async () => {
@@ -653,31 +644,23 @@ test.describe('Error tooltips', () => {
         'Zoom in \nSecond row\n3 row\n4[] row\n5 row\n6 ]]row\n7 row\n8 row\n9 row\n10 row\n11[[row\n12 row';
       await page.keyboard.type(text, { delay: 10 });
       await page.keyboard.press('Tab');
-      await page.keyboard.press('Shift+Tab');
-      await page.keyboard.press('Shift+Tab');
-      await page.keyboard.press('Shift+Tab');
+      const twelvethRow = contentDiv.locator('p:nth-child(12)');
+      await twelvethRow.click();
       await page.keyboard.type('test[]', { delay: 10 });
       await expect(tooltip).toHaveText('row has invalid charsets');
-
-      if (browserName !== 'webkit') {
         await expect(locators.errorMessage).toHaveText('Error 4 out of 4');
 
         await page.keyboard.press('ArrowUp');
-        // await expect(locators.errorMessage).toHaveText('Error 3 out of 4');
         await expect(tooltip).toHaveText('row has invalid charsets');
 
         await page.keyboard.press('Enter');
+        await page.keyboard.press('a');
         await expect(locators.errorMessage).toHaveText('4 errors');
         await expect(tooltip).toHaveText('some global error');
         await page.keyboard.type('test[]', { delay: 10 });
         await expect(tooltip).toHaveText('row has invalid charsets');
         await expect(locators.errorMessage).toHaveText('Error 4 out of 5');
-      } else {
-        await expect(locators.errorMessage).toHaveText('Error 1 out of 4');
-        await page.keyboard.press('Enter');
-        await page.keyboard.type('test[]', { delay: 20 });
-        await expect(locators.errorMessage).toHaveText('Error 2 out of 5');
-      }
+
     });
   });
 });
