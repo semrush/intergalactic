@@ -19,7 +19,7 @@ Component consists of the following:
 
 - `BulkTextarea.InputField`
 - `BulkTextarea.Counter`
-- `BulkTextarea.InputField.Row`
+- `BulkTextarea.InputField line (p)`
 - `BulkTextarea.ErrorItem`
 - `BulkTextarea.ErrorsNavigation`
 - `BulkTextarea.ClearAllButton`
@@ -116,11 +116,11 @@ BulkTextarea has the same states and styles as [Textarea](/components/textarea/t
 
 ### Validation
 
-You can define your own validation rules for the input: on submit, on blur, or on row blur. By default, our component uses on blur validation. **UPDATE THIS WHEN EXAMPLE WILL BE READY**
+You can define your own validation rules for the input: on submit, on blur, or on row blur. By default, our component uses on blur validation.
 
 ### Tooltips
 
-If there are invalid values in the textarea after validation, you can display a tooltip for the entire textarea or for individual rows when the cursor hovers over them or when the caret is positioned in the line.
+If the textarea has invalid values after validation, show a tooltip for the whole field or for specific lines when hovered or when the caret is in the line.
 
 ![](static/bulktextarea-tooltip.png)
 

@@ -18,7 +18,7 @@ Table: Roles and attributes
 |                                                | `aria-labelledby="IDREF"`                                | Refers to the element that contains the label of field.                                                                                                        |
 |                                                | `aria-describedby="IDREF"`                               | Gives the item an accessible description by referring to the `aria-errormessage`, the tooltip, or both, describing the primary message or purpose of the item. |
 | `BulkTextarea.InputField > div > p`            | `aria-invalid="true"`                                    | A row gets this property when it gets the `invalid` status.                                                                                                    |
-|                                                | `aria-errormessage="[Your message here]"`                | Identifies the element that provides an error message for the .                                                                                                |
+|                                                | `data-errormessage="Your message here"`                  | Adds an error message for a line with `invalid` state. By default it's `undefined`.                                                                                                        |
 | `BulkTextarea.Counter`                         | `aria-label="{n} out of {n}"`                            | Sets an accessible name for the element.                                                                                                                       |
 |                                                | `"aria-label={n} out of {n}, limit reached"`             | Sets an accessible name for the element.                                                                                                                       |
 |                                                | `"aria-label={n} out of {n}, limit exceeded"`            | Sets an accessible name for the element.                                                                                                                       |
@@ -39,10 +39,10 @@ For detailed information about keyboard support for the Input, refer to the [Key
 Error messages aren't set by default in the component.
 :::
 
-Configure error messages for tooltips so they are visible to sighted users and announced by assistive technologies:
+Configure error messages for tooltips so they're visible to sighted users and announced by assistive technologies:
 
 - A message for specific errors in invalid rows, based on your validation rules.
-- A message for the entire input if you’re validating the entire field.
+- A message for the whole input if you’re validating the entire field.
 
 ## Other recommendations
 

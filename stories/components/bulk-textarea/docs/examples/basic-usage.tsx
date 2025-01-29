@@ -9,7 +9,7 @@ const validateRow = (line: string, lines: string[]) => {
 
   if (line.includes(']') || line.includes('[')) {
     isValid = false;
-    errorMessage = 'Line has invalid charsets';
+    errorMessage = 'Please remove invalid charsets from the movie name.';
   }
 
   return {
@@ -32,12 +32,12 @@ const Demo = () => {
         value={value}
         onChange={setValue}
         lineValidation={validateRow}
-        maxLines={30}
-        size={'m'}
+        maxLines={10}
+        size={'l'}
         linesDelimiters={[',']}
         readonly={false}
         disabled={false}
-        placeholder={'Placeholder'}
+        placeholder={'Enter or paste a list using comma or Enter'}
         minRows={2}
         maxRows={10}
         validateOn={['blur']}
@@ -49,14 +49,14 @@ const Demo = () => {
         lineProcessing={lineProcessing}
       >
         <Flex alignItems='center' justifyContent='flex-start' mb={2} gap={1}>
-          <Text tag={'label'} size={200} id={'keywords-label'}>
-            list of keywords
+          <Text tag={'label'} size={300} id={'keywords-label'}>
+            Favourite movies
           </Text>
           <BulkTextarea.Counter />
         </Flex>
         <BulkTextarea.InputField
           aria-labelledby={'keywords-label'}
-          commonErrorMessage={'some global error'}
+          commonErrorMessage={'Please enter correct movie names.'}
         />
         <Flex alignItems='center' justifyContent='space-between' mt={2}>
           <BulkTextarea.ErrorsNavigation />
