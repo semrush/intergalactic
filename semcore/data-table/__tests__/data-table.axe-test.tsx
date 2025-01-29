@@ -110,12 +110,6 @@ test.describe('DataTable', () => {
 
     expect(violations).toEqual([]);
   });
-  test('download status', async ({ page }) => {
-    const standPath = 'stories/components/data-table/docs/examples/download-status.tsx';
-    const violations = await checkAxe(page, standPath);
-
-    expect(violations).toEqual([]);
-  });
   test('export in image', async ({ page }) => {
     const standPath = 'stories/components/data-table/docs/examples/export-in-image.tsx';
     const violations = await checkAxe(page, standPath);
@@ -124,13 +118,6 @@ test.describe('DataTable', () => {
   });
   test('fixed columns', async ({ page }) => {
     const standPath = 'stories/components/data-table/docs/examples/fixed-columns.tsx';
-    const violations = await checkAxe(page, standPath);
-
-    expect(violations).toEqual([]);
-  });
-  test.skip('fixed header with spin overlay', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/docs/examples/fixed-header-with-spin-overlay.tsx';
     const violations = await checkAxe(page, standPath);
 
     expect(violations).toEqual([]);
@@ -173,6 +160,12 @@ test.describe('DataTable', () => {
   });
   test('skeleton in table', async ({ page }) => {
     const standPath = 'stories/components/data-table/docs/examples/skeleton-in-table.tsx';
+    const violations = await checkAxe(page, standPath);
+
+    expect(violations).toEqual([]);
+  });
+  test('spin container in table', async ({ page }) => {
+    const standPath = 'stories/components/data-table/docs/examples/spin-container-in-table.tsx';
     const violations = await checkAxe(page, standPath);
 
     expect(violations).toEqual([]);

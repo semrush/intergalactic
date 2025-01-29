@@ -36,7 +36,7 @@ const Demo = () => {
           }
         `}
       </style>
-      <DataTable data={data} aria-label={'Table title. Additional elements in header'}>
+      <DataTable data={data} aria-label={'Additional elements in header'}>
         <DataTable.Head>
           <DataTable.Column name='keyword' children='Keyword' />
           <DataTable.Column name='kd' children='KD,%' />

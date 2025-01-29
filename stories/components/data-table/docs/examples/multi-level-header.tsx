@@ -3,7 +3,7 @@ import DataTable from '@semcore/data-table';
 
 const Demo = () => {
   return (
-    <DataTable data={data} aria-label={'Table title. Multi level header'}>
+    <DataTable data={data} aria-label={'Multi level header'}>
       <DataTable.Head>
         <DataTable.Column name='keyword' children='Keyword' />
         <DataTable.Column vBorders wMax={'40%'}>
