@@ -66,7 +66,7 @@ const Demo = (props: BulkTextareaProps) => {
         pasteProps={{
           delimiter: '\n',
           skipEmptyLines: false,
-          rowProcessing: (line: string) => line.replace(/http:\/\//, 'PASTE'),
+          lineProcessing: (line: string) => line.replace(/http:\/\//, 'PASTE'),
         }}
       >
         <Flex alignItems='center' justifyContent='flex-start' mb={2} gap={1}>
