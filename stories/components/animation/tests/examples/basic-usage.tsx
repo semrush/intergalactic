@@ -1,7 +1,8 @@
 import React from 'react';
 import { sstyled } from '@semcore/core';
 import Button from '@semcore/button';
-import { Animation } from '@semcore/animation';
+import { Animation, Collapse, FadeInOut, Transform, Scale, Slide, animationContext } from '@semcore/animation';
+
 
 const stylePopper = sstyled.css`
   @keyframes enter {
@@ -27,6 +28,7 @@ const stylePopper = sstyled.css`
   }
 `;
 
+
 const Demo = () => {
   return (
     <>
@@ -39,6 +41,50 @@ const Demo = () => {
       >
         <Button>Button</Button>
       </Animation>
+
+      <Collapse
+        visible={true}
+        duration={500}
+        initialAnimation={true}
+       
+        keyframes={[stylePopper['@enter'], stylePopper['@exit']]}
+      >
+        <Button>Button</Button>
+      </Collapse>
+
+      <FadeInOut
+        visible={true}
+        duration={500}
+        initialAnimation={true}
+       // timingFunction='ease-in'
+       
+        keyframes={[stylePopper['@enter'], stylePopper['@exit']]}
+      >
+        <Button>Button</Button>
+      </FadeInOut>
+
+      <Transform
+        visible={true}
+        duration={500}
+        initialAnimation={true}
+        timingFunction='ease-out'
+       
+        keyframes={[stylePopper['@enter'], stylePopper['@exit']]}
+      >
+        <Button>Button</Button>
+      </Transform>
+
+      <Slide
+        visible={true}
+        duration={500}
+        initialAnimation={true}
+       timingFunction='ease-out'
+       
+        keyframes={[stylePopper['@enter'], stylePopper['@exit']]}
+      >
+        <Button>Button</Button>
+      </Slide>
+
     </>
   );
 };
