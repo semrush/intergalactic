@@ -7,9 +7,9 @@ tabs: Design('bulk-textarea'), A11y('bulk-textarea-a11y'), API('bulk-textarea-ap
 
 **BulkTextarea** is a multiline text field designed for entering lists of comma-separated values.
 
-You can enter a list manually using **Enter** or a comma, or paste a comma-separated list. You can also define your own rules for splitting values into rows.
+You can enter a list manually using **Enter** or a comma, or paste a comma-separated list. You can also define your own rules for splitting values into lines.
 
-This component also provides the possibility to validate every row and the whole input.
+This component also provides the possibility to validate every line and the whole input.
 
 ## Component composition
 
@@ -19,7 +19,7 @@ Component consists of the following:
 
 - `BulkTextarea.InputField`
 - `BulkTextarea.Counter`
-- `BulkTextarea.InputField.Row`
+- `BulkTextarea.InputField line (p)`
 - `BulkTextarea.ErrorItem`
 - `BulkTextarea.ErrorsNavigation`
 - `BulkTextarea.ClearAllButton`
@@ -37,11 +37,11 @@ Table: BulkTextarea sizes
 | M (`--fs-200`)   | ![](static/bulk-m.png) |
 | L (`--fs-300`)   | ![](static/bulk-l.png) |
 
-### Rows
+### Lines
 
-Each row is numbered. Rows that fail validation are marked with a `Warning` icon on the right. Rows that exceed the limit are highlighted.
+Each line is numbered. Lines that fail validation are marked with a `Warning` icon on the right. Lines with values that exceed the limit are highlighted.
 
-![](static/bulktextarea-rows.png)
+![](static/bulktextarea-lines.png)
 
 ### Width and height
 
@@ -49,7 +49,7 @@ Avoid making the textarea smaller than 160–200px in width and 3–4 rows in he
 
 ## Counter
 
-BulkTextarea includes a counter displaying the number of rows entered. It's always positioned next to the text label.
+BulkTextarea includes a counter displaying the number of values entered. It's always positioned next to the text label.
 
 Table: BulkTextarea with counter
 
@@ -71,15 +71,15 @@ When the number of values reaches the limit, the counter changes its theme to `w
 
 ![](static/values-limit.png)
 
-Rows with values that exceed the limit are highlighted. Counter changes its theme to `danger`.
+Lines with values that exceed the limit are highlighted. Counter changes its theme to `danger`.
 
 ![](static/values-off-limit.png)
 
 ## Controls
 
-In the component, the controls have a default placement, but if you need to position them elsewhere, you can expand the component and arrange them differently. [Refer to the example](/components/bulk-textarea/bulk-textarea-code#expanded-bulktextarea).
+In the component, the controls have a default placement, but if you need to position them elsewhere, you can arrange them differently. [Refer to the example](/components/bulk-textarea/bulk-textarea-code#expanded-bulktextarea).
 
-### Clear field button
+### Clear all button
 
 As soon as at least one character is entered in the field, a button for clearing the field appears next to it. By default, the button is positioned to the bottom right of the field.
 
@@ -91,18 +91,18 @@ Error navigation shows up after all the values or a single value (depending on t
 
 ![](static/bulktextarea-error-navigation.png)
 
-When a button is clicked, the cursor moves to the first or last invalid row, depending on the button. The entire row's value is selected for quick deletion. The text next to the navigation buttons updates to _"n out of n"_ when the cursor is moved using the buttons, keyboard, or mouse.
+When a button is clicked, cursor moves to the first or last invalid line, depending on the button. The entire line's value is selected for quick deletion. The text next to the navigation buttons updates to _"n out of n"_ when the cursor is moved using the buttons, keyboard, or mouse.
 
 ![](static/bulktextarea-error-navigation-1.png)
 
-When navigating between invalid rows, the text next to the buttons is updated. If you move from an invalid row to a valid row, the counter in the text stays the same.
+When navigating between invalid lines, the text next to the buttons is updated. If you move from an invalid line to a valid line, the counter in the text stays the same.
 
 <!-- Hiding this section since for now component doesn't have it.
  ### Resize control
 
 You can enable the resize control for the textarea, allowing users to adjust its size. They can stretch it horizontally, vertically, or both ways.
 
-When the textarea cannot be stretched further, a scrollbar will appear after a certain number of rows. We recommend adding scrollbars when the textarea has at least 5 rows.
+When the textarea cannot be stretched further, a scrollbar will appear after a certain number of lines. We recommend adding scrollbars when the textarea has at least 5 lines.
 
 ::: tip
 Avoid making the textarea smaller than 160–200px in width and 3–4 rows in height. Working with large amounts of data in smaller sizes can be challenging, especially when it serves as a primary input in a form.
@@ -116,12 +116,12 @@ BulkTextarea has the same states and styles as [Textarea](/components/textarea/t
 
 ### Validation
 
-You can define your own validation rules for the input: on submit, on blur, or on row blur. By default, our component uses on blur validation. **UPDATE THIS WHEN EXAMPLE WILL BE READY**
+You can define your own validation rules for the input: on submit, on blur, or on line blur. By default, our component uses on blur validation.
 
 ### Tooltips
 
-If there are invalid values in the textarea after validation, you can display a tooltip for the entire textarea or for individual rows when the cursor hovers over them or when the caret is positioned in the line.
+If the textarea has invalid values after validation, show a tooltip for the whole field or for specific lines when hovered or when the caret is in the line.
 
 ![](static/bulktextarea-tooltip.png)
 
-![](static/bulktextarea-tooltip-row.png)
+![](static/bulktextarea-tooltip-line.png)
