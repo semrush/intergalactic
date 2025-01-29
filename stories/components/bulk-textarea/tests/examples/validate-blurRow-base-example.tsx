@@ -54,19 +54,19 @@ const Demo = (props: BulkTextareaProps) => {
         lineValidation={validateRow}
         linesDelimiters={[',']}
         placeholder={'Placeholder'}
-        validateOn={['blurRow']}
+        validateOn={['blurLine']}
         {...props}
         errors={errors}
         showErrors={showErrors}
         onErrorsChange={setErrors}
         onShowErrorsChange={setShowErrors}
-        lineProcessing={(row) => {
-          return row.replace(/http:\/\//, '');
+        lineProcessing={(line: string) => {
+          return line.replace(/http:\/\//, '');
         }}
         pasteProps={{
           delimiter: '\n',
-          skipEmptyRows: false,
-          rowProcessing: (row) => row.replace(/http:\/\//, 'PASTE'),
+          skipEmptyLines: false,
+          rowProcessing: (line: string) => line.replace(/http:\/\//, 'PASTE'),
         }}
       >
         <Flex alignItems='center' justifyContent='flex-start' mb={2} gap={1}>
@@ -81,7 +81,7 @@ const Demo = (props: BulkTextareaProps) => {
         />
         <Flex alignItems='center' justifyContent='space-between' mt={2}>
           <BulkTextarea.ErrorsNavigation />
-          <BulkTextarea.ClearAllButton />
+          <BulkTextarea.ClearAll />
         </Flex>
       </BulkTextarea>
 
