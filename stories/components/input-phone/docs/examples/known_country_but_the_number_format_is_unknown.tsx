@@ -8,25 +8,30 @@ import { Text } from '@semcore/typography';
 import { Flex } from '@semcore/flex-box';
 
 const Demo = () => {
-  const [value, setValue] = React.useState('+1');
+  const [value, setValue] = React.useState('1');
   return (
     <Flex direction='column'>
       <Text tag='label' size={200} htmlFor='phone-number'>
         Phone number
       </Text>
-      <Input w={180} mt={2} aria-label='country detected USA'>
+      <Input w={180} mt={2}>
         <Input.Addon>
           <Flag iso2='US' />
         </Input.Addon>
-        <Input.Value value={value} onChange={(v) => setValue(v)} id='phone-number' />
+        <Input.Value
+          value={value}
+          onChange={(v) => setValue(v)}
+          id='phone-number'
+          type='tel'
+          autoComplete='tel'
+        />
         {Number.parseInt(value, 10) > 2 && (
           <Input.Addon>
-            <Hint
-              tag={ButtonLink}
+            <ButtonLink
               use='secondary'
               addonLeft={CloseM}
               title='Clear'
-              onClick={() => setValue('+1')}
+              onClick={() => setValue('1')}
             />
           </Input.Addon>
         )}

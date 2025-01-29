@@ -12,10 +12,10 @@ const Step1 = React.forwardRef(function (_props, ref: React.Ref<HTMLDivElement>)
         Keywords
       </Text>
       <Input>
-        <Input.Value placeholder='Keyword 1' />
+        <Input.Value placeholder='Keyword 1' aria-label='Keyword 1' />
       </Input>
       <Input>
-        <Input.Value placeholder='Keyword 2' />
+        <Input.Value placeholder='Keyword 2' aria-label='Keyword 2' />
       </Input>
     </Flex>
   );

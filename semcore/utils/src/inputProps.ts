@@ -1,5 +1,6 @@
 export const inputProps = [
   'autoFocus',
+  'autoComplete',
   'defaultChecked',
   'checked',
   'disabled',

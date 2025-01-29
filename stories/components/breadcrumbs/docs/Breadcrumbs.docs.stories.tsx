@@ -10,11 +10,13 @@ const meta: Meta<typeof Breadcrumbs> = {
 };
 
 export default meta;
+type Story = StoryObj<typeof Breadcrumbs>;
 
-export const BasicUsage: StoryObj<typeof Breadcrumbs> = {
+
+export const BasicUsage: Story = {
   render: UsageExample,
 };
 
-export const RedefiningATag: StoryObj<typeof Breadcrumbs> = {
+export const RedefiningATag: Story = {
   render: RedefiningATagExample,
 };
