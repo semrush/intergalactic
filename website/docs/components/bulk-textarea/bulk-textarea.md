@@ -22,7 +22,7 @@ Component consists of the following:
 - `BulkTextarea.InputField line (p)`
 - `BulkTextarea.ErrorItem`
 - `BulkTextarea.ErrorsNavigation`
-- `BulkTextarea.ClearAllButton`
+- `BulkTextarea.ClearAll`
 
 ## Appearance
 
@@ -30,12 +30,10 @@ Component consists of the following:
 
 Component has two sizes:
 
-Table: BulkTextarea sizes
+- M, with `--fs-200` font size
+- L, with `--fs-300` font size
 
-| Size (font size) | Appearance example     |
-| ---------------- | ---------------------- |
-| M (`--fs-200`)   | ![](static/bulk-m.png) |
-| L (`--fs-300`)   | ![](static/bulk-l.png) |
+![](static/bulk-sizes.png)
 
 ### Lines
 
@@ -51,12 +49,12 @@ Avoid making the textarea smaller than 160–200px in width and 3–4 rows in he
 
 BulkTextarea includes a counter displaying the number of values entered. It's always positioned next to the text label.
 
-Table: BulkTextarea with counter
+Different BulkTextarea sizes use different counter sizes:
 
-| Size (font size) | Input with label       |
-| ---------------- | ---------------------- |
-| M (`--fs-200`)   | ![](static/bulk-m.png) |
-| L (`--fs-300`)   | ![](static/bulk-l.png) |
+- M, uses Cunter with L size
+- L, uses Cunter with XL size 
+
+![](static/bulk-sizes.png)
 
 ### How counter works
 
