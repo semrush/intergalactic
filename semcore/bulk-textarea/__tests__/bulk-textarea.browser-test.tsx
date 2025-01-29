@@ -19,7 +19,6 @@ test.describe('States size counter and placeholder checks', () => {
     await page.setContent(htmlContent);
     await expect(page).toHaveScreenshot();
     await page.keyboard.press('Tab');
-    // Check if the readonly class is present
     const readonlyTextarea = await page
       .getByRole('textbox', { name: 'Readonly state of bulk textarea' })
       .first();

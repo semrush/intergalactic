@@ -167,7 +167,6 @@ const Demo = (props: BulkTextareaProps) => {
             value={value}
             onChange={setValue}
             rowValidation={validateRow}
-            disabled={true}
             rowsDelimiters={[',']}
             placeholder={'Long Long Long Placeholder Enter text here'}
             errors={errors}
