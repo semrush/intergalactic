@@ -784,7 +784,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     this.textarea.childNodes.forEach((node, index) => {
       if (node instanceof HTMLParagraphElement && node.getAttribute('aria-invalid') === 'true') {
         const errorItem = {
-          errorMessage: node.getAttribute('aria-errormessage') ?? '',
+          errorMessage: node.dataset.errormessage ?? '',
           lineNode: node,
           lineIndex: index,
         };
@@ -940,10 +940,10 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
 
       if (!isValid) {
         node.setAttribute('aria-invalid', 'true');
-        node.setAttribute('aria-errormessage', errorMessage);
+        node.dataset.errormessage = errorMessage;
       } else {
         node.removeAttribute('aria-invalid');
-        node.removeAttribute('aria-errormessage');
+        node.dataset.errormessage = undefined;
       }
 
       return isValid;
