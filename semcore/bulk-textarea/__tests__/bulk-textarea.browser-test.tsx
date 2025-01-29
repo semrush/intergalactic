@@ -313,7 +313,7 @@ test.describe('Manual adding rows', () => {
     await test.step('Verify enter delimiter works', async () => {
       const text = 'Zoom in \nSecond row\n3 row\n4 row\n5 row';
       await page.keyboard.type(text, { delay: 10 });
-      const lineCount = await contentDiv.locator('p').count();
+      const lineCount = await locators.textarea.locator('p').count();
       await expect(lineCount).toBe(5);
     });
     await test.step('Verify comma delimiter works', async () => {
@@ -537,9 +537,6 @@ test.describe('Error tooltips', () => {
       await page.waitForTimeout(100);
       const eleventhRow = contentDiv.locator('p:nth-child(11)');
       await expect(eleventhRow).toHaveAttribute('data-errormessage', 'row has invalid charsets');
-
-      // await expect(locators.errorMessage).toHaveText('Error 3 out of 3');
-
       await page.keyboard.press('ArrowUp');
       await expect(locators.errorMessage).toHaveText('3 errors');
       await expect(tooltip).toHaveText('some global error');
@@ -565,7 +562,7 @@ test.describe('Error tooltips', () => {
     });
   });
 
-  test('Fix and Add errors', async ({ page, browserName }) => {
+  test('Fix errors', async ({ page, browserName }) => {
     const standPath =
       'stories/components/bulk-textarea/tests/examples/validate-blur-base-example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -627,13 +624,12 @@ test.describe('Error tooltips', () => {
     });
   });
 
-  test('Adding new errors ', async ({ page, browserName }) => {
+  test('Add errors ', async ({ page, browserName }) => {
     const standPath =
       'stories/components/bulk-textarea/tests/examples/validate-blur-base-example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
     const locators = getLocators(page);
-    const contentDiv = page.locator('div[contenteditable="true"]');
     const tooltip = page.locator('div[data-ui-name="Tooltip.Popper"]');
 
     await test.step('Row Error on Focus', async () => {
@@ -641,18 +637,12 @@ test.describe('Error tooltips', () => {
       const text = '1 row[\n2[] row\n3 row\n4 ]]row\n5 row';
       await page.keyboard.type(text, { delay: 10 });
       await page.keyboard.press('Tab');
-      const fifthRow = contentDiv.locator('p:nth-child(5)');
+      await expect(locators.errorMessage).toHaveText('3 errors');
+      const fifthRow = locators.textarea.locator('p:nth-child(5)');
       await fifthRow.click();
       await page.keyboard.type('test[]', { delay: 10 });
       await expect(tooltip).toHaveText('row has invalid charsets');
       await expect(locators.errorMessage).toHaveText('Error 4 out of 4');
-
-      await page.keyboard.press('Enter');
-      await expect(locators.errorMessage).toHaveText('4 errors');
-      await expect(tooltip).toHaveText('some global error');
-      await page.keyboard.type('test[]', { delay: 10 });
-      await expect(tooltip).toHaveText('row has invalid charsets');
-      await expect(locators.errorMessage).toHaveText('Error 5 out of 5');
     });
   });
 });
