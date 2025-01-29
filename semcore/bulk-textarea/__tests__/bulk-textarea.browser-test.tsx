@@ -37,13 +37,12 @@ test.describe('States size counter and placeholder checks', () => {
 
     const text =
       'Zoom in on product categories to understand how each site segment drives conversions.\nSecond row\n3 row\n4 row\n5 row\n6 row\n7 row\n8 row\n9 row\n10 row';
-    await page.keyboard.type(text, { delay: 10 });  
+    await page.keyboard.type(text, { delay: 10 });
     await page.waitForTimeout(50);
     await page.keyboard.press('Tab');
     await page.waitForTimeout(50);
     await expect(page).toHaveScreenshot();
 
- 
     await normalTextArea.click();
     await page.keyboard.type('[]', { delay: 10 });
     await page.keyboard.press('Enter');
@@ -85,7 +84,6 @@ test.describe('Manual adding rows', () => {
       await expect(locators.counter).toHaveText('1/15of 15 rows');
       await locators.textarea.press('Backspace');
     });
-
 
     await test.step('Add more rows and reach counter limit', async () => {
       await locators.textarea.click();
@@ -640,8 +638,7 @@ test.describe('Error tooltips', () => {
 
     await test.step('Row Error on Focus', async () => {
       await page.keyboard.press('Tab');
-      const text =
-        '1 row[\n2[] row\n3 row\n4 ]]row\n5 row';
+      const text = '1 row[\n2[] row\n3 row\n4 ]]row\n5 row';
       await page.keyboard.type(text, { delay: 10 });
       await page.keyboard.press('Tab');
       const fifthRow = contentDiv.locator('p:nth-child(5)');
