@@ -648,19 +648,18 @@ test.describe('Error tooltips', () => {
       await twelvethRow.click();
       await page.keyboard.type('test[]', { delay: 10 });
       await expect(tooltip).toHaveText('row has invalid charsets');
-        await expect(locators.errorMessage).toHaveText('Error 4 out of 4');
+      await expect(locators.errorMessage).toHaveText('Error 4 out of 4');
 
-        await page.keyboard.press('ArrowUp');
-        await expect(tooltip).toHaveText('row has invalid charsets');
+      await page.keyboard.press('ArrowUp');
+      await expect(tooltip).toHaveText('row has invalid charsets');
 
-        await page.keyboard.press('Enter');
-        await page.keyboard.press('a');
-        await expect(locators.errorMessage).toHaveText('4 errors');
-        await expect(tooltip).toHaveText('some global error');
-        await page.keyboard.type('test[]', { delay: 10 });
-        await expect(tooltip).toHaveText('row has invalid charsets');
-        await expect(locators.errorMessage).toHaveText('Error 4 out of 5');
-
+      await page.keyboard.press('Enter');
+      await page.keyboard.press('a');
+      await expect(locators.errorMessage).toHaveText('4 errors');
+      await expect(tooltip).toHaveText('some global error');
+      await page.keyboard.type('test[]', { delay: 10 });
+      await expect(tooltip).toHaveText('row has invalid charsets');
+      await expect(locators.errorMessage).toHaveText('Error 4 out of 5');
     });
   });
 });
