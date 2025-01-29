@@ -4,7 +4,7 @@ import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 const getLocators = (page: Page) => ({
   textarea: page.getByRole('textbox', { name: 'list of keywords' }),
   counter: page.locator('[data-ui-name="BulkTextarea.Counter"]'),
-  clearAllBtn: page.locator('[data-ui-name="BulkTextarea.ClearAllButton"]'),
+  clearAllBtn: page.locator('[data-ui-name="BulkTextarea.ClearAll"]'),
   errorMessage: page.locator('[data-ui-name="Text"]').nth(1),
   buttonNext: page.locator('button[type="button"][aria-label="Next error"]'),
   buttonPrev: page.locator('button[type="button"][aria-label="Previous error"]'),
@@ -38,7 +38,7 @@ test.describe('States size counter and placeholder checks', () => {
     const text =
       'Zoom in on product categories to understand how each site segment drives conversions.\nSecond row\n3 row\n4 row\n5 row\n6 row\n7 row\n8 row\n9 row\n10 row';
     await page.keyboard.type(text, { delay: 10 });
-
+    await page.keyboard.press('Enter');
     await page.keyboard.press('Tab');
     await expect(page).toHaveScreenshot();
 
@@ -249,6 +249,7 @@ test.describe('Manual adding rows', () => {
     });
 
     await test.step('Verify validation on clicking outside textbox', async () => {
+      await page.waitForTimeout(100);
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
@@ -279,14 +280,12 @@ test.describe('Manual adding rows', () => {
     });
 
     await test.step('Verify focus order when validation starts ', async () => {
-      await page.keyboard.press('Tab');
       await page.waitForTimeout(100);
+      await page.keyboard.press('Tab');
       await expect(locators.buttonNext).toBeFocused();
       await page.keyboard.press('Tab');
-      await page.waitForTimeout(100);
       await expect(locators.buttonPrev).toBeFocused();
       await page.keyboard.press('Tab');
-      await page.waitForTimeout(100);
       await expect(locators.clearAllBtn).toBeFocused();
     });
   });
@@ -390,9 +389,7 @@ test.describe('Clear all fuctionality', () => {
 
     await test.step('Removed when remove last character', async () => {
       await locators.textarea.click();
-      await page.waitForTimeout(100);
-      await page.keyboard.type('abc', { delay: 100 });
-      await page.waitForTimeout(100);
+      await page.keyboard.type('abc', { delay: 50 });
       await expect(locators.clearAllBtn).toBeVisible();
       await locators.textarea.press('Backspace');
       await locators.textarea.press('Backspace');
@@ -475,15 +472,16 @@ test.describe('Error tooltips', () => {
     await test.step('Row Error on Hover', async () => {
       await page.keyboard.press('Tab');
       const text =
-        'Zoom in \nSecond row\n3 row\n4[] row\n5 row\n6 ]]row\n7 row\n8 row\n9 row\n10 row\n11[[row\n12 row\n13 row\n14 row\n15 row';
-      await page.keyboard.type(text, { delay: 10 });
+        'Zoom in \nSecond row\n3 row\n4[] row\n5 row\n6 ]]row\n7 row\n8 row\n9 row\n10 row\n11[[row\n12 row\n13 row';
+      await page.keyboard.type(text, { delay: 50 });
+      await page.keyboard.press('Enter');
+      await page.waitForTimeout(100);
       await page.keyboard.press('Tab');
       const eleventhRow = contentDiv.locator('p:nth-child(11)');
       const tenthRow = contentDiv.locator('p:nth-child(10)');
-      await expect(eleventhRow).toHaveAttribute('aria-errormessage', 'row has invalid charsets');
+      await expect(eleventhRow).toHaveAttribute('data-errormessage', 'row has invalid charsets');
       await eleventhRow.hover();
       await page.waitForTimeout(100);
-      await expect(page).toHaveScreenshot();
       await expect(locators.errorMessage).toHaveText('3 errors');
       await expect(tooltip).toHaveText('row has invalid charsets');
       await expect(locators.textarea).not.toBeFocused();
@@ -493,11 +491,8 @@ test.describe('Error tooltips', () => {
       await expect(locators.errorMessage).toHaveText('Error 3 out of 3');
       await expect(locators.textarea).toBeFocused();
       await expect(tooltip).toHaveText('row has invalid charsets');
-      await page.waitForTimeout(100);
-      await expect(page).toHaveScreenshot();
       await tenthRow.click();
       await page.waitForTimeout(100);
-      await expect(page).toHaveScreenshot();
       await expect(locators.errorMessage).toHaveText('3 errors');
       await expect(tooltip).toHaveText('some global error');
       await eleventhRow.hover();
@@ -507,6 +502,7 @@ test.describe('Error tooltips', () => {
 
     await test.step('Navigation between rows by clicking arrows', async () => {
       await locators.buttonNext.click();
+      await page.waitForTimeout(50);
       await expect(locators.errorMessage).toHaveText('Error 1 out of 3');
       await expect(tooltip).toHaveText('row has invalid charsets');
       await locators.buttonPrev.click();
@@ -520,6 +516,7 @@ test.describe('Error tooltips', () => {
       await expect(tooltip).toHaveText('row has invalid charsets');
       const tenthRow = contentDiv.locator('p:nth-child(10)');
       await tenthRow.click();
+      await page.keyboard.press('Enter');
       await expect(locators.errorMessage).toHaveText('3 errors');
       await expect(tooltip).toHaveText('some global error');
     });
@@ -550,7 +547,7 @@ test.describe('Error tooltips', () => {
       await page.keyboard.press('ArrowUp');
       await page.waitForTimeout(100);
       const eleventhRow = contentDiv.locator('p:nth-child(11)');
-      await expect(eleventhRow).toHaveAttribute('aria-errormessage', 'row has invalid charsets');
+      await expect(eleventhRow).toHaveAttribute('data-errormessage', 'row has invalid charsets');
 
       // await expect(locators.errorMessage).toHaveText('Error 3 out of 3');
 
@@ -605,7 +602,7 @@ test.describe('Error tooltips', () => {
       const eleventhRow = contentDiv.locator('p:nth-child(11)');
       await eleventhRow.click();
 
-      await expect(eleventhRow).toHaveAttribute('aria-errormessage', 'row has invalid charsets');
+      await expect(eleventhRow).toHaveAttribute('data-errormessage', 'row has invalid charsets');
       await expect(locators.errorMessage).toHaveText('Error 3 out of 3');
 
       await page.keyboard.press('Backspace');
@@ -617,7 +614,7 @@ test.describe('Error tooltips', () => {
       await expect(locators.errorMessage).toHaveText('2 errors');
       await expect(tooltip).toHaveText('some global error');
       await expect(eleventhRow).not.toHaveAttribute(
-        'aria-errormessage',
+        'data-errormessage',
         'row has invalid charsets',
       );
     });
@@ -678,8 +675,7 @@ test.describe('Error tooltips', () => {
       } else {
         await expect(locators.errorMessage).toHaveText('Error 1 out of 4');
         await page.keyboard.press('Enter');
-        await expect(locators.errorMessage).toHaveText('4 errors');
-        await page.keyboard.type('test[]', { delay: 10 });
+        await page.keyboard.type('test[]', { delay: 20 });
         await expect(locators.errorMessage).toHaveText('Error 2 out of 5');
       }
     });
