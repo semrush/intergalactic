@@ -10,24 +10,23 @@ test.describe('Basic usage', () => {
 
     const animationDiv = page.locator('[data-ui-name="Animation"]');
 
-    await page.waitForTimeout(1000);
 
-    // const animationStyles = await animationDiv.evaluate((el) => {
-    //   const style = getComputedStyle(el);
-    //   return {
-    //     animationDelay: style.animationDelay,
-    //     animationDuration: style.animationDuration,
-    //     animationFillMode: style.animationFillMode,
-    //     animationTimingFunction: style.animationTimingFunction,
-    //     display: style.display,
-    //   };
-    // });
+    const animationStyles = await animationDiv.evaluate((el) => {
+      const style = getComputedStyle(el);
+      return {
+        animationDelay: style.animationDelay,
+        animationDuration: style.animationDuration,
+        animationFillMode: style.animationFillMode,
+        animationTimingFunction: style.animationTimingFunction,
+        display: style.display,
+      };
+    });
 
-    // // Assertions for each property
-    // expect(animationStyles.animationDelay).toBe('0s');
-    // expect(animationStyles.animationDuration).toBe('0.5s');
-    // expect(animationStyles.animationFillMode).toBe('both');
-    // expect(animationStyles.animationTimingFunction).toBe('ease-out');
-    // expect(animationStyles.display).toBe('block');
+    // Assertions for each property
+    expect(animationStyles.animationDelay).toBe('0s');
+    expect(animationStyles.animationDuration).toBe('0.5s');
+    expect(animationStyles.animationFillMode).toBe('both');
+    expect(animationStyles.animationTimingFunction).toBe('ease-out');
+    expect(animationStyles.display).toBe('block');
   });
 });
