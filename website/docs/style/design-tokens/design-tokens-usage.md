@@ -1,6 +1,6 @@
 ---
 title: Design tokens
-tabs: Tokens('design-tokens'), Usage in design('design-tokens-usage'), Usage in development('design-tokens-usage-development'), Example('design-tokens-code'), Changelog('design-tokens-changelog')
+tabs: Tokens('design-tokens'), Usage in design('design-tokens-usage'), Usage in development('design-tokens-usage-development'), Changelog('design-tokens-changelog')
 ---
 
 ## What is design token?

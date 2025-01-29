@@ -97,7 +97,7 @@ const Demo = () => {
           {
             key: 'email',
             label: 'Reply-to email',
-            type: 'input',
+            type: 'email',
             validate: FeedbackRating.validate.email('Please enter valid email'),
             description: (
               <>

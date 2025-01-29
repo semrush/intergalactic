@@ -410,6 +410,6 @@ export default createComponent(InputMask, {
   Value,
   Addon: Input.Addon,
 }) as any as Intergalactic.Component<'div', InputProps, InputMaskCtx> & {
-  Value: Intergalactic.Component<'div', InputMaskValueProps>;
+  Value: Intergalactic.Component<'input', InputMaskValueProps>;
   Addon: typeof Input.Addon;
 };

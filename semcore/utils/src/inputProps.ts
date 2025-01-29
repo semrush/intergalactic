@@ -1,5 +1,6 @@
 export const inputProps = [
   'autoFocus',
+  'autoComplete',
   'defaultChecked',
   'checked',
   'disabled',
@@ -19,6 +20,7 @@ export const inputProps = [
   'onKeyUp',
   'tabIndex',
   'data-ui-name',
+  'inputMode',
 ];
 
 type ExtractedProps<T extends object, K extends Array<keyof T>> = Partial<

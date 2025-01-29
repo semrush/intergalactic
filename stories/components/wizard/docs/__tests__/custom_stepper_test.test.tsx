@@ -95,10 +95,10 @@ export async function CustomStepperExampleTest({ canvasElement }: { canvasElemen
   expect(document.activeElement).toBe(firstStepFocused);
 
   await userEvent.keyboard('{Enter}');
-  const firstInput = canvas.getByPlaceholderText('Your name');
+  const firstInput = document.querySelector('[autocomplete="name"]');
   expect(document.activeElement).toBe(firstInput);
   await userEvent.keyboard('{Tab}');
-  const secondtInput = canvas.getByPlaceholderText('Your email');
+  const secondtInput = document.querySelector('[autocomplete="email"]');
   expect(document.activeElement).toBe(secondtInput);
   await userEvent.keyboard('{Tab}');
   const nextButtonOnFirstStepFocus = canvas.getByRole('button', { name: /Go to /i });
