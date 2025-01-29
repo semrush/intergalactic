@@ -1,33 +1,53 @@
 import React from 'react';
 import DataTable from '@semcore/data-table';
 import SpinContainer from '@semcore/spin-container';
-import { Box } from '@semcore/flex-box';
+import Button from '@semcore/ui/button';
+import { ScreenReaderOnly } from '@semcore/ui/flex-box';
 
-const Demo = () => {
+const Demo = (): any => {
   const [loading, setLoading] = React.useState(true);
+  const [message, setMessage] = React.useState('');
+
   React.useEffect(() => {
-    const timer = setInterval(() => {
-      setLoading(!loading);
-    }, 1500);
+    const timer = setTimeout(() => {
+      setMessage('');
+    }, 300);
     return () => {
-      clearInterval(timer);
+      clearTimeout(timer);
     };
-  }, [loading]);
+  }, [message]);
+
+  const toggleLoading = () => {
+    setLoading(!loading);
+    setMessage(loading ? 'Data loaded' : 'Loading started');
+  };
+
   return (
-    <DataTable data={data} aria-label={'Table title. Fixed header with spin overlay'}>
-      <Box position='sticky' top={0} zIndex={2}>
+    <>
+      <ScreenReaderOnly role='status' aria-live='polite'>
+        {message}
+      </ScreenReaderOnly>
+      <DataTable data={data} aria-label={'Loading using SpinContainer'}>
         <DataTable.Head>
           <DataTable.Column name='keyword' children='Keyword' />
           <DataTable.Column name='kd' children='KD,%' />
           <DataTable.Column name='cpc' children='CPC' />
           <DataTable.Column name='vol' children='Vol.' />
         </DataTable.Head>
-      </Box>
-      <SpinContainer loading={loading} style={{ overflow: 'initial' }}>
-        <DataTable.Body />
-        <SpinContainer.Overlay />
-      </SpinContainer>
-    </DataTable>
+        <SpinContainer
+          loading={loading}
+          style={{ overflow: 'initial' }}
+          // @ts-ignore
+          inert={loading ? '' : undefined}
+        >
+          <DataTable.Body />
+          <SpinContainer.Overlay />
+        </SpinContainer>
+      </DataTable>
+      <Button onClick={toggleLoading} mt={3}>
+        {loading ? 'Stop loading' : 'Start loading'}
+      </Button>
+    </>
   );
 };
 
