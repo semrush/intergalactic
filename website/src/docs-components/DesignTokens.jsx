@@ -85,6 +85,7 @@ const DesignTokens = ({ tokens }) => {
           className={styles.componentsFilterSelect}
           size='l'
           placeholder='All components'
+          aria-label='Filter by component'
           value={componentFilter}
           onChange={setComponentFilter}
           options={componentsFilterOptions}

@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- `inputMode` as an item of default input props.
+- `inputMode` and `autoComplete` as an item of default input props.
 
 ## [4.44.1] - 2024-12-20
 
