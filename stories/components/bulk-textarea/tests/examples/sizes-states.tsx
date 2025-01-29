@@ -29,14 +29,14 @@ const Demo = (props: BulkTextareaProps) => {
         <Box mb={4}>
           <BulkTextarea
             w={200}
-            ofRows={100}
+            maxLines={100}
             minRows={1}
             maxRows={1}
             value={value}
             onChange={setValue}
             readonly={true}
-            rowValidation={validateRow}
-            rowsDelimiters={[',']}
+            lineValidation={validateRow}
+            linesDelimiters={[',']}
             placeholder={'Placeholder'}
             errors={errors}
             showErrors={showErrors}
@@ -55,7 +55,7 @@ const Demo = (props: BulkTextareaProps) => {
             />
             <Flex alignItems='center' justifyContent='space-between' mt={2}>
               <BulkTextarea.ErrorsNavigation />
-              <BulkTextarea.ClearAllButton />
+              <BulkTextarea.ClearAll />
             </Flex>
           </BulkTextarea>
         </Box>
@@ -63,14 +63,14 @@ const Demo = (props: BulkTextareaProps) => {
         <Box mb={8}>
           <BulkTextarea
             w={300}
-            ofRows={10}
+            maxLines={10}
             minRows={5}
             maxRows={5}
             value={value}
             onChange={setValue}
-            rowValidation={validateRow}
+            lineValidation={validateRow}
             disabled={true}
-            rowsDelimiters={[',']}
+            linesDelimiters={[',']}
             placeholder={'Long Long Placeholder'}
             errors={errors}
             showErrors={showErrors}
@@ -89,7 +89,7 @@ const Demo = (props: BulkTextareaProps) => {
             />
             <Flex alignItems='center' justifyContent='space-between' mt={2}>
               <BulkTextarea.ErrorsNavigation />
-              <BulkTextarea.ClearAllButton />
+              <BulkTextarea.ClearAll />
             </Flex>
           </BulkTextarea>
         </Box>
@@ -98,7 +98,7 @@ const Demo = (props: BulkTextareaProps) => {
           <BulkTextarea
             value={value}
             onChange={setValue}
-            rowValidation={validateRow}
+            lineValidation={validateRow}
             placeholder={'Placeholder'}
             errors={errors}
             showErrors={showErrors}
@@ -117,7 +117,7 @@ const Demo = (props: BulkTextareaProps) => {
             />
             <Flex alignItems='center' justifyContent='space-between' mt={2}>
               <BulkTextarea.ErrorsNavigation />
-              <BulkTextarea.ClearAllButton />
+              <BulkTextarea.ClearAll />
             </Flex>
           </BulkTextarea>
         </Box>
@@ -127,13 +127,13 @@ const Demo = (props: BulkTextareaProps) => {
         <Box>
           <BulkTextarea
             w={200}
-            ofRows={8}
+            maxLines={8}
             minRows={5}
             maxRows={5}
             value={value}
             onChange={setValue}
-            rowValidation={validateRow}
-            rowsDelimiters={[',']}
+            lineValidation={validateRow}
+            linesDelimiters={[',']}
             placeholder={'Placeholder'}
             errors={errors}
             showErrors={showErrors}
@@ -152,7 +152,7 @@ const Demo = (props: BulkTextareaProps) => {
             />
             <Flex alignItems='center' justifyContent='space-between' mt={2}>
               <BulkTextarea.ErrorsNavigation />
-              <BulkTextarea.ClearAllButton />
+              <BulkTextarea.ClearAll />
             </Flex>
           </BulkTextarea>
         </Box>
@@ -161,13 +161,13 @@ const Demo = (props: BulkTextareaProps) => {
           <BulkTextarea
             w={300}
             size='l'
-            ofRows={10}
+            maxLines={10}
             minRows={5}
             maxRows={10}
             value={value}
             onChange={setValue}
-            rowValidation={validateRow}
-            rowsDelimiters={[',']}
+            lineValidation={validateRow}
+            linesDelimiters={[',']}
             placeholder={'Long Long Long Placeholder Enter text here'}
             errors={errors}
             showErrors={showErrors}
@@ -186,7 +186,7 @@ const Demo = (props: BulkTextareaProps) => {
             />
             <Flex alignItems='center' justifyContent='space-between' mt={2}>
               <BulkTextarea.ErrorsNavigation />
-              <BulkTextarea.ClearAllButton />
+              <BulkTextarea.ClearAll />
             </Flex>
           </BulkTextarea>
         </Box>
@@ -194,13 +194,13 @@ const Demo = (props: BulkTextareaProps) => {
         <Box>
           <BulkTextarea
             w={300}
-            ofRows={15}
+            maxLines={15}
             minRows={5}
             maxRows={10}
             value={value}
             onChange={setValue}
-            rowValidation={validateRow}
-            rowsDelimiters={[',']}
+            lineValidation={validateRow}
+            linesDelimiters={[',']}
             errors={errors}
             showErrors={showErrors}
             onErrorsChange={setErrors}
@@ -218,7 +218,7 @@ const Demo = (props: BulkTextareaProps) => {
             />
             <Flex alignItems='center' justifyContent='space-between' mt={2}>
               <BulkTextarea.ErrorsNavigation />
-              <BulkTextarea.ClearAllButton />
+              <BulkTextarea.ClearAll />
             </Flex>
           </BulkTextarea>
         </Box>

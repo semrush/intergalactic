@@ -6,7 +6,7 @@ import { BulkTextareaType, BulkTextareaProps } from './BulkTextarea.types';
 
 import { InputField, InputFieldProps } from './components/InputField/InputField';
 import { Counter } from './components/Counter';
-import { ClearAllButton } from './components/ClearAllbutton';
+import { ClearAll } from './components/ClearAll';
 import { ErrorsNavigation } from './components/ErrorsNavigation';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
@@ -14,7 +14,7 @@ import focusSourceEnhance from '@semcore/utils/lib/enhances/focusSourceEnhance';
 import uniqueIdEnhance from '@semcore/utils/lib/uniqueID';
 
 type State = {
-  rowsCount: number;
+  linesCount: number;
   isEmptyText: boolean;
   errorIndex: number;
   highlightErrorIndex: boolean;
@@ -34,7 +34,7 @@ class BulkTextareaRoot extends Component<
     defaultState: 'normal',
     minRows: 2,
     maxRows: 10,
-    ofRows: 100,
+    maxLines: 100,
     validateOn: 'blur',
     locale: 'en',
     defaultErrors: [],
@@ -54,7 +54,7 @@ class BulkTextareaRoot extends Component<
   counterRef = React.createRef<HTMLDivElement>();
 
   state: State = {
-    rowsCount: 0,
+    linesCount: 0,
     isEmptyText: true,
     errorIndex: -1,
     highlightErrorIndex: false,
@@ -79,20 +79,20 @@ class BulkTextareaRoot extends Component<
       size,
       minRows,
       maxRows,
-      rowValidation,
+      lineValidation,
       placeholder,
       validateOn,
       onChange,
-      rowsDelimiters,
-      ofRows,
+      linesDelimiters,
+      maxLines,
       disabled,
       readonly,
       pasteProps,
-      rowProcessing,
+      lineProcessing,
       errors = [],
       showErrors,
     } = this.asProps;
-    const { errorIndex, lastError, rowsCount, highlightErrorIndex } = this.state;
+    const { errorIndex, lastError, linesCount, highlightErrorIndex } = this.state;
 
     return {
       value,
@@ -102,15 +102,15 @@ class BulkTextareaRoot extends Component<
       readonly,
       minRows,
       maxRows,
-      ofRows,
+      maxLines,
       placeholder,
       lastError,
       pasteProps,
-      rowsCount,
-      rowProcessing,
-      onChangeRowsCount: this.handleChangeRowsCount,
-      onChangeRowIndex: () => {
-        if (validateOn?.includes('blurRow')) {
+      linesCount,
+      lineProcessing,
+      onChangeLinesCount: this.handleChangeLinesCount,
+      onChangeLineIndex: () => {
+        if (validateOn?.includes('blurLine')) {
           this.handlers.showErrors(true);
         }
       },
@@ -125,7 +125,7 @@ class BulkTextareaRoot extends Component<
 
         if (
           this.asProps.showErrors === false &&
-          (validateOn?.includes('blur') || validateOn?.includes('blurRow'))
+          (validateOn?.includes('blur') || validateOn?.includes('blurLine'))
         ) {
           setTimeout(() => {
             this.nextButtonRef.current?.focus();
@@ -136,7 +136,7 @@ class BulkTextareaRoot extends Component<
       },
       showErrors,
       validateOn,
-      rowValidation,
+      lineValidation: lineValidation,
       errors,
       onErrorsChange: (newErrors: InputFieldProps['errors']) => {
         const lastError = newErrors.length === 0 ? errors[0] : undefined;
@@ -162,21 +162,21 @@ class BulkTextareaRoot extends Component<
       onErrorIndexChange: (errorIndex: number) => {
         this.setState({ errorIndex, highlightErrorIndex: false });
       },
-      rowsDelimiters,
+      linesDelimiters,
       ref: this.inputFieldRef,
       ['aria-describedby']: this.counterId,
     };
   }
 
   getCounterProps() {
-    const { ofRows, getI18nText, size } = this.asProps;
-    const { rowsCount, isEmptyText } = this.state;
+    const { maxLines, getI18nText, size } = this.asProps;
+    const { linesCount, isEmptyText } = this.state;
 
     let counterTheme = '';
 
-    if (rowsCount === ofRows) {
+    if (linesCount === maxLines) {
       counterTheme = 'warning';
-    } else if (rowsCount > ofRows!) {
+    } else if (linesCount > maxLines!) {
       counterTheme = 'danger';
     }
 
@@ -185,8 +185,8 @@ class BulkTextareaRoot extends Component<
       ref: this.counterRef,
       getI18nText,
       theme: counterTheme,
-      rowsCount: isEmptyText ? 0 : rowsCount,
-      ofRows,
+      rowsCount: isEmptyText ? 0 : linesCount,
+      maxLines,
       size,
     };
   }
@@ -221,9 +221,9 @@ class BulkTextareaRoot extends Component<
     };
   }
 
-  handleChangeRowsCount = (rowsCount: number) => {
-    const isEmpty = !rowsCount;
-    this.setState({ rowsCount, isEmptyText: isEmpty });
+  handleChangeLinesCount = (linesCount: number) => {
+    const isEmpty = !linesCount;
+    this.setState({ linesCount, isEmptyText: isEmpty });
 
     if (isEmpty) {
       this.handlers.showErrors(false);
@@ -276,7 +276,7 @@ class BulkTextareaRoot extends Component<
 const BulkTextarea = createComponent(BulkTextareaRoot, {
   InputField,
   Counter,
-  ClearAllButton,
+  ClearAll,
   ErrorsNavigation,
 }) as BulkTextareaType;
 

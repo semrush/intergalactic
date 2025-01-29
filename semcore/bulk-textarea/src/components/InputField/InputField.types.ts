@@ -6,16 +6,16 @@ type PasteProps = {
   /**
    * @default row.trim();
    */
-  rowProcessing?: (row: string) => string;
+  lineProcessing?: (line: string) => string;
   /**
    * @default true
    */
-  skipEmptyRows?: boolean;
+  skipEmptyLines?: boolean;
 };
 
 export type ErrorItem = {
-  rowIndex: number;
-  rowNode?: Node;
+  lineIndex: number;
+  lineNode?: Node;
   errorMessage: string;
 };
 
@@ -76,29 +76,29 @@ export type InputFieldProps = {
    * List of available points to validate value
    * @default blur
    */
-  validateOn: ('blur' | 'blurRow' | 'paste')[];
+  validateOn: ('blur' | 'blurLine' | 'paste')[];
 
   /**
-   * Function to validate row
+   * Function to validate line
    */
-  rowValidation?: (row: string, rows: string[]) => { isValid: boolean; errorMessage: string };
+  lineValidation?: (line: string, lines: string[]) => { isValid: boolean; errorMessage: string };
 
   /**
-   * Message for display error about whole field, not only one row
+   * Message for display error about whole field, not only one line
    */
   commonErrorMessage: string;
 
   /**
-   * Delimiters (event.key) for rows
+   * Delimiters (event.key) for lines
    * @default Enter
    */
-  rowsDelimiters?: string[];
+  linesDelimiters?: string[];
 
   /**
-   * Count of max rows in badge
+   * Count of max lines in badge
    * @default 100
    */
-  ofRows: number;
+  maxLines: number;
 
   /**
    * Paste props
@@ -106,9 +106,9 @@ export type InputFieldProps = {
   pasteProps: PasteProps;
 
   /**
-   * Function for process row after it was blurred
+   * Function for process line after it was blurred
    */
-  rowProcessing?: (row: string, rows: string[]) => string;
+  lineProcessing?: (line: string, lines: string[]) => string;
 
   /**
    * Internal
@@ -118,20 +118,20 @@ export type InputFieldProps = {
   /**
    * Internal
    */
-  currentRowIndex: number;
+  currentLineIndex: number;
 
   /**
    * Internal
    */
-  rowsCount: number;
+  linesCount: number;
   /**
    * Internal
    */
-  onChangeRowIndex: (newIndex: number) => void;
+  onChangeLineIndex: (newIndex: number) => void;
   /**
    * Internal
    */
-  onChangeRowsCount: (rowsCount: number) => void;
+  onChangeLinesCount: (rowsCount: number) => void;
 
   /**
    * Internal

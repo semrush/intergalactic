@@ -18,12 +18,12 @@ export type BulkTextareaProps = {
   maxRows?: InputFieldProps['maxRows'];
 
   validateOn?: InputFieldProps['validateOn'];
-  rowValidation?: InputFieldProps['rowValidation'];
-  rowsDelimiters?: InputFieldProps['rowsDelimiters'];
+  lineValidation?: InputFieldProps['lineValidation'];
+  linesDelimiters?: InputFieldProps['linesDelimiters'];
   pasteProps?: InputFieldProps['pasteProps'];
 
-  ofRows?: InputFieldProps['ofRows'];
-  rowProcessing?: InputFieldProps['rowProcessing'];
+  maxLines?: InputFieldProps['maxLines'];
+  lineProcessing?: InputFieldProps['lineProcessing'];
 
   errors?: InputFieldProps['errors'];
   showErrors?: boolean;
@@ -38,6 +38,6 @@ export type BulkTextareaType = Intergalactic.Component<'div', BoxProps & BulkTex
     Pick<InputFieldProps, 'commonErrorMessage' | 'id'> & Partial<BulkTextareaProps>
   >;
   Counter: Intergalactic.Component<'div', Partial<CounterProps>>;
-  ClearAllButton: typeof Button;
+  ClearAll: typeof Button;
   ErrorsNavigation: Intergalactic.Component<'div', Partial<ErrorsNavigationProps>>;
 };

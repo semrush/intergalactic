@@ -10,7 +10,7 @@ import { extractAriaProps } from '@semcore/utils/lib/ariaProps';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import DOMPurify from 'dompurify';
 
-type IndexKeys = 'keyboardRowIndex' | 'mouseRowIndex';
+type IndexKeys = 'keyboardLineIndex' | 'mouseLineIndex';
 
 type State = {
   [key in IndexKeys]: number;
@@ -32,13 +32,13 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     maxRows: 10,
     defaultShowErrors: false,
     defaultErrorIndex: -1,
-    defaultRowsCount: 0,
+    defaultLinesCount: 0,
   };
 
   delimiter = '\n';
-  skipEmptyRows = true;
-  emptyRowValue = '&#xfeff;';
-  spaceRowValue = '&nbsp;';
+  skipEmptyLines = true;
+  emptyLineValue = '&#xfeff;';
+  spaceLineValue = '&nbsp;';
 
   containerRef = React.createRef<HTMLDivElement>();
   textarea: HTMLDivElement;
@@ -56,12 +56,12 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
 
   isFocusing = false;
 
-  rowsCountTimeout = 0;
+  linesCountTimeout = 0;
 
   state = {
     visibleErrorPopper: false,
-    keyboardRowIndex: -1,
-    mouseRowIndex: -1,
+    keyboardLineIndex: -1,
+    mouseLineIndex: -1,
   };
 
   constructor(props: InputFieldProps) {
@@ -84,7 +84,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
   uncontrolledProps() {
     return {
       value: null,
-      rowsCount: null,
+      linesCount: null,
       errorIndex: null,
     };
   }
@@ -104,11 +104,11 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       disabled,
       readonly,
       highlightErrorIndex,
-      rowProcessing,
+      lineProcessing,
       ['aria-describedby']: ariaDescribedby = '',
     } = this.props;
 
-    if (prevProps.value !== value && value !== this.getRowsValue().join(this.delimiter)) {
+    if (prevProps.value !== value && value !== this.getValues().join(this.delimiter)) {
       this.handleValueOutChange();
     }
 
@@ -140,27 +140,27 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       }
     }
 
-    const { keyboardRowIndex } = this.state;
+    const { keyboardLineIndex } = this.state;
 
-    if (prevState.keyboardRowIndex !== -1 && prevState.keyboardRowIndex !== keyboardRowIndex) {
-      if (rowProcessing) {
-        const rows = this.getRowsValue();
-        const newValue = rowProcessing(rows[prevState.keyboardRowIndex] ?? '', rows);
+    if (prevState.keyboardLineIndex !== -1 && prevState.keyboardLineIndex !== keyboardLineIndex) {
+      if (lineProcessing) {
+        const lines = this.getValues();
+        const newValue = lineProcessing(lines[prevState.keyboardLineIndex] ?? '', lines);
         const newValueTextNode = document.createTextNode(newValue);
-        const paragraph = this.textarea.childNodes.item(prevState.keyboardRowIndex);
+        const paragraph = this.textarea.childNodes.item(prevState.keyboardLineIndex);
 
         if (paragraph instanceof HTMLParagraphElement) {
           if (newValue === '') {
-            paragraph.innerHTML = this.emptyRowValue;
+            paragraph.innerHTML = this.emptyLineValue;
           } else {
             paragraph.replaceChild(newValueTextNode, paragraph.childNodes.item(0));
           }
         }
 
-        this.validateRow(paragraph);
+        this.validateLine(paragraph);
 
         setTimeout(() => {
-          const newNode = this.textarea.childNodes.item(keyboardRowIndex);
+          const newNode = this.textarea.childNodes.item(keyboardLineIndex);
           if (newNode) {
             this.setErrorIndex(newNode);
           }
@@ -170,13 +170,12 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       if (!showErrors) {
         this.recalculateErrors();
       }
-      this.recalculateRowsCount();
-      this.asProps.onChangeRowIndex(keyboardRowIndex);
+      this.recalculateLinesCount();
+      this.asProps.onChangeLineIndex(keyboardLineIndex);
     }
   }
 
   componentWillUnmount() {
-    this.cleanStylesForRowsOverLimit();
     this.removeEventListeners(this.textarea);
   }
 
@@ -193,17 +192,17 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
 
   get errorMessage() {
     const { errors, errorIndex, commonErrorMessage, lastError } = this.asProps;
-    const { mouseRowIndex, keyboardRowIndex } = this.state;
-    const currentRowIndex =
+    const { mouseLineIndex, keyboardLineIndex } = this.state;
+    const currentLineIndex =
       this.errorByInteraction === 'keyboard'
-        ? keyboardRowIndex
+        ? keyboardLineIndex
         : this.errorByInteraction === 'mouse'
-        ? mouseRowIndex
+        ? mouseLineIndex
         : -1;
     let errorItem: ErrorItem | undefined = errors[errorIndex];
 
-    if (currentRowIndex !== -1) {
-      errorItem = errors.find((e) => e?.rowIndex === currentRowIndex);
+    if (currentLineIndex !== -1) {
+      errorItem = errors.find((e) => e?.lineIndex === currentLineIndex);
     }
 
     const errorMessage =
@@ -254,17 +253,17 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
   }
 
   handleValueOutChange() {
-    const { value, onChangeRowsCount } = this.props;
+    const { value, onChangeLinesCount } = this.props;
 
     if (value === '') {
       this.textarea.textContent = '';
-      onChangeRowsCount(0);
+      onChangeLinesCount(0);
     } else {
       const listOfNodes = this.prepareNodesForPaste(value);
 
       this.textarea.replaceChildren(...listOfNodes);
 
-      this.recalculateRowsCount();
+      this.recalculateLinesCount();
     }
   }
 
@@ -281,13 +280,13 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
   }
 
   handleMouseDown(event: MouseEvent): void {
-    // we need to change keyboardRowIndex, because the caret in real on that current row
+    // we need to change keyboardLineIndex, because the caret in real on that current row
     this.errorByInteraction = 'keyboard';
     const element = event.target;
 
     if (element instanceof HTMLElement) {
-      // we need to change keyboardRowIndex, because the caret in real on that current row
-      this.toggleErrorsPopper('keyboardRowIndex', element);
+      // we need to change keyboardLineIndex, because the caret in real on that current row
+      this.toggleErrorsPopper('keyboardLineIndex', element);
 
       this.setErrorIndex(element);
     }
@@ -302,7 +301,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         this.isFocusing ||
         (element instanceof HTMLElement && element.getAttribute('aria-invalid') === 'true')
       ) {
-        this.toggleErrorsPopper('mouseRowIndex', element);
+        this.toggleErrorsPopper('mouseLineIndex', element);
       } else {
         this.setState({ visibleErrorPopper: false });
       }
@@ -318,8 +317,8 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       this.errorByInteraction = 'keyboard';
       const rowNode = this.getNodeFromSelection();
 
-      this.toggleErrorsPopper('keyboardRowIndex', rowNode, 0);
-      this.setState({ mouseRowIndex: -1 });
+      this.toggleErrorsPopper('keyboardLineIndex', rowNode, 0);
+      this.setState({ mouseLineIndex: -1 });
     } else {
       this.setState({ visibleErrorPopper: false });
     }
@@ -389,27 +388,27 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
           textNode = lastNodeToInsert.childNodes.item(0);
           position = (lastNodeToInsert.textContent ?? '').length;
 
-          this.validateRow(lastNodeToInsert);
+          this.validateLine(lastNodeToInsert);
           this.setErrorIndex(lastNodeToInsert);
         } else {
           position = (anchorNode.textContent ?? '').length;
           anchorNode.textContent = (anchorNode.textContent ?? '') + after;
           textNode = anchorNode.childNodes.item(0);
 
-          this.validateRow(anchorNode);
+          this.validateLine(anchorNode);
           this.setErrorIndex(anchorNode);
         }
       }
 
       if (textNode instanceof Text) {
         this.setSelection(textNode, position ?? 1, position ?? 1);
-        this.toggleErrorsPopper('keyboardRowIndex', textNode.parentNode);
+        this.toggleErrorsPopper('keyboardLineIndex', textNode.parentNode);
       } else {
         console.warn('incorrect child type', textNode, textNode?.parentNode);
       }
     }
 
-    this.recalculateRowsCount();
+    this.recalculateLinesCount();
 
     if (validateOn.includes('paste') || this.asProps.showErrors) {
       this.recalculateErrors();
@@ -434,11 +433,11 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         selection?.setPosition(firstRow, nodeText.length);
       } else if (!firstNode || (firstNode instanceof HTMLBRElement && nodes.length === 1)) {
         this.textarea.textContent = '';
-        this.setState({ keyboardRowIndex: 0 });
+        this.setState({ keyboardLineIndex: 0 });
       } else if (firstNode instanceof HTMLParagraphElement && !firstNode.textContent?.trim()) {
         if (nodes.length <= 1 || secondNode instanceof HTMLBRElement) {
           this.textarea.textContent = '';
-          this.setState({ keyboardRowIndex: 0 });
+          this.setState({ keyboardLineIndex: 0 });
         }
       }
 
@@ -490,20 +489,20 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
             }
           }
         } else if (childNodes.length === 1 && childNodes[0] instanceof HTMLBRElement) {
-          rowNode.innerHTML = this.emptyRowValue;
+          rowNode.innerHTML = this.emptyLineValue;
         }
 
         const { errors, showErrors } = this.asProps;
-        const isValid = this.validateRow(rowNode);
+        const isValid = this.validateLine(rowNode);
         this.recalculateErrors();
         this.setErrorIndex(rowNode);
 
         if (!isValid && showErrors) {
-          this.toggleErrorsPopper('keyboardRowIndex', rowNode, 0);
+          this.toggleErrorsPopper('keyboardLineIndex', rowNode, 0);
         }
 
         const trigger =
-          !isValid || (isValid && errors.length === 1 && errors[0].rowNode === rowNode)
+          !isValid || (isValid && errors.length === 1 && errors[0].lineNode === rowNode)
             ? rowNode
             : this.textarea;
 
@@ -521,7 +520,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
           this.textarea.removeChild(emptyBr);
 
           if (emptyParagraph instanceof HTMLParagraphElement) {
-            emptyParagraph.innerHTML = this.emptyRowValue;
+            emptyParagraph.innerHTML = this.emptyLineValue;
           }
 
           if (emptyParagraph) {
@@ -532,7 +531,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         }
       }
 
-      this.recalculateRowsCount();
+      this.recalculateLinesCount();
     }
   }
 
@@ -543,7 +542,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     if (this.asProps.showErrors) {
       this.toggleErrorsPopperByKeyboard(150);
     } else {
-      this.toggleErrorsPopper('keyboardRowIndex', this.textarea);
+      this.toggleErrorsPopper('keyboardLineIndex', this.textarea);
     }
   }
 
@@ -557,20 +556,20 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       this.recalculateErrors();
     }
 
-    onBlur(this.getRowsValue().join(this.delimiter), event);
+    onBlur(this.getValues().join(this.delimiter), event);
 
     setTimeout(() => {
-      this.setState({ keyboardRowIndex: -1 });
+      this.setState({ keyboardLineIndex: -1 });
     }, 200);
   }
 
   handleKeyDown(event: KeyboardEvent) {
     this.errorByInteraction = 'keyboard';
-    const { rowsDelimiters } = this.asProps;
+    const { linesDelimiters } = this.asProps;
 
     const currentNode = this.getNodeFromSelection();
 
-    if (event.key === 'Enter' || rowsDelimiters?.includes(event.key)) {
+    if (event.key === 'Enter' || linesDelimiters?.includes(event.key)) {
       if (currentNode === this.textarea) {
         event.preventDefault();
       }
@@ -596,7 +595,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
             selectionOffset !== selectionNode.textContent?.length
           ) {
             newRowValue =
-              selectionNode.textContent?.substring(selectionOffset) ?? this.emptyRowValue;
+              selectionNode.textContent?.substring(selectionOffset) ?? this.emptyLineValue;
 
             if (selectionNode.textContent) {
               selectionNode.textContent = selectionNode.textContent.substring(0, selectionOffset);
@@ -604,28 +603,28 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
           }
 
           if (currentNode.textContent?.trim() === '') {
-            currentNode.innerHTML = this.emptyRowValue;
+            currentNode.innerHTML = this.emptyLineValue;
           }
 
           const row = document.createElement('p');
           if (newRowValue) {
             row.textContent = newRowValue;
           } else {
-            row.innerHTML = this.emptyRowValue;
+            row.innerHTML = this.emptyLineValue;
           }
           currentNode.after(row);
 
           this.setSelection(row, 0, 0);
 
-          this.validateRow(currentNode);
-          this.validateRow(row);
+          this.validateLine(currentNode);
+          this.validateLine(row);
           if (currentNode.previousSibling) {
-            this.validateRow(currentNode.previousSibling);
+            this.validateLine(currentNode.previousSibling);
           }
           this.setErrorIndex(row);
 
           if (row.textContent?.trim() !== '') {
-            this.recalculateRowsCount();
+            this.recalculateLinesCount();
           }
 
           setTimeout(() => {
@@ -683,11 +682,11 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
             selection?.focusOffset === currentNode.textContent?.length)
         ) {
           event.preventDefault();
-          currentNode.innerHTML = this.emptyRowValue;
+          currentNode.innerHTML = this.emptyLineValue;
 
-          this.validateRow(currentNode);
+          this.validateLine(currentNode);
           this.setErrorIndex(currentNode);
-          this.recalculateRowsCount();
+          this.recalculateLinesCount();
 
           setTimeout(() => {
             this.recalculateErrors();
@@ -744,39 +743,30 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     );
   }
 
-  private cleanStylesForRowsOverLimit(): void {
-    const name = 'rowsOverLimit';
-    const existsStyleSheet = document.querySelector(`style[name=${name}]`);
-
-    if (existsStyleSheet) {
-      document.head.removeChild(existsStyleSheet);
-    }
-  }
-
   private prepareNodesForPaste(value: string): HTMLParagraphElement[] {
     const listOfNodes: HTMLParagraphElement[] = [];
     const { pasteProps } = this.asProps;
-    const rowProcessing =
-      pasteProps?.rowProcessing ??
-      ((row: string) => {
-        const trimmedRow = row.trim();
-        return trimmedRow === '' ? row : trimmedRow;
+    const lineProcessing =
+      pasteProps?.lineProcessing ??
+      ((line: string) => {
+        const trimmedLine = line.trim();
+        return trimmedLine === '' ? line : trimmedLine;
       });
-    const skipEmptyRows = pasteProps?.skipEmptyRows ?? this.skipEmptyRows;
+    const skipEmptyLines = pasteProps?.skipEmptyLines ?? this.skipEmptyLines;
     const delimiter = pasteProps?.delimiter ?? this.delimiter;
 
     value.split(delimiter).forEach((line) => {
-      const preparedLine = rowProcessing(line);
+      const preparedLine = lineProcessing(line);
 
-      if ((preparedLine === '' && skipEmptyRows === false) || preparedLine !== '') {
+      if ((preparedLine === '' && skipEmptyLines === false) || preparedLine !== '') {
         const node = document.createElement('p');
 
         if (preparedLine === '') {
-          node.innerHTML = this.emptyRowValue;
+          node.innerHTML = this.emptyLineValue;
         } else if (preparedLine.trim() === '') {
           const allSpacesRegExp = new RegExp('\\s', 'g');
           node.innerHTML = DOMPurify.sanitize(
-            preparedLine.replace(allSpacesRegExp, this.spaceRowValue),
+            preparedLine.replace(allSpacesRegExp, this.spaceLineValue),
           );
         } else {
           node.append(document.createTextNode(preparedLine));
@@ -784,7 +774,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
 
         listOfNodes.push(node);
 
-        this.validateRow(node);
+        this.validateLine(node);
       }
     });
 
@@ -798,8 +788,8 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       if (node instanceof HTMLParagraphElement && node.getAttribute('aria-invalid') === 'true') {
         const errorItem = {
           errorMessage: node.getAttribute('aria-errormessage') ?? '',
-          rowNode: node,
-          rowIndex: index,
+          lineNode: node,
+          lineIndex: index,
         };
         errors.push(errorItem);
       }
@@ -808,14 +798,14 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     this.asProps.onErrorsChange(errors);
   }
 
-  private recalculateRowsCount(): void {
-    if (this.rowsCountTimeout) {
-      clearTimeout(this.rowsCountTimeout);
+  private recalculateLinesCount(): void {
+    if (this.linesCountTimeout) {
+      clearTimeout(this.linesCountTimeout);
     }
 
-    this.rowsCountTimeout = window.setTimeout(() => {
-      let rows = 0;
-      const { ofRows, rowsCount } = this.asProps;
+    this.linesCountTimeout = window.setTimeout(() => {
+      let lines = 0;
+      const { maxLines, linesCount } = this.asProps;
 
       this.textarea.childNodes.forEach((node, index) => {
         if (node instanceof HTMLParagraphElement) {
@@ -825,28 +815,28 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
             node.textContent !== this.getEmptyParagraph().textContent &&
             node.textContent !== ''
           ) {
-            rows++;
+            lines++;
 
-            if (rows > ofRows) {
+            if (lines > maxLines) {
               node.dataset.overMaxRows = 'true';
             }
           }
         }
       });
 
-      if (rowsCount !== rows) {
-        this.asProps.onChangeRowsCount(rows);
+      if (linesCount !== lines) {
+        this.asProps.onChangeLinesCount(lines);
       }
     }, 100);
   }
 
-  private getRowsValue(): string[] {
-    const rows: string[] = [];
+  private getValues(): string[] {
+    const values: string[] = [];
     this.textarea.childNodes.forEach((node) => {
-      rows.push(node.textContent ?? '');
+      values.push(node.textContent ?? '');
     });
 
-    return rows;
+    return values;
   }
 
   private toggleErrorsPopperByKeyboard(timer: number) {
@@ -858,7 +848,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       setTimeout(() => {
         const rowNode = this.getNodeFromSelection();
 
-        this.toggleErrorsPopper('keyboardRowIndex', rowNode, timer);
+        this.toggleErrorsPopper('keyboardLineIndex', rowNode, timer);
       }, 0);
     } else {
       this.toggleErrorsPopperTimeout = window.setTimeout(() => {
@@ -876,14 +866,14 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       this.changeTriggerTimeout = window.setTimeout(() => {
         const targetElement = target === this.textarea ? this.getNodeFromSelection() : target;
 
-        let rowIndex = -1;
+        let lineIndex = -1;
         let isInvalidRow = false;
 
         if (targetElement instanceof HTMLParagraphElement) {
           isInvalidRow = targetElement.getAttribute('aria-invalid') === 'true';
-          rowIndex = Array.from(this.textarea.childNodes).indexOf(targetElement);
+          lineIndex = Array.from(this.textarea.childNodes).indexOf(targetElement);
         } else if (targetElement === this.textarea) {
-          rowIndex = 0;
+          lineIndex = 0;
         }
 
         if (targetElement instanceof HTMLElement) {
@@ -891,12 +881,12 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
             (prevState) => {
               const newState: State = {
                 visibleErrorPopper: this.isFocusing ? true : isInvalidRow,
-                mouseRowIndex: prevState.mouseRowIndex,
-                keyboardRowIndex: prevState.keyboardRowIndex,
+                mouseLineIndex: prevState.mouseLineIndex,
+                keyboardLineIndex: prevState.keyboardLineIndex,
               };
 
-              if (this.isFocusing || (key === 'mouseRowIndex' && isInvalidRow)) {
-                newState[key] = rowIndex;
+              if (this.isFocusing || (key === 'mouseLineIndex' && isInvalidRow)) {
+                newState[key] = lineIndex;
               }
 
               return newState;
@@ -929,7 +919,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     const error: ErrorItem | undefined = this.asProps.errors[errorIndex];
     const childNodes = this.textarea.childNodes;
 
-    const node = error ? error.rowNode ?? childNodes.item(error.rowIndex) : null;
+    const node = error ? error.lineNode ?? childNodes.item(error.lineIndex) : null;
     const selection = document.getSelection();
 
     if (selection && node instanceof HTMLParagraphElement) {
@@ -946,10 +936,10 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     }
   }
 
-  private validateRow(node: Node): boolean {
-    const { rowValidation } = this.asProps;
-    if (rowValidation && node instanceof HTMLElement) {
-      const { isValid, errorMessage } = rowValidation(node.textContent ?? '', this.getRowsValue());
+  private validateLine(node: Node): boolean {
+    const { lineValidation } = this.asProps;
+    if (lineValidation && node instanceof HTMLElement) {
+      const { isValid, errorMessage } = lineValidation(node.textContent ?? '', this.getValues());
 
       if (!isValid) {
         node.setAttribute('aria-invalid', 'true');
@@ -1060,7 +1050,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
   private getEmptyParagraph() {
     const element = document.createElement('p');
 
-    element.innerHTML = this.emptyRowValue;
+    element.innerHTML = this.emptyLineValue;
 
     return element;
   }

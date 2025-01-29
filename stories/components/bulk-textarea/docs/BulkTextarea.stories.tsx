@@ -12,29 +12,5 @@ const meta: Meta<typeof BulkTextarea> = {
 export default meta;
 
 export const BasicUsage: StoryObj<typeof BulkTextarea> = {
-  args: {
-    ofRows: 30,
-    size: 'm',
-    rowsDelimiters: [','],
-    readonly: false,
-    disabled: false,
-    placeholder: 'Placeholder',
-    minRows: 2,
-    maxRows: 10,
-    validateOn: [
-      // 'blur',
-      'blurRow',
-    ],
-    pasteProps: {
-      delimiter: '\n',
-      skipEmptyRows: true,
-      rowProcessing: (row) => {
-        return row.replace(/http:\/\//, '');
-      },
-    },
-    rowProcessing: (row) => {
-      return row.replace(/http:\/\//, '');
-    },
-  },
   render: BasicUsageExample,
 };
