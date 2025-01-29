@@ -79,7 +79,7 @@ Rows with values that exceed the limit are highlighted. Counter changes its them
 
 In the component, the controls have a default placement, but if you need to position them elsewhere, you can expand the component and arrange them differently. [Refer to the example](/components/bulk-textarea/bulk-textarea-code#expanded-bulktextarea).
 
-### Clear field button
+### Clear all button
 
 As soon as at least one character is entered in the field, a button for clearing the field appears next to it. By default, the button is positioned to the bottom right of the field.
 
