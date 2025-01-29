@@ -1,15 +1,15 @@
 import React from 'react';
-import BulkTextarea, { BulkTextareaProps } from '@semcore/bulk-textarea';
+import BulkTextarea from '@semcore/bulk-textarea';
 import { Box, Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 
-const validateRow = (row: string, rows: string[]) => {
+const validateRow = (line: string, lines: string[]) => {
   let isValid = true;
   let errorMessage = '';
 
-  if (row.includes(']') || row.includes('[')) {
+  if (line.includes(']') || line.includes('[')) {
     isValid = false;
-    errorMessage = 'row has invalid charsets';
+    errorMessage = 'Line has invalid charsets';
   }
 
   return {
@@ -18,8 +18,8 @@ const validateRow = (row: string, rows: string[]) => {
   };
 };
 
-const rowProcessing = (row: string) => {
-  return row.replace(/http:\/\//, '');
+const lineProcessing = (line: string) => {
+  return line.replace(/http:\/\//, '');
 };
 
 const Demo = () => {
@@ -31,10 +31,10 @@ const Demo = () => {
         w={400}
         value={value}
         onChange={setValue}
-        rowValidation={validateRow}
-        ofRows={30}
+        lineValidation={validateRow}
+        maxLines={30}
         size={'m'}
-        rowsDelimiters={[',']}
+        linesDelimiters={[',']}
         readonly={false}
         disabled={false}
         placeholder={'Placeholder'}
@@ -43,10 +43,10 @@ const Demo = () => {
         validateOn={['blur']}
         pasteProps={{
           delimiter: '\n',
-          skipEmptyRows: true,
-          rowProcessing,
+          skipEmptyLines: true,
+          lineProcessing,
         }}
-        rowProcessing={rowProcessing}
+        lineProcessing={lineProcessing}
       >
         <Flex alignItems='center' justifyContent='flex-start' mb={2} gap={1}>
           <Text tag={'label'} size={200} id={'keywords-label'}>
@@ -60,7 +60,7 @@ const Demo = () => {
         />
         <Flex alignItems='center' justifyContent='space-between' mt={2}>
           <BulkTextarea.ErrorsNavigation />
-          <BulkTextarea.ClearAllButton />
+          <BulkTextarea.ClearAll />
         </Flex>
       </BulkTextarea>
     </Box>

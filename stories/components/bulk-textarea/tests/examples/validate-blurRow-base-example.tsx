@@ -32,7 +32,7 @@ const Demo = (props: BulkTextareaProps) => {
 
       if (!isValid) {
         errors.push({
-          rowIndex: index,
+          lineIndex: index,
           errorMessage: errorMessage,
         });
       }
@@ -46,27 +46,28 @@ const Demo = (props: BulkTextareaProps) => {
     <Box>
       <BulkTextarea
         w={400}
-        ofRows={15}
+        maxLines={15}
         value={value}
         minRows={5}
         maxRows={5}
         onChange={setValue}
-        rowValidation={validateRow}
-        rowsDelimiters={[',']}
+        lineValidation={validateRow}
+        linesDelimiters={[',']}
         placeholder={'Placeholder'}
-        validateOn = {['blurRow']}
+        validateOn={['blurRow']}
         {...props}
         errors={errors}
         showErrors={showErrors}
         onErrorsChange={setErrors}
         onShowErrorsChange={setShowErrors}
-        rowProcessing = {(row) => {
-          return row.replace(/http:\/\//, '')}}
-          pasteProps={{
-            delimiter: '\n',
-            skipEmptyRows: false,
-            rowProcessing: (row) => row.replace(/http:\/\//, 'PASTE'),
-          }}
+        lineProcessing={(row) => {
+          return row.replace(/http:\/\//, '');
+        }}
+        pasteProps={{
+          delimiter: '\n',
+          skipEmptyRows: false,
+          rowProcessing: (row) => row.replace(/http:\/\//, 'PASTE'),
+        }}
       >
         <Flex alignItems='center' justifyContent='flex-start' mb={2} gap={1}>
           <Text tag={'label'} size={200} id={'keywords-label'}>
