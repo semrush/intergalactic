@@ -10,7 +10,6 @@ test.describe('Basic usage', () => {
 
     const animationDiv = page.locator('[data-ui-name="Animation"]');
 
-
     const animationStyles = await animationDiv.evaluate((el) => {
       const style = getComputedStyle(el);
       return {
