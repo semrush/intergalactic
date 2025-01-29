@@ -8,7 +8,7 @@ tabs: Design('bulk-textarea'), A11y('bulk-textarea-a11y'), API('bulk-textarea-ap
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/bulk-textarea/docs/examples/BaseExample.tsx';
+  export Demo from 'stories/components/bulk-textarea/docs/examples/basic-usage.tsx';
 </script>
 
 :::

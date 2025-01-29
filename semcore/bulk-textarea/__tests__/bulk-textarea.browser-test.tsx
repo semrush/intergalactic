@@ -188,23 +188,23 @@ test.describe('Manual adding rows', () => {
       const text =
         'Zoom in \nSecond row\n3 row\n4[] row\n5 row\n6 ]]row\n7 row\n8 row\n9 row\n10 row\n11[[row\n12 row\n13 row\n14 row\n15 row';
       await page.keyboard.type(text, { delay: 10 });
+      await page.keyboard.press('Enter');
       await expect(locators.errorMessage).not.toBeVisible();
       await expect(locators.buttonNext).not.toBeVisible();
       await expect(locators.buttonPrev).not.toBeVisible();
       await expect(locators.clearAllBtn).toBeVisible();
       await page.keyboard.press('Tab');
-
-      await page.waitForTimeout(100);
       await expect(locators.errorMessage).toBeVisible();
       await expect(locators.errorMessage).toHaveText('3 errors');
     });
 
-    // // //focus order when validation starts
-    // // await expect(buttonNext).toBeFocused();
-    // // await page.keyboard.press('Tab');
-    // // await expect(buttonPrev).toBeFocused();
-    // // await page.keyboard.press('Tab');
-    // // await expect(clearAll).toBeFocused();
+    // await test.step('Verify focus order when validation starts', async () => {
+    // await expect(locators.buttonNext).toBeFocused();
+    // await page.keyboard.press('Tab');
+    // await expect(locators.buttonPrev).toBeFocused();
+    // await page.keyboard.press('Tab');
+    // await expect(locators.clearAllBtn).toBeFocused();
+// });
   });
 
   test('Test Validation on BlurRow', async ({ page }) => {
@@ -216,8 +216,7 @@ test.describe('Manual adding rows', () => {
 
     await test.step('Verify validation on blurRow starts by entering new row', async () => {
       await page.keyboard.press('Tab');
-      await locators.textarea.press('[');
-      await page.waitForTimeout(100);
+      await page.keyboard.type('test[]]', { delay: 10 });
       await page.keyboard.press('Enter');
       await page.waitForTimeout(100);
       await expect(locators.textarea).toHaveAttribute('aria-invalid', 'true');
@@ -237,7 +236,7 @@ test.describe('Manual adding rows', () => {
     });
 
     await test.step('Verify validation on blur starts by Tab', async () => {
-      const text = 'Zoom in \nSecond row\n3 row[';
+      const text = 'Zoom in \nSecond row\n3 row[\ntest';
       await page.keyboard.type(text, { delay: 10 });
       await page.waitForTimeout(100);
       await page.keyboard.press('Tab');
@@ -248,11 +247,14 @@ test.describe('Manual adding rows', () => {
       await expect(locators.buttonPrev).toBeVisible();
       await expect(locators.clearAllBtn).toBeVisible();
       await expect(locators.errorMessage).toHaveText('1 error');
-      await page.keyboard.press('Enter');
+      
     });
 
     await test.step('Verify validation on clicking outside textbox', async () => {
-      await locators.textarea.press('[');
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Enter');
+        await page.keyboard.type('text\n[]\nttext', { delay: 10 });
       await page.waitForTimeout(100);
       const boxBoundingBox = await locators.boxLocator.boundingBox();
 
@@ -300,7 +302,7 @@ test.describe('Manual adding rows', () => {
 
     await test.step('Verify validation on blurRow starts by cliclikng sumbit', async () => {
       await page.keyboard.press('Tab');
-      const text = 'Zoom in \nSecond row\n3 row[';
+      const text = 'Zoom in \nSecond[] row\n3 row';
       await page.keyboard.type(text, { delay: 10 });
 
       await page.getByRole('button', { name: 'submit' }).click();
@@ -482,6 +484,7 @@ test.describe('Error tooltips', () => {
       const tenthRow = contentDiv.locator('p:nth-child(10)');
       await expect(eleventhRow).toHaveAttribute('aria-errormessage', 'row has invalid charsets');
       await eleventhRow.hover();
+      await page.waitForTimeout(100);
       await expect(page).toHaveScreenshot();
       await expect(locators.errorMessage).toHaveText('3 errors');
       await expect(tooltip).toHaveText('row has invalid charsets');
@@ -492,8 +495,10 @@ test.describe('Error tooltips', () => {
       await expect(locators.errorMessage).toHaveText('Error 3 out of 3');
       await expect(locators.textarea).toBeFocused();
       await expect(tooltip).toHaveText('row has invalid charsets');
+      await page.waitForTimeout(100);
       await expect(page).toHaveScreenshot();
       await tenthRow.click();
+      await page.waitForTimeout(100);
       await expect(page).toHaveScreenshot();
       await expect(locators.errorMessage).toHaveText('3 errors');
       await expect(tooltip).toHaveText('some global error');
@@ -544,13 +549,12 @@ test.describe('Error tooltips', () => {
       await expect(tooltip).toHaveText('some global error');
       await expect(contentDiv).toHaveAttribute('aria-invalid', 'true');
       await expect(locators.errorMessage).toHaveText('3 errors');
-
       await page.keyboard.press('ArrowUp');
       await page.waitForTimeout(100);
       const eleventhRow = contentDiv.locator('p:nth-child(11)');
       await expect(eleventhRow).toHaveAttribute('aria-errormessage', 'row has invalid charsets');
 
-      //  await expect(locators.errorMessage).toHaveText('Error 3 out of 3');
+     // await expect(locators.errorMessage).toHaveText('Error 3 out of 3');
 
       await page.keyboard.press('ArrowUp');
       await expect(locators.errorMessage).toHaveText('3 errors');
@@ -561,7 +565,7 @@ test.describe('Error tooltips', () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
       await expect(locators.textarea).toBeFocused();
-      // await expect(locators.errorMessage).toHaveText('Error 1 out of 3');
+      await expect(locators.errorMessage).toHaveText('Error 1 out of 3');
       await expect(tooltip).toHaveText('row has invalid charsets');
 
       await page.keyboard.press('Tab');
@@ -630,8 +634,7 @@ test.describe('Error tooltips', () => {
       await expect(contentDiv).toHaveAttribute('aria-invalid', 'true');
       await expect(tooltip).toHaveText('some global error');
 
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Enter');
+      await locators.buttonNext.click();
       await expect(locators.errorMessage).toHaveText('Error 1 out of 1');
       await expect(tooltip).toHaveText('row has invalid charsets');
       await page.keyboard.press('Backspace');
