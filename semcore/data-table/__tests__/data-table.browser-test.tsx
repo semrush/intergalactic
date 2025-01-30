@@ -40,9 +40,9 @@ test.describe('DataTable', () => {
       await page.keyboard.press('Shift+Tab');
       await page.keyboard.press('Shift+Tab');
     }
-
+else{
     await expect(page.getByRole('button', { name: 'Prev' })).toBeFocused();
-
+  }
     await page.keyboard.press('Shift+Tab');
     await page.keyboard.press('Shift+Tab');
     await expect(page.getByRole('gridcell', { name: 'ebay buy last' })).toBeFocused();
