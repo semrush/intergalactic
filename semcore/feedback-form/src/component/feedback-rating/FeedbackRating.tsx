@@ -267,7 +267,7 @@ class FeedbackRatingRoot extends Component<
           </Notice.Label>
           <Notice.Content>
             {notificationTitle ? <Notice.Title>{notificationTitle}</Notice.Title> : null}
-            <Notice.Text tag={Flex} alignItems={'center'}>
+            <Notice.Text tag={Flex} alignItems={notificationTitle ? 'flex-start' : 'center'}>
               <Text mr={3} id={notificationId}>
                 {notificationText}
               </Text>
