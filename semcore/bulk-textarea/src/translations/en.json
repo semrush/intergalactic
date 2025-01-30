@@ -1,6 +1,6 @@
 {
   "BulkTextarea.ClearAllButton.buttonText": "Clear all",
-  "BulkTextarea.Counter.ofAllowedRows:sr-message": "of {rowsNumber} rows",
+  "BulkTextarea.Counter.ofAllowedRows:sr-message": "of {rowsNumber} lines",
   "BulkTextarea.Counter.limitReached:sr-message": "Limit reached",
   "BulkTextarea.Counter.limitExceeded:sr-message": "Limit exceeded",
   "BulkTextarea.ErrorsNavigation.totalErrors": "{errorsCount} {errorsCount, plural, one {error} other {errors}}",
