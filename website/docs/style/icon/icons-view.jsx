@@ -24,10 +24,7 @@ const SuggestSearch = connectAutoComplete(
     };
     useEffect(() => {
       filteredIcons(hits);
-      if (currentRefinement)
-        setMessage(
-          `${hits.length ? `${hits.length} icon${hits.length === 1 ? '' : 's'}` : 'Nothing'} found`,
-        );
+      if (currentRefinement) setMessage(`${hits.length ? hits.length : 'Nothing'} found`);
       else setMessage('');
     });
 
@@ -80,7 +77,13 @@ export default function ({ icons, old, json }) {
 
       {inputValue.length ? (
         filterIcons.length ? (
-          <ListIcons data={filterIcons} icons={icons} old={old} json={json} />
+          <ListIcons
+            data={filterIcons}
+            aria-label={'Search results'}
+            icons={icons}
+            old={old}
+            json={json}
+          />
         ) : (
           <Box
             style={{

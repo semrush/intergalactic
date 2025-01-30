@@ -1,9 +1,9 @@
 import React from 'react';
 
-import Tooltip from 'intergalactic/tooltip';
-import { Col, Row } from 'intergalactic/grid';
+import Tooltip from '@semcore/tooltip';
+import { Flex } from '@semcore/flex-box';
 import Pills from '@semcore/pills';
-import OutsideClick from 'intergalactic/outside-click';
+import SidePanel from '@semcore/side-panel';
 import Copy from '@components/Copy';
 import styles from './styles.module.css';
 
@@ -38,111 +38,125 @@ const DownloadIconButton = ({ size, name, action, dataIcons, icon: Icon }) => {
     const url = `semcore/icon/svg/${includeGroupName}/${nameSvg}.svg`;
     return (
       <Tooltip title='Download!'>
-        <div className={styles.previewChangeIcon}>
-          <a
-            className={styles.areaLink}
-            rel='noopener noreferrer'
-            download={url}
-            target='_blank'
-            href={`https://github.com/semrush/intergalactic/raw/master/${url}?inline=false`}
-            data-container='body'
-            data-original-title='Download'
-          />
+        <a
+          className={styles.previewChangeIcon}
+          rel='noopener noreferrer'
+          download={url}
+          target='_blank'
+          href={`https://github.com/semrush/intergalactic/raw/master/${url}?inline=false`}
+          data-container='body'
+          data-original-title='Download'
+        >
           <Icon width={20} height={20} />
           <span className={styles.iconSizes}>
             <span className={styles.iconSizeTitle}>{size.toUpperCase()}</span>
             {` (${iconSize}x${iconSize}px)`}
           </span>
-        </div>
+        </a>
       </Tooltip>
     );
   }
 
   return (
-    <Copy copiedToast='Copied!' toCopy={getImportText} trigger='click'>
-      <div className={styles.previewChangeIcon}>
+    <Copy toCopy={getImportText} trigger='click' title='Copy import'>
+      <button type='button' className={styles.previewChangeIcon}>
         <Icon width={20} height={20} />
         <span className={styles.iconSizes}>
           <span className={styles.iconSizeTitle}>{size.toUpperCase()}</span>
           {` (${iconSize}x${iconSize}px)`}
         </span>
-      </div>
+      </button>
     </Copy>
   );
 };
 
-const IconDetailsPanel = ({ name, json: dataIcons, icon: Icon, onClose }) => {
+const IconDetailsPanel = ({ name, json: dataIcons, icon: Icon, visible, onClose }) => {
   const [action, setAction] = React.useState('copy');
-  const ref = React.useRef(null);
 
   return (
-    <div className={styles.panelIcon} ref={ref}>
-      <OutsideClick onOutsideClick={onClose} excludeRefs={[ref]} />
-      <Row>
-        <Col style={{ display: 'flex', flexDirection: 'column', marginRight: 40 }}>
-          <b>{name}</b>
-          <Pills value={action} style={{ marginTop: 13 }} onChange={setAction}>
-            <Pills.Item value='copy'>Copy import</Pills.Item>
-            <Pills.Item value='download'>Download SVG</Pills.Item>
-          </Pills>
-        </Col>
-        <Col>
-          <div className={styles.panelIconList}>
-            {dataIcons.icons
-              .filter((icon) => icon.name === name)[0]
-              .size.map((size) => {
-                return (
-                  <DownloadIconButton
-                    key={size}
-                    size={size}
-                    name={name}
-                    action={action}
-                    dataIcons={dataIcons}
-                    icon={Icon}
-                  />
-                );
-              })}
-          </div>
-        </Col>
-      </Row>
-    </div>
+    <SidePanel visible={visible} placement='bottom' onClose={onClose}>
+      <SidePanel.Panel id={`${name}-dialog`} aria-label={`Get ${name} icon`} aria-modal={false}>
+        <Flex gap={10} justifyContent='center'>
+          <Flex direction='column'>
+            <b>{name}</b>
+            <Pills
+              value={action}
+              style={{ marginTop: 13 }}
+              onChange={setAction}
+              aria-label={`Get ${name} icon`}
+            >
+              <Pills.Item value='copy'>Copy import</Pills.Item>
+              <Pills.Item value='download'>Download SVG</Pills.Item>
+            </Pills>
+          </Flex>
+          <Flex gap={6}>
+            {visible &&
+              dataIcons.icons
+                .filter((icon) => icon.name === name)[0]
+                .size.map((size) => {
+                  return (
+                    <DownloadIconButton
+                      key={size}
+                      size={size}
+                      name={name}
+                      action={action}
+                      dataIcons={dataIcons}
+                      icon={Icon}
+                    />
+                  );
+                })}
+          </Flex>
+        </Flex>
+      </SidePanel.Panel>
+    </SidePanel>
   );
 };
 
-export const ListIcons = ({ data, icons, json }) => {
+export const ListIcons = ({ data, icons, json, ...props }) => {
   const [showPanel, setShowPanel] = React.useState(null);
+  const triggerRef = React.useRef(null);
 
   return (
-    <div className={styles.list}>
-      {showPanel && (
-        <IconDetailsPanel
-          name={showPanel}
-          icon={icons[showPanel]}
-          json={json}
-          onClose={() => setShowPanel(null)}
-        />
-      )}
-      {data.map((icon) => {
-        const Icon = icons[icon.name];
-        if (!Icon) {
-          throw new Error(`Icon ${icon.name} was not founded in import from @icons`);
-        }
+    <>
+      <ul
+        className={styles.list}
+        aria-labelledby={props['aria-labelledby'] ?? undefined}
+        aria-label={props['aria-label'] ?? undefined}
+      >
+        {data.map((icon) => {
+          const Icon = icons[icon.name];
+          if (!Icon) {
+            throw new Error(`Icon ${icon.name} not found in import from @icons`);
+          }
 
-        return (
-          // biome-ignore lint/a11y/useKeyWithClickEvents:
-          <div
-            className={styles.previewIcon}
-            tabIndex={0}
-            key={icon.name}
-            data-name={icon.name}
-            onClick={() => setShowPanel(icon.name)}
-          >
-            <Icon width={20} height={20} />
-            <span>{icon.name}</span>
-          </div>
-        );
-      })}
-    </div>
+          return (
+            <li className={styles.previewIcon} key={icon.name} data-name={icon.name}>
+              <button
+                type='button'
+                aria-haspopup='dialog'
+                aria-expanded={showPanel === icon.name}
+                aria-controls={showPanel === icon.name ? `${icon.name}-dialog` : undefined}
+                ref={showPanel === icon.name ? triggerRef : undefined}
+                onClick={() => setShowPanel(icon.name)}
+              >
+                <Icon width={20} height={20} />
+                <span>{icon.name}</span>
+              </button>
+            </li>
+          );
+        })}
+      </ul>
+      <IconDetailsPanel
+        name={showPanel}
+        icon={icons[showPanel]}
+        json={json}
+        visible={showPanel !== null}
+        onClose={() => {
+          setShowPanel(null);
+          setTimeout(() => triggerRef.current?.focus(), 10);
+        }}
+      />
+    </>
   );
 };
 
@@ -158,8 +172,8 @@ export default function ({ title }) {
 
   return (
     <div className={styles.section}>
-      <h3>{title}</h3>
-      <ListIcons data={filterIcons} {...context} />
+      <h3 id={`${title}-heading`}>{title}</h3>
+      <ListIcons data={filterIcons} aria-labelledby={`${title}-heading`} {...context} />
     </div>
   );
 }

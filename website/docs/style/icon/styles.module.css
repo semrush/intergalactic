@@ -4,7 +4,7 @@
   line-height: var(--intergalactic-lh-300);
 }
 
-.list {
+ul.list {
   display: flex;
   flex-wrap: wrap;
   padding: var(--intergalactic-spacing-3x);
@@ -14,6 +14,10 @@
 }
 
 .previewIcon {
+  display: flex;
+}
+
+.previewIcon button {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -27,12 +31,12 @@
   outline: none;
 }
 
-.previewIcon:hover {
+.previewIcon button:hover {
   cursor: pointer;
   background-color: var(--intergalactic-bg-primary-neutral-hover);
 }
 
-.previewIcon:focus {
+.previewIcon button:focus {
   border-color: var(--intergalactic-border-info-active);
 }
 
@@ -83,22 +87,6 @@
 .previewIcon svg,
 .previewChangeIcon svg {
   pointer-events: none;
-}
-
-.panelIconList {
-  display: flex;
-}
-
-.panelIconList div {
-  margin-right: 12px;
-}
-
-.areaLink {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
 }
 
 .iconSizes {
