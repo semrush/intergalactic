@@ -22,11 +22,6 @@ Table: Roles and attributes
 |                                                | `"aria-label={n} out of {n}, limit exceeded"`            | Sets an accessible name for the element.                                                                                                                       |
 | Buttons inside `BulkTextarea.ErrorsNavigation` | `aria-label="Next error"`, `aria-label="Previous error"` | Sets an accessible names for the buttons with no text.                                                                                                         |
 
-<!-- | CHECK p rows | `aria-live="polite"` | Identifies the container element as a live region in the "polite" state, meaning assistive technology users are informed of changes to the region at the next available opportunity. Announces live message:"Keyword {2}", on each keyboard navigation (Up/Down key) within the textbox rows without errors. |
-| CHECK IF NEEDED `BulkTextarea.ErrorItem` | `aria-hidden="true"` | Hides noninteractive icon from the assistive technologies.
-| CHECK | `aria-live="polite"` | Identifies the container element as a live region in the "polite" state, meaning assistive technology users are informed of changes to the region at the next available opportunity. Announces live message:"Error {n} out of {n}", while navigating between the errors using buttons. | |
--->
-
 ### Keyboard support
 
 For detailed information about keyboard support for the Input, refer to the [Keyboard control guide](/core-principles/a11y/a11y-keyboard#input_i_textarea).
@@ -39,7 +34,7 @@ Error messages aren't set by default in the component.
 
 Configure error messages for tooltips so they're visible to sighted users and announced by assistive technologies:
 
-- A message for specific errors in invalid rows, based on your validation rules.
+- A `data-errormessage` for specific errors in invalid lines. By default `data-errormessage`has `undefined` value.
 - A message for the whole input if you’re validating the entire field.
 
 ## Other recommendations
