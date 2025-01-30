@@ -33,15 +33,14 @@ test.describe('DataTable', () => {
 
     await page.keyboard.press('Tab');
     await expect(page.getByRole('button', { name: 'Next' })).toBeFocused();
- 
+
     await page.keyboard.press('Space');
     await page.keyboard.press('Space');
-    if(browserName==='webkit')
-   {
+    if (browserName === 'webkit') {
       await page.keyboard.press('Shift+Tab');
       await page.keyboard.press('Shift+Tab');
     }
-    
+
     await expect(page.getByRole('button', { name: 'Prev' })).toBeFocused();
 
     await page.keyboard.press('Shift+Tab');
