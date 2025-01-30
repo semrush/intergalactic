@@ -61,18 +61,18 @@ test.describe('Manual adding rows', () => {
     const locators = getLocators(page);
 
     await test.step('Verify counter is zero on initial load', async () => {
-      await expect(locators.counter).toHaveText('0/15of 15 rows');
+      await expect(locators.counter).toHaveText('0/15of 15 lines');
     });
 
     await test.step('Type text into textarea and check counter', async () => {
       await page.keyboard.press('Tab');
       await locators.textarea.press('a');
-      await expect(locators.counter).toHaveText('1/15of 15 rows');
+      await expect(locators.counter).toHaveText('1/15of 15 lines');
     });
 
     await test.step('Press backspace and check counter', async () => {
       await locators.textarea.press('Backspace');
-      await expect(locators.counter).toHaveText('0/15of 15 rows');
+      await expect(locators.counter).toHaveText('0/15of 15 lines');
       await expect(locators.clearAllBtn).not.toBeVisible();
     });
 
@@ -81,7 +81,7 @@ test.describe('Manual adding rows', () => {
       await page.keyboard.press('Enter');
       await page.keyboard.type('a', { delay: 10 });
       await page.keyboard.press('Backspace');
-      await expect(locators.counter).toHaveText('1/15of 15 rows');
+      await expect(locators.counter).toHaveText('1/15of 15 lines');
       await locators.textarea.press('Backspace');
     });
 
@@ -90,14 +90,14 @@ test.describe('Manual adding rows', () => {
       const text =
         'Zoom in \nSecond row\n3 row\n4 row\n5 row\n6 row\n7 row\n8 row\n9 row\n10 row\n11 row\n12 row\n13 row\n14 row\n15 row';
       await page.keyboard.type(text, { delay: 10 });
-      await expect(locators.counter).toHaveText('15/15of 15 rowsLimit reached');
+      await expect(locators.counter).toHaveText('15/15of 15 linesLimit reached');
     });
 
     await test.step('Exceeded counter limit by enterring one row', async () => {
       await page.keyboard.press('Enter');
       await locators.textarea.press('a');
       await page.keyboard.press('Space');
-      await expect(locators.counter).toHaveText('16/15of 15 rowsLimit exceeded');
+      await expect(locators.counter).toHaveText('16/15of 15 linesLimit exceeded');
     });
 
     await test.step('Remove all content manually and verify counter', async () => {
@@ -106,12 +106,12 @@ test.describe('Manual adding rows', () => {
       await page.keyboard.press('A');
       await page.keyboard.up(modifier);
       await page.keyboard.press('Backspace');
-      await expect(locators.counter).toHaveText('0/15of 15 rows');
+      await expect(locators.counter).toHaveText('0/15of 15 lines');
       if (browserName !== 'webkit') {
         const text =
           'Zoom in \nSecond row\n3 row\n4 row\n5 row\n6 row\n7 row\n8 row\n9 row\n10 row\n11 row\n12 row\n13 row\n14 row\n15 row';
         await page.keyboard.type(text, { delay: 10 });
-        await expect(locators.counter).toHaveText('15/15of 15 rowsLimit reached');
+        await expect(locators.counter).toHaveText('15/15of 15 linesLimit reached');
       }
     });
   });
@@ -322,7 +322,7 @@ test.describe('Manual adding rows', () => {
       await page.keyboard.type(text, { delay: 10 });
       const lineCount = await contentDiv.locator('p').count();
       await expect(lineCount).toBe(10);
-      await expect(locators.counter).toHaveText('10/15of 15 rows');
+      await expect(locators.counter).toHaveText('10/15of 15 lines');
       await locators.clearAllBtn.click();
       await page.waitForTimeout(100);
     });
@@ -334,7 +334,7 @@ test.describe('Manual adding rows', () => {
       await page.keyboard.press('Enter');
       const lineCount = await contentDiv.locator('p').count();
       await expect(lineCount).toBe(2);
-      await expect(locators.counter).toHaveText('0/15of 15 rows');
+      await expect(locators.counter).toHaveText('0/15of 15 lines');
       await page.keyboard.press('Backspace');
     });
     await test.step('Verify rows Processing works in 1st row when data in the begin', async () => {
@@ -344,7 +344,7 @@ test.describe('Manual adding rows', () => {
       await page.keyboard.press('Enter');
       const lineCount = await contentDiv.locator('p').count();
       await expect(lineCount).toBe(2);
-      await expect(locators.counter).toHaveText('1/15of 15 rows');
+      await expect(locators.counter).toHaveText('1/15of 15 lines');
       const firstLine = await page.locator('div[contenteditable="true"] p').first();
 
       const firstLineText = await firstLine.textContent();
@@ -386,13 +386,13 @@ test.describe('Clear all fuctionality', () => {
       await expect(locators.clearAllBtn).not.toBeVisible();
       const lineCount = await contentDiv.locator('p').count();
       await expect(lineCount).toBe(0);
-      await expect(locators.counter).toHaveText('0/15of 15 rows');
+      await expect(locators.counter).toHaveText('0/15of 15 lines');
     });
 
     await test.step('Type text into textarea and click clear all', async () => {
       await locators.textarea.click();
       await page.keyboard.type('Testhttp://,test2', { delay: 100 });
-      await expect(locators.counter).toHaveText('2/15of 15 rows');
+      await expect(locators.counter).toHaveText('2/15of 15 lines');
       await expect(locators.clearAllBtn).toBeVisible();
       await expect(locators.clearAllBtn).not.toBeFocused();
       await locators.clearAllBtn.click();
@@ -400,7 +400,7 @@ test.describe('Clear all fuctionality', () => {
       await expect(locators.clearAllBtn).not.toBeVisible();
       const lineCount = await contentDiv.locator('p').count();
       await expect(lineCount).toBe(0);
-      await expect(locators.counter).toHaveText('0/15of 15 rows');
+      await expect(locators.counter).toHaveText('0/15of 15 lines');
     });
   });
 
@@ -422,7 +422,7 @@ test.describe('Clear all fuctionality', () => {
       await expect(locators.clearAllBtn).not.toBeVisible();
       const lineCount = await contentDiv.locator('p').count();
       await expect(lineCount).toBe(0);
-      await expect(locators.counter).toHaveText('0/15of 15 rows');
+      await expect(locators.counter).toHaveText('0/15of 15 lines');
     });
   });
 
@@ -444,7 +444,7 @@ test.describe('Clear all fuctionality', () => {
       await expect(locators.clearAllBtn).not.toBeVisible();
       const lineCount = await contentDiv.locator('p').count();
       await expect(lineCount).toBe(0);
-      await expect(locators.counter).toHaveText('0/15of 15 rows');
+      await expect(locators.counter).toHaveText('0/15of 15 lines');
     });
   });
 });
