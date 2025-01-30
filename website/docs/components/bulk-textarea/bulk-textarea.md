@@ -19,7 +19,6 @@ Component consists of the following:
 
 - `BulkTextarea.InputField`
 - `BulkTextarea.Counter`
-- `BulkTextarea.InputField line (p)`
 - `BulkTextarea.ErrorItem`
 - `BulkTextarea.ErrorsNavigation`
 - `BulkTextarea.ClearAll`
@@ -32,8 +31,6 @@ Component has two sizes:
 
 - M, with `--fs-200` font size
 - L, with `--fs-300` font size
-
-![](static/bulk-sizes.png)
 
 ### Lines
 
