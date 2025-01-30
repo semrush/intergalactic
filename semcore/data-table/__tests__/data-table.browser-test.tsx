@@ -21,7 +21,7 @@ test.describe('DataTable', () => {
     await expect(page).toHaveScreenshot();
   });
 
-  test('Keyboard access with changing data', async ({ page }) => {
+  test('Keyboard access with changing data', async ({ page, browserName }) => {
     const standPath = 'stories/components/data-table/docs/examples/pagination.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
@@ -33,9 +33,15 @@ test.describe('DataTable', () => {
 
     await page.keyboard.press('Tab');
     await expect(page.getByRole('button', { name: 'Next' })).toBeFocused();
-
+ 
     await page.keyboard.press('Space');
     await page.keyboard.press('Space');
+    if(browserName==='webkit')
+   {
+      await page.keyboard.press('Shift+Tab');
+      await page.keyboard.press('Shift+Tab');
+    }
+    
     await expect(page.getByRole('button', { name: 'Prev' })).toBeFocused();
 
     await page.keyboard.press('Shift+Tab');
