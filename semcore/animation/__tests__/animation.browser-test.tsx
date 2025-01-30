@@ -9,7 +9,7 @@ test.describe('Basic usage', () => {
     { text: 'Fade Duration 500', parent: 'FadeInOut', duration: '0.5s', delay: '0s' },
     { text: 'Fade Duration 500 Delay 500', parent: 'FadeInOut', duration: '0.5s', delay: '0.5s' },
     { text: 'Fade Duration 0', parent: 'FadeInOut', duration: '0s', delay: '0s' },
-    { text: 'Transform', parent: 'Transform', duration: '0.5s', delay: '0s' }
+    { text: 'Transform', parent: 'Transform', duration: '0.5s', delay: '0s' },
   ];
 
   test.beforeEach(async ({ page }) => {
@@ -25,7 +25,7 @@ test.describe('Basic usage', () => {
 
     for (const button of buttons) {
       const buttonText = await button.locator('span[data-ui-name="Button.Text"]').textContent();
-      const buttonData = buttonsData.find(data => data.text === buttonText);
+      const buttonData = buttonsData.find((data) => data.text === buttonText);
 
       if (!buttonData) continue;
 
@@ -58,10 +58,7 @@ test.describe('Basic usage', () => {
   });
 });
 
-
-
 test.describe('Accordion collapse usage', () => {
-
   test.beforeEach(async ({ page }) => {
     const standPath = 'stories/components/animation/tests/examples/in-accordion-collapse.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -69,41 +66,41 @@ test.describe('Accordion collapse usage', () => {
   });
 
   test('Check collapse props', async ({ page }) => {
-  const toggleItems = await page.locator('h3[data-ui-name="Item.Toggle"]');
+    const toggleItems = await page.locator('h3[data-ui-name="Item.Toggle"]');
 
-  for (let i = 0; i < await toggleItems.count(); i++) {
-    const toggleItem = toggleItems.nth(i);
-    const toggleButton = toggleItem.locator('div[data-ui-name="Item.ToggleButton"]');
+    for (let i = 0; i < (await toggleItems.count()); i++) {
+      const toggleItem = toggleItems.nth(i);
+      const toggleButton = toggleItem.locator('div[data-ui-name="Item.ToggleButton"]');
 
-    await toggleButton.click();
-    await page.waitForTimeout(1000);
-    const collapseDiv = page.locator('[data-ui-name="Item.Collapse"]');
-await expect(collapseDiv).toBeVisible();
-    const animationDelay = await collapseDiv.evaluate((el) => {
-      const style = getComputedStyle(el);
-      return style.animationDelay;
-    });
+      await toggleButton.click();
+      await page.waitForTimeout(1000);
+      const collapseDiv = page.locator('[data-ui-name="Item.Collapse"]');
+      await expect(collapseDiv).toBeVisible();
+      const animationDelay = await collapseDiv.evaluate((el) => {
+        const style = getComputedStyle(el);
+        return style.animationDelay;
+      });
 
-    const animationDuration = await collapseDiv.evaluate((el) => {
-      const style = getComputedStyle(el);
-      return style.animationDuration;
-    });
+      const animationDuration = await collapseDiv.evaluate((el) => {
+        const style = getComputedStyle(el);
+        return style.animationDuration;
+      });
 
-    if (i === 0) {
-      expect(animationDelay).toBe('0s'); 
-      expect(animationDuration).toBe('0.5s'); 
-    } else if (i === 1) {
-      expect(animationDelay).toBe('0.5s');
-      expect(animationDuration).toBe('0.5s');
-    } else if (i === 2) {
-      expect(animationDelay).toBe('0s');
-      expect(animationDuration).toBe('0s');
-    } else if (i === 3) {
-      expect(animationDelay).toBe('0s');
-      expect(animationDuration).toBe('0.2s'); 
+      if (i === 0) {
+        expect(animationDelay).toBe('0s');
+        expect(animationDuration).toBe('0.5s');
+      } else if (i === 1) {
+        expect(animationDelay).toBe('0.5s');
+        expect(animationDuration).toBe('0.5s');
+      } else if (i === 2) {
+        expect(animationDelay).toBe('0s');
+        expect(animationDuration).toBe('0s');
+      } else if (i === 3) {
+        expect(animationDelay).toBe('0s');
+        expect(animationDuration).toBe('0.2s');
+      }
+      await toggleButton.click();
+      await page.waitForTimeout(1000);
     }
-    await toggleButton.click();
-    await page.waitForTimeout(1000);
-  }
   });
 });
