@@ -50,7 +50,8 @@ const beforeEachTests = async ({}, use: () => Promise<void>, testInfo: TestInfo)
 
   await allure.label('component', component);
   await allure.layer(layer);
-  await allure.suite(suite);
+  await allure.feature(layer);
+  await allure.suite(layer);
   await allure.parentSuite(component);
   await allure.subSuite(subSuiteName);
   await allure.story(testInfo.title);
