@@ -1,0 +1,10 @@
+{
+  "BulkTextarea.ClearAllButton.buttonText": "Tout effacer",
+  "BulkTextarea.Counter.ofAllowedRows:sr-message": "lignes sur {rowsNumber}",
+  "BulkTextarea.Counter.limitReached:sr-message": "Limite atteinte",
+  "BulkTextarea.Counter.limitExceeded:sr-message": "Limite dépassée",
+  "BulkTextarea.ErrorsNavigation.totalErrors": "{errorsCount} {errorsCount, plural, one {erreur} other {erreurs}}",
+  "BulkTextarea.ErrorsNavigation.selectedError": "Erreur {errorIndex} sur {errorsCount}",
+  "BulkTextarea.ErrorsNavigation.nextError:aria-label": "Erreur suivante",
+  "BulkTextarea.ErrorsNavigation.previousError:aria-label": "Erreur précédente"
+}

@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.17.9",
+    "@formatjs/intl": "3.0.4",
     "@phytonmk/nano-css": "5.3.7",
     "classnames": "2.2.6",
     "colorjs.io": "0.4.3",
