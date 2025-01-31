@@ -9,7 +9,7 @@ const cache = new CellMeasurerCache({
 
 const Demo = () => {
   return (
-    <DataTable data={data} aria-label={'Table title. Custom rows rendering'}>
+    <DataTable data={data} aria-label={'Custom rows rendering'}>
       <DataTable.Head>
         <DataTable.Column name='keyword' children='Keyword' />
         <DataTable.Column name='tags' children='Tags' />

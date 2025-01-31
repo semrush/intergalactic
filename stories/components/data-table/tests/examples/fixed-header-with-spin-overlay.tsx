@@ -1,8 +1,9 @@
 import React from 'react';
 import DataTable from '@semcore/data-table';
 import SpinContainer from '@semcore/spin-container';
+import { Box } from '@semcore/flex-box';
 
-const Demo = (): any => {
+const Demo = () => {
   const [loading, setLoading] = React.useState(true);
   React.useEffect(() => {
     const timer = setInterval(() => {
@@ -13,21 +14,17 @@ const Demo = (): any => {
     };
   }, [loading]);
   return (
-    <DataTable data={data} aria-label={'Table title. Download status'}>
-      <DataTable.Head>
-        <DataTable.Column name='keyword' children='Keyword' />
-        <DataTable.Column name='kd' children='KD,%' />
-        <DataTable.Column name='cpc' children='CPC' />
-        <DataTable.Column name='vol' children='Vol.' />
-      </DataTable.Head>
-      <SpinContainer
-        loading={loading}
-        style={{ overflow: 'initial' }}
-        use:aria-busy={undefined}
-        // @ts-ignore
-        inert={loading ? '' : undefined}
-      >
-        <DataTable.Body aria-busy={loading} />
+    <DataTable data={data} aria-label={'Fixed header with spin overlay'}>
+      <Box position='sticky' top={0} zIndex={2}>
+        <DataTable.Head>
+          <DataTable.Column name='keyword' children='Keyword' />
+          <DataTable.Column name='kd' children='KD,%' />
+          <DataTable.Column name='cpc' children='CPC' />
+          <DataTable.Column name='vol' children='Vol.' />
+        </DataTable.Head>
+      </Box>
+      <SpinContainer loading={loading} style={{ overflow: 'initial' }}>
+        <DataTable.Body />
         <SpinContainer.Overlay />
       </SpinContainer>
     </DataTable>

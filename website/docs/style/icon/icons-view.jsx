@@ -5,10 +5,11 @@ import algoliasearch from 'algoliasearch/lite';
 import { Flex } from '@semcore/flex-box';
 
 import IconGroup, { IconGroups, ListIcons } from './icon-group';
-import Input from 'intergalactic/input';
-import { Text } from 'intergalactic/typography';
-import SearchM from 'intergalactic/icon/Search/m';
-import CloseM from 'intergalactic/icon/Close/m';
+import Input from '@semcore/input';
+import { ButtonLink } from '@semcore/button';
+import { Text } from '@semcore/typography';
+import SearchM from '@semcore/icon/Search/m';
+import CloseM from '@semcore/icon/Close/m';
 import staticFiles from '@static';
 import { algoliaConfig } from '../../../algoliaConfig';
 
@@ -37,12 +38,14 @@ const SuggestSearch = connectAutoComplete(
           aria-label={'Search icons'}
         />
         {!!currentRefinement && (
-          <Input.Addon
-            tag={CloseM}
-            interactive
-            onClick={() => handleChangeValue('')}
-            aria-label='Clear field'
-          />
+          <Input.Addon>
+            <ButtonLink
+              addonLeft={CloseM}
+              use='secondary'
+              onClick={() => handleChangeValue('')}
+              title='Clear'
+            />
+          </Input.Addon>
         )}
       </Input>
     );

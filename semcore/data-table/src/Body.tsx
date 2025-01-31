@@ -102,7 +102,7 @@ class Body extends Component<AsProps, {}, State> {
   };
 
   onFocusCell = (e: React.FocusEvent<HTMLElement, HTMLElement>) => {
-    if (e.target === e.currentTarget) {
+    if (e.target === e.currentTarget && e.target.matches(':focus-visible')) {
       const focusableChildren = Array.from(e.currentTarget.children).flatMap((node) =>
         getFocusableIn(node as HTMLElement),
       );

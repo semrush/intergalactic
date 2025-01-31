@@ -2,11 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.45.0] - 2024-12-30
+
+### Added
+
+- `plural`, `selectordinal` and others Intl formatting for translations.
+
 ## [4.44.2] - 2025-01-21
 
 ### Added
 
-- `inputMode` as an item of default input props.
+- `inputMode` and `autoComplete` as an item of default input props.
 
 ## [4.44.1] - 2024-12-20
 
