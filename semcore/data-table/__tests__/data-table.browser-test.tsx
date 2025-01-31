@@ -21,7 +21,7 @@ test.describe('DataTable', () => {
     await expect(page).toHaveScreenshot();
   });
 
-  test('Keyboard access with changing data', async ({ page, browserName }) => {
+  test('Keyboard access with changing data', async ({ page }) => {
     const standPath = 'stories/components/data-table/docs/examples/pagination.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
