@@ -32,12 +32,11 @@ export const skipButtonComboboxDiscernibleErrors = (v: axe.Result) => {
 // biome-ignore lint/correctness/noEmptyPattern:
 const beforeEachTests = async ({}, use: () => Promise<void>, testInfo: TestInfo) => {
   let layer = 'Other tests';
-  const testFilePath = testInfo.file.split('/'); 
-  const fileName = testFilePath[testFilePath.length - 1]; 
-  const component = testFilePath[testFilePath.length - 3]; 
-  const suite = fileName.split('.')[1]; 
-  
- 
+  const testFilePath = testInfo.file.split('/');
+  const fileName = testFilePath[testFilePath.length - 1];
+  const component = testFilePath[testFilePath.length - 3];
+  const suite = fileName.split('.')[1];
+
   if (suite.includes('browser')) {
     layer = 'Browser tests';
   } else if (suite.includes('axe')) {
@@ -47,13 +46,13 @@ const beforeEachTests = async ({}, use: () => Promise<void>, testInfo: TestInfo)
   } else if (suite.includes('index')) {
     layer = 'Unit tests';
   }
-   const subSuiteName = testInfo.titlePath[1];
+  const subSuiteName = testInfo.titlePath[1];
 
-  await allure.label('component', component); 
-  await allure.layer(layer); 
-  await allure.suite(suite); 
-  await allure.parentSuite(component); 
-  await allure.subSuite(subSuiteName); 
+  await allure.label('component', component);
+  await allure.layer(layer);
+  await allure.suite(suite);
+  await allure.parentSuite(component);
+  await allure.subSuite(subSuiteName);
 
   await use();
 };
