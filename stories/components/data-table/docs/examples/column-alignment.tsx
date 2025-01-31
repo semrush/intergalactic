@@ -3,7 +3,7 @@ import DataTable from '@semcore/data-table';
 
 const Demo = () => {
   return (
-    <DataTable data={data} aria-label={'Table title. Column alignment'}>
+    <DataTable data={data} aria-label={'Column alignment'}>
       <DataTable.Head>
         <DataTable.Column name='keyword' children='Keyword' />
         <DataTable.Column name='kd' children='KD,%' justifyContent='flex-end' />

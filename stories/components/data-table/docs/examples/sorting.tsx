@@ -24,12 +24,7 @@ const Demo = () => {
   );
 
   return (
-    <DataTable
-      data={sortedData}
-      sort={sort}
-      onSortChange={setSort}
-      aria-label={'Table title. Sorting'}
-    >
+    <DataTable data={sortedData} sort={sort} onSortChange={setSort} aria-label={'Sorting'}>
       <DataTable.Head>
         <DataTable.Column name='keyword' children='Keyword' justifyContent='left' sortable />
         <DataTable.Column name='kd' children='KD,%' justifyContent='right' wMax={68} sortable />
