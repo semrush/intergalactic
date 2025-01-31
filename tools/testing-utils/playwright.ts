@@ -49,9 +49,10 @@ const beforeEachTests = async ({}, use: () => Promise<void>, testInfo: TestInfo)
 
   await allure.label('component', component); // component
   await allure.layer(suit); //  Browser tests, Axe tests и т. д.
-  await allure.suite(component); // Suite = component
-  await allure.subSuite(testInfo.titlePath.slice(1).join(' > ')); //test name
-  await allure.story(testInfo.title); //describe name
+  await allure.suite(suit); // Suite = component
+  await allure.parentSuite(component); // Suite = component
+  await allure.subSuite(testInfo.title); //test name
+  //await allure.story(); //describe name testInfo.titlePath.slice(1).join(' > ')
 
   await use();
 };
