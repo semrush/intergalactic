@@ -2,21 +2,21 @@ import { beforeEach } from 'vitest';
 import { label, feature, story, parentSuite, suite, subSuite } from 'allure-js-commons';
 
 beforeEach(async (context) => {
-  const suit = 'Unit tests';
   const filePath = (context.task.file?.name ?? '').split('/');
-  const fileName = filePath[filePath.length - 1];
-  const component = filePath[1] ?? '';
-  const componentName = component.charAt(0).toUpperCase() + component.slice(1);
-
-  const storyName = context.task.name;
-
-  await label('component', componentName);
+  const fileName = filePath[filePath.length - 1]; 
+  const component = filePath[filePath.length - 3] ?? ''; 
+  const subSuiteName = filePath[filePath.length - 2] ?? ''; 
+  
+  const suit = 'Unit tests';
+  const storyName = context.task.name; 
+  
+  await label('component', component);
   await feature(suit);
   await story(storyName);
-
-  await parentSuite(componentName);
+  
+  await parentSuite(component);
   await suite(suit);
-  await subSuite(storyName);
+  await subSuite(subSuiteName); 
 });
 
 export * from 'vitest';
