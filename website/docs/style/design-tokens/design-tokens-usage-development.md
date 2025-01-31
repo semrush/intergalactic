@@ -77,6 +77,7 @@ import '@semcore/ui/utils/lib/themes/default.css'; /** TO REMOVE WHEN THEME PR W
 import Button from '@semcore/ui/button';
 import { Box } from '@semcore/ui/flex-box';
 import CheckM from '@semcore/icon/Check/m';
+import CopyM from '@semcore/ui/icon/Copy/m'
 import cx from 'classnames';
 import { processTokens, tokensToJson, tokensToCss } from '@semcore/utils/theme/utils';
 import styles from './processor.module.css';
@@ -106,6 +107,7 @@ const FileInput = ({ id, onFile, multiple, accept }) => {
         type='file'
         accept={accept}
         onChange={(event) => onFile([...(event.target.files ?? [])])}
+        aria-describedby="inpu-hint"
       />
       <div className={styles.dropzoneInner}>
         <div>Drag files here</div>
@@ -114,7 +116,7 @@ const FileInput = ({ id, onFile, multiple, accept }) => {
           Browse files
         </Button>
       </div>
-      <div>Upload files, uncompressed, less than 1 GB in size</div>
+      <div id="inpu-hint">Upload files, uncompressed, less than 1 GB in size.</div>
     </div>
   );
 };
@@ -166,7 +168,7 @@ const DesignTokensProcessor = () => {
   return (
     <div className={styles.container}>
       <Box mb={2}>
-        <label htmlFor='base-tokens-file'>Upload base tokens JSON file</label>
+        <label htmlFor='base-tokens-file' className={styles.fileInputLabel}>Upload base tokens JSON file</label>
         {!baseTokens && (
           <>
             <FileInput
@@ -178,16 +180,16 @@ const DesignTokensProcessor = () => {
           </>
         )}
         {baseTokens && (
-          <div className={styles.uploadedFileBlock}>
+          <div className={styles.uploadedFileBlock} id="uploaded-file-label-1">
             <CheckM color='icon-primary-success' /> File selected{' '}
-            <Button id='base-tokens-file' onClick={handleChangeBaseTokensFile} ml={2}>
+            <Button onClick={handleChangeBaseTokensFile} ml={2} aria-labelledby="uploaded-file-label-1">
               Replace file
             </Button>
           </div>
         )}
       </Box>
       <Box mb={2}>
-        <label htmlFor='design-tokens-file'>Upload semantic tokens JSON file</label>
+        <label htmlFor='design-tokens-file' className={styles.fileInputLabel}>Upload semantic tokens JSON file</label>
         {!designTokens && (
           <>
             <FileInput
@@ -199,9 +201,9 @@ const DesignTokensProcessor = () => {
           </>
         )}
         {designTokens && (
-          <div className={styles.uploadedFileBlock}>
+          <div className={styles.uploadedFileBlock} id="uploaded-file-label-2">
             <CheckM color='icon-primary-success' /> File selected{' '}
-            <Button id='base-tokens-file' onClick={handleChangeBaseTokensFile} ml={2}>
+            <Button onClick={handleChangeBaseTokensFile} ml={2} aria-labelledby="uploaded-file-label-2">
               Replace file
             </Button>
           </div>
@@ -209,7 +211,7 @@ const DesignTokensProcessor = () => {
       </Box>
       {error && (
         <div className={styles.processedSection}>
-          <h4>Error occurred while processing your files.</h4>
+          <h3>Error occurred while processing your files</h3>
           {!baseTokens && <div>Maybe you forgot to provide base tokens?</div>}
           <code>{String(error.message ?? error)}</code>
         </div>
@@ -217,23 +219,29 @@ const DesignTokensProcessor = () => {
       {css && json && !error && (
         <div className={styles.processedSection}>
           <div className={styles.processedBlock}>
-            <h4>
-              Processed
-              <span className={styles.extension}>.css</span>
-              <Copy copiedToast='Copied!' toCopy={css} trigger='click'>
-                <span className={styles.clickToCopy}>Copy to clipboard</span>
-              </Copy>
-            </h4>
+            <div className={styles.processedBlockTitle}>
+              <h3 id="copy-button-title-css">
+                Processed CSS code
+                </h3>
+                <Copy copiedToast='Copied!' toCopy={css} trigger='click'>
+                  <Button addonLeft={CopyM} use='tertiary' theme="muted" ml={2} mb={2} aria-describedby="copy-button-title-css">
+                    Copy to clipboard
+                    </Button>
+                    </Copy>
+            </div>
             <code className={styles.codeBlock}>{css}</code>
           </div>
           <div className={styles.processedBlock}>
-            <h4>
-              Processed
-              <span className={styles.extension}>.json</span>
+            <div className={styles.processedBlockTitle}>
+              <h3 id="copy-button-title-json">
+                Processed JSON code
+            </h3>
               <Copy copiedToast='Copied!' toCopy={json} trigger='click'>
-                <span className={styles.clickToCopy}>Copy to clipboard</span>
+                <Button addonLeft={CopyM} use='tertiary' theme="muted" ml={2} mb={2} aria-describedby="copy-button-title-json">
+                  Copy to clipboard
+                </Button>
               </Copy>
-            </h4>
+            </div>
             <code lang='css' className={styles.codeBlock}>
               {json}
             </code>
