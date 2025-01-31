@@ -3170,9 +3170,6 @@ importers:
       '@phytonmk/nano-css':
         specifier: 5.3.7
         version: 5.3.7(react-dom@18.2.0)(react@18.2.0)
-      '@reshadow/core':
-        specifier: 0.0.1-alpha.74
-        version: 0.0.1-alpha.74
       classnames:
         specifier: 2.2.6
         version: 2.2.6

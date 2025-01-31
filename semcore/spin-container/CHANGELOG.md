@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [7.40.3] - 2025-01-28
+
+### Changed
+
+- Remove `inert` attribute after the animation of Spin ends.
+
 ## [7.40.2] - 2025-01-03
 
 ### Removed

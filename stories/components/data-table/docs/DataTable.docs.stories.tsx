@@ -17,17 +17,16 @@ import CompactExample from './examples/compact';
 import CustomRowsRenderingExample from './examples/custom-rows-rendering';
 import CustomViewForTableBodyExample from './examples/custom-view-for-table-body';
 import CustomizingHeaderExample from './examples/customizing-header';
-import DownloadStatusExample from './examples/download-status';
 import ExportInImageExample from './examples/export-in-image';
 import FixedColumnsExample from './examples/fixed-columns';
 import FixedHeaderExample from './examples/fixed-header';
-import FixedHeaderWithSpinOverlayExample from './examples/fixed-header-with-spin-overlay';
 import MultiLevelHeaderExample from './examples/multi-level-header';
 import PaginationExample from './examples/pagination';
 import RowsMergingExample from './examples/rows-merging';
 import ScrollInTableExample from './examples/scroll-in-table';
 import SecondaryTableExample from './examples/secondary-table';
 import SkeletonInTableExample from './examples/skeleton-in-table';
+import SpinContainerInTableExample from './examples/spin-container-in-table';
 import SortingExample from './examples/sorting';
 import SortingChangingSizeExample from './examples/sorting-changing-size';
 import SortingChangingSizeByColumnsExample from './examples/sorting-changing-size-by-columns';
@@ -103,10 +102,6 @@ export const CustomizingHeader: Story = {
   render: CustomizingHeaderExample,
 };
 
-export const DownloadStatus: Story = {
-  render: DownloadStatusExample,
-};
-
 export const ExportInImage: Story = {
   render: ExportInImageExample,
 };
@@ -117,10 +112,6 @@ export const FixedColumns: Story = {
 
 export const FixedHeader: Story = {
   render: FixedHeaderExample,
-};
-
-export const FixedHeaderWithSpinOverlay: Story = {
-  render: FixedHeaderWithSpinOverlayExample,
 };
 
 export const MultiLevelHeader: Story = {
@@ -145,6 +136,10 @@ export const SecondaryTable: Story = {
 
 export const SkeletonInTable: Story = {
   render: SkeletonInTableExample,
+};
+
+export const SpinContainerInTable: Story = {
+  render: SpinContainerInTableExample,
 };
 
 export const Sorting: Story = {
