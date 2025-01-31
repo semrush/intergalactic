@@ -31,28 +31,29 @@ export const skipButtonComboboxDiscernibleErrors = (v: axe.Result) => {
 
 // biome-ignore lint/correctness/noEmptyPattern:
 const beforeEachTests = async ({}, use: () => Promise<void>, testInfo: TestInfo) => {
-  let suit = 'Other tests';
-  const testFilePath = testInfo.file.split('/');
-  const fileName = testFilePath[testFilePath.length - 1];
-  const component = testFilePath[testFilePath.length - 2];
-  const suite = fileName.split('.')[1];
-
+  let layer = 'Other tests';
+  const testFilePath = testInfo.file.split('/'); 
+  const fileName = testFilePath[testFilePath.length - 1]; 
+  const component = testFilePath[testFilePath.length - 3]; 
+  const suite = fileName.split('.')[1]; 
+  
+ 
   if (suite.includes('browser')) {
-    suit = 'Browser tests';
+    layer = 'Browser tests';
   } else if (suite.includes('axe')) {
-    suit = 'Axe tests';
+    layer = 'Axe tests';
   } else if (suite.includes('vo')) {
-    suit = 'Voice over tests';
+    layer = 'Voice over tests';
   } else if (suite.includes('index')) {
-    suit = 'Unit tests';
+    layer = 'Unit tests';
   }
+   const subSuiteName = testInfo.titlePath[1];
 
-  await allure.label('component', component); // component
-  await allure.layer(suit); //  Browser tests, Axe tests и т. д.
-  await allure.suite(suit); // Suite = component
-  await allure.parentSuite(component); // Suite = component
-  await allure.subSuite(testInfo.title); //test name
-  //await allure.story(); //describe name testInfo.titlePath.slice(1).join(' > ')
+  await allure.label('component', component); 
+  await allure.layer(layer); 
+  await allure.suite(suite); 
+  await allure.parentSuite(component); 
+  await allure.subSuite(subSuiteName); 
 
   await use();
 };
