@@ -53,7 +53,7 @@ const beforeEachTests = async ({}, use: () => Promise<void>, testInfo: TestInfo)
   await allure.suite(suite);
   await allure.parentSuite(component);
   await allure.subSuite(subSuiteName);
-
+  await allure.story(testInfo.title);
   await use();
 };
 
