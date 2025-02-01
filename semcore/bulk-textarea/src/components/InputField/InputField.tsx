@@ -722,14 +722,6 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
             }
           }
 
-          // console.log(currentNode.textContent);
-          //
-          // selection.focusNode.parentNode.innerHTML = this.emptyLineValue;
-          // this.textarea.removeChild(selection.anchorNode.parentNode);
-          // // selection.deleteFromDocument();
-          //
-          // this.setSelection(currentNode, 0, 0);
-
           this.validateLine(currentNode);
           this.setErrorIndex(currentNode);
           this.recalculateLinesCount();
