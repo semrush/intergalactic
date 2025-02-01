@@ -336,15 +336,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       const anchorOffset = selection.anchorOffset;
       const focusOffset = selection.focusOffset;
       const documentPosition = selection.anchorNode.compareDocumentPosition(selection.focusNode);
-
-      let direction = 'forward';
-
-      if (
-        (documentPosition === 0 && selection.anchorOffset > selection.focusOffset) || // if nodes are the same
-        documentPosition === Node.DOCUMENT_POSITION_PRECEDING
-      ) {
-        direction = 'backward';
-      }
+      const direction = this.getSelectionDirection();
 
       const anchorElement = direction === 'forward' ? selection.anchorNode : selection.focusNode;
       const focusElement = direction === 'forward' ? selection.focusNode : selection.anchorNode;
@@ -673,8 +665,9 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
           this.toggleErrorsPopperByKeyboard(0);
         }
       } else if (this.isRangeSelection()) {
-        // Backspace on selected full row
         const selection = document.getSelection();
+
+        // Backspace on selected full row
         if (
           selection?.focusNode === selection?.anchorNode &&
           selection?.anchorOffset === 0 &&
@@ -683,6 +676,59 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         ) {
           event.preventDefault();
           currentNode.innerHTML = this.emptyLineValue;
+
+          this.validateLine(currentNode);
+          this.setErrorIndex(currentNode);
+          this.recalculateLinesCount();
+
+          setTimeout(() => {
+            this.recalculateErrors();
+          }, 0);
+
+          this.toggleErrorsPopperByKeyboard(0);
+        }
+        // Backspace on selected few full rows
+        else if (
+          selection?.focusNode instanceof Text &&
+          selection?.anchorNode instanceof Text &&
+          selection?.focusNode?.textContent === selection?.focusNode?.parentNode?.textContent &&
+          selection?.anchorNode?.textContent === selection?.anchorNode?.parentNode?.textContent
+        ) {
+          event.preventDefault();
+
+          const direction = this.getSelectionDirection();
+          const anchorElement =
+            direction === 'backward' ? selection.focusNode : selection.anchorNode;
+          const focusElement =
+            direction === 'backward' ? selection.anchorNode : selection.focusNode;
+
+          const paragraphs = Array.from(this.textarea.children);
+          const anchorParagraph = anchorElement.parentElement;
+          const focusParagraph = focusElement.parentElement;
+
+          let isCleaning = false;
+
+          for (const paragraph of paragraphs) {
+            if (paragraph === anchorParagraph || isCleaning) {
+              isCleaning = true;
+
+              if (paragraph === focusParagraph) {
+                focusParagraph.innerHTML = this.emptyLineValue;
+                this.setSelection(focusParagraph, 0, 0);
+                break;
+              } else {
+                this.textarea.removeChild(paragraph);
+              }
+            }
+          }
+
+          // console.log(currentNode.textContent);
+          //
+          // selection.focusNode.parentNode.innerHTML = this.emptyLineValue;
+          // this.textarea.removeChild(selection.anchorNode.parentNode);
+          // // selection.deleteFromDocument();
+          //
+          // this.setSelection(currentNode, 0, 0);
 
           this.validateLine(currentNode);
           this.setErrorIndex(currentNode);
@@ -1100,6 +1146,25 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       selection?.focusNode !== selection?.anchorNode ||
       selection?.focusOffset !== selection?.anchorOffset
     );
+  }
+
+  private getSelectionDirection(): 'forward' | 'backward' | null {
+    const selection = document.getSelection();
+
+    if (selection?.anchorNode && selection?.focusNode) {
+      const documentPosition = selection.anchorNode.compareDocumentPosition(selection.focusNode);
+
+      if (
+        (documentPosition === 0 && selection.anchorOffset > selection.focusOffset) || // if nodes are the same
+        documentPosition === Node.DOCUMENT_POSITION_PRECEDING
+      ) {
+        return 'backward';
+      }
+
+      return 'forward';
+    }
+
+    return null;
   }
 }
 
