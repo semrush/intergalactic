@@ -636,7 +636,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         this.handleCursorMovement(currentNode, event);
       }
       this.toggleErrorsPopperByKeyboard(200);
-    } else if (event.key === 'Backspace' && currentNode instanceof HTMLParagraphElement) {
+    } else if (this.isDeleteKey(event) && currentNode instanceof HTMLParagraphElement) {
       if (currentNode.textContent?.trim() === '' && !this.isRangeSelection()) {
         // Backspace on empty row
         const prevNode = currentNode.previousSibling;
@@ -645,7 +645,11 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
           this.textarea.removeChild(currentNode);
           this.toggleErrorsPopperByKeyboard(0);
 
-          if (prevNode.textContent?.trim() === '' && prevNode.previousSibling === null) {
+          if (
+            prevNode.textContent?.trim() === '' &&
+            prevNode.previousSibling === null &&
+            this.textarea.childNodes.length === 1
+          ) {
             this.textarea.textContent = '';
             this.setSelection(this.textarea, 0, 0);
           } else {
@@ -1083,6 +1087,10 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       });
 
     this.handlers.errorIndex(errorIndex);
+  }
+
+  private isDeleteKey(event: KeyboardEvent): boolean {
+    return event.key === 'Backspace' || (event.key === 'x' && (event.ctrlKey || event.metaKey));
   }
 
   private getEmptyParagraph() {
