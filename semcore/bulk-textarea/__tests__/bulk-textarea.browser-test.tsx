@@ -110,24 +110,24 @@ test.describe('Manual adding rows', () => {
       await page.keyboard.up(modifier);
       await page.keyboard.press('Backspace');
       await expect(locators.counter).toHaveText('0/15of 15 lines');
-        const text =
-          'Zoom in \nSecond row\n3 row\n4 row\n5 row\n6 row\n7 row\n8 row\n9 row\n10 row\n11 row\n12 row\n13 row\n14 row\n15 row';
-        await page.keyboard.type(text, { delay: 10 });
-        await expect(locators.counter).toHaveText('15/15of 15 linesLimit reached');
+      const text =
+        'Zoom in \nSecond row\n3 row\n4 row\n5 row\n6 row\n7 row\n8 row\n9 row\n10 row\n11 row\n12 row\n13 row\n14 row\n15 row';
+      await page.keyboard.type(text, { delay: 10 });
+      await expect(locators.counter).toHaveText('15/15of 15 linesLimit reached');
     });
 
     await test.step('Remove one line manually and it is not counted in counter', async () => {
-      const row14 = page.locator('div[contenteditable="true"] p').nth(13); 
+      const row14 = page.locator('div[contenteditable="true"] p').nth(13);
 
-  const text = await row14.textContent();
-  const charCount = text ? text.length : 0;
+      const text = await row14.textContent();
+      const charCount = text ? text.length : 0;
 
-  await row14.click();
+      await row14.click();
 
-  for (let i = 0; i < charCount; i++) {
-    await page.keyboard.press('Backspace');
-  }
-        await expect(locators.counter).toHaveText('14/15of 15 lines');
+      for (let i = 0; i < charCount; i++) {
+        await page.keyboard.press('Backspace');
+      }
+      await expect(locators.counter).toHaveText('14/15of 15 lines');
     });
   });
 
