@@ -160,11 +160,12 @@ export const IconGroups = ({ children, ...props }) => {
 export default function ({ title }) {
   const { json } = React.useContext(Context);
   const filterIcons = json.icons.filter((icon) => icon.group === title);
+  const id = title.replace(' ', '-');
 
   return (
     <div className={styles.section}>
-      <h3 id={`${title}-heading`}>{title}</h3>
-      <ListIcons data={filterIcons} aria-labelledby={`${title}-heading`} />
+      <h3 id={`${id}-heading`}>{title}</h3>
+      <ListIcons data={filterIcons} aria-labelledby={`${id}-heading`} />
     </div>
   );
 }
