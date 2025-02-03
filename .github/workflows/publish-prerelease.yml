@@ -160,7 +160,7 @@ jobs:
         continue-on-error: true
       - name: Save test results as artifacts
         if: steps.test.outcome != 'success'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: unit-testing-failure-output
           path: semcore/*/__tests__/__image_snapshots__/__diff_output__/
@@ -247,7 +247,7 @@ jobs:
         continue-on-error: true
       - name: Save test results as artifacts
         if: steps.browser-testing.outcome != 'success'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: browser-testing-failure-output
           path: test-results
@@ -271,7 +271,7 @@ jobs:
         continue-on-error: true
       - name: Save test results as artifacts
         if: steps.axe-testing.outcome != 'success'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: axe-testing-failure-output
           path: test-results
