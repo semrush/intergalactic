@@ -2905,9 +2905,6 @@ importers:
       '@semcore/accordion':
         specifier: 5.32.0
         version: 5.32.0(@semcore/core@2.24.0)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/add-filter':
-        specifier: 1.0.0
-        version: link:../add-filter
       '@semcore/animation':
         specifier: 2.26.0
         version: 2.26.0(@semcore/core@2.24.0)(react-dom@18.2.0)(react@18.2.0)
