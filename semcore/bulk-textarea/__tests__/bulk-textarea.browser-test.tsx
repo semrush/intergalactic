@@ -28,6 +28,7 @@ test.describe('States size counter and placeholder checks', () => {
       .getByRole('textbox', { name: 'Readonly state of bulk textarea' })
       .nth(1);
     await page.keyboard.press('Tab');
+    await page.waitForTimeout(100);
     await expect(disabledTextArea).not.toBeFocused();
 
     const normalTextArea = await page
@@ -37,16 +38,18 @@ test.describe('States size counter and placeholder checks', () => {
 
     const text =
       'Zoom in on product categories to understand how each site segment drives conversions.\nSecond row\n3 row\n4 row\n5 row\n6 row\n7 row\n8 row\n9 row\n10 row';
-    await page.keyboard.type(text, { delay: 10 });
+    await page.keyboard.type(text, { delay: 20 });
     await page.waitForTimeout(50);
     await page.keyboard.press('Tab');
-    await page.waitForTimeout(50);
+    await page.waitForTimeout(100);
     await expect(page).toHaveScreenshot();
 
     await normalTextArea.click();
-    await page.keyboard.type('[]', { delay: 10 });
+    await page.keyboard.type('[]', { delay: 20 });
     await page.keyboard.press('Enter');
-    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+    await page.waitForTimeout(50);
+    await page.keyboard.press('Shift+Tab');
     await page.waitForTimeout(50);
     await expect(page).toHaveScreenshot();
   });
@@ -107,12 +110,24 @@ test.describe('Manual adding rows', () => {
       await page.keyboard.up(modifier);
       await page.keyboard.press('Backspace');
       await expect(locators.counter).toHaveText('0/15of 15 lines');
-      if (browserName !== 'webkit') {
-        const text =
-          'Zoom in \nSecond row\n3 row\n4 row\n5 row\n6 row\n7 row\n8 row\n9 row\n10 row\n11 row\n12 row\n13 row\n14 row\n15 row';
-        await page.keyboard.type(text, { delay: 10 });
-        await expect(locators.counter).toHaveText('15/15of 15 linesLimit reached');
+      const text =
+        'Zoom in \nSecond row\n3 row\n4 row\n5 row\n6 row\n7 row\n8 row\n9 row\n10 row\n11 row\n12 row\n13 row\n14 row\n15 row';
+      await page.keyboard.type(text, { delay: 10 });
+      await expect(locators.counter).toHaveText('15/15of 15 linesLimit reached');
+    });
+
+    await test.step('Remove one line manually and it is not counted in counter', async () => {
+      const row14 = page.locator('div[contenteditable="true"] p').nth(13);
+
+      const text = await row14.textContent();
+      const charCount = text ? text.length : 0;
+
+      await row14.click();
+
+      for (let i = 0; i < charCount; i++) {
+        await page.keyboard.press('Backspace');
       }
+      await expect(locators.counter).toHaveText('14/15of 15 lines');
     });
   });
 
