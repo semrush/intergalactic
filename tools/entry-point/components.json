@@ -1,10 +1,12 @@
 {
   "@semcore/accordion": "5.44.0",
   "@semcore/animation": "2.39.1",
+  "@semcore/add-filter": "1.0.0",
   "@semcore/badge": "4.38.1",
   "@semcore/base-trigger": "4.49.4",
   "@semcore/breadcrumbs": "5.45.0",
   "@semcore/breakpoints": "1.39.1",
+  "@semcore/bulk-textarea": "1.0.0",
   "@semcore/button": "5.40.3",
   "@semcore/card": "5.44.3",
   "@semcore/carousel": "3.45.3",
