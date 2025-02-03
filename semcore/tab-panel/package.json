@@ -1,7 +1,7 @@
 {
   "name": "@semcore/tab-panel",
   "description": "Semrush TabPanel Component",
-  "version": "4.40.1",
+  "version": "4.41.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.mjs",
   "typings": "lib/types/index.d.ts",
@@ -12,8 +12,8 @@
     "build": "pnpm semcore-builder --source=js"
   },
   "dependencies": {
-    "@semcore/utils": "4.44.1",
-    "@semcore/flex-box": "5.39.1"
+    "@semcore/utils": "4.45.0",
+    "@semcore/flex-box": "5.40.0"
   },
   "peerDependencies": {
     "@semcore/core": "^2.17.5",
