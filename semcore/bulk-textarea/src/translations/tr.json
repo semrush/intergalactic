@@ -1,0 +1,10 @@
+{
+  "BulkTextarea.ClearAllButton.buttonText": "Tümünü temizle",
+  "BulkTextarea.Counter.ofAllowedRows:sr-message": "/{rowsNumber} satır",
+  "BulkTextarea.Counter.limitReached:sr-message": "Sınıra ulaşıldı",
+  "BulkTextarea.Counter.limitExceeded:sr-message": "Sınır aşıldı",
+  "BulkTextarea.ErrorsNavigation.totalErrors": "{errorsCount} {errorsCount, plural, one {hata} other {hata}}",
+  "BulkTextarea.ErrorsNavigation.selectedError": "{errorIndex}/{errorsCount} hata",
+  "BulkTextarea.ErrorsNavigation.nextError:aria-label": "Sonraki hata",
+  "BulkTextarea.ErrorsNavigation.previousError:aria-label": "Önceki hata"
+}

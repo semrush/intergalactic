@@ -3,16 +3,11 @@
   "description": "Semrush D3 Chart Component",
   "version": "3.58.5",
   "main": "lib/cjs/index.js",
-  "module": "lib/es6/index.js",
+  "module": "lib/es6/index.mjs",
   "typings": "lib/types/index.d.ts",
   "sideEffects": false,
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
-  "exports": {
-    "require": "./lib/cjs/index.js",
-    "import": "./lib/es6/index.js",
-    "types": "./lib/types/index.d.ts"
-  },
   "scripts": {
     "build": "pnpm semcore-builder --source=js,ts"
   },
