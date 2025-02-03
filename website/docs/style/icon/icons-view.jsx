@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { InstantSearch } from 'react-instantsearch/dom';
 import { connectAutoComplete } from 'react-instantsearch/connectors';
 import algoliasearch from 'algoliasearch/lite';
-import { Box } from '@semcore/flex-box';
-
-import IconGroup, { IconGroups, ListIcons } from './icon-group';
+import { Text } from '@semcore/typography';
+import IconGroup, { IconGroups, ListIcons, IconDetailsPanel } from './icon-group';
 import Input from '@semcore/input';
 import { ButtonLink } from '@semcore/button';
 import { NoData } from '@semcore/widget-empty';
@@ -22,9 +21,11 @@ const SuggestSearch = connectAutoComplete(
       onChangeValue(value);
       return refine(value);
     };
+
     useEffect(() => {
       filteredIcons(hits);
-      if (currentRefinement) setMessage(`${hits.length ? hits.length : 'Nothing'} found`);
+      if (currentRefinement)
+        setMessage(`${hits.length ? hits.length : 'No'} result${hits.length === 1 ? '' : 's'}`);
       else setMessage('');
     });
 
@@ -41,7 +42,13 @@ const SuggestSearch = connectAutoComplete(
           aria-label={'Search icons'}
           aria-describedby={'search-count'}
         />
-        <Input.Addon id='search-count' role='status' key='search-count'>
+        <Input.Addon
+          id='search-count'
+          role='status'
+          key='search-count'
+          tag={Text}
+          color='text-secondary'
+        >
           {message}
         </Input.Addon>
         {!!currentRefinement && (
@@ -70,49 +77,69 @@ function SearchIcons(props) {
 export default function ({ icons, old, json }) {
   const [inputValue, setInputValue] = useState('');
   const [filterIcons, setFilterIcons] = useState([]);
+  const [selectedIcon, setSelectedIcon] = React.useState(null);
+  const [panelTrigger, setPanelTrigger] = React.useState('');
+  const triggerRef = React.useRef(null);
 
   return (
     <>
       {!old && <SearchIcons filteredIcons={setFilterIcons} onChangeValue={setInputValue} />}
-
-      {inputValue.length ? (
-        filterIcons.length ? (
-          <ListIcons
-            data={filterIcons}
-            aria-label={'Search results'}
-            icons={icons}
-            old={old}
-            json={json}
-          />
+      <IconGroups
+        icons={icons}
+        old={old}
+        json={json}
+        selectedIcon={selectedIcon}
+        setSelectedIcon={setSelectedIcon}
+        panelTrigger={panelTrigger}
+        setPanelTrigger={setPanelTrigger}
+        triggerRef={triggerRef}
+      >
+        {inputValue.length ? (
+          filterIcons.length ? (
+            <ListIcons data={filterIcons} aria-label={'Search results'} />
+          ) : (
+            <NoData
+              type='nothing-found'
+              description='Try entering another keyword, for example "key" or "play".'
+              style={{
+                borderRadius: 'var(--intergalactic-rounded-medium)',
+                border: 'solid 1px var(--intergalactic-border-secondary)',
+              }}
+              py={10}
+            />
+          )
         ) : (
-          <Box
-            style={{
-              borderRadius: 'var(--intergalactic-rounded-medium)',
-              border: 'solid 1px var(--intergalactic-border-secondary)',
+          <>
+            <IconGroup title='Navigation' />
+            <IconGroup title='Action' />
+            <IconGroup title='Status' />
+            <IconGroup title='Social' />
+            <IconGroup title='File' />
+            <IconGroup title='Hardware' />
+            <IconGroup title='Format' />
+            <IconGroup title='Map' />
+            <IconGroup title='AI' />
+            <IconGroup title='SERP Features' />
+            <IconGroup title='Misc' />
+            {!old && <IconGroup title='Brand' />}
+            <IconGroup title='Color' />
+            <IconGroup title='Pay' />
+            <IconGroup title='External' />
+          </>
+        )}
+        {selectedIcon && (
+          <IconDetailsPanel
+            name={selectedIcon}
+            visible={selectedIcon !== null}
+            onClose={(_, e) => {
+              if (e.target.getAttribute('data-name') !== 'PanelTrigger') {
+                setSelectedIcon(null);
+                setTimeout(() => triggerRef.current?.focus(), 1);
+              }
             }}
-          >
-            <NoData my={10} mx='auto' type='nothing-found' />
-          </Box>
-        )
-      ) : (
-        <IconGroups icons={icons} old={old} json={json}>
-          <IconGroup title='Navigation' />
-          <IconGroup title='Action' />
-          <IconGroup title='Status' />
-          <IconGroup title='Social' />
-          <IconGroup title='File' />
-          <IconGroup title='Hardware' />
-          <IconGroup title='Format' />
-          <IconGroup title='Map' />
-          <IconGroup title='AI' />
-          <IconGroup title='SERP Features' />
-          <IconGroup title='Misc' />
-          {!old && <IconGroup title='Brand' />}
-          <IconGroup title='Color' />
-          <IconGroup title='Pay' />
-          <IconGroup title='External' />
-        </IconGroups>
-      )}
+          />
+        )}
+      </IconGroups>
     </>
   );
 }

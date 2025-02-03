@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Tooltip from '@semcore/tooltip';
 import { Flex } from '@semcore/flex-box';
 import Pills from '@semcore/pills';
@@ -9,24 +8,23 @@ import styles from './styles.module.css';
 
 const iconLetterToNumericSize = { l: 24, m: 16 };
 
-const DownloadIconButton = ({ size, name, action, dataIcons, icon: Icon }) => {
+const DownloadIconButton = ({ size, name, action, iconData, icon: Icon }) => {
   const iconSize = iconLetterToNumericSize[size] || '';
   let nameSvg = `${name}/${size}`;
 
-  const filterIcons = dataIcons.icons.filter((icon) => icon.name === name)[0];
-  const groupName = filterIcons.group.toLowerCase();
+  const groupName = iconData.group.toLowerCase();
   const haveGroupName = ['pay', 'external', 'color'].includes(groupName);
   let includeGroupName = haveGroupName ? `/${groupName}` : '';
 
   const getImportText = React.useCallback(() => {
     const lib = '@semcore/ui';
-    const haveSizeIcon = filterIcons.size.length > 1;
+    const haveSizeIcon = iconData.size.length > 1;
     const includeName = haveSizeIcon ? `${name}${size.toUpperCase()}` : name;
     const includeSize = haveSizeIcon ? `/${size}` : '';
     const importText = `import ${includeName} from '${lib}/icon${includeGroupName}/${name}${includeSize}'`;
 
     return importText;
-  }, [name, size, filterIcons.size]);
+  }, [name, size, iconData.size]);
 
   if (action === 'download') {
     includeGroupName = haveGroupName ? `${groupName}` : 'icon';
@@ -37,7 +35,7 @@ const DownloadIconButton = ({ size, name, action, dataIcons, icon: Icon }) => {
 
     const url = `semcore/icon/svg/${includeGroupName}/${nameSvg}.svg`;
     return (
-      <Tooltip title='Download!'>
+      <Tooltip title='Download'>
         <a
           className={styles.previewChangeIcon}
           rel='noopener noreferrer'
@@ -70,41 +68,41 @@ const DownloadIconButton = ({ size, name, action, dataIcons, icon: Icon }) => {
   );
 };
 
-const IconDetailsPanel = ({ name, json: dataIcons, icon: Icon, visible, onClose }) => {
+export const IconDetailsPanel = ({ name, visible, onClose }) => {
   const [action, setAction] = React.useState('copy');
+  const { json, icons } = React.useContext(Context);
+  const iconData = json.icons.filter((icon) => icon.name === name)[0];
 
   return (
     <SidePanel visible={visible} placement='bottom' onClose={onClose}>
-      <SidePanel.Panel id={`${name}-dialog`} aria-label={`Get ${name} icon`} aria-modal={false}>
+      <SidePanel.Panel
+        id={`${name}-dialog`}
+        aria-label={`Get ${name} icon`}
+        aria-modal={false}
+        zIndex='var(--intergalactic-z-index-modal)'
+      >
         <Flex gap={10} justifyContent='center'>
           <Flex direction='column'>
             <b>{name}</b>
-            <Pills
-              value={action}
-              style={{ marginTop: 13 }}
-              onChange={setAction}
-              aria-label={`Get ${name} icon`}
-            >
+            <Pills value={action} mt={3} onChange={setAction} aria-label={`Get ${name} icon`}>
               <Pills.Item value='copy'>Copy import</Pills.Item>
               <Pills.Item value='download'>Download SVG</Pills.Item>
             </Pills>
           </Flex>
           <Flex gap={6}>
             {visible &&
-              dataIcons.icons
-                .filter((icon) => icon.name === name)[0]
-                .size.map((size) => {
-                  return (
-                    <DownloadIconButton
-                      key={size}
-                      size={size}
-                      name={name}
-                      action={action}
-                      dataIcons={dataIcons}
-                      icon={Icon}
-                    />
-                  );
-                })}
+              iconData.size.map((size) => {
+                return (
+                  <DownloadIconButton
+                    key={size}
+                    size={size}
+                    name={name}
+                    action={action}
+                    iconData={iconData}
+                    icon={icons[name]}
+                  />
+                );
+              })}
           </Flex>
         </Flex>
       </SidePanel.Panel>
@@ -112,16 +110,15 @@ const IconDetailsPanel = ({ name, json: dataIcons, icon: Icon, visible, onClose 
   );
 };
 
-export const ListIcons = ({ data, icons, json, ...props }) => {
-  const [showPanel, setShowPanel] = React.useState(null);
-  const triggerRef = React.useRef(null);
-
+export const ListIcons = ({ data, ...props }) => {
+  const { icons, selectedIcon, setSelectedIcon, panelTrigger, setPanelTrigger, triggerRef } =
+    React.useContext(Context);
   return (
     <>
       <ul
         className={styles.list}
-        aria-labelledby={props['aria-labelledby'] ?? undefined}
-        aria-label={props['aria-label'] ?? undefined}
+        aria-labelledby={props['aria-labelledby']}
+        aria-label={props['aria-label']}
       >
         {data.map((icon) => {
           const Icon = icons[icon.name];
@@ -134,28 +131,22 @@ export const ListIcons = ({ data, icons, json, ...props }) => {
               <button
                 type='button'
                 aria-haspopup='dialog'
-                aria-expanded={showPanel === icon.name}
-                aria-controls={showPanel === icon.name ? `${icon.name}-dialog` : undefined}
-                ref={showPanel === icon.name ? triggerRef : undefined}
-                onClick={() => setShowPanel(icon.name)}
+                aria-expanded={selectedIcon === icon.name}
+                aria-controls={selectedIcon === icon.name ? `${icon.name}-dialog` : undefined}
+                ref={panelTrigger === icon.name ? triggerRef : undefined}
+                onClick={() => {
+                  setSelectedIcon(icon.name);
+                  setPanelTrigger(icon.name);
+                }}
+                data-name='PanelTrigger'
               >
                 <Icon width={20} height={20} />
-                <span>{icon.name}</span>
+                <span data-name='PanelTrigger'>{icon.name}</span>
               </button>
             </li>
           );
         })}
       </ul>
-      <IconDetailsPanel
-        name={showPanel}
-        icon={icons[showPanel]}
-        json={json}
-        visible={showPanel !== null}
-        onClose={() => {
-          setShowPanel(null);
-          setTimeout(() => triggerRef.current?.focus(), 10);
-        }}
-      />
     </>
   );
 };
@@ -165,15 +156,15 @@ const Context = React.createContext();
 export const IconGroups = ({ children, ...props }) => {
   return <Context.Provider value={props} children={children} />;
 };
+
 export default function ({ title }) {
-  const context = React.useContext(Context);
-  const dataIcons = context.json;
-  const filterIcons = dataIcons.icons.filter((icon) => icon.group === title);
+  const { json } = React.useContext(Context);
+  const filterIcons = json.icons.filter((icon) => icon.group === title);
 
   return (
     <div className={styles.section}>
       <h3 id={`${title}-heading`}>{title}</h3>
-      <ListIcons data={filterIcons} aria-labelledby={`${title}-heading`} {...context} />
+      <ListIcons data={filterIcons} aria-labelledby={`${title}-heading`} />
     </div>
   );
 }
