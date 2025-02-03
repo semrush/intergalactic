@@ -14,7 +14,6 @@
   "dependencies": {
     "@semcore/accordion": "5.32.0",
     "@semcore/animation": "2.26.0",
-    "@semcore/add-filter": "1.0.0",
     "@semcore/badge": "4.25.0",
     "@semcore/base-trigger": "4.36.0",
     "@semcore/breadcrumbs": "5.32.0",
