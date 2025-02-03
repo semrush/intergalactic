@@ -689,9 +689,21 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
             focusOffset === currentNode.textContent?.length)
         ) {
           event.preventDefault();
-          currentNode.innerHTML = this.emptyLineValue;
 
-          this.validateLine(currentNode);
+          const anchorParagraph = anchorElement?.parentElement;
+          const focusParagraph = focusElement?.parentElement;
+          const childNodes = this.textarea.childNodes;
+          if (
+            anchorParagraph === childNodes.item(0) &&
+            focusParagraph === childNodes.item(childNodes.length - 1)
+          ) {
+            this.textarea.textContent = '';
+            this.setSelection(this.textarea, 0, 0);
+          } else {
+            currentNode.innerHTML = this.emptyLineValue;
+            this.validateLine(currentNode);
+          }
+
           this.setErrorIndex(currentNode);
           this.recalculateLinesCount();
 
