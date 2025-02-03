@@ -693,6 +693,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         }
         // Backspace on selected few full rows
         else if (
+          selection?.focusNode !== selection?.anchorNode &&
           selection?.focusNode instanceof Text &&
           selection?.anchorNode instanceof Text &&
           selection?.focusNode?.textContent === selection?.focusNode?.parentNode?.textContent &&
