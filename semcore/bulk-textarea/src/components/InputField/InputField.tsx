@@ -671,12 +671,22 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       } else if (this.isRangeSelection()) {
         const selection = document.getSelection();
 
+        const direction = this.getSelectionDirection();
+        const anchorElement =
+          direction === 'backward' ? selection?.focusNode : selection?.anchorNode;
+        const focusElement =
+          direction === 'backward' ? selection?.anchorNode : selection?.focusNode;
+        const anchorOffset =
+          direction === 'backward' ? selection?.focusOffset : selection?.anchorOffset;
+        const focusOffset =
+          direction === 'backward' ? selection?.anchorOffset : selection?.focusOffset;
+
         // Backspace on selected full row
         if (
-          selection?.focusNode === selection?.anchorNode &&
-          selection?.anchorOffset === 0 &&
-          ((selection?.focusNode === currentNode && selection?.focusOffset === 1) ||
-            selection?.focusOffset === currentNode.textContent?.length)
+          anchorElement === focusElement &&
+          anchorOffset === 0 &&
+          ((focusElement === currentNode && focusOffset === 1) ||
+            focusOffset === currentNode.textContent?.length)
         ) {
           event.preventDefault();
           currentNode.innerHTML = this.emptyLineValue;
@@ -693,19 +703,13 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         }
         // Backspace on selected few full rows
         else if (
-          selection?.focusNode !== selection?.anchorNode &&
-          selection?.focusNode instanceof Text &&
-          selection?.anchorNode instanceof Text &&
-          selection?.focusNode?.textContent === selection?.focusNode?.parentNode?.textContent &&
-          selection?.anchorNode?.textContent === selection?.anchorNode?.parentNode?.textContent
+          focusElement !== anchorElement &&
+          focusElement instanceof Text &&
+          anchorElement instanceof Text &&
+          focusElement?.textContent === focusElement?.parentNode?.textContent &&
+          anchorElement?.textContent === anchorElement?.parentNode?.textContent
         ) {
           event.preventDefault();
-
-          const direction = this.getSelectionDirection();
-          const anchorElement =
-            direction === 'backward' ? selection.focusNode : selection.anchorNode;
-          const focusElement =
-            direction === 'backward' ? selection.anchorNode : selection.focusNode;
 
           const paragraphs = Array.from(this.textarea.children);
           const anchorParagraph = anchorElement.parentElement;
