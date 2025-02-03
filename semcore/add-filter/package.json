@@ -12,15 +12,15 @@
     "build": "pnpm semcore-builder --source=ts"
   },
   "dependencies": {
-    "@semcore/select": "4.48.2",
-    "@semcore/icon": "4.52.0",
-    "@semcore/button": "5.39.1",
+    "@semcore/select": "4.49.2",
+    "@semcore/icon": "4.55.0",
+    "@semcore/button": "5.40.3",
     "@semcore/flex-box": "5.39.1",
     "@semcore/utils": "4.44.1",
-    "@semcore/dropdown-menu": "4.43.3",
-    "@semcore/dropdown": "4.41.3",
-    "@semcore/input": "4.39.2",
-    "@semcore/base-trigger": "4.48.2"
+    "@semcore/dropdown-menu": "4.44.1",
+    "@semcore/dropdown": "4.42.1",
+    "@semcore/input": "4.40.1",
+    "@semcore/base-trigger": "4.49.4"
   },
   "peerDependencies": {
     "@semcore/core": "^2.17.5",
