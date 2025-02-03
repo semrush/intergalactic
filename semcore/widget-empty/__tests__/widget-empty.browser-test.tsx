@@ -57,7 +57,7 @@ test.describe('Widget empty', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
-    
+
     await expect(page).toHaveScreenshot();
   });
 });
