@@ -127,18 +127,16 @@ export default function ({ icons, old, json }) {
             <IconGroup title='External' />
           </>
         )}
-        {selectedIcon && (
-          <IconDetailsPanel
-            name={selectedIcon}
-            visible={selectedIcon !== null}
-            onClose={(_, e) => {
-              if (e.target.getAttribute('data-name') !== 'PanelTrigger') {
-                setSelectedIcon(null);
-                setTimeout(() => triggerRef.current?.focus(), 1);
-              }
-            }}
-          />
-        )}
+        <IconDetailsPanel
+          name={selectedIcon}
+          visible={selectedIcon !== null}
+          onClose={(_, e) => {
+            if (e.target.getAttribute('data-name') !== 'PanelTrigger') {
+              setSelectedIcon(null);
+              setTimeout(() => triggerRef.current?.focus(), 1);
+            }
+          }}
+        />
       </IconGroups>
     </>
   );
