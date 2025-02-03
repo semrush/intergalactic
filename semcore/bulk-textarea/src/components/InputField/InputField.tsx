@@ -721,7 +721,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
           focusElement?.textContent === focusElement?.parentNode?.textContent &&
           anchorElement?.textContent === anchorElement?.parentNode?.textContent &&
           anchorOffset === 0 &&
-          focusOffset === currentNode.textContent?.length
+          focusOffset === focusElement?.parentNode?.textContent?.length
         ) {
           event.preventDefault();
 
