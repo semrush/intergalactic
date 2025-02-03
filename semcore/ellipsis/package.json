@@ -3,7 +3,7 @@
   "description": "Semrush Ellipsis Component",
   "version": "2.37.2",
   "main": "lib/cjs/index.js",
-  "module": "lib/es6/index.js",
+  "module": "lib/es6/index.mjs",
   "typings": "lib/types/index.d.ts",
   "sideEffects": false,
   "author": "UI-KIT team <ui-kit-team@semrush.com>",

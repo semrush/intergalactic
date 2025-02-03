@@ -24,8 +24,8 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.17.9",
+    "@formatjs/intl": "3.0.4",
     "@phytonmk/nano-css": "5.3.7",
-    "@reshadow/core": "0.0.1-alpha.74",
     "classnames": "2.2.6",
     "colorjs.io": "0.4.3",
     "hoist-non-react-statics": "3.3.2"
