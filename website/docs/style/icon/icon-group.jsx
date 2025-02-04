@@ -111,8 +111,7 @@ export const IconDetailsPanel = ({ name, visible, onClose }) => {
 };
 
 export const ListIcons = ({ data, ...props }) => {
-  const { icons, selectedIcon, setSelectedIcon, panelTrigger, setPanelTrigger, triggerRef } =
-    React.useContext(Context);
+  const { icons, selectedIcon, setSelectedIcon, setPanelTrigger } = React.useContext(Context);
   return (
     <>
       <ul
@@ -126,14 +125,19 @@ export const ListIcons = ({ data, ...props }) => {
             throw new Error(`Icon ${icon.name} not found in import from @icons`);
           }
 
+          let liClass = styles.previewIcon;
+
+          if (selectedIcon === icon.name) {
+            liClass += ` ${styles.selectedIcon}`;
+          }
+
           return (
-            <li className={styles.previewIcon} key={icon.name} data-name={icon.name}>
+            <li className={liClass} key={icon.name} data-name={icon.name}>
               <button
                 type='button'
                 aria-haspopup='dialog'
                 aria-expanded={selectedIcon === icon.name}
                 aria-controls={selectedIcon === icon.name ? `${icon.name}-dialog` : undefined}
-                ref={panelTrigger === icon.name ? triggerRef : undefined}
                 onClick={() => {
                   setSelectedIcon(icon.name);
                   setPanelTrigger(icon.name);

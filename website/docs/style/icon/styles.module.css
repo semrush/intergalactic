@@ -36,7 +36,7 @@ ul.list {
   background-color: var(--intergalactic-bg-primary-neutral-hover);
 }
 
-.previewIcon button:focus {
+.previewIcon.selectedIcon button, .previewIcon button:focus-visible {
   border-color: var(--intergalactic-border-info-active);
 }
 

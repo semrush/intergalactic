@@ -72,7 +72,6 @@ export default function ({ icons, old, json }) {
   const [filterIcons, setFilterIcons] = useState([]);
   const [selectedIcon, setSelectedIcon] = React.useState(null);
   const [panelTrigger, setPanelTrigger] = React.useState('');
-  const triggerRef = React.useRef(null);
 
   return (
     <>
@@ -85,7 +84,6 @@ export default function ({ icons, old, json }) {
         setSelectedIcon={setSelectedIcon}
         panelTrigger={panelTrigger}
         setPanelTrigger={setPanelTrigger}
-        triggerRef={triggerRef}
       >
         {inputValue.length ? (
           filterIcons.length ? (
@@ -126,7 +124,6 @@ export default function ({ icons, old, json }) {
           onClose={(_, e) => {
             if (e.target.getAttribute('data-name') !== 'PanelTrigger') {
               setSelectedIcon(null);
-              setTimeout(() => triggerRef.current?.focus(), 1);
             }
           }}
         />
