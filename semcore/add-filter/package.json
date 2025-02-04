@@ -1,7 +1,7 @@
 {
   "name": "@semcore/add-filter",
   "description": "Semrush Add Filter component",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.mjs",
   "typings": "lib/types/index.d.ts",
@@ -12,15 +12,15 @@
     "build": "pnpm semcore-builder --source=ts"
   },
   "dependencies": {
-    "@semcore/select": "4.48.2",
-    "@semcore/icon": "4.52.0",
-    "@semcore/button": "5.39.1",
-    "@semcore/flex-box": "5.39.1",
-    "@semcore/utils": "4.44.1",
-    "@semcore/dropdown-menu": "4.43.3",
-    "@semcore/dropdown": "4.41.3",
-    "@semcore/input": "4.39.2",
-    "@semcore/base-trigger": "4.48.2"
+    "@semcore/select": "4.49.3",
+    "@semcore/icon": "4.56.0",
+    "@semcore/button": "5.41.0",
+    "@semcore/flex-box": "5.40.0",
+    "@semcore/utils": "4.45.0",
+    "@semcore/dropdown-menu": "4.44.2",
+    "@semcore/dropdown": "4.42.2",
+    "@semcore/input": "4.41.0",
+    "@semcore/base-trigger": "4.50.0"
   },
   "peerDependencies": {
     "@semcore/core": "^2.17.5",
