@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.49.0] - 2025-02-04
+
+### Added
+
+- `size` property: `l` and `m` (default).
+
 ## [4.48.4] - 2025-02-03
 
 ### Changed

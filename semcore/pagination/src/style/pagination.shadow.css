@@ -3,10 +3,23 @@ SPagination {
   align-items: center;
 }
 
+SPagination[withGap] {
+  gap: var(--intergalactic-spacing-4x, 16px);
+
+  &[size='l'] {
+    gap: var(--intergalactic-spacing-5x, 20px);
+  }
+}
+
 SNextPage,
 SPrevPage {
   align-self: center;
   margin-left: var(--intergalactic-spacing-2x, 8px);
+}
+
+SNextPage[size='l'],
+SPrevPage[size='l'] {
+  margin-left: var(--intergalactic-spacing-3x, 12px);
 }
 
 SLabel {
@@ -15,6 +28,9 @@ SLabel {
 
 SLabel:not(:first-child) {
   margin-left: var(--intergalactic-spacing-4x, 16px);
+}
+SLabel[size='l']:not(:first-child) {
+  margin-left: var(--intergalactic-spacing-5x, 20px);
 }
 
 STotalPages {
@@ -38,6 +54,9 @@ STotalLastPages {
 SPageInput {
   max-width: 68px;
   margin-left: var(--intergalactic-spacing-1x, 4px);
+}
+SPageInput[size='l'] {
+  margin-left: var(--intergalactic-spacing-2x, 8px);
 }
 
 SPageInput:focus-within SPageInputAddon {
