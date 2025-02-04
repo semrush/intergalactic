@@ -49,9 +49,7 @@ BulkTextarea includes a counter displaying the number of values entered. It's al
 Different BulkTextarea sizes use different counter sizes:
 
 - M, uses Cunter with L size
-- L, uses Cunter with XL size 
-
-![](static/bulk-sizes.png)
+- L, uses Cunter with XL size
 
 ### How counter works
 
