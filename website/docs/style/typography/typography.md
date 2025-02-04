@@ -11,7 +11,7 @@ tabs: Design('typography'), A11y('typography-a11y'), API('typography-api'), Exam
 - Text with the full font sizes scale
 - List
 - Blockquote
-- Hint (not recommended for use, use [ButtonLink](../../components/button/button-code#button-looking-like-link) component instead)
+- Hint (not recommended for use, use the [ButtonLink](../../components/button/button-code#button-looking-like-link) component instead)
 
 ## Font
 
@@ -40,6 +40,28 @@ Table: Font size and line height
 
 :::
 
+## Text styling and colors
+
+To specify the main text color, use the `--text-primary` token. For the secondary text color, utilize the `--text-secondary` token. Additionally, text can be styled with our [main semantic colors](/style/design-tokens/design-tokens#semantic-tokens), such as `--text-success`, `--text-critical`, and others.
+
+For other styling options, refer to our [Text styling example](/style/typography/typography-code#text-styling).
+
+::: tip
+Use text color thoughtfully and avoid excessive color usage, as it can reduce readability. Always ensure sufficient contrast between text and its background.
+:::
+
+### Additional information
+
+In some cases, it may be necessary to display additional information next to the primary text (for example, a result count next to some heading). We recommend styling it using the secondary text (`--text-secondary` token).
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/additional-information.tsx';
+</script>
+
+:::
+
 ## Headings
 
 Our design system doesn't have a dedicated heading component because text of any size can be assigned a heading tag of any level—this heavily depends on the hierarchy of your information on the page.
@@ -52,7 +74,6 @@ We recommend using no more than four heading levels (h1-h4) on a page to avoid o
 
 :::
 
-
 For the hero blocks, large advertising screens, banners, and landing pages, we recommend using the following font sizes with a _semibold_ font-weight (`--semi-bold` token).
 
 ::: sandbox
@@ -63,31 +84,12 @@ For the hero blocks, large advertising screens, banners, and landing pages, we r
 
 :::
 
-These font sizes can be used as headings in the content sections of products. For headings that are 16px or smaller, use a _bold_ font weight (`--bold` token).
+The following font sizes are typically used for headings in content sections such as pages, cards, and summary widgets. For headings that are 16px or smaller, we recommend using a _bold_ font weight (`--bold` token).
 
 ::: sandbox
 
 <script lang="tsx">
   export Demo from './examples/headings-other.tsx';
-</script>
-
-:::
-
-<!-- Table: Heading from 20px to 16px styles
-
-| Appearance         | Styles                                                         | Tokens                 |
-| ------------------ | -------------------------------------------------------------- | ---------------------- |
-| ![](static/h5.png) | `font-size: 20px`, `line-height: 1.2`, `font-weight: semibold` | `--fs-400`, `--lh-400` |
-| ![](static/h6.png) | `font-size: 16px`, `line-height: 1.5`, `font-weight: bold`     | `--fs-300`, `--lh-300` | -->
-
-### Heading with counter
-
-In some cases, it may be necessary to display additional information next to the heading (for example, a result count). We recommend styling it with secondary text (`--text-secondary` token) and a _regular_ font-weight (`--regular` token).
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/heading-and-counter.tsx';
 </script>
 
 :::
@@ -115,7 +117,7 @@ Table: Heading styles for mobile devices
 
 Our design system doesn't have a separate component for paragraphs because text of any size can be made a paragraph—it all depends on the structure of the information on your page.
 
-The following font sizes are the most commonly used for paragraphs in our design system. We recommend avoing to use the smallest paragraph size (`--fs-100`), as it may cause accessibility and readability issues.
+The following font sizes are the most commonly used for paragraphs in our design system. **We recommend avoing to use the smallest paragraph size (`--fs-100`), as it may cause accessibility and readability issues.**
 
 ::: sandbox
 
@@ -135,94 +137,52 @@ We recommend using the following bottom margins for paragraphs with the most com
 
 These margins can also be used when a paragraph is followed by another paragraph with a smaller font size.
 
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/paragraph-margins.tsx';
+</script>
+
+:::
+
 ### Headings and paragraph sizes
 
-**Use a 16px paragraph with the following headings:**
+**Use a 16px paragraph with the following heading sizes:**
 
-![](static/h1-p.png)
+Table: Heading sizes and their bottom margins
 
-![](static/h2-p.png)
+| Heading size | Bottom margin                       |
+| ------------ | ----------------------------------- |
+| `--fs-800`   | `--spacing-6x` ![](static/h1-p.png) |
+| `--fs-700`   | `--spacing-4x` ![](static/h2-p.png) |
+| `--fs-600`   | `--spacing-4x` ![](static/h3-p.png) |
 
-![](static/h3-p.png)
+**Use a 14px paragraph with the following heading sizes:**
 
-**Use a 14px paragraph with the following headings:**
+Table: Heading sizes and their bottom margins
 
-![](static/h4-p.png)
-
-![](static/h5-p.png)
-
-![](static/h6-p.png)
-
-<!-- ## Metric
-
-For highlighting metrics in your interface, use the following styles:
-
-Table: Font styles for metrics
-
-| px   | Tokens                 | Appearance                 |
-| ---- | ---------------------- | -------------------------- |
-| 32px | `--fs-600`, `--lh-600` | ![](static/metric-600.png) |
-| 24px | `--fs-500`, `--lh-500` | ![](static/metric-500.png) |
-| 20px | `--fs-400`, `--lh-400` | ![](static/metric-400.png) |
-| 16px | `--fs-300`, `--lh-300` | ![](static/metric-300.png) |
-| 14px | `--fs-200`, `--lh-200` | ![](static/metric-200.png) |
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/metric.tsx';
-</script>
-
-::: -->
-
-## Text styling
-
-You can style text by changing its color, font-weight, font-style, text-transform, and even changing its font-family to `monospace`.
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/text-styles.tsx';
-</script>
-
-:::
-
-### Text colors
-
-To specify the main text color, use the `--text-primary` token. For the secondary text color, utilize the `--text-secondary` token. Additionally, text can be styled with our [main semantic colors](/style/design-tokens/design-tokens#semantic-tokens), such as `--text-success`, `--text-critical`, and others.
-
-::: tip
-Use text color thoughtfully and avoid excessive color usage, as it can reduce readability. Always ensure sufficient contrast between text and its background.
-:::
-
+| Heading size | Bottom margin                       |
+| ------------ | ----------------------------------- |
+| `--fs-500`   | `--spacing-3x` ![](static/h4-p.png) |
+| `--fs-400`   | `--spacing-3x` ![](static/h5-p.png) |
+| `--fs-300`   | `--spacing-2x` ![](static/h6-p.png) |
 
 ## List
 
-Table: Font styles for lists
+List component has the following styles:
 
-| px   | Tokens                 | Styles                                     | Numbered list         | Unordered list        | Check list                   |
-| ---- | ---------------------- | ------------------------------------------ | --------------------- | --------------------- | ---------------------------- |
-| 16px | `--fs-300`, `--lh-300` | `margin-bottom: 8px`, `padding-right: 8px` | ![](static/ol-16.png) | ![](static/ul-16.png) | ![](static/checklist-16.png) |
-| 14px | `--fs-200`, `--lh-200` | `margin-bottom: 8px`, `padding-right: 8px` | ![](static/ol-14.png) | ![](static/ul-14.png) | ![](static/checklist-14.png) |
-| 12px | `--fs-100`, `--lh-100` | `margin-bottom: 8px`, `padding-right: 8px` | ![](static/ol-12.png) | ![](static/ul-12.png) | ![](static/checklist-12.png) |
+- list item has `margin-bottom: 8px`
+- list bullet has `padding-right: 8px`
+
+![](static/list-margins.png)
+
+They are sufficient for the most common font sizes used in lists within our design system: `--fs-300`, `--fs-200`, `--fs-100`.
 
 ### Nested list
 
-Each subsequent level of the nested list is indented to the left. The `margin` between list levels for all font sizes are 8px.
+Each subsequent level of the nested list is indented to the left. The `margin` between list levels for all font sizes is 8px.
 
-Table: Font styles for nested lists
-
-| px   | Tokens                 | Margins                         |
-| ---- | ---------------------- | ------------------------------- |
-| 16px | `--fs-300`, `--lh-300` | ![](static/second-level-16.png) |
-| 14px | `--fs-200`, `--lh-200` | ![](static/second-level-14.png) |
-| 12px | `--fs-100`, `--lh-100` | ![](static/second-level-12.png) |
-
-## Quote
-
-We have specific styles for highlighting quotes in paragraphs.
-
-![](static/blockquote-paddings.png)
+![](static/second-level.png)
 
 ## Hints (hint links)
 

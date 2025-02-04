@@ -5,7 +5,7 @@ tabs: Design('typography'), A11y('typography-a11y'), API('typography-api'), Exam
 
 ## Basic usage
 
-Our typography primitives have no margins as they may differ in the end products. You may add them yourself according to your specific requirements.
+Our typography primitives have no predefined margins, as they may vary in the final interfaces. You can add them as needed based on your specific requirements.
 
 ::: sandbox
 
@@ -15,9 +15,21 @@ Our typography primitives have no margins as they may differ in the end products
 
 :::
 
+## Text styling
+
+You can style text by changing its color, font-weight, font-style, text-transform, and even changing its font-family to `monospace`.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/text-styles.tsx';
+</script>
+
+:::
+
 ## Custom list bullets
 
-Using the example below, you can easily create lists with custom bullets.
+You can add custom bullets to our `List.Item` component.
 
 ::: sandbox
 
@@ -27,7 +39,7 @@ Using the example below, you can easily create lists with custom bullets.
 
 :::
 
-## Custom list content render
+<!-- ## Custom list content render
 
 ::: sandbox
 
@@ -35,13 +47,13 @@ Using the example below, you can easily create lists with custom bullets.
   export Demo from './examples/list-with-custom-content.tsx';
 </script>
 
-:::
+::: -->
 
 ## Native typography tags
 
-To style native tags, use the `FormatText` component from the `intergalactic/format-text` package.
+To style native tags, use the `FormatText` component from the `@semcore/format-text` package.
 
-It's acceptable to style third-party HTML. However, in other cases, we recommend using the `Text` component.
+Styling third-party HTML is acceptable, but for other cases, we recommend using the `Text` component.
 
 ::: sandbox
 
@@ -53,7 +65,7 @@ It's acceptable to style third-party HTML. However, in other cases, we recommend
 
 ## FormatText nested lists
 
-For proper nested ordered lists counting, you need to explicitly specify the `start`, `reversed`, or `type` attribute.
+For correct numbering in nested ordered lists, you must explicitly specify the `start`, `reversed`, or `type` attribute.
 
 ::: sandbox
 
