@@ -10,7 +10,6 @@ import { Text } from 'intergalactic/typography';
 import SearchM from 'intergalactic/icon/Search/m';
 import CloseM from 'intergalactic/icon/Close/m';
 import staticFiles from '@static';
-// remove src/static/search
 import { algoliaConfig } from '../../../algoliaConfig';
 import styles from './styles.module.css';
 
