@@ -4,6 +4,10 @@
   line-height: var(--intergalactic-lh-300);
 }
 
+.contextWrapper {
+  display: contents;
+}
+
 ul.list {
   display: flex;
   flex-wrap: wrap;

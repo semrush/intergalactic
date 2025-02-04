@@ -71,7 +71,7 @@ export default function ({ icons, old, json }) {
   const [inputValue, setInputValue] = useState('');
   const [filterIcons, setFilterIcons] = useState([]);
   const [selectedIcon, setSelectedIcon] = React.useState(null);
-  const [panelTrigger, setPanelTrigger] = React.useState('');
+  const iconsContainerRef = React.useRef(null);
 
   return (
     <>
@@ -82,8 +82,7 @@ export default function ({ icons, old, json }) {
         json={json}
         selectedIcon={selectedIcon}
         setSelectedIcon={setSelectedIcon}
-        panelTrigger={panelTrigger}
-        setPanelTrigger={setPanelTrigger}
+        ref={iconsContainerRef}
       >
         {inputValue.length ? (
           filterIcons.length ? (
@@ -121,7 +120,16 @@ export default function ({ icons, old, json }) {
         <IconDetailsPanel
           name={selectedIcon}
           visible={selectedIcon !== null}
-          onClose={(_, e) => {
+          onClose={(eventName, e) => {
+            if (eventName === 'onCloseClick') {
+              setTimeout(() => {
+                const button = iconsContainerRef.current?.querySelector(
+                  `[data-id="${selectedIcon}"]`,
+                );
+
+                button?.focus();
+              }, 20);
+            }
             if (e.target.getAttribute('data-name') !== 'PanelTrigger') {
               setSelectedIcon(null);
             }

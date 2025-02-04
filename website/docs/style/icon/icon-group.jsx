@@ -111,7 +111,7 @@ export const IconDetailsPanel = ({ name, visible, onClose }) => {
 };
 
 export const ListIcons = ({ data, ...props }) => {
-  const { icons, selectedIcon, setSelectedIcon, setPanelTrigger } = React.useContext(Context);
+  const { icons, selectedIcon, setSelectedIcon } = React.useContext(Context);
   return (
     <>
       <ul
@@ -140,9 +140,9 @@ export const ListIcons = ({ data, ...props }) => {
                 aria-controls={selectedIcon === icon.name ? `${icon.name}-dialog` : undefined}
                 onClick={() => {
                   setSelectedIcon(icon.name);
-                  setPanelTrigger(icon.name);
                 }}
                 data-name='PanelTrigger'
+                data-id={icon.name}
               >
                 <Icon width={20} height={20} />
                 <span data-name='PanelTrigger'>{icon.name}</span>
@@ -157,9 +157,13 @@ export const ListIcons = ({ data, ...props }) => {
 
 const Context = React.createContext();
 
-export const IconGroups = ({ children, ...props }) => {
-  return <Context.Provider value={props} children={children} />;
-};
+export const IconGroups = React.forwardRef(({ children, ...props }, forwardedRef) => {
+  return (
+    <div className={styles.contextWrapper} ref={forwardedRef}>
+      <Context.Provider value={props} children={children} />
+    </div>
+  );
+});
 
 export default function ({ title }) {
   const { json } = React.useContext(Context);
