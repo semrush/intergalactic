@@ -52,7 +52,6 @@ describe('Icon', () => {
     expect(getByTestId('child')).toBeTruthy();
   });
 
-
   test('should support call onClick', async () => {
     const onClick = vi.fn();
     const { getByTestId } = render(<Icon data-testid='icon' interactive aria-label='Test icon' />);
