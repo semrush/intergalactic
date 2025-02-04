@@ -10,7 +10,7 @@ test.describe('Widget empty', () => {
 
     await page.setContent(htmlContent);
 
-    const firstWidgetEmpty = page.locator('div[data-ui-name="WidgetEmpty"]').first();
+    const firstWidgetEmpty = page.locator('[data-ui-name="WidgetEmpty"]').first();
     await expect(firstWidgetEmpty).toHaveAttribute('role', 'status');
     await expect(firstWidgetEmpty).not.toHaveAttribute('aria-label');
 
@@ -38,6 +38,7 @@ test.describe('Widget empty', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
+
     await expect(page).toHaveScreenshot();
   });
 
@@ -46,6 +47,7 @@ test.describe('Widget empty', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
+
     await expect(page).toHaveScreenshot();
   });
 
@@ -55,6 +57,7 @@ test.describe('Widget empty', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
+
     await expect(page).toHaveScreenshot();
   });
 });
@@ -66,7 +69,7 @@ test.describe('Error', () => {
 
     await page.setContent(htmlContent);
 
-    const firstWidgetEmpty = page.locator('div[data-ui-name="WidgetError"]').first();
+    const firstWidgetEmpty = page.locator('[data-ui-name="WidgetError"]').first();
     await expect(firstWidgetEmpty).toHaveAttribute('role', 'status');
     await expect(firstWidgetEmpty).not.toHaveAttribute('aria-label');
 
@@ -95,7 +98,7 @@ test.describe('NoData', () => {
 
     await page.setContent(htmlContent);
 
-    const firstWidgetEmpty = page.locator('div[data-ui-name="WidgetNoData"]').first();
+    const firstWidgetEmpty = page.locator('[data-ui-name="WidgetNoData"]').first();
     await expect(firstWidgetEmpty).toHaveAttribute('role', 'status');
     await expect(firstWidgetEmpty).not.toHaveAttribute('aria-label');
 

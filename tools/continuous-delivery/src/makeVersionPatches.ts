@@ -79,7 +79,7 @@ export const makeVersionPatches = (packages: Package[]) => {
     recursiveChildrenUpdateCompleted = true;
     for (const packageFile of packages) {
       if (versionPatchesMap.has(packageFile.name)) continue;
-      if (!packageFile.lastPublishedVersion) continue;
+      // if (!packageFile.lastPublishedVersion) continue;
       if (packageFile.name === '@semcore/ui') continue;
 
       let updateType: semver.ReleaseType | null = null;
@@ -125,10 +125,10 @@ export const makeVersionPatches = (packages: Package[]) => {
       if (needUpdate) {
         const versionBase = semver.compare(
           packageFile.currentVersion,
-          packageFile.lastPublishedVersion,
+          packageFile.lastPublishedVersion ?? packageFile.currentVersion,
         )
           ? packageFile.currentVersion
-          : packageFile.lastPublishedVersion;
+          : packageFile.lastPublishedVersion ?? packageFile.currentVersion;
 
         const version = semver.inc(versionBase, updateType || updateTypeFallback)!;
         const updateTypeLabel = updateType || updateTypeFallback;

@@ -1,3 +1,43 @@
+## [15.123.0] - 2025-02-03
+
+### @semcore/counter
+
+- **Fixed** Width shrinking in Flex containers.
+
+### @semcore/data-table
+
+- **Fixed** Handle table cell focus for any interactions. Now works only for keyboard.
+
+### @semcore/date-picker
+
+- **Added** `inputmode=numeric` for the DatePicker inputs.
+
+### @semcore/feedback-form
+
+- **Added** `notificationTitle` prop to `FeedbackRating`.
+- **Added** type `email` for config in `FeedbackRating.Item`.
+
+### @semcore/input-number
+
+- **Changed** Set `inputMode` to `numeric` if `step` is an integer, otherwise to `decimal`.
+
+### @semcore/popper
+
+- **Added** `popperMargin` property to set maxSize (width or height) of popper to height from the content minus this margin.
+
+### @semcore/spin-container
+
+- **Changed** Remove `inert` attribute after the animation of Spin ends.
+
+### @semcore/time-picker
+
+- **Added** `inputmode=numeric` for inputs.
+
+### @semcore/utils
+
+- **Added** `plural`, `selectordinal` and others Intl formatting for translations.
+- **Added** `inputMode` and `autoComplete` as an item of default input props.
+
 ## [15.122.0] - 2025-01-21
 
 ### @semcore/data-table
