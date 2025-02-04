@@ -7,7 +7,9 @@ const Demo = () => (
     <Text size={400} semibold>
       Text example with counter
     </Text>
-    <Text size={400} color='text-secondary'>12,457</Text>
+    <Text size={400} color='text-secondary'>
+      12,457
+    </Text>
   </Flex>
 );
 

@@ -10,6 +10,9 @@ const Demo = () => (
     <Text size={200} tag='p' mb={3} mt={0}>
       Paragraph 14px
     </Text>
+    <Text size={100} tag='p' mb={2} mt={0}>
+      Paragraph 12px
+    </Text>
   </Flex>
 );
 

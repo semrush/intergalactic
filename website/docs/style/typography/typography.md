@@ -115,7 +115,7 @@ Table: Heading styles for mobile devices
 
 Our design system doesn't have a separate component for paragraphs because text of any size can be made a paragraph—it all depends on the structure of the information on your page.
 
-The following two font sizes are the most commonly used for paragraphs in our design system. We recommend avoing to use the smallest paragraph size (`--fs-100`), as it may cause accessibility and readability issues.
+The following font sizes are the most commonly used for paragraphs in our design system. We recommend avoing to use the smallest paragraph size (`--fs-100`), as it may cause accessibility and readability issues.
 
 ::: sandbox
 
@@ -125,8 +125,7 @@ The following two font sizes are the most commonly used for paragraphs in our de
 
 :::
 
-### Recommendations on paragraph margins
-
+### Paragraph margins
 
 We recommend using the following bottom margins for paragraphs with the most common font sizes in our design system:
 
@@ -135,14 +134,6 @@ We recommend using the following bottom margins for paragraphs with the most com
 - `--spacing-2x` for `--fs-100` font size
 
 These margins can also be used when a paragraph is followed by another paragraph with a smaller font size.
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/paragraph-margins.tsx';
-</script>
-
-:::
 
 ### Headings and paragraph sizes
 

@@ -12,19 +12,19 @@ const Demo = () => (
     <Text size={300} tag='p'>
       16px / --fs-300,--lh-300
     </Text>
-    <Text size={400} tag='p' >
+    <Text size={400} tag='p'>
       20px / --fs-400,--lh-400
     </Text>
-    <Text size={500} tag='p' >
+    <Text size={500} tag='p'>
       24px / --fs-500,--lh-500
     </Text>
-    <Text size={600} tag='p' >
+    <Text size={600} tag='p'>
       32px / --fs-600,--lh-600
     </Text>
-    <Text size={700} tag='p' >
+    <Text size={700} tag='p'>
       36px / --fs-700,--lh-700
     </Text>
-    <Text size={800} tag='p' >
+    <Text size={800} tag='p'>
       48px / --fs-800,--lh-800
     </Text>
   </div>
