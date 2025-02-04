@@ -46,8 +46,8 @@ const Demo = () => {
                         color='icon-secondary-neutral'
                     />
                 </DescriptionTooltip>
-
-
+</Flex>
+                <Flex columnGap={2} mb={4}>
                 <FilterTrigger>
                     <FilterTrigger.Addon>
                         <VideoListL />
@@ -89,22 +89,24 @@ const Demo = () => {
                     </ButtonTrigger.Addon>
                     <ButtonTrigger.Text>Button trigger L</ButtonTrigger.Text>
                 </ButtonTrigger>
-
-                <DropdownMenu.Trigger mt={2} mr='auto' id='dropdown-menu-basic' tag={Button}>
+                </Flex>
+                <Flex columnGap={2} mb={4}>
+                <DropdownMenu.Trigger mt={2}  id='dropdown-menu-basic' tag={Button}>
                     <Button.Addon>
                         <VideoListM />
                     </Button.Addon>
                     <Button.Text>DDMenu Trigger M</Button.Text>
                 </DropdownMenu.Trigger>
 
-                <DropdownMenu.Trigger mt={2} mr='auto' id='dropdown-menu-basic' tag={Button}>
+                <DropdownMenu.Trigger mt={2}  id='dropdown-menu-basic' tag={Button}>
                     <Button.Addon>
                         <VideoListL />
                     </Button.Addon>
                     <Button.Text>DDMenu Trigger L</Button.Text>
                 </DropdownMenu.Trigger>
 
-
+                </Flex>
+                <Flex columnGap={2} mb={4}>
                 <Input w={200} mt={2}>
                     <Input.Addon>
                         <VideoListL />
@@ -141,12 +143,6 @@ const Demo = () => {
                     </Input.Addon>
                 </Input>
 
-                <div style={{ display: 'flex', width: '100px' }}>
-        <Icon width={22} height={22} viewBox='0 0 22 22' color='green'>
-          <polygon points='18.532 3 7.501 14.054 3.468 10.012 1 12.485 7.501 19 21 5.473' />
-        </Icon>
-        <p>lorem lorem lorem lorem </p>
-      </div>
             </Flex>
         </>
     );
