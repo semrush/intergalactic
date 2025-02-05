@@ -52,7 +52,7 @@ test.describe('Grid base tests', () => {
       const expectedSpanValues = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'];
       const expectedOffsetValues = ['11', '10', '9', '8', '7', '6', '5', '4', '3', '2', '1'];
 
-      for (const i = 0; i < columns.length; i++) {
+      for (let i = 0; i < columns.length; i++) {
         const column = columns[i];
 
         const spanClass = await column.evaluate((el) => el.className);
