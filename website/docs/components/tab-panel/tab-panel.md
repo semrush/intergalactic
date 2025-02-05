@@ -35,7 +35,7 @@ const App = PlaygroundGeneration(
     const addon = bool({
       key: 'addon',
       defaultValue: false,
-      label: 'With addon',
+      label: 'Addon',
     });
 
     return (

@@ -34,7 +34,7 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
   const interactive = radio({
     key: 'interactive',
     defaultValue: 'click',
-    label: 'Interactive event',
+    label: 'Interaction',
     options: ['click', 'focus'],
   });
 

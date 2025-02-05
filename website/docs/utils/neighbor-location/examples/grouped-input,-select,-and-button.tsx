@@ -6,14 +6,12 @@ import { Flex } from 'intergalactic/flex-box';
 
 const Demo = () => {
   return (
-    <Flex>
+    <Flex role='group' aria-label='input with select and button'>
       <Input neighborLocation='right' w={200}>
-        <Input.Value
-          placeholder='Placeholder'
-          aria-label={'Label for input with select and button'}
-        />
+        <Input.Value placeholder='Placeholder' aria-label={'input example'} />
       </Input>
       <Select
+        aria-label='select example'
         neighborLocation='both'
         options={[
           { value: 'Option 1', children: 'Option 1' },

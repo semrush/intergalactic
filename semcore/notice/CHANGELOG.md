@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.44.1] - 2025-02-04
+
+### Added
+
+- Required dependency `@semcore/typeography`.
+
 ## [5.44.0] - 2025-02-03
 
 ### Changed

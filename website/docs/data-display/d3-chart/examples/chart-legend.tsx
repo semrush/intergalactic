@@ -5,8 +5,8 @@ import { Box } from 'intergalactic/flex-box';
 
 const Demo = () => {
   const MAP_THEME = {
-    y: 'orange',
-    y2: 'green',
+    line1: 'orange',
+    line2: 'green',
   };
   const width = 500;
   const height = 300;
@@ -93,8 +93,8 @@ const Demo = () => {
 
 const data = [...Array(10).keys()].map((d, i) => ({
   x: i,
-  y: Math.random() * i,
-  y2: Math.random() * (i + 2),
+  line1: Math.random() * i,
+  line2: Math.random() * (i + 2),
 }));
 
 export default Demo;

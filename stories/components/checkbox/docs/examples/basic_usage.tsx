@@ -1,8 +1,9 @@
 import React from 'react';
 import Checkbox from '@semcore/checkbox';
+import { Text } from '@semcore/typography';
 
 const fieldsetStyle = { border: 'none' };
-const ulStyle = {};
+const ulStyle = { margin: 0, padding: 0 };
 const liStyle = { listStyle: 'none', margin: 0 };
 
 const Demo = () => {
@@ -17,7 +18,9 @@ const Demo = () => {
 
   return (
     <fieldset style={fieldsetStyle}>
-      <legend>Options list label</legend>
+      <Text tag='legend' size={200} mb={3}>
+        List of options
+      </Text>
       <ul style={ulStyle}>
         {checked.map((value, index) => (
           <li key={index} style={liStyle}>

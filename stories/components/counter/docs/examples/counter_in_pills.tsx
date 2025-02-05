@@ -16,8 +16,8 @@ const Demo = () => (
         <Text color='text-secondary'>557</Text>
       </Pills.Item.Addon>
     </Pills.Item>
-    <Pills.Item value='not-follow'>
-      <Pills.Item.Text>Not Follow</Pills.Item.Text>
+    <Pills.Item value='nofollow'>
+      <Pills.Item.Text>Nofollow</Pills.Item.Text>
       <Pills.Item.Addon>
         <Text color='text-secondary'>736</Text>
       </Pills.Item.Addon>

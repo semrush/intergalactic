@@ -42,7 +42,7 @@ const Demo = () => {
         <Input w={300}>
           <Input.Value
             id='loading-example'
-            placeholder='Type something to see world spinning...'
+            placeholder='Type something to start loading'
             value={value}
             onChange={handlerInput}
           />

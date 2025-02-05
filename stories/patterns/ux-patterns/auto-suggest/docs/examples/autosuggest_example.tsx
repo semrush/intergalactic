@@ -94,12 +94,12 @@ const Demo = () => {
           visible={visible}
           onVisibleChange={setVisible}
         >
-          <Select.Trigger tag={Input}>
+          <Select.Trigger tag={Input} w={250}>
             {() => (
               <Input.Value
                 value={query}
                 role='combobox'
-                placeholder='Type breed name'
+                placeholder='Start typing for options'
                 onChange={setQuery}
                 id='website-autosuggest'
               />

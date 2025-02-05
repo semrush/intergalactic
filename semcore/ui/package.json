@@ -14,10 +14,12 @@
   "dependencies": {
     "@semcore/accordion": "5.32.0",
     "@semcore/animation": "2.26.0",
+    "@semcore/add-filter": "1.1.0",
     "@semcore/badge": "4.25.0",
     "@semcore/base-trigger": "4.36.0",
     "@semcore/breadcrumbs": "5.32.0",
     "@semcore/breakpoints": "1.26.0",
+    "@semcore/bulk-textarea": "1.0.1",
     "@semcore/button": "5.27.0",
     "@semcore/card": "5.33.0",
     "@semcore/carousel": "3.36.0",

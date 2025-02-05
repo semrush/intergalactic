@@ -4,6 +4,7 @@ import ModalWithSelectExample from './examples/modal_with_select';
 import OpenModalDynamicallyExample from './examples/modal_open_dynamically';
 import ModalPreventFocusExample from './examples/modal_prevent_focus';
 import ModaliFrameExample from './examples/modal_iframe';
+import ModalIconExample from './examples/modal_with_int_icon';
 
 const meta: Meta = {
   title: 'Components/Modal/Advanced',
@@ -25,4 +26,8 @@ export const ModalPreventFocus: StoryObj = {
 
 export const ModaliFrame: StoryObj = {
   render: ModaliFrameExample,
+};
+
+export const ModalIcon: StoryObj = {
+  render: ModalIconExample,
 };

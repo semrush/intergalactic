@@ -1645,6 +1645,9 @@ importers:
         specifier: 16.8 - 18
         version: 18.2.0(react@18.2.0)
     devDependencies:
+      '@semcore/testing-utils':
+        specifier: 1.0.0
+        version: link:../../tools/testing-utils
       '@types/react':
         specifier: 18.0.21
         version: 18.0.21
@@ -2015,6 +2018,9 @@ importers:
       '@semcore/notice-global':
         specifier: 2.58.0
         version: link:../notice-global
+      '@semcore/typography':
+        specifier: 5.50.0
+        version: link:../typography
       '@semcore/utils':
         specifier: 4.45.0
         version: link:../utils
@@ -2905,6 +2911,9 @@ importers:
       '@semcore/accordion':
         specifier: 5.32.0
         version: 5.32.0(@semcore/core@2.24.0)(react-dom@18.2.0)(react@18.2.0)
+      '@semcore/add-filter':
+        specifier: 1.1.0
+        version: link:../add-filter
       '@semcore/animation':
         specifier: 2.26.0
         version: 2.26.0(@semcore/core@2.24.0)(react-dom@18.2.0)(react@18.2.0)
@@ -2920,6 +2929,9 @@ importers:
       '@semcore/breakpoints':
         specifier: 1.26.0
         version: 1.26.0(react-dom@18.2.0)(react@18.2.0)
+      '@semcore/bulk-textarea':
+        specifier: 1.0.1
+        version: link:../bulk-textarea
       '@semcore/button':
         specifier: 5.27.0
         version: 5.27.0(@semcore/core@2.24.0)(react-dom@18.2.0)(react@18.2.0)

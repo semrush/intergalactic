@@ -6,7 +6,7 @@ import { Text } from '@semcore/typography';
 const Demo = () => (
   <Flex direction='column'>
     <Text tag='label' size={200} htmlFor='options-select'>
-      Options
+      Option types
     </Text>
     <Select>
       <Select.Trigger

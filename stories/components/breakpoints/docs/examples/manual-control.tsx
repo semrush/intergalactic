@@ -14,7 +14,7 @@ const Demo = () => {
     };
   }, []);
 
-  return <Button size={(['m', 'l'] as const)[index]}>Button size {['M', 'L'][index]}</Button>;
+  return <Button size={(['m', 'l'] as const)[index]}>Size {['M', 'L'][index]}</Button>;
 };
 
 export default Demo;

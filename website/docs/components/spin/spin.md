@@ -15,31 +15,22 @@ import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 const SIZES = ['xs', 's', 'm', 'l', 'xl', 'xxl'];
 const THEMES = ['dark', 'invert'];
+const PLACEMENTS = ['right', 'bottom'];
+
 function getSizeText(sizeSpin) {
   if (sizeSpin.includes('l') || sizeSpin.includes('m')) {
     return 300;
   }
-  if (sizeSpin.includes('s')) {
-    return 200;
-  }
-  return 100;
+  return 200;
 }
 
 const margins = {
-  xs: 4,
-  s: 4,
-  m: 8,
-  l: 8,
-  xl: 16,
-  xxl: 16,
-}
-
-function getMarginText(orientation = 'bottom', size = undefined) {
-  if (orientation === 'right') {
-    return `0 0 0 ${margins[size] || 0}px`;
-  } else {
-    return `${margins[size] || 0}px 0 0`;
-  }
+  xs: 1,
+  s: 1,
+  m: 2,
+  l: 2,
+  xl: 4,
+  xxl: 4,
 }
 
 const App = PlaygroundGeneration((createGroupWidgets) => {
@@ -62,48 +53,32 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
     options: THEMES,
   });
 
-  const centered = bool({
-    key: 'centered',
-    defaultValue: true,
-    label: 'Centered',
-  });
-
   const text = textWidget({
     key: 'text',
     defaultValue: '',
     label: 'Text',
   });
 
-  const textRight = bool({
-    key: 'textRight',
-    defaultValue: false,
-    label: 'TextRight',
+  const textPlacement = radio({
+    key: 'textPlacement',
+    defaultValue: 'right',
+    label: 'Text placement',
+    options: PLACEMENTS,
   });
 
-  if (text.length) {
-    return (
-      <Flex
-        m={centered ? 'auto' : 0}
-        alignItems='center'
-        justifyContent='center'
-        direction={textRight ? 'row' : 'column'}
-      >
-        <Spin size={size} theme={theme} />
-        {
-          <Text
-            tag='div'
-            m={textRight ? getMarginText('right', size) : getMarginText('bottom', size)}
-          >
-            <Text size={getSizeText(size)} color='text-secondary'>
-              {text}
-            </Text>
-          </Text>
-        }
-      </Flex>
-    );
-  }
-
-  return <Spin size={size} theme={theme} centered={centered} />;
+  if (text.length) return (
+    <Flex
+      alignItems='center'
+      gap={margins[size]}
+      direction={textPlacement === 'right' ? 'row' : 'column'}
+    >
+      <Spin size={size} theme={theme} />
+      <Text size={getSizeText(size)} color='text-secondary'>
+        {text}
+      </Text>
+    </Flex>
+  )
+  return <Spin size={size} theme={theme} />
 });
 </script>
 

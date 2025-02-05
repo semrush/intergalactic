@@ -82,7 +82,7 @@ const Demo = () => {
 
   return (
     <>
-      <Button onClick={handleOpen}>Open modal</Button>
+      <Button onClick={handleOpen}>Open confirmation modal</Button>
       <Modal visible={visible} onClose={handleClose} w={536}>
         <Modal.Title mb={4}>Delete project?</Modal.Title>
         <Text size={300} mb={4} tag='p'>
@@ -105,7 +105,12 @@ const Demo = () => {
               </Text>
             </Text>
 
-            <Tooltip placement='right' interaction={'none'} theme='warning' animationsDisabled={true}>
+            <Tooltip
+              placement='right'
+              interaction={'none'}
+              theme='warning'
+              animationsDisabled={true}
+            >
               <Tooltip.Popper visible={showErrorTooltip()} id='form-project-error'>
                 {errors[fieldName]?.message}
               </Tooltip.Popper>

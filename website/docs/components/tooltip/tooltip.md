@@ -209,9 +209,7 @@ To improve readability, it's recommended to use specific margins between labels 
 
 The tooltip is built using the [Popper.js](https://popper.js.org/) library, allowing you to change its placement according to the [Popper API](/utils/popper/popper-api).
 
-The tooltip's position shouldn't change when scrolling the page, ensuring it remains visible to the user. The default tooltip placement is `top`.
-
-### Placement properties
+The default tooltip placement is `top`.
 
 ::: sandbox
 

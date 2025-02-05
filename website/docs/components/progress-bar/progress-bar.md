@@ -11,7 +11,7 @@ import React from 'react';
 import ProgressBar from '@semcore/ui/progress-bar';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
-const SIZES = ['l', 'm', 's'];
+const SIZES = ['s', 'm', 'l'];
 
 const Preview = (preview) => {
   const { radio, text, select } = preview('ProgressBar');
