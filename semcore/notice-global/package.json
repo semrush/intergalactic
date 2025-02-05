@@ -3,7 +3,7 @@
   "description": "Semrush NoticeGlobal Component",
   "version": "2.58.0",
   "main": "lib/cjs/index.js",
-  "module": "lib/es6/index.mjs",
+  "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "sideEffects": false,

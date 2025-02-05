@@ -3,11 +3,16 @@
   "description": "Semrush Button Component",
   "version": "5.41.0",
   "main": "lib/cjs/index.js",
-  "module": "lib/es6/index.mjs",
+  "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
   "sideEffects": false,
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
+  "exports": {
+    "require": "./lib/cjs/index.js",
+    "import": "./lib/es6/index.js",
+    "types": "./lib/types/index.d.ts"
+  },
   "scripts": {
     "build": "pnpm semcore-builder --source=ts"
   },
