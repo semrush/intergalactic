@@ -1645,6 +1645,9 @@ importers:
         specifier: 16.8 - 18
         version: 18.2.0(react@18.2.0)
     devDependencies:
+      '@semcore/testing-utils':
+        specifier: 1.0.0
+        version: link:../../tools/testing-utils
       '@types/react':
         specifier: 18.0.21
         version: 18.0.21
