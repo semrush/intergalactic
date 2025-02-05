@@ -1,8 +1,8 @@
 import React from 'react';
-import Button from 'intergalactic/button';
-import { Text } from 'intergalactic/typography';
-import Select from 'intergalactic/select';
-import SidePanel, { SidePanelPlacement } from 'intergalactic/side-panel';
+import Button from '@semcore/button';
+import { Text } from '@semcore/typography';
+import Select from '@semcore/select';
+import SidePanel, { SidePanelPlacement } from '@semcore/side-panel';
 
 const placements: SidePanelPlacement[] = ['left', 'right', 'bottom'];
 
@@ -13,9 +13,10 @@ const Demo = () => {
   return (
     <React.Fragment>
       <Text size={300} tag='div' mb={2}>
-        Placement:
+        <label htmlFor='select-placement'>Placement</label>
       </Text>
       <Select
+        id='select-placement'
         value={placement}
         options={arrToOptions(placements)}
         onChange={setPlacement}

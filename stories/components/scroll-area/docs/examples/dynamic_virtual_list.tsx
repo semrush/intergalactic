@@ -39,18 +39,16 @@ const Demo = () => {
 
   return (
     <Flex direction='column' inline>
-      <Flex alignItems='center' mb={2}>
+      <Flex alignItems='center' mb={2} gap={2}>
         <Button
           onClick={() => {
             setData(data.concat(undefined));
           }}
         >
-          ADD
+          Add item
         </Button>
-        <Button ml='10px' onClick={() => setData(data.slice(0, -1))}>
-          REMOVE
-        </Button>
-        <Text bold ml='10px'>
+        <Button onClick={() => setData(data.slice(0, -1))}>Remove item</Button>
+        <Text role='status' aria-live='polite'>
           Count: {data.length}
         </Text>
       </Flex>

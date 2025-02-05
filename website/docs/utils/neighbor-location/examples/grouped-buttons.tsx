@@ -7,31 +7,31 @@ import NeighborLocation from 'intergalactic/neighbor-location';
 const Demo = () => {
   return (
     <Flex direction='column' gap={4}>
-      <Flex>
-        <Button neighborLocation='right'>Left</Button>
-        <Button neighborLocation='both'>Center</Button>
-        <Button neighborLocation='left'>Right</Button>
+      <Flex role='group' aria-label='secondary buttons'>
+        <Button neighborLocation='right'>First</Button>
+        <Button neighborLocation='both'>Middle</Button>
+        <Button neighborLocation='left'>Last</Button>
       </Flex>
-      <Flex>
+      <Flex role='group' aria-label='primary buttons'>
         <Button neighborLocation='right' use='primary'>
-          Left
+          First
         </Button>
         <Button neighborLocation='both' use='primary'>
-          Center
+          Middle
         </Button>
         <Button neighborLocation='left' use='primary'>
-          Right
+          Last
         </Button>
       </Flex>
-      <Flex>
+      <Flex role='group' aria-label='primary success buttons'>
         <Button neighborLocation='right' use='primary' theme='success'>
-          Left
+          First
         </Button>
         <Button neighborLocation='both' use='primary' theme='success'>
-          Center
+          Middle
         </Button>
         <Button neighborLocation='left' use='primary' theme='success'>
-          Right
+          Last
         </Button>
       </Flex>
     </Flex>

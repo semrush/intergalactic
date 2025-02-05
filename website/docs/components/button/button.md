@@ -256,7 +256,7 @@ Invert theme button is used on dark or colored background. For example in [Toolt
 
 Table: Button themes
 
-|             | `muted`                         | `info`                        | `success`                    | `danger`                    | `invert`                               |
+| `use` / `theme` | `muted`                         | `info`                        | `success`                    | `danger`                    | `invert`                               |
 | ----------- | ------------------------------- | ----------------------------- | ---------------------------- | --------------------------- | -------------------------------------- |
 | `primary`   | _no theme_                      | ![](static/info-butt.png)     | ![](static/success-butt.png) | ![](static/danger-butt.png) | ![](static/invert-normal.png)          |
 | `secondary` | ![](static/secondary-muted.png) | _deprecated_                  | _no theme_                   | _no theme_                  | ![](static/invert-second-normal.png)   |

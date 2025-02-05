@@ -31,7 +31,7 @@ const Demo = () => {
 
   return (
     <>
-      <Button onClick={handleOpen}>Open modal</Button>
+      <Button onClick={handleOpen}>Open wizard</Button>
       <Wizard visible={visible} step={step} w={600} onClose={handleClose}>
         <Wizard.Sidebar title='Site Audit Settings'>
           <Wizard.Stepper step={1} onActive={handleStepChange(1)} completed>
@@ -93,10 +93,19 @@ const Demo = () => {
 
           <Flex mt={5}>
             {step > 1 && (
-              <Wizard.StepBack onActive={handleStepChange(step - 1)} stepName={steps[step - 2].title} disabled={step === 2} />
+              <Wizard.StepBack
+                onActive={handleStepChange(step - 1)}
+                stepName={steps[step - 2].title}
+                disabled={step === 2}
+              />
             )}
             {step !== steps.length - 1 && (
-              <Wizard.StepNext ml='auto' onActive={handleStepChange(step + 1)} stepName={steps[step].title} disabled={step === steps.length - 3} />
+              <Wizard.StepNext
+                ml='auto'
+                onActive={handleStepChange(step + 1)}
+                stepName={steps[step].title}
+                disabled={step === steps.length - 3}
+              />
             )}
           </Flex>
         </Wizard.Content>

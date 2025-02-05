@@ -10,8 +10,10 @@ const Demo = () => (
       <Text tag='label' size={200} htmlFor='loading-select'>
         Normal loading state
       </Text>
-      <Select mt={2} mr='auto' id='loading-select'>
-        <Select.Trigger loading>Trigger</Select.Trigger>
+      <Select>
+        <Select.Trigger mt={2} mr='auto' id='loading-select' loading>
+          Trigger
+        </Select.Trigger>
       </Select>
     </Flex>
     <Flex direction='column'>
@@ -19,8 +21,15 @@ const Demo = () => (
         Loading state without chevron
       </Text>
       <div>
-        <Select mt={2} mr='auto' id='loading-select-no-chevron'>
-          <Select.Trigger chevron={false} placeholder={<Spin size='xs' mx={4} />} tabIndex={-1} />
+        <Select>
+          <Select.Trigger
+            mt={2}
+            mr='auto'
+            id='loading-select-no-chevron'
+            chevron={false}
+            placeholder={<Spin size='xs' mx={4} />}
+            tabIndex={-1}
+          />
         </Select>
       </div>
     </Flex>
