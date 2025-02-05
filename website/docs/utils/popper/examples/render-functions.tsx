@@ -1,24 +1,32 @@
 import React from 'react';
-import Button from 'intergalactic/button';
-import Popper from 'intergalactic/popper';
+import Button from '@semcore/button';
+import Popper from '@semcore/popper';
 
 const style = { background: '#FFF', color: '#000', border: '1px solid #000', padding: '10px' };
 
 const Demo = () => (
   <Popper>
     {(props, handlers) => {
+      const buttonRef = React.useRef(null);
       // function for managing the visibility state of Popper.Popper
       const { visible } = handlers;
 
       return (
         <>
-          <Button onClick={() => visible(true)} mr={4}>
+          <Button onClick={() => visible(true)} ref={buttonRef} mr={4}>
             Open popper
           </Button>
           <Popper.Trigger style={style}>Attach trigger</Popper.Trigger>
           <Popper.Popper style={style}>
             <p>Attached content</p>
-            <Button onClick={() => visible(false)}>Close popper</Button>
+            <Button
+              onClick={() => {
+                visible(false);
+                setTimeout(() => buttonRef.current?.focus(), 1);
+              }}
+            >
+              Close popper
+            </Button>
           </Popper.Popper>
         </>
       );

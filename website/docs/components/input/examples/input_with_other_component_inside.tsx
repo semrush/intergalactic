@@ -11,12 +11,12 @@ const Demo = () => {
   return (
     <div>
       <Text tag='label' htmlFor='count-example' size={200}>
-        Input with symbols counter
+        Input with character counter
       </Text>
       <Box mt={2} mb={4}>
         <Input w={320}>
           <Input.Value
-            placeholder='Count some words right here'
+            placeholder='Count some characters right here'
             value={value}
             onChange={(v) => setValue(v)}
             maxLength={10}
@@ -35,9 +35,15 @@ const Demo = () => {
       </Text>
       <Box mt={2}>
         <Input w={320}>
-          <Input.Value placeholder='Wow! Such input. So new.' id='badge-example' />
+          <Input.Value
+            placeholder='Wow! Such input. So new.'
+            id='badge-example'
+            aria-describedby='badge-new'
+          />
           <Input.Addon>
-            <Badge bg='green-300'>new</Badge>
+            <Badge bg='green-300' id='badge-new'>
+              new
+            </Badge>
           </Input.Addon>
         </Input>
       </Box>

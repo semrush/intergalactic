@@ -14,7 +14,7 @@ const max = 8;
 const Demo = () => {
   return (
     <DropdownMenu>
-      <DropdownMenu.Trigger tag={Button}>Click me</DropdownMenu.Trigger>
+      <DropdownMenu.Trigger tag={Button}>Explore nested menus</DropdownMenu.Trigger>
       <DropdownMenu.Menu>
         {options.map((item) => {
           return (
@@ -29,7 +29,7 @@ const Demo = () => {
                   {item}
                   <DropdownMenu.Item.Addon tag={ChevronRightIcon} color='icon-secondary-neutral' />
                 </DropdownMenu.Item.Content>
-                <DropdownMenu.Popper w={150} aria-label={'Some item 4 options and controls'}>
+                <DropdownMenu.Popper w={150} aria-label={'Submenu with controls'}>
                   <DropdownMenu.List>
                     <DropdownMenu.Item>Item 4.1.1</DropdownMenu.Item>
                     <DropdownMenu.Item>Item 4.1.2</DropdownMenu.Item>

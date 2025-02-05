@@ -2,7 +2,7 @@ import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 const locators = {
-  trigger: (page: any, name = 'Open modal') => page.getByRole('button', { name }),
+  trigger: (page: any, name = 'Open wizard') => page.getByRole('button', { name }),
   modal: (page: any) => page.locator("div[data-ui-name='Wizard']"),
   sidebar: (page: any) => page.locator("[data-ui-name='Wizard.Sidebar']"),
   stepperTabs: (page: any) => page.locator("[data-ui-name='Wizard.Stepper']"),

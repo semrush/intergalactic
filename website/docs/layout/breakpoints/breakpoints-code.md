@@ -4,7 +4,7 @@ fileSource: breakpoints
 tabs: Design('breakpoints'), API('breakpoints-api'), Example('breakpoints-code'), Changelog('breakpoints-changelog')
 ---
 
-## Simple use
+## Basic usage
 
 To use breakpoints in your application, you need to wrap it in a `<Breakpoints />` component.
 And then you can get the value of the media query in any part of your application through the context.

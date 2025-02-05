@@ -5,16 +5,16 @@ import Button from '@semcore/button';
 const Demo = () => (
   <div>
     <Box tag={Button} mr={2}>
-      Button
+      Button 1
     </Box>
     <Box tag={Button} mr={2}>
-      Button
+      Button 2
     </Box>
     <Box tag={Button} mr={2}>
-      Button
+      Button 3
     </Box>
     <Box tag={Button} mr={2}>
-      Button
+      Button 4
     </Box>
   </div>
 );

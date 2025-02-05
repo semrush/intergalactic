@@ -13,9 +13,9 @@ const Demo = () => {
   return (
     <Flex direction='column'>
       <Text tag='label' size={200} htmlFor='language-select'>
-        Language select
+        Country
       </Text>
-      <Select onChange={(v: FlagsIso2) => setValue(v)} placeholder='Select country'>
+      <Select onChange={(v: FlagsIso2) => setValue(v)}>
         <Select.Trigger mt={2} mr='auto' id='language-select'>
           <Select.Trigger.Addon>
             <Flags iso2={value} />

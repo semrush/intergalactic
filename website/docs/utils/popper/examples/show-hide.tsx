@@ -1,6 +1,7 @@
 import React from 'react';
-import Popper from 'intergalactic/popper';
-import { Flex } from 'intergalactic/flex-box';
+import Popper from '@semcore/popper';
+import Button from '@semcore/button';
+import { Flex } from '@semcore/flex-box';
 
 const style = { background: '#FFF', color: '#000', border: '1px solid #000', padding: '10px' };
 
@@ -14,12 +15,12 @@ const Demo = () => {
   return (
     <Flex justifyContent='space-between'>
       <Popper visible={visible} onVisibleChange={toggleVisible}>
-        <Popper.Trigger style={style}>Controlled</Popper.Trigger>
+        <Popper.Trigger tag={Button}>Controlled</Popper.Trigger>
         <Popper.Popper style={style}>Attached content</Popper.Popper>
       </Popper>
 
       <Popper>
-        <Popper.Trigger style={style} ml='auto'>
+        <Popper.Trigger tag={Button} ml='auto'>
           Uncontrolled
         </Popper.Trigger>
         <Popper.Popper style={style}>Attached content</Popper.Popper>

@@ -32,7 +32,6 @@ const App = PlaygroundGeneration((preview) => {
   const {
     direction,
     alignItems,
-    justifyContent,
     showXAxis,
     showYAxis,
     showTooltip,
@@ -54,13 +53,13 @@ const App = PlaygroundGeneration((preview) => {
   const showDots = bool({
     key: 'showDots',
     defaultValue: true,
-    label: 'Show dots',
+    label: 'Dots',
   });
 
   const stacked = bool({
     key: 'stacked',
     defaultValue: true,
-    label: 'Is stacked',
+    label: 'Stacked',
   });
 
   const chartProps: AreaChartProps = {
@@ -76,7 +75,6 @@ const App = PlaygroundGeneration((preview) => {
     showXAxis,
     showYAxis,
     alignItems,
-    justifyContent,
     stacked,
     patterns,
   };

@@ -20,30 +20,6 @@ const data = [...Array(5).keys()].map((d, i) => ({
   Line3: Math.random() * 10,
 }));
 
-const area = {
-  Line1: data.map((item) => {
-    return {
-      x: item.x,
-      y0: item.Line1 - 1,
-      y1: item.Line1 + 1,
-    };
-  }),
-  Line2: data.map((item) => {
-    return {
-      x: item.x,
-      y0: item.Line2 - 1,
-      y1: item.Line2 + 1,
-    };
-  }),
-  Line3: data.map((item) => {
-    return {
-      x: item.x,
-      y0: item.Line3 - 1,
-      y1: item.Line3 + 1,
-    };
-  }),
-};
-
 const curveMap = {
   curveCardinal,
   curveLinearClosed,
@@ -56,7 +32,6 @@ const App = PlaygroundGeneration((preview) => {
   const {
     direction,
     alignItems,
-    justifyContent,
     showXAxis,
     showYAxis,
     showTooltip,
@@ -76,22 +51,9 @@ const App = PlaygroundGeneration((preview) => {
   });
 
   const showDots = bool({
-    key: 'hideDots',
+    key: 'showDots',
     defaultValue: true,
-    label: 'Show dots',
-  });
-
-  const withArea = bool({
-    key: 'withArea',
-    defaultValue: false,
-    label: 'Enable area',
-  });
-
-  const areaCurve = select({
-    key: 'areaCurve',
-    defaultValue: 'No curve',
-    label: 'Area Curve',
-    options: ['No curve', ...Object.keys(curveMap)],
+    label: 'Dots',
   });
 
   const chartProps: LineChartProps = {
@@ -107,9 +69,6 @@ const App = PlaygroundGeneration((preview) => {
     showXAxis,
     showYAxis,
     alignItems,
-    justifyContent,
-    area: withArea ? area : undefined,
-    areaCurve: curveMap[areaCurve],
     patterns,
   };
 

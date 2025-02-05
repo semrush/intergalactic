@@ -17,7 +17,7 @@ const Preview = (preview) => {
   const displayLabel = bool({
     key: 'displayLabel',
     defaultValue: false,
-    label: 'Show label',
+    label: 'Display label',
   });
 
   return (
