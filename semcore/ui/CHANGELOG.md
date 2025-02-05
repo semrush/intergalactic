@@ -1,3 +1,17 @@
+## [15.124.0] - 2025-02-05
+
+### @semcore/button
+
+- **Fixed** `background-color` token name for primary button with `neighborLocation` enabled.
+
+### @semcore/icon
+
+- **Added** New `Copilot` icon.
+
+### @semcore/notice
+
+- **Added** Required dependency `@semcore/typeography`.
+
 ## [15.123.0] - 2025-02-03
 
 ### @semcore/add-filter

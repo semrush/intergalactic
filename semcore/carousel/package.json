@@ -1,7 +1,7 @@
 {
   "name": "@semcore/carousel",
   "description": "Semrush Carousel Component",
-  "version": "3.46.0",
+  "version": "3.46.1",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -13,10 +13,10 @@
   },
   "dependencies": {
     "@semcore/flex-box": "5.40.0",
-    "@semcore/icon": "4.56.0",
+    "@semcore/icon": "4.57.0",
     "@semcore/utils": "4.45.0",
-    "@semcore/button": "5.41.0",
-    "@semcore/modal": "4.52.0",
+    "@semcore/button": "5.41.1",
+    "@semcore/modal": "4.53.0",
     "@semcore/breakpoints": "1.40.0"
   },
   "peerDependencies": {
