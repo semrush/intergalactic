@@ -81,6 +81,6 @@ STotalPagesLabel {
 SLabel,
 STotalPages,
 STotalPagesLabel[size='l'] {
-  font-size: var(--intergalactic-fs-300);
-  line-height: var(--intergalactic-lh-300);
+  font-size: var(--intergalactic-fs-300, 16px);
+  line-height: var(--intergalactic-lh-300, 150%);
 }
