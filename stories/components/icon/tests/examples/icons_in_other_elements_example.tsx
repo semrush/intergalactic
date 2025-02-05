@@ -5,10 +5,12 @@ import VideoListL from '@semcore/icon/VideoList/l';
 import { ButtonTrigger, LinkTrigger, FilterTrigger } from '@semcore/base-trigger';
 import '@semcore/utils/lib/themes/default.css';
 import  { Hint, DescriptionTooltip } from '@semcore/tooltip';
-import { Flex } from '@semcore/flex-box';
+import { Flex, Box } from '@semcore/flex-box';
 import Input from '@semcore/input';
 import Link from '@semcore/link';
+import Switch from '@semcore/switch';
 import DropdownMenu from '@semcore/dropdown-menu';
+import { List } from '@semcore/ui/typography';
 
 const Demo = () => {
     return (
@@ -220,6 +222,38 @@ const Demo = () => {
                     </Link.Addon>
                 </Link>
             </Flex>
+
+            <Flex mb={4}>
+            <Box mr = {4}>
+        <Switch size='l'  theme='success'>
+          <Switch.Value id='email-subscription' mt={0}>
+            <VideoListM />
+          </Switch.Value>
+        </Switch>
+      </Box>
+
+      <Box mr = {4}>
+        <Switch size='xl' theme='success'>
+          <Switch.Value id='email-subscription' mt={0}>
+            <VideoListM />
+          </Switch.Value>
+        </Switch>
+      </Box>
+            </Flex>
+
+
+            <Flex>
+            <div>
+    <List size={300} marker={<VideoListM color='icon-secondary-success' mt={1} />}>
+      <List.Item>I'm gonna make him an offer he can't refuse.</List.Item>
+      <List.Item marker={<VideoListL color='icon-secondary-neutral' mt={1} />}>
+        (Unchecked icon L) Carpe diem.
+      </List.Item>
+      <List.Item>Listen to them. Children of the night. What music they make.</List.Item>
+    </List>
+  </div>
+            </Flex>
+
         </>
     );
 };
