@@ -3,10 +3,10 @@ import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 test.describe('Verify component added as wrapper', () => {
   test('Navigation between wrapped components by keyboard', async ({ page }) => {
-    const standPath = 'stories/components/heighbor-location/tests/examples/wrapping-test-combimation.tsx';
+    const standPath =
+      'stories/components/heighbor-location/tests/examples/wrapping-test-combimation.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
-   
   });
 
   test('Illustration with color', async ({ page }) => {
