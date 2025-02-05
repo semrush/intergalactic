@@ -5,7 +5,7 @@ test.describe('Grid base tests', () => {
   const sizes = [{ width: 320 }, { width: 768 }, { width: 1200 }];
 
   sizes.forEach(({ width }) => {
-    test(`Verify Grid supports glutter for each ${width}px`, async ({ page }) => {
+    test(`Verify Row gutter for each ${width}px`, async ({ page }) => {
       const standPath = 'stories/components/grid/docs/examples/example-use.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
       await page.setContent(htmlContent);
@@ -37,7 +37,7 @@ test.describe('Grid base tests', () => {
   });
 
   sizes.forEach(({ width }) => {
-    test(`Verify Grid supports span and offset for each ${width}px`, async ({ page }) => {
+    test(`Verify Col span and offset for each ${width}px`, async ({ page }) => {
       const standPath = 'stories/components/grid/docs/examples/change-in-general-offset.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
       await page.setContent(htmlContent);
@@ -82,7 +82,7 @@ test.describe('Grid base tests', () => {
   });
 
   sizes.forEach(({ width }) => {
-    test(`Verify Grid is responsive with md , sm, xs, offset and mdOffset for each ${width}px`, async ({ page }) => {
+    test(`Verify Grid is responsive with md, sm, xs, offset and mdOffset for each ${width}px`, async ({ page }) => {
       const standPath = 'stories/components/grid/docs/examples/responsive.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
       await page.setContent(htmlContent);
