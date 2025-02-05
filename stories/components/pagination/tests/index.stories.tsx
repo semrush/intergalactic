@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import Pagination from '@semcore/pagination';
 
-import TotalPageIs1Example from './examples/total_pages_is_1';
+import TotalPageIs1Example from './examples/pages_is_1_locales';
 import SizesExample from './examples/sizes';
 
 const meta: Meta<typeof Pagination> = {
@@ -13,7 +13,7 @@ const meta: Meta<typeof Pagination> = {
 export default meta;
 type Story = StoryObj<typeof Pagination>;
 
-export const TotalPageIs1: Story = {
+export const Page1AndLocalesCases: Story = {
   render: TotalPageIs1Example,
 };
 
