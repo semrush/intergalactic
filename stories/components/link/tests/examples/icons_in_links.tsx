@@ -1,5 +1,4 @@
 import React from 'react';
-import Button, { ButtonLink } from '@semcore/button';
 import { Hint } from '@semcore/tooltip';
 import Link from '@semcore/link';
 import VideoListM from '@semcore/icon/VideoList/m';

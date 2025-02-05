@@ -9,6 +9,7 @@ test.describe('Illustration size colors and attributes ', () => {
 
     const illustration = page.locator('svg');
     await expect(illustration).toHaveAttribute('aria-hidden', 'true');
+    
   });
 
   test('Illustration with color', async ({ page }) => {

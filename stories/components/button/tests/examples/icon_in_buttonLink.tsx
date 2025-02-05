@@ -1,5 +1,5 @@
 import React from 'react';
-import Button, { ButtonLink } from '@semcore/button';
+import { ButtonLink } from '@semcore/button';
 import VideoListM from '@semcore/icon/VideoList/m';
 import VideoListL from '@semcore/icon/VideoList/l';
 import {Flex} from '@semcore/flex-box';

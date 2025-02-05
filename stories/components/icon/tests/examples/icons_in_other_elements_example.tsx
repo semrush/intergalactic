@@ -4,10 +4,10 @@ import VideoListM from '@semcore/icon/VideoList/m';
 import VideoListL from '@semcore/icon/VideoList/l';
 import { ButtonTrigger, LinkTrigger, FilterTrigger } from '@semcore/base-trigger';
 import '@semcore/utils/lib/themes/default.css';
-import Tooltip, { Hint, DescriptionTooltip } from '@semcore/tooltip';
+import  { Hint, DescriptionTooltip } from '@semcore/tooltip';
 import { Flex } from '@semcore/flex-box';
 import Input from '@semcore/input';
-import Icon from '@semcore/icon';
+import Link from '@semcore/link';
 import DropdownMenu from '@semcore/dropdown-menu';
 
 const Demo = () => {
@@ -143,6 +143,82 @@ const Demo = () => {
                     </Input.Addon>
                 </Input>
 
+            </Flex>
+
+            <Flex columnGap={2} mb = {4}>
+            <Button addonLeft={VideoListM} >AddonLeftM</Button>
+            <Button addonLeft={VideoListL} size={'l'} >AddonLeftL</Button>
+
+            <Button addonRight={VideoListM} >AddonRightM</Button>
+            <Button addonRight={VideoListL} size={'l'} >AddonRightL</Button>
+
+            <Button addonRight={VideoListM} addonLeft={VideoListM} >AddonRighLefttM</Button>
+            <Button addonRight={VideoListL}addonLeft={VideoListL} size={'l'} >AddonRightLeftL</Button>
+
+            <Button addonRight={VideoListL}addonLeft={VideoListM} size={'l'}  disabled>AddonRightLeftL</Button>
+            </Flex>
+
+            <Flex columnGap={2} mb={4}>  
+            <ButtonLink title='VideoListM'>
+      <ButtonLink.Addon>
+        <VideoListM />
+      </ButtonLink.Addon>
+    </ButtonLink>
+
+    <ButtonLink title='VideoListM' disabled>
+      <ButtonLink.Addon>
+        <VideoListM />
+      </ButtonLink.Addon>
+    </ButtonLink>
+    <ButtonLink title='VideoListL'>
+      <ButtonLink.Addon>
+        <VideoListL />
+      </ButtonLink.Addon>
+    </ButtonLink>
+
+
+    
+
+    <ButtonLink addonLeft={VideoListM} aria-label='VideoListM' mr={2}>Button Link</ButtonLink>
+    <ButtonLink addonRight={VideoListL} aria-label='VideoListL' mr={2} />
+
+    <ButtonLink addonRight={VideoListL} aria-label='VideoListL' mr={2} tag='strong'  color='text-critical' disabled/>
+    </Flex>
+    <Flex columnGap={2} mb={4}>
+                <Link href='#' size={300}>
+                    <Link.Addon>
+                        <VideoListM />
+                    </Link.Addon>
+                    <Link.Text>Link.Addon M</Link.Text>
+                </Link>
+
+                <Link href='#' size={300}>
+                    <Link.Addon>
+                        <VideoListL />
+                    </Link.Addon>
+                    <Link.Text>Link.Addon L</Link.Text>
+                </Link>
+
+                <Link addonLeft={VideoListM} aria-label='addonLeft M' href='#' />
+                <Link addonLeft={VideoListL} aria-label='addonLeft L' href='#' />
+
+                <Link href='#' tag={Hint} title={'tag={Hint} Go to the next pageM'}>
+                    <Link.Addon>
+                        <VideoListM />
+                    </Link.Addon>
+                </Link>
+
+                <Link href='#' tag={Hint} title={'tag={Hint} Go to the next pageL'} color='text-critical'>
+                    <Link.Addon>
+                        <VideoListL />
+                    </Link.Addon>
+                </Link>
+
+                <Link href='#' tag={Hint} title={'tag={Hint} Go to the next pageL'} color='text-critical' disabled>
+                    <Link.Addon>
+                        <VideoListL />
+                    </Link.Addon>
+                </Link>
             </Flex>
         </>
     );

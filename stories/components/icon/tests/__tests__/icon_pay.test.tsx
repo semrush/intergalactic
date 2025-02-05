@@ -1,13 +1,13 @@
 import { expect, userEvent, within } from '@storybook/test';
 
-export async function iconSize({ canvasElement }: { canvasElement: HTMLElement }) {
+export async function iconPay({ canvasElement }: { canvasElement: HTMLElement }) {
   const canvas = within(canvasElement);
   const svgInteractive = canvasElement.querySelectorAll('svg[focusable="true"]');
   expect(svgInteractive.length).toBeGreaterThan(0);
 
   const expectedAttributes = [
-    {   width: '16', height: '16', viewBox: '0 0 16 16', focusable: 'true', 'tabindex': '0' },
-    {   width: '24', height: '24', viewBox: '0 0 24 24', focusable: 'true', 'tabindex': '0' },
+    {   width: '21', height: '16', viewBox: '0 0 21 16', focusable: 'true', 'tabindex': '0' },
+    {   width: '32', height: '24', viewBox: '0 0 32 24', focusable: 'true', 'tabindex': '0' },
    ];
 
   for (let i = 0; i < svgInteractive.length; i++) {
@@ -23,8 +23,8 @@ export async function iconSize({ canvasElement }: { canvasElement: HTMLElement }
 
 
   const expectedNonInteractiveAttributes = [
-    {  width: '16', height: '16', viewBox: '0 0 16 16', 'aria-hidden': 'true','tabindex': '-1' },
-    {  width: '24', height: '24', viewBox: '0 0 24 24',  'aria-hidden': 'true','tabindex': '-1' },
+    {  width: '21', height: '16', viewBox: '0 0 21 16', 'aria-hidden': 'true','tabindex': '-1' },
+    {  width: '32', height: '24', viewBox: '0 0 32 24',  'aria-hidden': 'true','tabindex': '-1' },
   ];
   const svgNonInteractive = canvasElement.querySelectorAll('svg[aria-hidden="true"]');
   expect(svgNonInteractive.length).toBeGreaterThan(0);

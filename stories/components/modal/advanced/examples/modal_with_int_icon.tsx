@@ -1,8 +1,8 @@
-import React from "react";
-import Button from "@semcore/button";
-import Modal from "@semcore/modal";
-import { Text } from "@semcore/typography";
-import TrashIcon from "@semcore/icon/Trash/m";
+import React from 'react';
+import Button from '@semcore/button';
+import Modal from '@semcore/modal';
+import { Text } from '@semcore/typography';
+import TrashIcon from '@semcore/icon/Trash/m';
 
 const Demo = () => {
   const [visible, setVisible] = React.useState(false);
@@ -40,5 +40,3 @@ const Demo = () => {
 };
 
 export default Demo;
-
-export const App = () => <Demo />;

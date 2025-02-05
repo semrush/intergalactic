@@ -1,12 +1,13 @@
 import type { Meta } from '@storybook/react';
 
-import IconsExample from './examples/icons_in_links';
-import inButtonsExample from './examples/icon_in_buttons';
-import inButtonsLinkExample from './examples/icon_in_buttonLink';
-import inTriggersHintsExample from './examples/icons_triggers_hints_inputs';
-import customSizeExample from './examples/icon_with_custom_size';
+import IconTypesExample from './examples/icons_regular';
+import IconsCustomExample from './examples/icon_with_custom_size_color';
+import IconColorExample from './examples/icons_color';
+import IconPayExample from './examples/icons_pay';
+import IconOtherElementsExample from './examples/icons_in_other_elements_example';
 
 import { iconSize } from './__tests__/icon_size.test';
+import { iconPay } from './__tests__/icon_pay.test';
 import { playWrapper } from '../../../utils/playWrapper';
 
 const meta: Meta = {
@@ -15,26 +16,25 @@ const meta: Meta = {
 
 export default meta;
 
-export const Icons = {
-  render: IconsExample,
+export const IconRegular = {
+  render: IconTypesExample,
   play: playWrapper(iconSize),
 };
 
-export const inButtons = {
-  render: inButtonsExample,
+export const IconColorType = {
+  render: IconColorExample,
   play: playWrapper(iconSize),
 };
 
-export const customSize = {
-  render: customSizeExample,
+export const IconPay = {
+  render: IconPayExample,
+  play: playWrapper(iconPay),
 };
 
-export const inButtonsLink = {
-  render: inButtonsLinkExample,
-  play: playWrapper(iconSize),
+export const IconsCustom = {
+  render: IconsCustomExample,
 };
 
-export const inTriggersHints = {
-  render: inTriggersHintsExample,
-  play: playWrapper(iconSize),
+export const IconOtherElements = {
+  render: IconOtherElementsExample,
 };
