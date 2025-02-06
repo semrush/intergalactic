@@ -37,7 +37,7 @@ const Demo = () => {
       .map((item, index) => {
         return {
           id: item,
-          label: `Line (${item})`,
+          label: `Line ${index + 1}`,
           checked: true,
           color: `chart-palette-order-${index + 1}`,
         };
@@ -63,7 +63,7 @@ const Demo = () => {
         items={legendItems}
         onChangeVisibleItem={handleChangeVisible}
         patterns
-        aria-label={'Legend for the area chart'}
+        aria-label={'Area chart legend'}
       />
       <Plot
         data={data}

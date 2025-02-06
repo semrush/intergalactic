@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.45.1] - 2025-02-05
+
+### Changed
+
+- Fixed ESM build.
+
+## [4.45.0] - 2024-12-30
+
+### Added
+
+- `plural`, `selectordinal` and others Intl formatting for translations.
+
 ## [4.44.2] - 2025-01-21
 
 ### Added

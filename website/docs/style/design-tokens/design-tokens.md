@@ -125,5 +125,5 @@ Refer to the following tutorials, for the detailed process for creating a new th
 For this step, you need to export your token sets with the new values and process them into CSS styles in the way that suits you best. We recommend referring to the following links:
 
 - [Usage in development](/style/design-tokens/design-tokens-usage-development);
-- [Example for custom component](/style/design-tokens/design-tokens-code);
+- [Example for custom component](/style/design-tokens/design-tokens-usage-development);
 - [CSS Injection guide](/style/css-injection/css-injection).

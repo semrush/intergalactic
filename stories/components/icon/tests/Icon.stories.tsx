@@ -1,6 +1,14 @@
 import type { Meta } from '@storybook/react';
 
-import IconsExample from './examples/icons';
+import IconTypesExample from './examples/icons_regular';
+import IconsCustomExample from './examples/icon_with_custom_size_color';
+import IconColorExample from './examples/icons_color';
+import IconPayExample from './examples/icons_pay';
+import IconOtherElementsExample from './examples/icons_in_other_elements_example';
+
+import { iconSize } from './__tests__/icon_size.test';
+import { iconPay } from './__tests__/icon_pay.test';
+import { playWrapper } from '../../../utils/playWrapper';
 
 const meta: Meta = {
   title: 'Components/Icon/Tests',
@@ -8,6 +16,25 @@ const meta: Meta = {
 
 export default meta;
 
-export const Icons = {
-  render: IconsExample,
+export const IconRegular = {
+  render: IconTypesExample,
+  play: playWrapper(iconSize),
+};
+
+export const IconColorType = {
+  render: IconColorExample,
+  play: playWrapper(iconSize),
+};
+
+export const IconPay = {
+  render: IconPayExample,
+  play: playWrapper(iconPay),
+};
+
+export const IconsCustom = {
+  render: IconsCustomExample,
+};
+
+export const IconOtherElements = {
+  render: IconOtherElementsExample,
 };

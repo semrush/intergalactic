@@ -59,6 +59,7 @@ const Preview = (preview) => {
         disabled={disabled}
         value={value}
         onChange={(value) => onChange('value', value)}
+        aria-label='InputNumber example'
       />
       <InputNumber.Controls showControls={showControls} />
     </InputNumber>

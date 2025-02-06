@@ -65,7 +65,12 @@ const Preview = (preview) => {
   return (
     <Input size={size} state={state}>
       {before && <Input.Addon><CheckM /></Input.Addon>}
-      <Input.Value disabled={disabled} readOnly={readOnly} placeholder='Placeholder' />
+      <Input.Value
+        disabled={disabled}
+        readOnly={readOnly}
+        placeholder='Placeholder'
+        aria-label='Input example'
+      />
       {after &&
         <Input.Addon>
           <ButtonLink use='secondary'>

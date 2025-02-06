@@ -29,7 +29,6 @@ const Demo = () => {
       <Box w={140}>
         <Slider
           id='slider-represantation'
-          aria-label='Number slider representation'
           mb={4}
           value={value}
           onChange={setValue}
