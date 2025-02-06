@@ -124,14 +124,8 @@ export const ListIcons = ({ data, ...props }) => {
           throw new Error(`Icon ${icon.name} not found in import from @icons`);
         }
 
-        let liClass = styles.previewIcon;
-
-        if (selectedIcon === icon.name) {
-          liClass += ` ${styles.selectedIcon}`;
-        }
-
         return (
-          <li className={liClass} key={icon.name} data-name={icon.name}>
+          <li className={styles.previewIcon} key={icon.name} data-name={icon.name}>
             <button
               type='button'
               aria-haspopup='dialog'

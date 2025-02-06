@@ -36,12 +36,11 @@ ul.list {
 }
 
 .previewIcon button:hover {
-  cursor: pointer;
   background-color: var(--intergalactic-bg-primary-neutral-hover);
 }
 
-.previewIcon.selectedIcon button, .previewIcon button:focus-visible {
-  border-color: var(--intergalactic-border-info-active);
+.previewIcon button:focus-visible {
+  box-shadow: var(--intergalactic-keyboard-focus);
 }
 
 .previewIcon span {
@@ -56,21 +55,6 @@ ul.list {
   overflow: hidden;
 }
 
-.panelIcon {
-  z-index: 100;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  padding: var(--intergalactic-spacing-5x) calc(17.5 * var(--intergalactic-spacing-1x));
-  width: 100%;
-  box-shadow: var(--intergalactic-box-shadow-top-menu);
-  background: var(--intergalactic-bg-primary-neutral);
-  box-sizing: border-box;
-  border-top: solid 1px var(--intergalactic-border-secondary);
-}
-
 .previewChangeIcon {
   position: relative;
   display: flex;
@@ -81,7 +65,6 @@ ul.list {
   border-radius: var(--intergalactic-rounded-medium);
   background-color: var(--intergalactic-bg-secondary-neutral);
   font-size: calc(var(--intergalactic-fs-100) + 1px);
-  cursor: pointer;
 }
 
 .previewChangeIcon:hover {
