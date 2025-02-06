@@ -60,16 +60,22 @@ test.describe('Grid base tests', () => {
         if (spanMatches && spanMatches.length > 1) {
           secondSpanValue = spanMatches[1].match(/\d+/)[0];
         }
-        const spanValue = spanMatches && spanMatches.length > 1 ? spanMatches[1].match(/\d+/)[0] : null;
+        const spanValue =
+          spanMatches && spanMatches.length > 1 ? spanMatches[1].match(/\d+/)[0] : null;
         expect(spanValue).toBe(expectedSpanValues[i]);
-        const offset = await column.evaluate((el) => el.getAttribute('offset') || getComputedStyle(el).getPropertyValue('offset'));
+        const offset = await column.evaluate(
+          (el) => el.getAttribute('offset') || getComputedStyle(el).getPropertyValue('offset'),
+        );
         expect(offset).toBe(expectedOffsetValues[i]);
-        const rowPaddingLeft = await column.evaluate((el) => window.getComputedStyle(el).paddingLeft);
-        const rowPaddingRight = await column.evaluate((el) => window.getComputedStyle(el).paddingRight);
+        const rowPaddingLeft = await column.evaluate(
+          (el) => window.getComputedStyle(el).paddingLeft,
+        );
+        const rowPaddingRight = await column.evaluate(
+          (el) => window.getComputedStyle(el).paddingRight,
+        );
         expect(rowPaddingLeft).toBe('8px');
         expect(rowPaddingRight).toBe('8px');
       }
-
     });
   });
 

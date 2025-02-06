@@ -2,10 +2,10 @@ import { beforeEach } from 'vitest';
 import { label, feature, story, parentSuite, suite, subSuite, layer } from 'allure-js-commons';
 
 beforeEach(async (context) => {
-  const filePath = (context.task.file?.name ?? '').split('/');  // Разбиваем путь по '/'
-const fileName = filePath[filePath.length - 1];  // 'index.test.tsx > Tag > Should support size props'
-const component = filePath[filePath.length - 3] ?? '';  // 'tag'
-const subSuiteName = fileName.split(' > ')[1] ?? '';  // 'Tag'
+  const filePath = (context.task.file?.name ?? '').split('/'); // Разбиваем путь по '/'
+  const fileName = filePath[filePath.length - 1]; // 'index.test.tsx > Tag > Should support size props'
+  const component = filePath[filePath.length - 3] ?? ''; // 'tag'
+  const subSuiteName = fileName.split(' > ')[1] ?? ''; // 'Tag'
 
   const suit = 'Unit tests';
   const storyName = context.task.name;

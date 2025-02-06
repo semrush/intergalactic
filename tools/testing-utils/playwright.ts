@@ -31,13 +31,13 @@ export const skipButtonComboboxDiscernibleErrors = (v: axe.Result) => {
   return true;
 };
 
-const beforeEachTests = async ({}, use: () => Promise<void>, testInfo: TestInfo) => {
+const beforeEachTests = async (use: () => Promise<void>, testInfo: TestInfo) => {
   let testLayer = 'Other tests';
 
-const testFilePath = testInfo.file.split('/'); 
-const fileName = testFilePath[testFilePath.length - 1]; 
-const component = testFilePath[testFilePath.length - 3];  
-const testDescription = fileName.split(' › ')[1] ?? '';  
+  const testFilePath = testInfo.file.split('/');
+  const fileName = testFilePath[testFilePath.length - 1];
+  const component = testFilePath[testFilePath.length - 3];
+  const testDescription = fileName.split(' › ')[1] ?? '';
 
   if (testFilePath.includes('browser')) {
     testLayer = 'Browser tests';
@@ -49,7 +49,6 @@ const testDescription = fileName.split(' › ')[1] ?? '';
     testLayer = 'Unit tests';
   }
 
-
   await label('component', component);
   await layer(testLayer);
   await feature(testLayer);
@@ -60,7 +59,6 @@ const testDescription = fileName.split(' › ')[1] ?? '';
 
   await use();
 };
-
 
 const test = base.extend<{ testHook: void }>({
   testHook: [beforeEachTests, { auto: true }],
