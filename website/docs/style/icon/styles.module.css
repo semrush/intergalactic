@@ -18,7 +18,7 @@ ul.list {
 }
 
 .previewIcon {
-  display: flex;
+  display: inline;
 }
 
 .previewIcon button {
