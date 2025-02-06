@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import AutomaticColumnSizeDetectionExample from './examples/automatic-column-size-detection';
 import ChangeInGeneralOffsetExamples from './examples/change-in-general-offset';
-import ChangeInGeneralGlutterBetweenColumnsExample from './examples/change-in-the-general-gutter-between-the-columns';
+import ChangeInGeneralGutterBetweenColumnsExample from './examples/change-in-the-general-gutter-between-the-columns';
 import ExampleUseExample from './examples/example-use';
 import ResponsiveAlternativeApiExample from './examples/responsive-alternative-api';
 import ResponsiveExample from './examples/responsive';
@@ -18,8 +18,8 @@ export const AutomaticColumnSizeDetection: StoryObj = {
 export const ChangeInGeneralOffset: StoryObj = {
     render: ChangeInGeneralOffsetExamples,
   };
-  export const ChangeInGeneralGlutterBetweenColumns: StoryObj = {
-    render: ChangeInGeneralGlutterBetweenColumnsExample,
+  export const ChangeInGeneralGutterBetweenColumns: StoryObj = {
+    render: ChangeInGeneralGutterBetweenColumnsExample,
   };
 
   export const ExampleUse: StoryObj = {
