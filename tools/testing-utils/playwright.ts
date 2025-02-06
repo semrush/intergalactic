@@ -47,7 +47,7 @@ const beforeEachTests = async ({}, use: () => Promise<void>, testInfo: TestInfo)
     layer = 'Voice over tests';
   }
 
-  await allure.label('framework', 'Vitest');
+  await allure.label('framework', 'Playwright');
   await allure.label('component', component);
   await allure.layer(layer);
   await allure.subSuite(suite);
