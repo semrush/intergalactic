@@ -4,6 +4,10 @@
   line-height: var(--intergalactic-lh-300);
 }
 
+.contextWrapper {
+  display: contents;
+}
+
 ul.list {
   display: flex;
   flex-wrap: wrap;
@@ -36,7 +40,7 @@ ul.list {
   background-color: var(--intergalactic-bg-primary-neutral-hover);
 }
 
-.previewIcon button:focus {
+.previewIcon.selectedIcon button, .previewIcon button:focus-visible {
   border-color: var(--intergalactic-border-info-active);
 }
 

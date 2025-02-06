@@ -111,8 +111,7 @@ export const IconDetailsPanel = ({ name, visible, onClose }) => {
 };
 
 export const ListIcons = ({ data, ...props }) => {
-  const { icons, selectedIcon, setSelectedIcon, panelTrigger, setPanelTrigger, triggerRef } =
-    React.useContext(Context);
+  const { icons, selectedIcon, setSelectedIcon } = React.useContext(Context);
   return (
     <>
       <ul
@@ -126,19 +125,24 @@ export const ListIcons = ({ data, ...props }) => {
             throw new Error(`Icon ${icon.name} not found in import from @icons`);
           }
 
+          let liClass = styles.previewIcon;
+
+          if (selectedIcon === icon.name) {
+            liClass += ` ${styles.selectedIcon}`;
+          }
+
           return (
-            <li className={styles.previewIcon} key={icon.name} data-name={icon.name}>
+            <li className={liClass} key={icon.name} data-name={icon.name}>
               <button
                 type='button'
                 aria-haspopup='dialog'
                 aria-expanded={selectedIcon === icon.name}
                 aria-controls={selectedIcon === icon.name ? `${icon.name}-dialog` : undefined}
-                ref={panelTrigger === icon.name ? triggerRef : undefined}
                 onClick={() => {
                   setSelectedIcon(icon.name);
-                  setPanelTrigger(icon.name);
                 }}
                 data-name='PanelTrigger'
+                data-id={icon.name}
               >
                 <Icon width={20} height={20} />
                 <span data-name='PanelTrigger'>{icon.name}</span>
@@ -153,9 +157,13 @@ export const ListIcons = ({ data, ...props }) => {
 
 const Context = React.createContext();
 
-export const IconGroups = ({ children, ...props }) => {
-  return <Context.Provider value={props} children={children} />;
-};
+export const IconGroups = React.forwardRef(({ children, ...props }, forwardedRef) => {
+  return (
+    <div className={styles.contextWrapper} ref={forwardedRef}>
+      <Context.Provider value={props} children={children} />
+    </div>
+  );
+});
 
 export default function ({ title }) {
   const { json } = React.useContext(Context);
