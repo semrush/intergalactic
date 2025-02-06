@@ -46,38 +46,30 @@ test.describe('Grid base tests', () => {
       await expect(page).toHaveScreenshot();
       const row = await page.waitForSelector('div[data-ui-name="Row"]');
 
-      const columns = await row.$$('div[data-ui-name="Row.Col"]');
+      const columns = await page.locator('[data-ui-name="Row.Col"]').all();
 
       // Expected span and offset values based on the HTML structure
       const expectedSpanValues = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'];
       const expectedOffsetValues = ['11', '10', '9', '8', '7', '6', '5', '4', '3', '2', '1'];
-
+      await page.waitForTimeout(100);
       for (let i = 0; i < columns.length; i++) {
         const column = columns[i];
-
         const spanClass = await column.evaluate((el) => el.className);
-
-        // Extract the span value from the class (e.g. _span_2_wia8r_gg_)
-        const spanMatch = spanClass.match(/_span_(\d+)/);
-        const spanValue = spanMatch ? spanMatch[1] : null;
-
+        const spanMatches = spanClass.match(/_span_(\d+)/g);
+        let secondSpanValue = null;
+        if (spanMatches && spanMatches.length > 1) {
+          secondSpanValue = spanMatches[1].match(/\d+/)[0];
+        }
+        const spanValue = spanMatches && spanMatches.length > 1 ? spanMatches[1].match(/\d+/)[0] : null;
         expect(spanValue).toBe(expectedSpanValues[i]);
-
-        const offset = await column.evaluate((el) => el.getAttribute('offset'));
-
+        const offset = await column.evaluate((el) => el.getAttribute('offset') || getComputedStyle(el).getPropertyValue('offset'));
         expect(offset).toBe(expectedOffsetValues[i]);
-
-        const rowPaddingLeft = await column.evaluate((el) => {
-          return window.getComputedStyle(el).paddingLeft;
-        });
-
-        const rowPaddingRight = await column.evaluate((el) => {
-          return window.getComputedStyle(el).paddingRight;
-        });
-
+        const rowPaddingLeft = await column.evaluate((el) => window.getComputedStyle(el).paddingLeft);
+        const rowPaddingRight = await column.evaluate((el) => window.getComputedStyle(el).paddingRight);
         expect(rowPaddingLeft).toBe('8px');
         expect(rowPaddingRight).toBe('8px');
       }
+
     });
   });
 
