@@ -121,7 +121,7 @@ export default function ({ icons, old, json }) {
           name={selectedIcon}
           visible={selectedIcon !== null}
           onClose={(eventName, e) => {
-            if (eventName === 'onCloseClick') {
+            if (eventName === 'onCloseClick' || eventName === 'onEscape') {
               setTimeout(() => {
                 const button = iconsContainerRef.current?.querySelector(
                   `[data-id="${selectedIcon}"]`,
