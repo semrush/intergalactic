@@ -82,7 +82,7 @@ if (argv.modules) {
   await runCommand(
     'BABEL',
     'es6',
-    '--extensions .ts,.tsx,.js,.jsx --ignore **/*.d.ts --presets @semcore/babel-preset-ui --no-babelrc --source-maps --copy-files --out-file-extension .mjs --env-name=es6',
+    '--extensions .ts,.tsx,.js,.jsx --ignore **/*.d.ts --presets @semcore/babel-preset-ui --no-babelrc --source-maps --copy-files --env-name=es6',
   );
   if (source.includes('jsx') || source.includes('js')) await runCommand('COPY_TYPES', 'types');
   if (source.includes('tsx') || source.includes('ts')) await runCommand('TYPES', 'types');
