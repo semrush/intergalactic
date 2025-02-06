@@ -4,10 +4,10 @@ import { Flex } from '@semcore/flex-box';
 
 const Demo = () => {
   return (
-    <Flex direction='column'>
-      <Pagination totalPages={17824} locale='de' />
+    <Flex direction='column' gap={4}>
+      <Pagination totalPages={17824} />
 
-      <Pagination totalPages={178247} locale='ko' />
+      <Pagination totalPages={178247} size={'l'} />
     </Flex>
   );
 };
