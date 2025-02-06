@@ -72,14 +72,12 @@ export const ListIllustrations = ({ data, ...props }) => {
           );
         }
 
-        let liClass = styles.previewIllustration;
-
-        if (selectedIllustration === illustration.name) {
-          liClass += ` ${styles.selectedIllustration}`;
-        }
-
         return (
-          <li className={liClass} key={illustration.name} data-name={illustration.name}>
+          <li
+            className={styles.previewIllustration}
+            key={illustration.name}
+            data-name={illustration.name}
+          >
             <button
               type='button'
               aria-haspopup='dialog'
