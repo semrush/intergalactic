@@ -1,8 +1,7 @@
 import React from 'react';
-import NotificationM from 'intergalactic/icon/Notification/m';
-import Button from 'intergalactic/button';
-import Dot from 'intergalactic/dot';
-import { Hint } from 'intergalactic/tooltip';
+import NotificationM from '@semcore/icon/Notification/m';
+import Button from '@semcore/button';
+import Dot from '@semcore/dot';
 
 const Demo = () => {
   const [dotVisible, setDotVisible] = React.useState(true);
@@ -15,12 +14,16 @@ const Demo = () => {
   const handleClick = React.useCallback(() => setDotVisible(false), []);
 
   return (
-    <Hint tag={Button} onClick={handleClick} title='Notifications'>
+    <Button
+      onClick={handleClick}
+      title='Notifications'
+      aria-describedby={dotVisible ? 'dot-desc' : undefined}
+    >
       <Button.Addon>
         <NotificationM />
-        <Dot up hidden={!dotVisible} size='l' />
+        <Dot up hidden={!dotVisible} size='l' aria-label='New' id='dot-desc' />
       </Button.Addon>
-    </Hint>
+    </Button>
   );
 };
 

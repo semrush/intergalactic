@@ -91,7 +91,7 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
       minRows={min}
       maxRows={max}
       placeholder='Placeholder'
-      aria-label='Label for textarea'
+      aria-label='Textarea example'
     />
   );
 });
@@ -121,7 +121,7 @@ You can enable the resize control for the textarea to allow users to adjust its 
 When the textarea cannot be stretched, a scrollbar will appear after a certain number of lines. We recommended adding scrollbars when the textarea has at least 5 lines.
 
 ::: tip
-Avoid making the textarea smaller than 160-200px in width and 3-4 lines in height. Working with large amounts of data in smaller sizes can be challenging, especially when it serves as a primary input in a form.
+Avoid making the textarea smaller than 160-200px in width and 3-4 rows in height. Working with large amounts of data in smaller sizes can be challenging, especially when it serves as a primary input in a form.
 :::
 
 ## Counter

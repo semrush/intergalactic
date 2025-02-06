@@ -8,7 +8,7 @@ tabs: Design('tag'), A11y('tag-a11y'), API('tag-api'), Example('tag-code'), Chan
 
 <script lang="tsx">
 import React from 'react';
-import Tag from '@semcore/ui/tag';
+import { TagContainer } from '@semcore/ui/tag';
 import EditM from '@semcore/ui/icon/Edit/m';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
@@ -58,7 +58,7 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
   const beforeIcon = bool({
     key: 'before Icon',
     defaultValue: false,
-    label: 'AddonLeft',
+    label: 'Addon',
   });
 
   const imageIcon = bool({
@@ -92,28 +92,29 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
   });
 
   return (
-    <Tag
+    <TagContainer
       interactive={interactive}
-      active={active}
       theme={theme}
       color={color}
       size={size}
       disabled={disabled}
     >
-      {beforeIcon && (
-        <Tag.Addon>
-          <EditM />
-        </Tag.Addon>
-      )}
+      <TagContainer.Tag active={active}>
+        {beforeIcon && (
+          <TagContainer.Tag.Addon>
+            <EditM />
+          </TagContainer.Tag.Addon>
+        )}
 
-      {imageIcon && (
-        <Tag.Circle>
-          <img src='https://picsum.photos/id/1025/28/28' />
-        </Tag.Circle>
-      )}
-      <Tag.Text>Tag text</Tag.Text>
-      {closeIcon && <Tag.Close />}
-    </Tag>
+        {imageIcon && (
+          <TagContainer.Tag.Circle>
+            <img src='https://picsum.photos/id/1025/28/28' />
+          </TagContainer.Tag.Circle>
+        )}
+        <TagContainer.Tag.Text>Tag text</TagContainer.Tag.Text>
+      </TagContainer.Tag>
+      {closeIcon && <TagContainer.Close />}
+    </TagContainer>
   );
 });
 </script>

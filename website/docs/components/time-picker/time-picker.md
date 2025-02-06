@@ -45,7 +45,7 @@ const App = PlaygroundGeneration(
     const is12Hour = bool({
       key: 'is12Hour',
       defaultValue: false,
-      label: '12 Hour format',
+      label: '12-hour format',
     });
 
     const disabled = bool({
@@ -56,6 +56,7 @@ const App = PlaygroundGeneration(
 
     return (
       <Timepicker
+        aria-label='TimePicker example'
         size={size}
         state={state}
         disabled={disabled}

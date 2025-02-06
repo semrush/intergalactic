@@ -1,5 +1,3 @@
-// TODO: add a11y
-
 import * as React from 'react';
 import { snapshot } from '@semcore/testing-utils/snapshot';
 import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';

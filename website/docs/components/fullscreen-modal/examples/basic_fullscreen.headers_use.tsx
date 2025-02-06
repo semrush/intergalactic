@@ -7,7 +7,7 @@ const Demo = () => {
 
   return (
     <>
-      <Button onClick={() => setVisible(true)}>Open fullscreen window</Button>
+      <Button onClick={() => setVisible(true)}>Open FullscreenModal</Button>
       <FullscreenModal visible={visible} onClose={() => setVisible(false)}>
         <FullscreenModal.Close />
         <FullscreenModal.Back>Go to Tool Name</FullscreenModal.Back>
