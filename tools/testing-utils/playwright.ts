@@ -31,7 +31,7 @@ export const skipButtonComboboxDiscernibleErrors = (v: axe.Result) => {
   return true;
 };
 
-const beforeEachTests = async (use: () => Promise<void>, testInfo: TestInfo) => {
+const beforeEachTests = async (_: unknown, use: () => Promise<void>, testInfo: TestInfo) => {
   let testLayer = 'Other tests';
 
   const testFilePath = testInfo.file.split('/');
