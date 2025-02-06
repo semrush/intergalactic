@@ -3,20 +3,17 @@ import { label, feature, story, parentSuite, suite, subSuite, layer } from 'allu
 
 beforeEach(async (context) => {
   const filePath = (context.task.file?.name ?? '').split('/');
-  const fileName = filePath[filePath.length - 1];
   const component = filePath[filePath.length - 3] ?? '';
 
   const suit = 'Unit tests';
   const storyName = context.task.name;
 
-  await label('framework', 'Vitest');
+  label('framework', 'Vitest');
   await label('component', component);
   await feature(suit);
   await layer(suit);
   await story(storyName);
-  await parentSuite(component);
   await suite(suit);
-  await subSuite(storyName);
 });
 
 export * from 'vitest';
