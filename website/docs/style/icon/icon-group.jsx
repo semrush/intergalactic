@@ -113,45 +113,43 @@ export const IconDetailsPanel = ({ name, visible, onClose }) => {
 export const ListIcons = ({ data, ...props }) => {
   const { icons, selectedIcon, setSelectedIcon } = React.useContext(Context);
   return (
-    <>
-      <ul
-        className={styles.list}
-        aria-labelledby={props['aria-labelledby']}
-        aria-label={props['aria-label']}
-      >
-        {data.map((icon) => {
-          const Icon = icons[icon.name];
-          if (!Icon) {
-            throw new Error(`Icon ${icon.name} not found in import from @icons`);
-          }
+    <ul
+      className={styles.list}
+      aria-labelledby={props['aria-labelledby']}
+      aria-label={props['aria-label']}
+    >
+      {data.map((icon) => {
+        const Icon = icons[icon.name];
+        if (!Icon) {
+          throw new Error(`Icon ${icon.name} not found in import from @icons`);
+        }
 
-          let liClass = styles.previewIcon;
+        let liClass = styles.previewIcon;
 
-          if (selectedIcon === icon.name) {
-            liClass += ` ${styles.selectedIcon}`;
-          }
+        if (selectedIcon === icon.name) {
+          liClass += ` ${styles.selectedIcon}`;
+        }
 
-          return (
-            <li className={liClass} key={icon.name} data-name={icon.name}>
-              <button
-                type='button'
-                aria-haspopup='dialog'
-                aria-expanded={selectedIcon === icon.name}
-                aria-controls={selectedIcon === icon.name ? `${icon.name}-dialog` : undefined}
-                onClick={() => {
-                  setSelectedIcon(icon.name);
-                }}
-                data-name='PanelTrigger'
-                data-id={icon.name}
-              >
-                <Icon width={20} height={20} />
-                <span data-name='PanelTrigger'>{icon.name}</span>
-              </button>
-            </li>
-          );
-        })}
-      </ul>
-    </>
+        return (
+          <li className={liClass} key={icon.name} data-name={icon.name}>
+            <button
+              type='button'
+              aria-haspopup='dialog'
+              aria-expanded={selectedIcon === icon.name}
+              aria-controls={selectedIcon === icon.name ? `${icon.name}-dialog` : undefined}
+              onClick={() => {
+                setSelectedIcon(icon.name);
+              }}
+              data-name='PanelTrigger'
+              data-id={icon.name}
+            >
+              <Icon width={20} height={20} />
+              <span data-name='PanelTrigger'>{icon.name}</span>
+            </button>
+          </li>
+        );
+      })}
+    </ul>
   );
 };
 
