@@ -29,7 +29,6 @@ test.describe('Grid base tests', () => {
       for (const col of cols) {
         const colPaddingLeft = await col.evaluate((el) => getComputedStyle(el).paddingLeft);
         const colPaddingRight = await col.evaluate((el) => getComputedStyle(el).paddingRight);
-
         expect(colPaddingLeft).toBe('8px');
         expect(colPaddingRight).toBe('8px');
       }
