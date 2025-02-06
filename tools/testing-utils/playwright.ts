@@ -2,7 +2,7 @@ import AxeBuilder from '@axe-core/playwright';
 import type { Page } from 'playwright';
 import { test as base } from '@playwright/test';
 import { voiceOverTest as voiceOverBase } from '@guidepup/playwright';
-import { label, feature, story, parentSuite, suite, subSuite, layer } from 'allure-js-commons';
+import { allure } from 'allure-playwright';
 import type { TestInfo } from 'playwright/types/test';
 import axe from 'axe-core';
 import fs from 'node:fs/promises';
@@ -31,32 +31,33 @@ export const skipButtonComboboxDiscernibleErrors = (v: axe.Result) => {
   return true;
 };
 
-const beforeEachTests = async (_: unknown, use: () => Promise<void>, testInfo: TestInfo) => {
-  let testLayer = 'Other tests';
-
+// biome-ignore lint/correctness/noEmptyPattern:
+const beforeEachTests = async ({}, use: () => Promise<void>, testInfo: TestInfo) => {
+  let layer = 'Other tests';
   const testFilePath = testInfo.file.split('/');
   const fileName = testFilePath[testFilePath.length - 1];
   const component = testFilePath[testFilePath.length - 3];
-  const testDescription = fileName.split(' › ')[1] ?? '';
+  const suite = fileName.split('.')[1];
 
-  if (testFilePath.includes('browser')) {
-    testLayer = 'Browser tests';
-  } else if (testFilePath.includes('axe')) {
-    testLayer = 'Axe tests';
-  } else if (testFilePath.includes('vo')) {
-    testLayer = 'Voice over tests';
-  } else if (testFilePath.includes('index')) {
-    testLayer = 'Unit tests';
+  if (suite.includes('browser')) {
+    layer = 'Browser tests';
+  } else if (suite.includes('axe')) {
+    layer = 'Axe tests';
+  } else if (suite.includes('vo')) {
+    layer = 'Voice over tests';
+  } else if (suite.includes('index')) {
+    layer = 'Unit tests';
   }
+  const subSuiteName = testInfo.titlePath[1];
 
-  await label('component', component);
-  await layer(testLayer);
-  await feature(testLayer);
-  await parentSuite(component);
-  await subSuite(testDescription);
-  await story(testInfo.title);
-  await suite(testLayer);
-
+  await allure.label('framework', 'Playwright');
+  await allure.label('component', component);
+  await allure.layer(layer);
+  await allure.feature(layer);
+  await allure.suite(layer);
+  await allure.parentSuite(component);
+  await allure.subSuite(subSuiteName);
+  await allure.story(testInfo.title);
   await use();
 };
 
