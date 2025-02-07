@@ -7,13 +7,18 @@ import Ellipsis from '@semcore/ellipsis';
 import Copy from '@components/Copy';
 import styles from './styles.module.css';
 
-const iconLetterToNumericSize = { l: 24, m: 16 };
+const iconDimensions = {
+  common: { l: 24, m: 16 },
+  pay: { l: { w: 32, h: 24 }, m: { w: 21, h: 16 } },
+  external: { 20: 20 },
+};
 
 const DownloadIconButton = ({ size, name, action, iconData, icon: Icon }) => {
-  const iconSize = iconLetterToNumericSize[size] || '';
   let nameSvg = `${name}/${size}`;
-
   const groupName = iconData.group.toLowerCase();
+  const iconSize = iconDimensions[groupName]
+    ? iconDimensions[groupName][size]
+    : iconDimensions.common[size];
   const haveGroupName = ['pay', 'external', 'color'].includes(groupName);
   let includeGroupName = haveGroupName ? `/${groupName}` : '';
 
@@ -49,7 +54,7 @@ const DownloadIconButton = ({ size, name, action, iconData, icon: Icon }) => {
           <Icon width={20} height={20} />
           <span className={styles.iconSizes}>
             <span className={styles.iconSizeTitle}>{size.toUpperCase()}</span>
-            {` (${iconSize}x${iconSize}px)`}
+            {` (${iconSize.w || iconSize}x${iconSize.h || iconSize}px)`}
           </span>
         </a>
       </Tooltip>
@@ -62,7 +67,7 @@ const DownloadIconButton = ({ size, name, action, iconData, icon: Icon }) => {
         <Icon width={20} height={20} />
         <span className={styles.iconSizes}>
           <span className={styles.iconSizeTitle}>{size.toUpperCase()}</span>
-          {` (${iconSize}x${iconSize}px)`}
+          {` (${iconSize.w || iconSize}x${iconSize.h || iconSize}px)`}
         </span>
       </button>
     </Copy>
