@@ -1,6 +1,5 @@
 import React from 'react';
 import Button from '@semcore/button';
-import Divider from '@semcore/divider';
 import { Flex } from '@semcore/flex-box';
 import NeighborLocation from '@semcore/neighbor-location';
 

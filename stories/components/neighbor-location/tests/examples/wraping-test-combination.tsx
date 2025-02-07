@@ -4,10 +4,9 @@ import { Flex } from '@semcore/flex-box';
 import NeighborLocation from '@semcore/neighbor-location';
 import Input from '@semcore/input';
 import Select from '@semcore/select';
-import { Hint } from '@semcore/ui/tooltip';
-import ShowYesM from '@semcore/ui/icon/ShowYes/m';
-import ShowNoM from '@semcore/ui/icon/ShowNo/m';
-import { ButtonLink } from '@semcore/ui/button';
+import { Hint } from '@semcore/tooltip';
+import ShowYesM from '@semcore/icon/ShowYes/m';
+import { ButtonLink } from '@semcore/button';
 
 const Demo = () => {
   return (
