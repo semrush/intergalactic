@@ -1,6 +1,6 @@
 import React from 'react';
 import createComponent, { sstyled, Root } from '@semcore/core';
-import style from './buttonLink.shadow.css';
+import style from './buttonLink.module.css';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import { Box } from '@semcore/flex-box';
 import { AbstractButton } from '../AbstractButton/AbstractButton';

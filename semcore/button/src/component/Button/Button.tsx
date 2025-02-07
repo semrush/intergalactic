@@ -3,7 +3,7 @@ import createComponent, { sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
-import style from './button.shadow.css';
+import style from './button.module.css';
 import { AbstractButton } from '../AbstractButton/AbstractButton';
 import {
   ButtonAddonProps,
