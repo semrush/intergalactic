@@ -21,7 +21,7 @@ const Demo = () => {
 
   const xScale = scaleBand()
     .range([MARGIN, width - MARGIN])
-    .domain(data.map((d) => d.category))
+    .domain(data.map((d) => d.bar))
     .paddingInner(0.4)
     .paddingOuter(0.2);
 
@@ -31,11 +31,11 @@ const Demo = () => {
 
   const [legendItems, setLegendItems] = React.useState(
     Object.keys(data[0])
-      .filter((name) => name !== 'category')
+      .filter((name) => name !== 'bar')
       .map((item, index) => {
         return {
           id: item,
-          label: `Bar ${item}`,
+          label: `Category ${item}`,
           checked: true,
           color: `chart-palette-order-${index + 1}`,
         };
@@ -72,7 +72,7 @@ const Demo = () => {
         onMouseEnterItem={handleMouseEnter}
         onMouseLeaveItem={handleMouseLeave}
         patterns
-        aria-label={'Legend for the bar chart'}
+        aria-label={'Bar chart legend'}
       />
       <Plot
         data={data}
@@ -89,11 +89,11 @@ const Demo = () => {
         <XAxis>
           <XAxis.Ticks />
         </XAxis>
-        <HoverRect.Tooltip x='category' wMin={100}>
+        <HoverRect.Tooltip x='bar' wMin={100}>
           {({ xIndex }) => ({
             children: (
               <>
-                <HoverRect.Tooltip.Title>{data[xIndex].category}</HoverRect.Tooltip.Title>
+                <HoverRect.Tooltip.Title>{data[xIndex].bar}</HoverRect.Tooltip.Title>
                 <Flex justifyContent='space-between'>
                   <HoverRect.Tooltip.Dot mr={4} color={legendItems[0].color}>
                     Bar 1
@@ -110,7 +110,7 @@ const Demo = () => {
             ),
           })}
         </HoverRect.Tooltip>
-        <GroupBar x='category'>
+        <GroupBar x='bar'>
           {legendItems
             .filter((item) => item.checked)
             .map((item, index) => {
@@ -131,7 +131,7 @@ const Demo = () => {
 const data = Array(5)
   .fill({})
   .map((d, i) => ({
-    category: `Category ${i}`,
+    bar: `Bar ${i + 1}`,
     1: Math.random() * 10,
     2: Math.random() * 10,
   }));

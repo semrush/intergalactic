@@ -11,7 +11,7 @@ const Demo = () => {
 
   return (
     <React.Fragment>
-      <Button onClick={() => setVisible(true)}>Open modal</Button>
+      <Button onClick={() => setVisible(true)}>Open modal with tooltips</Button>
       <Modal visible={visible} onClose={() => setVisible(false)} w={536}>
         <Box mb={2}>
           <Text size={300} tag='label' htmlFor='input-1'>
@@ -25,7 +25,7 @@ const Demo = () => {
           ignorePortalsStacking
         >
           <Input size='l' w={440}>
-            <Input.Value id='input-2' />
+            <Input.Value id='input-1' />
           </Input>
         </Tooltip>
         <Box mt={5} mb={2}>

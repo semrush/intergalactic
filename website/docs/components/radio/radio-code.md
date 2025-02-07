@@ -18,7 +18,7 @@ tabs: Design('radio'), A11y('radio-a11y'), API('radio-api'), Example('radio-code
 
 ## Additional input props
 
-`Radio.Value` hides a styled div and a hidden input. When you pass props to `Radio.Value`, a specific set of them is passed to the input props, while all others go to the `Radio.Value.RadioMark` div.
+`Radio.Value` contains a styled div and a hidden input. When you pass props to `Radio.Value`, a specific set of them is passed to the input props, while all others go to the `Radio.Value.RadioMark` div.
 
 For more control over the input, you can pass props to `Radio.Value.Control`.
 

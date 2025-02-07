@@ -7,6 +7,7 @@ import { axe } from '@semcore/testing-utils/axe';
 import Return from '@semcore/icon/Return/m';
 import Pagination from '../src';
 import Button from '@semcore/button';
+import { Flex } from '@semcore/flex-box';
 
 describe('Pagination', () => {
   beforeEach(cleanup);
@@ -18,6 +19,17 @@ describe('Pagination', () => {
 
   test.concurrent('Should support not render button if totalPage 1', async ({ task }) => {
     const component = <Pagination currentPage={1} totalPages={1} />;
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  });
+
+  test.concurrent('Should support sizes', async ({ task }) => {
+    const component = (
+      <Flex direction='column' gap={4}>
+        <Pagination totalPages={17824} />
+
+        <Pagination totalPages={178247} size={'l'} />
+      </Flex>
+    );
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 

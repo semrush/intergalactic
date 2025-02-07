@@ -14,21 +14,21 @@ import { Chart, BarChartProps } from '@semcore/d3-chart';
 
 const data = [...Array(5).keys()].map((d, i) => ({
   x: i,
-  Line1: Math.random() * 10,
-  Line2: Math.random() * 10,
+  Category1: Math.random() * 10,
+  Category2: Math.random() * 10,
 }));
 
 const trendData = {
-  Line1: data.map((item) => {
+  Category1: data.map((item) => {
     return {
       x: item.x,
-      y: item.Line1 - 0.5,
+      y: item.Category1 - 0.5,
     };
   }),
-  Line2: data.map((item) => {
+  Category2: data.map((item) => {
     return {
       x: item.x,
-      y: item.Line2 - 0.5,
+      y: item.Category2 - 0.5,
     };
   }),
 };
@@ -39,7 +39,6 @@ const App = PlaygroundGeneration((preview) => {
   const {
     direction,
     alignItems,
-    justifyContent,
     showTotalInTooltip,
     showXAxis,
     showYAxis,
@@ -52,7 +51,7 @@ const App = PlaygroundGeneration((preview) => {
   const withTrend = bool({
     key: 'withTrend',
     defaultValue: false,
-    label: 'With trend',
+    label: 'Trend',
   });
 
   const chartProps: BarChartProps = {
@@ -66,7 +65,6 @@ const App = PlaygroundGeneration((preview) => {
     showXAxis,
     showYAxis,
     alignItems,
-    justifyContent,
     trend: withTrend ? trendData : undefined,
     patterns,
   };

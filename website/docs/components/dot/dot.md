@@ -44,15 +44,15 @@ const Preview = (preview) => {
   });
 
   return (
-    <Button>
+    <Button aria-describedby={hidden ? undefined : 'dot'}>
       <Button.Text alignItems='center'>Notifications</Button.Text>
       {up ? (
-        <Dot up={up} size={size} hidden={hidden}>
+        <Dot up size={size} hidden={hidden} aria-label={value ? undefined : 'New'} id='dot'>
           {value ? value : null}
         </Dot>
       ) : (
         <Button.Addon>
-          <Dot size={size} hidden={hidden}>
+          <Dot size={size} hidden={hidden} aria-label={value ? undefined : 'New'} id='dot'>
             {value ? value : null}
           </Dot>
         </Button.Addon>

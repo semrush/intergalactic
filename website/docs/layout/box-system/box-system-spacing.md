@@ -4,12 +4,12 @@ fileSource: flex-box
 tabs: Spacing system('box-system-spacing'), API('box-system-api'), Example('box-system-code'), Changelog('box-system-changelog')
 ---
 
-The spacing system helps maintain a vertical and horizontal rhythms in the interface. It makes the interface easier to use by reducing cognitive load. _For example, if there are different indents in the interface everywhere, the brain will try to understand this logic and thereby add a cognitive load to itself. It is wrong way._
+The spacing system helps maintain a vertical and horizontal rhythms in the interface. It makes the interface easier to use by reducing cognitive load. _For example, if there are different indents in the interface everywhere, the brain will try to understand this logic and thereby increase its cognitive load._
 
 In addition, vertical and horizontal rhythms help maintain visual hierarchy on the page, structure components and blocks according their importance to the user.
 
 ::: tip
-**Use 4 as the multiple of all the indents**. It is a main denominator of our design system (`scaleIndent` property in API, `--scale-indent` in tokens), see [Design tokens](/style/design-tokens/design-tokens).
+**Use 4 as the multiple of all indents**. It's the main denominator of our design system (`scaleIndent` property in API, `--scale-indent` in [design tokens](/style/design-tokens/design-tokens)).
 :::
 
 Here is a table with [spacing tokens](/style/design-tokens/design-tokens) we use in our design system.

@@ -5,6 +5,8 @@ import { voiceOverTest as voiceOverBase } from '@guidepup/playwright';
 import { allure } from 'allure-playwright';
 import type { TestInfo } from 'playwright/types/test';
 import axe from 'axe-core';
+import fs from 'node:fs/promises';
+import path from 'node:path';
 
 type GetAccessibilityViolations = (params: { page: Page }) => Promise<axe.AxeResults['violations']>;
 
@@ -43,23 +45,34 @@ const beforeEachTests = async ({}, use: () => Promise<void>, testInfo: TestInfo)
     layer = 'Axe tests';
   } else if (suite.includes('vo')) {
     layer = 'Voice over tests';
-  } else if (suite.includes('index')) {
-    layer = 'Unit tests';
   }
-  const subSuiteName = testInfo.titlePath[1];
 
+  await allure.label('framework', 'Playwright');
   await allure.label('component', component);
   await allure.layer(layer);
-  await allure.feature(layer);
-  await allure.suite(layer);
-  await allure.parentSuite(component);
-  await allure.subSuite(subSuiteName);
+  await allure.subSuite(suite);
+  await allure.parentSuite(layer);
   await allure.story(testInfo.title);
   await use();
 };
 
 const test = base.extend<{ testHook: void }>({
   testHook: [beforeEachTests, { auto: true }],
+
+  page: async ({ page }, use) => {
+    await page.route('https://static.semrush.com/ui-kit/illustration/**/*.svg', async (route) => {
+      const illustrationName = route.request().url().split('/').pop()!;
+
+      const svg = await fs.readFile(
+        path.resolve(process.cwd(), 'semcore', 'illustration', 'svg', illustrationName),
+        'utf-8',
+      );
+
+      await route.fulfill({ body: svg, contentType: 'image/svg+xml' });
+    });
+
+    await use(page);
+  },
 });
 
 const voiceOverTest = voiceOverBase.extend<{ testHook: void }>({

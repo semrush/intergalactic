@@ -42,25 +42,25 @@ const Preview = (preview) => {
     const withIcon = bool({
         key: 'withIcon',
         defaultValue: false,
-        label: 'With icon',
+        label: 'Icon',
     });
     
     const additionLabel = text({
         key: 'additionLabel',
         defaultValue: '',
-        label: 'Addition Label',
+        label: 'Additional label',
     });
     
     const count = text({
         key: 'count',
         defaultValue: '',
-        label: 'Count',
+        label: 'Counter',
     });
     
     const withTrend = bool({
         key: 'withTrend',
         defaultValue: false,
-        label: 'With trend',
+        label: 'Trend',
     });
     
     return (

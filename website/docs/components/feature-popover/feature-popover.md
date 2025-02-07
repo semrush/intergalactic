@@ -35,7 +35,7 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
   const closeIcon = bool({
     key: 'icon',
     defaultValue: true,
-    label: 'Show Close button',
+    label: 'Close button',
   });
 
   const visible = bool({
@@ -63,7 +63,7 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
     >
       <FeaturePopover.Trigger>
         <Button>
-          Open Popover
+          Feature
           {visible && <FeaturePopover.Spot />}
         </Button>
       </FeaturePopover.Trigger>

@@ -30,15 +30,10 @@ You may also need a `flex-box` to align the components. For more information, re
 
 ## Grouped buttons
 
-Buttons can be grouped.
+Grouped buttons are divided with a 1px line, color of which depends on the button's `use`:
 
-If you group primary buttons, the right one will have a 1px white border.
-
-![](static/primary-buttons-group.png)
-
-If you group secondary buttons, the left one will hide it's right border.
-
-![](static/secondary-buttons-group.png)
+* for primary buttons: `border-primary-invert`
+* for secondary buttons: `border-primary`
 
 ::: tip
 Don’t group tertiary buttons this way.
@@ -75,8 +70,6 @@ Don’t group tertiary buttons this way.
 ## Grouped input, select, and button
 
 You can group input, select, and button.
-
-![](static/combo.png)
 
 ::: sandbox
 
