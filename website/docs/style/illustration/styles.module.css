@@ -11,6 +11,7 @@
 ul.list {
   display: flex;
   flex-wrap: wrap;
+  gap: var(--intergalactic-spacing-1x);
   padding: var(--intergalactic-spacing-3x);
   border-radius: var(--intergalactic-rounded-medium);
   border: solid 1px var(--intergalactic-border-primary);
@@ -21,11 +22,6 @@ ul.list {
 }
 
 .previewIllustration button {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 0 calc(var(--intergalactic-spacing-2x) + 2px) calc(var(--intergalactic-spacing-3x) + 2px);
   width: 118px;
   height: 140px;
   border-radius: var(--intergalactic-rounded-medium);
@@ -42,14 +38,15 @@ ul.list {
   box-shadow: var(--intergalactic-keyboard-focus);
 }
 
-.previewIllustration span {
-  margin-top: 10px;
+div[data-name='PanelTrigger'] {
   width: 100%;
+  padding: var(--intergalactic-spacing-3x);
   font-size: var(--intergalactic-fs-200);
   line-height: var(--intergalactic-lh-200);
   color: var(--intergalactic-text-secondary);
-  text-align: center;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
+}
+
+div[data-name='PanelTrigger'] svg {
+  display: block;
+  margin: 0 auto var(--intergalactic-spacing-3x);
 }

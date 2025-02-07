@@ -2,6 +2,7 @@ import React from 'react';
 import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import SidePanel from '@semcore/side-panel';
+import Ellipsis from '@semcore/ellipsis';
 import Copy from '@components/Copy';
 import Button from '@semcore/button';
 import FileDownloadM from '@semcore/icon/FileDownload/m';
@@ -73,11 +74,7 @@ export const ListIllustrations = ({ data, ...props }) => {
         }
 
         return (
-          <li
-            className={styles.previewIllustration}
-            key={illustration.name}
-            data-name={illustration.name}
-          >
+          <li className={styles.previewIllustration} key={illustration.name}>
             <button
               type='button'
               aria-haspopup='dialog'
@@ -90,11 +87,16 @@ export const ListIllustrations = ({ data, ...props }) => {
               onClick={() => {
                 setSelectedIllustration(illustration.name);
               }}
-              data-name='PanelTrigger'
               data-id={illustration.name}
             >
-              <Illustration width={80} height={80} />
-              <span data-name='PanelTrigger'>{illustration.name}</span>
+              <Ellipsis
+                data-name='PanelTrigger'
+                placement='bottom'
+                includeTooltipProps={['placement']}
+              >
+                <Illustration width={80} height={80} />
+                {illustration.name}
+              </Ellipsis>
             </button>
           </li>
         );
