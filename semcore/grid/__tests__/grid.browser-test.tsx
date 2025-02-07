@@ -24,9 +24,9 @@ test.describe('Grid base tests', () => {
         }),
       ).toEqual({ marginLeft: '-8px', marginRight: '-8px' });
 
-      const cols = await page.$$('[data-ui-name="Row.Col"]');
-
-      for (const col of cols) {
+      const columns = await page.locator('[data-ui-name="Row.Col"]').all();
+      
+      for (const col of columns) {
         const colPaddingLeft = await col.evaluate((el) => getComputedStyle(el).paddingLeft);
         const colPaddingRight = await col.evaluate((el) => getComputedStyle(el).paddingRight);
 
