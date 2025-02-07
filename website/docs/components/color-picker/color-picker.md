@@ -66,7 +66,7 @@ Table: List of colors and its items
 | -------------------- | ----------------------------------------------------- |
 | ![](static/colorpicker-item-bg-default.png) | ![](static/colorpicker-inline.png) |
 
-Margin between the items must be [multiples of 4](/layout/box-system/box-system#spacing_system). The default recommended margins are 4px:
+Margin between the items must be [multiples of 4](/layout/box-system/box-system-spacing). The default recommended margins are 4px:
 
 ![](static/colorpicker-margins.png)
 
