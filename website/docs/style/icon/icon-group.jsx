@@ -3,6 +3,7 @@ import Tooltip from '@semcore/tooltip';
 import { Flex } from '@semcore/flex-box';
 import Pills from '@semcore/pills';
 import SidePanel from '@semcore/side-panel';
+import Ellipsis from '@semcore/ellipsis';
 import Copy from '@components/Copy';
 import styles from './styles.module.css';
 
@@ -112,6 +113,7 @@ export const IconDetailsPanel = ({ name, visible, onClose }) => {
 
 export const ListIcons = ({ data, ...props }) => {
   const { icons, selectedIcon, setSelectedIcon } = React.useContext(Context);
+
   return (
     <ul
       className={styles.list}
@@ -125,7 +127,7 @@ export const ListIcons = ({ data, ...props }) => {
         }
 
         return (
-          <li className={styles.previewIcon} key={icon.name} data-name={icon.name}>
+          <li className={styles.previewIcon} key={icon.name}>
             <button
               type='button'
               aria-haspopup='dialog'
@@ -134,11 +136,16 @@ export const ListIcons = ({ data, ...props }) => {
               onClick={() => {
                 setSelectedIcon(icon.name);
               }}
-              data-name='PanelTrigger'
               data-id={icon.name}
             >
-              <Icon width={20} height={20} />
-              <span data-name='PanelTrigger'>{icon.name}</span>
+              <Ellipsis
+                data-name='PanelTrigger'
+                placement='bottom'
+                includeTooltipProps={['placement']}
+              >
+                <Icon width={20} height={20} />
+                {icon.name}
+              </Ellipsis>
             </button>
           </li>
         );
@@ -149,13 +156,11 @@ export const ListIcons = ({ data, ...props }) => {
 
 const Context = React.createContext();
 
-export const IconGroups = React.forwardRef(({ children, ...props }, forwardedRef) => {
-  return (
-    <div className={styles.contextWrapper} ref={forwardedRef}>
-      <Context.Provider value={props} children={children} />
-    </div>
-  );
-});
+export const IconGroups = React.forwardRef(({ children, ...props }, forwardedRef) => (
+  <div className={styles.contextWrapper} ref={forwardedRef}>
+    <Context.Provider value={props} children={children} />
+  </div>
+));
 
 export default function ({ title }) {
   const { json } = React.useContext(Context);
