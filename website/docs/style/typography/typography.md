@@ -13,7 +13,7 @@ tabs: Design('typography'), A11y('typography-a11y'), API('typography-api'), Exam
 - Blockquote
 - Hint (not recommended for use, use the [ButtonLink](../../components/button/button-code#button-looking-like-link) component instead)
 
-## Font
+### Font
 
 In our design system, we use the [Inter](https://fonts.google.com/specimen/Inter?query=inter) font family.
 
@@ -64,9 +64,7 @@ In some cases, it may be necessary to display additional information next to the
 
 ## Headings
 
-Our design system doesn't have a dedicated heading component because text of any size can be assigned a heading tag of any level—this heavily depends on the hierarchy of your information on the page.
-
-### Recommendations on headings
+Our design system doesn't have a specific heading component because any text can be given a heading tag based on the page's information hierarchy.
 
 ::: tip
 
@@ -115,7 +113,7 @@ Table: Heading styles for mobile devices
 
 ## Paragraph
 
-Our design system doesn't have a separate component for paragraphs because text of any size can be made a paragraph—it all depends on the structure of the information on your page.
+Our design system doesn't have a separate paragraph component because any text can be a paragraph, depending on the page's structure.
 
 The following font sizes are the most commonly used for paragraphs in our design system. **We recommend avoing to use the smallest paragraph size (`--fs-100`), as it may cause accessibility and readability issues.**
 
@@ -151,21 +149,21 @@ These margins can also be used when a paragraph is followed by another paragraph
 
 Table: Heading sizes and their bottom margins
 
-| Heading size | Bottom margin                       |
-| ------------ | ----------------------------------- |
-| `--fs-800`   | `--spacing-6x` ![](static/h1-p.png) |
-| `--fs-700`   | `--spacing-4x` ![](static/h2-p.png) |
-| `--fs-600`   | `--spacing-4x` ![](static/h3-p.png) |
+| Heading&nbsp;size | Bottom margin                       |
+| ----------------- | ----------------------------------- |
+| `--fs-800`        | `--spacing-6x` ![](static/h1-p.png) |
+| `--fs-700`        | `--spacing-4x` ![](static/h2-p.png) |
+| `--fs-600`        | `--spacing-4x` ![](static/h3-p.png) |
 
 **Use a 14px paragraph with the following heading sizes:**
 
 Table: Heading sizes and their bottom margins
 
-| Heading size | Bottom margin                       |
-| ------------ | ----------------------------------- |
-| `--fs-500`   | `--spacing-3x` ![](static/h4-p.png) |
-| `--fs-400`   | `--spacing-3x` ![](static/h5-p.png) |
-| `--fs-300`   | `--spacing-2x` ![](static/h6-p.png) |
+| Heading&nbsp;size | Bottom margin                       |
+| ----------------- | ----------------------------------- |
+| `--fs-500`        | `--spacing-3x` ![](static/h4-p.png) |
+| `--fs-400`        | `--spacing-3x` ![](static/h5-p.png) |
+| `--fs-300`        | `--spacing-2x` ![](static/h6-p.png) |
 
 ## List
 
@@ -176,7 +174,7 @@ List component has the following styles:
 
 ![](static/list-margins.png)
 
-They are sufficient for the most common font sizes used in lists within our design system: `--fs-300`, `--fs-200`, `--fs-100`.
+They're sufficient for the most common font sizes used in lists within our design system: `--fs-300`, `--fs-200`, `--fs-100`.
 
 ### Nested list
 
