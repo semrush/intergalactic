@@ -23,12 +23,19 @@ ul.list {
 }
 
 .previewIcon button {
-  width: 118px;
+  width: 128px;
   height: 82px;
   border-radius: var(--intergalactic-rounded-medium);
   border: 2px solid transparent;
   box-sizing: border-box;
   outline: none;
+  padding: var(--intergalactic-spacing-3x);
+  font-size: var(--intergalactic-fs-200);
+  line-height: var(--intergalactic-lh-200);
+  color: var(--intergalactic-text-secondary);
+  text-wrap: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .previewIcon button:hover {
@@ -37,14 +44,6 @@ ul.list {
 
 .previewIcon button:focus-visible {
   box-shadow: var(--intergalactic-keyboard-focus);
-}
-
-div[data-name='PanelTrigger'] {
-  width: 100%;
-  padding: var(--intergalactic-spacing-3x);
-  font-size: var(--intergalactic-fs-200);
-  line-height: var(--intergalactic-lh-200);
-  color: var(--intergalactic-text-secondary);
 }
 
 .previewIcon svg {

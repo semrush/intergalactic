@@ -3,7 +3,6 @@ import Tooltip from '@semcore/tooltip';
 import { Flex } from '@semcore/flex-box';
 import Pills from '@semcore/pills';
 import SidePanel from '@semcore/side-panel';
-import Ellipsis from '@semcore/ellipsis';
 import Copy from '@components/Copy';
 import styles from './styles.module.css';
 
@@ -142,15 +141,10 @@ export const ListIcons = ({ data, ...props }) => {
                 setSelectedIcon(icon.name);
               }}
               data-id={icon.name}
+              data-name='PanelTrigger'
             >
-              <Ellipsis
-                data-name='PanelTrigger'
-                placement='bottom'
-                includeTooltipProps={['placement']}
-              >
-                <Icon width={20} height={20} />
-                {icon.name}
-              </Ellipsis>
+              <Icon width={20} height={20} />
+              {icon.name}
             </button>
           </li>
         );
