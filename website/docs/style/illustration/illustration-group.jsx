@@ -31,7 +31,7 @@ export const IllustrationDetailsPanel = ({ name, visible, onClose }) => {
             {name}
           </Text>
           <Flex gap={4}>
-            <Copy toCopy={getImportText} onlyToast>
+            <Copy toCopy={getImportText} onlyCopiedToast>
               <Button use='tertiary' theme='muted' addonLeft={CopyM}>
                 Copy import
               </Button>
