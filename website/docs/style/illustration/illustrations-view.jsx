@@ -45,8 +45,15 @@ const SuggestSearch = connectAutoComplete(
           value={currentRefinement}
           placeholder='What illustration are you looking for?'
           aria-label={'Search illustrations'}
+          aria-describedby='search-message'
         />
-        <Input.Addon tag={Text} role='status' aria-live='polite' color='text-secondary'>
+        <Input.Addon
+          tag={Text}
+          id='search-message'
+          role='status'
+          aria-live='polite'
+          color='text-secondary'
+        >
           {message}
         </Input.Addon>
         {!!currentRefinement && (
