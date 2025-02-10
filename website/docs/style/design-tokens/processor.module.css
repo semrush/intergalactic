@@ -1,5 +1,7 @@
 .container {
-  padding-top: var(--intergalactic-spacing-5x);
+  display: flex;
+  flex-direction: column;
+  gap: var(--intergalactic-spacing-2x);
 }
 
 .dropzone {
@@ -8,7 +10,7 @@
   justify-content: space-between;
   align-items: center;
   padding: var(--intergalactic-spacing-5x);
-  margin: var(--intergalactic-spacing-2x) 0px var(--intergalactic-spacing-8x);
+  margin-top: var(--intergalactic-spacing-2x);
   position: relative;
   min-width: 120px;
   min-height: 120px;
@@ -50,6 +52,9 @@
   left: 0;
   border-radius: var(--intergalactic-rounded-medium);
 }
+.fileInputLabel {
+  font-weight: 700;
+}
 .changeFileButton {
   display: inline;
   border: none;
@@ -65,7 +70,7 @@
   cursor: pointer;
 }
 .uploadedFileBlock {
-  margin: var(--intergalactic-spacing-2x) 0 var(--intergalactic-spacing-5x);
+  margin: var(--intergalactic-spacing-2x) 0;
   display: flex;
   align-items: center;
   gap: var(--intergalactic-spacing-1x);
@@ -74,28 +79,20 @@
 .processedSection {
   display: flex;
   flex-direction: column;
-  margin-top: var(--intergalactic-spacing-8x);
-  gap: var(--intergalactic-spacing-8x);
+  gap: var(--intergalactic-spacing-2x);
 }
 .processedBlock {
   display: flex;
   flex-direction: column;
 }
+.processedBlockTitle {
+  display: flex;
+  flex-direction: row;
+  align-items:baseline;
+}
 .codeBlock {
   width: 100%;
-  max-height: 300px;
+  max-height: 100px;
   overflow: auto;
-}
-.extension {
-  padding: 1px;
-  background: var(--intergalactic-bg-secondary-neutral);
-  border-radius: var(--intergalactic-rounded-medium);
-  font-weight: var(--intergalactic-bold);
-}
-.clickToCopy {
-  margin-left: var(--intergalactic-spacing-4x);
-  font-weight: var(--intergalactic-regular);
-  text-decoration: underline;
-  text-decoration-style: dashed;
-  cursor: pointer;
+  padding: var(--intergalactic-spacing-5x);
 }
