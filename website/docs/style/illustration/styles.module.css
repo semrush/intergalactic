@@ -4,20 +4,24 @@
   line-height: var(--intergalactic-lh-300);
 }
 
-.list {
+.contextWrapper {
+  display: contents;
+}
+
+ul.list {
   display: flex;
   flex-wrap: wrap;
+  gap: var(--intergalactic-spacing-1x);
   padding: var(--intergalactic-spacing-3x);
   border-radius: var(--intergalactic-rounded-medium);
   border: solid 1px var(--intergalactic-border-primary);
 }
 
 .previewIllustration {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 0 calc(var(--intergalactic-spacing-2x) + 2px) calc(var(--intergalactic-spacing-3x) + 2px);
+  display: inline;
+}
+
+.previewIllustration button {
   width: 118px;
   height: 140px;
   border-radius: var(--intergalactic-rounded-medium);
@@ -26,43 +30,23 @@
   outline: none;
 }
 
-.previewIllustration:hover {
-  cursor: pointer;
+.previewIllustration button:hover {
   background-color: var(--intergalactic-bg-primary-neutral-hover);
 }
 
-.previewIllustration:focus {
-  border-color: var(--intergalactic-border-info-active);
+.previewIllustration button:focus-visible {
+  box-shadow: var(--intergalactic-keyboard-focus);
 }
 
-.previewIllustration span {
-  margin-top: 10px;
+div[data-name='PanelTrigger'] {
   width: 100%;
+  padding: var(--intergalactic-spacing-3x);
   font-size: var(--intergalactic-fs-200);
   line-height: var(--intergalactic-lh-200);
   color: var(--intergalactic-text-secondary);
-  text-align: center;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
 }
 
-.panelIllustration {
-  z-index: 100;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  padding: var(--intergalactic-spacing-5x) calc(17.5 * var(--intergalactic-spacing-1x));
-  width: 100%;
-  box-shadow: var(--intergalactic-box-shadow-top-menu);
-  background: var(--intergalactic-bg-primary-neutral);
-  box-sizing: border-box;
-  border-top: solid 1px var(--intergalactic-border-secondary);
-}
-
-.nameIllustration {
-  font-weight: var(--intergalactic-bold);
-  margin-right: var(--intergalactic-spacing-10x);
+div[data-name='PanelTrigger'] svg {
+  display: block;
+  margin: 0 auto var(--intergalactic-spacing-3x);
 }
