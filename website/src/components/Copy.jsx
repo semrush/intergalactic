@@ -23,7 +23,7 @@ const Copy = (props) => {
   }, [copied, props.toCopy]);
 
   return (
-    <Tooltip {...props} visible={props.onlyToast && copied}>
+    <Tooltip visible={props.onlyToast && copied}>
       <Tooltip.Trigger aria-describedby={undefined}>
         {({ popperId }) =>
           React.cloneElement(props.children, {
