@@ -10,8 +10,13 @@
   "license": "MIT",
   "scripts": {
     "transform": "pnpm icon-transform-svg",
-    "build": "pnpm run clean && pnpm semcore-builder --source=js && pnpm run transform --configFile=./transform-svg.config.js",
+    "build": "pnpm run clean && pnpm semcore-builder --source=js && pnpm run transform --configFile=./transform-svg.config.js && pnpm vite build",
     "clean": "node clean.js"
+  },
+  "exports": {
+    "require": "./lib/cjs/index.js",
+    "import": "./lib/esm/index.mjs",
+    "types": "./lib/types/index.d.ts"
   },
   "dependencies": {
     "@semcore/flex-box": "5.40.1",
