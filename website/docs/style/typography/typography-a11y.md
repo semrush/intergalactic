@@ -9,7 +9,7 @@ tabs: Design('typography'), A11y('typography-a11y'), API('typography-api'), Exam
 - Heading tags should be in order. That means an `<h1>` is followed by an `<h2>`, an `<h2>` is followed by a `<h2>` or `<h3>` and so on.
 - Don’t style text to give the visual appearance of headings – use actual heading tags.
 
-_Source – [A11y style guide](https://a11y-style-guide.com/style-guide/section-structure.html#kssref-structure-lists)_
+Read more about headings in the [W3C tutorial](https://www.w3.org/WAI/tutorials/page-structure/headings/).
 
 ## Considerations for designers
 
