@@ -52,7 +52,7 @@ Use text color thoughtfully and avoid excessive color usage, as it can reduce re
 
 ### Additional information
 
-In some cases, it may be necessary to display additional information next to the primary text (for example, a result count next to some heading). We recommend styling it using the secondary text (`--text-secondary` token).
+In some cases, it may be necessary to display additional information next to the primary text (for example, a result count next to some heading). We recommend styling it using the secondary text color (`--text-secondary` token).
 
 ::: sandbox
 
