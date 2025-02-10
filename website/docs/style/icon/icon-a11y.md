@@ -30,8 +30,8 @@ The following list will help you to keep in mind the necessary roles and attribu
 
 | Attribute             | Usage                                                                                                                                                                                                                     |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `aria-hidden="false"` | Makes the **noninteractive** icon accessible for the assistive technology. Add this attribute to noninteractive icons if they convey meaningful information, such as status, category and so on, that isn't represented by text. |
-| `role="img"`          | Identifies the element or collection of elements as a single image. Add this attribute to icons with `aria-hidden="false"` for correct assistive technology support. |
+| `aria-hidden="false"` | Makes the icon accessible for the assistive technology. Add this attribute to **noninteractive** icons if they convey meaningful information, such as status, category and so on, that isn't represented by text. |
+| `role="img"`          | Identifies the element or collection of elements as a single image. Add this attribute to **noninteractive** icons with `aria-hidden="false"` for correct assistive technology support. |
 | `aria-label` or `aria-labelledby` | Defines an accessible name for the icon. This attribute is required for elements that don't have any text content and aren't hidden from the assistive technology. <br/>For best accessibility, add a visible [Hint](../../components/tooltip/tooltip), which will automatically provide an `aria-label` for its trigger, as demonstrated in the [example](./icon-code).  |
 
 ## Considerations for designers
