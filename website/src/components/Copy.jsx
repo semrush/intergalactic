@@ -9,7 +9,7 @@ const Copy = (props) => {
     const toCopy = typeof props.toCopy === 'function' ? props.toCopy() : props.toCopy;
     await navigator.clipboard.writeText(toCopy);
 
-    setView(props.copiedToast ?? 'Copied! You are awesome!');
+    setView(props.copiedToast ?? 'Copied!');
   }, [props.copiedToast, props.toCopy, props.onClick]);
   React.useEffect(() => {
     if (!view) return;
@@ -25,7 +25,6 @@ const Copy = (props) => {
       {...props}
       className={cx(props.className, styles.tooltipStyle)}
       title={view ?? props.title ?? 'Click to copy'}
-      aria-label='Click to copy'
       {...{
         selfProps: {
           popupTransitionName: 'popup-fade',
