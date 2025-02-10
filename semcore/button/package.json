@@ -10,11 +10,11 @@
   "license": "MIT",
   "exports": {
     "require": "./lib/cjs/index.js",
-    "import": "./lib/es6/index.js",
+    "import": "./lib/esm/index.mjs",
     "types": "./lib/types/index.d.ts"
   },
   "scripts": {
-    "build": "pnpm vite build"
+    "build": "pnpm semcore-builder && pnpm vite build"
   },
   "dependencies": {
     "@semcore/flex-box": "5.40.1",

@@ -95,6 +95,9 @@ importers:
       '@semcore/theme-redesign':
         specifier: 1.5.12
         version: 1.5.12
+      '@semcore/utils':
+        specifier: workspace:^
+        version: link:semcore/utils
       '@storybook/addon-a11y':
         specifier: 8.3.5
         version: 8.3.5(storybook@8.3.5)
@@ -128,6 +131,9 @@ importers:
       '@testing-library/react':
         specifier: 13.4.0
         version: 13.4.0(react-dom@18.2.0)(react@18.2.0)
+      '@types/glob':
+        specifier: ^8.1.0
+        version: 8.1.0
       '@types/node':
         specifier: 18.16.15
         version: 18.16.15
@@ -176,6 +182,9 @@ importers:
       fs-extra:
         specifier: 9.1.0
         version: 9.1.0
+      glob:
+        specifier: 7.1.4
+        version: 7.1.4
       http-server:
         specifier: 14.1.1
         version: 14.1.1
@@ -245,12 +254,6 @@ importers:
       vite-plugin-babel:
         specifier: 1.1.3
         version: 1.1.3(@babel/core@7.19.1)(vite@5.4.9)
-      vite-plugin-externalize-deps:
-        specifier: ^0.9.0
-        version: 0.9.0(vite@5.4.9)
-      vite-plugin-lib-inject-css:
-        specifier: ^2.2.1
-        version: 2.2.1(vite@5.4.9)
       vitest:
         specifier: 1.3.0
         version: 1.3.0(@types/node@18.16.15)(@vitest/browser@1.3.0)(@vitest/ui@1.3.0)(jsdom@22.1.0)
@@ -4714,15 +4717,6 @@ packages:
     dev: false
     optional: true
 
-  /@ast-grep/napi-darwin-arm64@0.32.3:
-    resolution: {integrity: sha512-Ifh25Ra38+5TGvO48NVcJsRarBSqJ2ppN6J+Qc8Z19rKALYb61tsWj6oh0W1CTbsYQ/HJbIff//WkUDkY0wMMg==}
-    engines: {node: '>= 10'}
-    cpu: [arm64]
-    os: [darwin]
-    requiresBuild: true
-    dev: true
-    optional: true
-
   /@ast-grep/napi-darwin-x64@0.13.0:
     resolution: {integrity: sha512-85N0WNEK/iicakQd+vDmGg500JjC3WVbSv2zJFpEPc+1SvAwZLpaRIPY1Y+XTOFvN9XKy7h9hczcoDobvJVl1Q==}
     engines: {node: '>= 10'}
@@ -4730,33 +4724,6 @@ packages:
     os: [darwin]
     requiresBuild: true
     dev: false
-    optional: true
-
-  /@ast-grep/napi-darwin-x64@0.32.3:
-    resolution: {integrity: sha512-jkuXgdvBTK7aTV7IojqMCUbHE4bzJzJ/adR0segW+BpU/uh/pxNuCZAal7E7KmWgSWVSS56UCOjS0OyibZKb7Q==}
-    engines: {node: '>= 10'}
-    cpu: [x64]
-    os: [darwin]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /@ast-grep/napi-linux-arm64-gnu@0.32.3:
-    resolution: {integrity: sha512-Kso32W1K/+guK1Jkk33MpvVHhulaGF7lf6HW9Bc4VxRHWyZBXuhwwPOtf7+89qa2nEb0YyUxgQTnMUXbCKyYAQ==}
-    engines: {node: '>= 10'}
-    cpu: [arm64]
-    os: [linux]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /@ast-grep/napi-linux-arm64-musl@0.32.3:
-    resolution: {integrity: sha512-7+u7F5rzaV0/N5WdP2q+kGl3v+l8iGFRx4p7NUcbNumYqGDS2mkfRkaesRDSd7BH94ZulGtJnpmu3imX7spolQ==}
-    engines: {node: '>= 10'}
-    cpu: [arm64]
-    os: [linux]
-    requiresBuild: true
-    dev: true
     optional: true
 
   /@ast-grep/napi-linux-x64-gnu@0.13.0:
@@ -4768,24 +4735,6 @@ packages:
     dev: false
     optional: true
 
-  /@ast-grep/napi-linux-x64-gnu@0.32.3:
-    resolution: {integrity: sha512-XwUjw+W1QWDAPjx+Hsa8ZwONN3MDPINdRkRM6Q1vV3pl0p9YrMpwL72xrWQA1G7r7ej9BI1fLiXWB4YEOeYzJw==}
-    engines: {node: '>= 10'}
-    cpu: [x64]
-    os: [linux]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /@ast-grep/napi-linux-x64-musl@0.32.3:
-    resolution: {integrity: sha512-894fQNqBDUfCP/qYbrPcK6+tMTEskc+vV2IKOKqgCfDryeptaiJJTJL9+Vbj38rO1LWhY8MIZ8W5ZyjxuhDRBA==}
-    engines: {node: '>= 10'}
-    cpu: [x64]
-    os: [linux]
-    requiresBuild: true
-    dev: true
-    optional: true
-
   /@ast-grep/napi-win32-arm64-msvc@0.13.0:
     resolution: {integrity: sha512-tQVZnb9OdDRAC+tZMiqhJeNMUsmq+c5xtyQIjftf6edfYlClXq0bT9QgImjzZhEHnMKhKCZOLrg6ruVgjEaQsw==}
     engines: {node: '>= 10'}
@@ -4793,15 +4742,6 @@ packages:
     os: [win32]
     requiresBuild: true
     dev: false
-    optional: true
-
-  /@ast-grep/napi-win32-arm64-msvc@0.32.3:
-    resolution: {integrity: sha512-T8nrZm3E+h2VgHuQ3THQLvqhou4MkSbNcyIOgLZ0l2NatHIckeHuly5fmnkd6KQsGP/AqAEGxZBoOVYvoDl7DA==}
-    engines: {node: '>= 10'}
-    cpu: [arm64]
-    os: [win32]
-    requiresBuild: true
-    dev: true
     optional: true
 
   /@ast-grep/napi-win32-ia32-msvc@0.13.0:
@@ -4813,15 +4753,6 @@ packages:
     dev: false
     optional: true
 
-  /@ast-grep/napi-win32-ia32-msvc@0.32.3:
-    resolution: {integrity: sha512-40RdPWWgVLCx6gRSXfVXt3TuV6dZQE8K74whq56+nliJqA4TA1QCrNtbX9keFvb1JDc/iOUKc4PKA3A7TGHANQ==}
-    engines: {node: '>= 10'}
-    cpu: [ia32]
-    os: [win32]
-    requiresBuild: true
-    dev: true
-    optional: true
-
   /@ast-grep/napi-win32-x64-msvc@0.13.0:
     resolution: {integrity: sha512-fYoVxKJv54+23XNP/oI0IPuAH/XISQV59nRrbRQefiMhaMZl+O5dqvbq6jY4Z/ObLK1acYTDKEFuA5rWujEwnA==}
     engines: {node: '>= 10'}
@@ -4829,15 +4760,6 @@ packages:
     os: [win32]
     requiresBuild: true
     dev: false
-    optional: true
-
-  /@ast-grep/napi-win32-x64-msvc@0.32.3:
-    resolution: {integrity: sha512-4VKmBFhT0M8s1LbAXemPDnHyAjEi5owkqkz85akvic9u6vRI0evRk8j2sHmgEBXwyySLUHf0NfI0XqwZ0mAl7g==}
-    engines: {node: '>= 10'}
-    cpu: [x64]
-    os: [win32]
-    requiresBuild: true
-    dev: true
     optional: true
 
   /@ast-grep/napi@0.13.0:
@@ -4851,21 +4773,6 @@ packages:
       '@ast-grep/napi-win32-ia32-msvc': 0.13.0
       '@ast-grep/napi-win32-x64-msvc': 0.13.0
     dev: false
-
-  /@ast-grep/napi@0.32.3:
-    resolution: {integrity: sha512-EdgX3gnDGkKMeofSYQlmPccjnxmGGQoEKL7pVQUmenLrsUBXXcjY//6J0LJApfIzNCknjQkfWpj1IbWDkl66Iw==}
-    engines: {node: '>= 10'}
-    optionalDependencies:
-      '@ast-grep/napi-darwin-arm64': 0.32.3
-      '@ast-grep/napi-darwin-x64': 0.32.3
-      '@ast-grep/napi-linux-arm64-gnu': 0.32.3
-      '@ast-grep/napi-linux-arm64-musl': 0.32.3
-      '@ast-grep/napi-linux-x64-gnu': 0.32.3
-      '@ast-grep/napi-linux-x64-musl': 0.32.3
-      '@ast-grep/napi-win32-arm64-msvc': 0.32.3
-      '@ast-grep/napi-win32-ia32-msvc': 0.32.3
-      '@ast-grep/napi-win32-x64-msvc': 0.32.3
-    dev: true
 
   /@axe-core/playwright@4.9.1(playwright-core@1.43.0):
     resolution: {integrity: sha512-8m4WZbZq7/aq7ZY5IG8GqV+ZdvtGn/iJdom+wBg+iv/3BAOBIfNQtIu697a41438DzEEyptXWmC3Xl5Kx/o9/g==}
@@ -11531,6 +11438,13 @@ packages:
       '@types/minimatch': 5.1.2
       '@types/node': 18.16.15
 
+  /@types/glob@8.1.0:
+    resolution: {integrity: sha512-IO+MJPVhoqz+28h1qLAcBEH2+xHMK6MTyHJc7MTnnYb6wsoLR29POVGJ7LycmVXIqyy/4/2ShP5sUwTXuOwb/w==}
+    dependencies:
+      '@types/minimatch': 5.1.2
+      '@types/node': 18.16.15
+    dev: true
+
   /@types/graceful-fs@4.1.6:
     resolution: {integrity: sha512-Sig0SNORX9fdW+bQuTEovKj3uHcUL6LQKbCrrqb1X7J6/ReAbhCXRAhc+SMejhLELFj2QcyuxmUooZ4bt5ReSw==}
     dependencies:
@@ -17934,6 +17848,7 @@ packages:
 
   /glob@7.1.4:
     resolution: {integrity: sha512-hkLPepehmnKk41pUGm3sYxoFs/umurYfYJCerbXEyFIWcAzvpipAgVkBqqT9RBKMGjnq6kMuyYwha6csxbiM1A==}
+    deprecated: Glob versions prior to v9 are no longer supported
     dependencies:
       fs.realpath: 1.0.0
       inflight: 1.0.6
@@ -17944,6 +17859,7 @@ packages:
 
   /glob@7.2.3:
     resolution: {integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==}
+    deprecated: Glob versions prior to v9 are no longer supported
     dependencies:
       fs.realpath: 1.0.0
       inflight: 1.0.6
@@ -17955,6 +17871,7 @@ packages:
   /glob@8.1.0:
     resolution: {integrity: sha512-r8hpEjiQEYlF2QU0df3dS+nxxSIreXQS1qRhMJM0Q5NDdR386C7jb7Hwwod8Fgiuex+k0GFjgft18yvxm5XoCQ==}
     engines: {node: '>=12'}
+    deprecated: Glob versions prior to v9 are no longer supported
     dependencies:
       fs.realpath: 1.0.0
       inflight: 1.0.6
@@ -18915,6 +18832,7 @@ packages:
 
   /inflight@1.0.6:
     resolution: {integrity: sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==}
+    deprecated: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
     dependencies:
       once: 1.4.0
       wrappy: 1.0.2
@@ -28514,25 +28432,6 @@ packages:
       vite: ^2.7.0 || ^3.0.0 || ^4.0.0
     dependencies:
       '@babel/core': 7.19.1
-      vite: 5.4.9(@types/node@18.16.15)
-    dev: true
-
-  /vite-plugin-externalize-deps@0.9.0(vite@5.4.9):
-    resolution: {integrity: sha512-wg3qb5gCy2d1KpPKyD9wkXMcYJ84yjgziHrStq9/8R7chhUC73mhQz+tVtvhFiICQHsBn1pnkY4IBbPqF9JHNw==}
-    peerDependencies:
-      vite: ^2.0.0 || ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0
-    dependencies:
-      vite: 5.4.9(@types/node@18.16.15)
-    dev: true
-
-  /vite-plugin-lib-inject-css@2.2.1(vite@5.4.9):
-    resolution: {integrity: sha512-PW3n/zRacr7bwNagHOnJfaVLoZyGDCPuFMJTyTFqjk4Xi0HKd1cK5+WlBidBBeWK8QE3SV0i+FsWmN+frBLCVQ==}
-    peerDependencies:
-      vite: '*'
-    dependencies:
-      '@ast-grep/napi': 0.32.3
-      magic-string: 0.30.17
-      picocolors: 1.1.1
       vite: 5.4.9(@types/node@18.16.15)
     dev: true
 
