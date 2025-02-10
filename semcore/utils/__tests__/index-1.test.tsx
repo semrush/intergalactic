@@ -44,7 +44,12 @@ describe('extractAriaProps', () => {
 
     const result = extractAriaProps(input);
 
-    expect(result.__excludeProps).toEqual(['title', 'aria-label', 'aria-labelledby', 'aria-describedby']);
+    expect(result.__excludeProps).toEqual([
+      'title',
+      'aria-label',
+      'aria-labelledby',
+      'aria-describedby',
+    ]);
     expect(result.extractedAriaProps).toEqual({
       title: 'Test Title',
       'aria-label': 'Test Label',
