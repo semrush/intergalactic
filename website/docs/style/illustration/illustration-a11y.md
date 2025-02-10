@@ -51,9 +51,10 @@ Table: Image types
 | **Group of images**                         | If multiple images convey a single piece of information, the text alternative for one image should convey the information for the entire group.                                                                                                               |
 | **Image map**                               | The text alternative for an image that contains multiple target areas should provide an overall context for the set of links. Also, each individually target area should have alternative text that describes the purpose or destination of the link.   |
 
+Source and more information about text alternatives: [W3C Images tutorial](https://www.w3.org/WAI/tutorials/images/).
+
 ## Resources
 
-- [Images tutorial](https://www.w3.org/WAI/tutorials/images/) demonstrates how to provide appropriate text alternatives based on the purpose of the image.
 - [Non-text Content](https://www.w3.org/WAI/WCAG21/quickref/?showtechniques=131#text-alternatives) gives recommendations for the accessible non-text content.
 - [Providing short text alternative for non-text content](https://www.w3.org/WAI/WCAG21/Techniques/general/G94) tips on writing good text alternatives.
 
