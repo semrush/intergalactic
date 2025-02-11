@@ -803,7 +803,7 @@ describe('getInputProps', () => {
       expect(inputProps).toContain(prop);
     });
 
-    const props = requiredProps.reduce((acc, prop) => {
+    const props = requiredProps.reduce((acc: { [key: string]: string }, prop) => {
       acc[prop] = 'test'; // Assigning dummy values for each prop
       return acc;
     }, {});
