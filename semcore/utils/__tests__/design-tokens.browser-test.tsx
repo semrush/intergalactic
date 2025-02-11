@@ -33,9 +33,16 @@ test.describe('Theme providers', () => {
     const hoverColor = await button.evaluate((el) => getComputedStyle(el).backgroundColor);
     expect(hoverColor).toBe('rgb(89, 37, 171)'); // #5925ab in rgb
 
-    await button.click();
-    const clickColor = await button.evaluate((el) => getComputedStyle(el).backgroundColor);
-    expect(clickColor).toBe('rgb(89, 37, 171)'); // #5925ab in rgb
+    const buttonBox = await button.boundingBox();
+    if (buttonBox) {
+      await page.mouse.move(buttonBox.x + buttonBox.width / 2, buttonBox.y + buttonBox.height / 2);
+      await page.mouse.down();
+      await page.waitForTimeout(300);
+      const clickColor = await button.evaluate((el) => getComputedStyle(el).backgroundColor);
+      expect(clickColor).toBe('rgb(89, 37, 171)'); // #5925ab in rgb
+      await page.mouse.up(); 
+    }
+   
   });
 
   test('Verify grey primary control theme', async ({ page }) => {
@@ -63,12 +70,21 @@ test.describe('Theme providers', () => {
     expect(initialColor).toBe('rgb(108, 110, 121)'); // #6c6e79 in rgb
 
     await button.hover();
+    await page.waitForTimeout(100);
     const hoverColor = await button.evaluate((el) => getComputedStyle(el).backgroundColor);
     expect(hoverColor).toBe('rgb(72, 74, 84)'); // #484a54 in rgb
 
-    await button.click();
-    const clickColor = await button.evaluate((el) => getComputedStyle(el).backgroundColor);
-    expect(clickColor).toBe('rgb(72, 74, 84)'); // #2b2e38 in rgb
+    const buttonBox = await button.boundingBox();
+    if (buttonBox) {
+      await page.mouse.move(buttonBox.x + buttonBox.width / 2, buttonBox.y + buttonBox.height / 2);
+      await page.mouse.down();
+      await page.waitForTimeout(300);
+      const clickColor = await button.evaluate((el) => getComputedStyle(el).backgroundColor);
+    expect(clickColor).toBe('rgb(43, 46, 56)'); // #2b2e38 in rgb
+ 
+      await page.mouse.up(); 
+    }
+   
   });
 });
 
