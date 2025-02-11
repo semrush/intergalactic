@@ -1,7 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { snapshot } from '@semcore/testing-utils/snapshot';
-import { expect, test, describe, beforeEach, vi, it, afterEach } from '@semcore/testing-utils/vitest';
+import {
+  expect,
+  test,
+  describe,
+  beforeEach,
+  vi,
+  it,
+  afterEach,
+} from '@semcore/testing-utils/vitest';
 import { cleanup, renderHook, act } from '@semcore/testing-utils/testing-library';
 
 import isNode from '../src/isNode';
@@ -15,7 +23,7 @@ import { getEventTarget } from '../src/getEventTarget';
 import { extractAriaProps } from '../src/ariaProps';
 import { getRef, setRef, getNodeByRef } from '../src/ref';
 import getInputProps, { inputProps } from '../src/inputProps';
-import propsForElement, { validAttr } from '../src/propsForElement'; 
+import propsForElement, { validAttr } from '../src/propsForElement';
 import keyboardFocusEnhance, {
   KeyboardFocusEnhanceHook,
 } from '../src/enhances/keyboardFocusEnhance';
@@ -328,7 +336,7 @@ describe('Utils color', () => {
     expect(shade('', -0.08)).toBe(undefined);
   });
 
-  test(`Verify no opacity for string color`, () => {
+  test('Verify no opacity for string color', () => {
     expect(opacity('green', 0.2)).toBe(undefined);
   });
 
@@ -477,7 +485,7 @@ describe('extractAriaProps', () => {
       otherProp: 'ignored',
     };
     const result = extractAriaProps(props);
-    
+
     expect(result).toEqual({
       __excludeProps: ['title', 'aria-label', 'aria-labelledby', 'aria-describedby'],
       extractedAriaProps: {
@@ -495,7 +503,7 @@ describe('extractAriaProps', () => {
       otherProp: 'ignored',
     };
     const result = extractAriaProps(props);
-    
+
     expect(result).toEqual({
       __excludeProps: ['title', 'aria-label', 'aria-labelledby', 'aria-describedby'],
       extractedAriaProps: {
@@ -506,7 +514,7 @@ describe('extractAriaProps', () => {
 
   test('Verify return empty extractedAriaProps for empty input', () => {
     const result = extractAriaProps({});
-    
+
     expect(result).toEqual({
       __excludeProps: ['title', 'aria-label', 'aria-labelledby', 'aria-describedby'],
       extractedAriaProps: {},
@@ -514,20 +522,18 @@ describe('extractAriaProps', () => {
   });
 });
 
-
-
 describe('assignHandlers', () => {
   test('Verify merge event handlers from source and props', () => {
     const mockFn1 = vi.fn();
     const mockFn2 = vi.fn();
-    
+
     const props = { onClick: mockFn1 };
     const source = { onClick: mockFn2 };
-    
+
     const result = assignHandlers(props, source);
-    
+
     expect(typeof result.onClick).toBe('function');
-    
+
     result.onClick();
     expect(mockFn1).toHaveBeenCalled();
     expect(mockFn2).toHaveBeenCalled();
@@ -538,34 +544,34 @@ describe('assignProps', () => {
   test('Verify merge className correctly', () => {
     const props = { className: 'class1' };
     const source = { className: 'class2' };
-    
+
     const result = assignProps(props, source);
-    
+
     expect(result.className).toContain('class1');
     expect(result.className).toContain('class2');
   });
-  
+
   test('Verify merge styles correctly', () => {
     const props = { style: { color: 'red' } };
     const source = { style: { backgroundColor: 'blue' } };
-    
+
     const result = assignProps(props, source);
-    
+
     expect(result.style.color).toBe('red');
     expect(result.style.backgroundColor).toBe('blue');
   });
-  
+
   test('Verify preserve event handlers', () => {
     const mockFn1 = vi.fn();
     const mockFn2 = vi.fn();
-    
+
     const props = { onClick: mockFn1 };
     const source = { onClick: mockFn2 };
-    
+
     const result = assignProps(props, source);
-    
+
     expect(typeof result.onClick).toBe('function');
-    
+
     result.onClick();
     expect(mockFn1).toHaveBeenCalled();
     expect(mockFn2).toHaveBeenCalled();
@@ -619,7 +625,7 @@ describe('EventEmitter', () => {
 
   test('Verify not fail when emitting an event with no subscribers', () => {
     const emitter = new EventEmitter();
-    
+
     expect(() => emitter.emit('nonexistentEvent')).not.toThrow();
   });
 });
@@ -696,7 +702,7 @@ describe('getInputProps', () => {
       customProp: 'custom',
       onChange: () => {},
       onBlur: () => {},
-      dataCustom: 'data-custom'
+      dataCustom: 'data-custom',
     };
 
     const [includedProps, excludedProps] = getInputProps(props);
@@ -793,7 +799,7 @@ describe('getInputProps', () => {
     ];
 
     // Ensure that the inputProps array contains all the required props
-    requiredProps.forEach(prop => {
+    requiredProps.forEach((prop) => {
       expect(inputProps).toContain(prop);
     });
 
@@ -815,7 +821,6 @@ describe('getInputProps', () => {
     // Ensure that excludedProps is empty as we only used requiredProps in this test
     expect(excludedProps).toEqual({});
   });
-
 });
 
 describe('propsForElement', () => {
@@ -883,8 +888,6 @@ describe('validAttr function', () => {
     expect(validAttr('onClick')).toBe(true);
   });
 });
-
-
 
 describe('isFocusable', () => {
   let element: HTMLElement;
@@ -960,7 +963,7 @@ describe('isFocusable', () => {
   });
 
   test('Verify return true if the element is visible and focusable', () => {
-    const input = document.createElement('INPUT'); 
+    const input = document.createElement('INPUT');
     const result = isFocusable(input);
     expect(result).toBe(true);
   });
