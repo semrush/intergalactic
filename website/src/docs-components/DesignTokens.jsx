@@ -1,12 +1,12 @@
 import React from 'react';
 import styles from './design-tokens.module.css';
 import Input from '@semcore/input';
+import { ButtonLink } from '@semcore/button';
 import Select from '@semcore/select';
 import SearchIcon from '@semcore/icon/Search/m';
 import DataTable from '@semcore/data-table';
 import Link from '@semcore/link';
 import Tooltip from '@semcore/tooltip';
-import Ellipsis, { useResizeObserver } from '@semcore/ellipsis';
 import Copy from '@components/Copy';
 import Fuse from 'fuse.js';
 
@@ -61,11 +61,8 @@ const DesignTokens = ({ tokens }) => {
   );
 
   const nameHeaderRef = React.useRef(null);
-  const nameHeaderRect = useResizeObserver(nameHeaderRef);
   const valueHeaderRef = React.useRef(null);
-  const valueHeaderRect = useResizeObserver(valueHeaderRef);
   const descriptionHeaderRef = React.useRef(null);
-  const descriptionHeaderRect = useResizeObserver(descriptionHeaderRef);
 
   return (
     <div>
@@ -91,83 +88,58 @@ const DesignTokens = ({ tokens }) => {
           options={componentsFilterOptions}
         />
       </div>
-      <DataTable data={filteredTokens}>
+      <DataTable data={filteredTokens} className={styles.tokensTable}>
         <DataTable.Head>
-          <DataTable.Column name='name' children='Token name' ref={nameHeaderRef} wMin={300} />
-          <DataTable.Column name='value' children='Value' ref={valueHeaderRef} />
-          <DataTable.Column name='description' children='Description' ref={descriptionHeaderRef} />
-          <DataTable.Column name='components' children='Used in' />
+          <DataTable.Column name='name' children='Token name' ref={nameHeaderRef} w={0.25} />
+          <DataTable.Column name='value' children='Value' ref={valueHeaderRef} w={0.15} />
+          <DataTable.Column
+            name='description'
+            children='Description'
+            ref={descriptionHeaderRef}
+            w={0.4}
+          />
+          <DataTable.Column name='components' children='Used in' w={0.2} />
         </DataTable.Head>
-        <DataTable.Body virtualScroll={{ rowHeight: 45, tollerance: 10 }} h={800}>
-          <DataTable.Cell name='name'>
+        <DataTable.Body h={800}>
+          <DataTable.Cell name='name' className={styles.cell}>
             {(props, row) => {
               return {
                 children: (
                   <Copy
                     copiedToast='Copied'
                     toCopy={row[props.name]}
-                    title={`Click to copy "${row[props.name]}"`}
+                    title={'Copy to clipboard'}
                     trigger='click'
                     className={styles.tokenNameWrapper}
                   >
-                    <div className={styles.tokenName}>
-                      <Ellipsis
-                        trim='middle'
-                        tooltip={false}
-                        containerRect={nameHeaderRect}
-                        containerRef={nameHeaderRef}
-                      >
-                        {row[props.name]}
-                      </Ellipsis>
-                    </div>
+                    <div className={styles.tokenName}>{row[props.name]}</div>
                   </Copy>
                 ),
               };
             }}
           </DataTable.Cell>
-          <DataTable.Cell name='value'>
+          <DataTable.Cell name='value' className={styles.cell}>
             {(props, row) => {
               return {
                 children: (
                   <Copy
                     copiedToast='Copied'
                     toCopy={row.rawValue}
-                    title={`Click to copy "${row.rawValue}"`}
+                    title={'Copy to clipboard'}
                     trigger='click'
                     className={styles.tokenValueWrapper}
                   >
-                    <div className={styles.tokenValue}>
+                    <div tabIndex={0} role={'button'} className={styles.tokenValue}>
                       <ColorPreview color={row.computedValue} />
-                      <Ellipsis
-                        trim='end'
-                        tooltip={false}
-                        containerRect={valueHeaderRect}
-                        containerRef={valueHeaderRef}
-                      >
-                        {row.rawValue}
-                      </Ellipsis>
+                      {row.rawValue}
                     </div>
                   </Copy>
                 ),
               };
             }}
           </DataTable.Cell>
-          <DataTable.Cell name='description'>
-            {(props, row) => {
-              return {
-                children: (
-                  <Ellipsis
-                    trim='end'
-                    containerRect={descriptionHeaderRect}
-                    containerRef={descriptionHeaderRef}
-                  >
-                    {row[props.name]}
-                  </Ellipsis>
-                ),
-              };
-            }}
-          </DataTable.Cell>
-          <DataTable.Cell name='components'>
+          <DataTable.Cell name='description' className={styles.cell} />
+          <DataTable.Cell name='components' className={styles.cell}>
             {(props, row) => {
               if (!row[props.name].length) {
                 return { children: null };
@@ -194,7 +166,7 @@ const DesignTokens = ({ tokens }) => {
                 children: (
                   <>
                     <Tooltip>
-                      <Tooltip.Trigger className={styles.usages}>
+                      <Tooltip.Trigger tag={ButtonLink} use={'secondary'}>
                         {row[props.name].length} components
                       </Tooltip.Trigger>
                       <Tooltip.Popper>

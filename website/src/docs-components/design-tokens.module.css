@@ -29,8 +29,9 @@
 }
 
 .tokenName {
-  cursor: pointer;
-  max-width: 100%;
+  position: absolute;
+  inset: 0 0 0 0;
+  padding: 12px;
 }
 
 .tokenValueWrapper {
@@ -38,9 +39,11 @@
 }
 
 .tokenValue {
-  cursor: pointer;
   display: flex;
-  max-width: 100%;
+
+  position: absolute;
+  inset: 0 0 0 0;
+  padding: 12px;
 }
 
 .colorPreview {
@@ -67,7 +70,8 @@
   filter: invert(1) saturate(0) contrast(10) brightness(10);
 }
 
-.usages {
-  color: var(--intergalactic-text-hint);
-  border-bottom: 1px dashed var(--intergalactic-text-hint);
+.tokensTable .cell[role='gridcell'] {
+  word-break: break-word;
+  white-space: pre-wrap;
+  position: relative;
 }

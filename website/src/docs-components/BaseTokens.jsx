@@ -3,7 +3,6 @@ import styles from './design-tokens.module.css';
 import Input from '@semcore/input';
 import SearchIcon from '@semcore/icon/Search/m';
 import DataTable from '@semcore/data-table';
-import Ellipsis, { useResizeObserver } from '@semcore/ellipsis';
 import Copy from '@components/Copy';
 import { ColorPreview } from './DesignTokens';
 import Fuse from 'fuse.js';
@@ -20,11 +19,8 @@ const BaseTokens = ({ tokens }) => {
   );
 
   const nameHeaderRef = React.useRef(null);
-  const nameHeaderRect = useResizeObserver(nameHeaderRef);
   const valueHeaderRef = React.useRef(null);
-  const valueHeaderRect = useResizeObserver(valueHeaderRef);
   const descriptionHeaderRef = React.useRef(null);
-  const descriptionHeaderRect = useResizeObserver(descriptionHeaderRef);
 
   return (
     <div>
@@ -39,13 +35,24 @@ const BaseTokens = ({ tokens }) => {
           aria-label={'Search base tokens'}
         />
       </Input>
-      <DataTable data={filteredTokens}>
+      <DataTable data={filteredTokens} className={styles.tokensTable}>
         <DataTable.Head>
-          <DataTable.Column name='name' children='Token name' ref={nameHeaderRef} />
-          <DataTable.Column name='value' children='Value' ref={valueHeaderRef} />
-          <DataTable.Column name='description' children='Description' ref={descriptionHeaderRef} />
+          <DataTable.Column
+            name='name'
+            children='Token name'
+            ref={nameHeaderRef}
+            w={0.2}
+            wMax={140}
+          />
+          <DataTable.Column name='value' children='Value' ref={valueHeaderRef} w={0.2} wMax={140} />
+          <DataTable.Column
+            name='description'
+            children='Description'
+            ref={descriptionHeaderRef}
+            w={0.6}
+          />
         </DataTable.Head>
-        <DataTable.Body virtualScroll={{ rowHeight: 45, tollerance: 10 }} h={800}>
+        <DataTable.Body h={800}>
           <DataTable.Cell name='name'>
             {(props, row) => {
               return {
@@ -53,20 +60,11 @@ const BaseTokens = ({ tokens }) => {
                   <Copy
                     copiedToast='Copied'
                     toCopy={row[props.name]}
-                    title={`Click to copy "${row[props.name]}"`}
+                    title={'Copy to clipboard'}
                     trigger='click'
                     className={styles.tokenNameWrapper}
                   >
-                    <div className={styles.tokenName}>
-                      <Ellipsis
-                        trim='middle'
-                        tooltip={false}
-                        containerRect={nameHeaderRect}
-                        containerRef={nameHeaderRef}
-                      >
-                        {row[props.name]}
-                      </Ellipsis>
-                    </div>
+                    <div className={styles.tokenName}>{row[props.name]}</div>
                   </Copy>
                 ),
               };
@@ -79,41 +77,20 @@ const BaseTokens = ({ tokens }) => {
                   <Copy
                     copiedToast='Copied'
                     toCopy={row[props.name]}
-                    title={`Click to copy "${row[props.name]}"`}
+                    title={'Copy to clipboard'}
                     trigger='click'
                     className={styles.tokenValueWrapper}
                   >
                     <div className={styles.tokenValue}>
                       <ColorPreview color={row[props.name]} />
-                      <Ellipsis
-                        trim='end'
-                        tooltip={false}
-                        containerRect={valueHeaderRect}
-                        containerRef={valueHeaderRef}
-                      >
-                        {row[props.name]}
-                      </Ellipsis>
+                      {row[props.name]}
                     </div>
                   </Copy>
                 ),
               };
             }}
           </DataTable.Cell>
-          <DataTable.Cell name='description'>
-            {(props, row) => {
-              return {
-                children: (
-                  <Ellipsis
-                    trim='end'
-                    containerRect={descriptionHeaderRect}
-                    containerRef={descriptionHeaderRef}
-                  >
-                    {row[props.name]}
-                  </Ellipsis>
-                ),
-              };
-            }}
-          </DataTable.Cell>
+          <DataTable.Cell className={styles.cell} name='description' />
         </DataTable.Body>
       </DataTable>
     </div>
