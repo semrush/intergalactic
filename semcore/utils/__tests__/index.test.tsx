@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { snapshot } from '@semcore/testing-utils/snapshot';
-import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import { expect, test, describe, beforeEach, vi, it, afterEach } from '@semcore/testing-utils/vitest';
 import { cleanup, renderHook, act } from '@semcore/testing-utils/testing-library';
 
 import isNode from '../src/isNode';
@@ -9,16 +9,23 @@ import compose from '../src/compose';
 import useCss from '../src/use/useCss';
 import resolveColor, { shade, opacity } from '../src/color';
 import assignProps, { assignHandlers } from '../src/assignProps';
+import EventEmitter from '../src/eventEmitter';
 import reactToText from '../src/reactToText';
+import { getEventTarget } from '../src/getEventTarget';
+import { extractAriaProps } from '../src/ariaProps';
 import { getRef, setRef, getNodeByRef } from '../src/ref';
+import getInputProps, { inputProps } from '../src/inputProps';
+import propsForElement, { validAttr } from '../src/propsForElement'; 
 import keyboardFocusEnhance, {
   KeyboardFocusEnhanceHook,
 } from '../src/enhances/keyboardFocusEnhance';
+import { isFocusable } from '../src/focus-lock/isFocusable';
+import { BEFORE_BORDER_ID, AFTER_BORDER_ID } from '../src/focus-lock/focusBorders';
 
 describe('Utils CSS in JS', () => {
   beforeEach(cleanup);
 
-  test.concurrent('Utils assignProps other prop', () => {
+  test.concurrent('Verify Utils assignProps other prop', () => {
     const result1 = assignProps(
       {
         test: 1,
@@ -55,7 +62,7 @@ describe('Utils CSS in JS', () => {
     expect(result4.test).toEqual(undefined);
   });
 
-  test.concurrent('Utils assignProps style', () => {
+  test.concurrent('Verify Utils assignProps style', () => {
     const result1 = assignProps(
       {
         style: {
@@ -104,7 +111,7 @@ describe('Utils CSS in JS', () => {
     expect(result3.style.margin).toEqual(1);
   });
 
-  test.concurrent('Utils assignProps className', () => {
+  test.concurrent('Verify Utils assignProps className', () => {
     const result1 = assignProps(
       {
         className: 'test1',
@@ -149,7 +156,7 @@ describe('Utils CSS in JS', () => {
     expect(result5.className).toEqual('test1');
   });
 
-  test.concurrent('Utils assignProps ref', () => {
+  test.concurrent('Verify Utils assignProps ref', () => {
     const spy1 = vi.fn();
     const result1 = assignProps(
       {
@@ -187,7 +194,7 @@ describe('Utils CSS in JS', () => {
     expect(result3.ref).toEqual(spy3);
   });
 
-  test.concurrent('Utils assignProps handler', () => {
+  test.concurrent('Verify Utils assignProps handler', () => {
     const spy1 = vi.fn();
     const result1 = assignProps(
       {
@@ -225,7 +232,7 @@ describe('Utils CSS in JS', () => {
     expect(result3.onClick).toEqual(spy3);
   });
 
-  test.concurrent('Utils assignHandlers', () => {
+  test.concurrent('Verify Utils assignHandlers', () => {
     const spy1 = vi.fn();
     const result1: any = assignHandlers(
       {
@@ -261,7 +268,7 @@ describe('Utils CSS in JS', () => {
     expect(result3.onClick).not.toEqual(spy3);
   });
 
-  test.concurrent('CSS in JS', async ({ task }) => {
+  test.concurrent('Verufy CSS in JS', async ({ task }) => {
     const CSSJS = ({ css }: any) => {
       const className = useCss(css);
       return <div className={className} />;
@@ -270,32 +277,12 @@ describe('Utils CSS in JS', () => {
 
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
-
-  test.skip('get stylesheet', async () => {
-    // because nano singleton
-    vi.resetModules();
-    // TODO: resolve "Invalid hook call" issue
-    const { default: useCss, getStylesheet, Provider } = require(`${__dirname}/../src/use/useCss`);
-    const CSSJS = ({ css }: any) => {
-      const className = useCss(css);
-      return <div className={className} />;
-    };
-    const component = (
-      /* For server render emulation */
-      <Provider value={{ client: false }}>
-        <CSSJS css={{ background: 'red', width: '20px', height: '20px' }} />
-      </Provider>
-    );
-
-    ReactDOM.render(component, document.createElement('div'));
-    expect(getStylesheet()).not.toBe('');
-  });
 });
 
 describe('Utils isNode', () => {
   beforeEach(cleanup);
 
-  test.concurrent('should return false for invalid React elements', () => {
+  test.concurrent('Verify false returns for invalid React elements', () => {
     const nodes = [Infinity, undefined, false, null];
     const factory = (node: any) => {
       expect(isNode(node)).toBeFalsy();
@@ -303,11 +290,11 @@ describe('Utils isNode', () => {
     nodes.forEach((i) => factory(i));
   });
 
-  test.concurrent('should return false by default', () => {
+  test.concurrent('Verify false returns by default', () => {
     expect(isNode()).toBeFalsy();
   });
 
-  test.concurrent('should return true for valid React elements', () => {
+  test.concurrent('Verify true returns for valid React elements', () => {
     const nodes = [
       'test',
       1,
@@ -322,7 +309,7 @@ describe('Utils isNode', () => {
 });
 
 describe('Utils compose', () => {
-  test.concurrent('should compose functions', () => {
+  test.concurrent('Verify compose functions', () => {
     const functions = [(i: any) => `3, ${i}`, (i: any) => `2, ${i}`, (i: any) => `1, ${i}`];
     expect(compose(...functions)('go!')).toBe('3, 2, 1, go!');
   });
@@ -331,29 +318,29 @@ describe('Utils compose', () => {
 describe('Utils color', () => {
   beforeEach(cleanup);
 
-  test.concurrent('should support resolveColor for empty value', () => {
+  test.concurrent('Verify resolveColor for empty value', () => {
     expect(resolveColor(undefined)).toBe(undefined);
     expect(resolveColor('')).toBe(undefined);
     expect(resolveColor(null as any)).toBe(undefined);
   });
 
-  test.concurrent('should support shade for empty value', () => {
+  test.concurrent('Verify shade for empty value', () => {
     expect(shade('', -0.08)).toBe(undefined);
   });
 
-  test(`shouldn't support opacity for string color`, () => {
+  test(`Verify no opacity for string color`, () => {
     expect(opacity('green', 0.2)).toBe(undefined);
   });
 
-  test.concurrent('should support opacity for hex color', () => {
+  test.concurrent('Verify no opacity for hex color', () => {
     expect(opacity('#008000', 0.2)).toBe('rgba(0, 128, 0, 0.2)');
   });
 
-  test.concurrent('should support opacity for rgb color', () => {
+  test.concurrent('Verify opacity for rgb color', () => {
     expect(opacity('rgb(0,128,0)', 0.2)).toBe('rgba(0, 128, 0, 0.2)');
   });
 
-  test.concurrent('should support opacity regardless of case', () => {
+  test.concurrent('Verify opacity regardless of case', () => {
     expect(opacity('#9EF2C9', 0.5)).toBe('rgba(158, 242, 201, 0.5)');
     expect(opacity('#9ef2c9', 0.5)).toBe('rgba(158, 242, 201, 0.5)');
   });
@@ -362,32 +349,32 @@ describe('Utils color', () => {
 describe('Utils reactToText', () => {
   beforeEach(cleanup);
 
-  test.concurrent('support string', () => {
+  test.concurrent('Verify support string', () => {
     expect(reactToText('string')).toBe('string');
   });
 
-  test.concurrent('support number', () => {
+  test.concurrent('Verify support number', () => {
     expect(reactToText(0)).toBe('0');
     expect(reactToText(1)).toBe('1');
   });
 
-  test.concurrent('support boolean', () => {
+  test.concurrent('Verify support boolean', () => {
     expect(reactToText(false)).toBe('false');
     expect(reactToText(true)).toBe('true');
   });
 
-  test.concurrent('support undefined types', () => {
+  test.concurrent('Verify support undefined types', () => {
     expect(reactToText(undefined)).toBe('');
     expect(reactToText(null)).toBe('');
     expect(reactToText(NaN)).toBe('');
   });
 
-  test.concurrent('support array and obj', () => {
+  test.concurrent('Verify support array and obj', () => {
     expect(reactToText(['arr', '-', 'arr'])).toBe('arr-arr');
     expect(reactToText({} as any)).toBe('');
   });
 
-  test.concurrent('support react component', () => {
+  test.concurrent('Verify support react component', () => {
     expect(reactToText(<div>component</div>)).toBe('component');
     expect(
       reactToText(
@@ -449,11 +436,11 @@ describe('Utils ref', () => {
   });
 });
 
-describe('Enhances', () => {
+describe('Enhances - keyboardFocusEnhances', () => {
   beforeEach(cleanup);
 
   test.concurrent(
-    'keyboardFocus should return keyboardFocused to false if component is disabled',
+    'Verify keyboardFocus returns keyboardFocused to false if component is disabled',
     () => {
       const enhance = keyboardFocusEnhance();
 
@@ -478,4 +465,503 @@ describe('Enhances', () => {
       expect(result.current.keyboardFocused).toBe(false);
     },
   );
+});
+
+describe('extractAriaProps', () => {
+  test('Verify extract all aria attributes', () => {
+    const props = {
+      title: 'Test Title',
+      'aria-label': 'Test Label',
+      'aria-labelledby': 'label-id',
+      'aria-describedby': 'desc-id',
+      otherProp: 'ignored',
+    };
+    const result = extractAriaProps(props);
+    
+    expect(result).toEqual({
+      __excludeProps: ['title', 'aria-label', 'aria-labelledby', 'aria-describedby'],
+      extractedAriaProps: {
+        title: 'Test Title',
+        'aria-label': 'Test Label',
+        'aria-labelledby': 'label-id',
+        'aria-describedby': 'desc-id',
+      },
+    });
+  });
+
+  test('Verify extract only available aria attributes', () => {
+    const props = {
+      'aria-label': 'Test Label',
+      otherProp: 'ignored',
+    };
+    const result = extractAriaProps(props);
+    
+    expect(result).toEqual({
+      __excludeProps: ['title', 'aria-label', 'aria-labelledby', 'aria-describedby'],
+      extractedAriaProps: {
+        'aria-label': 'Test Label',
+      },
+    });
+  });
+
+  test('Verify return empty extractedAriaProps for empty input', () => {
+    const result = extractAriaProps({});
+    
+    expect(result).toEqual({
+      __excludeProps: ['title', 'aria-label', 'aria-labelledby', 'aria-describedby'],
+      extractedAriaProps: {},
+    });
+  });
+});
+
+
+
+describe('assignHandlers', () => {
+  test('Verify merge event handlers from source and props', () => {
+    const mockFn1 = vi.fn();
+    const mockFn2 = vi.fn();
+    
+    const props = { onClick: mockFn1 };
+    const source = { onClick: mockFn2 };
+    
+    const result = assignHandlers(props, source);
+    
+    expect(typeof result.onClick).toBe('function');
+    
+    result.onClick();
+    expect(mockFn1).toHaveBeenCalled();
+    expect(mockFn2).toHaveBeenCalled();
+  });
+});
+
+describe('assignProps', () => {
+  test('Verify merge className correctly', () => {
+    const props = { className: 'class1' };
+    const source = { className: 'class2' };
+    
+    const result = assignProps(props, source);
+    
+    expect(result.className).toContain('class1');
+    expect(result.className).toContain('class2');
+  });
+  
+  test('Verify merge styles correctly', () => {
+    const props = { style: { color: 'red' } };
+    const source = { style: { backgroundColor: 'blue' } };
+    
+    const result = assignProps(props, source);
+    
+    expect(result.style.color).toBe('red');
+    expect(result.style.backgroundColor).toBe('blue');
+  });
+  
+  test('Verify preserve event handlers', () => {
+    const mockFn1 = vi.fn();
+    const mockFn2 = vi.fn();
+    
+    const props = { onClick: mockFn1 };
+    const source = { onClick: mockFn2 };
+    
+    const result = assignProps(props, source);
+    
+    expect(typeof result.onClick).toBe('function');
+    
+    result.onClick();
+    expect(mockFn1).toHaveBeenCalled();
+    expect(mockFn2).toHaveBeenCalled();
+  });
+});
+
+describe('EventEmitter', () => {
+  test('Verify call subscribed function when event is emitted', () => {
+    const emitter = new EventEmitter();
+    const handler = vi.fn();
+
+    emitter.subscribe('testEvent', handler);
+    emitter.emit('testEvent');
+
+    expect(handler).toHaveBeenCalledTimes(1);
+  });
+
+  test('Verify pass arguments to the event handler', () => {
+    const emitter = new EventEmitter();
+    const handler = vi.fn();
+
+    emitter.subscribe('dataEvent', handler);
+    emitter.emit('dataEvent', 'hello', 42);
+
+    expect(handler).toHaveBeenCalledWith('hello', 42);
+  });
+
+  test('Verify allow multiple subscribers to receive the event', () => {
+    const emitter = new EventEmitter();
+    const handler1 = vi.fn();
+    const handler2 = vi.fn();
+
+    emitter.subscribe('multiEvent', handler1);
+    emitter.subscribe('multiEvent', handler2);
+    emitter.emit('multiEvent');
+
+    expect(handler1).toHaveBeenCalledTimes(1);
+    expect(handler2).toHaveBeenCalledTimes(1);
+  });
+
+  test('Verify not call the handler after unsubscribing', () => {
+    const emitter = new EventEmitter();
+    const handler = vi.fn();
+    const unsubscribe = emitter.subscribe('testEvent', handler);
+
+    unsubscribe(); // Отписываемся
+    emitter.emit('testEvent');
+
+    expect(handler).not.toHaveBeenCalled();
+  });
+
+  test('Verify not fail when emitting an event with no subscribers', () => {
+    const emitter = new EventEmitter();
+    
+    expect(() => emitter.emit('nonexistentEvent')).not.toThrow();
+  });
+});
+
+describe('getEventTarget', () => {
+  test('Verify return event.target when composedPath does not exist', () => {
+    const event = {
+      target: 'targetElement',
+      composedPath: vi.fn().mockReturnValue([]), // Mocking composedPath as an empty array
+    } as unknown as React.SyntheticEvent;
+
+    const result = getEventTarget(event);
+    expect(result).toBe('targetElement');
+  });
+
+  test('Verify return first element of composedPath if no shadowRoot', () => {
+    // Mocking composedPath to return elements that are simple objects
+    const event = {
+      composedPath: vi.fn().mockReturnValue([{ someProperty: 'pathElement' }]), // Mocking a non-DOM element
+    } as unknown as React.SyntheticEvent;
+
+    const result = getEventTarget(event);
+    expect(result).toEqual({ someProperty: 'pathElement' }); // Should return the first element
+  });
+
+  test('Verify return element with shadowRoot from composedPath', () => {
+    const shadowRootElement = { shadowRoot: {} } as HTMLElement;
+    const event = {
+      composedPath: vi.fn().mockReturnValue([shadowRootElement, 'otherElement']),
+    } as unknown as React.SyntheticEvent;
+
+    const result = getEventTarget(event);
+    expect(result).toBe(shadowRootElement); // Should return the element with shadowRoot
+  });
+
+  test('Verify return event.target when composedPath is undefined', () => {
+    const event = {
+      target: 'targetElement',
+      composedPath: vi.fn().mockReturnValue(undefined), // Mocking composedPath as undefined
+    } as unknown as React.SyntheticEvent;
+
+    const result = getEventTarget(event);
+    expect(result).toBe('targetElement');
+  });
+
+  test('Verify handle nativeEvent with composedPath correctly', () => {
+    const shadowRootElement = { shadowRoot: {} } as HTMLElement;
+    const event = {
+      nativeEvent: {
+        composedPath: vi.fn().mockReturnValue([shadowRootElement, 'nativeOtherElement']),
+      },
+    } as unknown as React.SyntheticEvent;
+
+    const result = getEventTarget(event);
+    expect(result).toBe(shadowRootElement);
+  });
+
+  test('Verify return event.target when nativeEvent does not have composedPath', () => {
+    const event = {
+      target: 'targetElement',
+      nativeEvent: {}, // No composedPath in nativeEvent
+    } as unknown as React.SyntheticEvent;
+
+    const result = getEventTarget(event);
+    expect(result).toBe('targetElement');
+  });
+});
+
+describe('getInputProps', () => {
+  it('should correctly separate props that exist in inputProps from other props', () => {
+    const props = {
+      autoFocus: true,
+      checked: false,
+      customProp: 'custom',
+      onChange: () => {},
+      onBlur: () => {},
+      dataCustom: 'data-custom'
+    };
+
+    const [includedProps, excludedProps] = getInputProps(props);
+
+    // Check if props in inputProps are included in the first result
+    expect(includedProps).toEqual({
+      autoFocus: true,
+      checked: false,
+      onChange: expect.any(Function),
+      onBlur: expect.any(Function),
+    });
+
+    // Check if props not in inputProps are excluded correctly
+    expect(excludedProps).toEqual({
+      customProp: 'custom',
+      dataCustom: 'data-custom',
+    });
+  });
+
+  it('should handle aria-* props if allAriaPropsToControl is true', () => {
+    const props = {
+      'aria-label': 'label',
+      'aria-hidden': 'true',
+      customProp: 'custom',
+    };
+
+    const [includedProps, excludedProps] = getInputProps(props, [], true);
+
+    // Aria props should be included
+    expect(includedProps).toEqual({
+      'aria-label': 'label',
+      'aria-hidden': 'true',
+    });
+
+    // Non-aria props should be excluded
+    expect(excludedProps).toEqual({
+      customProp: 'custom',
+    });
+  });
+
+  it('should default to using the inputProps list if no propsList is provided', () => {
+    const props = {
+      autoFocus: true,
+      customProp: 'custom',
+    };
+
+    const [includedProps, excludedProps] = getInputProps(props);
+
+    // autoFocus should be included as it is in the inputProps list
+    expect(includedProps).toEqual({
+      autoFocus: true,
+    });
+
+    // customProp should be excluded as it is not in inputProps
+    expect(excludedProps).toEqual({
+      customProp: 'custom',
+    });
+  });
+
+  it('should handle an empty props object gracefully', () => {
+    const props = {};
+
+    const [includedProps, excludedProps] = getInputProps(props);
+
+    // Both included and excluded props should be empty
+    expect(includedProps).toEqual({});
+    expect(excludedProps).toEqual({});
+  });
+
+  it('should include all the required props from the inputProps array', () => {
+    const requiredProps = [
+      'autoFocus',
+      'autoComplete',
+      'defaultChecked',
+      'checked',
+      'disabled',
+      'name',
+      'type',
+      'value',
+      'defaultValue',
+      'id',
+      'indeterminate',
+      'required',
+      'onInvalid',
+      'onChange',
+      'onFocus',
+      'onBlur',
+      'onKeyDown',
+      'onKeyPress',
+      'onKeyUp',
+      'tabIndex',
+      'data-ui-name',
+      'inputMode',
+    ];
+
+    // Ensure that the inputProps array contains all the required props
+    requiredProps.forEach(prop => {
+      expect(inputProps).toContain(prop);
+    });
+
+    const props = requiredProps.reduce((acc, prop) => {
+      acc[prop] = 'test'; // Assigning dummy values for each prop
+      return acc;
+    }, {});
+
+    const [includedProps, excludedProps] = getInputProps(props);
+
+    // Check if all required props are correctly included in the result
+    requiredProps.forEach((prop) => {
+      expect(includedProps).toHaveProperty(prop, 'test');
+    });
+
+    // Ensure that no other props are present in includedProps
+    expect(Object.keys(includedProps).length).toBe(requiredProps.length);
+
+    // Ensure that excludedProps is empty as we only used requiredProps in this test
+    expect(excludedProps).toEqual({});
+  });
+
+});
+
+describe('propsForElement', () => {
+  test('Verify return valid attributes for allowed props', () => {
+    const props = {
+      className: 'test-class',
+      onClick: () => {},
+      id: 'button-id',
+    };
+
+    const result = propsForElement(props);
+    expect(result).toHaveProperty('className', 'test-class');
+    expect(result).toHaveProperty('onClick');
+    expect(result).toHaveProperty('id', 'button-id');
+  });
+
+  test('Verify exclude __excludeProps from the result', () => {
+    const props = {
+      className: 'test-class',
+      __excludeProps: ['className'],
+      onClick: () => {},
+    };
+
+    const result = propsForElement(props);
+    expect(result).not.toHaveProperty('className');
+    expect(result).toHaveProperty('onClick');
+  });
+
+  test('Verify allow custom attributes starting with x-, data-, or aria-', () => {
+    const props = {
+      'x-custom-attribute': 'value',
+      'data-custom-attribute': 'value',
+      'aria-label': 'label',
+    };
+
+    const result = propsForElement(props);
+    expect(result).toHaveProperty('x-custom-attribute', 'value');
+    expect(result).toHaveProperty('data-custom-attribute', 'value');
+    expect(result).toHaveProperty('aria-label', 'label');
+  });
+
+  test('Verify return false for invalid attributes', () => {
+    const props = {
+      invalidAttr: 'value',
+    };
+
+    const result = propsForElement(props);
+    expect(result).not.toHaveProperty('invalidAttr');
+  });
+});
+
+describe('validAttr function', () => {
+  test('Verify allow attributes starting with x-, data-, or aria-', () => {
+    expect(validAttr('x-custom-attribute')).toBe(true);
+    expect(validAttr('data-custom-attribute')).toBe(true);
+    expect(validAttr('aria-label')).toBe(true);
+  });
+
+  test('Verify not allow invalid attributes', () => {
+    expect(validAttr('invalidAttr')).toBe(false);
+  });
+
+  test('Verify allow standard allowed attributes', () => {
+    expect(validAttr('className')).toBe(true);
+    expect(validAttr('onClick')).toBe(true);
+  });
+});
+
+
+
+describe('isFocusable', () => {
+  let element: HTMLElement;
+
+  beforeEach(() => {
+    element = document.createElement('div');
+    document.body.appendChild(element);
+  });
+
+  afterEach(() => {
+    document.body.innerHTML = '';
+  });
+
+  test('Verify return false if the element is not an HTMLElement or SVGElement', () => {
+    const nonElementNode = document.createTextNode('text');
+    const result = isFocusable(nonElementNode);
+    expect(result).toBe(false);
+  });
+
+  test('Verify return false if the element is disabled', () => {
+    element.setAttribute('disabled', 'true');
+    const result = isFocusable(element);
+    expect(result).toBe(false);
+  });
+
+  test('Verify return false if the element has tabindex="-1"', () => {
+    element.setAttribute('tabindex', '-1');
+    const result = isFocusable(element);
+    expect(result).toBe(false);
+  });
+
+  test('Verify return false if the element is hidden', () => {
+    element.setAttribute('hidden', 'true');
+    const result = isFocusable(element);
+    expect(result).toBe(false);
+  });
+
+  test('Verify return false if the element has data-id matching BEFORE_BORDER_ID', () => {
+    element.setAttribute('data-id', BEFORE_BORDER_ID);
+    const result = isFocusable(element);
+    expect(result).toBe(false);
+  });
+
+  test('Verify return false if the element has data-id matching AFTER_BORDER_ID', () => {
+    element.setAttribute('data-id', AFTER_BORDER_ID);
+    const result = isFocusable(element);
+    expect(result).toBe(false);
+  });
+
+  test('Verify return true if the element is a focusable tag', () => {
+    const button = document.createElement('BUTTON');
+    const result = isFocusable(button);
+    expect(result).toBe(true);
+  });
+
+  test('Verify return true if the element has a focusable attribute (e.g., href)', () => {
+    const link = document.createElement('A');
+    link.setAttribute('href', '#');
+    const result = isFocusable(link);
+    expect(result).toBe(true);
+  });
+
+  test('Verify return true if the element has contenteditable attribute', () => {
+    element.setAttribute('contenteditable', 'true');
+    const result = isFocusable(element);
+    expect(result).toBe(true);
+  });
+
+  test('Verify return false if the element is hidden with CSS', () => {
+    element.style.display = 'none';
+    const result = isFocusable(element);
+    expect(result).toBe(false);
+  });
+
+  test('Verify return true if the element is visible and focusable', () => {
+    const input = document.createElement('INPUT'); 
+    const result = isFocusable(input);
+    expect(result).toBe(true);
+  });
 });
