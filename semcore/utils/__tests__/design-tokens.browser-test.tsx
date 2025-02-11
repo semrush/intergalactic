@@ -40,9 +40,8 @@ test.describe('Theme providers', () => {
       await page.waitForTimeout(300);
       const clickColor = await button.evaluate((el) => getComputedStyle(el).backgroundColor);
       expect(clickColor).toBe('rgb(89, 37, 171)'); // #5925ab in rgb
-      await page.mouse.up(); 
+      await page.mouse.up();
     }
-   
   });
 
   test('Verify grey primary control theme', async ({ page }) => {
@@ -80,11 +79,10 @@ test.describe('Theme providers', () => {
       await page.mouse.down();
       await page.waitForTimeout(300);
       const clickColor = await button.evaluate((el) => getComputedStyle(el).backgroundColor);
-    expect(clickColor).toBe('rgb(43, 46, 56)'); // #2b2e38 in rgb
- 
-      await page.mouse.up(); 
+      expect(clickColor).toBe('rgb(43, 46, 56)'); // #2b2e38 in rgb
+
+      await page.mouse.up();
     }
-   
   });
 });
 
