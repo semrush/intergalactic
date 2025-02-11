@@ -75,7 +75,7 @@ const outOfSourceDirs = ['style'];
 
 const rootPath = resolvePath(__dirname, '../../..');
 
-export const resolveSemcoreSources = async (path) => {
+export const resolveSemcoreSources = async (path: string) => {
   if (path.startsWith('@semcore/ui/')) path = `@semcore/${path.substring('@semcore/ui/'.length)}`;
   if (path.startsWith('intergalactic/'))
     path = `@semcore/${path.substring('intergalactic/'.length)}`;

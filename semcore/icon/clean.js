@@ -20,6 +20,7 @@ const ignoreFiles = [
   'README.md',
   'transform-svg.config.js',
   'tsconfig.json',
+  'vite.config.ts',
 ];
 
 const removeDir = async (dir) => {
@@ -52,4 +53,5 @@ const removeDir = async (dir) => {
   }
 };
 
-removeDir(rootDir);
+removeDir(rootDir)
+;

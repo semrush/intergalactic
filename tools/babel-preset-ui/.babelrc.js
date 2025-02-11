@@ -15,6 +15,7 @@ module.exports = function (babel, opts = {}) {
         '@babel/plugin-transform-runtime',
         {
           version: require('@babel/runtime/package.json').version,
+          useESModules: opts.isEsm,
         },
       ],
     ],
