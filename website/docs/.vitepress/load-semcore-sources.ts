@@ -6,7 +6,9 @@ import { dirname as resolveDirname } from 'path';
 // export { esbuildPluginSemcoreSourcesResolve } from './esbuild-plugin-semcore-sources-resolve';
 
 const babelTransform = async (contents: string, path: string, isEsm?: true) => {
-  const { default: babelConfig } = await import('@semcore/babel-preset-ui/.babelrc.js');
+  const babelPresetUi = await import('@semcore/babel-preset-ui/.babelrc.js');
+  const babelConfig = babelPresetUi.default as (babel: any, opts: any) => any;
+  // @ts-ignore
   const babel = await import('@babel/core');
 
   const code = await new Promise((resolve, reject) =>
@@ -15,9 +17,9 @@ const babelTransform = async (contents: string, path: string, isEsm?: true) => {
       {
         filename: path,
         cwd: resolveDirname(path),
-        ...babelConfig('', { isEsm: isEsm }),
+        ...babelConfig(babel, { isEsm: isEsm }),
       },
-      (error, result) => {
+      (error: Error | undefined, result: any) => {
         if (error) reject(error);
         else resolve(result?.code!);
       },
