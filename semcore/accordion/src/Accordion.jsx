@@ -1,11 +1,10 @@
 import React from 'react';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
-import { Box, Flex } from '@semcore/flex-box';
+import { Flex } from '@semcore/flex-box';
 import { Collapse as CollapseAnimate } from '@semcore/animation';
 import { Text } from '@semcore/typography';
 import ChevronRightM from '@semcore/icon/ChevronRight/m';
 import ChevronRightL from '@semcore/icon/ChevronRight/l';
-import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
 
@@ -85,6 +84,7 @@ export class RootItem extends Component {
       id: `igc-${uid}-${value}-toggle`,
       tag: 'h3',
       size: 300,
+      tabIndex: disabled ? -1 : 0,
     };
   }
 
@@ -124,8 +124,6 @@ export class RootItem extends Component {
 }
 
 class Toggle extends Component {
-  static enhance = [keyboardFocusEnhance()];
-
   toggleRef = React.createRef();
 
   handleKeyDown = (event) => {
@@ -142,7 +140,7 @@ class Toggle extends Component {
   };
 
   render() {
-    const { styles, disabled, use } = this.asProps;
+    const { styles, use } = this.asProps;
     const SItemToggle = Root;
 
     return sstyled(styles)(
