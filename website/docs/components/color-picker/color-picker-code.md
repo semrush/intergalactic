@@ -39,17 +39,12 @@ You have complete control over the appearance of ColorPicker, including the trig
 
 :::
 
-## Several ways to use component
-
-There are multiple ways to add colors in ColorPicker;
-
-- The first method is to use the `colors` prop in `ColorPicker.Colors` for default colors, and in `PaletteManager` for customizable colors that can be added or removed.
-- The second method is to use `ColorPicker.Item` and `PaletteManager.Item`, which allows for the use of custom components instead of default items. The next two examples are identical.
+## Predefined palette
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/color-picker/docs/examples/several_ways_to_use_component.tsx';
+  export Demo from 'stories/components/color-picker/docs/examples/predefined_palette.tsx';
 </script>
 
 :::
