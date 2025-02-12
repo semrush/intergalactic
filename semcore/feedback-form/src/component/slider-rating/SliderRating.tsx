@@ -33,10 +33,7 @@ class SliderRatingRoot extends Component<
   static displayName = 'SliderRating';
   static style = style;
 
-  static enhance = [
-    uniqueIDEnhancement(),
-    i18nEnhance(localizedMessages),
-  ] as const;
+  static enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages)] as const;
 
   state: State = {
     hoveredIndex: -1,
