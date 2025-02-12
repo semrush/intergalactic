@@ -1798,7 +1798,7 @@
     "rawValue": "rgba({blue.400}, 0.5)",
     "computedValue": "rgba(0, 143, 248, 0.5)",
     "description": "Color for default keyboard focus outline styles.",
-    "components": ["base-components", "format-text", "link"]
+    "components": ["base-components", "format-text"]
   },
   {
     "name": "--intergalactic-keyboard-focus-outline-invert",

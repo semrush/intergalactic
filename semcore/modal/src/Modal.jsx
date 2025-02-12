@@ -8,7 +8,6 @@ import CloseIcon from '@semcore/icon/Close/l';
 import fire from '@semcore/core/lib/utils/fire';
 import usePreventScroll from '@semcore/core/lib/utils/use/usePreventScroll';
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
-import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 import style from './style/modal.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
@@ -191,8 +190,6 @@ function Close(props) {
     </SClose>,
   );
 }
-
-Close.enhance = [keyboardFocusEnhance()];
 
 function Title(props) {
   const { setHasTitle, styles, color } = props;
