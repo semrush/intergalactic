@@ -79,7 +79,10 @@ const Demo = () => {
       {widgets.map((id, index) => {
         if (!id) {
           return (
-            <DnD.DropZone key={index} aria-label={`Drop zone ${index + 1}`}>
+            <DnD.DropZone key={index} aria-label={`Drop zone ${index + 1}`} style={{
+              border: '1px dashed var(--intergalactic-border-primary, #c4c7cf)',
+              borderRadius: '6px',
+            }}>
               <Flex
                 alignItems='center'
                 gap={1}
@@ -88,10 +91,6 @@ const Demo = () => {
                 h={280}
                 direction='column'
                 p={5}
-                style={{
-                  border: '1px dashed var(--intergalactic-border-primary, #c4c7cf)',
-                  borderRadius: '6px',
-                }}
               >
                 <Text color='text-secondary'>
                   <MathPlusL />
@@ -110,7 +109,9 @@ const Demo = () => {
         const widget = widgetsSetup.find((widget) => widget.id === id)!;
 
         return (
-          <DnD.Draggable placement='top' key={id} aria-label={`${widget.title} widget`} h='100%'>
+          <DnD.Draggable placement='top' key={id} aria-label={`${widget.title} widget`} h='100%' style={{
+            borderRadius: '6px',
+          }}>
             <Widget title={widget.title} />
           </DnD.Draggable>
         );
