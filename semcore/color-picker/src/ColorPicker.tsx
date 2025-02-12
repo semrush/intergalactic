@@ -3,7 +3,6 @@ import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import Dropdown from '@semcore/dropdown';
 import { Box } from '@semcore/flex-box';
 import ChevronDownM from '@semcore/icon/ChevronDown/m';
-import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 import PaletteManagerRoot from './PaletteManager';
 import { Item, Colors, ColorsCustom, InputColor } from './components';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
@@ -170,8 +169,6 @@ export function Trigger(props: TriggerAsProps) {
     </Root>
   );
 }
-
-Trigger.enhance = [keyboardFocusEnhance()];
 
 const DefaultTrigger = React.forwardRef(function (props: TriggerAsProps, ref) {
   const { styles, value } = props;

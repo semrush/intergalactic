@@ -4,6 +4,10 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [16.0.0] - 2025-01-09
 
+### Changed
+
+- `keyboardFocusEnhance` to css `:focus-visible` property.
+
 ### Deprecated
 
 - `Item` element for `ColorPicker.Colors` and `PaletteManager.Colors`.
