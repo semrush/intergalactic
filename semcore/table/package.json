@@ -1,7 +1,7 @@
 {
   "name": "@semcore/table",
   "description": "Semrush Table Component",
-  "version": "4.49.1",
+  "version": "4.50.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -13,9 +13,9 @@
   },
   "dependencies": {
     "@semcore/utils": "4.44.1",
-    "@semcore/icon": "4.53.1",
+    "@semcore/icon": "4.55.0",
     "@semcore/flex-box": "5.39.1",
-    "@semcore/typography": "5.48.1",
+    "@semcore/typography": "5.49.0",
     "@semcore/scroll-area": "5.43.1",
     "classnames": "2.2.6"
   },

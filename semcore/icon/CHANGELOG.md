@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.55.0] - 2025-01-20
+
+### Added
+
+- New `ChatGPT` icon.
+
+## [4.54.0] - 2025-01-17
+
+### Added
+
+- New `VideoList`, `VideoStreaming` icons.
+
 ## [4.53.1] - 2024-12-30
 
 ### Changed

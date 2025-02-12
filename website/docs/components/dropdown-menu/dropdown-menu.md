@@ -12,7 +12,9 @@ tabs: Design('dropdown-menu'), A11y('dropdown-menu-a11y'), API('dropdown-menu-ap
 Note that the DropdownMenu component doesn't handle the value change in the trigger. This mechanism is implemented in the [Select](/components/select/select#a24650).
 :::
 
-## Sizes and indents
+## Appearance
+
+### Sizes
 
 The DropdownMenu has two sizes.
 
@@ -136,7 +138,7 @@ Table: Divider margins
 
 You can group menu items using the `DropdownMenu.Group` component. Groups always have titles.
 
-Group title is non-interactive, always has `font-weight: var(--bold)` and the same size as menu items.
+Group title is noninteractive, always has `font-weight: var(--bold)` and the same size as menu items.
 
 ![](static/headings.png)
 
@@ -164,7 +166,7 @@ Table: Addon before the text examples
 
 ### Addon after text
 
-After the text you can place either non-interactive and interactive addons: an icon, badge, switch, link or button.
+After the text you can place either noninteractive and interactive addons: an icon, badge, switch, link or button.
 
 <!-- commented because we don't recomment adding icons with tooltips
 If an icon displays additional information about an item, we recommend placing it right next to the text.
@@ -212,7 +214,7 @@ If you want to add a tooltip to an item, apply it to the entire item. We don't r
 
 ![](static/info-icon-tooltip.png)
 
-## Nested menu
+## Nested menus
 
 The item can have a nested menu. In this case, it should have the `ChevronRight` icon to indicate the nesting.
 

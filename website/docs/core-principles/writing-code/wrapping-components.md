@@ -60,7 +60,7 @@ Use the special utility `wrapIntergalacticComponent` to wrap components. It does
 
 :::
 
-## Complex components wrappers
+## Complex wrappers
 
 Some components props are generic, for example `Select` component has generic `value` and `DataTable` has generic `data`. For such components, special wrapping utilities are provided. 
 

@@ -4,5 +4,9 @@
   "formTitle": "피드백 양식",
   "submitButton": "피드백 보내기",
   "successMessage": "피드백을 주셔서 감사합니다!",
-  "errorMessage": "오류가 발생했습니다. 다시 시도하거나 {email}으로 문의해 주세요."
+  "errorMessage": "오류가 발생했습니다. 다시 시도하거나 {email}으로 문의해 주세요.",
+  "FeedbackRating.SliderRating.ScreenReaderOnly.sliderDescriber": "Enter 키로 별점을 선택하세요",
+  "FeedbackRating.SliderRating.aria-valuetext.readonly": "내 평점: {selectedRating}/{max}",
+  "FeedbackRating.SliderRating.aria-valuetext.empty": "평가하지 않음",
+  "FeedbackRating.SliderRating.aria-valuetext": "{selectedRating}/{max}"
 }

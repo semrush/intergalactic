@@ -126,3 +126,13 @@ SNotice[theme='custom'] {
   background-color: var(--backgroundColor);
   border-color: var(--backgroundColor);
 }
+
+STitle {
+  margin-top: var(--intergalactic-spacing-05x, 2px);
+  margin-bottom: var(--intergalactic-spacing-05x, 2px);
+}
+
+SText {
+  margin-top: var(--intergalactic-spacing-1x, 4px);
+  margin-bottom: var(--intergalactic-spacing-1x, 4px);
+}

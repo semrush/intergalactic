@@ -87,7 +87,7 @@ You can group input, select, and button.
 
 :::
 
-## Adding a wrapper
+## Adding wrapper
 
 By default, `<NeighborLocation/>` doesn't create an HTML wrapper, but you can pass the component tag you want.
 
@@ -104,7 +104,7 @@ For the correct type mapping in the TC, you must also pass the interface.
 
 :::
 
-## Using a custom component
+## Using custom component
 
 You can apply `<NeighborLocation/>` to your components. You will need to use the component `<NeighborLocation.Detect/>`
 and

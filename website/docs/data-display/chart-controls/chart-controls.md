@@ -15,7 +15,7 @@ The widget's controls can be categorized into the following types:
 - General controls and filters
 - Chart controls
 
-## General controls and filters
+## General controls
 
 General controls and filters are always positioned at the same level as the title and include options such as:
 
@@ -29,7 +29,7 @@ For widget settings, use a button with `use="tertiary"` and `theme="muted"`. Rem
 
 ![](static/settings-on.png)
 
-## Chart controls and filters
+## Chart data controls
 
 These controls filter the data, axes, and additional controls as described below:
 
@@ -92,9 +92,9 @@ For custom periods, use the [DateRangePicker](/components/date-picker/date-picke
 
 ![](static/zoom.png)
 
-## Collapsing rows with controls
+## Merging controls
 
-You can collapse rows as needed. Different controls or control groups should be separated by a [Divider](/components/divider/divider) using the `--border-secondary` token for color and a margin of 0px 16px.
+You can merge rows with controls as needed. Different controls or control groups should be separated by a [Divider](/components/divider/divider) using the `--border-secondary` token for color and a margin of 0px 16px.
 
 ![](static/widget-yes-no.png)
 

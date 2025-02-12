@@ -85,14 +85,16 @@ Component consists of the following:
 - `TabPanel.Item.Addon`
 - `TabPanel.Item.Text`
 
-## Sizes and margins
+## Appearance
 
-- The TabPanel.Item has a `margin-right: var(--spacing-4x)` (except for the `last-child`).
+### Sizes
+
+The TabPanel.Item has a `margin-right: var(--spacing-4x)` (except for the `last-child`).
 Addons before and after the text have a margin of 8px.
 
 ![](static/tab-m.png)
 
-## Addons
+### Addons
 
 Addons inside TabPanel.Item have the same margins as addons inside the [Button](/components/button/button) component.
 

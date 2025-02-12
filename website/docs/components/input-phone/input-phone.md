@@ -7,7 +7,7 @@ tabs: Design('input-phone'), A11y('input-phone-a11y'), Example('input-phone-code
 
 **InputPhone** is a pattern designed to facilitate the entry of phone numbers using a [mask](/components/input-mask/input-mask). This input ensures that users can enter their phone numbers correctly without any uncertainty about the format.
 
-### Recommendations for using this input
+### Usage recommendations
 
 - Provide preset values for the phone code, such as the country code or a flag along with the country code for clarity.
 - Utilize a mask to display the number in the desired format, eliminating the need for users to type brackets, hyphens, and other formatting characters.
@@ -25,11 +25,11 @@ The appearance of the InputPhone can vary based on:
 
 Table: InputPhone variants
 
-| Case | Appearance example  |
-| ---- | ------------------- |
-| Unknown country and/or phone number format | ![](static/input-phone-1.png) |
+| Case                                          | Appearance example            |
+| --------------------------------------------- | ----------------------------- |
+| Unknown country and/or phone number format    | ![](static/input-phone-1.png) |
 | Known country but unknown phone number format | ![](static/input-phone-2.png) |
-| Known country and phone number format | ![](static/input-phone-3.png) |
+| Known country and phone number format         | ![](static/input-phone-3.png) |
 
 When the user's country is known, it's important to display the flag of the country in the input. This helps users navigate through the entered data more easily, as seen in the [Form guide](/patterns/form/form).
 
@@ -39,14 +39,14 @@ Be sure to add the label "Phone number" to the input. Especially if there are no
 
 For actual examples of phone number inputs, refer to the [Example tab](/components/input-phone/input-phone-code).
 
-## Hint instructions
+## Text instructions
 
 It is recommended to provide visible text instructions for inputs with specific data formats.
 
 Table: Sizes of InputPhone's hint text
 
-| Size (height in px) | Hint text size | Appearance example                  | Margins                                   |
-| ------------------- | ------------------- | ----------------------------------- | ----------------------------------------- |
+| Size (height in px) | Hint text size                           | Appearance example                     | Margins                                       |
+| ------------------- | ---------------------------------------- | -------------------------------------- | --------------------------------------------- |
 | M (28px)            | 12px (use `--fs-100`, `--lh-100` tokens) | ![](static/inputphone-help-text-m.png) | ![](static/inputphone-help-text-margin-m.png) |
 | L (40px)            | 14px (use `--fs-200`, `--lh-200` tokens) | ![](static/inputphone-help-text-l.png) | ![](static/inputphone-help-text-margin-l.png) |
 
@@ -69,16 +69,16 @@ According to [Baymard Research](https://baymard.com/blog/input-masking-form-fiel
 
 Table: States for the case when country and/or phone number format are unknown
 
-| Normal          | Focus          | Filled               |
-| --------------- | -------------- | -------------------- |
+| Normal                        | Focus                               | Filled                               |
+| ----------------------------- | ----------------------------------- | ------------------------------------ |
 | ![](static/input-phone-1.png) | ![](static/input-phone-1-focus.png) | ![](static/input-phone-1-filled.png) |
 
 ### Known country but unknown phone number format
 
 Table: States for the case when only country is known, while phone number format is unknown
 
-| Countries number   | Normal         | Focus         | Filled             |
-| ------------------ | -------------- | ------------- | ------------------ |
+| Countries number      | Normal                          | Focus                                 | Filled                                 |
+| --------------------- | ------------------------------- | ------------------------------------- | -------------------------------------- |
 | One country           | ![](static/input-phone-2.png)   | ![](static/input-phone-2-focus.png)   | ![](static/input-phone-2-filled.png)   |
 | More than one country | ![](static/input-phone-2-2.png) | ![](static/input-phone-2-2-focus.png) | ![](static/input-phone-2-2-filled.png) |
 
@@ -88,8 +88,8 @@ This option is most suitable when collecting phone numbers from users in one or 
 
 Table: States for the case when both country and phone number format are known
 
-| Countries number   | Normal                 | Focus               | Filled               |
-| ------------------ | ---------------------- | ------------------- | -------------------- |
+| Countries number      | Normal                          | Focus                                 | Filled                                 |
+| --------------------- | ------------------------------- | ------------------------------------- | -------------------------------------- |
 | One country           | ![](static/input-phone-3.png)   | ![](static/input-phone-3-focus.png)   | ![](static/input-phone-3-filled.png)   |
 | More than one country | ![](static/input-phone-3-2.png) | ![](static/input-phone-3-2-focus.png) | ![](static/input-phone-3-2-filled.png) |
 
@@ -98,4 +98,3 @@ Table: States for the case when both country and phone number format are known
 To ensure user clarity about how much information they need to enter, it is recommended to keep the width of the InputPhone as clear as possible. Typically, the width doesn't exceed 160px-250px for the input sizes.
 
 ![](static/size-yes-no.png)
-

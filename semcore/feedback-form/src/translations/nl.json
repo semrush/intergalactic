@@ -4,5 +4,9 @@
   "formTitle": "Feedback formulier",
   "submitButton": "Feedback sturen",
   "successMessage": "Bedankt voor je feedback!",
-  "errorMessage": "Er is iets fout gegaan. Probeer het opnieuw of neem contact met ons op via {email}."
+  "errorMessage": "Er is iets fout gegaan. Probeer het opnieuw of neem contact met ons op via {email}.",
+  "FeedbackRating.SliderRating.ScreenReaderOnly.sliderDescriber": "Druk op Enter om de beoordeling te selecteren",
+  "FeedbackRating.SliderRating.aria-valuetext.readonly": "Jouw beoordeling: {selectedRating} uit {max}",
+  "FeedbackRating.SliderRating.aria-valuetext.empty": "Niet ingesteld",
+  "FeedbackRating.SliderRating.aria-valuetext": "{selectedRating} uit {max}"
 }

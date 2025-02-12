@@ -1,0 +1,39 @@
+{
+  "name": "@semcore/add-filter",
+  "description": "Semrush Add Filter component",
+  "version": "1.0.0",
+  "main": "lib/cjs/index.js",
+  "module": "lib/es6/index.js",
+  "typings": "lib/types/index.d.ts",
+  "sideEffects": false,
+  "author": "UI-kit team <ui-kit-team@semrush.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "pnpm semcore-builder --source=ts"
+  },
+  "dependencies": {
+    "@semcore/select": "4.48.2",
+    "@semcore/icon": "4.52.0",
+    "@semcore/button": "5.39.1",
+    "@semcore/flex-box": "5.39.1",
+    "@semcore/utils": "4.44.1",
+    "@semcore/dropdown-menu": "4.43.3",
+    "@semcore/dropdown": "4.41.3",
+    "@semcore/input": "4.39.2",
+    "@semcore/base-trigger": "4.48.2"
+  },
+  "peerDependencies": {
+    "@semcore/core": "^2.17.5",
+    "react": "16.8 - 18",
+    "react-dom": "16.8 - 18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/semrush/intergalactic.git",
+    "directory": "semcore/add-filter"
+  },
+  "devDependencies": {
+    "@types/react": "18.0.21",
+    "@semcore/testing-utils": "1.0.0"
+  }
+}

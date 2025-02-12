@@ -4,12 +4,12 @@ fileSource: spin
 tabs: Design('spin'), A11y('spin-a11y'), API('spin-api'), Example('spin-code'), Changelog('spin-changelog')
 ---
 
-## Basic example
+## Basic usage
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/basic_example.tsx';
+  export Demo from 'stories/components/spin/docs/examples/basic_example.tsx';
 </script>
 
 :::

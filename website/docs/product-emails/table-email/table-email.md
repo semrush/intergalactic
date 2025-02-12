@@ -8,6 +8,6 @@ deprecated: true
 :rotating_light: Current `@semcore/email` package is deprecated and not recommend for use. New major version is planned and will be released one day.
 :::
 
-## Basic example
+## Basic usage
 
 ::: legacy_emails_view compiled-examples/table-index.html src/table/examples/index.html :::
