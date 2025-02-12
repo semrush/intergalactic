@@ -29,12 +29,11 @@ test.describe('Theme providers', () => {
     const initialColor = await button.evaluate((el) => getComputedStyle(el).backgroundColor);
     expect(initialColor).toBe('rgb(134, 73, 225)'); // #8649e1 in rgb
 
-    if(browserName!='firefox') // hover works weird on ff
-    {
-        await button.hover({ force: true });
-        const box = await button.boundingBox();
-        const hoverColor = await button.evaluate((el) => getComputedStyle(el).backgroundColor);
-        expect(hoverColor).toBe('rgb(89, 37, 171)'); // #5925ab in rgb
+    if (browserName !== 'firefox') {
+      // hover works weird on ff
+      await button.hover();
+      const hoverColor = await button.evaluate((el) => getComputedStyle(el).backgroundColor);
+      expect(hoverColor).toBe('rgb(89, 37, 171)'); // #5925ab in rgb
     }
 
     const buttonBox = await button.boundingBox();
@@ -72,14 +71,12 @@ test.describe('Theme providers', () => {
     const initialColor = await button.evaluate((el) => getComputedStyle(el).backgroundColor);
     expect(initialColor).toBe('rgb(108, 110, 121)'); // #6c6e79 in rgb
 
-    if(browserName!='firefox') // hover works weird on ff
-    {
-    await button.hover();
-    await button.hover({ force: true });
-    await page.waitForTimeout(100);
-    const hoverColor = await button.evaluate((el) => getComputedStyle(el).backgroundColor);
-    expect(hoverColor).toBe('rgb(72, 74, 84)'); // #484a54 in rgb
-    } 
+    if (browserName !== 'firefox') {
+      // hover works weird on ff
+      await button.hover();
+      const hoverColor = await button.evaluate((el) => getComputedStyle(el).backgroundColor);
+      expect(hoverColor).toBe('rgb(72, 74, 84)'); // #484a54 in rgb
+    }
 
     const buttonBox = await button.boundingBox();
     if (buttonBox) {
