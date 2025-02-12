@@ -17,6 +17,7 @@
       "**/__fixtures__/**",
       ".tmp",
       "**/*.mjs",
+      "**/*.css",
       "mailer",
       "./tools/icon-transform-svg/__tests__",
       "**/lcov-report/**",
