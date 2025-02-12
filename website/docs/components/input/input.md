@@ -88,6 +88,7 @@ const App = PlaygroundGeneration(Preview);
 
 **Input** is a single-line text field. It's one of the basic components for all kinds of forms, search fields, etc.
 
+<!-- I'D REMOVED THIS LIST AT ALL
 Other input types for entering certain data:
 
 - [InputMask](/components/input-mask/input-mask)
@@ -98,9 +99,11 @@ Other input types for entering certain data:
 - [TimePicker](/components/time-picker/time-picker)
 - [ColorPicker](/components/color-picker/color-picker)
 - [Checkbox](/components/checkbox/checkbox)
-- [Radio](/components/radio/radio)
+- [Radio](/components/radio/radio) -->
 
-## Sizes
+## Appearance
+
+### Sizes
 
 The input has two sizes.
 
@@ -111,7 +114,7 @@ Table: Input sizes
 | M (28px)            | ![](static/input-m.png) |
 | L (40px)            | ![](static/input-l.png) |
 
-## Label
+### Label
 
 We recommend adding a visible text label to the input wherever possible. If the input isn’t required, be sure to mark it with the "optional" text label.
 

@@ -4,7 +4,7 @@ fileSource: radio
 tabs: Design('radio'), A11y('radio-a11y'), API('radio-api'), Example('radio-code'), Changelog('radio-changelog')
 ---
 
-## RadioGroup example
+## RadioGroup
 
 `RadioGroup` works as a controlling component and doesn't have an actual HTML element beneath it.
 
@@ -16,7 +16,7 @@ tabs: Design('radio'), A11y('radio-a11y'), API('radio-api'), Example('radio-code
 
 :::
 
-## Additional props for input
+## Additional input props
 
 `Radio.Value` hides a styled div and a hidden input. When you pass props to `Radio.Value`, a specific set of them is passed to the input props, while all others go to the `Radio.Value.RadioMark` div.
 

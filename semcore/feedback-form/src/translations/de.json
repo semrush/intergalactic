@@ -4,5 +4,9 @@
   "formTitle": "Feedback-Formular",
   "submitButton": "Feedback senden",
   "successMessage": "Vielen Dank für Ihr Feedback!",
-  "errorMessage": "Es ist ein Fehler aufgetreten. Versuchen Sie es erneut oder kontaktieren Sie uns unter {email}."
+  "errorMessage": "Es ist ein Fehler aufgetreten. Versuchen Sie es erneut oder kontaktieren Sie uns unter {email}.",
+  "FeedbackRating.SliderRating.ScreenReaderOnly.sliderDescriber": "Drücken Sie auf Enter, um die Bewertung auszuwählen",
+  "FeedbackRating.SliderRating.aria-valuetext.readonly": "Ihre Bewertung: {selectedRating} von {max}",
+  "FeedbackRating.SliderRating.aria-valuetext.empty": "Nicht festgelegt",
+  "FeedbackRating.SliderRating.aria-valuetext": "{selectedRating} von {max}"
 }

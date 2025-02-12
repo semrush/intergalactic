@@ -3,6 +3,7 @@ import { Box, BoxProps } from '@semcore/flex-box';
 import Button from '@semcore/button';
 import { IconProps } from '@semcore/icon';
 import { FadeInOutProps } from '@semcore/animation';
+import { Text } from '@semcore/typography';
 
 export type NoticeTheme = 'danger' | 'warning' | 'success' | 'info' | 'muted';
 export type NoticeUse = 'primary' | 'secondary';
@@ -48,6 +49,12 @@ export type NoticeSmartProps = NoticeProps & {
    * A custom element for additional information
    */
   label?: React.ReactNode;
+
+  /**
+   * A custom element for title
+   */
+  title?: React.ReactNode;
+
   /**
    * Custom action element
    */
@@ -66,6 +73,8 @@ declare const Notice: Intergalactic.Component<'div', NoticeProps, NoticeContext>
   Label: Intergalactic.Component<'div', NoticeLabelProps>;
   Actions: typeof Box;
   Content: typeof Box;
+  Title: typeof Text;
+  Text: typeof Text;
   /**
    * @deprecated Use Notice.Close instead of Notice.CloseIcon
    */

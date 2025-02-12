@@ -136,11 +136,24 @@ For save and cancel button icons on hover, it's important to show a tooltip that
 
 ![](static/tooltip1.png)
 
-## Save and Cancel buttons
+## Save and Cancel actions
 
 In some cases, where space allows and there is a need to show regular buttons, you can hide control icons.
 
 ![](static/buttons.png)
+
+## Icon-only buttons
+
+For the default state of the icons use the following tokens:
+
+- `--icon-secondary-success`
+- `--icon-secondary-neutral`
+
+On hover, the icons change their color to to the darker one using CSS filter.
+
+![](static/tooltip2.png)
+
+![](static/tooltip1.png)
 
 ## Interaction
 
@@ -162,19 +175,6 @@ Table: InlineInput states
 | Valid         | ![](static/valid.png)         | `border-bottom: 1px solid var(--border-success-active)`                                                                                                         |
 | Valid focus   | ![](static/valid-focus.png)   | `border-bottom: 1px solid var(--border-success-active)`, `box-shadow: var(--keyboard-focus-valid)`                                                              |
 | Loading       | ![](static/loading.png)       | Spin with XS size. The cancel button gets the disabled state while the input is loading (use [`--disabled-opacity`](/style/design-tokens/design-tokens) token). |
-
-## Save and Cancel icon buttons
-
-For the default state of the icons use the following tokens:
-
-- `--icon-secondary-success`
-- `--icon-secondary-neutral`
-
-On hover, the icons change their color to to the darker one using CSS filter.
-
-![](static/tooltip2.png)
-
-![](static/tooltip1.png)
 
 ## Usage in UX/UI
 

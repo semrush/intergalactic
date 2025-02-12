@@ -21,7 +21,7 @@ The input is pre-filled with the value: `+`.
 
 :::
 
-## Known country, but the number format is unknown
+## Known country and unknown number format
 
 The input has a preset value: "+ {country code}". However, if it is possible to enter phone numbers from multiple countries, a country select option should be provided instead of a static flag.
 

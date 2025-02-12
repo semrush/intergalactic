@@ -4,7 +4,7 @@ fileSource: modal
 tabs: Design('modal'), A11y('modal-a11y'), API('modal-api'), Example('modal-code'), Changelog('modal-changelog')
 ---
 
-## Basic modal window usage
+## Basic usage
 
 ::: sandbox
 
@@ -14,7 +14,7 @@ tabs: Design('modal'), A11y('modal-a11y'), API('modal-api'), Example('modal-code
 
 :::
 
-## Modal window height is bigger than the browser page
+## Modal bigger than viewport
 
 Sometimes the amount of content overfills the window's visibility, but you don't need to worry about it, because the component will be adjusted and the scroll will appear.
 
@@ -26,7 +26,7 @@ Sometimes the amount of content overfills the window's visibility, but you don't
 
 :::
 
-## Changing the alignment
+## Changing alignment
 
 By default, the modal window is centered. However, in some cases, when the content height inside the window changes dynamically and causes the modal window to "jump," it may be necessary to adjust the window alignment. This can be achieved by applying the desired margin on the respective side.
 
@@ -38,7 +38,7 @@ By default, the modal window is centered. However, in some cases, when the conte
 
 :::
 
-## Modal window inside a modal window
+## Modal over another modal
 
 While it is generally not recommended, there are instances where it may be necessary to open a modal window within another modal window. In such cases, it is important to nest the modal windows properly to ensure correct background visibility and keyboard control.
 
@@ -50,7 +50,7 @@ While it is generally not recommended, there are instances where it may be neces
 
 :::
 
-## Access to internal HTML nodes
+## Advanced usage
 
 To access the background or the close `Close` icon, you will need to expand the modal window and recreate the same component sequence.
 
@@ -67,7 +67,7 @@ In most cases, it is expected that you will not require this functionality. **Th
 
 :::
 
-## Modal window inside the iframe
+## Modal in iframe
 
 Whenever possible, opt for using pages instead of modal windows. Modal windows within an iframe will not overlay the entire viewport; instead, they will only cover a portion of the iframe area. Additionally, they will not appear at the center of the viewport but rather at the center of the iframe, resulting in an awkward visual experience.
 

@@ -10,7 +10,7 @@ SEllipsis {
   overflow: hidden;
   display: inline-block;
   text-overflow: ellipsis;
-  white-space: nowrap;
+  white-space: pre;
 }
 
 SEllipsis[middle-mod] {
@@ -34,5 +34,5 @@ SContainerMiddle> :has(STail) {
 }
 
 STail {
-  white-space: nowrap;
+  white-space: pre;
 }
