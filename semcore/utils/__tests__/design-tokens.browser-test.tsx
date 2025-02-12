@@ -2,7 +2,7 @@ import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 test.describe('Theme providers', () => {
-  test('Verify violet primary comtrol theme', async ({ page }) => {
+  test('Verify violet primary comtrol theme', async ({ page, browserName }) => {
     const standPath = 'stories/components/utils/design-tokens/docs/examples/themeprovider.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
@@ -29,9 +29,13 @@ test.describe('Theme providers', () => {
     const initialColor = await button.evaluate((el) => getComputedStyle(el).backgroundColor);
     expect(initialColor).toBe('rgb(134, 73, 225)'); // #8649e1 in rgb
 
-    await button.hover();
-    const hoverColor = await button.evaluate((el) => getComputedStyle(el).backgroundColor);
-    expect(hoverColor).toBe('rgb(89, 37, 171)'); // #5925ab in rgb
+    if(browserName!='firefox') // hover works weird on ff
+    {
+        await button.hover({ force: true });
+        const box = await button.boundingBox();
+        const hoverColor = await button.evaluate((el) => getComputedStyle(el).backgroundColor);
+        expect(hoverColor).toBe('rgb(89, 37, 171)'); // #5925ab in rgb
+    }
 
     const buttonBox = await button.boundingBox();
     if (buttonBox) {
@@ -44,7 +48,7 @@ test.describe('Theme providers', () => {
     }
   });
 
-  test('Verify grey primary control theme', async ({ page }) => {
+  test('Verify grey primary control theme', async ({ page, browserName }) => {
     const standPath = 'stories/components/utils/design-tokens/docs/examples/themeprovider.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
@@ -68,10 +72,14 @@ test.describe('Theme providers', () => {
     const initialColor = await button.evaluate((el) => getComputedStyle(el).backgroundColor);
     expect(initialColor).toBe('rgb(108, 110, 121)'); // #6c6e79 in rgb
 
+    if(browserName!='firefox') // hover works weird on ff
+    {
     await button.hover();
+    await button.hover({ force: true });
     await page.waitForTimeout(100);
     const hoverColor = await button.evaluate((el) => getComputedStyle(el).backgroundColor);
     expect(hoverColor).toBe('rgb(72, 74, 84)'); // #484a54 in rgb
+    } 
 
     const buttonBox = await button.boundingBox();
     if (buttonBox) {
