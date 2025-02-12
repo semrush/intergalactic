@@ -1,8 +1,8 @@
 import React from 'react';
-import createComponent, { Component, sstyled, Root } from '@semcore/core';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import { Flex, Box } from '@semcore/flex-box';
-import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
-import reactToText from '@semcore/utils/lib/reactToText';
+import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
+import reactToText from '@semcore/core/lib/utils/reactToText';
 
 import style from './style/slider.shadow.css';
 

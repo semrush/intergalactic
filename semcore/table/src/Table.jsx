@@ -10,7 +10,7 @@ import Body from './Body';
 import { Provider } from './context';
 import { Box } from '@semcore/flex-box';
 import { sstyled } from '@semcore/core';
-import { useForkRef } from '@semcore/utils/lib/ref';
+import { useForkRef } from '@semcore/core/lib/utils/ref';
 
 import styles from './style/table.shadow.css';
 

@@ -1,7 +1,7 @@
 import React from 'react';
-import { DatePicker, DateRangePicker } from 'intergalactic/date-picker';
-import { Flex } from 'intergalactic/flex-box';
-import { Text } from 'intergalactic/typography';
+import { DatePicker, DateRangePicker } from '@semcore/date-picker';
+import { Flex } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
 
 const Demo = () => {
   const [value, setValue] = React.useState(new Date('06/29/2020'));

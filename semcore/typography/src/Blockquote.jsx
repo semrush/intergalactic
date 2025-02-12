@@ -1,6 +1,6 @@
 import React from 'react';
 import { createBaseComponent, Root, sstyled } from '@semcore/core';
-import isNode from '@semcore/utils/lib/isNode';
+import isNode from '@semcore/core/lib/utils/isNode';
 import { Box } from '@semcore/flex-box';
 
 import styles from './style/blockquote.shadow.css';

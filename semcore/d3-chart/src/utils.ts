@@ -1,4 +1,4 @@
-import EventEmitter from '@semcore/utils/lib/eventEmitter';
+import EventEmitter from '@semcore/core/lib/utils/eventEmitter';
 import { extent, bisector, Numeric } from 'd3-array';
 import {
   scaleQuantize,

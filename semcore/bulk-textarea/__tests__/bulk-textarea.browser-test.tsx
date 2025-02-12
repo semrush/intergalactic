@@ -357,6 +357,7 @@ test.describe('Manual adding rows', () => {
       await page.keyboard.type('http://Test', { delay: 100 });
       await page.keyboard.press('Space');
       await page.keyboard.press('Enter');
+      await page.waitForTimeout(50);
       const lineCount = await contentDiv.locator('p').count();
       await expect(lineCount).toBe(2);
       await expect(locators.counter).toHaveText('1/15of 15 lines');
@@ -560,18 +561,21 @@ test.describe('Error tooltips', () => {
     await test.step('Navigation between rows by clicking arrows', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
+      await page.waitForTimeout(50);
       await expect(locators.textarea).toBeFocused();
       await expect(locators.errorMessage).toHaveText('Error 1 out of 3');
       await expect(tooltip).toHaveText('row has invalid charsets');
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
+      await page.waitForTimeout(50);
       await expect(locators.errorMessage).toHaveText('Error 2 out of 3');
       await expect(tooltip).toHaveText('row has invalid charsets');
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
+      await page.waitForTimeout(50);
       await expect(locators.errorMessage).toHaveText('Error 1 out of 3');
       await expect(tooltip).toHaveText('row has invalid charsets');
     });

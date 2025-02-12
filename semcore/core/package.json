@@ -1,7 +1,7 @@
 {
   "name": "@semcore/core",
   "description": "Semrush Core Component",
-  "version": "2.38.1",
+  "version": "16.0.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -9,10 +9,15 @@
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "pnpm semcore-builder"
+    "build": "pnpm semcore-builder --coreUtils"
   },
   "dependencies": {
-    "@semcore/utils": "4.45.1"
+    "@formatjs/intl": "3.0.4",
+    "@reshadow/core": "0.0.1-alpha.74",
+    "classnames": "2.2.6",
+    "hoist-non-react-statics": "3.3.2",
+    "@phytonmk/nano-css": "5.3.7",
+    "csstype": "3.0.8"
   },
   "peerDependencies": {
     "react": "16.8 - 18",
@@ -24,7 +29,13 @@
     "directory": "semcore/core"
   },
   "devDependencies": {
+    "@types/classnames": "2.2.6",
     "@types/react": "18.0.21",
-    "@semcore/testing-utils": "1.0.0"
+    "@semcore/testing-utils": "1.0.0",
+    "postcss": "8.4.33",
+    "postcss-value-parser": "4.1.0",
+    "colorjs.io": "0.4.3",
+    "@types/hoist-non-react-statics": "^3.3.1",
+    "@types/react-dom": "18.0.6"
   }
 }

@@ -1,7 +1,7 @@
 import React from 'react';
-import Card from 'intergalactic/card';
-import SettingsM from 'intergalactic/icon/Settings/m';
-import DataTable from 'intergalactic/data-table';
+import Card from '@semcore/card';
+import SettingsM from '@semcore/icon/Settings/m';
+import DataTable from '@semcore/data-table';
 
 const tooltipContent = `Hey! Don't forget to place some useful information here.`;
 const data = [

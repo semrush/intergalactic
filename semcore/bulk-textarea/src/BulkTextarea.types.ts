@@ -1,4 +1,4 @@
-import { Intergalactic } from '@semcore/utils/lib/core';
+import { Intergalactic } from '@semcore/core';
 import { BoxProps } from '@semcore/flex-box';
 import Button from '@semcore/button';
 import { InputFieldProps } from './components/InputField/InputField';

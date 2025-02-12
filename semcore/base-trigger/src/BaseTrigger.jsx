@@ -1,12 +1,12 @@
 import React from 'react';
-import createComponent, { Component, Root, sstyled } from '@semcore/core';
+import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import { Box, InvalidStateBox } from '@semcore/flex-box';
 import NeighborLocation from '@semcore/neighbor-location';
-import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
-import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
-import logger from '@semcore/utils/lib/logger';
-import animatedSizeEnhance from '@semcore/utils/lib/enhances/animatedSizeEnhance';
-import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
+import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
+import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
+import logger from '@semcore/core/lib/utils/logger';
+import animatedSizeEnhance from '@semcore/core/lib/utils/enhances/animatedSizeEnhance';
+import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
 
 import style from './style/base-trigger.shadow.css';
 

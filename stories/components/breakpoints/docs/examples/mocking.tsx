@@ -35,7 +35,9 @@ const Breakpoints = createBreakpoints(meadiaQueries);
 const Example = () => {
   const index = React.useContext(Breakpoints.Context);
 
-  return <div>Media matches '{meadiaQueries[index] || 'ZOOM WINDOW'}'</div>;
+  return (
+    <div>Media matches '{(index !== undefined && meadiaQueries[index]) || 'ZOOM WINDOW'}'</div>
+  );
 };
 
 const Demo = () => {

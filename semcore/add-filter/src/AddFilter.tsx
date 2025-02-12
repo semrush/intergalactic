@@ -1,7 +1,7 @@
 import React from 'react';
 import { Flex, ScreenReaderOnly } from '@semcore/flex-box';
 import Button from '@semcore/button';
-import createComponent, { Component, Root } from '@semcore/core';
+import { createComponent, Component, Root } from '@semcore/core';
 import DropdownMenu from '@semcore/dropdown-menu';
 import MathPlusM from '@semcore/icon/MathPlus/m';
 import CloseM from '@semcore/icon/Close/m';
@@ -9,11 +9,11 @@ import AddFilterType, { AddFilterProps, AddFilterItemProps } from './AddFilter.t
 import AddFilterSelect from './components/AddFilterSelect';
 import AddFilterInput from './components/AddFilterInput';
 import AddFilterDropdown from './components/AddFilterDropdown';
-import { extractFrom } from '@semcore/utils/lib/findComponent';
+import { extractFrom } from '@semcore/core/lib/utils/findComponent';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { SelectProps } from '@semcore/select';
-import focusSourceEnhance from '@semcore/utils/lib/enhances/focusSourceEnhance';
+import focusSourceEnhance from '@semcore/core/lib/utils/enhances/focusSourceEnhance';
 
 type SelectItemProps = SelectProps & AddFilterItemProps;
 

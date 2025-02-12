@@ -4,14 +4,14 @@ import { Box, Flex } from '@semcore/flex-box';
 import ScrollArea, { hideScrollBarsFromScreenReadersContext } from '@semcore/scroll-area';
 import { getFixedStyle, getScrollOffsetValue } from './utils';
 import { RowData, Column, NestedCells, PropsLayer, Cell } from './types';
-import assignProps, { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
-import syncScroll from '@semcore/utils/lib/syncScroll';
-import trottle from '@semcore/utils/lib/rafTrottle';
-import { forkRef } from '@semcore/utils/lib/ref';
-import canUseDOM from '@semcore/utils/lib/canUseDOM';
+import assignProps, { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
+import syncScroll from '@semcore/core/lib/utils/syncScroll';
+import trottle from '@semcore/core/lib/utils/rafTrottle';
+import { forkRef } from '@semcore/core/lib/utils/ref';
+import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import { SORT_ICON_WIDTH } from './Head';
 import scrollStyles from './style/scroll-shadows.shadow.css';
-import { getFocusableIn } from '@semcore/utils/lib/focus-lock/getFocusableIn';
+import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
 
 const testEnv = process.env.NODE_ENV === 'test';
 

@@ -2,8 +2,8 @@ import React from 'react';
 import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
 import { BoxProps } from '@semcore/flex-box';
 import { NeighborItemProps, NeighborLocationProps } from '@semcore/neighbor-location';
-import { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
-import { inputProps } from '@semcore/utils/lib/inputProps';
+import { KeyboardFocusProps } from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
+import { inputProps } from '@semcore/core/lib/utils/inputProps';
 
 export type SwitchTheme = 'info' | 'success' | string;
 

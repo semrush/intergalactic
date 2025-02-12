@@ -3,8 +3,8 @@ import React from 'react';
 import cn from 'classnames';
 import { createBaseComponent, sstyled } from '@semcore/core';
 import { useBox } from '@semcore/flex-box';
-import canUseDOM from '@semcore/utils/lib/canUseDOM';
-import isRetina from '@semcore/utils/lib/isRetina';
+import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
+import isRetina from '@semcore/core/lib/utils/isRetina';
 import countries from './countries.json';
 
 import styles from './style/flags.shadow.css';

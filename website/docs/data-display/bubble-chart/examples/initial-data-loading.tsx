@@ -1,5 +1,5 @@
 import React from 'react';
-import { BubbleChartSkeleton } from 'intergalactic/skeleton';
+import { BubbleChartSkeleton } from '@semcore/skeleton';
 
 const Demo = () => (
   <React.Fragment>

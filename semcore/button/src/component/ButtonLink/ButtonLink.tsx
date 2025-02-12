@@ -1,10 +1,10 @@
 import React from 'react';
-import createComponent, { sstyled, Root } from '@semcore/core';
+import { createComponent, sstyled, Root } from '@semcore/core';
 import style from './buttonLink.shadow.css';
-import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 import { Box } from '@semcore/flex-box';
 import { AbstractButton } from '../AbstractButton/AbstractButton';
-import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
+import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import { ButtonLinkAddonProps, ButtonLinkComponent, ButtonLinkTextProps } from './ButtonLink.type';
 
 const enhance = {

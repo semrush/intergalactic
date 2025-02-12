@@ -1,7 +1,7 @@
 import React from 'react';
 import { transition } from 'd3-transition';
 import { Component, sstyled } from '@semcore/core';
-import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import createElement from './createElement';
 import AnimatedClipPath from './AnimatedClipPath';
 import { scaleToBand, roundedPath } from './utils';

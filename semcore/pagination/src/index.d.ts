@@ -3,7 +3,7 @@ import { BoxProps } from '@semcore/flex-box';
 import Input, { InputProps } from '@semcore/input';
 import { TextProps } from '@semcore/typography';
 import Button from '@semcore/button';
-import { WithI18nEnhanceProps } from '@semcore/utils/lib/enhances/i18nEnhance';
+import { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 
 /** @deprecated */
 export interface IPaginationProps extends PaginationProps, UnknownProperties {}

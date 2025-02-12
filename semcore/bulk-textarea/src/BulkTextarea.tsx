@@ -1,5 +1,5 @@
 import React from 'react';
-import createComponent, { Component, Root } from '@semcore/core';
+import { createComponent, Component, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 
 import { BulkTextareaType, BulkTextareaProps } from './BulkTextarea.types';
@@ -9,9 +9,9 @@ import { Counter } from './components/Counter';
 import { ClearAll } from './components/ClearAll';
 import { ErrorsNavigation } from './components/ErrorsNavigation';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
-import focusSourceEnhance from '@semcore/utils/lib/enhances/focusSourceEnhance';
-import uniqueIdEnhance from '@semcore/utils/lib/uniqueID';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import focusSourceEnhance from '@semcore/core/lib/utils/enhances/focusSourceEnhance';
+import uniqueIdEnhance from '@semcore/core/lib/utils/uniqueID';
 
 type State = {
   linesCount: number;

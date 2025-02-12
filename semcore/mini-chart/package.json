@@ -1,7 +1,7 @@
 {
   "name": "@semcore/mini-chart",
   "description": "Semrush MiniChart Component",
-  "version": "0.28.1",
+  "version": "16.0.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -11,14 +11,9 @@
   "scripts": {
     "build": "pnpm semcore-builder --source=ts"
   },
-  "dependencies": {
-    "@semcore/flex-box": "5.40.1",
-    "@semcore/utils": "4.45.1"
-  },
   "peerDependencies": {
-    "@semcore/core": "^2.17.5",
-    "react": "16.8 - 18",
-    "react-dom": "16.8 - 18"
+    "@semcore/base-components": "^16.0.0",
+    "@semcore/flex-box": "^16.0.0"
   },
   "repository": {
     "type": "git",

@@ -1,10 +1,10 @@
 import React from 'react';
-import createComponent, { Component, Root, sstyled } from '@semcore/core';
+import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
-import trottle from '@semcore/utils/lib/rafTrottle';
-import fire from '@semcore/utils/lib/fire';
-import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
-import canUseDOM from '@semcore/utils/lib/canUseDOM';
+import trottle from '@semcore/core/lib/utils/rafTrottle';
+import fire from '@semcore/core/lib/utils/fire';
+import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
+import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 
 class ResponsiveContainerRoot extends Component {
   static displayName = 'ResponsiveContainer';

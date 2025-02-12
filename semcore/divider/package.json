@@ -1,7 +1,7 @@
 {
   "name": "@semcore/divider",
   "description": "Semrush Divider Component",
-  "version": "4.39.1",
+  "version": "16.0.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -12,13 +12,10 @@
     "build": "pnpm semcore-builder --source=js"
   },
   "dependencies": {
-    "@semcore/utils": "4.45.1",
-    "@semcore/flex-box": "5.40.1"
+    "@semcore/flex-box": "16.0.0"
   },
   "peerDependencies": {
-    "@semcore/core": "^2.17.5",
-    "react": "16.8 - 18",
-    "react-dom": "16.8 - 18"
+    "@semcore/base-components": "^16.0.0"
   },
   "repository": {
     "type": "git",

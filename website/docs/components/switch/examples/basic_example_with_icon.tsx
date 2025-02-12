@@ -1,6 +1,6 @@
 import React from 'react';
-import Switch from 'intergalactic/switch';
-import CheckM from 'intergalactic/icon/Check/m';
+import Switch from '@semcore/switch';
+import CheckM from '@semcore/icon/Check/m';
 import CloseM from 'intergalactic/icon/Close/m';
 
 const Demo = () => {

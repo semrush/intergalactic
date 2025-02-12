@@ -1,11 +1,11 @@
 import React from 'react';
 import { Animation } from '@semcore/animation';
-import createComponent, { Root, Component, sstyled } from '@semcore/core';
+import { createComponent, Root, Component, sstyled } from '@semcore/core';
 import Popper from '@semcore/popper';
 import { Box } from '@semcore/flex-box';
 import CloseIcon from '@semcore/icon/Close/m';
-import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
-import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import Button from '@semcore/button';
 

@@ -1,7 +1,7 @@
 import React from 'react';
-import Button from 'intergalactic/button';
-import Modal from 'intergalactic/modal';
-import { Flex } from 'intergalactic/flex-box';
+import Button from '@semcore/button';
+import Modal from '@semcore/modal';
+import { Flex } from '@semcore/flex-box';
 
 const loremSting =
   'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus\n' +

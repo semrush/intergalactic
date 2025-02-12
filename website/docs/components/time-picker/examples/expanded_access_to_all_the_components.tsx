@@ -1,7 +1,7 @@
 import React from 'react';
-import TimePicker from 'intergalactic/time-picker';
-import { Text } from 'intergalactic/typography';
-import { Box } from 'intergalactic/flex-box';
+import TimePicker from '@semcore/time-picker';
+import { Text } from '@semcore/typography';
+import { Box } from '@semcore/flex-box';
 
 const Demo = () => {
   return (

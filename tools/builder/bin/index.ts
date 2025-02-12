@@ -9,6 +9,7 @@ const argv = mri<{
   source: string;
   modules: string;
   dir: string;
+  coreUtils: string;
 }>(process.argv.slice(2), {
   default: {
     source: 'ts',
@@ -30,6 +31,16 @@ const makeCommand: Record<string, (...args: any[]) => string> = {
     `mkdir -p ${workingDir}/lib/${output} && find ${workingDir}/src -type f -name "*.d.ts" -exec cp {} ${workingDir}/lib/${output} ";"`,
   BABEL: (output: string, babelArgs: string) =>
     `pnpm babel ${workingDir}/src --out-dir ${workingDir}/lib/${output} ${babelArgs}`,
+  CORE_UTILS: (output: string, babelArgs) => {
+    return `pnpm babel ${workingDir}/src/utils --out-dir ${workingDir}/lib/${output} ${babelArgs} && 
+    pnpm babel ${workingDir}/src/core-types --out-dir ${workingDir}/lib/core-types ${babelArgs} &&
+    pnpm babel ${workingDir}/src/enhancement --out-dir ${workingDir}/lib/enhancement ${babelArgs} &&
+    pnpm babel ${workingDir}/src/styled --out-dir ${workingDir}/lib/styled ${babelArgs} &&
+    pnpm babel ${workingDir}/src/theme --out-dir ${workingDir}/lib/theme ${babelArgs} &&
+    pnpm babel ${workingDir}/src/register.tsx --out-dir ${workingDir}/lib ${babelArgs}`;
+  },
+  TYPES_UTILS: () =>
+    `tsc --emitDeclarationOnly --baseUrl ${workingDir}/src/utils --project ${workingDir}/tsconfig-utils.json --outDir ${workingDir}/lib`,
 };
 
 type ArgumentTypes<F extends Function> = F extends (...args: infer A) => any ? A : never;
@@ -86,4 +97,24 @@ if (argv.modules) {
   );
   if (source.includes('jsx') || source.includes('js')) await runCommand('COPY_TYPES', 'types');
   if (source.includes('tsx') || source.includes('ts')) await runCommand('TYPES', 'types');
+
+  if (argv.coreUtils) {
+    await runCommand(
+      'CORE_UTILS',
+      'utils',
+      '--extensions .ts,.tsx,.js,.jsx --ignore **/*.d.ts --presets @semcore/babel-preset-ui --no-babelrc --source-maps --copy-files --env-name=commonjs',
+    );
+
+    const mjsImportsBabelrc = resolvePath(
+      fileURLToPath(import.meta.url),
+      '../../mjs-imports-babelrc.js',
+    );
+    await runCommand(
+      'CORE_UTILS',
+      'utils',
+      `--extensions .ts,.tsx,.js,.jsx --ignore **/*.d.ts --presets @semcore/babel-preset-ui,${mjsImportsBabelrc} --no-babelrc --source-maps --copy-files --out-file-extension .mjs --env-name=es6`,
+    );
+
+    await runCommand('TYPES_UTILS', '');
+  }
 }

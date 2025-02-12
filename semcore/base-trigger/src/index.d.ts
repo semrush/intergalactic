@@ -3,8 +3,8 @@ import { UnknownProperties, Intergalactic, Root } from '@semcore/core';
 import { Box, BoxProps } from '@semcore/flex-box';
 import { DotProps } from '@semcore/dot';
 import { NeighborItemProps } from '@semcore/neighbor-location';
-import { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
-import { WithAnimatedSizeEnhanceProps } from '@semcore/utils/lib/enhances/animatedSizeEnhance';
+import { KeyboardFocusProps } from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
+import { WithAnimatedSizeEnhanceProps } from '@semcore/core/lib/utils/enhances/animatedSizeEnhance';
 
 /** @deprecated */
 export interface IBaseTriggerProps extends BaseTriggerProps, UnknownProperties {}

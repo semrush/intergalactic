@@ -7,7 +7,7 @@ import { summarize } from './summarize';
 import { Root, sstyled } from '@semcore/core';
 import styles from '../style/plotA11yView.shadow.css';
 import { Box } from '@semcore/flex-box';
-import { useAsyncI18nMessages } from '@semcore/utils/lib/enhances/i18nEnhance';
+import { useAsyncI18nMessages } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { localizedMessages } from './translations/view/__intergalactic-dynamic-locales';
 import { DataAccessibilityTable } from './DataAccessibilityTable';
 

@@ -4,7 +4,7 @@ import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import ChevronUpM from '@semcore/icon/ChevronUp/m';
 import ChevronDownM from '@semcore/icon/ChevronDown/m';
-import { useI18n } from '@semcore/utils/lib/enhances/WithI18n';
+import { useI18n } from '@semcore/core/lib/utils/enhances/WithI18n';
 
 export type ErrorsNavigationProps = {
   errorIndex: number;

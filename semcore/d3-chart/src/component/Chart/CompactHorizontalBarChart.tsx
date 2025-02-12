@@ -1,5 +1,5 @@
 import React from 'react';
-import createComponent from '@semcore/core';
+import { createComponent } from '@semcore/core';
 import { BaseChartProps, BaseLegendProps } from './AbstractChart.type';
 import {
   CompactHorizontalBarChartData,
@@ -11,7 +11,7 @@ import { scaleBand, scaleLinear } from 'd3-scale';
 import { CompactHorizontalBar } from '../..';
 import { AbstractChart } from './AbstractChart';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
-import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 
 class CompactHorizontalBarChartComponent extends AbstractChart<
   CompactHorizontalBarChartData,

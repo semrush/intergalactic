@@ -1,14 +1,14 @@
 import React from 'react';
-import createComponent, { Component, Root, sstyled } from '@semcore/core';
-import logger from '@semcore/utils/lib/logger';
-import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
+import { createComponent, Component, Root, sstyled } from '@semcore/core';
+import logger from '@semcore/core/lib/utils/logger';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 
 import { Animation } from '@semcore/animation';
 import { Box } from '@semcore/flex-box';
 import Portal from '@semcore/portal';
-import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
-import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
-import { contextThemeEnhance } from '@semcore/utils/lib/ThemeProvider';
+import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
+import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
+import { contextThemeEnhance } from '@semcore/core/lib/utils/ThemeProvider';
 
 import style from './style/dot.shadow.css';
 
