@@ -135,6 +135,12 @@ export type BoxProps = StyledProps & {
    */
   scaleIndent?: number;
 
+  /**
+   * Flag for render outline inside box
+   * @default false
+   */
+  innerOffset?: boolean;
+
   /** Property for specifying css properties in js
    * @deprecated v4.0.0 */
   css?: React.CSSProperties;
@@ -223,6 +229,7 @@ export default function useBox<T extends BoxProps>(
     display,
     boxSizing,
     inline,
+    innerOffset,
     flex,
     w,
     h,
@@ -307,6 +314,7 @@ export default function useBox<T extends BoxProps>(
           styles.cn('SBox', {
             SBoxSizing: boxSizing,
             SBoxInline: inline,
+            SBoxInnerOffset: innerOffset,
           }).className,
           className,
         ) || undefined,
