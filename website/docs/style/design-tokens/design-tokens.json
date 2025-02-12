@@ -1816,8 +1816,6 @@
     "description": "Default keyboard focus styles.",
     "components": [
       "base-components",
-      "base-trigger",
-      "breadcrumbs",
       "bulk-textarea",
       "button",
       "carousel",
