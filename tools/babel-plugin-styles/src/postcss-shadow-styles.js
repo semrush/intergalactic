@@ -26,7 +26,11 @@ function walkRule(
       tokens[`__${node.name}`] = node.name = generateClassName([node.name]);
     } else if (node.type === 'class') {
       if (tokens[`__${node.name}`]) element = node.name;
-    } else if (node.type === 'attribute' && !node.content.startsWith('data-')) {
+    } else if (
+      node.type === 'attribute' &&
+      !node.content.startsWith('data-') &&
+      !node.content.startsWith('aria-')
+    ) {
       const listAttributes =
         ['li', 'ol', 'ul'].includes(parentNode.nodes[0].name) &&
         ['type', 'start', 'reversed'].includes(node.content);

@@ -14,9 +14,9 @@ import { Chart, BarChartProps } from '@semcore/d3-chart';
 
 const data = [...Array(5).keys()].map((d, i) => ({
   x: i,
-  Line1: Math.random() * 10,
-  Line2: Math.random() * 10,
-  Line3: Math.random() * 10,
+  Category1: Math.random() * 10,
+  Category2: Math.random() * 10,
+  Category3: Math.random() * 10,
 }));
 
 const App = PlaygroundGeneration((preview) => {
@@ -25,7 +25,6 @@ const App = PlaygroundGeneration((preview) => {
   const {
     direction,
     alignItems,
-    justifyContent,
     showXAxis,
     showYAxis,
     showTooltip,
@@ -46,7 +45,6 @@ const App = PlaygroundGeneration((preview) => {
     showXAxis,
     showYAxis,
     alignItems,
-    justifyContent,
     patterns,
   };
 

@@ -3,7 +3,7 @@
   "scripts": {
     "dev": "pnpm --filter @semcore/playground run start",
     "start": "pnpm --filter @semcore/playground run start",
-    "build": "pnpm run clean && pnpm --filter @semcore/utils run build && pnpm --filter @semcore/core run build && pnpm build:icons && pnpm build:illustration && pnpm --filter @semcore/dropdown run build && pnpm --filter @semcore/* --filter !@semcore/icon --filter !@semcore/core --filter !@semcore/illustration --filter !@semcore/dropdown --filter !@semcore/ui --filter !intergalactiс-migrate run build",
+    "build": "pnpm run clean && pnpm --filter @semcore/utils run build && pnpm --filter @semcore/core run build && pnpm build:icons && pnpm build:illustration && pnpm --filter @semcore/popper run build && pnpm --filter @semcore/dropdown run build && pnpm --filter @semcore/* --filter !@semcore/icon --filter !@semcore/core --filter !@semcore/illustration --filter !@semcore/dropdown --filter !@semcore/popper --filter !@semcore/ui --filter !intergalactiс-migrate run build",
     "process-theme": "tsm --require=./.ci/tsm-filter-warnings.js semcore/utils/theme/processor.ts",
     "typecheck": "pnpm --filter @semcore/* --filter !@semcore/babel-plugin-root --filter !@semcore/babel-plugin-styles --filter !@semcore/babel-plugin-react-semcore --filter !@semcore/babel-preset-ui --filter !@semcore/testing-utils --filter !@semcore/email --filter !@semcore/dep-checker --filter !@semcore/icon-transform-svg --filter !@semcore/shadow-loader exec tsc --noEmit",
     "install-n-test": "pnpm install && pnpm test",
@@ -43,7 +43,7 @@
     "i18n:download": "pnpm crowdin download && tsm --require=./.ci/tsm-filter-warnings.js .ci/i18n-csv-2-json.ts",
     "git:setup": "git config --local attributesfile.name \".gitattributes\" && git config --local rebase.backend \"merge\" && git config --local merge.changelog-merge-driver.name \"changelog-merge-driver\" && git config --local merge.changelog-merge-driver.driver \"pnpm tsm --require=./.ci/tsm-filter-warnings.js ./.ci/changelog-merge-driver.ts %A %B\"",
     "storybook": "storybook dev -p 6006",
-    "storybook:build": "storybook build",
+    "storybook:build": "tsm --require=./.ci/tsm-filter-warnings.js ./.ci/prebuild-stories.ts && storybook build",
     "storybook:test": "storybook test"
   },
   "private": true,

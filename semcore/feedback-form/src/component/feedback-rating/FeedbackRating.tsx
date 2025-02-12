@@ -188,7 +188,12 @@ class FeedbackRatingRoot extends Component<
                 />
               );
             }
-            if (config.type === 'input') {
+            if (config.type === 'input' || config.type === 'email') {
+              if (config.type === 'email') {
+                input.autoComplete = 'email';
+                input.type = 'email';
+              }
+
               return (
                 <Input state={input.state}>
                   <Input.Value
@@ -223,6 +228,7 @@ class FeedbackRatingRoot extends Component<
       submitText,
       formConfig,
       notificationText,
+      notificationTitle,
       learnMoreLink,
       Children,
       styles,
@@ -244,7 +250,7 @@ class FeedbackRatingRoot extends Component<
     const SFeedbackRating = Root;
     const checkboxFields = formConfig.filter((item) => item.type === 'checkbox');
     const textFields = formConfig.filter(
-      (item) => item.type === 'textarea' || item.type === 'input',
+      (item) => item.type === 'textarea' || item.type === 'input' || item.type === 'email',
     );
     const notificationId = this.getNoticeTextId();
 
@@ -254,27 +260,30 @@ class FeedbackRatingRoot extends Component<
           visible={notificationVisible}
           aria-label={getI18nText('leaveFeedback')}
           tag={Flex}
-          alignItems={'center'}
+          alignItems={notificationTitle ? 'flex-start' : 'center'}
         >
           <Notice.Label mr={3} aria-hidden={true}>
             <FeedbackIllustration />
           </Notice.Label>
-          <Notice.Content tag={Flex} alignItems={'center'}>
-            <Text mr={3} id={notificationId}>
-              {notificationText}
-            </Text>
-            <Notice.Actions mt={0}>
-              <SliderRating
-                value={rating}
-                onChange={this.handleChangeRating}
-                aria-labelledby={notificationId}
-              />
-            </Notice.Actions>
-            {learnMoreLink && (
-              <Link ml={3} href={learnMoreLink}>
-                {getI18nText('learnMore')}
-              </Link>
-            )}
+          <Notice.Content>
+            {notificationTitle ? <Notice.Title>{notificationTitle}</Notice.Title> : null}
+            <Notice.Text tag={Flex} alignItems={notificationTitle ? 'flex-start' : 'center'}>
+              <Text mr={3} id={notificationId}>
+                {notificationText}
+              </Text>
+              <Notice.Actions mt={0}>
+                <SliderRating
+                  value={rating}
+                  onChange={this.handleChangeRating}
+                  aria-labelledby={notificationId}
+                />
+              </Notice.Actions>
+              {learnMoreLink && (
+                <Link ml={3} href={learnMoreLink}>
+                  {getI18nText('learnMore')}
+                </Link>
+              )}
+            </Notice.Text>
           </Notice.Content>
           <Notice.Close onClick={onNotificationClose} />
         </Notice>

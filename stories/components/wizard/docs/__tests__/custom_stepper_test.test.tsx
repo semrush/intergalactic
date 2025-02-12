@@ -9,7 +9,7 @@ export async function CustomStepperExampleTest({ canvasElement }: { canvasElemen
   // ==== Section 1: Mouse Interactions ====
 
   // Open the modal using a button
-  const trigger = within(document.body).queryByText("Open modal");
+  const trigger = within(document.body).queryByText("Open wizard");
   if (!trigger) {
     throw new Error('Trigger button "Open modal" not found');
   }
@@ -48,7 +48,7 @@ export async function CustomStepperExampleTest({ canvasElement }: { canvasElemen
   expect(thirdStep).toHaveTextContent(/From CSV/);
 
   // Navigate back to the second step and check title of the step not changed
-  const prevButtonOnLastStep = canvas.getByRole('button', { name: /Back to /i });
+  const prevButtonOnLastStep = canvas.getByRole('button', { name: 'Back to' });
   await userEvent.click(prevButtonOnLastStep);
 
   expect(secondStep).toHaveAttribute('aria-selected', 'true');
@@ -79,12 +79,12 @@ export async function CustomStepperExampleTest({ canvasElement }: { canvasElemen
   expect(document.activeElement).toBe(secondStepFocused);
 
   await userEvent.keyboard('{Tab}');
-  const prevButtonOnSecondStepFocus = canvas.getByRole('button', { name: /Back to /i });
+  const prevButtonOnSecondStepFocus = canvas.getByRole('button', { name: 'Back to' });
   expect(document.activeElement).toBe(prevButtonOnSecondStepFocus);
   expect(prevButtonOnSecondStepFocus).toHaveAttribute('tabindex', '0');
 
   await userEvent.keyboard('{Tab}');
-  const nextButtonOnSecondStepFocus = canvas.getByRole('button', { name: /Go to /i });
+  const nextButtonOnSecondStepFocus = canvas.getByRole('button', { name: 'Go to' });
   expect(document.activeElement).toBe(nextButtonOnSecondStepFocus);
 
   // Navigate to the first step using keyboard and check focus order
@@ -95,13 +95,13 @@ export async function CustomStepperExampleTest({ canvasElement }: { canvasElemen
   expect(document.activeElement).toBe(firstStepFocused);
 
   await userEvent.keyboard('{Enter}');
-  const firstInput = canvas.getByPlaceholderText('Your name');
+  const firstInput = document.querySelector('[autocomplete="name"]');
   expect(document.activeElement).toBe(firstInput);
   await userEvent.keyboard('{Tab}');
-  const secondtInput = canvas.getByPlaceholderText('Your email');
+  const secondtInput = document.querySelector('[autocomplete="email"]');
   expect(document.activeElement).toBe(secondtInput);
   await userEvent.keyboard('{Tab}');
-  const nextButtonOnFirstStepFocus = canvas.getByRole('button', { name: /Go to /i });
+  const nextButtonOnFirstStepFocus = canvas.getByRole('button', { name: 'Go to' });
   expect(document.activeElement).toBe(nextButtonOnFirstStepFocus);
 
   // Navigate to the last step using keyboard and check Focus on 1st checkbox

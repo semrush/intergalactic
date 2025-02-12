@@ -7,6 +7,7 @@
     "description": "Primary background of the interface which contains the main data and information.",
     "components": [
       "base-trigger",
+      "bulk-textarea",
       "card",
       "checkbox",
       "color-picker",
@@ -136,6 +137,7 @@
     "description": "Secondary background of the interface which contains the main data and information.",
     "components": [
       "accordion",
+      "bulk-textarea",
       "d3-chart",
       "drag-and-drop",
       "input",
@@ -214,7 +216,7 @@
     "rawValue": "{red.50}",
     "computedValue": "#fff0f7",
     "description": "Secondary background of the message with critical information you want to accent.",
-    "components": ["notice"]
+    "components": ["bulk-textarea", "notice"]
   },
   {
     "name": "--intergalactic-bg-secondary-critical-hover",
@@ -330,6 +332,7 @@
       "accordion",
       "base-trigger",
       "breadcrumbs",
+      "bulk-textarea",
       "button",
       "card",
       "checkbox",
@@ -370,6 +373,7 @@
     "description": "Secondary text.",
     "components": [
       "breadcrumbs",
+      "bulk-textarea",
       "button",
       "card",
       "counter",
@@ -395,7 +399,14 @@
     "rawValue": "{gray.400}",
     "computedValue": "#8a8e9b",
     "description": "Placeholder text only.",
-    "components": ["base-trigger", "inline-input", "input", "input-mask", "textarea"]
+    "components": [
+      "base-trigger",
+      "bulk-textarea",
+      "inline-input",
+      "input",
+      "input-mask",
+      "textarea"
+    ]
   },
   {
     "name": "--intergalactic-text-success",
@@ -598,6 +609,7 @@
     "description": "Neutral primary border.",
     "components": [
       "base-trigger",
+      "bulk-textarea",
       "button",
       "checkbox",
       "counter",
@@ -655,6 +667,7 @@
     "description": "Active border in focused input filed.",
     "components": [
       "base-trigger",
+      "bulk-textarea",
       "checkbox",
       "color-picker",
       "feedback-form",
@@ -681,7 +694,7 @@
     "rawValue": "{green.500}",
     "computedValue": "#007c65",
     "description": "Active border in the focused input field with valid state.",
-    "components": ["base-trigger", "inline-input", "input", "textarea"]
+    "components": ["base-trigger", "bulk-textarea", "inline-input", "input", "textarea"]
   },
   {
     "name": "--intergalactic-border-critical",
@@ -699,6 +712,7 @@
     "description": "Active border in the focused input field with invalid state, and active state of the other components with invalid state.",
     "components": [
       "base-trigger",
+      "bulk-textarea",
       "checkbox",
       "inline-input",
       "input",
@@ -769,7 +783,7 @@
     "rawValue": "repeating-linear-gradient(315deg, rgba($border.critical-active, 1) 0, rgba($border.critical-active, 1) 2px, transparent 0, transparent 50%)",
     "computedValue": "repeating-linear-gradient(315deg, rgba(209, 0, 47, 1) 0, rgba(209, 0, 47, 1) 2px, transparent 0, transparent 50%)",
     "description": "Used for the invalidStatePattern utils component to mark all kinds of inputs with invalid states.",
-    "components": ["flex-box", "radio", "textarea", "utils"]
+    "components": ["bulk-textarea", "flex-box", "radio", "textarea", "utils"]
   },
   {
     "name": "--intergalactic-control-switch-bg",
@@ -1805,6 +1819,7 @@
       "accordion",
       "base-trigger",
       "breadcrumbs",
+      "bulk-textarea",
       "button",
       "carousel",
       "checkbox",
@@ -1842,7 +1857,15 @@
     "rawValue": "0px 0px 0px 3px rgba({red.400}, 0.5)",
     "computedValue": "0px 0px 0px 3px rgba(255, 73, 83, 0.5)",
     "description": "Keyboard focus styles for elements with invalid state.",
-    "components": ["base-trigger", "checkbox", "inline-input", "input", "radio", "textarea"]
+    "components": [
+      "base-trigger",
+      "bulk-textarea",
+      "checkbox",
+      "inline-input",
+      "input",
+      "radio",
+      "textarea"
+    ]
   },
   {
     "name": "--intergalactic-keyboard-focus-valid",
@@ -1850,7 +1873,7 @@
     "rawValue": "0px 0px 0px 3px rgba({green.400}, 0.5)",
     "computedValue": "0px 0px 0px 3px rgba(0, 159, 129, 0.5)",
     "description": "Keyboard focus styles for elements with valid state.",
-    "components": ["inline-input", "input", "textarea"]
+    "components": ["bulk-textarea", "inline-input", "input", "textarea"]
   },
   {
     "name": "--intergalactic-keyboard-focus-invert",
@@ -1915,6 +1938,7 @@
     "computedValue": "150%",
     "description": "Use with font-size-300.",
     "components": [
+      "bulk-textarea",
       "button",
       "card",
       "checkbox",
@@ -1922,6 +1946,7 @@
       "dropdown",
       "errors",
       "format-text",
+      "pagination",
       "radio",
       "side-panel",
       "switch",
@@ -1942,6 +1967,7 @@
     "components": [
       "base-trigger",
       "breadcrumbs",
+      "bulk-textarea",
       "button",
       "checkbox",
       "d3-chart",
@@ -2072,6 +2098,7 @@
       "badge",
       "base-trigger",
       "breadcrumbs",
+      "bulk-textarea",
       "button",
       "card",
       "checkbox",
@@ -2110,6 +2137,7 @@
     "computedValue": "16px",
     "components": [
       "base-trigger",
+      "bulk-textarea",
       "button",
       "card",
       "checkbox",
@@ -2118,6 +2146,7 @@
       "errors",
       "format-text",
       "input",
+      "pagination",
       "pills",
       "radio",
       "side-panel",
@@ -2215,6 +2244,7 @@
     "components": [
       "accordion",
       "base-trigger",
+      "bulk-textarea",
       "checkbox",
       "counter",
       "dropdown",
@@ -2239,6 +2269,7 @@
     "components": [
       "badge",
       "base-trigger",
+      "bulk-textarea",
       "button",
       "card",
       "carousel",
@@ -2278,6 +2309,7 @@
       "accordion",
       "base-trigger",
       "breadcrumbs",
+      "bulk-textarea",
       "button",
       "card",
       "carousel",
@@ -2324,6 +2356,7 @@
     "components": [
       "accordion",
       "base-trigger",
+      "bulk-textarea",
       "button",
       "carousel",
       "color-picker",
@@ -2339,6 +2372,7 @@
       "modal",
       "notice",
       "notice-bubble",
+      "pagination",
       "pills",
       "side-panel",
       "textarea",
@@ -2355,6 +2389,7 @@
     "computedValue": "16px",
     "description": "16px",
     "components": [
+      "bulk-textarea",
       "carousel",
       "color-picker",
       "date-picker",
@@ -2385,6 +2420,7 @@
       "errors",
       "format-text",
       "notice-bubble",
+      "pagination",
       "product-head",
       "slider",
       "typography",
@@ -2413,6 +2449,7 @@
     "computedValue": "32px",
     "description": "32px",
     "components": [
+      "bulk-textarea",
       "errors",
       "format-text",
       "fullscreen-modal",
@@ -2560,6 +2597,7 @@
     "description": "Use for rounding all form controls: Button, FilterTrigger, Input, Textarea, Pills, etc.",
     "components": [
       "base-trigger",
+      "bulk-textarea",
       "button",
       "carousel",
       "date-picker",
@@ -2616,6 +2654,7 @@
     "components": [
       "accordion",
       "base-trigger",
+      "bulk-textarea",
       "button",
       "carousel",
       "checkbox",

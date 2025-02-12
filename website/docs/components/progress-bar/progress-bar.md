@@ -11,7 +11,7 @@ import React from 'react';
 import ProgressBar from '@semcore/ui/progress-bar';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
-const SIZES = ['l', 'm', 's'];
+const SIZES = ['s', 'm', 'l'];
 
 const Preview = (preview) => {
   const { radio, text, select } = preview('ProgressBar');
@@ -100,14 +100,6 @@ Table: ProgressBar themes
 | Invert | ![](static/size-l.png)   | `--progress-bar-bg`         |
 | Dark   | ![](static/dark-theme.png) | `--progress-bar-bg-invert`|
 
-## Usage with counter
-
-A counter can be added next to the ProgressBar to indicate the number of loaded data. If the exact number of the data is unknown, the counter shouldn't be displayed. **Place the counter above or near the ProgressBar, ensuring that the margins between the counter and the ProgressBar are multiples of 4.**
-
-![](static/progressbar-counter.png)
-
-![](static/progressbar-counter-above.png)
-
 ## Interaction
 
 ### States
@@ -127,10 +119,6 @@ The progress bar shouldn't remain in the 100% state. Once the process is complet
 ::: tip
 If it isn’t possible to perform the action immediately, display the success status and instruct the user on what to do next.
 :::
-
-### Animation
-
-The progress value is always animated with `ease-in`.
 
 ## Usage in UX/UI
 
@@ -154,6 +142,14 @@ When scrolling, the progress bar can be pinned, remaining visible above all comp
 
 - For short actions that take less than 5 seconds, consider using [Spin](/components/spin/spin) instead.
 - To display steps, such as when filling out a form.
+
+### Usage with counter
+
+A counter can be added next to the ProgressBar to indicate the number of loaded data. If the exact number of the data is unknown, the counter shouldn't be displayed. **Place the counter above or near the ProgressBar, ensuring that the margins between the counter and the ProgressBar are multiples of 4.**
+
+![](static/progressbar-counter.png)
+
+![](static/progressbar-counter-above.png)
 
 ### Specific cases
 

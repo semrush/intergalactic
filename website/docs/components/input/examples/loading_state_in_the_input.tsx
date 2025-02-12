@@ -1,21 +1,36 @@
 import React from 'react';
-import Input from 'intergalactic/input';
-import Spin from 'intergalactic/spin';
-import { Text } from 'intergalactic/typography';
-import { Box } from 'intergalactic/flex-box';
+import Input from '@semcore/input';
+import Spin from '@semcore/spin';
+import { Text } from '@semcore/typography';
+import { Box, ScreenReaderOnly } from '@semcore/flex-box';
 
 const Demo = () => {
   const [value, setValue] = React.useState('');
   const [loading, setLoading] = React.useState(false);
+  const [loadingStatus, setLoadingStatus] = React.useState(null);
 
   React.useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 1000);
+    const timer = setTimeout(() => {
+      setLoadingStatus(<ScreenReaderOnly>Loaded</ScreenReaderOnly>);
+      setLoading(false);
+    }, 2000);
     return () => clearTimeout(timer);
   }, [value]);
 
+  React.useEffect(() => {
+    if (loading) {
+      setLoadingStatus(<Spin size='xs' />);
+    } else {
+      const timer = setTimeout(() => {
+        setLoadingStatus(null);
+      }, 300);
+      return () => clearTimeout(timer);
+    }
+  }, [loading]);
+
   function handlerInput(v) {
-    setLoading(true);
     setValue(v);
+    setLoading(true);
   }
 
   return (
@@ -27,15 +42,13 @@ const Demo = () => {
         <Input w={300}>
           <Input.Value
             id='loading-example'
-            placeholder='Type something to see world spinning...'
+            placeholder='Type something to start loading'
             value={value}
             onChange={handlerInput}
           />
-          {loading && (
-            <Input.Addon>
-              <Spin size='xs' />
-            </Input.Addon>
-          )}
+          <Input.Addon role='status' aria-live='polite'>
+            {loadingStatus}
+          </Input.Addon>
         </Input>
       </Box>
     </>

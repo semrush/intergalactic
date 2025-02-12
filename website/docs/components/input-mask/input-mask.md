@@ -66,6 +66,7 @@ const Preview = (preview) => {
         mask={mask}
         placeholder={placeholder}
         hideMask={hideMask}
+        aria-label='InputMask example'
       />
     </InputMask>
   );

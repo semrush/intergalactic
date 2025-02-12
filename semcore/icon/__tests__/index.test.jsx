@@ -1,10 +1,7 @@
 import React from 'react';
-import { snapshot } from '@semcore/testing-utils/snapshot';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import Icon from '../src';
-
 import { render, cleanup, fireEvent } from '@semcore/testing-utils/testing-library';
-import { axe } from '@semcore/testing-utils/axe';
 
 describe('Icon', () => {
   beforeEach(cleanup);
@@ -55,39 +52,6 @@ describe('Icon', () => {
     expect(getByTestId('child')).toBeTruthy();
   });
 
-  test('should render with svg element', async ({ task }) => {
-    const component = (
-      <Icon width={22} height={22} viewBox='0 0 22 22'>
-        <polygon points='18.532 3 7.501 14.054 3.468 10.012 1 12.485 7.501 19 21 5.473' />
-      </Icon>
-    );
-
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-
-  test.concurrent('should support custom color', async ({ task }) => {
-    const component = (
-      <Icon width={22} height={22} viewBox='0 0 22 22' color='green'>
-        <polygon points='18.532 3 7.501 14.054 3.468 10.012 1 12.485 7.501 19 21 5.473' />
-      </Icon>
-    );
-
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-
-  test("shouldn't change size in flex block", async ({ task }) => {
-    const component = (
-      <div style={{ display: 'flex', width: '100px' }}>
-        <Icon width={22} height={22} viewBox='0 0 22 22' color='green'>
-          <polygon points='18.532 3 7.501 14.054 3.468 10.012 1 12.485 7.501 19 21 5.473' />
-        </Icon>
-        <p>lorem lorem lorem lorem </p>
-      </div>
-    );
-
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-
   test('should support call onClick', async () => {
     const onClick = vi.fn();
     const { getByTestId } = render(<Icon data-testid='icon' interactive aria-label='Test icon' />);
@@ -112,16 +76,5 @@ describe('Icon', () => {
     fireEvent.keyDown(getByTestId('icon'), { key: 'Enter' });
     expect(onKeyDown).toHaveBeenCalledTimes(1);
     expect(onClick).toHaveBeenCalledTimes(0);
-  });
-
-  test('a11y', async () => {
-    const { container } = render(
-      <Icon width={22} height={22} viewBox='0 0 22 22' color='green'>
-        <polygon points='18.532 3 7.501 14.054 3.468 10.012 1 12.485 7.501 19 21 5.473' />
-      </Icon>,
-    );
-
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
   });
 });

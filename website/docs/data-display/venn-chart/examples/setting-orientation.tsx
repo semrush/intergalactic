@@ -25,9 +25,9 @@ const Demo = () => {
       </Plot>
       <Flex direction='row'>
         <Button onClick={() => setOrientation(Number(!orientation))} mr={2}>
-          Change orientation
+          Switch orientation
         </Button>
-        <Button onClick={() => setOrder(Number(!order))}>Change order</Button>
+        <Button onClick={() => setOrder(Number(!order))}>Switch order</Button>
       </Flex>
     </Flex>
   );

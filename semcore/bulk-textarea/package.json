@@ -1,0 +1,41 @@
+{
+  "name": "@semcore/bulk-textarea",
+  "description": "Semrush BulkTextarea Component",
+  "version": "1.0.4",
+  "main": "lib/cjs/index.js",
+  "module": "lib/es6/index.js",
+  "typings": "lib/types/index.d.ts",
+  "sideEffects": false,
+  "author": "UI-kit team <ui-kit-team@semrush.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "pnpm semcore-builder --source=ts"
+  },
+  "dependencies": {
+    "@semcore/utils": "4.45.1",
+    "@semcore/flex-box": "5.40.1",
+    "@semcore/button": "5.41.2",
+    "@semcore/typography": "5.51.1",
+    "@semcore/counter": "3.37.3",
+    "@semcore/icon": "4.57.1",
+    "@semcore/popper": "5.45.3",
+    "@semcore/tooltip": "6.47.3",
+    "csstype": "3.0.8",
+    "dompurify": "3.2.3"
+  },
+  "peerDependencies": {
+    "@semcore/core": "^2.17.5",
+    "react": "16.8 - 18",
+    "react-dom": "16.8 - 18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/semrush/intergalactic.git",
+    "directory": "semcore/bulk-textarea"
+  },
+  "devDependencies": {
+    "@types/react": "18.0.21",
+    "@types/dompurify": "3.2.0",
+    "@semcore/testing-utils": "1.0.0"
+  }
+}

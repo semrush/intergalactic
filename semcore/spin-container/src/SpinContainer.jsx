@@ -18,6 +18,27 @@ class SpinContainerRoot extends Component {
   };
   static enhance = [resolveColorEnhance()];
 
+  state = {
+    inert: this.props.loading,
+  };
+
+  componentDidUpdate(prevProps) {
+    const { loading } = this.props;
+    if (prevProps.loading !== loading) {
+      if (this.inertTimer) {
+        clearTimeout(this.inertTimer);
+      }
+
+      if (loading) {
+        this.setState({ inert: true });
+      } else {
+        this.inertTimer = setTimeout(() => {
+          this.setState({ inert: false });
+        }, this.asProps.duration + 50);
+      }
+    }
+  }
+
   getOverlayProps() {
     const { loading, background, duration, size, theme, resolveColor } = this.asProps;
     return {
@@ -33,14 +54,14 @@ class SpinContainerRoot extends Component {
   }
 
   getContentProps() {
-    const { loading } = this.asProps;
+    const { inert } = this.state;
 
-    return { inert: loading ? '' : undefined };
+    return { inert: inert ? '' : undefined };
   }
 
   render() {
     const SSpinContainer = Root;
-    const { styles, Children, loading, forcedAdvancedMode } = this.asProps;
+    const { styles, Children, forcedAdvancedMode } = this.asProps;
 
     const advancedMode =
       forcedAdvancedMode || isAdvanceMode(Children, [SpinContainer.Overlay.displayName]);

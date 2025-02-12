@@ -1,0 +1,10 @@
+{
+  "BulkTextarea.ClearAllButton.buttonText": "Wyczyść wszystko",
+  "BulkTextarea.Counter.ofAllowedRows:sr-message": "z {rowsNumber} wierszy",
+  "BulkTextarea.Counter.limitReached:sr-message": "Osiągnięto limit",
+  "BulkTextarea.Counter.limitExceeded:sr-message": "Przekroczono limit",
+  "BulkTextarea.ErrorsNavigation.totalErrors": "{errorsCount} {errorsCount, plural, one {błąd} few {błędy} many {błędów} other {błędu}}",
+  "BulkTextarea.ErrorsNavigation.selectedError": "Błąd {errorIndex} z {errorsCount}",
+  "BulkTextarea.ErrorsNavigation.nextError:aria-label": "Następny błąd",
+  "BulkTextarea.ErrorsNavigation.previousError:aria-label": "Poprzedni błąd"
+}

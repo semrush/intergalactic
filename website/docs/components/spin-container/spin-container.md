@@ -11,7 +11,8 @@ import React from 'react';
 import SpinContainer from '@semcore/ui/spin-container';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 import Input from '@semcore/ui/input';
-import { Box } from '@semcore/ui/flex-box';
+import { Flex } from '@semcore/ui/flex-box';
+import { Text } from '@semcore/ui/typography';
 
 const playground = (createGroupWidgets) => {
   const { bool, radio, text, select } = createGroupWidgets('SpinContainer');
@@ -50,21 +51,20 @@ const playground = (createGroupWidgets) => {
       background={background ? background : undefined}
       p='3px'
     >
-      <Box w={150}>
-        <h4>User form:</h4>
-        <Input mb={2}>
-          <Input.Value />
+      <Flex direction='column' gap={2} w={150}>
+        <Text tag='label' size={200} htmlFor='input-1'>
+          Input 1
+        </Text>
+        <Input>
+          <Input.Value id='input-1' />
         </Input>
-        <Input mb={2}>
-          <Input.Value />
+        <Text tag='label' size={200} htmlFor='input-2' mt={2}>
+          Input 2
+        </Text>
+        <Input>
+          <Input.Value id='input-2' />
         </Input>
-        <Input mb={2}>
-          <Input.Value />
-        </Input>
-        <Input mb={2}>
-          <Input.Value />
-        </Input>
-      </Box>
+      </Flex>
     </SpinContainer>
   );
 };

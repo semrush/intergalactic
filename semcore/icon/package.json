@@ -1,7 +1,7 @@
 {
   "name": "@semcore/icon",
   "description": "Semrush Icon Component",
-  "version": "4.55.0",
+  "version": "4.57.1",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -14,9 +14,9 @@
     "clean": "node clean.js"
   },
   "dependencies": {
-    "@semcore/flex-box": "5.39.1",
-    "@semcore/icon": "4.55.0",
-    "@semcore/utils": "4.44.1",
+    "@semcore/flex-box": "5.40.1",
+    "@semcore/icon": "4.57.1",
+    "@semcore/utils": "4.45.1",
     "classnames": "2.2.6"
   },
   "peerDependencies": {

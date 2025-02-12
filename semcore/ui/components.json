@@ -1,11 +1,13 @@
 {
   "packages": [
     "@semcore/accordion",
+    "@semcore/add-filter",
     "@semcore/animation",
     "@semcore/badge",
     "@semcore/base-trigger",
     "@semcore/breadcrumbs",
     "@semcore/breakpoints",
+    "@semcore/bulk-textarea",
     "@semcore/button",
     "@semcore/card",
     "@semcore/carousel",

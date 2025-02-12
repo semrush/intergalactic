@@ -2,6 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.54.11] - 2025-02-05
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.45.0 ~> 4.45.1], `@semcore/base-trigger` [4.51.0 ~> 4.51.1], `@semcore/button` [5.41.1 ~> 5.41.2], `@semcore/flex-box` [5.40.0 ~> 5.40.1], `@semcore/checkbox` [7.43.0 ~> 7.43.1], `@semcore/core` [2.38.0 ~> 2.38.1]).
+
+## [4.54.10] - 2025-02-05
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/base-trigger` [4.50.0 ~> 4.51.0], `@semcore/button` [5.41.0 ~> 5.41.1], `@semcore/icon` [4.56.0 ~> 4.57.0]).
+
+## [4.54.9] - 2025-01-21
+
+### Added
+
+- `inputmode=numeric` for the DatePicker inputs.
+
 ## [4.54.8] - 2025-01-21
 
 ### Changed
