@@ -8,13 +8,21 @@ tabs: Design('pagination'), A11y('pagination-a11y'), API('pagination-api'), Exam
 
 <script lang="tsx">
 import React from 'react';
-
 import Pagination from '@semcore/ui/pagination';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
+const SIZES = ['m', 'l'];
+
 const App = PlaygroundGeneration(
   (createGroupWidgets) => {
-    const { onChange, text } = createGroupWidgets('Pagination');
+    const { onChange, radio, text } = createGroupWidgets('Pagination');
+
+    const size = radio({
+      key: 'size',
+      defaultValue: 'm',
+      label: 'Size',
+      options: SIZES,
+    });
 
     const currentPage = text({
       key: 'currentPage',
@@ -30,6 +38,7 @@ const App = PlaygroundGeneration(
 
     return (
       <Pagination
+        size={size}
         currentPage={currentPage}
         onCurrentPageChange={(value) => onChange('currentPage', value)}
         totalPages={Number(totalPages)}
@@ -63,16 +72,31 @@ Component consists of the following:
 5. `Pagination.PrevPage`
 6. `Pagination.TotalPages`
 
-## Margins
+## Appearance
 
-- The margins between buttons in the component are always 8px.
-- The margins between different controls are 16px, such as between the buttons and the input for the - current page, and between the input for the current page and the select.
+## Sizes
 
-![](static/margins.png)
+This component has only two sizes: `M` and `L`. The M size uses components with `M` size, while the `L` size uses L-sized components accordingly.
 
-The margin from the table to the pagination is 16px.
+Table: Pagination sizes
+
+| `size` | Appearance example     |
+| ------ | ---------------------- |
+| `M`    | ![](static/m-size.png) |
+| `L`    | ![](static/l-size.png) |
+
+### Margin between table and pagination
+
+Recommended margin between table and pagination is `--spacing-4x`.
 
 ![](static/margin-top.png)
+
+### Layout behavior
+
+In case there is no space in the interface to place pagination in a row, the component layout changes from `row` to `column`.
+
+![](static/pagination-layout-m.png)
+![](static/pagination-layout-l.png)
 
 ## Number of rows
 
@@ -81,16 +105,24 @@ We provide some recommendations for the table size:
 - Use a minimum of two user screens (± 2000 px) for the table.
 - Display a maximum of 100 lines (if the lines occupy two lines, then 50 lines, etc.).
 
+### Selecting number of rows
+
+After the user changes the value in the select, the page should be refreshed, and the value of the table rows from the select should be applied.
+
+We recommend using these values for the select: 10, 20, 50, 100.
+
+![](static/page-select.png)
+
 ## Interaction
 
 - The table should scroll to the beginning when the user moves between pages.
 - After sorting and filtering, the pagination always returns the user to the first page.
 
-| Appearance example                | Action          |
-| --------------------------------- | --------------- |
-| ![](static/secondary-button.png)  | Opens the first page                                                                                                                              |
-| ![](static/secondary-button-2.png) | Opens the previous page                                                                                                                           |
-| ![](static/primary-button.png)     | Opens the next page                                                                                                                               |
+| Appearance example                 | Action                                                                                                           |
+| ---------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| ![](static/secondary-button.png)   | Opens the first page                                                                                             |
+| ![](static/secondary-button-2.png) | Opens the previous page                                                                                          |
+| ![](static/primary-button.png)     | Opens the next page                                                                                              |
 | ![](static/steps.png)              | Page input allows the user to enter a specific page, and after the user presses `Enter`, the entered page opens. |
 
 The current page should always be displayed in the input:
@@ -101,7 +133,7 @@ The current page should always be displayed in the input:
 
 The link at the end of the pagination shows the total number of pages. The user moves to the last page by clicking it.
 
-## States and cases
+## Edge cases
 
 ### First page
 
@@ -134,16 +166,6 @@ If there is no data or the filter is applied, pagination shouldn't be displayed.
 ### Page loading
 
 Avoid displaying pagination while loading the table or other related data.
-
-## Additional states
-
-### Select for choosing rows number
-
-After the user changes the value in the select, the page should be refreshed, and the value of the table rows from the select should be applied.
-
-We recommend using these values for the select: 10, 20, 50, 100.
-
-![](static/page-select.png)
 
 ### Impossible to calculate exact number of pages
 

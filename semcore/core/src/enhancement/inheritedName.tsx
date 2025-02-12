@@ -1,4 +1,4 @@
-export const INHERITED_NAME = Symbol('INHERITED_NAME');
+import { INHERITED_NAME } from '../core-types/symbols';
 
 function Enhancement() {
   return {

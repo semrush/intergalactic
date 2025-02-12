@@ -2,6 +2,36 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.49.0] - 2025-02-04
+
+### Added
+
+- `size` property: `l` and `m` (default).
+
+## [4.48.6] - 2025-02-05
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [5.41.1 ~> 5.41.2], `@semcore/flex-box` [5.40.0 ~> 5.40.1], `@semcore/icon` [4.57.0 ~> 4.57.1], `@semcore/input-number` [5.40.3 ~> 5.40.4], `@semcore/link` [5.43.0 ~> 5.43.1], `@semcore/utils` [4.45.0 ~> 4.45.1], `@semcore/core` [2.38.0 ~> 2.38.1]).
+
+## [4.48.5] - 2025-02-05
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [5.41.0 ~> 5.41.1], `@semcore/icon` [4.56.0 ~> 4.57.0]).
+
+## [4.48.4] - 2025-02-03
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [5.40.3 ~> 5.41.0], `@semcore/flex-box` [5.39.1 ~> 5.40.0], `@semcore/icon` [4.55.0 ~> 4.56.0], `@semcore/input-number` [5.40.2 ~> 5.40.3], `@semcore/link` [5.42.1 ~> 5.43.0], `@semcore/utils` [4.44.1 ~> 4.45.0], `@semcore/core` [2.37.1 ~> 2.38.0]).
+
+## [4.48.3] - 2025-01-21
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [5.40.2 ~> 5.40.3], `@semcore/icon` [4.53.1 ~> 4.55.0]).
+
 ## [4.48.2] - 2024-12-30
 
 ### Changed

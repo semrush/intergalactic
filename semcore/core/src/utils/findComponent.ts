@@ -1,7 +1,6 @@
 import React, { ReactElement, ReactNode, MutableRefObject } from 'react';
 import getOriginChildren from './getOriginChildren';
-import { CHILDREN_COMPONENT } from '../enhancement/Children';
-import { INHERITED_NAME } from '../enhancement/inheritedName';
+import { CHILDREN_COMPONENT, INHERITED_NAME } from '../core-types/symbols';
 
 function findComponent(
   Children: any,

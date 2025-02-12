@@ -2,6 +2,42 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.0] - 2025-02-12
+
+### Removed
+
+- External icons.
+
+## [4.57.1] - 2025-02-05
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [5.40.0 ~> 5.40.1], `@semcore/utils` [4.45.0 ~> 4.45.1], `@semcore/core` [2.38.0 ~> 2.38.1]).
+
+## [4.57.0] - 2025-02-04
+
+### Added
+
+- New `Copilot` icon.
+
+## [4.56.0] - 2025-02-03
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/flex-box` [5.39.1 ~> 5.40.0], `@semcore/utils` [4.44.1 ~> 4.45.0], `@semcore/core` [2.37.1 ~> 2.38.0]).
+
+## [4.55.0] - 2025-01-20
+
+### Added
+
+- New `ChatGPT` icon.
+
+## [4.54.0] - 2025-01-17
+
+### Added
+
+- New `VideoList`, `VideoStreaming` icons.
+
 ## [4.53.1] - 2024-12-30
 
 ### Changed

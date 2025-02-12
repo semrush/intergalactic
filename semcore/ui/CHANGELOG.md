@@ -1,3 +1,145 @@
+## [15.125.0] - 2025-02-07
+
+### @semcore/bulk-textarea
+
+- **Fixed** Incorrect filename for module entry point.
+
+### @semcore/pagination
+
+- **Added** `size` property: `l` and `m` (default).
+
+## [15.124.1] - 2025-02-05
+
+### @semcore/flex-box
+
+- **Changed** Fixed ESM build.
+
+### @semcore/utils
+
+- **Changed** Fixed ESM build.
+
+## [15.124.0] - 2025-02-05
+
+### @semcore/button
+
+- **Fixed** `background-color` token name for primary button with `neighborLocation` enabled.
+
+### @semcore/icon
+
+- **Added** New `Copilot` icon.
+
+### @semcore/notice
+
+- **Added** Required dependency `@semcore/typeography`.
+
+## [15.123.0] - 2025-02-03
+
+### @semcore/add-filter
+
+- **Added** AddFilter component.
+
+### @semcore/bulk-textarea
+
+- **Added** New BulkTextArea component.
+
+### @semcore/counter
+
+- **Fixed** Width shrinking in Flex containers.
+
+### @semcore/data-table
+
+- **Fixed** Handle table cell focus for any interactions. Now works only for keyboard.
+
+### @semcore/date-picker
+
+- **Added** `inputmode=numeric` for the DatePicker inputs.
+
+### @semcore/feedback-form
+
+- **Added** `notificationTitle` prop to `FeedbackRating`.
+- **Added** type `email` for config in `FeedbackRating.Item`.
+
+### @semcore/input-number
+
+- **Changed** Set `inputMode` to `numeric` if `step` is an integer, otherwise to `decimal`.
+
+### @semcore/popper
+
+- **Added** `popperMargin` property to set maxSize (width or height) of popper to height from the content minus this margin.
+
+### @semcore/spin-container
+
+- **Changed** Remove `inert` attribute after the animation of Spin ends.
+
+### @semcore/time-picker
+
+- **Added** `inputmode=numeric` for inputs.
+
+### @semcore/utils
+
+- **Added** `plural`, `selectordinal` and others Intl formatting for translations.
+- **Added** `inputMode` and `autoComplete` as an item of default input props.
+
+## [15.122.0] - 2025-01-21
+
+### @semcore/data-table
+
+- **Fixed** Incorrect calculation sizes for fixed (in right place) columns.
+
+### @semcore/drag-and-drop
+
+- **Changed** Consider only elements with `draggable` attribute in calculations indexes.
+- **Added** `stopPropagation` for keydown events with `Arrow-*` as a `e.key`.
+
+### @semcore/dropdown
+
+- **Fixed** styles for use with DnD.
+
+### @semcore/ellipsis
+
+- **Changed** `white-space` property to `pre` for preserve spacing.
+
+### @semcore/feedback-form
+
+- **Added** `aria-describedby`, that refers to ScreenRiderOnly text, `aria-labelledby` referring to the notice text, `aria-valuetext` to SliderRating.
+- **Added** `role="image"` and `aria-label` for SliderRating's readonly mode
+- **Added** `role="none"` to SVGs in SliderRating.
+- **Added** `aria-labelledby` for the FeedbackRating's modal container, that refers to Header of it
+- **Added** autofocus to first checkbox. Moved from `textarea`.
+- **Added** `aria-describedby`, that connects privacy-description text and related form control in FeedbackRating form.
+- **Added** same visual feedback for keyboard interactions to SliderRating same as on hover.
+- **Changed** color of privacy-description text to the `text-secondary` token in FeedbackRating form.
+- **Changed** `FeedbackRating.Header` as optional, when specifying FeedbackRating's `header` prop.
+- **Removed** `title` attribute from FeedbackRating form.
+- **Removed** `<ul><li>` structure from checkboxes, leaving only `div role="group"` in FeedbackRating form.
+- **Removed** unnecessary tooltip around `input[type="hidden"]`.
+- **Removed** `line-height` from privacy-description text in FeedbackRating form.
+- **Removed** `aria-invalid` from checkbox's parent elements.
+- **Removed** `aria-haspop` from tooltip of field controls
+
+### @semcore/icon
+
+- **Added** New `ChatGPT` icon.
+- **Added** New `VideoList`, `VideoStreaming` icons.
+
+### @semcore/notice
+
+- **Added** `Notice.Title` and `Notice.Text` components.
+- **Added** `title` props to `NoticeSmart`.
+
+### @semcore/skeleton
+
+- **Removed** `aria-busy` attribute as unnecessary.
+
+### @semcore/spin
+
+- **Removed** `aria-busy` attribute as unnecessary.
+- **Added** `role="img"` for correct recognition by assistive technology and to avoid double reading.
+
+### @semcore/spin-container
+
+- **Removed** `aria-busy` attribute as unnecessary.
+
 ## [15.121.0] - 2024-12-30
 
 ### @semcore/breadcrumbs

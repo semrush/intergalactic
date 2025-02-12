@@ -8,7 +8,7 @@ const getDegaultLegendItems = () => {
     .map((item, index) => {
       return {
         id: item,
-        label: `Point ${item}`,
+        label: `Dataset ${item}`,
         checked: true,
         color: `chart-palette-order-${index + 1}`,
       };
@@ -51,7 +51,7 @@ const Demo = () => {
         shape={'Checkbox'}
         patterns
         onChangeVisibleItem={handleChangeVisible}
-        aria-label={'Legend for the scatterplot chart'}
+        aria-label={'Scatterplot legend'}
       />
       <Plot scale={[xScale, yScale]} width={width} height={height} data={data} patterns={true}>
         <YAxis>

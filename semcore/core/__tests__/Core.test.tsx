@@ -6,7 +6,7 @@ import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-libra
 const { shouldSupportRef } = sharedTests;
 import { createComponent, createBaseComponent, Component, IComponentProps } from '../src';
 
-import { CORE_COMPONENT } from '../src/types/symbols';
+import { CORE_COMPONENT } from '../src/core-types/symbols';
 
 /*
  * - control/uncontrollprops
@@ -66,7 +66,7 @@ type CompType = HTMLAttributes<HTMLDivElement>;
 type ItemType = { Item: HTMLAttributes<HTMLDivElement> };
 
 function shouldSupportRender(RootComponent: any, typeRootComponent: any) {
-  test(`should support just render ${typeRootComponent}`, () => {
+  test(`Should support just render ${typeRootComponent}`, () => {
     const Test = createComponent<CompType>(RootComponent);
     const { getByTestId } = render(<Test data-testid='core'>test</Test>);
     expect(getByTestId('core').innerHTML).toBe('test');
@@ -78,7 +78,7 @@ function shouldSupportRenderChildrenRoot(
   ChildrenComponent: any,
   description: any,
 ) {
-  test(`should support render ${description}`, () => {
+  test(`Should support render children root ${description}`, () => {
     const Item = createComponent<ItemType['Item']>(ChildrenComponent);
     const Test = createComponent<CompType, ItemType>(RootComponent, { Item });
     const { getByTestId } = render(
@@ -91,7 +91,7 @@ function shouldSupportRenderChildrenRoot(
 }
 
 function shouldSupportChildren(ChildrenComponent: any, typeChildrenComponent: any) {
-  test(`should support children components ${typeChildrenComponent}`, () => {
+  test(`Should support children components ${typeChildrenComponent}`, () => {
     const Test = createComponent<CompType, ItemType>(RootTestClass, {
       Item: ChildrenComponent,
     });
@@ -102,7 +102,7 @@ function shouldSupportChildren(ChildrenComponent: any, typeChildrenComponent: an
 }
 
 function shouldSupportCallEnhance(RootComponent: any, typeRootComponent: any) {
-  test(`should support call static enhance in Root ${typeRootComponent}`, () => {
+  test(`Should support call static enhance in Root ${typeRootComponent}`, () => {
     const spy = vi.fn();
     const enhance = (props: any) => {
       spy(props);
@@ -116,7 +116,7 @@ function shouldSupportCallEnhance(RootComponent: any, typeRootComponent: any) {
 }
 
 function shouldSupportCallEnhanceWithProps(RootComponent: any, typeRootComponent: any) {
-  test(`should support call enhance with props and data-ui-name in ${typeRootComponent}`, () => {
+  test(`Should support call enhance with props and data-ui-name in ${typeRootComponent}`, () => {
     const spy = vi.fn();
     const props = {
       children: 'test',
@@ -167,7 +167,7 @@ describe('Core', () => {
   shouldSupportChildren(ChildrenTestClass, 'Class');
   shouldSupportChildren(ChildrenTestFunc, 'Function');
 
-  test('should support custom props name', () => {
+  test('Should support custom props name', () => {
     const Test = createComponent(RootTestClass);
     const TestWithChildren = createComponent(RootTestClass, {
       Item: ChildrenTestFunc,
@@ -184,7 +184,7 @@ describe('Core', () => {
     expect((getByTestId('testWithChildren').attributes as any)['name'].value).toBe('test');
   });
 
-  test('should support set data-ui-name', () => {
+  test('Should support set data-ui-name', () => {
     const InheritTest = createComponent(RootTestClass);
 
     class TestClass extends Component {
@@ -202,7 +202,7 @@ describe('Core', () => {
     expect((queryByTestId('test')?.attributes as any)['data-ui-name'].value).toBe('TestClass');
   });
 
-  test('should support optimization function in getter method', () => {
+  test('Should support optimization function in getter method', () => {
     const spy = vi.fn();
 
     class TestRoot extends Component {
@@ -257,7 +257,7 @@ describe('Core', () => {
 describe('Root', () => {
   beforeEach(cleanup);
 
-  test('should set props', () => {
+  test('Should set props', () => {
     class TestRoot extends Component {
       static displayName = 'Test';
 
@@ -276,7 +276,7 @@ describe('Root', () => {
 
     expect(queryByTestId('root')?.id).toBe('test');
   });
-  test('should support assign props', () => {
+  test('Should support assign props', () => {
     class TestRoot extends Component {
       static displayName = 'Test';
 
@@ -331,7 +331,7 @@ describe('Root', () => {
 });
 
 describe('Controll/Uncontroll mode', () => {
-  test('should support create prop with name and handler in uncontroll mode', () => {
+  test('Should support create prop with name and handler in uncontroll mode', () => {
     const spy = vi.fn();
 
     class RootTestClass extends Component<IComponentProps<{}>> {
@@ -356,7 +356,7 @@ describe('Controll/Uncontroll mode', () => {
     expect(spy).toHaveBeenCalledTimes(1);
     expect(spy).toHaveBeenCalledWith(RootTestClass.defaultProps.defaultValue, expect.anything());
   });
-  test('should support set everything value and call it in handler uncontroll mode', () => {
+  test('Should support set everything value and call it in handler uncontroll mode', () => {
     const spy = vi.fn();
 
     class RootTestClass extends Component<IComponentProps<{}>> {
@@ -384,7 +384,7 @@ describe('Controll/Uncontroll mode', () => {
 });
 
 describe('Getter props function', () => {
-  test('should support move props from Root in Children Class', () => {
+  test('Should support move props from Root in Children Class', () => {
     class RootTestClass extends Component {
       static displayName = 'Test';
 
@@ -417,7 +417,7 @@ describe('Getter props function', () => {
     );
     expect(spy).toHaveBeenCalledWith('test');
   });
-  test('should support move props from Root in Children Function', () => {
+  test('Should support move props from Root in Children Function', () => {
     class RootTestClass extends Component {
       static displayName = 'Test';
 
@@ -446,7 +446,7 @@ describe('Getter props function', () => {
     );
     expect(spy).toHaveBeenCalledWith('test');
   });
-  test('should support self props in getter', () => {
+  test('Should support self props in getter', () => {
     class RootTestClass extends Component {
       static displayName = 'Test';
 
@@ -471,7 +471,7 @@ describe('Getter props function', () => {
     expect(spy).toHaveBeenCalledWith('test');
   });
 
-  test('should support assign props in getter', () => {
+  test('Should support assign props in getter', () => {
     class RootTestClass extends Component {
       static displayName = 'Test';
 
@@ -527,7 +527,7 @@ describe('Getter props function', () => {
     expect(spyRef.mock.calls[1][0].nodeName).toBe('DIV');
   });
 
-  test('should support index in getter', () => {
+  test('Should support index in getter', () => {
     class RootTestClass extends Component {
       static displayName = 'Test';
 
@@ -557,7 +557,7 @@ describe('Getter props function', () => {
 });
 
 describe('Hoist props', () => {
-  test('should support hoist props from Children Func to Root', () => {
+  test('Should support hoist props from Children Func to Root', () => {
     const spy = vi.fn();
 
     class RootComponent extends RootTestClass {
@@ -584,7 +584,7 @@ describe('Hoist props', () => {
     expect(spy).toHaveBeenCalledWith('test');
   });
 
-  test('should support hoist props from Children Class to Root', () => {
+  test('Should support hoist props from Children Class to Root', () => {
     const spy = vi.fn();
 
     class RootComponent extends RootTestClass {
@@ -613,7 +613,7 @@ describe('Hoist props', () => {
     expect(spy).toHaveBeenCalledWith('test');
   });
 
-  test('should support rename hoist props', () => {
+  test('Should support rename hoist props', () => {
     const spy = vi.fn();
 
     class RootComponent extends RootTestClass {
@@ -640,7 +640,7 @@ describe('Hoist props', () => {
     expect(spy).toHaveBeenCalledWith('test');
   });
 
-  test('should support update hoist props', () => {
+  test('Should support update hoist props', () => {
     const spy = vi.fn();
 
     class RootComponent extends RootTestClass {
@@ -676,7 +676,7 @@ describe('Hoist props', () => {
 
 describe('Props from context', () => {
   beforeEach(cleanup);
-  test('should support props forwarding', () => {
+  test('Should support props forwarding', () => {
     const Test = createComponent(RootTestClass);
     render(
       <Test custom='test'>
@@ -688,7 +688,7 @@ describe('Props from context', () => {
     );
   });
 
-  test('should support props forwarding children and not overwrite', () => {
+  test('Should support props forwarding children and not overwrite', () => {
     const Test = createComponent(RootTestClass, {
       Item: ChildrenTestFunc,
     }) as any;
@@ -706,7 +706,7 @@ describe('Props from context', () => {
     );
   });
 
-  test('should support normal nested name getter function', () => {
+  test('Should support normal nested name getter function', () => {
     class TestRoot extends RootTestClass {
       getItemValueProps() {
         return {
@@ -738,7 +738,7 @@ describe('Props from context', () => {
 describe('Option "parent"', () => {
   beforeEach(cleanup);
 
-  test('should support parent context', () => {
+  test('Should support parent context', () => {
     class RootTestParent extends Component<IComponentProps> {
       static defaultProps = {
         defaultValue: 5,
@@ -780,7 +780,7 @@ describe('Option "parent"', () => {
     );
   });
 
-  test('should merge prop-getters for nested components', () => {
+  test('Should merge prop-getters for nested components', () => {
     function createMockComponent(name: any, render: any) {
       function Item(props: any) {
         const { Root } = props;
@@ -838,7 +838,7 @@ describe('Option "parent"', () => {
     });
   });
 
-  test('should merge prop-getters handlers for nested components, and call em in wright order', () => {
+  test('Should merge prop-getters handlers for nested components, and call em in wright order', () => {
     function createMockComponent(name: any, render: any) {
       function Item(props: any) {
         const { Root } = props;
@@ -914,17 +914,17 @@ describe('createBaseComponent', () => {
 
   TestFuncWithRef.displayName = 'TestFuncWithRef';
 
-  test('should support symbol CORE_COMPONENT', () => {
+  test('Should support symbol CORE_COMPONENT', () => {
     const Test = createBaseComponent(TestFuncWithRef);
     expect(Test[CORE_COMPONENT]).toBe(true);
   });
-  test('should support data-ui-name', () => {
+  test('Should support data-ui-name', () => {
     const Test = createBaseComponent(TestFuncWithRef);
     const { getByTestId } = render(<Test data-testid='test' />);
     expect(getByTestId('test').dataset.uiName).toBe(Test.displayName);
   });
 
-  test('should support ref', () => {
+  test('Should support ref', () => {
     const Test = createBaseComponent(TestFuncWithRef);
     const ref = React.createRef<HTMLDivElement>();
     render(<Test ref={ref} />);

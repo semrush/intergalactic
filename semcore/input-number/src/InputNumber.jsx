@@ -460,7 +460,7 @@ class Value extends Component {
           onClick={this.handleClick}
           use:ref={forkRef(this.valueInputRef, inputRef, forwardRef)}
           use:value={displayValue}
-          inputMode='decimal'
+          inputMode={Number.isInteger(step) ? 'numeric' : 'decimal'}
           min={min}
           max={max}
           step={step}

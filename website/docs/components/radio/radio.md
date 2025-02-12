@@ -38,16 +38,16 @@ const App = PlaygroundGeneration(
       label: 'Disabled',
     });
 
-    const children = text({
-      key: 'children',
-      defaultValue: 'Value 2',
-      label: 'Children',
+    const label = text({
+      key: 'label',
+      defaultValue: 'Value',
+      label: 'Label',
     });
 
     return (
-      <RadioGroup size={size} state={state} disabled={disabled}>
-        <Radio mb={3} value={'1'} label={'Value 1'} />
-        <Radio mb={3} value={'2'} label={children} />
+      <RadioGroup size={size} state={state} disabled={disabled} aria-label='RadioGroup example'>
+        <Radio mb={3} value={'1'} label={`${label} 1`} />
+        <Radio mb={3} value={'2'} label={`${label} 2`} />
       </RadioGroup>
     );
   },
@@ -76,7 +76,9 @@ Component consists of the following:
 3. `Radio.Value`
 4. `Radio.Text`
 
-## Sizes and margins
+## Appearance
+
+### Sizes
 
 The radio button has two sizes: M and L. The text label is always positioned to the right of the radio button.
 
@@ -98,7 +100,7 @@ Table: Radio button margins
 | M (16px x 16px) | ![](static/vert-m.png) ![](static/margins-m.png) |
 | L (20px x 20px) | ![](static/vert-l.png) ![](static/margins-l.png) |
 
-## Radio button with a paragraph
+## Radio button with paragraph
 
 All radio button sizes can be used with the corresponding text paragraphs.
 
@@ -121,7 +123,7 @@ Info icon should have `margin-left: 4px`.
 
 ![](static/info-icon-margin.png)
 
-## Radio button with a link inside
+## Radio button with link inside
 
 Text label may contain a [Link component](/components/link/link).
 

@@ -29,20 +29,22 @@ const App = PlaygroundGeneration((preview) => {
   const {
     direction,
     alignItems,
-    justifyContent,
     showLegend,
     showXAxis,
     showYAxis,
     showTooltip,
     legendProps,
     patterns,
-  } = chartPlayground({ select, radio, label, bool });
+  } = chartPlayground(
+    { select, radio, label, bool },
+    { direction: 'row-reverse', legendDirection: 'column' },
+    );
 
   legendProps.legendMap = {
     G: { label: 'Good' },
     F: { label: 'Fast' },
     C: { label: 'Clean' },
-    U: { label: 'Uniq' },
+    U: { label: 'Unique' },
   };
 
   const chartProps: VennChartProps = {
@@ -54,7 +56,6 @@ const App = PlaygroundGeneration((preview) => {
     showXAxis,
     showYAxis,
     alignItems,
-    justifyContent,
     patterns,
   };
 

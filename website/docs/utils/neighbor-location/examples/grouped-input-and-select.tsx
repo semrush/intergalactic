@@ -5,11 +5,12 @@ import { Flex } from '@semcore/flex-box';
 
 const Demo = () => {
   return (
-    <Flex>
+    <Flex role='group' aria-label='input with select'>
       <Input neighborLocation='right' w={200}>
-        <Input.Value placeholder='Placeholder' aria-label={'Label for input with select'} />
+        <Input.Value placeholder='Placeholder' aria-label={'input example'} />
       </Input>
       <Select
+        aria-label='select example'
         neighborLocation='left'
         options={[
           { value: 'Option 1', children: 'Option 1' },

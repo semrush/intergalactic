@@ -35,9 +35,13 @@ class Demo extends React.PureComponent {
     return (
       <Flex>
         <Box style={{ position: 'relative' }}>
-          <h2>Main</h2>
+          <h3 id='main-reverse-title'>Main ScrollArea</h3>
           <ScrollArea w={300} h={300}>
-            <ScrollArea.Container onScroll={this.handleScrollMain}>
+            <ScrollArea.Container
+              role='group'
+              aria-labelledby='main-reverse-title'
+              onScroll={this.handleScrollMain}
+            >
               {[...new Array(100)].map((_, index) => (
                 <Box
                   key={index}
@@ -54,9 +58,11 @@ class Demo extends React.PureComponent {
         </Box>
 
         <Box>
-          <h2>Reversed mirror</h2>
+          <h3 id='control-reverse-title'>Reversed ScrollArea</h3>
           <ScrollArea w={300} h={300}>
             <ScrollArea.Container
+              role='group'
+              aria-labelledby='control-reverse-title'
               ref={(node: HTMLDivElement | null) => {
                 this.mirror = node;
               }}
@@ -82,4 +88,4 @@ class Demo extends React.PureComponent {
   }
 }
 
-export default Demo;
+export default () => <Demo />;

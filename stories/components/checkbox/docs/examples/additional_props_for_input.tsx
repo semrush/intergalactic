@@ -8,7 +8,7 @@ const Demo = () => {
         <Checkbox.Value.Control data-testid='checkbox_input_tag' />
         <Checkbox.Value.CheckMark />
       </Checkbox.Value>
-      <Checkbox.Text>Value</Checkbox.Text>
+      <Checkbox.Text>Checkbox with custom properties</Checkbox.Text>
     </Checkbox>
   );
 };

@@ -8,32 +8,33 @@ import { LinkTrigger } from '@semcore/base-trigger';
 import Button from '@semcore/button';
 
 const tooltipContent = `Hey! Don't forget to place some useful information here.`;
-const options = Array(6)
-  .fill('')
-  .map((_, index) => ({
-    value: index,
-    label: `Label ${index}`,
-    children: `Option ${index}`,
-  }));
+const options = ['Mobile', 'Desktop', 'Tablet'].map((value) => ({
+  value,
+  children: value,
+}));
 
 const Demo = () => (
   <Card>
     <Card.Header>
       <Flex alignItems='center' justifyContent='space-between'>
-        <Flex alignItems='center' tag='h4'>
-          <Card.Title innerHint={tooltipContent} innerHintAriaLabel='About this card'>
-            Card Title
-          </Card.Title>
-        </Flex>
-        <Flex alignItems='center'>
-          <Text size={200} color='text-secondary' mr={2}>
+        <Card.Title innerHint={tooltipContent} innerHintAriaLabel='About this card' tag='h3'>
+          Card Title
+        </Card.Title>
+        <Flex alignItems='center' gap={2}>
+          <Text size={200} color='text-secondary'>
             Updated: Tue, Jun 1, 2021
           </Text>
           <Button addonLeft={Close} use='tertiary' theme='muted' aria-label='Hide widget' />
         </Flex>
       </Flex>
       <Card.Description tag='div'>
-        <Select tag={LinkTrigger} options={options} placeholder='Select' mr={4} />
+        <Select
+          tag={LinkTrigger}
+          options={options}
+          placeholder='Select device'
+          aria-label='Device'
+          mr={4}
+        />
         This is an optional additional information or insights.
       </Card.Description>
     </Card.Header>

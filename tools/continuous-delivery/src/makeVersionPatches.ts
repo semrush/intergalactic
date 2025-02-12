@@ -50,10 +50,10 @@ export const makeVersionPatches = (packages: Package[]) => {
 
     if (!lastChangelog) continue;
 
-    if (packageFile.lastPublishedVersion === null) {
-      throw new Error(`${packageFile.name} not found in npm registry`);
-    }
-    const newVersion = maxSemver(packageFile.currentVersion, packageFile.lastPublishedVersion);
+    const newVersion =
+      packageFile.lastPublishedVersion === null
+        ? packageFile.currentVersion
+        : maxSemver(packageFile.currentVersion, packageFile.lastPublishedVersion);
     const hasNewerVersion = semver.compare(newVersion, lastChangelog.version) === -1;
 
     if (!hasNewerVersion) continue;
@@ -79,7 +79,7 @@ export const makeVersionPatches = (packages: Package[]) => {
     recursiveChildrenUpdateCompleted = true;
     for (const packageFile of packages) {
       if (versionPatchesMap.has(packageFile.name)) continue;
-      if (!packageFile.lastPublishedVersion) continue;
+      // if (!packageFile.lastPublishedVersion) continue;
       if (packageFile.name === '@semcore/ui') continue;
 
       let updateType: semver.ReleaseType | null = null;
@@ -125,10 +125,10 @@ export const makeVersionPatches = (packages: Package[]) => {
       if (needUpdate) {
         const versionBase = semver.compare(
           packageFile.currentVersion,
-          packageFile.lastPublishedVersion,
+          packageFile.lastPublishedVersion ?? packageFile.currentVersion,
         )
           ? packageFile.currentVersion
-          : packageFile.lastPublishedVersion;
+          : packageFile.lastPublishedVersion ?? packageFile.currentVersion;
 
         const version = semver.inc(versionBase, updateType || updateTypeFallback)!;
         const updateTypeLabel = updateType || updateTypeFallback;

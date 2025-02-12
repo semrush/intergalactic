@@ -94,7 +94,7 @@ const Demo = () => {
       <ChartLegend
         items={legendItems}
         patterns
-        aria-label={'Legend for the venn chart'}
+        aria-label={'Venn chart legend'}
         onChangeVisibleItem={handleChangeVisible}
       />
       <Plot height={300} width={400} data={data} patterns>

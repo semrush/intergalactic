@@ -24,7 +24,6 @@ const App = PlaygroundGeneration((preview) => {
   const {
     direction,
     alignItems,
-    justifyContent,
     showXAxis,
     showYAxis,
     showTooltip,
@@ -33,18 +32,18 @@ const App = PlaygroundGeneration((preview) => {
     patterns,
   } = chartPlayground({ select, radio, label, bool });
 
-  label({ label: 'Linear chart props', key: 'linearChartProps' });
+  label({ label: 'Radar chart props', key: 'radarChartProps' });
 
   const showDots = bool({
     key: 'showDots',
     defaultValue: true,
-    label: 'Show dots',
+    label: 'Dots',
   });
 
   const circle = bool({
     key: 'circle',
     defaultValue: false,
-    label: 'Circle',
+    label: 'Circular grid',
   });
 
   const chartProps: RadarChartProps = {
@@ -57,7 +56,6 @@ const App = PlaygroundGeneration((preview) => {
     showXAxis,
     showYAxis,
     alignItems,
-    justifyContent,
     showDots,
     circle,
     patterns,
@@ -89,6 +87,8 @@ It is designed to show similarities, differences, and outliers, or any other ite
 ::: tip
 The radar chart is also known as web chart, spider chart, spider graph, spider web chart, star chart, star plot, cobweb chart, irregular polygon, polar chart, or Kiviat diagram. It is equivalent to a parallel coordinates plot, with the axes arranged radially.
 :::
+
+### Usage recommendations
 
 **Use radar chart when:**
 

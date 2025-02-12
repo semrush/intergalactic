@@ -55,7 +55,12 @@ const App = PlaygroundGeneration(
     });
 
     return (
-      <Pills size={size} onChange={(v) => onChange('selected', v)} value={selected}>
+      <Pills
+        size={size}
+        onChange={(v) => onChange('selected', v)}
+        value={selected}
+        aria-label='Pills example'
+      >
         <Pills.Item value={1}>
           {before && <Pills.Item.Addon>{SIZE_ADDON[size]}</Pills.Item.Addon>}
           <Pills.Item.Text>Pill 1</Pills.Item.Text>
@@ -93,7 +98,9 @@ Component consists of the following:
 2. `Pill.Item.Addon`
 3. `Pill.Item.Text`
 
-## Sizes and margins
+## Appearance
+
+### Sizes
 
 Table: Pills sizes and margins
 
@@ -102,12 +109,14 @@ Table: Pills sizes and margins
 | M (28px)            | ![](static/pills-paddings-M.png) |
 | L (40px)            | ![](static/pills-paddings-L.png) |
 
+### Addons
+
 Addons (icons, flags, badges, counters) have the same margin as the addons inside the [Button](/components/button/button).
 
 ![](static/badge-paddings.png)
 ![](static/counter-paddings.png)
 
-## Cases
+## Usage cases
 
 ### Default
 

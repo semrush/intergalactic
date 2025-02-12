@@ -13,9 +13,9 @@ const Demo = () => {
         <InputMask.Value
           mask='9999 9999 9999 9999'
           placeholder='____ ____ ____ ____'
-          title='16-digit number'
           id='basic-example'
           aria-describedby='basic-example-hint'
+          autoComplete='cc-number'
         />
       </InputMask>
       <Text size={100} color='gray-500' id='basic-example-hint'>

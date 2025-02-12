@@ -8,6 +8,18 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Import it from `@semcore/core`.
 
+## [4.38.1] - 2025-02-05
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.45.0 ~> 4.45.1], `@semcore/core` [2.38.0 ~> 2.38.1]).
+
+## [4.38.0] - 2025-02-03
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.44.1 ~> 4.45.0], `@semcore/core` [2.37.1 ~> 2.38.0]).
+
 ## [4.37.1] - 2024-12-30
 
 ### Changed

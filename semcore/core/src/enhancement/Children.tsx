@@ -1,7 +1,6 @@
 import React from 'react';
-import { CONTEXT_COMPONENT } from '../types/symbols';
+import { CONTEXT_COMPONENT, CHILDREN_COMPONENT } from '../core-types/symbols';
 
-export const CHILDREN_COMPONENT = Symbol('CHILDREN_COMPONENT');
 const CHILDREN_SELF = Symbol('CHILDREN_SELF');
 
 const GETTER_REG = /^get[\w]+Props$/;

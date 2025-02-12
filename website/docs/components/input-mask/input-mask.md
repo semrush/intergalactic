@@ -66,6 +66,7 @@ const Preview = (preview) => {
         mask={mask}
         placeholder={placeholder}
         hideMask={hideMask}
+        aria-label='InputMask example'
       />
     </InputMask>
   );
@@ -108,7 +109,7 @@ Table: InputMask's placeholder and mask appearance
 | Placeholder ![](static/placeholder-default-2.png) | Placeholder use `--text-placeholder` as color. |
 | Mask ![](static/mask-default-2.png)               | Mask use `--text-primary` as color.            |
 
-## Hint instructions
+## Text instructions
 
 We suggest including clear text instructions for inputs that have specific data format requirements.
 

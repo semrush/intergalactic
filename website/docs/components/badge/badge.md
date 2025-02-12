@@ -14,9 +14,9 @@ import Badge from '@semcore/ui/badge';
 const Preview = (preview) => {
   const { select, radio, text } = preview('Badge');
 
-  const color = radio({
+  const color = select({
     key: 'color',
-    defaultValue: 'white',
+    defaultValue: 'text-primary-invert',
     label: 'Color',
     options: ['text-primary-invert', 'text-primary'],
   });
@@ -62,7 +62,7 @@ _For example, you added a new tab to the report. In this case, you can highlight
 
 Component has one size.
 
-### Badge types
+### Types
 
 Use the following badges in the products depending on the status of the feature or product:
 
@@ -94,11 +94,11 @@ The feature status can be shown inside most of the components and controls.
 
 ![](static/button_secondary.png)
 
-### Pill
+### Pills
 
 ![](static/pills.png)
 
-### Feature status in the notification
+### Notification
 
 ![](static/notice.png)
 
@@ -108,7 +108,7 @@ Don’t confuse [Tag](/components/tag/tag) and Badge components. Tag is used for
 
 ![](static/table-yes-no.png)
 
-## Location
+## Placement
 
 Badge is usually placed to the right of the element. As an exception, in the [Notice](/components/notice/notice) component, badge is positioned to the left relative to the text. Badge's margins are always multiples of 4.
 

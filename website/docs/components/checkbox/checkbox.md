@@ -50,10 +50,10 @@ const App = PlaygroundGeneration(
       label: 'Disabled',
     });
 
-    const children = text({
-      key: 'children',
+    const label = text({
+      key: 'label',
       defaultValue: 'Label text',
-      label: 'Children',
+      label: 'Label',
     });
 
     return (
@@ -64,7 +64,7 @@ const App = PlaygroundGeneration(
         checked={checked}
         onChange={(v) => onChange('checked', v)}
         indeterminate={indeterminate}
-        label={children}
+        label={label}
       />
     );
   },
@@ -96,7 +96,7 @@ Component consists of the following:
 2. `Checkbox.Value`
 3. `Checkbox.Text`
 
-## Sizes and margins
+## Appearance
 
 ### Sizes
 
@@ -120,7 +120,7 @@ Table: Checkbox margins
 | M (16px * 16px) | ![](static/margins-m.png) ![](static/vert-m.png) |
 | L (20px * 20px) | ![](static/margins-l.png) ![](static/vert-l.png) |
 
-## Checkbox with a paragraph
+## Checkbox with paragraph
 
 All checkbox sizes can be used with the corresponding text paragraphs.
 
@@ -143,7 +143,7 @@ Info icon should have `margin-left: 4px`.
 
 ![](static/info-icon-margin.png)
 
-## Checkbox with a link inside
+## Checkbox with link inside
 
 Text label may contain a [Link component](/components/link/link).
 
@@ -155,27 +155,6 @@ Note, that the checkbox text active zone shouldn't include a link.
 
 ![](static/link-hover-zone.png)
 
-## Interaction
-
-- Hovering over the "Checkbox and text" area changes the cursor to a pointer.
-- Clicking anywhere on the "Checkbox and text" area changes the state of the checkbox.
-- If the text label contains a link or pseudo-link, clicking on the link area doesn't change the checkbox state.
-- When the checkbox is disabled, the text and related words should also be "disabled." It's recommended to include a tooltip explaining why the checkbox is disabled.
-
-### States
-
-Table: Checkbox states
-
-| State                 | Appearance example                            |
-| --------------------- | --------------------------------------------- |
-| Normal                | ![](static/state-unchecked.png)               |
-| Checked               | ![](static/state-checked.png)                 |
-| Indeterminate         | ![](static/state-indetermenate.png)           |
-| Invalid               | ![](static/state-invalid.png)                 |
-| Checked invalid       | ![](static/state-checked-invalid.png)         |
-| Indeterminate invalid | ![](static/state-indetermenate-invalid.png)   |
-| Disabled              | ![](static/state-disabled.png)                |
-
 ## Checkbox group
 
 To save the user's time, use the "Select all" and "Deselect all" options for checkbox groups with more than 6-7 options. These buttons will select or deselect all checkboxes in the group:
@@ -184,7 +163,7 @@ To save the user's time, use the "Select all" and "Deselect all" options for che
 - "Deselect all" deselects all checkboxes at all levels.
 - If at least one checkbox is checked at any level, "Deselect all" changes to "Select all".
 
-![](static/group-1.png) ![](static/group-2.png) ![](static/group-3.png)
+![](static/checkbox-group.png)
 
 If you have a checkbox tree, the top-level checkbox has three states:
 
@@ -208,6 +187,28 @@ If you use a combination of the checkbox tree and "Select all" and "Deselect all
 When user clicks on a checkbox with the `indeterminate` state, all sub-level checkboxes get `checked` state.
 
 ![](static/select-all.png) ![](static/deselect-all.png)
+
+## Interaction
+
+- Hovering over the "Checkbox and text" area changes the cursor to a pointer.
+- Clicking anywhere on the "Checkbox and text" area changes the state of the checkbox.
+- If the text label contains a link or pseudo-link, clicking on the link area doesn't change the checkbox state.
+- When the checkbox is disabled, the text and related words should also be "disabled." It's recommended to include a tooltip explaining why the checkbox is disabled.
+
+<!-- I'D REMOVED THIS SECTION BECAUSE IMO SHOWING STATIC IMAGES OF STATES IS A BAD PRACTICE
+### States
+
+Table: Checkbox states
+
+| State                 | Appearance example                            |
+| --------------------- | --------------------------------------------- |
+| Normal                | ![](static/state-unchecked.png)               |
+| Checked               | ![](static/state-checked.png)                 |
+| Indeterminate         | ![](static/state-indetermenate.png)           |
+| Invalid               | ![](static/state-invalid.png)                 |
+| Checked invalid       | ![](static/state-checked-invalid.png)         |
+| Indeterminate invalid | ![](static/state-indetermenate-invalid.png)   |
+| Disabled              | ![](static/state-disabled.png)                | -->
 
 ## Usage in UX/UI
 

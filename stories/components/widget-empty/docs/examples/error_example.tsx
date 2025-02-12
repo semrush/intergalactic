@@ -1,6 +1,7 @@
 import React from 'react';
 import Select from '@semcore/select';
 import { Box } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
 import { I18nProvider } from '@semcore/core/lib/utils/enhances/WithI18n';
 import { Error } from '@semcore/widget-empty';
 import Card from '@semcore/card';
@@ -33,7 +34,10 @@ const Demo = () => {
 
   return (
     <div>
-      Select language: <Select options={options} value={lang} onChange={setLang} />
+      <Text size={200} tag='label' htmlFor='select-lang-error' mr={2}>
+        Language
+      </Text>
+      <Select id='select-lang-error' options={options} value={lang} onChange={setLang} />
       <I18nProvider value={lang}>
         <Card mt={4}>
           <Card.Header>

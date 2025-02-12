@@ -16,26 +16,13 @@ import { ScreenReaderOnly } from '@semcore/flex-box';
 class PaginationRoot extends Component {
   static displayName = 'Pagination';
 
-  static defaultProps = (props) => {
-    const totalPages = props.totalPages || props.defaultTotalPages || 1;
+  static defaultProps = () => {
     return {
       defaultCurrentPage: 1,
       defaultTotalPages: 1,
       i18n: localizedMessages,
       locale: 'en',
-      children: (
-        <>
-          {totalPages === 1 ? null : (
-            <>
-              <Pagination.FirstPage />
-              <Pagination.PrevPage />
-              <Pagination.NextPage />
-            </>
-          )}
-          <Pagination.PageInput />
-          <Pagination.TotalPages />
-        </>
-      ),
+      size: 'm',
     };
   };
   static style = style;
@@ -126,17 +113,18 @@ class PaginationRoot extends Component {
   };
 
   getFirstPageProps = () => {
-    const { currentPage, getI18nText } = this.asProps;
+    const { currentPage, getI18nText, size } = this.asProps;
     const disabled = currentPage <= 1;
     return {
       disabled,
       onClick: () => this.handlePageChange(1),
       getI18nText,
+      size,
     };
   };
 
   getPrevPageProps = () => {
-    const { currentPage, getI18nText } = this.asProps;
+    const { currentPage, getI18nText, size } = this.asProps;
     const disabled = currentPage <= 1;
     return {
       currentPage,
@@ -144,11 +132,12 @@ class PaginationRoot extends Component {
       onClick: () => this.handlePageChange(currentPage - 1),
       getI18nText,
       ref: this.nextPageButtonRef,
+      size,
     };
   };
 
   getNextPageProps = () => {
-    const { currentPage, totalPages, getI18nText } = this.asProps;
+    const { currentPage, totalPages, getI18nText, size } = this.asProps;
     const disabled = !(currentPage < totalPages);
     return {
       currentPage,
@@ -156,14 +145,16 @@ class PaginationRoot extends Component {
       onClick: () => this.handlePageChange(currentPage + 1),
       getI18nText,
       ref: this.prevPageButtonRef,
+      size,
     };
   };
 
   getPageInputProps = () => {
-    const { getI18nText, locale } = this.asProps;
+    const { getI18nText, locale, size } = this.asProps;
     return {
       getI18nText,
       locale,
+      size,
     };
   };
 
@@ -178,7 +169,7 @@ class PaginationRoot extends Component {
 
   getPageInputValueProps = () => {
     const { dirtyCurrentPage } = this.state;
-    const { currentPage, totalPages, getI18nText } = this.asProps;
+    const { currentPage, totalPages, getI18nText, size } = this.asProps;
     return {
       min: 1,
       max: totalPages,
@@ -188,11 +179,12 @@ class PaginationRoot extends Component {
       onChange: this.handlePageValueChange,
       onKeyDown: this.handlePageInputKeyDown,
       getI18nText,
+      size,
     };
   };
 
   getTotalPagesProps = () => {
-    const { currentPage, totalPages, getI18nText, locale } = this.asProps;
+    const { currentPage, totalPages, getI18nText, locale, size } = this.asProps;
     const formatter = new Intl.NumberFormat(locale, { style: 'decimal' });
     return {
       totalPages,
@@ -200,15 +192,45 @@ class PaginationRoot extends Component {
       isLastOrSingle: currentPage === totalPages,
       onClick: () => this.handlePageChange(totalPages),
       getI18nText,
+      size,
     };
   };
 
   render() {
     const SPagination = Root;
-    const { Children, getI18nText, currentPage } = this.asProps;
+    const {
+      Children,
+      children: hasChildren,
+      getI18nText,
+      currentPage,
+      totalPages = 1,
+    } = this.asProps;
+
     return sstyled(this.asProps.styles)(
-      <SPagination render={Flex} tag='nav' aria-label={getI18nText('pagination')}>
-        <Children />
+      <SPagination
+        render={Flex}
+        flexWrap={'wrap'}
+        withGap={!hasChildren}
+        tag='nav'
+        aria-label={getI18nText('pagination')}
+      >
+        {hasChildren ? (
+          <Children />
+        ) : (
+          <>
+            {totalPages === 1 ? null : (
+              <Flex>
+                <Pagination.FirstPage />
+                <Pagination.PrevPage />
+                <Pagination.NextPage />
+              </Flex>
+            )}
+            <Flex alignItems={'center'}>
+              <Pagination.PageInput />
+              <Pagination.TotalPages />
+            </Flex>
+          </>
+        )}
         <ScreenReaderOnly aria-live={'polite'} role={'status'}>
           {getI18nText('pageInputLabel')} {currentPage}
         </ScreenReaderOnly>
@@ -269,12 +291,13 @@ class TotalPages extends Component {
     const STotalPagesLabel = Text;
     const STotalLastPages = Text;
     const { styles, getI18nText, totalPages, isLastOrSingle, children, ...other } = this.asProps;
-
+    const textSize = other.size === 'l' ? '300' : '200';
     return sstyled(styles)(
       <>
-        <STotalPagesLabel>{getI18nText('totalPagesLabel')}</STotalPagesLabel>
+        <STotalPagesLabel size={textSize}>{getI18nText('totalPagesLabel')}</STotalPagesLabel>
         {isLastOrSingle ? (
           <STotalLastPages
+            size={textSize}
             aria-label={getI18nText('lastPage', { lastPageNumber: totalPages })}
             {...other}
           >
@@ -315,11 +338,11 @@ class PageInput extends Component {
   render() {
     const SPageInput = Root;
     const SLabel = Text;
-    const { Children, getI18nText, styles, uid, locale } = this.asProps;
+    const { Children, getI18nText, styles, uid, locale, size } = this.asProps;
 
     return sstyled(styles)(
       <>
-        <SLabel tag='label' htmlFor={`pagination-input-${uid}`}>
+        <SLabel tag='label' htmlFor={`pagination-input-${uid}`} size={size}>
           {getI18nText('pageInputLabel')}
         </SLabel>
         <SPageInput

@@ -6,11 +6,19 @@
 "preserve_hierarchy" : true
 "files": [
   {
+    "source": "semcore/add-filter/src/translations/en.json",
+    "translation": "/%original_path%/%two_letters_code%.json",
+  },
+  {
     "source": "/semcore/base-trigger/src/translations/en.json",
     "translation": "/%original_path%/%two_letters_code%.json",
   },
   {
     "source": "/semcore/breadcrumbs/src/translations/en.json",
+    "translation": "/%original_path%/%two_letters_code%.json",
+  },
+  {
+    "source": "/semcore/bulk-textarea/src/translations/en.json",
     "translation": "/%original_path%/%two_letters_code%.json",
   },
   {

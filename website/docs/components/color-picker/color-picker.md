@@ -17,7 +17,7 @@ const Preview = (preview) => {
   const displayLabel = bool({
     key: 'displayLabel',
     defaultValue: false,
-    label: 'Show label',
+    label: 'Display label',
   });
 
   return (
@@ -42,17 +42,21 @@ const App = PlaygroundGeneration(Preview);
 - List of ColorPicker.Items
 - Input (optional)
 
-## Trigger
+## Appearance
 
-The trigger for a ColorPicker is a Select with a circle as the leading addon.
+### Trigger
 
-![](static/trigger.png)
-
-### Sizes
+The trigger for a ColorPicker is a Select with a circle as the leading addon, and has 16px * 16px size.
 
 ![](static/trigger-size.png)
 
-## List of colors
+### Item
+
+ColorPicker item has 28px * 28px size.
+
+![](static/colorpicker-item-size.png)
+
+### List of colors
 
 A list of colors can include either a single ColorPicker.Item or multiple ones, which are preview swatches that display all available color values.
 
@@ -62,15 +66,7 @@ Table: List of colors and its items
 | -------------------- | ----------------------------------------------------- |
 | ![](static/colorpicker-item-bg-default.png) | ![](static/colorpicker-inline.png) |
 
-## Size
-
-ColorPicker.Item has 28px * 28px size.
-
-![](static/colorpicker-item-size.png)
-
-## Margins
-
-All margins must be [multiples of 4](/layout/box-system/box-system#spacing_system). The default recommended margins are 4px:
+Margin between the items must be [multiples of 4](/layout/box-system/box-system#spacing_system). The default recommended margins are 4px:
 
 ![](static/colorpicker-margins.png)
 
@@ -84,6 +80,24 @@ Table: Color items
 | --------------- | ------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
 | Item for background color | ![](static/colorpicker-item-bg-default.png) | Use for changing the background color. For example, a user can pick colors to visually separate their competitors. |
 | Item for text color      | ![](static/colorpicker-item-text-default.png)    | Use for changing the Tag color, for example                                                                                             |
+
+## Dropdown
+
+### Width and height
+
+**The recommended width of a dropdown is 188px.** The height of a dropdown list depends on its content.
+
+Showing all available colors in the DropdownMenu is crucial, however, if a user has added more than 20 custom colors, a scrollbar should be displayed.
+
+Table: DropdownMenu appearance
+
+| DropdownMenu                  | DropdownMenu with more than 20 colors |
+| ----------------------------- | ------------------------------------- |
+| ![](static/dropdown-menu.png) | ![](static/scroll.png)                |
+
+### Margins and paddings
+
+![](static/colorpicker-margins-paddings.png)
 
 ## Interaction
 
@@ -117,24 +131,6 @@ Table: States of item for adding colors
 | Item type | Normal | Hover | Active | Usage |
 | ------------------- | ------------------------------- | -------------------------- | ----------------------- | -------------------- |
 | Add color button | ![](static/btn-add-default.png) | ![](static/btn-add-hover.png) | ![](static/btn-add-active.png)| Use Button with icon and change border-radius to 50%.|
-
-## Dropdown
-
-### Width and height
-
-**The recommended width of a dropdown is 188px.** The height of a dropdown list depends on its content.
-
-Showing all available colors in the DropdownMenu is crucial, however, if a user has added more than 20 custom colors, a scrollbar should be displayed.
-
-Table: DropdownMenu appearance
-
-| DropdownMenu                  | DropdownMenu with more than 20 colors |
-| ----------------------------- | ------------------------------------- |
-| ![](static/dropdown-menu.png) | ![](static/scroll.png)                |
-
-### Margins and paddings
-
-![](static/colorpicker-margins-paddings.png)
 
 ## Custom colors (optional)
 

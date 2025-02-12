@@ -59,6 +59,7 @@ const Preview = (preview) => {
         disabled={disabled}
         value={value}
         onChange={(value) => onChange('value', value)}
+        aria-label='InputNumber example'
       />
       <InputNumber.Controls showControls={showControls} />
     </InputNumber>
@@ -75,6 +76,8 @@ const App = PlaygroundGeneration(Preview, {
 ## Description
 
 **InputNumber** is a numeric input field that accepts numeric values only.
+
+### Usage recommendations
 
 **Use this type of input in the following cases:**
 

@@ -34,7 +34,7 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
   const interactive = radio({
     key: 'interactive',
     defaultValue: 'click',
-    label: 'Interactive event',
+    label: 'Interaction',
     options: ['click', 'focus'],
   });
 
@@ -96,6 +96,16 @@ Margin between trigger and dropdown is always 4px.
 
 ![](static/trigger-dropdown-scheme.png)
 
+## Position
+
+By default, the Dropdown component drops down from the trigger. However, if there isn't enough space below, it will drop in the opposite direction using [Popper.js](https://popper.js.org/).
+
+![All possible positions for Dropdown component based on Popper.js properties clockwise: top-start, top, top-end, right-start, right, right-end, bottom-end, bottom, bottom-start, left-end, left, left-start.](static/dropdown-directions.png)
+
+::: tip
+**The Dropdown component should maintain its position relative to the trigger and not move when the page is scrolled.** For instance, if the dropdown opens upward, it should remain in that position even if the user scrolls down, causing the dropdown to become partially or completely hidden.
+:::
+
 ## Interaction
 
 **Dropdown opens:**
@@ -110,16 +120,6 @@ Margin between trigger and dropdown is always 4px.
 - by an action inside the dropdown (for example, by clicking the "Cancel" button)
 - by pressing `Esc`
 - when the input trigger loses `focus`
-
-## Position
-
-By default, the Dropdown component drops down from the trigger. However, if there isn't enough space below, it will drop in the opposite direction using [Popper.js](https://popper.js.org/).
-
-![All possible positions for Dropdown component based on Popper.js properties clockwise: top-start, top, top-end, right-start, right, right-end, bottom-end, bottom, bottom-start, left-end, left, left-start.](static/dropdown-directions.png)
-
-::: tip
-**The Dropdown component should maintain its position relative to the trigger and not move when the page is scrolled.** For instance, if the dropdown opens upward, it should remain in that position even if the user scrolls down, causing the dropdown to become partially or completely hidden.
-:::
 
 ## Usage in UX/UI
 

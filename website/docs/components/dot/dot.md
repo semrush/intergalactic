@@ -44,15 +44,15 @@ const Preview = (preview) => {
   });
 
   return (
-    <Button>
+    <Button aria-describedby={hidden ? undefined : 'dot'}>
       <Button.Text alignItems='center'>Notifications</Button.Text>
       {up ? (
-        <Dot up={up} size={size} hidden={hidden}>
+        <Dot up size={size} hidden={hidden} aria-label={value ? undefined : 'New'} id='dot'>
           {value ? value : null}
         </Dot>
       ) : (
         <Button.Addon>
-          <Dot size={size} hidden={hidden}>
+          <Dot size={size} hidden={hidden} aria-label={value ? undefined : 'New'} id='dot'>
             {value ? value : null}
           </Dot>
         </Button.Addon>
@@ -101,7 +101,7 @@ Table: Dot sizes
 | L with a counter inside | ![](static/dot-on.png)               | Use it to mark controls from the outside and show the number of updates. |
 |                         | ![](static/xl-margins.png)           |                                                                          |
 
-## Location
+## Placement
 
 Dot component can be set to the up right corner of the control or inside the list. In cases where a dot is above the component, it is always has `transform: translate (30%, -30%)`.
 

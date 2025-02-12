@@ -13,9 +13,10 @@ const Demo = () => {
   return (
     <React.Fragment>
       <Text size={300} tag='div' mb={2}>
-        Placement:
+        <label htmlFor='select-placement'>Placement</label>
       </Text>
       <Select
+        id='select-placement'
         value={placement}
         options={arrToOptions(placements)}
         onChange={setPlacement}

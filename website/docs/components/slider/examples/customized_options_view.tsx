@@ -21,7 +21,6 @@ const Demo = () => {
           min={1}
           max={3}
           id='floppa-size'
-          aria-label='Floapp size'
           options={[
             { value: 'small', label: 'Small Floppa' },
             { value: 'medium', label: 'Medium Floppa' },

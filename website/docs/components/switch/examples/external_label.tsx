@@ -1,10 +1,12 @@
 import React from 'react';
 import Switch from '@semcore/switch';
 import CheckM from '@semcore/icon/Check/m';
+import CloseM from 'intergalactic/icon/Close/m';
 import { Text } from '@semcore/typography';
 import { Box, Flex } from '@semcore/flex-box';
 
 const Demo = () => {
+  const [value, setValue] = React.useState(true);
   return (
     <Flex gap={2} alignItems='center'>
       <Text tag='label' size={200} htmlFor='email-subscription'>
@@ -12,8 +14,8 @@ const Demo = () => {
       </Text>
       <Box>
         <Switch size='l' theme='success'>
-          <Switch.Value id='email-subscription' mt={0}>
-            <CheckM />
+          <Switch.Value id='email-subscription' checked={value} onChange={setValue}>
+            {value ? <CheckM /> : <CloseM />}
           </Switch.Value>
         </Switch>
       </Box>

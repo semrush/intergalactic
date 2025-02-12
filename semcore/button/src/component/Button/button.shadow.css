@@ -274,7 +274,7 @@ SButton[neighborLocation='left'] {
   position: relative;
 
   &:after {
-    background-color: var(--intergalactic-text-primary-invert, #ffffff);
+    background-color: var(--intergalactic-border-primary-invert, #ffffff);
   }
 
   &[theme='secondary-muted'] {

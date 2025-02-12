@@ -8,6 +8,18 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Import it from `@semcore/core`.
 
+## [5.45.3] - 2025-02-05
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [2.40.0 ~> 2.40.1], `@semcore/flex-box` [5.40.0 ~> 5.40.1], `@semcore/neighbor-location` [4.38.0 ~> 4.38.1], `@semcore/outside-click` [3.38.0 ~> 3.38.1], `@semcore/utils` [4.45.0 ~> 4.45.1], `@semcore/core` [2.38.0 ~> 2.38.1]).
+
+## [5.45.2] - 2025-01-23
+
+### Added
+
+- `popperMargin` property to set maxSize (width or height) of popper to height from the content minus this margin.
+
 ## [5.45.1] - 2024-12-30
 
 ### Changed

@@ -30,6 +30,7 @@
     "esbuild": "0.14.29",
     "happy-dom": "9.20.3",
     "svg-to-jsx": "^1.0.4",
-    "@types/react": "18.0.21"
+    "@types/react": "18.0.21",
+    "@semcore/testing-utils": "workspace:*"
   }
 }

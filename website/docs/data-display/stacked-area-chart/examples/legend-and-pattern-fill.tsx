@@ -75,7 +75,7 @@ const Demo = () => {
         items={legendItems}
         shape={'Checkbox'}
         patterns
-        aria-label={'Legend for the stacked area chart'}
+        aria-label={'Stacked area chart legend'}
         onChangeVisibleItem={handleChangeVisible}
       />
       <Plot

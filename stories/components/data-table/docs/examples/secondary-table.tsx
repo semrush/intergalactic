@@ -3,12 +3,7 @@ import DataTable from '@semcore/data-table';
 
 const Demo = () => {
   return (
-    <DataTable
-      data={data}
-      use='secondary'
-      sort={['kd', 'desc']}
-      aria-label={'Table title. Secondary'}
-    >
+    <DataTable data={data} use='secondary' sort={['kd', 'desc']} aria-label={'Secondary'}>
       <DataTable.Head>
         <DataTable.Column name='keyword' children='Keyword' />
         <DataTable.Column name='kd' children='KD,%' />

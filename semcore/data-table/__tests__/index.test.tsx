@@ -640,7 +640,7 @@ describe('DataTable', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test.concurrent('Download status', async ({ task }) => {
+  test.concurrent('SpinContainer in table', async ({ task }) => {
     const component = (
       <div style={{ width: 800 }}>
         <DataTable data={data} aria-label={'table label'}>

@@ -351,15 +351,15 @@ const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
         __excludeProps={['title']}
         {...tooltipProps}
       >
-        <SBeginning>{text.substring(0, text.length - displayedSymbols / 2 - 1)}</SBeginning>
-        <STail>{text.substring(text.length - displayedSymbols / 2 - 1)}</STail>
+        <SBeginning>{contextValue.begining}</SBeginning>
+        <STail>{contextValue.tail}</STail>
       </SContainerMiddle>,
     ) as any;
   }
   return sstyled(styles)(
     <SContainerMiddle {...otherProps} ref={containerRef ?? resizeElement}>
-      <SBeginning>{text.substring(0, text.length - displayedSymbols / 2 - 1)}</SBeginning>
-      <STail>{text.substring(text.length - displayedSymbols / 2 - 1)}</STail>
+      <SBeginning>{contextValue.begining}</SBeginning>
+      <STail>{contextValue.tail}</STail>
     </SContainerMiddle>,
   ) as any;
 };

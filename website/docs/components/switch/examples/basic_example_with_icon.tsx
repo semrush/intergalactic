@@ -1,14 +1,16 @@
 import React from 'react';
 import Switch from '@semcore/switch';
 import CheckM from '@semcore/icon/Check/m';
+import CloseM from 'intergalactic/icon/Close/m';
 
 const Demo = () => {
+  const [value, setValue] = React.useState(true);
   return (
     <Switch size='l' theme='success'>
-      <Switch.Value defaultChecked={true} ml={0}>
-        <CheckM />
+      <Switch.Value checked={value} onChange={setValue}>
+        {value ? <CheckM /> : <CloseM />}
       </Switch.Value>
-      <Switch.Addon>Have a great day</Switch.Addon>
+      <Switch.Addon>Autosave</Switch.Addon>
     </Switch>
   );
 };

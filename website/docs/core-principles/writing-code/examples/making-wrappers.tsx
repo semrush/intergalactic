@@ -25,7 +25,7 @@ const AlertButton = wrapIntergalacticComponent<
 
 const Demo = () => (
   <AlertButton handle={['click']} message='Hello world'>
-    Click me
+    Show alert
   </AlertButton>
 );
 

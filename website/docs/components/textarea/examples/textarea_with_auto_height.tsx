@@ -11,11 +11,11 @@ const Demo = () => (
     <Box mt={2}>
       <Textarea
         w={500}
-        minRows={4}
+        minRows={2}
         maxRows={10}
         id='autoscalable-textarea'
         name='autoscalable-textarea'
-        placeholder='Try typing a really big message'
+        placeholder='Try entering a lot of lines'
       />
     </Box>
   </div>

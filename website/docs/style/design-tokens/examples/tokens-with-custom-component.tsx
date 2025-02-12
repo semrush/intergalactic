@@ -1,13 +1,13 @@
 import React from 'react';
-import Button from '@semcore/button';
 import Switch from '@semcore/switch';
 import { Box, Flex } from '@semcore/flex-box';
 import { ThemeProvider } from '@semcore/core/lib/utils/ThemeProvider';
 
 const styles = `
     .popper {
-      box-shadow: var(--intergalactic-box-shadow-popper, 0px 1px 12px 0px rgba(25, 27, 35, 0.15));
-      padding: var(--intergalactic-form-control-m, 28px) var(--intergalactic-form-control-l, 40px);
+      box-shadow: var(--intergalactic-box-shadow-card);
+      padding: var(--intergalactic-spacing-8x, 32px) var(--intergalactic-spacing-10x, 40px);
+      border-radius: var(---intergalactic-popper-rounded, 6px);
     }
     .kraken {
       position: absolute;
@@ -40,18 +40,15 @@ const CustomComponent = () => {
 
   return (
     <ThemeProvider tokens={violetPrimaryButtonTheme}>
-      <Flex className='wrapper' h={220} alignItems='flex-end'>
+      <Flex className='wrapper' h={180} alignItems='flex-end'>
         <Box className='kraken' style={{ display: visible ? 'block' : 'none' }}>
           <Kraken />
         </Box>
         <Flex className='popper' h={40} alignItems='center'>
-          <Switch size='xl' mr={2}>
+          <Switch size='xl'>
             <Switch.Value onChange={toggleVisible} />
             <Switch.Addon>Release the Kraken!</Switch.Addon>
           </Switch>
-          <Button size='l' theme='muted' use='tertiary' ml={10}>
-            Close
-          </Button>
         </Flex>
       </Flex>
     </ThemeProvider>
@@ -67,6 +64,8 @@ const Kraken = () => {
       viewBox='0 0 130 130'
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
+      role='img'
+      aria-label='Violet octopus with sweat smile'
     >
       <path
         d='M44.1155 23.0443C22.1641 38.3376 35.7902 61.518 36.6345 77.4419C36.9979 84.0572 33.8131 88.0542 30.4146 89.0374C27.0161 90.0206 16.0938 86.5687 21.8649 72.2693C24.1626 78.0296 29.9337 75.2617 31.2268 73.9578C34.0055 71.1364 34.1337 59.6798 23.5855 60.4065C9.00824 61.4753 1.40968 86.9107 11.8296 98.0574C17.8358 104.47 31.494 104.993 43.5064 97.4268H75.4609L89.7283 78.9915C86.2015 74.7166 93.5009 63.6982 95.649 51.1087C97.5727 39.8551 94.7406 30.5466 86.5756 22.9801C82.6213 19.3251 61.7493 10.7647 44.1155 23.0443Z'

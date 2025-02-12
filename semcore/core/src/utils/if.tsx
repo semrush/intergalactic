@@ -1,4 +1,4 @@
-import { UnknownProperties } from '../types/UnknownProperties';
+import { UnknownProperties } from '../core-types/UnknownProperties';
 import { FC, ReactNode } from 'react';
 
 /** @deprecated */

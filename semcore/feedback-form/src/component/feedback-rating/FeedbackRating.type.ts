@@ -10,7 +10,7 @@ import Checkbox, { CheckboxProps } from '@semcore/checkbox';
 export type FormConfigItem = {
   key: string;
   label: React.ReactNode;
-  type: 'input' | 'checkbox' | 'textarea';
+  type: 'input' | 'checkbox' | 'textarea' | 'email';
   description?: React.ReactNode;
   validate?: (value: any) => Error | string | undefined;
 };
@@ -28,6 +28,8 @@ export type FeedbackRatingProps = Intergalactic.InternalTypings.EfficientOmit<
   onNotificationClose: () => void;
   /** text in notification panel */
   notificationText: string;
+  /** title in notification panel */
+  notificationTitle?: string;
   /** optional link in notification panel */
   learnMoreLink?: string;
   /** rating value */

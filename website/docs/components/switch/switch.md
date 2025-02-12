@@ -10,6 +10,7 @@ tabs: Design('switch'), A11y('switch-a11y'), API('switch-api'), Example('switch-
 import React from 'react';
 import Switch from '@semcore/ui/switch';
 import CheckM from '@semcore/ui/icon/Check/m';
+import CloseM from '@semcore/ui/icon/Close/m';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 const App = PlaygroundGeneration(
@@ -30,24 +31,12 @@ const App = PlaygroundGeneration(
       options: ['info', 'success'].map((v) => ({ value: v, name: v })),
     });
 
-    const checked = bool({
-      key: 'checked',
-      defaultValue: false,
-      label: 'Checked',
-    });
-
     const icon = bool({ key: 'children', defaultValue: false, label: 'Icon' });
 
-    const before = text({
-      key: 'before',
-      label: 'AddonLeft',
-      defaultValue: '',
-    });
-
-    const after = text({
-      key: 'after',
-      label: 'AddonRight',
-      defaultValue: 'On',
+    const checked = bool({
+      key: 'checked',  
+      defaultValue: false,
+      label: 'Checked',
     });
 
     const disabled = bool({
@@ -56,17 +45,22 @@ const App = PlaygroundGeneration(
       label: 'Disabled',
     });
 
+    const textValue = text({
+      key: 'textValue',
+      label: 'Label',
+      defaultValue: 'Notifications',
+    });
+
     return (
       <Switch theme={theme} size={size}>
-        {before && <Switch.Addon>{before}</Switch.Addon>}
         <Switch.Value
           disabled={disabled}
           checked={checked}
           onChange={(value) => onChange('checked', value)}
         >
-          {icon && <CheckM />}
+          {icon && (checked ? <CheckM /> : <CloseM />)}
         </Switch.Value>
-        {after && <Switch.Addon>{after}</Switch.Addon>}
+        {textValue && <Switch.Addon>{textValue}</Switch.Addon>}
       </Switch>
     );
   },
@@ -93,7 +87,9 @@ Component consists of the following:
 - `Switch.Value`
 - `Switch.Addon`
 
-## Sizes and margins
+## Appearance
+
+### Sizes
 
 The switch comes in three sizes: `m`, `l` and `xl`.
 
@@ -107,7 +103,7 @@ Table: Switch sizes and styles
 | L (20px)                   | ![](static/switch-on-text-l.png)  | `font-size: var(--fs-200)`, margin between the control and the text is 8px |
 | XL (24px)                  | ![](static/switch-on-text-xl.png) | `font-size: var(--fs-300)`, margin between the control and the text is 8px |
 
-## Themes
+### Themes
 
 The Switch component offers two themes: `info` and `success`.
 
@@ -118,16 +114,16 @@ Table: Switch themes
 | `info`    | ![](static/on-info.png)    | Default theme.                                                 |
 | `success` | ![](static/on-success.png) | Theme for highlighting a positive enabled state of the switch. |
 
-## Icon inside Switch.Value
+## Switch with icon
 
 For larger sizes of the component (`l` and `xl`), you have the option to include an icon within the `Switch.Value`. It is recommended to use different icons for the off and on states.
 
 Table: Icon inside the Switch.Value
 
-| Switch size | Normal state                       | Checked state                     |
-| ----------- | ---------------------------------- | --------------------------------- |
-| l           | ![](static/switch-off-icon-l.png)  | ![](static/switch-on-icon-l.png)  |
-| xl          | ![](static/switch-off-icon-xl.png) | ![](static/switch-on-icon-xl.png) |
+| `size` | Normal state                       | Checked state                     |
+| ------ | ---------------------------------- | --------------------------------- |
+| L      | ![](static/switch-off-icon-l.png)  | ![](static/switch-on-icon-l.png)  |
+| XL     | ![](static/switch-off-icon-xl.png) | ![](static/switch-on-icon-xl.png) |
 
 ## Interaction
 

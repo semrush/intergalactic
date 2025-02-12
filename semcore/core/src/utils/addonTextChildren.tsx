@@ -1,6 +1,5 @@
 import React from 'react';
-import { CHILDREN_COMPONENT } from '../enhancement/Children';
-import { INHERITED_NAME } from '../enhancement/inheritedName';
+import { CHILDREN_COMPONENT, INHERITED_NAME } from '../core-types/symbols';
 import getOriginChildren from './getOriginChildren';
 import isNode from './isNode';
 

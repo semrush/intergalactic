@@ -15,7 +15,7 @@ const Demo = () => {
 
   const yScale = scaleBand()
     .range([height - MARGIN, MARGIN])
-    .domain(data.map((d) => d.category))
+    .domain(data.map((d) => d.bar))
     .paddingInner(0.4)
     .paddingOuter(0.2);
 
@@ -28,41 +28,41 @@ const Demo = () => {
         <XAxis.Ticks />
         <XAxis.Grid />
       </XAxis>
-      <HoverRect.Tooltip y='category' wMin={100}>
+      <HoverRect.Tooltip y='bar' wMin={100}>
         {({ yIndex }) => {
           return {
             children: (
               <>
-                <HoverRect.Tooltip.Title>{data[yIndex].category}</HoverRect.Tooltip.Title>
+                <HoverRect.Tooltip.Title>{data[yIndex].bar}</HoverRect.Tooltip.Title>
                 <Flex justifyContent='space-between'>
-                  <HoverRect.Tooltip.Dot mr={4}>Stack 1</HoverRect.Tooltip.Dot>
-                  <Text bold>{data[yIndex].bar1}</Text>
+                  <HoverRect.Tooltip.Dot mr={4}>Category 1</HoverRect.Tooltip.Dot>
+                  <Text bold>{data[yIndex].cat1}</Text>
                 </Flex>
                 <Flex mt={2} justifyContent='space-between'>
-                  <HoverRect.Tooltip.Dot mr={4}>Stack 2</HoverRect.Tooltip.Dot>
-                  <Text bold>{data[yIndex].bar2}</Text>
+                  <HoverRect.Tooltip.Dot mr={4}>Category 2</HoverRect.Tooltip.Dot>
+                  <Text bold>{data[yIndex].cat2}</Text>
                 </Flex>
                 <Flex mt={2} justifyContent='space-between'>
                   <Box mr={4}>Total</Box>
-                  <Text bold>{data[yIndex].bar1 + data[yIndex].bar2}</Text>
+                  <Text bold>{data[yIndex].cat1 + data[yIndex].cat2}</Text>
                 </Flex>
               </>
             ),
           };
         }}
       </HoverRect.Tooltip>
-      <StackBar y='category'>
-        <StackBar.HorizontalBar x='bar1' />
-        <StackBar.HorizontalBar x='bar2' />
+      <StackBar y='bar'>
+        <StackBar.HorizontalBar x='cat1' />
+        <StackBar.HorizontalBar x='cat2' />
       </StackBar>
     </Plot>
   );
 };
 
 const data = [...Array(5).keys()].map((d, i) => ({
-  category: `Category ${i}`,
-  bar1: Math.random() * 10,
-  bar2: Math.random() * 10,
+  bar: `Bar ${i + 1}`,
+  cat1: Math.random() * 10,
+  cat2: Math.random() * 10,
 }));
 
 export default Demo;

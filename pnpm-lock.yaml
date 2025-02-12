@@ -144,17 +144,17 @@ importers:
         specifier: 1.3.0
         version: 1.3.0(vitest@1.3.0)
       allure-commandline:
-        specifier: 2.29.0
-        version: 2.29.0
+        specifier: 2.32.0
+        version: 2.32.0
       allure-js-commons:
-        specifier: 3.0.0-beta.6
-        version: 3.0.0-beta.6(allure-playwright@3.0.0-beta.6)
+        specifier: 3.0.9
+        version: 3.0.9(allure-playwright@3.0.9)
       allure-playwright:
-        specifier: 3.0.0-beta.6
-        version: 3.0.0-beta.6(@playwright/test@1.43.0)
+        specifier: 3.0.9
+        version: 3.0.9(@playwright/test@1.43.0)
       allure-vitest:
-        specifier: 3.0.0-beta.6
-        version: 3.0.0-beta.6(@vitest/runner@1.3.0)(allure-playwright@3.0.0-beta.6)(vitest@1.3.0)
+        specifier: 3.0.9
+        version: 3.0.9(@vitest/runner@1.3.0)(allure-playwright@3.0.9)(vitest@1.3.0)
       csv:
         specifier: 6.2.0
         version: 6.2.0
@@ -283,6 +283,43 @@ importers:
         specifier: 18.0.21
         version: 18.0.21
 
+  semcore/add-filter:
+    dependencies:
+      '@semcore/base-components':
+        specifier: ^16.0.0
+        version: link:../base-components
+      '@semcore/base-trigger':
+        specifier: 16.0.0
+        version: link:../base-trigger
+      '@semcore/button':
+        specifier: 16.0.0
+        version: link:../button
+      '@semcore/dropdown':
+        specifier: 16.0.0
+        version: link:../dropdown
+      '@semcore/dropdown-menu':
+        specifier: 16.0.0
+        version: link:../dropdown-menu
+      '@semcore/flex-box':
+        specifier: 16.0.0
+        version: link:../flex-box
+      '@semcore/icon':
+        specifier: 16.0.0
+        version: link:../icon
+      '@semcore/input':
+        specifier: 16.0.0
+        version: link:../input
+      '@semcore/select':
+        specifier: 16.0.0
+        version: link:../select
+    devDependencies:
+      '@semcore/testing-utils':
+        specifier: 1.0.0
+        version: link:../../tools/testing-utils
+      '@types/react':
+        specifier: 18.0.21
+        version: 18.0.21
+
   semcore/animation:
     dependencies:
       '@semcore/base-components':
@@ -319,6 +356,9 @@ importers:
       csstype:
         specifier: 3.0.8
         version: 3.0.8
+      popper-max-size-modifier:
+        specifier: 0.2.0
+        version: 0.2.0(@popperjs/core@2.11.5)
     devDependencies:
       '@semcore/testing-utils':
         specifier: 1.0.0
@@ -388,6 +428,49 @@ importers:
       '@semcore/base-components':
         specifier: ^16.0.0
         version: link:../base-components
+
+  semcore/bulk-textarea:
+    dependencies:
+      '@semcore/base-components':
+        specifier: ^16.0.0
+        version: link:../base-components
+      '@semcore/button':
+        specifier: 5.41.2
+        version: 5.41.2(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@semcore/counter':
+        specifier: 3.37.3
+        version: 3.37.3(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@semcore/flex-box':
+        specifier: 16.0.0
+        version: link:../flex-box
+      '@semcore/icon':
+        specifier: 16.0.0
+        version: link:../icon
+      '@semcore/popper':
+        specifier: 16.0.0
+        version: link:../popper
+      '@semcore/tooltip':
+        specifier: 6.47.3
+        version: 6.47.3(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@semcore/typography':
+        specifier: 5.51.1
+        version: 5.51.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      csstype:
+        specifier: 3.0.8
+        version: 3.0.8
+      dompurify:
+        specifier: 3.2.3
+        version: 3.2.3
+    devDependencies:
+      '@semcore/testing-utils':
+        specifier: 1.0.0
+        version: link:../../tools/testing-utils
+      '@types/dompurify':
+        specifier: 3.2.0
+        version: 3.2.0
+      '@types/react':
+        specifier: 18.0.21
+        version: 18.0.21
 
   semcore/button:
     dependencies:
@@ -534,6 +617,9 @@ importers:
 
   semcore/core:
     dependencies:
+      '@formatjs/intl':
+        specifier: 3.0.4
+        version: 3.0.4(typescript@5.1.6)
       '@phytonmk/nano-css':
         specifier: 5.3.7
         version: 5.3.7(react-dom@18.2.0)(react@18.2.0)
@@ -1247,6 +1333,9 @@ importers:
         specifier: 0.4.3
         version: 0.4.3
     devDependencies:
+      '@semcore/testing-utils':
+        specifier: workspace:*
+        version: link:../../tools/testing-utils
       '@types/react':
         specifier: 18.0.21
         version: 18.0.21
@@ -2403,6 +2492,9 @@ importers:
       '@storybook/icons':
         specifier: 1.2.12
         version: 1.2.12(react-dom@16.14.0)(react@16.14.0)
+      '@storybook/theming':
+        specifier: 8.5.2
+        version: 8.5.2(storybook@8.3.5)
       d3-scale:
         specifier: 3.3.0
         version: 3.3.0
@@ -6452,10 +6544,25 @@ packages:
       tslib: 2.4.0
     dev: false
 
+  /@formatjs/ecma402-abstract@2.3.1:
+    resolution: {integrity: sha512-Ip9uV+/MpLXWRk03U/GzeJMuPeOXpJBSB5V1tjA6kJhvqssye5J5LoYLc7Z5IAHb7nR62sRoguzrFiVCP/hnzw==}
+    dependencies:
+      '@formatjs/fast-memoize': 2.2.5
+      '@formatjs/intl-localematcher': 0.5.9
+      decimal.js: 10.4.3
+      tslib: 2.5.0
+    dev: false
+
   /@formatjs/fast-memoize@1.2.4:
     resolution: {integrity: sha512-9ARYoLR8AEzXvj2nYrOVHY/h1dDMDWGTnKDLXSISF1uoPakSmfcZuSqjiqZX2wRkEUimPxdwTu/agyozBtZRHA==}
     dependencies:
       tslib: 2.4.0
+    dev: false
+
+  /@formatjs/fast-memoize@2.2.5:
+    resolution: {integrity: sha512-6PoewUMrrcqxSoBXAOJDiW1m+AmkrAj0RiXnOMD59GRaswjXhm3MDhgepXPBgonc09oSirAJTsAggzAGQf6A6g==}
+    dependencies:
+      tslib: 2.5.0
     dev: false
 
   /@formatjs/icu-messageformat-parser@2.1.3:
@@ -6466,11 +6573,26 @@ packages:
       tslib: 2.4.0
     dev: false
 
+  /@formatjs/icu-messageformat-parser@2.9.7:
+    resolution: {integrity: sha512-cuEHyRM5VqLQobANOjtjlgU7+qmk9Q3fDQuBiRRJ3+Wp3ZoZhpUPtUfuimZXsir6SaI2TaAJ+SLo9vLnV5QcbA==}
+    dependencies:
+      '@formatjs/ecma402-abstract': 2.3.1
+      '@formatjs/icu-skeleton-parser': 1.8.11
+      tslib: 2.5.0
+    dev: false
+
   /@formatjs/icu-skeleton-parser@1.3.9:
     resolution: {integrity: sha512-s9THwwhiiSzbGSk73FP6Ur2MBwEj1vfgYDHKa5FiXGQMfYzdRdRvyH1dgqNgSFJPB6PM3DKtkloJLjpqpSDNUg==}
     dependencies:
       '@formatjs/ecma402-abstract': 1.11.7
       tslib: 2.4.0
+    dev: false
+
+  /@formatjs/icu-skeleton-parser@1.8.11:
+    resolution: {integrity: sha512-8LlHHE/yL/zVJZHAX3pbKaCjZKmBIO6aJY1mkVh4RMSEu/2WRZ4Ysvv3kKXJ9M8RJLBHdnk1/dUQFdod1Dt7Dw==}
+    dependencies:
+      '@formatjs/ecma402-abstract': 2.3.1
+      tslib: 2.5.0
     dev: false
 
   /@formatjs/intl-displaynames@6.0.2:
@@ -6495,6 +6617,12 @@ packages:
       tslib: 2.4.0
     dev: false
 
+  /@formatjs/intl-localematcher@0.5.9:
+    resolution: {integrity: sha512-8zkGu/sv5euxbjfZ/xmklqLyDGQSxsLqg8XOq88JW3cmJtzhCP8EtSJXlaKZnVO4beEaoiT9wj4eIoCQ9smwxA==}
+    dependencies:
+      tslib: 2.5.0
+    dev: false
+
   /@formatjs/intl@2.3.0(typescript@5.1.6):
     resolution: {integrity: sha512-mE8zGqP+Flrd8tS3AsdvSucnblqwR5gsGM4Bd5711abkabrz52F2TDrU88rVvVfCdHV4dFHFYEmUBVZZ4pATtg==}
     peerDependencies:
@@ -6510,6 +6638,22 @@ packages:
       '@formatjs/intl-listformat': 7.0.2
       intl-messageformat: 10.1.0
       tslib: 2.4.0
+      typescript: 5.1.6
+    dev: false
+
+  /@formatjs/intl@3.0.4(typescript@5.1.6):
+    resolution: {integrity: sha512-pnetak6R7Xp/ET96O5kx9zRYoQQqr6sbRXWkJHKw0Hr/jr3ls4CddZKq+suwCDuW6p/ior2BhpOSh/WLLcJM6w==}
+    peerDependencies:
+      typescript: '5'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      '@formatjs/ecma402-abstract': 2.3.1
+      '@formatjs/fast-memoize': 2.2.5
+      '@formatjs/icu-messageformat-parser': 2.9.7
+      intl-messageformat: 10.7.10
+      tslib: 2.5.0
       typescript: 5.1.6
     dev: false
 
@@ -7711,6 +7855,22 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: true
 
+  /@semcore/animation@2.40.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-4XW2x30BfQ9msX26HenrrGUSgPd30mj98WOvs9R59pAZiCs6tybKky6h/vliPh5U3NDXN2DZ8X2g0MkEWXxq6A==}
+    peerDependencies:
+      '@semcore/core': ^2.17.5
+      react: 16.8 - 18
+      react-dom: 16.8 - 18
+    dependencies:
+      '@semcore/core': 2.37.1(react-dom@18.2.0)(react@18.2.0)
+      '@semcore/flex-box': 5.40.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@semcore/utils': 4.45.1(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    transitivePeerDependencies:
+      - typescript
+    dev: false
+
   /@semcore/base-trigger@4.26.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-l9ZqMJjw/9ttyTiVyVuDu+ZdJVt8apof3iyTUJVn65zfCUeH3ZE3HArh9s8AnwisLPC2BcCq2iDiOS9Fh7O6uA==}
     peerDependencies:
@@ -7729,6 +7889,25 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: true
 
+  /@semcore/button@5.41.2(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-BijlnFKhEU4K1gFCFqvI8Lh6xKBk5BPv2/yDGxFtbI1kc1nkYVSHd/kXnuvot0kQfcNvR/hNMsAbW65asbNB4w==}
+    peerDependencies:
+      '@semcore/core': ^2.17.5
+      react: 16.8 - 18
+      react-dom: 16.8 - 18
+    dependencies:
+      '@semcore/core': 2.37.1(react-dom@18.2.0)(react@18.2.0)
+      '@semcore/flex-box': 5.40.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@semcore/neighbor-location': 4.38.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@semcore/spin': 5.40.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@semcore/tooltip': 6.47.3(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@semcore/utils': 4.45.1(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    transitivePeerDependencies:
+      - typescript
+    dev: false
+
   /@semcore/core@2.37.1(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-0nqJX2vqzW1KA/oTvrOs3daV1gcHJLbiqqtCCzSe7RB2KFqnOkRjPJsMs8puv6tULBKAlOfRgRS0aHmwJOJupQ==}
     peerDependencies:
@@ -7738,6 +7917,22 @@ packages:
       '@semcore/utils': 4.44.1(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
+
+  /@semcore/counter@3.37.3(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-rPhQAAuOuXmBZx62F25POcvmapZ9XGQPRGImDQsM8prWv2V5MIKAei8CiHNSXoRdtHaP45AJsxUAGQb0aCcZoQ==}
+    peerDependencies:
+      '@semcore/core': ^2.17.5
+      react: 16.8 - 18
+      react-dom: 16.8 - 18
+    dependencies:
+      '@semcore/core': 2.37.1(react-dom@18.2.0)(react@18.2.0)
+      '@semcore/flex-box': 5.40.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@semcore/utils': 4.45.1(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    transitivePeerDependencies:
+      - typescript
+    dev: false
 
   /@semcore/dot@5.18.2(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-NA9THeXspzQXM/Toxz2EugFi7BUQ1VgF6iShnElDP0iS9rTW+23E4XP+axfU4w5RG2b/7NsWrJ0mRLDqWSF67A==}
@@ -7789,6 +7984,23 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: true
 
+  /@semcore/flex-box@5.40.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-f/Hz0MnulxBm9CW04n7Ia++yZPv4mPD3lSIPl4n+K/GfHFiuiJ0xQaXT9KPrqX+HTUW/j/XaPZUSoZv3hKb8LA==}
+    peerDependencies:
+      '@semcore/core': ^2.17.5
+      react: 16.8 - 18
+      react-dom: 16.8 - 18
+    dependencies:
+      '@semcore/core': 2.37.1(react-dom@18.2.0)(react@18.2.0)
+      '@semcore/utils': 4.45.1(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      classnames: 2.2.6
+      csstype: 3.0.8
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    transitivePeerDependencies:
+      - typescript
+    dev: false
+
   /@semcore/i18n-unplugin@0.17.19(@semcore/core@semcore+core):
     resolution: {integrity: sha512-AVEoawoxZ/62pNKzKn41Zi8jBIhesvXAyIdV/mYQdnd4E/LrjaHblF2XHm8ofQNWqiOOucU78OivRi5i7/+MCA==}
     peerDependencies:
@@ -7812,6 +8024,23 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: true
+
+  /@semcore/icon@4.57.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-xN3acxS0/pnEZVTp37tOymHVycDD7/km2oN6NS1kpQiAX6yXlbq4wxNYWtNN0H3NVKLRGzns096HK4curlDe1g==}
+    peerDependencies:
+      '@semcore/core': ^2.17.5
+      react: 16.8 - 18
+      react-dom: 16.8 - 18
+    dependencies:
+      '@semcore/core': 2.37.1(react-dom@18.2.0)(react@18.2.0)
+      '@semcore/flex-box': 5.40.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@semcore/utils': 4.45.1(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      classnames: 2.2.6
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    transitivePeerDependencies:
+      - typescript
+    dev: false
 
   /@semcore/neighbor-location@4.17.2(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-fY9Iv81sl/Fh3jipe6PiZ8mzBcqNeQDG42wImtCfbNVpWbtK9IKfGpvtr9f5BnCEDz1TEVKm6XGwmgsv3qDGiA==}
@@ -7839,6 +8068,21 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: true
 
+  /@semcore/neighbor-location@4.38.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-vCcsU7ls4+ip/OeFtUavVytCXSvWquywFzzAowNn2by8lEX4nI9ookKGUyFBhntQ3AVVecVddra6BMLu6NUx2w==}
+    peerDependencies:
+      '@semcore/core': ^2.17.5
+      react: 16.8 - 18
+      react-dom: 16.8 - 18
+    dependencies:
+      '@semcore/core': 2.37.1(react-dom@18.2.0)(react@18.2.0)
+      '@semcore/utils': 4.45.1(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    transitivePeerDependencies:
+      - typescript
+    dev: false
+
   /@semcore/outside-click@3.17.6(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-JM5ovxWM6AiMvjEyEX9SXY4Bj0qGwP18zmcNl3m07NQZBhQjgcVhCH+Gp8BGspn38/W8x+EPAX4DU7Z99Vox7A==}
     peerDependencies:
@@ -7851,6 +8095,21 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: true
+
+  /@semcore/outside-click@3.38.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-VUkHSGDj4YBD1+1Uj23Bi8P2O6ooKh5yRDJdlFIyHJqQL0QirGsVXvbrYkBU8K0OwqLdqDOMCxZ85OUelAz2kQ==}
+    peerDependencies:
+      '@semcore/core': ^2.17.5
+      react: 16.8 - 18
+      react-dom: 16.8 - 18
+    dependencies:
+      '@semcore/core': 2.37.1(react-dom@18.2.0)(react@18.2.0)
+      '@semcore/utils': 4.45.1(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    transitivePeerDependencies:
+      - typescript
+    dev: false
 
   /@semcore/popper@5.21.0(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-RyGwe6DkWxgDNg9e+iAcmtNttVOp/BtpadvK90Cy0rs3KCs/IOxEyPyC16vU4NpxG9c3UXlnI7cyrU/RnvurMg==}
@@ -7870,6 +8129,28 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: true
+
+  /@semcore/popper@5.45.3(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-NORE8MLKIb4O2sA5SV9RZq9E+0fq2FEQPdbpAJHNxtqOF0lqPMrcFxydG3kJH/pm/cJ2glQ5OYxjJol3vc+r5w==}
+    peerDependencies:
+      '@semcore/core': ^2.17.5
+      react: 16.8 - 18
+      react-dom: 16.8 - 18
+    dependencies:
+      '@popperjs/core': 2.11.5
+      '@semcore/animation': 2.40.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@semcore/core': 2.37.1(react-dom@18.2.0)(react@18.2.0)
+      '@semcore/flex-box': 5.40.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@semcore/neighbor-location': 4.38.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@semcore/outside-click': 3.38.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@semcore/portal': 3.40.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@semcore/utils': 4.45.1(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      popper-max-size-modifier: 0.2.0(@popperjs/core@2.11.5)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    transitivePeerDependencies:
+      - typescript
+    dev: false
 
   /@semcore/portal@3.17.2(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-loy3TjJ3uOkRwB6GwyPg7++DrjBW+6ypTFoDvXc4B2J0kkSSiVTC83b5kbo0/NdP+7BWDYvzrGR6KPvo5UWFew==}
@@ -7897,6 +8178,21 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: true
 
+  /@semcore/portal@3.40.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-Kcpiqi8OZz3ohHNDqbq/wYF61LlwOhCdVpOlMMe+bC0Ta8Gajyz2ojpLCG1dQEMA3mM2rSiNupkLks9WU5gUJg==}
+    peerDependencies:
+      '@semcore/core': ^2.17.5
+      react: 16.8 - 18
+      react-dom: 16.8 - 18
+    dependencies:
+      '@semcore/core': 2.37.1(react-dom@18.2.0)(react@18.2.0)
+      '@semcore/utils': 4.45.1(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    transitivePeerDependencies:
+      - typescript
+    dev: false
+
   /@semcore/spin@5.18.2(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-84/CMVYl+HrgaS85WG7Kikj1uVIaYq81kMIonDF2Xr2dzVhpdctF+nXFU+Pq65mZeWugKhNAb9QaRUVDppiaTg==}
     peerDependencies:
@@ -7910,6 +8206,22 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: true
+
+  /@semcore/spin@5.40.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-9cEgjqqxzUpWDV9TnYXbVVzQzPHtAkEQR16KmrkgAPkLOd2nMO1kT49v5OkLHTIRJP06b7D1jTV3tazNqi6DQw==}
+    peerDependencies:
+      '@semcore/core': ^2.17.5
+      react: 16.8 - 18
+      react-dom: 16.8 - 18
+    dependencies:
+      '@semcore/core': 2.37.1(react-dom@18.2.0)(react@18.2.0)
+      '@semcore/flex-box': 5.40.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@semcore/utils': 4.45.1(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    transitivePeerDependencies:
+      - typescript
+    dev: false
 
   /@semcore/theme-redesign@1.5.12:
     resolution: {integrity: sha512-zmABHHcsbbEHCTX3YWIXcIIzQx6S1oyj2NyPkea6QOh2HE+vopSWdNbUhWYT2Zax5NhQQ3HrDRdvkolhr6aBKA==}
@@ -7929,6 +8241,42 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: true
+
+  /@semcore/tooltip@6.47.3(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-i0lJOh2wxKBZXI5+5+jWsopX4Sqs5PxewmQVUCpT+Wq1yp2qJ4+FUt4E04fce1j+toXpeD1f9DU5a+aqjxh5ZQ==}
+    peerDependencies:
+      '@semcore/core': ^2.17.5
+      react: 16.8 - 18
+      react-dom: 16.8 - 18
+    dependencies:
+      '@semcore/core': 2.37.1(react-dom@18.2.0)(react@18.2.0)
+      '@semcore/flex-box': 5.40.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@semcore/popper': 5.45.3(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@semcore/portal': 3.40.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@semcore/utils': 4.45.1(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    transitivePeerDependencies:
+      - typescript
+    dev: false
+
+  /@semcore/typography@5.51.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-3mDU79ttCzSdTn5k6Rx8cPTSCfyLfhT2fMXShlOMqrUijJNg21W+nyMSEMaKKtKPw6XCumrJKxNIXNPtV5kSyA==}
+    peerDependencies:
+      '@semcore/core': ^2.17.5
+      react: 16.8 - 18
+      react-dom: 16.8 - 18
+    dependencies:
+      '@semcore/core': 2.37.1(react-dom@18.2.0)(react@18.2.0)
+      '@semcore/flex-box': 5.40.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@semcore/icon': 4.57.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@semcore/utils': 4.45.1(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      csstype: 3.0.8
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    transitivePeerDependencies:
+      - typescript
+    dev: false
 
   /@semcore/utils@4.20.2(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-mJNtoeJVLKok8Cac5pgjn9lQ3xyYjUgIoCyW8dTLF+66a9s5PPo0olwRsVApx82cPs3vrMOxE/TO1eluN2AXVg==}
@@ -7976,6 +8324,25 @@ packages:
       hoist-non-react-statics: 3.3.2
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
+
+  /@semcore/utils@4.45.1(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-+XsCwgXrW0WLKPMYfy2BYzmhiYtquogsL4jTE/KyIGuSUUWeajHEOBKStPsgd+5zY2aMmOl+5MD3vxOd9UG0/g==}
+    peerDependencies:
+      react: 16.8 - 18
+      react-dom: 16.8 - 18
+    dependencies:
+      '@babel/runtime': 7.19.0
+      '@formatjs/intl': 3.0.4(typescript@5.1.6)
+      '@phytonmk/nano-css': 5.3.7(react-dom@18.2.0)(react@18.2.0)
+      '@reshadow/core': 0.0.1-alpha.74
+      classnames: 2.2.6
+      colorjs.io: 0.4.3
+      hoist-non-react-statics: 3.3.2
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    transitivePeerDependencies:
+      - typescript
+    dev: false
 
   /@shikijs/core@1.1.1:
     resolution: {integrity: sha512-WSHuW0i4W04+UZgim378oxHBAp4S5X3hVI2zXh+t5v2fx2u/7QXz9VNisoOD/CA4O9Lc6Zs97TrKiDbWyZua6Q==}
@@ -8499,6 +8866,14 @@ packages:
       storybook: 8.3.5
     dev: true
 
+  /@storybook/theming@8.5.2(storybook@8.3.5):
+    resolution: {integrity: sha512-vro8vJx16rIE0UehawEZbxFFA4/VGYS20PMKP6Y6Fpsce0t2/cF/U9qg3jOzVb/XDwfx+ne3/V+8rjfWx8wwJw==}
+    peerDependencies:
+      storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
+    dependencies:
+      storybook: 8.3.5
+    dev: false
+
   /@szmarczak/http-timer@5.0.1:
     resolution: {integrity: sha512-+PmQX0PiAYPMeVYe237LJAYvOMYW1j2rH5YROyS3b4CTVJum34HfRvKvAzozHAQG0TnHNdUfY9nCeUyRAs//cw==}
     engines: {node: '>=14.16'}
@@ -8729,6 +9104,13 @@ packages:
 
   /@types/doctrine@0.0.9:
     resolution: {integrity: sha512-eOIHzCUSH7SMfonMG1LsC2f8vxBFtho6NGBznK41R84YzPuvSBzrhEps33IsQiOW9+VL6NQ9DbjQJznk/S4uRA==}
+    dev: true
+
+  /@types/dompurify@3.2.0:
+    resolution: {integrity: sha512-Fgg31wv9QbLDA0SpTOXO3MaxySc4DKGLi8sna4/Utjo4r3ZRPdCt4UQee8BWr+Q5z21yifghREPJGYaEOEIACg==}
+    deprecated: This is a stub types definition. dompurify provides its own type definitions, so you do not need this installed.
+    dependencies:
+      dompurify: 3.2.3
     dev: true
 
   /@types/escodegen@0.0.6:
@@ -9073,6 +9455,11 @@ packages:
   /@types/tough-cookie@4.0.2:
     resolution: {integrity: sha512-Q5vtl1W5ue16D+nIaW8JWebSSraJVlK+EthKn7e7UcD4KWsaSJ8BqGPXNaPghgtcn/fhvrN17Tv8ksUsQpiplw==}
     dev: true
+
+  /@types/trusted-types@2.0.7:
+    resolution: {integrity: sha512-ScaPdn1dQczgbl0QFTeTOmVHFULt394XJgOQNoyVhZ6r2vLnMLJfBPd53SB52T/3G36VI1/g2MZaX0cwDuXsfw==}
+    requiresBuild: true
+    optional: true
 
   /@types/unist@2.0.6:
     resolution: {integrity: sha512-PBjIUxZHOuj0R15/xuwJYjFi+KZdNFrehocChv4g5hu6aFroHue8m0lBP0POdK2nKzbw0cgV1mws8+V/JAcEkQ==}
@@ -10125,41 +10512,40 @@ packages:
       repeat-string: 1.6.1
     dev: false
 
-  /allure-commandline@2.29.0:
-    resolution: {integrity: sha512-he/oWJflViIdEmuQ4er5k+xRd//PaVVElHHTx01h6W71KM9qKiLeF5MloV93UBYoJRzjD9fgbZedSMKemCEGkQ==}
+  /allure-commandline@2.32.0:
+    resolution: {integrity: sha512-W03ors+ks8uy0SgQILHQvtvR0iadAfDYmTFC3p8Pk4pi8KXUW1cF+z8FN2+7deH3FE2cuYgjhhA+CdLdJfzOMQ==}
     hasBin: true
     dev: true
 
-  /allure-js-commons@3.0.0-beta.6(allure-playwright@3.0.0-beta.6):
-    resolution: {integrity: sha512-blkS1JG6kHSrplluBqrEcRvFHSaL1YTcN5w1IXpTnMAwPDluTfVAP2RYCWpeAzgELfAh5e/AMVWXt7wt6qKMXw==}
+  /allure-js-commons@3.0.9(allure-playwright@3.0.9):
+    resolution: {integrity: sha512-ll7h66zkBAwKSuMv2ZIqa9vXztz/I1Q+oUzxMgg7EErwd6ooO04E4nquXE+rS9mJErYs9K1qTVo3KgnPUzCsQQ==}
     peerDependencies:
-      allure-playwright: 3.0.0-beta.6
+      allure-playwright: 3.0.9
     peerDependenciesMeta:
       allure-playwright:
         optional: true
     dependencies:
-      allure-playwright: 3.0.0-beta.6(@playwright/test@1.43.0)
+      allure-playwright: 3.0.9(@playwright/test@1.43.0)
       md5: 2.3.0
-      properties: 1.2.1
     dev: true
 
-  /allure-playwright@3.0.0-beta.6(@playwright/test@1.43.0):
-    resolution: {integrity: sha512-tXJzwqW8fEugEczsdZAM7WIDjFaALGiaBg4aNqqmBXwf507Wq82Giwa8jlagGHsMQjdvjK+ZFP/Fo0Mt6COr4g==}
+  /allure-playwright@3.0.9(@playwright/test@1.43.0):
+    resolution: {integrity: sha512-5NBVJ50b9iYbzhkLJF0iSWefV4/eWSv+OioRv4kpLKXbnhrQk+wUH/wVt7oxWnZPSrQAuxilckWxZW5BIP3sNQ==}
     peerDependencies:
       '@playwright/test': '>=1.36.0'
     dependencies:
       '@playwright/test': 1.43.0
-      allure-js-commons: 3.0.0-beta.6(allure-playwright@3.0.0-beta.6)
+      allure-js-commons: 3.0.9(allure-playwright@3.0.9)
     dev: true
 
-  /allure-vitest@3.0.0-beta.6(@vitest/runner@1.3.0)(allure-playwright@3.0.0-beta.6)(vitest@1.3.0):
-    resolution: {integrity: sha512-WbHzOjfZJLMpxSAV7KC6ZfssUA05lI0+79CRQME3YwuUUQOaqI1fulUKqPenBFKkPlUGCMQf8qJGcba8oUNzsA==}
+  /allure-vitest@3.0.9(@vitest/runner@1.3.0)(allure-playwright@3.0.9)(vitest@1.3.0):
+    resolution: {integrity: sha512-HTSCvrexxSRdOqaEyHxOyRICPR4bRLIDmtdoPTKZhaTV4mpW0kG+GKLYl9vRVsJZzjO/iGe3Lr9J7pQfAu6evw==}
     peerDependencies:
       '@vitest/runner': '>=1.3.0'
       vitest: '>=1.3.0'
     dependencies:
       '@vitest/runner': 1.3.0
-      allure-js-commons: 3.0.0-beta.6(allure-playwright@3.0.0-beta.6)
+      allure-js-commons: 3.0.9(allure-playwright@3.0.9)
       vitest: 1.3.0(@types/node@18.16.15)(@vitest/browser@1.3.0)(@vitest/ui@1.3.0)(jsdom@22.1.0)
     transitivePeerDependencies:
       - allure-playwright
@@ -12855,6 +13241,11 @@ packages:
     dependencies:
       domelementtype: 2.3.0
     dev: false
+
+  /dompurify@3.2.3:
+    resolution: {integrity: sha512-U1U5Hzc2MO0oW3DF+G9qYN0aT7atAou4AgI0XjWz061nyBPbdxkfdhfy5uMgGn6+oLFCfn44ZGbdDqCzVmlOWA==}
+    optionalDependencies:
+      '@types/trusted-types': 2.0.7
 
   /domutils@1.5.1:
     resolution: {integrity: sha512-gSu5Oi/I+3wDENBsOWBiRK1eoGxcywYSqg3rR960/+EfY0CF4EX1VPkgHOZ3WiS/Jg2DtliF6BhWcHlfpYUcGw==}
@@ -15723,6 +16114,15 @@ packages:
       '@formatjs/fast-memoize': 1.2.4
       '@formatjs/icu-messageformat-parser': 2.1.3
       tslib: 2.4.0
+    dev: false
+
+  /intl-messageformat@10.7.10:
+    resolution: {integrity: sha512-hp7iejCBiJdW3zmOe18FdlJu8U/JsADSDiBPQhfdSeI8B9POtvPRvPh3nMlvhYayGMKLv6maldhR7y3Pf1vkpw==}
+    dependencies:
+      '@formatjs/ecma402-abstract': 2.3.1
+      '@formatjs/fast-memoize': 2.2.5
+      '@formatjs/icu-messageformat-parser': 2.9.7
+      tslib: 2.5.0
     dev: false
 
   /into-stream@3.1.0:
@@ -19462,6 +19862,15 @@ packages:
       '@babel/runtime': 7.19.0
     dev: true
 
+  /popper-max-size-modifier@0.2.0(@popperjs/core@2.11.5):
+    resolution: {integrity: sha512-UerPt9pZfTFnpSpIBVJrR3ibHMuU1k5K01AyNLfMUWCr4z1MFH+dsayPlAF9ZeYExa02HPiQn5OIMqUSVtJEbg==}
+    deprecated: 'We recommend switching to Floating UI which supports this modifier out of the box: https://floating-ui.com/docs/size'
+    peerDependencies:
+      '@popperjs/core': ^2.2.0
+    dependencies:
+      '@popperjs/core': 2.11.5
+    dev: false
+
   /portfinder@1.0.32:
     resolution: {integrity: sha512-on2ZJVVDXRADWE6jnQaX0ioEylzgBpQk8r55NE4wjXW1ZxO+BgDlY6DXwj20i0V8eB4SenDQ00WEaxfiIQPcxg==}
     engines: {node: '>= 0.12.0'}
@@ -20435,11 +20844,6 @@ packages:
       loose-envify: 1.4.0
       object-assign: 4.1.1
       react-is: 16.13.1
-
-  /properties@1.2.1:
-    resolution: {integrity: sha512-qYNxyMj1JeW54i/EWEFsM1cVwxJbtgPp8+0Wg9XjNaK6VE/c4oRi6PNu5p7w1mNXEIQIjV5Wwn8v8Gz82/QzdQ==}
-    engines: {node: '>=0.10'}
-    dev: true
 
   /property-information@6.2.0:
     resolution: {integrity: sha512-kma4U7AFCTwpqq5twzC1YVIDXSqg6qQK6JN0smOw8fgRy1OkMi0CYSzFmsy6dnqSenamAtj0CyXMUJ1Mf6oROg==}

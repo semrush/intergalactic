@@ -7,13 +7,13 @@ const lineColors: Record<string, string> = {
   data_2: colors['violet-04'],
 };
 
-const getDegaultLegendItems = () => {
+const getDefaultLegendItems = () => {
   return Object.keys(data)
     .filter((name) => name !== 'categories')
     .map((item, index) => {
       return {
         id: item,
-        label: `Label for ${index + 1}`,
+        label: `Category ${index + 1}`,
         data: data[item],
         checked: true,
         color: lineColors[item],
@@ -22,7 +22,7 @@ const getDegaultLegendItems = () => {
 };
 
 const Demo = () => {
-  const [legendItems, setLegendItems] = React.useState(getDegaultLegendItems);
+  const [legendItems, setLegendItems] = React.useState(getDefaultLegendItems);
 
   const handleChangeVisible = React.useCallback((id: string, isVisible: boolean) => {
     setLegendItems((prevItems) => {
@@ -48,7 +48,7 @@ const Demo = () => {
       <ChartLegend
         items={legendItems}
         patterns
-        aria-label={'Legend for the radar chart'}
+        aria-label={'Radar chart legend'}
         onChangeVisibleItem={handleChangeVisible}
       />
       <Plot data={data} width={width} height={height} patterns>

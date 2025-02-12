@@ -17,7 +17,6 @@ const Demo = () => {
           step={1}
           min={1}
           max={3}
-          aria-label='Data chunk size'
           id='data-chunk-size'
           options={[
             { value: 'small', label: 'Small' },

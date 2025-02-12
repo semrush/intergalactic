@@ -32,7 +32,12 @@ const makeCommand: Record<string, (...args: any[]) => string> = {
   BABEL: (output: string, babelArgs: string) =>
     `pnpm babel ${workingDir}/src --out-dir ${workingDir}/lib/${output} ${babelArgs}`,
   CORE_UTILS: (output: string, babelArgs) => {
-    return `pnpm babel ${workingDir}/src/utils --out-dir ${workingDir}/lib/${output} ${babelArgs}`;
+    return `pnpm babel ${workingDir}/src/utils --out-dir ${workingDir}/lib/${output} ${babelArgs} && 
+    pnpm babel ${workingDir}/src/core-types --out-dir ${workingDir}/lib/core-types ${babelArgs} &&
+    pnpm babel ${workingDir}/src/enhancement --out-dir ${workingDir}/lib/enhancement ${babelArgs} &&
+    pnpm babel ${workingDir}/src/styled --out-dir ${workingDir}/lib/styled ${babelArgs} &&
+    pnpm babel ${workingDir}/src/theme --out-dir ${workingDir}/lib/theme ${babelArgs} &&
+    pnpm babel ${workingDir}/src/register.tsx --out-dir ${workingDir}/lib ${babelArgs}`;
   },
   TYPES_UTILS: () =>
     `tsc --emitDeclarationOnly --baseUrl ${workingDir}/src/utils --project ${workingDir}/tsconfig-utils.json --outDir ${workingDir}/lib`,

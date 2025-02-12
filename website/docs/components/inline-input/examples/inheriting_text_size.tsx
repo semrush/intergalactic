@@ -28,7 +28,7 @@ const Example = () => {
           </InlineEdit.View>
           <InlineEdit.Edit>
             <InlineInput onConfirm={handleTitle} onCancel={stopEditing} loading={savingTitle}>
-              <InlineInput.Value autoFocus defaultValue={title} />
+              <InlineInput.Value autoFocus defaultValue={title} aria-label='Article name' />
               <InlineInput.ConfirmControl />
               <InlineInput.CancelControl />
             </InlineInput>

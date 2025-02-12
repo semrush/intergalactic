@@ -8,13 +8,13 @@ const Demo = () => (
   <>
     <Popper disablePortal>
       <Popper.Trigger tag={Button} mr={8}>
-        disablePortal=true
+        disablePortal = true
       </Popper.Trigger>
-      <Popper.Popper style={style}>disablePortal=true</Popper.Popper>
+      <Popper.Popper style={style}>disablePortal = true</Popper.Popper>
     </Popper>
     <Popper>
-      <Popper.Trigger tag={Button}>disablePortal=false</Popper.Trigger>
-      <Popper.Popper style={style}>disablePortal=false</Popper.Popper>
+      <Popper.Trigger tag={Button}>disablePortal = false</Popper.Trigger>
+      <Popper.Popper style={style}>disablePortal = false</Popper.Popper>
     </Popper>
   </>
 );

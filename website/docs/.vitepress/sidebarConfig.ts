@@ -191,6 +191,11 @@ export const sideBarConfig: SidebarConfig = [
             text: 'Breadcrumbs',
           },
           {
+            link: '/components/bulk-textarea/bulk-textarea',
+            activeMatch: '/components/bulk-textarea/',
+            text: 'BulkTextarea',
+          },
+          {
             link: '/components/button/button',
             activeMatch: '/components/button/',
             text: 'Button',
@@ -366,14 +371,14 @@ export const sideBarConfig: SidebarConfig = [
             text: 'Radio',
           },
           {
-            link: '/components/select/select',
-            activeMatch: '/components/select/',
-            text: 'Select / Multiselect',
-          },
-          {
             link: '/components/scroll-area/scroll-area',
             activeMatch: '/components/scroll-area/',
             text: 'ScrollArea',
+          },
+          {
+            link: '/components/select/select',
+            activeMatch: '/components/select/',
+            text: 'Select / Multiselect',
           },
           {
             link: '/components/side-panel/side-panel',
@@ -636,6 +641,11 @@ export const sideBarConfig: SidebarConfig = [
           {
             link: '/filter-group/filter-rules/filter-rules',
             text: 'Filter common rules',
+          },
+          {
+            link: '/filter-group/add-filter/add-filter',
+            activeMatch: '/filter-group/add-filter/',
+            text: 'Add filter',
           },
           {
             link: '/filter-group/advanced-filters/advanced-filters',

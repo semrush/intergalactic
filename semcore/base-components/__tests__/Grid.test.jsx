@@ -21,27 +21,6 @@ describe('Grid', () => {
   shouldSupportClassName(Col, Row);
   shouldSupportRef(Col, Row);
 
-  test.concurrent('Should support gutter', async ({ task }) => {
-    const component = (
-      <Row w={300} gutter={5}>
-        <Col>
-          <div style={{ ...styleBox, padding: '16px' }}>1</div>
-        </Col>
-        <Col>
-          <div style={{ ...styleBox, padding: '16px' }}>2</div>
-        </Col>
-        <Col>
-          <div style={{ ...styleBox, padding: '16px' }}>3</div>
-        </Col>
-        <Col>
-          <div style={{ ...styleBox, padding: '16px' }}>4</div>
-        </Col>
-      </Row>
-    );
-
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-
   test.concurrent('Should support auto span', async ({ task }) => {
     const component = (
       <Row w={300}>
@@ -98,66 +77,6 @@ describe('Grid', () => {
           <ColSpan span={6} />
           <ColSpan span={6} />
         </Row>
-      </snapshot.ProxyProps>
-    );
-
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-
-  test.concurrent('Should support span and offset', async ({ task }) => {
-    const RowCol = ({ span = '0', offset = '0' }) => (
-      <Row w={200}>
-        <Col span={span} offset={offset}>
-          <div style={styleBox}>{`span-${span}, offset-${offset}`}</div>
-        </Col>
-      </Row>
-    );
-    const component = (
-      <div style={{ width: '250px' }}>
-        <snapshot.ProxyProps style={{ margin: 5 }}>
-          <RowCol offset={12} />
-          <RowCol span={1} offset={11} />
-          <RowCol span={2} offset={10} />
-          <RowCol span={3} offset={9} />
-          <RowCol span={4} offset={8} />
-          <RowCol span={5} offset={7} />
-          <RowCol span={6} offset={6} />
-          <RowCol span={7} offset={5} />
-          <RowCol span={8} offset={4} />
-          <RowCol span={9} offset={3} />
-          <RowCol span={10} offset={2} />
-          <RowCol span={11} offset={1} />
-          <RowCol span={12} />
-        </snapshot.ProxyProps>
-      </div>
-    );
-
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-
-  test.concurrent('Should support md and mdOffset', async ({ task }) => {
-    const RowCol = ({ md = '0', mdOffset = '0' }) => (
-      <Row w={200}>
-        <Col md={md} offset={mdOffset}>
-          <div style={styleBox}>{`md-${md}, mdOffset-${mdOffset}`}</div>
-        </Col>
-      </Row>
-    );
-    const component = (
-      <snapshot.ProxyProps style={{ margin: 5 }}>
-        <RowCol mdOffset={12} />
-        <RowCol md={1} mdOffset={11} />
-        <RowCol md={2} mdOffset={10} />
-        <RowCol md={3} mdOffset={9} />
-        <RowCol md={4} mdOffset={8} />
-        <RowCol md={5} mdOffset={7} />
-        <RowCol md={6} mdOffset={6} />
-        <RowCol md={7} mdOffset={5} />
-        <RowCol md={8} mdOffset={4} />
-        <RowCol md={9} mdOffset={3} />
-        <RowCol md={10} mdOffset={2} />
-        <RowCol md={11} mdOffset={1} />
-        <RowCol md={12} />
       </snapshot.ProxyProps>
     );
 

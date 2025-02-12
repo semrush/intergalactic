@@ -15,7 +15,7 @@ const Demo = () => {
 
   return (
     <>
-      <DataTable data={tableData} aria-label={'Table title. Pagination'}>
+      <DataTable data={tableData} aria-label={'Pagination'}>
         <DataTable.Head>
           <DataTable.Column name='keyword' children='Keyword' justifyContent='left' />
           <DataTable.Column name='kd' children='KD,%' justifyContent='right' wMax={68} />

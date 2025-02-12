@@ -3,6 +3,8 @@ import Portal from '@semcore/portal';
 import NoticeGlobal, { NoticeGlobalTheme } from '@semcore/notice-global';
 import Button from '@semcore/button';
 import Select from '@semcore/select';
+import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/flex-box';
 
 const themes = ['neutral', 'info', 'success', 'warning', 'danger'] as const;
 const options = themes.map((theme) => ({
@@ -16,11 +18,14 @@ const Demo = () => {
   const [visible, setVisible] = React.useState(false);
 
   return (
-    <>
-      <Button onClick={() => setVisible(!visible)} mr={3}>
+    <Flex gap={2} alignItems='baseline'>
+      <Text size={200} tag='label' htmlFor='select-theme'>
+        Theme
+      </Text>
+      <Select options={options} defaultValue={defaultTheme} onChange={setTheme} id='select-theme' />
+      <Button onClick={() => setVisible(!visible)}>
         {visible ? 'Close' : 'Open'} NoticeGlobal
       </Button>
-      <Select options={options} defaultValue={defaultTheme} onChange={setTheme} />
       <Portal>
         <NoticeGlobal
           hidden={!visible}
@@ -41,7 +46,7 @@ const Demo = () => {
           </NoticeGlobal.Content>
         </NoticeGlobal>
       </Portal>
-    </>
+    </Flex>
   );
 };
 export default Demo;

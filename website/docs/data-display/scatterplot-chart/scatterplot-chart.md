@@ -14,8 +14,8 @@ import { Chart, ScatterPlotChartProps } from '@semcore/d3-chart';
 
 const data = [...Array(25).keys()].map((d, i) => ({
   x: i,
-  y: Math.random() * 10,
-  y2: Math.random() * 10,
+  category1: Math.random() * 10,
+  category2: Math.random() * 10,
   value: Math.round(Math.random() * 10),
 }));
 
@@ -25,7 +25,6 @@ const App = PlaygroundGeneration((preview) => {
   const {
     direction,
     alignItems,
-    justifyContent,
     showXAxis,
     showYAxis,
     showTooltip,
@@ -44,7 +43,6 @@ const App = PlaygroundGeneration((preview) => {
     showXAxis,
     showYAxis,
     alignItems,
-    justifyContent,
     patterns,
   };
 
@@ -78,13 +76,13 @@ The scatterplot is highly valued for its versatility and utility in statistical 
 - Identify patterns and relationships between data variables.
 - Explore correlations, using bubble size and color for additional dimensions.
 
-### How to read a scatterplot chart
+### How to read scatterplot chart
 
-| Case                                                                                                                                 | Appearance example                                       |
-| ------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------- |
+| Case                                                                                                                                 | Appearance example                   |
+| ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------ |
 | If the points form a line that runs from bottom left to top right, there is likely a positive correlation between the two variables. | ![](static/positive-correlation.png) |
 | If the line runs from top left to bottom right, there is likely a negative correlation between the two variables.                    | ![](static/negative-correlation.png) |
-| If the overall trend doesn't form a clear straight line, there is probably no correlation.                                           | ![](static/no-correlation.png)             |
+| If the overall trend doesn't form a clear straight line, there is probably no correlation.                                           | ![](static/no-correlation.png)       |
 
 ::: tip
 Correlation does not imply causation. Unseen variables might influence the charted data.
@@ -102,10 +100,10 @@ Dot size is 11px by 11px.
 
 Table: Scatterplot chart styles
 
-| Case             | Appearance example                                     | Styles                                                                                                                                                                                    |
-| ---------------- | ------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| One data set      | ![](static/no-correlation.png)              | The default color for the category is `--chart-palette-order-blue` (or `--blue-300`) with 50% transparency. However, if necessary, you can select any other color from the [chart palette](/data-display/color-palette/color-palette). |
-| Several data sets | ![](static/positive-correlation-2.png) | Use colors from the [chart palette](/data-display/color-palette/color-palette).  |
+| Case              | Appearance example                     | Styles                                                                                                                                                                                                                                 |
+| ----------------- | -------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| One data set      | ![](static/no-correlation.png)         | The default color for the category is `--chart-palette-order-blue` (or `--blue-300`) with 50% transparency. However, if necessary, you can select any other color from the [chart palette](/data-display/color-palette/color-palette). |
+| Several data sets | ![](static/positive-correlation-2.png) | Use colors from the [chart palette](/data-display/color-palette/color-palette).                                                                                                                                                        |
 
 ## Value label
 
@@ -141,8 +139,8 @@ Tooltips should highlight:
 
 Table: Scatterplot chart tooltip examples
 
-| Case             | Appearance example       |
-| ---------------- | ------------------------ |
+| Case              | Appearance example      |
+| ----------------- | ----------------------- |
 | One data set      | ![](static/hover-2.png) |
 | Several data sets | ![](static/hover-1.png) |
 
@@ -174,7 +172,7 @@ The chart will scale automatically if the bubble is near the axes.
 
 Show [Skeleton](/components/skeleton/skeleton) during initial loading. If the chart has a title, display it to inform users about what's loading. Refer to [Skeleton](/components/skeleton/skeleton) for more details.
 
-Use the `--skeleton-bg` color token for the skeleton's background.        
+Use the `--skeleton-bg` color token for the skeleton's background.
 
 ![](static/scatterplot-chart-skeleton.png)
 

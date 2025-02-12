@@ -18,7 +18,7 @@ const STATES = ['normal', 'invalid', 'valid'];
 
 const Preview = (preview) => {
   const { bool, select, radio } = preview('InputTags');
-  const { bool: boolTag, text: textTag } = preview('InputTags.Tag');
+  const { bool: boolTag, label } = preview('InputTags.Tag');
 
   const size = radio({
     key: 'size',
@@ -43,11 +43,7 @@ const Preview = (preview) => {
     label: 'Read-only',
   });
 
-  const tagText = textTag({
-    key: 'tag',
-    defaultValue: 'Tag 1',
-    label: 'Text',
-  });
+  label({ label: 'Tag props', key: 'tagProps' });
 
   const circleTag = boolTag({
     key: 'circle',
@@ -80,17 +76,15 @@ const Preview = (preview) => {
 
   return (
     <InputTags size={size} state={state}>
-      {tagText.length ? (
-        <InputTags.Tag tabIndex={0} editable={editableTag}>
-          <InputTags.Tag.Text>
-            {circleTag && <InputTags.Tag.Circle style={{ background: '#2595e4' }} />}
-            {before && <InputTags.Tag.Addon>{beforeIconMap[size]}</InputTags.Tag.Addon>}
-            {(circleTag || before) ? (<InputTags.Tag.Text.Content>{tagText}</InputTags.Tag.Text.Content>) : tagText}
-          </InputTags.Tag.Text>
-          {closeTag && <InputTags.Tag.Close />}
-        </InputTags.Tag>
-      ) : null}
-      <InputTags.Value readOnly={readOnly} />
+      <InputTags.Tag tabIndex={0} editable={editableTag}>
+        <InputTags.Tag.Text>
+          {circleTag && <InputTags.Tag.Circle style={{ background: '#2595e4' }} />}
+          {before && <InputTags.Tag.Addon>{beforeIconMap[size]}</InputTags.Tag.Addon>}
+          {(circleTag || before) ? (<InputTags.Tag.Text.Content>Tag 1</InputTags.Tag.Text.Content>) : 'Tag 1'}
+        </InputTags.Tag.Text>
+        {closeTag && <InputTags.Tag.Close />}
+      </InputTags.Tag>
+      <InputTags.Value readOnly={readOnly} aria-label='InputTags example' />
     </InputTags>
   );
 };
@@ -147,7 +141,7 @@ Table: Interaction with InputTags
 
 When you focus on the input field, if there are preset options available (such as a database of minion addresses or previously entered keywords), a [combobox menu](/components/auto-suggest/auto-suggest) will open. Pressing `Enter` or clicking on a list item will insert its value into the input field and wrap it in a tag.
 
-## Turning text into tags
+### Turning text into tags
 
 Text entered by the user is automatically converted into a tag inside InputTags in the following cases:
 
@@ -160,11 +154,11 @@ Text entered by the user is automatically converted into a tag inside InputTags 
 Leading and trailing spaces are trimmed when creating tags.
 :::
 
-## Pasting text
+### Pasting text
 
 After pasting copied data, the text is split into tags based on punctuation separators like commas, semicolons and vertical bars ("|").
 
-## Editing and deleting tags
+### Editing and deleting tags
 
 There are several ways to edit a tag:
 

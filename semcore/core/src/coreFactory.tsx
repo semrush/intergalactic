@@ -5,14 +5,9 @@ import { useForkRef } from './utils/ref';
 import useEnhancedEffect from './utils/use/useEnhancedEffect';
 import _assignProps from './utils/assignProps';
 
-import {
-  Component,
-  PropsWithRenderFnChildren,
-  wrapIntergalacticComponent,
-} from './types/Component';
-import register from './register';
+import { Component, PropsWithRenderFnChildren } from './core-types/Component';
 
-import childrenEnhancement, { CHILDREN_COMPONENT } from './enhancement/Children';
+import childrenEnhancement from './enhancement/Children';
 import rootEnhancement from './enhancement/Root';
 import uncontrolledPropsEnhancement from './enhancement/uncontrolledProps';
 import functionDefaultPropsEnhancement from './enhancement/functionDefaultProps';
@@ -21,7 +16,7 @@ import staticChildrenEnhancement, {
   ROOT_COMPONENT,
   getterMethodNameByDisplayName,
 } from './enhancement/staticChildren';
-import inheritedNameEnhancement, { INHERITED_NAME } from './enhancement/inheritedName';
+import inheritedNameEnhancement from './enhancement/inheritedName';
 import hoistPropsEnhancement from './enhancement/hoistProps';
 import dataNameEnhancement from './enhancement/dataName';
 import enhanceEnhancement from './enhancement/enhance';
@@ -36,7 +31,9 @@ import {
   CORE_COMPONENT,
   CREATE_COMPONENT,
   CONTEXT_COMPONENT,
-} from './types/symbols';
+  CHILDREN_COMPONENT,
+  INHERITED_NAME,
+} from './core-types/symbols';
 
 function isEmptyObject(obj: any) {
   return (

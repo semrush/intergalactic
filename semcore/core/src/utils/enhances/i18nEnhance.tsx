@@ -1,37 +1,6 @@
 import React from 'react';
 import { LocaleKeys, useI18n } from './WithI18n';
-import { UnknownProperties } from '../../types/UnknownProperties';
-
-const interpolationRegex = /{(.*?)}/g;
-
-const escapeHtml = (html: string) =>
-  String(html)
-    .split('')
-    .map((char) => {
-      switch (char) {
-        case '<':
-          return '&lt;';
-        case '>':
-          return '&gt;';
-        case '&':
-          return '&amp;';
-        case '"':
-          return '&quot;';
-        case '`':
-          return '&#x60';
-      }
-      return char;
-    })
-    .join('');
-
-export function interpolate(template: string, variables: {} = {}) {
-  return template.replace(interpolationRegex, (_, key) => {
-    if ((variables as any)[key] !== undefined) {
-      return escapeHtml((variables as any)[key]);
-    }
-    return _;
-  });
-}
+import { UnknownProperties } from '../../core-types/UnknownProperties';
 
 /** @deprecated */
 export interface IWithI18nEnhanceProps extends WithI18nEnhanceProps, UnknownProperties {}

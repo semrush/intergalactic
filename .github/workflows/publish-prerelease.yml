@@ -1,8 +1,5 @@
 name: publish-prerelease
 on:
-  push:
-    tags:
-      - v[0-9]+.[0-9]+.[0-9]+-prerelease.[0-9]+
   workflow_dispatch:
     tags:
       - v[0-9]+.[0-9]+.[0-9]+-prerelease.[0-9]+
@@ -160,7 +157,7 @@ jobs:
         continue-on-error: true
       - name: Save test results as artifacts
         if: steps.test.outcome != 'success'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: unit-testing-failure-output
           path: semcore/*/__tests__/__image_snapshots__/__diff_output__/
@@ -243,11 +240,11 @@ jobs:
       - name: Browser testing
         id: browser-testing
         run: |
-          docker run --rm --network host -v $(pwd):/work -v /work/node_modules -v /work/.pnpm-store -v /work/.cache -w /work/ mcr.microsoft.com/playwright:v1.35.0-jammy bash -c "npm install --global pnpm@8.11.0 && pnpm install --ignore-scripts && pnpm build:icons && pnpm build:illustration && npx playwright install && CI=true pnpm playwright test --config playwright.browser.config.ts"
+          docker run --rm --network host -v $(pwd):/work -v /work/node_modules -v /work/.pnpm-store -v /work/.cache -w /work/ mcr.microsoft.com/playwright:v1.43.0-jammy bash -c "npm install --global pnpm@8.11.0 && pnpm install --ignore-scripts && pnpm build:icons && pnpm build:illustration && npx playwright install && CI=true pnpm playwright test --config playwright.browser.config.ts"
         continue-on-error: true
       - name: Save test results as artifacts
         if: steps.browser-testing.outcome != 'success'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: browser-testing-failure-output
           path: test-results
@@ -271,7 +268,7 @@ jobs:
         continue-on-error: true
       - name: Save test results as artifacts
         if: steps.axe-testing.outcome != 'success'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: axe-testing-failure-output
           path: test-results

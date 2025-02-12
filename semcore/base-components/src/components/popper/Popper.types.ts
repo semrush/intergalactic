@@ -98,6 +98,8 @@ export type PopperProps = OutsideClickProps &
      * If set, popper will be placed near the place mouse cursor entered the trigger
      */
     cursorAnchoring?: boolean;
+
+    popperMargin?: number;
   };
 
 /** @deprecated */
@@ -143,7 +145,7 @@ export interface IPopperContext extends PopperContext, UnknownProperties {}
 export type PopperContext = {
   getTriggerProps: PropGetterFn;
   getPopperProps: PropGetterFn;
-  popper: Instance;
+  popper: React.MutableRefObject<Instance>;
   // Rename to setTriggerRef
   setTrigger: (ref: HTMLElement) => void;
   setPopper: (ref: HTMLElement) => void;

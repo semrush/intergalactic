@@ -7,11 +7,11 @@ const Demo = () => {
     <Box>
       <Ellipsis trim='middle' cursorAnchoring>
         <Ellipsis.Content w={500}>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores atque autem commodi,
-          doloribus ex harum inventore modi praesentium quam ratione reprehenderit rerum tempore
-          voluptas. Aliquam eos expedita illo quasi unde!
+          Intergalactic, planetary, planetary, intergalactic Intergalactic, planetary, planetary,
+          intergalactic Intergalactic, planetary, planetary, intergalactic Intergalactic, planetary,
+          planetary, intergalactic Another dimension, another dimension
         </Ellipsis.Content>
-        <Ellipsis.Popper w={200} wMax={500} />
+        <Ellipsis.Popper w={400} wMax={500} />
       </Ellipsis>
     </Box>
   );

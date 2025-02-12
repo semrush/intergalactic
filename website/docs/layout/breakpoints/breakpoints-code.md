@@ -4,7 +4,7 @@ fileSource: breakpoints
 tabs: Design('breakpoints'), API('breakpoints-api'), Example('breakpoints-code'), Changelog('breakpoints-changelog')
 ---
 
-## Simple use
+## Basic usage
 
 To use breakpoints in your application, you need to wrap it in a `<Breakpoints />` component.
 And then you can get the value of the media query in any part of your application through the context.
@@ -16,7 +16,7 @@ Resize the window to see the changes.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/simple-use.tsx';
+  export Demo from 'stories/components/breakpoints/docs/examples/simple-use.tsx';
 </script>
 
 :::
@@ -28,7 +28,7 @@ You can use an instance of the `MediaList` class, it has methods `matches`/`addL
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/manual-control.tsx';
+  export Demo from 'stories/components/breakpoints/docs/examples/manual-control.tsx';
 </script>
 
 :::
@@ -44,7 +44,7 @@ The 'Breakpoints.mediaList.matches()' will return the intex of the first matchin
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/custom-media.tsx';
+  export Demo from 'stories/components/breakpoints/docs/examples/custom-media.tsx';
 </script>
 
 :::
@@ -60,7 +60,7 @@ It will work if you use `createBreakpoints` function only.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/mocking.tsx';
+  export Demo from 'stories/components/breakpoints/docs/examples/mocking.tsx';
 </script>
 
 :::

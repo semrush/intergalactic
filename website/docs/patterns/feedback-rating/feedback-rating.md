@@ -40,7 +40,7 @@ Notice includes the following mandatory elements:
 - Also, avoid showing the next Notice immediately after the user has closed the previous one.
 - Avoid displaying a Notice and a FeaturePopover simultaneously on the page to prevent cognitive overload.
 
-## Modal window with feedback form
+## Modal feedback form
 
 ![](static/feedback-rating-modal.png)
 

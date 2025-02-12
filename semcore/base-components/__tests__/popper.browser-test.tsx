@@ -159,6 +159,7 @@ test.describe('Popper', () => {
     expect(Math.round(newPopperY)).toBeCloseTo(Math.round(popperY));
   });
   test.describe('hover interaction', () => {
+    test.use({ hasTouch: true });
     test('with mouse', async ({ page }) => {
       const standPath = 'semcore/base-components/__tests__/popper-stands/hover-interaction.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');

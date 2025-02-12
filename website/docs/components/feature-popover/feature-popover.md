@@ -35,7 +35,7 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
   const closeIcon = bool({
     key: 'icon',
     defaultValue: true,
-    label: 'Show Close button',
+    label: 'Close button',
   });
 
   const visible = bool({
@@ -63,7 +63,7 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
     >
       <FeaturePopover.Trigger>
         <Button>
-          Open Popover
+          Feature
           {visible && <FeaturePopover.Spot />}
         </Button>
       </FeaturePopover.Trigger>
@@ -164,11 +164,15 @@ You can use `wMax` property to set the maximum width of the FeaturePopover's pop
 - The invert `primary` & `tertiary` muted buttons have M size. Top margin for the group of controls is 16px (`--spacing-4x` token).
 - Illustration's margin-right is 16px (`--spacing-4x` token).
 
-## Appearing and hiding
+## Displaying and hiding 
 
 Component appears according to the timings you set through the `timeout` property.
 
 `FeaturePopover` hides after using one of its buttons, pressing `Esc`, or using the highlighted interface element.
+
+## FeaturePopover as part of onboarding
+
+Show onboarding only to new users who have never seen it. If the user has already seen onboarding once, don’t show it again to them.
 
 ## Usage in UX/UI
 
@@ -201,8 +205,3 @@ Component appears according to the timings you set through the `timeout` propert
 
 - Describe a feature or a tip with one or two sentences.
 - Tell not only about the feature itself, but also about how to use it and how it can help the user.
-
-## FeaturePopover as part of onboarding
-
-Show onboarding only to new users who have never seen it. If the user has already seen onboarding once, don’t show it again to them.
-
