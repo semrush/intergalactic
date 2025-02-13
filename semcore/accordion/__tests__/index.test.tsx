@@ -60,7 +60,9 @@ describe('Accordion', () => {
       </Accordion>
     );
 
-    await expect(await snapshot(component, {actions: {focus: '#item-1'}})).toMatchImageSnapshot(task);
+    await expect(await snapshot(component, { actions: { focus: '#item-1' } })).toMatchImageSnapshot(
+      task,
+    );
   });
 
   test.concurrent('Should render primary use correctly', async ({ task }) => {
@@ -70,7 +72,7 @@ describe('Accordion', () => {
           .fill('')
           .map((_, index) => (
             <Accordion.Item value={index} disabled={index === 3} key={index}>
-              <Accordion.Item.Toggle  id={`item-${index}`}>
+              <Accordion.Item.Toggle id={`item-${index}`}>
                 <Accordion.Item.Chevron />
                 Item {index}
               </Accordion.Item.Toggle>
@@ -80,7 +82,9 @@ describe('Accordion', () => {
       </Accordion>
     );
 
-    await expect(await snapshot(component, {actions: {focus: '#item-1'}})).toMatchImageSnapshot(task);
+    await expect(await snapshot(component, { actions: { focus: '#item-1' } })).toMatchImageSnapshot(
+      task,
+    );
   });
 
   test.concurrent('Should support uncontrolled mode with single expandable item', () => {
