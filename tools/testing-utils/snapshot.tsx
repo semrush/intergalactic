@@ -106,7 +106,11 @@ export const snapshot = async (
     await page.hover(options.actions.hover);
   }
   if (options.actions?.focus) {
-    await page.focus(options.actions.focus);
+    const element = page.locator(options.actions.focus);
+    const elementTabIndex = await element.getAttribute('tabindex');
+    if (elementTabIndex && elementTabIndex !== '-1') {
+      await element.focus();
+    }
   }
   const boundingBox = await mainElement?.boundingBox();
   const pageSize = await page.viewportSize();

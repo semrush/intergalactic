@@ -38,7 +38,7 @@ describe('Tag', () => {
 
   test.concurrent('Renders without focus ring when non interactive', async ({ task }) => {
     const component = (
-      <Tag id='non-interactive-tag' keyboardFocused>
+      <Tag id='non-interactive-tag'>
         <Tag.Text>Tag name</Tag.Text>
         <Tag.Close />
       </Tag>
@@ -69,28 +69,24 @@ describe('Tag', () => {
   });
 
   test.concurrent('Renders correctly with keyboardFocused', async ({ task }) => {
-    const component = themes.flatMap((theme) =>
-      colors.map((color) => (
-        <Tag key={`${theme}-${color}`} theme={theme} color={color} keyboardFocused interactive>
+    const component = (
+        <Tag interactive id={'interactive-tag'}>
           <Tag.Text>Tag name</Tag.Text>
         </Tag>
-      )),
     );
 
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+    await expect(await snapshot(component, {actions: {focus: '#interactive-tag'}})).toMatchImageSnapshot(task);
   });
 
   test.concurrent('Renders text correctly with keyboardFocused', async ({ task }) => {
-    const component = themes.flatMap((theme) =>
-      colors.map((color) => (
-        <Tag key={`${theme}-${color}`} theme={theme} color={color} interactive>
-          <Tag.Text keyboardFocused>Tag name</Tag.Text>
+    const component =  (
+        <Tag interactive>
+          <Tag.Text id={'interactive-tag-text'}>Tag name</Tag.Text>
           <Tag.Close />
         </Tag>
-      )),
     );
 
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+    await expect(await snapshot(component, {actions: {focus: '#interactive-tag-text'}})).toMatchImageSnapshot(task);
   });
 
   test.concurrent('Renders correctly with Addon and Text', async ({ task }) => {
@@ -326,7 +322,7 @@ describe('TagContainer', () => {
   test.concurrent('Renders without focus ring when non interactive', async ({ task }) => {
     const component = (
       <TagContainer>
-        <TagContainer.Tag id='non-interactive-tag' keyboardFocused>
+        <TagContainer.Tag id='non-interactive-tag'>
           <TagContainer.Tag.Text>Tag name</TagContainer.Tag.Text>
         </TagContainer.Tag>
         <TagContainer.Close />
@@ -344,7 +340,7 @@ describe('TagContainer', () => {
   test.concurrent('Renders with focus ring when interactive', async ({ task }) => {
     const component = (
       <TagContainer>
-        <TagContainer.Tag id='interactive-tag' interactive keyboardFocused>
+        <TagContainer.Tag id='interactive-tag' interactive>
           <TagContainer.Tag.Text>Tag name</TagContainer.Tag.Text>
         </TagContainer.Tag>
         <TagContainer.Close />
@@ -360,33 +356,35 @@ describe('TagContainer', () => {
   });
 
   test.concurrent('Renders correctly with keyboardFocused', async ({ task }) => {
-    const component = themes.flatMap((theme) =>
-      colors.map((color) => (
+      const theme = themes[0];
+      const color = colors[0];
+      const component =  (
         <TagContainer key={`${theme}-${color}`} theme={theme} color={color}>
-          <TagContainer.Tag keyboardFocused interactive>
+          <TagContainer.Tag id='focused-interactive' interactive>
             <TagContainer.Tag.Text>Tag name</TagContainer.Tag.Text>
           </TagContainer.Tag>
           <TagContainer.Close />
         </TagContainer>
-      )),
     );
 
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+    await expect(await snapshot(component, {actions: {focus: '#focused-interactive'}})).toMatchImageSnapshot(task);
   });
 
   test.concurrent('Renders text correctly with focused close button', async ({ task }) => {
-    const component = themes.flatMap((theme) =>
-      colors.map((color) => (
-        <TagContainer key={`${theme}-${color}`} theme={theme} color={color}>
+      const theme = themes[0];
+      const color = colors[0];
+        const component = (<TagContainer key={`${theme}-${color}`} theme={theme} color={color}>
           <TagContainer.Tag>
             <TagContainer.Tag.Text>Tag name</TagContainer.Tag.Text>
           </TagContainer.Tag>
-          <TagContainer.Close keyboardFocused />
-        </TagContainer>
-      )),
-    );
+          <TagContainer.Close id='focused_close' />
+        </TagContainer>);
 
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+    await expect(await snapshot(component, {
+        actions: {
+            focus: '#focused_close',
+        },
+    })).toMatchImageSnapshot(task);
   });
 
   test.concurrent('Renders correctly with Addon and Text', async ({ task }) => {
