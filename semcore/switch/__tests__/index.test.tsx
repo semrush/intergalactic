@@ -77,15 +77,21 @@ describe('Switch', () => {
           <Switch.Value disabled />
           <Switch.Addon>disabled</Switch.Addon>
         </Switch>
-        <Switch>
+        <Switch id='focused'>
           <Switch.Addon>keyboardFocused</Switch.Addon>
-          <Switch.Value keyboardFocused />
+          <Switch.Value />
           <Switch.Addon>keyboardFocused</Switch.Addon>
         </Switch>
       </>
     );
 
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+    await expect(
+      await snapshot(component, {
+        actions: {
+          focus: '#focused',
+        },
+      }),
+    ).toMatchImageSnapshot(task);
   });
 
   test.concurrent('Should support a custom icon on the toggle', async ({ task }) => {

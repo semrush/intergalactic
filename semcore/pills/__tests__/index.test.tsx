@@ -219,34 +219,76 @@ describe('PillGroup', () => {
     expect(spy).toBeCalledWith(3, expect.anything());
   });
 
-  test.concurrent('Should render correctly states', async ({ task }) => {
+  test.concurrent('Should render correctly selected second with manual', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5 }}>
-        <Pills value={1} behavior={'manual'} keyboardFocused>
+        <Pills value={1} behavior={'manual'}>
           <Pills.Item value={1}>1</Pills.Item>
-          <Pills.Item value={2} keyboardFocused>
+          <Pills.Item value={2} id='focused'>
             2
           </Pills.Item>
         </Pills>
-        <Pills value={1} behavior={'manual'} keyboardFocused>
-          <Pills.Item value={1} keyboardFocused>
+      </snapshot.ProxyProps>
+    );
+
+    await expect(
+      await snapshot(component, { actions: { focus: '#focused' } }),
+    ).toMatchImageSnapshot(task);
+  });
+
+  test.concurrent('Should render correctly selected first with manual', async ({ task }) => {
+    const component = (
+      <snapshot.ProxyProps style={{ margin: 5 }}>
+        <Pills value={1} behavior={'manual'}>
+          <Pills.Item value={1} id='focused'>
             1
           </Pills.Item>
           <Pills.Item value={2}>2</Pills.Item>
         </Pills>
+      </snapshot.ProxyProps>
+    );
+
+    await expect(
+      await snapshot(component, { actions: { focus: '#focused' } }),
+    ).toMatchImageSnapshot(task);
+  });
+
+  test.concurrent('Should render correctly without focus', async ({ task }) => {
+    const component = (
+      <snapshot.ProxyProps style={{ margin: 5 }}>
         <Pills>
           <Pills.Item value={1}>1</Pills.Item>
           <Pills.Item value={2} disabled>
             2
           </Pills.Item>
         </Pills>
-        <Pills id={'autofocusedPills'} keyboardFocused>
+      </snapshot.ProxyProps>
+    );
+
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  });
+
+  test.concurrent('Should render correctly selected with auto', async ({ task }) => {
+    const component = (
+      <snapshot.ProxyProps style={{ margin: 5 }}>
+        <Pills id={'focused'}>
           <Pills.Item value={1}>1</Pills.Item>
           <Pills.Item value={2}>2</Pills.Item>
         </Pills>
+      </snapshot.ProxyProps>
+    );
+
+    await expect(
+      await snapshot(component, { actions: { focus: '#focused' } }),
+    ).toMatchImageSnapshot(task);
+  });
+
+  test.concurrent('Should render correctly selected with auto and valued', async ({ task }) => {
+    const component = (
+      <snapshot.ProxyProps style={{ margin: 5 }}>
         <Pills value={1}>
           <div>
-            <Pills.Item value={1} keyboardFocused>
+            <Pills.Item value={1} id='focused'>
               1
             </Pills.Item>
           </div>
@@ -256,7 +298,7 @@ describe('PillGroup', () => {
     );
 
     await expect(
-      await snapshot(component, { actions: { focus: '#autofocusedPills' } }),
+      await snapshot(component, { actions: { focus: '#focused' } }),
     ).toMatchImageSnapshot(task);
   });
 
