@@ -22,16 +22,12 @@ SSlider {
     background-color: var(--intergalactic-border-primary, #c4c7cf);
   }
 
-  &:active SKnob, &:focus SKnob {
+  &:active SKnob, &:focus-visible SKnob {
     box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
   }
   &:focus {
     outline: none;
   }
-}
-
-SSlider[keyboardFocused] SKnob {
-  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
 }
 
 SSlider[disabled] {
