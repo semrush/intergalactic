@@ -29,11 +29,7 @@ const legacyThemeRecommendedMigration = {
 class RootTag extends Component {
   static displayName = 'Tag';
   static style = style;
-  static enhance = [
-    i18nEnhance(localizedMessages),
-    uniqueIDEnhancement(),
-    resolveColorEnhance(),
-  ];
+  static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhancement(), resolveColorEnhance()];
   static defaultProps = {
     theme: 'primary',
     color: 'gray-500',

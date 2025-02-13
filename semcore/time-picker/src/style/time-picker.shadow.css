@@ -4,9 +4,9 @@ STimePicker {
   outline: none;
 }
 
-STimePicker[keyboardFocused]:focus {
-  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
-}
+/*STimePicker[keyboardFocused]:focus {*/
+/*  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));*/
+/*}*/
 
 STimePicker[disabled] {
   color: var(--intergalactic-text-secondary, #6c6e79);
@@ -53,7 +53,6 @@ SPickerFormat {
   border: 1px solid var(--intergalactic-border-primary, #c4c7cf);
   border-radius: 0 var(--intergalactic-control-rounded, 6px)
     var(--intergalactic-control-rounded, 6px) 0;
-  outline: 0;
   box-shadow: none;
   cursor: pointer;
   box-sizing: border-box;
@@ -73,11 +72,6 @@ SPickerFormat {
   &[active] {
     color: var(--intergalactic-text-secondary, #6c6e79);
     background-color: var(--intergalactic-bg-secondary-neutral-active, #c4c7cf);
-  }
-
-  &:focus,
-  &:focus-visible {
-    outline: none;
   }
 }
 
@@ -107,9 +101,9 @@ SPickerFormat[disabled] {
   border-color: transparent transparent transparent var(--intergalactic-border-primary, #c4c7cf);
 }
 
-SPickerFormat[keyboardFocused] {
-  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
-}
+/*SPickerFormat[keyboardFocused] {*/
+/*  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));*/
+/*}*/
 
 STimePickerSeparator {
   color: var(--intergalactic-text-primary, #191b23);
