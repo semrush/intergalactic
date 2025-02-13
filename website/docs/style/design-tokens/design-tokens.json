@@ -518,7 +518,7 @@
     "rawValue": "{gray.600}",
     "computedValue": "#484a54",
     "description": "Hover and active states of the hint link text.",
-    "components": ["button", "format-text", "typography"]
+    "components": ["button", "format-text"]
   },
   {
     "name": "--intergalactic-text-hint-invert",
@@ -1832,9 +1832,7 @@
       "input-tags",
       "radio",
       "slider",
-      "switch",
-      "textarea",
-      "typography"
+      "switch"
     ]
   },
   {
@@ -2280,7 +2278,6 @@
       "tag",
       "textarea",
       "time-picker",
-      "typography",
       "widget-empty",
       "wizard"
     ]
