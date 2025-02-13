@@ -8,7 +8,6 @@ import { localizedMessages } from './translations/__intergalactic-dynamic-locale
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import log from '@semcore/core/lib/utils/logger';
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 
 import style from './style/tag.shadow.css';
@@ -37,9 +36,6 @@ class RootTag extends Component {
     i18n: localizedMessages,
     locale: 'en',
   };
-  state = {
-    focusable: 'container',
-  };
 
   constructor(props) {
     super(props);
@@ -59,35 +55,12 @@ class RootTag extends Component {
   }
 
   getTextProps() {
-    const { interactive } = this.asProps;
     const id = this.asProps.id || `igc-${this.asProps.uid}-tag`;
-    const { focusable } = this.state;
 
     return {
-      tabIndex: focusable === 'text' && interactive ? 0 : -1,
+      tabIndex: -1,
       id: `${id}-text`,
-      role: focusable === 'text' && interactive ? 'button' : undefined,
-    };
-  }
-  handleCloseMount = () => {
-    this.setState({ focusable: 'text' });
-  };
-  handleCloseUnmount = () => {
-    this.setState({ focusable: 'container' });
-  };
-  getCloseProps() {
-    const { getI18nText, color, resolveColor } = this.asProps;
-    const id = this.asProps.id || `igc-${this.asProps.uid}-tag`;
-
-    return {
-      getI18nText,
-      id: `${id}-clear`,
-      'aria-labelledby': `${id}-clear ${id}-text`,
-      'aria-label': getI18nText('remove'),
-      onMount: this.handleCloseMount,
-      onUnmount: this.handleCloseUnmount,
-      color,
-      resolveColor,
+      role: undefined,
     };
   }
 
@@ -117,10 +90,9 @@ class RootTag extends Component {
       id: outerId,
       uid,
     } = this.asProps;
-    const { focusable } = this.state;
     const id = outerId || `igc-${uid}-tag`;
     const isInteractiveView = !disabled && interactive;
-    const isInteractive = !disabled && interactive && focusable === 'container';
+    const isInteractive = !disabled && interactive;
 
     return sstyled(styles)(
       <STag
@@ -221,7 +193,6 @@ class RootTagContainer extends Component {
         [
           'InputTags.' + Tag.Text.displayName,
           'InputTags.' + Tag.Addon.displayName,
-          'InputTags.' + Tag.Close.displayName,
           'InputTags.' + Tag.Circle.displayName,
           TagContainer.Tag.displayName,
           TagContainer.Addon.displayName,
@@ -312,39 +283,6 @@ function Text(props) {
   return sstyled(styles)(<SText render={Box} tag='span' />);
 }
 
-function Close(props) {
-  const SClose = Root;
-  const { styles } = props;
-
-  React.useEffect(() => {
-    props.onMount?.();
-
-    log.warn(
-      true,
-      'Tag.Close is deprecated and will be removed in the next major release. Please, use TagContainer and TagContainer.Close',
-      'Tag.Close',
-    );
-
-    return () => props.onUnmount?.();
-  }, []);
-
-  const onKeyDown = React.useCallback(
-    (event) => {
-      if (props.onKeyDown) {
-        return props.onKeyDown(event);
-      }
-
-      if (props.onClick && (event.key === 'Enter' || event.key === ' ')) {
-        event.preventDefault();
-        props.onClick(event);
-      }
-    },
-    [props.onKeyDown, props.onClick],
-  );
-
-  return sstyled(styles)(<SClose render={Box} tag={CloseM} interactive onKeyDown={onKeyDown} />);
-}
-
 function Addon(props) {
   const SAddon = Root;
   const { styles, color, resolveColor } = props;
@@ -370,7 +308,6 @@ function Circle(props) {
 const Tag = createComponent(RootTag, {
   Text,
   Addon,
-  Close,
   Circle,
 });
 

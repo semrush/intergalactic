@@ -8,6 +8,10 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - `keyboardFocusEnhance` to css `:focus-visible` property.
 
+### Removed
+
+- `Tag.Close` component. Use `TagContainer.Close`.
+
 ## [5.52.1] - 2025-02-05
 
 ### Changed
