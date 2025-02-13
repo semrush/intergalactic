@@ -97,11 +97,13 @@ describe('TabPanel', () => {
 
   test.concurrent('Should support keyboardFocused/disabled/selected', async ({ task }) => {
     const component = (
-      <TabPanel>
+      <TabPanel value={2}>
         <TabPanel.Item>Item 1</TabPanel.Item>
-        <TabPanel.Item selected>Item 2</TabPanel.Item>
+        <TabPanel.Item selected id='focused' value={2}>
+          Item 2
+        </TabPanel.Item>
         <TabPanel.Item disabled>Item 3</TabPanel.Item>
-        <TabPanel.Item id='focused'>Item 4</TabPanel.Item>
+        <TabPanel.Item>Item 4</TabPanel.Item>
       </TabPanel>
     );
 

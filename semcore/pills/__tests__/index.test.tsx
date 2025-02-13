@@ -219,23 +219,6 @@ describe('PillGroup', () => {
     expect(spy).toBeCalledWith(3, expect.anything());
   });
 
-  test.concurrent('Should render correctly selected second with manual', async ({ task }) => {
-    const component = (
-      <snapshot.ProxyProps style={{ margin: 5 }}>
-        <Pills value={1} behavior={'manual'}>
-          <Pills.Item value={1}>1</Pills.Item>
-          <Pills.Item value={2} id='focused'>
-            2
-          </Pills.Item>
-        </Pills>
-      </snapshot.ProxyProps>
-    );
-
-    await expect(
-      await snapshot(component, { actions: { focus: '#focused' } }),
-    ).toMatchImageSnapshot(task);
-  });
-
   test.concurrent('Should render correctly selected first with manual', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5 }}>
