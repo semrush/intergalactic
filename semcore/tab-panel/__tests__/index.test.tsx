@@ -101,11 +101,17 @@ describe('TabPanel', () => {
         <TabPanel.Item>Item 1</TabPanel.Item>
         <TabPanel.Item selected>Item 2</TabPanel.Item>
         <TabPanel.Item disabled>Item 3</TabPanel.Item>
-        <TabPanel.Item keyboardFocused>Item 4</TabPanel.Item>
+        <TabPanel.Item id='focused'>Item 4</TabPanel.Item>
       </TabPanel>
     );
 
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+    await expect(
+      await snapshot(component, {
+        actions: {
+          focus: '#focused',
+        },
+      }),
+    ).toMatchImageSnapshot(task);
   });
 
   test.concurrent('Should support Addon', async ({ task }) => {

@@ -93,11 +93,17 @@ describe('TabLine', () => {
       <TabLine>
         <TabLine.Item selected>Item 2</TabLine.Item>
         <TabLine.Item disabled>Item 3</TabLine.Item>
-        <TabLine.Item keyboardFocused>Item 4</TabLine.Item>
+        <TabLine.Item id='focused'>Item 4</TabLine.Item>
       </TabLine>
     );
 
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+    await expect(
+      await snapshot(component, {
+        actions: {
+          focus: '#focused',
+        },
+      }),
+    ).toMatchImageSnapshot(task);
   });
 
   test.concurrent('Should support Addon', async ({ task }) => {
