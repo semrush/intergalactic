@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.42.4] - 2025-02-13
+
+### Added
+
+- animation for scrolling to the highlighted node to hide the delay after opening.
+
 ## [4.42.3] - 2025-02-05
 
 ### Changed

@@ -185,6 +185,7 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
           node.scrollIntoView({
             block: 'nearest',
             inline: 'nearest',
+            behavior: 'smooth',
           });
         }
       }
@@ -233,19 +234,18 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
     const { visible, focusSourceRef } = this.asProps;
     const visibilityChanged = visible !== prevProps.visible;
 
-    if (visibilityChanged && prevProps.visible !== undefined) {
-      if (!visible) {
-        this.handlers.highlightedIndex(null);
-        // @ts-ignore
-        this.highlightedItemRef.current = null;
-        if (
-          this.popperRef.current &&
-          this.triggerRef.current &&
-          (document.activeElement === document.body || isFocusInside(this.popperRef.current)) &&
-          focusSourceRef.current === 'keyboard'
-        ) {
-          setFocus(this.triggerRef.current);
-        }
+    if (visibilityChanged && !visible) {
+      this.handlers.highlightedIndex(null);
+      this.prevHighlightedIndex = null;
+      // @ts-ignore
+      this.highlightedItemRef.current = null;
+      if (
+        this.popperRef.current &&
+        this.triggerRef.current &&
+        (document.activeElement === document.body || isFocusInside(this.popperRef.current)) &&
+        focusSourceRef.current === 'keyboard'
+      ) {
+        setFocus(this.triggerRef.current);
       }
     }
   }
