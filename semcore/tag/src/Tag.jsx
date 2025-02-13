@@ -8,7 +8,6 @@ import { localizedMessages } from './translations/__intergalactic-dynamic-locale
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 import log from '@semcore/core/lib/utils/logger';
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 
@@ -34,7 +33,6 @@ class RootTag extends Component {
     i18nEnhance(localizedMessages),
     uniqueIDEnhancement(),
     resolveColorEnhance(),
-    keyboardFocusEnhance(),
   ];
   static defaultProps = {
     theme: 'primary',
@@ -266,7 +264,7 @@ class RootCloseTagContainer extends Component {
     };
   };
 
-  static enhance = [resolveColorEnhance(), keyboardFocusEnhance()];
+  static enhance = [resolveColorEnhance()];
 
   handleKeyDown = (event) => {
     const { onKeyDown, onClick } = this.asProps;
@@ -317,7 +315,6 @@ function Text(props) {
   const { styles } = props;
   return sstyled(styles)(<SText render={Box} tag='span' />);
 }
-Text.enhance = [keyboardFocusEnhance()];
 
 function Close(props) {
   const SClose = Root;
