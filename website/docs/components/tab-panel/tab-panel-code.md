@@ -16,7 +16,7 @@ You can add icons, badges, and counters as addons to the left or right of the te
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/tab_panel_item_addons.tsx';
+  export Demo from 'stories/components/tab-panel/docs/examples/tab_panel_item_addons.tsx';
 </script>
 
 :::
@@ -28,7 +28,7 @@ Use `disabled` property to make `<TabPanel.Item />` disabled. Always add `Toolti
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/disabled_tab_panel_item.tsx';
+  export Demo from 'stories/components/tab-panel/docs/examples/disabled_tab_panel_item.tsx';
 </script>
 
 :::
@@ -40,7 +40,7 @@ By default, tabs are switched manually when selected.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/manual_tab_activation.tsx';
+  export Demo from 'stories/components/tab-panel/docs/examples/manual_tab_activation.tsx';
 </script>
 
 :::
@@ -52,7 +52,7 @@ You can set `behavior='auto'` on TabPanel to change the tab activation method to
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/automatic_tab_activation.tsx';
+  export Demo from 'stories/components/tab-panel/docs/examples/automatic_tab_activation.tsx';
 </script>
 
 :::
