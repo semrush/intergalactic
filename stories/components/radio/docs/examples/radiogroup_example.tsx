@@ -11,7 +11,7 @@ const Demo = () => {
         name='radio'
         aria-labelledby='radioGroup'
         value={value}
-        onChange={(v) => setValue(v)}
+        onChange={(v: string) => setValue(v)}
       >
         <Text id='radioGroup' size={200}>
           Select dog breed
