@@ -108,7 +108,7 @@ export const snapshot = async (
   if (options.actions?.focus) {
     const element = page.locator(options.actions.focus);
     const elementTabIndex = await element.getAttribute('tabindex');
-    if (elementTabIndex && elementTabIndex !== '-1') {
+    if (elementTabIndex !== '-1') {
       await element.focus();
     }
   }
