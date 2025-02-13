@@ -119,12 +119,12 @@ SControl:checked~SValue[size='l']::after {
   height: 8px;
 }
 
-SValue[state='normal'][keyboardFocused]::before {
+SControl:focus-visible + SValue[state='normal']::before {
   box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
   border-color: var(--intergalactic-border-info-active, #006dca);
 }
 
-SValue[state='invalid'][keyboardFocused]::before {
+SControl:focus-visible + SValue[state='invalid']::before {
   box-shadow: var(--intergalactic-keyboard-focus-invalid, 0px 0px 0px 3px rgba(255, 73, 83, 0.5));
 }
 
