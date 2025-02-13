@@ -14,7 +14,6 @@ SBaseTrigger {
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
   overflow: visible;
-  outline: 0;
   text-align: center;
   vertical-align: middle;
   font-family: inherit;
@@ -32,8 +31,7 @@ SBaseTrigger {
   }
 
   &:active,
-  &:hover,
-  &:focus {
+  &:hover {
     outline: 0;
     text-decoration: none;
   }
