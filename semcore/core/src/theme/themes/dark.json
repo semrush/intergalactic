@@ -198,6 +198,8 @@
   "--intergalactic-keyboard-focus": "0px 0px 0px 3px rgba(43, 179, 255, 0.8)",
   "--intergalactic-keyboard-focus-invalid": "0px 0px 0px 3px rgba(246, 58, 75, 0.8)",
   "--intergalactic-keyboard-focus-valid": "0px 0px 0px 3px rgba(68, 209, 164, 0.8)",
+  "--intergalactic-keyboard-focus-invalid-outline": "rgba({red.400}, 0.5)",
+  "--intergalactic-keyboard-focus-valid-outline": "rgba({green.400}, 0.5)",
   "--intergalactic-base": "Inter",
   "--intergalactic-lh-800": "117%",
   "--intergalactic-lh-700": "110%",

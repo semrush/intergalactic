@@ -100,6 +100,7 @@ export const snapshot = async (
 
   if (options.actions?.active) {
     await page.click(options.actions.active);
+    await page.mouse.down();
   }
   if (options.actions?.hover) {
     await page.hover(options.actions.hover);

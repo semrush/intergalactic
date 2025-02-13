@@ -394,6 +394,10 @@
   --intergalactic-keyboard-focus-invalid: 0px 0px 0px 3px rgba(246, 58, 75, 0.8);
   /* Keyboard focus styles for elements with valid state. */
   --intergalactic-keyboard-focus-valid: 0px 0px 0px 3px rgba(68, 209, 164, 0.8);
+  /* Color for keyboard focus outline styles for elements with invalid state. */
+  --intergalactic-keyboard-focus-invalid-outline: rgba({red.400}, 0.5);
+  /* Color for keyboard focus outline styles for elements with valid state. */
+  --intergalactic-keyboard-focus-valid-outline: rgba({green.400}, 0.5);
   --intergalactic-base: Inter;
   /* Use with font-size-800. */
   --intergalactic-lh-800: 117%;

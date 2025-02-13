@@ -1439,6 +1439,16 @@
       "type": "boxShadow",
       "description": "Keyboard focus styles for elements with valid state."
     },
+    "keyboard-focus-invalid-outline": {
+      "value": "rgba({red.400}, 0.5)",
+      "type": "outline",
+      "description": "Color for keyboard focus outline styles for elements with invalid state."
+    },
+    "keyboard-focus-valid-outline": {
+      "value": "rgba({green.400}, 0.5)",
+      "type": "outline",
+      "description": "Color for keyboard focus outline styles for elements with valid state."
+    },
     "base": {
       "value": "Inter",
       "type": "fontFamilies"
