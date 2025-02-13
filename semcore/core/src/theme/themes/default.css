@@ -414,9 +414,9 @@
   /* Keyboard focus styles for elements with valid state. */
   --intergalactic-keyboard-focus-valid: 0px 0px 0px 3px rgba(0, 159, 129, 0.5);
   /* Color for keyboard focus outline styles for elements with invalid state. */
-  --intergalactic-keyboard-focus-invalid-outline: rgba({red.400}, 0.5);
+  --intergalactic-keyboard-focus-invalid-outline: rgba(255, 73, 83, 0.5);
   /* Color for keyboard focus outline styles for elements with valid state. */
-  --intergalactic-keyboard-focus-valid-outline: rgba({green.400}, 0.5);
+  --intergalactic-keyboard-focus-valid-outline: rgba(0, 159, 129, 0.5);
   /* Default keyboard focus styles for using with dark background. */
   --intergalactic-keyboard-focus-invert: 0px 0px 0px 3px rgba(255, 255, 255, 0.7);
   /* Base font family. */

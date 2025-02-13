@@ -1855,7 +1855,7 @@
     "name": "--intergalactic-keyboard-focus-invalid-outline",
     "type": "outline",
     "rawValue": "rgba({red.400}, 0.5)",
-    "computedValue": "rgba({red.400}, 0.5)",
+    "computedValue": "rgba(255, 73, 83, 0.5)",
     "description": "Color for keyboard focus outline styles for elements with invalid state.",
     "components": ["textarea"]
   },
@@ -1863,7 +1863,7 @@
     "name": "--intergalactic-keyboard-focus-valid-outline",
     "type": "outline",
     "rawValue": "rgba({green.400}, 0.5)",
-    "computedValue": "rgba({green.400}, 0.5)",
+    "computedValue": "rgba(0, 159, 129, 0.5)",
     "description": "Color for keyboard focus outline styles for elements with valid state.",
     "components": ["textarea"]
   },
