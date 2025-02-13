@@ -81,8 +81,17 @@ describe('Radio', () => {
           <Radio.Value />
         </Radio>
         <Radio>
-          <Radio.Value keyboardFocused />
+          <Radio.Value id='focused' />
         </Radio>
+      </snapshot.ProxyProps>
+    );
+
+    await expect(
+      await snapshot(component, { actions: { focus: '#focused' } }),
+    ).toMatchImageSnapshot(task);
+
+    const componentChecked = (
+      <snapshot.ProxyProps m='5px'>
         <Radio checked>
           <Radio.Value />
         </Radio>
@@ -90,12 +99,14 @@ describe('Radio', () => {
           <Radio.Value checked disabled />
         </Radio>
         <Radio>
-          <Radio.Value checked keyboardFocused />
+          <Radio.Value checked id='focused' />
         </Radio>
       </snapshot.ProxyProps>
     );
 
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+    await expect(
+      await snapshot(componentChecked, { actions: { focus: '#focused' } }),
+    ).toMatchImageSnapshot(task);
   });
 
   test.concurrent('Should support invalid state', async ({ task }) => {
@@ -104,25 +115,36 @@ describe('Radio', () => {
         <Radio state='invalid'>
           <Radio.Value />
         </Radio>
-        <Radio state='invalid'>
-          <Radio.Value disabled />
+        <Radio state='invalid' disabled>
+          <Radio.Value />
         </Radio>
         <Radio state='invalid'>
-          <Radio.Value keyboardFocused />
+          <Radio.Value id='focused' />
         </Radio>
-        <Radio state='invalid'>
-          <Radio.Value checked />
+      </snapshot.ProxyProps>
+    );
+
+    await expect(
+      await snapshot(component, { actions: { focus: '#focused' } }),
+    ).toMatchImageSnapshot(task);
+
+    const componentChecked = (
+      <snapshot.ProxyProps m='5px'>
+        <Radio state='invalid' checked>
+          <Radio.Value />
         </Radio>
         <Radio state='invalid'>
           <Radio.Value checked disabled />
         </Radio>
         <Radio state='invalid'>
-          <Radio.Value checked keyboardFocused />
+          <Radio.Value checked id='focused' />
         </Radio>
       </snapshot.ProxyProps>
     );
 
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+    await expect(
+      await snapshot(componentChecked, { actions: { focus: '#focused' } }),
+    ).toMatchImageSnapshot(task);
   });
 
   test.concurrent('Should support theme', async ({ task }) => {
@@ -271,8 +293,19 @@ describe('RadioGroup', () => {
             <Radio.Value disabled />
           </Radio>
           <Radio state='invalid'>
-            <Radio.Value keyboardFocused />
+            <Radio.Value id='focused' />
           </Radio>
+        </snapshot.ProxyProps>
+      </RadioGroup>
+    );
+
+    await expect(
+      await snapshot(component, { actions: { focus: '#focused' } }),
+    ).toMatchImageSnapshot(task);
+
+    const componentChecked = (
+      <RadioGroup>
+        <snapshot.ProxyProps m='5px'>
           <Radio state='invalid'>
             <Radio.Value checked />
           </Radio>
@@ -280,13 +313,15 @@ describe('RadioGroup', () => {
             <Radio.Value checked disabled />
           </Radio>
           <Radio state='invalid'>
-            <Radio.Value checked keyboardFocused />
+            <Radio.Value checked id='focused' />
           </Radio>
         </snapshot.ProxyProps>
       </RadioGroup>
     );
 
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+    await expect(
+      await snapshot(componentChecked, { actions: { focus: '#focused' } }),
+    ).toMatchImageSnapshot(task);
   });
 
   test.concurrent('Should support sizes', async ({ task }) => {
