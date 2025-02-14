@@ -38,13 +38,6 @@ const Demo = () => {
           </TagContainer.Tag>
         </TagContainer>
       ))}
-
-      <TagContainer>
-        <TagContainer.Tag>
-          <TagContainer.Tag.Text>Tag name</TagContainer.Tag.Text>
-        </TagContainer.Tag>
-        <TagContainer.Close id='focused_close' />
-      </TagContainer>
     </Box>
   );
 };
