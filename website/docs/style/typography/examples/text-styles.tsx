@@ -1,37 +1,37 @@
 import React from 'react';
 import { Text } from 'intergalactic/typography';
-import Link from 'intergalactic/link';
+import { Flex } from '@semcore/ui/flex-box';
 
 const Demo = () => (
-  <div>
+  <Flex gap={1} direction='column'>
     <Text size={300} tag='p' mb={2} mt={0}>
-      But I do love the taste of a <Text tag='strong'>good burger</Text>. Mm-mm-mm.
-    </Text>
-    <Text size={300} tag='p' mb={2} mt={0}>
-      But I do love the taste of a <Text tag='em'>good burger</Text>. Mm-mm-mm.
+      Example sentence with a <Text bold>bold text</Text>.
     </Text>
     <Text size={300} tag='p' mb={2} mt={0}>
-      But I do love the taste of a <Text color='text-success'>good burger</Text>. Mm-mm-mm.
+      Example sentence with a <Text semibold>semibold text</Text>.
     </Text>
     <Text size={300} tag='p' mb={2} mt={0}>
-      But I do love the taste of a <Link href='https://semrush.com'>good burger</Link>. Mm-mm-mm.
+      Example sentence with a <Text italic>italic text</Text>.
     </Text>
     <Text size={300} tag='p' mb={2} mt={0}>
-      But I do love the taste of a <Text tag='s'>good burger</Text>. Mm-mm-mm.
+      Example sentence with a <Text color='text-success'>colored text</Text>.
     </Text>
-    <Text size={300} tag='p' mb={2} mt={0} monospace>
-      monospace text
+    <Text size={300} tag='p' mb={2} mt={0}>
+      Example sentence with a <Text tag='s'>strikethrough text</Text>.
     </Text>
-    <Text size={300} tag='p' mb={2} mt={0} uppercase>
-      uppercase text
+    <Text size={300} tag='p' mb={2} mt={0}>
+      Example sentence with a <Text monospace>monospace text</Text>.
     </Text>
-    <Text size={300} tag='p' mb={2} mt={0} capitalize>
-      capitalize text
+    <Text size={300} tag='p' mb={2} mt={0}>
+      Example sentence with an <Text uppercase>uppercase text</Text>.
     </Text>
-    <Text size={300} tag='p' mb={2} mt={0} lowercase>
-      LOWERCASE TEXT
+    <Text size={300} tag='p' mb={2} mt={0}>
+      Example sentence with a <Text capitalize>capitalized text</Text>.
     </Text>
-  </div>
+    <Text size={300} tag='p' mb={2} mt={0}>
+      Example sentence with a <Text lowercase>LOWERCASE TEXT</Text>.
+    </Text>
+  </Flex>
 );
 
 export default Demo;

@@ -1,62 +1,67 @@
 import React from 'react';
 import { Blockquote, List, Text } from 'intergalactic/typography';
-import Link from 'intergalactic/link';
 
 const Demo = () => (
   <div>
     <Text size={800} tag='h1' mb={6} mt={0}>
-      H1, 48px
+      H1, 48px, --fs-800
+    </Text>
+    <Text size={300} tag='p' mb={2} mt={0}>
+      Paragraph example.
+    </Text>
+    <Text size={700} tag='h2' mb={4} mt={10}>
+      H2, 36px, --fs-700
     </Text>
     <Text tag='p' mb={2} mt={0}>
-      But I do love the taste of a <Text tag='strong'>good burger</Text>. Mm-mm-mm.
+      Paragraph example.
     </Text>
-    <Text size={700} tag='h2' mb={4} mt={0}>
-      H2, 36px
-    </Text>
-    <Text tag='p' mb={2} mt={0}>
-      But I do love the taste of a <Text tag='em'>good burger</Text>. Mm-mm-mm.
-    </Text>
-    <Text size={600} tag='h3' fontWeight={500} mb={4} mt={0}>
-      H3, 32px
+    <Text size={600} tag='h3' fontWeight={500} mb={4} mt={10}>
+      H3, 32px, --fs-600
     </Text>
     <Text tag='p' mb={2} mt={0}>
-      But I do love the taste of a <Text color='text-success'>good burger</Text>. Mm-mm-mm.
+      Paragraph example.
     </Text>
-    <Text size={500} tag='h4' fontWeight={500} mb={3} mt={0}>
-      H4, 24px
-    </Text>
-    <Text tag='p' mb={2} mt={0}>
-      But I do love the taste of a <Link href='https://semrush.com'>good burger</Link>. Mm-mm-mm.
-    </Text>
-    <Text size={400} tag='h5' fontWeight={500} mb={2} mt={0}>
-      H5, 20px
+    <Text size={500} tag='h4' fontWeight={500} mb={3} mt={10}>
+      H4, 24px, --fs-500
     </Text>
     <Text tag='p' mb={2} mt={0}>
-      But I do love the taste of a <Text tag='s'>good burger</Text>. Mm-mm-mm.
+      Paragraph example.
     </Text>
-    <Text size={300} tag='h6' mb={1} mt={0}>
-      H6, 16px
+    <Text size={400} tag='h5' fontWeight={500} mb={2} mt={10}>
+      H5, 20px, --fs-400
+    </Text>
+    <Text tag='p' mb={2} mt={0}>
+      Paragraph example.
+    </Text>
+    <Text size={300} tag='h6' mb={1} mt={10}>
+      H6, 16px, --fs-300
     </Text>
     <Text size={200} tag='p' mb={3} mt={0}>
-      Text, 14px
+      Paragraph, 14px, --fs-200
+    </Text>
+    <Text tag='p' mb={2} mt={10}>
+      Paragraph example, 16px, --fs-300
+    </Text>
+    <Text size={200} tag='p' mb={3} mt={0}>
+      Paragraph, 14px, --fs-200
     </Text>
     <Text size={100} tag='p' mb={2} mt={0}>
-      Text, 12px
+      Paragraph, 12px, --fs-200
     </Text>
-    <List mb={2}>
+    <List mb={2} mt={10}>
       <List.Item>I'm gonna make him an offer he can't refuse.</List.Item>
       <List.Item>Carpe diem. Seize the day, boys. Make your lives extraordinary.</List.Item>
     </List>
-    <List tag='ol' mb={2}>
+    <List tag='ol' mb={10} mt={10}>
       <List.Item marker={1}>I'm gonna make him an offer he can't refuse.</List.Item>
       <List.Item marker={2}>
         Carpe diem. Seize the day, boys. Make your lives extraordinary.
       </List.Item>
     </List>
-    <Blockquote author='Author Author' my={4.5}>
-      Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diem nonummy nibh euismod
-      tincidunt ut lacreet dolore magna aliguam erat volutpat. Ut wisis enim ad minim veniam, quis
-      nostrud exerci tution ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+    <Blockquote author='Roy Batty' my={4.5}>
+      I've seen things you people wouldn't believe. Attack ships on fire off the shoulder of Orion.
+      I watched C-beams glitter in the dark near the Tannhäuser Gate. All those moments will be lost
+      in time, like tears in rain. Time to die.
     </Blockquote>
   </div>
 );

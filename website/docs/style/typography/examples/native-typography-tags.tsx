@@ -4,40 +4,40 @@ import FormatText from 'intergalactic/format-text';
 const Demo = () => (
   <FormatText>
     <h1>
-      H1, <small>48px</small>
+      H1, <small>48px, --fs-800</small>
     </h1>
     <p>
-      But I do love the taste of a <strong>good burger</strong>. Mm-mm-mm.
+      Paragraph example with a <strong>bold text</strong>.
     </p>
     <h2>
-      H2, <small>36px</small>
+      H2, <small>36px, --fs-700</small>
     </h2>
     <p>
-      But I do love the taste of a <em>good burger</em>. Mm-mm-mm.
+      Paragraph example with a <em>italic text</em>.
     </p>
     <h3>
-      H3, <small>32px</small>
+      H3, <small>32px, --fs-600</small>
     </h3>
     <p>
-      But I do love the taste of a <a href='/'>good burger</a> . Mm-mm-mm.
+      Paragraph example with a link: <a href='/'>Go to the main page</a> .
     </p>
     <h4>
-      H4, <small>24px</small>
+      H4, <small>24px, --fs-500</small>
     </h4>
     <p>
-      But I do love the taste of a <abbr>good burger</abbr>. Mm-mm-mm.
+      Paragraph example with a <abbr>abbreviation</abbr>.
     </p>
     <h5>
-      H5, <small>20px</small>
+      H5, <small>20px, --fs-400</small>
     </h5>
     <p>
-      But I do love the taste of a <s>good burger</s>. Mm-mm-mm.
+      Paragraph example with a <s>strikethrough text</s>.
     </p>
     <h6>
-      H6, <small>16px</small>
+      H6, <small>16px, --fs-300</small>
     </h6>
     <p>
-      But I do love the taste of a <code>good burger</code>. Mm-mm-mm.
+      Paragraph example with a <code>code</code>.
     </p>
     <ul>
       <li>I'm gonna make him an offer he can't refuse.</li>
@@ -48,10 +48,10 @@ const Demo = () => (
       <li>Carpe diem. Seize the day, boys. Make your lives extraordinary.</li>
     </ol>
     <blockquote>
-      Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diem nonummy nibh euismod
-      tincidunt ut lacreet dolore magna aliguam erat volutpat. Ut wisis enim ad minim veniam, quis
-      nostrud exerci tution ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-      <cite>Author Author</cite>
+      I've seen things you people wouldn't believe. Attack ships on fire off the shoulder of Orion.
+      I watched C-beams glitter in the dark near the Tannhäuser Gate. All those moments will be lost
+      in time, like tears in rain. Time to die.
+      <cite>Roy Batty</cite>
     </blockquote>
   </FormatText>
 );
