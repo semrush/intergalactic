@@ -22,6 +22,16 @@ Use a font size sufficient for comfortable reading. The minimal font size for th
 
 Determine the line height of the text for optimal reading. The larger the font size and line thickness, the larger the spacing should be. For the body text, the spacing to font size ratio should be around 1.4–1.65, for headings 1–1.3, for captions and short lines—around 1.3. Lines that are spaced too tightly or too loosely make text less readable, so finding a new line becomes more difficult.
 
+### Headings
+
+Headings should be chosen to represent the actual hierarchical structure of the page. Navigating through the `<h1>` and `<h2>` give a user an overview of a page and how its content is structured.
+
+Make sure that the headings differ from the main text in size, thickness, style, and color. This will ensure visual consistency and readability with the main text.
+
+### Paragraph width
+
+Set the paragraph width for comfortable reading. Don't make paragraphs too long or too short: 45 to 75 characters is an acceptable length, 66 is optimal. Shorter text is good for forms, image captions, and unimportant notes.
+
 ### Using different font
 
 If you need to use a different font, make sure to choose one that is legible. Sans-serif fonts are generally recommended for interfaces, while serif fonts work well for long documents, though this is not a strict rule. Ensure that the font:
@@ -32,16 +42,6 @@ If you need to use a different font, make sure to choose one that is legible. Sa
 - Maintains consistent letterform proportions (such as lowercase letter height and other key characteristics)
 - Includes distinct characters that are easy to differentiate, such as 0 (zero) and O (uppercase O)
 - Supports all required symbols and styles
-
-### Headings
-
-Headings should be chosen to represent the actual hierarchical structure of the page. Navigating through the `<h1>` and `<h2>` give a user an overview of a page and how its content is structured.
-
-Make sure that the headings differ from the main text in size, thickness, style, and color. This will ensure visual consistency and readability with the main text.
-
-### Paragraph width
-
-Set the paragraph width for comfortable reading. Don't make paragraphs too long or too short: 45 to 75 characters is an acceptable length, 66 is optimal. Shorter text is good for forms, image captions, and unimportant notes.
 
 ## Resources
 
