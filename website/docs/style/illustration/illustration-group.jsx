@@ -1,15 +1,15 @@
-import * as ReactDOM from 'react-dom';
-import React, { PureComponent } from 'react';
-
-import { Row } from 'intergalactic/grid';
-import OutsideClick from 'intergalactic/outside-click';
+import React from 'react';
+import { Flex } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
+import SidePanel from '@semcore/side-panel';
+import Ellipsis from '@semcore/ellipsis';
 import Copy from '@components/Copy';
-import Button from 'intergalactic/button';
-import FileDownloadM from 'intergalactic/icon/FileDownload/m';
-import CopyM from 'intergalactic/icon/Copy/m';
+import Button from '@semcore/button';
+import FileDownloadM from '@semcore/icon/FileDownload/m';
+import CopyM from '@semcore/icon/Copy/m';
 import styles from './styles.module.css';
 
-const IllustrationDetailsPanel = ({ onClose, name }) => {
+export const IllustrationDetailsPanel = ({ name, visible, onClose }) => {
   const getImportText = React.useCallback(() => {
     const lib = '@semcore/ui';
     const importText = `import ${name} from '${lib}/illustration/${name}'`;
@@ -17,91 +17,115 @@ const IllustrationDetailsPanel = ({ onClose, name }) => {
     return importText;
   }, [name]);
   const repoPath = `semcore/illustration/svg/${name}.svg`;
-  const ref = React.useRef(null);
 
   return (
-    <div className={styles.panelIllustration} ref={ref}>
-      <OutsideClick onOutsideClick={onClose} excludeRefs={[ref]} />
-      <Row alignItems='center'>
-        <span className={styles.nameIllustration}>{name}</span>
-        <Copy copiedToast='Copied' toCopy={getImportText} trigger='click'>
-          <Button size='m' theme='muted' use='tertiary' mr={4}>
-            <Button.Addon>
-              <CopyM />
-            </Button.Addon>
-            <Button.Text>Copy import</Button.Text>
-          </Button>
-        </Copy>
-        <Button
-          size='m'
-          theme='muted'
-          use='tertiary'
-          tag='a'
-          rel='noopener noreferrer'
-          download={repoPath}
-          target='_blank'
-          href={`https://github.com/semrush/intergalactic/raw/master/${repoPath}?inline=false`}
-        >
-          <Button.Addon>
-            <FileDownloadM />
-          </Button.Addon>
-          <Button.Text>Download SVG</Button.Text>
-        </Button>
-      </Row>
-    </div>
+    <SidePanel visible={visible} placement='bottom' onClose={onClose}>
+      <SidePanel.Panel
+        id={`${name}-dialog`}
+        aria-label={`Get ${name} illustration`}
+        aria-modal={false}
+        zIndex='var(--intergalactic-z-index-modal)'
+      >
+        <Flex justifyContent='center' alignItems='center' gap={4} flexWrap>
+          <Text bold wMin={180} textAlign='center'>
+            {name}
+          </Text>
+          <Flex gap={4}>
+            <Copy toCopy={getImportText} onlyToast>
+              <Button use='tertiary' theme='muted' addonLeft={CopyM}>
+                Copy import
+              </Button>
+            </Copy>
+            <Button
+              tag='a'
+              use='tertiary'
+              theme='muted'
+              addonLeft={FileDownloadM}
+              rel='noopener noreferrer'
+              download={repoPath}
+              target='_blank'
+              href={`https://github.com/semrush/intergalactic/raw/master/${repoPath}?inline=false`}
+            >
+              Download SVG
+            </Button>
+          </Flex>
+        </Flex>
+      </SidePanel.Panel>
+    </SidePanel>
   );
 };
 
-export const ListIllustrations = ({ data, illustrations, json }) => {
-  const [showPanel, setShowPanel] = React.useState(null);
+export const ListIllustrations = ({ data, ...props }) => {
+  const { illustrations, selectedIllustration, setSelectedIllustration } =
+    React.useContext(Context);
 
   return (
-    <div className={styles.list}>
-      {showPanel && (
-        <IllustrationDetailsPanel name={showPanel} onClose={() => setShowPanel(null)} />
-      )}
+    <ul
+      className={styles.list}
+      aria-labelledby={props['aria-labelledby']}
+      aria-label={props['aria-label']}
+    >
       {data.map((illustration, index) => {
         const Illustration = illustrations[illustration.name];
         if (!Illustration) {
           throw new Error(
-            `Illustration ${illustration.name} was not founded in import from @illustrations`,
+            `Illustration ${illustration.name} not found in import from @illustrations`,
           );
         }
 
         return (
-          // biome-ignore lint/a11y/useKeyWithClickEvents:
-          <div
-            className={styles.previewIllustration}
-            tabIndex={0}
-            key={index}
-            data-name={illustration.name}
-            onClick={() => setShowPanel(illustration.name)}
-          >
-            <Illustration width={80} height={80} />
-            <span>{illustration.name}</span>
-          </div>
+          <li className={styles.previewIllustration} key={illustration.name}>
+            <button
+              type='button'
+              aria-haspopup='dialog'
+              aria-expanded={selectedIllustration === illustration.name}
+              aria-controls={
+                selectedIllustration === illustration.name
+                  ? `${illustration.name}-dialog`
+                  : undefined
+              }
+              onClick={() => {
+                setSelectedIllustration(illustration.name);
+              }}
+              data-id={illustration.name}
+            >
+              <Ellipsis
+                data-name='PanelTrigger'
+                placement='bottom'
+                includeTooltipProps={['placement']}
+              >
+                <Illustration width={80} height={80} />
+                {illustration.name}
+              </Ellipsis>
+            </button>
+          </li>
         );
       })}
-    </div>
+    </ul>
   );
 };
 
 const Context = React.createContext();
 
-export const IllustrationGroups = ({ children, ...props }) => {
-  return <Context.Provider value={props} children={children} />;
-};
+export const IllustrationGroups = React.forwardRef(({ children, ...props }, forwardedRef) => {
+  return (
+    <div className={styles.contextWrapper} ref={forwardedRef}>
+      <Context.Provider value={props} children={children} />
+    </div>
+  );
+});
+
 export default function ({ title }) {
-  const context = React.useContext(Context);
-  const dataIllustrations = context.json;
-  const filterIllustrations = dataIllustrations.illustrations.filter(
+  const { json } = React.useContext(Context);
+  const filterIllustrations = json.illustrations.filter(
     (illustration) => illustration.group === title,
   );
+  const id = title.replace(' ', '-');
 
   return (
     <div className={styles.section}>
-      <h3>{title}</h3>
-      <ListIllustrations data={filterIllustrations} {...context} />
+      <h3 id={`${id}-heading`}>{title}</h3>
+      <ListIllustrations data={filterIllustrations} aria-labelledby={`${id}-heading`} />
     </div>
   );
 }
