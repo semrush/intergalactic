@@ -18,6 +18,7 @@ import { isInputTriggerTag } from '@semcore/popper';
 import style from './style/select.shadow.css';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
+import { lastInteraction } from '@semcore/core/src';
 
 function isSelectedOption(value, valueOption) {
   return Array.isArray(value) ? value.includes(valueOption) : valueOption === value;
@@ -197,9 +198,9 @@ class RootSelect extends AbstractDropdown {
   }
 
   getOptionProps(props, index) {
-    const { value, highlightedIndex, focusSourceRef, size = 'm' } = this.asProps;
+    const { value, highlightedIndex, size = 'm' } = this.asProps;
     const highlighted =
-      index === highlightedIndex && focusSourceRef.current === 'keyboard' && !props.disabled;
+      index === highlightedIndex && lastInteraction.isKeyboard() && !props.disabled;
     const selected = props.selected ?? isSelectedOption(value, props.value);
 
     return {
