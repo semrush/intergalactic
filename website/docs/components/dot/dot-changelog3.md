@@ -39,17 +39,32 @@ const App = () => {
 
 :::
 
-## 5.0.0 (July 17, 2023)
+<div style="margin-top: 32px">
+
+**5.39.1 – 5.1.0 — dependency updates**
+</div>
+
+## 5.0.0 ❌ (July 17, 2023)
 
 ### Break
 
 * Strict, backward incompatible typings.
+
+<div style="margin-top: 32px">
+
+**4.2.41 – 4.2.27 — dependency updates**
+</div>
 
 ## 4.2.25 (May 2, 2023)
 
 ### Changed
 
 * Removed `aria-flowto` because it has bad screen readers support and often confuse users in supporting screen readers.
+
+<div style="margin-top: 32px">
+
+**4.2.24 – 4.2.19 — dependency updates**
+</div>
 
 ## 4.2.18 (March 24, 2023)
 

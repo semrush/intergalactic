@@ -29,27 +29,53 @@ const App = () => {
                     {checked && <Check />}
                 </Switch.Value>
                 <Switch.Addon>
-                    <Text size={300} tag='div'>Show dependency updates</Text>
+                    <Text size={300} tag='div'>Expand dependency updates</Text>
                 </Switch.Addon>
             </Switch>
-            <Text size={200} use={'secondary'} tag='div' ml={11} mt={1}>Automatic version updates are hidden by default to make changelogs easier to read</Text>
+            <Text size={200} use={'secondary'} tag='div' ml={11} mt={1}>Automatic version updates are collapsed by default to make changelogs easier to read</Text>
         </Box>
 )};
 </script>
 
 :::
+<div style="color: var(--vp-c-text-3)">
 
-## 5.0.0 (July 17, 2023)
+## 5.39.1 (February 5, 2025)
+</div>
+<div style="color: var(--vp-c-text-2)">
+
+* *Only dependency updates in this and previous versions.*
+</div>
+
+## 5.0.0 ❌ (July 17, 2023)
 
 ### Break
 
 * Strict, backward incompatible typings.
+
+<div style="color: var(--vp-c-text-3)">
+
+## 4.2.41 (June 30, 2023)
+</div>
+<div style="color: var(--vp-c-text-2)">
+
+* *Only dependency updates in this and previous versions.*
+</div>
 
 ## 4.2.25 (May 2, 2023)
 
 ### Changed
 
 * Removed `aria-flowto` because it has bad screen readers support and often confuse users in supporting screen readers.
+
+<div style="color: var(--vp-c-text-3)">
+
+## 4.2.24 (April 26, 2023)
+</div>
+<div style="color: var(--vp-c-text-2)">
+
+* *Only dependency updates in this and previous versions.*
+</div>
 
 ## 4.2.18 (March 24, 2023)
 
