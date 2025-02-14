@@ -1876,6 +1876,14 @@
     "components": []
   },
   {
+    "name": "--intergalactic-keyboard-focus-invert-outline",
+    "type": "outline",
+    "rawValue": "{keyboard-focus.outline-invert}",
+    "computedValue": "rgba(255, 255, 255, 0.7)",
+    "description": "Default keyboard focus outline styles for using with dark background.",
+    "components": ["wizard"]
+  },
+  {
     "name": "--intergalactic-base",
     "type": "fontFamilies",
     "rawValue": "Inter",
