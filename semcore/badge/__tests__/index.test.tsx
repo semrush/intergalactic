@@ -7,6 +7,16 @@ import Badge from '../src';
 import { cleanup, render } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
 
+import path from 'path';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('Badge Dependency imports', () => {
+  const packageJsonPath = path.resolve(__dirname, '../package.json');
+  const componentPath = path.resolve(__dirname, '../src/Badge.jsx');
+
+  runDependencyCheckTests(packageJsonPath, [componentPath]); 
+});
+
 describe('Badge', () => {
   beforeEach(cleanup);
 

@@ -10,6 +10,16 @@ const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 import { Box, Flex } from '@semcore/flex-box';
 import Carousel from '../src';
 
+import path from 'path';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe(' Dependency imports', () => {
+  const packageJsonPath = path.resolve(__dirname, '../package.json');
+  const componentPath = path.resolve(__dirname, '../src/Carousel.tsx');
+
+  runDependencyCheckTests(packageJsonPath, [componentPath]); 
+});
+
 const Container = (props: any) => (
   <Carousel.Container {...props}>
     {[...new Array(2)].map((_, ind) => (

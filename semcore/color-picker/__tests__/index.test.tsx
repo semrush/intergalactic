@@ -6,6 +6,16 @@ import { axe } from '@semcore/testing-utils/axe';
 
 import ColorPicker, { PaletteManager } from '../src';
 
+import path from 'path';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe(' Dependency imports', () => {
+  const packageJsonPath = path.resolve(__dirname, '../package.json');
+  const componentPath = path.resolve(__dirname, '../src/ColorPicker.tsx');
+
+  runDependencyCheckTests(packageJsonPath, [componentPath]); 
+});
+
 describe('ColorPicker', () => {
   beforeEach(cleanup);
 

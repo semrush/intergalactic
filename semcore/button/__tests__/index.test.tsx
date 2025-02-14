@@ -11,6 +11,18 @@ import propsForElement from '@semcore/utils/lib/propsForElement';
 import Button, { ButtonLink } from '../src';
 import CloseM from '@semcore/icon/Close/m';
 
+import path from 'path';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('AbstractButton Dependency imports', () => {
+  const packageJsonPath = path.resolve(__dirname, '../package.json');
+  const componentPath = path.resolve(__dirname, '../src/component/AbstractButton/AbstractButton.tsx');
+  const typesPath = path.resolve(__dirname, '../src/component/AbstractButton/AbstractButton.type.ts');
+  const spinButnPath = path.resolve(__dirname, '../src/component/AbstractButton/SpinButton.tsx');
+
+  runDependencyCheckTests(packageJsonPath, [componentPath, typesPath,spinButnPath]); 
+});
+
 describe('Button', () => {
   // beforeEach(cleanup);
 
