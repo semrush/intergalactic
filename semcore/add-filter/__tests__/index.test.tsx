@@ -10,7 +10,7 @@ describe('Dependency imports', () => {
   const componentPath = path.resolve(__dirname, '../src/AddFilter.tsx');
   const typePath = path.resolve(__dirname, '../src/AddFilter.types.ts');
 
-  runDependencyCheckTests(packageJsonPath, [componentPath, typePath]); 
+  runDependencyCheckTests(packageJsonPath, [componentPath, typePath]);
 });
 
 describe('AddFilter', () => {
@@ -55,5 +55,4 @@ describe('AddFilter', () => {
       expect(getByText('fullname')).toBeInTheDocument();
     });
   });
-
 });

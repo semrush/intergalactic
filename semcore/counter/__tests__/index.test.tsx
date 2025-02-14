@@ -14,7 +14,7 @@ describe(' Dependency imports', () => {
   const animatedPath = path.resolve(__dirname, '../src/AnimatedNumber.tsx');
   const indexPath = path.resolve(__dirname, '../src/index.d.ts');
 
-  runDependencyCheckTests(packageJsonPath, [componentPath, animatedPath, indexPath]); 
+  runDependencyCheckTests(packageJsonPath, [componentPath, animatedPath, indexPath]);
 });
 
 describe('Counter', () => {

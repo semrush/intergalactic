@@ -13,7 +13,7 @@ describe('Dependency imports', () => {
   const packageJsonPath = path.resolve(__dirname, '../package.json');
   const componentPath = path.resolve(__dirname, '../src/Grid.jsx');
 
-  runDependencyCheckTests(packageJsonPath, [componentPath]); 
+  runDependencyCheckTests(packageJsonPath, [componentPath]);
 });
 
 const styleBox = {

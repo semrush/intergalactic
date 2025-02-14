@@ -7,5 +7,5 @@ describe('Dependency imports', () => {
   const componentPath = path.resolve(__dirname, '../src/BulkTextarea.tsx');
   const typesPath = path.resolve(__dirname, '../src/BulkTextarea.types.ts');
 
-  runDependencyCheckTests(packageJsonPath, [componentPath, typesPath]); 
+  runDependencyCheckTests(packageJsonPath, [componentPath, typesPath]);
 });

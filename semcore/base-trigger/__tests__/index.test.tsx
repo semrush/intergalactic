@@ -6,7 +6,6 @@ import { cleanup, render, userEvent } from '@semcore/testing-utils/testing-libra
 import Spin from '@semcore/spin';
 import NeighborLocation from '@semcore/neighbor-location';
 
-
 import path from 'path';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
@@ -16,7 +15,7 @@ describe('Dependency imports', () => {
   const buttonPath = path.resolve(__dirname, '../src/ButtonTrigger.jsx');
   const filterPath = path.resolve(__dirname, '../src/FilterTrigger.jsx');
 
-  runDependencyCheckTests(packageJsonPath, [basePath, buttonPath, filterPath]); 
+  runDependencyCheckTests(packageJsonPath, [basePath, buttonPath, filterPath]);
 });
 
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
