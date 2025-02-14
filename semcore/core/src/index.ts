@@ -21,6 +21,7 @@ import {
 } from './core-types/symbols';
 import type { UnknownProperties } from './core-types/UnknownProperties';
 import register from './register';
+import { lastInteraction } from './LastInteractionType';
 
 export {
   sstyled,
@@ -46,4 +47,5 @@ export {
   wrapIntergalacticComponent,
   assignProps,
   register,
+  lastInteraction,
 };

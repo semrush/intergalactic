@@ -1625,6 +1625,9 @@ importers:
       '@semcore/base-components':
         specifier: ^16.0.0
         version: link:../base-components
+      '@semcore/button':
+        specifier: 16.0.0
+        version: link:../button
       '@semcore/flex-box':
         specifier: 16.0.0
         version: link:../flex-box

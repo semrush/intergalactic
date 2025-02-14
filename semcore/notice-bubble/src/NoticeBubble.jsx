@@ -15,7 +15,6 @@ import { useCssVariable } from '@semcore/core/lib/utils/useCssVariable';
 import { contextThemeEnhance } from '@semcore/core/lib/utils/ThemeProvider';
 import Button from '@semcore/button';
 import { useFocusLock } from '@semcore/core/lib/utils/use/useFocusLock';
-import { Hint } from '@semcore/tooltip';
 import {
   ZIndexStackingContextProvider,
   zIndexStackingEnhance,
@@ -198,7 +197,7 @@ class ViewInfo extends Component {
 
   render() {
     const SBubble = FocusLock;
-    const SDismiss = Hint.Trigger;
+    const SDismiss = Button;
     const SContent = Flex;
     const SMessage = 'div';
     const SAction = 'div';
@@ -228,7 +227,6 @@ class ViewInfo extends Component {
         <SDismiss
           // biome-ignore lint/a11y/useValidAriaValues:
           aria-haspopup={undefined}
-          tag={Button}
           type='button'
           use='tertiary'
           size='m'
