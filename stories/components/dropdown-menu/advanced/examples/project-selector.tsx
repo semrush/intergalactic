@@ -26,11 +26,17 @@ const projects = [
 ];
 
 const Demo = () => {
+  const [highlightIndex, setHighlightIndex] = React.useState<number | null>(null);
   const [searchValue, setSearchValue] = React.useState("");
   const [project, setProject] = React.useState<string | null>(null);
 
+  const filteredProjects = React.useMemo(() => {
+    setHighlightIndex(0);
+    return projects.filter((p) => p.includes(searchValue));
+  }, [searchValue]);
+
   return (
-      <DropdownMenu selectable>
+      <DropdownMenu selectable highlightedIndex={highlightIndex} onHighlightedIndexChange={setHighlightIndex}>
         <DropdownMenu.Trigger tag={ButtonTrigger} w={220}>
           {project ?? "Select project"}
         </DropdownMenu.Trigger>
@@ -58,7 +64,7 @@ const Demo = () => {
           <DropdownMenu.List>
             <ScrollArea shadow={true} hMax={200}>
               <ScrollArea.Container tabIndex={undefined}>
-                {projects.map((projectName) => {
+                {filteredProjects.map((projectName) => {
                   return (
                       <DropdownMenu.Item
                           key={projectName}
