@@ -1,3 +1,13 @@
+## [15.125.0] - 2025-02-07
+
+### @semcore/bulk-textarea
+
+- **Fixed** Incorrect filename for module entry point.
+
+### @semcore/pagination
+
+- **Added** `size` property: `l` and `m` (default).
+
 ## [15.124.1] - 2025-02-05
 
 ### @semcore/flex-box

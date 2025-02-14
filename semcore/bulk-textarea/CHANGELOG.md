@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.0.4] - 2025-02-07
+
+### Fixed
+
+- Incorrect filename for module entry point.
+
 ## [1.0.3] - 2025-02-05
 
 ### Changed

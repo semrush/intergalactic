@@ -1,8 +1,5 @@
 name: publish-prerelease
 on:
-  push:
-    tags:
-      - v[0-9]+.[0-9]+.[0-9]+-prerelease.[0-9]+
   workflow_dispatch:
     tags:
       - v[0-9]+.[0-9]+.[0-9]+-prerelease.[0-9]+
