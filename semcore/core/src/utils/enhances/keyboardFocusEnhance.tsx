@@ -1,8 +1,7 @@
 import React from 'react';
 import assignProps from '../assignProps';
 import { UnknownProperties } from '../../core-types/UnknownProperties';
-import { useFocusSource } from './focusSourceEnhance';
-export { useFocusSource };
+import {lastInteraction} from '../../LastInteractionType';
 
 /** @deprecated */
 export interface IKeyboardFocusProps extends KeyboardFocusProps, UnknownProperties {}
@@ -36,12 +35,11 @@ const keyboardFocusEnhance = (makeFocusable = true): KeyboardFocusEnhanceHook =>
     const disabled = props.disabled || props.loading;
     const tabIndex = props.tabIndex ?? (makeFocusable ? 0 : undefined);
     const [keyboardFocused, setKeyboardFocused] = React.useState(false);
-    const focusSourceRef = useFocusSource();
     const ref = React.useRef<HTMLElement>(null);
 
     const handleFocus = React.useCallback((event: React.FocusEvent) => {
       if (event.isTrusted === true) {
-        if (focusSourceRef.current !== 'keyboard') return;
+        if (!lastInteraction.isKeyboard()) return;
       }
       setKeyboardFocused(true);
     }, []);
