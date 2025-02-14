@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.0] - 2025-02-14
+
+### Added
+
+- `utils` functions as part of Core.
+- `LastInteractionType` class to check last interaction was from keyboard or mouse.
+
 ## [2.38.1] - 2025-02-05
 
 ### Changed

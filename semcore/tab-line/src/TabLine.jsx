@@ -2,7 +2,6 @@ import React from 'react';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
-import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 import a11yEnhance from '@semcore/core/lib/utils/enhances/a11yEnhance';
 import NeighborLocation from '@semcore/neighbor-location';
 
@@ -171,8 +170,6 @@ function TabLineItem(props) {
     </NeighborLocation.Detect>
   );
 }
-
-TabLineItem.enhance = [keyboardFocusEnhance()];
 
 function Text(props) {
   const { styles } = props;

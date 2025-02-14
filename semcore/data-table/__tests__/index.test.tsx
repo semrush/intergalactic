@@ -250,7 +250,7 @@ describe('DataTable', () => {
         <DataTable data={data} onSortChange={vi.fn()} aria-label={'table label'}>
           <DataTable.Head>
             <DataTable.Column name='keyword' children='Keyword' />
-            <DataTable.Column name='kd' children='KD,%' sortable id='row' />
+            <DataTable.Column name='kd' children='KD,%' sortable tabIndex={0} id='row' />
             <DataTable.Column name='cpc' children='CPC' sortable />
             <DataTable.Column name='vol' children='Vol.' sortable />
           </DataTable.Head>

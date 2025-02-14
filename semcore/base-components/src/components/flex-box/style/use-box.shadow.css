@@ -1,3 +1,15 @@
+
+SBox:focus-visible {
+  outline-color: var(--intergalactic-keyboard-focus-outline, rgba(0, 143, 248, 0.5));
+  outline-style: solid;
+  outline-width: 3px;
+  outline-offset: 0;
+}
+
+SBoxInnerOffset:focus-visible {
+  outline-offset: -3px;
+}
+
 SBoxSizing {
   box-sizing: border-box;
 }

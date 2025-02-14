@@ -1474,10 +1474,25 @@
       "type": "boxShadow",
       "description": "Keyboard focus styles for elements with valid state."
     },
+    "keyboard-focus-invalid-outline": {
+      "value": "rgba({red.400}, 0.5)",
+      "type": "outline",
+      "description": "Color for keyboard focus outline styles for elements with invalid state."
+    },
+    "keyboard-focus-valid-outline": {
+      "value": "rgba({green.400}, 0.5)",
+      "type": "outline",
+      "description": "Color for keyboard focus outline styles for elements with valid state."
+    },
     "keyboard-focus-invert": {
       "value": "0px 0px 0px 3px {keyboard-focus.outline-invert}",
       "type": "boxShadow",
       "description": "Default keyboard focus styles for using with dark background."
+    },
+    "keyboard-focus-invert-outline": {
+      "value": "{keyboard-focus.outline-invert}",
+      "type": "outline",
+      "description": "Default keyboard focus outline styles for using with dark background."
     },
     "base": {
       "value": "Inter",

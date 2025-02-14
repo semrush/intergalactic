@@ -61,11 +61,7 @@ STagContainerClose {
   font-weight: var(--intergalactic-medium, 500);
   color: var(--tag-color);
 
-  &[interactive][keyboardFocused] {
-    box-shadow: var(
-      --intergalactic-keyboard-focus,
-      0px 0px 0px 3px rgba(0, 143, 248, 0.5)
-    );
+  &[interactive]:focus-visible {
     z-index: 1;
   }
 
@@ -97,8 +93,7 @@ STagContainerClose {
   }
 
   &:active,
-  &:hover,
-  &:focus {
+  &:hover {
     outline: 0;
     text-decoration: none;
   }
@@ -241,16 +236,7 @@ SText {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  outline: none;
   position: relative;
-}
-
-SText[keyboardFocused] {
-  box-shadow: var(
-    --intergalactic-keyboard-focus,
-    0px 0px 0px 3px rgba(0, 143, 248, 0.5)
-  );
-  z-index: 1;
 }
 
 SText:not(:only-child):first-child {

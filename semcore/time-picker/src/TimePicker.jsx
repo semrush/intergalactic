@@ -8,7 +8,6 @@ import { localizedMessages } from './translations/__intergalactic-dynamic-locale
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 
 import style from './style/time-picker.shadow.css';
-import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 
 const MAP_MERIDIEM = {
   AM: 'PM',
@@ -64,7 +63,7 @@ export function formatHoursTo24(hours /* hours by 12 */, meridiem) {
 class TimePickerRoot extends Component {
   static displayName = 'TimePicker';
   static style = style;
-  static enhance = [i18nEnhance(localizedMessages), keyboardFocusEnhance()];
+  static enhance = [i18nEnhance(localizedMessages)];
   static defaultProps = ({ is12Hour }) => ({
     defaultValue: '',
     size: 'm',

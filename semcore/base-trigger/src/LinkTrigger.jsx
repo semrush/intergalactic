@@ -5,7 +5,6 @@ import ChevronDown from '@semcore/icon/ChevronDown/m';
 import Spin from '@semcore/spin';
 import { Box } from '@semcore/flex-box';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
-import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 
 import style from './style/link-trigger.shadow.css';
 
@@ -15,7 +14,7 @@ class RootLinkTrigger extends Component {
   static defaultProps = {
     size: 'm',
   };
-  static enhance = [keyboardFocusEnhance(), resolveColorEnhance()];
+  static enhance = [resolveColorEnhance()];
 
   getTextProps() {
     const { placeholder, empty } = this.asProps;

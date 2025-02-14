@@ -1,6 +1,13 @@
 import React from 'react';
 
-import { createComponent, Component, IRootComponentProps, Root, sstyled } from '@semcore/core';
+import {
+  createComponent,
+  Component,
+  IRootComponentProps,
+  Root,
+  sstyled,
+  lastInteraction,
+} from '@semcore/core';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import { Box } from '../flex-box';
 import { OutsideClick } from '../outside-click';
@@ -19,9 +26,7 @@ import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { Scale, animationContext } from '../animation';
 import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
 import { useContextTheme } from '@semcore/core/lib/utils/ThemeProvider';
-import keyboardFocusEnhance, {
-  useFocusSource,
-} from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
+import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 import { hasParent } from '@semcore/core/lib/utils/hasParent';
 import logger from '@semcore/core/lib/utils/logger';
 
@@ -586,11 +591,10 @@ function Trigger(props: PopperTriggerProps & IRootComponentProps & InnerPopperTr
     }
   }, [highlighted]);
 
-  const focusSourceRef = useFocusSource();
   const handleFocus = React.useCallback(
     (e: FocusEvent) => {
       if (
-        focusSourceRef.current === 'keyboard' &&
+        lastInteraction.isKeyboard() &&
         triggerRef.current &&
         e.target instanceof HTMLElement &&
         hasParent(e.target, triggerRef.current)
@@ -598,7 +602,7 @@ function Trigger(props: PopperTriggerProps & IRootComponentProps & InnerPopperTr
         onKeyboardFocus?.();
       }
     },
-    [onKeyboardFocus, focusSourceRef.current, triggerRef.current],
+    [onKeyboardFocus, triggerRef.current],
   );
 
   React.useEffect(() => {
@@ -618,7 +622,7 @@ function Trigger(props: PopperTriggerProps & IRootComponentProps & InnerPopperTr
       setTimeout(() => {
         if (activeRef.current) return;
         if (!isFocusInside(popperRef.current) && document.activeElement !== document.body) return;
-        if (focusSourceRef.current !== 'keyboard') return;
+        if (!lastInteraction.isKeyboard()) return;
 
         if (triggerRef.current) {
           setFocus(triggerRef.current);

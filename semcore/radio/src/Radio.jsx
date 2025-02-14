@@ -2,7 +2,6 @@ import React from 'react';
 import { createComponent, Component, CONTEXT_COMPONENT, sstyled, Root } from '@semcore/core';
 import { Flex, Box, InvalidStateBox } from '@semcore/flex-box';
 import assignProps, { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
-import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import getInputProps, { inputProps } from '@semcore/core/lib/utils/inputProps';
 import { useColorResolver } from '@semcore/core/lib/utils/use/useColorResolver';
@@ -133,7 +132,7 @@ class ValueRoot extends Component {
     includeInputProps: inputProps,
     defaultChecked: false,
   };
-  static enhance = [keyboardFocusEnhance(), resolveColorEnhance()];
+  static enhance = [resolveColorEnhance()];
   static displayName = 'Value';
   static contextType = RadioGroup[CONTEXT_COMPONENT];
   static style = style;

@@ -1,5 +1,5 @@
 import React from 'react';
-import '@semcore/utils/lib/themes/default.css';
+import '@semcore/core/lib/theme/themes/default.css';
 import Icon from '@semcore/icon';
 
 const Demo = () => {

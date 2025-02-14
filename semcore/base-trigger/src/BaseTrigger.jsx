@@ -2,7 +2,6 @@ import React from 'react';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import { Box, InvalidStateBox } from '@semcore/flex-box';
 import NeighborLocation from '@semcore/neighbor-location';
-import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import logger from '@semcore/core/lib/utils/logger';
 import animatedSizeEnhance from '@semcore/core/lib/utils/enhances/animatedSizeEnhance';
@@ -13,7 +12,6 @@ import style from './style/base-trigger.shadow.css';
 class RootBaseTrigger extends Component {
   static displayName = 'BaseTrigger';
   static enhance = [
-    keyboardFocusEnhance(),
     cssVariableEnhance({
       variable: '--intergalactic-duration-control',
       fallback: '200',

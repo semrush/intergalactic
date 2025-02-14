@@ -2,7 +2,6 @@ import React from 'react';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import NeighborLocation, { useNeighborLocationDetect } from '@semcore/neighbor-location';
-import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import a11yEnhance from '@semcore/core/lib/utils/enhances/a11yEnhance';
 import log from '@semcore/core/lib/utils/logger';
@@ -31,7 +30,7 @@ class RootPills extends Component {
     behavior: behavior ?? 'auto',
   });
   itemValues = [];
-  static enhance = [a11yEnhance(optionsA11yEnhance), keyboardFocusEnhance()];
+  static enhance = [a11yEnhance(optionsA11yEnhance)];
 
   componentDidMount() {
     log.warn(
@@ -144,8 +143,6 @@ function Pill(props) {
     </SPill>,
   );
 }
-
-Pill.enhance = [keyboardFocusEnhance()];
 
 function Text(props) {
   const SText = Root;

@@ -22,10 +22,6 @@ SDropdownPopper {
     &:hover {
       background-color: var(--intergalactic-dropdown-menu-item-hover, #f4f5f9);
     }
-
-    &:focus {
-      outline: none;
-    }
   }
 
   SDropdownItem[isMenuItemCheckbox] {
@@ -68,6 +64,7 @@ SDropdownPopper {
   SDropdownItem[highlighted][isMenuItemCheckbox]:not(button) {
     z-index: 1;
     box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5)) inset;
+    outline: none;
   }
 
   SDropdownItem[disabled] {

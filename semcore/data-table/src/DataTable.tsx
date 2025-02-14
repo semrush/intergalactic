@@ -8,6 +8,7 @@ import {
   sstyled,
   UnknownProperties,
   Intergalactic,
+  lastInteraction,
 } from '@semcore/core';
 import { Box, BoxProps, FlexProps } from '@semcore/flex-box';
 import syncScroll from '@semcore/core/lib/utils/syncScroll';
@@ -32,7 +33,6 @@ import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import style from './style/data-table.shadow.css';
 import { isFocusInside } from '@semcore/core/lib/utils/use/useFocusLock';
 import { hasFocusableIn } from '@semcore/core/lib/utils/use/useFocusLock';
-import focusSourceEnhance from '@semcore/core/lib/utils/enhances/focusSourceEnhance';
 
 const reversedSortDirection: { [direction in SortDirection]: SortDirection } = {
   desc: 'asc',
@@ -56,7 +56,6 @@ type AsProps = {
   uniqueKey: string;
   uid?: string;
   getI18nText?: (str: string) => string;
-  focusSourceRef?: React.RefObject<'mouse' | 'keyboard' | 'none'>;
 };
 
 type HeadAsProps = {
@@ -240,7 +239,7 @@ class RootDefinitionTable extends Component<AsProps> {
   static displayName = 'DefinitionTable';
 
   static style = style;
-  static enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages), focusSourceEnhance()];
+  static enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages)];
 
   static defaultProps = {
     use: 'primary',
@@ -699,7 +698,7 @@ class RootDefinitionTable extends Component<AsProps> {
   handleFocus = (e: React.FocusEvent<HTMLElement, HTMLElement>) => {
     if (
       (!e.relatedTarget || !isFocusInside(e.currentTarget, e.relatedTarget)) &&
-      this.asProps.focusSourceRef?.current === 'keyboard'
+      lastInteraction.isKeyboard()
     ) {
       if (this.focusedCell[0] === -1 && this.focusedCell[1] === -1) {
         this.initFocusableCell();
@@ -733,7 +732,7 @@ class RootDefinitionTable extends Component<AsProps> {
       tableElement &&
       (!relatedTarget ||
         !isFocusInside(tableElement, relatedTarget) ||
-        this.asProps.focusSourceRef?.current !== 'keyboard')
+        !lastInteraction.isKeyboard())
     ) {
       this.setInert(false);
       tableElement.setAttribute('tabIndex', '0');

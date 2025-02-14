@@ -393,7 +393,7 @@ export default createComponent(InputTags, {
     Text: Intergalactic.Component<'div', TagProps, TagContext> & {
       Content: Intergalactic.Component<'div', TagTextProps>;
     };
-    Close: typeof Tag.Close;
+    Close: typeof TagContainer.Close;
     Addon: typeof Tag.Addon;
     Circle: typeof Tag.Circle;
   };

@@ -1,7 +1,7 @@
 import React from 'react';
 import Switch from '@semcore/switch';
 import CheckM from '@semcore/icon/Check/m';
-import CloseM from 'intergalactic/icon/Close/m';
+import CloseM from '@semcore/icon/Close/m';
 
 const Demo = () => {
   const [value, setValue] = React.useState(true);

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Flex, ScreenReaderOnly } from '@semcore/flex-box';
 import Button from '@semcore/button';
-import { createComponent, Component, Root } from '@semcore/core';
+import { createComponent, Component, Root, lastInteraction } from '@semcore/core';
 import DropdownMenu from '@semcore/dropdown-menu';
 import MathPlusM from '@semcore/icon/MathPlus/m';
 import CloseM from '@semcore/icon/Close/m';
@@ -13,7 +13,6 @@ import { extractFrom } from '@semcore/core/lib/utils/findComponent';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { SelectProps } from '@semcore/select';
-import focusSourceEnhance from '@semcore/core/lib/utils/enhances/focusSourceEnhance';
 
 type SelectItemProps = SelectProps & AddFilterItemProps;
 
@@ -48,7 +47,7 @@ class RootAddFilter extends Component<
   addDropdownItems: AddFilterDropdownOption[];
 
   static displayName = 'AddFilter';
-  static enhance = [i18nEnhance(localizedMessages), focusSourceEnhance()] as const;
+  static enhance = [i18nEnhance(localizedMessages)] as const;
   static defaultProps = {
     i18n: localizedMessages,
     locale: 'en',
@@ -84,9 +83,7 @@ class RootAddFilter extends Component<
   }
 
   focusFilterAfterItemCleared(name?: string) {
-    const { focusSourceRef } = this.asProps;
-
-    if (focusSourceRef.current !== 'keyboard') {
+    if (!lastInteraction.isKeyboard()) {
       return;
     }
 

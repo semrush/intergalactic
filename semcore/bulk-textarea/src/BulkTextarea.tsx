@@ -1,5 +1,5 @@
 import React from 'react';
-import { createComponent, Component, Root } from '@semcore/core';
+import { createComponent, Component, Root, lastInteraction } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 
 import { BulkTextareaType, BulkTextareaProps } from './BulkTextarea.types';
@@ -10,7 +10,6 @@ import { ClearAll } from './components/ClearAll';
 import { ErrorsNavigation } from './components/ErrorsNavigation';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import focusSourceEnhance from '@semcore/core/lib/utils/enhances/focusSourceEnhance';
 import uniqueIdEnhance from '@semcore/core/lib/utils/uniqueID';
 
 type State = {
@@ -41,11 +40,7 @@ class BulkTextareaRoot extends Component<
     defaultShowErrors: false,
   };
 
-  static enhance = [
-    i18nEnhance(localizedMessages),
-    focusSourceEnhance(),
-    uniqueIdEnhance(),
-  ] as const;
+  static enhance = [i18nEnhance(localizedMessages), uniqueIdEnhance()] as const;
 
   inputFieldRef = React.createRef<HTMLDivElement>();
   clearAllButtonRef = React.createRef<HTMLButtonElement>();
@@ -117,7 +112,7 @@ class BulkTextareaRoot extends Component<
       onBlur: (value: string, event: Event) => {
         if (
           validateOn?.includes('blur') &&
-          (this.asProps.focusSourceRef.current === 'keyboard' ||
+          (lastInteraction.isKeyboard() ||
             (event instanceof FocusEvent && event.relatedTarget !== this.clearAllButtonRef.current))
         ) {
           this.handlers.showErrors(true);
