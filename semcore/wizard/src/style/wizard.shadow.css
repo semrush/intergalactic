@@ -42,6 +42,10 @@ SStepper {
   overflow: auto;
   line-height: var(--intergalactic-lh-200, 142%);
 
+  &:focus-visible {
+    outline-color: var(--intergalactic-keyboard-focus-invert-outline, rgba(255, 255, 255, 0.7))
+  }
+
   &:hover {
     background: var(--intergalactic-control-primary-advertising-hover, #421983);
     z-index: 1;

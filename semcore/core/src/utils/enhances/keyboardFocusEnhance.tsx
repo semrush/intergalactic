@@ -1,7 +1,7 @@
 import React from 'react';
 import assignProps from '../assignProps';
 import { UnknownProperties } from '../../core-types/UnknownProperties';
-import {lastInteraction} from '../../LastInteractionType';
+import { lastInteraction } from '../../LastInteractionType';
 
 /** @deprecated */
 export interface IKeyboardFocusProps extends KeyboardFocusProps, UnknownProperties {}

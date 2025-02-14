@@ -1489,6 +1489,11 @@
       "type": "boxShadow",
       "description": "Default keyboard focus styles for using with dark background."
     },
+    "keyboard-focus-invert-outline": {
+      "value": "{keyboard-focus.outline-invert}",
+      "type": "outline",
+      "description": "Default keyboard focus outline styles for using with dark background."
+    },
     "base": {
       "value": "Inter",
       "type": "fontFamilies",
