@@ -40,7 +40,7 @@ Starting with `16.0.0`, major versions of components are synchronized with the I
 
 ## 5.39.1 (February 5, 2025)
 
-::: details 53 version bumps due to dependency updates
+::: details 53 releases with dependency updates only
 ### 5.39.1 (February 5, 2025)
 
 - Version patch update due to children dependencies update (`@semcore/animation` [2.40.0 ~> 2.40.1], `@semcore/flex-box` [5.40.0 ~> 5.40.1], `@semcore/utils` [4.45.0 ~> 4.45.1], `@semcore/core` [2.38.0 ~> 2.38.1]).
@@ -69,7 +69,7 @@ Starting with `16.0.0`, major versions of components are synchronized with the I
 
 ## 4.2.41 (June 30, 2023)
 
-::: details 11 version bumps due to dependency updates
+::: details 11 releases with dependency updates only
 ### 4.2.41 (June 30, 2023)
 
 ### 4.2.40 (June 27, 2023)
@@ -104,7 +104,7 @@ Starting with `16.0.0`, major versions of components are synchronized with the I
 
 ## 4.2.24 (April 26, 2023)
 
-::: details 3 version bumps due to dependency updates
+::: details 3 releases with dependency updates only
 ### 4.2.24 (April 26, 2023)
 
 - Version patch update due to children dependencies update (`@semcore/animation` [1.10.1 ~> 1.10.2], `@semcore/utils` [3.50.0 ~> 3.50.3]).
