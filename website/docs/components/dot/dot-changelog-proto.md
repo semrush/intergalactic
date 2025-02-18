@@ -59,7 +59,7 @@ Starting with `16.0.0`, major versions of components are synchronized with the I
 :::
 </div>
 
-## 5.0.0 <span role="img" aria-label="break">🅱️</span> (July 17, 2023)
+## 5.0.0 <span role="img" aria-label="breaking">🅱️</span> (July 17, 2023)
 
 ### Break
 
