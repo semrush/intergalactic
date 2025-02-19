@@ -282,6 +282,46 @@
       "800": {
         "value": "#220358",
         "type": "color"
+      },
+      "dusty": {
+        "50": {
+          "value": "#E7E8F2",
+          "type": "color",
+          "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
+        },
+        "100": {
+          "value": "#E2DDFF",
+          "type": "color",
+          "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
+        },
+        "200": {
+          "value": "#BCB1E9",
+          "type": "color"
+        },
+        "300": {
+          "value": "#A79CD6",
+          "type": "color"
+        },
+        "400": {
+          "value": "#9083C5",
+          "type": "color"
+        },
+        "500": {
+          "value": "#6D619F",
+          "type": "color"
+        },
+        "600": {
+          "value": "#4D407E",
+          "type": "color"
+        },
+        "700": {
+          "value": "#382E5E",
+          "type": "color"
+        },
+        "800": {
+          "value": "#1D113E",
+          "type": "color"
+        }
       }
     },
     "pink": {
@@ -2339,6 +2379,54 @@
           "fontSize": "{fs-100}"
         },
         "type": "typography"
+      }
+    },
+    "header": {
+      "bg": {
+        "value": "{violet.dusty.700}",
+        "type": "color"
+      },
+      "border": {
+        "primary": {
+          "value": "{violet.dusty.700}",
+          "type": "color"
+        },
+        "secondary": {
+          "value": "rgba(255,255,255,0.15)",
+          "type": "color"
+        }
+      }
+    },
+    "left-nav": {
+      "control-hover": {
+        "value": "{violet.dusty.50}",
+        "type": "color"
+      },
+      "control-active": {
+        "value": "{violet.dusty.100}",
+        "type": "color"
+      },
+      "control": {
+        "text": {
+          "normal": {
+            "value": "{violet.dusty.500}",
+            "type": "color"
+          },
+          "active": {
+            "value": "{violet.dusty.600}",
+            "type": "color"
+          }
+        },
+        "icon": {
+          "normal": {
+            "value": "{violet.dusty.400}",
+            "type": "color"
+          },
+          "active": {
+            "value": "{violet.dusty.600}",
+            "type": "color"
+          }
+        }
       }
     },
     "duration": {

@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.46.0] - 2025-02-19
+
+### Added
+
+- New tokens for header and left navigation, and new `violet-dusty` color: `violet-dusty-50`, `violet-dusty-100`,
+`violet-dusty-200`, `violet-dusty-300`, `violet-dusty-400`, `violet-dusty-500`, `violet-dusty-600`, `violet-dusty-700`, `violet-dusty-800`; `header-bg`, `header-border-primary`, `header-border-secondary`, `left-nav-control-hover`, `left-nav-control-active`, `left-nav-control-text-normal`, `left-nav-control-text-active`, `left-nav-control-icon-normal`, `left-nav-control-icon-active`.
+
 ## [4.45.1] - 2025-02-05
 
 ### Changed
