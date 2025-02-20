@@ -1,5 +1,5 @@
 import React from 'react';
-import Scroll from 'intergalactic/scroll-area';
+import Scroll from '@semcore/scroll-area';
 import { Box } from '@semcore/flex-box';
 
 let randomIndex = 1;
@@ -19,7 +19,8 @@ function getRandomColor() {
 class Demo extends React.PureComponent {
   render() {
     return (
-      <Scroll h={300}>
+      <Scroll h={300}  topOffset={100}
+      bottomOffset={100}>
         {[...new Array(100)].map((_, index) => (
           <Box
             key={index}

@@ -1,8 +1,8 @@
 import React from 'react';
-import ScrollArea from 'intergalactic/scroll-area';
-import { Box, Flex } from 'intergalactic/flex-box';
-import { Text } from 'intergalactic/typography';
-import Button from 'intergalactic/button';
+import ScrollArea from '@semcore/scroll-area';
+import { Box, Flex } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
+import Button from '@semcore/button';
 import { List } from 'react-virtualized';
 
 const list = [...new Array(6)];
