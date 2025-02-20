@@ -3,12 +3,11 @@ import Button from '@semcore/button';
 import NotificationM from '@semcore/icon/Notification/m';
 import Dot from '@semcore/dot';
 import { AnimatedNumber } from '@semcore/counter';
-import { Hint } from '@semcore/tooltip';
 
 const notificationsCount = 18;
 
 const Demo = () => (
-  <Hint tag={Button} title={`${notificationsCount} notifications`}>
+  <Button title={'Notifications'} aria-describedby='notification-count'>
     <Button.Addon>
       <NotificationM />
       <Dot up>
@@ -18,10 +17,11 @@ const Demo = () => (
           duration={1000}
           delay={500}
           formatValue={(x) => Math.round(x).toString()}
+          id='notification-count'
         />
       </Dot>
     </Button.Addon>
-  </Hint>
+  </Button>
 );
 
 export default Demo;

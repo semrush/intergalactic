@@ -10,7 +10,7 @@ const Demo = () => {
 
   return (
     <Flex direction='column' alignItems='flex-start'>
-      <Text tag='label' size={200} id='pills-basic-usage'>
+      <Text size={200} id='pills-basic-usage'>
         Your opinion
       </Text>
       <Pills mt={2} value={choice} onChange={setChoice} aria-labelledby='pills-basic-usage'>

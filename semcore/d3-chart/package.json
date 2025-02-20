@@ -1,23 +1,28 @@
 {
   "name": "@semcore/d3-chart",
   "description": "Semrush D3 Chart Component",
-  "version": "3.58.5",
+  "version": "3.58.7",
   "main": "lib/cjs/index.js",
-  "module": "lib/es6/index.mjs",
+  "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
   "sideEffects": false,
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
+  "exports": {
+    "require": "./lib/cjs/index.js",
+    "import": "./lib/es6/index.js",
+    "types": "./lib/types/index.d.ts"
+  },
   "scripts": {
     "build": "pnpm semcore-builder --source=js,ts"
   },
   "dependencies": {
     "@formatjs/intl": "2.3.0",
-    "@semcore/animation": "2.39.1",
-    "@semcore/divider": "4.38.1",
-    "@semcore/flex-box": "5.39.1",
-    "@semcore/popper": "5.45.1",
-    "@semcore/utils": "4.44.1",
+    "@semcore/animation": "2.40.1",
+    "@semcore/divider": "4.39.1",
+    "@semcore/flex-box": "5.40.1",
+    "@semcore/popper": "5.45.3",
+    "@semcore/utils": "4.45.1",
     "@types/d3-shape": "^3.1.0",
     "@upsetjs/venn.js": "1.4.2",
     "d3-array": "3.1.6",

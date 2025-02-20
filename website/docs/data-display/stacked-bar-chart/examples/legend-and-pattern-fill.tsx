@@ -20,7 +20,7 @@ const Demo = () => {
 
   const xScale = scaleBand()
     .range([MARGIN, width - MARGIN])
-    .domain(data.map((d) => d.category))
+    .domain(data.map((d) => d.bar))
     .paddingInner(0.4)
     .paddingOuter(0.2);
 
@@ -30,11 +30,11 @@ const Demo = () => {
 
   const [legendItems, setLegendItems] = React.useState(
     Object.keys(data[0])
-      .filter((name) => name !== 'category')
+      .filter((name) => name !== 'bar')
       .map((item, index) => {
         return {
           id: item,
-          label: `Dataset${item}`,
+          label: `Category ${item}`,
           checked: true,
           color: `chart-palette-order-${index + 1}`,
         };
@@ -77,7 +77,7 @@ const Demo = () => {
           onMouseLeaveItem={handleMouseLeave}
           dataHints={dataHints}
           patterns
-          aria-label={'Legend for the stacked bar chart'}
+          aria-label={'Stacked bar chart legend'}
         />
         <Plot
           data={data}
@@ -94,7 +94,7 @@ const Demo = () => {
           <XAxis>
             <XAxis.Ticks />
           </XAxis>
-          <StackBar x='category'>
+          <StackBar x='bar'>
             {legendItems.map((stack, index) => {
               return (
                 stack.checked && (
@@ -115,7 +115,7 @@ const Demo = () => {
 };
 
 const data = [...Array(5).keys()].map((d, i) => ({
-  category: `Category ${i}`,
+  bar: `Bar ${i + 1}`,
   1: Math.random() * 5,
   2: Math.random() * 5,
   3: Math.random() * 5,

@@ -1,8 +1,8 @@
 import React from 'react';
-import Select from 'intergalactic/select';
-import Input from 'intergalactic/input';
-import { Text } from 'intergalactic/typography';
-import { Box } from 'intergalactic/flex-box';
+import Select from '@semcore/select';
+import Input from '@semcore/input';
+import { Text } from '@semcore/typography';
+import { Box } from '@semcore/flex-box';
 
 const options = Array(12)
   .fill(0)
@@ -17,11 +17,11 @@ const Demo = () => {
   return (
     <>
       <Text tag='label' size={200} htmlFor='release-time-picker'>
-        Select release time
+        Release time
       </Text>
       <Box mt={2}>
         <Select interaction='focus' onChange={setValue} value={value}>
-          <Select.Trigger tag={Input}>
+          <Select.Trigger tag={Input} w={150}>
             {() => <Input.Value value={value} onChange={setValue} id='release-time-picker' />}
           </Select.Trigger>
           <Select.Menu>

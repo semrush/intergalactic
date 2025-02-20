@@ -8,7 +8,7 @@ tabs: Design('illustration'), A11y('illustration-a11y'), API('illustration-api')
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/basic-usage.tsx';
+  export Demo from 'stories/components/illustration/docs/examples/basic-usage.tsx';
 </script>
 
 :::
@@ -18,7 +18,7 @@ tabs: Design('illustration'), A11y('illustration-a11y'), API('illustration-api')
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/custom-color.tsx';
+  export Demo from 'stories/components/illustration/docs/examples/custom-color.tsx';
 </script>
 
 :::

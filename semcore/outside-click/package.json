@@ -1,9 +1,9 @@
 {
   "name": "@semcore/outside-click",
   "description": "Semrush OutsideClick Component",
-  "version": "3.37.1",
+  "version": "3.38.1",
   "main": "lib/cjs/index.js",
-  "module": "lib/es6/index.mjs",
+  "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
   "sideEffects": false,
   "author": "UI-kit team <ui-kit-team@semrush.com>",
@@ -12,7 +12,7 @@
     "build": "pnpm semcore-builder"
   },
   "dependencies": {
-    "@semcore/utils": "4.44.1"
+    "@semcore/utils": "4.45.1"
   },
   "peerDependencies": {
     "@semcore/core": "^2.17.5",

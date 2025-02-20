@@ -1,9 +1,9 @@
 {
   "name": "@semcore/feature-popover",
   "description": "Semrush FeaturePopover Component",
-  "version": "4.51.0",
+  "version": "4.52.1",
   "main": "lib/cjs/index.js",
-  "module": "lib/es6/index.mjs",
+  "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
   "sideEffects": false,
   "author": "UI-kit team <ui-kit-team@semrush.com>",
@@ -12,11 +12,11 @@
     "build": "pnpm semcore-builder --source=js"
   },
   "dependencies": {
-    "@semcore/utils": "4.44.1",
-    "@semcore/flex-box": "5.39.1",
-    "@semcore/popper": "5.45.1",
-    "@semcore/icon": "4.55.0",
-    "@semcore/animation": "2.39.1"
+    "@semcore/utils": "4.45.1",
+    "@semcore/flex-box": "5.40.1",
+    "@semcore/popper": "5.45.3",
+    "@semcore/icon": "4.57.1",
+    "@semcore/animation": "2.40.1"
   },
   "peerDependencies": {
     "@semcore/core": "^2.17.5",

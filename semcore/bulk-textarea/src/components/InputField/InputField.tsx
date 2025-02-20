@@ -336,15 +336,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       const anchorOffset = selection.anchorOffset;
       const focusOffset = selection.focusOffset;
       const documentPosition = selection.anchorNode.compareDocumentPosition(selection.focusNode);
-
-      let direction = 'forward';
-
-      if (
-        (documentPosition === 0 && selection.anchorOffset > selection.focusOffset) || // if nodes are the same
-        documentPosition === Node.DOCUMENT_POSITION_PRECEDING
-      ) {
-        direction = 'backward';
-      }
+      const direction = this.getSelectionDirection();
 
       const anchorElement = direction === 'forward' ? selection.anchorNode : selection.focusNode;
       const focusElement = direction === 'forward' ? selection.focusNode : selection.anchorNode;
@@ -644,7 +636,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         this.handleCursorMovement(currentNode, event);
       }
       this.toggleErrorsPopperByKeyboard(200);
-    } else if (event.key === 'Backspace' && currentNode instanceof HTMLParagraphElement) {
+    } else if (this.isDeleteKey(event) && currentNode instanceof HTMLParagraphElement) {
       if (currentNode.textContent?.trim() === '' && !this.isRangeSelection()) {
         // Backspace on empty row
         const prevNode = currentNode.previousSibling;
@@ -653,7 +645,11 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
           this.textarea.removeChild(currentNode);
           this.toggleErrorsPopperByKeyboard(0);
 
-          if (prevNode.textContent?.trim() === '' && prevNode.previousSibling === null) {
+          if (
+            prevNode.textContent?.trim() === '' &&
+            prevNode.previousSibling === null &&
+            this.textarea.childNodes.length === 1
+          ) {
             this.textarea.textContent = '';
             this.setSelection(this.textarea, 0, 0);
           } else {
@@ -673,18 +669,93 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
           this.toggleErrorsPopperByKeyboard(0);
         }
       } else if (this.isRangeSelection()) {
-        // Backspace on selected full row
         const selection = document.getSelection();
+
+        const direction = this.getSelectionDirection();
+        const anchorElement =
+          direction === 'backward' ? selection?.focusNode : selection?.anchorNode;
+        const focusElement =
+          direction === 'backward' ? selection?.anchorNode : selection?.focusNode;
+        const anchorOffset =
+          direction === 'backward' ? selection?.focusOffset : selection?.anchorOffset;
+        const focusOffset =
+          direction === 'backward' ? selection?.anchorOffset : selection?.focusOffset;
+
+        // Backspace on selected full row
         if (
-          selection?.focusNode === selection?.anchorNode &&
-          selection?.anchorOffset === 0 &&
-          ((selection?.focusNode === currentNode && selection?.focusOffset === 1) ||
-            selection?.focusOffset === currentNode.textContent?.length)
+          anchorElement === focusElement &&
+          anchorOffset === 0 &&
+          ((focusElement === currentNode && focusOffset === 1) ||
+            focusOffset === currentNode.textContent?.length)
         ) {
           event.preventDefault();
-          currentNode.innerHTML = this.emptyLineValue;
 
-          this.validateLine(currentNode);
+          const anchorParagraph = anchorElement?.parentElement;
+          const focusParagraph = focusElement?.parentElement;
+          const childNodes = this.textarea.childNodes;
+          if (
+            anchorParagraph === childNodes.item(0) &&
+            focusParagraph === childNodes.item(childNodes.length - 1)
+          ) {
+            this.textarea.textContent = '';
+            this.setSelection(this.textarea, 0, 0);
+          } else {
+            currentNode.innerHTML = this.emptyLineValue;
+            this.validateLine(currentNode);
+          }
+
+          this.setErrorIndex(currentNode);
+          this.recalculateLinesCount();
+
+          setTimeout(() => {
+            this.recalculateErrors();
+          }, 0);
+
+          this.toggleErrorsPopperByKeyboard(0);
+        }
+        // Backspace on selected few full rows
+        else if (
+          focusElement !== anchorElement &&
+          focusElement instanceof Text &&
+          anchorElement instanceof Text &&
+          focusElement?.textContent === focusElement?.parentNode?.textContent &&
+          anchorElement?.textContent === anchorElement?.parentNode?.textContent &&
+          anchorOffset === 0 &&
+          focusOffset === focusElement?.parentNode?.textContent?.length
+        ) {
+          event.preventDefault();
+
+          const paragraphs = Array.from(this.textarea.children);
+          const anchorParagraph = anchorElement.parentElement;
+          const focusParagraph = focusElement.parentElement;
+          const childNodes = this.textarea.childNodes;
+
+          if (
+            anchorParagraph === childNodes.item(0) &&
+            focusParagraph === childNodes.item(childNodes.length - 1)
+          ) {
+            this.textarea.textContent = '';
+            this.setSelection(this.textarea, 0, 0);
+          } else {
+            let isCleaning = false;
+
+            for (const paragraph of paragraphs) {
+              if (paragraph === anchorParagraph || isCleaning) {
+                isCleaning = true;
+
+                if (paragraph === focusParagraph) {
+                  focusParagraph.innerHTML = this.emptyLineValue;
+                  this.setSelection(focusParagraph, 0, 0);
+                  break;
+                } else {
+                  this.textarea.removeChild(paragraph);
+                }
+              }
+            }
+
+            this.validateLine(currentNode);
+          }
+
           this.setErrorIndex(currentNode);
           this.recalculateLinesCount();
 
@@ -1047,6 +1118,10 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     this.handlers.errorIndex(errorIndex);
   }
 
+  private isDeleteKey(event: KeyboardEvent): boolean {
+    return event.key === 'Backspace' || (event.key === 'x' && (event.ctrlKey || event.metaKey));
+  }
+
   private getEmptyParagraph() {
     const element = document.createElement('p');
 
@@ -1100,6 +1175,25 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       selection?.focusNode !== selection?.anchorNode ||
       selection?.focusOffset !== selection?.anchorOffset
     );
+  }
+
+  private getSelectionDirection(): 'forward' | 'backward' | null {
+    const selection = document.getSelection();
+
+    if (selection?.anchorNode && selection?.focusNode) {
+      const documentPosition = selection.anchorNode.compareDocumentPosition(selection.focusNode);
+
+      if (
+        (documentPosition === 0 && selection.anchorOffset > selection.focusOffset) || // if nodes are the same
+        documentPosition === Node.DOCUMENT_POSITION_PRECEDING
+      ) {
+        return 'backward';
+      }
+
+      return 'forward';
+    }
+
+    return null;
   }
 }
 

@@ -9,7 +9,7 @@ export async function CustomStepExampleTest({ canvasElement }: { canvasElement: 
   // ==== Section 1: Mouse Interactions ====
 
   // Open the modal using a button
-  const trigger = within(document.body).queryByText("Open modal");
+  const trigger = within(document.body).queryByText("Open wizard");
   if (!trigger) {
     throw new Error('Trigger button "Open modal" not found');
   }

@@ -40,7 +40,7 @@ const Demo = () => {
 
   return (
     <>
-      <Button onClick={handleOpen}>Open modal</Button>
+      <Button onClick={handleOpen}>Open wizard</Button>
       <Wizard visible={visible} step={step} w={600} onClose={handleClose}>
         <Wizard.Sidebar title='Site Audit Settings'>
           <Wizard.Stepper step={1} onActive={handleStepChange(1)}>

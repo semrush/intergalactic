@@ -14,8 +14,8 @@ import { Chart, ScatterPlotChartProps } from '@semcore/d3-chart';
 
 const data = [...Array(25).keys()].map((d, i) => ({
   x: i,
-  y: Math.random() * 10,
-  y2: Math.random() * 10,
+  category1: Math.random() * 10,
+  category2: Math.random() * 10,
   value: Math.round(Math.random() * 10),
 }));
 
@@ -25,7 +25,6 @@ const App = PlaygroundGeneration((preview) => {
   const {
     direction,
     alignItems,
-    justifyContent,
     showXAxis,
     showYAxis,
     showTooltip,
@@ -44,7 +43,6 @@ const App = PlaygroundGeneration((preview) => {
     showXAxis,
     showYAxis,
     alignItems,
-    justifyContent,
     patterns,
   };
 

@@ -17,7 +17,7 @@ const getDefaultLegendItems = () => {
   return data.map((item, index) => {
     return {
       id: index.toString(),
-      label: `Round item (${item.label}) [${index}]`,
+      label: item.label,
       checked: true,
       color: item.color,
     };
@@ -57,7 +57,7 @@ const Demo = () => {
         dataHints={dataHints}
         items={legendItems}
         patterns
-        aria-label={'Legend for the bubble chart'}
+        aria-label={'Bubble chart legend'}
         onChangeVisibleItem={handleChangeVisible}
       />
       <Plot

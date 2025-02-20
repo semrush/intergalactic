@@ -1,22 +1,27 @@
 {
   "name": "@semcore/button",
   "description": "Semrush Button Component",
-  "version": "5.40.3",
+  "version": "5.41.2",
   "main": "lib/cjs/index.js",
-  "module": "lib/es6/index.mjs",
+  "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
   "sideEffects": false,
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
+  "exports": {
+    "require": "./lib/cjs/index.js",
+    "import": "./lib/es6/index.js",
+    "types": "./lib/types/index.d.ts"
+  },
   "scripts": {
     "build": "pnpm semcore-builder --source=ts"
   },
   "dependencies": {
-    "@semcore/flex-box": "5.39.1",
-    "@semcore/neighbor-location": "4.37.1",
-    "@semcore/spin": "5.39.2",
-    "@semcore/tooltip": "6.47.1",
-    "@semcore/utils": "4.44.1"
+    "@semcore/flex-box": "5.40.1",
+    "@semcore/neighbor-location": "4.38.1",
+    "@semcore/spin": "5.40.1",
+    "@semcore/tooltip": "6.47.3",
+    "@semcore/utils": "4.45.1"
   },
   "peerDependencies": {
     "@semcore/core": "^2.17.5",
