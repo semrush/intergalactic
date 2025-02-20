@@ -11,5 +11,12 @@ describe.skip('Dependency imports', () => {
   const ErrorsNavigationPath = path.resolve(__dirname, '../src/components/ErrorsNavigation.tsx');
   const InputFieldPath = path.resolve(__dirname, '../src/components/InputField/InputField.tsx');
 
-  runDependencyCheckTests(packageJsonPath, [componentPath, typesPath, ClearAllPath, CounterPath, ErrorsNavigationPath, InputFieldPath]);
+  runDependencyCheckTests(packageJsonPath, [
+    componentPath,
+    typesPath,
+    ClearAllPath,
+    CounterPath,
+    ErrorsNavigationPath,
+    InputFieldPath,
+  ]);
 });
