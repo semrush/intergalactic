@@ -3,6 +3,16 @@ import * as sharedTests from '@semcore/testing-utils/shared-tests';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
 
+import path from 'path';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe(' Dependency imports', () => {
+  const packageJsonPath = path.resolve(__dirname, '../package.json');
+  const componentPath = path.resolve(__dirname, '../src/index.ts');
+
+  runDependencyCheckTests(packageJsonPath, [componentPath]);
+});
+
 const { shouldSupportRef } = sharedTests;
 import createComponent, {
   createBaseComponent,
