@@ -1,18 +1,19 @@
 import React from 'react';
-import { Text } from 'intergalactic/typography';
+import { Flex } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
 
 const Demo = () => (
-  <div>
+  <Flex direction='column'>
     <Text size={300} tag='p' mb={4} mt={0}>
-      Paragraph 16px / 1em / --fs-300,--lh-300
+      Paragraph 16px
     </Text>
     <Text size={200} tag='p' mb={3} mt={0}>
-      Paragraph 14px / 0.875em / --fs-200,--lh-200
+      Paragraph 14px
     </Text>
     <Text size={100} tag='p' mb={2} mt={0}>
-      Paragraph 12px / 0.75em / --fs-100,--lh-100
+      Paragraph 12px
     </Text>
-  </div>
+  </Flex>
 );
 
 export default Demo;
