@@ -80,7 +80,7 @@ describe('ScrollArea', () => {
   test('Verify correctly set shadows based on scroll position', () => {
     const { getByTestId } = render(
       <ScrollArea shadow>
-        <ScrollArea.Container data-testid='test1' w={300} h={300}/>
+        <ScrollArea.Container data-testid='test1' w={300} h={300} />
       </ScrollArea>,
     );
 
