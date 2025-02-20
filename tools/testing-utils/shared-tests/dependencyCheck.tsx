@@ -2,7 +2,6 @@ import { test, expect } from 'vitest';
 import fs from 'fs';
 import path from 'path';
 
-
 function extractImports(filePath: any) {
   // if (!fs.existsSync(filePath)) {
   //   console.warn(`File not found: ${filePath}`);
@@ -39,10 +38,12 @@ export function runDependencyCheckTests(packageJsonPath: any, componentPaths: an
     // console.log('Expected dependencies:', dependencies);
     // console.log('Found imports:', Array.from(allImports));
 
-  //check that dependency imported at least once
+    //check that dependency imported at least once
     dependencies.forEach((dep) => {
-      const isDepImported = Array.from(allImports).some((imp:any) => imp === dep || imp.includes(dep));
-     // console.log(`Checking dependency "${dep}" - Found: ${isDepImported}`);
+      const isDepImported = Array.from(allImports).some(
+        (imp: any) => imp === dep || imp.includes(dep),
+      );
+      // console.log(`Checking dependency "${dep}" - Found: ${isDepImported}`);
       expect(isDepImported).toBe(true);
     });
   });
