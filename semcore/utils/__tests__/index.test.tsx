@@ -642,7 +642,6 @@ describe('getEventTarget', () => {
   });
 
   test('Verify return first element of composedPath if no shadowRoot', () => {
-    // Mocking composedPath to return elements that are simple objects
     const event = {
       composedPath: vi.fn().mockReturnValue([{ someProperty: 'pathElement' }]), // Mocking a non-DOM element
     } as unknown as React.SyntheticEvent;
@@ -658,7 +657,7 @@ describe('getEventTarget', () => {
     } as unknown as React.SyntheticEvent;
 
     const result = getEventTarget(event);
-    expect(result).toBe(shadowRootElement); // Should return the element with shadowRoot
+    expect(result).toBe(shadowRootElement);
   });
 
   test('Verify return event.target when composedPath is undefined', () => {
@@ -695,7 +694,7 @@ describe('getEventTarget', () => {
 });
 
 describe('getInputProps', () => {
-  it('should correctly separate props that exist in inputProps from other props', () => {
+  test('Verify correctly separate props that exist in inputProps from other props', () => {
     const props = {
       autoFocus: true,
       checked: false,
@@ -722,7 +721,7 @@ describe('getInputProps', () => {
     });
   });
 
-  it('should handle aria-* props if allAriaPropsToControl is true', () => {
+  test('Verify handle aria-* props if allAriaPropsToControl is true', () => {
     const props = {
       'aria-label': 'label',
       'aria-hidden': 'true',
@@ -743,7 +742,7 @@ describe('getInputProps', () => {
     });
   });
 
-  it('should default to using the inputProps list if no propsList is provided', () => {
+  test('Verify default to using the inputProps list if no propsList is provided', () => {
     const props = {
       autoFocus: true,
       customProp: 'custom',
@@ -762,7 +761,7 @@ describe('getInputProps', () => {
     });
   });
 
-  it('should handle an empty props object gracefully', () => {
+  test('Verofy handle an empty props object gracefully', () => {
     const props = {};
 
     const [includedProps, excludedProps] = getInputProps(props);
@@ -772,7 +771,7 @@ describe('getInputProps', () => {
     expect(excludedProps).toEqual({});
   });
 
-  it('should include all the required props from the inputProps array', () => {
+  test('Verify include all the required props from the inputProps array', () => {
     const requiredProps = [
       'autoFocus',
       'autoComplete',
@@ -810,15 +809,15 @@ describe('getInputProps', () => {
 
     const [includedProps, excludedProps] = getInputProps(props);
 
-    // Check if all required props are correctly included in the result
+    //all required props are correctly included in the result
     requiredProps.forEach((prop) => {
       expect(includedProps).toHaveProperty(prop, 'test');
     });
 
-    // Ensure that no other props are present in includedProps
+    // no other props are present in includedProps
     expect(Object.keys(includedProps).length).toBe(requiredProps.length);
 
-    // Ensure that excludedProps is empty as we only used requiredProps in this test
+    // excludedProps is empty as we only used requiredProps in this test
     expect(excludedProps).toEqual({});
   });
 });
