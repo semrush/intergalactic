@@ -67,7 +67,7 @@ Design tokens are recommended when creating a custom component to ensure a consi
 
 ## Transforming JSON files
 
-Design token JSON-files [produced by Tokens Studio Figma plugin](https://www.figma.com/community/plugin/843461159747178978/tokens-studio-for-figma) can't be used as is in Frontend application. Use the following widgets to transform output of the Figma plugin to [ready-to-import CSS file](/style/design-tokens/design-tokens-usage-development#global_theme) or [ready-to-use JSON files](/style/design-tokens/design-tokens-usage-development#global_theme).
+Design token JSON-files [produced by Tokens Studio Figma plugin](https://www.figma.com/community/plugin/843461159747178978/tokens-studio-for-figma) can't be used as is in Frontend application. Use the following widgets to transform output of the Figma plugin to ready-to-import CSS file or ready-to-use JSON files.
 
 ::: react-view
 
