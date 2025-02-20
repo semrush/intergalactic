@@ -24,26 +24,19 @@
   min-width: 200px;
 }
 
-.tokenNameWrapper {
+.tokenNameWrapper, .tokenValueWrapper {
   max-width: 100%;
 }
 
-.tokenName {
-  position: absolute;
-  inset: 0 0 0 0;
-  padding: 12px;
+.tokenName, .tokenValue {
+  font-size: var(--intergalactic-fs-200, 14px);
+  line-height: var(--intergalactic-lh-200, 142%);
+  color: var(--intergalactic-text-primary, #191b23);
 }
 
-.tokenValueWrapper {
-  max-width: 100%;
-}
-
-.tokenValue {
-  display: flex;
-
-  position: absolute;
-  inset: 0 0 0 0;
-  padding: 12px;
+.tokenName:focus-visible, .tokenValue:focus-visible {
+  outline: none !important;
+  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
 }
 
 .colorPreview {
@@ -70,7 +63,7 @@
   filter: invert(1) saturate(0) contrast(10) brightness(10);
 }
 
-.tokensTable .cell[role='gridcell'] {
+div[role='gridcell'] {
   word-break: break-word;
   white-space: pre-wrap;
   position: relative;

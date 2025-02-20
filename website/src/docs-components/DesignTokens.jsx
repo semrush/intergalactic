@@ -1,14 +1,20 @@
 import React from 'react';
 import styles from './design-tokens.module.css';
-import Input from '@semcore/input';
 import { ButtonLink } from '@semcore/button';
 import Select from '@semcore/select';
-import SearchIcon from '@semcore/icon/Search/m';
 import DataTable from '@semcore/data-table';
 import Link from '@semcore/link';
 import Tooltip from '@semcore/tooltip';
 import Copy from '@components/Copy';
 import Fuse from 'fuse.js';
+import { SearchInput } from './SearchInput.jsx';
+
+import { AutoSizer, List, CellMeasurer, CellMeasurerCache } from 'react-virtualized';
+
+const cache = new CellMeasurerCache({
+  fixedWidth: true,
+  defaultHeight: 100,
+});
 
 export const ColorPreview = ({ color }) => {
   if (!color.startsWith('#') && !color.startsWith('rgba(')) return null;
@@ -24,9 +30,12 @@ export const ColorPreview = ({ color }) => {
   );
 };
 
+let filteredTokensTimer = 0;
+
 const DesignTokens = ({ tokens }) => {
   const [nameFilter, setNameFilter] = React.useState('');
   const [componentFilter, setComponentFilter] = React.useState(null);
+  const [filteredTokensToTable, setFilteredTokensToTable] = React.useState(tokens);
   const tokensIndex = React.useMemo(
     () => new Fuse(tokens, { isCaseSensitive: false, keys: ['name', 'rawValue', 'description'] }),
     [tokens],
@@ -60,24 +69,29 @@ const DesignTokens = ({ tokens }) => {
     [components],
   );
 
-  const nameHeaderRef = React.useRef(null);
-  const valueHeaderRef = React.useRef(null);
-  const descriptionHeaderRef = React.useRef(null);
+  React.useEffect(() => {
+    clearTimeout(filteredTokensTimer);
+
+    filteredTokensTimer = setTimeout(() => {
+      setFilteredTokensToTable(filteredTokens);
+    }, 300);
+
+    return () => {
+      clearTimeout(filteredTokensTimer);
+    };
+  }, [filteredTokens]);
 
   return (
     <div>
       <div className={styles.filters}>
-        <Input className={styles.nameFilterInput} size='l'>
-          <Input.Addon>
-            <SearchIcon />
-          </Input.Addon>
-          <Input.Value
-            placeholder='Enter component or element name to find token'
-            value={nameFilter}
-            onChange={setNameFilter}
-            aria-label={'Search semantic tokens'}
-          />
-        </Input>
+        <SearchInput
+          filter={nameFilter}
+          setFilter={setNameFilter}
+          resultsCount={filteredTokens.length}
+          placeholder='Enter component or element name to find token'
+          ariaLabel={'Search semantic tokens'}
+          statusAddonId={'search-message-design'}
+        />
         <Select
           className={styles.componentsFilterSelect}
           size='l'
@@ -88,110 +102,164 @@ const DesignTokens = ({ tokens }) => {
           options={componentsFilterOptions}
         />
       </div>
-      <DataTable data={filteredTokens} className={styles.tokensTable}>
-        <DataTable.Head>
-          <DataTable.Column name='name' children='Token name' ref={nameHeaderRef} w={0.25} />
-          <DataTable.Column name='value' children='Value' ref={valueHeaderRef} w={0.15} />
-          <DataTable.Column
-            name='description'
-            children='Description'
-            ref={descriptionHeaderRef}
-            w={0.4}
-          />
-          <DataTable.Column name='components' children='Used in' w={0.2} />
-        </DataTable.Head>
-        <DataTable.Body h={800}>
-          <DataTable.Cell name='name' className={styles.cell}>
-            {(props, row) => {
-              return {
-                children: (
-                  <Copy
-                    copiedToast='Copied'
-                    toCopy={row[props.name]}
-                    title={'Copy to clipboard'}
-                    trigger='click'
-                    className={styles.tokenNameWrapper}
-                  >
-                    <div className={styles.tokenName}>{row[props.name]}</div>
-                  </Copy>
-                ),
-              };
-            }}
-          </DataTable.Cell>
-          <DataTable.Cell name='value' className={styles.cell}>
-            {(props, row) => {
-              return {
-                children: (
-                  <Copy
-                    copiedToast='Copied'
-                    toCopy={row.rawValue}
-                    title={'Copy to clipboard'}
-                    trigger='click'
-                    className={styles.tokenValueWrapper}
-                  >
-                    <div tabIndex={0} role={'button'} className={styles.tokenValue}>
-                      <ColorPreview color={row.computedValue} />
-                      {row.rawValue}
-                    </div>
-                  </Copy>
-                ),
-              };
-            }}
-          </DataTable.Cell>
-          <DataTable.Cell name='description' className={styles.cell} />
-          <DataTable.Cell name='components' className={styles.cell}>
-            {(props, row) => {
-              if (!row[props.name].length) {
-                return { children: null };
-              }
-
-              if (row[props.name].length === 1) {
-                return {
-                  children: (
-                    <div>
-                      <Link
-                        target='_blank'
-                        href={`/intergalactic/components/${row[props.name][0]}/${
-                          row[props.name][0]
-                        }`}
-                      >
-                        {row[props.name][0]}
-                      </Link>
-                    </div>
-                  ),
-                };
-              }
-
-              return {
-                children: (
-                  <>
-                    <Tooltip>
-                      <Tooltip.Trigger tag={ButtonLink} use={'secondary'}>
-                        {row[props.name].length} components
-                      </Tooltip.Trigger>
-                      <Tooltip.Popper>
-                        {row[props.name].map((componentName, index) => (
-                          <React.Fragment key={componentName}>
-                            <Link
-                              target='_blank'
-                              href={`/intergalactic/components/${componentName}/${componentName}`}
-                            >
-                              {componentName}
-                            </Link>
-                            {index < row[props.name].length - 1 && ', '}
-                          </React.Fragment>
-                        ))}
-                      </Tooltip.Popper>
-                    </Tooltip>
-                  </>
-                ),
-              };
-            }}
-          </DataTable.Cell>
-        </DataTable.Body>
-      </DataTable>
+      <DesignTokensTable filteredTokens={filteredTokensToTable} />
     </div>
   );
 };
+
+const DesignTokensTable = React.memo(({ filteredTokens }) => {
+  const nameHeaderRef = React.useRef(null);
+  const valueHeaderRef = React.useRef(null);
+  const descriptionHeaderRef = React.useRef(null);
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      cache.clearAll();
+    }, 0);
+  }, []);
+
+  return (
+    <DataTable data={filteredTokens} className={styles.tokensTable}>
+      <DataTable.Head>
+        <DataTable.Column name='name' children='Token name' ref={nameHeaderRef} w={0.15} />
+        <DataTable.Column name='value' children='Value' ref={valueHeaderRef} w={0.25} />
+        <DataTable.Column
+          name='description'
+          children='Description'
+          ref={descriptionHeaderRef}
+          w={0.4}
+        />
+        <DataTable.Column name='components' children='Used in' w={0.2} />
+      </DataTable.Head>
+      <DataTable.Body
+        renderRows={({ rows, renderRow }) => {
+          const rowRenderer = ({ key, index, style, parent }) => {
+            return (
+              <CellMeasurer
+                key={key}
+                cache={cache}
+                parent={parent}
+                columnIndex={0}
+                rowIndex={index}
+              >
+                {({ measure }) => (
+                  <div key={key} style={style} onLoad={measure}>
+                    {renderRow(rows[index], { dataIndex: index })}
+                  </div>
+                )}
+              </CellMeasurer>
+            );
+          };
+
+          return (
+            <AutoSizer disableHeight>
+              {({ width }) => {
+                return (
+                  <List
+                    height={800}
+                    rowCount={rows.length}
+                    deferredMeasurementCache={cache}
+                    rowHeight={cache.rowHeight}
+                    rowRenderer={rowRenderer}
+                    width={width}
+                    overscanRowCount={10}
+                  />
+                );
+              }}
+            </AutoSizer>
+          );
+        }}
+      >
+        <DataTable.Cell name='name'>
+          {(props, row) => {
+            return {
+              children: (
+                <Copy
+                  copiedToast='Copied'
+                  toCopy={row[props.name]}
+                  title={'Copy to clipboard'}
+                  trigger='click'
+                  className={styles.tokenNameWrapper}
+                >
+                  <button type='button' className={styles.tokenName}>
+                    {row[props.name]}
+                  </button>
+                </Copy>
+              ),
+            };
+          }}
+        </DataTable.Cell>
+        <DataTable.Cell name='value'>
+          {(props, row) => {
+            return {
+              children: (
+                <Copy
+                  copiedToast='Copied'
+                  toCopy={row.rawValue}
+                  title={'Copy to clipboard'}
+                  trigger='click'
+                  className={styles.tokenValueWrapper}
+                >
+                  <button type='button' className={styles.tokenValue}>
+                    <ColorPreview color={row.computedValue} />
+                    {row.rawValue}
+                  </button>
+                </Copy>
+              ),
+            };
+          }}
+        </DataTable.Cell>
+        <DataTable.Cell name='description' />
+        <DataTable.Cell name='components'>
+          {(props, row) => {
+            if (!row[props.name].length) {
+              return { children: null };
+            }
+
+            if (row[props.name].length === 1) {
+              return {
+                children: (
+                  <div>
+                    <Link
+                      target='_blank'
+                      href={`/intergalactic/components/${row[props.name][0]}/${row[props.name][0]}`}
+                    >
+                      {row[props.name][0]}
+                    </Link>
+                  </div>
+                ),
+              };
+            }
+
+            return {
+              children: (
+                <>
+                  <Tooltip>
+                    <Tooltip.Trigger tag={ButtonLink} use={'secondary'}>
+                      {row[props.name].length} components
+                    </Tooltip.Trigger>
+                    <Tooltip.Popper>
+                      {row[props.name].map((componentName, index) => (
+                        <React.Fragment key={componentName}>
+                          <Link
+                            target='_blank'
+                            href={`/intergalactic/components/${componentName}/${componentName}`}
+                          >
+                            {componentName}
+                          </Link>
+                          {index < row[props.name].length - 1 && ', '}
+                        </React.Fragment>
+                      ))}
+                    </Tooltip.Popper>
+                  </Tooltip>
+                </>
+              ),
+            };
+          }}
+        </DataTable.Cell>
+      </DataTable.Body>
+    </DataTable>
+  );
+});
 
 export default DesignTokens;
