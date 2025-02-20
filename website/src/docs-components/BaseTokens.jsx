@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './design-tokens.module.css';
 import DataTable from '@semcore/data-table';
+import { NoData } from '@semcore/widget-empty';
 import Copy from '@components/Copy';
 import { ColorPreview } from './DesignTokens';
 import Fuse from 'fuse.js';
@@ -85,86 +86,94 @@ const BaseTokensTable = React.memo(({ filteredTokens }) => {
           w={0.6}
         />
       </DataTable.Head>
-      <DataTable.Body
-        renderRows={({ rows, renderRow }) => {
-          const rowRenderer = ({ key, index, style, parent }) => {
-            return (
-              <CellMeasurer
-                key={key}
-                cache={cache}
-                parent={parent}
-                columnIndex={0}
-                rowIndex={index}
-              >
-                {({ measure }) => (
-                  <div key={key} style={style} onLoad={measure}>
-                    {renderRow(rows[index], { dataIndex: index })}
-                  </div>
-                )}
-              </CellMeasurer>
-            );
-          };
+      {filteredTokens.length ? (
+        <DataTable.Body
+          renderRows={({ rows, renderRow }) => {
+            const rowRenderer = ({ key, index, style, parent }) => {
+              return (
+                <CellMeasurer
+                  key={key}
+                  cache={cache}
+                  parent={parent}
+                  columnIndex={0}
+                  rowIndex={index}
+                >
+                  {({ measure }) => (
+                    <div key={key} style={style} onLoad={measure}>
+                      {renderRow(rows[index], { dataIndex: index })}
+                    </div>
+                  )}
+                </CellMeasurer>
+              );
+            };
 
-          return (
-            <AutoSizer disableHeight>
-              {({ width }) => {
-                return (
-                  <List
-                    height={800}
-                    rowCount={rows.length}
-                    deferredMeasurementCache={cache}
-                    rowHeight={cache.rowHeight}
-                    rowRenderer={rowRenderer}
-                    width={width}
-                    overscanRowCount={10}
-                  />
-                );
-              }}
-            </AutoSizer>
-          );
-        }}
-      >
-        <DataTable.Cell name='name'>
-          {(props, row) => {
-            return {
-              children: (
-                <Copy
-                  copiedToast='Copied'
-                  toCopy={row[props.name]}
-                  title={'Copy to clipboard'}
-                  trigger='click'
-                  className={styles.tokenNameWrapper}
-                >
-                  <button type='button' className={styles.tokenName}>
-                    {row[props.name]}
-                  </button>
-                </Copy>
-              ),
-            };
+            return (
+              <AutoSizer disableHeight>
+                {({ width }) => {
+                  return (
+                    <List
+                      height={800}
+                      rowCount={rows.length}
+                      deferredMeasurementCache={cache}
+                      rowHeight={cache.rowHeight}
+                      rowRenderer={rowRenderer}
+                      width={width}
+                      overscanRowCount={10}
+                    />
+                  );
+                }}
+              </AutoSizer>
+            );
           }}
-        </DataTable.Cell>
-        <DataTable.Cell name='value'>
-          {(props, row) => {
-            return {
-              children: (
-                <Copy
-                  copiedToast='Copied'
-                  toCopy={row[props.name]}
-                  title={'Copy to clipboard'}
-                  trigger='click'
-                  className={styles.tokenValueWrapper}
-                >
-                  <button type='button' className={styles.tokenValue}>
-                    <ColorPreview color={row[props.name]} />
-                    {row[props.name]}
-                  </button>
-                </Copy>
-              ),
-            };
-          }}
-        </DataTable.Cell>
-        <DataTable.Cell name='description' />
-      </DataTable.Body>
+        >
+          <DataTable.Cell name='name'>
+            {(props, row) => {
+              return {
+                children: (
+                  <Copy
+                    copiedToast='Copied'
+                    toCopy={row[props.name]}
+                    title={'Copy to clipboard'}
+                    trigger='click'
+                    className={styles.tokenNameWrapper}
+                  >
+                    <button type='button' className={styles.tokenName}>
+                      {row[props.name]}
+                    </button>
+                  </Copy>
+                ),
+              };
+            }}
+          </DataTable.Cell>
+          <DataTable.Cell name='value'>
+            {(props, row) => {
+              return {
+                children: (
+                  <Copy
+                    copiedToast='Copied'
+                    toCopy={row[props.name]}
+                    title={'Copy to clipboard'}
+                    trigger='click'
+                    className={styles.tokenValueWrapper}
+                  >
+                    <button type='button' className={styles.tokenValue}>
+                      <ColorPreview color={row[props.name]} />
+                      {row[props.name]}
+                    </button>
+                  </Copy>
+                ),
+              };
+            }}
+          </DataTable.Cell>
+          <DataTable.Cell name='description' />
+        </DataTable.Body>
+      ) : (
+        <NoData
+          py={10}
+          type={'nothing-found'}
+          description={'Try searching by color, for example, "blue" or #c4e5fe.'}
+        />
+      )}
     </DataTable>
   );
 });

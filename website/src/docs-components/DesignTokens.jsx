@@ -5,6 +5,7 @@ import Select from '@semcore/select';
 import DataTable from '@semcore/data-table';
 import Link from '@semcore/link';
 import Tooltip from '@semcore/tooltip';
+import { NoData } from '@semcore/widget-empty';
 import Copy from '@components/Copy';
 import Fuse from 'fuse.js';
 import { SearchInput } from './SearchInput.jsx';
@@ -131,133 +132,145 @@ const DesignTokensTable = React.memo(({ filteredTokens }) => {
         />
         <DataTable.Column name='components' children='Used in' w={0.2} />
       </DataTable.Head>
-      <DataTable.Body
-        renderRows={({ rows, renderRow }) => {
-          const rowRenderer = ({ key, index, style, parent }) => {
+      {filteredTokens.length ? (
+        <DataTable.Body
+          renderRows={({ rows, renderRow }) => {
+            const rowRenderer = ({ key, index, style, parent }) => {
+              return (
+                <CellMeasurer
+                  key={key}
+                  cache={cache}
+                  parent={parent}
+                  columnIndex={0}
+                  rowIndex={index}
+                >
+                  {({ measure }) => (
+                    <div key={key} style={style} onLoad={measure}>
+                      {renderRow(rows[index], { dataIndex: index })}
+                    </div>
+                  )}
+                </CellMeasurer>
+              );
+            };
+
             return (
-              <CellMeasurer
-                key={key}
-                cache={cache}
-                parent={parent}
-                columnIndex={0}
-                rowIndex={index}
-              >
-                {({ measure }) => (
-                  <div key={key} style={style} onLoad={measure}>
-                    {renderRow(rows[index], { dataIndex: index })}
-                  </div>
-                )}
-              </CellMeasurer>
+              <AutoSizer disableHeight>
+                {({ width }) => {
+                  return (
+                    <List
+                      height={800}
+                      rowCount={rows.length}
+                      deferredMeasurementCache={cache}
+                      rowHeight={cache.rowHeight}
+                      rowRenderer={rowRenderer}
+                      width={width}
+                      overscanRowCount={10}
+                    />
+                  );
+                }}
+              </AutoSizer>
             );
-          };
-
-          return (
-            <AutoSizer disableHeight>
-              {({ width }) => {
-                return (
-                  <List
-                    height={800}
-                    rowCount={rows.length}
-                    deferredMeasurementCache={cache}
-                    rowHeight={cache.rowHeight}
-                    rowRenderer={rowRenderer}
-                    width={width}
-                    overscanRowCount={10}
-                  />
-                );
-              }}
-            </AutoSizer>
-          );
-        }}
-      >
-        <DataTable.Cell name='name'>
-          {(props, row) => {
-            return {
-              children: (
-                <Copy
-                  copiedToast='Copied'
-                  toCopy={row[props.name]}
-                  title={'Copy to clipboard'}
-                  trigger='click'
-                  className={styles.tokenNameWrapper}
-                >
-                  <button type='button' className={styles.tokenName}>
-                    {row[props.name]}
-                  </button>
-                </Copy>
-              ),
-            };
           }}
-        </DataTable.Cell>
-        <DataTable.Cell name='value'>
-          {(props, row) => {
-            return {
-              children: (
-                <Copy
-                  copiedToast='Copied'
-                  toCopy={row.rawValue}
-                  title={'Copy to clipboard'}
-                  trigger='click'
-                  className={styles.tokenValueWrapper}
-                >
-                  <button type='button' className={styles.tokenValue}>
-                    <ColorPreview color={row.computedValue} />
-                    {row.rawValue}
-                  </button>
-                </Copy>
-              ),
-            };
-          }}
-        </DataTable.Cell>
-        <DataTable.Cell name='description' />
-        <DataTable.Cell name='components'>
-          {(props, row) => {
-            if (!row[props.name].length) {
-              return { children: null };
-            }
-
-            if (row[props.name].length === 1) {
+        >
+          <DataTable.Cell name='name'>
+            {(props, row) => {
               return {
                 children: (
-                  <div>
-                    <Link
-                      target='_blank'
-                      href={`/intergalactic/components/${row[props.name][0]}/${row[props.name][0]}`}
-                    >
-                      {row[props.name][0]}
-                    </Link>
-                  </div>
+                  <Copy
+                    copiedToast='Copied'
+                    toCopy={row[props.name]}
+                    title={'Copy to clipboard'}
+                    trigger='click'
+                    className={styles.tokenNameWrapper}
+                  >
+                    <button type='button' className={styles.tokenName}>
+                      {row[props.name]}
+                    </button>
+                  </Copy>
                 ),
               };
-            }
+            }}
+          </DataTable.Cell>
+          <DataTable.Cell name='value'>
+            {(props, row) => {
+              return {
+                children: (
+                  <Copy
+                    copiedToast='Copied'
+                    toCopy={row.rawValue}
+                    title={'Copy to clipboard'}
+                    trigger='click'
+                    className={styles.tokenValueWrapper}
+                  >
+                    <button type='button' className={styles.tokenValue}>
+                      <ColorPreview color={row.computedValue} />
+                      {row.rawValue}
+                    </button>
+                  </Copy>
+                ),
+              };
+            }}
+          </DataTable.Cell>
+          <DataTable.Cell name='description' />
+          <DataTable.Cell name='components'>
+            {(props, row) => {
+              if (!row[props.name].length) {
+                return { children: null };
+              }
 
-            return {
-              children: (
-                <>
-                  <Tooltip>
-                    <Tooltip.Trigger tag={ButtonLink} use={'secondary'}>
-                      {row[props.name].length} components
-                    </Tooltip.Trigger>
-                    <Tooltip.Popper>
-                      {row[props.name].map((componentName, index) => (
-                        <React.Fragment key={componentName}>
-                          <Link
-                            target='_blank'
-                            href={`/intergalactic/components/${componentName}/${componentName}`}
-                          >
-                            {componentName}
-                          </Link>
-                          {index < row[props.name].length - 1 && ', '}
-                        </React.Fragment>
-                      ))}
-                    </Tooltip.Popper>
-                  </Tooltip>
-                </>
-              ),
-            };
-          }}
-        </DataTable.Cell>
-      </DataTable.Body>
+              if (row[props.name].length === 1) {
+                return {
+                  children: (
+                    <div>
+                      <Link
+                        target='_blank'
+                        href={`/intergalactic/components/${row[props.name][0]}/${
+                          row[props.name][0]
+                        }`}
+                      >
+                        {row[props.name][0]}
+                      </Link>
+                    </div>
+                  ),
+                };
+              }
+
+              return {
+                children: (
+                  <>
+                    <Tooltip>
+                      <Tooltip.Trigger tag={ButtonLink} use={'secondary'}>
+                        {row[props.name].length} components
+                      </Tooltip.Trigger>
+                      <Tooltip.Popper>
+                        {row[props.name].map((componentName, index) => (
+                          <React.Fragment key={componentName}>
+                            <Link
+                              target='_blank'
+                              href={`/intergalactic/components/${componentName}/${componentName}`}
+                            >
+                              {componentName}
+                            </Link>
+                            {index < row[props.name].length - 1 && ', '}
+                          </React.Fragment>
+                        ))}
+                      </Tooltip.Popper>
+                    </Tooltip>
+                  </>
+                ),
+              };
+            }}
+          </DataTable.Cell>
+        </DataTable.Body>
+      ) : (
+        <NoData
+          py={10}
+          type={'nothing-found'}
+          description={
+            'Try searching by component name or its category, for example, "control", “bg”, “border”.'
+          }
+        />
+      )}
     </DataTable>
   );
 });

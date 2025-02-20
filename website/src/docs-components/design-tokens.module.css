@@ -32,6 +32,7 @@
   font-size: var(--intergalactic-fs-200, 14px);
   line-height: var(--intergalactic-lh-200, 142%);
   color: var(--intergalactic-text-primary, #191b23);
+  display: flex;
 }
 
 .tokenName:focus-visible, .tokenValue:focus-visible {
