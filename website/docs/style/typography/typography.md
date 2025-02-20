@@ -35,7 +35,7 @@ Table: Font size and line height
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/font-size-and-line-height.tsx';
+  export Demo from 'stories/components/typography/docs/examples/font-size-and-line-height.tsx';
 </script>
 
 :::
@@ -57,7 +57,7 @@ In some cases, it may be necessary to display additional information next to the
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/additional-information.tsx';
+  export Demo from 'stories/components/typography/docs/examples/additional-information.tsx';
 </script>
 
 :::
@@ -77,7 +77,7 @@ For the hero blocks, large advertising screens, banners, and landing pages, we r
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/headings-main.tsx';
+  export Demo from 'stories/components/typography/docs/examples/headings-main.tsx';
 </script>
 
 :::
@@ -87,7 +87,7 @@ The following font sizes are typically used for headings in content sections suc
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/headings-other.tsx';
+  export Demo from 'stories/components/typography/docs/examples/headings-other.tsx';
 </script>
 
 :::
@@ -120,7 +120,7 @@ The following font sizes are the most commonly used for paragraphs in our design
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/paragraphs.tsx';
+  export Demo from 'stories/components/typography/docs/examples/paragraphs.tsx';
 </script>
 
 :::
@@ -138,7 +138,7 @@ These margins can also be used when a paragraph is followed by another paragraph
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/paragraph-margins.tsx';
+  export Demo from 'stories/components/typography/docs/examples/paragraph-margins.tsx';
 </script>
 
 :::

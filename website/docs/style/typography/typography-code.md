@@ -10,7 +10,7 @@ Our typography primitives have no predefined margins, as they may vary in the fi
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/basic-usage.tsx';
+  export Demo from 'stories/components/typography/docs/examples/basic-usage.tsx';
 </script>
 
 :::
@@ -22,7 +22,7 @@ You can style text by changing its color, font-weight, font-style, text-transfor
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/text-styles.tsx';
+  export Demo from 'stories/components/typography/docs/examples/text-styles.tsx';
 </script>
 
 :::
@@ -34,7 +34,7 @@ You can add custom bullets to our `List.Item` component.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/list-with-custom-bullets.tsx';
+  export Demo from 'stories/components/typography/docs/examples/list-with-custom-bullets.tsx';
 </script>
 
 :::
@@ -58,7 +58,7 @@ Styling third-party HTML is acceptable, but for other cases, we recommend using 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/native-typography-tags.tsx';
+  export Demo from 'stories/components/typography/docs/examples/native-typography-tags.tsx';
 </script>
 
 :::
@@ -70,7 +70,7 @@ For correct numbering in nested ordered lists, you must explicitly specify the `
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/formattext-nested-lists.tsx';
+  export Demo from 'stories/components/typography/docs/examples/formattext-nested-lists.tsx';
 </script>
 
 :::

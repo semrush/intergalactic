@@ -1,6 +1,6 @@
 import React from 'react';
-import { Text } from 'intergalactic/typography';
-import { Flex } from '@semcore/ui/flex-box';
+import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/flex-box';
 
 const Demo = () => (
   <Flex gap={1} direction='column'>

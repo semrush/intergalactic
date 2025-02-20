@@ -1,5 +1,5 @@
 import React from 'react';
-import FormatText from 'intergalactic/format-text';
+import FormatText from '@semcore/format-text';
 
 const Demo = () => (
   <FormatText>
