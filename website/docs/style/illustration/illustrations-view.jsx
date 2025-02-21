@@ -32,7 +32,7 @@ const SuggestSearch = connectAutoComplete(
       if (currentRefinement)
         setMessage(`${hits.length ? hits.length : 'No'} result${hits.length === 1 ? '' : 's'}`);
       else setMessage('');
-    });
+    }, [currentRefinement, hits]);
 
     return (
       <Input size='l' mb={4} className={styles.search}>
