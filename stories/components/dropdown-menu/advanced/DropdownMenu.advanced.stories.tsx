@@ -6,6 +6,7 @@ import ModalInItemExample from './examples/modal-in-dd-item';
 import ModalInNestedDdItemExample from './examples/modal-in-nested-dd-item';
 import ModalInDDNoticeExample from './examples/modal-in-dd-notice';
 import LeftPlacementExample from './examples/left-placement';
+import ProjectSelectorExample from './examples/project-selector';
 
 const meta: Meta<typeof DropdownMenu> = {
   title: 'Components/Dropdown Menu/Advanced',
@@ -29,4 +30,8 @@ export const ModalInDDNotice: Story = {
 
 export const LeftPlacement: Story = {
   render: LeftPlacementExample,
+};
+
+export const ProjectSelector: Story = {
+  render: ProjectSelectorExample,
 };
