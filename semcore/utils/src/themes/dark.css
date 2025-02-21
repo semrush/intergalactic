@@ -682,12 +682,12 @@
   --intergalactic-header-bg: #382E5E;
   --intergalactic-header-border-primary: #382E5E;
   --intergalactic-header-border-secondary: rgba(255,255,255, 0.15);
-  --intergalactic-left-nav-control-hover: #E7E8F2;
-  --intergalactic-left-nav-control-active: #E2DDFF;
-  --intergalactic-left-nav-control-text-normal: #6D619F;
-  --intergalactic-left-nav-control-text-active: #4D407E;
-  --intergalactic-left-nav-control-icon-normal: #9083C5;
-  --intergalactic-left-nav-control-icon-active: #4D407E;
+  --intergalactic-sidebar-nav-control-hover: #E7E8F2;
+  --intergalactic-sidebar-nav-control-active: #E2DDFF;
+  --intergalactic-sidebar-nav-control-text-normal: #6D619F;
+  --intergalactic-sidebar-nav-control-text-active: #4D407E;
+  --intergalactic-sidebar-nav-control-icon-normal: #9083C5;
+  --intergalactic-sidebar-nav-control-icon-active: #4D407E;
   /* Should be used for more complex effects and larger scale animations (such as page transitions or moving objects on and offscreen) */
   --intergalactic-duration-extra-slow: 500;
   /* Should be used for more larger scale animations (such as page transitions) */

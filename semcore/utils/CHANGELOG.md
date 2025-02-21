@@ -6,8 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- New tokens for header and left navigation, and new `violet-dusty` color: `violet-dusty-50`, `violet-dusty-100`,
-`violet-dusty-200`, `violet-dusty-300`, `violet-dusty-400`, `violet-dusty-500`, `violet-dusty-600`, `violet-dusty-700`, `violet-dusty-800`; `header-bg`, `header-border-primary`, `header-border-secondary`, `left-nav-control-hover`, `left-nav-control-active`, `left-nav-control-text-normal`, `left-nav-control-text-active`, `left-nav-control-icon-normal`, `left-nav-control-icon-active`; `box-shadow-float-control`, `box-shadow-float-control-hover`.
+- New tokens for the new `violet-dusty` color with all the necessary shades from 50 to 800. New tokens for main Semrush header: `header-bg`, `header-border-primary`, `header-border-secondary`. New tokens for Semrush sidebar navigation: `sidebar-nav-control-hover`, `sidebar-nav-control-active`, `sidebar-nav-control-text-normal`, `sidebar-nav-control-text-active`, `sidebar-nav-control-icon-normal`, `sidebar-nav-control-icon-active`. New tokens for floating control: `box-shadow-float-control`, `box-shadow-float-control-hover`.
 
 ## [4.45.1] - 2025-02-05
 
@@ -1083,7 +1082,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Добавлена оптимизация для `assignProps`, теперь не создаются новые функции и ref
-ссылки если они не нужны. Это позволит избежать лишних перерендеров, когда свойства не меняются.
+  ссылки если они не нужны. Это позволит избежать лишних перерендеров, когда свойства не меняются.
 
 ## [3.17.2] - 2020-06-19
 
@@ -1431,7 +1430,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Перенеcли HOC `WithNeighborLocation` (помогавший узнать положение компонента относительного его соседей), в отдельный
-компонент `@semcore/neighbor-location`
+  компонент `@semcore/neighbor-location`
 
 ## [1.3.0] - 2018-11-22
 

@@ -2388,7 +2388,7 @@
         }
       }
     },
-    "left-nav": {
+    "sidebar-nav": {
       "control-hover": {
         "value": "{violet.dusty.50}",
         "type": "color"
