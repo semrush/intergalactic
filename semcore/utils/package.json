@@ -7,7 +7,7 @@
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "pnpm semcore-builder --modules=cjs --source=js,ts"
+    "build": "pnpm semcore-builder --modules=cjs --source=js,ts && pnpm vite build"
   },
   "devDependencies": {
     "@semcore/babel-plugin-react-semcore": "^4.2.1",
