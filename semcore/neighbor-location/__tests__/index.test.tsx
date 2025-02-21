@@ -2,7 +2,8 @@ import React from 'react';
 import NeighborLocation from '../src';
 import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
 import { cleanup, render } from '@semcore/testing-utils/testing-library';
-
+import { useNeighborLocationDetect } from '../src';
+import { renderHook } from '@testing-library/react';
 const NeighborLocationItem: any = function ({ neighborlocation, ...other }: any) {
   return (
     <NeighborLocation.Detect neighborLocation={neighborlocation}>
@@ -18,7 +19,7 @@ const CustomComponent: any = function ({ neighborLocation, ...other }: any) {
 describe('neighbor-location', () => {
   beforeEach(cleanup);
 
-  test.concurrent('should must work', () => {
+  test.concurrent('Verify base functionality', () => {
     const { getByTestId } = render(
       <NeighborLocation>
         <NeighborLocationItem data-testid='1' />
@@ -31,7 +32,7 @@ describe('neighbor-location', () => {
     expect((getByTestId('3').attributes as any)['data-neighborlocation'].value).toBe('left');
   });
 
-  test.sequential('should must work with component', () => {
+  test.sequential('Verify workds with components inside', () => {
     const { getByTestId } = render(
       <NeighborLocation>
         <NeighborLocation.Detect>
@@ -51,7 +52,7 @@ describe('neighbor-location', () => {
     expect((getByTestId('3').attributes as any)['data-neighborlocation'].value).toBe('left');
   });
 
-  test.sequential('should must props "controlsLength"', () => {
+  test.sequential('Verift props "controlsLength" fucntionality', () => {
     const { getByTestId } = render(
       <NeighborLocation controlsLength={3}>
         <div />
@@ -66,12 +67,12 @@ describe('neighbor-location', () => {
     expect((getByTestId('3').attributes as any)['data-neighborlocation'].value).toBe('left');
   });
 
-  test.concurrent('should must work without NeighborLocation', () => {
+  test.concurrent('Verify without NeighborLocation all works correctly', () => {
     const { getByTestId } = render(<NeighborLocationItem data-testid='test' />);
     expect((getByTestId('test').attributes as any)['data-neighborlocation']).toBe(undefined);
   });
 
-  test.sequential('should correct work with other empty childrens', () => {
+  test.sequential('Verify works with other empty childrens', () => {
     const { getByTestId } = render(
       <NeighborLocation>
         {[]}
@@ -83,5 +84,62 @@ describe('neighbor-location', () => {
       </NeighborLocation>,
     );
     expect((getByTestId('1').attributes as any)['data-neighborlocation'].value).toBe('right');
+  });
+
+  test.concurrent('Verify works correctly with React.Fragment', () => {
+    const { getByTestId } = render(
+      <NeighborLocation>
+        <React.Fragment>
+          <NeighborLocationItem data-testid='1' />
+          <NeighborLocationItem data-testid='2' />
+        </React.Fragment>
+        <NeighborLocationItem data-testid='3' />
+      </NeighborLocation>,
+    );
+
+    expect(getByTestId('1').getAttribute('data-neighborlocation')).toBe('right');
+    expect(getByTestId('2').getAttribute('data-neighborlocation')).toBe('both');
+    expect(getByTestId('3').getAttribute('data-neighborlocation')).toBe('left');
+  });
+
+  test.concurrent('Verify useNeighborLocationDetect works correctly', () => {
+    const wrapper = ({ children }: any) => (
+      <NeighborLocation>
+        <div />
+        {children}
+        <div />
+      </NeighborLocation>
+    );
+
+    const { result } = renderHook(() => useNeighborLocationDetect(1), { wrapper });
+
+    expect(result.current).toBe('both');
+  });
+
+  test.concurrent('Verify neighborLocation caching works correctly', () => {
+    const { getAllByTestId, rerender } = render(
+      <NeighborLocation>
+        <NeighborLocationItem data-testid='1' />
+        <NeighborLocationItem data-testid='2' />
+        <NeighborLocationItem data-testid='3' />
+      </NeighborLocation>,
+    );
+
+    const prevValue1 = getAllByTestId('1')[0]?.getAttribute('data-neighborlocation');
+    const prevValue2 = getAllByTestId('2')[0]?.getAttribute('data-neighborlocation');
+    const prevValue3 = getAllByTestId('3')[0]?.getAttribute('data-neighborlocation');
+
+    rerender(<></>);
+    rerender(
+      <NeighborLocation>
+        <NeighborLocationItem data-testid='1' />
+        <NeighborLocationItem data-testid='2' />
+        <NeighborLocationItem data-testid='3' />
+      </NeighborLocation>,
+    );
+
+    expect(getAllByTestId('1')[0]?.getAttribute('data-neighborlocation')).toBe(prevValue1);
+    expect(getAllByTestId('2')[0]?.getAttribute('data-neighborlocation')).toBe(prevValue2);
+    expect(getAllByTestId('3')[0]?.getAttribute('data-neighborlocation')).toBe(prevValue3);
   });
 });
