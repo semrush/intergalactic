@@ -1082,7 +1082,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Добавлена оптимизация для `assignProps`, теперь не создаются новые функции и ref
-  ссылки если они не нужны. Это позволит избежать лишних перерендеров, когда свойства не меняются.
+ссылки если они не нужны. Это позволит избежать лишних перерендеров, когда свойства не меняются.
 
 ## [3.17.2] - 2020-06-19
 
@@ -1430,7 +1430,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Перенеcли HOC `WithNeighborLocation` (помогавший узнать положение компонента относительного его соседей), в отдельный
-  компонент `@semcore/neighbor-location`
+компонент `@semcore/neighbor-location`
 
 ## [1.3.0] - 2018-11-22
 
