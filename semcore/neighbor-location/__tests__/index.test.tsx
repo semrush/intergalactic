@@ -90,13 +90,13 @@ describe('neighbor-location', () => {
     const { getByTestId } = render(
       <NeighborLocation>
         <React.Fragment>
-          <NeighborLocationItem data-testid="1" />
-          <NeighborLocationItem data-testid="2" />
+          <NeighborLocationItem data-testid='1' />
+          <NeighborLocationItem data-testid='2' />
         </React.Fragment>
-        <NeighborLocationItem data-testid="3" />
+        <NeighborLocationItem data-testid='3' />
       </NeighborLocation>,
     );
-  
+
     expect(getByTestId('1').getAttribute('data-neighborlocation')).toBe('right');
     expect(getByTestId('2').getAttribute('data-neighborlocation')).toBe('both');
     expect(getByTestId('3').getAttribute('data-neighborlocation')).toBe('left');
@@ -110,38 +110,36 @@ describe('neighbor-location', () => {
         <div />
       </NeighborLocation>
     );
-  
+
     const { result } = renderHook(() => useNeighborLocationDetect(1), { wrapper });
-  
-    expect(result.current).toBe('both'); 
+
+    expect(result.current).toBe('both');
   });
 
   test.concurrent('Verify neighborLocation caching works correctly', () => {
     const { getAllByTestId, rerender } = render(
       <NeighborLocation>
-        <NeighborLocationItem data-testid="1" />
-        <NeighborLocationItem data-testid="2" />
-        <NeighborLocationItem data-testid="3" />
+        <NeighborLocationItem data-testid='1' />
+        <NeighborLocationItem data-testid='2' />
+        <NeighborLocationItem data-testid='3' />
       </NeighborLocation>,
     );
-  
+
     const prevValue1 = getAllByTestId('1')[0]?.getAttribute('data-neighborlocation');
     const prevValue2 = getAllByTestId('2')[0]?.getAttribute('data-neighborlocation');
     const prevValue3 = getAllByTestId('3')[0]?.getAttribute('data-neighborlocation');
-  
+
     rerender(<></>);
     rerender(
       <NeighborLocation>
-        <NeighborLocationItem data-testid="1" />
-        <NeighborLocationItem data-testid="2" />
-        <NeighborLocationItem data-testid="3" />
+        <NeighborLocationItem data-testid='1' />
+        <NeighborLocationItem data-testid='2' />
+        <NeighborLocationItem data-testid='3' />
       </NeighborLocation>,
     );
-  
+
     expect(getAllByTestId('1')[0]?.getAttribute('data-neighborlocation')).toBe(prevValue1);
     expect(getAllByTestId('2')[0]?.getAttribute('data-neighborlocation')).toBe(prevValue2);
     expect(getAllByTestId('3')[0]?.getAttribute('data-neighborlocation')).toBe(prevValue3);
   });
-  
-
 });
