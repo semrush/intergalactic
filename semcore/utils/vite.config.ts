@@ -13,6 +13,14 @@ export default mergeConfig(
         }),
       },
       rollupOptions: {
+        output: [
+          {
+            preserveModules: true,
+            assetFileNames: '[name][extname]',
+            entryFileNames: '[name].mjs',
+            format: 'esm',
+          },
+        ],
         external: [
           'react',
           'react-dom',
