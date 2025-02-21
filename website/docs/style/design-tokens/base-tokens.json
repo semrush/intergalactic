@@ -270,6 +270,9 @@
     "value": "#220358"
   },
   {
+    "name": "--violet-dusty"
+  },
+  {
     "name": "--pink-50",
     "value": "#fff0ff",
     "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
