@@ -74,6 +74,7 @@ const DesignTokens = ({ tokens }) => {
     clearTimeout(filteredTokensTimer);
 
     filteredTokensTimer = setTimeout(() => {
+      cache.clearAll();
       setFilteredTokensToTable(filteredTokens);
     }, 300);
 
@@ -165,6 +166,7 @@ const DesignTokensTable = React.memo(({ filteredTokens }) => {
                       rowRenderer={rowRenderer}
                       width={width}
                       overscanRowCount={10}
+                      tabIndex={-1}
                     />
                   );
                 }}
