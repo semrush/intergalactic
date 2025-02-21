@@ -48,7 +48,7 @@ Theme for React components subtree may also be applied via `<ThemeProvider />`.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/themeprovider.tsx';
+  export Demo from 'stories/components/utils/design-tokens/docs/examples/themeprovider.tsx';
 </script>
 
 :::
@@ -60,7 +60,7 @@ Design tokens are recommended when creating a custom component to ensure a consi
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/tokens-with-custom-component.tsx';
+  export Demo from 'stories/components/utils/design-tokens/docs/examples/tokens-with-custom-component.tsx';
 </script>
 
 :::
