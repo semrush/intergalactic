@@ -142,6 +142,9 @@ const DesignTokensProcessor = () => {
     try {
       setBaseTokens(JSON.parse(await readFile(files[0])));
       setBaseTokensFileName(files[0]?.name);
+      setTimeout(() => {
+        document.querySelector('#replace-file-label-1')?.focus();
+      }, 0);
     } catch (err) {
       console.error(err);
       setBaseTokens(null);
@@ -151,6 +154,9 @@ const DesignTokensProcessor = () => {
     try {
       setDesignTokens(JSON.parse(await readFile(files[0])));
       setDesignTokensFileName(files[0]?.name);
+      setTimeout(() => {
+        document.querySelector('#replace-file-label-2')?.focus();
+      }, 0);
     } catch (err) {
       console.error(err);
       setDesignTokens(null);
@@ -201,7 +207,7 @@ const DesignTokensProcessor = () => {
         {baseTokens && (
           <div className={styles.uploadedFileBlock} id="uploaded-file-label-1">
             <CheckM color='icon-primary-success' /> {`${baseTokensFileName} `}
-            <Button onClick={handleChangeBaseTokensFile} ml={2} aria-labelledby="uploaded-file-label-1">
+            <Button onClick={handleChangeBaseTokensFile} ml={2} aria-labelledby="uploaded-file-label-1" id="replace-file-label-1">
               Replace file
             </Button>
           </div>
@@ -222,7 +228,7 @@ const DesignTokensProcessor = () => {
         {designTokens && (
           <div className={styles.uploadedFileBlock} id="uploaded-file-label-2">
             <CheckM color='icon-primary-success' /> {`${designTokensFileName} `}
-            <Button autoFocus onClick={handleChangeDesignTokensFile} ml={2} aria-labelledby="uploaded-file-label-2">
+            <Button autoFocus onClick={handleChangeDesignTokensFile} ml={2} aria-labelledby="uploaded-file-label-2"  id="replace-file-label-2">
               Replace file
             </Button>
           </div>
