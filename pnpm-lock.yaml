@@ -3314,13 +3314,19 @@ importers:
       react-virtualized:
         specifier: 9.22.3
         version: 9.22.3(patch_hash=gbxc3pzinlxu2yolhjue4gwtqq)(react-dom@16.14.0)(react@16.14.0)
+      react-window:
+        specifier: 1.8.11
+        version: 1.8.11(react-dom@16.14.0)(react@16.14.0)
     devDependencies:
       '@types/d3-scale':
         specifier: 3.3.0
         version: 3.3.0
       '@types/react-virtualized':
-        specifier: ^9.22.0
+        specifier: 9.22.0
         version: 9.22.0
+      '@types/react-window':
+        specifier: 1.8.8
+        version: 1.8.8
 
   tools/babel-plugin-react-semcore:
     dependencies:
@@ -11620,6 +11626,12 @@ packages:
     resolution: {integrity: sha512-JL/YCCFZ123za//cj10Apk54F0UGFMrjOE0QHTuXt1KBMFrzLOGv9/x6Uc/pZ0Gaf4o6w61Fostvlw0DwuPXig==}
     dependencies:
       '@types/prop-types': 15.7.5
+      '@types/react': 18.0.21
+    dev: true
+
+  /@types/react-window@1.8.8:
+    resolution: {integrity: sha512-8Ls660bHR1AUA2kuRvVG9D/4XpRC6wjAaPT9dil7Ckc76eP9TKWZwwmgfq8Q1LANX3QNDnoU4Zp48A3w+zK69Q==}
+    dependencies:
       '@types/react': 18.0.21
     dev: true
 
@@ -25155,6 +25167,19 @@ packages:
       react-lifecycles-compat: 3.0.4
     dev: false
     patched: true
+
+  /react-window@1.8.11(react-dom@16.14.0)(react@16.14.0):
+    resolution: {integrity: sha512-+SRbUVT2scadgFSWx+R1P754xHPEqvcfSfVX10QYg6POOz+WNgkN48pS+BtZNIMGiL1HYrSEiCkwsMS15QogEQ==}
+    engines: {node: '>8.0.0'}
+    peerDependencies:
+      react: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+      react-dom: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+    dependencies:
+      '@babel/runtime': 7.19.0
+      memoize-one: 5.2.1
+      react: 16.14.0
+      react-dom: 16.14.0(react@16.14.0)
+    dev: false
 
   /react@16.14.0:
     resolution: {integrity: sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g==}

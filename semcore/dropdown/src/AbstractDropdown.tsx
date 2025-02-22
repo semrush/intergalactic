@@ -20,6 +20,7 @@ type AbstractDDProps = {
   timeout?: number | [number, number];
   selectable?: boolean;
   multiselect?: boolean;
+  itemsCount?: number;
 };
 
 export const enhance = [
@@ -142,16 +143,17 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
     };
   }
 
-  getItemProps(_: any, index: number) {
+  getItemProps(itemProps: { index?: number }, index: number) {
     const { size, uid } = this.asProps;
     const role = this.childRole;
+    const realIndex = itemProps.index ?? index;
 
     return {
-      id: `igc-${uid}-option-${index}`,
+      id: `igc-${uid}-option-${realIndex}`,
       size,
-      index,
+      index: realIndex,
       onMouseEnter: () => {
-        this.handlers.selectedIndex(index);
+        this.handlers.selectedIndex(realIndex);
       },
       role,
       isMenuItemCheckbox: role === 'menuitemcheckbox',
@@ -193,9 +195,9 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
   }
 
   getHighlightedIndex(amount: number): number {
-    const { highlightedIndex } = this.asProps;
-    const itemsLastIndex = this.itemProps.length - 1;
-    const selectedIndex = this.itemProps.findIndex((item) => item.selected);
+    const { highlightedIndex, itemsCount } = this.asProps;
+    const itemsLastIndex = (itemsCount ?? this.itemProps.length) - 1;
+    const selectedIndex = this.itemProps.findIndex((item) => item?.selected);
 
     if (itemsLastIndex < 0) return -1;
 
