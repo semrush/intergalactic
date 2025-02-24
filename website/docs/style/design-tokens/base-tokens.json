@@ -270,7 +270,42 @@
     "value": "#220358"
   },
   {
-    "name": "--violet-dusty"
+    "name": "--violet-dusty-50",
+    "value": "#E7E8F2",
+    "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
+  },
+  {
+    "name": "--violet-dusty-100",
+    "value": "#E2DDFF",
+    "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
+  },
+  {
+    "name": "--violet-dusty-200",
+    "value": "#BCB1E9"
+  },
+  {
+    "name": "--violet-dusty-300",
+    "value": "#A79CD6"
+  },
+  {
+    "name": "--violet-dusty-400",
+    "value": "#9083C5"
+  },
+  {
+    "name": "--violet-dusty-500",
+    "value": "#6D619F"
+  },
+  {
+    "name": "--violet-dusty-600",
+    "value": "#4D407E"
+  },
+  {
+    "name": "--violet-dusty-700",
+    "value": "#382E5E"
+  },
+  {
+    "name": "--violet-dusty-800",
+    "value": "#1D113E"
   },
   {
     "name": "--pink-50",

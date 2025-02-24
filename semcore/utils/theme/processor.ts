@@ -276,17 +276,34 @@ for (const theme of themes) {
     const baseTokensDocumentation: {
       name: string;
       value: string;
-      description: string;
+      description?: string;
     }[] = [];
 
-    for (const group in base) {
-      for (const index in base[group]) {
-        baseTokensDocumentation.push({
-          name: `--${group}-${index}`,
-          value: base[group][index].value,
-          description: base[group][index].description,
-        });
+    const processGroup = (group: string, data: any) => {
+      for (const key in data) {
+        if (data[key].value) {
+          const token: {
+            name: string;
+            value: string;
+            description?: string;
+          } = {
+            name: `--${group}-${key}`,
+            value: data[key].value,
+          };
+          
+          if (data[key].description?.trim()) {
+            token.description = data[key].description;
+          }
+          
+          baseTokensDocumentation.push(token);
+        } else {
+          processGroup(`${group}-${key}`, data[key]);
+        }
       }
+    };
+
+    for (const group in base) {
+      processGroup(group, base[group]);
     }
 
     await writeIfChanged(
