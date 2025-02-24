@@ -1,9 +1,9 @@
 import React from 'react';
 import NeighborLocation from '../src';
 import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
-import { cleanup, render } from '@semcore/testing-utils/testing-library';
+import { cleanup, render, renderHook } from '@semcore/testing-utils/testing-library';
 import { useNeighborLocationDetect } from '../src';
-import { renderHook } from '@testing-library/react';
+
 const NeighborLocationItem: any = function ({ neighborlocation, ...other }: any) {
   return (
     <NeighborLocation.Detect neighborLocation={neighborlocation}>
@@ -52,7 +52,7 @@ describe('neighbor-location', () => {
     expect((getByTestId('3').attributes as any)['data-neighborlocation'].value).toBe('left');
   });
 
-  test.sequential('Verift props "controlsLength" fucntionality', () => {
+  test.sequential('Verify props "controlsLength" fucntionality', () => {
     const { getByTestId } = render(
       <NeighborLocation controlsLength={3}>
         <div />
