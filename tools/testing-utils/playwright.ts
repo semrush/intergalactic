@@ -45,17 +45,13 @@ const beforeEachTests = async ({}, use: () => Promise<void>, testInfo: TestInfo)
     layer = 'Axe tests';
   } else if (suite.includes('vo')) {
     layer = 'Voice over tests';
-  } else if (suite.includes('index')) {
-    layer = 'Unit tests';
   }
-  const subSuiteName = testInfo.titlePath[1];
 
+  await allure.label('framework', 'Playwright');
   await allure.label('component', component);
   await allure.layer(layer);
-  await allure.feature(layer);
-  await allure.suite(layer);
-  await allure.parentSuite(component);
-  await allure.subSuite(subSuiteName);
+  await allure.subSuite(suite);
+  await allure.parentSuite(layer);
   await allure.story(testInfo.title);
   await use();
 };

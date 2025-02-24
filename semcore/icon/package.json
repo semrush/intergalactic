@@ -1,22 +1,22 @@
 {
   "name": "@semcore/icon",
   "description": "Semrush Icon Component",
-  "version": "4.56.0",
+  "version": "4.57.1",
   "main": "lib/cjs/index.js",
-  "module": "lib/es6/index.mjs",
+  "module": "lib/esm/index.mjs",
   "typings": "lib/types/index.d.ts",
   "sideEffects": false,
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "scripts": {
     "transform": "pnpm icon-transform-svg",
-    "build": "pnpm run clean && pnpm semcore-builder --source=js && pnpm run transform --configFile=./transform-svg.config.js",
+    "build": "pnpm run clean && pnpm semcore-builder --source=js && pnpm run transform --configFile=./transform-svg.config.js && pnpm vite build",
     "clean": "node clean.js"
   },
   "dependencies": {
-    "@semcore/flex-box": "5.40.0",
-    "@semcore/icon": "4.56.0",
-    "@semcore/utils": "4.45.0",
+    "@semcore/flex-box": "5.40.1",
+    "@semcore/icon": "4.57.1",
+    "@semcore/utils": "4.45.1",
     "classnames": "2.2.6"
   },
   "peerDependencies": {

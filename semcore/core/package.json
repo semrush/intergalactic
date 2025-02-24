@@ -1,18 +1,23 @@
 {
   "name": "@semcore/core",
   "description": "Semrush Core Component",
-  "version": "2.38.0",
+  "version": "2.38.1",
   "main": "lib/cjs/index.js",
-  "module": "lib/es6/index.mjs",
+  "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
   "sideEffects": false,
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "pnpm semcore-builder"
+    "build": "pnpm semcore-builder && pnpm vite build"
+  },
+  "exports": {
+    "require": "./lib/cjs/index.js",
+    "import": "./lib/esm/index.mjs",
+    "types": "./lib/types/index.d.ts"
   },
   "dependencies": {
-    "@semcore/utils": "4.45.0"
+    "@semcore/utils": "4.45.1"
   },
   "peerDependencies": {
     "react": "16.8 - 18",

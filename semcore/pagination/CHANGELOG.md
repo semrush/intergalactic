@@ -2,6 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.49.0] - 2025-02-04
+
+### Added
+
+- `size` property: `l` and `m` (default).
+
+## [4.48.6] - 2025-02-05
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [5.41.1 ~> 5.41.2], `@semcore/flex-box` [5.40.0 ~> 5.40.1], `@semcore/icon` [4.57.0 ~> 4.57.1], `@semcore/input-number` [5.40.3 ~> 5.40.4], `@semcore/link` [5.43.0 ~> 5.43.1], `@semcore/utils` [4.45.0 ~> 4.45.1], `@semcore/core` [2.38.0 ~> 2.38.1]).
+
+## [4.48.5] - 2025-02-05
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [5.41.0 ~> 5.41.1], `@semcore/icon` [4.56.0 ~> 4.57.0]).
+
 ## [4.48.4] - 2025-02-03
 
 ### Changed

@@ -47,15 +47,15 @@ Object.keys(item).forEach(function (key) {
 async function makeIndexESM(componentName: string) {
   const pathToFile = path.resolve(dirname, componentName, 'index.mjs');
 
-  let dataToWrite = `export * from './lib/es6/index.mjs';`;
+  let dataToWrite = `export * from './lib/es6/index.js';`;
 
   const indexData = await fs.readFile(
-    path.resolve(dirname, componentName, 'lib', 'es6', 'index.mjs'),
+    path.resolve(dirname, componentName, 'lib', 'es6', 'index.js'),
     'utf8',
   );
 
   if (/export { default(,|\s})/.test(indexData) || indexData.includes('export default')) {
-    dataToWrite = dataToWrite + `\nexport { default } from './lib/es6/index.mjs';`;
+    dataToWrite = dataToWrite + `\nexport { default } from './lib/es6/index.js';`;
   }
 
   await fs.writeFile(pathToFile, dataToWrite, 'utf8');

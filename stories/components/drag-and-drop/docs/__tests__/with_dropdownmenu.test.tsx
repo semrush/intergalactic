@@ -27,7 +27,7 @@ export async function WithDropdownMenuTest({ canvasElement }: { canvasElement: H
 
   await userEvent.click(buttonText);
   await new Promise((resolve) => setTimeout(resolve, 100));
-  await expect(manageColumnsButton).toHaveAttribute('aria-controls', 'igc-ui-kit-r0-popper');
+  await expect(manageColumnsButton).toHaveAttribute('aria-haspopup', 'dialog');
   await expect(manageColumnsButton).toHaveAttribute('aria-expanded', 'true');
  
 }

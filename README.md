@@ -1,4 +1,4 @@
-<h2 align="center" style="border: 0">
+<h2 align="center">
   <img src=".github/images/intergalactic-hero.png" alt="Intergalactic Design System">
 </h2>
 

@@ -2,11 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.38.1] - 2025-02-24
+## [4.39.0] - 2025-02-21
+
+### Added
+
+- Build for ESM.
+
+## [4.38.1] - 2025-02-05
 
 ### Changed
 
-- some tests
+- Version patch update due to children dependencies update (`@semcore/utils` [4.45.0 ~> 4.45.1], `@semcore/core` [2.38.0 ~> 2.38.1]).
 
 ## [4.38.0] - 2025-02-03
 

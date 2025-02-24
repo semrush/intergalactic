@@ -1,3 +1,37 @@
+## [15.125.0] - 2025-02-07
+
+### @semcore/bulk-textarea
+
+- **Fixed** Incorrect filename for module entry point.
+
+### @semcore/pagination
+
+- **Added** `size` property: `l` and `m` (default).
+
+## [15.124.1] - 2025-02-05
+
+### @semcore/flex-box
+
+- **Changed** Fixed ESM build.
+
+### @semcore/utils
+
+- **Changed** Fixed ESM build.
+
+## [15.124.0] - 2025-02-05
+
+### @semcore/button
+
+- **Fixed** `background-color` token name for primary button with `neighborLocation` enabled.
+
+### @semcore/icon
+
+- **Added** New `Copilot` icon.
+
+### @semcore/notice
+
+- **Added** Required dependency `@semcore/typeography`.
+
 ## [15.123.0] - 2025-02-03
 
 ### @semcore/add-filter

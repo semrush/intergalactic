@@ -1,9 +1,9 @@
 {
   "name": "@semcore/i18n-unplugin",
   "description": "Semrush i18n unplugin",
-  "version": "0.18.16",
+  "version": "0.18.17",
   "main": "lib/cjs/index.js",
-  "module": "lib/es6/index.mjs",
+  "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
   "sideEffects": false,
   "author": "UI-kit team <ui-kit-team@semrush.com>",

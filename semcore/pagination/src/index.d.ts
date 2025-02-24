@@ -25,6 +25,11 @@ export type PaginationProps = BoxProps &
      */
     onCurrentPageChange?: (pageNumber: number) => void;
     locale?: string;
+    /**
+     * Sizes for pagination panel
+     * @default 'm'
+     */
+    size?: 'm' | 'l';
   };
 
 /** @deprecated */

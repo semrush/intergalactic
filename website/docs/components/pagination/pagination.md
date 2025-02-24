@@ -8,13 +8,21 @@ tabs: Design('pagination'), A11y('pagination-a11y'), API('pagination-api'), Exam
 
 <script lang="tsx">
 import React from 'react';
-
 import Pagination from '@semcore/ui/pagination';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
+const SIZES = ['m', 'l'];
+
 const App = PlaygroundGeneration(
   (createGroupWidgets) => {
-    const { onChange, text } = createGroupWidgets('Pagination');
+    const { onChange, radio, text } = createGroupWidgets('Pagination');
+
+    const size = radio({
+      key: 'size',
+      defaultValue: 'm',
+      label: 'Size',
+      options: SIZES,
+    });
 
     const currentPage = text({
       key: 'currentPage',
@@ -30,6 +38,7 @@ const App = PlaygroundGeneration(
 
     return (
       <Pagination
+        size={size}
         currentPage={currentPage}
         onCurrentPageChange={(value) => onChange('currentPage', value)}
         totalPages={Number(totalPages)}
