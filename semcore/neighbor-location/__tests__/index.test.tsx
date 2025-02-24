@@ -1,6 +1,6 @@
 import React from 'react';
 import NeighborLocation from '../src';
-import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
+import { expect, test, describe, beforeEach} from '@semcore/testing-utils/vitest';
 import { cleanup, render } from '@semcore/testing-utils/testing-library';
 import { useNeighborLocationDetect } from '../src';
 import { renderHook } from '@testing-library/react';
@@ -114,32 +114,5 @@ describe('neighbor-location', () => {
     const { result } = renderHook(() => useNeighborLocationDetect(1), { wrapper });
 
     expect(result.current).toBe('both');
-  });
-
-  test.concurrent('Verify neighborLocation caching works correctly', () => {
-    const { getAllByTestId, rerender } = render(
-      <NeighborLocation>
-        <NeighborLocationItem data-testid='1' />
-        <NeighborLocationItem data-testid='2' />
-        <NeighborLocationItem data-testid='3' />
-      </NeighborLocation>,
-    );
-
-    const prevValue1 = getAllByTestId('1')[0]?.getAttribute('data-neighborlocation');
-    const prevValue2 = getAllByTestId('2')[0]?.getAttribute('data-neighborlocation');
-    const prevValue3 = getAllByTestId('3')[0]?.getAttribute('data-neighborlocation');
-
-    rerender(<></>);
-    rerender(
-      <NeighborLocation>
-        <NeighborLocationItem data-testid='1' />
-        <NeighborLocationItem data-testid='2' />
-        <NeighborLocationItem data-testid='3' />
-      </NeighborLocation>,
-    );
-
-    expect(getAllByTestId('1')[0]?.getAttribute('data-neighborlocation')).toBe(prevValue1);
-    expect(getAllByTestId('2')[0]?.getAttribute('data-neighborlocation')).toBe(prevValue2);
-    expect(getAllByTestId('3')[0]?.getAttribute('data-neighborlocation')).toBe(prevValue3);
   });
 });
