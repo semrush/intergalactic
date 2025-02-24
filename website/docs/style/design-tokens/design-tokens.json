@@ -1806,14 +1806,14 @@
     "rawValue": "rgba({gray.white}, 0.7)",
     "computedValue": "rgba(255, 255, 255, 0.7)",
     "description": "Color for default keyboard focus outline styles to use on the dark and color background.",
-    "components": []
+    "components": ["wizard"]
   },
   {
     "name": "--intergalactic-keyboard-focus",
     "type": "boxShadow",
     "rawValue": "0px 0px 0px 3px {keyboard-focus.outline}",
     "computedValue": "0px 0px 0px 3px rgba(0, 143, 248, 0.5)",
-    "description": "Default keyboard focus styles.",
+    "description": "Default keyboard focus box-shadow styles.",
     "components": [
       "base-components",
       "bulk-textarea",
@@ -1836,36 +1836,36 @@
     ]
   },
   {
-    "name": "--intergalactic-keyboard-focus-invalid",
-    "type": "boxShadow",
-    "rawValue": "0px 0px 0px 3px rgba({red.400}, 0.5)",
-    "computedValue": "0px 0px 0px 3px rgba(255, 73, 83, 0.5)",
-    "description": "Keyboard focus styles for elements with invalid state.",
-    "components": ["base-trigger", "bulk-textarea", "checkbox", "inline-input", "input", "radio"]
-  },
-  {
-    "name": "--intergalactic-keyboard-focus-valid",
-    "type": "boxShadow",
-    "rawValue": "0px 0px 0px 3px rgba({green.400}, 0.5)",
-    "computedValue": "0px 0px 0px 3px rgba(0, 159, 129, 0.5)",
-    "description": "Keyboard focus styles for elements with valid state.",
-    "components": ["bulk-textarea", "inline-input", "input"]
-  },
-  {
     "name": "--intergalactic-keyboard-focus-invalid-outline",
-    "type": "outline",
+    "type": "color",
     "rawValue": "rgba({red.400}, 0.5)",
     "computedValue": "rgba(255, 73, 83, 0.5)",
     "description": "Color for keyboard focus outline styles for elements with invalid state.",
     "components": ["textarea"]
   },
   {
+    "name": "--intergalactic-keyboard-focus-invalid",
+    "type": "boxShadow",
+    "rawValue": "0px 0px 0px 3px {keyboard-focus-invalid.outline}",
+    "computedValue": "0px 0px 0px 3px rgba(255, 73, 83, 0.5)",
+    "description": "Keyboard focus styles for elements with invalid state.",
+    "components": ["base-trigger", "bulk-textarea", "checkbox", "inline-input", "input", "radio"]
+  },
+  {
     "name": "--intergalactic-keyboard-focus-valid-outline",
-    "type": "outline",
+    "type": "color",
     "rawValue": "rgba({green.400}, 0.5)",
     "computedValue": "rgba(0, 159, 129, 0.5)",
     "description": "Color for keyboard focus outline styles for elements with valid state.",
     "components": ["textarea"]
+  },
+  {
+    "name": "--intergalactic-keyboard-focus-valid",
+    "type": "boxShadow",
+    "rawValue": "0px 0px 0px 3px {keyboard-focus-valid.outline}",
+    "computedValue": "0px 0px 0px 3px rgba(0, 159, 129, 0.5)",
+    "description": "Keyboard focus styles for elements with valid state.",
+    "components": ["bulk-textarea", "inline-input", "input"]
   },
   {
     "name": "--intergalactic-keyboard-focus-invert",
@@ -1874,14 +1874,6 @@
     "computedValue": "0px 0px 0px 3px rgba(255, 255, 255, 0.7)",
     "description": "Default keyboard focus styles for using with dark background.",
     "components": []
-  },
-  {
-    "name": "--intergalactic-keyboard-focus-invert-outline",
-    "type": "outline",
-    "rawValue": "{keyboard-focus.outline-invert}",
-    "computedValue": "rgba(255, 255, 255, 0.7)",
-    "description": "Default keyboard focus outline styles for using with dark background.",
-    "components": ["wizard"]
   },
   {
     "name": "--intergalactic-base",

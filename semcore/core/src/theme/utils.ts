@@ -205,7 +205,7 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
   const rawValues = { ...values };
 
   for (const token in values) {
-    if (types[token] === 'color' || types[token] === 'outline') {
+    if (types[token] === 'color') {
       values[token] = resolveColor(values[token]);
     } else if (types[token] === 'boxShadow') {
       values[token] = resolveToken(values[token].split('; ').map(replaceColors).join(', '));

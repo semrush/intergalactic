@@ -407,20 +407,18 @@
   --intergalactic-keyboard-focus-outline: rgba(0, 143, 248, 0.5);
   /* Color for default keyboard focus outline styles to use on the dark and color background. */
   --intergalactic-keyboard-focus-outline-invert: rgba(255, 255, 255, 0.7);
-  /* Default keyboard focus styles. */
+  /* Default keyboard focus box-shadow styles. */
   --intergalactic-keyboard-focus: 0px 0px 0px 3px rgba(0, 143, 248, 0.5);
-  /* Keyboard focus styles for elements with invalid state. */
-  --intergalactic-keyboard-focus-invalid: 0px 0px 0px 3px rgba(255, 73, 83, 0.5);
-  /* Keyboard focus styles for elements with valid state. */
-  --intergalactic-keyboard-focus-valid: 0px 0px 0px 3px rgba(0, 159, 129, 0.5);
   /* Color for keyboard focus outline styles for elements with invalid state. */
   --intergalactic-keyboard-focus-invalid-outline: rgba(255, 73, 83, 0.5);
+  /* Keyboard focus styles for elements with invalid state. */
+  --intergalactic-keyboard-focus-invalid: 0px 0px 0px 3px rgba(255, 73, 83, 0.5);
   /* Color for keyboard focus outline styles for elements with valid state. */
   --intergalactic-keyboard-focus-valid-outline: rgba(0, 159, 129, 0.5);
+  /* Keyboard focus styles for elements with valid state. */
+  --intergalactic-keyboard-focus-valid: 0px 0px 0px 3px rgba(0, 159, 129, 0.5);
   /* Default keyboard focus styles for using with dark background. */
   --intergalactic-keyboard-focus-invert: 0px 0px 0px 3px rgba(255, 255, 255, 0.7);
-  /* Default keyboard focus outline styles for using with dark background. */
-  --intergalactic-keyboard-focus-invert-outline: rgba(255, 255, 255, 0.7);
   /* Base font family. */
   --intergalactic-base: Inter;
   /* Use with font-size-800. */
@@ -1123,16 +1121,22 @@
   --intergalactic-box-shadow-modal: 0px 3px 8px 0px rgba(25, 27, 35, 0.2);
   /* Default shadow of all Poppers, Dropdowns and Tooltips. */
   --intergalactic-box-shadow-popper: 0px 1px 15px 0px rgba(25, 27, 35, 0.6);
+  /* Color for default keyboard focus outline styles. */
+  --intergalactic-keyboard-focus-outline: rgba(255, 255, 255, 0.7);
+  /* Color for default keyboard focus outline styles to use on the dark and color background. */
+  --intergalactic-keyboard-focus-outline-invert: rgba(255, 255, 255, 0.7);
   /* Default keyboard focus styles. */
-  --intergalactic-keyboard-focus: 0px 0px 0px 3px rgba(43, 179, 255, 0.8);
+  --intergalactic-keyboard-focus: 0px 0px 0px 3px rgba(255, 255, 255, 0.7);
+  /* Color of keyboard focus outline styles for elements with invalid state. */
+  --intergalactic-keyboard-focus-invalid-outline: rgba(255, 73, 83, 0.8);
   /* Keyboard focus styles for elements with invalid state. */
-  --intergalactic-keyboard-focus-invalid: 0px 0px 0px 3px rgba(246, 58, 75, 0.8);
+  --intergalactic-keyboard-focus-invalid: 0px 0px 0px 3px rgba(255, 73, 83, 0.8);
+  /* Color of keyboard focus outline styles for elements with valid state. */
+  --intergalactic-keyboard-focus-valid-outline: rgba(0, 159, 129, 0.8);
   /* Keyboard focus styles for elements with valid state. */
-  --intergalactic-keyboard-focus-valid: 0px 0px 0px 3px rgba(68, 209, 164, 0.8);
-  /* Color for keyboard focus outline styles for elements with invalid state. */
-  --intergalactic-keyboard-focus-invalid-outline: rgba(255, 73, 83, 0.5);
-  /* Color for keyboard focus outline styles for elements with valid state. */
-  --intergalactic-keyboard-focus-valid-outline: rgba(0, 159, 129, 0.5);
+  --intergalactic-keyboard-focus-valid: 0px 0px 0px 3px rgba(0, 159, 129, 0.8);
+  /* Default keyboard focus styles for using with dark background. */
+  --intergalactic-keyboard-focus-invert: 0px 0px 0px 3px rgba(255, 255, 255, 0.7);
   --intergalactic-base: Inter;
   /* Use with font-size-800. */
   --intergalactic-lh-800: 117%;
