@@ -1,8 +1,7 @@
 import React from 'react';
-import NeighborLocation, { NeighborLocationRoot } from '../src';
+import NeighborLocation, { NeighborLocationRoot, useNeighborLocationDetect } from '../src';
 import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
 import { cleanup, render, renderHook } from '@semcore/testing-utils/testing-library';
-import { useNeighborLocationDetect } from '../src';
 
 const NeighborLocationItem: any = function ({ neighborlocation, ...other }: any) {
   return (
