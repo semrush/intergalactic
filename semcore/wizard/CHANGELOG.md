@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.51.2] - 2025-02-24
+
+### Fixed
+
+- Token using for `:focus-visible` styles.
+
 ## [2.51.1] - 2025-02-05
 
 ### Changed

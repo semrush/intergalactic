@@ -43,7 +43,7 @@ SStepper {
   line-height: var(--intergalactic-lh-200, 142%);
 
   &:focus-visible {
-    outline-color: var(--intergalactic-keyboard-focus-invert-outline, rgba(255, 255, 255, 0.7))
+    outline-color: var(--intergalactic-keyboard-focus-outline-invert, rgba(255, 255, 255, 0.7));
   }
 
   &:hover {
