@@ -4,7 +4,7 @@ import { ButtonLink } from '@semcore/button';
 import Select from '@semcore/select';
 import DataTable from '@semcore/data-table';
 import Link from '@semcore/link';
-import Tooltip from '@semcore/tooltip';
+import { DescriptionTooltip } from '@semcore/tooltip';
 import { NoData } from '@semcore/widget-empty';
 import Copy from '@components/Copy';
 import Fuse from 'fuse.js';
@@ -240,11 +240,11 @@ const DesignTokensTable = React.memo(({ filteredTokens }) => {
               return {
                 children: (
                   <>
-                    <Tooltip>
-                      <Tooltip.Trigger tag={ButtonLink} use={'secondary'}>
+                    <DescriptionTooltip>
+                      <DescriptionTooltip.Trigger tag={ButtonLink} use={'secondary'}>
                         {row[props.name].length} components
-                      </Tooltip.Trigger>
-                      <Tooltip.Popper>
+                      </DescriptionTooltip.Trigger>
+                      <DescriptionTooltip.Popper>
                         {row[props.name].map((componentName, index) => (
                           <React.Fragment key={componentName}>
                             <Link
@@ -256,8 +256,8 @@ const DesignTokensTable = React.memo(({ filteredTokens }) => {
                             {index < row[props.name].length - 1 && ', '}
                           </React.Fragment>
                         ))}
-                      </Tooltip.Popper>
-                    </Tooltip>
+                      </DescriptionTooltip.Popper>
+                    </DescriptionTooltip>
                   </>
                 ),
               };
