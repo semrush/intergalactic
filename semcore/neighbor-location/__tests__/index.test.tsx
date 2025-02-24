@@ -1,5 +1,5 @@
 import React from 'react';
-import NeighborLocation from '../src';
+import NeighborLocation, { NeighborLocationRoot } from '../src';
 import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
 import { cleanup, render, renderHook } from '@semcore/testing-utils/testing-library';
 import { useNeighborLocationDetect } from '../src';
@@ -114,5 +114,15 @@ describe('neighbor-location', () => {
     const { result } = renderHook(() => useNeighborLocationDetect(1), { wrapper });
 
     expect(result.current).toBe('both');
+  });
+
+  test.concurrent('Verify neighborLocation caching works correctly', () => {
+    const neighborLocation = new NeighborLocationRoot({});
+
+    expect(neighborLocation.cacheChild.size).toEqual(0);
+
+    neighborLocation.calculateNeighborLocation();
+
+    expect(neighborLocation.cacheChild.size).toEqual(1);
   });
 });

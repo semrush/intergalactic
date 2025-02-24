@@ -34,7 +34,7 @@ function calculateNeighborLocation(length, i) {
   return neighborLocation;
 }
 
-class NeighborLocationRoot extends Component {
+export class NeighborLocationRoot extends Component {
   static displayName = 'NeighborLocation';
 
   controlsLengthRef = React.createRef();
