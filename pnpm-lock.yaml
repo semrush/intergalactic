@@ -4122,8 +4122,8 @@ importers:
         specifier: 7.19.1
         version: 7.19.1
       '@playwright/test':
-        specifier: 1.43.0
-        version: 1.43.0
+        specifier: 1.48.0
+        version: 1.48.0
       '@previewjs/plugin-react':
         specifier: ^15.0.1
         version: 15.0.1(@types/node@18.16.15)(esbuild@0.14.29)(vite@4.5.0)
@@ -4801,7 +4801,7 @@ packages:
       '@ast-grep/napi-win32-x64-msvc': 0.13.0
     dev: false
 
-  /@axe-core/playwright@4.9.1(playwright-core@1.50.1):
+  /@axe-core/playwright@4.9.1(playwright-core@1.48.0):
     resolution: {integrity: sha512-8m4WZbZq7/aq7ZY5IG8GqV+ZdvtGn/iJdom+wBg+iv/3BAOBIfNQtIu697a41438DzEEyptXWmC3Xl5Kx/o9/g==}
     peerDependencies:
       playwright-core: '>= 1.0.0'
@@ -8768,12 +8768,12 @@ packages:
     requiresBuild: true
     optional: true
 
-  /@playwright/test@1.43.0:
+  /@playwright/test@1.48.0:
     resolution: {integrity: sha512-Ebw0+MCqoYflop7wVKj711ccbNlrwTBCtjY5rlbiY9kHL2bCYxq+qltK6uPsVBGGAOb033H2VO0YobcQVxoW7Q==}
     engines: {node: '>=16'}
     hasBin: true
     dependencies:
-      playwright: 1.43.0
+      playwright: 1.48.0
     dev: false
 
   /@playwright/test@1.48.0:
@@ -23868,7 +23868,7 @@ packages:
       mlly: 1.4.0
       pathe: 1.1.1
 
-  /playwright-core@1.43.0:
+  /playwright-core@1.48.0:
     resolution: {integrity: sha512-iWFjyBUH97+pUFiyTqSLd8cDMMOS0r2ZYz2qEsPjH8/bX++sbIJT35MSwKnp1r/OQBAqC5XO99xFbJ9XClhf4w==}
     engines: {node: '>=16'}
     hasBin: true
@@ -23885,12 +23885,12 @@ packages:
     hasBin: true
     dev: false
 
-  /playwright@1.43.0:
+  /playwright@1.48.0:
     resolution: {integrity: sha512-SiOKHbVjTSf6wHuGCbqrEyzlm6qvXcv7mENP+OZon1I07brfZLGdfWV0l/efAzVx7TF3Z45ov1gPEkku9q25YQ==}
     engines: {node: '>=16'}
     hasBin: true
     dependencies:
-      playwright-core: 1.43.0
+      playwright-core: 1.48.0
     optionalDependencies:
       fsevents: 2.3.2
     dev: false
