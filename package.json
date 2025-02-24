@@ -54,7 +54,7 @@
     "@crowdin/cli": "3.10.1",
     "@guidepup/playwright": "0.13.2",
     "@jridgewell/set-array": "1.1.2",
-    "@playwright/test": "1.43.0",
+    "@playwright/test": "1.48.0",
     "@semcore/babel-plugin-react-semcore": "workspace:*",
     "@semcore/babel-plugin-root": "workspace:*",
     "@semcore/babel-plugin-styles": "workspace:*",
