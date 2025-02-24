@@ -6,7 +6,6 @@ import { axe } from '@semcore/testing-utils/axe';
 
 import ColorPicker, { PaletteManager } from '../src';
 
-
 describe('ColorPicker', () => {
   beforeEach(cleanup);
 

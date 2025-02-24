@@ -10,7 +10,6 @@ import Accordion from '../src';
 import { Intergalactic } from '@semcore/core';
 import Button from '@semcore/button';
 
-
 describe('Dependency imports', () => {
   const packageJsonPath = path.resolve(__dirname, '../package.json');
   const componentPath = path.resolve(__dirname, '../src/Accordion.jsx');

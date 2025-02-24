@@ -35,15 +35,15 @@ export function runDependencyCheckTests(packageJsonPath: string, componentPaths:
         }
       });
     });
-   //console.log('Expected dependencies:', Array.from(dependencies));
-   // console.log('Found @semcore imports:', Array.from(allImports));
+    //console.log('Expected dependencies:', Array.from(dependencies));
+    // console.log('Found @semcore imports:', Array.from(allImports));
     // each @semcore unique import exists in package.json dependencies
     allImports.forEach((importedDep) => {
       const isDepImported = dependencies.includes(importedDep);
-     // console.log(`Checking import: ${importedDep}`);
-     // console.log(`Is ${importedDep} in dependencies? ${isDepImported}`);
+      // console.log(`Checking import: ${importedDep}`);
+      // console.log(`Is ${importedDep} in dependencies? ${isDepImported}`);
 
-      expect(isDepImported).toBe(true); 
+      expect(isDepImported).toBe(true);
     });
   });
 }
