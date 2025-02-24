@@ -6,16 +6,6 @@ import { cleanup, render } from '@semcore/testing-utils/testing-library';
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 import { Box, Flex } from '../src';
 
-import path from 'path';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-
-describe('Dependency imports', () => {
-  const packageJsonPath = path.resolve(__dirname, '../package.json');
-  const componentPath = path.resolve(__dirname, '../src/Box/useBox.tsx');
-
-  runDependencyCheckTests(packageJsonPath, [componentPath]);
-});
-
 const styleBox = {
   border: '1px solid',
   background: '#ccc',

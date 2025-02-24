@@ -6,16 +6,6 @@ import { cleanup } from '@semcore/testing-utils/testing-library';
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 import { Col, Row } from '../src';
 
-import path from 'path';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-// "@semcore/utils" missed
-describe.skip('Dependency imports', () => {
-  const packageJsonPath = path.resolve(__dirname, '../package.json');
-  const componentPath = path.resolve(__dirname, '../src/Grid.jsx');
-
-  runDependencyCheckTests(packageJsonPath, [componentPath]);
-});
-
 const styleBox = {
   border: '3px solid #fff',
   background: 'rgba(79, 96, 213, 0.5)',
