@@ -34,7 +34,7 @@ const Row = React.memo(
                   <DropdownMenu.Item.Content tag={DropdownMenu.Trigger} h={20}>
                     {projectName}
                   </DropdownMenu.Item.Content>
-                  <DropdownMenu.Actions>
+                  <DropdownMenu.Actions gap={2}>
                     <DropdownMenu.Item
                         tag={Button}
                         addonLeft={Settings}
