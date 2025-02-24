@@ -142,7 +142,8 @@
     "@babel/runtime": "7.19.0",
     "@babel/core": "7.19.1",
     "axe-core": "4.9.1",
-    "ansi-regex": "5.0.1"
+    "ansi-regex": "5.0.1",
+    "@types/scheduler": "< 0.23.0"
   },
   "engines": {
     "node": ">=16"
