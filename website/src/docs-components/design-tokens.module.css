@@ -24,18 +24,22 @@
   min-width: 200px;
 }
 
-.tokenNameWrapper, .tokenValueWrapper {
+.tokenNameWrapper,
+.tokenValueWrapper {
   max-width: 100%;
 }
 
-.tokenName, .tokenValue {
+.tokenName,
+.tokenValue {
   font-size: var(--intergalactic-fs-200, 14px);
   line-height: var(--intergalactic-lh-200, 142%);
   color: var(--intergalactic-text-primary, #191b23);
   display: flex;
+  text-align: left;
 }
 
-.tokenName:focus-visible, .tokenValue:focus-visible {
+.tokenName:focus-visible,
+.tokenValue:focus-visible {
   outline: none !important;
   box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
 }
