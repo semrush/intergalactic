@@ -1,7 +1,7 @@
 import { beforeEach } from 'vitest';
 import { label, feature, story, parentSuite, suite, subSuite, layer } from 'allure-js-commons';
 
-beforeEach(async (context: any) => {
+beforeEach(async (context) => {
   const filePath = (context.task.file?.name ?? '').split('/');
   const component = filePath[filePath.length - 3] ?? '';
 
