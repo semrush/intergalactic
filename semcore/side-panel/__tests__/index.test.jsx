@@ -4,7 +4,7 @@ import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/v
 import { render, fireEvent, cleanup } from '@semcore/testing-utils/testing-library';
 
 import SidePanel from '../src';
-import Portal from '@semcore/portal/src';
+import Portal from '@semcore/portal';
 
 describe('SidePanel', () => {
   beforeEach(cleanup);
