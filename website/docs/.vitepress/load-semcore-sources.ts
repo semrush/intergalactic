@@ -5,8 +5,10 @@ import { dirname as resolveDirname } from 'path';
 // import { extractSemcoreImplicitDependencies } from './semcore-implicit-dependncies-resolver';
 // export { esbuildPluginSemcoreSourcesResolve } from './esbuild-plugin-semcore-sources-resolve';
 
-const babelTransform = async (contents: string, path: string) => {
-  const { default: babelConfig } = await import('@semcore/babel-preset-ui/.babelrc.js');
+const babelTransform = async (contents: string, path: string, isEsm?: true) => {
+  const babelPresetUi = await import('@semcore/babel-preset-ui/.babelrc.js');
+  const babelConfig = babelPresetUi.default as (babel: any, opts: any) => any;
+  // @ts-ignore
   const babel = await import('@babel/core');
 
   const code = await new Promise((resolve, reject) =>
@@ -15,9 +17,9 @@ const babelTransform = async (contents: string, path: string) => {
       {
         filename: path,
         cwd: resolveDirname(path),
-        ...babelConfig(),
+        ...babelConfig(babel, { isEsm: isEsm }),
       },
-      (error, result) => {
+      (error: Error | undefined, result: any) => {
         if (error) reject(error);
         else resolve(result?.code!);
       },
@@ -43,7 +45,7 @@ const excludeFilter = /(tools\/playground)|node_modules/;
 //     if (process.argv.includes('--reset-cache')) {
 //       await cacheManager.reset();
 //     }
-export const loadSemcoreSources = async (path: string) => {
+export const loadSemcoreSources = async (path: string, isEsm?: true) => {
   {
     const extension = path.split('.').pop()! as Loader;
     if (prioritizedExtensionFallback[extension]) {
@@ -86,7 +88,7 @@ export const loadSemcoreSources = async (path: string) => {
   //   };
   // }
 
-  const code = await babelTransform(sourceContents, path);
+  const code = await babelTransform(sourceContents, path, isEsm);
   // const implicitDependencies = await extractSemcoreImplicitDependencies(
   //   contents,
   //   path,
