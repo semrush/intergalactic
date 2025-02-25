@@ -124,7 +124,7 @@ const Demo = () => {
               </FixedSizeList>
           </DropdownMenu.List>
             <Divider />
-            <DropdownMenu.Item role={'button'} tabIndex={0} tag={Flex} alignItems={'center'}>
+            <DropdownMenu.Item role={'button'} tabIndex={0} tag={Flex} alignItems={'center'} aria-checked={undefined}>
               <DropdownMenu.Item.Addon tag={PlusM} color='text-link' />
               <DropdownMenu.Item.Content tag={Text} color='text-link'>
                 Create new project
