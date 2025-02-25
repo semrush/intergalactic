@@ -11,7 +11,7 @@ Button with the `ShowYes` icon enables the password display. `ShowNo` hides the 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/password_input.tsx';
+  export Demo from 'stories/components/input/docs/examples/password_input.tsx';
 </script>
 
 :::
@@ -25,7 +25,7 @@ If the input is in a loading state while searching, sending, or entering data dy
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/loading_state_in_the_input.tsx';
+  export Demo from 'stories/components/input/docs/examples/loading_state_in_the_input.tsx';
 </script>
 
 :::
@@ -37,7 +37,7 @@ The input field may have a **Clear** button inside it to clear the entered value
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/input_with_the_clearing_ability.tsx';
+  export Demo from 'stories/components/input/docs/examples/input_with_the_clearing_ability.tsx';
 </script>
 
 :::
@@ -49,7 +49,7 @@ You can place a submit button inside the input as the right addon. It's only vis
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/input_with_a_submit_icon.tsx';
+  export Demo from 'stories/components/input/docs/examples/input_with_a_submit_icon.tsx';
 </script>
 
 :::
@@ -61,7 +61,7 @@ You can add text to the input as an addon that the user can't modify. This can b
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/input_with_a_text_addon.tsx';
+  export Demo from 'stories/components/input/docs/examples/input_with_a_text_addon.tsx';
 </script>
 
 :::
@@ -73,7 +73,7 @@ When stacking two addons, the indents of the adjacent addons should be divided i
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/input_with_multiple_addons.tsx';
+  export Demo from 'stories/components/input/docs/examples/input_with_multiple_addons.tsx';
 </script>
 
 :::
@@ -85,7 +85,7 @@ You can also place a [Badge](/components/badge/badge) or a [Tag](/components/tag
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/input_with_other_component_inside.tsx';
+  export Demo from 'stories/components/input/docs/examples/input_with_other_component_inside.tsx';
 </script>
 
 :::
