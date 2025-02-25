@@ -143,17 +143,16 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
     };
   }
 
-  getItemProps(itemProps: { index?: number }, index: number) {
+  getItemProps(_: any, index: number) {
     const { size, uid } = this.asProps;
     const role = this.childRole;
-    const realIndex = itemProps.index ?? index;
 
     return {
-      id: `igc-${uid}-option-${realIndex}`,
+      id: `igc-${uid}-option-${index}`,
       size,
-      index: realIndex,
+      index,
       onMouseEnter: () => {
-        this.handlers.selectedIndex(realIndex);
+        this.handlers.selectedIndex(index);
       },
       role,
       isMenuItemCheckbox: role === 'menuitemcheckbox',
@@ -175,7 +174,7 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
     };
   }
 
-  scrollToNode(node: Element | null) {
+  scrollToNode(node: Element | null, withAnimation = false) {
     if (node) {
       // @ts-ignore
       this.highlightedItemRef.current = node;
@@ -187,7 +186,7 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
           node.scrollIntoView({
             block: 'nearest',
             inline: 'nearest',
-            behavior: 'smooth',
+            behavior: withAnimation ? 'smooth' : 'instant',
           });
         }
       }
