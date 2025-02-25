@@ -89,7 +89,7 @@ const Demo = () => {
               <Input.Addon>
                 <SearchM />
               </Input.Addon>
-              <Input.Value value={searchValue} onChange={setSearchValue} />
+              <Input.Value value={searchValue} onChange={setSearchValue} aria-label={'Enter project name'}/>
 
               {searchValue && (
                   <Input.Addon>

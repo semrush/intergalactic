@@ -8,6 +8,9 @@ import ModalInDDNoticeExample from './examples/modal-in-dd-notice';
 import LeftPlacementExample from './examples/left-placement';
 import ProjectSelectorExample from './examples/project-selector';
 
+import { ProjectSelectorTest } from './__tests__/project-selector.test';
+import { playWrapper } from '../../../utils/playWrapper';
+
 const meta: Meta<typeof DropdownMenu> = {
   title: 'Components/Dropdown Menu/Advanced',
   component: DropdownMenu,
@@ -34,4 +37,5 @@ export const LeftPlacement: Story = {
 
 export const ProjectSelector: Story = {
   render: ProjectSelectorExample,
+  play: playWrapper(ProjectSelectorTest),
 };
