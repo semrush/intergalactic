@@ -78,6 +78,15 @@ const Demo = () => {
     }
   }, [projects, selectedProject, visible]);
 
+  const handleKeydownCreateButton = (e: React.KeyboardEvent) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+          setVisible(false);
+
+          e.stopPropagation();
+          e.preventDefault();
+      }
+  }
+
   return (
       <DropdownMenu selectable itemsCount={projects.length} visible={visible} onVisibleChange={setVisible}
                     highlightedIndex={highlightedIndex} onHighlightedIndexChange={setHighlightedIndex}>
@@ -124,7 +133,7 @@ const Demo = () => {
               </FixedSizeList>
           </DropdownMenu.List>
             <Divider />
-            <DropdownMenu.Item role={'button'} tabIndex={0} tag={Flex} alignItems={'center'} aria-checked={undefined}>
+            <DropdownMenu.Item role={'button'} tabIndex={0} tag={Flex} alignItems={'center'} aria-checked={undefined} onKeyDown={handleKeydownCreateButton}>
               <DropdownMenu.Item.Addon tag={PlusM} color='text-link' />
               <DropdownMenu.Item.Content tag={Text} color='text-link'>
                 Create new project
