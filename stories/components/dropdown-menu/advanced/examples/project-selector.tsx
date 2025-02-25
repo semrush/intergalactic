@@ -40,12 +40,14 @@ const Row = React.memo(
                         addonLeft={Settings}
                         title={'Settings'}
                         hintPlacement='right'
+                        onClick={(e) => e.stopPropagation()}
                     />
                     <DropdownMenu.Item
                         tag={Button}
                         addonLeft={Pin}
                         title={'Pin'}
                         hintPlacement='right'
+                        onClick={(e) => e.stopPropagation()}
                     />
                   </DropdownMenu.Actions>
                 </Flex>
