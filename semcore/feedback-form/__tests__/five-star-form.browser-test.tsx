@@ -54,7 +54,7 @@ test.describe('5-star Feedback form', () => {
     const secondStar = await sliderRating.locator('[data-ui-name="Box"]').nth(1);
 
     await secondStar.click();
-
+    await page.waitForTimeout(50);
     const description = await page.getByLabel('If there anything we could improve?');
     await description.fill('some short');
 
