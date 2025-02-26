@@ -99,7 +99,6 @@ export const ListIllustrations = ({ data, ...props }) => {
                 data-name='PanelTrigger'
                 placement='bottom'
                 includeTooltipProps={['placement']}
-                inert={''}
               >
                 <Illustration width={80} height={80} />
                 {illustration.name}

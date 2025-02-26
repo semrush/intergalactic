@@ -379,6 +379,45 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
   }
 
   {
+    // tokens in development
+    const baseTokensFileInput = findParent(
+      node,
+      (node) => node.tagName === 'INPUT' && node.id === 'base-tokens-file',
+    );
+
+    if (baseTokensFileInput) {
+      return logEvent('designTokensInDev:uploadBaseTokensClick');
+    }
+
+    const designTokensFileInput = findParent(
+      node,
+      (node) => node.tagName === 'INPUT' && node.id === 'design-tokens-file',
+    );
+
+    if (designTokensFileInput) {
+      return logEvent('designTokensInDev:uploadDesignTokensClick');
+    }
+
+    const copyButtonCss = findParent(
+      node,
+      (node) => node.tagName === 'BUTTON' && Boolean(node.getAttribute('copy-button-title-css')),
+    );
+
+    if (copyButtonCss) {
+      return logEvent('designTokensInDev:copyButtonCssClick');
+    }
+
+    const copyButtonJson = findParent(
+      node,
+      (node) => node.tagName === 'BUTTON' && Boolean(node.getAttribute('copy-button-title-json')),
+    );
+
+    if (copyButtonJson) {
+      return logEvent('designTokensInDev:copyButtonJsonClick');
+    }
+  }
+
+  {
     // External links
     if (node.tagName === 'A' && !node.classList.contains('page-top-tabs-tab')) {
       const link = node.getAttribute('href');

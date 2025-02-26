@@ -15,7 +15,7 @@ import SearchM from 'intergalactic/icon/Search/m';
 import CloseM from 'intergalactic/icon/Close/m';
 import { algoliaConfig } from '../../../algoliaConfig';
 import styles from './styles.module.css';
-import { logEvent } from '../../.vitepress/theme/amplitude/amplitude.js';
+import { logEvent } from '../../.vitepress/theme/amplitude/amplitude';
 
 const searchClient = algoliasearch(algoliaConfig.appName, algoliaConfig.openKey);
 
