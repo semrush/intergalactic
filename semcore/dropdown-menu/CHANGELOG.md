@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.452] - 2025-02-22
+
+### Added
+
+- Support for virtual list.
+
 ## [4.45.1] - 2025-02-05
 
 ### Changed
