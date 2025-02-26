@@ -15,9 +15,15 @@ test.describe('Dropdown-menu', () => {
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('ArrowDown');
+    const menuItem5 = page.getByRole('menuitem', { name: 'Menu item 5'});
+    await expect(menuItem5).toBeFocused();
+    await page.keyboard.press('Tab');
+    await expect(menuItem5).toBeFocused();
     await expect(page).toHaveScreenshot();
 
     await page.keyboard.press('ArrowDown');
+    const menuItem6 = page.getByRole('menuitem', { name: 'Menu item 6'});
+    await expect(menuItem6).toBeFocused();
     await expect(page).toHaveScreenshot();
   });
 });
@@ -290,13 +296,17 @@ test.describe('Dropdown-menu - Virtual scroll', () => {
     await expect(project32).not.toBeFocused();
 
     await page.keyboard.press('ArrowDown');
+    await page.waitForTimeout(100);
     await page.keyboard.press('ArrowDown');
+    await page.waitForTimeout(100);
     await page.keyboard.press('ArrowDown');
+    await page.waitForTimeout(100);
     const project36 = page.getByRole('menuitemradio', { name: 'project 36' });
     await expect(project36).toBeFocused();
     await expect(project33).not.toBeFocused();
+    await expect(page).toHaveScreenshot();
 
-    if (browserName === 'firefox') return;
+    if (browserName === 'firefox') return; //because of bug on firefox UIK-3349
     await page.keyboard.press('Tab');
     const createProject = page.getByRole('button', { name: 'Create new project' });
     await expect(createProject).toBeFocused();
@@ -319,7 +329,7 @@ test.describe('Dropdown-menu - Virtual scroll', () => {
     await expect(project36).toBeFocused();
   });
 
-  test('Mouse interaction', async ({ page }) => {
+  test('Mouse interaction', async ({ page, browserName }) => {
     const standPath = 'stories/components/dropdown-menu/advanced/examples/project-selector.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
@@ -343,10 +353,13 @@ test.describe('Dropdown-menu - Virtual scroll', () => {
     await project36.click();
     await expect(ddMenuTrigger).toHaveText('project 36');
     await ddMenuTrigger.click();
-    const element = page.locator('[data-ui-name="DropdownMenu.Item.Hint"]:has-text("project 43")');
+    const project43 = page.locator('[data-ui-name="DropdownMenu.Item.Hint"]:has-text("project 43")');
 
-    await element.scrollIntoViewIfNeeded();
-    await page.waitForTimeout(100);
-    //await expect(page).toHaveScreenshot();
+    await project43.scrollIntoViewIfNeeded();
+    await page.waitForTimeout(200);
+    const project43item = page.getByRole('menuitemradio', { name: 'project 36' });
+    await expect(project43item).toBeVisible();
+    if (browserName === 'firefox') return; // every scroll on ff differs on some pixels(not stable) so visual regression skipped for it
+    await expect(page).toHaveScreenshot();
   });
 });
