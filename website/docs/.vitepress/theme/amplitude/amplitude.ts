@@ -229,6 +229,98 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
     }
   }
 
+  if (pathname.includes('illustration')) {
+    // Illustrations
+    if (
+      node.parentElement?.tagName === 'BUTTON' &&
+      node.parentElement?.parentElement?.tagName === 'LI' &&
+      node.parentElement?.parentElement?.classList.value.includes('previewIllustration')
+    ) {
+      const name = node.parentElement.dataset.id;
+
+      return logEvent('illustration:click', { name });
+    }
+
+    const triggerNode =
+      node.dataset.uiName === 'Button.Text'
+        ? node.parentElement?.parentElement
+        : node.parentElement;
+
+    if (triggerNode.tagName === 'A' && triggerNode.dataset.illustrationDownloadSvg) {
+      return logEvent('illustration:downloadSvg', {
+        name: triggerNode.dataset.illustrationDownloadSvg,
+      });
+    }
+
+    if (triggerNode.tagName === 'BUTTON' && triggerNode.dataset.illustrationCopyImport) {
+      return logEvent('illustration:copyImport', {
+        name: triggerNode.dataset.illustrationCopyImport,
+      });
+    }
+  }
+
+  if (pathname.includes('icon')) {
+    // Icon
+    if (
+      node.tagName === 'BUTTON' &&
+      node.parentElement?.tagName === 'LI' &&
+      node.parentElement?.classList.value.includes('previewIcon')
+    ) {
+      const name = node.dataset.id;
+
+      return logEvent('icon:click', { name });
+    }
+
+    let triggerPillNode: HTMLElement | undefined;
+
+    if (node.tagName === 'BUTTON' && node.role === 'radio') {
+      triggerPillNode = node;
+    } else if (node.parentElement?.tagName === 'BUTTON' && node.parentElement?.role === 'radio') {
+      triggerPillNode = node.parentElement;
+    }
+
+    if (triggerPillNode?.dataset.iconPillCopyImport) {
+      return logEvent('icon:pillClick', {
+        name: triggerPillNode.dataset.iconPillCopyImport,
+        type: 'copyImport',
+      });
+    } else if (triggerPillNode?.dataset.iconPillDownloadSvg) {
+      return logEvent('icon:pillClick', {
+        name: triggerPillNode.dataset.iconPillDownloadSvg,
+        type: 'downloadSvg',
+      });
+    }
+
+    let triggerNode: HTMLElement | undefined;
+
+    if (
+      (node.tagName === 'A' && node.dataset.iconDownloadSvg) ||
+      (node.tagName === 'BUTTON' && node.dataset.iconCopyImport)
+    ) {
+      triggerNode = node;
+    } else if (
+      node.tagName === 'SPAN' &&
+      ((node.parentElement?.tagName === 'A' && node.parentElement.dataset.iconDownloadSvg) ||
+        (node.parentElement?.tagName === 'BUTTON' && node.parentElement.dataset.iconCopyImport))
+    ) {
+      triggerNode = node.parentElement;
+    }
+
+    if (triggerNode?.dataset.iconDownloadSvg) {
+      return logEvent('icon:downloadSvg', {
+        name: triggerNode.dataset.iconDownloadSvg,
+        size: triggerNode.dataset.iconSize,
+      });
+    }
+
+    if (triggerNode?.dataset.iconCopyImport) {
+      return logEvent('icon:copyImport', {
+        name: triggerNode.dataset.iconCopyImport,
+        size: triggerNode.dataset.iconSize,
+      });
+    }
+  }
+
   {
     // External links
     if (node.tagName === 'A' && !node.classList.contains('page-top-tabs-tab')) {
