@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.47.0] - 2025-02-24
+
+### Added
+
+- New tokens for the new `violet-dusty` color with all the necessary shades from 50 to 800. New tokens for main Semrush header: `header-bg`, `header-border-primary`, `header-border-secondary`. New tokens for Semrush sidebar navigation: `sidebar-nav-control-hover`, `sidebar-nav-control-active`, `sidebar-nav-control-text-normal`, `sidebar-nav-control-text-active`, `sidebar-nav-control-icon-normal`, `sidebar-nav-control-icon-active`. New tokens for floating control: `box-shadow-float-control`, `box-shadow-float-control-hover`.
+
 ## [4.46.0] - 2025-02-21
 
 ### Added
