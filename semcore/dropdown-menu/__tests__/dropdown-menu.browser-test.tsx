@@ -15,14 +15,14 @@ test.describe('Dropdown-menu', () => {
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('ArrowDown');
-    const menuItem5 = page.getByRole('menuitem', { name: 'Menu item 5'});
+    const menuItem5 = page.getByRole('menuitem', { name: 'Menu item 5' });
     await expect(menuItem5).toBeFocused();
     await page.keyboard.press('Tab');
     await expect(menuItem5).toBeFocused();
     await expect(page).toHaveScreenshot();
 
     await page.keyboard.press('ArrowDown');
-    const menuItem6 = page.getByRole('menuitem', { name: 'Menu item 6'});
+    const menuItem6 = page.getByRole('menuitem', { name: 'Menu item 6' });
     await expect(menuItem6).toBeFocused();
     await expect(page).toHaveScreenshot();
   });
@@ -353,7 +353,9 @@ test.describe('Dropdown-menu - Virtual scroll', () => {
     await project36.click();
     await expect(ddMenuTrigger).toHaveText('project 36');
     await ddMenuTrigger.click();
-    const project43 = page.locator('[data-ui-name="DropdownMenu.Item.Hint"]:has-text("project 43")');
+    const project43 = page.locator(
+      '[data-ui-name="DropdownMenu.Item.Hint"]:has-text("project 43")',
+    );
 
     await project43.scrollIntoViewIfNeeded();
     await page.waitForTimeout(200);
