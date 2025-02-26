@@ -231,53 +231,56 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
 
   if (pathname.includes('illustration')) {
     // Illustrations
-    if (
-      node.parentElement?.tagName === 'BUTTON' &&
-      node.parentElement?.parentElement?.tagName === 'LI' &&
-      node.parentElement?.parentElement?.classList.value.includes('previewIllustration')
-    ) {
-      const name = node.parentElement.dataset.id;
+    const buttonElement = findParent(node, (node) => {
+      const liElement = node.parentElement?.tagName === 'LI' ? node.parentElement : undefined;
+      return (
+        node.tagName === 'BUTTON' && liElement?.classList.value.includes('previewIllustration')
+      );
+    });
+
+    if (buttonElement) {
+      const name = buttonElement.dataset.id;
 
       return logEvent('illustration:click', { name });
     }
 
-    const triggerNode =
-      node.dataset.uiName === 'Button.Text'
-        ? node.parentElement?.parentElement
-        : node.parentElement;
+    const triggerANode = findParent(node, (node) => {
+      return node.tagName === 'A' && Boolean(node.dataset.illustrationDownloadSvg);
+    });
 
-    if (triggerNode.tagName === 'A' && triggerNode.dataset.illustrationDownloadSvg) {
+    if (triggerANode) {
       return logEvent('illustration:downloadSvg', {
-        name: triggerNode.dataset.illustrationDownloadSvg,
+        name: triggerANode.dataset.illustrationDownloadSvg,
       });
     }
 
-    if (triggerNode.tagName === 'BUTTON' && triggerNode.dataset.illustrationCopyImport) {
+    const triggerButtonNode = findParent(node, (node) => {
+      return node.tagName === 'BUTTON' && Boolean(node.dataset.illustrationCopyImport);
+    });
+
+    if (triggerButtonNode) {
       return logEvent('illustration:copyImport', {
-        name: triggerNode.dataset.illustrationCopyImport,
+        name: triggerButtonNode.dataset.illustrationCopyImport,
       });
     }
   }
 
   if (pathname.includes('icon')) {
     // Icon
-    if (
-      node.tagName === 'BUTTON' &&
-      node.parentElement?.tagName === 'LI' &&
-      node.parentElement?.classList.value.includes('previewIcon')
-    ) {
-      const name = node.dataset.id;
+    const buttonElement = findParent(node, (node) => {
+      const liElement = node.parentElement?.tagName === 'LI' ? node.parentElement : undefined;
+      return node.tagName === 'BUTTON' && liElement?.classList.value.includes('previewIcon');
+    });
+
+    if (buttonElement) {
+      const name = buttonElement.dataset.id;
 
       return logEvent('icon:click', { name });
     }
 
-    let triggerPillNode: HTMLElement | undefined;
-
-    if (node.tagName === 'BUTTON' && node.role === 'radio') {
-      triggerPillNode = node;
-    } else if (node.parentElement?.tagName === 'BUTTON' && node.parentElement?.role === 'radio') {
-      triggerPillNode = node.parentElement;
-    }
+    const triggerPillNode = findParent(node, (node) => {
+      return node.tagName === 'BUTTON' && node.role === 'radio';
+    });
 
     if (triggerPillNode?.dataset.iconPillCopyImport) {
       return logEvent('icon:pillClick', {
@@ -291,20 +294,12 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
       });
     }
 
-    let triggerNode: HTMLElement | undefined;
-
-    if (
-      (node.tagName === 'A' && node.dataset.iconDownloadSvg) ||
-      (node.tagName === 'BUTTON' && node.dataset.iconCopyImport)
-    ) {
-      triggerNode = node;
-    } else if (
-      node.tagName === 'SPAN' &&
-      ((node.parentElement?.tagName === 'A' && node.parentElement.dataset.iconDownloadSvg) ||
-        (node.parentElement?.tagName === 'BUTTON' && node.parentElement.dataset.iconCopyImport))
-    ) {
-      triggerNode = node.parentElement;
-    }
+    const triggerNode = findParent(node, (node) => {
+      return (
+        (node.tagName === 'A' && Boolean(node.dataset.iconDownloadSvg)) ||
+        (node.tagName === 'BUTTON' && Boolean(node.dataset.iconCopyImport))
+      );
+    });
 
     if (triggerNode?.dataset.iconDownloadSvg) {
       return logEvent('icon:downloadSvg', {

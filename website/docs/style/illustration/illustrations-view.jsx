@@ -15,8 +15,11 @@ import SearchM from 'intergalactic/icon/Search/m';
 import CloseM from 'intergalactic/icon/Close/m';
 import { algoliaConfig } from '../../../algoliaConfig';
 import styles from './styles.module.css';
+import { logEvent } from '../../.vitepress/theme/amplitude/amplitude.js';
 
 const searchClient = algoliasearch(algoliaConfig.appName, algoliaConfig.openKey);
+
+let searchTimer = 0;
 
 const SuggestSearch = connectAutoComplete(
   ({ currentRefinement, refine, hits, filteredIllustrations, onChangeValue, ...others }) => {
@@ -24,6 +27,12 @@ const SuggestSearch = connectAutoComplete(
 
     const handleChangeValue = (value) => {
       onChangeValue(value);
+
+      clearTimeout(searchTimer);
+      searchTimer = setTimeout(() => {
+        logEvent('illustration:search', { value });
+      }, 500);
+
       return refine(value);
     };
 
