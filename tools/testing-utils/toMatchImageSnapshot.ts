@@ -44,7 +44,10 @@ export async function toMatchImageSnapshot(
   task.__snapshot_order_index = snapshotIndex + 1;
   let testName = task.name;
   let suite = task.suite;
-  while (suite.name) {
+  if (!suite.suite) {
+    testName = `${suite.name} ${testName}`;
+  }
+  while (suite.name && suite.suite) {
     testName = `${suite.name} ${testName}`;
     suite = suite.suite;
   }

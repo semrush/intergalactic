@@ -63,8 +63,8 @@ class DropdownMenuRoot extends AbstractDropdown {
               );
               const selected = this.menuRef.current?.querySelector('[aria-checked="true"]');
 
-              if (selected && options) {
-                this.scrollToNode(selected);
+              if (selected && options && this.asProps.itemsCount === undefined) {
+                this.scrollToNode(selected, true);
 
                 for (let i = 0; i < options.length; i++) {
                   if (options[i] === selected) {
@@ -143,11 +143,12 @@ class DropdownMenuRoot extends AbstractDropdown {
 
   getItemProps(props, index) {
     const { highlightedIndex, visible } = this.asProps;
-    const isHighlighted = index === highlightedIndex;
+    const realIndex = props.index ?? index;
+    const isHighlighted = realIndex === highlightedIndex;
     const itemProps = {
-      ...super.getItemProps(props, index),
+      ...super.getItemProps(props, realIndex),
       tabIndex: isHighlighted && visible ? 0 : -1,
-      ref: (node) => this.itemRef(props, index, node),
+      ref: (node) => this.itemRef(props, realIndex, node),
       actionsRef: this.actionsRef,
     };
 

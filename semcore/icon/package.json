@@ -3,14 +3,14 @@
   "description": "Semrush Icon Component",
   "version": "16.0.0",
   "main": "lib/cjs/index.js",
-  "module": "lib/es6/index.js",
+  "module": "lib/esm/index.mjs",
   "typings": "lib/types/index.d.ts",
   "sideEffects": false,
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "scripts": {
     "transform": "pnpm icon-transform-svg",
-    "build": "pnpm run clean && pnpm semcore-builder --source=js && pnpm run transform --configFile=./transform-svg.config.js",
+    "build": "pnpm run clean && pnpm semcore-builder --source=js && pnpm run transform --configFile=./transform-svg.config.js && pnpm vite build",
     "clean": "node clean.js"
   },
   "dependencies": {

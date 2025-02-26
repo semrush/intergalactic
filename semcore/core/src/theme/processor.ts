@@ -7,6 +7,12 @@ import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
 import { processTokens, tokensToCss, tokensToJson } from './utils';
 
+type Token = {
+  name: string;
+  value: string;
+  description?: string;
+};
+
 export const writeIfChanged = async (path: string, content: string) => {
   try {
     const originalContent = await fs.readFile(path, 'utf-8');
@@ -266,20 +272,29 @@ for (const theme of themes) {
       });
     }
 
-    const baseTokensDocumentation: {
-      name: string;
-      value: string;
-      description: string;
-    }[] = [];
+    const baseTokensDocumentation: Token[] = [];
+
+    const processGroup = (group: string, data: any) => {
+      for (const key in data) {
+        if (data[key].value) {
+          const token: Token = {
+            name: `--${group}-${key}`,
+            value: data[key].value,
+          };
+
+          if (data[key].description?.trim()) {
+            token.description = data[key].description;
+          }
+
+          baseTokensDocumentation.push(token);
+        } else {
+          processGroup(`${group}-${key}`, data[key]);
+        }
+      }
+    };
 
     for (const group in base) {
-      for (const index in base[group]) {
-        baseTokensDocumentation.push({
-          name: `--${group}-${index}`,
-          value: base[group][index].value,
-          description: base[group][index].description,
-        });
-      }
+      processGroup(group, base[group]);
     }
 
     await writeIfChanged(

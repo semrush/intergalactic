@@ -3,7 +3,7 @@ import { expect, userEvent, within } from '@storybook/test';
 export async function AutoSuggestTest({ canvasElement }: { canvasElement: HTMLElement }) {
   const canvas = within(canvasElement);
 
-  const inputTrigger = within(document.body).getByPlaceholderText("Type breed name");
+  const inputTrigger = within(document.body).getByPlaceholderText("Start typing for options");
   
   if (!(inputTrigger)) {
     throw new Error('Section 1 not found');

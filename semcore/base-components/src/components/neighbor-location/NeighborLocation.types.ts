@@ -40,6 +40,12 @@ declare const NeighborLocation: Intergalactic.Component<'div', NeighborLocationP
   Detect: Intergalactic.Component<'div', NeighborItemProps, 'right' | 'both' | 'left' | undefined>;
 };
 
+declare const NeighborLocationRoot: {
+  new (...args: any[]): any;
+  cacheChild: Map<any, any>;
+  calculateNeighborLocation: () => any;
+};
+
 declare const useNeighborLocationDetect: (index: number) => 'right' | 'both' | 'left' | false;
 
-export { NeighborLocation, useNeighborLocationDetect };
+export { NeighborLocation, NeighborLocationRoot, useNeighborLocationDetect };

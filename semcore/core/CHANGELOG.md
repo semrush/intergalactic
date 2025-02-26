@@ -9,6 +9,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - `utils` functions as part of Core.
 - `LastInteractionType` class to check last interaction was from keyboard or mouse.
 
+## [2.39.0] - 2025-02-21
+
+### Added
+
+- Build for ESM.
+
 ## [2.38.1] - 2025-02-05
 
 ### Changed

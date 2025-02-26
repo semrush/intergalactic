@@ -1,15 +1,24 @@
 import React from 'react';
 import styles from './design-tokens.module.css';
-import Input from '@semcore/input';
-import SearchIcon from '@semcore/icon/Search/m';
 import DataTable from '@semcore/data-table';
-import Ellipsis, { useResizeObserver } from '@semcore/ellipsis';
+import { NoData } from '@semcore/widget-empty';
 import Copy from '@components/Copy';
 import { ColorPreview } from './DesignTokens';
 import Fuse from 'fuse.js';
+import { SearchInput } from './SearchInput.jsx';
+
+import { AutoSizer, List, CellMeasurer, CellMeasurerCache } from 'react-virtualized';
+
+const cache = new CellMeasurerCache({
+  fixedWidth: true,
+  defaultHeight: 100,
+});
+
+let filteredTokensTimer = 0;
 
 const BaseTokens = ({ tokens }) => {
   const [filter, setFilter] = React.useState('');
+  const [filteredTokensToTable, setFilteredTokensToTable] = React.useState(tokens);
   const tokensIndex = React.useMemo(
     () => new Fuse(tokens, { isCaseSensitive: false, keys: ['name', 'value', 'description'] }),
     [tokens],
@@ -19,33 +28,106 @@ const BaseTokens = ({ tokens }) => {
     [tokens, tokensIndex, filter],
   );
 
-  const nameHeaderRef = React.useRef(null);
-  const nameHeaderRect = useResizeObserver(nameHeaderRef);
-  const valueHeaderRef = React.useRef(null);
-  const valueHeaderRect = useResizeObserver(valueHeaderRef);
-  const descriptionHeaderRef = React.useRef(null);
-  const descriptionHeaderRect = useResizeObserver(descriptionHeaderRef);
+  React.useEffect(() => {
+    clearTimeout(filteredTokensTimer);
+
+    filteredTokensTimer = setTimeout(() => {
+      cache.clearAll();
+      setFilteredTokensToTable(filteredTokens);
+    }, 300);
+
+    return () => {
+      clearTimeout(filteredTokensTimer);
+    };
+  }, [filteredTokens]);
 
   return (
-    <div>
-      <Input className={styles.searchInput} size='l'>
-        <Input.Addon>
-          <SearchIcon />
-        </Input.Addon>
-        <Input.Value
+    <>
+      <div className={styles.filters}>
+        <SearchInput
+          filter={filter}
+          setFilter={setFilter}
+          resultsCount={filteredTokens.length}
           placeholder='Enter color name to find token'
-          value={filter}
-          onChange={setFilter}
-          aria-label={'Search base tokens'}
+          ariaLabel={'Search base tokens'}
+          statusAddonId={'search-message-base'}
         />
-      </Input>
-      <DataTable data={filteredTokens}>
-        <DataTable.Head>
-          <DataTable.Column name='name' children='Token name' ref={nameHeaderRef} />
-          <DataTable.Column name='value' children='Value' ref={valueHeaderRef} />
-          <DataTable.Column name='description' children='Description' ref={descriptionHeaderRef} />
-        </DataTable.Head>
-        <DataTable.Body virtualScroll={{ rowHeight: 45, tollerance: 10 }} h={800}>
+      </div>
+      <BaseTokensTable filteredTokens={filteredTokensToTable} />
+    </>
+  );
+};
+
+const BaseTokensTable = React.memo(({ filteredTokens }) => {
+  const nameHeaderRef = React.useRef(null);
+  const valueHeaderRef = React.useRef(null);
+  const descriptionHeaderRef = React.useRef(null);
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      cache.clearAll();
+    }, 0);
+  }, []);
+
+  return (
+    <DataTable data={filteredTokens} className={styles.tokensTable}>
+      <DataTable.Head>
+        <DataTable.Column
+          name='name'
+          children='Token name'
+          ref={nameHeaderRef}
+          w={0.2}
+          wMax={140}
+        />
+        <DataTable.Column name='value' children='Value' ref={valueHeaderRef} w={0.2} wMax={140} />
+        <DataTable.Column
+          name='description'
+          children='Description'
+          ref={descriptionHeaderRef}
+          w={0.6}
+        />
+      </DataTable.Head>
+      {filteredTokens.length ? (
+        <DataTable.Body
+          renderRows={({ rows, renderRow }) => {
+            const rowRenderer = ({ key, index, style, parent }) => {
+              return (
+                <CellMeasurer
+                  key={key}
+                  cache={cache}
+                  parent={parent}
+                  columnIndex={0}
+                  rowIndex={index}
+                >
+                  {({ measure }) => (
+                    <div key={key} style={style} onLoad={measure}>
+                      {renderRow(rows[index], { dataIndex: index })}
+                    </div>
+                  )}
+                </CellMeasurer>
+              );
+            };
+
+            return (
+              <AutoSizer disableHeight>
+                {({ width }) => {
+                  return (
+                    <List
+                      height={800}
+                      rowCount={rows.length}
+                      deferredMeasurementCache={cache}
+                      rowHeight={cache.rowHeight}
+                      rowRenderer={rowRenderer}
+                      width={width}
+                      overscanRowCount={10}
+                      tabIndex={-1}
+                    />
+                  );
+                }}
+              </AutoSizer>
+            );
+          }}
+        >
           <DataTable.Cell name='name'>
             {(props, row) => {
               return {
@@ -53,20 +135,13 @@ const BaseTokens = ({ tokens }) => {
                   <Copy
                     copiedToast='Copied'
                     toCopy={row[props.name]}
-                    title={`Click to copy "${row[props.name]}"`}
+                    title={'Copy to clipboard'}
                     trigger='click'
                     className={styles.tokenNameWrapper}
                   >
-                    <div className={styles.tokenName}>
-                      <Ellipsis
-                        trim='middle'
-                        tooltip={false}
-                        containerRect={nameHeaderRect}
-                        containerRef={nameHeaderRef}
-                      >
-                        {row[props.name]}
-                      </Ellipsis>
-                    </div>
+                    <button type='button' className={styles.tokenName}>
+                      {row[props.name]}
+                    </button>
                   </Copy>
                 ),
               };
@@ -79,45 +154,30 @@ const BaseTokens = ({ tokens }) => {
                   <Copy
                     copiedToast='Copied'
                     toCopy={row[props.name]}
-                    title={`Click to copy "${row[props.name]}"`}
+                    title={'Copy to clipboard'}
                     trigger='click'
                     className={styles.tokenValueWrapper}
                   >
-                    <div className={styles.tokenValue}>
+                    <button type='button' className={styles.tokenValue}>
                       <ColorPreview color={row[props.name]} />
-                      <Ellipsis
-                        trim='end'
-                        tooltip={false}
-                        containerRect={valueHeaderRect}
-                        containerRef={valueHeaderRef}
-                      >
-                        {row[props.name]}
-                      </Ellipsis>
-                    </div>
+                      {row[props.name]}
+                    </button>
                   </Copy>
                 ),
               };
             }}
           </DataTable.Cell>
-          <DataTable.Cell name='description'>
-            {(props, row) => {
-              return {
-                children: (
-                  <Ellipsis
-                    trim='end'
-                    containerRect={descriptionHeaderRect}
-                    containerRef={descriptionHeaderRef}
-                  >
-                    {row[props.name]}
-                  </Ellipsis>
-                ),
-              };
-            }}
-          </DataTable.Cell>
+          <DataTable.Cell name='description' />
         </DataTable.Body>
-      </DataTable>
-    </div>
+      ) : (
+        <NoData
+          py={10}
+          type={'nothing-found'}
+          description={'Try searching by color, for example, "blue" or #c4e5fe.'}
+        />
+      )}
+    </DataTable>
   );
-};
+});
 
 export default BaseTokens;

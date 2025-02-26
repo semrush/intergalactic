@@ -8,6 +8,13 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - `keyboardFocusEnhance` to css `:focus-visible` property.
 
+## [4.42.4] - 2025-02-22
+
+### Added
+
+- Animation for scrolling to the highlighted node to hide the delay after opening.
+- Support for virtual list.
+
 ## [4.42.3] - 2025-02-05
 
 ### Changed
