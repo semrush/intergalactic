@@ -8,6 +8,7 @@ import Fuse from 'fuse.js';
 import { SearchInput } from './SearchInput.jsx';
 
 import { AutoSizer, List, CellMeasurer, CellMeasurerCache } from 'react-virtualized';
+import { logEvent } from '../../docs/.vitepress/theme/amplitude/amplitude';
 
 const cache = new CellMeasurerCache({
   fixedWidth: true,
@@ -34,6 +35,7 @@ const BaseTokens = ({ tokens }) => {
     filteredTokensTimer = setTimeout(() => {
       cache.clearAll();
       setFilteredTokensToTable(filteredTokens);
+      logEvent('design-tokens:searchBaseTokens', { value: filter });
     }, 300);
 
     return () => {

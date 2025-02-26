@@ -316,6 +316,68 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
     }
   }
 
+  if (pathname.endsWith('design-tokens')) {
+    // Design tokens
+    const baseTokenName = findParent(
+      node,
+      (node) => node.tagName === 'BUTTON' && node.classList.value.includes('tokenName'),
+    );
+
+    if (baseTokenName) {
+      return logEvent('design-tokens:copyBaseTokenName', { value: node.textContent });
+    }
+
+    const baseTokenValue = findParent(
+      node,
+      (node) => node.tagName === 'BUTTON' && node.classList.value.includes('tokenName'),
+    );
+
+    if (baseTokenValue) {
+      return logEvent('design-tokens:copyBaseTokenValue', { value: node.textContent });
+    }
+
+    const semanticTokenName = findParent(
+      node,
+      (node) => node.tagName === 'BUTTON' && node.classList.value.includes('tokenName'),
+    );
+
+    if (semanticTokenName) {
+      return logEvent('design-tokens:copySemanticTokenName', { value: node.textContent });
+    }
+
+    const semanticTokenValue = findParent(
+      node,
+      (node) => node.tagName === 'BUTTON' && node.classList.value.includes('tokenName'),
+    );
+
+    if (semanticTokenValue) {
+      return logEvent('design-tokens:copySemanticTokenValue', { value: node.textContent });
+    }
+
+    const semanticUsedInTooltip = findParent(
+      node,
+      (node) => node.tagName === 'BUTTON' && Boolean(node.dataset.usedInTooltip),
+    );
+
+    if (semanticUsedInTooltip) {
+      return logEvent('design-tokens:clickUsedInTooltip', {
+        value: semanticUsedInTooltip.dataset.usedInTooltip,
+      });
+    }
+
+    const semanticLinkToComponent = findParent(
+      node,
+      (node) => node.tagName === 'A' && Boolean(node.dataset.linkInTooltip),
+    );
+
+    if (semanticLinkToComponent) {
+      return logEvent('design-tokens:linkToComponent', {
+        value: semanticLinkToComponent.dataset.linkInTooltip,
+        componentName: semanticLinkToComponent.textContent,
+      });
+    }
+  }
+
   {
     // External links
     if (node.tagName === 'A' && !node.classList.contains('page-top-tabs-tab')) {

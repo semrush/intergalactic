@@ -11,6 +11,7 @@ import Fuse from 'fuse.js';
 import { SearchInput } from './SearchInput.jsx';
 
 import { AutoSizer, List, CellMeasurer, CellMeasurerCache } from 'react-virtualized';
+import { logEvent } from '../../docs/.vitepress/theme/amplitude/amplitude';
 
 const cache = new CellMeasurerCache({
   fixedWidth: true,
@@ -76,6 +77,7 @@ const DesignTokens = ({ tokens }) => {
     filteredTokensTimer = setTimeout(() => {
       cache.clearAll();
       setFilteredTokensToTable(filteredTokens);
+      logEvent('design-tokens:searchSemanticTokens', { value: nameFilter });
     }, 300);
 
     return () => {
@@ -229,6 +231,7 @@ const DesignTokensTable = React.memo(({ filteredTokens }) => {
                         href={`/intergalactic/components/${row[props.name][0]}/${
                           row[props.name][0]
                         }`}
+                        data-link-in-tooltip={row['name']}
                       >
                         {row[props.name][0]}
                       </Link>
@@ -241,7 +244,11 @@ const DesignTokensTable = React.memo(({ filteredTokens }) => {
                 children: (
                   <>
                     <DescriptionTooltip>
-                      <DescriptionTooltip.Trigger tag={ButtonLink} use={'secondary'}>
+                      <DescriptionTooltip.Trigger
+                        tag={ButtonLink}
+                        use={'secondary'}
+                        data-used-in-tooltip={row['name']}
+                      >
                         {row[props.name].length} components
                       </DescriptionTooltip.Trigger>
                       <DescriptionTooltip.Popper>
@@ -250,6 +257,7 @@ const DesignTokensTable = React.memo(({ filteredTokens }) => {
                             <Link
                               target='_blank'
                               href={`/intergalactic/components/${componentName}/${componentName}`}
+                              data-link-in-tooltip={row['name']}
                             >
                               {componentName}
                             </Link>
