@@ -1,38 +1,8 @@
 ---
-title: Flex-box and spacing system
+title: Flex-box
 fileSource: flex-box
-tabs: Design('box-system'), API('box-api'), Changelog('box-changelog')
+tabs: Spacing system('box-system-spacing'), API('box-system-api'), Example('box-system-code'), Changelog('box-system-changelog')
 ---
-
-## Description
-
-**Flex-box** is a component for arranging and aligning elements in the interface.
-
-## Box
-
-**Box** is a component for setting element size, paddings and margins.
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from 'stories/components/flex-box/docs/examples/box.tsx';
-</script>
-
-:::
-
-## Flex
-
-**Flex** is a component for aligning elements. It's a wrapper over CSS-flex.
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from 'stories/components/flex-box/docs/examples/flex.tsx';
-</script>
-
-:::
-
-## Spacing system
 
 The spacing system helps maintain a vertical and horizontal rhythms in the interface. It makes the interface easier to use by reducing cognitive load. _For example, if there are different indents in the interface everywhere, the brain will try to understand this logic and thereby increase its cognitive load._
 
