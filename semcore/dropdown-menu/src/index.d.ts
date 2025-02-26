@@ -47,6 +47,11 @@ export type DropdownMenuProps = DropdownProps & {
    * Flag for menu that using as actions on DropdownMenu.Item
    */
   inlineActions?: boolean;
+
+  /**
+   * Count of menu items (for virtual lists only)
+   */
+  itemsCount?: number;
 };
 
 /** @deprecated */
@@ -89,6 +94,10 @@ export type DropdownMenuItemProps = FlexProps & {
    * @default m
    */
   size?: DropdownMenuSize;
+  /**
+   * Index of item (used in virtualized lists)
+   */
+  index?: number;
 };
 
 /** @deprecated */
