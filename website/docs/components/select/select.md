@@ -157,7 +157,10 @@ If the list includes more than 10 values, add a search input. Otherwise, it will
 
 ### Select all
 
-If the list has more than three values, add the **Select all** option at the very beginning of the list. When all values are selected, change this option to **Deselect all**.
+If the list contains more than three values, display the **Select all** action at the very beginning of the list. There are two ways in which **Select all** can switch to **Deselect all**, depending on likely user behavior:
+
+* if users are likely to select only a few items, or reset the selection often, switch when at least one item is selected
+* if users are likely to select most or all items, switch only when all items are selected
 
 ![](static/multiselect-all.png)
 
