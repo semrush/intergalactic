@@ -2,16 +2,10 @@ import React from 'react';
 import { snapshot } from '@semcore/testing-utils/snapshot';
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
-import {
-  cleanup,
-  render,
-  fireEvent,
-  waitFor,
-} from '@semcore/testing-utils/testing-library';
-
+import { cleanup, render, fireEvent, waitFor } from '@semcore/testing-utils/testing-library';
 
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
-import ScrollArea, { eventCalculate }  from '../src';
+import ScrollArea, { eventCalculate } from '../src';
 
 describe('ScrollArea', () => {
   beforeEach(cleanup);
