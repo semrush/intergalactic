@@ -97,7 +97,7 @@ function patchClipPath($svg, name, group) {
   patchSvg($svg, 'g', 'clipPath', name, group);
 }
 
-async function svgToReactComponent(iconPath, name, group) {
+async function svgToReactComponent(iconPath, name, group, type) {
   try {
     const svg = await readFile(iconPath, 'utf-8');
 
@@ -121,6 +121,7 @@ async function svgToReactComponent(iconPath, name, group) {
       dataName: name,
       dataGroup: group.toLowerCase(),
       name,
+      type,
     });
 
     return source;
@@ -140,13 +141,15 @@ const generateIcons = (
       if (err) reject(err);
       const results = icons.map(async (iconPath) => {
         const { name, location, group } = getDescriptionIcons(iconPath, outLib);
-        const source = await svgToReactComponent(iconPath, name, group);
-        const cjs = await babel.transformAsync(source, babelConfig);
-        const esm = await babel.transformAsync(source, { presets: ['@babel/preset-react'] });
+        const sourceCjs = await svgToReactComponent(iconPath, name, group, 'cjs');
+        const sourceEsm = await svgToReactComponent(iconPath, name, group, 'esm');
+        const cjs = await babel.transformAsync(sourceCjs, babelConfig);
+        const esm = await babel.transformAsync(sourceEsm, { presets: ['@babel/preset-react'] });
 
         outputFile(path.join(rootDir, location), cjs.code);
         outputFile(path.join(rootDir, location.replace('.js', '.mjs')), esm.code);
         outputFile(path.join(rootDir, location.replace('.js', '.d.ts')), templateDTS(name));
+        outputFile(path.join(rootDir, location.replace('.js', '.mjs.d.ts')), templateDTS(name));
         return { name, location, group };
       });
 
