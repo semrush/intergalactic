@@ -48,7 +48,7 @@ export const renderComponentChangelog = (tokenList: any[], index: number) => {
             itemRows[0] = `### ${version} (${niceDate})`;
             updateVersionChangelogs.push(itemRows.filter((row) => !row.includes('Changed')));
           } else {
-            const hasBreaking = item.includes('### Break');
+            const hasBreaking = item.includes('### Break') || item.includes('### BREAK');
             const breakingIcon = '<span role="img" aria-label="breaking">🅱️</span>';
 
             itemRows[0] = `## ${version} ${hasBreaking ? breakingIcon : ''} (${niceDate})`;
