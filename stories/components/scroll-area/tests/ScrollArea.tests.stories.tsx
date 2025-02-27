@@ -2,8 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react';
 import ScrollArea from '@semcore/scroll-area';
 
 import HorizontalScrollWithShadowAndOffsetExample from './examples/horizontal-scroll-with-shadow-and-offset';
-import WithObserveParentSizeExample from './examples/WithObserveParentSize';
-import VerticalScrollWithShadowAndOffseExample from './examples/VerticalScrollWithShadowAndOffset';
+import WithObserveParentSizeExample from './examples/with-observe-parent-size';
+import VerticalScrollWithShadowAndOffseExample from './examples/vertical-scroll-with-shadow-and-offset';
 
 const meta: Meta<typeof ScrollArea> = {
   title: 'Components/ScrollArea/Tests',

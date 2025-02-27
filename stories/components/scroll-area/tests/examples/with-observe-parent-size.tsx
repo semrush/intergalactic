@@ -1,12 +1,19 @@
-import React, { useRef, useState } from 'react';
+import React, { Component, createRef } from 'react';
 import { Box, Flex } from '@semcore/flex-box';
 import ScrollArea from '@semcore/scroll-area';
+import Button from '@semcore/button';
+
+interface State {
+  width: number;
+  height: number;
+}
 
 let randomIndex = 1;
 const stableRandom = () => {
   if (randomIndex > 20) randomIndex = 1;
   return Math.abs(Math.sin(Math.exp(Math.PI * randomIndex * Math.cos(100 - randomIndex++))));
 };
+
 function getRandomColor() {
   const letters = '0123456789ABCDEF';
   let color = '#';
@@ -16,9 +23,9 @@ function getRandomColor() {
   return color;
 }
 
-class Demo extends React.PureComponent {
+class Demo extends Component<{}, State> {
   mirror: HTMLDivElement | null = null;
-  state = {
+  state: State = {
     width: 300,
     height: 300,
   };
@@ -32,7 +39,7 @@ class Demo extends React.PureComponent {
 
   handleDecreaseSize = () => {
     this.setState((prev) => ({
-      width: Math.max(prev.width - 50, 150), 
+      width: Math.max(prev.width - 50, 150),
       height: Math.max(prev.height - 50, 150),
     }));
   };
@@ -43,20 +50,18 @@ class Demo extends React.PureComponent {
     }
   }
 
-  containerRef = React.createRef<HTMLDivElement>();
+  containerRef = createRef<HTMLDivElement>();
 
   render() {
     return (
       <Flex direction="column" gap={4}>
-        <h3 id="main-reverse-title">Main ScrollArea</h3>
-
         <Flex gap={2}>
-          <button onClick={this.handleIncreaseSize}>Increase size</button>
-          <button onClick={this.handleDecreaseSize}>Descreaze size</button>
+          <Button onClick={this.handleIncreaseSize}>Increase size</Button>
+          <Button onClick={this.handleDecreaseSize}>Decrease size</Button>
         </Flex>
 
         <div
-          id="main-reverse-title"
+          aria-label="main-title"
           ref={this.containerRef}
           style={{
             border: '2px solid black',
@@ -65,12 +70,11 @@ class Demo extends React.PureComponent {
             transition: 'width 0.3s, height 0.3s',
           }}
         >
-         
           <ScrollArea
             w="100%"
             h="100%"
             shadow={true}
-            container={this.containerRef} 
+            container={this.containerRef}
             tabIndex={0}
             observeParentSize={true}
             topOffset={100}
@@ -79,10 +83,7 @@ class Demo extends React.PureComponent {
             rightOffset={100}
             orientation="horizontal"
           >
-            <ScrollArea.Container
-              role="group"
-              aria-labelledby="main-reverse-title"
-            >
+            <ScrollArea.Container role="group" aria-labelledby="main-reverse-title">
               {[...new Array(10)].map((_, index) => (
                 <Box
                   key={index}
@@ -94,7 +95,7 @@ class Demo extends React.PureComponent {
                 />
               ))}
             </ScrollArea.Container>
-            <ScrollArea.Bar h = '40px' orientation="horizontal"></ScrollArea.Bar>
+            <ScrollArea.Bar h="40px" orientation="horizontal"></ScrollArea.Bar>
           </ScrollArea>
         </div>
       </Flex>

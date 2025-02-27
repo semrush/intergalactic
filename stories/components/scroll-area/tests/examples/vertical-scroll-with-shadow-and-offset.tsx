@@ -2,7 +2,6 @@ import React, { useRef } from 'react';
 import { Box, Flex } from '@semcore/flex-box';
 import ScrollArea from '@semcore/scroll-area';
 
-declare const eventCalculate: any; // Глобальная переменная для расчетов
 
 let randomIndex = 1;
 const stableRandom = () => {
@@ -24,7 +23,6 @@ class Demo extends React.PureComponent {
   render() {
     return (
       <Flex>
-        <h3 id='main-reverse-title'>Main ScrollArea</h3>
           <ScrollArea
             w={300}
             h={300}
@@ -38,7 +36,6 @@ class Demo extends React.PureComponent {
           >
             <ScrollArea.Container
               role='group'
-              aria-labelledby='main-reverse-title'
               focusRingTopOffset="40px"
               focusRingRightOffset="40px"
               focusRingBottomOffset="40px"
