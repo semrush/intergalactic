@@ -25,8 +25,7 @@
     "react": "*",
     "react-dom": "*",
     "request": "2.88.2",
-    "sharp": "^0.31.3",
-    "msw": "2.7.3"
+    "sharp": "^0.31.3"
   },
   "devDependencies": {
     "@guidepup/guidepup": "0.13.1",
