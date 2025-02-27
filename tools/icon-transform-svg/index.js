@@ -144,8 +144,20 @@ const generateIcons = (
       if (err) reject(err);
       const results = icons.map(async (iconPath) => {
         const { name, location, type, group } = getDescriptionIcons(iconPath, outLib);
-        const sourceCjs = await svgToReactComponent({ iconPath, name, type, buildType: 'cjs', group });
-        const sourceEsm = await svgToReactComponent({ iconPath, name, type, buildType: 'esm', group });
+        const sourceCjs = await svgToReactComponent({
+          iconPath,
+          name,
+          type,
+          buildType: 'cjs',
+          group,
+        });
+        const sourceEsm = await svgToReactComponent({
+          iconPath,
+          name,
+          type,
+          buildType: 'esm',
+          group,
+        });
         const cjs = await babel.transformAsync(sourceCjs, babelConfig);
         const esm = await babel.transformAsync(sourceEsm, { presets: ['@babel/preset-react'] });
 
