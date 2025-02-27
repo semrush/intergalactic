@@ -4,6 +4,7 @@ import { createRoot } from 'react-dom/client';
 import { act } from './testing-library';
 
 import playwright from 'playwright';
+import fs from 'node:fs/promises';
 
 let browser: playwright.Browser | null = null;
 
@@ -32,6 +33,17 @@ export const snapshot = async (
 ) => {
   browser = await playwright.chromium.launch();
   const page = await browser.newPage();
+
+  page.route('https://static.semrush.com/ui-kit/illustration/**/*.svg', async (route) => {
+    const illustrationName = route.request().url().split('/').pop()!;
+
+    const svg = await fs.readFile(
+      path.resolve(process.cwd(), 'semcore', 'illustration', 'svg', illustrationName),
+      'utf-8',
+    );
+
+    await route.fulfill({ body: svg, contentType: 'image/svg+xml' });
+  });
 
   options = Object.assign({}, DEFAULT_OPTIONS, options);
   const _tmp = document.createElement('div');
