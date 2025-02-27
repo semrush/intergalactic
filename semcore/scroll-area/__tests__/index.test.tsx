@@ -7,14 +7,11 @@ import {
   render,
   fireEvent,
   waitFor,
-  act,
-  getAllByTestId,
 } from '@semcore/testing-utils/testing-library';
 
-import { eventCalculate } from '../src/ScrollArea.jsx';
 
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
-import ScrollArea from '../src';
+import ScrollArea, { eventCalculate }  from '../src';
 
 describe('ScrollArea', () => {
   beforeEach(cleanup);
