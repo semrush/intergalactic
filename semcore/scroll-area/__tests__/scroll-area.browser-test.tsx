@@ -113,7 +113,6 @@ test.describe('ScrollArea - Reverse amd synch scrolls', () => {
     const nowMainNumber = await checkScrollNowIncreased(scrollBarMain);
     expect(mainNowValue).toBeLessThanOrEqual(nowMainNumber);
 
-  
     const reverseValueNow = await checkAriaNowValue(scrollBarReverse);
     expect(reverseValueNow).toBeLessThan(reverseMaxValue);
 
@@ -137,7 +136,7 @@ test.describe('ScrollArea - Reverse amd synch scrolls', () => {
     const scrollBarMain = mainDiv.locator('[data-ui-name="ScrollArea.Bar"]');
     const containerMain = mainDiv.locator('[data-ui-name="ScrollArea.Container"]');
 
-    const reverseDiv = page.locator('#control-title').locator('..');// parent container
+    const reverseDiv = page.locator('#control-title').locator('..'); // parent container
     const scrollBarReverse = reverseDiv.locator('[data-ui-name="ScrollArea.Bar"]');
     const containerReverse = reverseDiv.locator('[data-ui-name="ScrollArea.Container"]');
 
@@ -259,20 +258,20 @@ test.describe('ScrollArea - Horizontal scroll with Shadow and offset', () => {
     const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]');
     await expect(scrollBar).toHaveAttribute('aria-orientation', 'horizontal');
 
-    const styleValues = await scrollArea.evaluate(el => {
+    const styleValues = await scrollArea.evaluate((el) => {
       const computedStyles = window.getComputedStyle(el);
       const inlineStyle = el.getAttribute('style') || '';
-  
+
       // search CSS-var without suffics
       function getCSSVarByPrefix(prefix: any) {
-        const allVars = Array.from(computedStyles).filter(name => name.startsWith(prefix));
+        const allVars = Array.from(computedStyles).filter((name) => name.startsWith(prefix));
         if (allVars.length > 0) return computedStyles.getPropertyValue(allVars[0]).trim();
-  
+
         const regex = new RegExp(`${prefix}[^:]*:\\s*([^;]+);`);
         const match = inlineStyle.match(regex);
         return match ? match[1].trim() : null;
       }
-  
+
       return {
         leftOffset: getCSSVarByPrefix('--leftOffset'),
         rightOffset: getCSSVarByPrefix('--rightOffset'),
@@ -282,9 +281,9 @@ test.describe('ScrollArea - Horizontal scroll with Shadow and offset', () => {
     });
 
     expect(styleValues.leftOffset).toBe('100');
-  expect(styleValues.rightOffset).toBe('100');
-  expect(styleValues.topOffset).toBe('100');
-  expect(styleValues.bottomOffset).toBe('100');
+    expect(styleValues.rightOffset).toBe('100');
+    expect(styleValues.topOffset).toBe('100');
+    expect(styleValues.bottomOffset).toBe('100');
 
     const mainNowValue = await checkAriaNowValue(scrollBar);
     expect(mainNowValue).toEqual(0);
@@ -292,7 +291,7 @@ test.describe('ScrollArea - Horizontal scroll with Shadow and offset', () => {
     expect(mainMaxValue).toBeGreaterThan(0);
 
     await page.keyboard.press('Tab');
-await expect(page.locator('[data-ui-name="ScrollArea.Container"]')).toBeFocused();
+    await expect(page.locator('[data-ui-name="ScrollArea.Container"]')).toBeFocused();
     await page.keyboard.press('ArrowRight');
     await new Promise((resolve) => setTimeout(resolve, 2000));
     const mainNowValue2 = await checkAriaNowValue(scrollBar);
@@ -303,7 +302,8 @@ await expect(page.locator('[data-ui-name="ScrollArea.Container"]')).toBeFocused(
   });
 
   test('Verify vertical scroll with shadow and ring offsets', async ({ page }) => {
-    const standPath = 'stories/components/scroll-area/tests/examples/vertical-scroll-with-shadow-and-offset.tsx';
+    const standPath =
+      'stories/components/scroll-area/tests/examples/vertical-scroll-with-shadow-and-offset.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -311,19 +311,19 @@ await expect(page.locator('[data-ui-name="ScrollArea.Container"]')).toBeFocused(
 
     const scrollContainer = page.locator('[data-ui-name="ScrollArea.Container"]');
 
-    const styleValues = await scrollContainer.evaluate(el => {
+    const styleValues = await scrollContainer.evaluate((el) => {
       const computedStyles = window.getComputedStyle(el);
       const inlineStyle = el.getAttribute('style') || '';
-  
+
       function getCSSVarByPrefix(prefix: any) {
-        const allVars = Array.from(computedStyles).filter(name => name.startsWith(prefix));
+        const allVars = Array.from(computedStyles).filter((name) => name.startsWith(prefix));
         if (allVars.length > 0) return computedStyles.getPropertyValue(allVars[0]).trim();
-  
+
         const regex = new RegExp(`${prefix}[^:]*:\\s*([^;]+);`);
         const match = inlineStyle.match(regex);
         return match ? match[1].trim() : null;
       }
-  
+
       return {
         topOffset: getCSSVarByPrefix('--focusRingTopOffset'),
         bottomOffset: getCSSVarByPrefix('--focusRingBottomOffset'),
@@ -332,19 +332,18 @@ await expect(page.locator('[data-ui-name="ScrollArea.Container"]')).toBeFocused(
       };
     });
 
-  expect(styleValues.topOffset).toBe('40px');
-  expect(styleValues.bottomOffset).toBe('40px');
-  expect(styleValues.rightOffset).toBe('40px');
-  expect(styleValues.leftOffset).toBe('40px');
+    expect(styleValues.topOffset).toBe('40px');
+    expect(styleValues.bottomOffset).toBe('40px');
+    expect(styleValues.rightOffset).toBe('40px');
+    expect(styleValues.leftOffset).toBe('40px');
 
     await page.keyboard.press('Tab');
-await expect(page.locator('[data-ui-name="ScrollArea.Container"]')).toBeFocused();
-await scrollContainer.hover();
+    await expect(page.locator('[data-ui-name="ScrollArea.Container"]')).toBeFocused();
+    await scrollContainer.hover();
     await page.mouse.wheel(0, 100);
     await page.waitForTimeout(500);
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.03 });
   });
-
 
   test('Verify observe parent size', async ({ page }) => {
     const standPath = 'stories/components/scroll-area/tests/examples/with-observe-parent-size.tsx';
@@ -367,5 +366,4 @@ await scrollContainer.hover();
     const mainMaxValue2 = await checkAriaMaxValue(scrollBar);
     expect(mainMaxValue2).toEqual(mainMaxValue);
   });
-
 });
