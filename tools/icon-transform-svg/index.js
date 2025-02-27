@@ -51,7 +51,8 @@ function getDescriptionIcons(iconPath, outLib) {
   return {
     name,
     location,
-    group: size,
+    size,
+    group: outLib.split('/')[1],
   };
 }
 
@@ -97,7 +98,7 @@ function patchClipPath($svg, name, group) {
   patchSvg($svg, 'g', 'clipPath', name, group);
 }
 
-async function svgToReactComponent(iconPath, name, group) {
+async function svgToReactComponent({ iconPath, name, group, type, size }) {
   try {
     const svg = await readFile(iconPath, 'utf-8');
 
@@ -107,8 +108,8 @@ async function svgToReactComponent(iconPath, name, group) {
       throw new Error(`Icon "${iconPath}" hasn't viewBox attribute`);
     }
 
-    patchLinearGradient($svg, name, group);
-    patchClipPath($svg, name, group);
+    patchLinearGradient($svg, name, size);
+    patchClipPath($svg, name, size);
 
     $svg.find('path').attr('shape-rendering', 'geometricPrecision');
     const iconSvg = converter
@@ -119,8 +120,10 @@ async function svgToReactComponent(iconPath, name, group) {
       ...$svg[0].attribs,
       sourcePath: iconSvg.replace(/<(\/)?svg>(\n)?/g, ''),
       dataName: name,
-      dataGroup: group.toLowerCase(),
+      dataGroup: size?.toLowerCase(),
+      group,
       name,
+      type,
     });
 
     return source;
@@ -139,14 +142,16 @@ const generateIcons = (
     glob(`${rootDir}/${sourceLib}/**/*svg`, async (err, icons) => {
       if (err) reject(err);
       const results = icons.map(async (iconPath) => {
-        const { name, location, group } = getDescriptionIcons(iconPath, outLib);
-        const source = await svgToReactComponent(iconPath, name, group);
-        const cjs = await babel.transformAsync(source, babelConfig);
-        const esm = await babel.transformAsync(source, { presets: ['@babel/preset-react'] });
+        const { name, location, size, group } = getDescriptionIcons(iconPath, outLib);
+        const sourceCjs = await svgToReactComponent({ iconPath, name, size, type: 'cjs', group });
+        const sourceEsm = await svgToReactComponent({ iconPath, name, size, type: 'esm', group });
+        const cjs = await babel.transformAsync(sourceCjs, babelConfig);
+        const esm = await babel.transformAsync(sourceEsm, { presets: ['@babel/preset-react'] });
 
         outputFile(path.join(rootDir, location), cjs.code);
         outputFile(path.join(rootDir, location.replace('.js', '.mjs')), esm.code);
         outputFile(path.join(rootDir, location.replace('.js', '.d.ts')), templateDTS(name));
+        outputFile(path.join(rootDir, location.replace('.js', '.mjs.d.ts')), templateDTS(name));
         return { name, location, group };
       });
 

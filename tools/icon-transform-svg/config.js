@@ -40,9 +40,13 @@ const getConfig = () => {
     template: (obj) => `
 import React from 'react';
 import { createBaseComponent } from '@semcore/core';
-import Icon from '@semcore/icon';
+import Icon from '../..${obj.group ? '/../' : '/'}lib/${
+      obj.type === 'esm' ? 'esm/index.mjs' : 'cjs/index.js'
+    }';
 
-function ${obj.name}({width = '${obj.width}', height = '${obj.height}', viewBox = '${obj.viewBox}', ...props}, ref) {
+function Root${obj.name}({width = '${obj.width}', height = '${obj.height}', viewBox = '${
+      obj.viewBox
+    }', ...props}, ref) {
   return (
       <Icon 
         ref={ref}
@@ -58,9 +62,13 @@ function ${obj.name}({width = '${obj.width}', height = '${obj.height}', viewBox 
     );
 }
 
-${obj.name}.displayName = '${obj.name}'
+Root${obj.name}.displayName = '${obj.name}'
 
-export default createBaseComponent(${obj.name})
+const ${obj.name} = createBaseComponent(Root${obj.name})
+
+export {
+  ${obj.name} as default
+}
       `,
     templateDTS: () => `
 import { IconProps } from '@semcore/icon';

@@ -20,6 +20,7 @@ type AbstractDDProps = {
   timeout?: number | [number, number];
   selectable?: boolean;
   multiselect?: boolean;
+  itemsCount?: number;
 };
 
 export const enhance = [
@@ -173,7 +174,7 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
     };
   }
 
-  scrollToNode(node: Element | null) {
+  scrollToNode(node: Element | null, withAnimation = false) {
     if (node) {
       // @ts-ignore
       this.highlightedItemRef.current = node;
@@ -185,6 +186,7 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
           node.scrollIntoView({
             block: 'nearest',
             inline: 'nearest',
+            behavior: withAnimation ? 'smooth' : 'instant',
           });
         }
       }
@@ -192,9 +194,9 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
   }
 
   getHighlightedIndex(amount: number): number {
-    const { highlightedIndex } = this.asProps;
-    const itemsLastIndex = this.itemProps.length - 1;
-    const selectedIndex = this.itemProps.findIndex((item) => item.selected);
+    const { highlightedIndex, itemsCount } = this.asProps;
+    const itemsLastIndex = (itemsCount ?? this.itemProps.length) - 1;
+    const selectedIndex = this.itemProps.findIndex((item) => item?.selected);
 
     if (itemsLastIndex < 0) return -1;
 
@@ -233,19 +235,18 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
     const { visible, focusSourceRef } = this.asProps;
     const visibilityChanged = visible !== prevProps.visible;
 
-    if (visibilityChanged && prevProps.visible !== undefined) {
-      if (!visible) {
-        this.handlers.highlightedIndex(null);
-        // @ts-ignore
-        this.highlightedItemRef.current = null;
-        if (
-          this.popperRef.current &&
-          this.triggerRef.current &&
-          (document.activeElement === document.body || isFocusInside(this.popperRef.current)) &&
-          focusSourceRef.current === 'keyboard'
-        ) {
-          setFocus(this.triggerRef.current);
-        }
+    if (visibilityChanged && !visible && prevProps.visible !== undefined) {
+      this.handlers.highlightedIndex(null);
+      this.prevHighlightedIndex = null;
+      // @ts-ignore
+      this.highlightedItemRef.current = null;
+      if (
+        this.popperRef.current &&
+        this.triggerRef.current &&
+        (document.activeElement === document.body || isFocusInside(this.popperRef.current)) &&
+        focusSourceRef.current === 'keyboard'
+      ) {
+        setFocus(this.triggerRef.current);
       }
     }
   }
