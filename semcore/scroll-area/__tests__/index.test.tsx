@@ -31,9 +31,9 @@ describe('ScrollArea', () => {
       </ScrollArea>
     );
     render(component);
-  
+
     expect(
-      document.querySelectorAll('[data-ui-name^="ScrollArea"][data-ui-name$="Container"]').length
+      document.querySelectorAll('[data-ui-name^="ScrollArea"][data-ui-name$="Container"]').length,
     ).toBe(2);
   });
 
@@ -88,8 +88,6 @@ describe('ScrollArea', () => {
     expect(document.activeElement).toBe(input);
     expect(input.getBoundingClientRect().top).toBeGreaterThanOrEqual(0);
   });
-
-  
 });
 
 describe('ScrollArea.Container', () => {
