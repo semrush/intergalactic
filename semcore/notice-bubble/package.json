@@ -1,7 +1,7 @@
 {
   "name": "@semcore/notice-bubble",
   "description": "Semrush NoticeBubble Component",
-  "version": "5.51.1",
+  "version": "5.52.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -12,11 +12,11 @@
     "build": "pnpm semcore-builder --source=js"
   },
   "dependencies": {
-    "@semcore/utils": "4.45.1",
-    "@semcore/icon": "4.57.1",
-    "@semcore/portal": "3.40.1",
-    "@semcore/flex-box": "5.40.1",
-    "@semcore/animation": "2.40.1"
+    "@semcore/utils": "4.47.0",
+    "@semcore/icon": "4.58.0",
+    "@semcore/portal": "3.41.0",
+    "@semcore/flex-box": "5.41.0",
+    "@semcore/animation": "2.41.0"
   },
   "peerDependencies": {
     "@semcore/core": "^2.17.5",
