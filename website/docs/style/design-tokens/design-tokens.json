@@ -3447,6 +3447,69 @@
     "components": []
   },
   {
+    "name": "--intergalactic-header-bg",
+    "type": "color",
+    "rawValue": "{violet.dusty.700}",
+    "computedValue": "#382E5E",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-header-border-primary",
+    "type": "color",
+    "rawValue": "{violet.dusty.700}",
+    "computedValue": "#382E5E",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-header-border-secondary",
+    "type": "color",
+    "rawValue": "rgba(255,255,255,0.15)",
+    "computedValue": "rgba(255,255,255, 0.15)",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-sidebar-nav-control-hover",
+    "type": "color",
+    "rawValue": "{violet.dusty.50}",
+    "computedValue": "#E7E8F2",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-sidebar-nav-control-active",
+    "type": "color",
+    "rawValue": "{violet.dusty.100}",
+    "computedValue": "#E2DDFF",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-sidebar-nav-control-text-normal",
+    "type": "color",
+    "rawValue": "{violet.dusty.500}",
+    "computedValue": "#6D619F",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-sidebar-nav-control-text-active",
+    "type": "color",
+    "rawValue": "{violet.dusty.600}",
+    "computedValue": "#4D407E",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-sidebar-nav-control-icon-normal",
+    "type": "color",
+    "rawValue": "{violet.dusty.400}",
+    "computedValue": "#9083C5",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-sidebar-nav-control-icon-active",
+    "type": "color",
+    "rawValue": "{violet.dusty.600}",
+    "computedValue": "#4D407E",
+    "components": []
+  },
+  {
     "name": "--intergalactic-duration-extra-slow",
     "type": "other",
     "rawValue": "500",

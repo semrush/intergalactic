@@ -229,6 +229,21 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
     }
   }
 
+  if (pathname.endsWith('-changelog')) {
+    // changelogs
+    const summary = findParent(node, (node) => node.tagName === 'SUMMARY');
+
+    if (summary) {
+      const version = summary.parentElement.previousSibling.textContent;
+
+      if (summary.parentElement.getAttribute('open') === null) {
+        return logEvent('changelog:expand', { pathname, version });
+      } else if (summary.parentElement.getAttribute('open') === '') {
+        return logEvent('changelog:collapse', { pathname, version });
+      }
+    }
+  }
+
   if (pathname.endsWith('illustration')) {
     // Illustrations
     const buttonElement = findParent(node, (node) => {

@@ -734,7 +734,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Moved checkbox size vars to style
 
-## [5.2.1] - 2021-8-26
+## [5.2.1] - 2021-08-26
 
 ### Changed
 
@@ -905,7 +905,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Добавлен autocomplete для IDE
 
-## [1.0.4] - 2018-14-11
+## [1.0.4] - 2018-11-14
 
 ### Changed
 
