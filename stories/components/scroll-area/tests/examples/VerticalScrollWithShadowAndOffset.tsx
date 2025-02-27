@@ -19,73 +19,46 @@ function getRandomColor() {
 }
 
 class Demo extends React.PureComponent {
-  mirror: HTMLDivElement | null = null;
-  containerRef = React.createRef<HTMLDivElement>(); // Правильное объявление рефа
 
-  handleScrollMain = (e: React.UIEvent<HTMLDivElement>) => {
-    if (this.mirror) {
-      this.mirror.scrollTop =
-        this.mirror.scrollHeight - this.mirror.clientHeight - e.currentTarget.scrollTop;
-    }
-
-    // Используем eventCalculate, если он глобально объявлен
-    if (typeof eventCalculate === 'function') {
-      eventCalculate(e);
-    }
-  };
-
-  componentDidMount() {
-    if (this.mirror) {
-      this.mirror.scrollTop = this.mirror.scrollHeight - this.mirror.clientHeight;
-    }
-  }
 
   render() {
     return (
       <Flex>
         <h3 id='main-reverse-title'>Main ScrollArea</h3>
-        <div id='main-reverse-title' ref={this.containerRef}>
-          Main ScrollArea
           <ScrollArea
             w={300}
             h={300}
             shadow={true}
-            container={this.containerRef} // Передаем ref, а не строку
             tabIndex={0}
             observeParentSize={true}
             topOffset={100}
             bottomOffset={100}
-            leftOffset={100}
-            rightOffset={100}
-            orientation='horizontal'
+           
+           
           >
             <ScrollArea.Container
               role='group'
               aria-labelledby='main-reverse-title'
-              onScroll={this.handleScrollMain}
               focusRingTopOffset="40px"
               focusRingRightOffset="40px"
               focusRingBottomOffset="40px"
               focusRingLeftOffset="40px"
             >
-              {[...new Array(10)].map((_, index) => (
+              {[...new Array(1)].map((_, index) => (
                 <Box
                   key={index}
                   inline
                   m={2}
                   w={600}
-                  h={50}
+                  h={500}
                   style={{ backgroundColor: getRandomColor() }}
                 />
               ))}
             </ScrollArea.Container>
-
-            {/* Горизонтальный скроллбар */}
-            <ScrollArea.Bar orientation='horizontal'>
+            <ScrollArea.Bar  w = '40px'>
               <ScrollArea.Bar.Slider />
             </ScrollArea.Bar>
           </ScrollArea>
-        </div>
       </Flex>
     );
   }

@@ -32,16 +32,9 @@ class Demo extends React.PureComponent {
 
   handleDecreaseSize = () => {
     this.setState((prev) => ({
-      width: Math.max(prev.width - 50, 150), // Минимальный размер 150x150
+      width: Math.max(prev.width - 50, 150), 
       height: Math.max(prev.height - 50, 150),
     }));
-  };
-
-  handleScrollMain = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (this.mirror) {
-      this.mirror.scrollTop =
-        this.mirror.scrollHeight - this.mirror.clientHeight - e.currentTarget.scrollTop;
-    }
   };
 
   componentDidMount() {
@@ -58,8 +51,8 @@ class Demo extends React.PureComponent {
         <h3 id="main-reverse-title">Main ScrollArea</h3>
 
         <Flex gap={2}>
-          <button onClick={this.handleIncreaseSize}>Увеличить размер</button>
-          <button onClick={this.handleDecreaseSize}>Уменьшить размер</button>
+          <button onClick={this.handleIncreaseSize}>Increase size</button>
+          <button onClick={this.handleDecreaseSize}>Descreaze size</button>
         </Flex>
 
         <div
@@ -77,7 +70,7 @@ class Demo extends React.PureComponent {
             w="100%"
             h="100%"
             shadow={true}
-            container={this.containerRef} // Передаем ref
+            container={this.containerRef} 
             tabIndex={0}
             observeParentSize={true}
             topOffset={100}
@@ -89,7 +82,6 @@ class Demo extends React.PureComponent {
             <ScrollArea.Container
               role="group"
               aria-labelledby="main-reverse-title"
-              onScroll={this.handleScrollMain}
             >
               {[...new Array(10)].map((_, index) => (
                 <Box
