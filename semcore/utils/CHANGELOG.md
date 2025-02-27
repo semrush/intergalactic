@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.47.1] - 2025-02-27
+
+### Added
+
+- `Exports` to the package.json for esm builds.
+
 ## [4.47.0] - 2025-02-24
 
 ### Added
