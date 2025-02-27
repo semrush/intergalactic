@@ -229,7 +229,7 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
     }
   }
 
-  if (pathname.includes('illustration')) {
+  if (pathname.endsWith('illustration')) {
     // Illustrations
     const buttonElement = findParent(node, (node) => {
       const liElement = node.parentElement?.tagName === 'LI' ? node.parentElement : undefined;
@@ -241,7 +241,7 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
     if (buttonElement) {
       const name = buttonElement.dataset.id;
 
-      return logEvent('illustration:click', { name });
+      return logEvent('illustration:click', { name, pathname });
     }
 
     const triggerANode = findParent(node, (node) => {
@@ -251,6 +251,7 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
     if (triggerANode) {
       return logEvent('illustration:downloadSvg', {
         name: triggerANode.dataset.illustrationDownloadSvg,
+        pathname,
       });
     }
 
@@ -261,11 +262,12 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
     if (triggerButtonNode) {
       return logEvent('illustration:copyImport', {
         name: triggerButtonNode.dataset.illustrationCopyImport,
+        pathname,
       });
     }
   }
 
-  if (pathname.includes('icon')) {
+  if (pathname.endsWith('icon')) {
     // Icon
     const buttonElement = findParent(node, (node) => {
       const liElement = node.parentElement?.tagName === 'LI' ? node.parentElement : undefined;
@@ -275,7 +277,7 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
     if (buttonElement) {
       const name = buttonElement.dataset.id;
 
-      return logEvent('icon:click', { name });
+      return logEvent('icon:click', { name, pathname });
     }
 
     const triggerPillNode = findParent(node, (node) => {
@@ -286,11 +288,13 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
       return logEvent('icon:pillClick', {
         name: triggerPillNode.dataset.iconPillCopyImport,
         type: 'copyImport',
+        pathname,
       });
     } else if (triggerPillNode?.dataset.iconPillDownloadSvg) {
       return logEvent('icon:pillClick', {
         name: triggerPillNode.dataset.iconPillDownloadSvg,
         type: 'downloadSvg',
+        pathname,
       });
     }
 
@@ -305,6 +309,7 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
       return logEvent('icon:downloadSvg', {
         name: triggerNode.dataset.iconDownloadSvg,
         size: triggerNode.dataset.iconSize,
+        pathname,
       });
     }
 
@@ -312,6 +317,7 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
       return logEvent('icon:copyImport', {
         name: triggerNode.dataset.iconCopyImport,
         size: triggerNode.dataset.iconSize,
+        pathname,
       });
     }
   }
@@ -324,7 +330,7 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
     );
 
     if (baseTokenName) {
-      return logEvent('design-tokens:copyBaseTokenName', { value: node.textContent });
+      return logEvent('design-tokens:copyBaseTokenName', { value: node.textContent, pathname });
     }
 
     const baseTokenValue = findParent(
@@ -333,7 +339,7 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
     );
 
     if (baseTokenValue) {
-      return logEvent('design-tokens:copyBaseTokenValue', { value: node.textContent });
+      return logEvent('design-tokens:copyBaseTokenValue', { value: node.textContent, pathname });
     }
 
     const semanticTokenName = findParent(
@@ -342,7 +348,7 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
     );
 
     if (semanticTokenName) {
-      return logEvent('design-tokens:copySemanticTokenName', { value: node.textContent });
+      return logEvent('design-tokens:copySemanticTokenName', { value: node.textContent, pathname });
     }
 
     const semanticTokenValue = findParent(
@@ -351,7 +357,10 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
     );
 
     if (semanticTokenValue) {
-      return logEvent('design-tokens:copySemanticTokenValue', { value: node.textContent });
+      return logEvent('design-tokens:copySemanticTokenValue', {
+        value: node.textContent,
+        pathname,
+      });
     }
 
     const semanticUsedInTooltip = findParent(
@@ -362,6 +371,7 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
     if (semanticUsedInTooltip) {
       return logEvent('design-tokens:clickUsedInTooltip', {
         value: semanticUsedInTooltip.dataset.usedInTooltip,
+        pathname,
       });
     }
 
@@ -374,6 +384,7 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
       return logEvent('design-tokens:linkToComponent', {
         value: semanticLinkToComponent.dataset.linkInTooltip,
         componentName: semanticLinkToComponent.textContent,
+        pathname,
       });
     }
   }
@@ -386,7 +397,7 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
     );
 
     if (baseTokensFileInput) {
-      return logEvent('designTokensInDev:uploadBaseTokensClick');
+      return logEvent('designTokensInDev:uploadBaseTokensClick', { pathname });
     }
 
     const designTokensFileInput = findParent(
@@ -395,7 +406,7 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
     );
 
     if (designTokensFileInput) {
-      return logEvent('designTokensInDev:uploadDesignTokensClick');
+      return logEvent('designTokensInDev:uploadDesignTokensClick', { pathname });
     }
 
     const copyButtonCss = findParent(
@@ -404,7 +415,7 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
     );
 
     if (copyButtonCss) {
-      return logEvent('designTokensInDev:copyButtonCssClick');
+      return logEvent('designTokensInDev:copyButtonCssClick', { pathname });
     }
 
     const copyButtonJson = findParent(
@@ -413,7 +424,7 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
     );
 
     if (copyButtonJson) {
-      return logEvent('designTokensInDev:copyButtonJsonClick');
+      return logEvent('designTokensInDev:copyButtonJsonClick', { pathname });
     }
   }
 
