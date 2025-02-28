@@ -31,7 +31,7 @@ async function checkScrollNowIncreased(scrollBar: any) {
 }
 
 test.describe('ScrollArea - Basic Usage', () => {
-  test('Verifty keyboard scroll and attributes ', async ({ page }) => {
+  test('Verify keyboard scroll and attributes ', async ({ page }) => {
     const standPath = 'stories/components/scroll-area/docs/examples/basic_usage.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
@@ -81,7 +81,7 @@ test.describe('ScrollArea - Basic Usage', () => {
 });
 
 test.describe('ScrollArea - Reverse amd synch scrolls', () => {
-  test(' Verifty keyboard scroll', async ({ page }) => {
+  test(' Verify keyboard scroll', async ({ page }) => {
     const standPath =
       'stories/components/scroll-area/docs/examples/synchronized_reverse_scroll_on_two_different_screens.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -124,7 +124,7 @@ test.describe('ScrollArea - Reverse amd synch scrolls', () => {
     expect(nowMainNumber2).toEqual(nowMainNumber);
   });
 
-  test('Verifty mouse scroll ', async ({ page }) => {
+  test('Verify mouse scroll ', async ({ page }) => {
     const standPath =
       'stories/components/scroll-area/docs/examples/synchronized_scroll_on_two_different_screens.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -209,7 +209,7 @@ test.describe('ScrollArea - Dynamic Virtual List', () => {
     expect(mainMaxValue3).toEqual(460);
   });
 
-  test('Verify scroll bar chnages and mouse scroll works ', async ({ page }) => {
+  test('Verify scroll bar changes and mouse scroll works ', async ({ page }) => {
     const standPath = 'stories/components/scroll-area/docs/examples/dynamic_virtual_list.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
