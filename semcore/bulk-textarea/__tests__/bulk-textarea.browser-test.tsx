@@ -534,7 +534,7 @@ test.describe('Error tooltips', () => {
     });
   });
 
-  test('Keyboard - Navigate in rows, click arrows ', async ({ page, browserName}) => {
+  test('Keyboard - Navigate in rows, click arrows ', async ({ page, browserName }) => {
     const standPath =
       'stories/components/bulk-textarea/tests/examples/validate-blur-base-example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -582,7 +582,7 @@ test.describe('Error tooltips', () => {
       await page.waitForTimeout(100);
       await expect(locators.errorMessage).toHaveText('Error 2 out of 3');
       await expect(tooltip).toHaveText('row has invalid charsets');
-      if (browserName ==='webkit') return; //disabled termporary for webkit because works unstable
+      if (browserName === 'webkit') return; //disabled termporary for webkit because works unstable
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
