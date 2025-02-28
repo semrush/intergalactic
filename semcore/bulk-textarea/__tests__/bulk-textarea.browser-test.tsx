@@ -42,7 +42,7 @@ test.describe('States size counter and placeholder checks', () => {
     const normalTextArea4 = await page
       .getByRole('textbox', { name: 'Readonly state of bulk textarea' })
       .nth(4);
-      await normalTextArea4.click();
+    await normalTextArea4.click();
     await page.waitForTimeout(100);
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.03 });
 
