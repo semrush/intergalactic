@@ -93,6 +93,7 @@ test.describe('Dropdown-menu - Item actions', () => {
 
     //Escape returns focus in menu item, hints hidden
     await page.keyboard.press('Escape');
+    await page.waitForTimeout(100);
     await expect(Item3).toBeFocused();
     await expect(MathPlus).not.toBeFocused();
     await expect(Trash).not.toBeFocused();
