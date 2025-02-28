@@ -28,11 +28,8 @@ class Demo extends React.PureComponent {
             h={300}
             shadow={true}
             tabIndex={0}
-            observeParentSize={true}
             topOffset={100}
             bottomOffset={100}
-           
-           
           >
             <ScrollArea.Container
               role='group'

@@ -33,7 +33,6 @@ class Demo extends React.PureComponent {
             shadow={true}
             container={this.containerRef} 
             tabIndex={0}
-            observeParentSize={true}
             topOffset={100}
             bottomOffset={100}
             leftOffset={100}
