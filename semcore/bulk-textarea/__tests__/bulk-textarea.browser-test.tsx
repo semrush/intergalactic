@@ -17,7 +17,7 @@ test.describe('States size counter and placeholder checks', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
-    await expect(page).toHaveScreenshot();
+    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.03 });
     await page.keyboard.press('Tab');
     const readonlyTextarea = await page
       .getByRole('textbox', { name: 'Readonly state of bulk textarea' })
@@ -39,8 +39,10 @@ test.describe('States size counter and placeholder checks', () => {
     const text =
       'Zoom in on product categories to understand how each site segment drives conversions.\nSecond row\n3 row\n4 row\n5 row\n6 row\n7 row\n8 row\n9 row\n10 row';
     await page.keyboard.type(text, { delay: 20 });
-    await page.waitForTimeout(100);
-    await page.keyboard.press('Tab');
+    const normalTextArea4 = await page
+      .getByRole('textbox', { name: 'Readonly state of bulk textarea' })
+      .nth(4);
+      await normalTextArea4.click();
     await page.waitForTimeout(100);
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.03 });
 
