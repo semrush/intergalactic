@@ -12,7 +12,11 @@ import { fileURLToPath, URL } from 'url';
 export const viteConfig = defineConfig({
   base: '/intergalactic/',
   plugins: [
-    pluginReact(),
+    pluginReact({
+      babel: {
+        plugins: ['@babel/plugin-syntax-import-assertions'],
+      },
+    }),
     createUnplugin<{}>(() => ({
       name: 'semcore-resolve',
       async resolveId(id) {

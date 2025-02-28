@@ -40,7 +40,9 @@ const getConfig = () => {
     template: (obj) => `
 import React from 'react';
 import { createBaseComponent } from '@semcore/core';
-import Icon from '../../lib/${obj.type === 'esm' ? 'esm/index.mjs' : 'cjs/index.js'}';
+import Icon from '../..${obj.type ? '/../' : '/'}lib/${
+      obj.buildType === 'esm' ? 'esm/index.mjs' : 'cjs/index.js'
+    }';
 
 function Root${obj.name}({width = '${obj.width}', height = '${obj.height}', viewBox = '${
       obj.viewBox

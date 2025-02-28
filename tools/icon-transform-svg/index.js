@@ -36,6 +36,7 @@ function getDescriptionExternalIcons(iconPath, outLib) {
     name: `${group}${name}`,
     location,
     group,
+    type: null,
   };
 }
 
@@ -52,6 +53,7 @@ function getDescriptionIcons(iconPath, outLib) {
     name,
     location,
     group: size,
+    type: outLib.split('/')[1],
   };
 }
 
@@ -97,7 +99,7 @@ function patchClipPath($svg, name, group) {
   patchSvg($svg, 'g', 'clipPath', name, group);
 }
 
-async function svgToReactComponent(iconPath, name, group, type) {
+async function svgToReactComponent({ iconPath, name, group, type, buildType }) {
   try {
     const svg = await readFile(iconPath, 'utf-8');
 
@@ -122,6 +124,7 @@ async function svgToReactComponent(iconPath, name, group, type) {
       dataGroup: group.toLowerCase(),
       name,
       type,
+      buildType,
     });
 
     return source;
@@ -140,9 +143,21 @@ const generateIcons = (
     glob(`${rootDir}/${sourceLib}/**/*svg`, async (err, icons) => {
       if (err) reject(err);
       const results = icons.map(async (iconPath) => {
-        const { name, location, group } = getDescriptionIcons(iconPath, outLib);
-        const sourceCjs = await svgToReactComponent(iconPath, name, group, 'cjs');
-        const sourceEsm = await svgToReactComponent(iconPath, name, group, 'esm');
+        const { name, location, type, group } = getDescriptionIcons(iconPath, outLib);
+        const sourceCjs = await svgToReactComponent({
+          iconPath,
+          name,
+          type,
+          buildType: 'cjs',
+          group,
+        });
+        const sourceEsm = await svgToReactComponent({
+          iconPath,
+          name,
+          type,
+          buildType: 'esm',
+          group,
+        });
         const cjs = await babel.transformAsync(sourceCjs, babelConfig);
         const esm = await babel.transformAsync(sourceEsm, { presets: ['@babel/preset-react'] });
 
@@ -167,6 +182,7 @@ function getDescriptionPayIcons(iconPath, outLib) {
     name,
     location,
     group: '',
+    type: 'pay',
   };
 }
 

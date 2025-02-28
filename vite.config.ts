@@ -6,7 +6,11 @@ import pluginReact from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [
-    pluginReact(),
+    pluginReact({
+      babel: {
+        plugins: ['@babel/plugin-syntax-import-assertions'],
+      },
+    }),
     createUnplugin<{}>(() => ({
       name: 'semcore-resolve',
       async resolveId(id) {
