@@ -39,7 +39,7 @@ test.describe('States size counter and placeholder checks', () => {
     const text =
       'Zoom in on product categories to understand how each site segment drives conversions.\nSecond row\n3 row\n4 row\n5 row\n6 row\n7 row\n8 row\n9 row\n10 row';
     await page.keyboard.type(text, { delay: 20 });
-    await page.waitForTimeout(50);
+    await page.waitForTimeout(100);
     await page.keyboard.press('Tab');
     await page.waitForTimeout(100);
     await expect(page).toHaveScreenshot();
