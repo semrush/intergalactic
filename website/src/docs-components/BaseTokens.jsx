@@ -8,6 +8,7 @@ import Fuse from 'fuse.js';
 import { SearchInput } from './SearchInput.jsx';
 
 import { AutoSizer, List, CellMeasurer, CellMeasurerCache } from 'react-virtualized';
+import { logEvent } from '../../docs/.vitepress/theme/amplitude/amplitude';
 
 const cache = new CellMeasurerCache({
   fixedWidth: true,
@@ -15,6 +16,7 @@ const cache = new CellMeasurerCache({
 });
 
 let filteredTokensTimer = 0;
+let searchTimer = 0;
 
 const BaseTokens = ({ tokens }) => {
   const [filter, setFilter] = React.useState('');
@@ -29,8 +31,6 @@ const BaseTokens = ({ tokens }) => {
   );
 
   React.useEffect(() => {
-    clearTimeout(filteredTokensTimer);
-
     filteredTokensTimer = setTimeout(() => {
       cache.clearAll();
       setFilteredTokensToTable(filteredTokens);
@@ -41,12 +41,22 @@ const BaseTokens = ({ tokens }) => {
     };
   }, [filteredTokens]);
 
+  const handleChangeFilter = (value) => {
+    clearTimeout(searchTimer);
+
+    setFilter(value);
+
+    searchTimer = setTimeout(() => {
+      logEvent('design-tokens:searchBaseTokens', { value });
+    }, 500);
+  };
+
   return (
     <>
       <div className={styles.filters}>
         <SearchInput
           filter={filter}
-          setFilter={setFilter}
+          setFilter={handleChangeFilter}
           resultsCount={filteredTokens.length}
           placeholder='Enter color name to find token'
           ariaLabel={'Search base tokens'}
@@ -139,7 +149,11 @@ const BaseTokensTable = React.memo(({ filteredTokens }) => {
                     trigger='click'
                     className={styles.tokenNameWrapper}
                   >
-                    <button type='button' className={styles.tokenName}>
+                    <button
+                      type='button'
+                      className={styles.tokenName}
+                      data-token-type={'baseToken'}
+                    >
                       {row[props.name]}
                     </button>
                   </Copy>
@@ -158,7 +172,11 @@ const BaseTokensTable = React.memo(({ filteredTokens }) => {
                     trigger='click'
                     className={styles.tokenValueWrapper}
                   >
-                    <button type='button' className={styles.tokenValue}>
+                    <button
+                      type='button'
+                      className={styles.tokenValue}
+                      data-token-type={'baseToken'}
+                    >
                       <ColorPreview color={row[props.name]} />
                       {row[props.name]}
                     </button>
