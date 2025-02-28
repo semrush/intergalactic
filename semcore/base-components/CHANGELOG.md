@@ -7,4 +7,4 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Added
 
 - Package with base components.
-- `box-shadow` border for all Box'es with `:focus-visible`.
+- `outline` for all Box'es with `:focus-visible`.
