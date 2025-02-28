@@ -442,7 +442,7 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
 
     const clearSearchSemanticTokens = findParent(
       node,
-      (node) => node.id === 'clear-search-message-semantic',
+      (node) => node.id === 'clear-search-message-design',
     );
 
     if (clearSearchSemanticTokens) {
