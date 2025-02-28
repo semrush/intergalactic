@@ -259,6 +259,14 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
       return logEvent('illustration:click', { name, pathname });
     }
 
+    const clearSearchButton = findParent(node, (node) => {
+      return node.tagName === 'BUTTON' && node.getAttribute('aria-label') === 'Clear';
+    });
+
+    if (clearSearchButton) {
+      return logEvent('illustration:clickClearSearch', { pathname });
+    }
+
     const triggerANode = findParent(node, (node) => {
       return node.tagName === 'A' && Boolean(node.dataset.illustrationDownloadSvg);
     });
@@ -293,6 +301,14 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
       const name = buttonElement.dataset.id;
 
       return logEvent('icon:click', { name, pathname });
+    }
+
+    const clearSearchButton = findParent(node, (node) => {
+      return node.tagName === 'BUTTON' && node.getAttribute('aria-label') === 'Clear';
+    });
+
+    if (clearSearchButton) {
+      return logEvent('icon:clickClearSearch', { pathname });
     }
 
     const triggerPillNode = findParent(node, (node) => {
@@ -413,6 +429,24 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
         componentName: semanticLinkToComponent.textContent,
         pathname,
       });
+    }
+
+    const clearSearchBaseTokens = findParent(
+      node,
+      (node) => node.id === 'clear-search-message-base',
+    );
+
+    if (clearSearchBaseTokens) {
+      return logEvent('design-tokens:clickClearSearchBaseTokens', { pathname });
+    }
+
+    const clearSearchSemanticTokens = findParent(
+      node,
+      (node) => node.id === 'clear-search-message-semantic',
+    );
+
+    if (clearSearchSemanticTokens) {
+      return logEvent('design-tokens:clickClearSearchSemanticTokens', { pathname });
     }
   }
 

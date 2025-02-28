@@ -16,6 +16,7 @@ const cache = new CellMeasurerCache({
 });
 
 let filteredTokensTimer = 0;
+let searchTimer = 0;
 
 const BaseTokens = ({ tokens }) => {
   const [filter, setFilter] = React.useState('');
@@ -30,12 +31,9 @@ const BaseTokens = ({ tokens }) => {
   );
 
   React.useEffect(() => {
-    clearTimeout(filteredTokensTimer);
-
     filteredTokensTimer = setTimeout(() => {
       cache.clearAll();
       setFilteredTokensToTable(filteredTokens);
-      logEvent('design-tokens:searchBaseTokens', { value: filter });
     }, 300);
 
     return () => {
@@ -43,12 +41,22 @@ const BaseTokens = ({ tokens }) => {
     };
   }, [filteredTokens]);
 
+  const handleChangeFilter = (value) => {
+    clearTimeout(searchTimer);
+
+    setFilter(value);
+
+    searchTimer = setTimeout(() => {
+      logEvent('design-tokens:searchBaseTokens', { value });
+    }, 500);
+  };
+
   return (
     <>
       <div className={styles.filters}>
         <SearchInput
           filter={filter}
-          setFilter={setFilter}
+          setFilter={handleChangeFilter}
           resultsCount={filteredTokens.length}
           placeholder='Enter color name to find token'
           ariaLabel={'Search base tokens'}

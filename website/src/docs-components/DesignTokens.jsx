@@ -33,6 +33,7 @@ export const ColorPreview = ({ color }) => {
 };
 
 let filteredTokensTimer = 0;
+let searchTimer = 0;
 
 const DesignTokens = ({ tokens }) => {
   const [nameFilter, setNameFilter] = React.useState('');
@@ -72,25 +73,34 @@ const DesignTokens = ({ tokens }) => {
   );
 
   React.useEffect(() => {
-    clearTimeout(filteredTokensTimer);
-
     filteredTokensTimer = setTimeout(() => {
       cache.clearAll();
       setFilteredTokensToTable(filteredTokens);
-      logEvent('design-tokens:searchSemanticTokens', { value: nameFilter });
     }, 300);
-
-    return () => {
-      clearTimeout(filteredTokensTimer);
-    };
   }, [filteredTokens]);
+
+  const handleChangeFilter = (value) => {
+    clearTimeout(searchTimer);
+
+    setNameFilter(value);
+
+    searchTimer = setTimeout(() => {
+      logEvent('design-tokens:searchSemanticTokens', { value });
+    }, 500);
+  };
+
+  const handleChangeComponentFilter = (value) => {
+    setComponentFilter(value);
+
+    logEvent('design-tokens:selectSemanticTokens', { value });
+  };
 
   return (
     <div>
       <div className={styles.filters}>
         <SearchInput
           filter={nameFilter}
-          setFilter={setNameFilter}
+          setFilter={handleChangeFilter}
           resultsCount={filteredTokens.length}
           placeholder='Enter component or element name to find token'
           ariaLabel={'Search semantic tokens'}
@@ -102,7 +112,7 @@ const DesignTokens = ({ tokens }) => {
           placeholder='All components'
           aria-label='Filter by component'
           value={componentFilter}
-          onChange={setComponentFilter}
+          onChange={handleChangeComponentFilter}
           options={componentsFilterOptions}
         />
       </div>
