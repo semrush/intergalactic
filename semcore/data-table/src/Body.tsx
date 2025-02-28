@@ -196,7 +196,7 @@ class Body extends Component<AsProps, {}, State> {
             onFocus={this.onFocusCell}
             aria-colindex={cellIndex + 1}
             aria-colspan={ariaColspan === 1 ? undefined : ariaColspan}
-            innerOffset
+            innerOutline
           />,
         ) as React.ReactElement;
       }

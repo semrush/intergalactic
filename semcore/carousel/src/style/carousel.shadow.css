@@ -110,24 +110,6 @@ SNext {
   }
 }
 
-SPrevButton, SNextButton {
-  &:focus-visible {
-    box-shadow: none;
-    &:after {
-      content: '';
-      display: block;
-      position: absolute;
-      box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
-      z-index: 1;
-      width: calc(100% - 3px * 2);
-      height: calc(100% - 3px * 2);
-      top: 3px;
-      left: 3px;
-      border-radius: var(--intergalactic-control-rounded, 6px);
-    }
-  }
-}
-
 SPrev {
   margin-right: var(--intergalactic-spacing-2x, 8px);
 }

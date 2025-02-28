@@ -696,6 +696,7 @@ const Prev = (props: CarouselButtonProps) => {
           theme={inverted ? 'invert' : 'muted'}
           use={'tertiary'}
           size={'l'}
+          innerOutline
         />
       )}
     </SPrev>,
@@ -718,6 +719,7 @@ const Next = (props: CarouselButtonProps) => {
           theme={inverted ? 'invert' : 'muted'}
           use={'tertiary'}
           size={'l'}
+          innerOutline
         />
       )}
     </SNext>,

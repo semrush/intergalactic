@@ -6,7 +6,7 @@ SBox:focus-visible {
   outline-offset: 0;
 }
 
-SBoxInnerOffset:focus-visible {
+SBoxInnerOutline:focus-visible {
   outline-offset: -3px;
 }
 
