@@ -1,7 +1,7 @@
 import React from 'react';
-import { Box } from 'intergalactic/flex-box';
-import Popper from 'intergalactic/popper';
-import Button from 'intergalactic/button';
+import { Box } from '@semcore/flex-box';
+import Popper from '@semcore/popper';
+import Button from '@semcore/button';
 
 const style = { background: '#FFF', color: '#000', border: '1px solid #000', padding: '10px' };
 
