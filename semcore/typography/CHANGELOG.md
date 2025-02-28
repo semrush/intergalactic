@@ -772,7 +772,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - Up version icons and use new icon.
 - Removed the ability to apply media styles via a plugin `babel-plugin-react-semcore`.
 
-## [3.2.2] - 2021-8-26
+## [3.2.2] - 2021-08-26
 
 ### Changed
 
@@ -993,7 +993,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - Унаследовано от `Box`/`Print`
 - В `List` можно передовать пользовательский маркер
 
-## [1.0.3] - 2018-14-11
+## [1.0.3] - 2018-11-14
 
 ### Added
 

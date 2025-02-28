@@ -10,11 +10,13 @@ module.exports = function (babel, opts = {}) {
       '@semcore/babel-plugin-styles',
       '@babel/plugin-proposal-export-default-from',
       '@babel/plugin-proposal-class-properties',
+      '@babel/plugin-syntax-import-assertions',
       'babel-plugin-preval',
       [
         '@babel/plugin-transform-runtime',
         {
           version: require('@babel/runtime/package.json').version,
+          useESModules: opts.isEsm,
         },
       ],
     ],

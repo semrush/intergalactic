@@ -4,13 +4,14 @@ fileSource: icon
 tabs: Design('icon'), A11y('icon-a11y'), API('icon-api'), Example('icon-code'), Changelog('icon-changelog')
 ---
 
+## Search icons
+
 ::: react-view
 
 <script lang="tsx">
 import React from 'react';
 import Components from './icons-view';
 import dataIcons from './icons-list';
-
 import icons from '@icons';
 const App = () => <Components icons={icons} json={dataIcons} />;
 </script>

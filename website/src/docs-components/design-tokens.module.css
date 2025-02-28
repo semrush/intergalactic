@@ -24,23 +24,24 @@
   min-width: 200px;
 }
 
-.tokenNameWrapper {
-  max-width: 100%;
-}
-
-.tokenName {
-  cursor: pointer;
-  max-width: 100%;
-}
-
+.tokenNameWrapper,
 .tokenValueWrapper {
   max-width: 100%;
 }
 
+.tokenName,
 .tokenValue {
-  cursor: pointer;
+  font-size: var(--intergalactic-fs-200, 14px);
+  line-height: var(--intergalactic-lh-200, 142%);
+  color: var(--intergalactic-text-primary, #191b23);
   display: flex;
-  max-width: 100%;
+  text-align: left;
+}
+
+.tokenName:focus-visible,
+.tokenValue:focus-visible {
+  outline: none !important;
+  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
 }
 
 .colorPreview {
@@ -67,7 +68,8 @@
   filter: invert(1) saturate(0) contrast(10) brightness(10);
 }
 
-.usages {
-  color: var(--intergalactic-text-hint);
-  border-bottom: 1px dashed var(--intergalactic-text-hint);
+div[role='gridcell'] {
+  word-break: break-word;
+  white-space: pre-wrap;
+  position: relative;
 }

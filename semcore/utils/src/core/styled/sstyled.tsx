@@ -1,13 +1,13 @@
 import cn from 'classnames';
-import { ReactNode } from 'react';
+import React from 'react';
 /** @ts-ignore */
-import { getStyles as reshadowGetStyles } from '@reshadow/core';
+import { getStyles as reshadowGetStyles } from './reshadow-core';
 
 const RESHADOW_ID = '__reshadow__';
 
 const isSSR = !(typeof window !== 'undefined' && window.document && window.document.createElement);
 
-const serverMap = reshadowGetStyles().map;
+const serverMap = reshadowGetStyles().map as any;
 
 const getStyles = () => ({
   map: serverMap,
@@ -111,7 +111,7 @@ function reshadowToShadow(obj: any) {
   }, {});
 }
 
-function sstyled(styles = {}): ((ReactNode: any) => ReactNode) & {
+function sstyled(styles = {}): ((ReactNode: any) => React.ReactNode) & {
   cn(name: string, props: any): any;
 } {
   // @ts-ignore

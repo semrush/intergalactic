@@ -48,7 +48,7 @@ Theme for React components subtree may also be applied via `<ThemeProvider />`.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/themeprovider.tsx';
+  export Demo from 'stories/components/utils/design-tokens/docs/examples/themeprovider.tsx';
 </script>
 
 :::
@@ -60,14 +60,14 @@ Design tokens are recommended when creating a custom component to ensure a consi
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/tokens-with-custom-component.tsx';
+  export Demo from 'stories/components/utils/design-tokens/docs/examples/tokens-with-custom-component.tsx';
 </script>
 
 :::
 
 ## Transforming JSON files
 
-Design token JSON-files [produced by Figma plugin](/style/design-tokens/design-tokens-usage#how_to_make_a_new_theme) can't be used as is in Frontend application. Use the following widgets to transform output of Figma plugin to [ready to import CSS file](/style/design-tokens/design-tokens-usage-development#global_theme) or [ready to use JSON files](/style/design-tokens/design-tokens-usage-development#global_theme).
+Design token JSON-files [produced by Tokens Studio Figma plugin](https://www.figma.com/community/plugin/843461159747178978/tokens-studio-for-figma) can't be used as is in Frontend application. Use the following widgets to transform output of the Figma plugin to ready-to-import CSS file or ready-to-use JSON files.
 
 ::: react-view
 
@@ -77,6 +77,7 @@ import '@semcore/ui/utils/lib/themes/default.css'; /** TO REMOVE WHEN THEME PR W
 import Button from '@semcore/ui/button';
 import { Box } from '@semcore/ui/flex-box';
 import CheckM from '@semcore/icon/Check/m';
+import CopyM from '@semcore/ui/icon/Copy/m'
 import cx from 'classnames';
 import { processTokens, tokensToJson, tokensToCss } from '@semcore/utils/theme/utils';
 import styles from './processor.module.css';
@@ -84,9 +85,13 @@ import Copy from '@components/Copy';
 
 const FileInput = ({ id, onFile, multiple, accept }) => {
   const [dragging, setDragging] = React.useState(false);
+  const inputRef = React.useRef(null);  
 
   const handleDragStart = React.useCallback(() => setDragging(true), []);
   const handleDragEnd = React.useCallback(() => setDragging(false), []);
+  const handleClick = React.useCallback(() => {
+    inputRef.current?.click();
+  }, []);
   React.useEffect(() => {
     window.addEventListener('dragstart', handleDragStart);
     window.addEventListener('dragend', handleDragEnd);
@@ -106,15 +111,17 @@ const FileInput = ({ id, onFile, multiple, accept }) => {
         type='file'
         accept={accept}
         onChange={(event) => onFile([...(event.target.files ?? [])])}
+        aria-describedby="inpu-hint"
+        ref={inputRef}
       />
       <div className={styles.dropzoneInner}>
         <div>Drag files here</div>
         <div>or</div>
-        <Button theme='success' use='primary' size='l' mb={4}>
+        <Button theme='success' use='primary' size='l' mb={4} onClick={handleClick}>
           Browse files
         </Button>
       </div>
-      <div>Upload files, uncompressed, less than 1 GB in size</div>
+      <div id="inpu-hint">Upload files, uncompressed, less than 1 GB in size.</div>
     </div>
   );
 };
@@ -127,11 +134,17 @@ const readFile = (file) =>
   });
 
 const DesignTokensProcessor = () => {
+  const [baseTokensFileName, setBaseTokensFileName] = React.useState('');
+  const [designTokensFileName, setDesignTokensFileName] = React.useState('');
   const [baseTokens, setBaseTokens] = React.useState(null);
   const [designTokens, setDesignTokens] = React.useState(null);
   const handleBaseTokensFile = React.useCallback(async (files) => {
     try {
       setBaseTokens(JSON.parse(await readFile(files[0])));
+      setBaseTokensFileName(files[0]?.name);
+      setTimeout(() => {
+        document.querySelector('#replace-file-label-1')?.focus();
+      }, 0);
     } catch (err) {
       console.error(err);
       setBaseTokens(null);
@@ -140,13 +153,27 @@ const DesignTokensProcessor = () => {
   const handleDesignTokensFile = React.useCallback(async (files) => {
     try {
       setDesignTokens(JSON.parse(await readFile(files[0])));
+      setDesignTokensFileName(files[0]?.name);
+      setTimeout(() => {
+        document.querySelector('#replace-file-label-2')?.focus();
+      }, 0);
     } catch (err) {
       console.error(err);
       setDesignTokens(null);
     }
   }, []);
-  const handleChangeBaseTokensFile = React.useCallback(() => setBaseTokens(null), []);
-  const handleChangeDesignTokensFile = React.useCallback(() => setDesignTokens(null), []);
+  const handleChangeBaseTokensFile = React.useCallback(() => {
+    setBaseTokens(null);
+    setTimeout(() => {
+      document.querySelector('#base-tokens-file')?.focus();
+    }, 0);
+  }, []);
+  const handleChangeDesignTokensFile = React.useCallback(() => {
+    setDesignTokens(null);
+    setTimeout(() => {
+      document.querySelector('#design-tokens-file')?.focus();
+    }, 0);
+  }, []);
 
   const { css, json, error } = React.useMemo(() => {
     if (!designTokens) return {};
@@ -166,7 +193,7 @@ const DesignTokensProcessor = () => {
   return (
     <div className={styles.container}>
       <Box mb={2}>
-        <label htmlFor='base-tokens-file'>Upload base tokens JSON file</label>
+        <label htmlFor='base-tokens-file' className={styles.fileInputLabel}>Upload base tokens JSON file</label>
         {!baseTokens && (
           <>
             <FileInput
@@ -178,16 +205,16 @@ const DesignTokensProcessor = () => {
           </>
         )}
         {baseTokens && (
-          <div className={styles.uploadedFileBlock}>
-            <CheckM color='icon-primary-success' /> File selected{' '}
-            <Button id='base-tokens-file' onClick={handleChangeBaseTokensFile} ml={2}>
+          <div className={styles.uploadedFileBlock} id="uploaded-file-label-1">
+            <CheckM color='icon-primary-success' /> {`${baseTokensFileName} `}
+            <Button onClick={handleChangeBaseTokensFile} ml={2} aria-labelledby="uploaded-file-label-1" id="replace-file-label-1">
               Replace file
             </Button>
           </div>
         )}
       </Box>
       <Box mb={2}>
-        <label htmlFor='design-tokens-file'>Upload semantic tokens JSON file</label>
+        <label htmlFor='design-tokens-file' className={styles.fileInputLabel}>Upload semantic tokens JSON file</label>
         {!designTokens && (
           <>
             <FileInput
@@ -199,41 +226,49 @@ const DesignTokensProcessor = () => {
           </>
         )}
         {designTokens && (
-          <div className={styles.uploadedFileBlock}>
-            <CheckM color='icon-primary-success' /> File selected{' '}
-            <Button id='base-tokens-file' onClick={handleChangeBaseTokensFile} ml={2}>
+          <div className={styles.uploadedFileBlock} id="uploaded-file-label-2">
+            <CheckM color='icon-primary-success' /> {`${designTokensFileName} `}
+            <Button autoFocus onClick={handleChangeDesignTokensFile} ml={2} aria-labelledby="uploaded-file-label-2"  id="replace-file-label-2">
               Replace file
             </Button>
           </div>
         )}
       </Box>
-      {error && (
-        <div className={styles.processedSection}>
-          <h4>Error occurred while processing your files.</h4>
-          {!baseTokens && <div>Maybe you forgot to provide base tokens?</div>}
-          <code>{String(error.message ?? error)}</code>
-        </div>
-      )}
+      <div className={styles.processedSection} aria-live="polite" role="alert">
+        {error && (
+          <>
+            <h3>Error occurred while processing your files</h3>
+            {!baseTokens && <div>Maybe you forgot to provide base tokens?</div>}
+            <code>{String(error.message ?? error)}</code>
+          </>    
+        )}
+      </div>
       {css && json && !error && (
         <div className={styles.processedSection}>
           <div className={styles.processedBlock}>
-            <h4>
-              Processed
-              <span className={styles.extension}>.css</span>
-              <Copy copiedToast='Copied!' toCopy={css} trigger='click'>
-                <span className={styles.clickToCopy}>Copy to clipboard</span>
-              </Copy>
-            </h4>
+            <div className={styles.processedBlockTitle}>
+              <h3 id="copy-button-title-css">
+                Processed CSS code
+                </h3>
+                <Copy copiedToast='Copied!' toCopy={css} trigger='click' onlyCopiedToast>
+                  <Button addonLeft={CopyM} use='tertiary' theme="muted" ml={2} mb={2} aria-describedby="copy-button-title-css">
+                    Copy to clipboard
+                    </Button>
+                    </Copy>
+            </div>
             <code className={styles.codeBlock}>{css}</code>
           </div>
           <div className={styles.processedBlock}>
-            <h4>
-              Processed
-              <span className={styles.extension}>.json</span>
-              <Copy copiedToast='Copied!' toCopy={json} trigger='click'>
-                <span className={styles.clickToCopy}>Copy to clipboard</span>
+            <div className={styles.processedBlockTitle}>
+              <h3 id="copy-button-title-json">
+                Processed JSON code
+            </h3>
+              <Copy copiedToast='Copied!' toCopy={json} trigger='click' onlyCopiedToast>
+                <Button addonLeft={CopyM} use='tertiary' theme="muted" ml={2} mb={2} aria-describedby="copy-button-title-json">
+                  Copy to clipboard
+                </Button>
               </Copy>
-            </h4>
+            </div>
             <code lang='css' className={styles.codeBlock}>
               {json}
             </code>

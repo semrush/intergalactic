@@ -15,9 +15,15 @@ test.describe('Dropdown-menu', () => {
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('ArrowDown');
+    const menuItem5 = page.getByRole('menuitem', { name: 'Menu item 5' });
+    await expect(menuItem5).toBeFocused();
+    await page.keyboard.press('Tab');
+    await expect(menuItem5).toBeFocused();
     await expect(page).toHaveScreenshot();
 
     await page.keyboard.press('ArrowDown');
+    const menuItem6 = page.getByRole('menuitem', { name: 'Menu item 6' });
+    await expect(menuItem6).toBeFocused();
     await expect(page).toHaveScreenshot();
   });
 });
@@ -269,5 +275,93 @@ test.describe('Dropdown-menu - Multiselect items', () => {
     await expect(Item2).toBeFocused();
     await expect(Item2).toBeChecked();
     await expect(ddMenuTrigger).not.toBeFocused();
+  });
+});
+
+test.describe('Dropdown-menu - Virtual scroll', () => {
+  test('Keyboard interaction', async ({ page, browserName }) => {
+    const standPath = 'stories/components/dropdown-menu/advanced/examples/project-selector.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+
+    const ddMenuTrigger = await page.locator('[data-ui-name="DropdownMenu.Trigger"]');
+    await page.keyboard.press('Tab');
+    await expect(ddMenuTrigger).toBeFocused();
+    await page.keyboard.press('Enter');
+    await expect(ddMenuTrigger).not.toBeFocused();
+    const project33 = page.getByRole('menuitemradio', { name: 'project 33' });
+    const project32 = page.getByRole('menuitemradio', { name: 'project 32' });
+    await project33.waitFor({ state: 'visible' });
+    await expect(project33).toBeFocused();
+    await expect(project32).not.toBeFocused();
+
+    await page.keyboard.press('ArrowDown');
+    await page.waitForTimeout(100);
+    await page.keyboard.press('ArrowDown');
+    await page.waitForTimeout(100);
+    await page.keyboard.press('ArrowDown');
+    await page.waitForTimeout(100);
+    const project36 = page.getByRole('menuitemradio', { name: 'project 36' });
+    await expect(project36).toBeFocused();
+    await expect(project33).not.toBeFocused();
+    await expect(page).toHaveScreenshot();
+
+    if (browserName === 'firefox') return; //because of bug on firefox UIK-3349
+    await page.keyboard.press('Tab');
+    const createProject = page.getByRole('button', { name: 'Create new project' });
+    await expect(createProject).toBeFocused();
+    await expect(project36).not.toBeFocused();
+
+    await page.keyboard.press('Tab');
+    const input = page.locator('input[data-ui-name="Input.Value"]');
+    await expect(input).toBeFocused();
+    await expect(createProject).not.toBeFocused();
+    await expect(project36).not.toBeFocused();
+
+    await page.keyboard.press('Tab');
+    await expect(project36).toBeFocused();
+
+    await page.keyboard.press('Space');
+    await expect(ddMenuTrigger).toHaveText('project 36');
+
+    await page.keyboard.press('ArrowDown');
+    await project36.waitFor({ state: 'visible' });
+    await expect(project36).toBeFocused();
+  });
+
+  test('Mouse interaction', async ({ page, browserName }) => {
+    const standPath = 'stories/components/dropdown-menu/advanced/examples/project-selector.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+
+    const ddMenuTrigger = await page.locator('[data-ui-name="DropdownMenu.Trigger"]');
+    await ddMenuTrigger.click();
+    await expect(ddMenuTrigger).not.toBeFocused();
+    const project33 = page.getByRole('menuitemradio', { name: 'project 33' });
+    const project32 = page.getByRole('menuitemradio', { name: 'project 32' });
+    await project33.waitFor({ state: 'visible' });
+    await expect(project33).toHaveAttribute('aria-checked', 'true');
+    await expect(project32).toHaveAttribute('aria-checked', 'false');
+    await expect(project32).not.toBeFocused();
+
+    await page.keyboard.press('ArrowDown');
+    await page.keyboard.press('ArrowDown');
+    await page.keyboard.press('ArrowDown');
+    const project36 = page.getByRole('menuitemradio', { name: 'project 36' });
+    await expect(project36).toBeFocused();
+    await expect(project36).toHaveAttribute('aria-checked', 'false');
+    await project36.click();
+    await expect(ddMenuTrigger).toHaveText('project 36');
+    await ddMenuTrigger.click();
+    const project43 = page.locator(
+      '[data-ui-name="DropdownMenu.Item.Hint"]:has-text("project 43")',
+    );
+
+    await project43.scrollIntoViewIfNeeded();
+    await page.waitForTimeout(200);
+    const project43item = page.getByRole('menuitemradio', { name: 'project 36' });
+    await expect(project43item).toBeVisible();
+    if (browserName === 'firefox') return; // every scroll on ff differs on some pixels(not stable) so visual regression skipped for it
+    await expect(page).toHaveScreenshot();
   });
 });

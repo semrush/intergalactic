@@ -3,7 +3,7 @@ import { expect, userEvent, within } from '@storybook/test';
 export async function NestedWithFocusableTest({ canvasElement }: { canvasElement: HTMLElement }) {
   const canvas = within(canvasElement);
 
-  const trigger = within(document.body).queryByText("Click me");
+  const trigger = within(document.body).queryByText("Explore nested menus");
   if (!(trigger)) {
     throw new Error('Trigger not found');
   }
