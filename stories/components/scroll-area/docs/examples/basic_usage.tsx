@@ -19,8 +19,7 @@ function getRandomColor() {
 class Demo extends React.PureComponent {
   render() {
     return (
-      <Scroll h={300}  topOffset={100}
-      bottomOffset={100}>
+      <Scroll h={300}>
         {[...new Array(100)].map((_, index) => (
           <Box
             key={index}
