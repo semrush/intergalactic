@@ -187,7 +187,11 @@ const DesignTokensTable = React.memo(({ filteredTokens }) => {
                     trigger='click'
                     className={styles.tokenNameWrapper}
                   >
-                    <button type='button' className={styles.tokenName}>
+                    <button
+                      type='button'
+                      className={styles.tokenName}
+                      data-token-type={'semanticToken'}
+                    >
                       {row[props.name]}
                     </button>
                   </Copy>
@@ -206,7 +210,11 @@ const DesignTokensTable = React.memo(({ filteredTokens }) => {
                     trigger='click'
                     className={styles.tokenValueWrapper}
                   >
-                    <button type='button' className={styles.tokenValue}>
+                    <button
+                      type='button'
+                      className={styles.tokenValue}
+                      data-token-type={'semanticToken'}
+                    >
                       <ColorPreview color={row.computedValue} />
                       {row.rawValue}
                     </button>

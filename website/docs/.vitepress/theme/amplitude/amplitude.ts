@@ -341,7 +341,10 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
     // Design tokens
     const baseTokenName = findParent(
       node,
-      (node) => node.tagName === 'BUTTON' && node.classList.value.includes('tokenName'),
+      (node) =>
+        node.tagName === 'BUTTON' &&
+        node.classList.value.includes('tokenName') &&
+        node.dataset.tokenType === 'baseToken',
     );
 
     if (baseTokenName) {
@@ -350,7 +353,10 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
 
     const baseTokenValue = findParent(
       node,
-      (node) => node.tagName === 'BUTTON' && node.classList.value.includes('tokenName'),
+      (node) =>
+        node.tagName === 'BUTTON' &&
+        node.classList.value.includes('tokenValue') &&
+        node.dataset.tokenType === 'baseToken',
     );
 
     if (baseTokenValue) {
@@ -359,7 +365,10 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
 
     const semanticTokenName = findParent(
       node,
-      (node) => node.tagName === 'BUTTON' && node.classList.value.includes('tokenName'),
+      (node) =>
+        node.tagName === 'BUTTON' &&
+        node.classList.value.includes('tokenName') &&
+        node.dataset.tokenType === 'semanticToken',
     );
 
     if (semanticTokenName) {
@@ -368,7 +377,10 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
 
     const semanticTokenValue = findParent(
       node,
-      (node) => node.tagName === 'BUTTON' && node.classList.value.includes('tokenName'),
+      (node) =>
+        node.tagName === 'BUTTON' &&
+        node.classList.value.includes('tokenValue') &&
+        node.dataset.tokenType === 'semanticToken',
     );
 
     if (semanticTokenValue) {
@@ -404,7 +416,7 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
     }
   }
 
-  {
+  if (pathname.endsWith('design-tokens-usage-development')) {
     // tokens in development
     const baseTokensFileInput = findParent(
       node,
@@ -426,7 +438,7 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
 
     const copyButtonCss = findParent(
       node,
-      (node) => node.tagName === 'BUTTON' && Boolean(node.getAttribute('copy-button-title-css')),
+      (node) => node.tagName === 'BUTTON' && node.id === 'copy-button-css',
     );
 
     if (copyButtonCss) {
@@ -435,7 +447,7 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
 
     const copyButtonJson = findParent(
       node,
-      (node) => node.tagName === 'BUTTON' && Boolean(node.getAttribute('copy-button-title-json')),
+      (node) => node.tagName === 'BUTTON' && node.id === 'copy-button-json',
     );
 
     if (copyButtonJson) {

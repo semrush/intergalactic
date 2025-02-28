@@ -141,7 +141,11 @@ const BaseTokensTable = React.memo(({ filteredTokens }) => {
                     trigger='click'
                     className={styles.tokenNameWrapper}
                   >
-                    <button type='button' className={styles.tokenName}>
+                    <button
+                      type='button'
+                      className={styles.tokenName}
+                      data-token-type={'baseToken'}
+                    >
                       {row[props.name]}
                     </button>
                   </Copy>
@@ -160,7 +164,11 @@ const BaseTokensTable = React.memo(({ filteredTokens }) => {
                     trigger='click'
                     className={styles.tokenValueWrapper}
                   >
-                    <button type='button' className={styles.tokenValue}>
+                    <button
+                      type='button'
+                      className={styles.tokenValue}
+                      data-token-type={'baseToken'}
+                    >
                       <ColorPreview color={row[props.name]} />
                       {row[props.name]}
                     </button>
