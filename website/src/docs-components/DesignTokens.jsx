@@ -11,6 +11,7 @@ import Fuse from 'fuse.js';
 import { SearchInput } from './SearchInput.jsx';
 
 import { AutoSizer, List, CellMeasurer, CellMeasurerCache } from 'react-virtualized';
+import { logEvent } from '../../docs/.vitepress/theme/amplitude/amplitude';
 
 const cache = new CellMeasurerCache({
   fixedWidth: true,
@@ -32,6 +33,7 @@ export const ColorPreview = ({ color }) => {
 };
 
 let filteredTokensTimer = 0;
+let searchTimer = 0;
 
 const DesignTokens = ({ tokens }) => {
   const [nameFilter, setNameFilter] = React.useState('');
@@ -71,24 +73,34 @@ const DesignTokens = ({ tokens }) => {
   );
 
   React.useEffect(() => {
-    clearTimeout(filteredTokensTimer);
-
     filteredTokensTimer = setTimeout(() => {
       cache.clearAll();
       setFilteredTokensToTable(filteredTokens);
     }, 300);
-
-    return () => {
-      clearTimeout(filteredTokensTimer);
-    };
   }, [filteredTokens]);
+
+  const handleChangeFilter = (value) => {
+    clearTimeout(searchTimer);
+
+    setNameFilter(value);
+
+    searchTimer = setTimeout(() => {
+      logEvent('design-tokens:searchSemanticTokens', { value });
+    }, 500);
+  };
+
+  const handleChangeComponentFilter = (value) => {
+    setComponentFilter(value);
+
+    logEvent('design-tokens:selectSemanticTokens', { value });
+  };
 
   return (
     <div>
       <div className={styles.filters}>
         <SearchInput
           filter={nameFilter}
-          setFilter={setNameFilter}
+          setFilter={handleChangeFilter}
           resultsCount={filteredTokens.length}
           placeholder='Enter component or element name to find token'
           ariaLabel={'Search semantic tokens'}
@@ -100,7 +112,7 @@ const DesignTokens = ({ tokens }) => {
           placeholder='All components'
           aria-label='Filter by component'
           value={componentFilter}
-          onChange={setComponentFilter}
+          onChange={handleChangeComponentFilter}
           options={componentsFilterOptions}
         />
       </div>
@@ -185,7 +197,11 @@ const DesignTokensTable = React.memo(({ filteredTokens }) => {
                     trigger='click'
                     className={styles.tokenNameWrapper}
                   >
-                    <button type='button' className={styles.tokenName}>
+                    <button
+                      type='button'
+                      className={styles.tokenName}
+                      data-token-type={'semanticToken'}
+                    >
                       {row[props.name]}
                     </button>
                   </Copy>
@@ -204,7 +220,11 @@ const DesignTokensTable = React.memo(({ filteredTokens }) => {
                     trigger='click'
                     className={styles.tokenValueWrapper}
                   >
-                    <button type='button' className={styles.tokenValue}>
+                    <button
+                      type='button'
+                      className={styles.tokenValue}
+                      data-token-type={'semanticToken'}
+                    >
                       <ColorPreview color={row.computedValue} />
                       {row.rawValue}
                     </button>
@@ -229,6 +249,7 @@ const DesignTokensTable = React.memo(({ filteredTokens }) => {
                         href={`/intergalactic/components/${row[props.name][0]}/${
                           row[props.name][0]
                         }`}
+                        data-link-in-tooltip={row['name']}
                       >
                         {row[props.name][0]}
                       </Link>
@@ -241,7 +262,11 @@ const DesignTokensTable = React.memo(({ filteredTokens }) => {
                 children: (
                   <>
                     <DescriptionTooltip>
-                      <DescriptionTooltip.Trigger tag={ButtonLink} use={'secondary'}>
+                      <DescriptionTooltip.Trigger
+                        tag={ButtonLink}
+                        use={'secondary'}
+                        data-used-in-tooltip={row['name']}
+                      >
                         {row[props.name].length} components
                       </DescriptionTooltip.Trigger>
                       <DescriptionTooltip.Popper>
@@ -250,6 +275,7 @@ const DesignTokensTable = React.memo(({ filteredTokens }) => {
                             <Link
                               target='_blank'
                               href={`/intergalactic/components/${componentName}/${componentName}`}
+                              data-link-in-tooltip={row['name']}
                             >
                               {componentName}
                             </Link>

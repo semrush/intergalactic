@@ -244,6 +244,251 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
     }
   }
 
+  if (pathname.endsWith('illustration')) {
+    // Illustrations
+    const buttonElement = findParent(node, (node) => {
+      const liElement = node.parentElement?.tagName === 'LI' ? node.parentElement : undefined;
+      return (
+        node.tagName === 'BUTTON' && liElement?.classList.value.includes('previewIllustration')
+      );
+    });
+
+    if (buttonElement) {
+      const name = buttonElement.dataset.id;
+
+      return logEvent('illustration:click', { name, pathname });
+    }
+
+    const clearSearchButton = findParent(node, (node) => {
+      return node.tagName === 'BUTTON' && node.getAttribute('aria-label') === 'Clear';
+    });
+
+    if (clearSearchButton) {
+      return logEvent('illustration:clickClearSearch', { pathname });
+    }
+
+    const triggerANode = findParent(node, (node) => {
+      return node.tagName === 'A' && Boolean(node.dataset.illustrationDownloadSvg);
+    });
+
+    if (triggerANode) {
+      return logEvent('illustration:downloadSvg', {
+        name: triggerANode.dataset.illustrationDownloadSvg,
+        pathname,
+      });
+    }
+
+    const triggerButtonNode = findParent(node, (node) => {
+      return node.tagName === 'BUTTON' && Boolean(node.dataset.illustrationCopyImport);
+    });
+
+    if (triggerButtonNode) {
+      return logEvent('illustration:copyImport', {
+        name: triggerButtonNode.dataset.illustrationCopyImport,
+        pathname,
+      });
+    }
+  }
+
+  if (pathname.endsWith('icon')) {
+    // Icon
+    const buttonElement = findParent(node, (node) => {
+      const liElement = node.parentElement?.tagName === 'LI' ? node.parentElement : undefined;
+      return node.tagName === 'BUTTON' && liElement?.classList.value.includes('previewIcon');
+    });
+
+    if (buttonElement) {
+      const name = buttonElement.dataset.id;
+
+      return logEvent('icon:click', { name, pathname });
+    }
+
+    const clearSearchButton = findParent(node, (node) => {
+      return node.tagName === 'BUTTON' && node.getAttribute('aria-label') === 'Clear';
+    });
+
+    if (clearSearchButton) {
+      return logEvent('icon:clickClearSearch', { pathname });
+    }
+
+    const triggerPillNode = findParent(node, (node) => {
+      return node.tagName === 'BUTTON' && node.role === 'radio';
+    });
+
+    if (triggerPillNode?.dataset.iconPillCopyImport) {
+      return logEvent('icon:pillClick', {
+        name: triggerPillNode.dataset.iconPillCopyImport,
+        type: 'copyImport',
+        pathname,
+      });
+    } else if (triggerPillNode?.dataset.iconPillDownloadSvg) {
+      return logEvent('icon:pillClick', {
+        name: triggerPillNode.dataset.iconPillDownloadSvg,
+        type: 'downloadSvg',
+        pathname,
+      });
+    }
+
+    const triggerNode = findParent(node, (node) => {
+      return (
+        (node.tagName === 'A' && Boolean(node.dataset.iconDownloadSvg)) ||
+        (node.tagName === 'BUTTON' && Boolean(node.dataset.iconCopyImport))
+      );
+    });
+
+    if (triggerNode?.dataset.iconDownloadSvg) {
+      return logEvent('icon:downloadSvg', {
+        name: triggerNode.dataset.iconDownloadSvg,
+        size: triggerNode.dataset.iconSize,
+        pathname,
+      });
+    }
+
+    if (triggerNode?.dataset.iconCopyImport) {
+      return logEvent('icon:copyImport', {
+        name: triggerNode.dataset.iconCopyImport,
+        size: triggerNode.dataset.iconSize,
+        pathname,
+      });
+    }
+  }
+
+  if (pathname.endsWith('design-tokens')) {
+    // Design tokens
+    const baseTokenName = findParent(
+      node,
+      (node) =>
+        node.tagName === 'BUTTON' &&
+        node.classList.value.includes('tokenName') &&
+        node.dataset.tokenType === 'baseToken',
+    );
+
+    if (baseTokenName) {
+      return logEvent('design-tokens:copyBaseTokenName', { value: node.textContent, pathname });
+    }
+
+    const baseTokenValue = findParent(
+      node,
+      (node) =>
+        node.tagName === 'BUTTON' &&
+        node.classList.value.includes('tokenValue') &&
+        node.dataset.tokenType === 'baseToken',
+    );
+
+    if (baseTokenValue) {
+      return logEvent('design-tokens:copyBaseTokenValue', { value: node.textContent, pathname });
+    }
+
+    const semanticTokenName = findParent(
+      node,
+      (node) =>
+        node.tagName === 'BUTTON' &&
+        node.classList.value.includes('tokenName') &&
+        node.dataset.tokenType === 'semanticToken',
+    );
+
+    if (semanticTokenName) {
+      return logEvent('design-tokens:copySemanticTokenName', { value: node.textContent, pathname });
+    }
+
+    const semanticTokenValue = findParent(
+      node,
+      (node) =>
+        node.tagName === 'BUTTON' &&
+        node.classList.value.includes('tokenValue') &&
+        node.dataset.tokenType === 'semanticToken',
+    );
+
+    if (semanticTokenValue) {
+      return logEvent('design-tokens:copySemanticTokenValue', {
+        value: node.textContent,
+        pathname,
+      });
+    }
+
+    const semanticUsedInTooltip = findParent(
+      node,
+      (node) => node.tagName === 'BUTTON' && Boolean(node.dataset.usedInTooltip),
+    );
+
+    if (semanticUsedInTooltip) {
+      return logEvent('design-tokens:clickUsedInTooltip', {
+        value: semanticUsedInTooltip.dataset.usedInTooltip,
+        pathname,
+      });
+    }
+
+    const semanticLinkToComponent = findParent(
+      node,
+      (node) => node.tagName === 'A' && Boolean(node.dataset.linkInTooltip),
+    );
+
+    if (semanticLinkToComponent) {
+      return logEvent('design-tokens:linkToComponent', {
+        value: semanticLinkToComponent.dataset.linkInTooltip,
+        componentName: semanticLinkToComponent.textContent,
+        pathname,
+      });
+    }
+
+    const clearSearchBaseTokens = findParent(
+      node,
+      (node) => node.id === 'clear-search-message-base',
+    );
+
+    if (clearSearchBaseTokens) {
+      return logEvent('design-tokens:clickClearSearchBaseTokens', { pathname });
+    }
+
+    const clearSearchSemanticTokens = findParent(
+      node,
+      (node) => node.id === 'clear-search-message-design',
+    );
+
+    if (clearSearchSemanticTokens) {
+      return logEvent('design-tokens:clickClearSearchSemanticTokens', { pathname });
+    }
+  }
+
+  if (pathname.endsWith('design-tokens-usage-development')) {
+    // tokens in development
+    const baseTokensFileInput = findParent(
+      node,
+      (node) => node.tagName === 'INPUT' && node.id === 'base-tokens-file',
+    );
+
+    if (baseTokensFileInput) {
+      return logEvent('designTokensInDev:uploadBaseTokensClick', { pathname });
+    }
+
+    const designTokensFileInput = findParent(
+      node,
+      (node) => node.tagName === 'INPUT' && node.id === 'design-tokens-file',
+    );
+
+    if (designTokensFileInput) {
+      return logEvent('designTokensInDev:uploadDesignTokensClick', { pathname });
+    }
+
+    const copyButtonCss = findParent(
+      node,
+      (node) => node.tagName === 'BUTTON' && node.id === 'copy-button-css',
+    );
+
+    if (copyButtonCss) {
+      return logEvent('designTokensInDev:copyButtonCssClick', { pathname });
+    }
+
+    const copyButtonJson = findParent(
+      node,
+      (node) => node.tagName === 'BUTTON' && node.id === 'copy-button-json',
+    );
+
+    if (copyButtonJson) {
+      return logEvent('designTokensInDev:copyButtonJsonClick', { pathname });
+    }
+  }
+
   {
     // External links
     if (node.tagName === 'A' && !node.classList.contains('page-top-tabs-tab')) {
