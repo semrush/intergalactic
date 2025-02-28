@@ -16,7 +16,7 @@ const Demo = () => {
   return (
     <>
       <InlineEdit editable={editable} onEditableChange={setEditable}>
-        <InlineEdit.View pr={2} tag={TagContainer} interactive size='l' role={''}>
+        <InlineEdit.View pr={2} tag={TagContainer} interactive size='l' role={''} tabIndex={-1}>
           <TagContainer.Tag>{value}</TagContainer.Tag>
           <TagContainer.Close onClick={(e: React.SyntheticEvent) => e.stopPropagation()} />
         </InlineEdit.View>
