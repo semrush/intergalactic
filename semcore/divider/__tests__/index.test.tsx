@@ -7,6 +7,17 @@ import Divider from '../src';
 import { cleanup } from '@semcore/testing-utils/testing-library';
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
+import path from 'path';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe(' Dependency imports', () => {
+  const packageJsonPath = path.resolve(__dirname, '../package.json');
+  const componentPath = path.resolve(__dirname, '../src/Divider.jsx');
+  const indexPath = path.resolve(__dirname, '../src/index.d.ts');
+
+  runDependencyCheckTests(packageJsonPath, [componentPath, indexPath]);
+});
+
 describe('Divider', () => {
   beforeEach(cleanup);
 
