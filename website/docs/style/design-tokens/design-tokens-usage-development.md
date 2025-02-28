@@ -247,11 +247,11 @@ const DesignTokensProcessor = () => {
         <div className={styles.processedSection}>
           <div className={styles.processedBlock}>
             <div className={styles.processedBlockTitle}>
-              <h3 id="copy-button-title-css">
+              <h3 htmlFor="copy-button-css">
                 Processed CSS code
                 </h3>
                 <Copy copiedToast='Copied!' toCopy={css} trigger='click' onlyCopiedToast>
-                  <Button addonLeft={CopyM} use='tertiary' theme="muted" ml={2} mb={2} aria-describedby="copy-button-title-css">
+                  <Button addonLeft={CopyM} use='tertiary' theme="muted" ml={2} mb={2} id="copy-button-css">
                     Copy to clipboard
                     </Button>
                     </Copy>
@@ -260,11 +260,11 @@ const DesignTokensProcessor = () => {
           </div>
           <div className={styles.processedBlock}>
             <div className={styles.processedBlockTitle}>
-              <h3 id="copy-button-title-json">
+              <h3 htmlFor="copy-button-json">
                 Processed JSON code
             </h3>
               <Copy copiedToast='Copied!' toCopy={json} trigger='click' onlyCopiedToast>
-                <Button addonLeft={CopyM} use='tertiary' theme="muted" ml={2} mb={2} aria-describedby="copy-button-title-json">
+                <Button addonLeft={CopyM} use='tertiary' theme="muted" ml={2} mb={2} id="copy-button-json">
                   Copy to clipboard
                 </Button>
               </Copy>

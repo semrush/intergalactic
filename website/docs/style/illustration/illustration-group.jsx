@@ -32,7 +32,12 @@ export const IllustrationDetailsPanel = ({ name, visible, onClose }) => {
           </Text>
           <Flex gap={4}>
             <Copy toCopy={getImportText} onlyCopiedToast>
-              <Button use='tertiary' theme='muted' addonLeft={CopyM}>
+              <Button
+                use='tertiary'
+                theme='muted'
+                addonLeft={CopyM}
+                data-illustration-copy-import={name}
+              >
                 Copy import
               </Button>
             </Copy>
@@ -45,6 +50,7 @@ export const IllustrationDetailsPanel = ({ name, visible, onClose }) => {
               download={repoPath}
               target='_blank'
               href={`https://github.com/semrush/intergalactic/raw/master/${repoPath}?inline=false`}
+              data-illustration-download-svg={name}
             >
               Download SVG
             </Button>
