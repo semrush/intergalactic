@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { ReactNode } from 'react';
+import React from 'react';
 /** @ts-ignore */
 import { getStyles as reshadowGetStyles } from './reshadow-core';
 
@@ -111,7 +111,7 @@ function reshadowToShadow(obj: any) {
   }, {});
 }
 
-function sstyled(styles = {}): ((ReactNode: any) => ReactNode) & {
+function sstyled(styles = {}): ((ReactNode: any) => React.ReactNode) & {
   cn(name: string, props: any): any;
 } {
   // @ts-ignore
