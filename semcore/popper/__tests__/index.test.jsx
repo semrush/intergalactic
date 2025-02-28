@@ -98,6 +98,29 @@ describe('Popper', () => {
 
     expect(getByTestId('popper').style.position).toEqual('absolute');
   });
+
+  test.concurrent('должен корректно обрабатывать отсутствие Popper.Trigger или Popper.Popper', () => {
+    const { queryByTestId } = render(
+      <Popper visible>
+        <Popper.Popper data-testid='popper' />
+      </Popper>,
+    );
+  
+    expect(queryByTestId('popper')).toBeTruthy();
+  
+    cleanup();
+  
+    const { queryByTestId: queryByTestId2 } = render(
+      <Popper visible>
+        <Popper.Trigger data-testid='trigger' />
+      </Popper>,
+    );
+  
+    expect(queryByTestId2('trigger')).toBeTruthy();
+  });
+
+
+  
 });
 
 describe('Popper.Trigger', () => {
