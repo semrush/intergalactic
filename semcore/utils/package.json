@@ -10,6 +10,11 @@
     "build": "pnpm semcore-builder --modules=cjs --source=js,ts"
   },
   "exports": {
+    ".": {
+      "require": "./lib/index.js",
+      "import": "./lib/index.mjs",
+      "types": "./lib/index.d.ts"
+    },
     "./lib/core": {
       "require": "./lib/core/index.js",
       "import": "./lib/core/index.mjs",
