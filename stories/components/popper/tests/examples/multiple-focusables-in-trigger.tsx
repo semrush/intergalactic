@@ -1,12 +1,12 @@
 import React from 'react';
 // @ts-ignore
-import Select from 'intergalactic/select';
+import Select from '@semcore/select';
 // @ts-ignore
-import Input from 'intergalactic/input';
+import Input from '@semcore/input';
 // @ts-ignore
-import { Text } from 'intergalactic/typography';
+import { Text } from '@semcore/typography';
 // @ts-ignore
-import { Box } from 'intergalactic/flex-box';
+import { Box } from '@semcore/flex-box';
 
 const options = Array(5)
   .fill(0)

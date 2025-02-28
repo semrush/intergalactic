@@ -1,14 +1,14 @@
 import React from 'react';
 // @ts-ignore
-import { DescriptionTooltip } from 'intergalactic/tooltip';
+import { DescriptionTooltip } from '@semcore/tooltip';
 // @ts-ignore
-import { Box, Flex } from 'intergalactic/flex-box';
+import { Box, Flex } from '@semcore/flex-box';
 // @ts-ignore
-import { Text } from 'intergalactic/typography';
+import { Text } from '@semcore/typography';
 // @ts-ignore
-import Link from 'intergalactic/link';
+import Link from '@semcore/link';
 // @ts-ignore
-import Button from 'intergalactic/button';
+import Button from '@semcore/button';
 
 const Demo = () => {
   const [visible, setVisible] = React.useState(false);

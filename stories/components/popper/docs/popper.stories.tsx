@@ -11,7 +11,7 @@ import RenderFunctionsExample from './examples/render-functions';
 import ShowHideExample from './examples/show-hide';
 
 const meta: Meta<typeof Popper> = {
-  title: 'Components/Popper/Documantation',
+  title: 'Components/Popper/Documentation',
   component: Popper,
 };
 

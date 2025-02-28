@@ -1,8 +1,8 @@
 import React from 'react';
 // @ts-ignore
-import DropdownMenu from 'intergalactic/dropdown-menu';
+import DropdownMenu from '@semcore/dropdown-menu';
 // @ts-ignore
-import { ButtonTrigger } from 'intergalactic/base-trigger';
+import { ButtonTrigger } from '@semcore/base-trigger';
 
 const Demo = () => {
   return (
