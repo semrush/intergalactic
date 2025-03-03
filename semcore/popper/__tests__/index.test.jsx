@@ -99,30 +99,27 @@ describe('Popper', () => {
     expect(getByTestId('popper').style.position).toEqual('absolute');
   });
 
-  test.concurrent(
-    'Verify renders when no Popper.Trigger or Popper.Popper',
-    () => {
-      const { queryByTestId } = render(
-        <Popper visible>
-          <Popper.Popper data-testid='popper' />
-        </Popper>,
-      );
+  test.concurrent('Verify renders when no Popper.Trigger or Popper.Popper', () => {
+    const { queryByTestId } = render(
+      <Popper visible>
+        <Popper.Popper data-testid='popper' />
+      </Popper>,
+    );
 
-      expect(queryByTestId('popper')).toBeTruthy();
+    expect(queryByTestId('popper')).toBeTruthy();
 
-      cleanup();
+    cleanup();
 
-      const { queryByTestId: queryByTestId2 } = render(
-        <Popper visible>
-          <Popper.Trigger data-testid='trigger' />
-        </Popper>,
-      );
+    const { queryByTestId: queryByTestId2 } = render(
+      <Popper visible>
+        <Popper.Trigger data-testid='trigger' />
+      </Popper>,
+    );
 
-      expect(queryByTestId2('trigger')).toBeTruthy();
-    },
-  );
+    expect(queryByTestId2('trigger')).toBeTruthy();
+  });
   test('Verify preventOverflow modifier prevents popper from overflowing boundaries', () => {
-      const { getByTestId } = render(
+    const { getByTestId } = render(
       <Popper
         visible
         modifiers={[
@@ -135,14 +132,14 @@ describe('Popper', () => {
           },
         ]}
       >
-        <Popper.Trigger data-testid="trigger">Trigger</Popper.Trigger>
-        <Popper.Popper data-testid="popper">Content</Popper.Popper>
-      </Popper>
+        <Popper.Trigger data-testid='trigger'>Trigger</Popper.Trigger>
+        <Popper.Popper data-testid='popper'>Content</Popper.Popper>
+      </Popper>,
     );
-  
+
     const trigger = getByTestId('trigger');
     const popper = getByTestId('popper');
-  
+
     act(() => {
       trigger.click();
     });
@@ -152,10 +149,7 @@ describe('Popper', () => {
     expect(popperRect.left).toBeGreaterThanOrEqual(0);
     expect(popperRect.bottom).toBeLessThanOrEqual(window.innerHeight);
     expect(popperRect.right).toBeLessThanOrEqual(window.innerWidth);
-
   });
-  
-  
 });
 
 describe('Popper.Trigger', () => {

@@ -3,39 +3,40 @@ import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 test.describe('Popper', () => {
   test.describe('Focus Lock', () => {
-  test('Verify Focus lock without disablePortal', async ({ page }) => {
-    const standPath = 'stories/components/popper/tests/examples/dropdown-no-disable-portal.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    test('Verify Focus lock without disablePortal', async ({ page }) => {
+      const standPath = 'stories/components/popper/tests/examples/dropdown-no-disable-portal.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en');
 
-    await page.setContent(htmlContent);
-    await page.mouse.click(1, 1);
+      await page.setContent(htmlContent);
+      await page.mouse.click(1, 1);
 
-    await page.keyboard.press('Tab');
-
-    for (let i = 0; i < 50; i++) {
       await page.keyboard.press('Tab');
-      await expect(page.getByTestId('popper')).not.toBeFocused();
-      await expect(page.getByTestId('input-in-popper').getByPlaceholder('Password')).toBeFocused();
-    }
-  });
 
-  test('Verify Focus lock with disablePortal', async ({ page}) => {
+      for (let i = 0; i < 50; i++) {
+        await page.keyboard.press('Tab');
+        await expect(page.getByTestId('popper')).not.toBeFocused();
+        await expect(
+          page.getByTestId('input-in-popper').getByPlaceholder('Password'),
+        ).toBeFocused();
+      }
+    });
 
-    const standPath = 'stories/components/popper/tests/examples/dropdown-disable-portal.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    test('Verify Focus lock with disablePortal', async ({ page }) => {
+      const standPath = 'stories/components/popper/tests/examples/dropdown-disable-portal.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en');
 
-    await page.setContent(htmlContent);
-    await page.mouse.click(1, 1);
+      await page.setContent(htmlContent);
+      await page.mouse.click(1, 1);
 
-    await page.keyboard.press('Tab');
-
-    for (let i = 0; i < 50; i++) {
       await page.keyboard.press('Tab');
-      await expect(page.getByTestId('popper')).not.toBeFocused();
-      await expect(page.getByTestId('input-in-popper')).toBeFocused();
-    }
+
+      for (let i = 0; i < 50; i++) {
+        await page.keyboard.press('Tab');
+        await expect(page.getByTestId('popper')).not.toBeFocused();
+        await expect(page.getByTestId('input-in-popper')).toBeFocused();
+      }
+    });
   });
-});
 
   test('Verify popper position for cursor anchoring functionality', async ({ page }) => {
     const standPath = 'stories/components/popper/tests/examples/cursor-anchoring.tsx';
@@ -99,8 +100,8 @@ test.describe('Popper', () => {
 
       await page.setContent(htmlContent);
 
-      const option1Locator =  page.locator('text=Option 1');
-      const option3Locator =  page.locator('text=Option 3');
+      const option1Locator = page.locator('text=Option 1');
+      const option3Locator = page.locator('text=Option 3');
 
       await expect(option3Locator).toHaveCount(0);
 
@@ -120,8 +121,8 @@ test.describe('Popper', () => {
 
       await page.setContent(htmlContent);
 
-      const option1Locator =  page.locator('text=Option 1');
-      const option3Locator =  page.locator('text=Option 3');
+      const option1Locator = page.locator('text=Option 1');
+      const option3Locator = page.locator('text=Option 3');
 
       await expect(option3Locator).toHaveCount(0);
 
@@ -142,8 +143,8 @@ test.describe('Popper', () => {
 
     await page.setContent(htmlContent);
 
-    const popperD =  page.locator('text=Popper');
-    const popperF =  page.locator('text=Fixed');
+    const popperD = page.locator('text=Popper');
+    const popperF = page.locator('text=Fixed');
     const popperDY = (await popperD.boundingBox())!.y;
     const popperFY = (await popperF.boundingBox())!.y;
 
@@ -168,7 +169,6 @@ test.describe('Popper', () => {
     const trigger = await page.locator('text=Open popper');
     await trigger.click();
     await expect(page).toHaveScreenshot();
-
   });
 
   test('Verify popper when OutsideClick cancels hide', async ({ page }) => {
@@ -196,15 +196,13 @@ test.describe('Popper', () => {
     if (!rootBox) {
       return;
     }
-  
-  const clickX = rootBox.x + rootBox.width - 10; 
-  const clickY = rootBox.y + 10; 
-  for (let i = 0; i < 20; i++) 
-  {
-  await page.mouse.click(clickX, clickY);
-  await expect(popper).toHaveCount(1);
-}
 
+    const clickX = rootBox.x + rootBox.width - 10;
+    const clickY = rootBox.y + 10;
+    for (let i = 0; i < 20; i++) {
+      await page.mouse.click(clickX, clickY);
+      await expect(popper).toHaveCount(1);
+    }
   });
 
   test('Verify onVisibleChange prop', async ({ page }) => {
@@ -214,10 +212,10 @@ test.describe('Popper', () => {
     await page.setContent(htmlContent);
 
     const triggerControlled = await page.getByText('Controlled', { exact: true });
-    const triggerUncontrolled = await page.locator('text=Uncontrolled' );
+    const triggerUncontrolled = await page.locator('text=Uncontrolled');
 
-  const popperControlled =  page.locator('[data-popper-placement="right"]');
-  const popperUncontrolled =  page.locator('[data-popper-placement="left"]');
+    const popperControlled = page.locator('[data-popper-placement="right"]');
+    const popperUncontrolled = page.locator('[data-popper-placement="left"]');
     await triggerControlled.click();
     await expect(popperControlled).toHaveCount(1);
     await triggerControlled.click();
@@ -261,11 +259,9 @@ test.describe('Popper', () => {
     await expect(popperControlled).toHaveCount(0);
 
     await page.keyboard.press('Tab');
-    await page.keyboard.press('Escape')
+    await page.keyboard.press('Escape');
     await expect(popperUncontrolled).toHaveCount(0);
     await expect(popperControlled).toHaveCount(0);
-
-
   });
 
   test('Verify placement prop', async ({ page }) => {
@@ -274,47 +270,44 @@ test.describe('Popper', () => {
 
     await page.setContent(htmlContent);
 
-   
-    await  page.getByText('TOP START', { exact: true } ).hover();
+    await page.getByText('TOP START', { exact: true }).hover();
     await expect(page.locator('[data-popper-placement="top-start"]')).toHaveCount(1);
     await expect(page).toHaveScreenshot();
 
-    await page.getByText('TOP', { exact: true } ).hover();
-    await expect(page.locator('[data-popper-placement="top"]' )).toHaveCount(1);
+    await page.getByText('TOP', { exact: true }).hover();
+    await expect(page.locator('[data-popper-placement="top"]')).toHaveCount(1);
 
-    await  page.getByText('TOP END', { exact: true } ).hover();
+    await page.getByText('TOP END', { exact: true }).hover();
     await expect(page.locator('[data-popper-placement="top-end"]')).toHaveCount(1);
 
-    page.getByText('RIGHT START', { exact: true } ).hover();
+    page.getByText('RIGHT START', { exact: true }).hover();
     await expect(page.locator('[data-popper-placement="right-start"]')).toHaveCount(1);
-  
-    await page.getByText('RIGHT', { exact: true } ).hover();
-    await expect(page.locator('[data-popper-placement="right"]')).toHaveCount(1);
-await expect(page).toHaveScreenshot();
 
-    page.getByText('RIGHT END', { exact: true } ).hover();
+    await page.getByText('RIGHT', { exact: true }).hover();
+    await expect(page.locator('[data-popper-placement="right"]')).toHaveCount(1);
+    await expect(page).toHaveScreenshot();
+
+    page.getByText('RIGHT END', { exact: true }).hover();
     await expect(page.locator('[data-popper-placement="right-end"]')).toHaveCount(1);
 
-    page.getByText('BOTTOM START', { exact: true } ).hover();
+    page.getByText('BOTTOM START', { exact: true }).hover();
     await expect(page.locator('[data-popper-placement="bottom-start"]')).toHaveCount(1);
-  
-    await page.getByText('BOTTOM', { exact: true } ).hover();
+
+    await page.getByText('BOTTOM', { exact: true }).hover();
     await expect(page.locator('[data-popper-placement="bottom"]')).toHaveCount(1);
 
-    page.getByText('BOTTOM END', { exact: true } ).hover();
+    page.getByText('BOTTOM END', { exact: true }).hover();
     await expect(page.locator('[data-popper-placement="bottom-end"]')).toHaveCount(1);
     await expect(page).toHaveScreenshot();
 
-    page.getByText('LEFT START', { exact: true } ).hover();
+    page.getByText('LEFT START', { exact: true }).hover();
     await expect(page.locator('[data-popper-placement="right-start"]')).toHaveCount(1);
-  
-    await page.getByText('LEFT', { exact: true } ).hover();
+
+    await page.getByText('LEFT', { exact: true }).hover();
     await expect(page.locator('[data-popper-placement="right"]')).toHaveCount(1);
 
-    page.getByText('LEFT END', { exact: true } ).hover();
+    page.getByText('LEFT END', { exact: true }).hover();
     await expect(page.locator('[data-popper-placement="right-end"]')).toHaveCount(1);
-
-
   });
 
   test('Verify focus when disableEnforceFocus prop enabled', async ({ page, browserName }) => {
@@ -324,16 +317,16 @@ await expect(page).toHaveScreenshot();
     await page.setContent(htmlContent);
 
     await page.keyboard.press('Tab');
- 
-    await  expect(page.getByRole('button', { name: 'Open popper' })).toBeFocused();
-    await page.keyboard.press('Tab');
-    await  expect(page.getByTestId('input-out-popper').getByPlaceholder('Password')).toBeFocused();
-    await page.keyboard.press('Tab');
-    await  expect(page.getByTestId('input-in-popper').getByPlaceholder('Password')).toBeFocused();
-    await page.keyboard.press('Tab');
-    await  expect(page.getByTestId('input-in-popper').getByPlaceholder('Password')).not.toBeFocused();
 
-  
+    await expect(page.getByRole('button', { name: 'Open popper' })).toBeFocused();
+    await page.keyboard.press('Tab');
+    await expect(page.getByTestId('input-out-popper').getByPlaceholder('Password')).toBeFocused();
+    await page.keyboard.press('Tab');
+    await expect(page.getByTestId('input-in-popper').getByPlaceholder('Password')).toBeFocused();
+    await page.keyboard.press('Tab');
+    await expect(
+      page.getByTestId('input-in-popper').getByPlaceholder('Password'),
+    ).not.toBeFocused();
   });
 
   test('Verify popper when disabled and focusLoop props set', async ({ page, browserName }) => {
@@ -342,32 +335,30 @@ await expect(page).toHaveScreenshot();
     await page.setContent(htmlContent);
 
     await page.keyboard.press('Tab');
- 
-    await  expect(page.getByRole('button', { name: 'Disabled popper' })).toBeFocused();
+
+    await expect(page.getByRole('button', { name: 'Disabled popper' })).toBeFocused();
     await page.keyboard.press('Enter');
-    const popperLocator =  page.locator('text=Attached content');
+    const popperLocator = page.locator('text=Attached content');
     await expect(popperLocator).toHaveCount(0);
 
     await page.keyboard.press('Tab');
     const popperTrigger = page.getByRole('button', { name: 'focusLoop' });
-    await  expect(popperTrigger).toBeFocused();
+    await expect(popperTrigger).toBeFocused();
     await page.keyboard.press('Enter');
     const popperLocator2 = page.locator('[data-testid="popper"]');
     await expect(popperLocator2).toHaveCount(1);
     const input = page.getByTestId('input-in-popper').getByPlaceholder('Password');
-    await  expect(popperTrigger).toBeFocused();
-    await  expect(input).not.toBeFocused();    
+    await expect(popperTrigger).toBeFocused();
+    await expect(input).not.toBeFocused();
 
     await page.keyboard.press('Tab');
-    await  expect(popperTrigger).not.toBeFocused();
-    await  expect(input).toBeFocused();
+    await expect(popperTrigger).not.toBeFocused();
+    await expect(input).toBeFocused();
 
     await page.keyboard.press('Tab');
     await expect(popperLocator2).toHaveCount(0);
-    await  expect(popperTrigger).toBeFocused();
-  
+    await expect(popperTrigger).toBeFocused();
   });
-
 
   test.describe('Interactions', () => {
     test.use({ hasTouch: true });
@@ -409,7 +400,6 @@ await expect(page).toHaveScreenshot();
       );
 
       await expect(popperLocator).toHaveCount(1);
-      
     });
 
     test('Click - Verify popper appearing', async ({ page }) => {
@@ -426,7 +416,7 @@ await expect(page).toHaveScreenshot();
       const after = page.locator('button[data-position="after"]');
 
       const popperLocator2 = page.locator('text=Some content in popper');
-    
+
       await triggerLocator.hover();
       await expect(popperLocator).toHaveCount(0);
 
@@ -452,7 +442,6 @@ await expect(page).toHaveScreenshot();
       await page.keyboard.press('Enter');
       await expect(popperLocator2).toHaveCount(1);
       await expect(popperLocator).not.toBeFocused();
-      
     });
 
     test('None - Verify popper doesnt appear', async ({ page }) => {
@@ -469,7 +458,7 @@ await expect(page).toHaveScreenshot();
       const after = page.locator('button[data-position="after"]');
 
       const popperLocator2 = page.locator('text=Some content in popper');
-    
+
       await triggerLocator.hover();
       await expect(popperLocator).toHaveCount(0);
 
@@ -492,46 +481,43 @@ await expect(page).toHaveScreenshot();
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
       await expect(popperLocator2).toHaveCount(0);
-      
     });
 
     test('Focus - Verify popper appearing', async ({ page, browserName }) => {
       const standPath = 'stories/components/popper/tests/examples/interaction-focus.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
-  
+
       await page.setContent(htmlContent);
-  
+
       const before = page.locator('button[data-position="before"]');
       const after = page.locator('button[data-position="after"]');
       const buttonLocator = await page.locator('button[data-testid="button"]');
       const popperLocator = page.locator('text=Some content in popper');
       await before.click();
       await expect(popperLocator).toHaveCount(0);
-  
+
       await buttonLocator.hover();
       await expect(popperLocator).toHaveCount(0);
 
       await buttonLocator.click();
-  
+
       await expect(popperLocator).toHaveCount(1);
-  
+
       await new Promise((resolve) => setTimeout(resolve, 50));
-      if (browserName==="webkit") // added this if bacuse shift+tab doesnt move focus on prev element of webkit
-      {
+      if (browserName === 'webkit') {
+        // added this if bacuse shift+tab doesnt move focus on prev element of webkit
         await page.keyboard.press('Tab');
         await page.keyboard.press('Shift+Tab');
         await page.keyboard.press('Shift+Tab');
-      }
-      else
-      await page.keyboard.press('Shift+Tab');
-  
+      } else await page.keyboard.press('Shift+Tab');
+
       await expect(popperLocator).toHaveCount(0);
       await expect(before).toBeFocused();
-  
+
       await page.keyboard.press('Tab');
       await expect(page).toHaveScreenshot();
       await expect(popperLocator).toHaveCount(1);
-  
+
       await page.keyboard.press('Tab');
       await expect(popperLocator).toHaveCount(0);
       await expect(page).toHaveScreenshot();
@@ -546,91 +532,90 @@ await expect(page).toHaveScreenshot();
       await expect(after).toBeFocused();
     });
 
-  test('Verify popper visibility when focusable elements on trigger and after trigger', async ({ page }) => {
-    const standPath = 'stories/components/popper/tests/examples/multiple-focusables-in-trigger.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    test('Verify popper visibility when focusable elements on trigger and after trigger', async ({
+      page,
+    }) => {
+      const standPath =
+        'stories/components/popper/tests/examples/multiple-focusables-in-trigger.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en');
 
-    await page.setContent(htmlContent);
+      await page.setContent(htmlContent);
 
-    const firstInput = await page.locator('input[data-position="before"]');
-    const secondInput = await page.locator('input[data-position="after"]');
-    await page.keyboard.press('Tab');
-    await expect(firstInput).toBeFocused();
+      const firstInput = await page.locator('input[data-position="before"]');
+      const secondInput = await page.locator('input[data-position="after"]');
+      await page.keyboard.press('Tab');
+      await expect(firstInput).toBeFocused();
 
-    const optionLocator = await page.locator('text=Option 1');
-    await expect(optionLocator).toHaveCount(0);
+      const optionLocator = await page.locator('text=Option 1');
+      await expect(optionLocator).toHaveCount(0);
 
-    await new Promise((resolve) => setTimeout(resolve, 50));
-    await page.keyboard.press('Tab');
+      await new Promise((resolve) => setTimeout(resolve, 50));
+      await page.keyboard.press('Tab');
 
-    await expect(optionLocator).toHaveCount(1);
+      await expect(optionLocator).toHaveCount(1);
 
-    await new Promise((resolve) => setTimeout(resolve, 50));
-    await page.keyboard.press('Tab');
+      await new Promise((resolve) => setTimeout(resolve, 50));
+      await page.keyboard.press('Tab');
 
-    await expect(optionLocator).toHaveCount(1);
+      await expect(optionLocator).toHaveCount(1);
 
-    await new Promise((resolve) => setTimeout(resolve, 50));
-    await page.keyboard.press('Tab');
+      await new Promise((resolve) => setTimeout(resolve, 50));
+      await page.keyboard.press('Tab');
 
-    await expect(optionLocator).toHaveCount(1);
+      await expect(optionLocator).toHaveCount(1);
 
-    await new Promise((resolve) => setTimeout(resolve, 50));
-    await page.keyboard.press('Tab');
+      await new Promise((resolve) => setTimeout(resolve, 50));
+      await page.keyboard.press('Tab');
 
-    await expect(optionLocator).toHaveCount(0);
+      await expect(optionLocator).toHaveCount(0);
 
-    await expect(secondInput).toBeFocused();
+      await expect(secondInput).toBeFocused();
+    });
+
+    test('Verify popper with render function', async ({ page, browserName }) => {
+      const standPath = 'stories/components/popper/docs/examples/render-functions.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en');
+      await page.setContent(htmlContent);
+
+      const buttonTrigger = page.getByRole('button', { name: 'Open popper' });
+      const closePopper = page.getByRole('button', { name: 'Close popper' });
+      const triggerPopper = page.getByText('Attach trigger');
+      const popperLocator = page.locator('[data-ui-name="Popper.Popper"]');
+      await expect(popperLocator).toHaveCount(0);
+
+      //mouse interactions
+      await buttonTrigger.hover();
+      await expect(popperLocator).toHaveCount(0);
+      await buttonTrigger.click();
+      await expect(popperLocator).toHaveCount(1);
+      await triggerPopper.click();
+      await expect(popperLocator).toHaveCount(0);
+      await triggerPopper.hover();
+      await expect(popperLocator).toHaveCount(0);
+      await triggerPopper.click();
+      await expect(popperLocator).toHaveCount(1);
+      await buttonTrigger.click();
+      await expect(popperLocator).toHaveCount(0);
+      await triggerPopper.click();
+      await closePopper.click();
+      await expect(popperLocator).toHaveCount(0);
+
+      //keyboard interactions
+      await page.mouse.click(1, 1);
+      await page.keyboard.press('Tab');
+      await expect(buttonTrigger).toBeFocused();
+      await expect(popperLocator).toHaveCount(0);
+      await page.keyboard.press('Enter');
+      await expect(buttonTrigger).toBeFocused();
+      await expect(popperLocator).toHaveCount(1);
+      await page.keyboard.press('Tab');
+      await expect(closePopper).toBeFocused();
+      await page.keyboard.press('Enter');
+
+      await expect(popperLocator).toHaveCount(0);
+
+      //the focus not returns to trigger in ff and webkit
+      if (browserName === 'chromium') await expect(buttonTrigger).toBeFocused();
+    });
   });
-
-  test('Verify popper with render function', async ({ page, browserName }) => {
-    const standPath = 'stories/components/popper/docs/examples/render-functions.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
- 
-    const buttonTrigger = page.getByRole('button', { name: 'Open popper' });
-    const closePopper = page.getByRole('button', { name: 'Close popper' });
-    const triggerPopper = page.getByText('Attach trigger');
-    const popperLocator =  page.locator('[data-ui-name="Popper.Popper"]');
-    await expect(popperLocator).toHaveCount(0);
-
-    //mouse interactions
-    await buttonTrigger.hover();
-    await expect(popperLocator).toHaveCount(0);
-    await buttonTrigger.click();
-    await expect(popperLocator).toHaveCount(1);
-    await triggerPopper.click();
-    await expect(popperLocator).toHaveCount(0);
-    await triggerPopper.hover();
-    await expect(popperLocator).toHaveCount(0);
-    await triggerPopper.click();
-    await expect(popperLocator).toHaveCount(1);
-    await buttonTrigger.click();
-    await expect(popperLocator).toHaveCount(0);
-    await triggerPopper.click();
-    await closePopper.click();
-    await expect(popperLocator).toHaveCount(0);
-
-    //keyboard interactions
-    await page.mouse.click(1, 1);
-    await page.keyboard.press('Tab');
-    await expect(buttonTrigger).toBeFocused();
-    await expect(popperLocator).toHaveCount(0);
-    await page.keyboard.press('Enter');
-    await expect(buttonTrigger).toBeFocused();
-    await expect(popperLocator).toHaveCount(1);
-  await page.keyboard.press('Tab');
-  await expect(closePopper).toBeFocused();
-  await page.keyboard.press('Enter');
-  
-    await expect(popperLocator).toHaveCount(0);
-    
-    //the focus not returns to trigger in ff and webkit
-    if (browserName === 'chromium')
-    await expect(buttonTrigger).toBeFocused();
-
-  });
-
-});
-
 });
