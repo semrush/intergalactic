@@ -1,13 +1,8 @@
 import React from 'react';
-// @ts-ignore
 import { DescriptionTooltip } from '@semcore/tooltip';
-// @ts-ignore
 import { Box, Flex } from '@semcore/flex-box';
-// @ts-ignore
 import { Text } from '@semcore/typography';
-// @ts-ignore
 import Link from '@semcore/link';
-// @ts-ignore
 import Button from '@semcore/button';
 
 const Demo = () => {

@@ -1,5 +1,4 @@
 import React from 'react';
-// @ts-ignore
 import Tooltip from '@semcore/tooltip';
 
 const Demo = () => {

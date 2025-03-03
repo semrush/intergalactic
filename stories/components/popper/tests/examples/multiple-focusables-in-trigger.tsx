@@ -1,11 +1,7 @@
 import React from 'react';
-// @ts-ignore
 import Select from '@semcore/select';
-// @ts-ignore
 import Input from '@semcore/input';
-// @ts-ignore
 import { Text } from '@semcore/typography';
-// @ts-ignore
 import { Box } from '@semcore/flex-box';
 
 const options = Array(5)

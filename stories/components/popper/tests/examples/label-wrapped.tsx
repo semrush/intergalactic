@@ -1,5 +1,4 @@
 import React from 'react';
-// @ts-ignore
 import Select from '@semcore/select';
 
 const options = Array(5)

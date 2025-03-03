@@ -1,13 +1,8 @@
 import React from 'react';
-// @ts-ignore
 import Tooltip from '@semcore/tooltip';
-// @ts-ignore
 import Popper from '@semcore/popper';
-// @ts-ignore
 import { Box, Flex } from '@semcore/flex-box';
-// @ts-ignore
 import Card from '@semcore/card';
-// @ts-ignore
 import Button from '@semcore/button';
 
 const Demo = () => {
