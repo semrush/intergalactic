@@ -13,17 +13,13 @@ test.describe('Popper', () => {
 
     for (let i = 0; i < 50; i++) {
       await page.keyboard.press('Tab');
-        await expect(page.getByTestId('popper')).not.toBeFocused();
-        await expect(page.getByTestId('input-in-popper').getByPlaceholder('Password')).toBeFocused();
-        
-    
-   
+      await expect(page.getByTestId('popper')).not.toBeFocused();
+      await expect(page.getByTestId('input-in-popper').getByPlaceholder('Password')).toBeFocused();
     }
   });
 
   test('Veiryf Focus lock works with disablePortal', async ({ page, browserName }) => {
-  
-    if(browserName === 'firefox') return; //"This test for some reason doesn't work in FF - it puts focus on the last input after the first click",
+    if (browserName === 'firefox') return; //"This test for some reason doesn't work in FF - it puts focus on the last input after the first click",
 
     const standPath = 'stories/components/popper/tests/examples/disable-portal.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -35,11 +31,8 @@ test.describe('Popper', () => {
 
     for (let i = 0; i < 50; i++) {
       await page.keyboard.press('Tab');
-        await expect(page.getByTestId('popper')).not.toBeFocused();
-        await expect(page.getByTestId('input-in-popper').getByPlaceholder('Password')).toBeFocused();
-        
-    
-   
+      await expect(page.getByTestId('popper')).not.toBeFocused();
+      await expect(page.getByTestId('input-in-popper').getByPlaceholder('Password')).toBeFocused();
     }
   });
 
