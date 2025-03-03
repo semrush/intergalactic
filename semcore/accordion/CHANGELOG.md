@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.45.3] - 2025-03-03
+
+### Fixed
+
+- Focus on elements in collapsed `Accordion.Item` (with `preserveNode` property).
+
 ## [5.45.2] - 2025-02-05
 
 ### Changed
