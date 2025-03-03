@@ -30,13 +30,13 @@ jobs:
         id: pnpm-cache
         run: |
           echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
-      - uses: actions/cache@v4.0.0
+      - uses: actions/cache@v4
         name: Setup pnpm cache
         with:
           path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
       - name: Cache build
-        uses: actions/cache@v4.0.0
+        uses: actions/cache@v4
         id: cache-build
         with:
           path: |
@@ -81,13 +81,13 @@ jobs:
         id: pnpm-cache
         run: |
           echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
-      - uses: actions/cache@v4.0.0
+      - uses: actions/cache@v4
         name: Restore pnpm cache
         with:
           path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
       - name: Restore cached build
-        uses: actions/cache@v4.0.0
+        uses: actions/cache@v4
         with:
           path: |
             semcore/*/lib
