@@ -22,6 +22,13 @@ const Demo = () => {
             Popper
           </DescriptionTooltip.Popper>
         </DescriptionTooltip>
+        <Box mr={15} />
+        <DescriptionTooltip visible strategy="fixed">
+          <DescriptionTooltip.Trigger tag={Button}>Trigger</DescriptionTooltip.Trigger>
+          <DescriptionTooltip.Popper aria-label={'Popper description'}>
+            Fixed
+          </DescriptionTooltip.Popper>
+        </DescriptionTooltip>
       </Flex>
 
       {/* @ts-ignore */}

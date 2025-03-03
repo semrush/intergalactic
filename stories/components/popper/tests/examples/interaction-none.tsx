@@ -1,5 +1,7 @@
 import React from 'react';
 // @ts-ignore
+import Tooltip from '@semcore/tooltip';
+// @ts-ignore
 import Popper from '@semcore/popper';
 // @ts-ignore
 import { Box, Flex } from '@semcore/flex-box';
@@ -11,11 +13,18 @@ import Button from '@semcore/button';
 const Demo = () => {
   return (
     <>
-      <Flex>
+       <Flex m={4} >
+    <Tooltip interaction='none'>
+      <Tooltip.Trigger data-testid='trigger'>Trigger</Tooltip.Trigger>
+      <Tooltip.Popper data-testid='popper'>Popper</Tooltip.Popper>
+    </Tooltip>
+   </Flex>
+
+    <Flex>
         <Button data-position='before'>1</Button>
-        <Popper interaction={'focus'} timeout={[0, 100]}>
+        <Popper interaction={'none'} timeout={[0, 100]}>
           <Popper.Trigger>
-            <Button>Click</Button>
+          <Button data-testid='button'>Click</Button>
           </Popper.Trigger>
           <Popper.Popper>
             <Card>Some content in popper</Card>

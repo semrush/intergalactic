@@ -9,7 +9,7 @@ import Popper from '../src';
 
 describe('Popper', () => {
   beforeEach(cleanup);
-  test.concurrent('should render popper to outside container', () => {
+  test.concurrent('Verify popper renders to outside container', () => {
     const { getByTestId } = render(
       <Popper visible>
         <Popper.Trigger data-testid='reference' />
@@ -21,7 +21,7 @@ describe('Popper', () => {
     expect(getByTestId('popper')).toBeTruthy();
   });
 
-  test.sequential('should support a custom handler a reference', () => {
+  test.sequential('Verify supports a custom handler a reference', () => {
     vi.useFakeTimers();
     const spy = vi.fn();
     const { getByTestId } = render(
@@ -49,7 +49,7 @@ describe('Popper', () => {
     vi.useRealTimers();
   });
 
-  test.sequential('should support timeout for change visible', () => {
+  test.sequential('Verify supports timeout for change visible', () => {
     vi.useFakeTimers();
     const spy = vi.fn();
     const { getByTestId } = render(
@@ -71,7 +71,7 @@ describe('Popper', () => {
     vi.useRealTimers();
   });
 
-  test.sequential('should proxy style', async () => {
+  test.sequential('Verify supports proxy style', async () => {
     const { getByTestId } = render(
       <Popper visible>
         <Popper.Trigger data-testid='reference' />
@@ -82,7 +82,7 @@ describe('Popper', () => {
     expect(getByTestId('popper').style.position).toEqual('absolute');
   });
 
-  test.sequential('should nested popper', async () => {
+  test.sequential('Verify nested popper', async () => {
     const { getByTestId } = render(
       <Popper visible>
         <Popper.Trigger children='trigger 1' />
@@ -100,7 +100,7 @@ describe('Popper', () => {
   });
 
   test.concurrent(
-    'должен корректно обрабатывать отсутствие Popper.Trigger или Popper.Popper',
+    'Verify renders when no Popper.Trigger or Popper.Popper',
     () => {
       const { queryByTestId } = render(
         <Popper visible>
@@ -121,6 +121,41 @@ describe('Popper', () => {
       expect(queryByTestId2('trigger')).toBeTruthy();
     },
   );
+  test('Verify preventOverflow modifier prevents popper from overflowing boundaries', () => {
+      const { getByTestId } = render(
+      <Popper
+        visible
+        modifiers={[
+          {
+            name: 'preventOverflow',
+            options: {
+              boundary: 'viewport',
+              padding: 10,
+            },
+          },
+        ]}
+      >
+        <Popper.Trigger data-testid="trigger">Trigger</Popper.Trigger>
+        <Popper.Popper data-testid="popper">Content</Popper.Popper>
+      </Popper>
+    );
+  
+    const trigger = getByTestId('trigger');
+    const popper = getByTestId('popper');
+  
+    act(() => {
+      trigger.click();
+    });
+    expect(popper).toBeTruthy();
+    const popperRect = popper.getBoundingClientRect();
+    expect(popperRect.top).toBeGreaterThanOrEqual(0);
+    expect(popperRect.left).toBeGreaterThanOrEqual(0);
+    expect(popperRect.bottom).toBeLessThanOrEqual(window.innerHeight);
+    expect(popperRect.right).toBeLessThanOrEqual(window.innerWidth);
+
+  });
+  
+  
 });
 
 describe('Popper.Trigger', () => {
@@ -129,7 +164,7 @@ describe('Popper.Trigger', () => {
   shouldSupportClassName(Popper.Trigger, (props) => <Popper visible {...props} />);
   shouldSupportRef(Popper.Trigger, (props) => <Popper visible {...props} />);
 
-  test.concurrent('should support custom attributes', () => {
+  test.concurrent('Verify supports custom attributes', () => {
     const { getByTestId } = render(
       <Popper>
         <Popper.Trigger data-testid='trigger' name='trigger' />
@@ -139,7 +174,7 @@ describe('Popper.Trigger', () => {
     expect(getByTestId('trigger').attributes['name'].value).toBe('trigger');
   });
 
-  test.concurrent('should support children', async () => {
+  test.concurrent('Verify supports children', async () => {
     const component = (
       <Popper>
         <Popper.Trigger>
@@ -159,7 +194,7 @@ describe('Popper.Popper', () => {
   shouldSupportClassName(Popper.Popper, (props) => <Popper visible {...props} />);
   shouldSupportRef(Popper.Popper, (props) => <Popper visible {...props} />);
 
-  test.concurrent('should support custom attributes', () => {
+  test.concurrent('Verify supports custom attributes', () => {
     const { getByTestId } = render(
       <Popper visible>
         <Popper.Popper data-testid='trigger' name='trigger' />
@@ -169,7 +204,7 @@ describe('Popper.Popper', () => {
     expect(getByTestId('trigger').attributes['name'].value).toBe('trigger');
   });
 
-  test.concurrent('should support children', async () => {
+  test.concurrent('Verify supports children', async () => {
     const component = (
       <Popper visible>
         <Popper.Popper>
@@ -183,10 +218,10 @@ describe('Popper.Popper', () => {
   });
 });
 
-describe('focus control', () => {
+describe('Focus control', () => {
   beforeEach(cleanup);
 
-  test('auto focus', () => {
+  test('Verify auto focus', () => {
     vi.useFakeTimers();
     const { getByTestId } = render(
       <Popper visible disablePortal>
@@ -203,7 +238,8 @@ describe('focus control', () => {
     expect(getByTestId('popper')).toHaveFocus();
     vi.useRealTimers();
   });
-  test('trap', async () => {
+
+  test('Verify trap', async () => {
     const { getByTestId } = render(
       <div>
         <input />
@@ -237,7 +273,7 @@ describe('focus control', () => {
     expect(PopperElement).toHaveFocus();
   });
 
-  test('should lock focus inside popper', async () => {
+  test('Verify lock focus inside popper', async () => {
     const { getByTestId } = render(
       <div>
         <input />
@@ -279,7 +315,7 @@ describe('focus control', () => {
     expect(div3Element).toHaveFocus();
   });
 
-  test('focus return', () => {
+  test('Verify focus return', () => {
     let hidePopper = undefined;
     vi.useFakeTimers();
     const Component = () => {
@@ -330,7 +366,7 @@ describe('focus control', () => {
     vi.useRealTimers();
   });
 
-  test('focus follow', async ({ expect }) => {
+  test('Verify focus follow', async ({ expect }) => {
     const { getByTestId } = render(
       <>
         <input data-testid='input-before-popper' />
