@@ -52,32 +52,34 @@ describe('Portal', () => {
     expect(getByTestId('container').querySelectorAll('[data-testid="child"]').length).toEqual(2);
   });
 
-  test.concurrent('Verify portal attached directly to document.body when ignorePortalsStacking is true', () => {
-    const { getByTestId } = render(
-      <div data-testid='parent'>
-        <Portal ignorePortalsStacking>
-          <div data-testid='child' />
-        </Portal>
-      </div>,
-    );
-    // Not render to container,
-    expect(getByTestId('parent').children.length).toEqual(0);
-    // but render to body
-    expect((document.body.lastChild as HTMLElement)?.dataset.testid).toEqual('child');
-  });
+  test.concurrent(
+    'Verify portal attached directly to document.body when ignorePortalsStacking is true',
+    () => {
+      const { getByTestId } = render(
+        <div data-testid='parent'>
+          <Portal ignorePortalsStacking>
+            <div data-testid='child' />
+          </Portal>
+        </div>,
+      );
+      // Not render to container,
+      expect(getByTestId('parent').children.length).toEqual(0);
+      // but render to body
+      expect((document.body.lastChild as HTMLElement)?.dataset.testid).toEqual('child');
+    },
+  );
 
-  test.concurrent('verify onMount callback', () => {
+  test.concurrent('Verify onMount callback', () => {
     const onMount = vi.fn();
 
     const { unmount } = render(
       <Portal onMount={onMount}>
         <div>Test Content</div>
-      </Portal>
+      </Portal>,
     );
 
     expect(onMount).toHaveBeenCalledWith(true);
     unmount();
     expect(onMount).toHaveBeenCalledWith(true);
   });
-  
 });
