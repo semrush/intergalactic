@@ -18,6 +18,7 @@ SDropdownPopper {
     text-align: left;
     line-height: normal;
     color: var(--intergalactic-text-primary, #191b23);
+    outline: none;
 
     &:hover {
       background-color: var(--intergalactic-dropdown-menu-item-hover, #f4f5f9);
