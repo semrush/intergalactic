@@ -59,8 +59,6 @@ describe('OutsideClick', () => {
     expect(onOutsideClick).not.toBeCalled();
   });
 
-  
-
   test.concurrent('Verify calls onOutsideClick by click outside with excludeRefs', () => {
     const onOutsideClick = vi.fn();
     const outsideRef = React.createRef<any>();
@@ -74,9 +72,9 @@ describe('OutsideClick', () => {
         </OutsideClick>
       </>,
     );
-  
+
     fireEvent.mouseUp(document.body);
-  
+
     expect(onOutsideClick).toBeCalled();
   });
 
@@ -97,13 +95,13 @@ describe('OutsideClick', () => {
         </OutsideClick>
       </>,
     );
-  
+
     fireEvent.mouseUp(getByTestId('outside1').childNodes[0]);
     fireEvent.mouseUp(getByTestId('outside2').childNodes[0]);
-  
+
     expect(onOutsideClick).not.toBeCalled();
   });
-  
+
   test.concurrent('Verify removes handlers when unmount', () => {
     const onOutsideClick = vi.fn();
     const { unmount } = render(
@@ -111,12 +109,10 @@ describe('OutsideClick', () => {
         <div data-testid='child'>test</div>
       </OutsideClick>,
     );
-  
+
     unmount();
-  
+
     fireEvent.mouseUp(document.body);
     expect(onOutsideClick).not.toBeCalled();
   });
-
-  
 });
