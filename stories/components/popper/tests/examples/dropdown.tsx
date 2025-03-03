@@ -1,8 +1,7 @@
 import React from 'react';
-// @ts-ignore
 import DropdownMenu from '@semcore/dropdown-menu';
-// @ts-ignore
 import { ButtonTrigger } from '@semcore/base-trigger';
+import Input from '@semcore/input';
 
 const Demo = () => {
   return (
@@ -10,10 +9,18 @@ const Demo = () => {
       <DropdownMenu visible>
         <DropdownMenu.Trigger tag={ButtonTrigger}>Enabled portal</DropdownMenu.Trigger>
         <DropdownMenu.Popper p={5} data-testid='popper' aria-label={'Select popper'}>
-          <input data-testid='input-in-popper' />
+        <Input w={240} data-testid="input-in-popper">
+        <Input.Value
+          placeholder='Password'
+        />
+        </Input>
         </DropdownMenu.Popper>
       </DropdownMenu>
-      <input />
+      <Input w={240}>
+        <Input.Value
+          placeholder='Password'
+        />
+        </Input>
     </div>
   );
 };

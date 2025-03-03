@@ -1,7 +1,5 @@
 import React from 'react';
-// @ts-ignore
 import DropdownMenu from '@semcore/dropdown-menu';
-// @ts-ignore
 import { ButtonTrigger } from '@semcore/base-trigger';
 
 const Demo = () => {

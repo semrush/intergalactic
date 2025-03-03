@@ -2,8 +2,8 @@ import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 test.describe('Popper', () => {
-  test('Focus lock', async ({ page }) => {
-    const standPath = 'semcore/popper/__tests__/stands/dropdown.tsx';
+  test('Verify Focus lock wotks in dropdown', async ({ page }) => {
+    const standPath = 'stories/components/popper/tests/examples/dropdown.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -13,22 +13,19 @@ test.describe('Popper', () => {
 
     for (let i = 0; i < 50; i++) {
       await page.keyboard.press('Tab');
-      await page.waitForFunction(() => {
-        const focusedElement = document.activeElement;
-        return (
-          focusedElement?.matches('[data-testid="popper"]') ||
-          focusedElement?.matches('[data-testid="input-in-popper"]')
-        );
-      });
+        await expect(page.getByTestId('popper')).not.toBeFocused();
+        await expect(page.getByTestId('input-in-popper').getByPlaceholder('Password')).toBeFocused();
+        
+    
+   
     }
   });
-  test('Focus lock with disablePortal', async ({ page, browserName }) => {
-    test.skip(
-      browserName === 'firefox',
-      "This test for some reason doesn't work in FF - it puts focus on the last input after the first click",
-    );
 
-    const standPath = 'semcore/popper/__tests__/stands/disable-portal.tsx';
+  test('Veiryf Focus lock works with disablePortal', async ({ page, browserName }) => {
+  
+    if(browserName === 'firefox') return; //"This test for some reason doesn't work in FF - it puts focus on the last input after the first click",
+
+    const standPath = 'stories/components/popper/tests/examples/disable-portal.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -38,17 +35,16 @@ test.describe('Popper', () => {
 
     for (let i = 0; i < 50; i++) {
       await page.keyboard.press('Tab');
-      await page.waitForFunction(() => {
-        const focusedElement = document.activeElement;
-        return (
-          focusedElement?.matches('[data-testid="popper"]') ||
-          focusedElement?.matches('[data-testid="input-in-popper"]')
-        );
-      });
+        await expect(page.getByTestId('popper')).not.toBeFocused();
+        await expect(page.getByTestId('input-in-popper').getByPlaceholder('Password')).toBeFocused();
+        
+    
+   
     }
   });
-  test('cursor anchoring', async ({ page }) => {
-    const standPath = 'semcore/popper/__tests__/stands/cursor-anchoring.tsx';
+
+  test('Verify popper position for cursor anchoring functionality', async ({ page }) => {
+    const standPath = 'stories/components/popper/tests/examples/cursor-anchoring.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -80,9 +76,10 @@ test.describe('Popper', () => {
     popperRect = (await popper.boundingBox())!;
     expect(popperRect.x).toBeLessThan(triggerRect.x + triggerRect.width * (1 / 5));
   });
+
   test.describe('label', () => {
     test('referenced', async ({ page }) => {
-      const standPath = 'semcore/popper/__tests__/stands/label-referenced.tsx';
+      const standPath = 'stories/components/popper/tests/examples/label-referenced.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
 
       await page.setContent(htmlContent);
@@ -99,9 +96,11 @@ test.describe('Popper', () => {
       await option1Locator.click();
 
       await expect(option3Locator).toHaveCount(0);
+      await expect(option1Locator).toHaveCount(1);
     });
+
     test('wrapped', async ({ page }) => {
-      const standPath = 'semcore/popper/__tests__/stands/label-wrapped.tsx';
+      const standPath = 'stories/components/popper/tests/examples/label-wrapped.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
 
       await page.setContent(htmlContent);
@@ -118,9 +117,10 @@ test.describe('Popper', () => {
       await option1Locator.click();
 
       await expect(option3Locator).toHaveCount(0);
+      await expect(option1Locator).toHaveCount(1);
     });
     test('wrapped with disable portal', async ({ page }) => {
-      const standPath = 'semcore/popper/__tests__/stands/label-wrapped-disable-portal.tsx';
+      const standPath = 'stories/components/popper/tests/examples/label-wrapped-disable-portal.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
 
       await page.setContent(htmlContent);
@@ -137,10 +137,11 @@ test.describe('Popper', () => {
       await option1Locator.click();
 
       await expect(option3Locator).toHaveCount(0);
+      await expect(option1Locator).toHaveCount(1);
     });
   });
   test('page resizing', async ({ page }) => {
-    const standPath = 'semcore/popper/__tests__/stands/page-resizing.tsx';
+    const standPath = 'stories/components/popper/tests/examples/page-resizing.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -157,10 +158,11 @@ test.describe('Popper', () => {
 
     expect(Math.round(newPopperY)).toBeCloseTo(Math.round(popperY));
   });
+
   test.describe('hover interaction', () => {
     test.use({ hasTouch: true });
     test('with mouse', async ({ page }) => {
-      const standPath = 'semcore/popper/__tests__/stands/hover-interaction.tsx';
+      const standPath = 'stories/components/popper/tests/examples/hover-interaction.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
 
       await page.setContent(htmlContent);
@@ -179,7 +181,7 @@ test.describe('Popper', () => {
       await expect(popperLocator).toHaveCount(1);
     });
     test('with touch', async ({ page }) => {
-      const standPath = 'semcore/popper/__tests__/stands/hover-interaction.tsx';
+      const standPath = 'stories/components/popper/tests/examples/hover-interaction.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
 
       await page.setContent(htmlContent);
@@ -198,14 +200,15 @@ test.describe('Popper', () => {
     });
   });
   test('works well with multiple focusables inside of trigger', async ({ page }) => {
-    const standPath = 'semcore/popper/__tests__/stands/multiple-focusables-in-trigger.tsx';
+    const standPath = 'stories/components/popper/tests/examples/multiple-focusables-in-trigger.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
 
     const firstInput = await page.locator('input[data-position="before"]');
     const secondInput = await page.locator('input[data-position="after"]');
-    firstInput.focus();
+    await page.keyboard.press('Tab');
+    await expect(firstInput).toBeFocused();
 
     const optionLocator = await page.locator('text=Option 1');
     await expect(optionLocator).toHaveCount(0);
@@ -234,13 +237,14 @@ test.describe('Popper', () => {
   });
 
   test('Should open popper second time', async ({ page }) => {
-    const standPath = 'semcore/popper/__tests__/stands/focus-interaction.tsx';
+    const standPath = 'stories/components/popper/tests/examples/focus-interaction.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
 
     const before = page.locator('button[data-position="before"]');
-    await before.focus();
+    await page.keyboard.press('Tab');
+    await expect(before).toBeFocused();
 
     const popperLocator = page.locator('text=Some content in popper');
     await expect(popperLocator).toHaveCount(0);
