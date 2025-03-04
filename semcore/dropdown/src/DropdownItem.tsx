@@ -8,5 +8,5 @@ type DropdownItemProps = {
 
 export function DropdownItem(props: DropdownItemProps) {
   const SDropdownItem = Root;
-  return sstyled(props.styles)(<SDropdownItem render={Box} innerOutline />);
+  return sstyled(props.styles)(<SDropdownItem render={Box} />);
 }
