@@ -11,9 +11,9 @@ describe('ScrollArea', () => {
 
   test.concurrent('Verify support render function for children', () => {
     const component = (
-      <ScrollArea >
+      <ScrollArea>
         {() => {
-          return <ScrollArea.Container/>;
+          return <ScrollArea.Container />;
         }}
       </ScrollArea>
     );
