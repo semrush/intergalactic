@@ -7,7 +7,7 @@ import { Box } from "@semcore/flex-box";
 const Demo = () => {
   const [isLoading, setIsLoading] = useState(false);
 
-  const onSubmit = (e) => {
+  const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
 

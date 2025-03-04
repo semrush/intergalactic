@@ -17,18 +17,18 @@ import compose from '../src/utils/compose';
 import useCss from '../src/utils/use/useCss';
 import { shade, opacity } from '../src/utils/color';
 import assignProps, { assignHandlers } from '../src/utils/assignProps';
-import EventEmitter from '../src/eventEmitter';
+import EventEmitter from '../src/utils/eventEmitter';
 import reactToText from '../src/utils/reactToText';
-import { getEventTarget } from '../src/getEventTarget';
-import { extractAriaProps } from '../src/ariaProps';
+import { getEventTarget } from '../src/utils/getEventTarget';
+import { extractAriaProps } from '../src/utils/ariaProps';
 import { getRef, setRef, getNodeByRef } from '../src/utils/ref';
-import getInputProps, { inputProps } from '../src/inputProps';
-import propsForElement, { validAttr } from '../src/propsForElement';
+import getInputProps, { inputProps } from '../src/utils/inputProps';
+import propsForElement, { validAttr } from '../src/utils/propsForElement';
 import keyboardFocusEnhance, {
   KeyboardFocusEnhanceHook,
 } from '../src/utils/enhances/keyboardFocusEnhance';
-import { isFocusable } from '../src/focus-lock/isFocusable';
-import { BEFORE_BORDER_ID, AFTER_BORDER_ID } from '../src/focus-lock/focusBorders';
+import { isFocusable } from '../src/utils/focus-lock/isFocusable';
+import { BEFORE_BORDER_ID, AFTER_BORDER_ID } from '../src/utils/focus-lock/focusBorders';
 
 describe('Utils CSS in JS', () => {
   beforeEach(cleanup);

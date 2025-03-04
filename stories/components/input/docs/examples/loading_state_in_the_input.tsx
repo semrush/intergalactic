@@ -7,7 +7,7 @@ import { Box, ScreenReaderOnly } from '@semcore/flex-box';
 const Demo = () => {
   const [value, setValue] = React.useState('');
   const [loading, setLoading] = React.useState(false);
-  const [loadingStatus, setLoadingStatus] = React.useState(null);
+  const [loadingStatus, setLoadingStatus] = React.useState<React.ReactNode | null>(null);
 
   React.useEffect(() => {
     const timer = setTimeout(() => {
@@ -28,7 +28,7 @@ const Demo = () => {
     }
   }, [loading]);
 
-  function handlerInput(v) {
+  function handlerInput(v: string) {
     setValue(v);
     setLoading(true);
   }
