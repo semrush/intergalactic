@@ -171,14 +171,14 @@ describe('InputNumber', () => {
         <div>
           EN (default):
           <InputNumber>
-        <InputNumber.Value data-testid='input5' value='999999' />
-      </InputNumber>
+            <InputNumber.Value data-testid='input5' value='999999' />
+          </InputNumber>
         </div>
         <div>
           DE:
           <InputNumber locale={'de'}>
-        <InputNumber.Value  data-testid='input5' value='999999' />
-      </InputNumber>
+            <InputNumber.Value data-testid='input5' value='999999' />
+          </InputNumber>
         </div>
       </snapshot.ProxyProps>
     );
