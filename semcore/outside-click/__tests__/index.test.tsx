@@ -20,7 +20,7 @@ describe('OutsideClick', () => {
     const onOutsideClick = vi.fn();
     const outsideRef1 = React.createRef<any>();
     const outsideRef2 = React.createRef<any>();
-  
+
     const { getByTestId } = render(
       <>
         <div data-testid='outside1' ref={outsideRef1}>
@@ -29,19 +29,21 @@ describe('OutsideClick', () => {
         <div data-testid='outside2' ref={outsideRef2}>
           outside2
         </div>
-        <OutsideClick onOutsideClick={onOutsideClick} excludeRefs={[outsideRef1, outsideRef2, document.body]}>
+        <OutsideClick
+          onOutsideClick={onOutsideClick}
+          excludeRefs={[outsideRef1, outsideRef2, document.body]}
+        >
           <div data-testid='child'>test</div>
         </OutsideClick>
       </>,
     );
-  
+
     fireEvent.mouseUp(getByTestId('outside1').childNodes[0]);
     fireEvent.mouseUp(getByTestId('outside2').childNodes[0]);
     fireEvent.mouseUp(document.body.childNodes[0]);
-  
+
     expect(onOutsideClick).not.toBeCalled();
   });
-  
 
   test.concurrent('Verify supports excludeRefs', () => {
     const onOutsideClick = vi.fn();
@@ -91,5 +93,4 @@ describe('OutsideClick', () => {
 
     expect(onOutsideClick).toBeCalled();
   });
-
 });
