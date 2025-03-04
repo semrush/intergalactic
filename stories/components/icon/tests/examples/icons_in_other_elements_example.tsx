@@ -1,7 +1,7 @@
 import React from 'react';
 import Button, { ButtonLink } from '@semcore/button';
-import VideoListM from '@semcore/icon/VideoList/m';
-import VideoListL from '@semcore/icon/VideoList/l';
+import VideoListM from '@semcore/icon/ChatAlt/m';
+import VideoListL from '@semcore/icon/ChatAlt/l';
 import { ButtonTrigger, LinkTrigger, FilterTrigger } from '@semcore/base-trigger';
 import '@semcore/utils/lib/themes/default.css';
 import  { Hint, DescriptionTooltip } from '@semcore/tooltip';
