@@ -38,7 +38,7 @@ describe('ScrollArea', () => {
     const eventListener = vi.fn();
     container.addEventListener('calculate', eventListener);
 
-    fireEvent(container, eventCalculate);
+    fireEvent(container, eventCalculate!);
 
     expect(eventListener).toHaveBeenCalled();
   });
