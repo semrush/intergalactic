@@ -1,6 +1,6 @@
 import React from 'react';
 import cn from 'classnames';
-import { createComponent, Root, sstyled } from '@semcore/core';
+import { createComponent, Root, sstyled, lastInteraction } from '@semcore/core';
 import DropdownMenu from '@semcore/dropdown-menu';
 import Dropdown, { AbstractDropdown, enhance, selectedIndexContext } from '@semcore/dropdown';
 import { ButtonTrigger } from '@semcore/base-trigger';
@@ -18,7 +18,6 @@ import { isInputTriggerTag } from '@semcore/popper';
 import style from './style/select.shadow.css';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
-import { lastInteraction } from '@semcore/core/src';
 
 function isSelectedOption(value, valueOption) {
   return Array.isArray(value) ? value.includes(valueOption) : valueOption === value;
