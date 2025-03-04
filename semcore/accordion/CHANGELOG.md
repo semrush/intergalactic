@@ -4,9 +4,9 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [5.45.3] - 2025-03-03
 
-### Fixed
+### Added
 
-- Focus on elements in collapsed `Accordion.Item` (with `preserveNode` property).
+- `inert` and `aria-hidden` to collapsed Accordion.Item with preserveNode property to prevent focus and reading of hidden elements.
 
 ## [5.45.2] - 2025-02-05
 
