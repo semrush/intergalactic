@@ -9,14 +9,11 @@ import ScrollArea, { eventCalculate } from '../src';
 describe('ScrollArea', () => {
   beforeEach(cleanup);
 
-  shouldSupportClassName(ScrollArea);
-  shouldSupportRef(ScrollArea);
-
   test.concurrent('Verify support render function for children', () => {
     const component = (
-      <ScrollArea>
+      <ScrollArea >
         {() => {
-          return <ScrollArea.Container />;
+          return <ScrollArea.Container/>;
         }}
       </ScrollArea>
     );
@@ -24,8 +21,11 @@ describe('ScrollArea', () => {
 
     expect(
       document.querySelectorAll('[data-ui-name^="ScrollArea"][data-ui-name$="Container"]').length,
-    ).toBe(2);
+    ).toBe(1);
   });
+
+  shouldSupportClassName(ScrollArea);
+  shouldSupportRef(ScrollArea);
 
   test.concurrent('Verify trigger calculate event on container', () => {
     const { getByTestId } = render(
