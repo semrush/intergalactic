@@ -6,7 +6,7 @@ import {TagContainer} from '@semcore/tag';
 const Demo = () => {
   const [value, setValue] = React.useState('Default tag');
   const [editable, setEditable] = React.useState(false);
-  const tagRef = React.useRef<HTMLElement | null>(null);
+  const tagRef = React.useRef<HTMLDivElement | null>(null);
 
   const handleValue = (value: string) => {
     setEditable(false);
@@ -14,7 +14,7 @@ const Demo = () => {
   };
   const resetEditable = () => setEditable(false);
 
-  const handleTagContainerFocus = (e) => {
+  const handleTagContainerFocus = (e: React.SyntheticEvent) => {
     if (e.target === e.currentTarget) {
       tagRef.current?.focus();
     }

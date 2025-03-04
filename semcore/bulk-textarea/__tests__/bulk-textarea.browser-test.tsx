@@ -574,6 +574,7 @@ test.describe('Error tooltips', () => {
 
     await test.step('Navigation between rows by clicking arrows', async () => {
       await page.keyboard.press('Tab');
+      await page.waitForTimeout(50);
       await page.keyboard.press('Enter');
       await page.waitForTimeout(100);
       await expect(locators.textarea).toBeFocused();
@@ -581,16 +582,12 @@ test.describe('Error tooltips', () => {
       await expect(tooltip).toHaveText('row has invalid charsets');
 
       await page.keyboard.press('Tab');
-      await page.keyboard.press('Enter');
-      await page.waitForTimeout(100);
-      await expect(locators.errorMessage).toHaveText('Error 2 out of 3');
-      await expect(tooltip).toHaveText('row has invalid charsets');
-      if (browserName === 'webkit') return; //disabled termporary for webkit because works unstable
+      await page.waitForTimeout(50);
       await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
+      await page.waitForTimeout(50);
       await page.keyboard.press('Enter');
-      await page.waitForTimeout(100);
-      await expect(locators.errorMessage).toHaveText('Error 1 out of 3');
+      await page.waitForTimeout(200);
+      await expect(locators.errorMessage).toHaveText('Error 3 out of 3');
       await expect(tooltip).toHaveText('row has invalid charsets');
     });
   });

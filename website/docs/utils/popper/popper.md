@@ -15,7 +15,7 @@ The component can function in both `uncontrolled` and `controlled` modes.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/show-hide.tsx';
+  export Demo from 'stories/components/popper/documentation/examples/show-hide.tsx';
 </script>
 
 :::
@@ -29,7 +29,7 @@ When these events are activated, the `onVisibleChange` handler is called with th
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/events-trigger.tsx';
+  export Demo from 'stories/components/popper/documentation/examples/events-trigger.tsx';
 </script>
 
 :::
@@ -45,7 +45,7 @@ You can subscribe to the `onOutsideClick` event. It will be called when a clicke
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/click-outside.tsx';
+  export Demo from 'stories/components/popper/documentation/examples/click-outside.tsx';
 </script>
 
 :::
@@ -59,7 +59,7 @@ Placement may be `'auto-start' | 'auto' | 'auto-end' | 'top-start' | 'top' | 'to
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/placement.tsx';
+  export Demo from 'stories/components/popper/documentation/examples/placement.tsx';
 </script>
 
 :::
@@ -77,7 +77,7 @@ The `tag` for `Trigger` and `Popper` is a `Box` by default, so all props from th
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/custom-tag.tsx';
+  export Demo from 'stories/components/popper/documentation/examples/custom-tag.tsx';
 </script>
 
 :::
@@ -99,7 +99,7 @@ The second argument of the render-function will provide `handlers`, functions fo
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/render-functions.tsx';
+  export Demo from 'stories/components/popper/documentation/examples/render-functions.tsx';
 </script>
 
 :::
@@ -117,7 +117,7 @@ Inspect the page to find out where the popper is located.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/disabled-portal.tsx';
+  export Demo from 'stories/components/popper/documentation/examples/disabled-portal.tsx';
 </script>
 
 :::
