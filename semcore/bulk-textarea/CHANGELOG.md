@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.0.5] - 2025-03-03
+
+### Added
+
+- White background for both light and dark themes.
+
 ## [1.0.4] - 2025-02-07
 
 ### Fixed
