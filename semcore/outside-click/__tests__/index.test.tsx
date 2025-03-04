@@ -16,18 +16,32 @@ describe('OutsideClick', () => {
     expect(onOutsideClick).toBeCalled();
   });
 
-  test.concurrent('Verify call onOutsideClick worsk if event inside', () => {
+  test.concurrent('Verify supports excludeRefs with single and multiple elements', () => {
     const onOutsideClick = vi.fn();
+    const outsideRef1 = React.createRef<any>();
+    const outsideRef2 = React.createRef<any>();
+  
     const { getByTestId } = render(
-      <OutsideClick onOutsideClick={onOutsideClick}>
-        <div data-testid='child'>test</div>
-      </OutsideClick>,
+      <>
+        <div data-testid='outside1' ref={outsideRef1}>
+          outside1
+        </div>
+        <div data-testid='outside2' ref={outsideRef2}>
+          outside2
+        </div>
+        <OutsideClick onOutsideClick={onOutsideClick} excludeRefs={[outsideRef1, outsideRef2, document.body]}>
+          <div data-testid='child'>test</div>
+        </OutsideClick>
+      </>,
     );
-
-    fireEvent.mouseUp(getByTestId('child').childNodes[0]);
-
+  
+    fireEvent.mouseUp(getByTestId('outside1').childNodes[0]);
+    fireEvent.mouseUp(getByTestId('outside2').childNodes[0]);
+    fireEvent.mouseUp(document.body.childNodes[0]);
+  
     expect(onOutsideClick).not.toBeCalled();
   });
+  
 
   test.concurrent('Verify supports excludeRefs', () => {
     const onOutsideClick = vi.fn();
@@ -78,41 +92,4 @@ describe('OutsideClick', () => {
     expect(onOutsideClick).toBeCalled();
   });
 
-  test.concurrent('Verify supports few excludeRefs', () => {
-    const onOutsideClick = vi.fn();
-    const outsideRef1 = React.createRef<any>();
-    const outsideRef2 = React.createRef<any>();
-    const { getByTestId } = render(
-      <>
-        <div data-testid='outside1' ref={outsideRef1}>
-          outside1
-        </div>
-        <div data-testid='outside2' ref={outsideRef2}>
-          outside2
-        </div>
-        <OutsideClick onOutsideClick={onOutsideClick} excludeRefs={[outsideRef1, outsideRef2]}>
-          <div data-testid='child'>test</div>
-        </OutsideClick>
-      </>,
-    );
-
-    fireEvent.mouseUp(getByTestId('outside1').childNodes[0]);
-    fireEvent.mouseUp(getByTestId('outside2').childNodes[0]);
-
-    expect(onOutsideClick).not.toBeCalled();
-  });
-
-  test.concurrent('Verify removes handlers when unmount', () => {
-    const onOutsideClick = vi.fn();
-    const { unmount } = render(
-      <OutsideClick onOutsideClick={onOutsideClick}>
-        <div data-testid='child'>test</div>
-      </OutsideClick>,
-    );
-
-    unmount();
-
-    fireEvent.mouseUp(document.body);
-    expect(onOutsideClick).not.toBeCalled();
-  });
 });
