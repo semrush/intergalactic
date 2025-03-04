@@ -217,7 +217,7 @@ describe('FilterTrigger', () => {
 
     expect(getByTestId('test')).toHaveFocus();
 
-    await new Promise((resolve) => setTimeout(resolve, 100));
+    await new Promise((resolve) => setTimeout(resolve, 200));
 
     expect(getByText('clear trigger hint text')).toBeTruthy();
   });
