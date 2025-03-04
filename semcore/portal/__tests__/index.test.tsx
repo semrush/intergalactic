@@ -71,15 +71,20 @@ describe('Portal', () => {
 
   test.concurrent('Verify onMount callback', () => {
     const onMount = vi.fn();
-
-    const { unmount } = render(
+    const Component = (
       <Portal onMount={onMount}>
         <div>Test Content</div>
-      </Portal>,
+      </Portal>
     );
 
+    const { unmount, rerender } = render(Component);
+
     expect(onMount).toHaveBeenCalledWith(true);
+
+    rerender(Component);
+    expect(onMount).toHaveBeenCalledTimes(1);
+
     unmount();
-    expect(onMount).toHaveBeenCalledWith(true);
+    expect(onMount).toHaveBeenCalledTimes(1);
   });
 });
