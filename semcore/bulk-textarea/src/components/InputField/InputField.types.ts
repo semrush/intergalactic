@@ -84,7 +84,8 @@ export type InputFieldProps = {
   lineValidation?: (line: string, lines: string[]) => { isValid: boolean; errorMessage: string };
 
   /**
-   * Message for display error about whole field, not only one line
+   * Message for display error about whole field, not only one line.
+   * If set empty string, field will not have invalid state.
    */
   commonErrorMessage: string;
 
@@ -113,7 +114,7 @@ export type InputFieldProps = {
   /**
    * Internal
    */
-  lastError: ErrorItem;
+  prevError: ErrorItem;
 
   /**
    * Internal

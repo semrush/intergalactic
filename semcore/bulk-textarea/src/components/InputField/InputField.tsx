@@ -191,7 +191,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
   }
 
   get errorMessage() {
-    const { errors, errorIndex, commonErrorMessage, lastError } = this.asProps;
+    const { errors, errorIndex, commonErrorMessage, prevError } = this.asProps;
     const { mouseLineIndex, keyboardLineIndex } = this.state;
     const currentLineIndex =
       this.errorByInteraction === 'keyboard'
@@ -206,10 +206,10 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     }
 
     const errorMessage =
-      errors.length === 0 && !lastError // show any errors only if there are at least one error
+      errors.length === 0 && !prevError // show any errors only if there are at least one error
         ? null
-        : errorItem?.errorMessage ?? lastError?.errorMessage ?? commonErrorMessage;
-    const isCommonError = !errorItem?.errorMessage && !lastError?.errorMessage;
+        : errorItem?.errorMessage ?? prevError?.errorMessage ?? commonErrorMessage;
+    const isCommonError = !errorItem?.errorMessage && !prevError?.errorMessage;
 
     return {
       errorMessage,
@@ -499,7 +499,11 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
             : this.textarea;
 
         if (showErrors && this.popper?.current.state.elements.reference !== trigger) {
-          this.setPopperTrigger?.(trigger);
+          if (this.shouldChangePopperTrigger(trigger)) {
+            this.setPopperTrigger?.(trigger);
+          } else {
+            this.setState({ visibleErrorPopper: false });
+          }
         }
       } else if (rowNode === null) {
         this.setPopperTrigger?.(this.textarea);
@@ -910,6 +914,12 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     return values;
   }
 
+  private shouldChangePopperTrigger(node: HTMLElement): boolean {
+    return (
+      this.textarea !== node || (this.textarea === node && Boolean(this.asProps.commonErrorMessage))
+    );
+  }
+
   private toggleErrorsPopperByKeyboard(timer: number) {
     if (this.toggleErrorsPopperTimeout) {
       clearTimeout(this.toggleErrorsPopperTimeout);
@@ -951,12 +961,16 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
           this.setState(
             (prevState) => {
               const newState: State = {
-                visibleErrorPopper: this.isFocusing ? true : isInvalidRow,
+                visibleErrorPopper:
+                  this.isFocusing && Boolean(this.asProps.commonErrorMessage) ? true : isInvalidRow,
                 mouseLineIndex: prevState.mouseLineIndex,
                 keyboardLineIndex: prevState.keyboardLineIndex,
               };
 
-              if (this.isFocusing || (key === 'mouseLineIndex' && isInvalidRow)) {
+              if (
+                (this.isFocusing && (Boolean(this.asProps.commonErrorMessage) || isInvalidRow)) ||
+                (key === 'mouseLineIndex' && isInvalidRow)
+              ) {
                 newState[key] = lineIndex;
               }
 
@@ -964,9 +978,12 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
             },
             () => {
               const trigger = isInvalidRow ? targetElement : this.textarea;
-              this.setPopperTrigger?.(trigger);
 
-              this.forceUpdate();
+              if (this.shouldChangePopperTrigger(trigger)) {
+                this.setPopperTrigger?.(trigger);
+
+                this.forceUpdate();
+              }
             },
           );
         }
