@@ -9,8 +9,6 @@ import { InputFieldProps, ErrorItem } from './InputField.types';
 import { extractAriaProps } from '@semcore/utils/lib/ariaProps';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import DOMPurify from 'dompurify';
-import { Simulate } from 'react-dom/test-utils';
-import error = Simulate.error;
 
 type IndexKeys = 'keyboardLineIndex' | 'mouseLineIndex';
 
@@ -974,10 +972,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
                 keyboardLineIndex: prevState.keyboardLineIndex,
               };
 
-              if (
-                (this.isFocusing && (Boolean(this.asProps.commonErrorMessage) || isInvalidRow)) ||
-                (key === 'mouseLineIndex' && isInvalidRow)
-              ) {
+              if (this.isFocusing || (key === 'mouseLineIndex' && isInvalidRow)) {
                 newState[key] = lineIndex;
               }
 
