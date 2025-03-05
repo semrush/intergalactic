@@ -269,6 +269,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       this.textarea.replaceChildren(...listOfNodes);
 
       this.recalculateLinesCount();
+      this.recalculateErrors();
     }
   }
 
