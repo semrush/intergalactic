@@ -79,7 +79,7 @@ import { Box } from '@semcore/ui/flex-box';
 import CheckM from '@semcore/icon/Check/m';
 import CopyM from '@semcore/ui/icon/Copy/m'
 import cx from 'classnames';
-import { processTokens, tokensToJson, tokensToCss } from '@semcore/utils/theme/utils';
+import { processTokens, tokensToJson, tokensToCss } from '@semcore/core/lib/theme/utils';
 import styles from './processor.module.css';
 import Copy from '@components/Copy';
 
