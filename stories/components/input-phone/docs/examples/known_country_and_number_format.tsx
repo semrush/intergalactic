@@ -15,6 +15,24 @@ const Demo = () => {
   const prefix = countries[country].prefix;
   const [phoneNumber, setPhoneNumber] = React.useState(prefix);
   const [phoneMask, setPhoneMask] = React.useState(`${prefix} (___)___-____`);
+  const positionAfterFirstBracket = prefix.length + 2;
+
+  const handleChange = (value: string) => {
+      setPhoneNumber(value);
+
+      if (value === prefix) {
+          inputRef.current?.setSelectionRange(positionAfterFirstBracket, positionAfterFirstBracket);
+      }
+  }
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+      if (e.key === 'Backspace' || e.key === 'ArrowLeft') {
+          const selectionStart = inputRef.current?.selectionStart;
+          if (selectionStart === prefix.length || selectionStart === positionAfterFirstBracket) {
+              e.preventDefault();
+          }
+      }
+  }
 
   return (
     <Flex direction='column'>
@@ -65,11 +83,13 @@ const Demo = () => {
               id='phone-number-with-country-select'
               ref={inputRef}
               value={phoneNumber}
-              onChange={setPhoneNumber}
-              mask={phoneMask.replace(/_/g, '9')}
+              onChange={handleChange}
+              aliases={{'_': /\d/}}
+              mask={phoneMask}
               type='tel'
               autoComplete='tel'
               title='10 digits, without country code'
+              onKeyDown={handleKeyDown}
             />
             {phoneNumber !== prefix && (
               <Input.Addon>
