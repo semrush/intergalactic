@@ -40,6 +40,18 @@ function getDescriptionExternalIcons(iconPath, outLib) {
   };
 }
 
+function getDescriptionToolkitIcons(iconPath, outLib) {
+  const name = path.basename(iconPath, '.svg');
+  const group = iconPath.replace(rootDir, '').split('/')[3];
+  const location = `${outLib}/${group}${name}/index.js`;
+  return {
+    name: `${group}${name}`,
+    location,
+    group,
+    type: null,
+  };
+}
+
 function getDescriptionIcons(iconPath, outLib) {
   const fileName = path.basename(iconPath, '.svg');
   const groupsReg = /(xxs|xs|s|m|l|xl|xxl)$/;
@@ -193,6 +205,7 @@ module.exports = function () {
       getDescriptionIcons,
       getDescriptionExternalIcons,
       getDescriptionPayIcons,
+      getDescriptionToolkitIcons,
     }),
   )
     .then(() => {
