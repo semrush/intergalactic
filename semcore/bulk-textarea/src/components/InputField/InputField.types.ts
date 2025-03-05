@@ -2,7 +2,7 @@ type PasteProps = {
   /**
    * @default '\n'
    */
-  delimiter?: string;
+  delimiter?: string | RegExp;
   /**
    * @default row.trim();
    */
