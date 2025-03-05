@@ -42,7 +42,6 @@ STabLineItem {
 
   &:active,
   &:hover {
-    outline: 0;
     text-decoration: none;
   }
 
