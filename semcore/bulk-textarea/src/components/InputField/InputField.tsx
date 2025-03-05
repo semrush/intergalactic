@@ -9,6 +9,8 @@ import { InputFieldProps, ErrorItem } from './InputField.types';
 import { extractAriaProps } from '@semcore/utils/lib/ariaProps';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import DOMPurify from 'dompurify';
+import { Simulate } from 'react-dom/test-utils';
+import error = Simulate.error;
 
 type IndexKeys = 'keyboardLineIndex' | 'mouseLineIndex';
 
@@ -208,8 +210,13 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     const errorMessage =
       errors.length === 0 && !prevError // show any errors only if there are at least one error
         ? null
-        : errorItem?.errorMessage ?? prevError?.errorMessage ?? commonErrorMessage;
-    const isCommonError = !errorItem?.errorMessage && !prevError?.errorMessage;
+        : errorItem?.errorMessage ??
+          (commonErrorMessage === '' || errors.length === 0
+            ? prevError?.errorMessage
+            : commonErrorMessage);
+    const isCommonError =
+      !errorItem?.errorMessage &&
+      (commonErrorMessage === '' || errors.length === 0 ? !prevError?.errorMessage : true);
 
     return {
       errorMessage,
