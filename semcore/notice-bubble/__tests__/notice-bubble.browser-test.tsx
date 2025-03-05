@@ -53,7 +53,7 @@ test.describe('Basic notice with Interactive element', () => {
 
     const buttonTrigger = locators.buttonTrigger(page, 'Show basic notice');
     await buttonTrigger.click();
-    await new Promise((resolve) => setTimeout(resolve,100));
+    await new Promise((resolve) => setTimeout(resolve, 100));
     await expect(page).toHaveScreenshot();
   });
 
