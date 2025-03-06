@@ -406,6 +406,7 @@ class CarouselRoot extends Component<
         key,
       })),
       role: 'tablist',
+      tabIndex: 0,
       'aria-label': getI18nText('slides'),
     };
   }
@@ -743,7 +744,6 @@ const Indicators = ({ items, styles, Children, inverted }: CarouselIndicatorsPro
     </SIndicators>,
   );
 };
-Indicators.enhance = [keyboardFocusEnhance()];
 
 const Indicator = ({ styles, Children }: CarouselIndicatorProps) => {
   const SIndicator = Root;
