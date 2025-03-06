@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.40.5] - 2025-03-03
+
+### Fixed
+
+- `locale` property type. Moved from `InputNumber.Value` to `InputNumber`.
+
 ## [5.40.4] - 2025-02-05
 
 ### Changed
