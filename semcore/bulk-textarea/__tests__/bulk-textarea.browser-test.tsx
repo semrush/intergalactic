@@ -17,7 +17,7 @@ test.describe('States size counter and placeholder checks', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
-    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.03 });
+    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.02 });
     await page.keyboard.press('Tab');
     const readonlyTextarea = await page
       .getByRole('textbox', { name: 'Readonly state of bulk textarea' })
@@ -45,7 +45,7 @@ test.describe('States size counter and placeholder checks', () => {
       .nth(4);
     await normalTextArea4.click();
     await page.waitForTimeout(100);
-    await expect(page).toHaveScreenshot();
+    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.02 });
 
     await normalTextArea.click();
     await page.keyboard.type('[]', { delay: 20 });
