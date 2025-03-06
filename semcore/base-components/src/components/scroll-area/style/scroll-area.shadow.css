@@ -138,6 +138,10 @@ SContainer {
   &::-webkit-scrollbar {
     display: none;
   }
+
+  &:focus-visible {
+    outline: none;
+  }
 }
 
 SContainer[keyboardFocused]:focus::after {
