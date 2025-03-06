@@ -1,5 +1,5 @@
 import React from 'react';
-import Scroll from 'intergalactic/scroll-area';
+import Scroll from '@semcore/scroll-area';
 import { Box } from '@semcore/flex-box';
 
 let randomIndex = 1;

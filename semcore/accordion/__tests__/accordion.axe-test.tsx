@@ -12,4 +12,15 @@ test.describe('Accordion', () => {
 
     expect(violations).toEqual([]);
   });
+
+  test('SEO - with preserveNode', async ({ page }) => {
+    const standPath = 'stories/components/accordion/docs/examples/seo.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const violations = await getAccessibilityViolations({ page });
+
+    expect(violations).toEqual([]);
+  });
 });
