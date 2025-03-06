@@ -5,6 +5,7 @@ import BulkTextarea from '@semcore/bulk-textarea';
 import SizesAndStatesExample from './examples/sizes-states';
 import ValidationBlurExample from './examples/validate-blur-base-example';
 import ValidationBlurLineExample from './examples/validate-blurRow-base-example';
+import WithNewValueOnHandleChangeExample from './examples/with-new-value-on-handleChange';
 
 const meta: Meta<typeof BulkTextarea> = {
   title: 'Components/BulkTextarea/Tests',
@@ -15,6 +16,10 @@ export default meta;
 
 export const SizesAndStates: StoryObj<typeof BulkTextarea> = {
   render: SizesAndStatesExample,
+};
+
+export const WithNewValueOnHandleChange: StoryObj<typeof BulkTextarea> = {
+  render: WithNewValueOnHandleChangeExample,
 };
 
 export const ValidationBlur: StoryObj<typeof BulkTextarea> = {
