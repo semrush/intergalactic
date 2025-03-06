@@ -596,7 +596,7 @@ function Trigger(props: PopperTriggerProps & IRootComponentProps & InnerPopperTr
       if (
         lastInteraction.isKeyboard() &&
         triggerRef.current &&
-        e.target instanceof HTMLElement &&
+          (e.target instanceof HTMLElement || e.target instanceof SVGElement) &&
         hasParent(e.target, triggerRef.current)
       ) {
         onKeyboardFocus?.();
