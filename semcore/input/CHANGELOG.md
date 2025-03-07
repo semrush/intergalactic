@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.0] - 2025-03-07
+
+### Changed
+
+- Focus ring depends on `:focus-visible`.
+
 ## [4.41.1] - 2025-02-05
 
 ### Changed
