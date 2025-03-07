@@ -15,6 +15,49 @@ const Demo = () => {
   const prefix = countries[country].prefix;
   const [phoneNumber, setPhoneNumber] = React.useState(prefix);
   const [phoneMask, setPhoneMask] = React.useState(`${prefix} (___)___-____`);
+  const positionAfterFirstBracket = prefix.length + 2;
+
+  const handleChange = (value: string, e: React.SyntheticEvent<HTMLInputElement>) => {
+      setPhoneNumber(value);
+
+      if (value === prefix) {
+          inputRef.current?.setSelectionRange(positionAfterFirstBracket, positionAfterFirstBracket);
+      }
+
+      if (e.currentTarget.selectionStart === 0) {
+          e.currentTarget.setSelectionRange(positionAfterFirstBracket, positionAfterFirstBracket);
+      }
+  }
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+      if (e.key === 'Backspace' || e.key === 'ArrowLeft') {
+          if (e.currentTarget.value === prefix) {
+              e.preventDefault();
+              inputRef.current?.setSelectionRange(positionAfterFirstBracket, positionAfterFirstBracket);
+
+              return false;
+          }
+
+          const selectionStart = inputRef.current?.selectionStart ?? 0;
+          const selectionEnd = inputRef.current?.selectionEnd ?? 0;
+          if (selectionStart <= positionAfterFirstBracket && selectionStart === selectionEnd) {
+              e.preventDefault();
+
+              return false;
+          }
+      }
+      if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          inputRef.current?.setSelectionRange(positionAfterFirstBracket, positionAfterFirstBracket);
+      }
+  }
+
+  const handleClick = (e: React.SyntheticEvent<HTMLInputElement>) => {
+      if (e.currentTarget instanceof HTMLInputElement && (e.currentTarget.selectionStart ?? 0) <= positionAfterFirstBracket) {
+          e.preventDefault();
+          inputRef.current?.setSelectionRange(positionAfterFirstBracket, positionAfterFirstBracket);
+      }
+  };
 
   return (
     <Flex direction='column'>
@@ -65,11 +108,14 @@ const Demo = () => {
               id='phone-number-with-country-select'
               ref={inputRef}
               value={phoneNumber}
-              onChange={setPhoneNumber}
-              mask={phoneMask.replace(/_/g, '9')}
+              onChange={handleChange}
+              aliases={{'_': /\d/}}
+              mask={phoneMask}
               type='tel'
               autoComplete='tel'
               title='10 digits, without country code'
+              onKeyDown={handleKeyDown}
+              onClick={handleClick}
             />
             {phoneNumber !== prefix && (
               <Input.Addon>
