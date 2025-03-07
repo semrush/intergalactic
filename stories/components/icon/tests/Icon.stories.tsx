@@ -5,7 +5,7 @@ import IconsCustomExample from './examples/icon_with_custom_size_color';
 import IconColorExample from './examples/icons_color';
 import IconPayExample from './examples/icons_pay';
 import IconOtherElementsExample from './examples/icons_in_other_elements_example';
-import IconsToolkitsExample from './examples/icons_toolkits';
+import IconPlatformExample from './examples/icons_platform';
 
 import { iconSize } from './__tests__/icon_size.test';
 import { iconPay } from './__tests__/icon_pay.test';
@@ -40,6 +40,6 @@ export const IconOtherElements = {
   render: IconOtherElementsExample,
 };
 
-export const IconsToolkits = {
-  render: IconsToolkitsExample,
+export const IconPlatform = {
+  render: IconPlatformExample,
 };

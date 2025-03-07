@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Group of toolkits icons.
+- Group of platform icons.
 
 ## [4.58.0] - 2025-02-21
 
