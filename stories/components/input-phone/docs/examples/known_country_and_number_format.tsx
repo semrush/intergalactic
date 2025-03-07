@@ -17,20 +17,31 @@ const Demo = () => {
   const [phoneMask, setPhoneMask] = React.useState(`${prefix} (___)___-____`);
   const positionAfterFirstBracket = prefix.length + 2;
 
-  const handleChange = (value: string) => {
+  const handleChange = (value: string, e: React.SyntheticEvent<HTMLInputElement>) => {
       setPhoneNumber(value);
 
       if (value === prefix) {
           inputRef.current?.setSelectionRange(positionAfterFirstBracket, positionAfterFirstBracket);
       }
+
+      if (e.currentTarget.selectionStart === 0) {
+          e.currentTarget.setSelectionRange(positionAfterFirstBracket, positionAfterFirstBracket);
+      }
   }
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
       if (e.key === 'Backspace' || e.key === 'ArrowLeft') {
-          const selectionStart = inputRef.current?.selectionStart;
-          if (selectionStart === prefix.length || selectionStart === positionAfterFirstBracket) {
+          const selectionStart = inputRef.current?.selectionStart ?? 0;
+          const selectionEnd = inputRef.current?.selectionEnd ?? 0;
+          if (selectionStart <= positionAfterFirstBracket && selectionStart === selectionEnd) {
               e.preventDefault();
+
+              return false;
           }
+      }
+      if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          inputRef.current?.setSelectionRange(positionAfterFirstBracket, positionAfterFirstBracket);
       }
   }
 
