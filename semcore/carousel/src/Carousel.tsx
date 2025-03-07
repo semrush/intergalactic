@@ -406,6 +406,7 @@ class CarouselRoot extends Component<
         key,
       })),
       role: 'tablist',
+      tabIndex: 0,
       'aria-label': getI18nText('slides'),
     };
   }
@@ -696,6 +697,7 @@ const Prev = (props: CarouselButtonProps) => {
           theme={inverted ? 'invert' : 'muted'}
           use={'tertiary'}
           size={'l'}
+          innerOutline
         />
       )}
     </SPrev>,
@@ -718,6 +720,7 @@ const Next = (props: CarouselButtonProps) => {
           theme={inverted ? 'invert' : 'muted'}
           use={'tertiary'}
           size={'l'}
+          innerOutline
         />
       )}
     </SNext>,
@@ -741,7 +744,6 @@ const Indicators = ({ items, styles, Children, inverted }: CarouselIndicatorsPro
     </SIndicators>,
   );
 };
-Indicators.enhance = [keyboardFocusEnhance()];
 
 const Indicator = ({ styles, Children }: CarouselIndicatorProps) => {
   const SIndicator = Root;

@@ -356,6 +356,7 @@ class Head extends Component<AsProps> {
         aria-colindex={isGroup ? undefined : index + 1}
         onFocus={this.onFocusCell}
         aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
+        innerOutline
       >
         {isGroup ? (
           <>

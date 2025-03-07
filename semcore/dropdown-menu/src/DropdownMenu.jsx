@@ -156,6 +156,7 @@ class DropdownMenuRoot extends AbstractDropdown {
       itemProps.use = props.use ?? 'tertiary';
       itemProps.theme = props.theme ?? 'muted';
       itemProps.size = props.size ?? 's';
+      itemProps.innerOutline = false;
     }
 
     if (props.selected) {
