@@ -999,7 +999,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - Унаследовано от `Box`/`Print`
 - В `List` можно передовать пользовательский маркер
 
-## [1.0.3] - 2018-14-11
+## [1.0.3] - 2018-11-14
 
 ### Added
 

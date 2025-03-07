@@ -1006,7 +1006,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - автокомплит для IDE
 
-## [1.0.3] - 2018-14-11
+## [1.0.3] - 2018-11-14
 
 ### Changed
 
