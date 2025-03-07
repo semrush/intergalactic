@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.60.0] - 2025-03-07
+
+### Added
+
+- Group of platform icons.
+
 ## [4.59.0] - 2025-03-04
 
 ### Added
