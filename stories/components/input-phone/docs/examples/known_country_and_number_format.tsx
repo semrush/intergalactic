@@ -29,8 +29,15 @@ const Demo = () => {
       }
   }
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
       if (e.key === 'Backspace' || e.key === 'ArrowLeft') {
+          if (e.currentTarget.value === prefix) {
+              e.preventDefault();
+              inputRef.current?.setSelectionRange(positionAfterFirstBracket, positionAfterFirstBracket);
+
+              return false;
+          }
+
           const selectionStart = inputRef.current?.selectionStart ?? 0;
           const selectionEnd = inputRef.current?.selectionEnd ?? 0;
           if (selectionStart <= positionAfterFirstBracket && selectionStart === selectionEnd) {
@@ -44,6 +51,13 @@ const Demo = () => {
           inputRef.current?.setSelectionRange(positionAfterFirstBracket, positionAfterFirstBracket);
       }
   }
+
+  const handleClick = (e: React.SyntheticEvent<HTMLInputElement>) => {
+      if (e.currentTarget instanceof HTMLInputElement && (e.currentTarget.selectionStart ?? 0) <= positionAfterFirstBracket) {
+          e.preventDefault();
+          inputRef.current?.setSelectionRange(positionAfterFirstBracket, positionAfterFirstBracket);
+      }
+  };
 
   return (
     <Flex direction='column'>
@@ -101,6 +115,7 @@ const Demo = () => {
               autoComplete='tel'
               title='10 digits, without country code'
               onKeyDown={handleKeyDown}
+              onClick={handleClick}
             />
             {phoneNumber !== prefix && (
               <Input.Addon>
