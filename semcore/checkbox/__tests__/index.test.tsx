@@ -8,15 +8,10 @@ import { axe } from '@semcore/testing-utils/axe';
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
 import Checkbox from '../src';
-
-import path from 'path';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
-describe(' Dependency imports', () => {
-  const packageJsonPath = path.resolve(__dirname, '../package.json');
-  const componentPath = path.resolve(__dirname, '../src/Checkbox.jsx');
-
-  runDependencyCheckTests(packageJsonPath, [componentPath]);
+describe('Checkbox Dependency imports', () => {
+  runDependencyCheckTests('checkbox');
 });
 
 describe('Checkbox', () => {

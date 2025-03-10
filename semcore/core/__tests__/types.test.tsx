@@ -1,15 +1,10 @@
 import type { Intergalactic } from '../src';
 import { test, describe, assertType } from '@semcore/testing-utils/vitest';
 import * as React from 'react';
-
-import path from 'path';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
-describe(' Dependency imports', () => {
-  const packageJsonPath = path.resolve(__dirname, '../package.json');
-  const componentPath = path.resolve(__dirname, '../src/index.ts');
-
-  runDependencyCheckTests(packageJsonPath, [componentPath]);
+describe('Core Dependency imports', () => {
+  runDependencyCheckTests('core');
 });
 
 describe('Core types', () => {

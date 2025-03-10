@@ -1,5 +1,4 @@
 import React from 'react';
-import path from 'path';
 import { snapshot } from '@semcore/testing-utils/snapshot';
 import { expect, test, describe, beforeEach, vi, assertType } from '@semcore/testing-utils/vitest';
 import { render, fireEvent, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
@@ -10,11 +9,8 @@ import Accordion from '../src';
 import { Intergalactic } from '@semcore/core';
 import Button from '@semcore/button';
 
-describe('Dependency imports', () => {
-  const packageJsonPath = path.resolve(__dirname, '../package.json');
-  const componentPath = path.resolve(__dirname, '../src/Accordion.jsx');
-
-  runDependencyCheckTests(packageJsonPath, [componentPath]);
+describe('Accordion Dependency imports', () => {
+  runDependencyCheckTests('accordion');
 });
 
 describe('Accordion', () => {

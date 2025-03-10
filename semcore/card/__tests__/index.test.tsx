@@ -10,15 +10,10 @@ import SettingsM from '@semcore/icon/Settings/m';
 
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 import Card from '../src';
-
-import path from 'path';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
-describe(' Dependency imports', () => {
-  const packageJsonPath = path.resolve(__dirname, '../package.json');
-  const componentPath = path.resolve(__dirname, '../src/Card.jsx');
-
-  runDependencyCheckTests(packageJsonPath, [componentPath]);
+describe('Card Dependency imports', () => {
+  runDependencyCheckTests('card');
 });
 
 describe('Card', () => {

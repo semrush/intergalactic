@@ -5,17 +5,10 @@ import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vites
 import { cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
 import Spin from '@semcore/spin';
 import NeighborLocation from '@semcore/neighbor-location';
-
-import path from 'path';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-//no  @semcore/tooltip in dependencies
-describe.skip('Dependency imports', () => {
-  const packageJsonPath = path.resolve(__dirname, '../package.json');
-  const basePath = path.resolve(__dirname, '../src/BaseTrigger.jsx');
-  const buttonPath = path.resolve(__dirname, '../src/ButtonTrigger.jsx');
-  const filterPath = path.resolve(__dirname, '../src/FilterTrigger.jsx');
 
-  runDependencyCheckTests(packageJsonPath, [basePath, buttonPath, filterPath]);
+describe.skip('BaseTrigger Dependency imports', () => {
+  runDependencyCheckTests('base-trigger');
 });
 
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;

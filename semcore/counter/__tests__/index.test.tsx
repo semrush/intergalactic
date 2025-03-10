@@ -4,17 +4,10 @@ import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vites
 import { cleanup } from '@semcore/testing-utils/testing-library';
 
 import Counter from '../src';
-
-import path from 'path';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
-describe(' Dependency imports', () => {
-  const packageJsonPath = path.resolve(__dirname, '../package.json');
-  const componentPath = path.resolve(__dirname, '../src/Counter.tsx');
-  const animatedPath = path.resolve(__dirname, '../src/AnimatedNumber.tsx');
-  const indexPath = path.resolve(__dirname, '../src/index.d.ts');
-
-  runDependencyCheckTests(packageJsonPath, [componentPath, animatedPath, indexPath]);
+describe('Counter Dependency imports', () => {
+  runDependencyCheckTests('counter');
 });
 
 describe('Counter', () => {
