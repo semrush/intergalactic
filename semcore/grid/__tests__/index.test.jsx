@@ -19,7 +19,6 @@ describe('grid Dependency imports', () => {
   runDependencyCheckTests('grid');
 });
 
-
 describe('Grid', () => {
   beforeEach(cleanup);
   shouldSupportClassName(Row);
