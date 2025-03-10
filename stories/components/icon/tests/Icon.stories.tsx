@@ -8,6 +8,7 @@ import IconOtherElementsExample from './examples/icons_in_other_elements_example
 import IconPlatformExample from './examples/icons_platform';
 
 import { iconSize } from './__tests__/icon_size.test';
+import { iconPlatform } from './__tests__/icon_platform.test';
 import { iconPay } from './__tests__/icon_pay.test';
 import { playWrapper } from '../../../utils/playWrapper';
 
@@ -42,4 +43,5 @@ export const IconOtherElements = {
 
 export const IconPlatform = {
   render: IconPlatformExample,
+  play: playWrapper(iconPlatform),
 };
