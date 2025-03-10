@@ -12,7 +12,7 @@ import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('notice Dependency imports', () => {
   runDependencyCheckTests('notice');
-}); 
+});
 
 describe('Notice', () => {
   beforeEach(cleanup);

@@ -11,7 +11,7 @@ import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('progress-bar Dependency imports', () => {
   runDependencyCheckTests('progress-bar');
-}); 
+});
 
 describe('ProgressBar', () => {
   beforeEach(cleanup);

@@ -10,7 +10,7 @@ import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('flags Dependency imports', () => {
   runDependencyCheckTests('flags');
-}); 
+});
 
 describe('Flags', () => {
   beforeEach(cleanup);

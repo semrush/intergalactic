@@ -18,7 +18,7 @@ import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('date-picker Dependency imports', () => {
   runDependencyCheckTests('date-picker');
-}); 
+});
 
 describe('DatePicker', () => {
   beforeEach(() => {

@@ -8,7 +8,7 @@ import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('spin-container Dependency imports', () => {
   runDependencyCheckTests('spin-container');
-}); 
+});
 
 describe('SpinContainer', () => {
   beforeEach(cleanup);

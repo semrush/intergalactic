@@ -10,7 +10,7 @@ import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('input-tags Dependency imports', () => {
   runDependencyCheckTests('input-tags');
-}); 
+});
 
 describe('InputTags', () => {
   beforeEach(cleanup);

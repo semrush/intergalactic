@@ -6,7 +6,7 @@ import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('wizard Dependency imports', () => {
   runDependencyCheckTests('wizard');
-}); 
+});
 
 describe('Wizard', () => {
   beforeEach(cleanup);

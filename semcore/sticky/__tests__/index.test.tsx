@@ -16,4 +16,4 @@ import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('sticky Dependency imports', () => {
   runDependencyCheckTests('sticky');
-}); 
+});

@@ -9,7 +9,7 @@ import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('switch Dependency imports', () => {
   runDependencyCheckTests('switch');
-}); 
+});
 
 describe('Switch', () => {
   beforeEach(cleanup);

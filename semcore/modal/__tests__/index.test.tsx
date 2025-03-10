@@ -14,7 +14,7 @@ import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('modal Dependency imports', () => {
   runDependencyCheckTests('modal');
-}); 
+});
 
 describe('Modal', () => {
   beforeEach(cleanup);

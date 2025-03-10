@@ -10,7 +10,7 @@ import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('slider Dependency imports', () => {
   runDependencyCheckTests('slider');
-}); 
+});
 
 describe('Slider', () => {
   beforeEach(cleanup);

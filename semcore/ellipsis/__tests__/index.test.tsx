@@ -12,7 +12,7 @@ import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('ellipsis Dependency imports', () => {
   runDependencyCheckTests('ellipsis');
-}); 
+});
 
 function fakeTemporaryBlock(rect: any) {
   const originalCreateElement = global.document.createElement;

@@ -18,7 +18,7 @@ import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('pills Dependency imports', () => {
   runDependencyCheckTests('pills');
-}); 
+});
 
 describe('PillGroup', () => {
   describe('types', () => {

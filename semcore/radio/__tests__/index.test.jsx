@@ -13,7 +13,7 @@ import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('radio Dependency imports', () => {
   runDependencyCheckTests('radio');
-}); 
+});
 
 describe('Radio', () => {
   beforeEach(cleanup);

@@ -17,7 +17,7 @@ import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('skeleton Dependency imports', () => {
   runDependencyCheckTests('skeleton');
-}); 
+});
 
 describe('Skeleton', () => {
   beforeEach(cleanup);

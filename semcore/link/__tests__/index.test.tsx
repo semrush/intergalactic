@@ -18,7 +18,7 @@ import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('link Dependency imports', () => {
   runDependencyCheckTests('link');
-}); 
+});
 
 describe('Link', () => {
   beforeEach(cleanup);

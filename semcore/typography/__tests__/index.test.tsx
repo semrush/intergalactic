@@ -11,7 +11,7 @@ import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('typography Dependency imports', () => {
   runDependencyCheckTests('typography');
-}); 
+});
 
 describe('Text', () => {
   beforeEach(cleanup);

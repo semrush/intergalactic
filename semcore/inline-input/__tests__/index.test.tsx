@@ -12,7 +12,7 @@ import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('inline-input Dependency imports', () => {
   runDependencyCheckTests('inline-input');
-}); 
+});
 
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 import Input from '../src';

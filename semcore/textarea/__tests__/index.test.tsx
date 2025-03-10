@@ -10,7 +10,7 @@ import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('textarea Dependency imports', () => {
   runDependencyCheckTests('textarea');
-}); 
+});
 
 describe('Textarea', () => {
   beforeEach(cleanup);

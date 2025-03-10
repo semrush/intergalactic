@@ -29,7 +29,7 @@ import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('data-table Dependency imports', () => {
   runDependencyCheckTests('data-table');
-}); 
+});
 
 const data = [
   {

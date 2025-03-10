@@ -14,7 +14,7 @@ import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('feedback-form Dependency imports', () => {
   runDependencyCheckTests('feedback-form');
-}); 
+});
 
 describe('FeedbackForm', () => {
   beforeEach(cleanup);

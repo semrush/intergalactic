@@ -11,7 +11,7 @@ import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('notice-global Dependency imports', () => {
   runDependencyCheckTests('notice-global');
-}); 
+});
 
 describe('NoticeGlobal', () => {
   beforeEach(cleanup);

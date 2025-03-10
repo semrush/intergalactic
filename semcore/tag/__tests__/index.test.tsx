@@ -11,7 +11,7 @@ import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('tag Dependency imports', () => {
   runDependencyCheckTests('tag');
-}); 
+});
 
 describe('Tag', () => {
   beforeEach(cleanup);

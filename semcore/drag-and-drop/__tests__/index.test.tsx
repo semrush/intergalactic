@@ -11,7 +11,7 @@ import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('drag-and-drop Dependency imports', () => {
   runDependencyCheckTests('drag-and-drop');
-}); 
+});
 
 describe('DragAndDrop', () => {
   beforeEach(cleanup);

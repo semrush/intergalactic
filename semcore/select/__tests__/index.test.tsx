@@ -18,7 +18,7 @@ import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('select Dependency imports', () => {
   runDependencyCheckTests('select');
-}); 
+});
 
 HTMLElement.prototype.scrollIntoView = () => {};
 

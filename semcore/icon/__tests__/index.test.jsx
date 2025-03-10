@@ -7,7 +7,7 @@ import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('icon Dependency imports', () => {
   runDependencyCheckTests('icon');
-}); 
+});
 
 describe('Icon', () => {
   beforeEach(cleanup);

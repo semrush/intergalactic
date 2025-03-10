@@ -10,8 +10,7 @@ import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('side-panel Dependency imports', () => {
   runDependencyCheckTests('side-panel');
-}); 
-
+});
 
 describe('SidePanel', () => {
   beforeEach(cleanup);

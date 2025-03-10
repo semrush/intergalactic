@@ -12,7 +12,7 @@ import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('dot Dependency imports', () => {
   runDependencyCheckTests('dot');
-}); 
+});
 
 describe('Dot', () => {
   beforeEach(cleanup);

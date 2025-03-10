@@ -8,7 +8,7 @@ import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('tooltip Dependency imports', () => {
   runDependencyCheckTests('tooltip');
-}); 
+});
 
 describe('Tooltip.Trigger', () => {
   beforeEach(cleanup);

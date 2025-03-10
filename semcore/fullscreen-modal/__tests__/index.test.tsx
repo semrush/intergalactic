@@ -11,7 +11,7 @@ import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('fullscreen-modal Dependency imports', () => {
   runDependencyCheckTests('fullscreen-modal');
-}); 
+});
 
 describe('FullscreenModal', () => {
   beforeEach(cleanup);

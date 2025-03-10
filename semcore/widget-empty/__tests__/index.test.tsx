@@ -8,7 +8,7 @@ import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('widget-empty Dependency imports', () => {
   runDependencyCheckTests('widget-empty');
-}); 
+});
 
 describe('WidgetEmpty', () => {
   beforeEach(cleanup);

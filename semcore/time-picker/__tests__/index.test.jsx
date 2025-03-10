@@ -10,7 +10,7 @@ import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('time-picker Dependency imports', () => {
   runDependencyCheckTests('time-picker');
-}); 
+});
 
 const TimePickerDefault = ({ children, ...other }) => (
   <TimePicker {...other}>

@@ -9,7 +9,7 @@ import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('product-head Dependency imports', () => {
   runDependencyCheckTests('product-head');
-}); 
+});
 
 describe('ProductHead', () => {
   beforeEach(cleanup);

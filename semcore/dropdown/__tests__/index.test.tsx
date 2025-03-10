@@ -10,7 +10,7 @@ import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('dropdown Dependency imports', () => {
   runDependencyCheckTests('dropdown');
-}); 
+});
 
 describe('Dropdown', () => {
   beforeEach(cleanup);

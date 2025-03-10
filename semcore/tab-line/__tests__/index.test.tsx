@@ -12,7 +12,7 @@ import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('tab-line Dependency imports', () => {
   runDependencyCheckTests('tab-line');
-}); 
+});
 
 describe('TabLine', () => {
   describe('types', () => {

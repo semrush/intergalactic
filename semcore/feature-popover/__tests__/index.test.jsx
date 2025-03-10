@@ -9,7 +9,7 @@ import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('feature-popover Dependency imports', () => {
   runDependencyCheckTests('feature-popover');
-}); 
+});
 
 describe('FeaturePopover.Trigger', () => {
   beforeEach(cleanup);

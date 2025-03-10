@@ -13,7 +13,7 @@ import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('input-mask Dependency imports', () => {
   runDependencyCheckTests('input-mask');
-}); 
+});
 
 describe('InputMask', () => {
   beforeEach(cleanup);

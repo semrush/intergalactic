@@ -13,7 +13,7 @@ import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('tab-panel Dependency imports', () => {
   runDependencyCheckTests('tab-panel');
-}); 
+});
 
 describe('TabPanel', () => {
   describe('types', () => {

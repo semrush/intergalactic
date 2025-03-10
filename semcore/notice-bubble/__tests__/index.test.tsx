@@ -31,8 +31,7 @@ import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('notice-bubble Dependency imports', () => {
   runDependencyCheckTests('notice-bubble');
-}); 
-
+});
 
 describe('NoticeBubbleContainer', () => {
   beforeEach(cleanup);

@@ -13,7 +13,7 @@ import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('pagination Dependency imports', () => {
   runDependencyCheckTests('pagination');
-}); 
+});
 
 describe('Pagination', () => {
   beforeEach(cleanup);
