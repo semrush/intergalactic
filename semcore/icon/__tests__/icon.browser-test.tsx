@@ -201,16 +201,14 @@ test.describe('Icons size rendering and attributes', () => {
     const svgs = await page.locator('svg');
     const count = await svgs.count();
 
-
     for (let i = 0; i < count; i++) {
       const svg = svgs.nth(i);
 
-     
-        await expect(svg).toHaveAttribute('width', '24');
-        await expect(svg).toHaveAttribute('height', '24');
-        await expect(svg).toHaveAttribute('viewBox', '0 0 24 24');
-        await expect(svg).toHaveAttribute('focusable', 'true');
-       await  expect(svg).toHaveAttribute('tabindex', '0');
+      await expect(svg).toHaveAttribute('width', '24');
+      await expect(svg).toHaveAttribute('height', '24');
+      await expect(svg).toHaveAttribute('viewBox', '0 0 24 24');
+      await expect(svg).toHaveAttribute('focusable', 'true');
+      await expect(svg).toHaveAttribute('tabindex', '0');
 
       const tagName = await svg.evaluate((el) => el.tagName.toLowerCase());
       expect(tagName).toBe('svg');
