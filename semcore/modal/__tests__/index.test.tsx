@@ -10,6 +10,12 @@ const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 import Modal from '../src';
 import Button from '../../button/src';
 
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('modal Dependency imports', () => {
+  runDependencyCheckTests('modal');
+});
+
 describe('Modal', () => {
   beforeEach(cleanup);
 

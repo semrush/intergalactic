@@ -3,6 +3,12 @@ import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/v
 import { cleanup, render } from '@semcore/testing-utils/testing-library';
 import Portal, { PortalProvider } from '../src';
 
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('portal Dependency imports', () => {
+  runDependencyCheckTests('portal');
+});
+
 describe('Portal', () => {
   beforeEach(cleanup);
 

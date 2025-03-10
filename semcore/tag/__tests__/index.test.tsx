@@ -7,6 +7,12 @@ import Tag, { TagContainer } from '../src';
 import { render, fireEvent, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
 
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('tag Dependency imports', () => {
+  runDependencyCheckTests('tag');
+});
+
 describe('Tag', () => {
   beforeEach(cleanup);
 

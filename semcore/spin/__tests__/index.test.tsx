@@ -5,6 +5,12 @@ import Spin from '../src';
 
 import { cleanup } from '@semcore/testing-utils/testing-library';
 
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('spin Dependency imports', () => {
+  runDependencyCheckTests('spin');
+});
+
 describe('Spin', () => {
   beforeEach(cleanup);
 

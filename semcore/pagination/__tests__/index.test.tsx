@@ -9,6 +9,12 @@ import Pagination from '../src';
 import Button from '@semcore/button';
 import { Flex } from '@semcore/flex-box';
 
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('pagination Dependency imports', () => {
+  runDependencyCheckTests('pagination');
+});
+
 describe('Pagination', () => {
   beforeEach(cleanup);
 

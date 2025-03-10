@@ -6,6 +6,12 @@ import { cleanup, render, fireEvent, waitFor } from '@semcore/testing-utils/test
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 import ScrollArea, { eventCalculate } from '../src';
 
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('scroll-area Dependency imports', () => {
+  runDependencyCheckTests('scroll-area');
+});
+
 describe('ScrollArea', () => {
   beforeEach(cleanup);
 

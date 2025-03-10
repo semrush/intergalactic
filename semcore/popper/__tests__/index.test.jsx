@@ -7,6 +7,12 @@ import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/v
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 import Popper from '../src';
 
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('popper Dependency imports', () => {
+  runDependencyCheckTests('popper');
+});
+
 describe('Popper', () => {
   beforeEach(cleanup);
   test.concurrent('Verify popper renders to outside container', () => {

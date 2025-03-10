@@ -9,6 +9,11 @@ const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
 import { Box, Flex } from '@semcore/flex-box';
 import Carousel from '../src';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('Carousel Dependency imports', () => {
+  runDependencyCheckTests('carousel');
+});
 
 const Container = (props: any) => (
   <Carousel.Container {...props}>

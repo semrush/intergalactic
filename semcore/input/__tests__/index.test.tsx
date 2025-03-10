@@ -8,6 +8,12 @@ import Input from '../src';
 import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('input Dependency imports', () => {
+  runDependencyCheckTests('input');
+});
+
 describe('Input', () => {
   beforeEach(cleanup);
 

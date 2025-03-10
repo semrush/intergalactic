@@ -5,6 +5,11 @@ import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vites
 import { cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
 import Spin from '@semcore/spin';
 import NeighborLocation from '@semcore/neighbor-location';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('BaseTrigger Dependency imports', () => {
+  runDependencyCheckTests('base-trigger');
+});
 
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 

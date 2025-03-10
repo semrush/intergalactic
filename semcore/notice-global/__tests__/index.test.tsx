@@ -7,6 +7,12 @@ import { render, fireEvent, cleanup } from '@semcore/testing-utils/testing-libra
 
 import NoticeGlobal from '../src';
 
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('notice-global Dependency imports', () => {
+  runDependencyCheckTests('notice-global');
+});
+
 describe('NoticeGlobal', () => {
   beforeEach(cleanup);
 

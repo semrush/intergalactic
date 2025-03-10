@@ -8,6 +8,12 @@ const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 import Dot from '../src';
 import Button from '@semcore/button';
 
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('dot Dependency imports', () => {
+  runDependencyCheckTests('dot');
+});
+
 describe('Dot', () => {
   beforeEach(cleanup);
 

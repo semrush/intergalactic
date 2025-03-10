@@ -9,6 +9,11 @@ import { render, fireEvent, cleanup } from '@semcore/testing-utils/testing-libra
 import { axe } from '@semcore/testing-utils/axe';
 import { assertType } from 'vitest';
 import { Intergalactic } from '@semcore/core';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('tab-panel Dependency imports', () => {
+  runDependencyCheckTests('tab-panel');
+});
 
 describe('TabPanel', () => {
   describe('types', () => {

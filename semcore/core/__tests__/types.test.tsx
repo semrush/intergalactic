@@ -1,6 +1,11 @@
 import type { Intergalactic } from '../src';
 import { test, describe, assertType } from '@semcore/testing-utils/vitest';
 import * as React from 'react';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('Core Dependency imports', () => {
+  runDependencyCheckTests('core');
+});
 
 describe('Core types', () => {
   const any: any = null;

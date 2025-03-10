@@ -25,6 +25,12 @@ import DataTable, { ROW_GROUP, DataTableTheme } from '../src';
 
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('data-table Dependency imports', () => {
+  runDependencyCheckTests('data-table');
+});
+
 const data = [
   {
     keyword: 'ebay buy',

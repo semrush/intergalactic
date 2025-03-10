@@ -6,6 +6,11 @@ import Divider from '../src';
 
 import { cleanup } from '@semcore/testing-utils/testing-library';
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('Divider Dependency imports', () => {
+  runDependencyCheckTests('divider');
+});
 
 describe('Divider', () => {
   beforeEach(cleanup);

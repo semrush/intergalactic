@@ -11,3 +11,9 @@ describe('Sticky', () => {
   shouldSupportClassName(Sticky);
   shouldSupportRef(Sticky);
 });
+
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('sticky Dependency imports', () => {
+  runDependencyCheckTests('sticky');
+});

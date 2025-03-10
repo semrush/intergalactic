@@ -2,6 +2,11 @@ import React from 'react';
 import { describe, test, expect, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import { render, cleanup, fireEvent } from '@semcore/testing-utils/testing-library';
 import Wizard from '../src';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('wizard Dependency imports', () => {
+  runDependencyCheckTests('wizard');
+});
 
 describe('Wizard', () => {
   beforeEach(cleanup);

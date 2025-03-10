@@ -6,6 +6,12 @@ import { axe } from '@semcore/testing-utils/axe';
 
 import Breadcrumbs from '../src';
 
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('breadcrumbs Dependency imports', () => {
+  runDependencyCheckTests('breadcrumbs');
+});
+
 describe('Breadcrumbs', () => {
   beforeEach(cleanup);
   test.concurrent('Renders correctly', async ({ task }) => {

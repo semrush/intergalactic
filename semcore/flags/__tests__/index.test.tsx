@@ -6,6 +6,12 @@ import { axe } from '@semcore/testing-utils/axe';
 
 import Flags from '../src';
 
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('flags Dependency imports', () => {
+  runDependencyCheckTests('flags');
+});
+
 describe('Flags', () => {
   beforeEach(cleanup);
 

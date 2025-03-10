@@ -6,6 +6,12 @@ import { axe } from '@semcore/testing-utils/axe';
 
 import ColorPicker, { PaletteManager } from '../src';
 
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('color-picker Dependency imports', () => {
+  runDependencyCheckTests('color-picker');
+});
+
 describe('ColorPicker', () => {
   beforeEach(cleanup);
 
