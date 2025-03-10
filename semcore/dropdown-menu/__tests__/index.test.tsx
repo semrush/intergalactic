@@ -16,6 +16,12 @@ import DropdownMenu from '../src';
 import { Box } from '@semcore/flex-box';
 import { ButtonTrigger } from '@semcore/base-trigger';
 
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('dropdown-menu Dependency imports', () => {
+  runDependencyCheckTests('dropdown-menu');
+}); 
+
 describe('DropdownMenu', () => {
   beforeEach(cleanup);
 

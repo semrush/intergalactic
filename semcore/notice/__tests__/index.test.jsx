@@ -8,6 +8,12 @@ import { axe } from '@semcore/testing-utils/axe';
 import Notice, { NoticeSmart } from '../src';
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('notice Dependency imports', () => {
+  runDependencyCheckTests('notice');
+}); 
+
 describe('Notice', () => {
   beforeEach(cleanup);
 

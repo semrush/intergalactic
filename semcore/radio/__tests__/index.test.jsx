@@ -9,6 +9,12 @@ import Radio, { RadioGroup, inputProps } from '../src/Radio';
 
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('radio Dependency imports', () => {
+  runDependencyCheckTests('radio');
+}); 
+
 describe('Radio', () => {
   beforeEach(cleanup);
 

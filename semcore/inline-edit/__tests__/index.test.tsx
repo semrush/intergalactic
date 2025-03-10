@@ -6,6 +6,12 @@ import { axe } from '@semcore/testing-utils/axe';
 
 import InlineEdit from '../src';
 
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('imline-edit Dependency imports', () => {
+  runDependencyCheckTests('inline-edit');
+}); 
+
 const InstantFadeInOut: React.FC<{ children: React.ReactNode; visible?: boolean }> =
   React.forwardRef((props, ref: React.Ref<HTMLDivElement>) => {
     return (

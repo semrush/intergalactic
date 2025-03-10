@@ -6,6 +6,11 @@ import Tooltip from '@semcore/tooltip';
 import { axe } from '@semcore/testing-utils/axe';
 
 import InputTags from '../src';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('input-tags Dependency imports', () => {
+  runDependencyCheckTests('input-tags');
+}); 
 
 describe('InputTags', () => {
   beforeEach(cleanup);

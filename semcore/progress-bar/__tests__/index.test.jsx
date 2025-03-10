@@ -7,6 +7,12 @@ import { cleanup, render } from '@semcore/testing-utils/testing-library';
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 import ProgressBar from '../src';
 
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('progress-bar Dependency imports', () => {
+  runDependencyCheckTests('progress-bar');
+}); 
+
 describe('ProgressBar', () => {
   beforeEach(cleanup);
 

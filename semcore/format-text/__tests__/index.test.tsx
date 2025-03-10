@@ -6,6 +6,12 @@ import { cleanup } from '@semcore/testing-utils/testing-library';
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 import FormatText from '../src';
 
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('format-text Dependency imports', () => {
+  runDependencyCheckTests('format-text');
+}); 
+
 describe('FormatText', () => {
   beforeEach(cleanup);
 

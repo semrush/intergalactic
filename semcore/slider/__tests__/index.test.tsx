@@ -6,6 +6,12 @@ import Slider from '../src';
 import { render, fireEvent, cleanup } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
 
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('slider Dependency imports', () => {
+  runDependencyCheckTests('slider');
+}); 
+
 describe('Slider', () => {
   beforeEach(cleanup);
 

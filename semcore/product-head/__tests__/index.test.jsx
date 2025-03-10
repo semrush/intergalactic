@@ -5,6 +5,12 @@ import { cleanup } from '@semcore/testing-utils/testing-library';
 
 import ProductHead, { Info, Title } from '../src';
 
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('product-head Dependency imports', () => {
+  runDependencyCheckTests('product-head');
+}); 
+
 describe('ProductHead', () => {
   beforeEach(cleanup);
 

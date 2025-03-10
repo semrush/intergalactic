@@ -6,6 +6,13 @@ import { render, fireEvent, cleanup } from '@semcore/testing-utils/testing-libra
 import SidePanel from '../src';
 import Portal from '@semcore/portal';
 
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('side-panel Dependency imports', () => {
+  runDependencyCheckTests('side-panel');
+}); 
+
+
 describe('SidePanel', () => {
   beforeEach(cleanup);
 

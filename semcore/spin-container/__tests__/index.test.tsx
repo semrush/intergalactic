@@ -4,6 +4,11 @@ import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vites
 import SpinContainer from '../src';
 
 import { cleanup } from '@semcore/testing-utils/testing-library';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('spin-container Dependency imports', () => {
+  runDependencyCheckTests('spin-container');
+}); 
 
 describe('SpinContainer', () => {
   beforeEach(cleanup);

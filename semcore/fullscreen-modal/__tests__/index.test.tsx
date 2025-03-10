@@ -7,6 +7,12 @@ import { render, fireEvent, cleanup } from '@semcore/testing-utils/testing-libra
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 import FullscreenModal from '../src';
 
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('fullscreen-modal Dependency imports', () => {
+  runDependencyCheckTests('fullscreen-modal');
+}); 
+
 describe('FullscreenModal', () => {
   beforeEach(cleanup);
 

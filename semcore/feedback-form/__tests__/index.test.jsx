@@ -10,6 +10,12 @@ const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 import propsForElement from '@semcore/utils/lib/propsForElement';
 import FeedbackForm, { FeedbackRating } from '../src';
 
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('feedback-form Dependency imports', () => {
+  runDependencyCheckTests('feedback-form');
+}); 
+
 describe('FeedbackForm', () => {
   beforeEach(cleanup);
 

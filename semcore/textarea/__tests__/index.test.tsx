@@ -6,6 +6,12 @@ import Textarea from '../src';
 import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
 
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('textarea Dependency imports', () => {
+  runDependencyCheckTests('textarea');
+}); 
+
 describe('Textarea', () => {
   beforeEach(cleanup);
 

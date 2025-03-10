@@ -8,6 +8,11 @@ import { render, fireEvent, cleanup } from '@semcore/testing-utils/testing-libra
 import { axe } from '@semcore/testing-utils/axe';
 import { Intergalactic } from '@semcore/core';
 import { assertType } from 'vitest';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('tab-line Dependency imports', () => {
+  runDependencyCheckTests('tab-line');
+}); 
 
 describe('TabLine', () => {
   describe('types', () => {

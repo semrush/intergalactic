@@ -8,6 +8,12 @@ import { axe } from '@semcore/testing-utils/axe';
 // @ts-ignore
 import Link from '@semcore/link';
 
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('ellipsis Dependency imports', () => {
+  runDependencyCheckTests('ellipsis');
+}); 
+
 function fakeTemporaryBlock(rect: any) {
   const originalCreateElement = global.document.createElement;
 

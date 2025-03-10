@@ -4,6 +4,11 @@ import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/v
 import { axe } from '@semcore/testing-utils/axe';
 
 import Tooltip, { Hint, DescriptionTooltip } from '../src';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('tooltip Dependency imports', () => {
+  runDependencyCheckTests('tooltip');
+}); 
 
 describe('Tooltip.Trigger', () => {
   beforeEach(cleanup);
