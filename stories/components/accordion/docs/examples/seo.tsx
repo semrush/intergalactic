@@ -8,7 +8,7 @@ const Demo = () => {
   return (
     <Accordion value={value} onChange={(value: any) => onChange(value)}>
       {[...new Array(3)].map((_, index) => (
-        <Accordion.Item value={index} key={index} disabled={index === 2}>
+        <Accordion.Item value={index} key={index} disabled={index === 1}>
           <Accordion.Item.Toggle pb={2}>
             <Accordion.Item.ToggleButton>
               <Accordion.Item.Chevron mr={2} />
@@ -16,7 +16,7 @@ const Demo = () => {
             </Accordion.Item.ToggleButton>
           </Accordion.Item.Toggle>
           <Accordion.Item.Collapse preserveNode>
-            <Box p='12px 24px 24px'>{`Hello Section ${index + 1}`}</Box>
+            <Box p='12px 24px 24px'>{`Hello Section ${index + 1}`} <a href={'#'}>Some focusable link in content</a></Box>
           </Accordion.Item.Collapse>
         </Accordion.Item>
       ))}

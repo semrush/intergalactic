@@ -50,6 +50,7 @@ export const SearchInput = ({
             use='secondary'
             title='Clear'
             onClick={() => setFilter('')}
+            id={`clear-${statusAddonId}`}
           />
         </Input.Addon>
       )}

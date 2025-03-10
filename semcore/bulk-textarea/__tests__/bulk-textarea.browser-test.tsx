@@ -2,7 +2,7 @@ import { expect, test, Page } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 const getLocators = (page: Page) => ({
-  textarea: page.getByRole('textbox', { name: 'list of keywords' }),
+  textarea: page.getByRole('textbox'),
   counter: page.locator('[data-ui-name="BulkTextarea.Counter"]'),
   clearAllBtn: page.locator('[data-ui-name="BulkTextarea.ClearAll"]'),
   errorMessage: page.locator('[data-ui-name="Text"]').nth(1),
@@ -12,12 +12,12 @@ const getLocators = (page: Page) => ({
 });
 
 test.describe('States size counter and placeholder checks', () => {
-  test('Test different states and sizes', async ({ page }) => {
+  test('Verify all states and sizes visual and fucntionality', async ({ page }) => {
     const standPath = 'stories/components/bulk-textarea/tests/examples/sizes-states.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
-    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.03 });
+    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.02 });
     await page.keyboard.press('Tab');
     const readonlyTextarea = await page
       .getByRole('textbox', { name: 'Readonly state of bulk textarea' })
@@ -39,12 +39,13 @@ test.describe('States size counter and placeholder checks', () => {
     const text =
       'Zoom in on product categories to understand how each site segment drives conversions.\nSecond row\n3 row\n4 row\n5 row\n6 row\n7 row\n8 row\n9 row\n10 row';
     await page.keyboard.type(text, { delay: 20 });
+    await page.waitForTimeout(100);
     const normalTextArea4 = await page
       .getByRole('textbox', { name: 'Readonly state of bulk textarea' })
       .nth(4);
     await normalTextArea4.click();
     await page.waitForTimeout(100);
-    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.03 });
+    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.02 });
 
     await normalTextArea.click();
     await page.keyboard.type('[]', { delay: 20 });
@@ -57,8 +58,8 @@ test.describe('States size counter and placeholder checks', () => {
   });
 });
 
-test.describe('Manual adding rows', () => {
-  test('Test counter and Clear all', async ({ page, browserName }) => {
+test.describe('Counter and Clear all', () => {
+  test('Verify counter fucntionality', async ({ page, browserName }) => {
     const standPath =
       'stories/components/bulk-textarea/tests/examples/validate-blur-base-example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -133,7 +134,93 @@ test.describe('Manual adding rows', () => {
     });
   });
 
-  test('Test Validation on Blur', async ({ page }) => {
+  test('Verify Clear all works by mouse when no validation', async ({ page }) => {
+    const standPath =
+      'stories/components/bulk-textarea/tests/examples/validate-blur-base-example.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+    const locators = getLocators(page);
+    const contentDiv = page.locator('div[contenteditable="true"]');
+
+    await test.step('Removed when remove last character', async () => {
+      await locators.textarea.click();
+      await page.keyboard.type('abc', { delay: 50 });
+      await expect(locators.clearAllBtn).toBeVisible();
+      await locators.textarea.press('Backspace');
+      await locators.textarea.press('Backspace');
+      await locators.textarea.press('Backspace');
+      await expect(locators.clearAllBtn).not.toBeVisible();
+      const lineCount = await contentDiv.locator('p').count();
+      await expect(lineCount).toBe(0);
+      await expect(locators.counter).toHaveText('0/15of 15 lines');
+    });
+
+    await test.step('Type text into textarea and click clear all', async () => {
+      await locators.textarea.click();
+      await page.keyboard.type('Testhttp://,test2', { delay: 100 });
+      await expect(locators.counter).toHaveText('2/15of 15 lines');
+      await expect(locators.clearAllBtn).toBeVisible();
+      await expect(locators.clearAllBtn).not.toBeFocused();
+      await locators.clearAllBtn.click();
+      await expect(locators.textarea).toBeFocused();
+      await expect(locators.clearAllBtn).not.toBeVisible();
+      const lineCount = await contentDiv.locator('p').count();
+      await expect(lineCount).toBe(0);
+      await expect(locators.counter).toHaveText('0/15of 15 lines');
+    });
+  });
+
+  test('Verify Clear all works by keyboard no validation', async ({ page }) => {
+    const standPath = 'stories/components/bulk-textarea/docs/examples/basic-usage.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+    const locators = getLocators(page);
+    const contentDiv = page.locator('div[contenteditable="true"]');
+
+    await test.step('Type text into textarea and press clear all', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.type('Testhttp://,test2', { delay: 20 });
+      await page.waitForTimeout(100);
+      await page.keyboard.press('Tab');
+      await page.waitForTimeout(100);
+      await expect(locators.clearAllBtn).toBeFocused();
+      await page.keyboard.press('Enter');
+      await page.waitForTimeout(50);
+      await expect(locators.textarea).toBeFocused();
+      await expect(locators.clearAllBtn).not.toBeVisible();
+      const lineCount = await contentDiv.locator('p').count();
+      await expect(lineCount).toBe(0);
+      await expect(locators.counter).toHaveText('0/10of 10 lines');
+    });
+  });
+
+  test('Verify Clear all works by keyboard with validation', async ({ page }) => {
+    const standPath = 'stories/components/bulk-textarea/docs/examples/basic-usage.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+    const locators = getLocators(page);
+    const contentDiv = page.locator('div[contenteditable="true"]');
+
+    await test.step('Type text into textarea and press clear all', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.type('Testhttp://,test2[]', { delay: 100 });
+      await page.keyboard.press('Enter');
+      await page.keyboard.press('Tab');
+      await page.waitForTimeout(50);
+      await expect(locators.clearAllBtn).toBeFocused();
+      await page.keyboard.press('Enter');
+      await page.waitForTimeout(50);
+      await expect(locators.textarea).toBeFocused();
+      await expect(locators.clearAllBtn).not.toBeVisible();
+      const lineCount = await contentDiv.locator('p').count();
+      await expect(lineCount).toBe(0);
+      await expect(locators.counter).toHaveText('0/10of 10 lines');
+    });
+  });
+});
+
+test.describe('Common error ON - Validation Delimiter RowProcessing', () => {
+  test('Verity Validation on Blur', async ({ page }) => {
     const standPath =
       'stories/components/bulk-textarea/tests/examples/validate-blur-base-example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -212,7 +299,7 @@ test.describe('Manual adding rows', () => {
     // });
   });
 
-  test('Test Validation on BlurRow', async ({ page }) => {
+  test('Verify Validation on BlurRow', async ({ page }) => {
     const standPath =
       'stories/components/bulk-textarea/tests/examples/validate-blurRow-base-example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -296,7 +383,7 @@ test.describe('Manual adding rows', () => {
     });
   });
 
-  test('Test Validation on Submit', async ({ page }) => {
+  test('Verify Validation on Submit', async ({ page }) => {
     const standPath =
       'stories/components/bulk-textarea/tests/examples/validate-blur-base-example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -319,7 +406,7 @@ test.describe('Manual adding rows', () => {
     });
   });
 
-  test('Delimiter and Rows Processing fucntionality', async ({ page }) => {
+  test('Verify Delimiter and Rows Processing fucntionality', async ({ page }) => {
     const standPath =
       'stories/components/bulk-textarea/tests/examples/validate-blur-base-example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -384,90 +471,196 @@ test.describe('Manual adding rows', () => {
   });
 });
 
-test.describe('Clear all fuctionality', () => {
-  test('Mouse interaction - no validation', async ({ page }) => {
-    const standPath =
-      'stories/components/bulk-textarea/tests/examples/validate-blur-base-example.tsx';
+test.describe('Common error OFF - Validation Delimiter RowProcessing', () => {
+  test('Verify Validation on Blur', async ({ page }) => {
+    const standPath = 'stories/components/bulk-textarea/advanced/examples/no-common-error.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
     const locators = getLocators(page);
-    const contentDiv = page.locator('div[contenteditable="true"]');
 
-    await test.step('Removed when remove last character', async () => {
-      await locators.textarea.click();
-      await page.keyboard.type('abc', { delay: 50 });
+    await test.step('Verify validation on blur starts by TAB', async () => {
+      await page.keyboard.press('Tab');
+      await locators.textarea.press('[');
+      await page.keyboard.press('Enter');
+      await page.waitForTimeout(100);
+      await page.keyboard.press('Tab');
+      await page.waitForTimeout(200);
+      await expect(locators.textarea).toHaveAttribute('aria-invalid', 'true');
+      await expect(locators.errorMessage).toBeVisible();
+      await expect(locators.buttonNext).toBeVisible();
+      await expect(locators.buttonPrev).toBeVisible();
       await expect(locators.clearAllBtn).toBeVisible();
-      await locators.textarea.press('Backspace');
-      await locators.textarea.press('Backspace');
-      await locators.textarea.press('Backspace');
-      await expect(locators.clearAllBtn).not.toBeVisible();
-      const lineCount = await contentDiv.locator('p').count();
-      await expect(lineCount).toBe(0);
-      await expect(locators.counter).toHaveText('0/15of 15 lines');
-    });
-
-    await test.step('Type text into textarea and click clear all', async () => {
-      await locators.textarea.click();
-      await page.keyboard.type('Testhttp://,test2', { delay: 100 });
-      await expect(locators.counter).toHaveText('2/15of 15 lines');
-      await expect(locators.clearAllBtn).toBeVisible();
-      await expect(locators.clearAllBtn).not.toBeFocused();
+      await expect(locators.errorMessage).toHaveText('1 error');
       await locators.clearAllBtn.click();
-      await expect(locators.textarea).toBeFocused();
-      await expect(locators.clearAllBtn).not.toBeVisible();
-      const lineCount = await contentDiv.locator('p').count();
-      await expect(lineCount).toBe(0);
-      await expect(locators.counter).toHaveText('0/15of 15 lines');
+    });
+
+    await test.step('Verify validation on clicking outside textbox', async () => {
+      await locators.textarea.press('[');
+      await page.keyboard.press('Enter');
+      await page.waitForTimeout(100);
+      const boxBoundingBox = await locators.boxLocator.boundingBox();
+
+      if (boxBoundingBox) {
+        const rightTopX = boxBoundingBox.x + boxBoundingBox.width;
+        const rightTopY = boxBoundingBox.y;
+        await page.mouse.click(rightTopX, rightTopY);
+        await page.waitForTimeout(200);
+      }
+
+      await expect(locators.textarea).toHaveAttribute('aria-invalid', 'true');
+      await expect(locators.errorMessage).toBeVisible();
+      await expect(locators.buttonNext).toBeVisible();
+      await expect(locators.buttonPrev).toBeVisible();
+      await expect(locators.clearAllBtn).toBeVisible();
+      await expect(locators.errorMessage).toHaveText('1 error');
+    });
+
+    await test.step('Verify multiple rows with errors validation', async () => {
+      await locators.clearAllBtn.click();
+      const text = 'Zoom in \nSecond [row\n3 row\n4[] row\n5[] row ';
+      await page.keyboard.type(text, { delay: 10 });
+      await page.keyboard.press('Enter');
+      await expect(locators.errorMessage).not.toBeVisible();
+      await expect(locators.buttonNext).not.toBeVisible();
+      await expect(locators.buttonPrev).not.toBeVisible();
+      await expect(locators.clearAllBtn).toBeVisible();
+      await page.keyboard.press('Tab');
+      await expect(locators.errorMessage).toBeVisible();
+      await expect(locators.errorMessage).toHaveText('3 errors');
+      await expect(page).toHaveScreenshot();
     });
   });
 
-  test('Keyboards interaction - no validation', async ({ page }) => {
+  test('Verify Validation on BlurRow', async ({ page }) => {
     const standPath =
-      'stories/components/bulk-textarea/tests/examples/validate-blur-base-example.tsx';
+      'stories/components/bulk-textarea/tests/examples/no-common-error-blur-line.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
     const locators = getLocators(page);
-    const contentDiv = page.locator('div[contenteditable="true"]');
 
-    await test.step('Type text into textarea and press clear all', async () => {
+    await test.step('Verify validation on blurRow starts by entering new row', async () => {
       await page.keyboard.press('Tab');
-      await page.keyboard.type('Testhttp://,test2', { delay: 100 });
-      await page.keyboard.press('Tab');
-      await expect(locators.clearAllBtn).toBeFocused();
+      await page.keyboard.type('test[]]', { delay: 10 });
       await page.keyboard.press('Enter');
-      await expect(locators.textarea).toBeFocused();
-      await expect(locators.clearAllBtn).not.toBeVisible();
-      const lineCount = await contentDiv.locator('p').count();
-      await expect(lineCount).toBe(0);
-      await expect(locators.counter).toHaveText('0/15of 15 lines');
+      await page.waitForTimeout(100);
+      await expect(locators.textarea).toHaveAttribute('aria-invalid', 'true');
+      await expect(locators.errorMessage).toBeVisible();
+      await expect(locators.buttonNext).toBeVisible();
+      await expect(locators.buttonPrev).toBeVisible();
+      await expect(locators.clearAllBtn).toBeVisible();
+      await expect(locators.errorMessage).toHaveText('1 error');
+      await locators.clearAllBtn.click();
+    });
+
+    await test.step('Verify validation on blur starts by Tab', async () => {
+      const text = 'Zoom in \nSecond row\n3 row[\ntest';
+      await page.keyboard.type(text, { delay: 10 });
+      await page.waitForTimeout(100);
+      await page.keyboard.press('Tab');
+      await page.waitForTimeout(100);
+      await expect(locators.textarea).toHaveAttribute('aria-invalid', 'true');
+      await expect(locators.errorMessage).toBeVisible();
+      await expect(locators.buttonNext).toBeVisible();
+      await expect(locators.buttonPrev).toBeVisible();
+      await expect(locators.clearAllBtn).toBeVisible();
+      await expect(locators.errorMessage).toHaveText('1 error');
+    });
+
+    await test.step('Verify validation on clicking outside textbox', async () => {
+      await page.waitForTimeout(100);
+      await locators.clearAllBtn.click();
+      await page.keyboard.type('text\n[]\nttext', { delay: 10 });
+      await page.waitForTimeout(100);
+      const boxBoundingBox = await locators.boxLocator.boundingBox();
+
+      if (boxBoundingBox) {
+        const rightTopX = boxBoundingBox.x + boxBoundingBox.width;
+        const rightTopY = boxBoundingBox.y;
+        await page.mouse.click(rightTopX, rightTopY);
+      }
+      await expect(locators.textarea).toHaveAttribute('aria-invalid', 'true');
+      await expect(locators.errorMessage).toBeVisible();
+      await expect(locators.buttonNext).toBeVisible();
+      await expect(locators.buttonPrev).toBeVisible();
+      await expect(locators.clearAllBtn).toBeVisible();
+      await expect(locators.errorMessage).toHaveText('1 error');
+      await locators.clearAllBtn.click();
+    });
+
+    await test.step('Verify multiple rows with errors validation', async () => {
+      const text = 'Zoom in ]\nSecond[] row\n3 row\n4[] row\n5 row';
+      await page.keyboard.type(text, { delay: 10 });
+      await expect(locators.errorMessage).toBeVisible();
+      await expect(locators.errorMessage).toHaveText('3 errors');
     });
   });
 
-  test('Keyboard interaction - with validation', async ({ page }) => {
-    const standPath =
-      'stories/components/bulk-textarea/tests/examples/validate-blur-base-example.tsx';
+  test('Verify Delimiter and Rows Processing fucntionality', async ({ page }) => {
+    const standPath = 'stories/components/bulk-textarea/advanced/examples/no-common-error.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
     const locators = getLocators(page);
+    await page.keyboard.press('Tab');
     const contentDiv = page.locator('div[contenteditable="true"]');
-
-    await test.step('Type text into textarea and press clear all', async () => {
-      await page.keyboard.press('Tab');
-      await page.keyboard.type('Testhttp://,test2[]', { delay: 100 });
-      await page.keyboard.press('Tab');
-      await expect(locators.clearAllBtn).toBeFocused();
+    await test.step('Verify enter delimiter works', async () => {
+      const text = 'Zoom in \nSecond row\n3 row\n4 row\n5 row';
+      await page.keyboard.type(text, { delay: 10 });
+      const lineCount = await locators.textarea.locator('p').count();
+      await expect(lineCount).toBe(5);
+    });
+    await test.step('Verify comma delimiter works', async () => {
       await page.keyboard.press('Enter');
-      await expect(locators.textarea).toBeFocused();
-      await expect(locators.clearAllBtn).not.toBeVisible();
+      const text = 'Zoom in ,Second row,3 row,4 row,5 row';
+      await page.keyboard.type(text, { delay: 10 });
       const lineCount = await contentDiv.locator('p').count();
-      await expect(lineCount).toBe(0);
-      await expect(locators.counter).toHaveText('0/15of 15 lines');
+      await expect(lineCount).toBe(10);
+      await expect(locators.counter).toHaveText('10/10of 10 linesLimit reached');
+      await locators.clearAllBtn.click();
+      await page.waitForTimeout(100);
+    });
+
+    await test.step('Verify rows Processing works in 1st row ', async () => {
+      await page.waitForTimeout(100);
+      await locators.textarea.click();
+      await page.keyboard.type('http://', { delay: 10 });
+      await page.keyboard.press('Enter');
+      const lineCount = await contentDiv.locator('p').count();
+      await expect(lineCount).toBe(2);
+      await expect(locators.counter).toHaveText('0/10of 10 lines');
+      await page.keyboard.press('Backspace');
+    });
+    await test.step('Verify rows Processing works in 1st row when data in the begin', async () => {
+      await page.waitForTimeout(100);
+      await page.keyboard.type('http://Test', { delay: 100 });
+      await page.keyboard.press('Space');
+      await page.keyboard.press('Enter');
+      const lineCount = await contentDiv.locator('p').count();
+      await expect(lineCount).toBe(2);
+      await expect(locators.counter).toHaveText('1/10of 10 lines');
+      const firstLine = await page.locator('div[contenteditable="true"] p').first();
+
+      const firstLineText = await firstLine.textContent();
+
+      expect(firstLineText).not.toMatch(/^http:\/\//);
+
+      await locators.clearAllBtn.click();
+      await page.waitForTimeout(100);
+    });
+
+    await test.step('Verify rows Processing works in 1st row when data in the end', async () => {
+      await locators.textarea.click();
+      await page.waitForTimeout(100);
+      await page.keyboard.type('Testhttp://', { delay: 100 });
+      await page.keyboard.press('Enter');
+      const firstLine = await page.locator('div[contenteditable="true"] p').first();
+      const firstLineText = await firstLine.textContent();
+      expect(firstLineText).not.toMatch(/^http:\/\//);
     });
   });
 });
 
-test.describe('Error tooltips', () => {
-  test('Mouse - Hover and click rows, click arrows ', async ({ page }) => {
+test.describe('Common error On - Error tooltips', () => {
+  test('Verify tooltips by mouse hover and click', async ({ page }) => {
     const standPath =
       'stories/components/bulk-textarea/tests/examples/validate-blur-base-example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -536,7 +729,10 @@ test.describe('Error tooltips', () => {
     });
   });
 
-  test('Keyboard - Navigate in rows, click arrows ', async ({ page, browserName }) => {
+  test('Verify tooltips by keyboard click and havigate by arrows', async ({
+    page,
+    browserName,
+  }) => {
     const standPath =
       'stories/components/bulk-textarea/tests/examples/validate-blur-base-example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -550,13 +746,14 @@ test.describe('Error tooltips', () => {
       const text =
         'Zoom in \nSecond row\n3 row\n4[] row\n5 row\n6 ]]row\n7 row\n8 row\n9 row\n10 row\n11[[row\n12 row';
       await page.keyboard.type(text, { delay: 10 });
+      await page.waitForTimeout(100);
       await page.keyboard.press('Tab');
       await page.keyboard.press('Shift+Tab');
-      await page.waitForTimeout(50);
+      await page.waitForTimeout(100);
       await page.keyboard.press('Shift+Tab');
-      await page.waitForTimeout(50);
+      await page.waitForTimeout(100);
       await page.keyboard.press('Shift+Tab');
-      await page.waitForTimeout(50);
+      await page.waitForTimeout(100);
       await expect(locators.textarea).toBeFocused();
       await expect(tooltip).toHaveText('some global error');
       await expect(contentDiv).toHaveAttribute('aria-invalid', 'true');
@@ -573,6 +770,7 @@ test.describe('Error tooltips', () => {
 
     await test.step('Navigation between rows by clicking arrows', async () => {
       await page.keyboard.press('Tab');
+      await page.waitForTimeout(50);
       await page.keyboard.press('Enter');
       await page.waitForTimeout(100);
       await expect(locators.textarea).toBeFocused();
@@ -580,21 +778,17 @@ test.describe('Error tooltips', () => {
       await expect(tooltip).toHaveText('row has invalid charsets');
 
       await page.keyboard.press('Tab');
-      await page.keyboard.press('Enter');
-      await page.waitForTimeout(100);
-      await expect(locators.errorMessage).toHaveText('Error 2 out of 3');
-      await expect(tooltip).toHaveText('row has invalid charsets');
-      if (browserName === 'webkit') return; //disabled termporary for webkit because works unstable
+      await page.waitForTimeout(50);
       await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
+      await page.waitForTimeout(50);
       await page.keyboard.press('Enter');
-      await page.waitForTimeout(100);
-      await expect(locators.errorMessage).toHaveText('Error 1 out of 3');
+      await page.waitForTimeout(200);
+      await expect(locators.errorMessage).toHaveText('Error 3 out of 3');
       await expect(tooltip).toHaveText('row has invalid charsets');
     });
   });
 
-  test('Fix errors', async ({ page }) => {
+  test('Verify tooltips when fixing errors', async ({ page }) => {
     const standPath =
       'stories/components/bulk-textarea/tests/examples/validate-blur-base-example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -652,16 +846,17 @@ test.describe('Error tooltips', () => {
       await expect(tooltip).toHaveText('some global error');
 
       await locators.buttonNext.click();
-      await page.waitForTimeout(100);
+      await page.waitForTimeout(200);
       await expect(locators.errorMessage).toHaveText('Error 1 out of 1');
       await expect(tooltip).toHaveText('row has invalid charsets');
       await page.keyboard.press('Backspace');
+      await page.waitForTimeout(200);
       await expect(contentDiv).not.toHaveAttribute('aria-invalid', 'true');
       await expect(tooltip).toBeEmpty;
     });
   });
 
-  test('Add errors ', async ({ page, browserName }) => {
+  test('Verify tooltips when adding errors ', async ({ page, browserName }) => {
     const standPath =
       'stories/components/bulk-textarea/tests/examples/validate-blur-base-example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -674,6 +869,7 @@ test.describe('Error tooltips', () => {
       await page.waitForTimeout(100);
       const text = '1 row[\n2[] row\n3 row\n4 ]]row\n5 row';
       await page.keyboard.type(text, { delay: 10 });
+      await page.waitForTimeout(100);
       await page.keyboard.press('Tab');
       await page.waitForTimeout(100);
       await expect(locators.errorMessage).toHaveText('3 errors');
@@ -684,5 +880,142 @@ test.describe('Error tooltips', () => {
       await expect(tooltip).toHaveText('row has invalid charsets');
       await expect(locators.errorMessage).toHaveText('Error 4 out of 4');
     });
+  });
+});
+
+test.describe('Common error Off - Error tooltips', () => {
+  test('Verify tooltips by mouse hover and click', async ({ page }) => {
+    const standPath = 'stories/components/bulk-textarea/advanced/examples/no-common-error.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+    const locators = getLocators(page);
+    const contentDiv = page.locator('div[contenteditable="true"]');
+    const tooltip = page.locator('div[data-ui-name="Tooltip.Popper"]');
+    const thirdRow = contentDiv.locator('p:nth-child(3)');
+    const secondRow = contentDiv.locator('p:nth-child(2)');
+
+    await test.step('Row Error on Hover', async () => {
+      await page.keyboard.press('Tab');
+      const text = 'Zoom in \nSecond[] row\n3 row\n4[] row\n5 row\n6 ]]row\n7 row\n8 row';
+      await page.keyboard.type(text, { delay: 10 });
+      await page.waitForTimeout(100);
+      await page.keyboard.press('Enter');
+      await page.waitForTimeout(100);
+      await page.keyboard.press('Tab');
+      await page.waitForTimeout(100);
+
+      await expect(thirdRow).toHaveAttribute('data-errormessage', 'undefined');
+      await expect(secondRow).toHaveAttribute(
+        'data-errormessage',
+        'Please remove invalid charsets from the movie name.',
+      );
+      await thirdRow.hover();
+      await page.waitForTimeout(100);
+      await expect(locators.errorMessage).toHaveText('3 errors');
+      await expect(tooltip).toHaveCount(0);
+      await expect(locators.textarea).not.toBeFocused();
+      await secondRow.hover();
+      await expect(tooltip).toHaveCount(1);
+      await expect(tooltip).toHaveText('Please remove invalid charsets from the movie name.');
+      await thirdRow.hover();
+      await expect(tooltip).toHaveCount(0);
+
+      await secondRow.click();
+      await page.waitForTimeout(100);
+      await expect(tooltip).toHaveCount(1);
+      await expect(tooltip).toHaveText('Please remove invalid charsets from the movie name.');
+      await expect(locators.errorMessage).toHaveText('Error 1 out of 3');
+      await expect(locators.textarea).toBeFocused();
+
+      await thirdRow.click();
+      await page.waitForTimeout(100);
+      await expect(locators.errorMessage).toHaveText('3 errors');
+      await expect(tooltip).toHaveCount(0);
+
+      await secondRow.hover();
+      await page.waitForTimeout(100);
+      await expect(tooltip).toHaveCount(1);
+      await expect(locators.errorMessage).toHaveText('3 errors');
+    });
+
+    await test.step('Navigation between rows by clicking arrows', async () => {
+      await locators.buttonNext.click();
+      await page.waitForTimeout(100);
+      await expect(locators.errorMessage).toHaveText('Error 1 out of 3');
+      await expect(tooltip).toHaveText('Please remove invalid charsets from the movie name.');
+      await locators.buttonPrev.click();
+      await page.waitForTimeout(100);
+      await expect(locators.errorMessage).toHaveText('Error 3 out of 3');
+      await expect(tooltip).toHaveText('Please remove invalid charsets from the movie name.');
+      await locators.buttonPrev.click();
+      await page.waitForTimeout(100);
+      await expect(locators.errorMessage).toHaveText('Error 2 out of 3');
+      await expect(tooltip).toHaveText('Please remove invalid charsets from the movie name.');
+
+      await thirdRow.click();
+      await page.waitForTimeout(100);
+      await expect(locators.errorMessage).toHaveText('3 errors');
+      await expect(tooltip).toHaveCount(0);
+    });
+  });
+
+  test('Verify tooltips by keyboard click and havigate by arrows', async ({
+    page,
+    browserName,
+  }) => {
+    const standPath = 'stories/components/bulk-textarea/advanced/examples/no-common-error.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+    const locators = getLocators(page);
+    const contentDiv = page.locator('div[contenteditable="true"]');
+    const tooltip = page.locator('div[data-ui-name="Tooltip.Popper"]');
+    const secondRow = contentDiv.locator('p:nth-child(2)');
+
+    await page.keyboard.press('Tab');
+    const text = 'Zoom in \nSecond[] row\n3 row\n4[] row\n5 row\n6 ]]row\n7 row\n8 row';
+    await page.keyboard.type(text, { delay: 20 });
+    await page.waitForTimeout(100);
+    await page.keyboard.press('Tab');
+    await page.waitForTimeout(100);
+    await expect(tooltip).toHaveCount(0);
+    await expect(contentDiv).toHaveAttribute('aria-invalid', 'true');
+    await expect(locators.errorMessage).toHaveText('3 errors');
+    await page.waitForTimeout(100);
+    await secondRow.click();
+    await expect(locators.errorMessage).toHaveText('Error 1 out of 3');
+    await page.waitForTimeout(500);
+    await page.keyboard.press('ArrowUp');
+    await page.waitForTimeout(500);
+    await expect(tooltip).toHaveCount(0);
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+    await expect(locators.errorMessage).toHaveText('Error 3 out of 3');
+    await expect(tooltip).toHaveCount(1);
+  });
+});
+
+test.describe('handleChange - Error validation', () => {
+  test('Verify Errors counter works when handleChange added rows', async ({
+    page,
+    browserName,
+  }) => {
+    const standPath =
+      'stories/components/bulk-textarea/tests/examples/with-new-value-on-handleChange.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+    await page.waitForTimeout(100);
+    const locators = getLocators(page);
+    const tooltip = page.locator('div[data-ui-name="Tooltip.Popper"]');
+
+    await page.keyboard.press('Tab');
+    const text = 'Zoom in[] \nSecond';
+    await page.keyboard.type(text, { delay: 20 });
+    await page.waitForTimeout(100);
+    await page.keyboard.press('Tab');
+    await page.waitForTimeout(100);
+    await expect(tooltip).toHaveCount(0);
+    await expect(locators.errorMessage).toHaveText('2 errors');
   });
 });

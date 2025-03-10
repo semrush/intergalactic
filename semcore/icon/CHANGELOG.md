@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.59.0] - 2025-03-04
+
+### Added
+
+- New `ChatAlt` icon.
+
 ## [4.58.0] - 2025-02-21
 
 ### Added
