@@ -13,6 +13,13 @@ const styleBox = {
   textAlign: 'center',
 };
 
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('grid Dependency imports', () => {
+  runDependencyCheckTests('grid');
+});
+
+
 describe('Grid', () => {
   beforeEach(cleanup);
   shouldSupportClassName(Row);
