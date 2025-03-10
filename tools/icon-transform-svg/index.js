@@ -42,12 +42,11 @@ function getDescriptionExternalIcons(iconPath, outLib) {
 
 function getDescriptionPlatformIcons(iconPath, outLib) {
   const name = path.basename(iconPath, '.svg');
-  const group = iconPath.replace(rootDir, '').split('/')[3];
-  const location = `${outLib}/${group}${name}/index.js`;
+  const location = `${outLib}/${name}/index.js`;
   return {
-    name: `${group}${name}`,
+    name,
     location,
-    group,
+    group: '',
     type: null,
   };
 }

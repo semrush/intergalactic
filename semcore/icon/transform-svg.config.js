@@ -1,16 +1,6 @@
 const getConfig = () => {
   return {
-    tasks: ({ generateIcons, getDescriptionIcons, getDescriptionExternalIcons }) => {
-      const getDescriptionPlatformIcons = (iconPath, outLib) => {
-        const name = iconPath.split('/').pop().replace('.svg', '');
-        return {
-          name,
-          location: `${outLib}/${name}/index.js`,
-          group: 'platform',
-          type: null
-        };
-      };
-
+    tasks: ({ generateIcons, getDescriptionIcons, getDescriptionExternalIcons, getDescriptionPlatformIcons }) => {
       return [
         generateIcons('svg/color', './color', getDescriptionIcons),
         generateIcons('svg/external', './external', getDescriptionExternalIcons),

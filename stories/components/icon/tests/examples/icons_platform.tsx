@@ -1,14 +1,14 @@
 import React from 'react';
 import { Hint } from '@semcore/tooltip';
-import HomePlatform from '@semcore/ui/icon/platform/HomePlatform';
-import SEOToolkit from '@semcore/ui/icon/platform/SEOToolkit';
-import MarketToolkit from '@semcore/ui/icon/platform/MarketToolkit';
-import LocalToolkit from '@semcore/ui/icon/platform/LocalToolkit';
-import SocialToolkit from '@semcore/ui/icon/platform/SocialToolkit';
-import ContentToolkit from '@semcore/ui/icon/platform/ContentToolkit';
-import AdsToolkit from '@semcore/ui/icon/platform/AdsToolkit';
-import ReportsToolkit from '@semcore/ui/icon/platform/ReportsToolkit';
-import AppCenter from '@semcore/ui/icon/platform/AppCenter';
+import HomePlatform from '@semcore/icon/platform/HomePlatform';
+import SEOToolkit from '@semcore/icon/platform/SEOToolkit';
+import MarketToolkit from '@semcore/icon/platform/MarketToolkit';
+import LocalToolkit from '@semcore/icon/platform/LocalToolkit';
+import SocialToolkit from '@semcore/icon/platform/SocialToolkit';
+import ContentToolkit from '@semcore/icon/platform/ContentToolkit';
+import AdsToolkit from '@semcore/icon/platform/AdsToolkit';
+import ReportsToolkit from '@semcore/icon/platform/ReportsToolkit';
+import AppCenter from '@semcore/icon/platform/AppCenter';
 import { Flex } from '@semcore/flex-box';
 
 
@@ -36,7 +36,7 @@ const Demo = () => {
     title='Market & Traffic Toolkit'
      color='icon-secondary-neutral'
   />
-  
+
   <Hint
     tag={LocalToolkit}
     interactive
