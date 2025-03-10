@@ -7,7 +7,7 @@ import Spin from '@semcore/spin';
 import NeighborLocation from '@semcore/neighbor-location';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
-describe.skip('BaseTrigger Dependency imports', () => {
+describe('BaseTrigger Dependency imports', () => {
   runDependencyCheckTests('base-trigger');
 });
 

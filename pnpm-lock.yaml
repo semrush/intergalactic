@@ -421,6 +421,9 @@ importers:
       '@semcore/spin':
         specifier: 5.40.1
         version: link:../spin
+      '@semcore/tooltip':
+        specifier: 6.47.3
+        version: link:../tooltip
       '@semcore/utils':
         specifier: 4.45.1
         version: link:../utils
@@ -434,9 +437,6 @@ importers:
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
-      '@semcore/tooltip':
-        specifier: 6.22.0
-        version: 6.22.0(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
       '@types/react':
         specifier: 18.0.21
         version: 18.0.21
@@ -8105,6 +8105,7 @@ packages:
 
   /@popperjs/core@2.11.5:
     resolution: {integrity: sha512-9X2obfABZuDVLCgPK9aX0a/x4jaOEweTTWE2+9sr0Qqqevj2Uv5XorvusThmc9XGYpS9yI+fhh8RTafBtGposw==}
+    dev: false
 
   /@previewjs/analyzer-api@0.1.4:
     resolution: {integrity: sha512-U2GcwR91FLBi42UBvJqj6VtlUHJLxewPyFS0xu1DToYAbvLbgw//GYlvPRwVsjstZbqeyPXo/7UzFU2+rIvVag==}
@@ -8802,20 +8803,6 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: true
 
-  /@semcore/animation@2.19.2(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-tchOupbHDiFrCQCZ82yCJQucyJEeDYUgT66cTf4UPK0koSXhATgENWZMfy7puaZ1bdXWyEqsZjxeLnNQcrrJ9w==}
-    peerDependencies:
-      '@semcore/core': ^2.17.5
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/core': link:semcore/core
-      '@semcore/flex-box': 5.19.4(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/utils': 4.20.5(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: true
-
   /@semcore/animation@2.26.0(@semcore/core@2.24.0)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-pmUy0X/72Z0tlMLD3RnPkWlYSqq3OTC4QwPp29cr3lMBfUErqDnDSH1mQlVVzbhAEIAjg+NLAh/EteT7SUqBBA==}
     peerDependencies:
@@ -9478,21 +9465,6 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: true
 
-  /@semcore/flex-box@5.19.4(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-lFlhql9ikwSC4WtQCDgDsxMzEzLtKRISJsvVxT8WdUYF4iQN2af1IqGz7jJgFic1zzPwU7UsgD2ZAkdezMj9xw==}
-    peerDependencies:
-      '@semcore/core': ^2.17.5
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/core': link:semcore/core
-      '@semcore/utils': 4.20.5(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
-      classnames: 2.2.6
-      csstype: 3.0.8
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: true
-
   /@semcore/flex-box@5.25.2(@semcore/core@2.24.0)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-W9h6LJ4FTOGpMjnwjMe5Q79IiiO3ZqNDON91vgGlWpoByY4qccLgDbzwv3oKcpAf8WntWcoyYs+UD5dU65N2Pw==}
     peerDependencies:
@@ -9830,19 +9802,6 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: true
 
-  /@semcore/neighbor-location@4.17.5(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-sw6WkSBldm5vLReaB8VPWGPngbMbYGLq73kfPG7OGBskuEumypizfpeK4LqF+YfF5rc7WgGrLll+u2J7r4GS2Q==}
-    peerDependencies:
-      '@semcore/core': ^2.17.5
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/core': link:semcore/core
-      '@semcore/utils': 4.20.5(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: true
-
   /@semcore/neighbor-location@4.23.2(@semcore/core@2.24.0)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-c5bvZWWRjumqYfmU/i4yakXXR04gGSPuD4eIBzSECho6H58dkBIjHx27gb7XMLghKPwzflD9tO3SID02ylEEgg==}
     peerDependencies:
@@ -9934,19 +9893,6 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@semcore/outside-click@3.17.6(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-JM5ovxWM6AiMvjEyEX9SXY4Bj0qGwP18zmcNl3m07NQZBhQjgcVhCH+Gp8BGspn38/W8x+EPAX4DU7Z99Vox7A==}
-    peerDependencies:
-      '@semcore/core': ^2.17.5
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/core': link:semcore/core
-      '@semcore/utils': 4.20.5(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: true
-
   /@semcore/outside-click@3.24.0(@semcore/core@2.24.0)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-6Xyynj8eAz7ghXf/0AEO1wAXFIkQq0W8l/LKZPJ3IS0gf04K03eE7yY26zs60YhO+sp5Ov1TjurbJTYPmcGWyw==}
     peerDependencies:
@@ -10009,25 +9955,6 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@semcore/popper@5.21.0(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-RyGwe6DkWxgDNg9e+iAcmtNttVOp/BtpadvK90Cy0rs3KCs/IOxEyPyC16vU4NpxG9c3UXlnI7cyrU/RnvurMg==}
-    peerDependencies:
-      '@semcore/core': ^2.17.5
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@popperjs/core': 2.11.5
-      '@semcore/animation': 2.19.2(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/core': link:semcore/core
-      '@semcore/flex-box': 5.19.4(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/neighbor-location': 4.17.5(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/outside-click': 3.17.6(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/portal': 3.17.5(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/utils': 4.20.5(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: true
-
   /@semcore/popper@5.34.0(@semcore/core@2.24.0)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-IoAs+ITjIXWgvtU38aWtuKMIoxjVJ531AiD/pml00m+f6nO5fl+qRSbQm4JrSfCW3N/UqTNXt5a8PyX/blJoMQ==}
     peerDependencies:
@@ -10078,19 +10005,6 @@ packages:
     dependencies:
       '@semcore/core': link:semcore/core
       '@semcore/utils': 4.20.2(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: true
-
-  /@semcore/portal@3.17.5(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-MCwbKX6dWUjCFRonjo/iwX7S5ZtDbZusS3scFLiE1Vmdg4gW16PNRupgF89b0h3+hYv3zjS39gONMQj7lRAufw==}
-    peerDependencies:
-      '@semcore/core': ^2.17.5
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/core': link:semcore/core
-      '@semcore/utils': 4.20.5(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: true
@@ -10474,21 +10388,6 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@semcore/tooltip@6.22.0(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-JpsxEzFa3lXBz+AGZYSlnsPKY/yHe5Wq3jHLmIDXWN3J25Jh8onmhHl/S8chHceLdxs6L11LDF2DrduxxZZdPA==}
-    peerDependencies:
-      '@semcore/core': ^2.17.5
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/core': link:semcore/core
-      '@semcore/flex-box': 5.19.4(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/popper': 5.21.0(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/utils': 4.20.5(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: true
-
   /@semcore/tooltip@6.32.0(@semcore/core@2.24.0)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-+WsVa+gTCjQcQ0mo43A1yQpaD0PJA7QWA/4KwI0xspKiPVBMvv2C9G7b1CuTKOqBQqXp8XxRkcmTQtpYSrArKg==}
     peerDependencies:
@@ -10561,22 +10460,6 @@ packages:
     resolution: {integrity: sha512-mJNtoeJVLKok8Cac5pgjn9lQ3xyYjUgIoCyW8dTLF+66a9s5PPo0olwRsVApx82cPs3vrMOxE/TO1eluN2AXVg==}
     peerDependencies:
       '@semcore/core': ^2.17.2
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@babel/runtime': 7.19.0
-      '@phytonmk/nano-css': 5.3.7(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/core': link:semcore/core
-      classnames: 2.2.6
-      hoist-non-react-statics: 3.3.2
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: true
-
-  /@semcore/utils@4.20.5(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-xdljrVnmi9Gzz4hLQJ97FuaLGhl0TLf3ng9nTPcDxGrGEXMIYi0pU/Rf+Iv/cUzPzg/oOw++gJso1QKjEeEeQA==}
-    peerDependencies:
-      '@semcore/core': ^2.17.5
       react: 16.8 - 18
       react-dom: 16.8 - 18
     dependencies:

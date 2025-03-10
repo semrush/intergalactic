@@ -37,7 +37,7 @@ export function runDependencyCheckTests(component: string) {
 
     allImports.forEach((importedDep) => {
       const isDepImported = definedDependencies.has(importedDep);
-      expect(isDepImported).toBe(true);
+      expect(`${importedDep}: ${isDepImported}`).toBe(`${importedDep}: ${true}`);
     });
   });
 }
