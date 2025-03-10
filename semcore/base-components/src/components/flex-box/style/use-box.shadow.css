@@ -4,9 +4,10 @@ SBox:focus-visible {
   outline-style: solid;
   outline-width: 3px;
   outline-offset: 0;
+  z-index: 1;
 }
 
-SBoxInnerOffset:focus-visible {
+SBoxInnerOutline:focus-visible {
   outline-offset: -3px;
 }
 

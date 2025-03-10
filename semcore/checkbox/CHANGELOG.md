@@ -911,7 +911,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Добавлен autocomplete для IDE
 
-## [1.0.4] - 2018-14-11
+## [1.0.4] - 2018-11-14
 
 ### Changed
 

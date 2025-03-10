@@ -68,6 +68,10 @@ SCalendarUnit {
     color: var(--intergalactic-text-primary, #191b23);
     background-color: var(--intergalactic-date-picker-cell-hover, #e0e1e9);
   }
+
+  &:focus-visible {
+    outline: none;
+  }
 }
 
 SCalendarUnit[today] {

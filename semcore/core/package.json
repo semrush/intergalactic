@@ -17,6 +17,10 @@
       "import": "./lib/esm/index.mjs",
       "types": "./lib/types/index.d.ts"
     },
+    "./src": {
+      "import": "./src/index.ts",
+      "types": "./src/index.ts"
+    },
     "./lib/utils/focus-lock/getFocusableIn": {
       "require": "./lib/utils/focus-lock/getFocusableIn.js",
       "import": "./lib/utils/focus-lock/getFocusableIn.mjs",

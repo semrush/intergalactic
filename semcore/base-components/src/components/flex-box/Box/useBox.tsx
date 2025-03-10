@@ -139,7 +139,7 @@ export type BoxProps = StyledProps & {
    * Flag for render outline inside box
    * @default false
    */
-  innerOffset?: boolean;
+  innerOutline?: boolean;
 
   /** Property for specifying css properties in js
    * @deprecated v4.0.0 */
@@ -229,7 +229,7 @@ export default function useBox<T extends BoxProps>(
     display,
     boxSizing,
     inline,
-    innerOffset,
+    innerOutline,
     flex,
     w,
     h,
@@ -314,7 +314,7 @@ export default function useBox<T extends BoxProps>(
           styles.cn('SBox', {
             SBoxSizing: boxSizing,
             SBoxInline: inline,
-            SBoxInnerOffset: innerOffset,
+            SBoxInnerOutline: innerOutline,
           }).className,
           className,
         ) || undefined,
