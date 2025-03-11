@@ -31,12 +31,12 @@ We recommend restricting maximum width of the message text to 400px to ensure re
 
 Table: WidgetEmpty styles
 
-| Element             | Styles   |
-| ------------------- | -------- |
-| Title               | Font has 16px size (`--fs-300`, `--lh-300` tokens), `--text-secondary` token for color and `margin-bottom: var(--spacing-1x)` |
-| Description         | Font has 14px size (`--fs-200`, `--lh-200` tokens) and `--text-secondary` token for color     |
-| Illustration | `margin-bottom: 12px`        |
-| Controls   | Usually have M size and `margin-top: var(--spacing-4x)`   |
+| Element      | Styles                                                                                                                        |
+| ------------ | ----------------------------------------------------------------------------------------------------------------------------- |
+| Title        | Font has 16px size (`--fs-300`, `--lh-300` tokens), `--text-secondary` token for color and `margin-bottom: var(--spacing-1x)` |
+| Description  | Font has 14px size (`--fs-200`, `--lh-200` tokens) and `--text-secondary` token for color                                     |
+| Illustration | `margin-bottom: 12px`                                                                                                         |
+| Controls     | Usually have M size and `margin-top: var(--spacing-4x)`                                                                       |
 
 ### Indents
 
@@ -61,10 +61,11 @@ In some cases, widget's height needs to be reduced in the empty state to save sp
 ### Widgets with small width
 
 If your widget's width is less than 300px, you can use the compact version of the state:
-* hide the illustration,
-* display the title using description styles,
-* move the description text into an [Informer](../../patterns/informer/informer),
-* display a link instead of the button.
+
+- hide the illustration,
+- display the title using description styles,
+- move the description text into an [Informer](../../patterns/informer/informer),
+- display a link instead of the button.
 
 ![](static/small-empty.png)
 
@@ -88,8 +89,8 @@ Use this state when there is no data or the system cannot display it for some re
 
 Table: No data message examples
 
-| Large widget     | Medium widget       | Text           |
-| ---------------- | ------------------- | -------------- |
+| Large widget                      | Medium widget                        | Text                                                 |
+| --------------------------------- | ------------------------------------ | ---------------------------------------------------- |
 | ![](static/big-empty.png)         | ![](static/medium-empty.png)         | Title: "Nothing found". Description: {Hint message}. |
 | ![](static/big-empty-filters.png) | ![](static/medium-empty-filters.png) | Title: "Nothing found". Description: {Hint message}. |
 
@@ -107,8 +108,8 @@ This is a variation of the `No data` state that's used when there are no search 
 
 Table: Nothing found message examples
 
-| Large widget        | Medium widget      | Text     |
-| ------------------- | ------------------ | -------- |
+| Large widget                | Medium widget                  | Text                                                              |
+| --------------------------- | ------------------------------ | ----------------------------------------------------------------- |
 | ![](static/big-nothing.png) | ![](static/medium-nothing.png) | Title: "Nothing found". Description: "Try changing your filters". |
 
 ## Something went wrong
@@ -125,8 +126,8 @@ Display the following:
 
 Table: Something went wrong message examples
 
-| Large widget       | Medium widget               | Text    |
-| ------------------ | --------------------------- | ------- |
+| Large widget              | Medium widget                | Text                                                                                                                       |
+| ------------------------- | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
 | ![](static/big-error.png) | ![](static/medium-error.png) | Title: "Something went wrong". Description: "We are aware of the issue and are working to fix it. Please try again later". |
 
 ### We don’t know there are problems in the system
@@ -139,13 +140,14 @@ Display the following:
 
 Table: Something went wrong message examples
 
-| Large widget  | Medium widget         | Text       |
-| ------------- | --------------------- | ---------- |
-| ![](static/big-error-2.png) | ![](static/medium-error-2.png) | Title: "Something went wrong". Description: "Please try again later. If the problem persists, contact us at {email}" |
+| Large widget                | Medium widget                  | Text                                                                                                       |
+| --------------------------- | ------------------------------ | ---------------------------------------------------------------------------------------------------------- |
+| ![](static/big-error-2.png) | ![](static/medium-error-2.png) | Title: "Something went wrong". Description: "Please try again later. If the problem persists, contact us." |
 
 ### Button name
 
 <!-- 1. If the WidgetEmpty's description starts with "Try" and only the problem area should be updated, then call the button "Try again". -->
+
 1. If the button refreshes the whole page, call it "Reload page."
 2. If the button refreshes only this widget, call it simply "Reload."
 
@@ -162,8 +164,8 @@ Display the following:
 
 Table: Custom message examples
 
-| Large widget   | Medium widget        | Text      |
-| -------------- | -------------------- | --------- |
+| Large widget                     | Medium widget                       | Text                                                                                                                             |
+| -------------------------------- | ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
 | ![](static/big-error-filter.png) | ![](static/medium-error-filter.png) | Title: "Cannot {filter/search/sort} data". Description: "{Provide helpful information for the user to deal with the situation}". |
 
 ### Set up your product
@@ -181,8 +183,8 @@ Display the following:
 
 Table: Set up your product message examples
 
-| Large widget           | Medium widget    | Text         |
-| ---------------------- | ---------------- | ------------ |
+| Large widget               | Medium widget                 | Text                                                           |
+| -------------------------- | ----------------------------- | -------------------------------------------------------------- |
 | ![](static/big-set-up.png) | ![](static/medium-set-up.png) | Title: "Set up your {Name Tool}". Description: {Hint message}. |
 
 ### No more results
@@ -192,4 +194,3 @@ This state is used when there is a small amount of data in the widget, typically
 Add the text: "No more results" after the data and center it horizontally.
 
 ![](static/no-more-results.png)
-
