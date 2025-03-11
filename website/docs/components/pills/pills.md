@@ -10,21 +10,11 @@ tabs: Design('pills'), A11y('pills-a11y'), API('pills-api'), Example('pills-code
 import React from 'react';
 import Pills from '@semcore/pills';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
-import LikeM from '@semcore/ui/icon/Like/m';
-import LikeL from '@semcore/ui/icon/Like/l';
-
-// LikeOutlineM.displayName = LikeOutlineS.displayName = LikeOutlineXS.displayName =
-//   'LikeOutline';
-
-const SIZE_ADDON = {
-  s: <LikeM />,
-  m: <LikeM />,
-  l: <LikeL />,
-};
+import Like from '@semcore/ui/icon/Like/m';
 
 const App = PlaygroundGeneration(
   (createGroupWidgets) => {
-    const { bool, radio, empty, onChange } = createGroupWidgets('Pill');
+    const { bool, radio } = createGroupWidgets('Pill');
 
     const size = radio({
       key: 'size',
@@ -33,43 +23,46 @@ const App = PlaygroundGeneration(
       options: ['m', 'l'],
     });
 
-    const selected = empty({
-      key: 'selected',
-      defaultValue: 1,
-    });
-    const before = bool({
-      key: 'addon left',
-      defaultValue: false,
-      label: 'AddonLeft',
-    });
-    const after = bool({
-      key: 'addon right',
-      defaultValue: false,
-      label: 'AddonRight',
-    });
-
     const disabled = bool({
       key: 'disabled',
       defaultValue: false,
       label: 'Disabled',
     });
 
+    const before = bool({
+      key: 'addon left',
+      defaultValue: false,
+      label: 'AddonLeft',
+    });
+
+    const after = bool({
+      key: 'addon right',
+      defaultValue: false,
+      label: 'AddonRight',
+    });
+
     return (
       <Pills
         size={size}
-        onChange={(v) => onChange('selected', v)}
-        value={selected}
         aria-label='Pills example'
+        defaultValue={1}
+        disabled={disabled}
       >
         <Pills.Item value={1}>
-          {before && <Pills.Item.Addon>{SIZE_ADDON[size]}</Pills.Item.Addon>}
-          <Pills.Item.Text>Pill 1</Pills.Item.Text>
-          {after && <Pills.Item.Addon>{SIZE_ADDON[size]}</Pills.Item.Addon>}
+          {before && <Pills.Item.Addon><Like /></Pills.Item.Addon>}
+          {before || after ? <Pills.Item.Text>First</Pills.Item.Text> : 'First'}
+          {after && <Pills.Item.Addon>5</Pills.Item.Addon>}
         </Pills.Item>
-        <Pills.Item value={2} disabled={disabled}>
-          Pill 2
+        <Pills.Item value={2}>
+          {before && <Pills.Item.Addon><Like /></Pills.Item.Addon>}
+          {before || after ? <Pills.Item.Text>Second</Pills.Item.Text> : 'Second'}
+          {after && <Pills.Item.Addon>8</Pills.Item.Addon>}
         </Pills.Item>
-        <Pills.Item value={3}>Pill 3</Pills.Item>
+        <Pills.Item value={3}>
+          {before && <Pills.Item.Addon><Like /></Pills.Item.Addon>}
+          {before || after ? <Pills.Item.Text>Third</Pills.Item.Text> : 'Third'}
+          {after && <Pills.Item.Addon>1</Pills.Item.Addon>}
+        </Pills.Item>
       </Pills>
     );
   },
@@ -94,9 +87,9 @@ const App = PlaygroundGeneration(
 
 Component consists of the following:
 
-1. `Pill.Item`
-2. `Pill.Item.Addon`
-3. `Pill.Item.Text`
+1. `Pills.Item`
+2. `Pills.Item.Addon`
+3. `Pills.Item.Text`
 
 ## Appearance
 
@@ -156,30 +149,29 @@ Table: States for Pills
 | Skeleton (initial loading of the page) | ![](static/pills-skeleton.png) |
 | Normal/Active                          | ![](static/normal_active.png)  |
 | Hover                                  | ![](static/hover.png)          |
-| Disabled                               | ![](static/disabled.png)       |
-| Disabled `Pills.Item`                  | ![](static/disabled-pill.png)  |
+| Disabled                               | ![](static/disabled-pill.png)  |
 | Loading                                | ![](static/loading.png)        |
 
 ## Usage in UX/UI
 
 Pills are used for:
 
-- Actions with data: filtering, sorting, navigation (displaying data chunks).
-- Changing the view/presentation of data.
+- actions with data: filtering, sorting, navigation (displaying data chunks)
+- changing the view/presentation of data
 
 Pills can be used in:
 
-- Lists;
-- [Tables](/table-group/data-table/data-table);
-- [Charts](/data-display/chart-controls/chart-controls);
-- Local filters in widgets, etc.
+- lists
+- [tables](/table-group/data-table/data-table)
+- [charts](/data-display/chart-controls/chart-controls)
+- local filters in widgets, etc
 
 ### Number of pills
 
 The minimum number of pills in the component is 2, and the maximum is unlimited. However, keep in mind that it might be challenging for the user to navigate the selection with too many items. In such cases, you can:
 
-- Collapse pills into a [DropdownMenu](/components/dropdown-menu/dropdown-menu) with an `Ellipsis` icon;
-- Use [Select](/components/select/select) instead.
+- collapse pills into a [DropdownMenu](/components/dropdown-menu/dropdown-menu) opening from an ellipsis
+- use [Select](/components/select/select) instead of `Pills`
 
 ![](static/pills-collapse.png)
 
