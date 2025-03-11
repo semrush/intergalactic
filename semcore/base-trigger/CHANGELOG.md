@@ -8,6 +8,10 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - `keyboardFocusEnhance` to css `:focus-visible` property.
 
+### Added
+
+- `tabIndex` in `BaseTrigger` to fix focus [issue on webkit](https://bugs.webkit.org/show_bug.cgi?id=229895).
+
 ## [4.51.1] - 2025-02-05
 
 ### Changed
