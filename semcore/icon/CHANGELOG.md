@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.61.0] - 2025-03-12
+
+### Changed
+
+- Name for Traffic & Market toolkit icon to `TrafficMarketToolkit`.
+
 ## [4.60.0] - 2025-03-07
 
 ### Added
