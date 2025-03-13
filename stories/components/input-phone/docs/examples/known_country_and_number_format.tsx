@@ -40,7 +40,7 @@ const Demo = () => {
 
           const selectionStart = inputRef.current?.selectionStart ?? 0;
           const selectionEnd = inputRef.current?.selectionEnd ?? 0;
-          if (selectionStart <= positionAfterFirstBracket && selectionStart === selectionEnd) {
+          if (selectionStart <= positionAfterFirstBracket && (selectionStart === selectionEnd || e.key === 'ArrowLeft')) {
               e.preventDefault();
 
               return false;
