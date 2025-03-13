@@ -12,6 +12,7 @@
     "build": "pnpm semcore-builder"
   },
   "dependencies": {
+    "@semcore/flex-box": "5.40.1",
     "@semcore/utils": "4.45.1",
     "@semcore/input": "4.41.1",
     "@semcore/scroll-area": "5.44.1",
