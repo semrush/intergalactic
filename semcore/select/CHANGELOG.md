@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.49.6] - 2025-03-13
+
+### Added
+
+- Using `defaultHighlightedIndex` prop to set defaultHighlightedIndex after select opening.
+
 ## [4.49.5] - 2025-02-05
 
 ### Changed

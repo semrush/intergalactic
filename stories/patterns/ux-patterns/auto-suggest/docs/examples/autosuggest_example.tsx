@@ -63,6 +63,7 @@ const fakeFetch = async (query: string): Promise<Suggestion[]> => {
 };
 
 const Demo = () => {
+  const [highlightedIndex, setHighlightedIndex] = React.useState<number | null>(-1);
   const [visible, setVisible] = React.useState(false);
   const [query, setQuery] = React.useState('');
   const [suggestions, setSuggestions] = React.useState<Suggestion[]>([]);
@@ -81,6 +82,20 @@ const Demo = () => {
     setVisible(false);
   }, []);
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (!e.key.startsWith("Array")) {
+      setHighlightedIndex(-1);
+    }
+  };
+
+  const handleHighlightedIndexChange = (index: number | null) => {
+    setHighlightedIndex(index);
+  };
+
+  const handleChangeVisible = (visible: boolean) => {
+    setVisible(visible);
+  }
+
   return (
     <>
       <Text tag='label' size={200} htmlFor='website-autosuggest'>
@@ -92,7 +107,10 @@ const Demo = () => {
           onChange={handleSelect}
           value={query}
           visible={visible}
-          onVisibleChange={setVisible}
+          onVisibleChange={handleChangeVisible}
+          highlightedIndex={highlightedIndex}
+          onHighlightedIndexChange={handleHighlightedIndexChange}
+          defaultHighlightedIndex={-1}
         >
           <Select.Trigger tag={Input} w={250}>
             {() => (
@@ -102,6 +120,8 @@ const Demo = () => {
                 placeholder='Start typing for options'
                 onChange={setQuery}
                 id='website-autosuggest'
+                onKeyDown={handleKeyDown}
+                autoComplete={"off"}
               />
             )}
           </Select.Trigger>
