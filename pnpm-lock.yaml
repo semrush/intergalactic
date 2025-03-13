@@ -471,6 +471,9 @@ importers:
 
   semcore/breakpoints:
     dependencies:
+      '@semcore/core':
+        specifier: ^2.17.5
+        version: link:../core
       '@semcore/utils':
         specifier: 4.45.1
         version: link:../utils
@@ -702,6 +705,9 @@ importers:
       '@semcore/input':
         specifier: 4.41.1
         version: link:../input
+      '@semcore/popper':
+        specifier: 5.45.3
+        version: link:../popper
       '@semcore/tooltip':
         specifier: 6.47.3
         version: link:../tooltip
@@ -786,6 +792,9 @@ importers:
       '@semcore/popper':
         specifier: 5.45.3
         version: link:../popper
+      '@semcore/typography':
+        specifier: 5.51.1
+        version: link:../typography
       '@semcore/utils':
         specifier: 4.45.1
         version: link:../utils
@@ -850,9 +859,6 @@ importers:
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
-      '@semcore/typography':
-        specifier: '*'
-        version: link:../typography
       '@types/d3-array':
         specifier: ^3.0.2
         version: 3.0.4
@@ -971,6 +977,9 @@ importers:
       '@semcore/neighbor-location':
         specifier: 4.38.1
         version: link:../neighbor-location
+      '@semcore/popper':
+        specifier: 5.45.3
+        version: link:../popper
       '@semcore/tooltip':
         specifier: 6.47.3
         version: link:../tooltip
@@ -1126,6 +1135,9 @@ importers:
 
   semcore/dropdown-menu:
     dependencies:
+      '@semcore/button':
+        specifier: 5.41.2
+        version: link:../button
       '@semcore/core':
         specifier: ^2.17.5
         version: link:../core
@@ -1160,9 +1172,6 @@ importers:
       '@semcore/base-trigger':
         specifier: 4.26.1
         version: 4.26.1(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/button':
-        specifier: workspace:*
-        version: link:../button
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
@@ -1297,6 +1306,9 @@ importers:
       '@semcore/animation':
         specifier: 2.40.1
         version: link:../animation
+      '@semcore/button':
+        specifier: 5.41.2
+        version: link:../button
       '@semcore/core':
         specifier: ^2.17.5
         version: link:../core
@@ -1319,9 +1331,6 @@ importers:
         specifier: 16.8 - 18
         version: 18.2.0(react@18.2.0)
     devDependencies:
-      '@semcore/button':
-        specifier: '*'
-        version: link:../button
       '@semcore/dropdown-menu':
         specifier: '*'
         version: link:../dropdown-menu
@@ -1843,6 +1852,9 @@ importers:
       '@semcore/core':
         specifier: ^2.17.5
         version: link:../core
+      '@semcore/flex-box':
+        specifier: 5.40.1
+        version: link:../flex-box
       '@semcore/input':
         specifier: 4.41.1
         version: link:../input
@@ -1868,9 +1880,6 @@ importers:
       '@semcore/button':
         specifier: '*'
         version: link:../button
-      '@semcore/flex-box':
-        specifier: '*'
-        version: link:../flex-box
       '@semcore/icon':
         specifier: '*'
         version: link:../icon
@@ -1954,6 +1963,9 @@ importers:
       '@semcore/animation':
         specifier: 2.40.1
         version: link:../animation
+      '@semcore/button':
+        specifier: 5.41.2
+        version: link:../button
       '@semcore/core':
         specifier: ^2.17.5
         version: link:../core
@@ -2056,6 +2068,9 @@ importers:
       '@semcore/animation':
         specifier: 2.40.1
         version: link:../animation
+      '@semcore/button':
+        specifier: 5.41.2
+        version: link:../button
       '@semcore/core':
         specifier: ^2.17.5
         version: link:../core
@@ -2090,6 +2105,9 @@ importers:
       '@semcore/animation':
         specifier: 2.40.1
         version: link:../animation
+      '@semcore/button':
+        specifier: 5.41.2
+        version: link:../button
       '@semcore/core':
         specifier: ^2.17.5
         version: link:../core
@@ -2152,6 +2170,9 @@ importers:
       '@semcore/icon':
         specifier: 4.57.1
         version: link:../icon
+      '@semcore/input':
+        specifier: 4.41.1
+        version: link:../input
       '@semcore/input-number':
         specifier: 5.40.4
         version: link:../input-number
@@ -2452,6 +2473,9 @@ importers:
       '@semcore/animation':
         specifier: 2.40.1
         version: link:../animation
+      '@semcore/button':
+        specifier: 5.41.2
+        version: link:../button
       '@semcore/core':
         specifier: ^2.17.5
         version: link:../core
@@ -3278,6 +3302,9 @@ importers:
 
   semcore/wizard:
     dependencies:
+      '@semcore/button':
+        specifier: 5.41.2
+        version: link:../button
       '@semcore/core':
         specifier: ^2.17.5
         version: link:../core
