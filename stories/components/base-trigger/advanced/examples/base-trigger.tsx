@@ -11,8 +11,7 @@ import Button from '@semcore/button';
 import ChevronDownM from '@semcore/icon/ChevronDown/m';
 
 const Demo = () => (
-
-  <Flex gap={2} >
+  <Flex gap={2}>
     <Text size={200} tag='label' htmlFor='device-button-select'>
       Device:
     </Text>
@@ -27,18 +26,14 @@ const Demo = () => (
     />
 
     <BaseTrigger aria-label='base trigger'>
-      <BaseTrigger.Text>
-        Button
-      </BaseTrigger.Text>
-      <BaseTrigger.Addon tag={Spin} size="xs" />
+      <BaseTrigger.Text>Button</BaseTrigger.Text>
+      <BaseTrigger.Addon tag={Spin} size='xs' />
     </BaseTrigger>
 
     <Dropdown>
       <Dropdown.Trigger>
-        <BaseTrigger aria-label='base trigger with dropdown' >
-          <BaseTrigger.Text>
-            Text
-          </BaseTrigger.Text>
+        <BaseTrigger aria-label='base trigger with dropdown'>
+          <BaseTrigger.Text>Text</BaseTrigger.Text>
           <BaseTrigger.Addon>
             <ChevronDownM />
           </BaseTrigger.Addon>
@@ -48,21 +43,17 @@ const Demo = () => (
       <Dropdown.Popper aria-labelledby='base trigger dropdown'>
         <Radio>
           <Radio.Value />
-          <Radio.Text >Radio 1</Radio.Text>
+          <Radio.Text>Radio 1</Radio.Text>
         </Radio>
         <Divider />
         <Radio>
           <Radio.Value />
-          <Radio.Text >Radio 2</Radio.Text>
+          <Radio.Text>Radio 2</Radio.Text>
         </Radio>
         <Divider />
-        <Button
-          use="primary">
-          Apply
-        </Button>
+        <Button use='primary'>Apply</Button>
       </Dropdown.Popper>
     </Dropdown>
-
   </Flex>
 );
 

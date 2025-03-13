@@ -34,6 +34,5 @@ export const InputAndSelect: StoryObj = {
 };
 
 export const CustomComponent: StoryObj = {
-    render: CustomComponentExample,
-  };
-  
+  render: CustomComponentExample,
+};

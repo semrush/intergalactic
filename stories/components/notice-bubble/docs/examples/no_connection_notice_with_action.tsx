@@ -28,7 +28,9 @@ const Demo = () => {
 
   return (
     <>
-      <Button onClick={handleClick} ref={openButtonRef}>Show no connection notice with action</Button>
+      <Button onClick={handleClick} ref={openButtonRef}>
+        Show no connection notice with action
+      </Button>
       <NoticeBubbleContainer manager={manager} />
     </>
   );

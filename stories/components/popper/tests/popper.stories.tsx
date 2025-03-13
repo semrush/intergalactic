@@ -23,15 +23,15 @@ export default meta;
 
 export const offSet: StoryObj = {
   render: offSetExample,
-}; 
+};
 
 export const disableEnforceFocus: StoryObj = {
   render: disableEnforceFocusExample,
-}; 
+};
 
 export const SomeMoreProps: StoryObj = {
   render: SomeMorePropsExample,
-}; 
+};
 
 export const CursorAnchoring: StoryObj = {
   render: CursorAnchoringExample,
@@ -46,37 +46,37 @@ export const Dropdown: StoryObj = {
 };
 
 export const FocusInteraction: StoryObj = {
-    render: FocusInteractionExample,
-  };
+  render: FocusInteractionExample,
+};
 
-  export const HoverInteraction: StoryObj = {
-    render: HoverInteractionExample,
-  };
+export const HoverInteraction: StoryObj = {
+  render: HoverInteractionExample,
+};
 
-  export const ClickInteraction: StoryObj = {
-    render: ClickInteractionExample,
-  };
+export const ClickInteraction: StoryObj = {
+  render: ClickInteractionExample,
+};
 
-  export const NoneInteraction: StoryObj = {
-    render: NoneInteractionExample,
-  };
+export const NoneInteraction: StoryObj = {
+  render: NoneInteractionExample,
+};
 
-  export const LabelReferenced: StoryObj = {
-    render: LabelReferencedExample,
-  };
+export const LabelReferenced: StoryObj = {
+  render: LabelReferencedExample,
+};
 
-  export const LabelWrapped: StoryObj = {
-    render: LabelWrappedExample,
-  };
+export const LabelWrapped: StoryObj = {
+  render: LabelWrappedExample,
+};
 
-  export const LabelWrappedDisablePortal: StoryObj = {
-    render: LabelWrappedDisablePortalExample,
-  };
+export const LabelWrappedDisablePortal: StoryObj = {
+  render: LabelWrappedDisablePortalExample,
+};
 
-  export const MultipleFocusabledInTrigger: StoryObj = {
-    render: MultipleFocusabledInTriggerExample,
-  };
+export const MultipleFocusabledInTrigger: StoryObj = {
+  render: MultipleFocusabledInTriggerExample,
+};
 
-  export const PageResizing: StoryObj = {
-    render: PageResizingExample,
-  };
+export const PageResizing: StoryObj = {
+  render: PageResizingExample,
+};

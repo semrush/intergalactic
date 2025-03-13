@@ -16,7 +16,9 @@ const Demo = () => {
             </Accordion.Item.ToggleButton>
           </Accordion.Item.Toggle>
           <Accordion.Item.Collapse preserveNode>
-            <Box p='12px 24px 24px'>{`Hello Section ${index + 1}`} <a href={'#'}>Some focusable link in content</a></Box>
+            <Box p='12px 24px 24px'>
+              {`Hello Section ${index + 1}`} <a href={'#'}>Some focusable link in content</a>
+            </Box>
           </Accordion.Item.Collapse>
         </Accordion.Item>
       ))}

@@ -13,11 +13,11 @@ const Demo = () => {
         <DataTable.Column name='keyword' children='Keyword' />
         <DataTable.Column name='kd' children='KD,%' />
         <DataTable.Column name='cpc' children='CPC' />
-        <DataTable.Column name='vol' children='Vol.' ref={containerRef}/>
+        <DataTable.Column name='vol' children='Vol.' ref={containerRef} />
       </DataTable.Head>
       <DataTable.Body>
         <DataTable.Cell data={data} name='vol'>
-          {(props : any, row: any) => {
+          {(props: any, row: any) => {
             return {
               children: (
                 <Ellipsis trim='middle' containerRect={containerRect} containerRef={containerRef}>

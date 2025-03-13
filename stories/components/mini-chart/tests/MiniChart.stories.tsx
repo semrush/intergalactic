@@ -20,9 +20,9 @@ export const ScoreLines: StoryObj = {
 };
 
 export const TrendBars: StoryObj = {
-    render: TrendBarsExample,
+  render: TrendBarsExample,
 };
 
 export const TrendLines: StoryObj = {
-    render: TrendLinesExample,
+  render: TrendLinesExample,
 };

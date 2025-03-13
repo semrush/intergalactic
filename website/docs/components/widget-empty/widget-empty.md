@@ -140,9 +140,9 @@ Display the following:
 
 Table: Something went wrong message examples
 
-| Large widget                | Medium widget                  | Text                                                                                                       |
-| --------------------------- | ------------------------------ | ---------------------------------------------------------------------------------------------------------- |
-| ![](static/big-error-2.png) | ![](static/medium-error-2.png) | Title: "Something went wrong". Description: "Please try again later. If the problem persists, contact us." |
+| Large widget                | Medium widget                  | Text                                                                                                               |
+| --------------------------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| ![](static/big-error-2.png) | ![](static/medium-error-2.png) | Title: "Something went wrong". Description: "Try again later. If the problem persists, please contact our support" |
 
 ### Button name
 

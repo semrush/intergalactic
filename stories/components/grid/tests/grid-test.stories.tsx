@@ -12,7 +12,7 @@ export const SpanNumber: StoryObj = {
 };
 
 export const AutoSpan: StoryObj = {
-    render: AutoSpanExample,
-  };
+  render: AutoSpanExample,
+};
 
 export default meta;

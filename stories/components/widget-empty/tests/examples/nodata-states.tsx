@@ -6,9 +6,8 @@ import Button, { ButtonLink } from '@semcore/button';
 
 const Demo = () => {
   return (
-    <Flex direction="row" gap={6} alignItems="flex-start" justifyContent="space-between">
+    <Flex direction='row' gap={6} alignItems='flex-start' justifyContent='space-between'>
       <Box style={{ flex: '1 1 45%', minWidth: '45%' }}>
-
         <NoData
           description={
             <>
@@ -19,7 +18,8 @@ const Demo = () => {
         />
         <NoData />
 
-        <NoData icon={getIconPath('good')}
+        <NoData
+          icon={getIconPath('good')}
           description={
             <>
               Please try again later. If the problem persists, contact us at{' '}
@@ -27,17 +27,12 @@ const Demo = () => {
             </>
           }
         />
-
-
-
       </Box>
 
       <Box style={{ flex: '1 1 45%', minWidth: '45%' }}>
-
-
         <NoData>NoData</NoData>;
-
-        <NoData icon={getIconPath('good')}
+        <NoData
+          icon={getIconPath('good')}
           description={
             <>
               Please try again later. If the problem persists, contact us at{' '}
@@ -46,23 +41,15 @@ const Demo = () => {
           }
         />
 
-        <NoData
-          description={
-            <>
-              Please try again later. If the problem persists, contact us at{' '}
-            </>
-          }
-        >
+        <NoData description={<>Please try again later. If the problem persists, contact us at </>}>
           <Box mt={4}>
-            <Button >
+            <Button>
               <Button.Text>Reload page</Button.Text>
             </Button>
           </Box>
-        </NoData >
+        </NoData>
       </Box>
     </Flex>
-
-
   );
 };
 
