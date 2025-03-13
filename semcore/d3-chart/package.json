@@ -19,6 +19,7 @@
   "dependencies": {
     "@formatjs/intl": "2.3.0",
     "@semcore/animation": "2.40.1",
+    "@semcore/checkbox": "7.43.1",
     "@semcore/divider": "4.39.1",
     "@semcore/flex-box": "5.40.1",
     "@semcore/popper": "5.45.3",

@@ -780,6 +780,9 @@ importers:
       '@semcore/animation':
         specifier: 2.40.1
         version: link:../animation
+      '@semcore/checkbox':
+        specifier: 7.43.1
+        version: link:../checkbox
       '@semcore/core':
         specifier: ^2.17.5
         version: link:../core
@@ -847,9 +850,6 @@ importers:
       '@semcore/button':
         specifier: '*'
         version: link:../button
-      '@semcore/checkbox':
-        specifier: '*'
-        version: link:../checkbox
       '@semcore/dropdown-menu':
         specifier: '*'
         version: link:../dropdown-menu
