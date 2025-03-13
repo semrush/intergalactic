@@ -1,0 +1,21 @@
+SColumn {
+  display: flex;
+  align-items: flex-start;
+  flex-grow: 1;
+  font-size: var(--intergalactic-fs-100, 12px);
+  line-height: var(--intergalactic-lh-100, 133%);
+  color: var(--intergalactic-text-primary, #191b23);
+  box-sizing: border-box;
+}
+
+SColumn[use='primary'] {
+  padding: var(--intergalactic-spacing-3x, 12px);
+  border-bottom: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
+  background-color: var(--intergalactic-table-th-primary-cell, #f4f5f9);
+}
+
+SColumn[use='secondary'] {
+  padding: var(--intergalactic-spacing-2x, 8px);
+  border-bottom: 1px solid var(--intergalactic-border-table-accent, #a9abb6);
+  background-color: var(--intergalactic-table-th-secondary-cell, #ffffff);
+}
