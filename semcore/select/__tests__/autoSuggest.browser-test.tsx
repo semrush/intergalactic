@@ -75,14 +75,26 @@ test.describe('AutoSuggest', () => {
     await page.keyboard.type('a');
     await page.waitForSelector('text=persian');
 
-    const persianOption = await page.locator('text=persian');
+    const persianOption = await page.getByRole('option', { name: 'persian' })
 
     await expect(persianOption).not.toHaveClass(/highlight/);
+    await expect(persianOption).not.toBeFocused();
 
     await page.keyboard.press('Escape');
     await page.mouse.click(inputCoords[0], inputCoords[1]);
     await page.waitForSelector('text=persian');
 
     await expect(persianOption).not.toHaveClass(/highlight/);
+
+    await page.keyboard.press('Escape');
+    await page.keyboard.press('Enter');
+    await page.waitForSelector('text=persian');
+
+    await expect(persianOption).not.toHaveClass(/highlight/);
+
+    await page.keyboard.press('ArrowDown');
+    await page.waitForSelector('text=persian');
+    await expect(persianOption).toHaveClass(/highlight/);
+
   });
 });
