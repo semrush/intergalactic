@@ -789,6 +789,9 @@ importers:
       '@semcore/flex-box':
         specifier: 5.40.1
         version: link:../flex-box
+      '@semcore/icon':
+        specifier: 4.57.1
+        version: link:../icon
       '@semcore/popper':
         specifier: 5.45.3
         version: link:../popper
@@ -853,9 +856,6 @@ importers:
       '@semcore/ellipsis':
         specifier: '*'
         version: link:../ellipsis
-      '@semcore/icon':
-        specifier: '*'
-        version: link:../icon
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
@@ -1150,6 +1150,9 @@ importers:
       '@semcore/icon':
         specifier: 4.57.1
         version: link:../icon
+      '@semcore/popper':
+        specifier: 5.45.3
+        version: link:../popper
       '@semcore/scroll-area':
         specifier: 5.44.1
         version: link:../scroll-area
@@ -2083,6 +2086,9 @@ importers:
       '@semcore/portal':
         specifier: 3.40.1
         version: link:../portal
+      '@semcore/tooltip':
+        specifier: 6.47.3
+        version: link:../tooltip
       '@semcore/utils':
         specifier: 4.45.1
         version: link:../utils
