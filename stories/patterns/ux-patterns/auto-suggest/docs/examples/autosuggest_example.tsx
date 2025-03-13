@@ -110,7 +110,7 @@ const Demo = () => {
           onVisibleChange={handleChangeVisible}
           highlightedIndex={highlightedIndex}
           onHighlightedIndexChange={handleHighlightedIndexChange}
-          defaultHighlightedIndex={-1}
+          defaultHighlightedIndex={null}
         >
           <Select.Trigger tag={Input} w={250}>
             {() => (
