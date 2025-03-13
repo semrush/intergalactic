@@ -29,6 +29,7 @@
     "@semcore/neighbor-location": "4.38.1",
     "@semcore/typography": "5.51.1",
     "@semcore/checkbox": "7.43.1",
+    "@semcore/popper": "5.45.3",
     "@semcore/tooltip": "6.47.3",
     "dayjs": "1.8.36"
   },

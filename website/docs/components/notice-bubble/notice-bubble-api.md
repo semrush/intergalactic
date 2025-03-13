@@ -6,7 +6,7 @@ tabs: Design('notice-bubble'), A11y('notice-bubble-a11y'), API('notice-bubble-ap
 ## NoticeBubbleManager
 
 ```js
-import NoticeBubbleManager from '@semcore/ui/notice-bubble';
+import { noticeBubbleDefaultManager } from '@semcore/ui/notice-bubble';
 ```
 
 Manager is a storage of all notice instances, it is able to add, delete and update notices by calling the appropriate methods.

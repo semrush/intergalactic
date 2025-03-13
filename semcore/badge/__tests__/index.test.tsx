@@ -6,6 +6,11 @@ import Badge from '../src';
 
 import { cleanup, render } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('Badge Dependency imports', () => {
+  runDependencyCheckTests('badge');
+});
 
 describe('Badge', () => {
   beforeEach(cleanup);

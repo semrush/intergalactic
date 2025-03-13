@@ -17,12 +17,14 @@
     "types": "./lib/types/index.d.ts"
   },
   "dependencies": {
+    "@semcore/button": "5.41.2",
     "@semcore/dropdown": "4.42.3",
     "@semcore/flex-box": "5.40.1",
     "@semcore/scroll-area": "5.44.1",
     "@semcore/utils": "4.45.1",
     "@semcore/icon": "4.57.1",
     "@semcore/typography": "5.51.1",
+    "@semcore/popper": "5.45.3",
     "classnames": "2.2.6"
   },
   "peerDependencies": {

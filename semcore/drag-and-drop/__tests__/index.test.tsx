@@ -7,6 +7,12 @@ import LinkedInS from '@semcore/icon/LinkedIn/m';
 import TabPanel from '@semcore/tab-panel';
 import { cleanup } from '@semcore/testing-utils/testing-library';
 
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('drag-and-drop Dependency imports', () => {
+  runDependencyCheckTests('drag-and-drop');
+});
+
 describe('DragAndDrop', () => {
   beforeEach(cleanup);
 

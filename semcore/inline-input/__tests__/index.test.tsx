@@ -8,6 +8,12 @@ import SerpM from '@semcore/icon/Serp/m';
 import { cleanup, fireEvent, render, act } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
 
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('inline-input Dependency imports', () => {
+  runDependencyCheckTests('inline-input');
+});
+
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 import Input from '../src';
 

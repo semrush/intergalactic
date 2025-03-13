@@ -2,7 +2,7 @@ import React from 'react';
 import { Hint } from '@semcore/tooltip';
 import HomePlatform from '@semcore/icon/platform/HomePlatform';
 import SEOToolkit from '@semcore/icon/platform/SEOToolkit';
-import MarketToolkit from '@semcore/icon/platform/MarketToolkit';
+import TrafficMarketToolkit from '@semcore/icon/platform/TrafficMarketToolkit';
 import LocalToolkit from '@semcore/icon/platform/LocalToolkit';
 import SocialToolkit from '@semcore/icon/platform/SocialToolkit';
 import ContentToolkit from '@semcore/icon/platform/ContentToolkit';
@@ -31,7 +31,7 @@ const Demo = () => {
   />
 
 <Hint
-    tag={MarketToolkit}
+    tag={TrafficMarketToolkit}
     interactive
     title='Market & Traffic Toolkit'
      color='icon-secondary-neutral'

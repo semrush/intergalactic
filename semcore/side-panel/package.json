@@ -17,6 +17,7 @@
     "types": "./lib/types/index.d.ts"
   },
   "dependencies": {
+    "@semcore/button": "5.41.2",
     "@semcore/utils": "4.45.1",
     "@semcore/animation": "2.40.1",
     "@semcore/flex-box": "5.40.1",
