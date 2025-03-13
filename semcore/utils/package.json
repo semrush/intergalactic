@@ -274,7 +274,7 @@
     "postcss-value-parser": "4.1.0"
   },
   "dependencies": {
-    "@babel/runtime": "^7.17.9",
+    "@babel/runtime": "^7.26.10",
     "@formatjs/intl": "3.0.4",
     "@phytonmk/nano-css": "5.3.7",
     "@reshadow/core": "0.0.1-alpha.74",

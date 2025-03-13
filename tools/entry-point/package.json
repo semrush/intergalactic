@@ -22,7 +22,7 @@
     "final-form-focus": "1.1.2",
     "react-final-form": "6.5.9",
     "csstype": "3.0.8",
-    "@babel/runtime": "^7.17.9",
+    "@babel/runtime": "^7.26.10",
     "text-mask-core": "5.1.2",
     "@popperjs/core": "2.11.5",
     "@phytonmk/nano-css": "5.3.7",
