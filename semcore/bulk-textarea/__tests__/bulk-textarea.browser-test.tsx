@@ -789,7 +789,7 @@ test.describe('Common error On - Error tooltips', () => {
   });
 
   test('Verify tooltips when fixing errors', async ({ page, browserName }) => {
-    if (browserName==='webkit') return; //not stable for webkit
+    if (browserName === 'webkit') return; //not stable for webkit
     const standPath =
       'stories/components/bulk-textarea/tests/examples/validate-blur-base-example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
