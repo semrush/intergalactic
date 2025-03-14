@@ -10,7 +10,14 @@ export default mergeConfig(
         entry: './src/index.tsx',
       },
       rollupOptions: {
-        external: ['react', 'react-dom', 'react/jsx-runtime', /@babel\/runtime\/*/, /@semcore\/*/],
+        external: [
+          'react',
+          'react-dom',
+          'react/jsx-runtime',
+          /@babel\/runtime\/*/,
+          /@semcore\/*/,
+          'text-mask-core',
+        ],
       },
     },
   }),
