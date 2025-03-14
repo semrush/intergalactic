@@ -3,7 +3,7 @@ import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 test.describe('DatePicker', () => {
   test('Single date', async ({ page }) => {
-    const standPath = 'website/docs/components/date-picker/examples/datepicker.tsx';
+    const standPath = 'stories/components/date-picker/docs/examples/datepicker.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -26,7 +26,7 @@ test.describe('DatePicker', () => {
   });
 
   test('Single month', async ({ page }) => {
-    const standPath = 'website/docs/components/date-picker/examples/datepicker.tsx';
+    const standPath = 'stories/components/date-picker/docs/examples/datepicker.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);

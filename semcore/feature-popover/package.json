@@ -9,9 +9,15 @@
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "pnpm semcore-builder --source=js"
+    "build": "pnpm semcore-builder --source=js && pnpm vite build"
+  },
+  "exports": {
+    "require": "./lib/cjs/index.js",
+    "import": "./lib/esm/index.mjs",
+    "types": "./lib/types/index.d.ts"
   },
   "dependencies": {
+    "@semcore/button": "5.41.2",
     "@semcore/utils": "4.45.1",
     "@semcore/flex-box": "5.40.1",
     "@semcore/popper": "5.45.3",

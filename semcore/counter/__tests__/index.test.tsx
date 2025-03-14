@@ -4,6 +4,11 @@ import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vites
 import { cleanup } from '@semcore/testing-utils/testing-library';
 
 import Counter from '../src';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('Counter Dependency imports', () => {
+  runDependencyCheckTests('counter');
+});
 
 describe('Counter', () => {
   beforeEach(cleanup);
