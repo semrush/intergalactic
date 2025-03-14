@@ -5,6 +5,11 @@ import Switch, { inputProps } from '../src';
 
 import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('switch Dependency imports', () => {
+  runDependencyCheckTests('switch');
+});
 
 describe('Switch', () => {
   beforeEach(cleanup);

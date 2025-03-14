@@ -9,7 +9,7 @@ const meta: Meta = {
   title: 'Components/BaseTrigger/Documentation',
 };
 
-export const LinkTrigger : StoryObj = {
+export const LinkTrigger: StoryObj = {
   render: LinkTriggerExample,
   play: playWrapper(LinkTriggerTest),
 };

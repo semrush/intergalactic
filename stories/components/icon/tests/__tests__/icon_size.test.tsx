@@ -6,9 +6,9 @@ export async function iconSize({ canvasElement }: { canvasElement: HTMLElement }
   expect(svgInteractive.length).toBeGreaterThan(0);
 
   const expectedAttributes = [
-    {   width: '16', height: '16', viewBox: '0 0 16 16', focusable: 'true', 'tabindex': '0' },
-    {   width: '24', height: '24', viewBox: '0 0 24 24', focusable: 'true', 'tabindex': '0' },
-   ];
+    { width: '16', height: '16', viewBox: '0 0 16 16', focusable: 'true', tabindex: '0' },
+    { width: '24', height: '24', viewBox: '0 0 24 24', focusable: 'true', tabindex: '0' },
+  ];
 
   for (let i = 0; i < svgInteractive.length; i++) {
     const svg = svgInteractive[i];
@@ -21,10 +21,9 @@ export async function iconSize({ canvasElement }: { canvasElement: HTMLElement }
     expect(svg).toHaveAttribute('tabindex', attrs['tabindex']);
   }
 
-
   const expectedNonInteractiveAttributes = [
-    {  width: '16', height: '16', viewBox: '0 0 16 16', 'aria-hidden': 'true','tabindex': '-1' },
-    {  width: '24', height: '24', viewBox: '0 0 24 24',  'aria-hidden': 'true','tabindex': '-1' },
+    { width: '16', height: '16', viewBox: '0 0 16 16', 'aria-hidden': 'true', tabindex: '-1' },
+    { width: '24', height: '24', viewBox: '0 0 24 24', 'aria-hidden': 'true', tabindex: '-1' },
   ];
   const svgNonInteractive = canvasElement.querySelectorAll('svg[aria-hidden="true"]');
   expect(svgNonInteractive.length).toBeGreaterThan(0);
@@ -38,5 +37,4 @@ export async function iconSize({ canvasElement }: { canvasElement: HTMLElement }
     expect(svg).toHaveAttribute('viewBox', attrs['viewBox']);
     expect(svg).toHaveAttribute('tabindex', attrs['tabindex']);
   }
-
 }

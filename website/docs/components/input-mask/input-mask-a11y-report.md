@@ -3,7 +3,7 @@
 _Intergalactic v16.0.0, React v18.2.0, Playwright v1.43.0,
 Guidepup v0.13.1, MacOS Sonoma 14._
 
-**Running screen reader against [this file](https://github.com/semrush/intergalactic/blob/master/website/docs/components/input-mask/examples/inputmask.tsx).**
+**Running screen reader against [this file](https://github.com/semrush/intergalactic/blob/master/website/docs/components/input-mask/examples/basic.tsx).**
 
 ```
 In web content Card number

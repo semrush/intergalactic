@@ -7,11 +7,11 @@ const meta: Meta = {
   title: 'Components/BaseTrigger/Advanced',
 };
 
-export const BaseTrigger : StoryObj  = {
+export const BaseTrigger: StoryObj = {
   render: BaseTriggerExample,
 };
 
-export const LinkTriggerAndEllipsis : StoryObj = {
+export const LinkTriggerAndEllipsis: StoryObj = {
   render: LinkTriggerAndEllipsisExample,
 };
 

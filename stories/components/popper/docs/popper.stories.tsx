@@ -27,21 +27,21 @@ export const Sizes: Story = {
 };
 
 export const DisabledPortal: Story = {
-    render: DisabledPortalExample,
+  render: DisabledPortalExample,
 };
 
 export const EventsTrigger: Story = {
-    render: EventsTriggerExample,
+  render: EventsTriggerExample,
 };
 
 export const Placement: Story = {
-    render: PlacementExample,
+  render: PlacementExample,
 };
 
 export const RenderFunctions: Story = {
-    render: RenderFunctionsExample,
+  render: RenderFunctionsExample,
 };
 
 export const ShowHide: Story = {
-    render: ShowHideExample,
+  render: ShowHideExample,
 };

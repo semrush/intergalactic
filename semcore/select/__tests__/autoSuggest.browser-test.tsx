@@ -56,4 +56,44 @@ test.describe('AutoSuggest', () => {
 
     await expect(page).toHaveScreenshot();
   });
+
+  test('Verify if it is possible to press Enter without selecting option in the list', async ({
+    page,
+  }) => {
+    const standPath =
+      'stories/patterns/ux-patterns/auto-suggest/docs/examples/autosuggest_example.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const input = await page.locator('input');
+    const inputRect = (await input.boundingBox())!;
+    const inputCoords = [inputRect.x + inputRect.width / 2, inputRect.y + inputRect.height / 2];
+
+    await page.mouse.click(inputCoords[0], inputCoords[1]);
+
+    await page.keyboard.type('a');
+    await page.waitForSelector('text=persian');
+
+    const persianOption = await page.getByRole('option', { name: 'persian' });
+
+    await expect(persianOption).not.toHaveClass(/highlight/);
+    await expect(persianOption).not.toBeFocused();
+
+    await page.keyboard.press('Escape');
+    await page.mouse.click(inputCoords[0], inputCoords[1]);
+    await page.waitForSelector('text=persian');
+
+    await expect(persianOption).not.toHaveClass(/highlight/);
+
+    await page.keyboard.press('Escape');
+    await page.keyboard.press('Enter');
+    await page.waitForSelector('text=persian');
+
+    await expect(persianOption).not.toHaveClass(/highlight/);
+
+    await page.keyboard.press('ArrowDown');
+    await page.waitForSelector('text=persian');
+    await expect(persianOption).toHaveClass(/highlight/);
+  });
 });

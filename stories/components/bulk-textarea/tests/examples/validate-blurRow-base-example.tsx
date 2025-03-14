@@ -64,8 +64,8 @@ const Demo = (props: BulkTextareaProps) => {
           return line.replace(/http:\/\//, '');
         }}
         pasteProps={{
-          delimiter: '\n',
-          skipEmptyLines: false,
+          delimiter: /[\n.]/,
+          skipEmptyLines: true,
           lineProcessing: (line: string) => line.replace(/http:\/\//, 'PASTE'),
         }}
       >

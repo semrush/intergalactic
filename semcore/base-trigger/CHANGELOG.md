@@ -12,6 +12,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - `tabIndex` in `BaseTrigger` to fix focus [issue on webkit](https://bugs.webkit.org/show_bug.cgi?id=229895).
 
+## [4.52.0] - 2025-03-14
+
+### Added
+
+- Build for ESM.
+
 ## [4.51.1] - 2025-02-05
 
 ### Changed

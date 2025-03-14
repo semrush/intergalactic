@@ -14,4 +14,3 @@ type Story = StoryObj<typeof BasicExample>;
 export const Basic: Story = {
   render: BasicExample,
 };
-

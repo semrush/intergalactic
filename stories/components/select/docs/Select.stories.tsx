@@ -16,12 +16,10 @@ import SortingMultiselectOptionsExample from './examples/sorting_multiselect_opt
 import TriggerCustomizationDeepExample from './examples/trigger_customization_deep';
 import TriggerCustomizationExample from './examples/trigger_customization';
 
-
 import { BasicUsageTest } from './__tests__/basic_usage.test';
 import { AdvancedFilteringControlTest } from './__tests__/advanced_filtering_control.test';
 import { playWrapper } from '../../../utils/playWrapper';
 import { SortingMultiselectOptionsTest } from './__tests__/sorting_multiselect_options.test';
-
 
 const meta: Meta<typeof Select> = {
   title: 'Components/Select/Documentation',

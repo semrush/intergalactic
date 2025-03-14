@@ -6,6 +6,11 @@ import { Blockquote, List, Text } from '../src';
 
 import { cleanup, render } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('typography Dependency imports', () => {
+  runDependencyCheckTests('typography');
+});
 
 describe('Text', () => {
   beforeEach(cleanup);

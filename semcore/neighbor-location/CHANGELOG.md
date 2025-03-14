@@ -8,6 +8,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Import it from `@semcore/core`.
 
+## [4.40.0] - 2025-03-14
+
+### Added
+
+- Build for ESM.
+
 ## [4.39.0] - 2025-02-21
 
 ### Added

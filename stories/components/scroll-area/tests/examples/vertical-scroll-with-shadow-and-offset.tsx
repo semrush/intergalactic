@@ -2,7 +2,6 @@ import React from 'react';
 import { Box, Flex } from '@semcore/flex-box';
 import ScrollArea from '@semcore/scroll-area';
 
-
 let randomIndex = 1;
 const stableRandom = () => {
   if (randomIndex > 20) randomIndex = 1;
@@ -18,41 +17,32 @@ function getRandomColor() {
 }
 
 class Demo extends React.PureComponent {
-
-
   render() {
     return (
       <Flex>
-          <ScrollArea
-            w={300}
-            h={300}
-            shadow={true}
-            tabIndex={0}
-            topOffset={100}
-            bottomOffset={100}
+        <ScrollArea w={300} h={300} shadow={true} tabIndex={0} topOffset={100} bottomOffset={100}>
+          <ScrollArea.Container
+            role='group'
+            focusRingTopOffset='40px'
+            focusRingRightOffset='40px'
+            focusRingBottomOffset='40px'
+            focusRingLeftOffset='40px'
           >
-            <ScrollArea.Container
-              role='group'
-              focusRingTopOffset="40px"
-              focusRingRightOffset="40px"
-              focusRingBottomOffset="40px"
-              focusRingLeftOffset="40px"
-            >
-              {[...new Array(1)].map((_, index) => (
-                <Box
-                  key={index}
-                  inline
-                  m={2}
-                  w={600}
-                  h={500}
-                  style={{ backgroundColor: getRandomColor() }}
-                />
-              ))}
-            </ScrollArea.Container>
-            <ScrollArea.Bar  w = '40px'>
-              <ScrollArea.Bar.Slider />
-            </ScrollArea.Bar>
-          </ScrollArea>
+            {[...new Array(1)].map((_, index) => (
+              <Box
+                key={index}
+                inline
+                m={2}
+                w={600}
+                h={500}
+                style={{ backgroundColor: getRandomColor() }}
+              />
+            ))}
+          </ScrollArea.Container>
+          <ScrollArea.Bar w='40px'>
+            <ScrollArea.Bar.Slider />
+          </ScrollArea.Bar>
+        </ScrollArea>
       </Flex>
     );
   }

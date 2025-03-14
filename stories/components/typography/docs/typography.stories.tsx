@@ -22,8 +22,8 @@ export default meta;
 type Story = StoryObj;
 
 export const AdditionalInformation: Story = {
-    render: AdditionalInformationExample,
-  };
+  render: AdditionalInformationExample,
+};
 
 export const BasicUsage: Story = {
   render: BasicUsageExample,
@@ -62,13 +62,13 @@ export const ParagraphMargins: Story = {
 };
 
 export const Paragraps: Story = {
-    render: ParagraphsExample,
+  render: ParagraphsExample,
 };
 
 export const TextColors: Story = {
-    render: TextColorsExample,
+  render: TextColorsExample,
 };
 
 export const TextStyles: Story = {
-    render: TextStylesExample,
+  render: TextStylesExample,
 };

@@ -11,9 +11,7 @@ const Demo = () => {
           Card heading
         </Card.Title>
         <Card.Description tag='div' size={200}>
-          <Ellipsis maxLine={1}>
-            Additional long card description
-          </Ellipsis>
+          <Ellipsis maxLine={1}>Additional long card description</Ellipsis>
         </Card.Description>
       </Card.Header>
       <Card.Body>

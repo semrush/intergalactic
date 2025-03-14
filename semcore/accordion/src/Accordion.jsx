@@ -173,7 +173,17 @@ function ToggleButton(props) {
 
 function Collapse(props) {
   const { selected } = props;
-  return <Root render={CollapseAnimate} visible={selected} interactive />;
+  const visible = selected;
+
+  return (
+    <Root
+      render={CollapseAnimate}
+      visible={visible}
+      interactive
+      inert={!visible ? '' : undefined}
+      aria-hidden={!visible}
+    />
+  );
 }
 
 const Item = createComponent(RootItem, {

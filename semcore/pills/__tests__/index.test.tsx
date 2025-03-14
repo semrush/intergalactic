@@ -14,6 +14,12 @@ import ThumbUpM from '@semcore/icon/ThumbUp/m';
 import ThumbDownM from '@semcore/icon/ThumbDown/m';
 import { Box } from '@semcore/flex-box';
 
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('pills Dependency imports', () => {
+  runDependencyCheckTests('pills');
+});
+
 describe('PillGroup', () => {
   describe('types', () => {
     const any: any = null;
