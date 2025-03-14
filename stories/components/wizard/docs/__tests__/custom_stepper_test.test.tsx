@@ -4,12 +4,12 @@ export async function CustomStepperExampleTest({ canvasElement }: { canvasElemen
   const canvas = within(canvasElement);
 
   // Helper function to wait briefly if required
-  const wait = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+  const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
   // ==== Section 1: Mouse Interactions ====
 
   // Open the modal using a button
-  const trigger = within(document.body).queryByText("Open wizard");
+  const trigger = within(document.body).queryByText('Open wizard');
   if (!trigger) {
     throw new Error('Trigger button "Open modal" not found');
   }
@@ -40,7 +40,7 @@ export async function CustomStepperExampleTest({ canvasElement }: { canvasElemen
   expect(thirdStep).toHaveAttribute('aria-selected', 'true');
 
   // Click on checkboxes and verofu selection in steps
-  const group = canvas.getByRole('group')
+  const group = canvas.getByRole('group');
   const radios = within(group).getAllByRole('radio');
   await userEvent.click(radios[0]);
   expect(thirdStep).toHaveTextContent(/Manually/);
@@ -113,6 +113,6 @@ export async function CustomStepperExampleTest({ canvasElement }: { canvasElemen
   expect(document.activeElement).toBe(lastStepFocused);
 
   await userEvent.keyboard('{Enter}');
-  const firstRadioChecked = canvas.getByRole('radio', { name: /Manually/i })
+  const firstRadioChecked = canvas.getByRole('radio', { name: /Manually/i });
   expect(document.activeElement).toBe(firstRadioChecked);
 }

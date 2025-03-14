@@ -59,7 +59,9 @@ const Demo = () => {
       <FeedbackRating
         notificationVisible={notificationVisible}
         notificationTitle={'Topics and pages sorting improved'}
-        notificationText={'Those with better metrics now rank higher, and lls me navigatin es mold rate this update?'}
+        notificationText={
+          'Those with better metrics now rank higher, and lls me navigatin es mold rate this update?'
+        }
         learnMoreLink={
           'https://developer.semrush.com/intergalactic/patterns/feedback-rating/feedback-rating-a11y'
         }

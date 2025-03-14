@@ -24,9 +24,7 @@ const Demo = () => {
         <Select.Popper aria-label={'Fruit options with search'}>
           <InputSearch value={filter} onChange={setFilter}>
             <InputSearch.SearchIcon />
-            <InputSearch.Value
-              aria-describedby={filter ? 'search-result-advanced' : undefined}
-            />
+            <InputSearch.Value aria-describedby={filter ? 'search-result-advanced' : undefined} />
             <InputSearch.Clear
               onClick={() => {
                 return false;

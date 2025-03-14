@@ -23,5 +23,5 @@ export const NoticeBigIllustration: StoryObj = {
 };
 
 export const NoticeStates: StoryObj = {
-    render: NoticeStatesExample,
-  };
+  render: NoticeStatesExample,
+};

@@ -16,22 +16,22 @@ const Demo = () => {
       <Modal visible={visible} onClose={handleClose}>
         <Modal.Title>Do you want to save your chasadengesdsds?</Modal.Title>
 
-        <Text size={200} mb={4} tag="p">
+        <Text size={200} mb={4} tag='p'>
           Your changes will be lost if you don't save them.
           {isVisibleButton && (
             <TrashIcon
               interactive
-              color="gray-300"
+              color='gray-300'
               onClick={() => setIsVisibleButton(false)}
               onKeyDown={() => setIsVisibleButton(false)}
-              type="button"
+              type='button'
             />
           )}
         </Text>
-        <Button use="primary" theme="success" size="l" onClick={handleClose}>
+        <Button use='primary' theme='success' size='l' onClick={handleClose}>
           Save changes
         </Button>
-        <Button size="l" ml={2} onClick={handleClose}>
+        <Button size='l' ml={2} onClick={handleClose}>
           Don't save
         </Button>
       </Modal>

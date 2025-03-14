@@ -6,7 +6,6 @@ import DynamicVirtualListExample from './examples/dynamic_virtual_list';
 import SynchronizedReverseScrollOnTwoDifferentScreensExample from './examples/synchronized_reverse_scroll_on_two_different_screens';
 import SynchronizedScrollOnTwoDifferentScreensExample from './examples/synchronized_scroll_on_two_different_screens';
 
-
 const meta: Meta<typeof ScrollArea> = {
   title: 'Components/ScrollArea/Documentation',
   component: ScrollArea,

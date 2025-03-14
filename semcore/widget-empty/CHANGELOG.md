@@ -8,6 +8,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Build for ESM.
 
+## [4.42.2] - 2025-03-11
+
+### Added
+
+- `text-wrap: balance` for Description, to display long descriptions in a better, trendy, and modern way. No orphans left hanging.
+
 ## [4.42.1] - 2025-02-05
 
 ### Changed

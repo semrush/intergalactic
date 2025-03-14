@@ -60,7 +60,9 @@ const Demo = () => {
 
   return (
     <>
-      <Button onClick={handleClick} ref={openButtonRef}>Show dynamic notice</Button>
+      <Button onClick={handleClick} ref={openButtonRef}>
+        Show dynamic notice
+      </Button>
       <NoticeBubbleContainer manager={manager} />
     </>
   );

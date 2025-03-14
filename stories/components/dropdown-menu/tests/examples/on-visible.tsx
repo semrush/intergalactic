@@ -11,23 +11,23 @@ const Demo = () => {
 
   const handleVisiblity = (next: any) => {
     if (next) {
-      alert("boom");
+      alert('boom');
     }
 
     setVisible(next);
   };
 
-  return(
+  return (
     <DropdownMenu onVisibleChange={handleVisiblity}>
-          <DropdownMenu.Trigger tag='button' data-testid='dd-button-trigger'>
-            Trigger
-          </DropdownMenu.Trigger>
-          <DropdownMenu.Menu>
-            <DropdownMenu.Item>Item 1</DropdownMenu.Item>
-            <DropdownMenu.Item>Item 2</DropdownMenu.Item>
-            <DropdownMenu.Item>Item 3</DropdownMenu.Item>
-          </DropdownMenu.Menu>
-        </DropdownMenu>
+      <DropdownMenu.Trigger tag='button' data-testid='dd-button-trigger'>
+        Trigger
+      </DropdownMenu.Trigger>
+      <DropdownMenu.Menu>
+        <DropdownMenu.Item>Item 1</DropdownMenu.Item>
+        <DropdownMenu.Item>Item 2</DropdownMenu.Item>
+        <DropdownMenu.Item>Item 3</DropdownMenu.Item>
+      </DropdownMenu.Menu>
+    </DropdownMenu>
   );
 };
 

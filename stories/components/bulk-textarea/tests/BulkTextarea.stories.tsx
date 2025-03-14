@@ -55,7 +55,6 @@ export const ValidationBlur: StoryObj<typeof BulkTextarea> = {
   render: ValidationBlurExample,
 };
 
-
 export const ValidationBlurLine: StoryObj<typeof BulkTextarea> = {
   args: {
     maxLines: 30,

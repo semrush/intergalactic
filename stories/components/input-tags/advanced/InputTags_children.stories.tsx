@@ -28,7 +28,5 @@ export const InnerFunctionCases: Story = {
 };
 
 export const TagusTagsAndInput: Story = {
-    render: TagusTagsExample,
-  };
-
-  
+  render: TagusTagsExample,
+};

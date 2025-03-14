@@ -6,13 +6,14 @@ import { Text, List } from '@semcore/ui/typography';
 
 const TAGUS = () => (
   <InputTags.Tag>
-    <InputTags.Tag.Text><InputTags.Tag.Circle
+    <InputTags.Tag.Text>
+      <InputTags.Tag.Circle
         style={{
-          background: '#2595e4'
+          background: '#2595e4',
         }}
       />
-       <InputTags.Tag.Text.Content>123</InputTags.Tag.Text.Content>
-      </InputTags.Tag.Text>
+      <InputTags.Tag.Text.Content>123</InputTags.Tag.Text.Content>
+    </InputTags.Tag.Text>
     <InputTags.Tag.Close />
   </InputTags.Tag>
 );
@@ -102,21 +103,20 @@ const Demo = () => {
 
   return (
     <>
-
       <Notice mb={2} theme='warning'>
         <Notice.Content>
-        <Text size={200} mb={2} >
+          <Text size={200} mb={2}>
             Case1: No TagContainers: Tagus + Tags + InputTags.Value
           </Text>
           <InputTags mt={2} size='l' onAppend={handleAppendTags} onRemove={handleRemoveTag}>
             {tags.map((tag, idx) => (
               <TAGUS key={tag} />
             ))}
-             {tags.map((tag, idx) => (
+            {tags.map((tag, idx) => (
               <InputTags.Tag key={tag}>
                 <InputTags.Tag.Text>
-                <InputTags.Tag.Circle style={{ background: '#2595e4'}}/>
-                <InputTags.Tag.Text.Content>123</InputTags.Tag.Text.Content>
+                  <InputTags.Tag.Circle style={{ background: '#2595e4' }} />
+                  <InputTags.Tag.Text.Content>123</InputTags.Tag.Text.Content>
                 </InputTags.Tag.Text>
               </InputTags.Tag>
             ))}
@@ -134,22 +134,21 @@ const Demo = () => {
 
       <Notice mb={2} theme='warning'>
         <Notice.Content>
-        <Text size={200} mb={2} >
+          <Text size={200} mb={2}>
             Case2: TagContainer For both: Tagus + Tags + InputTags.Value
           </Text>
           <InputTags mt={2} size='l' onAppend={handleAppendTags} onRemove={handleRemoveTag}>
-          <InputTags.TagsContainer>
+            <InputTags.TagsContainer>
               {tags.map((tag, idx) => (
                 <TAGUS key={tag} />
               ))}
-          
-           
-             {tags.map((tag, idx) => (
-              <InputTags.Tag key={tag}>
-                <InputTags.Tag.Text>123</InputTags.Tag.Text>
-              </InputTags.Tag>
-            ))}
-              </InputTags.TagsContainer>
+
+              {tags.map((tag, idx) => (
+                <InputTags.Tag key={tag}>
+                  <InputTags.Tag.Text>123</InputTags.Tag.Text>
+                </InputTags.Tag>
+              ))}
+            </InputTags.TagsContainer>
             <InputTags.Value
               value={value}
               onChange={setValue}
@@ -162,22 +161,21 @@ const Demo = () => {
         </Notice.Content>
       </Notice>
 
-
       <Notice mb={2} theme='danger'>
         <Notice.Content>
-        <Text size={200} mb={2} >
+          <Text size={200} mb={2}>
             Case3: No TagContainer : Tagus + Tags + InputWrapper
           </Text>
           <InputTags mt={2} size='l' onAppend={handleAppendTags} onRemove={handleRemoveTag}>
             {tags.map((tag, idx) => (
               <TAGUS key={tag} />
             ))}
-             {tags.map((tag, idx) => (
+            {tags.map((tag, idx) => (
               <InputTags.Tag key={tag}>
                 <InputTags.Tag.Text>123</InputTags.Tag.Text>
               </InputTags.Tag>
             ))}
-             <InputWrapper
+            <InputWrapper
               value={value}
               setValue={setValue}
               handleInputKeyDown={handleInputKeyDown}
@@ -189,23 +187,22 @@ const Demo = () => {
 
       <Notice mb={2} theme='warning'>
         <Notice.Content>
-        <Text size={200} mb={2} >
+          <Text size={200} mb={2}>
             Case4: TagContainer for both : Tagus + Tags + InputWrapper
           </Text>
           <InputTags mt={2} size='l' onAppend={handleAppendTags} onRemove={handleRemoveTag}>
-          <InputTags.TagsContainer>
+            <InputTags.TagsContainer>
               {tags.map((tag, idx) => (
                 <TAGUS key={tag} />
               ))}
-          
-           
-             {tags.map((tag, idx) => (
-              <InputTags.Tag key={tag}>
-                <InputTags.Tag.Text>123</InputTags.Tag.Text>
-              </InputTags.Tag>
-            ))}
-              </InputTags.TagsContainer>
-              <InputWrapper
+
+              {tags.map((tag, idx) => (
+                <InputTags.Tag key={tag}>
+                  <InputTags.Tag.Text>123</InputTags.Tag.Text>
+                </InputTags.Tag>
+              ))}
+            </InputTags.TagsContainer>
+            <InputWrapper
               value={value}
               setValue={setValue}
               handleInputKeyDown={handleInputKeyDown}

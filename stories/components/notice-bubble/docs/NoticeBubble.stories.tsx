@@ -13,7 +13,6 @@ import SpecialEventsNoticeExample from './examples/special_events_notice';
 import SuccessNoticeExample from './examples/success_notice';
 import UndoActionExample from './examples/undo_action';
 
-
 const meta: Meta = {
   title: 'Components/NoticeBubble/Documentation',
 };

@@ -35,7 +35,7 @@ const Demo = () => {
 
   const onChangeSelect = (value: number) => {
     setSelectedFirst(value);
-    if(getValues('export') !== 'first') {
+    if (getValues('export') !== 'first') {
       setMessage(`Selection changed to First ${value} rows`);
       reset({ export: 'first' });
     }

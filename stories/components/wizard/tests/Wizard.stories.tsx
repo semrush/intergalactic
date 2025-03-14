@@ -13,5 +13,5 @@ export default meta;
 type Story = StoryObj<typeof Wizard>;
 
 export const SteppersAndButtonsStates: Story = {
-    render: SteppersAndButtonsStatesExample,
+  render: SteppersAndButtonsStatesExample,
 };
