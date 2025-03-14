@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import IconInButtonLinkExample from './examples/icon_in_buttonLink';
-import  IconInButtonExample from './examples/icon_in_buttons';
-
+import IconInButtonExample from './examples/icon_in_buttons';
 
 const meta: Meta = {
   title: 'Components/Button/Tests',

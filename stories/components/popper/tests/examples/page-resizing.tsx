@@ -18,7 +18,7 @@ const Demo = () => {
           </DescriptionTooltip.Popper>
         </DescriptionTooltip>
         <Box mr={15} />
-        <DescriptionTooltip visible strategy="fixed">
+        <DescriptionTooltip visible strategy='fixed'>
           <DescriptionTooltip.Trigger tag={Button}>Trigger</DescriptionTooltip.Trigger>
           <DescriptionTooltip.Popper aria-label={'Popper description'}>
             Fixed

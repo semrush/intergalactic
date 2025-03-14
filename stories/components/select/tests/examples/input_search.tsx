@@ -1,9 +1,7 @@
-
 // import React from 'react';
 // import { Flex } from '@semcore/flex-box';
 // import Select, {InputSearch} from '@semcore/select';
 // import { Text } from '@semcore/typography';
-
 
 // const Demo = () => {
 

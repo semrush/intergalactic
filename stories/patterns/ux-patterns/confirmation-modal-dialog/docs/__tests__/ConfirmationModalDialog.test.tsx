@@ -1,11 +1,13 @@
 import { expect, userEvent, within } from '@storybook/test';
 
-export async function ConfirmationModalDialogTest({ canvasElement }: { canvasElement: HTMLElement }) {
+export async function ConfirmationModalDialogTest({
+  canvasElement,
+}: { canvasElement: HTMLElement }) {
   const canvas = within(canvasElement);
 
   const button = canvas.getByRole('button', { name: 'Open confirmation modal' });
   await userEvent.click(button);
-  
+
   //Check modal attributes
   const modal = await canvas.findByRole('dialog');
   await expect(modal).toHaveAttribute('aria-modal', 'true');
@@ -14,13 +16,13 @@ export async function ConfirmationModalDialogTest({ canvasElement }: { canvasEle
   const title = await canvas.findByText('Delete project?');
   await expect(title).toBeInTheDocument();
 
-   //Check Marks attributes
-   const markers = await canvas.findAllByText('•', { selector: 'span' });
-   await expect(markers.length).toBeGreaterThan(0);
-   for (const marker of markers) {
-     await expect(marker).toHaveAttribute('aria-hidden', 'true');
-     await expect(marker).not.toHaveAttribute('tabindex');
-   }
+  //Check Marks attributes
+  const markers = await canvas.findAllByText('•', { selector: 'span' });
+  await expect(markers.length).toBeGreaterThan(0);
+  for (const marker of markers) {
+    await expect(marker).toHaveAttribute('aria-hidden', 'true');
+    await expect(marker).not.toHaveAttribute('tabindex');
+  }
 
   //Check Close attributes
   const closeButton = await canvas.findByRole('button', { name: /close/i });
@@ -45,9 +47,9 @@ export async function ConfirmationModalDialogTest({ canvasElement }: { canvasEle
   await userEvent.click(deleteButton);
   await expect(inputField).toHaveAttribute('aria-invalid', 'true');
   await expect(inputField).toHaveAttribute('aria-describedby', 'form-project-error');
-  await  expect(document.activeElement).toBe(inputField);
+  await expect(document.activeElement).toBe(inputField);
 
-//Check Cancel attributes
+  //Check Cancel attributes
   const cancelButton = await canvas.findByRole('button', { name: /cancel/i });
   await expect(cancelButton).toHaveAttribute('data-ui-name', 'Button');
   await expect(cancelButton).toHaveAttribute('type', 'button');

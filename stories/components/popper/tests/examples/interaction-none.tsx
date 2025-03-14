@@ -8,18 +8,18 @@ import Button from '@semcore/button';
 const Demo = () => {
   return (
     <>
-       <Flex m={4} >
-    <Tooltip interaction='none'>
-      <Tooltip.Trigger data-testid='trigger'>Trigger</Tooltip.Trigger>
-      <Tooltip.Popper data-testid='popper'>Popper</Tooltip.Popper>
-    </Tooltip>
-   </Flex>
+      <Flex m={4}>
+        <Tooltip interaction='none'>
+          <Tooltip.Trigger data-testid='trigger'>Trigger</Tooltip.Trigger>
+          <Tooltip.Popper data-testid='popper'>Popper</Tooltip.Popper>
+        </Tooltip>
+      </Flex>
 
-    <Flex>
+      <Flex>
         <Button data-position='before'>1</Button>
         <Popper interaction={'none'} timeout={[0, 100]}>
           <Popper.Trigger>
-          <Button data-testid='button'>Click</Button>
+            <Button data-testid='button'>Click</Button>
           </Popper.Trigger>
           <Popper.Popper>
             <Card>Some content in popper</Card>

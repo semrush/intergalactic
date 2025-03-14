@@ -20,7 +20,7 @@ const Demo = () => {
         Select release time
       </Text>
       <Box mt={2}>
-      <Input.Value value={value}  data-position='before' />
+        <Input.Value value={value} data-position='before' />
         <Select interaction='focus' onChange={setValue} value={value}>
           <Select.Trigger tag={Input}>
             {() => (
@@ -39,7 +39,7 @@ const Demo = () => {
             ))}
           </Select.Menu>
         </Select>
-        <Input.Value value={value}  data-position='after' />
+        <Input.Value value={value} data-position='after' />
       </Box>
     </>
   );

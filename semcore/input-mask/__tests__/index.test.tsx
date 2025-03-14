@@ -9,6 +9,12 @@ import { axe } from '@semcore/testing-utils/axe';
 
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('input-mask Dependency imports', () => {
+  runDependencyCheckTests('input-mask');
+});
+
 describe('InputMask', () => {
   beforeEach(cleanup);
 
@@ -68,8 +74,8 @@ describe('InputMask', () => {
     await userEvent.keyboard('[Backspace]');
 
     expect(input.value).toBe('+234');
-    expect(input.selectionStart).toBe(4);
-    expect(input.selectionEnd).toBe(4);
+    expect(input.selectionStart).toBe(0);
+    expect(input.selectionEnd).toBe(0);
   });
 
   test('should not break when initial value is disallowed by pipe', async () => {

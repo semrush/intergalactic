@@ -18,5 +18,5 @@ export const BasicUsage: Story = {
 };
 
 export const CustomColor: Story = {
-    render: CustomColorExample,
-  };
+  render: CustomColorExample,
+};

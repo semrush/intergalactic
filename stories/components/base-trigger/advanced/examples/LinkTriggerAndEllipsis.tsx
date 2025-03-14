@@ -37,10 +37,10 @@ const Demo = () => {
         </LinkTrigger.Text>
       </DropdownMenu.Trigger>
       <DropdownMenu.Menu>
-        <DropdownMenu.Item >Save</DropdownMenu.Item>
-        <DropdownMenu.Item >Rename</DropdownMenu.Item>
-        <DropdownMenu.Item >Download</DropdownMenu.Item>
-        <DropdownMenu.Item >Delete</DropdownMenu.Item>
+        <DropdownMenu.Item>Save</DropdownMenu.Item>
+        <DropdownMenu.Item>Rename</DropdownMenu.Item>
+        <DropdownMenu.Item>Download</DropdownMenu.Item>
+        <DropdownMenu.Item>Delete</DropdownMenu.Item>
       </DropdownMenu.Menu>
     </DropdownMenu>
   );

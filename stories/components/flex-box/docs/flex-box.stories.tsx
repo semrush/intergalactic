@@ -12,7 +12,7 @@ export const Flex: StoryObj = {
 };
 
 export const Box: StoryObj = {
-    render: BoxExample,
-  };
+  render: BoxExample,
+};
 
 export default meta;

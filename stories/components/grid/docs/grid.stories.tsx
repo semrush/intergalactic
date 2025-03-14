@@ -16,22 +16,22 @@ export const AutomaticColumnSizeDetection: StoryObj = {
 };
 
 export const ChangeInGeneralOffset: StoryObj = {
-    render: ChangeInGeneralOffsetExamples,
-  };
-  export const ChangeInGeneralGutterBetweenColumns: StoryObj = {
-    render: ChangeInGeneralGutterBetweenColumnsExample,
-  };
+  render: ChangeInGeneralOffsetExamples,
+};
+export const ChangeInGeneralGutterBetweenColumns: StoryObj = {
+  render: ChangeInGeneralGutterBetweenColumnsExample,
+};
 
-  export const ExampleUse: StoryObj = {
-    render: ExampleUseExample,
-  };
+export const ExampleUse: StoryObj = {
+  render: ExampleUseExample,
+};
 
-  export const ResponsiveAlternativeApi: StoryObj = {
-    render: ResponsiveAlternativeApiExample,
-  };
+export const ResponsiveAlternativeApi: StoryObj = {
+  render: ResponsiveAlternativeApiExample,
+};
 
-  export const Responsive: StoryObj = {
-    render: ResponsiveExample,
-  };
+export const Responsive: StoryObj = {
+  render: ResponsiveExample,
+};
 
 export default meta;

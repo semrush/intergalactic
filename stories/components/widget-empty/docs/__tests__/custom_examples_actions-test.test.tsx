@@ -32,9 +32,7 @@ export async function CustomExamplesActionsTest({ canvasElement }: { canvasEleme
   }
 
   // Safely check the title element
-  const title = await canvas.findByText((content) =>
-    content.includes('Set up your [Tool Name]')
-  );
+  const title = await canvas.findByText((content) => content.includes('Set up your [Tool Name]'));
   await expect(title).toHaveAttribute('data-ui-name', 'WidgetEmpty.Title');
 
   const titleFontSize = window.getComputedStyle(title as HTMLElement).fontSize;
@@ -42,14 +40,16 @@ export async function CustomExamplesActionsTest({ canvasElement }: { canvasEleme
 
   // Safely check the description element
   const description = await canvas.findByText((content) =>
-    content.includes('allows you to get daily updates on positions in')
+    content.includes('allows you to get daily updates on positions in'),
   );
   await expect(description).toHaveAttribute('data-ui-name', 'WidgetEmpty.Description');
 
   const descriptionFontSize = window.getComputedStyle(description as HTMLElement).fontSize;
   await expect(descriptionFontSize).toBe('14px');
 
-  const descriptionMarginTop = window.getComputedStyle(description as HTMLElement).getPropertyValue('margin-top');
+  const descriptionMarginTop = window
+    .getComputedStyle(description as HTMLElement)
+    .getPropertyValue('margin-top');
   await expect(descriptionMarginTop).toBe('4px');
 
   // Safely check the button and its container

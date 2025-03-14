@@ -6,7 +6,7 @@ export async function CustomExampleTest({ canvasElement }: { canvasElement: HTML
   const statusElements = await canvas.findAllByRole('status');
 
   const widgetContainer = statusElements.find((element) =>
-    element.textContent?.toLowerCase().includes('good results')
+    element.textContent?.toLowerCase().includes('good results'),
   );
   await expect(widgetContainer).toBeVisible();
   await expect(widgetContainer).toHaveAttribute('data-ui-name', 'WidgetEmpty');
@@ -43,6 +43,8 @@ export async function CustomExampleTest({ canvasElement }: { canvasElement: HTML
   const descriptionFontSize = window.getComputedStyle(description as HTMLElement).fontSize;
   await expect(descriptionFontSize).toBe('14px');
 
-  const descriptionMarginTop = window.getComputedStyle(description as HTMLElement).getPropertyValue('margin-top');
+  const descriptionMarginTop = window
+    .getComputedStyle(description as HTMLElement)
+    .getPropertyValue('margin-top');
   await expect(descriptionMarginTop).toBe('4px');
 }

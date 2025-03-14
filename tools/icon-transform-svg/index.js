@@ -40,6 +40,17 @@ function getDescriptionExternalIcons(iconPath, outLib) {
   };
 }
 
+function getDescriptionPlatformIcons(iconPath, outLib) {
+  const name = path.basename(iconPath, '.svg');
+  const location = `${outLib}/${name}/index.js`;
+  return {
+    name,
+    location,
+    group: '',
+    type: null,
+  };
+}
+
 function getDescriptionIcons(iconPath, outLib) {
   const fileName = path.basename(iconPath, '.svg');
   const groupsReg = /(xxs|xs|s|m|l|xl|xxl)$/;
@@ -193,6 +204,7 @@ module.exports = function () {
       getDescriptionIcons,
       getDescriptionExternalIcons,
       getDescriptionPayIcons,
+      getDescriptionPlatformIcons,
     }),
   )
     .then(() => {

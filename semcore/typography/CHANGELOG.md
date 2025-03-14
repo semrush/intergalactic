@@ -8,6 +8,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - `Hint` component. Use `secondary` `ButtonLink` instead of it.
 
+## [5.52.0] - 2025-03-14
+
+### Added
+
+- Build for ESM.
+
 ## [5.51.1] - 2025-02-05
 
 ### Changed

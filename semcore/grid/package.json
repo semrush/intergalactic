@@ -9,7 +9,12 @@
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "pnpm semcore-builder --source=ts"
+    "build": "pnpm semcore-builder --source=ts && pnpm vite build"
+  },
+  "exports": {
+    "require": "./lib/cjs/index.js",
+    "import": "./lib/esm/index.mjs",
+    "types": "./lib/types/index.d.ts"
   },
   "peerDependencies": {
     "@semcore/base-components": "^16.0.0"

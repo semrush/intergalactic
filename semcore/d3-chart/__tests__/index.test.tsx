@@ -63,6 +63,12 @@ const PlotTest = React.forwardRef((props, ref) => (
   <Plot ref={ref} data={data} scale={[xScale, yScale]} width={100} height={100} {...props} />
 ));
 
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('d3-chart Dependency imports', () => {
+  runDependencyCheckTests('d3-chart');
+});
+
 describe('Plot', () => {
   beforeEach(cleanup);
   shouldSupportClassName(PlotTest);

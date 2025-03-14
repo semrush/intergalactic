@@ -35,7 +35,7 @@ export type BulkTextareaProps = {
 export type BulkTextareaType = Intergalactic.Component<'div', BoxProps & BulkTextareaProps> & {
   InputField: Intergalactic.Component<
     'div',
-    Pick<InputFieldProps, 'commonErrorMessage' | 'id'> & Partial<BulkTextareaProps>
+    Pick<InputFieldProps, 'commonErrorMessage' | 'id'> & Partial<BulkTextareaProps> & BoxProps
   >;
   Counter: Intergalactic.Component<'div', Partial<CounterProps>>;
   ClearAll: typeof Button;

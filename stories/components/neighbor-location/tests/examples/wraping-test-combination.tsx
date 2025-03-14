@@ -19,32 +19,26 @@ const Demo = () => {
 
       <NeighborLocation tag={Flex} role='group' aria-label='wrapped secondary buttons'>
         <Button>First</Button>
-        <Input  w={200}>
-        <Input.Value placeholder='Placeholder' aria-label={'input example'} />
-        <Input.Addon>
-          <Hint
-          title = {"Test hint"}
-            tag={ButtonLink}
-            use='secondary'
-            addonLeft={ShowYesM }
-          
-          />
-        </Input.Addon>
-      </Input>
+        <Input w={200}>
+          <Input.Value placeholder='Placeholder' aria-label={'input example'} />
+          <Input.Addon>
+            <Hint title={'Test hint'} tag={ButtonLink} use='secondary' addonLeft={ShowYesM} />
+          </Input.Addon>
+        </Input>
         <Button>Middle</Button>
         <Select
-        w={100}
-        aria-label='select example'
-        neighborLocation='both'
-        options={[
-          { value: 'Option 1', children: 'Option 1' },
-          { value: 'Option 2', children: 'Option 2' },
-        ]}
-      />
+          w={100}
+          aria-label='select example'
+          neighborLocation='both'
+          options={[
+            { value: 'Option 1', children: 'Option 1' },
+            { value: 'Option 2', children: 'Option 2' },
+          ]}
+        />
         <Button>Last</Button>
-        <Input  w={100}>
-        <Input.Value placeholder='Placeholder' aria-label={'input example2'} />
-      </Input>
+        <Input w={100}>
+          <Input.Value placeholder='Placeholder' aria-label={'input example2'} />
+        </Input>
       </NeighborLocation>
     </>
   );

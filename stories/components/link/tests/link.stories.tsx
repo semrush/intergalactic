@@ -4,7 +4,6 @@ import Link from '@semcore/link';
 
 import IconsInLinksExample from './examples/icons_in_links';
 
-
 const meta: Meta<typeof Link> = {
   title: 'Components/Link/Tests',
   component: Link,

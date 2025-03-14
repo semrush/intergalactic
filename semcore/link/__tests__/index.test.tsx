@@ -14,6 +14,12 @@ import EditXS from '@semcore/icon/Edit/m';
 import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('link Dependency imports', () => {
+  runDependencyCheckTests('link');
+});
+
 describe('Link', () => {
   beforeEach(cleanup);
 
