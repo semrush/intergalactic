@@ -30,6 +30,9 @@ const Demo = () => {
   }
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+
+      console.log(e.key);
+
       if (e.key === 'Backspace' || e.key === 'ArrowLeft') {
           if (e.currentTarget.value === prefix) {
               e.preventDefault();
@@ -40,13 +43,22 @@ const Demo = () => {
 
           const selectionStart = inputRef.current?.selectionStart ?? 0;
           const selectionEnd = inputRef.current?.selectionEnd ?? 0;
-          if (selectionStart <= positionAfterFirstBracket && (selectionStart === selectionEnd || e.key === 'ArrowLeft')) {
-              e.preventDefault();
+          if (selectionStart <= positionAfterFirstBracket) {
+              if (selectionStart === selectionEnd) {
+                  e.preventDefault();
 
-              return false;
+                  return false;
+              } else {
+                  setTimeout(() => {
+                      inputRef.current?.setSelectionRange(positionAfterFirstBracket, positionAfterFirstBracket);
+                  }, 0);
+
+                  return false;
+              }
           }
       }
-      if (e.key === 'ArrowUp') {
+
+      if (e.key === 'ArrowUp' || (e.key === 'ArrowLeft' && e.metaKey) || e.key === 'Home') {
           e.preventDefault();
           inputRef.current?.setSelectionRange(positionAfterFirstBracket, positionAfterFirstBracket);
       }
