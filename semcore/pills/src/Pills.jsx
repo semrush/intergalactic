@@ -133,6 +133,7 @@ function Pill(props) {
       render={Box}
       tag='button'
       type='button'
+      tabIndex={0}
       neighborLocation={neighborLocation}
       aria-disabled={disabled}
       {...roleAreaProps}

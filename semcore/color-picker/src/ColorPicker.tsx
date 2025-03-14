@@ -177,7 +177,7 @@ const DefaultTrigger = React.forwardRef(function (props: TriggerAsProps, ref) {
   const STriggerCircleLine = 'svg';
 
   return sstyled(styles)(
-    <SDefaultTrigger render={Box} tag='button' ref={ref}>
+    <SDefaultTrigger render={Box} tag='button' tabIndex={0} ref={ref}>
       <STriggerCircle data-value={value}>
         {!value && (
           <STriggerCircleLine
