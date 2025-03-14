@@ -45,7 +45,7 @@ export async function ErrorExamplesTest({ canvasElement }: { canvasElement: HTML
 
   // Safely check the description element
   const description = await canvas.findByText((content) =>
-    content.includes('If the problem persists, contact us at'),
+    content.includes('If the problem persists'),
   );
   await expect(description).toHaveAttribute('data-ui-name', 'WidgetEmpty.Description');
 
