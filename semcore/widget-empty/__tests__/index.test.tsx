@@ -4,6 +4,11 @@ import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vites
 import WidgetEmpty, { NoData, Error, getIconPath } from '../src';
 
 import { cleanup } from '@semcore/testing-utils/testing-library';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('widget-empty Dependency imports', () => {
+  runDependencyCheckTests('widget-empty');
+});
 
 describe('WidgetEmpty', () => {
   beforeEach(cleanup);

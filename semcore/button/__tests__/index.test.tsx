@@ -10,6 +10,11 @@ import CheckM from '@semcore/icon/Check/m';
 import propsForElement from '@semcore/utils/lib/propsForElement';
 import Button, { ButtonLink } from '../src';
 import CloseM from '@semcore/icon/Close/m';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('Button Dependency imports', () => {
+  runDependencyCheckTests('button');
+});
 
 describe('Button', () => {
   // beforeEach(cleanup);

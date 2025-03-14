@@ -6,6 +6,12 @@ import { cleanup, render } from '@semcore/testing-utils/testing-library';
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 import { Box, Flex } from '../src';
 
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('flex-box Dependency imports', () => {
+  runDependencyCheckTests('flex-box');
+});
+
 const styleBox = {
   border: '1px solid',
   background: '#ccc',
