@@ -8,6 +8,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Build for ESM.
 
+## [4.54.12] - 2025-03-11
+
+### Added
+
+- `DisabledDates` type to describe the type of disabled dates in the application code.
+
 ## [4.54.11] - 2025-02-05
 
 ### Changed
