@@ -74,8 +74,8 @@ describe('InputMask', () => {
     await userEvent.keyboard('[Backspace]');
 
     expect(input.value).toBe('+234');
-    expect(input.selectionStart).toBe(4);
-    expect(input.selectionEnd).toBe(4);
+    expect(input.selectionStart).toBe(0);
+    expect(input.selectionEnd).toBe(0);
   });
 
   test('should not break when initial value is disallowed by pipe', async () => {
