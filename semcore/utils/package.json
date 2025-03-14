@@ -1,7 +1,7 @@
 {
   "name": "@semcore/utils",
   "description": "Semrush Utils Component",
-  "version": "4.45.1",
+  "version": "4.48.0",
   "main": "lib/index.js",
   "sideEffects": false,
   "author": "UI-kit team <ui-kit-team@semrush.com>",
@@ -25,7 +25,6 @@
       "import": "./lib/core/index.mjs",
       "types": "./lib/core/index.d.ts"
     },
-
     "./lib/focus-lock/getFocusableIn": {
       "require": "./lib/focus-lock/getFocusableIn.js",
       "import": "./lib/focus-lock/getFocusableIn.mjs",
@@ -36,7 +35,6 @@
       "import": "./lib/focus-lock/isFocusable.mjs",
       "types": "./lib/focus-lock/isFocusable.d.ts"
     },
-
     "./lib/enhances/a11yEnhance": {
       "require": "./lib/enhances/a11yEnhance.js",
       "import": "./lib/enhances/a11yEnhance.mjs",
@@ -82,7 +80,6 @@
       "import": "./lib/enhances/WithI18n.mjs",
       "types": "./lib/enhances/WithI18n.d.ts"
     },
-
     "./lib/use/useEnhancedEffect": {
       "require": "./lib/use/useEnhancedEffect.js",
       "import": "./lib/use/useEnhancedEffect.mjs",
@@ -108,7 +105,6 @@
       "import": "./lib/use/usePreventScroll.mjs",
       "types": "./lib/use/usePreventScroll.d.ts"
     },
-
     "./lib/addonTextChildren": {
       "require": "./lib/addonTextChildren.js",
       "import": "./lib/addonTextChildren.mjs",
