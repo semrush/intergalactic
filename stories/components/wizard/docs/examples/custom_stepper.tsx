@@ -35,7 +35,7 @@ const Demo = () => {
   const handleClose = () => setVisible(false);
 
   const handleStepChange = (newStep: number) => {
-    return () => setStep(newStep); 
+    return () => setStep(newStep);
   };
 
   return (

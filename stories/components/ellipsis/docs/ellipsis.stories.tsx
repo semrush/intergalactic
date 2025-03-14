@@ -30,13 +30,13 @@ export const Multiline: Story = {
 };
 
 export const MultipleUse: Story = {
-    render: MultipleUseExample,
+  render: MultipleUseExample,
 };
 
 export const TooltipCursorAnchoring: Story = {
-    render: TooltipCursorAnchoringExample,
+  render: TooltipCursorAnchoringExample,
 };
 
 export const TrimmingType: Story = {
-    render: TrimmingTypeExample,
+  render: TrimmingTypeExample,
 };

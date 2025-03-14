@@ -29,7 +29,9 @@ const Demo = () => {
 
   return (
     <>
-      <Button onClick={handleClick} ref={openButtonRef}>Show failure notice</Button>
+      <Button onClick={handleClick} ref={openButtonRef}>
+        Show failure notice
+      </Button>
       <NoticeBubbleContainer manager={manager} />
     </>
   );

@@ -59,8 +59,8 @@ const Demo = () => {
             <Error
               description={
                 <>
-                  Please try again later. If the problem persists, contact us at{' '}
-                  <Link href='mailto:mail@semrush.com'>mail@semrush.com</Link>
+                  Try again later. If the problem persists,{' '}
+                  <Link href='https://www.semrush.com/kb/support/'>contact our support</Link>
                 </>
               }
             >

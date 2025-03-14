@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Flex } from '@semcore/flex-box';
 import ScrollArea from '@semcore/scroll-area';
 
-declare const eventCalculate: any; 
+declare const eventCalculate: any;
 
 let randomIndex = 1;
 const stableRandom = () => {
@@ -19,8 +19,7 @@ function getRandomColor() {
 }
 
 class Demo extends React.PureComponent {
-  containerRef = React.createRef<HTMLDivElement>(); 
-
+  containerRef = React.createRef<HTMLDivElement>();
 
   render() {
     return (
@@ -31,7 +30,7 @@ class Demo extends React.PureComponent {
             w={300}
             h={300}
             shadow={true}
-            container={this.containerRef} 
+            container={this.containerRef}
             tabIndex={0}
             topOffset={100}
             bottomOffset={100}
@@ -39,10 +38,7 @@ class Demo extends React.PureComponent {
             rightOffset={100}
             orientation='horizontal'
           >
-            <ScrollArea.Container
-              role='group'
-              aria-labelledby='main-reverse-title'
-            >
+            <ScrollArea.Container role='group' aria-labelledby='main-reverse-title'>
               {[...new Array(10)].map((_, index) => (
                 <Box
                   key={index}

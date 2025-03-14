@@ -11,7 +11,7 @@ const Demo = () => {
         <Button data-position='before'>1</Button>
         <Popper interaction={'focus'} timeout={[0, 100]}>
           <Popper.Trigger>
-          <Button data-testid='button'>Click</Button>
+            <Button data-testid='button'>Click</Button>
           </Popper.Trigger>
           <Popper.Popper>
             <Card>Some content in popper</Card>

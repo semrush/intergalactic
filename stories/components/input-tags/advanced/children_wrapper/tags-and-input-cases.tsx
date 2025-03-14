@@ -29,7 +29,6 @@ const InputWrapper = ({
   );
 };
 
-
 const Demo = () => {
   const inputValueRef = React.useRef<HTMLInputElement>(null);
   const [tags, setTags] = React.useState([
@@ -90,17 +89,16 @@ const Demo = () => {
 
   return (
     <>
-
       <Notice mb={2} theme='success'>
         <Notice.Content>
-        <Text size={200} mb={2} >
+          <Text size={200} mb={2}>
             Case1: InputTags without TagsContainer + InputTags.Value
           </Text>
           <InputTags mt={2} size='l' onAppend={handleAppendTags} onRemove={handleRemoveTag}>
             {tags.map((tag, idx) => (
               <InputTags.Tag key={tag}>
                 <InputTags.Tag.Text>
-                <InputTags.Tag.Text.Content>123</InputTags.Tag.Text.Content>
+                  <InputTags.Tag.Text.Content>123</InputTags.Tag.Text.Content>
                 </InputTags.Tag.Text>
               </InputTags.Tag>
             ))}
@@ -118,19 +116,19 @@ const Demo = () => {
 
       <Notice mb={2} theme='success'>
         <Notice.Content>
-        <Text size={200} mb={2} >
+          <Text size={200} mb={2}>
             Case2: InputTags inside TagsContainer + InputTags.Value
           </Text>
           <InputTags mt={2} size='l' onAppend={handleAppendTags} onRemove={handleRemoveTag}>
-          <InputTags.TagsContainer>
-            {tags.map((tag, idx) => (
-              <InputTags.Tag key={tag}>
-                <InputTags.Tag.Text>
-                <InputTags.Tag.Circle style={{ background: '#2595e4'}}/> 
-                <InputTags.Tag.Text.Content>123</InputTags.Tag.Text.Content>
-                </InputTags.Tag.Text>
-              </InputTags.Tag>
-            ))}
+            <InputTags.TagsContainer>
+              {tags.map((tag, idx) => (
+                <InputTags.Tag key={tag}>
+                  <InputTags.Tag.Text>
+                    <InputTags.Tag.Circle style={{ background: '#2595e4' }} />
+                    <InputTags.Tag.Text.Content>123</InputTags.Tag.Text.Content>
+                  </InputTags.Tag.Text>
+                </InputTags.Tag>
+              ))}
             </InputTags.TagsContainer>
             <InputTags.Value
               value={value}
@@ -146,18 +144,18 @@ const Demo = () => {
 
       <Notice mb={2} theme='success'>
         <Notice.Content>
-        <Text size={200} mb={2} >
+          <Text size={200} mb={2}>
             Case3: InputTags inside TagsContainer + InputWrapper
           </Text>
           <InputTags mt={2} size='l' onAppend={handleAppendTags} onRemove={handleRemoveTag}>
-          <InputTags.TagsContainer>
-            {tags.map((tag, idx) => (
-              <InputTags.Tag key={tag}>
-                <InputTags.Tag.Text>
-                <InputTags.Tag.Text.Content>123</InputTags.Tag.Text.Content>
-                </InputTags.Tag.Text>
-              </InputTags.Tag>
-            ))}
+            <InputTags.TagsContainer>
+              {tags.map((tag, idx) => (
+                <InputTags.Tag key={tag}>
+                  <InputTags.Tag.Text>
+                    <InputTags.Tag.Text.Content>123</InputTags.Tag.Text.Content>
+                  </InputTags.Tag.Text>
+                </InputTags.Tag>
+              ))}
             </InputTags.TagsContainer>
             <InputWrapper
               value={value}
@@ -171,7 +169,7 @@ const Demo = () => {
 
       <Notice mb={2} theme='danger'>
         <Notice.Content>
-        <Text size={200} mb={2} >
+          <Text size={200} mb={2}>
             Case4: InputTags without TagsContainer + InputWrapper
           </Text>
           <InputTags mt={2} size='l' onAppend={handleAppendTags} onRemove={handleRemoveTag}>
@@ -180,7 +178,7 @@ const Demo = () => {
                 <InputTags.Tag.Text>123</InputTags.Tag.Text>
               </InputTags.Tag>
             ))}
-             <InputWrapper
+            <InputWrapper
               value={value}
               setValue={setValue}
               handleInputKeyDown={handleInputKeyDown}
@@ -189,7 +187,6 @@ const Demo = () => {
           </InputTags>
         </Notice.Content>
       </Notice>
-
     </>
   );
 };

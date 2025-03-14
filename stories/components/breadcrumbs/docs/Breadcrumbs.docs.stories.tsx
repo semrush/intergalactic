@@ -12,7 +12,6 @@ const meta: Meta<typeof Breadcrumbs> = {
 export default meta;
 type Story = StoryObj<typeof Breadcrumbs>;
 
-
 export const BasicUsage: Story = {
   render: UsageExample,
 };

@@ -15,4 +15,3 @@ type Story = StoryObj<typeof InputTags>;
 export const TagsWithAddons: Story = {
   render: TagsWithAddonsExample,
 };
-

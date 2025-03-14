@@ -6,7 +6,6 @@ import TableWithLinksExample from './examples/in_table_with_link';
 import TextCasesExample from './examples/text_cases';
 import OnChangePropsExample from './examples/on_change_props';
 
-
 const meta: Meta<typeof Ellipsis> = {
   title: 'Components/Ellipsis/Tests',
   component: Ellipsis,

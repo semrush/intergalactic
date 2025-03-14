@@ -17,7 +17,7 @@ export const SummaryWithError: StoryObj = {
 };
 
 export const SummaryWithMinitrens: StoryObj = {
-    render: SummaryWithMinitrensExample,
+  render: SummaryWithMinitrensExample,
 };
 
 export default meta;

@@ -42,5 +42,5 @@ export const OneSectionOpening: Story = {
 };
 
 export const Seo: Story = {
-    render: SeoExample,
+  render: SeoExample,
 };
