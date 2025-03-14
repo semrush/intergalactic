@@ -4,7 +4,7 @@ import { mockDate, RealDate } from './utils';
 
 test.describe('DatePicker', () => {
   test('single date', async ({ page }) => {
-    const standPath = 'website/docs/components/date-picker/examples/datepicker.tsx';
+    const standPath = 'stories/components/date-picker/docs/examples/datepicker.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -29,7 +29,7 @@ test.describe('DatePicker', () => {
   });
 
   test('validation tooltip', async ({ page }) => {
-    const standPath = 'website/docs/components/date-picker/examples/disabled_dates.tsx';
+    const standPath = 'stories/components/date-picker/docs/examples/disabled_dates.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.evaluateHandle(() => {
