@@ -1007,23 +1007,6 @@ const iconsList = {
       ],
     },
     {
-      name: 'ChatAlt',
-      size: ['l', 'm'],
-      group: 'Status',
-      tags: [
-        'chat',
-        'bubble',
-        'comment',
-        'say',
-        'text',
-        'feedback',
-        'чат',
-        'комментарий',
-        'сказать',
-        'фидбек',
-      ],
-    },
-    {
       name: 'ChatFilled',
       size: ['l', 'm'],
       group: 'Status',
