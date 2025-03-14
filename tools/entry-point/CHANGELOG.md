@@ -1,3 +1,307 @@
+## [15.126.0] - 2025-03-14
+
+### @semcore/accordion
+
+- **Added** Build for ESM.
+- **Added** `inert` and `aria-hidden` to collapsed Accordion.Item with preserveNode property to prevent focus and reading of hidden elements.
+
+### @semcore/add-filter
+
+- **Added** Build for ESM.
+
+### @semcore/animation
+
+- **Added** Build for ESM.
+
+### @semcore/badge
+
+- **Added** Build for ESM.
+
+### @semcore/base-trigger
+
+- **Added** Build for ESM.
+
+### @semcore/breadcrumbs
+
+- **Added** Build for ESM.
+
+### @semcore/breakpoints
+
+- **Added** Build for ESM.
+
+### @semcore/bulk-textarea
+
+- **Added** Build for ESM.
+- **Fixed** Tooltip issues when using bulk-textarea without common error message.
+- **Added** White background for both light and dark themes.
+
+### @semcore/button
+
+- **Added** Build for ESM.
+
+### @semcore/card
+
+- **Added** Build for ESM.
+
+### @semcore/carousel
+
+- **Added** Build for ESM.
+
+### @semcore/checkbox
+
+- **Added** Build for ESM.
+
+### @semcore/color-picker
+
+- **Added** Build for ESM.
+
+### @semcore/core
+
+- **Added** Build for ESM.
+
+### @semcore/counter
+
+- **Added** Build for ESM.
+
+### @semcore/d3-chart
+
+- **Added** Build for ESM.
+
+### @semcore/data-table
+
+- **Added** Build for ESM.
+
+### @semcore/date-picker
+
+- **Added** Build for ESM.
+- **Added** `DisabledDates` type to describe the type of disabled dates in the application code.
+
+### @semcore/divider
+
+- **Added** Build for ESM.
+
+### @semcore/dot
+
+- **Added** Build for ESM.
+
+### @semcore/drag-and-drop
+
+- **Added** Build for ESM.
+
+### @semcore/dropdown
+
+- **Added** Build for ESM.
+- **Added** Animation for scrolling to the highlighted node to hide the delay after opening.
+- **Added** Support for virtual list.
+
+### @semcore/dropdown-menu
+
+- **Added** Build for ESM.
+- **Added** Support for virtual list.
+
+### @semcore/ellipsis
+
+- **Added** Build for ESM.
+
+### @semcore/errors
+
+- **Added** Build for ESM.
+
+### @semcore/feature-popover
+
+- **Added** Build for ESM.
+
+### @semcore/feedback-form
+
+- **Added** Build for ESM.
+
+### @semcore/flex-box
+
+- **Added** Build for ESM.
+
+### @semcore/fullscreen-modal
+
+- **Added** Build for ESM.
+
+### @semcore/grid
+
+- **Added** Build for ESM.
+
+### @semcore/icon
+
+- **Changed** Name for Traffic & Market toolkit icon to `TrafficMarketToolkit`.
+- **Added** Group of platform icons.
+- **Added** New `ChatAlt` icon.
+- **Added** Build for ESM.
+
+### @semcore/inline-edit
+
+- **Added** Build for ESM.
+
+### @semcore/inline-input
+
+- **Added** Build for ESM.
+
+### @semcore/input
+
+- **Added** Build for ESM.
+
+### @semcore/input-mask
+
+- **Added** Build for ESM.
+
+### @semcore/input-number
+
+- **Added** Build for ESM.
+- **Fixed** `locale` property type. Moved from `InputNumber.Value` to `InputNumber`.
+
+### @semcore/input-tags
+
+- **Added** Build for ESM.
+
+### @semcore/link
+
+- **Added** Build for ESM.
+
+### @semcore/mini-chart
+
+- **Added** Build for ESM.
+
+### @semcore/modal
+
+- **Added** Build for ESM.
+
+### @semcore/neighbor-location
+
+- **Added** Build for ESM.
+- **Added** Build for ESM.
+
+### @semcore/notice
+
+- **Added** Build for ESM.
+
+### @semcore/notice-bubble
+
+- **Added** Build for ESM.
+- **Fixed** Types for correct display in documentation.
+
+### @semcore/notice-global
+
+- **Added** Build for ESM.
+
+### @semcore/outside-click
+
+- **Added** Build for ESM.
+
+### @semcore/pagination
+
+- **Added** Build for ESM.
+
+### @semcore/pills
+
+- **Added** Build for ESM.
+
+### @semcore/popper
+
+- **Added** Build for ESM.
+
+### @semcore/portal
+
+- **Added** Build for ESM.
+
+### @semcore/product-head
+
+- **Added** Build for ESM.
+
+### @semcore/progress-bar
+
+- **Added** Build for ESM.
+
+### @semcore/radio
+
+- **Added** Build for ESM.
+
+### @semcore/scroll-area
+
+- **Added** Build for ESM.
+
+### @semcore/select
+
+- **Added** Build for ESM.
+- **Added** Using `defaultHighlightedIndex` prop to set defaultHighlightedIndex after select opening.
+
+### @semcore/side-panel
+
+- **Added** Build for ESM.
+
+### @semcore/skeleton
+
+- **Added** Build for ESM.
+
+### @semcore/slider
+
+- **Added** Build for ESM.
+
+### @semcore/spin
+
+- **Added** Build for ESM.
+
+### @semcore/spin-container
+
+- **Added** Build for ESM.
+
+### @semcore/sticky
+
+- **Added** Build for ESM.
+
+### @semcore/switch
+
+- **Added** Build for ESM.
+
+### @semcore/tab-line
+
+- **Added** Build for ESM.
+
+### @semcore/tab-panel
+
+- **Added** Build for ESM.
+
+### @semcore/tag
+
+- **Added** Build for ESM.
+
+### @semcore/textarea
+
+- **Added** Build for ESM.
+
+### @semcore/time-picker
+
+- **Added** Build for ESM.
+
+### @semcore/tooltip
+
+- **Added** Build for ESM.
+- **Added** Build for ESM.
+
+### @semcore/typography
+
+- **Added** Build for ESM.
+
+### @semcore/utils
+
+- **Added** Build for ESM.
+- **Added** `Exports` to the package.json for esm builds.
+- **Added** New tokens for the new `violet-dusty` color with all the necessary shades from 50 to 800. New tokens for main Semrush header: `header-bg`, `header-border-primary`, `header-border-secondary`. New tokens for Semrush sidebar navigation: `sidebar-nav-control-hover`, `sidebar-nav-control-active`, `sidebar-nav-control-text-normal`, `sidebar-nav-control-text-active`, `sidebar-nav-control-icon-normal`, `sidebar-nav-control-icon-active`. New tokens for floating control: `box-shadow-float-control`, `box-shadow-float-control-hover`.
+- **Added** Build for ESM.
+
+### @semcore/widget-empty
+
+- **Added** Build for ESM.
+
+### @semcore/wizard
+
+- **Added** Build for ESM.
+
 ## [15.125.0] - 2025-02-07
 
 ### @semcore/bulk-textarea
