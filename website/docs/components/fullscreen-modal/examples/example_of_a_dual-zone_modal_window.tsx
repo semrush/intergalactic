@@ -23,7 +23,7 @@ const Demo = () => {
           <FullscreenModal.Section>
             <Text size={400}>Content Title</Text>
           </FullscreenModal.Section>
-          <FullscreenModal.Section style={{ background: '#eee', overflow: 'auto' }}>
+          <FullscreenModal.Section style={{ background: '#eee', overflow: 'auto' }} innerOutline>
             <div style={{ height: '1000px' }}>
               <Text size={400}>Content Title</Text>
             </div>

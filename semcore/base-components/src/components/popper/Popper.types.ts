@@ -122,12 +122,15 @@ export type InnerPopperTriggerProps = React.HTMLAttributes<HTMLDivElement> & {
 export interface IPopperPopperProps extends PopperPopperProps, UnknownProperties {}
 export type PopperPopperProps = BoxProps &
   PortalProps &
-  KeyboardFocusProps &
   NeighborLocationProps & {
     /**
      * Disabled focus trap, autofocus and focus return
      */
     disableEnforceFocus?: boolean;
+
+    keyboardFocused?: boolean;
+
+    autoFocus?: boolean | 'enforced';
   };
 
 export type InnerPopperPopperProps = React.HTMLAttributes<HTMLDivElement> & {

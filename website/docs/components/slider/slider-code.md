@@ -9,7 +9,7 @@ tabs: Design('slider'), A11y('slider-a11y'), API('slider-api'), Example('slider-
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/slider_with_options.tsx';
+  export Demo from 'stories/components/slider/docs/examples/slider_with_options.tsx';
 </script>
 
 :::
@@ -19,7 +19,7 @@ tabs: Design('slider'), A11y('slider-a11y'), API('slider-api'), Example('slider-
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/customized_options_view.tsx';
+  export Demo from 'stories/components/slider/docs/examples/customized_options_view.tsx';
 </script>
 
 :::
@@ -31,7 +31,7 @@ The Slider can be used in conjunction with the [InputNumber](/components/input-n
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/numeric_slider.tsx';
+  export Demo from 'stories/components/slider/docs/examples/numeric_slider.tsx';
 </script>
 
 :::

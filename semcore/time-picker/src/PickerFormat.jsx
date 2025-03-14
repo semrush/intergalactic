@@ -34,6 +34,7 @@ class TimePickerFormat extends Component {
           render={Box}
           type='button'
           tag='button'
+          tabIndex={0}
           onClick={this.handleClick}
           aria-describedby={`${uid}_describe`}
         >

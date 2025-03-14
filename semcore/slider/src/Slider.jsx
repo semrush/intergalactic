@@ -184,6 +184,7 @@ class SliderRoot extends Component {
           render={Box}
           tag='button'
           type='button'
+          tabIndex={0}
           ref={this.handleRef}
           onMouseDown={this.handleMouseMove}
           onTouchMove={this.handleMouseMove}

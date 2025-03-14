@@ -596,7 +596,7 @@ function Trigger(props: PopperTriggerProps & IRootComponentProps & InnerPopperTr
       if (
         lastInteraction.isKeyboard() &&
         triggerRef.current &&
-        e.target instanceof HTMLElement &&
+        (e.target instanceof HTMLElement || e.target instanceof SVGElement) &&
         hasParent(e.target, triggerRef.current)
       ) {
         onKeyboardFocus?.();
@@ -682,7 +682,7 @@ function PopperPopper(props: PopperPopperProps & IRootComponentProps & InnerPopp
   const [portalMounted, setPortalMounted] = React.useState(disablePortal);
   useFocusLock(
     ref,
-    Boolean(autoFocus),
+    autoFocus ?? false,
     triggerRef,
     !visible || disableEnforceFocus || !portalMounted,
     focusMaster,

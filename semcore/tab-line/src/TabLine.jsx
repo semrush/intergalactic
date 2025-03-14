@@ -157,6 +157,7 @@ function TabLineItem(props) {
           <STabLineItem
             render={Box}
             tag='button'
+            tabIndex={0}
             neighborLocation={neighborLocation}
             type='button'
             role='tab'
