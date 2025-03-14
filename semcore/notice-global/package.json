@@ -9,7 +9,12 @@
   "sideEffects": false,
   "license": "MIT",
   "scripts": {
-    "build": "pnpm semcore-builder --source=js"
+    "build": "pnpm semcore-builder --source=js && pnpm vite build"
+  },
+  "exports": {
+    "require": "./lib/cjs/index.js",
+    "import": "./lib/esm/index.mjs",
+    "types": "./lib/types/index.d.ts"
   },
   "dependencies": {
     "@semcore/button": "5.41.2",
