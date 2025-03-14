@@ -3,15 +3,11 @@ import { Component, Root, sstyled, createComponent } from '@semcore/core';
 import { Box } from '@semcore/base-components';
 
 import style from './style.shadow.css';
-import { DataTableCellProps } from './Cell.types';
+import { CellPropsInner, DataTableCellProps } from './Cell.types';
 
-class CellRoot extends Component<DataTableCellProps> {
+class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner> {
   static displayName = 'Cell';
   static style = style;
-
-  static defaultProps = {
-    use: 'primary',
-  };
 
   render() {
     const SCell = Root;

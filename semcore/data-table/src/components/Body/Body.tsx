@@ -1,14 +1,33 @@
 import * as React from 'react';
-import { Component, Root, sstyled } from '@semcore/core';
-import { DataTableBodyProps } from './Body.types';
+import { Component, createComponent, Intergalactic, Root, sstyled } from '@semcore/core';
+import { BodyPropsInner, DataTableBodyProps } from './Body.types';
 import { Box } from '@semcore/base-components';
 import { Row } from './Row';
 
 import style from './style.shadow.css';
+import { Cell } from './Cell';
+import { DataTableRowProps } from './Row.types';
+import { DataTableCellProps } from './Cell.types';
 
-export class Body extends Component<DataTableBodyProps> {
+class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner> {
   static displayName = 'Body';
   static style = style;
+
+  getRowProps() {
+    const { use } = this.asProps;
+
+    return {
+      use,
+    };
+  }
+
+  getCellProps() {
+    const { use } = this.asProps;
+
+    return {
+      use,
+    };
+  }
 
   render() {
     const SBody = Root;
@@ -18,7 +37,7 @@ export class Body extends Component<DataTableBodyProps> {
       <SBody render={Box}>
         {rows.map((row, index) => {
           return (
-            <Row
+            <Body.Row
               key={index}
               role={'row'}
               aria-rowindex={index + 2}
@@ -33,3 +52,11 @@ export class Body extends Component<DataTableBodyProps> {
     );
   }
 }
+
+export const Body = createComponent(BodyRoot, {
+  Row,
+  Cell,
+}) as Intergalactic.Component<'div', DataTableBodyProps> & {
+  Row: Intergalactic.Component<'div', DataTableRowProps>;
+  Cell: Intergalactic.Component<'div', DataTableCellProps>;
+};

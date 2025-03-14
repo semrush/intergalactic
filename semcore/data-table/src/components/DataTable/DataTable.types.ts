@@ -14,9 +14,24 @@ export type DTKey = string;
 export type DTValue = string | number;
 export type DataTableData = Array<Record<DTKey, any>>;
 
+export type DTUse = 'primary' | 'secondary';
+
 export type DataTableProps = DataTableAriaProps & {
   data: DataTableData;
   totalRows?: number;
+
+  /**
+   * @default 'primary'
+   */
+  use?: DTUse;
+
+  /**
+   *
+   * @default auto
+   */
+  defaultGridTemplateColumnWidth?: 'auto' | '1fr';
+
+  children: any;
 };
 
 export type RowIndex = number;

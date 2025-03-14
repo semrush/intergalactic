@@ -1,6 +1,9 @@
 SDataTable {
   display: grid;
   position: relative;
+  align-items: start;
+}
 
-  grid-template-columns: repeat(4, 1fr);
+SDataTable[gridTemplateColumns] {
+  grid-template-columns: var(--gridTemplateColumns);
 }

@@ -7,30 +7,49 @@ import {
   Root,
   sstyled,
 } from '@semcore/core';
-import { Box } from '@semcore/base-components';
+import { Box, ScrollArea } from '@semcore/base-components';
 
 import { DataTableProps, ColIndex, RowIndex } from './DataTable.types';
 import { Head } from '../Head/Head';
 import { Body } from '../Body/Body';
-import { Column } from '../Column/Column';
-import { DataTableHeadProps } from '../Head/Head.types';
-import { DataTableBodyProps } from '../Body/Body.types';
 import { DataTableColumnProps, DTColumn } from '../Column/Column.types';
 
 import style from './dataTable.shadow.css';
-import { DataTableRowProps, DTRow } from '../Body/Row.types';
+import { DTRow } from '../Body/Row.types';
 import { findAllComponents } from '@semcore/core/lib/utils/findComponent';
 import { isFocusInside, hasFocusableIn } from '@semcore/core/lib/utils/use/useFocusLock';
 
-import { DataTableCellProps } from '../Body/Cell.types';
+import { ReactElement } from 'react';
+import syncScroll from '@semcore/core/lib/utils/syncScroll';
+import { getFixedStyle, getScrollOffsetValue } from '../../utils';
 
 class DataTableRoot extends Component<DataTableProps> {
   static displayName = 'DataTable';
   static style = style;
 
-  focusedCell: [RowIndex, ColIndex] = [-1, -1];
+  static defaultProps = {
+    use: 'primary',
+    defaultGridTemplateColumnWidth: 'auto',
+  };
+
+  private columns: DTColumn[] = [];
+
+  private focusedCell: [RowIndex, ColIndex] = [-1, -1];
 
   private tableRef = React.createRef<HTMLDivElement>();
+  private scrollBodyRef: ReturnType<ReturnType<typeof syncScroll>>;
+  private scrollHeadRef: ReturnType<ReturnType<typeof syncScroll>>;
+
+  constructor(props: DataTableProps) {
+    super(props);
+
+    const createRef = syncScroll();
+    // first create body ref for master scroll
+    this.scrollBodyRef = createRef('body');
+    this.scrollHeadRef = createRef('head');
+
+    this.columns = this.calculateColumns();
+  }
 
   get totalRows() {
     const { data, totalRows } = this.asProps;
@@ -38,14 +57,24 @@ class DataTableRoot extends Component<DataTableProps> {
     return totalRows ?? (data ?? []).length;
   }
 
-  get columns() {
-    return this.calculateColumns();
+  getHeadProps() {
+    const { use } = this.asProps;
+
+    return {
+      columns: this.columns,
+      use,
+      scrollRef: this.scrollHeadRef,
+    };
   }
 
   getBodyProps() {
+    const { use } = this.asProps;
+
     return {
-      columns: this.calculateColumns(),
+      columns: this.columns,
       rows: this.calculateRows(),
+      use,
+      scrollRef: this.scrollBodyRef,
     };
   }
 
@@ -233,33 +262,45 @@ class DataTableRoot extends Component<DataTableProps> {
     const SDataTable = Root;
     const { Children, styles } = this.asProps;
 
+    const [offsetLeftSum, offsetRightSum] = getScrollOffsetValue(this.columns);
+
     return sstyled(styles)(
-      <SDataTable
-        render={Box}
-        __excludeProps={['data']}
-        ref={this.tableRef}
-        role='grid'
-        onKeyDown={this.handleKeyDown}
-        onMouseMove={this.handleMouseMove}
-        tabIndex={0}
-        onFocus={this.handleFocus}
-        onBlur={this.handleBlur}
-        aria-rowcount={this.totalRows}
-        aria-colcount={this.columns.length}
-      >
-        <Children />
-      </SDataTable>,
+      <ScrollArea leftOffset={offsetLeftSum} rightOffset={offsetRightSum} w={'600px'}>
+        <ScrollArea.Container tabIndex={-1}>
+          <SDataTable
+            render={Box}
+            __excludeProps={['data']}
+            ref={this.tableRef}
+            role='grid'
+            onKeyDown={this.handleKeyDown}
+            onMouseMove={this.handleMouseMove}
+            tabIndex={0}
+            onFocus={this.handleFocus}
+            onBlur={this.handleBlur}
+            aria-rowcount={this.totalRows}
+            aria-colcount={this.columns.length}
+            gridTemplateColumns={this.columns.map((c) => c.gridColumnWidth).join(' ')}
+          >
+            <Children />
+          </SDataTable>
+        </ScrollArea.Container>
+
+        <ScrollArea.Bar orientation='horizontal' />
+        <ScrollArea.Bar orientation='vertical' />
+      </ScrollArea>,
     );
   }
 
   private calculateColumns(): DTColumn[] {
-    const { Children } = this.asProps;
-    const Columns = findAllComponents(Children, ['DataTable.Head.Column']);
+    const { children } = this.props;
+    const Columns = findAllComponents(children, ['Head.Column']);
 
     return Columns.map((c) => {
       return {
         name: c.props.name,
         ref: React.createRef<HTMLDivElement>(),
+        gridColumnWidth: this.calculateGridTemplateColumn(c),
+        fixed: c.props.fixed,
       };
     });
   }
@@ -271,17 +312,16 @@ class DataTableRoot extends Component<DataTableProps> {
       return row;
     });
   }
+
+  private calculateGridTemplateColumn(c: ReactElement<DataTableColumnProps>): string {
+    return c.props.gtcWidth ?? this.props.defaultGridTemplateColumnWidth;
+  }
 }
 
 export const DataTable = createComponent(DataTableRoot, {
-  Head: [Head, { Column }],
+  Head,
   Body,
 }) as Intergalactic.Component<'div', DataTableProps> & {
-  Head: Intergalactic.Component<'div', DataTableHeadProps> & {
-    Column: Intergalactic.Component<'div', DataTableColumnProps>;
-  };
-  Body: Intergalactic.Component<'div', DataTableBodyProps> & {
-    Row: Intergalactic.Component<'div', DataTableRowProps>;
-    Cell: Intergalactic.Component<'div', DataTableCellProps>;
-  };
+  Head: typeof Head;
+  Body: typeof Body;
 };

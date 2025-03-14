@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { Component, Root, sstyled, createComponent } from '@semcore/core';
-import { DataTableRowProps } from './Row.types';
+import { DataTableRowProps, RowPropsInner } from './Row.types';
 import { Box } from '@semcore/base-components';
 
 import style from './style.shadow.css';
-import { Cell } from './Cell';
+import { Body } from './Body';
+import { getFixedStyle } from '../../utils';
 
-class RowRoot extends Component<DataTableRowProps> {
+class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
   static displayName = 'Row';
   static style = style;
 
@@ -17,16 +18,19 @@ class RowRoot extends Component<DataTableRowProps> {
     return sstyled(styles)(
       <SRow render={Box}>
         {columns.map((column, index) => {
+          const [name, value] = getFixedStyle(column, columns);
+
           return (
-            <Cell
+            <Body.Cell
               key={index}
               role={'gridcell'}
               aria-colindex={index + 1}
               row={row}
               columnIndex={index}
+              fixed={column.fixed}
             >
               {row[column.name]}
-            </Cell>
+            </Body.Cell>
           );
         })}
       </SRow>,
@@ -34,4 +38,4 @@ class RowRoot extends Component<DataTableRowProps> {
   }
 }
 
-export const Row = createComponent(RowRoot);
+export const Row = createComponent(RowRoot, {}, { parent: Body });
