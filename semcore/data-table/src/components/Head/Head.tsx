@@ -40,7 +40,8 @@ class HeadRoot extends Component<DataTableHeadProps, {}, {}, [], HeadPropsInner>
 
   render() {
     const SHead = Root;
-    const { Children, styles, columns, scrollRef, withScrollBar } = this.asProps;
+    const { Children, styles, columns, tableRef, withScrollBar } = this.asProps;
+    const [offsetLeftSum, offsetRightSum] = getScrollOffsetValue(columns);
 
     return sstyled(styles)(
       <>
@@ -48,9 +49,15 @@ class HeadRoot extends Component<DataTableHeadProps, {}, {}, [], HeadPropsInner>
           <Children />
         </SHead>
 
-        {Boolean(withScrollBar) && (
+        {Boolean(withScrollBar) && tableRef.current && (
           <Box display={'contents'}>
-            <ScrollArea.Bar orientation='horizontal' />
+            <ScrollArea.Bar
+              orientation='horizontal'
+              container={tableRef.current}
+              top={'25px'}
+              leftOffset={offsetLeftSum}
+              rightOffset={offsetRightSum}
+            />
           </Box>
         )}
       </>,

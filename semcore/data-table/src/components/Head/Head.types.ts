@@ -14,6 +14,6 @@ export type DataTableHeadProps = {
 
 export type HeadPropsInner = {
   use: DTUse;
-  scrollRef: (ref: HTMLDivElement) => void;
+  tableRef: React.RefObject<HTMLElement>;
   columns: DTColumn[];
 };

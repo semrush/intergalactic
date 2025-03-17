@@ -21,7 +21,7 @@ import { isFocusInside, hasFocusableIn } from '@semcore/core/lib/utils/use/useFo
 
 import { ReactElement } from 'react';
 import syncScroll from '@semcore/core/lib/utils/syncScroll';
-import { createCssVarForWidth, getFixedStyle, getScrollOffsetValue } from '../../utils';
+import { getScrollOffsetValue } from '../../utils';
 
 class DataTableRoot extends Component<DataTableProps> {
   static displayName = 'DataTable';
@@ -68,6 +68,7 @@ class DataTableRoot extends Component<DataTableProps> {
       columns: this.columns,
       use,
       scrollRef: this.scrollHeadRef,
+      tableRef: this.tableRef,
     };
   }
 
@@ -280,8 +281,9 @@ class DataTableRoot extends Component<DataTableProps> {
         hMax={hMax}
         hMin={hMin}
         shadow={true}
+        container={this.tableRef}
       >
-        <ScrollArea.Container tabIndex={-1} ref={this.scrollBodyRef}>
+        <ScrollArea.Container tabIndex={-1}>
           <SDataTable
             render={Box}
             __excludeProps={['data', 'w', 'wMax', 'wMin', 'h', 'hMax', 'hMin']}
