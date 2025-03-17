@@ -8,6 +8,18 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Full package.
 
+## [5.43.0] - 2025-03-14
+
+### Added
+
+- Build for ESM.
+
+## [5.42.2] - 2025-03-05
+
+### Fixed
+
+- Setting the cursor to the end of input even if the character in the middle was deleted.
+
 ## [5.42.1] - 2025-02-05
 
 ### Changed

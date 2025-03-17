@@ -13,7 +13,7 @@ const Demo = () => {
   return (
     <React.Fragment>
       <Button onClick={handleOpen}>Duration 500 Delay 500</Button>
-      <Modal visible={visible} onClose={handleClose} duration ={500} delay = {500} >
+      <Modal visible={visible} onClose={handleClose} duration={500} delay={500}>
         <Modal.Title>Do you want to save your changes?</Modal.Title>
         <Text size={200} mb={4} tag='p'>
           Your changes will be lost if you don't save them.

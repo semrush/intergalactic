@@ -14,7 +14,7 @@
     "types": "./lib/types/index.d.ts"
   },
   "scripts": {
-    "build": "pnpm semcore-builder --source=js,ts"
+    "build": "pnpm semcore-builder --source=js,ts && pnpm vite build"
   },
   "dependencies": {
     "@formatjs/intl": "2.3.0",

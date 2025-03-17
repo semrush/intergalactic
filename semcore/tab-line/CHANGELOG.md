@@ -8,6 +8,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - `keyboardFocusEnhance` to css `:focus-visible` property.
 
+## [4.40.0] - 2025-03-14
+
+### Added
+
+- Build for ESM.
+
 ## [4.39.1] - 2025-02-05
 
 ### Changed

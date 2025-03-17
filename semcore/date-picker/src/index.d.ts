@@ -15,6 +15,12 @@ import Popper from '@semcore/popper';
 
 export type DateConstructorParams = string | number | Date;
 
+/**
+ * Array of dates blocked for selection
+ * Accepts the date or the range of dates for specifying infinity ([Date | false, Date | false]), crontab(6,7)
+ * */
+export type DisabledDates = (DateConstructorParams | (DateConstructorParams | false)[] | string)[];
+
 /** @deprecated */
 export interface ICalendarProps extends CalendarProps, UnknownProperties {}
 export type CalendarProps = BoxProps & {
@@ -25,9 +31,8 @@ export type CalendarProps = BoxProps & {
   locale?: NavigatorLanguage['language'];
   /**
    * Array of dates blocked for selection
-   * Accepts the date or the range of dates for specifying infinity ([Date | false, Date | false]), crontab(6,7)
-   * */
-  disabled?: (DateConstructorParams | (DateConstructorParams | false)[] | string)[];
+   */
+  disabled?: DisabledDates;
   /**
    * @ignore
    * */

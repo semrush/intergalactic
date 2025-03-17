@@ -4,24 +4,34 @@ import { Box, Flex } from '@semcore/flex-box';
 
 const Demo = () => {
   return (
-    <Flex direction="row" gap={6} alignItems="flex-start" justifyContent="space-between">
+    <Flex direction='row' gap={6} alignItems='flex-start' justifyContent='space-between'>
       <Box style={{ flex: '1 1 45%', minWidth: '45%' }}>
         <WidgetEmpty icon={getIconPath('nothing-found')}>
-          <WidgetEmpty.Title>Icon, title and description. We have no data to show</WidgetEmpty.Title>
-          <WidgetEmpty.Description>The project specified for this widget no longer exists.</WidgetEmpty.Description>
+          <WidgetEmpty.Title>
+            Icon, title and description. We have no data to show
+          </WidgetEmpty.Title>
+          <WidgetEmpty.Description>
+            The project specified for this widget no longer exists.
+          </WidgetEmpty.Description>
         </WidgetEmpty>
 
-        <WidgetEmpty icon={<img src="https://picsum.photos/id/1025/28/28" alt="Example" />}>
+        <WidgetEmpty icon={<img src='https://picsum.photos/id/1025/28/28' alt='Example' />}>
           <WidgetEmpty.Title>Img, title and description. We have no data to show</WidgetEmpty.Title>
-          <WidgetEmpty.Description>The project specified for this widget no longer exists.</WidgetEmpty.Description>
+          <WidgetEmpty.Description>
+            The project specified for this widget no longer exists.
+          </WidgetEmpty.Description>
         </WidgetEmpty>
 
         <WidgetEmpty icon={getIconPath('good')}>
-          <WidgetEmpty.Description>Icon and description. The project specified for this widget no longer exists.</WidgetEmpty.Description>
+          <WidgetEmpty.Description>
+            Icon and description. The project specified for this widget no longer exists.
+          </WidgetEmpty.Description>
         </WidgetEmpty>
 
         <WidgetEmpty icon={getIconPath('good')}>
-          <WidgetEmpty.Title>Icon and Title. The project specified for this widget no longer exists.</WidgetEmpty.Title>
+          <WidgetEmpty.Title>
+            Icon and Title. The project specified for this widget no longer exists.
+          </WidgetEmpty.Title>
         </WidgetEmpty>
       </Box>
 
@@ -35,7 +45,8 @@ const Demo = () => {
         <WidgetEmpty>
           <WidgetEmpty.Title>Title and description. We have no data to show</WidgetEmpty.Title>
           <WidgetEmpty.Description>
-            We haven't found any agencies matching your search criteria. Try changing your filter settings or clear filters.
+            We haven't found any agencies matching your search criteria. Try changing your filter
+            settings or clear filters.
           </WidgetEmpty.Description>
         </WidgetEmpty>
 

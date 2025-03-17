@@ -19,7 +19,6 @@ export default meta;
 
 type Story = StoryObj<typeof Wizard>;
 
-
 export const Basic: Story = {
   render: BasicExample,
   play: playWrapper(BasicExampleTest),

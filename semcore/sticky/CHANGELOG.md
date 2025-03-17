@@ -8,6 +8,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Full package.
 
+## [3.40.0] - 2025-03-14
+
+### Added
+
+- Build for ESM.
+
 ## [3.39.1] - 2025-02-05
 
 ### Changed

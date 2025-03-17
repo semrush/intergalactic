@@ -13,7 +13,6 @@ const meta: Meta<typeof ScrollArea> = {
 export default meta;
 type Story = StoryObj<typeof ScrollArea>;
 
-
 export const HorizontalScrollWithShadowAndOffset: Story = {
   render: HorizontalScrollWithShadowAndOffsetExample,
 };

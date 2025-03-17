@@ -26,7 +26,9 @@ const Demo = () => {
 
   return (
     <>
-      <Button onClick={handleClick} ref={openButtonRef}>Show basic notice</Button>
+      <Button onClick={handleClick} ref={openButtonRef}>
+        Show basic notice
+      </Button>
       <NoticeBubbleContainer manager={manager} />
     </>
   );

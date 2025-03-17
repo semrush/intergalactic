@@ -5,20 +5,19 @@ import { Flex } from '@semcore/flex-box';
 import Coffee from '@semcore/illustration/Coffee';
 import MailSent from '@semcore/illustration/MailSent';
 
-
-
 const Demo = () => (
   <Flex direction='column'>
     <Notice aria-label='Notice' mb={2}>
       <Notice.Label>
-        <Coffee width = '130' height = '130' />
+        <Coffee width='130' height='130' />
       </Notice.Label>
 
       <Notice.Content>
         <Notice.Title>Your subscription has expired</Notice.Title>
 
         <Notice.Text>
-        49 out of your 50 projects are now locked. They will be deleted in 7 days (on August 22). To unlock your projects, please upgrade your subscription.
+          49 out of your 50 projects are now locked. They will be deleted in 7 days (on August 22).
+          To unlock your projects, please upgrade your subscription.
         </Notice.Text>
 
         <Notice.Actions>
@@ -33,14 +32,15 @@ const Demo = () => (
 
     <Notice theme='muted' aria-label='New feature announcement' mb={2}>
       <Notice.Label>
-        <MailSent width = '130' height = '130' />
+        <MailSent width='130' height='130' />
       </Notice.Label>
 
       <Notice.Content>
         <Notice.Title>Your subscription has expired</Notice.Title>
 
         <Notice.Text>
-        49 out of your 50 projects are now locked. They will be deleted in 7 days (on August 22). To unlock your projects, please upgrade your subscription.
+          49 out of your 50 projects are now locked. They will be deleted in 7 days (on August 22).
+          To unlock your projects, please upgrade your subscription.
         </Notice.Text>
 
         <Notice.Actions>
@@ -55,7 +55,7 @@ const Demo = () => (
 
     <Notice theme='warning' aria-label='New feature announcement' mb={2}>
       <Notice.Label>
-        <MailSent width = '130' height = '130' />
+        <MailSent width='130' height='130' />
       </Notice.Label>
 
       <Notice.Content>
@@ -81,7 +81,7 @@ const Demo = () => (
 
     <Notice theme='danger' aria-label='New feature announcement' mb={2}>
       <Notice.Label>
-        <Coffee width = '130' height = '130' />
+        <Coffee width='130' height='130' />
       </Notice.Label>
 
       <Notice.Content>
@@ -107,14 +107,15 @@ const Demo = () => (
 
     <Notice theme='success' aria-label='New feature announcement' mb={2}>
       <Notice.Label>
-        <Coffee width = '130' height = '130' />
+        <Coffee width='130' height='130' />
       </Notice.Label>
 
       <Notice.Content>
         <Notice.Title>Your subscription has expired</Notice.Title>
 
         <Notice.Text>
-        49 out of your 50 projects are now locked. They will be deleted in 7 days (on August 22). To unlock your projects, please upgrade your subscription.
+          49 out of your 50 projects are now locked. They will be deleted in 7 days (on August 22).
+          To unlock your projects, please upgrade your subscription.
         </Notice.Text>
 
         <Notice.Actions>

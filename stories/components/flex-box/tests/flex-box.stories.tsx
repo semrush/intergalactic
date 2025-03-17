@@ -13,10 +13,10 @@ export const FlexGaps: StoryObj = {
 };
 
 export const BoxWigthHeight: StoryObj = {
-    render: BoxWigthHeightExamples,
-  };
-  export const BoxMarginsPaddings: StoryObj = {
-    render: BoxMarginsPaddingsExample,
-  };
+  render: BoxWigthHeightExamples,
+};
+export const BoxMarginsPaddings: StoryObj = {
+  render: BoxMarginsPaddingsExample,
+};
 
 export default meta;

@@ -27,28 +27,23 @@ const Demo = () => {
 
   return (
     <>
-      <DropdownMenu
-        visible={visibleDropdown}
-        onVisibleChange={setVisibleDropdown}
-      >
+      <DropdownMenu visible={visibleDropdown} onVisibleChange={setVisibleDropdown}>
         <DropdownMenu.Trigger tag={Button}>
           <Button.Addon>
             <FileExportM />
           </Button.Addon>
           <Button.Text>Export</Button.Text>
         </DropdownMenu.Trigger>
-        <DropdownMenu.Popper wMax="257px" aria-labelledby="dropdown-trigger">
+        <DropdownMenu.Popper wMax='257px' aria-labelledby='dropdown-trigger'>
           <SpinContainer loading={loading}>
             <DropdownMenu.List>
               <DropdownMenu.Item onClick={handleClick}>Excel</DropdownMenu.Item>
               <DropdownMenu.Item onClick={handleClick}>CSV</DropdownMenu.Item>
-              <DropdownMenu.Item onClick={handleClick}>
-                CSV Semicolon
-              </DropdownMenu.Item>
+              <DropdownMenu.Item onClick={handleClick}>CSV Semicolon</DropdownMenu.Item>
             </DropdownMenu.List>
-            <Notice theme="warning">
+            <Notice theme='warning'>
               <Notice.Content>
-                <Button onClick={handleOpen} use="primary">
+                <Button onClick={handleOpen} use='primary'>
                   Open modal
                 </Button>
               </Notice.Content>
@@ -58,13 +53,13 @@ const Demo = () => {
       </DropdownMenu>
       <Modal visible={visibleModal} onClose={handleClose}>
         <Modal.Title>Do you want to save your changes?</Modal.Title>
-        <Text size={200} mb={4} tag="p">
+        <Text size={200} mb={4} tag='p'>
           Your changes will be lost if you don't save them.
         </Text>
-        <Button use="primary" theme="success" size="l" onClick={handleClose}>
+        <Button use='primary' theme='success' size='l' onClick={handleClose}>
           Save changes
         </Button>
-        <Button size="l" ml={2} onClick={handleClose}>
+        <Button size='l' ml={2} onClick={handleClose}>
           Don't save
         </Button>
       </Modal>

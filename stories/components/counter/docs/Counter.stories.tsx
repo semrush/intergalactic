@@ -41,20 +41,18 @@ export const CounterInDot: Story = {
 };
 
 export const CounterInFilters: Story = {
-    render: CounterInFiltersExample,
-    play: playWrapper(CounterInFiltersTest),
+  render: CounterInFiltersExample,
+  play: playWrapper(CounterInFiltersTest),
 };
 
 export const CounterInForms: Story = {
-    render: CounterInFormsExample,
+  render: CounterInFormsExample,
 };
 
 export const CounterInLimits: Story = {
-    render: CounterInLimitsExample,
+  render: CounterInLimitsExample,
 };
-
 
 export const CounterInPills: Story = {
-    render: CounterInPillsExample,
+  render: CounterInPillsExample,
 };
-

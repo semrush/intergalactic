@@ -4,7 +4,7 @@ import Question from '@semcore/icon/Question/m';
 import Warning from '@semcore/icon/Warning/m';
 import Button from '@semcore/button';
 import { Flex } from '@semcore/flex-box';
-import ThumbUpM from '@semcore/icon/ThumbUp/m'
+import ThumbUpM from '@semcore/icon/ThumbUp/m';
 
 const Demo = () => (
   <Flex direction='column'>
@@ -17,12 +17,12 @@ const Demo = () => (
         <Notice.Title>Your subscription has expired</Notice.Title>
 
         <Notice.Text>
-        49 out of your 50 projects are now locked. They will be deleted in 7 days (on August 22).
+          49 out of your 50 projects are now locked. They will be deleted in 7 days (on August 22).
           To unlock your projects, please upgrade your subscription.Please tell us how to improve
           something. 49 out of your Star Wars: The Force Awakens shattered box office records upon
           its debut becoming the biggest film of all time in. The reports are based on the data from
           the Russian Federation and the CIS.
-          </Notice.Text>
+        </Notice.Text>
 
         <Notice.Actions>
           <Button use='primary' mr={2}>

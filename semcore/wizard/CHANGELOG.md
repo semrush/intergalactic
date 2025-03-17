@@ -8,6 +8,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Token using for `:focus-visible` styles.
 
+## [2.52.0] - 2025-03-14
+
+### Added
+
+- Build for ESM.
+
 ## [2.51.1] - 2025-02-05
 
 ### Changed

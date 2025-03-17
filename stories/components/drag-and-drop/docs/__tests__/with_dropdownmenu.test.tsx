@@ -1,7 +1,6 @@
 import { expect, userEvent, within } from '@storybook/test';
 
 export async function WithDropdownMenuTest({ canvasElement }: { canvasElement: HTMLElement }) {
-
   const canvas = within(canvasElement);
 
   const manageColumnsButton = await canvas.findByRole('button', {
@@ -15,7 +14,7 @@ export async function WithDropdownMenuTest({ canvasElement }: { canvasElement: H
   await expect(manageColumnsButton).toHaveAttribute('aria-expanded', 'false');
 
   await expect(manageColumnsButton).toHaveAttribute('id', 'dropdown-menu-basic');
-  
+
   const buttonText = await canvas.findByText(/Manage columns/i);
   await expect(buttonText).toBeVisible();
 
@@ -29,5 +28,4 @@ export async function WithDropdownMenuTest({ canvasElement }: { canvasElement: H
   await new Promise((resolve) => setTimeout(resolve, 100));
   await expect(manageColumnsButton).toHaveAttribute('aria-haspopup', 'dialog');
   await expect(manageColumnsButton).toHaveAttribute('aria-expanded', 'true');
- 
 }

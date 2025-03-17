@@ -7,7 +7,6 @@ import ManualControlExample from './examples/manual-control';
 import MockingExample from './examples/mocking';
 import SimpleUseExample from './examples/simple-use';
 
-
 const meta: Meta<typeof Breakpoints> = {
   title: 'Components/Breakpoints/Documentation',
   component: Breakpoints,
@@ -25,9 +24,9 @@ export const ManualControl: StoryObj = {
 };
 
 export const Mocking: StoryObj = {
-    render: MockingExample,
-  };
+  render: MockingExample,
+};
 
-  export const SimpleUse: StoryObj<typeof Breakpoints> = {
-    render: SimpleUseExample,
-  };
+export const SimpleUse: StoryObj<typeof Breakpoints> = {
+  render: SimpleUseExample,
+};

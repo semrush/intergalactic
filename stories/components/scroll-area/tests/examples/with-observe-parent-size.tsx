@@ -54,14 +54,14 @@ class Demo extends Component<{}, State> {
 
   render() {
     return (
-      <Flex direction="column" gap={4}>
+      <Flex direction='column' gap={4}>
         <Flex gap={2}>
           <Button onClick={this.handleIncreaseSize}>Increase size</Button>
           <Button onClick={this.handleDecreaseSize}>Decrease size</Button>
         </Flex>
 
         <div
-          aria-label="main-title"
+          aria-label='main-title'
           ref={this.containerRef}
           style={{
             border: '2px solid black',
@@ -71,8 +71,8 @@ class Demo extends Component<{}, State> {
           }}
         >
           <ScrollArea
-            w="100%"
-            h="100%"
+            w='100%'
+            h='100%'
             shadow={true}
             container={this.containerRef}
             tabIndex={0}
@@ -81,9 +81,9 @@ class Demo extends Component<{}, State> {
             bottomOffset={100}
             leftOffset={100}
             rightOffset={100}
-            orientation="horizontal"
+            orientation='horizontal'
           >
-            <ScrollArea.Container role="group" aria-labelledby="main-reverse-title">
+            <ScrollArea.Container role='group' aria-labelledby='main-reverse-title'>
               {[...new Array(10)].map((_, index) => (
                 <Box
                   key={index}
@@ -95,7 +95,7 @@ class Demo extends Component<{}, State> {
                 />
               ))}
             </ScrollArea.Container>
-            <ScrollArea.Bar h="40px" orientation="horizontal"></ScrollArea.Bar>
+            <ScrollArea.Bar h='40px' orientation='horizontal'></ScrollArea.Bar>
           </ScrollArea>
         </div>
       </Flex>

@@ -8,8 +8,6 @@ import WidgetEmptyWithLinksExample from './examples/widget-empty-withlink';
 import ErrorStatesExample from './examples/error-states';
 import NoDataExample from './examples/nodata-states';
 
-
-
 const meta: Meta<typeof WidgetEmpty> = {
   title: 'Components/WidgetEmpty/Tests',
   component: WidgetEmpty,
@@ -17,7 +15,6 @@ const meta: Meta<typeof WidgetEmpty> = {
 export default meta;
 
 type Story = StoryObj<typeof WidgetEmpty>;
-
 
 export const WidgetEmptyCases: Story = {
   render: WidgetEmptyCasesExample,

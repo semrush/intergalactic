@@ -66,10 +66,17 @@ const Demo = () => {
           </Wizard.Step>
           <Flex mt={5}>
             {step > 1 && (
-              <Wizard.StepBack onActive={handleStepChange(step - 1)} stepName={steps[step - 2].title} />
+              <Wizard.StepBack
+                onActive={handleStepChange(step - 1)}
+                stepName={steps[step - 2].title}
+              />
             )}
             {step !== steps.length && (
-              <Wizard.StepNext ml='auto' onActive={handleStepChange(step + 1)} stepName={steps[step].title} />
+              <Wizard.StepNext
+                ml='auto'
+                onActive={handleStepChange(step + 1)}
+                stepName={steps[step].title}
+              />
             )}
           </Flex>
         </Wizard.Content>

@@ -39,9 +39,9 @@ export const LinkInsideTheContent: Story = {
 };
 
 export const LinkWithoutText: Story = {
-    render: LinkWithoutTextExample,
+  render: LinkWithoutTextExample,
 };
 
 export const LinkWithEllipsis: Story = {
-    render: LinkWithEllipsisExample,
+  render: LinkWithEllipsisExample,
 };

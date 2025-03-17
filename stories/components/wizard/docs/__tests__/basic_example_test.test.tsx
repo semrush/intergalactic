@@ -4,12 +4,12 @@ export async function BasicExampleTest({ canvasElement }: { canvasElement: HTMLE
   const canvas = within(canvasElement);
 
   // Helper function to wait briefly if required
-  const wait = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+  const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
   // ==== Section 1: Mouse Interactions ====
 
   // Open the modal using a button
-  const trigger = within(document.body).queryByText("Open wizard");
+  const trigger = within(document.body).queryByText('Open wizard');
   if (!trigger) {
     throw new Error('Trigger button "Open modal" not found');
   }

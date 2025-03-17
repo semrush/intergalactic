@@ -23,6 +23,7 @@ STitle {
 
 SDescription {
   text-align: center;
+  text-wrap: balance;
   font-size: var(--intergalactic-fs-200, 14px);
   line-height: var(--intergalactic-lh-200, 142%);
   color: var(--intergalactic-text-secondary, #6c6e79);
