@@ -10,6 +10,7 @@ import {
 
 import style from './style.shadow.css';
 import { Column } from './Column';
+import { Group } from './Group';
 import { DataTableColumnProps } from './Column.types';
 import { getFixedStyle, getScrollOffsetValue } from '../../utils';
 
@@ -19,6 +20,15 @@ class HeadRoot extends Component<DataTableHeadProps, {}, {}, [], HeadPropsInner>
 
   componentDidMount() {
     this.forceUpdate();
+  }
+
+  getGroupProps(props: any) {
+    const offset = 2;
+    const count = React.Children.count(props.children);
+
+    return {
+      gridArea: `1 / ${offset} / 2 / ${offset + count}`,
+    };
   }
 
   getColumnProps(_: any, index: number) {
@@ -35,6 +45,7 @@ class HeadRoot extends Component<DataTableHeadProps, {}, {}, [], HeadPropsInner>
       'aria-colindex': index + 1,
       ref: columns[index].ref,
       style,
+      gridArea: `1 / ${index + 1} / 2 / ${index + 2}`,
     };
   }
 
@@ -64,10 +75,22 @@ class HeadRoot extends Component<DataTableHeadProps, {}, {}, [], HeadPropsInner>
     );
   }
 }
+//
+// function Group(props) {
+//   const SGroup = Root;
+//   const { styles, Children } = props;
+//
+//   return sstyled(styles)(
+//       <SGroup render={Box}>
+//         <Children />
+//       </SGroup>,
+//   );
+// }
 
-export const Head = createComponent(HeadRoot, { Column }) as Intergalactic.Component<
+export const Head = createComponent(HeadRoot, { Column, Group }) as Intergalactic.Component<
   'div',
   DataTableHeadProps
 > & {
   Column: Intergalactic.Component<'div', DataTableColumnProps>;
+  Group: Intergalactic.Component<'div', {}>;
 };

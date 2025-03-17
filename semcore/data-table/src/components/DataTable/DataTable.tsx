@@ -297,6 +297,7 @@ class DataTableRoot extends Component<DataTableProps> {
             aria-rowcount={this.totalRows}
             aria-colcount={this.columns.length}
             gridTemplateColumns={this.columns.map((c) => c.gridColumnWidth).join(' ')}
+            gridTemplateAreas={this.columns.map((c) => c.name).join(' ')}
             use:wMax={`${width}px`}
             use:wMin={`${width}px`}
           >

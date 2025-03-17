@@ -29,6 +29,10 @@ SColumn[use='secondary'] {
   background-color: var(--intergalactic-table-th-secondary-cell, #ffffff);
 }
 
+SColumn[gridArea], SGroup[gridArea], SGroupTitle[gridArea] {
+  grid-area: var(--gridArea);
+}
+
 SHead[sticky] SColumn[fixed], SHead SColumn[fixed] {
   position: sticky;
   /* because up resizable */
