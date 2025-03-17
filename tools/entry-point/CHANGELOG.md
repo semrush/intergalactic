@@ -1,3 +1,9 @@
+## [15.126.1] - 2025-03-17
+
+### @semcore/utils
+
+- **Added** `color` and `if` utils to the exports list.
+
 ## [15.126.0] - 2025-03-14
 
 ### @semcore/accordion
