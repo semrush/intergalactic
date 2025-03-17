@@ -335,6 +335,13 @@ importers:
       '@semcore/base-components':
         specifier: ^16.0.0
         version: link:../base-components
+    devDependencies:
+      '@semcore/testing-utils':
+        specifier: 1.0.0
+        version: link:../../tools/testing-utils
+      '@types/react':
+        specifier: 18.0.21
+        version: 18.0.21
 
   semcore/badge:
     dependencies:
@@ -438,6 +445,13 @@ importers:
       '@semcore/base-components':
         specifier: ^16.0.0
         version: link:../base-components
+    devDependencies:
+      '@semcore/testing-utils':
+        specifier: 1.0.0
+        version: link:../../tools/testing-utils
+      '@types/react':
+        specifier: 18.0.21
+        version: 18.0.21
 
   semcore/bulk-textarea:
     dependencies:
