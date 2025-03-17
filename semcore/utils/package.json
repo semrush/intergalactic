@@ -130,6 +130,11 @@
       "import": "./lib/canUseDOM.mjs",
       "types": "./lib/canUseDOM.d.ts"
     },
+    "./lib/color": {
+      "require": "./lib/color.js",
+      "import": "./lib/color.mjs",
+      "types": "./lib/color.d.ts"
+    },
     "./lib/cssToIntDefault": {
       "require": "./lib/cssToIntDefault.js",
       "import": "./lib/cssToIntDefault.mjs",
@@ -174,6 +179,11 @@
       "require": "./lib/hasParent.js",
       "import": "./lib/hasParent.mjs",
       "types": "./lib/hasParent.d.ts"
+    },
+    "./lib/if": {
+      "require": "./lib/if.js",
+      "import": "./lib/if.mjs",
+      "types": "./lib/if.d.ts"
     },
     "./lib/inputProps": {
       "require": "./lib/inputProps.js",
