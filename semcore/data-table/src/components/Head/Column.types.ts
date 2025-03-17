@@ -2,11 +2,16 @@ import { DTUse } from '../DataTable/DataTable.types';
 
 export type DTColumn = {
   name: string;
-  ref: React.RefObject<HTMLDivElement>;
+  ref: React.RefObject<HTMLElement>;
   /**
    * Width for grid-template-columns
    */
   gridColumnWidth: string;
+
+  /**
+   * Width of column by getBoundaryRect() value
+   */
+  calculatedWidth: number;
 
   fixed: 'left' | 'right';
 };

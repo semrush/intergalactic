@@ -12,7 +12,7 @@ import { Box, ScrollArea } from '@semcore/base-components';
 import { DataTableProps, ColIndex, RowIndex } from './DataTable.types';
 import { Head } from '../Head/Head';
 import { Body } from '../Body/Body';
-import { DataTableColumnProps, DTColumn } from '../Column/Column.types';
+import { DataTableColumnProps, DTColumn } from '../Head/Column.types';
 
 import style from './dataTable.shadow.css';
 import { DTRow } from '../Body/Row.types';
@@ -21,7 +21,7 @@ import { isFocusInside, hasFocusableIn } from '@semcore/core/lib/utils/use/useFo
 
 import { ReactElement } from 'react';
 import syncScroll from '@semcore/core/lib/utils/syncScroll';
-import { getFixedStyle, getScrollOffsetValue } from '../../utils';
+import { createCssVarForWidth, getFixedStyle, getScrollOffsetValue } from '../../utils';
 
 class DataTableRoot extends Component<DataTableProps> {
   static displayName = 'DataTable';
@@ -49,6 +49,10 @@ class DataTableRoot extends Component<DataTableProps> {
     this.scrollHeadRef = createRef('head');
 
     this.columns = this.calculateColumns();
+  }
+
+  componentDidMount() {
+    this.forceUpdate();
   }
 
   get totalRows() {
@@ -260,16 +264,27 @@ class DataTableRoot extends Component<DataTableProps> {
 
   render() {
     const SDataTable = Root;
-    const { Children, styles } = this.asProps;
+    const { Children, styles, w, wMax, wMin, h, hMax, hMin } = this.asProps;
 
     const [offsetLeftSum, offsetRightSum] = getScrollOffsetValue(this.columns);
+    const width = this.columns.reduce((acc, column) => acc + column.calculatedWidth, 0);
 
     return sstyled(styles)(
-      <ScrollArea leftOffset={offsetLeftSum} rightOffset={offsetRightSum} w={'600px'}>
-        <ScrollArea.Container tabIndex={-1}>
+      <ScrollArea
+        leftOffset={offsetLeftSum}
+        rightOffset={offsetRightSum}
+        w={w}
+        wMax={wMax}
+        wMin={wMin}
+        h={h}
+        hMax={hMax}
+        hMin={hMin}
+        shadow={true}
+      >
+        <ScrollArea.Container tabIndex={-1} ref={this.scrollBodyRef}>
           <SDataTable
             render={Box}
-            __excludeProps={['data']}
+            __excludeProps={['data', 'w', 'wMax', 'wMin', 'h', 'hMax', 'hMin']}
             ref={this.tableRef}
             role='grid'
             onKeyDown={this.handleKeyDown}
@@ -280,6 +295,8 @@ class DataTableRoot extends Component<DataTableProps> {
             aria-rowcount={this.totalRows}
             aria-colcount={this.columns.length}
             gridTemplateColumns={this.columns.map((c) => c.gridColumnWidth).join(' ')}
+            use:wMax={`${width}px`}
+            use:wMin={`${width}px`}
           >
             <Children />
           </SDataTable>
@@ -294,14 +311,25 @@ class DataTableRoot extends Component<DataTableProps> {
   private calculateColumns(): DTColumn[] {
     const { children } = this.props;
     const Columns = findAllComponents(children, ['Head.Column']);
+    const calculateGridTemplateColumn = this.calculateGridTemplateColumn;
 
     return Columns.map((c) => {
-      return {
+      const column = {
         name: c.props.name,
-        ref: React.createRef<HTMLDivElement>(),
-        gridColumnWidth: this.calculateGridTemplateColumn(c),
+        ref: (node: HTMLElement | null) => {
+          if (node) {
+            const calculatedWidth = node.getBoundingClientRect().width;
+            column.calculatedWidth = calculatedWidth;
+          }
+
+          return { current: node };
+        },
+        gridColumnWidth: calculateGridTemplateColumn(c),
         fixed: c.props.fixed,
+        calculatedWidth: 0,
       };
+
+      return column;
     });
   }
 

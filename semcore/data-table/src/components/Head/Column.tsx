@@ -3,7 +3,7 @@ import { Component, Root, sstyled } from '@semcore/core';
 import { ColumnPropsInner, DataTableColumnProps } from './Column.types';
 import { Box } from '@semcore/base-components';
 
-import style from './column.shadow.css';
+import style from './style.shadow.css';
 
 export class Column extends Component<DataTableColumnProps, {}, {}, [], ColumnPropsInner> {
   static displayName = 'Column';

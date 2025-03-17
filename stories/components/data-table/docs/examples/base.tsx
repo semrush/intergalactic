@@ -3,12 +3,12 @@ import { DataTable } from '@semcore/data-table';
 
 const Demo = () => {
   return (
-    <DataTable data={data} aria-label={'Base table example'} defaultGridTemplateColumnWidth={'auto'}>
-      <DataTable.Head>
-        <DataTable.Head.Column name='keyword' children='Keyword' gtcWidth={'max-content'} fixed={'left'}/>
-        <DataTable.Head.Column name='kd' children='KD,%' gtcWidth={'minmax(300px, max-content)'} />
+    <DataTable data={data} aria-label={'Base table example'} defaultGridTemplateColumnWidth={'auto'} wMax={'800px'}>
+      <DataTable.Head sticky withScrollBar>
+        <DataTable.Head.Column name='keyword' children='Keyword' gtcWidth={'300px'} fixed={'left'}/>
+        <DataTable.Head.Column name='kd' children='KD,%' gtcWidth={'minmax(100px, max-content)'} fixed={'left'}/>
         <DataTable.Head.Column name='cpc' children='CPC' gtcWidth={'minmax(300px, max-content)'} />
-        <DataTable.Head.Column name='vol' children='Vol.' gtcWidth={'minmax(300px, max-content)'} />
+        <DataTable.Head.Column name='vol' children='Vol.' gtcWidth={'300px'} />
       </DataTable.Head>
       <DataTable.Body />
     </DataTable>

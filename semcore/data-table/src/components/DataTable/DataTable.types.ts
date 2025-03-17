@@ -1,4 +1,5 @@
 import { Intergalactic } from '@semcore/core';
+import { BoxProps } from '@semcore/base-components';
 
 /**
  * Datatable must have an accessible name (aria-table-name).
@@ -15,6 +16,8 @@ export type DTValue = string | number;
 export type DataTableData = Array<Record<DTKey, any>>;
 
 export type DTUse = 'primary' | 'secondary';
+
+type Sizes = Extract<BoxProps, 'w' | 'wMax' | 'wMin' | 'h' | 'hMax' | 'hMin'>;
 
 export type DataTableProps = DataTableAriaProps & {
   data: DataTableData;

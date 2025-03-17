@@ -20,6 +20,12 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
         {columns.map((column, index) => {
           const [name, value] = getFixedStyle(column, columns);
 
+          const style: any = {};
+
+          if (name !== undefined && value !== undefined) {
+            style[name] = value;
+          }
+
           return (
             <Body.Cell
               key={index}
@@ -28,6 +34,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
               row={row}
               columnIndex={index}
               fixed={column.fixed}
+              style={style}
             >
               {row[column.name]}
             </Body.Cell>

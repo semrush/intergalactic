@@ -1,6 +1,14 @@
-SColumn {
+SHead {
+  display: contents;
+}
+
+SHead[sticky] SColumn {
   position: sticky;
   top: 0;
+}
+
+
+SColumn {
   display: flex;
   align-items: flex-start;
   font-size: var(--intergalactic-fs-100, 12px);
@@ -21,7 +29,7 @@ SColumn[use='secondary'] {
   background-color: var(--intergalactic-table-th-secondary-cell, #ffffff);
 }
 
-SColumn[fixed] {
+SHead[sticky] SColumn[fixed], SHead SColumn[fixed] {
   position: sticky;
   /* because up resizable */
   z-index: 2;

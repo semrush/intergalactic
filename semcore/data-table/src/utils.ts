@@ -1,18 +1,24 @@
-import type { Column } from './types';
+import type { DTColumn } from './components/Head/Column.types';
 
-export const getScrollOffsetValue = (columns: Column[]) =>
+export const getScrollOffsetValue = (columns: DTColumn[]) =>
   columns.reduce(
     (acc, column) => {
       if (column.fixed === 'left') {
-        acc[0] += column.width;
+        acc[0] += column.calculatedWidth;
       }
       if (column.fixed === 'right') {
-        acc[1] += column.width;
+        acc[1] += column.calculatedWidth;
       }
       return acc;
     },
     [0, 0] as [leftOffset: number, rightOffset: number],
   );
+
+const cssVarReg = /[:;\W]/g;
+
+export const createCssVarForWidth = (name: string) => {
+  return `--${name.replace(cssVarReg, '_')}_width`;
+};
 
 export const flattenColumns = (columns: Column[]) =>
   columns.reduce((acc, column) => {
@@ -23,8 +29,8 @@ export const flattenColumns = (columns: Column[]) =>
   }, [] as Column[]);
 
 export const getFixedStyle = (
-  cell: Pick<Column, 'name' | 'fixed'>,
-  columns: Column[],
+  cell: Pick<DTColumn, 'name' | 'fixed'>,
+  columns: DTColumn[],
 ): [side: 'left' | 'right', style: string | number] | [side: undefined, style: undefined] => {
   const side = cell.fixed;
   if (!side) return [undefined, undefined];
@@ -50,6 +56,6 @@ export const getFixedStyle = (
 
   if (columnsFixed.length < 1) return [side, 0];
 
-  const vars = columnsFixed.map((column) => `var(--${column.name}_width)`);
-  return [side, vars.length === 1 ? vars[0] : `calc(${vars.join(' + ')})`];
+  const sum = columnsFixed.reduce((acc, column) => acc + column.calculatedWidth, 0);
+  return [side, `${sum}px`];
 };
