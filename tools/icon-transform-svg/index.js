@@ -203,7 +203,7 @@ async function patchExports(result) {
     '.': {
       require: './lib/cjs/index.js',
       import: './lib/esm/index.mjs',
-      types: './lib/types/index.d.ts'
+      types: './lib/types/index.d.ts',
     },
   };
 
@@ -214,13 +214,13 @@ async function patchExports(result) {
       exports[location] = {
         require: `${location}/index.js`,
         import: `${location}/index.mjs`,
-      }
+      };
     });
-  })
+  });
 
   packageJson.exports = exports;
 
-  await fs.writeJSON(packageJsonPath, packageJson, {spaces: 2});
+  await fs.writeJSON(packageJsonPath, packageJson, { spaces: 2 });
 
   // biome-ignore lint/suspicious/noConsoleLog:
   console.log('Patched exports in package.json.');
@@ -237,7 +237,6 @@ module.exports = function () {
     }),
   )
     .then(async (result) => {
-
       await patchExports(result);
 
       // biome-ignore lint/suspicious/noConsoleLog:
