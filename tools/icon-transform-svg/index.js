@@ -176,7 +176,6 @@ const generateIcons = (
         outputFile(path.join(rootDir, location), cjs.code);
         outputFile(path.join(rootDir, location.replace('.js', '.mjs')), esm.code);
         outputFile(path.join(rootDir, location.replace('.js', '.d.ts')), templateDTS(name));
-        outputFile(path.join(rootDir, location.replace('.js', '.mjs.d.ts')), templateDTS(name));
         return { name, location, group };
       });
 
@@ -214,6 +213,7 @@ async function patchExports(result) {
       exports[location] = {
         require: `${location}/index.js`,
         import: `${location}/index.mjs`,
+        types: `${location}/index.d.ts`,
       };
     });
   });
