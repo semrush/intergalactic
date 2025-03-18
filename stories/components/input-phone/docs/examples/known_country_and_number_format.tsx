@@ -18,57 +18,60 @@ const Demo = () => {
   const positionAfterFirstBracket = prefix.length + 2;
 
   const handleChange = (value: string, e: React.SyntheticEvent<HTMLInputElement>) => {
-      setPhoneNumber(value);
+    setPhoneNumber(value);
 
-      if (value === prefix) {
-          inputRef.current?.setSelectionRange(positionAfterFirstBracket, positionAfterFirstBracket);
-      }
+    if (value === prefix) {
+      inputRef.current?.setSelectionRange(positionAfterFirstBracket, positionAfterFirstBracket);
+    }
 
-      if (e.currentTarget.selectionStart === 0) {
-          e.currentTarget.setSelectionRange(positionAfterFirstBracket, positionAfterFirstBracket);
-      }
-  }
+    if (e.currentTarget.selectionStart === 0) {
+      e.currentTarget.setSelectionRange(positionAfterFirstBracket, positionAfterFirstBracket);
+    }
+  };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Backspace' || e.key === 'ArrowLeft') {
+      if (e.currentTarget.value === prefix) {
+        e.preventDefault();
+        inputRef.current?.setSelectionRange(positionAfterFirstBracket, positionAfterFirstBracket);
 
-      console.log(e.key);
-
-      if (e.key === 'Backspace' || e.key === 'ArrowLeft') {
-          if (e.currentTarget.value === prefix) {
-              e.preventDefault();
-              inputRef.current?.setSelectionRange(positionAfterFirstBracket, positionAfterFirstBracket);
-
-              return false;
-          }
-
-          const selectionStart = inputRef.current?.selectionStart ?? 0;
-          const selectionEnd = inputRef.current?.selectionEnd ?? 0;
-          if (selectionStart <= positionAfterFirstBracket) {
-              if (selectionStart === selectionEnd) {
-                  e.preventDefault();
-
-                  return false;
-              } else {
-                  setTimeout(() => {
-                      inputRef.current?.setSelectionRange(positionAfterFirstBracket, positionAfterFirstBracket);
-                  }, 0);
-
-                  return false;
-              }
-          }
+        return false;
       }
 
-      if (e.key === 'ArrowUp' || (e.key === 'ArrowLeft' && e.metaKey) || e.key === 'Home') {
+      const selectionStart = inputRef.current?.selectionStart ?? 0;
+      const selectionEnd = inputRef.current?.selectionEnd ?? 0;
+      if (selectionStart <= positionAfterFirstBracket) {
+        if (selectionStart === selectionEnd) {
           e.preventDefault();
-          inputRef.current?.setSelectionRange(positionAfterFirstBracket, positionAfterFirstBracket);
+
+          return false;
+        } else {
+          setTimeout(() => {
+            inputRef.current?.setSelectionRange(
+              positionAfterFirstBracket,
+              positionAfterFirstBracket,
+            );
+          }, 0);
+
+          return false;
+        }
       }
-  }
+    }
+
+    if (e.key === 'ArrowUp' || (e.key === 'ArrowLeft' && e.metaKey) || e.key === 'Home') {
+      e.preventDefault();
+      inputRef.current?.setSelectionRange(positionAfterFirstBracket, positionAfterFirstBracket);
+    }
+  };
 
   const handleClick = (e: React.SyntheticEvent<HTMLInputElement>) => {
-      if (e.currentTarget instanceof HTMLInputElement && (e.currentTarget.selectionStart ?? 0) <= positionAfterFirstBracket) {
-          e.preventDefault();
-          inputRef.current?.setSelectionRange(positionAfterFirstBracket, positionAfterFirstBracket);
-      }
+    if (
+      e.currentTarget instanceof HTMLInputElement &&
+      (e.currentTarget.selectionStart ?? 0) <= positionAfterFirstBracket
+    ) {
+      e.preventDefault();
+      inputRef.current?.setSelectionRange(positionAfterFirstBracket, positionAfterFirstBracket);
+    }
   };
 
   return (
@@ -92,7 +95,7 @@ const Demo = () => {
           >
             <Select.Trigger aria-label={'Country code'}>
               <Select.Trigger.Addon mx={0}>
-                <Flag iso2={country} aria-label={countries[country].name} />
+                <Flag role='img' iso2={country} aria-label={countries[country].name} />
               </Select.Trigger.Addon>
             </Select.Trigger>
 
@@ -121,7 +124,7 @@ const Demo = () => {
               ref={inputRef}
               value={phoneNumber}
               onChange={handleChange}
-              aliases={{'_': /\d/}}
+              aliases={{ _: /\d/ }}
               mask={phoneMask}
               type='tel'
               autoComplete='tel'
