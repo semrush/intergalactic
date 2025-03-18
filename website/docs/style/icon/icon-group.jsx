@@ -49,6 +49,8 @@ const DownloadIconButton = ({ size, name, action, iconData, icon: Icon }) => {
           href={`https://github.com/semrush/intergalactic/raw/master/${url}?inline=false`}
           data-container='body'
           data-original-title='Download'
+          data-icon-download-svg={name}
+          data-icon-size={size}
         >
           <Icon width={20} height={20} />
           <span className={styles.iconSizes}>
@@ -62,7 +64,12 @@ const DownloadIconButton = ({ size, name, action, iconData, icon: Icon }) => {
 
   return (
     <Copy toCopy={getImportText} trigger='click' title='Copy import'>
-      <button type='button' className={styles.previewChangeIcon}>
+      <button
+        type='button'
+        className={styles.previewChangeIcon}
+        data-icon-copy-import={name}
+        data-icon-size={size}
+      >
         <Icon width={20} height={20} />
         <span className={styles.iconSizes}>
           <span className={styles.iconSizeTitle}>{size.toUpperCase()}</span>
@@ -90,8 +97,12 @@ export const IconDetailsPanel = ({ name, visible, onClose }) => {
           <Flex direction='column'>
             <b>{name}</b>
             <Pills value={action} mt={3} onChange={setAction} aria-label={`Get ${name} icon`}>
-              <Pills.Item value='copy'>Copy import</Pills.Item>
-              <Pills.Item value='download'>Download SVG</Pills.Item>
+              <Pills.Item value='copy' data-icon-pill-copy-import={name}>
+                Copy import
+              </Pills.Item>
+              <Pills.Item value='download' data-icon-pill-download-svg={name}>
+                Download SVG
+              </Pills.Item>
             </Pills>
           </Flex>
           <Flex gap={6}>

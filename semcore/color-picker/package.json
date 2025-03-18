@@ -1,7 +1,7 @@
 {
   "name": "@semcore/color-picker",
   "description": "Semrush ColorPicker Component",
-  "version": "2.42.2",
+  "version": "2.43.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -9,17 +9,23 @@
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "pnpm semcore-builder --source=js,ts"
+    "build": "pnpm semcore-builder --source=js,ts && pnpm vite build"
+  },
+  "exports": {
+    "require": "./lib/cjs/index.js",
+    "import": "./lib/esm/index.mjs",
+    "types": "./lib/types/index.d.ts"
   },
   "dependencies": {
-    "@semcore/button": "5.41.2",
-    "@semcore/divider": "4.39.1",
-    "@semcore/dropdown": "4.42.3",
-    "@semcore/flex-box": "5.40.1",
-    "@semcore/tooltip": "6.47.3",
-    "@semcore/icon": "4.57.1",
-    "@semcore/input": "4.41.1",
-    "@semcore/utils": "4.45.1"
+    "@semcore/button": "5.42.0",
+    "@semcore/divider": "4.40.0",
+    "@semcore/dropdown": "4.43.0",
+    "@semcore/flex-box": "5.41.0",
+    "@semcore/tooltip": "6.49.0",
+    "@semcore/icon": "4.60.0",
+    "@semcore/input": "4.42.0",
+    "@semcore/utils": "4.48.0",
+    "@semcore/popper": "5.46.0"
   },
   "peerDependencies": {
     "@semcore/core": "^2.17.5",

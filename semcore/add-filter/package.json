@@ -1,7 +1,7 @@
 {
   "name": "@semcore/add-filter",
   "description": "Semrush Add Filter component",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -9,18 +9,23 @@
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "pnpm semcore-builder --source=ts"
+    "build": "pnpm semcore-builder --source=ts && pnpm vite build"
+  },
+  "exports": {
+    "require": "./lib/cjs/index.js",
+    "import": "./lib/esm/index.mjs",
+    "types": "./lib/types/index.d.ts"
   },
   "dependencies": {
-    "@semcore/select": "4.49.5",
-    "@semcore/icon": "4.57.1",
-    "@semcore/button": "5.41.2",
-    "@semcore/flex-box": "5.40.1",
-    "@semcore/utils": "4.45.1",
-    "@semcore/dropdown-menu": "4.45.1",
-    "@semcore/dropdown": "4.42.3",
-    "@semcore/input": "4.41.1",
-    "@semcore/base-trigger": "4.51.1"
+    "@semcore/select": "4.50.0",
+    "@semcore/icon": "4.60.0",
+    "@semcore/button": "5.42.0",
+    "@semcore/flex-box": "5.41.0",
+    "@semcore/utils": "4.48.0",
+    "@semcore/dropdown-menu": "4.46.0",
+    "@semcore/dropdown": "4.43.0",
+    "@semcore/input": "4.42.0",
+    "@semcore/base-trigger": "4.52.0"
   },
   "peerDependencies": {
     "@semcore/core": "^2.17.5",

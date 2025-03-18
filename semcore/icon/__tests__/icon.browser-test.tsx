@@ -193,6 +193,28 @@ test.describe('Icons size rendering and attributes', () => {
     }
   });
 
+  test('Verify Platform icons type - view and attributes', async ({ page }) => {
+    const standPath = 'stories/components/icon/tests/examples/icons_platform.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+
+    const svgs = await page.locator('svg');
+    const count = await svgs.count();
+
+    for (let i = 0; i < count; i++) {
+      const svg = svgs.nth(i);
+
+      await expect(svg).toHaveAttribute('width', '24');
+      await expect(svg).toHaveAttribute('height', '24');
+      await expect(svg).toHaveAttribute('viewBox', '0 0 24 24');
+      await expect(svg).toHaveAttribute('focusable', 'true');
+      await expect(svg).toHaveAttribute('tabindex', '0');
+
+      const tagName = await svg.evaluate((el) => el.tagName.toLowerCase());
+      expect(tagName).toBe('svg');
+    }
+  });
+
   test('Verify Custom icons type - view and attributes', async ({ page }) => {
     const standPath = 'stories/components/icon/tests/examples/icon_with_custom_size_color.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');

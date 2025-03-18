@@ -20,7 +20,6 @@ import { ScreenReaderOnly } from '@semcore/flex-box';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 
 import style from './style/input-mask.shadow.css';
-import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 
 export type IInputMaskAsFn = (rawValue?: string) => string | RegExp[];
 
@@ -294,14 +293,6 @@ class Value extends Component<InputMaskValueProps, {}, {}, typeof Value.enhance>
     }, 0);
   };
 
-  onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Backspace') {
-      setTimeout(() => {
-        this.setSelectionRange();
-      }, 0);
-    }
-  };
-
   setSelectionRange = () => {
     if (!this.inputRef.current) return;
     const { value } = this.inputRef.current;
@@ -392,7 +383,6 @@ class Value extends Component<InputMaskValueProps, {}, {}, typeof Value.enhance>
                   aria-describedby={`hint-${uid}`}
                   {...controlProps}
                   role={inputRole}
-                  onKeyDown={callAllEventHandlers(this.onKeyDown, controlProps.onKeyDown)}
                   __excludeProps={['placeholder', 'title']}
                 />
                 <Children />

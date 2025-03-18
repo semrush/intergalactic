@@ -8,8 +8,8 @@ test.skip('Users can interact with DatePicker and DateRangePicker via VoiceOver'
   page,
   voiceOver: pureVoiceOver,
 }) => {
-  const standPath = 'website/docs/components/date-picker/examples/datepicker.tsx';
-  const reportPath = 'website/docs/components/date-picker/date-a11y-report.md';
+  const standPath = 'stories/components/date-picker/docs/examples/datepicker.tsx';
+  const reportPath = 'stories/components/date-picker/docs/date-a11y-report.md';
 
   const htmlContent = await e2eStandToHtml(standPath, 'en');
   await page.reload();

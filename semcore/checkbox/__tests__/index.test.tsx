@@ -8,6 +8,11 @@ import { axe } from '@semcore/testing-utils/axe';
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
 import Checkbox from '../src';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('Checkbox Dependency imports', () => {
+  runDependencyCheckTests('checkbox');
+});
 
 describe('Checkbox', () => {
   beforeEach(cleanup);

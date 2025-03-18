@@ -6,6 +6,12 @@ import { axe } from '@semcore/testing-utils/axe';
 
 import InputNumber from '../src';
 
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('input-number Dependency imports', () => {
+  runDependencyCheckTests('input-number');
+});
+
 describe('InputNumber', () => {
   beforeEach(cleanup);
 
@@ -163,6 +169,26 @@ describe('InputNumber', () => {
     const input = getByTestId('input5');
     fireEvent.blur(input);
     expect(spy).toBeCalledWith('0.3', expect.anything());
+  });
+
+  test.concurrent('Should correctly render for different locales', async ({ task }) => {
+    const component = (
+      <snapshot.ProxyProps style={{ margin: 5 }}>
+        <div>
+          EN (default):
+          <InputNumber>
+            <InputNumber.Value data-testid='input5' value='999999' />
+          </InputNumber>
+        </div>
+        <div>
+          DE:
+          <InputNumber locale={'de'}>
+            <InputNumber.Value data-testid='input5' value='999999' />
+          </InputNumber>
+        </div>
+      </snapshot.ProxyProps>
+    );
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
   test.sequential('Should correct round float numbers with step more than 1', () => {

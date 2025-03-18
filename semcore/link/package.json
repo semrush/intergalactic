@@ -1,7 +1,7 @@
 {
   "name": "@semcore/link",
   "description": "Semrush Link Component",
-  "version": "5.43.1",
+  "version": "5.44.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -9,13 +9,18 @@
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "pnpm semcore-builder --source=js"
+    "build": "pnpm semcore-builder --source=js && pnpm vite build"
+  },
+  "exports": {
+    "require": "./lib/cjs/index.js",
+    "import": "./lib/esm/index.mjs",
+    "types": "./lib/types/index.d.ts"
   },
   "dependencies": {
-    "@semcore/utils": "4.45.1",
-    "@semcore/typography": "5.51.1",
-    "@semcore/flex-box": "5.40.1",
-    "@semcore/tooltip": "6.47.3"
+    "@semcore/utils": "4.48.0",
+    "@semcore/typography": "5.52.0",
+    "@semcore/flex-box": "5.41.0",
+    "@semcore/tooltip": "6.49.0"
   },
   "peerDependencies": {
     "@semcore/core": "^2.17.5",

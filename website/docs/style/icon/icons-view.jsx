@@ -10,8 +10,11 @@ import { NoData } from '@semcore/widget-empty';
 import SearchM from '@semcore/icon/Search/m';
 import CloseM from '@semcore/icon/Close/m';
 import { algoliaConfig } from '../../../algoliaConfig';
+import { logEvent } from '../../.vitepress/theme/amplitude/amplitude';
 
 const searchClient = algoliasearch(algoliaConfig.appName, algoliaConfig.openKey);
+
+let searchTimer = 0;
 
 const SuggestSearch = connectAutoComplete(
   ({ currentRefinement, refine, hits, filteredIcons, onChangeValue, ...others }) => {
@@ -19,6 +22,12 @@ const SuggestSearch = connectAutoComplete(
 
     const handleChangeValue = (value) => {
       onChangeValue(value);
+
+      clearTimeout(searchTimer);
+      searchTimer = setTimeout(() => {
+        logEvent('icon:search', { value });
+      }, 500);
+
       return refine(value);
     };
 

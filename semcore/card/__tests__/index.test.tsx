@@ -10,6 +10,11 @@ import SettingsM from '@semcore/icon/Settings/m';
 
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 import Card from '../src';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('Card Dependency imports', () => {
+  runDependencyCheckTests('card');
+});
 
 describe('Card', () => {
   beforeEach(cleanup);

@@ -567,6 +567,27 @@ video {
   margin-top: 24px;
 }
 
+/* Styles for changelogs */
+.vp-doc .custom-block.details {
+  margin: 0;
+  background: transparent;
+  padding: 0;
+}
+.vp-doc .custom-block.details summary {
+  font-weight: 500;
+  margin: 0;
+  color: var(--vp-c-text-2);
+}
+.vp-doc .collapsed-versions {
+  background: var(--vp-custom-block-info-bg);
+  padding: 16px 16px;
+  border-radius: 6px;
+  margin: 32px 0;
+}
+.vp-doc .collapsed-versions h2 {
+  margin: 0 0 12px;
+}
+
 /* To remove hover styles that our components in the sandboxes are inheriting from the website */
 
 h1[class],

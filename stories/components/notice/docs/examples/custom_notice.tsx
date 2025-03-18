@@ -9,12 +9,17 @@ const Demo = () => (
       <Calendar />
     </Notice.Label>
     <Notice.Content>
-      <Notice.Title size={400}>Strategize your next move with daily and weekly traffic data</Notice.Title>
+      <Notice.Title size={400}>
+        Strategize your next move with daily and weekly traffic data
+      </Notice.Title>
       <Notice.Text size={300}>
-        Gather insights on your competitors' daily and weekly web traffic at no cost until the next month.
+        Gather insights on your competitors' daily and weekly web traffic at no cost until the next
+        month.
       </Notice.Text>
       <Notice.Actions>
-        <Button use='primary' size='l'>Got it</Button>
+        <Button use='primary' size='l'>
+          Got it
+        </Button>
       </Notice.Actions>
     </Notice.Content>
     <Notice.Close size='l' />

@@ -6,6 +6,12 @@ import { axe } from '@semcore/testing-utils/axe';
 
 import Dropdown from '../src';
 
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+describe('dropdown Dependency imports', () => {
+  runDependencyCheckTests('dropdown');
+});
+
 describe('Dropdown', () => {
   beforeEach(cleanup);
 

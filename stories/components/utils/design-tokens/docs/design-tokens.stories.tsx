@@ -12,7 +12,7 @@ export const ThemeProvider: StoryObj = {
 };
 
 export const TokensWithCustomComponent: StoryObj = {
-    render: TokensWithCustomComponentExample,
-  };
+  render: TokensWithCustomComponentExample,
+};
 
 export default meta;

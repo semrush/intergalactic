@@ -5,8 +5,6 @@ import { Flex } from '@semcore/flex-box';
 import Coffee from '@semcore/illustration/Coffee';
 import MailSent from '@semcore/illustration/MailSent';
 
-
-
 const Demo = () => (
   <Flex direction='column'>
     <Notice aria-label='Notice' mb={2}>
@@ -18,7 +16,8 @@ const Demo = () => (
         <Notice.Title>Your subscription has expired</Notice.Title>
 
         <Notice.Text>
-        49 out of your 50 projects are now locked. They will be deleted in 7 days (on August 22). To unlock your projects, please upgrade your subscription.
+          49 out of your 50 projects are now locked. They will be deleted in 7 days (on August 22).
+          To unlock your projects, please upgrade your subscription.
         </Notice.Text>
 
         <Notice.Actions>
@@ -40,7 +39,8 @@ const Demo = () => (
         <Notice.Title>Your subscription has expired</Notice.Title>
 
         <Notice.Text>
-        49 out of your 50 projects are now locked. They will be deleted in 7 days (on August 22). To unlock your projects, please upgrade your subscription.
+          49 out of your 50 projects are now locked. They will be deleted in 7 days (on August 22).
+          To unlock your projects, please upgrade your subscription.
         </Notice.Text>
 
         <Notice.Actions>
@@ -114,7 +114,8 @@ const Demo = () => (
         <Notice.Title>Your subscription has expired</Notice.Title>
 
         <Notice.Text>
-        49 out of your 50 projects are now locked. They will be deleted in 7 days (on August 22). To unlock your projects, please upgrade your subscription.
+          49 out of your 50 projects are now locked. They will be deleted in 7 days (on August 22).
+          To unlock your projects, please upgrade your subscription.
         </Notice.Text>
 
         <Notice.Actions>

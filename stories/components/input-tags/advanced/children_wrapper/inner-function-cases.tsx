@@ -6,13 +6,14 @@ import { Text, List } from '@semcore/ui/typography';
 
 const TAGUS = () => (
   <InputTags.Tag>
-    <InputTags.Tag.Text><InputTags.Tag.Circle
+    <InputTags.Tag.Text>
+      <InputTags.Tag.Circle
         style={{
-          background: '#2595e4'
+          background: '#2595e4',
         }}
-      /> 
+      />
       <InputTags.Tag.Text.Content>Tag With text and addon</InputTags.Tag.Text.Content>
-      </InputTags.Tag.Text>
+    </InputTags.Tag.Text>
     <InputTags.Tag.Close />
   </InputTags.Tag>
 );
@@ -73,10 +74,10 @@ const Inner2 = ({
 }: InputWrapperProps & { tags: string[] }) => {
   return (
     <>
-     <InputTags.TagsContainer>
-      {tags.map((tag) => (
-        <TAGUS key={tag} />
-      ))}
+      <InputTags.TagsContainer>
+        {tags.map((tag) => (
+          <TAGUS key={tag} />
+        ))}
       </InputTags.TagsContainer>
       <InputWrapper
         value={value}
@@ -148,10 +149,9 @@ const Demo = () => {
 
   return (
     <>
-
-<Notice mb={2} theme='danger'>
+      <Notice mb={2} theme='danger'>
         <Notice.Content>
-        <Text size={200} mb={2} >
+          <Text size={200} mb={2}>
             Case1: InputTags without TagContainer + Inner function(Tagus+InputWrapper)
           </Text>
           <InputTags mt={2} size='l' onAppend={handleAppendTags} onRemove={handleRemoveTag}>
@@ -160,7 +160,7 @@ const Demo = () => {
                 <InputTags.Tag.Text>123</InputTags.Tag.Text>
               </InputTags.Tag>
             ))}
-             <Inner
+            <Inner
               value={value}
               setValue={setValue}
               handleInputKeyDown={handleInputKeyDown}
@@ -173,18 +173,18 @@ const Demo = () => {
 
       <Notice mb={2} theme='danger'>
         <Notice.Content>
-        <Text size={200} mb={2} >
+          <Text size={200} mb={2}>
             Case2: InputTags with TagContainer + Inner function(Tagus+InputWrapper)
           </Text>
           <InputTags mt={2} size='l' onAppend={handleAppendTags} onRemove={handleRemoveTag}>
-          <InputTags.TagsContainer>
-            {tags.map((tag, idx) => (
-              <InputTags.Tag key={tag}>
-                <InputTags.Tag.Text>123</InputTags.Tag.Text>
-              </InputTags.Tag>
-            ))}
+            <InputTags.TagsContainer>
+              {tags.map((tag, idx) => (
+                <InputTags.Tag key={tag}>
+                  <InputTags.Tag.Text>123</InputTags.Tag.Text>
+                </InputTags.Tag>
+              ))}
             </InputTags.TagsContainer>
-             <Inner
+            <Inner
               value={value}
               setValue={setValue}
               handleInputKeyDown={handleInputKeyDown}
@@ -197,7 +197,7 @@ const Demo = () => {
 
       <Notice mb={2} theme='danger'>
         <Notice.Content>
-        <Text size={200} mb={2} >
+          <Text size={200} mb={2}>
             Case3: Tagus with TagContainer + Inner function(Tagus+InputWrapper)
           </Text>
           <InputTags mt={2} size='l' onAppend={handleAppendTags} onRemove={handleRemoveTag}>
@@ -219,7 +219,7 @@ const Demo = () => {
 
       <Notice mb={2} theme='danger'>
         <Notice.Content>
-        <Text size={200} mb={2} >
+          <Text size={200} mb={2}>
             Case4: Tagus without TagContainer + Inner function(Tagus+InputWrapper)
           </Text>
           <InputTags mt={2} size='l' onAppend={handleAppendTags} onRemove={handleRemoveTag}>
@@ -239,7 +239,7 @@ const Demo = () => {
 
       <Notice mb={2} theme='danger'>
         <Notice.Content>
-        <Text size={200} mb={2} >
+          <Text size={200} mb={2}>
             Case5: Inner function(Tagus+InputWrapper) only
           </Text>
           <InputTags mt={2} size='l' onAppend={handleAppendTags} onRemove={handleRemoveTag}>
@@ -256,8 +256,8 @@ const Demo = () => {
 
       <Notice mb={2} theme='danger'>
         <Notice.Content>
-        <Text size={200} mb={2} >
-            Case6: Inner with Tag Container function(Tagus+InputWrapper) 
+          <Text size={200} mb={2}>
+            Case6: Inner with Tag Container function(Tagus+InputWrapper)
           </Text>
           <InputTags mt={2} size='l' onAppend={handleAppendTags} onRemove={handleRemoveTag}>
             <Inner2

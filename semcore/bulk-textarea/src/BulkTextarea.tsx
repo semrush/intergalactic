@@ -18,7 +18,7 @@ type State = {
   isEmptyText: boolean;
   errorIndex: number;
   highlightErrorIndex: boolean;
-  lastError?: InputFieldProps['errors'][number];
+  prevError?: InputFieldProps['errors'][number];
 };
 
 class BulkTextareaRoot extends Component<
@@ -92,7 +92,7 @@ class BulkTextareaRoot extends Component<
       errors = [],
       showErrors,
     } = this.asProps;
-    const { errorIndex, lastError, linesCount, highlightErrorIndex } = this.state;
+    const { errorIndex, prevError, linesCount, highlightErrorIndex } = this.state;
 
     return {
       value,
@@ -104,7 +104,7 @@ class BulkTextareaRoot extends Component<
       maxRows,
       maxLines,
       placeholder,
-      lastError,
+      prevError,
       pasteProps,
       linesCount,
       lineProcessing,
@@ -139,9 +139,9 @@ class BulkTextareaRoot extends Component<
       lineValidation: lineValidation,
       errors,
       onErrorsChange: (newErrors: InputFieldProps['errors']) => {
-        const lastError = newErrors.length === 0 ? errors[0] : undefined;
+        const prevError = newErrors.length === 0 ? errors[0] : undefined;
         this.handlers.errors(newErrors);
-        this.setState({ lastError });
+        this.setState({ prevError });
         setTimeout(() => {
           const { showErrors, errors } = this.asProps;
           if (showErrors) {
@@ -152,15 +152,17 @@ class BulkTextareaRoot extends Component<
             this.handlers.showErrors(false);
 
             setTimeout(() => {
-              this.setState({ lastError: undefined });
+              this.setState({ prevError: undefined });
             }, 150);
           }
         }, 10); // this timeout to be sure that code will be after state change
       },
       highlightErrorIndex,
       errorIndex,
-      onErrorIndexChange: (errorIndex: number) => {
-        this.setState({ errorIndex, highlightErrorIndex: false });
+      onErrorIndexChange: (newErrorIndex: number) => {
+        const prevError = errors[errorIndex];
+
+        this.setState({ errorIndex: newErrorIndex, prevError, highlightErrorIndex: false });
       },
       linesDelimiters,
       ref: this.inputFieldRef,

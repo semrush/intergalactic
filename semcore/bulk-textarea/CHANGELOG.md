@@ -2,6 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.1.0] - 2025-03-14
+
+### Added
+
+- Build for ESM.
+
+## [1.0.6] - 2025-03-06
+
+### Fixed
+
+- Tooltip issues when using bulk-textarea without common error message.
+
+## [1.0.5] - 2025-03-03
+
+### Added
+
+- White background for both light and dark themes.
+
 ## [1.0.4] - 2025-02-07
 
 ### Fixed

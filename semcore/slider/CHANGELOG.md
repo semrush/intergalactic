@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.41.0] - 2025-03-14
+
+### Added
+
+- Build for ESM.
+
 ## [4.40.1] - 2025-02-05
 
 ### Changed
@@ -670,7 +676,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Fixed default color
 
-## [1.0.2] - 2021-8-26
+## [1.0.2] - 2021-08-26
 
 ### Changed
 
@@ -682,19 +688,19 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - [ts] correct types.
 
-## [1.0.0] - 2021-22-06
+## [1.0.0] - 2021-06-22
 
 ### Changed
 
 - Stable release
 
-## [1.0.0-2] - 2021-22-06
+## [1.0.0-2] - 2021-06-22
 
 ### Added
 
 - Added box-sizing
 
-## [1.0.0-1] - 2021-24-05
+## [1.0.0-1] - 2021-05-24
 
 ### Added
 
@@ -705,7 +711,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Added value update during move
 
-## [1.0.0-prerelease.10] - 2021-27-04
+## [1.0.0-prerelease.10] - 2021-04-27
 
 ### Added
 

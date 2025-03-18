@@ -11,7 +11,8 @@ const outputFile = util.promisify(fs.outputFile);
 const readFile = util.promisify(fs.readFile);
 
 const rootDir = process.cwd();
-const packageJson = require(path.resolve(rootDir, 'package.json'));
+const packageJsonPath = path.resolve(rootDir, 'package.json');
+const packageJson = require(packageJsonPath);
 process.chdir(__dirname);
 let customConfig = () => {};
 
@@ -36,6 +37,18 @@ function getDescriptionExternalIcons(iconPath, outLib) {
     name: `${group}${name}`,
     location,
     group,
+    type: null,
+  };
+}
+
+function getDescriptionPlatformIcons(iconPath, outLib) {
+  const name = path.basename(iconPath, '.svg');
+  const location = `${outLib}/${name}/index.js`;
+  return {
+    name,
+    location,
+    group: '',
+    type: null,
   };
 }
 
@@ -52,6 +65,7 @@ function getDescriptionIcons(iconPath, outLib) {
     name,
     location,
     group: size,
+    type: outLib.split('/')[1],
   };
 }
 
@@ -97,7 +111,7 @@ function patchClipPath($svg, name, group) {
   patchSvg($svg, 'g', 'clipPath', name, group);
 }
 
-async function svgToReactComponent(iconPath, name, group) {
+async function svgToReactComponent({ iconPath, name, group, type, buildType }) {
   try {
     const svg = await readFile(iconPath, 'utf-8');
 
@@ -121,6 +135,8 @@ async function svgToReactComponent(iconPath, name, group) {
       dataName: name,
       dataGroup: group.toLowerCase(),
       name,
+      type,
+      buildType,
     });
 
     return source;
@@ -139,10 +155,23 @@ const generateIcons = (
     glob(`${rootDir}/${sourceLib}/**/*svg`, async (err, icons) => {
       if (err) reject(err);
       const results = icons.map(async (iconPath) => {
-        const { name, location, group } = getDescriptionIcons(iconPath, outLib);
-        const source = await svgToReactComponent(iconPath, name, group);
-        const cjs = await babel.transformAsync(source, babelConfig);
-        const esm = await babel.transformAsync(source, { presets: ['@babel/preset-react'] });
+        const { name, location, type, group } = getDescriptionIcons(iconPath, outLib);
+        const sourceCjs = await svgToReactComponent({
+          iconPath,
+          name,
+          type,
+          buildType: 'cjs',
+          group,
+        });
+        const sourceEsm = await svgToReactComponent({
+          iconPath,
+          name,
+          type,
+          buildType: 'esm',
+          group,
+        });
+        const cjs = await babel.transformAsync(sourceCjs, babelConfig);
+        const esm = await babel.transformAsync(sourceEsm, { presets: ['@babel/preset-react'] });
 
         outputFile(path.join(rootDir, location), cjs.code);
         outputFile(path.join(rootDir, location.replace('.js', '.mjs')), esm.code);
@@ -164,7 +193,37 @@ function getDescriptionPayIcons(iconPath, outLib) {
     name,
     location,
     group: '',
+    type: 'pay',
   };
+}
+
+async function patchExports(result) {
+  const exports = {
+    '.': {
+      require: './lib/cjs/index.js',
+      import: './lib/esm/index.mjs',
+      types: './lib/types/index.d.ts',
+    },
+  };
+
+  result.forEach((items) => {
+    items.forEach((item) => {
+      const location = item.location.split('/').slice(0, -1).join('/');
+
+      exports[location] = {
+        require: `${location}/index.js`,
+        import: `${location}/index.mjs`,
+        types: `${location}/index.d.ts`,
+      };
+    });
+  });
+
+  packageJson.exports = exports;
+
+  await fs.writeJSON(packageJsonPath, packageJson, { spaces: 2 });
+
+  // biome-ignore lint/suspicious/noConsoleLog:
+  console.log('Patched exports in package.json.');
 }
 
 module.exports = function () {
@@ -174,9 +233,12 @@ module.exports = function () {
       getDescriptionIcons,
       getDescriptionExternalIcons,
       getDescriptionPayIcons,
+      getDescriptionPlatformIcons,
     }),
   )
-    .then(() => {
+    .then(async (result) => {
+      await patchExports(result);
+
       // biome-ignore lint/suspicious/noConsoleLog:
       console.log('Done! Wrote all icon files.');
     })

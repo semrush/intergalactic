@@ -9,7 +9,7 @@ export interface INoticeBubbleContainerProps
 export type NoticeBubbleContainerProps = BoxProps &
   PortalProps & {
     /** Manager copy */
-    manager?: NoticeBubbleManager;
+    manager?: NoticeBubbleManagerClass;
     locale?: string;
   };
 
