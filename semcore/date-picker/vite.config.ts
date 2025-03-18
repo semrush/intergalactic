@@ -16,7 +16,7 @@ export default mergeConfig(
           'react/jsx-runtime',
           /@babel\/runtime\/*/,
           /@semcore\/*/,
-          'dayjs',
+          /dayjs*/,
         ],
       },
     },
