@@ -1,3 +1,17 @@
+## [15.126.1] - 2025-03-18
+
+### @semcore/date-picker
+
+- **Fixed** `dayjs` external setting in vite config.
+
+### @semcore/icon
+
+- **Added** Exports to package.json.
+
+### @semcore/utils
+
+- **Added** `color` and `if` utils to the exports list.
+
 ## [15.126.0] - 2025-03-14
 
 ### @semcore/accordion
