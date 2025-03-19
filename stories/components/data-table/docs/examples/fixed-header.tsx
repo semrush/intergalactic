@@ -7,28 +7,27 @@ const Demo = () => {
 
   return (
     <>
-      <DataTable wMax={100} data={data} aria-label={'Fixed header'}>
-        
-          <DataTable.Head  wMax={100}  withScrollBar>
+      <DataTable data={data} aria-label={'Fixed header'}>
+        <Box position='sticky' top={top} zIndex={2}>
+          <DataTable.Head wMin={1000}>
             <DataTable.Column name='keyword' children='Keyword' />
             <DataTable.Column name='kd' children='KD,%' />
             <DataTable.Column name='cpc' children='CPC' />
             <DataTable.Column name='vol' children='Vol.' />
           </DataTable.Head>
-       
+        </Box>
         <DataTable.Body />
       </DataTable>
       <h3>with Scroll.Bar in Header</h3>
-
-      <DataTable data={data} wMax={100} aria-label={'Fixed header with scroll'}>
-
-          <DataTable.Head wMax={100} withScrollBar>
+      <DataTable data={data} aria-label={'Fixed header with scroll'}>
+        <Box position='sticky' top={top} zIndex={2}>
+          <DataTable.Head wMin={1000} withScrollBar>
             <DataTable.Column name='keyword' children='Keyword' />
             <DataTable.Column name='kd' children='KD,%' />
             <DataTable.Column name='cpc' children='CPC' />
             <DataTable.Column name='vol' children='Vol.' />
           </DataTable.Head>
-
+        </Box>
         <DataTable.Body />
       </DataTable>
     </>
