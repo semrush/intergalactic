@@ -19,7 +19,7 @@ export type ButtonSize = 'l' | 'm';
 type Use = 'primary' | 'secondary' | 'tertiary';
 
 /** Button theme */
-type Theme = 'info' | 'success' | 'warning' | 'danger' | 'muted' | 'invert';
+type Theme = 'info' | 'success' | 'brand' | 'warning' | 'danger' | 'muted' | 'invert';
 
 /** @deprecated */
 export interface IButtonProps extends ButtonProps, UnknownProperties {}
