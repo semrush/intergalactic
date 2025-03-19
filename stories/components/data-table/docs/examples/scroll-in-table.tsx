@@ -1,15 +1,21 @@
 import React from 'react';
 import DataTable from '@semcore/data-table';
+import { Box } from '@semcore/flex-box';
 
 const Demo = () => {
+  const top = 0; // Here should be height of Header in your application
+
   return (
     <DataTable data={data} aria-label={'Scroll inside'}>
+              <Box position='sticky' top={top} zIndex={2}>
+
       <DataTable.Head wMin={1000}>
         <DataTable.Column name='keyword' children='Keyword' />
         <DataTable.Column name='kd' children='KD,%' />
         <DataTable.Column name='cpc' children='CPC' />
         <DataTable.Column name='vol' children='Vol.' />
       </DataTable.Head>
+      </Box>
       <DataTable.Body hMax={200} />
     </DataTable>
   );
