@@ -29,8 +29,7 @@ describe('List', () => {
 
   test('Nested List.Item should have display flex for content', async ({ task }) => {
     const component = (
-      <List >
-
+      <List>
         <List.Item marker={null} data-testid={'itemToCheck'}>
           List item 3
           <List>
