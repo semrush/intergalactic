@@ -51,7 +51,11 @@ export abstract class AbstractButton extends Component<Props, {}, {}> {
         this.asProps['data-ui-name'] || AbstractButton.displayName,
       );
 
-      logger.warn(this.asProps.theme === 'warning', 'Warning theme is deprecated and will be removed in the next major release.', this.asProps['data-ui-name'] || AbstractButton.displayName)
+      logger.warn(
+        this.asProps.theme === 'warning',
+        'Warning theme is deprecated and will be removed in the next major release.',
+        this.asProps['data-ui-name'] || AbstractButton.displayName,
+      );
     }
 
     const ariaLabelledby = this.asProps['aria-labelledby'];
