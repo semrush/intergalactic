@@ -628,6 +628,9 @@ importers:
       '@semcore/input':
         specifier: 16.0.0
         version: link:../input
+      '@semcore/popper':
+        specifier: 16.0.0
+        version: link:../popper
       '@semcore/tooltip':
         specifier: 16.0.0
         version: link:../tooltip
@@ -730,6 +733,9 @@ importers:
       '@semcore/popper':
         specifier: 16.0.0
         version: link:../popper
+      '@semcore/typography':
+        specifier: 16.0.0
+        version: link:../typography
       '@types/d3-shape':
         specifier: ^3.1.0
         version: 3.1.1
@@ -782,9 +788,6 @@ importers:
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
-      '@semcore/typography':
-        specifier: '*'
-        version: link:../typography
       '@semcore/utils':
         specifier: '*'
         version: 4.44.1(react-dom@18.2.0)(react@18.2.0)
@@ -897,6 +900,9 @@ importers:
       '@semcore/neighbor-location':
         specifier: 16.0.0
         version: link:../neighbor-location
+      '@semcore/popper':
+        specifier: 16.0.0
+        version: link:../popper
       '@semcore/tooltip':
         specifier: 16.0.0
         version: link:../tooltip
@@ -1016,6 +1022,9 @@ importers:
       '@semcore/base-components':
         specifier: ^16.0.0
         version: link:../base-components
+      '@semcore/button':
+        specifier: 16.0.0
+        version: link:../button
       '@semcore/dropdown':
         specifier: 16.0.0
         version: link:../dropdown
@@ -1038,9 +1047,6 @@ importers:
       '@semcore/base-trigger':
         specifier: 4.26.1
         version: 4.26.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/button':
-        specifier: workspace:*
-        version: link:../button
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
@@ -1106,6 +1112,9 @@ importers:
       '@semcore/base-components':
         specifier: ^16.0.0
         version: link:../base-components
+      '@semcore/button':
+        specifier: 16.0.0
+        version: link:../button
       '@semcore/flex-box':
         specifier: 16.0.0
         version: link:../flex-box
@@ -1116,9 +1125,6 @@ importers:
         specifier: 16.0.0
         version: link:../popper
     devDependencies:
-      '@semcore/button':
-        specifier: '*'
-        version: link:../button
       '@semcore/dropdown-menu':
         specifier: '*'
         version: link:../dropdown-menu
@@ -1497,6 +1503,9 @@ importers:
       '@semcore/base-components':
         specifier: ^16.0.0
         version: link:../base-components
+      '@semcore/flex-box':
+        specifier: 16.0.0
+        version: link:../flex-box
       '@semcore/input':
         specifier: 16.0.0
         version: link:../input
@@ -1513,9 +1522,6 @@ importers:
       '@semcore/button':
         specifier: '*'
         version: link:../button
-      '@semcore/flex-box':
-        specifier: '*'
-        version: link:../flex-box
       '@semcore/icon':
         specifier: '*'
         version: link:../icon
@@ -1584,6 +1590,9 @@ importers:
       '@semcore/base-components':
         specifier: ^16.0.0
         version: link:../base-components
+      '@semcore/button':
+        specifier: 16.0.0
+        version: link:../button
       '@semcore/flex-box':
         specifier: 16.0.0
         version: link:../flex-box
@@ -1633,6 +1642,9 @@ importers:
       '@semcore/notice-global':
         specifier: 16.0.0
         version: link:../notice-global
+      '@semcore/typography':
+        specifier: 16.0.0
+        version: link:../typography
     devDependencies:
       '@semcore/testing-utils':
         specifier: 1.0.0
@@ -1677,6 +1689,9 @@ importers:
       '@semcore/base-components':
         specifier: ^16.0.0
         version: link:../base-components
+      '@semcore/button':
+        specifier: 16.0.0
+        version: link:../button
       '@semcore/flex-box':
         specifier: 16.0.0
         version: link:../flex-box
@@ -1711,6 +1726,9 @@ importers:
       '@semcore/icon':
         specifier: 16.0.0
         version: link:../icon
+      '@semcore/input':
+        specifier: 16.0.0
+        version: link:../input
       '@semcore/input-number':
         specifier: 16.0.0
         version: link:../input-number
@@ -1885,6 +1903,9 @@ importers:
       '@semcore/base-components':
         specifier: ^16.0.0
         version: link:../base-components
+      '@semcore/button':
+        specifier: 16.0.0
+        version: link:../button
       '@semcore/flex-box':
         specifier: 16.0.0
         version: link:../flex-box
@@ -2494,6 +2515,9 @@ importers:
       '@semcore/base-components':
         specifier: ^16.0.0
         version: link:../base-components
+      '@semcore/button':
+        specifier: 16.0.0
+        version: link:../button
       '@semcore/flex-box':
         specifier: 16.0.0
         version: link:../flex-box

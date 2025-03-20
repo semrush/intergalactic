@@ -21,6 +21,7 @@
     "@semcore/button": "16.0.0",
     "@semcore/icon": "16.0.0",
     "@semcore/input-number": "16.0.0",
+    "@semcore/input": "16.0.0",
     "@semcore/link": "16.0.0",
     "@semcore/tooltip": "16.0.0",
     "@semcore/typography": "16.0.0"

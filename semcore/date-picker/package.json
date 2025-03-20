@@ -20,6 +20,7 @@
     "@semcore/base-trigger": "16.0.0",
     "@semcore/button": "16.0.0",
     "@semcore/divider": "16.0.0",
+    "@semcore/popper": "16.0.0",
     "@semcore/dropdown": "16.0.0",
     "@semcore/icon": "16.0.0",
     "@semcore/input": "16.0.0",
