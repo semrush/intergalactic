@@ -1,9 +1,9 @@
-SHoverLine {
+SHoverLine, SHoverLine:focus-visible {
   outline: none;
   stroke: var(--intergalactic-chart-grid-x-axis, #c4c7cf);
 }
 
-SHoverRect {
+SHoverRect, SHoverRect:focus-visible {
   outline: none;
   fill: var(--intergalactic-chart-grid-bar-chart-hover, rgba(196, 199, 207, 0.3));
 }

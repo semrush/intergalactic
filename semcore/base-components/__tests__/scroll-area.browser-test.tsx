@@ -58,7 +58,7 @@ test.describe('ScrollArea - Basic Usage', () => {
     const nowNumber = await checkScrollNowIncreased(scrollBar);
     expect(nowNumber).toBeLessThanOrEqual(initialValue);
 
-    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.03 });
+    await expect(page).toHaveScreenshot();
   });
 
   test('Verify mouse scroll', async ({ page }) => {
@@ -76,7 +76,7 @@ test.describe('ScrollArea - Basic Usage', () => {
     // check that aria-valuenow > 0 because it differs a bit on each browser and screen size
     const nowNumber = await checkScrollNowIncreased(scrollBar);
     expect(nowNumber).toBeLessThanOrEqual(initialValue);
-    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.03 });
+    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
   });
 });
 
@@ -298,7 +298,7 @@ test.describe('ScrollArea - Horizontal scroll with Shadow and offset', () => {
     expect(mainNowValue2).toBeGreaterThan(0);
     const mainMaxValue2 = await checkAriaMaxValue(scrollBar);
     expect(mainMaxValue2).toEqual(mainMaxValue);
-    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.03 });
+    await expect(page).toHaveScreenshot();
   });
 
   test('Verify vertical scroll with shadow and ring offsets', async ({ page }) => {
@@ -342,7 +342,7 @@ test.describe('ScrollArea - Horizontal scroll with Shadow and offset', () => {
     await scrollContainer.hover();
     await page.mouse.wheel(0, 100);
     await page.waitForTimeout(500);
-    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.03 });
+    await expect(page).toHaveScreenshot();
   });
 
   test('Verify observe parent size', async ({ page }) => {

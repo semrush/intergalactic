@@ -148,7 +148,7 @@ class Toggle extends Component {
         use={use}
         ref={this.toggleRef}
         render={Text}
-        innerOffset
+        innerOutline
         onKeyDown={this.handleKeyDown}
       />,
     );

@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "@semcore/animation": "16.0.0",
+    "@semcore/button": "16.0.0",
     "@semcore/flex-box": "16.0.0",
     "@semcore/portal": "16.0.0",
     "@semcore/outside-click": "16.0.0",

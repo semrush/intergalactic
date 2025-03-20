@@ -290,7 +290,7 @@ if (!(globalThis as any)[globalFocusLockHookKey]) {
 
 export const useFocusLock = (
   trapRef: React.RefObject<HTMLElement>,
-  autoFocus: boolean,
+  autoFocus: boolean | 'enforced',
   returnFocusTo: React.RefObject<HTMLElement> | null | 'auto',
   disabled = false,
   focusMaster = false,

@@ -42,12 +42,6 @@ SColumn {
   color: var(--intergalactic-text-primary, #191b23);
   box-sizing: border-box;
   position: relative;
-
-  &:focus-visible {
-    outline: none;
-    box-shadow: inset var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
-  }
-
   transition: width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out, min-width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out, max-width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
 }
 
@@ -388,19 +382,6 @@ SCell[theme='warning'] {
 
 SCell[theme='danger'] {
   background-color: var(--intergalactic-table-td-cell-critical, #fff0f7);
-}
-
-SCell:focus-visible:not([fixed]) {
-  position: relative;
-}
-
-SCell:focus-visible::after {
-  position: absolute;
-  display: block;
-  content: '';
-  inset: 3px;
-  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
-  pointer-events: none;
 }
 
 SHeightHold {
