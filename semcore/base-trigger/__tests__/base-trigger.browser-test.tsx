@@ -150,7 +150,7 @@ test.describe('Base-trigger', () => {
     await page.setContent(htmlContent);
     const button = page.locator('[id="device-button-select"]');
     await button.click();
-    const initialWidth = await button.boundingBox().then(b => b?.width || 0);
+    const initialWidth = await button.boundingBox().then((b) => b?.width || 0);
 
     const option = page.getByRole('option', { name: 'One' });
     await expect(option).toBeVisible();
@@ -161,9 +161,8 @@ test.describe('Base-trigger', () => {
     await option.click();
     await page.waitForTimeout(50);
     await expect(page.locator('[id="device-button-select"]')).toHaveAttribute('value', 'One');
-    const finalWidth = await button.boundingBox().then(b => b?.width || 0);
+    const finalWidth = await button.boundingBox().then((b) => b?.width || 0);
     expect(finalWidth).toBeLessThan(initialWidth);
-
   });
 
   test('Mouse and Keyboard navigation', async ({ page }) => {

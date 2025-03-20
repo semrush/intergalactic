@@ -121,74 +121,68 @@ test.describe('Button-trigger', () => {
     });
   });
 
-        test('Keyboard navigation', async ({ page }) => {
+  test('Keyboard navigation', async ({ page }) => {
+    const standPath = 'stories/components/select/docs/examples/basic_usage.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
 
-          const standPath = 'stories/components/select/docs/examples/basic_usage.tsx';
-          const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+    const button = page.getByRole('combobox');
+    await page.keyboard.press('Tab');
+    await expect(button).toBeFocused();
+    await page.keyboard.press('ArrowDown');
+    const option = page.getByRole('option', { name: 'Option 0' });
+    await expect(option).toBeVisible();
+    await expect(option).toHaveClass(/highlighted/);
+    await page.keyboard.press('Escape');
+    await expect(option).not.toBeVisible();
 
-          await page.setContent(htmlContent);
-const button = page.getByRole('combobox');
-          await page.keyboard.press('Tab');
-          await expect (button).toBeFocused();
-          await page.keyboard.press('ArrowDown');
-          const option = page.getByRole('option', { name: 'Option 0' });
-  await expect(option).toBeVisible();
-  await expect(option).toHaveClass(/highlighted/);
-  await page.keyboard.press('Escape');
-  await expect(option).not.toBeVisible();
+    await expect(button).toBeFocused();
+    await page.keyboard.press('Enter');
+    await expect(option).toBeVisible();
+    await expect(option).toHaveClass(/highlighted/);
+    await page.keyboard.press('Space');
+    await expect(button).toBeFocused();
+    await expect(button).toHaveAttribute('value', '0');
+  });
 
-  await expect (button).toBeFocused();
-  await page.keyboard.press('Enter');
-  await expect(option).toBeVisible();
-  await expect(option).toHaveClass(/highlighted/);
-  await page.keyboard.press('Space');
-  await expect (button).toBeFocused();
-  await expect (button).toHaveAttribute('value','0');
+  test('Mouse navigation', async ({ page }) => {
+    const standPath = 'stories/components/select/docs/examples/basic_usage.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
 
-        });
+    await page.setContent(htmlContent);
+    const button = page.getByRole('combobox');
+    const initialWidth = await button.boundingBox().then((b) => b?.width || 0);
+    await button.click();
 
-        test('Mouse navigation', async ({ page }) => {
+    const option = page.getByRole('option', { name: 'Option 0' });
+    await expect(option).toBeVisible();
+    await expect(option).not.toHaveClass(/highlighted/);
+    await button.click();
+    await expect(option).not.toBeVisible();
+    await button.click();
+    await option.click();
+    await page.waitForTimeout(50);
+    await expect(button).toHaveAttribute('value', '0');
+    const finalWidth = await button.boundingBox().then((b) => b?.width || 0);
+    expect(finalWidth).toBeLessThan(initialWidth);
+  });
 
-          const standPath = 'stories/components/select/docs/examples/basic_usage.tsx';
-          const htmlContent = await e2eStandToHtml(standPath, 'en');
+  test('Mouse and Keyboard navigation', async ({ page }) => {
+    const standPath = 'stories/components/select/docs/examples/basic_usage.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
 
-          await page.setContent(htmlContent);
-            const button = page.getByRole('combobox');
-            const initialWidth = await button.boundingBox().then(b => b?.width || 0);
-          await button.click();
-
-          const option = page.getByRole('option', { name: 'Option 0' });
-  await expect(option).toBeVisible();
-  await expect(option).not.toHaveClass(/highlighted/);
-  await button.click();
-  await expect(option).not.toBeVisible();
-  await button.click();
-  await option.click();
-  await page.waitForTimeout(50);
-  await expect(button).toHaveAttribute('value', '0');
-  const finalWidth = await button.boundingBox().then(b => b?.width || 0);
-  expect(finalWidth).toBeLessThan(initialWidth);
-
-        });
-
-        test('Mouse and Keyboard navigation', async ({ page }) => {
-
-          const standPath = 'stories/components/select/docs/examples/basic_usage.tsx';
-                    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-          await page.setContent(htmlContent);
-          const button = page.getByRole('combobox');
-          await button.click();
-          await page.keyboard.press('ArrowDown');
-          const option = page.getByRole('option', { name: 'Option 1' });
-  await expect(option).toBeVisible();
-  await expect(option).toHaveClass(/highlighted/);
-  await button.click();
-  await expect(option).not.toBeVisible();
-  await expect (button).not.toHaveAttribute('value','Option 1');
-  await button.click();
-  await option.click();
-  await expect (button).toHaveAttribute('value','1');
-
-        });
+    await page.setContent(htmlContent);
+    const button = page.getByRole('combobox');
+    await button.click();
+    await page.keyboard.press('ArrowDown');
+    const option = page.getByRole('option', { name: 'Option 1' });
+    await expect(option).toBeVisible();
+    await expect(option).toHaveClass(/highlighted/);
+    await button.click();
+    await expect(option).not.toBeVisible();
+    await expect(button).not.toHaveAttribute('value', 'Option 1');
+    await button.click();
+    await option.click();
+    await expect(button).toHaveAttribute('value', '1');
+  });
 });
