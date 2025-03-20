@@ -11,6 +11,6 @@ const Demo = () => (
       </List.Item>
     </List>
   </div>
-);
+);   
 
 export default Demo;
