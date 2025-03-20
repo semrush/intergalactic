@@ -4,7 +4,6 @@ import Dropdown from '@semcore/dropdown';
 import BaseTrigger from '@semcore/base-trigger';
 import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
-import Spin from '@semcore/ui/spin';
 import Radio from '@semcore/radio';
 import Divider from '@semcore/divider';
 import Button from '@semcore/button';
@@ -24,11 +23,6 @@ const Demo = () => (
       placeholder='Select period'
       ml={4}
     />
-
-    <BaseTrigger aria-label='base trigger'>
-      <BaseTrigger.Text>Button</BaseTrigger.Text>
-      <BaseTrigger.Addon tag={Spin} size='xs' />
-    </BaseTrigger>
 
     <Dropdown>
       <Dropdown.Trigger>
