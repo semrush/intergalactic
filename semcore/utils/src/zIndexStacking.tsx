@@ -1,5 +1,5 @@
 import React from 'react';
-import defaultDesignThemeJson from './themes/default.json' assert { type: 'json' };
+import defaultDesignThemeJson from './themes/default';
 import { useContextTokens } from './ThemeProvider';
 const defaultDesignThemeTokens = defaultDesignThemeJson as Record<string, string>;
 
