@@ -8,6 +8,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - External icons.
 
+## [4.60.1] - 2025-03-18
+
+### Added
+
+- Exports to package.json.
+
 ## [4.60.0] - 2025-03-12
 
 ### Changed

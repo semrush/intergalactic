@@ -5,7 +5,7 @@ import valuesParser from 'postcss-value-parser';
 import { resolve as resolvePath } from 'path';
 import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
-import { processTokens, tokensToCss, tokensToJson } from './utils';
+import { processTokens, tokensToCss, tokensToJs, tokensToJson } from './utils';
 
 type Token = {
   name: string;
@@ -72,10 +72,7 @@ for (const theme of themes) {
     `./semcore/core/src/theme/themes/${theme}.css`,
     tokensToCss(processedTokens),
   );
-  await writeIfChanged(
-    `./semcore/core/src/theme/themes/${theme}.json`,
-    tokensToJson(processedTokens),
-  );
+  await writeIfChanged(`./semcore/core/src/theme/themes/${theme}.ts`, tokensToJs(processedTokens));
 
   autoTheme[theme] = processedTokens;
 
@@ -85,10 +82,7 @@ for (const theme of themes) {
       './semcore/core/src/theme/themes/default.css',
       tokensToCss(processedTokens),
     );
-    await writeIfChanged(
-      './semcore/core/src/theme/themes/default.json',
-      tokensToJson(processedTokens),
-    );
+    await writeIfChanged('./semcore/core/src/theme/themes/default.ts', tokensToJs(processedTokens));
 
     const projectCssPaths = (
       await glob('./semcore/*/src/**/*.shadow.css', {
