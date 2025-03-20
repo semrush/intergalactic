@@ -2,7 +2,7 @@ import { expect, test, getAccessibilityViolations } from '@semcore/testing-utils
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 test.describe('Bloquote', () => {
-  test('Verofy Bloquote With and without author have no Axe issues', async ({ page }) => {
+  test('Verify Bloquote With and without author have no Axe issues', async ({ page }) => {
     const standPath = 'stories/components/typography/tests/examples/blockquote.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
