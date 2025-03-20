@@ -15,10 +15,6 @@ class Input extends Component {
   };
   static style = style;
 
-  state = {
-    focused: false,
-  };
-
   inputRef = React.createRef();
 
   handleMouseDownAddon = (event) => {
@@ -34,8 +30,6 @@ class Input extends Component {
       }, 10);
     }
   };
-
-  bindHandleValueFocused = (focused) => () => this.setState({ focused });
 
   getAddonProps() {
     const { disabled, size } = this.asProps;
@@ -67,8 +61,6 @@ class Input extends Component {
       size,
       disabled,
       state,
-      onFocus: this.bindHandleValueFocused(true),
-      onBlur: this.bindHandleValueFocused(false),
       role,
       placeholder,
       'aria-haspopup': ariaHaspopup,
@@ -80,24 +72,16 @@ class Input extends Component {
     };
   }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.disabled !== this.asProps.disabled && this.asProps.disabled) {
-      this.setState({ focused: false });
-    }
-  }
-
   render() {
     const SInput = Root;
     const SOutline = 'div';
     const { Children, styles, neighborLocation, controlsLength, state } = this.asProps;
-    const { focused } = this.state;
     return (
       <NeighborLocation.Detect neighborLocation={neighborLocation}>
         {(neighborLocation) =>
           sstyled(styles)(
             <SInput
               render={Box}
-              focused={focused}
               onKeyDown={this.handleKeyDown}
               neighborLocation={neighborLocation}
               __excludeProps={[

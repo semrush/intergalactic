@@ -58,6 +58,7 @@ class RootBaseTrigger extends Component {
               render={Box}
               tag='button'
               type='button'
+              tabIndex={0}
               neighborLocation={neighborLocation}
               state={theme}
             >

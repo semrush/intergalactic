@@ -69,7 +69,7 @@ function TabPanelItem(props) {
   const { Children, styles, addonLeft, addonRight } = props;
 
   return sstyled(styles)(
-    <STabPanelItem render={Box} type='button' tag='button' role='tab'>
+    <STabPanelItem render={Box} type='button' tag='button' tabIndex={0} role='tab'>
       {addonLeft ? <TabPanel.Item.Addon tag={addonLeft} /> : null}
       {addonTextChildren(Children, TabPanel.Item.Text, TabPanel.Item.Addon)}
       {addonRight ? <TabPanel.Item.Addon tag={addonRight} /> : null}

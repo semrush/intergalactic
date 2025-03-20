@@ -11,7 +11,8 @@ const outputFile = util.promisify(fs.outputFile);
 const readFile = util.promisify(fs.readFile);
 
 const rootDir = process.cwd();
-const packageJson = require(path.resolve(rootDir, 'package.json'));
+const packageJsonPath = path.resolve(rootDir, 'package.json');
+const packageJson = require(packageJsonPath);
 process.chdir(__dirname);
 let customConfig = () => {};
 
@@ -175,7 +176,6 @@ const generateIcons = (
         outputFile(path.join(rootDir, location), cjs.code);
         outputFile(path.join(rootDir, location.replace('.js', '.mjs')), esm.code);
         outputFile(path.join(rootDir, location.replace('.js', '.d.ts')), templateDTS(name));
-        outputFile(path.join(rootDir, location.replace('.js', '.mjs.d.ts')), templateDTS(name));
         return { name, location, group };
       });
 
@@ -197,6 +197,35 @@ function getDescriptionPayIcons(iconPath, outLib) {
   };
 }
 
+async function patchExports(result) {
+  const exports = {
+    '.': {
+      require: './lib/cjs/index.js',
+      import: './lib/esm/index.mjs',
+      types: './lib/types/index.d.ts',
+    },
+  };
+
+  result.forEach((items) => {
+    items.forEach((item) => {
+      const location = item.location.split('/').slice(0, -1).join('/');
+
+      exports[location] = {
+        require: `${location}/index.js`,
+        import: `${location}/index.mjs`,
+        types: `${location}/index.d.ts`,
+      };
+    });
+  });
+
+  packageJson.exports = exports;
+
+  await fs.writeJSON(packageJsonPath, packageJson, { spaces: 2 });
+
+  // biome-ignore lint/suspicious/noConsoleLog:
+  console.log('Patched exports in package.json.');
+}
+
 module.exports = function () {
   Promise.all(
     tasks({
@@ -207,7 +236,9 @@ module.exports = function () {
       getDescriptionPlatformIcons,
     }),
   )
-    .then(() => {
+    .then(async (result) => {
+      await patchExports(result);
+
       // biome-ignore lint/suspicious/noConsoleLog:
       console.log('Done! Wrote all icon files.');
     })
