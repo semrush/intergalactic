@@ -27,7 +27,8 @@ export function runDependencyCheckTests(component: string) {
         const extractedImports = await extractImports(filePath);
 
         extractedImports.forEach((imp) => {
-          if (imp.startsWith('@semcore/')) {
+          // @semcore/core - peer from peer base-components. We don't need to check it.
+          if (imp.startsWith('@semcore/') && !imp.startsWith('@semcore/core')) {
             const [scope, packageName] = imp.split('/');
             allImports.add(`${scope}/${packageName}`);
           }
