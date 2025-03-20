@@ -284,7 +284,7 @@ export const tokensToJs = (tokens: { name: string; value: string; description: s
   const jsLines: string[] = [];
   jsLines.push('export default {');
   for (const token of tokens) {
-    jsLines.push(`    '${token.name}': '${token.value}',`);
+    jsLines.push(`  '${token.name}': '${token.value}',`);
   }
   jsLines.push('}\n');
   return jsLines.join('\n');
