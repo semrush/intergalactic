@@ -20,6 +20,7 @@
     "@formatjs/intl": "2.3.0",
     "@semcore/divider": "16.0.0",
     "@semcore/animation": "16.0.0",
+    "@semcore/checkbox": "16.0.0",
     "@semcore/flex-box": "16.0.0",
     "@semcore/popper": "16.0.0",
     "@semcore/icon": "16.0.0",

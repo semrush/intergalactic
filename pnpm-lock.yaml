@@ -721,6 +721,9 @@ importers:
       '@semcore/base-components':
         specifier: ^16.0.0
         version: link:../base-components
+      '@semcore/checkbox':
+        specifier: 16.0.0
+        version: link:../checkbox
       '@semcore/divider':
         specifier: 16.0.0
         version: link:../divider
@@ -776,9 +779,6 @@ importers:
       '@semcore/button':
         specifier: '*'
         version: link:../button
-      '@semcore/checkbox':
-        specifier: '*'
-        version: link:../checkbox
       '@semcore/dropdown-menu':
         specifier: '*'
         version: link:../dropdown-menu
@@ -1034,6 +1034,9 @@ importers:
       '@semcore/icon':
         specifier: 16.0.0
         version: link:../icon
+      '@semcore/popper':
+        specifier: 16.0.0
+        version: link:../popper
       '@semcore/scroll-area':
         specifier: 16.0.0
         version: link:../scroll-area
