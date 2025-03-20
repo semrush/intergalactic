@@ -50,6 +50,8 @@ export abstract class AbstractButton extends Component<Props, {}, {}> {
         `'title' or 'aria-label' or 'aria-labelledby' are required props for buttons without text content`,
         this.asProps['data-ui-name'] || AbstractButton.displayName,
       );
+
+      logger.warn(this.asProps.theme === 'warning', 'Warning theme is deprecated and will be removed in the next major release.', this.asProps['data-ui-name'] || AbstractButton.displayName)
     }
 
     const ariaLabelledby = this.asProps['aria-labelledby'];
