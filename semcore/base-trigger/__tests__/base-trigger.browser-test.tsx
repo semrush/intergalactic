@@ -128,7 +128,7 @@ test.describe('Base-trigger', () => {
     await page.keyboard.press('Tab');
     await expect(page.locator('[id="device-button-select"]')).toBeFocused();
     await page.keyboard.press('ArrowDown');
-    const option = page.getByRole('option', { name: 'Desktop' });
+    const option = page.getByRole('option', { name: 'One' });
     await expect(option).toBeVisible();
     await expect(option).toHaveClass(/highlighted/);
     await page.keyboard.press('Escape');
@@ -140,7 +140,7 @@ test.describe('Base-trigger', () => {
     await expect(option).toHaveClass(/highlighted/);
     await page.keyboard.press('Space');
     await expect(page.locator('[id="device-button-select"]')).toBeFocused();
-    await expect(page.locator('[id="device-button-select"]')).toHaveAttribute('value', 'Desktop');
+    await expect(page.locator('[id="device-button-select"]')).toHaveAttribute('value', 'One');
   });
 
   test('Mouse navigation', async ({ page }) => {
@@ -150,15 +150,20 @@ test.describe('Base-trigger', () => {
     await page.setContent(htmlContent);
     const button = page.locator('[id="device-button-select"]');
     await button.click();
+    const initialWidth = await button.boundingBox().then(b => b?.width || 0);
 
-    const option = page.getByRole('option', { name: 'Desktop' });
+    const option = page.getByRole('option', { name: 'One' });
     await expect(option).toBeVisible();
     await expect(option).not.toHaveClass(/highlighted/);
     await button.click();
     await expect(option).not.toBeVisible();
     await button.click();
     await option.click();
-    await expect(page.locator('[id="device-button-select"]')).toHaveAttribute('value', 'Desktop');
+    await page.waitForTimeout(50);
+    await expect(page.locator('[id="device-button-select"]')).toHaveAttribute('value', 'One');
+    const finalWidth = await button.boundingBox().then(b => b?.width || 0);
+    expect(finalWidth).toBeLessThan(initialWidth);
+
   });
 
   test('Mouse and Keyboard navigation', async ({ page }) => {
@@ -169,14 +174,14 @@ test.describe('Base-trigger', () => {
     const button = page.locator('[id="device-button-select"]');
     await button.click();
     await page.keyboard.press('ArrowDown');
-    const option = page.getByRole('option', { name: 'Mobile' });
+    const option = page.getByRole('option', { name: 'Desktop' });
     await expect(option).toBeVisible();
     await expect(option).toHaveClass(/highlighted/);
     await button.click();
     await expect(option).not.toBeVisible();
-    await expect(button).not.toHaveAttribute('value', 'Mobile');
+    await expect(button).not.toHaveAttribute('value', 'Desktop');
     await button.click();
     await option.click();
-    await expect(button).toHaveAttribute('value', 'Mobile');
+    await expect(button).toHaveAttribute('value', 'Desktop');
   });
 });

@@ -19,11 +19,6 @@ const Demo = () => (
       <BaseTrigger state='invalid' data-test-id='invalid-state-trigger'>Invalid state</BaseTrigger>
     </Flex>
     <Flex gap={2} wrap justifyContent='flex-start'>
-      <BaseTrigger theme='normal' data-test-id='normal-theme-trigger'>Normal theme</BaseTrigger>
-      <BaseTrigger theme='valid' data-test-id='valid-theme-trigger'>Valid theme</BaseTrigger>
-      <BaseTrigger theme='invalid' data-test-id='invalid-theme-trigger'>Invalid theme</BaseTrigger>
-    </Flex>
-    <Flex gap={2} wrap justifyContent='flex-start'>
       <BaseTrigger size='m' data-test-id='m-size-trigger'>ButtonM</BaseTrigger>
       <BaseTrigger size='l' data-test-id='l-size-trigger'>ButtonL</BaseTrigger>
       <NeighborLocation>
@@ -33,12 +28,6 @@ const Demo = () => (
       </NeighborLocation>
     </Flex>
     <Flex gap={2} wrap justifyContent='flex-start'>
-      <BaseTrigger empty placeholder='Placeholder' theme='normal' data-test-id='placeholder-trigger-normal'>Button with placeholder</BaseTrigger>
-      <BaseTrigger empty active placeholder='Placeholder' theme='active' data-test-id='placeholder-trigger-active'>Button with placeholder</BaseTrigger>
-      <BaseTrigger empty theme='invalid' placeholder='Placeholder' data-test-id='placeholder-trigger-invalid'>Button with placeholder</BaseTrigger>
-    </Flex>
-    <Flex gap={2} wrap justifyContent='flex-start'>
-      <BaseTrigger empty theme='valid' placeholder='Placeholder' data-test-id='placeholder-trigger-valid'>Button with placeholder</BaseTrigger>
       <BaseTrigger empty disabled placeholder='Placeholder' data-test-id='placeholder-trigger-disabled'>Button with placeholder</BaseTrigger>
       <BaseTrigger empty state='valid' placeholder='Placeholder' data-test-id='placeholder-trigger-state-valid'>Button with placeholder</BaseTrigger>
       <BaseTrigger empty state='invalid' placeholder='Placeholder' data-test-id='placeholder-trigger-state-invalid'>Button with placeholder</BaseTrigger>

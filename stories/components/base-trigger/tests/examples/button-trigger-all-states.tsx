@@ -19,11 +19,6 @@ const Demo = () => (
       <ButtonTrigger state='invalid' data-test-id='invalid-state-trigger'>Invalid state</ButtonTrigger>
     </Flex>
     <Flex gap={2} wrap justifyContent='flex-start'>
-      <ButtonTrigger theme='normal' data-test-id='normal-theme-trigger'>Normal theme</ButtonTrigger>
-      <ButtonTrigger theme='valid' data-test-id='valid-theme-trigger'>Valid theme</ButtonTrigger>
-      <ButtonTrigger theme='invalid' data-test-id='invalid-theme-trigger'>Invalid theme</ButtonTrigger>
-    </Flex>
-    <Flex gap={2} wrap justifyContent='flex-start'>
       <ButtonTrigger size='m' data-test-id='m-size-trigger'>ButtonM</ButtonTrigger>
       <ButtonTrigger size='l' data-test-id='l-size-trigger'>ButtonL</ButtonTrigger>
       <NeighborLocation>
@@ -33,12 +28,6 @@ const Demo = () => (
       </NeighborLocation>
     </Flex>
     <Flex gap={2} wrap justifyContent='flex-start'>
-      <ButtonTrigger empty placeholder='Placeholder' theme='normal' data-test-id='placeholder-trigger-normal'>Button with placeholder</ButtonTrigger>
-      <ButtonTrigger empty active placeholder='Placeholder' theme='active' data-test-id='placeholder-trigger-active'>Button with placeholder</ButtonTrigger>
-      <ButtonTrigger empty theme='invalid' placeholder='Placeholder' data-test-id='placeholder-trigger-invalid'>Button with placeholder</ButtonTrigger>
-    </Flex>
-    <Flex gap={2} wrap justifyContent='flex-start'>
-      <ButtonTrigger empty theme='valid' placeholder='Placeholder' data-test-id='placeholder-trigger-valid'>Button with placeholder</ButtonTrigger>
       <ButtonTrigger empty disabled placeholder='Placeholder' data-test-id='placeholder-trigger-disabled'>Button with placeholder</ButtonTrigger>
       <ButtonTrigger empty state='valid' placeholder='Placeholder' data-test-id='placeholder-trigger-state-valid'>Button with placeholder</ButtonTrigger>
       <ButtonTrigger empty state='invalid' placeholder='Placeholder' data-test-id='placeholder-trigger-state-invalid'>Button with placeholder</ButtonTrigger>

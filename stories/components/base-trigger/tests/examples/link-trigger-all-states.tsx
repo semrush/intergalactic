@@ -1,68 +1,53 @@
 import React from 'react';
-import Select from '@semcore/select';
 import Dropdown from '@semcore/dropdown';
-import {LinkTrigger} from '@semcore/base-trigger';
-import { Flex, Box } from '@semcore/flex-box';
-import Spin from '@semcore/ui/spin';
-import NeighborLocation from '@semcore/neighbor-location';
-import ChevronDownM from '@semcore/icon/ChevronDown/m';
+import { LinkTrigger } from '@semcore/base-trigger';
+import { Flex } from '@semcore/flex-box';
 import CheckM from '@semcore/icon/Check/m';
 
-
 const Demo = () => (
-  <Flex direction='column' gap={3}>
+  <Flex direction="column" gap={3}>
     <Flex gap={2} wrap>
-      <LinkTrigger chevron active data-test-id = 'active'>Active</LinkTrigger>
-      <LinkTrigger disabled  data-test-id = 'disabled'>Disabled</LinkTrigger>
+      <LinkTrigger active data-test-id="link-trigger-active">Active</LinkTrigger>
+      <LinkTrigger empty data-test-id="link-trigger-empty">Empty</LinkTrigger>
+      <LinkTrigger empty placeholder="Placeholder" active data-test-id="link-trigger-active-placeholder">Active with Placeholder</LinkTrigger>
+      <LinkTrigger disabled data-test-id="link-trigger-disabled">Disabled</LinkTrigger>
     </Flex>
 
     <Flex gap={2} wrap>
-      <LinkTrigger color="red" data-test-id = 'normal-state'>Normal state</LinkTrigger>
-      <LinkTrigger loading color='text-success' data-test-id = 'valid-state'>Valid state</LinkTrigger>
-      <LinkTrigger loading color='blue' data-test-id = 'valid-state'></LinkTrigger>
-
+      <LinkTrigger color="red" data-test-id="link-trigger-normal-state">Normal state</LinkTrigger>
+      <LinkTrigger loading color="text-success" data-test-id="link-trigger-valid-state-loading">Valid state (Loading)</LinkTrigger>
+      <LinkTrigger loading color="blue" data-test-id="link-trigger-loading-blue"></LinkTrigger>
     </Flex>
 
-
     <Flex gap={2} wrap>
+      <LinkTrigger aria-label="link trigger" data-test-id="link-trigger-text">
+        <LinkTrigger.Text>Base trigger.Text</LinkTrigger.Text>
+      </LinkTrigger>
 
+      <LinkTrigger aria-label="link trigger" data-test-id="link-trigger-text-addon">
+        <LinkTrigger.Addon tag={CheckM} size="xs" />
+        <LinkTrigger.Text>Link trigger.Text</LinkTrigger.Text>
+      </LinkTrigger>
 
-    <LinkTrigger loading aria-label='base trigger' data-test-id = 'with-text-and-addon'>
-      <LinkTrigger.Text>Base trigger.Text</LinkTrigger.Text>
-     
-    </LinkTrigger>
-
-    <LinkTrigger aria-label='base trigger' data-test-id = 'with-text-and-addon'>
-    <LinkTrigger.Addon tag={Spin} size='xs' />
-      <LinkTrigger.Text>Base trigger.Text</LinkTrigger.Text>
-     
-    </LinkTrigger>
-
-    <LinkTrigger aria-label='base trigger' data-test-id = 'with-text-and-addon'>
-    <LinkTrigger.Addon>
+      <LinkTrigger aria-label="link trigger" data-test-id="link-trigger-text-addon-icon">
+        <LinkTrigger.Addon>
           <CheckM />
         </LinkTrigger.Addon>
-      <LinkTrigger.Text>Base trigger.Text</LinkTrigger.Text>
-     
-    </LinkTrigger>
-
+        <LinkTrigger.Text>Link trigger.Text</LinkTrigger.Text>
+      </LinkTrigger>
     </Flex>
+
     <Flex gap={2} wrap>
-    
-    <Dropdown>
-      <Dropdown.Trigger>
-        <LinkTrigger aria-label='base trigger with dropdown'  data-test-id = 'base-tigger-in-dropdown'>
-          <LinkTrigger.Text>LinkTrigger with dropdown</LinkTrigger.Text>
-        </LinkTrigger>
-      </Dropdown.Trigger>
-    </Dropdown>
-  </Flex>
+      <Dropdown>
+        <Dropdown.Trigger>
+          <LinkTrigger aria-label="link trigger with dropdown" data-test-id="link-trigger-dropdown">
+            <LinkTrigger.Text>LinkTrigger with dropdown</LinkTrigger.Text>
+          </LinkTrigger>
+        </Dropdown.Trigger>
+      </Dropdown>
+    </Flex>
   </Flex>
 );
 
-const devices = ['Desktop', 'Mobile', 'Tablet'].map((item) => ({
-  value: item,
-  children: item,
-}));
 
 export default Demo;

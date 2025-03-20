@@ -51,7 +51,7 @@ const Demo = () => (
   </Flex>
 );
 
-const devices = ['Desktop', 'Mobile', 'Tablet'].map((item) => ({
+const devices = ['One','Desktop', 'Mobile', 'Tablet'].map((item) => ({
   value: item,
   children: item,
 }));
