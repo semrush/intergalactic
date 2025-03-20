@@ -5,7 +5,7 @@ import valuesParser from 'postcss-value-parser';
 import { resolve as resolvePath } from 'path';
 import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
-import { processTokens, tokensToCss, tokensToJson } from './utils';
+import { processTokens, tokensToCss, tokensToJs } from './utils';
 
 type Token = {
   name: string;
@@ -59,24 +59,24 @@ for (const theme of themes) {
     if (excludedTokens.length > 0) {
       const path = excludeToPath.replace('{theme}', theme);
       await writeIfChanged(`${path}.css`, tokensToCss(excludedTokens));
-      await writeIfChanged(`${path}.json`, tokensToJson(excludedTokens));
+      await writeIfChanged(`${path}.ts`, tokensToJs(excludedTokens));
       if (theme === defaultTheme) {
         const path = excludeToPath.replace('{theme}', 'default');
         await writeIfChanged(`${path}.css`, tokensToCss(excludedTokens));
-        await writeIfChanged(`${path}.json`, tokensToJson(excludedTokens));
+        await writeIfChanged(`${path}.ts`, tokensToJs(excludedTokens));
       }
     }
   }
 
   await writeIfChanged(`./semcore/utils/src/themes/${theme}.css`, tokensToCss(processedTokens));
-  await writeIfChanged(`./semcore/utils/src/themes/${theme}.json`, tokensToJson(processedTokens));
+  await writeIfChanged(`./semcore/utils/src/themes/${theme}.ts`, tokensToJs(processedTokens));
 
   autoTheme[theme] = processedTokens;
 
   const usages: { [tokenName: string]: string[] } = {};
   if (theme === defaultTheme) {
     await writeIfChanged('./semcore/utils/src/themes/default.css', tokensToCss(processedTokens));
-    await writeIfChanged('./semcore/utils/src/themes/default.json', tokensToJson(processedTokens));
+    await writeIfChanged('./semcore/utils/src/themes/default.ts', tokensToJs(processedTokens));
 
     const projectCssPaths = (
       await glob('./semcore/*/src/**/*.shadow.css', {

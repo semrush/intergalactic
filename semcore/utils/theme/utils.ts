@@ -280,6 +280,15 @@ export const tokensToJson = (tokens: { name: string; value: string; description:
   }
   return JSON.stringify(themeFile, null, 2) + '\n';
 };
+export const tokensToJs = (tokens: { name: string; value: string; description: string }[]) => {
+  const jsLines: string[] = [];
+  jsLines.push('export default {');
+  for (const token of tokens) {
+    jsLines.push(`    '${token.name}': '${token.value}',`);
+  }
+  jsLines.push('}\n');
+  return jsLines.join('\n');
+};
 
 const getByPath = (obj: any, path: string) => {
   const parts = path.split('.');
