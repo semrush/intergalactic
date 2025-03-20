@@ -1,6 +1,8 @@
 import React from 'react';
 import Select from '@semcore/select';
 import Dropdown from '@semcore/dropdown';
+import Ellipsis from '@semcore/ellipsis';
+import DropdownMenu from '@semcore/dropdown-menu';
 import BaseTrigger from '@semcore/base-trigger';
 import { Flex, Box } from '@semcore/flex-box';
 import Spin from '@semcore/ui/spin';
@@ -57,34 +59,34 @@ const Demo = () => (
 
 
       <DropdownMenu>
-      <DropdownMenu.Trigger tag={LinkTrigger}>
-        <LinkTrigger.Text w={150} tag={Text} size={400}>
+      <DropdownMenu.Trigger tag={BaseTrigger}>
+        <BaseTrigger.Text w={150} tag={Text} size={400}>
           <Ellipsis trim='middle'>Dat First List</Ellipsis>
-        </LinkTrigger.Text>
+        </BaseTrigger.Text>
       </DropdownMenu.Trigger>
       <br />
       <br />
       <br />
-      <DropdownMenu.Trigger tag={LinkTrigger}>
-        <LinkTrigger.Text w={150} tag={Text} size={400}>
+      <DropdownMenu.Trigger tag={BaseTrigger}>
+        <BaseTrigger.Text w={150} tag={Text} size={400}>
           <Ellipsis trim='middle'>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores atque autem
             commodi, doloribus ex harum inventore modi praesentium quam ratione reprehenderit rerum
             tempore voluptas. Aliquam eos expedita illo quasi unde!
           </Ellipsis>
-        </LinkTrigger.Text>
+        </BaseTrigger.Text>
       </DropdownMenu.Trigger>
       <br />
       <br />
       <br />
-      <DropdownMenu.Trigger tag={LinkTrigger}>
-        <LinkTrigger.Text w={150} tag={Text} size={400}>
+      <DropdownMenu.Trigger tag={BaseTrigger}>
+        <BaseTrigger.Text w={150} tag={Text} size={400}>
           <Ellipsis>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores atque autem
             commodi, doloribus ex harum inventore modi praesentium quam ratione reprehenderit rerum
             tempore voluptas. Aliquam eos expedita illo quasi unde!
           </Ellipsis>
-        </LinkTrigger.Text>
+        </BaseTrigger.Text>
       </DropdownMenu.Trigger>
       <DropdownMenu.Menu>
         <DropdownMenu.Item>Save</DropdownMenu.Item>
