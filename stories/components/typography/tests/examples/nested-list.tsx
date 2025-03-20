@@ -22,7 +22,7 @@ const Demo = () => (
             <List.Item>List item</List.Item>
           </List>
         </List.Item>
-        <List.Item marker="👉">
+        <List.Item marker={3}>
           List item 4
           </List.Item>
       </List>
