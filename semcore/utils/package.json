@@ -25,6 +25,22 @@
       "import": "./lib/core/index.mjs",
       "types": "./lib/core/index.d.ts"
     },
+    "./lib/themes/default.css": {
+      "require": "./lib/themes/default.css",
+      "import": "./lib/themes/default.css"
+    },
+    "./lib/themes/light.css": {
+      "require": "./lib/themes/light.css",
+      "import": "./lib/themes/light.css"
+    },
+    "./lib/themes/dark.css": {
+      "require": "./lib/themes/dark.css",
+      "import": "./lib/themes/dark.css"
+    },
+    "./lib/themes/auto.css": {
+      "require": "./lib/themes/auto.css",
+      "import": "./lib/themes/auto.css"
+    },
     "./lib/focus-lock/getFocusableIn": {
       "require": "./lib/focus-lock/getFocusableIn.js",
       "import": "./lib/focus-lock/getFocusableIn.mjs",
