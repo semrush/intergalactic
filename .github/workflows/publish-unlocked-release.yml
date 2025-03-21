@@ -42,6 +42,7 @@ jobs:
           path: |
             semcore/*/lib
             tools/*/lib
+            semcore/icon/package.json
             semcore/icon/**/*.js
             semcore/icon/**/*.mjs
             semcore/icon/**/*.d.ts
@@ -92,6 +93,7 @@ jobs:
           path: |
             semcore/*/lib
             tools/*/lib
+            semcore/icon/package.json
             semcore/icon/**/*.js
             semcore/icon/**/*.mjs
             semcore/icon/**/*.d.ts
