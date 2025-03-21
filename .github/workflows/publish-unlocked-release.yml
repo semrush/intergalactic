@@ -6,6 +6,8 @@ on:
   workflow_dispatch:
     tags:
       - v[0-9]+.[0-9]+.[0-9]+
+    branch:
+      - release/v15.126.1
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true

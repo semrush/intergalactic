@@ -130,28 +130,22 @@ export const publishPrerelease = async () => {
 };
 
 export const publishRelease = async () => {
-  const updatedPackages = await gitUtils.getUpdatedPackages();
-  const versionTag = await gitUtils.getCurrentTag();
-  const version = versionTag?.slice(1);
-
-  await generateIntergalacticCodeBeforePublish();
-
   // all semcore/* + intergalactic
-  await NpmUtils.publish(updatedPackages.concat('intergalactic'), false);
+  await NpmUtils.publish(['@semcore/flags', '@semcore/illustrations'], false);
 
-  // 8) Close tasks in clickup
-  if (!process.argv.includes('--dry-run') && version) {
-    await closeTasks(version);
-  }
-
-  if (!process.argv.includes('--dry-run') && version) {
-    const releaseChangelog = await getReleaseChangelog();
-    const lastVersionChangelogs = releaseChangelog.changelogs.slice(0, 1);
-
-    await publishReleaseNotes(version, lastVersionChangelogs);
-
-    await sendMessageAboutRelease(version, lastVersionChangelogs);
-  }
+  // // 8) Close tasks in clickup
+  // if (!process.argv.includes('--dry-run') && version) {
+  //   await closeTasks(version);
+  // }
+  //
+  // if (!process.argv.includes('--dry-run') && version) {
+  //   const releaseChangelog = await getReleaseChangelog();
+  //   const lastVersionChangelogs = releaseChangelog.changelogs.slice(0, 1);
+  //
+  //   await publishReleaseNotes(version, lastVersionChangelogs);
+  //
+  //   await sendMessageAboutRelease(version, lastVersionChangelogs);
+  // }
 };
 
 export {
