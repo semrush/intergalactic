@@ -131,7 +131,7 @@ export const publishPrerelease = async () => {
 
 export const publishRelease = async () => {
   // all semcore/* + intergalactic
-  await NpmUtils.publish(['@semcore/flags', '@semcore/illustrations'], false);
+  await NpmUtils.publish(['@semcore/illustration'], false);
 
   // // 8) Close tasks in clickup
   // if (!process.argv.includes('--dry-run') && version) {
