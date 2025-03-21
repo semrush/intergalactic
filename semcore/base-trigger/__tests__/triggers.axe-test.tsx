@@ -27,7 +27,7 @@ test.describe('Filter-Trigger', () => {
   });
 
   test('Accessible name with counter', async ({ page }) => {
-    const standPath = 'stories/components/filter-trigger/advanced/examples/accessible-namer.tsx'; 
+    const standPath = 'stories/components/filter-trigger/advanced/examples/accessible-namer.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -43,12 +43,12 @@ test.describe('Filter-Trigger', () => {
     {
       const trigger = page.getByLabel('Material');
       await trigger.click();
-  
+
       const options = page.getByRole('option');
-      await options.nth(0).click(); 
+      await options.nth(0).click();
       await options.nth(1).click();
-  
-      await options.nth(2).click(); 
+
+      await options.nth(2).click();
       await trigger.click();
 
       const violations = await getAccessibilityViolations({ page });
@@ -57,7 +57,6 @@ test.describe('Filter-Trigger', () => {
     }
   });
 });
-
 
 test.describe('Link-Trigger', () => {
   test('Basic usage', async ({ page }) => {
@@ -82,9 +81,7 @@ test.describe('Link-Trigger', () => {
       expect(violations).toEqual([]);
     }
   });
-
 });
-
 
 test.describe('Button-Trigger', () => {
   test('Basic usage', async ({ page }) => {
@@ -109,5 +106,4 @@ test.describe('Button-Trigger', () => {
       expect(violations).toEqual([]);
     }
   });
-
 });

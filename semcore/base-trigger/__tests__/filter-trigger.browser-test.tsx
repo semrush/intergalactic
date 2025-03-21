@@ -3,90 +3,126 @@ import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { checkBackgroundColor, checkBorderColor, checkKeyboardNavigation } from './utils';
 
 test.describe('Filter-trigger', () => {
-
   test.describe('Styles and a11y checks', () => {
+    test('Verify main styles and props', async ({ page }) => {
+      const standPath =
+        'stories/components/base-trigger/tests/examples/filter-trigger-all-states.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en');
+      await page.setContent(htmlContent);
+      const button = page.locator(
+        '[data-test-id="m-size"] [data-ui-name="FilterTrigger.TriggerButton"]',
+      );
+      await button.hover();
+      await expect(page).toHaveScreenshot();
 
-  test('Verify main styles and props', async ({ page }) => {
-    const standPath =
-      'stories/components/base-trigger/tests/examples/filter-trigger-all-states.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-    const button = page.locator(
-      '[data-test-id="m-size"] [data-ui-name="FilterTrigger.TriggerButton"]',
-    );
-    await button.hover();
-    await expect(page).toHaveScreenshot();
+      await test.step('Verify Active styles', async () => {
+        await checkBackgroundColor(
+          page,
+          '[data-test-id="active"] [data-ui-name="FilterTrigger.TriggerButton"]',
+          'rgba(0, 143, 248, 0.3)',
+        );
+        await checkBorderColor(
+          page,
+          '[data-test-id="active"] [data-ui-name="FilterTrigger.TriggerButton"]',
+          'rgb(0, 109, 202)',
+        );
+        await checkBackgroundColor(
+          page,
+          '[data-test-id="active"] [data-ui-name="Hint.Trigger"]',
+          'rgba(0, 0, 0, 0)',
+        );
+        await checkBorderColor(
+          page,
+          '[data-test-id="active"] [data-ui-name="Hint.Trigger"]',
+          'rgb(0, 0, 0)',
+        );
+      });
 
-    await test.step('Verify Active styles', async () => {
-      await checkBackgroundColor(page,  '[data-test-id="active"] [data-ui-name="FilterTrigger.TriggerButton"]', 'rgba(0, 143, 248, 0.3)');
-  await checkBorderColor(page,  '[data-test-id="active"] [data-ui-name="FilterTrigger.TriggerButton"]', 'rgb(0, 109, 202)');
-      await checkBackgroundColor(page, '[data-test-id="active"] [data-ui-name="Hint.Trigger"]', 'rgba(0, 0, 0, 0)');
-  await checkBorderColor(page, '[data-test-id="active"] [data-ui-name="Hint.Trigger"]', 'rgb(0, 0, 0)');
-    
+      await test.step('Verify Disabled styles', async () => {
+        await checkBackgroundColor(
+          page,
+          '[data-test-id="disabled"] [data-ui-name="FilterTrigger.TriggerButton"]',
+          'rgba(0, 143, 248, 0.1)',
+        );
+        await checkBorderColor(
+          page,
+          '[data-test-id="disabled"] [data-ui-name="FilterTrigger.TriggerButton"]',
+          'rgb(0, 109, 202)',
+        );
+
+        await checkBackgroundColor(
+          page,
+          '[data-test-id="active"] [data-ui-name="Hint.Trigger"]',
+          'rgba(0, 0, 0, 0)',
+        );
+        await checkBorderColor(
+          page,
+          '[data-test-id="active"] [data-ui-name="Hint.Trigger"]',
+          'rgb(0, 0, 0)',
+        );
+      });
+
+      await test.step('Verify Placeholder styles', async () => {
+        await checkBackgroundColor(
+          page,
+          '[data-test-id="placeholder"] [data-ui-name="FilterTrigger.TriggerButton"]',
+          'rgb(255, 255, 255)',
+        );
+        await checkBorderColor(
+          page,
+          '[data-test-id="placeholder"] [data-ui-name="FilterTrigger.TriggerButton"]',
+          'rgb(196, 199, 207)',
+        );
+      });
     });
 
-    await test.step('Verify Disabled styles', async () => {
-      await checkBackgroundColor(page, '[data-test-id="disabled"] [data-ui-name="FilterTrigger.TriggerButton"]', 'rgba(0, 143, 248, 0.1)');
-      await checkBorderColor(page, '[data-test-id="disabled"] [data-ui-name="FilterTrigger.TriggerButton"]', 'rgb(0, 109, 202)');
-    
-      await checkBackgroundColor(page, '[data-test-id="active"] [data-ui-name="Hint.Trigger"]', 'rgba(0, 0, 0, 0)');
-  await checkBorderColor(page, '[data-test-id="active"] [data-ui-name="Hint.Trigger"]', 'rgb(0, 0, 0)');
-    });
+    test('Verify a11y attributes', async ({ page }) => {
+      const standPath =
+        'stories/components/base-trigger/tests/examples/filter-trigger-all-states.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en');
 
+      await page.setContent(htmlContent);
 
-    await test.step('Verify Placeholder styles', async () => {
-      await checkBackgroundColor(page, '[data-test-id="placeholder"] [data-ui-name="FilterTrigger.TriggerButton"]', 'rgb(255, 255, 255)');
-      await checkBorderColor(page, '[data-test-id="placeholder"] [data-ui-name="FilterTrigger.TriggerButton"]', 'rgb(196, 199, 207)');
+      await test.step('Verify avtive attributes', async () => {
+        const button = await page.locator('[data-test-id="active"]');
+        const buttonTRigger = await button.locator('[data-ui-name="FilterTrigger.TriggerButton"]');
+        await expect(buttonTRigger).toHaveAttribute('type', 'button');
+        await expect(buttonTRigger).toHaveAttribute('role', 'combobox');
+        await expect(buttonTRigger).toHaveAttribute('tabindex', '0');
+
+        const buttonText = await button.locator('[data-ui-name="FilterTrigger.Text"]');
+        await expect(buttonText).toHaveAttribute('aria-hidden', 'false');
+
+        const hint = button.locator('[data-ui-name="FilterTrigger.ClearButton"]');
+
+        await expect(hint).toHaveAttribute('tabindex', '0');
+        await expect(hint).toHaveAttribute('aria-label', 'Clear');
+        await expect(hint).toHaveAttribute('type', 'button');
+      });
+
+      await test.step('Verify placeholder attributes', async () => {
+        const button = await page.locator('[data-test-id="placeholder"]');
+        const buttonTRigger = await button.locator('[data-ui-name="FilterTrigger.TriggerButton"]');
+        await expect(buttonTRigger).toHaveAttribute('type', 'button');
+        await expect(buttonTRigger).toHaveAttribute('role', 'combobox');
+        await expect(buttonTRigger).toHaveAttribute('tabindex', '0');
+      });
+
+      await test.step('Verify disabled attributes', async () => {
+        const button = await page.locator('[data-test-id="disabled"]');
+        const buttonTRigger = await button.locator('[data-ui-name="FilterTrigger.TriggerButton"]');
+        await expect(buttonTRigger).toHaveAttribute('type', 'button');
+        await expect(buttonTRigger).toHaveAttribute('role', 'combobox');
+        await expect(buttonTRigger).toHaveAttribute('tabindex', '-1');
+
+        const hint = button.locator('[data-ui-name="FilterTrigger.ClearButton"]');
+
+        await expect(hint).toHaveAttribute('tabindex', '-1');
+        await expect(hint).toHaveAttribute('aria-label', 'Clear');
+        await expect(hint).toHaveAttribute('type', 'button');
+      });
     });
   });
-
-  test('Verify a11y attributes', async ({ page }) => {
-    const standPath =
-      'stories/components/base-trigger/tests/examples/filter-trigger-all-states.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    await test.step('Verify avtive attributes', async () => {
-      const button = await page.locator('[data-test-id="active"]');
-      const buttonTRigger = await button.locator('[data-ui-name="FilterTrigger.TriggerButton"]');
-      await expect(buttonTRigger).toHaveAttribute('type', 'button');
-      await expect(buttonTRigger).toHaveAttribute('role', 'combobox');
-      await expect(buttonTRigger).toHaveAttribute('tabindex', '0');
-
-      const buttonText = await button.locator('[data-ui-name="FilterTrigger.Text"]');
-      await expect(buttonText).toHaveAttribute('aria-hidden', 'false');
-
-      const hint = button.locator('[data-ui-name="FilterTrigger.ClearButton"]');
-
-      await expect(hint).toHaveAttribute('tabindex', '0');
-      await expect(hint).toHaveAttribute('aria-label', 'Clear');
-      await expect(hint).toHaveAttribute('type', 'button');
-    });
-
-    await test.step('Verify placeholder attributes', async () => {
-      const button = await page.locator('[data-test-id="placeholder"]');
-      const buttonTRigger = await button.locator('[data-ui-name="FilterTrigger.TriggerButton"]');
-      await expect(buttonTRigger).toHaveAttribute('type', 'button');
-      await expect(buttonTRigger).toHaveAttribute('role', 'combobox');
-      await expect(buttonTRigger).toHaveAttribute('tabindex', '0');
-    });
-
-    await test.step('Verify disabled attributes', async () => {
-      const button = await page.locator('[data-test-id="disabled"]');
-      const buttonTRigger = await button.locator('[data-ui-name="FilterTrigger.TriggerButton"]');
-      await expect(buttonTRigger).toHaveAttribute('type', 'button');
-      await expect(buttonTRigger).toHaveAttribute('role', 'combobox');
-      await expect(buttonTRigger).toHaveAttribute('tabindex', '-1');
-
-      const hint = button.locator('[data-ui-name="FilterTrigger.ClearButton"]');
-
-      await expect(hint).toHaveAttribute('tabindex', '-1');
-      await expect(hint).toHaveAttribute('aria-label', 'Clear');
-      await expect(hint).toHaveAttribute('type', 'button');
-    });
-  });
-});
 });
 
 test.describe('FilterTrigger interactions', () => {
@@ -330,7 +366,8 @@ test.describe('Counter and On Clear props', () => {
   });
 
   test('Verify Mouse interactions', async ({ page, browserName }) => {
-    const standPath = 'stories/components/filter-trigger/advanced/examples/advanced_with_counter.tsx';    ;
+    const standPath =
+      'stories/components/filter-trigger/advanced/examples/advanced_with_counter.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -364,10 +401,10 @@ test.describe('Counter and On Clear props', () => {
     await trigger.click();
 
     const options = page.getByRole('option');
-    await options.nth(0).click(); 
+    await options.nth(0).click();
     await options.nth(1).click();
 
-    await options.nth(2).click(); 
+    await options.nth(2).click();
     const button = page.getByRole('combobox', { name: 'Material' });
 
     await expect(button).toHaveAttribute('value', 'Glass,Metal,Paper');
