@@ -12,8 +12,14 @@ export type DTColumn = {
    * Width of column by getBoundaryRect() value
    */
   calculatedWidth: number;
+  /**
+   * Height of column by getBoundaryRect() value
+   */
+  calculatedHeight: number;
 
   fixed?: 'left' | 'right';
+
+  borders?: 'both' | 'left' | 'right';
 
   parent?: any;
   children?: Array<Omit<DTColumn[], 'children'>>;
@@ -27,8 +33,11 @@ export type DataTableColumnProps = {
   gtcWidth?: string;
 
   fixed?: 'left' | 'right';
+
+  borders?: 'both' | 'left' | 'right';
 };
 
 export type ColumnPropsInner = {
   use: DTUse;
+  borders?: 'both' | 'left' | 'right';
 };

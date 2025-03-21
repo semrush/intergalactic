@@ -6,8 +6,10 @@ import { Row } from './Row';
 
 import style from './style.shadow.css';
 import { Cell } from './Cell';
-import { DataTableRowProps } from './Row.types';
+import { DataTableRowProps, DTRow } from './Row.types';
 import { DataTableCellProps } from './Cell.types';
+import { findAllComponents } from '@semcore/core/lib/utils/findComponent';
+import { DTColumn } from '../Head/Column.types';
 
 class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner> {
   static displayName = 'Body';
@@ -21,11 +23,23 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
     };
   }
 
-  getCellProps() {
-    const { use } = this.asProps;
+  getCellProps(props: DataTableCellProps) {
+    const { use, renderCell } = this.asProps;
+
+    const defaultRender = () => props.row[props.name];
 
     return {
       use,
+      children: renderCell
+        ? renderCell({
+            name: props.name,
+            row: props.row,
+            column: props.column,
+            rowIndex: props.rowIndex,
+            columnIndex: props.columnIndex,
+            defaultRender: defaultRender,
+          })
+        : defaultRender(),
     };
   }
 

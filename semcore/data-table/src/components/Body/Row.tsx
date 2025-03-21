@@ -13,7 +13,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
 
   render() {
     const SRow = Root;
-    const { columns, row, rows, styles } = this.asProps;
+    const { columns, row, rows, styles, rowIndex } = this.asProps;
 
     return sstyled(styles)(
       <SRow render={Box}>
@@ -32,12 +32,14 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
               role={'gridcell'}
               aria-colindex={index + 1}
               row={row}
+              rowIndex={rowIndex}
               columnIndex={index}
               fixed={column.fixed}
               style={style}
-            >
-              {row[column.name]}
-            </Body.Cell>
+              name={column.name}
+              column={column}
+              borders={column.borders}
+            />
           );
         })}
       </SRow>,

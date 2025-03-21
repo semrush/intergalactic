@@ -271,10 +271,13 @@ class DataTableRoot extends Component<DataTableProps> {
 
     const [offsetLeftSum, offsetRightSum] = getScrollOffsetValue(this.columns);
 
+    // const topOffset = Math.max(...this.columns.map((c) => c.calculatedHeight));
+
     return sstyled(styles)(
       <ScrollArea
         leftOffset={offsetLeftSum}
         rightOffset={offsetRightSum}
+        // topOffset={topOffset}
         w={w}
         wMax={wMax}
         wMin={wMin}
@@ -367,46 +370,55 @@ class DataTableRoot extends Component<DataTableProps> {
 
     const columns: DTColumn[] = [];
 
+    const addColumn = (
+      columnElement: ReactElement<DataTableColumnProps>,
+      parent?: any,
+      isFirst?: boolean,
+      isLast?: boolean,
+    ) => {
+      const leftBordersFromParent =
+        isFirst && (parent?.props.borders === 'both' || parent?.props.borders === 'left')
+          ? 'left'
+          : undefined;
+      const rightBordersFromParent =
+        isLast && (parent?.props.borders === 'both' || parent?.props.borders === 'right')
+          ? 'right'
+          : undefined;
+
+      const column: DTColumn = {
+        name: columnElement.props.name,
+        ref: (node: HTMLElement | null) => {
+          if (node) {
+            const calculatedWidth = node.getBoundingClientRect().width;
+            const calculatedHeight = node.getBoundingClientRect().height;
+            column.calculatedWidth = calculatedWidth;
+            column.calculatedHeight = calculatedHeight;
+          }
+
+          return { current: node };
+        },
+        gridColumnWidth: calculateGridTemplateColumn(columnElement),
+        fixed: columnElement.props.fixed ?? parent?.props.fixed,
+        calculatedWidth: 0,
+        calculatedHeight: 0,
+        borders: columnElement.props.borders ?? leftBordersFromParent ?? rightBordersFromParent,
+        parent,
+      };
+
+      columns.push(column);
+    };
+
     React.Children.forEach(HeadComponent.props.children, (child, i) => {
       if (child.type === Head.Column) {
-        const column: DTColumn = {
-          name: child.props.name,
-          ref: (node: HTMLElement | null) => {
-            if (node) {
-              const calculatedWidth = node.getBoundingClientRect().width;
-              column.calculatedWidth = calculatedWidth;
-            }
-
-            return { current: node };
-          },
-          gridColumnWidth: calculateGridTemplateColumn(child),
-          fixed: child.props.fixed,
-          calculatedWidth: 0,
-        };
-
-        columns.push(column);
+        addColumn(child);
       } else if (child.type === Head.Group) {
         const Group = child;
-
+        const childCount = React.Children.count(child.props.children);
         React.Children.forEach(child.props.children, (child, i) => {
           if (child.type === Head.Column) {
-            const column: DTColumn = {
-              name: child.props.name,
-              ref: (node: HTMLElement | null) => {
-                if (node) {
-                  const calculatedWidth = node.getBoundingClientRect().width;
-                  column.calculatedWidth = calculatedWidth;
-                }
-
-                return { current: node };
-              },
-              gridColumnWidth: calculateGridTemplateColumn(child),
-              fixed: Group.props?.fixed,
-              calculatedWidth: 0,
-              parent: Group,
-            };
-
-            columns.push(column);
+            const isFirst = i === 0;
+            const isLast = i === childCount - 1;
+            addColumn(child, Group, isFirst, isLast);
           }
         });
       } else {

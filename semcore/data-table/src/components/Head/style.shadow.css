@@ -22,6 +22,14 @@ SGroup, SColumn {
   height: 100%;
 }
 
+SGroup[borders='both'], SColumn[borders='both'], SGroup[borders='left'], SColumn[borders='left'] {
+  border-left: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
+}
+
+SGroup[borders='both'], SColumn[borders='both'], SGroup[borders='right'], SColumn[borders='right'] {
+  border-right: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
+}
+
 SGroup[use='primary'], SColumn[use='primary'] {
   padding: var(--intergalactic-spacing-3x, 12px);
   border-bottom: 1px solid var(--intergalactic-border-secondary, #e0e1e9);

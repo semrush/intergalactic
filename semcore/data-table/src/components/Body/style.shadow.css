@@ -121,6 +121,14 @@ SCell[use='secondary'] {
   background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
 }
 
+SCell[borders='both'], SCell[borders='left'] {
+  border-left: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
+}
+
+SCell[borders='both'], SCell[borders='right'] {
+  border-right: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
+}
+
 SCell[fixed] {
   position: sticky;
   /*z-index: 1;*/

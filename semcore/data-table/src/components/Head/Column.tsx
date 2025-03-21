@@ -11,7 +11,7 @@ export class Column extends Component<DataTableColumnProps, {}, {}, [], ColumnPr
 
   render() {
     const SColumn = Root;
-    const { styles, use } = this.asProps;
+    const { styles } = this.asProps;
 
     return sstyled(styles)(
       <SColumn render={Box} role={'columnheader'} aria-rowindex={1}>

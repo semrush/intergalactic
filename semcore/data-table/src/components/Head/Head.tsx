@@ -56,6 +56,7 @@ class HeadRoot extends Component<DataTableHeadProps, {}, {}, [], HeadPropsInner>
       style,
       gridArea: this.gridAreaColumnMap.get(index),
       fixed: column.fixed,
+      borders: column.borders,
     };
   }
 
