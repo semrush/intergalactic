@@ -1,6 +1,6 @@
 import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
-import { selectOption } from './utils';
+import { selectOption, checkBackgroundColor } from './utils';
 
 test.describe('Base-trigger', () => {
   test('Styles', async ({ page }) => {
@@ -11,9 +11,8 @@ test.describe('Base-trigger', () => {
     await expect(page).toHaveScreenshot();
 
     await test.step('Normal state styles', async () => {
-      const button = await page.locator('[data-test-id="normal-state-trigger"]');
-      const backgroundColor = await button.evaluate((el) => getComputedStyle(el).backgroundColor);
-      expect(backgroundColor).toBe('rgb(255, 255, 255)'); // Укажи ожидаемый цвет
+        await checkBackgroundColor(page, '[data-test-id="normal-state-trigger"]', 'rgb(255, 255, 255)');
+
     });
 
     await test.step('Hover state styles', async () => {
