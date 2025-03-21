@@ -1,5 +1,9 @@
 ## [15.126.1] - 2025-03-20
 
+### @semcore/button
+
+- **Added** New `brand` theme. `warning` theme was deprecated.
+
 ### @semcore/date-picker
 
 - **Fixed** `dayjs` external setting in vite config.
@@ -7,6 +11,10 @@
 ### @semcore/icon
 
 - **Added** Exports to package.json.
+
+### @semcore/notice
+
+- **Removed** `role` attribute for `muted` theme.
 
 ### @semcore/utils
 

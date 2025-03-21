@@ -1,4 +1,14 @@
+## [15.127.0] - 2025-03-21
+
+### @semcore/button
+
+- **Added** New `brand` theme. `warning` theme was deprecated.
+
 ## [15.126.1] - 2025-03-20
+
+### @semcore/button
+
+- **Added** New `brand` theme. `warning` theme was deprecated.
 
 ### @semcore/date-picker
 
@@ -7,6 +17,10 @@
 ### @semcore/icon
 
 - **Added** Exports to package.json.
+
+### @semcore/notice
+
+- **Removed** `role` attribute for `muted` theme.
 
 ### @semcore/utils
 
