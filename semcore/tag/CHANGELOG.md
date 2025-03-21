@@ -12,6 +12,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - `Tag.Close` component. Use `TagContainer.Close`.
 
+## [5.53.1] - 2025-03-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.48.0 ~> 4.48.1], `@semcore/icon` [4.60.0 ~> 4.60.1], `@semcore/flex-box` [5.41.0 ~> 5.41.1], `@semcore/core` [2.39.0 ~> 2.39.1]).
+
 ## [5.53.0] - 2025-03-14
 
 ### Added
