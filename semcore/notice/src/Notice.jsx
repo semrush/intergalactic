@@ -100,13 +100,15 @@ class RootNotice extends Component {
       ariaLabel = undefined;
     }
 
+    const role = theme === 'muted' ? undefined : 'region';
+
     return sstyled(styles)(
       <SNotice
         render={FadeInOut}
         visible={!hidden}
         use:theme={useTheme}
         backgroundColor={color}
-        role='region'
+        role={role}
         aria-label={ariaLabel}
         ref={this.ref}
       >

@@ -2,11 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [5.43.0] - 2025-03-19
+## [5.43.0] - 2025-03-21
 
 ### Added
 
 - New `brand` theme. `warning` theme was deprecated.
+
+## [5.42.1] - 2025-03-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.48.0 ~> 4.48.1]).
 
 ## [5.42.0] - 2025-02-21
 
