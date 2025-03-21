@@ -24,6 +24,7 @@ import syncScroll from '@semcore/core/lib/utils/syncScroll';
 import { getScrollOffsetValue } from '../../utils';
 import findComponent from '@semcore/core/lib/utils/findComponent';
 import { DataTableHeadProps } from '../Head/Head.types';
+import {Property} from 'csstype';
 
 class DataTableRoot extends Component<DataTableProps> {
   static displayName = 'DataTable';
@@ -403,6 +404,11 @@ class DataTableRoot extends Component<DataTableProps> {
         calculatedHeight: 0,
         borders: columnElement.props.borders ?? leftBordersFromParent ?? rightBordersFromParent,
         parent,
+
+        flexWrap: columnElement.props.flexWrap,
+        alignItems: columnElement.props.alignItems,
+        alignContent: columnElement.props.alignContent,
+        justifyContent: columnElement.props.justifyContent,
       };
 
       columns.push(column);

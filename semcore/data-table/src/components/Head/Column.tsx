@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Component, Root, sstyled } from '@semcore/core';
 import { ColumnPropsInner, DataTableColumnProps } from './Column.types';
-import { Box } from '@semcore/base-components';
+import { Flex } from '@semcore/base-components';
 
 import style from './style.shadow.css';
 
@@ -14,7 +14,7 @@ export class Column extends Component<DataTableColumnProps, {}, {}, [], ColumnPr
     const { styles } = this.asProps;
 
     return sstyled(styles)(
-      <SColumn render={Box} role={'columnheader'} aria-rowindex={1}>
+      <SColumn render={Flex} role={'columnheader'} aria-rowindex={1}>
         {this.asProps.children}
       </SColumn>,
     );

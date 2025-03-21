@@ -39,6 +39,10 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
               name={column.name}
               column={column}
               borders={column.borders}
+              flexWrap={column.flexWrap}
+              alignItems={column.alignItems}
+              alignContent={column.alignContent}
+              justifyContent={column.justifyContent}
             />
           );
         })}

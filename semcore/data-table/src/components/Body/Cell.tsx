@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Component, Root, sstyled, createComponent } from '@semcore/core';
-import { Box } from '@semcore/base-components';
+import {Flex} from '@semcore/base-components';
 
 import style from './style.shadow.css';
 import { CellPropsInner, DataTableCellProps } from './Cell.types';
@@ -14,7 +14,7 @@ class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner>
     const { Children, styles } = this.asProps;
 
     return sstyled(styles)(
-      <SCell render={Box} tabIndex={-1} innerOffset>
+      <SCell render={Flex} tabIndex={-1} innerOffset>
         <Children />
       </SCell>,
     );
