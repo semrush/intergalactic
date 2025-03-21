@@ -1,13 +1,7 @@
 import React from 'react';
-import Select from '@semcore/select';
-import Dropdown from '@semcore/dropdown';
 import {ButtonTrigger} from '@semcore/base-trigger';
 import { Flex, Box } from '@semcore/flex-box';
-import Spin from '@semcore/ui/spin';
-import NeighborLocation from '@semcore/neighbor-location';
-import ChevronDownM from '@semcore/icon/ChevronDown/m';
-import Ellipsis from '@semcore/ellipsis';
-import DropdownMenu from '@semcore/dropdown-menu';
+
 
 const Demo = () => (
   <Flex direction='column' gap={3}>

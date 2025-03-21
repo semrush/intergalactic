@@ -1,58 +1,51 @@
 import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
-import { selectOption } from './utils';
+import { checkBackgroundColor, checkBorderColor, checkKeyboardNavigation } from './utils';
 
-test.describe('Button-trigger styles', () => {
-  test('Verify Main states - Styles and props', async ({ page }) => {
+test.describe('Button-trigger', () => {
+  test.describe('Styles and a11y checks', () => {
+  test('Verify main styles and props', async ({ page }) => {
     const standPath =
       'stories/components/base-trigger/tests/examples/button-trigger-all-states.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
+    
+    await test.step('Normal state styles', async () => {
+      await checkBackgroundColor(
+        page,
+        '[data-test-id="normal-state-trigger"]',
+        'rgb(255, 255, 255)',
+      );
+    });
+    const button = await page.locator('[data-test-id="normal-state-trigger"]');
+    await button.hover();
     await expect(page).toHaveScreenshot();
 
-    await test.step('Normal state styles', async () => {
-      const button = await page.locator('[data-test-id="normal-state-trigger"]');
-      const backgroundColor = await button.evaluate((el) => getComputedStyle(el).backgroundColor);
-      expect(backgroundColor).toBe('rgb(255, 255, 255)'); // Укажи ожидаемый цвет
-    });
-
-    await test.step('Hover state styles', async () => {
-      const button = await page.locator('[data-test-id="normal-state-trigger"]');
-      await button.hover();
-      const backgroundColor = await button.evaluate((el) => getComputedStyle(el).backgroundColor);
-      expect(backgroundColor).toBe('rgb(244, 245, 249)'); // Укажи ожидаемый цвет
-    });
-
     await test.step('Disabled state styles', async () => {
-      const button = await page.locator('[data-test-id="disabled-trigger"]');
-      const backgroundColor = await button.evaluate((el) => getComputedStyle(el).backgroundColor);
-      expect(backgroundColor).toBe('rgb(255, 255, 255)'); // Укажи ожидаемый цвет
+      await checkBackgroundColor(
+        page,
+        '[data-test-id="disabled-trigger"]',
+        'rgb(255, 255, 255)',
+      );       
     });
 
     await test.step('Valid state styles', async () => {
-      const button = await page.locator('[data-test-id="valid-state-trigger"]');
-      const borderColor = await button.evaluate((el) => getComputedStyle(el).borderColor);
-      expect(borderColor).toBe('rgb(0, 124, 101)'); // Укажи ожидаемый цвет границы
+      await checkBorderColor(
+        page,
+        '[data-test-id="valid-state-trigger"]',
+        'rgb(0, 124, 101)',
+      );      
     });
 
     await test.step('Invalid state styles', async () => {
-      const button = await page.locator('[data-test-id="invalid-state-trigger"]');
-      const borderColor = await button.evaluate((el) => getComputedStyle(el).borderColor);
-      expect(borderColor).toBe('rgb(209, 0, 47)'); // Укажи ожидаемый цвет границы
+      await checkBorderColor(
+        page,
+        '[data-test-id="invalid-state-trigger"]',
+        'rgb(209, 0, 47)',
+      ); 
     });
 
-    await test.step('Valid state styles', async () => {
-      const button = await page.locator('[data-test-id="valid-state-trigger"]');
-      const borderColor = await button.evaluate((el) => getComputedStyle(el).borderColor);
-      expect(borderColor).toBe('rgb(0, 124, 101)'); // Укажи ожидаемый цвет границы
-    });
-
-    await test.step('Invalid state styles', async () => {
-      const button = await page.locator('[data-test-id="invalid-state-trigger"]');
-      const borderColor = await button.evaluate((el) => getComputedStyle(el).borderColor);
-      expect(borderColor).toBe('rgb(209, 0, 47)'); // Укажи ожидаемый цвет границы
-    });
 
     await test.step('Focus styles', async () => {
       await page.keyboard.press('Tab');
@@ -74,17 +67,20 @@ test.describe('Button-trigger styles', () => {
     });
 
     await test.step('Active state styles', async () => {
-      const button = await page.locator('[data-test-id="active-trigger"]');
-      await page.mouse.down(); // Нажимаем мышь
-      const backgroundColor = await button.evaluate((el) => getComputedStyle(el).backgroundColor);
-      expect(backgroundColor).toBe('rgb(255, 255, 255)'); // Укажи ожидаемый цвет
-      const borderColor = await button.evaluate((el) => getComputedStyle(el).borderColor);
-      expect(borderColor).toBe('rgb(0, 109, 202)'); // Укажи ожидаемый цвет границы
-      await page.mouse.up(); // Отпускаем мышь
+      await checkBackgroundColor(
+        page,
+        '[data-test-id="active-trigger"]',
+        'rgb(255, 255, 255)',
+      ); 
+      await checkBorderColor(
+        page,
+        '[data-test-id="active-trigger"]',
+        'rgb(0, 109, 202)',
+      ); 
     });
   });
 
-  test('Verify Main states a11y attributes and focus', async ({ page }) => {
+  test('Verify main styles a11y attributes and focus', async ({ page }) => {
     const standPath =
       'stories/components/base-trigger/tests/examples/button-trigger-all-states.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -92,24 +88,9 @@ test.describe('Button-trigger styles', () => {
     await page.setContent(htmlContent);
 
     await test.step('Verify focus on Active and Disabled', async () => {
-      const elements = page.locator('[data-test-id]');
-      const count = await elements.count();
-
-      let i = 0;
-      while (i < count) {
-        const currentElement = elements.nth(i);
-        const isDisabled = (await currentElement.getAttribute('disabled')) !== null;
-        if (isDisabled) {
-          await expect(currentElement).not.toBeFocused({ timeout: 5000 });
-          i++;
-          continue;
-        }
-        await page.keyboard.press('Tab');
-        const expectedElement = elements.nth(i);
-        await expect(expectedElement).toBeFocused({ timeout: 5000 });
-        i++;
-      }
+      await checkKeyboardNavigation(page, '[data-test-id]');
     });
+
     await test.step('Verify roles and attributes', async () => {
       const button = await page.locator('[data-test-id="active-trigger"]');
       await expect(button).toHaveAttribute('type', 'button');
@@ -131,7 +112,7 @@ test.describe('Button-trigger styles', () => {
     });
   });
 
-  test('Varify Loaging state - a11y attributes and focus', async ({ page }) => {
+  test('Verify loading props a11y and focus', async ({ page }) => {
     const standPath = 'stories/components/base-trigger/tests/examples/button-trigger-loading.tsx';
 
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -153,7 +134,18 @@ test.describe('Button-trigger styles', () => {
     await expect(page.locator('[data-test-id="active-trigger"]')).not.toBeFocused();
   });
 
-  test('Keyboard navigation', async ({ page }) => {
+  test('Verify ellipsis', async ({ page }) => {
+    const standPath = 'stories/components/base-trigger/advanced/examples/button-trigger-ellipsis.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+    await expect(page).toHaveScreenshot();       
+    
+});
+});
+
+test.describe('Interactions', () => {
+
+  test('Verify keyboard navigation and changing values', async ({ page }) => {
     const standPath = 'stories/components/select/docs/examples/basic_usage.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
@@ -177,7 +169,7 @@ test.describe('Button-trigger styles', () => {
     await expect(button).toHaveAttribute('value', '0');
   });
 
-  test('Mouse navigation', async ({ page }) => {
+  test('Verify mouse navigation and changing values', async ({ page }) => {
     const standPath = 'stories/components/select/docs/examples/basic_usage.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
@@ -199,7 +191,7 @@ test.describe('Button-trigger styles', () => {
     expect(finalWidth).toBeLessThan(initialWidth);
   });
 
-  test('Mouse and Keyboard navigation', async ({ page }) => {
+  test('Verify mouse with keyboard navigation and changing values', async ({ page }) => {
     const standPath = 'stories/components/select/docs/examples/basic_usage.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
@@ -217,4 +209,5 @@ test.describe('Button-trigger styles', () => {
     await option.click();
     await expect(button).toHaveAttribute('value', '1');
   });
+});
 });

@@ -18,7 +18,7 @@ const Demo = () => {
       <br />
       <br />
       <DropdownMenu.Trigger tag={ButtonTrigger}>
-        <ButtonTrigger.Text w={150} tag={Text} size={400}>
+        <ButtonTrigger.Text w={150} tag={Text} size={400} data-test-id='ellipsis-middle'>
           <Ellipsis trim='middle'>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores atque autem
             commodi, doloribus ex harum inventore modi praesentium quam ratione reprehenderit rerum

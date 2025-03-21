@@ -5,8 +5,6 @@ import {ButtonTrigger} from '@semcore/base-trigger';
 import { Flex } from '@semcore/flex-box';
 import NeighborLocation from '@semcore/neighbor-location';
 import ChevronDownM from '@semcore/icon/ChevronDown/m';
-import Ellipsis from '@semcore/ellipsis';
-import DropdownMenu from '@semcore/dropdown-menu';
 
 const Demo = () => (
   <Flex direction='column' gap={3}>

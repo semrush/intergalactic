@@ -1,11 +1,8 @@
 import React from 'react';
 import Select from '@semcore/select';
 import Dropdown from '@semcore/dropdown';
-import Ellipsis from '@semcore/ellipsis';
-import DropdownMenu from '@semcore/dropdown-menu';
 import BaseTrigger from '@semcore/base-trigger';
-import { Flex, Box } from '@semcore/flex-box';
-import Spin from '@semcore/ui/spin';
+import { Flex } from '@semcore/flex-box';
 import NeighborLocation from '@semcore/neighbor-location';
 import ChevronDownM from '@semcore/icon/ChevronDown/m';
 
@@ -41,11 +38,11 @@ const Demo = () => (
     <Flex gap={2} wrap justifyContent='flex-start'>
       <BaseTrigger aria-label='base trigger' data-test-id='text-addon-trigger-1'>
         <BaseTrigger.Text>Base trigger.Text</BaseTrigger.Text>
-        <BaseTrigger.Addon tag={Spin} size='xs' />
+        <BaseTrigger.Addon tag={ChevronDownM}  />
       </BaseTrigger>
       <BaseTrigger aria-label='base trigger' disabled data-test-id='text-addon-trigger-2'>
         <BaseTrigger.Text>Base trigger.Text</BaseTrigger.Text>
-        <BaseTrigger.Addon tag={Spin} size='xs' />
+        <BaseTrigger.Addon tag={ChevronDownM} />
       </BaseTrigger>
     </Flex>
     <Flex gap={2} wrap justifyContent='flex-start'>

@@ -2,10 +2,9 @@ import React from 'react';
 import Select from '@semcore/select';
 import Dropdown from '@semcore/dropdown';
 import {FilterTrigger} from '@semcore/base-trigger';
-import { Flex, Box } from '@semcore/flex-box';
-import Spin from '@semcore/ui/spin';
-import NeighborLocation from '@semcore/neighbor-location';
+import { Flex } from '@semcore/flex-box';
 import ChevronDownM from '@semcore/icon/ChevronDown/m';
+
 
 const Demo = () => (
   <Flex direction='column' gap={3}>
@@ -23,9 +22,9 @@ const Demo = () => (
 
     <Flex gap={2} wrap>
     <FilterTrigger aria-label='filter trigger' data-test-id = 'with-text-and-addon'>
-    <FilterTrigger.Addon tag={Spin} size='xs' />
+    <FilterTrigger.Addon tag={ChevronDownM} />
       <FilterTrigger.Text>Filter trigger Addons</FilterTrigger.Text>
-      <FilterTrigger.Addon tag={Spin} size='xs' />
+      <FilterTrigger.Addon tag={ChevronDownM} />
     </FilterTrigger>
 
     </Flex>

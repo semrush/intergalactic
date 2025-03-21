@@ -1,9 +1,11 @@
 import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
-import { selectOption } from './utils';
+import { checkKeyboardNavigation } from './utils';
 
 test.describe('Link-trigger', () => {
-  test('Styles and propd', async ({ page }) => {
+  test.describe('Styles and a11y checks', () => {
+
+  test('Verify main styles and props', async ({ page }) => {
     const standPath = 'stories/components/base-trigger/tests/examples/link-trigger-all-states.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
@@ -19,36 +21,21 @@ test.describe('Link-trigger', () => {
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
 
       await page.locator('[data-test-id="link-trigger-red"]').hover();
       await expect(page).toHaveScreenshot();
     });
   });
 
-  test('a11y attributes and focus', async ({ page }) => {
+  test('Verify main styles a11y attributes and focus', async ({ page }) => {
     const standPath = 'stories/components/base-trigger/tests/examples/link-trigger-all-states.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
 
     await test.step('Verify focus on Active and Disabled', async () => {
-      const elements = page.locator('[data-test-id]');
-      const count = await elements.count();
-
-      let i = 0;
-      while (i < count) {
-        const currentElement = elements.nth(i);
-        const isDisabled = (await currentElement.getAttribute('disabled')) !== null;
-        if (isDisabled) {
-          await expect(currentElement).not.toBeFocused({ timeout: 5000 });
-          i++;
-          continue;
-        }
-        await page.keyboard.press('Tab');
-        const expectedElement = elements.nth(i);
-        await expect(expectedElement).toBeFocused({ timeout: 5000 });
-        i++;
-      }
+      await checkKeyboardNavigation(page, '[data-test-id]');
     });
     await test.step('Verify roles and attributes', async () => {
       const button = await page.locator('[data-test-id="link-trigger-active"]');
@@ -63,7 +50,7 @@ test.describe('Link-trigger', () => {
     });
   });
 
-  test('Varify Loaging state - a11y attributes and focus', async ({ page }) => {
+  test('Verify loading props a11y and focus', async ({ page }) => {
     const standPath = 'stories/components/base-trigger/tests/examples/button-trigger-loading.tsx';
 
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -85,8 +72,19 @@ test.describe('Link-trigger', () => {
     await expect(page.locator('[data-test-id="active-trigger"]')).not.toBeFocused();
   });
 
-  test('Keyboard navigation', async ({ page }) => {
-    const standPath = 'stories/components/base-trigger/docs/examples/linktrigger.tsx';
+  test('Verify ellipsis', async ({ page }) => {
+    const standPath = 'stories/components/base-trigger/advanced/examples/link-trigger-ellipsis.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+    await expect(page).toHaveScreenshot();       
+    
+});
+});
+
+test.describe('Interactions', () => {
+
+  test('Verify keyboard navigation and changing values', async ({ page }) => {
+    const standPath = 'stories/components/base-trigger/docs/examples/link-trigger.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -111,8 +109,8 @@ test.describe('Link-trigger', () => {
     await expect(button).toHaveAttribute('value', 'Desktop');
   });
 
-  test('Mouse navigation', async ({ page }) => {
-    const standPath = 'stories/components/base-trigger/docs/examples/linktrigger.tsx';
+  test('Verify mouse navigation and changing values', async ({ page }) => {
+    const standPath = 'stories/components/base-trigger/docs/examples/link-trigger.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -133,8 +131,8 @@ test.describe('Link-trigger', () => {
     expect(finalWidth).toBeLessThan(initialWidth);
   });
 
-  test('Mouse and Keyboard navigation', async ({ page }) => {
-    const standPath = 'stories/components/base-trigger/docs/examples/linktrigger.tsx';
+  test('Verify mouse with keyboard navigation and changing values', async ({ page }) => {
+    const standPath = 'stories/components/base-trigger/docs/examples/link-trigger.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -151,4 +149,5 @@ test.describe('Link-trigger', () => {
     await option.click();
     await expect(button).toHaveAttribute('value', 'Mobile');
   });
+});
 });
