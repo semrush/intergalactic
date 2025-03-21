@@ -4,10 +4,10 @@ import { DataTable } from '@semcore/data-table';
 const Demo = () => {
   return (
     <DataTable data={data} aria-label={'Base table example'} defaultGridTemplateColumnWidth={'auto'} wMax={'800px'}>
-      <DataTable.Head sticky withScrollBar>
-        <DataTable.Head.Column name='keyword' children='Keyword' gtcWidth={'300px'} fixed={'left'}/>
-        <DataTable.Head.Group>
-          <DataTable.Head.Column name='kd' children='KD,%' gtcWidth={'minmax(100px, max-content)'} fixed={'left'}/>
+      <DataTable.Head sticky>
+        <DataTable.Head.Column name='keyword' children='Keyword' gtcWidth={'600px'} />
+        <DataTable.Head.Group title={'Group'} fixed={'right'} right={0}>
+          <DataTable.Head.Column name='kd' children='KD,%' gtcWidth={'minmax(100px, max-content)'} />
           <DataTable.Head.Column name='cpc' children='CPC' gtcWidth={'minmax(300px, max-content)'} />
           <DataTable.Head.Column name='vol' children='Vol.' gtcWidth={'300px'} />
         </DataTable.Head.Group>

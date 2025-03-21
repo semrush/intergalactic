@@ -13,10 +13,14 @@ export type DTColumn = {
    */
   calculatedWidth: number;
 
-  fixed: 'left' | 'right';
+  fixed?: 'left' | 'right';
+
+  parent?: any;
+  children?: Array<Omit<DTColumn[], 'children'>>;
 };
 
 export type DataTableColumnProps = {
+  name: string;
   /**
    * Value for grid-template-columns for current column
    */

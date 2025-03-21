@@ -22,6 +22,8 @@ import { isFocusInside, hasFocusableIn } from '@semcore/core/lib/utils/use/useFo
 import { ReactElement } from 'react';
 import syncScroll from '@semcore/core/lib/utils/syncScroll';
 import { getScrollOffsetValue } from '../../utils';
+import findComponent from '@semcore/core/lib/utils/findComponent';
+import { DataTableHeadProps } from '../Head/Head.types';
 
 class DataTableRoot extends Component<DataTableProps> {
   static displayName = 'DataTable';
@@ -268,7 +270,6 @@ class DataTableRoot extends Component<DataTableProps> {
     const { Children, styles, w, wMax, wMin, h, hMax, hMin } = this.asProps;
 
     const [offsetLeftSum, offsetRightSum] = getScrollOffsetValue(this.columns);
-    const width = this.columns.reduce((acc, column) => acc + column.calculatedWidth, 0);
 
     return sstyled(styles)(
       <ScrollArea
@@ -298,8 +299,7 @@ class DataTableRoot extends Component<DataTableProps> {
             aria-colcount={this.columns.length}
             gridTemplateColumns={this.columns.map((c) => c.gridColumnWidth).join(' ')}
             gridTemplateAreas={this.columns.map((c) => c.name).join(' ')}
-            use:wMax={`${width}px`}
-            use:wMin={`${width}px`}
+            w={'100%'}
           >
             <Children />
           </SDataTable>
@@ -313,27 +313,129 @@ class DataTableRoot extends Component<DataTableProps> {
 
   private calculateColumns(): DTColumn[] {
     const { children } = this.props;
+    const HeadComponent = findComponent(children, ['Head']) as ReactElement<DataTableHeadProps> & {
+      props: { children: Array<ReactElement<DataTableColumnProps>> };
+    };
+    //
+    // let gridColumnIndex = 1;
+    //
+    // const columns: DTColumn[] = [];
+    // const calculateGridTemplateColumn = this.calculateGridTemplateColumn;
+    //
+    // const addColumn = (columnElement: ReactElement<DataTableColumnProps>, parent?: any) => {
+    //   const column: DTColumn = {
+    //     name: columnElement.props.name,
+    //     ref: (node: HTMLElement | null) => {
+    //       if (node) {
+    //         const calculatedWidth = node.getBoundingClientRect().width;
+    //         column.calculatedWidth = calculatedWidth;
+    //       }
+    //
+    //       return { current: node };
+    //     },
+    //     gridColumnWidth: calculateGridTemplateColumn(columnElement),
+    //     fixed: columnElement.props.fixed,
+    //     calculatedWidth: 0,
+    //     gridColumnIndex,
+    //     parent,
+    //   };
+    //
+    //   columns.push(column);
+    //
+    //   gridColumnIndex++;
+    // };
+    //
+    // if (React.isValidElement(Head) && Head.type === DataTable.Head) {
+    //   console.log('here we are!');
+    //
+    //   React.Children.forEach(Head.props.children, (child) => {
+    //     if (!React.isValidElement(child)) return;
+    //     if (child.type === DataTable.Head.Column) {
+    //       addColumn(child);
+    //     } else if (child.type === DataTable.Head.Group) {
+    //
+    //       React.Children.forEach(child.props.children, (groupChild: ReactElement<DataTableColumnProps>) => {
+    //         addColumn(groupChild, child);
+    //       });
+    //     }
+    //   });
+    // }
+
     const Columns = findAllComponents(children, ['Head.Column']);
-    const calculateGridTemplateColumn = this.calculateGridTemplateColumn;
 
-    return Columns.map((c) => {
-      const column = {
-        name: c.props.name,
-        ref: (node: HTMLElement | null) => {
-          if (node) {
-            const calculatedWidth = node.getBoundingClientRect().width;
-            column.calculatedWidth = calculatedWidth;
+    const calculateGridTemplateColumn = this.calculateGridTemplateColumn.bind(this);
+
+    const columns: DTColumn[] = [];
+
+    React.Children.forEach(HeadComponent.props.children, (child, i) => {
+      if (child.type === Head.Column) {
+        const column: DTColumn = {
+          name: child.props.name,
+          ref: (node: HTMLElement | null) => {
+            if (node) {
+              const calculatedWidth = node.getBoundingClientRect().width;
+              column.calculatedWidth = calculatedWidth;
+            }
+
+            return { current: node };
+          },
+          gridColumnWidth: calculateGridTemplateColumn(child),
+          fixed: child.props.fixed,
+          calculatedWidth: 0,
+        };
+
+        columns.push(column);
+      } else if (child.type === Head.Group) {
+        const Group = child;
+
+        React.Children.forEach(child.props.children, (child, i) => {
+          if (child.type === Head.Column) {
+            const column: DTColumn = {
+              name: child.props.name,
+              ref: (node: HTMLElement | null) => {
+                if (node) {
+                  const calculatedWidth = node.getBoundingClientRect().width;
+                  column.calculatedWidth = calculatedWidth;
+                }
+
+                return { current: node };
+              },
+              gridColumnWidth: calculateGridTemplateColumn(child),
+              fixed: Group.props?.fixed,
+              calculatedWidth: 0,
+              parent: Group,
+            };
+
+            columns.push(column);
           }
-
-          return { current: node };
-        },
-        gridColumnWidth: calculateGridTemplateColumn(c),
-        fixed: c.props.fixed,
-        calculatedWidth: 0,
-      };
-
-      return column;
+        });
+      } else {
+        return null;
+      }
     });
+
+    return columns.filter(Boolean);
+
+    // return Columns.map((c) => {
+    //   const column = {
+    //     name: c.props.name,
+    //     ref: (node: HTMLElement | null) => {
+    //       if (node) {
+    //         const calculatedWidth = node.getBoundingClientRect().width;
+    //         column.calculatedWidth = calculatedWidth;
+    //       }
+    //
+    //       return { current: node };
+    //     },
+    //     gridColumnWidth: calculateGridTemplateColumn(c),
+    //     fixed: c.props.fixed,
+    //     calculatedWidth: 0,
+    //   };
+    //
+    //   return column;
+    // });
+
+    // return columns;
   }
 
   private calculateRows(): DTRow[] {
@@ -345,7 +447,7 @@ class DataTableRoot extends Component<DataTableProps> {
   }
 
   private calculateGridTemplateColumn(c: ReactElement<DataTableColumnProps>): string {
-    return c.props.gtcWidth ?? this.props.defaultGridTemplateColumnWidth;
+    return c.props.gtcWidth ?? (this.props.defaultGridTemplateColumnWidth as string);
   }
 }
 

@@ -13,27 +13,36 @@ import { Column } from './Column';
 import { Group } from './Group';
 import { DataTableColumnProps } from './Column.types';
 import { getFixedStyle, getScrollOffsetValue } from '../../utils';
+import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
+import { ReactElement } from 'react';
+import { DataTableGroupProps } from './Group.type';
 
 class HeadRoot extends Component<DataTableHeadProps, {}, {}, [], HeadPropsInner> {
   static displayName = 'Head';
   static style = style;
 
+  gridAreaGroupMap = new Map<number, string>();
+  gridAreaColumnMap = new Map<number, string>();
+
   componentDidMount() {
+    this.fillGridArea();
+
     this.forceUpdate();
   }
 
-  getGroupProps(props: any) {
-    const offset = 2;
-    const count = React.Children.count(props.children);
+  getGroupProps(_: any, index: number) {
+    const { use } = this.asProps;
 
     return {
-      gridArea: `1 / ${offset} / 2 / ${offset + count}`,
+      use,
+      gridArea: this.gridAreaGroupMap.get(index),
     };
   }
 
   getColumnProps(_: any, index: number) {
     const { use, columns } = this.asProps;
-    const [name, value] = getFixedStyle(columns[index], columns);
+    const column = columns[index];
+    const [name, value] = getFixedStyle(column, columns);
     const style: any = {};
 
     if (name !== undefined && value !== undefined) {
@@ -43,9 +52,10 @@ class HeadRoot extends Component<DataTableHeadProps, {}, {}, [], HeadPropsInner>
     return {
       use,
       'aria-colindex': index + 1,
-      ref: columns[index].ref,
+      ref: column.ref,
       style,
-      gridArea: `1 / ${index + 1} / 2 / ${index + 2}`,
+      gridArea: this.gridAreaColumnMap.get(index),
+      fixed: column.fixed,
     };
   }
 
@@ -74,6 +84,57 @@ class HeadRoot extends Component<DataTableHeadProps, {}, {}, [], HeadPropsInner>
       </>,
     );
   }
+
+  private fillGridArea() {
+    const { Children } = this.asProps;
+    const children: Array<ReactElement<DataTableColumnProps> | ReactElement<DataTableGroupProps>> =
+      getOriginChildren(Children);
+    let hasGroup = false;
+
+    React.Children.forEach(children, (child) => {
+      if (!React.isValidElement(child)) return;
+
+      if (child.type === Head.Group) {
+        hasGroup = true;
+      }
+    });
+
+    let columnIndex = 0;
+    let groupIndex = 0;
+    let gridColumnIndex = 1;
+
+    React.Children.forEach(children, (child) => {
+      if (!React.isValidElement(child)) return;
+
+      if (child.type === Head.Group) {
+        const groupedChildren = child.props.children as Array<ReactElement<DataTableColumnProps>>;
+        const initGridColumn = gridColumnIndex;
+
+        React.Children.forEach(groupedChildren, (child) => {
+          if (!React.isValidElement(child)) return;
+
+          if (child.type === Head.Column) {
+            this.gridAreaColumnMap.set(
+              columnIndex,
+              `2 / ${gridColumnIndex} / 3 / ${gridColumnIndex + 1}`,
+            );
+            columnIndex++;
+            gridColumnIndex++;
+          }
+        });
+
+        this.gridAreaGroupMap.set(groupIndex, `1 / ${initGridColumn} / 2 / ${gridColumnIndex}`);
+        groupIndex++;
+      } else if (child.type === Head.Column) {
+        this.gridAreaColumnMap.set(
+          columnIndex,
+          `1 / ${gridColumnIndex} / ${hasGroup ? '3' : '2'} / ${gridColumnIndex + 1}`,
+        );
+        columnIndex++;
+        gridColumnIndex++;
+      }
+    });
+  }
 }
 //
 // function Group(props) {
@@ -92,5 +153,5 @@ export const Head = createComponent(HeadRoot, { Column, Group }) as Intergalacti
   DataTableHeadProps
 > & {
   Column: Intergalactic.Component<'div', DataTableColumnProps>;
-  Group: Intergalactic.Component<'div', {}>;
+  Group: Intergalactic.Component<'div', DataTableGroupProps>;
 };
