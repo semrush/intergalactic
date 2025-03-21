@@ -1,7 +1,6 @@
 import type { Page } from 'playwright';
 import { expect, test } from '@semcore/testing-utils/playwright';
 
-
 export const selectOption = async (page: Page): Promise<void> => {
   await page.keyboard.press('Tab');
   await page.keyboard.press('Space');
@@ -12,7 +11,7 @@ export const selectOption = async (page: Page): Promise<void> => {
   await page.keyboard.press('Enter');
 };
 
-export async function checkBackgroundColor(page: any, selector:any, expectedColor:any) {
+export async function checkBackgroundColor(page: any, selector: any, expectedColor: any) {
   const element = await page.locator(selector);
   const backgroundColor = await element.evaluate((el) => getComputedStyle(el).backgroundColor);
   expect(backgroundColor).toBe(expectedColor);

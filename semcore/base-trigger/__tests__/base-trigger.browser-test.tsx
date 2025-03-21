@@ -11,8 +11,11 @@ test.describe('Base-trigger', () => {
     await expect(page).toHaveScreenshot();
 
     await test.step('Normal state styles', async () => {
-        await checkBackgroundColor(page, '[data-test-id="normal-state-trigger"]', 'rgb(255, 255, 255)');
-
+      await checkBackgroundColor(
+        page,
+        '[data-test-id="normal-state-trigger"]',
+        'rgb(255, 255, 255)',
+      );
     });
 
     await test.step('Hover state styles', async () => {
