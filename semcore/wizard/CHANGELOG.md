@@ -8,6 +8,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Token using for `:focus-visible` styles.
 
+## [2.52.1] - 2025-03-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [5.42.0 ~> 5.42.1], `@semcore/utils` [4.48.0 ~> 4.48.1], `@semcore/flex-box` [5.41.0 ~> 5.41.1], `@semcore/icon` [4.60.0 ~> 4.60.1], `@semcore/modal` [4.54.0 ~> 4.54.1], `@semcore/core` [2.39.0 ~> 2.39.1]).
+
 ## [2.52.0] - 2025-03-14
 
 ### Added
