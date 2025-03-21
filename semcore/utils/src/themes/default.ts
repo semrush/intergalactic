@@ -90,7 +90,7 @@ export default {
   '--intergalactic-control-primary-critical-active': '#8e0016',
   '--intergalactic-control-primary-brand': '#ff642d',
   '--intergalactic-control-primary-brand-hover': '#c33909',
-  '--intergalactic-control-primary-brand-active': '#c33909',
+  '--intergalactic-control-primary-brand-active': '#8b1500',
   '--intergalactic-control-primary-advertising': '#5925ab',
   '--intergalactic-control-primary-advertising-hover': '#421983',
   '--intergalactic-control-primary-advertising-active': '#8649e1',
