@@ -4,8 +4,7 @@ import { selectOption } from './utils';
 
 test.describe('Link-trigger', () => {
   test('Styles and propd', async ({ page }) => {
-    const standPath =
-      'stories/components/base-trigger/tests/examples/link-trigger-all-states.tsx';
+    const standPath = 'stories/components/base-trigger/tests/examples/link-trigger-all-states.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -13,7 +12,6 @@ test.describe('Link-trigger', () => {
 
     await test.step('Focus styles', async () => {
       await page.keyboard.press('Tab');
-  
 
       const button = await page.locator('[data-test-id="link-trigger-active"]');
       await button.hover();
@@ -24,14 +22,11 @@ test.describe('Link-trigger', () => {
 
       await page.locator('[data-test-id="link-trigger-red"]').hover();
       await expect(page).toHaveScreenshot();
-
     });
-
   });
 
   test('a11y attributes and focus', async ({ page }) => {
-    const standPath =
-    'stories/components/base-trigger/tests/examples/link-trigger-all-states.tsx';
+    const standPath = 'stories/components/base-trigger/tests/examples/link-trigger-all-states.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -64,7 +59,7 @@ test.describe('Link-trigger', () => {
       const svg = button.locator('svg');
       await expect(svg).toBeVisible();
       await expect(svg).toHaveAttribute('tabindex', '-1');
-      await expect(svg).toHaveAttribute('aria-hidden', 'true');    
+      await expect(svg).toHaveAttribute('aria-hidden', 'true');
     });
   });
 

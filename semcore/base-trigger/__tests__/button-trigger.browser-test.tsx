@@ -128,7 +128,6 @@ test.describe('Button-trigger styles', () => {
       await expect(svg).toHaveAttribute('aria-hidden', 'true');
       const textSpan = await button1.locator('[data-ui-name="ButtonTrigger.Text"]');
       await expect(textSpan).toHaveAttribute('aria-hidden', 'false');
-
     });
   });
 
@@ -153,7 +152,6 @@ test.describe('Button-trigger styles', () => {
     await page.keyboard.press('Tab');
     await expect(page.locator('[data-test-id="active-trigger"]')).not.toBeFocused();
   });
-
 
   test('Keyboard navigation', async ({ page }) => {
     const standPath = 'stories/components/select/docs/examples/basic_usage.tsx';
