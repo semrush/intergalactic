@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import LinkTriggerExample from './examples/linktrigger';
+import LinkTriggerExample from './examples/link-trigger';
 
 import { LinkTriggerTest } from './__tests__/linktrigger.test';
 import { playWrapper } from '../../../utils/playWrapper';

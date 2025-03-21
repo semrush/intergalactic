@@ -2,8 +2,8 @@ import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { selectOption } from './utils';
 
-test.describe('Button-trigger', () => {
-  test('Styles and propd', async ({ page }) => {
+test.describe('Button-trigger styles', () => {
+  test('Verify Main states - Styles and props', async ({ page }) => {
     const standPath =
       'stories/components/base-trigger/tests/examples/button-trigger-all-states.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -84,7 +84,7 @@ test.describe('Button-trigger', () => {
     });
   });
 
-  test('a11y attributes and focus', async ({ page }) => {
+  test('Verify Main states a11y attributes and focus', async ({ page }) => {
     const standPath =
       'stories/components/base-trigger/tests/examples/button-trigger-all-states.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -118,8 +118,42 @@ test.describe('Button-trigger', () => {
         .locator('[data-ui-name="ButtonTrigger.Text"][placeholder]')
         .first();
       await expect(placeholderElement).toHaveAttribute('aria-hidden', 'true');
+
+      const button1 = await page.locator('[data-test-id="normal-state-trigger"]');
+      await expect(button1).toHaveAttribute('tabindex', '0');
+
+      const svg = button1.locator('svg');
+      await expect(svg).toBeVisible();
+
+      await expect(svg).toHaveAttribute('aria-hidden', 'true');
+      const textSpan = await button1.locator('[data-ui-name="ButtonTrigger.Text"]');
+      await expect(textSpan).toHaveAttribute('aria-hidden', 'false');
+
     });
   });
+
+  test('Varify Loaging state - a11y attributes and focus', async ({ page }) => {
+    const standPath = 'stories/components/base-trigger/tests/examples/button-trigger-loading.tsx';
+
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const button1 = await page.locator('[data-test-id="normal-state-trigger"]');
+    await expect(button1).toHaveAttribute('tabindex', '-1');
+
+    const svg = button1.locator('svg');
+    await expect(svg).toBeVisible();
+
+    await expect(svg).toHaveAttribute('role', 'img');
+    await expect(svg).toHaveAttribute('aria-label', 'Loading…');
+    const textSpan = await button1.locator('[data-ui-name="ButtonTrigger.Text"]');
+    await expect(textSpan).toHaveAttribute('aria-hidden', 'false');
+
+    await page.keyboard.press('Tab');
+    await expect(page.locator('[data-test-id="active-trigger"]')).not.toBeFocused();
+  });
+
 
   test('Keyboard navigation', async ({ page }) => {
     const standPath = 'stories/components/select/docs/examples/basic_usage.tsx';

@@ -2,91 +2,36 @@ import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { selectOption } from './utils';
 
-test.describe('Button-trigger', () => {
+test.describe('Link-trigger', () => {
   test('Styles and propd', async ({ page }) => {
     const standPath =
-      'stories/components/base-trigger/tests/examples/button-trigger-all-states.tsx';
+      'stories/components/base-trigger/tests/examples/link-trigger-all-states.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
     await expect(page).toHaveScreenshot();
 
-    await test.step('Normal state styles', async () => {
-      const button = await page.locator('[data-test-id="normal-state-trigger"]');
-      const backgroundColor = await button.evaluate((el) => getComputedStyle(el).backgroundColor);
-      expect(backgroundColor).toBe('rgb(255, 255, 255)'); // Укажи ожидаемый цвет
-    });
-
-    await test.step('Hover state styles', async () => {
-      const button = await page.locator('[data-test-id="normal-state-trigger"]');
-      await button.hover();
-      const backgroundColor = await button.evaluate((el) => getComputedStyle(el).backgroundColor);
-      expect(backgroundColor).toBe('rgb(244, 245, 249)'); // Укажи ожидаемый цвет
-    });
-
-    await test.step('Disabled state styles', async () => {
-      const button = await page.locator('[data-test-id="disabled-trigger"]');
-      const backgroundColor = await button.evaluate((el) => getComputedStyle(el).backgroundColor);
-      expect(backgroundColor).toBe('rgb(255, 255, 255)'); // Укажи ожидаемый цвет
-    });
-
-    await test.step('Valid state styles', async () => {
-      const button = await page.locator('[data-test-id="valid-state-trigger"]');
-      const borderColor = await button.evaluate((el) => getComputedStyle(el).borderColor);
-      expect(borderColor).toBe('rgb(0, 124, 101)'); // Укажи ожидаемый цвет границы
-    });
-
-    await test.step('Invalid state styles', async () => {
-      const button = await page.locator('[data-test-id="invalid-state-trigger"]');
-      const borderColor = await button.evaluate((el) => getComputedStyle(el).borderColor);
-      expect(borderColor).toBe('rgb(209, 0, 47)'); // Укажи ожидаемый цвет границы
-    });
-
-    await test.step('Valid state styles', async () => {
-      const button = await page.locator('[data-test-id="valid-state-trigger"]');
-      const borderColor = await button.evaluate((el) => getComputedStyle(el).borderColor);
-      expect(borderColor).toBe('rgb(0, 124, 101)'); // Укажи ожидаемый цвет границы
-    });
-
-    await test.step('Invalid state styles', async () => {
-      const button = await page.locator('[data-test-id="invalid-state-trigger"]');
-      const borderColor = await button.evaluate((el) => getComputedStyle(el).borderColor);
-      expect(borderColor).toBe('rgb(209, 0, 47)'); // Укажи ожидаемый цвет границы
-    });
-
     await test.step('Focus styles', async () => {
       await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
+  
 
-      const button = await page.locator('[data-test-id="normal-state-trigger"]');
+      const button = await page.locator('[data-test-id="link-trigger-active"]');
       await button.hover();
       await expect(page).toHaveScreenshot();
 
       await page.keyboard.press('Tab');
-
-      await page.locator('[data-test-id="valid-state-trigger"]').hover();
-      await expect(page).toHaveScreenshot();
-
       await page.keyboard.press('Tab');
 
-      await page.locator('[data-test-id="invalid-state-trigger"]').hover();
+      await page.locator('[data-test-id="link-trigger-red"]').hover();
       await expect(page).toHaveScreenshot();
+
     });
 
-    await test.step('Active state styles', async () => {
-      const button = await page.locator('[data-test-id="active-trigger"]');
-      await page.mouse.down(); // Нажимаем мышь
-      const backgroundColor = await button.evaluate((el) => getComputedStyle(el).backgroundColor);
-      expect(backgroundColor).toBe('rgb(255, 255, 255)'); // Укажи ожидаемый цвет
-      const borderColor = await button.evaluate((el) => getComputedStyle(el).borderColor);
-      expect(borderColor).toBe('rgb(0, 109, 202)'); // Укажи ожидаемый цвет границы
-      await page.mouse.up(); // Отпускаем мышь
-    });
   });
 
   test('a11y attributes and focus', async ({ page }) => {
     const standPath =
-      'stories/components/base-trigger/tests/examples/button-trigger-all-states.tsx';
+    'stories/components/base-trigger/tests/examples/link-trigger-all-states.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -111,26 +56,52 @@ test.describe('Button-trigger', () => {
       }
     });
     await test.step('Verify roles and attributes', async () => {
-      const button = await page.locator('[data-test-id="active-trigger"]');
+      const button = await page.locator('[data-test-id="link-trigger-active"]');
       await expect(button).toHaveAttribute('type', 'button');
 
-      const placeholderElement = await page
-        .locator('[data-ui-name="ButtonTrigger.Text"][placeholder]')
-        .first();
-      await expect(placeholderElement).toHaveAttribute('aria-hidden', 'true');
+      await expect(button).toHaveAttribute('tabindex', '0');
+
+      const svg = button.locator('svg');
+      await expect(svg).toBeVisible();
+      await expect(svg).toHaveAttribute('tabindex', '-1');
+      await expect(svg).toHaveAttribute('aria-hidden', 'true');    
     });
   });
 
-  test('Keyboard navigation', async ({ page }) => {
-    const standPath = 'stories/components/select/docs/examples/basic_usage.tsx';
+  test('Varify Loaging state - a11y attributes and focus', async ({ page }) => {
+    const standPath = 'stories/components/base-trigger/tests/examples/button-trigger-loading.tsx';
+
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
-    const button = page.getByRole('combobox');
+
+    const button1 = await page.locator('[data-test-id="normal-state-trigger"]');
+    await expect(button1).toHaveAttribute('tabindex', '-1');
+
+    const svg = button1.locator('svg');
+    await expect(svg).toBeVisible();
+
+    await expect(svg).toHaveAttribute('role', 'img');
+    await expect(svg).toHaveAttribute('aria-label', 'Loading…');
+    const textSpan = await button1.locator('[data-ui-name="ButtonTrigger.Text"]');
+    await expect(textSpan).toHaveAttribute('aria-hidden', 'false');
+
+    await page.keyboard.press('Tab');
+    await expect(page.locator('[data-test-id="active-trigger"]')).not.toBeFocused();
+  });
+
+  test('Keyboard navigation', async ({ page }) => {
+    const standPath = 'stories/components/base-trigger/docs/examples/linktrigger.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+    const button = page.getByRole('combobox').first();
+    await expect(button).toHaveAttribute('aria-haspopup', 'listbox');
+    await expect(button).toHaveAttribute('placeholder', 'Select option');
     await page.keyboard.press('Tab');
     await expect(button).toBeFocused();
     await page.keyboard.press('ArrowDown');
-    const option = page.getByRole('option', { name: 'Option 0' });
+    const option = page.getByRole('option', { name: 'Desktop' });
     await expect(option).toBeVisible();
     await expect(option).toHaveClass(/highlighted/);
     await page.keyboard.press('Escape');
@@ -142,47 +113,47 @@ test.describe('Button-trigger', () => {
     await expect(option).toHaveClass(/highlighted/);
     await page.keyboard.press('Space');
     await expect(button).toBeFocused();
-    await expect(button).toHaveAttribute('value', '0');
+    await expect(button).toHaveAttribute('value', 'Desktop');
   });
 
   test('Mouse navigation', async ({ page }) => {
-    const standPath = 'stories/components/select/docs/examples/basic_usage.tsx';
+    const standPath = 'stories/components/base-trigger/docs/examples/linktrigger.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
-    const button = page.getByRole('combobox');
+    const button = page.getByRole('combobox').first();
     const initialWidth = await button.boundingBox().then((b) => b?.width || 0);
     await button.click();
 
-    const option = page.getByRole('option', { name: 'Option 0' });
+    const option = page.getByRole('option', { name: 'Desktop' });
     await expect(option).toBeVisible();
     await expect(option).not.toHaveClass(/highlighted/);
     await button.click();
     await expect(option).not.toBeVisible();
     await button.click();
-    await option.click();
+    await page.getByRole('option', { name: 'Mobile' }).click();
     await page.waitForTimeout(50);
-    await expect(button).toHaveAttribute('value', '0');
+    await expect(button).toHaveAttribute('value', 'Mobile');
     const finalWidth = await button.boundingBox().then((b) => b?.width || 0);
     expect(finalWidth).toBeLessThan(initialWidth);
   });
 
   test('Mouse and Keyboard navigation', async ({ page }) => {
-    const standPath = 'stories/components/select/docs/examples/basic_usage.tsx';
+    const standPath = 'stories/components/base-trigger/docs/examples/linktrigger.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
-    const button = page.getByRole('combobox');
+    const button = page.getByRole('combobox').first();
     await button.click();
     await page.keyboard.press('ArrowDown');
-    const option = page.getByRole('option', { name: 'Option 1' });
+    const option = page.getByRole('option', { name: 'Mobile' });
     await expect(option).toBeVisible();
     await expect(option).toHaveClass(/highlighted/);
     await button.click();
     await expect(option).not.toBeVisible();
-    await expect(button).not.toHaveAttribute('value', 'Option 1');
+    await expect(button).not.toHaveAttribute('value', 'Mobile');
     await button.click();
     await option.click();
-    await expect(button).toHaveAttribute('value', '1');
+    await expect(button).toHaveAttribute('value', 'Mobile');
   });
 });

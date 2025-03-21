@@ -111,6 +111,8 @@ test.describe('Base-trigger', () => {
     await test.step('Verify roles and attributes', async () => {
       const button = await page.locator('[data-test-id="active-trigger"]');
       await expect(button).toHaveAttribute('type', 'button');
+      const text = await button.locator('[data-ui-name="BaseTrigger.Text"]');
+      await expect(text).toHaveAttribute('aria-hidden', 'false');
 
       const placeholderElement = await page
         .locator('[data-ui-name="BaseTrigger.Text"][placeholder]')

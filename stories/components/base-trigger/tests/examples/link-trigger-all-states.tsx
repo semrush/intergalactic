@@ -4,6 +4,7 @@ import { LinkTrigger } from '@semcore/base-trigger';
 import { Flex } from '@semcore/flex-box';
 import CheckM from '@semcore/icon/Check/m';
 
+
 const Demo = () => (
   <Flex direction="column" gap={3}>
     <Flex gap={2} wrap>
@@ -14,9 +15,8 @@ const Demo = () => (
     </Flex>
 
     <Flex gap={2} wrap>
-      <LinkTrigger color="red" data-test-id="link-trigger-normal-state">Normal state</LinkTrigger>
-      <LinkTrigger loading color="text-success" data-test-id="link-trigger-valid-state-loading">Valid state (Loading)</LinkTrigger>
-      <LinkTrigger loading color="blue" data-test-id="link-trigger-loading-blue"></LinkTrigger>
+      <LinkTrigger color="red" data-test-id="link-trigger-red">Normal state</LinkTrigger>
+      <LinkTrigger color="text-success" data-test-id="link-trigger-success">Valid state (Loading)</LinkTrigger>
     </Flex>
 
     <Flex gap={2} wrap>
@@ -46,6 +46,7 @@ const Demo = () => (
         </Dropdown.Trigger>
       </Dropdown>
     </Flex>
+    
   </Flex>
 );
 

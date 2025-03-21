@@ -33,6 +33,10 @@ const Demo = () => (
       <BaseTrigger empty disabled placeholder='Placeholder' data-test-id='placeholder-trigger-disabled'>Button with placeholder</BaseTrigger>
       <BaseTrigger empty state='valid' placeholder='Placeholder' data-test-id='placeholder-trigger-state-valid'>Button with placeholder</BaseTrigger>
       <BaseTrigger empty state='invalid' placeholder='Placeholder' data-test-id='placeholder-trigger-state-invalid'>Button with placeholder</BaseTrigger>
+
+    
+    
+
     </Flex>
     <Flex gap={2} wrap justifyContent='flex-start'>
       <BaseTrigger aria-label='base trigger' data-test-id='text-addon-trigger-1'>
@@ -56,46 +60,7 @@ const Demo = () => (
           </BaseTrigger>
         </Dropdown.Trigger>
       </Dropdown>
-
-
-      <DropdownMenu>
-      <DropdownMenu.Trigger tag={BaseTrigger}>
-        <BaseTrigger.Text w={150} tag={Text} size={400}>
-          <Ellipsis trim='middle'>Dat First List</Ellipsis>
-        </BaseTrigger.Text>
-      </DropdownMenu.Trigger>
-      <br />
-      <br />
-      <br />
-      <DropdownMenu.Trigger tag={BaseTrigger}>
-        <BaseTrigger.Text w={150} tag={Text} size={400}>
-          <Ellipsis trim='middle'>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores atque autem
-            commodi, doloribus ex harum inventore modi praesentium quam ratione reprehenderit rerum
-            tempore voluptas. Aliquam eos expedita illo quasi unde!
-          </Ellipsis>
-        </BaseTrigger.Text>
-      </DropdownMenu.Trigger>
-      <br />
-      <br />
-      <br />
-      <DropdownMenu.Trigger tag={BaseTrigger}>
-        <BaseTrigger.Text w={150} tag={Text} size={400}>
-          <Ellipsis>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores atque autem
-            commodi, doloribus ex harum inventore modi praesentium quam ratione reprehenderit rerum
-            tempore voluptas. Aliquam eos expedita illo quasi unde!
-          </Ellipsis>
-        </BaseTrigger.Text>
-      </DropdownMenu.Trigger>
-      <DropdownMenu.Menu>
-        <DropdownMenu.Item>Save</DropdownMenu.Item>
-        <DropdownMenu.Item>Rename</DropdownMenu.Item>
-        <DropdownMenu.Item>Download</DropdownMenu.Item>
-        <DropdownMenu.Item>Delete</DropdownMenu.Item>
-      </DropdownMenu.Menu>
-    </DropdownMenu>
-    </Flex>
+          </Flex>
   </Flex>
 );
 

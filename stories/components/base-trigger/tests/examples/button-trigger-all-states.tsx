@@ -2,10 +2,11 @@ import React from 'react';
 import Select from '@semcore/select';
 import Dropdown from '@semcore/dropdown';
 import {ButtonTrigger} from '@semcore/base-trigger';
-import { Flex, Box } from '@semcore/flex-box';
-import Spin from '@semcore/ui/spin';
+import { Flex } from '@semcore/flex-box';
 import NeighborLocation from '@semcore/neighbor-location';
 import ChevronDownM from '@semcore/icon/ChevronDown/m';
+import Ellipsis from '@semcore/ellipsis';
+import DropdownMenu from '@semcore/dropdown-menu';
 
 const Demo = () => (
   <Flex direction='column' gap={3}>
@@ -14,7 +15,7 @@ const Demo = () => (
       <ButtonTrigger disabled data-test-id='disabled-trigger'>Disabled</ButtonTrigger>
     </Flex>
     <Flex gap={2} wrap justifyContent='flex-start'>
-      <ButtonTrigger state='normal' data-test-id='normal-state-trigger'>Normal state</ButtonTrigger>
+      <ButtonTrigger  state='normal' data-test-id='normal-state-trigger'>Normal state</ButtonTrigger>
       <ButtonTrigger state='valid' data-test-id='valid-state-trigger'>Valid state</ButtonTrigger>
       <ButtonTrigger state='invalid' data-test-id='invalid-state-trigger'>Invalid state</ButtonTrigger>
     </Flex>
@@ -34,12 +35,13 @@ const Demo = () => (
     </Flex>
     <Flex gap={2} wrap justifyContent='flex-start'>
       <ButtonTrigger aria-label='base trigger' data-test-id='text-addon-trigger-1'>
+      <ButtonTrigger.Addon tag={ChevronDownM} size='xs' />
         <ButtonTrigger.Text>Base trigger.Text</ButtonTrigger.Text>
-        <ButtonTrigger.Addon tag={Spin} size='xs' />
+       
       </ButtonTrigger>
       <ButtonTrigger aria-label='base trigger' disabled data-test-id='text-addon-trigger-2'>
+      <ButtonTrigger.Addon tag={ChevronDownM} size='xs' />
         <ButtonTrigger.Text>Base trigger.Text</ButtonTrigger.Text>
-        <ButtonTrigger.Addon tag={Spin} size='xs' />
       </ButtonTrigger>
     </Flex>
     <Flex gap={2} wrap justifyContent='flex-start'>
@@ -54,6 +56,8 @@ const Demo = () => (
           </ButtonTrigger>
         </Dropdown.Trigger>
       </Dropdown>
+
+
     </Flex>
   </Flex>
 );

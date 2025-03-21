@@ -6,6 +6,7 @@ import { Text } from '@semcore/typography';
 
 const Demo = () => {
   return (
+    <>
     <DropdownMenu>
       <DropdownMenu.Trigger tag={LinkTrigger}>
         <LinkTrigger.Text w={150} tag={Text} size={400}>
@@ -43,6 +44,8 @@ const Demo = () => {
         <DropdownMenu.Item>Delete</DropdownMenu.Item>
       </DropdownMenu.Menu>
     </DropdownMenu>
+
+    </>
   );
 };
 
