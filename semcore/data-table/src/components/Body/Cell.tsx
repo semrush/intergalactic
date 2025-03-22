@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Component, Root, sstyled, createComponent } from '@semcore/core';
-import {Flex} from '@semcore/base-components';
+import { Flex } from '@semcore/base-components';
 
 import style from './style.shadow.css';
 import { CellPropsInner, DataTableCellProps } from './Cell.types';

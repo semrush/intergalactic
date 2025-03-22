@@ -45,7 +45,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
 
   render() {
     const SBody = Root;
-    const { rows, columns, styles } = this.asProps;
+    const { rows, columns, styles, headerRows } = this.asProps;
 
     return sstyled(styles)(
       <SBody render={Box}>
@@ -59,6 +59,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
               row={row}
               rows={rows}
               rowIndex={index}
+              headerRows={headerRows}
             />
           );
         })}

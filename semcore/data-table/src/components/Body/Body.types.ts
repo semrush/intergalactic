@@ -23,4 +23,6 @@ export type BodyPropsInner = {
   columns: DTColumn[];
   use: DTUse;
   scrollRef: (ref: HTMLDivElement) => void;
+  headerRows: number;
+  compact: boolean;
 };

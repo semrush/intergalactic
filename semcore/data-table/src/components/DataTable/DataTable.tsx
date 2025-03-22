@@ -23,10 +23,11 @@ import { ReactElement } from 'react';
 import syncScroll from '@semcore/core/lib/utils/syncScroll';
 import { getScrollOffsetValue } from '../../utils';
 import findComponent from '@semcore/core/lib/utils/findComponent';
-import { DataTableHeadProps } from '../Head/Head.types';
-import {Property} from 'csstype';
+import {DataTableHeadProps, HeadPropsInner} from '../Head/Head.types';
+import { Property } from 'csstype';
+import {BodyPropsInner} from '../Body/Body.types';
 
-class DataTableRoot extends Component<DataTableProps> {
+class DataTableRoot extends Component<DataTableProps, {}, {}, [], {use: DTRow}> {
   static displayName = 'DataTable';
   static style = style;
 
@@ -34,6 +35,8 @@ class DataTableRoot extends Component<DataTableProps> {
     use: 'primary',
     defaultGridTemplateColumnWidth: 'auto',
   };
+
+  private columnsSplitter = '/';
 
   private columns: DTColumn[] = [];
 
@@ -64,25 +67,28 @@ class DataTableRoot extends Component<DataTableProps> {
     return totalRows ?? (data ?? []).length;
   }
 
-  getHeadProps() {
-    const { use } = this.asProps;
+  getHeadProps(): HeadPropsInner {
+    const { use, compact } = this.asProps;
 
     return {
       columns: this.columns,
       use,
-      scrollRef: this.scrollHeadRef,
+      // scrollRef: this.scrollHeadRef,
       tableRef: this.tableRef,
+      compact: Boolean(compact),
     };
   }
 
-  getBodyProps() {
-    const { use } = this.asProps;
+  getBodyProps(): BodyPropsInner {
+    const { use, compact } = this.asProps;
 
     return {
       columns: this.columns,
       rows: this.calculateRows(),
       use,
       scrollRef: this.scrollBodyRef,
+      headerRows: this.columns.some((column) => Boolean(column.parent)) ? 2 : 1,
+      compact: Boolean(compact),
     };
   }
 
@@ -460,7 +466,19 @@ class DataTableRoot extends Component<DataTableProps> {
     const { data } = this.asProps;
 
     return data.map((row) => {
-      return row;
+      const dtRow = Object.entries(row).reduce<DTRow>((acc, [key, value]) => {
+        const columnsToRow = key.split(this.columnsSplitter);
+
+        if (columnsToRow.length === 1) {
+          acc[key] = value;
+        } else {
+          acc[columnsToRow[0]] = [value, columnsToRow.length];
+        }
+
+        return acc;
+      }, {});
+
+      return dtRow;
     });
   }
 

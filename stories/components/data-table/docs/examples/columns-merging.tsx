@@ -1,5 +1,5 @@
 import React from 'react';
-import DataTable from '@semcore/data-table';
+import { DataTable } from '@semcore/data-table';
 
 const data = [
   {
@@ -36,10 +36,10 @@ const Demo = () => {
   return (
     <DataTable data={data} aria-label={'Columns merging'}>
       <DataTable.Head>
-        <DataTable.Column name='keyword' children='Keyword' />
-        <DataTable.Column name='kd' children='KD,%' />
-        <DataTable.Column name='cpc' children='CPC' />
-        <DataTable.Column name='vol' children='Vol.' />
+        <DataTable.Head.Column name='keyword' children='Keyword' />
+        <DataTable.Head.Column name='kd' children='KD,%' />
+        <DataTable.Head.Column name='cpc' children='CPC' />
+        <DataTable.Head.Column name='vol' children='Vol.' />
       </DataTable.Head>
       <DataTable.Body />
     </DataTable>

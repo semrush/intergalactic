@@ -2,6 +2,14 @@ SBody, SRow {
   display: contents;
 }
 
+SBody[compact] SCell {
+  padding: var(--intergalactic-spacing-3x, 12px) var(--intergalactic-spacing-2x, 8px);
+}
+
+SRow[gridArea], SCell[gridArea] {
+  grid-area: var(--gridArea);
+}
+
 /* DEFAULT THEME */
 SRow[active] > SCell:not([theme]) {
   /* The color is hardcoded because need hex(in figma rgba) */

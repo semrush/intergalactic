@@ -1,14 +1,14 @@
 import React from 'react';
-import DataTable from '@semcore/data-table';
+import { DataTable } from '@semcore/data-table';
 
 const Demo = () => {
   return (
     <DataTable data={data} aria-label={'Column size'}>
       <DataTable.Head>
-        <DataTable.Column name='keyword' children='Keyword' wMin={100} flex='1 0 auto' />
-        <DataTable.Column name='kd' children='KD,%' flex='0' wMin={100} />
-        <DataTable.Column name='cpc' children='CPC' />
-        <DataTable.Column name='vol' children='Vol.' />
+        <DataTable.Head.Column name='keyword' children='Keyword' gtcWidth={'minmax(min-content, 100px)'} />
+        <DataTable.Head.Column name='kd' children='KD,%' gtcWidth={'minmax(min-content, 100px)'} />
+        <DataTable.Head.Column name='cpc' children='CPC' />
+        <DataTable.Head.Column name='vol' children='Vol.' />
       </DataTable.Head>
       <DataTable.Body />
     </DataTable>

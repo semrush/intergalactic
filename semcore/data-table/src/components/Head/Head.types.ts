@@ -16,4 +16,5 @@ export type HeadPropsInner = {
   use: DTUse;
   tableRef: React.RefObject<HTMLElement>;
   columns: DTColumn[];
+  compact: boolean;
 };

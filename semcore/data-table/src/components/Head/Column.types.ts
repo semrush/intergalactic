@@ -22,10 +22,9 @@ export type CommonColumnType = {
    * CSS `justify-content` property
    */
   justifyContent?: Property.JustifyContent;
-}
+};
 
 export type DTColumn = CommonColumnType & {
-
   ref: React.RefObject<HTMLElement>;
   /**
    * Width for grid-template-columns

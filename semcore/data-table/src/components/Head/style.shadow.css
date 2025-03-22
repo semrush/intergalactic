@@ -12,6 +12,10 @@ SHead[sticky] SGroupContainer > SColumn {
   top: 40px;
 }
 
+SHead[compact] SColumn {
+  padding: var(--intergalactic-spacing-3x, 12px) var(--intergalactic-spacing-2x, 8px);
+}
+
 SGroup, SColumn {
   display: flex;
   align-items: flex-start;

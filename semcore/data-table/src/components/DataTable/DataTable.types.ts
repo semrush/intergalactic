@@ -34,7 +34,10 @@ export type DataTableProps = DataTableAriaProps & {
    */
   defaultGridTemplateColumnWidth?: 'auto' | '1fr';
 
-  children: any;
+  /**
+   * Flag for compact view (less paddings)
+   */
+  compact?: boolean;
 };
 
 export type RowIndex = number;
