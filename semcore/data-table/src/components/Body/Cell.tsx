@@ -14,7 +14,7 @@ class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner>
     const { Children, styles } = this.asProps;
 
     return sstyled(styles)(
-      <SCell render={Flex} tabIndex={-1} innerOffset>
+      <SCell render={Flex} tabIndex={-1} innerOutline>
         <Children />
       </SCell>,
     );

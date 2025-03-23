@@ -23,11 +23,11 @@ import { ReactElement } from 'react';
 import syncScroll from '@semcore/core/lib/utils/syncScroll';
 import { getScrollOffsetValue } from '../../utils';
 import findComponent from '@semcore/core/lib/utils/findComponent';
-import {DataTableHeadProps, HeadPropsInner} from '../Head/Head.types';
+import { DataTableHeadProps, HeadPropsInner } from '../Head/Head.types';
 import { Property } from 'csstype';
-import {BodyPropsInner} from '../Body/Body.types';
+import { BodyPropsInner } from '../Body/Body.types';
 
-class DataTableRoot extends Component<DataTableProps, {}, {}, [], {use: DTRow}> {
+class DataTableRoot extends Component<DataTableProps, {}, {}, [], { use: DTRow }> {
   static displayName = 'DataTable';
   static style = style;
 

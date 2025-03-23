@@ -1,33 +1,29 @@
 import React from 'react';
-import DataTable from '@semcore/data-table';
-import { Box } from '@semcore/flex-box';
+import { DataTable } from '@semcore/data-table';
 
 const Demo = () => {
   const top = 0; // Here should be height of Header in your application
 
   return (
     <>
-      <DataTable data={data} aria-label={'Fixed header'}>
-        <Box position='sticky' top={top} zIndex={2}>
-          <DataTable.Head wMin={1000}>
-            <DataTable.Column name='keyword' children='Keyword' />
-            <DataTable.Column name='kd' children='KD,%' />
-            <DataTable.Column name='cpc' children='CPC' />
-            <DataTable.Column name='vol' children='Vol.' />
+      <DataTable data={data} aria-label={'Fixed header'} wMin={1000}>
+
+          <DataTable.Head sticky={true} top={top}>
+            <DataTable.Head.Column name='keyword' children='Keyword' />
+            <DataTable.Head.Column name='kd' children='KD,%' />
+            <DataTable.Head.Column name='cpc' children='CPC' />
+            <DataTable.Head.Column name='vol' children='Vol.' />
           </DataTable.Head>
-        </Box>
         <DataTable.Body />
       </DataTable>
       <h3>with Scroll.Bar in Header</h3>
-      <DataTable data={data} aria-label={'Fixed header with scroll'}>
-        <Box position='sticky' top={top} zIndex={2}>
-          <DataTable.Head wMin={1000} withScrollBar>
-            <DataTable.Column name='keyword' children='Keyword' />
-            <DataTable.Column name='kd' children='KD,%' />
-            <DataTable.Column name='cpc' children='CPC' />
-            <DataTable.Column name='vol' children='Vol.' />
+      <DataTable data={data} aria-label={'Fixed header with scroll'} wMin={1000}>
+          <DataTable.Head sticky={true} top={top} withScrollBar>
+            <DataTable.Head.Column name='keyword' children='Keyword' />
+            <DataTable.Head.Column name='kd' children='KD,%' />
+            <DataTable.Head.Column name='cpc' children='CPC' />
+            <DataTable.Head.Column name='vol' children='Vol.' />
           </DataTable.Head>
-        </Box>
         <DataTable.Body />
       </DataTable>
     </>

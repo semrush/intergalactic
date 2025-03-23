@@ -34,7 +34,11 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
             }
           }
 
-          const gridArea = Array.isArray(cellValue) ? `${rowIndex + headerRows + 1} / ${index + 1} / ${rowIndex +  headerRows + 2} / ${index + 1 + cellValue[1]}` : undefined;
+          const gridArea = Array.isArray(cellValue)
+            ? `${rowIndex + headerRows + 1} / ${index + 1} / ${rowIndex + headerRows + 2} / ${
+                index + 1 + cellValue[1]
+              }`
+            : undefined;
 
           return (
             <Body.Cell

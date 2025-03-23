@@ -17,28 +17,29 @@ export type DataTableData = Array<Record<DTKey, any>>;
 
 export type DTUse = 'primary' | 'secondary';
 
-type Sizes = Extract<BoxProps, 'w' | 'wMax' | 'wMin' | 'h' | 'hMax' | 'hMin'>;
+type Sizes = Pick<BoxProps, 'w' | 'wMax' | 'wMin' | 'h' | 'hMax' | 'hMin'>;
 
-export type DataTableProps = DataTableAriaProps & {
-  data: DataTableData;
-  totalRows?: number;
+export type DataTableProps = DataTableAriaProps &
+  Sizes & {
+    data: DataTableData;
+    totalRows?: number;
 
-  /**
-   * @default 'primary'
-   */
-  use?: DTUse;
+    /**
+     * @default 'primary'
+     */
+    use?: DTUse;
 
-  /**
-   *
-   * @default auto
-   */
-  defaultGridTemplateColumnWidth?: 'auto' | '1fr';
+    /**
+     *
+     * @default auto
+     */
+    defaultGridTemplateColumnWidth?: 'auto' | '1fr';
 
-  /**
-   * Flag for compact view (less paddings)
-   */
-  compact?: boolean;
-};
+    /**
+     * Flag for compact view (less paddings)
+     */
+    compact?: boolean;
+  };
 
 export type RowIndex = number;
 export type ColIndex = number;
