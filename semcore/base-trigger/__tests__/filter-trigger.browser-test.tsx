@@ -122,8 +122,28 @@ test.describe('Filter-trigger', () => {
         await expect(hint).toHaveAttribute('type', 'button');
       });
     });
+
+    test('Verify Hint appearing', async ({ page }) => {
+      const standPath =
+      'stories/components/base-trigger/tests/examples/filter-trigger-all-states.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en');
+      await page.setContent(htmlContent);
+      const hint  = page.locator('[data-test-id="tooltip-hint-text"]');
+      await hint.hover();
+      const hintText = page.locator('text=clear trigger hint text');
+      await expect(hintText).toHaveCount(1);
+      await  page.locator('[data-test-id="m-size"]').hover();
+      await expect(hintText).toHaveCount(0);
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await expect(hint).toBeFocused();
+
+      await expect(hintText).toHaveCount(1);
+
+
+    });
   });
-});
+
 
 test.describe('FilterTrigger interactions', () => {
   test('Verify Keyboard interactions and focus', async ({ page, browserName }) => {
@@ -270,7 +290,7 @@ test.describe('Controlled filter interactions (triggerRef)', () => {
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
     await page.keyboard.press('Space');
-
+    await page.waitForTimeout(100);
     await expect(trigger).toHaveAttribute('value', 'Option 0');
     await expect(trigger).toBeFocused();
 
@@ -330,7 +350,7 @@ test.describe('Controlled filter interactions (triggerRef)', () => {
 });
 
 test.describe('Counter and On Clear props', () => {
-  test('11Verify Keyboard interactions and focus', async ({ page, browserName }) => {
+  test('Verify Keyboard interactions and focus', async ({ page, browserName }) => {
     const standPath =
       'stories/components/filter-trigger/advanced/examples/advanced_with_counter.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -424,4 +444,6 @@ test.describe('Counter and On Clear props', () => {
       '3 selected',
     );
   });
+});
+
 });

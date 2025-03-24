@@ -25,7 +25,7 @@ const Demo = () => (
       </LinkTrigger>
 
       <LinkTrigger aria-label="link trigger" data-test-id="link-trigger-text-addon">
-        <LinkTrigger.Addon tag={CheckM} size="xs" />
+        <LinkTrigger.Addon tag={CheckM} />
         <LinkTrigger.Text>Link trigger.Text</LinkTrigger.Text>
       </LinkTrigger>
 

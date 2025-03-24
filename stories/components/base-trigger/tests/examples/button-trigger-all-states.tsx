@@ -33,12 +33,12 @@ const Demo = () => (
     </Flex>
     <Flex gap={2} justifyContent='flex-start'>
       <ButtonTrigger aria-label='base trigger' data-test-id='text-addon-trigger-1'>
-      <ButtonTrigger.Addon tag={ChevronDownM} size='xs' />
+      <ButtonTrigger.Addon tag={ChevronDownM}  />
         <ButtonTrigger.Text>Base trigger.Text</ButtonTrigger.Text>
        
       </ButtonTrigger>
       <ButtonTrigger aria-label='base trigger' disabled data-test-id='text-addon-trigger-2'>
-      <ButtonTrigger.Addon tag={ChevronDownM} size='xs' />
+      <ButtonTrigger.Addon tag={ChevronDownM} />
         <ButtonTrigger.Text>Base trigger.Text</ButtonTrigger.Text>
       </ButtonTrigger>
     </Flex>

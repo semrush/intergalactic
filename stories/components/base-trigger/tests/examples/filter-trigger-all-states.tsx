@@ -1,6 +1,7 @@
 import React from 'react';
 import Select from '@semcore/select';
 import Dropdown from '@semcore/dropdown';
+import Tooltip from '@semcore/tooltip';
 import {FilterTrigger} from '@semcore/base-trigger';
 import { Flex } from '@semcore/flex-box';
 import ChevronDownM from '@semcore/icon/ChevronDown/m';
@@ -9,6 +10,12 @@ import ChevronDownM from '@semcore/icon/ChevronDown/m';
 const Demo = () => (
   <Flex direction='column' gap={3}>
     <Flex gap={2}>
+    <FilterTrigger empty={false}>
+        <FilterTrigger.TriggerButton>Some button content</FilterTrigger.TriggerButton>
+        <Tooltip title={'clear trigger hint text'}>
+          <FilterTrigger.ClearButton data-test-id={'tooltip-hint-text'} />
+        </Tooltip>
+      </FilterTrigger>
       <FilterTrigger active data-test-id = 'active'>Active</FilterTrigger>
       <FilterTrigger  empty placeholder='placeholder'   data-test-id = 'placeholder'>Disabled</FilterTrigger>
       <FilterTrigger disabled  data-test-id = 'disabled'>Disabled</FilterTrigger>
@@ -39,13 +46,6 @@ const Demo = () => (
         </FilterTrigger>
       </Dropdown.Trigger>
     </Dropdown>
-
-    <FilterTrigger empty={false}>
-        <FilterTrigger.TriggerButton>Some button content</FilterTrigger.TriggerButton>
-        <Tooltip title={'clear trigger hint text'}>
-          <FilterTrigger.ClearButton data-testid={'test'} />
-        </Tooltip>
-      </FilterTrigger>
   </Flex>
   </Flex>
 );
