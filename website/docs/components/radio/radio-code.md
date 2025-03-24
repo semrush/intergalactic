@@ -6,7 +6,7 @@ tabs: Design('radio'), A11y('radio-a11y'), API('radio-api'), Example('radio-code
 
 ## RadioGroup
 
-`RadioGroup` groups the radio buttons that have the same purpuse and describes this purpose to assistive technology users.
+`RadioGroup` groups the radio buttons that have the same purpose and describes this purpose to assistive technology users.
 
 ::: sandbox
 
