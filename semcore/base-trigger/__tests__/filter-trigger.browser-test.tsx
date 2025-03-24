@@ -209,7 +209,7 @@ test.describe('Filter-trigger', () => {
       await expect(option2).toHaveClass(/highlighted/);
 
       await page.keyboard.press('Enter');
-
+      await page.waitForTimeout(50);
       await expect(trigger).toHaveAttribute('value', 'Gray');
 
       const clearButtonLocator = await page.locator(
@@ -364,6 +364,7 @@ test.describe('Filter-trigger', () => {
       const trigger = page.locator('[data-ui-name="FilterTrigger.TriggerButton"]');
       await expect(page.locator('[data-ui-name="FilterTrigger.Counter"]')).toHaveText('10');
       await page.keyboard.press('Escape');
+      await page.waitForTimeout(50);
       await expect(page).toHaveScreenshot();
 
       await expect(trigger).toBeFocused();
@@ -420,12 +421,10 @@ test.describe('Filter-trigger', () => {
       const options = page.getByRole('option');
       await options.nth(0).click();
       await options.nth(1).click();
-
       await options.nth(2).click();
       const button = page.getByRole('combobox', { name: 'Material' });
 
       await expect(button).toHaveAttribute('value', 'Glass,Metal,Paper');
-
       await expect(button.locator('div[data-ui-name="FilterTrigger.Text"]')).toContainText(
         '3 selected',
       );
