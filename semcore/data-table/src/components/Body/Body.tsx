@@ -10,6 +10,7 @@ import { DataTableRowProps, DTRow } from './Row.types';
 import { DataTableCellProps } from './Cell.types';
 import { findAllComponents } from '@semcore/core/lib/utils/findComponent';
 import { DTColumn } from '../Head/Column.types';
+import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
 
 class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner> {
   static displayName = 'Body';
@@ -26,7 +27,15 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
   getCellProps(props: DataTableCellProps) {
     const { use, renderCell } = this.asProps;
 
-    const defaultRender = () => props.row[props.name];
+    const defaultRender = () => {
+      const cellValue = props.row[props.name];
+
+      if (cellValue instanceof MergedRowsCell || cellValue instanceof MergedColumnsCell) {
+        return cellValue.value;
+      }
+
+      return cellValue;
+    };
 
     return {
       use,

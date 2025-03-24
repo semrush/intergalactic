@@ -6,6 +6,7 @@ import { Box } from '@semcore/base-components';
 import style from './style.shadow.css';
 import { Body } from './Body';
 import { getFixedStyle } from '../../utils';
+import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
 
 class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
   static displayName = 'Row';
@@ -34,11 +35,17 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
             }
           }
 
-          const gridArea = Array.isArray(cellValue)
-            ? `${rowIndex + headerRows + 1} / ${index + 1} / ${rowIndex + headerRows + 2} / ${
-                index + 1 + cellValue[1]
-              }`
-            : undefined;
+          let gridArea: string | undefined = undefined;
+
+          if (cellValue instanceof MergedColumnsCell) {
+            gridArea = `${rowIndex + headerRows + 1} / ${index + 1} / ${
+              rowIndex + headerRows + 2
+            } / ${index + 1 + cellValue.columnsCount}`;
+          } else if (cellValue instanceof MergedRowsCell) {
+            gridArea = `${rowIndex + headerRows + 1} / ${index + 1} / ${
+              rowIndex + headerRows + 1 + cellValue.rowsCount
+            } / ${index + 2}`;
+          }
 
           return (
             <Body.Cell

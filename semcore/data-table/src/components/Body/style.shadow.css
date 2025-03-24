@@ -105,6 +105,7 @@ SRow[theme='danger'] SCell:hover + SGroupCell SCell:not([theme]) {
 
 SCell {
   display: flex;
+  height: 100%;
   font-size: var(--intergalactic-fs-200, 14px);
   line-height: var(--intergalactic-lh-200, 142%);
   color: var(--intergalactic-text-primary, #191b23);

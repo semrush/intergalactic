@@ -30,6 +30,8 @@ import { localizedMessages } from '../../translations/__intergalactic-dynamic-lo
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import SpinContainer from '@semcore/spin-container';
+import { ROW_GROUP } from '../../index';
+import { MergedColumnsCell, MergedRowsCell } from '../Body/MergedCells';
 
 class DataTableRoot extends Component<
   DataTableProps,
@@ -99,10 +101,11 @@ class DataTableRoot extends Component<
 
   getBodyProps(): BodyPropsInner {
     const { use, compact } = this.asProps;
+    const rows = this.calculateRows();
 
     return {
       columns: this.columns,
-      rows: this.calculateRows(),
+      rows,
       use,
       scrollRef: this.scrollBodyRef,
       headerRows: this.columns.some((column) => Boolean(column.parent)) ? 2 : 1,
@@ -496,21 +499,85 @@ class DataTableRoot extends Component<
   private calculateRows(): DTRow[] {
     const { data } = this.asProps;
 
-    return data.map((row) => {
+    const rows: DTRow[] = [];
+
+    let rowIndex = 0;
+
+    const addToRows = (row: Record<string, any>) => {
       const dtRow = Object.entries(row).reduce<DTRow>((acc, [key, value]) => {
         const columnsToRow = key.split(this.columnsSplitter);
 
         if (columnsToRow.length === 1) {
           acc[key] = value;
         } else {
-          acc[columnsToRow[0]] = [value, columnsToRow.length];
+          acc[columnsToRow[0]] = new MergedColumnsCell(value, columnsToRow.length);
         }
 
         return acc;
       }, {});
 
-      return dtRow;
+      rows.push(dtRow);
+
+      rowIndex++;
+    };
+
+    data.forEach((row) => {
+      const groupedRows: DataTableData | undefined = row[ROW_GROUP];
+
+      if (groupedRows) {
+        groupedRows.forEach((childRow, index) => {
+          if (index === 0) {
+            const rowData = {
+              ...childRow,
+              ...Object.entries(row).reduce<DTRow>((acc, [key, value]) => {
+                acc[key] = new MergedRowsCell(value, groupedRows.length);
+                return acc;
+              }, {}),
+            };
+
+            addToRows(rowData);
+          } else {
+            addToRows(childRow);
+          }
+        });
+      } else {
+        addToRows(row);
+      }
+
+      // Object.entries(row).forEach(([key, value]) => {
+      //   const columnsToRow = key.split(this.columnsSplitter);
+      //
+      //   if (columnsToRow.length > 1) {
+      //     rowData[columnsToRow[0]] = [value, columnsToRow.length];
+      //   }
+      //
+      //   if (columnsToRow.length === 1) {
+      //     rowData[key] = value;
+      //   } else {
+      //     rowData[columnsToRow[0]] = [value, columnsToRow.length];
+      //   }
+      // });
     });
+
+    return rows;
+
+    // return data.reduce<DTRow[]>((rows, row) => {
+    //   const dtRow = Object.entries(row).reduce<DTRow>((acc, [key, value]) => {
+    //     const columnsToRow = key.split(this.columnsSplitter);
+    //
+    //     if (columnsToRow.length === 1) {
+    //       acc[key] = value;
+    //     } else {
+    //       acc[columnsToRow[0]] = [value, columnsToRow.length];
+    //     }
+    //
+    //     return acc;
+    //   }, {});
+    //
+    //   rows.push(dtRow);
+    //
+    //   return rows;
+    // }, []);
   }
 
   private calculateGridTemplateColumn(c: ReactElement<DataTableColumnProps>): string {
