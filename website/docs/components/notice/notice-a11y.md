@@ -16,9 +16,9 @@ The following list describes roles and attributes that component already has.
 
 Table: Roles and attributes
 
-| Component      | Attribute                          | Usage                                                                                                                                                                                                                               |
-| -------------- | ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Notice`       | `role="region"`                    | Defines an ARIA landmark, allowing quick navigation to the element. |
+| Component      | Attribute                          | Usage                                                                                     |
+| -------------- | ---------------------------------- | ----------------------------------------------------------------------------------------- |
+| `Notice`       | `role="region"`                    | Defines an ARIA landmark, allowing quick navigation to the element. Undefined for **muted** theme. |
 |                | `aria-label`                       | Defines a default accessible name for the region: `"Notification"` for **info**, **success** and **warning** themes, and `"Critical notification"` for **danger** theme. |
 | `Notice.Close` | `aria-label="Close notification"`  | Defines the default accessible name for the **Close** button. |
 
