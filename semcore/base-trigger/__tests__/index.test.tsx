@@ -1,7 +1,7 @@
 import React from 'react';
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
-import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
-import { cleanup, render, userEvent, waitFor } from '@semcore/testing-utils/testing-library';
+import { test, describe, beforeEach } from '@semcore/testing-utils/vitest';
+import { cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('BaseTrigger Dependency imports', () => {
@@ -13,6 +13,14 @@ const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 import BaseTrigger, { ButtonTrigger, FilterTrigger, LinkTrigger } from '../src';
 // @ts-ignore
 import Tooltip from '@semcore/tooltip';
+
+describe('BaseTrigger', () => {
+  beforeEach(cleanup);
+
+  shouldSupportClassName(BaseTrigger);
+  shouldSupportRef(BaseTrigger);
+
+});
 
 describe('ButtonTrigger', () => {
   beforeEach(cleanup);
@@ -39,6 +47,17 @@ describe('ButtonTrigger', () => {
 });
 
 describe('FilterTrigger', () => {
+  beforeEach(cleanup);
+
   shouldSupportClassName(FilterTrigger);
   shouldSupportRef(FilterTrigger);
+
+});
+
+describe('LinkTrigger', () => {
+  beforeEach(cleanup);
+
+  shouldSupportClassName(LinkTrigger);
+  shouldSupportRef(LinkTrigger);
+
 });

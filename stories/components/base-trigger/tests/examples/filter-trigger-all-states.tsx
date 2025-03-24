@@ -39,6 +39,13 @@ const Demo = () => (
         </FilterTrigger>
       </Dropdown.Trigger>
     </Dropdown>
+
+    <FilterTrigger empty={false}>
+        <FilterTrigger.TriggerButton>Some button content</FilterTrigger.TriggerButton>
+        <Tooltip title={'clear trigger hint text'}>
+          <FilterTrigger.ClearButton data-testid={'test'} />
+        </Tooltip>
+      </FilterTrigger>
   </Flex>
   </Flex>
 );

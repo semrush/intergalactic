@@ -27,7 +27,7 @@ test.describe('Filter-Trigger', () => {
   });
 
   test('Accessible name with counter', async ({ page }) => {
-    const standPath = 'stories/components/filter-trigger/advanced/examples/accessible-namer.tsx';
+    const standPath = 'stories/components/filter-trigger/docs/examples/accessible_name.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -47,9 +47,7 @@ test.describe('Filter-Trigger', () => {
       const options = page.getByRole('option');
       await options.nth(0).click();
       await options.nth(1).click();
-
       await options.nth(2).click();
-      await trigger.click();
 
       const violations = await getAccessibilityViolations({ page });
 
