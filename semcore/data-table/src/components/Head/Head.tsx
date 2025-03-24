@@ -11,7 +11,7 @@ import {
 import style from './style.shadow.css';
 import { Column } from './Column';
 import { Group } from './Group';
-import { DataTableColumnProps } from './Column.types';
+import { ColumnPropsInner, DataTableColumnProps } from './Column.types';
 import { getFixedStyle, getScrollOffsetValue } from '../../utils';
 import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
 import { ReactElement } from 'react';
@@ -23,6 +23,11 @@ class HeadRoot extends Component<DataTableHeadProps, {}, {}, [], HeadPropsInner>
 
   gridAreaGroupMap = new Map<number, string>();
   gridAreaColumnMap = new Map<number, string>();
+
+  sortableColumnDescribeId() {
+    const { uid } = this.asProps;
+    return `${uid}-column-sortable-describer`;
+  }
 
   componentDidMount() {
     this.fillGridArea();
@@ -40,7 +45,7 @@ class HeadRoot extends Component<DataTableHeadProps, {}, {}, [], HeadPropsInner>
   }
 
   getColumnProps(_: any, index: number) {
-    const { use, columns } = this.asProps;
+    const { use, columns, sort, onSortChange } = this.asProps;
     const column = columns[index];
     const [name, value] = getFixedStyle(column, columns);
     const style: any = {};
@@ -52,22 +57,26 @@ class HeadRoot extends Component<DataTableHeadProps, {}, {}, [], HeadPropsInner>
     return {
       use,
       'aria-colindex': index + 1,
-      ref: column.ref,
+      ref: (node: HTMLElement | null) => column.ref(node),
       style,
       gridArea: this.gridAreaColumnMap.get(index),
       fixed: column.fixed,
       borders: column.borders,
+      sort,
+      onSortChange,
+      parent: column.parent,
+      sortableColumnDescribeId: this.sortableColumnDescribeId(),
     };
   }
 
   render() {
     const SHead = Root;
-    const { Children, styles, columns, tableRef, withScrollBar } = this.asProps;
+    const { Children, styles, columns, tableRef, withScrollBar, getI18nText } = this.asProps;
     const [offsetLeftSum, offsetRightSum] = getScrollOffsetValue(columns);
 
     return sstyled(styles)(
       <>
-        <SHead render={Box} role='row'>
+        <SHead render={Box} role='row' aria-rowindex={1}>
           <Children />
         </SHead>
 
@@ -82,6 +91,10 @@ class HeadRoot extends Component<DataTableHeadProps, {}, {}, [], HeadPropsInner>
             />
           </Box>
         )}
+
+        <ScreenReaderOnly aria-hidden={true} id={this.sortableColumnDescribeId()}>
+          {getI18nText('sortableColumn')}
+        </ScreenReaderOnly>
       </>,
     );
   }

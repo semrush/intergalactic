@@ -1,5 +1,6 @@
 import { Intergalactic } from '@semcore/core';
 import { BoxProps } from '@semcore/base-components';
+import type { Column } from '../../types';
 
 /**
  * Datatable must have an accessible name (aria-table-name).
@@ -11,6 +12,9 @@ type DataTableAriaProps = Intergalactic.RequireAtLeastOne<{
   title?: string;
 }>;
 
+export type SortDirection = 'asc' | 'desc';
+export type DataTableSort<Column = string> = [sortBy: Column, sortDirection: SortDirection];
+
 export type DTKey = string;
 export type DTValue = string | number;
 export type DataTableData = Array<Record<DTKey, any>>;
@@ -21,13 +25,20 @@ type Sizes = Pick<BoxProps, 'w' | 'wMax' | 'wMin' | 'h' | 'hMax' | 'hMin'>;
 
 export type DataTableProps = DataTableAriaProps &
   Sizes & {
+    /** Data for table */
     data: DataTableData;
+    /** Count of total rows if table using virtual scroll. Needs for accessibility */
     totalRows?: number;
 
-    /**
-     * @default 'primary'
-     */
+    /** Table theme according to visual hierarchy on the page
+     * @default primary
+     * */
     use?: DTUse;
+
+    /** Active sort object */
+    sort?: DataTableSort;
+    /** Handler call when request will change sort */
+    onSortChange?: (sort: DataTableSort, e?: React.SyntheticEvent) => void;
 
     /**
      *

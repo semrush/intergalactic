@@ -1,4 +1,4 @@
-import { DTUse } from '../DataTable/DataTable.types';
+import { DataTableData, DataTableProps, DTUse } from '../DataTable/DataTable.types';
 import { DTColumn } from './Column.types';
 
 export type DataTableHeadProps = {
@@ -17,4 +17,8 @@ export type HeadPropsInner = {
   tableRef: React.RefObject<HTMLElement>;
   columns: DTColumn[];
   compact: boolean;
+  sort?: DataTableProps['sort'];
+  onSortChange?: DataTableProps['onSortChange'];
+  getI18nText: (key: string) => string;
+  uid: string;
 };

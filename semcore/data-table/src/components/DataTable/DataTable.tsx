@@ -9,7 +9,7 @@ import {
 } from '@semcore/core';
 import { Box, ScrollArea } from '@semcore/base-components';
 
-import { DataTableProps, ColIndex, RowIndex } from './DataTable.types';
+import { DataTableProps, ColIndex, RowIndex, DataTableData } from './DataTable.types';
 import { Head } from '../Head/Head';
 import { Body } from '../Body/Body';
 import { DataTableColumnProps, DTColumn } from '../Head/Column.types';
@@ -26,10 +26,21 @@ import findComponent from '@semcore/core/lib/utils/findComponent';
 import { DataTableHeadProps, HeadPropsInner } from '../Head/Head.types';
 import { Property } from 'csstype';
 import { BodyPropsInner } from '../Body/Body.types';
+import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 
-class DataTableRoot extends Component<DataTableProps, {}, {}, [], { use: DTRow }> {
+class DataTableRoot extends Component<
+  DataTableProps,
+  {},
+  {},
+  typeof DataTableRoot.enhance,
+  { use: DTRow }
+> {
   static displayName = 'DataTable';
   static style = style;
+
+  static enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages)] as const;
 
   static defaultProps = {
     use: 'primary',
@@ -68,14 +79,17 @@ class DataTableRoot extends Component<DataTableProps, {}, {}, [], { use: DTRow }
   }
 
   getHeadProps(): HeadPropsInner {
-    const { use, compact } = this.asProps;
+    const { use, compact, sort, onSortChange, getI18nText, uid } = this.asProps;
 
     return {
       columns: this.columns,
       use,
-      // scrollRef: this.scrollHeadRef,
       tableRef: this.tableRef,
       compact: Boolean(compact),
+      sort,
+      onSortChange,
+      getI18nText,
+      uid,
     };
   }
 
@@ -394,7 +408,7 @@ class DataTableRoot extends Component<DataTableProps, {}, {}, [], { use: DTRow }
 
       const column: DTColumn = {
         name: columnElement.props.name,
-        ref: (node: HTMLElement | null) => {
+        ref: function (node: HTMLElement | null) {
           if (node) {
             const calculatedWidth = node.getBoundingClientRect().width;
             const calculatedHeight = node.getBoundingClientRect().height;
@@ -402,7 +416,7 @@ class DataTableRoot extends Component<DataTableProps, {}, {}, [], { use: DTRow }
             column.calculatedHeight = calculatedHeight;
           }
 
-          return { current: node };
+          this.ref.current = node;
         },
         gridColumnWidth: calculateGridTemplateColumn(columnElement),
         fixed: columnElement.props.fixed ?? parent?.props.fixed,

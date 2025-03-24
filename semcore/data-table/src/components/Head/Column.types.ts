@@ -1,11 +1,23 @@
-import { DTUse } from '../DataTable/DataTable.types';
+import { DataTableProps, DTUse } from '../DataTable/DataTable.types';
 import { Property } from 'csstype';
 
 export type CommonColumnType = {
+  /**
+   * Name of column for mapping with data
+   */
   name: string;
+  /**
+   * Flag to define column as sortable
+   */
+  sortable?: boolean;
+  /**
+   * Fixes column to some side of table
+   */
   fixed?: 'left' | 'right';
+  /**
+   * Adds vertical border(s)
+   */
   borders?: 'both' | 'left' | 'right';
-
   /**
    * It manages the `flex-wrap` property
    */
@@ -25,7 +37,7 @@ export type CommonColumnType = {
 };
 
 export type DTColumn = CommonColumnType & {
-  ref: React.RefObject<HTMLElement>;
+  ref: React.RefCallback<HTMLElement> & { current: HTMLElement | null };
   /**
    * Width for grid-template-columns
    */
@@ -40,7 +52,7 @@ export type DTColumn = CommonColumnType & {
    */
   calculatedHeight: number;
 
-  parent?: any;
+  parent?: DTColumn;
   // children?: Array<Omit<DTColumn[], 'children'>>;
 };
 
@@ -54,4 +66,9 @@ export type DataTableColumnProps = CommonColumnType & {
 export type ColumnPropsInner = {
   use: DTUse;
   borders?: 'both' | 'left' | 'right';
+  sort?: DataTableProps['sort'];
+  onSortChange?: DataTableProps['onSortChange'];
+  uid: string;
+  parent?: DTColumn;
+  sortableColumnDescribeId: string;
 };

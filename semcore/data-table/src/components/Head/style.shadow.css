@@ -18,9 +18,8 @@ SHead[compact] SColumn {
 
 SGroup, SColumn {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   font-size: var(--intergalactic-fs-100, 12px);
-  line-height: var(--intergalactic-lh-100, 133%);
   color: var(--intergalactic-text-primary, #191b23);
   box-sizing: border-box;
   height: 100%;
@@ -38,6 +37,10 @@ SGroup[use='primary'], SColumn[use='primary'] {
   padding: var(--intergalactic-spacing-3x, 12px);
   border-bottom: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
   background-color: var(--intergalactic-table-th-primary-cell, #f4f5f9);
+
+  &[visibleSort] {
+    padding: calc(var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px)) var(--intergalactic-spacing-3x, 12px);
+  }
 }
 
 SGroup[use='secondary'], SColumn[use='secondary'] {
@@ -54,4 +57,8 @@ SHead[sticky] SColumn[fixed], SHead SColumn[fixed], SHead[sticky] SGroup {
   position: sticky;
   /* because up resizable */
   z-index: 2;
+}
+
+SSortButton {
+  margin-right: -10px;
 }
