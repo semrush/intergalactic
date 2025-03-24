@@ -29,6 +29,7 @@ import { BodyPropsInner } from '../Body/Body.types';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import SpinContainer from '@semcore/spin-container';
 
 class DataTableRoot extends Component<
   DataTableProps,
@@ -45,6 +46,7 @@ class DataTableRoot extends Component<
   static defaultProps = {
     use: 'primary',
     defaultGridTemplateColumnWidth: 'auto',
+    h: 'auto',
   };
 
   private columnsSplitter = '/';
@@ -54,6 +56,7 @@ class DataTableRoot extends Component<
   private focusedCell: [RowIndex, ColIndex] = [-1, -1];
 
   private tableRef = React.createRef<HTMLDivElement>();
+  private headerRef = React.createRef<HTMLDivElement>();
   private scrollBodyRef: ReturnType<ReturnType<typeof syncScroll>>;
   private scrollHeadRef: ReturnType<ReturnType<typeof syncScroll>>;
 
@@ -90,6 +93,7 @@ class DataTableRoot extends Component<
       onSortChange,
       getI18nText,
       uid,
+      ref: this.headerRef,
     };
   }
 
@@ -288,17 +292,23 @@ class DataTableRoot extends Component<
 
   render() {
     const SDataTable = Root;
-    const { Children, styles, w, wMax, wMin, h, hMax, hMin } = this.asProps;
+    const { Children, styles, w, wMax, wMin, h, hMax, hMin, loading } = this.asProps;
 
     const [offsetLeftSum, offsetRightSum] = getScrollOffsetValue(this.columns);
+    const header = this.headerRef.current;
+    const headerHeight = Array.from(header?.children ?? []).reduce((maxHeight, col) => {
+      const rect = col.getBoundingClientRect();
+      if (rect.height > maxHeight) {
+        maxHeight = rect.height;
+      }
 
-    // const topOffset = Math.max(...this.columns.map((c) => c.calculatedHeight));
+      return maxHeight;
+    }, 0);
 
     return sstyled(styles)(
       <ScrollArea
         leftOffset={offsetLeftSum}
         rightOffset={offsetRightSum}
-        // topOffset={topOffset}
         w={w}
         wMax={wMax}
         wMin={wMin}
@@ -309,24 +319,31 @@ class DataTableRoot extends Component<
         container={this.tableRef}
       >
         <ScrollArea.Container tabIndex={-1}>
-          <SDataTable
-            render={Box}
-            __excludeProps={['data', 'w', 'wMax', 'wMin', 'h', 'hMax', 'hMin']}
-            ref={this.tableRef}
-            role='grid'
-            onKeyDown={this.handleKeyDown}
-            onMouseMove={this.handleMouseMove}
-            tabIndex={0}
-            onFocus={this.handleFocus}
-            onBlur={this.handleBlur}
-            aria-rowcount={this.totalRows}
-            aria-colcount={this.columns.length}
-            gridTemplateColumns={this.columns.map((c) => c.gridColumnWidth).join(' ')}
-            gridTemplateAreas={this.columns.map((c) => c.name).join(' ')}
-            w={'100%'}
+          <SpinContainer
+            loading={loading}
+            // @ts-ignore
+            inert={loading ? '' : undefined}
           >
-            <Children />
-          </SDataTable>
+            <SDataTable
+              render={Box}
+              __excludeProps={['data', 'w', 'wMax', 'wMin', 'h', 'hMax', 'hMin']}
+              ref={this.tableRef}
+              role='grid'
+              onKeyDown={this.handleKeyDown}
+              onMouseMove={this.handleMouseMove}
+              tabIndex={0}
+              onFocus={this.handleFocus}
+              onBlur={this.handleBlur}
+              aria-rowcount={this.totalRows}
+              aria-colcount={this.columns.length}
+              gridTemplateColumns={this.columns.map((c) => c.gridColumnWidth).join(' ')}
+              gridTemplateAreas={this.columns.map((c) => c.name).join(' ')}
+              w={'100%'}
+            >
+              <Children />
+            </SDataTable>
+            <SpinContainer.Overlay top={headerHeight} />
+          </SpinContainer>
         </ScrollArea.Container>
 
         <ScrollArea.Bar orientation='horizontal' />

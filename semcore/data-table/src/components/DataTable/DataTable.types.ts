@@ -50,6 +50,11 @@ export type DataTableProps = DataTableAriaProps &
      * Flag for compact view (less paddings)
      */
     compact?: boolean;
+
+    /**
+     * Flag for showing spinner on table body
+     */
+    loading?: boolean;
   };
 
 export type RowIndex = number;

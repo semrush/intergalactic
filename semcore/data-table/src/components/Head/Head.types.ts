@@ -21,4 +21,5 @@ export type HeadPropsInner = {
   onSortChange?: DataTableProps['onSortChange'];
   getI18nText: (key: string) => string;
   uid: string;
+  ref: React.RefObject<HTMLDivElement>;
 };
