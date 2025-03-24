@@ -6,7 +6,7 @@ tabs: Design('radio'), A11y('radio-a11y'), API('radio-api'), Example('radio-code
 
 ## RadioGroup
 
-`RadioGroup` works as a controlling component and doesn't have an actual HTML element beneath it.
+`RadioGroup` groups the radio buttons that have the same purpuse and describes this purpose to assistive technology users.
 
 ::: sandbox
 
