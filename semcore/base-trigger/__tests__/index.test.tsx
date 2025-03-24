@@ -39,8 +39,6 @@ describe('ButtonTrigger', () => {
 });
 
 describe('FilterTrigger', () => {
-
   shouldSupportClassName(FilterTrigger);
   shouldSupportRef(FilterTrigger);
 });
-
