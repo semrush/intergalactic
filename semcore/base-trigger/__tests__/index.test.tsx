@@ -19,7 +19,6 @@ describe('BaseTrigger', () => {
 
   shouldSupportClassName(BaseTrigger);
   shouldSupportRef(BaseTrigger);
-
 });
 
 describe('ButtonTrigger', () => {
@@ -51,7 +50,6 @@ describe('FilterTrigger', () => {
 
   shouldSupportClassName(FilterTrigger);
   shouldSupportRef(FilterTrigger);
-
 });
 
 describe('LinkTrigger', () => {
@@ -59,5 +57,4 @@ describe('LinkTrigger', () => {
 
   shouldSupportClassName(LinkTrigger);
   shouldSupportRef(LinkTrigger);
-
 });
