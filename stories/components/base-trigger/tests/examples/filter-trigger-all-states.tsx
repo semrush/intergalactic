@@ -8,19 +8,19 @@ import ChevronDownM from '@semcore/icon/ChevronDown/m';
 
 const Demo = () => (
   <Flex direction='column' gap={3}>
-    <Flex gap={2} wrap>
+    <Flex gap={2}>
       <FilterTrigger active data-test-id = 'active'>Active</FilterTrigger>
       <FilterTrigger  empty placeholder='placeholder'   data-test-id = 'placeholder'>Disabled</FilterTrigger>
       <FilterTrigger disabled  data-test-id = 'disabled'>Disabled</FilterTrigger>
     </Flex>
 
 
-    <Flex gap={2} wrap> 
+    <Flex gap={2}> 
       <FilterTrigger size='m'  data-test-id = 'm-size'>ButtonM</FilterTrigger>
       <FilterTrigger size='l' data-test-id = 'l-size'>ButtonL</FilterTrigger>
     </Flex>
 
-    <Flex gap={2} wrap>
+    <Flex gap={2}>
     <FilterTrigger aria-label='filter trigger' data-test-id = 'with-text-and-addon'>
     <FilterTrigger.Addon tag={ChevronDownM} />
       <FilterTrigger.Text>Filter trigger Addons</FilterTrigger.Text>
@@ -28,7 +28,7 @@ const Demo = () => (
     </FilterTrigger>
 
     </Flex>
-    <Flex gap={2} wrap>
+    <Flex gap={2}>
     <Select active tag={FilterTrigger} options={devices} data-test-id = 'filter-tigger-as-tag-in-select' />
 
     <Dropdown>

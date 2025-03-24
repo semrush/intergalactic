@@ -7,19 +7,19 @@ import CheckM from '@semcore/icon/Check/m';
 
 const Demo = () => (
   <Flex direction="column" gap={3}>
-    <Flex gap={2} wrap>
+    <Flex gap={2}>
       <LinkTrigger active data-test-id="link-trigger-active">Active</LinkTrigger>
       <LinkTrigger empty data-test-id="link-trigger-empty">Empty</LinkTrigger>
       <LinkTrigger empty placeholder="Placeholder" active data-test-id="link-trigger-active-placeholder">Active with Placeholder</LinkTrigger>
       <LinkTrigger disabled data-test-id="link-trigger-disabled">Disabled</LinkTrigger>
     </Flex>
 
-    <Flex gap={2} wrap>
+    <Flex gap={2}>
       <LinkTrigger color="red" data-test-id="link-trigger-red">Normal state</LinkTrigger>
       <LinkTrigger color="text-success" data-test-id="link-trigger-success">Valid state (Loading)</LinkTrigger>
     </Flex>
 
-    <Flex gap={2} wrap>
+    <Flex gap={2}>
       <LinkTrigger aria-label="link trigger" data-test-id="link-trigger-text">
         <LinkTrigger.Text>Base trigger.Text</LinkTrigger.Text>
       </LinkTrigger>
@@ -37,7 +37,7 @@ const Demo = () => (
       </LinkTrigger>
     </Flex>
 
-    <Flex gap={2} wrap>
+    <Flex gap={2}>
       <Dropdown>
         <Dropdown.Trigger>
           <LinkTrigger aria-label="link trigger with dropdown" data-test-id="link-trigger-dropdown">

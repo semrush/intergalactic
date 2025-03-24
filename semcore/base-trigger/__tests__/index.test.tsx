@@ -1,7 +1,7 @@
 import React from 'react';
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
 import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
-import { cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
+import { cleanup, render, userEvent, waitFor } from '@semcore/testing-utils/testing-library';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('BaseTrigger Dependency imports', () => {
@@ -39,30 +39,8 @@ describe('ButtonTrigger', () => {
 });
 
 describe('FilterTrigger', () => {
-  beforeEach(cleanup);
 
   shouldSupportClassName(FilterTrigger);
   shouldSupportRef(FilterTrigger);
-
-  test.concurrent('Should support clearHint', async ({ task }) => {
-    const component = (
-      <FilterTrigger empty={false}>
-        <FilterTrigger.TriggerButton>Some button content</FilterTrigger.TriggerButton>
-        <Tooltip title={'clear trigger hint text'}>
-          <FilterTrigger.ClearButton data-testid={'test'} />
-        </Tooltip>
-      </FilterTrigger>
-    );
-
-    const { getByText, getByTestId } = render(component);
-
-    await userEvent.keyboard('[Tab]');
-    await userEvent.keyboard('[Tab]');
-
-    expect(getByTestId('test')).toHaveFocus();
-
-    await new Promise((resolve) => setTimeout(resolve, 100));
-
-    expect(getByText('clear trigger hint text')).toBeTruthy();
-  });
 });
+

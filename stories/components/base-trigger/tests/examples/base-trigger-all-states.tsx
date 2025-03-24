@@ -8,16 +8,16 @@ import ChevronDownM from '@semcore/icon/ChevronDown/m';
 
 const Demo = () => (
   <Flex direction='column' gap={3}>
-    <Flex gap={2} wrap justifyContent='flex-start'>
+    <Flex gap={2} justifyContent='flex-start'>
       <BaseTrigger active data-test-id='active-trigger'>Active</BaseTrigger>
       <BaseTrigger disabled data-test-id='disabled-trigger'>Disabled</BaseTrigger>
     </Flex>
-    <Flex gap={2} wrap justifyContent='flex-start'>
+    <Flex gap={2} justifyContent='flex-start'>
       <BaseTrigger state='normal' data-test-id='normal-state-trigger'>Normal state</BaseTrigger>
       <BaseTrigger state='valid' data-test-id='valid-state-trigger'>Valid state</BaseTrigger>
       <BaseTrigger state='invalid' data-test-id='invalid-state-trigger'>Invalid state</BaseTrigger>
     </Flex>
-    <Flex gap={2} wrap justifyContent='flex-start'>
+    <Flex gap={2} justifyContent='flex-start'>
       <BaseTrigger size='m' data-test-id='m-size-trigger'>ButtonM</BaseTrigger>
       <BaseTrigger size='l' data-test-id='l-size-trigger'>ButtonL</BaseTrigger>
       <NeighborLocation>
@@ -26,7 +26,7 @@ const Demo = () => (
         <BaseTrigger data-test-id='right-location-trigger'>Right</BaseTrigger>
       </NeighborLocation>
     </Flex>
-    <Flex gap={2} wrap justifyContent='flex-start'>
+    <Flex gap={2} justifyContent='flex-start'>
       <BaseTrigger empty disabled placeholder='Placeholder' data-test-id='placeholder-trigger-disabled'>Button with placeholder</BaseTrigger>
       <BaseTrigger empty state='valid' placeholder='Placeholder' data-test-id='placeholder-trigger-state-valid'>Button with placeholder</BaseTrigger>
       <BaseTrigger empty state='invalid' placeholder='Placeholder' data-test-id='placeholder-trigger-state-invalid'>Button with placeholder</BaseTrigger>
@@ -35,7 +35,7 @@ const Demo = () => (
     
 
     </Flex>
-    <Flex gap={2} wrap justifyContent='flex-start'>
+    <Flex gap={2} justifyContent='flex-start'>
       <BaseTrigger aria-label='base trigger' data-test-id='text-addon-trigger-1'>
         <BaseTrigger.Text>Base trigger.Text</BaseTrigger.Text>
         <BaseTrigger.Addon tag={ChevronDownM}  />
@@ -45,7 +45,7 @@ const Demo = () => (
         <BaseTrigger.Addon tag={ChevronDownM} />
       </BaseTrigger>
     </Flex>
-    <Flex gap={2} wrap justifyContent='flex-start'>
+    <Flex gap={2} justifyContent='flex-start'>
       <Select tag={BaseTrigger} options={devices} data-test-id='base-trigger-as-tag-in-select' />
       <Dropdown>
         <Dropdown.Trigger>
