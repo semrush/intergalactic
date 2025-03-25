@@ -27,4 +27,8 @@ export type BodyPropsInner = {
   scrollRef: (ref: HTMLDivElement) => void;
   headerRows: number;
   compact: boolean;
+  gridTemplateColumns: string;
+  gridTemplateAreas: string;
+  loading?: boolean;
+  headerHeight: number;
 };

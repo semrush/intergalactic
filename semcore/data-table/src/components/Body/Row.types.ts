@@ -11,6 +11,8 @@ export type DataTableRowProps = {
   rowIndex: number;
   headerRows: number;
 
+  expandedRows?: number[];
+
   onExpandRow?: (expandedRowIndex: number) => void;
 };
 
@@ -21,4 +23,7 @@ export type RowPropsInner = {
    * @default false
    */
   expanded?: boolean;
+
+  gridTemplateAreas: string;
+  gridTemplateColumns: string;
 };

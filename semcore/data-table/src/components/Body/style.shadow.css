@@ -116,18 +116,35 @@ SCell {
   font-variant-numeric: tabular-nums;
   transition: width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
   outline: none;
+
+  SAccordionToggle {
+    transition: transform calc(var(--intergalactic-duration-accordion, 200) * 1ms) ease-out;
+    fill: var(--intergalactic-icon-primary-neutral, #6c6e79);
+
+    &[expanded] {
+      transform: rotate(90deg);
+    }
+  }
 }
 
 SCell[use='primary'] {
   padding: var(--intergalactic-spacing-3x, 12px);
   min-height: 45px;
   background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
+
+  &[data-aria-level] {
+    padding-left: calc(var(--intergalactic-spacing-3x, 12px) + (var(--intergalactic-spacing-5x, 20px) * (var(--data-aria-level) - 1)));
+  }
 }
 
 SCell[use='secondary'] {
   padding: var(--intergalactic-spacing-2x, 8px);
   min-height: 37px;
   background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
+
+  &[data-aria-level] {
+    padding-left: calc(var(--intergalactic-spacing-2x, 8px) + (var(--intergalactic-spacing-5x, 20px) * (var(--data-aria-level) - 1)));
+  }
 }
 
 SCell[borders='both'], SCell[borders='left'] {
@@ -163,17 +180,17 @@ SCell[theme='danger'] {
   background-color: var(--intergalactic-table-td-cell-critical, #fff0f7);
 }
 
-SAccordionToggleContainer {
+SSpinContainer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  display: flex;
   align-items: center;
   justify-content: center;
-  padding-right: 0;
-
-  SAccordionToggle {
-    transition: transform calc(var(--intergalactic-duration-accordion, 200) * 1ms) ease-out;
-    fill: var(--intergalactic-icon-primary-neutral, #6c6e79);
-
-    &[expanded] {
-      transform: rotate(90deg);
-    }
-  }
+  background-color: var(--intergalactic-overlay-limitation-secondary, rgba(255, 255, 255, 0.85));
+}
+SSpinContainer[headerHeight] {
+  top: var(--headerHeight);
 }

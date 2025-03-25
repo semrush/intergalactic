@@ -9,6 +9,11 @@ import { Cell } from './Cell';
 import { DataTableRowProps } from './Row.types';
 import { DataTableCellProps } from './Cell.types';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
+import { ACCORDION } from '@semcore/data-table';
+import ChevronRightM from '@semcore/icon/ChevronRight/m';
+import { ButtonLink } from '@semcore/button';
+import { DTValue } from '../DataTable/DataTable.types';
+import Spin from '@semcore/spin';
 
 class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner> {
   static displayName = 'Body';
@@ -24,33 +29,78 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
     };
   }
 
+  onExpandRow = (expandedRowIndex: number) => {
+    const { expandedRows } = this.asProps;
+    if (expandedRows?.includes(expandedRowIndex)) {
+      this.handlers.expandedRows(expandedRows.filter((row) => row !== expandedRowIndex));
+    } else {
+      this.handlers.expandedRows([...expandedRows!, expandedRowIndex]);
+    }
+  };
+
   getRowProps(_: any, index: number) {
-    const { use, expandedRows } = this.asProps;
+    const { rows, use, gridTemplateAreas, gridTemplateColumns, expandedRows, columns, headerRows } =
+      this.asProps;
+    const row = rows[index];
+
+    const rowIndex = (expandedRows ?? []).reduce((acc, item) => {
+      if (item < index) {
+        acc = acc + 1;
+      }
+
+      return acc;
+    }, index);
+
+    const accordionDataGridArea = Array.isArray(row[ACCORDION])
+      ? `${rowIndex + headerRows + 2} / 1 / ${
+          rowIndex + headerRows + 2 + row[ACCORDION].length
+        } / ${columns.length + 1}`
+      : `${rowIndex + headerRows + 2} / 1 / ${rowIndex + headerRows + 2} / ${columns.length + 1}`;
 
     return {
       use,
+      gridTemplateAreas,
+      gridTemplateColumns,
       expanded: expandedRows?.includes(index),
-      onExpandRow: (expandedRowIndex: number) => {
-        if (expandedRows?.includes(expandedRowIndex)) {
-          this.handlers.expandedRows(expandedRows.filter((row) => row !== expandedRowIndex));
-        } else {
-          this.handlers.expandedRows([...expandedRows!, expandedRowIndex]);
-        }
-      },
+      accordionDataGridArea,
+      columns,
+      headerRows,
+      rowIndex: index,
+      rows,
     };
   }
 
   getCellProps(props: DataTableCellProps) {
-    const { use, renderCell } = this.asProps;
+    const { use, renderCell, expandedRows, styles } = this.asProps;
+    const SAccordionToggle = ButtonLink;
 
     const defaultRender = () => {
       const cellValue = props.row[props.name];
 
+      let value: DTValue = '';
+
       if (cellValue instanceof MergedRowsCell || cellValue instanceof MergedColumnsCell) {
-        return cellValue.value;
+        value = cellValue.value;
+      } else {
+        value = cellValue;
       }
 
-      return cellValue;
+      if (props.columnIndex === 0 && props.row[ACCORDION]) {
+        return sstyled(styles)(
+          <>
+            <SAccordionToggle
+              expanded={expandedRows?.includes(props.rowIndex)}
+              onClick={() => this.onExpandRow(props.rowIndex)}
+              color={'--intergalactic-icon-primary-neutral'}
+            >
+              <SAccordionToggle.Addon tag={ChevronRightM} />
+            </SAccordionToggle>
+            {value}
+          </>,
+        );
+      }
+
+      return value;
     };
 
     return {
@@ -70,7 +120,8 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
 
   render() {
     const SBody = Root;
-    const { rows, columns, styles, headerRows } = this.asProps;
+    const SSpinContainer = Box;
+    const { rows, columns, styles, headerRows, loading, headerHeight } = this.asProps;
 
     return sstyled(styles)(
       <SBody render={Box}>
@@ -80,14 +131,19 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
               key={index}
               role={'row'}
               aria-rowindex={index + 2}
-              columns={columns}
+              // columns={columns}
               row={row}
-              rows={rows}
-              rowIndex={index}
-              headerRows={headerRows}
+              // rows={rows}
+              // rowIndex={index}
+              // headerRows={headerRows}
             />
           );
         })}
+        {loading && (
+          <SSpinContainer headerHeight={`${headerHeight}px`}>
+            <Spin size={'xxl'} />
+          </SSpinContainer>
+        )}
       </SBody>,
     );
   }

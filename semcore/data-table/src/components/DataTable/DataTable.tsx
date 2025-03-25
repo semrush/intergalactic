@@ -86,10 +86,14 @@ class DataTableRoot extends Component<
     return totalRows ?? (data ?? []).length;
   }
 
-  get hasAccordion() {
-    const { data } = this.asProps;
+  get gridSettings() {
+    const gridTemplateColumns = this.columns.map((c) => c.gridColumnWidth).join(' ');
+    const gridTemplateAreas = this.columns.map((c) => c.name).join(' ');
 
-    return data.some((d) => Boolean(d[ACCORDION]));
+    return {
+      gridTemplateColumns,
+      gridTemplateAreas,
+    };
   }
 
   getHeadProps(): HeadPropsInner {
@@ -110,8 +114,19 @@ class DataTableRoot extends Component<
   }
 
   getBodyProps(): BodyPropsInner {
-    const { use, compact } = this.asProps;
+    const { use, compact, loading } = this.asProps;
     const rows = this.calculateRows();
+
+    const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
+    const header = this.headerRef.current;
+    const headerHeight = Array.from(header?.children ?? []).reduce((maxHeight, col) => {
+      const rect = col.getBoundingClientRect();
+      if (rect.height > maxHeight) {
+        maxHeight = rect.height;
+      }
+
+      return maxHeight;
+    }, 0);
 
     return {
       columns: this.columns,
@@ -120,6 +135,10 @@ class DataTableRoot extends Component<
       scrollRef: this.scrollBodyRef,
       headerRows: this.columns.some((column) => Boolean(column.parent)) ? 2 : 1,
       compact: Boolean(compact),
+      gridTemplateColumns,
+      gridTemplateAreas,
+      loading,
+      headerHeight,
     };
   }
 
@@ -156,7 +175,7 @@ class DataTableRoot extends Component<
   changeFocusCell = (rowIndex: RowIndex, colIndex: ColIndex) => {
     const hasFocusable = this.hasFocusableInHeader();
 
-    const maxCol = this.hasAccordion ? this.columns.length : this.columns.length - 1;
+    const maxCol = this.columns.length - 1;
     const maxRow = this.totalRows;
 
     const currentRow = this.tableRef.current?.querySelector(
@@ -305,26 +324,10 @@ class DataTableRoot extends Component<
 
   render() {
     const SDataTable = Root;
-    const { Children, styles, w, wMax, wMin, h, hMax, hMin, loading, data } = this.asProps;
+    const { Children, styles, w, wMax, wMin, h, hMax, hMin, loading } = this.asProps;
 
     const [offsetLeftSum, offsetRightSum] = getScrollOffsetValue(this.columns);
-    const header = this.headerRef.current;
-    const headerHeight = Array.from(header?.children ?? []).reduce((maxHeight, col) => {
-      const rect = col.getBoundingClientRect();
-      if (rect.height > maxHeight) {
-        maxHeight = rect.height;
-      }
-
-      return maxHeight;
-    }, 0);
-
-    let gridTemplateColumns = this.columns.map((c) => c.gridColumnWidth).join(' ');
-    let gridTemplateAreas = this.columns.map((c) => c.name).join(' ');
-
-    if (this.hasAccordion) {
-      gridTemplateColumns = `22px ${gridTemplateColumns}`;
-      gridTemplateAreas = `collapsedRowToggle ${gridTemplateAreas}`;
-    }
+    const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
 
     return sstyled(styles)(
       <ScrollArea
@@ -340,31 +343,24 @@ class DataTableRoot extends Component<
         container={this.tableRef}
       >
         <ScrollArea.Container tabIndex={-1}>
-          <SpinContainer
-            loading={loading}
-            // @ts-ignore
-            inert={loading ? '' : undefined}
+          <SDataTable
+            render={Box}
+            __excludeProps={['data', 'w', 'wMax', 'wMin', 'h', 'hMax', 'hMin']}
+            ref={this.tableRef}
+            role='grid'
+            onKeyDown={this.handleKeyDown}
+            onMouseMove={this.handleMouseMove}
+            tabIndex={0}
+            onFocus={this.handleFocus}
+            onBlur={this.handleBlur}
+            aria-rowcount={this.totalRows}
+            aria-colcount={this.columns.length}
+            gridTemplateColumns={gridTemplateColumns}
+            gridTemplateAreas={gridTemplateAreas}
+            w={'100%'}
           >
-            <SDataTable
-              render={Box}
-              __excludeProps={['data', 'w', 'wMax', 'wMin', 'h', 'hMax', 'hMin']}
-              ref={this.tableRef}
-              role='grid'
-              onKeyDown={this.handleKeyDown}
-              onMouseMove={this.handleMouseMove}
-              tabIndex={0}
-              onFocus={this.handleFocus}
-              onBlur={this.handleBlur}
-              aria-rowcount={this.totalRows}
-              aria-colcount={this.columns.length}
-              gridTemplateColumns={gridTemplateColumns}
-              gridTemplateAreas={gridTemplateAreas}
-              w={'100%'}
-            >
-              <Children />
-            </SDataTable>
-            <SpinContainer.Overlay top={headerHeight} />
-          </SpinContainer>
+            <Children />
+          </SDataTable>
         </ScrollArea.Container>
 
         <ScrollArea.Bar orientation='horizontal' />
@@ -379,7 +375,7 @@ class DataTableRoot extends Component<
       props: { children: Array<ReactElement<DataTableColumnProps>> };
     };
 
-    const hasGroup = findComponent(children, ['Group']) !== undefined;
+    const hasGroup = findComponent(HeadComponent.props.children, ['Head.Group']) !== undefined;
 
     let columnIndex = 0;
     let groupIndex = 0;
@@ -446,16 +442,7 @@ class DataTableRoot extends Component<
       if (child.type === Head.Column) {
         const col = makeColumn(child);
 
-        if (i === 0 && data.some((d) => d[ACCORDION])) {
-          gridColumnIndex++;
-          col.gridArea = `1 / ${gridColumnIndex - 1} / ${hasGroup ? '3' : '2'} / ${
-            gridColumnIndex + 1
-          }`;
-        } else {
-          col.gridArea = `1 / ${gridColumnIndex} / ${hasGroup ? '3' : '2'} / ${
-            gridColumnIndex + 1
-          }`;
-        }
+        col.gridArea = `1 / ${gridColumnIndex} / ${hasGroup ? '3' : '2'} / ${gridColumnIndex + 1}`;
 
         columnIndex++;
         gridColumnIndex++;
@@ -520,7 +507,7 @@ class DataTableRoot extends Component<
   private calculateRows(): DTRow[] {
     const { data } = this.asProps;
 
-    const rows: DTRow[] & { hasAccordion?: true } = [];
+    const rows: DTRow[] = [];
 
     let rowIndex = 0;
 
@@ -543,14 +530,6 @@ class DataTableRoot extends Component<
 
       rows.push(dtRow);
       rowIndex++;
-
-      // if (row[ACCORDION]) {
-      //   rows.hasAccordion = true;
-      //   const accordionRow = row[ACCORDION];
-      //
-      //   rows.push(accordionRow);
-      //   rowIndex++;
-      // }
     };
 
     data.forEach((row) => {

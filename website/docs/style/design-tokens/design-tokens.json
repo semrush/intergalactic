@@ -2407,6 +2407,7 @@
     "description": "20px",
     "components": [
       "card",
+      "data-table",
       "errors",
       "format-text",
       "notice-bubble",
@@ -2735,7 +2736,7 @@
     "rawValue": "rgba({gray.white}, 0.85)",
     "computedValue": "rgba(255, 255, 255, 0.85)",
     "description": "Use as a secondary cover of the content under the messages about limitations.",
-    "components": ["spin-container"]
+    "components": ["data-table", "spin-container"]
   },
   {
     "name": "--intergalactic-z-index-deep",
