@@ -10,8 +10,15 @@ export type DataTableRowProps = {
   rows: DTRow[];
   rowIndex: number;
   headerRows: number;
+
+  onExpandRow?: (expandedRowIndex: number) => void;
 };
 
 export type RowPropsInner = {
   use: DTUse;
+  /**
+   * Expanded flag for rows with accordion
+   * @default false
+   */
+  expanded?: boolean;
 };

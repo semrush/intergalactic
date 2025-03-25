@@ -21,26 +21,23 @@ class HeadRoot extends Component<DataTableHeadProps, {}, {}, [], HeadPropsInner>
   static displayName = 'Head';
   static style = style;
 
-  gridAreaGroupMap = new Map<number, string>();
-  gridAreaColumnMap = new Map<number, string>();
-
   sortableColumnDescribeId() {
     const { uid } = this.asProps;
     return `${uid}-column-sortable-describer`;
   }
 
-  componentDidMount() {
-    this.fillGridArea();
-
-    this.forceUpdate();
-  }
+  // componentDidMount() {
+  //   this.fillGridArea();
+  //
+  //   this.forceUpdate();
+  // }
 
   getGroupProps(_: any, index: number) {
-    const { use } = this.asProps;
+    const { use, gridAreaGroupMap } = this.asProps;
 
     return {
       use,
-      gridArea: this.gridAreaGroupMap.get(index),
+      gridArea: gridAreaGroupMap.get(index),
     };
   }
 
@@ -59,7 +56,7 @@ class HeadRoot extends Component<DataTableHeadProps, {}, {}, [], HeadPropsInner>
       'aria-colindex': index + 1,
       ref: (node: HTMLElement | null) => column.ref(node),
       style,
-      gridArea: this.gridAreaColumnMap.get(index),
+      gridArea: column.gridArea,
       fixed: column.fixed,
       borders: column.borders,
       sort,
@@ -99,56 +96,56 @@ class HeadRoot extends Component<DataTableHeadProps, {}, {}, [], HeadPropsInner>
     );
   }
 
-  private fillGridArea() {
-    const { Children } = this.asProps;
-    const children: Array<ReactElement<DataTableColumnProps> | ReactElement<DataTableGroupProps>> =
-      getOriginChildren(Children);
-    let hasGroup = false;
-
-    React.Children.forEach(children, (child) => {
-      if (!React.isValidElement(child)) return;
-
-      if (child.type === Head.Group) {
-        hasGroup = true;
-      }
-    });
-
-    let columnIndex = 0;
-    let groupIndex = 0;
-    let gridColumnIndex = 1;
-
-    React.Children.forEach(children, (child) => {
-      if (!React.isValidElement(child)) return;
-
-      if (child.type === Head.Group) {
-        const groupedChildren = child.props.children as Array<ReactElement<DataTableColumnProps>>;
-        const initGridColumn = gridColumnIndex;
-
-        React.Children.forEach(groupedChildren, (child) => {
-          if (!React.isValidElement(child)) return;
-
-          if (child.type === Head.Column) {
-            this.gridAreaColumnMap.set(
-              columnIndex,
-              `2 / ${gridColumnIndex} / 3 / ${gridColumnIndex + 1}`,
-            );
-            columnIndex++;
-            gridColumnIndex++;
-          }
-        });
-
-        this.gridAreaGroupMap.set(groupIndex, `1 / ${initGridColumn} / 2 / ${gridColumnIndex}`);
-        groupIndex++;
-      } else if (child.type === Head.Column) {
-        this.gridAreaColumnMap.set(
-          columnIndex,
-          `1 / ${gridColumnIndex} / ${hasGroup ? '3' : '2'} / ${gridColumnIndex + 1}`,
-        );
-        columnIndex++;
-        gridColumnIndex++;
-      }
-    });
-  }
+  // private fillGridArea() {
+  //   const { Children } = this.asProps;
+  //   const children: Array<ReactElement<DataTableColumnProps> | ReactElement<DataTableGroupProps>> =
+  //     getOriginChildren(Children);
+  //   let hasGroup = false;
+  //
+  //   React.Children.forEach(children, (child) => {
+  //     if (!React.isValidElement(child)) return;
+  //
+  //     if (child.type === Head.Group) {
+  //       hasGroup = true;
+  //     }
+  //   });
+  //
+  //   let columnIndex = 0;
+  //   let groupIndex = 0;
+  //   let gridColumnIndex = 1;
+  //
+  //   React.Children.forEach(children, (child) => {
+  //     if (!React.isValidElement(child)) return;
+  //
+  //     if (child.type === Head.Group) {
+  //       const groupedChildren = child.props.children as Array<ReactElement<DataTableColumnProps>>;
+  //       const initGridColumn = gridColumnIndex;
+  //
+  //       React.Children.forEach(groupedChildren, (child) => {
+  //         if (!React.isValidElement(child)) return;
+  //
+  //         if (child.type === Head.Column) {
+  //           this.gridAreaColumnMap.set(
+  //             columnIndex,
+  //             `2 / ${gridColumnIndex} / 3 / ${gridColumnIndex + 1}`,
+  //           );
+  //           columnIndex++;
+  //           gridColumnIndex++;
+  //         }
+  //       });
+  //
+  //       this.gridAreaGroupMap.set(groupIndex, `1 / ${initGridColumn} / 2 / ${gridColumnIndex}`);
+  //       groupIndex++;
+  //     } else if (child.type === Head.Column) {
+  //       this.gridAreaColumnMap.set(
+  //         columnIndex,
+  //         `1 / ${gridColumnIndex} / ${hasGroup ? '3' : '2'} / ${gridColumnIndex + 1}`,
+  //       );
+  //       columnIndex++;
+  //       gridColumnIndex++;
+  //     }
+  //   });
+  // }
 }
 //
 // function Group(props) {

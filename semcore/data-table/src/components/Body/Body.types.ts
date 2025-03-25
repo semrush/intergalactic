@@ -16,6 +16,8 @@ export type DataTableBodyProps = {
   // columns: DTColumn[];
 
   renderCell?: (props: CellRenderProps) => React.ReactNode;
+
+  expandedRows?: number[];
 };
 
 export type BodyPropsInner = {

@@ -22,4 +22,6 @@ export type HeadPropsInner = {
   getI18nText: (key: string) => string;
   uid: string;
   ref: React.RefObject<HTMLDivElement>;
+
+  gridAreaGroupMap: Map<number, string>;
 };

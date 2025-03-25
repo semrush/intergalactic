@@ -6,21 +6,37 @@ import { Row } from './Row';
 
 import style from './style.shadow.css';
 import { Cell } from './Cell';
-import { DataTableRowProps, DTRow } from './Row.types';
+import { DataTableRowProps } from './Row.types';
 import { DataTableCellProps } from './Cell.types';
-import { findAllComponents } from '@semcore/core/lib/utils/findComponent';
-import { DTColumn } from '../Head/Column.types';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
 
 class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner> {
   static displayName = 'Body';
   static style = style;
 
-  getRowProps() {
-    const { use } = this.asProps;
+  static defaultProps = {
+    defaultExpandedRows: [],
+  };
+
+  uncontrolledProps() {
+    return {
+      expandedRows: [],
+    };
+  }
+
+  getRowProps(_: any, index: number) {
+    const { use, expandedRows } = this.asProps;
 
     return {
       use,
+      expanded: expandedRows?.includes(index),
+      onExpandRow: (expandedRowIndex: number) => {
+        if (expandedRows?.includes(expandedRowIndex)) {
+          this.handlers.expandedRows(expandedRows.filter((row) => row !== expandedRowIndex));
+        } else {
+          this.handlers.expandedRows([...expandedRows!, expandedRowIndex]);
+        }
+      },
     };
   }
 

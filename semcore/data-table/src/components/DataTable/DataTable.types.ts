@@ -1,6 +1,5 @@
 import { Intergalactic } from '@semcore/core';
 import { BoxProps } from '@semcore/base-components';
-import type { Column } from '../../types';
 
 /**
  * Datatable must have an accessible name (aria-table-name).
@@ -15,8 +14,8 @@ type DataTableAriaProps = Intergalactic.RequireAtLeastOne<{
 export type SortDirection = 'asc' | 'desc';
 export type DataTableSort<Column = string> = [sortBy: Column, sortDirection: SortDirection];
 
-export type DTKey = string;
-export type DTValue = string | number;
+export type DTKey = string | symbol;
+export type DTValue = string | number | boolean;
 export type DataTableData = Array<Record<DTKey, any>>;
 
 export type DTUse = 'primary' | 'secondary';

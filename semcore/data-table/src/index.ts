@@ -1,6 +1,6 @@
-import { DataTable } from './components/DataTable/DataTable';
+import { DataTable, ACCORDION } from './components/DataTable/DataTable';
 
 export { default } from './DataTable';
 export * from './DataTable';
 
-export { DataTable };
+export { DataTable, ACCORDION };

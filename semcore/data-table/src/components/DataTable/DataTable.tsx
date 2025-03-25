@@ -9,7 +9,7 @@ import {
 } from '@semcore/core';
 import { Box, ScrollArea } from '@semcore/base-components';
 
-import { DataTableProps, ColIndex, RowIndex, DataTableData } from './DataTable.types';
+import { DataTableProps, ColIndex, RowIndex, DataTableData, DTKey } from './DataTable.types';
 import { Head } from '../Head/Head';
 import { Body } from '../Body/Body';
 import { DataTableColumnProps, DTColumn } from '../Head/Column.types';
@@ -24,7 +24,6 @@ import syncScroll from '@semcore/core/lib/utils/syncScroll';
 import { getScrollOffsetValue } from '../../utils';
 import findComponent from '@semcore/core/lib/utils/findComponent';
 import { DataTableHeadProps, HeadPropsInner } from '../Head/Head.types';
-import { Property } from 'csstype';
 import { BodyPropsInner } from '../Body/Body.types';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
@@ -32,6 +31,8 @@ import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import SpinContainer from '@semcore/spin-container';
 import { ROW_GROUP } from '../../index';
 import { MergedColumnsCell, MergedRowsCell } from '../Body/MergedCells';
+
+export const ACCORDION = Symbol('accordion');
 
 class DataTableRoot extends Component<
   DataTableProps,
@@ -62,6 +63,8 @@ class DataTableRoot extends Component<
   private scrollBodyRef: ReturnType<ReturnType<typeof syncScroll>>;
   private scrollHeadRef: ReturnType<ReturnType<typeof syncScroll>>;
 
+  private gridAreaGroupMap = new Map<number, string>();
+
   constructor(props: DataTableProps) {
     super(props);
 
@@ -83,6 +86,12 @@ class DataTableRoot extends Component<
     return totalRows ?? (data ?? []).length;
   }
 
+  get hasAccordion() {
+    const { data } = this.asProps;
+
+    return data.some((d) => Boolean(d[ACCORDION]));
+  }
+
   getHeadProps(): HeadPropsInner {
     const { use, compact, sort, onSortChange, getI18nText, uid } = this.asProps;
 
@@ -96,6 +105,7 @@ class DataTableRoot extends Component<
       getI18nText,
       uid,
       ref: this.headerRef,
+      gridAreaGroupMap: this.gridAreaGroupMap,
     };
   }
 
@@ -146,14 +156,14 @@ class DataTableRoot extends Component<
   changeFocusCell = (rowIndex: RowIndex, colIndex: ColIndex) => {
     const hasFocusable = this.hasFocusableInHeader();
 
-    const maxCol = this.columns.length - 1;
+    const maxCol = this.hasAccordion ? this.columns.length : this.columns.length - 1;
     const maxRow = this.totalRows;
 
     const currentRow = this.tableRef.current?.querySelector(
       `[aria-rowindex="${this.focusedCell[0] + 1}"]`,
     );
-    const headerRow = this.tableRef.current?.querySelector('[aria-rowindex="1"]');
-    const headerCells = headerRow?.querySelectorAll('[role=columnheader]');
+
+    const headerCells = this.tableRef.current?.querySelectorAll('[role=columnheader]');
     const currentCell = currentRow?.querySelectorAll('[role=gridcell]').item(this.focusedCell[1]);
     const currentHeaderCell = headerCells?.item(this.focusedCell[1]);
 
@@ -295,7 +305,7 @@ class DataTableRoot extends Component<
 
   render() {
     const SDataTable = Root;
-    const { Children, styles, w, wMax, wMin, h, hMax, hMin, loading } = this.asProps;
+    const { Children, styles, w, wMax, wMin, h, hMax, hMin, loading, data } = this.asProps;
 
     const [offsetLeftSum, offsetRightSum] = getScrollOffsetValue(this.columns);
     const header = this.headerRef.current;
@@ -307,6 +317,14 @@ class DataTableRoot extends Component<
 
       return maxHeight;
     }, 0);
+
+    let gridTemplateColumns = this.columns.map((c) => c.gridColumnWidth).join(' ');
+    let gridTemplateAreas = this.columns.map((c) => c.name).join(' ');
+
+    if (this.hasAccordion) {
+      gridTemplateColumns = `22px ${gridTemplateColumns}`;
+      gridTemplateAreas = `collapsedRowToggle ${gridTemplateAreas}`;
+    }
 
     return sstyled(styles)(
       <ScrollArea
@@ -339,8 +357,8 @@ class DataTableRoot extends Component<
               onBlur={this.handleBlur}
               aria-rowcount={this.totalRows}
               aria-colcount={this.columns.length}
-              gridTemplateColumns={this.columns.map((c) => c.gridColumnWidth).join(' ')}
-              gridTemplateAreas={this.columns.map((c) => c.name).join(' ')}
+              gridTemplateColumns={gridTemplateColumns}
+              gridTemplateAreas={gridTemplateAreas}
               w={'100%'}
             >
               <Children />
@@ -356,67 +374,27 @@ class DataTableRoot extends Component<
   }
 
   private calculateColumns(): DTColumn[] {
-    const { children } = this.props;
+    const { children, data } = this.props;
     const HeadComponent = findComponent(children, ['Head']) as ReactElement<DataTableHeadProps> & {
       props: { children: Array<ReactElement<DataTableColumnProps>> };
     };
-    //
-    // let gridColumnIndex = 1;
-    //
-    // const columns: DTColumn[] = [];
-    // const calculateGridTemplateColumn = this.calculateGridTemplateColumn;
-    //
-    // const addColumn = (columnElement: ReactElement<DataTableColumnProps>, parent?: any) => {
-    //   const column: DTColumn = {
-    //     name: columnElement.props.name,
-    //     ref: (node: HTMLElement | null) => {
-    //       if (node) {
-    //         const calculatedWidth = node.getBoundingClientRect().width;
-    //         column.calculatedWidth = calculatedWidth;
-    //       }
-    //
-    //       return { current: node };
-    //     },
-    //     gridColumnWidth: calculateGridTemplateColumn(columnElement),
-    //     fixed: columnElement.props.fixed,
-    //     calculatedWidth: 0,
-    //     gridColumnIndex,
-    //     parent,
-    //   };
-    //
-    //   columns.push(column);
-    //
-    //   gridColumnIndex++;
-    // };
-    //
-    // if (React.isValidElement(Head) && Head.type === DataTable.Head) {
-    //   console.log('here we are!');
-    //
-    //   React.Children.forEach(Head.props.children, (child) => {
-    //     if (!React.isValidElement(child)) return;
-    //     if (child.type === DataTable.Head.Column) {
-    //       addColumn(child);
-    //     } else if (child.type === DataTable.Head.Group) {
-    //
-    //       React.Children.forEach(child.props.children, (groupChild: ReactElement<DataTableColumnProps>) => {
-    //         addColumn(groupChild, child);
-    //       });
-    //     }
-    //   });
-    // }
 
-    const Columns = findAllComponents(children, ['Head.Column']);
+    const hasGroup = findComponent(children, ['Group']) !== undefined;
+
+    let columnIndex = 0;
+    let groupIndex = 0;
+    let gridColumnIndex = 1;
 
     const calculateGridTemplateColumn = this.calculateGridTemplateColumn.bind(this);
 
     const columns: DTColumn[] = [];
 
-    const addColumn = (
+    const makeColumn = (
       columnElement: ReactElement<DataTableColumnProps>,
       parent?: any,
       isFirst?: boolean,
       isLast?: boolean,
-    ) => {
+    ): DTColumn => {
       const leftBordersFromParent =
         isFirst && (parent?.props.borders === 'both' || parent?.props.borders === 'left')
           ? 'left'
@@ -451,24 +429,67 @@ class DataTableRoot extends Component<
         justifyContent: columnElement.props.justifyContent,
       };
 
-      columns.push(column);
+      //       this.gridAreaColumnMap.set(
+      //         columnIndex,
+      //         `1 / ${gridColumnIndex} / ${hasGroup ? '3' : '2'} / ${gridColumnIndex + 1}`,
+      //       );
+      //       columnIndex++;
+      //       gridColumnIndex++;
+
+      return column;
+      // columns.push(column);
     };
 
     React.Children.forEach(HeadComponent.props.children, (child, i) => {
+      if (!React.isValidElement(child)) return;
+
       if (child.type === Head.Column) {
-        addColumn(child);
+        const col = makeColumn(child);
+
+        if (i === 0 && data.some((d) => d[ACCORDION])) {
+          gridColumnIndex++;
+          col.gridArea = `1 / ${gridColumnIndex - 1} / ${hasGroup ? '3' : '2'} / ${
+            gridColumnIndex + 1
+          }`;
+        } else {
+          col.gridArea = `1 / ${gridColumnIndex} / ${hasGroup ? '3' : '2'} / ${
+            gridColumnIndex + 1
+          }`;
+        }
+
+        columnIndex++;
+        gridColumnIndex++;
+
+        columns.push(col);
       } else if (child.type === Head.Group) {
         const Group = child;
         const childCount = React.Children.count(child.props.children);
-        React.Children.forEach(child.props.children, (child, i) => {
+
+        const initGridColumn = gridColumnIndex;
+
+        React.Children.forEach(child.props.children, (child, j) => {
           if (child.type === Head.Column) {
-            const isFirst = i === 0;
-            const isLast = i === childCount - 1;
-            addColumn(child, Group, isFirst, isLast);
+            const isFirst = j === 0;
+            const isLast = j === childCount - 1;
+            const col = makeColumn(child, Group, isFirst, isLast);
+
+            if (i === 0 && j === 0 && data.some((d) => d[ACCORDION])) {
+              gridColumnIndex++;
+              col.gridArea = `2 / ${gridColumnIndex - 1} / 3 / ${gridColumnIndex + 1}`;
+            } else {
+              col.gridArea = `2 / ${gridColumnIndex} / 3 / ${gridColumnIndex + 1}`;
+            }
+
+            col.gridArea = `2 / ${gridColumnIndex} / 3 / ${gridColumnIndex + 1}`;
+            columnIndex++;
+            gridColumnIndex++;
+
+            columns.push(col);
           }
         });
-      } else {
-        return null;
+
+        this.gridAreaGroupMap.set(groupIndex, `1 / ${initGridColumn} / 2 / ${gridColumnIndex}`);
+        groupIndex++;
       }
     });
 
@@ -499,11 +520,11 @@ class DataTableRoot extends Component<
   private calculateRows(): DTRow[] {
     const { data } = this.asProps;
 
-    const rows: DTRow[] = [];
+    const rows: DTRow[] & { hasAccordion?: true } = [];
 
     let rowIndex = 0;
 
-    const addToRows = (row: Record<string, any>) => {
+    const addToRows = (row: Record<DTKey, any>) => {
       const dtRow = Object.entries(row).reduce<DTRow>((acc, [key, value]) => {
         const columnsToRow = key.split(this.columnsSplitter);
 
@@ -513,12 +534,23 @@ class DataTableRoot extends Component<
           acc[columnsToRow[0]] = new MergedColumnsCell(value, columnsToRow.length);
         }
 
+        if (row[ACCORDION]) {
+          acc[ACCORDION] = row[ACCORDION];
+        }
+
         return acc;
       }, {});
 
       rows.push(dtRow);
-
       rowIndex++;
+
+      // if (row[ACCORDION]) {
+      //   rows.hasAccordion = true;
+      //   const accordionRow = row[ACCORDION];
+      //
+      //   rows.push(accordionRow);
+      //   rowIndex++;
+      // }
     };
 
     data.forEach((row) => {

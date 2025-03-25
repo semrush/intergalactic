@@ -54,6 +54,8 @@ export type DTColumn = CommonColumnType & {
 
   parent?: DTColumn;
   // children?: Array<Omit<DTColumn[], 'children'>>;
+
+  gridArea?: string;
 };
 
 export type DataTableColumnProps = CommonColumnType & {

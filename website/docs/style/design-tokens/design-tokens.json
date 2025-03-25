@@ -1090,6 +1090,7 @@
       "accordion",
       "base-trigger",
       "carousel",
+      "data-table",
       "drag-and-drop",
       "format-text",
       "fullscreen-modal",
@@ -3582,7 +3583,7 @@
     "rawValue": "{duration.fast}",
     "computedValue": "200",
     "description": "Use for Accordion.",
-    "components": ["accordion"]
+    "components": ["accordion", "data-table"]
   },
   {
     "name": "--intergalactic-duration-counter",

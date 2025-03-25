@@ -6,7 +6,7 @@ SBody[compact] SCell {
   padding: var(--intergalactic-spacing-3x, 12px) var(--intergalactic-spacing-2x, 8px);
 }
 
-SRow[gridArea], SCell[gridArea] {
+SRow[gridArea], SCell[gridArea], SCollapseRow[gridArea] {
   grid-area: var(--gridArea);
 }
 
@@ -161,4 +161,19 @@ SCell[theme='warning'] {
 
 SCell[theme='danger'] {
   background-color: var(--intergalactic-table-td-cell-critical, #fff0f7);
+}
+
+SAccordionToggleContainer {
+  align-items: center;
+  justify-content: center;
+  padding-right: 0;
+
+  SAccordionToggle {
+    transition: transform calc(var(--intergalactic-duration-accordion, 200) * 1ms) ease-out;
+    fill: var(--intergalactic-icon-primary-neutral, #6c6e79);
+
+    &[expanded] {
+      transform: rotate(90deg);
+    }
+  }
 }

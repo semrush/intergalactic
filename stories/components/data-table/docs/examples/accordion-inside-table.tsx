@@ -1,6 +1,6 @@
 import React from 'react';
 import { scaleLinear } from 'd3-scale';
-import DataTable from '@semcore/data-table';
+import { DataTable, ACCORDION} from '@semcore/data-table';
 import Accordion from '@semcore/accordion';
 import { Flex } from '@semcore/flex-box';
 import { Plot, Line, XAxis, YAxis, ResponsiveContainer, minMax } from '@semcore/d3-chart';
@@ -25,10 +25,10 @@ const Demo = () => {
     <Accordion value={exapnded} onChange={setExapnded}>
       <DataTable data={data} aria-label={'Accordion inside table'}>
         <DataTable.Head>
-          <DataTable.Column name='keyword' children='Keyword' />
-          <DataTable.Column name='kd' children='KD,%' />
-          <DataTable.Column name='cpc' children='CPC' />
-          <DataTable.Column name='vol' children='Vol.' />
+          <DataTable.Head.Column name='keyword' children='Keyword' />
+          <DataTable.Head.Column name='kd' children='KD,%' />
+          <DataTable.Head.Column name='cpc' children='CPC' />
+          <DataTable.Head.Column name='vol' children='Vol.' />
         </DataTable.Head>
         <DataTable.Body>
           {/* [2] Replacing the tag in DataTable.Row with our extended tag with Accordion.Item */}
@@ -109,30 +109,35 @@ const data = [
     kd: '77.8',
     cpc: '$1.25',
     vol: '32,500,000',
+    [ACCORDION]: (<ChartExample/>),
   },
   {
     keyword: 'www.ebay.com',
     kd: '11.2',
     cpc: '$3.4',
     vol: '65,457,920',
+    [ACCORDION]: (<ChartExample/>),
   },
   {
     keyword: 'www.ebay.com',
     kd: '10',
     cpc: '$0.65',
     vol: '47,354,640',
+    [ACCORDION]: (<ChartExample/>),
   },
   {
     keyword: 'ebay buy',
     kd: '-',
     cpc: '$0',
     vol: 'n/a',
+    [ACCORDION]: (<ChartExample/>),
   },
   {
     keyword: 'ebay buy',
     kd: '75.89',
     cpc: '$0',
     vol: '21,644,290',
+    [ACCORDION]: (<ChartExample/>),
   },
 ];
 
