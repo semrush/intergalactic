@@ -2240,12 +2240,18 @@ importers:
       '@semcore/accordion':
         specifier: 16.0.0
         version: link:../accordion
+      '@semcore/add-filter':
+        specifier: 16.0.0
+        version: link:../add-filter
       '@semcore/animation':
         specifier: 16.0.0
         version: link:../animation
       '@semcore/badge':
         specifier: 16.0.0
         version: link:../badge
+      '@semcore/base-components':
+        specifier: 16.0.0
+        version: link:../base-components
       '@semcore/base-trigger':
         specifier: 16.0.0
         version: link:../base-trigger
@@ -2255,6 +2261,9 @@ importers:
       '@semcore/breakpoints':
         specifier: 16.0.0
         version: link:../breakpoints
+      '@semcore/bulk-textarea':
+        specifier: 16.0.0
+        version: link:../bulk-textarea
       '@semcore/button':
         specifier: 16.0.0
         version: link:../button
@@ -2303,9 +2312,6 @@ importers:
       '@semcore/ellipsis':
         specifier: 16.0.0
         version: link:../ellipsis
-      '@semcore/email':
-        specifier: 1.0.2
-        version: 1.0.2
       '@semcore/errors':
         specifier: 16.0.0
         version: link:../errors
@@ -7942,10 +7948,6 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: true
-
-  /@semcore/email@1.0.2:
-    resolution: {integrity: sha512-ZHPI0nKgP0iqsaBVFcLV/0LcoPxWYSH4fF88CL1v6ToOpWhDRXz5SJ7AiaG2PHEz1D4J7DMG7VCtWkAaBWseLQ==}
-    dev: false
 
   /@semcore/flex-box@5.19.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-cKsLAQii0zY/0ENWGS/KWg9deDrkcu6szTsF0/PctqdEaCSoMgEukQLb7qTRH83axLUvZwo/Tz97rhW38HNHew==}
