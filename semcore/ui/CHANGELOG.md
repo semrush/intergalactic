@@ -131,6 +131,10 @@
 
 - **Deprecated** Import it from `@semcore/core`.
 
+### @semcore/i18n-unplugin
+
+- **Added** Major version.
+
 ### @semcore/icon
 
 - **Removed** External icons.
