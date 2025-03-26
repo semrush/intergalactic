@@ -24,6 +24,7 @@ SGroup, SColumn {
   box-sizing: border-box;
   height: 100%;
   position: relative;
+  transition: width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out, min-width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out, max-width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
 }
 
 SGroup[borders='both'], SColumn[borders='both'], SGroup[borders='left'], SColumn[borders='left'] {
@@ -41,9 +42,9 @@ SGroup[use='primary'], SColumn[use='primary'] {
 
   SSortWrapper::before {
     background: linear-gradient(
-            270deg,
-            var(--intergalactic-table-th-primary-cell-hover, #e0e1e9) 67.5%,
-            rgba(224, 225, 233, 0) 105%
+      270deg,
+      var(--intergalactic-table-th-primary-cell-hover, #e0e1e9) 67.5%,
+      rgba(224, 225, 233, 0) 105%
     );
   }
 
@@ -75,9 +76,9 @@ SGroup[use='secondary'], SColumn[use='secondary'] {
 
   SSortWrapper::before {
     background: linear-gradient(
-            270deg,
-            var(--intergalactic-table-th-secondary-cell, #ffffff) 67.5%,
-            rgba(255, 255, 255, 0) 105%
+      270deg,
+      var(--intergalactic-table-th-secondary-cell, #ffffff) 67.5%,
+      rgba(255, 255, 255, 0) 105%
     );
   }
 }

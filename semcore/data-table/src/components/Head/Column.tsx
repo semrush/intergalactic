@@ -9,6 +9,8 @@ import style from './style.shadow.css';
 import { ButtonLink } from '@semcore/button';
 import type { SortDirection } from '../DataTable/DataTable.types';
 import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
+import { SORT_ICON_WIDTH } from '../../Head';
+import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 
 const SORTING_ICON = {
   desc: SortDesc,
@@ -27,14 +29,119 @@ const reversedSortDirection: { [direction in SortDirection]: SortDirection } = {
   asc: 'desc',
 };
 
+type State = {
+  sortVisible: boolean;
+};
+
 export class Column extends Component<DataTableColumnProps, {}, {}, [], ColumnPropsInner> {
   static displayName = 'Column';
   static style = style;
 
   lockedCell: [HTMLElement | null, boolean] = [null, false];
 
-  state = {
+  columnRef = React.createRef<HTMLDivElement>();
+  sortWrapperRef = React.createRef<HTMLDivElement>();
+
+  state: State = {
     sortVisible: false,
+  };
+
+  componentDidUpdate(prevProps: DataTableColumnProps & ColumnPropsInner): void {
+    if (
+      this.asProps.changeSortSize &&
+      canUseDOM() &&
+      prevProps.sort?.[0] !== this.asProps.sort?.[0]
+    ) {
+      const { tableRef, gridTemplateColumns, columnIndex } = this.asProps;
+
+      if (this.asProps.sort?.[0] === this.asProps.name) {
+        const newWidth = this.calculateActiveColumnMinWidth();
+
+        setTimeout(() => {
+          if (tableRef.current && newWidth !== null) {
+            tableRef.current.style.setProperty(
+              'grid-template-columns',
+              gridTemplateColumns
+                .map((gtcWidth, index) => {
+                  if (index === columnIndex) {
+                    return `${newWidth}px`;
+                  }
+                  return gtcWidth;
+                })
+                .join(' '),
+            );
+          }
+        });
+      } else if (this.asProps.sort?.[0] !== this.asProps.name) {
+        setTimeout(() => {
+          if (tableRef.current) {
+            tableRef.current.style.setProperty(
+              'grid-template-columns',
+              gridTemplateColumns.join(' '),
+            );
+          }
+        });
+      }
+    }
+  }
+
+  calculateActiveColumnMinWidth = (): number | null => {
+    const node = this.columnRef.current;
+
+    if (node) {
+      const clonedColumn = document.createElement('div');
+      const computedStyle = window.getComputedStyle(node);
+
+      node.childNodes.forEach((node) => {
+        if (this.sortWrapperRef.current !== node) {
+          clonedColumn.append(node.cloneNode(true));
+        }
+      });
+
+      clonedColumn.style.setProperty('visibility', 'hidden', 'important');
+
+      const styles = [
+        'display',
+        'flex',
+        'margin',
+        'padding',
+        'background',
+        'font-style',
+        'font-width',
+        'font-size',
+        'font-weight',
+      ];
+
+      styles.forEach((key) => {
+        clonedColumn.style.setProperty(
+          key,
+          computedStyle.getPropertyValue(key),
+          computedStyle.getPropertyPriority(key),
+        );
+      });
+
+      clonedColumn.style.setProperty('width', 'fit-content', 'important');
+
+      document.body.appendChild(clonedColumn);
+
+      const computedWidth = Math.ceil(clonedColumn.getBoundingClientRect().width);
+
+      document.body.removeChild(clonedColumn);
+
+      const defaultNodeWidth = this.columnRef.current?.clientWidth ?? 0;
+
+      if (computedWidth >= defaultNodeWidth) {
+        return defaultNodeWidth + SORT_ICON_WIDTH;
+      } else {
+        const freeSpace = defaultNodeWidth - computedWidth;
+
+        if (freeSpace < SORT_ICON_WIDTH) {
+          return computedWidth + SORT_ICON_WIDTH;
+        }
+      }
+    }
+
+    return null;
   };
 
   handleMouseEnter = () => {
@@ -133,6 +240,7 @@ export class Column extends Component<DataTableColumnProps, {}, {}, [], ColumnPr
     return sstyled(styles)(
       <SColumn
         render={Flex}
+        ref={this.columnRef}
         role={'columnheader'}
         tabIndex={-1}
         onMouseEnter={this.handleMouseEnter}
@@ -150,14 +258,14 @@ export class Column extends Component<DataTableColumnProps, {}, {}, [], ColumnPr
         {this.asProps.children}
 
         {sortable && (
-            <SSortWrapper>
-          <SSortButton
-            onClick={this.handleSortClick}
-            addonLeft={SSortIcon}
-            title={ariaSortValue}
-            color={'--intergalactic-icon-primary-neutral'}
-          />
-            </SSortWrapper>
+          <SSortWrapper ref={this.sortWrapperRef}>
+            <SSortButton
+              onClick={this.handleSortClick}
+              addonLeft={SSortIcon}
+              title={ariaSortValue}
+              color={'--intergalactic-icon-primary-neutral'}
+            />
+          </SSortWrapper>
         )}
       </SColumn>,
     );

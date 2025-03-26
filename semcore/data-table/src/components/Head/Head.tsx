@@ -26,12 +26,6 @@ class HeadRoot extends Component<DataTableHeadProps, {}, {}, [], HeadPropsInner>
     return `${uid}-column-sortable-describer`;
   }
 
-  // componentDidMount() {
-  //   this.fillGridArea();
-  //
-  //   this.forceUpdate();
-  // }
-
   getGroupProps(_: any, index: number) {
     const { use, gridAreaGroupMap } = this.asProps;
 
@@ -42,7 +36,8 @@ class HeadRoot extends Component<DataTableHeadProps, {}, {}, [], HeadPropsInner>
   }
 
   getColumnProps(_: any, index: number) {
-    const { use, columns, sort, onSortChange } = this.asProps;
+    const { use, columns, sort, onSortChange, tableRef, gridTemplateColumns, gridTemplateAreas } =
+      this.asProps;
     const column = columns[index];
     const [name, value] = getFixedStyle(column, columns);
     const style: any = {};
@@ -63,6 +58,10 @@ class HeadRoot extends Component<DataTableHeadProps, {}, {}, [], HeadPropsInner>
       onSortChange,
       parent: column.parent,
       sortableColumnDescribeId: this.sortableColumnDescribeId(),
+      columnIndex: index,
+      tableRef,
+      gridTemplateColumns,
+      gridTemplateAreas,
     };
   }
 

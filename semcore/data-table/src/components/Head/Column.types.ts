@@ -63,6 +63,11 @@ export type DataTableColumnProps = CommonColumnType & {
    * Value for grid-template-columns for current column
    */
   gtcWidth?: string;
+
+  /**
+   * Flag for change column size if sorted by it
+   */
+  changeSortSize?: boolean;
 };
 
 export type ColumnPropsInner = {
@@ -73,4 +78,8 @@ export type ColumnPropsInner = {
   uid: string;
   parent?: DTColumn;
   sortableColumnDescribeId: string;
+  columnIndex: number;
+  tableRef: React.RefObject<HTMLElement>;
+  gridTemplateColumns: string[];
+  gridTemplateAreas: string[];
 };

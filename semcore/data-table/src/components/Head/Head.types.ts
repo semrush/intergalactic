@@ -24,4 +24,6 @@ export type HeadPropsInner = {
   ref: React.RefObject<HTMLDivElement>;
 
   gridAreaGroupMap: Map<number, string>;
+  gridTemplateColumns: string[];
+  gridTemplateAreas: string[];
 };

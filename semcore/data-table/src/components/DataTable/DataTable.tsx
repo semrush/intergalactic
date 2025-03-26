@@ -31,6 +31,7 @@ import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import SpinContainer from '@semcore/spin-container';
 import { ROW_GROUP } from '../../index';
 import { MergedColumnsCell, MergedRowsCell } from '../Body/MergedCells';
+import { forkRef } from '@semcore/core/lib/utils/ref';
 
 export const ACCORDION = Symbol('accordion');
 
@@ -58,6 +59,7 @@ class DataTableRoot extends Component<
 
   private focusedCell: [RowIndex, ColIndex] = [-1, -1];
 
+  private tableContainerRef = React.createRef<HTMLDivElement>();
   private tableRef = React.createRef<HTMLDivElement>();
   private headerRef = React.createRef<HTMLDivElement>();
   private scrollBodyRef: ReturnType<ReturnType<typeof syncScroll>>;
@@ -87,8 +89,8 @@ class DataTableRoot extends Component<
   }
 
   get gridSettings() {
-    const gridTemplateColumns = this.columns.map((c) => c.gridColumnWidth).join(' ');
-    const gridTemplateAreas = this.columns.map((c) => c.name).join(' ');
+    const gridTemplateColumns = this.columns.map((c) => c.gridColumnWidth);
+    const gridTemplateAreas = this.columns.map((c) => c.name);
 
     return {
       gridTemplateColumns,
@@ -98,6 +100,7 @@ class DataTableRoot extends Component<
 
   getHeadProps(): HeadPropsInner {
     const { use, compact, sort, onSortChange, getI18nText, uid } = this.asProps;
+    const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
 
     return {
       columns: this.columns,
@@ -110,6 +113,8 @@ class DataTableRoot extends Component<
       uid,
       ref: this.headerRef,
       gridAreaGroupMap: this.gridAreaGroupMap,
+      gridTemplateColumns,
+      gridTemplateAreas,
     };
   }
 
@@ -340,13 +345,13 @@ class DataTableRoot extends Component<
         hMax={hMax}
         hMin={hMin}
         shadow={true}
-        container={this.tableRef}
+        container={this.tableContainerRef}
       >
         <ScrollArea.Container tabIndex={-1}>
           <SDataTable
             render={Box}
             __excludeProps={['data', 'w', 'wMax', 'wMin', 'h', 'hMax', 'hMin']}
-            ref={this.tableRef}
+            ref={forkRef(this.tableRef, this.tableContainerRef)}
             role='grid'
             onKeyDown={this.handleKeyDown}
             onMouseMove={this.handleMouseMove}
@@ -355,8 +360,8 @@ class DataTableRoot extends Component<
             onBlur={this.handleBlur}
             aria-rowcount={this.totalRows}
             aria-colcount={this.columns.length}
-            gridTemplateColumns={gridTemplateColumns}
-            gridTemplateAreas={gridTemplateAreas}
+            gridTemplateColumns={gridTemplateColumns.join(' ')}
+            gridTemplateAreas={gridTemplateAreas.join(' ')}
             w={'100%'}
           >
             <Children />
