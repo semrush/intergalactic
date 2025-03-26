@@ -3,6 +3,7 @@ import { execSync } from 'child_process';
 import { log, prerelaseSuffix } from '../utils';
 import { VersionPatch } from '../makeVersionPatches';
 import { NpmUtils } from './npmUtils';
+import { allowedScopes } from './allowedScopes';
 
 const git = Git();
 
@@ -22,17 +23,23 @@ export const gitUtils = {
   },
 
   getUpdatedPackages: async () => {
-    const diff = await git.diffSummary('HEAD^1');
-    const components: string[] = [];
+    const scopes = await allowedScopes();
+    const updatedPackages = scopes.semcoreComponents.map((pkg) => `@semcore/${pkg}`);
 
-    diff.files.forEach((item) => {
-      if (item.file.startsWith('semcore') && item.file.endsWith('package.json')) {
-        const path = item.file.split('/');
-        components.push(`@${path[0]}/${path[1]}`);
-      }
-    });
+    return updatedPackages;
 
-    return components;
+    // todo: Brauer Ilia turn back after 16 release
+    // const diff = await git.diffSummary('HEAD^1');
+    // const components: string[] = [];
+    //
+    // diff.files.forEach((item) => {
+    //   if (item.file.startsWith('semcore') && item.file.endsWith('package.json')) {
+    //     const path = item.file.split('/');
+    //     components.push(`@${path[0]}/${path[1]}`);
+    //   }
+    // });
+    //
+    // return components;
   },
 
   getCurrentTag: async (): Promise<string | null> => {
