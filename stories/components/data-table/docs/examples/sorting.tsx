@@ -37,9 +37,13 @@ const Demo = () => {
               return props.defaultRender();
             }
 
-            const value = props.defaultRender();
+              const value = props.defaultRender();
 
-            return typeof value === 'number' && value !== -1 ? numberFormat.format(value) : 'n/a';
+              return typeof value === 'number' && value !== -1
+                  ? (
+                      props.name === 'cpc' ? currencyFormat.format(value) : numberFormat.format(value)
+                  )
+                  : 'n/a';
           }}
       />
     </DataTable>

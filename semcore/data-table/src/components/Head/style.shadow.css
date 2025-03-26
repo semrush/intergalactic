@@ -23,6 +23,7 @@ SGroup, SColumn {
   color: var(--intergalactic-text-primary, #191b23);
   box-sizing: border-box;
   height: 100%;
+  position: relative;
 }
 
 SGroup[borders='both'], SColumn[borders='both'], SGroup[borders='left'], SColumn[borders='left'] {
@@ -38,8 +39,32 @@ SGroup[use='primary'], SColumn[use='primary'] {
   border-bottom: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
   background-color: var(--intergalactic-table-th-primary-cell, #f4f5f9);
 
+  SSortWrapper::before {
+    background: linear-gradient(
+            270deg,
+            var(--intergalactic-table-th-primary-cell-hover, #e0e1e9) 67.5%,
+            rgba(224, 225, 233, 0) 105%
+    );
+  }
+
   &[visibleSort] {
     padding: calc(var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px)) var(--intergalactic-spacing-3x, 12px);
+    background-color: var(--intergalactic-table-th-primary-cell-hover, #e0e1e9);
+
+    SSortWrapper {
+      flex-basis: calc(var(--intergalactic-spacing-1x, 4px) + 16px);
+      opacity: 1;
+
+      &::before {
+        display: flex;
+        opacity: 1;
+      }
+    }
+
+    SSortButton {
+      display: flex;
+      opacity: 1;
+    }
   }
 }
 
@@ -47,6 +72,14 @@ SGroup[use='secondary'], SColumn[use='secondary'] {
   padding: var(--intergalactic-spacing-2x, 8px);
   border-bottom: 1px solid var(--intergalactic-border-table-accent, #a9abb6);
   background-color: var(--intergalactic-table-th-secondary-cell, #ffffff);
+
+  SSortWrapper::before {
+    background: linear-gradient(
+            270deg,
+            var(--intergalactic-table-th-secondary-cell, #ffffff) 67.5%,
+            rgba(255, 255, 255, 0) 105%
+    );
+  }
 }
 
 SColumn[gridArea], SGroup[gridArea], SGroupTitle[gridArea] {
@@ -59,6 +92,39 @@ SHead[sticky] SColumn[fixed], SHead SColumn[fixed], SHead[sticky] SGroup {
   z-index: 2;
 }
 
+SColumn[sortable]:hover {
+  cursor: pointer;
+}
+
+SSortWrapper {
+  align-items: center;
+  display: flex;
+  flex-shrink: 1;
+  position: relative;
+  flex-basis: 0;
+  min-height: 16px;
+  opacity: 0;
+  transition: all calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
+}
+
+SSortWrapper:before {
+  display: none;
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
 SSortButton {
-  margin-right: -10px;
+  display: none;
+  fill: var(--intergalactic-icon-secondary-neutral-hover-active, #878992);
+  position: absolute;
+  right: 0;
+  margin-left: var(--intergalactic-spacing-1x, 4px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }

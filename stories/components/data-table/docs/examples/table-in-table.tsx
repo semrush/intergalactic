@@ -73,21 +73,18 @@ const data = [
     kd: '10',
     cpc: '$0.65',
     vol: '47,354,640',
-    [ACCORDION]: [],
   },
   {
     keyword: 'ebay buy',
     kd: '-',
     cpc: '$0',
     vol: 'n/a',
-    [ACCORDION]: [],
   },
   {
     keyword: 'ebay buy',
     kd: '75.89',
     cpc: '$0',
     vol: '21,644,290',
-    [ACCORDION]: [],
   },
 ];
 

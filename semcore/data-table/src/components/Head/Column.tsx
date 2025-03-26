@@ -6,7 +6,7 @@ import SortDesc from '@semcore/icon/SortDesc/m';
 import SortAsc from '@semcore/icon/SortAsc/m';
 
 import style from './style.shadow.css';
-import Button from '@semcore/button';
+import { ButtonLink } from '@semcore/button';
 import type { SortDirection } from '../DataTable/DataTable.types';
 import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
 
@@ -112,7 +112,8 @@ export class Column extends Component<DataTableColumnProps, {}, {}, [], ColumnPr
 
   render() {
     const SColumn = Root;
-    const SSortButton = Button;
+    const SSortWrapper = 'div';
+    const SSortButton = ButtonLink;
     const { styles, sortable, sort, uid, name, parent, sortableColumnDescribeId } = this.asProps;
 
     const SSortIcon = sort ? SORTING_ICON[sort[1]] : SORTING_ICON['asc'];
@@ -140,20 +141,23 @@ export class Column extends Component<DataTableColumnProps, {}, {}, [], ColumnPr
         onBlur={this.handleBlur}
         onKeyDown={this.handleKeyDown}
         visibleSort={visibleSort}
+        isSorted={isSorted}
         innerOutline
         aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
         aria-sort={ariaSortValue}
+        onClick={this.handleSortClick}
       >
         {this.asProps.children}
 
-        {visibleSort && (
+        {sortable && (
+            <SSortWrapper>
           <SSortButton
             onClick={this.handleSortClick}
             addonLeft={SSortIcon}
-            use={'tertiary'}
-            theme={'muted'}
             title={ariaSortValue}
+            color={'--intergalactic-icon-primary-neutral'}
           />
+            </SSortWrapper>
         )}
       </SColumn>,
     );
