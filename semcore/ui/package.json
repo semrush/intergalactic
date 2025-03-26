@@ -44,7 +44,7 @@
     "@semcore/fullscreen-modal": "16.0.0",
     "@semcore/grid": "16.0.0",
     "@semcore/icon": "16.0.0",
-    "@semcore/illustration": "2.41.0",
+    "@semcore/illustration": "16.0.0",
     "@semcore/inline-input": "16.0.0",
     "@semcore/inline-edit": "16.0.0",
     "@semcore/input": "16.0.0",
@@ -84,7 +84,7 @@
     "@semcore/typography": "16.0.0",
     "@semcore/widget-empty": "16.0.0",
     "@semcore/wizard": "16.0.0",
-    "@semcore/i18n-unplugin": "0.17.19"
+    "@semcore/i18n-unplugin": "1.0.0"
   },
   "peerDependencies": {
     "react": "16.8 - 18",
