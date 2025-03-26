@@ -1,3 +1,305 @@
+## [16.0.0] - 2025-03-26
+
+### @semcore/accordion
+
+- **Changed** `keyboardFocusEnhance` to css `:focus-visible` property.
+
+### @semcore/add-filter
+
+- **Added** Major version.
+
+### @semcore/animation
+
+- **Deprecated** Import it from `@semcore/core`.
+
+### @semcore/badge
+
+- **Added** Major version.
+
+### @semcore/base-trigger
+
+- **Changed** `keyboardFocusEnhance` to css `:focus-visible` property.
+- **Added** `tabIndex` in `BaseTrigger` to fix focus [issue on webkit](https://bugs.webkit.org/show_bug.cgi?id=229895).
+
+### @semcore/breadcrumbs
+
+- **Changed** `keyboardFocusEnhance` to css `:focus-visible` property.
+
+### @semcore/breakpoints
+
+- **Deprecated** Import it from `@semcore/core`.
+
+### @semcore/bulk-textarea
+
+- **Added** Major version.
+
+### @semcore/button
+
+- **Changed** `keyboardFocusEnhance` to css `:focus-visible` property.
+
+### @semcore/card
+
+- **Added** Major version.
+
+### @semcore/carousel
+
+- **Added** Major version.
+
+### @semcore/checkbox
+
+- **Changed** `keyboardFocusEnhance` to css `:focus-visible` property.
+
+### @semcore/color-picker
+
+- **Changed** `keyboardFocusEnhance` to css `:focus-visible` property.
+- **Deprecated** `Item` element for `ColorPicker.Colors` and `PaletteManager.Colors`.
+
+### @semcore/core
+
+- **Added** `utils` functions as part of Core.
+- **Added** `LastInteractionType` class to check last interaction was from keyboard or mouse.
+
+### @semcore/counter
+
+- **Added** Major version.
+
+### @semcore/d3-chart
+
+- **Added** Major version.
+
+### @semcore/data-table
+
+- **Added** Major version.
+
+### @semcore/date-picker
+
+- **Added** Major version.
+
+### @semcore/divider
+
+- **Added** Major version.
+
+### @semcore/dot
+
+- **Added** Major version.
+
+### @semcore/drag-and-drop
+
+- **Changed** `keyboardFocusEnhance` to css `:focus-visible` property.
+
+### @semcore/dropdown
+
+- **Changed** `keyboardFocusEnhance` to css `:focus-visible` property.
+
+### @semcore/dropdown-menu
+
+- **Added** Major version.
+
+### @semcore/ellipsis
+
+- **Added** Major version.
+
+### @semcore/errors
+
+- **Added** Major version.
+
+### @semcore/feature-popover
+
+- **Added** Major version.
+
+### @semcore/feedback-form
+
+- **Changed** `keyboardFocusEnhance` to css `:focus-visible` property.
+
+### @semcore/flags
+
+- **Added** Major version.
+
+### @semcore/flex-box
+
+- **Deprecated** Import it from `@semcore/core`.
+
+### @semcore/format-text
+
+- **Deprecated** Full package.
+
+### @semcore/fullscreen-modal
+
+- **Added** Major version.
+
+### @semcore/grid
+
+- **Deprecated** Import it from `@semcore/core`.
+
+### @semcore/i18n-unplugin
+
+- **Added** Major version.
+
+### @semcore/icon
+
+- **Removed** External icons.
+
+### @semcore/illustration
+
+- **Added** Major version.
+
+### @semcore/inline-edit
+
+- **Changed** `keyboardFocusEnhance` to css `:focus-visible` property.
+
+### @semcore/inline-input
+
+- **Changed** `keyboardFocusEnhance` to css `:focus-visible` property.
+
+### @semcore/input
+
+- **Changed** Focus ring depends on `:focus-visible`.
+
+### @semcore/input-mask
+
+- **Deprecated** Full package.
+
+### @semcore/input-number
+
+- **Added** Major version.
+
+### @semcore/input-tags
+
+- **Added** Major version.
+
+### @semcore/link
+
+- **Changed** `keyboardFocusEnhance` to css `:focus-visible` property.
+
+### @semcore/mini-chart
+
+- **Added** Major version.
+
+### @semcore/modal
+
+- **Changed** `keyboardFocusEnhance` to css `:focus-visible` property for `Close` modal button.
+
+### @semcore/neighbor-location
+
+- **Deprecated** Import it from `@semcore/core`.
+
+### @semcore/notice
+
+- **Added** Major version.
+
+### @semcore/notice-bubble
+
+- **Changed** `ViewInfo` component to use `Button` instead of `Hint.Trigger`.
+
+### @semcore/notice-global
+
+- **Added** Major version.
+
+### @semcore/outside-click
+
+- **Deprecated** Import it from `@semcore/core`.
+
+### @semcore/pagination
+
+- **Added** Major version.
+
+### @semcore/pills
+
+- **Changed** `keyboardFocusEnhance` to css `:focus-visible` property.
+
+### @semcore/popper
+
+- **Deprecated** Import it from `@semcore/core`.
+
+### @semcore/portal
+
+- **Deprecated** Import it from `@semcore/core`.
+
+### @semcore/product-head
+
+- **Added** Major version.
+
+### @semcore/progress-bar
+
+- **Added** Major version.
+
+### @semcore/radio
+
+- **Changed** `keyboardFocusEnhance` to css `:focus-visible` property.
+
+### @semcore/scroll-area
+
+- **Deprecated** Import it from `@semcore/core`.
+
+### @semcore/select
+
+- **Added** Major version.
+
+### @semcore/side-panel
+
+- **Added** Major version.
+
+### @semcore/skeleton
+
+- **Added** Major version.
+
+### @semcore/slider
+
+- **Changed** `keyboardFocusEnhance` to css `:focus-visible` property.
+
+### @semcore/spin
+
+- **Added** Major version.
+
+### @semcore/spin-container
+
+- **Added** Major version.
+
+### @semcore/sticky
+
+- **Deprecated** Full package.
+
+### @semcore/switch
+
+- **Changed** `keyboardFocusEnhance` to css `:focus-visible` property.
+
+### @semcore/tab-line
+
+- **Changed** `keyboardFocusEnhance` to css `:focus-visible` property.
+
+### @semcore/tab-panel
+
+- **Changed** `keyboardFocusEnhance` to css `:focus-visible` property.
+
+### @semcore/tag
+
+- **Changed** `keyboardFocusEnhance` to css `:focus-visible` property.
+- **Removed** `Tag.Close` component. Use `TagContainer.Close`.
+
+### @semcore/textarea
+
+- **Changed** `keyboardFocusEnhance` to css `:focus-visible` property.
+
+### @semcore/time-picker
+
+- **Changed** `keyboardFocusEnhance` to css `:focus-visible` property.
+
+### @semcore/tooltip
+
+- **Added** Major version.
+
+### @semcore/typography
+
+- **Removed** `Hint` component. Use `secondary` `ButtonLink` instead of it.
+
+### @semcore/widget-empty
+
+- **Added** Major version.
+
+### @semcore/wizard
+
+- **Fixed** Token using for `:focus-visible` styles.
+
 ## [15.126.1] - 2025-03-20
 
 ### @semcore/date-picker

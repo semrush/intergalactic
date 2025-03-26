@@ -18,12 +18,12 @@
   },
   "dependencies": {
     "@semcore/flex-box": "16.0.0",
-    "@semcore/button": "5.41.2",
-    "@semcore/typography": "5.51.1",
-    "@semcore/counter": "3.37.3",
+    "@semcore/button": "16.0.0",
+    "@semcore/typography": "16.0.0",
+    "@semcore/counter": "16.0.0",
     "@semcore/icon": "16.0.0",
     "@semcore/popper": "16.0.0",
-    "@semcore/tooltip": "6.47.3",
+    "@semcore/tooltip": "16.0.0",
     "csstype": "3.0.8",
     "dompurify": "3.2.3"
   },
