@@ -140,7 +140,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
           );
         })}
         {loading && (
-          <SSpinContainer headerHeight={`${headerHeight}px`}>
+          <SSpinContainer aria-hidden headerHeight={`${headerHeight}px`}>
             <Spin size={'xxl'} />
           </SSpinContainer>
         )}
