@@ -269,7 +269,7 @@ export namespace Intergalactic {
       >;
     } & ComponentBasicProps<Tag> &
       MergeProps<EfficientOmit<Props, 'tag' | 'children'>, ComponentPropsNesting<Tag>>;
-    export type ComponentRenderingResults = React.ReactNode;
+    export type ComponentRenderingResults = React.ReactElement;
     export type ComponentAdditive<
       BaseTag extends ComponentTag,
       Tag extends ComponentTag,
