@@ -2,20 +2,20 @@
   "name": "@semcore/core",
   "description": "Semrush Core Component",
   "version": "16.0.0",
-  "main": "lib/cjs/index.js",
-  "module": "lib/es6/index.js",
-  "typings": "lib/types/index.d.ts",
+  "main": "lib/index.cjs",
+  "module": "lib/index.mjs",
+  "typings": "lib/index.d.ts",
   "sideEffects": false,
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "pnpm semcore-builder --coreUtils && pnpm vite build"
+    "build": "pnpm semcore-builder --coreUtils"
   },
   "exports": {
     ".": {
-      "require": "./lib/cjs/index.js",
-      "import": "./lib/esm/index.mjs",
-      "types": "./lib/types/index.d.ts"
+      "require": "./lib/index.cjs",
+      "import": "./lib/index.mjs",
+      "types": "./lib/index.d.ts"
     },
     "./src": {
       "import": "./src/index.ts",
