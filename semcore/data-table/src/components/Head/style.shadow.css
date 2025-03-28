@@ -18,7 +18,7 @@ SHead[compact] SColumn {
 
 SGroup, SColumn {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   font-size: var(--intergalactic-fs-100, 12px);
   color: var(--intergalactic-text-primary, #191b23);
   box-sizing: border-box;
@@ -49,7 +49,7 @@ SGroup[use='primary'], SColumn[use='primary'] {
   }
 
   &[visibleSort] {
-    padding: calc(var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px)) var(--intergalactic-spacing-3x, 12px);
+    /*padding: calc(var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px)) var(--intergalactic-spacing-3x, 12px);*/
     background-color: var(--intergalactic-table-th-primary-cell-hover, #e0e1e9);
 
     SSortWrapper {
@@ -124,6 +124,7 @@ SSortButton {
   display: none;
   fill: var(--intergalactic-icon-secondary-neutral-hover-active, #878992);
   position: absolute;
+  top: calc(-1 * (1em * 1.25 - 16px));
   right: 0;
   margin-left: var(--intergalactic-spacing-1x, 4px);
   opacity: 0;
