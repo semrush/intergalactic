@@ -22,7 +22,9 @@ export default mergeConfig(
           'hoist-non-react-statics',
           '@phytonmk/nano-css',
           'csstype',
+          /..\/utils/,
         ],
+        preserveEntrySignatures: 'allow-extension',
         output: [
           {
             preserveModules: true,
