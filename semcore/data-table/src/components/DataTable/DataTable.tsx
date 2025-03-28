@@ -334,6 +334,9 @@ class DataTableRoot extends Component<
     const [offsetLeftSum, offsetRightSum] = getScrollOffsetValue(this.columns);
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
 
+    const Head = findComponent(Children, ['DataTable.Head']);
+    const Body = findComponent(Children, ['DataTable.Body']);
+
     return sstyled(styles)(
       <ScrollArea
         leftOffset={offsetLeftSum}
@@ -350,7 +353,6 @@ class DataTableRoot extends Component<
         <ScrollArea.Container tabIndex={-1}>
           <SDataTable
             render={Box}
-            __excludeProps={['data', 'w', 'wMax', 'wMin', 'h', 'hMax', 'hMin']}
             ref={forkRef(this.tableRef, this.tableContainerRef)}
             role='grid'
             onKeyDown={this.handleKeyDown}
@@ -363,8 +365,16 @@ class DataTableRoot extends Component<
             gridTemplateColumns={gridTemplateColumns.join(' ')}
             gridTemplateAreas={gridTemplateAreas.join(' ')}
             w={'100%'}
+            use:data={undefined}
+            use:w={undefined}
+            use:wMax={undefined}
+            use:wMin={undefined}
+            use:h={undefined}
+            use:hMax={undefined}
+            use:hMin={undefined}
           >
-            <Children />
+            {Body}
+            {Head}
           </SDataTable>
         </ScrollArea.Container>
 

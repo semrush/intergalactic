@@ -31,25 +31,6 @@ const Demo = () => {
           return props.defaultRender();
         }}
       />
-      {/*  <DataTable.Body.Cell data={data} name='keyword'>*/}
-      {/*    {(props, row, index) => {*/}
-      {/*      return {*/}
-      {/*        children: (*/}
-      {/*          <ButtonLink*/}
-      {/*            onClick={() => {*/}
-      {/*              alert(`Click row */}
-      {/*            props: ${JSON.stringify(Object.keys(props), null, '  ')};*/}
-      {/*            row: ${JSON.stringify(row, null, '  ')};*/}
-      {/*            index: ${index};`);*/}
-      {/*            }}*/}
-      {/*          >*/}
-      {/*            {row[props.name]}*/}
-      {/*          </ButtonLink>*/}
-      {/*        ),*/}
-      {/*      };*/}
-      {/*    }}*/}
-      {/*  </DataTable.Body.Cell>*/}
-      {/*</DataTable.Body>*/}
     </DataTable>
   );
 };
