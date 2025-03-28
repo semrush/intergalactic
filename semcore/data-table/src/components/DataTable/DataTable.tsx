@@ -16,7 +16,6 @@ import { DataTableColumnProps, DTColumn } from '../Head/Column.types';
 
 import style from './dataTable.shadow.css';
 import { DTRow } from '../Body/Row.types';
-import { findAllComponents } from '@semcore/core/lib/utils/findComponent';
 import { isFocusInside, hasFocusableIn } from '@semcore/core/lib/utils/use/useFocusLock';
 
 import { ReactElement } from 'react';
@@ -28,10 +27,10 @@ import { BodyPropsInner } from '../Body/Body.types';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import SpinContainer from '@semcore/spin-container';
 import { ROW_GROUP } from '../../index';
 import { MergedColumnsCell, MergedRowsCell } from '../Body/MergedCells';
 import { forkRef } from '@semcore/core/lib/utils/ref';
+import scrollStyles from '../../style/scroll-shadows.shadow.css';
 
 export const ACCORDION = Symbol('accordion');
 
@@ -349,6 +348,7 @@ class DataTableRoot extends Component<
         hMin={hMin}
         shadow={true}
         container={this.tableContainerRef}
+        styles={scrollStyles}
       >
         <ScrollArea.Container tabIndex={-1}>
           <SDataTable
