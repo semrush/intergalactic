@@ -68,38 +68,38 @@ const source = argv.source.split(',');
 if (argv.modules) {
   const envName = MAP_BABEL_ENV[argv.modules];
   await runCommand(
-      'BABEL',
-      '',
-      `--extensions .ts,.tsx,.js,.jsx --ignore **/*.d.ts --presets @semcore/babel-preset-ui --no-babelrc --source-maps --copy-files --env-name=${envName}`,
+    'BABEL',
+    '',
+    `--extensions .ts,.tsx,.js,.jsx --ignore **/*.d.ts --presets @semcore/babel-preset-ui --no-babelrc --source-maps --copy-files --env-name=${envName}`,
   );
   if (argv.modules === 'cjs') {
     const mjsImportsBabelrc = resolvePath(
-        fileURLToPath(import.meta.url),
-        '../../mjs-imports-babelrc.js',
+      fileURLToPath(import.meta.url),
+      '../../mjs-imports-babelrc.js',
     );
     await runCommand(
-        'BABEL',
-        '',
-        `--extensions .ts,.tsx,.js,.jsx --ignore **/*.d.ts --presets ${mjsImportsBabelrc} --no-babelrc --source-maps --copy-files --out-file-extension .mjs --env-name=es6`,
+      'BABEL',
+      '',
+      `--extensions .ts,.tsx,.js,.jsx --ignore **/*.d.ts --presets ${mjsImportsBabelrc} --no-babelrc --source-maps --copy-files --out-file-extension .mjs --env-name=es6`,
     );
   }
   if (source.includes('jsx') || source.includes('js')) await runCommand('COPY_TYPES', '');
   if (source.includes('tsx') || source.includes('ts')) await runCommand('TYPES', '');
 } else if (argv.coreUtils) {
   await runCommand(
-      'CORE_UTILS',
-      '',
-      '--extensions .ts,.tsx,.js,.jsx --ignore **/*.d.ts --presets @semcore/babel-preset-ui --no-babelrc --source-maps --copy-files --out-file-extension .cjs --env-name=commonjs',
+    'CORE_UTILS',
+    '',
+    '--extensions .ts,.tsx,.js,.jsx --ignore **/*.d.ts --presets @semcore/babel-preset-ui --no-babelrc --source-maps --copy-files --out-file-extension .cjs --env-name=commonjs',
   );
 
   const mjsImportsBabelrc = resolvePath(
-      fileURLToPath(import.meta.url),
-      '../../mjs-imports-babelrc.js',
+    fileURLToPath(import.meta.url),
+    '../../mjs-imports-babelrc.js',
   );
   await runCommand(
-      'CORE_UTILS',
-      '',
-      `--extensions .ts,.tsx,.js,.jsx --ignore **/*.d.ts --presets ${mjsImportsBabelrc} --no-babelrc --source-maps --copy-files --out-file-extension .mjs --env-name=es6`,
+    'CORE_UTILS',
+    '',
+    `--extensions .ts,.tsx,.js,.jsx --ignore **/*.d.ts --presets ${mjsImportsBabelrc} --no-babelrc --source-maps --copy-files --out-file-extension .mjs --env-name=es6`,
   );
 
   await runCommand('TYPES', '');
