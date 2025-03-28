@@ -15,7 +15,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
   static style = style;
 
   static defaultProps = {
-    'aria-level': 1,
+    'aria-level': undefined,
     defaultExpandedRows: [],
   };
 
@@ -37,68 +37,20 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
   render() {
     const SRow = Root;
     const SCollapseRow = Collapse;
-    // const SAccordionRow = Row;
     const {
       columns,
       row,
-      rows,
       styles,
       rowIndex,
       headerRows,
       expanded,
-      onExpandRow,
-      gridTemplateAreas,
-      gridTemplateColumns,
       accordionDataGridArea,
+      'aria-level': ariaLevel = 1,
     } = this.asProps;
-
-    // const accordionDataGridArea = Array.isArray(row[ACCORDION])
-    //     ? `${rowIndex + headerRows + 2} / 1 / ${
-    //         rowIndex + headerRows + 2 + row[ACCORDION].length
-    //     } / ${columns.length + 1}`
-    //     : `${rowIndex + headerRows + 2} / 1 / ${
-    //   rowIndex + headerRows + 2
-    // } / ${columns.length + 1}`;
-
-    // const accordionColumn = columns[0];
-    // const SAccordionToggleContainer = Body.Cell;
-    // const SAccordionToggle = ButtonLink;
 
     return sstyled(styles)(
       <>
         <SRow render={Box}>
-          {/*{this.asProps['aria-level']! > 1 && new Array(this.asProps['aria-level']! - 1).fill(null).map(() => {*/}
-          {/*  return (<Box/>);*/}
-          {/*})}*/}
-          {/*{row[ACCORDION] && (*/}
-          {/*  <SAccordionToggleContainer*/}
-          {/*    role={'gridcell'}*/}
-          {/*    aria-colindex={'1'}*/}
-          {/*    row={row}*/}
-          {/*    rowIndex={rowIndex}*/}
-          {/*    columnIndex={0}*/}
-          {/*    fixed={accordionColumn.fixed}*/}
-          {/*    style={style}*/}
-          {/*    name={ACCORDION}*/}
-          {/*    column={accordionColumn}*/}
-          {/*    borders={accordionColumn.borders}*/}
-          {/*    flexWrap={accordionColumn.flexWrap}*/}
-          {/*    alignItems={accordionColumn.alignItems}*/}
-          {/*    alignContent={accordionColumn.alignContent}*/}
-          {/*    justifyContent={accordionColumn.justifyContent}*/}
-          {/*    aria-expanded={expanded}*/}
-          {/*    aria-level={this.asProps['aria-level']}*/}
-          {/*    // gridArea={gridArea}*/}
-          {/*  >*/}
-          {/*    <SAccordionToggle*/}
-          {/*      expanded={expanded}*/}
-          {/*      onClick={() => onExpandRow?.(rowIndex)}*/}
-          {/*      color={'--intergalactic-icon-primary-neutral'}*/}
-          {/*    >*/}
-          {/*      <SAccordionToggle.Addon tag={ChevronRightM} />*/}
-          {/*    </SAccordionToggle>*/}
-          {/*  </SAccordionToggleContainer>*/}
-          {/*)}*/}
           {columns.map((column, i) => {
             const index = i;
             const cellValue = row[column.name];
@@ -127,10 +79,6 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
               gridArea = `${rowIndex + headerRows + 1} / ${index + 1} / ${
                 rowIndex + headerRows + 1 + cellValue.rowsCount
               } / ${index + 2}`;
-              // } else if (this.asProps['aria-level'] > 1) {
-              //   gridArea = `${rowIndex + headerRows + 1 + this.asProps['aria-posinset']!} / ${index + this.asProps['aria-level']} / ${
-              //       rowIndex + headerRows + 2 + this.asProps['aria-posinset']!
-              //   } / ${index + this.asProps['aria-level'] + 1}`;
             }
 
             return (
@@ -138,7 +86,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
                 key={index}
                 role={'gridcell'}
                 aria-colindex={index + 1}
-                data-aria-level={index === 0 ? this.asProps['aria-level'] : undefined}
+                data-aria-level={index === 0 ? ariaLevel : undefined}
                 row={row}
                 rowIndex={rowIndex}
                 columnIndex={index}
@@ -168,7 +116,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
             // style={{gridArea: gridArea}}
             // preserveNode
             duration={200}
-            aria-level={this.asProps['aria-level']! + 1}
+            aria-level={ariaLevel + 1}
             aria-setsize={1}
             aria-posinset={1}
           >
@@ -213,7 +161,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
                 rows={row[ACCORDION]}
                 rowIndex={rowIndex}
                 aria-posinset={i + 1}
-                aria-level={this.asProps['aria-level']! + 1}
+                aria-level={ariaLevel + 1}
                 headerRows={headerRows}
                 expanded={this.asProps.expandedRows?.includes(i)}
                 onExpandRow={this.onExpandRow}
