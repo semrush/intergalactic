@@ -92,15 +92,15 @@ if (argv.modules) {
     '--extensions .ts,.tsx,.js,.jsx --ignore **/*.d.ts --presets @semcore/babel-preset-ui --no-babelrc --source-maps --copy-files --out-file-extension .cjs --env-name=commonjs',
   );
 
-  // const mjsImportsBabelrc = resolvePath(
-  //   fileURLToPath(import.meta.url),
-  //   '../../mjs-imports-babelrc.js',
-  // );
-  // await runCommand(
-  //   'CORE_UTILS',
-  //   '',
-  //   `--extensions .ts,.tsx,.js,.jsx --ignore **/*.d.ts --presets ${mjsImportsBabelrc} --no-babelrc --source-maps --copy-files --out-file-extension .mjs --env-name=es6`,
-  // );
+  const mjsImportsBabelrc = resolvePath(
+    fileURLToPath(import.meta.url),
+    '../../mjs-imports-babelrc.js',
+  );
+  await runCommand(
+    'CORE_UTILS',
+    '',
+    `--extensions .ts,.tsx,.js,.jsx --ignore **/*.d.ts --presets ${mjsImportsBabelrc} --no-babelrc --source-maps --copy-files --out-file-extension .mjs --env-name=es6`,
+  );
 
   await runCommand('TYPES', '');
 } else {
