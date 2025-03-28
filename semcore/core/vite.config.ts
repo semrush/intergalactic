@@ -10,6 +10,7 @@ export default mergeConfig(
         entry: './src/index.ts',
       },
       rollupOptions: {
+        treeshake: false,
         external: [
           'react',
           'react-dom',
@@ -22,9 +23,7 @@ export default mergeConfig(
           'hoist-non-react-statics',
           '@phytonmk/nano-css',
           'csstype',
-          /..\/utils/,
         ],
-        preserveEntrySignatures: 'allow-extension',
         output: [
           {
             preserveModules: true,
