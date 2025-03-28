@@ -883,8 +883,8 @@
   {
     "name": "--intergalactic-control-primary-brand-active",
     "type": "color",
-    "rawValue": "{orange.500}",
-    "computedValue": "#c33909",
+    "rawValue": "{orange.600}",
+    "computedValue": "#8b1500",
     "description": "Active state of the primary brand colored control.",
     "components": ["button"]
   },

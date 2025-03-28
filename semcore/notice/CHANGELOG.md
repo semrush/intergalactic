@@ -10,6 +10,10 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [5.45.1] - 2025-03-20
 
+### Removed
+
+- `role` attribute for `muted` theme.
+
 ### Changed
 
 - Version patch update due to children dependencies update (`@semcore/animation` [2.41.0 ~> 2.41.1], `@semcore/utils` [4.48.0 ~> 4.48.1], `@semcore/button` [5.42.0 ~> 5.42.1], `@semcore/flex-box` [5.41.0 ~> 5.41.1], `@semcore/icon` [4.60.0 ~> 4.60.1], `@semcore/core` [2.39.0 ~> 2.39.1]).

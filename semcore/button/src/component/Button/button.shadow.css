@@ -92,6 +92,22 @@ SButton[theme='primary-success'] {
   }
 }
 
+SButton[theme='primary-brand'] {
+  color: var(--intergalactic-text-primary-invert, #ffffff);
+  background-color: var(--intergalactic-control-primary-brand, #ff642d);
+
+  &:hover {
+    color: var(--intergalactic-text-primary-invert, #ffffff);
+    background-color: var(--intergalactic-control-primary-brand-hover, #c33909);
+  }
+
+  &:active,
+  &[active] {
+    color: var(--intergalactic-text-primary-invert, #ffffff);
+    background-color: var(--intergalactic-control-primary-brand-active, #8b1500);
+  }
+}
+
 SButton[theme='primary-warning'] {
   color: var(--intergalactic-text-primary-invert, #ffffff);
   background-color: var(--intergalactic-control-primary-brand, #ff642d);
@@ -104,7 +120,7 @@ SButton[theme='primary-warning'] {
   &:active,
   &[active] {
     color: var(--intergalactic-text-primary-invert, #ffffff);
-    background-color: var(--intergalactic-control-primary-brand-active, #c33909);
+    background-color: var(--intergalactic-control-primary-brand-active, #8b1500);
   }
 }
 
