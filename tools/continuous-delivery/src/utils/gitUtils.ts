@@ -128,7 +128,7 @@ export const gitUtils = {
   getTag: async (startStr: string): Promise<string | null> => {
     try {
       const tag = execSync(
-        `git describe --tags --abbrev=0 --match "${startStr}*" $(git rev-list --tags --max-count=1) `,
+        `git describe --tags --abbrev=0 --match "${startStr}*" 90deb9b`,
         {
           encoding: 'utf-8',
         },
