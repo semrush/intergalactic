@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@semcore/changelog-handler": "0.0.1",
-    "axios": "0.21.2",
+    "axios": "0.30.0",
     "dayjs": "1.8.17",
     "dotenv": "16.0.0",
     "tsm": "2.2.2"
