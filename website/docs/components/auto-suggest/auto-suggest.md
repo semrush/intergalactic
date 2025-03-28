@@ -5,7 +5,7 @@ tabs: Design('auto-suggest'), A11y('auto-suggest-a11y'), Example('auto-suggest-c
 
 ## Description
 
-**AutoSuggest**, **AutoComplete** and **Combobox** are different patterns for as-you-type suggestions for search with values filtering from the list.
+**AutoSuggest**, **AutoComplete** and **Combobox** are patterns for providing as-you-type suggestions by filtering options within dropdowns and selects.
 
 We have collected the table of differences between these search patterns.
 
