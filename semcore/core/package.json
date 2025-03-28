@@ -2,7 +2,7 @@
   "name": "@semcore/core",
   "description": "Semrush Core Component",
   "version": "16.0.0",
-  "main": "lib/index.cjs",
+  "main": "lib/index.js",
   "module": "lib/index.mjs",
   "typings": "lib/index.d.ts",
   "sideEffects": false,
@@ -13,7 +13,7 @@
   },
   "exports": {
     ".": {
-      "require": "./lib/index.cjs",
+      "require": "./lib/index.js",
       "import": "./lib/index.mjs",
       "types": "./lib/index.d.ts"
     },

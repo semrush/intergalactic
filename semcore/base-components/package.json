@@ -11,6 +11,13 @@
   "scripts": {
     "build": "pnpm semcore-builder && pnpm vite build"
   },
+  "exports": {
+    ".": {
+      "require": "./lib/cjs/index.js",
+      "import": "./lib/esm/index.mjs",
+      "types": "./lib/types/index.d.ts"
+    }
+  },
   "dependencies": {
     "@popperjs/core": "2.11.5",
     "popper-max-size-modifier": "0.2.0",
