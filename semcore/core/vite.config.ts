@@ -23,6 +23,14 @@ export default mergeConfig(
           '@phytonmk/nano-css',
           'csstype',
         ],
+        output: [
+          {
+            preserveModules: true,
+            assetFileNames: '[name][extname]',
+            entryFileNames: '[name].mjs',
+            format: 'esm',
+          },
+        ],
       },
     },
   }),
