@@ -58,7 +58,6 @@ describe('DataTable', () => {
 
   shouldSupportClassName(DataTable);
   shouldSupportRef(DataTable);
-
 });
 
 describe('DataTable.Column', () => {
