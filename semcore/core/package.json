@@ -270,7 +270,6 @@
   },
   "dependencies": {
     "@formatjs/intl": "3.0.4",
-    "@reshadow/core": "0.0.1-alpha.74",
     "classnames": "2.2.6",
     "hoist-non-react-statics": "3.3.2",
     "@phytonmk/nano-css": "5.3.7",
