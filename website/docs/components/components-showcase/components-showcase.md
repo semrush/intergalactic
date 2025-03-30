@@ -136,7 +136,7 @@ const group = {
   },
   feedback: {
     title: 'Feedback',
-    route: '/intergalactic/components/feedback/feedback',
+    route: '/intergalactic/components/feedback-form/feedback-form',
     disabled: false,
     type: 'components',
   },
