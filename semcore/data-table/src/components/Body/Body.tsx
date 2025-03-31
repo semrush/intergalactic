@@ -9,7 +9,7 @@ import { Cell } from './Cell';
 import { DataTableRowProps } from './Row.types';
 import { DataTableCellProps } from './Cell.types';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
-import { ACCORDION } from '@semcore/data-table';
+import { ACCORDION } from '../DataTable/DataTable';
 import ChevronRightM from '@semcore/icon/ChevronRight/m';
 import { ButtonLink } from '@semcore/button';
 import { DTValue } from '../DataTable/DataTable.types';

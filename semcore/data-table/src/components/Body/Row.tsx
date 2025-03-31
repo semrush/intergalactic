@@ -2,13 +2,11 @@ import * as React from 'react';
 import { Component, Root, sstyled, createComponent } from '@semcore/core';
 import { DataTableRowProps, RowPropsInner } from './Row.types';
 import { Box, Collapse } from '@semcore/base-components';
-import ChevronRightM from '@semcore/icon/ChevronRight/m';
 import style from './style.shadow.css';
 import { Body } from './Body';
 import { getFixedStyle } from '../../utils';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
-import { ACCORDION } from '@semcore/data-table';
-import { ButtonLink } from '@semcore/button';
+import { ACCORDION } from '../DataTable/DataTable';
 
 class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
   static displayName = 'Row';
