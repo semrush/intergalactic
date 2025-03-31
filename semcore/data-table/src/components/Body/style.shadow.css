@@ -17,8 +17,7 @@ SRow[active] > SCell:not([theme]) {
   background-color: var(--intergalactic-table-td-cell-active, #e6e7ed);
 }
 
-SRow:hover > SCell:not([theme]),
-SRow SCell:hover + SGroupCell SCell:not([theme]) {
+SRow:hover > SCell:not([theme]) {
   /* The color is hardcoded because need hex(in figma rgba) */
   /* disable-tokens-validator */
   background-color: var(--intergalactic-table-td-cell-hover, #f0f0f4);
@@ -36,8 +35,7 @@ SRow[theme='muted'][active] > SCell:not([theme]) {
 }
 
 SRow:hover > SCell[theme='muted'],
-SRow[theme='muted']:hover > SCell:not([theme]),
-SRow[theme='muted'] SCell:hover + SGroupCell SCell:not([theme]) {
+SRow[theme='muted']:hover > SCell:not([theme]) {
   /* The color is hardcoded because need hex(in figma rgba) */
   /* disable-tokens-validator */
   background-color: var(--intergalactic-table-td-cell-hover, #f0f0f4);
@@ -53,8 +51,7 @@ SRow[theme='info'][active] > SCell:not([theme]) {
 }
 
 SRow:hover > SCell[theme='info'],
-SRow[theme='info']:hover > SCell:not([theme]),
-SRow[theme='info'] SCell:hover + SGroupCell SCell:not([theme]) {
+SRow[theme='info']:hover > SCell:not([theme]) {
   background-color: var(--intergalactic-table-td-cell-selected-hover, #c4e5fe);
 }
 
@@ -68,8 +65,7 @@ SRow[theme='success'][active] > SCell:not([theme]) {
 }
 
 SRow:hover > SCell[theme='success'],
-SRow[theme='success']:hover > SCell:not([theme]),
-SRow[theme='success'] SCell:hover + SGroupCell SCell:not([theme]) {
+SRow[theme='success']:hover > SCell:not([theme]) {
   background-color: var(--intergalactic-table-td-cell-new-hover, #9ef2c9);
 }
 
@@ -83,8 +79,7 @@ SRow[theme='warning'][active] > SCell:not([theme]) {
 }
 
 SRow:hover > SCell[theme='warning'],
-SRow[theme='warning']:hover > SCell:not([theme]),
-SRow[theme='warning'] SCell:hover + SGroupCell SCell:not([theme]) {
+SRow[theme='warning']:hover > SCell:not([theme]) {
   background-color: var(--intergalactic-table-td-cell-warning-hover, #ffdca2);
 }
 
@@ -98,8 +93,7 @@ SRow[theme='danger'][active] > SCell:not([theme]) {
 }
 
 SRow:hover > SCell[theme='danger'],
-SRow[theme='danger']:hover > SCell:not([theme]),
-SRow[theme='danger'] SCell:hover + SGroupCell SCell:not([theme]) {
+SRow[theme='danger']:hover > SCell:not([theme]) {
   background-color: var(--intergalactic-table-td-cell-critical-hover, #ffd7df);
 }
 

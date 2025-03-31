@@ -548,7 +548,7 @@ class DataTableRoot extends Component<
       rowIndex++;
     };
 
-    data.forEach((row) => {
+    data.forEach((row, rowIndex) => {
       const groupedRows: DataTableData | undefined = row[ROW_GROUP];
 
       if (groupedRows) {
@@ -570,41 +570,9 @@ class DataTableRoot extends Component<
       } else {
         addToRows(row);
       }
-
-      // Object.entries(row).forEach(([key, value]) => {
-      //   const columnsToRow = key.split(this.columnsSplitter);
-      //
-      //   if (columnsToRow.length > 1) {
-      //     rowData[columnsToRow[0]] = [value, columnsToRow.length];
-      //   }
-      //
-      //   if (columnsToRow.length === 1) {
-      //     rowData[key] = value;
-      //   } else {
-      //     rowData[columnsToRow[0]] = [value, columnsToRow.length];
-      //   }
-      // });
     });
 
     return rows;
-
-    // return data.reduce<DTRow[]>((rows, row) => {
-    //   const dtRow = Object.entries(row).reduce<DTRow>((acc, [key, value]) => {
-    //     const columnsToRow = key.split(this.columnsSplitter);
-    //
-    //     if (columnsToRow.length === 1) {
-    //       acc[key] = value;
-    //     } else {
-    //       acc[columnsToRow[0]] = [value, columnsToRow.length];
-    //     }
-    //
-    //     return acc;
-    //   }, {});
-    //
-    //   rows.push(dtRow);
-    //
-    //   return rows;
-    // }, []);
   }
 
   private calculateGridTemplateColumn(c: ReactElement<DataTableColumnProps>): string {
