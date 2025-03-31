@@ -175,7 +175,11 @@ class DataTableRoot extends Component<
     return hasFocusable;
   };
 
-  changeFocusCell = (rowIndex: RowIndex, colIndex: ColIndex, direction?: 'up' | 'down' | 'left' | 'right') => {
+  changeFocusCell = (
+    rowIndex: RowIndex,
+    colIndex: ColIndex,
+    direction?: 'up' | 'down' | 'left' | 'right',
+  ) => {
     const hasFocusable = this.hasFocusableInHeader();
 
     const maxCol = this.columns.length - 1;
@@ -186,7 +190,9 @@ class DataTableRoot extends Component<
     );
 
     const headerCells = this.tableRef.current?.querySelectorAll('[role=columnheader]');
-    const currentCell = currentRow?.querySelector(`[role=gridcell][aria-colindex='${this.focusedCell[1] + 1}']`);
+    const currentCell = currentRow?.querySelector(
+      `[role=gridcell][aria-colindex='${this.focusedCell[1] + 1}']`,
+    );
     const currentHeaderCell = headerCells?.item(this.focusedCell[1]);
 
     let changed = true;
@@ -206,7 +212,11 @@ class DataTableRoot extends Component<
     if (!changed) return;
 
     const row = this.getRow(newRow);
-    const cell = row?.querySelector(`[role=gridcell][aria-colindex="${newCol + 1}"], [role=columnheader][aria-colindex="${newCol + 1}"]`);
+    const cell = row?.querySelector(
+      `[role=gridcell][aria-colindex="${newCol + 1}"], [role=columnheader][aria-colindex="${
+        newCol + 1
+      }"]`,
+    );
 
     if (cell instanceof HTMLElement && currentCell !== cell) {
       this.focusedCell = [newRow, newCol];
@@ -237,13 +247,15 @@ class DataTableRoot extends Component<
       let rowI = rowIndex;
       let colI = colIndex;
 
-      if (direction === 'left' || direction === 'right') { // left/right
+      if (direction === 'left' || direction === 'right') {
+        // left/right
         if (currentCell.dataset.groupedBy === 'columns') {
           colI = direction === 'left' ? colI - 1 : colI + 1;
         } else {
           rowI = rowI - 1;
         }
-      } else if (direction === 'up' || direction === 'down') { // top/bottom
+      } else if (direction === 'up' || direction === 'down') {
+        // top/bottom
         if (currentCell.dataset.groupedBy === 'rows') {
           rowI = direction === 'up' ? rowI - 1 : rowI + 1;
         } else {
