@@ -8,6 +8,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - `keyboardFocusEnhance` to css `:focus-visible` property.
 
+## [5.43.0] - 2025-03-21
+
+### Added
+
+- New `brand` theme. `warning` theme was deprecated.
+
 ## [5.42.1] - 2025-03-20
 
 ### Changed

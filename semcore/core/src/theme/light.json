@@ -869,7 +869,7 @@
           "description": "Hover state of the primary brand colored control."
         },
         "brand-active": {
-          "value": "{orange.500}",
+          "value": "{orange.600}",
           "type": "color",
           "description": "Active state of the primary brand colored control."
         },

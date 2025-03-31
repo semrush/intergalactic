@@ -9,6 +9,8 @@ const removedComponents = [
   '@semcore/babel-plugin-shadow',
   '@semcore/project-create',
   '@semcore/chart',
+  '@semcore/email',
+  '@semcore/utils',
 ];
 
 export const getReleaseChangelog = async () => {

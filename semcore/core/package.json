@@ -2,9 +2,9 @@
   "name": "@semcore/core",
   "description": "Semrush Core Component",
   "version": "16.0.0",
-  "main": "lib/cjs/index.js",
-  "module": "lib/es6/index.js",
-  "typings": "lib/types/index.d.ts",
+  "main": "lib/index.js",
+  "module": "lib/index.mjs",
+  "typings": "lib/index.d.ts",
   "sideEffects": false,
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
@@ -13,9 +13,9 @@
   },
   "exports": {
     ".": {
-      "require": "./lib/cjs/index.js",
-      "import": "./lib/esm/index.mjs",
-      "types": "./lib/types/index.d.ts"
+      "require": "./lib/index.js",
+      "import": "./lib/index.mjs",
+      "types": "./lib/index.d.ts"
     },
     "./src": {
       "import": "./src/index.ts",
@@ -270,7 +270,6 @@
   },
   "dependencies": {
     "@formatjs/intl": "3.0.4",
-    "@reshadow/core": "0.0.1-alpha.74",
     "classnames": "2.2.6",
     "hoist-non-react-statics": "3.3.2",
     "@phytonmk/nano-css": "5.3.7",

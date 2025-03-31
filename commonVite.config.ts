@@ -24,6 +24,7 @@ export default defineConfig({
     })).vite({}),
   ],
   build: {
+    minify: false,
     emptyOutDir: false,
     minify: false,
     outDir: 'lib',

@@ -2,7 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.0] - 2025-03-26
+
+### Added
+
+- Major version.
+
 ## [5.45.1] - 2025-03-20
+
+### Removed
+
+- `role` attribute for `muted` theme.
 
 ### Changed
 
