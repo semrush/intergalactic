@@ -28,7 +28,7 @@ const Demo = () => {
         <DataTable data={sortedData} use='secondary' defaultGridTemplateColumnWidth={'1fr'} sort={['kd', 'desc']} aria-label={'Secondary'} sort={sort} onSortChange={setSort} >
             <DataTable.Head>
                 <DataTable.Head.Column name='keyword' children='Keyword' sortable />
-                <DataTable.Head.Column name='kd' children='KD,%' />
+                <DataTable.Head.Column name='kd' children='KD,%' sortable/>
                 <DataTable.Head.Column name='cpc' children='CPC' />
                 <DataTable.Head.Column name='vol' children='Vol.' />
             </DataTable.Head>
