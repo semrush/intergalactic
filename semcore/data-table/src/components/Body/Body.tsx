@@ -74,17 +74,17 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
     const { use, renderCell, expandedRows, styles, getI18nText } = this.asProps;
     const SAccordionToggle = ButtonLink;
 
+    const cellValue = props.row[props.name];
+
+    let value: DTValue = '';
+
+    if (cellValue instanceof MergedRowsCell || cellValue instanceof MergedColumnsCell) {
+      value = cellValue.value;
+    } else {
+      value = cellValue;
+    }
+
     const defaultRender = () => {
-      const cellValue = props.row[props.name];
-
-      let value: DTValue = '';
-
-      if (cellValue instanceof MergedRowsCell || cellValue instanceof MergedColumnsCell) {
-        value = cellValue.value;
-      } else {
-        value = cellValue;
-      }
-
       if (props.columnIndex === 0 && props.row[ACCORDION]) {
         return sstyled(styles)(
           <>
@@ -114,6 +114,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
             rowIndex: props.rowIndex,
             columnIndex: props.columnIndex,
             defaultRender: defaultRender,
+            value,
           })
         : defaultRender(),
     };

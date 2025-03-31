@@ -8,6 +8,7 @@ type CellRenderProps = {
   column: DTColumn;
   rowIndex: number;
   columnIndex: number;
+  value: string | number | boolean;
   defaultRender: () => React.ReactNode;
 };
 
