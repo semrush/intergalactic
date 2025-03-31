@@ -261,10 +261,11 @@ export class Column extends Component<DataTableColumnProps, {}, {}, [], ColumnPr
           <SSortWrapper ref={this.sortWrapperRef}>
             <SSortButton
               onClick={this.handleSortClick}
-              addonLeft={SSortIcon}
-              title={ariaSortValue}
+              aria-label={ariaSortValue}
               color={'--intergalactic-icon-primary-neutral'}
-            />
+            >
+              <SSortButton.Addon tag={SSortIcon} />
+            </SSortButton>
           </SSortWrapper>
         )}
       </SColumn>,
