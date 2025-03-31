@@ -8,6 +8,7 @@ export type DataTableCellProps = CommonColumnType & {
   columnIndex: number;
   column: DTColumn;
   rowIndex: number;
+  gridArea?: string;
 };
 
 export type CellPropsInner = {

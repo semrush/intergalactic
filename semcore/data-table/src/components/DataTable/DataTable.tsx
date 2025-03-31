@@ -444,6 +444,7 @@ class DataTableRoot extends Component<
 
       const column: DTColumn = {
         name: columnElement.props.name,
+        // @ts-ignore
         ref: function (node: HTMLElement | null) {
           if (node) {
             const calculatedWidth = node.getBoundingClientRect().width;
@@ -497,7 +498,7 @@ class DataTableRoot extends Component<
         const initGridColumn = gridColumnIndex;
 
         React.Children.forEach(child.props.children, (child, j) => {
-          if (child.type === Head.Column) {
+          if (child?.type === Head.Column) {
             const isFirst = j === 0;
             const isLast = j === childCount - 1;
             const col = makeColumn(child, Group, isFirst, isLast);

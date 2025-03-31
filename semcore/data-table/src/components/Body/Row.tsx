@@ -177,4 +177,5 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
   }
 }
 
+// @ts-ignore
 export const Row = createComponent(RowRoot, {}, { parent: Body });

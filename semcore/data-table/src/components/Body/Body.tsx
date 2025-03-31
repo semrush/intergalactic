@@ -90,6 +90,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
           <>
             <SAccordionToggle
               aria-label={getI18nText('DataTable.Cell.AccordionToggle.expand:aria-label')}
+              // @ts-ignore
               expanded={expandedRows?.includes(props.rowIndex)}
               onClick={() => this.onExpandRow(props.rowIndex)}
               color={'--intergalactic-icon-primary-neutral'}
@@ -129,6 +130,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
       <SBody render={Box}>
         {rows.map((row, index) => {
           return (
+            // @ts-ignore
             <Body.Row
               key={index}
               role={'row'}
@@ -142,6 +144,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
           );
         })}
         {loading && (
+          // @ts-ignore
           <SSpinContainer aria-hidden headerHeight={`${headerHeight}px`}>
             <Spin size={'xxl'} />
           </SSpinContainer>

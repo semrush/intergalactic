@@ -48,7 +48,7 @@ type AsProps = {
 };
 
 class Head extends Component<AsProps> {
-  columns: Column[] = [];
+  columns: any[] = [];
 
   static displayName: string;
 

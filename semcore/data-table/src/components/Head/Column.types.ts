@@ -68,6 +68,8 @@ export type DataTableColumnProps = CommonColumnType & {
    * Flag for change column size if sorted by it
    */
   changeSortSize?: boolean;
+
+  children?: React.ReactElement[];
 };
 
 export type ColumnPropsInner = {

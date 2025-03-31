@@ -54,6 +54,8 @@ export type DataTableProps = DataTableAriaProps &
      * Flag for showing spinner on table body
      */
     loading?: boolean;
+
+    children?: any;
   };
 
 export type RowIndex = number;

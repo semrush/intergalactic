@@ -74,17 +74,17 @@ class HeadRoot extends Component<DataTableHeadProps, {}, {}, [], HeadPropsInner>
           <Children />
         </SHead>
 
-        {Boolean(withScrollBar) && tableRef.current && (
-          <Box display={'contents'}>
-            <ScrollArea.Bar
-              orientation='horizontal'
-              container={tableRef.current}
-              top={'25px'}
-              leftOffset={offsetLeftSum}
-              rightOffset={offsetRightSum}
-            />
-          </Box>
-        )}
+        {/*{Boolean(withScrollBar) && tableRef.current && (*/}
+        {/*  <Box display={'contents'}>*/}
+        {/*    <ScrollArea.Bar*/}
+        {/*      orientation='horizontal'*/}
+        {/*      container={tableRef}*/}
+        {/*      top={'25px'}*/}
+        {/*      leftOffset={offsetLeftSum}*/}
+        {/*      rightOffset={offsetRightSum}*/}
+        {/*    />*/}
+        {/*  </Box>*/}
+        {/*)}*/}
 
         <ScreenReaderOnly aria-hidden={true} id={this.sortableColumnDescribeId()}>
           {getI18nText('sortableColumn')}

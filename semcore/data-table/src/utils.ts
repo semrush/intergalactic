@@ -20,13 +20,16 @@ export const createCssVarForWidth = (name: string) => {
   return `--${name.replace(cssVarReg, '_')}_width`;
 };
 
-export const flattenColumns = (columns: Column[]) =>
+/**
+ * todo: Remove after v16
+ */
+export const flattenColumns = (columns: any[]) =>
   columns.reduce((acc, column) => {
     const hasNestedColumns = 'columns' in column && column.columns.length > 0;
-    const columns: Column[] = hasNestedColumns ? flattenColumns(column.columns) : [column];
+    const columns: any[] = hasNestedColumns ? flattenColumns(column.columns) : [column];
     acc = acc.concat(columns);
     return acc;
-  }, [] as Column[]);
+  }, [] as any[]);
 
 export const getFixedStyle = (
   cell: Pick<DTColumn, 'name' | 'fixed'>,
