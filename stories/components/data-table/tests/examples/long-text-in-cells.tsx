@@ -14,7 +14,7 @@ const Demo = () => {
         <>
             <DataTable data={data} aria-label={'Access to cells'} hMax={200}>
                 <DataTable.Head sticky>
-                    <DataTable.Head.Column name='keyword' children='Keyword' gtcWidth='70px' />
+                    <DataTable.Head.Column name='keyword' children='Keyword' gtcWidth='140px' />
                     <DataTable.Head.Column name='kd' children='KD,%' gtcWidth='70px' />
                     <DataTable.Head.Column name='cpc' children='CPC' gtcWidth='150px' />
                     <DataTable.Head.Column name='vol' children='Vol.' gtcWidth='150px' />
@@ -26,7 +26,17 @@ const Demo = () => {
                             return (
                                 <Flex>
 
-                                    <Text noWrap={true}> {props.row[props.name]}</Text>
+                                    <Text noWrap={true}> NoWrapTrue {props.row[props.name]}</Text>
+                                    
+                                </Flex>
+                            );
+                        }
+
+                        if (props.name === 'cpc') {
+                            return (
+                                <Flex>
+
+                                    <Text noWrap={false}>No Wrap False {props.row[props.name]}</Text>
                                     <Link
                                         href='#'
                                         target='_blank'
