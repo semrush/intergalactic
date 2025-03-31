@@ -82,9 +82,9 @@ class DataTableRoot extends Component<
   }
 
   get totalRows() {
-    const { data, totalRows } = this.asProps;
+    const { totalRows } = this.asProps;
 
-    return totalRows ?? (data ?? []).length;
+    return totalRows ?? this.calculateRows().length;
   }
 
   get gridSettings() {
@@ -175,7 +175,7 @@ class DataTableRoot extends Component<
     return hasFocusable;
   };
 
-  changeFocusCell = (rowIndex: RowIndex, colIndex: ColIndex) => {
+  changeFocusCell = (rowIndex: RowIndex, colIndex: ColIndex, direction?: 'up' | 'down' | 'left' | 'right') => {
     const hasFocusable = this.hasFocusableInHeader();
 
     const maxCol = this.columns.length - 1;
@@ -186,7 +186,7 @@ class DataTableRoot extends Component<
     );
 
     const headerCells = this.tableRef.current?.querySelectorAll('[role=columnheader]');
-    const currentCell = currentRow?.querySelectorAll('[role=gridcell]').item(this.focusedCell[1]);
+    const currentCell = currentRow?.querySelector(`[role=gridcell][aria-colindex='${this.focusedCell[1] + 1}']`);
     const currentHeaderCell = headerCells?.item(this.focusedCell[1]);
 
     let changed = true;
@@ -205,12 +205,12 @@ class DataTableRoot extends Component<
 
     if (!changed) return;
 
-    this.focusedCell = [newRow, newCol];
-
     const row = this.getRow(newRow);
-    const cell = row?.querySelectorAll('[role=gridcell], [role=columnheader]').item(newCol);
+    const cell = row?.querySelector(`[role=gridcell][aria-colindex="${newCol + 1}"], [role=columnheader][aria-colindex="${newCol + 1}"]`);
 
     if (cell instanceof HTMLElement && currentCell !== cell) {
+      this.focusedCell = [newRow, newCol];
+
       currentCell?.setAttribute('inert', '');
 
       if (currentCell !== currentHeaderCell) {
@@ -233,8 +233,24 @@ class DataTableRoot extends Component<
 
         headerCell?.removeAttribute('inert');
       }
-    } else if (currentCell === cell) {
-      this.changeFocusCell(rowIndex, colIndex);
+    } else if (cell === null && currentCell instanceof HTMLElement) {
+      let rowI = rowIndex;
+      let colI = colIndex;
+
+      if (direction === 'left' || direction === 'right') { // left/right
+        if (currentCell.dataset.groupedBy === 'columns') {
+          colI = direction === 'left' ? colI - 1 : colI + 1;
+        } else {
+          rowI = rowI - 1;
+        }
+      } else if (direction === 'up' || direction === 'down') { // top/bottom
+        if (currentCell.dataset.groupedBy === 'rows') {
+          rowI = direction === 'up' ? rowI - 1 : rowI + 1;
+        } else {
+          colI = colI - 1;
+        }
+      }
+      this.changeFocusCell(rowI, colI, direction);
     }
   };
 
@@ -246,22 +262,22 @@ class DataTableRoot extends Component<
       }
       case 'ArrowLeft': {
         e.preventDefault();
-        this.changeFocusCell(0, -1);
+        this.changeFocusCell(0, -1, 'left');
         break;
       }
       case 'ArrowRight': {
         e.preventDefault();
-        this.changeFocusCell(0, 1);
+        this.changeFocusCell(0, 1, 'right');
         break;
       }
       case 'ArrowUp': {
         e.preventDefault();
-        this.changeFocusCell(-1, 0);
+        this.changeFocusCell(-1, 0, 'up');
         break;
       }
       case 'ArrowDown': {
         e.preventDefault();
-        this.changeFocusCell(1, 0);
+        this.changeFocusCell(1, 0, 'down');
         break;
       }
     }

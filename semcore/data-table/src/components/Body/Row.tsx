@@ -69,16 +69,19 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
               }
             }
 
+            let groupedBy: null | 'rows' | 'columns' = null;
             let gridArea: string | undefined = undefined;
 
             if (cellValue instanceof MergedColumnsCell) {
               gridArea = `${rowIndex + headerRows + 1} / ${index + 1} / ${
                 rowIndex + headerRows + 2
               } / ${index + 1 + cellValue.columnsCount}`;
+              groupedBy = 'columns';
             } else if (cellValue instanceof MergedRowsCell) {
               gridArea = `${rowIndex + headerRows + 1} / ${index + 1} / ${
                 rowIndex + headerRows + 1 + cellValue.rowsCount
               } / ${index + 2}`;
+              groupedBy = 'rows';
             }
 
             return (
@@ -87,6 +90,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
                 role={'gridcell'}
                 aria-colindex={index + 1}
                 data-aria-level={index === 0 ? ariaLevel : undefined}
+                data-grouped-by={groupedBy}
                 row={row}
                 rowIndex={rowIndex}
                 columnIndex={index}
