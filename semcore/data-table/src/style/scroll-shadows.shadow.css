@@ -1,3 +1,7 @@
+SScrollArea {
+  width: fit-content;
+}
+
 SShadowHorizontal,
 SShadowVertical {
   &:before,
