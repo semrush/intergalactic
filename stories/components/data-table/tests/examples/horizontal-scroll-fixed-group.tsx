@@ -10,12 +10,15 @@ const Demo = () => {
             <DataTable.Head.Column name='keyword' children='Keyword' gtcWidth={'150px'} />
             <DataTable.Head.Column name='kd' children='KD,%' gtcWidth={'200px'} />
           </DataTable.Head.Group>
+
           <DataTable.Head.Column name='cpc' children='CPC' gtcWidth={'350px'} />
           <DataTable.Head.Column name='cpc' children='CPC' gtcWidth={'300px'} />
+
           <DataTable.Head.Group borders={'left'} title={'Borders left'} fixed='right' >
-            <DataTable.Head.Column name='vol' children='Vol' gtcWidth={'150px'} />
+            <DataTable.Head.Column name='vol' children='Vol' gtcWidth={'200px'} />
             <DataTable.Head.Column name='vol1' children='Vol' gtcWidth={'150px'} />
-          </DataTable.Head.Group>      </DataTable.Head>
+          </DataTable.Head.Group>      
+          </DataTable.Head>
         <DataTable.Body />
       </DataTable>
 
