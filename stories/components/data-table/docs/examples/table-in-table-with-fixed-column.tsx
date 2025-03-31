@@ -1,69 +1,17 @@
 import React from 'react';
-import DataTable from '@semcore/data-table';
-import Accordion from '@semcore/accordion';
-import { Flex } from '@semcore/flex-box';
-
-const RowAccordion = React.forwardRef(
-  ({ value, collapse = {}, ...props }: any, ref: React.Ref<HTMLDivElement>) => {
-    return (
-      <Accordion.Item value={value} ref={ref}>
-        <Accordion.Item.Toggle {...props} />
-        <Accordion.Item.Collapse {...collapse} />
-      </Accordion.Item>
-    );
-  },
-);
+import { DataTable, ACCORDION } from '@semcore/data-table';
 
 const Demo = () => {
-  const [value, setValue] = React.useState<number[]>([]);
   return (
-    <Accordion value={value} onChange={setValue}>
-      <DataTable data={data} aria-label={'Parent with fixed column'}>
-        <DataTable.Head wMin={1000}>
-          <DataTable.Column name='keyword' children='Keyword' fixed='left' />
-          <DataTable.Column name='kd' children='KD,%' />
-          <DataTable.Column name='cpc' children='CPC' />
-          <DataTable.Column name='vol' children='Vol.' />
+      <DataTable data={data} aria-label={'Parent with fixed column'} w={900}>
+        <DataTable.Head>
+          <DataTable.Head.Column name='keyword' children='Keyword' fixed='left' gtcWidth={'400px'} />
+          <DataTable.Head.Column name='kd' children='KD,%' gtcWidth={'300px'} />
+          <DataTable.Head.Column name='cpc' children='CPC' gtcWidth={'300px'} />
+          <DataTable.Head.Column name='vol' children='Vol.' gtcWidth={'300px'} />
         </DataTable.Head>
-        <DataTable.Body>
-          <DataTable.Row tag={RowAccordion}>
-            {(_props, _row, index) => {
-              return {
-                value: index,
-                active: value.includes(index),
-                collapse: {
-                  children: (
-                    <DataTable data={data} aria-label={'Nested'}>
-                      {/* [1] Set the desired z-index */}
-                      <DataTable.Head hidden z-index={1}>
-                        <DataTable.Column name='keyword' flex='inherit' fixed='left' />
-                        <DataTable.Column name='kd' flex='inherit' />
-                        <DataTable.Column name='cpc' flex='inherit' />
-                        <DataTable.Column name='vol' flex='inherit' />
-                      </DataTable.Head>
-                      {/* [2] Set a variable to block the scroll */}
-                      <DataTable.Body disabledScroll />
-                    </DataTable>
-                  ),
-                },
-              };
-            }}
-          </DataTable.Row>
-          <DataTable.Cell data={data} name='keyword'>
-            {(props) => {
-              return {
-                children: (
-                  <Flex alignItems='center'>
-                    <Accordion.Item.Chevron color='icon-secondary-neutral' mr={2} />
-                    {props.children}
-                  </Flex>
-                ),
-              };
-            }}
-          </DataTable.Cell>
-        </DataTable.Body>
+        <DataTable.Body/>
       </DataTable>
-    </Accordion>
   );
 };
 
@@ -73,6 +21,32 @@ const data = [
     kd: '77.8',
     cpc: '$1.25',
     vol: '32,500,000',
+    [ACCORDION]: [
+      {
+        keyword: 'www.ebay.com',
+        kd: '11.2',
+        cpc: '$3.4',
+        vol: '65,457,920',
+      },
+      {
+        keyword: 'www.ebay.com',
+        kd: '10',
+        cpc: '$0.65',
+        vol: '47,354,640',
+      },
+      {
+        keyword: 'ebay buy',
+        kd: '-',
+        cpc: '$0',
+        vol: 'n/a',
+      },
+      {
+        keyword: 'ebay buy',
+        kd: '75.89',
+        cpc: '$0',
+        vol: '21,644,290',
+      },
+    ]
   },
   {
     keyword: 'www.ebay.com',

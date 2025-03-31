@@ -9,7 +9,7 @@
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "pnpm semcore-builder --source=ts && pnpm vite build"
+    "build": "pnpm vite build"
   },
   "exports": {
     "require": "./lib/cjs/index.js",

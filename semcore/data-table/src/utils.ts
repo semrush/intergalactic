@@ -1,30 +1,39 @@
-import type { Column } from './types';
+import type { DTColumn } from './components/Head/Column.types';
 
-export const getScrollOffsetValue = (columns: Column[]) =>
+export const getScrollOffsetValue = (columns: DTColumn[]) =>
   columns.reduce(
     (acc, column) => {
       if (column.fixed === 'left') {
-        acc[0] += column.width;
+        acc[0] += column.calculatedWidth;
       }
       if (column.fixed === 'right') {
-        acc[1] += column.width;
+        acc[1] += column.calculatedWidth;
       }
       return acc;
     },
     [0, 0] as [leftOffset: number, rightOffset: number],
   );
 
-export const flattenColumns = (columns: Column[]) =>
+const cssVarReg = /[:;\W]/g;
+
+export const createCssVarForWidth = (name: string) => {
+  return `--${name.replace(cssVarReg, '_')}_width`;
+};
+
+/**
+ * todo: Remove after v16
+ */
+export const flattenColumns = (columns: any[]) =>
   columns.reduce((acc, column) => {
     const hasNestedColumns = 'columns' in column && column.columns.length > 0;
-    const columns: Column[] = hasNestedColumns ? flattenColumns(column.columns) : [column];
+    const columns: any[] = hasNestedColumns ? flattenColumns(column.columns) : [column];
     acc = acc.concat(columns);
     return acc;
-  }, [] as Column[]);
+  }, [] as any[]);
 
 export const getFixedStyle = (
-  cell: Pick<Column, 'name' | 'fixed'>,
-  columns: Column[],
+  cell: Pick<DTColumn, 'name' | 'fixed'>,
+  columns: DTColumn[],
 ): [side: 'left' | 'right', style: string | number] | [side: undefined, style: undefined] => {
   const side = cell.fixed;
   if (!side) return [undefined, undefined];
@@ -50,6 +59,6 @@ export const getFixedStyle = (
 
   if (columnsFixed.length < 1) return [side, 0];
 
-  const vars = columnsFixed.map((column) => `var(--${column.name}_width)`);
-  return [side, vars.length === 1 ? vars[0] : `calc(${vars.join(' + ')})`];
+  const sum = columnsFixed.reduce((acc, column) => acc + column.calculatedWidth, 0);
+  return [side, `${sum}px`];
 };

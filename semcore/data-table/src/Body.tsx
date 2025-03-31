@@ -133,7 +133,7 @@ class Body extends Component<AsProps, {}, State> {
         const firstColumn = columns.find((c) => c.name === firstName);
         const lastColumn = columns.find((c) => c.name === lastName);
         const column = columns.find((c) => c.name === cell.name);
-        const [name, value] = getFixedStyle(cell, columns);
+        const [name, value] = getFixedStyle(cell, columns as any);
         const parentColumnNames = column?.parentColumns.map((column) => column.name) ?? [];
         const vars = (Array.isArray(cell.cssVar) ? cell.cssVar : [cell.cssVar]).map(
           (name) => `var(${name})`,
@@ -355,7 +355,7 @@ class Body extends Component<AsProps, {}, State> {
 
     const columnsInitialized = columns.reduce((sum, { width }) => sum + width, 0) > 0 || testEnv;
 
-    const [offsetLeftSum, offsetRightSum] = getScrollOffsetValue(columns);
+    const [offsetLeftSum, offsetRightSum] = getScrollOffsetValue(columns as any);
 
     const rowHeight = this.getRowHeight();
     const holdHeight =

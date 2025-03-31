@@ -324,7 +324,7 @@ class ScrollAreaRoot extends Component<ScrollAreaProps, {}, State, typeof Scroll
 
     const advancedMode =
       forcedAdvancedMode ||
-      isAdvanceMode(Children, [ScrollArea.Container.displayName, ScrollArea.Bar.displayName]);
+      isAdvanceMode(Children, [ScrollArea.Container.displayName, ScrollArea.Bar.displayName], true);
 
     return sstyled(styles)(
       <SScrollArea

@@ -100,6 +100,7 @@ abstract class RootComponent<
   Context = {},
   State = {},
   Enhance extends readonly ((...args: any[]) => any)[] = [],
+  InnerProps = {},
 > extends PureComponent<Props, State> {
   get handlers(): Readonly<IRootComponentHandlers> {
     return {};
@@ -110,7 +111,8 @@ abstract class RootComponent<
       Merge<
         Props &
           IRootComponentProps<Props, Context> &
-          Intergalactic.InternalTypings.ExtractEnhanceType<Enhance>,
+          Intergalactic.InternalTypings.ExtractEnhanceType<Enhance> &
+          InnerProps,
         AllHTMLAttributes<any>
       >
     >;

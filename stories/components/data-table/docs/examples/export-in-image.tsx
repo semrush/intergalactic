@@ -3,7 +3,7 @@ import { Flex } from '@semcore/flex-box';
 import DropdownMenu from '@semcore/dropdown-menu';
 import Button from '@semcore/button';
 import FileExportM from '@semcore/icon/FileExport/m';
-import DataTable from '@semcore/data-table';
+import { DataTable } from '@semcore/data-table';
 
 const extensions = ['png', 'jpeg', 'webp'];
 
@@ -59,10 +59,10 @@ const Demo = () => {
 
       <DataTable data={data} aria-label={'Export in image'} ref={tableRef} w={500}>
         <DataTable.Head>
-          <DataTable.Column name='keyword' children='Keyword' />
-          <DataTable.Column name='kd' children='KD,%' />
-          <DataTable.Column name='cpc' children='CPC' />
-          <DataTable.Column name='vol' children='Vol.' />
+          <DataTable.Head.Column name='keyword' children='Keyword' />
+          <DataTable.Head.Column name='kd' children='KD,%' />
+          <DataTable.Head.Column name='cpc' children='CPC' />
+          <DataTable.Head.Column name='vol' children='Vol.' />
         </DataTable.Head>
         <DataTable.Body />
       </DataTable>

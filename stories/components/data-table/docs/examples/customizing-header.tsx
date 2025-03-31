@@ -1,5 +1,5 @@
 import React from 'react';
-import DataTable from '@semcore/data-table';
+import { DataTable } from '@semcore/data-table';
 import Tooltip from '@semcore/tooltip';
 import { Text } from '@semcore/typography';
 import DropdownMenu from '@semcore/dropdown-menu';
@@ -9,7 +9,7 @@ const Demo = () => {
   return (
     <DataTable data={data} aria-label={'Customizing header'}>
       <DataTable.Head>
-        <DataTable.Column
+        <DataTable.Head.Column
           name='keyword'
           tag={Tooltip}
           title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on."
@@ -18,8 +18,8 @@ const Demo = () => {
           <Text noWrap>
             Keyword <Text color='text-secondary'>(1 - 100)</Text>
           </Text>
-        </DataTable.Column>
-        <DataTable.Column name='kd'>
+        </DataTable.Head.Column>
+        <DataTable.Head.Column name='kd'>
           <DropdownMenu>
             <DropdownMenu.Trigger
               tag={LinkTrigger}
@@ -33,23 +33,23 @@ const Demo = () => {
               <DropdownMenu.Item>Options 2</DropdownMenu.Item>
             </DropdownMenu.Menu>
           </DropdownMenu>
-        </DataTable.Column>
-        <DataTable.Column
+        </DataTable.Head.Column>
+        <DataTable.Head.Column
           name='cpc'
           tag={Tooltip}
           title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on."
           tabIndex={0}
         >
           CPC
-        </DataTable.Column>
-        <DataTable.Column
+        </DataTable.Head.Column>
+        <DataTable.Head.Column
           name='vol'
           tag={Tooltip}
           title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on."
           tabIndex={0}
         >
           Vol.
-        </DataTable.Column>
+        </DataTable.Head.Column>
       </DataTable.Head>
       <DataTable.Body />
     </DataTable>

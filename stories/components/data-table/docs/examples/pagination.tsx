@@ -1,5 +1,5 @@
 import React from 'react';
-import DataTable from '@semcore/data-table';
+import { DataTable } from '@semcore/data-table';
 import Pagination from '@semcore/pagination';
 
 const Demo = () => {
@@ -17,28 +17,22 @@ const Demo = () => {
     <>
       <DataTable data={tableData} aria-label={'Pagination'}>
         <DataTable.Head>
-          <DataTable.Column name='keyword' children='Keyword' justifyContent='left' />
-          <DataTable.Column name='kd' children='KD,%' justifyContent='right' wMax={68} />
-          <DataTable.Column name='cpc' children='CPC' wMax={60} />
-          <DataTable.Column name='vol' children='Vol.' wMax={120} justifyContent='left' />
+          <DataTable.Head.Column name='keyword' children='Keyword' justifyContent='left' />
+          <DataTable.Head.Column name='kd' children='KD,%' justifyContent='right' gtcWidth={'minmax(fit-content, 68px)'} />
+          <DataTable.Head.Column name='cpc' children='CPC' gtcWidth={'minmax(fit-content, 60px)'} />
+          <DataTable.Head.Column name='vol' children='Vol.' gtcWidth={'minmax(fit-content, 120px)'} justifyContent='left' />
         </DataTable.Head>
-        <DataTable.Body>
-          <DataTable.Cell data={data} name='kd'>
-            {(_, row) => ({
-              children: row.kd === -1 ? 'n/a' : numberFormat.format(row.kd),
-            })}
-          </DataTable.Cell>
-          <DataTable.Cell data={data} name='cpc'>
-            {(_, row) => ({
-              children: row.cpc === -1 ? 'n/a' : currencyFormat.format(row.cpc),
-            })}
-          </DataTable.Cell>
-          <DataTable.Cell data={data} name='vol'>
-            {(_, row) => ({
-              children: row.vol === -1 ? 'n/a' : numberFormat.format(row.vol),
-            })}
-          </DataTable.Cell>
-        </DataTable.Body>
+        <DataTable.Body
+          renderCell={(props) => {
+            if (props.name === 'keyword') {
+              return props.defaultRender();
+            }
+
+            const value = props.defaultRender();
+
+            return typeof value === 'number' && value !== -1 ? numberFormat.format(value) : 'n/a';
+          }}
+        />
       </DataTable>
       <Pagination
         mt={4}

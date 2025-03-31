@@ -296,6 +296,12 @@ class ScrollBarRoot extends Component<ScrollBarProps, {}, {}, typeof ScrollBarRo
     this.subscribe(this.$container);
   }
 
+  componentDidUpdate(prevProps: ScrollBarProps) {
+    if (prevProps.container !== this.props.container && prevProps.container === null) {
+      this.subscribe(this.$container);
+    }
+  }
+
   componentWillUnmount() {
     this.unsubscribe(this.$container);
   }

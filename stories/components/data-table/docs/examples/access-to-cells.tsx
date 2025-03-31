@@ -1,36 +1,36 @@
 import React from 'react';
-import DataTable from '@semcore/data-table';
+import { DataTable } from '@semcore/data-table';
 import { ButtonLink } from '@semcore/button';
 
 const Demo = () => {
   return (
     <DataTable data={data} aria-label={'Access to cells'}>
       <DataTable.Head>
-        <DataTable.Column name='keyword' children='Keyword' />
-        <DataTable.Column name='kd' children='KD,%' />
-        <DataTable.Column name='cpc' children='CPC' />
-        <DataTable.Column name='vol' children='Vol.' />
+        <DataTable.Head.Column name='keyword' children='Keyword' />
+        <DataTable.Head.Column name='kd' children='KD,%' />
+        <DataTable.Head.Column name='cpc' children='CPC' />
+        <DataTable.Head.Column name='vol' children='Vol.' />
       </DataTable.Head>
-      <DataTable.Body>
-        <DataTable.Cell data={data} name='keyword'>
-          {(props, row, index) => {
-            return {
-              children: (
+      <DataTable.Body
+        renderCell={(props) => {
+          if (props.name === 'keyword') {
+            return (
                 <ButtonLink
-                  onClick={() => {
-                    alert(`Click row 
+                        onClick={() => {
+                          alert(`Click row 
                   props: ${JSON.stringify(Object.keys(props), null, '  ')};
-                  row: ${JSON.stringify(row, null, '  ')};
-                  index: ${index};`);
-                  }}
+                  row: ${JSON.stringify(props.row, null, '  ')};
+                  index: ${props.rowIndex};`);
+                        }}
                 >
-                  {row[props.name]}
-                </ButtonLink>
-              ),
-            };
-          }}
-        </DataTable.Cell>
-      </DataTable.Body>
+                        {props.row[props.name]}
+                      </ButtonLink>
+            );
+          }
+
+          return props.defaultRender();
+        }}
+      />
     </DataTable>
   );
 };

@@ -1,67 +1,19 @@
 import React from 'react';
 import { scaleLinear } from 'd3-scale';
-import DataTable from '@semcore/data-table';
-import Accordion from '@semcore/accordion';
-import { Flex } from '@semcore/flex-box';
+import { DataTable, ACCORDION} from '@semcore/data-table';
 import { Plot, Line, XAxis, YAxis, ResponsiveContainer, minMax } from '@semcore/d3-chart';
 
-const RowAccordion = React.forwardRef(function (
-  { value, collapse = {}, ...props }: any,
-  ref: React.Ref<HTMLDivElement>,
-) {
-  return (
-    <Accordion.Item value={value} ref={ref}>
-      <Accordion.Item.Toggle {...props} />
-      <Accordion.Item.Collapse {...collapse} />
-    </Accordion.Item>
-  );
-});
-
 const Demo = () => {
-  const [exapnded, setExapnded] = React.useState<number[]>([]);
-
   return (
-    /* [1] Wrapping the table in the Accordion control component; */
-    <Accordion value={exapnded} onChange={setExapnded}>
       <DataTable data={data} aria-label={'Accordion inside table'}>
         <DataTable.Head>
-          <DataTable.Column name='keyword' children='Keyword' />
-          <DataTable.Column name='kd' children='KD,%' />
-          <DataTable.Column name='cpc' children='CPC' />
-          <DataTable.Column name='vol' children='Vol.' />
+          <DataTable.Head.Column name='keyword' children='Keyword' />
+          <DataTable.Head.Column name='kd' children='KD,%' />
+          <DataTable.Head.Column name='cpc' children='CPC' />
+          <DataTable.Head.Column name='vol' children='Vol.' />
         </DataTable.Head>
-        <DataTable.Body>
-          {/* [2] Replacing the tag in DataTable.Row with our extended tag with Accordion.Item */}
-          <DataTable.Row tag={RowAccordion}>
-            {(_props, _row, index) => {
-              return {
-                /* [3] Setting the value for Accordion.Item; */
-                value: index,
-                /* [4] Calculating the active line to highlight it */
-                active: exapnded.includes(index),
-                collapse: {
-                  /* [5] Render the children to accordion content; */
-                  children: <ChartExample />,
-                },
-              };
-            }}
-          </DataTable.Row>
-          <DataTable.Cell data={data} name='keyword'>
-            {(props) => {
-              return {
-                children: (
-                  <Flex alignItems='center'>
-                    {/* [6] Set the arrow (Chevron icon), if necessary. */}
-                    <Accordion.Item.Chevron color='icon-secondary-neutral' mr={2} />
-                    {props.children}
-                  </Flex>
-                ),
-              };
-            }}
-          </DataTable.Cell>
-        </DataTable.Body>
+        <DataTable.Body/>
       </DataTable>
-    </Accordion>
   );
 };
 
@@ -109,30 +61,35 @@ const data = [
     kd: '77.8',
     cpc: '$1.25',
     vol: '32,500,000',
+    [ACCORDION]: (<ChartExample/>),
   },
   {
     keyword: 'www.ebay.com',
     kd: '11.2',
     cpc: '$3.4',
     vol: '65,457,920',
+    [ACCORDION]: (<ChartExample/>),
   },
   {
     keyword: 'www.ebay.com',
     kd: '10',
     cpc: '$0.65',
     vol: '47,354,640',
+    [ACCORDION]: (<ChartExample/>),
   },
   {
     keyword: 'ebay buy',
     kd: '-',
     cpc: '$0',
     vol: 'n/a',
+    [ACCORDION]: (<ChartExample/>),
   },
   {
     keyword: 'ebay buy',
     kd: '75.89',
     cpc: '$0',
     vol: '21,644,290',
+    [ACCORDION]: (<ChartExample/>),
   },
 ];
 

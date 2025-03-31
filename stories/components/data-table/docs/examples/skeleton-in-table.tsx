@@ -1,5 +1,5 @@
 import React from 'react';
-import DataTable from '@semcore/data-table';
+import { DataTable } from '@semcore/data-table';
 import Skeleton from '@semcore/skeleton';
 import Button from '@semcore/ui/button';
 import { ScreenReaderOnly } from '@semcore/ui/flex-box';
@@ -41,13 +41,23 @@ const Demo = () => {
       </ScreenReaderOnly>
       <DataTable data={data} aria-label={'Loading using Skeleton'}>
         <DataTable.Head>
-          <DataTable.Column name='keyword' children='Keyword' />
-          <DataTable.Column name='kd' children='KD,%' />
-          <DataTable.Column name='cpc' children='CPC' />
-          <DataTable.Column name='vol' children='Vol.' />
+          <DataTable.Head.Column name='keyword' children='Keyword' />
+          <DataTable.Head.Column name='kd' children='KD,%' />
+          <DataTable.Head.Column name='cpc' children='CPC' />
+          <DataTable.Head.Column name='vol' children='Vol.' />
         </DataTable.Head>
         <DataTable.Body
-          {...(loading ? { rows: [getSkeleton(), getSkeleton(), getSkeleton()] } : {})}
+          renderCell={(props) => {
+            if (loading) {
+              return (
+                  <Skeleton height={17}>
+                    <Skeleton.Text y='5' width='60%'/>
+                  </Skeleton>
+              );
+            }
+
+            return props.defaultRender();
+          }}
         />
       </DataTable>
       <Button onClick={toggleLoading} mt={3}>

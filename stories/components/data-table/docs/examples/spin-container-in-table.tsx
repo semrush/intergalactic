@@ -1,6 +1,5 @@
 import React from 'react';
-import DataTable from '@semcore/data-table';
-import SpinContainer from '@semcore/spin-container';
+import { DataTable } from '@semcore/data-table';
 import Button from '@semcore/ui/button';
 import { ScreenReaderOnly } from '@semcore/ui/flex-box';
 
@@ -27,22 +26,14 @@ const Demo = (): any => {
       <ScreenReaderOnly role='status' aria-live='polite'>
         {message}
       </ScreenReaderOnly>
-      <DataTable data={data} aria-label={'Loading using SpinContainer'}>
+      <DataTable data={data} aria-label={'Loading using SpinContainer'} loading={loading}>
         <DataTable.Head>
-          <DataTable.Column name='keyword' children='Keyword' />
-          <DataTable.Column name='kd' children='KD,%' />
-          <DataTable.Column name='cpc' children='CPC' />
-          <DataTable.Column name='vol' children='Vol.' />
+          <DataTable.Head.Column name='keyword' children='Keyword' />
+          <DataTable.Head.Column name='kd' children='KD,%' />
+          <DataTable.Head.Column name='cpc' children='CPC' />
+          <DataTable.Head.Column name='vol' children='Vol.' />
         </DataTable.Head>
-        <SpinContainer
-          loading={loading}
-          style={{ overflow: 'initial' }}
-          // @ts-ignore
-          inert={loading ? '' : undefined}
-        >
-          <DataTable.Body />
-          <SpinContainer.Overlay />
-        </SpinContainer>
+        <DataTable.Body />
       </DataTable>
       <Button onClick={toggleLoading} mt={3}>
         {loading ? 'Stop loading' : 'Start loading'}

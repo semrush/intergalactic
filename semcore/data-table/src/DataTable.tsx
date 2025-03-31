@@ -352,7 +352,7 @@ class RootDefinitionTable extends Component<AsProps> {
         }
 
         name = flattenColumns(columns)
-          .map(({ name }) => name)
+          .map(({ name }: any) => name)
           .join('/');
         if (!columns.length) return;
         children = React.Children.toArray(children).filter(
