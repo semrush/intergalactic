@@ -162,9 +162,7 @@ class DataTableRoot extends Component<
   }
 
   getRow = (index: number) => {
-    return index === 0
-      ? this.tableRef.current?.querySelector('[role=row]')
-      : this.tableRef.current?.querySelector(`[aria-rowindex="${index + 1}"]`);
+    return this.tableRef.current?.querySelector(`[aria-rowindex="${index + 1}"]`);
   };
 
   hasFocusableInHeader = () => {
