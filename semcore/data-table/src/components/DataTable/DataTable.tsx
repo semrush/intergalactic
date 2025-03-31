@@ -363,11 +363,11 @@ class DataTableRoot extends Component<
     const Head = findComponent(Children, ['DataTable.Head']);
     const Body = findComponent(Children, ['DataTable.Body']);
 
-    const width = w ?? (
-        this.columns.some((c) => c.gridColumnWidth === 'auto' || c.gridColumnWidth === '1fr')
-            ? '100%'
-            : undefined
-    );
+    const width =
+      w ??
+      (this.columns.some((c) => c.gridColumnWidth === 'auto' || c.gridColumnWidth === '1fr')
+        ? '100%'
+        : undefined);
 
     return sstyled(styles)(
       <ScrollArea
