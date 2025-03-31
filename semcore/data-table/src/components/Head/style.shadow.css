@@ -118,7 +118,7 @@ SColumn[gridArea], SGroup[gridArea], SGroupTitle[gridArea] {
   grid-area: var(--gridArea);
 }
 
-SHead[sticky] SColumn[fixed], SHead SColumn[fixed], SHead[sticky] SGroup {
+SHead[sticky] SColumn[fixed], SHead SColumn[fixed], SHead[sticky] SGroup, SHead SGroup[fixed] {
   position: sticky;
   /* because up resizable */
   z-index: 2;

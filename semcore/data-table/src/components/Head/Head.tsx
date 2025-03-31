@@ -14,6 +14,8 @@ class HeadRoot extends Component<DataTableHeadProps, {}, {}, [], HeadPropsInner>
   static displayName = 'Head';
   static style = style;
 
+  fixedColumnsMap = new Map<string, any>();
+
   sortableColumnDescribeId() {
     const { uid } = this.asProps;
     return `${uid}-column-sortable-describer`;
@@ -25,6 +27,7 @@ class HeadRoot extends Component<DataTableHeadProps, {}, {}, [], HeadPropsInner>
     return {
       use,
       gridArea: gridAreaGroupMap.get(index),
+      fixedColumnsMap: this.fixedColumnsMap,
     };
   }
 
@@ -37,6 +40,8 @@ class HeadRoot extends Component<DataTableHeadProps, {}, {}, [], HeadPropsInner>
 
     if (name !== undefined && value !== undefined) {
       style[name] = value;
+
+      this.fixedColumnsMap.set(column.name, value);
     }
 
     return {

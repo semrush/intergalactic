@@ -10,4 +10,5 @@ export type DataTableGroupProps = {
 
 export type GroupPropsInner = {
   use: DTUse;
+  fixedColumnsMap: Map<string, any>;
 };
