@@ -21,9 +21,8 @@ const Demo = () => {
                   props: ${JSON.stringify(Object.keys(props), null, '  ')};
                   row: ${JSON.stringify(props.row, null, '  ')};
                   index: ${props.rowIndex};`);
-                        }}
-                >
-                        {props.row[props.name]}
+                        }}>
+                        {String(props.row[props.name])}
                       </ButtonLink>
             );
           }

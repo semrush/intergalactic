@@ -4,7 +4,6 @@ import { ButtonLink } from '@semcore/button';
 import Checkbox from '@semcore/checkbox';
 import Link from '@semcore/link';
 import Button from '@semcore/button';
-import Ellipsis from '@semcore/ellipsis';
 import { Text } from '@semcore/typography';
 import { Flex } from '@semcore/flex-box';
 import { DescriptionTooltip, Hint } from '@semcore/tooltip';
@@ -63,7 +62,7 @@ const Demo = () => {
 
                                     <DescriptionTooltip>
                                         <DescriptionTooltip.Trigger tag={ButtonLink} use={'secondary'}>
-                                            {props.row[props.name]}
+                                        {String(props.row[props.name])}
                                         </DescriptionTooltip.Trigger>
                                         <DescriptionTooltip.Popper aria-label='About fastest animals'>
                                             <Text tag='p' mb={3}>
@@ -87,8 +86,8 @@ const Demo = () => {
                         if (props.name === 'cpc') {
                             return (
                                 <>
-                                    <Button addonLeft={CheckM}> {props.row[props.name]}</Button>
-                                    <Button addonLeft={CheckM}> {props.row[props.name]}</Button>
+                                    <Button addonLeft={CheckM}>  {String(props.row[props.name])}</Button>
+                                    <Button addonLeft={CheckM}>  {String(props.row[props.name])}</Button>
 
                                 </>
                             );

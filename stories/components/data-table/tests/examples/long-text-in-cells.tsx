@@ -26,7 +26,7 @@ const Demo = () => {
                             return (
                                 <Flex>
 
-                                    <Text noWrap={true}> NoWrapTrue {props.row[props.name]}</Text>
+                                    <Text noWrap={true}> NoWrapTrue  {String(props.row[props.name])}</Text>
                                     
                                 </Flex>
                             );
@@ -36,7 +36,7 @@ const Demo = () => {
                             return (
                                 <Flex>
 
-                                    <Text noWrap={false}>No Wrap False {props.row[props.name]}</Text>
+                                    <Text noWrap={false}>No Wrap False  {String(props.row[props.name])}</Text>
                                     <Link
                                         href='#'
                                         target='_blank'
@@ -51,7 +51,7 @@ const Demo = () => {
                         if (props.name === 'vol') {
                             return (
                                 <>
-                                    <Ellipsis> {props.row[props.name]}</Ellipsis>
+                                    <Ellipsis>  {String(props.row[props.name])}</Ellipsis>
                                     <Link
                                         href='#'
                                         target='_blank'
@@ -66,25 +66,7 @@ const Demo = () => {
                         return props.defaultRender();
                     }}
                 />
-                {/*  <DataTable.Body.Cell data={data} name='keyword'>*/}
-                {/*    {(props, row, index) => {*/}
-                {/*      return {*/}
-                {/*        children: (*/}
-                {/*          <ButtonLink*/}
-                {/*            onClick={() => {*/}
-                {/*              alert(`Click row */}
-                {/*            props: ${JSON.stringify(Object.keys(props), null, '  ')};*/}
-                {/*            row: ${JSON.stringify(row, null, '  ')};*/}
-                {/*            index: ${index};`);*/}
-                {/*            }}*/}
-                {/*          >*/}
-                {/*            {row[props.name]}*/}
-                {/*          </ButtonLink>*/}
-                {/*        ),*/}
-                {/*      };*/}
-                {/*    }}*/}
-                {/*  </DataTable.Body.Cell>*/}
-                {/*</DataTable.Body>*/}
+               
             </DataTable>
             <Button addonLeft={CheckM} data-test-id='button-after-table'> Button</Button>
         </>

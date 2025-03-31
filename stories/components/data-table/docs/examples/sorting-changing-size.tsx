@@ -22,12 +22,15 @@ const Demo = () => {
     () => new Intl.NumberFormat('en-US', { currency: 'USD', style: 'currency' }),
     [],
   );
+  const handleSortChange: (sort: DataTableSort<string>, e?: React.SyntheticEvent) => void = (newSort) => {
+    setSort(newSort as DataTableSort<SortableColumn>);
+  };
 
   return (
     <DataTable
       data={sortedData}
       sort={sort}
-      onSortChange={setSort}
+      onSortChange={handleSortChange}
       aria-label={'Sorting with change sortable column size'}
     >
       <DataTable.Head>

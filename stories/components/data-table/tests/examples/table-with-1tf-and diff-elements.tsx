@@ -118,7 +118,7 @@ const Demo = () => {
                  index: ${props.rowIndex};`);
                   }}
                 >
-                  {props.row[props.name]}
+                   {String(props.row[props.name])}
                 </ButtonLink>
               </>
             );
@@ -127,7 +127,7 @@ const Demo = () => {
             return (
               <>
                 <Ellipsis trim='middle'>
-                  {props.row[props.name]}
+                {String(props.row[props.name])}
                 </Ellipsis>
               </>
             );

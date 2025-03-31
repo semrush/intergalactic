@@ -53,9 +53,7 @@ const Demo = () => {
                     if (props.name === 'kd') {
                         return (
                             <>
-
                                 <Select mt={2} mr='auto' options={options} placeholder='Select option' id='basic-select' />
-
                             </>
                         );
                     }
@@ -68,7 +66,7 @@ const Demo = () => {
                             <>
                                 <Dropdown>
                                     <Dropdown.Trigger id='dropdown-basic' tag={Button}>
-                                        {props.row[props.name]}
+                                    {String(props.row[props.name])}
                                     </Dropdown.Trigger>
                                     <Dropdown.Popper p={4} wMax={260} aria-labelledby='dropdown-basic'>
                                         <Text size={200}>You can export up to 300 records in CSV or PDF format.</Text>
@@ -77,30 +75,9 @@ const Demo = () => {
                             </>
                         );
                     }
-
-
                     return props.defaultRender();
                 }}
             />
-            {/*  <DataTable.Body.Cell data={data} name='keyword'>*/}
-            {/*    {(props, row, index) => {*/}
-            {/*      return {*/}
-            {/*        children: (*/}
-            {/*          <ButtonLink*/}
-            {/*            onClick={() => {*/}
-            {/*              alert(`Click row */}
-            {/*            props: ${JSON.stringify(Object.keys(props), null, '  ')};*/}
-            {/*            row: ${JSON.stringify(row, null, '  ')};*/}
-            {/*            index: ${index};`);*/}
-            {/*            }}*/}
-            {/*          >*/}
-            {/*            {row[props.name]}*/}
-            {/*          </ButtonLink>*/}
-            {/*        ),*/}
-            {/*      };*/}
-            {/*    }}*/}
-            {/*  </DataTable.Body.Cell>*/}
-            {/*</DataTable.Body>*/}
         </DataTable>
     );
 };
