@@ -106,7 +106,8 @@ SCell {
   box-sizing: border-box;
   border-bottom: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
   overflow: hidden;
-  white-space: nowrap;
+  white-space: pre-wrap;
+  word-break: break-word;
   font-variant-numeric: tabular-nums;
   transition: width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
   outline: none;
