@@ -31,4 +31,5 @@ export type BodyPropsInner = {
   gridTemplateAreas: string;
   loading?: boolean;
   headerHeight: number;
+  getI18nText: (key: string) => string;
 };

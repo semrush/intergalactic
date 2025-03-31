@@ -71,7 +71,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
   }
 
   getCellProps(props: DataTableCellProps) {
-    const { use, renderCell, expandedRows, styles } = this.asProps;
+    const { use, renderCell, expandedRows, styles, getI18nText } = this.asProps;
     const SAccordionToggle = ButtonLink;
 
     const defaultRender = () => {
@@ -89,6 +89,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
         return sstyled(styles)(
           <>
             <SAccordionToggle
+              aria-label={getI18nText('DataTable.Cell.AccordionToggle.expand:aria-label')}
               expanded={expandedRows?.includes(props.rowIndex)}
               onClick={() => this.onExpandRow(props.rowIndex)}
               color={'--intergalactic-icon-primary-neutral'}
