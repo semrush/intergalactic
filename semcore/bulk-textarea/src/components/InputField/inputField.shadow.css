@@ -39,7 +39,6 @@ SInputField > div {
 
   > p {
     counter-increment: row;
-    display: flex;
     margin: 0 0 var(--intergalactic-spacing-1x, 4px) 0;
     position: relative;
     word-break: break-all;
