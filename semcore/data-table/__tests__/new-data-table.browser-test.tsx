@@ -328,12 +328,10 @@ test.describe('DataTable', () => {
         }
       };
 
-     
       await checkAlignment(2, 'center', null);
       await checkAlignment(3, 'flex-start', null);
       await checkAlignment(4, 'flex-end', null);
 
-      
       await checkAlignment(5, null, 'center');
       await checkAlignment(6, null, 'flex-end');
       await checkAlignment(7, null, 'flex-start');
@@ -406,7 +404,7 @@ test.describe('DataTable', () => {
       await page.keyboard.press('ArrowRight');
       await expect(fourthCell2).toBeFocused();
 
-       await page.keyboard.press('ArrowUp');
+      await page.keyboard.press('ArrowUp');
       await expect(secondCell).toBeFocused();
       await page.keyboard.press('ArrowDown');
     });
@@ -444,7 +442,6 @@ test.describe('DataTable', () => {
       await expect(page).toHaveScreenshot();
     });
 
-    
     test('Verify merged rows keyboard mnvigation', async ({ page }) => {
       const standPath = 'stories/components/data-table/docs/examples/rows-merging.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -455,7 +452,6 @@ test.describe('DataTable', () => {
       const firstRow = page.locator('[data-ui-name="Body.Row"]').first();
       const firstMergedCell = firstRow.locator('[data-ui-name="Body.Cell"]').nth(0);
       await expect(firstMergedCell).toBeFocused();
-
 
       const secondCell = firstRow.locator('[data-ui-name="Body.Cell"]').nth(1);
       await page.keyboard.press('ArrowRight');
@@ -473,7 +469,6 @@ test.describe('DataTable', () => {
       await page.keyboard.press('ArrowLeft');
       await expect(firstMergedCell).toBeFocused();
 
-
       await page.keyboard.press('ArrowDown');
       const fourthRow = page.locator('[data-ui-name="Body.Row"]').nth(3);
       const MergedCellSecondRow = fourthRow.locator('[data-ui-name="Body.Cell"]').nth(0);
@@ -485,12 +480,10 @@ test.describe('DataTable', () => {
       await page.keyboard.press('ArrowLeft');
       await page.keyboard.press('ArrowLeft');
       await expect(MergedCellSecondRow).toBeFocused();
-
     });
   });
 
   test.describe('Cells', () => {
-
     test('Verify long text in cells - default and wrap and ellipsis', async ({ page }) => {
       const standPath = 'stories/components/data-table/tests/examples/long-text-in-cells.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -524,84 +517,86 @@ test.describe('DataTable', () => {
       await page.setContent(htmlContent);
 
       // Define common selectors
-  const getCell = (row: number, col: number) =>
-    page.locator(`[role="row"][aria-rowindex="${row}"] [role="gridcell"][aria-colindex="${col}"]`);
-  const descriptionTooltipTrigger = (row: number, col: number) =>
-    getCell(row, col).locator('[data-ui-name="DescriptionTooltip.Trigger"]');
-  const buttonInCell = (row: number, col: number) =>
-    getCell(row, col).locator('[data-ui-name="Button"]').first();
+      const getCell = (row: number, col: number) =>
+        page.locator(
+          `[role="row"][aria-rowindex="${row}"] [role="gridcell"][aria-colindex="${col}"]`,
+        );
+      const descriptionTooltipTrigger = (row: number, col: number) =>
+        getCell(row, col).locator('[data-ui-name="DescriptionTooltip.Trigger"]');
+      const buttonInCell = (row: number, col: number) =>
+        getCell(row, col).locator('[data-ui-name="Button"]').first();
 
-  // Start navigation with Tab
-  await page.keyboard.press('Tab');
-  await expect(getCell(2, 1)).toBeFocused();
+      // Start navigation with Tab
+      await page.keyboard.press('Tab');
+      await expect(getCell(2, 1)).toBeFocused();
 
-  // Navigate right
-  await page.keyboard.press('ArrowRight');
-  await expect(descriptionTooltipTrigger(2, 2)).toBeFocused();
+      // Navigate right
+      await page.keyboard.press('ArrowRight');
+      await expect(descriptionTooltipTrigger(2, 2)).toBeFocused();
 
-  await page.keyboard.press('ArrowRight');
-  await expect(getCell(2, 3)).toBeFocused();
+      await page.keyboard.press('ArrowRight');
+      await expect(getCell(2, 3)).toBeFocused();
 
-  // Navigate down
-  await page.keyboard.press('ArrowDown');
-  await expect(getCell(3, 3)).toBeFocused();
+      // Navigate down
+      await page.keyboard.press('ArrowDown');
+      await expect(getCell(3, 3)).toBeFocused();
 
-  // Open and close button inside a cell
-  await page.keyboard.press('Enter');
-  await expect(buttonInCell(3, 3)).toBeFocused();
+      // Open and close button inside a cell
+      await page.keyboard.press('Enter');
+      await expect(buttonInCell(3, 3)).toBeFocused();
 
-  await page.keyboard.press('Tab');
-  await page.keyboard.press('Tab');
-  await expect(buttonInCell(3, 3)).toBeFocused();
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await expect(buttonInCell(3, 3)).toBeFocused();
 
-  await page.keyboard.press('Escape');
-  await expect(getCell(3, 3)).toBeFocused();
+      await page.keyboard.press('Escape');
+      await expect(getCell(3, 3)).toBeFocused();
 
-  // Navigate outside table and back
-  await page.keyboard.press('Tab');
-  await expect(page.locator('[data-test-id="button-after-table"]')).toBeFocused();
+      // Navigate outside table and back
+      await page.keyboard.press('Tab');
+      await expect(page.locator('[data-test-id="button-after-table"]')).toBeFocused();
 
-  await page.keyboard.press('Shift+Tab');
-  await expect(getCell(3, 3)).toBeFocused();
+      await page.keyboard.press('Shift+Tab');
+      await expect(getCell(3, 3)).toBeFocused();
 
-  // Move left and open tooltip
-  await page.keyboard.press('ArrowLeft');
-  await expect(descriptionTooltipTrigger(3, 2)).toBeFocused();
+      // Move left and open tooltip
+      await page.keyboard.press('ArrowLeft');
+      await expect(descriptionTooltipTrigger(3, 2)).toBeFocused();
 
-  await page.keyboard.press('Enter');
-  await expect(page.locator('[data-ui-name="DescriptionTooltip.Popper"]')).toBeFocused();
-  await page.keyboard.press('Escape');
-  await expect(descriptionTooltipTrigger(3, 2)).toBeFocused();
+      await page.keyboard.press('Enter');
+      await expect(page.locator('[data-ui-name="DescriptionTooltip.Popper"]')).toBeFocused();
+      await page.keyboard.press('Escape');
+      await expect(descriptionTooltipTrigger(3, 2)).toBeFocused();
 
-  // Navigate into link inside tooltip
-  await page.keyboard.press('Enter');
-  await page.keyboard.press('Tab');
-  await expect(page.getByRole('link')).toBeFocused();
+      // Navigate into link inside tooltip
+      await page.keyboard.press('Enter');
+      await page.keyboard.press('Tab');
+      await expect(page.getByRole('link')).toBeFocused();
 
-  await page.keyboard.press('Escape');
-  await expect(descriptionTooltipTrigger(3, 2)).toBeFocused();
+      await page.keyboard.press('Escape');
+      await expect(descriptionTooltipTrigger(3, 2)).toBeFocused();
 
-  // Move left and interact with elements
-  await page.keyboard.press('ArrowLeft');
-  await expect(getCell(3, 1)).toBeFocused();
+      // Move left and interact with elements
+      await page.keyboard.press('ArrowLeft');
+      await expect(getCell(3, 1)).toBeFocused();
 
-  await page.keyboard.press('Enter');
-  await page.keyboard.press('Escape');
-  await expect(getCell(3, 1)).toBeFocused();
+      await page.keyboard.press('Enter');
+      await page.keyboard.press('Escape');
+      await expect(getCell(3, 1)).toBeFocused();
 
-  await page.keyboard.press('Enter');
-  await page.keyboard.press('Tab');
-  await expect(getCell(3, 1).locator('[data-test-id="interactive-icon"]')).toBeFocused();
+      await page.keyboard.press('Enter');
+      await page.keyboard.press('Tab');
+      await expect(getCell(3, 1).locator('[data-test-id="interactive-icon"]')).toBeFocused();
 
-  await page.keyboard.press('Tab');
-  await expect(descriptionTooltipTrigger(3, 1)).toBeFocused();
+      await page.keyboard.press('Tab');
+      await expect(descriptionTooltipTrigger(3, 1)).toBeFocused();
 
-  await page.keyboard.press('Enter');
-  await page.waitForTimeout(200);
-  await expect(page.getByLabel('About fastest animals')).toBeFocused();
-  await page.keyboard.press('Escape');
+      await page.keyboard.press('Enter');
+      await page.waitForTimeout(200);
+      await expect(page.getByLabel('About fastest animals')).toBeFocused();
+      await page.keyboard.press('Escape');
 
-  await expect(getCell(3, 1)).toBeFocused();
+      await expect(getCell(3, 1)).toBeFocused();
     });
 
     test('Verify keyboard interaction with dd and select in cells', async ({ page }) => {
@@ -610,61 +605,63 @@ test.describe('DataTable', () => {
       await page.setContent(htmlContent);
 
       // Define common selectors
-  const getCell = (row: number, col: number) =>
-    page.locator(`[role="row"][aria-rowindex="${row}"] [role="gridcell"][aria-colindex="${col}"]`);
-  const selectButton = (row: number, col: number) =>
-    getCell(row, col).locator('button[data-ui-name="Select"]');
-  const dropdownButton = (row: number, col: number) =>
-    getCell(row, col).locator('button[data-ui-name="Dropdown.Trigger"]');
-  const dropdownPopper = page.locator('[data-ui-name="Dropdown.Popper"]');
+      const getCell = (row: number, col: number) =>
+        page.locator(
+          `[role="row"][aria-rowindex="${row}"] [role="gridcell"][aria-colindex="${col}"]`,
+        );
+      const selectButton = (row: number, col: number) =>
+        getCell(row, col).locator('button[data-ui-name="Select"]');
+      const dropdownButton = (row: number, col: number) =>
+        getCell(row, col).locator('button[data-ui-name="Dropdown.Trigger"]');
+      const dropdownPopper = page.locator('[data-ui-name="Dropdown.Popper"]');
 
-  await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
 
-  await test.step('Verify interaction with select', async () => {
-    const firstCell = getCell(2, 1);
-    await expect(firstCell).toBeFocused();
+      await test.step('Verify interaction with select', async () => {
+        const firstCell = getCell(2, 1);
+        await expect(firstCell).toBeFocused();
 
-    await page.keyboard.press('Enter');
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
+        await page.keyboard.press('Enter');
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Tab');
 
-    await expect(selectButton(2, 1)).toBeFocused();
-    await page.keyboard.press('Enter');
+        await expect(selectButton(2, 1)).toBeFocused();
+        await page.keyboard.press('Enter');
 
-    const selectOption = page.getByRole('option', { name: 'Option 0' });
-    await expect(selectOption).toBeVisible();
+        const selectOption = page.getByRole('option', { name: 'Option 0' });
+        await expect(selectOption).toBeVisible();
 
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('Enter');
+        await page.keyboard.press('ArrowDown');
+        await page.keyboard.press('ArrowDown');
+        await page.keyboard.press('Enter');
 
-    await expect(selectOption).toBeHidden();
-    await expect(selectButton(2, 1)).toHaveAttribute('value', '2');
+        await expect(selectOption).toBeHidden();
+        await expect(selectButton(2, 1)).toHaveAttribute('value', '2');
 
-    await page.keyboard.press('Escape');
-    await expect(firstCell).toBeFocused();
-  });
+        await page.keyboard.press('Escape');
+        await expect(firstCell).toBeFocused();
+      });
 
-  await test.step('Verify interaction with dropdown', async () => {
-    await page.keyboard.press('ArrowRight');
-    await page.keyboard.press('ArrowRight');
+      await test.step('Verify interaction with dropdown', async () => {
+        await page.keyboard.press('ArrowRight');
+        await page.keyboard.press('ArrowRight');
 
-    await expect(dropdownButton(2, 3)).toBeFocused();
-    await expect(dropdownPopper).toBeHidden();
+        await expect(dropdownButton(2, 3)).toBeFocused();
+        await expect(dropdownPopper).toBeHidden();
 
-    await page.keyboard.press('Enter');
+        await page.keyboard.press('Enter');
 
-    await expect(dropdownPopper).toBeVisible();
-    await expect(dropdownPopper).toBeFocused();
+        await expect(dropdownPopper).toBeVisible();
+        await expect(dropdownPopper).toBeFocused();
 
-    await page.keyboard.press('Tab');
-    await expect(dropdownPopper).toBeFocused();
+        await page.keyboard.press('Tab');
+        await expect(dropdownPopper).toBeFocused();
 
-    await page.keyboard.press('Escape');
+        await page.keyboard.press('Escape');
 
-    await expect(dropdownPopper).toBeHidden();
-    await expect(dropdownButton(2, 3)).toBeFocused();
-  });
+        await expect(dropdownPopper).toBeHidden();
+        await expect(dropdownButton(2, 3)).toBeFocused();
+      });
     });
 
     test('Verify mouse interaction with dd and select in cells', async ({ page }) => {
@@ -672,47 +669,50 @@ test.describe('DataTable', () => {
       const htmlContent = await e2eStandToHtml(standPath, 'en');
       await page.setContent(htmlContent);
 
-    
-  const getCell = (row: number, col: number) =>
-    page.locator(`[role="row"][aria-rowindex="${row}"] [role="gridcell"][aria-colindex="${col}"]`);
-  const selectButton = getCell(2, 2).locator('button[data-ui-name="Select"]');
-  const dropdownButton = getCell(2, 3).locator('button[data-ui-name="Dropdown.Trigger"]');
-  const dropdownPopper = page.locator('[data-ui-name="Dropdown.Popper"]');
+      const getCell = (row: number, col: number) =>
+        page.locator(
+          `[role="row"][aria-rowindex="${row}"] [role="gridcell"][aria-colindex="${col}"]`,
+        );
+      const selectButton = getCell(2, 2).locator('button[data-ui-name="Select"]');
+      const dropdownButton = getCell(2, 3).locator('button[data-ui-name="Dropdown.Trigger"]');
+      const dropdownPopper = page.locator('[data-ui-name="Dropdown.Popper"]');
 
-  await test.step('Verify interaction with select', async () => {
-    await selectButton.click();
-    const selectOption = page.getByRole('option', { name: 'Option 0' });
-    await expect(selectOption).toBeVisible();
+      await test.step('Verify interaction with select', async () => {
+        await selectButton.click();
+        const selectOption = page.getByRole('option', { name: 'Option 0' });
+        await expect(selectOption).toBeVisible();
 
-    await selectButton.click(); 
-    await expect(selectOption).toBeHidden();
+        await selectButton.click();
+        await expect(selectOption).toBeHidden();
 
-    await selectButton.click(); 
-    await page.keyboard.press('Escape');
-    await expect(selectOption).toBeHidden();
-    await expect(selectButton).toBeFocused();
+        await selectButton.click();
+        await page.keyboard.press('Escape');
+        await expect(selectOption).toBeHidden();
+        await expect(selectButton).toBeFocused();
 
-    await selectButton.click();
-    await page.getByRole('option', { name: 'Option 2' }).click();
-    await expect(selectButton).toHaveAttribute('value', '2');
-  });
+        await selectButton.click();
+        await page.getByRole('option', { name: 'Option 2' }).click();
+        await expect(selectButton).toHaveAttribute('value', '2');
+      });
 
-  await test.step('Verify interaction with dropdown', async () => {
-    await dropdownButton.click();
-    await expect(dropdownPopper).toBeVisible();
+      await test.step('Verify interaction with dropdown', async () => {
+        await dropdownButton.click();
+        await expect(dropdownPopper).toBeVisible();
 
-    await dropdownButton.click(); 
-    await expect(dropdownPopper).toBeHidden();
+        await dropdownButton.click();
+        await expect(dropdownPopper).toBeHidden();
 
-    await dropdownButton.click();
-    await page.keyboard.press('Escape');
-    await expect(dropdownPopper).toBeHidden();
-  });
+        await dropdownButton.click();
+        await page.keyboard.press('Escape');
+        await expect(dropdownPopper).toBeHidden();
+      });
     });
   });
 
   test.describe('One level Header', () => {
-    test('Verify keyboard interactions when no interactive elements in header', async ({ page }) => {
+    test('Verify keyboard interactions when no interactive elements in header', async ({
+      page,
+    }) => {
       const standPath = 'stories/components/data-table/docs/examples/base.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
 
@@ -753,170 +753,173 @@ test.describe('DataTable', () => {
       await page.setContent(htmlContent);
 
       const getTooltip = (testId: string) => page.locator(`[data-test-id="${testId}"]`);
-  const getTooltipPopper = page.locator('[data-ui-name="DescriptionTooltip.Popper"]');
-  const getCell = (index: number) => page.locator('[data-ui-name="Body.Cell"]').nth(index);
-  const checkbox = page.locator('label[data-test-id="header-checkbox"] input[type="checkbox"]');
-  const columnKD = page.locator('[data-ui-name="Head.Column"][name="keyword"][aria-colindex="5"]');
+      const getTooltipPopper = page.locator('[data-ui-name="DescriptionTooltip.Popper"]');
+      const getCell = (index: number) => page.locator('[data-ui-name="Body.Cell"]').nth(index);
+      const checkbox = page.locator('label[data-test-id="header-checkbox"] input[type="checkbox"]');
+      const columnKD = page.locator(
+        '[data-ui-name="Head.Column"][name="keyword"][aria-colindex="5"]',
+      );
 
-  await test.step('Verify interaction with tooltip without interactive elements', async () => {
-    await page.keyboard.press('Tab');
-    const tooltipTrigger = getTooltip('tooltip-without-interactive-el');
-    await expect(tooltipTrigger).toBeFocused();
-    await expect(getTooltipPopper).toBeHidden();
+      await test.step('Verify interaction with tooltip without interactive elements', async () => {
+        await page.keyboard.press('Tab');
+        const tooltipTrigger = getTooltip('tooltip-without-interactive-el');
+        await expect(tooltipTrigger).toBeFocused();
+        await expect(getTooltipPopper).toBeHidden();
 
-    await page.keyboard.press('ArrowDown');
-    await expect(getCell(0)).toBeFocused();
+        await page.keyboard.press('ArrowDown');
+        await expect(getCell(0)).toBeFocused();
 
-    await page.keyboard.press('ArrowUp');
-    await expect(tooltipTrigger).toBeFocused();
+        await page.keyboard.press('ArrowUp');
+        await expect(tooltipTrigger).toBeFocused();
 
-    await page.keyboard.press('Enter');
-    await expect(getTooltipPopper).toBeVisible();
-    await expect(getTooltipPopper).toBeFocused();
-    await page.keyboard.press('Escape');
+        await page.keyboard.press('Enter');
+        await expect(getTooltipPopper).toBeVisible();
+        await expect(getTooltipPopper).toBeFocused();
+        await page.keyboard.press('Escape');
 
-    await expect(getTooltipPopper).toBeHidden();
-    if (browserName !== 'firefox') await expect(tooltipTrigger).toBeFocused();
+        await expect(getTooltipPopper).toBeHidden();
+        if (browserName !== 'firefox') await expect(tooltipTrigger).toBeFocused();
 
-    await page.keyboard.press('ArrowRight');
-    if (browserName !== 'firefox') {
-      await expect(getTooltip('tooltip-with-interactive-el')).toBeFocused();
-    }
-  });
+        await page.keyboard.press('ArrowRight');
+        if (browserName !== 'firefox') {
+          await expect(getTooltip('tooltip-with-interactive-el')).toBeFocused();
+        }
+      });
 
-  if (browserName === 'firefox') return; // UIK-3506
+      if (browserName === 'firefox') return; // UIK-3506
 
-  await test.step('Verify interaction with tooltip containing interactive elements', async () => {
-    const tooltipTrigger = getTooltip('tooltip-with-interactive-el');
-    await page.keyboard.press('ArrowDown');
-    await expect(getCell(1)).toBeFocused();
-    await page.keyboard.press('ArrowUp');
-    await expect(tooltipTrigger).toBeFocused();
+      await test.step('Verify interaction with tooltip containing interactive elements', async () => {
+        const tooltipTrigger = getTooltip('tooltip-with-interactive-el');
+        await page.keyboard.press('ArrowDown');
+        await expect(getCell(1)).toBeFocused();
+        await page.keyboard.press('ArrowUp');
+        await expect(tooltipTrigger).toBeFocused();
 
-    await page.keyboard.press('Enter');
-    await expect(getTooltipPopper).toBeVisible();
-    await expect(getTooltipPopper).toBeFocused();
+        await page.keyboard.press('Enter');
+        await expect(getTooltipPopper).toBeVisible();
+        await expect(getTooltipPopper).toBeFocused();
 
-    await page.keyboard.press('Escape');
-    await expect(getTooltipPopper).toBeHidden();
-    await expect(tooltipTrigger).toBeFocused();
+        await page.keyboard.press('Escape');
+        await expect(getTooltipPopper).toBeHidden();
+        await expect(tooltipTrigger).toBeFocused();
 
-    await page.keyboard.press('Enter');
-    await page.keyboard.press('Tab');
-    await expect(page.locator('[data-ui-name="Link"]')).toBeFocused();
+        await page.keyboard.press('Enter');
+        await page.keyboard.press('Tab');
+        await expect(page.locator('[data-ui-name="Link"]')).toBeFocused();
 
-    await page.keyboard.press('Escape');
-    await expect(getTooltipPopper).toBeHidden();
-    await expect(tooltipTrigger).toBeFocused();
-  });
+        await page.keyboard.press('Escape');
+        await expect(getTooltipPopper).toBeHidden();
+        await expect(tooltipTrigger).toBeFocused();
+      });
 
-  await test.step('Verify interaction with inline tooltip', async () => {
-    await page.keyboard.press('ArrowRight');
-    const linkTrigger = getTooltip('tooltip-with-tag-link');
-    await expect(linkTrigger).toBeFocused();
-    await expect(page.getByRole('tooltip', { name: 'Default tooltip contains' })).toBeVisible();
+      await test.step('Verify interaction with inline tooltip', async () => {
+        await page.keyboard.press('ArrowRight');
+        const linkTrigger = getTooltip('tooltip-with-tag-link');
+        await expect(linkTrigger).toBeFocused();
+        await expect(page.getByRole('tooltip', { name: 'Default tooltip contains' })).toBeVisible();
 
-    await page.keyboard.press('ArrowDown');
-    await expect(page.getByRole('tooltip')).toBeHidden();
+        await page.keyboard.press('ArrowDown');
+        await expect(page.getByRole('tooltip')).toBeHidden();
 
-    await page.keyboard.press('ArrowUp');
-    await expect(page.getByRole('tooltip')).toBeVisible();
+        await page.keyboard.press('ArrowUp');
+        await expect(page.getByRole('tooltip')).toBeVisible();
 
-    await page.keyboard.press('Escape');
-    await expect(page.getByRole('tooltip')).toBeHidden();
+        await page.keyboard.press('Escape');
+        await expect(page.getByRole('tooltip')).toBeHidden();
 
-    const icon = page.locator('[data-test-id="interactive-icon"]');
-    await page.keyboard.press('ArrowRight');
-    await expect(icon).toBeFocused();
-    await expect(page.getByText('Go to our awesome article')).toBeVisible();
+        const icon = page.locator('[data-test-id="interactive-icon"]');
+        await page.keyboard.press('ArrowRight');
+        await expect(icon).toBeFocused();
+        await expect(page.getByText('Go to our awesome article')).toBeVisible();
 
-    await page.keyboard.press('ArrowRight');
-    await expect(page.getByText('Go to our awesome article')).toBeHidden();
-  });
+        await page.keyboard.press('ArrowRight');
+        await expect(page.getByText('Go to our awesome article')).toBeHidden();
+      });
 
-  await test.step('Verify interaction with checkbox and tooltip in header', async () => {
-    await expect(columnKD).toBeFocused();
+      await test.step('Verify interaction with checkbox and tooltip in header', async () => {
+        await expect(columnKD).toBeFocused();
 
-    await page.keyboard.press('ArrowDown');
-    await expect(columnKD).not.toBeFocused();
+        await page.keyboard.press('ArrowDown');
+        await expect(columnKD).not.toBeFocused();
 
-    await page.keyboard.press('ArrowUp');
-    await page.keyboard.press('Enter');
-    await expect(checkbox).toBeFocused();
+        await page.keyboard.press('ArrowUp');
+        await page.keyboard.press('Enter');
+        await expect(checkbox).toBeFocused();
 
-    await page.keyboard.press('Space');
-    await expect(checkbox).toHaveClass(/__checked_/);
+        await page.keyboard.press('Space');
+        await expect(checkbox).toHaveClass(/__checked_/);
 
-    await page.keyboard.press('Escape');
-    await expect(columnKD).toBeFocused();
+        await page.keyboard.press('Escape');
+        await expect(columnKD).toBeFocused();
 
-    await page.keyboard.press('Enter');
-    await page.keyboard.press('ArrowDown');
-    await expect(checkbox).toBeFocused();
-  });
-});
+        await page.keyboard.press('Enter');
+        await page.keyboard.press('ArrowDown');
+        await expect(checkbox).toBeFocused();
+      });
+    });
 
-    test('Verify mouse interactions when in header hint, checkbox, description tooltip', async ({ page, browserName }) => {
+    test('Verify mouse interactions when in header hint, checkbox, description tooltip', async ({
+      page,
+      browserName,
+    }) => {
       const standPath =
         'stories/components/data-table/tests/examples/table-with-1tf-and diff-elements.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
       await page.setContent(htmlContent);
 
       const getTooltip = (testId: string) => page.locator(`[data-test-id="${testId}"]`);
-  const tooltipPopper = page.locator('[data-ui-name="DescriptionTooltip.Popper"]');
-  const firstCell = page.locator('[data-ui-name="Body.Cell"]').first();
-  const checkbox = page.locator('label[data-test-id="header-checkbox"] input[type="checkbox"]');
+      const tooltipPopper = page.locator('[data-ui-name="DescriptionTooltip.Popper"]');
+      const firstCell = page.locator('[data-ui-name="Body.Cell"]').first();
+      const checkbox = page.locator('label[data-test-id="header-checkbox"] input[type="checkbox"]');
 
-  if (browserName === 'firefox') return; //UIK-3506
+      if (browserName === 'firefox') return; //UIK-3506
 
-  await test.step('Verify interaction with tooltip without interactive elements', async () => {
-    await getTooltip('tooltip-without-interactive-el').click();
-    await expect(tooltipPopper).toBeVisible();
-    await firstCell.click();
-    await expect(tooltipPopper).toBeHidden();
-  });
+      await test.step('Verify interaction with tooltip without interactive elements', async () => {
+        await getTooltip('tooltip-without-interactive-el').click();
+        await expect(tooltipPopper).toBeVisible();
+        await firstCell.click();
+        await expect(tooltipPopper).toBeHidden();
+      });
 
+      await test.step('Verify interaction with tooltip containing interactive elements', async () => {
+        const tooltipTrigger = getTooltip('tooltip-with-interactive-el');
+        await tooltipTrigger.click();
+        await expect(tooltipPopper).toBeVisible();
 
-  await test.step('Verify interaction with tooltip containing interactive elements', async () => {
-    const tooltipTrigger = getTooltip('tooltip-with-interactive-el');
-    await tooltipTrigger.click();
-    await expect(tooltipPopper).toBeVisible();
+        await tooltipTrigger.click();
+        await expect(tooltipPopper).toBeHidden();
 
-    await tooltipTrigger.click();
-    await expect(tooltipPopper).toBeHidden();
+        await tooltipTrigger.click();
+        await page.locator('[data-ui-name="Link"]').click();
+        await expect(tooltipPopper).toBeVisible();
+        await firstCell.click();
+        await expect(tooltipPopper).toBeHidden();
+      });
 
-    await tooltipTrigger.click();
-    await page.locator('[data-ui-name="Link"]').click();
-    await expect(tooltipPopper).toBeVisible();
-    await firstCell.click();
-    await expect(tooltipPopper).toBeHidden();
+      await test.step('Verify hover interaction with tooltip', async () => {
+        const linkTrigger = getTooltip('tooltip-with-tag-link');
+        const tooltip = page.getByRole('tooltip', { name: 'Default tooltip contains' });
 
-  });
+        await linkTrigger.hover();
+        await expect(tooltip).toBeVisible();
 
-  await test.step('Verify hover interaction with tooltip', async () => {
-    const linkTrigger = getTooltip('tooltip-with-tag-link');
-    const tooltip = page.getByRole('tooltip', { name: 'Default tooltip contains' });
+        await firstCell.hover();
+        await expect(tooltip).toBeHidden();
+      });
 
-    await linkTrigger.hover();
-    await expect(tooltip).toBeVisible();
+      await test.step('Verify interaction with checkbox and tooltip in header', async () => {
+        const tooltipTrigger = getTooltip('few-interactive');
 
-    await firstCell.hover();
-    await expect(tooltip).toBeHidden();
-  });
+        await page.locator('[data-test-id="header-checkbox"] span').first().click();
+        await expect(checkbox).toHaveClass(/__checked_/);
 
-  await test.step('Verify interaction with checkbox and tooltip in header', async () => {
-    const tooltipTrigger = getTooltip('few-interactive');
+        await tooltipTrigger.click();
+        await expect(tooltipPopper).toBeVisible();
 
-    await page.locator('[data-test-id="header-checkbox"] span').first().click();
-    await expect(checkbox).toHaveClass(/__checked_/);
-
-    await tooltipTrigger.click();
-    await expect(tooltipPopper).toBeVisible();
-
-    await page.locator('[data-test-id="header-checkbox"] span').first().click();
-    await expect(tooltipPopper).toBeHidden();
-    await expect(checkbox).not.toHaveClass(/__checked_/);
-  });
+        await page.locator('[data-test-id="header-checkbox"] span').first().click();
+        await expect(tooltipPopper).toBeHidden();
+        await expect(checkbox).not.toHaveClass(/__checked_/);
+      });
     });
 
     test('Verify keyboard interactions when in header DD menu', async ({ page }) => {
@@ -924,16 +927,14 @@ test.describe('DataTable', () => {
       const htmlContent = await e2eStandToHtml(standPath, 'en');
       await page.setContent(htmlContent);
 
+      const ddTrigger = page.locator('[data-ui-name="DropdownMenu.Trigger"]');
+      const menuItem = page.getByRole('menuitem', { name: 'Options 1' });
+      const headerCell3 = page.locator('[data-ui-name="Head.Column"][aria-colindex="3"]');
 
-const ddTrigger = page.locator('[data-ui-name="DropdownMenu.Trigger"]');
-  const menuItem = page.getByRole('menuitem', { name: 'Options 1' });
-  const headerCell3 = page.locator('[data-ui-name="Head.Column"][aria-colindex="3"]');
-
-
-  await test.step('Verify tooltip on focus', async () => {
-    await page.keyboard.press('Tab');
-    await expect(page).toHaveScreenshot();
-  });
+      await test.step('Verify tooltip on focus', async () => {
+        await page.keyboard.press('Tab');
+        await expect(page).toHaveScreenshot();
+      });
 
       await test.step('Verify interactions with DD menu', async () => {
         await page.keyboard.press('ArrowRight');
@@ -968,7 +969,7 @@ const ddTrigger = page.locator('[data-ui-name="DropdownMenu.Trigger"]');
       await test.step('Verify keyboard and mouse interactions', async () => {
         await page.keyboard.press('ArrowLeft');
         await page.keyboard.press('Enter');
-        await expect(menuItem).toBeVisible();    
+        await expect(menuItem).toBeVisible();
         await ddTrigger.click();
         await expect(menuItem).toBeHidden();
       });
@@ -1009,46 +1010,44 @@ const ddTrigger = page.locator('[data-ui-name="DropdownMenu.Trigger"]');
       });
 
       await test.step('Verify keyboard interactions', async () => {
-        const getColumn = (i: any) => page.locator(`[data-ui-name="Head.Column"][aria-colindex="${i}"]`);
+        const getColumn = (i: any) =>
+          page.locator(`[data-ui-name="Head.Column"][aria-colindex="${i}"]`);
         const getButton = (col: any) => col.locator('button[data-ui-name="ButtonLink"]');
-    
+
         const initialWidths = await Promise.all([1, 2, 3, 4].map((i) => getColumnWidth(page, i)));
-    
+
         await page.keyboard.press('Tab');
         const button1 = getButton(getColumn(1));
         await expect(button1).toBeFocused();
         await expect(button1).toHaveAttribute('aria-label', 'descending');
-    
+
         await page.keyboard.press('Enter');
         await expect(button1).toHaveAttribute('aria-label', 'descending');
         await page.keyboard.press('Enter');
         await expect(button1).toHaveAttribute('aria-label', 'ascending');
-    
+
         for (let i = 2; i <= 4; i++) {
           await page.keyboard.press('ArrowRight');
           const button = getButton(getColumn(i));
           await expect(button).toBeFocused();
-    
+
           if (i === 4) {
             await button.click();
-            await page.keyboard.press('ArrowDown'); 
+            await page.keyboard.press('ArrowDown');
             await page.keyboard.press('ArrowUp');
             await expect(button).toBeFocused();
           }
         }
-    
+
         await page.keyboard.press('ArrowLeft');
         await page.keyboard.press('Enter');
-    
+
         const newWidths = await Promise.all([1, 2, 3, 4].map((i) => getColumnWidth(page, i)));
         expect(newWidths).toEqual(initialWidths);
       });
-
     });
 
-    test('Verify sorting with changing size', async ({
-      page,
-    }) => {
+    test('Verify sorting with changing size', async ({ page }) => {
       const standPath = 'stories/components/data-table/docs/examples/sorting-changing-size.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
       await page.setContent(htmlContent);
@@ -1056,20 +1055,23 @@ const ddTrigger = page.locator('[data-ui-name="DropdownMenu.Trigger"]');
       const initialWidths = await Promise.all([1, 2, 3, 4].map((i) => getColumnWidth(page, i)));
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
-      const afterFirstSortWidths = await Promise.all([1, 2, 3, 4].map((i) => getColumnWidth(page, i)));
+      const afterFirstSortWidths = await Promise.all(
+        [1, 2, 3, 4].map((i) => getColumnWidth(page, i)),
+      );
       expect(afterFirstSortWidths).toEqual(initialWidths);
 
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('Space');
 
-      const afterSecondSortWidths = await Promise.all([1, 2, 3, 4].map((i) => getColumnWidth(page, i)));
+      const afterSecondSortWidths = await Promise.all(
+        [1, 2, 3, 4].map((i) => getColumnWidth(page, i)),
+      );
 
       expect(afterSecondSortWidths[0]).toBeLessThan(initialWidths[0]); // Колонка 1 уменьшилась
       expect(afterSecondSortWidths[1]).toEqual(initialWidths[1]); // Колонка 2 без изменений
       expect(afterSecondSortWidths[2]).toBeGreaterThan(initialWidths[2]); // Колонка 3 увеличилась
       expect(afterSecondSortWidths[3]).toEqual(initialWidths[3]); // Колонка 4 без изменений
-    
     });
 
     test('Verify mouse sorting without changing size', async ({ page }) => {
@@ -1105,13 +1107,10 @@ const ddTrigger = page.locator('[data-ui-name="DropdownMenu.Trigger"]');
       await test.step('Verify columns width not changed', async () => {
         const newWidths = await Promise.all([1, 2, 3, 4].map((i) => getColumnWidth(page, i)));
         expect(newWidths).toEqual(initialWidths);
-
       });
     });
 
-    test('Verify mouse sorting with changing widest column size', async ({
-      page,
-    }) => {
+    test('Verify mouse sorting with changing widest column size', async ({ page }) => {
       const standPath = 'stories/components/data-table/docs/examples/sorting-changing-size.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
       await page.setContent(htmlContent);
@@ -1120,14 +1119,17 @@ const ddTrigger = page.locator('[data-ui-name="DropdownMenu.Trigger"]');
       const column1 = page.locator('[data-ui-name="Head.Column"][aria-colindex="1"]');
       await column1.click();
 
-      const widthsAfterFirstSort = await Promise.all([1, 2, 3, 4].map((i) => getColumnWidth(page, i)));
+      const widthsAfterFirstSort = await Promise.all(
+        [1, 2, 3, 4].map((i) => getColumnWidth(page, i)),
+      );
       expect(widthsAfterFirstSort).toEqual(initialWidths);
-
 
       const column3 = page.locator('[data-ui-name="Head.Column"][aria-colindex="3"]');
       await column3.click();
 
-      const widthsAfterSecondSort = await Promise.all([1, 2, 3, 4].map((i) => getColumnWidth(page, i)));
+      const widthsAfterSecondSort = await Promise.all(
+        [1, 2, 3, 4].map((i) => getColumnWidth(page, i)),
+      );
 
       expect(widthsAfterSecondSort[0]).toBeLessThan(initialWidths[0]); // Колонка 1 уменьшилась
       expect(widthsAfterSecondSort[1]).toEqual(initialWidths[1]); // Колонка 2 без изменений
@@ -1191,20 +1193,20 @@ const ddTrigger = page.locator('[data-ui-name="DropdownMenu.Trigger"]');
       await test.step('Verify interaction with tooltip inside header', async () => {
         await page.keyboard.press('Tab');
         await page.keyboard.press('ArrowRight');
-    
+
         const tooltipTrigger = page.locator('[data-test-id="tooltip-with-interactive-el"]');
         const tooltip = page.locator('[data-ui-name="DescriptionTooltip.Popper"]');
-    
+
         await expect(tooltipTrigger).toBeFocused();
         await expect(tooltip).toBeHidden();
-    
+
         await page.keyboard.press('Enter');
         await expect(tooltip).toBeVisible();
         await expect(tooltipTrigger).not.toBeFocused();
-    
+
         await page.keyboard.press('Tab');
         await expect(page.locator('[data-ui-name="Link"]')).toBeFocused();
-    
+
         await page.keyboard.press('Escape');
         await expect(tooltip).toBeHidden();
         await expect(tooltipTrigger).toBeFocused();
@@ -1214,26 +1216,30 @@ const ddTrigger = page.locator('[data-ui-name="DropdownMenu.Trigger"]');
         await page.keyboard.press('ArrowRight');
         const thirdColumn = page.locator('[data-ui-name="Head.Column"][aria-colindex="3"]');
         await expect(thirdColumn).toBeFocused();
-    
+
         await page.keyboard.press('ArrowDown');
-        const thirdCell = page.locator('[role="row"][aria-rowindex="2"] [role="gridcell"][aria-colindex="3"]');
+        const thirdCell = page.locator(
+          '[role="row"][aria-rowindex="2"] [role="gridcell"][aria-colindex="3"]',
+        );
         await expect(thirdCell).toBeFocused();
-    
+
         await page.keyboard.press('ArrowUp');
         await page.keyboard.press('Enter');
-        const checkbox = page.locator('label[data-test-id="header-checkbox"] input[type="checkbox"]');
+        const checkbox = page.locator(
+          'label[data-test-id="header-checkbox"] input[type="checkbox"]',
+        );
         await expect(checkbox).toBeFocused();
-        
+
         await page.keyboard.press('Space');
         await expect(checkbox).toHaveClass(/__checked_/);
-    
+
         await page.keyboard.press('Escape');
         await expect(thirdColumn).toBeFocused();
-    
+
         await page.keyboard.press('Enter');
         await page.keyboard.press('ArrowDown');
         await expect(checkbox).toBeFocused();
-    
+
         // but
         // await page.keyboard.press('Tab');  - moves to the next focusable element outside table
         // await page.keyboard.press('Shift+Tab');
@@ -1241,22 +1247,22 @@ const ddTrigger = page.locator('[data-ui-name="DropdownMenu.Trigger"]');
 
       await test.step('Verify interaction with Select', async () => {
         await page.keyboard.press('Escape');
-    await page.keyboard.press('ArrowRight');
+        await page.keyboard.press('ArrowRight');
 
-    const selectTrigger = page.locator('[data-ui-name="Select"]');
-    await expect(selectTrigger).toBeFocused();
+        const selectTrigger = page.locator('[data-ui-name="Select"]');
+        await expect(selectTrigger).toBeFocused();
 
-    await page.keyboard.press('Enter');
-    const options = page.getByRole('option', { name: 'Option 0' });
+        await page.keyboard.press('Enter');
+        const options = page.getByRole('option', { name: 'Option 0' });
 
-    await expect(options).toBeVisible();
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('Enter');
+        await expect(options).toBeVisible();
+        await page.keyboard.press('ArrowDown');
+        await page.keyboard.press('ArrowDown');
+        await page.keyboard.press('Enter');
 
-    await expect(options).toBeHidden();
-    await expect(selectTrigger).toBeFocused();
-    await expect(selectTrigger).toHaveAttribute('value', '2');
+        await expect(options).toBeHidden();
+        await expect(selectTrigger).toBeFocused();
+        await expect(selectTrigger).toHaveAttribute('value', '2');
 
         // await page.keyboard.press('ArrowDown'); ----BUG
       });
@@ -1274,10 +1280,10 @@ const ddTrigger = page.locator('[data-ui-name="DropdownMenu.Trigger"]');
       await test.step('Verify tooltip without interactive elements', async () => {
         const tooltipTrigger = page.locator('[data-test-id="tooltip-without-interactive-el"]');
         const tooltip = page.locator('[data-ui-name="DescriptionTooltip.Popper"]');
-    
+
         await tooltipTrigger.click();
         await expect(tooltip).toBeVisible();
-    
+
         await firstCell.click();
         await expect(tooltip).toBeHidden();
       });
@@ -1285,35 +1291,36 @@ const ddTrigger = page.locator('[data-ui-name="DropdownMenu.Trigger"]');
       await test.step('Verify tooltip with interactive elements', async () => {
         const tooltipTrigger = page.locator('[data-test-id="tooltip-with-interactive-el"]');
         const tooltip = page.locator('[data-ui-name="DescriptionTooltip.Popper"]');
-       
+
         await tooltipTrigger.click();
 
         await expect(tooltip).toBeVisible();
         await expect(tooltip).toHaveCount(1);
 
         await tooltipTrigger.click();
-    await expect(tooltip).toBeHidden();
+        await expect(tooltip).toBeHidden();
 
-    await tooltipTrigger.click();
-    await page.locator('[data-ui-name="Link"]').click();    await expect(tooltip).toBeVisible();
-    await tooltipTrigger.click();
-    await expect(tooltip).toBeHidden();
+        await tooltipTrigger.click();
+        await page.locator('[data-ui-name="Link"]').click();
+        await expect(tooltip).toBeVisible();
+        await tooltipTrigger.click();
+        await expect(tooltip).toBeHidden();
       });
 
       await test.step('Verify Select interaction', async () => {
         const selectTrigger = page.locator('[data-ui-name="Select"]');
-    await selectTrigger.hover();
-    // shapshot
-    await selectTrigger.click();
+        await selectTrigger.hover();
+        // shapshot
+        await selectTrigger.click();
 
-    const option0 = page.getByRole('option', { name: 'Option 0' });
-    await expect(option0).toBeVisible();
+        const option0 = page.getByRole('option', { name: 'Option 0' });
+        await expect(option0).toBeVisible();
 
-    const option2 = page.getByRole('option', { name: 'Option 2' });
-    await option2.click();
+        const option2 = page.getByRole('option', { name: 'Option 2' });
+        await option2.click();
 
-    await expect(option0).toBeHidden();
-    await expect(selectTrigger).toHaveAttribute('value', '2');
+        await expect(option0).toBeHidden();
+        await expect(selectTrigger).toHaveAttribute('value', '2');
       });
 
       await test.step('Verify checkbox interaction', async () => {
@@ -1334,29 +1341,32 @@ const ddTrigger = page.locator('[data-ui-name="DropdownMenu.Trigger"]');
       const standPath = 'stories/components/data-table/tests/examples/multi-level-sorting.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
       await page.setContent(htmlContent);
-      const buttonLink1 = page.locator('[data-ui-name="Head.Column"][aria-colindex="1"] button[data-ui-name="ButtonLink"]');
-      const buttonLink2 = page.locator('[data-ui-name="Head.Column"][aria-colindex="2"] button[data-ui-name="ButtonLink"]');
+      const buttonLink1 = page.locator(
+        '[data-ui-name="Head.Column"][aria-colindex="1"] button[data-ui-name="ButtonLink"]',
+      );
+      const buttonLink2 = page.locator(
+        '[data-ui-name="Head.Column"][aria-colindex="2"] button[data-ui-name="ButtonLink"]',
+      );
 
-      await test.step('Verify focus on the 1st sorted icon', async () => { 
+      await test.step('Verify focus on the 1st sorted icon', async () => {
         await page.keyboard.press('Tab');
         await expect(page).toHaveScreenshot();
         await expect(buttonLink1).toBeFocused();
         await expect(buttonLink1).toHaveAttribute('aria-label', 'descending');
       });
 
-await test.step('Verify sorting interaction by keyboard', async () => {
-    await page.keyboard.press('Enter');
-    await expect(buttonLink1).toHaveAttribute('aria-label', 'ascending');
-  });
+      await test.step('Verify sorting interaction by keyboard', async () => {
+        await page.keyboard.press('Enter');
+        await expect(buttonLink1).toHaveAttribute('aria-label', 'ascending');
+      });
 
-  await test.step('Verify sorting interaction with mouse and keyboard', async () => {
+      await test.step('Verify sorting interaction with mouse and keyboard', async () => {
+        await page.keyboard.press('ArrowRight');
+        await expect(buttonLink2).toHaveAttribute('aria-label', 'ascending');
 
-    await page.keyboard.press('ArrowRight');
-    await expect(buttonLink2).toHaveAttribute('aria-label', 'ascending');
-
-    await buttonLink2.click();
-    await expect(buttonLink2).toHaveAttribute('aria-label', 'descending');
-  });
+        await buttonLink2.click();
+        await expect(buttonLink2).toHaveAttribute('aria-label', 'descending');
+      });
 
       await test.step('Verify switching between cells by keyboard', async () => {
         await page.keyboard.press('ArrowRight');
@@ -1378,14 +1388,18 @@ await test.step('Verify sorting interaction by keyboard', async () => {
       await page.setContent(htmlContent);
 
       await test.step('Verify sorting activation on click', async () => {
-        const buttonLink1 = page.locator('[data-ui-name="Head.Column"][aria-colindex="1"] button[data-ui-name="ButtonLink"]');
+        const buttonLink1 = page.locator(
+          '[data-ui-name="Head.Column"][aria-colindex="1"] button[data-ui-name="ButtonLink"]',
+        );
         await expect(buttonLink1).toHaveAttribute('aria-label', 'descending');
         await buttonLink1.click();
         await expect(buttonLink1).toHaveAttribute('aria-label', 'ascending');
       });
 
       await test.step('Verify hover and click on another sorting column', async () => {
-        const buttonLink2 = page.locator('[data-ui-name="Head.Column"][aria-colindex="2"] button[data-ui-name="ButtonLink"]');
+        const buttonLink2 = page.locator(
+          '[data-ui-name="Head.Column"][aria-colindex="2"] button[data-ui-name="ButtonLink"]',
+        );
         await buttonLink2.hover();
         await expect(page).toHaveScreenshot();
         await expect(buttonLink2).toHaveAttribute('aria-label', 'ascending');
@@ -1411,8 +1425,9 @@ await test.step('Verify sorting interaction by keyboard', async () => {
     return nowNumber;
   }
   test.describe('Vertical Scroll', () => {
-
-    test('Verify Keyboard scroll when Sticky header and no interactive in cells', async ({ page }) => {
+    test('Verify Keyboard scroll when Sticky header and no interactive in cells', async ({
+      page,
+    }) => {
       const standPath = 'stories/components/data-table/tests/examples/scroll-in-table-sticky.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
 
@@ -1512,7 +1527,6 @@ await test.step('Verify sorting interaction by keyboard', async () => {
   });
 
   test.describe('Horizontal Scroll', () => {
-
     test('Verify keyboard scroll when no fixed columns', async ({ page }) => {
       const standPath = 'stories/components/data-table/tests/examples/horizontal-scroll.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -1596,19 +1610,19 @@ await test.step('Verify sorting interaction by keyboard', async () => {
     });
 
     test('Verify mouse scroll when 1 level header and columns fixed', async ({ page }) => {
-        const standPath = 'stories/components/data-table/docs/examples/fixed-columns.tsx';
-        const htmlContent = await e2eStandToHtml(standPath, 'en');
-  
-        await page.setContent(htmlContent);
-        const dataTable = await page.locator('[data-ui-name="DataTable"]');
+      const standPath = 'stories/components/data-table/docs/examples/fixed-columns.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+      await page.setContent(htmlContent);
+      const dataTable = await page.locator('[data-ui-name="DataTable"]');
 
       const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]');
       const initialValue = await checkAriaMaxValue(scrollBar);
       await dataTable.hover();
       await page.mouse.wheel(600, 0);
       await page.waitForTimeout(1000);
-        const nowNumber = await checkScrollNowIncreased(scrollBar);
-        expect(nowNumber).toBeLessThanOrEqual(initialValue);
+      const nowNumber = await checkScrollNowIncreased(scrollBar);
+      expect(nowNumber).toBeLessThanOrEqual(initialValue);
       // await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
     });
 
@@ -1817,7 +1831,7 @@ await test.step('Verify sorting interaction by keyboard', async () => {
       await expect(plot).toBeVisible();
       await expect(plot).toHaveCount(1);
       await page.keyboard.press('Enter');
-      
+
       await expect(plot).not.toBeVisible();
       await expect(plot).toHaveCount(0);
       await page.keyboard.press('Enter');
@@ -1833,34 +1847,31 @@ await test.step('Verify sorting interaction by keyboard', async () => {
       const plot2 = await page.getByLabel('Chart').nth(1);
       await expect(plot2).toBeFocused();
 
-    //   await page.keyboard.press('Shift+Tab');
-    //   await expect(secondArrow).toBeFocused();
+      //   await page.keyboard.press('Shift+Tab');
+      //   await expect(secondArrow).toBeFocused();
     });
 
     test('Verify mouse interactions with accordion and chart inside', async ({ page }) => {
-        const standPath = 'stories/components/data-table/docs/examples/accordion-inside-table.tsx';
-        const htmlContent = await e2eStandToHtml(standPath, 'en');
-  
-        await page.setContent(htmlContent);
-        const firstArrow = await page.locator('[data-ui-name="ButtonLink"]').first();
-      
-  
-        await firstArrow.click();
-        await page.keyboard.press('ArrowDown');
-        const plot = await page.locator('[data-ui-name="Plot"]');
-        await expect(plot).toHaveCount(1);
-        await firstArrow.click();
-        await expect(plot).toHaveCount(0);
-        await firstArrow.click();
-  
-        const thirdArrow = await page.locator('[data-ui-name="ButtonLink"]').nth(2);
-        await thirdArrow.click();
-        await expect(plot).toHaveCount(2);
-  
+      const standPath = 'stories/components/data-table/docs/examples/accordion-inside-table.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+      await page.setContent(htmlContent);
+      const firstArrow = await page.locator('[data-ui-name="ButtonLink"]').first();
+
+      await firstArrow.click();
+      await page.keyboard.press('ArrowDown');
+      const plot = await page.locator('[data-ui-name="Plot"]');
+      await expect(plot).toHaveCount(1);
+      await firstArrow.click();
+      await expect(plot).toHaveCount(0);
+      await firstArrow.click();
+
+      const thirdArrow = await page.locator('[data-ui-name="ButtonLink"]').nth(2);
+      await thirdArrow.click();
+      await expect(plot).toHaveCount(2);
+
       //   await page.keyboard.press('Shift+Tab');
       //   await expect(secondArrow).toBeFocused();
-      });
-
+    });
   });
-
 });
