@@ -1,7 +1,7 @@
 {
   "name": "@semcore/card",
   "description": "Semrush Card Component",
-  "version": "5.46.1",
+  "version": "5.47.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -21,7 +21,7 @@
     "@semcore/flex-box": "5.41.1",
     "@semcore/typography": "5.52.1",
     "@semcore/tooltip": "6.49.1",
-    "@semcore/button": "5.42.1",
+    "@semcore/button": "5.43.0",
     "@semcore/icon": "4.60.1"
   },
   "peerDependencies": {
