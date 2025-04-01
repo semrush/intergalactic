@@ -40,13 +40,13 @@ Component consists of the following:
 
 Table: Stepper states
 
-| State    | Appearance example                                        | Styles                                                                                                                                     |
-| -------- | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| Normal   | ![](static/normal.png)                                    | `background-color: var(--control-primary-advertising)`, `border-radius: var(--rounded-medium)`                                             |
-| Hover    | ![](static/hover.png)                                     | `background-color: var(--control-primary-advertising-hover)`, `cursor: pointer`                                                            |
-| Active   | ![](static/active.png)                                    | `background-color: var(--control-primary-advertising-active)`                                                                              |
-| Disabled | ![](static/disabled.png) ![](static/disabled-tooltip.png) | Use `--disabled-opacity` token. When hovering on a button in this state, display a tooltip with a description of why the step is disabled. |
-| Checked  | ![](static/checked.png)                                   | The number changes to a `Check` icon in size M.                                                                                            |
+| State    | Appearance example       | Styles                                                                                         |
+| -------- | ------------------------ | ---------------------------------------------------------------------------------------------- |
+| Normal   | ![](static/normal.png)   | `background-color: var(--control-primary-advertising)`, `border-radius: var(--rounded-medium)` |
+| Hover    | ![](static/hover.png)    | `background-color: var(--control-primary-advertising-hover)`, `cursor: pointer`                |
+| Active   | ![](static/active.png)   | `background-color: var(--control-primary-advertising-active)`                                  |
+| Disabled | ![](static/disabled.png) | Use `--disabled-opacity` token.                                                                |
+| Checked  | ![](static/checked.png)  | The number changes to a `Check` icon with M size.                                              |
 
 ### Stepper styles
 
