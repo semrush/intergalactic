@@ -2245,8 +2245,7 @@
       "radio",
       "select",
       "slider",
-      "tag",
-      "wizard"
+      "tag"
     ]
   },
   {
@@ -2443,8 +2442,7 @@
       "format-text",
       "fullscreen-modal",
       "notice-bubble",
-      "notice-global",
-      "wizard"
+      "notice-global"
     ]
   },
   {
