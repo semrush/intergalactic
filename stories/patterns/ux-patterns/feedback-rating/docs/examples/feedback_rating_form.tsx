@@ -71,7 +71,7 @@ const Demo = () => {
         onNotificationClose={handleCloseNotification}
         status={status}
         onSubmit={handleSubmit}
-        errorFeedbackEmail={''}
+        errorFeedbackEmail={'some@default.email'}
         formConfig={[
           {
             key: 'option1',
