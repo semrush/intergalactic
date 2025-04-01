@@ -24,6 +24,7 @@ import SecondarySortingExample from './examples/secondary-sorting';
 import SecondaryHeaderExample from './examples/secondary-header';
 import MultiLevelExample from './examples/multi-level-header';
 import ColumnAlignmentExample from './examples/column-alignment';
+import MultipleHorizontalAndVerticalScrollsExample from './examples/multiple-horizontal-with-fixed';
 
 const meta: Meta<typeof DataTable> = {
   title: 'Components/DataTable/Tests',
@@ -35,6 +36,10 @@ type Story = StoryObj<typeof DataTable>;
 
 export const SecondaryHeader: Story = {
   render: SecondaryHeaderExample,
+};
+
+export const MultipleHorizontalAndVerticalScrolls: Story = {
+  render: MultipleHorizontalAndVerticalScrollsExample,
 };
 
 export const SecondarySorting: Story = {

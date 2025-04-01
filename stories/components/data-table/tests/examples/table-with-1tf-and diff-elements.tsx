@@ -62,7 +62,7 @@ const Demo = () => {
 
         </DataTable.Head.Column>
 
-        <DataTable.Head.Column name='kd' sortable>
+        <DataTable.Head.Column name='kd'>
           <Text noWrap>
             Keyword <Text color='text-secondary'>(100)</Text>
           </Text>
