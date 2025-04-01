@@ -2434,6 +2434,7 @@
     "computedValue": "24px",
     "description": "24px",
     "components": [
+      "bulk-textarea",
       "errors",
       "format-text",
       "fullscreen-modal",
