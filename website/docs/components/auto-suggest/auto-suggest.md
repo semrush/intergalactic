@@ -7,9 +7,9 @@ tabs: Design('auto-suggest'), A11y('auto-suggest-a11y'), Example('auto-suggest-c
 
 **AutoSuggest** and **AutoComplete** are patterns for providing as-you-type suggestions by filtering options within dropdowns and selects.
 
-**Combobox** is a pattern that provides a user with a predefined list of options.
+**Combobox** is a pattern that provides a user with a predefined list of options to help with filling out an input.
 
-We have collected the table of differences between these search patterns.
+We've collected the table of differences between these search patterns.
 
 Table: Differences between AutoSuggest, AutoComplete and Combobox search patterns
 
@@ -35,10 +35,10 @@ These patterns use the following components:
 **Combobox** is a combination of input and select. In other words it's a select with the possibility to enter the value from the list.
 
 ::: tip
-User cannot enter the data not corresponding to the items list.
+User can't enter the data not corresponding to the items list.
 :::
 
-Use combobox when usual input, select or autocomplete are not appropriate for your case. For example, we use it in the [TimePicker](/components/time-picker/time-picker).
+Use combobox when usual input, select or autocomplete aren't appropriate for your case. For example, we use it in the [TimePicker](/components/time-picker/time-picker).
 
 ### Interaction
 
@@ -51,7 +51,7 @@ Unlike the autocomplete, combobox has no items filtration. If user have entered 
 :::
 
 - If user entered the exact match for one of the items and pressed `Enter`, the item will be selected.
-- If user entered the absent item and pressed `Enter`, we recommend you to show the tooltip with the message that it is necessary to select item from the list.
+- If user entered the absent item and pressed `Enter`, we recommend you to show the tooltip with the message that it's necessary to select item from the list.
 
 ### Validation
 
@@ -95,8 +95,7 @@ Table: AutoComplete states
 
 Table: Usage examples
 
-| Search type                                            | Appearance example                       |
-| ------------------------------------------------------ | ---------------------------------------- |
-| Combobox in the [TimePicker](/components/time-picker/time-picker) | ![](static/combobox.png)         |
-| AutoComplete                                           | ![](static/autocomplete.png) |
-
+| Search type                                                       | Appearance example           |
+| ----------------------------------------------------------------- | ---------------------------- |
+| Combobox in the [TimePicker](/components/time-picker/time-picker) | ![](static/combobox.png)     |
+| AutoComplete                                                      | ![](static/autocomplete.png) |
