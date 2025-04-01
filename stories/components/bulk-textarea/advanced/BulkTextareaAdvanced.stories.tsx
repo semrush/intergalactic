@@ -4,6 +4,7 @@ import BulkTextarea from '@semcore/bulk-textarea';
 
 import NoCommonErrorExample from './examples/no-common-error';
 import EmptyValuesInPasteRowExample from './examples/empty-values-in-paste-row';
+import EncodeOnChangeValueExample from './examples/encode-onchange-value';
 
 const meta: Meta<typeof BulkTextarea> = {
   title: 'Components/BulkTextarea/Advanced',
@@ -18,4 +19,8 @@ export const NoCommonError: StoryObj<typeof BulkTextarea> = {
 
 export const EmptyValuesInPasteRow: StoryObj<typeof BulkTextarea> = {
   render: EmptyValuesInPasteRowExample,
+};
+
+export const EncodeOnChangeValue: StoryObj<typeof BulkTextarea> = {
+  render: EncodeOnChangeValueExample,
 };
