@@ -44,7 +44,7 @@ SInputField > div {
     position: relative;
     word-break: break-all;
     white-space: pre-wrap;
-    padding: 0 20px 0 18px;
+    padding: 0 var(--intergalactic-spacing-5x, 20px) 0 var(--intergalactic-spacing-4x, 16px);
 
     &:last-of-type {
       margin-bottom: 0;
@@ -69,7 +69,7 @@ SInputField > div {
 
   &:has(p:nth-child(n + 10)) {
     > p {
-      padding-left: calc(var(--intergalactic-spacing-6x, 24px) + var(--intergalactic-spacing-05x, 2px));
+      padding-left: var(--intergalactic-spacing-6x, 24px);
     }
     > p:nth-child(-n + 9)::before {
       padding-left: var(--intergalactic-spacing-2x, 8px);
@@ -78,7 +78,7 @@ SInputField > div {
 
   &:has(p:nth-child(n + 100)) {
     > p {
-      padding-left: calc(var(--intergalactic-spacing-8x, 32px) + var(--intergalactic-spacing-05x, 2px));
+      padding-left: var(--intergalactic-spacing-8x, 32px);
     }
     > p:nth-child(-n + 9)::before {
       padding-left: var(--intergalactic-spacing-4x, 16px);

@@ -2416,6 +2416,7 @@
     "computedValue": "20px",
     "description": "20px",
     "components": [
+      "bulk-textarea",
       "card",
       "errors",
       "format-text",
