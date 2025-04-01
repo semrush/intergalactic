@@ -13,18 +13,18 @@ import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import focusSourceEnhance from '@semcore/utils/lib/enhances/focusSourceEnhance';
 import uniqueIdEnhance from '@semcore/utils/lib/uniqueID';
 
-type State = {
+type State<T extends string | string[]> = {
   linesCount: number;
   isEmptyText: boolean;
   errorIndex: number;
   highlightErrorIndex: boolean;
-  prevError?: InputFieldProps['errors'][number];
+  prevError?: InputFieldProps<T>['errors'][number];
 };
 
-class BulkTextareaRoot extends Component<
-  BulkTextareaProps,
+class BulkTextareaRoot<T extends string | string[]> extends Component<
+  BulkTextareaProps<T>,
   {},
-  State,
+  State<T>,
   typeof BulkTextareaRoot.enhance
 > {
   static displayName = 'BulkTextarea';
@@ -53,7 +53,7 @@ class BulkTextareaRoot extends Component<
   prevButtonRef = React.createRef<HTMLButtonElement>();
   counterRef = React.createRef<HTMLDivElement>();
 
-  state: State = {
+  state: State<T> = {
     linesCount: 0,
     isEmptyText: true,
     errorIndex: -1,
@@ -114,7 +114,7 @@ class BulkTextareaRoot extends Component<
           this.handlers.showErrors(true);
         }
       },
-      onBlur: (value: string, event: Event) => {
+      onBlur: (value: T, event: Event) => {
         if (
           validateOn?.includes('blur') &&
           (this.asProps.focusSourceRef.current === 'keyboard' ||
@@ -138,7 +138,7 @@ class BulkTextareaRoot extends Component<
       validateOn,
       lineValidation: lineValidation,
       errors,
-      onErrorsChange: (newErrors: InputFieldProps['errors']) => {
+      onErrorsChange: (newErrors: InputFieldProps<T>['errors']) => {
         const prevError = newErrors.length === 0 ? errors[0] : undefined;
         this.handlers.errors(newErrors);
         this.setState({ prevError });
@@ -275,11 +275,12 @@ class BulkTextareaRoot extends Component<
   }
 }
 
-const BulkTextarea = createComponent(BulkTextareaRoot, {
-  InputField,
-  Counter,
-  ClearAll,
-  ErrorsNavigation,
-}) as BulkTextareaType;
+const BulkTextarea = (<T extends string | string[]>() =>
+  createComponent(BulkTextareaRoot, {
+    InputField,
+    Counter,
+    ClearAll,
+    ErrorsNavigation,
+  }) as BulkTextareaType<T>)();
 
 export default BulkTextarea;

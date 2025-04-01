@@ -24,7 +24,7 @@ const lineProcessing = (line: string) => {
 };
 
 const Demo = () => {
-    const [value, setValue] = React.useState("");
+    const [value, setValue] = React.useState<string[]>([]);
 
     return (
         <Box>
