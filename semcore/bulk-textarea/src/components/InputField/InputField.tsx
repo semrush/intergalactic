@@ -336,6 +336,8 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     const value = event.clipboardData?.getData('text/plain');
     const listOfNodes = value ? this.prepareNodesForPaste(value) : [];
 
+    if (listOfNodes.length === 0) return;
+
     const selection = document.getSelection();
 
     if (selection?.anchorNode && selection?.focusNode) {
@@ -835,9 +837,10 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       });
     const skipEmptyLines = pasteProps?.skipEmptyLines ?? this.skipEmptyLines;
     const delimiter = pasteProps?.delimiter ?? this.delimiter;
+    const lines = value.split(delimiter);
 
-    value.split(delimiter).forEach((line) => {
-      const preparedLine = lineProcessing(line);
+    lines.forEach((line, index) => {
+      const preparedLine = lineProcessing(line, index, lines.length);
 
       if ((preparedLine === '' && skipEmptyLines === false) || preparedLine !== '') {
         const node = document.createElement('p');
