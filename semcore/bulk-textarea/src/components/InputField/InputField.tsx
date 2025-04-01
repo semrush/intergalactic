@@ -298,8 +298,6 @@ class InputField<T extends string | string[]> extends Component<
   }
 
   handleMouseDown(event: MouseEvent): void {
-    // we need to change keyboardLineIndex, because the caret in real on that current row
-    this.errorByInteraction = 'keyboard';
     const element = event.target;
 
     if (element instanceof HTMLElement) {
@@ -1002,6 +1000,8 @@ class InputField<T extends string | string[]> extends Component<
               return newState;
             },
             () => {
+              this.errorByInteraction = key === 'mouseLineIndex' ? 'mouse' : 'keyboard';
+
               const trigger = isInvalidRow ? targetElement : this.textarea;
 
               if (this.shouldChangePopperTrigger(trigger)) {

@@ -13,6 +13,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - Error if after processing the inserted value it will be empty array.
 - Error with empty `utf` characters in `onChange` / `lineProcessing`.
 - Cursor position after focusing a non-empty field.
+- Blinking previous error after clicking on another line with error.
 
 ## [1.2.0] - 2025-03-28
 
