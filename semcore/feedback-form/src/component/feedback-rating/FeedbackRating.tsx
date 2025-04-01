@@ -94,7 +94,9 @@ class FeedbackRatingRoot extends Component<
   }
 
   handleChangeRating = (rating: number) => {
-    this.asProps.onVisibleChange(true, rating);
+    if (rating > 0) {
+      this.asProps.onVisibleChange(true, rating);
+    }
   };
 
   handelCloseModal = () => {

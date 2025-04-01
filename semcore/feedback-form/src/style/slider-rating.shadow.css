@@ -24,9 +24,7 @@ SStar[filled]:active {
 }
 
 SStar path {
-  fill: transparent;
-  stroke: var(--intergalactic-slider-rating-normal, #a9abb6);
-  stroke-width: 2;
+  fill: var(--intergalactic-slider-rating-normal, #a9abb6);
 }
 
 SStar[filled] path {

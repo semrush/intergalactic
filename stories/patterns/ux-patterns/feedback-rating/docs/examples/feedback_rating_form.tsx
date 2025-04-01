@@ -47,7 +47,7 @@ const Demo = () => {
 
   const handleVisibleChange = React.useCallback((visible: boolean, rating: number) => {
     setVisible(visible);
-    setRating(rating);
+    setRating(visible === false ? 0 : rating);
   }, []);
   const handleCloseNotification = React.useCallback(() => {
     setNotificationVisible(false);
