@@ -6,7 +6,7 @@ type PasteProps = {
   /**
    * @default row.trim();
    */
-  lineProcessing?: (line: string) => string;
+  lineProcessing?: (line: string, lineIndex: number, totalLinesCount: number) => string;
   /**
    * @default true
    */
