@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.3.0] - 2025-04-01
+
+### Added
+
+- New type for value/onChange. It could be `string` or `string[]`, depends on type of `value` property. `string` by default.
+
+### Fixed
+
+- Error if after processing the inserted value it will be empty array.
+- Error with empty `utf` characters in `onChange` / `lineProcessing`.
+- Cursor position after focusing a non-empty field.
+
 ## [1.2.0] - 2025-03-28
 
 ### Changed
