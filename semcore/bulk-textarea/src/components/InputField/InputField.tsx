@@ -917,7 +917,11 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
   private getValues(): string[] {
     const values: string[] = [];
     this.textarea.childNodes.forEach((node) => {
-      values.push(node.textContent ?? '');
+      if (node.textContent?.trim() === '') {
+        values.push('');
+      } else {
+        values.push(node.textContent ?? '');
+      }
     });
 
     return values;
