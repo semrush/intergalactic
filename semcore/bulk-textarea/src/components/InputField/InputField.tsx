@@ -380,6 +380,9 @@ class InputField<T extends string | string[]> extends Component<
         const before = anchorNode?.textContent?.substring(0, fromOffset) ?? '';
         const after = focusNode?.textContent?.substring(toOffset) ?? '';
 
+        const noEmptyLineBefore = before.trim() === '' ? '' : before;
+        const noEmptyLineAfter = after.trim() === '' ? '' : after;
+
         selection.deleteFromDocument();
 
         if (documentPosition !== 0) {
@@ -389,12 +392,12 @@ class InputField<T extends string | string[]> extends Component<
         const firstNodeToInsert = listOfNodes.splice(0, 1)[0];
         const lastNodeToInsert = listOfNodes[listOfNodes.length - 1];
 
-        anchorNode.textContent = before + firstNodeToInsert?.textContent ?? '';
+        anchorNode.textContent = noEmptyLineBefore + firstNodeToInsert?.textContent ?? '';
 
         anchorNode.after(...listOfNodes);
 
         if (lastNodeToInsert) {
-          lastNodeToInsert.textContent = (lastNodeToInsert.textContent ?? '') + after;
+          lastNodeToInsert.textContent = (lastNodeToInsert.textContent ?? '') + noEmptyLineAfter;
           textNode = lastNodeToInsert.childNodes.item(0);
           position = (lastNodeToInsert.textContent ?? '').length;
 
@@ -402,7 +405,7 @@ class InputField<T extends string | string[]> extends Component<
           this.setErrorIndex(lastNodeToInsert);
         } else {
           position = (anchorNode.textContent ?? '').length;
-          anchorNode.textContent = (anchorNode.textContent ?? '') + after;
+          anchorNode.textContent = (anchorNode.textContent ?? '') + noEmptyLineAfter;
           textNode = anchorNode.childNodes.item(0);
 
           this.validateLine(anchorNode);
