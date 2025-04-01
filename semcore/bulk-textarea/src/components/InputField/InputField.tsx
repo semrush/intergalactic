@@ -336,6 +336,8 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     const value = event.clipboardData?.getData('text/plain');
     const listOfNodes = value ? this.prepareNodesForPaste(value) : [];
 
+    if (listOfNodes.length === 0) return;
+
     const selection = document.getSelection();
 
     if (selection?.anchorNode && selection?.focusNode) {
@@ -368,6 +370,9 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         const before = anchorNode?.textContent?.substring(0, fromOffset) ?? '';
         const after = focusNode?.textContent?.substring(toOffset) ?? '';
 
+        const noEmptyLineBefore = before.trim() === '' ? '' : before;
+        const noEmptyLineAfter = after.trim() === '' ? '' : after;
+
         selection.deleteFromDocument();
 
         if (documentPosition !== 0) {
@@ -377,12 +382,12 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         const firstNodeToInsert = listOfNodes.splice(0, 1)[0];
         const lastNodeToInsert = listOfNodes[listOfNodes.length - 1];
 
-        anchorNode.textContent = before + firstNodeToInsert?.textContent ?? '';
+        anchorNode.textContent = noEmptyLineBefore + firstNodeToInsert?.textContent ?? '';
 
         anchorNode.after(...listOfNodes);
 
         if (lastNodeToInsert) {
-          lastNodeToInsert.textContent = (lastNodeToInsert.textContent ?? '') + after;
+          lastNodeToInsert.textContent = (lastNodeToInsert.textContent ?? '') + noEmptyLineAfter;
           textNode = lastNodeToInsert.childNodes.item(0);
           position = (lastNodeToInsert.textContent ?? '').length;
 
@@ -390,7 +395,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
           this.setErrorIndex(lastNodeToInsert);
         } else {
           position = (anchorNode.textContent ?? '').length;
-          anchorNode.textContent = (anchorNode.textContent ?? '') + after;
+          anchorNode.textContent = (anchorNode.textContent ?? '') + noEmptyLineAfter;
           textNode = anchorNode.childNodes.item(0);
 
           this.validateLine(anchorNode);
@@ -835,9 +840,10 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       });
     const skipEmptyLines = pasteProps?.skipEmptyLines ?? this.skipEmptyLines;
     const delimiter = pasteProps?.delimiter ?? this.delimiter;
+    const lines = value.split(delimiter);
 
-    value.split(delimiter).forEach((line) => {
-      const preparedLine = lineProcessing(line);
+    lines.forEach((line, index) => {
+      const preparedLine = lineProcessing(line, index, lines.length);
 
       if ((preparedLine === '' && skipEmptyLines === false) || preparedLine !== '') {
         const node = document.createElement('p');
@@ -914,7 +920,11 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
   private getValues(): string[] {
     const values: string[] = [];
     this.textarea.childNodes.forEach((node) => {
-      values.push(node.textContent ?? '');
+      if (node.textContent?.trim() === '') {
+        values.push('');
+      } else {
+        values.push(node.textContent ?? '');
+      }
     });
 
     return values;
