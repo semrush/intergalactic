@@ -40,11 +40,10 @@ test.describe('States size counter and placeholder checks', () => {
       'Zoom in on product categories to understand how each site segment drives conversions.\nSecond row\n3 row\n4 row\n5 row\n6 row\n7 row\n8 row\n9 row\n10 row';
     await page.keyboard.type(text, { delay: 20 });
     await page.waitForTimeout(100);
-      await page.keyboard.press('Shift+Tab');
-      await page.waitForTimeout(100);
+    await page.keyboard.press('Shift+Tab');
+    await page.waitForTimeout(100);
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.02 });
 
-    
     const paragraphs = normalTextArea.locator('p');
     await paragraphs.nth(5).click();
 
