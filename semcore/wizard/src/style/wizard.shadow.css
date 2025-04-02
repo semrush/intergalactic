@@ -41,7 +41,6 @@ SStepper {
   position: relative;
   overflow: auto;
   line-height: var(--intergalactic-lh-200, 142%);
-  text-align: center;
 
   &:focus-visible {
     outline-color: var(--intergalactic-keyboard-focus-outline-invert, rgba(255, 255, 255, 0.7));
@@ -82,6 +81,7 @@ SStepper {
 SStepNumber {
   display: inline-block;
   min-width: 20px;
+  text-align: center;
 }
 
 SCompleted {
