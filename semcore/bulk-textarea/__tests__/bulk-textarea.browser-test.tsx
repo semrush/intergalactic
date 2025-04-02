@@ -1000,7 +1000,6 @@ test.describe('Common error Off - Error tooltips', () => {
 test.describe('handleChange - Error validation', () => {
   test('Verify Errors counter works when handleChange added rows', async ({
     page,
-    browserName,
   }) => {
     const standPath =
       'stories/components/bulk-textarea/tests/examples/with-new-value-on-handleChange.tsx';
@@ -1018,5 +1017,46 @@ test.describe('handleChange - Error validation', () => {
     await page.waitForTimeout(100);
     await expect(tooltip).toHaveCount(0);
     await expect(locators.errorMessage).toHaveText('2 errors');
+  });
+});
+
+test.describe('lineProcessing cases', () => {
+  test('Verify lineProcessing when paste empty rows', async ({
+    page,
+  }) => {
+    const standPath =
+      'stories/components/bulk-textarea/tests/examples/test-empty-value-in-paste.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+    const locators = getLocators(page);
+    const firstTextArea = locators.textarea.first();
+    await firstTextArea.click();
+    const text = 'Zoom in[] \nSecond \n //[third';
+    await page.keyboard.type(text, { delay: 20 });
+    await page.keyboard.press('Tab');
+    await page.waitForTimeout(100);
+    await expect(locators.textarea.nth(1)).toBeEmpty();
+  });
+
+  test('Verify lineProcessing when counts lines and index', async ({
+    page,
+  }) => {
+    const standPath =
+      'stories/components/bulk-textarea/tests/examples/test-lines-and-index-in-paste.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+    const locators = getLocators(page);
+    const firstTextArea = locators.textarea.first();
+    await firstTextArea.click();
+    const text = 'Zoom in[] \nSecond \n //[third';
+    await page.keyboard.type(text, { delay: 20 });
+    await locators.textarea.nth(1).click();
+    await page.waitForTimeout(100);
+    await expect(locators.textarea.nth(1)).not.toBeEmpty();
+    const paragraphs = locators.textarea.nth(1).locator('p');
+    await expect(paragraphs).toHaveCount(3);
+    await expect(paragraphs.first()).toHaveText(/^#1\/3:/);
+    await expect(paragraphs.nth(1)).toHaveText(/^#2\/3:/);
+    await expect(paragraphs.nth(2)).toHaveText(/^#3\/3:/);
   });
 });
