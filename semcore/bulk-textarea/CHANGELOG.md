@@ -15,6 +15,10 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - Cursor position after focusing a non-empty field.
 - Blinking previous error after clicking on another line with error.
 
+### Changed
+
+- Set cursor at the end of row after focusing.
+
 ## [1.2.0] - 2025-03-28
 
 ### Changed

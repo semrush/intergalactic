@@ -556,6 +556,15 @@ class InputField<T extends string | string[]> extends Component<
     this.isFocusing = true;
     this.errorByInteraction = 'keyboard';
 
+    const selection = document.getSelection();
+    const focusNode = selection?.focusNode;
+
+    if (focusNode instanceof Text) {
+      selection?.setPosition(focusNode.parentNode, 1);
+    } else if (focusNode instanceof HTMLParagraphElement) {
+      selection?.setPosition(focusNode, 1);
+    }
+
     if (this.asProps.showErrors) {
       this.toggleErrorsPopperByKeyboard(150);
     } else {
