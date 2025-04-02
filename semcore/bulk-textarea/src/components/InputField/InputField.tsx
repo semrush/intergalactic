@@ -563,6 +563,11 @@ class InputField<T extends string | string[]> extends Component<
       selection?.setPosition(focusNode.parentNode, 1);
     } else if (focusNode instanceof HTMLParagraphElement) {
       selection?.setPosition(focusNode, 1);
+    } else {
+      const lastNode = this.textarea.lastChild;
+      if (lastNode instanceof HTMLParagraphElement) {
+        selection?.setPosition(lastNode, 1);
+      }
     }
 
     if (this.asProps.showErrors) {
