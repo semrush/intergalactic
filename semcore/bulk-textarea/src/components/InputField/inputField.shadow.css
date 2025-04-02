@@ -96,6 +96,7 @@ SInputField[showErrors] > div[aria-invalid] > p[aria-invalid]:after {
   content: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBmaWxsPSIjZDEwMDJmIj48cGF0aCBkPSJNNyA2aDJ2NEg3VjZabTIgN3YtMkg3djJoMloiLz48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTYuMTUyIDEuMTcyYy43MTktMS41NjMgMi45NzctMS41NjMgMy42OTYgMGw2LjA0MyAxMy4xNDFjLjM2My43OTEtLjIyNSAxLjY4Ny0xLjEwOSAxLjY4N0gxLjIxOGMtLjg4NCAwLTEuNDcyLS44OTYtMS4xMDktMS42ODdMNi4xNTIgMS4xNzJabTcuMzc0IDEyLjgzN0w4IDEuOTkgMi40NzQgMTQuMDFoMTEuMDUyWiIvPjwvc3ZnPgo= ");
   position: absolute;
   right: 0;
+  top: var(--intergalactic-spacing-05x, 2px);
 }
 
 SInputField[size='m'] > div {
