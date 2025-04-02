@@ -998,9 +998,7 @@ test.describe('Common error Off - Error tooltips', () => {
 });
 
 test.describe('handleChange - Error validation', () => {
-  test('Verify Errors counter works when handleChange added rows', async ({
-    page,
-  }) => {
+  test('Verify Errors counter works when handleChange added rows', async ({ page }) => {
     const standPath =
       'stories/components/bulk-textarea/tests/examples/with-new-value-on-handleChange.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -1021,9 +1019,7 @@ test.describe('handleChange - Error validation', () => {
 });
 
 test.describe('lineProcessing cases', () => {
-  test('Verify lineProcessing when paste empty rows', async ({
-    page,
-  }) => {
+  test('Verify lineProcessing when paste empty rows', async ({ page }) => {
     const standPath =
       'stories/components/bulk-textarea/tests/examples/test-empty-value-in-paste.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -1038,9 +1034,7 @@ test.describe('lineProcessing cases', () => {
     await expect(locators.textarea.nth(1)).toBeEmpty();
   });
 
-  test('Verify lineProcessing when counts lines and index', async ({
-    page,
-  }) => {
+  test('Verify lineProcessing when counts lines and index', async ({ page }) => {
     const standPath =
       'stories/components/bulk-textarea/tests/examples/test-lines-and-index-in-paste.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
