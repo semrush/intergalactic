@@ -47,9 +47,10 @@ test.describe('States size counter and placeholder checks', () => {
     const paragraphs = normalTextArea.locator('p');
     await paragraphs.nth(5).click();
 
-    await page.keyboard.press('Enter');
     await page.keyboard.type('[]', { delay: 20 });
     await page.keyboard.press('Enter');
+    await page.keyboard.press('Enter');
+
     await page.waitForTimeout(100);
     await page.keyboard.press('Shift+Tab');
     await page.waitForTimeout(100);
