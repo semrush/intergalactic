@@ -12,7 +12,7 @@
     "build": "pnpm clear && pnpm semcore-builder --source=js && pnpm run transform",
     "transform": "tsm --require=../../.ci/tsm-filter-warnings.js transform.ts",
     "clear": "tsm --require=../../.ci/tsm-filter-warnings.js clear.ts",
-    "upload-static": "gcs-upload svg/*.svg"
+    "upload-static": "gcs-upload intergalactic-illustrations svg/*.svg"
   },
   "dependencies": {
     "@babel/runtime": "^7.17.9",
