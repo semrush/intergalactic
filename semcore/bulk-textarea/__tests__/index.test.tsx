@@ -4,7 +4,6 @@ import { describe, test, vi, assertType } from '@semcore/testing-utils/vitest';
 import React from 'react';
 import BulkTextarea from '../src';
 
-
 describe('BulkTextarea Dependency imports', () => {
   runDependencyCheckTests('bulk-textarea');
 
@@ -27,10 +26,10 @@ describe('BulkTextarea Dependency imports', () => {
       valueInCb = v;
     });
 
-    const { rerender} = render(
-        <BulkTextarea w={400} value={value} onChange={spy}>
-          <BulkTextarea.InputField commonErrorMessage={''} />
-        </BulkTextarea>
+    const { rerender } = render(
+      <BulkTextarea w={400} value={value} onChange={spy}>
+        <BulkTextarea.InputField commonErrorMessage={''} />
+      </BulkTextarea>,
     );
 
     await userEvent.keyboard('[Tab]');
@@ -40,9 +39,9 @@ describe('BulkTextarea Dependency imports', () => {
     expect(typeof valueInCb).toBe('string');
 
     rerender(
-        <BulkTextarea w={400} value={value} onChange={spy}>
-          <BulkTextarea.InputField commonErrorMessage={''} />
-        </BulkTextarea>
+      <BulkTextarea w={400} value={value} onChange={spy}>
+        <BulkTextarea.InputField commonErrorMessage={''} />
+      </BulkTextarea>,
     );
 
     await userEvent.keyboard('[Tab]');
