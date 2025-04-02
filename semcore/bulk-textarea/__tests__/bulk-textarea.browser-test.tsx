@@ -48,8 +48,8 @@ test.describe('States size counter and placeholder checks', () => {
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.02 });
 
     await normalTextArea.click();
-    await page.keyboard.type('[]', { delay: 20 });
     await page.keyboard.press('Enter');
+    await page.keyboard.type('[]', { delay: 20 });
     await page.keyboard.press('Enter');
     await page.waitForTimeout(100);
     await page.keyboard.press('Shift+Tab');
@@ -841,7 +841,7 @@ test.describe('Common error On - Error tooltips', () => {
       await expect(locators.textarea).toBeFocused();
       await expect(locators.errorMessage).toHaveText('Error 1 out of 2');
       await expect(tooltip).toHaveText('row has invalid charsets');
-      await page.keyboard.press('Backspace');
+      for (let i = 0; i < 6; i++) await page.keyboard.press('Backspace');
       await page.waitForTimeout(100);
       await expect(contentDiv).toHaveAttribute('aria-invalid', 'true');
       await expect(tooltip).toHaveText('some global error');
@@ -850,7 +850,7 @@ test.describe('Common error On - Error tooltips', () => {
       await page.waitForTimeout(200);
       await expect(locators.errorMessage).toHaveText('Error 1 out of 1');
       await expect(tooltip).toHaveText('row has invalid charsets');
-      await page.keyboard.press('Backspace');
+      for (let i = 0; i < 6; i++) await page.keyboard.press('Backspace');
       await page.waitForTimeout(200);
       await expect(contentDiv).not.toHaveAttribute('aria-invalid', 'true');
       await expect(tooltip).toBeEmpty;
