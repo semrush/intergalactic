@@ -82,7 +82,6 @@ class BulkTextareaRoot<T extends string | string[]> extends Component<
       lineValidation,
       placeholder,
       validateOn,
-      onChange,
       linesDelimiters,
       maxLines,
       disabled,
@@ -132,7 +131,7 @@ class BulkTextareaRoot<T extends string | string[]> extends Component<
           }, 250);
         }
 
-        onChange?.(value, event);
+        this.props.onChange?.(value, event);
       },
       showErrors,
       validateOn,
