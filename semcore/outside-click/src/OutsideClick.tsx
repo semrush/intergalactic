@@ -40,11 +40,12 @@ function OutsideClick(props: IFunctionProps<IOutsideClickProps>) {
   const handleRef = useForkRef(children ? children.ref : null, nodeRef, forwardRef!);
 
   const handleOutsideClick = useEventCallback((event: any) => {
-    const isTargetEvent = [...(excludeRefs as any), nodeRef]
-      .filter((node) => getNodeByRef(node))
-      .some((node) =>
-        getNodeByRef(node)?.contains(targetRef.current || (getEventTarget(event) as Node | null)),
-      );
+    const nodesToCheck = [...(excludeRefs as any), nodeRef].map((ref) => getNodeByRef(ref));
+    const eventTarget = getEventTarget(event) as Node | null;
+
+    const isTargetEvent = nodesToCheck.some(
+      (node) => node?.contains(targetRef.current) || node?.contains(eventTarget),
+    );
 
     if (!isTargetEvent) {
       onOutsideClick?.(event);
