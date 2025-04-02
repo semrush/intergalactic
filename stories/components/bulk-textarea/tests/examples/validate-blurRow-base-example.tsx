@@ -19,7 +19,7 @@ const validateRow = (row: string, rows: string[]) => {
   };
 };
 
-const Demo = (props: BulkTextareaProps) => {
+const Demo = (props: BulkTextareaProps<any>) => {
   const [value, setValue] = React.useState('');
   const [errors, setErrors] = React.useState<ErrorItem[]>([]);
   const [showErrors, setShowErrors] = React.useState(false);

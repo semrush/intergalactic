@@ -18,7 +18,12 @@ type State = {
   visibleErrorPopper: boolean;
 };
 
-class InputField extends Component<InputFieldProps, {}, State, typeof InputField.enhance> {
+class InputField<T extends string | string[]> extends Component<
+  InputFieldProps<T>,
+  {},
+  State,
+  typeof InputField.enhance
+> {
   static displayName = 'Textarea';
   static style = style;
 
@@ -64,7 +69,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     mouseLineIndex: -1,
   };
 
-  constructor(props: InputFieldProps) {
+  constructor(props: InputFieldProps<T>) {
     super(props);
 
     this.handlePaste = this.handlePaste.bind(this);
@@ -95,7 +100,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     this.handleValueOutChange();
   }
 
-  componentDidUpdate(prevProps: InputFieldProps, prevState: State): void {
+  componentDidUpdate(prevProps: InputFieldProps<T>, prevState: State): void {
     const {
       value,
       errors,
@@ -108,8 +113,15 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       ['aria-describedby']: ariaDescribedby = '',
     } = this.props;
 
-    if (prevProps.value !== value && value !== this.getValues().join(this.delimiter)) {
-      this.handleValueOutChange();
+    if (prevProps.value !== value) {
+      const currentValue = this.getValues().join(this.delimiter);
+      if (
+        typeof value === 'string'
+          ? value !== currentValue
+          : value.join(this.delimiter) !== currentValue
+      ) {
+        this.handleValueOutChange();
+      }
     }
 
     if (prevProps.showErrors !== showErrors || prevProps.errors.length !== errors.length) {
@@ -222,7 +234,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     };
   }
 
-  createContentEditableElement(props: InputFieldProps) {
+  createContentEditableElement(props: InputFieldProps<T>) {
     const textarea = document.createElement('div');
     textarea.setAttribute('contentEditable', props.disabled || props.readonly ? 'false' : 'true');
     textarea.setAttribute('role', 'textbox');
@@ -286,8 +298,6 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
   }
 
   handleMouseDown(event: MouseEvent): void {
-    // we need to change keyboardLineIndex, because the caret in real on that current row
-    this.errorByInteraction = 'keyboard';
     const element = event.target;
 
     if (element instanceof HTMLElement) {
@@ -557,13 +567,16 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     this.isFocusing = false;
     this.setState({ visibleErrorPopper: false });
 
-    const { validateOn, onBlur } = this.asProps;
+    const { validateOn, onBlur, value } = this.asProps;
 
     if (validateOn.includes('blur')) {
       this.recalculateErrors();
     }
 
-    onBlur(this.getValues().join(this.delimiter), event);
+    const valueToChange =
+      typeof value === 'string' ? this.getValues().join(this.delimiter) : this.getValues();
+
+    onBlur(valueToChange as T, event);
 
     setTimeout(() => {
       this.setState({ keyboardLineIndex: -1 });
@@ -829,7 +842,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     );
   }
 
-  private prepareNodesForPaste(value: string): HTMLParagraphElement[] {
+  private prepareNodesForPaste(value: string | string[]): HTMLParagraphElement[] {
     const listOfNodes: HTMLParagraphElement[] = [];
     const { pasteProps } = this.asProps;
     const lineProcessing =
@@ -840,7 +853,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       });
     const skipEmptyLines = pasteProps?.skipEmptyLines ?? this.skipEmptyLines;
     const delimiter = pasteProps?.delimiter ?? this.delimiter;
-    const lines = value.split(delimiter);
+    const lines: string[] = Array.isArray(value) ? value : value.split(delimiter);
 
     lines.forEach((line, index) => {
       const preparedLine = lineProcessing(line, index, lines.length);
@@ -990,6 +1003,8 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
               return newState;
             },
             () => {
+              this.errorByInteraction = key === 'mouseLineIndex' ? 'mouse' : 'keyboard';
+
               const trigger = isInvalidRow ? targetElement : this.textarea;
 
               if (this.shouldChangePopperTrigger(trigger)) {
