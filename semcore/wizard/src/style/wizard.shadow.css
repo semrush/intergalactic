@@ -41,7 +41,6 @@ SStepper {
   position: relative;
   overflow: auto;
   line-height: var(--intergalactic-lh-200, 142%);
-  text-align: center;
 
   &:hover {
     background: var(--intergalactic-control-primary-advertising-hover, #421983);
@@ -78,6 +77,7 @@ SStepper {
 SStepNumber {
   display: inline-block;
   min-width: 20px;
+  text-align: center;
 }
 
 SCompleted {
