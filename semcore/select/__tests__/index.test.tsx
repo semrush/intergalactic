@@ -535,7 +535,7 @@ describe('InputSearch', () => {
     expect(spy).toHaveBeenCalledWith('', expect.anything());
   });
 
-  test.concurrent('should call onChange ones per symbol', async ({ expect }) => {
+  test('should call onChange ones per symbol', async ({ expect }) => {
     const spy = vi.fn();
     const { getByRole } = render(
       <Select visible disablePortal>
