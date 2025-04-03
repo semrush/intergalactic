@@ -1673,12 +1673,18 @@ importers:
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
+      '@types/fs-extra':
+        specifier: 8.1.0
+        version: 8.1.0
       '@types/react':
         specifier: 18.0.21
         version: 18.0.21
       esbuild:
         specifier: 0.14.29
         version: 0.14.29
+      fs-extra:
+        specifier: 8.1.0
+        version: 8.1.0
       happy-dom:
         specifier: 9.20.3
         version: 9.20.3
@@ -11441,6 +11447,12 @@ packages:
 
   /@types/find-cache-dir@3.2.1:
     resolution: {integrity: sha512-frsJrz2t/CeGifcu/6uRo4b+SzAwT4NYCVPu1GN8IB9XTzrpPkGuV0tmh9mN+/L0PklAlsC3u5Fxt0ju00LXIw==}
+    dev: true
+
+  /@types/fs-extra@8.1.0:
+    resolution: {integrity: sha512-UoOfVEzAUpeSPmjm7h1uk5MH6KZma2z2O7a75onTGjnNvAvMVrPzPL/vBbT65iIGHWj6rokwfmYcmxmlSf2uwg==}
+    dependencies:
+      '@types/node': 18.16.15
     dev: true
 
   /@types/fs-extra@9.0.13:

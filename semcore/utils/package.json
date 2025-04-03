@@ -176,6 +176,11 @@
       "import": "./lib/getAccessibleName.mjs",
       "types": "./lib/getAccessibleName.d.ts"
     },
+    "./lib/getDisplayName": {
+      "require": "./lib/getDisplayName.js",
+      "import": "./lib/getDisplayName.mjs",
+      "types": "./lib/getDisplayName.d.ts"
+    },
     "./lib/getEventTarget": {
       "require": "./lib/getEventTarget.js",
       "import": "./lib/getEventTarget.mjs",
@@ -250,6 +255,11 @@
       "require": "./lib/ref.js",
       "import": "./lib/ref.mjs",
       "types": "./lib/ref.d.ts"
+    },
+    "./lib/setRef": {
+      "require": "./lib/setRef.js",
+      "import": "./lib/setRef.mjs",
+      "types": "./lib/setRef.d.ts"
     },
     "./lib/ScreenReaderOnly": {
       "require": "./lib/ScreenReaderOnly.js",
