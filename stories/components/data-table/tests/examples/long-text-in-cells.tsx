@@ -26,8 +26,8 @@ const Demo = () => {
                             return (
                                 <Flex>
 
-                                    <Text noWrap={true}> NoWrapTrue {props.row[props.name]}</Text>
-                                    
+                                    <Text noWrap={true}> NoWrapTrue {props.value}</Text>
+
                                 </Flex>
                             );
                         }
@@ -36,7 +36,7 @@ const Demo = () => {
                             return (
                                 <Flex>
 
-                                    <Text noWrap={false}>No Wrap False {props.row[props.name]}</Text>
+                                    <Text noWrap={false}>No Wrap False {props.value}</Text>
                                     <Link
                                         href='#'
                                         target='_blank'
@@ -51,7 +51,7 @@ const Demo = () => {
                         if (props.name === 'vol') {
                             return (
                                 <>
-                                    <Ellipsis> {props.row[props.name]}</Ellipsis>
+                                    <Ellipsis> {props.value}</Ellipsis>
                                     <Link
                                         href='#'
                                         target='_blank'

@@ -23,7 +23,7 @@ const Demo = () => {
                   index: ${props.rowIndex};`);
                         }}
                 >
-                        {props.row[props.name]}
+                        {props.value}
                       </ButtonLink>
             );
           }

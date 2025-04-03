@@ -63,7 +63,7 @@ const Demo = () => {
 
                                     <DescriptionTooltip>
                                         <DescriptionTooltip.Trigger tag={ButtonLink} use={'secondary'}>
-                                            {props.row[props.name]}
+                                            {props.value}
                                         </DescriptionTooltip.Trigger>
                                         <DescriptionTooltip.Popper aria-label='About fastest animals'>
                                             <Text tag='p' mb={3}>
@@ -87,8 +87,8 @@ const Demo = () => {
                         if (props.name === 'cpc') {
                             return (
                                 <>
-                                    <Button addonLeft={CheckM}> {props.row[props.name]}</Button>
-                                    <Button addonLeft={CheckM}> {props.row[props.name]}</Button>
+                                    <Button addonLeft={CheckM}> {props.value}</Button>
+                                    <Button addonLeft={CheckM}> {props.value}</Button>
 
                                 </>
                             );
