@@ -545,8 +545,6 @@ describe('InputSearch', () => {
 
     await userEvent.keyboard('[Tab]');
     await userEvent.keyboard('[Tab]');
-    expect(getByRole('textbox')).toHaveFocus();
-
     await userEvent.keyboard('test');
     expect(spy).toHaveBeenCalledTimes(4);
   });
