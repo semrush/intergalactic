@@ -62,7 +62,7 @@ jobs:
     needs: [build]
     env:
       GITHUB_SECRET: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
-      GCLOUD_SECRET: ${{ secrets.GCLOUD_SECRET }}
+      GCLOUD_SECRET: ${{ secrets.GCLOUD_SECRET_STATIC_UPLOADER }}
       SLACK_API_ENDPOINTS: ${{ secrets.SLACK_WEBHOOK_URLS }}
       INTERGALACTIC_BOT_CLOSE_TASKS_URL: ${{ secrets.INTERGALACTIC_BOT_CLOSE_TASKS_URL }}
       INTERGALACTIC_BOT_SECRET: ${{ secrets.INTERGALACTIC_BOT_SECRET }}
@@ -125,7 +125,6 @@ jobs:
     needs: publish-unlocked-release
     env:
       GITHUB_SECRET: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
-      GCLOUD_SECRET: ${{ secrets.GCLOUD_SECRET }}
     steps:
       - uses: actions/checkout@v4.1.1
         with:

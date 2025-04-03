@@ -7,8 +7,6 @@ concurrency:
 jobs:
   publish-storybook:
     runs-on: ubuntu-latest
-    env:
-      GCLOUD_SECRET: ${{ secrets.GCLOUD_SECRET }}
     steps:
       - uses: actions/checkout@v4.1.1
         with:
