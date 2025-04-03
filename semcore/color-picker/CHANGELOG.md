@@ -12,6 +12,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - `Item` element for `ColorPicker.Colors` and `PaletteManager.Colors`.
 
+## [2.44.0] - 2025-03-28
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/button` [5.42.1 ~> 5.43.0]).
+
 ## [2.43.1] - 2025-03-20
 
 ### Changed

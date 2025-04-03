@@ -8,6 +8,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Import it from `@semcore/core`.
 
+## [3.40.0] - 2025-04-02
+
+### Fixed
+
+- Closing in some rare cases.
+
 ## [3.39.1] - 2025-03-20
 
 ### Changed

@@ -21,7 +21,7 @@ Use either `<label>` or `aria-label` to set an accessible name.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/base-trigger/docs/examples/linktrigger.tsx';
+  export Demo from 'stories/components/base-trigger/docs/examples/link-trigger.tsx';
 </script>
 
 :::

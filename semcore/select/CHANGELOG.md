@@ -8,6 +8,18 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Major version.
 
+## [4.51.1] - 2025-04-03
+
+### Fixed
+
+- Double call of `onChange` in InputSearch component.
+
+## [4.51.0] - 2025-03-28
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/button` [5.42.1 ~> 5.43.0], `@semcore/dropdown-menu` [4.46.1 ~> 4.47.0]).
+
 ## [4.50.1] - 2025-03-20
 
 ### Changed
