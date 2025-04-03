@@ -46,7 +46,7 @@ const Demo = () => {
                             onBlurBehavior={'confirm'}
                         >
                             <InlineInput.Value
-                                // autoFocus
+                                autoFocus
                                 value={text}
                                 onChange={setText}
                                 aria-labelledby='author-label'
