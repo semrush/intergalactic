@@ -12,18 +12,18 @@ import { localizedMessages } from './translations/__intergalactic-dynamic-locale
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import uniqueIdEnhance from '@semcore/core/lib/utils/uniqueID';
 
-type State = {
+type State<T extends string | string[]> = {
   linesCount: number;
   isEmptyText: boolean;
   errorIndex: number;
   highlightErrorIndex: boolean;
-  prevError?: InputFieldProps['errors'][number];
+  prevError?: InputFieldProps<T>['errors'][number];
 };
 
-class BulkTextareaRoot extends Component<
-  BulkTextareaProps,
+class BulkTextareaRoot<T extends string | string[]> extends Component<
+  BulkTextareaProps<T>,
   {},
-  State,
+  State<T>,
   typeof BulkTextareaRoot.enhance
 > {
   static displayName = 'BulkTextarea';
@@ -48,7 +48,7 @@ class BulkTextareaRoot extends Component<
   prevButtonRef = React.createRef<HTMLButtonElement>();
   counterRef = React.createRef<HTMLDivElement>();
 
-  state: State = {
+  state: State<T> = {
     linesCount: 0,
     isEmptyText: true,
     errorIndex: -1,
@@ -77,7 +77,6 @@ class BulkTextareaRoot extends Component<
       lineValidation,
       placeholder,
       validateOn,
-      onChange,
       linesDelimiters,
       maxLines,
       disabled,
@@ -109,7 +108,7 @@ class BulkTextareaRoot extends Component<
           this.handlers.showErrors(true);
         }
       },
-      onBlur: (value: string, event: Event) => {
+      onBlur: (value: T, event: Event) => {
         if (
           validateOn?.includes('blur') &&
           (lastInteraction.isKeyboard() ||
@@ -127,13 +126,13 @@ class BulkTextareaRoot extends Component<
           }, 250);
         }
 
-        onChange?.(value, event);
+        this.props.onChange?.(value, event);
       },
       showErrors,
       validateOn,
       lineValidation: lineValidation,
       errors,
-      onErrorsChange: (newErrors: InputFieldProps['errors']) => {
+      onErrorsChange: (newErrors: InputFieldProps<T>['errors']) => {
         const prevError = newErrors.length === 0 ? errors[0] : undefined;
         this.handlers.errors(newErrors);
         this.setState({ prevError });
@@ -270,11 +269,12 @@ class BulkTextareaRoot extends Component<
   }
 }
 
-const BulkTextarea = createComponent(BulkTextareaRoot, {
-  InputField,
-  Counter,
-  ClearAll,
-  ErrorsNavigation,
-}) as BulkTextareaType;
+const BulkTextarea = (<T extends string | string[]>() =>
+  createComponent(BulkTextareaRoot, {
+    InputField,
+    Counter,
+    ClearAll,
+    ErrorsNavigation,
+  }) as BulkTextareaType<T>)();
 
 export default BulkTextarea;

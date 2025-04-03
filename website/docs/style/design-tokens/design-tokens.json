@@ -2404,6 +2404,7 @@
     "computedValue": "20px",
     "description": "20px",
     "components": [
+      "bulk-textarea",
       "card",
       "data-table",
       "errors",
@@ -2423,6 +2424,7 @@
     "computedValue": "24px",
     "description": "24px",
     "components": [
+      "bulk-textarea",
       "errors",
       "format-text",
       "fullscreen-modal",
