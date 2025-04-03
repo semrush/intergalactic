@@ -3,7 +3,6 @@ import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 test.describe('5-star Feedback form', () => {
   test('Verify mouse interaction with base cases', async ({ page, browserName }) => {
-
     const standPath =
       'stories/patterns/ux-patterns/feedback-rating/docs/examples/feedback_rating_form.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -34,18 +33,16 @@ test.describe('5-star Feedback form', () => {
     await submit.click();
     await page.waitForTimeout(1200);
     await expect(page).toHaveScreenshot();
-
   });
 
   test('Verify keyboard interaction with base cases', async ({ page, browserName }) => {
-
     const standPath =
       'stories/patterns/ux-patterns/feedback-rating/docs/examples/feedback_rating_form.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
     const sliderRating = await page.locator('[data-ui-name="SliderRating"]');
-    const feedbackForm =  page.getByRole('dialog', { name: 'Great! What do you like the' });
+    const feedbackForm = page.getByRole('dialog', { name: 'Great! What do you like the' });
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
@@ -74,12 +71,10 @@ test.describe('5-star Feedback form', () => {
     await page.keyboard.press('ArrowRight');
     await page.keyboard.press('Enter');
     await expect(feedbackForm).toBeVisible();
-    for (let i = 0; i < 6; i++) 
-      await page.keyboard.press('Tab');
+    for (let i = 0; i < 6; i++) await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
     await page.waitForTimeout(600);
     await expect(page.locator('[data-ui-name="Notice"]')).not.toBeVisible();
-
   });
 
   test('Verify default validation', async ({ page }) => {
@@ -111,7 +106,6 @@ test.describe('5-star Feedback form', () => {
   });
 
   test('Verify feedback rating with error notice on submit', async ({ page, browserName }) => {
-
     const standPath =
       'stories/patterns/ux-patterns/feedback-rating/tests/examples/with-error-on-send.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -127,7 +121,5 @@ test.describe('5-star Feedback form', () => {
     await submit.click();
     await page.waitForTimeout(1200);
     await expect(page).toHaveScreenshot();
-
   });
-
 });
