@@ -13,10 +13,9 @@ const initValue = {
 };
 
 const fakeSendDataToServer = (data: Record<string, any>) => {
-  return new Promise((resolve) => {
-    // biome-ignore lint/suspicious/noConsoleLog:
+  return new Promise((_, reject) => {
     console.log('Send data to server', data);
-    setTimeout(resolve, 500);
+    setTimeout(() => reject(new Error('Server error')), 500);
   });
 };
 
@@ -38,16 +37,21 @@ const Demo = () => {
 
   const handleSubmit = React.useCallback(async (values: Record<string, any>) => {
     setStatus('loading');
-    await fakeSendDataToServer(values);
-    setStatus('success');
-    setVisible(false);
-    setNotificationVisible(false);
-    showRefreshButton();
+    try {
+      await fakeSendDataToServer(values);
+      setStatus('success');
+      setVisible(false);
+      setNotificationVisible(false);
+      showRefreshButton();
+    } catch (error) {
+      setStatus('error');
+    }
   }, []);
+  
 
   const handleVisibleChange = React.useCallback((visible: boolean, rating: number) => {
     setVisible(visible);
-    setRating(visible === false ? 0 : rating);
+    setRating(rating);
   }, []);
   const handleCloseNotification = React.useCallback(() => {
     setNotificationVisible(false);
