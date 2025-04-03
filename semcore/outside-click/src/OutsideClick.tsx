@@ -56,9 +56,7 @@ function OutsideClick(props: IFunctionProps<IOutsideClickProps>) {
     const nodesToCheck = [...(excludeRefs as any), nodeRef].map((ref) => getNodeByRef(ref));
     const eventTarget = getEventTarget(event) as Node | null;
 
-    mouseDownInside.current = nodesToCheck.some(
-        (node) => node?.contains(eventTarget),
-    );
+    mouseDownInside.current = nodesToCheck.some((node) => node?.contains(eventTarget));
   });
 
   const toggleEvents = (status: boolean, outsideRoot: Element | Document | null) => {
