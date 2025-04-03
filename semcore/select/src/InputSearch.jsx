@@ -44,10 +44,8 @@ class InputSearchRoot extends Component {
   };
 
   getValueProps() {
-    const { value, getI18nText } = this.asProps;
+    const { getI18nText } = this.asProps;
     return {
-      value,
-      onChange: this.handlers.value,
       autoFocus: true,
       ref: this.inputRef,
       placeholder: getI18nText('Select.InputSearch.Value:placeholder'),
