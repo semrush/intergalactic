@@ -274,7 +274,7 @@ importers:
         specifier: 2.41.1
         version: link:../animation
       '@semcore/button':
-        specifier: 5.42.1
+        specifier: 5.43.0
         version: link:../button
       '@semcore/core':
         specifier: ^2.17.5
@@ -311,7 +311,7 @@ importers:
         specifier: 4.52.1
         version: link:../base-trigger
       '@semcore/button':
-        specifier: 5.42.1
+        specifier: 5.43.0
         version: link:../button
       '@semcore/core':
         specifier: ^2.17.5
@@ -320,7 +320,7 @@ importers:
         specifier: 4.43.1
         version: link:../dropdown
       '@semcore/dropdown-menu':
-        specifier: 4.46.1
+        specifier: 4.47.0
         version: link:../dropdown-menu
       '@semcore/flex-box':
         specifier: 5.41.1
@@ -332,7 +332,7 @@ importers:
         specifier: 4.42.1
         version: link:../input
       '@semcore/select':
-        specifier: 4.50.1
+        specifier: 4.51.0
         version: link:../select
       '@semcore/utils':
         specifier: 4.48.1
@@ -494,7 +494,7 @@ importers:
   semcore/bulk-textarea:
     dependencies:
       '@semcore/button':
-        specifier: 5.42.1
+        specifier: 5.43.0
         version: link:../button
       '@semcore/core':
         specifier: ^2.17.5
@@ -583,7 +583,7 @@ importers:
   semcore/card:
     dependencies:
       '@semcore/button':
-        specifier: 5.42.1
+        specifier: 5.43.0
         version: link:../button
       '@semcore/core':
         specifier: ^2.17.5
@@ -623,7 +623,7 @@ importers:
         specifier: 1.41.1
         version: link:../breakpoints
       '@semcore/button':
-        specifier: 5.42.1
+        specifier: 5.43.0
         version: link:../button
       '@semcore/core':
         specifier: ^2.17.5
@@ -635,7 +635,7 @@ importers:
         specifier: 4.60.1
         version: link:../icon
       '@semcore/modal':
-        specifier: 4.54.1
+        specifier: 4.55.0
         version: link:../modal
       '@semcore/utils':
         specifier: 4.48.1
@@ -685,7 +685,7 @@ importers:
   semcore/color-picker:
     dependencies:
       '@semcore/button':
-        specifier: 5.42.1
+        specifier: 5.43.0
         version: link:../button
       '@semcore/core':
         specifier: ^2.17.5
@@ -948,7 +948,7 @@ importers:
         specifier: 4.52.1
         version: link:../base-trigger
       '@semcore/button':
-        specifier: 5.42.1
+        specifier: 5.43.0
         version: link:../button
       '@semcore/checkbox':
         specifier: 7.44.1
@@ -1068,7 +1068,7 @@ importers:
   semcore/drag-and-drop:
     dependencies:
       '@semcore/card':
-        specifier: 5.46.1
+        specifier: 5.47.0
         version: link:../card
       '@semcore/core':
         specifier: ^2.17.5
@@ -1136,7 +1136,7 @@ importers:
   semcore/dropdown-menu:
     dependencies:
       '@semcore/button':
-        specifier: 5.42.1
+        specifier: 5.43.0
         version: link:../button
       '@semcore/core':
         specifier: ^2.17.5
@@ -1270,7 +1270,7 @@ importers:
   semcore/errors:
     dependencies:
       '@semcore/button':
-        specifier: 5.42.1
+        specifier: 5.43.0
         version: link:../button
       '@semcore/core':
         specifier: ^2.17.5
@@ -1310,7 +1310,7 @@ importers:
         specifier: 2.41.1
         version: link:../animation
       '@semcore/button':
-        specifier: 5.42.1
+        specifier: 5.43.0
         version: link:../button
       '@semcore/core':
         specifier: ^2.17.5
@@ -1350,7 +1350,7 @@ importers:
   semcore/feedback-form:
     dependencies:
       '@semcore/button':
-        specifier: 5.42.1
+        specifier: 5.43.0
         version: link:../button
       '@semcore/checkbox':
         specifier: 7.44.1
@@ -1374,13 +1374,13 @@ importers:
         specifier: 5.44.1
         version: link:../link
       '@semcore/modal':
-        specifier: 4.54.1
+        specifier: 4.55.0
         version: link:../modal
       '@semcore/notice':
-        specifier: 5.45.1
+        specifier: 5.46.0
         version: link:../notice
       '@semcore/notice-bubble':
-        specifier: 5.52.1
+        specifier: 5.53.0
         version: link:../notice-bubble
       '@semcore/spin-container':
         specifier: 7.41.1
@@ -1522,7 +1522,7 @@ importers:
   semcore/fullscreen-modal:
     dependencies:
       '@semcore/button':
-        specifier: 5.42.1
+        specifier: 5.43.0
         version: link:../button
       '@semcore/core':
         specifier: ^2.17.5
@@ -1534,7 +1534,7 @@ importers:
         specifier: 4.60.1
         version: link:../icon
       '@semcore/modal':
-        specifier: 4.54.1
+        specifier: 4.55.0
         version: link:../modal
       '@semcore/typography':
         specifier: 5.52.1
@@ -1673,12 +1673,18 @@ importers:
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
+      '@types/fs-extra':
+        specifier: 8.1.0
+        version: 8.1.0
       '@types/react':
         specifier: 18.0.21
         version: 18.0.21
       esbuild:
         specifier: 0.14.29
         version: 0.14.29
+      fs-extra:
+        specifier: 8.1.0
+        version: 8.1.0
       happy-dom:
         specifier: 9.20.3
         version: 9.20.3
@@ -1717,7 +1723,7 @@ importers:
   semcore/inline-input:
     dependencies:
       '@semcore/button':
-        specifier: 5.42.1
+        specifier: 5.43.0
         version: link:../button
       '@semcore/core':
         specifier: 2.39.1
@@ -1967,7 +1973,7 @@ importers:
         specifier: 2.41.1
         version: link:../animation
       '@semcore/button':
-        specifier: 5.42.1
+        specifier: 5.43.0
         version: link:../button
       '@semcore/core':
         specifier: ^2.17.5
@@ -2032,7 +2038,7 @@ importers:
         specifier: 2.41.1
         version: link:../animation
       '@semcore/button':
-        specifier: 5.42.1
+        specifier: 5.43.0
         version: link:../button
       '@semcore/core':
         specifier: ^2.17.5
@@ -2044,7 +2050,7 @@ importers:
         specifier: 4.60.1
         version: link:../icon
       '@semcore/notice-global':
-        specifier: 2.60.1
+        specifier: 2.61.0
         version: link:../notice-global
       '@semcore/typography':
         specifier: 5.52.1
@@ -2072,7 +2078,7 @@ importers:
         specifier: 2.41.1
         version: link:../animation
       '@semcore/button':
-        specifier: 5.42.1
+        specifier: 5.43.0
         version: link:../button
       '@semcore/core':
         specifier: ^2.17.5
@@ -2112,7 +2118,7 @@ importers:
         specifier: 2.41.1
         version: link:../animation
       '@semcore/button':
-        specifier: 5.42.1
+        specifier: 5.43.0
         version: link:../button
       '@semcore/core':
         specifier: ^2.17.5
@@ -2165,7 +2171,7 @@ importers:
   semcore/pagination:
     dependencies:
       '@semcore/button':
-        specifier: 5.42.1
+        specifier: 5.43.0
         version: link:../button
       '@semcore/core':
         specifier: ^2.17.5
@@ -2419,7 +2425,7 @@ importers:
         specifier: 4.52.1
         version: link:../base-trigger
       '@semcore/button':
-        specifier: 5.42.1
+        specifier: 5.43.0
         version: link:../button
       '@semcore/checkbox':
         specifier: 7.44.1
@@ -2434,7 +2440,7 @@ importers:
         specifier: 4.43.1
         version: link:../dropdown
       '@semcore/dropdown-menu':
-        specifier: 4.46.1
+        specifier: 4.47.0
         version: link:../dropdown-menu
       '@semcore/flex-box':
         specifier: 5.41.1
@@ -2480,7 +2486,7 @@ importers:
         specifier: 2.41.1
         version: link:../animation
       '@semcore/button':
-        specifier: 5.42.1
+        specifier: 5.43.0
         version: link:../button
       '@semcore/core':
         specifier: ^2.17.5
@@ -2853,7 +2859,7 @@ importers:
   semcore/time-picker:
     dependencies:
       '@semcore/button':
-        specifier: 5.42.1
+        specifier: 5.43.0
         version: link:../button
       '@semcore/core':
         specifier: ^2.17.5
@@ -2865,7 +2871,7 @@ importers:
         specifier: 4.42.1
         version: link:../input
       '@semcore/select':
-        specifier: 4.50.1
+        specifier: 4.51.0
         version: link:../select
       '@semcore/utils':
         specifier: 4.48.1
@@ -3309,7 +3315,7 @@ importers:
   semcore/wizard:
     dependencies:
       '@semcore/button':
-        specifier: 5.42.1
+        specifier: 5.43.0
         version: link:../button
       '@semcore/core':
         specifier: ^2.17.5
@@ -3321,7 +3327,7 @@ importers:
         specifier: 4.60.1
         version: link:../icon
       '@semcore/modal':
-        specifier: 4.54.1
+        specifier: 4.55.0
         version: link:../modal
       '@semcore/utils':
         specifier: 4.48.1
@@ -11441,6 +11447,12 @@ packages:
 
   /@types/find-cache-dir@3.2.1:
     resolution: {integrity: sha512-frsJrz2t/CeGifcu/6uRo4b+SzAwT4NYCVPu1GN8IB9XTzrpPkGuV0tmh9mN+/L0PklAlsC3u5Fxt0ju00LXIw==}
+    dev: true
+
+  /@types/fs-extra@8.1.0:
+    resolution: {integrity: sha512-UoOfVEzAUpeSPmjm7h1uk5MH6KZma2z2O7a75onTGjnNvAvMVrPzPL/vBbT65iIGHWj6rokwfmYcmxmlSf2uwg==}
+    dependencies:
+      '@types/node': 18.16.15
     dev: true
 
   /@types/fs-extra@9.0.13:

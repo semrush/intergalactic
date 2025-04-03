@@ -12,6 +12,14 @@ const dirname = path.resolve(filename, '..');
 const components = fs.readJSONSync(path.resolve(dirname, './components.json'));
 const JSXParser = Parser.extend(acornJSX());
 
+type PackageExportItem = {
+  require: string;
+  import: string;
+  types?: string;
+};
+
+const packageJsonExports: Record<string, PackageExportItem> = {};
+
 const hasExportDefault = async (dependency: string) => {
   const require = createRequire(import.meta.url);
 
@@ -97,6 +105,12 @@ const GENERATOR = {
     for (const util of utils) {
       if (util.endsWith('.css')) {
         await fs.outputFile(`./${name}/lib/${util}`, `@import '${dependency}/lib/${util}';`);
+
+        packageJsonExports[`./${util}`] = {
+          require: `./lib/${util}`,
+          import: `./lib/${util}`,
+        };
+
         continue;
       }
       if (util.endsWith('.d.js')) {
@@ -127,6 +141,12 @@ const GENERATOR = {
           template(dependency, utilNameWithoutExtention),
         );
       }
+
+      packageJsonExports[`./${name}/${utilNameWithoutExtention}`] = {
+        require: `./${name}/${utilNameWithoutExtention}.cjs`,
+        import: `./${name}/${utilNameWithoutExtention}.mjs`,
+        types: `./${name}/${utilNameWithoutExtention}.d.ts`,
+      };
     }
     await fs.copy(`${utilsPath}/style`, `./${name}/style`);
   },
@@ -180,6 +200,12 @@ const GENERATOR = {
             // normalize because "subFile" can be just "."
             template(path.normalize(`${dependency}/${icon}/${subFile}`)),
           );
+
+          packageJsonExports[`./${name}/${icon}${path.normalize(`/${subFile}`)}`] = {
+            require: `./${name}/${icon}${path.normalize(`/${subFile}`)}/index.cjs`,
+            import: `./${name}/${icon}${path.normalize(`/${subFile}`)}/index.mjs`,
+            types: `./${name}/${icon}${path.normalize(`/${subFile}`)}/index.d.ts`,
+          };
         }
       }
     }
@@ -193,6 +219,12 @@ const GENERATOR = {
         : EXPORT_TEMPLATES[extension].NAMED;
       await fs.outputFile(`./${name}/index.${extension}`, template(dependency));
     }
+
+    packageJsonExports[`./${name}`] = {
+      require: `./${name}/index.cjs`,
+      import: `./${name}/index.mjs`,
+      types: `./${name}/index.d.ts`,
+    };
   },
 };
 
@@ -204,6 +236,12 @@ const generateFiles = async (packages: string[]) => {
     if (name === 'icon') await GENERATOR.ICONS(dep, name);
     if (name === 'illustration') await GENERATOR.ICONS(dep, name);
     await GENERATOR.OTHER(dep, name);
+
+    const packageJson = await fs.readJson(path.resolve(dirname, 'package.json'));
+
+    packageJson.exports = packageJsonExports;
+
+    await fs.writeJson(path.resolve(dirname, 'package.json'), packageJson, { spaces: 2 });
   }
 };
 
