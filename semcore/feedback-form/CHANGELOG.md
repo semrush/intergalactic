@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.41.0] - 2025-04-01
+
+### Changed
+
+- Email in FeedbackRating error notice as a link.
+
 ## [6.40.0] - 2025-03-28
 
 ### Changed
