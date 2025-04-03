@@ -8,8 +8,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Token using for `:focus-visible` styles.
 
-## [2.54.0] - 2025-04-01
-
 ### Changed
 
 - Fixed styles for Stepper and Sidebar.
