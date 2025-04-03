@@ -7,6 +7,9 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Email in FeedbackRating error notice as a link.
+- Star icons in Slider component.
+- Close feedback form behavior - the rating value is cleared.
+- It is impossible to open a form with an empty rating.
 
 ## [6.40.0] - 2025-03-28
 
