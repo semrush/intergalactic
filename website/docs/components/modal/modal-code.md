@@ -9,7 +9,7 @@ tabs: Design('modal'), A11y('modal-a11y'), API('modal-api'), Example('modal-code
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/basic_modal_window_usage.tsx';
+  export Demo from 'stories/components/modal/docs/examples/basic_modal_window_usage.tsx';
 </script>
 
 :::
@@ -21,7 +21,7 @@ Sometimes the amount of content overfills the window's visibility, but you don't
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/modal_window_height_is_bigger_than_the_browser_page.tsx';
+  export Demo from 'stories/components/modal/docs/examples/modal_window_height_is_bigger_than_the_browser_page.tsx';
 </script>
 
 :::
@@ -33,7 +33,7 @@ By default, the modal window is centered. However, in some cases, when the conte
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/changing_the_alignment.tsx';
+  export Demo from 'stories/components/modal/docs/examples/changing_the_alignment.tsx';
 </script>
 
 :::
@@ -45,7 +45,7 @@ While it is generally not recommended, there are instances where it may be neces
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/modal_window_inside_a_modal_window.tsx';
+  export Demo from 'stories/components/modal/docs/examples/modal_window_inside_a_modal_window.tsx';
 </script>
 
 :::
@@ -62,7 +62,7 @@ In most cases, it is expected that you will not require this functionality. **Th
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/access_to_internal_html_nodes.tsx';
+  export Demo from 'stories/components/modal/docs/examples/access_to_internal_html_nodes.tsx';
 </script>
 
 :::

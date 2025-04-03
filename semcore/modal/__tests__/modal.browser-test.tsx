@@ -3,7 +3,7 @@ import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 test.describe('Modal', () => {
   test('Modal with iframe inside', async ({ page, browserName }) => {
-    const standPath = 'semcore/modal/__tests__/stands/modal-with-iframe.tsx';
+    const standPath = 'stories/components/modal/advanced/examples/modal_iframe.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
