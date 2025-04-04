@@ -1,6 +1,6 @@
 import React from 'react';
 import dayjs from 'dayjs';
-import isBetween from 'dayjs/plugin/isBetween';
+import isBetween from '../utils/isBetweenPlugin';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import fire from '@semcore/core/lib/utils/fire';
