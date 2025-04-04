@@ -8,6 +8,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Major version.
 
+## [4.56.1] - 2025-04-04
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.48.1 ~> 4.48.2], `@semcore/base-trigger` [4.52.1 ~> 4.52.2], `@semcore/button` [5.43.0 ~> 5.43.1], `@semcore/checkbox` [7.44.1 ~> 7.44.2], `@semcore/core` [2.39.1 ~> 2.39.2]).
+
 ## [4.56.0] - 2025-03-28
 
 ### Changed
