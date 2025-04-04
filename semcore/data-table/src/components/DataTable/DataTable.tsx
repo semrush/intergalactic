@@ -9,7 +9,14 @@ import {
 } from '@semcore/core';
 import { Box, ScrollArea } from '@semcore/base-components';
 
-import {DataTableProps, ColIndex, RowIndex, DataTableData, DTKey, DataTableType} from './DataTable.types';
+import {
+  DataTableProps,
+  ColIndex,
+  RowIndex,
+  DataTableData,
+  DTKey,
+  DataTableType,
+} from './DataTable.types';
 import { Head } from '../Head/Head';
 import { Body } from '../Body/Body';
 import { DataTableColumnProps, DTColumn } from '../Head/Column.types';

@@ -14,9 +14,10 @@ type DataTableAriaProps = Intergalactic.RequireAtLeastOne<{
 export type SortDirection = 'asc' | 'desc';
 export type DataTableSort<Column> = [sortBy: Column, sortDirection: SortDirection];
 
-type SortKeys<D extends DataTableData[0]> = D extends Record<infer K, any> ? K : never;
-
-export type DataTableChangeSort<D extends DataTableData> = (sort: [sortBy: SortKeys<D[0]>, sortDirection: SortDirection], e?: React.SyntheticEvent) => void;
+export type DataTableChangeSort<Column> = (
+  sort: [sortBy: Column, sortDirection: SortDirection],
+  e?: React.SyntheticEvent,
+) => void;
 
 export type DTKey = string | symbol;
 export type DTValue = string | number | boolean;
@@ -41,7 +42,7 @@ export type DataTableProps<D extends DataTableData> = DataTableAriaProps &
     /** Active sort object */
     sort?: DataTableSort<keyof D[0]>;
     /** Handler call when request will change sort */
-    onSortChange?: DataTableChangeSort<D>;
+    onSortChange?: DataTableChangeSort<keyof D[0]>;
 
     /**
      *
@@ -65,13 +66,7 @@ export type DataTableProps<D extends DataTableData> = DataTableAriaProps &
 export type RowIndex = number;
 export type ColIndex = number;
 
-export type DataTableType = (<
-        Data extends DataTableData,
-    >(
-        props: Intergalactic.InternalTypings.ComponentProps<
-            'div',
-            'div',
-            DataTableProps<Data>
-        >,
-    ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
-    Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', DataTableProps<any>>;
+export type DataTableType = (<Data extends DataTableData,>(
+  props: Intergalactic.InternalTypings.ComponentProps<'div', 'div', DataTableProps<Data>>,
+) => Intergalactic.InternalTypings.ComponentRenderingResults) &
+  Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', DataTableProps<any>>;
