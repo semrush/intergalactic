@@ -208,7 +208,7 @@ const GENERATOR = {
         }
 
         const illustrationPath = `./${name}/${icon}${
-            subFile && subFile !== '.' ? `/${subFile}` : ''
+          subFile && subFile !== '.' ? `/${subFile}` : ''
         }`;
 
         packageJsonExports[illustrationPath] = {
