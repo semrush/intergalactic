@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Component, createComponent, Intergalactic, Root, sstyled } from '@semcore/core';
 import { DataTableHeadProps, HeadPropsInner } from './Head.types';
-import { Box, ScreenReaderOnly, ScrollArea } from '@semcore/base-components';
+import { Box, ScreenReaderOnly } from '@semcore/base-components';
 
 import style from './style.shadow.css';
 import { Column } from './Column';
@@ -9,8 +9,15 @@ import { Group } from './Group';
 import { DataTableColumnProps } from './Column.types';
 import { getFixedStyle, getScrollOffsetValue } from '../../utils';
 import { DataTableGroupProps } from './Group.type';
+import { DataTableData } from '../DataTable/DataTable.types';
 
-class HeadRoot extends Component<DataTableHeadProps, {}, {}, [], HeadPropsInner> {
+class HeadRoot<D extends DataTableData> extends Component<
+  DataTableHeadProps,
+  {},
+  {},
+  [],
+  HeadPropsInner<D>
+> {
   static displayName = 'Head';
   static style = style;
 

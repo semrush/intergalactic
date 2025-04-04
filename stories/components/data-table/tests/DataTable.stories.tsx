@@ -1,7 +1,7 @@
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import DataTable from '@semcore/data-table';
+import { DataTable } from '@semcore/data-table';
 
 import FixedHeaderWithSpinOverlayExample from './examples/fixed-header-with-spin-overlay';
 import InteractiveHeaderExample from './examples/table-with-1tf-and diff-elements';

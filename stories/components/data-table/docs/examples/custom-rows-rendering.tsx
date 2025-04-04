@@ -1,5 +1,5 @@
 import React from 'react';
-import DataTable from '@semcore/data-table';
+import { DataTable } from '@semcore/data-table';
 import { AutoSizer, List, CellMeasurer, CellMeasurerCache } from 'react-virtualized';
 
 const cache = new CellMeasurerCache({
@@ -11,47 +11,46 @@ const Demo = () => {
   return (
     <DataTable data={data} aria-label={'Custom rows rendering'}>
       <DataTable.Head>
-        <DataTable.Column name='keyword' children='Keyword' />
-        <DataTable.Column name='tags' children='Tags' />
-        <DataTable.Column name='cpc' children='CPC' />
-        <DataTable.Column name='vol' children='Vol.' />
+        <DataTable.Head.Column name='keyword' children='Keyword' />
+        <DataTable.Head.Column name='tags' children='Tags' />
+        <DataTable.Head.Column name='cpc' children='CPC' />
+        <DataTable.Head.Column name='vol' children='Vol.' />
       </DataTable.Head>
       <DataTable.Body
-        renderRows={({ rows, renderRow }) => {
-          const rowRenderer = ({
-            key,
-            index,
-            style,
-            parent,
-          }: { key: string; index: number; style: any; parent: any }) => (
-            <CellMeasurer key={key} cache={cache} parent={parent} columnIndex={0} rowIndex={index}>
-              {({ measure }: { measure: (event: any) => void }) => (
-                <div key={key} style={style} onLoad={measure}>
-                  {renderRow(rows[index], { dataIndex: index })}
-                </div>
-              )}
-            </CellMeasurer>
-          );
-
-          return (
-            <AutoSizer disableHeight>
-              {({ width }: { width: number }) => (
-                <List
-                  height={600}
-                  rowCount={rows.length}
-                  deferredMeasurementCache={cache}
-                  rowHeight={cache.rowHeight}
-                  rowRenderer={rowRenderer}
-                  width={width}
-                  overscanRowCount={3}
-                />
-              )}
-            </AutoSizer>
-          );
-        }}
-      >
-        <DataTable.Cell name='tags' direction='column' />
-      </DataTable.Body>
+        // TODO Brauer Ilia add virtual logic
+        // renderRows={({ rows, renderRow }) => {
+        //   const rowRenderer = ({
+        //     key,
+        //     index,
+        //     style,
+        //     parent,
+        //   }: { key: string; index: number; style: any; parent: any }) => (
+        //     <CellMeasurer key={key} cache={cache} parent={parent} columnIndex={0} rowIndex={index}>
+        //       {({ measure }: { measure: (event: any) => void }) => (
+        //         <div key={key} style={style} onLoad={measure}>
+        //           {renderRow(rows[index], { dataIndex: index })}
+        //         </div>
+        //       )}
+        //     </CellMeasurer>
+        //   );
+        //
+        //   return (
+        //     <AutoSizer disableHeight>
+        //       {({ width }: { width: number }) => (
+        //         <List
+        //           height={600}
+        //           rowCount={rows.length}
+        //           deferredMeasurementCache={cache}
+        //           rowHeight={cache.rowHeight}
+        //           rowRenderer={rowRenderer}
+        //           width={width}
+        //           overscanRowCount={3}
+        //         />
+        //       )}
+        //     </AutoSizer>
+        //   );
+        // }}
+      />
     </DataTable>
   );
 };

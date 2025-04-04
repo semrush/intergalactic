@@ -22,9 +22,12 @@ const Demo = () => {
     () => new Intl.NumberFormat('en-US', { currency: 'USD', style: 'currency' }),
     [],
   );
+  const handleSortChange: (sort: DataTableSort<string>, e?: React.SyntheticEvent) => void = (newSort) => {
+    setSort(newSort as DataTableSort<SortableColumn>);
+  };
 
   return (
-    <DataTable data={sortedData} sort={sort} onSortChange={setSort} aria-label={'Sorting'}>
+    <DataTable data={sortedData} sort={sort} onSortChange={handleSortChange} aria-label={'Sorting'}>
       <DataTable.Head>
         <DataTable.Head.Column name='keyword' children='Keyword' justifyContent='left' sortable />
         <DataTable.Head.Column name='kd' children='KD,%' justifyContent='right' gtcWidth={'minmax(0, 68px)'} sortable />

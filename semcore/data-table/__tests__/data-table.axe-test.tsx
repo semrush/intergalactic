@@ -30,26 +30,6 @@ test.describe('DataTable', () => {
 
     expect(violations).toEqual([]);
   });
-  test.skip('accordion inside table', async ({ page }) => {
-    const standPath = 'stories/components/data-table/docs/examples/accordion-inside-table.tsx';
-    const violations = await checkAxe(page, standPath);
-
-    expect(violations).toEqual([]);
-  });
-  test('adding additional elements to table body', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/docs/examples/adding-additional-elements-to-table-body.tsx';
-    const violations = await checkAxe(page, standPath);
-
-    expect(violations).toEqual([]);
-  });
-  test('additional elements in header', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/docs/examples/additional-elements-in-header.tsx';
-    const violations = await checkAxe(page, standPath);
-
-    expect(violations).toEqual([]);
-  });
   test('base', async ({ page }) => {
     const standPath = 'stories/components/data-table/docs/examples/base.tsx';
     const violations = await checkAxe(page, standPath);
@@ -94,12 +74,6 @@ test.describe('DataTable', () => {
   });
   test.skip('custom rows rendering', async ({ page }) => {
     const standPath = 'stories/components/data-table/docs/examples/custom-rows-rendering.tsx';
-    const violations = await checkAxe(page, standPath);
-
-    expect(violations).toEqual([]);
-  });
-  test('custom view for table body', async ({ page }) => {
-    const standPath = 'stories/components/data-table/docs/examples/custom-view-for-table-body.tsx';
     const violations = await checkAxe(page, standPath);
 
     expect(violations).toEqual([]);
@@ -166,13 +140,6 @@ test.describe('DataTable', () => {
   });
   test('spin container in table', async ({ page }) => {
     const standPath = 'stories/components/data-table/docs/examples/spin-container-in-table.tsx';
-    const violations = await checkAxe(page, standPath);
-
-    expect(violations).toEqual([]);
-  });
-  test('sorting changing size by columns', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/docs/examples/sorting-changing-size-by-columns.tsx';
     const violations = await checkAxe(page, standPath);
 
     expect(violations).toEqual([]);

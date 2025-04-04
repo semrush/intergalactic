@@ -20,9 +20,7 @@ const Demo = () => {
     return (
         <DataTable data={data} aria-label={'Base table example'} defaultGridTemplateColumnWidth={'auto'}>
             <DataTable.Head sticky>
-                <DataTable.Head.Column name='keyword' children='keyword' gtcWidth={'300px'}>
-
-                </DataTable.Head.Column>
+                <DataTable.Head.Column name='keyword' children='keyword' gtcWidth={'300px'}/>
                 <DataTable.Head.Group title={'Group'} fixed={'right'} >
                     <DataTable.Head.Column name='kd' gtcWidth={'minmax(100px, max-content)'}>
                         <DescriptionTooltip placement='right'>

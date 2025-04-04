@@ -28,7 +28,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GITHUB_SECRET: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
-      GCLOUD_SECRET: ${{ secrets.GCLOUD_SECRET }}
     needs:
       - check-exist-pr
     steps:

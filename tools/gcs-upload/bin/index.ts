@@ -4,7 +4,7 @@ import { upload } from '../index';
 import mri from 'mri';
 
 const args = mri(process.argv.slice(2));
-const files = args._;
+const [bucket, ...files] = args._;
 
-upload(files);
+upload(bucket, files);
 // uploadFilesInFolders(files);
