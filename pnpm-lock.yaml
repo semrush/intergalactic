@@ -815,6 +815,9 @@ importers:
       '@semcore/scroll-area':
         specifier: 16.0.0
         version: link:../scroll-area
+      '@semcore/spin':
+        specifier: 16.0.0
+        version: link:../spin
     devDependencies:
       '@semcore/accordion':
         specifier: '*'
@@ -837,9 +840,6 @@ importers:
       '@semcore/skeleton':
         specifier: '*'
         version: link:../skeleton
-      '@semcore/spin':
-        specifier: '*'
-        version: link:../spin
       '@semcore/spin-container':
         specifier: '*'
         version: link:../spin-container
