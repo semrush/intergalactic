@@ -205,17 +205,17 @@ const GENERATOR = {
             // normalize because "subFile" can be just "."
             template(path.normalize(`${dependency}/${icon}/${subFile}`)),
           );
-
-          const illustrationPath = `./${name}/${icon}${
-            subFile && subFile !== '.' ? `/${subFile}` : ''
-          }`;
-
-          packageJsonExports[illustrationPath] = {
-            require: `${illustrationPath}/index.cjs`,
-            import: `${illustrationPath}/index.mjs`,
-            types: `${illustrationPath}/index.d.ts`,
-          };
         }
+
+        const illustrationPath = `./${name}/${icon}${
+            subFile && subFile !== '.' ? `/${subFile}` : ''
+        }`;
+
+        packageJsonExports[illustrationPath] = {
+          require: `${illustrationPath}/index.cjs`,
+          import: `${illustrationPath}/index.mjs`,
+          types: `${illustrationPath}/index.d.ts`,
+        };
       }
     }
   },
