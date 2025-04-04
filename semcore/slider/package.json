@@ -1,7 +1,7 @@
 {
   "name": "@semcore/slider",
   "description": "Semrush Slider Component",
-  "version": "4.41.1",
+  "version": "4.41.2",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -17,8 +17,8 @@
     "types": "./lib/types/index.d.ts"
   },
   "dependencies": {
-    "@semcore/flex-box": "5.41.1",
-    "@semcore/utils": "4.48.1"
+    "@semcore/flex-box": "5.41.2",
+    "@semcore/utils": "4.48.2"
   },
   "peerDependencies": {
     "@semcore/core": "^2.17.5",
