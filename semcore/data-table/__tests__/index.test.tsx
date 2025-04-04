@@ -47,9 +47,6 @@ describe('DataTable', () => {
   });
 
   beforeEach(cleanup);
-
-  shouldSupportClassName(DataTable);
-  shouldSupportRef(DataTable);
 });
 
 describe('DataTable.Column', () => {

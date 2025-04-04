@@ -20,7 +20,8 @@
     "@semcore/icon": "16.0.0",
     "@semcore/button": "16.0.0",
     "@semcore/flex-box": "16.0.0",
-    "@semcore/scroll-area": "16.0.0"
+    "@semcore/scroll-area": "16.0.0",
+    "@semcore/spin": "16.0.0"
   },
   "devDependencies": {
     "@types/react": "18.0.21",

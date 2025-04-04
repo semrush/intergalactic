@@ -1,12 +1,5 @@
 import * as React from 'react';
-import {
-  Component,
-  createComponent,
-  Intergalactic,
-  lastInteraction,
-  Root,
-  sstyled,
-} from '@semcore/core';
+import { Component, createComponent, lastInteraction, Root, sstyled } from '@semcore/core';
 import { Box, ScrollArea } from '@semcore/base-components';
 
 import {
@@ -362,7 +355,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
   render() {
     const SDataTable = Root;
-    const { Children, styles, w, wMax, wMin, h, hMax, hMin, loading } = this.asProps;
+    const { Children, styles, w, wMax, wMin, h, hMax, hMin } = this.asProps;
 
     const [offsetLeftSum, offsetRightSum] = getScrollOffsetValue(this.columns);
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
