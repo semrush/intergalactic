@@ -24,12 +24,11 @@ test.describe('Color-picker', () => {
     await expect(colorTrigger).toHaveAttribute('aria-haspopup', 'dialog');
     await expect(colorTrigger).toHaveAttribute('role', 'combobox');
     await expect(colorTrigger).toHaveAttribute('aria-controls', /popper/);
-    
+
     await expect(colorPopper).toBeVisible();
     await expect(colorTrigger).toHaveAttribute('aria-label', 'Colors palette');
     await expect(colorTrigger).toHaveAttribute('tabindex', '0');
     await expect(colorTrigger).toHaveAttribute('role', 'dialog');
-
   });
 
   test('Buttons with Addons and text', async ({ page }) => {
