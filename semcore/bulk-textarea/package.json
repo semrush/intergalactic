@@ -1,7 +1,7 @@
 {
   "name": "@semcore/bulk-textarea",
   "description": "Semrush BulkTextarea Component",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -23,8 +23,8 @@
     "@semcore/typography": "5.52.1",
     "@semcore/counter": "3.38.1",
     "@semcore/icon": "4.60.1",
-    "@semcore/popper": "5.46.1",
-    "@semcore/tooltip": "6.49.1",
+    "@semcore/popper": "5.47.0",
+    "@semcore/tooltip": "6.50.0",
     "csstype": "3.0.8",
     "dompurify": "3.2.3"
   },

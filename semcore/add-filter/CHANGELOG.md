@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.3.1] - 2025-04-04
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/select` [4.51.0 ~> 4.51.1]).
+
 ## [1.3.0] - 2025-03-28
 
 ### Changed

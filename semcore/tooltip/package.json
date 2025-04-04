@@ -1,7 +1,7 @@
 {
   "name": "@semcore/tooltip",
   "description": "Semrush Tooltip Component",
-  "version": "6.49.1",
+  "version": "6.50.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -20,7 +20,7 @@
   "dependencies": {
     "@semcore/utils": "4.48.1",
     "@semcore/flex-box": "5.41.1",
-    "@semcore/popper": "5.46.1",
+    "@semcore/popper": "5.47.0",
     "@semcore/portal": "3.41.1"
   },
   "peerDependencies": {

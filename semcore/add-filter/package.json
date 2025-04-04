@@ -1,7 +1,7 @@
 {
   "name": "@semcore/add-filter",
   "description": "Semrush Add Filter component",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -17,7 +17,7 @@
     "types": "./lib/types/index.d.ts"
   },
   "dependencies": {
-    "@semcore/select": "4.51.0",
+    "@semcore/select": "4.51.1",
     "@semcore/icon": "4.60.1",
     "@semcore/button": "5.43.0",
     "@semcore/flex-box": "5.41.1",
