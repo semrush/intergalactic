@@ -1,5 +1,5 @@
 import React from 'react';
-import DataTable from '@semcore/data-table';
+import { DataTable } from '@semcore/data-table';
 import Ellipsis, { useResizeObserver } from '@semcore/ellipsis';
 import Link from '@semcore/link';
 import LinkExternalM from '@semcore/icon/LinkExternal/m';
@@ -14,43 +14,44 @@ const Demo = () => {
   return (
     <DataTable data={data} aria-label={'Table title'}>
       <DataTable.Head>
-        <DataTable.Column name='keyword' children='Keyword' flex='1 0 auto' />
-        <DataTable.Column name='kd' children='KD,%' flex={0} wMin={70} justifyContent='flex-end' />
-        <DataTable.Column name='cpc' children='CPC' flex={0} wMin={70} justifyContent='flex-end' />
-        <DataTable.Column name='url' children='URL' ref={containerRef} flex='1 1 auto' wMax={200} />
+        <DataTable.Head.Column name='keyword' children='Keyword' />
+        <DataTable.Head.Column name='kd' children='KD,%' gtcWidth={'minmax(70px, auto)'} justifyContent='flex-end' />
+        <DataTable.Head.Column name='cpc' children='CPC' gtcWidth={'minmax(70px, auto)'} justifyContent='flex-end' />
+        <DataTable.Head.Column name='url' children='URL' ref={containerRef} gtcWidth={'minmax(auto, 200px)'}  />
       </DataTable.Head>
-      <DataTable.Body>
-        <DataTable.Cell data={data} name='url'>
-          {(props, row) => {
-            const pageUrl = row[props.name];
-            return {
-              children: (
+      <DataTable.Body
+        renderCell={(props) => {
+          if (props.name === 'url') {
+            const pageUrl = props.value.toString();
+
+            return (
                 <Link
-                  href={pageUrl}
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  color='text-primary'
-                  w='100%'
-                  wMin={0}
-                  style={{ display: 'inline-flex', alignItems: 'center' }}
+                    href={pageUrl}
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    color='text-primary'
+                    w='100%'
+                    wMin={0}
+                    style={{ display: 'inline-flex', alignItems: 'center' }}
                 >
                   <Link.Text wMin={0}>
                     <Ellipsis
-                      trim='middle'
-                      //onVisibleChange={() => alert('Hi!')}
-                      containerRect={containerRect}
-                      containerRef={containerRef}
+                        trim='middle'
+                        //onVisibleChange={() => alert('Hi!')}
+                        containerRect={containerRect}
+                        containerRef={containerRef}
                     >
                       {removeProtocol(pageUrl)}
                     </Ellipsis>
                   </Link.Text>
                   <Link.Addon tag={LinkExternalM} color='icon-secondary-neutral' />
                 </Link>
-              ),
-            };
-          }}
-        </DataTable.Cell>
-      </DataTable.Body>
+            );
+          }
+
+          return props.defaultRender();
+        }}
+      />
     </DataTable>
   );
 };

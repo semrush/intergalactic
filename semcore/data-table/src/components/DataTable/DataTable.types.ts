@@ -66,7 +66,7 @@ export type DataTableProps<D extends DataTableData> = DataTableAriaProps &
 export type RowIndex = number;
 export type ColIndex = number;
 
-export type DataTableType = (<Data extends DataTableData,>(
-  props: Intergalactic.InternalTypings.ComponentProps<'div', 'div', DataTableProps<Data>>,
+export type DataTableType = (<Data extends DataTableData, Tag extends Intergalactic.Tag = 'div'>(
+  props: Intergalactic.InternalTypings.ComponentProps<Tag, 'div', DataTableProps<Data>>,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
   Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', DataTableProps<any>>;

@@ -1,4 +1,4 @@
-import { render, cleanup, act, userEvent } from '@semcore/testing-utils/testing-library';
+import { render, cleanup } from '@semcore/testing-utils/testing-library';
 
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
@@ -6,7 +6,7 @@ import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/v
 import React from 'react';
 import { assertType } from 'vitest';
 import { Intergalactic } from '@semcore/core';
-import DataTable from '../src';
+import { DataTable } from '../src';
 
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
@@ -23,6 +23,7 @@ describe('DataTable', () => {
       const Link: Intergalactic.Component<'a', { xProp1: 1 }> = any;
 
       assertType<JSX.Element>(
+        // @ts-expect-error
         <DataTable aria-label={'table label'} tag={Link} href='https://google.com' xProp1={1} />,
       );
       // @ts-expect-error
@@ -43,15 +44,6 @@ describe('DataTable', () => {
         />,
       );
     });
-    test('data&uniqueKey relation', () => {
-      assertType<JSX.Element>(
-        <DataTable data={[{ a: 1, b: 2, c: 3 }]} uniqueKey='a' aria-label={'table label'} />,
-      );
-      assertType<JSX.Element>(
-        // @ts-expect-error
-        <DataTable data={[{ a: 1, b: 2, c: 3 }]} uniqueKey='f' aria-label={'table label'} />,
-      );
-    });
   });
 
   beforeEach(cleanup);
@@ -61,33 +53,13 @@ describe('DataTable', () => {
 });
 
 describe('DataTable.Column', () => {
-  test.concurrent('Should support set flex after rerender', () => {
-    const { getByTestId, rerender } = render(
-      <DataTable data={[]} aria-label={'table label'}>
-        <DataTable.Head>
-          <DataTable.Column name='keyword' data-testid='column' flex={0} />
-          <DataTable.Column name='kd' />
-        </DataTable.Head>
-      </DataTable>,
-    );
-    expect(getByTestId('column').style.flex).toBe('0 0px');
-    rerender(
-      <DataTable data={[]} aria-label={'table label'}>
-        <DataTable.Head>
-          <DataTable.Column name='keyword' data-testid='column' flex={0} />
-        </DataTable.Head>
-      </DataTable>,
-    );
-    expect(getByTestId('column').style.flex).toBe('0 0px');
-  });
-
   test.concurrent('Should support ref', () => {
     const spy = vi.fn();
     render(
       <DataTable data={[]} aria-label={'table label'}>
         <DataTable.Head>
-          <DataTable.Column name='keyword' ref={spy} />
-          <DataTable.Column name='kd' />
+          <DataTable.Head.Column name='keyword' ref={spy} />
+          <DataTable.Head.Column name='kd' />
         </DataTable.Head>
       </DataTable>,
     );

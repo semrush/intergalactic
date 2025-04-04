@@ -34,12 +34,12 @@ import { BodyPropsInner } from '../Body/Body.types';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import { ROW_GROUP } from '../../DataTable';
 import { MergedColumnsCell, MergedRowsCell } from '../Body/MergedCells';
 import { forkRef } from '@semcore/core/lib/utils/ref';
 import scrollStyles from '../../style/scroll-shadows.shadow.css';
 
 export const ACCORDION = Symbol('accordion');
+export const ROW_GROUP = Symbol('ROW_GROUP');
 
 class DataTableRoot<D extends DataTableData> extends Component<
   DataTableProps<D>,
