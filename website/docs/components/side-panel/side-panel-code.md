@@ -9,7 +9,7 @@ tabs: Design('side-panel'), A11y('side-panel-a11y'), API('side-panel-api'), Exam
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/basic_example.tsx';
+  export Demo from 'stories/components/side-panel/docs/examples/basic_example.tsx';
 </script>
 
 :::
@@ -19,7 +19,7 @@ tabs: Design('side-panel'), A11y('side-panel-a11y'), API('side-panel-api'), Exam
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/advanced_example.tsx';
+  export Demo from 'stories/components/side-panel/docs/examples/advanced_example.tsx';
 </script>
 
 :::
@@ -31,7 +31,7 @@ You can access the internal components by expanding `SidePanel` for `SidePanel.O
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/access_to_internal_components.tsx';
+  export Demo from 'stories/components/side-panel/docs/examples/access_to_internal_components.tsx';
 </script>
 
 :::
@@ -43,7 +43,7 @@ The component is supplied with three positioning options.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/placement.tsx';
+  export Demo from 'stories/components/side-panel/docs/examples/placement.tsx';
 </script>
 
 :::
@@ -55,7 +55,7 @@ By default, the component is rendered with an overlay, but you can change this b
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/disabling_overlay.tsx';
+  export Demo from 'stories/components/side-panel/docs/examples/disabling_overlay.tsx';
 </script>
 
 :::
@@ -67,7 +67,7 @@ By default, the component is rendered to the portal, at the bottom of the body. 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/portals.tsx';
+  export Demo from 'stories/components/side-panel/docs/examples/portals.tsx';
 </script>
 
 :::

@@ -8,6 +8,25 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Major version.
 
+## [1.3.0] - 2025-04-01
+
+### Added
+
+- New type for value/onChange. It could be `string` or `string[]`, depends on type of `value` property. `string` by default.
+
+### Fixed
+
+- Error if after processing the inserted value it will be empty array.
+- Error with empty `utf` characters in `onChange` / `lineProcessing`.
+- Cursor position after focusing a non-empty field.
+- Blinking previous error after clicking on another line with error.
+
+## [1.2.0] - 2025-03-28
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/button` [5.42.1 ~> 5.43.0]).
+
 ## [1.1.1] - 2025-03-20
 
 ### Changed

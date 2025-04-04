@@ -5,7 +5,7 @@ import { writeFile } from 'fs/promises';
 import { getReportHeader, makeVoiceOverReporter } from '@semcore/testing-utils/vo-reporter';
 
 test('Users can interact with Modal via VoiceOver', async ({ page, voiceOver: pureVoiceOver }) => {
-  const standPath = 'website/docs/components/modal/examples/basic_modal_window_usage.tsx';
+  const standPath = 'stories/components/modal/docs/examples/basic_modal_window_usage.tsx';
   const reportPath = 'website/docs/components/modal/modal-a11y-report.md';
   const htmlContent = await e2eStandToHtml(standPath, 'en');
 

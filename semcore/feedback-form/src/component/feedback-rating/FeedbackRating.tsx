@@ -94,7 +94,9 @@ class FeedbackRatingRoot extends Component<
   }
 
   handleChangeRating = (rating: number) => {
-    this.asProps.onVisibleChange(true, rating);
+    if (rating > 0) {
+      this.asProps.onVisibleChange(true, rating);
+    }
   };
 
   handelCloseModal = () => {
@@ -343,7 +345,15 @@ class FeedbackRatingRoot extends Component<
                           <WarnM />
                         </Notice.Label>
                         <Notice.Content>
-                          {getI18nText('errorMessage', { email: errorFeedbackEmail })}
+                          {getI18nText('errorMessage', {
+                            // todo: Brauer Ilia - think how to fix type
+                            // @ts-ignore
+                            email: (
+                              <Link href={`mailto:${errorFeedbackEmail}`}>
+                                {errorFeedbackEmail}
+                              </Link>
+                            ),
+                          })}
                         </Notice.Content>
                       </Notice>
                     )}

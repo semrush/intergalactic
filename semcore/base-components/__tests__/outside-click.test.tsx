@@ -93,4 +93,38 @@ describe('OutsideClick', () => {
 
     expect(onOutsideClick).toBeCalled();
   });
+
+  test.concurrent(
+    'Verify does not call onOutsideClick if mousedown inside and mouseup outside',
+    () => {
+      const onOutsideClick = vi.fn();
+      const { getByTestId } = render(
+        <OutsideClick onOutsideClick={onOutsideClick}>
+          <div data-testid='child'>test</div>
+        </OutsideClick>,
+      );
+
+      fireEvent.mouseDown(getByTestId('child'));
+      fireEvent.mouseUp(document.body);
+
+      expect(onOutsideClick).not.toBeCalled();
+    },
+  );
+
+  test.concurrent(
+    'Verify does not call onOutsideClick if mousedown outside and mouseup inside',
+    () => {
+      const onOutsideClick = vi.fn();
+      const { getByTestId } = render(
+        <OutsideClick onOutsideClick={onOutsideClick}>
+          <div data-testid='child2'>test</div>
+        </OutsideClick>,
+      );
+
+      fireEvent.mouseDown(document.body);
+      fireEvent.mouseUp(getByTestId('child2'));
+
+      expect(onOutsideClick).not.toBeCalled();
+    },
+  );
 });

@@ -8,6 +8,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - `keyboardFocusEnhance` to css `:focus-visible` property.
 
+## [3.48.0] - 2025-03-28
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/card` [5.46.1 ~> 5.47.0]).
+
 ## [3.47.1] - 2025-03-20
 
 ### Changed
