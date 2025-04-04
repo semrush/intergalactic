@@ -6,9 +6,9 @@ const Demo = () => {
     <DataTable data={data} aria-label={'Column alignment'}>
       <DataTable.Head>
         <DataTable.Head.Column name='keyword' children='Key word Keyw ord Keyw ord' gtcWidth='80px' />
-        <DataTable.Head.Column name='kd' children='KD,%' justifyContent='center' gtcWidth='80px'/>
-        <DataTable.Head.Column name='cpc' children='CPC' justifyContent='flex-start' gtcWidth='80px'/>
-        <DataTable.Head.Column name='vol' children='Vol.' justifyContent='flex-end' gtcWidth='80px'/>
+        <DataTable.Head.Column name='kd' children='KD,%' justifyContent='center' />
+        <DataTable.Head.Column name='cpc' children='CPC' justifyContent='flex-start' />
+        <DataTable.Head.Column name='vol' children='Vol.' justifyContent='flex-end' />
 
         <DataTable.Head.Column name='kd' children='KD,% KD,% ' alignItems='center' gtcWidth='80px' />
         <DataTable.Head.Column name='cpc' children='CPC CPC CPC' alignItems='flex-end' gtcWidth='80px' />

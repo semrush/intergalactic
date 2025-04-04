@@ -9,7 +9,14 @@ import {
 } from '@semcore/core';
 import { Box, ScrollArea } from '@semcore/base-components';
 
-import { DataTableProps, ColIndex, RowIndex, DataTableData, DTKey } from './DataTable.types';
+import {
+  DataTableProps,
+  ColIndex,
+  RowIndex,
+  DataTableData,
+  DTKey,
+  DataTableType,
+} from './DataTable.types';
 import { Head } from '../Head/Head';
 import { Body } from '../Body/Body';
 import { DataTableColumnProps, DTColumn } from '../Head/Column.types';
@@ -27,15 +34,15 @@ import { BodyPropsInner } from '../Body/Body.types';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import { ROW_GROUP } from '../../index';
 import { MergedColumnsCell, MergedRowsCell } from '../Body/MergedCells';
 import { forkRef } from '@semcore/core/lib/utils/ref';
 import scrollStyles from '../../style/scroll-shadows.shadow.css';
 
 export const ACCORDION = Symbol('accordion');
+export const ROW_GROUP = Symbol('ROW_GROUP');
 
-class DataTableRoot extends Component<
-  DataTableProps,
+class DataTableRoot<D extends DataTableData> extends Component<
+  DataTableProps<D>,
   {},
   {},
   typeof DataTableRoot.enhance,
@@ -66,7 +73,7 @@ class DataTableRoot extends Component<
 
   private gridAreaGroupMap = new Map<number, string>();
 
-  constructor(props: DataTableProps) {
+  constructor(props: DataTableProps<D>) {
     super(props);
 
     const createRef = syncScroll();
@@ -97,7 +104,7 @@ class DataTableRoot extends Component<
     };
   }
 
-  getHeadProps(): HeadPropsInner {
+  getHeadProps(): HeadPropsInner<D> {
     const { use, compact, sort, onSortChange, getI18nText, uid } = this.asProps;
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
 
@@ -616,7 +623,7 @@ class DataTableRoot extends Component<
 export const DataTable = createComponent(DataTableRoot, {
   Head,
   Body,
-}) as Intergalactic.Component<'div', DataTableProps> & {
+}) as DataTableType & {
   Head: typeof Head;
   Body: typeof Body;
 };

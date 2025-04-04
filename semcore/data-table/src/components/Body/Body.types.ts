@@ -19,6 +19,8 @@ export type DataTableBodyProps = {
   renderCell?: (props: CellRenderProps) => React.ReactNode;
 
   expandedRows?: number[];
+
+  virtualScroll?: boolean;
 };
 
 export type BodyPropsInner = {

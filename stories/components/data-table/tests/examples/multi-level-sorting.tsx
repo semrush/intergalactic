@@ -27,11 +27,8 @@ const Demo = () => {
     [],
   );
 
-  const handleSortChange: (sort: DataTableSort<string>, e?: React.SyntheticEvent) => void = (newSort) => {
-    setSort(newSort as DataTableSort<SortableColumn>);
-  };
   return (
-    <DataTable data={sortedData} aria-label={'Borders'} defaultGridTemplateColumnWidth={'1fr'} sort={sort} onSortChange={handleSortChange} >
+    <DataTable data={sortedData} aria-label={'Borders'} defaultGridTemplateColumnWidth={'1fr'} sort={sort} onSortChange={setSort} >
       <DataTable.Head>
         <DataTable.Head.Group borders={'left'} title={'Organic Sessions'}>
           <DataTable.Head.Column name='kd' gtcWidth={'100px'} sortable>

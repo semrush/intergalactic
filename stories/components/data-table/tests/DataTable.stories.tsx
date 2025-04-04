@@ -1,7 +1,7 @@
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import DataTable from '@semcore/data-table';
+import { DataTable } from '@semcore/data-table';
 
 import FixedHeaderWithSpinOverlayExample from './examples/fixed-header-with-spin-overlay';
 import InteractiveHeaderExample from './examples/table-with-1tf-and diff-elements';
@@ -24,7 +24,6 @@ import SecondarySortingExample from './examples/secondary-sorting';
 import SecondaryHeaderExample from './examples/secondary-header';
 import MultiLevelExample from './examples/multi-level-header';
 import ColumnAlignmentExample from './examples/column-alignment';
-import MultipleHorizontalAndVerticalScrollsExample from './examples/multiple-horizontal-with-fixed';
 
 const meta: Meta<typeof DataTable> = {
   title: 'Components/DataTable/Tests',
@@ -36,10 +35,6 @@ type Story = StoryObj<typeof DataTable>;
 
 export const SecondaryHeader: Story = {
   render: SecondaryHeaderExample,
-};
-
-export const MultipleHorizontalAndVerticalScrolls: Story = {
-  render: MultipleHorizontalAndVerticalScrollsExample,
 };
 
 export const SecondarySorting: Story = {

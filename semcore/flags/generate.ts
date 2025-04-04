@@ -62,7 +62,7 @@ for (const scaling of [1, 2]) {
     flagSizes[scaling],
   );
 
-  const spriteUrl = `https://static.semrush.com/ui-kit/flags/${version}/sprite@${scaling}x.png`;
+  const spriteUrl = `https://static.semrush.com/intergalactic/flags/${version}/sprite@${scaling}x.png`;
   const backgroundWidth = `${(spriteWidth * partWidth) / scaling}px`;
   const backgroundHeight = `${(spriteHeight * partHeight) / scaling}px`;
   const backgroundSize = `${backgroundWidth} ${backgroundHeight}`;

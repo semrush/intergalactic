@@ -4,11 +4,10 @@ import Dropdown from '@semcore/dropdown';
 import BaseTrigger, {FilterTrigger, LinkTrigger, ButtonTrigger} from '@semcore/base-trigger';
 import { Box, Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
-import Spin from '@semcore/ui/spin';
+import ChevronDownM from '@semcore/icon/ChevronDown/m';
 import Radio from '@semcore/radio';
 import Divider from '@semcore/divider';
 import Button from '@semcore/button';
-import ChevronDownM from '@semcore/icon/ChevronDown/m';
 
 const Demo = () => (
 <Box>
@@ -35,7 +34,7 @@ const Demo = () => (
 
     <BaseTrigger aria-label='base trigger'>
       <BaseTrigger.Text>Button</BaseTrigger.Text>
-      <BaseTrigger.Addon tag={Spin} size='xs' />
+      <BaseTrigger.Addon tag={ChevronDownM}/>
     </BaseTrigger>
 
     <Dropdown>
@@ -66,7 +65,7 @@ const Demo = () => (
 </Box>
 );
 
-const devices = ['Desktop', 'Mobile', 'Tablet'].map((item) => ({
+const devices = ['One', 'Desktop', 'Mobile', 'Tablet'].map((item) => ({
   value: item,
   children: item,
 }));

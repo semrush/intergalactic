@@ -300,6 +300,12 @@
 
 - **Fixed** Token using for `:focus-visible` styles.
 
+## [15.127.0] - 2025-03-28
+
+### @semcore/button
+
+- **Added** New `brand` theme. `warning` theme was deprecated.
+
 ## [15.126.1] - 2025-03-20
 
 ### @semcore/date-picker

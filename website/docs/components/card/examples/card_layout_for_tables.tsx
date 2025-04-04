@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from '@semcore/card';
 import SettingsM from '@semcore/icon/Settings/m';
-import DataTable from '@semcore/data-table';
+import { DataTable } from '@semcore/data-table';
 
 const tooltipContent = `Hey! Don't forget to place some useful information here.`;
 const data = [
@@ -57,10 +57,10 @@ const Demo = () => (
     <Card.Body p={'0 0 20px 0'}>
       <DataTable data={data} aria-label={'Table in card'}>
         <DataTable.Head>
-          <DataTable.Column name='keyword' children='Keyword' />
-          <DataTable.Column name='kd' children='KD,%' />
-          <DataTable.Column name='cpc' children='CPC' />
-          <DataTable.Column name='vol' children='Vol.' />
+          <DataTable.Head.Column name='keyword' children='Keyword' />
+          <DataTable.Head.Column name='kd' children='KD,%' />
+          <DataTable.Head.Column name='cpc' children='CPC' />
+          <DataTable.Head.Column name='vol' children='Vol.' />
         </DataTable.Head>
         <DataTable.Body />
       </DataTable>

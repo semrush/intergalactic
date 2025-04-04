@@ -62,7 +62,7 @@ const Demo = () => {
 
         </DataTable.Head.Column>
 
-        <DataTable.Head.Column name='kd'>
+        <DataTable.Head.Column name='kd' sortable>
           <Text noWrap>
             Keyword <Text color='text-secondary'>(100)</Text>
           </Text>
@@ -118,7 +118,7 @@ const Demo = () => {
                  index: ${props.rowIndex};`);
                   }}
                 >
-                   {String(props.row[props.name])}
+                  {props.value}
                 </ButtonLink>
               </>
             );
@@ -127,7 +127,7 @@ const Demo = () => {
             return (
               <>
                 <Ellipsis trim='middle'>
-                {String(props.row[props.name])}
+                  {props.value}
                 </Ellipsis>
               </>
             );

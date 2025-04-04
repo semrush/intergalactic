@@ -66,7 +66,7 @@ const Demo = () => {
                             <>
                                 <Dropdown>
                                     <Dropdown.Trigger id='dropdown-basic' tag={Button}>
-                                    {String(props.row[props.name])}
+                                        {props.value}
                                     </Dropdown.Trigger>
                                     <Dropdown.Popper p={4} wMax={260} aria-labelledby='dropdown-basic'>
                                         <Text size={200}>You can export up to 300 records in CSV or PDF format.</Text>
