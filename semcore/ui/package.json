@@ -86,8 +86,7 @@
     "@semcore/tooltip": "16.0.0",
     "@semcore/typography": "16.0.0",
     "@semcore/widget-empty": "16.0.0",
-    "@semcore/wizard": "16.0.0",
-    "@semcore/i18n-unplugin": "16.0.0"
+    "@semcore/wizard": "16.0.0"
   },
   "peerDependencies": {
     "react": "16.8 - 18",
