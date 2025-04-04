@@ -17,13 +17,13 @@ export type DataTableHeadProps = {
   withScrollBar?: boolean;
 };
 
-export type HeadPropsInner = {
+export type HeadPropsInner<D extends DataTableData> = {
   use: DTUse;
   tableRef: React.RefObject<HTMLElement>;
   columns: DTColumn[];
   compact: boolean;
-  sort?: DataTableProps['sort'];
-  onSortChange?: DataTableProps['onSortChange'];
+  sort?: DataTableProps<D>['sort'];
+  onSortChange?: DataTableProps<D>['onSortChange'];
   getI18nText: (key: string) => string;
   uid: string;
   ref: React.RefObject<HTMLDivElement>;

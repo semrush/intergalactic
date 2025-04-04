@@ -104,7 +104,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
     };
   }
 
-  getHeadProps(): HeadPropsInner {
+  getHeadProps(): HeadPropsInner<D> {
     const { use, compact, sort, onSortChange, getI18nText, uid } = this.asProps;
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
 

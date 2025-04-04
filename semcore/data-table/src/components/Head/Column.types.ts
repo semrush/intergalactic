@@ -1,4 +1,4 @@
-import { DataTableProps, DTUse } from '../DataTable/DataTable.types';
+import { DataTableData, DataTableProps, DTUse } from '../DataTable/DataTable.types';
 import { Property } from 'csstype';
 
 export type CommonColumnType = {
@@ -72,11 +72,11 @@ export type DataTableColumnProps = CommonColumnType & {
   children?: React.ReactElement[];
 };
 
-export type ColumnPropsInner = {
+export type ColumnPropsInner<D extends DataTableData> = {
   use: DTUse;
   borders?: 'both' | 'left' | 'right';
-  sort?: DataTableProps['sort'];
-  onSortChange?: DataTableProps['onSortChange'];
+  sort?: DataTableProps<D>['sort'];
+  onSortChange?: DataTableProps<D>['onSortChange'];
   uid: string;
   parent?: DTColumn;
   sortableColumnDescribeId: string;

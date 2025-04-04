@@ -7,7 +7,7 @@ import SortAsc from '@semcore/icon/SortAsc/m';
 
 import style from './style.shadow.css';
 import { ButtonLink } from '@semcore/button';
-import type { SortDirection } from '../DataTable/DataTable.types';
+import type { DataTableData, SortDirection } from '../DataTable/DataTable.types';
 import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
 import { SORT_ICON_WIDTH } from '../../Head';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
@@ -33,7 +33,13 @@ type State = {
   sortVisible: boolean;
 };
 
-export class Column extends Component<DataTableColumnProps, {}, {}, [], ColumnPropsInner> {
+export class Column<D extends DataTableData> extends Component<
+  DataTableColumnProps,
+  {},
+  {},
+  [],
+  ColumnPropsInner<D>
+> {
   static displayName = 'Column';
   static style = style;
 
@@ -46,7 +52,7 @@ export class Column extends Component<DataTableColumnProps, {}, {}, [], ColumnPr
     sortVisible: false,
   };
 
-  componentDidUpdate(prevProps: DataTableColumnProps & ColumnPropsInner): void {
+  componentDidUpdate(prevProps: DataTableColumnProps & ColumnPropsInner<D>): void {
     if (
       this.asProps.changeSortSize &&
       canUseDOM() &&
