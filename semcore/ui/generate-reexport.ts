@@ -142,10 +142,10 @@ const GENERATOR = {
         );
       }
 
-      packageJsonExports[`./${name}/${utilNameWithoutExtention}`] = {
-        require: `./${name}/${utilNameWithoutExtention}.cjs`,
-        import: `./${name}/${utilNameWithoutExtention}.mjs`,
-        types: `./${name}/${utilNameWithoutExtention}.d.ts`,
+      packageJsonExports[`./${name}/lib/${utilNameWithoutExtention}`] = {
+        require: `./${name}/lib/${utilNameWithoutExtention}.cjs`,
+        import: `./${name}/lib/${utilNameWithoutExtention}.mjs`,
+        types: `./${name}/lib/${utilNameWithoutExtention}.d.ts`,
       };
     }
     await fs.copy(`${utilsPath}/style`, `./${name}/style`);
@@ -201,10 +201,12 @@ const GENERATOR = {
             template(path.normalize(`${dependency}/${icon}/${subFile}`)),
           );
 
-          packageJsonExports[`./${name}/${icon}${path.normalize(`/${subFile}`)}`] = {
-            require: `./${name}/${icon}${path.normalize(`/${subFile}`)}/index.cjs`,
-            import: `./${name}/${icon}${path.normalize(`/${subFile}`)}/index.mjs`,
-            types: `./${name}/${icon}${path.normalize(`/${subFile}`)}/index.d.ts`,
+          const illustrationPath = `./${name}/${icon}${subFile && subFile !== '.' ? `/${subFile}` : ''}`
+
+          packageJsonExports[illustrationPath] = {
+            require: `${illustrationPath}/index.cjs`,
+            import: `${illustrationPath}/index.mjs`,
+            types: `${illustrationPath}/index.d.ts`,
           };
         }
       }
