@@ -106,9 +106,9 @@ const GENERATOR = {
       if (util.endsWith('.css')) {
         await fs.outputFile(`./${name}/lib/${util}`, `@import '${dependency}/lib/${util}';`);
 
-        packageJsonExports[`./${util}`] = {
-          require: `./lib/${util}`,
-          import: `./lib/${util}`,
+        packageJsonExports[`./utils/lib/${util}`] = {
+          require: `./utils/lib/${util}`,
+          import: `./utils/lib/${util}`,
         };
 
         continue;
@@ -149,6 +149,11 @@ const GENERATOR = {
       };
     }
     await fs.copy(`${utilsPath}/style`, `./${name}/style`);
+
+    packageJsonExports['./utils/style/var'] = {
+      require: './utils/style/var.css',
+      import: './utils/style/var.css',
+    };
   },
   ICONS: async (dependency: string, name: string) => {
     const require = createRequire(import.meta.url);
