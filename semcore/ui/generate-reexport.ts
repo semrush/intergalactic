@@ -201,7 +201,9 @@ const GENERATOR = {
             template(path.normalize(`${dependency}/${icon}/${subFile}`)),
           );
 
-          const illustrationPath = `./${name}/${icon}${subFile && subFile !== '.' ? `/${subFile}` : ''}`
+          const illustrationPath = `./${name}/${icon}${
+            subFile && subFile !== '.' ? `/${subFile}` : ''
+          }`;
 
           packageJsonExports[illustrationPath] = {
             require: `${illustrationPath}/index.cjs`,
