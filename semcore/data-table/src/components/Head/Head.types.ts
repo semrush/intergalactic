@@ -8,6 +8,11 @@ export type DataTableHeadProps = {
    */
   sticky?: boolean;
 
+  /**
+   * offset for sticky header
+   */
+  top?: number;
+
   /** Enable scroll bar element in header */
   withScrollBar?: boolean;
 };

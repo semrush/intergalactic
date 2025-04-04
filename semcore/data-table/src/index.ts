@@ -1,6 +1,8 @@
 import { DataTable, ACCORDION } from './components/DataTable/DataTable';
-
-export { default } from './DataTable';
-export * from './DataTable';
+import type { DataTableSort, DTKey } from './components/DataTable/DataTable.types';
 
 export { DataTable, ACCORDION };
+export type {
+    DataTableSort,
+    DTKey,
+};

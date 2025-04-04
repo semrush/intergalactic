@@ -1,5 +1,5 @@
 import React from 'react';
-import { DataTable, DataTableSort } from '@semcore/data-table';
+import { DataTable, DataTableSort, DTKey } from '@semcore/data-table';
 
 type SortableColumn = Exclude<keyof typeof data[0], 'keyword'>;
 
@@ -24,10 +24,10 @@ const Demo = () => {
   );
 
   return (
-    <DataTable
+    <DataTable<typeof data>
       data={sortedData}
       sort={sort}
-      onSortChange={setSort}
+      onSortChange={(s, e) => setSort(s)}
       aria-label={'Sorting with change sortable column size'}
     >
       <DataTable.Head>
