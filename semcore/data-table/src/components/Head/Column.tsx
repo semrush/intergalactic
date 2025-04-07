@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Component, Root, sstyled } from '@semcore/core';
+import { Component, lastInteraction, Root, sstyled } from '@semcore/core';
 import { ColumnPropsInner, DataTableColumnProps } from './Column.types';
 import { Flex } from '@semcore/base-components';
 import SortDesc from '@semcore/icon/SortDesc/m';
@@ -11,6 +11,7 @@ import type { DataTableData, SortDirection } from '../DataTable/DataTable.types'
 import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
 import { SORT_ICON_WIDTH } from '../../Head';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
+import { isFocusInside } from '@semcore/core/lib/utils/focus-lock/isFocusInside';
 
 const SORTING_ICON = {
   desc: SortDesc,
@@ -168,20 +169,30 @@ export class Column<D extends DataTableData> extends Component<
   };
 
   handleMouseLeave = () => {
-    this.setState({ sortVisible: false });
+    if (lastInteraction.isMouse()) {
+      this.setState({ sortVisible: false });
+    }
   };
 
-  handleBlur = () => {
-    this.setState({ sortVisible: false });
+  handleBlur = (e: React.FocusEvent<HTMLElement>) => {
+    const relatedTarget = e.relatedTarget as HTMLElement | undefined;
+    if (!isFocusInside(e.currentTarget, relatedTarget) && lastInteraction.isKeyboard()) {
+      this.setState({ sortVisible: false });
+    }
   };
 
   handleSortClick = (e: React.SyntheticEvent<HTMLButtonElement>) => {
     const { sort, onSortChange, name } = this.asProps;
 
-    if (sort && onSortChange) {
-      const sortDirection = sort[0] === name ? reversedSortDirection[sort[1]] : DEFAULT_DIRECTION;
+    if (
+      lastInteraction.isMouse() ||
+      (lastInteraction.isKeyboard() && e.target === e.currentTarget)
+    ) {
+      if (sort && onSortChange) {
+        const sortDirection = sort[0] === name ? reversedSortDirection[sort[1]] : DEFAULT_DIRECTION;
 
-      onSortChange([name, sortDirection], e);
+        onSortChange([name, sortDirection], e);
+      }
     }
   };
 
@@ -207,6 +218,8 @@ export class Column<D extends DataTableData> extends Component<
             focusableChildren[0]?.focus();
             e.preventDefault();
           }
+
+          e.stopPropagation();
         }
       } else if (e.key === 'Enter') {
         this.lockedCell[1] = true;
