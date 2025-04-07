@@ -37,7 +37,7 @@ export class Group extends Component<DataTableGroupProps, {}, {}, [], GroupProps
     return sstyled(styles)(
       <SGroupContainer display={'contents'}>
         {this.mounted && (
-          <SGroup render={Box} style={style}>
+          <SGroup render={Box} style={style} __excludeProps={['title']}>
             {title}
           </SGroup>
         )}
