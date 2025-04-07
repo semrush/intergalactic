@@ -1,8 +1,8 @@
-SHead {
+SHead, SGroupContainer {
   display: contents;
 }
 
-SHead[sticky] > SColumn, SHead[sticky] SGroup {
+SHead[sticky] SColumn, SHead[sticky] SGroup {
   position: sticky;
   top: 0;
   z-index: 1;
@@ -10,7 +10,6 @@ SHead[sticky] > SColumn, SHead[sticky] SGroup {
 
 SHead[sticky] SGroupContainer > SColumn {
   position: sticky;
-  top: 40px;
   z-index: 1;
 }
 

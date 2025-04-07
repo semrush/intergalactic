@@ -29,6 +29,7 @@ import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { MergedColumnsCell, MergedRowsCell } from '../Body/MergedCells';
 import { forkRef } from '@semcore/core/lib/utils/ref';
 import scrollStyles from '../../style/scroll-shadows.shadow.css';
+import { DataTableGroupProps } from '../Head/Group.type';
 
 export const ACCORDION = Symbol('accordion');
 export const ROW_GROUP = Symbol('ROW_GROUP');
@@ -421,7 +422,9 @@ class DataTableRoot<D extends DataTableData> extends Component<
   private calculateColumns(): DTColumn[] {
     const { children, data } = this.props;
     const HeadComponent = findComponent(children, ['Head']) as ReactElement<DataTableHeadProps> & {
-      props: { children: Array<ReactElement<DataTableColumnProps>> };
+      props: {
+        children: Array<ReactElement<DataTableColumnProps> | ReactElement<DataTableGroupProps>>;
+      };
     };
 
     const hasGroup = findComponent(HeadComponent.props.children, ['Head.Group']) !== undefined;
@@ -475,21 +478,24 @@ class DataTableRoot<D extends DataTableData> extends Component<
         justifyContent: columnElement.props.justifyContent,
       };
 
-      //       this.gridAreaColumnMap.set(
-      //         columnIndex,
-      //         `1 / ${gridColumnIndex} / ${hasGroup ? '3' : '2'} / ${gridColumnIndex + 1}`,
-      //       );
-      //       columnIndex++;
-      //       gridColumnIndex++;
-
       return column;
-      // columns.push(column);
+    };
+
+    const childIsColumn = (
+      child: ReactElement<DataTableColumnProps> | ReactElement<DataTableGroupProps>,
+    ): child is ReactElement<DataTableColumnProps> => {
+      return child.type === Head.Column;
+    };
+    const childIsGroup = (
+      child: ReactElement<DataTableColumnProps> | ReactElement<DataTableGroupProps>,
+    ): child is ReactElement<DataTableGroupProps> => {
+      return child.type === Head.Group;
     };
 
     React.Children.forEach(HeadComponent.props.children, (child, i) => {
       if (!React.isValidElement(child)) return;
 
-      if (child.type === Head.Column) {
+      if (childIsColumn(child)) {
         const col = makeColumn(child);
 
         col.gridArea = `1 / ${gridColumnIndex} / ${hasGroup ? '3' : '2'} / ${gridColumnIndex + 1}`;
@@ -498,7 +504,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
         gridColumnIndex++;
 
         columns.push(col);
-      } else if (child.type === Head.Group) {
+      } else if (childIsGroup(child)) {
         const Group = child;
         const childCount = React.Children.count(child.props.children);
 
@@ -531,27 +537,6 @@ class DataTableRoot<D extends DataTableData> extends Component<
     });
 
     return columns.filter(Boolean);
-
-    // return Columns.map((c) => {
-    //   const column = {
-    //     name: c.props.name,
-    //     ref: (node: HTMLElement | null) => {
-    //       if (node) {
-    //         const calculatedWidth = node.getBoundingClientRect().width;
-    //         column.calculatedWidth = calculatedWidth;
-    //       }
-    //
-    //       return { current: node };
-    //     },
-    //     gridColumnWidth: calculateGridTemplateColumn(c),
-    //     fixed: c.props.fixed,
-    //     calculatedWidth: 0,
-    //   };
-    //
-    //   return column;
-    // });
-
-    // return columns;
   }
 
   private calculateRows(): DTRow[] {

@@ -52,6 +52,19 @@ export class Column<D extends DataTableData> extends Component<
     sortVisible: false,
   };
 
+  componentDidMount() {
+    if (this.asProps.parent) {
+      const columnElement = this.columnRef.current;
+      const groupElement = columnElement?.parentElement?.children.item(0);
+
+      const groupHeight = groupElement?.getBoundingClientRect().height;
+
+      if (groupHeight) {
+        columnElement?.style.setProperty('top', `${groupHeight}px`);
+      }
+    }
+  }
+
   componentDidUpdate(prevProps: DataTableColumnProps & ColumnPropsInner<D>): void {
     if (
       this.asProps.changeSortSize &&
