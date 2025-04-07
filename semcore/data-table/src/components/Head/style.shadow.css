@@ -26,6 +26,7 @@ SGroup, SColumn {
   height: 100%;
   position: relative;
   transition: width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out, min-width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out, max-width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
+  overflow: hidden;
 }
 
 SGroup {
