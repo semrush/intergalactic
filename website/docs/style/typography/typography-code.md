@@ -5,7 +5,7 @@ tabs: Design('typography'), A11y('typography-a11y'), API('typography-api'), Exam
 
 ## Basic usage
 
-The heading styles below are an example of a text scale that used for product landing pages and text-heavy pages. You can set any heading level to text of any `size`. However, we recommend setting heading levels on the page so that the visual hierarchy matches the heading hierarchy in the code.
+The following heading styles are an example of a text scale that used for product landing pages and text-heavy pages. You can set any heading level to text of any `size`. However, we recommend setting heading levels on the page so that the visual hierarchy matches the heading hierarchy in the code.
 
 Our typography primitives don’t have predefined margins, as these may vary in the final interface. You can add margins as needed based on your specific layout requirements.
 
