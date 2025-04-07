@@ -76,9 +76,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
               } / ${index + 1 + cellValue.columnsCount}`;
               groupedBy = 'columns';
             } else if (cellValue instanceof MergedRowsCell) {
-              gridArea = `${rowIndex + headerRows + 1} / ${index + 1} / ${
-                rowIndex + headerRows + 1 + cellValue.rowsCount
-              } / ${index + 2}`;
+              gridArea = `${cellValue.fromRow} / ${index + 1} / ${cellValue.toRow} / ${index + 2}`;
               groupedBy = 'rows';
             }
 

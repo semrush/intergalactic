@@ -555,6 +555,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
   private calculateRows(): DTRow[] {
     const { data } = this.asProps;
+    const headerRows = this.columns.some((column) => Boolean(column.parent)) ? 2 : 1;
 
     const rows: DTRow[] = [];
 
@@ -584,21 +585,24 @@ class DataTableRoot<D extends DataTableData> extends Component<
     data.forEach((row, rowIndex) => {
       const groupedRows: DataTableData | undefined = row[ROW_GROUP];
 
-      if (groupedRows) {
-        groupedRows.forEach((childRow, index) => {
-          if (index === 0) {
-            const rowData = {
-              ...childRow,
-              ...Object.entries(row).reduce<DTRow>((acc, [key, value]) => {
-                acc[key] = new MergedRowsCell(value, groupedRows.length);
-                return acc;
-              }, {}),
-            };
+      const fromRow = rows.length + 1 + headerRows;
 
-            addToRows(rowData);
-          } else {
-            addToRows(childRow);
-          }
+      if (groupedRows) {
+        const toRow = fromRow + groupedRows.length;
+        groupedRows.forEach((childRow, index) => {
+          // if (index === 0) {
+          const rowData = {
+            ...childRow,
+            ...Object.entries(row).reduce<DTRow>((acc, [key, value]) => {
+              acc[key] = new MergedRowsCell(value, [fromRow, toRow]);
+              return acc;
+            }, {}),
+          };
+
+          addToRows(rowData);
+          // } else {
+          //   addToRows(childRow);
+          // }
         });
       } else {
         addToRows(row);

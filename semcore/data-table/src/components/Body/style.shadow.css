@@ -17,6 +17,10 @@ SRow[active] > SCell:not([theme]) {
   background-color: var(--intergalactic-table-td-cell-active, #e6e7ed);
 }
 
+SRow:hover > SCell:not([fixed]) {
+  z-index: 0;
+}
+
 SRow:hover > SCell:not([theme]) {
   /* The color is hardcoded because need hex(in figma rgba) */
   /* disable-tokens-validator */
