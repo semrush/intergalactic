@@ -39,8 +39,16 @@ class HeadRoot<D extends DataTableData> extends Component<
   }
 
   getColumnProps(_: any, index: number) {
-    const { use, columns, sort, onSortChange, tableRef, gridTemplateColumns, gridTemplateAreas } =
-      this.asProps;
+    const {
+      use,
+      columns,
+      sort,
+      onSortChange,
+      tableRef,
+      gridTemplateColumns,
+      gridTemplateAreas,
+      sticky,
+    } = this.asProps;
     const column = columns[index];
     const [name, value] = getFixedStyle(column, columns);
     const style: any = {};
@@ -58,6 +66,7 @@ class HeadRoot<D extends DataTableData> extends Component<
       style,
       gridArea: column.gridArea,
       fixed: column.fixed,
+      sticky,
       borders: column.borders,
       sort,
       onSortChange,

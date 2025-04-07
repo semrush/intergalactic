@@ -54,7 +54,7 @@ export class Column<D extends DataTableData> extends Component<
   };
 
   componentDidMount() {
-    if (this.asProps.parent) {
+    if (this.asProps.parent && this.asProps.sticky) {
       const columnElement = this.columnRef.current;
       const groupElement = columnElement?.parentElement?.children.item(0);
 

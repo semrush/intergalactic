@@ -28,15 +28,17 @@ SGroup, SColumn {
   transition: width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out, min-width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out, max-width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
 }
 
-SGroup[use='primary'] {
+SGroup {
   justify-content: center;
-  padding: var(--intergalactic-spacing-3x, 12px);
+  text-align: center;
   background-color: var(--intergalactic-table-th-primary-cell, #f4f5f9);
 }
+
+SGroup[use='primary'] {
+  padding: var(--intergalactic-spacing-3x, 12px);
+}
 SGroup[use='secondary'] {
-  justify-content: center;
   padding: var(--intergalactic-spacing-2x, 8px);
-  background-color: var(--intergalactic-table-th-secondary-cell, #ffffff);
 }
 
 SGroup:has(SColumn[visibleSort]) {
