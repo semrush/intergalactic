@@ -2,8 +2,14 @@ SBody, SRow {
   display: contents;
 }
 
-SBody[compact] SCell {
-  padding: var(--intergalactic-spacing-3x, 12px) var(--intergalactic-spacing-2x, 8px);
+SBody[compact] {
+  SCell {
+    padding: var(--intergalactic-spacing-3x, 12px) var(--intergalactic-spacing-2x, 8px);
+  }
+
+  SCell[data-aria-level] {
+    padding-left: calc(var(--intergalactic-spacing-3x, 12px) + (var(--intergalactic-spacing-5x, 20px) * (var(--data-aria-level) - 1)));
+  }
 }
 
 SRow[gridArea], SCell[gridArea], SCollapseRow[gridArea] {
