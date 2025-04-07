@@ -2,12 +2,12 @@ import React, { ReactElement, MutableRefObject } from 'react';
 import getOriginChildren from './getOriginChildren';
 import { CHILDREN_COMPONENT, INHERITED_NAME } from '../core-types/symbols';
 
-function findComponent(
+function findComponent<P = any>(
   Children: any,
   names: string[],
   recursively?: boolean,
   limit = 100,
-): ReactElement | undefined {
+): ReactElement<P> | undefined {
   const children = Children[CHILDREN_COMPONENT] ? getOriginChildren(Children) : Children;
   return React.Children.toArray(children).find((child) => {
     if (React.isValidElement(child)) {
@@ -24,7 +24,7 @@ function findComponent(
 
       return result;
     }
-  }) as ReactElement | undefined;
+  }) as ReactElement<P> | undefined;
 }
 
 export function isAdvanceMode(Children: any, name: string[], recursively?: boolean) {

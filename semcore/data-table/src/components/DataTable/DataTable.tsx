@@ -19,7 +19,6 @@ import { DTRow } from '../Body/Row.types';
 import { isFocusInside, hasFocusableIn } from '@semcore/core/lib/utils/use/useFocusLock';
 
 import { ReactElement } from 'react';
-import syncScroll from '@semcore/core/lib/utils/syncScroll';
 import { getScrollOffsetValue } from '../../utils';
 import findComponent from '@semcore/core/lib/utils/findComponent';
 import { DataTableHeadProps, HeadPropsInner } from '../Head/Head.types';
@@ -33,6 +32,8 @@ import scrollStyles from '../../style/scroll-shadows.shadow.css';
 
 export const ACCORDION = Symbol('accordion');
 export const ROW_GROUP = Symbol('ROW_GROUP');
+
+const SCROLL_BAR_HEIGHT = 12;
 
 class DataTableRoot<D extends DataTableData> extends Component<
   DataTableProps<D>,
@@ -61,18 +62,11 @@ class DataTableRoot<D extends DataTableData> extends Component<
   private tableContainerRef = React.createRef<HTMLDivElement>();
   private tableRef = React.createRef<HTMLDivElement>();
   private headerRef = React.createRef<HTMLDivElement>();
-  private scrollBodyRef: ReturnType<ReturnType<typeof syncScroll>>;
-  private scrollHeadRef: ReturnType<ReturnType<typeof syncScroll>>;
 
   private gridAreaGroupMap = new Map<number, string>();
 
   constructor(props: DataTableProps<D>) {
     super(props);
-
-    const createRef = syncScroll();
-    // first create body ref for master scroll
-    this.scrollBodyRef = createRef('body');
-    this.scrollHeadRef = createRef('head');
 
     this.columns = this.calculateColumns();
   }
@@ -136,7 +130,6 @@ class DataTableRoot<D extends DataTableData> extends Component<
       columns: this.columns,
       rows,
       use,
-      scrollRef: this.scrollBodyRef,
       headerRows: this.columns.some((column) => Boolean(column.parent)) ? 2 : 1,
       compact: Boolean(compact),
       gridTemplateColumns,
@@ -360,10 +353,11 @@ class DataTableRoot<D extends DataTableData> extends Component<
     const [offsetLeftSum, offsetRightSum] = getScrollOffsetValue(this.columns);
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
 
-    const Head = findComponent(Children, ['DataTable.Head']);
+    const Head = findComponent<DataTableHeadProps>(Children, ['DataTable.Head']);
     const Body = findComponent(Children, ['DataTable.Body']);
 
-    const topOffset = Head?.props.sticky ? this.getTopScrollOffset() : undefined;
+    const topOffset =
+      Head?.props.sticky || Head?.props.withScrollBar ? this.getTopScrollOffset() : undefined;
 
     const width =
       w ??
@@ -413,6 +407,10 @@ class DataTableRoot<D extends DataTableData> extends Component<
             {Head}
           </SDataTable>
         </ScrollArea.Container>
+
+        {Head?.props.withScrollBar && topOffset && (
+          <ScrollArea.Bar orientation='horizontal' top={topOffset - SCROLL_BAR_HEIGHT} zIndex={3} />
+        )}
 
         <ScrollArea.Bar orientation='horizontal' />
         <ScrollArea.Bar orientation='vertical' />

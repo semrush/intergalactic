@@ -7,7 +7,7 @@ import style from './style.shadow.css';
 import { Column } from './Column';
 import { Group } from './Group';
 import { DataTableColumnProps } from './Column.types';
-import { getFixedStyle, getScrollOffsetValue } from '../../utils';
+import { getFixedStyle } from '../../utils';
 import { DataTableGroupProps } from './Group.type';
 import { DataTableData } from '../DataTable/DataTable.types';
 
@@ -72,26 +72,13 @@ class HeadRoot<D extends DataTableData> extends Component<
 
   render() {
     const SHead = Root;
-    const { Children, styles, columns, tableRef, withScrollBar, getI18nText } = this.asProps;
-    const [offsetLeftSum, offsetRightSum] = getScrollOffsetValue(columns);
+    const { Children, styles, getI18nText } = this.asProps;
 
     return sstyled(styles)(
       <>
         <SHead render={Box} role='row' aria-rowindex={1}>
           <Children />
         </SHead>
-
-        {/*{Boolean(withScrollBar) && tableRef.current && (*/}
-        {/*  <Box display={'contents'}>*/}
-        {/*    <ScrollArea.Bar*/}
-        {/*      orientation='horizontal'*/}
-        {/*      container={tableRef}*/}
-        {/*      top={'25px'}*/}
-        {/*      leftOffset={offsetLeftSum}*/}
-        {/*      rightOffset={offsetRightSum}*/}
-        {/*    />*/}
-        {/*  </Box>*/}
-        {/*)}*/}
 
         <ScreenReaderOnly aria-hidden={true} id={this.sortableColumnDescribeId()}>
           {getI18nText('sortableColumn')}

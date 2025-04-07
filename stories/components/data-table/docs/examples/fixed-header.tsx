@@ -1,5 +1,6 @@
 import React from 'react';
 import { DataTable } from '@semcore/data-table';
+import {Box} from '@semcore/base-components';
 
 const Demo = () => {
   const top = 0; // Here should be height of Header in your application
@@ -19,10 +20,10 @@ const Demo = () => {
       <h3>with Scroll.Bar in Header</h3>
       <DataTable data={data} aria-label={'Fixed header with scroll'} wMax={1000} hMax={400}>
           <DataTable.Head sticky={true} top={top} withScrollBar>
-            <DataTable.Head.Column name='keyword' children='Keyword' />
-            <DataTable.Head.Column name='kd' children='KD,%' />
-            <DataTable.Head.Column name='cpc' children='CPC' />
-            <DataTable.Head.Column name='vol' children='Vol.' />
+            <DataTable.Head.Column name='keyword' children='Keyword' gtcWidth={'340px'} />
+            <DataTable.Head.Column name='kd' children='KD,%' gtcWidth={'340px'} />
+            <DataTable.Head.Column name='cpc' children='CPC' gtcWidth={'340px'} />
+            <DataTable.Head.Column name='vol' children='Vol.' gtcWidth={'340px'} />
           </DataTable.Head>
         <DataTable.Body />
       </DataTable>

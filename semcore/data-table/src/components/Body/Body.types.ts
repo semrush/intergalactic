@@ -27,7 +27,6 @@ export type BodyPropsInner = {
   rows: DTRow[];
   columns: DTColumn[];
   use: DTUse;
-  scrollRef: (ref: HTMLDivElement) => void;
   headerRows: number;
   compact: boolean;
   gridTemplateColumns: string[];
