@@ -4,11 +4,15 @@ import type { Meta, StoryObj } from '@storybook/react';
 import ColorPicker from '@semcore/color-picker';
 
 
-import BasicExampleExample from './examples/ColorPickerProps-displayLabel-noPalette';
-import TestExample from './examples/test';
+import BasicWithouPaletterManagerExample from './examples/base-no-palette-manager';
+import LabelAndColorExpandedExample from './examples/label-and-color-expanded';
+import ColorPickerPropsExample from './examples/color-picker-props';
+import ColorsAndPaletterManagerPropsExample from './examples/colors-and-palette-manager-colors-props';
+import PropsExample from './examples/input-color-and-items-props';
+import TriggersExample from './examples/triggers';
 
 
-import { playWrapper } from '../../../utils/playWrapper';
+
 
 const meta: Meta<typeof ColorPicker> = {
   title: 'Components/ColorPicker/Tests',
@@ -19,11 +23,26 @@ export default meta;
 
 type Story = StoryObj<typeof ColorPicker>;
 
-export const BasicExample: Story = {
-  render: BasicExampleExample,
+export const BasicWithouPaletterManager: Story = {
+  render: BasicWithouPaletterManagerExample,
 };
 
-export const Test: Story = {
-    render: TestExample,
+export const Props: Story = {
+    render: PropsExample,
+};
+
+export const Triggers: Story = {
+    render: TriggersExample,
+};
+
+export const LabelAndColorExpanded: Story = {
+    render: LabelAndColorExpandedExample,
   };
 
+  export const ColorPickerProps: Story = {
+    render: ColorPickerPropsExample,
+  };
+
+  export const ColorsAndPaletterManagerProps: Story = {
+    render: ColorsAndPaletterManagerPropsExample,
+  };
