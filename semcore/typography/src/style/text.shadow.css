@@ -2,9 +2,7 @@ SText {
   padding: 0;
   margin: 0;
 
-  color: var(--intergalactic-text-primary, #191b23);
-
-  & abbr, &[tag='abbr'] {
+  & abbr {
     color: var(--intergalactic-text-secondary, #6c6e79);
     text-decoration: underline dashed var(--intergalactic-text-hint, #6c6e79);
 
@@ -17,7 +15,7 @@ SText {
     }
   }
 
-  & a, &[tag='a'] {
+  & a {
     display: inline;
     background: none;
     outline: none;
@@ -43,13 +41,11 @@ SText {
   }
 
   & code,
-  & pre,
-  &[tag='code'],
-  &[tag='pre'] {
+  & pre {
     font-family: Consolas, 'Roboto Mono', Menlo, Courier, monospace;
   }
 
-  & blockquote, &[tag='blockquote'] {
+  & blockquote {
     position: relative;
     /* disable-tokens-validator */
     padding-left: 51px;
@@ -110,7 +106,7 @@ SText {
     background-color: var(--intergalactic-icon-primary-neutral, #6c6e79);
   }
 
-  & h1, &[tag='h1'] {
+  & h1 {
     font-size: var(--intergalactic-fs-800, 48px);
     line-height: var(--intergalactic-lh-800, 117%);
     font-weight: var(--intergalactic-bold, 700);
@@ -121,7 +117,7 @@ SText {
     }
   }
 
-  & h2, &[tag='h2'] {
+  & h2 {
     font-size: var(--intergalactic-fs-700, 36px);
     line-height: var(--intergalactic-lh-700, 110%);
     font-weight: var(--intergalactic-bold, 700);
@@ -132,7 +128,7 @@ SText {
     }
   }
 
-  & h3, &[tag='h3'] {
+  & h3 {
     font-size: var(--intergalactic-fs-600, 32px);
     line-height: var(--intergalactic-lh-600, 125%);
     font-weight: var(--intergalactic-medium, 500);
@@ -143,7 +139,7 @@ SText {
     }
   }
 
-  & h4, &[tag='h4'] {
+  & h4 {
     font-size: var(--intergalactic-fs-500, 24px);
     line-height: var(--intergalactic-lh-500, 117%);
     font-weight: var(--intergalactic-medium, 500);
@@ -154,7 +150,7 @@ SText {
     }
   }
 
-  & h5, &[tag='h5'] {
+  & h5 {
     font-size: var(--intergalactic-fs-400, 20px);
     line-height: var(--intergalactic-lh-400, 120%);
     font-weight: var(--intergalactic-medium, 500);
@@ -165,7 +161,7 @@ SText {
     }
   }
 
-  & h6, &[tag='h6'] {
+  & h6 {
     font-size: var(--intergalactic-fs-300, 16px);
     line-height: var(--intergalactic-lh-300, 150%);
     font-weight: var(--intergalactic-bold, 700);
@@ -181,13 +177,7 @@ SText {
   & h3,
   & h4,
   & h5,
-  & h6,
-  &[tag='h1'],
-  &[tag='h2'],
-  &[tag='h3'],
-  &[tag='h4'],
-  &[tag='h5'],
-  &[tag='h6'] {
+  & h6 {
     & small {
       color: var(--intergalactic-text-secondary, #6c6e79);
       font-weight: 300;
@@ -196,14 +186,12 @@ SText {
   }
 
   & p,
-  & li,
-  &[tag='p'],
-  &[tag='li'] {
+  & li {
     font-size: var(--intergalactic-fs-200, 14px);
     line-height: var(--intergalactic-lh-200, 142%);
   }
 
-  & p, &[tag='p'] {
+  & p {
     margin: 0 0 var(--intergalactic-spacing-5x, 20px) 0;
 
     &:last-child {
@@ -211,7 +199,7 @@ SText {
     }
   }
 
-  & li, &[tag='li'] {
+  & li {
     padding-left: calc(var(--intergalactic-spacing-4x, 16px) + var(--intergalactic-spacing-05x, 2px));
   }
 
@@ -223,7 +211,7 @@ SText {
     padding-left: calc(var(--intergalactic-spacing-8x, 32px) + var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px));
   }
 
-  & ul li:before, &[tag='ul'] li:before {
+  & ul li:before {
     width: 4px;
     height: 4px;
     border-radius: 50%;
