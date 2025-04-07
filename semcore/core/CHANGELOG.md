@@ -9,6 +9,10 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - `utils` functions as part of Core.
 - `LastInteractionType` class to check last interaction was from keyboard or mouse.
 
+### Fixed
+
+- Return type for `fincComponent` util. It could be only `ReactElement` or `undefined`.
+
 ## [2.39.2] - 2025-04-04
 
 ### Changed

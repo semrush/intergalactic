@@ -1,4 +1,4 @@
-import React, { ReactElement, ReactNode, MutableRefObject } from 'react';
+import React, { ReactElement, MutableRefObject } from 'react';
 import getOriginChildren from './getOriginChildren';
 import { CHILDREN_COMPONENT, INHERITED_NAME } from '../core-types/symbols';
 
@@ -7,7 +7,7 @@ function findComponent(
   names: string[],
   recursively?: boolean,
   limit = 100,
-): Exclude<ReactNode, boolean | null | undefined> | undefined {
+): ReactElement | undefined {
   const children = Children[CHILDREN_COMPONENT] ? getOriginChildren(Children) : Children;
   return React.Children.toArray(children).find((child) => {
     if (React.isValidElement(child)) {
@@ -24,7 +24,7 @@ function findComponent(
 
       return result;
     }
-  });
+  }) as ReactElement | undefined;
 }
 
 export function isAdvanceMode(Children: any, name: string[], recursively?: boolean) {

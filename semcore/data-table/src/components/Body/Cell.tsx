@@ -48,6 +48,11 @@ class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner>
 
   onFocusCell = (e: React.FocusEvent<HTMLElement, HTMLElement>) => {
     if (e.target === e.currentTarget && e.target.matches(':focus-visible')) {
+      e.target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+      });
+
       const focusableChildren = Array.from(e.currentTarget.children).flatMap((node) =>
         getFocusableIn(node as HTMLElement),
       );

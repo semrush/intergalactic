@@ -270,7 +270,8 @@ class ScrollAreaRoot extends Component<ScrollAreaProps, {}, State, typeof Scroll
   }
 
   getBarProps() {
-    const { container, orientation, uid, leftOffset, rightOffset } = this.asProps;
+    const { container, orientation, uid, leftOffset, rightOffset, topOffset, bottomOffset } =
+      this.asProps;
 
     return {
       container,
@@ -280,6 +281,8 @@ class ScrollAreaRoot extends Component<ScrollAreaProps, {}, State, typeof Scroll
       verticalBarRef: this.verticalBarRef,
       leftOffset,
       rightOffset,
+      topOffset,
+      bottomOffset,
     };
   }
 

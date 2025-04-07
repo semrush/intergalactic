@@ -363,6 +363,8 @@ class DataTableRoot<D extends DataTableData> extends Component<
     const Head = findComponent(Children, ['DataTable.Head']);
     const Body = findComponent(Children, ['DataTable.Body']);
 
+    const topOffset = Head?.props.sticky ? this.getTopScrollOffset() : undefined;
+
     const width =
       w ??
       (this.columns.some((c) => c.gridColumnWidth === 'auto' || c.gridColumnWidth === '1fr')
@@ -373,6 +375,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
       <ScrollArea
         leftOffset={offsetLeftSum}
         rightOffset={offsetRightSum}
+        topOffset={topOffset}
         w={width}
         wMax={wMax}
         wMin={wMin}
@@ -614,6 +617,12 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
   private calculateGridTemplateColumn(c: ReactElement<DataTableColumnProps>): string {
     return c.props.gtcWidth ?? (this.props.defaultGridTemplateColumnWidth as string);
+  }
+
+  private getTopScrollOffset() {
+    const header = this.headerRef.current?.children;
+
+    return header?.item(0)?.getBoundingClientRect()?.height;
   }
 }
 

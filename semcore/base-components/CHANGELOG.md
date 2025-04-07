@@ -8,3 +8,4 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Package with base components.
 - `outline` for all Box'es with `:focus-visible`.
+- `topOffset` and `bottomOffset` to Bars in ScrollArea.
