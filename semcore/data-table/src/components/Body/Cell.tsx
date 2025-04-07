@@ -72,6 +72,7 @@ class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner>
     return sstyled(styles)(
       <SCell
         render={Flex}
+        role={'gridcell'}
         tabIndex={-1}
         innerOutline
         onKeyDown={this.handleKeyDown}

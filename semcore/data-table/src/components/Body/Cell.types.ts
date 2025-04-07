@@ -3,7 +3,7 @@ import { DTUse } from '../DataTable/DataTable.types';
 import { DTColumn, CommonColumnType } from '../Head/Column.types';
 
 export type DataTableCellProps = CommonColumnType & {
-  name: string;
+  name: string | symbol;
   row: DTRow;
   columnIndex: number;
   column: DTColumn;

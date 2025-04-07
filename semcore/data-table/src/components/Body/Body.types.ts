@@ -15,12 +15,7 @@ type CellRenderProps = {
 };
 
 export type DataTableBodyProps = {
-  // rows: DTRow[];
-  // columns: DTColumn[];
-
   renderCell?: (props: CellRenderProps) => React.ReactNode;
-
-  expandedRows?: number[];
 
   virtualScroll?: boolean;
 };
@@ -36,4 +31,6 @@ export type BodyPropsInner = {
   loading?: boolean;
   headerHeight: number;
   getI18nText: (key: string) => string;
+  expandedRows: number[];
+  onExpandRow: (rowIndex: number) => void;
 };

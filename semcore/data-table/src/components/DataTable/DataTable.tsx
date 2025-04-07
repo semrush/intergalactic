@@ -41,7 +41,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
   {},
   {},
   typeof DataTableRoot.enhance,
-  { use: DTRow }
+  { use: DTRow; expandedRows: number[] }
 > {
   static displayName = 'DataTable';
   static style = style;
@@ -52,6 +52,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
     use: 'primary',
     defaultGridTemplateColumnWidth: 'auto',
     h: 'auto',
+    defaultExpandedRows: [],
   };
 
   private columnsSplitter = '/';
@@ -72,14 +73,32 @@ class DataTableRoot<D extends DataTableData> extends Component<
     this.columns = this.calculateColumns();
   }
 
+  uncontrolledProps() {
+    return {
+      expandedRows: [],
+    };
+  }
+
   componentDidMount() {
     this.forceUpdate();
   }
 
   get totalRows() {
-    const { totalRows } = this.asProps;
+    const { totalRows, expandedRows } = this.asProps;
 
-    return totalRows ?? this.calculateRows().length;
+    const expandedRowsCount = expandedRows?.reduce((acc, rowIndex) => {
+      const expandedRows = this.calculateRows()[rowIndex][ACCORDION];
+
+      if (Array.isArray(expandedRows)) {
+        acc = acc + expandedRows.length;
+      } else {
+        acc = acc + 1;
+      }
+
+      return acc;
+    }, 0);
+
+    return (totalRows ?? this.calculateRows().length) + expandedRowsCount;
   }
 
   get gridSettings() {
@@ -113,7 +132,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
   }
 
   getBodyProps(): BodyPropsInner {
-    const { use, compact, loading, getI18nText } = this.asProps;
+    const { use, compact, loading, getI18nText, expandedRows } = this.asProps;
     const rows = this.calculateRows();
 
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
@@ -138,6 +157,8 @@ class DataTableRoot<D extends DataTableData> extends Component<
       loading,
       headerHeight,
       getI18nText,
+      expandedRows,
+      onExpandRow: this.onExpandRow,
     };
   }
 
@@ -167,6 +188,15 @@ class DataTableRoot<D extends DataTableData> extends Component<
     });
 
     return hasFocusable;
+  };
+
+  onExpandRow = (expandedRowIndex: number) => {
+    const { expandedRows } = this.asProps;
+    if (expandedRows?.includes(expandedRowIndex)) {
+      this.handlers.expandedRows(expandedRows.filter((row) => row !== expandedRowIndex));
+    } else {
+      this.handlers.expandedRows([...expandedRows!, expandedRowIndex]);
+    }
   };
 
   changeFocusCell = (

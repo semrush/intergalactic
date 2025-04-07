@@ -16,6 +16,10 @@ SRow[gridArea], SCell[gridArea], SCollapseRow[gridArea] {
   grid-area: var(--gridArea);
 }
 
+SCollapseRow SCell {
+  display: block;
+}
+
 /* DEFAULT THEME */
 SRow[active] > SCell:not([theme]) {
   /* The color is hardcoded because need hex(in figma rgba) */

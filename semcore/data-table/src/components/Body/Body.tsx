@@ -6,7 +6,7 @@ import { Row } from './Row';
 
 import style from './style.shadow.css';
 import { Cell } from './Cell';
-import { DataTableRowProps } from './Row.types';
+import { DataTableRowProps, RowPropsInner } from './Row.types';
 import { DataTableCellProps } from './Cell.types';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
 import { ACCORDION } from '../DataTable/DataTable';
@@ -19,43 +19,38 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
   static displayName = 'Body';
   static style = style;
 
-  static defaultProps = {
-    defaultExpandedRows: [],
-  };
-
-  uncontrolledProps() {
-    return {
-      expandedRows: [],
-    };
-  }
-
-  onExpandRow = (expandedRowIndex: number) => {
-    const { expandedRows } = this.asProps;
-    if (expandedRows?.includes(expandedRowIndex)) {
-      this.handlers.expandedRows(expandedRows.filter((row) => row !== expandedRowIndex));
-    } else {
-      this.handlers.expandedRows([...expandedRows!, expandedRowIndex]);
-    }
-  };
-
-  getRowProps(_: any, index: number) {
-    const { rows, use, gridTemplateAreas, gridTemplateColumns, expandedRows, columns, headerRows } =
-      this.asProps;
+  getRowProps(_: any, index: number): RowPropsInner {
+    const {
+      rows,
+      use,
+      gridTemplateAreas,
+      gridTemplateColumns,
+      expandedRows,
+      columns,
+      headerRows,
+      onExpandRow,
+    } = this.asProps;
     const row = rows[index];
 
     const rowIndex = (expandedRows ?? []).reduce((acc, item) => {
       if (item < index) {
-        acc = acc + 1;
+        const expandedRow = rows[item][ACCORDION];
+        if (Array.isArray(expandedRow)) {
+          acc = acc + expandedRow.length;
+        } else {
+          acc = acc + 1;
+        }
       }
 
       return acc;
     }, index);
+    const ariaRowIndex = rowIndex + 1 + headerRows;
 
     const accordionDataGridArea = Array.isArray(row[ACCORDION])
-      ? `${rowIndex + headerRows + 2} / 1 / ${
-          rowIndex + headerRows + 2 + row[ACCORDION].length
-        } / ${columns.length + 1}`
-      : `${rowIndex + headerRows + 2} / 1 / ${rowIndex + headerRows + 2} / ${columns.length + 1}`;
+      ? `${ariaRowIndex + 1} / 1 / ${ariaRowIndex + 1 + row[ACCORDION].length} / ${
+          columns.length + 1
+        }`
+      : `${ariaRowIndex + 1} / 1 / ${ariaRowIndex + 1} / ${columns.length + 1}`;
 
     return {
       use,
@@ -66,12 +61,16 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
       columns,
       headerRows,
       rowIndex: index,
+      ariaRowIndex,
       rows,
+      row,
+      expandedRows,
+      onExpandRow,
     };
   }
 
   getCellProps(props: DataTableCellProps) {
-    const { use, renderCell, expandedRows, styles, getI18nText } = this.asProps;
+    const { use, renderCell, expandedRows, styles, getI18nText, onExpandRow } = this.asProps;
     const SAccordionToggle = ButtonLink;
 
     const cellValue = props.row[props.name];
@@ -94,7 +93,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
               aria-label={getI18nText('DataTable.Cell.AccordionToggle.expand:aria-label')}
               // @ts-ignore
               expanded={expandedRows?.includes(props.rowIndex)}
-              onClick={() => this.onExpandRow(props.rowIndex)}
+              onClick={() => onExpandRow(props.rowIndex)}
               color={'--intergalactic-icon-primary-neutral'}
             >
               <SAccordionToggle.Addon tag={ChevronRightM} />
@@ -128,24 +127,12 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
   render() {
     const SBody = Root;
     const SSpinContainer = Box;
-    const { rows, columns, styles, headerRows, loading, headerHeight } = this.asProps;
+    const { rows, styles, loading, headerHeight } = this.asProps;
 
     return sstyled(styles)(
       <SBody render={Box}>
-        {rows.map((row, index) => {
-          return (
-            // @ts-ignore
-            <Body.Row
-              key={index}
-              role={'row'}
-              aria-rowindex={index + 2}
-              // columns={columns}
-              row={row}
-              // rows={rows}
-              // rowIndex={index}
-              // headerRows={headerRows}
-            />
-          );
+        {rows.map((_, index) => {
+          return <Body.Row key={index} />;
         })}
         {loading && (
           // @ts-ignore

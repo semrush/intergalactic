@@ -14,41 +14,29 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
 
   static defaultProps = {
     'aria-level': undefined,
-    defaultExpandedRows: [],
-  };
-
-  uncontrolledProps() {
-    return {
-      expandedRows: [],
-    };
-  }
-
-  onExpandRow = (expandedRowIndex: number) => {
-    const { expandedRows } = this.asProps;
-    if (expandedRows?.includes(expandedRowIndex)) {
-      this.handlers.expandedRows(expandedRows.filter((row) => row !== expandedRowIndex));
-    } else {
-      this.handlers.expandedRows([...expandedRows!, expandedRowIndex]);
-    }
   };
 
   render() {
     const SRow = Root;
     const SCollapseRow = Collapse;
+    const SCell = Body.Cell;
     const {
       columns,
       row,
       styles,
       rowIndex,
+      ariaRowIndex,
       headerRows,
       expanded,
       accordionDataGridArea,
+      expandedRows,
+      onExpandRow,
       'aria-level': ariaLevel = 1,
     } = this.asProps;
 
     return sstyled(styles)(
       <>
-        <SRow render={Box}>
+        <SRow render={Box} role={'row'} aria-rowindex={ariaRowIndex}>
           {columns.map((column, i) => {
             const index = i;
             const cellValue = row[column.name];
@@ -83,7 +71,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
             return (
               <Body.Cell
                 key={index}
-                role={'gridcell'}
+                aria-expanded={index === 0 ? expanded : undefined}
                 aria-colindex={index + 1}
                 data-aria-level={index === 0 ? ariaLevel : undefined}
                 data-grouped-by={groupedBy}
@@ -109,18 +97,24 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
           <SCollapseRow
             key={rowIndex}
             role={'row'}
-            aria-rowindex={rowIndex + 2}
+            aria-rowindex={ariaRowIndex + 1}
             visible={expanded}
             interactive
             gridArea={accordionDataGridArea}
-            // style={{gridArea: gridArea}}
-            // preserveNode
             duration={200}
-            aria-level={ariaLevel + 1}
-            aria-setsize={1}
-            aria-posinset={1}
           >
-            {row[ACCORDION]}
+            <SCell
+              // role={'gridcell'}
+              // tabIndex={-1}
+              // innerOutline
+              aria-colindex={1}
+              aria-level={ariaLevel + 1}
+              aria-setsize={1}
+              aria-posinset={1}
+              row={row}
+              // @ts-ignore
+              name={ACCORDION}
+            />
           </SCollapseRow>
         )}
 
@@ -157,14 +151,15 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
                 key={i}
                 row={subrow}
                 columns={columns}
-                visible={expanded}
+                // visible={expanded}
                 rows={row[ACCORDION]}
                 rowIndex={rowIndex}
                 aria-posinset={i + 1}
                 aria-level={ariaLevel + 1}
+                ariaRowIndex={ariaRowIndex + 1 + i}
                 headerRows={headerRows}
-                expanded={this.asProps.expandedRows?.includes(i)}
-                onExpandRow={this.onExpandRow}
+                expanded={expandedRows?.includes(rowIndex + i)}
+                onExpandRow={onExpandRow}
               />
             );
           })}

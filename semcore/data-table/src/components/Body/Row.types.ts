@@ -4,17 +4,7 @@ import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
 
 export type DTRow = Record<DTKey, DTValue | MergedRowsCell | MergedColumnsCell>;
 
-export type DataTableRowProps = {
-  columns: DTColumn[];
-  row: DTRow;
-  rows: DTRow[];
-  rowIndex: number;
-  headerRows: number;
-
-  expandedRows?: number[];
-
-  onExpandRow?: (expandedRowIndex: number) => void;
-};
+export type DataTableRowProps = {};
 
 export type RowPropsInner = {
   use: DTUse;
@@ -24,7 +14,17 @@ export type RowPropsInner = {
    */
   expanded?: boolean;
 
-  gridTemplateAreas: string;
-  gridTemplateColumns: string;
+  columns: DTColumn[];
+  row: DTRow;
+  rows: DTRow[];
+  rowIndex: number; // from 0
+  ariaRowIndex: number; // from 1 + 1 header
+  headerRows: number;
+
+  expandedRows: number[];
+  onExpandRow: (expandedRowIndex: number) => void;
+
+  gridTemplateAreas: string[];
+  gridTemplateColumns: string[];
   accordionDataGridArea: string;
 };

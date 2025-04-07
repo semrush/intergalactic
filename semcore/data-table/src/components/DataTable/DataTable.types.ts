@@ -61,6 +61,11 @@ export type DataTableProps<D extends DataTableData> = DataTableAriaProps &
     loading?: boolean;
 
     children?: any;
+
+    /**
+     *
+     */
+    expandedRows?: number[];
   };
 
 export type RowIndex = number;
