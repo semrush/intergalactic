@@ -77,8 +77,10 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
     const cellValue = props.row[props.name];
 
     let value: DTValue = '';
+    const isMergedRows = cellValue instanceof MergedRowsCell;
+    const isMergedColumns = cellValue instanceof MergedColumnsCell;
 
-    if (cellValue instanceof MergedRowsCell || cellValue instanceof MergedColumnsCell) {
+    if (isMergedColumns || isMergedRows) {
       value = cellValue.value;
     } else {
       value = cellValue;
@@ -116,6 +118,8 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
             columnIndex: props.columnIndex,
             defaultRender: defaultRender,
             value,
+            isMergedRows,
+            isMergedColumns,
           })
         : defaultRender(),
     };

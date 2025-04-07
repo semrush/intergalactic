@@ -10,6 +10,8 @@ type CellRenderProps = {
   columnIndex: number;
   value: string | number | boolean;
   defaultRender: () => React.ReactNode;
+  isMergedRows: boolean;
+  isMergedColumns: boolean;
 };
 
 export type DataTableBodyProps = {
