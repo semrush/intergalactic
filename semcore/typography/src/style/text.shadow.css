@@ -4,7 +4,7 @@ SText {
 
   & abbr {
     color: var(--intergalactic-text-secondary, #6c6e79);
-    text-decoration: underline dashed var(--intergalactic-text-hint, #6c6e79);
+    text-decoration: underline dashed var(--intergalactic-text-secondary, #6c6e79);
 
     &:active,
     &:hover,
@@ -109,7 +109,7 @@ SText {
   & h1 {
     font-size: var(--intergalactic-fs-800, 48px);
     line-height: var(--intergalactic-lh-800, 117%);
-    font-weight: var(--intergalactic-bold, 700);
+    font-weight: var(--intergalactic-semi-bold, 600);
     margin: 0 0 var(--intergalactic-spacing-6x, 24px) 0;
 
     &:only-child {
@@ -120,7 +120,7 @@ SText {
   & h2 {
     font-size: var(--intergalactic-fs-700, 36px);
     line-height: var(--intergalactic-lh-700, 110%);
-    font-weight: var(--intergalactic-bold, 700);
+    font-weight: var(--intergalactic-semi-bold, 600);
     margin: 0 0 var(--intergalactic-spacing-4x, 16px) 0;
 
     &:only-child {
@@ -131,7 +131,7 @@ SText {
   & h3 {
     font-size: var(--intergalactic-fs-600, 32px);
     line-height: var(--intergalactic-lh-600, 125%);
-    font-weight: var(--intergalactic-medium, 500);
+    font-weight: var(--intergalactic-semi-bold, 600);
     margin: 0 0 var(--intergalactic-spacing-4x, 16px) 0;
 
     &:only-child {
@@ -142,7 +142,7 @@ SText {
   & h4 {
     font-size: var(--intergalactic-fs-500, 24px);
     line-height: var(--intergalactic-lh-500, 117%);
-    font-weight: var(--intergalactic-medium, 500);
+    font-weight: var(--intergalactic-semi-bold, 600);
     margin: 0 0 var(--intergalactic-spacing-3x, 12px) 0;
 
     &:only-child {
@@ -153,7 +153,7 @@ SText {
   & h5 {
     font-size: var(--intergalactic-fs-400, 20px);
     line-height: var(--intergalactic-lh-400, 120%);
-    font-weight: var(--intergalactic-medium, 500);
+    font-weight: var(--intergalactic-semi-bold, 600);
     margin: 0 0 var(--intergalactic-spacing-2x, 8px) 0;
 
     &:only-child {

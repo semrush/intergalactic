@@ -12,6 +12,10 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Default styles for native html elements inside `Text` component.
 
+### Changed
+
+- Default `font-weight` for headings according to design guidelines.
+
 ## [5.52.2] - 2025-04-04
 
 ### Changed

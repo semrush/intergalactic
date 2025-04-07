@@ -1,5 +1,4 @@
 import React from 'react';
-import FormatText from '@semcore/format-text';
 import { Text } from '@semcore/typography';
 
 const Demo = () => (
