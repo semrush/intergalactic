@@ -38,7 +38,7 @@ describe('ColorPicker', () => {
     expect(spy).toBeCalledWith('#8649E1', expect.anything());
   });
 
-  test.concurrent('Verify input cleared when click on cancel icon inside input', async () => {
+  test.sequential('Verify input cleared when click on cancel icon inside input', async () => {
     const { getByTestId, getByLabelText } = render(
       <div style={{ width: 250, height: 100 }}>
         <ColorPicker disablePortal visible>
@@ -64,7 +64,7 @@ describe('ColorPicker', () => {
     expect(input.value).toBe('');
   });
 
-  test.concurrent('Verify color added when click on confirm icon inside input', async () => {
+  test.sequential('Verify color added when click on confirm icon inside input', async () => {
     const spy = vi.fn();
 
     const { getByTestId, getByLabelText } = render(

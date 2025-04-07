@@ -11,7 +11,7 @@ export async function expectAttributes(
 }
 
 test.describe('Color-picker', () => {
-  function getColorPickerLocators(page) {
+  function getColorPickerLocators(page: any) {
     return {
       trigger: page.locator('[data-ui-name="ColorPicker.Trigger"]'),
       popper: page.locator('[data-ui-name="ColorPicker.Popper"]'),
@@ -189,9 +189,9 @@ test.describe('Color-picker', () => {
     const locators = getColorPickerLocators(page);
 
     const getComputedStyles = (locator: any, props: string[]) =>
-      locator.evaluate((el, props) => {
+      locator.evaluate((el: any, props: any) => {
         const computed = window.getComputedStyle(el);
-        return props.reduce((acc: any, prop) => {
+        return props.reduce((acc: any, prop: any) => {
           acc[prop] = computed[prop as keyof CSSStyleDeclaration];
           return acc;
         }, {});
@@ -242,7 +242,7 @@ test.describe('Color-picker', () => {
         }
       }
 
-      const gap = await locators.colors.evaluate((node) => window.getComputedStyle(node).gap);
+      const gap = await locators.colors.evaluate((node: any) => window.getComputedStyle(node).gap);
       expect(gap).toBe('4px');
     });
 

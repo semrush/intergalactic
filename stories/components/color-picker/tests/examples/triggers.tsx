@@ -40,7 +40,7 @@ const Demo = () => {
 
       <ColorPicker value={value} onChange={setValue}>
        
-          <ColorPicker.Trigger tag={Button} interactive aria-label='New tag color' w={300}>
+          <ColorPicker.Trigger tag={Button} aria-label='New tag color' w={300}>
             <div
               style={{
                 width: '16px',
