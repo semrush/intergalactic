@@ -444,8 +444,8 @@ class DataTableRoot<D extends DataTableData> extends Component<
           <ScrollArea.Bar orientation='horizontal' top={topOffset - SCROLL_BAR_HEIGHT} zIndex={3} />
         )}
 
-        <ScrollArea.Bar orientation='horizontal' />
-        <ScrollArea.Bar orientation='vertical' />
+        <ScrollArea.Bar orientation='horizontal' zIndex={2} />
+        <ScrollArea.Bar orientation='vertical' zIndex={2} />
       </ScrollArea>,
     );
   }
