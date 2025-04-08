@@ -350,10 +350,8 @@ class DataTableRoot<D extends DataTableData> extends Component<
         ?.querySelectorAll('[role=gridcell], [role=columnheader]')
         .item(this.focusedCell[1]);
 
-      setTimeout(() => {
-        cell?.removeAttribute('inert');
-        cell instanceof HTMLElement && cell.focus();
-      }, 0);
+      cell?.removeAttribute('inert');
+      cell instanceof HTMLElement && cell.focus();
 
       e.currentTarget.setAttribute('tabIndex', '-1');
     }
