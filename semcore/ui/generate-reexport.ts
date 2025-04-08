@@ -12,6 +12,14 @@ const dirname = path.resolve(filename, '..');
 const components = fs.readJSONSync(path.resolve(dirname, './components.json'));
 const JSXParser = Parser.extend(acornJSX());
 
+type PackageExportItem = {
+  require: string;
+  import: string;
+  types?: string;
+};
+
+const packageJsonExports: Record<string, PackageExportItem> = {};
+
 const hasExportDefault = async (dependency: string) => {
   const require = createRequire(import.meta.url);
 
@@ -97,6 +105,12 @@ const GENERATOR = {
     for (const util of utils) {
       if (util.endsWith('.css')) {
         await fs.outputFile(`./${name}/lib/${util}`, `@import '${dependency}/lib/${util}';`);
+
+        packageJsonExports[`./utils/lib/${util}`] = {
+          require: `./utils/lib/${util}`,
+          import: `./utils/lib/${util}`,
+        };
+
         continue;
       }
       if (util.endsWith('.d.js')) {
@@ -127,8 +141,19 @@ const GENERATOR = {
           template(dependency, utilNameWithoutExtention),
         );
       }
+
+      packageJsonExports[`./${name}/lib/${utilNameWithoutExtention}`] = {
+        require: `./${name}/lib/${utilNameWithoutExtention}.cjs`,
+        import: `./${name}/lib/${utilNameWithoutExtention}.mjs`,
+        types: `./${name}/lib/${utilNameWithoutExtention}.d.ts`,
+      };
     }
     await fs.copy(`${utilsPath}/style`, `./${name}/style`);
+
+    packageJsonExports['./utils/style/var'] = {
+      require: './utils/style/var.css',
+      import: './utils/style/var.css',
+    };
   },
   ICONS: async (dependency: string, name: string) => {
     const require = createRequire(import.meta.url);
@@ -181,6 +206,16 @@ const GENERATOR = {
             template(path.normalize(`${dependency}/${icon}/${subFile}`)),
           );
         }
+
+        const illustrationPath = `./${name}/${icon}${
+          subFile && subFile !== '.' ? `/${subFile}` : ''
+        }`;
+
+        packageJsonExports[illustrationPath] = {
+          require: `${illustrationPath}/index.cjs`,
+          import: `${illustrationPath}/index.mjs`,
+          types: `${illustrationPath}/index.d.ts`,
+        };
       }
     }
   },
@@ -193,6 +228,12 @@ const GENERATOR = {
         : EXPORT_TEMPLATES[extension].NAMED;
       await fs.outputFile(`./${name}/index.${extension}`, template(dependency));
     }
+
+    packageJsonExports[`./${name}`] = {
+      require: `./${name}/index.cjs`,
+      import: `./${name}/index.mjs`,
+      types: `./${name}/index.d.ts`,
+    };
   },
 };
 
@@ -204,6 +245,12 @@ const generateFiles = async (packages: string[]) => {
     if (name === 'icon') await GENERATOR.ICONS(dep, name);
     if (name === 'illustration') await GENERATOR.ICONS(dep, name);
     await GENERATOR.OTHER(dep, name);
+
+    const packageJson = await fs.readJson(path.resolve(dirname, 'package.json'));
+
+    packageJson.exports = packageJsonExports;
+
+    await fs.writeJson(path.resolve(dirname, 'package.json'), packageJson, { spaces: 2 });
   }
 };
 

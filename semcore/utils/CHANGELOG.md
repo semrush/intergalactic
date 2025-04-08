@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.48.2] - 2025-04-04
+
+### Added
+
+- `setRef` and `getDisplayName` utils to the exports list.
+
 ## [4.48.1] - 2025-03-14
 
 ### Added

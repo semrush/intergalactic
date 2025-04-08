@@ -35,16 +35,17 @@ function OutsideClick(props: IFunctionProps<IOutsideClickProps>) {
   const { Children, forwardRef, root, excludeRefs = [], onOutsideClick = noop } = props;
   const children = getOriginChildren(Children);
   const nodeRef = React.useRef<Node | null>(null);
-  const targetRef = React.useRef<Node | null>(null);
+  const mouseDownInside = React.useRef<boolean>(false);
 
   const handleRef = useForkRef(children ? children.ref : null, nodeRef, forwardRef!);
 
   const handleOutsideClick = useEventCallback((event: any) => {
-    const isTargetEvent = [...(excludeRefs as any), nodeRef]
-      .filter((node) => getNodeByRef(node))
-      .some((node) =>
-        getNodeByRef(node)?.contains(targetRef.current || (getEventTarget(event) as Node | null)),
-      );
+    const nodesToCheck = [...(excludeRefs as any), nodeRef].map((ref) => getNodeByRef(ref));
+    const eventTarget = getEventTarget(event) as Node | null;
+
+    const isTargetEvent = nodesToCheck.some(
+      (node) => mouseDownInside.current || node?.contains(eventTarget),
+    );
 
     if (!isTargetEvent) {
       onOutsideClick?.(event);
@@ -52,7 +53,10 @@ function OutsideClick(props: IFunctionProps<IOutsideClickProps>) {
   });
 
   const handleMouseDown = useEventCallback((event: any) => {
-    targetRef.current = getEventTarget(event) as Node | null;
+    const nodesToCheck = [...(excludeRefs as any), nodeRef].map((ref) => getNodeByRef(ref));
+    const eventTarget = getEventTarget(event) as Node | null;
+
+    mouseDownInside.current = nodesToCheck.some((node) => node?.contains(eventTarget));
   });
 
   const toggleEvents = (status: boolean, outsideRoot: Element | Document | null) => {

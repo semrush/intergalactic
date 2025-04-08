@@ -39,12 +39,12 @@ SInputField > div {
 
   > p {
     counter-increment: row;
-    display: flex;
+    /*display: inline-block;*/
     margin: 0 0 var(--intergalactic-spacing-1x, 4px) 0;
     position: relative;
     word-break: break-all;
     white-space: pre-wrap;
-    padding-right: 20px;
+    padding: 0 var(--intergalactic-spacing-5x, 20px) 0 var(--intergalactic-spacing-4x, 16px);
 
     &:last-of-type {
       margin-bottom: 0;
@@ -57,6 +57,9 @@ SInputField > div {
       text-align: right;
       color: var(--intergalactic-text-secondary, #6c6e79);
       margin-right: var(--intergalactic-spacing-1x, 4px);
+
+      position: absolute;
+      left: 0;
     }
 
     &[data-over-max-rows='true'] {
@@ -65,17 +68,23 @@ SInputField > div {
   }
 
   &:has(p:nth-child(n + 10)) {
+    > p {
+      padding-left: var(--intergalactic-spacing-6x, 24px);
+    }
     > p:nth-child(-n + 9)::before {
-      padding-left: 8px;
+      padding-left: var(--intergalactic-spacing-2x, 8px);
     }
   }
 
   &:has(p:nth-child(n + 100)) {
+    > p {
+      padding-left: var(--intergalactic-spacing-8x, 32px);
+    }
     > p:nth-child(-n + 9)::before {
-      padding-left: 16px;
+      padding-left: var(--intergalactic-spacing-4x, 16px);
     }
     > p:nth-child(n + 10)::before {
-      padding-left: 8px;
+      padding-left: var(--intergalactic-spacing-2x, 8px);
     }
     > p:nth-child(n + 100)::before {
       padding-left: 0;
@@ -87,6 +96,7 @@ SInputField[showErrors] > div[aria-invalid] > p[aria-invalid]:after {
   content: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBmaWxsPSIjZDEwMDJmIj48cGF0aCBkPSJNNyA2aDJ2NEg3VjZabTIgN3YtMkg3djJoMloiLz48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTYuMTUyIDEuMTcyYy43MTktMS41NjMgMi45NzctMS41NjMgMy42OTYgMGw2LjA0MyAxMy4xNDFjLjM2My43OTEtLjIyNSAxLjY4Ny0xLjEwOSAxLjY4N0gxLjIxOGMtLjg4NCAwLTEuNDcyLS44OTYtMS4xMDktMS42ODdMNi4xNTIgMS4xNzJabTcuMzc0IDEyLjgzN0w4IDEuOTkgMi40NzQgMTQuMDFoMTEuMDUyWiIvPjwvc3ZnPgo= ");
   position: absolute;
   right: 0;
+  top: var(--intergalactic-spacing-05x, 2px);
 }
 
 SInputField[size='m'] > div {
@@ -115,9 +125,9 @@ SInputField[size='l'] > div {
   max-height: calc((var(--maxRows) - 1) * (24px + var(--intergalactic-spacing-1x, 4px)) + 20px);
 
   &:empty {
-    padding-left: var(--intergalactic-spacing-8x, 32px);
+    padding-left: calc(var(--intergalactic-spacing-8x, 32px) + var(--intergalactic-spacing-05x, 2px));
     &::before {
-      left: calc(var(--intergalactic-spacing-4x, 16px) - var(--intergalactic-spacing-05x, 2px));
+      left: var(--intergalactic-spacing-4x, 16px);
     }
   }
 }
