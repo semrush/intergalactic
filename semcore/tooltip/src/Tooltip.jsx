@@ -6,15 +6,17 @@ import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEn
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 import logger from '@semcore/core/lib/utils/logger';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import Portal from '@semcore/portal';
 
 import style from './style/tooltip.shadow.css';
 import {
   useZIndexStacking,
   ZIndexStackingContextProvider,
 } from '@semcore/core/lib/utils/zIndexStacking';
+import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 
 const Popper = PopperOrigin[CREATE_COMPONENT]();
+const GLOBAL_TOOLTIP_CONTAINER_ID = 'ui-kit-tooltip-container';
+const tooltipContainer = { current: null };
 
 const defaultProps = {
   placement: 'top',
@@ -45,6 +47,26 @@ class TooltipRoot extends Component {
       <Tooltip.Popper>{title}</Tooltip.Popper>
     </>
   );
+
+  constructor(props) {
+    super(props);
+
+    if (tooltipContainer.current === null && canUseDOM()) {
+      const containerElement = document.getElementById(GLOBAL_TOOLTIP_CONTAINER_ID);
+
+      if (containerElement) {
+        tooltipContainer.current = containerElement;
+      } else {
+        const container = document.createElement('div');
+        container.setAttribute('id', GLOBAL_TOOLTIP_CONTAINER_ID);
+        container.setAttribute('role', 'status');
+        container.setAttribute('aria-live', 'polite');
+
+        document.body.appendChild(container);
+        tooltipContainer.current = container;
+      }
+    }
+  }
 
   uncontrolledProps() {
     return {
@@ -134,44 +156,32 @@ function TooltipPopper(props) {
     styles,
     theme,
     resolveColor,
-    disablePortal,
-    ignorePortalsStacking,
     'aria-live': ariaLive,
     arrowBgColor,
     arrowShadowColor,
   } = props;
   const STooltip = Root;
   const SArrow = Box;
-  const STooltipPortalledWrapper = Box;
 
   const contextZIndex = useZIndexStacking('z-index-tooltip');
   const zIndex = props.zIndex || contextZIndex;
 
   return sstyled(styles)(
     <ZIndexStackingContextProvider designToken='z-index-tooltip'>
-      <Portal disablePortal={disablePortal} ignorePortalsStacking={ignorePortalsStacking}>
-        <STooltipPortalledWrapper
-          role={ariaLive === 'polite' ? 'status' : undefined}
-          aria-live={ariaLive}
-          zIndex={zIndex}
-        >
-          <STooltip
-            render={Popper.Popper}
-            use:disablePortal
-            use:theme={resolveColor(theme)}
-            use:aria-live={undefined}
-            use:zIndex={undefined}
-          >
-            <Children />
-            <SArrow
-              data-popper-arrow
-              use:theme={resolveColor(theme)}
-              bgColor={resolveColor(arrowBgColor)}
-              shadowColor={resolveColor(arrowShadowColor ?? arrowBgColor)}
-            />
-          </STooltip>
-        </STooltipPortalledWrapper>
-      </Portal>
+      <STooltip
+        render={Popper.Popper}
+        use:theme={resolveColor(theme)}
+        use:zIndex={zIndex}
+        nodeToMount={ariaLive === 'polite' ? tooltipContainer.current : undefined}
+      >
+        <Children />
+        <SArrow
+          data-popper-arrow
+          use:theme={resolveColor(theme)}
+          bgColor={resolveColor(arrowBgColor)}
+          shadowColor={resolveColor(arrowShadowColor ?? arrowBgColor)}
+        />
+      </STooltip>
     </ZIndexStackingContextProvider>,
   );
 }

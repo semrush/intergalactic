@@ -13,6 +13,8 @@ export type PortalProps = {
   ignorePortalsStacking?: boolean;
   /** Called when portal mount state changes */
   onMount?: (mounted: boolean) => void;
+  /** Manually set node to mount portal content */
+  nodeToMount?: HTMLElement;
 };
 
 const PortalContext = register.get(
@@ -22,19 +24,19 @@ const PortalContext = register.get(
 );
 
 function Portal(props: PortalProps & { Children: React.FC }) {
-  const { Children, disablePortal, ignorePortalsStacking, onMount } = props;
+  const { Children, disablePortal, ignorePortalsStacking, onMount, nodeToMount } = props;
   const container = React.useContext(PortalContext);
-  const [mountNode, setMountNode] = React.useState<Element | null>(null);
+  const [mountNode, setMountNode] = React.useState<Element | null>(nodeToMount ?? null);
 
   React.useEffect(() => {
-    if (disablePortal) return;
+    if (disablePortal || nodeToMount) return;
     onMount?.(true);
     if (ignorePortalsStacking) {
       setMountNode(canUseDOM() ? document.body : null);
       return;
     }
     setMountNode(getNodeByRef(container));
-  }, [container, disablePortal, onMount]);
+  }, [container, disablePortal, onMount, nodeToMount]);
 
   if (disablePortal) {
     return <Children />;
