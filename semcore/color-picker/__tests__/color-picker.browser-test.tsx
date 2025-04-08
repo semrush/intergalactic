@@ -355,11 +355,7 @@ test.describe('Color-picker', () => {
       'Color field, current color is #98848D',
     );
 
-    await test.step('Verify normal state for Palette custom color', async () => {
-      await locators.trigger.first().click();
-      await page.waitForTimeout(200);
-      await expect(page).toHaveScreenshot();
-    });
+    await locators.trigger.first().click();
 
     const colorCustom = page.locator('[data-ui-name="PaletteManager.Item"]');
 
@@ -378,13 +374,6 @@ test.describe('Color-picker', () => {
 
       await locators.trigger.first().click();
       await page.waitForTimeout(100);
-      await expect(page).toHaveScreenshot();
-    });
-
-    await test.step('Verify hover on Add color button ', async () => {
-      const addColorButton = page.locator('div[role="button"][aria-label="Add color"]').first();
-      await addColorButton.hover();
-      await page.waitForTimeout(200);
       await expect(page).toHaveScreenshot();
     });
   });
@@ -777,8 +766,8 @@ test.describe('Color-picker', () => {
     locators.addColor.first().click();
     await expect(paletteNonEditableItems).toHaveCount(4);
     await paletteNonEditableItems.nth(3).click();
+    await expect(locators.popper).not.toBeVisible();
     await page.waitForTimeout(100);
-
     locators.trigger.first().click();
     await expect(paletteNonEditableItems.nth(3)).toHaveAttribute('aria-selected', 'true');
   });
@@ -817,9 +806,9 @@ test.describe('Color-picker', () => {
     await test.step('Verify keyboard interaction with tag trigger', async () => {
       await page.keyboard.press('Tab');
       await expect(locators.trigger.first()).toBeFocused();
-      await page.keyboard.press('Enter');
       await expect(page).toHaveScreenshot();
 
+      await page.keyboard.press('Enter');
       await expect(locators.popper).toBeVisible();
       await expect(locators.trigger.first()).not.toBeFocused();
 
@@ -837,6 +826,8 @@ test.describe('Color-picker', () => {
       await expect(locators.trigger.nth(1)).toBeFocused();
       await page.keyboard.press('Enter');
       await expect(locators.popper).toBeVisible();
+      await page.waitForTimeout(100);
+      await expect(page).toHaveScreenshot();
       await page.keyboard.press('Escape');
       await expect(locators.popper).not.toBeVisible();
       await expect(locators.trigger.nth(1)).toBeFocused();

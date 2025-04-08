@@ -31,14 +31,12 @@ test.describe('Color-Picker', () => {
 
     await page.setContent(htmlContent);
 
-    // check volor picker trigger
     {
       const violations = await getAccessibilityViolations({ page });
 
       expect(violations).toEqual([]);
     }
 
-    // check expamded popper
     {
       await page.locator('[data-ui-name="ColorPicker.Trigger"]').click();
 
@@ -46,6 +44,8 @@ test.describe('Color-Picker', () => {
 
       expect(violations).toEqual([]);
     }
+
+    
   });
 
   test('Input validation', async ({ page }) => {
