@@ -271,6 +271,7 @@ STagContainer {
     &:not(:last-child) {
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
+      padding-right: var(--intergalactic-spacing-05x, 2px);
 
       &::before,
       &::after {
@@ -291,6 +292,7 @@ STagContainer {
     &:not(:first-child) {
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
+      padding-left: var(--intergalactic-spacing-05x, 2px);
 
       &::before,
       &::after {

@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.54.0] - 2025-04-08
+
+### Changed
+
+- Margins and paddings for addons, sizes of `Circle` addons for different tag sizes.
+
 ## [5.53.1] - 2025-03-20
 
 ### Changed

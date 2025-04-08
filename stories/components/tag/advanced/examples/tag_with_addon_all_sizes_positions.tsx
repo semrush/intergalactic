@@ -9,6 +9,7 @@ import SmileSadL from '@semcore/icon/SmileSad/l';
 const Demo = () => {
   return (
     <Flex direction='column' gap={3}>
+
       <Flex gap={1}>
         <Tag size='m' addonLeft={SmileHappyM} addonRight={SmileHappyM}>
           Tag
@@ -47,6 +48,7 @@ const Demo = () => {
           </Tag.Addon>
         </Tag>
       </Flex>
+
       <Flex gap={1}>
         <Tag size='m' addonLeft={SmileHappyM}>
           Tag
@@ -76,6 +78,7 @@ const Demo = () => {
           <Tag.Text>Tag</Tag.Text>
         </Tag>
       </Flex>
+      
       <Flex gap={1}>
         <Tag size='m' addonRight={SmileHappyM}>
           Tag
