@@ -44,8 +44,6 @@ test.describe('Color-Picker', () => {
 
       expect(violations).toEqual([]);
     }
-
-    
   });
 
   test('Input validation', async ({ page }) => {
