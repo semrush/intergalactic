@@ -100,17 +100,18 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
       disabled={disabled}
     >
       <TagContainer.Tag active={active}>
+        {imageIcon && (
+          <TagContainer.Tag.Circle>
+            <img src='https://picsum.photos/id/1025/28/28' />
+          </TagContainer.Tag.Circle>
+        )}
+
         {beforeIcon && (
           <TagContainer.Tag.Addon>
             <EditM />
           </TagContainer.Tag.Addon>
         )}
 
-        {imageIcon && (
-          <TagContainer.Tag.Circle>
-            <img src='https://picsum.photos/id/1025/28/28' />
-          </TagContainer.Tag.Circle>
-        )}
         <TagContainer.Tag.Text>Tag text</TagContainer.Tag.Text>
       </TagContainer.Tag>
       {closeIcon && <TagContainer.Close />}
