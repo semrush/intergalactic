@@ -72,7 +72,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
     const SAccordionToggle = ButtonLink;
 
     const cellValue = props.row[props.name];
-    let columnName = props.name;
+    let dataKey = props.name;
 
     let value: DTValue = '';
     const isMergedRows = cellValue instanceof MergedRowsCell;
@@ -81,7 +81,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
     if (isMergedColumns || isMergedRows) {
       value = cellValue.value;
       if (isMergedColumns) {
-        columnName = cellValue.columnName;
+        dataKey = cellValue.dataKey;
       }
     } else {
       value = cellValue;
@@ -112,12 +112,12 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
       use,
       children: renderCell
         ? renderCell({
-            name: props.name,
+            columnName: props.name,
             row: props.row,
             column: props.column,
             rowIndex: props.rowIndex,
             columnIndex: props.columnIndex,
-            columnName,
+            dataKey,
             defaultRender: defaultRender,
             value,
             isMergedRows,

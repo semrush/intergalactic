@@ -5,7 +5,7 @@ import { Flex } from '@semcore/base-components';
 import style from './style.shadow.css';
 import { CellPropsInner, DataTableCellProps } from './Cell.types';
 import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
-import {MergedColumnsCell} from './MergedCells';
+import { MergedColumnsCell } from './MergedCells';
 
 class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner> {
   static displayName = 'Cell';
@@ -71,7 +71,7 @@ class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner>
     const { Children, styles, row, column } = this.asProps;
 
     const cell = row[column.name];
-    const cellName = cell instanceof MergedColumnsCell ? cell.columnName : column.name;
+    const cellName = cell instanceof MergedColumnsCell ? cell.dataKey : column.name;
 
     return sstyled(styles)(
       <SCell

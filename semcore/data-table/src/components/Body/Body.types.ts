@@ -3,7 +3,7 @@ import { DTColumn } from '../Head/Column.types';
 import { DTUse } from '../DataTable/DataTable.types';
 
 type CellRenderProps = {
-  name: string;
+  dataKey: string;
   row: DTRow;
   column: DTColumn;
   rowIndex: number;
