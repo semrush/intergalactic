@@ -19,7 +19,6 @@ export type RowPropsInner = {
   rows: DTRow[];
   rowIndex: number; // from 0
   ariaRowIndex: number; // from 1 + 1 header
-  headerRows: number;
 
   expandedRows: number[];
   onExpandRow: (expandedRowIndex: number) => void;

@@ -24,7 +24,6 @@ export type BodyPropsInner = {
   rows: DTRow[];
   columns: DTColumn[];
   use: DTUse;
-  headerRows: number;
   compact: boolean;
   gridTemplateColumns: string[];
   gridTemplateAreas: string[];

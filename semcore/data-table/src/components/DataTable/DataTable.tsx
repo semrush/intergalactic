@@ -150,7 +150,6 @@ class DataTableRoot<D extends DataTableData> extends Component<
       columns: this.columns,
       rows,
       use,
-      headerRows: this.columns.some((column) => Boolean(column.parent)) ? 2 : 1,
       compact: Boolean(compact),
       gridTemplateColumns,
       gridTemplateAreas,
@@ -573,7 +572,6 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
   private calculateRows(): DTRow[] {
     const { data } = this.asProps;
-    const headerRows = this.columns.some((column) => Boolean(column.parent)) ? 2 : 1;
 
     const rows: DTRow[] = [];
 
@@ -603,7 +601,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
     data.forEach((row, rowIndex) => {
       const groupedRows: DataTableData | undefined = row[ROW_GROUP];
 
-      const fromRow = rows.length + 1 + headerRows;
+      const fromRow = rows.length + 2; // 1 - for header, 1 - because start not from 0, but from 1
 
       if (groupedRows) {
         const toRow = fromRow + groupedRows.length;

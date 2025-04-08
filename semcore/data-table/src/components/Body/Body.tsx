@@ -27,7 +27,6 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
       gridTemplateColumns,
       expandedRows,
       columns,
-      headerRows,
       onExpandRow,
     } = this.asProps;
     const row = rows[index];
@@ -44,7 +43,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
 
       return acc;
     }, index);
-    const ariaRowIndex = rowIndex + 1 + headerRows;
+    const ariaRowIndex = rowIndex + 2; // 1 - for header, 1 - because start not from 0, but from 1
 
     const accordionDataGridArea = Array.isArray(row[ACCORDION])
       ? `${ariaRowIndex + 1} / 1 / ${ariaRowIndex + 1 + row[ACCORDION].length} / ${
@@ -59,7 +58,6 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
       expanded: expandedRows?.includes(index),
       accordionDataGridArea,
       columns,
-      headerRows,
       rowIndex: index,
       ariaRowIndex,
       rows,

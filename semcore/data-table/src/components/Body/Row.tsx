@@ -26,7 +26,6 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
       styles,
       rowIndex,
       ariaRowIndex,
-      headerRows,
       expanded,
       accordionDataGridArea,
       expandedRows,
@@ -58,13 +57,16 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
             let groupedBy: null | 'rows' | 'columns' = null;
             let gridArea: string | undefined = undefined;
 
+            const fromRow = rowIndex + 2;
+            const fromCol = index + 1;
+
             if (cellValue instanceof MergedColumnsCell) {
-              gridArea = `${rowIndex + headerRows + 1} / ${index + 1} / ${
-                rowIndex + headerRows + 2
-              } / ${index + 1 + cellValue.columnsCount}`;
+              gridArea = `${fromRow} / ${fromCol} / ${fromRow + 1} / ${
+                fromCol + cellValue.columnsCount
+              }`;
               groupedBy = 'columns';
             } else if (cellValue instanceof MergedRowsCell) {
-              gridArea = `${cellValue.fromRow} / ${index + 1} / ${cellValue.toRow} / ${index + 2}`;
+              gridArea = `${cellValue.fromRow} / ${fromCol} / ${cellValue.toRow} / ${fromCol + 1}`;
               groupedBy = 'rows';
             }
 
@@ -157,7 +159,6 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
                 aria-posinset={i + 1}
                 aria-level={ariaLevel + 1}
                 ariaRowIndex={ariaRowIndex + 1 + i}
-                headerRows={headerRows}
                 expanded={expandedRows?.includes(rowIndex + i)}
                 onExpandRow={onExpandRow}
               />
