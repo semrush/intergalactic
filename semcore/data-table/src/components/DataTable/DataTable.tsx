@@ -384,7 +384,6 @@ class DataTableRoot<D extends DataTableData> extends Component<
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
 
     const Head = findComponent<DataTableHeadProps>(Children, ['DataTable.Head']);
-    const Body = findComponent(Children, ['DataTable.Body']);
 
     const topOffset =
       Head?.props.sticky || Head?.props.withScrollBar ? this.getTopScrollOffset() : undefined;
@@ -433,8 +432,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
             use:hMax={undefined}
             use:hMin={undefined}
           >
-            {Body}
-            {Head}
+            <Children />
           </SDataTable>
         </ScrollArea.Container>
 

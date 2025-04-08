@@ -4,7 +4,7 @@ import { DataTable } from '@semcore/data-table';
 const Demo = () => {
   return (
     <DataTable data={data} aria-label={'Fixed columns'} wMax={800} hMax={400}>
-      <DataTable.Head>
+      <DataTable.Head sticky>
         <DataTable.Head.Column name='keyword' children='Keyword' gtcWidth={'300px'} fixed='left' />
         <DataTable.Head.Column name='kd' children='KD,%' gtcWidth={'300px'} />
         <DataTable.Head.Column name='cpc' children='CPC' gtcWidth={'300px'} />
