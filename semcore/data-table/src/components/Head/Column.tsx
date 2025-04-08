@@ -169,9 +169,7 @@ export class Column<D extends DataTableData> extends Component<
   };
 
   handleMouseLeave = () => {
-    if (lastInteraction.isMouse()) {
-      this.setState({ sortVisible: false });
-    }
+    this.setState({ sortVisible: false });
   };
 
   handleBlur = (e: React.FocusEvent<HTMLElement>) => {
