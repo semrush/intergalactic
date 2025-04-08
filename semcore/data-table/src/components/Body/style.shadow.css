@@ -8,7 +8,7 @@ SBody[compact] {
   }
 
   SCell[data-aria-level] {
-    padding-left: calc(var(--intergalactic-spacing-3x, 12px) + (var(--intergalactic-spacing-5x, 20px) * (var(--data-aria-level) - 1)));
+    padding-left: calc(var(--intergalactic-spacing-3x, 8px) + (var(--intergalactic-spacing-5x, 20px) * (var(--data-aria-level) - 1)));
   }
 }
 
