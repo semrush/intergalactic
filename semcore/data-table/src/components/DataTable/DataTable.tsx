@@ -631,7 +631,17 @@ class DataTableRoot<D extends DataTableData> extends Component<
   private getTopScrollOffset() {
     const header = this.headerRef.current?.children;
 
-    return header?.item(0)?.getBoundingClientRect()?.height;
+    let height = 0;
+
+    for (let i = 0; i < (header?.length ?? 0); i++) {
+      const columnHeight = header?.item(i)?.getBoundingClientRect().height;
+      if (columnHeight) {
+        height = columnHeight;
+        break;
+      }
+    }
+
+    return height;
   }
 }
 
