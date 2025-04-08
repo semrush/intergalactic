@@ -4,7 +4,7 @@ import { Text } from '@semcore/typography';
 import { Flex } from '@semcore/flex-box';
 
 const Demo = () => {
-    const [selectedColor, setSelectedColor] = useState('#ff0000');
+  const [selectedColor, setSelectedColor] = useState('#ff0000');
   const [paletteColors, setPaletteColors] = useState([
     '#FF0000', '#00FF00', '#0000FF', '#FFFF00', '#FF00FF', '#00FFFF',
     '#800000', '#808000', '#008000', '#800080', '#008080', '#000080',

@@ -1,43 +1,42 @@
 import React, { useState } from 'react';
 import ColorPicker, { PaletteManager } from '@semcore/color-picker';
-import { Text } from '@semcore/typography';
 import { Flex, Box } from '@semcore/flex-box';
 
 const Demo = () => {
 
   return (
     <Flex direction='row'>
-         <Box mr = {50}>
-      <ColorPicker value='#FF8786' disablePortal visible/>
+      <Box mr={50}>
+        <ColorPicker value='#FF8786' disablePortal visible />
       </Box>
-      <Box mr = {50}>
-      <ColorPicker  disablePortal visible displayLabel/>
+      <Box mr={50}>
+        <ColorPicker disablePortal visible displayLabel />
       </Box>
-      <Box mr = {10}>
-       <ColorPicker  value='#FF8786' disablePortal visible displayLabel >
-        <ColorPicker.Popper >
-          <ColorPicker.Colors />
-          <PaletteManager>
-            <PaletteManager.Colors />
-            <PaletteManager.InputColor />
-          </PaletteManager>
-        </ColorPicker.Popper>
-      </ColorPicker>
+      <Box mr={10}>
+        <ColorPicker value='#FF8786' disablePortal visible displayLabel >
+          <ColorPicker.Popper >
+            <ColorPicker.Colors />
+            <PaletteManager>
+              <PaletteManager.Colors />
+              <PaletteManager.InputColor />
+            </PaletteManager>
+          </ColorPicker.Popper>
+        </ColorPicker>
       </Box>
-      <Box mr = {10}>
-       <ColorPicker  disablePortal visible >
-        <ColorPicker.Popper>
-          <ColorPicker.Colors />
-          <PaletteManager>
-            <PaletteManager.Colors />
-            <PaletteManager.InputColor />
-          </PaletteManager>
-        </ColorPicker.Popper>
-      </ColorPicker>
+      <Box mr={10}>
+        <ColorPicker disablePortal visible >
+          <ColorPicker.Popper>
+            <ColorPicker.Colors />
+            <PaletteManager>
+              <PaletteManager.Colors />
+              <PaletteManager.InputColor />
+            </PaletteManager>
+          </ColorPicker.Popper>
+        </ColorPicker>
       </Box>
 
       <Box>
-      <ColorPicker disablePortal visible >
+        <ColorPicker disablePortal visible >
           <ColorPicker.Trigger id='player-1-color' />
           <ColorPicker.Popper>
             <ColorPicker.Colors
@@ -51,7 +50,7 @@ const Demo = () => {
             </PaletteManager>
           </ColorPicker.Popper>
         </ColorPicker>
-        </Box>
+      </Box>
     </Flex>
   );
 };

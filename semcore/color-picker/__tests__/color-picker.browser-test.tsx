@@ -424,7 +424,6 @@ test.describe('Color-picker', () => {
     await page.keyboard.press('Tab');
     await locators.trigger.hover();
     await expect(locators.trigger).toBeFocused();
-
     await expect(page).toHaveScreenshot();
 
     await expect(locators.trigger).toHaveAttribute('aria-label', 'Color field');
@@ -465,8 +464,16 @@ test.describe('Color-picker', () => {
     );
 
     await page.keyboard.press('Space');
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Tab');
+    await page.waitForTimeout(50);
+    await page.keyboard.press('Escape');
+    await expect(locators.popper).toBeVisible();
+    await page.waitForTimeout(50);
+    await page.keyboard.press('Escape');
+    await expect(locators.popper).not.toBeVisible();
+    await page.keyboard.press('Space');
     await locators.trigger.click();
-
     await expect(locators.popper).not.toBeVisible();
   });
 

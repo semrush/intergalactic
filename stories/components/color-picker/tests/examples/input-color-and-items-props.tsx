@@ -1,6 +1,5 @@
 import React from 'react';
 import ColorPicker, { PaletteManager } from '@semcore/color-picker';
-import { Text } from '@semcore/typography';
 import { Flex } from '@semcore/flex-box';
 
 const Demo = () => {
@@ -31,18 +30,18 @@ const Demo = () => {
       setCustomColors((prev) => [...prev, color]);
     }
     if (inputRef.current) {
-      inputRef.current.value = ''; 
+      inputRef.current.value = '';
     }
   };
   const filteredPresetColors = presetColors.filter((color): color is string => color !== null);
 
   return (
     <Flex gap={5} flexWrap>
-      
+
       <ColorPicker value={value} onChange={setValue}>
         <ColorPicker.Trigger mt={2} id='player-1-color' />
         <ColorPicker.Popper>
-        <ColorPicker.Colors>
+          <ColorPicker.Colors>
             {filteredPresetColors.map((color, idx) => (
               <ColorPicker.Item
                 key={idx}
@@ -50,7 +49,7 @@ const Demo = () => {
                 displayLabel
                 editable={true}
                 selected={color === value}
-                onRemove={() => handleRemove(color)} 
+                onRemove={() => handleRemove(color)}
               />
             ))}
           </ColorPicker.Colors>
@@ -93,7 +92,7 @@ const Demo = () => {
               state="normal"
               colors={customColors}
             />
-             <PaletteManager.InputColor
+            <PaletteManager.InputColor
               defaultValue="#ABCDEF"
               ref={inputRef}
               disabled
