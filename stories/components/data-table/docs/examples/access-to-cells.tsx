@@ -13,7 +13,7 @@ const Demo = () => {
       </DataTable.Head>
       <DataTable.Body
         renderCell={(props) => {
-          if (props.name === 'keyword' && !props.isMergedColumns) {
+          if (props.columnName === 'keyword') {
             return (
                 <ButtonLink
                         onClick={() => {

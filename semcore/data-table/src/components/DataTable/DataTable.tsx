@@ -580,7 +580,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
         if (columnsToRow.length === 1) {
           acc[key] = value;
         } else {
-          acc[columnsToRow[0]] = new MergedColumnsCell(value, columnsToRow.length);
+          acc[columnsToRow[0]] = new MergedColumnsCell(value, {columnName: key, size: columnsToRow.length});
         }
 
         if (row[ACCORDION]) {

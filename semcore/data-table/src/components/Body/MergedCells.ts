@@ -13,9 +13,11 @@ export class MergedRowsCell {
 export class MergedColumnsCell {
   public readonly value: any;
   public readonly columnsCount: number;
+  public readonly columnName: string;
 
-  constructor(value: any, size: number) {
+  constructor(value: any, options: {size: number; columnName: string}) {
     this.value = value;
-    this.columnsCount = size;
+    this.columnsCount = options.size;
+    this.columnName = options.columnName;
   }
 }
