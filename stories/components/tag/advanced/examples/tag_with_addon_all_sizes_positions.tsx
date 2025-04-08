@@ -105,7 +105,22 @@ const Demo = () => {
           </Tag.Addon>
         </Tag>
       </Flex>
+
+      <Flex gap={1}>
+        <Tag size='m'>
+          <Tag.Text>Tag</Tag.Text>
+        </Tag>
+        <Tag size='l'>
+          <Tag.Text>Tag</Tag.Text>
+        </Tag>
+        <Tag size='xl'>
+          <Tag.Text>Tag</Tag.Text>
+        </Tag>
+        
+      </Flex>
+
     </Flex>
+
   );
 };
 

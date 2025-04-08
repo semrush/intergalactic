@@ -17,6 +17,17 @@ const Demo = () => {
 
   return (
     <Box>
+            {tags.map((tag, idx) => (
+        <TagContainer theme='secondary' size='xl' data-id={idx} key={idx} mr={1} interactive>
+          <TagContainer.Tag>
+            <TagContainer.Addon>
+              <Edit />
+            </TagContainer.Addon>
+            <TagContainer.Tag.Text>{tag}</TagContainer.Tag.Text>
+          </TagContainer.Tag>
+          <TagContainer.Close onClick={handleEditTag} />
+        </TagContainer>
+      ))}
       {tags.map((tag, idx) => (
         <TagContainer theme='secondary' size='l' data-id={idx} key={idx} mr={1} interactive>
           <TagContainer.Tag>
