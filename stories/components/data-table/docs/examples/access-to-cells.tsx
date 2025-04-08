@@ -13,7 +13,7 @@ const Demo = () => {
       </DataTable.Head>
       <DataTable.Body
         renderCell={(props) => {
-          if (props.columnName === 'keyword') {
+          if (props.dataKey === 'keyword') {
             return (
                 <ButtonLink
                         onClick={() => {
