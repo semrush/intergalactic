@@ -28,6 +28,12 @@ const Demo = () => {
             );
           }
 
+          if (props.dataKey === 'kd') {
+              return {
+                  'data-test-id': 'kd cell',
+              };
+          }
+
           return props.defaultRender();
         }}
       />

@@ -16,7 +16,7 @@ type CellRenderProps = {
 };
 
 export type DataTableBodyProps = {
-  renderCell?: (props: CellRenderProps) => React.ReactNode;
+  renderCell?: (props: CellRenderProps) => React.ReactNode | Record<string, any>;
 
   virtualScroll?: boolean;
 };

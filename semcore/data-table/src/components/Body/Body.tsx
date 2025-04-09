@@ -110,23 +110,35 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
       return value;
     };
 
-    return {
+    const extraProps: Record<string, any> = {
       use,
-      children: renderCell
-        ? renderCell({
-            columnName: props.column.name,
-            row: props.row,
-            column: props.column,
-            rowIndex: props.rowIndex,
-            columnIndex: props.columnIndex,
-            dataKey,
-            defaultRender: defaultRender,
-            value,
-            isMergedRows,
-            isMergedColumns,
-          })
-        : defaultRender(),
+      children: defaultRender,
     };
+
+    if (renderCell) {
+      const external = renderCell({
+        columnName: props.column.name,
+        row: props.row,
+        column: props.column,
+        rowIndex: props.rowIndex,
+        columnIndex: props.columnIndex,
+        dataKey,
+        defaultRender,
+        value,
+        isMergedRows,
+        isMergedColumns,
+      });
+
+      if (this.isReactNode(external)) {
+        extraProps.children = external;
+      } else {
+        for (const key in external) {
+          extraProps[key] = external[key];
+        }
+      }
+    }
+
+    return extraProps;
   }
 
   render() {
@@ -156,6 +168,17 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
           </SSpinContainer>
         )}
       </SBody>,
+    );
+  }
+
+  private isReactNode(obj: React.ReactNode | Record<string, any>): obj is React.ReactNode {
+    return (
+      typeof obj === 'string' ||
+      typeof obj === 'number' ||
+      React.isValidElement(obj) ||
+      typeof obj === 'boolean' ||
+      obj === undefined ||
+      obj === null
     );
   }
 }
