@@ -74,7 +74,7 @@ Table: Badge types
 | ![alpha](static/alpha.png)     | <nobr>`--red-400`</nobr>    | Use it with features which are available only to admins and a limited number of users who have been granted access as `alpha` users. The functionality under this badge should be used without any guarantees, it's unstable, and may be changed significantly over time or be disabled. |
 | ![beta](static/beta.png)       | <nobr>`--orange-400`</nobr> | Use only for unstable functionality of a feature or product. A product/feature with this badge was released to test the product hypothesis, and it can have major changes in the future.                    |
 | ![new](static/new.png)         | <nobr>`--green-400`</nobr>  | Use with products and features that are out of beta, and with new features that are available to all users. Use it to attract attention to a new product or feature.            |
-| ![for you](static/for-you.png) | <nobr>`--voilet-400`</nobr> | Use to promote products in the main navigation sidebar. |
+| ![for you](static/for-you.png) | <nobr>`--voilet-400`</nobr> | Use to promote products in the main navigation sidebar or other places. |
 | ![soon](static/soon.png)       | <nobr>`--gray-400`</nobr>   | Can be placed on products and features that aren't yet available and are displayed for collecting feedback.         |
 
 ### Usage on dark/colored background
