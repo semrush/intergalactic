@@ -17,7 +17,7 @@ const Demo = () => {
       </DataTable.Head>
       <DataTable.Body
         renderCell={(props) => {
-          if (props.name === 'vol') {
+          if (props.columnName === 'vol') {
             return (
                 <Ellipsis trim='middle' containerRect={containerRect} containerRef={containerRef}>
               {props.value}

@@ -5,7 +5,7 @@ import { Box, Collapse } from '@semcore/base-components';
 import style from './style.shadow.css';
 import { Body } from './Body';
 import { getFixedStyle } from '../../utils';
-import {ACCORDION, ROW_GROUP} from '../DataTable/DataTable';
+import { ACCORDION, ROW_GROUP } from '../DataTable/DataTable';
 
 class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
   static displayName = 'Row';
@@ -37,7 +37,13 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
 
     return sstyled(styles)(
       <>
-        <SRow render={Box} role={'row'} aria-rowindex={ariaRowIndex} aria-rowspan={ariaRowSpan} scope={scope}>
+        <SRow
+          render={Box}
+          role={'row'}
+          aria-rowindex={ariaRowIndex}
+          aria-rowspan={ariaRowSpan}
+          scope={scope}
+        >
           {columns.map((column, i) => {
             const index = i;
             const cellValue = row[column.name];

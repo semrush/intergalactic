@@ -5,7 +5,7 @@ import { Flex } from '@semcore/base-components';
 import style from './style.shadow.css';
 import { CellPropsInner, DataTableCellProps } from './Cell.types';
 import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
-import {MergedColumnsCell, MergedRowsCell} from './MergedCells';
+import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
 
 class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner> {
   static displayName = 'Cell';
@@ -80,9 +80,7 @@ class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner>
     const fromCol = columnIndex + 1;
 
     if (cell instanceof MergedColumnsCell) {
-      gridArea = `${fromRow} / ${fromCol} / ${fromRow + 1} / ${
-          fromCol + cell.columnsCount
-      }`;
+      gridArea = `${fromRow} / ${fromCol} / ${fromRow + 1} / ${fromCol + cell.columnsCount}`;
       groupedBy = 'columns';
     } else if (cell instanceof MergedRowsCell) {
       gridArea = `${cell.fromRow} / ${fromCol} / ${cell.toRow} / ${fromCol + 1}`;
@@ -93,20 +91,16 @@ class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner>
       <SCell
         render={Flex}
         innerOutline
-
         tabIndex={-1}
         onKeyDown={this.handleKeyDown}
         onFocus={this.onFocusCell}
-
         name={cellName}
         role={'gridcell'}
         aria-colindex={columnIndex + 1}
         data-grouped-by={groupedBy}
         scope={groupedBy === 'columns' ? 'colgroup' : undefined}
         aria-colspan={cell instanceof MergedColumnsCell ? cell.columnsCount : undefined}
-
         gridArea={gridArea}
-
         borders={column.borders}
         flexWrap={column.flexWrap}
         alignItems={column.alignItems}

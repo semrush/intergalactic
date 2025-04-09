@@ -36,7 +36,7 @@ const Demo = () => {
       </DataTable.Head>
       <DataTable.Body
           renderCell={(props) => {
-            if (props.name === 'keyword') {
+            if (props.columnName === 'keyword') {
               return props.defaultRender();
             }
 
@@ -44,7 +44,7 @@ const Demo = () => {
 
               return typeof value === 'number' && value !== -1
                   ? (
-                      props.name === 'cpc' ? currencyFormat.format(value) : numberFormat.format(value)
+                      props.columnName === 'cpc' ? currencyFormat.format(value) : numberFormat.format(value)
                   )
                   : 'n/a';
           }}

@@ -24,7 +24,7 @@ const Demo = () => {
         </DataTable.Head>
         <DataTable.Body
           renderCell={(props) => {
-            if (props.name === 'keyword') {
+            if (props.columnName === 'keyword') {
               return props.defaultRender();
             }
 

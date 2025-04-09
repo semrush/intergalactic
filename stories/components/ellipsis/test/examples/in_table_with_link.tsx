@@ -21,7 +21,7 @@ const Demo = () => {
       </DataTable.Head>
       <DataTable.Body
         renderCell={(props) => {
-          if (props.name === 'url') {
+          if (props.columnName === 'url') {
             const pageUrl = props.value.toString();
 
             return (

@@ -106,7 +106,7 @@ const Demo = () => {
       <DataTable.Body
 
         renderCell={(props) => {
-          if (props.name === 'keyword') {
+          if (props.columnName === 'keyword') {
             return (
               <>
                 <Checkbox label='Option 1' />
@@ -123,7 +123,7 @@ const Demo = () => {
               </>
             );
           }
-          if (props.name === 'vol') {
+          if (props.columnName === 'vol') {
             return (
               <>
                 <Ellipsis trim='middle'>
