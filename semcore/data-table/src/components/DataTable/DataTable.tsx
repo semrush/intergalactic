@@ -30,6 +30,7 @@ import { MergedColumnsCell, MergedRowsCell } from '../Body/MergedCells';
 import { forkRef } from '@semcore/core/lib/utils/ref';
 import scrollStyles from '../../style/scroll-shadows.shadow.css';
 import { DataTableGroupProps } from '../Head/Group.type';
+import { hasParent } from '@semcore/core/lib/utils/hasParent';
 
 export const ACCORDION = Symbol('accordion');
 export const ROW_GROUP = Symbol('ROW_GROUP');
@@ -351,7 +352,14 @@ class DataTableRoot<D extends DataTableData> extends Component<
         .item(this.focusedCell[1]);
 
       cell?.removeAttribute('inert');
-      cell instanceof HTMLElement && cell.focus();
+
+      if (cell instanceof HTMLElement) {
+        if (hasParent(e.target, cell)) {
+          e.target.focus();
+        } else {
+          cell.focus();
+        }
+      }
 
       e.currentTarget.setAttribute('tabIndex', '-1');
     }

@@ -24,7 +24,7 @@ const Demo = () => {
                 </DataTable.Head>
                 <DataTable.Body
                     renderCell={(props) => {
-                        if (props.name === 'keyword') {
+                        if (props.columnName === 'keyword') {
                             return (
                                 <Flex alignItems='center'>
                                     <Checkbox label="Option 1" />
@@ -57,7 +57,7 @@ const Demo = () => {
                         }
 
 
-                        if (props.name === 'kd') {
+                        if (props.columnName === 'kd') {
                             return (
                                 <>
 
@@ -84,7 +84,7 @@ const Demo = () => {
 
 
 
-                        if (props.name === 'cpc') {
+                        if (props.columnName === 'cpc') {
                             return (
                                 <>
                                     <Button addonLeft={CheckM}> {props.value}</Button>
