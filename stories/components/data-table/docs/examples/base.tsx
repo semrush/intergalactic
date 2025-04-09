@@ -5,7 +5,7 @@ const Demo = () => {
   return (
     <DataTable data={data} aria-label={'Base table example'} defaultGridTemplateColumnWidth={'auto'} wMax={'800px'}>
       <DataTable.Head sticky>
-      <DataTable.Head.Column name='keyword' children='Keyword' />
+        <DataTable.Head.Column name='keyword'>keyword</DataTable.Head.Column>
         <DataTable.Head.Column name='kd' children='KD,%' />
         <DataTable.Head.Column name='cpc' children='CPC' />
         <DataTable.Head.Column name='vol' children='Vol.' />

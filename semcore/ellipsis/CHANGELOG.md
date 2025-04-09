@@ -4,9 +4,9 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [16.0.0] - 2025-03-26
 
-### Added
+### Changed
 
-- Major version.
+- Render ellipsis container with `display: contents`.
 
 ## [2.39.2] - 2025-04-04
 

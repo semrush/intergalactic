@@ -43,7 +43,7 @@ const Demo = () => {
 
         </DataTable.Head.Group >
         <DataTable.Head.Column name='keyword' children='Keyword' sortable />
-        <DataTable.Head.Group borders={'both'} title={'Organic Sessions Organic Sessions Organic SessionsOrganic Sessions Organic Sessions Organic Sessions '}>
+        <DataTable.Head.Group borders={'both'} tag={Ellipsis} title={'Organic Sessions Organic Sessions Organic SessionsOrganic Sessions Organic Sessions Organic Sessions '}>
 
           <DataTable.Head.Column name='kd2' gtcWidth={'100px'} sortable >
             <Ellipsis>
