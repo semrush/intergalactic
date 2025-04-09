@@ -88,16 +88,15 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
             duration={200}
           >
             <SCell
-              // role={'gridcell'}
-              // tabIndex={-1}
-              // innerOutline
               aria-colindex={1}
               aria-level={ariaLevel + 1}
               aria-setsize={1}
               aria-posinset={1}
               row={row}
+              rowIndex={rowIndex + 1}
+              columnIndex={1}
               // @ts-ignore
-              name={ACCORDION}
+              column={{ name: ACCORDION }}
             />
           </SCollapseRow>
         )}

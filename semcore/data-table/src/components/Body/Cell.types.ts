@@ -1,6 +1,6 @@
 import { DTRow } from './Row.types';
 import { DTUse } from '../DataTable/DataTable.types';
-import { DTColumn, CommonColumnType } from '../Head/Column.types';
+import { DTColumn } from '../Head/Column.types';
 
 export type DataTableCellProps = {
   row: DTRow;
