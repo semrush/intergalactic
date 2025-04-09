@@ -786,6 +786,11 @@
       "import": "./platform/AdsToolkit/index.mjs",
       "types": "./platform/AdsToolkit/index.d.ts"
     },
+    "./platform/AIToolkit": {
+      "require": "./platform/AIToolkit/index.js",
+      "import": "./platform/AIToolkit/index.mjs",
+      "types": "./platform/AIToolkit/index.d.ts"
+    },
     "./platform/AppCenter": {
       "require": "./platform/AppCenter/index.js",
       "import": "./platform/AppCenter/index.mjs",
