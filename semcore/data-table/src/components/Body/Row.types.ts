@@ -3,8 +3,11 @@ import { DTColumn } from '../Head/Column.types';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
 
 export type DTRow = Record<DTKey, DTValue | MergedRowsCell | MergedColumnsCell>;
+export type DTRows = Array<DTRow | DTRow[]>;
 
-export type DataTableRowProps = {};
+export type DataTableRowProps = {
+  row: DTRow;
+};
 
 export type RowPropsInner = {
   use: DTUse;
@@ -15,8 +18,9 @@ export type RowPropsInner = {
   expanded?: boolean;
 
   columns: DTColumn[];
-  row: DTRow;
-  rows: DTRow[];
+  row: DTRow | DTRow[];
+  rows: DTRows;
+  flatRows: DTRow[];
   rowIndex: number; // from 0
   ariaRowIndex: number; // from 1 + 1 header
 

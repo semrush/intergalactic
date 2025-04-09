@@ -9,7 +9,6 @@ import style from './style.shadow.css';
 import { ButtonLink } from '@semcore/button';
 import type { DataTableData, SortDirection } from '../DataTable/DataTable.types';
 import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
-import { SORT_ICON_WIDTH } from '../../Head';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import { isFocusInside } from '@semcore/core/lib/utils/focus-lock/isFocusInside';
 
@@ -22,6 +21,8 @@ const ARIA_SORT = {
   desc: 'descending',
   asc: 'ascending',
 } as const;
+
+const SORT_ICON_WIDTH = 20;
 
 const DEFAULT_DIRECTION = 'desc';
 

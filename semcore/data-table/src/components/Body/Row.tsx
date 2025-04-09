@@ -5,7 +5,7 @@ import { Box, Collapse } from '@semcore/base-components';
 import style from './style.shadow.css';
 import { Body } from './Body';
 import { getFixedStyle } from '../../utils';
-import { ACCORDION, ROW_GROUP } from '../DataTable/DataTable';
+import { ACCORDION } from '../DataTable/DataTable';
 
 class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
   static displayName = 'Row';
@@ -32,18 +32,9 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
       'aria-level': ariaLevel = 1,
     } = this.asProps;
 
-    const ariaRowSpan = typeof row[ROW_GROUP] === 'number' ? row[ROW_GROUP] : undefined;
-    const scope = ariaRowSpan ? 'rowgroup' : undefined;
-
     return sstyled(styles)(
       <>
-        <SRow
-          render={Box}
-          role={'row'}
-          aria-rowindex={ariaRowIndex}
-          aria-rowspan={ariaRowSpan}
-          scope={scope}
-        >
+        <SRow render={Box} role={'row'} aria-rowindex={ariaRowIndex}>
           {columns.map((column, i) => {
             const index = i;
             const cellValue = row[column.name];
@@ -104,31 +95,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
         {row[ACCORDION] &&
           Array.isArray(row[ACCORDION]) &&
           expanded &&
-          // <SCollapseRow
-          //     key={rowIndex}
-          //     visible={expanded}
-          //     interactive
-          //     gridArea={accordionDataGridArea}
-          //     gridTemplateAreas={gridTemplateAreas}
-          //     gridTemplateColumns={gridTemplateColumns}
-          //     duration={200}
-          //     // onAnimationStart={(e: React.AnimationEvent<HTMLDivElement>) => {
-          //     //   const target = e.target;
-          //     //   if (target instanceof HTMLElement && this.asProps.expanded) {
-          //     //     target.style.setProperty('display', 'grid');
-          //     //   }
-          //     // }}
-          //     // onAnimationEnd={(e: React.AnimationEvent<HTMLDivElement>) => {
-          //     //   const target = e.target;
-          //     //   if (target instanceof HTMLElement && this.asProps.expanded) {
-          //     //     target.style.setProperty('display', 'contents');
-          //     //   }
-          //     // }}
-          // >
           row[ACCORDION]?.map((subrow, i) => {
-            // const gridArea = `${rowIndex + headerRows + 2} / 1 / ${
-            //     rowIndex + headerRows + 2
-            // } / ${columns.length + 2}`;
             return (
               <Row
                 key={i}

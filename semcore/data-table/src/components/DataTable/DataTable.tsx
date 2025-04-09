@@ -88,7 +88,8 @@ class DataTableRoot<D extends DataTableData> extends Component<
     const { totalRows, expandedRows } = this.asProps;
 
     const expandedRowsCount = expandedRows?.reduce((acc, rowIndex) => {
-      const expandedRows = this.calculateRows()[rowIndex][ACCORDION];
+      const dtRow = this.calculateRows().flat()[rowIndex];
+      const expandedRows = dtRow[ACCORDION];
 
       if (Array.isArray(expandedRows)) {
         acc = acc + expandedRows.length;
@@ -150,6 +151,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
     return {
       columns: this.columns,
       rows,
+      flatRows: rows.flat(),
       use,
       compact: Boolean(compact),
       gridTemplateColumns,
@@ -574,14 +576,14 @@ class DataTableRoot<D extends DataTableData> extends Component<
     return columns.filter(Boolean);
   }
 
-  private calculateRows(): DTRow[] {
+  private calculateRows(): Array<DTRow[] | DTRow> {
     const { data } = this.asProps;
 
-    const rows: DTRow[] = [];
+    const rows: Array<DTRow[] | DTRow> = [];
 
     let rowIndex = 0;
 
-    const addToRows = (row: Record<DTKey, any>, groupedRowsCount?: number) => {
+    const makeDtRow = (row: Record<DTKey, any>) => {
       const dtRow = Object.entries(row).reduce<DTRow>((acc, [key, value]) => {
         const columnsToRow = key.split(this.columnsSplitter);
 
@@ -598,45 +600,45 @@ class DataTableRoot<D extends DataTableData> extends Component<
           acc[ACCORDION] = row[ACCORDION];
         }
 
-        if (groupedRowsCount) {
-          acc[ROW_GROUP] = groupedRowsCount;
-        }
-
         return acc;
       }, {});
 
-      rows.push(dtRow);
-      rowIndex++;
+      return dtRow;
     };
 
-    data.forEach((row, rowIndex) => {
+    data.forEach((row) => {
       const groupedRows: DataTableData | undefined = row[ROW_GROUP];
 
-      const fromRow = rows.length + 2; // 1 - for header, 1 - because start not from 0, but from 1
+      const fromRow = rowIndex + 2; // 1 - for header, 1 - because start not from 0, but from 1
 
       if (groupedRows) {
         const toRow = fromRow + groupedRows.length;
+        const innerRows: DTRow[] = [];
         groupedRows.forEach((childRow, index) => {
-          // if (index === 0) {
-          const rowData = {
-            ...childRow,
-            ...Object.entries(row).reduce<DTRow>((acc, [key, value]) => {
-              acc[key] = new MergedRowsCell(value, [fromRow, toRow]);
-              return acc;
-            }, {}),
-          };
-
+          let dtRow: DTRow;
           if (index === 0) {
-            addToRows(rowData, groupedRows.length);
+            const rowData = {
+              ...childRow,
+              ...Object.entries(row).reduce<DTRow>((acc, [key, value]) => {
+                acc[key] = new MergedRowsCell(value, [fromRow, toRow]);
+                return acc;
+              }, {}),
+            };
+            dtRow = makeDtRow(rowData);
           } else {
-            addToRows(rowData);
+            dtRow = makeDtRow(childRow);
           }
-          // } else {
-          //   addToRows(childRow);
-          // }
+
+          innerRows.push(dtRow);
+          rowIndex++;
         });
+
+        rows.push(innerRows);
       } else {
-        addToRows(row);
+        const dtRow = makeDtRow(row);
+
+        rows.push(dtRow);
+        rowIndex++;
       }
     });
 

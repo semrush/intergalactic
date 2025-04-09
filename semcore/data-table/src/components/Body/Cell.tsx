@@ -100,6 +100,7 @@ class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner>
         data-grouped-by={groupedBy}
         scope={groupedBy === 'columns' ? 'colgroup' : undefined}
         aria-colspan={cell instanceof MergedColumnsCell ? cell.columnsCount : undefined}
+        aria-rowspan={cell instanceof MergedRowsCell ? cell.toRow - cell.fromRow : undefined}
         gridArea={gridArea}
         borders={column.borders}
         flexWrap={column.flexWrap}

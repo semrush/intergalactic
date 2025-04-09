@@ -1,4 +1,4 @@
-import { DTRow } from './Row.types';
+import { DTRow, DTRows } from './Row.types';
 import { DTColumn } from '../Head/Column.types';
 import { DTUse } from '../DataTable/DataTable.types';
 
@@ -22,7 +22,8 @@ export type DataTableBodyProps = {
 };
 
 export type BodyPropsInner = {
-  rows: DTRow[];
+  rows: DTRows;
+  flatRows: DTRow[];
   columns: DTColumn[];
   use: DTUse;
   compact: boolean;

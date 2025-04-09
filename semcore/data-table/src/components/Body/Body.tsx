@@ -6,7 +6,7 @@ import { Row } from './Row';
 
 import style from './style.shadow.css';
 import { Cell } from './Cell';
-import { DataTableRowProps, RowPropsInner } from './Row.types';
+import { DataTableRowProps, DTRow, RowPropsInner } from './Row.types';
 import { DataTableCellProps } from './Cell.types';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
 import { ACCORDION } from '../DataTable/DataTable';
@@ -19,9 +19,10 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
   static displayName = 'Body';
   static style = style;
 
-  getRowProps(_: any, index: number): RowPropsInner {
+  getRowProps(props: { row: DTRow }, index: number): RowPropsInner {
     const {
       rows,
+      flatRows,
       use,
       gridTemplateAreas,
       gridTemplateColumns,
@@ -29,11 +30,11 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
       columns,
       onExpandRow,
     } = this.asProps;
-    const row = rows[index];
+    const row = props.row;
 
     const rowIndex = (expandedRows ?? []).reduce((acc, item) => {
       if (item < index) {
-        const expandedRow = rows[item][ACCORDION];
+        const expandedRow = flatRows[item][ACCORDION];
         if (Array.isArray(expandedRow)) {
           acc = acc + expandedRow.length;
         } else {
@@ -61,6 +62,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
       rowIndex: index,
       ariaRowIndex,
       rows,
+      flatRows,
       row,
       expandedRows,
       onExpandRow,
@@ -129,13 +131,23 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
 
   render() {
     const SBody = Root;
+    const SRowGroup = Box;
     const SSpinContainer = Box;
     const { rows, styles, loading, headerHeight } = this.asProps;
 
     return sstyled(styles)(
       <SBody render={Box}>
-        {rows.map((_, index) => {
-          return <Body.Row key={index} />;
+        {rows.map((row, index) => {
+          if (Array.isArray(row)) {
+            return sstyled(styles)(
+              <SRowGroup role={'rowgroup'} key={index}>
+                {row.map((item, index) => {
+                  return <Body.Row key={index} row={item} />;
+                })}
+              </SRowGroup>,
+            );
+          }
+          return <Body.Row key={index} row={row} />;
         })}
         {loading && (
           // @ts-ignore
