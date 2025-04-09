@@ -2,13 +2,11 @@ import { DTRow } from './Row.types';
 import { DTUse } from '../DataTable/DataTable.types';
 import { DTColumn, CommonColumnType } from '../Head/Column.types';
 
-export type DataTableCellProps = CommonColumnType & {
-  name: string | symbol;
+export type DataTableCellProps = {
   row: DTRow;
-  columnIndex: number;
-  column: DTColumn;
   rowIndex: number;
-  gridArea?: string;
+  column: DTColumn;
+  columnIndex: number;
 };
 
 export type CellPropsInner = {

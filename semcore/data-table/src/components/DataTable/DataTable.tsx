@@ -581,7 +581,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
     let rowIndex = 0;
 
-    const addToRows = (row: Record<DTKey, any>) => {
+    const addToRows = (row: Record<DTKey, any>, groupedRowsCount?: number) => {
       const dtRow = Object.entries(row).reduce<DTRow>((acc, [key, value]) => {
         const columnsToRow = key.split(this.columnsSplitter);
 
@@ -596,6 +596,10 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
         if (row[ACCORDION]) {
           acc[ACCORDION] = row[ACCORDION];
+        }
+
+        if (groupedRowsCount) {
+          acc[ROW_GROUP] = groupedRowsCount;
         }
 
         return acc;
@@ -622,7 +626,11 @@ class DataTableRoot<D extends DataTableData> extends Component<
             }, {}),
           };
 
-          addToRows(rowData);
+          if (index === 0) {
+            addToRows(rowData, groupedRows.length);
+          } else {
+            addToRows(rowData);
+          }
           // } else {
           //   addToRows(childRow);
           // }

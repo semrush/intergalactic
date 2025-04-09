@@ -71,8 +71,8 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
     const { use, renderCell, expandedRows, styles, getI18nText, onExpandRow } = this.asProps;
     const SAccordionToggle = ButtonLink;
 
-    const cellValue = props.row[props.name];
-    let dataKey = props.name;
+    let dataKey = props.column.name;
+    const cellValue = props.row[dataKey];
 
     let value: DTValue = '';
     const isMergedRows = cellValue instanceof MergedRowsCell;
@@ -112,7 +112,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
       use,
       children: renderCell
         ? renderCell({
-            columnName: props.name,
+            columnName: props.column.name,
             row: props.row,
             column: props.column,
             rowIndex: props.rowIndex,

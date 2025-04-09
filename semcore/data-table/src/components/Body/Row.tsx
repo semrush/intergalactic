@@ -5,8 +5,7 @@ import { Box, Collapse } from '@semcore/base-components';
 import style from './style.shadow.css';
 import { Body } from './Body';
 import { getFixedStyle } from '../../utils';
-import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
-import { ACCORDION } from '../DataTable/DataTable';
+import {ACCORDION, ROW_GROUP} from '../DataTable/DataTable';
 
 class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
   static displayName = 'Row';
@@ -33,9 +32,12 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
       'aria-level': ariaLevel = 1,
     } = this.asProps;
 
+    const ariaRowSpan = typeof row[ROW_GROUP] === 'number' ? row[ROW_GROUP] : undefined;
+    const scope = ariaRowSpan ? 'rowgroup' : undefined;
+
     return sstyled(styles)(
       <>
-        <SRow render={Box} role={'row'} aria-rowindex={ariaRowIndex}>
+        <SRow render={Box} role={'row'} aria-rowindex={ariaRowIndex} aria-rowspan={ariaRowSpan} scope={scope}>
           {columns.map((column, i) => {
             const index = i;
             const cellValue = row[column.name];
@@ -54,42 +56,16 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
               }
             }
 
-            let groupedBy: null | 'rows' | 'columns' = null;
-            let gridArea: string | undefined = undefined;
-
-            const fromRow = rowIndex + 2;
-            const fromCol = index + 1;
-
-            if (cellValue instanceof MergedColumnsCell) {
-              gridArea = `${fromRow} / ${fromCol} / ${fromRow + 1} / ${
-                fromCol + cellValue.columnsCount
-              }`;
-              groupedBy = 'columns';
-            } else if (cellValue instanceof MergedRowsCell) {
-              gridArea = `${cellValue.fromRow} / ${fromCol} / ${cellValue.toRow} / ${fromCol + 1}`;
-              groupedBy = 'rows';
-            }
-
             return (
               <Body.Cell
                 key={index}
                 aria-expanded={index === 0 ? expanded : undefined}
-                aria-colindex={index + 1}
                 data-aria-level={index === 0 ? ariaLevel : undefined}
-                data-grouped-by={groupedBy}
                 row={row}
                 rowIndex={rowIndex}
                 columnIndex={index}
-                fixed={column.fixed}
                 style={style}
-                name={column.name}
                 column={column}
-                borders={column.borders}
-                flexWrap={column.flexWrap}
-                alignItems={column.alignItems}
-                alignContent={column.alignContent}
-                justifyContent={column.justifyContent}
-                gridArea={gridArea}
               />
             );
           })}

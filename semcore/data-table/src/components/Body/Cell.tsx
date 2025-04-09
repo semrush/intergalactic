@@ -5,7 +5,7 @@ import { Flex } from '@semcore/base-components';
 import style from './style.shadow.css';
 import { CellPropsInner, DataTableCellProps } from './Cell.types';
 import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
-import { MergedColumnsCell } from './MergedCells';
+import {MergedColumnsCell, MergedRowsCell} from './MergedCells';
 
 class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner> {
   static displayName = 'Cell';
@@ -68,20 +68,51 @@ class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner>
 
   render() {
     const SCell = Root;
-    const { Children, styles, row, column } = this.asProps;
+    const { Children, styles, row, column, columnIndex, rowIndex } = this.asProps;
 
     const cell = row[column.name];
     const cellName = cell instanceof MergedColumnsCell ? cell.dataKey : column.name;
 
+    let groupedBy: null | 'rows' | 'columns' = null;
+    let gridArea: string | undefined = undefined;
+
+    const fromRow = rowIndex + 2;
+    const fromCol = columnIndex + 1;
+
+    if (cell instanceof MergedColumnsCell) {
+      gridArea = `${fromRow} / ${fromCol} / ${fromRow + 1} / ${
+          fromCol + cell.columnsCount
+      }`;
+      groupedBy = 'columns';
+    } else if (cell instanceof MergedRowsCell) {
+      gridArea = `${cell.fromRow} / ${fromCol} / ${cell.toRow} / ${fromCol + 1}`;
+      groupedBy = 'rows';
+    }
+
     return sstyled(styles)(
       <SCell
         render={Flex}
-        role={'gridcell'}
-        tabIndex={-1}
         innerOutline
+
+        tabIndex={-1}
         onKeyDown={this.handleKeyDown}
         onFocus={this.onFocusCell}
-        use:name={cellName}
+
+        name={cellName}
+        role={'gridcell'}
+        aria-colindex={columnIndex + 1}
+        data-grouped-by={groupedBy}
+        scope={groupedBy === 'columns' ? 'colgroup' : undefined}
+        aria-colspan={cell instanceof MergedColumnsCell ? cell.columnsCount : undefined}
+
+        gridArea={gridArea}
+
+        borders={column.borders}
+        flexWrap={column.flexWrap}
+        alignItems={column.alignItems}
+        alignContent={column.alignContent}
+        justifyContent={column.justifyContent}
+        fixed={column.fixed}
       >
         <Children />
       </SCell>,
