@@ -53,7 +53,7 @@ const Demo = () => {
 
           </DataTable.Head.Column>
 
-          <DataTable.Head.Column name='cpc' children='CPC' sortable />
+          <DataTable.Head.Column name='cpc2' children='CPC' sortable />
           <DataTable.Head.Column name='vol' children='Vol.' />
         </DataTable.Head.Group>
         <DataTable.Head.Column name='other' children='Other' />
