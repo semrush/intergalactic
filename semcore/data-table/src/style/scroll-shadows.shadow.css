@@ -1,11 +1,18 @@
 SScrollArea {
   width: fit-content;
-}
 
-SShadowHorizontal,
-SShadowVertical {
-  &:before,
-  &:after {
-    z-index: 2;
+  SShadowVertical {
+    &:before {
+      display: none;
+    }
+    &:after {
+      z-index: 2;
+    }
+  }
+  SShadowHorizontal {
+    &:before,
+    &:after {
+      z-index: 2;
+    }
   }
 }
