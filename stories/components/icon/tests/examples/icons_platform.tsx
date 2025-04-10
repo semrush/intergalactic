@@ -9,6 +9,7 @@ import ContentToolkit from '@semcore/icon/platform/ContentToolkit';
 import AdsToolkit from '@semcore/icon/platform/AdsToolkit';
 import ReportsToolkit from '@semcore/icon/platform/ReportsToolkit';
 import AppCenter from '@semcore/icon/platform/AppCenter';
+import AIToolkit from '@semcore/icon/platform/AIToolkit';
 import { Flex } from '@semcore/flex-box';
 
 const Demo = () => {
@@ -51,6 +52,8 @@ const Demo = () => {
         />
 
         <Hint tag={AppCenter} interactive title='App Center' color='icon-secondary-neutral' />
+
+        <Hint tag={AIToolkit} interactive title='AI Toolkit' color='icon-secondary-neutral' />
       </Flex>
     </>
   );
