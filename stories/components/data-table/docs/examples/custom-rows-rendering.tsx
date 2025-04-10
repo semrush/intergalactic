@@ -17,6 +17,20 @@ const Demo = () => {
         <DataTable.Head.Column name='vol' children='Vol.' />
       </DataTable.Head>
       <DataTable.Body
+          renderCell={(props) => {
+              if (props.dataKey === 'tags') {
+                  const tags = props.row[props.dataKey];
+
+                  if (Array.isArray(tags)) {
+                      return tags.map((_, i) => {
+                          return <div key={i}>tag {i + 1}</div>;
+                      });
+                  }
+
+                  return null;
+              }
+              return props.defaultRender();
+          }}
         // TODO Brauer Ilia add virtual logic
         // renderRows={({ rows, renderRow }) => {
         //   const rowRenderer = ({
@@ -60,8 +74,8 @@ const data = Array(100)
   .map((_, i) => ({
     keyword: `keyword ${i}`,
     tags: Array(Math.floor(Math.random() * 4))
-      .fill(0)
-      .map((_, i) => <div key={i}>tag {i + 1}</div>),
+      .fill(0),
+      // .map((_, i) => <div key={i}>tag {i + 1}</div>),
     cpc: Math.round(Math.random() * 10),
     vol: Math.round(Math.random() * 1000000),
   }));

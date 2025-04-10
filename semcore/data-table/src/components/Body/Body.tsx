@@ -131,7 +131,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
         isMergedColumns,
       });
 
-      if (this.isReactNode(external)) {
+      if (this.isReactNode(external) || Array.isArray(external)) {
         extraProps.children = external;
       } else {
         for (const key in external) {
