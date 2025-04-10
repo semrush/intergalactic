@@ -336,6 +336,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
   handleFocus = (e: React.FocusEvent<HTMLElement, HTMLElement>) => {
     if (this.asProps.loading) {
       this.spinnerRef.current?.focus();
+      e.currentTarget.setAttribute('tabIndex', '-1');
     } else if (
       (!e.relatedTarget || !isFocusInside(e.currentTarget, e.relatedTarget)) &&
       lastInteraction.isKeyboard()

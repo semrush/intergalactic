@@ -165,7 +165,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
         })}
         {loading && (
           // @ts-ignore
-          <SSpinContainer headerHeight={`${headerHeight}px`} tabIndex={-1} ref={spinnerRef}>
+          <SSpinContainer innerOutline headerHeight={`${headerHeight}px`} tabIndex={-1} ref={spinnerRef}>
             <Spin size={'xxl'} />
           </SSpinContainer>
         )}
