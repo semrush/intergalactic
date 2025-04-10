@@ -1,7 +1,7 @@
 import { DTValue, DTUse, DataTableData } from '../DataTable/DataTable.types';
 import { DTColumn } from '../Head/Column.types';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
-import { ACCORDION } from '@semcore/data-table';
+import { ACCORDION } from '../DataTable/DataTable';
 
 export type DTRow = {
   [key: string]: DTValue | MergedRowsCell | MergedColumnsCell;
