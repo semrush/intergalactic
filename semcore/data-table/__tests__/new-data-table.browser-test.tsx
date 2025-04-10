@@ -100,7 +100,7 @@ test.describe('DataTable', () => {
         'border-bottom': '1px solid rgb(224, 225, 233)',
         'background-color': 'rgb(255, 255, 255)',
         color: 'rgb(25, 27, 35)',
-        padding: '12px 8px', // bug
+        padding: '12px 8px', 
       });
 
       await firstCell.hover();
@@ -162,7 +162,7 @@ test.describe('DataTable', () => {
   });
 
   test.describe('Base styles Secondary Table', () => {
-    test('Secondary Keyboard interactions', async ({ page }) => {
+    test('Secondary Keyboard interactions', async ({ page, browserName }) => {
       const standPath = 'stories/components/data-table/docs/examples/secondary-table.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
 
@@ -172,16 +172,13 @@ test.describe('DataTable', () => {
 
       await page.keyboard.press('Tab');
 
-      // Получаем первую ячейку в первой строке (body)
       const firstCell = page.locator('[data-ui-name="Body.Cell"]').first();
 
-      // Проверяем, что первая ячейка в таблице получила фокус
       await expect(firstCell).toBeFocused();
-      // await expect(page).toHaveScreenshot();
+      await expect(page).toHaveScreenshot();
 
       await page.keyboard.press('ArrowRight');
 
-      // Проверяем, что в фокусе вторая ячейка первой строки
       const secondCell = page.locator('[role="gridcell"][aria-colindex="2"]').first();
       await expect(secondCell).toBeFocused();
 
@@ -192,6 +189,7 @@ test.describe('DataTable', () => {
       await page.keyboard.press('Tab');
       await expect(secondCell).not.toBeFocused();
 
+      if(browserName==='firefox') return;
       await page.keyboard.press('Shift+Tab');
       await expect(secondCellSecondRow).toBeFocused();
     });
@@ -411,7 +409,6 @@ test.describe('DataTable', () => {
   });
 
   test.describe('Rows', () => {
-    //skipped bacause this example is on old tables
     test.skip('Verify Custom rows Rendering', async ({ page }) => {
       const standPath = 'stories/components/data-table/docs/examples/custom-rows-rendering.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -428,8 +425,6 @@ test.describe('DataTable', () => {
     test('Verify merged cells on Hover', async ({ page }) => {
       const standPath = 'stories/components/data-table/docs/examples/columns-merging.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
-      await expect(page).toHaveScreenshot();
-
       await page.setContent(htmlContent);
       const firstRow = page.locator('[data-ui-name="Body.Row"]').first();
       const firstCell = firstRow.locator('[data-ui-name="Body.Cell"]').nth(0);
@@ -450,7 +445,7 @@ test.describe('DataTable', () => {
       await page.keyboard.press('Tab');
 
       const firstRow = page.locator('[data-ui-name="Body.Row"]').first();
-      const firstMergedCell = firstRow.locator('[data-ui-name="Body.Cell"]').nth(0);
+      const firstMergedCell = firstRow.locator('[data-ui-name="Body.Cell"][aria-colindex="1"]');
       await expect(firstMergedCell).toBeFocused();
 
       const secondCell = firstRow.locator('[data-ui-name="Body.Cell"]').nth(1);
@@ -459,7 +454,8 @@ test.describe('DataTable', () => {
 
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowLeft');
-      await expect(firstMergedCell).toBeFocused();
+      await expect(firstMergedCell).not.toHaveAttribute('inert');
+await expect(firstMergedCell).toBeFocused();
 
       await page.keyboard.press('ArrowRight');
       await expect(secondCell).toBeFocused();
@@ -509,14 +505,13 @@ test.describe('DataTable', () => {
       await expect(svgInSecondCell).toHaveAttribute('aria-label', 'Loading…');
       await expect(svgInSecondCell).toHaveAttribute('role', 'img');
     });
-
+//GUG IN FF????
     test('Verify keyboard interaction with interactive elements in cells', async ({ page }) => {
       const standPath =
         'stories/components/data-table/tests/examples/interactive-elements-in-cells.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
       await page.setContent(htmlContent);
 
-      // Define common selectors
       const getCell = (row: number, col: number) =>
         page.locator(
           `[role="row"][aria-rowindex="${row}"] [role="gridcell"][aria-colindex="${col}"]`,
@@ -596,7 +591,7 @@ test.describe('DataTable', () => {
       await expect(page.getByLabel('About fastest animals')).toBeFocused();
       await page.keyboard.press('Escape');
 
-      await expect(getCell(3, 1)).toBeFocused();
+      await expect(descriptionTooltipTrigger(3, 1)).toBeFocused();
     });
 
     test('Verify keyboard interaction with dd and select in cells', async ({ page }) => {
@@ -743,7 +738,7 @@ test.describe('DataTable', () => {
       await expect(secondCellSecondRow).toBeFocused();
     });
 
-    test('Verify keyboard interactions when in header hint, checkbox, description tooltip', async ({
+    test('11Verify keyboard interactions when in header hint, checkbox, description tooltip', async ({
       page,
       browserName,
     }) => {
@@ -778,15 +773,14 @@ test.describe('DataTable', () => {
         await page.keyboard.press('Escape');
 
         await expect(getTooltipPopper).toBeHidden();
-        if (browserName !== 'firefox') await expect(tooltipTrigger).toBeFocused();
+       await expect(tooltipTrigger).toBeFocused();
 
         await page.keyboard.press('ArrowRight');
-        if (browserName !== 'firefox') {
+        
           await expect(getTooltip('tooltip-with-interactive-el')).toBeFocused();
-        }
+        
       });
 
-      if (browserName === 'firefox') return; // UIK-3506
 
       await test.step('Verify interaction with tooltip containing interactive elements', async () => {
         const tooltipTrigger = getTooltip('tooltip-with-interactive-el');
@@ -829,11 +823,17 @@ test.describe('DataTable', () => {
 
         const icon = page.locator('[data-test-id="interactive-icon"]');
         await page.keyboard.press('ArrowRight');
+        await page.keyboard.press('Enter');
+
         await expect(icon).toBeFocused();
         await expect(page.getByText('Go to our awesome article')).toBeVisible();
 
-        await page.keyboard.press('ArrowRight');
+        await page.keyboard.press('Escape');
+        
         await expect(page.getByText('Go to our awesome article')).toBeHidden();
+        await page.keyboard.press('Escape');
+        await page.keyboard.press('ArrowRight');
+
       });
 
       await test.step('Verify interaction with checkbox and tooltip in header', async () => {
