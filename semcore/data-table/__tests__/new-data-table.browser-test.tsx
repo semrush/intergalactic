@@ -100,7 +100,7 @@ test.describe('DataTable', () => {
         'border-bottom': '1px solid rgb(224, 225, 233)',
         'background-color': 'rgb(255, 255, 255)',
         color: 'rgb(25, 27, 35)',
-        padding: '12px 8px', 
+        padding: '12px 8px',
       });
 
       await firstCell.hover();
@@ -189,7 +189,7 @@ test.describe('DataTable', () => {
       await page.keyboard.press('Tab');
       await expect(secondCell).not.toBeFocused();
 
-      if(browserName==='firefox') return;
+      if (browserName === 'firefox') return;
       await page.keyboard.press('Shift+Tab');
       await expect(secondCellSecondRow).toBeFocused();
     });
@@ -455,7 +455,7 @@ test.describe('DataTable', () => {
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowLeft');
       await expect(firstMergedCell).not.toHaveAttribute('inert');
-await expect(firstMergedCell).toBeFocused();
+      await expect(firstMergedCell).toBeFocused();
 
       await page.keyboard.press('ArrowRight');
       await expect(secondCell).toBeFocused();
@@ -505,7 +505,7 @@ await expect(firstMergedCell).toBeFocused();
       await expect(svgInSecondCell).toHaveAttribute('aria-label', 'Loading…');
       await expect(svgInSecondCell).toHaveAttribute('role', 'img');
     });
-//GUG IN FF????
+    //GUG IN FF????
     test('Verify keyboard interaction with interactive elements in cells', async ({ page }) => {
       const standPath =
         'stories/components/data-table/tests/examples/interactive-elements-in-cells.tsx';
@@ -773,14 +773,12 @@ await expect(firstMergedCell).toBeFocused();
         await page.keyboard.press('Escape');
 
         await expect(getTooltipPopper).toBeHidden();
-       await expect(tooltipTrigger).toBeFocused();
+        await expect(tooltipTrigger).toBeFocused();
 
         await page.keyboard.press('ArrowRight');
-        
-          await expect(getTooltip('tooltip-with-interactive-el')).toBeFocused();
-        
-      });
 
+        await expect(getTooltip('tooltip-with-interactive-el')).toBeFocused();
+      });
 
       await test.step('Verify interaction with tooltip containing interactive elements', async () => {
         const tooltipTrigger = getTooltip('tooltip-with-interactive-el');
@@ -829,11 +827,10 @@ await expect(firstMergedCell).toBeFocused();
         await expect(page.getByText('Go to our awesome article')).toBeVisible();
 
         await page.keyboard.press('Escape');
-        
+
         await expect(page.getByText('Go to our awesome article')).toBeHidden();
         await page.keyboard.press('Escape');
         await page.keyboard.press('ArrowRight');
-
       });
 
       await test.step('Verify interaction with checkbox and tooltip in header', async () => {
