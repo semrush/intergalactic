@@ -11,6 +11,10 @@ export type CommonColumnType = {
    */
   sortable?: boolean;
   /**
+   * Flag for enable ellipsis for Columns children
+   */
+  withEllipsis?: boolean;
+  /**
    * Fixes column to some side of table
    */
   fixed?: 'left' | 'right';

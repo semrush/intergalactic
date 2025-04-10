@@ -101,6 +101,16 @@ export const Head = createComponent(HeadRoot, { Column, Group }) as Intergalacti
   'div',
   DataTableHeadProps
 > & {
-  Column: Intergalactic.Component<'div', DataTableColumnProps>;
-  Group: Intergalactic.Component<'div', DataTableGroupProps>;
+  Column: (
+      props: Intergalactic.InternalTypings.EfficientOmit<
+          Intergalactic.InternalTypings.ComponentProps<'div', 'div', DataTableColumnProps, {}, []>,
+          'tag'
+      >,
+  ) => Intergalactic.InternalTypings.ComponentRenderingResults;
+  Group: (
+      props: Intergalactic.InternalTypings.EfficientOmit<
+          Intergalactic.InternalTypings.ComponentProps<'div', 'div', DataTableGroupProps, {}, []>,
+          'tag'
+      >,
+  ) => Intergalactic.InternalTypings.ComponentRenderingResults;
 };

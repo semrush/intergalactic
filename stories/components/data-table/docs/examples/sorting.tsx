@@ -1,5 +1,6 @@
 import React from 'react';
 import { DataTable, DataTableSort } from '@semcore/data-table';
+import Ellipsis from '@semcore/ellipsis';
 
 type SortableColumn = Exclude<keyof typeof data[0], 'keyword'>;
 
@@ -30,7 +31,9 @@ const Demo = () => {
     <DataTable data={sortedData} sort={sort} onSortChange={handleSortChange} aria-label={'Sorting'}>
       <DataTable.Head>
         <DataTable.Head.Column name='keyword' children='Keyword' justifyContent='left' sortable />
-        <DataTable.Head.Column name='kd' children='KD,%' justifyContent='right' gtcWidth={'minmax(0, 68px)'} sortable />
+          <DataTable.Head.Column name='kd' justifyContent='right' gtcWidth={'minmax(0, 68px)'} sortable withEllipsis>
+              KD,% and some another text long
+          </DataTable.Head.Column>
         <DataTable.Head.Column name='cpc' children='CPC' gtcWidth={'minmax(0, 60px)'} sortable />
         <DataTable.Head.Column name='vol' children='Vol.' gtcWidth={'minmax(0, 120px)'} justifyContent='left' sortable />
       </DataTable.Head>
