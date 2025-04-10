@@ -31,8 +31,8 @@ const Demo = () => {
     <DataTable data={sortedData} sort={sort} onSortChange={handleSortChange} aria-label={'Sorting'}>
       <DataTable.Head>
         <DataTable.Head.Column name='keyword' children='Keyword' justifyContent='left' sortable />
-          <DataTable.Head.Column name='kd' justifyContent='right' gtcWidth={'minmax(0, 68px)'} sortable withEllipsis>
-              KD,% and some another text long
+          <DataTable.Head.Column name='kd' justifyContent='right' gtcWidth={'minmax(0, 68px)'} sortable>
+              <Ellipsis>KD,% and some another text long</Ellipsis>
           </DataTable.Head.Column>
         <DataTable.Head.Column name='cpc' children='CPC' gtcWidth={'minmax(0, 60px)'} sortable />
         <DataTable.Head.Column name='vol' children='Vol.' gtcWidth={'minmax(0, 120px)'} justifyContent='left' sortable />

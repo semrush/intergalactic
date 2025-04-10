@@ -11,7 +11,6 @@ import type { DataTableData, SortDirection } from '../DataTable/DataTable.types'
 import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import { isFocusInside } from '@semcore/core/lib/utils/focus-lock/isFocusInside';
-import Ellipsis from '@semcore/ellipsis';
 
 const SORTING_ICON = {
   desc: SortDesc,
@@ -253,17 +252,8 @@ export class Column<D extends DataTableData> extends Component<
     const SColumn = Root;
     const SSortWrapper = 'div';
     const SSortButton = ButtonLink;
-    const {
-      styles,
-      sortable,
-      sort,
-      uid,
-      name,
-      parent,
-      sortableColumnDescribeId,
-      withEllipsis,
-      Children,
-    } = this.asProps;
+    const { styles, sortable, sort, uid, name, parent, sortableColumnDescribeId, Children } =
+      this.asProps;
 
     const SSortIcon = sort ? SORTING_ICON[sort[1]] : SORTING_ICON['asc'];
     const isSorted = sort?.[0] === name;
@@ -297,13 +287,7 @@ export class Column<D extends DataTableData> extends Component<
         aria-sort={ariaSortValue}
         onClick={this.handleSortClick}
       >
-        {withEllipsis ? (
-          <Ellipsis>
-            <Children />
-          </Ellipsis>
-        ) : (
-          <Children />
-        )}
+        <Children />
 
         {sortable && (
           <SSortWrapper ref={this.sortWrapperRef}>

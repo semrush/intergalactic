@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Component, createComponent, Intergalactic, Root, sstyled } from '@semcore/core';
 import { DataTableHeadProps, HeadPropsInner } from './Head.types';
 import { Box, ScreenReaderOnly } from '@semcore/base-components';
+import Tooltip from '@semcore/tooltip';
 
 import style from './style.shadow.css';
 import { Column } from './Column';
@@ -102,15 +103,21 @@ export const Head = createComponent(HeadRoot, { Column, Group }) as Intergalacti
   DataTableHeadProps
 > & {
   Column: (
-    props: Intergalactic.InternalTypings.EfficientOmit<
-      Intergalactic.InternalTypings.ComponentProps<'div', 'div', DataTableColumnProps, {}, []>,
-      'tag'
+    props: Intergalactic.InternalTypings.ComponentProps<
+      'div' | typeof Tooltip,
+      'div',
+      DataTableColumnProps,
+      {},
+      []
     >,
   ) => Intergalactic.InternalTypings.ComponentRenderingResults;
   Group: (
-    props: Intergalactic.InternalTypings.EfficientOmit<
-      Intergalactic.InternalTypings.ComponentProps<'div', 'div', DataTableGroupProps, {}, []>,
-      'tag'
+    props: Intergalactic.InternalTypings.ComponentProps<
+      'div' | typeof Tooltip,
+      'div',
+      DataTableGroupProps,
+      {},
+      []
     >,
   ) => Intergalactic.InternalTypings.ComponentRenderingResults;
 };

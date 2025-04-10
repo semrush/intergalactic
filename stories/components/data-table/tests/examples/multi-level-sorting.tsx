@@ -43,12 +43,12 @@ const Demo = () => {
 
         </DataTable.Head.Group >
         <DataTable.Head.Column name='keyword' children='Keyword' sortable />
-        <DataTable.Head.Group borders={'both'} withEllipsis title={'Organic Sessions Organic Sessions Organic SessionsOrganic Sessions Organic Sessions Organic Sessions '}>
+        <DataTable.Head.Group borders={'both'} title={'Organic Sessions Organic Sessions Organic SessionsOrganic Sessions Organic Sessions Organic Sessions '}>
 
           <DataTable.Head.Column name='kd2' gtcWidth={'100px'} sortable >
-            <Ellipsis>
+              <Ellipsis>
               Kd Organic Sessions Organic Sessions
-            </Ellipsis>
+              </Ellipsis>
             <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
 
           </DataTable.Head.Column>
