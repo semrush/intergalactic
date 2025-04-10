@@ -7,6 +7,8 @@ export type DataTableCellProps = {
   rowIndex: number;
   column: DTColumn;
   columnIndex: number;
+
+  children?: React.ReactNode;
 };
 
 export type CellPropsInner = {

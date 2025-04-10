@@ -1,6 +1,6 @@
 import React from 'react';
 import { scaleLinear } from 'd3-scale';
-import { DataTable, ACCORDION} from '@semcore/data-table';
+import { DataTable, ACCORDION, DataTableData } from '@semcore/data-table';
 import { Plot, Line, XAxis, YAxis, ResponsiveContainer, minMax } from '@semcore/d3-chart';
 
 const Demo = () => {
@@ -55,7 +55,7 @@ const ChartExample = () => {
   );
 };
 
-const data = [
+const data: DataTableData = [
   {
     keyword: 'ebay buy',
     kd: '77.8',
@@ -67,8 +67,10 @@ const data = [
     keyword: 'www.ebay.com',
     kd: '11.2',
     cpc: '$3.4',
-    vol: '65,457,920',
-    [ACCORDION]: (<ChartExample/>),
+    vol: {
+      toString: () => '65,457,920',
+      [ACCORDION]: (<ChartExample/>),
+    },
   },
   {
     keyword: 'www.ebay.com',

@@ -92,7 +92,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
     }
 
     const defaultRender = () => {
-      if (props.columnIndex === 0 && props.row[ACCORDION]) {
+      if ((props.columnIndex === 0 && props.row[ACCORDION]) || value[ACCORDION]) {
         return sstyled(styles)(
           <>
             <SAccordionToggle
@@ -104,17 +104,17 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
             >
               <SAccordionToggle.Addon tag={ChevronRightM} />
             </SAccordionToggle>
-            {value}
+            {value.toString()}
           </>,
         );
       }
 
-      return value;
+      return value.toString();
     };
 
     const extraProps: Record<string, any> = {
       use,
-      children: defaultRender,
+      children: props.children ?? defaultRender,
     };
 
     if (renderCell) {

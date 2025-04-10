@@ -1,5 +1,6 @@
 import { Intergalactic } from '@semcore/core';
 import { BoxProps } from '@semcore/base-components';
+import {ACCORDION, ROW_GROUP} from './DataTable';
 
 /**
  * Datatable must have an accessible name (aria-table-name).
@@ -19,9 +20,16 @@ export type DataTableChangeSort<Column> = (
   e?: React.SyntheticEvent,
 ) => void;
 
-export type DTKey = string | symbol;
-export type DTValue = string | number | boolean;
-export type DataTableData = Array<Record<DTKey, any>>;
+export type DataRowItem = {
+    [key: string]: DTValue;
+    [ACCORDION]?: React.ReactNode | DataTableData;
+    [ROW_GROUP]?: DataTableData;
+}
+export interface DTValue {
+    toString(): string;
+    [ACCORDION]?: React.ReactNode | DataTableData;
+}
+export type DataTableData = DataRowItem[];
 
 export type DTUse = 'primary' | 'secondary';
 
@@ -51,7 +59,7 @@ export type DataTableProps<D extends DataTableData> = DataTableAriaProps &
     defaultGridTemplateColumnWidth?: 'auto' | '1fr';
 
     /**
-     * Flag for compact view (less paddings)
+     * Flag for compact view (fewer paddings)
      */
     compact?: boolean;
 

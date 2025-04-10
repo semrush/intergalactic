@@ -1,8 +1,12 @@
-import { DTValue, DTKey, DTUse } from '../DataTable/DataTable.types';
+import { DTValue, DTUse, DataTableData } from '../DataTable/DataTable.types';
 import { DTColumn } from '../Head/Column.types';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
+import { ACCORDION } from '@semcore/data-table';
 
-export type DTRow = Record<DTKey, DTValue | MergedRowsCell | MergedColumnsCell>;
+export type DTRow = {
+  [key: string]: DTValue | MergedRowsCell | MergedColumnsCell;
+  [ACCORDION]?: React.ReactNode | DataTableData | undefined;
+}
 export type DTRows = Array<DTRow | DTRow[]>;
 
 export type DataTableRowProps = {

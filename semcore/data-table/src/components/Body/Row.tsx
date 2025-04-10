@@ -6,6 +6,8 @@ import style from './style.shadow.css';
 import { Body } from './Body';
 import { getFixedStyle } from '../../utils';
 import { ACCORDION } from '../DataTable/DataTable';
+import {MergedColumnsCell, MergedRowsCell} from './MergedCells';
+import {DTValue} from '../DataTable/DataTable.types';
 
 class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
   static displayName = 'Row';
@@ -14,6 +16,10 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
   static defaultProps = {
     'aria-level': undefined,
   };
+
+  cellHasAccordion(cellValue: DTValue | MergedColumnsCell | MergedRowsCell): cellValue is DTValue {
+    return !(cellValue instanceof MergedRowsCell || cellValue instanceof MergedColumnsCell) && Boolean(cellValue[ACCORDION]);
+  }
 
   render() {
     const SRow = Root;
@@ -31,6 +37,16 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
       onExpandRow,
       'aria-level': ariaLevel = 1,
     } = this.asProps;
+
+    let accordion = row[ACCORDION];
+
+    if (!accordion) {
+      const cellWithAccordion = Object.values(row).find((value) => {
+        return this.cellHasAccordion(value);
+      }) as DTValue | undefined;
+
+      accordion = cellWithAccordion?.[ACCORDION];
+    }
 
     return sstyled(styles)(
       <>
@@ -56,7 +72,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
             return (
               <Body.Cell
                 key={index}
-                aria-expanded={row[ACCORDION] && index === 0 ? expanded : undefined}
+                aria-expanded={(row[ACCORDION] && index === 0 || this.cellHasAccordion(cellValue)) ? expanded : undefined}
                 data-aria-level={index === 0 ? ariaLevel : undefined}
                 row={row}
                 rowIndex={rowIndex}
@@ -68,7 +84,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
           })}
         </SRow>
 
-        {row[ACCORDION] && React.isValidElement(row[ACCORDION]) && (
+        {React.isValidElement(accordion) && (
           <SCollapseRow
             key={rowIndex}
             role={'row'}
@@ -88,7 +104,9 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
               columnIndex={1}
               // @ts-ignore
               column={{ name: ACCORDION }}
-            />
+            >
+              {accordion}
+            </SCell>
           </SCollapseRow>
         )}
 

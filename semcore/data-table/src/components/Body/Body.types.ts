@@ -1,6 +1,6 @@
 import { DTRow, DTRows } from './Row.types';
 import { DTColumn } from '../Head/Column.types';
-import { DTUse } from '../DataTable/DataTable.types';
+import { DTUse, DTValue } from '../DataTable/DataTable.types';
 
 type CellRenderProps = {
   dataKey: string;
@@ -9,7 +9,7 @@ type CellRenderProps = {
   rowIndex: number;
   columnIndex: number;
   columnName: string;
-  value: string | number | boolean;
+  value: DTValue;
   defaultRender: () => React.ReactNode;
   isMergedRows: boolean;
   isMergedColumns: boolean;

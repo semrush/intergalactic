@@ -7,8 +7,7 @@ import {
   ColIndex,
   RowIndex,
   DataTableData,
-  DTKey,
-  DataTableType,
+  DataTableType, DataRowItem,
 } from './DataTable.types';
 import { Head } from '../Head/Head';
 import { Body } from '../Body/Body';
@@ -588,7 +587,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
     let rowIndex = 0;
 
-    const makeDtRow = (row: Record<DTKey, any>) => {
+    const makeDtRow = (row: DataRowItem) => {
       const dtRow = Object.entries(row).reduce<DTRow>((acc, [key, value]) => {
         const columnsToRow = key.split(this.columnsSplitter);
 
