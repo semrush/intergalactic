@@ -6,7 +6,7 @@ import { ACCORDION } from '@semcore/data-table';
 export type DTRow = {
   [key: string]: DTValue | MergedRowsCell | MergedColumnsCell;
   [ACCORDION]?: React.ReactNode | DataTableData | undefined;
-}
+};
 export type DTRows = Array<DTRow | DTRow[]>;
 
 export type DataTableRowProps = {

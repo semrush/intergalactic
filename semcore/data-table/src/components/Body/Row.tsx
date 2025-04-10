@@ -6,8 +6,8 @@ import style from './style.shadow.css';
 import { Body } from './Body';
 import { getFixedStyle } from '../../utils';
 import { ACCORDION } from '../DataTable/DataTable';
-import {MergedColumnsCell, MergedRowsCell} from './MergedCells';
-import {DTValue} from '../DataTable/DataTable.types';
+import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
+import { DTValue } from '../DataTable/DataTable.types';
 
 class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
   static displayName = 'Row';
@@ -18,7 +18,10 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
   };
 
   cellHasAccordion(cellValue: DTValue | MergedColumnsCell | MergedRowsCell): cellValue is DTValue {
-    return !(cellValue instanceof MergedRowsCell || cellValue instanceof MergedColumnsCell) && Boolean(cellValue[ACCORDION]);
+    return (
+      !(cellValue instanceof MergedRowsCell || cellValue instanceof MergedColumnsCell) &&
+      Boolean(cellValue[ACCORDION])
+    );
   }
 
   render() {
@@ -72,7 +75,11 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
             return (
               <Body.Cell
                 key={index}
-                aria-expanded={(row[ACCORDION] && index === 0 || this.cellHasAccordion(cellValue)) ? expanded : undefined}
+                aria-expanded={
+                  (row[ACCORDION] && index === 0) || this.cellHasAccordion(cellValue)
+                    ? expanded
+                    : undefined
+                }
                 data-aria-level={index === 0 ? ariaLevel : undefined}
                 row={row}
                 rowIndex={rowIndex}

@@ -1,6 +1,6 @@
 import { Intergalactic } from '@semcore/core';
 import { BoxProps } from '@semcore/base-components';
-import {ACCORDION, ROW_GROUP} from './DataTable';
+import { ACCORDION, ROW_GROUP } from './DataTable';
 
 /**
  * Datatable must have an accessible name (aria-table-name).
@@ -21,13 +21,13 @@ export type DataTableChangeSort<Column> = (
 ) => void;
 
 export type DataRowItem = {
-    [key: string]: DTValue;
-    [ACCORDION]?: React.ReactNode | DataTableData;
-    [ROW_GROUP]?: DataTableData;
-}
+  [key: string]: DTValue | undefined;
+  [ACCORDION]?: React.ReactNode | DataTableData;
+  [ROW_GROUP]?: DataTableData;
+};
 export interface DTValue {
-    toString(): string;
-    [ACCORDION]?: React.ReactNode | DataTableData;
+  toString(): string;
+  [ACCORDION]?: React.ReactNode | DataTableData;
 }
 export type DataTableData = DataRowItem[];
 

@@ -9,7 +9,7 @@ type CellRenderProps = {
   rowIndex: number;
   columnIndex: number;
   columnName: string;
-  value: DTValue;
+  value: string;
   defaultRender: () => React.ReactNode;
   isMergedRows: boolean;
   isMergedColumns: boolean;

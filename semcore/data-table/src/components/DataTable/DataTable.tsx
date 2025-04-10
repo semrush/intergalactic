@@ -7,7 +7,8 @@ import {
   ColIndex,
   RowIndex,
   DataTableData,
-  DataTableType, DataRowItem,
+  DataTableType,
+  DataRowItem,
 } from './DataTable.types';
 import { Head } from '../Head/Head';
 import { Body } from '../Body/Body';
@@ -592,7 +593,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
         const columnsToRow = key.split(this.columnsSplitter);
 
         if (columnsToRow.length === 1) {
-          acc[key] = value;
+          acc[key] = value ?? '';
         } else {
           acc[columnsToRow[0]] = new MergedColumnsCell(value, {
             dataKey: key,

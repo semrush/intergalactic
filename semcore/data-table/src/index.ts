@@ -1,5 +1,9 @@
 import { DataTable, ACCORDION, ROW_GROUP } from './components/DataTable/DataTable';
-import type { DataTableSort, DataTableType, DataTableData } from './components/DataTable/DataTable.types';
+import type {
+  DataTableSort,
+  DataTableType,
+  DataTableData,
+} from './components/DataTable/DataTable.types';
 import { Intergalactic } from '@semcore/core';
 import React from 'react';
 

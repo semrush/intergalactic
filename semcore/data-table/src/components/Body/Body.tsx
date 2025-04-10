@@ -126,7 +126,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
         columnIndex: props.columnIndex,
         dataKey,
         defaultRender,
-        value,
+        value: value.toString(),
         isMergedRows,
         isMergedColumns,
       });
