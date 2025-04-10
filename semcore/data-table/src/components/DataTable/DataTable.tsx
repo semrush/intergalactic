@@ -65,6 +65,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
   private tableContainerRef = React.createRef<HTMLDivElement>();
   private tableRef = React.createRef<HTMLDivElement>();
   private headerRef = React.createRef<HTMLDivElement>();
+  private spinnerRef = React.createRef<HTMLDivElement>();
 
   private gridAreaGroupMap = new Map<number, string>();
 
@@ -161,6 +162,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
       getI18nText,
       expandedRows,
       onExpandRow: this.onExpandRow,
+      spinnerRef: this.spinnerRef,
     };
   }
 
@@ -332,7 +334,9 @@ class DataTableRoot<D extends DataTableData> extends Component<
   };
 
   handleFocus = (e: React.FocusEvent<HTMLElement, HTMLElement>) => {
-    if (
+    if (this.asProps.loading) {
+      this.spinnerRef.current?.focus();
+    } else if (
       (!e.relatedTarget || !isFocusInside(e.currentTarget, e.relatedTarget)) &&
       lastInteraction.isKeyboard()
     ) {

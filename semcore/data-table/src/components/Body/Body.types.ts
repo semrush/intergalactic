@@ -34,4 +34,5 @@ export type BodyPropsInner = {
   getI18nText: (key: string) => string;
   expandedRows: number[];
   onExpandRow: (rowIndex: number) => void;
+  spinnerRef: React.RefObject<HTMLDivElement>;
 };

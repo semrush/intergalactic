@@ -145,7 +145,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
     const SBody = Root;
     const SRowGroup = Box;
     const SSpinContainer = Box;
-    const { rows, styles, loading, headerHeight } = this.asProps;
+    const { rows, styles, loading, headerHeight, spinnerRef } = this.asProps;
 
     return sstyled(styles)(
       <SBody render={Box}>
@@ -163,7 +163,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
         })}
         {loading && (
           // @ts-ignore
-          <SSpinContainer aria-hidden headerHeight={`${headerHeight}px`}>
+          <SSpinContainer headerHeight={`${headerHeight}px`} tabIndex={-1} ref={spinnerRef}>
             <Spin size={'xxl'} />
           </SSpinContainer>
         )}
