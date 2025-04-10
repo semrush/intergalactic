@@ -73,7 +73,7 @@ class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner>
     const cell = row[column.name];
     const cellName = cell instanceof MergedColumnsCell ? cell.dataKey : column.name;
 
-    let groupedBy: null | 'rows' | 'columns' = null;
+    let scope: null | 'rowgroup' | 'colgroup' = null;
     let gridArea: string | undefined = undefined;
 
     const fromRow = rowIndex + 2;
@@ -81,10 +81,10 @@ class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner>
 
     if (cell instanceof MergedColumnsCell) {
       gridArea = `${fromRow} / ${fromCol} / ${fromRow + 1} / ${fromCol + cell.columnsCount}`;
-      groupedBy = 'columns';
+      scope = 'colgroup';
     } else if (cell instanceof MergedRowsCell) {
       gridArea = `${cell.fromRow} / ${fromCol} / ${cell.toRow} / ${fromCol + 1}`;
-      groupedBy = 'rows';
+      scope = 'rowgroup';
     }
 
     return sstyled(styles)(
@@ -97,8 +97,8 @@ class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner>
         name={cellName}
         role={'gridcell'}
         aria-colindex={columnIndex + 1}
-        data-grouped-by={groupedBy}
-        scope={groupedBy === 'columns' ? 'colgroup' : undefined}
+        data-grouped-by={scope}
+        scope={scope}
         aria-colspan={cell instanceof MergedColumnsCell ? cell.columnsCount : undefined}
         aria-rowspan={cell instanceof MergedRowsCell ? cell.toRow - cell.fromRow : undefined}
         gridArea={gridArea}
