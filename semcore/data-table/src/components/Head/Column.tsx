@@ -253,7 +253,17 @@ export class Column<D extends DataTableData> extends Component<
     const SColumn = Root;
     const SSortWrapper = 'div';
     const SSortButton = ButtonLink;
-    const { styles, sortable, sort, uid, name, parent, sortableColumnDescribeId, withEllipsis, Children } = this.asProps;
+    const {
+      styles,
+      sortable,
+      sort,
+      uid,
+      name,
+      parent,
+      sortableColumnDescribeId,
+      withEllipsis,
+      Children,
+    } = this.asProps;
 
     const SSortIcon = sort ? SORTING_ICON[sort[1]] : SORTING_ICON['asc'];
     const isSorted = sort?.[0] === name;
@@ -287,7 +297,13 @@ export class Column<D extends DataTableData> extends Component<
         aria-sort={ariaSortValue}
         onClick={this.handleSortClick}
       >
-        {withEllipsis ? (<Ellipsis><Children /></Ellipsis>) : (<Children />)}
+        {withEllipsis ? (
+          <Ellipsis>
+            <Children />
+          </Ellipsis>
+        ) : (
+          <Children />
+        )}
 
         {sortable && (
           <SSortWrapper ref={this.sortWrapperRef}>
