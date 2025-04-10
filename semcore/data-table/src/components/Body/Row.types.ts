@@ -30,4 +30,6 @@ export type RowPropsInner = {
   gridTemplateAreas: string[];
   gridTemplateColumns: string[];
   accordionDataGridArea: string;
+
+  inert?: '';
 };
