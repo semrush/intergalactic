@@ -56,7 +56,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
             return (
               <Body.Cell
                 key={index}
-                aria-expanded={index === 0 ? expanded : undefined}
+                aria-expanded={row[ACCORDION] && index === 0 ? expanded : undefined}
                 data-aria-level={index === 0 ? ariaLevel : undefined}
                 row={row}
                 rowIndex={rowIndex}
