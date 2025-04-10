@@ -11,6 +11,7 @@ export type DTRows = Array<DTRow | DTRow[]>;
 
 export type DataTableRowProps = {
   row: DTRow;
+  offset?: number;
 };
 
 export type RowPropsInner = {

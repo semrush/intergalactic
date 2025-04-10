@@ -19,7 +19,37 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
   static displayName = 'Body';
   static style = style;
 
-  getRowProps(props: { row: DTRow }, index: number): RowPropsInner {
+  gridTemplateRows = ['minmax(39px auto)', 'minmax(39px, auto)'];
+
+  rowsHeightMap = new Map<number, number>();
+
+  handleRef = (index: number) => (node: HTMLElement | null) => {
+    if (!this.rowsHeightMap.has(index)) {
+      const firstChild = node?.children.item(0);
+      if (firstChild instanceof HTMLElement) {
+        const nodeLowBorder = firstChild.offsetTop + firstChild.scrollHeight;
+
+        this.rowsHeightMap.set(index, nodeLowBorder);
+
+        setTimeout(() => {
+          const tableGridElement = this.asProps.tableRef.current;
+          if (tableGridElement) {
+            const rowsTemplateVariableName = tableGridElement.style[2];
+            this.gridTemplateRows.push(`${firstChild.getBoundingClientRect().height}px`);
+
+            tableGridElement.style.setProperty(
+              rowsTemplateVariableName,
+              `${this.gridTemplateRows.join(' ')} repeat(${
+                this.asProps.rows.length - (this.gridTemplateRows.length - 2)
+              }, minmax(45px, auto))`,
+            );
+          }
+        }, 0);
+      }
+    }
+  };
+
+  getRowProps(props: { row: DTRow; offset: number }, i: number): RowPropsInner {
     const {
       rows,
       flatRows,
@@ -32,6 +62,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
       loading,
     } = this.asProps;
     const row = props.row;
+    const index = props.offset + i;
 
     const rowIndex = (expandedRows ?? []).reduce((acc, item) => {
       if (item < index) {
@@ -147,21 +178,74 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
     const SBody = Root;
     const SRowGroup = Box;
     const SSpinContainer = Box;
-    const { rows, styles, loading, headerHeight, spinnerRef } = this.asProps;
+    const {
+      rows,
+      styles,
+      loading,
+      headerHeight,
+      spinnerRef,
+      virtualScroll,
+      scrollTop,
+      tableContainerRef,
+    } = this.asProps;
+
+    let startIndex = 0;
+    let rowsToRender = rows;
+
+    if (virtualScroll !== undefined) {
+      const offsetHeight = tableContainerRef.current?.offsetHeight ?? 0;
+      const tollerance = 2;
+
+      if (typeof virtualScroll === 'boolean') {
+        for (const [key, value] of this.rowsHeightMap) {
+          if (scrollTop < value) {
+            startIndex = Math.max(key - tollerance, 0);
+            break;
+          }
+        }
+
+        const lastIndex = Math.min(
+          Math.ceil((scrollTop + offsetHeight) / 45) + tollerance,
+          rows.length,
+        );
+
+        rowsToRender = rows.slice(startIndex, lastIndex);
+      } else {
+        const rowHeight = 45; // virtualScroll.rowHeight;
+
+        startIndex = Math.max(Math.floor(scrollTop / rowHeight) - tollerance, 0);
+
+        const lastIndex = Math.min(
+          Math.ceil((scrollTop + offsetHeight) / rowHeight) + tollerance,
+          rows.length,
+        );
+
+        rowsToRender = rows.slice(startIndex, lastIndex);
+      }
+    }
 
     return sstyled(styles)(
       <SBody render={Box}>
-        {rows.map((row, index) => {
+        {rowsToRender.map((row, index) => {
           if (Array.isArray(row)) {
             return sstyled(styles)(
               <SRowGroup role={'rowgroup'} key={index}>
-                {row.map((item, index) => {
-                  return <Body.Row key={index} row={item} />;
+                {row.map((item, i) => {
+                  return (
+                    <Body.Row key={`${startIndex}_${index}_${i}`} row={item} offset={startIndex} />
+                  );
                 })}
               </SRowGroup>,
             );
           }
-          return <Body.Row key={index} row={row} />;
+          return (
+            <Body.Row
+              key={`${startIndex}_${index}`}
+              row={row}
+              offset={startIndex}
+              ref={this.handleRef(startIndex + index)}
+            />
+          );
         })}
         {loading && (
           <SSpinContainer

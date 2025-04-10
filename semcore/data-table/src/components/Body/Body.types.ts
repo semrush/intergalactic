@@ -18,7 +18,7 @@ type CellRenderProps = {
 export type DataTableBodyProps = {
   renderCell?: (props: CellRenderProps) => React.ReactNode | Record<string, any>;
 
-  virtualScroll?: boolean;
+  virtualScroll?: boolean | { rowHeight: number };
 };
 
 export type BodyPropsInner = {
@@ -35,4 +35,6 @@ export type BodyPropsInner = {
   expandedRows: number[];
   onExpandRow: (rowIndex: number) => void;
   spinnerRef: React.RefObject<HTMLDivElement>;
+  tableContainerRef: React.RefObject<HTMLDivElement>;
+  scrollTop: number;
 };

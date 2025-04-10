@@ -85,6 +85,8 @@ class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner>
     } else if (cell instanceof MergedRowsCell) {
       gridArea = `${cell.fromRow} / ${fromCol} / ${cell.toRow} / ${fromCol + 1}`;
       scope = 'rowgroup';
+    } else {
+      gridArea = `${fromRow + 1} / ${fromCol} / ${fromRow + 2} / ${fromCol + 1}`;
     }
 
     return sstyled(styles)(

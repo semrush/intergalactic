@@ -31,11 +31,14 @@ import { forkRef } from '@semcore/core/lib/utils/ref';
 import scrollStyles from '../../style/scroll-shadows.shadow.css';
 import { DataTableGroupProps } from '../Head/Group.type';
 import { hasParent } from '@semcore/core/lib/utils/hasParent';
+import trottle from '@semcore/core/lib/utils/rafTrottle';
 
 export const ACCORDION = Symbol('accordion');
 export const ROW_GROUP = Symbol('ROW_GROUP');
 
 const SCROLL_BAR_HEIGHT = 12;
+const MIN_HEADER_HEIGHT = 39;
+const MIN_CELL_HEIGHT = 45;
 
 class DataTableRoot<D extends DataTableData> extends Component<
   DataTableProps<D>,
@@ -74,6 +77,10 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
     this.columns = this.calculateColumns();
   }
+
+  state = {
+    scrollTop: 0,
+  };
 
   uncontrolledProps() {
     return {
@@ -163,6 +170,9 @@ class DataTableRoot<D extends DataTableData> extends Component<
       expandedRows,
       onExpandRow: this.onExpandRow,
       spinnerRef: this.spinnerRef,
+      scrollTop: this.state.scrollTop,
+      tableContainerRef: this.tableContainerRef,
+      tableRef: this.tableRef,
     };
   }
 
@@ -333,6 +343,10 @@ class DataTableRoot<D extends DataTableData> extends Component<
     }
   };
 
+  handleScroll = trottle((e) => {
+    this.setState({ scrollTop: e.target.scrollTop });
+  });
+
   handleFocus = (e: React.FocusEvent<HTMLElement, HTMLElement>) => {
     if (this.asProps.loading) {
       this.spinnerRef.current?.focus();
@@ -423,6 +437,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
         shadow={true}
         container={this.tableContainerRef}
         styles={scrollStyles}
+        onScroll={this.handleScroll}
       >
         <ScrollArea.Container tabIndex={-1}>
           <SDataTable
@@ -438,6 +453,12 @@ class DataTableRoot<D extends DataTableData> extends Component<
             aria-colcount={this.columns.length}
             gridTemplateColumns={gridTemplateColumns.join(' ')}
             gridTemplateAreas={gridTemplateAreas.join(' ')}
+            gridTemplateRows={`minmax(${MIN_HEADER_HEIGHT}px, auto) minmax(${MIN_HEADER_HEIGHT}px, auto) ${Array(
+              this.totalRows,
+            )
+              .fill(null)
+              .map(() => `minmax(${MIN_CELL_HEIGHT}px, auto)`)
+              .join(' ')}`}
             w={'100%'}
             use:data={undefined}
             use:w={undefined}
