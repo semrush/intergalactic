@@ -164,9 +164,9 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
           return <Body.Row key={index} row={row} />;
         })}
         {loading && (
-          // @ts-ignore
           <SSpinContainer
             innerOutline
+            // @ts-ignore
             headerHeight={`${headerHeight}px`}
             tabIndex={-1}
             ref={spinnerRef}
