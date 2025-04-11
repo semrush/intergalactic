@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Margins and paddings for addons, sizes of `Circle` addons for different tag sizes.
+- Margins and paddings for addons and text, sizes of `Circle` addons for different tag sizes.
 
 ## [5.53.2] - 2025-04-04
 
