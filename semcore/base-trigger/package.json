@@ -1,7 +1,7 @@
 {
   "name": "@semcore/base-trigger",
   "description": "Semrush BaseTrigger Component",
-  "version": "4.52.2",
+  "version": "4.53.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -19,7 +19,7 @@
   "dependencies": {
     "@semcore/dot": "5.40.2",
     "@semcore/flex-box": "5.41.2",
-    "@semcore/icon": "4.60.2",
+    "@semcore/icon": "4.61.0",
     "@semcore/neighbor-location": "4.40.2",
     "@semcore/spin": "5.41.2",
     "@semcore/utils": "4.48.2",
