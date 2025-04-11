@@ -4,8 +4,8 @@ import { DataTable } from '@semcore/data-table';
 const Demo = () => {
   return (
     <>
-      <DataTable data={data} aria-label={'Fixed columns'} wMax={800}>
-        <DataTable.Head>
+      <DataTable data={data} aria-label={'Fixed columns'} wMax={800} h={200}>
+        <DataTable.Head sticky>
           <DataTable.Head.Group borders={'left'} title={'Borders left'} fixed='left' >
             <DataTable.Head.Column name='keyword' children='Keyword' gtcWidth={'150px'} />
             <DataTable.Head.Column name='kd' children='KD,%' gtcWidth={'200px'} />

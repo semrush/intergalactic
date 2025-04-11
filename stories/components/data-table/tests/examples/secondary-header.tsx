@@ -1,5 +1,6 @@
 import React from 'react';
-import { DataTable } from '@semcore/data-table';
+import { DataTable, DataTableSort } from '@semcore/data-table';
+type SortableColumn = Exclude<keyof typeof data[0], 'keyword'>;
 import Ellipsis from '@semcore/ellipsis';
 import WhatsAppM from '@semcore/icon/color/WhatsApp/m';
 import { Hint } from '@semcore/tooltip';
@@ -7,8 +8,27 @@ import { Text } from '@semcore/typography';
 import AmazonM from '@semcore/icon/color/Amazon/m';
 
 const Demo = () => {
+  const [sort, setSort] = React.useState<DataTableSort<keyof typeof data[0]>>(['kd', 'desc']);
+  const sortedData = React.useMemo(
+      () =>
+          [...data].sort((aRow, bRow) => {
+              const [prop, sortDirection] = sort;
+              const a = aRow[prop as SortableColumn];
+              const b = bRow[prop as SortableColumn];
+              if (a === b) return 0;
+              if (sortDirection === 'asc') return a > b ? 1 : -1;
+              else return a > b ? -1 : 1;
+          }),
+      [sort],
+  );
+  const numberFormat = React.useMemo(() => new Intl.NumberFormat('en-US'), []);
+  const currencyFormat = React.useMemo(
+      () => new Intl.NumberFormat('en-US', { currency: 'USD', style: 'currency' }),
+      [],
+  );
+
   return (
-    <DataTable data={data} use='secondary' aria-label={'Column expanded'} hMax={200}>
+    <DataTable data={sortedData} use='secondary' aria-label={'Column expanded'} hMax={200} sort={sort} onSortChange={setSort} >
       <DataTable.Head sticky>
         <DataTable.Head.Column name='keyword' gtcWidth={'65px'} sortable>
           <Text noWrap>
