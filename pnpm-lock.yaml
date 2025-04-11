@@ -283,10 +283,10 @@ importers:
         specifier: 5.41.2
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.60.2
+        specifier: 4.61.0
         version: link:../icon
       '@semcore/typography':
-        specifier: 5.52.2
+        specifier: 5.53.0
         version: link:../typography
       '@semcore/utils':
         specifier: 4.48.2
@@ -308,7 +308,7 @@ importers:
   semcore/add-filter:
     dependencies:
       '@semcore/base-trigger':
-        specifier: 4.52.2
+        specifier: 4.53.0
         version: link:../base-trigger
       '@semcore/button':
         specifier: 5.43.1
@@ -320,19 +320,19 @@ importers:
         specifier: 4.43.2
         version: link:../dropdown
       '@semcore/dropdown-menu':
-        specifier: 4.47.1
+        specifier: 4.48.0
         version: link:../dropdown-menu
       '@semcore/flex-box':
         specifier: 5.41.2
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.60.2
+        specifier: 4.61.0
         version: link:../icon
       '@semcore/input':
         specifier: 4.42.2
         version: link:../input
       '@semcore/select':
-        specifier: 4.51.1
+        specifier: 4.52.0
         version: link:../select
       '@semcore/utils':
         specifier: 4.48.2
@@ -413,7 +413,7 @@ importers:
         specifier: 5.41.2
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.60.2
+        specifier: 4.61.0
         version: link:../icon
       '@semcore/neighbor-location':
         specifier: 4.40.2
@@ -450,7 +450,7 @@ importers:
         specifier: 5.41.2
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.60.2
+        specifier: 4.61.0
         version: link:../icon
       '@semcore/utils':
         specifier: 4.48.2
@@ -506,7 +506,7 @@ importers:
         specifier: 5.41.2
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.60.2
+        specifier: 4.61.0
         version: link:../icon
       '@semcore/popper':
         specifier: 5.46.2
@@ -515,7 +515,7 @@ importers:
         specifier: 6.49.2
         version: link:../tooltip
       '@semcore/typography':
-        specifier: 5.52.2
+        specifier: 5.53.0
         version: link:../typography
       '@semcore/utils':
         specifier: 4.48.2
@@ -592,13 +592,13 @@ importers:
         specifier: 5.41.2
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.60.2
+        specifier: 4.61.0
         version: link:../icon
       '@semcore/tooltip':
         specifier: 6.49.2
         version: link:../tooltip
       '@semcore/typography':
-        specifier: 5.52.2
+        specifier: 5.53.0
         version: link:../typography
       '@semcore/utils':
         specifier: 4.48.2
@@ -632,10 +632,10 @@ importers:
         specifier: 5.41.2
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.60.2
+        specifier: 4.61.0
         version: link:../icon
       '@semcore/modal':
-        specifier: 4.55.1
+        specifier: 4.56.0
         version: link:../modal
       '@semcore/utils':
         specifier: 4.48.2
@@ -664,7 +664,7 @@ importers:
         version: link:../flex-box
       '@semcore/typography':
         specifier: 5.52.2
-        version: link:../typography
+        version: 5.52.2(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
       '@semcore/utils':
         specifier: 4.48.2
         version: link:../utils
@@ -700,7 +700,7 @@ importers:
         specifier: 5.41.2
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.60.2
+        specifier: 4.61.0
         version: link:../icon
       '@semcore/input':
         specifier: 4.42.2
@@ -793,13 +793,13 @@ importers:
         specifier: 5.41.2
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.60.2
+        specifier: 4.61.0
         version: link:../icon
       '@semcore/popper':
         specifier: 5.46.2
         version: link:../popper
       '@semcore/typography':
-        specifier: 5.52.2
+        specifier: 5.53.0
         version: link:../typography
       '@semcore/utils':
         specifier: 4.48.2
@@ -881,7 +881,7 @@ importers:
         specifier: 5.41.2
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.60.2
+        specifier: 4.61.0
         version: link:../icon
       '@semcore/scroll-area':
         specifier: 5.45.2
@@ -945,7 +945,7 @@ importers:
   semcore/date-picker:
     dependencies:
       '@semcore/base-trigger':
-        specifier: 4.52.2
+        specifier: 4.53.0
         version: link:../base-trigger
       '@semcore/button':
         specifier: 5.43.1
@@ -966,7 +966,7 @@ importers:
         specifier: 5.41.2
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.60.2
+        specifier: 4.61.0
         version: link:../icon
       '@semcore/input':
         specifier: 4.42.2
@@ -984,7 +984,7 @@ importers:
         specifier: 6.49.2
         version: link:../tooltip
       '@semcore/typography':
-        specifier: 5.52.2
+        specifier: 5.53.0
         version: link:../typography
       '@semcore/utils':
         specifier: 4.48.2
@@ -1068,7 +1068,7 @@ importers:
   semcore/drag-and-drop:
     dependencies:
       '@semcore/card':
-        specifier: 5.47.1
+        specifier: 5.48.0
         version: link:../card
       '@semcore/core':
         specifier: ^2.17.5
@@ -1148,7 +1148,7 @@ importers:
         specifier: 5.41.2
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.60.2
+        specifier: 4.61.0
         version: link:../icon
       '@semcore/popper':
         specifier: 5.46.2
@@ -1157,7 +1157,7 @@ importers:
         specifier: 5.45.2
         version: link:../scroll-area
       '@semcore/typography':
-        specifier: 5.52.2
+        specifier: 5.53.0
         version: link:../typography
       '@semcore/utils':
         specifier: 4.48.2
@@ -1286,7 +1286,7 @@ importers:
         version: link:../illustration
       '@semcore/typography':
         specifier: 5.52.2
-        version: link:../typography
+        version: 5.52.2(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
       '@semcore/utils':
         specifier: 4.48.2
         version: link:../utils
@@ -1319,7 +1319,7 @@ importers:
         specifier: 5.41.2
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.60.2
+        specifier: 4.61.0
         version: link:../icon
       '@semcore/popper':
         specifier: 5.46.2
@@ -1362,7 +1362,7 @@ importers:
         specifier: 5.41.2
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.60.2
+        specifier: 4.61.0
         version: link:../icon
       '@semcore/illustration':
         specifier: 2.44.0
@@ -1374,13 +1374,13 @@ importers:
         specifier: 5.44.2
         version: link:../link
       '@semcore/modal':
-        specifier: 4.55.1
+        specifier: 4.56.0
         version: link:../modal
       '@semcore/notice':
-        specifier: 5.46.1
+        specifier: 5.47.0
         version: link:../notice
       '@semcore/notice-bubble':
-        specifier: 5.53.1
+        specifier: 5.54.0
         version: link:../notice-bubble
       '@semcore/spin-container':
         specifier: 7.41.2
@@ -1392,7 +1392,7 @@ importers:
         specifier: 6.49.2
         version: link:../tooltip
       '@semcore/typography':
-        specifier: 5.52.2
+        specifier: 5.53.0
         version: link:../typography
       '@semcore/utils':
         specifier: 4.48.2
@@ -1531,13 +1531,13 @@ importers:
         specifier: 5.41.2
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.60.2
+        specifier: 4.61.0
         version: link:../icon
       '@semcore/modal':
-        specifier: 4.55.1
+        specifier: 4.56.0
         version: link:../modal
       '@semcore/typography':
-        specifier: 5.52.2
+        specifier: 5.53.0
         version: link:../typography
       '@semcore/utils':
         specifier: 4.48.2
@@ -1621,7 +1621,7 @@ importers:
         specifier: 5.41.2
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.60.2
+        specifier: 4.61.0
         version: 'link:'
       '@semcore/utils':
         specifier: 4.48.2
@@ -1732,7 +1732,7 @@ importers:
         specifier: 5.41.2
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.60.2
+        specifier: 4.61.0
         version: link:../icon
       '@semcore/input':
         specifier: 4.42.2
@@ -1875,7 +1875,7 @@ importers:
         version: link:../scroll-area
       '@semcore/tag':
         specifier: 5.53.2
-        version: link:../tag
+        version: 5.53.2(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
       '@semcore/utils':
         specifier: 4.48.2
         version: link:../utils
@@ -1921,7 +1921,7 @@ importers:
         version: link:../tooltip
       '@semcore/typography':
         specifier: 5.52.2
-        version: link:../typography
+        version: 5.52.2(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
       '@semcore/utils':
         specifier: 4.48.2
         version: link:../utils
@@ -1982,7 +1982,7 @@ importers:
         specifier: 5.41.2
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.60.2
+        specifier: 4.61.0
         version: link:../icon
       '@semcore/outside-click':
         specifier: 3.40.0
@@ -1991,7 +1991,7 @@ importers:
         specifier: 3.41.2
         version: link:../portal
       '@semcore/typography':
-        specifier: 5.52.2
+        specifier: 5.53.0
         version: link:../typography
       '@semcore/utils':
         specifier: 4.48.2
@@ -2047,13 +2047,13 @@ importers:
         specifier: 5.41.2
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.60.2
+        specifier: 4.61.0
         version: link:../icon
       '@semcore/notice-global':
-        specifier: 2.61.1
+        specifier: 2.62.0
         version: link:../notice-global
       '@semcore/typography':
-        specifier: 5.52.2
+        specifier: 5.53.0
         version: link:../typography
       '@semcore/utils':
         specifier: 4.48.2
@@ -2087,7 +2087,7 @@ importers:
         specifier: 5.41.2
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.60.2
+        specifier: 4.61.0
         version: link:../icon
       '@semcore/portal':
         specifier: 3.41.2
@@ -2127,7 +2127,7 @@ importers:
         specifier: 5.41.2
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.60.2
+        specifier: 4.61.0
         version: link:../icon
       '@semcore/utils':
         specifier: 4.48.2
@@ -2180,7 +2180,7 @@ importers:
         specifier: 5.41.2
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.60.2
+        specifier: 4.61.0
         version: link:../icon
       '@semcore/input':
         specifier: 4.42.2
@@ -2195,7 +2195,7 @@ importers:
         specifier: 6.49.2
         version: link:../tooltip
       '@semcore/typography':
-        specifier: 5.52.2
+        specifier: 5.53.0
         version: link:../typography
       '@semcore/utils':
         specifier: 4.48.2
@@ -2376,7 +2376,7 @@ importers:
         version: link:../flex-box
       '@semcore/typography':
         specifier: 5.52.2
-        version: link:../typography
+        version: 5.52.2(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
       '@semcore/utils':
         specifier: 4.48.2
         version: link:../utils
@@ -2422,7 +2422,7 @@ importers:
   semcore/select:
     dependencies:
       '@semcore/base-trigger':
-        specifier: 4.52.2
+        specifier: 4.53.0
         version: link:../base-trigger
       '@semcore/button':
         specifier: 5.43.1
@@ -2440,13 +2440,13 @@ importers:
         specifier: 4.43.2
         version: link:../dropdown
       '@semcore/dropdown-menu':
-        specifier: 4.47.1
+        specifier: 4.48.0
         version: link:../dropdown-menu
       '@semcore/flex-box':
         specifier: 5.41.2
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.60.2
+        specifier: 4.61.0
         version: link:../icon
       '@semcore/input':
         specifier: 4.42.2
@@ -2495,7 +2495,7 @@ importers:
         specifier: 5.41.2
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.60.2
+        specifier: 4.61.0
         version: link:../icon
       '@semcore/outside-click':
         specifier: 3.40.0
@@ -2504,7 +2504,7 @@ importers:
         specifier: 3.41.2
         version: link:../portal
       '@semcore/typography':
-        specifier: 5.52.2
+        specifier: 5.53.0
         version: link:../typography
       '@semcore/utils':
         specifier: 4.48.2
@@ -2769,13 +2769,13 @@ importers:
         specifier: 5.41.2
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.60.2
+        specifier: 4.61.0
         version: link:../icon
       '@semcore/scroll-area':
         specifier: 5.45.2
         version: link:../scroll-area
       '@semcore/typography':
-        specifier: 5.52.2
+        specifier: 5.53.0
         version: link:../typography
       '@semcore/utils':
         specifier: 4.48.2
@@ -2809,7 +2809,7 @@ importers:
         specifier: 5.41.2
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.60.2
+        specifier: 4.61.0
         version: link:../icon
       '@semcore/utils':
         specifier: 4.48.2
@@ -2871,7 +2871,7 @@ importers:
         specifier: 4.42.2
         version: link:../input
       '@semcore/select':
-        specifier: 4.51.1
+        specifier: 4.52.0
         version: link:../select
       '@semcore/utils':
         specifier: 4.48.2
@@ -2933,7 +2933,7 @@ importers:
         specifier: 5.41.2
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.60.2
+        specifier: 4.61.0
         version: link:../icon
       '@semcore/utils':
         specifier: 4.48.2
@@ -3324,10 +3324,10 @@ importers:
         specifier: 5.41.2
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.60.2
+        specifier: 4.61.0
         version: link:../icon
       '@semcore/modal':
-        specifier: 4.55.1
+        specifier: 4.56.0
         version: link:../modal
       '@semcore/utils':
         specifier: 4.48.2
@@ -9551,6 +9551,23 @@ packages:
       - typescript
     dev: false
 
+  /@semcore/flex-box@5.41.2(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-Fc49lmlj/4N+MHXFGjyuhbTCVePEun9IUWIHzIOi2sT6QlT3sk3E9XvLU1TfGB+qKYZ2eJ1X8G8RPfsC0eqkFA==}
+    peerDependencies:
+      '@semcore/core': ^2.17.5
+      react: 16.8 - 18
+      react-dom: 16.8 - 18
+    dependencies:
+      '@semcore/core': link:semcore/core
+      '@semcore/utils': 4.48.2(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      classnames: 2.2.6
+      csstype: 3.0.8
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    transitivePeerDependencies:
+      - typescript
+    dev: false
+
   /@semcore/format-text@4.26.0(@semcore/core@2.24.0)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-Cdl0ajFFtR4YRhvvX9spp3gYqZU61DkmUu5GS/U5Xlpi58q4uI433wcYIS+vvtZuDUusqD7uJmM3H6QdRgwsIA==}
     peerDependencies:
@@ -9645,6 +9662,23 @@ packages:
       '@semcore/core': 2.24.0(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box': 5.40.0(@semcore/core@2.24.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
       '@semcore/utils': 4.45.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      classnames: 2.2.6
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    transitivePeerDependencies:
+      - typescript
+    dev: false
+
+  /@semcore/icon@4.60.2(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-RVgSwNA2QDCIQfDR27jxAyXTrcp7dUGA9NDUouD/f5Fs632HnDxGQzQ1iUcHB6cLWfDpKb38bqbvdMs0hWFBhg==}
+    peerDependencies:
+      '@semcore/core': ^2.17.5
+      react: 16.8 - 18
+      react-dom: 16.8 - 18
+    dependencies:
+      '@semcore/core': link:semcore/core
+      '@semcore/flex-box': 5.41.2(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@semcore/utils': 4.48.2(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
       classnames: 2.2.6
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -10391,6 +10425,23 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
+  /@semcore/tag@5.53.2(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-VYGDzbCCzevlhtipQ838Wl0Cxusquzv7juCHZ7eftwJdIt8ysu3/LzXz+yhAIiSBCEzivi87XBOXR0v4xE8Quw==}
+    peerDependencies:
+      '@semcore/core': ^2.17.5
+      react: 16.8 - 18
+      react-dom: 16.8 - 18
+    dependencies:
+      '@semcore/core': link:semcore/core
+      '@semcore/flex-box': 5.41.2(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@semcore/icon': 4.60.2(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@semcore/utils': 4.48.2(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    transitivePeerDependencies:
+      - typescript
+    dev: false
+
   /@semcore/textarea@5.25.0(@semcore/core@2.24.0)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-Dpx7QJ921nfazLgvVs3kh4nR6y7nuAOBHYWYyvYn2v53SErpfTfKcNEPEYMOQZJneCHz6UooulBeucS0EP2jAA==}
     peerDependencies:
@@ -10495,6 +10546,24 @@ packages:
       - typescript
     dev: false
 
+  /@semcore/typography@5.52.2(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-LDtV8crLwEqDEsv9L9IrZb29A9itQ263qyVFSbjWJl1fKYj0HfmK4JjeLEpzGh84mzJ8KeXkn/CYhreAKCZnrg==}
+    peerDependencies:
+      '@semcore/core': ^2.17.5
+      react: 16.8 - 18
+      react-dom: 16.8 - 18
+    dependencies:
+      '@semcore/core': link:semcore/core
+      '@semcore/flex-box': 5.41.2(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@semcore/icon': 4.60.2(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@semcore/utils': 4.48.2(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      csstype: 3.0.8
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    transitivePeerDependencies:
+      - typescript
+    dev: false
+
   /@semcore/utils@4.20.2(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-mJNtoeJVLKok8Cac5pgjn9lQ3xyYjUgIoCyW8dTLF+66a9s5PPo0olwRsVApx82cPs3vrMOxE/TO1eluN2AXVg==}
     peerDependencies:
@@ -10550,6 +10619,25 @@ packages:
       '@babel/runtime': 7.19.0
       '@formatjs/intl': 3.0.4(typescript@5.1.6)
       '@phytonmk/nano-css': 5.3.7(react-dom@18.2.0)(react@18.2.0)
+      classnames: 2.2.6
+      colorjs.io: 0.4.3
+      hoist-non-react-statics: 3.3.2
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    transitivePeerDependencies:
+      - typescript
+    dev: false
+
+  /@semcore/utils@4.48.2(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-UYZyGlEiYxIE1pYkM2pltttETiv8Y3jesOAoCjmf0b+maD3iNDOntbkfJRA6xAYrEJxXz4qRsa9B0cTXLHXbMw==}
+    peerDependencies:
+      react: 16.8 - 18
+      react-dom: 16.8 - 18
+    dependencies:
+      '@babel/runtime': 7.19.0
+      '@formatjs/intl': 3.0.4(typescript@5.1.6)
+      '@phytonmk/nano-css': 5.3.7(react-dom@18.2.0)(react@18.2.0)
+      '@reshadow/core': 0.0.1-alpha.74
       classnames: 2.2.6
       colorjs.io: 0.4.3
       hoist-non-react-statics: 3.3.2
