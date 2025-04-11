@@ -1,7 +1,7 @@
 {
   "name": "@semcore/pagination",
   "description": "Semrush Pagination Component",
-  "version": "4.51.1",
+  "version": "4.52.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -20,11 +20,11 @@
     "@semcore/input": "4.42.2",
     "@semcore/button": "5.43.1",
     "@semcore/flex-box": "5.41.2",
-    "@semcore/icon": "4.60.2",
+    "@semcore/icon": "4.61.0",
     "@semcore/input-number": "5.41.2",
     "@semcore/link": "5.44.2",
     "@semcore/tooltip": "6.49.2",
-    "@semcore/typography": "5.52.2",
+    "@semcore/typography": "5.53.0",
     "@semcore/utils": "4.48.2"
   },
   "peerDependencies": {
