@@ -8,6 +8,16 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - External icons.
 
+## [4.61.0] - 2025-04-09
+
+### Added
+
+- New `AIToolkit` icon.
+
+### Changed
+
+- `SEOToolkit` icon a little bit.
+
 ## [4.60.2] - 2025-04-04
 
 ### Changed

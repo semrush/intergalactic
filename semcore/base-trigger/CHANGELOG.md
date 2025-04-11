@@ -12,6 +12,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - `tabIndex` in `BaseTrigger` to fix focus [issue on webkit](https://bugs.webkit.org/show_bug.cgi?id=229895).
 
+## [4.53.0] - 2025-04-11
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/icon` [4.60.2 ~> 4.61.0]).
+
 ## [4.52.2] - 2025-04-04
 
 ### Changed
