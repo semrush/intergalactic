@@ -1,7 +1,4 @@
-SContainer {
-  display: contents;
-}
-
+SContainer,
 SNoTooltipContainer,
 SContainerMiddle {
   display: flex;
