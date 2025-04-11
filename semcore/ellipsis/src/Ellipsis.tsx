@@ -237,23 +237,16 @@ class RootEllipsis extends Component<AsProps> {
       return sstyled(styles)(
         <SContainer
           interaction='hover'
+          title={!advanceMode ? text : undefined}
           {...tooltipProps}
           {...(advanceMode ? forcedAdvancedMode : noAdvancedMode)}
         >
           {advanceMode ? (
             <Children />
           ) : (
-            <>
-              <SEllipsis
-                render={SContainer.Trigger}
-                ref={this.textRef}
-                maxLine={maxLine}
-                {...other}
-              >
-                <Children />
-              </SEllipsis>
-              <SContainer.Popper>{!advanceMode ? text : undefined}</SContainer.Popper>
-            </>
+            <SEllipsis render={Box} ref={this.textRef} maxLine={maxLine} {...other}>
+              <Children />
+            </SEllipsis>
           )}
         </SContainer>,
       );
@@ -352,16 +345,14 @@ const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
     return sstyled(styles)(
       <SContainerMiddle
         interaction={interaction}
+        title={text as any}
         ref={forkRef(ref, textRef)}
         tag={Tooltip}
         __excludeProps={['title']}
         {...tooltipProps}
       >
-        <Tooltip.Trigger>
-          <SBeginning>{contextValue.begining}</SBeginning>
-          <STail>{contextValue.tail}</STail>
-        </Tooltip.Trigger>
-        <Tooltip.Popper>{text}</Tooltip.Popper>
+        <SBeginning>{contextValue.begining}</SBeginning>
+        <STail>{contextValue.tail}</STail>
       </SContainerMiddle>,
     ) as any;
   }

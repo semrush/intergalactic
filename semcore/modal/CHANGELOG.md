@@ -8,6 +8,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - `keyboardFocusEnhance` to css `:focus-visible` property for `Close` modal button.
 
+## [4.56.0] - 2025-04-11
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/icon` [4.60.2 ~> 4.61.0]).
+
 ## [4.55.1] - 2025-04-04
 
 ### Changed

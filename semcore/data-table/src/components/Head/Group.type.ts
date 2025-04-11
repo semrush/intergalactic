@@ -3,7 +3,7 @@ import { ReactElement } from 'react';
 import { DataTableColumnProps } from './Column.types';
 
 export type DataTableGroupProps = {
-  title: string;
+  title: React.ReactNode;
 
   borders?: 'both' | 'left' | 'right';
 

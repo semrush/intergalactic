@@ -13,7 +13,7 @@ const Demo = () => {
         <DataTable.Head.Column name='keyword' children='Keyword' />
         <DataTable.Head.Column name='kd' children='KD,%' />
         <DataTable.Head.Column name='cpc' children='CPC' />
-        <DataTable.Head.Column name='vol' children='Vol.' ref={containerRef} />
+        <DataTable.Head.Column name='vol' children='Vol.' ref={containerRef} gtcWidth='100px' />
       </DataTable.Head>
       <DataTable.Body
         renderCell={(props) => {
