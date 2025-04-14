@@ -101,7 +101,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
       return acc;
     }, 0);
 
-    return (totalRows ?? this.calculateRows().length) + expandedRowsCount;
+    return (totalRows ?? this.calculateRows().flat().length) + expandedRowsCount;
   }
 
   get gridSettings() {
@@ -277,14 +277,14 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
       if (direction === 'left' || direction === 'right') {
         // left/right
-        if (currentCell.dataset.groupedBy === 'columns') {
+        if (currentCell.dataset.groupedBy === 'colgroup') {
           colI = direction === 'left' ? colI - 1 : colI + 1;
         } else {
           rowI = rowI - 1;
         }
       } else if (direction === 'up' || direction === 'down') {
         // top/bottom
-        if (currentCell.dataset.groupedBy === 'rows') {
+        if (currentCell.dataset.groupedBy === 'rowgroup') {
           rowI = direction === 'up' ? rowI - 1 : rowI + 1;
         } else {
           colI = colI - 1;
