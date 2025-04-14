@@ -59,6 +59,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
   private columnsSplitter = '/';
 
   private columns: DTColumn[] = [];
+  private hasGroups = false;
 
   private focusedCell: [RowIndex, ColIndex] = [-1, -1];
 
@@ -163,6 +164,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
       expandedRows,
       onExpandRow: this.onExpandRow,
       spinnerRef: this.spinnerRef,
+      hasGroups: this.hasGroups,
     };
   }
 
@@ -409,6 +411,18 @@ class DataTableRoot<D extends DataTableData> extends Component<
         ? '100%'
         : undefined);
 
+    let scrollDirection: 'both' | 'horizontal' | 'vertical' | undefined = undefined;
+    const hasWidthSettings = Boolean(w ?? wMax ?? wMin);
+    const hasHeightSettings = Boolean(h ?? hMax ?? hMin);
+
+    if (hasWidthSettings && !hasHeightSettings) {
+      scrollDirection = 'horizontal';
+    } else if (hasHeightSettings && !hasWidthSettings) {
+      scrollDirection = 'vertical';
+    } else if (hasWidthSettings && hasHeightSettings) {
+      scrollDirection = 'both';
+    }
+
     return sstyled(styles)(
       <ScrollArea
         leftOffset={offsetLeftSum}
@@ -424,7 +438,11 @@ class DataTableRoot<D extends DataTableData> extends Component<
         container={this.tableContainerRef}
         styles={scrollStyles}
       >
-        <ScrollArea.Container tabIndex={-1}>
+        <ScrollArea.Container
+          tabIndex={-1}
+          // @ts-ignore
+          scrollDirection={scrollDirection}
+        >
           <SDataTable
             render={Box}
             ref={forkRef(this.tableRef, this.tableContainerRef)}
@@ -469,7 +487,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
       };
     };
 
-    const hasGroup = findComponent(HeadComponent.props.children, ['Head.Group']) !== undefined;
+    this.hasGroups = findComponent(HeadComponent.props.children, ['Head.Group']) !== undefined;
 
     let columnIndex = 0;
     let groupIndex = 0;
@@ -540,7 +558,9 @@ class DataTableRoot<D extends DataTableData> extends Component<
       if (childIsColumn(child)) {
         const col = makeColumn(child);
 
-        col.gridArea = `1 / ${gridColumnIndex} / ${hasGroup ? '3' : '2'} / ${gridColumnIndex + 1}`;
+        col.gridArea = `1 / ${gridColumnIndex} / ${this.hasGroups ? '3' : '2'} / ${
+          gridColumnIndex + 1
+        }`;
 
         columnIndex++;
         gridColumnIndex++;

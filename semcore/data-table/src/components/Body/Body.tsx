@@ -30,6 +30,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
       columns,
       onExpandRow,
       loading,
+      hasGroups,
     } = this.asProps;
     const row = props.row;
 
@@ -45,7 +46,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
 
       return acc;
     }, index);
-    const ariaRowIndex = rowIndex + 2; // 1 - for header, 1 - because start not from 0, but from 1
+    const ariaRowIndex = rowIndex + (hasGroups ? 3 : 2); // 1 - for header, 1 - because start not from 0, but from 1
 
     const accordionDataGridArea = Array.isArray(row[ACCORDION])
       ? `${ariaRowIndex + 1} / 1 / ${ariaRowIndex + 1 + row[ACCORDION].length} / ${

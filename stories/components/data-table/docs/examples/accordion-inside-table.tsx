@@ -7,10 +7,12 @@ const Demo = () => {
   return (
       <DataTable data={data} aria-label={'Accordion inside table'}>
         <DataTable.Head>
-          <DataTable.Head.Column name='keyword' children='Keyword' />
-          <DataTable.Head.Column name='kd' children='KD,%' />
-          <DataTable.Head.Column name='cpc' children='CPC' />
-          <DataTable.Head.Column name='vol' children='Vol.' />
+          <DataTable.Head.Column name='keyword' children='Keyword' gtcWidth={'minmax(60%, 80%)'} />
+          <DataTable.Head.Group borders={'both'} title={'Organic Sessions'}>
+            <DataTable.Head.Column name='kd' children='KD,%' />
+            <DataTable.Head.Column name='cpc' children='CPC' />
+            <DataTable.Head.Column name='vol' children='Vol.' />
+          </DataTable.Head.Group>
         </DataTable.Head>
         <DataTable.Body/>
       </DataTable>

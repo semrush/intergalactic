@@ -35,4 +35,5 @@ export type BodyPropsInner = {
   expandedRows: number[];
   onExpandRow: (rowIndex: number) => void;
   spinnerRef: React.RefObject<HTMLDivElement>;
+  hasGroups: boolean;
 };
