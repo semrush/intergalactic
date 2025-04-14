@@ -30,6 +30,8 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
       columns,
       onExpandRow,
       loading,
+      selectedRows,
+      onSelectRow,
     } = this.asProps;
     const row = props.row;
 
@@ -67,6 +69,8 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
       row,
       expandedRows,
       onExpandRow,
+      selectedRows,
+      onSelectRow,
       inert: loading ? '' : undefined,
     };
   }

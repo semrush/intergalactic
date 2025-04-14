@@ -35,4 +35,11 @@ export type BodyPropsInner = {
   expandedRows: number[];
   onExpandRow: (rowIndex: number) => void;
   spinnerRef: React.RefObject<HTMLDivElement>;
+  selectedRows?: number[];
+  onSelectRow?: (
+    isSelect: boolean,
+    selectedRowIndex: number,
+    row: DTRow,
+    event?: React.SyntheticEvent<HTMLInputElement>,
+  ) => void;
 };

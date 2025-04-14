@@ -35,5 +35,13 @@ export type RowPropsInner = {
   gridTemplateColumns: string[];
   accordionDataGridArea: string;
 
+  selectedRows?: number[];
+  onSelectRow?: (
+    isSelect: boolean,
+    selectedRowIndex: number,
+    row: DTRow,
+    event?: React.SyntheticEvent<HTMLInputElement>,
+  ) => void;
+
   inert?: '';
 };

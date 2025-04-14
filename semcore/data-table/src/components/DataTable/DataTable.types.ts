@@ -1,6 +1,7 @@
 import { Intergalactic } from '@semcore/core';
 import { BoxProps } from '@semcore/base-components';
 import { ACCORDION, ROW_GROUP } from './DataTable';
+import { DTRow } from '../Body/Row.types';
 
 /**
  * Datatable must have an accessible name (aria-table-name).
@@ -74,6 +75,21 @@ export type DataTableProps<D extends DataTableData> = DataTableAriaProps &
      *
      */
     expandedRows?: number[];
+
+    /**
+     * List of selected rows (indexes from data array)
+     */
+    selectedRows?: number[];
+
+    onSelectedRowsChange?: (
+      selectedRows: number[],
+      event?: React.SyntheticEvent<HTMLInputElement>,
+      opts?: {
+        selectedRowIndex: number;
+        isSelected: boolean;
+        row: DTRow;
+      },
+    ) => void;
   };
 
 export type RowIndex = number;

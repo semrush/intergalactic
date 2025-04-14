@@ -34,6 +34,7 @@ import { hasParent } from '@semcore/core/lib/utils/hasParent';
 
 export const ACCORDION = Symbol('accordion');
 export const ROW_GROUP = Symbol('ROW_GROUP');
+export const SELECT_ALL = Symbol('SELECT_ALL');
 
 const SCROLL_BAR_HEIGHT = 12;
 
@@ -54,6 +55,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
     defaultGridTemplateColumnWidth: 'auto',
     h: 'auto',
     defaultExpandedRows: [],
+    defaultSelectedRows: undefined,
   };
 
   private columnsSplitter = '/';
@@ -115,7 +117,16 @@ class DataTableRoot<D extends DataTableData> extends Component<
   }
 
   getHeadProps(): HeadPropsInner<D> {
-    const { use, compact, sort, onSortChange, getI18nText, uid } = this.asProps;
+    const {
+      use,
+      compact,
+      sort,
+      onSortChange,
+      getI18nText,
+      uid,
+      selectedRows,
+      onSelectedRowsChange,
+    } = this.asProps;
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
 
     return {
@@ -131,11 +142,19 @@ class DataTableRoot<D extends DataTableData> extends Component<
       gridAreaGroupMap: this.gridAreaGroupMap,
       gridTemplateColumns,
       gridTemplateAreas,
+      totalRows: this.totalRows,
+      selectedRows: selectedRows,
+      onChangeSelectAll: (value, e) => {
+        const selectedRowsIndexes = value
+          ? new Array(this.totalRows).fill(undefined).map((_, i) => i)
+          : [];
+        onSelectedRowsChange?.(selectedRowsIndexes, e);
+      },
     };
   }
 
   getBodyProps(): BodyPropsInner {
-    const { use, compact, loading, getI18nText, expandedRows } = this.asProps;
+    const { use, compact, loading, getI18nText, expandedRows, selectedRows } = this.asProps;
     const rows = this.calculateRows();
 
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
@@ -163,8 +182,35 @@ class DataTableRoot<D extends DataTableData> extends Component<
       expandedRows,
       onExpandRow: this.onExpandRow,
       spinnerRef: this.spinnerRef,
+      selectedRows,
+      onSelectRow: this.handleSelectRow,
     };
   }
+
+  handleSelectRow = (
+    isSelected: boolean,
+    selectedRowIndex: number,
+    row: DTRow,
+    event?: React.SyntheticEvent<HTMLInputElement>,
+  ) => {
+    const { selectedRows, onSelectedRowsChange } = this.asProps;
+
+    if (selectedRows && onSelectedRowsChange) {
+      const newSelectedRows = new Set(selectedRows);
+
+      if (isSelected && !newSelectedRows.has(selectedRowIndex)) {
+        newSelectedRows.add(selectedRowIndex);
+      } else if (!isSelected && newSelectedRows.has(selectedRowIndex)) {
+        newSelectedRows.delete(selectedRowIndex);
+      }
+
+      onSelectedRowsChange([...newSelectedRows], event, {
+        selectedRowIndex,
+        isSelected,
+        row,
+      });
+    }
+  };
 
   setInert(value: boolean) {
     const cells = this.tableRef.current?.querySelectorAll<HTMLDivElement>(
@@ -462,7 +508,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
   }
 
   private calculateColumns(): DTColumn[] {
-    const { children, data } = this.props;
+    const { children, data, selectedRows } = this.props;
     const HeadComponent = findComponent(children, ['Head']) as ReactElement<DataTableHeadProps> & {
       props: {
         children: Array<ReactElement<DataTableColumnProps> | ReactElement<DataTableGroupProps>>;
@@ -473,11 +519,35 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
     let columnIndex = 0;
     let groupIndex = 0;
-    let gridColumnIndex = 1;
+    let gridColumnIndex = selectedRows ? 2 : 1;
 
     const calculateGridTemplateColumn = this.calculateGridTemplateColumn.bind(this);
 
     const columns: DTColumn[] = [];
+
+    if (selectedRows) {
+      const column: DTColumn = {
+        name: SELECT_ALL.toString(),
+        // @ts-ignore
+        ref: function (node: HTMLElement | null) {
+          if (node) {
+            const calculatedWidth = node.getBoundingClientRect().width;
+            const calculatedHeight = node.getBoundingClientRect().height;
+            column.calculatedWidth = calculatedWidth;
+            column.calculatedHeight = calculatedHeight;
+          }
+
+          this.ref.current = node;
+        },
+        gridColumnWidth: '30px',
+        calculatedWidth: 0,
+        calculatedHeight: 0,
+
+        alignItems: 'flex-start',
+      };
+
+      columns.push(column);
+    }
 
     const makeColumn = (
       columnElement: ReactElement<DataTableColumnProps>,
