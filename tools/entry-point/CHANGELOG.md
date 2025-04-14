@@ -1,3 +1,43 @@
+## [15.129.0] - 2025-04-11
+
+### @semcore/icon
+
+- **Added** New `AIToolkit` icon.
+- **Changed** `SEOToolkit` icon a little bit.
+
+## [15.128.0] - 2025-04-04
+
+### @semcore/bulk-textarea
+
+- **Added** New type for value/onChange. It could be `string` or `string[]`, depends on type of `value` property. `string` by default.
+- **Fixed** Error if after processing the inserted value it will be empty array.
+- **Fixed** Error with empty `utf` characters in `onChange` / `lineProcessing`.
+- **Fixed** Cursor position after focusing a non-empty field.
+- **Fixed** Blinking previous error after clicking on another line with error.
+
+### @semcore/feedback-form
+
+- **Changed** Email in FeedbackRating error notice as a link.
+- **Changed** Star icons in Slider component.
+- **Changed** Close feedback form behavior - the rating value is cleared.
+- **Changed** It is impossible to open a form with an empty rating.
+
+### @semcore/illustration
+
+- **Added** Exports in `package.json` for correct ESM build.
+
+### @semcore/outside-click
+
+- **Fixed** Closing in some rare cases.
+
+### @semcore/select
+
+- **Fixed** Double call of `onChange` in InputSearch component.
+
+### @semcore/utils
+
+- **Added** `setRef` and `getDisplayName` utils to the exports list.
+
 ## [15.127.0] - 2025-03-28
 
 ### @semcore/button

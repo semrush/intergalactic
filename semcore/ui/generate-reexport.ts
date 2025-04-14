@@ -106,9 +106,9 @@ const GENERATOR = {
       if (util.endsWith('.css')) {
         await fs.outputFile(`./${name}/lib/${util}`, `@import '${dependency}/lib/${util}';`);
 
-        packageJsonExports[`./${util}`] = {
-          require: `./lib/${util}`,
-          import: `./lib/${util}`,
+        packageJsonExports[`./utils/lib/${util}`] = {
+          require: `./utils/lib/${util}`,
+          import: `./utils/lib/${util}`,
         };
 
         continue;
@@ -142,13 +142,18 @@ const GENERATOR = {
         );
       }
 
-      packageJsonExports[`./${name}/${utilNameWithoutExtention}`] = {
-        require: `./${name}/${utilNameWithoutExtention}.cjs`,
-        import: `./${name}/${utilNameWithoutExtention}.mjs`,
-        types: `./${name}/${utilNameWithoutExtention}.d.ts`,
+      packageJsonExports[`./${name}/lib/${utilNameWithoutExtention}`] = {
+        require: `./${name}/lib/${utilNameWithoutExtention}.cjs`,
+        import: `./${name}/lib/${utilNameWithoutExtention}.mjs`,
+        types: `./${name}/lib/${utilNameWithoutExtention}.d.ts`,
       };
     }
     await fs.copy(`${utilsPath}/style`, `./${name}/style`);
+
+    packageJsonExports['./utils/style/var'] = {
+      require: './utils/style/var.css',
+      import: './utils/style/var.css',
+    };
   },
   ICONS: async (dependency: string, name: string) => {
     const require = createRequire(import.meta.url);
@@ -200,13 +205,17 @@ const GENERATOR = {
             // normalize because "subFile" can be just "."
             template(path.normalize(`${dependency}/${icon}/${subFile}`)),
           );
-
-          packageJsonExports[`./${name}/${icon}${path.normalize(`/${subFile}`)}`] = {
-            require: `./${name}/${icon}${path.normalize(`/${subFile}`)}/index.cjs`,
-            import: `./${name}/${icon}${path.normalize(`/${subFile}`)}/index.mjs`,
-            types: `./${name}/${icon}${path.normalize(`/${subFile}`)}/index.d.ts`,
-          };
         }
+
+        const illustrationPath = `./${name}/${icon}${
+          subFile && subFile !== '.' ? `/${subFile}` : ''
+        }`;
+
+        packageJsonExports[illustrationPath] = {
+          require: `${illustrationPath}/index.cjs`,
+          import: `${illustrationPath}/index.mjs`,
+          types: `${illustrationPath}/index.d.ts`,
+        };
       }
     }
   },

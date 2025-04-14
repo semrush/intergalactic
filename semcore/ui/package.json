@@ -1,6 +1,6 @@
 {
   "name": "@semcore/ui",
-  "version": "15.127.0",
+  "version": "15.129.0",
   "license": "MIT",
   "module": "./index.mjs",
   "sideEffects": false,
@@ -4155,260 +4155,260 @@
       "import": "./icon/index.mjs",
       "types": "./icon/index.d.ts"
     },
-    "./illustration/AccessDenied/": {
-      "require": "./illustration/AccessDenied//index.cjs",
-      "import": "./illustration/AccessDenied//index.mjs",
-      "types": "./illustration/AccessDenied//index.d.ts"
+    "./illustration/AccessDenied": {
+      "require": "./illustration/AccessDenied/index.cjs",
+      "import": "./illustration/AccessDenied/index.mjs",
+      "types": "./illustration/AccessDenied/index.d.ts"
     },
-    "./illustration/AccessLogIn/": {
-      "require": "./illustration/AccessLogIn//index.cjs",
-      "import": "./illustration/AccessLogIn//index.mjs",
-      "types": "./illustration/AccessLogIn//index.d.ts"
+    "./illustration/AccessLogIn": {
+      "require": "./illustration/AccessLogIn/index.cjs",
+      "import": "./illustration/AccessLogIn/index.mjs",
+      "types": "./illustration/AccessLogIn/index.d.ts"
     },
-    "./illustration/AreaChart/": {
-      "require": "./illustration/AreaChart//index.cjs",
-      "import": "./illustration/AreaChart//index.mjs",
-      "types": "./illustration/AreaChart//index.d.ts"
+    "./illustration/AreaChart": {
+      "require": "./illustration/AreaChart/index.cjs",
+      "import": "./illustration/AreaChart/index.mjs",
+      "types": "./illustration/AreaChart/index.d.ts"
     },
-    "./illustration/Blocked/": {
-      "require": "./illustration/Blocked//index.cjs",
-      "import": "./illustration/Blocked//index.mjs",
-      "types": "./illustration/Blocked//index.d.ts"
+    "./illustration/Blocked": {
+      "require": "./illustration/Blocked/index.cjs",
+      "import": "./illustration/Blocked/index.mjs",
+      "types": "./illustration/Blocked/index.d.ts"
     },
-    "./illustration/ChoroplethMapChart/": {
-      "require": "./illustration/ChoroplethMapChart//index.cjs",
-      "import": "./illustration/ChoroplethMapChart//index.mjs",
-      "types": "./illustration/ChoroplethMapChart//index.d.ts"
+    "./illustration/ChoroplethMapChart": {
+      "require": "./illustration/ChoroplethMapChart/index.cjs",
+      "import": "./illustration/ChoroplethMapChart/index.mjs",
+      "types": "./illustration/ChoroplethMapChart/index.d.ts"
     },
-    "./illustration/Coffee/": {
-      "require": "./illustration/Coffee//index.cjs",
-      "import": "./illustration/Coffee//index.mjs",
-      "types": "./illustration/Coffee//index.d.ts"
+    "./illustration/Coffee": {
+      "require": "./illustration/Coffee/index.cjs",
+      "import": "./illustration/Coffee/index.mjs",
+      "types": "./illustration/Coffee/index.d.ts"
     },
-    "./illustration/Collection/": {
-      "require": "./illustration/Collection//index.cjs",
-      "import": "./illustration/Collection//index.mjs",
-      "types": "./illustration/Collection//index.d.ts"
+    "./illustration/Collection": {
+      "require": "./illustration/Collection/index.cjs",
+      "import": "./illustration/Collection/index.mjs",
+      "types": "./illustration/Collection/index.d.ts"
     },
-    "./illustration/CombinedChart/": {
-      "require": "./illustration/CombinedChart//index.cjs",
-      "import": "./illustration/CombinedChart//index.mjs",
-      "types": "./illustration/CombinedChart//index.d.ts"
+    "./illustration/CombinedChart": {
+      "require": "./illustration/CombinedChart/index.cjs",
+      "import": "./illustration/CombinedChart/index.mjs",
+      "types": "./illustration/CombinedChart/index.d.ts"
     },
-    "./illustration/Confirmation/": {
-      "require": "./illustration/Confirmation//index.cjs",
-      "import": "./illustration/Confirmation//index.mjs",
-      "types": "./illustration/Confirmation//index.d.ts"
+    "./illustration/Confirmation": {
+      "require": "./illustration/Confirmation/index.cjs",
+      "import": "./illustration/Confirmation/index.mjs",
+      "types": "./illustration/Confirmation/index.d.ts"
     },
-    "./illustration/Congrats/": {
-      "require": "./illustration/Congrats//index.cjs",
-      "import": "./illustration/Congrats//index.mjs",
-      "types": "./illustration/Congrats//index.d.ts"
+    "./illustration/Congrats": {
+      "require": "./illustration/Congrats/index.cjs",
+      "import": "./illustration/Congrats/index.mjs",
+      "types": "./illustration/Congrats/index.d.ts"
     },
-    "./illustration/ConnectionLost/": {
-      "require": "./illustration/ConnectionLost//index.cjs",
-      "import": "./illustration/ConnectionLost//index.mjs",
-      "types": "./illustration/ConnectionLost//index.d.ts"
+    "./illustration/ConnectionLost": {
+      "require": "./illustration/ConnectionLost/index.cjs",
+      "import": "./illustration/ConnectionLost/index.mjs",
+      "types": "./illustration/ConnectionLost/index.d.ts"
     },
-    "./illustration/DeletedAccount/": {
-      "require": "./illustration/DeletedAccount//index.cjs",
-      "import": "./illustration/DeletedAccount//index.mjs",
-      "types": "./illustration/DeletedAccount//index.d.ts"
+    "./illustration/DeletedAccount": {
+      "require": "./illustration/DeletedAccount/index.cjs",
+      "import": "./illustration/DeletedAccount/index.mjs",
+      "types": "./illustration/DeletedAccount/index.d.ts"
     },
-    "./illustration/DeletedPage/": {
-      "require": "./illustration/DeletedPage//index.cjs",
-      "import": "./illustration/DeletedPage//index.mjs",
-      "types": "./illustration/DeletedPage//index.d.ts"
+    "./illustration/DeletedPage": {
+      "require": "./illustration/DeletedPage/index.cjs",
+      "import": "./illustration/DeletedPage/index.mjs",
+      "types": "./illustration/DeletedPage/index.d.ts"
     },
-    "./illustration/Dns/": {
-      "require": "./illustration/Dns//index.cjs",
-      "import": "./illustration/Dns//index.mjs",
-      "types": "./illustration/Dns//index.d.ts"
+    "./illustration/Dns": {
+      "require": "./illustration/Dns/index.cjs",
+      "import": "./illustration/Dns/index.mjs",
+      "types": "./illustration/Dns/index.d.ts"
     },
-    "./illustration/DonutChart/": {
-      "require": "./illustration/DonutChart//index.cjs",
-      "import": "./illustration/DonutChart//index.mjs",
-      "types": "./illustration/DonutChart//index.d.ts"
+    "./illustration/DonutChart": {
+      "require": "./illustration/DonutChart/index.cjs",
+      "import": "./illustration/DonutChart/index.mjs",
+      "types": "./illustration/DonutChart/index.d.ts"
     },
-    "./illustration/Duplicates/": {
-      "require": "./illustration/Duplicates//index.cjs",
-      "import": "./illustration/Duplicates//index.mjs",
-      "types": "./illustration/Duplicates//index.d.ts"
+    "./illustration/Duplicates": {
+      "require": "./illustration/Duplicates/index.cjs",
+      "import": "./illustration/Duplicates/index.mjs",
+      "types": "./illustration/Duplicates/index.d.ts"
     },
-    "./illustration/Feedback/": {
-      "require": "./illustration/Feedback//index.cjs",
-      "import": "./illustration/Feedback//index.mjs",
-      "types": "./illustration/Feedback//index.d.ts"
+    "./illustration/Feedback": {
+      "require": "./illustration/Feedback/index.cjs",
+      "import": "./illustration/Feedback/index.mjs",
+      "types": "./illustration/Feedback/index.d.ts"
     },
-    "./illustration/FunnelChart/": {
-      "require": "./illustration/FunnelChart//index.cjs",
-      "import": "./illustration/FunnelChart//index.mjs",
-      "types": "./illustration/FunnelChart//index.d.ts"
+    "./illustration/FunnelChart": {
+      "require": "./illustration/FunnelChart/index.cjs",
+      "import": "./illustration/FunnelChart/index.mjs",
+      "types": "./illustration/FunnelChart/index.d.ts"
     },
-    "./illustration/Good/": {
-      "require": "./illustration/Good//index.cjs",
-      "import": "./illustration/Good//index.mjs",
-      "types": "./illustration/Good//index.d.ts"
+    "./illustration/Good": {
+      "require": "./illustration/Good/index.cjs",
+      "import": "./illustration/Good/index.mjs",
+      "types": "./illustration/Good/index.d.ts"
     },
-    "./illustration/HeatMapChart/": {
-      "require": "./illustration/HeatMapChart//index.cjs",
-      "import": "./illustration/HeatMapChart//index.mjs",
-      "types": "./illustration/HeatMapChart//index.d.ts"
+    "./illustration/HeatMapChart": {
+      "require": "./illustration/HeatMapChart/index.cjs",
+      "import": "./illustration/HeatMapChart/index.mjs",
+      "types": "./illustration/HeatMapChart/index.d.ts"
     },
-    "./illustration/HorizontalBarChart/": {
-      "require": "./illustration/HorizontalBarChart//index.cjs",
-      "import": "./illustration/HorizontalBarChart//index.mjs",
-      "types": "./illustration/HorizontalBarChart//index.d.ts"
+    "./illustration/HorizontalBarChart": {
+      "require": "./illustration/HorizontalBarChart/index.cjs",
+      "import": "./illustration/HorizontalBarChart/index.mjs",
+      "types": "./illustration/HorizontalBarChart/index.d.ts"
     },
-    "./illustration/KagiChart/": {
-      "require": "./illustration/KagiChart//index.cjs",
-      "import": "./illustration/KagiChart//index.mjs",
-      "types": "./illustration/KagiChart//index.d.ts"
+    "./illustration/KagiChart": {
+      "require": "./illustration/KagiChart/index.cjs",
+      "import": "./illustration/KagiChart/index.mjs",
+      "types": "./illustration/KagiChart/index.d.ts"
     },
-    "./illustration/LineChart/": {
-      "require": "./illustration/LineChart//index.cjs",
-      "import": "./illustration/LineChart//index.mjs",
-      "types": "./illustration/LineChart//index.d.ts"
+    "./illustration/LineChart": {
+      "require": "./illustration/LineChart/index.cjs",
+      "import": "./illustration/LineChart/index.mjs",
+      "types": "./illustration/LineChart/index.d.ts"
     },
-    "./illustration/LollipopChart/": {
-      "require": "./illustration/LollipopChart//index.cjs",
-      "import": "./illustration/LollipopChart//index.mjs",
-      "types": "./illustration/LollipopChart//index.d.ts"
+    "./illustration/LollipopChart": {
+      "require": "./illustration/LollipopChart/index.cjs",
+      "import": "./illustration/LollipopChart/index.mjs",
+      "types": "./illustration/LollipopChart/index.d.ts"
     },
-    "./illustration/MailSent/": {
-      "require": "./illustration/MailSent//index.cjs",
-      "import": "./illustration/MailSent//index.mjs",
-      "types": "./illustration/MailSent//index.d.ts"
+    "./illustration/MailSent": {
+      "require": "./illustration/MailSent/index.cjs",
+      "import": "./illustration/MailSent/index.mjs",
+      "types": "./illustration/MailSent/index.d.ts"
     },
-    "./illustration/Maintenance/": {
-      "require": "./illustration/Maintenance//index.cjs",
-      "import": "./illustration/Maintenance//index.mjs",
-      "types": "./illustration/Maintenance//index.d.ts"
+    "./illustration/Maintenance": {
+      "require": "./illustration/Maintenance/index.cjs",
+      "import": "./illustration/Maintenance/index.mjs",
+      "types": "./illustration/Maintenance/index.d.ts"
     },
-    "./illustration/Nexttime/": {
-      "require": "./illustration/Nexttime//index.cjs",
-      "import": "./illustration/Nexttime//index.mjs",
-      "types": "./illustration/Nexttime//index.d.ts"
+    "./illustration/Nexttime": {
+      "require": "./illustration/Nexttime/index.cjs",
+      "import": "./illustration/Nexttime/index.mjs",
+      "types": "./illustration/Nexttime/index.d.ts"
     },
-    "./illustration/NoPayment/": {
-      "require": "./illustration/NoPayment//index.cjs",
-      "import": "./illustration/NoPayment//index.mjs",
-      "types": "./illustration/NoPayment//index.d.ts"
+    "./illustration/NoPayment": {
+      "require": "./illustration/NoPayment/index.cjs",
+      "import": "./illustration/NoPayment/index.mjs",
+      "types": "./illustration/NoPayment/index.d.ts"
     },
-    "./illustration/NothingFound/": {
-      "require": "./illustration/NothingFound//index.cjs",
-      "import": "./illustration/NothingFound//index.mjs",
-      "types": "./illustration/NothingFound//index.d.ts"
+    "./illustration/NothingFound": {
+      "require": "./illustration/NothingFound/index.cjs",
+      "import": "./illustration/NothingFound/index.mjs",
+      "types": "./illustration/NothingFound/index.d.ts"
     },
-    "./illustration/OtherData/": {
-      "require": "./illustration/OtherData//index.cjs",
-      "import": "./illustration/OtherData//index.mjs",
-      "types": "./illustration/OtherData//index.d.ts"
+    "./illustration/OtherData": {
+      "require": "./illustration/OtherData/index.cjs",
+      "import": "./illustration/OtherData/index.mjs",
+      "types": "./illustration/OtherData/index.d.ts"
     },
-    "./illustration/PageError/": {
-      "require": "./illustration/PageError//index.cjs",
-      "import": "./illustration/PageError//index.mjs",
-      "types": "./illustration/PageError//index.d.ts"
+    "./illustration/PageError": {
+      "require": "./illustration/PageError/index.cjs",
+      "import": "./illustration/PageError/index.mjs",
+      "types": "./illustration/PageError/index.d.ts"
     },
-    "./illustration/PageNotFound/": {
-      "require": "./illustration/PageNotFound//index.cjs",
-      "import": "./illustration/PageNotFound//index.mjs",
-      "types": "./illustration/PageNotFound//index.d.ts"
+    "./illustration/PageNotFound": {
+      "require": "./illustration/PageNotFound/index.cjs",
+      "import": "./illustration/PageNotFound/index.mjs",
+      "types": "./illustration/PageNotFound/index.d.ts"
     },
-    "./illustration/PieChart/": {
-      "require": "./illustration/PieChart//index.cjs",
-      "import": "./illustration/PieChart//index.mjs",
-      "types": "./illustration/PieChart//index.d.ts"
+    "./illustration/PieChart": {
+      "require": "./illustration/PieChart/index.cjs",
+      "import": "./illustration/PieChart/index.mjs",
+      "types": "./illustration/PieChart/index.d.ts"
     },
-    "./illustration/Processing/": {
-      "require": "./illustration/Processing//index.cjs",
-      "import": "./illustration/Processing//index.mjs",
-      "types": "./illustration/Processing//index.d.ts"
+    "./illustration/Processing": {
+      "require": "./illustration/Processing/index.cjs",
+      "import": "./illustration/Processing/index.mjs",
+      "types": "./illustration/Processing/index.d.ts"
     },
-    "./illustration/ProjectNotFound/": {
-      "require": "./illustration/ProjectNotFound//index.cjs",
-      "import": "./illustration/ProjectNotFound//index.mjs",
-      "types": "./illustration/ProjectNotFound//index.d.ts"
+    "./illustration/ProjectNotFound": {
+      "require": "./illustration/ProjectNotFound/index.cjs",
+      "import": "./illustration/ProjectNotFound/index.mjs",
+      "types": "./illustration/ProjectNotFound/index.d.ts"
     },
-    "./illustration/RadarChart/": {
-      "require": "./illustration/RadarChart//index.cjs",
-      "import": "./illustration/RadarChart//index.mjs",
-      "types": "./illustration/RadarChart//index.d.ts"
+    "./illustration/RadarChart": {
+      "require": "./illustration/RadarChart/index.cjs",
+      "import": "./illustration/RadarChart/index.mjs",
+      "types": "./illustration/RadarChart/index.d.ts"
     },
-    "./illustration/RadialTreeChart/": {
-      "require": "./illustration/RadialTreeChart//index.cjs",
-      "import": "./illustration/RadialTreeChart//index.mjs",
-      "types": "./illustration/RadialTreeChart//index.d.ts"
+    "./illustration/RadialTreeChart": {
+      "require": "./illustration/RadialTreeChart/index.cjs",
+      "import": "./illustration/RadialTreeChart/index.mjs",
+      "types": "./illustration/RadialTreeChart/index.d.ts"
     },
-    "./illustration/SankeyChart/": {
-      "require": "./illustration/SankeyChart//index.cjs",
-      "import": "./illustration/SankeyChart//index.mjs",
-      "types": "./illustration/SankeyChart//index.d.ts"
+    "./illustration/SankeyChart": {
+      "require": "./illustration/SankeyChart/index.cjs",
+      "import": "./illustration/SankeyChart/index.mjs",
+      "types": "./illustration/SankeyChart/index.d.ts"
     },
-    "./illustration/ScatterPlotChart/": {
-      "require": "./illustration/ScatterPlotChart//index.cjs",
-      "import": "./illustration/ScatterPlotChart//index.mjs",
-      "types": "./illustration/ScatterPlotChart//index.d.ts"
+    "./illustration/ScatterPlotChart": {
+      "require": "./illustration/ScatterPlotChart/index.cjs",
+      "import": "./illustration/ScatterPlotChart/index.mjs",
+      "types": "./illustration/ScatterPlotChart/index.d.ts"
     },
-    "./illustration/StackedAreaChart/": {
-      "require": "./illustration/StackedAreaChart//index.cjs",
-      "import": "./illustration/StackedAreaChart//index.mjs",
-      "types": "./illustration/StackedAreaChart//index.d.ts"
+    "./illustration/StackedAreaChart": {
+      "require": "./illustration/StackedAreaChart/index.cjs",
+      "import": "./illustration/StackedAreaChart/index.mjs",
+      "types": "./illustration/StackedAreaChart/index.d.ts"
     },
-    "./illustration/Suggestion/": {
-      "require": "./illustration/Suggestion//index.cjs",
-      "import": "./illustration/Suggestion//index.mjs",
-      "types": "./illustration/Suggestion//index.d.ts"
+    "./illustration/Suggestion": {
+      "require": "./illustration/Suggestion/index.cjs",
+      "import": "./illustration/Suggestion/index.mjs",
+      "types": "./illustration/Suggestion/index.d.ts"
     },
-    "./illustration/Suggestions/": {
-      "require": "./illustration/Suggestions//index.cjs",
-      "import": "./illustration/Suggestions//index.mjs",
-      "types": "./illustration/Suggestions//index.d.ts"
+    "./illustration/Suggestions": {
+      "require": "./illustration/Suggestions/index.cjs",
+      "import": "./illustration/Suggestions/index.mjs",
+      "types": "./illustration/Suggestions/index.d.ts"
     },
-    "./illustration/Table/": {
-      "require": "./illustration/Table//index.cjs",
-      "import": "./illustration/Table//index.mjs",
-      "types": "./illustration/Table//index.d.ts"
+    "./illustration/Table": {
+      "require": "./illustration/Table/index.cjs",
+      "import": "./illustration/Table/index.mjs",
+      "types": "./illustration/Table/index.d.ts"
     },
-    "./illustration/TagCloud/": {
-      "require": "./illustration/TagCloud//index.cjs",
-      "import": "./illustration/TagCloud//index.mjs",
-      "types": "./illustration/TagCloud//index.d.ts"
+    "./illustration/TagCloud": {
+      "require": "./illustration/TagCloud/index.cjs",
+      "import": "./illustration/TagCloud/index.mjs",
+      "types": "./illustration/TagCloud/index.d.ts"
     },
-    "./illustration/TextLinksEtc/": {
-      "require": "./illustration/TextLinksEtc//index.cjs",
-      "import": "./illustration/TextLinksEtc//index.mjs",
-      "types": "./illustration/TextLinksEtc//index.d.ts"
+    "./illustration/TextLinksEtc": {
+      "require": "./illustration/TextLinksEtc/index.cjs",
+      "import": "./illustration/TextLinksEtc/index.mjs",
+      "types": "./illustration/TextLinksEtc/index.d.ts"
     },
-    "./illustration/Timeout/": {
-      "require": "./illustration/Timeout//index.cjs",
-      "import": "./illustration/Timeout//index.mjs",
-      "types": "./illustration/Timeout//index.d.ts"
+    "./illustration/Timeout": {
+      "require": "./illustration/Timeout/index.cjs",
+      "import": "./illustration/Timeout/index.mjs",
+      "types": "./illustration/Timeout/index.d.ts"
     },
-    "./illustration/UnderConstruction/": {
-      "require": "./illustration/UnderConstruction//index.cjs",
-      "import": "./illustration/UnderConstruction//index.mjs",
-      "types": "./illustration/UnderConstruction//index.d.ts"
+    "./illustration/UnderConstruction": {
+      "require": "./illustration/UnderConstruction/index.cjs",
+      "import": "./illustration/UnderConstruction/index.mjs",
+      "types": "./illustration/UnderConstruction/index.d.ts"
     },
-    "./illustration/VennChart/": {
-      "require": "./illustration/VennChart//index.cjs",
-      "import": "./illustration/VennChart//index.mjs",
-      "types": "./illustration/VennChart//index.d.ts"
+    "./illustration/VennChart": {
+      "require": "./illustration/VennChart/index.cjs",
+      "import": "./illustration/VennChart/index.mjs",
+      "types": "./illustration/VennChart/index.d.ts"
     },
-    "./illustration/VerticalBarChart/": {
-      "require": "./illustration/VerticalBarChart//index.cjs",
-      "import": "./illustration/VerticalBarChart//index.mjs",
-      "types": "./illustration/VerticalBarChart//index.d.ts"
+    "./illustration/VerticalBarChart": {
+      "require": "./illustration/VerticalBarChart/index.cjs",
+      "import": "./illustration/VerticalBarChart/index.mjs",
+      "types": "./illustration/VerticalBarChart/index.d.ts"
     },
-    "./illustration/Waiting/": {
-      "require": "./illustration/Waiting//index.cjs",
-      "import": "./illustration/Waiting//index.mjs",
-      "types": "./illustration/Waiting//index.d.ts"
+    "./illustration/Waiting": {
+      "require": "./illustration/Waiting/index.cjs",
+      "import": "./illustration/Waiting/index.mjs",
+      "types": "./illustration/Waiting/index.d.ts"
     },
-    "./illustration/Warning/": {
-      "require": "./illustration/Warning//index.cjs",
-      "import": "./illustration/Warning//index.mjs",
-      "types": "./illustration/Warning//index.d.ts"
+    "./illustration/Warning": {
+      "require": "./illustration/Warning/index.cjs",
+      "import": "./illustration/Warning/index.mjs",
+      "types": "./illustration/Warning/index.d.ts"
     },
     "./illustration/lib/cjs": {
       "require": "./illustration/lib/cjs/index.cjs",
@@ -4425,10 +4425,10 @@
       "import": "./illustration/lib/types/index.mjs",
       "types": "./illustration/lib/types/index.d.ts"
     },
-    "./illustration/types/": {
-      "require": "./illustration/types//index.cjs",
-      "import": "./illustration/types//index.mjs",
-      "types": "./illustration/types//index.d.ts"
+    "./illustration/types": {
+      "require": "./illustration/types/index.cjs",
+      "import": "./illustration/types/index.mjs",
+      "types": "./illustration/types/index.d.ts"
     },
     "./illustration": {
       "require": "./illustration/index.cjs",
@@ -4620,465 +4620,469 @@
       "import": "./typography/index.mjs",
       "types": "./typography/index.d.ts"
     },
-    "./utils/CSSinJS": {
-      "require": "./utils/CSSinJS.cjs",
-      "import": "./utils/CSSinJS.mjs",
-      "types": "./utils/CSSinJS.d.ts"
-    },
-    "./utils/ScreenReaderOnly": {
-      "require": "./utils/ScreenReaderOnly.cjs",
-      "import": "./utils/ScreenReaderOnly.mjs",
-      "types": "./utils/ScreenReaderOnly.d.ts"
-    },
-    "./utils/ThemeProvider": {
-      "require": "./utils/ThemeProvider.cjs",
-      "import": "./utils/ThemeProvider.mjs",
-      "types": "./utils/ThemeProvider.d.ts"
-    },
-    "./utils/addonText": {
-      "require": "./utils/addonText.cjs",
-      "import": "./utils/addonText.mjs",
-      "types": "./utils/addonText.d.ts"
-    },
-    "./utils/addonTextChildren": {
-      "require": "./utils/addonTextChildren.cjs",
-      "import": "./utils/addonTextChildren.mjs",
-      "types": "./utils/addonTextChildren.d.ts"
-    },
-    "./utils/assignProps": {
-      "require": "./utils/assignProps.cjs",
-      "import": "./utils/assignProps.mjs",
-      "types": "./utils/assignProps.d.ts"
-    },
-    "./utils/canUseDOM": {
-      "require": "./utils/canUseDOM.cjs",
-      "import": "./utils/canUseDOM.mjs",
-      "types": "./utils/canUseDOM.d.ts"
-    },
-    "./utils/capitalizeFirstLetter": {
-      "require": "./utils/capitalizeFirstLetter.cjs",
-      "import": "./utils/capitalizeFirstLetter.mjs",
-      "types": "./utils/capitalizeFirstLetter.d.ts"
-    },
-    "./utils/color": {
-      "require": "./utils/color.cjs",
-      "import": "./utils/color.mjs",
-      "types": "./utils/color.d.ts"
-    },
-    "./utils/compose": {
-      "require": "./utils/compose.cjs",
-      "import": "./utils/compose.mjs",
-      "types": "./utils/compose.d.ts"
-    },
-    "./utils/createHoc": {
-      "require": "./utils/createHoc.cjs",
-      "import": "./utils/createHoc.mjs",
-      "types": "./utils/createHoc.d.ts"
-    },
-    "./utils/createUUID": {
-      "require": "./utils/createUUID.cjs",
-      "import": "./utils/createUUID.mjs",
-      "types": "./utils/createUUID.d.ts"
-    },
-    "./utils/cssToIntDefault": {
-      "require": "./utils/cssToIntDefault.cjs",
-      "import": "./utils/cssToIntDefault.mjs",
-      "types": "./utils/cssToIntDefault.d.ts"
-    },
-    "./utils/eventEmitter": {
-      "require": "./utils/eventEmitter.cjs",
-      "import": "./utils/eventEmitter.mjs",
-      "types": "./utils/eventEmitter.d.ts"
-    },
-    "./utils/findComponent": {
-      "require": "./utils/findComponent.cjs",
-      "import": "./utils/findComponent.mjs",
-      "types": "./utils/findComponent.d.ts"
-    },
-    "./utils/fire": {
-      "require": "./utils/fire.cjs",
-      "import": "./utils/fire.mjs",
-      "types": "./utils/fire.d.ts"
-    },
-    "./utils/getDisplayName": {
-      "require": "./utils/getDisplayName.cjs",
-      "import": "./utils/getDisplayName.mjs",
-      "types": "./utils/getDisplayName.d.ts"
-    },
-    "./utils/getEventTarget": {
-      "require": "./utils/getEventTarget.cjs",
-      "import": "./utils/getEventTarget.mjs",
-      "types": "./utils/getEventTarget.d.ts"
-    },
-    "./utils/getOriginChildren": {
-      "require": "./utils/getOriginChildren.cjs",
-      "import": "./utils/getOriginChildren.mjs",
-      "types": "./utils/getOriginChildren.d.ts"
-    },
-    "./utils/getRandomInt": {
-      "require": "./utils/getRandomInt.cjs",
-      "import": "./utils/getRandomInt.mjs",
-      "types": "./utils/getRandomInt.d.ts"
-    },
-    "./utils/getValue": {
-      "require": "./utils/getValue.cjs",
-      "import": "./utils/getValue.mjs",
-      "types": "./utils/getValue.d.ts"
-    },
-    "./utils/hasLabels": {
-      "require": "./utils/hasLabels.cjs",
-      "import": "./utils/hasLabels.mjs",
-      "types": "./utils/hasLabels.d.ts"
-    },
-    "./utils/hasParent": {
-      "require": "./utils/hasParent.cjs",
-      "import": "./utils/hasParent.mjs",
-      "types": "./utils/hasParent.d.ts"
-    },
-    "./utils/if": {
-      "require": "./utils/if.cjs",
-      "import": "./utils/if.mjs",
-      "types": "./utils/if.d.ts"
-    },
-    "./utils/ifChildren": {
-      "require": "./utils/ifChildren.cjs",
-      "import": "./utils/ifChildren.mjs",
-      "types": "./utils/ifChildren.d.ts"
-    },
-    "./utils/injectStyle": {
-      "require": "./utils/injectStyle.cjs",
-      "import": "./utils/injectStyle.mjs",
-      "types": "./utils/injectStyle.d.ts"
-    },
-    "./utils/inputProps": {
-      "require": "./utils/inputProps.cjs",
-      "import": "./utils/inputProps.mjs",
-      "types": "./utils/inputProps.d.ts"
-    },
-    "./utils/isNode": {
-      "require": "./utils/isNode.cjs",
-      "import": "./utils/isNode.mjs",
-      "types": "./utils/isNode.d.ts"
-    },
-    "./utils/isPromise": {
-      "require": "./utils/isPromise.cjs",
-      "import": "./utils/isPromise.mjs",
-      "types": "./utils/isPromise.d.ts"
-    },
-    "./utils/isRetina": {
-      "require": "./utils/isRetina.cjs",
-      "import": "./utils/isRetina.mjs",
-      "types": "./utils/isRetina.d.ts"
-    },
-    "./utils/logger": {
-      "require": "./utils/logger.cjs",
-      "import": "./utils/logger.mjs",
-      "types": "./utils/logger.d.ts"
-    },
-    "./utils/numericChecker": {
-      "require": "./utils/numericChecker.cjs",
-      "import": "./utils/numericChecker.mjs",
-      "types": "./utils/numericChecker.d.ts"
-    },
-    "./utils/ownerDocument": {
-      "require": "./utils/ownerDocument.cjs",
-      "import": "./utils/ownerDocument.mjs",
-      "types": "./utils/ownerDocument.d.ts"
-    },
-    "./utils/pick": {
-      "require": "./utils/pick.cjs",
-      "import": "./utils/pick.mjs",
-      "types": "./utils/pick.d.ts"
-    },
-    "./utils/propsForElement": {
-      "require": "./utils/propsForElement.cjs",
-      "import": "./utils/propsForElement.mjs",
-      "types": "./utils/propsForElement.d.ts"
-    },
-    "./utils/rafTrottle": {
-      "require": "./utils/rafTrottle.cjs",
-      "import": "./utils/rafTrottle.mjs",
-      "types": "./utils/rafTrottle.d.ts"
-    },
-    "./utils/reactToText": {
-      "require": "./utils/reactToText.cjs",
-      "import": "./utils/reactToText.mjs",
-      "types": "./utils/reactToText.d.ts"
-    },
-    "./utils/ref": {
-      "require": "./utils/ref.cjs",
-      "import": "./utils/ref.mjs",
-      "types": "./utils/ref.d.ts"
-    },
-    "./utils/setRef": {
-      "require": "./utils/setRef.cjs",
-      "import": "./utils/setRef.mjs",
-      "types": "./utils/setRef.d.ts"
-    },
-    "./utils/syncScroll": {
-      "require": "./utils/syncScroll.cjs",
-      "import": "./utils/syncScroll.mjs",
-      "types": "./utils/syncScroll.d.ts"
-    },
-    "./utils/uncontroll": {
-      "require": "./utils/uncontroll.cjs",
-      "import": "./utils/uncontroll.mjs",
-      "types": "./utils/uncontroll.d.ts"
-    },
-    "./utils/uniqueID": {
-      "require": "./utils/uniqueID.cjs",
-      "import": "./utils/uniqueID.mjs",
-      "types": "./utils/uniqueID.d.ts"
-    },
-    "./utils/useCssVariable": {
-      "require": "./utils/useCssVariable.cjs",
-      "import": "./utils/useCssVariable.mjs",
-      "types": "./utils/useCssVariable.d.ts"
-    },
-    "./utils/core/index": {
-      "require": "./utils/core/index.cjs",
-      "import": "./utils/core/index.mjs",
-      "types": "./utils/core/index.d.ts"
-    },
-    "./utils/core/register": {
-      "require": "./utils/core/register.cjs",
-      "import": "./utils/core/register.mjs",
-      "types": "./utils/core/register.d.ts"
-    },
-    "./utils/enhances/WithAutoFocus": {
-      "require": "./utils/enhances/WithAutoFocus.cjs",
-      "import": "./utils/enhances/WithAutoFocus.mjs",
-      "types": "./utils/enhances/WithAutoFocus.d.ts"
-    },
-    "./utils/enhances/WithCSS": {
-      "require": "./utils/enhances/WithCSS.cjs",
-      "import": "./utils/enhances/WithCSS.mjs",
-      "types": "./utils/enhances/WithCSS.d.ts"
-    },
-    "./utils/enhances/WithI18n": {
-      "require": "./utils/enhances/WithI18n.cjs",
-      "import": "./utils/enhances/WithI18n.mjs",
-      "types": "./utils/enhances/WithI18n.d.ts"
-    },
-    "./utils/enhances/WithKeyboardFocus": {
-      "require": "./utils/enhances/WithKeyboardFocus.cjs",
-      "import": "./utils/enhances/WithKeyboardFocus.mjs",
-      "types": "./utils/enhances/WithKeyboardFocus.d.ts"
-    },
-    "./utils/enhances/WithRef": {
-      "require": "./utils/enhances/WithRef.cjs",
-      "import": "./utils/enhances/WithRef.mjs",
-      "types": "./utils/enhances/WithRef.d.ts"
-    },
-    "./utils/enhances/a11yEnhance": {
-      "require": "./utils/enhances/a11yEnhance.cjs",
-      "import": "./utils/enhances/a11yEnhance.mjs",
-      "types": "./utils/enhances/a11yEnhance.d.ts"
-    },
-    "./utils/enhances/animatedSizeEnhance": {
-      "require": "./utils/enhances/animatedSizeEnhance.cjs",
-      "import": "./utils/enhances/animatedSizeEnhance.mjs",
-      "types": "./utils/enhances/animatedSizeEnhance.d.ts"
-    },
-    "./utils/enhances/autoFocusEnhance": {
-      "require": "./utils/enhances/autoFocusEnhance.cjs",
-      "import": "./utils/enhances/autoFocusEnhance.mjs",
-      "types": "./utils/enhances/autoFocusEnhance.d.ts"
-    },
-    "./utils/enhances/contextEnhance": {
-      "require": "./utils/enhances/contextEnhance.cjs",
-      "import": "./utils/enhances/contextEnhance.mjs",
-      "types": "./utils/enhances/contextEnhance.d.ts"
-    },
-    "./utils/enhances/i18nEnhance": {
-      "require": "./utils/enhances/i18nEnhance.cjs",
-      "import": "./utils/enhances/i18nEnhance.mjs",
-      "types": "./utils/enhances/i18nEnhance.d.ts"
-    },
-    "./utils/enhances/keyboardFocusEnhance": {
-      "require": "./utils/enhances/keyboardFocusEnhance.cjs",
-      "import": "./utils/enhances/keyboardFocusEnhance.mjs",
-      "types": "./utils/enhances/keyboardFocusEnhance.d.ts"
-    },
-    "./utils/enhances/resolveColorEnhance": {
-      "require": "./utils/enhances/resolveColorEnhance.cjs",
-      "import": "./utils/enhances/resolveColorEnhance.mjs",
-      "types": "./utils/enhances/resolveColorEnhance.d.ts"
-    },
-    "./utils/focus-lock/focusBorders": {
-      "require": "./utils/focus-lock/focusBorders.cjs",
-      "import": "./utils/focus-lock/focusBorders.mjs",
-      "types": "./utils/focus-lock/focusBorders.d.ts"
-    },
-    "./utils/focus-lock/getFocusableIn": {
-      "require": "./utils/focus-lock/getFocusableIn.cjs",
-      "import": "./utils/focus-lock/getFocusableIn.mjs",
-      "types": "./utils/focus-lock/getFocusableIn.d.ts"
-    },
-    "./utils/focus-lock/isFocusInside": {
-      "require": "./utils/focus-lock/isFocusInside.cjs",
-      "import": "./utils/focus-lock/isFocusInside.mjs",
-      "types": "./utils/focus-lock/isFocusInside.d.ts"
-    },
-    "./utils/focus-lock/isFocusable": {
-      "require": "./utils/focus-lock/isFocusable.cjs",
-      "import": "./utils/focus-lock/isFocusable.mjs",
-      "types": "./utils/focus-lock/isFocusable.d.ts"
-    },
-    "./utils/focus-lock/setFocus": {
-      "require": "./utils/focus-lock/setFocus.cjs",
-      "import": "./utils/focus-lock/setFocus.mjs",
-      "types": "./utils/focus-lock/setFocus.d.ts"
-    },
-    "./themes/auto.css": {
-      "require": "./lib/themes/auto.css",
-      "import": "./lib/themes/auto.css"
-    },
-    "./themes/dark.css": {
-      "require": "./lib/themes/dark.css",
-      "import": "./lib/themes/dark.css"
-    },
-    "./themes/default.css": {
-      "require": "./lib/themes/default.css",
-      "import": "./lib/themes/default.css"
-    },
-    "./themes/light.css": {
-      "require": "./lib/themes/light.css",
-      "import": "./lib/themes/light.css"
-    },
-    "./utils/use/useColorResolver": {
-      "require": "./utils/use/useColorResolver.cjs",
-      "import": "./utils/use/useColorResolver.mjs",
-      "types": "./utils/use/useColorResolver.d.ts"
-    },
-    "./utils/use/useCss": {
-      "require": "./utils/use/useCss.cjs",
-      "import": "./utils/use/useCss.mjs",
-      "types": "./utils/use/useCss.d.ts"
-    },
-    "./utils/use/useEnhancedEffect": {
-      "require": "./utils/use/useEnhancedEffect.cjs",
-      "import": "./utils/use/useEnhancedEffect.mjs",
-      "types": "./utils/use/useEnhancedEffect.d.ts"
-    },
-    "./utils/use/useEventCallback": {
-      "require": "./utils/use/useEventCallback.cjs",
-      "import": "./utils/use/useEventCallback.mjs",
-      "types": "./utils/use/useEventCallback.d.ts"
-    },
-    "./utils/use/useEventListener": {
-      "require": "./utils/use/useEventListener.cjs",
-      "import": "./utils/use/useEventListener.mjs",
-      "types": "./utils/use/useEventListener.d.ts"
-    },
-    "./utils/use/useFocusLock": {
-      "require": "./utils/use/useFocusLock.cjs",
-      "import": "./utils/use/useFocusLock.mjs",
-      "types": "./utils/use/useFocusLock.d.ts"
-    },
-    "./utils/use/usePreventScroll": {
-      "require": "./utils/use/usePreventScroll.cjs",
-      "import": "./utils/use/usePreventScroll.mjs",
-      "types": "./utils/use/usePreventScroll.d.ts"
-    },
-    "./utils/components/invalid-state-pattern/InvalidStatePattern": {
-      "require": "./utils/components/invalid-state-pattern/InvalidStatePattern.cjs",
-      "import": "./utils/components/invalid-state-pattern/InvalidStatePattern.mjs",
-      "types": "./utils/components/invalid-state-pattern/InvalidStatePattern.d.ts"
-    },
-    "./components/invalid-state-pattern/invalidStatePattern.shadow.css": {
-      "require": "./lib/components/invalid-state-pattern/invalidStatePattern.shadow.css",
-      "import": "./lib/components/invalid-state-pattern/invalidStatePattern.shadow.css"
-    },
-    "./utils/core/enhancement/Children": {
-      "require": "./utils/core/enhancement/Children.cjs",
-      "import": "./utils/core/enhancement/Children.mjs",
-      "types": "./utils/core/enhancement/Children.d.ts"
-    },
-    "./utils/core/enhancement/Root": {
-      "require": "./utils/core/enhancement/Root.cjs",
-      "import": "./utils/core/enhancement/Root.mjs",
-      "types": "./utils/core/enhancement/Root.d.ts"
-    },
-    "./utils/core/enhancement/bindHandler": {
-      "require": "./utils/core/enhancement/bindHandler.cjs",
-      "import": "./utils/core/enhancement/bindHandler.mjs",
-      "types": "./utils/core/enhancement/bindHandler.d.ts"
-    },
-    "./utils/core/enhancement/dataName": {
-      "require": "./utils/core/enhancement/dataName.cjs",
-      "import": "./utils/core/enhancement/dataName.mjs",
-      "types": "./utils/core/enhancement/dataName.d.ts"
-    },
-    "./utils/core/enhancement/enhance": {
-      "require": "./utils/core/enhancement/enhance.cjs",
-      "import": "./utils/core/enhancement/enhance.mjs",
-      "types": "./utils/core/enhancement/enhance.d.ts"
-    },
-    "./utils/core/enhancement/functionDefaultProps": {
-      "require": "./utils/core/enhancement/functionDefaultProps.cjs",
-      "import": "./utils/core/enhancement/functionDefaultProps.mjs",
-      "types": "./utils/core/enhancement/functionDefaultProps.d.ts"
-    },
-    "./utils/core/enhancement/hoistProps": {
-      "require": "./utils/core/enhancement/hoistProps.cjs",
-      "import": "./utils/core/enhancement/hoistProps.mjs",
-      "types": "./utils/core/enhancement/hoistProps.d.ts"
-    },
-    "./utils/core/enhancement/i18n": {
-      "require": "./utils/core/enhancement/i18n.cjs",
-      "import": "./utils/core/enhancement/i18n.mjs",
-      "types": "./utils/core/enhancement/i18n.d.ts"
-    },
-    "./utils/core/enhancement/inheritedName": {
-      "require": "./utils/core/enhancement/inheritedName.cjs",
-      "import": "./utils/core/enhancement/inheritedName.mjs",
-      "types": "./utils/core/enhancement/inheritedName.d.ts"
-    },
-    "./utils/core/enhancement/staticChildren": {
-      "require": "./utils/core/enhancement/staticChildren.cjs",
-      "import": "./utils/core/enhancement/staticChildren.mjs",
-      "types": "./utils/core/enhancement/staticChildren.d.ts"
-    },
-    "./utils/core/enhancement/style": {
-      "require": "./utils/core/enhancement/style.cjs",
-      "import": "./utils/core/enhancement/style.mjs",
-      "types": "./utils/core/enhancement/style.d.ts"
-    },
-    "./utils/core/enhancement/uncontrolledProps": {
-      "require": "./utils/core/enhancement/uncontrolledProps.cjs",
-      "import": "./utils/core/enhancement/uncontrolledProps.mjs",
-      "types": "./utils/core/enhancement/uncontrolledProps.d.ts"
-    },
-    "./utils/core/styled/index": {
-      "require": "./utils/core/styled/index.cjs",
-      "import": "./utils/core/styled/index.mjs",
-      "types": "./utils/core/styled/index.d.ts"
-    },
-    "./utils/core/styled/sstyled": {
-      "require": "./utils/core/styled/sstyled.cjs",
-      "import": "./utils/core/styled/sstyled.mjs",
-      "types": "./utils/core/styled/sstyled.d.ts"
-    },
-    "./utils/core/types/Component": {
-      "require": "./utils/core/types/Component.cjs",
-      "import": "./utils/core/types/Component.mjs",
-      "types": "./utils/core/types/Component.d.ts"
-    },
-    "./utils/core/types/UnknownProperties": {
-      "require": "./utils/core/types/UnknownProperties.cjs",
-      "import": "./utils/core/types/UnknownProperties.mjs",
-      "types": "./utils/core/types/UnknownProperties.d.ts"
-    },
-    "./utils/core/types/index": {
-      "require": "./utils/core/types/index.cjs",
-      "import": "./utils/core/types/index.mjs",
-      "types": "./utils/core/types/index.d.ts"
-    },
-    "./utils/core/types/symbols": {
-      "require": "./utils/core/types/symbols.cjs",
-      "import": "./utils/core/types/symbols.mjs",
-      "types": "./utils/core/types/symbols.d.ts"
+    "./utils/lib/CSSinJS": {
+      "require": "./utils/lib/CSSinJS.cjs",
+      "import": "./utils/lib/CSSinJS.mjs",
+      "types": "./utils/lib/CSSinJS.d.ts"
+    },
+    "./utils/lib/ScreenReaderOnly": {
+      "require": "./utils/lib/ScreenReaderOnly.cjs",
+      "import": "./utils/lib/ScreenReaderOnly.mjs",
+      "types": "./utils/lib/ScreenReaderOnly.d.ts"
+    },
+    "./utils/lib/ThemeProvider": {
+      "require": "./utils/lib/ThemeProvider.cjs",
+      "import": "./utils/lib/ThemeProvider.mjs",
+      "types": "./utils/lib/ThemeProvider.d.ts"
+    },
+    "./utils/lib/addonText": {
+      "require": "./utils/lib/addonText.cjs",
+      "import": "./utils/lib/addonText.mjs",
+      "types": "./utils/lib/addonText.d.ts"
+    },
+    "./utils/lib/addonTextChildren": {
+      "require": "./utils/lib/addonTextChildren.cjs",
+      "import": "./utils/lib/addonTextChildren.mjs",
+      "types": "./utils/lib/addonTextChildren.d.ts"
+    },
+    "./utils/lib/assignProps": {
+      "require": "./utils/lib/assignProps.cjs",
+      "import": "./utils/lib/assignProps.mjs",
+      "types": "./utils/lib/assignProps.d.ts"
+    },
+    "./utils/lib/canUseDOM": {
+      "require": "./utils/lib/canUseDOM.cjs",
+      "import": "./utils/lib/canUseDOM.mjs",
+      "types": "./utils/lib/canUseDOM.d.ts"
+    },
+    "./utils/lib/capitalizeFirstLetter": {
+      "require": "./utils/lib/capitalizeFirstLetter.cjs",
+      "import": "./utils/lib/capitalizeFirstLetter.mjs",
+      "types": "./utils/lib/capitalizeFirstLetter.d.ts"
+    },
+    "./utils/lib/color": {
+      "require": "./utils/lib/color.cjs",
+      "import": "./utils/lib/color.mjs",
+      "types": "./utils/lib/color.d.ts"
+    },
+    "./utils/lib/compose": {
+      "require": "./utils/lib/compose.cjs",
+      "import": "./utils/lib/compose.mjs",
+      "types": "./utils/lib/compose.d.ts"
+    },
+    "./utils/lib/createHoc": {
+      "require": "./utils/lib/createHoc.cjs",
+      "import": "./utils/lib/createHoc.mjs",
+      "types": "./utils/lib/createHoc.d.ts"
+    },
+    "./utils/lib/createUUID": {
+      "require": "./utils/lib/createUUID.cjs",
+      "import": "./utils/lib/createUUID.mjs",
+      "types": "./utils/lib/createUUID.d.ts"
+    },
+    "./utils/lib/cssToIntDefault": {
+      "require": "./utils/lib/cssToIntDefault.cjs",
+      "import": "./utils/lib/cssToIntDefault.mjs",
+      "types": "./utils/lib/cssToIntDefault.d.ts"
+    },
+    "./utils/lib/eventEmitter": {
+      "require": "./utils/lib/eventEmitter.cjs",
+      "import": "./utils/lib/eventEmitter.mjs",
+      "types": "./utils/lib/eventEmitter.d.ts"
+    },
+    "./utils/lib/findComponent": {
+      "require": "./utils/lib/findComponent.cjs",
+      "import": "./utils/lib/findComponent.mjs",
+      "types": "./utils/lib/findComponent.d.ts"
+    },
+    "./utils/lib/fire": {
+      "require": "./utils/lib/fire.cjs",
+      "import": "./utils/lib/fire.mjs",
+      "types": "./utils/lib/fire.d.ts"
+    },
+    "./utils/lib/getDisplayName": {
+      "require": "./utils/lib/getDisplayName.cjs",
+      "import": "./utils/lib/getDisplayName.mjs",
+      "types": "./utils/lib/getDisplayName.d.ts"
+    },
+    "./utils/lib/getEventTarget": {
+      "require": "./utils/lib/getEventTarget.cjs",
+      "import": "./utils/lib/getEventTarget.mjs",
+      "types": "./utils/lib/getEventTarget.d.ts"
+    },
+    "./utils/lib/getOriginChildren": {
+      "require": "./utils/lib/getOriginChildren.cjs",
+      "import": "./utils/lib/getOriginChildren.mjs",
+      "types": "./utils/lib/getOriginChildren.d.ts"
+    },
+    "./utils/lib/getRandomInt": {
+      "require": "./utils/lib/getRandomInt.cjs",
+      "import": "./utils/lib/getRandomInt.mjs",
+      "types": "./utils/lib/getRandomInt.d.ts"
+    },
+    "./utils/lib/getValue": {
+      "require": "./utils/lib/getValue.cjs",
+      "import": "./utils/lib/getValue.mjs",
+      "types": "./utils/lib/getValue.d.ts"
+    },
+    "./utils/lib/hasLabels": {
+      "require": "./utils/lib/hasLabels.cjs",
+      "import": "./utils/lib/hasLabels.mjs",
+      "types": "./utils/lib/hasLabels.d.ts"
+    },
+    "./utils/lib/hasParent": {
+      "require": "./utils/lib/hasParent.cjs",
+      "import": "./utils/lib/hasParent.mjs",
+      "types": "./utils/lib/hasParent.d.ts"
+    },
+    "./utils/lib/if": {
+      "require": "./utils/lib/if.cjs",
+      "import": "./utils/lib/if.mjs",
+      "types": "./utils/lib/if.d.ts"
+    },
+    "./utils/lib/ifChildren": {
+      "require": "./utils/lib/ifChildren.cjs",
+      "import": "./utils/lib/ifChildren.mjs",
+      "types": "./utils/lib/ifChildren.d.ts"
+    },
+    "./utils/lib/injectStyle": {
+      "require": "./utils/lib/injectStyle.cjs",
+      "import": "./utils/lib/injectStyle.mjs",
+      "types": "./utils/lib/injectStyle.d.ts"
+    },
+    "./utils/lib/inputProps": {
+      "require": "./utils/lib/inputProps.cjs",
+      "import": "./utils/lib/inputProps.mjs",
+      "types": "./utils/lib/inputProps.d.ts"
+    },
+    "./utils/lib/isNode": {
+      "require": "./utils/lib/isNode.cjs",
+      "import": "./utils/lib/isNode.mjs",
+      "types": "./utils/lib/isNode.d.ts"
+    },
+    "./utils/lib/isPromise": {
+      "require": "./utils/lib/isPromise.cjs",
+      "import": "./utils/lib/isPromise.mjs",
+      "types": "./utils/lib/isPromise.d.ts"
+    },
+    "./utils/lib/isRetina": {
+      "require": "./utils/lib/isRetina.cjs",
+      "import": "./utils/lib/isRetina.mjs",
+      "types": "./utils/lib/isRetina.d.ts"
+    },
+    "./utils/lib/logger": {
+      "require": "./utils/lib/logger.cjs",
+      "import": "./utils/lib/logger.mjs",
+      "types": "./utils/lib/logger.d.ts"
+    },
+    "./utils/lib/numericChecker": {
+      "require": "./utils/lib/numericChecker.cjs",
+      "import": "./utils/lib/numericChecker.mjs",
+      "types": "./utils/lib/numericChecker.d.ts"
+    },
+    "./utils/lib/ownerDocument": {
+      "require": "./utils/lib/ownerDocument.cjs",
+      "import": "./utils/lib/ownerDocument.mjs",
+      "types": "./utils/lib/ownerDocument.d.ts"
+    },
+    "./utils/lib/pick": {
+      "require": "./utils/lib/pick.cjs",
+      "import": "./utils/lib/pick.mjs",
+      "types": "./utils/lib/pick.d.ts"
+    },
+    "./utils/lib/propsForElement": {
+      "require": "./utils/lib/propsForElement.cjs",
+      "import": "./utils/lib/propsForElement.mjs",
+      "types": "./utils/lib/propsForElement.d.ts"
+    },
+    "./utils/lib/rafTrottle": {
+      "require": "./utils/lib/rafTrottle.cjs",
+      "import": "./utils/lib/rafTrottle.mjs",
+      "types": "./utils/lib/rafTrottle.d.ts"
+    },
+    "./utils/lib/reactToText": {
+      "require": "./utils/lib/reactToText.cjs",
+      "import": "./utils/lib/reactToText.mjs",
+      "types": "./utils/lib/reactToText.d.ts"
+    },
+    "./utils/lib/ref": {
+      "require": "./utils/lib/ref.cjs",
+      "import": "./utils/lib/ref.mjs",
+      "types": "./utils/lib/ref.d.ts"
+    },
+    "./utils/lib/setRef": {
+      "require": "./utils/lib/setRef.cjs",
+      "import": "./utils/lib/setRef.mjs",
+      "types": "./utils/lib/setRef.d.ts"
+    },
+    "./utils/lib/syncScroll": {
+      "require": "./utils/lib/syncScroll.cjs",
+      "import": "./utils/lib/syncScroll.mjs",
+      "types": "./utils/lib/syncScroll.d.ts"
+    },
+    "./utils/lib/uncontroll": {
+      "require": "./utils/lib/uncontroll.cjs",
+      "import": "./utils/lib/uncontroll.mjs",
+      "types": "./utils/lib/uncontroll.d.ts"
+    },
+    "./utils/lib/uniqueID": {
+      "require": "./utils/lib/uniqueID.cjs",
+      "import": "./utils/lib/uniqueID.mjs",
+      "types": "./utils/lib/uniqueID.d.ts"
+    },
+    "./utils/lib/useCssVariable": {
+      "require": "./utils/lib/useCssVariable.cjs",
+      "import": "./utils/lib/useCssVariable.mjs",
+      "types": "./utils/lib/useCssVariable.d.ts"
+    },
+    "./utils/lib/core/index": {
+      "require": "./utils/lib/core/index.cjs",
+      "import": "./utils/lib/core/index.mjs",
+      "types": "./utils/lib/core/index.d.ts"
+    },
+    "./utils/lib/core/register": {
+      "require": "./utils/lib/core/register.cjs",
+      "import": "./utils/lib/core/register.mjs",
+      "types": "./utils/lib/core/register.d.ts"
+    },
+    "./utils/lib/enhances/WithAutoFocus": {
+      "require": "./utils/lib/enhances/WithAutoFocus.cjs",
+      "import": "./utils/lib/enhances/WithAutoFocus.mjs",
+      "types": "./utils/lib/enhances/WithAutoFocus.d.ts"
+    },
+    "./utils/lib/enhances/WithCSS": {
+      "require": "./utils/lib/enhances/WithCSS.cjs",
+      "import": "./utils/lib/enhances/WithCSS.mjs",
+      "types": "./utils/lib/enhances/WithCSS.d.ts"
+    },
+    "./utils/lib/enhances/WithI18n": {
+      "require": "./utils/lib/enhances/WithI18n.cjs",
+      "import": "./utils/lib/enhances/WithI18n.mjs",
+      "types": "./utils/lib/enhances/WithI18n.d.ts"
+    },
+    "./utils/lib/enhances/WithKeyboardFocus": {
+      "require": "./utils/lib/enhances/WithKeyboardFocus.cjs",
+      "import": "./utils/lib/enhances/WithKeyboardFocus.mjs",
+      "types": "./utils/lib/enhances/WithKeyboardFocus.d.ts"
+    },
+    "./utils/lib/enhances/WithRef": {
+      "require": "./utils/lib/enhances/WithRef.cjs",
+      "import": "./utils/lib/enhances/WithRef.mjs",
+      "types": "./utils/lib/enhances/WithRef.d.ts"
+    },
+    "./utils/lib/enhances/a11yEnhance": {
+      "require": "./utils/lib/enhances/a11yEnhance.cjs",
+      "import": "./utils/lib/enhances/a11yEnhance.mjs",
+      "types": "./utils/lib/enhances/a11yEnhance.d.ts"
+    },
+    "./utils/lib/enhances/animatedSizeEnhance": {
+      "require": "./utils/lib/enhances/animatedSizeEnhance.cjs",
+      "import": "./utils/lib/enhances/animatedSizeEnhance.mjs",
+      "types": "./utils/lib/enhances/animatedSizeEnhance.d.ts"
+    },
+    "./utils/lib/enhances/autoFocusEnhance": {
+      "require": "./utils/lib/enhances/autoFocusEnhance.cjs",
+      "import": "./utils/lib/enhances/autoFocusEnhance.mjs",
+      "types": "./utils/lib/enhances/autoFocusEnhance.d.ts"
+    },
+    "./utils/lib/enhances/contextEnhance": {
+      "require": "./utils/lib/enhances/contextEnhance.cjs",
+      "import": "./utils/lib/enhances/contextEnhance.mjs",
+      "types": "./utils/lib/enhances/contextEnhance.d.ts"
+    },
+    "./utils/lib/enhances/i18nEnhance": {
+      "require": "./utils/lib/enhances/i18nEnhance.cjs",
+      "import": "./utils/lib/enhances/i18nEnhance.mjs",
+      "types": "./utils/lib/enhances/i18nEnhance.d.ts"
+    },
+    "./utils/lib/enhances/keyboardFocusEnhance": {
+      "require": "./utils/lib/enhances/keyboardFocusEnhance.cjs",
+      "import": "./utils/lib/enhances/keyboardFocusEnhance.mjs",
+      "types": "./utils/lib/enhances/keyboardFocusEnhance.d.ts"
+    },
+    "./utils/lib/enhances/resolveColorEnhance": {
+      "require": "./utils/lib/enhances/resolveColorEnhance.cjs",
+      "import": "./utils/lib/enhances/resolveColorEnhance.mjs",
+      "types": "./utils/lib/enhances/resolveColorEnhance.d.ts"
+    },
+    "./utils/lib/focus-lock/focusBorders": {
+      "require": "./utils/lib/focus-lock/focusBorders.cjs",
+      "import": "./utils/lib/focus-lock/focusBorders.mjs",
+      "types": "./utils/lib/focus-lock/focusBorders.d.ts"
+    },
+    "./utils/lib/focus-lock/getFocusableIn": {
+      "require": "./utils/lib/focus-lock/getFocusableIn.cjs",
+      "import": "./utils/lib/focus-lock/getFocusableIn.mjs",
+      "types": "./utils/lib/focus-lock/getFocusableIn.d.ts"
+    },
+    "./utils/lib/focus-lock/isFocusInside": {
+      "require": "./utils/lib/focus-lock/isFocusInside.cjs",
+      "import": "./utils/lib/focus-lock/isFocusInside.mjs",
+      "types": "./utils/lib/focus-lock/isFocusInside.d.ts"
+    },
+    "./utils/lib/focus-lock/isFocusable": {
+      "require": "./utils/lib/focus-lock/isFocusable.cjs",
+      "import": "./utils/lib/focus-lock/isFocusable.mjs",
+      "types": "./utils/lib/focus-lock/isFocusable.d.ts"
+    },
+    "./utils/lib/focus-lock/setFocus": {
+      "require": "./utils/lib/focus-lock/setFocus.cjs",
+      "import": "./utils/lib/focus-lock/setFocus.mjs",
+      "types": "./utils/lib/focus-lock/setFocus.d.ts"
+    },
+    "./utils/lib/themes/auto.css": {
+      "require": "./utils/lib/themes/auto.css",
+      "import": "./utils/lib/themes/auto.css"
+    },
+    "./utils/lib/themes/dark.css": {
+      "require": "./utils/lib/themes/dark.css",
+      "import": "./utils/lib/themes/dark.css"
+    },
+    "./utils/lib/themes/default.css": {
+      "require": "./utils/lib/themes/default.css",
+      "import": "./utils/lib/themes/default.css"
+    },
+    "./utils/lib/themes/light.css": {
+      "require": "./utils/lib/themes/light.css",
+      "import": "./utils/lib/themes/light.css"
+    },
+    "./utils/lib/use/useColorResolver": {
+      "require": "./utils/lib/use/useColorResolver.cjs",
+      "import": "./utils/lib/use/useColorResolver.mjs",
+      "types": "./utils/lib/use/useColorResolver.d.ts"
+    },
+    "./utils/lib/use/useCss": {
+      "require": "./utils/lib/use/useCss.cjs",
+      "import": "./utils/lib/use/useCss.mjs",
+      "types": "./utils/lib/use/useCss.d.ts"
+    },
+    "./utils/lib/use/useEnhancedEffect": {
+      "require": "./utils/lib/use/useEnhancedEffect.cjs",
+      "import": "./utils/lib/use/useEnhancedEffect.mjs",
+      "types": "./utils/lib/use/useEnhancedEffect.d.ts"
+    },
+    "./utils/lib/use/useEventCallback": {
+      "require": "./utils/lib/use/useEventCallback.cjs",
+      "import": "./utils/lib/use/useEventCallback.mjs",
+      "types": "./utils/lib/use/useEventCallback.d.ts"
+    },
+    "./utils/lib/use/useEventListener": {
+      "require": "./utils/lib/use/useEventListener.cjs",
+      "import": "./utils/lib/use/useEventListener.mjs",
+      "types": "./utils/lib/use/useEventListener.d.ts"
+    },
+    "./utils/lib/use/useFocusLock": {
+      "require": "./utils/lib/use/useFocusLock.cjs",
+      "import": "./utils/lib/use/useFocusLock.mjs",
+      "types": "./utils/lib/use/useFocusLock.d.ts"
+    },
+    "./utils/lib/use/usePreventScroll": {
+      "require": "./utils/lib/use/usePreventScroll.cjs",
+      "import": "./utils/lib/use/usePreventScroll.mjs",
+      "types": "./utils/lib/use/usePreventScroll.d.ts"
+    },
+    "./utils/lib/components/invalid-state-pattern/InvalidStatePattern": {
+      "require": "./utils/lib/components/invalid-state-pattern/InvalidStatePattern.cjs",
+      "import": "./utils/lib/components/invalid-state-pattern/InvalidStatePattern.mjs",
+      "types": "./utils/lib/components/invalid-state-pattern/InvalidStatePattern.d.ts"
+    },
+    "./utils/lib/components/invalid-state-pattern/invalidStatePattern.shadow.css": {
+      "require": "./utils/lib/components/invalid-state-pattern/invalidStatePattern.shadow.css",
+      "import": "./utils/lib/components/invalid-state-pattern/invalidStatePattern.shadow.css"
+    },
+    "./utils/lib/core/enhancement/Children": {
+      "require": "./utils/lib/core/enhancement/Children.cjs",
+      "import": "./utils/lib/core/enhancement/Children.mjs",
+      "types": "./utils/lib/core/enhancement/Children.d.ts"
+    },
+    "./utils/lib/core/enhancement/Root": {
+      "require": "./utils/lib/core/enhancement/Root.cjs",
+      "import": "./utils/lib/core/enhancement/Root.mjs",
+      "types": "./utils/lib/core/enhancement/Root.d.ts"
+    },
+    "./utils/lib/core/enhancement/bindHandler": {
+      "require": "./utils/lib/core/enhancement/bindHandler.cjs",
+      "import": "./utils/lib/core/enhancement/bindHandler.mjs",
+      "types": "./utils/lib/core/enhancement/bindHandler.d.ts"
+    },
+    "./utils/lib/core/enhancement/dataName": {
+      "require": "./utils/lib/core/enhancement/dataName.cjs",
+      "import": "./utils/lib/core/enhancement/dataName.mjs",
+      "types": "./utils/lib/core/enhancement/dataName.d.ts"
+    },
+    "./utils/lib/core/enhancement/enhance": {
+      "require": "./utils/lib/core/enhancement/enhance.cjs",
+      "import": "./utils/lib/core/enhancement/enhance.mjs",
+      "types": "./utils/lib/core/enhancement/enhance.d.ts"
+    },
+    "./utils/lib/core/enhancement/functionDefaultProps": {
+      "require": "./utils/lib/core/enhancement/functionDefaultProps.cjs",
+      "import": "./utils/lib/core/enhancement/functionDefaultProps.mjs",
+      "types": "./utils/lib/core/enhancement/functionDefaultProps.d.ts"
+    },
+    "./utils/lib/core/enhancement/hoistProps": {
+      "require": "./utils/lib/core/enhancement/hoistProps.cjs",
+      "import": "./utils/lib/core/enhancement/hoistProps.mjs",
+      "types": "./utils/lib/core/enhancement/hoistProps.d.ts"
+    },
+    "./utils/lib/core/enhancement/i18n": {
+      "require": "./utils/lib/core/enhancement/i18n.cjs",
+      "import": "./utils/lib/core/enhancement/i18n.mjs",
+      "types": "./utils/lib/core/enhancement/i18n.d.ts"
+    },
+    "./utils/lib/core/enhancement/inheritedName": {
+      "require": "./utils/lib/core/enhancement/inheritedName.cjs",
+      "import": "./utils/lib/core/enhancement/inheritedName.mjs",
+      "types": "./utils/lib/core/enhancement/inheritedName.d.ts"
+    },
+    "./utils/lib/core/enhancement/staticChildren": {
+      "require": "./utils/lib/core/enhancement/staticChildren.cjs",
+      "import": "./utils/lib/core/enhancement/staticChildren.mjs",
+      "types": "./utils/lib/core/enhancement/staticChildren.d.ts"
+    },
+    "./utils/lib/core/enhancement/style": {
+      "require": "./utils/lib/core/enhancement/style.cjs",
+      "import": "./utils/lib/core/enhancement/style.mjs",
+      "types": "./utils/lib/core/enhancement/style.d.ts"
+    },
+    "./utils/lib/core/enhancement/uncontrolledProps": {
+      "require": "./utils/lib/core/enhancement/uncontrolledProps.cjs",
+      "import": "./utils/lib/core/enhancement/uncontrolledProps.mjs",
+      "types": "./utils/lib/core/enhancement/uncontrolledProps.d.ts"
+    },
+    "./utils/lib/core/styled/index": {
+      "require": "./utils/lib/core/styled/index.cjs",
+      "import": "./utils/lib/core/styled/index.mjs",
+      "types": "./utils/lib/core/styled/index.d.ts"
+    },
+    "./utils/lib/core/styled/sstyled": {
+      "require": "./utils/lib/core/styled/sstyled.cjs",
+      "import": "./utils/lib/core/styled/sstyled.mjs",
+      "types": "./utils/lib/core/styled/sstyled.d.ts"
+    },
+    "./utils/lib/core/types/Component": {
+      "require": "./utils/lib/core/types/Component.cjs",
+      "import": "./utils/lib/core/types/Component.mjs",
+      "types": "./utils/lib/core/types/Component.d.ts"
+    },
+    "./utils/lib/core/types/UnknownProperties": {
+      "require": "./utils/lib/core/types/UnknownProperties.cjs",
+      "import": "./utils/lib/core/types/UnknownProperties.mjs",
+      "types": "./utils/lib/core/types/UnknownProperties.d.ts"
+    },
+    "./utils/lib/core/types/index": {
+      "require": "./utils/lib/core/types/index.cjs",
+      "import": "./utils/lib/core/types/index.mjs",
+      "types": "./utils/lib/core/types/index.d.ts"
+    },
+    "./utils/lib/core/types/symbols": {
+      "require": "./utils/lib/core/types/symbols.cjs",
+      "import": "./utils/lib/core/types/symbols.mjs",
+      "types": "./utils/lib/core/types/symbols.d.ts"
+    },
+    "./utils/lib/style/var": {
+      "require": "./utils/lib/style/var.css",
+      "import": "./utils/lib/style/var.css"
     },
     "./utils": {
       "require": "./utils/index.cjs",
