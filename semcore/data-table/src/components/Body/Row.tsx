@@ -5,9 +5,10 @@ import { Box, Collapse } from '@semcore/base-components';
 import style from './style.shadow.css';
 import { Body } from './Body';
 import { getFixedStyle } from '../../utils';
-import { ACCORDION } from '../DataTable/DataTable';
+import { ACCORDION, SELECT_ALL } from '../DataTable/DataTable';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
 import { DTValue } from '../DataTable/DataTable.types';
+import Checkbox from '@semcore/checkbox';
 
 class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
   static displayName = 'Row';
@@ -24,6 +25,12 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
     );
   }
 
+  handleSelectRow = (value: boolean, event?: React.SyntheticEvent<HTMLInputElement>) => {
+    const { row, rowIndex, onSelectRow } = this.asProps;
+
+    onSelectRow?.(value, rowIndex, row, event);
+  };
+
   render() {
     const SRow = Root;
     const SCollapseRow = Collapse;
@@ -39,6 +46,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
       expandedRows,
       onExpandRow,
       'aria-level': ariaLevel = 1,
+      selectedRows,
     } = this.asProps;
 
     let accordion = row[ACCORDION];
@@ -53,9 +61,25 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
 
     return sstyled(styles)(
       <>
-        <SRow render={Box} role={'row'} aria-rowindex={ariaRowIndex}>
+        <SRow
+          render={Box}
+          role={'row'}
+          aria-rowindex={ariaRowIndex}
+          theme={selectedRows?.includes(rowIndex) ? 'info' : undefined}
+        >
+          {selectedRows && (
+            <SCell
+              row={row}
+              rowIndex={rowIndex}
+              // @ts-ignore
+              column={{ name: SELECT_ALL.toString() }}
+              columnIndex={0}
+            >
+              <Checkbox checked={selectedRows.includes(rowIndex)} onChange={this.handleSelectRow} />
+            </SCell>
+          )}
           {columns.map((column, i) => {
-            const index = i;
+            const index = selectedRows ? i + 1 : i;
             const cellValue = row[column.name];
 
             if (cellValue === undefined) {
