@@ -74,6 +74,8 @@ export type DataTableProps<D extends DataTableData> = DataTableAriaProps &
      *
      */
     expandedRows?: number[];
+
+    virtualScroll?: boolean | { rowHeight: number };
   };
 
 export type RowIndex = number;

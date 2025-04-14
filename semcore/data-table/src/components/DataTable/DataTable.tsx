@@ -37,8 +37,11 @@ export const ACCORDION = Symbol('accordion');
 export const ROW_GROUP = Symbol('ROW_GROUP');
 
 const SCROLL_BAR_HEIGHT = 12;
-const MIN_HEADER_HEIGHT = 39;
-const MIN_CELL_HEIGHT = 45;
+
+type State = {
+  scrollTop: number;
+  scrollDirection: 'down' | 'up';
+};
 
 class DataTableRoot<D extends DataTableData> extends Component<
   DataTableProps<D>,
@@ -59,6 +62,8 @@ class DataTableRoot<D extends DataTableData> extends Component<
     defaultExpandedRows: [],
   };
 
+  private isInScroll = false;
+
   private columnsSplitter = '/';
 
   private columns: DTColumn[] = [];
@@ -78,8 +83,9 @@ class DataTableRoot<D extends DataTableData> extends Component<
     this.columns = this.calculateColumns();
   }
 
-  state = {
+  state: State = {
     scrollTop: 0,
+    scrollDirection: 'down',
   };
 
   uncontrolledProps() {
@@ -142,7 +148,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
   }
 
   getBodyProps(): BodyPropsInner {
-    const { use, compact, loading, getI18nText, expandedRows } = this.asProps;
+    const { use, compact, loading, getI18nText, expandedRows, virtualScroll } = this.asProps;
     const rows = this.calculateRows();
 
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
@@ -171,8 +177,11 @@ class DataTableRoot<D extends DataTableData> extends Component<
       onExpandRow: this.onExpandRow,
       spinnerRef: this.spinnerRef,
       scrollTop: this.state.scrollTop,
+      scrollDirection: this.state.scrollDirection,
       tableContainerRef: this.tableContainerRef,
       tableRef: this.tableRef,
+      headerRef: this.headerRef,
+      virtualScroll,
     };
   }
 
@@ -344,7 +353,19 @@ class DataTableRoot<D extends DataTableData> extends Component<
   };
 
   handleScroll = trottle((e) => {
-    this.setState({ scrollTop: e.target.scrollTop });
+    if (this.isInScroll) {
+      return;
+    }
+
+    this.isInScroll = true;
+
+    setTimeout(() => {
+      const scrollTop = e.target.scrollTop;
+      const scrollDirection = scrollTop > this.state.scrollTop ? 'down' : 'up';
+      this.setState({ scrollTop, scrollDirection });
+
+      this.isInScroll = false;
+    }, 300);
   });
 
   handleFocus = (e: React.FocusEvent<HTMLElement, HTMLElement>) => {
@@ -407,7 +428,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
   render() {
     const SDataTable = Root;
-    const { Children, styles, w, wMax, wMin, h, hMax, hMin } = this.asProps;
+    const { Children, styles, w, wMax, wMin, h, hMax, hMin, virtualScroll } = this.asProps;
 
     const [offsetLeftSum, offsetRightSum] = getScrollOffsetValue(this.columns);
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
@@ -422,6 +443,16 @@ class DataTableRoot<D extends DataTableData> extends Component<
       (this.columns.some((c) => c.gridColumnWidth === 'auto' || c.gridColumnWidth === '1fr')
         ? '100%'
         : undefined);
+
+    let gridTemplateRows: string | undefined = undefined;
+
+    if (virtualScroll !== undefined) {
+      if (typeof virtualScroll === 'boolean') {
+        gridTemplateRows = `39px 39px repeat(${this.totalRows}, minmax(45px, auto)`;
+      } else {
+        gridTemplateRows = `auto auto repeat(${this.totalRows}, minmax(${virtualScroll.rowHeight}px, auto)`;
+      }
+    }
 
     return sstyled(styles)(
       <ScrollArea
@@ -453,12 +484,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
             aria-colcount={this.columns.length}
             gridTemplateColumns={gridTemplateColumns.join(' ')}
             gridTemplateAreas={gridTemplateAreas.join(' ')}
-            gridTemplateRows={`minmax(${MIN_HEADER_HEIGHT}px, auto) minmax(${MIN_HEADER_HEIGHT}px, auto) ${Array(
-              this.totalRows,
-            )
-              .fill(null)
-              .map(() => `minmax(${MIN_CELL_HEIGHT}px, auto)`)
-              .join(' ')}`}
+            gridTemplateRows={gridTemplateRows}
             w={'100%'}
             use:data={undefined}
             use:w={undefined}
