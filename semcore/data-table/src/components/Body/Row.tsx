@@ -17,10 +17,10 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
     'aria-level': undefined,
   };
 
-  cellHasAccordion(cellValue: DTValue | MergedColumnsCell | MergedRowsCell): cellValue is DTValue {
+  cellHasAccordion(cellValue?: DTValue | MergedColumnsCell | MergedRowsCell): cellValue is DTValue {
     return (
       !(cellValue instanceof MergedRowsCell || cellValue instanceof MergedColumnsCell) &&
-      Boolean(cellValue[ACCORDION])
+      Boolean(cellValue?.[ACCORDION])
     );
   }
 
@@ -57,10 +57,6 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
           {columns.map((column, i) => {
             const index = i;
             const cellValue = row[column.name];
-
-            if (cellValue === undefined) {
-              return null;
-            }
 
             const style: any = {};
 

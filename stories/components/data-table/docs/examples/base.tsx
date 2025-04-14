@@ -8,6 +8,7 @@ const Demo = () => {
         <DataTable.Head.Column name='keyword'>keyword</DataTable.Head.Column>
         <DataTable.Head.Column name='kd' children='KD,%' />
         <DataTable.Head.Column name='cpc' children='CPC' />
+        <DataTable.Head.Column name='hiddenColumn' children='HC' />
         <DataTable.Head.Column name='vol' children='Vol.' />
       </DataTable.Head>
       <DataTable.Body />

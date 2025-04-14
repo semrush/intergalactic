@@ -78,7 +78,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
     let dataKey = props.column.name;
     const cellValue = props.row[dataKey];
 
-    let value: DTValue = '';
+    let value: DTValue | undefined = undefined;
     const isMergedRows = cellValue instanceof MergedRowsCell;
     const isMergedColumns = cellValue instanceof MergedColumnsCell;
 
@@ -92,7 +92,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
     }
 
     const defaultRender = () => {
-      if ((props.columnIndex === 0 && props.row[ACCORDION]) || value[ACCORDION]) {
+      if ((props.columnIndex === 0 && props.row[ACCORDION]) || value?.[ACCORDION]) {
         return sstyled(styles)(
           <>
             <SAccordionToggle
@@ -104,12 +104,12 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
             >
               <SAccordionToggle.Addon tag={ChevronRightM} />
             </SAccordionToggle>
-            {value.toString()}
+            {value?.toString()}
           </>,
         );
       }
 
-      return value.toString();
+      return value?.toString();
     };
 
     const extraProps: Record<string, any> = {
@@ -126,7 +126,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
         columnIndex: props.columnIndex,
         dataKey,
         defaultRender,
-        value: value.toString(),
+        value: value?.toString() ?? '',
         isMergedRows,
         isMergedColumns,
       });
