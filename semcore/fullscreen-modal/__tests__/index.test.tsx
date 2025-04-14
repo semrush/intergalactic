@@ -59,7 +59,7 @@ describe('FullscreenModal', () => {
   test('Verify overflow changes style for body in modal', async () => {
     const { unmount } = await render(<FullscreenModal />);
     expect(document.body.style.overflow).toBe('hidden');
-  
+
     unmount();
     expect(document.body.style.overflow).toBe('');
   });
@@ -68,7 +68,6 @@ describe('FullscreenModal', () => {
     render(<FullscreenModal visible={false} />);
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
   });
-  
 });
 
 describe('FullscreenModal.Header', () => {
@@ -98,5 +97,4 @@ describe('FullscreenModal.Header', () => {
     );
     expect(queryByText(/Text/)).toBeTruthy();
   });
-
 });
