@@ -296,14 +296,20 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
       if (direction === 'left' || direction === 'right') {
         // left/right
-        if (currentCell.dataset.groupedBy === 'colgroup') {
+        if (
+          currentCell.dataset.groupedBy === 'colgroup' ||
+          Number(currentCell.parentElement?.getAttribute('aria-rowindex')) === 2
+        ) {
           colI = direction === 'left' ? colI - 1 : colI + 1;
         } else {
           rowI = rowI - 1;
         }
       } else if (direction === 'up' || direction === 'down') {
         // top/bottom
-        if (currentCell.dataset.groupedBy === 'rowgroup') {
+        if (
+          currentCell.dataset.groupedBy === 'rowgroup' ||
+          Number(currentCell.getAttribute('aria-colindex')) === 1
+        ) {
           rowI = direction === 'up' ? rowI - 1 : rowI + 1;
         } else {
           colI = colI - 1;
