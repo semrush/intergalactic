@@ -58,6 +58,10 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
             const index = i;
             const cellValue = row[column.name];
 
+            if (cellValue === undefined) {
+              return null;
+            }
+
             const style: any = {};
 
             if (column.fixed) {

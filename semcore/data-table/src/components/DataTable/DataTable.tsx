@@ -605,19 +605,25 @@ class DataTableRoot<D extends DataTableData> extends Component<
     const { data } = this.asProps;
 
     const rows: Array<DTRow[] | DTRow> = [];
+    const columnNames = this.columns.map((column: DTColumn) => column.name);
 
     let rowIndex = 0;
 
-    const makeDtRow = (row: DataRowItem) => {
+    const makeDtRow = (row: DataRowItem, excludeColumns?: string[]) => {
+      const columns = new Set(columnNames);
       const dtRow = Object.entries(row).reduce<DTRow>((acc, [key, value]) => {
         const columnsToRow = key.split(this.columnsSplitter);
 
         if (columnsToRow.length === 1) {
           acc[key] = value ?? '';
+          columns.delete(key);
         } else {
           acc[columnsToRow[0]] = new MergedColumnsCell(value, {
             dataKey: key,
             size: columnsToRow.length,
+          });
+          columnsToRow.forEach((value) => {
+            columns.delete(value);
           });
         }
 
@@ -627,6 +633,16 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
         return acc;
       }, {});
+
+      excludeColumns?.forEach((value) => {
+        columns.delete(value);
+      });
+
+      if (columns.size > 0) {
+        columns.forEach((value) => {
+          dtRow[value] = '';
+        });
+      }
 
       return dtRow;
     };
@@ -639,19 +655,24 @@ class DataTableRoot<D extends DataTableData> extends Component<
       if (groupedRows) {
         const toRow = fromRow + groupedRows.length;
         const innerRows: DTRow[] = [];
+
+        const groupedKeys: string[] = [];
+        const groupedRowData = Object.entries(row).reduce<DTRow>((acc, [key, value]) => {
+          acc[key] = new MergedRowsCell(value, [fromRow, toRow]);
+          groupedKeys.push(key);
+          return acc;
+        }, {});
+
         groupedRows.forEach((childRow, index) => {
           let dtRow: DTRow;
           if (index === 0) {
             const rowData = {
               ...childRow,
-              ...Object.entries(row).reduce<DTRow>((acc, [key, value]) => {
-                acc[key] = new MergedRowsCell(value, [fromRow, toRow]);
-                return acc;
-              }, {}),
+              ...groupedRowData,
             };
             dtRow = makeDtRow(rowData);
           } else {
-            dtRow = makeDtRow(childRow);
+            dtRow = makeDtRow(childRow, groupedKeys);
           }
 
           innerRows.push(dtRow);
