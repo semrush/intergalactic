@@ -46,7 +46,10 @@ class ScrollAreaRoot extends Component<ScrollAreaProps, {}, State, typeof Scroll
     inner: React.createRef(),
     tabIndex: 0,
     observeParentSize: false,
+    disableAutofocusToContent: false,
   });
+
+  hasAutoFocusToContent = false;
 
   $wrapper: HTMLElement | null = null;
   observer: ResizeObserver | null = null;
@@ -296,16 +299,35 @@ class ScrollAreaRoot extends Component<ScrollAreaProps, {}, State, typeof Scroll
       this.observer?.observe(this.$container);
     }
 
-    this.$inner?.addEventListener('focusin', this.handleFocusIn);
+    if (!this.asProps.disableAutofocusToContent) {
+      this.hasAutoFocusToContent = true;
+      this.$inner?.addEventListener('focusin', this.handleFocusIn);
+    }
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps: ScrollAreaProps) {
     this.calculate();
+
+    const { disableAutofocusToContent } = this.asProps;
+
+    if (prevProps.disableAutofocusToContent !== disableAutofocusToContent) {
+      if (disableAutofocusToContent && this.hasAutoFocusToContent) {
+        this.hasAutoFocusToContent = false;
+        this.$inner?.removeEventListener('focusin', this.handleFocusIn);
+      } else if (!this.hasAutoFocusToContent) {
+        this.hasAutoFocusToContent = true;
+        this.$inner?.addEventListener('focusin', this.handleFocusIn);
+      }
+    }
   }
 
   componentWillUnmount() {
     this.observer?.disconnect();
-    this.$inner?.removeEventListener('focusin', this.handleFocusIn);
+
+    if (!this.asProps.disableAutofocusToContent) {
+      this.hasAutoFocusToContent = false;
+      this.$inner?.removeEventListener('focusin', this.handleFocusIn);
+    }
   }
 
   render() {

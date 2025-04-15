@@ -59,7 +59,6 @@ class DataTableRoot<D extends DataTableData> extends Component<
   static defaultProps = {
     use: 'primary',
     defaultGridTemplateColumnWidth: 'auto',
-    h: 'auto',
     defaultExpandedRows: [],
   };
 
@@ -481,6 +480,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
         container={this.tableContainerRef}
         styles={scrollStyles}
         onScroll={this.handleScroll}
+        disableAutofocusToContent={true}
       >
         <ScrollArea.Container
           tabIndex={-1}
