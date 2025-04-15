@@ -142,6 +142,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
                 aria-posinset={i + 1}
                 aria-level={ariaLevel + 1}
                 ariaRowIndex={ariaRowIndex + 1 + i}
+                gridRowIndex={gridRowIndex + 1 + i}
                 expanded={expandedRows?.includes(rowIndex + i)}
                 onExpandRow={onExpandRow}
               />
