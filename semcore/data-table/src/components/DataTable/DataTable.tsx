@@ -380,6 +380,21 @@ class DataTableRoot<D extends DataTableData> extends Component<
         row = this.getRow(this.focusedCell[0]);
       }
 
+      if (!row && this.asProps.virtualScroll) {
+        const firstAvailableCell = this.tableRef.current?.querySelector(
+            `[role="gridcell"]`,
+        );
+        const firstAvailableRow = firstAvailableCell?.parentElement;
+        if (firstAvailableCell && firstAvailableRow) {
+          const colIndex = (Number(firstAvailableCell.getAttribute('aria-colindex')) ?? 1) - 1;
+          const rowIndex = (Number(firstAvailableRow.getAttribute('aria-rowindex')) ?? 1) - 1;
+
+          this.focusedCell[0] = rowIndex;
+          this.focusedCell[1] = colIndex;
+          row = firstAvailableRow;
+        }
+      }
+
       const cell = row
         ?.querySelectorAll('[role=gridcell], [role=columnheader]')
         .item(this.focusedCell[1]);
