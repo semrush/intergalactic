@@ -1550,7 +1550,7 @@
     "rawValue": "{gray.100} / lighten(0.2) / hsl",
     "computedValue": "#e6e7ed",
     "description": "Background of the default active cell in the Table.",
-    "components": []
+    "components": ["data-table"]
   },
   {
     "name": "--intergalactic-table-td-cell-unread",
@@ -1566,7 +1566,7 @@
     "rawValue": "{gray.50}",
     "computedValue": "#f4f5f9",
     "description": "Background of the cell used for Accordion or actions row, in the Table.",
-    "components": []
+    "components": ["data-table"]
   },
   {
     "name": "--intergalactic-table-td-cell-selected",

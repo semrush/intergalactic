@@ -27,6 +27,18 @@ SRow[active] > SCell:not([theme]) {
   background-color: var(--intergalactic-table-td-cell-active, #e6e7ed);
 }
 
+SRow[expanded][accordionType='row'] > SCell:not([theme]) {
+  background-color: var(--intergalactic-table-td-cell-active, #e6e7ed);
+}
+
+SRow[expanded][accordionType='cell'] > SCell:not([theme])[withAccordion] {
+  background-color: var(--intergalactic-table-td-cell-active, #e6e7ed);
+}
+
+SCollapseRow > SCell:not([theme]) {
+  background-color: var(--intergalactic-table-td-cell-actions-accordion, #f4f5f9);
+}
+
 /* we need a media query here because of the postcssHoverMediaFeature plugin. it doesn't handle this type of selectors correctly */
 @media (hover: hover) {
   SRow:hover > SCell:not([theme]),

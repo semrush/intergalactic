@@ -42,6 +42,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
     } = this.asProps;
 
     let accordion = row[ACCORDION];
+    let accordionType = accordion ? 'row' : undefined;
 
     if (!accordion) {
       const cellWithAccordion = Object.values(row).find((value) => {
@@ -49,11 +50,12 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
       }) as DTValue | undefined;
 
       accordion = cellWithAccordion?.[ACCORDION];
+      accordionType = 'cell';
     }
 
     return sstyled(styles)(
       <>
-        <SRow render={Box} role={'row'} aria-rowindex={ariaRowIndex}>
+        <SRow render={Box} role={'row'} aria-rowindex={ariaRowIndex} accordionType={accordionType}>
           {columns.map((column, i) => {
             const index = i;
             const cellValue = row[column.name];
@@ -86,6 +88,8 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
                 columnIndex={index}
                 style={style}
                 column={column}
+                // @ts-ignore
+                withAccordion={this.cellHasAccordion(cellValue)}
               />
             );
           })}
