@@ -47,7 +47,7 @@ const Demo = () => {
   </FullscreenModal.Title>
 </FullscreenModal.Header >  
       <FullscreenModal.Body h={400} >
-      <FullscreenModal.Section justifyContent='center' alignItems='center'>
+      <FullscreenModal.Section>
             <Text>Content Title</Text>
           </FullscreenModal.Section>
         </FullscreenModal.Body>
