@@ -12,16 +12,10 @@ import CheckM from '@semcore/icon/Check/m';
 
 
 const Demo = () => {
-    useEffect(() => {
-        performance.mark('demo-render-start');
-        requestAnimationFrame(() => {
-            performance.mark('demo-render-end');
-            performance.measure('demo-render', 'demo-render-start', 'demo-render-end');
-        });
-    }, []);
+  
     return (
         <>
-            <DataTable data={data} aria-label={'Access to cells'} hMax={400}>
+            <DataTable data={data} aria-label={'Access to cells'} hMax={400} virtualScroll>
                 <DataTable.Head sticky>
                 <DataTable.Head.Column name="index" children="№" gtcWidth="50px" />
                     <DataTable.Head.Column name='keyword' children='Keyword' gtcWidth='140px' />
