@@ -130,7 +130,6 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
                 key={i}
                 row={subrow}
                 columns={columns}
-                // visible={expanded}
                 rows={row[ACCORDION]}
                 rowIndex={rowIndex}
                 aria-posinset={i + 1}
@@ -138,6 +137,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
                 ariaRowIndex={ariaRowIndex + 1 + i}
                 expanded={expandedRows?.includes(rowIndex + i)}
                 onExpandRow={onExpandRow}
+                theme={'muted'}
               />
             );
           })}
