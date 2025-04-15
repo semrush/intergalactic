@@ -34,6 +34,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
       styles,
       rowIndex,
       ariaRowIndex,
+      gridRowIndex,
       expanded,
       accordionDataGridArea,
       expandedRows,
@@ -89,6 +90,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
                 data-aria-level={index === 0 ? ariaLevel : undefined}
                 row={row}
                 rowIndex={rowIndex}
+                gridRowIndex={gridRowIndex}
                 columnIndex={index}
                 style={style}
                 column={column}

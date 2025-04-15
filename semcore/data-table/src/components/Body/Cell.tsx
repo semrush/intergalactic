@@ -68,7 +68,7 @@ class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner>
 
   render() {
     const SCell = Root;
-    const { Children, styles, row, column, columnIndex, rowIndex } = this.asProps;
+    const { Children, styles, row, column, columnIndex, gridRowIndex } = this.asProps;
 
     const cell = row[column.name];
     const cellName = cell instanceof MergedColumnsCell ? cell.dataKey : column.name;
@@ -76,7 +76,7 @@ class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner>
     let scope: null | 'rowgroup' | 'colgroup' = null;
     let gridArea: string | undefined = undefined;
 
-    const fromRow = rowIndex + 2;
+    const fromRow = gridRowIndex;
     const fromCol = columnIndex + 1;
 
     if (cell instanceof MergedColumnsCell) {
@@ -86,7 +86,7 @@ class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner>
       gridArea = `${cell.fromRow} / ${fromCol} / ${cell.toRow} / ${fromCol + 1}`;
       scope = 'rowgroup';
     } else {
-      gridArea = `${fromRow + 1} / ${fromCol} / ${fromRow + 2} / ${fromCol + 1}`;
+      gridArea = `${fromRow} / ${fromCol} / ${fromRow + 1} / ${fromCol + 1}`;
     }
 
     return sstyled(styles)(

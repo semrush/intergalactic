@@ -79,13 +79,15 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
 
       return acc;
     }, index);
-    const ariaRowIndex = rowIndex + (hasGroups ? 3 : 2); // 1 - for header, 1 - because start not from 0, but from 1
+
+    const gridRowIndex = rowIndex + (hasGroups ? 3 : 2); // 1 - for header, 1 - because start not from 0, but from 1
+    const ariaRowIndex = rowIndex + 2; // 1 - for header, 1 - because start not from 0, but from 1
 
     const accordionDataGridArea = Array.isArray(row[ACCORDION])
-      ? `${ariaRowIndex + 1} / 1 / ${ariaRowIndex + 1 + row[ACCORDION].length} / ${
+      ? `${gridRowIndex + 1} / 1 / ${gridRowIndex + 1 + row[ACCORDION].length} / ${
           columns.length + 1
         }`
-      : `${ariaRowIndex + 1} / 1 / ${ariaRowIndex + 1} / ${columns.length + 1}`;
+      : `${gridRowIndex + 1} / 1 / ${gridRowIndex + 1} / ${columns.length + 1}`;
 
     return {
       use,
@@ -96,6 +98,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
       columns,
       rowIndex: index,
       ariaRowIndex,
+      gridRowIndex,
       rows,
       flatRows,
       row,

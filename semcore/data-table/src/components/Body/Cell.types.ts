@@ -7,7 +7,7 @@ export type DataTableCellProps = {
   rowIndex: number;
   column: DTColumn;
   columnIndex: number;
-
+  gridRowIndex: number;
   children?: React.ReactNode;
 };
 
