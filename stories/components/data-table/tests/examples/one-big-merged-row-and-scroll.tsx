@@ -1,0 +1,67 @@
+import React from 'react';
+import { DataTable, ROW_GROUP } from '@semcore/data-table';
+
+const data = [
+  {
+    keyword: 'ebay buy',
+    [ROW_GROUP]: [
+      {
+        kd: '77.8',
+        cpc: '$1.25',
+        vol: '32,500,000',
+      },
+      {
+        kd: '-',
+        cpc: '$0',
+        vol: 'n/a',
+      },
+      {
+        kd: '75.89',
+        cpc: '$0',
+        vol: '21,644,290',
+      },
+      {
+        kd: '11.2',
+        cpc: '$3.4',
+        vol: '65,457,920',
+      },
+      {
+        kd: '10',
+        cpc: '$0.65',
+        vol: '47,354,640',
+      },
+      {
+        kd: '75.89',
+        cpc: '$0',
+        vol: '21,644,290',
+      },
+      {
+        kd: '11.2',
+        cpc: '$3.4',
+        vol: '65,457,920',
+      },
+      {
+        kd: '10',
+        cpc: '$0.65',
+        vol: '47,354,640',
+      },
+    ],
+  },
+  
+];
+
+const Demo = () => {
+  return (
+    <DataTable data={data} aria-label={'Rows grouping'} h={200}>
+      <DataTable.Head>
+        <DataTable.Head.Column name='keyword' children='Keyword' />
+        <DataTable.Head.Column name='kd' children='KD,%' />
+        <DataTable.Head.Column name='cpc' children='CPC' />
+        <DataTable.Head.Column name='vol' children='Vol.' />
+      </DataTable.Head>
+      <DataTable.Body />
+    </DataTable>
+  );
+};
+
+export default Demo;

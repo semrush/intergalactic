@@ -25,6 +25,8 @@ import SecondaryHeaderExample from './examples/secondary-header';
 import MultiLevelExample from './examples/multi-level-header';
 import ColumnAlignmentExample from './examples/column-alignment';
 import PerformExample from './examples/performmance-tooltips-ellipsis-test';
+import MergedScrolledRowExample from './examples/one-big-merged-row-and-scroll';
+
 
 const meta: Meta<typeof DataTable> = {
   title: 'Components/DataTable/Tests',
@@ -36,6 +38,10 @@ type Story = StoryObj<typeof DataTable>;
 
 export const SecondaryHeader: Story = {
   render: SecondaryHeaderExample,
+};
+
+export const MergedScrolledRow: Story = {
+  render: MergedScrolledRowExample,
 };
 
 export const Perform: Story = {
