@@ -27,7 +27,7 @@ const data = Array(10000)
 
 const Demo = () => {
   return (
-    <DataTable data={data} totalRows={10000} aria-label={'Virtual scroll'} h={400} w={400} virtualScroll={{rowHeight: 45}}>
+    <DataTable data={data} totalRows={10000} aria-label={'Virtual scroll'} h={400} w={400} virtualScroll>
          <DataTable.Head sticky>
         <DataTable.Head.Column name='keyword' gtcWidth={'65px'} sortable>
           <Text noWrap>

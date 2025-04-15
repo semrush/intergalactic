@@ -51,7 +51,8 @@ class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner>
     if (e.target === e.currentTarget && e.target.matches(':focus-visible')) {
       e.target.scrollIntoView({
         behavior: 'smooth',
-        block: 'nearest',
+        block: 'center',
+        inline: 'center',
       });
 
       const focusableChildren = Array.from(e.currentTarget.children).flatMap((node) =>
