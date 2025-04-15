@@ -8,7 +8,6 @@ import {
   RowIndex,
   DataTableData,
   DataTableType,
-  DataRowItem,
 } from './DataTable.types';
 import { Head } from '../Head/Head';
 import { Body } from '../Body/Body';
@@ -26,7 +25,6 @@ import { BodyPropsInner } from '../Body/Body.types';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import { MergedColumnsCell, MergedRowsCell } from '../Body/MergedCells';
 import { forkRef } from '@semcore/core/lib/utils/ref';
 import scrollStyles from '../../style/scroll-shadows.shadow.css';
 import { DataTableGroupProps } from '../Head/Group.type';
@@ -62,8 +60,6 @@ class DataTableRoot<D extends DataTableData> extends Component<
     defaultExpandedRows: [],
   };
 
-  private columnsSplitter = '/';
-
   private columns: DTColumn[] = [];
   private hasGroups = false;
 
@@ -98,10 +94,10 @@ class DataTableRoot<D extends DataTableData> extends Component<
   }
 
   get totalRows() {
-    const { totalRows, expandedRows } = this.asProps;
+    const { totalRows, expandedRows, data } = this.asProps;
 
     const expandedRowsCount = expandedRows?.reduce((acc, rowIndex) => {
-      const dtRow = this.calculateRows().flat()[rowIndex];
+      const dtRow = data[rowIndex];
       const expandedRows = dtRow[ACCORDION];
 
       if (Array.isArray(expandedRows)) {
@@ -113,7 +109,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
       return acc;
     }, 0);
 
-    return (totalRows ?? this.calculateRows().flat().length) + expandedRowsCount;
+    return (totalRows ?? data.length) + expandedRowsCount;
   }
 
   get gridSettings() {
@@ -146,31 +142,19 @@ class DataTableRoot<D extends DataTableData> extends Component<
     };
   }
 
-  getBodyProps(): BodyPropsInner {
-    const { use, compact, loading, getI18nText, expandedRows, virtualScroll } = this.asProps;
-    const rows = this.calculateRows();
-
+  getBodyProps(): BodyPropsInner<D> {
+    const { use, compact, loading, getI18nText, expandedRows, virtualScroll, data, uid } = this.asProps;
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
-    const header = this.headerRef.current;
-    const headerHeight = Array.from(header?.children ?? []).reduce((maxHeight, col) => {
-      const rect = col.getBoundingClientRect();
-      if (rect.height > maxHeight) {
-        maxHeight = rect.height;
-      }
-
-      return maxHeight;
-    }, 0);
 
     return {
       columns: this.columns,
-      rows,
-      flatRows: rows.flat(),
+      data,
       use,
       compact: Boolean(compact),
       gridTemplateColumns,
       gridTemplateAreas,
       loading,
-      headerHeight,
+      headerHeight: this.getTopScrollOffset(),
       getI18nText,
       expandedRows,
       onExpandRow: this.onExpandRow,
@@ -178,10 +162,9 @@ class DataTableRoot<D extends DataTableData> extends Component<
       scrollTop: this.state.scrollTop,
       scrollDirection: this.state.scrollDirection,
       tableContainerRef: this.tableContainerRef,
-      tableRef: this.tableRef,
-      headerRef: this.headerRef,
       virtualScroll,
       hasGroups: this.hasGroups,
+      uid,
     };
   }
 
@@ -657,108 +640,6 @@ class DataTableRoot<D extends DataTableData> extends Component<
     });
 
     return columns.filter(Boolean);
-  }
-
-  private calculateRows(): Array<DTRow[] | DTRow> {
-    const { data, uid } = this.asProps;
-
-    const rows: Array<DTRow[] | DTRow> = [];
-    const columnNames = this.columns.map((column: DTColumn) => column.name);
-
-    let rowIndex = 0;
-
-    const id = 100000000; // need this for gen keys by toString(36)
-
-    const makeDtRow = (row: DataRowItem, excludeColumns?: string[]) => {
-      const columns = new Set(columnNames);
-      const dtRow = Object.entries(row).reduce<DTRow>(
-        (acc, [key, value]) => {
-          const columnsToRow = key.split(this.columnsSplitter);
-
-          if (columnsToRow.length === 1) {
-            acc[key] = value ?? '';
-            columns.delete(key);
-          } else {
-            acc[columnsToRow[0]] = new MergedColumnsCell(value, {
-              dataKey: key,
-              size: columnsToRow.length,
-            });
-            columnsToRow.forEach((value) => {
-              columns.delete(value);
-            });
-          }
-
-          if (row[ACCORDION]) {
-            acc[ACCORDION] = row[ACCORDION];
-          }
-
-          return acc;
-        },
-        {
-          [UNIQ_ROW_KEY]: `${uid}_${(rowIndex + id).toString(36)}`,
-        },
-      );
-
-      excludeColumns?.forEach((value) => {
-        columns.delete(value);
-      });
-
-      if (columns.size > 0) {
-        columns.forEach((value) => {
-          dtRow[value] = '';
-        });
-      }
-
-      return dtRow;
-    };
-
-    data.forEach((row) => {
-      const groupedRows: DataTableData | undefined = row[ROW_GROUP];
-
-      const fromRow = rowIndex + 2; // 1 - for header, 1 - because start not from 0, but from 1
-
-      if (groupedRows) {
-        const toRow = fromRow + groupedRows.length;
-        const innerRows: DTRow[] = [];
-
-        const groupedKeys: string[] = [];
-        const groupedRowData = Object.entries(row).reduce<DTRow>(
-          (acc, [key, value]) => {
-            acc[key] = new MergedRowsCell(value, [fromRow, toRow]);
-            groupedKeys.push(key);
-            return acc;
-          },
-          {
-            [UNIQ_ROW_KEY]: '', // will fill in makeDtRow
-          },
-        );
-
-        groupedRows.forEach((childRow, index) => {
-          let dtRow: DTRow;
-          if (index === 0) {
-            const rowData = {
-              ...childRow,
-              ...groupedRowData,
-            };
-            dtRow = makeDtRow(rowData);
-          } else {
-            dtRow = makeDtRow(childRow, groupedKeys);
-          }
-
-          innerRows.push(dtRow);
-          rowIndex++;
-        });
-
-        rows.push(innerRows);
-      } else {
-        const dtRow = makeDtRow(row);
-
-        rows.push(dtRow);
-        rowIndex++;
-      }
-    });
-
-    return rows;
   }
 
   private calculateGridTemplateColumn(c: ReactElement<DataTableColumnProps>): string {

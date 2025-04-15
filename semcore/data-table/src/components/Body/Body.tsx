@@ -9,41 +9,47 @@ import { Cell } from './Cell';
 import { DataTableRowProps, DTRow, RowPropsInner } from './Row.types';
 import { DataTableCellProps } from './Cell.types';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
-import { ACCORDION, UNIQ_ROW_KEY } from '../DataTable/DataTable';
+import {ACCORDION, ROW_GROUP, UNIQ_ROW_KEY} from '../DataTable/DataTable';
 import ChevronRightM from '@semcore/icon/ChevronRight/m';
 import { ButtonLink } from '@semcore/button';
-import { DTValue } from '../DataTable/DataTable.types';
+import {DataRowItem, DataTableData, DTValue} from '../DataTable/DataTable.types';
 import Spin from '@semcore/spin';
+import {DTColumn} from '../Head/Column.types';
 
 const ROWS_BUFFER = 20;
 const APROX_ROWS_ON_PAGE = 20;
 
-class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner> {
+class BodyRoot<D extends DataTableData> extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner<D>> {
   static displayName = 'Body';
   static style = style;
+
+  private columnsSplitter = '/';
+  private rows: Array<DTRow | DTRow[]> = [];
 
   rowsHeightMap = new Map<number, [number, number]>();
 
   indexForDownIterate = 0;
   indexForUpIterate = 0;
 
-  get headerOffset(): number {
-    const header = this.asProps.headerRef.current;
+  componentDidMount() {
+    this.rows = this.calculateRows();
 
-    if (!header) {
-      return 0;
+    this.forceUpdate();
+  }
+
+  componentDidUpdate(prevProps: DataTableBodyProps & BodyPropsInner<D>) {
+    if (prevProps.data !== this.asProps.data) {
+      this.rows = this.calculateRows();
+
+      this.forceUpdate();
     }
-
-    const children = header?.children;
-
-    return children.item(0)?.getBoundingClientRect().height ?? 0;
   }
 
   handleRef = (index: number) => (node: HTMLElement | null) => {
     if (!this.rowsHeightMap.has(index)) {
       const firstChild = node?.children.item(0);
       if (firstChild instanceof HTMLElement) {
-        const offset = firstChild.offsetTop - this.headerOffset;
+        const offset = firstChild.offsetTop - this.asProps.headerHeight;
         const height = firstChild.getBoundingClientRect().height;
 
         this.rowsHeightMap.set(index, [offset, offset + height]);
@@ -53,8 +59,6 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
 
   getRowProps(props: { row: DTRow; offset: number }, i: number): RowPropsInner {
     const {
-      rows,
-      flatRows,
       use,
       gridTemplateAreas,
       gridTemplateColumns,
@@ -69,7 +73,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
 
     const rowIndex = (expandedRows ?? []).reduce((acc, item) => {
       if (item < index) {
-        const expandedRow = flatRows[item][ACCORDION];
+        const expandedRow = this.rows.flat()[item][ACCORDION];
         if (Array.isArray(expandedRow)) {
           acc = acc + expandedRow.length;
         } else {
@@ -99,8 +103,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
       rowIndex: index,
       ariaRowIndex,
       gridRowIndex,
-      rows,
-      flatRows,
+      rows: this.rows,
       row,
       expandedRows,
       onExpandRow,
@@ -196,7 +199,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
       scrollTop,
     } = this.asProps;
 
-    let rowsToRender = rows;
+    let rowsToRender = this.rows;
     let startIndex = -1;
     let lastIndex = -1;
 
@@ -226,7 +229,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
             }
 
             if (startIndex !== -1 && scrollTop + offsetHeight < valueToToCompare) {
-              lastIndex = Math.min(key + nextPrepared, rows.length);
+              lastIndex = Math.min(key + nextPrepared, this.rows.length);
             }
 
             if (startIndex !== -1 && lastIndex !== -1) {
@@ -246,7 +249,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
             const valueToToCompare = value[0];
 
             if (lastIndex === -1 && scrollTop + offsetHeight > valueToToCompare) {
-              lastIndex = Math.min(key + nextPrepared, rows.length);
+              lastIndex = Math.min(key + nextPrepared, this.rows.length);
             }
 
             if (lastIndex !== -1 && scrollTop < valueFromToCompare) {
@@ -266,7 +269,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
         this.indexForDownIterate = startIndex;
         this.indexForUpIterate = lastIndex;
 
-        rowsToRender = rows.slice(
+        rowsToRender = this.rows.slice(
           startIndex === -1 ? 0 : startIndex,
           lastIndex === -1 ? 20 : lastIndex,
         );
@@ -277,10 +280,10 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
 
         const lastIndex = Math.min(
           Math.ceil((scrollTop + offsetHeight) / rowHeight) + nextPrepared,
-          rows.length,
+          this.rows.length,
         );
 
-        rowsToRender = rows.slice(startIndex, lastIndex);
+        rowsToRender = this.rows.slice(startIndex, lastIndex);
       }
     }
 
@@ -338,6 +341,108 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
       obj === undefined ||
       obj === null
     );
+  }
+
+  private calculateRows(): Array<DTRow[] | DTRow> {
+    const { data, uid, columns } = this.asProps;
+
+    const rows: Array<DTRow[] | DTRow> = [];
+    const columnNames = columns.map((column: DTColumn) => column.name);
+
+    let rowIndex = 0;
+
+    const id = 100000000; // need this for gen keys by toString(36)
+
+    const makeDtRow = (row: DataRowItem, excludeColumns?: string[]) => {
+      const columns = new Set(columnNames);
+      const dtRow = Object.entries(row).reduce<DTRow>(
+          (acc, [key, value]) => {
+            const columnsToRow = key.split(this.columnsSplitter);
+
+            if (columnsToRow.length === 1) {
+              acc[key] = value ?? '';
+              columns.delete(key);
+            } else {
+              acc[columnsToRow[0]] = new MergedColumnsCell(value, {
+                dataKey: key,
+                size: columnsToRow.length,
+              });
+              columnsToRow.forEach((value) => {
+                columns.delete(value);
+              });
+            }
+
+            if (row[ACCORDION]) {
+              acc[ACCORDION] = row[ACCORDION];
+            }
+
+            return acc;
+          },
+          {
+            [UNIQ_ROW_KEY]: `${uid}_${(rowIndex + id).toString(36)}`,
+          },
+      );
+
+      excludeColumns?.forEach((value) => {
+        columns.delete(value);
+      });
+
+      if (columns.size > 0) {
+        columns.forEach((value) => {
+          dtRow[value] = '';
+        });
+      }
+
+      return dtRow;
+    };
+
+    data.forEach((row) => {
+      const groupedRows: DataTableData | undefined = row[ROW_GROUP];
+
+      const fromRow = rowIndex + 2; // 1 - for header, 1 - because start not from 0, but from 1
+
+      if (groupedRows) {
+        const toRow = fromRow + groupedRows.length;
+        const innerRows: DTRow[] = [];
+
+        const groupedKeys: string[] = [];
+        const groupedRowData = Object.entries(row).reduce<DTRow>(
+            (acc, [key, value]) => {
+              acc[key] = new MergedRowsCell(value, [fromRow, toRow]);
+              groupedKeys.push(key);
+              return acc;
+            },
+            {
+              [UNIQ_ROW_KEY]: '', // will fill in makeDtRow
+            },
+        );
+
+        groupedRows.forEach((childRow, index) => {
+          let dtRow: DTRow;
+          if (index === 0) {
+            const rowData = {
+              ...childRow,
+              ...groupedRowData,
+            };
+            dtRow = makeDtRow(rowData);
+          } else {
+            dtRow = makeDtRow(childRow, groupedKeys);
+          }
+
+          innerRows.push(dtRow);
+          rowIndex++;
+        });
+
+        rows.push(innerRows);
+      } else {
+        const dtRow = makeDtRow(row);
+
+        rows.push(dtRow);
+        rowIndex++;
+      }
+    });
+
+    return rows;
   }
 }
 

@@ -27,7 +27,6 @@ export type RowPropsInner = {
   columns: DTColumn[];
   row: DTRow | DTRow[];
   rows: DTRows;
-  flatRows: DTRow[];
   rowIndex: number; // from 0
   ariaRowIndex: number; // from 1 + 1 header
   gridRowIndex: number; // from 1 + 1 (or 2 if it has group) header

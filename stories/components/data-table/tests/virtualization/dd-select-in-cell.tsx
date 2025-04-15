@@ -21,7 +21,7 @@ const options = Array(6)
         label: `Option ${index}`,
         children: `Option ${index}`,
     }));
-    
+
 const data = Array(10000)
   .fill(0)
   .map((_, index) => ({
@@ -38,7 +38,7 @@ const data = Array(10000)
 
 const Demo = () => {
   return (
-    <DataTable data={data} totalRows={10000} aria-label={'Virtual scroll'} h={400} virtualScroll={{rowHeight: 45}}>
+    <DataTable data={data} totalRows={10000} aria-label={'Virtual scroll'} h={400} virtualScroll={{rowHeight: 65}}>
       <DataTable.Head sticky>
         <DataTable.Head.Column name='id' children='ID' />
         <DataTable.Head.Column name='keyword' children='Keyword' gtcWidth={'300px'} />
