@@ -9,17 +9,23 @@ import { Cell } from './Cell';
 import { DataTableRowProps, DTRow, RowPropsInner } from './Row.types';
 import { DataTableCellProps } from './Cell.types';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
-import {ACCORDION, ROW_GROUP, UNIQ_ROW_KEY} from '../DataTable/DataTable';
+import { ACCORDION, ROW_GROUP, UNIQ_ROW_KEY } from '../DataTable/DataTable';
 import ChevronRightM from '@semcore/icon/ChevronRight/m';
 import { ButtonLink } from '@semcore/button';
-import {DataRowItem, DataTableData, DTValue} from '../DataTable/DataTable.types';
+import { DataRowItem, DataTableData, DTValue } from '../DataTable/DataTable.types';
 import Spin from '@semcore/spin';
-import {DTColumn} from '../Head/Column.types';
+import { DTColumn } from '../Head/Column.types';
 
 const ROWS_BUFFER = 20;
 const APROX_ROWS_ON_PAGE = 20;
 
-class BodyRoot<D extends DataTableData> extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner<D>> {
+class BodyRoot<D extends DataTableData> extends Component<
+  DataTableBodyProps,
+  {},
+  {},
+  [],
+  BodyPropsInner<D>
+> {
   static displayName = 'Body';
   static style = style;
 
@@ -188,7 +194,6 @@ class BodyRoot<D extends DataTableData> extends Component<DataTableBodyProps, {}
     const SRowGroup = Box;
     const SSpinContainer = Box;
     const {
-      rows,
       styles,
       loading,
       headerHeight,
@@ -209,8 +214,8 @@ class BodyRoot<D extends DataTableData> extends Component<DataTableBodyProps, {}
           ? virtualScroll.rowsBuffer ?? ROWS_BUFFER
           : ROWS_BUFFER;
       const offsetHeight = tableContainerRef.current?.offsetHeight ?? 0;
-      const prevPrepared = scrollDirection === 'up' ? rowsBuffer : 1;
-      const nextPrepared = scrollDirection === 'up' ? 1 : rowsBuffer;
+      const prevPrepared = scrollDirection === 'up' ? rowsBuffer : 4;
+      const nextPrepared = scrollDirection === 'up' ? 4 : rowsBuffer;
 
       if (typeof virtualScroll === 'boolean' || 'aproxRowsOnPage' in virtualScroll) {
         const aproxRowsOnPage =
@@ -219,7 +224,8 @@ class BodyRoot<D extends DataTableData> extends Component<DataTableBodyProps, {}
             : APROX_ROWS_ON_PAGE;
         if (scrollDirection === 'down') {
           for (let i = this.indexForDownIterate; i < this.rowsHeightMap.size - 1; i++) {
-            const value = this.rowsHeightMap.get(i) ?? [0, 0];
+            const value = this.rowsHeightMap.get(i);
+            if (!value) continue;
             const key = i;
             const valueFromToCompare = value[1];
             const valueToToCompare = value[0];
@@ -266,13 +272,18 @@ class BodyRoot<D extends DataTableData> extends Component<DataTableBodyProps, {}
           }
         }
 
+        if (startIndex === -1) {
+          startIndex = scrollTop === 0 ? 0 : Math.max(this.rows.length - aproxRowsOnPage, 0);
+        }
+
+        if (lastIndex === -1) {
+          lastIndex = scrollTop === 0 ? aproxRowsOnPage : this.rows.length;
+        }
+
         this.indexForDownIterate = startIndex;
         this.indexForUpIterate = lastIndex;
 
-        rowsToRender = this.rows.slice(
-          startIndex === -1 ? 0 : startIndex,
-          lastIndex === -1 ? 20 : lastIndex,
-        );
+        rowsToRender = this.rows.slice(startIndex, lastIndex);
       } else if ('rowHeight' in virtualScroll) {
         const rowHeight = virtualScroll.rowHeight;
 
@@ -290,7 +301,7 @@ class BodyRoot<D extends DataTableData> extends Component<DataTableBodyProps, {}
     startIndex = startIndex === -1 ? 0 : startIndex;
 
     return sstyled(styles)(
-      <SBody render={Box}>
+      <SBody render={Box} __excludeProps={['data']}>
         {rowsToRender.map((row, index) => {
           let rowMarginTop: number | undefined = undefined;
 
@@ -356,31 +367,31 @@ class BodyRoot<D extends DataTableData> extends Component<DataTableBodyProps, {}
     const makeDtRow = (row: DataRowItem, excludeColumns?: string[]) => {
       const columns = new Set(columnNames);
       const dtRow = Object.entries(row).reduce<DTRow>(
-          (acc, [key, value]) => {
-            const columnsToRow = key.split(this.columnsSplitter);
+        (acc, [key, value]) => {
+          const columnsToRow = key.split(this.columnsSplitter);
 
-            if (columnsToRow.length === 1) {
-              acc[key] = value ?? '';
-              columns.delete(key);
-            } else {
-              acc[columnsToRow[0]] = new MergedColumnsCell(value, {
-                dataKey: key,
-                size: columnsToRow.length,
-              });
-              columnsToRow.forEach((value) => {
-                columns.delete(value);
-              });
-            }
+          if (columnsToRow.length === 1) {
+            acc[key] = value ?? '';
+            columns.delete(key);
+          } else {
+            acc[columnsToRow[0]] = new MergedColumnsCell(value, {
+              dataKey: key,
+              size: columnsToRow.length,
+            });
+            columnsToRow.forEach((value) => {
+              columns.delete(value);
+            });
+          }
 
-            if (row[ACCORDION]) {
-              acc[ACCORDION] = row[ACCORDION];
-            }
+          if (row[ACCORDION]) {
+            acc[ACCORDION] = row[ACCORDION];
+          }
 
-            return acc;
-          },
-          {
-            [UNIQ_ROW_KEY]: `${uid}_${(rowIndex + id).toString(36)}`,
-          },
+          return acc;
+        },
+        {
+          [UNIQ_ROW_KEY]: `${uid}_${(rowIndex + id).toString(36)}`,
+        },
       );
 
       excludeColumns?.forEach((value) => {
@@ -407,14 +418,14 @@ class BodyRoot<D extends DataTableData> extends Component<DataTableBodyProps, {}
 
         const groupedKeys: string[] = [];
         const groupedRowData = Object.entries(row).reduce<DTRow>(
-            (acc, [key, value]) => {
-              acc[key] = new MergedRowsCell(value, [fromRow, toRow]);
-              groupedKeys.push(key);
-              return acc;
-            },
-            {
-              [UNIQ_ROW_KEY]: '', // will fill in makeDtRow
-            },
+          (acc, [key, value]) => {
+            acc[key] = new MergedRowsCell(value, [fromRow, toRow]);
+            groupedKeys.push(key);
+            return acc;
+          },
+          {
+            [UNIQ_ROW_KEY]: '', // will fill in makeDtRow
+          },
         );
 
         groupedRows.forEach((childRow, index) => {

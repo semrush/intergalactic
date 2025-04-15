@@ -1,6 +1,6 @@
 import { DTRow, DTRows } from './Row.types';
 import { DTColumn } from '../Head/Column.types';
-import {DataTableData, DTUse, VirtualScroll} from '../DataTable/DataTable.types';
+import { DataTableData, DTUse, VirtualScroll } from '../DataTable/DataTable.types';
 
 type CellRenderProps = {
   dataKey: string;
