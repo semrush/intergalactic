@@ -1,12 +1,5 @@
 import * as React from 'react';
-import {
-  Component,
-  createComponent,
-  Intergalactic,
-  lastInteraction,
-  Root,
-  sstyled,
-} from '@semcore/core';
+import { Component, createComponent, Intergalactic, Root, sstyled } from '@semcore/core';
 import { BodyPropsInner, DataTableBodyProps } from './Body.types';
 import { Box } from '@semcore/base-components';
 import { Row } from './Row';
@@ -16,11 +9,14 @@ import { Cell } from './Cell';
 import { DataTableRowProps, DTRow, RowPropsInner } from './Row.types';
 import { DataTableCellProps } from './Cell.types';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
-import { ACCORDION } from '../DataTable/DataTable';
+import { ACCORDION, UNIQ_ROW_KEY } from '../DataTable/DataTable';
 import ChevronRightM from '@semcore/icon/ChevronRight/m';
 import { ButtonLink } from '@semcore/button';
 import { DTValue } from '../DataTable/DataTable.types';
 import Spin from '@semcore/spin';
+
+const ROWS_BUFFER = 20;
+const APROX_ROWS_ON_PAGE = 20;
 
 class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner> {
   static displayName = 'Body';
@@ -28,31 +24,29 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
 
   rowsHeightMap = new Map<number, [number, number]>();
 
+  indexForDownIterate = 0;
+  indexForUpIterate = 0;
+
+  get headerOffset(): number {
+    const header = this.asProps.headerRef.current;
+
+    if (!header) {
+      return 0;
+    }
+
+    const children = header?.children;
+
+    return children.item(0)?.getBoundingClientRect().height ?? 0;
+  }
+
   handleRef = (index: number) => (node: HTMLElement | null) => {
     if (!this.rowsHeightMap.has(index)) {
       const firstChild = node?.children.item(0);
       if (firstChild instanceof HTMLElement) {
-        const offset =
-          firstChild.offsetTop - this.asProps.headerRef.current?.getBoundingClientRect().height ??
-          0;
+        const offset = firstChild.offsetTop - this.headerOffset;
         const height = firstChild.getBoundingClientRect().height;
 
         this.rowsHeightMap.set(index, [offset, offset + height]);
-
-        // setTimeout(() => {
-        //   const tableGridElement = this.asProps.tableRef.current;
-        //   if (tableGridElement) {
-        //     const rowsTemplateVariableName = tableGridElement.style[2];
-        //     this.gridTemplateRows.push(`${firstChild.getBoundingClientRect().height}px`);
-        //
-        //     tableGridElement.style.setProperty(
-        //       rowsTemplateVariableName,
-        //       `${this.gridTemplateRows.join(' ')} repeat(${
-        //         this.asProps.rows.length - (this.gridTemplateRows.length - 2)
-        //       }, minmax(45px, auto))`,
-        //     );
-        //   }
-        // }, 0);
       }
     }
   };
@@ -182,60 +176,6 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
     return extraProps;
   }
 
-  // componentDidUpdate(prevProps: DataTableBodyProps & BodyPropsInner) {
-  //   if (this.asProps.virtualScroll && prevProps.scrollTop !== this.asProps.scrollTop) {
-  //     console.log('???');
-  //     const { scrollDirection, virtualScroll, tableContainerRef, scrollTop, rows } = this.asProps;
-  //
-  //     if (scrollDirection === 'down') {
-  //       this.setState((prevState) => {
-  //         return {
-  //           lastIndex: Math.min(prevState.lastIndex + 20, this.asProps.rows.length),
-  //         };
-  //       });
-  //     } else if (scrollDirection === 'up') {
-  //       this.setState((prevState) => {
-  //         return {
-  //           startIndex: Math.max(prevState.startIndex - 20, 0),
-  //         };
-  //       });
-  //     }
-  //
-  //     const offsetHeight = tableContainerRef.current?.offsetHeight ?? 0;
-  //     const tollerance = 6;
-  //
-  //     let startIndex = this.state.startIndex;
-  //
-  //     if (typeof virtualScroll === 'boolean') {
-  //       for (const [key, value] of this.rowsHeightMap) {
-  //         const valueToCompare = scrollDirection === 'down' ? value[1] : value[0];
-  //         if (scrollTop < valueToCompare) {
-  //           startIndex = Math.max(key - tollerance, 0);
-  //           break;
-  //         }
-  //       }
-  //
-  //       const lastIndex = Math.min(
-  //           Math.ceil((scrollTop + offsetHeight) / 45) + tollerance,
-  //           rows.length,
-  //       );
-  //
-  //       this.setState({startIndex, lastIndex});
-  //     } else {
-  //       const rowHeight = 45; // virtualScroll.rowHeight;
-  //
-  //       startIndex = Math.max(Math.floor(scrollTop / rowHeight) - tollerance, 0);
-  //
-  //       const lastIndex = Math.min(
-  //           Math.ceil((scrollTop + offsetHeight) / rowHeight) + tollerance,
-  //           rows.length,
-  //       );
-  //
-  //       this.setState({startIndex, lastIndex});
-  //     }
-  //   }
-  // }
-
   render() {
     const SBody = Root;
     const SRowGroup = Box;
@@ -253,46 +193,86 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
     } = this.asProps;
 
     let rowsToRender = rows;
-    let startIndex = 0;
-    let lastIndex = 20;
+    let startIndex = -1;
+    let lastIndex = -1;
 
     if (virtualScroll) {
+      const rowsBuffer =
+        typeof virtualScroll !== 'boolean' && 'rowsBuffer' in virtualScroll
+          ? virtualScroll.rowsBuffer ?? ROWS_BUFFER
+          : ROWS_BUFFER;
       const offsetHeight = tableContainerRef.current?.offsetHeight ?? 0;
-      const tollerance = 2;
+      const prevPrepared = scrollDirection === 'up' ? rowsBuffer : 1;
+      const nextPrepared = scrollDirection === 'up' ? 1 : rowsBuffer;
 
-      if (typeof virtualScroll === 'boolean') {
-        let from;
-        let to;
-        for (const [key, value] of this.rowsHeightMap) {
-          const valueFromToCompare = scrollDirection === 'up' ? value[0] : value[1];
-          const valueToToCompare = scrollDirection === 'up' ? value[1] : value[0];
-          if (from === undefined && scrollTop < valueFromToCompare) {
-            startIndex = Math.max(key - tollerance, 0);
-            from = startIndex;
+      if (typeof virtualScroll === 'boolean' || 'aproxRowsOnPage' in virtualScroll) {
+        const aproxRowsOnPage =
+          typeof virtualScroll !== 'boolean'
+            ? virtualScroll.aproxRowsOnPage ?? APROX_ROWS_ON_PAGE
+            : APROX_ROWS_ON_PAGE;
+        if (scrollDirection === 'down') {
+          for (let i = this.indexForDownIterate; i < this.rowsHeightMap.size - 1; i++) {
+            const value = this.rowsHeightMap.get(i) ?? [0, 0];
+            const key = i;
+            const valueFromToCompare = value[1];
+            const valueToToCompare = value[0];
+
+            if (startIndex === -1 && scrollTop < valueFromToCompare) {
+              startIndex = Math.max(key - prevPrepared, 0);
+            }
+
+            if (startIndex !== -1 && scrollTop + offsetHeight < valueToToCompare) {
+              lastIndex = Math.min(key + nextPrepared, rows.length);
+            }
+
+            if (startIndex !== -1 && lastIndex !== -1) {
+              break;
+            }
           }
 
-          if (from !== undefined && scrollTop + offsetHeight < valueToToCompare) {
-            lastIndex = Math.min(key + tollerance, rows.length);
-            to = lastIndex;
+          if (scrollTop + offsetHeight < (this.rowsHeightMap.get(lastIndex ?? 0)?.[1] ?? 0)) {
+            lastIndex = lastIndex + aproxRowsOnPage;
+          }
+        } else if (scrollDirection === 'up') {
+          for (let i = this.indexForUpIterate; i > 0; i--) {
+            const value = this.rowsHeightMap.get(i);
+            if (!value) continue;
+            const key = i;
+            const valueFromToCompare = value[1];
+            const valueToToCompare = value[0];
+
+            if (lastIndex === -1 && scrollTop + offsetHeight > valueToToCompare) {
+              lastIndex = Math.min(key + nextPrepared, rows.length);
+            }
+
+            if (lastIndex !== -1 && scrollTop < valueFromToCompare) {
+              startIndex = Math.max(key - prevPrepared, 0);
+            }
+
+            if (startIndex !== -1 && lastIndex !== -1) {
+              break;
+            }
           }
 
-          if (from !== undefined && to !== undefined) {
-            break;
+          if (scrollTop < (this.rowsHeightMap.get(startIndex ?? 0)?.[0] ?? 0)) {
+            startIndex = startIndex - aproxRowsOnPage;
           }
         }
 
-        if (scrollTop + offsetHeight < (this.rowsHeightMap.get(to ?? 0)?.[1] ?? 0)) {
-          lastIndex = lastIndex + 20;
-        }
+        this.indexForDownIterate = startIndex;
+        this.indexForUpIterate = lastIndex;
 
-        rowsToRender = rows.slice(startIndex, lastIndex);
-      } else {
-        const rowHeight = virtualScroll.rowHeight ?? 45;
+        rowsToRender = rows.slice(
+          startIndex === -1 ? 0 : startIndex,
+          lastIndex === -1 ? 20 : lastIndex,
+        );
+      } else if ('rowHeight' in virtualScroll) {
+        const rowHeight = virtualScroll.rowHeight;
 
-        startIndex = Math.max(Math.floor(scrollTop / rowHeight) - tollerance, 0);
+        startIndex = Math.max(Math.floor(scrollTop / rowHeight) - prevPrepared, 0);
 
         const lastIndex = Math.min(
-          Math.ceil((scrollTop + offsetHeight) / rowHeight) + tollerance,
+          Math.ceil((scrollTop + offsetHeight) / rowHeight) + nextPrepared,
           rows.length,
         );
 
@@ -300,36 +280,33 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
       }
     }
 
+    startIndex = startIndex === -1 ? 0 : startIndex;
+
     return sstyled(styles)(
       <SBody render={Box}>
         {rowsToRender.map((row, index) => {
-          let rowMarginStyle = undefined;
+          let rowMarginTop: number | undefined = undefined;
 
           if (index === 0 && typeof virtualScroll === 'boolean') {
-            const height = this.rowsHeightMap.get(startIndex - 1);
-            const marginTop = height ? height[1] - height[0] : undefined;
-
-            rowMarginStyle = { marginTop };
+            rowMarginTop = this.rowsHeightMap.get(startIndex - 1)?.[1];
           }
 
           if (Array.isArray(row)) {
             return sstyled(styles)(
               <SRowGroup role={'rowgroup'} key={index}>
                 {row.map((item, i) => {
-                  return (
-                    <Body.Row key={`${startIndex}_${index}_${i}`} row={item} offset={startIndex} />
-                  );
+                  return <Body.Row key={item[UNIQ_ROW_KEY]} row={item} offset={startIndex} />;
                 })}
               </SRowGroup>,
             );
           }
           return (
             <Body.Row
-              key={`${startIndex}_${index}`}
+              key={row[UNIQ_ROW_KEY]}
               row={row}
               offset={startIndex}
               ref={this.handleRef(startIndex + index)}
-              rowMarginStyle={rowMarginStyle}
+              rowMarginTop={rowMarginTop}
             />
           );
         })}

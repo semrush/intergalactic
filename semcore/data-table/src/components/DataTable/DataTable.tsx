@@ -35,6 +35,7 @@ import trottle from '@semcore/core/lib/utils/rafTrottle';
 
 export const ACCORDION = Symbol('accordion');
 export const ROW_GROUP = Symbol('ROW_GROUP');
+export const UNIQ_ROW_KEY = Symbol('UNIQ_ROW_KEY');
 
 const SCROLL_BAR_HEIGHT = 12;
 
@@ -60,9 +61,10 @@ class DataTableRoot<D extends DataTableData> extends Component<
     defaultGridTemplateColumnWidth: 'auto',
     h: 'auto',
     defaultExpandedRows: [],
+    defaultRowHeight: 45,
+    defaultRowsBuffer: 20,
+    aproxRowsOnPage: 20,
   };
-
-  private isInScroll = false;
 
   private columnsSplitter = '/';
 
@@ -353,19 +355,9 @@ class DataTableRoot<D extends DataTableData> extends Component<
   };
 
   handleScroll = trottle((e) => {
-    if (this.isInScroll) {
-      return;
-    }
-
-    this.isInScroll = true;
-
-    setTimeout(() => {
-      const scrollTop = e.target.scrollTop;
-      const scrollDirection = scrollTop > this.state.scrollTop ? 'down' : 'up';
-      this.setState({ scrollTop, scrollDirection });
-
-      this.isInScroll = false;
-    }, 300);
+    const scrollTop = e.target.scrollTop;
+    const scrollDirection = scrollTop > this.state.scrollTop ? 'down' : 'up';
+    this.setState({ scrollTop, scrollDirection });
   });
 
   handleFocus = (e: React.FocusEvent<HTMLElement, HTMLElement>) => {
@@ -446,12 +438,8 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
     let gridTemplateRows: string | undefined = undefined;
 
-    if (virtualScroll !== undefined) {
-      if (typeof virtualScroll === 'boolean') {
-        gridTemplateRows = `39px 39px repeat(${this.totalRows}, minmax(45px, auto)`;
-      } else {
-        gridTemplateRows = `auto auto repeat(${this.totalRows}, minmax(${virtualScroll.rowHeight}px, auto)`;
-      }
+    if (virtualScroll && typeof virtualScroll !== 'boolean' && 'rowHeight' in virtualScroll) {
+      gridTemplateRows = `auto auto repeat(${this.totalRows}, minmax(${virtualScroll.rowHeight}px, auto)`;
     }
 
     return sstyled(styles)(
@@ -629,31 +617,38 @@ class DataTableRoot<D extends DataTableData> extends Component<
   }
 
   private calculateRows(): Array<DTRow[] | DTRow> {
-    const { data } = this.asProps;
+    const { data, uid } = this.asProps;
 
     const rows: Array<DTRow[] | DTRow> = [];
 
     let rowIndex = 0;
 
+    const id = 100000000; // need this for gen keys by toString(36)
+
     const makeDtRow = (row: DataRowItem) => {
-      const dtRow = Object.entries(row).reduce<DTRow>((acc, [key, value]) => {
-        const columnsToRow = key.split(this.columnsSplitter);
+      const dtRow = Object.entries(row).reduce<DTRow>(
+        (acc, [key, value]) => {
+          const columnsToRow = key.split(this.columnsSplitter);
 
-        if (columnsToRow.length === 1) {
-          acc[key] = value ?? '';
-        } else {
-          acc[columnsToRow[0]] = new MergedColumnsCell(value, {
-            dataKey: key,
-            size: columnsToRow.length,
-          });
-        }
+          if (columnsToRow.length === 1) {
+            acc[key] = value ?? '';
+          } else {
+            acc[columnsToRow[0]] = new MergedColumnsCell(value, {
+              dataKey: key,
+              size: columnsToRow.length,
+            });
+          }
 
-        if (row[ACCORDION]) {
-          acc[ACCORDION] = row[ACCORDION];
-        }
+          if (row[ACCORDION]) {
+            acc[ACCORDION] = row[ACCORDION];
+          }
 
-        return acc;
-      }, {});
+          return acc;
+        },
+        {
+          [UNIQ_ROW_KEY]: `${uid}_${(rowIndex + id).toString(36)}`,
+        },
+      );
 
       return dtRow;
     };
@@ -671,10 +666,15 @@ class DataTableRoot<D extends DataTableData> extends Component<
           if (index === 0) {
             const rowData = {
               ...childRow,
-              ...Object.entries(row).reduce<DTRow>((acc, [key, value]) => {
-                acc[key] = new MergedRowsCell(value, [fromRow, toRow]);
-                return acc;
-              }, {}),
+              ...Object.entries(row).reduce<DTRow>(
+                (acc, [key, value]) => {
+                  acc[key] = new MergedRowsCell(value, [fromRow, toRow]);
+                  return acc;
+                },
+                {
+                  [UNIQ_ROW_KEY]: '', // will fill in makeDtRow
+                },
+              ),
             };
             dtRow = makeDtRow(rowData);
           } else {

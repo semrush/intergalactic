@@ -1,6 +1,6 @@
 import { DTRow, DTRows } from './Row.types';
 import { DTColumn } from '../Head/Column.types';
-import { DTUse, DTValue } from '../DataTable/DataTable.types';
+import { DTUse, VirtualScroll } from '../DataTable/DataTable.types';
 
 type CellRenderProps = {
   dataKey: string;
@@ -37,5 +37,6 @@ export type BodyPropsInner = {
   scrollTop: number;
   scrollDirection: 'down' | 'up';
   tableRef: React.RefObject<HTMLDivElement>;
-  virtualScroll?: boolean | { rowHeight: number };
+  headerRef: React.RefObject<HTMLDivElement>;
+  virtualScroll?: VirtualScroll;
 };

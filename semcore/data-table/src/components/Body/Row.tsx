@@ -39,7 +39,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
       expandedRows,
       onExpandRow,
       'aria-level': ariaLevel = 1,
-      rowMarginStyle = {},
+      rowMarginTop,
     } = this.asProps;
 
     let accordion = row[ACCORDION];
@@ -63,7 +63,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
               return null;
             }
 
-            const style: any = rowMarginStyle;
+            const style: React.CSSProperties = {};
 
             if (column.fixed) {
               const [name, value] = getFixedStyle(column, columns);
@@ -71,6 +71,9 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
               if (name !== undefined && value !== undefined) {
                 style[name] = value;
               }
+            }
+            if (rowMarginTop) {
+              style.marginTop = rowMarginTop;
             }
 
             return (
