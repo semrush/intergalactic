@@ -62,6 +62,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
       columns,
       onExpandRow,
       loading,
+      hasGroups,
     } = this.asProps;
     const row = props.row;
     const index = props.offset + i;
@@ -78,7 +79,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
 
       return acc;
     }, index);
-    const ariaRowIndex = rowIndex + 2; // 1 - for header, 1 - because start not from 0, but from 1
+    const ariaRowIndex = rowIndex + (hasGroups ? 3 : 2); // 1 - for header, 1 - because start not from 0, but from 1
 
     const accordionDataGridArea = Array.isArray(row[ACCORDION])
       ? `${ariaRowIndex + 1} / 1 / ${ariaRowIndex + 1 + row[ACCORDION].length} / ${
@@ -111,7 +112,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
     let dataKey = props.column.name;
     const cellValue = props.row[dataKey];
 
-    let value: DTValue = '';
+    let value: DTValue | undefined = undefined;
     const isMergedRows = cellValue instanceof MergedRowsCell;
     const isMergedColumns = cellValue instanceof MergedColumnsCell;
 
@@ -125,7 +126,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
     }
 
     const defaultRender = () => {
-      if ((props.columnIndex === 0 && props.row[ACCORDION]) || value[ACCORDION]) {
+      if ((props.columnIndex === 0 && props.row[ACCORDION]) || value?.[ACCORDION]) {
         return sstyled(styles)(
           <>
             <SAccordionToggle
@@ -137,12 +138,12 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
             >
               <SAccordionToggle.Addon tag={ChevronRightM} />
             </SAccordionToggle>
-            {value.toString()}
+            {value?.toString()}
           </>,
         );
       }
 
-      return value.toString();
+      return value?.toString();
     };
 
     const extraProps: Record<string, any> = {
@@ -159,7 +160,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
         columnIndex: props.columnIndex,
         dataKey,
         defaultRender,
-        value: value.toString(),
+        value: value?.toString() ?? '',
         isMergedRows,
         isMergedColumns,
       });

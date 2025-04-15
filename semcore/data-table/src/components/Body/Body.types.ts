@@ -39,4 +39,5 @@ export type BodyPropsInner = {
   tableRef: React.RefObject<HTMLDivElement>;
   headerRef: React.RefObject<HTMLDivElement>;
   virtualScroll?: VirtualScroll;
+  hasGroups: boolean;
 };

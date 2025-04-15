@@ -61,14 +61,12 @@ class DataTableRoot<D extends DataTableData> extends Component<
     defaultGridTemplateColumnWidth: 'auto',
     h: 'auto',
     defaultExpandedRows: [],
-    defaultRowHeight: 45,
-    defaultRowsBuffer: 20,
-    aproxRowsOnPage: 20,
   };
 
   private columnsSplitter = '/';
 
   private columns: DTColumn[] = [];
+  private hasGroups = false;
 
   private focusedCell: [RowIndex, ColIndex] = [-1, -1];
 
@@ -116,7 +114,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
       return acc;
     }, 0);
 
-    return (totalRows ?? this.calculateRows().length) + expandedRowsCount;
+    return (totalRows ?? this.calculateRows().flat().length) + expandedRowsCount;
   }
 
   get gridSettings() {
@@ -184,6 +182,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
       tableRef: this.tableRef,
       headerRef: this.headerRef,
       virtualScroll,
+      hasGroups: this.hasGroups,
     };
   }
 
@@ -298,14 +297,14 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
       if (direction === 'left' || direction === 'right') {
         // left/right
-        if (currentCell.dataset.groupedBy === 'columns') {
+        if (currentCell.dataset.groupedBy === 'colgroup') {
           colI = direction === 'left' ? colI - 1 : colI + 1;
         } else {
           rowI = rowI - 1;
         }
       } else if (direction === 'up' || direction === 'down') {
         // top/bottom
-        if (currentCell.dataset.groupedBy === 'rows') {
+        if (currentCell.dataset.groupedBy === 'rowgroup') {
           rowI = direction === 'up' ? rowI - 1 : rowI + 1;
         } else {
           colI = colI - 1;
@@ -442,6 +441,18 @@ class DataTableRoot<D extends DataTableData> extends Component<
       gridTemplateRows = `auto auto repeat(${this.totalRows}, minmax(${virtualScroll.rowHeight}px, auto)`;
     }
 
+    let scrollDirection: 'both' | 'horizontal' | 'vertical' | undefined = undefined;
+    const hasWidthSettings = Boolean(w ?? wMax ?? wMin);
+    const hasHeightSettings = Boolean(h ?? hMax ?? hMin);
+
+    if (hasWidthSettings && !hasHeightSettings) {
+      scrollDirection = 'horizontal';
+    } else if (hasHeightSettings && !hasWidthSettings) {
+      scrollDirection = 'vertical';
+    } else if (hasWidthSettings && hasHeightSettings) {
+      scrollDirection = 'both';
+    }
+
     return sstyled(styles)(
       <ScrollArea
         leftOffset={offsetLeftSum}
@@ -458,7 +469,11 @@ class DataTableRoot<D extends DataTableData> extends Component<
         styles={scrollStyles}
         onScroll={this.handleScroll}
       >
-        <ScrollArea.Container tabIndex={-1}>
+        <ScrollArea.Container
+          tabIndex={-1}
+          // @ts-ignore
+          scrollDirection={scrollDirection}
+        >
           <SDataTable
             render={Box}
             ref={forkRef(this.tableRef, this.tableContainerRef)}
@@ -504,7 +519,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
       };
     };
 
-    const hasGroup = findComponent(HeadComponent.props.children, ['Head.Group']) !== undefined;
+    this.hasGroups = findComponent(HeadComponent.props.children, ['Head.Group']) !== undefined;
 
     let columnIndex = 0;
     let groupIndex = 0;
@@ -575,7 +590,9 @@ class DataTableRoot<D extends DataTableData> extends Component<
       if (childIsColumn(child)) {
         const col = makeColumn(child);
 
-        col.gridArea = `1 / ${gridColumnIndex} / ${hasGroup ? '3' : '2'} / ${gridColumnIndex + 1}`;
+        col.gridArea = `1 / ${gridColumnIndex} / ${this.hasGroups ? '3' : '2'} / ${
+          gridColumnIndex + 1
+        }`;
 
         columnIndex++;
         gridColumnIndex++;
@@ -620,22 +637,28 @@ class DataTableRoot<D extends DataTableData> extends Component<
     const { data, uid } = this.asProps;
 
     const rows: Array<DTRow[] | DTRow> = [];
+    const columnNames = this.columns.map((column: DTColumn) => column.name);
 
     let rowIndex = 0;
 
     const id = 100000000; // need this for gen keys by toString(36)
 
-    const makeDtRow = (row: DataRowItem) => {
+    const makeDtRow = (row: DataRowItem, excludeColumns?: string[]) => {
+      const columns = new Set(columnNames);
       const dtRow = Object.entries(row).reduce<DTRow>(
         (acc, [key, value]) => {
           const columnsToRow = key.split(this.columnsSplitter);
 
           if (columnsToRow.length === 1) {
             acc[key] = value ?? '';
+            columns.delete(key);
           } else {
             acc[columnsToRow[0]] = new MergedColumnsCell(value, {
               dataKey: key,
               size: columnsToRow.length,
+            });
+            columnsToRow.forEach((value) => {
+              columns.delete(value);
             });
           }
 
@@ -650,6 +673,16 @@ class DataTableRoot<D extends DataTableData> extends Component<
         },
       );
 
+      excludeColumns?.forEach((value) => {
+        columns.delete(value);
+      });
+
+      if (columns.size > 0) {
+        columns.forEach((value) => {
+          dtRow[value] = '';
+        });
+      }
+
       return dtRow;
     };
 
@@ -661,24 +694,29 @@ class DataTableRoot<D extends DataTableData> extends Component<
       if (groupedRows) {
         const toRow = fromRow + groupedRows.length;
         const innerRows: DTRow[] = [];
+
+        const groupedKeys: string[] = [];
+        const groupedRowData = Object.entries(row).reduce<DTRow>(
+          (acc, [key, value]) => {
+            acc[key] = new MergedRowsCell(value, [fromRow, toRow]);
+            groupedKeys.push(key);
+            return acc;
+          },
+          {
+            [UNIQ_ROW_KEY]: '', // will fill in makeDtRow
+          },
+        );
+
         groupedRows.forEach((childRow, index) => {
           let dtRow: DTRow;
           if (index === 0) {
             const rowData = {
               ...childRow,
-              ...Object.entries(row).reduce<DTRow>(
-                (acc, [key, value]) => {
-                  acc[key] = new MergedRowsCell(value, [fromRow, toRow]);
-                  return acc;
-                },
-                {
-                  [UNIQ_ROW_KEY]: '', // will fill in makeDtRow
-                },
-              ),
+              ...groupedRowData,
             };
             dtRow = makeDtRow(rowData);
           } else {
-            dtRow = makeDtRow(childRow);
+            dtRow = makeDtRow(childRow, groupedKeys);
           }
 
           innerRows.push(dtRow);

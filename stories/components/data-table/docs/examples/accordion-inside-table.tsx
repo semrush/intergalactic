@@ -7,10 +7,12 @@ const Demo = () => {
   return (
       <DataTable data={data} aria-label={'Accordion inside table'}>
         <DataTable.Head>
-          <DataTable.Head.Column name='keyword' children='Keyword' />
-          <DataTable.Head.Column name='kd' children='KD,%' />
-          <DataTable.Head.Column name='cpc' children='CPC' />
-          <DataTable.Head.Column name='vol' children='Vol.' />
+          <DataTable.Head.Column name='keyword' children='Keyword' gtcWidth={'minmax(60%, 80%)'} />
+          <DataTable.Head.Group borders={'both'} title={'Organic Sessions'}>
+            <DataTable.Head.Column name='kd' children='KD,%' />
+            <DataTable.Head.Column name='cpc' children='CPC' />
+            <DataTable.Head.Column name='vol' children='Vol.' />
+          </DataTable.Head.Group>
         </DataTable.Head>
         <DataTable.Body/>
       </DataTable>
@@ -38,7 +40,7 @@ const ChartExample = () => {
     .range([height - MARGIN, MARGIN])
     .domain([0, 10]);
   return (
-    <ResponsiveContainer h={300} onResize={setSize}>
+    <ResponsiveContainer h={300} onResize={setSize} style={{background: '#fff'}}>
       <Plot data={dataChart} scale={[xScale, yScale]} width={width} height={height}>
         <YAxis>
           <YAxis.Ticks />
