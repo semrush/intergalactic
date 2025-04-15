@@ -8,14 +8,14 @@ const Demo = () => {
 
   return (
     <>
-    <Button onClick={() => setVisible(true)}>Open FullscreenModal</Button>
-   
-    <FullscreenModal disablePortal visible={visible} onClose={() => setVisible(false)}>
- 
-      <FullscreenModal.Close />
-      <FullscreenModal.Back/>
-     
-      <FullscreenModal.Body>
+      <Button onClick={() => setVisible(true)}>Open FullscreenModal</Button>
+
+      <FullscreenModal disablePortal visible={visible} onClose={() => setVisible(false)}>
+
+        <FullscreenModal.Close />
+        <FullscreenModal.Back />
+
+        <FullscreenModal.Body>
           <FullscreenModal.Section>
             <Text size={400}>Content Title</Text>
           </FullscreenModal.Section>
@@ -26,16 +26,16 @@ const Demo = () => {
           </FullscreenModal.Section>
         </FullscreenModal.Body>
         <FullscreenModal.Footer justifyContent='center' alignItems='center'>
-         
-         
+
+
           <Button size='l' use='primary'>
             <Button.Text mr={2}>Next content</Button.Text>
-           
+
           </Button>
         </FullscreenModal.Footer>
-    </FullscreenModal>
- 
-  </>
+      </FullscreenModal>
+
+    </>
   );
 };
 

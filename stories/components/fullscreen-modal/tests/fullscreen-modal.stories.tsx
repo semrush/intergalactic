@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import DisablePortalVisibleExample from './examples/disable-portal-visible';
 import ModalPropsExample from './examples/modal-props';
+import WithSpinContainerExample from './examples/with-spin-container';
 
 import CloseTitleDescriptionExample from './examples/header/close-title-description';
 import CloseBackTitleDescriptionExample from './examples/header/close-back-title-description';
@@ -19,6 +20,9 @@ export const DisablePortalVisible: StoryObj = {
   render: DisablePortalVisibleExample,
 };
 
+export const WithSpinContainer: StoryObj = {
+    render: WithSpinContainerExample,
+  };
   
 export const ModalProps: StoryObj = {
     render: ModalPropsExample,

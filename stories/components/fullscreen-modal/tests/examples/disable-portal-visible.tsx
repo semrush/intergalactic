@@ -1,6 +1,5 @@
 import React from 'react';
 import FullscreenModal from '@semcore/fullscreen-modal';
-import Ellipsis from '@semcore/ellipsis';
 
 const Demo = () => {
   const [visible, setVisible] = React.useState(false);

@@ -1,8 +1,6 @@
 import React from 'react';
 import FullscreenModal from '@semcore/fullscreen-modal';
-import Ellipsis from '@semcore/ellipsis';
-import Tooltip, { Hint, DescriptionTooltip } from '@semcore/tooltip';
-import { Flex } from '@semcore/flex-box';
+import  { DescriptionTooltip } from '@semcore/tooltip';
 import { Text } from '@semcore/typography';
 import Link from '@semcore/link';
 import Button, { ButtonLink } from '@semcore/button';
