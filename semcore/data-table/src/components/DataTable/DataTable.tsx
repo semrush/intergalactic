@@ -310,6 +310,13 @@ class DataTableRoot<D extends DataTableData> extends Component<
         }
       }
       this.changeFocusCell(rowI, colI, direction);
+    } else if (
+      row === null &&
+      this.focusedCell[0] === 0 &&
+      direction === 'down' &&
+      this.asProps.virtualScroll
+    ) {
+      this.changeFocusCell(rowIndex + 1, colIndex, direction);
     }
   };
 
