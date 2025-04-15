@@ -224,7 +224,6 @@ test.describe('Fullscreen modal', () => {
       await page.keyboard.press('Escape');
       await expect(modal).not.toBeVisible();
       await expect(trigger).toBeFocused();
-
     });
 
     test('Verify keyboard navigation footer and 2 zones in body', async ({ page, browserName }) => {
@@ -233,7 +232,7 @@ test.describe('Fullscreen modal', () => {
       const htmlContent = await e2eStandToHtml(standPath, 'en');
 
       await page.setContent(htmlContent);
-      if (browserName==='webkit') return;
+      if (browserName === 'webkit') return;
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
       await page.waitForTimeout(150);
@@ -263,11 +262,11 @@ test.describe('Fullscreen modal', () => {
   });
 
   test.describe('Header, body and footer variations', () => {
-    test('Verify header is fixed when scrolling body', async ({ page , browserName}) => {
+    test('Verify header is fixed when scrolling body', async ({ page, browserName }) => {
       const standPath =
         'stories/components/fullscreen-modal/docs/examples/example_of_a_dual-zone_modal_window.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
-if (browserName==='webkit') return;
+      if (browserName === 'webkit') return;
       await page.setContent(htmlContent);
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
@@ -309,7 +308,8 @@ if (browserName==='webkit') return;
     });
 
     test('Verify LongTitle withEllipsis and Description ', async ({ page }) => {
-      const standPath = 'stories/components/fullscreen-modal/tests/examples/header/title-description.tsx';
+      const standPath =
+        'stories/components/fullscreen-modal/tests/examples/header/title-description.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
 
       await page.setContent(htmlContent);
@@ -363,5 +363,4 @@ if (browserName==='webkit') return;
       await expect(backButton).toBeFocused();
     });
   });
-
 });
