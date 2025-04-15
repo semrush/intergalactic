@@ -1,8 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import BasicExample from './examples/test';
-
-
+import DisablePortalVisibleExample from './examples/disable-portal-visible';
 import ModalPropsExample from './examples/modal-props';
 
 import CloseTitleDescriptionExample from './examples/header/close-title-description';
@@ -14,11 +12,11 @@ import CloseInHeaderExample from './examples/header/close-in-header';
 
 
 const meta: Meta = {
-  title: 'Components/FullscreenModal/Header/Tests',
+  title: 'Components/FullscreenModal/Tests',
 };
 
-export const Basic: StoryObj = {
-  render: BasicExample,
+export const DisablePortalVisible: StoryObj = {
+  render: DisablePortalVisibleExample,
 };
 
   

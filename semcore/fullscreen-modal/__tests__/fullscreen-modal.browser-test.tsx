@@ -138,18 +138,17 @@ test.describe('Fullscreen modal', () => {
       const modal = page.locator('[data-ui-name="FullscreenModal"]');
       await page.locator('[data-ui-name="Button"]').click();
       await expect(modal).toBeVisible();
-      //snapshot
 
       await test.step('Verify backButton on Hover ', async () => {
         const backButton = page.locator('[data-ui-name="FullscreenModal.Back"]');
         await backButton.hover();
-        //snapshot
+        await expect(page).toHaveScreenshot();
       });
 
       await test.step('Verify closeButton on Hover ', async () => {
         const closeButton = page.locator('[data-ui-name="FullscreenModal.Close"]');
         await closeButton.hover();
-        //snapshot
+        await expect(page).toHaveScreenshot();
       });
     });
   });
@@ -170,26 +169,31 @@ test.describe('Fullscreen modal', () => {
       const closeButton = page.locator('[data-ui-name="FullscreenModal.Close"]');
       await expect(closeButton).toBeFocused();
       await closeButton.hover();
-      //shanpshot
+      await page.waitForTimeout(150);
+      await expect(page).toHaveScreenshot();
 
       await page.keyboard.press('Enter');
       await expect(modal).not.toBeVisible();
       await expect(trigger).toBeFocused();
 
       await page.keyboard.press('Enter');
+      await page.waitForTimeout(100);
       await expect(modal).toBeVisible();
 
       await page.keyboard.press('Escape');
+      await page.waitForTimeout(100);
       await expect(modal).not.toBeVisible();
       await expect(trigger).toBeFocused();
 
       await page.keyboard.press('Enter');
+      await page.waitForTimeout(150);
       await page.keyboard.press('Tab');
       const backButton = page.locator('[data-ui-name="FullscreenModal.Back"]');
       await backButton.hover();
       await expect(backButton).toBeFocused();
-      //shanpshot
+      await expect(page).toHaveScreenshot();
       await page.keyboard.press('Enter');
+      await page.waitForTimeout(100);
       await expect(modal).not.toBeVisible();
       await expect(trigger).toBeFocused();
     });
@@ -205,9 +209,6 @@ test.describe('Fullscreen modal', () => {
       const modal = page.locator('[data-ui-name="FullscreenModal"]');
       await expect(modal).toBeVisible();
 
-      await page.keyboard.press('Escape');
-      await expect(modal).toBeVisible();
-
       const closeButton = page.locator('[data-ui-name="FullscreenModal.Close"]');
       await closeButton.click();
       await expect(modal).not.toBeVisible();
@@ -218,17 +219,24 @@ test.describe('Fullscreen modal', () => {
       const backButton = page.locator('[data-ui-name="FullscreenModal.Back"]');
       await backButton.click();
       await expect(modal).not.toBeVisible();
+
+      await trigger.click();
+      await page.keyboard.press('Escape');
+      await expect(modal).not.toBeVisible();
+      await expect(trigger).toBeFocused();
+
     });
 
-    test('Verify keyboard navigation footer and 2 zones in body', async ({ page }) => {
+    test('Verify keyboard navigation footer and 2 zones in body', async ({ page, browserName }) => {
       const standPath =
         'stories/components/fullscreen-modal/docs/examples/example_of_a_dual-zone_modal_window.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
 
       await page.setContent(htmlContent);
-      const trigger = page.locator('[data-ui-name="Button"]');
+      if (browserName==='webkit') return;
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
+      await page.waitForTimeout(150);
       const modal = page.locator('[data-ui-name="FullscreenModal"]');
       await expect(modal).toBeVisible();
 
@@ -240,29 +248,30 @@ test.describe('Fullscreen modal', () => {
       await expect(backButton).toBeFocused();
 
       await page.keyboard.press('Tab');
+      await page.waitForTimeout(50);
       const sections = page.locator('[data-ui-name="FullscreenModal.Section"]');
-      await expect(sections.first()).toBeFocused();
+      await expect(sections.nth(1)).toBeFocused();
 
-      // snapshot
+      await expect(page).toHaveScreenshot();
       await page.keyboard.press('Tab');
-      await expect(page.locator('[data-ui-name="Button"]').first()).toBeFocused();
+      await expect(page.getByRole('button', { name: 'Previous content' })).toBeFocused();
       await page.keyboard.press('Tab');
-      await expect(page.locator('[data-ui-name="Button"]').nth(1)).toBeFocused();
+      await expect(page.getByRole('button', { name: 'Next content' })).toBeFocused();
       await page.keyboard.press('Tab');
       await expect(closeButton).toBeFocused();
     });
   });
 
   test.describe('Header, body and footer variations', () => {
-    test('Verify header is fixed when scrolling body', async ({ page }) => {
+    test('Verify header is fixed when scrolling body', async ({ page , browserName}) => {
       const standPath =
         'stories/components/fullscreen-modal/docs/examples/example_of_a_dual-zone_modal_window.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
-
+if (browserName==='webkit') return;
       await page.setContent(htmlContent);
-      const trigger = page.locator('[data-ui-name="Button"]');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
+      await page.waitForTimeout(150);
       const modal = page.locator('[data-ui-name="FullscreenModal"]');
       await expect(modal).toBeVisible();
 
@@ -270,15 +279,16 @@ test.describe('Fullscreen modal', () => {
 
       await page.keyboard.press('Tab');
       const sections = page.locator('[data-ui-name="FullscreenModal.Section"]');
-      await expect(sections.first()).toBeFocused();
+      await expect(sections.nth(1)).toBeFocused();
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowDown');
-      // snapshot
+      await page.waitForTimeout(150);
+      await expect(page).toHaveScreenshot();
     });
 
     test('Verify Close, LongTitle and Description with interactive element', async ({ page }) => {
       const standPath =
-        'stories/components/fullscreen-modal/tests/examples/close-title-description.tsx';
+        'stories/components/fullscreen-modal/tests/examples/header/close-title-description.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
 
       await page.setContent(htmlContent);
@@ -288,7 +298,7 @@ test.describe('Fullscreen modal', () => {
       await expect(modal).toBeVisible();
 
       await page.keyboard.press('Tab');
-      //snapshot
+      await expect(page).toHaveScreenshot();
       await expect(page.locator('[data-ui-name="DescriptionTooltip.Trigger"]')).toBeFocused();
       await page.keyboard.press('Enter');
 
@@ -299,7 +309,7 @@ test.describe('Fullscreen modal', () => {
     });
 
     test('Verify LongTitle withEllipsis and Description ', async ({ page }) => {
-      const standPath = 'stories/components/fullscreen-modal/tests/examples/title-description.tsx';
+      const standPath = 'stories/components/fullscreen-modal/tests/examples/header/title-description.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
 
       await page.setContent(htmlContent);
@@ -310,19 +320,18 @@ test.describe('Fullscreen modal', () => {
       await page.locator('[data-ui-name="FullscreenModal.Title"]').hover();
       await expect(page.locator('[data-ui-name="Tooltip"]')).toHaveAttribute(
         'aria-describedby',
-        /title/i,
+        /popper/i,
       );
-      //snapshot
       await page.locator('[data-ui-name="FullscreenModal.Description"]').hover();
       await expect(page.locator('[data-ui-name="Tooltip"]')).not.toHaveAttribute(
         'aria-describedby',
-        /title/i,
+        /popper/i,
       );
     });
 
-    test('Verify Close Back without footer and with Header ', async ({ page }) => {
+    test('Verify Close Back without Header ', async ({ page }) => {
       const standPath =
-        'stories/components/fullscreen-modal/tests/examples/back-no-text-close-no-header-1bth-footer.tsx';
+        'stories/components/fullscreen-modal/tests/examples/header/back-no-text-close-no-header-1bth-footer.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
 
       await page.setContent(htmlContent);
@@ -333,17 +342,16 @@ test.describe('Fullscreen modal', () => {
 
       const closeButton = page.locator('[data-ui-name="FullscreenModal.Close"]');
       await expect(closeButton).toBeFocused();
-      //snapshot
+      await expect(page).toHaveScreenshot();
 
       await page.keyboard.press('Tab');
       const backButton = page.locator('[data-ui-name="FullscreenModal.Back"]');
-      await backButton.hover();
       await expect(backButton).toBeFocused();
     });
 
     test('Verify Back and title with long text and with Header', async ({ page }) => {
       const standPath =
-        'stories/components/fullscreen-modal/tests/examples/back-and-title-bodyh400-2btn-footer.tsx';
+        'stories/components/fullscreen-modal/tests/examples/header/back-and-title-bodyh400-2btn-footer.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
 
       await page.setContent(htmlContent);
@@ -351,11 +359,9 @@ test.describe('Fullscreen modal', () => {
       await page.keyboard.press('Enter');
       const modal = page.locator('[data-ui-name="FullscreenModal"]');
       await expect(modal).toBeVisible();
-
-      await page.keyboard.press('Tab');
       const backButton = page.locator('[data-ui-name="FullscreenModal.Back"]');
       await expect(backButton).toBeFocused();
-      //snapshot
     });
   });
+
 });

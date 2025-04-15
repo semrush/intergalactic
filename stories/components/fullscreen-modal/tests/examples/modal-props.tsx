@@ -9,7 +9,6 @@ const Demo = () => {
     <>
       <Button onClick={() => setVisible(true)}>Open FullscreenModal</Button>
       <FullscreenModal visible={visible} onClose={() => setVisible(false)} closable = {true} duration ={500}  aria-describedby="my-modal-description">
-      {/* ghost = {true} */}
         <FullscreenModal.Back>Go to Tool Name</FullscreenModal.Back>
         <FullscreenModal.Header
           title="Modal Window Title"
