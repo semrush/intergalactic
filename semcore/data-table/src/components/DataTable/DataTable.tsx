@@ -163,6 +163,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
       scrollTop: this.state.scrollTop,
       scrollDirection: this.state.scrollDirection,
       tableContainerRef: this.tableContainerRef,
+      tableRef: this.tableRef,
       virtualScroll,
       hasGroups: this.hasGroups,
       uid,

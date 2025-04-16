@@ -13,4 +13,7 @@ export type DataTableCellProps = {
 
 export type CellPropsInner = {
   use: DTUse;
+
+  virtualScroll: boolean;
+  tableRef: React.RefObject<HTMLDivElement>;
 };

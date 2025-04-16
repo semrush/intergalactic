@@ -118,7 +118,16 @@ class BodyRoot<D extends DataTableData> extends Component<
   }
 
   getCellProps(props: DataTableCellProps) {
-    const { use, renderCell, expandedRows, styles, getI18nText, onExpandRow } = this.asProps;
+    const {
+      use,
+      renderCell,
+      expandedRows,
+      styles,
+      getI18nText,
+      onExpandRow,
+      virtualScroll,
+      tableRef,
+    } = this.asProps;
     const SAccordionToggle = ButtonLink;
 
     let dataKey = props.column.name;
@@ -160,6 +169,8 @@ class BodyRoot<D extends DataTableData> extends Component<
 
     const extraProps: Record<string, any> = {
       use,
+      virtualScroll: Boolean(virtualScroll),
+      tableRef,
       children: props.children ?? defaultRender,
     };
 

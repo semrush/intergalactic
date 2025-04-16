@@ -60,7 +60,7 @@ const Demo = () => {
                             </DescriptionTooltip.Popper>
                         </DescriptionTooltip>
                     </DataTable.Head.Column>
-                    
+
                     <DataTable.Head.Column name='vol' gtcWidth={'300px'}>
                         <Select visible={isVisible} onVisibleChange={setIsVisible} mt={2} mr='auto' options={options} placeholder='Select option' data-test-id='select-header' id='basic-select' tag={LinkTrigger} onKeyDown={(e) => {
                             if ((e.key === 'ArrowDown' || e.key === 'ArrowUp') && !isVisible) {

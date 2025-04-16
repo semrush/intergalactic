@@ -6,12 +6,22 @@ import style from './style.shadow.css';
 import { CellPropsInner, DataTableCellProps } from './Cell.types';
 import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
+import { isFocusInside } from '@semcore/core/lib/utils/focus-lock/isFocusInside';
 
 class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner> {
   static displayName = 'Cell';
   static style = style;
 
+  cellRef = React.createRef<HTMLDivElement>();
+
   lockedCell: [HTMLElement | null, boolean] = [null, false];
+
+  componentWillUnmount() {
+    const { virtualScroll, tableRef } = this.asProps;
+    if (virtualScroll && this.cellRef.current && isFocusInside(this.cellRef.current)) {
+      tableRef.current?.setAttribute('tabIndex', '0');
+    }
+  }
 
   handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.currentTarget === this.lockedCell[0]) {
@@ -92,6 +102,7 @@ class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner>
 
     return sstyled(styles)(
       <SCell
+        ref={this.cellRef}
         render={Flex}
         innerOutline
         tabIndex={-1}
