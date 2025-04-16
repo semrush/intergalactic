@@ -109,7 +109,21 @@ class DataTableRoot<D extends DataTableData> extends Component<
       return acc;
     }, 0);
 
-    return (totalRows ?? data.length) + expandedRowsCount;
+    if (totalRows !== undefined) {
+      return totalRows + expandedRowsCount;
+    }
+
+    const rows = data.reduce((acc, item) => {
+      acc = acc + 1;
+
+      if (item[ROW_GROUP]) {
+        acc = acc + item[ROW_GROUP].length;
+      }
+
+      return acc;
+    }, 0);
+
+    return rows + expandedRowsCount;
   }
 
   get gridSettings() {
