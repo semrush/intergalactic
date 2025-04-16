@@ -1881,13 +1881,13 @@ test.describe('DataTable', () => {
         return window.getComputedStyle(el).marginRight;
       });
 
-      expect(marginRight1).toBe('12px');;
+      expect(marginRight1).toBe('12px');
       await firstArrow.click();
       const marginRight = await firstArrow.evaluate((el) => {
         return window.getComputedStyle(el).marginRight;
       });
 
-      expect(marginRight).toBe('12px');;
+      expect(marginRight).toBe('12px');
       const plot = await page.locator('[data-ui-name="Plot"]');
       await expect(plot).toHaveCount(1);
 
@@ -1951,7 +1951,6 @@ test.describe('DataTable', () => {
       await expect(cells.nth(1)).not.toHaveAttribute('aria-expanded', 'false');
       await firstArrow.click();
       await expect(cells.first()).toHaveAttribute('aria-expanded', 'true');
-
     });
 
     test('Verify accordion table in table styles', async ({ page }) => {
@@ -1964,14 +1963,13 @@ test.describe('DataTable', () => {
         return window.getComputedStyle(el).marginRight;
       });
 
-      expect(marginRight1).toBe('12px');;
+      expect(marginRight1).toBe('12px');
       await firstArrow.click();
       const marginRight = await firstArrow.evaluate((el) => {
         return window.getComputedStyle(el).marginRight;
       });
 
-      expect(marginRight).toBe('12px');;
-
+      expect(marginRight).toBe('12px');
 
       const row2 = page.locator('[data-ui-name="Body.Row"][aria-rowindex="2"]');
       const cells2 = row2.locator('div');
@@ -1997,16 +1995,11 @@ test.describe('DataTable', () => {
         });
       }
 
-
-
       const peddingLeft = await cells3.first().evaluate((el) => {
         return window.getComputedStyle(el).paddingLeft;
       });
 
-      expect(peddingLeft).toBe('40px');;
-
-
-
+      expect(peddingLeft).toBe('40px');
     });
   });
 });
