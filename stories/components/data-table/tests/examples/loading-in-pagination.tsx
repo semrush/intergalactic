@@ -15,8 +15,8 @@ const Demo = () => {
 
     return (
         <>
-            <DataTable data={tableData} loading aria-label={'Pagination'}>
-                <DataTable.Head>
+            <DataTable data={tableData} loading aria-label={'Pagination'} h={'auto'}>
+                <DataTable.Head sticky>
                     <DataTable.Head.Column name='keyword' children='Keyword' justifyContent='left' />
                     <DataTable.Head.Column name='kd' children='KD,%' justifyContent='right' gtcWidth={'minmax(fit-content, 68px)'} />
                     <DataTable.Head.Column name='cpc' children='CPC' gtcWidth={'minmax(fit-content, 60px)'} />

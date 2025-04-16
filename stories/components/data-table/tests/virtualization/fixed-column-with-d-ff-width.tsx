@@ -1,5 +1,6 @@
 import React from 'react';
-import { DataTable, ROW_GROUP } from '@semcore/data-table';
+import { DataTable } from '@semcore/data-table';
+
 
 const keyword = ['ebay buy', 'www.ebay.com', 'ebay buy']
 const kd = ['77.8', '10', '11.2', '-', '75.89'];
@@ -22,15 +23,16 @@ const data = Array(10000)
 
 const Demo = () => {
   return (
-    <DataTable data={data} totalRows={10000} aria-label={'Virtual scroll'} h={400} virtualScroll={{rowHeight: 45}}>
+    <DataTable data={data} totalRows={10000} aria-label={'Virtual scroll'} h={400} w={400} virtualScroll>
       <DataTable.Head sticky>
-        <DataTable.Head.Column name='id' children='ID' />
-        <DataTable.Head.Column name='keyword' children='Keyword' gtcWidth={'300px'} />
-        <DataTable.Head.Group title={'Organic Sessions'}>
-          <DataTable.Head.Column name='kd' children='KD,%' />
-          <DataTable.Head.Column name='cpc' children='CPC' />
-          <DataTable.Head.Column name='vol' children='Vol.' />
-        </DataTable.Head.Group>
+        <DataTable.Head.Column name='id' children='ID' fixed='left' />
+
+                    <DataTable.Head.Column name='keyword' children='Keyword' gtcWidth={'150px'}  />
+                    <DataTable.Head.Column name='kd' children='KD,%' gtcWidth={'200px'} />
+                    <DataTable.Head.Column name='cpc' children='CPC' gtcWidth={'300px'} />
+                    <DataTable.Head.Column name='cpc' children='CPC' gtcWidth={'100px'} />
+                    <DataTable.Head.Column name='vol' children='Vol.' gtcWidth={'80px'} fixed='right' />
+
       </DataTable.Head>
       <DataTable.Body />
     </DataTable>
@@ -38,3 +40,4 @@ const Demo = () => {
 };
 
 export default Demo;
+
