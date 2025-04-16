@@ -52,9 +52,11 @@ class TooltipRoot extends Component {
     super(props, context);
 
     if (canUseDOM()) {
-      if (tooltipContainer.current === null || (
-        tooltipContainer.current instanceof HTMLElement && !document.body.contains(tooltipContainer.current)
-      )) {
+      if (
+        tooltipContainer.current === null ||
+        (tooltipContainer.current instanceof HTMLElement &&
+          !document.body.contains(tooltipContainer.current))
+      ) {
         tooltipContainer.current = setTimeout(() => {
           const container = document.createElement('div');
           container.setAttribute('role', 'status');
