@@ -1870,5 +1870,136 @@ test.describe('DataTable', () => {
       //   await page.keyboard.press('Shift+Tab');
       //   await expect(secondArrow).toBeFocused();
     });
+
+    test('Verify accordion with chart styles', async ({ page }) => {
+      const standPath = 'stories/components/data-table/docs/examples/accordion-inside-table.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+      await page.setContent(htmlContent);
+      const firstArrow = await page.locator('[data-ui-name="ButtonLink"]').first();
+      const marginRight1 = await firstArrow.evaluate((el) => {
+        return window.getComputedStyle(el).marginRight;
+      });
+
+      expect(marginRight1).toBe('12px');
+      await firstArrow.click();
+      const marginRight = await firstArrow.evaluate((el) => {
+        return window.getComputedStyle(el).marginRight;
+      });
+
+      expect(marginRight).toBe('12px');
+      const plot = await page.locator('[data-ui-name="Plot"]');
+      await expect(plot).toHaveCount(1);
+
+      const row3 = page.locator('[data-ui-name="Body.Row"][aria-rowindex="3"]');
+      const cells = row3.locator('div');
+      // Получаем количество ячеек
+      const cellCount = await cells.count();
+
+      for (let i = 0; i < cellCount; i++) {
+        const cell = cells.nth(i);
+        await checkStyles(cell, {
+          'background-color': 'rgb(230, 231, 237)',
+        });
+      }
+
+      const row4 = page.locator('[data-ui-name="Collapse"][aria-rowindex="4"]');
+      await checkStyles(row4.locator('div').first(), {
+        'background-color': 'rgb(244, 245, 249)',
+      });
+
+      const secondArrow = await page.locator('[data-ui-name="ButtonLink"]').nth(1);
+      await secondArrow.click();
+      await expect(plot).toHaveCount(2);
+      await expect(page).toHaveScreenshot();
+      const row5 = page.locator('[data-ui-name="Body.Row"][aria-rowindex="5"]');
+      const cells5 = row5.locator('div');
+      // Получаем количество ячеек
+      const cellCount5 = await cells5.count();
+
+      for (let i = 0; i < cellCount - 1; i++) {
+        const cell = cells5.nth(i);
+        await checkStyles(cell, {
+          'background-color': 'rgb(240, 240, 244)',
+        });
+      }
+
+      await checkStyles(cells5.nth(3), {
+        'background-color': 'rgb(230, 231, 237)',
+      });
+
+      await firstArrow.click();
+      for (let i = 0; i < cellCount; i++) {
+        const cell = cells.nth(i);
+        await checkStyles(cell, {
+          'background-color': 'rgb(240, 240, 244)',
+        });
+      }
+    });
+
+    test('Verify accordion attributes', async ({ page }) => {
+      const standPath = 'stories/components/data-table/docs/examples/accordion-inside-table.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+      await page.setContent(htmlContent);
+      const firstArrow = await page.locator('[data-ui-name="ButtonLink"]').first();
+      await expect(firstArrow).toHaveAttribute('aria-label', 'Show details');
+      const row3 = page.locator('[data-ui-name="Body.Row"][aria-rowindex="3"]');
+      const cells = row3.locator('div');
+
+      await expect(cells.first()).toHaveAttribute('aria-expanded', 'false');
+      await expect(cells.nth(1)).not.toHaveAttribute('aria-expanded', 'false');
+      await firstArrow.click();
+      await expect(cells.first()).toHaveAttribute('aria-expanded', 'true');
+    });
+
+    test('Verify accordion table in table styles', async ({ page }) => {
+      const standPath = 'stories/components/data-table/docs/examples/table-in-table.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+      await page.setContent(htmlContent);
+      const firstArrow = await page.locator('[data-ui-name="ButtonLink"]').first();
+      const marginRight1 = await firstArrow.evaluate((el) => {
+        return window.getComputedStyle(el).marginRight;
+      });
+
+      expect(marginRight1).toBe('12px');
+      await firstArrow.click();
+      const marginRight = await firstArrow.evaluate((el) => {
+        return window.getComputedStyle(el).marginRight;
+      });
+
+      expect(marginRight).toBe('12px');
+
+      const row2 = page.locator('[data-ui-name="Body.Row"][aria-rowindex="2"]');
+      const cells2 = row2.locator('div');
+
+      const cellCount = await cells2.count();
+
+      for (let i = 0; i < cellCount; i++) {
+        const cell = cells2.nth(i);
+        await checkStyles(cell, {
+          'background-color': 'rgb(230, 231, 237)',
+        });
+      }
+
+      const row3 = page.locator('[data-ui-name="Row"][aria-rowindex="3"]');
+      const cells3 = row3.locator('div');
+
+      const cellCount3 = await cells3.count();
+
+      for (let i = 0; i < cellCount; i++) {
+        const cell = cells3.nth(i);
+        await checkStyles(cell, {
+          'background-color': 'rgb(244, 245, 249)',
+        });
+      }
+
+      const peddingLeft = await cells3.first().evaluate((el) => {
+        return window.getComputedStyle(el).paddingLeft;
+      });
+
+      expect(peddingLeft).toBe('40px');
+    });
   });
 });

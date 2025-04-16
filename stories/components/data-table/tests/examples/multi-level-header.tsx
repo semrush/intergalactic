@@ -8,7 +8,7 @@ import AmazonM from '@semcore/icon/color/Amazon/m';
 const Demo = () => {
 
   return (
-    <DataTable data={data} aria-label={'Borders'} defaultGridTemplateColumnWidth={'1fr'}  >
+    <DataTable data={data} aria-label={'Borders'} defaultGridTemplateColumnWidth={'1fr'} h={'100%'}>
       <DataTable.Head>
         <DataTable.Head.Group borders={'left'} title={'Borders left'}>
           <DataTable.Head.Column name='kd' gtcWidth={'100px'}>
