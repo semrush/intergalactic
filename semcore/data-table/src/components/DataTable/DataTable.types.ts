@@ -3,7 +3,8 @@ import { BoxProps } from '@semcore/base-components';
 import { ACCORDION, ROW_GROUP } from './DataTable';
 import { DataTableColumnProps } from '../Head/Column.types';
 import { ReactElement } from 'react';
-import {CellRenderProps} from '../Body/Body.types';
+import { CellRenderProps } from '../Body/Body.types';
+import Tooltip from '@semcore/tooltip';
 
 /**
  * Datatable must have an accessible name (aria-table-name).
@@ -101,7 +102,13 @@ export type DataTableProps<D extends DataTableData> = DataTableAriaProps &
     renderCell?: (props: CellRenderProps) => React.ReactNode | Record<string, any>;
   };
 
-export type ColumnItemConfig = DataTableColumnProps;
+export type ColumnItemConfig = Intergalactic.InternalTypings.ComponentProps<
+  'div' | typeof Tooltip,
+  'div',
+  DataTableColumnProps,
+  {},
+  []
+>;
 
 export type ColumnGroupConfig = {
   borders?: 'both' | 'left' | 'right';

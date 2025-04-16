@@ -11,6 +11,7 @@ import type { DataTableData, SortDirection } from '../DataTable/DataTable.types'
 import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import { isFocusInside } from '@semcore/core/lib/utils/focus-lock/isFocusInside';
+import Tooltip from '@semcore/tooltip';
 
 const SORTING_ICON = {
   desc: SortDesc,
@@ -286,6 +287,8 @@ export class Column<D extends DataTableData> extends Component<
         aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
         aria-sort={ariaSortValue}
         onClick={this.handleSortClick}
+        tag={Tooltip}
+        title={'some text for tooltip'}
       >
         <Children />
 

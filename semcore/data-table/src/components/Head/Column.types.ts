@@ -5,6 +5,7 @@ import {
   DTUse,
 } from '../DataTable/DataTable.types';
 import { Property } from 'csstype';
+import Tooltip from '@semcore/tooltip';
 
 export type CommonColumnType = {
   /**
@@ -75,10 +76,6 @@ export type DataTableColumnProps = CommonColumnType & {
    * Flag for change column size if sorted by it
    */
   changeSortSize?: boolean;
-
-  children?: React.ReactNode;
-
-  ref?: React.Ref<HTMLElement>;
 };
 
 export type ColumnPropsInner<D extends DataTableData> = {

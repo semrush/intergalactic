@@ -8,7 +8,7 @@ const Demo = () => {
                  {name: 'keyword', children: 'Keyword'},
                  {name: 'kd', children: 'KD,%'},
                  {name: 'cpc', children: 'CPC'},
-                 {name: 'url', children: 'URL'},
+                 {name: 'vol', children: 'Vol.'},
                ]}
     />
   );

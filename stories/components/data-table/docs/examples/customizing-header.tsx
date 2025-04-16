@@ -6,63 +6,43 @@ import DropdownMenu from '@semcore/dropdown-menu';
 import { LinkTrigger } from '@semcore/base-trigger';
 
 const Demo = () => {
-  const [isVisible, setIsVisible] = React.useState(false);
-
   return (
-    <DataTable data={data} aria-label={'Customizing header'}>
-      <DataTable.Head>
-        <DataTable.Head.Column
-          name='keyword'
-          tag={Tooltip}
-          title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on."
-          tabIndex={0}
-        >
-          <Text noWrap>
-            Keyword <Text color='text-secondary'>(1 - 100)</Text>
-          </Text>
-        </DataTable.Head.Column>
-        <DataTable.Head.Column name='kd'>
-          <DropdownMenu visible={isVisible} onVisibleChange={setIsVisible}>
-            <DropdownMenu.Trigger
-              tag={LinkTrigger}
-              color='text-primary'
-              style={{ fontSize: '12px' }}
-              onKeyDown={(e) => {
-                if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
-                  return false;
-                }
-                if ((e.key === 'ArrowLeft' || e.key === 'ArrowRight') && isVisible) {
-                  e.stopPropagation();
-                }
-              }}
-            >
-              KD,%
-            </DropdownMenu.Trigger>
-            <DropdownMenu.Menu>
-              <DropdownMenu.Item>Options 1</DropdownMenu.Item>
-              <DropdownMenu.Item>Options 2</DropdownMenu.Item>
-            </DropdownMenu.Menu>
-          </DropdownMenu>
-        </DataTable.Head.Column>
-        <DataTable.Head.Column
-          name='cpc'
-          tag={Tooltip}
-          title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on."
-          tabIndex={0}
-        >
-          CPC
-        </DataTable.Head.Column>
-        <DataTable.Head.Column
-          name='vol'
-          tag={Tooltip}
-          title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on."
-          tabIndex={0}
-        >
-          Vol.
-        </DataTable.Head.Column>
-      </DataTable.Head>
-      <DataTable.Body />
-    </DataTable>
+    <DataTable data={data} aria-label={'Customizing header'}
+      columns={[
+        {name: 'keyword', tag: Tooltip, title: "Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on.", tabIndex: 0, children: (<Text noWrap>Keyword <Text color='text-secondary'>(1 - 100)</Text></Text>)},
+          {
+              name: 'kd', children: () => {
+                  const [isVisible, setIsVisible] = React.useState(false);
+
+                  return (
+                      <DropdownMenu visible={isVisible} onVisibleChange={setIsVisible}>
+                          <DropdownMenu.Trigger
+                              tag={LinkTrigger}
+                              color='text-primary'
+                              style={{fontSize: '12px'}}
+                              onKeyDown={(e) => {
+                                  if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+                                      return false;
+                                  }
+                                  if ((e.key === 'ArrowLeft' || e.key === 'ArrowRight') && isVisible) {
+                                      e.stopPropagation();
+                                  }
+                              }}
+                          >
+                              KD,%
+                          </DropdownMenu.Trigger>
+                          <DropdownMenu.Menu>
+                              <DropdownMenu.Item>Options 1</DropdownMenu.Item>
+                              <DropdownMenu.Item>Options 2</DropdownMenu.Item>
+                          </DropdownMenu.Menu>
+                      </DropdownMenu>
+                  );
+              }
+          },
+        {name: 'cpc', tag: Tooltip, title: "Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on.", tabIndex: 0, children: 'CPC'},
+        {name: 'vol', tag: Tooltip, title: "Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on.", tabIndex: 0, children: 'Vol.'}
+      ]}
+    />
   );
 };
 

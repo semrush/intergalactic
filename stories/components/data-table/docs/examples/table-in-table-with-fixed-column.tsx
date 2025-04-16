@@ -8,7 +8,7 @@ const Demo = () => {
                    {name: 'keyword', children: 'Keyword', gtcWidth: '400px', fixed: 'left'},
                    {name: 'kd', children: 'KD,%', gtcWidth: '300px'},
                    {name: 'cpc', children: 'CPC', gtcWidth: '300px'},
-                   {name: 'url', children: 'URL', gtcWidth: '300px'},
+                   {name: 'vol', children: 'Vol.', gtcWidth: '300px'},
                  ]}
       />
   );

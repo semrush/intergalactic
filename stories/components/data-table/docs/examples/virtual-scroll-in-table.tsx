@@ -37,7 +37,7 @@ const Demo = () => {
                 columns: [
                     {name: 'kd', children: 'KD,%'},
                     {name: 'cpc', children: 'CPC'},
-                    {name: 'url', children: 'URL'},
+                    {name: 'vol', children: 'Vol.'},
                 ]}
         ]}
     />

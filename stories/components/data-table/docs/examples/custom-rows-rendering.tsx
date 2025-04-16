@@ -12,9 +12,9 @@ const Demo = () => {
     <DataTable data={data} aria-label={'Custom rows rendering'} h={'100%'}
                columns={[
                    {name: 'keyword', children: 'Keyword'},
-                   {name: 'kd', children: 'KD,%'},
+                   {name: 'tags', children: 'Tags'},
                    {name: 'cpc', children: 'CPC'},
-                   {name: 'url', children: 'URL'},
+                   {name: 'vol', children: 'Vol.'},
                ]}
           renderCell={(props) => {
               if (props.dataKey === 'tags') {

@@ -8,7 +8,7 @@ const Demo = () => {
                  {name: 'keyword', children: 'Keyword', gtcWidth: 'minmax(0, 300px)'},
                  {name: 'kd', children: 'Difficulty Difficulty', gtcWidth: '85px'},
                  {name: 'cpc', children: 'CPC', gtcWidth: 'max-content'},
-                 {name: 'url', children: 'URL', gtcWidth: 'minmax(0, 300px)'},
+                 {name: 'vol', children: 'Vol.', gtcWidth: 'minmax(0, 300px)'},
                  {name: 'md', children: 'Marketing SEO', gtcWidth: '90px'},
                ]}
       />

@@ -170,8 +170,17 @@ class DataTableRoot<D extends DataTableData> extends Component<
   }
 
   getBodyProps(): BodyPropsInner<D> {
-    const { use, compact, loading, getI18nText, expandedRows, virtualScroll, data, uid, renderCell } =
-      this.asProps;
+    const {
+      use,
+      compact,
+      loading,
+      getI18nText,
+      expandedRows,
+      virtualScroll,
+      data,
+      uid,
+      renderCell,
+    } = this.asProps;
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
 
     return {
@@ -734,10 +743,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
         borders: columnElement.borders ?? leftBordersFromParent ?? rightBordersFromParent,
         parent,
 
-        flexWrap: childIsColumn(columnElement) ? columnElement.flexWrap : undefined,
-        alignItems: childIsColumn(columnElement) ? columnElement.alignItems : undefined,
-        alignContent: childIsColumn(columnElement) ? columnElement.alignContent : undefined,
-        justifyContent: childIsColumn(columnElement) ? columnElement.justifyContent : undefined,
+        ...columnElement,
       };
 
       return column;

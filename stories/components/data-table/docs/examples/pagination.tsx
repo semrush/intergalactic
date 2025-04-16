@@ -20,7 +20,7 @@ const Demo = () => {
                    {name: 'keyword', children: 'Keyword', justifyContent: 'left'},
                    {name: 'kd', children: 'KD,%', justifyContent: 'right', gtcWidth: 'minmax(fit-content, 68px)'},
                    {name: 'cpc', children: 'CPC', gtcWidth: 'minmax(fit-content, 60px)'},
-                   {name: 'url', children: 'URL', gtcWidth: 'minmax(fit-content, 120px)', justifyContent: 'left'},
+                   {name: 'vol', children: 'Vol.', gtcWidth: 'minmax(fit-content, 120px)', justifyContent: 'left'},
                  ]}
           renderCell={(props) => {
             if (props.columnName === 'keyword') {

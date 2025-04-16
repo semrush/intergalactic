@@ -13,7 +13,7 @@ const Demo = () => {
                    {name: 'keyword', children: 'Keyword'},
                    {name: 'kd', children: 'KD,%'},
                    {name: 'cpc', children: 'CPC'},
-                   {name: 'url', children: 'URL'},
+                   {name: 'vol', children: 'Vol.'},
                  ]}
       />
       <h3>with Scroll.Bar in Header</h3>
@@ -23,7 +23,7 @@ const Demo = () => {
                    {name: 'keyword', children: 'Keyword', gtcWidth: '340px'},
                    {name: 'kd', children: 'KD,%', gtcWidth: '340px'},
                    {name: 'cpc', children: 'CPC', gtcWidth: '340px'},
-                   {name: 'url', children: 'URL', gtcWidth: '340px'},
+                   {name: 'vol', children: 'Vol.', gtcWidth: '340px'},
                  ]}
       />
     </>

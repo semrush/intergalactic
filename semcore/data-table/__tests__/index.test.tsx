@@ -54,11 +54,10 @@ describe('DataTable.Column', () => {
   test.concurrent('Should support ref', () => {
     const spy = vi.fn();
     render(
-      <DataTable data={[]} aria-label={'table label'}
-        columns={[
-          {name: 'keyword', ref: spy},
-          {name: 'kd'}
-        ]}
+      <DataTable
+        data={[]}
+        aria-label={'table label'}
+        columns={[{ name: 'keyword', ref: spy }, { name: 'kd' }]}
       />,
     );
     expect(spy).toBeCalled();

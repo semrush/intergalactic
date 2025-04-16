@@ -34,7 +34,7 @@ const Demo = () => {
           {name: 'keyword', children: 'Keyword', justifyContent: 'left', sortable: true},
           {name: 'kd', children: 'KD,%', justifyContent: 'right', gtcWidth: 'minmax(0, 68px)', sortable: true},
           {name: 'cpc', children: 'CPC', gtcWidth: 'minmax(0, 60px)', sortable: true, changeSortSize: true},
-          {name: 'url', children: 'URL', gtcWidth: 'minmax(0, 120px)', justifyContent: 'left', sortable: true},
+          {name: 'vol', children: 'Vol.', gtcWidth: 'minmax(0, 120px)', justifyContent: 'left', sortable: true},
       ]}
           renderCell={(props) => {
             if (props.columnName === 'keyword') {
