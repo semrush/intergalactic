@@ -28,7 +28,7 @@ const Demo = () => {
   );
 
   return (
-    <DataTable data={sortedData} aria-label={'Borders'} defaultGridTemplateColumnWidth={'1fr'} sort={sort} onSortChange={setSort} >
+    <DataTable data={sortedData} aria-label={'Borders'} defaultGridTemplateColumnWidth={'1fr'} sort={sort} onSortChange={setSort} h={'100%'}>
       <DataTable.Head>
         <DataTable.Head.Group borders={'left'} title={'Organic Sessions'}>
           <DataTable.Head.Column name='kd' gtcWidth={'100px'} sortable>

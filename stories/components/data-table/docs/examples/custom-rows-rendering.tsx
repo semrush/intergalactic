@@ -9,7 +9,7 @@ const cache = new CellMeasurerCache({
 
 const Demo = () => {
   return (
-    <DataTable data={data} aria-label={'Custom rows rendering'}>
+    <DataTable data={data} aria-label={'Custom rows rendering'} h={'100%'}>
       <DataTable.Head>
         <DataTable.Head.Column name='keyword' children='Keyword' />
         <DataTable.Head.Column name='tags' children='Tags' />
@@ -22,9 +22,13 @@ const Demo = () => {
                   const tags = props.row[props.dataKey];
 
                   if (Array.isArray(tags)) {
-                      return tags.map((_, i) => {
-                          return <div key={i}>tag {i + 1}</div>;
-                      });
+                      return (
+                        <div>
+                          {tags.map((_, i) => {
+                            return <div key={i}>tag {i + 1}</div>;
+                          })}
+                        </div>
+                      );
                   }
 
                   return null;

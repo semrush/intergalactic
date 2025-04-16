@@ -20,7 +20,7 @@ const Demo = () => {
     const [isVisible, setIsVisible] = React.useState(false);
 
     return (
-        <DataTable data={data} aria-label={'Base table example'} defaultGridTemplateColumnWidth={'auto'}>
+        <DataTable data={data} aria-label={'Base table example'} defaultGridTemplateColumnWidth={'auto'} h={'100%'}>
             <DataTable.Head sticky>
                 <DataTable.Head.Column name='keyword' children='keyword' gtcWidth={'300px'}/>
                 <DataTable.Head.Group title={'Group'} fixed={'right'} >
