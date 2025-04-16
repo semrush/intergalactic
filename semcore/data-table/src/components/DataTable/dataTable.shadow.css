@@ -12,3 +12,7 @@ SDataTable[gridTemplateColumns] {
 SDataTable[gridTemplateAreas] {
   grid-template-areas: var(--gridTemplateAreas);
 }
+
+SDataTable[gridTemplateRows] {
+  grid-template-rows: var(--gridTemplateRows);
+}

@@ -34,11 +34,13 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
       styles,
       rowIndex,
       ariaRowIndex,
+      gridRowIndex,
       expanded,
       accordionDataGridArea,
       expandedRows,
       onExpandRow,
       'aria-level': ariaLevel = 1,
+      rowMarginTop,
     } = this.asProps;
 
     let accordion = row[ACCORDION];
@@ -64,7 +66,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
               return null;
             }
 
-            const style: any = {};
+            const style: React.CSSProperties = {};
 
             if (column.fixed) {
               const [name, value] = getFixedStyle(column, columns);
@@ -72,6 +74,9 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
               if (name !== undefined && value !== undefined) {
                 style[name] = value;
               }
+            }
+            if (rowMarginTop) {
+              style.marginTop = rowMarginTop;
             }
 
             return (
@@ -85,6 +90,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
                 data-aria-level={index === 0 ? ariaLevel : undefined}
                 row={row}
                 rowIndex={rowIndex}
+                gridRowIndex={gridRowIndex}
                 columnIndex={index}
                 style={style}
                 column={column}
@@ -130,14 +136,15 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
                 key={i}
                 row={subrow}
                 columns={columns}
-                // visible={expanded}
                 rows={row[ACCORDION]}
                 rowIndex={rowIndex}
                 aria-posinset={i + 1}
                 aria-level={ariaLevel + 1}
                 ariaRowIndex={ariaRowIndex + 1 + i}
+                gridRowIndex={gridRowIndex + 1 + i}
                 expanded={expandedRows?.includes(rowIndex + i)}
                 onExpandRow={onExpandRow}
+                theme={'muted'}
               />
             );
           })}

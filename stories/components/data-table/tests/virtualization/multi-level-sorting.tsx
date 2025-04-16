@@ -1,59 +1,73 @@
 import React from 'react';
-import { DataTable } from '@semcore/data-table';
+import { DataTable, DataTableSort } from '@semcore/data-table';
 import { Hint } from '@semcore/tooltip';
 import { Text } from '@semcore/typography';
 import Ellipsis from '@semcore/ellipsis';
 import AmazonM from '@semcore/icon/color/Amazon/m';
 
+type SortableColumn = Exclude<keyof typeof data[0], 'keyword'>;
+
 const Demo = () => {
+  const [sort, setSort] = React.useState<DataTableSort<keyof typeof data[0]>>(['kd', 'desc']);
+  const sortedData = React.useMemo(
+    () =>
+      [...data].sort((aRow, bRow) => {
+        const [prop, sortDirection] = sort;
+        const a = aRow[prop as SortableColumn];
+        const b = bRow[prop as SortableColumn];
+        if (a === b) return 0;
+        if (sortDirection === 'asc') return a > b ? 1 : -1;
+        else return a > b ? -1 : 1;
+      }),
+    [sort],
+  );
+  const numberFormat = React.useMemo(() => new Intl.NumberFormat('en-US'), []);
+  const currencyFormat = React.useMemo(
+    () => new Intl.NumberFormat('en-US', { currency: 'USD', style: 'currency' }),
+    [],
+  );
 
   return (
-    <DataTable data={data} aria-label={'Borders'} defaultGridTemplateColumnWidth={'1fr'} h={'100%'}>
+    <DataTable data={sortedData} aria-label={'Borders'} defaultGridTemplateColumnWidth={'1fr'} sort={sort} onSortChange={setSort} h ={300} virtualScroll >
       <DataTable.Head>
-        <DataTable.Head.Group borders={'left'} title={'Borders left'}>
-          <DataTable.Head.Column name='kd' gtcWidth={'100px'}>
+        <DataTable.Head.Group borders={'left'} title={'Organic Sessions'}>
+          <DataTable.Head.Column name='kd' gtcWidth={'100px'} sortable>
             <Text>
               Kd Organic Sessions Organic Sessions
               <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
             </Text>
           </DataTable.Head.Column>
-          <DataTable.Head.Column name='cpc' children='CPC' />
+          <DataTable.Head.Column name='cpc' children='CPC' sortable />
           <DataTable.Head.Column name='vol' children='Vol.' />
 
 
         </DataTable.Head.Group >
-        <DataTable.Head.Column name='keyword' children='Keyword' />
-        <DataTable.Head.Group borders={'both'} title={(<Ellipsis>Bprders both - Organic Sessions rganic Sessions rganic Sessions</Ellipsis>)}>
+        <DataTable.Head.Column name='keyword' children='Keyword' sortable />
+        <DataTable.Head.Group borders={'both'} title={'Organic Sessions Organic Sessions Organic SessionsOrganic Sessions Organic Sessions Organic Sessions '}>
 
-          <DataTable.Head.Column name='kd2' gtcWidth={'100px'} >
-            <Ellipsis>
+          <DataTable.Head.Column name='kd2' gtcWidth={'100px'} sortable >
+              <Ellipsis>
               Kd Organic Sessions Organic Sessions
-            </Ellipsis>
+              </Ellipsis>
             <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
 
           </DataTable.Head.Column>
 
+          <DataTable.Head.Column name='cpc2' children='CPC' sortable />
+          <DataTable.Head.Column name='vol' children='Vol.' />
+        </DataTable.Head.Group>
+        <DataTable.Head.Column name='other' children='Other' />
+
+        <DataTable.Head.Group borders={'right'} title={'Organic Sessions'}>
+          <DataTable.Head.Column name='kd'>
+            <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+            <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+          </DataTable.Head.Column>
           <DataTable.Head.Column name='cpc' children='CPC' />
           <DataTable.Head.Column name='vol' children='Vol.' />
         </DataTable.Head.Group>
         <DataTable.Head.Column name='other' children='Other' />
 
-        <DataTable.Head.Group borders={'right'} title={'Borders right'}>
-          <DataTable.Head.Column name='kd'>
-            <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
-            <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
-          </DataTable.Head.Column>
-          <DataTable.Head.Column name='cpc' children='CPC' />
-        </DataTable.Head.Group>
-        <DataTable.Head.Column name='other' children='Other' />
-
-        <DataTable.Head.Group title={'Default borders'}>
-          <DataTable.Head.Column name='kd'>
-            <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
-            <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
-          </DataTable.Head.Column>
-          <DataTable.Head.Column name='cpc' children='CPC' />
-        </DataTable.Head.Group>
 
 
       </DataTable.Head>

@@ -1,6 +1,6 @@
 import { DTRow, DTRows } from './Row.types';
 import { DTColumn } from '../Head/Column.types';
-import { DTUse, DTValue } from '../DataTable/DataTable.types';
+import { DataTableData, DTUse, VirtualScroll } from '../DataTable/DataTable.types';
 
 type CellRenderProps = {
   dataKey: string;
@@ -17,13 +17,10 @@ type CellRenderProps = {
 
 export type DataTableBodyProps = {
   renderCell?: (props: CellRenderProps) => React.ReactNode | Record<string, any>;
-
-  virtualScroll?: boolean;
 };
 
-export type BodyPropsInner = {
-  rows: DTRows;
-  flatRows: DTRow[];
+export type BodyPropsInner<D extends DataTableData> = {
+  data: D;
   columns: DTColumn[];
   use: DTUse;
   compact: boolean;
@@ -35,5 +32,11 @@ export type BodyPropsInner = {
   expandedRows: number[];
   onExpandRow: (rowIndex: number) => void;
   spinnerRef: React.RefObject<HTMLDivElement>;
+  tableContainerRef: React.RefObject<HTMLDivElement>;
+  tableRef: React.RefObject<HTMLDivElement>;
+  scrollTop: number;
+  scrollDirection: 'down' | 'up';
+  virtualScroll?: VirtualScroll;
   hasGroups: boolean;
+  uid: string;
 };

@@ -6,12 +6,22 @@ import style from './style.shadow.css';
 import { CellPropsInner, DataTableCellProps } from './Cell.types';
 import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
+import { isFocusInside } from '@semcore/core/lib/utils/focus-lock/isFocusInside';
 
 class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner> {
   static displayName = 'Cell';
   static style = style;
 
+  cellRef = React.createRef<HTMLDivElement>();
+
   lockedCell: [HTMLElement | null, boolean] = [null, false];
+
+  componentWillUnmount() {
+    const { virtualScroll, tableRef } = this.asProps;
+    if (virtualScroll && this.cellRef.current && isFocusInside(this.cellRef.current)) {
+      tableRef.current?.setAttribute('tabIndex', '0');
+    }
+  }
 
   handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.currentTarget === this.lockedCell[0]) {
@@ -51,7 +61,8 @@ class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner>
     if (e.target === e.currentTarget && e.target.matches(':focus-visible')) {
       e.target.scrollIntoView({
         behavior: 'smooth',
-        block: 'nearest',
+        block: 'center',
+        inline: 'center',
       });
 
       const focusableChildren = Array.from(e.currentTarget.children).flatMap((node) =>
@@ -68,7 +79,7 @@ class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner>
 
   render() {
     const SCell = Root;
-    const { Children, styles, row, column, columnIndex, rowIndex } = this.asProps;
+    const { Children, styles, row, column, columnIndex, gridRowIndex } = this.asProps;
 
     const cell = row[column.name];
     const cellName = cell instanceof MergedColumnsCell ? cell.dataKey : column.name;
@@ -76,7 +87,7 @@ class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner>
     let scope: null | 'rowgroup' | 'colgroup' = null;
     let gridArea: string | undefined = undefined;
 
-    const fromRow = rowIndex + 2;
+    const fromRow = gridRowIndex;
     const fromCol = columnIndex + 1;
 
     if (cell instanceof MergedColumnsCell) {
@@ -85,10 +96,13 @@ class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner>
     } else if (cell instanceof MergedRowsCell) {
       gridArea = `${cell.fromRow} / ${fromCol} / ${cell.toRow} / ${fromCol + 1}`;
       scope = 'rowgroup';
+    } else {
+      gridArea = `${fromRow} / ${fromCol} / ${fromRow + 1} / ${fromCol + 1}`;
     }
 
     return sstyled(styles)(
       <SCell
+        ref={this.cellRef}
         render={Flex}
         innerOutline
         tabIndex={-1}

@@ -5,7 +5,7 @@ import { Plot, Line, XAxis, YAxis, ResponsiveContainer, minMax } from '@semcore/
 
 const Demo = () => {
   return (
-      <DataTable data={data} aria-label={'Accordion inside table'} h={'100%'}>
+      <DataTable data={data} aria-label={'Accordion inside table'} h={400} virtualScroll>
         <DataTable.Head>
           <DataTable.Head.Column name='keyword' children='Keyword' gtcWidth={'minmax(60%, 80%)'} />
           <DataTable.Head.Group borders={'both'} title={'Organic Sessions'}>
@@ -75,6 +75,67 @@ const data: DataTableData = [
     },
   },
   {
+    keyword: 'www.ebay.com',
+    kd: '10',
+    cpc: '$0.65',
+    vol: '47,354,640',
+    [ACCORDION]: (<ChartExample/>),
+  },
+  {
+    keyword: 'ebay buy',
+    kd: '-',
+    cpc: '$0',
+    vol: 'n/a',
+    [ACCORDION]: (<ChartExample/>),
+  },
+  {
+    keyword: 'ebay buy',
+    kd: '75.89',
+    cpc: '$0',
+    vol: '21,644,290',
+    [ACCORDION]: (<ChartExample/>),
+  },
+  {
+    keyword: 'www.ebay.com',
+    kd: '10',
+    cpc: '$0.65',
+    vol: '47,354,640',
+    [ACCORDION]: (<ChartExample/>),
+  },
+  {
+    keyword: 'ebay buy',
+    kd: '-',
+    cpc: '$0',
+    vol: 'n/a',
+    [ACCORDION]: (<ChartExample/>),
+  },
+  {
+    keyword: 'ebay buy',
+    kd: '75.89',
+    cpc: '$0',
+    vol: '21,644,290',
+    [ACCORDION]: (<ChartExample/>),
+  },{
+    keyword: 'www.ebay.com',
+    kd: '10',
+    cpc: '$0.65',
+    vol: '47,354,640',
+    [ACCORDION]: (<ChartExample/>),
+  },
+  {
+    keyword: 'ebay buy',
+    kd: '-',
+    cpc: '$0',
+    vol: 'n/a',
+    [ACCORDION]: (<ChartExample/>),
+  },
+  {
+    keyword: 'ebay buy',
+    kd: '75.89',
+    cpc: '$0',
+    vol: '21,644,290',
+    [ACCORDION]: (<ChartExample/>),
+  },{
     keyword: 'www.ebay.com',
     kd: '10',
     cpc: '$0.65',

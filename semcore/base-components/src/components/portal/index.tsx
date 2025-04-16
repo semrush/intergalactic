@@ -1,4 +1,4 @@
-import Portal, { PortalProvider } from './Portal';
+import Portal, { PortalProvider, PortalContext } from './Portal';
 import type { PortalProps } from './Portal';
 
-export { Portal, PortalProvider, PortalProps };
+export { Portal, PortalProvider, PortalContext, PortalProps };

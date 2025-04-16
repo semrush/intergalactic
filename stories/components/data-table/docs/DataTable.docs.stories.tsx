@@ -30,6 +30,7 @@ import SortingChangingSizeExample from './examples/sorting-changing-size';
 import TableInTableExample from './examples/table-in-table';
 import TableInTableWithFixedColumnExample from './examples/table-in-table-with-fixed-column';
 import VirtualScrollInTableExample from './examples/virtual-scroll-in-table';
+import VirtualScrollInTableDifferentHeightExample from './examples/virtual-scroll-in-table-different-height';
 
 const meta: Meta<typeof DataTable> = {
   title: 'Components/DataTable/Documentation',
@@ -149,4 +150,8 @@ export const TableInTableWithFixedColumn: Story = {
 
 export const VirtualScrollInTable: Story = {
   render: VirtualScrollInTableExample,
+};
+
+export const VirtualScrollInTableDifferentHeight: Story = {
+  render: VirtualScrollInTableDifferentHeightExample,
 };

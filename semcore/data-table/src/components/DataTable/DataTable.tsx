@@ -8,7 +8,6 @@ import {
   RowIndex,
   DataTableData,
   DataTableType,
-  DataRowItem,
 } from './DataTable.types';
 import { Head } from '../Head/Head';
 import { Body } from '../Body/Body';
@@ -26,16 +25,22 @@ import { BodyPropsInner } from '../Body/Body.types';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import { MergedColumnsCell, MergedRowsCell } from '../Body/MergedCells';
 import { forkRef } from '@semcore/core/lib/utils/ref';
 import scrollStyles from '../../style/scroll-shadows.shadow.css';
 import { DataTableGroupProps } from '../Head/Group.type';
 import { hasParent } from '@semcore/core/lib/utils/hasParent';
+import trottle from '@semcore/core/lib/utils/rafTrottle';
 
 export const ACCORDION = Symbol('accordion');
 export const ROW_GROUP = Symbol('ROW_GROUP');
+export const UNIQ_ROW_KEY = Symbol('UNIQ_ROW_KEY');
 
 const SCROLL_BAR_HEIGHT = 12;
+
+type State = {
+  scrollTop: number;
+  scrollDirection: 'down' | 'up';
+};
 
 class DataTableRoot<D extends DataTableData> extends Component<
   DataTableProps<D>,
@@ -55,8 +60,6 @@ class DataTableRoot<D extends DataTableData> extends Component<
     defaultExpandedRows: [],
   };
 
-  private columnsSplitter = '/';
-
   private columns: DTColumn[] = [];
   private hasGroups = false;
 
@@ -75,6 +78,11 @@ class DataTableRoot<D extends DataTableData> extends Component<
     this.columns = this.calculateColumns();
   }
 
+  state: State = {
+    scrollTop: 0,
+    scrollDirection: 'down',
+  };
+
   uncontrolledProps() {
     return {
       expandedRows: [],
@@ -86,10 +94,10 @@ class DataTableRoot<D extends DataTableData> extends Component<
   }
 
   get totalRows() {
-    const { totalRows, expandedRows } = this.asProps;
+    const { totalRows, expandedRows, data } = this.asProps;
 
     const expandedRowsCount = expandedRows?.reduce((acc, rowIndex) => {
-      const dtRow = this.calculateRows().flat()[rowIndex];
+      const dtRow = data[rowIndex];
       const expandedRows = dtRow[ACCORDION];
 
       if (Array.isArray(expandedRows)) {
@@ -101,7 +109,21 @@ class DataTableRoot<D extends DataTableData> extends Component<
       return acc;
     }, 0);
 
-    return (totalRows ?? this.calculateRows().flat().length) + expandedRowsCount;
+    if (totalRows !== undefined) {
+      return totalRows + expandedRowsCount;
+    }
+
+    const rows = data.reduce((acc, item) => {
+      acc = acc + 1;
+
+      if (item[ROW_GROUP]) {
+        acc = acc + item[ROW_GROUP].length;
+      }
+
+      return acc;
+    }, 0);
+
+    return rows + expandedRowsCount;
   }
 
   get gridSettings() {
@@ -134,36 +156,31 @@ class DataTableRoot<D extends DataTableData> extends Component<
     };
   }
 
-  getBodyProps(): BodyPropsInner {
-    const { use, compact, loading, getI18nText, expandedRows } = this.asProps;
-    const rows = this.calculateRows();
-
+  getBodyProps(): BodyPropsInner<D> {
+    const { use, compact, loading, getI18nText, expandedRows, virtualScroll, data, uid } =
+      this.asProps;
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
-    const header = this.headerRef.current;
-    const headerHeight = Array.from(header?.children ?? []).reduce((maxHeight, col) => {
-      const rect = col.getBoundingClientRect();
-      if (rect.height > maxHeight) {
-        maxHeight = rect.height;
-      }
-
-      return maxHeight;
-    }, 0);
 
     return {
       columns: this.columns,
-      rows,
-      flatRows: rows.flat(),
+      data,
       use,
       compact: Boolean(compact),
       gridTemplateColumns,
       gridTemplateAreas,
       loading,
-      headerHeight,
+      headerHeight: this.getTopScrollOffset(),
       getI18nText,
       expandedRows,
       onExpandRow: this.onExpandRow,
       spinnerRef: this.spinnerRef,
+      scrollTop: this.state.scrollTop,
+      scrollDirection: this.state.scrollDirection,
+      tableContainerRef: this.tableContainerRef,
+      tableRef: this.tableRef,
+      virtualScroll,
       hasGroups: this.hasGroups,
+      uid,
     };
   }
 
@@ -278,20 +295,33 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
       if (direction === 'left' || direction === 'right') {
         // left/right
-        if (currentCell.dataset.groupedBy === 'colgroup') {
+        if (
+          currentCell.dataset.groupedBy === 'colgroup' ||
+          Number(currentCell.parentElement?.getAttribute('aria-rowindex')) === 2
+        ) {
           colI = direction === 'left' ? colI - 1 : colI + 1;
         } else {
           rowI = rowI - 1;
         }
       } else if (direction === 'up' || direction === 'down') {
         // top/bottom
-        if (currentCell.dataset.groupedBy === 'rowgroup') {
+        if (
+          currentCell.dataset.groupedBy === 'rowgroup' ||
+          Number(currentCell.getAttribute('aria-colindex')) === 1
+        ) {
           rowI = direction === 'up' ? rowI - 1 : rowI + 1;
         } else {
           colI = colI - 1;
         }
       }
       this.changeFocusCell(rowI, colI, direction);
+    } else if (
+      row === null &&
+      this.focusedCell[0] === 0 &&
+      direction === 'down' &&
+      this.asProps.virtualScroll
+    ) {
+      this.changeFocusCell(rowIndex + 1, colIndex, direction);
     }
   };
 
@@ -334,6 +364,12 @@ class DataTableRoot<D extends DataTableData> extends Component<
     }
   };
 
+  handleScroll = trottle((e) => {
+    const scrollTop = e.target.scrollTop;
+    const scrollDirection = scrollTop > this.state.scrollTop ? 'down' : 'up';
+    this.setState({ scrollTop, scrollDirection });
+  });
+
   handleFocus = (e: React.FocusEvent<HTMLElement, HTMLElement>) => {
     if (this.asProps.loading) {
       this.spinnerRef.current?.focus();
@@ -353,6 +389,19 @@ class DataTableRoot<D extends DataTableData> extends Component<
       if (!row) {
         this.initFocusableCell();
         row = this.getRow(this.focusedCell[0]);
+      }
+
+      if (!row && this.asProps.virtualScroll) {
+        const firstAvailableCell = this.tableRef.current?.querySelector(`[role="gridcell"]`);
+        const firstAvailableRow = firstAvailableCell?.parentElement;
+        if (firstAvailableCell && firstAvailableRow) {
+          const colIndex = (Number(firstAvailableCell.getAttribute('aria-colindex')) ?? 1) - 1;
+          const rowIndex = (Number(firstAvailableRow.getAttribute('aria-rowindex')) ?? 1) - 1;
+
+          this.focusedCell[0] = rowIndex;
+          this.focusedCell[1] = colIndex;
+          row = firstAvailableRow;
+        }
       }
 
       const cell = row
@@ -394,7 +443,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
   render() {
     const SDataTable = Root;
-    const { Children, styles, w, wMax, wMin, h, hMax, hMin } = this.asProps;
+    const { Children, styles, w, wMax, wMin, h, hMax, hMin, virtualScroll } = this.asProps;
 
     const [offsetLeftSum, offsetRightSum] = getScrollOffsetValue(this.columns);
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
@@ -409,6 +458,12 @@ class DataTableRoot<D extends DataTableData> extends Component<
       (this.columns.some((c) => c.gridColumnWidth === 'auto' || c.gridColumnWidth === '1fr')
         ? '100%'
         : undefined);
+
+    let gridTemplateRows: string | undefined = undefined;
+
+    if (virtualScroll && typeof virtualScroll !== 'boolean' && 'rowHeight' in virtualScroll) {
+      gridTemplateRows = `auto auto repeat(${this.totalRows}, minmax(${virtualScroll.rowHeight}px, auto)`;
+    }
 
     let scrollDirection: 'both' | 'horizontal' | 'vertical' | undefined = undefined;
     const hasWidthSettings = Boolean(w ?? wMax ?? wMin);
@@ -436,6 +491,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
         shadow={true}
         container={this.tableContainerRef}
         styles={scrollStyles}
+        onScroll={this.handleScroll}
         disableAutofocusToContent={true}
       >
         <ScrollArea.Container
@@ -456,6 +512,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
             aria-colcount={this.columns.length}
             gridTemplateColumns={gridTemplateColumns.join(' ')}
             gridTemplateAreas={gridTemplateAreas.join(' ')}
+            gridTemplateRows={gridTemplateRows}
             w={'100%'}
             use:data={undefined}
             use:w={undefined}
@@ -599,96 +656,6 @@ class DataTableRoot<D extends DataTableData> extends Component<
     });
 
     return columns.filter(Boolean);
-  }
-
-  private calculateRows(): Array<DTRow[] | DTRow> {
-    const { data } = this.asProps;
-
-    const rows: Array<DTRow[] | DTRow> = [];
-    const columnNames = this.columns.map((column: DTColumn) => column.name);
-
-    let rowIndex = 0;
-
-    const makeDtRow = (row: DataRowItem, excludeColumns?: string[]) => {
-      const columns = new Set(columnNames);
-      const dtRow = Object.entries(row).reduce<DTRow>((acc, [key, value]) => {
-        const columnsToRow = key.split(this.columnsSplitter);
-
-        if (columnsToRow.length === 1) {
-          acc[key] = value ?? '';
-          columns.delete(key);
-        } else {
-          acc[columnsToRow[0]] = new MergedColumnsCell(value, {
-            dataKey: key,
-            size: columnsToRow.length,
-          });
-          columnsToRow.forEach((value) => {
-            columns.delete(value);
-          });
-        }
-
-        if (row[ACCORDION]) {
-          acc[ACCORDION] = row[ACCORDION];
-        }
-
-        return acc;
-      }, {});
-
-      excludeColumns?.forEach((value) => {
-        columns.delete(value);
-      });
-
-      if (columns.size > 0) {
-        columns.forEach((value) => {
-          dtRow[value] = '';
-        });
-      }
-
-      return dtRow;
-    };
-
-    data.forEach((row) => {
-      const groupedRows: DataTableData | undefined = row[ROW_GROUP];
-
-      const fromRow = rowIndex + 2; // 1 - for header, 1 - because start not from 0, but from 1
-
-      if (groupedRows) {
-        const toRow = fromRow + groupedRows.length;
-        const innerRows: DTRow[] = [];
-
-        const groupedKeys: string[] = [];
-        const groupedRowData = Object.entries(row).reduce<DTRow>((acc, [key, value]) => {
-          acc[key] = new MergedRowsCell(value, [fromRow, toRow]);
-          groupedKeys.push(key);
-          return acc;
-        }, {});
-
-        groupedRows.forEach((childRow, index) => {
-          let dtRow: DTRow;
-          if (index === 0) {
-            const rowData = {
-              ...childRow,
-              ...groupedRowData,
-            };
-            dtRow = makeDtRow(rowData);
-          } else {
-            dtRow = makeDtRow(childRow, groupedKeys);
-          }
-
-          innerRows.push(dtRow);
-          rowIndex++;
-        });
-
-        rows.push(innerRows);
-      } else {
-        const dtRow = makeDtRow(row);
-
-        rows.push(dtRow);
-        rowIndex++;
-      }
-    });
-
-    return rows;
   }
 
   private calculateGridTemplateColumn(c: ReactElement<DataTableColumnProps>): string {
