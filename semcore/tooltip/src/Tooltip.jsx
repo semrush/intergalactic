@@ -51,15 +51,19 @@ class TooltipRoot extends Component {
   constructor(props, context) {
     super(props, context);
 
-    if (tooltipContainer.current === null && canUseDOM()) {
-      tooltipContainer.current = setTimeout(() => {
-        const container = document.createElement('div');
-        container.setAttribute('role', 'status');
-        container.setAttribute('aria-live', 'polite');
+    if (canUseDOM()) {
+      if (tooltipContainer.current === null || (
+        tooltipContainer.current instanceof HTMLElement && !document.body.contains(tooltipContainer.current)
+      )) {
+        tooltipContainer.current = setTimeout(() => {
+          const container = document.createElement('div');
+          container.setAttribute('role', 'status');
+          container.setAttribute('aria-live', 'polite');
 
-        (this.context.current ?? document.body).appendChild(container);
-        tooltipContainer.current = container;
-      }, 0);
+          (this.context.current ?? document.body).appendChild(container);
+          tooltipContainer.current = container;
+        }, 0);
+      }
     }
   }
 
