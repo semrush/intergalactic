@@ -58,11 +58,11 @@ test.describe('DataTable', () => {
     test('Verify styles when long text and icons in header', async ({ page }) => {
       const standPath = 'stories/components/data-table/tests/examples/header-content.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
-      await page.setContent(htmlContent);   
+      await page.setContent(htmlContent);
       const amazonIcon = page.getByLabel('AmazonM non interactive').nth(1);
       await expect(page).toHaveScreenshot();
       await amazonIcon.hover();
-      
+
       await expect(page.getByText('AmazonM non interactive')).toHaveCount(1);
 
       await page.locator('[data-ui-name="Ellipsis"]').hover();
