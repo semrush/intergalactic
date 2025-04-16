@@ -8,6 +8,8 @@ import {
   RowIndex,
   DataTableData,
   DataTableType,
+  ColumnGroupConfig,
+  ColumnItemConfig,
 } from './DataTable.types';
 import { Head } from '../Head/Head';
 import { Body } from '../Body/Body';
@@ -61,6 +63,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
   };
 
   private columns: DTColumn[] = [];
+  private treeColumns: DTColumn[] = [];
   private hasGroups = false;
 
   private focusedCell: [RowIndex, ColIndex] = [-1, -1];
@@ -75,7 +78,13 @@ class DataTableRoot<D extends DataTableData> extends Component<
   constructor(props: DataTableProps<D>) {
     super(props);
 
-    this.columns = this.calculateColumns();
+    if (props.children) {
+      this.columns = this.calculateColumns();
+    } else {
+      const cols = this.calculateColumnsFromConfig();
+      this.columns = cols[0];
+      this.treeColumns = cols[1];
+    }
   }
 
   state: State = {
@@ -127,8 +136,10 @@ class DataTableRoot<D extends DataTableData> extends Component<
   }
 
   get gridSettings() {
-    const gridTemplateColumns = this.columns.map((c) => c.gridColumnWidth);
-    const gridTemplateAreas = this.columns.map((c) => c.name);
+    const columns = this.columns;
+
+    const gridTemplateColumns = columns.map((c) => c.gridColumnWidth);
+    const gridTemplateAreas = columns.map((c) => c.name);
 
     return {
       gridTemplateColumns,
@@ -137,11 +148,12 @@ class DataTableRoot<D extends DataTableData> extends Component<
   }
 
   getHeadProps(): HeadPropsInner<D> {
-    const { use, compact, sort, onSortChange, getI18nText, uid } = this.asProps;
+    const { use, compact, sort, onSortChange, getI18nText, uid, headerProps } = this.asProps;
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
 
     return {
       columns: this.columns,
+      treeColumns: this.treeColumns,
       use,
       tableRef: this.tableRef,
       compact: Boolean(compact),
@@ -153,11 +165,12 @@ class DataTableRoot<D extends DataTableData> extends Component<
       gridAreaGroupMap: this.gridAreaGroupMap,
       gridTemplateColumns,
       gridTemplateAreas,
+      ...headerProps,
     };
   }
 
   getBodyProps(): BodyPropsInner<D> {
-    const { use, compact, loading, getI18nText, expandedRows, virtualScroll, data, uid } =
+    const { use, compact, loading, getI18nText, expandedRows, virtualScroll, data, uid, columns } =
       this.asProps;
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
 
@@ -443,15 +456,19 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
   render() {
     const SDataTable = Root;
-    const { Children, styles, w, wMax, wMin, h, hMax, hMin, virtualScroll } = this.asProps;
+    const { Children, styles, w, wMax, wMin, h, hMax, hMin, virtualScroll, children, headerProps } =
+      this.asProps;
 
     const [offsetLeftSum, offsetRightSum] = getScrollOffsetValue(this.columns);
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
 
     const Head = findComponent<DataTableHeadProps>(Children, ['DataTable.Head']);
+    const headerPropsToCheck = headerProps ?? Head?.props;
 
     const topOffset =
-      Head?.props.sticky || Head?.props.withScrollBar ? this.getTopScrollOffset() : undefined;
+      headerPropsToCheck?.sticky || headerPropsToCheck?.withScrollBar
+        ? this.getTopScrollOffset()
+        : undefined;
 
     const width =
       w ??
@@ -522,7 +539,14 @@ class DataTableRoot<D extends DataTableData> extends Component<
             use:hMax={undefined}
             use:hMin={undefined}
           >
-            <Children />
+            {children ? (
+              <Children />
+            ) : (
+              <>
+                <DataTable.Head />
+                <DataTable.Body />
+              </>
+            )}
           </SDataTable>
         </ScrollArea.Container>
 
@@ -538,6 +562,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
   private calculateColumns(): DTColumn[] {
     const { children, data } = this.props;
+
     const HeadComponent = findComponent(children, ['Head']) as ReactElement<DataTableHeadProps> & {
       props: {
         children: Array<ReactElement<DataTableColumnProps> | ReactElement<DataTableGroupProps>>;
@@ -658,8 +683,135 @@ class DataTableRoot<D extends DataTableData> extends Component<
     return columns.filter(Boolean);
   }
 
-  private calculateGridTemplateColumn(c: ReactElement<DataTableColumnProps>): string {
-    return c.props.gtcWidth ?? (this.props.defaultGridTemplateColumnWidth as string);
+  private calculateColumnsFromConfig(): [DTColumn[], DTColumn[]] {
+    const { columns, data } = this.props;
+
+    this.hasGroups = columns.some((column) => 'columns' in column);
+
+    let columnIndex = 0;
+    let groupIndex = 0;
+    let gridColumnIndex = 1;
+
+    const calculateGridTemplateColumn = this.calculateGridTemplateColumn.bind(this);
+
+    const calculatedColumns: DTColumn[] = [];
+    const treeColumns: DTColumn[] = [];
+
+    const makeColumn = (
+      columnElement: ColumnItemConfig | ColumnGroupConfig,
+      parent?: DTColumn,
+      isFirst?: boolean,
+      isLast?: boolean,
+    ): DTColumn => {
+      const leftBordersFromParent =
+        isFirst && (parent?.borders === 'both' || parent?.borders === 'left') ? 'left' : undefined;
+      const rightBordersFromParent =
+        isLast && (parent?.borders === 'both' || parent?.borders === 'right') ? 'right' : undefined;
+
+      const column: DTColumn = {
+        name: childIsColumn(columnElement) ? columnElement.name : '',
+        // @ts-ignore
+        ref: function (node: HTMLElement | null) {
+          if (node) {
+            const calculatedWidth = node.getBoundingClientRect().width;
+            const calculatedHeight = node.getBoundingClientRect().height;
+            column.calculatedWidth = calculatedWidth;
+            column.calculatedHeight = calculatedHeight;
+          }
+
+          if (this) {
+            this.ref.current = node;
+          }
+        },
+        children: columnElement.children,
+        gridColumnWidth: childIsColumn(columnElement)
+          ? calculateGridTemplateColumn(columnElement)
+          : '',
+        fixed: columnElement.fixed ?? parent?.fixed,
+        calculatedWidth: 0,
+        calculatedHeight: 0,
+        borders: columnElement.borders ?? leftBordersFromParent ?? rightBordersFromParent,
+        parent,
+
+        flexWrap: childIsColumn(columnElement) ? columnElement.flexWrap : undefined,
+        alignItems: childIsColumn(columnElement) ? columnElement.alignItems : undefined,
+        alignContent: childIsColumn(columnElement) ? columnElement.alignContent : undefined,
+        justifyContent: childIsColumn(columnElement) ? columnElement.justifyContent : undefined,
+      };
+
+      return column;
+    };
+
+    const childIsColumn = (
+      child: ColumnItemConfig | ColumnGroupConfig,
+    ): child is ColumnItemConfig => {
+      return !('columns' in child);
+    };
+    const childIsGroup = (
+      child: ColumnItemConfig | ColumnGroupConfig,
+    ): child is ColumnGroupConfig => {
+      return 'columns' in child;
+    };
+
+    columns.forEach((child, i) => {
+      if (childIsColumn(child)) {
+        const col = makeColumn(child);
+
+        col.gridArea = `1 / ${gridColumnIndex} / ${this.hasGroups ? '3' : '2'} / ${
+          gridColumnIndex + 1
+        }`;
+
+        columnIndex++;
+        gridColumnIndex++;
+
+        calculatedColumns.push(col);
+        treeColumns.push(col);
+      } else if (childIsGroup(child)) {
+        const Group = makeColumn(child);
+        const childCount = child.columns.length;
+
+        const initGridColumn = gridColumnIndex;
+
+        Group.columns = [];
+        Group.children = child.children;
+        child.columns.forEach((child, j) => {
+          const isFirst = j === 0;
+          const isLast = j === childCount - 1;
+          const col = makeColumn(child, Group, isFirst, isLast);
+
+          if (i === 0 && j === 0 && data.some((d) => d[ACCORDION])) {
+            gridColumnIndex++;
+            col.gridArea = `2 / ${gridColumnIndex - 1} / 3 / ${gridColumnIndex + 1}`;
+          } else {
+            col.gridArea = `2 / ${gridColumnIndex} / 3 / ${gridColumnIndex + 1}`;
+          }
+
+          col.gridArea = `2 / ${gridColumnIndex} / 3 / ${gridColumnIndex + 1}`;
+          columnIndex++;
+          gridColumnIndex++;
+
+          calculatedColumns.push(col);
+
+          Group.columns?.push(col);
+        });
+
+        treeColumns.push(Group);
+
+        this.gridAreaGroupMap.set(groupIndex, `1 / ${initGridColumn} / 2 / ${gridColumnIndex}`);
+        groupIndex++;
+      }
+    });
+
+    return [calculatedColumns, treeColumns];
+  }
+
+  private calculateGridTemplateColumn(
+    c: ReactElement<DataTableColumnProps> | ColumnItemConfig,
+  ): string {
+    return (
+      (React.isValidElement(c) ? c.props.gtcWidth : c.gtcWidth) ??
+      (this.props.defaultGridTemplateColumnWidth as string)
+    );
   }
 
   private getTopScrollOffset() {

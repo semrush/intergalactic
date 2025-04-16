@@ -7,10 +7,11 @@ import Tooltip from '@semcore/tooltip';
 import style from './style.shadow.css';
 import { Column } from './Column';
 import { Group } from './Group';
-import { DataTableColumnProps } from './Column.types';
+import { DataTableColumnProps, DTColumn } from './Column.types';
 import { getFixedStyle } from '../../utils';
 import { DataTableGroupProps } from './Group.type';
 import { DataTableData } from '../DataTable/DataTable.types';
+import { DataTable } from '@semcore/data-table';
 
 class HeadRoot<D extends DataTableData> extends Component<
   DataTableHeadProps,
@@ -63,7 +64,7 @@ class HeadRoot<D extends DataTableData> extends Component<
     return {
       use,
       'aria-colindex': index + 1,
-      ref: (node: HTMLElement | null) => column.ref(node),
+      ref: (node: HTMLElement | null) => column.ref?.(node),
       style,
       gridArea: column.gridArea,
       fixed: column.fixed,
@@ -82,12 +83,31 @@ class HeadRoot<D extends DataTableData> extends Component<
 
   render() {
     const SHead = Root;
-    const { Children, styles, getI18nText } = this.asProps;
+    const { Children, styles, getI18nText, children, treeColumns } = this.asProps;
 
     return sstyled(styles)(
       <>
         <SHead render={Box} role='row' aria-rowindex={1}>
-          <Children />
+          {children ? (
+            <Children />
+          ) : (
+            <>
+              {treeColumns.map((column, i) => {
+                if ('columns' in column) {
+                  return (
+                    <DataTable.Head.Group
+                      key={column.name}
+                      {...column}
+                      name={column.columns?.map((c) => c.name).join('/')}
+                      title={''}
+                    />
+                  );
+                }
+
+                return <DataTable.Head.Column key={column.name} {...column} />;
+              })}
+            </>
+          )}
         </SHead>
 
         <ScreenReaderOnly aria-hidden={true} id={this.sortableColumnDescribeId()}>

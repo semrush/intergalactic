@@ -3,15 +3,37 @@ import { DataTable } from '@semcore/data-table';
 
 const Demo = () => {
   return (
-    <DataTable data={data} aria-label={'Fixed columns'} wMax={800} hMax={400}>
-      <DataTable.Head sticky>
-        <DataTable.Head.Column name='keyword' children='Keyword' gtcWidth={'300px'} fixed='left' />
-        <DataTable.Head.Column name='kd' children='KD,%' gtcWidth={'300px'} />
-        <DataTable.Head.Column name='cpc' children='CPC' gtcWidth={'300px'} />
-        <DataTable.Head.Column name='vol' children='Vol.' gtcWidth={'300px'} fixed='right' />
-      </DataTable.Head>
-      <DataTable.Body />
-    </DataTable>
+    <DataTable
+        data={data}
+        aria-label={'Fixed columns'}
+        wMax={800}
+        hMax={400}
+        headerProps={{sticky: true}}
+        columns={[
+          {
+            name: 'keyword',
+            children: 'keyword',
+            gtcWidth: '300px',
+            fixed: 'left',
+          },
+          {
+            name: 'kd',
+            children: 'KD,%',
+            gtcWidth: '300px',
+          },
+          {
+            name: 'cpc',
+            children: 'CPC',
+            gtcWidth: '300px',
+          },
+          {
+            name: 'vol',
+            children: 'Vol.',
+            gtcWidth: '300px',
+            fixed: 'right',
+          }
+        ]}
+    />
   );
 };
 

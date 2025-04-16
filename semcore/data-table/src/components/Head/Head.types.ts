@@ -21,6 +21,7 @@ export type HeadPropsInner<D extends DataTableData> = {
   use: DTUse;
   tableRef: React.RefObject<HTMLElement>;
   columns: DTColumn[];
+  treeColumns: DTColumn[];
   compact: boolean;
   sort?: DataTableProps<D>['sort'];
   onSortChange?: DataTableProps<D>['onSortChange'];

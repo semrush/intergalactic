@@ -1,6 +1,8 @@
 import { Intergalactic } from '@semcore/core';
 import { BoxProps } from '@semcore/base-components';
 import { ACCORDION, ROW_GROUP } from './DataTable';
+import { DataTableColumnProps } from '../Head/Column.types';
+import { ReactElement } from 'react';
 
 /**
  * Datatable must have an accessible name (aria-table-name).
@@ -68,7 +70,7 @@ export type DataTableProps<D extends DataTableData> = DataTableAriaProps &
      */
     loading?: boolean;
 
-    children?: any;
+    children?: never;
 
     /**
      *
@@ -76,7 +78,39 @@ export type DataTableProps<D extends DataTableData> = DataTableAriaProps &
     expandedRows?: number[];
 
     virtualScroll?: VirtualScroll;
+
+    columns: ColumnsConfig;
+
+    headerProps?: {
+      /**
+       * Sticky header
+       * @default false
+       */
+      sticky?: boolean;
+
+      /**
+       * offset for sticky header
+       */
+      top?: number;
+
+      /** Enable scroll bar element in header */
+      withScrollBar?: boolean;
+    };
   };
+
+export type ColumnItemConfig = DataTableColumnProps;
+
+export type ColumnGroupConfig = {
+  borders?: 'both' | 'left' | 'right';
+
+  fixed?: 'left' | 'right';
+
+  children: React.ReactNode;
+
+  columns: ColumnItemConfig[];
+};
+
+type ColumnsConfig = Array<ColumnItemConfig | ColumnGroupConfig>;
 
 export type VirtualScroll =
   | boolean
@@ -87,6 +121,9 @@ export type RowIndex = number;
 export type ColIndex = number;
 
 export type DataTableType = (<Data extends DataTableData, Tag extends Intergalactic.Tag = 'div'>(
-  props: Intergalactic.InternalTypings.ComponentProps<Tag, 'div', DataTableProps<Data>>,
+  props: Intergalactic.InternalTypings.EfficientOmit<
+    Intergalactic.InternalTypings.ComponentProps<Tag, 'div', DataTableProps<Data>>,
+    'tag' | 'children'
+  >,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
   Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', DataTableProps<any>>;
