@@ -6,7 +6,7 @@ import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEn
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 import logger from '@semcore/core/lib/utils/logger';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-
+import { PortalContext } from '@semcore/base-components';
 import style from './style/tooltip.shadow.css';
 import {
   useZIndexStacking,
@@ -15,7 +15,6 @@ import {
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 
 const Popper = PopperOrigin[CREATE_COMPONENT]();
-const GLOBAL_TOOLTIP_CONTAINER_ID = 'ui-kit-tooltip-container';
 const tooltipContainer = { current: null };
 
 const defaultProps = {
@@ -37,6 +36,7 @@ class TooltipRoot extends Component {
   static style = style;
   static enhance = [uniqueIDEnhancement(), resolveColorEnhance()];
   static defaultProps = { ...defaultProps };
+  static contextType = PortalContext;
   state = { popperChildren: null };
   subcomponents = [Tooltip.Trigger.displayName, Tooltip.Popper.displayName];
   defaultChildren = (title, Children, props) => (
@@ -48,23 +48,18 @@ class TooltipRoot extends Component {
     </>
   );
 
-  constructor(props) {
-    super(props);
+  constructor(props, context) {
+    super(props, context);
 
     if (tooltipContainer.current === null && canUseDOM()) {
-      const containerElement = document.getElementById(GLOBAL_TOOLTIP_CONTAINER_ID);
-
-      if (containerElement) {
-        tooltipContainer.current = containerElement;
-      } else {
+      tooltipContainer.current = setTimeout(() => {
         const container = document.createElement('div');
-        container.setAttribute('id', GLOBAL_TOOLTIP_CONTAINER_ID);
         container.setAttribute('role', 'status');
         container.setAttribute('aria-live', 'polite');
 
-        document.body.appendChild(container);
+        (this.context.current ?? document.body).appendChild(container);
         tooltipContainer.current = container;
-      }
+      }, 0);
     }
   }
 
@@ -172,7 +167,7 @@ function TooltipPopper(props) {
         render={Popper.Popper}
         use:theme={resolveColor(theme)}
         use:zIndex={zIndex}
-        nodeToMount={ariaLive === 'polite' ? tooltipContainer.current : undefined}
+        nodeToMount={ariaLive === 'polite' ? tooltipContainer : undefined}
       >
         <Children />
         <SArrow
