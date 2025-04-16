@@ -77,6 +77,8 @@ export type DataTableColumnProps = CommonColumnType & {
   changeSortSize?: boolean;
 
   children?: React.ReactNode;
+
+  ref?: React.Ref<HTMLElement>;
 };
 
 export type ColumnPropsInner<D extends DataTableData> = {

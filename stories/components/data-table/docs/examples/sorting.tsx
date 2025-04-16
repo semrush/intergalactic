@@ -28,16 +28,13 @@ const Demo = () => {
   };
 
   return (
-    <DataTable data={sortedData} sort={sort} onSortChange={handleSortChange} aria-label={'Sorting'}>
-      <DataTable.Head>
-        <DataTable.Head.Column name='keyword' children='Keyword' justifyContent='left' sortable />
-          <DataTable.Head.Column name='kd' justifyContent='right' gtcWidth={'minmax(0, 68px)'} sortable>
-              <Ellipsis>KD,% and some another text long</Ellipsis>
-          </DataTable.Head.Column>
-        <DataTable.Head.Column name='cpc' children='CPC' gtcWidth={'minmax(0, 60px)'} sortable />
-        <DataTable.Head.Column name='vol' children='Vol.' gtcWidth={'minmax(0, 120px)'} justifyContent='left' sortable />
-      </DataTable.Head>
-      <DataTable.Body
+    <DataTable data={sortedData} sort={sort} onSortChange={handleSortChange} aria-label={'Sorting'}
+        columns={[
+            {name: 'keyword', children: 'Keyword', justifyContent: 'left', sortable: true},
+            {name: 'kd', children: <Ellipsis>KD,% and some another text long</Ellipsis>, justifyContent: 'right', gtcWidth: 'minmax(0, 68px)', sortable: true},
+            {name: 'cpc', children: 'CPC', gtcWidth: 'minmax(0, 60px)', sortable: true},
+            {name: 'url', children: 'URL', gtcWidth: 'minmax(0, 120px)', justifyContent: 'left', sortable: true},
+        ]}
           renderCell={(props) => {
             if (props.columnName === 'keyword') {
               return props.defaultRender();
@@ -52,7 +49,6 @@ const Demo = () => {
                   : 'n/a';
           }}
       />
-    </DataTable>
   );
 };
 

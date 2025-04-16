@@ -34,6 +34,7 @@ describe('DataTable', () => {
         <DataTable<{ a: number; b: number; c: number }[]>
           data={[{ a: 1, b: 2, c: 3 }]}
           aria-label={'table label'}
+          columns={[]}
         />,
       );
       assertType<JSX.Element>(
@@ -53,12 +54,12 @@ describe('DataTable.Column', () => {
   test.concurrent('Should support ref', () => {
     const spy = vi.fn();
     render(
-      <DataTable data={[]} aria-label={'table label'}>
-        <DataTable.Head>
-          <DataTable.Head.Column name='keyword' ref={spy} />
-          <DataTable.Head.Column name='kd' />
-        </DataTable.Head>
-      </DataTable>,
+      <DataTable data={[]} aria-label={'table label'}
+        columns={[
+          {name: 'keyword', ref: spy},
+          {name: 'kd'}
+        ]}
+      />,
     );
     expect(spy).toBeCalled();
   });

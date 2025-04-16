@@ -2,7 +2,7 @@ import { DTRow, DTRows } from './Row.types';
 import { DTColumn } from '../Head/Column.types';
 import { DataTableData, DTUse, VirtualScroll } from '../DataTable/DataTable.types';
 
-type CellRenderProps = {
+export type CellRenderProps = {
   dataKey: string;
   row: DTRow;
   column: DTColumn;

@@ -22,18 +22,20 @@ const data = Array(10000)
 
 const Demo = () => {
   return (
-    <DataTable data={data} totalRows={10000} aria-label={'Virtual scroll'} h={400} virtualScroll>
-      <DataTable.Head sticky>
-        <DataTable.Head.Column name='id' children='ID' />
-        <DataTable.Head.Column name='keyword' children='Keyword' gtcWidth={'300px'} />
-        <DataTable.Head.Group title={'Organic Sessions'}>
-          <DataTable.Head.Column name='kd' children='KD,%' />
-          <DataTable.Head.Column name='cpc' children='CPC' />
-          <DataTable.Head.Column name='vol' children='Vol.' />
-        </DataTable.Head.Group>
-      </DataTable.Head>
-      <DataTable.Body />
-    </DataTable>
+    <DataTable data={data} totalRows={10000} aria-label={'Virtual scroll'} h={400} virtualScroll
+               headerProps={{sticky: true}}
+               columns={[
+                   {name: 'id', children: 'ID'},
+                   {name: 'keyword', children: 'Keyword', gtcWidth: '300px'},
+                   {
+                       children: 'Organic Sessions',
+                       columns: [
+                           {name: 'kd', children: 'KD,%'},
+                           {name: 'cpc', children: 'CPC'},
+                           {name: 'url', children: 'URL'},
+                       ]}
+               ]}
+    />
   );
 };
 

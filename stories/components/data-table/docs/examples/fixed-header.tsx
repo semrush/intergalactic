@@ -7,25 +7,25 @@ const Demo = () => {
 
   return (
     <>
-      <DataTable data={data} aria-label={'Fixed header'} wMax={1000}>
-          <DataTable.Head sticky={true} top={top}>
-            <DataTable.Head.Column name='keyword' children='Keyword' />
-            <DataTable.Head.Column name='kd' children='KD,%' />
-            <DataTable.Head.Column name='cpc' children='CPC' />
-            <DataTable.Head.Column name='vol' children='Vol.' />
-          </DataTable.Head>
-        <DataTable.Body />
-      </DataTable>
+      <DataTable data={data} aria-label={'Fixed header'} wMax={1000}
+                 headerProps={{sticky: true, top}}
+                 columns={[
+                   {name: 'keyword', children: 'Keyword'},
+                   {name: 'kd', children: 'KD,%'},
+                   {name: 'cpc', children: 'CPC'},
+                   {name: 'url', children: 'URL'},
+                 ]}
+      />
       <h3>with Scroll.Bar in Header</h3>
-      <DataTable data={data} aria-label={'Fixed header with scroll'} wMax={1000} hMax={400}>
-          <DataTable.Head sticky={true} top={top} withScrollBar>
-            <DataTable.Head.Column name='keyword' children='Keyword' gtcWidth={'340px'} />
-            <DataTable.Head.Column name='kd' children='KD,%' gtcWidth={'340px'} />
-            <DataTable.Head.Column name='cpc' children='CPC' gtcWidth={'340px'} />
-            <DataTable.Head.Column name='vol' children='Vol.' gtcWidth={'340px'} />
-          </DataTable.Head>
-        <DataTable.Body />
-      </DataTable>
+      <DataTable data={data} aria-label={'Fixed header with scroll'} wMax={1000} hMax={400}
+                 headerProps={{sticky: true, top, withScrollBar: true}}
+                 columns={[
+                   {name: 'keyword', children: 'Keyword', gtcWidth: '340px'},
+                   {name: 'kd', children: 'KD,%', gtcWidth: '340px'},
+                   {name: 'cpc', children: 'CPC', gtcWidth: '340px'},
+                   {name: 'url', children: 'URL', gtcWidth: '340px'},
+                 ]}
+      />
     </>
   );
 };

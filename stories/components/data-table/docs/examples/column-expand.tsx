@@ -3,16 +3,15 @@ import { DataTable } from '@semcore/data-table';
 
 const Demo = () => {
   return (
-    <DataTable data={data} aria-label={'Column expanded'}>
-      <DataTable.Head>
-        <DataTable.Head.Column name='keyword' children='Keyword' gtcWidth={'minmax(0, 300px)'} />
-        <DataTable.Head.Column name='kd' children='Difficulty Difficulty' gtcWidth={'85px'} />
-        <DataTable.Head.Column name='cpc' children='CPC' gtcWidth={'max-content'} />
-        <DataTable.Head.Column name='vol' children='Vol.' gtcWidth={'minmax(0, 300px)'} />
-        <DataTable.Head.Column name='md' children='Marketing SEO' gtcWidth={'90px'} />
-      </DataTable.Head>
-      <DataTable.Body />
-    </DataTable>
+    <DataTable data={data} aria-label={'Column expanded'}
+               columns={[
+                 {name: 'keyword', children: 'Keyword', gtcWidth: 'minmax(0, 300px)'},
+                 {name: 'kd', children: 'Difficulty Difficulty', gtcWidth: '85px'},
+                 {name: 'cpc', children: 'CPC', gtcWidth: 'max-content'},
+                 {name: 'url', children: 'URL', gtcWidth: 'minmax(0, 300px)'},
+                 {name: 'md', children: 'Marketing SEO', gtcWidth: '90px'},
+               ]}
+      />
   );
 };
 

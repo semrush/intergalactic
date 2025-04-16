@@ -5,17 +5,19 @@ import { Plot, Line, XAxis, YAxis, ResponsiveContainer, minMax } from '@semcore/
 
 const Demo = () => {
   return (
-      <DataTable data={data} aria-label={'Accordion inside table'} h={'100%'}>
-        <DataTable.Head>
-          <DataTable.Head.Column name='keyword' children='Keyword' gtcWidth={'minmax(60%, 80%)'} />
-          <DataTable.Head.Group borders={'both'} title={'Organic Sessions'}>
-            <DataTable.Head.Column name='kd' children='KD,%' />
-            <DataTable.Head.Column name='cpc' children='CPC' />
-            <DataTable.Head.Column name='vol' children='Vol.' />
-          </DataTable.Head.Group>
-        </DataTable.Head>
-        <DataTable.Body/>
-      </DataTable>
+      <DataTable data={data} aria-label={'Accordion inside table'} h={'100%'}
+                 columns={[
+                   {name: 'keyword', children: 'Keyword', gtcWidth: 'minmax(60%, 80%)'},
+                   {
+                     children: 'Organic Sessions',
+                     borders: 'both',
+                     columns: [
+                       {name: 'kd', children: 'KD,%'},
+                       {name: 'cpc', children: 'CPC'},
+                       {name: 'url', children: 'URL'},
+                     ]}
+                 ]}
+      />
   );
 };
 

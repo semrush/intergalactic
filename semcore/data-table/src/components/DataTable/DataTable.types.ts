@@ -3,6 +3,7 @@ import { BoxProps } from '@semcore/base-components';
 import { ACCORDION, ROW_GROUP } from './DataTable';
 import { DataTableColumnProps } from '../Head/Column.types';
 import { ReactElement } from 'react';
+import {CellRenderProps} from '../Body/Body.types';
 
 /**
  * Datatable must have an accessible name (aria-table-name).
@@ -96,6 +97,8 @@ export type DataTableProps<D extends DataTableData> = DataTableAriaProps &
       /** Enable scroll bar element in header */
       withScrollBar?: boolean;
     };
+
+    renderCell?: (props: CellRenderProps) => React.ReactNode | Record<string, any>;
   };
 
 export type ColumnItemConfig = DataTableColumnProps;

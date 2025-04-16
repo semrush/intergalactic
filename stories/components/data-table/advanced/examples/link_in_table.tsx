@@ -7,11 +7,10 @@ import Ellipsis from '@semcore/ui/ellipsis';
 
 const Demo = () => {
   return (
-    <DataTable data={data} aria-label={'Table title. Access to cells'}>
-      <DataTable.Head>
-        <DataTable.Head.Column name='testCol' children='Text column' />
-      </DataTable.Head>
-      <DataTable.Body
+    <DataTable data={data} aria-label={'Table title. Access to cells'}
+               columns={[
+                   {name: 'testCol', children: 'Text column'},
+               ]}
         renderCell={(props) => {
             return (
                 <Flex>
@@ -28,7 +27,6 @@ const Demo = () => {
             );
         }}
       />
-    </DataTable>
   );
 };
 

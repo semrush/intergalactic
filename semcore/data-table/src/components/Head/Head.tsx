@@ -7,11 +7,11 @@ import Tooltip from '@semcore/tooltip';
 import style from './style.shadow.css';
 import { Column } from './Column';
 import { Group } from './Group';
-import { DataTableColumnProps, DTColumn } from './Column.types';
+import { DataTableColumnProps } from './Column.types';
 import { getFixedStyle } from '../../utils';
 import { DataTableGroupProps } from './Group.type';
 import { DataTableData } from '../DataTable/DataTable.types';
-import { DataTable } from '@semcore/data-table';
+import { DataTable } from '../DataTable/DataTable';
 
 class HeadRoot<D extends DataTableData> extends Component<
   DataTableHeadProps,

@@ -31,6 +31,7 @@
     "node_modules",
     "tools/playground/examples/*",
     "tools/playground/examples/**/*",
-    "tools/icon-transform-svg/__tests__"
+    "tools/icon-transform-svg/__tests__",
+    "stories/components/data-table/tests"
   ]
 }

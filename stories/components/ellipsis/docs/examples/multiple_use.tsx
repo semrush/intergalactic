@@ -8,14 +8,13 @@ const Demo = () => {
   const containerRect = useResizeObserver(containerRef);
 
   return (
-    <DataTable data={data} aria-label={'Table title'}>
-      <DataTable.Head>
-        <DataTable.Head.Column name='keyword' children='Keyword' />
-        <DataTable.Head.Column name='kd' children='KD,%' />
-        <DataTable.Head.Column name='cpc' children='CPC' />
-        <DataTable.Head.Column name='vol' children='Vol.' ref={containerRef} gtcWidth='100px' />
-      </DataTable.Head>
-      <DataTable.Body
+    <DataTable data={data} aria-label={'Table title'}
+      columns={[
+        {name: 'keyword', children: 'Keyword'},
+        {name: 'kd', children: 'KD,%'},
+        {name: 'cpc', children: 'CPC'},
+        {name: 'url', children: 'URL', gtcWidth: '100px', ref: containerRef},
+      ]}
         renderCell={(props) => {
           if (props.columnName === 'vol') {
             return (
@@ -28,7 +27,6 @@ const Demo = () => {
           return props.defaultRender();
         }}
       />
-    </DataTable>
   );
 };
 

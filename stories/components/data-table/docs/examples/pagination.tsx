@@ -15,14 +15,13 @@ const Demo = () => {
 
   return (
     <>
-      <DataTable data={tableData} aria-label={'Pagination'} h={'auto'}>
-        <DataTable.Head>
-          <DataTable.Head.Column name='keyword' children='Keyword' justifyContent='left' />
-          <DataTable.Head.Column name='kd' children='KD,%' justifyContent='right' gtcWidth={'minmax(fit-content, 68px)'} />
-          <DataTable.Head.Column name='cpc' children='CPC' gtcWidth={'minmax(fit-content, 60px)'} />
-          <DataTable.Head.Column name='vol' children='Vol.' gtcWidth={'minmax(fit-content, 120px)'} justifyContent='left' />
-        </DataTable.Head>
-        <DataTable.Body
+      <DataTable data={tableData} aria-label={'Pagination'} h={'auto'}
+                 columns={[
+                   {name: 'keyword', children: 'Keyword', justifyContent: 'left'},
+                   {name: 'kd', children: 'KD,%', justifyContent: 'right', gtcWidth: 'minmax(fit-content, 68px)'},
+                   {name: 'cpc', children: 'CPC', gtcWidth: 'minmax(fit-content, 60px)'},
+                   {name: 'url', children: 'URL', gtcWidth: 'minmax(fit-content, 120px)', justifyContent: 'left'},
+                 ]}
           renderCell={(props) => {
             if (props.columnName === 'keyword') {
               return props.defaultRender();
@@ -33,7 +32,6 @@ const Demo = () => {
             return typeof value === 'number' && value !== -1 ? numberFormat.format(value) : 'n/a';
           }}
         />
-      </DataTable>
       <Pagination
         mt={4}
         totalPages={Math.ceil(data.length / limit)}

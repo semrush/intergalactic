@@ -170,7 +170,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
   }
 
   getBodyProps(): BodyPropsInner<D> {
-    const { use, compact, loading, getI18nText, expandedRows, virtualScroll, data, uid, columns } =
+    const { use, compact, loading, getI18nText, expandedRows, virtualScroll, data, uid, renderCell } =
       this.asProps;
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
 
@@ -194,6 +194,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
       virtualScroll,
       hasGroups: this.hasGroups,
       uid,
+      renderCell,
     };
   }
 
