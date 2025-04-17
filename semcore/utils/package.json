@@ -151,6 +151,11 @@
       "import": "./lib/color.mjs",
       "types": "./lib/color.d.ts"
     },
+    "./lib/createUUID": {
+      "require": "./lib/createUUID.js",
+      "import": "./lib/createUUID.mjs",
+      "types": "./lib/createUUID.d.ts"
+    },
     "./lib/cssToIntDefault": {
       "require": "./lib/cssToIntDefault.js",
       "import": "./lib/cssToIntDefault.mjs",
