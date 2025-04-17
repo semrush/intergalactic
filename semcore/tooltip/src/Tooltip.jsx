@@ -194,7 +194,7 @@ function TooltipPopper(props) {
         use:theme={resolveColor(theme)}
         use:zIndex={zIndex}
         nodeToMount={
-          ariaLive === 'polite' && tooltipContainerNode instanceof Element
+          ariaLive === 'polite' && canUseDOM() && tooltipContainerNode instanceof Element
             ? tooltipContainerNode
             : undefined
         }
