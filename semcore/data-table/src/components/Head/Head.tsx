@@ -102,22 +102,10 @@ export const Head = createComponent(HeadRoot, { Column, Group }) as Intergalacti
   'div',
   DataTableHeadProps
 > & {
-  Column: (<Tag extends 'div' | typeof Tooltip = 'div'>(
-    props: Intergalactic.InternalTypings.ComponentProps<
-      Tag,
-      'div',
-      DataTableColumnProps,
-      {},
-      []
-    >,
-  ) => Intergalactic.InternalTypings.ComponentRenderingResults);
-  Group: (<Tag extends 'div' | typeof Tooltip = 'div'>(
-    props: Intergalactic.InternalTypings.ComponentProps<
-      Tag,
-      'div',
-      DataTableGroupProps,
-      {},
-      []
-    >,
-  ) => Intergalactic.InternalTypings.ComponentRenderingResults);
+  Column: <Tag extends 'div' | typeof Tooltip = 'div'>(
+    props: Intergalactic.InternalTypings.ComponentProps<Tag, 'div', DataTableColumnProps, {}, []>,
+  ) => Intergalactic.InternalTypings.ComponentRenderingResults;
+  Group: <Tag extends 'div' | typeof Tooltip = 'div'>(
+    props: Intergalactic.InternalTypings.ComponentProps<Tag, 'div', DataTableGroupProps, {}, []>,
+  ) => Intergalactic.InternalTypings.ComponentRenderingResults;
 };

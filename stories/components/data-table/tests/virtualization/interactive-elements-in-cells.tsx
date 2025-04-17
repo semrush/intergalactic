@@ -15,8 +15,8 @@ import CheckM from '@semcore/icon/Check/m';
 const Demo = () => {
     return (
         <>
-            <DataTable data={data} aria-label={'Access to cells'} hMax={200} withScrollBar>
-                <DataTable.Head sticky>
+            <DataTable data={data} aria-label={'Access to cells'} hMax={200}>
+                <DataTable.Head sticky withScrollBar>
                     <DataTable.Head.Column name='keyword' children='Keyword' />
                     <DataTable.Head.Column name='kd' children='KD,%' />
                     <DataTable.Head.Column name='cpc' children='CPC' />
