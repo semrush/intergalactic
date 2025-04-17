@@ -7,7 +7,7 @@ const Demo = () => {
 
   return (
     <>
-      <DataTable data={data} aria-label={'Fixed header'} wMax={1000}>
+      <DataTable data={data} aria-label={'Fixed header'} wMax={1000} hMax={200}>
           <DataTable.Head sticky={true} top={top}>
             <DataTable.Head.Column name='keyword' children='Keyword' />
             <DataTable.Head.Column name='kd' children='KD,%' />
@@ -17,7 +17,7 @@ const Demo = () => {
         <DataTable.Body />
       </DataTable>
       <h3>with Scroll.Bar in Header</h3>
-      <DataTable data={data} aria-label={'Fixed header with scroll'} wMax={1000} hMax={400}>
+      <DataTable data={data} aria-label={'Fixed header with scroll'} wMax={1000} hMax={200}>
           <DataTable.Head sticky={true} top={top} withScrollBar>
             <DataTable.Head.Column name='keyword' children='Keyword' gtcWidth={'340px'} />
             <DataTable.Head.Column name='kd' children='KD,%' gtcWidth={'340px'} />

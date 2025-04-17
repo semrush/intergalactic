@@ -39,7 +39,7 @@ const Demo = () => {
       <ScreenReaderOnly role='status' aria-live='polite'>
         {message}
       </ScreenReaderOnly>
-      <DataTable data={data} aria-label={'Loading using Skeleton'}>
+      <DataTable data={data} aria-label={'Loading using Skeleton'} h={'auto'}>
         <DataTable.Head>
           <DataTable.Head.Column name='keyword' children='Keyword' />
           <DataTable.Head.Column name='kd' children='KD,%' />

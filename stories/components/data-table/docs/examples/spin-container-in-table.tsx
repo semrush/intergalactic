@@ -26,7 +26,7 @@ const Demo = (): any => {
       <ScreenReaderOnly role='status' aria-live='polite'>
         {message}
       </ScreenReaderOnly>
-      <DataTable data={data} aria-label={'Loading using SpinContainer'} loading={loading}>
+      <DataTable data={data} aria-label={'Loading using SpinContainer'} loading={loading} h={'auto'}>
         <DataTable.Head>
           <DataTable.Head.Column name='keyword' children='Keyword' />
           <DataTable.Head.Column name='kd' children='KD,%' />
