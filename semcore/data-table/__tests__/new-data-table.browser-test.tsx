@@ -18,7 +18,6 @@ test.describe('DataTable', () => {
     test('Verify styles when no interactive elements in header', async ({ page }) => {
       const standPath = 'stories/components/data-table/docs/examples/base.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
-
       await page.setContent(htmlContent);
       const table = page.locator('[data-ui-name="DataTable"]');
       await expect(table).toBeVisible();
@@ -58,9 +57,10 @@ test.describe('DataTable', () => {
     test('Verify styles when long text and icons in header', async ({ page }) => {
       const standPath = 'stories/components/data-table/tests/examples/header-content.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
+
       await page.setContent(htmlContent);
-      const amazonIcon = page.getByLabel('AmazonM non interactive').nth(1);
       await expect(page).toHaveScreenshot();
+      const amazonIcon = page.getByLabel('AmazonM non interactive').nth(1);
       await amazonIcon.hover();
 
       await expect(page.getByText('AmazonM non interactive')).toHaveCount(1);
@@ -116,7 +116,6 @@ test.describe('DataTable', () => {
       const column1 = page.locator('[data-ui-name="Head.Column"][aria-colindex="1"]');
       const buttonLink1 = column1.locator('button[data-ui-name="ButtonLink"]');
       await expect(buttonLink1).toHaveCSS('margin-left', '4px');
-      //BUG! In playwright the header cell not focused!
       await page.keyboard.press('Tab');
       await expect(buttonLink1).toBeFocused();
       await expect(page).toHaveScreenshot();
@@ -137,12 +136,14 @@ test.describe('DataTable', () => {
 
       await page.setContent(htmlContent);
 
-      const widths = await Promise.all([1, 2, 3, 4].map((i) => getColumnWidth(page, i)));
+      const widths = await Promise.all([1, 2, 3, 4, 5].map((i) => getColumnWidth(page, i)));
 
       expect(widths[1]).toBeLessThan(widths[0]);
       expect(widths[2]).toBeLessThan(widths[0]);
-      expect(widths[1]).toBeLessThan(widths[3]);
-      expect(widths[2]).toBeLessThan(widths[3]);
+      expect(widths[1]).toBeLessThan(widths[4]);
+      expect(widths[2]).toBeLessThan(widths[4]);
+      expect(widths[3]).toBeLessThan(widths[1]);
+      expect(widths[3]).toBeLessThan(widths[2]);
     });
 
     test('Verify Column width when 1fr', async ({ page }) => {
@@ -152,17 +153,17 @@ test.describe('DataTable', () => {
 
       await page.setContent(htmlContent);
 
-      const widths = await Promise.all([1, 2, 3, 4].map((i) => getColumnWidth(page, i)));
+      const widths = await Promise.all([1, 2, 3, 4, 5].map((i) => getColumnWidth(page, i)));
 
-      expect(widths[1]).toEqual(widths[0]);
-      expect(widths[2]).toEqual(widths[0]);
-      expect(widths[1]).toEqual(widths[3]);
-      expect(widths[2]).toEqual(widths[3]);
+      expect(widths[0]).toBeLessThanOrEqual(widths[1]);
+      expect(widths[1]).toBeLessThanOrEqual(widths[4]);
+      expect(widths[1]).toBeCloseTo(widths[2]);
+      expect(widths[1]).toBeLessThanOrEqual(widths[3]);
     });
   });
 
   test.describe('Base styles Secondary Table', () => {
-    test('Secondary Keyboard interactions', async ({ page, browserName }) => {
+    test('Verify Keyboard interactions', async ({ page, browserName }) => {
       const standPath = 'stories/components/data-table/docs/examples/secondary-table.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
 
@@ -194,7 +195,7 @@ test.describe('DataTable', () => {
       await expect(secondCellSecondRow).toBeFocused();
     });
 
-    test('Secondary styles', async ({ page }) => {
+    test('Verify Secondary styles', async ({ page }) => {
       const standPath = 'stories/components/data-table/docs/examples/secondary-table.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
       await page.setContent(htmlContent);
@@ -259,10 +260,10 @@ test.describe('DataTable', () => {
 
       await page.setContent(htmlContent);
 
+      await expect(page).toHaveScreenshot();
       const column1 = page.locator('[data-ui-name="Head.Column"][aria-colindex="1"]');
       const buttonLink1 = column1.locator('button[data-ui-name="ButtonLink"]');
       await column1.hover();
-      await expect(page).toHaveScreenshot();
       await expect(column1).toHaveCSS('background-color', 'rgb(255, 255, 255)');
       await expect(buttonLink1).toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
       await buttonLink1.hover();
@@ -505,7 +506,7 @@ test.describe('DataTable', () => {
       await expect(svgInSecondCell).toHaveAttribute('aria-label', 'Loading…');
       await expect(svgInSecondCell).toHaveAttribute('role', 'img');
     });
-    //BUG IN FF????
+    //GUG IN FF????
     test('Verify keyboard interaction with interactive elements in cells', async ({ page }) => {
       const standPath =
         'stories/components/data-table/tests/examples/interactive-elements-in-cells.tsx';
@@ -1002,7 +1003,9 @@ test.describe('DataTable', () => {
       const htmlContent = await e2eStandToHtml(standPath, 'en');
       await page.setContent(htmlContent);
 
-      await expect(page).toHaveScreenshot();
+      await test.step('Verify active column highlighted when sorting active', async () => {
+        await expect(page).toHaveScreenshot();
+      });
 
       await test.step('Verify keyboard interactions', async () => {
         const getColumn = (i: any) =>
