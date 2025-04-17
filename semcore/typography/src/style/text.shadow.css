@@ -79,7 +79,7 @@ SText {
     list-style: none;
     position: relative;
 
-    & li {
+    & li:not(SText) {
       &:before {
         position: absolute;
         left: 0;
@@ -87,7 +87,7 @@ SText {
       }
     }
 
-    & li+li {
+    & li:not(SText)+li:not(SText) {
       margin: var(--intergalactic-spacing-2x, 8px) 0 0 0;
     }
   }
@@ -95,13 +95,13 @@ SText {
   & ol:not(ol[start], ol[reversed], ol[type]) {
     counter-reset: item 0;
 
-    & li:before {
+    & li:not(SText):before {
       counter-increment: item;
       content: counters(item, '.');
     }
   }
 
-  & ul:not(ul[start], ul[reversed], ul[type]) li:before {
+  & ul:not(ul[start], ul[reversed], ul[type]) li:not(SText):before {
     content: '';
     background-color: var(--intergalactic-icon-primary-neutral, #6c6e79);
   }
