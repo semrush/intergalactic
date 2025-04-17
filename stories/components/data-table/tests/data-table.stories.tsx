@@ -26,6 +26,8 @@ import MultiLevelExample from './examples/multi-level-header';
 import ColumnAlignmentExample from './examples/column-alignment';
 import PerformExample from './examples/performmance-tooltips-ellipsis-test';
 import MergedScrolledRowExample from './examples/one-big-merged-row-and-scroll';
+import NothingFoundSortableExample from './examples/nothing-found-sortable';
+import OneMergedCellExample from './examples/one-merged-cell';
 
 
 const meta: Meta<typeof DataTable> = {
@@ -38,6 +40,14 @@ type Story = StoryObj<typeof DataTable>;
 
 export const SecondaryHeader: Story = {
   render: SecondaryHeaderExample,
+};
+
+export const OneMergedCell: Story = {
+  render: OneMergedCellExample,
+};
+
+export const NothingFoundSortable: Story = {
+  render: NothingFoundSortableExample,
 };
 
 export const MergedScrolledRow: Story = {

@@ -15,6 +15,7 @@ const Demo = () => {
   return (
     <DataTable data={data} aria-label={'Base table example'} defaultGridTemplateColumnWidth={'1fr'} wMax={'1200px'} hMax={'200px'}>
       <DataTable.Head sticky={true}>
+      <DataTable.Head.Column name='hiddenColumn'> <Checkbox label='Option 1' /></DataTable.Head.Column>
         <DataTable.Head.Column name='cpc'  >
           <DescriptionTooltip placement='right'>
             Cpc 1
@@ -103,6 +104,7 @@ const Demo = () => {
               Pink. Let's move on.
             </>}
         />
+
       </DataTable.Head>
       <DataTable.Body
 
@@ -121,6 +123,14 @@ const Demo = () => {
                 >
                   {props.value}
                 </ButtonLink>
+              </>
+            );
+          }
+          if (props.columnName === 'hiddenColumn') {
+            return (
+              <>
+                <Checkbox/>
+            
               </>
             );
           }

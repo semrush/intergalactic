@@ -18,6 +18,7 @@ test.describe('DataTable', () => {
     test('Verify styles when no interactive elements in header', async ({ page }) => {
       const standPath = 'stories/components/data-table/docs/examples/base.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
+
       await page.setContent(htmlContent);
       const table = page.locator('[data-ui-name="DataTable"]');
       await expect(table).toBeVisible();
@@ -57,10 +58,9 @@ test.describe('DataTable', () => {
     test('Verify styles when long text and icons in header', async ({ page }) => {
       const standPath = 'stories/components/data-table/tests/examples/header-content.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
-
       await page.setContent(htmlContent);
-      await expect(page).toHaveScreenshot();
       const amazonIcon = page.getByLabel('AmazonM non interactive').nth(1);
+      await expect(page).toHaveScreenshot();
       await amazonIcon.hover();
 
       await expect(page.getByText('AmazonM non interactive')).toHaveCount(1);
@@ -259,10 +259,10 @@ test.describe('DataTable', () => {
 
       await page.setContent(htmlContent);
 
-      await expect(page).toHaveScreenshot();
       const column1 = page.locator('[data-ui-name="Head.Column"][aria-colindex="1"]');
       const buttonLink1 = column1.locator('button[data-ui-name="ButtonLink"]');
       await column1.hover();
+      await expect(page).toHaveScreenshot();
       await expect(column1).toHaveCSS('background-color', 'rgb(255, 255, 255)');
       await expect(buttonLink1).toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
       await buttonLink1.hover();
@@ -505,7 +505,7 @@ test.describe('DataTable', () => {
       await expect(svgInSecondCell).toHaveAttribute('aria-label', 'Loading…');
       await expect(svgInSecondCell).toHaveAttribute('role', 'img');
     });
-    //GUG IN FF????
+    //BUG IN FF????
     test('Verify keyboard interaction with interactive elements in cells', async ({ page }) => {
       const standPath =
         'stories/components/data-table/tests/examples/interactive-elements-in-cells.tsx';
@@ -1002,9 +1002,7 @@ test.describe('DataTable', () => {
       const htmlContent = await e2eStandToHtml(standPath, 'en');
       await page.setContent(htmlContent);
 
-      await test.step('Verify active column highlighted when sorting active', async () => {
-        await expect(page).toHaveScreenshot();
-      });
+      await expect(page).toHaveScreenshot();
 
       await test.step('Verify keyboard interactions', async () => {
         const getColumn = (i: any) =>
