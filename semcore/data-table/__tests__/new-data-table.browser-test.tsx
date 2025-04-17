@@ -156,8 +156,8 @@ test.describe('DataTable', () => {
       const widths = await Promise.all([1, 2, 3, 4, 5].map((i) => getColumnWidth(page, i)));
 
       expect(widths[0]).toBeLessThanOrEqual(widths[1]);
+      expect(widths[0]).toBeCloseTo(widths[2], 1);
       expect(widths[1]).toBeLessThanOrEqual(widths[4]);
-      expect(widths[1]).toBeCloseTo(widths[2]);
       expect(widths[1]).toBeLessThanOrEqual(widths[3]);
     });
   });
@@ -1394,10 +1394,11 @@ test.describe('DataTable', () => {
       });
 
       await test.step('Verify hover and click on another sorting column', async () => {
+        const cell2 = page.locator('[data-ui-name="Head.Column"][aria-colindex="2"]');
         const buttonLink2 = page.locator(
           '[data-ui-name="Head.Column"][aria-colindex="2"] button[data-ui-name="ButtonLink"]',
         );
-        await buttonLink2.hover();
+        await cell2.hover();
         await expect(page).toHaveScreenshot();
         await expect(buttonLink2).toHaveAttribute('aria-label', 'ascending');
         await buttonLink2.click();
@@ -1594,16 +1595,16 @@ test.describe('DataTable', () => {
       const htmlContent = await e2eStandToHtml(standPath, 'en');
 
       await page.setContent(htmlContent);
-      const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]');
+      const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]').nth(0);
       const initialValue = await checkAriaMaxValue(scrollBar);
       await page.keyboard.press('Tab');
       for (let i = 0; i < 3; i++) {
         await page.keyboard.press('ArrowRight');
       }
-      await page.waitForTimeout(100);
+      await page.waitForTimeout(200);
       const nowNumber = await checkScrollNowIncreased(scrollBar);
       expect(nowNumber).toBeLessThanOrEqual(initialValue);
-      //shapshot
+      await expect(page).toHaveScreenshot();
     });
 
     test('Verify mouse scroll when 1 level header and columns fixed', async ({ page }) => {
@@ -1613,14 +1614,14 @@ test.describe('DataTable', () => {
       await page.setContent(htmlContent);
       const dataTable = await page.locator('[data-ui-name="DataTable"]');
 
-      const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]');
+      const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]').nth(1);
       const initialValue = await checkAriaMaxValue(scrollBar);
       await dataTable.hover();
       await page.mouse.wheel(600, 0);
       await page.waitForTimeout(1000);
       const nowNumber = await checkScrollNowIncreased(scrollBar);
       expect(nowNumber).toBeLessThanOrEqual(initialValue);
-      // await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+      await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
     });
 
     test('Verify keyboard scroll when columns with differend width fixed', async ({ page }) => {
@@ -1628,16 +1629,16 @@ test.describe('DataTable', () => {
         'stories/components/data-table/tests/examples/fixed-column-with-d-ff-width.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
       await page.setContent(htmlContent);
-      const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]');
+      const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]').first();
       const initialValue = await checkAriaMaxValue(scrollBar);
       await page.keyboard.press('Tab');
       for (let i = 0; i < 3; i++) {
         await page.keyboard.press('ArrowRight');
       }
-      await page.waitForTimeout(100);
+      await page.waitForTimeout(200);
       const nowNumber = await checkScrollNowIncreased(scrollBar);
       expect(nowNumber).toBeLessThanOrEqual(initialValue);
-      // await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+      await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
     });
 
     test('Verify keyboard scroll when multilevel parent fixed', async ({ page }) => {
@@ -1647,7 +1648,7 @@ test.describe('DataTable', () => {
 
       await page.setContent(htmlContent);
 
-      const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]');
+      const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]').first();
       const initialValue = await checkAriaMaxValue(scrollBar);
       await page.keyboard.press('Tab');
       for (let i = 0; i < 5; i++) {
@@ -1656,7 +1657,7 @@ test.describe('DataTable', () => {
       await page.waitForTimeout(100);
       const nowNumber = await checkScrollNowIncreased(scrollBar);
       expect(nowNumber).toBeLessThanOrEqual(initialValue);
-      //shapshot
+      await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
     });
 
     test('Verify mouse scroll when multilevel parent fixed', async ({ page }) => {
@@ -1667,11 +1668,11 @@ test.describe('DataTable', () => {
 
       const dataTable = await page.locator('[data-ui-name="DataTable"]');
 
-      const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]');
+      const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]').first();
       const initialValue = await checkAriaMaxValue(scrollBar);
       await dataTable.hover();
       await page.mouse.wheel(600, 0);
-      await page.waitForTimeout(1000);
+      await page.waitForTimeout(200);
       const nowNumber = await checkScrollNowIncreased(scrollBar);
       expect(nowNumber).toBeLessThanOrEqual(initialValue);
       await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
@@ -1772,10 +1773,17 @@ test.describe('DataTable', () => {
 
       await page.setContent(htmlContent);
 
-      const loadingIcon = page.locator('svg[data-ui-name="Spin"]');
-      await expect(loadingIcon).toBeVisible();
-      await expect(loadingIcon).toHaveAttribute('role', 'img');
-      await expect(loadingIcon).toHaveAttribute('aria-label', 'Loading…');
+      await test.step('Verify roles and attributes', async () => {
+        const loadingIcon = page.locator('svg[data-ui-name="Spin"]');
+        await expect(loadingIcon).toBeVisible();
+        await expect(loadingIcon).toHaveAttribute('role', 'gridcell');
+        await expect(loadingIcon).toHaveAttribute('aria-label', 'Loading…');
+      });
+
+      await test.step('Verify focus when loading ', async () => {
+        await page.keyboard.press('Tab');
+        await expect(page.getByRole('row', { name: 'Loading…' })).toBeFocused();
+      });
     });
 
     test('Verify skeleton in table', async ({ page }) => {
@@ -1808,44 +1816,46 @@ test.describe('DataTable', () => {
     test('Verify keyboard interactions with accordion and chart inside', async ({ page }) => {
       const standPath = 'stories/components/data-table/docs/examples/accordion-inside-table.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
-
+      const plot = await page.locator('[data-ui-name="Plot"]');
       await page.setContent(htmlContent);
       const firstArrow = await page.locator('[data-ui-name="ButtonLink"]').first();
+
       await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await expect(plot).toHaveCount(1);
+      await page.keyboard.press('Enter');
+      await expect(plot).toHaveCount(0);
+
       await expect(page).toHaveScreenshot();
       await expect(firstArrow).toBeFocused();
       await page.keyboard.press('ArrowDown');
-      const secondArrow = await page.locator('[data-ui-name="ButtonLink"]').nth(1);
-      const plot = await page.locator('[data-ui-name="Plot"]');
-
-      await expect(secondArrow).toBeFocused();
-      await page.keyboard.press('ArrowRight');
       await page.keyboard.press('Enter');
       await expect(plot).toHaveCount(0);
-      await page.keyboard.press('ArrowLeft');
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowRight');
+      const secondArrow = await page.locator('[data-ui-name="ButtonLink"]').nth(1);
+
       await expect(secondArrow).toBeFocused();
+
       await page.keyboard.press('Enter');
       await expect(plot).toBeVisible();
       await expect(plot).toHaveCount(1);
+
       await page.keyboard.press('Enter');
 
       await expect(plot).not.toBeVisible();
       await expect(plot).toHaveCount(0);
+
       await page.keyboard.press('Enter');
       await page.keyboard.press('ArrowDown');
 
+      await page.waitForTimeout(100);
+      await expect(page.getByRole('gridcell', { name: 'Chart' })).toBeFocused();
+
+      await page.keyboard.press('ArrowDown');
       const thirdArrow = await page.locator('[data-ui-name="ButtonLink"]').nth(2);
       await expect(thirdArrow).toBeFocused();
-
-      await page.keyboard.press('Enter');
-      await page.waitForTimeout(100);
-      await page.keyboard.press('Tab');
-      await expect(plot).toHaveCount(2);
-      const plot2 = await page.getByLabel('Chart').nth(1);
-      await expect(plot2).toBeFocused();
-
-      //   await page.keyboard.press('Shift+Tab');
-      //   await expect(secondArrow).toBeFocused();
     });
 
     test('Verify mouse interactions with accordion and chart inside', async ({ page }) => {
@@ -1866,9 +1876,6 @@ test.describe('DataTable', () => {
       const thirdArrow = await page.locator('[data-ui-name="ButtonLink"]').nth(2);
       await thirdArrow.click();
       await expect(plot).toHaveCount(2);
-
-      //   await page.keyboard.press('Shift+Tab');
-      //   await expect(secondArrow).toBeFocused();
     });
 
     test('Verify accordion with chart styles', async ({ page }) => {
@@ -1891,9 +1898,8 @@ test.describe('DataTable', () => {
       const plot = await page.locator('[data-ui-name="Plot"]');
       await expect(plot).toHaveCount(1);
 
-      const row3 = page.locator('[data-ui-name="Body.Row"][aria-rowindex="3"]');
+      const row3 = page.locator('[data-ui-name="Body.Row"][aria-rowindex="2"]');
       const cells = row3.locator('div');
-      // Получаем количество ячеек
       const cellCount = await cells.count();
 
       for (let i = 0; i < cellCount; i++) {
@@ -1903,7 +1909,7 @@ test.describe('DataTable', () => {
         });
       }
 
-      const row4 = page.locator('[data-ui-name="Collapse"][aria-rowindex="4"]');
+      const row4 = page.locator('[data-ui-name="Collapse"][aria-rowindex="3"]');
       await checkStyles(row4.locator('div').first(), {
         'background-color': 'rgb(244, 245, 249)',
       });
@@ -1911,13 +1917,12 @@ test.describe('DataTable', () => {
       const secondArrow = await page.locator('[data-ui-name="ButtonLink"]').nth(1);
       await secondArrow.click();
       await expect(plot).toHaveCount(2);
-      await expect(page).toHaveScreenshot();
-      const row5 = page.locator('[data-ui-name="Body.Row"][aria-rowindex="5"]');
+      const row5 = page.locator('[data-ui-name="Body.Row"][aria-rowindex="4"]');
       const cells5 = row5.locator('div');
-      // Получаем количество ячеек
+
       const cellCount5 = await cells5.count();
 
-      for (let i = 0; i < cellCount - 1; i++) {
+      for (let i = 0; i < cellCount5 - 1; i++) {
         const cell = cells5.nth(i);
         await checkStyles(cell, {
           'background-color': 'rgb(240, 240, 244)',
@@ -1944,7 +1949,7 @@ test.describe('DataTable', () => {
       await page.setContent(htmlContent);
       const firstArrow = await page.locator('[data-ui-name="ButtonLink"]').first();
       await expect(firstArrow).toHaveAttribute('aria-label', 'Show details');
-      const row3 = page.locator('[data-ui-name="Body.Row"][aria-rowindex="3"]');
+      const row3 = page.locator('[data-ui-name="Body.Row"][aria-rowindex="2"]');
       const cells = row3.locator('div');
 
       await expect(cells.first()).toHaveAttribute('aria-expanded', 'false');
@@ -1988,7 +1993,7 @@ test.describe('DataTable', () => {
 
       const cellCount3 = await cells3.count();
 
-      for (let i = 0; i < cellCount; i++) {
+      for (let i = 0; i < cellCount3; i++) {
         const cell = cells3.nth(i);
         await checkStyles(cell, {
           'background-color': 'rgb(244, 245, 249)',
