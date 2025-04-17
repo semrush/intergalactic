@@ -53,25 +53,28 @@ class TooltipRoot extends Component {
 
     if (canUseDOM()) {
       this.tooltipContainerContainer = new Promise((resolve) => {
-          setTimeout(() => {
-            const key = this.context.current ?? document.body;
-            let element = tooltipContainer.get(key) ?? null;
+        setTimeout(() => {
+          const key = this.context.current ?? document.body;
+          let element = tooltipContainer.get(key) ?? null;
 
-            if (element === null || (element instanceof HTMLElement && !document.body.contains(element))) {
-                element = document.createElement('div');
-                element.setAttribute('role', 'status');
-                element.setAttribute('aria-live', 'polite');
+          if (
+            element === null ||
+            (element instanceof HTMLElement && !document.body.contains(element))
+          ) {
+            element = document.createElement('div');
+            element.setAttribute('role', 'status');
+            element.setAttribute('aria-live', 'polite');
 
-                tooltipContainer.set(key, element);
+            tooltipContainer.set(key, element);
 
-              key.appendChild(element);
-            }
+            key.appendChild(element);
+          }
 
-            resolve(element);
-          }, 0);
-        });
-      }
+          resolve(element);
+        }, 0);
+      });
     }
+  }
 
   uncontrolledProps() {
     return {
@@ -181,7 +184,6 @@ function TooltipPopper(props) {
         setTooltipContainerNode(result);
       });
     }
-
   }, [tooltipContainer]);
 
   return sstyled(styles)(
