@@ -47,6 +47,7 @@ class TooltipRoot extends Component {
       <Tooltip.Popper>{title}</Tooltip.Popper>
     </>
   );
+  tooltipContainerContainer = null;
 
   constructor(props, context) {
     super(props, context);
@@ -192,7 +193,7 @@ function TooltipPopper(props) {
         render={Popper.Popper}
         use:theme={resolveColor(theme)}
         use:zIndex={zIndex}
-        nodeToMount={ariaLive === 'polite' ? tooltipContainerNode : undefined}
+        nodeToMount={ariaLive === 'polite' && tooltipContainerNode instanceof Element ? tooltipContainerNode : undefined}
       >
         <Children />
         <SArrow
