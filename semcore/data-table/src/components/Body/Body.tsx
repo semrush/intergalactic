@@ -346,8 +346,9 @@ class BodyRoot<D extends DataTableData> extends Component<
             headerHeight={`${headerHeight}px`}
             tabIndex={-1}
             ref={spinnerRef}
+            role={'row'}
           >
-            <Spin size={'xxl'} />
+            <Spin size={'xxl'} role={'gridcell'} />
           </SSpinContainer>
         )}
       </SBody>,
