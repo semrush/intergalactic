@@ -11,21 +11,19 @@ const data = [
 
 const Demo = () => {
   return (
-    <DataTable data={data} aria-label={'Empty table example'}>
-      <DataTable.Head>
-        <DataTable.Head.Column name='keyword' children='Keyword' />
-        <DataTable.Head.Column name='kd' children='KD,%' />
-        <DataTable.Head.Column name='cpc' children='CPC' />
-        <DataTable.Head.Column name='vol' children='Vol.' />
-      </DataTable.Head>
-      <DataTable.Body
+    <DataTable data={data} aria-label={'Empty table example'}
+        columns={[
+            {name: 'keyword', children: 'keyword'},
+            {name: 'kd', children: 'KD,%'},
+            {name: 'cpc', children: 'CPC'},
+            {name: 'vol', children: 'Vol.'}
+        ]}
         renderCell={() => (
           <NoData type='nothing-found' my={7} mx='auto'>
             <Button mt={4}>Clear filters</Button>
           </NoData>
         )}
       />
-    </DataTable>
   );
 };
 

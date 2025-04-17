@@ -57,7 +57,7 @@ describe('DataTable.Column', () => {
       <DataTable
         data={[]}
         aria-label={'table label'}
-        columns={[{ name: 'keyword', ref: spy }, { name: 'kd' }]}
+        columns={[{ name: 'keyword', ref: spy, children: '' }, { name: 'kd', children: '' }]}
       />,
     );
     expect(spy).toBeCalled();

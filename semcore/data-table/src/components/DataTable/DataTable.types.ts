@@ -111,7 +111,7 @@ export type ColumnItemConfig = Intergalactic.InternalTypings.EfficientOmit<
   >,
   'children'
 > & {
-  children: React.ReactNode;
+  children: React.ReactNode | React.FC;
 };
 
 export type ColumnGroupConfig = {
