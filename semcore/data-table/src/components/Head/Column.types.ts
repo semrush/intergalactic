@@ -5,7 +5,6 @@ import {
   DTUse,
 } from '../DataTable/DataTable.types';
 import { Property } from 'csstype';
-import Tooltip from '@semcore/tooltip';
 
 export type CommonColumnType = {
   /**
@@ -61,7 +60,7 @@ export type DTColumn = CommonColumnType & {
   parent?: DTColumn | ColumnGroupConfig;
 
   columns?: DTColumn[];
-  children?: React.ReactNode;
+  children: React.ReactNode;
 
   gridArea?: string;
 };

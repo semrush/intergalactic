@@ -171,7 +171,7 @@ class BodyRoot<D extends DataTableData> extends Component<
       use,
       virtualScroll: Boolean(virtualScroll),
       tableRef,
-      children: props.children ?? defaultRender,
+      children: props.children ?? defaultRender(),
     };
 
     if (renderCell) {

@@ -733,7 +733,6 @@ class DataTableRoot<D extends DataTableData> extends Component<
             this.ref.current = node;
           }
         },
-        children: columnElement.children,
         gridColumnWidth: childIsColumn(columnElement)
           ? calculateGridTemplateColumn(columnElement)
           : '',
