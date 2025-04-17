@@ -470,7 +470,15 @@
     "rawValue": "{blue.500}",
     "computedValue": "#006dca",
     "description": "Link text.",
-    "components": ["base-trigger", "button", "format-text", "link", "pagination", "tab-panel"]
+    "components": [
+      "base-trigger",
+      "button",
+      "format-text",
+      "link",
+      "pagination",
+      "tab-panel",
+      "typography"
+    ]
   },
   {
     "name": "--intergalactic-text-link-hover-active",
@@ -478,7 +486,7 @@
     "rawValue": "{blue.600}",
     "computedValue": "#044792",
     "description": "Hover and active states for the link text.",
-    "components": ["base-trigger", "button", "format-text", "link", "tab-panel"]
+    "components": ["base-trigger", "button", "format-text", "link", "tab-panel", "typography"]
   },
   {
     "name": "--intergalactic-text-link-invert",
@@ -518,7 +526,7 @@
     "rawValue": "{gray.600}",
     "computedValue": "#484a54",
     "description": "Hover and active states of the hint link text.",
-    "components": ["button", "format-text"]
+    "components": ["button", "format-text", "typography"]
   },
   {
     "name": "--intergalactic-text-hint-invert",
@@ -1093,7 +1101,8 @@
       "drag-and-drop",
       "format-text",
       "fullscreen-modal",
-      "notice"
+      "notice",
+      "typography"
     ]
   },
   {
@@ -1197,7 +1206,8 @@
       "inline-input",
       "input",
       "input-number",
-      "switch"
+      "switch",
+      "typography"
     ]
   },
   {
@@ -1798,7 +1808,7 @@
     "rawValue": "rgba({blue.400}, 0.5)",
     "computedValue": "rgba(0, 143, 248, 0.5)",
     "description": "Color for default keyboard focus outline styles.",
-    "components": ["base-components", "format-text"]
+    "components": ["base-components", "format-text", "typography"]
   },
   {
     "name": "--intergalactic-keyboard-focus-outline-invert",
@@ -2245,7 +2255,8 @@
       "radio",
       "select",
       "slider",
-      "tag"
+      "tag",
+      "typography"
     ]
   },
   {
@@ -2282,6 +2293,7 @@
       "tag",
       "textarea",
       "time-picker",
+      "typography",
       "widget-empty",
       "wizard"
     ]
@@ -2365,6 +2377,7 @@
       "textarea",
       "time-picker",
       "tooltip",
+      "typography",
       "widget-empty",
       "wizard"
     ]
@@ -2429,7 +2442,8 @@
       "fullscreen-modal",
       "notice-bubble",
       "product-head",
-      "side-panel"
+      "side-panel",
+      "typography"
     ]
   },
   {
@@ -2444,7 +2458,8 @@
       "format-text",
       "fullscreen-modal",
       "notice-bubble",
-      "notice-global"
+      "notice-global",
+      "typography"
     ]
   },
   {
