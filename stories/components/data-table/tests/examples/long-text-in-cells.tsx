@@ -22,7 +22,7 @@ const Demo = () => {
                 </DataTable.Head>
                 <DataTable.Body
                     renderCell={(props) => {
-                        if (props.name === 'keyword') {
+                        if (props.columnName === 'keyword') {
                             return (
                                 <Flex>
 
@@ -32,7 +32,7 @@ const Demo = () => {
                             );
                         }
 
-                        if (props.name === 'cpc') {
+                        if (props.columnName === 'cpc') {
                             return (
                                 <Flex>
 
@@ -48,7 +48,7 @@ const Demo = () => {
                                 </Flex>
                             );
                         }
-                        if (props.name === 'vol') {
+                        if (props.columnName === 'vol') {
                             return (
                                 <>
                                     <Ellipsis> {props.value}</Ellipsis>

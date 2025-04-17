@@ -13,6 +13,8 @@ export type PortalProps = {
   ignorePortalsStacking?: boolean;
   /** Called when portal mount state changes */
   onMount?: (mounted: boolean) => void;
+  /** Manually set node to mount portal content */
+  nodeToMount?: NodeByRef;
 };
 
 const PortalContext = register.get(
@@ -22,7 +24,7 @@ const PortalContext = register.get(
 );
 
 function Portal(props: PortalProps & { Children: React.FC }) {
-  const { Children, disablePortal, ignorePortalsStacking, onMount } = props;
+  const { Children, disablePortal, ignorePortalsStacking, onMount, nodeToMount } = props;
   const container = React.useContext(PortalContext);
   const [mountNode, setMountNode] = React.useState<Element | null>(null);
 
@@ -33,8 +35,12 @@ function Portal(props: PortalProps & { Children: React.FC }) {
       setMountNode(canUseDOM() ? document.body : null);
       return;
     }
+    if (nodeToMount) {
+      setMountNode(getNodeByRef(nodeToMount));
+      return;
+    }
     setMountNode(getNodeByRef(container));
-  }, [container, disablePortal, onMount]);
+  }, [container, disablePortal, onMount, nodeToMount]);
 
   if (disablePortal) {
     return <Children />;
@@ -46,5 +52,5 @@ function Portal(props: PortalProps & { Children: React.FC }) {
 Portal.displayName = 'Portal';
 
 const { Provider: PortalProvider } = PortalContext;
-export { PortalProvider };
+export { PortalProvider, PortalContext };
 export default createComponent(Portal) as Intergalactic.Component<Intergalactic.Tag, PortalProps>;

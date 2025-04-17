@@ -665,6 +665,7 @@ function PopperPopper(props: PopperPopperProps & IRootComponentProps & InnerPopp
     handleFocusOut,
     role,
     zIndex: providedZIndex,
+    nodeToMount,
   } = props;
   const ref = React.useRef<HTMLElement>(null);
   const zIndex = useZIndexStacking('z-index-popper');
@@ -674,7 +675,7 @@ function PopperPopper(props: PopperPopperProps & IRootComponentProps & InnerPopp
     event.stopPropagation();
   }, []);
   const propagateFocusLockSyntheticEvent = React.useCallback((event: React.SyntheticEvent) => {
-    event.nativeEvent.stopImmediatePropagation();
+    event.stopPropagation();
     // @ts-ignore
     ref.current?.dispatchEvent(makeFocusLockSyntheticEvent(event));
   }, []);
@@ -739,6 +740,7 @@ function PopperPopper(props: PopperPopperProps & IRootComponentProps & InnerPopp
       disablePortal={disablePortal}
       ignorePortalsStacking={ignorePortalsStacking}
       onMount={setPortalMounted}
+      nodeToMount={nodeToMount}
     >
       <NeighborLocation controlsLength={controlsLength}>
         <ZIndexStackingContextProvider designToken='z-index-popper'>

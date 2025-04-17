@@ -10,10 +10,7 @@ export class Group extends Component<DataTableGroupProps, {}, {}, [], GroupProps
   static displayName = 'Group';
   static style = style;
 
-  mounted = false;
-
   componentDidMount() {
-    this.mounted = true;
     this.forceUpdate();
   }
 
@@ -35,12 +32,10 @@ export class Group extends Component<DataTableGroupProps, {}, {}, [], GroupProps
     }
 
     return sstyled(styles)(
-      <SGroupContainer display={'contents'}>
-        {this.mounted && (
-          <SGroup render={Box} style={style}>
-            {title}
-          </SGroup>
-        )}
+      <SGroupContainer>
+        <SGroup render={Box} style={style} __excludeProps={['title']}>
+          {title}
+        </SGroup>
         <Children />
       </SGroupContainer>,
     );

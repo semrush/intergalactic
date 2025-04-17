@@ -2,12 +2,13 @@ import * as React from 'react';
 import { Component, createComponent, Intergalactic, Root, sstyled } from '@semcore/core';
 import { DataTableHeadProps, HeadPropsInner } from './Head.types';
 import { Box, ScreenReaderOnly } from '@semcore/base-components';
+import Tooltip from '@semcore/tooltip';
 
 import style from './style.shadow.css';
 import { Column } from './Column';
 import { Group } from './Group';
 import { DataTableColumnProps } from './Column.types';
-import { getFixedStyle, getScrollOffsetValue } from '../../utils';
+import { getFixedStyle } from '../../utils';
 import { DataTableGroupProps } from './Group.type';
 import { DataTableData } from '../DataTable/DataTable.types';
 
@@ -39,8 +40,16 @@ class HeadRoot<D extends DataTableData> extends Component<
   }
 
   getColumnProps(_: any, index: number) {
-    const { use, columns, sort, onSortChange, tableRef, gridTemplateColumns, gridTemplateAreas } =
-      this.asProps;
+    const {
+      use,
+      columns,
+      sort,
+      onSortChange,
+      tableRef,
+      gridTemplateColumns,
+      gridTemplateAreas,
+      sticky,
+    } = this.asProps;
     const column = columns[index];
     const [name, value] = getFixedStyle(column, columns);
     const style: any = {};
@@ -58,6 +67,7 @@ class HeadRoot<D extends DataTableData> extends Component<
       style,
       gridArea: column.gridArea,
       fixed: column.fixed,
+      sticky,
       borders: column.borders,
       sort,
       onSortChange,
@@ -72,26 +82,13 @@ class HeadRoot<D extends DataTableData> extends Component<
 
   render() {
     const SHead = Root;
-    const { Children, styles, columns, tableRef, withScrollBar, getI18nText } = this.asProps;
-    const [offsetLeftSum, offsetRightSum] = getScrollOffsetValue(columns);
+    const { Children, styles, getI18nText } = this.asProps;
 
     return sstyled(styles)(
       <>
         <SHead render={Box} role='row' aria-rowindex={1}>
           <Children />
         </SHead>
-
-        {/*{Boolean(withScrollBar) && tableRef.current && (*/}
-        {/*  <Box display={'contents'}>*/}
-        {/*    <ScrollArea.Bar*/}
-        {/*      orientation='horizontal'*/}
-        {/*      container={tableRef}*/}
-        {/*      top={'25px'}*/}
-        {/*      leftOffset={offsetLeftSum}*/}
-        {/*      rightOffset={offsetRightSum}*/}
-        {/*    />*/}
-        {/*  </Box>*/}
-        {/*)}*/}
 
         <ScreenReaderOnly aria-hidden={true} id={this.sortableColumnDescribeId()}>
           {getI18nText('sortableColumn')}
@@ -105,6 +102,10 @@ export const Head = createComponent(HeadRoot, { Column, Group }) as Intergalacti
   'div',
   DataTableHeadProps
 > & {
-  Column: Intergalactic.Component<'div', DataTableColumnProps>;
-  Group: Intergalactic.Component<'div', DataTableGroupProps>;
+  Column: <Tag extends 'div' | typeof Tooltip = 'div'>(
+    props: Intergalactic.InternalTypings.ComponentProps<Tag, 'div', DataTableColumnProps, {}, []>,
+  ) => Intergalactic.InternalTypings.ComponentRenderingResults;
+  Group: <Tag extends 'div' | typeof Tooltip = 'div'>(
+    props: Intergalactic.InternalTypings.ComponentProps<Tag, 'div', DataTableGroupProps, {}, []>,
+  ) => Intergalactic.InternalTypings.ComponentRenderingResults;
 };

@@ -15,6 +15,7 @@ const Demo = () => {
   return (
     <DataTable data={data} aria-label={'Base table example'} defaultGridTemplateColumnWidth={'1fr'} wMax={'1200px'} hMax={'200px'}>
       <DataTable.Head sticky={true}>
+      <DataTable.Head.Column name='hiddenColumn'> <Checkbox label='Option 1' /></DataTable.Head.Column>
         <DataTable.Head.Column name='cpc'  >
           <DescriptionTooltip placement='right'>
             Cpc 1
@@ -96,17 +97,19 @@ const Demo = () => {
         </DataTable.Head.Column>
         <DataTable.Head.Column sortable name='vol' children='Vol.' tag={Tooltip}
           data-test-id='tag-tooltip'
+          disableEnforceFocus
           title={
             <>
               Jesus Christ, Joe, <Link>fucking forget</Link> about it. I'm Mr.
               Pink. Let's move on.
             </>}
         />
+
       </DataTable.Head>
       <DataTable.Body
 
         renderCell={(props) => {
-          if (props.name === 'keyword') {
+          if (props.columnName === 'keyword') {
             return (
               <>
                 <Checkbox label='Option 1' />
@@ -123,7 +126,15 @@ const Demo = () => {
               </>
             );
           }
-          if (props.name === 'vol') {
+          if (props.columnName === 'hiddenColumn') {
+            return (
+              <>
+                <Checkbox/>
+            
+              </>
+            );
+          }
+          if (props.columnName === 'vol') {
             return (
               <>
                 <Ellipsis trim='middle'>

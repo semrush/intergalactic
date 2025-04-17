@@ -8,7 +8,7 @@ import AmazonM from '@semcore/icon/color/Amazon/m';
 const Demo = () => {
 
   return (
-    <DataTable data={data} aria-label={'Borders'} defaultGridTemplateColumnWidth={'1fr'}  >
+    <DataTable data={data} aria-label={'Borders'} defaultGridTemplateColumnWidth={'1fr'} h={'100%'}>
       <DataTable.Head>
         <DataTable.Head.Group borders={'left'} title={'Borders left'}>
           <DataTable.Head.Column name='kd' gtcWidth={'100px'}>
@@ -23,7 +23,7 @@ const Demo = () => {
 
         </DataTable.Head.Group >
         <DataTable.Head.Column name='keyword' children='Keyword' />
-        <DataTable.Head.Group borders={'both'} title={'Bprders both - Organic Sessions rganic Sessions rganic Sessions'}>
+        <DataTable.Head.Group borders={'both'} title={(<Ellipsis>Bprders both - Organic Sessions rganic Sessions rganic Sessions</Ellipsis>)}>
 
           <DataTable.Head.Column name='kd2' gtcWidth={'100px'} >
             <Ellipsis>

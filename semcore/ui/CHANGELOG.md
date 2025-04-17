@@ -1,3 +1,10 @@
+## [15.129.0] - 2025-04-11
+
+### @semcore/icon
+
+- **Added** New `AIToolkit` icon.
+- **Changed** `SEOToolkit` icon a little bit.
+
 ## [15.128.0] - 2025-04-04
 
 ### @semcore/bulk-textarea

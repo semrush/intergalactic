@@ -108,18 +108,6 @@ Create a multi-level header by nesting columns within each other.
 
 :::
 
-### Additional elements in header
-
-Components added to `<DataTable.Head/>` will be inserted at the end of the header.
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from 'stories/components/data-table/docs/examples/additional-elements-in-header.tsx';
-</script>
-
-:::
-
 ## Table columns
 
 ### Column sizes
@@ -277,18 +265,6 @@ If some column has `changeSortSize={true}`, by default, it will be increased by 
 
 :::
 
-### Changing width of column by reducing width of another column
-
-You could set `sortSizeRecalculation={true}` for using this column as column to recalculation width (after increase to sorting column). The needed width will be divided equally between all such columns.
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from 'stories/components/data-table/docs/examples/sorting-changing-size-by-columns.tsx';
-</script>
-
-:::
-
 ## Table scroll
 
 ### Basic scroll
@@ -334,9 +310,21 @@ Avoid placing [Pagination](/components/pagination/pagination) inside the table, 
 
 :::
 
-## Loading states
+## Table states
 
-### SpinContainer
+### Initial loading (Skeleton)
+
+Add a skeleton to the table by directly substituting it in the `data` or replacing `rows` with `<DataTable.Body/>` .
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/components/data-table/docs/examples/skeleton-in-table.tsx';
+</script>
+
+:::
+
+### Updating table (SpinContainer)
 
 Replace the `tag` property with `<DataTable.Body/>` on the `SpinContainer` to cover the table with a [Spin](/components/spin/spin).
 
@@ -348,14 +336,14 @@ Replace the `tag` property with `<DataTable.Body/>` on the `SpinContainer` to co
 
 :::
 
-### Skeleton
+### Empty state
 
-Add a skeleton to the table by directly substituting it in the `data` or replacing `rows` with `<DataTable.Body/>` .
+Render [WidgetEmpty](../../components/widget-empty/widget-empty) inside a single cell spanning across all columns.
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/data-table/docs/examples/skeleton-in-table.tsx';
+  export Demo from 'stories/components/data-table/docs/examples/nothing-found.tsx';
 </script>
 
 :::
@@ -408,30 +396,6 @@ Refer to the [example with the table inside the table](/table-group/data-table/d
 
 <script lang="tsx">
   export Demo from 'stories/components/data-table/docs/examples/table-in-table-with-fixed-column.tsx';
-</script>
-
-:::
-
-### Adding additional elements to table body
-
-Components added to `<DataTable.Body/>` will be inserted at the end of the table body. Use `z-index=1` to block fixed columns or `z-index=2` to block scrolling if needed.
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from 'stories/components/data-table/docs/examples/adding-additional-elements-to-table-body.tsx';
-</script>
-
-:::
-
-### Custom styles for table body
-
-It’s an example of a custom styles for the table body, which uses CSS variables to set the correct cell width in a flex row. To reuse column sizes, use CSS variables like `var(--<%column-name%>_width)`.
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from 'stories/components/data-table/docs/examples/custom-view-for-table-body.tsx';
 </script>
 
 :::

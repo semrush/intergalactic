@@ -1,19 +1,23 @@
 export class MergedRowsCell {
   public readonly value: any;
-  public readonly rowsCount: number;
+  public readonly fromRow: number;
+  public readonly toRow: number;
 
-  constructor(value: any, size: number) {
+  constructor(value: any, rows: [number, number]) {
     this.value = value;
-    this.rowsCount = size;
+    this.fromRow = rows[0];
+    this.toRow = rows[1];
   }
 }
 
 export class MergedColumnsCell {
   public readonly value: any;
   public readonly columnsCount: number;
+  public readonly dataKey: string;
 
-  constructor(value: any, size: number) {
+  constructor(value: any, options: { size: number; dataKey: string }) {
     this.value = value;
-    this.columnsCount = size;
+    this.columnsCount = options.size;
+    this.dataKey = options.dataKey;
   }
 }

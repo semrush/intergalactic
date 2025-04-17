@@ -28,7 +28,7 @@ const Demo = () => {
   );
 
   return (
-    <DataTable data={sortedData} aria-label={'Borders'} defaultGridTemplateColumnWidth={'1fr'} sort={sort} onSortChange={setSort} >
+    <DataTable data={sortedData} aria-label={'Borders'} defaultGridTemplateColumnWidth={'1fr'} sort={sort} onSortChange={setSort} h={'100%'}>
       <DataTable.Head>
         <DataTable.Head.Group borders={'left'} title={'Organic Sessions'}>
           <DataTable.Head.Column name='kd' gtcWidth={'100px'} sortable>
@@ -46,14 +46,14 @@ const Demo = () => {
         <DataTable.Head.Group borders={'both'} title={'Organic Sessions Organic Sessions Organic SessionsOrganic Sessions Organic Sessions Organic Sessions '}>
 
           <DataTable.Head.Column name='kd2' gtcWidth={'100px'} sortable >
-            <Ellipsis>
+              <Ellipsis>
               Kd Organic Sessions Organic Sessions
-            </Ellipsis>
+              </Ellipsis>
             <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
 
           </DataTable.Head.Column>
 
-          <DataTable.Head.Column name='cpc' children='CPC' sortable />
+          <DataTable.Head.Column name='cpc2' children='CPC' sortable />
           <DataTable.Head.Column name='vol' children='Vol.' />
         </DataTable.Head.Group>
         <DataTable.Head.Column name='other' children='Other' />

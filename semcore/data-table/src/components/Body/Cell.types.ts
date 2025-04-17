@@ -1,16 +1,19 @@
 import { DTRow } from './Row.types';
 import { DTUse } from '../DataTable/DataTable.types';
-import { DTColumn, CommonColumnType } from '../Head/Column.types';
+import { DTColumn } from '../Head/Column.types';
 
-export type DataTableCellProps = CommonColumnType & {
-  name: string;
+export type DataTableCellProps = {
   row: DTRow;
-  columnIndex: number;
-  column: DTColumn;
   rowIndex: number;
-  gridArea?: string;
+  column: DTColumn;
+  columnIndex: number;
+  gridRowIndex: number;
+  children?: React.ReactNode;
 };
 
 export type CellPropsInner = {
   use: DTUse;
+
+  virtualScroll: boolean;
+  tableRef: React.RefObject<HTMLDivElement>;
 };

@@ -1,13 +1,23 @@
-SBody, SRow {
+SBody, SRow, SRowGroup {
   display: contents;
 }
 
-SBody[compact] SCell {
-  padding: var(--intergalactic-spacing-3x, 12px) var(--intergalactic-spacing-2x, 8px);
+SBody[compact] {
+  SCell {
+    padding: var(--intergalactic-spacing-3x, 12px) var(--intergalactic-spacing-2x, 8px);
+  }
+
+  SCell[data-aria-level] {
+    padding-left: calc(var(--intergalactic-spacing-2x, 8px) + (var(--intergalactic-spacing-5x, 20px) * (var(--data-aria-level) - 1)));
+  }
 }
 
 SRow[gridArea], SCell[gridArea], SCollapseRow[gridArea] {
   grid-area: var(--gridArea);
+}
+
+SCollapseRow SCell {
+  display: block;
 }
 
 /* DEFAULT THEME */
@@ -17,10 +27,77 @@ SRow[active] > SCell:not([theme]) {
   background-color: var(--intergalactic-table-td-cell-active, #e6e7ed);
 }
 
-SRow:hover > SCell:not([theme]) {
-  /* The color is hardcoded because need hex(in figma rgba) */
-  /* disable-tokens-validator */
-  background-color: var(--intergalactic-table-td-cell-hover, #f0f0f4);
+SRow[expanded][accordionType='row'] > SCell:not([theme]) {
+  background-color: var(--intergalactic-table-td-cell-active, #e6e7ed);
+}
+
+SRow[expanded][accordionType='cell'] > SCell:not([theme])[withAccordion] {
+  background-color: var(--intergalactic-table-td-cell-active, #e6e7ed);
+}
+
+SCollapseRow > SCell:not([theme]) {
+  background-color: var(--intergalactic-table-td-cell-actions-accordion, #f4f5f9);
+}
+
+/* we need a media query here because of the postcssHoverMediaFeature plugin. it doesn't handle this type of selectors correctly */
+@media (hover: hover) {
+  SRow:hover > SCell:not([theme]),
+  SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow > SCell:not([theme]),
+  SRowGroup:has(SCell:hover) > SRow > SCell[data-grouped-by='rowgroup']:not([theme]) {
+    background-color: var(--intergalactic-table-td-cell-hover, #f0f0f4);
+  }
+
+  /* MUTED THEME */
+  SRow:hover > SCell[theme='muted'],
+  SRow[theme='muted']:hover > SCell:not([theme]),
+  SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow > SCell[theme='muted'],
+  SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow[theme='muted'] > SCell:not([theme]),
+  SRowGroup:has(SCell:hover) > SRow > SCell[data-grouped-by='rowgroup'][theme='muted'],
+  SRowGroup:has(SCell:hover) > SRow[theme='muted'] > SCell[data-grouped-by='rowgroup']:not([theme]) {
+    /* The color is hardcoded because need hex(in figma rgba) */
+    /* disable-tokens-validator */
+    background-color: var(--intergalactic-table-td-cell-hover, #f0f0f4);
+  }
+
+  /* INFO THEME */
+  SRow:hover > SCell[theme='info'],
+  SRow[theme='info']:hover > SCell:not([theme]),
+  SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow > SCell[theme='info'],
+  SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow[theme='info'] > SCell:not([theme]),
+  SRowGroup:has(SCell:hover) > SRow > SCell[data-grouped-by='rowgroup'][theme='info'],
+  SRowGroup:has(SCell:hover) > SRow[theme='info'] > SCell[data-grouped-by='rowgroup']:not([theme]) {
+    background-color: var(--intergalactic-table-td-cell-selected-hover, #c4e5fe);
+  }
+
+  /* SUCCESS THEME */
+  SRow:hover > SCell[theme='success'],
+  SRow[theme='success']:hover > SCell:not([theme]),
+  SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow > SCell[theme='success'],
+  SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow[theme='success'] > SCell:not([theme]),
+  SRowGroup:has(SCell:hover) > SRow > SCell[data-grouped-by='rowgroup'][theme='success'],
+  SRowGroup:has(SCell:hover) > SRow[theme='success'] > SCell[data-grouped-by='rowgroup']:not([theme]) {
+    background-color: var(--intergalactic-table-td-cell-new-hover, #9ef2c9);
+  }
+
+  /* WARNING THEME */
+  SRow:hover > SCell[theme='warning'],
+  SRow[theme='warning']:hover > SCell:not([theme]),
+  SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow > SCell[theme='warning'],
+  SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow[theme='warning'] > SCell:not([theme]),
+  SRowGroup:has(SCell:hover) > SRow > SCell[data-grouped-by='rowgroup'][theme='warning'],
+  SRowGroup:has(SCell:hover) > SRow[theme='warning'] > SCell[data-grouped-by='rowgroup']:not([theme]) {
+    background-color: var(--intergalactic-table-td-cell-warning-hover, #ffdca2);
+  }
+
+  /* DANGER THEME */
+  SRow:hover > SCell[theme='danger'],
+  SRow[theme='danger']:hover > SCell:not([theme]),
+  SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow > SCell[theme='danger'],
+  SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow[theme='danger'] > SCell:not([theme]),
+  SRowGroup:has(SCell:hover) > SRow > SCell[data-grouped-by='rowgroup'][theme='danger'],
+  SRowGroup:has(SCell:hover) > SRow[theme='danger'] > SCell[data-grouped-by='rowgroup']:not([theme]) {
+    background-color: var(--intergalactic-table-td-cell-critical-hover, #ffd7df);
+  }
 }
 
 /* MUTED THEME */
@@ -34,13 +111,6 @@ SRow[theme='muted'][active] > SCell:not([theme]) {
   background-color: var(--intergalactic-table-td-cell-active, #e6e7ed);
 }
 
-SRow:hover > SCell[theme='muted'],
-SRow[theme='muted']:hover > SCell:not([theme]) {
-  /* The color is hardcoded because need hex(in figma rgba) */
-  /* disable-tokens-validator */
-  background-color: var(--intergalactic-table-td-cell-hover, #f0f0f4);
-}
-
 /* INFO THEME */
 SRow[theme='info'] SCell:not([theme]) {
   background-color: var(--intergalactic-table-td-cell-selected, #e9f7ff);
@@ -48,11 +118,6 @@ SRow[theme='info'] SCell:not([theme]) {
 
 SRow[theme='info'][active] > SCell:not([theme]) {
   background-color: var(--intergalactic-table-td-cell-selected-active, #c4e5fe);
-}
-
-SRow:hover > SCell[theme='info'],
-SRow[theme='info']:hover > SCell:not([theme]) {
-  background-color: var(--intergalactic-table-td-cell-selected-hover, #c4e5fe);
 }
 
 /* SUCCESS THEME */
@@ -64,11 +129,6 @@ SRow[theme='success'][active] > SCell:not([theme]) {
   background-color: var(--intergalactic-table-td-cell-new-active, #9ef2c9);
 }
 
-SRow:hover > SCell[theme='success'],
-SRow[theme='success']:hover > SCell:not([theme]) {
-  background-color: var(--intergalactic-table-td-cell-new-hover, #9ef2c9);
-}
-
 /* WARNING THEME */
 SRow[theme='warning'] SCell:not([theme]) {
   background-color: var(--intergalactic-table-td-cell-warning, #fff3d9);
@@ -78,11 +138,6 @@ SRow[theme='warning'][active] > SCell:not([theme]) {
   background-color: var(--intergalactic-table-td-cell-warning-active, #ffdca2);
 }
 
-SRow:hover > SCell[theme='warning'],
-SRow[theme='warning']:hover > SCell:not([theme]) {
-  background-color: var(--intergalactic-table-td-cell-warning-hover, #ffdca2);
-}
-
 /* DANGER THEME */
 SRow[theme='danger'] SCell:not([theme]) {
   background-color: var(--intergalactic-table-td-cell-critical, #fff0f7);
@@ -90,11 +145,6 @@ SRow[theme='danger'] SCell:not([theme]) {
 
 SRow[theme='danger'][active] > SCell:not([theme]) {
   background-color: var(--intergalactic-table-td-cell-critical-active, #ffd7df);
-}
-
-SRow:hover > SCell[theme='danger'],
-SRow[theme='danger']:hover > SCell:not([theme]) {
-  background-color: var(--intergalactic-table-td-cell-critical-hover, #ffd7df);
 }
 
 SCell {
@@ -113,6 +163,7 @@ SCell {
   outline: none;
 
   SAccordionToggle {
+    margin-right: var(--intergalactic-spacing-3x, 12px);
     transition: transform calc(var(--intergalactic-duration-accordion, 200) * 1ms) ease-out;
 
     &[expanded] {
@@ -127,7 +178,7 @@ SCell[use='primary'] {
   background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
 
   &[data-aria-level] {
-    padding-left: calc(var(--intergalactic-spacing-3x, 12px) + (var(--intergalactic-spacing-5x, 20px) * (var(--data-aria-level) - 1)));
+    padding-left: calc(var(--intergalactic-spacing-3x, 12px) + ((var(--intergalactic-spacing-5x, 20px) + var(--intergalactic-spacing-2x, 8px)) * (var(--data-aria-level) - 1)));
   }
 }
 
@@ -137,7 +188,7 @@ SCell[use='secondary'] {
   background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
 
   &[data-aria-level] {
-    padding-left: calc(var(--intergalactic-spacing-2x, 8px) + (var(--intergalactic-spacing-5x, 20px) * (var(--data-aria-level) - 1)));
+    padding-left: calc(var(--intergalactic-spacing-2x, 8px) + ((var(--intergalactic-spacing-5x, 20px) + var(--intergalactic-spacing-2x, 8px)) * (var(--data-aria-level) - 1)));
   }
 }
 

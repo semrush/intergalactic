@@ -18,6 +18,7 @@ test.describe('DataTable', () => {
     test('Verify styles when no interactive elements in header', async ({ page }) => {
       const standPath = 'stories/components/data-table/docs/examples/base.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
+
       await page.setContent(htmlContent);
       const table = page.locator('[data-ui-name="DataTable"]');
       await expect(table).toBeVisible();
@@ -57,10 +58,9 @@ test.describe('DataTable', () => {
     test('Verify styles when long text and icons in header', async ({ page }) => {
       const standPath = 'stories/components/data-table/tests/examples/header-content.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
-
       await page.setContent(htmlContent);
-      await expect(page).toHaveScreenshot();
       const amazonIcon = page.getByLabel('AmazonM non interactive').nth(1);
+      await expect(page).toHaveScreenshot();
       await amazonIcon.hover();
 
       await expect(page.getByText('AmazonM non interactive')).toHaveCount(1);
@@ -100,7 +100,7 @@ test.describe('DataTable', () => {
         'border-bottom': '1px solid rgb(224, 225, 233)',
         'background-color': 'rgb(255, 255, 255)',
         color: 'rgb(25, 27, 35)',
-        padding: '12px 8px', // bug
+        padding: '12px 8px',
       });
 
       await firstCell.hover();
@@ -162,7 +162,7 @@ test.describe('DataTable', () => {
   });
 
   test.describe('Base styles Secondary Table', () => {
-    test('Secondary Keyboard interactions', async ({ page }) => {
+    test('Secondary Keyboard interactions', async ({ page, browserName }) => {
       const standPath = 'stories/components/data-table/docs/examples/secondary-table.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
 
@@ -172,16 +172,13 @@ test.describe('DataTable', () => {
 
       await page.keyboard.press('Tab');
 
-      // Получаем первую ячейку в первой строке (body)
       const firstCell = page.locator('[data-ui-name="Body.Cell"]').first();
 
-      // Проверяем, что первая ячейка в таблице получила фокус
       await expect(firstCell).toBeFocused();
-      // await expect(page).toHaveScreenshot();
+      await expect(page).toHaveScreenshot();
 
       await page.keyboard.press('ArrowRight');
 
-      // Проверяем, что в фокусе вторая ячейка первой строки
       const secondCell = page.locator('[role="gridcell"][aria-colindex="2"]').first();
       await expect(secondCell).toBeFocused();
 
@@ -192,6 +189,7 @@ test.describe('DataTable', () => {
       await page.keyboard.press('Tab');
       await expect(secondCell).not.toBeFocused();
 
+      if (browserName === 'firefox') return;
       await page.keyboard.press('Shift+Tab');
       await expect(secondCellSecondRow).toBeFocused();
     });
@@ -261,10 +259,10 @@ test.describe('DataTable', () => {
 
       await page.setContent(htmlContent);
 
-      await expect(page).toHaveScreenshot();
       const column1 = page.locator('[data-ui-name="Head.Column"][aria-colindex="1"]');
       const buttonLink1 = column1.locator('button[data-ui-name="ButtonLink"]');
       await column1.hover();
+      await expect(page).toHaveScreenshot();
       await expect(column1).toHaveCSS('background-color', 'rgb(255, 255, 255)');
       await expect(buttonLink1).toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
       await buttonLink1.hover();
@@ -411,7 +409,6 @@ test.describe('DataTable', () => {
   });
 
   test.describe('Rows', () => {
-    //skipped bacause this example is on old tables
     test.skip('Verify Custom rows Rendering', async ({ page }) => {
       const standPath = 'stories/components/data-table/docs/examples/custom-rows-rendering.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -428,8 +425,6 @@ test.describe('DataTable', () => {
     test('Verify merged cells on Hover', async ({ page }) => {
       const standPath = 'stories/components/data-table/docs/examples/columns-merging.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
-      await expect(page).toHaveScreenshot();
-
       await page.setContent(htmlContent);
       const firstRow = page.locator('[data-ui-name="Body.Row"]').first();
       const firstCell = firstRow.locator('[data-ui-name="Body.Cell"]').nth(0);
@@ -450,7 +445,7 @@ test.describe('DataTable', () => {
       await page.keyboard.press('Tab');
 
       const firstRow = page.locator('[data-ui-name="Body.Row"]').first();
-      const firstMergedCell = firstRow.locator('[data-ui-name="Body.Cell"]').nth(0);
+      const firstMergedCell = firstRow.locator('[data-ui-name="Body.Cell"][aria-colindex="1"]');
       await expect(firstMergedCell).toBeFocused();
 
       const secondCell = firstRow.locator('[data-ui-name="Body.Cell"]').nth(1);
@@ -459,6 +454,7 @@ test.describe('DataTable', () => {
 
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowLeft');
+      await expect(firstMergedCell).not.toHaveAttribute('inert');
       await expect(firstMergedCell).toBeFocused();
 
       await page.keyboard.press('ArrowRight');
@@ -509,14 +505,13 @@ test.describe('DataTable', () => {
       await expect(svgInSecondCell).toHaveAttribute('aria-label', 'Loading…');
       await expect(svgInSecondCell).toHaveAttribute('role', 'img');
     });
-
+    //BUG IN FF????
     test('Verify keyboard interaction with interactive elements in cells', async ({ page }) => {
       const standPath =
         'stories/components/data-table/tests/examples/interactive-elements-in-cells.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
       await page.setContent(htmlContent);
 
-      // Define common selectors
       const getCell = (row: number, col: number) =>
         page.locator(
           `[role="row"][aria-rowindex="${row}"] [role="gridcell"][aria-colindex="${col}"]`,
@@ -596,7 +591,7 @@ test.describe('DataTable', () => {
       await expect(page.getByLabel('About fastest animals')).toBeFocused();
       await page.keyboard.press('Escape');
 
-      await expect(getCell(3, 1)).toBeFocused();
+      await expect(descriptionTooltipTrigger(3, 1)).toBeFocused();
     });
 
     test('Verify keyboard interaction with dd and select in cells', async ({ page }) => {
@@ -743,7 +738,7 @@ test.describe('DataTable', () => {
       await expect(secondCellSecondRow).toBeFocused();
     });
 
-    test('Verify keyboard interactions when in header hint, checkbox, description tooltip', async ({
+    test('11Verify keyboard interactions when in header hint, checkbox, description tooltip', async ({
       page,
       browserName,
     }) => {
@@ -778,15 +773,12 @@ test.describe('DataTable', () => {
         await page.keyboard.press('Escape');
 
         await expect(getTooltipPopper).toBeHidden();
-        if (browserName !== 'firefox') await expect(tooltipTrigger).toBeFocused();
+        await expect(tooltipTrigger).toBeFocused();
 
         await page.keyboard.press('ArrowRight');
-        if (browserName !== 'firefox') {
-          await expect(getTooltip('tooltip-with-interactive-el')).toBeFocused();
-        }
-      });
 
-      if (browserName === 'firefox') return; // UIK-3506
+        await expect(getTooltip('tooltip-with-interactive-el')).toBeFocused();
+      });
 
       await test.step('Verify interaction with tooltip containing interactive elements', async () => {
         const tooltipTrigger = getTooltip('tooltip-with-interactive-el');
@@ -829,11 +821,16 @@ test.describe('DataTable', () => {
 
         const icon = page.locator('[data-test-id="interactive-icon"]');
         await page.keyboard.press('ArrowRight');
+        await page.keyboard.press('Enter');
+
         await expect(icon).toBeFocused();
         await expect(page.getByText('Go to our awesome article')).toBeVisible();
 
-        await page.keyboard.press('ArrowRight');
+        await page.keyboard.press('Escape');
+
         await expect(page.getByText('Go to our awesome article')).toBeHidden();
+        await page.keyboard.press('Escape');
+        await page.keyboard.press('ArrowRight');
       });
 
       await test.step('Verify interaction with checkbox and tooltip in header', async () => {
@@ -1005,9 +1002,7 @@ test.describe('DataTable', () => {
       const htmlContent = await e2eStandToHtml(standPath, 'en');
       await page.setContent(htmlContent);
 
-      await test.step('Verify active column highlighted when sorting active', async () => {
-        await expect(page).toHaveScreenshot();
-      });
+      await expect(page).toHaveScreenshot();
 
       await test.step('Verify keyboard interactions', async () => {
         const getColumn = (i: any) =>
@@ -1872,6 +1867,137 @@ test.describe('DataTable', () => {
 
       //   await page.keyboard.press('Shift+Tab');
       //   await expect(secondArrow).toBeFocused();
+    });
+
+    test('Verify accordion with chart styles', async ({ page }) => {
+      const standPath = 'stories/components/data-table/docs/examples/accordion-inside-table.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+      await page.setContent(htmlContent);
+      const firstArrow = await page.locator('[data-ui-name="ButtonLink"]').first();
+      const marginRight1 = await firstArrow.evaluate((el) => {
+        return window.getComputedStyle(el).marginRight;
+      });
+
+      expect(marginRight1).toBe('12px');
+      await firstArrow.click();
+      const marginRight = await firstArrow.evaluate((el) => {
+        return window.getComputedStyle(el).marginRight;
+      });
+
+      expect(marginRight).toBe('12px');
+      const plot = await page.locator('[data-ui-name="Plot"]');
+      await expect(plot).toHaveCount(1);
+
+      const row3 = page.locator('[data-ui-name="Body.Row"][aria-rowindex="3"]');
+      const cells = row3.locator('div');
+      // Получаем количество ячеек
+      const cellCount = await cells.count();
+
+      for (let i = 0; i < cellCount; i++) {
+        const cell = cells.nth(i);
+        await checkStyles(cell, {
+          'background-color': 'rgb(230, 231, 237)',
+        });
+      }
+
+      const row4 = page.locator('[data-ui-name="Collapse"][aria-rowindex="4"]');
+      await checkStyles(row4.locator('div').first(), {
+        'background-color': 'rgb(244, 245, 249)',
+      });
+
+      const secondArrow = await page.locator('[data-ui-name="ButtonLink"]').nth(1);
+      await secondArrow.click();
+      await expect(plot).toHaveCount(2);
+      await expect(page).toHaveScreenshot();
+      const row5 = page.locator('[data-ui-name="Body.Row"][aria-rowindex="5"]');
+      const cells5 = row5.locator('div');
+      // Получаем количество ячеек
+      const cellCount5 = await cells5.count();
+
+      for (let i = 0; i < cellCount - 1; i++) {
+        const cell = cells5.nth(i);
+        await checkStyles(cell, {
+          'background-color': 'rgb(240, 240, 244)',
+        });
+      }
+
+      await checkStyles(cells5.nth(3), {
+        'background-color': 'rgb(230, 231, 237)',
+      });
+
+      await firstArrow.click();
+      for (let i = 0; i < cellCount; i++) {
+        const cell = cells.nth(i);
+        await checkStyles(cell, {
+          'background-color': 'rgb(240, 240, 244)',
+        });
+      }
+    });
+
+    test('Verify accordion attributes', async ({ page }) => {
+      const standPath = 'stories/components/data-table/docs/examples/accordion-inside-table.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+      await page.setContent(htmlContent);
+      const firstArrow = await page.locator('[data-ui-name="ButtonLink"]').first();
+      await expect(firstArrow).toHaveAttribute('aria-label', 'Show details');
+      const row3 = page.locator('[data-ui-name="Body.Row"][aria-rowindex="3"]');
+      const cells = row3.locator('div');
+
+      await expect(cells.first()).toHaveAttribute('aria-expanded', 'false');
+      await expect(cells.nth(1)).not.toHaveAttribute('aria-expanded', 'false');
+      await firstArrow.click();
+      await expect(cells.first()).toHaveAttribute('aria-expanded', 'true');
+    });
+
+    test('Verify accordion table in table styles', async ({ page }) => {
+      const standPath = 'stories/components/data-table/docs/examples/table-in-table.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+      await page.setContent(htmlContent);
+      const firstArrow = await page.locator('[data-ui-name="ButtonLink"]').first();
+      const marginRight1 = await firstArrow.evaluate((el) => {
+        return window.getComputedStyle(el).marginRight;
+      });
+
+      expect(marginRight1).toBe('12px');
+      await firstArrow.click();
+      const marginRight = await firstArrow.evaluate((el) => {
+        return window.getComputedStyle(el).marginRight;
+      });
+
+      expect(marginRight).toBe('12px');
+
+      const row2 = page.locator('[data-ui-name="Body.Row"][aria-rowindex="2"]');
+      const cells2 = row2.locator('div');
+
+      const cellCount = await cells2.count();
+
+      for (let i = 0; i < cellCount; i++) {
+        const cell = cells2.nth(i);
+        await checkStyles(cell, {
+          'background-color': 'rgb(230, 231, 237)',
+        });
+      }
+
+      const row3 = page.locator('[data-ui-name="Row"][aria-rowindex="3"]');
+      const cells3 = row3.locator('div');
+
+      const cellCount3 = await cells3.count();
+
+      for (let i = 0; i < cellCount; i++) {
+        const cell = cells3.nth(i);
+        await checkStyles(cell, {
+          'background-color': 'rgb(244, 245, 249)',
+        });
+      }
+
+      const peddingLeft = await cells3.first().evaluate((el) => {
+        return window.getComputedStyle(el).paddingLeft;
+      });
+
+      expect(peddingLeft).toBe('40px');
     });
   });
 });

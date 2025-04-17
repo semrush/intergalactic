@@ -1,16 +1,18 @@
 import React from 'react';
 import { scaleLinear } from 'd3-scale';
-import { DataTable, ACCORDION} from '@semcore/data-table';
+import { DataTable, ACCORDION, DataTableData } from '@semcore/data-table';
 import { Plot, Line, XAxis, YAxis, ResponsiveContainer, minMax } from '@semcore/d3-chart';
 
 const Demo = () => {
   return (
-      <DataTable data={data} aria-label={'Accordion inside table'}>
+      <DataTable data={data} aria-label={'Accordion inside table'} h={'100%'}>
         <DataTable.Head>
-          <DataTable.Head.Column name='keyword' children='Keyword' />
-          <DataTable.Head.Column name='kd' children='KD,%' />
-          <DataTable.Head.Column name='cpc' children='CPC' />
-          <DataTable.Head.Column name='vol' children='Vol.' />
+          <DataTable.Head.Column name='keyword' children='Keyword' gtcWidth={'minmax(60%, 80%)'} />
+          <DataTable.Head.Group borders={'both'} title={'Organic Sessions'}>
+            <DataTable.Head.Column name='kd' children='KD,%' />
+            <DataTable.Head.Column name='cpc' children='CPC' />
+            <DataTable.Head.Column name='vol' children='Vol.' />
+          </DataTable.Head.Group>
         </DataTable.Head>
         <DataTable.Body/>
       </DataTable>
@@ -38,7 +40,7 @@ const ChartExample = () => {
     .range([height - MARGIN, MARGIN])
     .domain([0, 10]);
   return (
-    <ResponsiveContainer h={300} onResize={setSize}>
+    <ResponsiveContainer h={300} onResize={setSize} style={{background: '#fff'}}>
       <Plot data={dataChart} scale={[xScale, yScale]} width={width} height={height}>
         <YAxis>
           <YAxis.Ticks />
@@ -55,7 +57,7 @@ const ChartExample = () => {
   );
 };
 
-const data = [
+const data: DataTableData = [
   {
     keyword: 'ebay buy',
     kd: '77.8',
@@ -67,8 +69,10 @@ const data = [
     keyword: 'www.ebay.com',
     kd: '11.2',
     cpc: '$3.4',
-    vol: '65,457,920',
-    [ACCORDION]: (<ChartExample/>),
+    vol: {
+      toString: () => '65,457,920',
+      [ACCORDION]: (<ChartExample/>),
+    },
   },
   {
     keyword: 'www.ebay.com',

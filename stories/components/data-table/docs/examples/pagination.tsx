@@ -15,7 +15,7 @@ const Demo = () => {
 
   return (
     <>
-      <DataTable data={tableData} aria-label={'Pagination'}>
+      <DataTable data={tableData} aria-label={'Pagination'} h={'auto'}>
         <DataTable.Head>
           <DataTable.Head.Column name='keyword' children='Keyword' justifyContent='left' />
           <DataTable.Head.Column name='kd' children='KD,%' justifyContent='right' gtcWidth={'minmax(fit-content, 68px)'} />
@@ -24,7 +24,7 @@ const Demo = () => {
         </DataTable.Head>
         <DataTable.Body
           renderCell={(props) => {
-            if (props.name === 'keyword') {
+            if (props.columnName === 'keyword') {
               return props.defaultRender();
             }
 

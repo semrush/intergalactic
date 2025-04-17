@@ -6,15 +6,16 @@ import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEn
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 import logger from '@semcore/core/lib/utils/logger';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import Portal from '@semcore/portal';
-
+import { PortalContext } from '@semcore/base-components';
 import style from './style/tooltip.shadow.css';
 import {
   useZIndexStacking,
   ZIndexStackingContextProvider,
 } from '@semcore/core/lib/utils/zIndexStacking';
+import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 
 const Popper = PopperOrigin[CREATE_COMPONENT]();
+const tooltipContainer = new WeakMap();
 
 const defaultProps = {
   placement: 'top',
@@ -35,6 +36,7 @@ class TooltipRoot extends Component {
   static style = style;
   static enhance = [uniqueIDEnhancement(), resolveColorEnhance()];
   static defaultProps = { ...defaultProps };
+  static contextType = PortalContext;
   state = { popperChildren: null };
   subcomponents = [Tooltip.Trigger.displayName, Tooltip.Popper.displayName];
   defaultChildren = (title, Children, props) => (
@@ -45,6 +47,35 @@ class TooltipRoot extends Component {
       <Tooltip.Popper>{title}</Tooltip.Popper>
     </>
   );
+  tooltipContainerContainer = null;
+
+  constructor(props, context) {
+    super(props, context);
+
+    if (canUseDOM()) {
+      this.tooltipContainerContainer = new Promise((resolve) => {
+        setTimeout(() => {
+          const key = this.context.current ?? document.body;
+          let element = tooltipContainer.get(key) ?? null;
+
+          if (
+            element === null ||
+            (element instanceof HTMLElement && !document.body.contains(element))
+          ) {
+            element = document.createElement('div');
+            element.setAttribute('role', 'status');
+            element.setAttribute('aria-live', 'polite');
+
+            tooltipContainer.set(key, element);
+
+            key.appendChild(element);
+          }
+
+          resolve(element);
+        }, 0);
+      });
+    }
+  }
 
   uncontrolledProps() {
     return {
@@ -95,6 +126,7 @@ class TooltipRoot extends Component {
       role: 'tooltip',
       'aria-live': ariaLive,
       visible,
+      tooltipContainer: this.tooltipContainerContainer,
     };
   }
 
@@ -134,44 +166,47 @@ function TooltipPopper(props) {
     styles,
     theme,
     resolveColor,
-    disablePortal,
-    ignorePortalsStacking,
     'aria-live': ariaLive,
     arrowBgColor,
     arrowShadowColor,
+    tooltipContainer,
   } = props;
   const STooltip = Root;
   const SArrow = Box;
-  const STooltipPortalledWrapper = Box;
 
   const contextZIndex = useZIndexStacking('z-index-tooltip');
   const zIndex = props.zIndex || contextZIndex;
 
+  const [tooltipContainerNode, setTooltipContainerNode] = React.useState(tooltipContainer);
+
+  React.useEffect(() => {
+    if (ariaLive === 'polite' && tooltipContainer instanceof Promise) {
+      tooltipContainer.then((result) => {
+        setTooltipContainerNode(result);
+      });
+    }
+  }, [tooltipContainer]);
+
   return sstyled(styles)(
     <ZIndexStackingContextProvider designToken='z-index-tooltip'>
-      <Portal disablePortal={disablePortal} ignorePortalsStacking={ignorePortalsStacking}>
-        <STooltipPortalledWrapper
-          role={ariaLive === 'polite' ? 'status' : undefined}
-          aria-live={ariaLive}
-          zIndex={zIndex}
-        >
-          <STooltip
-            render={Popper.Popper}
-            use:disablePortal
-            use:theme={resolveColor(theme)}
-            use:aria-live={undefined}
-            use:zIndex={undefined}
-          >
-            <Children />
-            <SArrow
-              data-popper-arrow
-              use:theme={resolveColor(theme)}
-              bgColor={resolveColor(arrowBgColor)}
-              shadowColor={resolveColor(arrowShadowColor ?? arrowBgColor)}
-            />
-          </STooltip>
-        </STooltipPortalledWrapper>
-      </Portal>
+      <STooltip
+        render={Popper.Popper}
+        use:theme={resolveColor(theme)}
+        use:zIndex={zIndex}
+        nodeToMount={
+          ariaLive === 'polite' && tooltipContainerNode instanceof Element
+            ? tooltipContainerNode
+            : undefined
+        }
+      >
+        <Children />
+        <SArrow
+          data-popper-arrow
+          use:theme={resolveColor(theme)}
+          bgColor={resolveColor(arrowBgColor)}
+          shadowColor={resolveColor(arrowShadowColor ?? arrowBgColor)}
+        />
+      </STooltip>
     </ZIndexStackingContextProvider>,
   );
 }

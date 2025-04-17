@@ -28,7 +28,7 @@ const Demo = () => {
             </DataTable.Head>
             <DataTable.Body
                 renderCell={(props) => {
-                    if (props.name === 'keyword') {
+                    if (props.columnName === 'keyword') {
                         return (
                             <Flex alignItems='center'>
                                 <Checkbox label="Option 1" />
@@ -50,7 +50,7 @@ const Demo = () => {
                     }
 
 
-                    if (props.name === 'kd') {
+                    if (props.columnName === 'kd') {
                         return (
                             <>
                                 <Select mt={2} mr='auto' options={options} placeholder='Select option' id='basic-select' />
@@ -61,7 +61,7 @@ const Demo = () => {
 
 
 
-                    if (props.name === 'cpc') {
+                    if (props.columnName === 'cpc') {
                         return (
                             <>
                                 <Dropdown>

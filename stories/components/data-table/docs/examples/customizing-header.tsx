@@ -6,6 +6,8 @@ import DropdownMenu from '@semcore/dropdown-menu';
 import { LinkTrigger } from '@semcore/base-trigger';
 
 const Demo = () => {
+  const [isVisible, setIsVisible] = React.useState(false);
+
   return (
     <DataTable data={data} aria-label={'Customizing header'}>
       <DataTable.Head>
@@ -20,11 +22,19 @@ const Demo = () => {
           </Text>
         </DataTable.Head.Column>
         <DataTable.Head.Column name='kd'>
-          <DropdownMenu>
+          <DropdownMenu visible={isVisible} onVisibleChange={setIsVisible}>
             <DropdownMenu.Trigger
               tag={LinkTrigger}
               color='text-primary'
               style={{ fontSize: '12px' }}
+              onKeyDown={(e) => {
+                if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+                  return false;
+                }
+                if ((e.key === 'ArrowLeft' || e.key === 'ArrowRight') && isVisible) {
+                  e.stopPropagation();
+                }
+              }}
             >
               KD,%
             </DropdownMenu.Trigger>

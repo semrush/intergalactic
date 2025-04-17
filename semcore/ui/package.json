@@ -45,7 +45,6 @@
     "@semcore/format-text": "16.0.0",
     "@semcore/fullscreen-modal": "16.0.0",
     "@semcore/grid": "16.0.0",
-    "@semcore/i18n-unplugin": "16.0.0",
     "@semcore/icon": "16.0.0",
     "@semcore/illustration": "16.0.0",
     "@semcore/inline-edit": "16.0.0",
@@ -130,6 +129,11 @@
       "import": "./badge/index.mjs",
       "types": "./badge/index.d.ts"
     },
+    "./base-components": {
+      "require": "./base-components/index.cjs",
+      "import": "./base-components/index.mjs",
+      "types": "./base-components/index.d.ts"
+    },
     "./base-trigger": {
       "require": "./base-trigger/index.cjs",
       "import": "./base-trigger/index.mjs",
@@ -180,10 +184,365 @@
       "import": "./core/index.mjs",
       "types": "./core/index.d.ts"
     },
+    "./core/lib/utils/CSSinJS": {
+      "require": "./core/lib/utils/CSSinJS.cjs",
+      "import": "./core/lib/utils/CSSinJS.mjs",
+      "types": "./core/lib/utils/CSSinJS.d.ts"
+    },
+    "./core/lib/utils/ScreenReaderOnly": {
+      "require": "./core/lib/utils/ScreenReaderOnly.cjs",
+      "import": "./core/lib/utils/ScreenReaderOnly.mjs",
+      "types": "./core/lib/utils/ScreenReaderOnly.d.ts"
+    },
+    "./core/lib/utils/ThemeProvider": {
+      "require": "./core/lib/utils/ThemeProvider.cjs",
+      "import": "./core/lib/utils/ThemeProvider.mjs",
+      "types": "./core/lib/utils/ThemeProvider.d.ts"
+    },
+    "./core/lib/utils/addonText": {
+      "require": "./core/lib/utils/addonText.cjs",
+      "import": "./core/lib/utils/addonText.mjs",
+      "types": "./core/lib/utils/addonText.d.ts"
+    },
+    "./core/lib/utils/addonTextChildren": {
+      "require": "./core/lib/utils/addonTextChildren.cjs",
+      "import": "./core/lib/utils/addonTextChildren.mjs",
+      "types": "./core/lib/utils/addonTextChildren.d.ts"
+    },
+    "./core/lib/utils/ariaProps": {
+      "require": "./core/lib/utils/ariaProps.cjs",
+      "import": "./core/lib/utils/ariaProps.mjs",
+      "types": "./core/lib/utils/ariaProps.d.ts"
+    },
+    "./core/lib/utils/assignProps": {
+      "require": "./core/lib/utils/assignProps.cjs",
+      "import": "./core/lib/utils/assignProps.mjs",
+      "types": "./core/lib/utils/assignProps.d.ts"
+    },
+    "./core/lib/utils/canUseDOM": {
+      "require": "./core/lib/utils/canUseDOM.cjs",
+      "import": "./core/lib/utils/canUseDOM.mjs",
+      "types": "./core/lib/utils/canUseDOM.d.ts"
+    },
+    "./core/lib/utils/capitalizeFirstLetter": {
+      "require": "./core/lib/utils/capitalizeFirstLetter.cjs",
+      "import": "./core/lib/utils/capitalizeFirstLetter.mjs",
+      "types": "./core/lib/utils/capitalizeFirstLetter.d.ts"
+    },
+    "./core/lib/utils/color": {
+      "require": "./core/lib/utils/color.cjs",
+      "import": "./core/lib/utils/color.mjs",
+      "types": "./core/lib/utils/color.d.ts"
+    },
+    "./core/lib/utils/compose": {
+      "require": "./core/lib/utils/compose.cjs",
+      "import": "./core/lib/utils/compose.mjs",
+      "types": "./core/lib/utils/compose.d.ts"
+    },
+    "./core/lib/utils/createHoc": {
+      "require": "./core/lib/utils/createHoc.cjs",
+      "import": "./core/lib/utils/createHoc.mjs",
+      "types": "./core/lib/utils/createHoc.d.ts"
+    },
+    "./core/lib/utils/createUUID": {
+      "require": "./core/lib/utils/createUUID.cjs",
+      "import": "./core/lib/utils/createUUID.mjs",
+      "types": "./core/lib/utils/createUUID.d.ts"
+    },
+    "./core/lib/utils/cssToIntDefault": {
+      "require": "./core/lib/utils/cssToIntDefault.cjs",
+      "import": "./core/lib/utils/cssToIntDefault.mjs",
+      "types": "./core/lib/utils/cssToIntDefault.d.ts"
+    },
+    "./core/lib/utils/eventEmitter": {
+      "require": "./core/lib/utils/eventEmitter.cjs",
+      "import": "./core/lib/utils/eventEmitter.mjs",
+      "types": "./core/lib/utils/eventEmitter.d.ts"
+    },
+    "./core/lib/utils/findComponent": {
+      "require": "./core/lib/utils/findComponent.cjs",
+      "import": "./core/lib/utils/findComponent.mjs",
+      "types": "./core/lib/utils/findComponent.d.ts"
+    },
+    "./core/lib/utils/fire": {
+      "require": "./core/lib/utils/fire.cjs",
+      "import": "./core/lib/utils/fire.mjs",
+      "types": "./core/lib/utils/fire.d.ts"
+    },
+    "./core/lib/utils/getAccessibleName": {
+      "require": "./core/lib/utils/getAccessibleName.cjs",
+      "import": "./core/lib/utils/getAccessibleName.mjs",
+      "types": "./core/lib/utils/getAccessibleName.d.ts"
+    },
+    "./core/lib/utils/getDisplayName": {
+      "require": "./core/lib/utils/getDisplayName.cjs",
+      "import": "./core/lib/utils/getDisplayName.mjs",
+      "types": "./core/lib/utils/getDisplayName.d.ts"
+    },
+    "./core/lib/utils/getEventTarget": {
+      "require": "./core/lib/utils/getEventTarget.cjs",
+      "import": "./core/lib/utils/getEventTarget.mjs",
+      "types": "./core/lib/utils/getEventTarget.d.ts"
+    },
+    "./core/lib/utils/getOriginChildren": {
+      "require": "./core/lib/utils/getOriginChildren.cjs",
+      "import": "./core/lib/utils/getOriginChildren.mjs",
+      "types": "./core/lib/utils/getOriginChildren.d.ts"
+    },
+    "./core/lib/utils/getRandomInt": {
+      "require": "./core/lib/utils/getRandomInt.cjs",
+      "import": "./core/lib/utils/getRandomInt.mjs",
+      "types": "./core/lib/utils/getRandomInt.d.ts"
+    },
+    "./core/lib/utils/getValue": {
+      "require": "./core/lib/utils/getValue.cjs",
+      "import": "./core/lib/utils/getValue.mjs",
+      "types": "./core/lib/utils/getValue.d.ts"
+    },
+    "./core/lib/utils/hasLabels": {
+      "require": "./core/lib/utils/hasLabels.cjs",
+      "import": "./core/lib/utils/hasLabels.mjs",
+      "types": "./core/lib/utils/hasLabels.d.ts"
+    },
+    "./core/lib/utils/hasParent": {
+      "require": "./core/lib/utils/hasParent.cjs",
+      "import": "./core/lib/utils/hasParent.mjs",
+      "types": "./core/lib/utils/hasParent.d.ts"
+    },
+    "./core/lib/utils/if": {
+      "require": "./core/lib/utils/if.cjs",
+      "import": "./core/lib/utils/if.mjs",
+      "types": "./core/lib/utils/if.d.ts"
+    },
+    "./core/lib/utils/ifChildren": {
+      "require": "./core/lib/utils/ifChildren.cjs",
+      "import": "./core/lib/utils/ifChildren.mjs",
+      "types": "./core/lib/utils/ifChildren.d.ts"
+    },
+    "./core/lib/utils/injectStyle": {
+      "require": "./core/lib/utils/injectStyle.cjs",
+      "import": "./core/lib/utils/injectStyle.mjs",
+      "types": "./core/lib/utils/injectStyle.d.ts"
+    },
+    "./core/lib/utils/inputProps": {
+      "require": "./core/lib/utils/inputProps.cjs",
+      "import": "./core/lib/utils/inputProps.mjs",
+      "types": "./core/lib/utils/inputProps.d.ts"
+    },
+    "./core/lib/utils/isNode": {
+      "require": "./core/lib/utils/isNode.cjs",
+      "import": "./core/lib/utils/isNode.mjs",
+      "types": "./core/lib/utils/isNode.d.ts"
+    },
+    "./core/lib/utils/isPromise": {
+      "require": "./core/lib/utils/isPromise.cjs",
+      "import": "./core/lib/utils/isPromise.mjs",
+      "types": "./core/lib/utils/isPromise.d.ts"
+    },
+    "./core/lib/utils/isRetina": {
+      "require": "./core/lib/utils/isRetina.cjs",
+      "import": "./core/lib/utils/isRetina.mjs",
+      "types": "./core/lib/utils/isRetina.d.ts"
+    },
+    "./core/lib/utils/logger": {
+      "require": "./core/lib/utils/logger.cjs",
+      "import": "./core/lib/utils/logger.mjs",
+      "types": "./core/lib/utils/logger.d.ts"
+    },
+    "./core/lib/utils/numericChecker": {
+      "require": "./core/lib/utils/numericChecker.cjs",
+      "import": "./core/lib/utils/numericChecker.mjs",
+      "types": "./core/lib/utils/numericChecker.d.ts"
+    },
+    "./core/lib/utils/ownerDocument": {
+      "require": "./core/lib/utils/ownerDocument.cjs",
+      "import": "./core/lib/utils/ownerDocument.mjs",
+      "types": "./core/lib/utils/ownerDocument.d.ts"
+    },
+    "./core/lib/utils/pick": {
+      "require": "./core/lib/utils/pick.cjs",
+      "import": "./core/lib/utils/pick.mjs",
+      "types": "./core/lib/utils/pick.d.ts"
+    },
+    "./core/lib/utils/propsForElement": {
+      "require": "./core/lib/utils/propsForElement.cjs",
+      "import": "./core/lib/utils/propsForElement.mjs",
+      "types": "./core/lib/utils/propsForElement.d.ts"
+    },
+    "./core/lib/utils/rafTrottle": {
+      "require": "./core/lib/utils/rafTrottle.cjs",
+      "import": "./core/lib/utils/rafTrottle.mjs",
+      "types": "./core/lib/utils/rafTrottle.d.ts"
+    },
+    "./core/lib/utils/reactToText": {
+      "require": "./core/lib/utils/reactToText.cjs",
+      "import": "./core/lib/utils/reactToText.mjs",
+      "types": "./core/lib/utils/reactToText.d.ts"
+    },
+    "./core/lib/utils/ref": {
+      "require": "./core/lib/utils/ref.cjs",
+      "import": "./core/lib/utils/ref.mjs",
+      "types": "./core/lib/utils/ref.d.ts"
+    },
+    "./core/lib/utils/setRef": {
+      "require": "./core/lib/utils/setRef.cjs",
+      "import": "./core/lib/utils/setRef.mjs",
+      "types": "./core/lib/utils/setRef.d.ts"
+    },
+    "./core/lib/utils/syncScroll": {
+      "require": "./core/lib/utils/syncScroll.cjs",
+      "import": "./core/lib/utils/syncScroll.mjs",
+      "types": "./core/lib/utils/syncScroll.d.ts"
+    },
+    "./core/lib/utils/uncontroll": {
+      "require": "./core/lib/utils/uncontroll.cjs",
+      "import": "./core/lib/utils/uncontroll.mjs",
+      "types": "./core/lib/utils/uncontroll.d.ts"
+    },
+    "./core/lib/utils/uniqueID": {
+      "require": "./core/lib/utils/uniqueID.cjs",
+      "import": "./core/lib/utils/uniqueID.mjs",
+      "types": "./core/lib/utils/uniqueID.d.ts"
+    },
+    "./core/lib/utils/useCssVariable": {
+      "require": "./core/lib/utils/useCssVariable.cjs",
+      "import": "./core/lib/utils/useCssVariable.mjs",
+      "types": "./core/lib/utils/useCssVariable.d.ts"
+    },
+    "./core/lib/utils/zIndexStacking": {
+      "require": "./core/lib/utils/zIndexStacking.cjs",
+      "import": "./core/lib/utils/zIndexStacking.mjs",
+      "types": "./core/lib/utils/zIndexStacking.d.ts"
+    },
+    "./core/lib/utils/enhances/WithAutoFocus": {
+      "require": "./core/lib/utils/enhances/WithAutoFocus.cjs",
+      "import": "./core/lib/utils/enhances/WithAutoFocus.mjs",
+      "types": "./core/lib/utils/enhances/WithAutoFocus.d.ts"
+    },
+    "./core/lib/utils/enhances/WithCSS": {
+      "require": "./core/lib/utils/enhances/WithCSS.cjs",
+      "import": "./core/lib/utils/enhances/WithCSS.mjs",
+      "types": "./core/lib/utils/enhances/WithCSS.d.ts"
+    },
+    "./core/lib/utils/enhances/WithI18n": {
+      "require": "./core/lib/utils/enhances/WithI18n.cjs",
+      "import": "./core/lib/utils/enhances/WithI18n.mjs",
+      "types": "./core/lib/utils/enhances/WithI18n.d.ts"
+    },
+    "./core/lib/utils/enhances/WithKeyboardFocus": {
+      "require": "./core/lib/utils/enhances/WithKeyboardFocus.cjs",
+      "import": "./core/lib/utils/enhances/WithKeyboardFocus.mjs",
+      "types": "./core/lib/utils/enhances/WithKeyboardFocus.d.ts"
+    },
+    "./core/lib/utils/enhances/WithRef": {
+      "require": "./core/lib/utils/enhances/WithRef.cjs",
+      "import": "./core/lib/utils/enhances/WithRef.mjs",
+      "types": "./core/lib/utils/enhances/WithRef.d.ts"
+    },
+    "./core/lib/utils/enhances/a11yEnhance": {
+      "require": "./core/lib/utils/enhances/a11yEnhance.cjs",
+      "import": "./core/lib/utils/enhances/a11yEnhance.mjs",
+      "types": "./core/lib/utils/enhances/a11yEnhance.d.ts"
+    },
+    "./core/lib/utils/enhances/animatedSizeEnhance": {
+      "require": "./core/lib/utils/enhances/animatedSizeEnhance.cjs",
+      "import": "./core/lib/utils/enhances/animatedSizeEnhance.mjs",
+      "types": "./core/lib/utils/enhances/animatedSizeEnhance.d.ts"
+    },
+    "./core/lib/utils/enhances/autoFocusEnhance": {
+      "require": "./core/lib/utils/enhances/autoFocusEnhance.cjs",
+      "import": "./core/lib/utils/enhances/autoFocusEnhance.mjs",
+      "types": "./core/lib/utils/enhances/autoFocusEnhance.d.ts"
+    },
+    "./core/lib/utils/enhances/contextEnhance": {
+      "require": "./core/lib/utils/enhances/contextEnhance.cjs",
+      "import": "./core/lib/utils/enhances/contextEnhance.mjs",
+      "types": "./core/lib/utils/enhances/contextEnhance.d.ts"
+    },
+    "./core/lib/utils/enhances/i18nEnhance": {
+      "require": "./core/lib/utils/enhances/i18nEnhance.cjs",
+      "import": "./core/lib/utils/enhances/i18nEnhance.mjs",
+      "types": "./core/lib/utils/enhances/i18nEnhance.d.ts"
+    },
+    "./core/lib/utils/enhances/keyboardFocusEnhance": {
+      "require": "./core/lib/utils/enhances/keyboardFocusEnhance.cjs",
+      "import": "./core/lib/utils/enhances/keyboardFocusEnhance.mjs",
+      "types": "./core/lib/utils/enhances/keyboardFocusEnhance.d.ts"
+    },
+    "./core/lib/utils/enhances/resolveColorEnhance": {
+      "require": "./core/lib/utils/enhances/resolveColorEnhance.cjs",
+      "import": "./core/lib/utils/enhances/resolveColorEnhance.mjs",
+      "types": "./core/lib/utils/enhances/resolveColorEnhance.d.ts"
+    },
+    "./core/lib/utils/focus-lock/focusBorders": {
+      "require": "./core/lib/utils/focus-lock/focusBorders.cjs",
+      "import": "./core/lib/utils/focus-lock/focusBorders.mjs",
+      "types": "./core/lib/utils/focus-lock/focusBorders.d.ts"
+    },
+    "./core/lib/utils/focus-lock/getFocusableIn": {
+      "require": "./core/lib/utils/focus-lock/getFocusableIn.cjs",
+      "import": "./core/lib/utils/focus-lock/getFocusableIn.mjs",
+      "types": "./core/lib/utils/focus-lock/getFocusableIn.d.ts"
+    },
+    "./core/lib/utils/focus-lock/isFocusInside": {
+      "require": "./core/lib/utils/focus-lock/isFocusInside.cjs",
+      "import": "./core/lib/utils/focus-lock/isFocusInside.mjs",
+      "types": "./core/lib/utils/focus-lock/isFocusInside.d.ts"
+    },
+    "./core/lib/utils/focus-lock/isFocusable": {
+      "require": "./core/lib/utils/focus-lock/isFocusable.cjs",
+      "import": "./core/lib/utils/focus-lock/isFocusable.mjs",
+      "types": "./core/lib/utils/focus-lock/isFocusable.d.ts"
+    },
+    "./core/lib/utils/focus-lock/setFocus": {
+      "require": "./core/lib/utils/focus-lock/setFocus.cjs",
+      "import": "./core/lib/utils/focus-lock/setFocus.mjs",
+      "types": "./core/lib/utils/focus-lock/setFocus.d.ts"
+    },
+    "./core/lib/utils/use/useColorResolver": {
+      "require": "./core/lib/utils/use/useColorResolver.cjs",
+      "import": "./core/lib/utils/use/useColorResolver.mjs",
+      "types": "./core/lib/utils/use/useColorResolver.d.ts"
+    },
+    "./core/lib/utils/use/useCss": {
+      "require": "./core/lib/utils/use/useCss.cjs",
+      "import": "./core/lib/utils/use/useCss.mjs",
+      "types": "./core/lib/utils/use/useCss.d.ts"
+    },
+    "./core/lib/utils/use/useEnhancedEffect": {
+      "require": "./core/lib/utils/use/useEnhancedEffect.cjs",
+      "import": "./core/lib/utils/use/useEnhancedEffect.mjs",
+      "types": "./core/lib/utils/use/useEnhancedEffect.d.ts"
+    },
+    "./core/lib/utils/use/useEventCallback": {
+      "require": "./core/lib/utils/use/useEventCallback.cjs",
+      "import": "./core/lib/utils/use/useEventCallback.mjs",
+      "types": "./core/lib/utils/use/useEventCallback.d.ts"
+    },
+    "./core/lib/utils/use/useEventListener": {
+      "require": "./core/lib/utils/use/useEventListener.cjs",
+      "import": "./core/lib/utils/use/useEventListener.mjs",
+      "types": "./core/lib/utils/use/useEventListener.d.ts"
+    },
+    "./core/lib/utils/use/useFocusLock": {
+      "require": "./core/lib/utils/use/useFocusLock.cjs",
+      "import": "./core/lib/utils/use/useFocusLock.mjs",
+      "types": "./core/lib/utils/use/useFocusLock.d.ts"
+    },
+    "./core/lib/utils/use/usePreventScroll": {
+      "require": "./core/lib/utils/use/usePreventScroll.cjs",
+      "import": "./core/lib/utils/use/usePreventScroll.mjs",
+      "types": "./core/lib/utils/use/usePreventScroll.d.ts"
+    },
     "./counter": {
       "require": "./counter/index.cjs",
       "import": "./counter/index.mjs",
       "types": "./counter/index.d.ts"
+    },
+    "./d3-chart": {
+      "require": "./d3-chart/index.cjs",
+      "import": "./d3-chart/index.mjs",
+      "types": "./d3-chart/index.d.ts"
     },
     "./data-table": {
       "require": "./data-table/index.cjs",
@@ -220,20 +579,10 @@
       "import": "./dropdown-menu/index.mjs",
       "types": "./dropdown-menu/index.d.ts"
     },
-    "./d3-chart": {
-      "require": "./d3-chart/index.cjs",
-      "import": "./d3-chart/index.mjs",
-      "types": "./d3-chart/index.d.ts"
-    },
     "./ellipsis": {
       "require": "./ellipsis/index.cjs",
       "import": "./ellipsis/index.mjs",
       "types": "./ellipsis/index.d.ts"
-    },
-    "./email": {
-      "require": "./email/index.cjs",
-      "import": "./email/index.mjs",
-      "types": "./email/index.d.ts"
     },
     "./errors": {
       "require": "./errors/index.cjs",
@@ -294,6 +643,16 @@
       "require": "./icon/AdBottom/m/index.cjs",
       "import": "./icon/AdBottom/m/index.mjs",
       "types": "./icon/AdBottom/m/index.d.ts"
+    },
+    "./icon/AdMiddle/l": {
+      "require": "./icon/AdMiddle/l/index.cjs",
+      "import": "./icon/AdMiddle/l/index.mjs",
+      "types": "./icon/AdMiddle/l/index.d.ts"
+    },
+    "./icon/AdMiddle/m": {
+      "require": "./icon/AdMiddle/m/index.cjs",
+      "import": "./icon/AdMiddle/m/index.mjs",
+      "types": "./icon/AdMiddle/m/index.d.ts"
     },
     "./icon/AdTop/l": {
       "require": "./icon/AdTop/l/index.cjs",
@@ -794,6 +1153,16 @@
       "require": "./icon/ChatFilled/m/index.cjs",
       "import": "./icon/ChatFilled/m/index.mjs",
       "types": "./icon/ChatFilled/m/index.d.ts"
+    },
+    "./icon/ChatGPT/l": {
+      "require": "./icon/ChatGPT/l/index.cjs",
+      "import": "./icon/ChatGPT/l/index.mjs",
+      "types": "./icon/ChatGPT/l/index.d.ts"
+    },
+    "./icon/ChatGPT/m": {
+      "require": "./icon/ChatGPT/m/index.cjs",
+      "import": "./icon/ChatGPT/m/index.mjs",
+      "types": "./icon/ChatGPT/m/index.d.ts"
     },
     "./icon/ChatPlus/l": {
       "require": "./icon/ChatPlus/l/index.cjs",
@@ -2345,6 +2714,16 @@
       "import": "./icon/Organic/m/index.mjs",
       "types": "./icon/Organic/m/index.d.ts"
     },
+    "./icon/OrganicCarousel/l": {
+      "require": "./icon/OrganicCarousel/l/index.cjs",
+      "import": "./icon/OrganicCarousel/l/index.mjs",
+      "types": "./icon/OrganicCarousel/l/index.d.ts"
+    },
+    "./icon/OrganicCarousel/m": {
+      "require": "./icon/OrganicCarousel/m/index.cjs",
+      "import": "./icon/OrganicCarousel/m/index.mjs",
+      "types": "./icon/OrganicCarousel/m/index.d.ts"
+    },
     "./icon/OrientationLandscape/l": {
       "require": "./icon/OrientationLandscape/l/index.cjs",
       "import": "./icon/OrientationLandscape/l/index.mjs",
@@ -2535,6 +2914,16 @@
       "import": "./icon/PopularProducts/m/index.mjs",
       "types": "./icon/PopularProducts/m/index.d.ts"
     },
+    "./icon/PopularStores/l": {
+      "require": "./icon/PopularStores/l/index.cjs",
+      "import": "./icon/PopularStores/l/index.mjs",
+      "types": "./icon/PopularStores/l/index.d.ts"
+    },
+    "./icon/PopularStores/m": {
+      "require": "./icon/PopularStores/m/index.cjs",
+      "import": "./icon/PopularStores/m/index.mjs",
+      "types": "./icon/PopularStores/m/index.d.ts"
+    },
     "./icon/Popup/l": {
       "require": "./icon/Popup/l/index.cjs",
       "import": "./icon/Popup/l/index.mjs",
@@ -2544,6 +2933,16 @@
       "require": "./icon/Popup/m/index.cjs",
       "import": "./icon/Popup/m/index.mjs",
       "types": "./icon/Popup/m/index.d.ts"
+    },
+    "./icon/PopupAlt/l": {
+      "require": "./icon/PopupAlt/l/index.cjs",
+      "import": "./icon/PopupAlt/l/index.mjs",
+      "types": "./icon/PopupAlt/l/index.d.ts"
+    },
+    "./icon/PopupAlt/m": {
+      "require": "./icon/PopupAlt/m/index.cjs",
+      "import": "./icon/PopupAlt/m/index.mjs",
+      "types": "./icon/PopupAlt/m/index.d.ts"
     },
     "./icon/PositionBottom/l": {
       "require": "./icon/PositionBottom/l/index.cjs",
@@ -2565,6 +2964,16 @@
       "import": "./icon/PositionLeft/m/index.mjs",
       "types": "./icon/PositionLeft/m/index.d.ts"
     },
+    "./icon/PositionMiddle/l": {
+      "require": "./icon/PositionMiddle/l/index.cjs",
+      "import": "./icon/PositionMiddle/l/index.mjs",
+      "types": "./icon/PositionMiddle/l/index.d.ts"
+    },
+    "./icon/PositionMiddle/m": {
+      "require": "./icon/PositionMiddle/m/index.cjs",
+      "import": "./icon/PositionMiddle/m/index.mjs",
+      "types": "./icon/PositionMiddle/m/index.d.ts"
+    },
     "./icon/PositionRight/l": {
       "require": "./icon/PositionRight/l/index.cjs",
       "import": "./icon/PositionRight/l/index.mjs",
@@ -2584,6 +2993,16 @@
       "require": "./icon/PositionTop/m/index.cjs",
       "import": "./icon/PositionTop/m/index.mjs",
       "types": "./icon/PositionTop/m/index.d.ts"
+    },
+    "./icon/Power/l": {
+      "require": "./icon/Power/l/index.cjs",
+      "import": "./icon/Power/l/index.mjs",
+      "types": "./icon/Power/l/index.d.ts"
+    },
+    "./icon/Power/m": {
+      "require": "./icon/Power/m/index.cjs",
+      "import": "./icon/Power/m/index.mjs",
+      "types": "./icon/Power/m/index.d.ts"
     },
     "./icon/Printing/l": {
       "require": "./icon/Printing/l/index.cjs",
@@ -2654,6 +3073,26 @@
       "require": "./icon/QuestionSerp/m/index.cjs",
       "import": "./icon/QuestionSerp/m/index.mjs",
       "types": "./icon/QuestionSerp/m/index.d.ts"
+    },
+    "./icon/QuestionsAnswers/l": {
+      "require": "./icon/QuestionsAnswers/l/index.cjs",
+      "import": "./icon/QuestionsAnswers/l/index.mjs",
+      "types": "./icon/QuestionsAnswers/l/index.d.ts"
+    },
+    "./icon/QuestionsAnswers/m": {
+      "require": "./icon/QuestionsAnswers/m/index.cjs",
+      "import": "./icon/QuestionsAnswers/m/index.mjs",
+      "types": "./icon/QuestionsAnswers/m/index.d.ts"
+    },
+    "./icon/Recent/l": {
+      "require": "./icon/Recent/l/index.cjs",
+      "import": "./icon/Recent/l/index.mjs",
+      "types": "./icon/Recent/l/index.d.ts"
+    },
+    "./icon/Recent/m": {
+      "require": "./icon/Recent/m/index.cjs",
+      "import": "./icon/Recent/m/index.mjs",
+      "types": "./icon/Recent/m/index.d.ts"
     },
     "./icon/Recreation/l": {
       "require": "./icon/Recreation/l/index.cjs",
@@ -3205,6 +3644,26 @@
       "import": "./icon/Tablet/m/index.mjs",
       "types": "./icon/Tablet/m/index.d.ts"
     },
+    "./icon/Tack/l": {
+      "require": "./icon/Tack/l/index.cjs",
+      "import": "./icon/Tack/l/index.mjs",
+      "types": "./icon/Tack/l/index.d.ts"
+    },
+    "./icon/Tack/m": {
+      "require": "./icon/Tack/m/index.cjs",
+      "import": "./icon/Tack/m/index.mjs",
+      "types": "./icon/Tack/m/index.d.ts"
+    },
+    "./icon/TackNo/l": {
+      "require": "./icon/TackNo/l/index.cjs",
+      "import": "./icon/TackNo/l/index.mjs",
+      "types": "./icon/TackNo/l/index.d.ts"
+    },
+    "./icon/TackNo/m": {
+      "require": "./icon/TackNo/m/index.cjs",
+      "import": "./icon/TackNo/m/index.mjs",
+      "types": "./icon/TackNo/m/index.d.ts"
+    },
     "./icon/Tag/l": {
       "require": "./icon/Tag/l/index.cjs",
       "import": "./icon/Tag/l/index.mjs",
@@ -3264,6 +3723,16 @@
       "require": "./icon/ThumbUp/m/index.cjs",
       "import": "./icon/ThumbUp/m/index.mjs",
       "types": "./icon/ThumbUp/m/index.d.ts"
+    },
+    "./icon/TikTok/l": {
+      "require": "./icon/TikTok/l/index.cjs",
+      "import": "./icon/TikTok/l/index.mjs",
+      "types": "./icon/TikTok/l/index.d.ts"
+    },
+    "./icon/TikTok/m": {
+      "require": "./icon/TikTok/m/index.cjs",
+      "import": "./icon/TikTok/m/index.mjs",
+      "types": "./icon/TikTok/m/index.d.ts"
     },
     "./icon/Tile/l": {
       "require": "./icon/Tile/l/index.cjs",
@@ -3505,6 +3974,16 @@
       "import": "./icon/VideoCarousel/m/index.mjs",
       "types": "./icon/VideoCarousel/m/index.d.ts"
     },
+    "./icon/VideoList/l": {
+      "require": "./icon/VideoList/l/index.cjs",
+      "import": "./icon/VideoList/l/index.mjs",
+      "types": "./icon/VideoList/l/index.d.ts"
+    },
+    "./icon/VideoList/m": {
+      "require": "./icon/VideoList/m/index.cjs",
+      "import": "./icon/VideoList/m/index.mjs",
+      "types": "./icon/VideoList/m/index.d.ts"
+    },
     "./icon/VideoStop/l": {
       "require": "./icon/VideoStop/l/index.cjs",
       "import": "./icon/VideoStop/l/index.mjs",
@@ -3514,6 +3993,16 @@
       "require": "./icon/VideoStop/m/index.cjs",
       "import": "./icon/VideoStop/m/index.mjs",
       "types": "./icon/VideoStop/m/index.d.ts"
+    },
+    "./icon/VideoStreaming/l": {
+      "require": "./icon/VideoStreaming/l/index.cjs",
+      "import": "./icon/VideoStreaming/l/index.mjs",
+      "types": "./icon/VideoStreaming/l/index.d.ts"
+    },
+    "./icon/VideoStreaming/m": {
+      "require": "./icon/VideoStreaming/m/index.cjs",
+      "import": "./icon/VideoStreaming/m/index.mjs",
+      "types": "./icon/VideoStreaming/m/index.d.ts"
     },
     "./icon/Vk/l": {
       "require": "./icon/Vk/l/index.cjs",
@@ -3595,6 +4084,16 @@
       "import": "./icon/Wristwatch/m/index.mjs",
       "types": "./icon/Wristwatch/m/index.d.ts"
     },
+    "./icon/Yext/l": {
+      "require": "./icon/Yext/l/index.cjs",
+      "import": "./icon/Yext/l/index.mjs",
+      "types": "./icon/Yext/l/index.d.ts"
+    },
+    "./icon/Yext/m": {
+      "require": "./icon/Yext/m/index.cjs",
+      "import": "./icon/Yext/m/index.mjs",
+      "types": "./icon/Yext/m/index.d.ts"
+    },
     "./icon/Youtube/l": {
       "require": "./icon/Youtube/l/index.cjs",
       "import": "./icon/Youtube/l/index.mjs",
@@ -3635,6 +4134,66 @@
       "import": "./icon/ZoomPlus/m/index.mjs",
       "types": "./icon/ZoomPlus/m/index.d.ts"
     },
+    "./icon/color/Ahrefs/l": {
+      "require": "./icon/color/Ahrefs/l/index.cjs",
+      "import": "./icon/color/Ahrefs/l/index.mjs",
+      "types": "./icon/color/Ahrefs/l/index.d.ts"
+    },
+    "./icon/color/Ahrefs/m": {
+      "require": "./icon/color/Ahrefs/m/index.cjs",
+      "import": "./icon/color/Ahrefs/m/index.mjs",
+      "types": "./icon/color/Ahrefs/m/index.d.ts"
+    },
+    "./icon/color/Amazon/l": {
+      "require": "./icon/color/Amazon/l/index.cjs",
+      "import": "./icon/color/Amazon/l/index.mjs",
+      "types": "./icon/color/Amazon/l/index.d.ts"
+    },
+    "./icon/color/Amazon/m": {
+      "require": "./icon/color/Amazon/m/index.cjs",
+      "import": "./icon/color/Amazon/m/index.mjs",
+      "types": "./icon/color/Amazon/m/index.d.ts"
+    },
+    "./icon/color/BirdeyeColored/l": {
+      "require": "./icon/color/BirdeyeColored/l/index.cjs",
+      "import": "./icon/color/BirdeyeColored/l/index.mjs",
+      "types": "./icon/color/BirdeyeColored/l/index.d.ts"
+    },
+    "./icon/color/BirdeyeColored/m": {
+      "require": "./icon/color/BirdeyeColored/m/index.cjs",
+      "import": "./icon/color/BirdeyeColored/m/index.mjs",
+      "types": "./icon/color/BirdeyeColored/m/index.d.ts"
+    },
+    "./icon/color/CallRailColored/l": {
+      "require": "./icon/color/CallRailColored/l/index.cjs",
+      "import": "./icon/color/CallRailColored/l/index.mjs",
+      "types": "./icon/color/CallRailColored/l/index.d.ts"
+    },
+    "./icon/color/CallRailColored/m": {
+      "require": "./icon/color/CallRailColored/m/index.cjs",
+      "import": "./icon/color/CallRailColored/m/index.mjs",
+      "types": "./icon/color/CallRailColored/m/index.d.ts"
+    },
+    "./icon/color/CallTrackingMetricsColored/l": {
+      "require": "./icon/color/CallTrackingMetricsColored/l/index.cjs",
+      "import": "./icon/color/CallTrackingMetricsColored/l/index.mjs",
+      "types": "./icon/color/CallTrackingMetricsColored/l/index.d.ts"
+    },
+    "./icon/color/CallTrackingMetricsColored/m": {
+      "require": "./icon/color/CallTrackingMetricsColored/m/index.cjs",
+      "import": "./icon/color/CallTrackingMetricsColored/m/index.mjs",
+      "types": "./icon/color/CallTrackingMetricsColored/m/index.d.ts"
+    },
+    "./icon/color/CampaignMonitorColored/l": {
+      "require": "./icon/color/CampaignMonitorColored/l/index.cjs",
+      "import": "./icon/color/CampaignMonitorColored/l/index.mjs",
+      "types": "./icon/color/CampaignMonitorColored/l/index.d.ts"
+    },
+    "./icon/color/CampaignMonitorColored/m": {
+      "require": "./icon/color/CampaignMonitorColored/m/index.cjs",
+      "import": "./icon/color/CampaignMonitorColored/m/index.mjs",
+      "types": "./icon/color/CampaignMonitorColored/m/index.d.ts"
+    },
     "./icon/color/Confluence/l": {
       "require": "./icon/color/Confluence/l/index.cjs",
       "import": "./icon/color/Confluence/l/index.mjs",
@@ -3644,6 +4203,26 @@
       "require": "./icon/color/Confluence/m/index.cjs",
       "import": "./icon/color/Confluence/m/index.mjs",
       "types": "./icon/color/Confluence/m/index.d.ts"
+    },
+    "./icon/color/ConstantContactColored/l": {
+      "require": "./icon/color/ConstantContactColored/l/index.cjs",
+      "import": "./icon/color/ConstantContactColored/l/index.mjs",
+      "types": "./icon/color/ConstantContactColored/l/index.d.ts"
+    },
+    "./icon/color/ConstantContactColored/m": {
+      "require": "./icon/color/ConstantContactColored/m/index.cjs",
+      "import": "./icon/color/ConstantContactColored/m/index.mjs",
+      "types": "./icon/color/ConstantContactColored/m/index.d.ts"
+    },
+    "./icon/color/Copilot/l": {
+      "require": "./icon/color/Copilot/l/index.cjs",
+      "import": "./icon/color/Copilot/l/index.mjs",
+      "types": "./icon/color/Copilot/l/index.d.ts"
+    },
+    "./icon/color/Copilot/m": {
+      "require": "./icon/color/Copilot/m/index.cjs",
+      "import": "./icon/color/Copilot/m/index.mjs",
+      "types": "./icon/color/Copilot/m/index.d.ts"
     },
     "./icon/color/Figma/l": {
       "require": "./icon/color/Figma/l/index.cjs",
@@ -3745,6 +4324,16 @@
       "import": "./icon/color/GoogleDataStudio/m/index.mjs",
       "types": "./icon/color/GoogleDataStudio/m/index.d.ts"
     },
+    "./icon/color/GoogleDisplayVideoAds/l": {
+      "require": "./icon/color/GoogleDisplayVideoAds/l/index.cjs",
+      "import": "./icon/color/GoogleDisplayVideoAds/l/index.mjs",
+      "types": "./icon/color/GoogleDisplayVideoAds/l/index.d.ts"
+    },
+    "./icon/color/GoogleDisplayVideoAds/m": {
+      "require": "./icon/color/GoogleDisplayVideoAds/m/index.cjs",
+      "import": "./icon/color/GoogleDisplayVideoAds/m/index.mjs",
+      "types": "./icon/color/GoogleDisplayVideoAds/m/index.d.ts"
+    },
     "./icon/color/GoogleDocs/l": {
       "require": "./icon/color/GoogleDocs/l/index.cjs",
       "import": "./icon/color/GoogleDocs/l/index.mjs",
@@ -3815,6 +4404,16 @@
       "import": "./icon/color/Hubspot/m/index.mjs",
       "types": "./icon/color/Hubspot/m/index.d.ts"
     },
+    "./icon/color/InstagramColored/l": {
+      "require": "./icon/color/InstagramColored/l/index.cjs",
+      "import": "./icon/color/InstagramColored/l/index.mjs",
+      "types": "./icon/color/InstagramColored/l/index.d.ts"
+    },
+    "./icon/color/InstagramColored/m": {
+      "require": "./icon/color/InstagramColored/m/index.cjs",
+      "import": "./icon/color/InstagramColored/m/index.mjs",
+      "types": "./icon/color/InstagramColored/m/index.d.ts"
+    },
     "./icon/color/JavaScript/l": {
       "require": "./icon/color/JavaScript/l/index.cjs",
       "import": "./icon/color/JavaScript/l/index.mjs",
@@ -3825,6 +4424,16 @@
       "import": "./icon/color/JavaScript/m/index.mjs",
       "types": "./icon/color/JavaScript/m/index.d.ts"
     },
+    "./icon/color/LinkedInColored/l": {
+      "require": "./icon/color/LinkedInColored/l/index.cjs",
+      "import": "./icon/color/LinkedInColored/l/index.mjs",
+      "types": "./icon/color/LinkedInColored/l/index.d.ts"
+    },
+    "./icon/color/LinkedInColored/m": {
+      "require": "./icon/color/LinkedInColored/m/index.cjs",
+      "import": "./icon/color/LinkedInColored/m/index.mjs",
+      "types": "./icon/color/LinkedInColored/m/index.d.ts"
+    },
     "./icon/color/LookerStudio/l": {
       "require": "./icon/color/LookerStudio/l/index.cjs",
       "import": "./icon/color/LookerStudio/l/index.mjs",
@@ -3834,6 +4443,46 @@
       "require": "./icon/color/LookerStudio/m/index.cjs",
       "import": "./icon/color/LookerStudio/m/index.mjs",
       "types": "./icon/color/LookerStudio/m/index.d.ts"
+    },
+    "./icon/color/Mailchimp/l": {
+      "require": "./icon/color/Mailchimp/l/index.cjs",
+      "import": "./icon/color/Mailchimp/l/index.mjs",
+      "types": "./icon/color/Mailchimp/l/index.d.ts"
+    },
+    "./icon/color/Mailchimp/m": {
+      "require": "./icon/color/Mailchimp/m/index.cjs",
+      "import": "./icon/color/Mailchimp/m/index.mjs",
+      "types": "./icon/color/Mailchimp/m/index.d.ts"
+    },
+    "./icon/color/Matomo/l": {
+      "require": "./icon/color/Matomo/l/index.cjs",
+      "import": "./icon/color/Matomo/l/index.mjs",
+      "types": "./icon/color/Matomo/l/index.d.ts"
+    },
+    "./icon/color/Matomo/m": {
+      "require": "./icon/color/Matomo/m/index.cjs",
+      "import": "./icon/color/Matomo/m/index.mjs",
+      "types": "./icon/color/Matomo/m/index.d.ts"
+    },
+    "./icon/color/MetaColored/l": {
+      "require": "./icon/color/MetaColored/l/index.cjs",
+      "import": "./icon/color/MetaColored/l/index.mjs",
+      "types": "./icon/color/MetaColored/l/index.d.ts"
+    },
+    "./icon/color/MetaColored/m": {
+      "require": "./icon/color/MetaColored/m/index.cjs",
+      "import": "./icon/color/MetaColored/m/index.mjs",
+      "types": "./icon/color/MetaColored/m/index.d.ts"
+    },
+    "./icon/color/Microsoft/l": {
+      "require": "./icon/color/Microsoft/l/index.cjs",
+      "import": "./icon/color/Microsoft/l/index.mjs",
+      "types": "./icon/color/Microsoft/l/index.d.ts"
+    },
+    "./icon/color/Microsoft/m": {
+      "require": "./icon/color/Microsoft/m/index.cjs",
+      "import": "./icon/color/Microsoft/m/index.mjs",
+      "types": "./icon/color/Microsoft/m/index.d.ts"
     },
     "./icon/color/MicrosoftExchange/l": {
       "require": "./icon/color/MicrosoftExchange/l/index.cjs",
@@ -3865,6 +4514,86 @@
       "import": "./icon/color/MicrosoftOutlook/m/index.mjs",
       "types": "./icon/color/MicrosoftOutlook/m/index.d.ts"
     },
+    "./icon/color/Moz/l": {
+      "require": "./icon/color/Moz/l/index.cjs",
+      "import": "./icon/color/Moz/l/index.mjs",
+      "types": "./icon/color/Moz/l/index.d.ts"
+    },
+    "./icon/color/Moz/m": {
+      "require": "./icon/color/Moz/m/index.cjs",
+      "import": "./icon/color/Moz/m/index.mjs",
+      "types": "./icon/color/Moz/m/index.d.ts"
+    },
+    "./icon/color/PipedriveColored/l": {
+      "require": "./icon/color/PipedriveColored/l/index.cjs",
+      "import": "./icon/color/PipedriveColored/l/index.mjs",
+      "types": "./icon/color/PipedriveColored/l/index.d.ts"
+    },
+    "./icon/color/PipedriveColored/m": {
+      "require": "./icon/color/PipedriveColored/m/index.cjs",
+      "import": "./icon/color/PipedriveColored/m/index.mjs",
+      "types": "./icon/color/PipedriveColored/m/index.d.ts"
+    },
+    "./icon/color/Salesforce/l": {
+      "require": "./icon/color/Salesforce/l/index.cjs",
+      "import": "./icon/color/Salesforce/l/index.mjs",
+      "types": "./icon/color/Salesforce/l/index.d.ts"
+    },
+    "./icon/color/Salesforce/m": {
+      "require": "./icon/color/Salesforce/m/index.cjs",
+      "import": "./icon/color/Salesforce/m/index.mjs",
+      "types": "./icon/color/Salesforce/m/index.d.ts"
+    },
+    "./icon/color/ShopifyColored/l": {
+      "require": "./icon/color/ShopifyColored/l/index.cjs",
+      "import": "./icon/color/ShopifyColored/l/index.mjs",
+      "types": "./icon/color/ShopifyColored/l/index.d.ts"
+    },
+    "./icon/color/ShopifyColored/m": {
+      "require": "./icon/color/ShopifyColored/m/index.cjs",
+      "import": "./icon/color/ShopifyColored/m/index.mjs",
+      "types": "./icon/color/ShopifyColored/m/index.d.ts"
+    },
+    "./icon/color/Snapchat/l": {
+      "require": "./icon/color/Snapchat/l/index.cjs",
+      "import": "./icon/color/Snapchat/l/index.mjs",
+      "types": "./icon/color/Snapchat/l/index.d.ts"
+    },
+    "./icon/color/Snapchat/m": {
+      "require": "./icon/color/Snapchat/m/index.cjs",
+      "import": "./icon/color/Snapchat/m/index.mjs",
+      "types": "./icon/color/Snapchat/m/index.d.ts"
+    },
+    "./icon/color/TikTokColored/l": {
+      "require": "./icon/color/TikTokColored/l/index.cjs",
+      "import": "./icon/color/TikTokColored/l/index.mjs",
+      "types": "./icon/color/TikTokColored/l/index.d.ts"
+    },
+    "./icon/color/TikTokColored/m": {
+      "require": "./icon/color/TikTokColored/m/index.cjs",
+      "import": "./icon/color/TikTokColored/m/index.mjs",
+      "types": "./icon/color/TikTokColored/m/index.d.ts"
+    },
+    "./icon/color/TikTokColoredInvert/l": {
+      "require": "./icon/color/TikTokColoredInvert/l/index.cjs",
+      "import": "./icon/color/TikTokColoredInvert/l/index.mjs",
+      "types": "./icon/color/TikTokColoredInvert/l/index.d.ts"
+    },
+    "./icon/color/TikTokColoredInvert/m": {
+      "require": "./icon/color/TikTokColoredInvert/m/index.cjs",
+      "import": "./icon/color/TikTokColoredInvert/m/index.mjs",
+      "types": "./icon/color/TikTokColoredInvert/m/index.d.ts"
+    },
+    "./icon/color/WhatConvertsColored/l": {
+      "require": "./icon/color/WhatConvertsColored/l/index.cjs",
+      "import": "./icon/color/WhatConvertsColored/l/index.mjs",
+      "types": "./icon/color/WhatConvertsColored/l/index.d.ts"
+    },
+    "./icon/color/WhatConvertsColored/m": {
+      "require": "./icon/color/WhatConvertsColored/m/index.cjs",
+      "import": "./icon/color/WhatConvertsColored/m/index.mjs",
+      "types": "./icon/color/WhatConvertsColored/m/index.d.ts"
+    },
     "./icon/color/WhatsApp/l": {
       "require": "./icon/color/WhatsApp/l/index.cjs",
       "import": "./icon/color/WhatsApp/l/index.mjs",
@@ -3874,6 +4603,16 @@
       "require": "./icon/color/WhatsApp/m/index.cjs",
       "import": "./icon/color/WhatsApp/m/index.mjs",
       "types": "./icon/color/WhatsApp/m/index.d.ts"
+    },
+    "./icon/color/WooCommerceColored/l": {
+      "require": "./icon/color/WooCommerceColored/l/index.cjs",
+      "import": "./icon/color/WooCommerceColored/l/index.mjs",
+      "types": "./icon/color/WooCommerceColored/l/index.d.ts"
+    },
+    "./icon/color/WooCommerceColored/m": {
+      "require": "./icon/color/WooCommerceColored/m/index.cjs",
+      "import": "./icon/color/WooCommerceColored/m/index.mjs",
+      "types": "./icon/color/WooCommerceColored/m/index.d.ts"
     },
     "./icon/color/Yahoo/l": {
       "require": "./icon/color/Yahoo/l/index.cjs",
@@ -4150,265 +4889,315 @@
       "import": "./icon/pay/WeChatPay/m/index.mjs",
       "types": "./icon/pay/WeChatPay/m/index.d.ts"
     },
+    "./icon/platform/AdsToolkit": {
+      "require": "./icon/platform/AdsToolkit/index.cjs",
+      "import": "./icon/platform/AdsToolkit/index.mjs",
+      "types": "./icon/platform/AdsToolkit/index.d.ts"
+    },
+    "./icon/platform/AppCenter": {
+      "require": "./icon/platform/AppCenter/index.cjs",
+      "import": "./icon/platform/AppCenter/index.mjs",
+      "types": "./icon/platform/AppCenter/index.d.ts"
+    },
+    "./icon/platform/ContentToolkit": {
+      "require": "./icon/platform/ContentToolkit/index.cjs",
+      "import": "./icon/platform/ContentToolkit/index.mjs",
+      "types": "./icon/platform/ContentToolkit/index.d.ts"
+    },
+    "./icon/platform/HomePlatform": {
+      "require": "./icon/platform/HomePlatform/index.cjs",
+      "import": "./icon/platform/HomePlatform/index.mjs",
+      "types": "./icon/platform/HomePlatform/index.d.ts"
+    },
+    "./icon/platform/LocalToolkit": {
+      "require": "./icon/platform/LocalToolkit/index.cjs",
+      "import": "./icon/platform/LocalToolkit/index.mjs",
+      "types": "./icon/platform/LocalToolkit/index.d.ts"
+    },
+    "./icon/platform/ReportsToolkit": {
+      "require": "./icon/platform/ReportsToolkit/index.cjs",
+      "import": "./icon/platform/ReportsToolkit/index.mjs",
+      "types": "./icon/platform/ReportsToolkit/index.d.ts"
+    },
+    "./icon/platform/SEOToolkit": {
+      "require": "./icon/platform/SEOToolkit/index.cjs",
+      "import": "./icon/platform/SEOToolkit/index.mjs",
+      "types": "./icon/platform/SEOToolkit/index.d.ts"
+    },
+    "./icon/platform/SocialToolkit": {
+      "require": "./icon/platform/SocialToolkit/index.cjs",
+      "import": "./icon/platform/SocialToolkit/index.mjs",
+      "types": "./icon/platform/SocialToolkit/index.d.ts"
+    },
+    "./icon/platform/TrafficMarketToolkit": {
+      "require": "./icon/platform/TrafficMarketToolkit/index.cjs",
+      "import": "./icon/platform/TrafficMarketToolkit/index.mjs",
+      "types": "./icon/platform/TrafficMarketToolkit/index.d.ts"
+    },
     "./icon": {
       "require": "./icon/index.cjs",
       "import": "./icon/index.mjs",
       "types": "./icon/index.d.ts"
     },
-    "./illustration/AccessDenied/": {
-      "require": "./illustration/AccessDenied//index.cjs",
-      "import": "./illustration/AccessDenied//index.mjs",
-      "types": "./illustration/AccessDenied//index.d.ts"
+    "./illustration/AccessDenied": {
+      "require": "./illustration/AccessDenied/index.cjs",
+      "import": "./illustration/AccessDenied/index.mjs",
+      "types": "./illustration/AccessDenied/index.d.ts"
     },
-    "./illustration/AccessLogIn/": {
-      "require": "./illustration/AccessLogIn//index.cjs",
-      "import": "./illustration/AccessLogIn//index.mjs",
-      "types": "./illustration/AccessLogIn//index.d.ts"
+    "./illustration/AccessLogIn": {
+      "require": "./illustration/AccessLogIn/index.cjs",
+      "import": "./illustration/AccessLogIn/index.mjs",
+      "types": "./illustration/AccessLogIn/index.d.ts"
     },
-    "./illustration/AreaChart/": {
-      "require": "./illustration/AreaChart//index.cjs",
-      "import": "./illustration/AreaChart//index.mjs",
-      "types": "./illustration/AreaChart//index.d.ts"
+    "./illustration/AreaChart": {
+      "require": "./illustration/AreaChart/index.cjs",
+      "import": "./illustration/AreaChart/index.mjs",
+      "types": "./illustration/AreaChart/index.d.ts"
     },
-    "./illustration/Blocked/": {
-      "require": "./illustration/Blocked//index.cjs",
-      "import": "./illustration/Blocked//index.mjs",
-      "types": "./illustration/Blocked//index.d.ts"
+    "./illustration/Blocked": {
+      "require": "./illustration/Blocked/index.cjs",
+      "import": "./illustration/Blocked/index.mjs",
+      "types": "./illustration/Blocked/index.d.ts"
     },
-    "./illustration/ChoroplethMapChart/": {
-      "require": "./illustration/ChoroplethMapChart//index.cjs",
-      "import": "./illustration/ChoroplethMapChart//index.mjs",
-      "types": "./illustration/ChoroplethMapChart//index.d.ts"
+    "./illustration/ChoroplethMapChart": {
+      "require": "./illustration/ChoroplethMapChart/index.cjs",
+      "import": "./illustration/ChoroplethMapChart/index.mjs",
+      "types": "./illustration/ChoroplethMapChart/index.d.ts"
     },
-    "./illustration/Coffee/": {
-      "require": "./illustration/Coffee//index.cjs",
-      "import": "./illustration/Coffee//index.mjs",
-      "types": "./illustration/Coffee//index.d.ts"
+    "./illustration/Coffee": {
+      "require": "./illustration/Coffee/index.cjs",
+      "import": "./illustration/Coffee/index.mjs",
+      "types": "./illustration/Coffee/index.d.ts"
     },
-    "./illustration/Collection/": {
-      "require": "./illustration/Collection//index.cjs",
-      "import": "./illustration/Collection//index.mjs",
-      "types": "./illustration/Collection//index.d.ts"
+    "./illustration/Collection": {
+      "require": "./illustration/Collection/index.cjs",
+      "import": "./illustration/Collection/index.mjs",
+      "types": "./illustration/Collection/index.d.ts"
     },
-    "./illustration/CombinedChart/": {
-      "require": "./illustration/CombinedChart//index.cjs",
-      "import": "./illustration/CombinedChart//index.mjs",
-      "types": "./illustration/CombinedChart//index.d.ts"
+    "./illustration/CombinedChart": {
+      "require": "./illustration/CombinedChart/index.cjs",
+      "import": "./illustration/CombinedChart/index.mjs",
+      "types": "./illustration/CombinedChart/index.d.ts"
     },
-    "./illustration/Confirmation/": {
-      "require": "./illustration/Confirmation//index.cjs",
-      "import": "./illustration/Confirmation//index.mjs",
-      "types": "./illustration/Confirmation//index.d.ts"
+    "./illustration/Configuration": {
+      "require": "./illustration/Configuration/index.cjs",
+      "import": "./illustration/Configuration/index.mjs",
+      "types": "./illustration/Configuration/index.d.ts"
     },
-    "./illustration/Congrats/": {
-      "require": "./illustration/Congrats//index.cjs",
-      "import": "./illustration/Congrats//index.mjs",
-      "types": "./illustration/Congrats//index.d.ts"
+    "./illustration/Confirmation": {
+      "require": "./illustration/Confirmation/index.cjs",
+      "import": "./illustration/Confirmation/index.mjs",
+      "types": "./illustration/Confirmation/index.d.ts"
     },
-    "./illustration/ConnectionLost/": {
-      "require": "./illustration/ConnectionLost//index.cjs",
-      "import": "./illustration/ConnectionLost//index.mjs",
-      "types": "./illustration/ConnectionLost//index.d.ts"
+    "./illustration/Congrats": {
+      "require": "./illustration/Congrats/index.cjs",
+      "import": "./illustration/Congrats/index.mjs",
+      "types": "./illustration/Congrats/index.d.ts"
     },
-    "./illustration/DeletedAccount/": {
-      "require": "./illustration/DeletedAccount//index.cjs",
-      "import": "./illustration/DeletedAccount//index.mjs",
-      "types": "./illustration/DeletedAccount//index.d.ts"
+    "./illustration/ConnectionLost": {
+      "require": "./illustration/ConnectionLost/index.cjs",
+      "import": "./illustration/ConnectionLost/index.mjs",
+      "types": "./illustration/ConnectionLost/index.d.ts"
     },
-    "./illustration/DeletedPage/": {
-      "require": "./illustration/DeletedPage//index.cjs",
-      "import": "./illustration/DeletedPage//index.mjs",
-      "types": "./illustration/DeletedPage//index.d.ts"
+    "./illustration/DeletedAccount": {
+      "require": "./illustration/DeletedAccount/index.cjs",
+      "import": "./illustration/DeletedAccount/index.mjs",
+      "types": "./illustration/DeletedAccount/index.d.ts"
     },
-    "./illustration/Dns/": {
-      "require": "./illustration/Dns//index.cjs",
-      "import": "./illustration/Dns//index.mjs",
-      "types": "./illustration/Dns//index.d.ts"
+    "./illustration/DeletedPage": {
+      "require": "./illustration/DeletedPage/index.cjs",
+      "import": "./illustration/DeletedPage/index.mjs",
+      "types": "./illustration/DeletedPage/index.d.ts"
     },
-    "./illustration/DonutChart/": {
-      "require": "./illustration/DonutChart//index.cjs",
-      "import": "./illustration/DonutChart//index.mjs",
-      "types": "./illustration/DonutChart//index.d.ts"
+    "./illustration/Dns": {
+      "require": "./illustration/Dns/index.cjs",
+      "import": "./illustration/Dns/index.mjs",
+      "types": "./illustration/Dns/index.d.ts"
     },
-    "./illustration/Duplicates/": {
-      "require": "./illustration/Duplicates//index.cjs",
-      "import": "./illustration/Duplicates//index.mjs",
-      "types": "./illustration/Duplicates//index.d.ts"
+    "./illustration/DonutChart": {
+      "require": "./illustration/DonutChart/index.cjs",
+      "import": "./illustration/DonutChart/index.mjs",
+      "types": "./illustration/DonutChart/index.d.ts"
     },
-    "./illustration/Feedback/": {
-      "require": "./illustration/Feedback//index.cjs",
-      "import": "./illustration/Feedback//index.mjs",
-      "types": "./illustration/Feedback//index.d.ts"
+    "./illustration/Duplicates": {
+      "require": "./illustration/Duplicates/index.cjs",
+      "import": "./illustration/Duplicates/index.mjs",
+      "types": "./illustration/Duplicates/index.d.ts"
     },
-    "./illustration/FunnelChart/": {
-      "require": "./illustration/FunnelChart//index.cjs",
-      "import": "./illustration/FunnelChart//index.mjs",
-      "types": "./illustration/FunnelChart//index.d.ts"
+    "./illustration/Feedback": {
+      "require": "./illustration/Feedback/index.cjs",
+      "import": "./illustration/Feedback/index.mjs",
+      "types": "./illustration/Feedback/index.d.ts"
     },
-    "./illustration/Good/": {
-      "require": "./illustration/Good//index.cjs",
-      "import": "./illustration/Good//index.mjs",
-      "types": "./illustration/Good//index.d.ts"
+    "./illustration/FunnelChart": {
+      "require": "./illustration/FunnelChart/index.cjs",
+      "import": "./illustration/FunnelChart/index.mjs",
+      "types": "./illustration/FunnelChart/index.d.ts"
     },
-    "./illustration/HeatMapChart/": {
-      "require": "./illustration/HeatMapChart//index.cjs",
-      "import": "./illustration/HeatMapChart//index.mjs",
-      "types": "./illustration/HeatMapChart//index.d.ts"
+    "./illustration/Good": {
+      "require": "./illustration/Good/index.cjs",
+      "import": "./illustration/Good/index.mjs",
+      "types": "./illustration/Good/index.d.ts"
     },
-    "./illustration/HorizontalBarChart/": {
-      "require": "./illustration/HorizontalBarChart//index.cjs",
-      "import": "./illustration/HorizontalBarChart//index.mjs",
-      "types": "./illustration/HorizontalBarChart//index.d.ts"
+    "./illustration/HeatMapChart": {
+      "require": "./illustration/HeatMapChart/index.cjs",
+      "import": "./illustration/HeatMapChart/index.mjs",
+      "types": "./illustration/HeatMapChart/index.d.ts"
     },
-    "./illustration/KagiChart/": {
-      "require": "./illustration/KagiChart//index.cjs",
-      "import": "./illustration/KagiChart//index.mjs",
-      "types": "./illustration/KagiChart//index.d.ts"
+    "./illustration/HorizontalBarChart": {
+      "require": "./illustration/HorizontalBarChart/index.cjs",
+      "import": "./illustration/HorizontalBarChart/index.mjs",
+      "types": "./illustration/HorizontalBarChart/index.d.ts"
     },
-    "./illustration/LineChart/": {
-      "require": "./illustration/LineChart//index.cjs",
-      "import": "./illustration/LineChart//index.mjs",
-      "types": "./illustration/LineChart//index.d.ts"
+    "./illustration/KagiChart": {
+      "require": "./illustration/KagiChart/index.cjs",
+      "import": "./illustration/KagiChart/index.mjs",
+      "types": "./illustration/KagiChart/index.d.ts"
     },
-    "./illustration/LollipopChart/": {
-      "require": "./illustration/LollipopChart//index.cjs",
-      "import": "./illustration/LollipopChart//index.mjs",
-      "types": "./illustration/LollipopChart//index.d.ts"
+    "./illustration/LineChart": {
+      "require": "./illustration/LineChart/index.cjs",
+      "import": "./illustration/LineChart/index.mjs",
+      "types": "./illustration/LineChart/index.d.ts"
     },
-    "./illustration/MailSent/": {
-      "require": "./illustration/MailSent//index.cjs",
-      "import": "./illustration/MailSent//index.mjs",
-      "types": "./illustration/MailSent//index.d.ts"
+    "./illustration/LollipopChart": {
+      "require": "./illustration/LollipopChart/index.cjs",
+      "import": "./illustration/LollipopChart/index.mjs",
+      "types": "./illustration/LollipopChart/index.d.ts"
     },
-    "./illustration/Maintenance/": {
-      "require": "./illustration/Maintenance//index.cjs",
-      "import": "./illustration/Maintenance//index.mjs",
-      "types": "./illustration/Maintenance//index.d.ts"
+    "./illustration/MailSent": {
+      "require": "./illustration/MailSent/index.cjs",
+      "import": "./illustration/MailSent/index.mjs",
+      "types": "./illustration/MailSent/index.d.ts"
     },
-    "./illustration/Nexttime/": {
-      "require": "./illustration/Nexttime//index.cjs",
-      "import": "./illustration/Nexttime//index.mjs",
-      "types": "./illustration/Nexttime//index.d.ts"
+    "./illustration/Maintenance": {
+      "require": "./illustration/Maintenance/index.cjs",
+      "import": "./illustration/Maintenance/index.mjs",
+      "types": "./illustration/Maintenance/index.d.ts"
     },
-    "./illustration/NoPayment/": {
-      "require": "./illustration/NoPayment//index.cjs",
-      "import": "./illustration/NoPayment//index.mjs",
-      "types": "./illustration/NoPayment//index.d.ts"
+    "./illustration/Nexttime": {
+      "require": "./illustration/Nexttime/index.cjs",
+      "import": "./illustration/Nexttime/index.mjs",
+      "types": "./illustration/Nexttime/index.d.ts"
     },
-    "./illustration/NothingFound/": {
-      "require": "./illustration/NothingFound//index.cjs",
-      "import": "./illustration/NothingFound//index.mjs",
-      "types": "./illustration/NothingFound//index.d.ts"
+    "./illustration/NoPayment": {
+      "require": "./illustration/NoPayment/index.cjs",
+      "import": "./illustration/NoPayment/index.mjs",
+      "types": "./illustration/NoPayment/index.d.ts"
     },
-    "./illustration/OtherData/": {
-      "require": "./illustration/OtherData//index.cjs",
-      "import": "./illustration/OtherData//index.mjs",
-      "types": "./illustration/OtherData//index.d.ts"
+    "./illustration/NothingFound": {
+      "require": "./illustration/NothingFound/index.cjs",
+      "import": "./illustration/NothingFound/index.mjs",
+      "types": "./illustration/NothingFound/index.d.ts"
     },
-    "./illustration/PageError/": {
-      "require": "./illustration/PageError//index.cjs",
-      "import": "./illustration/PageError//index.mjs",
-      "types": "./illustration/PageError//index.d.ts"
+    "./illustration/OtherData": {
+      "require": "./illustration/OtherData/index.cjs",
+      "import": "./illustration/OtherData/index.mjs",
+      "types": "./illustration/OtherData/index.d.ts"
     },
-    "./illustration/PageNotFound/": {
-      "require": "./illustration/PageNotFound//index.cjs",
-      "import": "./illustration/PageNotFound//index.mjs",
-      "types": "./illustration/PageNotFound//index.d.ts"
+    "./illustration/PageError": {
+      "require": "./illustration/PageError/index.cjs",
+      "import": "./illustration/PageError/index.mjs",
+      "types": "./illustration/PageError/index.d.ts"
     },
-    "./illustration/PieChart/": {
-      "require": "./illustration/PieChart//index.cjs",
-      "import": "./illustration/PieChart//index.mjs",
-      "types": "./illustration/PieChart//index.d.ts"
+    "./illustration/PageNotFound": {
+      "require": "./illustration/PageNotFound/index.cjs",
+      "import": "./illustration/PageNotFound/index.mjs",
+      "types": "./illustration/PageNotFound/index.d.ts"
     },
-    "./illustration/Processing/": {
-      "require": "./illustration/Processing//index.cjs",
-      "import": "./illustration/Processing//index.mjs",
-      "types": "./illustration/Processing//index.d.ts"
+    "./illustration/PieChart": {
+      "require": "./illustration/PieChart/index.cjs",
+      "import": "./illustration/PieChart/index.mjs",
+      "types": "./illustration/PieChart/index.d.ts"
     },
-    "./illustration/ProjectNotFound/": {
-      "require": "./illustration/ProjectNotFound//index.cjs",
-      "import": "./illustration/ProjectNotFound//index.mjs",
-      "types": "./illustration/ProjectNotFound//index.d.ts"
+    "./illustration/Processing": {
+      "require": "./illustration/Processing/index.cjs",
+      "import": "./illustration/Processing/index.mjs",
+      "types": "./illustration/Processing/index.d.ts"
     },
-    "./illustration/RadarChart/": {
-      "require": "./illustration/RadarChart//index.cjs",
-      "import": "./illustration/RadarChart//index.mjs",
-      "types": "./illustration/RadarChart//index.d.ts"
+    "./illustration/ProjectNotFound": {
+      "require": "./illustration/ProjectNotFound/index.cjs",
+      "import": "./illustration/ProjectNotFound/index.mjs",
+      "types": "./illustration/ProjectNotFound/index.d.ts"
     },
-    "./illustration/RadialTreeChart/": {
-      "require": "./illustration/RadialTreeChart//index.cjs",
-      "import": "./illustration/RadialTreeChart//index.mjs",
-      "types": "./illustration/RadialTreeChart//index.d.ts"
+    "./illustration/RadarChart": {
+      "require": "./illustration/RadarChart/index.cjs",
+      "import": "./illustration/RadarChart/index.mjs",
+      "types": "./illustration/RadarChart/index.d.ts"
     },
-    "./illustration/SankeyChart/": {
-      "require": "./illustration/SankeyChart//index.cjs",
-      "import": "./illustration/SankeyChart//index.mjs",
-      "types": "./illustration/SankeyChart//index.d.ts"
+    "./illustration/RadialTreeChart": {
+      "require": "./illustration/RadialTreeChart/index.cjs",
+      "import": "./illustration/RadialTreeChart/index.mjs",
+      "types": "./illustration/RadialTreeChart/index.d.ts"
     },
-    "./illustration/ScatterPlotChart/": {
-      "require": "./illustration/ScatterPlotChart//index.cjs",
-      "import": "./illustration/ScatterPlotChart//index.mjs",
-      "types": "./illustration/ScatterPlotChart//index.d.ts"
+    "./illustration/SankeyChart": {
+      "require": "./illustration/SankeyChart/index.cjs",
+      "import": "./illustration/SankeyChart/index.mjs",
+      "types": "./illustration/SankeyChart/index.d.ts"
     },
-    "./illustration/StackedAreaChart/": {
-      "require": "./illustration/StackedAreaChart//index.cjs",
-      "import": "./illustration/StackedAreaChart//index.mjs",
-      "types": "./illustration/StackedAreaChart//index.d.ts"
+    "./illustration/ScatterPlotChart": {
+      "require": "./illustration/ScatterPlotChart/index.cjs",
+      "import": "./illustration/ScatterPlotChart/index.mjs",
+      "types": "./illustration/ScatterPlotChart/index.d.ts"
     },
-    "./illustration/Suggestion/": {
-      "require": "./illustration/Suggestion//index.cjs",
-      "import": "./illustration/Suggestion//index.mjs",
-      "types": "./illustration/Suggestion//index.d.ts"
+    "./illustration/StackedAreaChart": {
+      "require": "./illustration/StackedAreaChart/index.cjs",
+      "import": "./illustration/StackedAreaChart/index.mjs",
+      "types": "./illustration/StackedAreaChart/index.d.ts"
     },
-    "./illustration/Suggestions/": {
-      "require": "./illustration/Suggestions//index.cjs",
-      "import": "./illustration/Suggestions//index.mjs",
-      "types": "./illustration/Suggestions//index.d.ts"
+    "./illustration/Suggestion": {
+      "require": "./illustration/Suggestion/index.cjs",
+      "import": "./illustration/Suggestion/index.mjs",
+      "types": "./illustration/Suggestion/index.d.ts"
     },
-    "./illustration/Table/": {
-      "require": "./illustration/Table//index.cjs",
-      "import": "./illustration/Table//index.mjs",
-      "types": "./illustration/Table//index.d.ts"
+    "./illustration/Suggestions": {
+      "require": "./illustration/Suggestions/index.cjs",
+      "import": "./illustration/Suggestions/index.mjs",
+      "types": "./illustration/Suggestions/index.d.ts"
     },
-    "./illustration/TagCloud/": {
-      "require": "./illustration/TagCloud//index.cjs",
-      "import": "./illustration/TagCloud//index.mjs",
-      "types": "./illustration/TagCloud//index.d.ts"
+    "./illustration/Table": {
+      "require": "./illustration/Table/index.cjs",
+      "import": "./illustration/Table/index.mjs",
+      "types": "./illustration/Table/index.d.ts"
     },
-    "./illustration/TextLinksEtc/": {
-      "require": "./illustration/TextLinksEtc//index.cjs",
-      "import": "./illustration/TextLinksEtc//index.mjs",
-      "types": "./illustration/TextLinksEtc//index.d.ts"
+    "./illustration/TagCloud": {
+      "require": "./illustration/TagCloud/index.cjs",
+      "import": "./illustration/TagCloud/index.mjs",
+      "types": "./illustration/TagCloud/index.d.ts"
     },
-    "./illustration/Timeout/": {
-      "require": "./illustration/Timeout//index.cjs",
-      "import": "./illustration/Timeout//index.mjs",
-      "types": "./illustration/Timeout//index.d.ts"
+    "./illustration/TextLinksEtc": {
+      "require": "./illustration/TextLinksEtc/index.cjs",
+      "import": "./illustration/TextLinksEtc/index.mjs",
+      "types": "./illustration/TextLinksEtc/index.d.ts"
     },
-    "./illustration/UnderConstruction/": {
-      "require": "./illustration/UnderConstruction//index.cjs",
-      "import": "./illustration/UnderConstruction//index.mjs",
-      "types": "./illustration/UnderConstruction//index.d.ts"
+    "./illustration/Timeout": {
+      "require": "./illustration/Timeout/index.cjs",
+      "import": "./illustration/Timeout/index.mjs",
+      "types": "./illustration/Timeout/index.d.ts"
     },
-    "./illustration/VennChart/": {
-      "require": "./illustration/VennChart//index.cjs",
-      "import": "./illustration/VennChart//index.mjs",
-      "types": "./illustration/VennChart//index.d.ts"
+    "./illustration/UnderConstruction": {
+      "require": "./illustration/UnderConstruction/index.cjs",
+      "import": "./illustration/UnderConstruction/index.mjs",
+      "types": "./illustration/UnderConstruction/index.d.ts"
     },
-    "./illustration/VerticalBarChart/": {
-      "require": "./illustration/VerticalBarChart//index.cjs",
-      "import": "./illustration/VerticalBarChart//index.mjs",
-      "types": "./illustration/VerticalBarChart//index.d.ts"
+    "./illustration/VennChart": {
+      "require": "./illustration/VennChart/index.cjs",
+      "import": "./illustration/VennChart/index.mjs",
+      "types": "./illustration/VennChart/index.d.ts"
     },
-    "./illustration/Waiting/": {
-      "require": "./illustration/Waiting//index.cjs",
-      "import": "./illustration/Waiting//index.mjs",
-      "types": "./illustration/Waiting//index.d.ts"
+    "./illustration/VerticalBarChart": {
+      "require": "./illustration/VerticalBarChart/index.cjs",
+      "import": "./illustration/VerticalBarChart/index.mjs",
+      "types": "./illustration/VerticalBarChart/index.d.ts"
     },
-    "./illustration/Warning/": {
-      "require": "./illustration/Warning//index.cjs",
-      "import": "./illustration/Warning//index.mjs",
-      "types": "./illustration/Warning//index.d.ts"
+    "./illustration/Waiting": {
+      "require": "./illustration/Waiting/index.cjs",
+      "import": "./illustration/Waiting/index.mjs",
+      "types": "./illustration/Waiting/index.d.ts"
+    },
+    "./illustration/Warning": {
+      "require": "./illustration/Warning/index.cjs",
+      "import": "./illustration/Warning/index.mjs",
+      "types": "./illustration/Warning/index.d.ts"
     },
     "./illustration/lib/cjs": {
       "require": "./illustration/lib/cjs/index.cjs",
@@ -4425,25 +5214,25 @@
       "import": "./illustration/lib/types/index.mjs",
       "types": "./illustration/lib/types/index.d.ts"
     },
-    "./illustration/types/": {
-      "require": "./illustration/types//index.cjs",
-      "import": "./illustration/types//index.mjs",
-      "types": "./illustration/types//index.d.ts"
+    "./illustration/types": {
+      "require": "./illustration/types/index.cjs",
+      "import": "./illustration/types/index.mjs",
+      "types": "./illustration/types/index.d.ts"
     },
     "./illustration": {
       "require": "./illustration/index.cjs",
       "import": "./illustration/index.mjs",
       "types": "./illustration/index.d.ts"
     },
-    "./inline-input": {
-      "require": "./inline-input/index.cjs",
-      "import": "./inline-input/index.mjs",
-      "types": "./inline-input/index.d.ts"
-    },
     "./inline-edit": {
       "require": "./inline-edit/index.cjs",
       "import": "./inline-edit/index.mjs",
       "types": "./inline-edit/index.d.ts"
+    },
+    "./inline-input": {
+      "require": "./inline-input/index.cjs",
+      "import": "./inline-input/index.mjs",
+      "types": "./inline-input/index.d.ts"
     },
     "./input": {
       "require": "./input/index.cjs",
@@ -4490,15 +5279,15 @@
       "import": "./notice/index.mjs",
       "types": "./notice/index.d.ts"
     },
-    "./notice-global": {
-      "require": "./notice-global/index.cjs",
-      "import": "./notice-global/index.mjs",
-      "types": "./notice-global/index.d.ts"
-    },
     "./notice-bubble": {
       "require": "./notice-bubble/index.cjs",
       "import": "./notice-bubble/index.mjs",
       "types": "./notice-bubble/index.d.ts"
+    },
+    "./notice-global": {
+      "require": "./notice-global/index.cjs",
+      "import": "./notice-global/index.mjs",
+      "types": "./notice-global/index.d.ts"
     },
     "./outside-click": {
       "require": "./outside-click/index.cjs",
@@ -4619,471 +5408,6 @@
       "require": "./typography/index.cjs",
       "import": "./typography/index.mjs",
       "types": "./typography/index.d.ts"
-    },
-    "./utils/CSSinJS": {
-      "require": "./utils/CSSinJS.cjs",
-      "import": "./utils/CSSinJS.mjs",
-      "types": "./utils/CSSinJS.d.ts"
-    },
-    "./utils/ScreenReaderOnly": {
-      "require": "./utils/ScreenReaderOnly.cjs",
-      "import": "./utils/ScreenReaderOnly.mjs",
-      "types": "./utils/ScreenReaderOnly.d.ts"
-    },
-    "./utils/ThemeProvider": {
-      "require": "./utils/ThemeProvider.cjs",
-      "import": "./utils/ThemeProvider.mjs",
-      "types": "./utils/ThemeProvider.d.ts"
-    },
-    "./utils/addonText": {
-      "require": "./utils/addonText.cjs",
-      "import": "./utils/addonText.mjs",
-      "types": "./utils/addonText.d.ts"
-    },
-    "./utils/addonTextChildren": {
-      "require": "./utils/addonTextChildren.cjs",
-      "import": "./utils/addonTextChildren.mjs",
-      "types": "./utils/addonTextChildren.d.ts"
-    },
-    "./utils/assignProps": {
-      "require": "./utils/assignProps.cjs",
-      "import": "./utils/assignProps.mjs",
-      "types": "./utils/assignProps.d.ts"
-    },
-    "./utils/canUseDOM": {
-      "require": "./utils/canUseDOM.cjs",
-      "import": "./utils/canUseDOM.mjs",
-      "types": "./utils/canUseDOM.d.ts"
-    },
-    "./utils/capitalizeFirstLetter": {
-      "require": "./utils/capitalizeFirstLetter.cjs",
-      "import": "./utils/capitalizeFirstLetter.mjs",
-      "types": "./utils/capitalizeFirstLetter.d.ts"
-    },
-    "./utils/color": {
-      "require": "./utils/color.cjs",
-      "import": "./utils/color.mjs",
-      "types": "./utils/color.d.ts"
-    },
-    "./utils/compose": {
-      "require": "./utils/compose.cjs",
-      "import": "./utils/compose.mjs",
-      "types": "./utils/compose.d.ts"
-    },
-    "./utils/createHoc": {
-      "require": "./utils/createHoc.cjs",
-      "import": "./utils/createHoc.mjs",
-      "types": "./utils/createHoc.d.ts"
-    },
-    "./utils/createUUID": {
-      "require": "./utils/createUUID.cjs",
-      "import": "./utils/createUUID.mjs",
-      "types": "./utils/createUUID.d.ts"
-    },
-    "./utils/cssToIntDefault": {
-      "require": "./utils/cssToIntDefault.cjs",
-      "import": "./utils/cssToIntDefault.mjs",
-      "types": "./utils/cssToIntDefault.d.ts"
-    },
-    "./utils/eventEmitter": {
-      "require": "./utils/eventEmitter.cjs",
-      "import": "./utils/eventEmitter.mjs",
-      "types": "./utils/eventEmitter.d.ts"
-    },
-    "./utils/findComponent": {
-      "require": "./utils/findComponent.cjs",
-      "import": "./utils/findComponent.mjs",
-      "types": "./utils/findComponent.d.ts"
-    },
-    "./utils/fire": {
-      "require": "./utils/fire.cjs",
-      "import": "./utils/fire.mjs",
-      "types": "./utils/fire.d.ts"
-    },
-    "./utils/getDisplayName": {
-      "require": "./utils/getDisplayName.cjs",
-      "import": "./utils/getDisplayName.mjs",
-      "types": "./utils/getDisplayName.d.ts"
-    },
-    "./utils/getEventTarget": {
-      "require": "./utils/getEventTarget.cjs",
-      "import": "./utils/getEventTarget.mjs",
-      "types": "./utils/getEventTarget.d.ts"
-    },
-    "./utils/getOriginChildren": {
-      "require": "./utils/getOriginChildren.cjs",
-      "import": "./utils/getOriginChildren.mjs",
-      "types": "./utils/getOriginChildren.d.ts"
-    },
-    "./utils/getRandomInt": {
-      "require": "./utils/getRandomInt.cjs",
-      "import": "./utils/getRandomInt.mjs",
-      "types": "./utils/getRandomInt.d.ts"
-    },
-    "./utils/getValue": {
-      "require": "./utils/getValue.cjs",
-      "import": "./utils/getValue.mjs",
-      "types": "./utils/getValue.d.ts"
-    },
-    "./utils/hasLabels": {
-      "require": "./utils/hasLabels.cjs",
-      "import": "./utils/hasLabels.mjs",
-      "types": "./utils/hasLabels.d.ts"
-    },
-    "./utils/hasParent": {
-      "require": "./utils/hasParent.cjs",
-      "import": "./utils/hasParent.mjs",
-      "types": "./utils/hasParent.d.ts"
-    },
-    "./utils/if": {
-      "require": "./utils/if.cjs",
-      "import": "./utils/if.mjs",
-      "types": "./utils/if.d.ts"
-    },
-    "./utils/ifChildren": {
-      "require": "./utils/ifChildren.cjs",
-      "import": "./utils/ifChildren.mjs",
-      "types": "./utils/ifChildren.d.ts"
-    },
-    "./utils/injectStyle": {
-      "require": "./utils/injectStyle.cjs",
-      "import": "./utils/injectStyle.mjs",
-      "types": "./utils/injectStyle.d.ts"
-    },
-    "./utils/inputProps": {
-      "require": "./utils/inputProps.cjs",
-      "import": "./utils/inputProps.mjs",
-      "types": "./utils/inputProps.d.ts"
-    },
-    "./utils/isNode": {
-      "require": "./utils/isNode.cjs",
-      "import": "./utils/isNode.mjs",
-      "types": "./utils/isNode.d.ts"
-    },
-    "./utils/isPromise": {
-      "require": "./utils/isPromise.cjs",
-      "import": "./utils/isPromise.mjs",
-      "types": "./utils/isPromise.d.ts"
-    },
-    "./utils/isRetina": {
-      "require": "./utils/isRetina.cjs",
-      "import": "./utils/isRetina.mjs",
-      "types": "./utils/isRetina.d.ts"
-    },
-    "./utils/logger": {
-      "require": "./utils/logger.cjs",
-      "import": "./utils/logger.mjs",
-      "types": "./utils/logger.d.ts"
-    },
-    "./utils/numericChecker": {
-      "require": "./utils/numericChecker.cjs",
-      "import": "./utils/numericChecker.mjs",
-      "types": "./utils/numericChecker.d.ts"
-    },
-    "./utils/ownerDocument": {
-      "require": "./utils/ownerDocument.cjs",
-      "import": "./utils/ownerDocument.mjs",
-      "types": "./utils/ownerDocument.d.ts"
-    },
-    "./utils/pick": {
-      "require": "./utils/pick.cjs",
-      "import": "./utils/pick.mjs",
-      "types": "./utils/pick.d.ts"
-    },
-    "./utils/propsForElement": {
-      "require": "./utils/propsForElement.cjs",
-      "import": "./utils/propsForElement.mjs",
-      "types": "./utils/propsForElement.d.ts"
-    },
-    "./utils/rafTrottle": {
-      "require": "./utils/rafTrottle.cjs",
-      "import": "./utils/rafTrottle.mjs",
-      "types": "./utils/rafTrottle.d.ts"
-    },
-    "./utils/reactToText": {
-      "require": "./utils/reactToText.cjs",
-      "import": "./utils/reactToText.mjs",
-      "types": "./utils/reactToText.d.ts"
-    },
-    "./utils/ref": {
-      "require": "./utils/ref.cjs",
-      "import": "./utils/ref.mjs",
-      "types": "./utils/ref.d.ts"
-    },
-    "./utils/setRef": {
-      "require": "./utils/setRef.cjs",
-      "import": "./utils/setRef.mjs",
-      "types": "./utils/setRef.d.ts"
-    },
-    "./utils/syncScroll": {
-      "require": "./utils/syncScroll.cjs",
-      "import": "./utils/syncScroll.mjs",
-      "types": "./utils/syncScroll.d.ts"
-    },
-    "./utils/uncontroll": {
-      "require": "./utils/uncontroll.cjs",
-      "import": "./utils/uncontroll.mjs",
-      "types": "./utils/uncontroll.d.ts"
-    },
-    "./utils/uniqueID": {
-      "require": "./utils/uniqueID.cjs",
-      "import": "./utils/uniqueID.mjs",
-      "types": "./utils/uniqueID.d.ts"
-    },
-    "./utils/useCssVariable": {
-      "require": "./utils/useCssVariable.cjs",
-      "import": "./utils/useCssVariable.mjs",
-      "types": "./utils/useCssVariable.d.ts"
-    },
-    "./utils/core/index": {
-      "require": "./utils/core/index.cjs",
-      "import": "./utils/core/index.mjs",
-      "types": "./utils/core/index.d.ts"
-    },
-    "./utils/core/register": {
-      "require": "./utils/core/register.cjs",
-      "import": "./utils/core/register.mjs",
-      "types": "./utils/core/register.d.ts"
-    },
-    "./utils/enhances/WithAutoFocus": {
-      "require": "./utils/enhances/WithAutoFocus.cjs",
-      "import": "./utils/enhances/WithAutoFocus.mjs",
-      "types": "./utils/enhances/WithAutoFocus.d.ts"
-    },
-    "./utils/enhances/WithCSS": {
-      "require": "./utils/enhances/WithCSS.cjs",
-      "import": "./utils/enhances/WithCSS.mjs",
-      "types": "./utils/enhances/WithCSS.d.ts"
-    },
-    "./utils/enhances/WithI18n": {
-      "require": "./utils/enhances/WithI18n.cjs",
-      "import": "./utils/enhances/WithI18n.mjs",
-      "types": "./utils/enhances/WithI18n.d.ts"
-    },
-    "./utils/enhances/WithKeyboardFocus": {
-      "require": "./utils/enhances/WithKeyboardFocus.cjs",
-      "import": "./utils/enhances/WithKeyboardFocus.mjs",
-      "types": "./utils/enhances/WithKeyboardFocus.d.ts"
-    },
-    "./utils/enhances/WithRef": {
-      "require": "./utils/enhances/WithRef.cjs",
-      "import": "./utils/enhances/WithRef.mjs",
-      "types": "./utils/enhances/WithRef.d.ts"
-    },
-    "./utils/enhances/a11yEnhance": {
-      "require": "./utils/enhances/a11yEnhance.cjs",
-      "import": "./utils/enhances/a11yEnhance.mjs",
-      "types": "./utils/enhances/a11yEnhance.d.ts"
-    },
-    "./utils/enhances/animatedSizeEnhance": {
-      "require": "./utils/enhances/animatedSizeEnhance.cjs",
-      "import": "./utils/enhances/animatedSizeEnhance.mjs",
-      "types": "./utils/enhances/animatedSizeEnhance.d.ts"
-    },
-    "./utils/enhances/autoFocusEnhance": {
-      "require": "./utils/enhances/autoFocusEnhance.cjs",
-      "import": "./utils/enhances/autoFocusEnhance.mjs",
-      "types": "./utils/enhances/autoFocusEnhance.d.ts"
-    },
-    "./utils/enhances/contextEnhance": {
-      "require": "./utils/enhances/contextEnhance.cjs",
-      "import": "./utils/enhances/contextEnhance.mjs",
-      "types": "./utils/enhances/contextEnhance.d.ts"
-    },
-    "./utils/enhances/i18nEnhance": {
-      "require": "./utils/enhances/i18nEnhance.cjs",
-      "import": "./utils/enhances/i18nEnhance.mjs",
-      "types": "./utils/enhances/i18nEnhance.d.ts"
-    },
-    "./utils/enhances/keyboardFocusEnhance": {
-      "require": "./utils/enhances/keyboardFocusEnhance.cjs",
-      "import": "./utils/enhances/keyboardFocusEnhance.mjs",
-      "types": "./utils/enhances/keyboardFocusEnhance.d.ts"
-    },
-    "./utils/enhances/resolveColorEnhance": {
-      "require": "./utils/enhances/resolveColorEnhance.cjs",
-      "import": "./utils/enhances/resolveColorEnhance.mjs",
-      "types": "./utils/enhances/resolveColorEnhance.d.ts"
-    },
-    "./utils/focus-lock/focusBorders": {
-      "require": "./utils/focus-lock/focusBorders.cjs",
-      "import": "./utils/focus-lock/focusBorders.mjs",
-      "types": "./utils/focus-lock/focusBorders.d.ts"
-    },
-    "./utils/focus-lock/getFocusableIn": {
-      "require": "./utils/focus-lock/getFocusableIn.cjs",
-      "import": "./utils/focus-lock/getFocusableIn.mjs",
-      "types": "./utils/focus-lock/getFocusableIn.d.ts"
-    },
-    "./utils/focus-lock/isFocusInside": {
-      "require": "./utils/focus-lock/isFocusInside.cjs",
-      "import": "./utils/focus-lock/isFocusInside.mjs",
-      "types": "./utils/focus-lock/isFocusInside.d.ts"
-    },
-    "./utils/focus-lock/isFocusable": {
-      "require": "./utils/focus-lock/isFocusable.cjs",
-      "import": "./utils/focus-lock/isFocusable.mjs",
-      "types": "./utils/focus-lock/isFocusable.d.ts"
-    },
-    "./utils/focus-lock/setFocus": {
-      "require": "./utils/focus-lock/setFocus.cjs",
-      "import": "./utils/focus-lock/setFocus.mjs",
-      "types": "./utils/focus-lock/setFocus.d.ts"
-    },
-    "./themes/auto.css": {
-      "require": "./lib/themes/auto.css",
-      "import": "./lib/themes/auto.css"
-    },
-    "./themes/dark.css": {
-      "require": "./lib/themes/dark.css",
-      "import": "./lib/themes/dark.css"
-    },
-    "./themes/default.css": {
-      "require": "./lib/themes/default.css",
-      "import": "./lib/themes/default.css"
-    },
-    "./themes/light.css": {
-      "require": "./lib/themes/light.css",
-      "import": "./lib/themes/light.css"
-    },
-    "./utils/use/useColorResolver": {
-      "require": "./utils/use/useColorResolver.cjs",
-      "import": "./utils/use/useColorResolver.mjs",
-      "types": "./utils/use/useColorResolver.d.ts"
-    },
-    "./utils/use/useCss": {
-      "require": "./utils/use/useCss.cjs",
-      "import": "./utils/use/useCss.mjs",
-      "types": "./utils/use/useCss.d.ts"
-    },
-    "./utils/use/useEnhancedEffect": {
-      "require": "./utils/use/useEnhancedEffect.cjs",
-      "import": "./utils/use/useEnhancedEffect.mjs",
-      "types": "./utils/use/useEnhancedEffect.d.ts"
-    },
-    "./utils/use/useEventCallback": {
-      "require": "./utils/use/useEventCallback.cjs",
-      "import": "./utils/use/useEventCallback.mjs",
-      "types": "./utils/use/useEventCallback.d.ts"
-    },
-    "./utils/use/useEventListener": {
-      "require": "./utils/use/useEventListener.cjs",
-      "import": "./utils/use/useEventListener.mjs",
-      "types": "./utils/use/useEventListener.d.ts"
-    },
-    "./utils/use/useFocusLock": {
-      "require": "./utils/use/useFocusLock.cjs",
-      "import": "./utils/use/useFocusLock.mjs",
-      "types": "./utils/use/useFocusLock.d.ts"
-    },
-    "./utils/use/usePreventScroll": {
-      "require": "./utils/use/usePreventScroll.cjs",
-      "import": "./utils/use/usePreventScroll.mjs",
-      "types": "./utils/use/usePreventScroll.d.ts"
-    },
-    "./utils/components/invalid-state-pattern/InvalidStatePattern": {
-      "require": "./utils/components/invalid-state-pattern/InvalidStatePattern.cjs",
-      "import": "./utils/components/invalid-state-pattern/InvalidStatePattern.mjs",
-      "types": "./utils/components/invalid-state-pattern/InvalidStatePattern.d.ts"
-    },
-    "./components/invalid-state-pattern/invalidStatePattern.shadow.css": {
-      "require": "./lib/components/invalid-state-pattern/invalidStatePattern.shadow.css",
-      "import": "./lib/components/invalid-state-pattern/invalidStatePattern.shadow.css"
-    },
-    "./utils/core/enhancement/Children": {
-      "require": "./utils/core/enhancement/Children.cjs",
-      "import": "./utils/core/enhancement/Children.mjs",
-      "types": "./utils/core/enhancement/Children.d.ts"
-    },
-    "./utils/core/enhancement/Root": {
-      "require": "./utils/core/enhancement/Root.cjs",
-      "import": "./utils/core/enhancement/Root.mjs",
-      "types": "./utils/core/enhancement/Root.d.ts"
-    },
-    "./utils/core/enhancement/bindHandler": {
-      "require": "./utils/core/enhancement/bindHandler.cjs",
-      "import": "./utils/core/enhancement/bindHandler.mjs",
-      "types": "./utils/core/enhancement/bindHandler.d.ts"
-    },
-    "./utils/core/enhancement/dataName": {
-      "require": "./utils/core/enhancement/dataName.cjs",
-      "import": "./utils/core/enhancement/dataName.mjs",
-      "types": "./utils/core/enhancement/dataName.d.ts"
-    },
-    "./utils/core/enhancement/enhance": {
-      "require": "./utils/core/enhancement/enhance.cjs",
-      "import": "./utils/core/enhancement/enhance.mjs",
-      "types": "./utils/core/enhancement/enhance.d.ts"
-    },
-    "./utils/core/enhancement/functionDefaultProps": {
-      "require": "./utils/core/enhancement/functionDefaultProps.cjs",
-      "import": "./utils/core/enhancement/functionDefaultProps.mjs",
-      "types": "./utils/core/enhancement/functionDefaultProps.d.ts"
-    },
-    "./utils/core/enhancement/hoistProps": {
-      "require": "./utils/core/enhancement/hoistProps.cjs",
-      "import": "./utils/core/enhancement/hoistProps.mjs",
-      "types": "./utils/core/enhancement/hoistProps.d.ts"
-    },
-    "./utils/core/enhancement/i18n": {
-      "require": "./utils/core/enhancement/i18n.cjs",
-      "import": "./utils/core/enhancement/i18n.mjs",
-      "types": "./utils/core/enhancement/i18n.d.ts"
-    },
-    "./utils/core/enhancement/inheritedName": {
-      "require": "./utils/core/enhancement/inheritedName.cjs",
-      "import": "./utils/core/enhancement/inheritedName.mjs",
-      "types": "./utils/core/enhancement/inheritedName.d.ts"
-    },
-    "./utils/core/enhancement/staticChildren": {
-      "require": "./utils/core/enhancement/staticChildren.cjs",
-      "import": "./utils/core/enhancement/staticChildren.mjs",
-      "types": "./utils/core/enhancement/staticChildren.d.ts"
-    },
-    "./utils/core/enhancement/style": {
-      "require": "./utils/core/enhancement/style.cjs",
-      "import": "./utils/core/enhancement/style.mjs",
-      "types": "./utils/core/enhancement/style.d.ts"
-    },
-    "./utils/core/enhancement/uncontrolledProps": {
-      "require": "./utils/core/enhancement/uncontrolledProps.cjs",
-      "import": "./utils/core/enhancement/uncontrolledProps.mjs",
-      "types": "./utils/core/enhancement/uncontrolledProps.d.ts"
-    },
-    "./utils/core/styled/index": {
-      "require": "./utils/core/styled/index.cjs",
-      "import": "./utils/core/styled/index.mjs",
-      "types": "./utils/core/styled/index.d.ts"
-    },
-    "./utils/core/styled/sstyled": {
-      "require": "./utils/core/styled/sstyled.cjs",
-      "import": "./utils/core/styled/sstyled.mjs",
-      "types": "./utils/core/styled/sstyled.d.ts"
-    },
-    "./utils/core/types/Component": {
-      "require": "./utils/core/types/Component.cjs",
-      "import": "./utils/core/types/Component.mjs",
-      "types": "./utils/core/types/Component.d.ts"
-    },
-    "./utils/core/types/UnknownProperties": {
-      "require": "./utils/core/types/UnknownProperties.cjs",
-      "import": "./utils/core/types/UnknownProperties.mjs",
-      "types": "./utils/core/types/UnknownProperties.d.ts"
-    },
-    "./utils/core/types/index": {
-      "require": "./utils/core/types/index.cjs",
-      "import": "./utils/core/types/index.mjs",
-      "types": "./utils/core/types/index.d.ts"
-    },
-    "./utils/core/types/symbols": {
-      "require": "./utils/core/types/symbols.cjs",
-      "import": "./utils/core/types/symbols.mjs",
-      "types": "./utils/core/types/symbols.d.ts"
-    },
-    "./utils": {
-      "require": "./utils/index.cjs",
-      "import": "./utils/index.mjs",
-      "types": "./utils/index.d.ts"
     },
     "./widget-empty": {
       "require": "./widget-empty/index.cjs",

@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Major version.
+- One global node for all `status` tooltips to mount into.
 
 ## [6.49.2] - 2025-04-04
 

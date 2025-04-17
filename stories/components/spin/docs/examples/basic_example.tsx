@@ -25,7 +25,7 @@ const Demo = () => {
           <DataTable.Head.Column name='quantity' children='Quantity' />
         </DataTable.Head>
         <DataTable.Body renderCell={(props) => {
-          if (props.name === 'quantity') {
+          if (props.columnName === 'quantity') {
             return (
                 <div role='status' aria-live='polite'>
                   {props.value}

@@ -18,6 +18,7 @@ import ExportInImageExample from './examples/export-in-image';
 import FixedColumnsExample from './examples/fixed-columns';
 import FixedHeaderExample from './examples/fixed-header';
 import MultiLevelHeaderExample from './examples/multi-level-header';
+import NothingFoundExample from './examples/nothing-found';
 import PaginationExample from './examples/pagination';
 import RowsMergingExample from './examples/rows-merging';
 import ScrollInTableExample from './examples/scroll-in-table';
@@ -29,6 +30,7 @@ import SortingChangingSizeExample from './examples/sorting-changing-size';
 import TableInTableExample from './examples/table-in-table';
 import TableInTableWithFixedColumnExample from './examples/table-in-table-with-fixed-column';
 import VirtualScrollInTableExample from './examples/virtual-scroll-in-table';
+import VirtualScrollInTableDifferentHeightExample from './examples/virtual-scroll-in-table-different-height';
 
 const meta: Meta<typeof DataTable> = {
   title: 'Components/DataTable/Documentation',
@@ -102,6 +104,10 @@ export const MultiLevelHeader: Story = {
   render: MultiLevelHeaderExample,
 };
 
+export const NothingFound: Story = {
+  render: NothingFoundExample,
+};
+
 export const Pagination: Story = {
   render: PaginationExample,
 };
@@ -144,4 +150,8 @@ export const TableInTableWithFixedColumn: Story = {
 
 export const VirtualScrollInTable: Story = {
   render: VirtualScrollInTableExample,
+};
+
+export const VirtualScrollInTableDifferentHeight: Story = {
+  render: VirtualScrollInTableDifferentHeightExample,
 };

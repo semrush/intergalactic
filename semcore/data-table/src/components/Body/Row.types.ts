@@ -1,19 +1,19 @@
-import { DTValue, DTKey, DTUse } from '../DataTable/DataTable.types';
+import { DTValue, DTUse, DataTableData } from '../DataTable/DataTable.types';
 import { DTColumn } from '../Head/Column.types';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
+import { ACCORDION, UNIQ_ROW_KEY } from '../DataTable/DataTable';
 
-export type DTRow = Record<DTKey, DTValue | MergedRowsCell | MergedColumnsCell>;
+export type DTRow = {
+  [UNIQ_ROW_KEY]: string;
+  [key: string]: DTValue | MergedRowsCell | MergedColumnsCell;
+  [ACCORDION]?: React.ReactNode | DataTableData | undefined;
+};
+export type DTRows = Array<DTRow | DTRow[]>;
 
 export type DataTableRowProps = {
-  columns: DTColumn[];
   row: DTRow;
-  rows: DTRow[];
-  rowIndex: number;
-  headerRows: number;
-
-  expandedRows?: number[];
-
-  onExpandRow?: (expandedRowIndex: number) => void;
+  offset?: number;
+  rowMarginTop?: React.CSSProperties['marginTop'];
 };
 
 export type RowPropsInner = {
@@ -24,7 +24,19 @@ export type RowPropsInner = {
    */
   expanded?: boolean;
 
-  gridTemplateAreas: string;
-  gridTemplateColumns: string;
+  columns: DTColumn[];
+  row: DTRow | DTRow[];
+  rows: DTRows;
+  rowIndex: number; // from 0
+  ariaRowIndex: number; // from 1 + 1 header
+  gridRowIndex: number; // from 1 + 1 (or 2 if it has group) header
+
+  expandedRows: number[];
+  onExpandRow: (expandedRowIndex: number) => void;
+
+  gridTemplateAreas: string[];
+  gridTemplateColumns: string[];
   accordionDataGridArea: string;
+
+  inert?: '';
 };

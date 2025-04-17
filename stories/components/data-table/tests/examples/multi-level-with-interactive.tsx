@@ -17,8 +17,10 @@ const options = Array(6)
     }));
 
 const Demo = () => {
+    const [isVisible, setIsVisible] = React.useState(false);
+
     return (
-        <DataTable data={data} aria-label={'Base table example'} defaultGridTemplateColumnWidth={'auto'}>
+        <DataTable data={data} aria-label={'Base table example'} defaultGridTemplateColumnWidth={'auto'} h={400}>
             <DataTable.Head sticky>
                 <DataTable.Head.Column name='keyword' children='keyword' gtcWidth={'300px'}/>
                 <DataTable.Head.Group title={'Group'} fixed={'right'} >
@@ -59,7 +61,14 @@ const Demo = () => {
                         </DescriptionTooltip>
                     </DataTable.Head.Column>
                     <DataTable.Head.Column name='vol' gtcWidth={'300px'}>
-                        <Select mt={2} mr='auto' options={options} placeholder='Select option' data-test-id='select-header' id='basic-select' tag={LinkTrigger} />
+                        <Select visible={isVisible} onVisibleChange={setIsVisible} mt={2} mr='auto' options={options} placeholder='Select option' data-test-id='select-header' id='basic-select' tag={LinkTrigger} onKeyDown={(e) => {
+                            if ((e.key === 'ArrowDown' || e.key === 'ArrowUp') && !isVisible) {
+                                return false
+                            }
+                            if (e.key.startsWith('Arrow') && isVisible) {
+                                e.stopPropagation();
+                            }
+                        }} />
                     </DataTable.Head.Column>
                 </DataTable.Head.Group>
             </DataTable.Head>

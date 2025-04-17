@@ -1520,7 +1520,7 @@
     "rawValue": "{gray.100}",
     "computedValue": "#e0e1e9",
     "description": "Background of the active header cell in the primary Table.",
-    "components": ["data-table"]
+    "components": []
   },
   {
     "name": "--intergalactic-table-th-secondary-cell",
@@ -1552,7 +1552,7 @@
     "rawValue": "{gray.100} / lighten(0.5) / hsl",
     "computedValue": "#f0f0f4",
     "description": "Background of the default hovered cell in the Table.",
-    "components": []
+    "components": ["data-table"]
   },
   {
     "name": "--intergalactic-table-td-cell-active",
@@ -1560,7 +1560,7 @@
     "rawValue": "{gray.100} / lighten(0.2) / hsl",
     "computedValue": "#e6e7ed",
     "description": "Background of the default active cell in the Table.",
-    "components": []
+    "components": ["data-table"]
   },
   {
     "name": "--intergalactic-table-td-cell-unread",
@@ -1576,7 +1576,7 @@
     "rawValue": "{gray.50}",
     "computedValue": "#f4f5f9",
     "description": "Background of the cell used for Accordion or actions row, in the Table.",
-    "components": []
+    "components": ["data-table"]
   },
   {
     "name": "--intergalactic-table-td-cell-selected",
@@ -2001,7 +2001,6 @@
     "components": [
       "button",
       "d3-chart",
-      "data-table",
       "format-text",
       "fullscreen-modal",
       "switch",

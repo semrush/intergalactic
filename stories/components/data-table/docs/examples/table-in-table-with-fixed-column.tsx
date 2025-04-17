@@ -3,7 +3,7 @@ import { DataTable, ACCORDION } from '@semcore/data-table';
 
 const Demo = () => {
   return (
-      <DataTable data={data} aria-label={'Parent with fixed column'} w={900}>
+      <DataTable data={data} aria-label={'Parent with fixed column'} h={'100%'}>
         <DataTable.Head>
           <DataTable.Head.Column name='keyword' children='Keyword' fixed='left' gtcWidth={'400px'} />
           <DataTable.Head.Column name='kd' children='KD,%' gtcWidth={'300px'} />

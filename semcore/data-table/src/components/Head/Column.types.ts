@@ -84,4 +84,5 @@ export type ColumnPropsInner<D extends DataTableData> = {
   tableRef: React.RefObject<HTMLElement>;
   gridTemplateColumns: string[];
   gridTemplateAreas: string[];
+  sticky: boolean;
 };

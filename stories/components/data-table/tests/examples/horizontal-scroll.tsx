@@ -1,44 +1,45 @@
 import React from 'react';
 import { DataTable } from '@semcore/data-table';
+import { Flex } from '@semcore/flex-box';
+
 
 const Demo = () => {
   return (
-    <>
-      <DataTable data={data} aria-label={'Fixed header'} wMax={200}>
-
+    <Flex direction='row'>
+      <DataTable data={data} aria-label={'Horizontal scroll'} wMax={200}>
         <DataTable.Head sticky={true}  >
           <DataTable.Head.Column name='keyword' children='Keyword' gtcWidth='100px' />
           <DataTable.Head.Column name='kd' children='KD,%' gtcWidth='100px' />
-          <DataTable.Head.Column name='cpc' children='CPC' />
-          <DataTable.Head.Column name='vol' children='Vol.' />
+          <DataTable.Head.Column name='cpc' children='CPC'gtcWidth='80px' />
+          <DataTable.Head.Column name='vol' children='Vol.' gtcWidth='150px'/>
         </DataTable.Head>
         <DataTable.Body />
       </DataTable>
-      <h3>with Scroll.Bar in Header</h3>
+    
       <DataTable data={data} aria-label={'Fixed header with scroll'} w={200}>
         <DataTable.Head sticky={true} withScrollBar>
           <DataTable.Head.Column name='keyword' children='Keyword' gtcWidth='200px' />
           <DataTable.Head.Column name='kd' children='KD,%' gtcWidth='100px' />
-          <DataTable.Head.Column name='cpc' children='CPC' />
-          <DataTable.Head.Column name='vol' children='Vol.' />
+          <DataTable.Head.Column name='cpc' children='CPC' gtcWidth='200px'/>
+          <DataTable.Head.Column name='vol' children='Vol.' gtcWidth='150px'/>
         </DataTable.Head>
         <DataTable.Body />
       </DataTable>
 
-      <h3>Multi level Header</h3>
-      <DataTable data={data} aria-label={'Fixed header with scroll'} w={200}>
+      
+      <DataTable data={data} aria-label={'Fixed multi level header with scroll'} w={200}>
         <DataTable.Head withScrollBar>
           <DataTable.Head.Group borders={'left'} title={'Borders left'}>
             <DataTable.Head.Column name='keyword' children='Keyword' gtcWidth='200px' />
             <DataTable.Head.Column name='kd' children='KD,%' gtcWidth='100px' />
           </DataTable.Head.Group>
-          <DataTable.Head.Column name='cpc' children='CPC' />
-          <DataTable.Head.Column name='vol' children='Vol.' />
+          <DataTable.Head.Column name='cpc' children='CPC' gtcWidth='80px'/>
+          <DataTable.Head.Column name='vol' children='Vol.' gtcWidth='150px'/>
         </DataTable.Head>
         <DataTable.Body />
       </DataTable>
 
-    </>
+    </Flex>
   );
 };
 

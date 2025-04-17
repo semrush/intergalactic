@@ -1,17 +1,16 @@
-SHead {
+SHead, SGroupContainer {
   display: contents;
 }
 
-SHead[sticky] > SColumn, SHead[sticky] SGroup {
+SHead[sticky] SColumn, SHead[sticky] SGroup {
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 2;
 }
 
 SHead[sticky] SGroupContainer > SColumn {
   position: sticky;
-  top: 40px;
-  z-index: 1;
+  z-index: 2;
 }
 
 SHead[compact] SColumn {
@@ -27,21 +26,24 @@ SGroup, SColumn {
   height: 100%;
   position: relative;
   transition: width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out, min-width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out, max-width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
+  overflow: hidden;
+}
+
+SGroup {
+  justify-content: center;
+  text-align: center;
+  background-color: var(--intergalactic-table-th-primary-cell, #f4f5f9);
 }
 
 SGroup[use='primary'] {
-  justify-content: center;
   padding: var(--intergalactic-spacing-3x, 12px);
-  background-color: var(--intergalactic-table-th-primary-cell, #f4f5f9);
+
+  &:has(~ SColumn[visibleSort]) {
+    background-color: var(--intergalactic-table-th-primary-cell-hover, #e0e1e9);
+  }
 }
 SGroup[use='secondary'] {
-  justify-content: center;
   padding: var(--intergalactic-spacing-2x, 8px);
-  background-color: var(--intergalactic-table-th-secondary-cell, #ffffff);
-}
-
-SGroup:has(SColumn[visibleSort]) {
-  background-color: var(--intergalactic-table-th-primary-cell-hover, #e0e1e9);
 }
 
 SGroup[borders='both'], SColumn[borders='both'], SGroup[borders='left'], SColumn[borders='left'] {
@@ -123,7 +125,7 @@ SColumn[gridArea], SGroup[gridArea], SGroupTitle[gridArea] {
 SHead[sticky] SColumn[fixed], SHead SColumn[fixed], SHead[sticky] SGroup, SHead SGroup[fixed] {
   position: sticky;
   /* because up resizable */
-  z-index: 2;
+  z-index: 3;
 }
 
 SColumn[sortable]:hover {

@@ -21,19 +21,19 @@
       "import": "./src/index.ts",
       "types": "./src/index.ts"
     },
-    "./lib/themes/default.css": {
+    "./lib/theme/themes/default.css": {
       "require": "./lib/theme/themes/default.css",
       "import": "./lib/theme/themes/default.css"
     },
-    "./lib/themes/light.css": {
+    "./lib/theme/themes/light.css": {
       "require": "./lib/theme/themes/light.css",
       "import": "./lib/theme/themes/light.css"
     },
-    "./lib/themes/dark.css": {
+    "./lib/theme/themes/dark.css": {
       "require": "./lib/theme/themes/dark.css",
       "import": "./lib/theme/themes/dark.css"
     },
-    "./lib/themes/auto.css": {
+    "./lib/theme/themes/auto.css": {
       "require": "./lib/theme/themes/auto.css",
       "import": "./lib/theme/themes/auto.css"
     },
@@ -46,6 +46,11 @@
       "require": "./lib/utils/focus-lock/isFocusable.js",
       "import": "./lib/utils/focus-lock/isFocusable.mjs",
       "types": "./lib/utils/focus-lock/isFocusable.d.ts"
+    },
+    "./lib/utils/focus-lock/isFocusInside": {
+      "require": "./lib/utils/focus-lock/isFocusInside.js",
+      "import": "./lib/utils/focus-lock/isFocusInside.mjs",
+      "types": "./lib/utils/focus-lock/isFocusInside.d.ts"
     },
     "./lib/utils/enhances/a11yEnhance": {
       "require": "./lib/utils/enhances/a11yEnhance.js",

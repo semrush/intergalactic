@@ -5,8 +5,9 @@ import { Box, Collapse } from '@semcore/base-components';
 import style from './style.shadow.css';
 import { Body } from './Body';
 import { getFixedStyle } from '../../utils';
-import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
 import { ACCORDION } from '../DataTable/DataTable';
+import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
+import { DTValue } from '../DataTable/DataTable.types';
 
 class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
   static displayName = 'Row';
@@ -14,41 +15,49 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
 
   static defaultProps = {
     'aria-level': undefined,
-    defaultExpandedRows: [],
   };
 
-  uncontrolledProps() {
-    return {
-      expandedRows: [],
-    };
+  cellHasAccordion(cellValue?: DTValue | MergedColumnsCell | MergedRowsCell): cellValue is DTValue {
+    return (
+      !(cellValue instanceof MergedRowsCell || cellValue instanceof MergedColumnsCell) &&
+      Boolean(cellValue?.[ACCORDION])
+    );
   }
-
-  onExpandRow = (expandedRowIndex: number) => {
-    const { expandedRows } = this.asProps;
-    if (expandedRows?.includes(expandedRowIndex)) {
-      this.handlers.expandedRows(expandedRows.filter((row) => row !== expandedRowIndex));
-    } else {
-      this.handlers.expandedRows([...expandedRows!, expandedRowIndex]);
-    }
-  };
 
   render() {
     const SRow = Root;
     const SCollapseRow = Collapse;
+    const SCell = Body.Cell;
     const {
       columns,
       row,
       styles,
       rowIndex,
-      headerRows,
+      ariaRowIndex,
+      gridRowIndex,
       expanded,
       accordionDataGridArea,
+      expandedRows,
+      onExpandRow,
       'aria-level': ariaLevel = 1,
+      rowMarginTop,
     } = this.asProps;
+
+    let accordion = row[ACCORDION];
+    let accordionType = accordion ? 'row' : undefined;
+
+    if (!accordion) {
+      const cellWithAccordion = Object.values(row).find((value) => {
+        return this.cellHasAccordion(value);
+      }) as DTValue | undefined;
+
+      accordion = cellWithAccordion?.[ACCORDION];
+      accordionType = 'cell';
+    }
 
     return sstyled(styles)(
       <>
-        <SRow render={Box}>
+        <SRow render={Box} role={'row'} aria-rowindex={ariaRowIndex} accordionType={accordionType}>
           {columns.map((column, i) => {
             const index = i;
             const cellValue = row[column.name];
@@ -57,7 +66,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
               return null;
             }
 
-            const style: any = {};
+            const style: React.CSSProperties = {};
 
             if (column.fixed) {
               const [name, value] = getFixedStyle(column, columns);
@@ -66,107 +75,76 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
                 style[name] = value;
               }
             }
-
-            let groupedBy: null | 'rows' | 'columns' = null;
-            let gridArea: string | undefined = undefined;
-
-            if (cellValue instanceof MergedColumnsCell) {
-              gridArea = `${rowIndex + headerRows + 1} / ${index + 1} / ${
-                rowIndex + headerRows + 2
-              } / ${index + 1 + cellValue.columnsCount}`;
-              groupedBy = 'columns';
-            } else if (cellValue instanceof MergedRowsCell) {
-              gridArea = `${rowIndex + headerRows + 1} / ${index + 1} / ${
-                rowIndex + headerRows + 1 + cellValue.rowsCount
-              } / ${index + 2}`;
-              groupedBy = 'rows';
+            if (rowMarginTop) {
+              style.marginTop = rowMarginTop;
             }
 
             return (
               <Body.Cell
                 key={index}
-                role={'gridcell'}
-                aria-colindex={index + 1}
+                aria-expanded={
+                  (row[ACCORDION] && index === 0) || this.cellHasAccordion(cellValue)
+                    ? expanded
+                    : undefined
+                }
                 data-aria-level={index === 0 ? ariaLevel : undefined}
-                data-grouped-by={groupedBy}
                 row={row}
                 rowIndex={rowIndex}
+                gridRowIndex={gridRowIndex}
                 columnIndex={index}
-                fixed={column.fixed}
                 style={style}
-                name={column.name}
                 column={column}
-                borders={column.borders}
-                flexWrap={column.flexWrap}
-                alignItems={column.alignItems}
-                alignContent={column.alignContent}
-                justifyContent={column.justifyContent}
-                gridArea={gridArea}
+                // @ts-ignore
+                withAccordion={this.cellHasAccordion(cellValue)}
               />
             );
           })}
         </SRow>
 
-        {row[ACCORDION] && React.isValidElement(row[ACCORDION]) && (
+        {React.isValidElement(accordion) && (
           <SCollapseRow
             key={rowIndex}
             role={'row'}
-            aria-rowindex={rowIndex + 2}
+            aria-rowindex={ariaRowIndex + 1}
             visible={expanded}
             interactive
             gridArea={accordionDataGridArea}
-            // style={{gridArea: gridArea}}
-            // preserveNode
             duration={200}
-            aria-level={ariaLevel + 1}
-            aria-setsize={1}
-            aria-posinset={1}
           >
-            {row[ACCORDION]}
+            <SCell
+              aria-colindex={1}
+              aria-level={ariaLevel + 1}
+              aria-setsize={1}
+              aria-posinset={1}
+              row={row}
+              rowIndex={rowIndex + 1}
+              columnIndex={1}
+              // @ts-ignore
+              column={{ name: ACCORDION }}
+            >
+              {accordion}
+            </SCell>
           </SCollapseRow>
         )}
 
         {row[ACCORDION] &&
           Array.isArray(row[ACCORDION]) &&
           expanded &&
-          // <SCollapseRow
-          //     key={rowIndex}
-          //     visible={expanded}
-          //     interactive
-          //     gridArea={accordionDataGridArea}
-          //     gridTemplateAreas={gridTemplateAreas}
-          //     gridTemplateColumns={gridTemplateColumns}
-          //     duration={200}
-          //     // onAnimationStart={(e: React.AnimationEvent<HTMLDivElement>) => {
-          //     //   const target = e.target;
-          //     //   if (target instanceof HTMLElement && this.asProps.expanded) {
-          //     //     target.style.setProperty('display', 'grid');
-          //     //   }
-          //     // }}
-          //     // onAnimationEnd={(e: React.AnimationEvent<HTMLDivElement>) => {
-          //     //   const target = e.target;
-          //     //   if (target instanceof HTMLElement && this.asProps.expanded) {
-          //     //     target.style.setProperty('display', 'contents');
-          //     //   }
-          //     // }}
-          // >
           row[ACCORDION]?.map((subrow, i) => {
-            // const gridArea = `${rowIndex + headerRows + 2} / 1 / ${
-            //     rowIndex + headerRows + 2
-            // } / ${columns.length + 2}`;
             return (
               <Row
                 key={i}
                 row={subrow}
                 columns={columns}
-                visible={expanded}
                 rows={row[ACCORDION]}
                 rowIndex={rowIndex}
                 aria-posinset={i + 1}
                 aria-level={ariaLevel + 1}
-                headerRows={headerRows}
-                expanded={this.asProps.expandedRows?.includes(i)}
-                onExpandRow={this.onExpandRow}
+                ariaRowIndex={ariaRowIndex + 1 + i}
+                gridRowIndex={gridRowIndex + 1 + i}
+                expanded={expandedRows?.includes(rowIndex + i)}
+                onExpandRow={onExpandRow}
+                theme={'muted'}
               />
             );
           })}

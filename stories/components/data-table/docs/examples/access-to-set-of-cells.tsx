@@ -12,8 +12,8 @@ const Demo = () => {
         <DataTable.Head.Column name='vol' children='Vol.' />
       </DataTable.Head>
       <DataTable.Body
-        renderCell={({ name, row, defaultRender }) => {
-          const value = row[name].toString();
+        renderCell={({ dataKey, row, defaultRender }) => {
+          const value = row[dataKey].toString();
           return ['-', '$0', 'n/a'].includes(value) ? <Spin /> : defaultRender();
         }}
       />
