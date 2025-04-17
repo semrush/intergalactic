@@ -15,7 +15,7 @@ import {
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 
 const Popper = PopperOrigin[CREATE_COMPONENT]();
-const tooltipContainer = { current: null };
+const tooltipContainer = new WeakMap();
 
 const defaultProps = {
   placement: 'top',
@@ -51,15 +51,28 @@ class TooltipRoot extends Component {
   constructor(props, context) {
     super(props, context);
 
-    if (tooltipContainer.current === null && canUseDOM()) {
-      tooltipContainer.current = setTimeout(() => {
-        const container = document.createElement('div');
-        container.setAttribute('role', 'status');
-        container.setAttribute('aria-live', 'polite');
+    if (canUseDOM()) {
+      this.tooltipContainerContainer = new Promise((resolve) => {
+        setTimeout(() => {
+          const key = this.context.current ?? document.body;
+          let element = tooltipContainer.get(key) ?? null;
 
-        (this.context.current ?? document.body).appendChild(container);
-        tooltipContainer.current = container;
-      }, 0);
+          if (
+            element === null ||
+            (element instanceof HTMLElement && !document.body.contains(element))
+          ) {
+            element = document.createElement('div');
+            element.setAttribute('role', 'status');
+            element.setAttribute('aria-live', 'polite');
+
+            tooltipContainer.set(key, element);
+
+            key.appendChild(element);
+          }
+
+          resolve(element);
+        }, 0);
+      });
     }
   }
 
@@ -112,6 +125,7 @@ class TooltipRoot extends Component {
       role: 'tooltip',
       'aria-live': ariaLive,
       visible,
+      tooltipContainer: this.tooltipContainerContainer,
     };
   }
 
@@ -154,6 +168,7 @@ function TooltipPopper(props) {
     'aria-live': ariaLive,
     arrowBgColor,
     arrowShadowColor,
+    tooltipContainer,
   } = props;
   const STooltip = Root;
   const SArrow = Box;
@@ -161,13 +176,23 @@ function TooltipPopper(props) {
   const contextZIndex = useZIndexStacking('z-index-tooltip');
   const zIndex = props.zIndex || contextZIndex;
 
+  const [tooltipContainerNode, setTooltipContainerNode] = React.useState(tooltipContainer);
+
+  React.useEffect(() => {
+    if (ariaLive === 'polite' && tooltipContainer instanceof Promise) {
+      tooltipContainer.then((result) => {
+        setTooltipContainerNode(result);
+      });
+    }
+  }, [tooltipContainer]);
+
   return sstyled(styles)(
     <ZIndexStackingContextProvider designToken='z-index-tooltip'>
       <STooltip
         render={Popper.Popper}
         use:theme={resolveColor(theme)}
         use:zIndex={zIndex}
-        nodeToMount={ariaLive === 'polite' ? tooltipContainer : undefined}
+        nodeToMount={ariaLive === 'polite' ? tooltipContainerNode : undefined}
       >
         <Children />
         <SArrow
