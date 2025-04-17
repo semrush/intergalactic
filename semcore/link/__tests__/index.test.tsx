@@ -91,11 +91,13 @@ describe('Link', () => {
           </Link.Addon>
         </Link>
         <Link disabled>Link</Link>
-        <Link keyboardFocused>Link</Link>
+        <Link id='focused'>Link</Link>
       </snapshot.ProxyProps>
     );
 
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+    await expect(
+      await snapshot(component, { actions: { focus: '#focused' } }),
+    ).toMatchImageSnapshot(task);
   });
 
   test.sequential('Should support inline property', () => {

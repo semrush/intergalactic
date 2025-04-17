@@ -1,16 +1,14 @@
 import React from 'react';
-import createComponent, { Component, sstyled, Root } from '@semcore/core';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
-import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
-import logger from '@semcore/utils/lib/logger';
+import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
+import logger from '@semcore/core/lib/utils/logger';
 import CloseM from '@semcore/icon/Close/m';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
-import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
-import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
-import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
-import log from '@semcore/utils/lib/logger';
-import { isAdvanceMode } from '@semcore/utils/lib/findComponent';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 
 import style from './style/tag.shadow.css';
 
@@ -30,21 +28,13 @@ const legacyThemeRecommendedMigration = {
 class RootTag extends Component {
   static displayName = 'Tag';
   static style = style;
-  static enhance = [
-    i18nEnhance(localizedMessages),
-    uniqueIDEnhancement(),
-    resolveColorEnhance(),
-    keyboardFocusEnhance(),
-  ];
+  static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhancement(), resolveColorEnhance()];
   static defaultProps = {
     theme: 'primary',
     color: 'gray-500',
     size: 'm',
     i18n: localizedMessages,
     locale: 'en',
-  };
-  state = {
-    focusable: 'container',
   };
 
   constructor(props) {
@@ -65,35 +55,12 @@ class RootTag extends Component {
   }
 
   getTextProps() {
-    const { interactive } = this.asProps;
     const id = this.asProps.id || `igc-${this.asProps.uid}-tag`;
-    const { focusable } = this.state;
 
     return {
-      tabIndex: focusable === 'text' && interactive ? 0 : -1,
+      tabIndex: -1,
       id: `${id}-text`,
-      role: focusable === 'text' && interactive ? 'button' : undefined,
-    };
-  }
-  handleCloseMount = () => {
-    this.setState({ focusable: 'text' });
-  };
-  handleCloseUnmount = () => {
-    this.setState({ focusable: 'container' });
-  };
-  getCloseProps() {
-    const { getI18nText, color, resolveColor } = this.asProps;
-    const id = this.asProps.id || `igc-${this.asProps.uid}-tag`;
-
-    return {
-      getI18nText,
-      id: `${id}-clear`,
-      'aria-labelledby': `${id}-clear ${id}-text`,
-      'aria-label': getI18nText('remove'),
-      onMount: this.handleCloseMount,
-      onUnmount: this.handleCloseUnmount,
-      color,
-      resolveColor,
+      role: undefined,
     };
   }
 
@@ -123,10 +90,9 @@ class RootTag extends Component {
       id: outerId,
       uid,
     } = this.asProps;
-    const { focusable } = this.state;
     const id = outerId || `igc-${uid}-tag`;
     const isInteractiveView = !disabled && interactive;
-    const isInteractive = !disabled && interactive && focusable === 'container';
+    const isInteractive = !disabled && interactive;
 
     return sstyled(styles)(
       <STag
@@ -227,7 +193,6 @@ class RootTagContainer extends Component {
         [
           'InputTags.' + Tag.Text.displayName,
           'InputTags.' + Tag.Addon.displayName,
-          'InputTags.' + Tag.Close.displayName,
           'InputTags.' + Tag.Circle.displayName,
           TagContainer.Tag.displayName,
           TagContainer.Addon.displayName,
@@ -266,7 +231,7 @@ class RootCloseTagContainer extends Component {
     };
   };
 
-  static enhance = [resolveColorEnhance(), keyboardFocusEnhance()];
+  static enhance = [resolveColorEnhance()];
 
   handleKeyDown = (event) => {
     const { onKeyDown, onClick } = this.asProps;
@@ -317,40 +282,6 @@ function Text(props) {
   const { styles } = props;
   return sstyled(styles)(<SText render={Box} tag='span' />);
 }
-Text.enhance = [keyboardFocusEnhance()];
-
-function Close(props) {
-  const SClose = Root;
-  const { styles } = props;
-
-  React.useEffect(() => {
-    props.onMount?.();
-
-    log.warn(
-      true,
-      'Tag.Close is deprecated and will be removed in the next major release. Please, use TagContainer and TagContainer.Close',
-      'Tag.Close',
-    );
-
-    return () => props.onUnmount?.();
-  }, []);
-
-  const onKeyDown = React.useCallback(
-    (event) => {
-      if (props.onKeyDown) {
-        return props.onKeyDown(event);
-      }
-
-      if (props.onClick && (event.key === 'Enter' || event.key === ' ')) {
-        event.preventDefault();
-        props.onClick(event);
-      }
-    },
-    [props.onKeyDown, props.onClick],
-  );
-
-  return sstyled(styles)(<SClose render={Box} tag={CloseM} interactive onKeyDown={onKeyDown} />);
-}
 
 function Addon(props) {
   const SAddon = Root;
@@ -377,7 +308,6 @@ function Circle(props) {
 const Tag = createComponent(RootTag, {
   Text,
   Addon,
-  Close,
   Circle,
 });
 

@@ -1,7 +1,7 @@
 {
   "name": "@semcore/date-picker",
   "description": "Semrush DatePicker Component",
-  "version": "4.57.0",
+  "version": "16.0.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -17,26 +17,23 @@
     "types": "./lib/types/index.d.ts"
   },
   "dependencies": {
-    "@semcore/utils": "4.48.2",
-    "@semcore/base-trigger": "4.53.0",
-    "@semcore/button": "5.43.1",
-    "@semcore/divider": "4.40.2",
-    "@semcore/dropdown": "4.43.2",
-    "@semcore/flex-box": "5.41.2",
-    "@semcore/icon": "4.61.0",
-    "@semcore/input": "4.42.2",
-    "@semcore/input-mask": "5.43.2",
-    "@semcore/neighbor-location": "4.40.2",
-    "@semcore/typography": "5.53.0",
-    "@semcore/checkbox": "7.44.2",
-    "@semcore/popper": "5.46.2",
-    "@semcore/tooltip": "6.49.2",
+    "@semcore/base-trigger": "16.0.0",
+    "@semcore/button": "16.0.0",
+    "@semcore/divider": "16.0.0",
+    "@semcore/popper": "16.0.0",
+    "@semcore/dropdown": "16.0.0",
+    "@semcore/icon": "16.0.0",
+    "@semcore/input": "16.0.0",
+    "@semcore/input-mask": "16.0.0",
+    "@semcore/typography": "16.0.0",
+    "@semcore/checkbox": "16.0.0",
+    "@semcore/tooltip": "16.0.0",
+    "@semcore/flex-box": "16.0.0",
+    "@semcore/neighbor-location": "16.0.0",
     "dayjs": "1.8.36"
   },
   "peerDependencies": {
-    "@semcore/core": "^2.17.5",
-    "react": "16.8 - 18",
-    "react-dom": "16.8 - 18"
+    "@semcore/base-components": "^16.0.0"
   },
   "repository": {
     "type": "git",

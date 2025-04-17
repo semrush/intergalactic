@@ -1,14 +1,14 @@
 import React from 'react';
 import cn from 'classnames';
-import createComponent, { Root, sstyled } from '@semcore/core';
+import { createComponent, Root, sstyled, lastInteraction } from '@semcore/core';
 import DropdownMenu from '@semcore/dropdown-menu';
 import Dropdown, { AbstractDropdown, enhance, selectedIndexContext } from '@semcore/dropdown';
 import { ButtonTrigger } from '@semcore/base-trigger';
 import Divider from '@semcore/divider';
-import findComponent from '@semcore/utils/lib/findComponent';
-import logger from '@semcore/utils/lib/logger';
-import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
-import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
+import findComponent from '@semcore/core/lib/utils/findComponent';
+import logger from '@semcore/core/lib/utils/logger';
+import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
+import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import InputSearch from './InputSearch';
 import { useBox } from '@semcore/flex-box';
 import { selectContext } from './context';
@@ -16,8 +16,8 @@ import { localizedMessages } from './translations/__intergalactic-dynamic-locale
 import { isInputTriggerTag } from '@semcore/popper';
 
 import style from './style/select.shadow.css';
-import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
-import { isAdvanceMode } from '@semcore/utils/lib/findComponent';
+import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
+import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 
 function isSelectedOption(value, valueOption) {
   return Array.isArray(value) ? value.includes(valueOption) : valueOption === value;
@@ -198,9 +198,9 @@ class RootSelect extends AbstractDropdown {
   }
 
   getOptionProps(props, index) {
-    const { value, highlightedIndex, focusSourceRef, size = 'm' } = this.asProps;
+    const { value, highlightedIndex, size = 'm' } = this.asProps;
     const highlighted =
-      index === highlightedIndex && focusSourceRef.current === 'keyboard' && !props.disabled;
+      index === highlightedIndex && lastInteraction.isKeyboard() && !props.disabled;
     const selected = props.selected ?? isSelectedOption(value, props.value);
 
     return {

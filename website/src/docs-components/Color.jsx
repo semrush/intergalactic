@@ -2,7 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 import styles from './Color.module.css';
 import Copy from '../components/Copy';
-import { useColorResolver } from 'intergalactic/utils/use/useColorResolver';
+import { useColorResolver } from '@semcore/core/lib/utils/use/useColorResolver';
 
 const cssVariableFile = `
 @custom-media --desktop (min-width: 480px);

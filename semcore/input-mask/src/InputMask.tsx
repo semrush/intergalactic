@@ -1,7 +1,8 @@
 import React from 'react';
 import { createTextMaskInputElement } from 'text-mask-core';
 
-import createComponent, {
+import {
+  createComponent,
   Component,
   sstyled,
   Root,
@@ -10,14 +11,14 @@ import createComponent, {
   Intergalactic,
 } from '@semcore/core';
 import Input, { InputProps, IInputProps, InputValueProps } from '@semcore/input';
-import fire from '@semcore/utils/lib/fire';
-import logger from '@semcore/utils/lib/logger';
+import fire from '@semcore/core/lib/utils/fire';
+import logger from '@semcore/core/lib/utils/logger';
 import NeighborLocation from '@semcore/neighbor-location';
-import getInputProps, { inputProps } from '@semcore/utils/lib/inputProps';
+import getInputProps, { inputProps } from '@semcore/core/lib/utils/inputProps';
 import { Box, Flex } from '@semcore/flex-box';
-import { forkRef } from '@semcore/utils/lib/ref';
+import { forkRef } from '@semcore/core/lib/utils/ref';
 import { ScreenReaderOnly } from '@semcore/flex-box';
-import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 
 import style from './style/input-mask.shadow.css';
 

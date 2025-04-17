@@ -1,10 +1,10 @@
 import React from 'react';
-import createComponent, { Component, sstyled, Root } from '@semcore/core';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import { FadeInOut } from '@semcore/animation';
 import Spin from '@semcore/spin';
 import { Box } from '@semcore/flex-box';
-import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
-import { isAdvanceMode } from '@semcore/utils/lib/findComponent';
+import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
+import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 
 import style from './style/spin-container.shadow.css';
 

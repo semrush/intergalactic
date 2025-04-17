@@ -1,8 +1,8 @@
 import React from 'react';
-import Input from 'intergalactic/input';
-import Select from 'intergalactic/select';
-import Button from 'intergalactic/button';
-import { Flex } from 'intergalactic/flex-box';
+import Input from '@semcore/input';
+import Select from '@semcore/select';
+import Button from '@semcore/button';
+import { Flex } from '@semcore/flex-box';
 
 const Demo = () => {
   return (

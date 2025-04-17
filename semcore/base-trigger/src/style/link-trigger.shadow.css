@@ -20,10 +20,6 @@ SLinkTrigger {
   transition: color 0.15s ease-in-out;
   border: 0;
 
-  &:focus {
-    outline: none;
-  }
-
   &[active],
   &:hover,
   &:active {
@@ -56,11 +52,6 @@ SLinkTrigger[disabled] {
   opacity: var(--intergalactic-disabled-opacity, 0.3);
   cursor: default;
   pointer-events: none;
-}
-
-SLinkTrigger[keyboardFocused] {
-  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
-  z-index: 1;
 }
 
 SAddon,

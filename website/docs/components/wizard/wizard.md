@@ -36,6 +36,18 @@ Component consists of the following:
 
 ## Appearance
 
+### Stepper states
+
+Table: Stepper states
+
+| State    | Appearance example       | Styles                                                                                         |
+| -------- | ------------------------ | ---------------------------------------------------------------------------------------------- |
+| Normal   | ![](static/normal.png)   | `background-color: var(--control-primary-advertising)`, `border-radius: var(--rounded-medium)` |
+| Hover    | ![](static/hover.png)    | `background-color: var(--control-primary-advertising-hover)`, `cursor: pointer`                |
+| Active   | ![](static/active.png)   | `background-color: var(--control-primary-advertising-active)`                                  |
+| Disabled | ![](static/disabled.png) | Use `--disabled-opacity` token.                                                                |
+| Checked  | ![](static/checked.png)  | The number changes to a `Check` icon with M size.                                              |
+
 ### Stepper styles
 
 If a `Stepper` has optional text, it should have the following styles:
@@ -45,38 +57,13 @@ color: var(--intergalactic-text-secondary-invert);
 margin-top: var(--intergalactic-spacing-1x);
 ```
 
-Sub-steps should have the following styles:
-
-```CSS
-color: var(--intergalactic-text-primary-invert);
-font-weight: var(--intergalactic-regular);
-margin-top: var(--intergalactic-spacing-1x);
-margin-bottom: var(--intergalactic-spacing-1x);
-padding-top: var(--intergalactic-spacing-1x);
-padding-bottom: var(--intergalactic-spacing-1x);
-```
-
-![](static/substep-paddings-margins.png)
-
-### Stepper states
-
-Table: Stepper states
-
-| State    | Appearance example                                        | Styles                                                                                                                                     |
-| -------- | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| Normal   | ![](static/normal.png)                                    | `background-color: var(--control-primary-advertising)`, `border-radius: var(--rounded-medium)`                                             |
-| Hover    | ![](static/hover.png)                                     | `background-color: var(--control-primary-advertising-hover)`, `cursor: pointer`                                                            |
-| Active   | ![](static/active.png)                                    | `background-color: var(--control-primary-advertising-active)`                                                                              |
-| Disabled | ![](static/disabled.png) ![](static/disabled-tooltip.png) | Use `--disabled-opacity` token. When hovering on a button in this state, display a tooltip with a description of why the step is disabled. |
-| checked  | ![](static/checked.png)                                   | The number changes to a `Check` icon in size M.                                                                                            |
-
 ### Content area styles
 
-#### Header styles
+#### Header margin
 
 ![margin-bottom: 20px; color: var(--gray-800); font-size: var(--fs-500); line-height: var(--lh-500); font-weight: 700;](static/header.png)
 
-#### Footer styles
+#### Footer margins
 
 For basic controls use L size.
 

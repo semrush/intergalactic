@@ -1,13 +1,12 @@
 import React from 'react';
-import createComponent, { Component, sstyled, Root } from '@semcore/core';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import Dropdown from '@semcore/dropdown';
 import { Box } from '@semcore/flex-box';
 import ChevronDownM from '@semcore/icon/ChevronDown/m';
-import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import PaletteManagerRoot from './PaletteManager';
 import { Item, Colors, ColorsCustom, InputColor } from './components';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 
 import style from './style/color-picker.shadow.css';
 
@@ -171,8 +170,6 @@ export function Trigger(props: TriggerAsProps) {
   );
 }
 
-Trigger.enhance = [keyboardFocusEnhance()];
-
 const DefaultTrigger = React.forwardRef(function (props: TriggerAsProps, ref) {
   const { styles, value } = props;
   const SDefaultTrigger = Root;
@@ -180,7 +177,7 @@ const DefaultTrigger = React.forwardRef(function (props: TriggerAsProps, ref) {
   const STriggerCircleLine = 'svg';
 
   return sstyled(styles)(
-    <SDefaultTrigger render={Box} tag='button' ref={ref}>
+    <SDefaultTrigger render={Box} tag='button' tabIndex={0} ref={ref}>
       <STriggerCircle data-value={value}>
         {!value && (
           <STriggerCircleLine

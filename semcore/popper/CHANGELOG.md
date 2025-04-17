@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.0] - 2025-01-15
+
+### Deprecated
+
+- Import it from `@semcore/core`.
+
 ## [5.46.2] - 2025-04-04
 
 ### Changed

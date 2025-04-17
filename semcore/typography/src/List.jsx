@@ -1,8 +1,8 @@
 import React from 'react';
-import createComponent, { Component, Root, sstyled } from '@semcore/core';
+import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import { Flex } from '@semcore/flex-box';
-import isNode from '@semcore/utils/lib/isNode';
-import { isAdvanceMode } from '@semcore/utils/lib/findComponent';
+import isNode from '@semcore/core/lib/utils/isNode';
+import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 
 import Text from './Text';
 

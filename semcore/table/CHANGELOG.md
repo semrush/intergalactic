@@ -8,6 +8,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Version minor update due to children dependencies update (`@semcore/icon` [4.60.2 ~> 4.61.0]).
 
+## [4.53.5] - 2025-03-26
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/scroll-area` [16.0.0 ~> 16.0.0], `@semcore/flex-box` [16.0.0 ~> 16.0.0], `@semcore/icon` [16.0.0 ~> 16.0.0], `@semcore/typography` [16.0.0 ~> 16.0.0], `@semcore/base-components` [16.0.0 ~> 16.0.0]).
+
 ## [4.53.2] - 2025-04-04
 
 ### Changed

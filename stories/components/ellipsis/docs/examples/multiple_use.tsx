@@ -1,5 +1,5 @@
 import React from 'react';
-import DataTable from '@semcore/data-table';
+import { DataTable } from '@semcore/data-table';
 import Ellipsis, { useResizeObserver } from '@semcore/ellipsis';
 
 const Demo = () => {
@@ -10,24 +10,24 @@ const Demo = () => {
   return (
     <DataTable data={data} aria-label={'Table title'}>
       <DataTable.Head>
-        <DataTable.Column name='keyword' children='Keyword' />
-        <DataTable.Column name='kd' children='KD,%' />
-        <DataTable.Column name='cpc' children='CPC' />
-        <DataTable.Column name='vol' children='Vol.' ref={containerRef} />
+        <DataTable.Head.Column name='keyword' children='Keyword' />
+        <DataTable.Head.Column name='kd' children='KD,%' />
+        <DataTable.Head.Column name='cpc' children='CPC' />
+        <DataTable.Head.Column name='vol' children='Vol.' ref={containerRef} gtcWidth='100px' />
       </DataTable.Head>
-      <DataTable.Body>
-        <DataTable.Cell data={data} name='vol'>
-          {(props: any, row: any) => {
-            return {
-              children: (
+      <DataTable.Body
+        renderCell={(props) => {
+          if (props.columnName === 'vol') {
+            return (
                 <Ellipsis trim='middle' containerRect={containerRect} containerRef={containerRef}>
-                  {row[props.name]}
-                </Ellipsis>
-              ),
-            };
-          }}
-        </DataTable.Cell>
-      </DataTable.Body>
+              {props.value}
+            </Ellipsis>
+            );
+          }
+
+          return props.defaultRender();
+        }}
+      />
     </DataTable>
   );
 };

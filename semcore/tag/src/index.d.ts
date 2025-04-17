@@ -2,7 +2,7 @@ import React from 'react';
 import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
 import { BoxProps } from '@semcore/flex-box';
 import { IconProps } from '@semcore/icon';
-import { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import { KeyboardFocusProps } from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 
 export type TagSize = 'xl' | 'l' | 'm';
 /** @deprecated */
@@ -83,15 +83,6 @@ export type TagTextProps = BoxProps & KeyboardFocusProps & {};
 declare const Tag: Intergalactic.Component<'div', TagProps, TagContext> & {
   Text: Intergalactic.Component<'div', TagTextProps>;
   Addon: Intergalactic.Component<'div', TagAddonProps>;
-  /**
-   * @deprecated For Tags with close button, you should use
-   * <TagContainer>
-   *     <TagContainer.Tag.Text>Tag text</TagContainer.Tag.Text>
-   *     <TagContainer.Close onClick={handleClose} />
-   * </TagContainer>
-   * See example on https://developer.semrush.com/intergalactic/components/tag/tag-code#removing-tag
-   * */
-  Close: Intergalactic.Component<'div', TagCloseProps>;
   Circle: Intergalactic.Component<'div', TagAddonProps>;
 };
 

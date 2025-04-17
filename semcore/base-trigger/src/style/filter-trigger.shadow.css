@@ -21,10 +21,6 @@ SWrapper {
   }
 }
 
-SWrapper[keyboardFocused]:focus {
-  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
-}
-
 SCounter {
   background-color: var(--intergalactic-bg-primary-info, #008ff8);
 }

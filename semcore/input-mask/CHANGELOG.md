@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.0] - 2025-01-09
+
+### Deprecated
+
+- Full package.
+
 ## [5.43.2] - 2025-04-04
 
 ### Changed
@@ -742,7 +748,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Added repository field to package.json file.
 
-## [3.2.1] - 2021-8-26
+## [3.2.1] - 2021-08-26
 
 ### Changed
 

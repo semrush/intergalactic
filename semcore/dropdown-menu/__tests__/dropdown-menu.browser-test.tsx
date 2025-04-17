@@ -26,6 +26,24 @@ test.describe('Dropdown-menu', () => {
     await expect(menuItem6).toBeFocused();
     await expect(page).toHaveScreenshot();
   });
+  test('Should close by second click on trigger', async ({ page }) => {
+    const standPath = 'stories/components/dropdown-menu/docs/examples/basic.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+    await page.waitForTimeout(500);
+
+    await expect(page.getByRole('menu')).toBeVisible();
+
+    const button = page.locator('button', { hasText: 'Actions' });
+    await button.click();
+
+    await page.waitForTimeout(500);
+    await expect(page.getByRole('menu')).not.toBeVisible();
+  });
 });
 
 test.describe('Dropdown-menu - Item actions', () => {
@@ -75,6 +93,7 @@ test.describe('Dropdown-menu - Item actions', () => {
 
     //Escape returns focus in menu item, hints hidden
     await page.keyboard.press('Escape');
+    await page.waitForTimeout(100);
     await expect(Item3).toBeFocused();
     await expect(MathPlus).not.toBeFocused();
     await expect(Trash).not.toBeFocused();

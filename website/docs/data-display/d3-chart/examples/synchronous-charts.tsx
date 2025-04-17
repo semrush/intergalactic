@@ -9,7 +9,7 @@ import {
   Plot,
   YAxis,
   PlotEventEmitter,
-} from 'intergalactic/d3-chart';
+} from '@semcore/d3-chart';
 
 const eventEmitter = new PlotEventEmitter();
 

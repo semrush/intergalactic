@@ -24,9 +24,9 @@ SBreadcrumbs {
     SListItem {
       overflow: hidden;
 
-      /* we need this hack to show box-shadow over `overflow: hidden` element */
-      padding: 3px;
-      margin: -3px;
+      /* we need this hack to show outline over `overflow: hidden` element */
+      padding: 4px;
+      margin: -4px;
 
       SBreadcrumbsItem {
         width: 100%;
@@ -45,11 +45,6 @@ SBreadcrumbs {
           text-decoration: underline;
           color: var(--intergalactic-text-primary, #191b23);
         }
-      }
-
-      SBreadcrumbsItem[keyboardFocused] {
-        outline: none;
-        box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
       }
 
       SBreadcrumbsItem[active] {

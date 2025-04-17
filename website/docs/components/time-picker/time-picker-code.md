@@ -11,7 +11,7 @@ For deeper customization, you can expand the component.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/expanded_access_to_all_the_components.tsx';
+  export Demo from 'stories/components/time-picker/docs/examples/expanded_access_to_all_the_components.tsx';
 </script>
 
 :::

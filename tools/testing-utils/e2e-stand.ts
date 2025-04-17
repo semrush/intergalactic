@@ -22,7 +22,7 @@ export const e2eStandToHtml = async (standFilePath: string, locale: string) => {
               import React from 'react';
               import ReactDOM from 'react-dom';
               import App from '${resolvePath(standFilePath)}';
-              import { I18nProvider } from '@semcore/utils/lib/enhances/WithI18n';
+              import { I18nProvider } from '@semcore/core/lib/utils/enhances/WithI18n';
 
               ReactDOM.render(
                 <I18nProvider value='${locale}'>

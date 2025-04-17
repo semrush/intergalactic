@@ -5,7 +5,7 @@ import { interpolateValue } from '../../utils';
 import React from 'react';
 import { Component, Root, sstyled } from '@semcore/core';
 import { BaseChartProps, BaseLegendProps, ListData, ObjectData } from './AbstractChart.type';
-import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
+import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import ChartLegend, { ChartLegendTable } from '../ChartLegend';
 import { Flex } from '@semcore/flex-box';
 // @ts-ignore
@@ -13,7 +13,7 @@ import { Plot, XAxis, YAxis } from '../..';
 import { Text } from '@semcore/typography';
 import { LegendFlexProps } from '../ChartLegend/LegendFlex/LegendFlex.type';
 import { LegendTableProps } from '../ChartLegend/LegendTable/LegendTable.type';
-import { extractAriaProps } from '@semcore/utils/lib/ariaProps';
+import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
 
 type ChartState = {
   dataDefinitions: Array<LegendItem & { columns: React.ReactNode[] }>;

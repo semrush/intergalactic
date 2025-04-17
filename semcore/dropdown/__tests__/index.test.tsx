@@ -54,11 +54,7 @@ describe('Dropdown', () => {
           <Dropdown.Trigger>
             <button type='button'>default dropdown</button>
           </Dropdown.Trigger>
-          <Dropdown.Popper
-            aria-label={'Dropdown popper description'}
-            keyboardFocused
-            data-ui-name='popper'
-          >
+          <Dropdown.Popper aria-label={'Dropdown popper description'} data-ui-name='popper'>
             <div>text</div>
           </Dropdown.Popper>
         </Dropdown>

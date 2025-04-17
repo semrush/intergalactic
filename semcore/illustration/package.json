@@ -1,7 +1,7 @@
 {
   "name": "@semcore/illustration",
   "description": "Semrush Illustration Component",
-  "version": "2.44.0",
+  "version": "16.0.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -16,13 +16,10 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.17.9",
-    "@semcore/flex-box": "5.41.2",
     "colorjs.io": "0.4.3"
   },
   "peerDependencies": {
-    "@semcore/core": "^2.17.5",
-    "react": "16.8 - 18",
-    "react-dom": "16.8 - 18"
+    "@semcore/base-components": "^16.0.0"
   },
   "repository": {
     "type": "git",
@@ -33,7 +30,7 @@
     "esbuild": "0.14.29",
     "happy-dom": "9.20.3",
     "fs-extra": "8.1.0",
-    "svg-to-jsx": "^1.0.4",
+    "svg-to-jsx": "1.0.4",
     "@semcore/testing-utils": "1.0.0",
     "@types/react": "18.0.21",
     "@types/fs-extra": "8.1.0"

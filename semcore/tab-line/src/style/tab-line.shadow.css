@@ -24,7 +24,7 @@ STabLineItem {
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
   overflow: visible;
-  outline: 0;
+  /*outline: 0;*/
   text-align: center;
   vertical-align: middle;
   font-family: inherit;
@@ -41,9 +41,7 @@ STabLineItem {
   }
 
   &:active,
-  &:hover,
-  &:focus {
-    outline: 0;
+  &:hover {
     text-decoration: none;
   }
 
@@ -97,10 +95,6 @@ STabLineItem[disabled] {
   cursor: default;
   /* Disable link interactions */
   pointer-events: none;
-}
-
-STabLineItem[keyboardFocused] {
-  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
 }
 
 SText {

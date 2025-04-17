@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.0] - 2025-03-26
+
+### Added
+
+- One global node for all `status` tooltips to mount into.
+
 ## [6.49.2] - 2025-04-04
 
 ### Changed

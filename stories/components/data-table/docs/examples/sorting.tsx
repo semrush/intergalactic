@@ -1,5 +1,6 @@
 import React from 'react';
-import DataTable, { DataTableSort } from '@semcore/data-table';
+import { DataTable, DataTableSort } from '@semcore/data-table';
+import Ellipsis from '@semcore/ellipsis';
 
 type SortableColumn = Exclude<keyof typeof data[0], 'keyword'>;
 
@@ -22,32 +23,35 @@ const Demo = () => {
     () => new Intl.NumberFormat('en-US', { currency: 'USD', style: 'currency' }),
     [],
   );
+  const handleSortChange: (sort: DataTableSort<string>, e?: React.SyntheticEvent) => void = (newSort) => {
+    setSort(newSort as DataTableSort<SortableColumn>);
+  };
 
   return (
-    <DataTable data={sortedData} sort={sort} onSortChange={setSort} aria-label={'Sorting'}>
+    <DataTable data={sortedData} sort={sort} onSortChange={handleSortChange} aria-label={'Sorting'}>
       <DataTable.Head>
-        <DataTable.Column name='keyword' children='Keyword' justifyContent='left' sortable />
-        <DataTable.Column name='kd' children='KD,%' justifyContent='right' wMax={68} sortable />
-        <DataTable.Column name='cpc' children='CPC' wMax={60} sortable />
-        <DataTable.Column name='vol' children='Vol.' wMax={120} justifyContent='left' sortable />
+        <DataTable.Head.Column name='keyword' children='Keyword' justifyContent='left' sortable />
+          <DataTable.Head.Column name='kd' justifyContent='right' gtcWidth={'minmax(0, 68px)'} sortable>
+              <Ellipsis>KD,% and some another text long</Ellipsis>
+          </DataTable.Head.Column>
+        <DataTable.Head.Column name='cpc' children='CPC' gtcWidth={'minmax(0, 60px)'} sortable />
+        <DataTable.Head.Column name='vol' children='Vol.' gtcWidth={'minmax(0, 120px)'} justifyContent='left' sortable />
       </DataTable.Head>
-      <DataTable.Body>
-        <DataTable.Cell data={data} name='kd'>
-          {(_, row) => ({
-            children: row.kd === -1 ? 'n/a' : numberFormat.format(row.kd),
-          })}
-        </DataTable.Cell>
-        <DataTable.Cell data={data} name='cpc'>
-          {(_, row) => ({
-            children: row.cpc === -1 ? 'n/a' : currencyFormat.format(row.cpc),
-          })}
-        </DataTable.Cell>
-        <DataTable.Cell data={data} name='vol'>
-          {(_, row) => ({
-            children: row.vol === -1 ? 'n/a' : numberFormat.format(row.vol),
-          })}
-        </DataTable.Cell>
-      </DataTable.Body>
+      <DataTable.Body
+          renderCell={(props) => {
+            if (props.columnName === 'keyword') {
+              return props.defaultRender();
+            }
+
+              const value = props.defaultRender();
+
+              return typeof value === 'number' && value !== -1
+                  ? (
+                      props.columnName === 'cpc' ? currencyFormat.format(value) : numberFormat.format(value)
+                  )
+                  : 'n/a';
+          }}
+      />
     </DataTable>
   );
 };

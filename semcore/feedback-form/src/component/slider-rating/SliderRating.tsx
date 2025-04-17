@@ -1,11 +1,9 @@
 import React from 'react';
-import createComponent, { Component, Root, sstyled, Intergalactic } from '@semcore/core';
+import { createComponent, Component, Root, sstyled, Intergalactic } from '@semcore/core';
 import { Flex, Box, BoxProps } from '@semcore/flex-box';
 import style from '../../style/slider-rating.shadow.css';
-import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
-import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
-import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
-import { ScreenReaderOnly } from '@semcore/flex-box';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 
 type SliderRatingProps = {
@@ -35,11 +33,7 @@ class SliderRatingRoot extends Component<
   static displayName = 'SliderRating';
   static style = style;
 
-  static enhance = [
-    keyboardFocusEnhance(),
-    uniqueIDEnhancement(),
-    i18nEnhance(localizedMessages),
-  ] as const;
+  static enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages)] as const;
 
   state: State = {
     hoveredIndex: -1,
@@ -151,7 +145,7 @@ class SliderRatingRoot extends Component<
 
     if (readonly) {
       return (
-        <SSliderRating render={Flex} gap={1} role='img' aria-label={label} use:tabIndex={-1}>
+        <SSliderRating render={Flex} gap={1} role='img' aria-label={label}>
           {new Array(MAX).fill(null).map((_, index) => {
             return (
               <Box key={index} position={'relative'}>
@@ -176,6 +170,7 @@ class SliderRatingRoot extends Component<
       <SSliderRating
         render={Flex}
         gap={1}
+        tabIndex={0}
         onMouseLeave={this.handleMouseLeave}
         onKeyDown={this.handleKeyDown}
         role={'slider'}

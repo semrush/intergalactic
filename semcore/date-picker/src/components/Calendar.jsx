@@ -1,12 +1,12 @@
 import React from 'react';
 import dayjs from 'dayjs';
-import isBetween from 'dayjs/plugin/isBetween';
-import createComponent, { Component, Root, sstyled } from '@semcore/core';
+import isBetween from '../utils/isBetweenPlugin';
+import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
-import fire from '@semcore/utils/lib/fire';
+import fire from '@semcore/core/lib/utils/fire';
 import { includesDate } from '../utils/includesDate';
 import { formatDDMMYY, formatMMYY } from '../utils/formatDate';
-import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 import { ScreenReaderOnly } from '@semcore/flex-box';
 
 import style from '../style/calendar.shadow.css';

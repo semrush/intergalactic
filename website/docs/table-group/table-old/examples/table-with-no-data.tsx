@@ -1,6 +1,6 @@
 import React from 'react';
-import Table from 'intergalactic/table';
-import { NoData } from 'intergalactic/widget-empty';
+import Table from '@semcore/table';
+import { NoData } from '@semcore/widget-empty';
 
 const Demo = () => {
   const data = [...new Array(5)];

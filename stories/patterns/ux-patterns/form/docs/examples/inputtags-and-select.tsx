@@ -71,7 +71,7 @@ const Demo = () => {
     setValueTag(`${tags.slice(-1)[0]} ${valueTag}`);
   };
 
-  const handleCloseTag = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleCloseTag = (e: React.MouseEvent<HTMLButtonElement>) => {
     const tags = getValues('emails');
     const { dataset } = e.currentTarget;
     setValue(

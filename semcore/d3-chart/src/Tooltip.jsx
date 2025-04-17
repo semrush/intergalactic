@@ -2,10 +2,10 @@ import React from 'react';
 import { Component, Root, sstyled } from '@semcore/core';
 import Popper from '@semcore/popper';
 import { Box } from '@semcore/flex-box';
-import findComponent from '@semcore/utils/lib/findComponent';
+import findComponent from '@semcore/core/lib/utils/findComponent';
 import createElement from './createElement';
 import { getChartDefaultColorName } from './utils';
-import { useColorResolver } from '@semcore/utils/lib/use/useColorResolver';
+import { useColorResolver } from '@semcore/core/lib/utils/use/useColorResolver';
 
 import style from './style/tooltip.shadow.css';
 import { PatternSymbol } from './Pattern';

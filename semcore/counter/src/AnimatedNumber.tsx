@@ -1,6 +1,6 @@
 import React from 'react';
-import { useCssVariable } from '@semcore/utils/lib/useCssVariable';
-import useEnhancedEffect from '@semcore/utils/lib/use/useEnhancedEffect';
+import { useCssVariable } from '@semcore/core/lib/utils/useCssVariable';
+import useEnhancedEffect from '@semcore/core/lib/utils/use/useEnhancedEffect';
 import { Intergalactic } from '@semcore/core';
 import { AnimatedNumberBaseProps } from './index';
 

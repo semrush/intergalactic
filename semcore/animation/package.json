@@ -1,7 +1,7 @@
 {
   "name": "@semcore/animation",
   "description": "Semrush Animation Component",
-  "version": "2.41.2",
+  "version": "16.0.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -9,21 +9,15 @@
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "pnpm semcore-builder --source=js && pnpm vite build"
+    "build": "pnpm semcore-builder --source=ts && pnpm vite build"
   },
   "exports": {
     "require": "./lib/cjs/index.js",
     "import": "./lib/esm/index.mjs",
     "types": "./lib/types/index.d.ts"
   },
-  "dependencies": {
-    "@semcore/utils": "4.48.2",
-    "@semcore/flex-box": "5.41.2"
-  },
   "peerDependencies": {
-    "@semcore/core": "^2.17.5",
-    "react": "16.8 - 18",
-    "react-dom": "16.8 - 18"
+    "@semcore/base-components": "^16.0.0"
   },
   "repository": {
     "type": "git",

@@ -72,7 +72,7 @@ export {
       `,
     templateDTS: () => `
 import { IconProps } from '@semcore/icon';
-import { Intergalactic } from '@semcore/utils/lib/core';
+import { Intergalactic } from '@semcore/core';
 declare const _default: Intergalactic.Component<'svg', IconProps>;
 export default _default;
       `,

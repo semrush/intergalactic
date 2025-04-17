@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.0] - 2025-02-24
+
+### Fixed
+
+- Token using for `:focus-visible` styles.
+
+### Changed
+
+- Fixed styles for Stepper and Sidebar.
+
 ## [2.54.0] - 2025-04-11
 
 ### Changed

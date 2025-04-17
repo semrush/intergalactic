@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import IF from '@semcore/utils/lib/if';
+import IF from '@semcore/core/lib/utils/if';
 import { Text } from '@semcore/typography';
 import ChevronRightM from '@semcore/icon/ChevronRight/m';
 import WarningM from '@semcore/icon/Warning/m';

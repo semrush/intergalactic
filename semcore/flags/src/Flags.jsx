@@ -3,8 +3,8 @@ import React from 'react';
 import cn from 'classnames';
 import { createBaseComponent, sstyled } from '@semcore/core';
 import { useBox } from '@semcore/flex-box';
-import canUseDOM from '@semcore/utils/lib/canUseDOM';
-import isRetina from '@semcore/utils/lib/isRetina';
+import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
+import isRetina from '@semcore/core/lib/utils/isRetina';
 import countries from './countries.json';
 
 import styles from './style/flags.shadow.css';
@@ -78,7 +78,8 @@ function Flags(props, ref) {
     },
     ref,
   );
-  const flagsBase = globalThis?.__intergalacticFlagsBaseUrl ?? '//static.semrush.com/ui-kit/flags/';
+  const flagsBase =
+    globalThis?.__intergalacticFlagsBaseUrl ?? '//static.semrush.com/intergalactic/flags/';
   const { iso2, iso3, name, staticPath = `${flagsBase}${version}` } = props;
 
   if (!_addedStyle) {

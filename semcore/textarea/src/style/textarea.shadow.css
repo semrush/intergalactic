@@ -36,8 +36,7 @@ STextarea[size='l'] {
 }
 
 STextarea[state='normal'] {
-  &:focus {
-    box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
+  &:focus-visible {
     border-color: var(--intergalactic-border-info-active, #006dca);
   }
 }
@@ -45,16 +44,16 @@ STextarea[state='normal'] {
 STextarea[state='valid'] {
   border-color: var(--intergalactic-border-success-active, #007c65);
 
-  &:focus {
-    box-shadow: var(--intergalactic-keyboard-focus-valid, 0px 0px 0px 3px rgba(0, 159, 129, 0.5));
+  &:focus-visible {
+    outline-color: var(--intergalactic-keyboard-focus-valid-outline, rgba(0, 159, 129, 0.5));
   }
 }
 
 STextarea[state='invalid'] {
   border-color: var(--intergalactic-border-critical-active, #d1002f);
 
-  &:focus {
-    box-shadow: var(--intergalactic-keyboard-focus-invalid, 0px 0px 0px 3px rgba(255, 73, 83, 0.5));
+  &:focus-visible {
+    outline-color: var(--intergalactic-keyboard-focus-invalid-outline, rgba(255, 73, 83, 0.5));
   }
 
   background-image: var(--intergalactic-border-critical-pattern, repeating-linear-gradient(315deg, rgba(209, 0, 47, 1) 0, rgba(209, 0, 47, 1) 2px, transparent 0, transparent 50%));

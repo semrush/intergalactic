@@ -3,7 +3,6 @@ const getConfig = () => {
     tasks: ({ generateIcons, getDescriptionIcons, getDescriptionExternalIcons, getDescriptionPlatformIcons }) => {
       return [
         generateIcons('svg/color', './color', getDescriptionIcons),
-        generateIcons('svg/external', './external', getDescriptionExternalIcons),
         generateIcons('svg/pay', './pay', getDescriptionIcons),
         generateIcons('svg/platform', './platform', getDescriptionPlatformIcons),
         generateIcons('svg/icon', '.', getDescriptionIcons),
@@ -13,3 +12,4 @@ const getConfig = () => {
 };
 
 module.exports = getConfig;
+

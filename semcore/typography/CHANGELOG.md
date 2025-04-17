@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.0] - 2025-02-13
+
+### Removed
+
+- `Hint` component. Use `secondary` `ButtonLink` instead of it.
+
 ## [5.53.0] - 2025-04-11
 
 ### Changed
@@ -796,7 +802,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - Up version icons and use new icon.
 - Removed the ability to apply media styles via a plugin `babel-plugin-react-semcore`.
 
-## [3.2.2] - 2021-08-26
+## [3.2.2] - 2021-8-26
 
 ### Changed
 

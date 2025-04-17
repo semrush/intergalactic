@@ -446,6 +446,7 @@ test.describe('Common error ON - Validation Delimiter RowProcessing', () => {
       await page.keyboard.type('http://Test', { delay: 100 });
       await page.keyboard.press('Space');
       await page.keyboard.press('Enter');
+      await page.waitForTimeout(50);
       const lineCount = await contentDiv.locator('p').count();
       await expect(lineCount).toBe(2);
       await expect(locators.counter).toHaveText('1/15of 15 lines');

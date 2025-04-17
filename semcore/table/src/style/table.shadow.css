@@ -1,4 +1,4 @@
-@import '@semcore/utils/style/var.css';
+@import './var.css';
 
 STable {
   width: 100%;

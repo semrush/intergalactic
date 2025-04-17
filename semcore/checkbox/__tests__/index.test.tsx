@@ -92,9 +92,18 @@ describe('Checkbox', () => {
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
         <Checkbox>
-          <Checkbox.Value keyboardFocused />
+          <Checkbox.Value id='focused' />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
+      </snapshot.ProxyProps>
+    );
+
+    await expect(
+      await snapshot(component, { actions: { focus: '#focused' } }),
+    ).toMatchImageSnapshot(task);
+
+    const componentChecked = (
+      <snapshot.ProxyProps m='5px'>
         <Checkbox checked>
           <Checkbox.Value />
           <Checkbox.Text>Label</Checkbox.Text>
@@ -104,13 +113,15 @@ describe('Checkbox', () => {
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
         <Checkbox checked>
-          <Checkbox.Value keyboardFocused />
+          <Checkbox.Value id='focused' />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
       </snapshot.ProxyProps>
     );
 
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+    await expect(
+      await snapshot(componentChecked, { actions: { focus: '#focused' } }),
+    ).toMatchImageSnapshot(task);
   });
 
   test.concurrent('Should support invalid state', async ({ task }) => {
@@ -125,9 +136,18 @@ describe('Checkbox', () => {
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
         <Checkbox state='invalid'>
-          <Checkbox.Value keyboardFocused />
+          <Checkbox.Value id='focused' />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
+      </snapshot.ProxyProps>
+    );
+
+    await expect(
+      await snapshot(component, { actions: { focus: '#focused' } }),
+    ).toMatchImageSnapshot(task);
+
+    const componentChecked = (
+      <snapshot.ProxyProps m='5px'>
         <Checkbox state='invalid' checked>
           <Checkbox.Value />
           <Checkbox.Text>Label</Checkbox.Text>
@@ -137,13 +157,15 @@ describe('Checkbox', () => {
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
         <Checkbox state='invalid' checked>
-          <Checkbox.Value keyboardFocused />
+          <Checkbox.Value id='focused' />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
       </snapshot.ProxyProps>
     );
 
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+    await expect(
+      await snapshot(componentChecked, { actions: { focus: '#focused' } }),
+    ).toMatchImageSnapshot(task);
   });
 
   test.concurrent('Should support intermediate state', async ({ task }) => {
@@ -158,9 +180,18 @@ describe('Checkbox', () => {
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
         <Checkbox indeterminate>
-          <Checkbox.Value keyboardFocused />
+          <Checkbox.Value id='focused' />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
+      </snapshot.ProxyProps>
+    );
+
+    await expect(
+      await snapshot(component, { actions: { focus: '#focused' } }),
+    ).toMatchImageSnapshot(task);
+
+    const componentChecked = (
+      <snapshot.ProxyProps m='5px'>
         <Checkbox indeterminate>
           <Checkbox.Value checked />
           <Checkbox.Text>Label</Checkbox.Text>
@@ -170,9 +201,18 @@ describe('Checkbox', () => {
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
         <Checkbox indeterminate>
-          <Checkbox.Value checked keyboardFocused />
+          <Checkbox.Value checked id='focused' />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
+      </snapshot.ProxyProps>
+    );
+
+    await expect(
+      await snapshot(componentChecked, { actions: { focus: '#focused' } }),
+    ).toMatchImageSnapshot(task);
+
+    const componentInvalid = (
+      <snapshot.ProxyProps m='5px'>
         <Checkbox state='invalid'>
           <Checkbox.Value indeterminate />
           <Checkbox.Text>Label</Checkbox.Text>
@@ -182,9 +222,18 @@ describe('Checkbox', () => {
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
         <Checkbox state='invalid' indeterminate>
-          <Checkbox.Value keyboardFocused />
+          <Checkbox.Value id='focused' />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
+      </snapshot.ProxyProps>
+    );
+
+    await expect(
+      await snapshot(componentInvalid, { actions: { focus: '#focused' } }),
+    ).toMatchImageSnapshot(task);
+
+    const componentInvalidChecked = (
+      <snapshot.ProxyProps m='5px'>
         <Checkbox state='invalid' indeterminate>
           <Checkbox.Value checked />
           <Checkbox.Text>Label</Checkbox.Text>
@@ -194,13 +243,15 @@ describe('Checkbox', () => {
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
         <Checkbox state='invalid' indeterminate>
-          <Checkbox.Value checked keyboardFocused />
+          <Checkbox.Value checked id='focused' />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
       </snapshot.ProxyProps>
     );
 
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+    await expect(
+      await snapshot(componentInvalidChecked, { actions: { focus: '#focused' } }),
+    ).toMatchImageSnapshot(task);
   });
 
   test.concurrent('Should support themes', async ({ task }) => {
@@ -215,9 +266,18 @@ describe('Checkbox', () => {
           <Checkbox.Text>Princess</Checkbox.Text>
         </Checkbox>
         <Checkbox theme='pink'>
-          <Checkbox.Value keyboardFocused />
+          <Checkbox.Value id='focused' />
           <Checkbox.Text>Princess</Checkbox.Text>
         </Checkbox>
+      </snapshot.ProxyProps>
+    );
+
+    await expect(
+      await snapshot(component, { actions: { focus: '#focused' } }),
+    ).toMatchImageSnapshot(task);
+
+    const componentChecked = (
+      <snapshot.ProxyProps m='5px'>
         <Checkbox theme='pink'>
           <Checkbox.Value checked />
           <Checkbox.Text>Princess</Checkbox.Text>
@@ -227,13 +287,15 @@ describe('Checkbox', () => {
           <Checkbox.Text>Princess</Checkbox.Text>
         </Checkbox>
         <Checkbox theme='pink'>
-          <Checkbox.Value checked keyboardFocused />
+          <Checkbox.Value checked id='focused' />
           <Checkbox.Text>Princess</Checkbox.Text>
         </Checkbox>
       </snapshot.ProxyProps>
     );
 
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+    await expect(
+      await snapshot(componentChecked, { actions: { focus: '#focused' } }),
+    ).toMatchImageSnapshot(task);
   });
 
   test.concurrent(

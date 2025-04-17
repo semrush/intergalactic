@@ -1,19 +1,13 @@
 import React from 'react';
 import styles from './design-tokens.module.css';
-import DataTable from '@semcore/data-table';
+import { DataTable } from '@semcore/data-table';
 import { NoData } from '@semcore/widget-empty';
 import Copy from '@components/Copy';
 import { ColorPreview } from './DesignTokens';
 import Fuse from 'fuse.js';
 import { SearchInput } from './SearchInput.jsx';
 
-import { AutoSizer, List, CellMeasurer, CellMeasurerCache } from 'react-virtualized';
 import { logEvent } from '../../docs/.vitepress/theme/amplitude/amplitude';
-
-const cache = new CellMeasurerCache({
-  fixedWidth: true,
-  defaultHeight: 100,
-});
 
 let filteredTokensTimer = 0;
 let searchTimer = 0;
@@ -73,24 +67,24 @@ const BaseTokensTable = React.memo(({ filteredTokens }) => {
   const valueHeaderRef = React.useRef(null);
   const descriptionHeaderRef = React.useRef(null);
 
-  React.useEffect(() => {
-    setTimeout(() => {
-      cache.clearAll();
-    }, 0);
-  }, []);
-
   return (
     <DataTable data={filteredTokens} className={styles.tokensTable}>
       <DataTable.Head>
-        <DataTable.Column
+        <DataTable.Head.Column
           name='name'
           children='Token name'
           ref={nameHeaderRef}
           w={0.2}
           wMax={140}
         />
-        <DataTable.Column name='value' children='Value' ref={valueHeaderRef} w={0.2} wMax={140} />
-        <DataTable.Column
+        <DataTable.Head.Column
+          name='value'
+          children='Value'
+          ref={valueHeaderRef}
+          w={0.2}
+          wMax={140}
+        />
+        <DataTable.Head.Column
           name='description'
           children='Description'
           ref={descriptionHeaderRef}
@@ -99,94 +93,41 @@ const BaseTokensTable = React.memo(({ filteredTokens }) => {
       </DataTable.Head>
       {filteredTokens.length ? (
         <DataTable.Body
-          renderRows={({ rows, renderRow }) => {
-            const rowRenderer = ({ key, index, style, parent }) => {
+          renderCell={(props) => {
+            if (props.dataKey === 'name') {
               return (
-                <CellMeasurer
-                  key={key}
-                  cache={cache}
-                  parent={parent}
-                  columnIndex={0}
-                  rowIndex={index}
+                <Copy
+                  copiedToast='Copied'
+                  toCopy={props.row[props.dataKey]}
+                  title={'Copy to clipboard'}
+                  trigger='click'
+                  className={styles.tokenNameWrapper}
                 >
-                  {({ measure }) => (
-                    <div key={key} style={style} onLoad={measure}>
-                      {renderRow(rows[index], { dataIndex: index })}
-                    </div>
-                  )}
-                </CellMeasurer>
+                  <button type='button' className={styles.tokenName} data-token-type={'baseToken'}>
+                    {props.row[props.dataKey]}
+                  </button>
+                </Copy>
               );
-            };
+            } else if (props.dataKey === 'value') {
+              return (
+                <Copy
+                  copiedToast='Copied'
+                  toCopy={props.row[props.dataKey]}
+                  title={'Copy to clipboard'}
+                  trigger='click'
+                  className={styles.tokenValueWrapper}
+                >
+                  <button type='button' className={styles.tokenValue} data-token-type={'baseToken'}>
+                    <ColorPreview color={props.row[props.dataKey]} />
+                    {props.row[props.name]}
+                  </button>
+                </Copy>
+              );
+            }
 
-            return (
-              <AutoSizer disableHeight>
-                {({ width }) => {
-                  return (
-                    <List
-                      height={800}
-                      rowCount={rows.length}
-                      deferredMeasurementCache={cache}
-                      rowHeight={cache.rowHeight}
-                      rowRenderer={rowRenderer}
-                      width={width}
-                      overscanRowCount={10}
-                      tabIndex={-1}
-                    />
-                  );
-                }}
-              </AutoSizer>
-            );
+            return props.defaultRender();
           }}
-        >
-          <DataTable.Cell name='name'>
-            {(props, row) => {
-              return {
-                children: (
-                  <Copy
-                    copiedToast='Copied'
-                    toCopy={row[props.name]}
-                    title={'Copy to clipboard'}
-                    trigger='click'
-                    className={styles.tokenNameWrapper}
-                  >
-                    <button
-                      type='button'
-                      className={styles.tokenName}
-                      data-token-type={'baseToken'}
-                    >
-                      {row[props.name]}
-                    </button>
-                  </Copy>
-                ),
-              };
-            }}
-          </DataTable.Cell>
-          <DataTable.Cell name='value'>
-            {(props, row) => {
-              return {
-                children: (
-                  <Copy
-                    copiedToast='Copied'
-                    toCopy={row[props.name]}
-                    title={'Copy to clipboard'}
-                    trigger='click'
-                    className={styles.tokenValueWrapper}
-                  >
-                    <button
-                      type='button'
-                      className={styles.tokenValue}
-                      data-token-type={'baseToken'}
-                    >
-                      <ColorPreview color={row[props.name]} />
-                      {row[props.name]}
-                    </button>
-                  </Copy>
-                ),
-              };
-            }}
-          </DataTable.Cell>
-          <DataTable.Cell name='description' />
-        </DataTable.Body>
+        />
       ) : (
         <NoData
           py={10}

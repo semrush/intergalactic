@@ -1,7 +1,35 @@
-SShadowHorizontal,
-SShadowVertical {
-  &:before,
-  &:after {
-    z-index: 1;
+SScrollArea {
+  width: fit-content;
+
+  SContainer {
+    overflow: unset;
+
+    &[scrollDirection='both'] {
+      overflow: auto;
+    }
+    &[scrollDirection='horizontal'] {
+      overflow-x: auto;
+      overflow-y: unset;
+    }
+    &[scrollDirection='vertical'] {
+      overflow-x: unset;
+      overflow-y: auto;
+    }
+
+  }
+
+  SShadowVertical {
+    &:before {
+      display: none;
+    }
+    &:after {
+      z-index: 2;
+    }
+  }
+  SShadowHorizontal {
+    &:before,
+    &:after {
+      z-index: 2;
+    }
   }
 }

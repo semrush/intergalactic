@@ -18,13 +18,10 @@ SDropdownPopper {
     text-align: left;
     line-height: normal;
     color: var(--intergalactic-text-primary, #191b23);
+    outline: none;
 
     &:hover {
       background-color: var(--intergalactic-dropdown-menu-item-hover, #f4f5f9);
-    }
-
-    &:focus {
-      outline: none;
     }
   }
 
@@ -64,9 +61,15 @@ SDropdownPopper {
 
   /* need this condition because of how css rules are applied */
 
+  SDropdownItem[highlighted]:not(SDropdownItem[isMenuItemCheckbox]),
+  SDropdownItem[highlighted][isMenuItemCheckbox] {
+    z-index: 1;
+    box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
+    outline: none;
+  }
+
   SDropdownItem[highlighted]:not(SDropdownItem[isMenuItemCheckbox]):not(button),
   SDropdownItem[highlighted][isMenuItemCheckbox]:not(button) {
-    z-index: 1;
     box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5)) inset;
   }
 

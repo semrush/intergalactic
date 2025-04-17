@@ -1,11 +1,11 @@
 import React from 'react';
-import createComponent, { ComponentType, assignProps, Root, sstyled } from '@semcore/core';
-import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
+import { createComponent, ComponentType, assignProps, Root, sstyled } from '@semcore/core';
+import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import { Trend, CommonTrendProps } from './Trend';
 import { Box } from '@semcore/flex-box';
 
 import style from '../skeleton/skeleton.shadow.css';
-import { extractAriaProps } from '@semcore/utils/lib/ariaProps';
+import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
 
 type BarItem = {
   /**

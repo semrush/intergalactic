@@ -7,7 +7,7 @@ import { axe } from '@semcore/testing-utils/axe';
 
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
-import propsForElement from '@semcore/utils/lib/propsForElement';
+import propsForElement from '@semcore/core/lib/utils/propsForElement';
 import FeedbackForm, { FeedbackRating } from '../src';
 
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';

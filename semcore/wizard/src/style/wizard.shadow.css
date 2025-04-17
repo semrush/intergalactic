@@ -12,15 +12,14 @@ SSidebar {
   font-weight: var(--intergalactic-bold, 700);
   font-size: var(--intergalactic-fs-300, 16px);
   line-height: var(--intergalactic-lh-300, 150%);
-  padding: var(--intergalactic-spacing-10x, 40px) var(--intergalactic-spacing-2x, 8px)
-    calc(var(--intergalactic-spacing-8x, 32px) + var(--intergalactic-spacing-05x, 2px));
+  padding: var(--intergalactic-spacing-10x, 40px) var(--intergalactic-spacing-2x, 8px);
   max-width: 220px;
   flex-shrink: 0;
   box-sizing: border-box;
   border-radius: var(--intergalactic-modal-rounded, 12px) 0 0
     var(--intergalactic-modal-rounded, 12px);
   @media (max-width: 1060px) {
-    width: 44px;
+    width: 56px;
   }
 }
 
@@ -34,6 +33,7 @@ SSidebarHeader {
 
 SStepper {
   display: flex;
+  gap: var(--intergalactic-spacing-1x, 4px);
   font-size: var(--intergalactic-fs-200, 14px);
   border-radius: var(--intergalactic-control-rounded, 6px);
   padding: var(--intergalactic-spacing-2x, 8px) var(--intergalactic-spacing-3x, 12px);
@@ -41,6 +41,10 @@ SStepper {
   position: relative;
   overflow: auto;
   line-height: var(--intergalactic-lh-200, 142%);
+
+  &:focus-visible {
+    outline-color: var(--intergalactic-keyboard-focus-outline-invert, rgba(255, 255, 255, 0.7));
+  }
 
   &:hover {
     background: var(--intergalactic-control-primary-advertising-hover, #421983);
@@ -57,7 +61,7 @@ SStepper {
   }
 
   @media (max-width: 1060px) {
-    padding: var(--intergalactic-spacing-2x, 8px) var(--intergalactic-spacing-1x, 4px);
+    padding: var(--intergalactic-spacing-2x, 8px);
     &:hover {
       width: fit-content;
       max-width: 220px;
@@ -77,6 +81,7 @@ SStepper {
 SStepNumber {
   display: inline-block;
   min-width: 20px;
+  text-align: center;
 }
 
 SCompleted {

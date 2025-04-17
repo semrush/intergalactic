@@ -12,14 +12,11 @@ SButton {
   margin: 0;
   box-shadow: none;
   -webkit-tap-highlight-color: transparent;
-  outline: 0;
   background: none;
   transition: color 0.15s ease-in-out;
 
   &:active,
-  &:hover,
-  &:focus {
-    outline: 0;
+  &:hover {
     text-decoration: none;
   }
 
@@ -49,12 +46,6 @@ SButton {
     border-color: transparent;
     transition: border-bottom-color 0.15s ease-in-out;
   }
-}
-
-SButton[keyboardFocused] {
-  outline-color: var(--intergalactic-keyboard-focus-outline, rgba(0, 143, 248, 0.5));
-  outline-style: solid;
-  outline-width: 3px;
 }
 
 SButton[disabled] {

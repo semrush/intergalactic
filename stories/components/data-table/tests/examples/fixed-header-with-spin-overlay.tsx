@@ -1,5 +1,5 @@
 import React from 'react';
-import DataTable from '@semcore/data-table';
+import { DataTable } from '@semcore/data-table';
 import SpinContainer from '@semcore/spin-container';
 import { Box } from '@semcore/flex-box';
 
@@ -17,10 +17,10 @@ const Demo = () => {
     <DataTable data={data} aria-label={'Fixed header with spin overlay'}>
       <Box position='sticky' top={0} zIndex={2}>
         <DataTable.Head>
-          <DataTable.Column name='keyword' children='Keyword' />
-          <DataTable.Column name='kd' children='KD,%' />
-          <DataTable.Column name='cpc' children='CPC' />
-          <DataTable.Column name='vol' children='Vol.' />
+          <DataTable.Head.Column name='keyword' children='Keyword' />
+          <DataTable.Head.Column name='kd' children='KD,%' />
+          <DataTable.Head.Column name='cpc' children='CPC' />
+          <DataTable.Head.Column name='vol' children='Vol.' />
         </DataTable.Head>
       </Box>
       <SpinContainer loading={loading} style={{ overflow: 'initial' }}>

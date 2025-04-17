@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.0] - 2025-02-14
+
+### Changed
+
+- `ViewInfo` component to use `Button` instead of `Hint.Trigger`.
+
 ## [5.54.0] - 2025-04-11
 
 ### Changed

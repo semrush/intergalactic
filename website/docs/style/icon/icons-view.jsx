@@ -130,7 +130,6 @@ export default function ({ icons, old, json }) {
             {!old && <IconGroup title='Brand' />}
             <IconGroup title='Color' />
             <IconGroup title='Pay' />
-            <IconGroup title='External' />
           </>
         )}
         <IconDetailsPanel

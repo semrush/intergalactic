@@ -1,5 +1,5 @@
 import React from 'react';
-import { Plot, Bar, YAxis, XAxis } from 'intergalactic/d3-chart';
+import { Plot, Bar, YAxis, XAxis } from '@semcore/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
 
 const Demo = () => {

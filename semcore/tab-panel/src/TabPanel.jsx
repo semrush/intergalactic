@@ -1,9 +1,8 @@
 import React from 'react';
-import createComponent, { Component, sstyled, Root } from '@semcore/core';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
-import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
-import a11yEnhance from '@semcore/utils/lib/enhances/a11yEnhance';
-import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
+import a11yEnhance from '@semcore/core/lib/utils/enhances/a11yEnhance';
 
 import style from './style/tab-panel.shadow.css';
 
@@ -70,15 +69,13 @@ function TabPanelItem(props) {
   const { Children, styles, addonLeft, addonRight } = props;
 
   return sstyled(styles)(
-    <STabPanelItem render={Box} type='button' tag='button' role='tab'>
+    <STabPanelItem render={Box} type='button' tag='button' tabIndex={0} role='tab'>
       {addonLeft ? <TabPanel.Item.Addon tag={addonLeft} /> : null}
       {addonTextChildren(Children, TabPanel.Item.Text, TabPanel.Item.Addon)}
       {addonRight ? <TabPanel.Item.Addon tag={addonRight} /> : null}
     </STabPanelItem>,
   );
 }
-
-TabPanelItem.enhance = [keyboardFocusEnhance()];
 
 function Text(props) {
   const SText = Root;

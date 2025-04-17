@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { snapshot } from '@semcore/testing-utils/snapshot';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
-import propsForElement from '@semcore/utils/lib/propsForElement';
+import propsForElement from '@semcore/core/lib/utils/propsForElement';
 import CheckM from '@semcore/icon/Check/m';
 import TabPanel from '../src';
 
@@ -102,15 +102,23 @@ describe('TabPanel', () => {
 
   test.concurrent('Should support keyboardFocused/disabled/selected', async ({ task }) => {
     const component = (
-      <TabPanel>
+      <TabPanel value={2}>
         <TabPanel.Item>Item 1</TabPanel.Item>
-        <TabPanel.Item selected>Item 2</TabPanel.Item>
+        <TabPanel.Item selected id='focused' value={2}>
+          Item 2
+        </TabPanel.Item>
         <TabPanel.Item disabled>Item 3</TabPanel.Item>
-        <TabPanel.Item keyboardFocused>Item 4</TabPanel.Item>
+        <TabPanel.Item>Item 4</TabPanel.Item>
       </TabPanel>
     );
 
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+    await expect(
+      await snapshot(component, {
+        actions: {
+          focus: '#focused',
+        },
+      }),
+    ).toMatchImageSnapshot(task);
   });
 
   test.concurrent('Should support Addon', async ({ task }) => {

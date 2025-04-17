@@ -6,7 +6,7 @@ const Demo = () => {
   const [index, setIndex] = React.useState(Breakpoints.mediaList.matches());
 
   React.useEffect(() => {
-    const unsubscribe = Breakpoints.mediaList.addListener((index) => {
+    const unsubscribe = Breakpoints.mediaList.addListener((index: number) => {
       setIndex(index);
     });
     return () => {

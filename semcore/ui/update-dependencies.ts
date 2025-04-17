@@ -8,13 +8,13 @@ import { fetchFromNpm, collectPackages } from '@semcore/continuous-delivery';
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.resolve(filename, '..');
 
-const components = fs.readJSONSync(path.resolve(dirname, './components.json'));
+const packageFile = await fs.readJSON(path.resolve(dirname, './package.json'));
+const components = Object.keys(packageFile.dependencies ?? {});
 
 const installComponents = async (packages: string[]) => {
   const npmPackages = await fetchFromNpm(packages);
   const localPackages = await collectPackages(npmPackages);
   const versions = Object.fromEntries(localPackages.map((pkg) => [pkg.name, pkg.currentVersion]));
-  const packageFile = await fs.readJSON(path.resolve(dirname, './package.json'));
   packageFile.dependencies = {};
   for (const packageName of packages) {
     packageFile.dependencies[packageName] = versions[packageName];
@@ -48,4 +48,4 @@ const installComponents = async (packages: string[]) => {
   }
 };
 
-await installComponents(components.packages);
+await installComponents(components);

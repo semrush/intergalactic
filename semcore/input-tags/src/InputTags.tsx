@@ -1,5 +1,6 @@
 import React from 'react';
-import createComponent, {
+import {
+  createComponent,
   Component,
   sstyled,
   Root,
@@ -11,16 +12,16 @@ import createComponent, {
 import Input, { InputProps, InputValueProps } from '@semcore/input';
 import ScrollArea, { ScrollAreaProps } from '@semcore/scroll-area';
 import Tag, { TagProps, TagContainer, TagTextProps, TagContext } from '@semcore/tag';
-import fire from '@semcore/utils/lib/fire';
+import fire from '@semcore/core/lib/utils/fire';
 import { ScreenReaderOnly } from '@semcore/flex-box';
-import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import Portal from '@semcore/portal';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 
 import style from './style/input-tag.shadow.css';
-import { extractFrom, isAdvanceMode } from '@semcore/utils/lib/findComponent';
-import { getAccessibleName } from '@semcore/utils/lib/getAccessibleName';
+import { extractFrom, isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
+import { getAccessibleName } from '@semcore/core/lib/utils/getAccessibleName';
 
 /** @deprecated */
 export interface IInputTagsValueProps extends InputTagsValueProps, UnknownProperties {}
@@ -392,7 +393,7 @@ export default createComponent(InputTags, {
     Text: Intergalactic.Component<'div', TagProps, TagContext> & {
       Content: Intergalactic.Component<'div', TagTextProps>;
     };
-    Close: typeof Tag.Close;
+    Close: typeof TagContainer.Close;
     Addon: typeof Tag.Addon;
     Circle: typeof Tag.Circle;
   };

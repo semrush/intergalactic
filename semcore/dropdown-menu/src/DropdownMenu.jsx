@@ -1,16 +1,15 @@
 import React from 'react';
 import cn from 'classnames';
-import createComponent, { sstyled, Root } from '@semcore/core';
+import { createComponent, sstyled, Root, lastInteraction } from '@semcore/core';
 import Dropdown, { AbstractDropdown, selectedIndexContext, enhance } from '@semcore/dropdown';
 import { Flex, useBox } from '@semcore/flex-box';
 import ScrollAreaComponent, { hideScrollBarsFromScreenReadersContext } from '@semcore/scroll-area';
-import { useUID } from '@semcore/utils/lib/uniqueID';
+import { useUID } from '@semcore/core/lib/utils/uniqueID';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import style from './style/dropdown-menu.shadow.css';
-import { useFocusSource } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
-import { isAdvanceMode } from '@semcore/utils/lib/findComponent';
-import { forkRef } from '@semcore/utils/lib/ref';
-import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
+import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
+import { forkRef } from '@semcore/core/lib/utils/ref';
+import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import ButtonComponent from '@semcore/button';
 import { Text } from '@semcore/typography';
 
@@ -157,6 +156,7 @@ class DropdownMenuRoot extends AbstractDropdown {
       itemProps.use = props.use ?? 'tertiary';
       itemProps.theme = props.theme ?? 'muted';
       itemProps.size = props.size ?? 's';
+      itemProps.innerOutline = false;
     }
 
     if (props.selected) {
@@ -366,14 +366,12 @@ function Item({
     };
   }, [itemRef.current]);
 
-  const focusSourceRef = useFocusSource();
-
   return sstyled(styles)(
     <menuItemContext.Provider value={menuItemContextValue}>
       <SDropdownMenuItemContainer
         render={Dropdown.Item}
         ref={advancedMode ? undefined : menuItemContextValue.ref}
-        use:highlighted={!disabled && highlighted && focusSourceRef.current === 'keyboard'}
+        use:highlighted={!disabled && highlighted && lastInteraction.isKeyboard()}
         use:role={advancedMode ? undefined : role}
         use:id={advancedMode ? undefined : id}
         use:tabIndex={advancedMode ? undefined : tabIndex}

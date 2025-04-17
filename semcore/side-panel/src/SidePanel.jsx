@@ -1,27 +1,27 @@
 import React from 'react';
-import createComponent, { Component, Root, sstyled } from '@semcore/core';
+import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import { Flex, Box } from '@semcore/flex-box';
 import { FadeInOut, Slide } from '@semcore/animation';
 import Portal, { PortalProvider } from '@semcore/portal';
 import OutsideClick from '@semcore/outside-click';
 import CloseIcon from '@semcore/icon/Close/l';
-import fire from '@semcore/utils/lib/fire';
-import { isAdvanceMode } from '@semcore/utils/lib/findComponent';
-import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
-import usePreventScroll from '@semcore/utils/lib/use/usePreventScroll';
+import fire from '@semcore/core/lib/utils/fire';
+import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
+import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
+import usePreventScroll from '@semcore/core/lib/utils/use/usePreventScroll';
 import { Text } from '@semcore/typography';
 import ArrowLeft from '@semcore/icon/ArrowLeft/m';
 import Button, { ButtonLink } from '@semcore/button';
-import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
-import { useFocusLock } from '@semcore/utils/lib/use/useFocusLock';
-import { useContextTheme } from '@semcore/utils/lib/ThemeProvider';
-import logger from '@semcore/utils/lib/logger';
-import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
+import { useFocusLock } from '@semcore/core/lib/utils/use/useFocusLock';
+import { useContextTheme } from '@semcore/core/lib/utils/ThemeProvider';
+import logger from '@semcore/core/lib/utils/logger';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import {
   ZIndexStackingContextProvider,
   useZIndexStacking,
-} from '@semcore/utils/lib/zIndexStacking';
+} from '@semcore/core/lib/utils/zIndexStacking';
 import style from './style/side-panel.shadow.css';
 
 class RootSidePanel extends Component {

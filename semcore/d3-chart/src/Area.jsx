@@ -1,8 +1,8 @@
 import React from 'react';
 import { area, curveLinear, line } from 'd3-shape';
 import { Component, sstyled } from '@semcore/core';
-import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
-import findComponent from '@semcore/utils/lib/findComponent';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import findComponent from '@semcore/core/lib/utils/findComponent';
 import Dots from './Dots';
 import createElement from './createElement';
 import {

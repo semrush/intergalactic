@@ -1,12 +1,11 @@
 import React from 'react';
-import { Component } from '@semcore/core';
-import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
-import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import { Component, lastInteraction } from '@semcore/core';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-import { isFocusInside, setFocus } from '@semcore/utils/lib/use/useFocusLock';
-import focusSourceEnhance from '@semcore/utils/lib/enhances/focusSourceEnhance';
+import { isFocusInside, setFocus } from '@semcore/core/lib/utils/use/useFocusLock';
 import { DropdownProps } from './index';
-import { getAccessibleName } from '@semcore/utils/lib/getAccessibleName';
+import { getAccessibleName } from '@semcore/core/lib/utils/getAccessibleName';
 
 type AbstractDDProps = {
   visible: boolean;
@@ -23,11 +22,7 @@ type AbstractDDProps = {
   itemsCount?: number;
 };
 
-export const enhance = [
-  uniqueIDEnhancement(),
-  i18nEnhance(localizedMessages),
-  focusSourceEnhance(),
-] as const;
+export const enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages)] as const;
 
 export const selectedIndexContext = React.createContext(0);
 
@@ -232,7 +227,7 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
   }
 
   componentDidUpdate(prevProps: AbstractDDProps) {
-    const { visible, focusSourceRef } = this.asProps;
+    const { visible } = this.asProps;
     const visibilityChanged = visible !== prevProps.visible;
 
     if (visibilityChanged && !visible && prevProps.visible !== undefined) {
@@ -244,7 +239,7 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
         this.popperRef.current &&
         this.triggerRef.current &&
         (document.activeElement === document.body || isFocusInside(this.popperRef.current)) &&
-        focusSourceRef.current === 'keyboard'
+        lastInteraction.isKeyboard()
       ) {
         setFocus(this.triggerRef.current);
       }

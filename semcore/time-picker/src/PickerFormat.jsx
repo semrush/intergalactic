@@ -1,12 +1,11 @@
 import React from 'react';
 import { Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
-import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import { ScreenReaderOnly } from '@semcore/flex-box';
-import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 
 class TimePickerFormat extends Component {
-  static enhance = [keyboardFocusEnhance(), uniqueIDEnhancement()];
+  static enhance = [uniqueIDEnhancement()];
 
   state = {
     changedFormatNotice: '',
@@ -35,6 +34,7 @@ class TimePickerFormat extends Component {
           render={Box}
           type='button'
           tag='button'
+          tabIndex={0}
           onClick={this.handleClick}
           aria-describedby={`${uid}_describe`}
         >

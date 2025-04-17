@@ -35,7 +35,7 @@ describe('Slider', () => {
   test.concurrent('Should support normal state', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps m='25px'>
-        <Slider value={50} keyboardFocused />
+        <Slider value={50} id='slider' />
         <Slider value={50} disabled />
         <div style={{ background: 'black', padding: '1px' }}>
           <Slider value={50} disabled m='25px' />
@@ -43,14 +43,20 @@ describe('Slider', () => {
       </snapshot.ProxyProps>
     );
 
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+    await expect(
+      await snapshot(component, {
+        actions: {
+          focus: '#slider',
+        },
+      }),
+    ).toMatchImageSnapshot(task);
   });
 
   test.concurrent('Should support hover', async ({ task }) => {
     expect(
-      await snapshot(<Slider value={50} id='slider' m='10px' />, {
+      await snapshot(<Slider value={50} id='slider1' m='10px' />, {
         actions: {
-          hover: '#slider',
+          hover: '#slider1',
         },
       }),
     ).toMatchImageSnapshot(task);
@@ -58,9 +64,9 @@ describe('Slider', () => {
 
   test.concurrent('Should support active', async ({ task }) => {
     expect(
-      await snapshot(<Slider value={50} id='slider' m='10px' />, {
+      await snapshot(<Slider value={50} id='slider2' m='10px' />, {
         actions: {
-          active: '#slider',
+          active: '#slider2',
         },
       }),
     ).toMatchImageSnapshot(task);
