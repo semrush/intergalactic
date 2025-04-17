@@ -96,6 +96,7 @@ const Demo = () => {
         </DataTable.Head.Column>
         <DataTable.Head.Column sortable name='vol' children='Vol.' tag={Tooltip}
           data-test-id='tag-tooltip'
+          disableEnforceFocus
           title={
             <>
               Jesus Christ, Joe, <Link>fucking forget</Link> about it. I'm Mr.

@@ -193,7 +193,11 @@ function TooltipPopper(props) {
         render={Popper.Popper}
         use:theme={resolveColor(theme)}
         use:zIndex={zIndex}
-        nodeToMount={ariaLive === 'polite' && tooltipContainerNode instanceof Element ? tooltipContainerNode : undefined}
+        nodeToMount={
+          ariaLive === 'polite' && tooltipContainerNode instanceof Element
+            ? tooltipContainerNode
+            : undefined
+        }
       >
         <Children />
         <SArrow
