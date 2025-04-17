@@ -27,6 +27,7 @@ const Demo = (): any => {
         {message}
       </ScreenReaderOnly>
       <DataTable data={data} aria-label={'Loading using SpinContainer'} loading={loading}
+                 h={'auto'}
                  columns={[
                    {name: 'keyword', children: 'Keyword'},
                    {name: 'kd', children: 'KD,%'},

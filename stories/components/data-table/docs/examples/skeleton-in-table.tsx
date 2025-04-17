@@ -40,6 +40,7 @@ const Demo = () => {
         {message}
       </ScreenReaderOnly>
       <DataTable data={data} aria-label={'Loading using Skeleton'}
+                 h={'auto'}
         columns={[
           {name: 'keyword', children: 'Keyword'},
           {name: 'kd', children: 'KD,%'},
