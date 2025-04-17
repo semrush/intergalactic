@@ -1394,9 +1394,7 @@ test.describe('DataTable', () => {
       });
 
       await test.step('Verify hover and click on another sorting column', async () => {
-        const cell2 = page.locator(
-          '[data-ui-name="Head.Column"][aria-colindex="2"]',
-        );
+        const cell2 = page.locator('[data-ui-name="Head.Column"][aria-colindex="2"]');
         const buttonLink2 = page.locator(
           '[data-ui-name="Head.Column"][aria-colindex="2"] button[data-ui-name="ButtonLink"]',
         );
@@ -1776,17 +1774,16 @@ test.describe('DataTable', () => {
       await page.setContent(htmlContent);
 
       await test.step('Verify roles and attributes', async () => {
-      const loadingIcon = page.locator('svg[data-ui-name="Spin"]');
-      await expect(loadingIcon).toBeVisible();
-      await expect(loadingIcon).toHaveAttribute('role', 'gridcell');
-      await expect(loadingIcon).toHaveAttribute('aria-label', 'Loading…');
-    });
+        const loadingIcon = page.locator('svg[data-ui-name="Spin"]');
+        await expect(loadingIcon).toBeVisible();
+        await expect(loadingIcon).toHaveAttribute('role', 'gridcell');
+        await expect(loadingIcon).toHaveAttribute('aria-label', 'Loading…');
+      });
 
-    await test.step('Verify focus when loading ', async () => {
-      await page.keyboard.press('Tab');
-      await expect(page.getByRole('row', { name: 'Loading…' })).toBeFocused();
-    });
-
+      await test.step('Verify focus when loading ', async () => {
+        await page.keyboard.press('Tab');
+        await expect(page.getByRole('row', { name: 'Loading…' })).toBeFocused();
+      });
     });
 
     test('Verify skeleton in table', async ({ page }) => {
@@ -1829,7 +1826,6 @@ test.describe('DataTable', () => {
       await page.keyboard.press('Enter');
       await expect(plot).toHaveCount(0);
 
-      
       await expect(page).toHaveScreenshot();
       await expect(firstArrow).toBeFocused();
       await page.keyboard.press('ArrowDown');
@@ -1839,9 +1835,9 @@ test.describe('DataTable', () => {
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('ArrowRight');
       const secondArrow = await page.locator('[data-ui-name="ButtonLink"]').nth(1);
-    
+
       await expect(secondArrow).toBeFocused();
-      
+
       await page.keyboard.press('Enter');
       await expect(plot).toBeVisible();
       await expect(plot).toHaveCount(1);
@@ -1853,7 +1849,7 @@ test.describe('DataTable', () => {
 
       await page.keyboard.press('Enter');
       await page.keyboard.press('ArrowDown');
-   
+
       await page.waitForTimeout(100);
       await expect(page.getByRole('gridcell', { name: 'Chart' })).toBeFocused();
 
@@ -1880,7 +1876,6 @@ test.describe('DataTable', () => {
       const thirdArrow = await page.locator('[data-ui-name="ButtonLink"]').nth(2);
       await thirdArrow.click();
       await expect(plot).toHaveCount(2);
-
     });
 
     test('Verify accordion with chart styles', async ({ page }) => {
