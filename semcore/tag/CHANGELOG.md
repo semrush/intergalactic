@@ -12,6 +12,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - `Tag.Close` component. Use `TagContainer.Close`.
 
+## [5.55.0] - 2025-04-11
+
+### Changed
+
+- Margins and paddings for addons and text, sizes of `Circle` addons for different tag sizes.
+
 ## [5.54.0] - 2025-04-11
 
 ### Changed

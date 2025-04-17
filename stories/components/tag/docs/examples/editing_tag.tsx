@@ -16,7 +16,7 @@ const Demo = () => {
   return (
     <>
       <InlineEdit editable={editable} onEditableChange={setEditable}>
-        <InlineEdit.View pr={2} tag={Tag} interactive size='l'>
+        <InlineEdit.View tag={Tag} interactive size='l'>
           <Tag.Text>{value}</Tag.Text>
         </InlineEdit.View>
         <InlineEdit.Edit>

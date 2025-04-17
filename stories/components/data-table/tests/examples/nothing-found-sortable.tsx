@@ -11,7 +11,7 @@ const data = [
   ];
 
 const Demo = () => {
-  const [sort, setSort] = React.useState<DataTableSort<keyof typeof data[0]>>(['kd', 'desc']);
+  const [sort, setSort] = React.useState<DataTableSort<keyof typeof data[0]>>(['keyword/kd/cpc/vol','desc']);
   const sortedData = React.useMemo(
     () =>
       [...data].sort((aRow, bRow) => {

@@ -1829,7 +1829,8 @@
       "input-tags",
       "radio",
       "slider",
-      "switch"
+      "switch",
+      "tag"
     ]
   },
   {
