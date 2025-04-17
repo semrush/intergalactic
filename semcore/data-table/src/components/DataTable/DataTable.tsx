@@ -729,7 +729,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
             column.calculatedHeight = calculatedHeight;
           }
 
-          if (this) {
+          if (this?.ref) {
             this.ref.current = node;
           }
         },
