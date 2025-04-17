@@ -310,9 +310,21 @@ Avoid placing [Pagination](/components/pagination/pagination) inside the table, 
 
 :::
 
-## Loading states
+## Table states
 
-### SpinContainer
+### Initial loading (Skeleton)
+
+Add a skeleton to the table by directly substituting it in the `data` or replacing `rows` with `<DataTable.Body/>` .
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/components/data-table/docs/examples/skeleton-in-table.tsx';
+</script>
+
+:::
+
+### Updating table (SpinContainer)
 
 Replace the `tag` property with `<DataTable.Body/>` on the `SpinContainer` to cover the table with a [Spin](/components/spin/spin).
 
@@ -324,14 +336,14 @@ Replace the `tag` property with `<DataTable.Body/>` on the `SpinContainer` to co
 
 :::
 
-### Skeleton
+### Empty state
 
-Add a skeleton to the table by directly substituting it in the `data` or replacing `rows` with `<DataTable.Body/>` .
+Render [WidgetEmpty](../../components/widget-empty/widget-empty) inside a single cell spanning across all columns.
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/data-table/docs/examples/skeleton-in-table.tsx';
+  export Demo from 'stories/components/data-table/docs/examples/nothing-found.tsx';
 </script>
 
 :::
