@@ -752,17 +752,18 @@ test.describe('DataTable', () => {
       const getCell = (index: number) => page.locator('[data-ui-name="Body.Cell"]').nth(index);
       const checkbox = page.locator('label[data-test-id="header-checkbox"] input[type="checkbox"]');
       const columnKD = page.locator(
-        '[data-ui-name="Head.Column"][name="keyword"][aria-colindex="5"]',
+        '[data-ui-name="Head.Column"][name="keyword"][aria-colindex="6"]',
       );
 
       await test.step('Verify interaction with tooltip without interactive elements', async () => {
         await page.keyboard.press('Tab');
+        await page.keyboard.press('ArrowRight');
         const tooltipTrigger = getTooltip('tooltip-without-interactive-el');
         await expect(tooltipTrigger).toBeFocused();
         await expect(getTooltipPopper).toBeHidden();
 
         await page.keyboard.press('ArrowDown');
-        await expect(getCell(0)).toBeFocused();
+        await expect(getCell(1)).toBeFocused();
 
         await page.keyboard.press('ArrowUp');
         await expect(tooltipTrigger).toBeFocused();
@@ -783,7 +784,7 @@ test.describe('DataTable', () => {
       await test.step('Verify interaction with tooltip containing interactive elements', async () => {
         const tooltipTrigger = getTooltip('tooltip-with-interactive-el');
         await page.keyboard.press('ArrowDown');
-        await expect(getCell(1)).toBeFocused();
+        await expect(getCell(2)).toBeFocused();
         await page.keyboard.press('ArrowUp');
         await expect(tooltipTrigger).toBeFocused();
 
@@ -811,13 +812,13 @@ test.describe('DataTable', () => {
         await expect(page.getByRole('tooltip', { name: 'Default tooltip contains' })).toBeVisible();
 
         await page.keyboard.press('ArrowDown');
-        await expect(page.getByRole('tooltip')).toBeHidden();
+        await expect(page.getByRole('tooltip', { name: 'Default tooltip contains' })).toBeHidden();
 
         await page.keyboard.press('ArrowUp');
-        await expect(page.getByRole('tooltip')).toBeVisible();
+        await expect(page.getByRole('tooltip', { name: 'Default tooltip contains' })).toBeVisible();
 
         await page.keyboard.press('Escape');
-        await expect(page.getByRole('tooltip')).toBeHidden();
+        await expect(page.getByRole('tooltip', { name: 'Default tooltip contains' })).toBeHidden();
 
         const icon = page.locator('[data-test-id="interactive-icon"]');
         await page.keyboard.press('ArrowRight');
@@ -868,8 +869,6 @@ test.describe('DataTable', () => {
       const tooltipPopper = page.locator('[data-ui-name="DescriptionTooltip.Popper"]');
       const firstCell = page.locator('[data-ui-name="Body.Cell"]').first();
       const checkbox = page.locator('label[data-test-id="header-checkbox"] input[type="checkbox"]');
-
-      if (browserName === 'firefox') return; //UIK-3506
 
       await test.step('Verify interaction with tooltip without interactive elements', async () => {
         await getTooltip('tooltip-without-interactive-el').click();
@@ -946,9 +945,9 @@ test.describe('DataTable', () => {
         await expect(menuItem).toBeFocused();
 
         // BUG
-        // await page.keyboard.press('ArrowLeft');
-        // await page.keyboard.press('ArrowRight');
-        // await expect(menuItem).toBeFocused();
+        await page.keyboard.press('ArrowLeft');
+        await page.keyboard.press('ArrowRight');
+        await expect(menuItem).toBeFocused();
 
         await page.keyboard.press('Escape');
         await expect(ddTrigger).toBeFocused();

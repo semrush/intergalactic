@@ -3,24 +3,20 @@ import { DataTable } from '@semcore/data-table';
 
 const Demo = () => {
   return (
-    <DataTable data={data} aria-label={'Column alignment'}>
-      <DataTable.Head>
-        <DataTable.Head.Column name='keyword' children='Key word Keyw ord Keyw ord' gtcWidth='80px' />
-        <DataTable.Head.Column name='kd' children='KD,%' justifyContent='center' />
-        <DataTable.Head.Column name='cpc' children='CPC' justifyContent='flex-start' />
-        <DataTable.Head.Column name='vol' children='Vol.' justifyContent='flex-end' />
-
-        <DataTable.Head.Column name='kd' children='KD,% KD,% ' alignItems='center' gtcWidth='80px' />
-        <DataTable.Head.Column name='cpc' children='CPC CPC CPC' alignItems='flex-end' gtcWidth='80px' />
-        <DataTable.Head.Column name='vol' children='Vol. Vol. Vol.' alignItems='flex-start' gtcWidth='80px' />
-
-        <DataTable.Head.Column name='kd' children='KD,% KD,% ' gtcWidth='80px' alignContent='center' flexWrap={true} />
-        <DataTable.Head.Column name='cpc' children='CPC CPC CPC' alignContent='flex-start' gtcWidth='80px' flexWrap={true} />
-        <DataTable.Head.Column name='vol' children='Vol. Vol. Vol.' alignContent='flex-end' gtcWidth='80px' flexWrap={true} />
-
-      </DataTable.Head>
-      <DataTable.Body />
-    </DataTable>
+    <DataTable data={data} aria-label={'Column alignment'}
+    columns={[
+      {name: 'keyword', children: 'Key word Keyw ord Keyw ord', gtcWidth: '80px'},
+      {name: 'kd', children: 'KD,%', justifyContent: 'center'},
+      {name: 'cpc', children: 'CPC', justifyContent: 'flex-start'},
+      {name: 'vol', children: 'Vol.', justifyContent: 'flex-end'},
+      {name: 'kd', children: 'KD,% KD,% ', alignItems: 'center', gtcWidth: '80px' },
+      {name: 'cpc',  children: 'CPC CPC CPC', alignItems: 'flex-end', gtcWidth: '80px'},
+      {name: 'vol', children: 'Vol. Vol. Vol.', alignItems: 'flex-start', gtcWidth: '80px'},
+      {name: 'kd', children: 'KD,% KD,% ',  gtcWidth: '80px',  alignContent: 'center', flexWrap: 'true' },
+      {name: 'cpc',  children: 'CPC CPC CPC',  gtcWidth: '80px',  alignContent: 'flex-start', flexWrap: 'true'},
+      {name: 'vol', children: 'Vol. Vol. Vol.',  gtcWidth: '80px',  alignContent: 'flex-end', flexWrap: 'true'},
+    ]}
+/>
   );
 };
 
