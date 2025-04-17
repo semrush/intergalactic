@@ -7,7 +7,7 @@ const Demo = () => {
 
   return (
     <>
-      <DataTable data={data} aria-label={'Fixed header'} wMax={1000}
+      <DataTable data={data} aria-label={'Fixed header'} wMax={1000} hMax={300}
                  headerProps={{sticky: true, top}}
                  columns={[
                    {name: 'keyword', children: 'Keyword'},
