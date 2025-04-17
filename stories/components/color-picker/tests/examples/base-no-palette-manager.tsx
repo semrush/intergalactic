@@ -13,10 +13,6 @@ const Demo = () => {
         <ColorPicker.Trigger mt={2} id='main-theme-color' />
         <ColorPicker.Popper>
           <ColorPicker.Colors />
-          <PaletteManager>
-            <PaletteManager.Colors />
-            <PaletteManager.InputColor />
-          </PaletteManager>
         </ColorPicker.Popper>
       </ColorPicker>
     </Flex>
