@@ -560,7 +560,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
           </SDataTable>
         </ScrollArea.Container>
 
-        {Head?.props.withScrollBar && topOffset && (
+        {headerPropsToCheck?.withScrollBar && topOffset && (
           <ScrollArea.Bar orientation='horizontal' top={topOffset - SCROLL_BAR_HEIGHT} zIndex={3} />
         )}
 
