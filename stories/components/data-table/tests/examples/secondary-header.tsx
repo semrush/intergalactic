@@ -1,48 +1,49 @@
 import React from 'react';
 import { DataTable, DataTableSort } from '@semcore/data-table';
-type SortableColumn = Exclude<keyof typeof data[0], 'keyword'>;
 import Ellipsis from '@semcore/ellipsis';
 import WhatsAppM from '@semcore/icon/color/WhatsApp/m';
 import { Hint } from '@semcore/tooltip';
 import { Text } from '@semcore/typography';
 import AmazonM from '@semcore/icon/color/Amazon/m';
 
+type SortableColumn = Exclude<keyof typeof data[0], 'kd'>;
+
 const Demo = () => {
   const [sort, setSort] = React.useState<DataTableSort<keyof typeof data[0]>>(['kd', 'desc']);
   const sortedData = React.useMemo(
-      () =>
-          [...data].sort((aRow, bRow) => {
-              const [prop, sortDirection] = sort;
-              const a = aRow[prop as SortableColumn];
-              const b = bRow[prop as SortableColumn];
-              if (a === b) return 0;
-              if (sortDirection === 'asc') return a > b ? 1 : -1;
-              else return a > b ? -1 : 1;
-          }),
-      [sort],
+    () =>
+      [...data].sort((aRow, bRow) => {
+        const [prop, sortDirection] = sort;
+        const a = aRow[prop as SortableColumn];
+        const b = bRow[prop as SortableColumn];
+        if (a === b) return 0;
+        if (sortDirection === 'asc') return a > b ? 1 : -1;
+        else return a > b ? -1 : 1;
+      }),
+    [sort],
   );
   const numberFormat = React.useMemo(() => new Intl.NumberFormat('en-US'), []);
   const currencyFormat = React.useMemo(
-      () => new Intl.NumberFormat('en-US', { currency: 'USD', style: 'currency' }),
-      [],
+    () => new Intl.NumberFormat('en-US', { currency: 'USD', style: 'currency' }),
+    [],
   );
 
   return (
     <DataTable data={sortedData} use='secondary' aria-label={'Column expanded'} hMax={200} sort={sort} onSortChange={setSort} >
       <DataTable.Head sticky>
-        <DataTable.Head.Column name='keyword' gtcWidth={'65px'} sortable>
+        <DataTable.Head.Column name='keyword' gtcWidth={'65px'} >
           <Text noWrap>
             Keyword <Text color='text-secondary'>(Keyword 1-100)</Text>
           </Text>
         </DataTable.Head.Column>
-        <DataTable.Head.Column name='kd' gtcWidth={'85px'}>
+        <DataTable.Head.Column name='kd' gtcWidth={'85px'} sortable>
           <Text>
             Difficulty Difficlty 123
             <Hint tag={WhatsAppM} title='AmazonM non interactive' color='icon-secondary-neutral' />
             <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
           </Text>
         </DataTable.Head.Column>
-        <DataTable.Head.Column name='kd' gtcWidth={'85px'}>
+        <DataTable.Head.Column name='kd' gtcWidth={'85px'} sortable>
           <Ellipsis>Difficulty Difficulty</Ellipsis>
           <Hint tag={WhatsAppM} title='AmazonM non interactive' color='icon-secondary-neutral' />
           <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
