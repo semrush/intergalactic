@@ -14,7 +14,7 @@ test.describe('Spin-container', () => {
   });
 
   test('Verify no Axe errors when used in dropdown', async ({ page }) => {
-    const standPath = 'stories/components/accordion/docs/examples/usage_in_dropdowns.tsx';
+    const standPath = 'stories/components/spin-container/docs/examples/usage_in_dropdowns.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
