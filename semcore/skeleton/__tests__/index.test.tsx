@@ -21,8 +21,6 @@ describe('skeleton Dependency imports', () => {
   runDependencyCheckTests('skeleton');
 });
 
-
-
 describe('Skeleton in Chart', () => {
   test.concurrent('LineChartSkeleton', async ({ task }) => {
     const component = (
@@ -47,9 +45,9 @@ describe('Skeleton in Chart', () => {
   test.concurrent('BarChartSkeleton', async ({ task }) => {
     const component = (
       <>
-        <CompactHorizontalBarChartSkeleton h={150} w={300}/>
+        <CompactHorizontalBarChartSkeleton h={150} w={300} />
         <BarChartSkeleton h={150} w={300} />
-        <BarChartSkeleton layout='vertical' h={150} w={300} />   
+        <BarChartSkeleton layout='vertical' h={150} w={300} />
       </>
     );
     await expect(await snapshot(component)).toMatchImageSnapshot(task);

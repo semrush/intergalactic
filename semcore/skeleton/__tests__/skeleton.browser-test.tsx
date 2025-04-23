@@ -8,21 +8,19 @@ test.describe('Skeleton and skeleton.text props and styles', () => {
 
     await page.setContent(htmlContent);
 
-    const sketeton  = page.locator('[data-ui-name="SkeletonSVG"]');
+    const sketeton = page.locator('[data-ui-name="SkeletonSVG"]');
     await expect(sketeton).toBeVisible();
     await expect(page).toHaveScreenshot();
 
-     //styles
-     await expect(sketeton).toHaveAttribute('preserveAspectRatio', 'none');
+    //styles
+    await expect(sketeton).toHaveAttribute('preserveAspectRatio', 'none');
 
-     // Проверка inline style содержит duration 2000ms
-     const styleAttr = await sketeton.getAttribute('style');
-     expect(styleAttr).toContain('2000ms');
+    // Проверка inline style содержит duration 2000ms
+    const styleAttr = await sketeton.getAttribute('style');
+    expect(styleAttr).toContain('2000ms');
 
     await page.locator('[data-ui-name="Button"]').click();
     await expect(sketeton).not.toBeVisible();
-
-   
   });
 
   test('Verify all themes look good', async ({ page }) => {
@@ -31,14 +29,12 @@ test.describe('Skeleton and skeleton.text props and styles', () => {
 
     await page.setContent(htmlContent);
 
-    const sketeton  = page.locator('[data-ui-name="SkeletonSVG"]');
+    const sketeton = page.locator('[data-ui-name="SkeletonSVG"]');
     await expect(sketeton.first()).toBeVisible();
     await expect(page).toHaveScreenshot();
 
     const styleAttr = await sketeton.first().getAttribute('style');
     expect(styleAttr).toContain('3000ms');
-
-
   });
 
   test('Verify observeParentSize props works without issues', async ({ page }) => {
@@ -47,7 +43,7 @@ test.describe('Skeleton and skeleton.text props and styles', () => {
 
     await page.setContent(htmlContent);
 
-    const sketeton  = page.locator('[data-ui-name="SkeletonSVG"]');
+    const sketeton = page.locator('[data-ui-name="SkeletonSVG"]');
     const styleAttr = await sketeton.nth(1).getAttribute('style');
     await expect(sketeton.first()).toHaveAttribute('width', '100%');
     expect(styleAttr).toContain('300px');
@@ -70,39 +66,34 @@ test.describe('Skeleton and skeleton.text props and styles', () => {
 });
 
 test.describe('Roles attributes and interactions', () => {
-    test('Verify roles and attributes when used with text', async ({ page }) => {
-      const standPath = 'stories/components/skeleton/docs/examples/text_initial_loading.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en');
-  
-      await page.setContent(htmlContent);
-  
-      const sketeton  = page.locator('[data-ui-name="SkeletonSVG"]');
-      await expect(sketeton).toHaveAttribute('aria-label', 'Loading…');
-      await expect(sketeton).toHaveAttribute('role', 'img');
+  test('Verify roles and attributes when used with text', async ({ page }) => {
+    const standPath = 'stories/components/skeleton/docs/examples/text_initial_loading.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
 
-      await page.keyboard.press('Tab');
-      await expect(sketeton).not.toBeFocused();
+    await page.setContent(htmlContent);
 
-    });
+    const sketeton = page.locator('[data-ui-name="SkeletonSVG"]');
+    await expect(sketeton).toHaveAttribute('aria-label', 'Loading…');
+    await expect(sketeton).toHaveAttribute('role', 'img');
 
-    test('Verify roles and attributes when used with charts', async ({ page }) => {
-        const standPath = 'stories/components/skeleton/docs/examples/skeleton_examples_for_charts.tsx';
-        const htmlContent = await e2eStandToHtml(standPath, 'en');
-    
-        await page.setContent(htmlContent);
-    
-        const skeletons  = page.locator('[data-ui-name="SkeletonSVG"]');
-        const count = await skeletons.count();
-
-for (let i = 0; i < count; i++) {
-  const skeleton = skeletons.nth(i);
-
-  await expect(skeleton).toHaveAttribute('aria-label', 'Loading…');
-  await expect(skeleton).toHaveAttribute('role', 'img');
-}
-
-  
-      });
-  
-
+    await page.keyboard.press('Tab');
+    await expect(sketeton).not.toBeFocused();
   });
+
+  test('Verify roles and attributes when used with charts', async ({ page }) => {
+    const standPath = 'stories/components/skeleton/docs/examples/skeleton_examples_for_charts.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const skeletons = page.locator('[data-ui-name="SkeletonSVG"]');
+    const count = await skeletons.count();
+
+    for (let i = 0; i < count; i++) {
+      const skeleton = skeletons.nth(i);
+
+      await expect(skeleton).toHaveAttribute('aria-label', 'Loading…');
+      await expect(skeleton).toHaveAttribute('role', 'img');
+    }
+  });
+});
