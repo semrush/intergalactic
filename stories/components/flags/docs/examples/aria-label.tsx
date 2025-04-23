@@ -1,25 +1,30 @@
 import React from 'react';
-import Flags, { iso2Name } from 'intergalactic/flags';
-import { Text } from 'intergalactic/typography';
-import { Flex } from 'intergalactic/flex-box';
+import Flags, { iso2Name, type FlagsIso2 } from '@semcore/flags';
+import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/flex-box';
 
-const countries = ['US', 'DE', 'ES', 'FR', 'IT'];
+const countries: FlagsIso2[] = ['US', 'DE', 'ES', 'FR', 'IT'];
 
 const Demo = () => (
   <>
     {countries.map((country) => (
       <Flags
         key={country}
-        name={country as keyof typeof iso2Name}
+        name={country}
         role='img'
         aria-label={iso2Name[country]}
         mr={1}
         mb={3}
       />
     ))}
+
     {countries.map((country) => (
       <Flex alignItems='center' gap={1} key={country}>
-        <Flags name={country as keyof typeof iso2Name} role='img' aria-label={iso2Name[country]} />
+        <Flags
+          name={country}
+          role='img'
+          aria-label={iso2Name[country]}
+        />
         <Text aria-hidden>{country}</Text>
       </Flex>
     ))}
