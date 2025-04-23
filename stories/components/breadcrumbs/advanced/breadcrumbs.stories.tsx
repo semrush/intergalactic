@@ -5,7 +5,7 @@ import Breadcrumbs from '@semcore/breadcrumbs';
 import TrimMiddleExample from './examples/trim_middle';
 
 const meta: Meta<typeof Breadcrumbs> = {
-  title: 'Components/Breadcrumbs/Advanced Usage',
+  title: 'Components/Breadcrumbs/Advanced',
 };
 
 export default meta;
