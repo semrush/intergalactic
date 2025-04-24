@@ -9,18 +9,16 @@ test.describe('Slider', () => {
     await page.setContent(htmlContent);
 
     await expect(page).toHaveScreenshot();
-
   });
 
+  test('Verify customized options view', async ({ page }) => {
+    const standPath = 'stories/components/slider/docs/examples/customized_options_view.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
 
-    test('Verify customized options view', async ({ page }) => {
-      const standPath = 'stories/components/slider/docs/examples/customized_options_view.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en');
-  
-      await page.setContent(htmlContent);
-  
-     //snapshot
-    });
+    await page.setContent(htmlContent);
+
+    //snapshot
+  });
 
   test('Verify deafult styles', async ({ page }) => {
     const standPath = 'stories/components/slider/docs/examples/slider_with_options.tsx';
@@ -34,37 +32,31 @@ test.describe('Slider', () => {
     const options = page.locator('[data-ui-name="Slider.Options"]');
 
     await test.step('Verify bar default styles', async () => {
+      await expect(bar).toHaveCSS('height', '4px');
+      await expect(bar).toHaveCSS('background-color', 'rgb(0, 143, 248)');
+    });
 
-    await expect(bar).toHaveCSS('height', '4px');
-    await expect(bar).toHaveCSS('background-color', 'rgb(0, 143, 248)');
-});
+    await test.step('Verify bar hover on item', async () => {
+      const item = page.locator('div[data-ui-name="Slider.Item"][value="big"]');
+      await item.hover();
+      await expect(page).toHaveScreenshot();
+    });
 
-await test.step('Verify bar hover on item', async () => {
+    await test.step('Verify bar knob defauls styles', async () => {
+      await expect(knob).toHaveCSS('width', '20px');
+      await expect(knob).toHaveCSS('height', '20px');
+      await expect(knob).toHaveCSS('background-color', 'rgb(255, 255, 255)');
+    });
 
-   const item = page.locator('div[data-ui-name="Slider.Item"][value="big"]');
-   await item.hover();
-   await expect(page).toHaveScreenshot();
+    await test.step('Verify bar knob hover styles', async () => {
+      await knob.hover();
+    });
 
-
-});
-
-await test.step('Verify bar knob defauls styles', async () => {
-
-    await expect(knob).toHaveCSS('width', '20px');
-    await expect(knob).toHaveCSS('height', '20px');
-    await expect(knob).toHaveCSS('background-color', 'rgb(255, 255, 255)');
-});
-
-await test.step('Verify bar knob hover styles', async () => {
-  await knob.hover();
-});
-
-await test.step('Verify bar knob defauls options', async () => {
-
-    await expect(options).toHaveCSS('margin-top', '4px');
-    await expect(options).toHaveCSS('padding-top', '2px');
-    await expect(options).toHaveCSS('color', 'rgb(108, 110, 121)');
-});
+    await test.step('Verify bar knob defauls options', async () => {
+      await expect(options).toHaveCSS('margin-top', '4px');
+      await expect(options).toHaveCSS('padding-top', '2px');
+      await expect(options).toHaveCSS('color', 'rgb(108, 110, 121)');
+    });
   });
 
   test('Verify roles and attributes', async ({ page }) => {
@@ -80,41 +72,34 @@ await test.step('Verify bar knob defauls options', async () => {
     const input = page.locator('input');
 
     await test.step('Verify slider attributes', async () => {
-
-    await expect(slider).toHaveAttribute('type', 'button');
-    await expect(slider).toHaveAttribute('role', 'slider');
-    await expect(slider).toHaveAttribute('aria-orientation', 'horizontal');
-    await expect(slider).toHaveAttribute('aria-valuemin', '1');
-    await expect(slider).toHaveAttribute('aria-valuemax', '3');
-    await expect(slider).toHaveAttribute('aria-valuenow', '2');
-    await expect(slider).toHaveAttribute('aria-valuetext', 'Medium');
-    await expect(slider).toHaveAttribute('tabindex', '0');
-    await expect(slider).toHaveAttribute('min', '1');
-    await expect(slider).toHaveAttribute('max', '3');
-    await expect(slider).toHaveAttribute('step', '1');
-    await expect(slider).toHaveAttribute('value', 'medium');
-});
-await test.step('Verify bar attributes', async () => {
-
-    await expect(bar).toHaveAttribute('value', '2');
-    await expect(bar).toHaveAttribute('min', '1');
-    await expect(bar).toHaveAttribute('max', '3');
-});
-await test.step('Verify knob attributes', async () => {
-
-     await expect(knob).toHaveAttribute('value', '2');
-     await expect(knob).toHaveAttribute('min', '1');
-     await expect(knob).toHaveAttribute('max', '3');
+      await expect(slider).toHaveAttribute('type', 'button');
+      await expect(slider).toHaveAttribute('role', 'slider');
+      await expect(slider).toHaveAttribute('aria-orientation', 'horizontal');
+      await expect(slider).toHaveAttribute('aria-valuemin', '1');
+      await expect(slider).toHaveAttribute('aria-valuemax', '3');
+      await expect(slider).toHaveAttribute('aria-valuenow', '2');
+      await expect(slider).toHaveAttribute('aria-valuetext', 'Medium');
+      await expect(slider).toHaveAttribute('tabindex', '0');
+      await expect(slider).toHaveAttribute('min', '1');
+      await expect(slider).toHaveAttribute('max', '3');
+      await expect(slider).toHaveAttribute('step', '1');
+      await expect(slider).toHaveAttribute('value', 'medium');
+    });
+    await test.step('Verify bar attributes', async () => {
+      await expect(bar).toHaveAttribute('value', '2');
+      await expect(bar).toHaveAttribute('min', '1');
+      await expect(bar).toHaveAttribute('max', '3');
+    });
+    await test.step('Verify knob attributes', async () => {
+      await expect(knob).toHaveAttribute('value', '2');
+      await expect(knob).toHaveAttribute('min', '1');
+      await expect(knob).toHaveAttribute('max', '3');
     });
     await test.step('Verify input attributes', async () => {
-
-     await expect(input).toHaveAttribute('value', 'medium');
-     await expect(input).toHaveAttribute('aria-hidden', 'true');
-     await expect(input).toHaveAttribute('type', 'hidden');
-
+      await expect(input).toHaveAttribute('value', 'medium');
+      await expect(input).toHaveAttribute('aria-hidden', 'true');
+      await expect(input).toHaveAttribute('type', 'hidden');
     });
-
- 
   });
 
   test('Verify slider between options by mouse', async ({ page }) => {
@@ -139,7 +124,6 @@ await test.step('Verify knob attributes', async () => {
     await expect(slider).toHaveAttribute('aria-valuenow', '1');
 
     await expect(page).toHaveScreenshot();
-
   });
 
   test('Verify slider between options by keyboard', async ({ page }) => {
@@ -160,7 +144,6 @@ await test.step('Verify knob attributes', async () => {
     await expect(slider).toBeFocused();
     await knob.hover();
     await expect(page).toHaveScreenshot();
-
 
     await page.keyboard.press('ArrowRight');
 
@@ -215,8 +198,6 @@ await test.step('Verify knob attributes', async () => {
     await expect(input).toHaveValue('900');
     await expect(slider).toHaveAttribute('aria-valuenow', '900');
     await expect(inputValue).toHaveAttribute('aria-invalid', 'true');
-
-    
   });
 
   test('Verify slider with input by keyboard', async ({ page }) => {
@@ -254,7 +235,5 @@ await test.step('Verify knob attributes', async () => {
     await expect(input).toHaveValue('10');
     await expect(slider).toHaveAttribute('aria-valuenow', '10');
     await expect(inputValue).toHaveValue('10');
-    
   });
-
 });
