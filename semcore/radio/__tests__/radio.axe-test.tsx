@@ -23,5 +23,4 @@ test.describe('Radio', () => {
 
     expect(violations).toEqual([]);
   });
-
 });

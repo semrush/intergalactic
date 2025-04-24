@@ -219,57 +219,54 @@ describe('RadioGroup', () => {
   test('Verify Uncontrolled defaultValue behavior', async () => {
     const onChange = vi.fn();
     const { getByTestId } = render(
-      <RadioGroup defaultValue="2" onChange={onChange}>
+      <RadioGroup defaultValue='2' onChange={onChange}>
         <Radio>
           <Radio.Value
-            data-testid="r1"
+            data-testid='r1'
             includeInputProps={['data-testid', ...inputProps]}
-            value="1"
+            value='1'
           />
         </Radio>
         <Radio>
           <Radio.Value
-            data-testid="r2"
+            data-testid='r2'
             includeInputProps={['data-testid', ...inputProps]}
-            value="2"
+            value='2'
           />
         </Radio>
       </RadioGroup>,
     );
-  
+
     expect(getByTestId('r2').checked).toBe(true);
-  
+
     fireEvent.click(getByTestId('r1'));
     expect(onChange).toHaveBeenCalledWith('1', expect.anything());
     expect(getByTestId('r1').checked).toBe(true);
   });
-  
 
   test('Verofy disabled priority: group vs item', () => {
     const spyWarn = vi.spyOn(console, 'warn').mockImplementation(() => {});
-  
+
     const { getByTestId } = render(
       <RadioGroup disabled>
         <Radio disabled={false}>
           <Radio.Value
             includeInputProps={['data-testid', ...inputProps]}
-            data-testid="rFalse"
-            value="1"
+            data-testid='rFalse'
+            value='1'
           />
         </Radio>
         <Radio>
           <Radio.Value
             includeInputProps={['data-testid', ...inputProps]}
-            data-testid="rGroupDisabled"
-            value="2"
+            data-testid='rGroupDisabled'
+            value='2'
           />
         </Radio>
       </RadioGroup>,
     );
-  
+
     expect(getByTestId('rFalse').disabled).toBe(false);
     expect(getByTestId('rGroupDisabled').disabled).toBe(true);
   });
-  
-  
 });
