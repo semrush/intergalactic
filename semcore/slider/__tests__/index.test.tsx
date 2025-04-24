@@ -52,11 +52,11 @@ describe('Slider', () => {
   test('Verify dragging/mouse move sets value to min when moved before start', () => {
     const onChange = vi.fn();
     const { getByRole } = render(
-      <Slider min={0} max={100} defaultValue={50} data-testid="slider" onChange={onChange} />
+      <Slider min={0} max={100} defaultValue={50} data-testid='slider' onChange={onChange} />,
     );
     const slider = getByRole('slider');
     Object.defineProperty(slider, 'offsetWidth', { value: 200 });
-    slider.getBoundingClientRect = () => ({ left: 100, width: 200 } as DOMRect);
+    slider.getBoundingClientRect = () => ({ left: 100, width: 200 }) as DOMRect;
 
     // simulate mouse move far to left
     fireEvent.mouseDown(slider, { clientX: 50 });
@@ -68,11 +68,11 @@ describe('Slider', () => {
   test('Verify dragging/mouse move sets value to max when moved past end', () => {
     const onChange = vi.fn();
     const { getByRole } = render(
-      <Slider min={0} max={100} defaultValue={50} data-testid="slider" onChange={onChange} />
+      <Slider min={0} max={100} defaultValue={50} data-testid='slider' onChange={onChange} />,
     );
     const slider = getByRole('slider');
     Object.defineProperty(slider, 'offsetWidth', { value: 200 });
-    slider.getBoundingClientRect = () => ({ left: 100, width: 200 } as DOMRect);
+    slider.getBoundingClientRect = () => ({ left: 100, width: 200 }) as DOMRect;
 
     fireEvent.mouseDown(slider, { clientX: 400 });
     fireEvent.mouseMove(document, { clientX: 400 });
@@ -83,11 +83,18 @@ describe('Slider', () => {
   test('Verify dragging/mouse move calculates intermediate value correctly', () => {
     const onChange = vi.fn();
     const { getByRole } = render(
-      <Slider min={0} max={100} defaultValue={0} step={10} data-testid="slider" onChange={onChange} />
+      <Slider
+        min={0}
+        max={100}
+        defaultValue={0}
+        step={10}
+        data-testid='slider'
+        onChange={onChange}
+      />,
     );
     const slider = getByRole('slider');
     Object.defineProperty(slider, 'offsetWidth', { value: 100 });
-    slider.getBoundingClientRect = () => ({ left: 0, width: 100 } as DOMRect);
+    slider.getBoundingClientRect = () => ({ left: 0, width: 100 }) as DOMRect;
 
     // move to clientX=30 => 30% along => nearest step is 3*10=30
     fireEvent.mouseDown(slider, { clientX: 30 });
@@ -95,7 +102,4 @@ describe('Slider', () => {
     fireEvent.mouseUp(document);
     expect(onChange).lastCalledWith(30, expect.any(Object));
   });
-
-  
-
 });
