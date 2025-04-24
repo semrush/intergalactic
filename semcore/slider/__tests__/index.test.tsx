@@ -12,7 +12,7 @@ describe('slider Dependency imports', () => {
 describe('Slider', () => {
   beforeEach(cleanup);
 
-  test.concurrent('Verify supports onChange callback with keyboard', async () => {
+  test('Verify supports onChange callback with keyboard', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(<Slider value={10} data-testid='slider' onChange={spy} />);
     // up
@@ -27,7 +27,7 @@ describe('Slider', () => {
     expect(spy).lastCalledWith(9, expect.any(Object));
   });
 
-  test.concurrent('Verify supports min value change with keyboard', () => {
+  test('Verify supports min value change with keyboard', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Slider min={0} max={1} defaultValue={1} data-testid='slider' onChange={spy} />,
@@ -38,7 +38,7 @@ describe('Slider', () => {
     expect(spy).lastCalledWith(0, expect.any(Object));
   });
 
-  test.concurrent('Verify supports max value change with keyboard', () => {
+  test('Verify supports max value change with keyboard', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Slider min={0} max={1} defaultValue={0} data-testid='slider' onChange={spy} />,

@@ -11,7 +11,7 @@ const Demo = () => {
   const min = 10;
   const max = 100;
 
-  const handleInput = (value) => {
+  const handleInput = (value:any) => {
     if (!!value && (value > max || value < min)) {
       setError('Please enter a valid value');
       setValue(value);
@@ -30,9 +30,10 @@ const Demo = () => {
         <Slider
           id='slider-represantation'
           mb={4}
-          value={value}
+        
           onChange={setValue}
           step={1}
+          defaultValue={30}
           min={min}
           max={max}
         >
