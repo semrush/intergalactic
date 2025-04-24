@@ -9,35 +9,41 @@ test.describe('Dot', () => {
     await page.setContent(htmlContent);
 
     await expect(page).toHaveScreenshot();
-const dotElementM = page.locator('span[aria-label="M size"][data-ui-name="Dot"]');
+    const dotElementM = page.locator('span[aria-label="M size"][data-ui-name="Dot"]');
 
-  
-  const width = await dotElementM.evaluate(el => window.getComputedStyle(el).getPropertyValue('width'));
-  const height = await dotElementM.evaluate(el => window.getComputedStyle(el).getPropertyValue('height'));
+    const width = await dotElementM.evaluate((el) =>
+      window.getComputedStyle(el).getPropertyValue('width'),
+    );
+    const height = await dotElementM.evaluate((el) =>
+      window.getComputedStyle(el).getPropertyValue('height'),
+    );
 
-  expect(width.trim()).toBe('6px');  
-  expect(height.trim()).toBe('6px'); 
+    expect(width.trim()).toBe('6px');
+    expect(height.trim()).toBe('6px');
 
-  const dotElementL = page.locator('span[aria-label="L size"][data-ui-name="Dot"]');
+    const dotElementL = page.locator('span[aria-label="L size"][data-ui-name="Dot"]');
 
-  
-  const widthL = await dotElementL.evaluate(el => window.getComputedStyle(el).getPropertyValue('width'));
-  const heightL = await dotElementL.evaluate(el => window.getComputedStyle(el).getPropertyValue('height'));
+    const widthL = await dotElementL.evaluate((el) =>
+      window.getComputedStyle(el).getPropertyValue('width'),
+    );
+    const heightL = await dotElementL.evaluate((el) =>
+      window.getComputedStyle(el).getPropertyValue('height'),
+    );
 
-  expect(widthL.trim()).toBe('12px');  
-  expect(heightL.trim()).toBe('12px'); 
+    expect(widthL.trim()).toBe('12px');
+    expect(heightL.trim()).toBe('12px');
 
+    const dotCounter = page.locator('span[aria-label="Value"][data-ui-name="Dot"]');
 
-  const dotCounter = page.locator('span[aria-label="Value"][data-ui-name="Dot"]');
+    const paddingLeft = await dotCounter.evaluate((el) =>
+      window.getComputedStyle(el).getPropertyValue('padding-left'),
+    );
+    const paddingRight = await dotCounter.evaluate((el) =>
+      window.getComputedStyle(el).getPropertyValue('padding-right'),
+    );
 
-  
-  const paddingLeft = await dotCounter.evaluate(el => window.getComputedStyle(el).getPropertyValue('padding-left'));
-  const paddingRight = await dotCounter.evaluate(el => window.getComputedStyle(el).getPropertyValue('padding-right'));
-
-  expect(paddingLeft.trim()).toBe('4px');  
-  expect(paddingRight.trim()).toBe('4px'); 
-  
-
+    expect(paddingLeft.trim()).toBe('4px');
+    expect(paddingRight.trim()).toBe('4px');
   });
 
   test('Verify dot hides by mouse', async ({ page }) => {
@@ -53,7 +59,6 @@ const dotElementM = page.locator('span[aria-label="M size"][data-ui-name="Dot"]'
     await expect(dot).toBeVisible();
     await button.click();
     await expect(dot).not.toBeVisible();
-    
   });
 
   test('Verify dot hides by keyboard', async ({ page }) => {
@@ -70,6 +75,5 @@ const dotElementM = page.locator('span[aria-label="M size"][data-ui-name="Dot"]'
     await expect(dot).toBeVisible();
     await page.keyboard.press('Enter');
     await expect(dot).not.toBeVisible();
-    
   });
 });

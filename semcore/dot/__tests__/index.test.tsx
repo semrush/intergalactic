@@ -29,7 +29,11 @@ describe('Dot', () => {
   shouldSupportRef(Dot, undefined, { 'aria-label': 'test dot' });
 
   test('Verify dot does not render Portal when hidden', () => {
-    render(<Dot aria-label="alert test" hidden>Content</Dot>);
+    render(
+      <Dot aria-label='alert test' hidden>
+        Content
+      </Dot>,
+    );
     expect(document.body.querySelector('div[role="alert"]')).toBeNull();
   });
 
@@ -44,7 +48,7 @@ describe('Dot', () => {
   });
 
   test('Verify renders Portal alert when not hidden', () => {
-    render(<Dot aria-label="alert test">Content</Dot>);
+    render(<Dot aria-label='alert test'>Content</Dot>);
     // Portal should render a div with role alert
     const alert = document.body.querySelector('div[role="alert"]');
     expect(alert).toBeInTheDocument();
@@ -54,8 +58,7 @@ describe('Dot', () => {
   test('Verify logs warning if no aria-label or aria-labelledby', () => {
     render(<Dot />);
     expect(console.warn).toHaveBeenCalledWith(
-      "[Dot]: 'aria-label' or 'aria-labelledby' are required for Dot component"
+      "[Dot]: 'aria-label' or 'aria-labelledby' are required for Dot component",
     );
   });
-
 });
