@@ -68,7 +68,7 @@ test.describe('DayPicker standart date ranges', () => {
     await page.setContent(htmlContent);
 
     // trigger
-    const datePickerTrigger =  page.locator('[data-ui-name="DateRangePicker.Trigger"]').nth(4);
+    const datePickerTrigger = page.locator('[data-ui-name="DateRangePicker.Trigger"]').nth(4);
 
     await test.step('Verify trigger aria label', async () => {
       const ariaLabel = await datePickerTrigger.getAttribute('aria-label');
@@ -138,20 +138,20 @@ test.describe('DayPicker standart date ranges', () => {
       const calendars = page.locator('[data-ui-name="DateRangePicker.Calendar"]');
       const count = await calendars.count();
 
-  for (let i = 0; i < count; i++) {
-    const calendar = calendars.nth(i);
-    await expect(calendar).toHaveAttribute('role', 'grid');
-    await expect(calendar).toHaveAttribute('disabled', '');
-  }
+      for (let i = 0; i < count; i++) {
+        const calendar = calendars.nth(i);
+        await expect(calendar).toHaveAttribute('role', 'grid');
+        await expect(calendar).toHaveAttribute('disabled', '');
+      }
 
-  await expect(calendars.first()).toHaveAttribute('tabindex', '0');
-  await expect(calendars.nth(1)).toHaveAttribute('tabindex', '-1');
+      await expect(calendars.first()).toHaveAttribute('tabindex', '0');
+      await expect(calendars.nth(1)).toHaveAttribute('tabindex', '-1');
     });
 
     await test.step('Verify weekdays attributes', async () => {
       const weekDaysRows = page.locator('[data-ui-name="CalendarWeekDays"]');
       const rowCount = await weekDaysRows.count();
-    
+
       const daysOfWeek = [
         'Sunday',
         'Monday',
@@ -161,22 +161,22 @@ test.describe('DayPicker standart date ranges', () => {
         'Friday',
         'Saturday',
       ];
-    
+
       for (let r = 0; r < rowCount; r++) {
         const weekDaysRow = weekDaysRows.nth(r);
-    
+
         await expect(weekDaysRow).toHaveAttribute('role', 'row'); // проверка роли родительского элемента
-    
+
         const weekDays = weekDaysRow.locator('[data-ui-name="CalendarWeekDays.Unit"]');
         const unitCount = await weekDays.count();
         expect(unitCount).toBe(daysOfWeek.length); // на всякий случай убедимся, что 7 дней
-    
+
         for (let i = 0; i < daysOfWeek.length; i++) {
           const day = weekDays.nth(i);
-    
+
           await expect(day).toHaveAttribute('role', 'columnheader'); // роль для единицы недели
           await expect(day).toHaveAttribute('aria-label', daysOfWeek[i]); // полное название дня
-    
+
           const text = (await day.textContent())?.trim();
           expect(text).toBe(daysOfWeek[i].slice(0, 3)); // Sun, Mon и т.д.
         }
@@ -212,7 +212,7 @@ test.describe('DayPicker standart date ranges', () => {
         if (isCurrentMonth) {
           expect(hasDisabledAttr).toBe(false);
           expect(ariaDisabled).toBe('false');
-        } 
+        }
 
         // Проверка текста
         const text = await cell.textContent();
@@ -234,34 +234,32 @@ test.describe('DayPicker standart date ranges', () => {
       await expect(period).toHaveAttribute('aria-label', 'Presets');
     });
 
-    const periodButtons = page.locator('[data-ui-name="DateRangePicker.Period"][data-ui-name="Button"]');
+    const periodButtons = page.locator(
+      '[data-ui-name="DateRangePicker.Period"][data-ui-name="Button"]',
+    );
 
     await test.step('Verify DateRangePicker.Period attributes', async () => {
       const count = await periodButtons.count();
 
       for (let i = 0; i < count; i++) {
-       const button = periodButtons.nth(i);
-     await expect(button).toHaveAttribute('type', 'button');
-     await expect(button).toHaveAttribute('role', 'option');
-      await expect(button).toHaveAttribute('tabindex', '0');
+        const button = periodButtons.nth(i);
+        await expect(button).toHaveAttribute('type', 'button');
+        await expect(button).toHaveAttribute('role', 'option');
+        await expect(button).toHaveAttribute('tabindex', '0');
       }
     });
 
     await test.step('Verify DateRangePicker.Apply attributes', async () => {
       const apply = page.locator('[data-ui-name="DateRangePicker.Apply"]');
-     await expect(apply).toHaveAttribute('type', 'button');
+      await expect(apply).toHaveAttribute('type', 'button');
       await expect(apply).toHaveAttribute('tabindex', '0');
-    
     });
 
     await test.step('Verify DateRangePicker.Apply attributes', async () => {
       const apply = page.locator('[data-ui-name="DateRangePicker.Reset"]');
-     await expect(apply).toHaveAttribute('type', 'button');
+      await expect(apply).toHaveAttribute('type', 'button');
       await expect(apply).toHaveAttribute('tabindex', '0');
-    
     });
-
-    
   });
 
   test('Verify daterangepicker  styles', async ({ page }) => {
@@ -274,7 +272,6 @@ test.describe('DayPicker standart date ranges', () => {
     const prevButton = page.locator('[data-ui-name="DateRangePicker.Prev"]');
     const cells = page.locator('[data-ui-name="CalendarDays.Unit"]');
     const apply = page.locator('[data-ui-name="DateRangePicker.Apply"]');
-
 
     await test.step('Verify trigger margins', async () => {
       const marginTop = await datePickerTrigger.evaluate((el) => {
@@ -295,21 +292,20 @@ test.describe('DayPicker standart date ranges', () => {
         return style.paddingRight;
       });
       expect(paddingLeft).toBe('8px'); // ожидаемое значение
-      expect(paddingRight).toBe('8px'); 
+      expect(paddingRight).toBe('8px');
 
       await expect(svg).toHaveAttribute('width', '16');
       await expect(svg).toHaveAttribute('height', '16');
-
     });
 
     await test.step('Verify trigger separatoe padding', async () => {
-    const saparator = page.locator('[data-ui-name="DateRange.RangeSep"]').nth(1);
-    const paddingRight = await saparator.evaluate((el) => {
-      const style = window.getComputedStyle(el);
-      return style.paddingRight;
+      const saparator = page.locator('[data-ui-name="DateRange.RangeSep"]').nth(1);
+      const paddingRight = await saparator.evaluate((el) => {
+        const style = window.getComputedStyle(el);
+        return style.paddingRight;
+      });
+      expect(paddingRight).toBe('8px'); // ожидаемое значение
     });
-    expect(paddingRight).toBe('8px'); // ожидаемое значение
-  });
 
     await test.step('Verify date picker popper', async () => {
       await datePickerTrigger.click();
@@ -356,13 +352,13 @@ test.describe('DayPicker standart date ranges', () => {
     await cells.nth(11).click();
     await apply.click();
     await datePickerTrigger.click();
-    const cell = page.locator(
-      '[data-ui-name="CalendarDays.Unit"][class*="Selected"]',
-    );
+    const cell = page.locator('[data-ui-name="CalendarDays.Unit"][class*="Selected"]');
 
     await test.step('Verify  style of selected date', async () => {
       const color = await cell.nth(1).evaluate((el) => getComputedStyle(el).color);
-      const backgroundColor = await cell.nth(1).evaluate((el) => getComputedStyle(el).backgroundColor);
+      const backgroundColor = await cell
+        .nth(1)
+        .evaluate((el) => getComputedStyle(el).backgroundColor);
       const margin = await cell.nth(1).evaluate((el) => getComputedStyle(el).margin);
       const width = await cell.nth(1).evaluate((el) => getComputedStyle(el).width);
       const height = await cell.nth(1).evaluate((el) => getComputedStyle(el).height);
@@ -385,7 +381,7 @@ test.describe('DayPicker standart date ranges', () => {
     });
 
     await test.step('Verify  style for Applu picker button', async () => {
-      const apply= page.locator('[data-ui-name="DateRangePicker.Apply"]');
+      const apply = page.locator('[data-ui-name="DateRangePicker.Apply"]');
       const color = await apply.evaluate((el) => getComputedStyle(el).color);
       const backgroundColor = await apply.evaluate((el) => getComputedStyle(el).backgroundColor);
 
@@ -393,7 +389,6 @@ test.describe('DayPicker standart date ranges', () => {
       expect(backgroundColor).toBe('rgb(0, 143, 248)');
       //snapshot
     });
-
   });
 
   test('Action with datepicker and today button by mouse', async ({ page }) => {
@@ -414,8 +409,6 @@ test.describe('DayPicker standart date ranges', () => {
     const initialValueFrom = await datePicker.nth(2).inputValue();
     const initialValueTo = await datePicker.nth(3).inputValue();
     // Сохраняем текущее значение
-  
-
 
     await datePicker.first().click();
     await expect(popper).toBeVisible();
@@ -465,10 +458,7 @@ test.describe('DayPicker standart date ranges', () => {
     const apply = page.locator('[data-ui-name="DateRangePicker.Apply"]');
     const reset = page.locator('[data-ui-name="DateRangePicker.Reset"]');
 
-   
-
     // Сохраняем текущее значение
-
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
@@ -497,22 +487,21 @@ test.describe('DayPicker standart date ranges', () => {
     //snapshot
 
     await page.keyboard.press('Enter'); // space don't work - bug!
-    const titleAfterFirstEnterFrom =  await headTitle.first().textContent();
-    const titleAfterFirstEnterTo =  await headTitle.nth(1).textContent();
+    const titleAfterFirstEnterFrom = await headTitle.first().textContent();
+    const titleAfterFirstEnterTo = await headTitle.nth(1).textContent();
     expect(titleAfterFirstEnterFrom).not.toBe(initialTitleFrom);
     expect(titleAfterFirstEnterTo).not.toBe(initialTitleTo);
 
     expect(titleAfterFirstEnterFrom).not.toBe(initialTitleFrom);
     expect(titleAfterFirstEnterTo).not.toBe(initialTitleTo);
-
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
     await expect(headNext).toBeFocused();
 
     await page.keyboard.press('Enter'); // space don't work - bug!
-    const titleAfterSecondEnterFrom =  await headTitle.first().textContent();
-    const titleAfterSecondEnterTo =  await headTitle.nth(1).textContent();
+    const titleAfterSecondEnterFrom = await headTitle.first().textContent();
+    const titleAfterSecondEnterTo = await headTitle.nth(1).textContent();
     expect(titleAfterSecondEnterFrom).toBe(initialTitleFrom);
     expect(titleAfterSecondEnterTo).toBe(initialTitleTo);
 
@@ -523,7 +512,6 @@ test.describe('DayPicker standart date ranges', () => {
     await page.keyboard.press('Tab');
 
     await expect(buttons.first()).toBeFocused();
-
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
@@ -551,7 +539,7 @@ test.describe('DayPicker standart date ranges', () => {
 
     expect(initialValue1_1).toBe(initialValue1);
     expect(initialValue2_1).toBe(initialValue2);
-   
+
     await page.keyboard.press('Space');
 
     await page.keyboard.press('ArrowDown');
@@ -571,7 +559,6 @@ test.describe('DayPicker standart date ranges', () => {
     expect(initialValue1_3).toBe(initialValue1_2);
     expect(initialValue2_3).not.toBe(initialValue2_2);
 
-
     await page.keyboard.press('Escape');
 
     const initialValue1_4 = await input.nth(2).inputValue();
@@ -579,7 +566,6 @@ test.describe('DayPicker standart date ranges', () => {
 
     expect(initialValue1_4).toBe(initialValue1);
     expect(initialValue2_4).toBe(initialValue2);
-
 
     await page.keyboard.press('Space');
     await page.keyboard.press('ArrowDown');
@@ -620,7 +606,6 @@ test.describe('DayPicker standart date ranges', () => {
     expect(initialValue2_5).toBe(initialValue2);
 
     await expect(popper).not.toBeVisible();
-
   });
 });
 
@@ -1163,9 +1148,7 @@ test.describe('Disabled dates and Validation', () => {
     await expect(datePicker).toHaveAttribute('aria-invalid', 'true');
   });
 
-  test('Verify mouse interactions when disabled dates and validation tooltip', async ({
-    page,
-  }) => {
+  test('Verify mouse interactions when disabled dates and validation tooltip', async ({ page }) => {
     const standPath = 'stories/components/date-picker/docs/examples/disabled_dates.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
@@ -1191,7 +1174,6 @@ test.describe('Disabled dates and Validation', () => {
 
     await datePicker.first().click();
     //snapshot
-
 
     const initialTitle = await headTitle.textContent();
 
@@ -1237,7 +1219,7 @@ test.describe('Disabled dates and Validation', () => {
     await expect(datePicker.first()).not.toBeFocused();
     await expect(popper).toBeFocused();
     await page.keyboard.press('ArrowRight');
- //snapshot
+    //snapshot
 
     await page.keyboard.press('Escape');
     await expect(popper).not.toBeVisible();
@@ -1289,7 +1271,6 @@ test.describe('Disabled dates and Validation', () => {
   });
 });
 
-
 test.describe('Calendar props', () => {
   test('Verify all calendar props work good', async ({ page }) => {
     const standPath = 'stories/components/date-picker/tests/examples/calendar_props.tsx';
@@ -1301,6 +1282,5 @@ test.describe('Calendar props', () => {
     await page.keyboard.press('Enter');
 
     // await expect(page).toHaveScreenshot();
-});
-
+  });
 });

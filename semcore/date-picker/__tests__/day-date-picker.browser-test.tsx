@@ -992,9 +992,7 @@ test.describe('Disabled dates and Validation', () => {
     await expect(datePicker).toHaveAttribute('aria-invalid', 'true');
   });
 
-  test('Verify mouse interactions when disabled dates and validation tooltip', async ({
-    page,
-  }) => {
+  test('Verify mouse interactions when disabled dates and validation tooltip', async ({ page }) => {
     const standPath = 'stories/components/date-picker/docs/examples/disabled_dates.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
@@ -1020,7 +1018,6 @@ test.describe('Disabled dates and Validation', () => {
 
     await datePicker.first().click();
     //snapshot
-
 
     const initialTitle = await headTitle.textContent();
 
@@ -1066,7 +1063,7 @@ test.describe('Disabled dates and Validation', () => {
     await expect(datePicker.first()).not.toBeFocused();
     await expect(popper).toBeFocused();
     await page.keyboard.press('ArrowRight');
- //snapshot
+    //snapshot
 
     await page.keyboard.press('Escape');
     await expect(popper).not.toBeVisible();
@@ -1118,7 +1115,6 @@ test.describe('Disabled dates and Validation', () => {
   });
 });
 
-
 test.describe('Calendar props and date picker', () => {
   test('Verify all calendar props work good', async ({ page }) => {
     const standPath = 'stories/components/date-picker/tests/examples/calendar_props.tsx';
@@ -1130,18 +1126,17 @@ test.describe('Calendar props and date picker', () => {
     await page.keyboard.press('Enter');
 
     // await expect(page).toHaveScreenshot();
-});
+  });
 
-test('Verify all date picker props work good', async ({ page }) => {
-  const standPath = 'stories/components/date-picker/tests/examples/date-picker-props.tsx';
-  const htmlContent = await e2eStandToHtml(standPath, 'en');
+  test('Verify all date picker props work good', async ({ page }) => {
+    const standPath = 'stories/components/date-picker/tests/examples/date-picker-props.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
 
-  await page.setContent(htmlContent);
+    await page.setContent(htmlContent);
 
-  await page.keyboard.press('Tab');
-  await page.keyboard.press('Enter');
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
 
-  // await expect(page).toHaveScreenshot();
-});
-
+    // await expect(page).toHaveScreenshot();
+  });
 });
