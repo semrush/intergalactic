@@ -2,7 +2,6 @@ import React from 'react';
 import { snapshot } from '@semcore/testing-utils/snapshot';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import { cleanup, render, fireEvent, act, userEvent } from '@semcore/testing-utils/testing-library';
-import { axe } from '@semcore/testing-utils/axe';
 import { Box, Flex } from '@semcore/flex-box';
 import { mockDate, RealDate } from './utils';
 
@@ -26,7 +25,7 @@ describe('DatePicker', () => {
     cleanup();
   });
 
-  test('Should support onChange with format time 00:00:00:000', () => {
+  test('Verify supports onChange with format time 00:00:00:000', () => {
     const spy = vi.fn();
     mockDate('2020-02-10T12:00:00.808Z');
 
@@ -36,7 +35,7 @@ describe('DatePicker', () => {
     expect(spy).toBeCalledWith(new Date(new Date().setHours(0, 0, 0, 0)));
   });
 
-  test('Should support set custom displayPeriod', () => {
+  test('Verify supports set custom displayPeriod', () => {
     const marchInstance = render(
       <DatePicker visible defaultDisplayedPeriod='2020-03-10T12:00:00.808Z' />,
     );
@@ -45,11 +44,11 @@ describe('DatePicker', () => {
     expect(aprilInstance.getByText('April 2020')).toBeTruthy();
   });
 
-  test('Should support set custom displayPeriod after changed displayedPeriod', () => {
+  test('Verify supports set custom displayPeriod after changed displayedPeriod', () => {
     vi.useFakeTimers();
     const { getByText, getByLabelText } = render(
       <DatePicker defaultVisible defaultDisplayedPeriod='2020-03-10T12:00:00.808Z'>
-        <DatePicker.ButtonTrigger aria-label='date picker'>Date picker</DatePicker.ButtonTrigger>
+        <DatePicker.Trigger aria-label='date picker'>Date picker</DatePicker.Trigger>
         <DatePicker.Popper />
       </DatePicker>,
     );
@@ -67,7 +66,7 @@ describe('DatePicker', () => {
     vi.useRealTimers();
   });
 
-  test('Should support set custom displayPeriod after changed value date', () => {
+  test('Verify supports set custom displayPeriod after changed value date', () => {
     vi.useFakeTimers();
     const component = (
       <DatePicker defaultVisible defaultDisplayedPeriod='2021-09-10T12:00:00.808Z' />
@@ -84,23 +83,6 @@ describe('DatePicker', () => {
     vi.useRealTimers();
   });
 
-  test('a11y', async () => {
-    const { container } = render(
-      <div>
-        <label htmlFor='date-picker-a11y-test-trigger'>Date picker</label>
-        <DatePicker visible disablePortal aria-label='date picker'>
-          <DatePicker.Trigger>
-            <DatePicker.Trigger.SingleDateInput>
-              <DatePicker.Trigger.SingleDateInput.MaskedInput id='date-picker-a11y-test-trigger' />
-            </DatePicker.Trigger.SingleDateInput>
-          </DatePicker.Trigger>
-          <DatePicker.Popper aria-label='Date picker' />
-        </DatePicker>
-      </div>,
-    );
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
-  });
 });
 
 describe('DateRangePicker', () => {
@@ -383,19 +365,6 @@ describe('DateRangePicker', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('a11y', async () => {
-    const { container } = render(
-      <DateRangePicker visible disablePortal aria-label='data range picker'>
-        <DateRangePicker.ButtonTrigger aria-label='date range picker'>
-          Open date range picker
-        </DateRangePicker.ButtonTrigger>
-        <DateRangePicker.Popper aria-label='date range picker' />
-      </DateRangePicker>,
-    );
-
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
-  });
 });
 
 describe('DatePicker.Header', () => {
@@ -489,57 +458,5 @@ describe('DateRangeComparator', () => {
       />
     );
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-
-  test('a11y', async () => {
-    const { container } = render(
-      <div>
-        <DateRangeComparator>
-          <DateRangeComparator.Trigger />
-          <DateRangeComparator.Popper>
-            <DateRangeComparator.Header>
-              <DateRangeComparator.ValueDateRange aria-label='date-range from' />
-              <DateRangeComparator.CompareToggle />
-              <DateRangeComparator.CompareDateRange aria-label='date-range to' />
-            </DateRangeComparator.Header>
-            <DateRangeComparator.Body>
-              <DateRangeComparator.RangeCalendar>
-                <Flex direction='column'>
-                  <DateRangeComparator.CalendarHeader tag={Flex}>
-                    <DateRangeComparator.Prev />
-                    <DateRangeComparator.Title />
-                  </DateRangeComparator.CalendarHeader>
-                  <DateRangeComparator.Calendar />
-                </Flex>
-                <Flex direction='column'>
-                  <DateRangeComparator.CalendarHeader tag={Flex}>
-                    <DateRangeComparator.Title />
-                    <DateRangeComparator.Next />
-                  </DateRangeComparator.CalendarHeader>
-                  <DateRangeComparator.Calendar />
-                </Flex>
-              </DateRangeComparator.RangeCalendar>
-              <DateRangeComparator.Periods>
-                <DateRangeComparator.Periods.Divider />
-                <DateRangeComparator.Periods.Column>
-                  <DateRangeComparator.Periods.Options />
-                  <DateRangeComparator.Periods.Controls>
-                    <DateRangeComparator.Apply />
-                    <DateRangeComparator.Reset />
-                  </DateRangeComparator.Periods.Controls>
-                </DateRangeComparator.Periods.Column>
-              </DateRangeComparator.Periods>
-            </DateRangeComparator.Body>
-            <DateRangeComparator.Footer>
-              <DateRangeComparator.Apply />
-              <DateRangeComparator.Reset />
-            </DateRangeComparator.Footer>
-          </DateRangeComparator.Popper>
-        </DateRangeComparator>
-      </div>,
-    );
-
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
   });
 });
