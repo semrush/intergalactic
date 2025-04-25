@@ -82,7 +82,6 @@ describe('DatePicker', () => {
     expect(getByText('Aug 15, 2021')).toBeTruthy();
     vi.useRealTimers();
   });
-
 });
 
 describe('DateRangePicker', () => {
@@ -364,7 +363,6 @@ describe('DateRangePicker', () => {
 
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
-
 });
 
 describe('DatePicker.Header', () => {
