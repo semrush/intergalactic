@@ -1,8 +1,8 @@
 import React from 'react';
-import { Plot, XAxis, YAxis, minMax, StackedArea, HoverLine } from 'intergalactic/d3-chart';
+import { Plot, XAxis, YAxis, minMax, StackedArea, HoverLine } from '@semcore/d3-chart';
 import { scaleLinear } from 'd3-scale';
-import { Flex, Box } from 'intergalactic/flex-box';
-import { Text } from 'intergalactic/typography';
+import { Flex, Box } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
 import { curveCardinal } from 'd3-shape';
 
 function formatDate(value, options) {

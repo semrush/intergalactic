@@ -8,8 +8,8 @@ import {
   YAxis,
   XAxis,
   minMax,
-} from 'intergalactic/d3-chart';
-import { useColorResolver } from 'intergalactic/utils/lib/use/useColorResolver';
+} from '@semcore/d3-chart';
+import { useColorResolver } from '@semcore/utils/lib/use/useColorResolver';
 import { scaleLinear, scaleBand } from 'd3-scale';
 
 const Demo = () => {

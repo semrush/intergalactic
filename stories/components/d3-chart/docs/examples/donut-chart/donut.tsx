@@ -1,7 +1,7 @@
 import React from 'react';
-import { Donut, Plot } from 'intergalactic/d3-chart';
-import { Flex } from 'intergalactic/flex-box';
-import { Text } from 'intergalactic/typography';
+import { Donut, Plot } from '@semcore/d3-chart';
+import { Flex } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
 
 const Demo = () => {
   return (

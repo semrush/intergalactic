@@ -7,9 +7,9 @@ import {
   HoverLine,
   minMax,
   PlotEventEmitter,
-} from 'intergalactic/d3-chart';
-import { Flex } from 'intergalactic/flex-box';
-import { Text } from 'intergalactic/typography';
+} from '@semcore/d3-chart';
+import { Flex } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
 import { scaleLinear, scaleTime } from 'd3-scale';
 
 function formatDate(value, options) {

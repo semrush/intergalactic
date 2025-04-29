@@ -6,9 +6,9 @@ import {
   YAxis,
   ChartLegend,
   makeDataHintsContainer,
-} from 'intergalactic/d3-chart';
+} from '@semcore/d3-chart';
 import { scaleLinear } from 'd3-scale';
-import { Text } from 'intergalactic/typography';
+import { Text } from '@semcore/typography';
 import { Flex } from '@semcore/flex-box';
 
 const dataHints = makeDataHintsContainer();
