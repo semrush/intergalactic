@@ -6,8 +6,8 @@ import CheckM from '@semcore/icon/Check/m';
 
 const Demo = () => {
   const [value, setValue] = useState<[Date, Date]>([
-    new Date(2023, 3, 10), // 10 апреля 2023
-    new Date(2023, 3, 20), // 20 апреля 2023
+    new Date(2023, 3, 10), 
+    new Date(2023, 3, 20), 
   ]);
   const [preselectedValue, setPreselectedValue] = useState<[Date, Date]>([
     new Date(2023, 3, 12),
@@ -45,7 +45,7 @@ const Demo = () => {
           onChange={(newValue) => setValue(newValue as [Date, Date])}
           preselectedValue={preselectedValue}
           onPreselectedValueChange={(newValue) => setPreselectedValue(newValue as [Date, Date])}
-          defaultValue={[new Date(2023, 3, 5), new Date(2023, 3, 10)]} // Март 5–10, 2023
+          defaultValue={[new Date(2023, 3, 5), new Date(2023, 3, 10)]}
           defaultDisplayedPeriod={new Date(2023, 3, 1)}
           defaultHighlighted={[new Date(2023, 3, 7), new Date(2023, 3, 8)]}
           highlighted={highlighted}

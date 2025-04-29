@@ -8,7 +8,6 @@ test.describe('Date Range Trigger', () => {
 
     await page.setContent(htmlContent);
 
-    // date picker calendar contains title with the current month that will invaldiate screenshots every 30 days
     const datePicker = await page.locator('[data-ui-name="DateRangePicker.Trigger"]');
     const screenshotsClip = (await datePicker.first().boundingBox())!;
     screenshotsClip.x -= 4;

@@ -8,10 +8,9 @@ const stableRandom = (randomIndex: number) => {
 };
 
 const Demo = () => {
-  const [value, setValue] = React.useState([new Date('2025-04-06')]); // Используем одну дату
-  const [displayedPeriod, setDisplayedPeriod] = React.useState(new Date('2025-04-01')); // Отображаемый месяц
+  const [value, setValue] = React.useState([new Date('2025-04-06')]);
+  const [displayedPeriod, setDisplayedPeriod] = React.useState(new Date('2025-04-01')); 
 
- // Форматируем даты для disabled и highlighted
  const disabledDates = [
     new Date('2025-04-28'),
     new Date('2025-04-29'),
@@ -19,7 +18,7 @@ const Demo = () => {
   ];
 
   const highlightedDates = [
-    new Date('2025-04-10'), // Обратите внимание на формат
+    new Date('2025-04-10'), 
   ];
 
   const handleDisplayedPeriodChange = (newPeriod: Date) => {

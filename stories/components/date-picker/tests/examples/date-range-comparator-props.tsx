@@ -22,7 +22,7 @@ const Demo = () => {
   ];
 
   const handleTriggerClick = () => {
-    setDisplayedPeriod(new Date(2024, 2, 1)); // Апрель
+    setDisplayedPeriod(new Date(2024, 2, 1));
   };
 
   return (
@@ -43,7 +43,7 @@ const Demo = () => {
             value: [new Date(2024, 3, 5), new Date(2024, 3, 10)],
             compare: [new Date(2024, 2, 5), new Date(2024, 2, 10)],
           }}
-          defaultDisplayedPeriod={new Date(2024, 3, 1)} // Апрель
+          defaultDisplayedPeriod={new Date(2024, 3, 1)} 
           displayedPeriod={displayedPeriod}
           onDisplayedPeriodChange={(date) => {
             setDisplayedPeriod(date);
@@ -62,8 +62,8 @@ const Demo = () => {
           focusedRange={focusedRange}
           onFocusedRangeChange={setFocusedRange}
           unclearable
-          disabled={[new Date(2024, 3, 15)]}
-          disabledErrorText="This date is disabled"
+        //   disabled={[new Date(2024, 3, 15)]}
+         //disabledErrorText="This date is disabled"
           periods={periods}
         >
           <DateRangeComparator.Trigger mt={2} id="date-range-comparator" onClick={handleTriggerClick} />

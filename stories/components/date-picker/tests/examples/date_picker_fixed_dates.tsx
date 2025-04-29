@@ -4,17 +4,14 @@ import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 
 const Demo = () => {
-  // Состояние для фиксированного значения даты "Today"
-  const today = new Date('2020-06-29'); // Замокированная дата для "Today"
+  const today = new Date('2020-06-29'); 
   
-  // Состояние для фиксированного диапазона дат "Last 2 months"
-  const lastTwoMonthsStart = new Date('2020-04-01');  // Начало "Last 2 months"
-  const lastTwoMonthsEnd = new Date('2020-06-01');    // Конец "Last 2 months"
-  const fixedRange = [lastTwoMonthsStart, lastTwoMonthsEnd]; // Диапазон
+  const lastTwoMonthsStart = new Date('2020-04-01');  
+  const lastTwoMonthsEnd = new Date('2020-06-01');   
+  const fixedRange = [lastTwoMonthsStart, lastTwoMonthsEnd]; 
 
-  // Состояния для выбранных дат
-  const [value, setValue] = React.useState(today); // Сегодняшняя фиксированная дата
-  const [valueRange, setValueRange] = React.useState(fixedRange); // Диапазон последних 2 месяцев
+  const [value, setValue] = React.useState(today); 
+  const [valueRange, setValueRange] = React.useState(fixedRange); 
 
   return (
     <Flex gap={5} flexWrap>

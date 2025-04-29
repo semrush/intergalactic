@@ -7,10 +7,8 @@ const Demo = () => {
   const [displayedPeriod, setDisplayedPeriod] = React.useState(new Date('2025-04-01'));
   const [highlightedDates, setHighlightedDates] = React.useState([new Date('2025-04-10')]);
 
-  // Пример: Функция, которая вызывается при попытке выбрать заблокированную дату
   const disabledErrorText = (attemptedDate: Date) => `Date ${attemptedDate.toDateString()} is disabled`;
 
-  // Функция для изменения отображаемого месяца
   const handleDisplayedPeriodChange = (newDate: Date) => {
     setDisplayedPeriod(newDate);
   };
@@ -18,17 +16,17 @@ const Demo = () => {
   return (
     <div>
       <DatePicker
-        value={value} // Текущая выбранная дата
-        onChange={(date: Date) => setValue(date)} // Обработчик выбора новой даты
-        disabled={[new Date('2025-04-28'), new Date('2025-04-29')]} // Массив заблокированных дат
-        disabledErrorText={disabledErrorText} // Сообщение об ошибке при попытке выбрать заблокированную дату
-        displayedPeriod={displayedPeriod} // Отображаемый месяц
-        onDisplayedPeriodChange={handleDisplayedPeriodChange} // Обработчик для изменения отображаемого месяца
-        size="l" // Размер компонента (l - большой)
-        highlighted={highlightedDates} // Массив выделенных дат
-        defaultValue={new Date('2025-04-06')} // Значение по умолчанию
-        defaultDisplayedPeriod={new Date('2025-03-01')} // Месяц по умолчанию
-        defaultHighlighted={[new Date('2025-04-10')]} // Выделенные даты по умолчанию
+        value={value} 
+        onChange={(date: Date) => setValue(date)} 
+        disabled={[new Date('2025-04-28'), new Date('2025-04-29')]} 
+        disabledErrorText={disabledErrorText} 
+        displayedPeriod={displayedPeriod} 
+        onDisplayedPeriodChange={handleDisplayedPeriodChange} 
+        size="l" 
+        highlighted={highlightedDates} 
+        defaultValue={new Date('2025-04-06')} 
+        defaultDisplayedPeriod={new Date('2025-03-01')} 
+        defaultHighlighted={[new Date('2025-04-10')]} 
       >
         <DatePicker.Trigger mt={2}>
           <DatePicker.Trigger.SingleDateInput>
