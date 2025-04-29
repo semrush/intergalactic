@@ -111,6 +111,17 @@ const Demo = () => {
         <DatePicker.Popper />
       </DatePicker>
 
+      <Text tag='label' size={200} htmlFor='trigger-and-popper-example-picker'>
+        Placeholder without error tooltip
+      </Text>
+      <DatePicker
+          value={new Date('January 1, 2021 00:00:00')}
+          disabled={[new Date('January 1, 2021 00:00:00')]}
+        >
+          <DatePicker.Trigger disablePortal />
+          <DatePicker.Popper />
+        </DatePicker>
+
     </Flex>
 
 
