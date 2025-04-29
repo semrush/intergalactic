@@ -765,6 +765,7 @@ test.describe('Date range comparator props', () => {
     await page.keyboard.press('Enter');
     await page.waitForTimeout(100);
     await page.keyboard.press('Escape');
+    await page.waitForTimeout(100);
     await page.keyboard.press('Enter');
     await page.waitForTimeout(500);
     await expect(page).toHaveScreenshot();
