@@ -13,7 +13,7 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/basic-usage.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/venn-chart/basic-usage.tsx';
 </script>
 
 :::
@@ -28,7 +28,7 @@ A Venn chart allows you to see all kinds of intersections between two or more da
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/venn.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/venn-chart/venn.tsx';
 </script>
 
 :::
@@ -40,7 +40,7 @@ If you want to change the intersection styles, you can add additional styles to 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/custom-intersection-styles.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/venn-chart/custom-intersection-styles.tsx';
 </script>
 
 :::
@@ -52,7 +52,7 @@ You can also change the orientation and stacking order of the circles.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/setting-orientation.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/venn-chart/setting-orientation.tsx';
 </script>
 
 :::
@@ -64,7 +64,7 @@ Note that for ChartLegend `patterns` property works only with default `shape={'C
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/legend-and-pattern-fill.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/venn-chart/legend-and-pattern-fill.tsx';
 </script>
 
 :::

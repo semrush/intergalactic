@@ -61,7 +61,7 @@ The `range` of the horizontal `scale` is inverted, so that the axes origin is at
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/base.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/d3-chart/base.tsx';
 </script>
 
 :::
@@ -75,7 +75,7 @@ That's why values in `scale.range()` are set with an offset.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/paddings-&-margins.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/d3-chart/paddings-&-margins.tsx';
 </script>
 
 :::
@@ -100,7 +100,7 @@ According to the design guide, `YAxis` is hidden by default `(hide = true)`.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/axes.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/d3-chart/axes.tsx';
 </script>
 
 :::
@@ -118,7 +118,7 @@ The function arguments contain calculated XY coordinates that you can use to shi
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/axis-values.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/d3-chart/axis-values.tsx';
 </script>
 
 :::
@@ -135,7 +135,7 @@ By default, the title is set to the right for the Oy axis, and at the top for th
 
 <script lang="tsx">
 import { Bar, XAxis, Plot, YAxis } from '@semcore/ui/d3-chart';
-  export Demo from './examples/axes-titles.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/d3-chart/axes-titles.tsx';
 </script>
 
 :::
@@ -151,7 +151,7 @@ To make things easier, ticks can be specified on the `Axis` component itself, an
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/additional-lines.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/d3-chart/additional-lines.tsx';
 </script>
 
 :::
@@ -161,7 +161,7 @@ To make things easier, ticks can be specified on the `Axis` component itself, an
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/reference-line.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/d3-chart/reference-line.tsx';
 </script>
 
 :::
@@ -181,7 +181,7 @@ For SVG charts to display correctly on responsive layouts, you need to dynamical
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/adaptive-chart.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/d3-chart/adaptive-chart.tsx';
 </script>
 
 :::
@@ -193,7 +193,7 @@ You can add a tooltip to the chart, for which you can set `Title` and `Footer`.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/tooltip.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/d3-chart/tooltip.tsx';
 </script>
 
 :::
@@ -205,7 +205,7 @@ To control over tooltip visibility and targeted position, imperatively call plot
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/tooltip-control.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/d3-chart/tooltip-control.tsx';
 </script>
 
 :::
@@ -217,7 +217,7 @@ Refer to [Chart legend](/data-display/chart-legend/chart-legend) for a more deta
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/chart-legend.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/d3-chart/chart-legend.tsx';
 </script>
 
 :::
@@ -233,7 +233,7 @@ Be careful when choosing the `scale` for the axis, since it's common across diff
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/synchronous-charts.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/d3-chart/synchronous-charts.tsx';
 </script>
 
 :::
@@ -243,7 +243,7 @@ Be careful when choosing the `scale` for the axis, since it's common across diff
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/export-to-image.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/d3-chart/export-to-image.tsx';
 </script>
 
 :::
@@ -263,7 +263,7 @@ The `patterns` prop is inherited by all children components. So, you can apply i
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/pattern-fill.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/d3-chart/pattern-fill.tsx';
 </script>
 
 :::
@@ -300,7 +300,7 @@ You can enforce use of build-in patterns by using it's names. The list of availa
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/enforcing-patterns.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/d3-chart/enforcing-patterns.tsx';
 </script>
 
 :::
@@ -368,7 +368,7 @@ You can also provide a list of patterns.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/custom-patterns.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/d3-chart/custom-patterns.tsx';
 </script>
 
 :::
@@ -384,7 +384,7 @@ You can access `PatternFill` and `PatternSymbol` components for low level use.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/low-level-components-use.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/d3-chart/low-level-components-use.tsx';
 </script>
 
 :::
@@ -404,7 +404,7 @@ Click on this tip (to place focus on it) and press `Tab` to navigate to the char
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/a11y-formatting.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/d3-chart/a11y-formatting.tsx';
 </script>
 
 :::

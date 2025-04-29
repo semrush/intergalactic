@@ -13,7 +13,7 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/basic-usage.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/scatterplot-chart/basic-usage.tsx';
 </script>
 
 :::
@@ -28,7 +28,7 @@ You can see the mathematics, used in `Change.Scatterplot` to calculate common sc
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/scatter-plot.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/scatterplot-chart/scatter-plot.tsx';
 </script>
 
 :::
@@ -40,7 +40,7 @@ If required, you can assign your own color to Scatter plot.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/color-customization.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/scatterplot-chart/color-customization.tsx';
 </script>
 
 :::
@@ -50,7 +50,7 @@ If required, you can assign your own color to Scatter plot.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/scatter-plot-with-values-inside.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/scatterplot-chart/scatter-plot-with-values-inside.tsx';
 </script>
 
 :::
@@ -62,7 +62,7 @@ Note that for ChartLegend `patterns` property works only with default `shape={'C
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/legend-and-pattern-fill.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/scatterplot-chart/legend-and-pattern-fill.tsx';
 </script>
 
 :::
@@ -74,7 +74,7 @@ If required, you can assign your own color to Scatter plot.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/color-customization-and-values-inside.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/scatterplot-chart/color-customization-and-values-inside.tsx';
 </script>
 
 :::
@@ -86,7 +86,7 @@ Use `ScatterPlotChartSkeleton` for the initial chart loading.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/initial-data-loading.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/scatterplot-chart/initial-data-loading.tsx';
 </script>
 
 :::

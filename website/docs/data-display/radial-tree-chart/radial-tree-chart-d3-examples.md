@@ -13,7 +13,7 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/basic-usage.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/radial-tree-chart/basic-usage.tsx';
 </script>
 
 :::
@@ -25,7 +25,7 @@ Pass color in data to specify radians color. You also can enable `patterns` prop
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/multicolor-and-accessibility.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/radial-tree-chart/multicolor-and-accessibility.tsx';
 </script>
 
 :::
@@ -37,7 +37,7 @@ Any svg elements may be used in the center of radial tree.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/custom-svg-in-center.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/radial-tree-chart/custom-svg-in-center.tsx';
 </script>
 
 :::
@@ -49,7 +49,7 @@ Multiline text implementation isn’t trivial in svg. Text on the leafs of tree 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/multiline-text.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/radial-tree-chart/multiline-text.tsx';
 </script>
 
 :::
@@ -61,7 +61,7 @@ Multiline text implementation isn’t trivial in svg. Text on the leafs of tree 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/edge-cases.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/radial-tree-chart/edge-cases.tsx';
 </script>
 
 :::
@@ -71,7 +71,7 @@ Multiline text implementation isn’t trivial in svg. Text on the leafs of tree 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/edge-cases.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/radial-tree-chart/edge-cases.tsx';
 </script>
 
 :::

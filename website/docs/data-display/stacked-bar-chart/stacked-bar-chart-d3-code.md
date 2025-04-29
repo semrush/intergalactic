@@ -13,7 +13,7 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/basic-usage.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/stacked-bar-chart/basic-usage.tsx';
 </script>
 
 :::
@@ -31,7 +31,7 @@ To draw a stacked chart, use `<StackBar/>` and `<StackBar.Bar/>`.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/stacked-bar-chart.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/stacked-bar-chart/stacked-bar-chart.tsx';
 </script>
 
 :::
@@ -43,7 +43,7 @@ Note that for ChartLegend `patterns` property works only with default `shape={'C
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/legend-and-pattern-fill.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/stacked-bar-chart/legend-and-pattern-fill.tsx';
 </script>
 
 :::
@@ -55,7 +55,7 @@ To group bars that are not stacked, refer to [Grouped bars example](/data-displa
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/d3-chart/docs/examples/StackedGroupedBar.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/stacked-bar-chart/stacked-grouped-bar.tsx';
 </script>
 
 :::

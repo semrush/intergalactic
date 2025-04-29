@@ -13,7 +13,7 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/basic-usage.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/line-chart/basic-usage.tsx';
 </script>
 
 :::
@@ -25,7 +25,7 @@ Line charts are displayed using the `Line` component. `Dots` are the dots on the
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/line.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/line-chart/line.tsx';
 </script>
 
 :::
@@ -37,7 +37,7 @@ To get line with area, define `y0` and `y1` in `Line.Area` props and in the `dat
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/line-with-area.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/line-chart/line-with-area.tsx';
 </script>
 
 :::
@@ -50,7 +50,7 @@ To get line with area, define `y0` and `y1` in `Line.Area` props and in the `dat
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/hover-line.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/line-chart/hover-line.tsx';
 </script>
 
 :::
@@ -62,7 +62,7 @@ You can add a tooltip to any element of a chart. The internal content can be eas
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/tooltip.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/line-chart/tooltip.tsx';
 </script>
 
 :::
@@ -78,7 +78,7 @@ If you already have the tick values, you can use `scaleLine`.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/time.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/line-chart/time.tsx';
 </script>
 
 :::
@@ -90,7 +90,7 @@ To get curved lines, transfer `curve` property with the required rounding method
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/curve.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/line-chart/curve.tsx';
 </script>
 
 :::
@@ -102,7 +102,7 @@ You can pass function to `display` prop of `Dots` component to control which dot
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/dots-display-function.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/line-chart/dots-display-function.tsx';
 </script>
 
 :::
@@ -116,7 +116,7 @@ Note that for ChartLegend `patterns` property works only with default `shape={'C
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/legend-and-symbols-for-dots.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/line-chart/legend-and-symbols-for-dots.tsx';
 </script>
 
 :::
@@ -128,7 +128,7 @@ If exact values of specific point is not available, you can pass `interpolateVal
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/interpolation.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/line-chart/interpolation.tsx';
 </script>
 
 :::

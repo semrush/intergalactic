@@ -1,5 +1,5 @@
 import React from 'react';
-import { Plot, XAxis, YAxis, HoverRect, minMax } from 'intergalactic/d3-chart';
+import { Plot, XAxis, YAxis, HoverRect, minMax } from '@semcore/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
 
 const Demo = () => {

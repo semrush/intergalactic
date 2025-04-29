@@ -13,7 +13,7 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/basic-usage.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/donut-chart/basic-usage.tsx';
 </script>
 
 :::
@@ -27,7 +27,7 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/donut.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/donut-chart/donut.tsx';
 </script>
 
 :::
@@ -39,7 +39,7 @@ Use `active` property to control segments highlight.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/donut-controlled-highlight.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/donut-chart/donut-controlled-highlight.tsx';
 </script>
 
 :::
@@ -51,7 +51,7 @@ To create a half-size chart, you need to specify the `halfsize` value and reduce
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/semi-donut.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/donut-chart/semi-donut.tsx';
 </script>
 
 :::
@@ -64,7 +64,7 @@ To create a half-size chart, you need to specify the `halfsize` value and reduce
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/edge-cases.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/donut-chart/edge-cases.tsx';
 </script>
 
 :::
@@ -74,7 +74,7 @@ To create a half-size chart, you need to specify the `halfsize` value and reduce
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/edge-cases.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/donut-chart/edge-cases.tsx';
 </script>
 
 :::
@@ -86,7 +86,7 @@ Note that for ChartLegend `patterns` property works only with default `shape={'C
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/legend-and-pattern-fill.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/donut-chart/legend-and-pattern-fill.tsx';
 </script>
 
 :::

@@ -13,7 +13,7 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/basic-usage.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/stacked-area-chart/basic-usage.tsx';
 </script>
 
 :::
@@ -25,7 +25,7 @@ If you need to display a part-to-whole ratio – use the `<StackedArea/>` and `<
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/stacked-area.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/stacked-area-chart/stacked-area.tsx';
 </script>
 
 :::
@@ -39,7 +39,7 @@ If you need to display a part-to-whole ratio – use the `<StackedArea/>` and `<
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/edge-cases.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/stacked-area-chart/edge-cases.tsx';
 </script>
 
 :::
@@ -51,7 +51,7 @@ Note that for ChartLegend `patterns` property works only with default `shape={'C
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/legend-and-pattern-fill.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/stacked-area-chart/legend-and-pattern-fill.tsx';
 </script>
 
 :::

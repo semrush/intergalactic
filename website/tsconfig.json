@@ -23,5 +23,5 @@
       "intergalactic/*": ["../semcore/*"]
     }
   },
-  "include": ["src", "docs", "types", "algoliaConfig.ts"]
+  "include": ["src", "docs", "types", "algoliaConfig.ts", "../stories/components/d3-chart/docs/examples/area-chart"]
 }
