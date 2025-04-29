@@ -25,7 +25,8 @@ test.describe('radial-tree-chart', () => {
   });
 
   test('custom-svg-in-center', async ({ page }) => {
-    const standPath = 'stories/components/d3-chart/docs/examples/radial-tree-chart/custom-svg-in-center.tsx';
+    const standPath =
+      'stories/components/d3-chart/docs/examples/radial-tree-chart/custom-svg-in-center.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);

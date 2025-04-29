@@ -69,7 +69,8 @@ test.describe('bar-chart', () => {
   });
 
   test('legend-and-pattern-fill', async ({ page }) => {
-    const standPath = 'stories/components/d3-chart/docs/examples/bar-chart/legend-and-pattern-fill.tsx';
+    const standPath =
+      'stories/components/d3-chart/docs/examples/bar-chart/legend-and-pattern-fill.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -103,9 +104,9 @@ test.describe('bar-horizontal-chart', () => {
     expect(violations).toEqual([]);
   });
 
-
   test('grouped-horizontal-bars', async ({ page }) => {
-    const standPath = 'stories/components/d3-chart/docs/examples/bar-horizontal/grouped-horizontal-bars.tsx';
+    const standPath =
+      'stories/components/d3-chart/docs/examples/bar-horizontal/grouped-horizontal-bars.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -116,7 +117,8 @@ test.describe('bar-horizontal-chart', () => {
   });
 
   test('legend-and-pattern-fill', async ({ page }) => {
-    const standPath = 'stories/components/d3-chart/docs/examples/bar-horizontal/legend-and-pattern-fill.tsx';
+    const standPath =
+      'stories/components/d3-chart/docs/examples/bar-horizontal/legend-and-pattern-fill.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -128,9 +130,9 @@ test.describe('bar-horizontal-chart', () => {
 });
 
 test.describe('bar-horizontal-compact', () => {
-
   test('basic-usage', async ({ page }) => {
-    const standPath = 'stories/components/d3-chart/docs/examples/bar-horizontal-compact/basic_usage.tsx';
+    const standPath =
+      'stories/components/d3-chart/docs/examples/bar-horizontal-compact/basic_usage.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -140,9 +142,9 @@ test.describe('bar-horizontal-compact', () => {
     expect(violations).toEqual([]);
   });
 
-
   test('clickable-advanced', async ({ page }) => {
-    const standPath = 'stories/components/d3-chart/docs/examples/bar-horizontal-compact/clickable_advanced.tsx';
+    const standPath =
+      'stories/components/d3-chart/docs/examples/bar-horizontal-compact/clickable_advanced.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -153,10 +155,10 @@ test.describe('bar-horizontal-compact', () => {
   });
 });
 
-
 test.describe('stacked-bar-chart', () => {
   test('stacked-bar', async ({ page }) => {
-    const standPath = 'stories/components/d3-chart/docs/examples/stacked-bar-chart/stacked-bar-chart.tsx';
+    const standPath =
+      'stories/components/d3-chart/docs/examples/stacked-bar-chart/stacked-bar-chart.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -176,10 +178,10 @@ test.describe('stacked-bar-chart', () => {
 
     expect(violations).toEqual([]);
   });
-;
 
   test('stacked-grouped-bars', async ({ page }) => {
-    const standPath = 'stories/components/d3-chart/docs/examples/stacked-bar-chart/stacked-grouped-bar.tsx';
+    const standPath =
+      'stories/components/d3-chart/docs/examples/stacked-bar-chart/stacked-grouped-bar.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -189,9 +191,9 @@ test.describe('stacked-bar-chart', () => {
     expect(violations).toEqual([]);
   });
 
-
   test('legend-and-pattern-fill', async ({ page }) => {
-    const standPath = 'stories/components/d3-chart/docs/examples/stacked-bar-chart/legend-and-pattern-fill.tsx';
+    const standPath =
+      'stories/components/d3-chart/docs/examples/stacked-bar-chart/legend-and-pattern-fill.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -203,10 +205,9 @@ test.describe('stacked-bar-chart', () => {
 });
 
 test.describe('stacked-horizontal-bar', () => {
-
-
   test('stacked-horizontal-bar', async ({ page }) => {
-    const standPath = 'stories/components/d3-chart/docs/examples/stacked-horizontal-bar/horizontal-stacked-bar.tsx';
+    const standPath =
+      'stories/components/d3-chart/docs/examples/stacked-horizontal-bar/horizontal-stacked-bar.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -217,7 +218,8 @@ test.describe('stacked-horizontal-bar', () => {
   });
 
   test('legend-and-pattern-fill', async ({ page }) => {
-    const standPath = 'stories/components/d3-chart/docs/examples/stacked-horizontal-bar/legend-and-pattern-fill.tsx';
+    const standPath =
+      'stories/components/d3-chart/docs/examples/stacked-horizontal-bar/legend-and-pattern-fill.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);

@@ -36,7 +36,8 @@ test.describe('area-chart', () => {
   });
 
   test('legend-and-pattern-fill', async ({ page }) => {
-    const standPath = 'stories/components/d3-chart/docs/examples/area-chart/legend-and-pattern-fill.tsx';
+    const standPath =
+      'stories/components/d3-chart/docs/examples/area-chart/legend-and-pattern-fill.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -47,11 +48,10 @@ test.describe('area-chart', () => {
   });
 });
 
-
 test.describe('stacked-area-chart', () => {
-
   test('basic-usage', async ({ page }) => {
-    const standPath = 'stories/components/d3-chart/docs/examples/stacked-area-chart/basic-usage.tsx';
+    const standPath =
+      'stories/components/d3-chart/docs/examples/stacked-area-chart/basic-usage.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -60,7 +60,6 @@ test.describe('stacked-area-chart', () => {
 
     expect(violations).toEqual([]);
   });
-
 
   test('edge-cases', async ({ page }) => {
     const standPath = 'stories/components/d3-chart/docs/examples/stacked-area-chart/edge-cases.tsx';
@@ -74,7 +73,8 @@ test.describe('stacked-area-chart', () => {
   });
 
   test('legend-and-pattern-fill', async ({ page }) => {
-    const standPath = 'stories/components/d3-chart/docs/examples/area-chart/legend-and-pattern-fill.tsx';
+    const standPath =
+      'stories/components/d3-chart/docs/examples/area-chart/legend-and-pattern-fill.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);

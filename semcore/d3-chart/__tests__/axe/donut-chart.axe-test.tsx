@@ -3,7 +3,8 @@ import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 test.describe('donut-chart', () => {
   test('donut-controlled-highlight', async ({ page }) => {
-    const standPath = 'stories/components/d3-chart/docs/examples/donut-chart/donut-controlled-highlight.tsx';
+    const standPath =
+      'stories/components/d3-chart/docs/examples/donut-chart/donut-controlled-highlight.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -25,7 +26,8 @@ test.describe('donut-chart', () => {
   });
 
   test('legend-and-pattern-fill', async ({ page }) => {
-    const standPath = 'stories/components/d3-chart/docs/examples/donut-chart/legend-and-pattern-fill.tsx';
+    const standPath =
+      'stories/components/d3-chart/docs/examples/donut-chart/legend-and-pattern-fill.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);

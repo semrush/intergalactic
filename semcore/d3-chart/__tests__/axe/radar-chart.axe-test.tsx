@@ -25,7 +25,8 @@ test.describe('radar-chart', () => {
   });
 
   test('legend-and-pattern-fill', async ({ page }) => {
-    const standPath = 'stories/components/d3-chart/docs/examples/radar-chart/legend-and-pattern-fill.tsx';
+    const standPath =
+      'stories/components/d3-chart/docs/examples/radar-chart/legend-and-pattern-fill.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
