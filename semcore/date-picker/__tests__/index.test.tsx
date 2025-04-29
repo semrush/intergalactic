@@ -79,7 +79,6 @@ describe('DateRangePicker', () => {
     expect(spy).toBeCalledWith([DateRangePicker.subtract(today, 1, 'day'), today]);
   });
 
-
   test('Verify picker renders correctly if one day is selected', async ({ task }) => {
     const component = (
       <DateRangePicker
@@ -119,8 +118,6 @@ describe('DateRangePicker', () => {
     rerender(<DateRangePicker visible displayedPeriod='2020-04-10T12:00:00.808Z' />);
     expect(getByText('April 2020')).toBeTruthy();
   });
-
-
 
   test('Verify supports set custom displayPeriod after changed value date', () => {
     vi.useFakeTimers();

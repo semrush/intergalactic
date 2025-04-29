@@ -5,18 +5,20 @@ test.describe('MonthRangeComparator range', () => {
   test('Verify roles and attributes', async ({ page }) => {
     const standPath = 'stories/components/date-picker/docs/examples/date_range_comparator.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
-  
+
     await page.setContent(htmlContent);
-  
-    const datePickerTrigger = page.locator('button[data-ui-name="MonthDateRangeComparator.Trigger"]');
-  
+
+    const datePickerTrigger = page.locator(
+      'button[data-ui-name="MonthDateRangeComparator.Trigger"]',
+    );
+
     await test.step('Verify trigger attributes', async () => {
       await expect(datePickerTrigger).toHaveAttribute('tabindex', '0');
       await expect(datePickerTrigger).toHaveAttribute('aria-haspopup', 'dialog');
       await expect(datePickerTrigger).toHaveAttribute('role', 'button');
       await expect(datePickerTrigger).toHaveAttribute('type', 'button');
     });
-  
+
     await test.step('Verify trigger svg attributes', async () => {
       const svg = datePickerTrigger.locator('svg');
       await expect(svg).toHaveAttribute('tabindex', '-1');
@@ -24,33 +26,37 @@ test.describe('MonthRangeComparator range', () => {
       await expect(svg).toHaveAttribute('width', '16');
       await expect(svg).toHaveAttribute('height', '16');
     });
-  
+
     // Trigger click to open the popper
     datePickerTrigger.click();
     const popper = page.locator('[data-ui-name="MonthDateRangeComparator.Popper"]');
-  
+
     await test.step('Verify popper attributes', async () => {
       await expect(popper).toHaveAttribute('tabindex', '0');
       await expect(popper).toHaveAttribute('role', 'dialog');
       await expect(popper).toHaveAttribute('data-popper-placement', 'bottom-start');
     });
-  
+
     await test.step('Verify popper input attributes', async () => {
       const inputValue = page.locator('[data-ui-name="MonthDateRangeComparator.ValueDateRange"]');
       await expect(inputValue.first()).toHaveAttribute('aria-label', 'Date field');
-  
-      const compareValue = page.locator('[data-ui-name="MonthDateRangeComparator.CompareDateRange"]');
+
+      const compareValue = page.locator(
+        '[data-ui-name="MonthDateRangeComparator.CompareDateRange"]',
+      );
       await expect(compareValue.first()).toHaveAttribute('aria-label', 'Date field');
       await expect(compareValue.first()).toHaveAttribute('disabled', '');
-  
+
       const checkbox = page.locator('[data-ui-name="Checkbox.Value"]');
       await expect(checkbox).toHaveAttribute('tabindex', '0');
       await expect(checkbox).toHaveAttribute('type', 'checkbox');
       await expect(checkbox).toHaveAttribute('aria-invalid', 'false');
-  
-      const inputsValue = page.locator('input[data-ui-name="MonthDateRangeComparator.ValueDateRange"]');
+
+      const inputsValue = page.locator(
+        'input[data-ui-name="MonthDateRangeComparator.ValueDateRange"]',
+      );
       const count = await inputsValue.count();
-  
+
       for (let i = 0; i < count; i++) {
         const input = inputsValue.nth(i);
         await expect(input).toHaveAttribute('type', 'text');
@@ -58,10 +64,12 @@ test.describe('MonthRangeComparator range', () => {
         await expect(input).toHaveAttribute('tabindex', '0');
         await expect(input).toHaveAttribute('aria-invalid', 'false');
       }
-  
-      const compareValueInputs = page.locator('input[data-ui-name="MonthDateRangeComparator.CompareDateRange"]');
+
+      const compareValueInputs = page.locator(
+        'input[data-ui-name="MonthDateRangeComparator.CompareDateRange"]',
+      );
       const count1 = await compareValueInputs.count();
-  
+
       for (let i = 0; i < count1; i++) {
         const input = compareValueInputs.nth(i);
         await expect(input).toHaveAttribute('type', 'text');
@@ -69,96 +77,98 @@ test.describe('MonthRangeComparator range', () => {
         await expect(input).toHaveAttribute('tabindex', '-1');
         await expect(input).toHaveAttribute('aria-invalid', 'false');
       }
-  
+
       const calendars = page.locator('[data-name="Calendar"]');
       const count2 = await calendars.count();
-  
+
       for (let i = 0; i < count2; i++) {
         const calendar = calendars.nth(i);
         await expect(calendar).toHaveAttribute('tabindex', '-1');
         await expect(calendar).toHaveAttribute('aria-hidden', 'true');
       }
     });
-  
+
     await test.step('Verify calendar header attributes', async () => {
       const headPrev = page.locator('[data-ui-name="MonthDateRangeComparator.Prev"]');
       await expect(headPrev).toHaveAttribute('tabindex', '0');
       await expect(headPrev).toHaveAttribute('type', 'button');
       await expect(headPrev).toHaveAttribute('aria-label', 'Previous year');
-  
+
       const headTitle = page.locator('[data-ui-name="MonthDateRangeComparator.Title"]');
       await expect(headTitle.first()).toHaveAttribute('aria-live', 'polite');
       await expect(headTitle.nth(1)).toHaveAttribute('aria-live', 'polite');
-  
+
       const headNext = page.locator('[data-ui-name="MonthDateRangeComparator.Next"]');
       await expect(headNext).toHaveAttribute('tabindex', '0');
       await expect(headNext).toHaveAttribute('type', 'button');
       await expect(headNext).toHaveAttribute('aria-label', 'Next year');
     });
-  
+
     await test.step('Verify calendar attributes', async () => {
       const calendars = page.locator('[data-ui-name="MonthDateRangeComparator.Calendar"]');
       const count = await calendars.count();
-  
+
       for (let i = 0; i < count; i++) {
         const calendar = calendars.nth(i);
         await expect(calendar).toHaveAttribute('role', 'grid');
         await expect(calendar).toHaveAttribute('disabled', '');
       }
-  
+
       await expect(calendars.first()).toHaveAttribute('tabindex', '0');
       await expect(calendars.nth(1)).toHaveAttribute('tabindex', '-1');
     });
-  
+
     await test.step('Verify days attributes', async () => {
       const cells = page.locator('[data-ui-name="CalendarMonths.Unit"]');
       const cellCount = await cells.count();
-  
+
       for (let i = 0; i < cellCount; i++) {
         const cell = cells.nth(i);
-  
+
         // Skip empty cells without aria-label
         const ariaLabel = await cell.getAttribute('aria-label');
         if (!ariaLabel) continue;
-  
+
         // Role check
         await expect(cell).toHaveAttribute('role', 'gridcell');
-  
+
         // Other aria attributes check
         await expect(cell).toHaveAttribute('aria-colindex');
         await expect(cell).toHaveAttribute('aria-rowindex');
-  
+
         // Check for disabled/aria-disabled based on the month
         const date = new Date(ariaLabel);
         const month = date.getMonth();
         const isCurrentMonth = month === 5;
-  
+
         const hasDisabledAttr = (await cell.getAttribute('disabled')) !== null;
         const ariaDisabled = await cell.getAttribute('aria-disabled');
-  
+
         if (isCurrentMonth) {
           expect(hasDisabledAttr).toBe(false);
           expect(ariaDisabled).toBe('false');
         }
-  
+
         // Text check
         const text = await cell.textContent();
         expect(text?.trim()).not.toBe('');
       }
     });
-  
+
     const period = page.locator('[data-ui-name="MonthDateRangeComparator.Periods.Options"]');
-  
+
     await test.step('Verify Period attributes', async () => {
       await expect(period).toHaveAttribute('role', 'listbox');
       await expect(period).toHaveAttribute('aria-label', 'Presets');
     });
-  
-    const periodButtons = page.locator('[data-ui-name="MonthDateRangeComparator.Periods.Options"] button');
-  
+
+    const periodButtons = page.locator(
+      '[data-ui-name="MonthDateRangeComparator.Periods.Options"] button',
+    );
+
     await test.step('Verify Period buttons attributes', async () => {
       const count = await periodButtons.count();
-  
+
       for (let i = 0; i < count; i++) {
         const button = periodButtons.nth(i);
         await expect(button).toHaveAttribute('type', 'button');
@@ -166,47 +176,47 @@ test.describe('MonthRangeComparator range', () => {
         await expect(button).toHaveAttribute('tabindex', '0');
       }
     });
-  
+
     await test.step('Verify Apply button attributes', async () => {
       const apply = page.locator('[data-ui-name="MonthDateRangeComparator.Apply"]');
       await expect(apply).toHaveAttribute('type', 'button');
       await expect(apply).toHaveAttribute('tabindex', '0');
     });
-  
+
     await test.step('Verify Reset button attributes', async () => {
       const reset = page.locator('[data-ui-name="MonthDateRangeComparator.Reset"]');
       await expect(reset).toHaveAttribute('type', 'button');
       await expect(reset).toHaveAttribute('tabindex', '0');
     });
   });
-  
+
   test('Verify month range comparator styles', async ({ page }) => {
     const standPath = 'stories/components/date-picker/docs/examples/date_range_comparator.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
-  
+
     await page.setContent(htmlContent);
-  
+
     const trigger = page.locator('[data-ui-name="MonthDateRangeComparator.Trigger"]');
     const header = page.locator('[data-ui-name="MonthDateRangeComparator.Header"]');
     const calendars = page.locator('[data-name="Calendar"]');
     const cells = page.locator('[data-ui-name="CalendarMonths.Unit"]');
     const apply = page.locator('[data-ui-name="MonthDateRangeComparator.Apply"]');
-  
+
     const checkStyle = async (element: any, expectedStyles: Record<string, string>) => {
       for (const [property, expectedValue] of Object.entries(expectedStyles)) {
         const actualValue = await element.evaluate(
-          (el:any, property:any) => getComputedStyle(el)[property],
-          property
+          (el: any, property: any) => getComputedStyle(el)[property],
+          property,
         );
         expect(actualValue).toBe(expectedValue);
       }
     };
-  
+
     await trigger.click();
-  
+
     await test.step('Verify header and calendar styles', async () => {
       await checkStyle(header, { padding: '16px' });
-  
+
       const count = await calendars.count();
       for (let i = 0; i < count; i++) {
         const calendar = calendars.nth(i);
@@ -218,7 +228,7 @@ test.describe('MonthRangeComparator range', () => {
         });
       }
     });
-  
+
     await test.step('Verify style of available date', async () => {
       const cell = cells.nth(2);
       await checkStyle(cell, {
@@ -227,22 +237,24 @@ test.describe('MonthRangeComparator range', () => {
         margin: '4px 0px 0px',
       });
     });
-  
+
     await cells.nth(10).click();
     await cells.nth(11).click();
     await apply.click();
-  
+
     await trigger.click();
-  
+
     await test.step('Verify style of selected date', async () => {
-      const selectedCell = page.locator('[data-ui-name="CalendarMonths.Unit"][class*="Selected"]').nth(0);
+      const selectedCell = page
+        .locator('[data-ui-name="CalendarMonths.Unit"][class*="Selected"]')
+        .nth(0);
       await checkStyle(selectedCell, {
         margin: '4px 0px 0px',
         width: '60px',
         height: '32px',
       });
     });
-  
+
     await test.step('Verify style for Apply picker button', async () => {
       await checkStyle(apply, {
         color: 'rgb(255, 255, 255)',
@@ -250,23 +262,23 @@ test.describe('MonthRangeComparator range', () => {
       });
     });
   });
-  
+
   function formatAriaLabelToInputValue(ariaLabel: string | null): string {
     if (!ariaLabel) {
       throw new Error('aria-label is null');
     }
-  
+
     // Парсим дату через стандартный Date
     const parsedDate = new Date(ariaLabel);
-  
+
     if (isNaN(parsedDate.getTime())) {
       throw new Error(`Invalid aria-label date: ${ariaLabel}`);
     }
-  
+
     const month = (parsedDate.getMonth() + 1).toString().padStart(2, '0'); // getMonth() возвращает 0–11
     const day = parsedDate.getDate().toString().padStart(2, '0');
     const year = parsedDate.getFullYear().toString();
-  
+
     return `${month}/${year}`;
   }
 
@@ -287,7 +299,7 @@ test.describe('MonthRangeComparator range', () => {
     const inputFrom = page.locator('input[data-ui-name="MonthDateRangeComparator.ValueDateRange"]');
     const to = page.locator('[data-ui-name="MonthDateRangeComparator.CompareDateRange"]').first();
     const inputTo = page.locator('input[data-ui-name="MonthDateRangeComparator.CompareDateRange"]');
-const toggle = page.locator('[data-ui-name="MonthDateRangeComparator.CompareToggle"]');
+    const toggle = page.locator('[data-ui-name="MonthDateRangeComparator.CompareToggle"]');
     const apply = page.locator('[data-ui-name="MonthDateRangeComparator.Apply"]');
     const reset = page.locator('[data-ui-name="MonthDateRangeComparator.Reset"]');
 
@@ -319,17 +331,16 @@ const toggle = page.locator('[data-ui-name="MonthDateRangeComparator.CompareTogg
 
     await cells.nth(10).click();
     const inputValue_1 = await inputFrom.nth(0).inputValue();
-    const inputValue_2 = await inputFrom.nth(1).inputValue()
+    const inputValue_2 = await inputFrom.nth(1).inputValue();
     const calendarAriaLabel = await cells.nth(10).getAttribute('aria-label'); // например, "Apr 11, 2025"
     const expectedInputValue = formatAriaLabelToInputValue(calendarAriaLabel);
 
     await expect(inputValue_1).toBe(expectedInputValue);
-    await expect(inputValue_2).toBe("");
-
+    await expect(inputValue_2).toBe('');
 
     await expect(popper).toBeVisible();
     await cells.nth(15).click();
-    const inputValue_22 = await inputFrom.nth(1).inputValue()
+    const inputValue_22 = await inputFrom.nth(1).inputValue();
 
     const calendarAriaLabel22 = await cells.nth(15).getAttribute('aria-label'); // например, "Apr 11, 2025"
     const expectedInputValue22 = formatAriaLabelToInputValue(calendarAriaLabel22);
@@ -340,58 +351,53 @@ const toggle = page.locator('[data-ui-name="MonthDateRangeComparator.CompareTogg
     await cells.nth(15).click();
     await page.waitForTimeout(300);
     const inputValue15_1 = await inputFrom.nth(0).inputValue();
-    const inputValue15_2 = await inputFrom.nth(1).inputValue()
+    const inputValue15_2 = await inputFrom.nth(1).inputValue();
 
     await expect(inputValue15_1).toBe(expectedInputValue22);
-    await expect(inputValue15_2).toBe("");
-
+    await expect(inputValue15_2).toBe('');
 
     await cells.nth(15).click();
     const inputValue_15_3 = await inputFrom.nth(0).inputValue();
-    const inputValue15_3 = await inputFrom.nth(1).inputValue()
+    const inputValue15_3 = await inputFrom.nth(1).inputValue();
     await expect(inputValue_15_3).toBe(expectedInputValue22);
     await expect(inputValue15_3).toBe(expectedInputValue22);
 
-
     await toggle.click();
-
 
     await cells.nth(5).click();
     const inputValueTo_1 = await inputTo.nth(0).inputValue();
-    const inputValueTo_2 = await inputTo.nth(1).inputValue()
+    const inputValueTo_2 = await inputTo.nth(1).inputValue();
 
     const calendarAriaLabel_1 = await cells.nth(5).getAttribute('aria-label'); // например, "Apr 11, 2025"
     const expectedInputValue50 = formatAriaLabelToInputValue(calendarAriaLabel_1);
 
-
     await expect(inputValueTo_1).toBe(expectedInputValue50);
-    await expect(inputValueTo_2).toBe("");
+    await expect(inputValueTo_2).toBe('');
 
     await cells.nth(8).click();
 
-    
     const inputValueTo_11 = await inputTo.nth(0).inputValue();
-    const inputValueTo_21 = await inputTo.nth(1).inputValue()
+    const inputValueTo_21 = await inputTo.nth(1).inputValue();
 
     const calendarAriaLabel_2 = await cells.nth(8).getAttribute('aria-label'); // например, "Apr 11, 2025"
     const expectedInputValue55 = formatAriaLabelToInputValue(calendarAriaLabel_2);
 
-
     await expect(inputValueTo_11).toBe(expectedInputValue50);
     await expect(inputValueTo_21).toBe(expectedInputValue55);
 
-
     await apply.click();
     await expect(popper).not.toBeVisible();
-    await expect (page.locator('[data-ui-name="LinkTrigger.Text"]').nth(1)).not.toHaveText('Select date ranges');
-
+    await expect(page.locator('[data-ui-name="LinkTrigger.Text"]').nth(1)).not.toHaveText(
+      'Select date ranges',
+    );
 
     await datePicker.click();
     await page.waitForTimeout(200);
     await reset.click();
     await expect(popper).not.toBeVisible();
-    await expect (page.locator('[data-ui-name="LinkTrigger.Text"]').nth(1)).toHaveText('Select date ranges');
-
+    await expect(page.locator('[data-ui-name="LinkTrigger.Text"]').nth(1)).toHaveText(
+      'Select date ranges',
+    );
 
     await datePicker.click();
     await page.waitForTimeout(200);
@@ -399,7 +405,9 @@ const toggle = page.locator('[data-ui-name="MonthDateRangeComparator.CompareTogg
     await expect(popper).toBeVisible();
     await apply.click();
     await expect(popper).not.toBeVisible();
-    await expect(page.locator('[data-ui-name="LinkTrigger.Text"]').nth(1)).not.toHaveText('Select date ranges');
+    await expect(page.locator('[data-ui-name="LinkTrigger.Text"]').nth(1)).not.toHaveText(
+      'Select date ranges',
+    );
 
     await datePicker.click();
     await page.waitForTimeout(200);
@@ -415,8 +423,6 @@ const toggle = page.locator('[data-ui-name="MonthDateRangeComparator.CompareTogg
     await datePicker.click();
     await page.waitForTimeout(200);
     await expect(page).toHaveScreenshot();
-
-
   });
 
   test('Month range comparator keyboard interactions', async ({ page, browserName }) => {
@@ -492,7 +498,9 @@ const toggle = page.locator('[data-ui-name="MonthDateRangeComparator.CompareTogg
     expect(titleAfterSecondEnterTo).toBe(initialTitleTo);
 
     await page.keyboard.press('Shift+Tab');
-    await expect(page.locator('[data-ui-name="MonthDateRangeComparator.Calendar"]').first()).toBeFocused();
+    await expect(
+      page.locator('[data-ui-name="MonthDateRangeComparator.Calendar"]').first(),
+    ).toBeFocused();
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
@@ -519,7 +527,7 @@ const toggle = page.locator('[data-ui-name="MonthDateRangeComparator.CompareTogg
 
     const initialValueFrom1_1 = await inputFrom.nth(0).inputValue();
     const initialValueFrom2_1 = await inputFrom.nth(1).inputValue();
-  
+
     expect(initialValueFrom1_1).toBe(initialValueFrom);
     expect(initialValueFrom2_1).toBe(initialValueFrom2);
 
@@ -529,24 +537,21 @@ const toggle = page.locator('[data-ui-name="MonthDateRangeComparator.CompareTogg
 
     const initialValueFrom1_2 = await inputFrom.nth(0).inputValue();
     const initialValueFrom2_2 = await inputFrom.nth(1).inputValue();
-  
+
     expect(initialValueFrom1_2).not.toBe(initialValueFrom1_1);
     expect(initialValueFrom2_2).toBe(initialValueFrom2_1);
 
     await page.keyboard.press('ArrowRight');
     await page.keyboard.press('ArrowRight');
 
-  
     await page.keyboard.press('Space');
     await page.waitForTimeout(100);
 
     const initialValueFrom1_3 = await inputFrom.nth(0).inputValue();
     const initialValueFrom2_3 = await inputFrom.nth(1).inputValue();
 
-
     expect(initialValueFrom1_3).toBe(initialValueFrom1_2);
     expect(initialValueFrom2_3).not.toBe(initialValueFrom2_2);
-
 
     await page.keyboard.press('Shift+Tab');
     await page.keyboard.press('Shift+Tab');
@@ -555,8 +560,9 @@ const toggle = page.locator('[data-ui-name="MonthDateRangeComparator.CompareTogg
     await page.keyboard.press('Space');
     await page.waitForTimeout(100);
 
-    await expect(page.locator('[data-ui-name="MonthDateRangeComparator.CompareDateRange"]').nth(1)).toHaveClass(/focused/);
-
+    await expect(
+      page.locator('[data-ui-name="MonthDateRangeComparator.CompareDateRange"]').nth(1),
+    ).toHaveClass(/focused/);
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
@@ -566,7 +572,7 @@ const toggle = page.locator('[data-ui-name="MonthDateRangeComparator.CompareTogg
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
-    
+
     await page.keyboard.press('Enter');
     await page.keyboard.press('ArrowLeft');
 
@@ -574,7 +580,6 @@ const toggle = page.locator('[data-ui-name="MonthDateRangeComparator.CompareTogg
     const initialValueTo2 = await inputTo.nth(1).inputValue();
     await page.keyboard.press('ArrowUp');
     await page.keyboard.press('Space');
-
 
     const initialValueTo1_1 = await inputTo.nth(0).inputValue();
     const initialValueTo2_1 = await inputTo.nth(1).inputValue();
@@ -596,10 +601,8 @@ const toggle = page.locator('[data-ui-name="MonthDateRangeComparator.CompareTogg
     const initialValueFrom1_4 = await inputFrom.nth(0).inputValue();
     const initialValueFrom2_4 = await inputFrom.nth(1).inputValue();
 
-
     expect(initialValueFrom1_4).toBe(initialValueFrom1_3);
     expect(initialValueFrom2_4).toBe(initialValueFrom2_3);
-
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
@@ -613,14 +616,12 @@ const toggle = page.locator('[data-ui-name="MonthDateRangeComparator.CompareTogg
     await page.waitForTimeout(50);
     await expect(popper).not.toBeVisible();
 
-
-    await expect (page.locator('[data-ui-name="LinkTrigger.Text"]').nth(1)).not.toHaveText('Select date ranges');
-
-
+    await expect(page.locator('[data-ui-name="LinkTrigger.Text"]').nth(1)).not.toHaveText(
+      'Select date ranges',
+    );
 
     await page.keyboard.press('Enter');
     await page.waitForTimeout(300);
-
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
@@ -643,14 +644,16 @@ const toggle = page.locator('[data-ui-name="MonthDateRangeComparator.CompareTogg
 
     await page.waitForTimeout(300);
 
-    await expect (page.locator('[data-ui-name="LinkTrigger.Text"]').nth(1)).toHaveText('Select date ranges');
-
+    await expect(page.locator('[data-ui-name="LinkTrigger.Text"]').nth(1)).toHaveText(
+      'Select date ranges',
+    );
   });
 });
 
 test.describe('Month Range comparator with advanced use', () => {
   test('Verify mouse intearctions and styles of advanced use', async ({ page }) => {
-    const standPath = 'stories/components/date-picker/docs/examples/month_range_comparator_advanced_use.tsx';
+    const standPath =
+      'stories/components/date-picker/docs/examples/month_range_comparator_advanced_use.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -665,7 +668,7 @@ test.describe('Month Range comparator with advanced use', () => {
     const inputFrom = page.locator('input[data-ui-name="MonthDateRangeComparator.ValueDateRange"]');
     const to = page.locator('[data-ui-name="MonthDateRangeComparator.CompareDateRange"]').first();
     const inputTo = page.locator('input[data-ui-name="MonthDateRangeComparator.CompareDateRange"]');
-const toggle = page.locator('[data-ui-name="MonthDateRangeComparator.CompareToggle"]');
+    const toggle = page.locator('[data-ui-name="MonthDateRangeComparator.CompareToggle"]');
     const apply = page.locator('[data-ui-name="MonthDateRangeComparator.Apply"]');
     const reset = page.locator('[data-ui-name="MonthDateRangeComparator.Reset"]');
 
@@ -675,21 +678,18 @@ const toggle = page.locator('[data-ui-name="MonthDateRangeComparator.CompareTogg
     await page.keyboard.press('Enter');
 
     await from.click();
- await inputFrom.first().fill('052024');
- await inputFrom.nth(1).fill('072024');
- 
- await toggle.click();
- await to.click();
- await inputTo.first().fill('012025');
- await inputTo.nth(1).fill('082025');
+    await inputFrom.first().fill('052024');
+    await inputFrom.nth(1).fill('072024');
 
- await apply.click();
+    await toggle.click();
+    await to.click();
+    await inputTo.first().fill('012025');
+    await inputTo.nth(1).fill('082025');
 
- await datePicker.click();
+    await apply.click();
 
-//snapshot
+    await datePicker.click();
 
-    
+    //snapshot
   });
 });
-
