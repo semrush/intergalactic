@@ -375,7 +375,7 @@ test.describe('Date range with standart ranges', () => {
       throw new Error(`Invalid aria-label date: ${ariaLabel}`);
     }
 
-    const month = (parsedDate.getMonth() + 1).toString().padStart(2, '0'); 
+    const month = (parsedDate.getMonth() + 1).toString().padStart(2, '0');
     const day = parsedDate.getDate().toString().padStart(2, '0');
     const year = parsedDate.getFullYear().toString();
 

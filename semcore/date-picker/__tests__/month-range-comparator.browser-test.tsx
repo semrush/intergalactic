@@ -210,7 +210,6 @@ test.describe('MonthRangeComparator range', () => {
     await trigger.click();
     await page.waitForTimeout(300);
 
-
     await test.step('Verify header and calendar styles', async () => {
       await checkStyle(header, { padding: '16px' });
 
@@ -271,7 +270,7 @@ test.describe('MonthRangeComparator range', () => {
       throw new Error(`Invalid aria-label date: ${ariaLabel}`);
     }
 
-    const month = (parsedDate.getMonth() + 1).toString().padStart(2, '0'); 
+    const month = (parsedDate.getMonth() + 1).toString().padStart(2, '0');
     const day = parsedDate.getDate().toString().padStart(2, '0');
     const year = parsedDate.getFullYear().toString();
 
@@ -321,7 +320,7 @@ test.describe('MonthRangeComparator range', () => {
     await cells.nth(10).click();
     const inputValue_1 = await inputFrom.nth(0).inputValue();
     const inputValue_2 = await inputFrom.nth(1).inputValue();
-    const calendarAriaLabel = await cells.nth(10).getAttribute('aria-label'); 
+    const calendarAriaLabel = await cells.nth(10).getAttribute('aria-label');
     const expectedInputValue = formatAriaLabelToInputValue(calendarAriaLabel);
 
     await expect(inputValue_1).toBe(expectedInputValue);
@@ -331,7 +330,7 @@ test.describe('MonthRangeComparator range', () => {
     await cells.nth(15).click();
     const inputValue_22 = await inputFrom.nth(1).inputValue();
 
-    const calendarAriaLabel22 = await cells.nth(15).getAttribute('aria-label'); 
+    const calendarAriaLabel22 = await cells.nth(15).getAttribute('aria-label');
     const expectedInputValue22 = formatAriaLabelToInputValue(calendarAriaLabel22);
     await expect(inputValue_22).toBe(expectedInputValue22);
 
@@ -357,7 +356,7 @@ test.describe('MonthRangeComparator range', () => {
     const inputValueTo_1 = await inputTo.nth(0).inputValue();
     const inputValueTo_2 = await inputTo.nth(1).inputValue();
 
-    const calendarAriaLabel_1 = await cells.nth(5).getAttribute('aria-label'); 
+    const calendarAriaLabel_1 = await cells.nth(5).getAttribute('aria-label');
     const expectedInputValue50 = formatAriaLabelToInputValue(calendarAriaLabel_1);
 
     await expect(inputValueTo_1).toBe(expectedInputValue50);
@@ -368,7 +367,7 @@ test.describe('MonthRangeComparator range', () => {
     const inputValueTo_11 = await inputTo.nth(0).inputValue();
     const inputValueTo_21 = await inputTo.nth(1).inputValue();
 
-    const calendarAriaLabel_2 = await cells.nth(8).getAttribute('aria-label'); 
+    const calendarAriaLabel_2 = await cells.nth(8).getAttribute('aria-label');
     const expectedInputValue55 = formatAriaLabelToInputValue(calendarAriaLabel_2);
 
     await expect(inputValueTo_11).toBe(expectedInputValue50);
@@ -657,7 +656,6 @@ test.describe('Month Range comparator with advanced use', () => {
     const toggle = page.locator('[data-ui-name="MonthDateRangeComparator.CompareToggle"]');
     const apply = page.locator('[data-ui-name="MonthDateRangeComparator.Apply"]');
 
-
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
 
@@ -675,7 +673,5 @@ test.describe('Month Range comparator with advanced use', () => {
     await datePicker.click();
     await page.waitForTimeout(300);
     await expect(page).toHaveScreenshot();
-
-
   });
 });

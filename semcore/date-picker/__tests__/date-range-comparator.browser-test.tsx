@@ -535,7 +535,7 @@ test.describe('DateRangeComparator range', () => {
 
     await test.step('Open and close calendar using keyboard', async () => {
       await page.keyboard.press('Tab');
-      
+
       await page.keyboard.press('Enter');
       await page.waitForTimeout(300);
       await page.keyboard.press('Tab');
@@ -770,7 +770,7 @@ test.describe('Date Range comparator with advanced use', () => {
 
 test.describe('Date range comparator props', () => {
   test('Verify all date range comparator props work good', async ({ page, browserName }) => {
-    if(browserName==='webkit')return;//skipped for webkit because of unstable focus outline on the dialog
+    if (browserName === 'webkit') return; //skipped for webkit because of unstable focus outline on the dialog
     const standPath =
       'stories/components/date-picker/tests/examples/date-range-comparator-props.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -794,6 +794,5 @@ test.describe('Date range comparator props', () => {
 
     await cells.nth(20).hover();
     await expect(page).toHaveScreenshot();
-   
   });
 });

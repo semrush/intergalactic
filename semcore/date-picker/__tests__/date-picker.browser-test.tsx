@@ -595,7 +595,7 @@ test.describe('DayPicker with custom days', () => {
 
       for (const { name, value } of weekDaysAttributes) {
         const parentRole = await weekDaysRow.getAttribute(name);
-        expect(parentRole).toBe(value); 
+        expect(parentRole).toBe(value);
       }
 
       const weekDays = weekDaysRow.locator('[data-ui-name="CalendarWeekDays.Unit"]');
@@ -604,7 +604,7 @@ test.describe('DayPicker with custom days', () => {
         await expect(day).toHaveAttribute('role', 'columnheader');
         await expect(day).toHaveAttribute('aria-label', daysOfWeek[i]);
         const dayText = await day.textContent();
-        expect(dayText).toBe(daysOfWeek[i].slice(0, 3)); 
+        expect(dayText).toBe(daysOfWeek[i].slice(0, 3));
       }
     });
 
@@ -639,7 +639,7 @@ test.describe('DayPicker with custom days', () => {
           expect(ariaDisabled).toBe('false');
         } else {
           expect(hasDisabledAttr).toBe(true);
-          expect(ariaDisabled).toBe('false'); 
+          expect(ariaDisabled).toBe('false');
         }
 
         const text = await cell.textContent();
