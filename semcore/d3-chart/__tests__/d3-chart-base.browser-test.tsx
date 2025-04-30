@@ -127,153 +127,138 @@ test.describe('Chart Plot', () => {
 });
 
 test.describe('Axes and Grids', () => {
-  test('Verify attributes of all <text> elements in the chart ', async ({
-    page,
-  }) => {
+  test('Verify attributes of all <text> elements in the chart ', async ({ page }) => {
     const standPath = 'stories/components/d3-chart/tests/examples/d3-chart/grid-axis-props.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
-    const svgs = page.locator('svg')
+    const svgs = page.locator('svg');
     for (let i = 0; i < 2; i++) {
-    const svg= svgs.nth(i);
-    const lines = svg.locator('text');
+      const svg = svgs.nth(i);
+      const lines = svg.locator('text');
 
-  const count = await lines.count();
-  expect(count).toBeGreaterThan(0); 
+      const count = await lines.count();
+      expect(count).toBeGreaterThan(0);
 
-  for (let i = 0; i < count; i++) {
-    const line = lines.nth(i);
+      for (let i = 0; i < count; i++) {
+        const line = lines.nth(i);
 
-    await expect(line).toHaveAttribute('aria-hidden', 'true');
-    await expect(line).toHaveAttribute('data-ui-name', 'Axis.Ticks');
+        await expect(line).toHaveAttribute('aria-hidden', 'true');
+        await expect(line).toHaveAttribute('data-ui-name', 'Axis.Ticks');
 
-    const x = await line.getAttribute('x');
-    const y = await line.getAttribute('y');
+        const x = await line.getAttribute('x');
+        const y = await line.getAttribute('y');
 
-    expect(x).not.toBeNull();
-    expect(y).not.toBeNull();
+        expect(x).not.toBeNull();
+        expect(y).not.toBeNull();
+      }
+    }
 
-  }
-}
+    for (let i = 0; i < 1; i++) {
+      const svg = svgs.nth(i);
+      const lines = svg.locator('line');
 
-for (let i = 0; i < 1; i++) {
-  const svg= svgs.nth(i);
-  const lines = svg.locator('line');
+      const count = await lines.count();
+      expect(count).toBeGreaterThan(0);
 
-const count = await lines.count();
-expect(count).toBeGreaterThan(0); 
+      for (let i = 0; i < count; i++) {
+        const line = lines.nth(i);
 
-for (let i = 0; i < count; i++) {
-  const line = lines.nth(i);
+        await expect(line).toHaveAttribute('aria-hidden', 'true');
+        await expect(line).toHaveAttribute('data-ui-name', 'Axis');
 
-  await expect(line).toHaveAttribute('aria-hidden', 'true');
-  await expect(line).toHaveAttribute('data-ui-name', 'Axis');
+        const x1 = await line.getAttribute('x1');
+        const y1 = await line.getAttribute('y1');
 
-  const x1 = await line.getAttribute('x1');
-  const y1 = await line.getAttribute('y1');
+        expect(x1).not.toBeNull();
+        expect(y1).not.toBeNull();
+      }
+    }
 
-  expect(x1).not.toBeNull();
-  expect(y1).not.toBeNull();
-}
-}
+    const titles = svgs.nth(4).locator('[data-ui-name="Axis.Title"]');
 
-const titles = svgs.nth(4).locator('[data-ui-name="Axis.Title"]');
+    const count = await titles.count();
+    expect(count).toBeGreaterThan(0);
 
-const count = await titles.count();
-expect(count).toBeGreaterThan(0); 
+    for (let i = 0; i < count; i++) {
+      const title = titles.nth(i);
 
-for (let i = 0; i < count; i++) {
-  const title = titles.nth(i);
+      await expect(title).toHaveAttribute('aria-hidden', 'true');
 
-  await expect(title).toHaveAttribute('aria-hidden', 'true');
+      const x1 = await title.getAttribute('x');
+      const y1 = await title.getAttribute('y');
 
-  const x1 = await title.getAttribute('x');
-  const y1 = await title.getAttribute('y');
+      expect(x1).not.toBeNull();
+      expect(y1).not.toBeNull();
+    }
 
-  expect(x1).not.toBeNull();
-  expect(y1).not.toBeNull();
-}
+    const grids = svgs.nth(4).locator('[data-ui-name="Axis.Grid"]');
 
+    const count1 = await grids.count();
+    expect(count1).toBeGreaterThan(0);
 
-const grids = svgs.nth(4).locator('[data-ui-name="Axis.Grid"]');
+    for (let i = 0; i < count1; i++) {
+      const grid = grids.nth(i);
 
-const count1 = await grids.count();
-expect(count1).toBeGreaterThan(0); 
+      await expect(grid).toHaveAttribute('aria-hidden', 'true');
 
-for (let i = 0; i < count1; i++) {
-  const grid = grids.nth(i);
+      const x1 = await grid.getAttribute('x1');
+      const y1 = await grid.getAttribute('y1');
 
-  await expect(grid).toHaveAttribute('aria-hidden', 'true');
-
-  const x1 = await grid.getAttribute('x1');
-  const y1 = await grid.getAttribute('y1');
-
-  expect(x1).not.toBeNull();
-  expect(y1).not.toBeNull();
-}
+      expect(x1).not.toBeNull();
+      expect(y1).not.toBeNull();
+    }
   });
 });
 
-
 test.describe('Reference Lines', () => {
-  test('Verify attributes reference lines ', async ({
-    page,
-  }) => {
-    const standPath = 'stories/components/d3-chart/tests/examples/d3-chart/reference-line-props.tsx';
+  test('Verify attributes reference lines ', async ({ page }) => {
+    const standPath =
+      'stories/components/d3-chart/tests/examples/d3-chart/reference-line-props.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
-    const svgs = page.locator('svg')
+    const svgs = page.locator('svg');
 
-const referebceLines = svgs.first().locator('[data-ui-name="ReferenceLine"]');
+    const referebceLines = svgs.first().locator('[data-ui-name="ReferenceLine"]');
 
-const referenceLine = await referebceLines.first();
-await expect(referenceLine).toHaveAttribute('aria-hidden', 'true');
-await expect(referenceLine).toHaveAttribute('title', 'Left data');
+    const referenceLine = await referebceLines.first();
+    await expect(referenceLine).toHaveAttribute('aria-hidden', 'true');
+    await expect(referenceLine).toHaveAttribute('title', 'Left data');
 
-const referebceTitles = svgs.first().locator('[data-ui-name="ReferenceLine.Title"]');
+    const referebceTitles = svgs.first().locator('[data-ui-name="ReferenceLine.Title"]');
 
-const referenceTitle = await referebceTitles.first();
-await expect(referenceTitle).toHaveAttribute('aria-hidden', 'true');
-await expect(referenceTitle).toHaveAttribute('value', 'Category 0');
+    const referenceTitle = await referebceTitles.first();
+    await expect(referenceTitle).toHaveAttribute('aria-hidden', 'true');
+    await expect(referenceTitle).toHaveAttribute('value', 'Category 0');
 
-const background = await svgs.first().locator('rect').nth(1);
-await expect(background).toHaveAttribute('aria-hidden', 'true');
-await expect(background).toHaveAttribute('value', 'Category 3');
+    const background = await svgs.first().locator('rect').nth(1);
+    await expect(background).toHaveAttribute('aria-hidden', 'true');
+    await expect(background).toHaveAttribute('value', 'Category 3');
 
-//add snapshot here!
-
+    //add snapshot here!
   });
 });
 
-
 test.describe('Adaptive chart', () => {
-  test('Verify chart looks good on small resolutions ', async ({
-    page,
-  }) => {
+  test('Verify chart looks good on small resolutions ', async ({ page }) => {
     const standPath = 'stories/components/d3-chart/tests/examples/d3-chart/adaptive-зкщзы.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
     await page.setViewportSize({ width: 768, height: 1024 });
 
+    //add snapshot here!
 
-
-//add snapshot here!
-
-await page.setViewportSize({ width: 375, height: 667 });
-//add snapshot here!
-
+    await page.setViewportSize({ width: 375, height: 667 });
+    //add snapshot here!
   });
 });
 
-
 test.describe('Hover Line and Tooltip', () => {
-  test('Verify Tooltip and Hover Line appearing and styles by hover ', async ({
-    page,
-  }) => {
-    const standPath = 'stories/components/d3-chart/tests/examples/d3-chart/tooltip-and-hover-line.tsx';
+  test('Verify Tooltip and Hover Line appearing and styles by hover ', async ({ page }) => {
+    const standPath =
+      'stories/components/d3-chart/tests/examples/d3-chart/tooltip-and-hover-line.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
@@ -282,12 +267,9 @@ test.describe('Hover Line and Tooltip', () => {
     const dots = page.locator('[data-ui-name="Line.Dots"]');
     dots.nth(3).hover();
     await page.waitForTimeout(100);
-
   });
 
-  test('Verify Tooltip controlled appering', async ({
-    page,
-  }) => {
+  test('Verify Tooltip controlled appering', async ({ page }) => {
     const standPath = 'stories/components/d3-chart/docs/examples/d3-chart/tooltip-control.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
@@ -300,12 +282,9 @@ test.describe('Hover Line and Tooltip', () => {
     await expect(text).not.toBeVisible();
     dots.first().hover();
     await expect(text).toHaveCount(1);
-
   });
 
-  test('Verify synscronous charts by EventEmitter', async ({
-    page,
-  }) => {
+  test('Verify synscronous charts by EventEmitter', async ({ page }) => {
     const standPath = 'stories/components/d3-chart/docs/examples/d3-chart/synchronous-charts.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
@@ -320,100 +299,76 @@ test.describe('Hover Line and Tooltip', () => {
 
     bars.nth(3).hover();
     //snapshot
-
-
   });
 });
 
 test.describe('Pattern fills, dots and lines', () => {
-  test('Verify pattern styles and functionality ', async ({
-    page,
-  }) => {
+  test('Verify pattern styles and functionality ', async ({ page }) => {
     const standPath = 'stories/components/d3-chart/docs/examples/d3-chart/pattern-fill.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
-    const patterns  = page.locator('pattern');
-
+    const patterns = page.locator('pattern');
 
     const count = await patterns.count();
-expect(count).toBe(3); 
+    expect(count).toBe(3);
 
-for (let i = 0; i < count; i++) {
-  const pattern = patterns.nth(i);
+    for (let i = 0; i < count; i++) {
+      const pattern = patterns.nth(i);
 
-  await expect(pattern).toHaveAttribute('patternUnits', 'userSpaceOnUse');
-  await expect(pattern).toHaveAttribute('width', '12');
-  await expect(pattern).toHaveAttribute('height', '12');
-  await expect(pattern).toHaveAttribute('x', '0');
-  await expect(pattern).toHaveAttribute('y', '0');
+      await expect(pattern).toHaveAttribute('patternUnits', 'userSpaceOnUse');
+      await expect(pattern).toHaveAttribute('width', '12');
+      await expect(pattern).toHaveAttribute('height', '12');
+      await expect(pattern).toHaveAttribute('x', '0');
+      await expect(pattern).toHaveAttribute('y', '0');
+    }
+    //add snapshot here!
 
-}
-//add snapshot here!
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+    const count2 = await patterns.count();
+    expect(count2).toBe(2);
 
-await page.keyboard.press('Tab');
-await page.keyboard.press('Tab');
-await page.keyboard.press('Enter');
-const count2 = await patterns.count();
-expect(count2).toBe(2); 
-
-
-//add snapshot here!
-
-
+    //add snapshot here!
   });
 
-  test('Verify enforcing patternd', async ({
-    page,
-  }) => {
+  test('Verify enforcing patternd', async ({ page }) => {
     const standPath = 'stories/components/d3-chart/docs/examples/d3-chart/enforcing-patterns.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
     const svg = await page.locator('svg[data-ui-name="Plot"]');
 
-  // Ждём появления SVG на странице
-  await expect(svg).toBeVisible();
+    // Ждём появления SVG на странице
+    await expect(svg).toBeVisible();
 
-  // Получаем размеры SVG
-  const box = await svg.boundingBox();
-  if (!box) throw new Error('SVG bounding box not found');
+    // Получаем размеры SVG
+    const box = await svg.boundingBox();
+    if (!box) throw new Error('SVG bounding box not found');
 
-  const centerX = box.x + box.width / 2;
-  const centerY = box.y + box.height / 2;
+    const centerX = box.x + box.width / 2;
+    const centerY = box.y + box.height / 2;
 
-  // Наводим курсор в центр SVG
-  await page.mouse.move(centerX, centerY);
-//add snapshot here!
-
+    // Наводим курсор в центр SVG
+    await page.mouse.move(centerX, centerY);
+    //add snapshot here!
   });
 
-  test('Verify custom patterns', async ({
-    page,
-  }) => {
+  test('Verify custom patterns', async ({ page }) => {
     const standPath = 'stories/components/d3-chart/docs/examples/d3-chart/custom-patterns.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
-
-
-//add snapshot here!
-
-
+    //add snapshot here!
   });
 
-  test('Verify low level component use', async ({
-    page,
-  }) => {
-    const standPath = 'stories/components/d3-chart/docs/examples/d3-chart/low-level-components-use.tsx';
+  test('Verify low level component use', async ({ page }) => {
+    const standPath =
+      'stories/components/d3-chart/docs/examples/d3-chart/low-level-components-use.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
-
-
-
-//add snapshot here!
-
-
+    //add snapshot here!
   });
 });
