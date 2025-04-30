@@ -129,14 +129,10 @@ test.describe('MonthRangeComparator range', () => {
         const ariaLabel = await cell.getAttribute('aria-label');
         if (!ariaLabel) continue;
 
-        // Role check
         await expect(cell).toHaveAttribute('role', 'gridcell');
-
-        // Other aria attributes check
         await expect(cell).toHaveAttribute('aria-colindex');
         await expect(cell).toHaveAttribute('aria-rowindex');
 
-        // Check for disabled/aria-disabled based on the month
         const date = new Date(ariaLabel);
         const month = date.getMonth();
         const isCurrentMonth = month === 5;
@@ -149,7 +145,6 @@ test.describe('MonthRangeComparator range', () => {
           expect(ariaDisabled).toBe('false');
         }
 
-        // Text check
         const text = await cell.textContent();
         expect(text?.trim()).not.toBe('');
       }
@@ -213,6 +208,8 @@ test.describe('MonthRangeComparator range', () => {
     };
 
     await trigger.click();
+    await page.waitForTimeout(300);
+
 
     await test.step('Verify header and calendar styles', async () => {
       await checkStyle(header, { padding: '16px' });
@@ -268,14 +265,13 @@ test.describe('MonthRangeComparator range', () => {
       throw new Error('aria-label is null');
     }
 
-    // Парсим дату через стандартный Date
     const parsedDate = new Date(ariaLabel);
 
     if (isNaN(parsedDate.getTime())) {
       throw new Error(`Invalid aria-label date: ${ariaLabel}`);
     }
 
-    const month = (parsedDate.getMonth() + 1).toString().padStart(2, '0'); // getMonth() возвращает 0–11
+    const month = (parsedDate.getMonth() + 1).toString().padStart(2, '0'); 
     const day = parsedDate.getDate().toString().padStart(2, '0');
     const year = parsedDate.getFullYear().toString();
 
@@ -288,22 +284,17 @@ test.describe('MonthRangeComparator range', () => {
 
     await page.setContent(htmlContent);
 
-    // date picker calendar contains title with the current month that will invaldiate screenshots every 30 days
     const datePicker = await page.locator('[data-ui-name="MonthDateRangeComparator.Trigger"]');
     const popper = page.locator('[data-ui-name="MonthDateRangeComparator.Popper"]');
     const headPrev = page.locator('[data-ui-name="MonthDateRangeComparator.Prev"]');
     const headTitle = page.locator('[data-ui-name="MonthDateRangeComparator.Title"]');
     const headNext = page.locator('[data-ui-name="MonthDateRangeComparator.Next"]');
     const buttons = page.locator('[data-ui-name="Button"]');
-    const from = page.locator('[data-ui-name="MonthDateRangeComparator.ValueDateRange"]').first();
     const inputFrom = page.locator('input[data-ui-name="MonthDateRangeComparator.ValueDateRange"]');
-    const to = page.locator('[data-ui-name="MonthDateRangeComparator.CompareDateRange"]').first();
     const inputTo = page.locator('input[data-ui-name="MonthDateRangeComparator.CompareDateRange"]');
     const toggle = page.locator('[data-ui-name="MonthDateRangeComparator.CompareToggle"]');
     const apply = page.locator('[data-ui-name="MonthDateRangeComparator.Apply"]');
     const reset = page.locator('[data-ui-name="MonthDateRangeComparator.Reset"]');
-
-    // Сохраняем текущее значение
 
     await datePicker.click();
     await expect(popper).toBeVisible();
@@ -316,10 +307,8 @@ test.describe('MonthRangeComparator range', () => {
     const initialTitle1 = await headTitle.first().textContent();
     const initialTitle2 = await headTitle.nth(1).textContent();
 
-    // Кликаем по кнопке "Previous month"
     await headPrev.click();
 
-    // Ждём пока title обновится
     await expect(headTitle.first()).not.toHaveText(initialTitle1!);
     await expect(headTitle.nth(1)).not.toHaveText(initialTitle2!);
 
@@ -332,7 +321,7 @@ test.describe('MonthRangeComparator range', () => {
     await cells.nth(10).click();
     const inputValue_1 = await inputFrom.nth(0).inputValue();
     const inputValue_2 = await inputFrom.nth(1).inputValue();
-    const calendarAriaLabel = await cells.nth(10).getAttribute('aria-label'); // например, "Apr 11, 2025"
+    const calendarAriaLabel = await cells.nth(10).getAttribute('aria-label'); 
     const expectedInputValue = formatAriaLabelToInputValue(calendarAriaLabel);
 
     await expect(inputValue_1).toBe(expectedInputValue);
@@ -342,7 +331,7 @@ test.describe('MonthRangeComparator range', () => {
     await cells.nth(15).click();
     const inputValue_22 = await inputFrom.nth(1).inputValue();
 
-    const calendarAriaLabel22 = await cells.nth(15).getAttribute('aria-label'); // например, "Apr 11, 2025"
+    const calendarAriaLabel22 = await cells.nth(15).getAttribute('aria-label'); 
     const expectedInputValue22 = formatAriaLabelToInputValue(calendarAriaLabel22);
     await expect(inputValue_22).toBe(expectedInputValue22);
 
@@ -368,7 +357,7 @@ test.describe('MonthRangeComparator range', () => {
     const inputValueTo_1 = await inputTo.nth(0).inputValue();
     const inputValueTo_2 = await inputTo.nth(1).inputValue();
 
-    const calendarAriaLabel_1 = await cells.nth(5).getAttribute('aria-label'); // например, "Apr 11, 2025"
+    const calendarAriaLabel_1 = await cells.nth(5).getAttribute('aria-label'); 
     const expectedInputValue50 = formatAriaLabelToInputValue(calendarAriaLabel_1);
 
     await expect(inputValueTo_1).toBe(expectedInputValue50);
@@ -379,7 +368,7 @@ test.describe('MonthRangeComparator range', () => {
     const inputValueTo_11 = await inputTo.nth(0).inputValue();
     const inputValueTo_21 = await inputTo.nth(1).inputValue();
 
-    const calendarAriaLabel_2 = await cells.nth(8).getAttribute('aria-label'); // например, "Apr 11, 2025"
+    const calendarAriaLabel_2 = await cells.nth(8).getAttribute('aria-label'); 
     const expectedInputValue55 = formatAriaLabelToInputValue(calendarAriaLabel_2);
 
     await expect(inputValueTo_11).toBe(expectedInputValue50);
@@ -422,6 +411,9 @@ test.describe('MonthRangeComparator range', () => {
 
     await datePicker.click();
     await page.waitForTimeout(200);
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Tab');
     await expect(page).toHaveScreenshot();
   });
 
@@ -444,7 +436,6 @@ test.describe('MonthRangeComparator range', () => {
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
-    //verify focus on trigger
     await datePicker.hover();
     await expect(page).toHaveScreenshot();
     await page.keyboard.press('Enter');
@@ -659,20 +650,13 @@ test.describe('Month Range comparator with advanced use', () => {
     await page.setContent(htmlContent);
 
     const datePicker = await page.locator('[data-ui-name="MonthDateRangeComparator.Trigger"]');
-    const popper = page.locator('[data-ui-name="MonthDateRangeComparator.Popper"]');
-    const headPrev = page.locator('[data-ui-name="MonthDateRangeComparator.Prev"]');
-    const headTitle = page.locator('[data-ui-name="MonthDateRangeComparator.Title"]');
-    const headNext = page.locator('[data-ui-name="MonthDateRangeComparator.Next"]');
-    const buttons = page.locator('[data-ui-name="Button"]');
     const from = page.locator('[data-ui-name="MonthDateRangeComparator.ValueDateRange"]').first();
     const inputFrom = page.locator('input[data-ui-name="MonthDateRangeComparator.ValueDateRange"]');
     const to = page.locator('[data-ui-name="MonthDateRangeComparator.CompareDateRange"]').first();
     const inputTo = page.locator('input[data-ui-name="MonthDateRangeComparator.CompareDateRange"]');
     const toggle = page.locator('[data-ui-name="MonthDateRangeComparator.CompareToggle"]');
     const apply = page.locator('[data-ui-name="MonthDateRangeComparator.Apply"]');
-    const reset = page.locator('[data-ui-name="MonthDateRangeComparator.Reset"]');
 
-    const cells = page.locator('[role="gridcell"]');
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
@@ -689,7 +673,9 @@ test.describe('Month Range comparator with advanced use', () => {
     await apply.click();
 
     await datePicker.click();
+    await page.waitForTimeout(300);
+    await expect(page).toHaveScreenshot();
 
-    //snapshot
+
   });
 });

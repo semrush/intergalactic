@@ -2,7 +2,7 @@ import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { RealDate, mockDate } from './utils';
 
-test.describe('DaypickerTrigger', () => {
+test.describe('Date Picker Trigger', () => {
   test('Verify trigger states when entering date manually', async ({ page }) => {
     const standPath = 'stories/components/date-picker/docs/examples/datepicker.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -459,7 +459,6 @@ test.describe('DayPicker with today button', () => {
       const newValue = await input.inputValue();
       expect(newValue).not.toBe(initialValue);
 
-      // Open and select another date
       await page.keyboard.press('Enter');
       await page.waitForTimeout(200);
       await page.keyboard.press('Tab');
@@ -596,7 +595,7 @@ test.describe('DayPicker with custom days', () => {
 
       for (const { name, value } of weekDaysAttributes) {
         const parentRole = await weekDaysRow.getAttribute(name);
-        expect(parentRole).toBe(value); // проверка роли для родительского элемента
+        expect(parentRole).toBe(value); 
       }
 
       const weekDays = weekDaysRow.locator('[data-ui-name="CalendarWeekDays.Unit"]');
@@ -605,7 +604,7 @@ test.describe('DayPicker with custom days', () => {
         await expect(day).toHaveAttribute('role', 'columnheader');
         await expect(day).toHaveAttribute('aria-label', daysOfWeek[i]);
         const dayText = await day.textContent();
-        expect(dayText).toBe(daysOfWeek[i].slice(0, 3)); // проверка на сокращение
+        expect(dayText).toBe(daysOfWeek[i].slice(0, 3)); 
       }
     });
 
@@ -624,7 +623,6 @@ test.describe('DayPicker with custom days', () => {
         const ariaLabel = await cell.getAttribute('aria-label');
         if (!ariaLabel) continue;
 
-        // Проверка аттрибутов
         for (const { name, value } of dayAttributes) {
           await expect(cell).toHaveAttribute(name, value);
         }
@@ -641,7 +639,7 @@ test.describe('DayPicker with custom days', () => {
           expect(ariaDisabled).toBe('false');
         } else {
           expect(hasDisabledAttr).toBe(true);
-          expect(ariaDisabled).toBe('false'); // всегда false
+          expect(ariaDisabled).toBe('false'); 
         }
 
         const text = await cell.textContent();

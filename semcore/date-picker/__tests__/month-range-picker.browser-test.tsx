@@ -320,17 +320,9 @@ test.describe('Month range', () => {
       await checkStyle(separator, { paddingRight: '8px' });
     });
 
-    await test.step('Open date picker', async () => {
-      await datePickerTrigger.click();
-      // await expect(page).toHaveScreenshot();
-    });
-
-    await test.step('Verify header button hover', async () => {
-      await prevButton.hover();
-      // await expect(page).toHaveScreenshot();
-    });
-
     await test.step('Verify disabled date style', async () => {
+      await datePickerTrigger.click();
+
       await checkStyle(cells.first(), {
         color: 'rgb(25, 27, 35)',
         backgroundColor: 'rgb(255, 255, 255)',
@@ -344,11 +336,6 @@ test.describe('Month range', () => {
         backgroundColor: 'rgb(255, 255, 255)',
         margin: '4px 0px 0px',
       });
-    });
-
-    await test.step('Verify hover style for available date', async () => {
-      await cells.nth(2).hover();
-      // await expect(page).toHaveScreenshot();
     });
 
     await test.step('Select range and open popper again', async () => {
@@ -368,22 +355,11 @@ test.describe('Month range', () => {
       });
     });
 
-    await test.step('Verify hover style of selected date', async () => {
-      await selectedCells.nth(1).hover();
-      // await expect(page).toHaveScreenshot();
-    });
-
-    await test.step('Verify hover style for period picker button', async () => {
-      await page.locator('[data-ui-name="Button"]').nth(1).hover();
-      // await expect(page).toHaveScreenshot();
-    });
-
     await test.step('Verify style for Apply picker button', async () => {
       await checkStyle(applyButton, {
         color: 'rgb(255, 255, 255)',
         backgroundColor: 'rgb(0, 143, 248)',
       });
-      // await expect(page).toHaveScreenshot();
     });
   });
 
@@ -392,14 +368,13 @@ test.describe('Month range', () => {
       throw new Error('aria-label is null');
     }
 
-    // Парсим дату через стандартный Date
     const parsedDate = new Date(ariaLabel);
 
     if (isNaN(parsedDate.getTime())) {
       throw new Error(`Invalid aria-label date: ${ariaLabel}`);
     }
 
-    const month = (parsedDate.getMonth() + 1).toString().padStart(2, '0'); // getMonth() возвращает 0–11
+    const month = (parsedDate.getMonth() + 1).toString().padStart(2, '0'); 
     const day = parsedDate.getDate().toString().padStart(2, '0');
     const year = parsedDate.getFullYear().toString();
 
@@ -626,7 +601,7 @@ test.describe('Month range', () => {
       ]);
 
       if (browserName !== 'webkit') {
-        //wprks unstable on webkit in non debug mode
+        //works unstable on webkit in non debug mode
         expect(start).not.toBe(initialLeft);
         expect(middle).toBe(initialRight);
       }

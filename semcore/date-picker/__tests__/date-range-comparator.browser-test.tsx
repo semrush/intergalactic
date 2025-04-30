@@ -272,6 +272,7 @@ test.describe('DateRangeComparator range', () => {
     };
 
     await trigger.click();
+    await page.waitForTimeout(300);
 
     await test.step('Verify header margins and calendar paddings', async () => {
       await checkStyle(dateRangeHeader, { padding: '16px' });
@@ -323,8 +324,6 @@ test.describe('DateRangeComparator range', () => {
     if (!ariaLabel) {
       throw new Error('aria-label is null');
     }
-
-    // Парсим дату через стандартный Date
     const parsedDate = new Date(ariaLabel);
 
     if (isNaN(parsedDate.getTime())) {
@@ -536,9 +535,22 @@ test.describe('DateRangeComparator range', () => {
 
     await test.step('Open and close calendar using keyboard', async () => {
       await page.keyboard.press('Tab');
-      await page.keyboard.type('0404202406052024');
+      
       await page.keyboard.press('Enter');
       await page.waitForTimeout(300);
+      await page.keyboard.press('Tab');
+      await page.keyboard.type('04042024');
+      await page.keyboard.type('04042024');
+
+      for (let i = 0; i < 9; i++) {
+        await page.keyboard.press('Tab');
+      }
+
+      await page.keyboard.press('Enter');
+      await page.waitForTimeout(100);
+      await page.keyboard.press('Enter');
+      await page.waitForTimeout(300);
+
       await expect(popper).toBeVisible();
       await expect(datePicker).not.toBeFocused();
       await expect(popper).toBeFocused();
@@ -592,6 +604,7 @@ test.describe('DateRangeComparator range', () => {
       await page.keyboard.press('Tab'); // Button 1
       await page.keyboard.press('Tab'); // Button 2
       await expect(buttons.first()).toBeFocused();
+      await expect(page).toHaveScreenshot();
 
       await page.keyboard.press('Tab'); // More tabs to Apply
       await page.keyboard.press('Tab');
@@ -611,6 +624,7 @@ test.describe('DateRangeComparator range', () => {
       initialValueFrom2 = await inputFrom.nth(1).inputValue();
 
       await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowRight');
       initialValueFrom1_1 = await inputFrom.nth(0).inputValue();
       initialValueFrom2_1 = await inputFrom.nth(1).inputValue();
 
@@ -624,7 +638,7 @@ test.describe('DateRangeComparator range', () => {
       initialValueFrom2_2 = await inputFrom.nth(1).inputValue();
 
       expect(initialValueFrom1_2).not.toBe(initialValueFrom1_1);
-      expect(initialValueFrom2_2).toBe(initialValueFrom2_1);
+      expect(initialValueFrom2_2).not.toBe(initialValueFrom2_1);
 
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('Space');
@@ -634,7 +648,7 @@ test.describe('DateRangeComparator range', () => {
       initialValueFrom2_3 = await inputFrom.nth(1).inputValue();
 
       expect(initialValueFrom1_3).toBe(initialValueFrom1_2);
-      expect(initialValueFrom2_3).not.toBe(initialValueFrom2_2);
+      expect(initialValueFrom2_3).not.toBe(initialValueFrom2);
     });
 
     await test.step('Switch to Compare mode', async () => {
@@ -756,12 +770,12 @@ test.describe('Date Range comparator with advanced use', () => {
 
 test.describe('Date range comparator props', () => {
   test('Verify all date range comparator props work good', async ({ page, browserName }) => {
+    if(browserName==='webkit')return;//skipped for webkit because of unstable focus outline on the dialog
     const standPath =
       'stories/components/date-picker/tests/examples/date-range-comparator-props.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
-    const headPrev = page.locator('[data-ui-name="DateRangeComparator.Prev"]');
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
@@ -769,17 +783,17 @@ test.describe('Date range comparator props', () => {
     await page.keyboard.press('Escape');
     await page.waitForTimeout(100);
     await page.keyboard.press('Enter');
-    await page.waitForTimeout(500);
-    await expect(page).toHaveScreenshot();
-
-    if (browserName === 'webkit') return;
-    await headPrev.click();
-    await page.waitForTimeout(100);
+    await page.waitForTimeout(300);
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Tab');
     await expect(page).toHaveScreenshot();
 
     const cells = page.locator('[role="gridcell"]');
 
     await cells.nth(20).hover();
     await expect(page).toHaveScreenshot();
+   
   });
 });

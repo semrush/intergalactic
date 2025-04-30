@@ -157,7 +157,6 @@ test.describe('Month picker', () => {
         const ariaLabel = await cell.getAttribute('aria-label');
         if (!ariaLabel) continue;
 
-        // Common role and aria attributes
         const commonAttributes = [
           ['role', 'gridcell'],
           ['aria-selected', 'false'],
@@ -168,11 +167,9 @@ test.describe('Month picker', () => {
           await expect(cell).toHaveAttribute(attr, value);
         }
 
-        // Should have aria-colindex and aria-rowindex (without value match)
         await expect(cell).toHaveAttribute('aria-colindex');
         await expect(cell).toHaveAttribute('aria-rowindex');
 
-        // Disabled logic
         const date = new Date(ariaLabel);
         const month = date.getMonth();
         const isCurrentMonth = month === 5;
@@ -339,9 +336,6 @@ test.describe('Month picker', () => {
       await page.keyboard.press('Tab');
       await expect(headPrev).toBeFocused();
       await headPrev.hover();
-
-      // snapshot можно вставить здесь
-
       await page.keyboard.press('Enter');
       const titleAfterFirstEnter = await headTitle.textContent();
       expect(titleAfterFirstEnter).not.toBe(initialTitle);
@@ -368,7 +362,6 @@ test.describe('Month picker', () => {
 
     await test.step('Navigate months and select via keyboard', async () => {
       await page.keyboard.press('ArrowLeft');
-      // snapshot можно вставить здесь
 
       const highlighted = page.locator(
         '[data-ui-name="CalendarMonths.Unit"][class*="highlighted"]',

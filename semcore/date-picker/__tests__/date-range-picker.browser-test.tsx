@@ -369,15 +369,13 @@ test.describe('Date range with standart ranges', () => {
     if (!ariaLabel) {
       throw new Error('aria-label is null');
     }
-
-    // Парсим дату через стандартный Date
     const parsedDate = new Date(ariaLabel);
 
     if (isNaN(parsedDate.getTime())) {
       throw new Error(`Invalid aria-label date: ${ariaLabel}`);
     }
 
-    const month = (parsedDate.getMonth() + 1).toString().padStart(2, '0'); // getMonth() возвращает 0–11
+    const month = (parsedDate.getMonth() + 1).toString().padStart(2, '0'); 
     const day = parsedDate.getDate().toString().padStart(2, '0');
     const year = parsedDate.getFullYear().toString();
 
@@ -742,7 +740,6 @@ test.describe('Week picker', () => {
 
     await page.setContent(htmlContent);
 
-    // date picker calendar contains title with the current month that will invaldiate screenshots every 30 days
     const datePicker = await page.locator('[data-ui-name="DateRangePicker.Trigger"]');
     const screenshotsClip = (await datePicker.first().boundingBox())!;
     screenshotsClip.x -= 4;
@@ -763,14 +760,12 @@ test.describe('Week picker', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
-    // Locators
     const datePicker = await page.locator('[data-ui-name="DateRangePicker.Trigger"]');
     const popper = await page.locator('[data-ui-name="DateRangePicker.Popper"]');
 
     await page.keyboard.press('Tab');
     await page.keyboard.type('05012020');
 
-    // Open date picker
     await datePicker.first().click();
     return { datePicker, popper };
   };
