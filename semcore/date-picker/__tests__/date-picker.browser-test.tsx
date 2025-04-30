@@ -996,7 +996,6 @@ test.describe('DayPikcer trigger and popper', () => {
       await expect(todayButton).toBeFocused();
       await expect(page).toHaveScreenshot();
 
-
       await page.keyboard.press('Shift+Tab');
       await expect(calendar).toBeFocused();
     });
