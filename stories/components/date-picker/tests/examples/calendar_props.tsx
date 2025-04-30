@@ -8,17 +8,17 @@ const stableRandom = (randomIndex: number) => {
 };
 
 const Demo = () => {
-  const [value, setValue] = React.useState([new Date('2025-04-06')]);
-  const [displayedPeriod, setDisplayedPeriod] = React.useState(new Date('2025-04-01')); 
+  const [value, setValue] = React.useState([new Date('2024-04-06')]);
+  const [displayedPeriod, setDisplayedPeriod] = React.useState(new Date('2024-04-01')); 
 
  const disabledDates = [
-    new Date('2025-04-28'),
-    new Date('2025-04-29'),
-    new Date(2025, 3, 27),
+    new Date('2024-04-28'),
+    new Date('2024-04-29'),
+    new Date(2024, 3, 27),
   ];
 
   const highlightedDates = [
-    new Date('2025-04-10'), 
+    new Date('2024-04-10'), 
   ];
 
   const handleDisplayedPeriodChange = (newPeriod: Date) => {
@@ -49,10 +49,10 @@ const Demo = () => {
         <DatePicker.Calendar
           locale="en-US"
           disabled={disabledDates}
-          highlighted={highlightedDates} // Обновите этот пропс
+          highlighted={highlightedDates} 
           value={value} 
           onChange={setValue}
-          displayedPeriod={displayedPeriod} // Передаем отображаемый месяц
+          displayedPeriod={displayedPeriod}
           renderOutdated={false}
         >
           {({ days }) =>

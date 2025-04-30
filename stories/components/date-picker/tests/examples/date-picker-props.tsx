@@ -3,9 +3,9 @@ import { DatePicker } from '@semcore/ui/date-picker';
 import { Text } from '@semcore/ui/typography';
 
 const Demo = () => {
-  const [value, setValue] = React.useState(new Date('2025-04-06'));
-  const [displayedPeriod, setDisplayedPeriod] = React.useState(new Date('2025-04-01'));
-  const [highlightedDates, setHighlightedDates] = React.useState([new Date('2025-04-10')]);
+  const [value, setValue] = React.useState(new Date('2024-04-06'));
+  const [displayedPeriod, setDisplayedPeriod] = React.useState(new Date('2024-04-01'));
+  const [highlightedDates, setHighlightedDates] = React.useState([new Date('2024-04-10')]);
 
   const disabledErrorText = (attemptedDate: Date) => `Date ${attemptedDate.toDateString()} is disabled`;
 
@@ -18,15 +18,15 @@ const Demo = () => {
       <DatePicker
         value={value} 
         onChange={(date: Date) => setValue(date)} 
-        disabled={[new Date('2025-04-28'), new Date('2025-04-29')]} 
+        disabled={[new Date('2024-04-28'), new Date('2024-04-29')]} 
         disabledErrorText={disabledErrorText} 
         displayedPeriod={displayedPeriod} 
         onDisplayedPeriodChange={handleDisplayedPeriodChange} 
         size="l" 
         highlighted={highlightedDates} 
-        defaultValue={new Date('2025-04-06')} 
-        defaultDisplayedPeriod={new Date('2025-03-01')} 
-        defaultHighlighted={[new Date('2025-04-10')]} 
+        defaultValue={new Date('2024-04-06')} 
+        defaultDisplayedPeriod={new Date('2024-03-01')} 
+        defaultHighlighted={[new Date('2024-04-10')]} 
       >
         <DatePicker.Trigger mt={2}>
           <DatePicker.Trigger.SingleDateInput>

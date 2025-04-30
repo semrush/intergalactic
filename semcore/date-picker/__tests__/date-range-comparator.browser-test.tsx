@@ -1,5 +1,6 @@
 import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import { RealDate, mockDate } from './utils';
 
 test.describe('DateRangeComparator range', () => {
   test('Verify roles and attributes', async ({ page }) => {
@@ -535,6 +536,7 @@ test.describe('DateRangeComparator range', () => {
 
     await test.step('Open and close calendar using keyboard', async () => {
       await page.keyboard.press('Tab');
+      await page.keyboard.type('0404202406052024');
       await page.keyboard.press('Enter');
       await page.waitForTimeout(300);
       await expect(popper).toBeVisible();

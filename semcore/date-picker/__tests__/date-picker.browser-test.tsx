@@ -1,5 +1,6 @@
 import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import { RealDate, mockDate } from './utils';
 
 test.describe('DaypickerTrigger', () => {
   test('Verify trigger states when entering date manually', async ({ page }) => {
@@ -16,11 +17,9 @@ test.describe('DaypickerTrigger', () => {
     screenshotsClip.height += 8;
 
     await page.keyboard.press('Tab');
-    await page.keyboard.type('05');
+    await page.keyboard.type('052');
     await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-    await page.keyboard.type('29');
-    await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-    await page.keyboard.type('2000');
+    await page.keyboard.type('92000');
     await expect(page).toHaveScreenshot({ clip: screenshotsClip });
     await page.keyboard.press('Tab');
     await expect(page).toHaveScreenshot({ clip: screenshotsClip });
@@ -42,7 +41,6 @@ test.describe('DaypickerTrigger', () => {
     await page.setContent(htmlContent);
 
     await expect(page).toHaveScreenshot();
-
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
@@ -949,7 +947,6 @@ test.describe('DayPikcer trigger and popper', () => {
 
     await test.step('Open popper with Enter key and check focus', async () => {
       await page.keyboard.press('Enter');
-      // snapshot
       await expect(popper).toBeVisible();
       await expect(datePicker).not.toBeFocused();
       await expect(popper).toBeFocused();
@@ -997,6 +994,8 @@ test.describe('DayPikcer trigger and popper', () => {
 
       await page.keyboard.press('Tab');
       await expect(todayButton).toBeFocused();
+      await expect(page).toHaveScreenshot();
+
 
       await page.keyboard.press('Shift+Tab');
       await expect(calendar).toBeFocused();
@@ -1041,7 +1040,6 @@ test.describe('Disabled dates and Validation', () => {
   test('Verify validation tooltip', async ({ page }) => {
     const standPath = 'stories/components/date-picker/docs/examples/disabled_dates.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
-
     await page.setContent(htmlContent);
 
     const datePicker = page.locator('input[data-ui-name="DatePicker.Trigger"]');
@@ -1062,8 +1060,8 @@ test.describe('Disabled dates and Validation', () => {
     await page.keyboard.type('24');
     await expect(datePicker).toHaveAttribute('aria-invalid', 'true');
     await page.keyboard.press('Enter');
+    await expect(tooltip).toBeVisible();
     await expect(popper).toBeVisible();
-    await expect(page).toHaveScreenshot();
 
     await page.keyboard.press('Escape');
     await expect(tooltip).toBeVisible();
@@ -1087,10 +1085,7 @@ test.describe('Disabled dates and Validation', () => {
     const headPrev = page.locator('[data-ui-name="DatePicker.Prev"]');
     const headTitle = page.locator('[data-ui-name="DatePicker.Title"]');
     const headNext = page.locator('[data-ui-name="DatePicker.Next"]');
-    const todayButton = page.locator('[data-ui-name="Button"]');
     const input = page.locator('input[data-ui-name="DatePicker.Trigger"]');
-
-    const initialValue = await input.inputValue();
 
     await test.step('Navigate to date picker and fill the input with a date', async () => {
       await page.keyboard.press('Tab');
@@ -1159,24 +1154,30 @@ test.describe('Calendar props and date picker', () => {
   test('Verify all calendar props work good', async ({ page }) => {
     const standPath = 'stories/components/date-picker/tests/examples/calendar_props.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
-
     await page.setContent(htmlContent);
 
     await page.keyboard.press('Tab');
+    await page.keyboard.type('03032025');
+
     await page.keyboard.press('Enter');
     await page.waitForTimeout(300);
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Tab');
     await expect(page).toHaveScreenshot();
   });
 
   test('Verify all date picker props work good', async ({ page }) => {
     const standPath = 'stories/components/date-picker/tests/examples/date-picker-props.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
-
     await page.setContent(htmlContent);
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
     await page.waitForTimeout(300);
+    await page.keyboard.press('Tab');
+    const prevButton = page.locator('[data-ui-name="DatePicker.Prev"]');
+    await prevButton.hover();
     await expect(page).toHaveScreenshot();
   });
 });
