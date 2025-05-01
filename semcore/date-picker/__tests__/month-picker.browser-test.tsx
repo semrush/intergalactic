@@ -252,7 +252,7 @@ test.describe('Month picker', () => {
     const initialValue = await input.inputValue();
 
     input.fill('012024');
-    
+
     await test.step('Open and close popper with click', async () => {
       await datePicker.first().click();
       await page.waitForTimeout(300);
