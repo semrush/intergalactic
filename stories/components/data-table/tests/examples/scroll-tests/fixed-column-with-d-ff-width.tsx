@@ -4,16 +4,20 @@ import { DataTable } from '@semcore/data-table';
 const Demo = () => {
     return (
         <>
-            <DataTable data={data} aria-label={'Fixed columns'} wMax={500} h={300}>
-                <DataTable.Head>
-                    <DataTable.Head.Column name='keyword' children='Keyword' gtcWidth={'150px'} fixed='left' />
-                    <DataTable.Head.Column name='kd' children='KD,%' gtcWidth={'200px'} />
-                    <DataTable.Head.Column name='cpc' children='CPC' gtcWidth={'300px'} />
-                    <DataTable.Head.Column name='cpc' children='CPC' gtcWidth={'100px'} />
-                    <DataTable.Head.Column name='vol' children='Vol.' gtcWidth={'80px'} fixed='right' />
-                </DataTable.Head>
-                <DataTable.Body />
-            </DataTable>
+
+<DataTable
+      data={data}
+      aria-label={'Fixed columns'} wMax={700} h={300}
+      columns={[     
+        {name: 'keyword', children: 'Keyword',  fixed: 'left', gtcWidth:'150px' },
+        {name: 'kd', children: 'KD,%',fixed: 'left', gtcWidth:'200px'},
+        {name: 'kd', children: 'KD,%', gtcWidth:'200px'},
+        {name: 'cpc', children: 'CPC', gtcWidth:'300px' },
+        {name: 'cpc', children: 'CPC', gtcWidth:'100px' },
+        {name: 'vol', children: 'Vol.', gtcWidth:'80px',fixed: 'right' },
+
+      ]}
+    />
 
         </>
     );

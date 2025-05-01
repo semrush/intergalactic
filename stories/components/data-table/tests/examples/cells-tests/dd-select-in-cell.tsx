@@ -19,14 +19,14 @@ const options = Array(6)
 
 const Demo = () => {
     return (
-        <DataTable data={data} aria-label={'Access to cells'} hMax={200}>
-            <DataTable.Head sticky>
-                <DataTable.Head.Column name='keyword' children='Keyword' />
-                <DataTable.Head.Column name='kd' children='KD,%' />
-                <DataTable.Head.Column name='cpc' children='CPC' />
-                <DataTable.Head.Column name='vol' children='Vol.' />
-            </DataTable.Head>
-            <DataTable.Body
+        <>
+            <DataTable data={data} aria-label={'Access to cells'} hMax={200}
+                columns={[
+                    { name: 'keyword', children: 'Keyword' },
+                    { name: 'kd', children: 'KD,%' },
+                    { name: 'cpc', children: 'CPC' },
+                    { name: 'vol', children: 'Vol.' },
+                ]}
                 renderCell={(props) => {
                     if (props.columnName === 'keyword') {
                         return (
@@ -48,8 +48,6 @@ const Demo = () => {
                             </Flex>
                         );
                     }
-
-
                     if (props.columnName === 'kd') {
                         return (
                             <>
@@ -57,10 +55,6 @@ const Demo = () => {
                             </>
                         );
                     }
-
-
-
-
                     if (props.columnName === 'cpc') {
                         return (
                             <>
@@ -78,7 +72,7 @@ const Demo = () => {
                     return props.defaultRender();
                 }}
             />
-        </DataTable>
+        </>
     );
 };
 

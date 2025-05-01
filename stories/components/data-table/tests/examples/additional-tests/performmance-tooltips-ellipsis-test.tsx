@@ -21,16 +21,38 @@ const Demo = () => {
     }, []);
     return (
         <>
-            <DataTable data={data} aria-label={'Access to cells'} hMax={400}>
-                <DataTable.Head sticky>
-                <DataTable.Head.Column name="index" children="№" gtcWidth="50px" />
-                    <DataTable.Head.Column name='keyword' children='Keyword' gtcWidth='140px' />
-                    <DataTable.Head.Column name='kd' children='KD,%' gtcWidth='70px' />
-                    <DataTable.Head.Column name='cpc' children='CPC' gtcWidth='150px' />
-                    <DataTable.Head.Column name='vol' children='Vol.' gtcWidth='150px' />
-
-                </DataTable.Head>
-                <DataTable.Body
+          <DataTable
+      data={data} aria-label={'Access to cells'} hMax={400}
+      headerProps={{
+        sticky: true,
+      }}
+      columns={[
+        {
+            name: 'index',
+            children: '№',
+            gtcWidth: '50px',
+          },
+        {
+          name: 'keyword',
+          children: 'keyword',
+           gtcWidth: '140px',
+        },
+        {
+          name: 'kd',
+          children: 'KD,%',
+           gtcWidth: '70px'
+        },
+        {
+          name: 'cpc',
+          children: 'CPC',
+           gtcWidth: '150px'
+        },
+        {
+          name: 'vol',
+          children: 'Vol.',
+           gtcWidth: '150px'
+        }
+      ]}
                     renderCell={(props) => {
                         if (props.columnName === 'keyword') {
                             return (
@@ -102,7 +124,6 @@ const Demo = () => {
                     }}
                 />
 
-            </DataTable>
             <Button addonLeft={CheckM} data-test-id='button-after-table'> Button</Button>
         </>
     );

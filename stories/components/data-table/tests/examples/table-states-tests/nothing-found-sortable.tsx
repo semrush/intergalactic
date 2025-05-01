@@ -33,21 +33,20 @@ const Demo = () => {
     setSort(newSort as DataTableSort<SortableColumn>);
   };
   return (
-    <DataTable data={sortedData} sort={sort} onSortChange={handleSortChange} aria-label={'Sorting'}>
-      <DataTable.Head>
-        <DataTable.Head.Column name='keyword' children='Keyword' sortable/>
-        <DataTable.Head.Column name='kd' children='KD,%' sortable/>
-        <DataTable.Head.Column name='cpc' children='CPC' sortable/>
-        <DataTable.Head.Column name='vol' children='Vol.' sortable/>
-      </DataTable.Head>
-      <DataTable.Body
-        renderCell={() => (
-          <NoData type='nothing-found' my={7} mx='auto'>
-            <Button mt={4}>Clear filters</Button>
-          </NoData>
-        )}
-      />
-    </DataTable>
+
+    <DataTable data={sortedData} sort={sort} onSortChange={handleSortChange} aria-label={'Sorting'}
+    columns={[
+        {name: 'keyword', children: 'keyword', sortable: true},
+        {name: 'kd', children: 'KD,%', sortable: true},
+        {name: 'cpc', children: 'CPC', sortable: true},
+        {name: 'vol', children: 'Vol.'}
+    ]}
+    renderCell={() => (
+      <NoData type='nothing-found' my={7} mx='auto'>
+        <Button mt={4}>Clear filters</Button>
+      </NoData>
+    )}
+  />
   );
 };
 

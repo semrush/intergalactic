@@ -12,62 +12,60 @@ import CheckM from '@semcore/icon/Check/m';
 const Demo = () => {
     return (
         <>
-            <DataTable data={data} aria-label={'Access to cells'} hMax={200}>
-                <DataTable.Head sticky>
-                    <DataTable.Head.Column name='keyword' children='Keyword' gtcWidth='140px' />
-                    <DataTable.Head.Column name='kd' children='KD,%' gtcWidth='70px' />
-                    <DataTable.Head.Column name='cpc' children='CPC' gtcWidth='150px' />
-                    <DataTable.Head.Column name='vol' children='Vol.' gtcWidth='150px' />
+               <DataTable data={data} aria-label={'Access to cells'} hMax={200}
+                columns={[
+                    { name: 'keyword', children: 'Keyword', gtcWidth:'140px' },
+                    { name: 'kd', children: 'KD,%', gtcWidth:'70px'},
+                    { name: 'cpc', children: 'CPC' , gtcWidth:'150px'},
+                    { name: 'vol', children: 'Vol.', gtcWidth:'150px' },
+                ]}
+                renderCell={(props) => {
+                    if (props.columnName === 'keyword') {
+                        return (
+                            <Flex>
 
-                </DataTable.Head>
-                <DataTable.Body
-                    renderCell={(props) => {
-                        if (props.columnName === 'keyword') {
-                            return (
-                                <Flex>
+                                <Text noWrap={true}> NoWrapTrue {props.value}</Text>
 
-                                    <Text noWrap={true}> NoWrapTrue {props.value}</Text>
+                            </Flex>
+                        );
+                    }
 
-                                </Flex>
-                            );
-                        }
+                    if (props.columnName === 'cpc') {
+                        return (
+                            <Flex>
 
-                        if (props.columnName === 'cpc') {
-                            return (
-                                <Flex>
-
-                                    <Text noWrap={false}>No Wrap False {props.value}</Text>
-                                    <Link
-                                        href='#'
-                                        target='_blank'
-                                        rel='noreferrer'
-                                        addonLeft={InfoM}
-                                        color='gray-300'
-                                        ml={1}
-                                    />
-                                </Flex>
-                            );
-                        }
-                        if (props.columnName === 'vol') {
-                            return (
-                                <>
-                                    <Ellipsis> {props.value}</Ellipsis>
-                                    <Link
-                                        href='#'
-                                        target='_blank'
-                                        rel='noreferrer'
-                                        addonLeft={InfoM}
-                                        color='gray-300'
-                                        ml={1}
-                                    />
-                                </>
-                            );
-                        }
-                        return props.defaultRender();
-                    }}
-                />
-
-            </DataTable>
+                                <Text noWrap={false}>No Wrap False {props.value}</Text>
+                                <Link
+                                    href='#'
+                                    target='_blank'
+                                    rel='noreferrer'
+                                    addonLeft={InfoM}
+                                    aria-label='test'
+                                    color='gray-300'
+                                    ml={1}
+                                />
+                            </Flex>
+                        );
+                    }
+                    if (props.columnName === 'vol') {
+                        return (
+                            <>
+                                <Ellipsis> {props.value}</Ellipsis>
+                                <Link
+                                    href='#'
+                                    target='_blank'
+                                    rel='noreferrer'
+                                     aria-label='test2'
+                                    addonLeft={InfoM}
+                                    color='gray-300'
+                                    ml={1}
+                                />
+                            </>
+                        );
+                    }
+                    return props.defaultRender();
+                }}
+            />
             <Button addonLeft={CheckM} data-test-id='button-after-table'> Button</Button>
         </>
     );

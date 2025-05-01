@@ -9,6 +9,7 @@ import HorizontalScrollWithoutFixedExample from './examples/scroll-tests/horizon
 import FixedGroupExample from './examples/scroll-tests/horizontal-scroll-fixed-group';
 import MultipleScrollsExample from './examples/scroll-tests/multiple-scrolls';
 import FixedColumnDiffWidthExample from './examples/scroll-tests/fixed-column-with-d-ff-width';
+import ScrollTopHeaderExample from './examples/scroll-tests/scroll-in-top-header';
 
 
 const meta: Meta<typeof DataTable> = {
@@ -19,22 +20,26 @@ const meta: Meta<typeof DataTable> = {
 export default meta;
 type Story = StoryObj<typeof DataTable>;
 
-export const FixedGroup: Story = {
+export const FixedGroups: Story = {
   render: FixedGroupExample,
 };
 
-export const ScrollSticky: Story = {
+export const ScrollWithTopStickyProps: Story = {
+  render: ScrollTopHeaderExample,
+};
+
+export const ScrollWithStickyProps: Story = {
   render: ScrollAndStickyExample,
 };
 
-export const MultipleScrolls: Story = {
+export const ThreeScrolls: Story = {
   render: MultipleScrollsExample,
 };
 
-export const HorizontalScrollWithoutFixed: Story = {
+export const HorizontalScrollsWithoutFixedColmns: Story = {
   render: HorizontalScrollWithoutFixedExample,
 };
 
-export const FixedColumnDiffWidth: Story = {
+export const HorizontalScrollWithFixedColumnAndDiffWidth: Story = {
   render: FixedColumnDiffWidthExample,
 };

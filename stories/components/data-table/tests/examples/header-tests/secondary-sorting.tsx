@@ -23,15 +23,18 @@ const Demo = () => {
   );
 
     return (
-        <DataTable data={sortedData} use='secondary' defaultGridTemplateColumnWidth={'1fr'} aria-label={'Secondary'} sort={sort} onSortChange={setSort} hMax = {400}>
-            <DataTable.Head>
-                <DataTable.Head.Column name='keyword' children='Keyword' sortable />
-                <DataTable.Head.Column name='kd' children='KD,%' sortable/>
-                <DataTable.Head.Column name='cpc' children='CPC' sortable />
-                <DataTable.Head.Column name='vol' children='Vol.' />
-            </DataTable.Head>
-            <DataTable.Body />
-        </DataTable>
+
+        <DataTable
+        data={sortedData} use='secondary' defaultGridTemplateColumnWidth={'1fr'} aria-label={'Secondary'} sort={sort} onSortChange={setSort} hMax = {400}
+            columns={[
+                { name: 'keyword', children: 'Keyword', sortable: true },
+                { name: 'kd', children: 'KD,%', sortable: true },
+                { name: 'cpc', children: 'CPC', sortable: true },
+                { name: 'vol', children: 'Vol.' },
+          ]}
+    />
+
+       
     );
 };
 

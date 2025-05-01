@@ -5,23 +5,44 @@ import AmazonM from '@semcore/icon/color/Amazon/m';
 
 const Demo = () => {
   return (
-    <DataTable data={data} aria-label={'Base table example'} defaultGridTemplateColumnWidth={'1fr'} hMax ='500px'>
-      <DataTable.Head sticky>
-        <DataTable.Head.Column name='other' children='Other' />
 
-        <DataTable.Head.Group title={'Group'}  >
-          <DataTable.Head.Column name='kd'>
-            <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
-            <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
-          </DataTable.Head.Column>
-          <DataTable.Head.Column name='cpc' children='CPC' />
-          <DataTable.Head.Column name='vol' children='Vol.' />
-        </DataTable.Head.Group>
-        <DataTable.Head.Column name='keyword' children='Keyword' />
-      </DataTable.Head>
-      <DataTable.Body />
-    </DataTable>
-  );
+    <>
+      <DataTable
+        data={data}
+        aria-label={'Fixed multi level header with 2 scroll'}
+        defaultGridTemplateColumnWidth={'1fr'} hMax={500}
+        headerProps={{
+          sticky: true,
+        }}
+        columns={[
+          { name: 'other', children: 'Other' },
+          {
+            children: 'Group',
+            columns: [
+              {
+                name: 'kd',
+                children: (
+                  <>
+                    <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+                    <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+                  </>
+                )
+
+
+              },
+              { name: 'cpc', children: 'CPC' },
+              { name: 'vol', children: 'Vol.' },
+
+            ]
+          },
+
+          { name: 'keyword', children: 'Keyword' },
+
+        ]}
+      />
+
+    </>
+  )
 };
 
 const data = [

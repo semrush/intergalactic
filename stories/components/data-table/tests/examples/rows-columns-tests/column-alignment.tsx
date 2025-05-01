@@ -12,9 +12,9 @@ const Demo = () => {
       {name: 'kd', children: 'KD,% KD,% ', alignItems: 'center', gtcWidth: '80px' },
       {name: 'cpc',  children: 'CPC CPC CPC', alignItems: 'flex-end', gtcWidth: '80px'},
       {name: 'vol', children: 'Vol. Vol. Vol.', alignItems: 'flex-start', gtcWidth: '80px'},
-      {name: 'kd', children: 'KD,% KD,% ',  gtcWidth: '80px',  alignContent: 'center', flexWrap: 'true' },
-      {name: 'cpc',  children: 'CPC CPC CPC',  gtcWidth: '80px',  alignContent: 'flex-start', flexWrap: 'true'},
-      {name: 'vol', children: 'Vol. Vol. Vol.',  gtcWidth: '80px',  alignContent: 'flex-end', flexWrap: 'true'},
+      {name: 'kd', children: 'KD,% KD,% ',  gtcWidth: '80px',  alignContent: 'center', flexWrap: true },
+      {name: 'cpc',  children: 'CPC CPC CPC',  gtcWidth: '80px',  alignContent: 'flex-start', flexWrap: true},
+      {name: 'vol', children: 'Vol. Vol. Vol.',  gtcWidth: '80px',  alignContent: 'flex-end', flexWrap: true},
     ]}
 />
   );

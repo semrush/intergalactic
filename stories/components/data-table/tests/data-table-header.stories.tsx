@@ -24,6 +24,11 @@ export const SecondaryHeader: Story = {
   render: SecondaryHeaderExample,
 };
 
+export const MultiLevelInteractive: Story = {
+  render: MultiLevelInteractiveExample,
+};
+
+
 export const SecondarySorting: Story = {
   render: SecondarySortingExample,
 };

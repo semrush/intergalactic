@@ -29,43 +29,52 @@ const Demo = () => {
   );
 
   return (
-    <DataTable data={sortedData} use='secondary' aria-label={'Column expanded'} hMax={200} sort={sort} onSortChange={setSort} >
-      <DataTable.Head sticky>
-        <DataTable.Head.Column name='keyword' gtcWidth={'65px'} >
-          <Text noWrap>
-            Keyword <Text color='text-secondary'>(Keyword 1-100)</Text>
-          </Text>
-        </DataTable.Head.Column>
-        <DataTable.Head.Column name='kd' gtcWidth={'85px'} sortable>
-          <Text>
-            Difficulty Difficlty 123
-            <Hint tag={WhatsAppM} title='AmazonM non interactive' color='icon-secondary-neutral' />
-            <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
-          </Text>
-        </DataTable.Head.Column>
-        <DataTable.Head.Column name='kd' gtcWidth={'85px'} sortable>
-          <Ellipsis>Difficulty Difficulty</Ellipsis>
-          <Hint tag={WhatsAppM} title='AmazonM non interactive' color='icon-secondary-neutral' />
-          <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
-        </DataTable.Head.Column>
 
-        <DataTable.Head.Column name='cpc' children='CPC CPC CPC CPC CPC' gtcWidth={'90px'} />
-        <DataTable.Head.Column name='vol' children='Vol.' gtcWidth={'minmax(0, 300px)'} />
-        <DataTable.Head.Column name='md' gtcWidth={'90px'}>
-          <Text>
-            Marketing SEO
-            <Text color='text-secondary'>(Marketing SEO Marketing SEO 1-100)</Text>
-          </Text>
-        </DataTable.Head.Column>
-        <DataTable.Head.Column name='md' gtcWidth={'90px'}>
-          <Text>
-            Marketing SEO
-            <Text color='text-secondary'>(Marketing SEO Marketing SEO 1-100)</Text>
-          </Text>
-        </DataTable.Head.Column>
-      </DataTable.Head>
-      <DataTable.Body />
-    </DataTable>
+    <DataTable
+      data={sortedData} use='secondary' aria-label={'Column expanded'} hMax={200} sort={sort} onSortChange={setSort}
+      columns={[
+        {
+          name: 'keyword',
+          children: (
+            <Text noWrap>
+              Keyword <Text color='text-secondary'>(Keyword 1–100)</Text>
+            </Text>
+          ),
+          gtcWidth: '65px',
+        },
+        {
+          name: 'kd',
+          children: (
+            <>
+              <Ellipsis>Difficulty</Ellipsis>
+              <Hint tag={WhatsAppM} title='WhatsApp icon' color='icon-secondary-neutral' />
+              <Hint tag={AmazonM} title='Amazon icon' color='icon-secondary-neutral' />
+            </>
+          ),
+          sortable: true,
+          gtcWidth: '85px',
+        },
+        {
+          name: 'cpc',
+          children: 'CPC CPC CPC CPC CPC',
+          gtcWidth: '90px',
+        },
+        {
+          name: 'vol',
+          children: 'Vol.',
+          gtcWidth: 'minmax(0, 300px)',
+        },
+        {
+          name: 'md',
+          children: (
+            <Text>
+              Marketing SEO <Text color='text-secondary'>(1–100)</Text>
+            </Text>
+          ),
+          gtcWidth: '90px',
+        },
+      ]}
+    />
   );
 };
 

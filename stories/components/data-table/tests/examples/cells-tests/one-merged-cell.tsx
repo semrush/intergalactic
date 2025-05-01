@@ -1,6 +1,4 @@
 import React from 'react';
-import { NoData } from '@semcore/widget-empty';
-import Button from '@semcore/button';
 import { DataTable, DataTableSort } from '@semcore/data-table';
 
 const data = [
@@ -11,7 +9,7 @@ const data = [
   type SortableColumn = Exclude<keyof typeof data[0], 'keyword'>;
 
   const Demo = () => {
-    const [sort, setSort] = React.useState<DataTableSort<keyof typeof data[0]>>(['kd', 'desc']);
+    const [sort, setSort] = React.useState<DataTableSort<keyof typeof data[0]>>(['keyword/kd/cpc/vol', 'desc']);
     const sortedData = React.useMemo(
       () =>
         [...data].sort((aRow, bRow) => {
@@ -30,18 +28,20 @@ const data = [
       [],
     );
 
-  return (
-    <DataTable data={sortedData} sort={sort} onSortChange={setSort} aria-label={'Sorting'}>
-      <DataTable.Head>
-        <DataTable.Head.Column name='keyword' children='Keyword' sortable/>
-        <DataTable.Head.Column name='kd' children='KD,%' sortable/>
-        <DataTable.Head.Column name='cpc' children='CPC' sortable/>
-        <DataTable.Head.Column name='vol' children='Vol.' sortable/>
-      </DataTable.Head>
-      <DataTable.Body
+    return (
+      <DataTable
+        data={sortedData}
+        sort={sort}
+        onSortChange={setSort}
+        aria-label="Sorting"
+        columns={[
+          { name: 'keyword', children: 'Keyword', sortable: true },
+          { name: 'kd', children: 'KD,%', sortable: true },
+          { name: 'cpc', children: 'CPC', sortable: true },
+          { name: 'vol', children: 'Vol.', sortable: true },
+        ]}
       />
-    </DataTable>
-  );
+    );
 };
 
 export default Demo;

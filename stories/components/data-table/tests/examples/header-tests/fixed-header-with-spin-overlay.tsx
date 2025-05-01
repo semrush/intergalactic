@@ -13,6 +13,8 @@ const Demo = () => {
       clearInterval(timer);
     };
   }, [loading]);
+
+  
   return (
     <DataTable data={data} aria-label={'Fixed header with spin overlay'}>
       <Box position='sticky' top={0} zIndex={2}>

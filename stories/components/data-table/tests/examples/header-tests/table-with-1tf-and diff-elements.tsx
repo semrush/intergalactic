@@ -13,10 +13,20 @@ import { Text } from '@semcore/typography';
 const Demo = () => {
 
   return (
-    <DataTable data={data} aria-label={'Base table example'} defaultGridTemplateColumnWidth={'1fr'} wMax={'1200px'} hMax={'200px'}>
-      <DataTable.Head sticky={true}>
-      <DataTable.Head.Column name='hiddenColumn'> <Checkbox label='Option 1' /></DataTable.Head.Column>
-        <DataTable.Head.Column name='cpc'  >
+
+    <DataTable
+    data={data} aria-label={'Base table example'} defaultGridTemplateColumnWidth={'1fr'} wMax={'1200px'} hMax={'200px'}
+    headerProps={{
+      sticky: true,
+    }}
+    columns={[
+      {
+        name: 'hiddenColumn',
+        children: <Checkbox label='Option 1' />,
+      },
+      {
+        name: 'cpc',
+        children: (
           <DescriptionTooltip placement='right'>
             Cpc 1
             <DescriptionTooltip.Trigger
@@ -27,14 +37,16 @@ const Demo = () => {
               aria-label='Additional info 1'
               data-test-id='tooltip-without-interactive-el'
             />
-            <DescriptionTooltip.Popper aria-label={'Additional info about item 1'}>
+            <DescriptionTooltip.Popper aria-label='Additional info about item 1'>
               Jesus Christ, Joe,
               Pink. Let's move on.
             </DescriptionTooltip.Popper>
           </DescriptionTooltip>
-        </DataTable.Head.Column>
-
-        <DataTable.Head.Column name='cpc'  >
+        ),
+      },
+      {
+        name: 'cpc',
+        children: (
           <DescriptionTooltip placement='right'>
             Cpc 2
             <DescriptionTooltip.Trigger
@@ -42,17 +54,18 @@ const Demo = () => {
               tag={ButtonLink}
               addonLeft={InfoM}
               color='icon-secondary-neutral'
-              aria-label='Additional info2'
+              aria-label='Additional info 2'
               data-test-id='tooltip-with-interactive-el'
             />
-            <DescriptionTooltip.Popper aria-label={'Additional info about item 2'}>
-              Jesus Christ, Joe, <Link>fucking forget</Link> about it. I'm Mr.
-              Pink. Let's move on.
+            <DescriptionTooltip.Popper aria-label='Additional info about item 2'>
+              Jesus Christ, Joe, <Link>fucking forget</Link> about it. I'm Mr. Pink. Let's move on.
             </DescriptionTooltip.Popper>
           </DescriptionTooltip>
-        </DataTable.Head.Column>
-
-        <DataTable.Head.Column name='cpc'  >
+        ),
+      },
+      {
+        name: 'cpc',
+        children: (
           <Tooltip
             tag={Link}
             title='Default tooltip contains short text explaining something about the trigger.'
@@ -60,53 +73,63 @@ const Demo = () => {
           >
             Keywords
           </Tooltip>
-
-        </DataTable.Head.Column>
-
-        <DataTable.Head.Column name='kd' sortable>
-          <Text noWrap>
-            Keyword <Text color='text-secondary'>(100)</Text>
-          </Text>
-          <Hint
-            ml={1}
-            tag={LinkExternalM}
-            interactive
-            title='Go to our awesome article'
-            data-test-id='interactive-icon'
-            color='icon-secondary-neutral'
-          />
-        </DataTable.Head.Column>
-        <DataTable.Head.Column name='keyword' >
-
-          <Checkbox data-test-id='header-checkbox' />
-          <DescriptionTooltip placement='right'>
-            Hello
-            <DescriptionTooltip.Trigger
+        ),
+      },
+      {
+        name: 'kd',
+        sortable: true,
+        children: (
+          <>
+            <Text noWrap>
+              Keyword <Text color='text-secondary'>(100)</Text>
+            </Text>
+            <Hint
               ml={1}
-              tag={ButtonLink}
-              addonLeft={InfoM}
+              tag={LinkExternalM}
+              interactive
+              title='Go to our awesome article'
+              data-test-id='interactive-icon'
               color='icon-secondary-neutral'
-              aria-label='Additional info'
-              data-test-id='few-interactive'
             />
-            <DescriptionTooltip.Popper aria-label={'Additional info about checkbox item'}>
-              Place an additional information here!
-            </DescriptionTooltip.Popper>
-          </DescriptionTooltip>
+          </>
+        ),
+      },
+      {
+        name: 'keyword',
+        children: (
+          <>
+            <Checkbox data-test-id='header-checkbox' />
+            <DescriptionTooltip placement='right'>
+              Hello
+              <DescriptionTooltip.Trigger
+                ml={1}
+                tag={ButtonLink}
+                addonLeft={InfoM}
+                color='icon-secondary-neutral'
+                aria-label='Additional info'
+                data-test-id='few-interactive'
+              />
+              <DescriptionTooltip.Popper aria-label='Additional info about checkbox item'>
+                Place an additional information here!
+              </DescriptionTooltip.Popper>
+            </DescriptionTooltip>
+          </>
+        ),
+      },
+      {
+        name: 'vol',
+        sortable: true,
+        children: 'Vol.',
+        tag: Tooltip,
+  
+        title: (
+          <>
+            Jesus Christ, Joe, <Link>fucking forget</Link> about it. I'm Mr. Pink. Let's move on.
+          </>
+        ),
+      },
+      ]}
 
-        </DataTable.Head.Column>
-        <DataTable.Head.Column sortable name='vol' children='Vol.' tag={Tooltip}
-          data-test-id='tag-tooltip'
-          disableEnforceFocus
-          title={
-            <>
-              Jesus Christ, Joe, <Link>fucking forget</Link> about it. I'm Mr.
-              Pink. Let's move on.
-            </>}
-        />
-
-      </DataTable.Head>
-      <DataTable.Body
 
         renderCell={(props) => {
           if (props.columnName === 'keyword') {
@@ -148,8 +171,6 @@ const Demo = () => {
           return props.defaultRender();
         }}
       />
-
-    </DataTable>
   );
 };
 

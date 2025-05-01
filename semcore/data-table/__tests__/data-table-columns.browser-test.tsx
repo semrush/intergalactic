@@ -65,7 +65,7 @@ test.describe('Columns', () => {
     expect(width1Mobile).toBeLessThan(width1Desktop);
     expect(width2Mobile).toBeCloseTo(width2Desktop, 1);
     expect(width3Mobile).toBeCloseTo(width3Desktop, 1);
-    expect(width4Mobile).toBeLessThan(width4Desktop, 1);
+    expect(width4Mobile).toBeLessThan(width4Desktop);
     expect(width5Mobile).toBeCloseTo(width5Desktop, 1);
 
     await expect(page).toHaveScreenshot();
