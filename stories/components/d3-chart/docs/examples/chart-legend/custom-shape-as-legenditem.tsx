@@ -11,7 +11,7 @@ const data = [...Array(5).keys()].map((d, i) => ({
   Line5: Math.random() * 10,
 }));
 
-const Shape = (props) => {
+const Shape = (props:any) => {
   const colorResolver = useColorResolver();
 
   return (

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import ChartLegendExample from './examples/chart-legend/chart-legend';
-import CustomShapeAsLegendItemExample from './examples/chart-legend/chart-legend';
+import CustomShapeAsLegendItemExample from './examples/chart-legend/custom-shape-as-legenditem';
 import TableViewExample from './examples/chart-legend/table-view';
 
 
