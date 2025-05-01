@@ -297,8 +297,10 @@ test.describe('MonthRangeComparator range', () => {
 
     await datePicker.click();
     await expect(popper).toBeVisible();
+    await page.waitForTimeout(300);
     await datePicker.click();
     await expect(popper).not.toBeVisible();
+    await page.waitForTimeout(100);
 
     await datePicker.click();
     await page.waitForTimeout(300);
@@ -405,7 +407,7 @@ test.describe('MonthRangeComparator range', () => {
     await inputTo.first().fill('06.2022');
     await inputTo.nth(1).fill('10.2022');
     await apply.click();
-
+    await page.waitForTimeout(100);
     await expect(page).toHaveScreenshot();
 
     await datePicker.click();
@@ -660,13 +662,13 @@ test.describe('Month Range comparator with advanced use', () => {
     await page.keyboard.press('Enter');
 
     await from.click();
-    await inputFrom.first().fill('052024');
-    await inputFrom.nth(1).fill('072024');
+    await inputFrom.first().fill('052022');
+    await inputFrom.nth(1).fill('072022');
 
     await toggle.click();
     await to.click();
-    await inputTo.first().fill('012025');
-    await inputTo.nth(1).fill('082025');
+    await inputTo.first().fill('012023');
+    await inputTo.nth(1).fill('082023');
 
     await apply.click();
 

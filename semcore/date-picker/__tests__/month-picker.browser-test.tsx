@@ -251,12 +251,16 @@ test.describe('Month picker', () => {
     const input = page.locator('input[data-ui-name="MonthPicker.Trigger"]');
     const initialValue = await input.inputValue();
 
+    input.fill('012024');
+    
     await test.step('Open and close popper with click', async () => {
       await datePicker.first().click();
+      await page.waitForTimeout(300);
       await expect(popper).toBeVisible();
       await datePicker.first().click();
       await expect(popper).not.toBeVisible();
       await datePicker.first().click();
+      await page.waitForTimeout(300);
     });
 
     const initialTitle = await headTitle.textContent();

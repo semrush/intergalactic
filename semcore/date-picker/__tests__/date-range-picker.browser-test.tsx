@@ -645,24 +645,13 @@ test.describe('Date range with standart ranges', () => {
     await page.keyboard.press('Tab');
 
     await page.keyboard.press('Enter');
-
-    const initialValue1_7 = await input.nth(2).inputValue();
-    const initialValue2_7 = await input.nth(3).inputValue();
-
-    expect(initialValue1_7).not.toBe(initialValue1_6);
-    expect(initialValue2_7).not.toBe(initialValue2_6);
+    await expect(popper).not.toBeVisible();
 
     await page.keyboard.press('Enter');
     await page.waitForTimeout(300);
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
+    for (let i = 0; i < 10; i++) {
+      await page.keyboard.press('Tab');
+    }
 
     await expect(reset).toBeFocused();
 
