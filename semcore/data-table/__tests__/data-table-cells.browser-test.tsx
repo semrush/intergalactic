@@ -3,7 +3,8 @@ import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 test.describe('Cells', () => {
   test('Verify long text in cells - default and wrap and ellipsis', async ({ page }) => {
-    const standPath = 'stories/components/data-table/tests/examples/cells-tests/long-text-in-cells.tsx';
+    const standPath =
+      'stories/components/data-table/tests/examples/cells-tests/long-text-in-cells.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
     await expect(page).toHaveScreenshot();
@@ -27,7 +28,6 @@ test.describe('Cells', () => {
     await expect(svgInSecondCell).toHaveAttribute('aria-label', 'Loading…');
     await expect(svgInSecondCell).toHaveAttribute('role', 'img');
   });
-
 
   test('Verify keyboard interaction with interactive elements in cells', async ({ page }) => {
     const standPath =
@@ -118,7 +118,8 @@ test.describe('Cells', () => {
   });
 
   test('Verify keyboard interaction with dd and select in cells', async ({ page }) => {
-    const standPath = 'stories/components/data-table/tests/examples/cells-tests/dd-select-in-cell.tsx';
+    const standPath =
+      'stories/components/data-table/tests/examples/cells-tests/dd-select-in-cell.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
@@ -182,7 +183,8 @@ test.describe('Cells', () => {
   });
 
   test('Verify mouse interaction with dd and select in cells', async ({ page }) => {
-    const standPath = 'stories/components/data-table/tests/examples/cells-tests/dd-select-in-cell.tsx';
+    const standPath =
+      'stories/components/data-table/tests/examples/cells-tests/dd-select-in-cell.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 

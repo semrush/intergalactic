@@ -50,7 +50,7 @@ test.describe('Accordion in table', () => {
     await page.waitForTimeout(100);
 
     await page.keyboard.press('ArrowDown');
-   // await expect(page.getByRole('gridcell', { name: 'Chart' })).toBeFocused();
+    // await expect(page.getByRole('gridcell', { name: 'Chart' })).toBeFocused();
 
     await page.keyboard.press('ArrowDown');
     const thirdArrow = await page.locator('[data-ui-name="ButtonLink"]').nth(2);
@@ -102,7 +102,6 @@ test.describe('Accordion in table', () => {
     const cells = row3.locator('div');
     const cellCount = await cells.count();
 
-
     for (let i = 0; i < cellCount; i++) {
       const cell = cells.nth(i);
       await checkStyles(cell, {
@@ -124,26 +123,26 @@ test.describe('Accordion in table', () => {
     const cells5 = row5.locator('div');
 
     const cellCount5 = await cells5.count();
-    if(browserName!=='firefox')
-    for (let i = 0; i < cellCount5 - 1; i++) {
-      const cell = cells5.nth(i);
-      await checkStyles(cell, {
-        'background-color': 'rgb(240, 240, 244)',
-      });
-    }
+    if (browserName !== 'firefox')
+      for (let i = 0; i < cellCount5 - 1; i++) {
+        const cell = cells5.nth(i);
+        await checkStyles(cell, {
+          'background-color': 'rgb(240, 240, 244)',
+        });
+      }
 
     await checkStyles(cells5.nth(3), {
       'background-color': 'rgb(230, 231, 237)',
     });
 
     await firstArrow.click();
-    if(browserName!=='firefox')
-    for (let i = 0; i < cellCount; i++) {
-      const cell = cells.nth(i);
-      await checkStyles(cell, {
-        'background-color': 'rgb(240, 240, 244)',
-      });
-    }
+    if (browserName !== 'firefox')
+      for (let i = 0; i < cellCount; i++) {
+        const cell = cells.nth(i);
+        await checkStyles(cell, {
+          'background-color': 'rgb(240, 240, 244)',
+        });
+      }
   });
 
   test('Verify accordion attributes', async ({ page }) => {
