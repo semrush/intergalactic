@@ -5,6 +5,7 @@ import { DataTable } from '@semcore/data-table';
 
 import InteractiveCellsExample from './examples/cells-tests/interactive-elements-in-cells';
 import MiniChartsInCellsExample from './examples/cells-tests/mini-chart-inline-edit-in-cell';
+import CardFlagInCellExample from './examples/cells-tests/card-flag-in-cell';
 
 import DDSelectInCellExample from './examples/cells-tests/dd-select-in-cell';
 import LongTextCellsExample from './examples/cells-tests/long-text-in-cells';
@@ -18,6 +19,10 @@ const meta: Meta<typeof DataTable> = {
 
 export default meta;
 type Story = StoryObj<typeof DataTable>;
+
+export const CardFlagInCell: Story = {
+  render: CardFlagInCellExample,
+};
 
 export const MiniChartsInCells: Story = {
   render: MiniChartsInCellsExample,

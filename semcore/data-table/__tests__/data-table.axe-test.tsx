@@ -72,7 +72,7 @@ test.describe('DataTable', () => {
 
     expect(violations).toEqual([]);
   });
-  test.skip('custom rows rendering', async ({ page }) => {
+  test('custom rows rendering', async ({ page }) => {
     const standPath = 'stories/components/data-table/docs/examples/custom-rows-rendering.tsx';
     const violations = await checkAxe(page, standPath);
 
@@ -120,7 +120,7 @@ test.describe('DataTable', () => {
 
     expect(violations).toEqual([]);
   });
-  test.skip('scroll in table', async ({ page }) => {
+  test('scroll in table', async ({ page }) => {
     const standPath = 'stories/components/data-table/docs/examples/scroll-in-table.tsx';
     const violations = await checkAxe(page, standPath);
 
@@ -156,20 +156,20 @@ test.describe('DataTable', () => {
 
     expect(violations).toEqual([]);
   });
-  test.skip('table in table with fixed column', async ({ page }) => {
+  test('table in table with fixed column', async ({ page }) => {
     const standPath =
       'stories/components/data-table/docs/examples/table-in-table-with-fixed-column.tsx';
     const violations = await checkAxe(page, standPath);
 
     expect(violations).toEqual([]);
   });
-  test.skip('table in table', async ({ page }) => {
+  test('table in table', async ({ page }) => {
     const standPath = 'stories/components/data-table/docs/examples/table-in-table.tsx';
     const violations = await checkAxe(page, standPath);
 
     expect(violations).toEqual([]);
   });
-  test.skip('virtual scroll in table', async ({ page }) => {
+  test('virtual scroll in table', async ({ page }) => {
     const standPath = 'stories/components/data-table/docs/examples/virtual-scroll-in-table.tsx';
     const violations = await checkAxe(page, standPath);
 

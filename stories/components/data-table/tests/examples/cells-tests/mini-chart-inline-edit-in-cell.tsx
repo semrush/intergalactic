@@ -33,7 +33,7 @@ const Demo = () => {
         <DataTable data={data} aria-label={'Access to cells'} hMax={200}
         columns={[
             {name: 'keyword', children: 'Keyword', gtcWidth:'200px'},
-            {name: 'kd', children: 'KD,%'},
+            {name: 'kd', children: 'KD,%',gtcWidth:'200px'},
             {name: 'cpc', children: 'CPC', gtcWidth:'200px'},
             {name: 'vol', children: 'Vol.'},
         ]}
@@ -41,14 +41,57 @@ const Demo = () => {
             if (props.columnName === 'keyword') {
                 return (
                     <Flex alignItems='center'>
-                           <Text mr={2} id='author-label'>
-        Author:
-      </Text>
-      <InlineEdit editable={editable} onEditableChange={setEditable} wMax={100}>
+       <InlineInput
+      w={150}
+      onBlurBehavior='cancel'
+      onCancel={console.log}
+      onChange={console.log}
+      onConfirm={console.log}
+    >
+      <InlineInput.Addon htmlFor='basic-example' tag='label'>
+        User:
+      </InlineInput.Addon>
+      <InlineInput.Value id='basic-example' defaultValue='John Doe' />
+      <InlineInput.ConfirmControl />
+      <InlineInput.CancelControl />
+    </InlineInput>
+                    </Flex>
+                );
+            }
+
+
+            if (props.columnName === 'kd') {
+                return (
+                    <>
+        <MiniChart.ScoreSemiDonut value={45} w={'50px'} aria-labelledby={'mylabel'} />
+        </>
+                );
+            }
+
+
+
+
+            if (props.columnName === 'cpc') {
+                return (
+                    <Flex alignItems='center'>
+                     <Text w={80}> {props.value}</Text>
+                     <MiniChart.TrendLine data={dataChart} aria-hidden />
+                 
+                    </Flex>
+                );
+            }
+
+            if (props.columnName === 'vol') {
+                return (
+                    <Flex alignItems='center'>
+                     <Text w={80}> {props.value}</Text>
+                    
+    
+      <InlineEdit editable={editable} onEditableChange={setEditable}>
         <InlineEdit.View style={{ display: 'flex', gap: 8, alignItems: 'center' }} pr={2}>
           {text} <EditM color='icon-secondary-neutral' />
         </InlineEdit.View>
-        <InlineEdit.Edit >
+        <InlineEdit.Edit>
           <InlineInput
             onConfirm={() => {
               setEditable(false);
@@ -71,27 +114,6 @@ const Demo = () => {
           </InlineInput>
         </InlineEdit.Edit>
       </InlineEdit>
-                    </Flex>
-                );
-            }
-
-
-            if (props.columnName === 'kd') {
-                return (
-                    <>
-        <MiniChart.ScoreSemiDonut value={45} w={'50px'} aria-labelledby={'mylabel'} />
-        </>
-                );
-            }
-
-
-
-
-            if (props.columnName === 'cpc') {
-                return (
-                    <Flex alignItems='center'>
-                     <Text w={80}> {props.value}</Text>
-                     <MiniChart.TrendLine data={dataChart} aria-hidden />
                     </Flex>
                 );
             }

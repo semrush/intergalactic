@@ -2,19 +2,6 @@ import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 test.describe('Rows', () => {
-  test('Verify Custom rows Rendering', async ({ page }) => {
-    const standPath = 'stories/components/data-table/docs/examples/custom-rows-rendering.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('ArrowRight');
-    await page.keyboard.press('ArrowRight');
-    await page.keyboard.press('ArrowDown');
-
-    await expect(page).toHaveScreenshot();
-  });
-
   test('Verify merged cells on Hover', async ({ page }) => {
     const standPath = 'stories/components/data-table/docs/examples/columns-merging.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -30,7 +17,7 @@ test.describe('Rows', () => {
     await expect(page).toHaveScreenshot();
   });
 
-  test('Verify merged rows keyboard mnvigation', async ({ page }) => {
+  test('Verify merged rows keyboard navigation', async ({ page }) => {
     const standPath = 'stories/components/data-table/docs/examples/rows-merging.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 

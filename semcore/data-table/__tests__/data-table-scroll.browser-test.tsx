@@ -257,7 +257,19 @@ test.describe('Horizontal Scroll', () => {
     await page.waitForTimeout(100);
     const nowNumber = await checkScrollNowIncreased(scrollBar);
     expect(nowNumber).toBeLessThanOrEqual(initialValue);
+
+    const scrollBar2 = page.locator('[data-ui-name="ScrollArea.Bar"]').nth(2);
+      const initialValue2 = await checkAriaMaxValue(scrollBar2);
+    await page.keyboard.press('Tab');
+    for (let i = 0; i < 5; i++) {
+      await page.keyboard.press('ArrowRight');
+    }
+    await page.waitForTimeout(100);
+    const nowNumber2 = await checkScrollNowIncreased(scrollBar2);
+    expect(nowNumber2).toBeLessThanOrEqual(initialValue2);
+
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+
   });
 
   test('Verify mouse scroll when multilevel parent fixed', async ({ page }) => {
@@ -270,11 +282,20 @@ test.describe('Horizontal Scroll', () => {
 
     const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]').first();
     const initialValue = await checkAriaMaxValue(scrollBar);
-    await dataTable.hover();
+    await dataTable.first().hover();
     await page.mouse.wheel(600, 0);
     await page.waitForTimeout(200);
     const nowNumber = await checkScrollNowIncreased(scrollBar);
     expect(nowNumber).toBeLessThanOrEqual(initialValue);
+
+    await dataTable.nth(1).hover();
+    const scrollBarHeader = page.locator('[data-ui-name="ScrollArea.Bar"]').nth(2);
+    const initialValue2 = await checkAriaMaxValue(scrollBarHeader);
+    await page.mouse.wheel(600, 0);
+    await page.waitForTimeout(200);
+    const nowNumber2 = await checkScrollNowIncreased(scrollBarHeader);
+    expect(nowNumber2).toBeLessThanOrEqual(initialValue2);
+
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
   });
 
@@ -298,6 +319,7 @@ test.describe('Horizontal Scroll', () => {
     const scrollBar2 = page.locator('[data-ui-name="ScrollArea.Bar"]').nth(1);
     const initialValue2 = await checkAriaMaxValue(scrollBar2);
 
+    await page.keyboard.press('Tab');
     for (let i = 0; i < 7; i++) {
       await page.keyboard.press('ArrowDown');
     }
