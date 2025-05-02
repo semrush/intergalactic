@@ -1,5 +1,5 @@
 import React from 'react';
-import Divider from '@secmore/divider';
+import Divider from '@semcore/divider';
 
 const Demo = () => {
     return (
