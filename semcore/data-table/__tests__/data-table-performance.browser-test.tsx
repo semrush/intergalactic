@@ -26,6 +26,6 @@ test.describe('Rows', () => {
     //console.log(`Tooltip render time: ${duration.toFixed(2)}ms`);
 
     expect(duration).toBeGreaterThan(0);
-    expect(duration).toBeLessThan(100); 
+    expect(duration).toBeLessThan(100);
   });
 });
