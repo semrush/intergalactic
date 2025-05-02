@@ -62,9 +62,9 @@ test.describe('DataTable', () => {
     const tooltipShownTime = await page.evaluate(() => performance.now());
     const duration = tooltipShownTime - renderTime;
 
-   // console.log(`Tooltip render time: ${duration.toFixed(2)}ms`);
+    // console.log(`Tooltip render time: ${duration.toFixed(2)}ms`);
 
-   // expect(duration).toBeGreaterThan(0);
-   // expect(duration).toBeLessThan(100);
+    // expect(duration).toBeGreaterThan(0);
+    // expect(duration).toBeLessThan(100);
   });
 });
