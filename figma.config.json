@@ -1,0 +1,7 @@
+{
+  "codeConnect": {
+    "include": ["figma/*.{tsx,jsx}"],
+    "label": "React",
+    "interactiveSetupFigmaFileUrl": "https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/%E2%9D%96-Core-Components-(Refactoring)"
+  }
+}
