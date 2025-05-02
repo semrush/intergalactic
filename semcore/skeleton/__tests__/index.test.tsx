@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { snapshot } from '@semcore/testing-utils/snapshot';
-import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
-import { render, cleanup } from '@semcore/testing-utils/testing-library';
+import { expect, test, describe } from '@semcore/testing-utils/vitest';
 import Skeleton, {
   LineChartSkeleton,
   AreaChartSkeleton,

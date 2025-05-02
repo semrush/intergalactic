@@ -12,10 +12,8 @@ test.describe('Skeleton and skeleton.text props and styles', () => {
     await expect(sketeton).toBeVisible();
     await expect(page).toHaveScreenshot();
 
-    //styles
     await expect(sketeton).toHaveAttribute('preserveAspectRatio', 'none');
 
-    // Проверка inline style содержит duration 2000ms
     const styleAttr = await sketeton.getAttribute('style');
     expect(styleAttr).toContain('2000ms');
 
