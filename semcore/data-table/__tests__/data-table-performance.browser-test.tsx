@@ -16,18 +16,16 @@ test.describe('Rows', () => {
 
     const renderTime = await page.evaluate(() => performance.now());
 
-    // Наводим курсор — большинство тултипов появляются по hover
     await trigger.hover();
 
-    // Ждём появления тултипа
     await expect(tooltip).toBeVisible({ timeout: 2000 });
 
     const tooltipShownTime = await page.evaluate(() => performance.now());
     const duration = tooltipShownTime - renderTime;
 
-    console.log(`Tooltip render time: ${duration.toFixed(2)}ms`);
+    //console.log(`Tooltip render time: ${duration.toFixed(2)}ms`);
 
     expect(duration).toBeGreaterThan(0);
-    expect(duration).toBeLessThan(100); // разумный порог
+    expect(duration).toBeLessThan(100); 
   });
 });
