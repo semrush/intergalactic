@@ -1,7 +1,7 @@
 import React from 'react';
-import Badge from 'intergalactic/badge';
-import { Flex } from 'intergalactic/flex-box';
-import {Text} from 'intergalactic/typography';
+import Badge from '@semcore/badge';
+import { Flex } from '@semcore/flex-box';
+import {Text} from '@semcore/typography';
 
 const Demo = () => {
   return (
