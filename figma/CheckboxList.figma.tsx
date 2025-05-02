@@ -14,7 +14,7 @@ figma.connect(
       }),
     },
     example: ({ size }) => (
-      <Flex>
+      <Flex direction='column' gap={3}>
         <Checkbox size={size} />
       </Flex>
     ),
