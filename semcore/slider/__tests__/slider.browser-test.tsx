@@ -17,7 +17,7 @@ test.describe('Slider', () => {
 
     await page.setContent(htmlContent);
 
-    //snapshot
+    await expect(page).toHaveScreenshot();
   });
 
   test('Verify deafult styles', async ({ page }) => {
@@ -187,7 +187,7 @@ test.describe('Slider', () => {
     await expect(slider).toHaveAttribute('aria-valuenow', '0');
     await expect(inputValue).toHaveAttribute('aria-invalid', 'true');
 
-    //snapshot
+    await expect(page).toHaveScreenshot();
 
     inputValue.fill('10');
     await expect(input).toHaveValue('10');
