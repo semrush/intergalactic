@@ -259,7 +259,7 @@ test.describe('Horizontal Scroll', () => {
     expect(nowNumber).toBeLessThanOrEqual(initialValue);
 
     const scrollBar2 = page.locator('[data-ui-name="ScrollArea.Bar"]').nth(2);
-      const initialValue2 = await checkAriaMaxValue(scrollBar2);
+    const initialValue2 = await checkAriaMaxValue(scrollBar2);
     await page.keyboard.press('Tab');
     for (let i = 0; i < 5; i++) {
       await page.keyboard.press('ArrowRight');
@@ -269,7 +269,6 @@ test.describe('Horizontal Scroll', () => {
     expect(nowNumber2).toBeLessThanOrEqual(initialValue2);
 
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
-
   });
 
   test('Verify mouse scroll when multilevel parent fixed', async ({ page }) => {
