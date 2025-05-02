@@ -2,7 +2,7 @@ import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 test.describe('Dot', () => {
-  test('Verify dot stgyles and view in different posisions', async ({ page }) => {
+  test('Verify dot styles and view in different posisions', async ({ page }) => {
     const standPath = 'stories/components/dot/tests/examples/different-sizes-and-positions.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
