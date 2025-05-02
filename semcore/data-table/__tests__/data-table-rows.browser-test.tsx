@@ -2,7 +2,7 @@ import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 test.describe('Rows', () => {
-  test.skip('Verify Custom rows Rendering', async ({ page }) => {
+  test('Verify Custom rows Rendering', async ({ page }) => {
     const standPath = 'stories/components/data-table/docs/examples/custom-rows-rendering.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
