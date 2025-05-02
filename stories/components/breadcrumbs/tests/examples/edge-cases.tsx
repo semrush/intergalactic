@@ -1,8 +1,5 @@
 import React from 'react';
 import Breadcrumbs from '@semcore/breadcrumbs';
-import Ellipsis from '@semcore/ellipsis';
-import LinkExternalM from '@semcore/icon/LinkExternal/m';
-
 
 const Demo = () => (
   <>
