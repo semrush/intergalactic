@@ -3,10 +3,6 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { DataTable } from '@semcore/data-table';
 
-
-
-
-
 import InteractiveCellsExample from './examples/cells-tests/interactive-elements-in-cells';
 import MiniChartsInCellsExample from './examples/cells-tests/mini-chart-inline-edit-in-cell';
 
