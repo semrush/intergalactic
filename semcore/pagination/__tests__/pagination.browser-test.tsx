@@ -261,12 +261,12 @@ test.describe('Interactions', () => {
       await expect(firstPage).toBeFocused();
       await page.keyboard.press('Enter');
       await expect(input).toHaveAttribute('value', '1');
-    //   if (browserName === 'webkit') {
-    //     await page.keyboard.press('Shift+Tab');
-    //   } 
-        await page.keyboard.press('Tab');
-        await page.keyboard.press('Tab');
-      
+      //   if (browserName === 'webkit') {
+      //     await page.keyboard.press('Shift+Tab');
+      //   }
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+
       await expect(total).toBeFocused();
       await page.keyboard.press('Enter');
       await expect(prevPage).toBeFocused();
