@@ -752,13 +752,13 @@ test.describe('Date Range comparator with advanced use', () => {
     await page.waitForTimeout(200);
 
     await from.click();
-    await inputFrom.first().fill('05052025');
-    await inputFrom.nth(1).fill('05202025');
+    await inputFrom.first().fill('05052023');
+    await inputFrom.nth(1).fill('05202023');
 
     await toggle.click();
     await to.click();
-    await inputTo.first().fill('05012025');
-    await inputTo.nth(1).fill('05182025');
+    await inputTo.first().fill('05012023');
+    await inputTo.nth(1).fill('05182023');
 
     await apply.click();
 
