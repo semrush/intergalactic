@@ -36,7 +36,7 @@ Here are some general recommendations that can help you:
 * Ensure that the success message or feedback is clear, so that users can easily understand what they need to do next.
 * Users should be able to close the success modal window or notice at any time – for example, with a close button or by pressing the `Escape` key.
 
-For example, if a [Feedback form](/components/feedback/feedback) has been sent successfully, show the success message in the same place next to the form's trigger.
+For example, if a [Feedback form](/components/feedback-form/feedback-form) has been sent successfully, show the success message in the same place next to the form's trigger.
 
 ![](static/success-response.png)
 
