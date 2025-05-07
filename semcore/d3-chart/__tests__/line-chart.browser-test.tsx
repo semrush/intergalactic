@@ -8,29 +8,28 @@ test.describe('Line chart', () => {
     await page.setContent(htmlContent);
 
     const chart = await page.locator('svg[data-ui-name="Plot"]').first();
-  await expect(chart).toBeVisible();
+    await expect(chart).toBeVisible();
 
-  const box = await chart.boundingBox();
-  if (!box) throw new Error('Bounding box not found');
+    const box = await chart.boundingBox();
+    if (!box) throw new Error('Bounding box not found');
 
-  const targetX = 128.42;
-  const targetY = 190.53;
+    const targetX = 128.42;
+    const targetY = 190.53;
 
-  const hoverX = box.x + targetX;
-  const hoverY = box.y + targetY;
+    const hoverX = box.x + targetX;
+    const hoverY = box.y + targetY;
 
-  await page.mouse.move(hoverX, hoverY);
+    await page.mouse.move(hoverX, hoverY);
 
- const lines = page.locator('line');
- const count = await lines.count();
+    const lines = page.locator('line');
+    const count = await lines.count();
 
- for (let i = 0; i < count; i++) {
-  const line = lines.nth(i);
-  await expect(line.first()).toHaveAttribute('aria-hidden', 'true');
-}
-//snapshot
-    });
-
+    for (let i = 0; i < count; i++) {
+      const line = lines.nth(i);
+      await expect(line.first()).toHaveAttribute('aria-hidden', 'true');
+    }
+    //snapshot
+  });
 
   test('Verify interpolation renders correctly when dost can be hovered', async ({ page }) => {
     const standPath = 'stories/components/d3-chart/docs/examples/line-chart/interpolation.tsx';
@@ -41,9 +40,7 @@ test.describe('Line chart', () => {
 
     await dots.nth(4).hover();
     //snapshot
-
   });
-
 
   test('Verify basic usage with legend ui and interactions', async ({ page }) => {
     const standPath = 'stories/components/d3-chart/tests/examples/line-chart/basic-usage.tsx';
@@ -52,70 +49,60 @@ test.describe('Line chart', () => {
 
     const legendTitle = page.locator('[data-ui-name="LegendFlex.LegendItem"]');
     const checkbox = page.locator('[data-ui-name="Checkbox"]');
-    const chart =  page.locator('svg[data-ui-name="Plot"]');
+    const chart = page.locator('svg[data-ui-name="Plot"]');
     await expect(chart.first()).toBeVisible();
 
     await test.step('Verify base render with different props', async () => {
-      
       //add snapshot
     });
 
     await test.step('Veriry highlight changes when hover the checkbox', async () => {
-      
-     await checkbox.first().hover();
-     //add snapshot
+      await checkbox.first().hover();
+      //add snapshot
     });
 
     await test.step('Veriry line disappears when uncheck the checkbox', async () => {
-      
       await legendTitle.first().click();
       //add snapshot
-     });
+    });
 
-     await test.step('Veriry line added when uncheck checked and tooltip without total by def', async () => {
-      
+    await test.step('Veriry line added when uncheck checked and tooltip without total by def', async () => {
       const legendTitle = page.locator('[data-ui-name="LegendFlex.LegendItem"]');
       await legendTitle.first().click();
-     
-    
+
       const box = await chart.first().boundingBox();
       if (!box) throw new Error('Bounding box not found');
-    
+
       const targetX = 50;
       const targetY = 50;
-    
+
       const hoverX = box.x + targetX;
       const hoverY = box.y + targetY;
-    
+
       await page.mouse.move(hoverX, hoverY);
 
       //add snapshot
-     });
+    });
 
-
-    await test.step('Veriry line not highlight on hover when props is false', async () => { 
+    await test.step('Veriry line not highlight on hover when props is false', async () => {
       await checkbox.nth(3).hover();
       //add snapshot
-     });
- 
-     await test.step('Veriry tooltip with total looks well', async () => {
-     
-    
+    });
+
+    await test.step('Veriry tooltip with total looks well', async () => {
       const box = await chart.nth(1).boundingBox();
       if (!box) throw new Error('Bounding box not found');
-    
+
       const targetX = 50;
       const targetY = 50;
-    
+
       const hoverX = box.x + targetX;
       const hoverY = box.y + targetY;
-    
+
       await page.mouse.move(hoverX, hoverY);
 
       //add snapshot
-     });
- 
-
+    });
   });
 
   test('Verify render and interactions with Line and Dots ', async ({ page }) => {
@@ -125,37 +112,33 @@ test.describe('Line chart', () => {
 
     const legendTitle = page.locator('[data-ui-name="LegendFlex.LegendItem"]');
     const lines = page.locator('g');
-    const chart =  page.locator('svg[data-ui-name="Plot"]').first();
+    const chart = page.locator('svg[data-ui-name="Plot"]').first();
     await expect(chart).toBeVisible();
 
     await test.step('Verify renders correctly with different props', async () => {
       //snapshot
-      
     });
 
     await test.step('Veriry duration props applies to all lines inside the chart', async () => {
-      
-     await expect(lines.first()).toHaveAttribute('duration', '0ms');
-     await expect(lines.nth(1)).toHaveAttribute('duration', '0ms');
+      await expect(lines.first()).toHaveAttribute('duration', '0ms');
+      await expect(lines.nth(1)).toHaveAttribute('duration', '0ms');
     });
-
   });
 
   test('Verify area with empty line renders and looks good', async ({ page }) => {
-    const standPath = 'stories/components/d3-chart/tests/examples/line-chart/line-area-with-empty.tsx';
+    const standPath =
+      'stories/components/d3-chart/tests/examples/line-chart/line-area-with-empty.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
     await test.step('Verify renders correctly with different props', async () => {
       //snapshot
-      
     });
 
     await test.step('Veriry Line.Null attributes', async () => {
       const nullLune = page.locator('[data-ui-name="Line.Null"]');
-     await expect(nullLune).toHaveAttribute('aria-hidden', 'true');
+      await expect(nullLune).toHaveAttribute('aria-hidden', 'true');
     });
-
   });
 
   test('Verify area default props looks good', async ({ page }) => {
@@ -165,89 +148,80 @@ test.describe('Line chart', () => {
 
     await test.step('Verify renders correctly with different props', async () => {
       //snapshot
-      
     });
+  });
+
+  test('Verify curve prop', async ({ page }) => {
+    const standPath = 'stories/components/d3-chart/tests/examples/line-chart/curve.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+
+    const chart = page.locator('svg[data-ui-name="Plot"]');
+
+    await test.step('Verify renders correctly with curve props', async () => {
+      //snapshot
     });
 
-    test('Verify curve prop', async ({ page }) => {
-      const standPath = 'stories/components/d3-chart/tests/examples/line-chart/curve.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en');
-      await page.setContent(htmlContent);
-  
-      const chart =  page.locator('svg[data-ui-name="Plot"]');
+    await test.step('Verify tooltip shown correctly with dots', async () => {
+      const box = await chart.first().boundingBox();
+      if (!box) throw new Error('Bounding box not found');
 
+      const targetX = 50;
+      const targetY = 50;
 
-      await test.step('Verify renders correctly with curve props', async () => {
-        //snapshot 
-      });
+      const hoverX = box.x + targetX;
+      const hoverY = box.y + targetY;
 
-      await test.step('Verify tooltip shown correctly with dots', async () => {
-        const box = await chart.first().boundingBox();
-        if (!box) throw new Error('Bounding box not found');
-      
-        const targetX = 50;
-        const targetY = 50;
-      
-        const hoverX = box.x + targetX;
-        const hoverY = box.y + targetY;
-      
-        await page.mouse.move(hoverX, hoverY);
-  
-        //add snapshot      
-        });
+      await page.mouse.move(hoverX, hoverY);
 
-        await test.step('Verify tooltip shown correctly without dots', async () => {
-          const box = await chart.nth(1).boundingBox();
-          if (!box) throw new Error('Bounding box not found');
-        
-          const targetX = 50;
-          const targetY = 50;
-        
-          const hoverX = box.x + targetX;
-          const hoverY = box.y + targetY;
-        
-          await page.mouse.move(hoverX, hoverY);
-    
-          //add snapshot      
-          });
-  
+      //add snapshot
+    });
+
+    await test.step('Verify tooltip shown correctly without dots', async () => {
+      const box = await chart.nth(1).boundingBox();
+      if (!box) throw new Error('Bounding box not found');
+
+      const targetX = 50;
+      const targetY = 50;
+
+      const hoverX = box.x + targetX;
+      const hoverY = box.y + targetY;
+
+      await page.mouse.move(hoverX, hoverY);
+
+      //add snapshot
+    });
   });
 
+  test('Verify dots partial display', async ({ page }) => {
+    const standPath =
+      'stories/components/d3-chart/tests/examples/line-chart/dots-display-function.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
 
-      test('Verify dots partial display', async ({ page }) => {
-      const standPath = 'stories/components/d3-chart/tests/examples/line-chart/dots-display-function.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en');
-      await page.setContent(htmlContent);
-  
-      const chart =  page.locator('svg[data-ui-name="Plot"]');
+    const chart = page.locator('svg[data-ui-name="Plot"]');
 
-
-      await test.step('Verify dots render partly', async () => {
-        //snapshot 
-      });
-  
+    await test.step('Verify dots render partly', async () => {
+      //snapshot
+    });
   });
 
+  test('Verify patterns and symbols for dots', async ({ page }) => {
+    const standPath =
+      'stories/components/d3-chart/tests/examples/line-chart/legend-and-symbols-for-dots.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
 
-test('Verify patterns and symbols for dots', async ({ page }) => {
-  const standPath = 'stories/components/d3-chart/tests/examples/line-chart/legend-and-symbols-for-dots.tsx';
-  const htmlContent = await e2eStandToHtml(standPath, 'en');
-  await page.setContent(htmlContent);
+    const chart = page.locator('svg[data-ui-name="Plot"]');
+    const checkbox = page.locator('[data-ui-name="Checkbox"]');
 
-  const chart =  page.locator('svg[data-ui-name="Plot"]');
-  const checkbox = page.locator('[data-ui-name="Checkbox"]');
+    await test.step('Verify patterns display correctly', async () => {
+      //snapshot
+    });
 
-  await test.step('Verify patterns display correctly', async () => {
-    //snapshot 
+    await test.step('Verify disbale highlights when hover the checkbox', async () => {
+      await checkbox.nth(1).hover();
+      //snapshot
+    });
   });
-
-  await test.step('Verify disbale highlights when hover the checkbox', async () => {
-    await checkbox.nth(1).hover();
-    //snapshot 
-  });
-
 });
-
-});
-
-
