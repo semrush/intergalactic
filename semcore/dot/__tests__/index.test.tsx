@@ -28,16 +28,7 @@ describe('Dot', () => {
   shouldSupportClassName(Dot, undefined, { 'aria-label': 'test dot' });
   shouldSupportRef(Dot, undefined, { 'aria-label': 'test dot' });
 
-  test('Verify dot does not render Portal when hidden', () => {
-    render(
-      <Dot aria-label='alert test' hidden>
-        Content
-      </Dot>,
-    );
-    expect(document.body.querySelector('div[role="alert"]')).toBeNull();
-  });
-
-  test('Verify supports hidden', async () => {
+  test('Verify no "alert" for screenreaders when hidden', async () => {
     const { queryByTestId } = render(
       <Button>
         Button
@@ -45,11 +36,11 @@ describe('Dot', () => {
       </Button>,
     );
     expect(queryByTestId('dot')).toBeFalsy();
+    expect(document.body.querySelector('div[role="alert"]')).toBeNull();
   });
 
-  test('Verify renders Portal alert when not hidden', () => {
+  test('Verify renders with role "alert" and aria-live "polite" when visible', () => {
     render(<Dot aria-label='alert test'>Content</Dot>);
-    // Portal should render a div with role alert
     const alert = document.body.querySelector('div[role="alert"]');
     expect(alert).toBeInTheDocument();
     expect(alert).toHaveAttribute('aria-live', 'polite');
