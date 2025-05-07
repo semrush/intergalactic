@@ -32,7 +32,7 @@ function generateData(count:any) {
 
 const Demo = () => {
 
-const data = generateData(150);
+const data = generateData(100);
     
     useEffect(() => {
         performance.mark('demo-render-start');
