@@ -1,6 +1,5 @@
 import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
-import { RealDate, mockDate } from './utils';
 
 test.describe('DateRangeComparator range', () => {
   test('Verify roles and attributes', async ({ page }) => {

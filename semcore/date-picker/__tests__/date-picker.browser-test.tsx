@@ -1,6 +1,5 @@
 import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
-import { RealDate, mockDate } from './utils';
 
 test.describe('Date Picker Trigger', () => {
   test('Verify trigger states when entering date manually', async ({ page }) => {
