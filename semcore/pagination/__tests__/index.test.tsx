@@ -97,7 +97,7 @@ describe('Pagination.PrevPage', () => {
     expect((getByTestId('prevPage').attributes as any)['disabled']).toBeUndefined();
   });
 
-  test('Verofy calls onCurrentPageChange(currentPage - 1) by one on click', () => {
+  test('Verify calls onCurrentPageChange(currentPage - 1) by one on click', () => {
     const spy = vi.fn();
     const CURRENT_PAGE = 10;
 

@@ -2,7 +2,7 @@ import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 test.describe('Roles and attrubutes', () => {
-  test('Base example ', async ({ page }) => {
+  test('Verify Base example roles and attributes', async ({ page }) => {
     const standPath = 'stories/components/pagination/docs/examples/basic_usage.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
@@ -207,7 +207,7 @@ test.describe('States and styles', () => {
 });
 
 test.describe('Interactions', () => {
-  test('Keyboard interactions', async ({ page, browserName }) => {
+  test('Verify Keyboard interactions', async ({ page, browserName }) => {
     const standPath = 'stories/components/pagination/docs/examples/basic_usage.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
@@ -226,7 +226,6 @@ test.describe('Interactions', () => {
       await page.keyboard.press('Tab');
 
       const classAttr = await inputWrapper.getAttribute('class');
-
       expect(classAttr).toContain('focused');
       await page.keyboard.press('Tab');
       //expect(classAttr).not.toContain('focused'); BUG
@@ -279,7 +278,7 @@ test.describe('Interactions', () => {
     });
   });
 
-  test('Entering pages by keyboard', async ({ page, browserName }) => {
+  test('Verify pages input by keyboard', async ({ page, browserName }) => {
     const standPath = 'stories/components/pagination/docs/examples/basic_usage.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
@@ -351,7 +350,7 @@ test.describe('Interactions', () => {
     });
   });
 
-  test('Entering pages by mouse', async ({ page, browserName }) => {
+  test('Verify pages input by mouse', async ({ page, browserName }) => {
     const standPath = 'stories/components/pagination/tests/examples/interactive-icon-in-input.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
@@ -402,7 +401,7 @@ test.describe('Interactions', () => {
     });
   });
 
-  test('Mouse interactions', async ({ page, browserName }) => {
+  test('Verify mouse interactions', async ({ page, browserName }) => {
     const standPath = 'stories/components/pagination/docs/examples/basic_usage.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
