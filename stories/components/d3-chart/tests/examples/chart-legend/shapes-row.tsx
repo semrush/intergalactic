@@ -71,7 +71,7 @@ const Demo = () => {
                     onMouseLeaveItem={handleMouseLeave}
                     dataHints={dataHints}
                     patterns
-                    aria-label={"Stacked bar chart legend"}
+                    aria-label={"Checkboxes M with trend"}
                     pr = {4}
                     withTrend={true}
 
@@ -84,7 +84,7 @@ const Demo = () => {
                     dataHints={dataHints}
                     patterns
                     size = 'l'
-                    aria-label={"Stacked bar chart legend"}
+                    aria-label={"Checkboxes L with trend"}
                     withTrend={true}
                 />
             </Card.Body>
@@ -104,7 +104,7 @@ const Demo = () => {
                     dataHints={dataHints}
                     patterns
                     shape="Line"
-                    aria-label={"Stacked bar chart legend"}
+                    aria-label={"Line M"}
                     pr = {4}
                 />
                  <ChartLegend
@@ -113,7 +113,7 @@ const Demo = () => {
                     patterns
                     shape="Line"
                     size = 'l'
-                    aria-label={"Stacked bar chart legend"}
+                    aria-label={"SLine M"}
                 />
             </Card.Body>
 
@@ -132,7 +132,7 @@ const Demo = () => {
                     dataHints={dataHints}
                     patterns
                     shape="Circle"
-                    aria-label={"Stacked bar chart legend"}
+                    aria-label={"Circle M"}
                     pr = {4}
                 />
                 <ChartLegend
@@ -141,7 +141,7 @@ const Demo = () => {
                     patterns
                     shape="Circle"
                     size = 'l'
-                    aria-label={"Stacked bar chart legend"}
+                    aria-label={"Circle L"}
                 />
             </Card.Body>
 
@@ -160,7 +160,7 @@ const Demo = () => {
                     dataHints={dataHints}
                     patterns
                     shape="Square"
-                    aria-label={"Stacked bar chart legend"}
+                    aria-label={"Square M"}
                     pr = {4}
                 />
                 <ChartLegend
@@ -168,7 +168,7 @@ const Demo = () => {
                     dataHints={dataHints}
                     shape="Square"
                     size = 'l'
-                    aria-label={"Stacked bar chart legend"}
+                    aria-label={"Square L"}
                 />
             </Card.Body>
 
@@ -187,16 +187,15 @@ const Demo = () => {
                     items={legendItems}
                     patterns 
                     size = 'l'                 
-                    aria-label={"Stacked bar chart legend"}
+                    aria-label={"Patterns only L"}
                     pr = {4}
                 />
                 <ChartLegend
                     items={legendItems}
                     patterns  
-                    aria-label={"Stacked bar chart legend"}
+                    aria-label={"Patterns only M"}
                 />                
             </Card.Body>
-
             
         </Card>
         </>
