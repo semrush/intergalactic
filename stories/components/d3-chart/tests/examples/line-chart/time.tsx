@@ -4,7 +4,7 @@ import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import { scaleLinear, scaleTime } from 'd3-scale';
 
-function formatDate(value, options) {
+function formatDate(value: any, options: any) {
   return new Intl.DateTimeFormat('en', options).format(value);
 }
 
@@ -71,8 +71,9 @@ const data = Array(10)
   .map((d, i) => {
     return {
       time: new Date(date.setDate(date.getDate() + 5)),
-      line: Math.random() * 10,
+      line: Math.abs(Math.sin(Math.exp(i))) * 10,
     };
   });
+
 
 export default Demo;

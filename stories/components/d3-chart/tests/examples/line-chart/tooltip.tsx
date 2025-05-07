@@ -40,7 +40,7 @@ const Demo = () => {
             ),
           };
         }}
-      </HoverLine.Tooltip>
+      </HoverLine.Tooltip >
       <Line x='x' y='y'>
         <Line.Dots />
       </Line>
@@ -49,10 +49,13 @@ const Demo = () => {
 };
 
 const data = Array(20)
-  .fill({})
-  .map((d, i) => ({
-    x: i,
-    y: Math.random() * 10,
-  }));
+      .fill({})
+      .map((d, i) => {
+        const y = Math.abs(Math.sin(Math.exp(i))) * 10;
+        return {
+          x: i,
+          y: y,
+        };
+      });
 
 export default Demo;

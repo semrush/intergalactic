@@ -108,9 +108,9 @@ const Demo = () => {
 
 const data = [...Array(5).keys()].map((d, i) => ({
   x: i,
-  1: Math.random() * 10,
-  2: Math.random() * 10,
-  3: Math.random() * 10,
+  1: Math.abs(Math.tan(Math.exp(i))) * 2,
+  2: Math.abs(Math.sin(Math.exp(i))) * 6,
+  3: Math.abs(Math.cos(Math.exp(i))) * 3,
 }));
 
 export default Demo;

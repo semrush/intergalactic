@@ -38,10 +38,13 @@ const Demo = () => {
 };
 
 const data = Array(20)
-  .fill({})
-  .map((d, i) => ({
-    x: i,
-    y: Math.random() * 10,
-  }));
+      .fill({})
+      .map((d, i) => {
+        const y = Math.abs(Math.sin(Math.exp(i))) * 10;
+        return {
+          x: i,
+          y: i === 2 || i === 3 ? null : y,
+        };
+      });
 
 export default Demo;
