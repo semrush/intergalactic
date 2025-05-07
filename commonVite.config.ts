@@ -1,13 +1,11 @@
 import { defineConfig } from 'vite';
-import pluginReact from '@vitejs/plugin-react';
-import { resolve } from 'node:path';
 import { createUnplugin } from 'unplugin';
 import { resolveSemcoreSources } from './website/docs/.vitepress/resolve-semcore-sources';
 import { loadSemcoreSources } from './website/docs/.vitepress/load-semcore-sources';
+import copy from 'rollup-plugin-copy';
 
 export default defineConfig({
   plugins: [
-    pluginReact(),
     createUnplugin<{}>(() => ({
       name: 'semcore-styles-resolver',
       async resolveId(id) {
@@ -26,6 +24,7 @@ export default defineConfig({
   build: {
     emptyOutDir: false,
     outDir: 'lib',
+    minify: false,
     rollupOptions: {
       external: ['react', 'react-dom', 'react/jsx-runtime', /@babel\/runtime\/*/, /@semcore\/*/],
       output: [
@@ -36,6 +35,14 @@ export default defineConfig({
           format: 'esm',
         },
       ],
+      plugins: [
+        copy({
+          targets: [
+            { src: 'src/**/*.shadow.css', dest: 'lib/esm' },
+          ],
+          flatten: false,
+        })
+      ]
     },
   },
 });
