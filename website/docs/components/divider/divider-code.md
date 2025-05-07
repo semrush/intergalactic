@@ -9,7 +9,7 @@ tabs: Design('divider'), A11y('divider-a11y'), API('divider-api'), Example('divi
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/divider.tsx';
+  export Demo from 'stories/components/divider/docs/examples/divider.tsx';
 </script>
 
 :::
@@ -19,7 +19,7 @@ tabs: Design('divider'), A11y('divider-a11y'), API('divider-api'), Example('divi
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/custom_color.tsx';
+  export Demo from 'stories/components/divider/docs/examples/custom_color.tsx';
 </script>
 
 :::

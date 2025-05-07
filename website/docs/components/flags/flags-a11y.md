@@ -18,7 +18,7 @@ If you use `Flags` with the short country code, do the same, and also hide the c
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/aria-label.tsx';
+  export Demo from 'stories/components/flags/docs/examples/aria-label.tsx';
 </script>
 
 :::
