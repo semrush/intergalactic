@@ -111,8 +111,8 @@ test.describe('Chart Plot', () => {
       });
 
       expect(styles.border).toContain('1px solid');
-      expect(styles.padding).toBe('0px'); 
-      expect(styles.margin).toBe('0px'); 
+      expect(styles.padding).toBe('0px');
+      expect(styles.margin).toBe('0px');
       expect(styles.width).toBe('500px');
       expect(styles.height).toBe('300px');
     });
@@ -366,7 +366,6 @@ test.describe('Pattern fills, dots and lines', () => {
   });
 });
 
-
 test.describe('dots', () => {
   test('Verify dots radius', async ({ page }) => {
     const standPath =
@@ -391,8 +390,7 @@ test.describe('dots', () => {
 
 test.describe('chart legend', () => {
   test('Verify chart leged row', async ({ page }) => {
-    const standPath =
-      'stories/components/d3-chart/tests/examples/chart-legend/shapes-row.tsx';
+    const standPath = 'stories/components/d3-chart/tests/examples/chart-legend/shapes-row.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
@@ -408,21 +406,18 @@ test.describe('chart legend', () => {
       const checkboxes = page.locator('[data-ui-name="LegendFlex.LegendItem"][shape="Checkbox"]');
       const checkboxesInputs = checkboxes.locator('input');
       const count = await checkboxesInputs.count();
-    expect(count).toBeGreaterThan(0);
+      expect(count).toBeGreaterThan(0);
 
-    for (let i = 0; i < count; i++) {
-      const checkboxesInput = checkboxesInputs.nth(i);
-      await expect(checkboxesInput).toHaveAttribute('tabindex', '0');
-      await expect(checkboxesInput).toHaveAttribute('aria-invalid', 'false');
-    }
-
+      for (let i = 0; i < count; i++) {
+        const checkboxesInput = checkboxesInputs.nth(i);
+        await expect(checkboxesInput).toHaveAttribute('tabindex', '0');
+        await expect(checkboxesInput).toHaveAttribute('aria-invalid', 'false');
+      }
     });
-    
   });
 
   test('Verify chart leged column', async ({ page }) => {
-    const standPath =
-      'stories/components/d3-chart/tests/examples/chart-legend/shapes-column.tsx';
+    const standPath = 'stories/components/d3-chart/tests/examples/chart-legend/shapes-column.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
@@ -433,9 +428,8 @@ test.describe('chart legend', () => {
       await trend.click();
       //add snapshot
     });
-    
   });
-  
+
   test('Verify custom shape as leged item', async ({ page }) => {
     const standPath =
       'stories/components/d3-chart/docs/examples/chart-legend/custom-shape-as-legenditem.tsx';
@@ -444,18 +438,16 @@ test.describe('chart legend', () => {
 
     await page.waitForTimeout(100);
 
-      //add snapshot
-
+    //add snapshot
   });
 
   test('Verify leged table view', async ({ page }) => {
-    const standPath =
-      'stories/components/d3-chart/docs/examples/chart-legend/table-view.tsx';
+    const standPath = 'stories/components/d3-chart/docs/examples/chart-legend/table-view.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
     await page.waitForTimeout(100);
 
-      //add snapshot
+    //add snapshot
   });
 });
