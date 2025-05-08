@@ -147,7 +147,7 @@ class BodyRoot<D extends DataTableData> extends Component<
     }
 
     const defaultRender = () => {
-      return value?.toString();
+      return React.isValidElement(value) ? value : value?.toString();
     };
 
     const extraProps: Record<string, any> = {
@@ -166,7 +166,7 @@ class BodyRoot<D extends DataTableData> extends Component<
         columnIndex: props.columnIndex,
         dataKey,
         defaultRender,
-        value: value?.toString() ?? '',
+        value: React.isValidElement(value) ? value : value?.toString() ?? '',
         isMergedRows,
         isMergedColumns,
       });
