@@ -376,10 +376,10 @@ test.describe('One level header - Sorting', () => {
       [1, 2, 3, 4].map((i) => getColumnWidth(page, i)),
     );
 
-    expect(afterSecondSortWidths[0]).toBeLessThan(initialWidths[0]); // Колонка 1 уменьшилась
-    expect(afterSecondSortWidths[1]).toEqual(initialWidths[1]); // Колонка 2 без изменений
-    expect(afterSecondSortWidths[2]).toBeGreaterThan(initialWidths[2]); // Колонка 3 увеличилась
-    expect(afterSecondSortWidths[3]).toEqual(initialWidths[3]); // Колонка 4 без изменений
+    expect(afterSecondSortWidths[0]).toBeLessThan(initialWidths[0]);
+    expect(afterSecondSortWidths[1]).toEqual(initialWidths[1]);
+    expect(afterSecondSortWidths[2]).toBeGreaterThan(initialWidths[2]);
+    expect(afterSecondSortWidths[3]).toEqual(initialWidths[3]);
   });
 
   test('Verify mouse sorting without changing size', async ({ page }) => {
@@ -439,15 +439,15 @@ test.describe('One level header - Sorting', () => {
       [1, 2, 3, 4].map((i) => getColumnWidth(page, i)),
     );
 
-    expect(widthsAfterSecondSort[0]).toBeLessThan(initialWidths[0]); // Колонка 1 уменьшилась
-    expect(widthsAfterSecondSort[1]).toEqual(initialWidths[1]); // Колонка 2 без изменений
-    expect(widthsAfterSecondSort[2]).toBeGreaterThan(initialWidths[2]); // Колонка 3 увеличилась
-    expect(widthsAfterSecondSort[3]).toEqual(initialWidths[3]); // Колонка 4 без изменений
+    expect(widthsAfterSecondSort[0]).toBeLessThan(initialWidths[0]);
+    expect(widthsAfterSecondSort[1]).toEqual(initialWidths[1]);
+    expect(widthsAfterSecondSort[2]).toBeGreaterThan(initialWidths[2]);
+    expect(widthsAfterSecondSort[3]).toEqual(initialWidths[3]);
   });
 });
 
 test.describe('Multi level Header', () => {
-  test('Verify lines props work correctly', async ({ page }) => {
+  test('Verify lines props and ellipsis in header work correctly', async ({ page }) => {
     const standPath =
       'stories/components/data-table/tests/examples/header-tests/multi-level-header.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -468,16 +468,6 @@ test.describe('Multi level Header', () => {
     const group4 = page.locator('[data-ui-name="Head.Group"]', { hasText: 'default' });
     await group4.evaluate((el) => window.getComputedStyle(el).borderRightWidth === '0px');
     await group4.evaluate((el) => window.getComputedStyle(el).borderLeftWidth === '0px');
-  });
-
-  test('Verify header when long text wraps and ellipsis', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/header-tests/multi-level-header.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-    await expect(page).toHaveScreenshot();
-    await page.keyboard.press('Tab');
   });
 
   test('Verify multi level looks good when it is sticky', async ({ page }) => {
