@@ -209,4 +209,36 @@ test.describe('Accordion in table', () => {
 
     expect(peddingLeft).toBe('40px');
   });
+
+  test('Verify keyboard navigation when interactive element incide cell', async ({ page }) => {
+    const standPath = 'stories/components/data-table/tests/examples/accordion-tests/accordion-with-render-cell.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+    await page.keyboard.press('Tab');
+
+  const firstArrow = await page.locator('[data-ui-name="ButtonLink"]').first();
+  const row = page.locator('[data-ui-name="Body.Row"][aria-rowindex="2"]');
+  const firstrowCell = row.locator('[data-ui-name="Body.Cell"][aria-colindex="1"]')
+ const widget = page.locator('[data-ui-name="WidgetNoData"]');
+  await test.step('Verify focus on whole first body cell', async () => {
+  await expect(firstrowCell).toBeFocused();
+});
+
+await page.keyboard.press('Enter');
+
+await test.step('Verify focus on accrorsion arrow inside cell and its collapsed ', async () => {
+  await expect(firstArrow).toBeFocused();
+  await expect(widget).not.toBeVisible();
+});
+
+await page.keyboard.press('Escape');
+
+await test.step('Verify focus on whole first body cell by escape', async () => {
+  await expect(firstrowCell).toBeFocused();
+});
+
+
+   
+  });
 });
