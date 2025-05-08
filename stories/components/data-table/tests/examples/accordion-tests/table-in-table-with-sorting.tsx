@@ -1,5 +1,5 @@
 import React from 'react';
-import { DataTable, ACCORDION, DataTableSort } from '@semcore/data-table';
+import { DataTable, ACCORDION, DataTableSort, UNIQ_ROW_KEY } from '@semcore/data-table';
 
 type SortableColumn = Exclude<keyof typeof data[0], 'keyword'>;
 
@@ -14,6 +14,18 @@ const Demo = () => {
         if (a === b) return 0;
         if (sortDirection === 'asc') return a > b ? 1 : -1;
         else return a > b ? -1 : 1;
+      }).map((row) => {
+        return {
+          ...row,
+          [ACCORDION]: row[ACCORDION]?.sort((aRow, bRow) => {
+            const [prop, sortDirection] = sort;
+            const a = aRow[prop as SortableColumn];
+            const b = bRow[prop as SortableColumn];
+            if (a === b) return 0;
+            if (sortDirection === 'asc') return a > b ? 1 : -1;
+            else return a > b ? -1 : 1;
+          }),
+        }
       }),
     [sort],
   );
@@ -40,6 +52,7 @@ const Demo = () => {
 
 const data = [
   {
+    [UNIQ_ROW_KEY]: '1',
     keyword: 'ebay buy',
     kd: '77.8',
     cpc: '$1.25',
@@ -66,6 +79,7 @@ const data = [
     ]
   },
   {
+    [UNIQ_ROW_KEY]: '2',
     keyword: 'www.ebay.com',
     kd: '11.2',
     cpc: '$3.4',
@@ -93,18 +107,21 @@ const data = [
     ]}
   },
   {
+    [UNIQ_ROW_KEY]: '3',
     keyword: 'www.ebay.com',
     kd: '10',
     cpc: '$0.65',
     vol: '47,354,640',
   },
   {
+    [UNIQ_ROW_KEY]: '4',
     keyword: 'ebay buy',
     kd: '-',
     cpc: '$0',
     vol: 'n/a',
   },
   {
+    [UNIQ_ROW_KEY]: '5',
     keyword: 'ebay buy',
     kd: '75.89',
     cpc: '$0',
