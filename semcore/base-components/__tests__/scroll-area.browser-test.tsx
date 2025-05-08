@@ -199,6 +199,8 @@ test.describe('ScrollArea - Dynamic Virtual List', () => {
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('ArrowDown');
     await new Promise((resolve) => setTimeout(resolve, 2000));
+    await expect(page).toHaveScreenshot();
+
 
     await page.keyboard.press('Shift+Tab');
     await page.keyboard.press('Shift+Tab');
