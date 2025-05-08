@@ -210,7 +210,10 @@ test.describe('Accordion in table', () => {
     expect(peddingLeft).toBe('40px');
   });
 
-  test('Verify keyboard navigation when interactive element incide cell', async ({ page, browserName }) => {
+  test('Verify keyboard navigation when interactive element incide cell', async ({
+    page,
+    browserName,
+  }) => {
     const standPath =
       'stories/components/data-table/tests/examples/accordion-tests/accordion-with-render-cell.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -226,21 +229,18 @@ test.describe('Accordion in table', () => {
       await expect(firstrowCell).toBeFocused();
     });
 
-
     await test.step('Verify focus on accrorsion arrow inside cell and its collapsed ', async () => {
       await page.keyboard.press('Enter');
       await expect(elementsIncell.first()).toBeFocused();
       await expect(widget).not.toBeVisible();
     });
 
-
     await test.step('Verify focus on whole first body cell by escape', async () => {
       await page.keyboard.press('Escape');
       await expect(firstrowCell).toBeFocused();
     });
 
- 
-if(browserName==='webkit') return;
+    if (browserName === 'webkit') return;
     await test.step('Verify focus on the next focusable element by tab', async () => {
       await page.keyboard.press('Enter');
       await page.keyboard.press('Tab');
@@ -250,29 +250,27 @@ if(browserName==='webkit') return;
       await page.keyboard.press('Tab');
       await expect(elementsIncell.first()).toBeFocused();
     });
-  
 
     await test.step('Verify accordion can be expanded', async () => {
-    await page.keyboard.press('Enter');
+      await page.keyboard.press('Enter');
       await expect(elementsIncell.first()).toBeFocused();
       await expect(widget).toBeVisible();
       await page.keyboard.press('Tab');
       await expect(elementsIncell.nth(1)).toBeFocused();
-      await expect(widget).toBeVisible();   
+      await expect(widget).toBeVisible();
     });
 
     await test.step('Verify accordion not collapsed by esc', async () => {
-     
       await page.keyboard.press('Escape');
       await expect(firstrowCell).toBeFocused();
-        await expect(widget).toBeVisible();
-        await page.keyboard.press('ArrowDown');
-        const row2 = page.locator('[data-ui-name="Body.Row"][aria-rowindex="3"]');
-        const secondrowCell = page.locator('div').filter({ hasText: /^Nothing foundTry changing your filters\.$/ }).nth(1);
-        await expect(secondrowCell).toBeFocused();
-      });
-
-
-
+      await expect(widget).toBeVisible();
+      await page.keyboard.press('ArrowDown');
+      const row2 = page.locator('[data-ui-name="Body.Row"][aria-rowindex="3"]');
+      const secondrowCell = page
+        .locator('div')
+        .filter({ hasText: /^Nothing foundTry changing your filters\.$/ })
+        .nth(1);
+      await expect(secondrowCell).toBeFocused();
+    });
   });
 });
