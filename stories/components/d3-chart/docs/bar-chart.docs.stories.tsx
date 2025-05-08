@@ -29,10 +29,6 @@ export const BasicUsage: StoryObj = {
   render: BasicUsageExample,
 };
 
-export const EdgeCases: StoryObj = {
-  render: DateFormatExample,
-};
-
 export const DateFormat: StoryObj = {
   render: DateFormatExample,
 };
