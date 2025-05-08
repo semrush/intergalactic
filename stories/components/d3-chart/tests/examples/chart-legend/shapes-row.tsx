@@ -6,26 +6,24 @@ import {
 import { scaleLinear, scaleBand } from "d3-scale";
 import { Flex } from "@semcore/flex-box";
 import Card from "@semcore/card";
-import CheckM from "@semcore/icon/Check/m";
 
 const dataHints = makeDataHintsContainer();
 
 const Demo = () => {
 
-        const [legendItems, setLegendItems] = React.useState(
-          Object.keys(data[0])
-              .filter((name) => name !== "bar")
-              .map((item, index) => {
-                  return {
-                      id: item,
-                      label: `Category ${item}`,
-                      checked: true,
-                      color: `chart-palette-order-${index + 1}`,
-                      additionalInfo: { count: 15 },
-                  };
-              })
-      );
-
+    const [legendItems, setLegendItems] = React.useState(
+        Object.keys(data[0])
+            .filter((name) => name !== "bar")
+            .map((item, index) => {
+                return {
+                    id: item,
+                    label: `Category ${item}`,
+                    checked: true,
+                    color: `chart-palette-order-${index + 1}`,
+                    additionalInfo: { count: 15 },
+                };
+            })
+    );
 
     const [highlightedLine, setHighlightedLine] = React.useState(-1);
 
@@ -54,150 +52,142 @@ const Demo = () => {
     }, []);
 
     return (
-      <>
+        <>
 
 
-        <Card w={"700px"}>
-            <Card.Header pt={4}>
-                <Card.Title tag={"h4"} m={0} inline={true}>
-                    Checkbox with rattern and trend
-                </Card.Title>
-            </Card.Header>
-            <Card.Body tag={Flex} direction="column">
-                <ChartLegend
-                    items={legendItems}
-                    onChangeVisibleItem={handleChangeVisible}
-                    onMouseEnterItem={handleMouseEnter}
-                    onMouseLeaveItem={handleMouseLeave}
-                    dataHints={dataHints}
-                    patterns
-                    aria-label={"Checkboxes M with trend"}
-                    pr = {4}
-                    withTrend={true}
+            <Card w={"700px"}>
+                <Card.Header pt={4}>
+                    <Card.Title tag={"h4"} m={0} inline={true}>
+                        Checkbox with rattern and trend
+                    </Card.Title>
+                </Card.Header>
+                <Card.Body tag={Flex} direction="column">
+                    <ChartLegend
+                        items={legendItems}
+                        onChangeVisibleItem={handleChangeVisible}
+                        onMouseEnterItem={handleMouseEnter}
+                        onMouseLeaveItem={handleMouseLeave}
+                        dataHints={dataHints}
+                        patterns
+                        aria-label={"Checkboxes M with trend"}
+                        pr={4}
+                        withTrend={true}
 
-                />
-                 <ChartLegend
-                    items={legendItems}
-                    onChangeVisibleItem={handleChangeVisible}
-                    onMouseEnterItem={handleMouseEnter}
-                    onMouseLeaveItem={handleMouseLeave}
-                    dataHints={dataHints}
-                    patterns
-                    size = 'l'
-                    aria-label={"Checkboxes L with trend"}
-                    withTrend={true}
-                />
-            </Card.Body>
+                    />
+                    <ChartLegend
+                        items={legendItems}
+                        onChangeVisibleItem={handleChangeVisible}
+                        onMouseEnterItem={handleMouseEnter}
+                        onMouseLeaveItem={handleMouseLeave}
+                        dataHints={dataHints}
+                        patterns
+                        size='l'
+                        aria-label={"Checkboxes L with trend"}
+                        withTrend={true}
+                    />
+                </Card.Body>
+            </Card>
 
-            
-        </Card>
+            <Card w={"700px"}>
+                <Card.Header pt={4}>
+                    <Card.Title tag={"h4"} m={0} inline={true}>
+                        Line
+                    </Card.Title>
+                </Card.Header>
+                <Card.Body tag={Flex} direction="column">
+                    <ChartLegend
+                        items={legendItems}
+                        dataHints={dataHints}
+                        patterns
+                        shape="Line"
+                        aria-label={"Line M"}
+                        pr={4}
+                    />
+                    <ChartLegend
+                        items={legendItems}
+                        dataHints={dataHints}
+                        patterns
+                        shape="Line"
+                        size='l'
+                        aria-label={"SLine M"}
+                    />
+                </Card.Body>
+            </Card>
 
-        <Card w={"700px"}>
-            <Card.Header pt={4}>
-                <Card.Title tag={"h4"} m={0} inline={true}>
-                Line
-                </Card.Title>
-            </Card.Header>
-            <Card.Body tag={Flex} direction="column">
-                <ChartLegend
-                    items={legendItems}
-                    dataHints={dataHints}
-                    patterns
-                    shape="Line"
-                    aria-label={"Line M"}
-                    pr = {4}
-                />
-                 <ChartLegend
-                    items={legendItems}
-                    dataHints={dataHints}
-                    patterns
-                    shape="Line"
-                    size = 'l'
-                    aria-label={"SLine M"}
-                />
-            </Card.Body>
+            <Card w={"700px"}>
+                <Card.Header pt={4}>
+                    <Card.Title tag={"h4"} m={0} inline={true}>
+                        Circle
+                    </Card.Title>
+                </Card.Header>
+                <Card.Body tag={Flex} direction="column">
+                    <ChartLegend
+                        items={legendItems}
+                        dataHints={dataHints}
+                        patterns
+                        shape="Circle"
+                        aria-label={"Circle M"}
+                        pr={4}
+                    />
+                    <ChartLegend
+                        items={legendItems}
+                        dataHints={dataHints}
+                        patterns
+                        shape="Circle"
+                        size='l'
+                        aria-label={"Circle L"}
+                    />
+                </Card.Body>
+            </Card>
 
-            
-        </Card>
-
-        <Card w={"700px"}>
-            <Card.Header pt={4}>
-                <Card.Title tag={"h4"} m={0} inline={true}>
-                    Circle
-                </Card.Title>
-            </Card.Header>
-            <Card.Body tag={Flex} direction="column">
-                <ChartLegend
-                    items={legendItems}
-                    dataHints={dataHints}
-                    patterns
-                    shape="Circle"
-                    aria-label={"Circle M"}
-                    pr = {4}
-                />
-                <ChartLegend
-                    items={legendItems}
-                    dataHints={dataHints}
-                    patterns
-                    shape="Circle"
-                    size = 'l'
-                    aria-label={"Circle L"}
-                />
-            </Card.Body>
-
-            
-        </Card>
-
-        <Card w={"700px"}>
-            <Card.Header pt={4}>
-                <Card.Title tag={"h4"} m={0} inline={true}>
-                    Square
-                </Card.Title>
-            </Card.Header>
-            <Card.Body tag={Flex} direction="column">
-                <ChartLegend
-                    items={legendItems}
-                    dataHints={dataHints}
-                    patterns
-                    shape="Square"
-                    aria-label={"Square M"}
-                    pr = {4}
-                />
-                <ChartLegend
-                    items={legendItems}
-                    dataHints={dataHints}
-                    shape="Square"
-                    size = 'l'
-                    aria-label={"Square L"}
-                />
-            </Card.Body>
-
-            
-        </Card>
+            <Card w={"700px"}>
+                <Card.Header pt={4}>
+                    <Card.Title tag={"h4"} m={0} inline={true}>
+                        Square
+                    </Card.Title>
+                </Card.Header>
+                <Card.Body tag={Flex} direction="column">
+                    <ChartLegend
+                        items={legendItems}
+                        dataHints={dataHints}
+                        patterns
+                        shape="Square"
+                        aria-label={"Square M"}
+                        pr={4}
+                    />
+                    <ChartLegend
+                        items={legendItems}
+                        dataHints={dataHints}
+                        shape="Square"
+                        size='l'
+                        aria-label={"Square L"}
+                    />
+                </Card.Body>
+            </Card>
 
 
-        <Card w={"700px"}>
-            <Card.Header pt={4}>
-                <Card.Title tag={"h4"} m={0} inline={true}>
-                    Patterns only
-                </Card.Title>
-            </Card.Header>
-            <Card.Body tag={Flex} direction="column">
-                <ChartLegend
-                    items={legendItems}
-                    patterns 
-                    size = 'l'                 
-                    aria-label={"Patterns only L"}
-                    pr = {4}
-                />
-                <ChartLegend
-                    items={legendItems}
-                    patterns  
-                    aria-label={"Patterns only M"}
-                />                
-            </Card.Body>
-            
-        </Card>
+            <Card w={"700px"}>
+                <Card.Header pt={4}>
+                    <Card.Title tag={"h4"} m={0} inline={true}>
+                        Patterns only
+                    </Card.Title>
+                </Card.Header>
+                <Card.Body tag={Flex} direction="column">
+                    <ChartLegend
+                        items={legendItems}
+                        patterns
+                        size='l'
+                        aria-label={"Patterns only L"}
+                        pr={4}
+                    />
+                    <ChartLegend
+                        items={legendItems}
+                        patterns
+                        aria-label={"Patterns only M"}
+                    />
+                </Card.Body>
+
+            </Card>
         </>
     );
 };

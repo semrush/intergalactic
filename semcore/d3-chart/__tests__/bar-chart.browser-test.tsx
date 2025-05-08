@@ -226,9 +226,9 @@ test.describe('Bar chart', () => {
     });
   });
 
-  test('Verify donut legend and pattern fill', async ({ page }) => {
+  test('Verify bar legend and pattern fill', async ({ page }) => {
     const standPath =
-      'stories/components/d3-chart/docs/examples/donut-chart/legend-and-pattern-fill.tsx';
+      'stories/components/d3-chart/docs/examples/bar-chart/legend-and-pattern-fill.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
@@ -264,5 +264,18 @@ test.describe('Bar chart', () => {
       await page.mouse.move(hoverX, hoverY);
       //snapshot
     });
+  });
+
+  test('Verify bar props work correctly', async ({ page }) => {
+    const standPath =
+      'stories/components/d3-chart/tests/examples/bar-chart/bar-props.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+
+    const chart = page.locator('svg[data-ui-name="Plot"]').first();
+    await expect(chart).toBeVisible();
+
+      //add snapshot
+
   });
 });

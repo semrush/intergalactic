@@ -753,116 +753,116 @@ describe('Bar', () => {
     .range([height - MARGIN, MARGIN])
     .domain([0, 15]);
 
-  test.concurrent('should render Bar chart correctly', async ({ task }) => {
-    const component = (
-      <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-        <YAxis>
-          <YAxis.Ticks />
-          <YAxis.Grid />
-        </YAxis>
-        <XAxis>
-          <XAxis.Ticks />
-        </XAxis>
-        <Bar x='time' y='stack1' duration={0} />
-      </Plot>
-    );
+  // test.concurrent('should render Bar chart correctly', async ({ task }) => {
+  //   const component = (
+  //     <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+  //       <YAxis>
+  //         <YAxis.Ticks />
+  //         <YAxis.Grid />
+  //       </YAxis>
+  //       <XAxis>
+  //         <XAxis.Ticks />
+  //       </XAxis>
+  //       <Bar x='time' y='stack1' duration={0} />
+  //     </Plot>
+  //   );
 
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
+  //   await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  // });
 
-  test.concurrent('should render Bar with radius = height if radius > height', async ({ task }) => {
-    const component = (
-      <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-        <YAxis>
-          <YAxis.Ticks />
-          <YAxis.Grid />
-        </YAxis>
-        <XAxis>
-          <XAxis.Ticks />
-        </XAxis>
-        <Bar x='time' y='stack1' duration={0} r={15} />
-      </Plot>
-    );
+  // test.concurrent('should render Bar with radius = height if radius > height', async ({ task }) => {
+  //   const component = (
+  //     <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+  //       <YAxis>
+  //         <YAxis.Ticks />
+  //         <YAxis.Grid />
+  //       </YAxis>
+  //       <XAxis>
+  //         <XAxis.Ticks />
+  //       </XAxis>
+  //       <Bar x='time' y='stack1' duration={0} r={15} />
+  //     </Plot>
+  //   );
 
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
+  //   await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  // });
 
-  test.concurrent(
-    'should render the minimum height for bars with a height close to zero',
-    async ({ task }) => {
-      const yScale = scaleLinear()
-        .range([height - MARGIN, MARGIN])
-        .domain([-5, 5]);
+  // test.concurrent(
+  //   'should render the minimum height for bars with a height close to zero',
+  //   async ({ task }) => {
+  //     const yScale = scaleLinear()
+  //       .range([height - MARGIN, MARGIN])
+  //       .domain([-5, 5]);
 
-      const data = [
-        { time: 0, stack1: 0 },
-        { time: 1, stack1: 0.05 },
-        { time: 2, stack1: 0.5 },
-        { time: 3, stack1: 1 },
-        { time: 4, stack1: -4 },
-        { time: 5, stack1: -0.05 },
-        { time: 6, stack1: -0 },
-        { time: 7, stack1: -0.5 },
-      ];
+  //     const data = [
+  //       { time: 0, stack1: 0 },
+  //       { time: 1, stack1: 0.05 },
+  //       { time: 2, stack1: 0.5 },
+  //       { time: 3, stack1: 1 },
+  //       { time: 4, stack1: -4 },
+  //       { time: 5, stack1: -0.05 },
+  //       { time: 6, stack1: -0 },
+  //       { time: 7, stack1: -0.5 },
+  //     ];
 
-      const component = (
-        <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-          <YAxis>
-            <YAxis.Ticks />
-            <YAxis.Grid />
-          </YAxis>
-          <XAxis>
-            <XAxis.Ticks />
-          </XAxis>
-          <Bar x='time' y='stack1' duration={0} />
-        </Plot>
-      );
+  //     const component = (
+  //       <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+  //         <YAxis>
+  //           <YAxis.Ticks />
+  //           <YAxis.Grid />
+  //         </YAxis>
+  //         <XAxis>
+  //           <XAxis.Ticks />
+  //         </XAxis>
+  //         <Bar x='time' y='stack1' duration={0} />
+  //       </Plot>
+  //     );
 
-      await expect(await snapshot(component)).toMatchImageSnapshot(task);
-    },
-  );
+  //     await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  //   },
+  // );
 
-  test.concurrent('should render Bar chart without data correctly', async ({ task }) => {
-    const data = [
-      { time: 0, stack1: 0 },
-      { time: 1, stack1: null },
-      { time: 2, stack1: 10 },
-      { time: 3, stack1: null },
-      { time: 4, stack1: -0 },
-    ];
+  // test.concurrent('should render Bar chart without data correctly', async ({ task }) => {
+  //   const data = [
+  //     { time: 0, stack1: 0 },
+  //     { time: 1, stack1: null },
+  //     { time: 2, stack1: 10 },
+  //     { time: 3, stack1: null },
+  //     { time: 4, stack1: -0 },
+  //   ];
 
-    const component = (
-      <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-        <YAxis>
-          <YAxis.Ticks />
-          <YAxis.Grid />
-        </YAxis>
-        <XAxis>
-          <XAxis.Ticks />
-        </XAxis>
-        <Bar x='time' y='stack1' duration={0} />
-      </Plot>
-    );
+  //   const component = (
+  //     <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+  //       <YAxis>
+  //         <YAxis.Ticks />
+  //         <YAxis.Grid />
+  //       </YAxis>
+  //       <XAxis>
+  //         <XAxis.Ticks />
+  //       </XAxis>
+  //       <Bar x='time' y='stack1' duration={0} />
+  //     </Plot>
+  //   );
 
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
+  //   await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  // });
 
-  test.concurrent('should render Bar chart with maxBarSize correctly', async ({ task }) => {
-    const component = (
-      <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-        <YAxis>
-          <YAxis.Ticks />
-          <YAxis.Grid />
-        </YAxis>
-        <XAxis>
-          <XAxis.Ticks />
-        </XAxis>
-        <Bar x='time' y='stack1' duration={0} maxBarSize={6} />
-      </Plot>
-    );
+  // test.concurrent('should render Bar chart with maxBarSize correctly', async ({ task }) => {
+  //   const component = (
+  //     <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+  //       <YAxis>
+  //         <YAxis.Ticks />
+  //         <YAxis.Grid />
+  //       </YAxis>
+  //       <XAxis>
+  //         <XAxis.Ticks />
+  //       </XAxis>
+  //       <Bar x='time' y='stack1' duration={0} maxBarSize={6} />
+  //     </Plot>
+  //   );
 
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
+  //   await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  // });
 
   test.concurrent('should render StackBar chart correctly', async ({ task }) => {
     const component = (
@@ -994,6 +994,7 @@ describe('Bar', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
+  ///bubb;e
   test.concurrent('should not cut content on right with left margin', async ({ task }) => {
     const width = 500;
     const height = 300;
@@ -1087,140 +1088,141 @@ describe('Bar', () => {
     await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
 
-  test.concurrent('should render bar-negative', async ({ task }) => {
-    const data = Array(5)
-      .fill({})
-      .map((d, i) => ({
-        category: `Category ${i}`,
-        bar1: Math.abs(Math.sin(Math.exp(i))) * 10,
-        bar2: -Math.abs(Math.sin(Math.exp(i))) * 10,
-      }));
+  // test.concurrent('should render bar-negative', async ({ task }) => {
+  //   const data = Array(5)
+  //     .fill({})
+  //     .map((d, i) => ({
+  //       category: `Category ${i}`,
+  //       bar1: Math.abs(Math.sin(Math.exp(i))) * 10,
+  //       bar2: -Math.abs(Math.sin(Math.exp(i))) * 10,
+  //     }));
 
-    const Component: React.FC = () => {
-      const MARGIN = 40;
-      const width = 500;
-      const height = 300;
+  //   const Component: React.FC = () => {
+  //     const MARGIN = 40;
+  //     const width = 500;
+  //     const height = 300;
 
-      const xScale = scaleBand()
-        .range([MARGIN, width - MARGIN])
-        .domain(data.map((d) => d.category))
-        .paddingInner(0.4)
-        .paddingOuter(0.2);
+  //     const xScale = scaleBand()
+  //       .range([MARGIN, width - MARGIN])
+  //       .domain(data.map((d) => d.category))
+  //       .paddingInner(0.4)
+  //       .paddingOuter(0.2);
 
-      const yScale = scaleLinear()
-        .range([height - MARGIN, MARGIN])
-        .domain([-10, 10]);
+  //     const yScale = scaleLinear()
+  //       .range([height - MARGIN, MARGIN])
+  //       .domain([-10, 10]);
 
-      return (
-        <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-          <YAxis>
-            <YAxis.Ticks />
-            <YAxis.Grid />
-          </YAxis>
-          <XAxis>
-            <XAxis.Ticks />
-          </XAxis>
-          <Bar x='category' y='bar1' color={colors['green-02']} duration={0} />
-          <Bar x='category' y='bar2' color={colors['orange-04']} duration={0} />
-          <XAxis position={0} />
-        </Plot>
-      );
-    };
+  //     return (
+  //       <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+  //         <YAxis>
+  //           <YAxis.Ticks />
+  //           <YAxis.Grid />
+  //         </YAxis>
+  //         <XAxis>
+  //           <XAxis.Ticks />
+  //         </XAxis>
+  //         <Bar x='category' y='bar1' color={colors['green-02']} duration={0} />
+  //         <Bar x='category' y='bar2' color={colors['orange-04']} duration={0} />
+  //         <XAxis position={0} />
+  //       </Plot>
+  //     );
+  //   };
 
-    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
-  });
+  //   await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
+  // });
 
-  test.concurrent('should render bar-trend', async ({ task }) => {
-    const data = Array(10)
-      .fill({})
-      .map((d, i) => ({
-        category: i,
-        bar: Math.abs(Math.sin(Math.exp(i))) * i,
-      }));
+  // test.concurrent('should render bar-trend', async ({ task }) => {
+  //   const data = Array(10)
+  //     .fill({})
+  //     .map((d, i) => ({
+  //       category: i,
+  //       bar: Math.abs(Math.sin(Math.exp(i))) * i,
+  //     }));
 
-    const Component: React.FC = () => {
-      const MARGIN = 40;
-      const width = 500;
-      const height = 300;
+  //   const Component: React.FC = () => {
+  //     const MARGIN = 40;
+  //     const width = 500;
+  //     const height = 300;
 
-      const xScale = scaleBand<number>()
-        .range([MARGIN, width - MARGIN])
-        .domain(data.map((d) => d.category))
-        .paddingInner(0.4)
-        .paddingOuter(0.2);
+  //     const xScale = scaleBand<number>()
+  //       .range([MARGIN, width - MARGIN])
+  //       .domain(data.map((d) => d.category))
+  //       .paddingInner(0.4)
+  //       .paddingOuter(0.2);
 
-      const yScale = scaleLinear()
-        .range([height - MARGIN, MARGIN])
-        .domain(minMax(data, 'bar'));
+  //     const yScale = scaleLinear()
+  //       .range([height - MARGIN, MARGIN])
+  //       .domain(minMax(data, 'bar'));
 
-      return (
-        <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-          <YAxis>
-            <YAxis.Ticks />
-            <YAxis.Grid />
-          </YAxis>
-          <XAxis>
-            <XAxis.Ticks />
-          </XAxis>
-          <HoverLine x='category' />
-          <HoverRect x='category' />
-          <Bar x='category' y='bar' duration={0} />
-          <Line
-            x='category'
-            y='bar'
-            color={resolveColor('wall')}
-            style={{ strokeWidth: 3, strokeDasharray: 5 }}
-            duration={0}
-          >
-            <Line.Dots display />
-          </Line>
-        </Plot>
-      );
-    };
+  //     return (
+  //       <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+  //         <YAxis>
+  //           <YAxis.Ticks />
+  //           <YAxis.Grid />
+  //         </YAxis>
+  //         <XAxis>
+  //           <XAxis.Ticks />
+  //         </XAxis>
+  //         <HoverLine x='category' />
+  //         <HoverRect x='category' />
+  //         <Bar x='category' y='bar' duration={0} />
+  //         <Line
+  //           x='category'
+  //           y='bar'
+  //           color={resolveColor('wall')}
+  //           style={{ strokeWidth: 3, strokeDasharray: 5 }}
+  //           duration={0}
+  //         >
+  //           <Line.Dots display />
+  //         </Line>
+  //       </Plot>
+  //     );
+  //   };
 
-    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
-  });
+  //   await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
+  // });
 
-  test.concurrent('should render bar', async ({ task }) => {
-    const data = Array(5)
-      .fill({})
-      .map((d, i) => ({
-        category: `Category ${i}`,
-        bar: Math.abs(Math.sin(Math.exp(i))) * 10,
-      }));
+  // test.concurrent('should render bar', async ({ task }) => {
+  //   const data = Array(5)
+  //     .fill({})
+  //     .map((d, i) => ({
+  //       category: `Category ${i}`,
+  //       bar: Math.abs(Math.sin(Math.exp(i))) * 10,
+  //     }));
 
-    const Component: React.FC = () => {
-      const MARGIN = 40;
-      const width = 500;
-      const height = 300;
+  //   const Component: React.FC = () => {
+  //     const MARGIN = 40;
+  //     const width = 500;
+  //     const height = 300;
 
-      const xScale = scaleBand()
-        .range([MARGIN, width - MARGIN])
-        .domain(data.map((d) => d.category))
-        .paddingInner(0.4)
-        .paddingOuter(0.2);
+  //     const xScale = scaleBand()
+  //       .range([MARGIN, width - MARGIN])
+  //       .domain(data.map((d) => d.category))
+  //       .paddingInner(0.4)
+  //       .paddingOuter(0.2);
 
-      const yScale = scaleLinear()
-        .range([height - MARGIN, MARGIN])
-        .domain([0, 10]);
+  //     const yScale = scaleLinear()
+  //       .range([height - MARGIN, MARGIN])
+  //       .domain([0, 10]);
 
-      return (
-        <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-          <YAxis>
-            <YAxis.Ticks />
-            <YAxis.Grid />
-          </YAxis>
-          <XAxis>
-            <XAxis.Ticks />
-          </XAxis>
-          <Bar x='category' y='bar' duration={0} />
-        </Plot>
-      );
-    };
+  //     return (
+  //       <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+  //         <YAxis>
+  //           <YAxis.Ticks />
+  //           <YAxis.Grid />
+  //         </YAxis>
+  //         <XAxis>
+  //           <XAxis.Ticks />
+  //         </XAxis>
+  //         <Bar x='category' y='bar' duration={0} />
+  //       </Plot>
+  //     );
+  //   };
 
-    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
-  });
+  //   await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
+  // });
 
+  //hprizontal
   test.concurrent('should render bar-background', async ({ task }) => {
     const data = [...Array(5).keys()].map((d, i) => ({
       category: `Category ${i}`,

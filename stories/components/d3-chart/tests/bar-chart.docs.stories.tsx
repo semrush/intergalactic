@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 
 import DateFormatWithTooltipExample from './examples/bar-chart/date-format-with-tooltip';
-import ParsPropsExample from './examples/bar-chart/bars-props';
+import BarsPropsExample from './examples/bar-chart/bars-props';
 
 
 const meta: Meta = {
@@ -17,6 +17,6 @@ export const DateFormatWithTooltip: StoryObj = {
   render: DateFormatWithTooltipExample,
 };
 
-export const ParsProps: StoryObj = {
-  render: ParsPropsExample,
+export const BarsProps: StoryObj = {
+  render: BarsPropsExample,
 };
