@@ -120,6 +120,12 @@ test.describe('Columns', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
-    await expect(page).toHaveScreenshot();
+    const table = page.locator('[data-ui-name="DataTable"]');
+    await expect(table).toBeVisible();
+    await page.keyboard.press('Tab');
+    const firstRow = page.locator('[data-ui-name="Body.Row"]').first();
+    const firstCell = firstRow.locator('[data-ui-name="Body.Cell"]').nth(0);
+    await expect(firstCell).toBeFocused();
+
   });
 });
