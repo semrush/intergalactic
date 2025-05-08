@@ -50,10 +50,15 @@ class HeadRoot<D extends DataTableData> extends Component<
       gridTemplateColumns,
       gridTemplateAreas,
       sticky,
+      top,
     } = this.asProps;
     const column = columns[index];
     const [name, value] = getFixedStyle(column, columns);
     const style: any = {};
+
+    if (top) {
+      style.top = `${top}px`;
+    }
 
     if (name !== undefined && value !== undefined) {
       style[name] = value;
