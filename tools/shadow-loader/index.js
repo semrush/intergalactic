@@ -93,10 +93,10 @@ async function loader(source) {
       // ), /*__reshadow_css_end__*/
       //
       // We're using comment blocks to find the end of the code to extract.
-      /\/\*__reshadow_css_start__\*\/([\s\S]*?), \/\*__reshadow_css_end__\*\//g,
+      /\/\*__reshadow_css_start__\*\/([\s\S]*?),( ?)(\n?)\/\*__reshadow_css_end__\*\//g,
       (match, codeBlock) => {
         let [, code] = codeBlock.match(
-          /__inner_css_start__\*\/([\s\S]*?),\n\s*\/\*__inner_css_end__/,
+          /__inner_css_start__\*\/([\s\S]*?),(\n?)\s*\/\*__inner_css_end__/,
         );
         // also remove ',' in the end of line
         code = code.trim().replace(/,$/, '').replace(/^[`'"]([\s\S]*?)[`'"]$/, '$1');
@@ -109,7 +109,7 @@ async function loader(source) {
         );
         const [requirePath] = filepath.split('node_modules/').slice(-1);
         styleImports.push(requirePath);
-        return '(undefined, ';
+        return resourcePath.includes('@semcore/flags') ? 'undefined, ' : '(undefined, '; // flags has the old build system
       },
     )
     .replace(/\/\*!__reshadow-styles__:"(.*?)"\*\//g, (match, dep) => {
