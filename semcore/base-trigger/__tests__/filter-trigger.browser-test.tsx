@@ -113,11 +113,11 @@ test.describe('Filter-trigger', () => {
         const buttonTRigger = await button.locator('[data-ui-name="FilterTrigger.TriggerButton"]');
         await expect(buttonTRigger).toHaveAttribute('type', 'button');
         await expect(buttonTRigger).toHaveAttribute('role', 'combobox');
-        await expect(buttonTRigger).toHaveAttribute('tabindex', '-1');
+        await expect(buttonTRigger).toHaveAttribute('tabindex', '0');
 
         const hint = button.locator('[data-ui-name="FilterTrigger.ClearButton"]');
 
-        await expect(hint).toHaveAttribute('tabindex', '-1');
+        await expect(hint).toHaveAttribute('tabindex', '0');
         await expect(hint).toHaveAttribute('aria-label', 'Clear');
         await expect(hint).toHaveAttribute('type', 'button');
       });

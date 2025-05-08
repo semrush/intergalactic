@@ -1,8 +1,8 @@
 import React from 'react';
 import Select from '@semcore/select';
 import Dropdown from '@semcore/dropdown';
-import BaseTrigger, {FilterTrigger, LinkTrigger, ButtonTrigger} from '@semcore/base-trigger';
-import { Box, Flex } from '@semcore/flex-box';
+import BaseTrigger from '@semcore/base-trigger';
+import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import ChevronDownM from '@semcore/icon/ChevronDown/m';
 import Radio from '@semcore/radio';
@@ -10,15 +10,7 @@ import Divider from '@semcore/divider';
 import Button from '@semcore/button';
 
 const Demo = () => (
-<Box>
-    <BaseTrigger>base base trigger</BaseTrigger>
-
-    <FilterTrigger>Filter</FilterTrigger>
-    <LinkTrigger>Link</LinkTrigger>
-    <ButtonTrigger>Button</ButtonTrigger>
-    <br/>
-    <br/>
-  <Flex gap={2} >
+  <Flex gap={2}>
     <Text size={200} tag='label' htmlFor='device-button-select'>
       Device:
     </Text>
@@ -62,7 +54,6 @@ const Demo = () => (
       </Dropdown.Popper>
     </Dropdown>
   </Flex>
-</Box>
 );
 
 const devices = ['One', 'Desktop', 'Mobile', 'Tablet'].map((item) => ({
