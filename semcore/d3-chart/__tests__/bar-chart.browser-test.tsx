@@ -267,15 +267,13 @@ test.describe('Bar chart', () => {
   });
 
   test('Verify bar props work correctly', async ({ page }) => {
-    const standPath =
-      'stories/components/d3-chart/tests/examples/bar-chart/bar-props.tsx';
+    const standPath = 'stories/components/d3-chart/tests/examples/bar-chart/bar-props.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
     const chart = page.locator('svg[data-ui-name="Plot"]').first();
     await expect(chart).toBeVisible();
 
-      //add snapshot
-
+    //add snapshot
   });
 });
