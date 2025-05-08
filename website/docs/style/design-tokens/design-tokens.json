@@ -1849,7 +1849,7 @@
     "rawValue": "rgba({red.400}, 0.5)",
     "computedValue": "rgba(255, 73, 83, 0.5)",
     "description": "Color for keyboard focus outline styles for elements with invalid state.",
-    "components": ["textarea"]
+    "components": ["base-trigger", "textarea"]
   },
   {
     "name": "--intergalactic-keyboard-focus-invalid",
@@ -1857,7 +1857,7 @@
     "rawValue": "0px 0px 0px 3px {keyboard-focus-invalid.outline}",
     "computedValue": "0px 0px 0px 3px rgba(255, 73, 83, 0.5)",
     "description": "Keyboard focus styles for elements with invalid state.",
-    "components": ["base-trigger", "bulk-textarea", "checkbox", "inline-input", "input", "radio"]
+    "components": ["bulk-textarea", "checkbox", "inline-input", "input", "radio"]
   },
   {
     "name": "--intergalactic-keyboard-focus-valid-outline",
