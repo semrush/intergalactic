@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import BaseTriggerEllipsisExample from './examples/base-trigger-ellipsis';
 import ButtonTriggerEllipsisExample from './examples/button-trigger-ellipsis';
-
 import LinkTriggerAndEllipsisExample from './examples/link-trigger-ellipsis';
 
 const meta: Meta = {

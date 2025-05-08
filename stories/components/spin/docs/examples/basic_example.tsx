@@ -19,7 +19,7 @@ const Demo = () => {
 
   return (
     <>
-      <DataTable data={data} aria-label={'Table title'}
+      <DataTable data={data} aria-label={'Table title'}  h={'auto'}
         columns={[
           {name: 'fruit', children: 'Fruit'},
           {name: 'quantity', children: 'Quantity'},
