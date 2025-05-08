@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite';
+import { defineConfig, UserConfig } from 'vite';
 import { createUnplugin } from 'unplugin';
 import { resolveSemcoreSources } from './website/docs/.vitepress/resolve-semcore-sources';
 import { loadSemcoreSources } from './website/docs/.vitepress/load-semcore-sources';
@@ -46,4 +46,4 @@ export default defineConfig({
       ]
     },
   },
-});
+}) as UserConfig;
