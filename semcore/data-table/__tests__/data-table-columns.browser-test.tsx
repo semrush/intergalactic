@@ -126,6 +126,5 @@ test.describe('Columns', () => {
     const firstRow = page.locator('[data-ui-name="Body.Row"]').first();
     const firstCell = firstRow.locator('[data-ui-name="Body.Cell"]').nth(0);
     await expect(firstCell).toBeFocused();
-
   });
 });
