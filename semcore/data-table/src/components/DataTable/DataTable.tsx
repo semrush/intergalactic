@@ -719,6 +719,8 @@ class DataTableRoot<D extends DataTableData> extends Component<
         isLast && (parent?.borders === 'both' || parent?.borders === 'right') ? 'right' : undefined;
 
       const column: DTColumn = {
+        ...columnElement,
+
         name: childIsColumn(columnElement) ? columnElement.name : '',
         // @ts-ignore
         ref: function (node: HTMLElement | null) {
@@ -727,6 +729,11 @@ class DataTableRoot<D extends DataTableData> extends Component<
             const calculatedHeight = node.getBoundingClientRect().height;
             column.calculatedWidth = calculatedWidth;
             column.calculatedHeight = calculatedHeight;
+          }
+
+          if (childIsColumn(columnElement) && columnElement.ref?.hasOwnProperty('current')) {
+            // @ts-ignore
+            columnElement.ref.current = node;
           }
 
           if (this?.ref) {
@@ -741,8 +748,6 @@ class DataTableRoot<D extends DataTableData> extends Component<
         calculatedHeight: 0,
         borders: columnElement.borders ?? leftBordersFromParent ?? rightBordersFromParent,
         parent,
-
-        ...columnElement,
       };
 
       return column;
