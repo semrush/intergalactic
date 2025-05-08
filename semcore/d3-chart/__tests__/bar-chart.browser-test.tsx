@@ -50,7 +50,6 @@ test.describe('Bar chart', () => {
         const bar = bars.nth(i);
         await expect(bar).toHaveAttribute('aria-hidden', 'true');
         await expect(bar).toHaveAttribute('r', '2');
-
       }
     });
 
@@ -58,12 +57,10 @@ test.describe('Bar chart', () => {
       await bars.nth(2).hover();
       //snapshot?
     });
-
   });
 
   test('Verify HoverRect component in bar chart', async ({ page }) => {
-    const standPath =
-      'stories/components/d3-chart/docs/examples/bar-chart/hover.tsx';
+    const standPath = 'stories/components/d3-chart/docs/examples/bar-chart/hover.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
@@ -78,15 +75,15 @@ test.describe('Bar chart', () => {
 
     await test.step('Verify bar highlights on hover', async () => {
       const box = await chart.boundingBox();
-    if (!box) throw new Error('Bounding box not found');
+      if (!box) throw new Error('Bounding box not found');
 
-    const targetX = 128.42;
-    const targetY = 190.53;
+      const targetX = 128.42;
+      const targetY = 190.53;
 
-    const hoverX = box.x + targetX;
-    const hoverY = box.y + targetY;
+      const hoverX = box.x + targetX;
+      const hoverY = box.y + targetY;
 
-    await page.mouse.move(hoverX, hoverY);
+      await page.mouse.move(hoverX, hoverY);
     });
   });
 
@@ -106,23 +103,21 @@ test.describe('Bar chart', () => {
 
     await test.step('Verify tooltip shown on hover', async () => {
       const box = await chart.boundingBox();
-    if (!box) throw new Error('Bounding box not found');
+      if (!box) throw new Error('Bounding box not found');
 
-    const targetX = 128.42;
-    const targetY = 190.53;
+      const targetX = 128.42;
+      const targetY = 190.53;
 
-    const hoverX = box.x + targetX;
-    const hoverY = box.y + targetY;
+      const hoverX = box.x + targetX;
+      const hoverY = box.y + targetY;
 
-    await page.mouse.move(hoverX, hoverY);
+      await page.mouse.move(hoverX, hoverY);
       //snapshot
     });
   });
 
-
   test('Verify negative values can be displayed on bra charts', async ({ page }) => {
-    const standPath =
-      'stories/components/d3-chart/docs/examples/bar-chart/negative-values.tsx';
+    const standPath = 'stories/components/d3-chart/docs/examples/bar-chart/negative-values.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
@@ -138,29 +133,26 @@ test.describe('Bar chart', () => {
         const bar = bars.nth(i);
         await expect(bar).toHaveAttribute('aria-hidden', 'true');
         await expect(bar).toHaveAttribute('r', '2');
-
       }
     });
 
     await test.step('Verify tooltip shown on hover', async () => {
       const box = await chart.boundingBox();
-    if (!box) throw new Error('Bounding box not found');
+      if (!box) throw new Error('Bounding box not found');
 
-    const targetX = 128.42;
-    const targetY = 190.53;
+      const targetX = 128.42;
+      const targetY = 190.53;
 
-    const hoverX = box.x + targetX;
-    const hoverY = box.y + targetY;
+      const hoverX = box.x + targetX;
+      const hoverY = box.y + targetY;
 
-    await page.mouse.move(hoverX, hoverY);
+      await page.mouse.move(hoverX, hoverY);
       //snapshot
     });
   });
 
-
   test('Verify trend line', async ({ page }) => {
-    const standPath =
-      'stories/components/d3-chart/docs/examples/bar-chart/trend-line.tsx';
+    const standPath = 'stories/components/d3-chart/docs/examples/bar-chart/trend-line.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
@@ -175,7 +167,6 @@ test.describe('Bar chart', () => {
         const bar = bars.nth(i);
         await expect(bar).toHaveAttribute('aria-hidden', 'true');
         await expect(bar).toHaveAttribute('r', '2');
-
       }
 
       const countDots = await dots.count();
@@ -183,28 +174,26 @@ test.describe('Bar chart', () => {
         const dot = dots.nth(i);
         await expect(dot).toHaveAttribute('aria-hidden', 'true');
         await expect(dot).toHaveAttribute('r', '4');
-
       }
     });
 
     await test.step('Verify looks good and tooltip shown on hover', async () => {
       const box = await chart.boundingBox();
-    if (!box) throw new Error('Bounding box not found');
+      if (!box) throw new Error('Bounding box not found');
 
-    const targetX = 128.42;
-    const targetY = 190.53;
+      const targetX = 128.42;
+      const targetY = 190.53;
 
-    const hoverX = box.x + targetX;
-    const hoverY = box.y + targetY;
+      const hoverX = box.x + targetX;
+      const hoverY = box.y + targetY;
 
-    await page.mouse.move(hoverX, hoverY);
+      await page.mouse.move(hoverX, hoverY);
       //snapshot
     });
   });
 
   test('Verify grouped bars', async ({ page }) => {
-    const standPath =
-      'stories/components/d3-chart/docs/examples/bar-chart/grouped-bars.tsx';
+    const standPath = 'stories/components/d3-chart/docs/examples/bar-chart/grouped-bars.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
@@ -219,22 +208,20 @@ test.describe('Bar chart', () => {
         const bar = bars.nth(i);
         await expect(bar).toHaveAttribute('aria-hidden', 'true');
         await expect(bar).toHaveAttribute('r', '2');
-
       }
-
     });
 
     await test.step('Verify looks good and tooltip shown on hover', async () => {
       const box = await chart.boundingBox();
-    if (!box) throw new Error('Bounding box not found');
+      if (!box) throw new Error('Bounding box not found');
 
-    const targetX = 128.42;
-    const targetY = 190.53;
+      const targetX = 128.42;
+      const targetY = 190.53;
 
-    const hoverX = box.x + targetX;
-    const hoverY = box.y + targetY;
+      const hoverX = box.x + targetX;
+      const hoverY = box.y + targetY;
 
-    await page.mouse.move(hoverX, hoverY);
+      await page.mouse.move(hoverX, hoverY);
       //snapshot
     });
   });
@@ -259,28 +246,23 @@ test.describe('Bar chart', () => {
     });
 
     await test.step('Verify looks good when all items disabledby keyboatd', async () => {
-
-
       await page.keyboard.press('Tab');
       await page.keyboard.press('Space');
 
-        //snapshot
+      //snapshot
       await page.keyboard.press('Tab');
       await page.keyboard.press('Space');
       const box = await chart.boundingBox();
       if (!box) throw new Error('Bounding box not found');
-  
+
       const targetX = 128.42;
       const targetY = 190.53;
-  
+
       const hoverX = box.x + targetX;
       const hoverY = box.y + targetY;
-  
+
       await page.mouse.move(hoverX, hoverY);
       //snapshot
-     
     });
   });
-    
 });
-
