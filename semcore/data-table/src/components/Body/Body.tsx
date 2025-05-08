@@ -147,24 +147,7 @@ class BodyRoot<D extends DataTableData> extends Component<
     }
 
     const defaultRender = () => {
-      if ((props.columnIndex === 0 && props.row[ACCORDION]) || value?.[ACCORDION]) {
-        return sstyled(styles)(
-          <>
-            <SAccordionToggle
-              aria-label={getI18nText('DataTable.Cell.AccordionToggle.expand:aria-label')}
-              // @ts-ignore
-              expanded={expandedRows?.includes(props.rowIndex)}
-              onClick={() => onExpandRow(props.rowIndex)}
-              color={'--intergalactic-icon-primary-neutral'}
-            >
-              <SAccordionToggle.Addon tag={ChevronRightM} />
-            </SAccordionToggle>
-            {value?.toString()}
-          </>,
-        );
-      }
-
-      return value?.toString();
+      return React.isValidElement(value) ? value : value?.toString();
     };
 
     const extraProps: Record<string, any> = {
@@ -183,7 +166,7 @@ class BodyRoot<D extends DataTableData> extends Component<
         columnIndex: props.columnIndex,
         dataKey,
         defaultRender,
-        value: value?.toString() ?? '',
+        value: React.isValidElement(value) ? value : value?.toString() ?? '',
         isMergedRows,
         isMergedColumns,
       });
@@ -195,6 +178,23 @@ class BodyRoot<D extends DataTableData> extends Component<
           extraProps[key] = external[key];
         }
       }
+    }
+
+    if ((props.columnIndex === 0 && props.row[ACCORDION]) || value?.[ACCORDION]) {
+      extraProps.children = sstyled(styles)(
+        <>
+          <SAccordionToggle
+            aria-label={getI18nText('DataTable.Cell.AccordionToggle.expand:aria-label')}
+            // @ts-ignore
+            expanded={expandedRows?.includes(props.rowIndex)}
+            onClick={() => onExpandRow(props.rowIndex)}
+            color={'--intergalactic-icon-primary-neutral'}
+          >
+            <SAccordionToggle.Addon tag={ChevronRightM} />
+          </SAccordionToggle>
+          {extraProps.children}
+        </>,
+      );
     }
 
     return extraProps;
