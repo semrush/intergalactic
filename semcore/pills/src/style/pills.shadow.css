@@ -35,8 +35,7 @@ SPill {
     padding: 0;
   }
 
-  &:active,
-  &:hover {
+  &:active {
     outline: 0;
     text-decoration: none;
   }
