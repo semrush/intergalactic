@@ -32,7 +32,13 @@ class RootLinkTrigger extends Component {
     const color = resolveColor(providedColor);
 
     return sstyled(styles)(
-      <SLinkTrigger render={Box} tag='button' type='button' tabIndex={0} use:color={color}>
+      <SLinkTrigger
+        render={Box}
+        tag='button'
+        type='button'
+        tabIndex={loading ? -1 : 0}
+        use:color={color}
+      >
         {addonTextChildren(Children, LinkTrigger.Text, LinkTrigger.Addon, empty)}
         <SLinkAddon>
           {loading ? <Spin size='xs' theme='currentColor' /> : <ChevronDown />}
