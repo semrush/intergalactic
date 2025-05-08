@@ -32,16 +32,14 @@ export class Group extends Component<
   render() {
     const SGroupContainer = Box;
     const SGroup = Root;
-    const { styles, Children, title, fixed, fixedColumnsMap, columns } = this.asProps;
+    const { styles, Children, title, fixed, fixedColumnsMap, columns, withConfig } = this.asProps;
     const groupColumns = columns ?? [];
     const children = getOriginChildren(Children);
 
-    const firstName =
-      typeof children === 'string' ? groupColumns[0]?.name : children[0]?.props.name;
-    const lastName =
-      typeof children === 'string'
-        ? groupColumns[groupColumns.length - 1]?.name
-        : children[children.length - 1]?.props.name;
+    const firstName = withConfig ? groupColumns[0]?.name : children[0]?.props.name;
+    const lastName = withConfig
+      ? groupColumns[groupColumns.length - 1]?.name
+      : children[children.length - 1]?.props.name;
 
     const style: any = {};
 
@@ -55,9 +53,9 @@ export class Group extends Component<
     return sstyled(styles)(
       <SGroupContainer>
         <SGroup render={Box} style={style} __excludeProps={['title']} id={this.groupId}>
-          {typeof children === 'string' ? children : title}
+          {withConfig ? children : title}
         </SGroup>
-        {typeof children === 'string' ? (
+        {withConfig ? (
           groupColumns.map((column, i) => {
             return (
               <DataTable.Head.Column
