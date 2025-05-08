@@ -36,6 +36,7 @@ export default defineConfig({
         },
       ],
       plugins: [
+        // @ts-ignore
         copy({
           targets: [
             { src: 'src/**/*.shadow.css', dest: 'lib/esm' },
