@@ -1,6 +1,6 @@
 import React from 'react';
 import { DataTable } from '@semcore/data-table';
-import { Flex } from '@semcore/flex-box';
+import {Box, Flex} from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import MiniChart from '@semcore/mini-chart';
 import InlineInput from '@semcore/inline-input';
@@ -84,9 +84,9 @@ const Demo = () => {
 
             if (props.columnName === 'kd') {
                 return (
-                    <>
-        <MiniChart.ScoreSemiDonut value={45} w={'50px'} aria-labelledby={'mylabel'} />
-        </>
+                    <Box>
+                        <MiniChart.ScoreSemiDonut value={45} w={'50px'} aria-labelledby={'mylabel'} />
+                    </Box>
                 );
             }
 
