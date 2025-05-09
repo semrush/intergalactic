@@ -1,9 +1,5 @@
 import React from 'react';
-import { scaleLinear } from 'd3-scale';
 import { DataTable, ACCORDION, DataTableData } from '@semcore/data-table';
-import { Plot, Line, XAxis, YAxis, ResponsiveContainer, minMax } from '@semcore/d3-chart';
-import { Box } from '@semcore/flex-box';
-import { ButtonLink } from '@semcore/button';
 import { NoData } from '@semcore/widget-empty';
 
 const Demo = () => {
@@ -21,13 +17,7 @@ const Demo = () => {
 };
 
 const ChartExample = () => {
-  return (
-  
-      <NoData type='nothing-found' my={7} mx='auto'>
-            
-          </NoData>
-  
-  );
+  return (<NoData type='nothing-found' my={7} mx='auto' />);
 };
 
 const data: DataTableData = [
