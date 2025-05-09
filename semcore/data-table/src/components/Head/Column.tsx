@@ -60,10 +60,9 @@ export class Column<D extends DataTableData> extends Component<
       const groupElement = columnElement?.parentElement?.children.item(0);
 
       const groupHeight = groupElement?.getBoundingClientRect().height;
-      const groupTop = groupElement?.getBoundingClientRect().y;
 
-      if (groupHeight && groupTop) {
-        columnElement?.style.setProperty('top', `${groupTop + groupHeight}px`);
+      if (groupHeight) {
+        columnElement?.style.setProperty('top', `${groupHeight}px`);
       }
     }
   }

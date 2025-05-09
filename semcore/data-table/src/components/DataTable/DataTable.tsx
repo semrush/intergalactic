@@ -502,8 +502,8 @@ class DataTableRoot<D extends DataTableData> extends Component<
     }
 
     let scrollDirection: 'both' | 'horizontal' | 'vertical' | undefined = undefined;
-    const hasWidthSettings = Boolean(w ?? wMax) && w !== '100%';
-    const hasHeightSettings = Boolean(h ?? hMax) && h !== 'fit-content';
+    const hasWidthSettings = (Boolean(w) && w !== '100%') || Boolean(wMax);
+    const hasHeightSettings = (Boolean(h) && h !== 'fit-content') || Boolean(hMax);
 
     if (hasWidthSettings && !hasHeightSettings) {
       scrollDirection = 'horizontal';
