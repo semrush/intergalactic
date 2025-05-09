@@ -31,12 +31,13 @@ class HeadRoot<D extends DataTableData> extends Component<
   }
 
   getGroupProps(_: any, index: number) {
-    const { use, gridAreaGroupMap } = this.asProps;
+    const { use, gridAreaGroupMap, children } = this.asProps;
 
     return {
       use,
       gridArea: gridAreaGroupMap.get(index),
       fixedColumnsMap: this.fixedColumnsMap,
+      withConfig: children === undefined,
     };
   }
 
