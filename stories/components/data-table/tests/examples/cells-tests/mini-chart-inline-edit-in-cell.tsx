@@ -1,33 +1,55 @@
 import React from 'react';
 import { DataTable } from '@semcore/data-table';
-import Checkbox from '@semcore/checkbox';
-import { Flex } from '@semcore/flex-box';
-import Button from '@semcore/button';
-import Dropdown from '@semcore/ui/dropdown';
-import Select from '@semcore/select';
+import {Box, Flex} from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
-import { Hint } from '@semcore/tooltip';
-import InfoM from '@semcore/icon/Info/m';
 import MiniChart from '@semcore/mini-chart';
 import InlineInput from '@semcore/inline-input';
 import InlineEdit from '@semcore/inline-edit';
 import EditM from '@semcore/icon/Edit/m';
 
-const options = Array(6)
-    .fill('')
-    .map((_, index) => ({
-        value: index,
-        label: `Option ${index}`,
-        children: `Option ${index}`,
-    }));
-
-   
-
-const Demo = () => {
-    const dataChart = [10, 20, 50, 80, 45, 66];
+const Vol = (props: {value: string | React.ReactElement}) => {
     const [text, setText] = React.useState('Martin Eden');
     const [confirmedText, setConfirmedText] = React.useState(text);
     const [editable, setEditable] = React.useState(false);
+
+    return (
+        <Flex alignItems='center'>
+            <Text w={80}> {props.value}</Text>
+
+
+            <InlineEdit editable={editable} onEditableChange={setEditable}>
+                <InlineEdit.View style={{ display: 'flex', gap: 8, alignItems: 'center' }} pr={2}>
+                    {text} <EditM color='icon-secondary-neutral' />
+                </InlineEdit.View>
+                <InlineEdit.Edit>
+                    <InlineInput
+                        onConfirm={() => {
+                            setEditable(false);
+                            setConfirmedText(text);
+                        }}
+                        onCancel={() => {
+                            setText(confirmedText);
+                            setEditable(false);
+                        }}
+                        onBlurBehavior={'confirm'}
+                    >
+                        <InlineInput.Value
+                            autoFocus
+                            value={text}
+                            onChange={setText}
+                            aria-labelledby='author-label'
+                        />
+                        <InlineInput.ConfirmControl />
+                        <InlineInput.CancelControl />
+                    </InlineInput>
+                </InlineEdit.Edit>
+            </InlineEdit>
+        </Flex>
+    );
+}
+
+const Demo = () => {
+    const dataChart = [10, 20, 50, 80, 45, 66];
     return (
 <>
         <DataTable data={data} aria-label={'Access to cells'} hMax={200}
@@ -62,9 +84,9 @@ const Demo = () => {
 
             if (props.columnName === 'kd') {
                 return (
-                    <>
-        <MiniChart.ScoreSemiDonut value={45} w={'50px'} aria-labelledby={'mylabel'} />
-        </>
+                    <Box>
+                        <MiniChart.ScoreSemiDonut value={45} w={'50px'} aria-labelledby={'mylabel'} />
+                    </Box>
                 );
             }
 
@@ -76,46 +98,13 @@ const Demo = () => {
                     <Flex alignItems='center'>
                      <Text w={80}> {props.value}</Text>
                      <MiniChart.TrendLine data={dataChart} aria-hidden />
-                 
+
                     </Flex>
                 );
             }
 
             if (props.columnName === 'vol') {
-                return (
-                    <Flex alignItems='center'>
-                     <Text w={80}> {props.value}</Text>
-                    
-    
-      <InlineEdit editable={editable} onEditableChange={setEditable}>
-        <InlineEdit.View style={{ display: 'flex', gap: 8, alignItems: 'center' }} pr={2}>
-          {text} <EditM color='icon-secondary-neutral' />
-        </InlineEdit.View>
-        <InlineEdit.Edit>
-          <InlineInput
-            onConfirm={() => {
-              setEditable(false);
-              setConfirmedText(text);
-            }}
-            onCancel={() => {
-              setText(confirmedText);
-              setEditable(false);
-            }}
-            onBlurBehavior={'confirm'}
-          >
-            <InlineInput.Value
-              autoFocus
-              value={text}
-              onChange={setText}
-              aria-labelledby='author-label'
-            />
-            <InlineInput.ConfirmControl />
-            <InlineInput.CancelControl />
-          </InlineInput>
-        </InlineEdit.Edit>
-      </InlineEdit>
-                    </Flex>
-                );
+                return (<Vol value={props.value} />);
             }
             return props.defaultRender();
         }}

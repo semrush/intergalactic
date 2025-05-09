@@ -60,6 +60,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
     use: 'primary',
     defaultGridTemplateColumnWidth: 'auto',
     defaultExpandedRows: new Set<string>(),
+    h: 'fit-content',
   };
 
   private columns: DTColumn[] = [];
@@ -327,7 +328,8 @@ class DataTableRoot<D extends DataTableData> extends Component<
         // left/right
         if (
           currentCell.dataset.groupedBy === 'colgroup' ||
-          Number(currentCell.parentElement?.getAttribute('aria-rowindex')) === 2
+          Number(currentCell.parentElement?.getAttribute('aria-rowindex')) === 2 ||
+          Array.from(row?.children ?? []).indexOf(currentCell) > 0
         ) {
           colI = direction === 'left' ? colI - 1 : colI + 1;
         } else {
@@ -345,6 +347,9 @@ class DataTableRoot<D extends DataTableData> extends Component<
         }
       }
       this.changeFocusCell(rowI, colI, direction);
+    } else if (cell === null && currentHeaderCell instanceof HTMLElement && direction === 'down') {
+      const colI = colIndex - 1;
+      this.changeFocusCell(rowIndex, colI, direction);
     } else if (
       row === null &&
       this.focusedCell[0] === 0 &&
@@ -500,8 +505,8 @@ class DataTableRoot<D extends DataTableData> extends Component<
     }
 
     let scrollDirection: 'both' | 'horizontal' | 'vertical' | undefined = undefined;
-    const hasWidthSettings = Boolean(w ?? wMax ?? wMin);
-    const hasHeightSettings = Boolean(h ?? hMax ?? hMin);
+    const hasWidthSettings = (Boolean(w) && w !== '100%') || Boolean(wMax);
+    const hasHeightSettings = (Boolean(h) && h !== 'fit-content') || Boolean(hMax);
 
     if (hasWidthSettings && !hasHeightSettings) {
       scrollDirection = 'horizontal';

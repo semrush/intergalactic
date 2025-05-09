@@ -140,7 +140,7 @@ test.describe('Horizontal Scroll', () => {
       await page.waitForTimeout(100);
       const nowNumber = await checkScrollNowIncreased(scrollBar);
       expect(nowNumber).toBeLessThanOrEqual(initialValue);
-      //shapshot
+      await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
     });
 
     await test.step('Verify when header scroll presents', async () => {
@@ -153,7 +153,7 @@ test.describe('Horizontal Scroll', () => {
       await page.waitForTimeout(100);
       const nowNumber = await checkScrollNowIncreased(scrollBar);
       expect(nowNumber).toBeLessThanOrEqual(initialValue);
-      //shapshot
+      await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
     });
   });
 
@@ -326,7 +326,7 @@ test.describe('Horizontal Scroll', () => {
     const nowNumber2 = await checkScrollNowIncreased(scrollBar2);
     expect(nowNumber2).toBeLessThanOrEqual(initialValue2);
 
-    //shapshot
+    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
   });
 
   test('Verify mouse when vertical and horizontal presents', async ({ page }) => {
@@ -355,5 +355,30 @@ test.describe('Horizontal Scroll', () => {
     await page.waitForTimeout(100);
     const nowNumber2 = await checkScrollNowIncreased(scrollBar2);
     expect(nowNumber2).toBeLessThanOrEqual(initialValue2);
+  });
+
+  test('Verify keyboard when sticky header with top props', async ({ page }) => {
+    const standPath =
+      'stories/components/data-table/tests/examples/scroll-tests/scroll-in-top-header.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    await page.keyboard.press('Tab');
+    for (let i = 0; i < 6; i++) {
+      await page.keyboard.press('ArrowDown');
+    }
+    await page.waitForTimeout(100);
+
+    const headColumns = page.locator('[data-ui-name="Head.Column"]');
+    const count = await headColumns.count();
+
+    for (let i = 0; i < count; i++) {
+      const column = headColumns.nth(i);
+      const topStyle = await column.evaluate((el) => getComputedStyle(el).top);
+      expect(topStyle).toBe('100px');
+    }
+
+    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
   });
 });
