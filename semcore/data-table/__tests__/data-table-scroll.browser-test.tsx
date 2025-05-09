@@ -364,17 +364,21 @@ test.describe('Horizontal Scroll', () => {
 
     await page.setContent(htmlContent);
 
-    const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]').first();
-    const initialValue = await checkAriaMaxValue(scrollBar);
     await page.keyboard.press('Tab');
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 6; i++) {
       await page.keyboard.press('ArrowDown');
     }
     await page.waitForTimeout(100);
-    const nowNumber = await checkScrollNowIncreased(scrollBar);
-    expect(nowNumber).toBeLessThanOrEqual(initialValue);
 
-    //add snapshot for more realistic example
-    //await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+    const headColumns = page.locator('[data-ui-name="Head.Column"]');
+  const count = await headColumns.count();
+
+  for (let i = 0; i < count; i++) {
+    const column = headColumns.nth(i);
+    const topStyle = await column.evaluate((el) => getComputedStyle(el).top);
+    expect(topStyle).toBe('100px');
+  }
+
+    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
   });
 });
