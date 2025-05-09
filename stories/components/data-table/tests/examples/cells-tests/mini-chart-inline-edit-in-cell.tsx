@@ -1,7 +1,7 @@
 import React from 'react';
 import { DataTable } from '@semcore/data-table';
 import Checkbox from '@semcore/checkbox';
-import { Flex } from '@semcore/flex-box';
+import {Box, Flex} from '@semcore/flex-box';
 import Button from '@semcore/button';
 import Dropdown from '@semcore/ui/dropdown';
 import Select from '@semcore/select';
@@ -21,7 +21,7 @@ const options = Array(6)
         children: `Option ${index}`,
     }));
 
-   
+
 
 const Demo = () => {
     const dataChart = [10, 20, 50, 80, 45, 66];
@@ -62,9 +62,9 @@ const Demo = () => {
 
             if (props.columnName === 'kd') {
                 return (
-                    <>
-        <MiniChart.ScoreSemiDonut value={45} w={'50px'} aria-labelledby={'mylabel'} />
-        </>
+                    <Box>
+                        <MiniChart.ScoreSemiDonut value={45} w={'50px'} aria-labelledby={'mylabel'} />
+                    </Box>
                 );
             }
 
@@ -76,7 +76,7 @@ const Demo = () => {
                     <Flex alignItems='center'>
                      <Text w={80}> {props.value}</Text>
                      <MiniChart.TrendLine data={dataChart} aria-hidden />
-                 
+
                     </Flex>
                 );
             }
@@ -85,8 +85,8 @@ const Demo = () => {
                 return (
                     <Flex alignItems='center'>
                      <Text w={80}> {props.value}</Text>
-                    
-    
+
+
       <InlineEdit editable={editable} onEditableChange={setEditable}>
         <InlineEdit.View style={{ display: 'flex', gap: 8, alignItems: 'center' }} pr={2}>
           {text} <EditM color='icon-secondary-neutral' />
