@@ -1,13 +1,12 @@
 import React from 'react';
 import { DataTable } from '@semcore/data-table';
-import { Flex } from '@semcore/flex-box';
+import { Box, Flex } from '@semcore/flex-box';
 import Button from '@semcore/button';
 import { Text } from '@semcore/typography';
 import MiniChart from '@semcore/mini-chart';
 import Card from '@semcore/card';
 import SettingsM from '@semcore/icon/Settings/m';
 import Flags, { iso2Name } from '@semcore/ui/flags';
-
 
 const tooltipContent =
     'When drawing comparisons between different classes of animals, an alternative unit is sometimes used for organisms: body length per second.';
@@ -74,21 +73,18 @@ const Demo = () => {
 
                     if (props.columnName === 'kd') {
                         return (
-                            <>
+                            <Box>
                                 <MiniChart.ScoreSemiDonut value={45} w={'50px'} aria-labelledby={'mylabel'} />
-                            </>
+                            </Box>
                         );
                     }
 
-
-
-
-                    if (props.columnName === 'cpc') {
+               if (props.columnName === 'cpc') {
                         return (
                             <Flex alignItems='center'>
-                            <Text w={40}> Flag:</Text>
-                            <Flags name='ES' mb={2} />
-                            <Text w={80}> {props.value}</Text>
+                                <Text w={40}> Flag:</Text>
+                                <Flags name='ES' mb={2} />
+                                <Text w={80}> {props.value}</Text>
                             </Flex>
                         );
                     }
