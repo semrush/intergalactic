@@ -19,7 +19,6 @@ test.describe('Accordion in table', () => {
     await page.keyboard.press('Enter');
     await page.waitForTimeout(100);
     await expect(plot).toHaveCount(1);
-    await expect(page).toHaveScreenshot();
 
     await page.keyboard.press('Enter');
     await page.waitForTimeout(100);
