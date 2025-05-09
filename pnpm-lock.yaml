@@ -3386,7 +3386,7 @@ importers:
   tools/babel-plugin-react-semcore:
     dependencies:
       '@semcore/babel-plugin-styles':
-        specifier: ^1.9.2
+        specifier: ^1.10.0
         version: link:../babel-plugin-styles
       find-package-json:
         specifier: 1.2.0
