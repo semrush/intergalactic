@@ -81,7 +81,7 @@ class BodyRoot<D extends DataTableData> extends Component<
     const rowIndex = Array.from(expandedRows ?? []).reduce((acc, item) => {
       const rowIndex = flatRows.findIndex((row) => row[UNIQ_ROW_KEY] === item);
       if (rowIndex < index) {
-        const expandedRow = flatRows[rowIndex][ACCORDION];
+        const expandedRow = flatRows[rowIndex]?.[ACCORDION];
         if (Array.isArray(expandedRow)) {
           acc = acc + expandedRow.length;
         } else {
