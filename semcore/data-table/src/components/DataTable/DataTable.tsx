@@ -202,6 +202,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
       scrollDirection: this.state.scrollDirection,
       tableContainerRef: this.tableContainerRef,
       tableRef: this.tableRef,
+      onBackFromAccordion: this.handleBackFromAccordion,
       virtualScroll,
       hasGroups: this.hasGroups,
       uid,
@@ -286,9 +287,9 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
     const row = this.getRow(newRow);
     const cell = row?.querySelector(
-      `[role=gridcell][aria-colindex="${newCol + 1}"], [role=columnheader][aria-colindex="${
+      `:scope > [role=gridcell][aria-colindex="${
         newCol + 1
-      }"]`,
+      }"], :scope > [role=columnheader][aria-colindex="${newCol + 1}"]`,
     );
 
     if (cell instanceof HTMLElement && currentCell !== cell) {
@@ -466,6 +467,10 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
   handleMouseMove = () => {
     this.setInert(false);
+  };
+
+  handleBackFromAccordion = (cellIndex: number) => {
+    this.changeFocusCell(-1, cellIndex === -1 ? 0 : cellIndex, 'up');
   };
 
   render() {
