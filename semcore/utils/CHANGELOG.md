@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.48.4] - 2025-05-08
+
+### Fixed
+
+- Extraction styles for production build.
+
 ## [4.48.3] - 2025-04-17
 
 ### Added
