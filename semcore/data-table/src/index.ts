@@ -1,4 +1,4 @@
-import { DataTable, ACCORDION, ROW_GROUP } from './components/DataTable/DataTable';
+import { DataTable, ACCORDION, ROW_GROUP, UNIQ_ROW_KEY } from './components/DataTable/DataTable';
 import type {
   DataTableSort,
   DataTableType,
@@ -16,5 +16,5 @@ const wrapDataTable = <PropsExtending extends {}>(
   ) => React.ReactNode,
 ): DataTableType => wrapper as any;
 
-export { DataTable, ACCORDION, ROW_GROUP, wrapDataTable };
+export { DataTable, ACCORDION, ROW_GROUP, UNIQ_ROW_KEY, wrapDataTable };
 export type { DataTableSort, DataTableData };

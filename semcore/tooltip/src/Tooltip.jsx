@@ -65,6 +65,9 @@ class TooltipRoot extends Component {
             element = document.createElement('div');
             element.setAttribute('role', 'status');
             element.setAttribute('aria-live', 'polite');
+            element.style.setProperty('width', '100vw');
+            element.style.setProperty('position', 'absolute');
+            element.style.setProperty('left', 'calc(-50vw + 50%)');
 
             tooltipContainer.set(key, element);
 

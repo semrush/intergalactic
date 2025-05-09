@@ -85,7 +85,7 @@ export abstract class AbstractButton extends Component<Props, {}, {}> {
     const SButton = Root;
 
     return sstyled(styles)(
-      <SButton render={Hint} {...buttonProps} {...hintProps}>
+      <SButton render={Hint} {...buttonProps} {...hintProps} ignorePortalsStacking>
         {children}
       </SButton>,
     );

@@ -7,7 +7,7 @@ const Demo = () => {
 
 <DataTable
       data={data}
-      aria-label={'Fixed columns'} wMax={700} h={700}
+      aria-label={'Fixed columns'} wMax={700} h={400}
       headerProps={{
         sticky: true,
         withScrollBar: true
