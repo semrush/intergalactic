@@ -371,13 +371,13 @@ test.describe('Horizontal Scroll', () => {
     await page.waitForTimeout(100);
 
     const headColumns = page.locator('[data-ui-name="Head.Column"]');
-  const count = await headColumns.count();
+    const count = await headColumns.count();
 
-  for (let i = 0; i < count; i++) {
-    const column = headColumns.nth(i);
-    const topStyle = await column.evaluate((el) => getComputedStyle(el).top);
-    expect(topStyle).toBe('100px');
-  }
+    for (let i = 0; i < count; i++) {
+      const column = headColumns.nth(i);
+      const topStyle = await column.evaluate((el) => getComputedStyle(el).top);
+      expect(topStyle).toBe('100px');
+    }
 
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
   });
