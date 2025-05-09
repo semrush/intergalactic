@@ -5,7 +5,7 @@ import { Box, Collapse } from '@semcore/base-components';
 import style from './style.shadow.css';
 import { Body } from './Body';
 import { getFixedStyle } from '../../utils';
-import { ACCORDION } from '../DataTable/DataTable';
+import { ACCORDION, UNIQ_ROW_KEY } from '../DataTable/DataTable';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
 import { DTValue } from '../DataTable/DataTable.types';
 
@@ -147,8 +147,8 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
                 aria-level={ariaLevel + 1}
                 ariaRowIndex={ariaRowIndex + 1 + i}
                 gridRowIndex={gridRowIndex + 1 + i}
-                expanded={expandedRows?.includes(rowIndex + i)}
-                onExpandRow={onExpandRow}
+                // expanded={false}
+                // onExpandRow={() => onExpandRow(subrow)}
                 theme={'muted'}
               />
             );

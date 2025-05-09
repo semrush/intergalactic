@@ -1,9 +1,10 @@
 import { Intergalactic } from '@semcore/core';
 import { BoxProps } from '@semcore/base-components';
-import { ACCORDION, ROW_GROUP } from './DataTable';
+import { ACCORDION, ROW_GROUP, UNIQ_ROW_KEY } from './DataTable';
 import { DataTableColumnProps } from '../Head/Column.types';
 import { CellRenderProps } from '../Body/Body.types';
 import Tooltip from '@semcore/tooltip';
+import { DTRow } from '../Body/Row.types';
 
 /**
  * Datatable must have an accessible name (aria-table-name).
@@ -27,6 +28,7 @@ export type DataRowItem = {
   [key: string]: DTValue | undefined;
   [ACCORDION]?: React.ReactNode | DataTableData;
   [ROW_GROUP]?: DataTableData;
+  [UNIQ_ROW_KEY]?: string;
 };
 export interface DTValue {
   toString(): string;
@@ -74,9 +76,9 @@ export type DataTableProps<D extends DataTableData> = DataTableAriaProps &
     children?: never;
 
     /**
-     *
+     * Set of expanded rows (uniq id from them)
      */
-    expandedRows?: number[];
+    expandedRows?: Set<string>;
 
     virtualScroll?: VirtualScroll;
 

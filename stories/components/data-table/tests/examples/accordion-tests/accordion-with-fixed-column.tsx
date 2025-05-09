@@ -4,15 +4,15 @@ import { NoData } from '@semcore/widget-empty';
 
 const Demo = () => {
   return (
-      <DataTable data={data} aria-label={'Accordion inside table'} h={'100%'} w={400}
-                 columns={[
-                   {name: 'keyword', children: 'Keyword', gtcWidth: '200px',  fixed: 'left'},
-                   {name: 'kd', children: 'KD,%', gtcWidth: '200px'},
-                   {name: 'cpc', children: 'CPC', gtcWidth: '150px'},
-                   {name: 'vol', children: 'Vol.', gtcWidth: '100px',  fixed: 'right'},
-                 ]}
+    <DataTable data={data} aria-label={'Accordion inside table'} h={'100%'} w={400}
+      columns={[
+        { name: 'keyword', children: 'Keyword', gtcWidth: '200px', fixed: 'left' },
+        { name: 'kd', children: 'KD,%', gtcWidth: '200px' },
+        { name: 'cpc', children: 'CPC', gtcWidth: '150px' },
+        { name: 'vol', children: 'Vol.', gtcWidth: '100px', fixed: 'right' },
+      ]}
 
-      />
+    />
   );
 };
 
@@ -26,7 +26,7 @@ const data: DataTableData = [
     kd: '77.8',
     cpc: '$1.25',
     vol: '32,500,000',
-    [ACCORDION]: (<ChartExample/>),
+    [ACCORDION]: (<ChartExample />),
   },
   {
     keyword: 'www.ebay.com',
@@ -34,7 +34,7 @@ const data: DataTableData = [
     cpc: '$3.4',
     vol: {
       toString: () => '65,457,920',
-      [ACCORDION]: (<ChartExample/>),
+      [ACCORDION]: (<ChartExample />),
     },
   },
   {
@@ -42,21 +42,21 @@ const data: DataTableData = [
     kd: '10',
     cpc: '$0.65',
     vol: '47,354,640',
-    [ACCORDION]: (<ChartExample/>),
+    [ACCORDION]: (<ChartExample />),
   },
   {
     keyword: 'ebay buy',
     kd: '-',
     cpc: '$0',
     vol: 'n/a',
-    [ACCORDION]: (<ChartExample/>),
+    [ACCORDION]: (<ChartExample />),
   },
   {
     keyword: 'ebay buy',
     kd: '75.89',
     cpc: '$0',
     vol: '21,644,290',
-    [ACCORDION]: (<ChartExample/>),
+    [ACCORDION]: (<ChartExample />),
   },
 ];
 
