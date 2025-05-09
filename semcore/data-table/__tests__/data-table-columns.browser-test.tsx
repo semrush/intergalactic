@@ -137,16 +137,16 @@ test.describe('Columns', () => {
     await expect(lastRow.locator('[data-ui-name="Body.Cell"]').first()).toBeFocused();
   });
 
-    test('Verify data table renders when refs in columns', async ({ page }) => {
-      const standPath = 'stories/components/ellipsis/docs/examples/multiple_use.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en');
-      await page.setContent(htmlContent);
+  test('Verify data table renders when refs in columns', async ({ page }) => {
+    const standPath = 'stories/components/ellipsis/docs/examples/multiple_use.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
 
-      const table = page.locator('[data-ui-name="DataTable"]');
-      await expect(table).toBeVisible();
-      await page.keyboard.press('Tab');
-      const firstRow = page.locator('[data-ui-name="Body.Row"]').first();
-      const firstCell = firstRow.locator('[data-ui-name="Body.Cell"]').nth(0);
-      await expect(firstCell).toBeFocused();
+    const table = page.locator('[data-ui-name="DataTable"]');
+    await expect(table).toBeVisible();
+    await page.keyboard.press('Tab');
+    const firstRow = page.locator('[data-ui-name="Body.Row"]').first();
+    const firstCell = firstRow.locator('[data-ui-name="Body.Cell"]').nth(0);
+    await expect(firstCell).toBeFocused();
   });
 });
