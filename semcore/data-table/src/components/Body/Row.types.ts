@@ -31,8 +31,8 @@ export type RowPropsInner = {
   ariaRowIndex: number; // from 1 + 1 header
   gridRowIndex: number; // from 1 + 1 (or 2 if it has group) header
 
-  expandedRows: number[];
-  onExpandRow: (expandedRowIndex: number) => void;
+  expandedRows: Set<string>;
+  onExpandRow: (expandedRow: DTRow) => void;
 
   gridTemplateAreas: string[];
   gridTemplateColumns: string[];

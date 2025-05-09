@@ -76,10 +76,12 @@ class BodyRoot<D extends DataTableData> extends Component<
     } = this.asProps;
     const row = props.row;
     const index = props.offset + i;
+    const flatRows = this.rows.flat();
 
-    const rowIndex = (expandedRows ?? []).reduce((acc, item) => {
-      if (item < index) {
-        const expandedRow = this.rows.flat()[item][ACCORDION];
+    const rowIndex = Array.from(expandedRows ?? []).reduce((acc, item) => {
+      const rowIndex = flatRows.findIndex((row) => row[UNIQ_ROW_KEY] === item);
+      if (rowIndex < index) {
+        const expandedRow = flatRows[rowIndex]?.[ACCORDION];
         if (Array.isArray(expandedRow)) {
           acc = acc + expandedRow.length;
         } else {
@@ -103,7 +105,7 @@ class BodyRoot<D extends DataTableData> extends Component<
       use,
       gridTemplateAreas,
       gridTemplateColumns,
-      expanded: expandedRows?.includes(index),
+      expanded: expandedRows?.has(row[UNIQ_ROW_KEY]),
       accordionDataGridArea,
       columns,
       rowIndex: index,
@@ -147,24 +149,7 @@ class BodyRoot<D extends DataTableData> extends Component<
     }
 
     const defaultRender = () => {
-      if ((props.columnIndex === 0 && props.row[ACCORDION]) || value?.[ACCORDION]) {
-        return sstyled(styles)(
-          <>
-            <SAccordionToggle
-              aria-label={getI18nText('DataTable.Cell.AccordionToggle.expand:aria-label')}
-              // @ts-ignore
-              expanded={expandedRows?.includes(props.rowIndex)}
-              onClick={() => onExpandRow(props.rowIndex)}
-              color={'--intergalactic-icon-primary-neutral'}
-            >
-              <SAccordionToggle.Addon tag={ChevronRightM} />
-            </SAccordionToggle>
-            {value?.toString()}
-          </>,
-        );
-      }
-
-      return value?.toString();
+      return React.isValidElement(value) ? value : value?.toString();
     };
 
     const extraProps: Record<string, any> = {
@@ -183,7 +168,7 @@ class BodyRoot<D extends DataTableData> extends Component<
         columnIndex: props.columnIndex,
         dataKey,
         defaultRender,
-        value: value?.toString() ?? '',
+        value: React.isValidElement(value) ? value : value?.toString() ?? '',
         isMergedRows,
         isMergedColumns,
       });
@@ -195,6 +180,23 @@ class BodyRoot<D extends DataTableData> extends Component<
           extraProps[key] = external[key];
         }
       }
+    }
+
+    if ((props.columnIndex === 0 && props.row[ACCORDION]) || value?.[ACCORDION]) {
+      extraProps.children = sstyled(styles)(
+        <>
+          <SAccordionToggle
+            aria-label={getI18nText('DataTable.Cell.AccordionToggle.expand:aria-label')}
+            // @ts-ignore
+            expanded={expandedRows?.has(props.row[UNIQ_ROW_KEY])}
+            onClick={() => onExpandRow(props.row)}
+            color={'--intergalactic-icon-primary-neutral'}
+          >
+            <SAccordionToggle.Addon tag={ChevronRightM} />
+          </SAccordionToggle>
+          {extraProps.children}
+        </>,
+      );
     }
 
     return extraProps;
@@ -402,7 +404,7 @@ class BodyRoot<D extends DataTableData> extends Component<
           return acc;
         },
         {
-          [UNIQ_ROW_KEY]: `${uid}_${(rowIndex + id).toString(36)}`,
+          [UNIQ_ROW_KEY]: row[UNIQ_ROW_KEY] ?? `${uid}_${(rowIndex + id).toString(36)}`,
         },
       );
 
