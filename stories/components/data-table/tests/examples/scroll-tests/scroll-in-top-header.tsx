@@ -6,7 +6,7 @@ const Demo = () => {
     <DataTable data={data} aria-label={'Scroll inside'} wMin={1000} hMax={200} 
     headerProps={{
       sticky: true,
-      top: 200,
+      top: 50,
     }}
                columns={[
                  {name: 'keyword', children: 'Keyword'},

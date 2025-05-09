@@ -140,7 +140,7 @@ test.describe('Horizontal Scroll', () => {
       await page.waitForTimeout(100);
       const nowNumber = await checkScrollNowIncreased(scrollBar);
       expect(nowNumber).toBeLessThanOrEqual(initialValue);
-      //shapshot
+      await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
     });
 
     await test.step('Verify when header scroll presents', async () => {
@@ -153,7 +153,7 @@ test.describe('Horizontal Scroll', () => {
       await page.waitForTimeout(100);
       const nowNumber = await checkScrollNowIncreased(scrollBar);
       expect(nowNumber).toBeLessThanOrEqual(initialValue);
-      //shapshot
+      await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
     });
   });
 
@@ -326,7 +326,8 @@ test.describe('Horizontal Scroll', () => {
     const nowNumber2 = await checkScrollNowIncreased(scrollBar2);
     expect(nowNumber2).toBeLessThanOrEqual(initialValue2);
 
-    //shapshot
+    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+
   });
 
   test('Verify mouse when vertical and horizontal presents', async ({ page }) => {
@@ -356,4 +357,27 @@ test.describe('Horizontal Scroll', () => {
     const nowNumber2 = await checkScrollNowIncreased(scrollBar2);
     expect(nowNumber2).toBeLessThanOrEqual(initialValue2);
   });
+
+  test('Verify keyboard when sticky header with top props', async ({ page }) => {
+    const standPath =
+      'stories/components/data-table/tests/examples/scroll-tests/scroll-in-top-header.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]').first();
+    const initialValue = await checkAriaMaxValue(scrollBar);
+    await page.keyboard.press('Tab');
+    for (let i = 0; i < 5; i++) {
+      await page.keyboard.press('ArrowDown');
+    }
+    await page.waitForTimeout(100);
+    const nowNumber = await checkScrollNowIncreased(scrollBar);
+    expect(nowNumber).toBeLessThanOrEqual(initialValue);
+
+   //add snapshot for more realistic example
+    //await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+
+  });
+ 
 });
