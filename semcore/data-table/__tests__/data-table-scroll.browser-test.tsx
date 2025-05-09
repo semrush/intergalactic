@@ -327,7 +327,6 @@ test.describe('Horizontal Scroll', () => {
     expect(nowNumber2).toBeLessThanOrEqual(initialValue2);
 
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
-
   });
 
   test('Verify mouse when vertical and horizontal presents', async ({ page }) => {
@@ -375,9 +374,7 @@ test.describe('Horizontal Scroll', () => {
     const nowNumber = await checkScrollNowIncreased(scrollBar);
     expect(nowNumber).toBeLessThanOrEqual(initialValue);
 
-   //add snapshot for more realistic example
+    //add snapshot for more realistic example
     //await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
-
   });
- 
 });
