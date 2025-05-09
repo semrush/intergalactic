@@ -64,6 +64,7 @@ const ChartExample = () => {
         { name: 'cpc', children: 'CPC' },
         { name: 'vol', children: 'Vol.', gtcWidth: '100px', ref: containerRef },
       ]}
+      expandedRows={new Set()}
       renderCell={(props) => {
         if (props.columnName === 'vol') {
           return (
@@ -74,6 +75,11 @@ const ChartExample = () => {
         }
 
         return props.defaultRender();
+      }}
+      onKeyDown={(e) => {
+        if (e.key !== 'Escape') {
+          e.stopPropagation();
+        }
       }}
     />
   );
