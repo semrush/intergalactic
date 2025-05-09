@@ -129,7 +129,7 @@ test.describe('Columns', () => {
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('ArrowDown');
     await expect(lastRow.locator('[data-ui-name="Body.Cell"]').first()).toBeFocused();
-    
+
     await page.keyboard.press('ArrowRight');
     await expect(lastRow.locator('[data-ui-name="Body.Cell"]').nth(1)).toBeFocused();
 
