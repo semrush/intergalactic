@@ -98,7 +98,7 @@ class BodyRoot<D extends DataTableData> extends Component<
       ? `${gridRowIndex + 1} / 1 / ${gridRowIndex + 1 + row[ACCORDION].length} / ${
           columns.length + 1
         }`
-      : `${gridRowIndex + 1} / 1 / ${gridRowIndex + 1} / 1`;
+      : `${gridRowIndex + 1} / 1 / ${gridRowIndex + 1} / ${columns.length + 1}`;
 
     return {
       use,

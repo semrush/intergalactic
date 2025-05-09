@@ -112,9 +112,6 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
             gridArea={accordionDataGridArea}
             duration={200}
             zIndex={5}
-            position={'sticky'}
-            left={0}
-            w={scrollAreaRef.current?.clientWidth}
           >
             <SCell
               aria-colindex={1}
@@ -126,6 +123,9 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
               columnIndex={1}
               // @ts-ignore
               column={{ name: ACCORDION }}
+              position={'sticky'}
+              left={0}
+              w={scrollAreaRef.current?.clientWidth}
             >
               {accordion}
             </SCell>

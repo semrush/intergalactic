@@ -5,7 +5,7 @@ import { Plot, Line, XAxis, YAxis, ResponsiveContainer, minMax } from '@semcore/
 
 const Demo = () => {
   return (
-      <DataTable data={data} aria-label={'Accordion inside table'} h={'100%'}
+      <DataTable data={data} aria-label={'Accordion inside table'} h={'100%'} defaultGridTemplateColumnWidth={'1fr'}
                  columns={[
                    {name: 'keyword', children: 'Keyword', gtcWidth: 'minmax(60%, 80%)'},
                    {
@@ -22,7 +22,7 @@ const Demo = () => {
 };
 
 const ChartExample = () => {
-  const [[width, height], setSize] = React.useState([0, 0]);
+  const [[width, height], setSize] = React.useState([1000, 300]);
   const MARGIN = 40;
   const [dataChart, setDataChart] = React.useState<any[]>([]);
 
@@ -42,8 +42,8 @@ const ChartExample = () => {
     .range([height - MARGIN, MARGIN])
     .domain([0, 10]);
   return (
-    <ResponsiveContainer h={300} onResize={setSize} style={{background: '#fff'}}>
-      <Plot data={dataChart} scale={[xScale, yScale]} width={width} height={height}>
+    // <ResponsiveContainer h={300} w={1000} style={{background: '#fff'}}>
+      <Plot data={dataChart} scale={[xScale, yScale]} width={width} height={height} style={{background: '#fff'}}>
         <YAxis>
           <YAxis.Ticks />
           <YAxis.Grid />
@@ -55,7 +55,7 @@ const ChartExample = () => {
           <Line.Dots display />
         </Line>
       </Plot>
-    </ResponsiveContainer>
+    // </ResponsiveContainer>
   );
 };
 
