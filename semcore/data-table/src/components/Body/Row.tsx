@@ -41,6 +41,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
       onExpandRow,
       'aria-level': ariaLevel = 1,
       rowMarginTop,
+      scrollAreaRef,
     } = this.asProps;
 
     let accordion = row[ACCORDION];
@@ -110,6 +111,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
             interactive
             gridArea={accordionDataGridArea}
             duration={200}
+            zIndex={5}
           >
             <SCell
               aria-colindex={1}
@@ -121,6 +123,9 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
               columnIndex={1}
               // @ts-ignore
               column={{ name: ACCORDION }}
+              position={'sticky'}
+              left={0}
+              w={scrollAreaRef.current?.clientWidth}
             >
               {accordion}
             </SCell>

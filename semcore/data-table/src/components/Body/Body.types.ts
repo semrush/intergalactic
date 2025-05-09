@@ -34,6 +34,7 @@ export type BodyPropsInner<D extends DataTableData> = {
   spinnerRef: React.RefObject<HTMLDivElement>;
   tableContainerRef: React.RefObject<HTMLDivElement>;
   tableRef: React.RefObject<HTMLDivElement>;
+  scrollAreaRef: React.RefObject<HTMLDivElement>;
   scrollTop: number;
   scrollDirection: 'down' | 'up';
   virtualScroll?: VirtualScroll;

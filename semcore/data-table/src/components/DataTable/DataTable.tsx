@@ -69,6 +69,8 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
   private focusedCell: [RowIndex, ColIndex] = [-1, -1];
 
+  private scrollAreaRef = React.createRef<HTMLDivElement>();
+
   private tableContainerRef = React.createRef<HTMLDivElement>();
   private tableRef = React.createRef<HTMLDivElement>();
   private headerRef = React.createRef<HTMLDivElement>();
@@ -203,6 +205,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
       scrollDirection: this.state.scrollDirection,
       tableContainerRef: this.tableContainerRef,
       tableRef: this.tableRef,
+      scrollAreaRef: this.scrollAreaRef,
       virtualScroll,
       hasGroups: this.hasGroups,
       uid,
@@ -525,6 +528,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
         hMax={hMax}
         hMin={hMin}
         shadow={true}
+        ref={this.scrollAreaRef}
         container={this.tableContainerRef}
         styles={scrollStyles}
         onScroll={this.handleScroll}
@@ -570,11 +574,15 @@ class DataTableRoot<D extends DataTableData> extends Component<
         </ScrollArea.Container>
 
         {headerPropsToCheck?.withScrollBar && topOffset && (
-          <ScrollArea.Bar orientation='horizontal' top={topOffset - SCROLL_BAR_HEIGHT} zIndex={3} />
+          <ScrollArea.Bar
+            orientation='horizontal'
+            top={topOffset - SCROLL_BAR_HEIGHT}
+            zIndex={10}
+          />
         )}
 
-        <ScrollArea.Bar orientation='horizontal' zIndex={2} />
-        <ScrollArea.Bar orientation='vertical' zIndex={2} />
+        <ScrollArea.Bar orientation='horizontal' zIndex={10} />
+        <ScrollArea.Bar orientation='vertical' zIndex={10} />
       </ScrollArea>,
     );
   }

@@ -39,4 +39,6 @@ export type RowPropsInner = {
   accordionDataGridArea: string;
 
   inert?: '';
+
+  scrollAreaRef: React.RefObject<HTMLDivElement>;
 };
