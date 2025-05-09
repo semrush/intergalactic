@@ -115,6 +115,28 @@ test.describe('Columns', () => {
     await page.keyboard.press('ArrowDown');
   });
 
+  test('Verify merged columns and interactive cells', async ({ page }) => {
+    const standPath = 'stories/components/data-table/docs/examples/access-to-cells.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+
+    const lastRow = page.locator('[data-ui-name="Body.Row"][aria-rowindex="7"]');
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('ArrowDown');
+    await page.keyboard.press('ArrowDown');
+    await page.keyboard.press('ArrowDown');
+    await page.keyboard.press('ArrowDown');
+    await page.keyboard.press('ArrowDown');
+    await expect(lastRow.locator('[data-ui-name="Body.Cell"]').first()).toBeFocused();
+
+    await page.keyboard.press('ArrowRight');
+    await expect(lastRow.locator('[data-ui-name="Body.Cell"]').nth(1)).toBeFocused();
+
+    await page.keyboard.press('ArrowLeft');
+    await expect(lastRow.locator('[data-ui-name="Body.Cell"]').first()).toBeFocused();
+  });
+
   test('Verify data table renders when refs in columns', async ({ page }) => {
     const standPath = 'stories/components/ellipsis/docs/examples/multiple_use.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
