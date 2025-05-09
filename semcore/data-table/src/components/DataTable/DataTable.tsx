@@ -342,6 +342,9 @@ class DataTableRoot<D extends DataTableData> extends Component<
         }
       }
       this.changeFocusCell(rowI, colI, direction);
+    } else if (cell === null && currentHeaderCell instanceof HTMLElement && direction === 'down') {
+      const colI = colIndex - 1;
+      this.changeFocusCell(rowIndex, colI, direction);
     } else if (
       row === null &&
       this.focusedCell[0] === 0 &&

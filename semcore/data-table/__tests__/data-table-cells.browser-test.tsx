@@ -226,4 +226,16 @@ test.describe('Cells', () => {
       await expect(dropdownPopper).toBeHidden();
     });
   });
+
+  test('Verify keyoard navigation from header to merged cell', async ({ page }) => {
+    const standPath =
+      'stories/components/data-table/tests/examples/cells-tests/one-merged-cell.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('ArrowRight');
+    await page.keyboard.press('ArrowRight');
+    await page.keyboard.press('ArrowDown');
+    await expect(page.locator('[data-ui-name="Body.Cell"]')).toBeFocused();
+  });
 });
