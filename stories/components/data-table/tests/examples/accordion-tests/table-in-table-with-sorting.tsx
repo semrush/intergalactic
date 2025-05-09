@@ -1,5 +1,6 @@
 import React from 'react';
 import { DataTable, ACCORDION, DataTableSort, UNIQ_ROW_KEY } from '@semcore/data-table';
+import Ellipsis, { useResizeObserver } from '@semcore/ellipsis';
 
 type SortableColumn = Exclude<keyof typeof data[0], 'keyword'>;
 
@@ -39,44 +40,84 @@ const Demo = () => {
   };
 
   return (
-      <DataTable aria-label={'Parent'} h={'100%'} data={sortedData} sort={sort} onSortChange={handleSortChange}
-                 columns={[
-                   {name: 'keyword', children: 'Keyword', gtcWidth: '200px',  fixed: 'left', sortable: true},
-                    {name: 'kd', children: 'KD,%', gtcWidth: '200px', sortable: true},
-                    {name: 'cpc', children: 'CPC', gtcWidth: '200px', sortable: true},
-                    {name: 'vol', children: 'Vol.', gtcWidth: '200px', sortable: true},
-                 ]}
-      />
+    <DataTable aria-label={'Parent'} h={'100%'} data={sortedData} sort={sort} onSortChange={handleSortChange}
+      columns={[
+        { name: 'keyword', children: 'Keyword', gtcWidth: '200px', fixed: 'left', sortable: true },
+        { name: 'kd', children: 'KD,%', gtcWidth: '200px', sortable: true },
+        { name: 'cpc', children: 'CPC', gtcWidth: '200px', sortable: true },
+        { name: 'vol', children: 'Vol.', gtcWidth: '200px', sortable: true },
+      ]}
+    />
   );
 };
+
+
+const ChartExample = () => {
+  const containerRef = React.useRef(null);
+  const containerRect = useResizeObserver(containerRef);
+
+  return (
+    <DataTable data={data1} aria-label={'Table title'}
+      columns={[
+        { name: 'keyword', children: 'Keyword' },
+        { name: 'kd', children: 'KD,%' },
+        { name: 'cpc', children: 'CPC' },
+        { name: 'vol', children: 'Vol.', gtcWidth: '100px', ref: containerRef },
+      ]}
+      renderCell={(props) => {
+        if (props.columnName === 'vol') {
+          return (
+            <Ellipsis trim='middle' containerRect={containerRect} containerRef={containerRef}>
+              {props.value}
+            </Ellipsis>
+          );
+        }
+
+        return props.defaultRender();
+      }}
+    />
+  );
+};
+
+const data1 = [
+  {
+    keyword: 'ebay buy',
+    kd: '77.8',
+    cpc: '$1.25',
+    vol: '32,500,000,500,00032,500,000,500,00032,500,000,500,000',
+  },
+  {
+    keyword: 'www.ebay.com',
+    kd: '11.2',
+    cpc: '$3.4',
+    vol: '65,457,920,000,50032,500,000,500,00032,500,000,500,000',
+  },
+  {
+    keyword: 'www.ebay.com',
+    kd: '10',
+    cpc: '$0.65',
+    vol: '47,354,640,000,50032,500,000,500,00032,500,000,500,00032,500,000,500,000',
+  },
+  {
+    keyword: 'ebay buy',
+    kd: '75.89',
+    cpc: '$0',
+    vol: '21,644,290,000,500',
+  },
+];
 
 const data = [
   {
     [UNIQ_ROW_KEY]: '1',
-    keyword: 'ebay buy',
+    keyword: 'ebay buy1',
     kd: '77.8',
     cpc: '$1.25',
     vol: '32,500,000',
     [ACCORDION]: [
-      {
-        keyword: 'www.ebay.com',
-        kd: '11.2',
-        cpc: '$3.4',
-        vol: '65,457,920',
-      },
-      {
-        keyword: 'www.ebay.com',
-        kd: '10',
-        cpc: '$0.65',
-        vol: '47,354,640',
-      },
-      {
-        keyword: 'ebay buy',
-        kd: '-',
-        cpc: '$0',
-        vol: 'n/a',
-      },
-    ]
+      { keyword: 'www.ebay.com', kd: '11.2', cpc: '$3.4', vol: '65,457,920' },
+      { keyword: 'www.ebay.com', kd: '10', cpc: '$0.65', vol: '47,354,640' },
+      { keyword: 'ebay buy', kd: '-', cpc: '$0', vol: 'n/a' },
+    ],
   },
   {
     [UNIQ_ROW_KEY]: '2',
@@ -84,27 +125,9 @@ const data = [
     kd: '11.2',
     cpc: '$3.4',
     vol: {
-    toString: () => '45,457,920',
-    [ACCORDION]: [
-      {
-        keyword: 'www.ebay.com',
-        kd: '11.2',
-        cpc: '$3.4',
-        vol: '65,457,920',
-      },
-      {
-        keyword: 'www.ebay.com',
-        kd: '10',
-        cpc: '$0.65',
-        vol: '47,354,640',
-      },
-      {
-        keyword: 'ebay buy',
-        kd: '-',
-        cpc: '$0',
-        vol: 'n/a',
-      },
-    ]}
+      toString: () => '65,457,920',
+      [ACCORDION]: (<ChartExample />),
+    },
   },
   {
     [UNIQ_ROW_KEY]: '3',
@@ -122,30 +145,39 @@ const data = [
   },
   {
     [UNIQ_ROW_KEY]: '5',
-    keyword: 'ebay buy',
+    keyword: 'ebay buy2',
     kd: '75.89',
     cpc: '$0',
     vol: '21,644,290',
     [ACCORDION]: [
-      {
-        keyword: 'www.ebay.com',
-        kd: '10',
-        cpc: '$3.4',
-        vol: '65,457,920',
-      },
-      {
-        keyword: 'www.ebay.com',
-        kd: '11',
-        cpc: '$0.65',
-        vol: '47,354,640',
-      },
-      {
-        keyword: 'ebay buy',
-        kd: '-',
-        cpc: '$0',
-        vol: 'n/a',
-      },
-    ]
+      { keyword: 'www.ebay.com', kd: '10', cpc: '$3.4', vol: '65,457,920' },
+      { keyword: 'www.ebay.com', kd: '11', cpc: '$0.65', vol: '47,354,640' },
+      { keyword: 'ebay buy', kd: '-', cpc: '$0', vol: 'n/a' },
+    ],
+  },
+  {
+    [UNIQ_ROW_KEY]: '6',
+    keyword: 'ebay buy3',
+    kd: '100',
+    cpc: '$0',
+    vol: '21,644',
+    [ACCORDION]: [
+      { keyword: 'www.ebay.com', kd: '10', cpc: '$3.4', vol: '65,457,920' },
+      { keyword: 'www.ebay.com', kd: '11', cpc: '$0.65', vol: '47,354,640' },
+      { keyword: 'ebay buy', kd: '-', cpc: '$0', vol: 'n/a' },
+    ],
+  },
+  {
+    [UNIQ_ROW_KEY]: '7',
+    keyword: 'ebay buy4',
+    kd: '-',
+    cpc: '$0',
+    vol: '21,644',
+    [ACCORDION]: [
+      { keyword: 'www.ebay.com', kd: '10', cpc: '$3.4', vol: '65,457,920' },
+      { keyword: 'www.ebay.com', kd: '11', cpc: '$0.65', vol: '47,354,640' },
+      { keyword: 'ebay buy', kd: '-', cpc: '$0', vol: 'n/a' },
+    ],
   },
 ];
 
