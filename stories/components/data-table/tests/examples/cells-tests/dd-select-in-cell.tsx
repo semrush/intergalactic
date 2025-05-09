@@ -17,6 +17,22 @@ const options = Array(6)
         children: `Option ${index}`,
     }));
 
+const CustomSelect = () => {
+    const [isVisible, setIsVisible] = React.useState(false);
+    return (
+        <Select visible={isVisible} onVisibleChange={setIsVisible} mt={2} mr='auto' options={options} placeholder='Select option' id='basic-select'
+                onKeyDown={(e) => {
+                    if ((e.key === 'ArrowDown' || e.key === 'ArrowUp') && !isVisible) {
+                        return false
+                    }
+                    if (e.key.startsWith('Arrow') && isVisible) {
+                        e.stopPropagation();
+                    }
+                }}
+        />
+    );
+};
+
 const Demo = () => {
     return (
         <>
@@ -49,11 +65,7 @@ const Demo = () => {
                         );
                     }
                     if (props.columnName === 'kd') {
-                        return (
-                            <>
-                                <Select mt={2} mr='auto' options={options} placeholder='Select option' id='basic-select' />
-                            </>
-                        );
+                        return (<CustomSelect />);
                     }
                     if (props.columnName === 'cpc') {
                         return (
