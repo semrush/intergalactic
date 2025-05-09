@@ -29,8 +29,8 @@ export type BodyPropsInner<D extends DataTableData> = {
   loading?: boolean;
   headerHeight: number;
   getI18nText: (key: string) => string;
-  expandedRows: number[];
-  onExpandRow: (rowIndex: number) => void;
+  expandedRows: Set<string>;
+  onExpandRow: (row: DTRow) => void;
   spinnerRef: React.RefObject<HTMLDivElement>;
   tableContainerRef: React.RefObject<HTMLDivElement>;
   tableRef: React.RefObject<HTMLDivElement>;
