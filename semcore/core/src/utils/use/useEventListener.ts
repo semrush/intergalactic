@@ -19,7 +19,7 @@ const useEventListener = (
 
     const eventListener = (event: any) => savedHandler.current?.(event);
     const node = getRef(elementOrRef);
-    if (!node) return;
+    if (!(node instanceof Element)) return;
     node.addEventListener(eventName, eventListener, options);
     return () => {
       node.removeEventListener(eventName, eventListener, options);

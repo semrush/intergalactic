@@ -219,7 +219,7 @@ test.describe('Dropdown-menu - Selectable radio items', () => {
 
     //Focus on interactive element by right arrow
     await page.keyboard.press('ArrowRight');
-    await page.waitForTimeout(100);
+    await page.waitForTimeout(200);
     const deleteButton1 = page
       .locator('[data-ui-name="DropdownMenu.Item"]')
       .filter({ hasText: /^Menu item 1$/ })

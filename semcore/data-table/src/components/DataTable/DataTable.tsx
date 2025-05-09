@@ -49,7 +49,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
   {},
   {},
   typeof DataTableRoot.enhance,
-  { use: DTRow; expandedRows: number[] }
+  { use: DTRow; expandedRows: Set<string> }
 > {
   static displayName = 'DataTable';
   static style = style;
@@ -59,7 +59,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
   static defaultProps = {
     use: 'primary',
     defaultGridTemplateColumnWidth: 'auto',
-    defaultExpandedRows: [],
+    defaultExpandedRows: new Set<string>(),
   };
 
   private columns: DTColumn[] = [];
@@ -94,7 +94,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
   uncontrolledProps() {
     return {
-      expandedRows: [],
+      expandedRows: new Set<string>(),
     };
   }
 
@@ -105,14 +105,16 @@ class DataTableRoot<D extends DataTableData> extends Component<
   get totalRows() {
     const { totalRows, expandedRows, data } = this.asProps;
 
-    const expandedRowsCount = expandedRows?.reduce((acc, rowIndex) => {
-      const dtRow = data[rowIndex];
-      const expandedRows = dtRow[ACCORDION];
+    const expandedRowsCount = Array.from(expandedRows ?? []).reduce((acc, rowKey) => {
+      const dtRow = data.find((el) => el[UNIQ_ROW_KEY] === rowKey);
+      if (dtRow) {
+        const expandedRows = dtRow[ACCORDION];
 
-      if (Array.isArray(expandedRows)) {
-        acc = acc + expandedRows.length;
-      } else {
-        acc = acc + 1;
+        if (Array.isArray(expandedRows)) {
+          acc = acc + expandedRows.length;
+        } else {
+          acc = acc + 1;
+        }
       }
 
       return acc;
@@ -235,13 +237,15 @@ class DataTableRoot<D extends DataTableData> extends Component<
     return hasFocusable;
   };
 
-  onExpandRow = (expandedRowIndex: number) => {
+  onExpandRow = (expandedRow: DTRow) => {
     const { expandedRows } = this.asProps;
-    if (expandedRows?.includes(expandedRowIndex)) {
-      this.handlers.expandedRows(expandedRows.filter((row) => row !== expandedRowIndex));
+    if (expandedRows.has(expandedRow[UNIQ_ROW_KEY])) {
+      expandedRows.delete(expandedRow[UNIQ_ROW_KEY]);
     } else {
-      this.handlers.expandedRows([...expandedRows!, expandedRowIndex]);
+      expandedRows.add(expandedRow[UNIQ_ROW_KEY]);
     }
+
+    this.handlers.expandedRows(new Set([...expandedRows]));
   };
 
   changeFocusCell = (
@@ -320,7 +324,8 @@ class DataTableRoot<D extends DataTableData> extends Component<
         // left/right
         if (
           currentCell.dataset.groupedBy === 'colgroup' ||
-          Number(currentCell.parentElement?.getAttribute('aria-rowindex')) === 2
+          Number(currentCell.parentElement?.getAttribute('aria-rowindex')) === 2 ||
+          Array.from(row?.children ?? []).indexOf(currentCell) > 0
         ) {
           colI = direction === 'left' ? colI - 1 : colI + 1;
         } else {
@@ -338,6 +343,9 @@ class DataTableRoot<D extends DataTableData> extends Component<
         }
       }
       this.changeFocusCell(rowI, colI, direction);
+    } else if (cell === null && currentHeaderCell instanceof HTMLElement && direction === 'down') {
+      const colI = colIndex - 1;
+      this.changeFocusCell(rowIndex, colI, direction);
     } else if (
       row === null &&
       this.focusedCell[0] === 0 &&
@@ -719,6 +727,8 @@ class DataTableRoot<D extends DataTableData> extends Component<
         isLast && (parent?.borders === 'both' || parent?.borders === 'right') ? 'right' : undefined;
 
       const column: DTColumn = {
+        ...columnElement,
+
         name: childIsColumn(columnElement) ? columnElement.name : '',
         // @ts-ignore
         ref: function (node: HTMLElement | null) {
@@ -727,6 +737,11 @@ class DataTableRoot<D extends DataTableData> extends Component<
             const calculatedHeight = node.getBoundingClientRect().height;
             column.calculatedWidth = calculatedWidth;
             column.calculatedHeight = calculatedHeight;
+          }
+
+          if (childIsColumn(columnElement) && columnElement.ref?.hasOwnProperty('current')) {
+            // @ts-ignore
+            columnElement.ref.current = node;
           }
 
           if (this?.ref) {
@@ -741,8 +756,6 @@ class DataTableRoot<D extends DataTableData> extends Component<
         calculatedHeight: 0,
         borders: columnElement.borders ?? leftBordersFromParent ?? rightBordersFromParent,
         parent,
-
-        ...columnElement,
       };
 
       return column;

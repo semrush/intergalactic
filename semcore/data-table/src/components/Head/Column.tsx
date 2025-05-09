@@ -286,7 +286,7 @@ export class Column<D extends DataTableData> extends Component<
         innerOutline
         aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
         aria-sort={ariaSortValue}
-        onClick={this.handleSortClick}
+        onClick={sortable ? this.handleSortClick : undefined}
       >
         <Children />
 

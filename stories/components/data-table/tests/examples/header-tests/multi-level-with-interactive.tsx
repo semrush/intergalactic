@@ -16,11 +16,24 @@ const options = Array(6)
     children: `Option ${index}`,
   }));
 
-const Demo = () => {
+const CustomSelect = () => {
   const [isVisible, setIsVisible] = React.useState(false);
 
   return (
-      
+      <Select visible={isVisible} onVisibleChange={setIsVisible} mt={2} mr='auto' options={options} placeholder='Select option' data-test-id='select-header' id='basic-select' tag={LinkTrigger} onKeyDown={(e) => {
+        if ((e.key === 'ArrowDown' || e.key === 'ArrowUp') && !isVisible) {
+          return false
+        }
+        if (e.key.startsWith('Arrow') && isVisible) {
+          e.stopPropagation();
+        }
+      }} />
+  );
+}
+
+const Demo = () => {
+  return (
+
 <DataTable
     data={data} aria-label={'Base table example'} defaultGridTemplateColumnWidth={'auto'}
 
@@ -85,21 +98,12 @@ const Demo = () => {
               {
                 name: 'vol',
                 gtcWidth: '300px',
-                children: (
-                    <Select visible={isVisible} onVisibleChange={setIsVisible} mt={2} mr='auto' options={options} placeholder='Select option' data-test-id='select-header' id='basic-select' tag={LinkTrigger} onKeyDown={(e) => {
-                        if ((e.key === 'ArrowDown' || e.key === 'ArrowUp') && !isVisible) {
-                            return false
-                        }
-                        if (e.key.startsWith('Arrow') && isVisible) {
-                            e.stopPropagation();
-                        }
-                    }} />
-                ),
+                children: (<CustomSelect />),
               },
             ],
           },
       ]}
-     
+
     />
   );
 };
