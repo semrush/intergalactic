@@ -19,3 +19,9 @@ STrigger:focus-within SFocusHint,
 STrigger:focus SFocusHint {
   display: inline;
 }
+
+/* Hide the popper when the reference is hidden */
+SPopper[hiddenOutOfContainer][data-popper-reference-hidden] {
+  visibility: hidden;
+  pointer-events: none;
+}

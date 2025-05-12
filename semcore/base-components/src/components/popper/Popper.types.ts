@@ -100,6 +100,11 @@ export type PopperProps = OutsideClickProps &
     cursorAnchoring?: boolean;
 
     popperMargin?: number;
+
+    /**
+     * Flag for hide popper content after container with trigger scrolled out of visible
+     */
+    hiddenOutOfContainer?: boolean;
   };
 
 /** @deprecated */

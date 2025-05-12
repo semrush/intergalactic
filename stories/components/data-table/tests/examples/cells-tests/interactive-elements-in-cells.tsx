@@ -38,7 +38,7 @@ const Demo = () => {
                                     data-test-id='interactive-icon'
                                     color='icon-secondary-neutral'
                                 />
-                                <DescriptionTooltip>
+                                <DescriptionTooltip hiddenOutOfContainer>
                                     <DescriptionTooltip.Trigger tag={ButtonLink} use={'secondary'}>
                                         About fastest animals
                                     </DescriptionTooltip.Trigger>
