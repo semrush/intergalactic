@@ -59,6 +59,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
     return sstyled(styles)(
       <>
         <SRow render={Box} role={'row'} aria-rowindex={ariaRowIndex} accordionType={accordionType}>
+          {rowMarginTop && <Box h={rowMarginTop} />}
           {columns.map((column, i) => {
             const index = i;
             const cellValue = row[column.name];
@@ -75,9 +76,6 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
               if (name !== undefined && value !== undefined) {
                 style[name] = value;
               }
-            }
-            if (rowMarginTop) {
-              style.marginTop = rowMarginTop;
             }
 
             return (
