@@ -17,15 +17,16 @@ const CardDataTable = wrapDataTable<{ title: string }>(({ title, ...restProps })
 
 const Demo = () => {
   return (
-    <CardDataTable data={data} title='A table combined with card'>
-      <DataTable.Head>
-        <DataTable.Head.Column name='keyword' children='Keyword' />
-        <DataTable.Head.Column name='kd' children='KD,%' />
-        <DataTable.Head.Column name='cpc' children='CPC' />
-        <DataTable.Head.Column name='vol' children='Vol.' />
-      </DataTable.Head>
-      <DataTable.Body />
-    </CardDataTable>
+    <CardDataTable
+      data={data}
+      title='A table combined with card'
+      columns={[
+        { name: 'keyword', children: 'Keyword' },
+        { name: 'kd', children: 'KD,%' },
+        { name: 'cpc', children: 'CPC' },
+        { name: 'vol', children: 'Vol.' },
+      ]}
+    />
   );
 };
 

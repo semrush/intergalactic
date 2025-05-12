@@ -5,22 +5,41 @@ import { Box } from '@semcore/base-components';
 import style from './style.shadow.css';
 import { DataTableGroupProps, GroupPropsInner } from './Group.type';
 import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
+import { DataTable } from '../DataTable/DataTable';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 
-export class Group extends Component<DataTableGroupProps, {}, {}, [], GroupPropsInner> {
+export class Group extends Component<
+  DataTableGroupProps,
+  {},
+  {},
+  typeof Group.enhance,
+  GroupPropsInner
+> {
   static displayName = 'Group';
   static style = style;
+  static enhance = [uniqueIDEnhancement()] as const;
 
   componentDidMount() {
     this.forceUpdate();
   }
 
+  get groupId() {
+    const { uid } = this.asProps;
+
+    return `${uid}_columns_group`;
+  }
+
   render() {
     const SGroupContainer = Box;
     const SGroup = Root;
-    const { styles, Children, title, fixed, fixedColumnsMap } = this.asProps;
+    const { styles, Children, title, fixed, fixedColumnsMap, columns, withConfig } = this.asProps;
+    const groupColumns = columns ?? [];
     const children = getOriginChildren(Children);
-    const firstName = children[0]?.props.name;
-    const lastName = children[children.length - 1]?.props.name;
+
+    const firstName = withConfig ? groupColumns[0]?.name : children[0]?.props.name;
+    const lastName = withConfig
+      ? groupColumns[groupColumns.length - 1]?.name
+      : children[children.length - 1]?.props.name;
 
     const style: any = {};
 
@@ -33,10 +52,22 @@ export class Group extends Component<DataTableGroupProps, {}, {}, [], GroupProps
 
     return sstyled(styles)(
       <SGroupContainer>
-        <SGroup render={Box} style={style} __excludeProps={['title']}>
-          {title}
+        <SGroup render={Box} style={style} __excludeProps={['title']} id={this.groupId}>
+          {withConfig ? children : title}
         </SGroup>
-        <Children />
+        {withConfig ? (
+          groupColumns.map((column, i) => {
+            return (
+              <DataTable.Head.Column
+                key={column.name}
+                {...column}
+                aria-describedby={this.groupId}
+              />
+            );
+          })
+        ) : (
+          <Children />
+        )}
       </SGroupContainer>,
     );
   }

@@ -534,6 +534,22 @@
       "import": "./core/lib/utils/use/usePreventScroll.mjs",
       "types": "./core/lib/utils/use/usePreventScroll.d.ts"
     },
+    "./core/lib/theme/themes/auto.css": {
+      "require": "./core/lib/theme/themes/auto.css",
+      "import": "./core/lib/theme/themes/auto.css"
+    },
+    "./core/lib/theme/themes/dark.css": {
+      "require": "./core/lib/theme/themes/dark.css",
+      "import": "./core/lib/theme/themes/dark.css"
+    },
+    "./core/lib/theme/themes/default.css": {
+      "require": "./core/lib/theme/themes/default.css",
+      "import": "./core/lib/theme/themes/default.css"
+    },
+    "./core/lib/theme/themes/light.css": {
+      "require": "./core/lib/theme/themes/light.css",
+      "import": "./core/lib/theme/themes/light.css"
+    },
     "./counter": {
       "require": "./counter/index.cjs",
       "import": "./counter/index.mjs",
@@ -4644,136 +4660,6 @@
       "import": "./icon/color/YoutubeInvert/m/index.mjs",
       "types": "./icon/color/YoutubeInvert/m/index.d.ts"
     },
-    "./icon/external/FacebookClick": {
-      "require": "./icon/external/FacebookClick/index.cjs",
-      "import": "./icon/external/FacebookClick/index.mjs",
-      "types": "./icon/external/FacebookClick/index.d.ts"
-    },
-    "./icon/external/FacebookComment": {
-      "require": "./icon/external/FacebookComment/index.cjs",
-      "import": "./icon/external/FacebookComment/index.mjs",
-      "types": "./icon/external/FacebookComment/index.d.ts"
-    },
-    "./icon/external/FacebookLike": {
-      "require": "./icon/external/FacebookLike/index.cjs",
-      "import": "./icon/external/FacebookLike/index.mjs",
-      "types": "./icon/external/FacebookLike/index.d.ts"
-    },
-    "./icon/external/FacebookSemrush": {
-      "require": "./icon/external/FacebookSemrush/index.cjs",
-      "import": "./icon/external/FacebookSemrush/index.mjs",
-      "types": "./icon/external/FacebookSemrush/index.d.ts"
-    },
-    "./icon/external/FacebookShare": {
-      "require": "./icon/external/FacebookShare/index.cjs",
-      "import": "./icon/external/FacebookShare/index.mjs",
-      "types": "./icon/external/FacebookShare/index.d.ts"
-    },
-    "./icon/external/FacebookView": {
-      "require": "./icon/external/FacebookView/index.cjs",
-      "import": "./icon/external/FacebookView/index.mjs",
-      "types": "./icon/external/FacebookView/index.d.ts"
-    },
-    "./icon/external/InstagramClick": {
-      "require": "./icon/external/InstagramClick/index.cjs",
-      "import": "./icon/external/InstagramClick/index.mjs",
-      "types": "./icon/external/InstagramClick/index.d.ts"
-    },
-    "./icon/external/InstagramComment": {
-      "require": "./icon/external/InstagramComment/index.cjs",
-      "import": "./icon/external/InstagramComment/index.mjs",
-      "types": "./icon/external/InstagramComment/index.d.ts"
-    },
-    "./icon/external/InstagramLike": {
-      "require": "./icon/external/InstagramLike/index.cjs",
-      "import": "./icon/external/InstagramLike/index.mjs",
-      "types": "./icon/external/InstagramLike/index.d.ts"
-    },
-    "./icon/external/InstagramSave": {
-      "require": "./icon/external/InstagramSave/index.cjs",
-      "import": "./icon/external/InstagramSave/index.mjs",
-      "types": "./icon/external/InstagramSave/index.d.ts"
-    },
-    "./icon/external/InstagramView": {
-      "require": "./icon/external/InstagramView/index.cjs",
-      "import": "./icon/external/InstagramView/index.mjs",
-      "types": "./icon/external/InstagramView/index.d.ts"
-    },
-    "./icon/external/LinkedInClick": {
-      "require": "./icon/external/LinkedInClick/index.cjs",
-      "import": "./icon/external/LinkedInClick/index.mjs",
-      "types": "./icon/external/LinkedInClick/index.d.ts"
-    },
-    "./icon/external/LinkedInComment": {
-      "require": "./icon/external/LinkedInComment/index.cjs",
-      "import": "./icon/external/LinkedInComment/index.mjs",
-      "types": "./icon/external/LinkedInComment/index.d.ts"
-    },
-    "./icon/external/LinkedInLike": {
-      "require": "./icon/external/LinkedInLike/index.cjs",
-      "import": "./icon/external/LinkedInLike/index.mjs",
-      "types": "./icon/external/LinkedInLike/index.d.ts"
-    },
-    "./icon/external/LinkedInSemrush": {
-      "require": "./icon/external/LinkedInSemrush/index.cjs",
-      "import": "./icon/external/LinkedInSemrush/index.mjs",
-      "types": "./icon/external/LinkedInSemrush/index.d.ts"
-    },
-    "./icon/external/LinkedInShare": {
-      "require": "./icon/external/LinkedInShare/index.cjs",
-      "import": "./icon/external/LinkedInShare/index.mjs",
-      "types": "./icon/external/LinkedInShare/index.d.ts"
-    },
-    "./icon/external/LinkedInView": {
-      "require": "./icon/external/LinkedInView/index.cjs",
-      "import": "./icon/external/LinkedInView/index.mjs",
-      "types": "./icon/external/LinkedInView/index.d.ts"
-    },
-    "./icon/external/PinterestComment": {
-      "require": "./icon/external/PinterestComment/index.cjs",
-      "import": "./icon/external/PinterestComment/index.mjs",
-      "types": "./icon/external/PinterestComment/index.d.ts"
-    },
-    "./icon/external/PinterestSave": {
-      "require": "./icon/external/PinterestSave/index.cjs",
-      "import": "./icon/external/PinterestSave/index.mjs",
-      "types": "./icon/external/PinterestSave/index.d.ts"
-    },
-    "./icon/external/PinterestSend": {
-      "require": "./icon/external/PinterestSend/index.cjs",
-      "import": "./icon/external/PinterestSend/index.mjs",
-      "types": "./icon/external/PinterestSend/index.d.ts"
-    },
-    "./icon/external/TwitterClick": {
-      "require": "./icon/external/TwitterClick/index.cjs",
-      "import": "./icon/external/TwitterClick/index.mjs",
-      "types": "./icon/external/TwitterClick/index.d.ts"
-    },
-    "./icon/external/TwitterLike": {
-      "require": "./icon/external/TwitterLike/index.cjs",
-      "import": "./icon/external/TwitterLike/index.mjs",
-      "types": "./icon/external/TwitterLike/index.d.ts"
-    },
-    "./icon/external/TwitterReply": {
-      "require": "./icon/external/TwitterReply/index.cjs",
-      "import": "./icon/external/TwitterReply/index.mjs",
-      "types": "./icon/external/TwitterReply/index.d.ts"
-    },
-    "./icon/external/TwitterRetweet": {
-      "require": "./icon/external/TwitterRetweet/index.cjs",
-      "import": "./icon/external/TwitterRetweet/index.mjs",
-      "types": "./icon/external/TwitterRetweet/index.d.ts"
-    },
-    "./icon/external/TwitterSemrush": {
-      "require": "./icon/external/TwitterSemrush/index.cjs",
-      "import": "./icon/external/TwitterSemrush/index.mjs",
-      "types": "./icon/external/TwitterSemrush/index.d.ts"
-    },
-    "./icon/external/TwitterView": {
-      "require": "./icon/external/TwitterView/index.cjs",
-      "import": "./icon/external/TwitterView/index.mjs",
-      "types": "./icon/external/TwitterView/index.d.ts"
-    },
     "./icon/lib/cjs": {
       "require": "./icon/lib/cjs/index.cjs",
       "import": "./icon/lib/cjs/index.mjs",
@@ -4888,6 +4774,11 @@
       "require": "./icon/pay/WeChatPay/m/index.cjs",
       "import": "./icon/pay/WeChatPay/m/index.mjs",
       "types": "./icon/pay/WeChatPay/m/index.d.ts"
+    },
+    "./icon/platform/AIToolkit": {
+      "require": "./icon/platform/AIToolkit/index.cjs",
+      "import": "./icon/platform/AIToolkit/index.mjs",
+      "types": "./icon/platform/AIToolkit/index.d.ts"
     },
     "./icon/platform/AdsToolkit": {
       "require": "./icon/platform/AdsToolkit/index.cjs",

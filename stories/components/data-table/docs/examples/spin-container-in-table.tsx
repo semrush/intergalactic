@@ -26,15 +26,15 @@ const Demo = (): any => {
       <ScreenReaderOnly role='status' aria-live='polite'>
         {message}
       </ScreenReaderOnly>
-      <DataTable data={data} aria-label={'Loading using SpinContainer'} loading={loading}>
-        <DataTable.Head>
-          <DataTable.Head.Column name='keyword' children='Keyword' />
-          <DataTable.Head.Column name='kd' children='KD,%' />
-          <DataTable.Head.Column name='cpc' children='CPC' />
-          <DataTable.Head.Column name='vol' children='Vol.' />
-        </DataTable.Head>
-        <DataTable.Body />
-      </DataTable>
+      <DataTable data={data} aria-label={'Loading using SpinContainer'} loading={loading}
+                 h={'auto'}
+                 columns={[
+                   {name: 'keyword', children: 'Keyword'},
+                   {name: 'kd', children: 'KD,%'},
+                   {name: 'cpc', children: 'CPC'},
+                   {name: 'vol', children: 'Vol.'},
+                 ]}
+      />
       <Button onClick={toggleLoading} mt={3}>
         {loading ? 'Stop loading' : 'Start loading'}
       </Button>

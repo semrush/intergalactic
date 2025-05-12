@@ -1,6 +1,9 @@
 import { Intergalactic } from '@semcore/core';
 import { BoxProps } from '@semcore/base-components';
-import { ACCORDION, ROW_GROUP } from './DataTable';
+import { ACCORDION, ROW_GROUP, UNIQ_ROW_KEY } from './DataTable';
+import { DataTableColumnProps } from '../Head/Column.types';
+import { CellRenderProps } from '../Body/Body.types';
+import Tooltip from '@semcore/tooltip';
 import { DTRow } from '../Body/Row.types';
 
 /**
@@ -25,6 +28,7 @@ export type DataRowItem = {
   [key: string]: DTValue | undefined;
   [ACCORDION]?: React.ReactNode | DataTableData;
   [ROW_GROUP]?: DataTableData;
+  [UNIQ_ROW_KEY]?: string;
 };
 export interface DTValue {
   toString(): string;
@@ -69,12 +73,34 @@ export type DataTableProps<D extends DataTableData> = DataTableAriaProps &
      */
     loading?: boolean;
 
-    children?: any;
+    children?: never;
 
     /**
-     *
+     * Set of expanded rows (uniq id from them)
      */
-    expandedRows?: number[];
+    expandedRows?: Set<string>;
+
+    virtualScroll?: VirtualScroll;
+
+    columns: ColumnsConfig;
+
+    headerProps?: {
+      /**
+       * Sticky header
+       * @default false
+       */
+      sticky?: boolean;
+
+      /**
+       * offset for sticky header
+       */
+      top?: number;
+
+      /** Enable scroll bar element in header */
+      withScrollBar?: boolean;
+    };
+
+    renderCell?: (props: CellRenderProps) => React.ReactNode | Record<string, any>;
 
     /**
      * List of selected rows (indexes from data array)
@@ -92,10 +118,43 @@ export type DataTableProps<D extends DataTableData> = DataTableAriaProps &
     ) => void;
   };
 
+export type ColumnItemConfig = Intergalactic.InternalTypings.EfficientOmit<
+  Intergalactic.InternalTypings.ComponentProps<
+    'div' | typeof Tooltip,
+    'div',
+    DataTableColumnProps,
+    {},
+    []
+  >,
+  'children'
+> & {
+  children: React.ReactNode | React.FC;
+};
+
+export type ColumnGroupConfig = {
+  borders?: 'both' | 'left' | 'right';
+
+  fixed?: 'left' | 'right';
+
+  children: React.ReactNode;
+
+  columns: ColumnItemConfig[];
+};
+
+type ColumnsConfig = Array<ColumnItemConfig | ColumnGroupConfig>;
+
+export type VirtualScroll =
+  | boolean
+  | { rowsBuffer?: number; aproxRowsOnPage?: number }
+  | { rowHeight: number; rowsBuffer?: number };
+
 export type RowIndex = number;
 export type ColIndex = number;
 
 export type DataTableType = (<Data extends DataTableData, Tag extends Intergalactic.Tag = 'div'>(
-  props: Intergalactic.InternalTypings.ComponentProps<Tag, 'div', DataTableProps<Data>>,
+  props: Intergalactic.InternalTypings.EfficientOmit<
+    Intergalactic.InternalTypings.ComponentProps<Tag, 'div', DataTableProps<Data>>,
+    'tag' | 'children'
+  >,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
   Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', DataTableProps<any>>;

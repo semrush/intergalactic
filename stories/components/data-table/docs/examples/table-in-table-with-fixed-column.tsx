@@ -3,15 +3,14 @@ import { DataTable, ACCORDION } from '@semcore/data-table';
 
 const Demo = () => {
   return (
-      <DataTable data={data} aria-label={'Parent with fixed column'} w={900}>
-        <DataTable.Head>
-          <DataTable.Head.Column name='keyword' children='Keyword' fixed='left' gtcWidth={'400px'} />
-          <DataTable.Head.Column name='kd' children='KD,%' gtcWidth={'300px'} />
-          <DataTable.Head.Column name='cpc' children='CPC' gtcWidth={'300px'} />
-          <DataTable.Head.Column name='vol' children='Vol.' gtcWidth={'300px'} />
-        </DataTable.Head>
-        <DataTable.Body/>
-      </DataTable>
+      <DataTable data={data} aria-label={'Parent with fixed column'} h={'100%'}
+                 columns={[
+                   {name: 'keyword', children: 'Keyword', gtcWidth: '400px', fixed: 'left'},
+                   {name: 'kd', children: 'KD,%', gtcWidth: '300px'},
+                   {name: 'cpc', children: 'CPC', gtcWidth: '300px'},
+                   {name: 'vol', children: 'Vol.', gtcWidth: '300px'},
+                 ]}
+      />
   );
 };
 

@@ -1,0 +1,451 @@
+import { expect, test } from '@semcore/testing-utils/playwright';
+import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+
+const checkStyles = async (element: any, styles: Record<string, string>) => {
+  for (const [property, value] of Object.entries(styles) as [string, string][]) {
+    await expect(element).toHaveCSS(property, value);
+  }
+};
+
+test.describe('Accordion in table', () => {
+  test('Verify keyboard interactions with accordion and chart inside', async ({ page }) => {
+    const standPath = 'stories/components/data-table/docs/examples/accordion-inside-table.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    const plot = await page.locator('[data-ui-name="Plot"]');
+    await page.setContent(htmlContent);
+    const firstArrow = await page.locator('[data-ui-name="ButtonLink"]').first();
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+    await page.waitForTimeout(100);
+    await expect(plot).toHaveCount(1);
+
+    await page.keyboard.press('Enter');
+    await page.waitForTimeout(100);
+    await expect(plot).toHaveCount(0);
+
+    await expect(page).toHaveScreenshot();
+    await expect(firstArrow).toBeFocused();
+    await page.keyboard.press('ArrowDown');
+    await page.keyboard.press('Enter');
+    await expect(plot).toHaveCount(0);
+    await page.keyboard.press('ArrowRight');
+    await page.keyboard.press('ArrowRight');
+    await page.keyboard.press('ArrowRight');
+    const secondArrow = await page.locator('[data-ui-name="ButtonLink"]').nth(1);
+
+    await expect(secondArrow).toBeFocused();
+
+    await page.keyboard.press('Enter');
+    await page.waitForTimeout(100);
+    await expect(plot).toBeVisible();
+    await expect(plot).toHaveCount(1);
+
+    await page.keyboard.press('Enter');
+    await page.waitForTimeout(100);
+
+    await expect(plot).not.toBeVisible();
+    await expect(plot).toHaveCount(0);
+
+    await page.keyboard.press('Enter');
+    await page.waitForTimeout(100);
+
+    await page.keyboard.press('ArrowDown');
+    // await expect(page.getByRole('gridcell', { name: 'Chart' })).toBeFocused();
+
+    await page.keyboard.press('ArrowDown');
+    const thirdArrow = await page.locator('[data-ui-name="ButtonLink"]').nth(2);
+    await expect(thirdArrow).toBeFocused();
+  });
+
+  test('Verify mouse interactions with accordion and chart inside', async ({ page }) => {
+    const standPath = 'stories/components/data-table/docs/examples/accordion-inside-table.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+    const firstArrow = await page.locator('[data-ui-name="ButtonLink"]').first();
+
+    await firstArrow.click();
+    await page.keyboard.press('ArrowDown');
+    const plot = await page.locator('[data-ui-name="Plot"]');
+    await expect(plot).toHaveCount(1);
+    await firstArrow.click();
+    await expect(plot).toHaveCount(0);
+    await firstArrow.click();
+
+    const thirdArrow = await page.locator('[data-ui-name="ButtonLink"]').nth(2);
+    await thirdArrow.click();
+    await expect(plot).toHaveCount(2);
+  });
+
+  test('Verify accordion with chart styles', async ({ page, browserName }) => {
+    const standPath = 'stories/components/data-table/docs/examples/accordion-inside-table.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+    const firstArrow = await page.locator('[data-ui-name="ButtonLink"]').first();
+    const marginRight1 = await firstArrow.evaluate((el) => {
+      return window.getComputedStyle(el).marginRight;
+    });
+
+    expect(marginRight1).toBe('12px');
+    await firstArrow.click();
+    await page.waitForTimeout(100);
+    const marginRight = await firstArrow.evaluate((el) => {
+      return window.getComputedStyle(el).marginRight;
+    });
+
+    expect(marginRight).toBe('12px');
+    const plot = await page.locator('[data-ui-name="Plot"]');
+    await expect(plot).toHaveCount(1);
+
+    const row3 = page.locator('[data-ui-name="Body.Row"][aria-rowindex="2"]');
+    const cells = row3.locator('div');
+    const cellCount = await cells.count();
+
+    for (let i = 0; i < cellCount; i++) {
+      const cell = cells.nth(i);
+      await checkStyles(cell, {
+        'background-color': 'rgb(230, 231, 237)',
+      });
+    }
+
+    const row4 = page.locator('[data-ui-name="Collapse"][aria-rowindex="3"]');
+    await checkStyles(row4.locator('div').first(), {
+      'background-color': 'rgb(244, 245, 249)',
+    });
+
+    const secondArrow = await page.locator('[data-ui-name="ButtonLink"]').nth(1);
+    await secondArrow.click();
+    await page.waitForTimeout(100);
+
+    await expect(plot).toHaveCount(2);
+    const row5 = page.locator('[data-ui-name="Body.Row"][aria-rowindex="4"]');
+    const cells5 = row5.locator('div');
+
+    const cellCount5 = await cells5.count();
+    if (browserName !== 'firefox')
+      for (let i = 0; i < cellCount5 - 1; i++) {
+        const cell = cells5.nth(i);
+        await checkStyles(cell, {
+          'background-color': 'rgb(240, 240, 244)',
+        });
+      }
+
+    await checkStyles(cells5.nth(3), {
+      'background-color': 'rgb(230, 231, 237)',
+    });
+
+    await firstArrow.click();
+    if (browserName !== 'firefox')
+      for (let i = 0; i < cellCount; i++) {
+        const cell = cells.nth(i);
+        await checkStyles(cell, {
+          'background-color': 'rgb(240, 240, 244)',
+        });
+      }
+  });
+
+  test('Verify accordion with with chart attributes', async ({ page }) => {
+    const standPath = 'stories/components/data-table/docs/examples/accordion-inside-table.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+    const firstArrow = await page.locator('[data-ui-name="ButtonLink"]').first();
+
+    await test.step('Verify cell with accordion attributes', async () => {
+      await expect(firstArrow).toHaveAttribute('aria-label', 'Show details');
+      const row3 = page.locator('[data-ui-name="Body.Row"][aria-rowindex="2"]');
+      const cells = row3.locator('div');
+
+      await expect(cells.first()).toHaveAttribute('aria-expanded', 'false');
+      await expect(cells.nth(1)).not.toHaveAttribute('aria-expanded', 'false');
+      await firstArrow.click();
+      await expect(cells.first()).toHaveAttribute('aria-expanded', 'true');
+      await expect(cells.first()).toHaveAttribute('data-aria-level', '1');
+    });
+
+    await test.step('Verify accordion attributes when expanded', async () => {
+      const accordion = page.locator('[data-ui-name="Collapse"]');
+      await expect(accordion).toHaveAttribute('role', 'row');
+      await expect(accordion).toHaveAttribute('aria-rowindex', '3');
+      const accordionCell = accordion.locator('[data-ui-name="Body.Cell"]');
+      await expect(accordionCell).toHaveAttribute('tabindex', '-1');
+      await expect(accordionCell).toHaveAttribute('role', 'gridcell');
+      await expect(accordionCell).toHaveAttribute('aria-colindex', '1');
+      await expect(accordionCell).toHaveAttribute('aria-level', '2');
+      await expect(accordionCell).toHaveAttribute('aria-setsize', '1');
+      await expect(accordionCell).toHaveAttribute('aria-posinset', '1');
+    });
+  });
+
+  test('Verify accordion table in table styles', async ({ page }) => {
+    const standPath = 'stories/components/data-table/docs/examples/table-in-table.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+    const firstArrow = await page.locator('[data-ui-name="ButtonLink"]').first();
+    const marginRight1 = await firstArrow.evaluate((el) => {
+      return window.getComputedStyle(el).marginRight;
+    });
+
+    expect(marginRight1).toBe('12px');
+    await firstArrow.click();
+    const marginRight = await firstArrow.evaluate((el) => {
+      return window.getComputedStyle(el).marginRight;
+    });
+
+    expect(marginRight).toBe('12px');
+
+    const row2 = page.locator('[data-ui-name="Body.Row"][aria-rowindex="2"]');
+    const cells2 = row2.locator('div');
+
+    const cellCount = await cells2.count();
+
+    for (let i = 0; i < cellCount; i++) {
+      const cell = cells2.nth(i);
+      await checkStyles(cell, {
+        'background-color': 'rgb(230, 231, 237)',
+      });
+    }
+
+    const row3 = page.locator('[data-ui-name="Row"][aria-rowindex="3"]');
+    const cells3 = row3.locator('div');
+
+    const cellCount3 = await cells3.count();
+
+    for (let i = 0; i < cellCount3; i++) {
+      const cell = cells3.nth(i);
+      await checkStyles(cell, {
+        'background-color': 'rgb(244, 245, 249)',
+      });
+    }
+
+    const peddingLeft = await cells3.first().evaluate((el) => {
+      return window.getComputedStyle(el).paddingLeft;
+    });
+
+    expect(peddingLeft).toBe('40px');
+  });
+
+  test('Verify table in table attributes', async ({ page }) => {
+    const standPath = 'stories/components/data-table/docs/examples/table-in-table.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+    const firstArrow = await page.locator('[data-ui-name="ButtonLink"]').first();
+
+    await test.step('Verify cell with accordion attributes', async () => {
+      await expect(firstArrow).toHaveAttribute('aria-label', 'Show details');
+      const row3 = page.locator('[data-ui-name="Body.Row"][aria-rowindex="2"]');
+      const cells = row3.locator('div');
+
+      await expect(cells.first()).toHaveAttribute('aria-expanded', 'false');
+      await expect(cells.nth(1)).not.toHaveAttribute('aria-expanded', 'false');
+      await firstArrow.click();
+      await expect(cells.first()).toHaveAttribute('aria-expanded', 'true');
+      await expect(cells.first()).toHaveAttribute('data-aria-level', '1');
+    });
+
+    await test.step('Verify child table attributes when expanded', async () => {
+      const nestedRows = page.locator('[role="row"][aria-level="2"]');
+      const rowCount = await nestedRows.count();
+
+      for (let i = 0; i < rowCount; i++) {
+        const row = nestedRows.nth(i);
+
+        await expect(row).toHaveAttribute('role', 'row');
+        await expect(row).toHaveAttribute('aria-level', '2');
+        await expect(row).toHaveAttribute('aria-rowindex');
+
+        const cells = row.locator('[data-ui-name="Body.Cell"]');
+        const cellCount = await cells.count();
+
+        expect(cellCount).toBeGreaterThan(0);
+
+        for (let j = 0; j < cellCount; j++) {
+          const cell = cells.nth(j);
+          await expect(cell).toHaveAttribute('role', 'gridcell');
+          await expect(cell).toHaveAttribute('aria-colindex');
+          await expect(cell).toHaveAttribute('tabindex', '-1');
+          await expect(cell).toHaveAttribute('data-ui-name', 'Body.Cell');
+        }
+      }
+    });
+  });
+
+  test('Verify keyboard navigation when interactive element incide cell', async ({
+    page,
+    browserName,
+  }) => {
+    const standPath =
+      'stories/components/data-table/tests/examples/accordion-tests/accordion-with-render-cell.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+    await page.keyboard.press('Tab');
+
+    const row = page.locator('[data-ui-name="Body.Row"][aria-rowindex="2"]');
+    const elementsIncell = await row.locator('[data-ui-name="ButtonLink"]');
+    const firstrowCell = row.locator('[data-ui-name="Body.Cell"][aria-colindex="1"]');
+    const widget = page.locator('[data-ui-name="WidgetNoData"]');
+
+    await test.step('Verify focus on whole first body cell', async () => {
+      await expect(firstrowCell).toBeFocused();
+    });
+
+    await test.step('Verify focus on accrordion arrow inside cell and its collapsed ', async () => {
+      await page.keyboard.press('Enter');
+      await expect(elementsIncell.first()).toBeFocused();
+      await expect(widget).not.toBeVisible();
+    });
+
+    await test.step('Verify focus on whole first body cell by escape', async () => {
+      await page.keyboard.press('Escape');
+      await expect(firstrowCell).toBeFocused();
+    });
+
+    if (browserName === 'webkit') return;
+    await test.step('Verify focus on the next focusable element by tab', async () => {
+      await page.keyboard.press('Enter');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('ArrowDown');
+      await expect(widget).not.toBeVisible();
+      await expect(elementsIncell.nth(1)).toBeFocused();
+      await page.keyboard.press('Tab');
+      await expect(elementsIncell.first()).toBeFocused();
+    });
+
+    await test.step('Verify accordion can be expanded', async () => {
+      await page.keyboard.press('Enter');
+      await expect(elementsIncell.first()).toBeFocused();
+      await expect(widget).toBeVisible();
+      await page.keyboard.press('Tab');
+      await expect(elementsIncell.nth(1)).toBeFocused();
+      await expect(widget).toBeVisible();
+    });
+
+    await test.step('Verify accordion not collapsed by esc', async () => {
+      await page.keyboard.press('Escape');
+      await expect(firstrowCell).toBeFocused();
+      await expect(widget).toBeVisible();
+      await page.keyboard.press('ArrowDown');
+      const row2 = page.locator('[data-ui-name="Body.Row"][aria-rowindex="3"]');
+      const secondrowCell = page
+        .locator('div')
+        .filter({ hasText: /^Nothing foundTry changing your filters\.$/ })
+        .nth(1);
+      await expect(secondrowCell).toBeFocused();
+    });
+  });
+
+  test('Verify table in table with sorting keyboard interaction', async ({ page }) => {
+    const standPath =
+      'stories/components/data-table/tests/examples/accordion-tests/table-in-table-with-sorting.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+    await page.keyboard.press('Tab');
+
+    const table = page.locator('[data-ui-name="DataTable"]');
+    const row = page.locator('[data-ui-name="Body.Row"][aria-rowindex="2"]');
+    const elementsIncell = await row.locator('[data-ui-name="ButtonLink"]');
+    const firstrowCell = row.locator('[data-ui-name="Body.Cell"][aria-colindex="1"]');
+    const headColumnKeyword = page.locator('[data-ui-name="Head.Column"][name="keyword"]');
+    const sortIconKeyword = headColumnKeyword.locator('[data-ui-name="ButtonLink"]');
+    const headColumnKd = page.locator('[data-ui-name="Head.Column"][name="kd"]');
+    const sortIconKd = headColumnKd.locator('[data-ui-name="ButtonLink"]');
+
+    await test.step('Verify focus on sorting icon', async () => {
+      await expect(sortIconKeyword).toBeFocused();
+    });
+
+    await test.step('Verify focus on accordion arrow by click downArrow', async () => {
+      await page.keyboard.press('ArrowDown');
+      await expect(elementsIncell.first()).toBeFocused();
+    });
+
+    await test.step('Verify rowcount when accordion not expanded', async () => {
+      await expect(table).toHaveAttribute('aria-rowcount', '7');
+      await expect(firstrowCell).toHaveAttribute('aria-expanded', 'false');
+    });
+
+    await test.step('Verify table in table expands', async () => {
+      await page.keyboard.press('Enter');
+      await expect(elementsIncell.first()).toBeFocused();
+      await expect(table).toHaveAttribute('aria-rowcount', '10');
+      await expect(firstrowCell).toHaveAttribute('aria-expanded', 'true');
+    });
+
+    await test.step('Verify focus table in table cell and back by arrows', async () => {
+      await page.keyboard.press('ArrowDown');
+      const row = page.locator('[role="row"][aria-rowindex="3"][aria-level="2"]');
+      const cell = row.locator('[data-ui-name="Body.Cell"][aria-colindex="1"]');
+      await expect(cell).toBeFocused();
+      await page.keyboard.press('ArrowUp');
+      await expect(table).toHaveAttribute('aria-rowcount', '10');
+      await expect(firstrowCell).toHaveAttribute('aria-expanded', 'true');
+    });
+
+    await test.step('Verify focus on the next paren row when child table finished', async () => {
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+      const row = page.locator('[role="row"][aria-rowindex="6"]');
+      const cell2 = row.locator('[data-ui-name="Body.Cell"][aria-colindex="2"]');
+      await expect(cell2).toBeFocused();
+      await expect(table).toHaveAttribute('aria-rowcount', '10');
+      await expect(firstrowCell).toHaveAttribute('aria-expanded', 'true');
+      await page.keyboard.press('Enter');
+      await expect(table).toHaveAttribute('aria-rowcount', '10');
+      await page.keyboard.press('ArrowLeft');
+      const elementsIncell = await row.locator('[data-ui-name="ButtonLink"]');
+      await expect(elementsIncell).toBeFocused();
+      await page.keyboard.press('Enter');
+      const cell1 = row.locator('[data-ui-name="Body.Cell"][aria-colindex="1"]');
+      await expect(table).toHaveAttribute('aria-rowcount', '13');
+      await expect(firstrowCell).toHaveAttribute('aria-expanded', 'true');
+      await expect(cell1).toHaveAttribute('aria-expanded', 'true');
+    });
+
+    await test.step('Verify expanded cell dont collapse when changing place by sorting', async () => {
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowUp');
+      await page.keyboard.press('ArrowUp');
+      await page.keyboard.press('ArrowUp');
+      await page.keyboard.press('ArrowUp');
+      await page.keyboard.press('ArrowUp');
+
+      await expect(sortIconKd).toBeFocused();
+      await page.keyboard.press('Enter');
+      await expect(table).toHaveAttribute('aria-rowcount', '13');
+
+      const newRow1 = page.locator('[role="row"][aria-rowindex="7"]');
+      const newCell = newRow1.locator('[data-ui-name="Body.Cell"][aria-colindex="1"]');
+      await expect(newCell).toHaveAttribute('aria-expanded', 'true');
+
+      const newRow2 = page.locator('[role="row"][aria-rowindex="11"]');
+      const newCell2 = newRow2.locator('[data-ui-name="Body.Cell"][aria-colindex="1"]');
+      await expect(newCell2).toHaveAttribute('aria-expanded', 'true');
+
+      await expect(page).toHaveScreenshot();
+    });
+  });
+
+  test('Verify accordion with fixed column', async ({ page }) => {
+    const standPath =
+      'stories/components/data-table/tests/examples/accordion-tests/accordion-with-fixed-column.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+    await page.keyboard.press('ArrowRight');
+    await page.keyboard.press('ArrowRight');
+    await page.keyboard.press('ArrowRight');
+    await page.waitForTimeout(100);
+    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+  });
+});

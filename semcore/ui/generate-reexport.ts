@@ -139,7 +139,7 @@ const GENERATOR = {
 
         await fs.outputFile(
           `./${name}/${utilNameWithoutExtention}.${extension}`,
-          template(dependency, utilNameWithoutExtention),
+          template(dependency, `utils/${utilNameWithoutExtention}`),
         );
       }
 
@@ -147,6 +147,21 @@ const GENERATOR = {
         require: `./${name}/${utilNameWithoutExtention}.cjs`,
         import: `./${name}/${utilNameWithoutExtention}.mjs`,
         types: `./${name}/${utilNameWithoutExtention}.d.ts`,
+      };
+    }
+
+    const themesDistPath = path.join(utilsMain, '..', 'theme');
+    const themes = glob.sync('**/*.+(css)', { cwd: themesDistPath });
+
+    for (const theme of themes) {
+      await fs.outputFile(
+        `./core/lib/theme/${theme}`,
+        `@import '@semcore/core/lib/theme/${theme}';`,
+      );
+
+      packageJsonExports[`./core/lib/theme/${theme}`] = {
+        require: `./core/lib/theme/${theme}`,
+        import: `./core/lib/theme/${theme}`,
       };
     }
   },
@@ -238,7 +253,7 @@ const generateFiles = async (packages: string[]) => {
 
     if (name === 'core') {
       await GENERATOR.OTHER(dep, name);
-      await GENERATOR.UTILS('@semcore/core/utils');
+      await GENERATOR.UTILS(dep);
     }
     if (name === 'icon') await GENERATOR.ICONS(dep, name);
     if (name === 'illustration') await GENERATOR.ICONS(dep, name);

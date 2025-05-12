@@ -3,18 +3,39 @@ import { DataTable } from '@semcore/data-table';
 
 const Demo = () => {
   return (
-    <DataTable data={data} aria-label={'Borders'}>
-      <DataTable.Head>
-        <DataTable.Head.Column name='keyword' children='Keyword' />
-        <DataTable.Head.Group borders={'both'} title={'Organic Sessions'}>
-          <DataTable.Head.Column name='kd' children='KD %' />
-          <DataTable.Head.Column name='cpc' children='CPC' />
-          <DataTable.Head.Column name='vol' children='Vol.' />
-        </DataTable.Head.Group>
-        <DataTable.Head.Column name='other' children='Other' />
-      </DataTable.Head>
-      <DataTable.Body />
-    </DataTable>
+    <DataTable data={data} aria-label={'Borders'}
+               headerProps={{
+                 sticky: true,
+               }}
+               columns={[
+                 {
+                   name: 'keyword',
+                   children: 'keyword'
+                 },
+                 {
+                   borders: 'both',
+                   children: 'Organic Sessions',
+                   columns: [
+                     {
+                       name: 'kd',
+                       children: 'KD,%',
+                     },
+                     {
+                       name: 'cpc',
+                       children: 'CPC'
+                     },
+                     {
+                       name: 'vol',
+                       children: 'Vol.'
+                     }
+                   ]
+                 },
+                 {
+                   name: 'other',
+                   children: 'Other'
+                 }
+               ]}
+    />
   );
 };
 

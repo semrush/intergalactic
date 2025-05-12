@@ -12,14 +12,14 @@ const Demo = () => {
   const containerRect = useResizeObserver(containerRef);
 
   return (
-    <DataTable data={data} aria-label={'Table title'}>
-      <DataTable.Head>
-        <DataTable.Head.Column name='keyword' children='Keyword' />
-        <DataTable.Head.Column name='kd' children='KD,%' gtcWidth={'minmax(70px, auto)'} justifyContent='flex-end' />
-        <DataTable.Head.Column name='cpc' children='CPC' gtcWidth={'minmax(70px, auto)'} justifyContent='flex-end' />
-        <DataTable.Head.Column name='url' children='URL' ref={containerRef} gtcWidth={'minmax(auto, 200px)'}  />
-      </DataTable.Head>
-      <DataTable.Body
+    <DataTable data={data} aria-label={'Table title'}
+      columns={[
+        {name: 'keyword', children: 'Keyword'},
+        {name: 'kd', children: 'KD,%', gtcWidth: 'minmax(70px, auto)', justifyContent: 'flex-end'},
+        {name: 'cpc', children: 'CPC', gtcWidth: 'minmax(70px, auto)', justifyContent: 'flex-end'},
+        {name: 'url', children: 'URL', gtcWidth: 'minmax(auto, 200px)', ref: containerRef},
+      ]}
+
         renderCell={(props) => {
           if (props.columnName === 'url') {
             const pageUrl = props.value.toString();
@@ -52,7 +52,6 @@ const Demo = () => {
           return props.defaultRender();
         }}
       />
-    </DataTable>
   );
 };
 

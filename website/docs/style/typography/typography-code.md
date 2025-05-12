@@ -5,7 +5,13 @@ tabs: Design('typography'), A11y('typography-a11y'), API('typography-api'), Exam
 
 ## Basic usage
 
-Our typography primitives have no predefined margins, as they may vary in the final interfaces. You can add them as needed based on your specific requirements.
+The following heading styles are an example of a text scale that used for product landing pages and text-heavy pages. You can set any heading level to text of any `size`. However, we recommend setting heading levels on the page so that the visual hierarchy matches the heading hierarchy in the code.
+
+Our typography primitives don’t have predefined margins, as these may vary in the final interface. You can add margins as needed based on your specific layout requirements.
+
+::: info
+H5 and H6 are shown here for illustrative purposes. **We recommend avoiding the use of more than 4 heading levels in the interface.**
+:::
 
 ::: sandbox
 
@@ -51,9 +57,9 @@ You can add custom bullets to our `List.Item` component.
 
 ## Native typography tags
 
-To style native tags, use the `FormatText` component from the `@semcore/format-text` package.
+To style native tags, use the `Text` component from the `@semcore/typography` package.
 
-Styling third-party HTML is acceptable, but for other cases, we recommend using the `Text` component.
+Styling third-party HTML is acceptable, but for other cases, we recommend using the `Text` component without native tags inside.
 
 ::: sandbox
 
@@ -63,7 +69,7 @@ Styling third-party HTML is acceptable, but for other cases, we recommend using 
 
 :::
 
-## FormatText nested lists
+## Nested lists
 
 For correct numbering in nested ordered lists, you must explicitly specify the `start`, `reversed`, or `type` attribute.
 

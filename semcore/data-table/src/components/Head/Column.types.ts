@@ -1,4 +1,9 @@
-import { DataTableData, DataTableProps, DTUse } from '../DataTable/DataTable.types';
+import {
+  ColumnGroupConfig,
+  DataTableData,
+  DataTableProps,
+  DTUse,
+} from '../DataTable/DataTable.types';
 import { Property } from 'csstype';
 
 export type CommonColumnType = {
@@ -52,8 +57,10 @@ export type DTColumn = CommonColumnType & {
    */
   calculatedHeight: number;
 
-  parent?: DTColumn;
-  // children?: Array<Omit<DTColumn[], 'children'>>;
+  parent?: DTColumn | ColumnGroupConfig;
+
+  columns?: DTColumn[];
+  children: React.ReactNode;
 
   gridArea?: string;
 };
@@ -68,8 +75,6 @@ export type DataTableColumnProps = CommonColumnType & {
    * Flag for change column size if sorted by it
    */
   changeSortSize?: boolean;
-
-  children?: React.ReactElement[];
 };
 
 export type ColumnPropsInner<D extends DataTableData> = {

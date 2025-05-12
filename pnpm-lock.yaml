@@ -818,6 +818,9 @@ importers:
       '@semcore/spin':
         specifier: 16.0.0
         version: link:../spin
+      '@semcore/tooltip':
+        specifier: 16.0.0
+        version: link:../tooltip
     devDependencies:
       '@semcore/accordion':
         specifier: '*'
@@ -846,9 +849,6 @@ importers:
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
-      '@semcore/tooltip':
-        specifier: '*'
-        version: link:../tooltip
       '@semcore/typography':
         specifier: '*'
         version: link:../typography

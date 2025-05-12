@@ -1,5 +1,6 @@
 import React from 'react';
 import { DataTable, DataTableSort } from '@semcore/data-table';
+import Ellipsis from '@semcore/ellipsis';
 
 type SortableColumn = Exclude<keyof typeof data[0], 'keyword'>;
 
@@ -29,14 +30,12 @@ const Demo = () => {
       sort={sort}
       onSortChange={setSort}
       aria-label={'Sorting with change sortable column size'}
-    >
-      <DataTable.Head>
-        <DataTable.Head.Column name='keyword' children='Keyword' justifyContent='left' sortable />
-        <DataTable.Head.Column name='kd' children='KD,%' justifyContent='right' gtcWidth={'minmax(0, 68px)'} sortable />
-        <DataTable.Head.Column name='cpc' children='CPC' gtcWidth={'minmax(0, 60px)'} sortable changeSortSize />
-        <DataTable.Head.Column name='vol' children='Vol.' gtcWidth={'minmax(0, 120px)'} justifyContent='left' sortable />
-      </DataTable.Head>
-      <DataTable.Body
+      columns={[
+          {name: 'keyword', children: 'Keyword', justifyContent: 'left', sortable: true},
+          {name: 'kd', children: 'KD,%', justifyContent: 'right', gtcWidth: 'minmax(0, 68px)', sortable: true},
+          {name: 'cpc', children: 'CPC', gtcWidth: 'minmax(0, 60px)', sortable: true, changeSortSize: true},
+          {name: 'vol', children: 'Vol.', gtcWidth: 'minmax(0, 120px)', justifyContent: 'left', sortable: true},
+      ]}
           renderCell={(props) => {
             if (props.columnName === 'keyword') {
               return props.defaultRender();
@@ -51,7 +50,6 @@ const Demo = () => {
                 : 'n/a';
           }}
       />
-    </DataTable>
   );
 };
 

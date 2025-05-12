@@ -3,15 +3,37 @@ import { DataTable } from '@semcore/data-table';
 
 const Demo = () => {
   return (
-    <DataTable data={data} aria-label={'Base table example'} defaultGridTemplateColumnWidth={'auto'} wMax={'800px'}>
-      <DataTable.Head sticky>
-        <DataTable.Head.Column name='keyword'>keyword</DataTable.Head.Column>
-        <DataTable.Head.Column name='kd' children='KD,%' />
-        <DataTable.Head.Column name='cpc' children='CPC' />
-        <DataTable.Head.Column name='vol' children='Vol.' />
-      </DataTable.Head>
-      <DataTable.Body />
-    </DataTable>
+    <DataTable
+        data={data}
+        aria-label={'Base table example'}
+        defaultGridTemplateColumnWidth={'auto'}
+        wMax={'800px'}
+        headerProps={{
+          sticky: true,
+        }}
+        columns={[
+          {
+            name: 'keyword',
+            children: 'keyword'
+          },
+          {
+            name: 'kd',
+            children: 'KD,%'
+          },
+          {
+            name: 'cpc',
+            children: 'CPC'
+          },
+          {
+            name: 'hiddenColumn',
+            children: 'HC'
+          },
+          {
+            name: 'vol',
+            children: 'Vol.'
+          }
+        ]}
+    />
   );
 };
 

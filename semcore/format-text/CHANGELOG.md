@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Deprecated
 
-- Full package.
+- Full package. Use `Text` from `@semcore/typography`.
 
 ## [4.41.2] - 2025-04-04
 

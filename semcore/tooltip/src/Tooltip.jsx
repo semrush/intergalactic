@@ -6,7 +6,7 @@ import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEn
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 import logger from '@semcore/core/lib/utils/logger';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-
+import { PortalContext } from '@semcore/base-components';
 import style from './style/tooltip.shadow.css';
 import {
   useZIndexStacking,
@@ -15,8 +15,7 @@ import {
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 
 const Popper = PopperOrigin[CREATE_COMPONENT]();
-const GLOBAL_TOOLTIP_CONTAINER_ID = 'ui-kit-tooltip-container';
-const tooltipContainer = { current: null };
+const tooltipContainer = new WeakMap();
 
 const defaultProps = {
   placement: 'top',
@@ -37,6 +36,7 @@ class TooltipRoot extends Component {
   static style = style;
   static enhance = [uniqueIDEnhancement(), resolveColorEnhance()];
   static defaultProps = { ...defaultProps };
+  static contextType = PortalContext;
   state = { popperChildren: null };
   subcomponents = [Tooltip.Trigger.displayName, Tooltip.Popper.displayName];
   defaultChildren = (title, Children, props) => (
@@ -47,24 +47,36 @@ class TooltipRoot extends Component {
       <Tooltip.Popper>{title}</Tooltip.Popper>
     </>
   );
+  tooltipContainerContainer = null;
 
-  constructor(props) {
-    super(props);
+  constructor(props, context) {
+    super(props, context);
 
-    if (tooltipContainer.current === null && canUseDOM()) {
-      const containerElement = document.getElementById(GLOBAL_TOOLTIP_CONTAINER_ID);
+    if (canUseDOM()) {
+      this.tooltipContainerContainer = new Promise((resolve) => {
+        setTimeout(() => {
+          const key = this.context.current ?? document.body;
+          let element = tooltipContainer.get(key) ?? null;
 
-      if (containerElement) {
-        tooltipContainer.current = containerElement;
-      } else {
-        const container = document.createElement('div');
-        container.setAttribute('id', GLOBAL_TOOLTIP_CONTAINER_ID);
-        container.setAttribute('role', 'status');
-        container.setAttribute('aria-live', 'polite');
+          if (
+            element === null ||
+            (element instanceof HTMLElement && !document.body.contains(element))
+          ) {
+            element = document.createElement('div');
+            element.setAttribute('role', 'status');
+            element.setAttribute('aria-live', 'polite');
+            element.style.setProperty('width', '100vw');
+            element.style.setProperty('position', 'absolute');
+            element.style.setProperty('left', 'calc(-50vw + 50%)');
 
-        document.body.appendChild(container);
-        tooltipContainer.current = container;
-      }
+            tooltipContainer.set(key, element);
+
+            key.appendChild(element);
+          }
+
+          resolve(element);
+        }, 0);
+      });
     }
   }
 
@@ -117,6 +129,7 @@ class TooltipRoot extends Component {
       role: 'tooltip',
       'aria-live': ariaLive,
       visible,
+      tooltipContainer: this.tooltipContainerContainer,
     };
   }
 
@@ -159,6 +172,7 @@ function TooltipPopper(props) {
     'aria-live': ariaLive,
     arrowBgColor,
     arrowShadowColor,
+    tooltipContainer,
   } = props;
   const STooltip = Root;
   const SArrow = Box;
@@ -166,13 +180,27 @@ function TooltipPopper(props) {
   const contextZIndex = useZIndexStacking('z-index-tooltip');
   const zIndex = props.zIndex || contextZIndex;
 
+  const [tooltipContainerNode, setTooltipContainerNode] = React.useState(tooltipContainer);
+
+  React.useEffect(() => {
+    if (ariaLive === 'polite' && tooltipContainer instanceof Promise) {
+      tooltipContainer.then((result) => {
+        setTooltipContainerNode(result);
+      });
+    }
+  }, [tooltipContainer]);
+
   return sstyled(styles)(
     <ZIndexStackingContextProvider designToken='z-index-tooltip'>
       <STooltip
         render={Popper.Popper}
         use:theme={resolveColor(theme)}
         use:zIndex={zIndex}
-        nodeToMount={ariaLive === 'polite' ? tooltipContainer.current : undefined}
+        nodeToMount={
+          ariaLive === 'polite' && canUseDOM() && tooltipContainerNode instanceof Element
+            ? tooltipContainerNode
+            : undefined
+        }
       >
         <Children />
         <SArrow

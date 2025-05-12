@@ -9,22 +9,25 @@ const cache = new CellMeasurerCache({
 
 const Demo = () => {
   return (
-    <DataTable data={data} aria-label={'Custom rows rendering'}>
-      <DataTable.Head>
-        <DataTable.Head.Column name='keyword' children='Keyword' />
-        <DataTable.Head.Column name='tags' children='Tags' />
-        <DataTable.Head.Column name='cpc' children='CPC' />
-        <DataTable.Head.Column name='vol' children='Vol.' />
-      </DataTable.Head>
-      <DataTable.Body
+    <DataTable data={data} aria-label={'Custom rows rendering'} h={'100%'}
+               columns={[
+                   {name: 'keyword', children: 'Keyword'},
+                   {name: 'tags', children: 'Tags'},
+                   {name: 'cpc', children: 'CPC'},
+                   {name: 'vol', children: 'Vol.'},
+               ]}
           renderCell={(props) => {
               if (props.dataKey === 'tags') {
                   const tags = props.row[props.dataKey];
 
                   if (Array.isArray(tags)) {
-                      return tags.map((_, i) => {
-                          return <div key={i}>tag {i + 1}</div>;
-                      });
+                      return (
+                        <div>
+                          {tags.map((_, i) => {
+                            return <div key={i}>tag {i + 1}</div>;
+                          })}
+                        </div>
+                      );
                   }
 
                   return null;
@@ -65,7 +68,6 @@ const Demo = () => {
         //   );
         // }}
       />
-    </DataTable>
   );
 };
 

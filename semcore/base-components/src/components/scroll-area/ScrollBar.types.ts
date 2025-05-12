@@ -30,6 +30,12 @@ export type ScrollAreaProps = BoxProps & {
    */
   observeParentSize?: boolean;
 
+  /**
+   * Flag to disable autoscroll to focused content.
+   * @default false
+   */
+  disableAutofocusToContent?: boolean;
+
   topOffset?: number;
   rightOffset?: number;
   bottomOffset?: number;

@@ -5,7 +5,7 @@ import { Box, Collapse } from '@semcore/base-components';
 import style from './style.shadow.css';
 import { Body } from './Body';
 import { getFixedStyle } from '../../utils';
-import { ACCORDION, SELECT_ALL } from '../DataTable/DataTable';
+import { ACCORDION, UNIQ_ROW_KEY, SELECT_ALL } from '../DataTable/DataTable';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
 import { DTValue } from '../DataTable/DataTable.types';
 import Checkbox from '@semcore/checkbox';
@@ -18,10 +18,10 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
     'aria-level': undefined,
   };
 
-  cellHasAccordion(cellValue: DTValue | MergedColumnsCell | MergedRowsCell): cellValue is DTValue {
+  cellHasAccordion(cellValue?: DTValue | MergedColumnsCell | MergedRowsCell): cellValue is DTValue {
     return (
       !(cellValue instanceof MergedRowsCell || cellValue instanceof MergedColumnsCell) &&
-      Boolean(cellValue[ACCORDION])
+      Boolean(cellValue?.[ACCORDION])
     );
   }
 
@@ -41,15 +41,19 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
       styles,
       rowIndex,
       ariaRowIndex,
+      gridRowIndex,
       expanded,
       accordionDataGridArea,
       expandedRows,
       onExpandRow,
       'aria-level': ariaLevel = 1,
+      rowMarginTop,
+      scrollAreaRef,
       selectedRows,
     } = this.asProps;
 
     let accordion = row[ACCORDION];
+    let accordionType = accordion ? 'row' : undefined;
 
     if (!accordion) {
       const cellWithAccordion = Object.values(row).find((value) => {
@@ -57,6 +61,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
       }) as DTValue | undefined;
 
       accordion = cellWithAccordion?.[ACCORDION];
+      accordionType = 'cell';
     }
 
     return sstyled(styles)(
@@ -65,28 +70,37 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
           render={Box}
           role={'row'}
           aria-rowindex={ariaRowIndex}
+          accordionType={accordionType}
           theme={selectedRows?.includes(rowIndex) ? 'info' : undefined}
         >
-          {selectedRows && (
-            <SCell
-              row={row}
-              rowIndex={rowIndex}
-              // @ts-ignore
-              column={{ name: SELECT_ALL.toString() }}
-              columnIndex={0}
-            >
-              <Checkbox checked={selectedRows.includes(rowIndex)} onChange={this.handleSelectRow} />
-            </SCell>
-          )}
           {columns.map((column, i) => {
-            const index = selectedRows ? i + 1 : i;
+            if (selectedRows && i === 0) {
+              return (
+                <Body.Cell
+                  key={i}
+                  row={row}
+                  rowIndex={rowIndex}
+                  // @ts-ignore
+                  column={{ name: SELECT_ALL.toString() }}
+                  columnIndex={0}
+                  gridRowIndex={gridRowIndex}
+                >
+                  <Checkbox
+                    checked={selectedRows.includes(rowIndex)}
+                    onChange={this.handleSelectRow}
+                  />
+                </Body.Cell>
+              );
+            }
+
+            const index = i;
             const cellValue = row[column.name];
 
             if (cellValue === undefined) {
               return null;
             }
 
-            const style: any = {};
+            const style: React.CSSProperties = {};
 
             if (column.fixed) {
               const [name, value] = getFixedStyle(column, columns);
@@ -94,6 +108,9 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
               if (name !== undefined && value !== undefined) {
                 style[name] = value;
               }
+            }
+            if (rowMarginTop) {
+              style.marginTop = rowMarginTop;
             }
 
             return (
@@ -107,9 +124,12 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
                 data-aria-level={index === 0 ? ariaLevel : undefined}
                 row={row}
                 rowIndex={rowIndex}
+                gridRowIndex={gridRowIndex}
                 columnIndex={index}
                 style={style}
                 column={column}
+                // @ts-ignore
+                withAccordion={this.cellHasAccordion(cellValue)}
               />
             );
           })}
@@ -124,6 +144,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
             interactive
             gridArea={accordionDataGridArea}
             duration={200}
+            zIndex={5}
           >
             <SCell
               aria-colindex={1}
@@ -135,6 +156,9 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
               columnIndex={1}
               // @ts-ignore
               column={{ name: ACCORDION }}
+              position={'sticky'}
+              left={0}
+              w={scrollAreaRef.current?.clientWidth}
             >
               {accordion}
             </SCell>
@@ -150,14 +174,15 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
                 key={i}
                 row={subrow}
                 columns={columns}
-                // visible={expanded}
                 rows={row[ACCORDION]}
                 rowIndex={rowIndex}
                 aria-posinset={i + 1}
                 aria-level={ariaLevel + 1}
                 ariaRowIndex={ariaRowIndex + 1 + i}
-                expanded={expandedRows?.includes(rowIndex + i)}
-                onExpandRow={onExpandRow}
+                gridRowIndex={gridRowIndex + 1 + i}
+                // expanded={false}
+                // onExpandRow={() => onExpandRow(subrow)}
+                theme={'muted'}
               />
             );
           })}

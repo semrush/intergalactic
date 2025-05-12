@@ -9,20 +9,62 @@ import { Cell } from './Cell';
 import { DataTableRowProps, DTRow, RowPropsInner } from './Row.types';
 import { DataTableCellProps } from './Cell.types';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
-import { ACCORDION } from '../DataTable/DataTable';
+import { ACCORDION, ROW_GROUP, UNIQ_ROW_KEY } from '../DataTable/DataTable';
 import ChevronRightM from '@semcore/icon/ChevronRight/m';
 import { ButtonLink } from '@semcore/button';
-import { DTValue } from '../DataTable/DataTable.types';
+import { DataRowItem, DataTableData, DTValue } from '../DataTable/DataTable.types';
 import Spin from '@semcore/spin';
+import { DTColumn } from '../Head/Column.types';
 
-class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner> {
+const ROWS_BUFFER = 20;
+const APROX_ROWS_ON_PAGE = 20;
+
+class BodyRoot<D extends DataTableData> extends Component<
+  DataTableBodyProps,
+  {},
+  {},
+  [],
+  BodyPropsInner<D>
+> {
   static displayName = 'Body';
   static style = style;
 
-  getRowProps(props: { row: DTRow }, index: number): RowPropsInner {
+  private columnsSplitter = '/';
+  private rows: Array<DTRow | DTRow[]> = [];
+
+  rowsHeightMap = new Map<number, [number, number]>();
+
+  indexForDownIterate = 0;
+  indexForUpIterate = 0;
+
+  componentDidMount() {
+    this.rows = this.calculateRows();
+
+    this.forceUpdate();
+  }
+
+  componentDidUpdate(prevProps: DataTableBodyProps & BodyPropsInner<D>) {
+    if (prevProps.data !== this.asProps.data) {
+      this.rows = this.calculateRows();
+
+      this.forceUpdate();
+    }
+  }
+
+  handleRef = (index: number) => (node: HTMLElement | null) => {
+    if (!this.rowsHeightMap.has(index)) {
+      const firstChild = node?.children.item(0);
+      if (firstChild instanceof HTMLElement) {
+        const offset = firstChild.offsetTop - this.asProps.headerHeight;
+        const height = firstChild.getBoundingClientRect().height;
+
+        this.rowsHeightMap.set(index, [offset, offset + height]);
+      }
+    }
+  };
+
+  getRowProps(props: { row: DTRow; offset: number }, i: number): RowPropsInner {
     const {
-      rows,
-      flatRows,
       use,
       gridTemplateAreas,
       gridTemplateColumns,
@@ -30,14 +72,19 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
       columns,
       onExpandRow,
       loading,
+      hasGroups,
+      scrollAreaRef,
       selectedRows,
       onSelectRow,
     } = this.asProps;
     const row = props.row;
+    const index = props.offset + i;
+    const flatRows = this.rows.flat();
 
-    const rowIndex = (expandedRows ?? []).reduce((acc, item) => {
-      if (item < index) {
-        const expandedRow = flatRows[item][ACCORDION];
+    const rowIndex = Array.from(expandedRows ?? []).reduce((acc, item) => {
+      const rowIndex = flatRows.findIndex((row) => row[UNIQ_ROW_KEY] === item);
+      if (rowIndex < index) {
+        const expandedRow = flatRows[rowIndex]?.[ACCORDION];
         if (Array.isArray(expandedRow)) {
           acc = acc + expandedRow.length;
         } else {
@@ -47,42 +94,54 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
 
       return acc;
     }, index);
+
+    const gridRowIndex = rowIndex + (hasGroups ? 3 : 2); // 1 - for header, 1 - because start not from 0, but from 1
     const ariaRowIndex = rowIndex + 2; // 1 - for header, 1 - because start not from 0, but from 1
 
     const accordionDataGridArea = Array.isArray(row[ACCORDION])
-      ? `${ariaRowIndex + 1} / 1 / ${ariaRowIndex + 1 + row[ACCORDION].length} / ${
+      ? `${gridRowIndex + 1} / 1 / ${gridRowIndex + 1 + row[ACCORDION].length} / ${
           columns.length + 1
         }`
-      : `${ariaRowIndex + 1} / 1 / ${ariaRowIndex + 1} / ${columns.length + 1}`;
+      : `${gridRowIndex + 1} / 1 / ${gridRowIndex + 1} / ${columns.length + 1}`;
 
     return {
       use,
       gridTemplateAreas,
       gridTemplateColumns,
-      expanded: expandedRows?.includes(index),
+      expanded: expandedRows?.has(row[UNIQ_ROW_KEY]),
       accordionDataGridArea,
       columns,
       rowIndex: index,
       ariaRowIndex,
-      rows,
-      flatRows,
+      gridRowIndex,
+      rows: this.rows,
       row,
       expandedRows,
       onExpandRow,
       selectedRows,
       onSelectRow,
       inert: loading ? '' : undefined,
+      scrollAreaRef,
     };
   }
 
   getCellProps(props: DataTableCellProps) {
-    const { use, renderCell, expandedRows, styles, getI18nText, onExpandRow } = this.asProps;
+    const {
+      use,
+      renderCell,
+      expandedRows,
+      styles,
+      getI18nText,
+      onExpandRow,
+      virtualScroll,
+      tableRef,
+    } = this.asProps;
     const SAccordionToggle = ButtonLink;
 
     let dataKey = props.column.name;
     const cellValue = props.row[dataKey];
 
-    let value: DTValue = '';
+    let value: DTValue | undefined = undefined;
     const isMergedRows = cellValue instanceof MergedRowsCell;
     const isMergedColumns = cellValue instanceof MergedColumnsCell;
 
@@ -96,29 +155,14 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
     }
 
     const defaultRender = () => {
-      if ((props.columnIndex === 0 && props.row[ACCORDION]) || value[ACCORDION]) {
-        return sstyled(styles)(
-          <>
-            <SAccordionToggle
-              aria-label={getI18nText('DataTable.Cell.AccordionToggle.expand:aria-label')}
-              // @ts-ignore
-              expanded={expandedRows?.includes(props.rowIndex)}
-              onClick={() => onExpandRow(props.rowIndex)}
-              color={'--intergalactic-icon-primary-neutral'}
-            >
-              <SAccordionToggle.Addon tag={ChevronRightM} />
-            </SAccordionToggle>
-            {value.toString()}
-          </>,
-        );
-      }
-
-      return value.toString();
+      return React.isValidElement(value) ? value : value?.toString();
     };
 
     const extraProps: Record<string, any> = {
       use,
-      children: props.children ?? defaultRender,
+      virtualScroll: Boolean(virtualScroll),
+      tableRef,
+      children: props.children ?? defaultRender(),
     };
 
     if (renderCell) {
@@ -130,7 +174,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
         columnIndex: props.columnIndex,
         dataKey,
         defaultRender,
-        value: value.toString(),
+        value: React.isValidElement(value) ? value : value?.toString() ?? '',
         isMergedRows,
         isMergedColumns,
       });
@@ -144,6 +188,23 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
       }
     }
 
+    if ((props.columnIndex === 0 && props.row[ACCORDION]) || value?.[ACCORDION]) {
+      extraProps.children = sstyled(styles)(
+        <>
+          <SAccordionToggle
+            aria-label={getI18nText('DataTable.Cell.AccordionToggle.expand:aria-label')}
+            // @ts-ignore
+            expanded={expandedRows?.has(props.row[UNIQ_ROW_KEY])}
+            onClick={() => onExpandRow(props.row)}
+            color={'--intergalactic-icon-primary-neutral'}
+          >
+            <SAccordionToggle.Addon tag={ChevronRightM} />
+          </SAccordionToggle>
+          {extraProps.children}
+        </>,
+      );
+    }
+
     return extraProps;
   }
 
@@ -151,21 +212,140 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
     const SBody = Root;
     const SRowGroup = Box;
     const SSpinContainer = Box;
-    const { rows, styles, loading, headerHeight, spinnerRef } = this.asProps;
+    const {
+      styles,
+      loading,
+      headerHeight,
+      spinnerRef,
+      virtualScroll,
+      scrollDirection,
+      tableContainerRef,
+      scrollTop,
+    } = this.asProps;
+
+    let rowsToRender = this.rows;
+    let startIndex = -1;
+    let lastIndex = -1;
+
+    if (virtualScroll) {
+      const rowsBuffer =
+        typeof virtualScroll !== 'boolean' && 'rowsBuffer' in virtualScroll
+          ? virtualScroll.rowsBuffer ?? ROWS_BUFFER
+          : ROWS_BUFFER;
+      const offsetHeight = tableContainerRef.current?.offsetHeight ?? 0;
+      const prevPrepared = scrollDirection === 'up' ? rowsBuffer : 4;
+      const nextPrepared = scrollDirection === 'up' ? 4 : rowsBuffer;
+
+      if (typeof virtualScroll === 'boolean' || 'aproxRowsOnPage' in virtualScroll) {
+        const aproxRowsOnPage =
+          typeof virtualScroll !== 'boolean'
+            ? virtualScroll.aproxRowsOnPage ?? APROX_ROWS_ON_PAGE
+            : APROX_ROWS_ON_PAGE;
+        if (scrollDirection === 'down') {
+          for (let i = this.indexForDownIterate; i < this.rowsHeightMap.size - 1; i++) {
+            const value = this.rowsHeightMap.get(i);
+            if (!value) continue;
+            const key = i;
+            const valueFromToCompare = value[1];
+            const valueToToCompare = value[0];
+
+            if (startIndex === -1 && scrollTop < valueFromToCompare) {
+              startIndex = Math.max(key - prevPrepared, 0);
+            }
+
+            if (startIndex !== -1 && scrollTop + offsetHeight < valueToToCompare) {
+              lastIndex = Math.min(key + nextPrepared, this.rows.length);
+            }
+
+            if (startIndex !== -1 && lastIndex !== -1) {
+              break;
+            }
+          }
+
+          if (scrollTop + offsetHeight < (this.rowsHeightMap.get(lastIndex ?? 0)?.[1] ?? 0)) {
+            lastIndex = lastIndex + aproxRowsOnPage;
+          }
+        } else if (scrollDirection === 'up') {
+          for (let i = this.indexForUpIterate; i > 0; i--) {
+            const value = this.rowsHeightMap.get(i);
+            if (!value) continue;
+            const key = i;
+            const valueFromToCompare = value[1];
+            const valueToToCompare = value[0];
+
+            if (lastIndex === -1 && scrollTop + offsetHeight > valueToToCompare) {
+              lastIndex = Math.min(key + nextPrepared, this.rows.length);
+            }
+
+            if (lastIndex !== -1 && scrollTop < valueFromToCompare) {
+              startIndex = Math.max(key - prevPrepared, 0);
+            }
+
+            if (startIndex !== -1 && lastIndex !== -1) {
+              break;
+            }
+          }
+
+          if (scrollTop < (this.rowsHeightMap.get(startIndex ?? 0)?.[0] ?? 0)) {
+            startIndex = startIndex - aproxRowsOnPage;
+          }
+        }
+
+        if (startIndex === -1) {
+          startIndex = scrollTop === 0 ? 0 : Math.max(this.rows.length - aproxRowsOnPage, 0);
+        }
+
+        if (lastIndex === -1) {
+          lastIndex = scrollTop === 0 ? aproxRowsOnPage : this.rows.length;
+        }
+
+        this.indexForDownIterate = startIndex;
+        this.indexForUpIterate = lastIndex;
+
+        rowsToRender = this.rows.slice(startIndex, lastIndex);
+      } else if ('rowHeight' in virtualScroll) {
+        const rowHeight = virtualScroll.rowHeight;
+
+        startIndex = Math.max(Math.floor(scrollTop / rowHeight) - prevPrepared, 0);
+
+        const lastIndex = Math.min(
+          Math.ceil((scrollTop + offsetHeight) / rowHeight) + nextPrepared,
+          this.rows.length,
+        );
+
+        rowsToRender = this.rows.slice(startIndex, lastIndex);
+      }
+    }
+
+    startIndex = startIndex === -1 ? 0 : startIndex;
 
     return sstyled(styles)(
-      <SBody render={Box}>
-        {rows.map((row, index) => {
+      <SBody render={Box} __excludeProps={['data']}>
+        {rowsToRender.map((row, index) => {
+          let rowMarginTop: number | undefined = undefined;
+
+          if (index === 0 && typeof virtualScroll === 'boolean') {
+            rowMarginTop = this.rowsHeightMap.get(startIndex - 1)?.[1];
+          }
+
           if (Array.isArray(row)) {
             return sstyled(styles)(
               <SRowGroup role={'rowgroup'} key={index}>
-                {row.map((item, index) => {
-                  return <Body.Row key={index} row={item} />;
+                {row.map((item, i) => {
+                  return <Body.Row key={item[UNIQ_ROW_KEY]} row={item} offset={startIndex} />;
                 })}
               </SRowGroup>,
             );
           }
-          return <Body.Row key={index} row={row} />;
+          return (
+            <Body.Row
+              key={row[UNIQ_ROW_KEY]}
+              row={row}
+              offset={startIndex}
+              ref={this.handleRef(startIndex + index)}
+              rowMarginTop={rowMarginTop}
+            />
+          );
         })}
         {loading && (
           <SSpinContainer
@@ -174,8 +354,9 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
             headerHeight={`${headerHeight}px`}
             tabIndex={-1}
             ref={spinnerRef}
+            role={'row'}
           >
-            <Spin size={'xxl'} />
+            <Spin size={'xxl'} role={'gridcell'} />
           </SSpinContainer>
         )}
       </SBody>,
@@ -191,6 +372,108 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
       obj === undefined ||
       obj === null
     );
+  }
+
+  private calculateRows(): Array<DTRow[] | DTRow> {
+    const { data, uid, columns } = this.asProps;
+
+    const rows: Array<DTRow[] | DTRow> = [];
+    const columnNames = columns.map((column: DTColumn) => column.name);
+
+    let rowIndex = 0;
+
+    const id = 100000000; // need this for gen keys by toString(36)
+
+    const makeDtRow = (row: DataRowItem, excludeColumns?: string[]) => {
+      const columns = new Set(columnNames);
+      const dtRow = Object.entries(row).reduce<DTRow>(
+        (acc, [key, value]) => {
+          const columnsToRow = key.split(this.columnsSplitter);
+
+          if (columnsToRow.length === 1) {
+            acc[key] = value ?? '';
+            columns.delete(key);
+          } else {
+            acc[columnsToRow[0]] = new MergedColumnsCell(value, {
+              dataKey: key,
+              size: columnsToRow.length,
+            });
+            columnsToRow.forEach((value) => {
+              columns.delete(value);
+            });
+          }
+
+          if (row[ACCORDION]) {
+            acc[ACCORDION] = row[ACCORDION];
+          }
+
+          return acc;
+        },
+        {
+          [UNIQ_ROW_KEY]: row[UNIQ_ROW_KEY] ?? `${uid}_${(rowIndex + id).toString(36)}`,
+        },
+      );
+
+      excludeColumns?.forEach((value) => {
+        columns.delete(value);
+      });
+
+      if (columns.size > 0) {
+        columns.forEach((value) => {
+          dtRow[value] = '';
+        });
+      }
+
+      return dtRow;
+    };
+
+    data.forEach((row) => {
+      const groupedRows: DataTableData | undefined = row[ROW_GROUP];
+
+      const fromRow = rowIndex + 2; // 1 - for header, 1 - because start not from 0, but from 1
+
+      if (groupedRows) {
+        const toRow = fromRow + groupedRows.length;
+        const innerRows: DTRow[] = [];
+
+        const groupedKeys: string[] = [];
+        const groupedRowData = Object.entries(row).reduce<DTRow>(
+          (acc, [key, value]) => {
+            acc[key] = new MergedRowsCell(value, [fromRow, toRow]);
+            groupedKeys.push(key);
+            return acc;
+          },
+          {
+            [UNIQ_ROW_KEY]: '', // will fill in makeDtRow
+          },
+        );
+
+        groupedRows.forEach((childRow, index) => {
+          let dtRow: DTRow;
+          if (index === 0) {
+            const rowData = {
+              ...childRow,
+              ...groupedRowData,
+            };
+            dtRow = makeDtRow(rowData);
+          } else {
+            dtRow = makeDtRow(childRow, groupedKeys);
+          }
+
+          innerRows.push(dtRow);
+          rowIndex++;
+        });
+
+        rows.push(innerRows);
+      } else {
+        const dtRow = makeDtRow(row);
+
+        rows.push(dtRow);
+        rowIndex++;
+      }
+    });
+
+    return rows;
   }
 }
 

@@ -11,6 +11,7 @@ import { DataTableColumnProps } from './Column.types';
 import { getFixedStyle } from '../../utils';
 import { DataTableGroupProps } from './Group.type';
 import { DataTableData } from '../DataTable/DataTable.types';
+import { DataTable } from '../DataTable/DataTable';
 import { SELECT_ALL } from '../DataTable/DataTable';
 import Checkbox from '@semcore/checkbox';
 
@@ -32,12 +33,13 @@ class HeadRoot<D extends DataTableData> extends Component<
   }
 
   getGroupProps(_: any, index: number) {
-    const { use, gridAreaGroupMap } = this.asProps;
+    const { use, gridAreaGroupMap, children } = this.asProps;
 
     return {
       use,
       gridArea: gridAreaGroupMap.get(index),
       fixedColumnsMap: this.fixedColumnsMap,
+      withConfig: children === undefined,
     };
   }
 
@@ -51,6 +53,7 @@ class HeadRoot<D extends DataTableData> extends Component<
       gridTemplateColumns,
       gridTemplateAreas,
       sticky,
+      top,
       selectedRows,
     } = this.asProps;
     const column = columns[index];
@@ -62,6 +65,10 @@ class HeadRoot<D extends DataTableData> extends Component<
     const [name, value] = getFixedStyle(column, columns);
     const style: any = {};
 
+    if (top) {
+      style.top = `${top}px`;
+    }
+
     if (name !== undefined && value !== undefined) {
       style[name] = value;
 
@@ -71,7 +78,7 @@ class HeadRoot<D extends DataTableData> extends Component<
     return {
       use,
       'aria-colindex': index + 1,
-      ref: (node: HTMLElement | null) => column.ref(node),
+      ref: (node: HTMLElement | null) => column.ref?.(node),
       style,
       gridArea: column.gridArea,
       fixed: column.fixed,
@@ -90,8 +97,16 @@ class HeadRoot<D extends DataTableData> extends Component<
 
   render() {
     const SHead = Root;
-    const { Children, styles, getI18nText, selectedRows, onChangeSelectAll, totalRows } =
-      this.asProps;
+    const {
+      Children,
+      styles,
+      getI18nText,
+      children,
+      treeColumns,
+      selectedRows,
+      onChangeSelectAll,
+      totalRows,
+    } = this.asProps;
 
     const checked = selectedRows && selectedRows.length === totalRows && totalRows > 0;
     const indeterminate = selectedRows && selectedRows.length > 0 && !checked;
@@ -113,7 +128,27 @@ class HeadRoot<D extends DataTableData> extends Component<
               </Checkbox>
             </Head.Column>
           )}
-          <Children />
+
+          {children ? (
+            <Children />
+          ) : (
+            <>
+              {treeColumns.map((column, i) => {
+                if ('columns' in column) {
+                  return (
+                    <DataTable.Head.Group
+                      key={column.name}
+                      {...column}
+                      name={column.columns?.map((c) => c.name).join('/')}
+                      title={''}
+                    />
+                  );
+                }
+
+                return <DataTable.Head.Column key={column.name} {...column} />;
+              })}
+            </>
+          )}
         </SHead>
 
         <ScreenReaderOnly aria-hidden={true} id={this.sortableColumnDescribeId()}>
@@ -128,22 +163,10 @@ export const Head = createComponent(HeadRoot, { Column, Group }) as Intergalacti
   'div',
   DataTableHeadProps
 > & {
-  Column: (
-    props: Intergalactic.InternalTypings.ComponentProps<
-      'div' | typeof Tooltip,
-      'div',
-      DataTableColumnProps,
-      {},
-      []
-    >,
+  Column: <Tag extends 'div' | typeof Tooltip = 'div'>(
+    props: Intergalactic.InternalTypings.ComponentProps<Tag, 'div', DataTableColumnProps, {}, []>,
   ) => Intergalactic.InternalTypings.ComponentRenderingResults;
-  Group: (
-    props: Intergalactic.InternalTypings.ComponentProps<
-      'div' | typeof Tooltip,
-      'div',
-      DataTableGroupProps,
-      {},
-      []
-    >,
+  Group: <Tag extends 'div' | typeof Tooltip = 'div'>(
+    props: Intergalactic.InternalTypings.ComponentProps<Tag, 'div', DataTableGroupProps, {}, []>,
   ) => Intergalactic.InternalTypings.ComponentRenderingResults;
 };

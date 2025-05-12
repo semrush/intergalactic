@@ -10,7 +10,9 @@ export function setRef<T>(ref: Ref<T>, value: T) {
   }
 }
 
-export function getRef(ref: RefObject<Element> | Element): Element | null {
+type Refs = React.ReactInstance | React.RefObject<React.ReactInstance>;
+
+export function getRef(ref: Refs): React.ReactInstance | null {
   if (!ref) return null;
   return 'current' in ref ? ref.current : ref;
 }
@@ -71,8 +73,9 @@ export function getNodeByRef(ref: NodeByRef): Element | null {
 
   const node = getRef(ref);
   if (!node) return null;
-  if (node.nodeType === 1) return node;
+  if ('nodeType' in node && node.nodeType === 1) return node;
   if (Object.keys(node).length === 1 && 'getBoundingClientRect' in node) return null;
+  if (!React.isValidElement(node) && !(node instanceof React.Component)) return null;
 
   return findDOMNode(node) as Element;
 }

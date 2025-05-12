@@ -39,14 +39,14 @@ const Demo = () => {
       <ScreenReaderOnly role='status' aria-live='polite'>
         {message}
       </ScreenReaderOnly>
-      <DataTable data={data} aria-label={'Loading using Skeleton'}>
-        <DataTable.Head>
-          <DataTable.Head.Column name='keyword' children='Keyword' />
-          <DataTable.Head.Column name='kd' children='KD,%' />
-          <DataTable.Head.Column name='cpc' children='CPC' />
-          <DataTable.Head.Column name='vol' children='Vol.' />
-        </DataTable.Head>
-        <DataTable.Body
+      <DataTable data={data} aria-label={'Loading using Skeleton'}
+                 h={'auto'}
+        columns={[
+          {name: 'keyword', children: 'Keyword'},
+          {name: 'kd', children: 'KD,%'},
+          {name: 'cpc', children: 'CPC'},
+          {name: 'vol', children: 'Vol.'},
+        ]}
           renderCell={(props) => {
             if (loading) {
               return (
@@ -59,7 +59,6 @@ const Demo = () => {
             return props.defaultRender();
           }}
         />
-      </DataTable>
       <Button onClick={toggleLoading} mt={3}>
         {loading ? 'Stop loading' : 'Start loading'}
       </Button>

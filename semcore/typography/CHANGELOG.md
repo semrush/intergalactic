@@ -8,6 +8,14 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - `Hint` component. Use `secondary` `ButtonLink` instead of it.
 
+### Added
+
+- Default styles for native html elements inside `Text` component.
+
+### Changed
+
+- Default `font-weight` for headings according to design guidelines.
+
 ## [5.53.0] - 2025-04-11
 
 ### Changed

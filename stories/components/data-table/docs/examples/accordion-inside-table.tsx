@@ -5,20 +5,24 @@ import { Plot, Line, XAxis, YAxis, ResponsiveContainer, minMax } from '@semcore/
 
 const Demo = () => {
   return (
-      <DataTable data={data} aria-label={'Accordion inside table'}>
-        <DataTable.Head>
-          <DataTable.Head.Column name='keyword' children='Keyword' />
-          <DataTable.Head.Column name='kd' children='KD,%' />
-          <DataTable.Head.Column name='cpc' children='CPC' />
-          <DataTable.Head.Column name='vol' children='Vol.' />
-        </DataTable.Head>
-        <DataTable.Body/>
-      </DataTable>
+      <DataTable data={data} aria-label={'Accordion inside table'} h={'100%'} defaultGridTemplateColumnWidth={'1fr'}
+                 columns={[
+                   {name: 'keyword', children: 'Keyword', gtcWidth: 'minmax(60%, 80%)'},
+                   {
+                     children: 'Organic Sessions',
+                     borders: 'both',
+                     columns: [
+                       {name: 'kd', children: 'KD,%'},
+                       {name: 'cpc', children: 'CPC'},
+                       {name: 'vol', children: 'Vol.'},
+                     ]}
+                 ]}
+      />
   );
 };
 
 const ChartExample = () => {
-  const [[width, height], setSize] = React.useState([0, 0]);
+  const [[width, height], setSize] = React.useState([1000, 300]);
   const MARGIN = 40;
   const [dataChart, setDataChart] = React.useState<any[]>([]);
 
@@ -38,8 +42,8 @@ const ChartExample = () => {
     .range([height - MARGIN, MARGIN])
     .domain([0, 10]);
   return (
-    <ResponsiveContainer h={300} onResize={setSize}>
-      <Plot data={dataChart} scale={[xScale, yScale]} width={width} height={height}>
+    // <ResponsiveContainer h={300} w={1000} style={{background: '#fff'}}>
+      <Plot data={dataChart} scale={[xScale, yScale]} width={width} height={height} style={{background: '#fff'}}>
         <YAxis>
           <YAxis.Ticks />
           <YAxis.Grid />
@@ -51,7 +55,7 @@ const ChartExample = () => {
           <Line.Dots display />
         </Line>
       </Plot>
-    </ResponsiveContainer>
+    // </ResponsiveContainer>
   );
 };
 
