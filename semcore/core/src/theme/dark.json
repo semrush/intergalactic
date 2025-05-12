@@ -1299,10 +1299,10 @@
           "type": "color",
           "description": "Background of the unread cell in the Table."
         },
-        "cell-actions-accordion": {
+        "cell-accordion": {
           "value": "rgba(54, 56, 67, 1)",
           "type": "color",
-          "description": "Background of the cell used for Accordion or actions row, in the Table."
+          "description": "Background of the cell inside an Accordion in the Table."
         },
         "cell-selected": {
           "value": "rgba(43, 54, 69, 1)",
