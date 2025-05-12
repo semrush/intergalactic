@@ -185,6 +185,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
       data,
       uid,
       renderCell,
+      headerProps,
     } = this.asProps;
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
 
@@ -196,7 +197,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
       gridTemplateColumns,
       gridTemplateAreas,
       loading,
-      headerHeight: this.getTopScrollOffset(),
+      headerHeight: headerProps?.sticky ? this.getTopScrollOffset() : 0,
       getI18nText,
       expandedRows,
       onExpandRow: this.onExpandRow,
