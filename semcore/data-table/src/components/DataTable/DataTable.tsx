@@ -187,7 +187,6 @@ class DataTableRoot<D extends DataTableData> extends Component<
       renderCell,
     } = this.asProps;
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
-
     return {
       columns: this.columns,
       data,

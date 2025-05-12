@@ -29,6 +29,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
     const SCollapseRow = Collapse;
     const SCell = Body.Cell;
     const {
+      uid,
       columns,
       row,
       styles,
@@ -88,6 +89,8 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
                     ? expanded
                     : undefined
                 }
+                id={`${uid}_${ariaRowIndex}_${index}`}
+                accordionId={`${uid}_${ariaRowIndex + 1}`}
                 data-aria-level={index === 0 ? ariaLevel : undefined}
                 row={row}
                 rowIndex={rowIndex}
@@ -107,6 +110,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
             key={rowIndex}
             role={'row'}
             aria-rowindex={ariaRowIndex + 1}
+            id={`${uid}_${ariaRowIndex + 1}`}
             visible={expanded}
             interactive
             gridArea={accordionDataGridArea}
