@@ -196,6 +196,7 @@ class BodyRoot<D extends DataTableData> extends Component<
             expanded={expanded}
             onClick={() => onExpandRow(props.row)}
             color={'--intergalactic-icon-primary-neutral'}
+            aria-expanded={expanded}
             aria-describedby={props.id}
             aria-controls={props.accordionId}
           >

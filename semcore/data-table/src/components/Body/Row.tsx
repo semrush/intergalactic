@@ -84,11 +84,6 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
             return (
               <Body.Cell
                 key={index}
-                aria-expanded={
-                  (row[ACCORDION] && index === 0) || this.cellHasAccordion(cellValue)
-                    ? expanded
-                    : undefined
-                }
                 id={`${uid}_${ariaRowIndex}_${index}`}
                 accordionId={`${uid}_${ariaRowIndex + 1}`}
                 data-aria-level={index === 0 ? ariaLevel : undefined}
