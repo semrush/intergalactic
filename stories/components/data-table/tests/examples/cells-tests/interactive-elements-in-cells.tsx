@@ -10,12 +10,21 @@ import { Flex } from '@semcore/flex-box';
 import { DescriptionTooltip, Hint } from '@semcore/tooltip';
 import InfoM from '@semcore/icon/Info/m';
 import CheckM from '@semcore/icon/Check/m';
+import {PortalProvider} from '@semcore/base-components';
 
 
 const Demo = () => {
+    const tableRef = React.useRef<HTMLDivElement>();
+
+    React.useEffect(() => {
+        tableRef.current.parentElement.parentElement.parentElement.style.setProperty('overflow', 'hidden');
+    }, []);
+
     return (
         <>
             <DataTable data={data} aria-label={'Access to cells'} hMax={200}
+                       ref={tableRef}
+                       style={{overflow: 'hidden'}}
                 columns={[
                     { name: 'keyword', children: 'Keyword' },
                     { name: 'kd', children: 'KD,%' },
@@ -38,7 +47,8 @@ const Demo = () => {
                                     data-test-id='interactive-icon'
                                     color='icon-secondary-neutral'
                                 />
-                                <DescriptionTooltip hiddenOutOfContainer>
+                                <PortalProvider value={tableRef.current.parentElement.parentElement.parentElement}>
+                                <DescriptionTooltip>
                                     <DescriptionTooltip.Trigger tag={ButtonLink} use={'secondary'}>
                                         About fastest animals
                                     </DescriptionTooltip.Trigger>
@@ -51,6 +61,7 @@ const Demo = () => {
 
                                     </DescriptionTooltip.Popper>
                                 </DescriptionTooltip>
+                                </PortalProvider>
                             </Flex>
                         );
                     }
