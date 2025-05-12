@@ -479,19 +479,29 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
   render() {
     const SDataTable = Root;
-    const { Children, styles, w, wMax, wMin, h, hMax, hMin, virtualScroll, children, headerProps } =
-      this.asProps;
+    const {
+      Children,
+      styles,
+      w,
+      wMax,
+      wMin,
+      h,
+      hMax,
+      hMin,
+      virtualScroll,
+      children,
+      headerProps,
+      loading,
+    } = this.asProps;
 
     const [offsetLeftSum, offsetRightSum] = getScrollOffsetValue(this.columns);
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
 
     const Head = findComponent<DataTableHeadProps>(Children, ['DataTable.Head']);
     const headerPropsToCheck = headerProps ?? Head?.props;
-
+    const headerHeight = this.getHeaderHeight();
     const topOffset =
-      headerPropsToCheck?.sticky || headerPropsToCheck?.withScrollBar
-        ? this.getTopScrollOffset()
-        : undefined;
+      headerPropsToCheck?.sticky || headerPropsToCheck?.withScrollBar ? headerHeight : undefined;
 
     const width =
       w ??
@@ -539,6 +549,9 @@ class DataTableRoot<D extends DataTableData> extends Component<
           tabIndex={-1}
           // @ts-ignore
           scrollDirection={scrollDirection}
+          // @ts-ignore
+          loading={loading}
+          headerHeight={`${headerHeight}px`}
         >
           <SDataTable
             render={Box}
@@ -574,7 +587,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
           </SDataTable>
         </ScrollArea.Container>
 
-        {headerPropsToCheck?.withScrollBar && topOffset && (
+        {headerPropsToCheck?.withScrollBar && topOffset && !loading && (
           <ScrollArea.Bar
             orientation='horizontal'
             top={topOffset - SCROLL_BAR_HEIGHT}
@@ -582,8 +595,12 @@ class DataTableRoot<D extends DataTableData> extends Component<
           />
         )}
 
-        <ScrollArea.Bar orientation='horizontal' zIndex={10} />
-        <ScrollArea.Bar orientation='vertical' zIndex={10} />
+        {!loading && (
+          <>
+            <ScrollArea.Bar orientation='horizontal' zIndex={10} />
+            <ScrollArea.Bar orientation='vertical' zIndex={10} />
+          </>
+        )}
       </ScrollArea>,
     );
   }
@@ -843,7 +860,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
     );
   }
 
-  private getTopScrollOffset() {
+  private getHeaderHeight() {
     const header = this.headerRef.current?.children;
 
     let height = 0;
