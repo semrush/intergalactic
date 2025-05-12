@@ -40,5 +40,6 @@ export type BodyPropsInner<D extends DataTableData> = {
   virtualScroll?: VirtualScroll;
   hasGroups: boolean;
   uid: string;
+  rowProps?: (row: DTRow, rowIndex: number) => Record<string, any> | undefined;
   renderCell?: (props: CellRenderProps) => React.ReactNode | Record<string, any>;
 };

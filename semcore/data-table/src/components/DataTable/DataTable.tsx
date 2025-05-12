@@ -184,6 +184,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
       virtualScroll,
       data,
       uid,
+      rowProps,
       renderCell,
     } = this.asProps;
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
@@ -209,6 +210,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
       virtualScroll,
       hasGroups: this.hasGroups,
       uid,
+      rowProps,
       renderCell,
     };
   }
