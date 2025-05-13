@@ -475,11 +475,11 @@ class BodyRoot<D extends DataTableData> extends Component<
   }
 
   private setRowHeight(index: number, row: DTRow) {
-    const { expandedRows } = this.asProps;
+    const { expandedRows, stickyHeader, headerHeight } = this.asProps;
     const node = this.rowsHeightMap.get(index)?.[2];
     const firstChild = node?.children.item(0);
     if (node && firstChild instanceof HTMLElement) {
-      const offset = firstChild.offsetTop - this.asProps.headerHeight;
+      const offset = firstChild.offsetTop - (stickyHeader ? headerHeight : 0);
       let height = firstChild.getBoundingClientRect().height;
 
       if (expandedRows.has(row[UNIQ_ROW_KEY]) && node.nextSibling instanceof HTMLElement) {
