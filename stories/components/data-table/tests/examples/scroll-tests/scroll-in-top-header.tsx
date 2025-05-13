@@ -4,7 +4,7 @@ import { Box } from '@semcore/flex-box';
 
 const Demo = () => {
   return (
-      <Box style={{overflow: 'auto'}} h={'70vh'}>
+      <Box style={{overflow: 'auto', scrollPaddingTop: '200px'}} h={'70vh'} tabIndex={-1}>
         <Box h={100} style={{background: 'red'}}/>
         <Box h={100} style={{background: 'green', position: 'sticky', top: 0, zIndex: 1000}}/>
         <DataTable data={data} aria-label={'Scroll inside'} wMin={1000}
