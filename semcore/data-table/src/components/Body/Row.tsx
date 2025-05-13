@@ -17,12 +17,20 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
     'aria-level': undefined,
   };
 
+  private cellIndex = -1;
+
   cellHasAccordion(cellValue?: DTValue | MergedColumnsCell | MergedRowsCell): cellValue is DTValue {
     return (
       !(cellValue instanceof MergedRowsCell || cellValue instanceof MergedColumnsCell) &&
       Boolean(cellValue?.[ACCORDION])
     );
   }
+
+  handleBackFromAccordion = (e: React.KeyboardEvent) => {
+    if (e.key === 'Escape') {
+      this.asProps.onBackFromAccordion(this.cellIndex);
+    }
+  };
 
   render() {
     const SRow = Root;
@@ -48,9 +56,14 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
     let accordionType = accordion ? 'row' : undefined;
 
     if (!accordion) {
-      const cellWithAccordion = Object.values(row).find((value) => {
+      const cells = Object.values(row);
+      const cellWithAccordionIndex = cells.findIndex((value) => {
         return this.cellHasAccordion(value);
-      }) as DTValue | undefined;
+      });
+
+      this.cellIndex = cellWithAccordionIndex;
+
+      const cellWithAccordion = cells[cellWithAccordionIndex] as DTValue | undefined;
 
       accordion = cellWithAccordion?.[ACCORDION];
       accordionType = 'cell';
@@ -124,6 +137,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
               position={'sticky'}
               left={0}
               w={scrollAreaRef.current?.clientWidth}
+              onKeyDown={this.handleBackFromAccordion}
             >
               {accordion}
             </SCell>

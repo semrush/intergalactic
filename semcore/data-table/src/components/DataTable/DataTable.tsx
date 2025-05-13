@@ -184,6 +184,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
       virtualScroll,
       data,
       uid,
+      rowProps,
       renderCell,
       headerProps,
     } = this.asProps;
@@ -197,7 +198,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
       gridTemplateColumns,
       gridTemplateAreas,
       loading,
-      headerHeight: headerProps?.sticky ? this.getTopScrollOffset() : 0,
+      headerHeight: headerProps?.sticky ? this.getHeaderHeight() : 0,
       getI18nText,
       expandedRows,
       onExpandRow: this.onExpandRow,
@@ -207,9 +208,11 @@ class DataTableRoot<D extends DataTableData> extends Component<
       tableContainerRef: this.tableContainerRef,
       tableRef: this.tableRef,
       scrollAreaRef: this.scrollAreaRef,
+      onBackFromAccordion: this.handleBackFromAccordion,
       virtualScroll,
       hasGroups: this.hasGroups,
       uid,
+      rowProps,
       renderCell,
     };
   }
@@ -291,9 +294,11 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
     const row = this.getRow(newRow);
     const cell = row?.querySelector(
-      `[role=gridcell][aria-colindex="${newCol + 1}"], [role=columnheader][aria-colindex="${
+      `:scope > [role=gridcell][aria-colindex="${
         newCol + 1
-      }"]`,
+      }"], :scope > [role=columnheader][aria-colindex="${
+        newCol + 1
+      }"], :scope > div > [role=columnheader][aria-colindex="${newCol + 1}"]`,
     );
 
     if (cell instanceof HTMLElement && currentCell !== cell) {
@@ -475,6 +480,10 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
   handleMouseMove = () => {
     this.setInert(false);
+  };
+
+  handleBackFromAccordion = (cellIndex: number) => {
+    this.changeFocusCell(-1, cellIndex === -1 ? 0 : cellIndex, 'up');
   };
 
   render() {
