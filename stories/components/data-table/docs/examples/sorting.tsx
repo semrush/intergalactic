@@ -32,8 +32,8 @@ const Demo = () => {
         columns={[
             {name: 'keyword', children: 'Keyword', justifyContent: 'left', sortable: true},
             {name: 'kd', children: <Ellipsis>KD,% and some another text long</Ellipsis>, justifyContent: 'right', gtcWidth: 'minmax(0, 68px)', sortable: true},
-            {name: 'cpc', children: 'CPC', gtcWidth: 'minmax(0, 60px)', sortable: true},
-            {name: 'vol', children: 'Vol.', gtcWidth: 'minmax(0, 120px)', justifyContent: 'left', sortable: true},
+            {name: 'cpc', children: 'CPC', gtcWidth: 'minmax(0, 60px)', sortable: 'asc'},
+            {name: 'vol', children: 'Vol.', gtcWidth: 'minmax(0, 120px)', justifyContent: 'left', sortable: 'desc'},
         ]}
           renderCell={(props) => {
             if (props.columnName === 'keyword') {

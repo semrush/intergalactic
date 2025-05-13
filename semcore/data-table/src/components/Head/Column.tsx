@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { Component, lastInteraction, Root, sstyled } from '@semcore/core';
+import { Component, Intergalactic, lastInteraction, Root, sstyled } from '@semcore/core';
 import { ColumnPropsInner, DataTableColumnProps } from './Column.types';
 import { Flex } from '@semcore/base-components';
 import SortDesc from '@semcore/icon/SortDesc/m';
 import SortAsc from '@semcore/icon/SortAsc/m';
+import { IconProps } from '@semcore/icon';
 
 import style from './style.shadow.css';
 import { ButtonLink } from '@semcore/button';
@@ -12,7 +13,7 @@ import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableI
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import { isFocusInside } from '@semcore/core/lib/utils/focus-lock/isFocusInside';
 
-const SORTING_ICON = {
+const SORTING_ICON: { [key in SortDirection]: Intergalactic.Component<'svg', IconProps> } = {
   desc: SortDesc,
   asc: SortAsc,
 } as const;
@@ -165,6 +166,16 @@ export class Column<D extends DataTableData> extends Component<
     return null;
   };
 
+  get defaultDirection() {
+    const { sortable } = this.asProps;
+
+    if (typeof sortable === 'string') {
+      return sortable;
+    }
+
+    return DEFAULT_DIRECTION;
+  }
+
   handleMouseEnter = () => {
     this.setState({ sortVisible: true });
   };
@@ -188,7 +199,8 @@ export class Column<D extends DataTableData> extends Component<
       (lastInteraction.isKeyboard() && e.target === e.currentTarget)
     ) {
       if (sort && onSortChange) {
-        const sortDirection = sort[0] === name ? reversedSortDirection[sort[1]] : DEFAULT_DIRECTION;
+        const sortDirection =
+          sort[0] === name ? reversedSortDirection[sort[1]] : this.defaultDirection;
 
         onSortChange([name, sortDirection], e);
       }
@@ -255,9 +267,10 @@ export class Column<D extends DataTableData> extends Component<
     const { styles, sortable, sort, uid, name, parent, sortableColumnDescribeId, Children } =
       this.asProps;
 
-    const SSortIcon = sort ? SORTING_ICON[sort[1]] : SORTING_ICON['asc'];
+    const SSortIcon =
+      sort && sort[0] === name ? SORTING_ICON[sort[1]] : SORTING_ICON[this.defaultDirection];
     const isSorted = sort?.[0] === name;
-    const visibleSort = sortable && (this.state.sortVisible || isSorted);
+    const visibleSort = Boolean(sortable) && (this.state.sortVisible || isSorted);
 
     const ariaDescribedBy = [];
     if (isSorted) {
