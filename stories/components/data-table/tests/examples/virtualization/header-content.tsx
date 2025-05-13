@@ -48,14 +48,14 @@ const Demo = () => {
         </DataTable.Head.Column>
 
         <DataTable.Head.Column name='cpc' children='CPC CPC CPC CPC CPC' gtcWidth={'90px'} />
-        <DataTable.Head.Column name='vol' children='Vol.' gtcWidth={'minmax(0, 300px)'} />
-        <DataTable.Head.Column name='md' gtcWidth={'90px'}>
+        <DataTable.Head.Column name='vol' children='Vol.' gtcWidth={'minmax(10, 100px)'} />
+        <DataTable.Head.Column name='kd' gtcWidth={'90px'}>
           <Text>
             Marketing SEO
             <Text color='text-secondary'>(Marketing SEO Marketing SEO 1-100)</Text>
           </Text>
         </DataTable.Head.Column>
-        <DataTable.Head.Column name='md' gtcWidth={'90px'}>
+        <DataTable.Head.Column name='kd' gtcWidth={'90px'}>
           <Text>
             Marketing SEO
             <Text color='text-secondary'>(Marketing SEO Marketing SEO 1-100)</Text>
