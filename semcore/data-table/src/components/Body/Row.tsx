@@ -48,7 +48,6 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
       expandedRows,
       onExpandRow,
       'aria-level': ariaLevel = 1,
-      rowMarginTop,
       scrollAreaRef,
     } = this.asProps;
 
@@ -72,7 +71,6 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
     return sstyled(styles)(
       <>
         <SRow render={Box} role={'row'} aria-rowindex={ariaRowIndex} accordionType={accordionType}>
-          {rowMarginTop && <Box h={rowMarginTop} />}
           {columns.map((column, i) => {
             const index = i;
             const cellValue = row[column.name];

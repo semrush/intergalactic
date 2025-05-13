@@ -32,7 +32,7 @@ class BodyRoot<D extends DataTableData> extends Component<
   private columnsSplitter = '/';
   private rows: Array<DTRow | DTRow[]> = [];
 
-  rowsHeightMap = new Map<number, [number, number]>();
+  rowsHeightMap = new Map<number, [number, number, HTMLElement]>();
 
   indexForDownIterate = 0;
   indexForUpIterate = 0;
@@ -52,13 +52,13 @@ class BodyRoot<D extends DataTableData> extends Component<
   }
 
   handleRef = (index: number) => (node: HTMLElement | null) => {
-    if (!this.rowsHeightMap.has(index)) {
+    if (!this.rowsHeightMap.has(index) && node) {
       const firstChild = node?.children.item(0);
       if (firstChild instanceof HTMLElement) {
         const offset = firstChild.offsetTop - this.asProps.headerHeight;
         const height = firstChild.getBoundingClientRect().height;
 
-        this.rowsHeightMap.set(index, [offset, offset + height]);
+        this.rowsHeightMap.set(index, [offset, offset + height, node]);
       }
     }
   };
@@ -318,19 +318,15 @@ class BodyRoot<D extends DataTableData> extends Component<
     }
 
     startIndex = startIndex === -1 ? 0 : startIndex;
+    const rowMarginTop = this.rowsHeightMap.get(startIndex - 1)?.[1];
 
     return sstyled(styles)(
       <SBody render={Box} __excludeProps={['data']}>
+        {typeof virtualScroll === 'boolean' && rowMarginTop && <Box h={rowMarginTop} />}
         {rowsToRender.map((row, index) => {
-          let rowMarginTop: number | undefined = undefined;
-
-          if (index === 0 && typeof virtualScroll === 'boolean') {
-            rowMarginTop = this.rowsHeightMap.get(startIndex - 1)?.[1];
-          }
-
           if (Array.isArray(row)) {
             return sstyled(styles)(
-              <SRowGroup role={'rowgroup'} key={index}>
+              <SRowGroup role={'rowgroup'} key={index} ref={this.handleRef(startIndex + index)}>
                 {row.map((item, i) => {
                   return <Body.Row key={item[UNIQ_ROW_KEY]} row={item} offset={startIndex} />;
                 })}
@@ -343,7 +339,6 @@ class BodyRoot<D extends DataTableData> extends Component<
               row={row}
               offset={startIndex}
               ref={this.handleRef(startIndex + index)}
-              rowMarginTop={rowMarginTop}
             />
           );
         })}
@@ -430,16 +425,13 @@ class BodyRoot<D extends DataTableData> extends Component<
     data.forEach((row) => {
       const groupedRows: DataTableData | undefined = row[ROW_GROUP];
 
-      const fromRow = rowIndex + 2; // 1 - for header, 1 - because start not from 0, but from 1
-
       if (groupedRows) {
-        const toRow = fromRow + groupedRows.length;
         const innerRows: DTRow[] = [];
 
         const groupedKeys: string[] = [];
         const groupedRowData = Object.entries(row).reduce<DTRow>(
           (acc, [key, value]) => {
-            acc[key] = new MergedRowsCell(value, [fromRow, toRow]);
+            acc[key] = new MergedRowsCell(value, groupedRows.length);
             groupedKeys.push(key);
             return acc;
           },
@@ -474,6 +466,23 @@ class BodyRoot<D extends DataTableData> extends Component<
     });
 
     return rows;
+  }
+
+  private setRowHeight(index: number, row: DTRow) {
+    const { expandedRows } = this.asProps;
+    const node = this.rowsHeightMap.get(index)?.[2];
+    const firstChild =
+      node?.role === 'rowgroup' ? node?.children.item(0)?.children.item(0) : node?.children.item(0);
+    if (node && firstChild instanceof HTMLElement) {
+      const offset = firstChild.offsetTop - this.asProps.headerHeight;
+      let height = firstChild.getBoundingClientRect().height;
+
+      if (expandedRows.has(row[UNIQ_ROW_KEY]) && node.nextSibling instanceof HTMLElement) {
+        height = height + node.nextSibling.getBoundingClientRect().height;
+      }
+
+      this.rowsHeightMap.set(index, [offset, offset + height, node]);
+    }
   }
 }
 

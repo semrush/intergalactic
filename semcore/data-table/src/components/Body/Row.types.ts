@@ -13,7 +13,6 @@ export type DTRows = Array<DTRow | DTRow[]>;
 export type DataTableRowProps = {
   row: DTRow;
   offset?: number;
-  rowMarginTop?: React.CSSProperties['marginTop'];
 };
 
 export type RowPropsInner = {
