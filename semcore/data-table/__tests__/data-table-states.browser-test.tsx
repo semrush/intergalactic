@@ -19,6 +19,7 @@ test.describe('Loading states', () => {
       await page.keyboard.press('Tab');
       await expect(page.getByRole('row', { name: 'Loading…' })).toBeFocused();
     });
+    await expect(page).toHaveScreenshot();
   });
 
   test('Verify skeleton in table', async ({ page }) => {
