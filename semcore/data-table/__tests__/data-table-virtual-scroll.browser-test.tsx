@@ -2,11 +2,8 @@ import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 test.describe('Vertical Scroll', () => {
-  test('Verify Keyboard scroll', async ({
-    page,
-  }) => {
-    const standPath =
-      'stories/components/data-table/docs/examples/virtual-scroll-in-table.tsx';
+  test('Verify Keyboard scroll', async ({ page }) => {
+    const standPath = 'stories/components/data-table/docs/examples/virtual-scroll-in-table.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -20,8 +17,7 @@ test.describe('Vertical Scroll', () => {
   });
 
   test('Verify Mouse scroll', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/docs/examples/virtual-scroll-in-table.tsx';
+    const standPath = 'stories/components/data-table/docs/examples/virtual-scroll-in-table.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
@@ -30,13 +26,11 @@ test.describe('Vertical Scroll', () => {
     await dataTable.hover();
     await page.mouse.wheel(0, 1000);
     await page.waitForTimeout(500);
-   
+
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
   });
 
-  test('Verify Keyboard scroll when cells have different height', async ({
-    page,
-  }) => {
+  test('Verify Keyboard scroll when cells have different height', async ({ page }) => {
     const standPath =
       'stories/components/data-table/tests/examples/virtualization/header-content.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -53,7 +47,7 @@ test.describe('Vertical Scroll', () => {
 
   test('Verify Mouse scroll when cells have different height', async ({ page }) => {
     const standPath =
-    'stories/components/data-table/tests/examples/virtualization/header-content.tsx';
+      'stories/components/data-table/tests/examples/virtualization/header-content.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
@@ -63,6 +57,4 @@ test.describe('Vertical Scroll', () => {
     await page.waitForTimeout(1000);
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
   });
-
 });
-
