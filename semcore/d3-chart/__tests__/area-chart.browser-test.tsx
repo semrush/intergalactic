@@ -8,7 +8,7 @@ test.describe('Area chart', () => {
     await page.setContent(htmlContent);
 
     const chart = page.locator('svg[data-ui-name="Plot"]').first();
-        await expect(chart).toBeVisible();
+    await expect(chart).toBeVisible();
 
     await test.step('Verify renders correctly', async () => {
       //add snapshot
@@ -35,7 +35,7 @@ test.describe('Area chart', () => {
     await page.setContent(htmlContent);
 
     const chart = page.locator('svg[data-ui-name="Plot"]').first();
-        await expect(chart).toBeVisible();
+    await expect(chart).toBeVisible();
 
     await test.step('Verify renders correctly', async () => {
       //add snapshot
@@ -70,7 +70,6 @@ test.describe('Area chart', () => {
     await test.step('Verify cases render correctly', async () => {
       //add snapshot
     });
-
   });
 
   test('Verify area chart with custom line rendres', async ({ page }) => {
@@ -84,22 +83,18 @@ test.describe('Area chart', () => {
     await test.step('Verify renders', async () => {
       //snapshot
     });
-
   });
 
   test('Verify area chart looks good with interpolation function', async ({ page }) => {
-    const standPath =
-      'stories/components/d3-chart/docs/examples/area-chart/interpolation.tsx';
+    const standPath = 'stories/components/d3-chart/docs/examples/area-chart/interpolation.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
     const chart = page.locator('svg[data-ui-name="Plot"]').first();
     await expect(chart).toBeVisible();
 
-      //snapshot
-  
+    //snapshot
   });
-
 
   test('Verify bar legend and pattern fill', async ({ page }) => {
     const standPath =
@@ -127,7 +122,7 @@ test.describe('Area chart', () => {
       //snapshot
       await page.keyboard.press('Tab');
       await page.keyboard.press('Space');
-     
+
       //snapshot
     });
   });
