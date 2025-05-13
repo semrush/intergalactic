@@ -8,7 +8,7 @@ import AccordionWithFixedColumnExample from './examples/accordion-tests/accordio
 import TabeInTableFixedColumnExample from './examples/accordion-tests/table-in-table-with-fixed-column';
 import HorizontalScrollExample from './examples/accordion-tests/accordion-with-horizontal-scroll';
 import TabeInTableSortableExample from './examples/accordion-tests/table-in-table-with-sorting';
-import ColoredAccordionExample from './examples/accordion-tests/table-in-table-with-sorting';
+import ColoredAccordionExample from './examples/accordion-tests/colored-accordion';
 
 const meta: Meta<typeof DataTable> = {
   title: 'Components/DataTable/Tests/AccordionTests',
