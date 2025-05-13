@@ -80,6 +80,7 @@ class BodyRoot<D extends DataTableData> extends Component<
       loading,
       hasGroups,
       scrollAreaRef,
+      uid,
       onBackFromAccordion,
       rowProps,
     } = this.asProps;
@@ -128,6 +129,7 @@ class BodyRoot<D extends DataTableData> extends Component<
       onExpandRow,
       inert: loading ? '' : undefined,
       scrollAreaRef,
+      uid,
     };
   }
 
@@ -187,14 +189,18 @@ class BodyRoot<D extends DataTableData> extends Component<
     }
 
     if ((props.columnIndex === 0 && props.row[ACCORDION]) || value?.[ACCORDION]) {
+      const expanded = expandedRows?.has(props.row[UNIQ_ROW_KEY]);
       extraProps.children = sstyled(styles)(
         <>
           <SAccordionToggle
             aria-label={getI18nText('DataTable.Cell.AccordionToggle.expand:aria-label')}
             // @ts-ignore
-            expanded={expandedRows?.has(props.row[UNIQ_ROW_KEY])}
+            expanded={expanded}
             onClick={() => this.handleExpandRow(props.row, props.rowIndex)}
             color={'--intergalactic-icon-primary-neutral'}
+            aria-expanded={expanded}
+            aria-describedby={props.id}
+            aria-controls={props.accordionId}
           >
             <SAccordionToggle.Addon tag={ChevronRightM} />
           </SAccordionToggle>

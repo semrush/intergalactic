@@ -3,6 +3,8 @@ import { DTUse } from '../DataTable/DataTable.types';
 import { DTColumn } from '../Head/Column.types';
 
 export type DataTableCellProps = {
+  id: string;
+  accordionId: string;
   row: DTRow;
   rowIndex: number;
   column: DTColumn;
