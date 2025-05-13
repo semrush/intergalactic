@@ -21,7 +21,7 @@ export default function App() {
 
   return (
     <Box w={800}>
-      <DataTable data={data} aria-label={'Table with fixed columns'}
+      <DataTable data={data} aria-label={'Table with fixed columns'} w={'700px'}
         columns={[
             {name: 'col_1', children: 'Column 1', fixed: 'left', borders: 'both', gtcWidth: '100px'},
             {name: 'col_2', children: 'Column 2', borders: 'both', gtcWidth: '100px'},
