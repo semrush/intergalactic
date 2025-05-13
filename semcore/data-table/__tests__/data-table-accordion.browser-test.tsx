@@ -433,7 +433,6 @@ test.describe('Accordion in table', () => {
     });
   });
 
-
   test('Verify keyboard navigation when table component inside table', async ({ page }) => {
     const standPath =
       'stories/components/data-table/tests/examples/accordion-tests/table-in-table-with-sorting.tsx';
@@ -446,7 +445,6 @@ test.describe('Accordion in table', () => {
     const rowCellWithAcc = rowWithAcc.locator('[data-ui-name="Body.Cell"][aria-colindex="4"]');
     const sortIconKeywordAcc = rowCellWithAcc.locator('[data-ui-name="ButtonLink"]');
 
-
     await test.step('Verify table component expands by activating the toggle', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('ArrowDown');
@@ -455,10 +453,9 @@ test.describe('Accordion in table', () => {
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('ArrowRight');
-     
+
       await expect(sortIconKeywordAcc).toBeFocused();
       await page.keyboard.press('Enter');
-     
     });
 
     await test.step('Verify rowcount when accordion expanded', async () => {
@@ -479,7 +476,6 @@ test.describe('Accordion in table', () => {
       await expect(cell).toHaveAttribute('aria-setsize', '1');
       await expect(cell).toHaveAttribute('aria-posinset', '1');
       await expect(datatableChild).toBeVisible();
-       
     });
 
     await test.step('Verify child table keyboard navigation when child expanded', async () => {
@@ -516,7 +512,6 @@ test.describe('Accordion in table', () => {
 
       await page.keyboard.press('Escape');
       await page.waitForTimeout(200);
-      
     });
 
     await test.step('Verify keyboard navigation when child table collapsed', async () => {
@@ -543,20 +538,17 @@ test.describe('Accordion in table', () => {
     const cell = collapse.locator('[data-ui-name="Body.Cell"][aria-level="2"]');
     const datatableChild = cell.locator('[data-ui-name="DataTable"]');
 
-
     await test.step('Verify table component expands by click on toggle', async () => {
-      await sortIconKeywordAcc.click()
-     
+      await sortIconKeywordAcc.click();
+
       await expect(table.first()).toHaveAttribute('aria-rowcount', '8');
       await expect(rowCellWithAcc.first()).toHaveAttribute('aria-expanded', 'true');
       await expect(datatableChild).toBeVisible();
     });
 
-
-
     await test.step('Verify table component collpases by click on toggle', async () => {
-      await sortIconKeywordAcc.click()
-     
+      await sortIconKeywordAcc.click();
+
       await expect(table.first()).toHaveAttribute('aria-rowcount', '7');
       await expect(rowCellWithAcc.first()).toHaveAttribute('aria-expanded', 'false');
       await expect(datatableChild).not.toBeVisible();
