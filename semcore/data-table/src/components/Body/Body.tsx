@@ -74,6 +74,7 @@ class BodyRoot<D extends DataTableData> extends Component<
       loading,
       hasGroups,
       scrollAreaRef,
+      onBackFromAccordion,
     } = this.asProps;
     const row = props.row;
     const index = props.offset + i;
@@ -113,6 +114,7 @@ class BodyRoot<D extends DataTableData> extends Component<
       ariaRowIndex,
       gridRowIndex,
       rows: this.rows,
+      onBackFromAccordion,
       row,
       expandedRows,
       onExpandRow,

@@ -41,4 +41,5 @@ export type BodyPropsInner<D extends DataTableData> = {
   hasGroups: boolean;
   uid: string;
   renderCell?: (props: CellRenderProps) => React.ReactNode | Record<string, any>;
+  onBackFromAccordion: (colIndex: number) => void;
 };
