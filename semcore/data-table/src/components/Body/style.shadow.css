@@ -239,3 +239,7 @@ SSpinContainer {
 SSpinContainer[headerHeight] {
   top: var(--headerHeight);
 }
+
+SEmptyData {
+  grid-column: 1 / -1;
+}

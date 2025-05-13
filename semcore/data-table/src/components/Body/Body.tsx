@@ -216,6 +216,7 @@ class BodyRoot<D extends DataTableData> extends Component<
     const SBody = Root;
     const SRowGroup = Box;
     const SSpinContainer = Box;
+    const SEmptyData = Box;
     const {
       styles,
       loading,
@@ -225,6 +226,7 @@ class BodyRoot<D extends DataTableData> extends Component<
       scrollDirection,
       tableContainerRef,
       scrollTop,
+      renderEmptyData,
     } = this.asProps;
 
     let rowsToRender = this.rows;
@@ -325,6 +327,7 @@ class BodyRoot<D extends DataTableData> extends Component<
 
     return sstyled(styles)(
       <SBody render={Box} __excludeProps={['data']}>
+        {rowsToRender.length === 0 && <SEmptyData>{renderEmptyData()}</SEmptyData>}
         {rowsToRender.map((row, index) => {
           let rowMarginTop: number | undefined = undefined;
 

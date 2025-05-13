@@ -26,7 +26,6 @@ const BaseTokens = ({ tokens }) => {
 
   React.useEffect(() => {
     filteredTokensTimer = setTimeout(() => {
-      cache.clearAll();
       setFilteredTokensToTable(filteredTokens);
     }, 300);
 
@@ -67,75 +66,80 @@ const BaseTokensTable = React.memo(({ filteredTokens }) => {
   const valueHeaderRef = React.useRef(null);
   const descriptionHeaderRef = React.useRef(null);
 
-  return (
-    <DataTable data={filteredTokens} className={styles.tokensTable}>
-      <DataTable.Head>
-        <DataTable.Head.Column
-          name='name'
-          children='Token name'
-          ref={nameHeaderRef}
-          w={0.2}
-          wMax={140}
-        />
-        <DataTable.Head.Column
-          name='value'
-          children='Value'
-          ref={valueHeaderRef}
-          w={0.2}
-          wMax={140}
-        />
-        <DataTable.Head.Column
-          name='description'
-          children='Description'
-          ref={descriptionHeaderRef}
-          w={0.6}
-        />
-      </DataTable.Head>
-      {filteredTokens.length ? (
-        <DataTable.Body
-          renderCell={(props) => {
-            if (props.dataKey === 'name') {
-              return (
-                <Copy
-                  copiedToast='Copied'
-                  toCopy={props.row[props.dataKey]}
-                  title={'Copy to clipboard'}
-                  trigger='click'
-                  className={styles.tokenNameWrapper}
-                >
-                  <button type='button' className={styles.tokenName} data-token-type={'baseToken'}>
-                    {props.row[props.dataKey]}
-                  </button>
-                </Copy>
-              );
-            } else if (props.dataKey === 'value') {
-              return (
-                <Copy
-                  copiedToast='Copied'
-                  toCopy={props.row[props.dataKey]}
-                  title={'Copy to clipboard'}
-                  trigger='click'
-                  className={styles.tokenValueWrapper}
-                >
-                  <button type='button' className={styles.tokenValue} data-token-type={'baseToken'}>
-                    <ColorPreview color={props.row[props.dataKey]} />
-                    {props.row[props.name]}
-                  </button>
-                </Copy>
-              );
-            }
+  const columns = [
+    {
+      name: 'name',
+      children: 'Token name',
+      ref: nameHeaderRef,
+      gtcWidth: 'minmax(20%, 140px)',
+    },
+    {
+      name: 'value',
+      children: 'Value',
+      ref: valueHeaderRef,
+      gtcWidth: 'minmax(20%, 140px)',
+    },
+    {
+      name: 'description',
+      children: 'Description',
+      ref: descriptionHeaderRef,
+      gtcWidth: '60%',
+    },
+  ];
 
-            return props.defaultRender();
-          }}
-        />
-      ) : (
-        <NoData
-          py={10}
-          type={'nothing-found'}
-          description={'Try searching by color, for example, "blue" or #c4e5fe.'}
-        />
-      )}
-    </DataTable>
+  return (
+    <DataTable
+      data={filteredTokens}
+      className={styles.tokensTable}
+      w={'100%'}
+      hMax={400}
+      columns={columns}
+      headerProps={{ sticky: true }}
+      virtualScroll
+      renderEmpryData={() => {
+        return (
+          <NoData
+            py={10}
+            type={'nothing-found'}
+            description={'Try searching by color, for example, "blue" or #c4e5fe.'}
+          />
+        );
+      }}
+      renderCell={(props) => {
+        if (props.dataKey === 'name') {
+          return (
+            <Copy
+              copiedToast='Copied'
+              toCopy={props.row[props.dataKey]}
+              title={'Copy to clipboard'}
+              trigger='click'
+              className={styles.tokenNameWrapper}
+            >
+              <button type='button' className={styles.tokenName} data-token-type={'baseToken'}>
+                {props.row[props.dataKey]}
+              </button>
+            </Copy>
+          );
+        } else if (props.dataKey === 'value') {
+          return (
+            <Copy
+              copiedToast='Copied'
+              toCopy={props.row[props.dataKey]}
+              title={'Copy to clipboard'}
+              trigger='click'
+              className={styles.tokenValueWrapper}
+            >
+              <button type='button' className={styles.tokenValue} data-token-type={'baseToken'}>
+                <ColorPreview color={props.row[props.dataKey]} />
+                {props.row[props.name]}
+              </button>
+            </Copy>
+          );
+        }
+
+        return props.defaultRender();
+      }}
+    />
   );
 });
 

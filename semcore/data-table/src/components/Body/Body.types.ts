@@ -44,4 +44,5 @@ export type BodyPropsInner<D extends DataTableData> = {
   renderCell?: (props: CellRenderProps) => React.ReactNode | Record<string, any>;
   onBackFromAccordion: (colIndex: number) => void;
   stickyHeader?: boolean;
+  renderEmptyData: () => React.ReactNode;
 };

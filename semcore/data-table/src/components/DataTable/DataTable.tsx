@@ -32,6 +32,7 @@ import scrollStyles from '../../style/scroll-shadows.shadow.css';
 import { DataTableGroupProps } from '../Head/Group.type';
 import { hasParent } from '@semcore/core/lib/utils/hasParent';
 import trottle from '@semcore/core/lib/utils/rafTrottle';
+import { NoData } from '@semcore/widget-empty';
 
 export const ACCORDION = Symbol('accordion');
 export const ROW_GROUP = Symbol('ROW_GROUP');
@@ -49,7 +50,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
   {},
   {},
   typeof DataTableRoot.enhance,
-  { use: DTRow; expandedRows: Set<string> }
+  { use: DTRow; expandedRows: Set<string>; renderEmptyData: () => React.ReactNode }
 > {
   static displayName = 'DataTable';
   static style = style;
@@ -61,6 +62,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
     defaultGridTemplateColumnWidth: 'auto',
     defaultExpandedRows: new Set<string>(),
     h: 'fit-content',
+    renderEmptyData: () => <NoData py={10} type={'nothing-found'} description={''} />,
   };
 
   private columns: DTColumn[] = [];
@@ -187,6 +189,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
       rowProps,
       renderCell,
       headerProps,
+      renderEmptyData,
     } = this.asProps;
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
     return {
@@ -214,6 +217,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
       uid,
       rowProps,
       renderCell,
+      renderEmptyData,
     };
   }
 
