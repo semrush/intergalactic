@@ -380,6 +380,4 @@ test.describe('Horizontal Scroll', () => {
     const nowNumber2 = await checkScrollNowIncreased(scrollBar2);
     expect(nowNumber2).toBeLessThanOrEqual(initialValue2);
   });
-
-
 });
