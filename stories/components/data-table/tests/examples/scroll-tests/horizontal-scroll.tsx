@@ -56,13 +56,11 @@ const Demo = () => {
           ]}
       ]}
     />
-      
       <DataTable
       data={data}
       aria-label={'Fixed multi level header with 1 scroll'} wMax={200}
 
       columns={[
-       
         {
           children: 'Organic Sessions',
           borders: 'both',

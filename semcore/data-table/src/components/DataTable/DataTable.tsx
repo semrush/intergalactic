@@ -60,6 +60,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
     use: 'primary',
     defaultGridTemplateColumnWidth: 'auto',
     defaultExpandedRows: new Set<string>(),
+    h: 'fit-content',
   };
 
   private columns: DTColumn[] = [];
@@ -67,6 +68,8 @@ class DataTableRoot<D extends DataTableData> extends Component<
   private hasGroups = false;
 
   private focusedCell: [RowIndex, ColIndex] = [-1, -1];
+
+  private scrollAreaRef = React.createRef<HTMLDivElement>();
 
   private tableContainerRef = React.createRef<HTMLDivElement>();
   private tableRef = React.createRef<HTMLDivElement>();
@@ -202,6 +205,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
       scrollDirection: this.state.scrollDirection,
       tableContainerRef: this.tableContainerRef,
       tableRef: this.tableRef,
+      scrollAreaRef: this.scrollAreaRef,
       onBackFromAccordion: this.handleBackFromAccordion,
       virtualScroll,
       hasGroups: this.hasGroups,
@@ -327,7 +331,8 @@ class DataTableRoot<D extends DataTableData> extends Component<
         // left/right
         if (
           currentCell.dataset.groupedBy === 'colgroup' ||
-          Number(currentCell.parentElement?.getAttribute('aria-rowindex')) === 2
+          Number(currentCell.parentElement?.getAttribute('aria-rowindex')) === 2 ||
+          Array.from(row?.children ?? []).indexOf(currentCell) > 0
         ) {
           colI = direction === 'left' ? colI - 1 : colI + 1;
         } else {
@@ -345,6 +350,9 @@ class DataTableRoot<D extends DataTableData> extends Component<
         }
       }
       this.changeFocusCell(rowI, colI, direction);
+    } else if (cell === null && currentHeaderCell instanceof HTMLElement && direction === 'down') {
+      const colI = colIndex - 1;
+      this.changeFocusCell(rowIndex, colI, direction);
     } else if (
       row === null &&
       this.focusedCell[0] === 0 &&
@@ -504,8 +512,8 @@ class DataTableRoot<D extends DataTableData> extends Component<
     }
 
     let scrollDirection: 'both' | 'horizontal' | 'vertical' | undefined = undefined;
-    const hasWidthSettings = Boolean(w ?? wMax ?? wMin);
-    const hasHeightSettings = Boolean(h ?? hMax ?? hMin);
+    const hasWidthSettings = (Boolean(w) && w !== '100%') || Boolean(wMax);
+    const hasHeightSettings = (Boolean(h) && h !== 'fit-content') || Boolean(hMax);
 
     if (hasWidthSettings && !hasHeightSettings) {
       scrollDirection = 'horizontal';
@@ -527,6 +535,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
         hMax={hMax}
         hMin={hMin}
         shadow={true}
+        ref={this.scrollAreaRef}
         container={this.tableContainerRef}
         styles={scrollStyles}
         onScroll={this.handleScroll}
@@ -572,11 +581,15 @@ class DataTableRoot<D extends DataTableData> extends Component<
         </ScrollArea.Container>
 
         {headerPropsToCheck?.withScrollBar && topOffset && (
-          <ScrollArea.Bar orientation='horizontal' top={topOffset - SCROLL_BAR_HEIGHT} zIndex={3} />
+          <ScrollArea.Bar
+            orientation='horizontal'
+            top={topOffset - SCROLL_BAR_HEIGHT}
+            zIndex={10}
+          />
         )}
 
-        <ScrollArea.Bar orientation='horizontal' zIndex={2} />
-        <ScrollArea.Bar orientation='vertical' zIndex={2} />
+        <ScrollArea.Bar orientation='horizontal' zIndex={10} />
+        <ScrollArea.Bar orientation='vertical' zIndex={10} />
       </ScrollArea>,
     );
   }

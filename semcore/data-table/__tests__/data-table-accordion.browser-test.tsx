@@ -19,6 +19,7 @@ test.describe('Accordion in table', () => {
     await page.keyboard.press('Enter');
     await page.waitForTimeout(100);
     await expect(plot).toHaveCount(1);
+
     await page.keyboard.press('Enter');
     await page.waitForTimeout(100);
     await expect(plot).toHaveCount(0);
@@ -431,6 +432,21 @@ test.describe('Accordion in table', () => {
 
       await expect(page).toHaveScreenshot();
     });
+  });
+
+  test('Verify accordion with fixed column', async ({ page }) => {
+    const standPath =
+      'stories/components/data-table/tests/examples/accordion-tests/accordion-with-fixed-column.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+    await page.keyboard.press('ArrowRight');
+    await page.keyboard.press('ArrowRight');
+    await page.keyboard.press('ArrowRight');
+    await page.waitForTimeout(100);
+    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
   });
 
   test('Verify keyboard navigation when table component inside table', async ({ page }) => {

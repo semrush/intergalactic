@@ -73,6 +73,7 @@ class BodyRoot<D extends DataTableData> extends Component<
       onExpandRow,
       loading,
       hasGroups,
+      scrollAreaRef,
       onBackFromAccordion,
     } = this.asProps;
     const row = props.row;
@@ -118,6 +119,7 @@ class BodyRoot<D extends DataTableData> extends Component<
       expandedRows,
       onExpandRow,
       inert: loading ? '' : undefined,
+      scrollAreaRef,
     };
   }
 
