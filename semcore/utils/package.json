@@ -156,6 +156,11 @@
       "import": "./lib/createUUID.mjs",
       "types": "./lib/createUUID.d.ts"
     },
+    "./lib/СSSinJS": {
+      "require": "./lib/CSSinJS.js",
+      "import": "./lib/CSSinJS.mjs",
+      "types": "./lib/CSSinJS.d.ts"
+    },
     "./lib/cssToIntDefault": {
       "require": "./lib/cssToIntDefault.js",
       "import": "./lib/cssToIntDefault.mjs",

@@ -109,7 +109,7 @@ async function loader(source) {
         );
         const [requirePath] = filepath.split('node_modules/').slice(-1);
         styleImports.push(requirePath);
-        return resourcePath.includes('@semcore/flags') ? 'undefined, ' : '(undefined, '; // flags has the old build system
+        return resourcePath.includes('@semcore/flags') || !es6Mode ? 'undefined, ' : '(undefined, '; // flags and cjs has the old build system
       },
     )
     .replace(/\/\*!__reshadow-styles__:"(.*?)"\*\//g, (match, dep) => {
