@@ -40,5 +40,7 @@ export type RowPropsInner = {
 
   inert?: '';
 
+  onBackFromAccordion: (colIndex: number) => void;
+
   scrollAreaRef: React.RefObject<HTMLDivElement>;
 };
