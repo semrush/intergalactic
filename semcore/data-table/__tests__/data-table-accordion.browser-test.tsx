@@ -367,14 +367,20 @@ test.describe('Accordion in table', () => {
 
     await test.step('Verify rowcount when accordion not expanded', async () => {
       await expect(table).toHaveAttribute('aria-rowcount', '7');
-      await expect(firstrowCell.locator('[data-ui-name="ButtonLink"]')).toHaveAttribute('aria-expanded', 'false');
+      await expect(firstrowCell.locator('[data-ui-name="ButtonLink"]')).toHaveAttribute(
+        'aria-expanded',
+        'false',
+      );
     });
 
     await test.step('Verify table in table expands', async () => {
       await page.keyboard.press('Enter');
       await expect(elementsIncell.first()).toBeFocused();
       await expect(table).toHaveAttribute('aria-rowcount', '10');
-      await expect(firstrowCell.locator('[data-ui-name="ButtonLink"]')).toHaveAttribute('aria-expanded', 'true');
+      await expect(firstrowCell.locator('[data-ui-name="ButtonLink"]')).toHaveAttribute(
+        'aria-expanded',
+        'true',
+      );
     });
 
     await test.step('Verify focus table in table cell and back by arrows', async () => {
@@ -384,7 +390,10 @@ test.describe('Accordion in table', () => {
       await expect(cell).toBeFocused();
       await page.keyboard.press('ArrowUp');
       await expect(table).toHaveAttribute('aria-rowcount', '10');
-      await expect(firstrowCell.locator('[data-ui-name="ButtonLink"]')).toHaveAttribute('aria-expanded', 'true');
+      await expect(firstrowCell.locator('[data-ui-name="ButtonLink"]')).toHaveAttribute(
+        'aria-expanded',
+        'true',
+      );
     });
 
     await test.step('Verify focus on the next paren row when child table finished', async () => {
@@ -397,7 +406,10 @@ test.describe('Accordion in table', () => {
       const cell2 = row.locator('[data-ui-name="Body.Cell"][aria-colindex="2"]');
       await expect(cell2).toBeFocused();
       await expect(table).toHaveAttribute('aria-rowcount', '10');
-      await expect(firstrowCell.locator('[data-ui-name="ButtonLink"]')).toHaveAttribute('aria-expanded', 'true');
+      await expect(firstrowCell.locator('[data-ui-name="ButtonLink"]')).toHaveAttribute(
+        'aria-expanded',
+        'true',
+      );
       await page.keyboard.press('Enter');
       await expect(table).toHaveAttribute('aria-rowcount', '10');
       await page.keyboard.press('ArrowLeft');
@@ -406,8 +418,14 @@ test.describe('Accordion in table', () => {
       await page.keyboard.press('Enter');
       const cell1 = row.locator('[data-ui-name="Body.Cell"][aria-colindex="1"]');
       await expect(table).toHaveAttribute('aria-rowcount', '13');
-      await expect(firstrowCell.locator('[data-ui-name="ButtonLink"]')).toHaveAttribute('aria-expanded', 'true');
-      await expect(cell1.locator('[data-ui-name="ButtonLink"]')).toHaveAttribute('aria-expanded', 'true');
+      await expect(firstrowCell.locator('[data-ui-name="ButtonLink"]')).toHaveAttribute(
+        'aria-expanded',
+        'true',
+      );
+      await expect(cell1.locator('[data-ui-name="ButtonLink"]')).toHaveAttribute(
+        'aria-expanded',
+        'true',
+      );
     });
 
     await test.step('Verify expanded cell dont collapse when changing place by sorting', async () => {
@@ -424,11 +442,17 @@ test.describe('Accordion in table', () => {
 
       const newRow1 = page.locator('[role="row"][aria-rowindex="7"]');
       const newCell = newRow1.locator('[data-ui-name="Body.Cell"][aria-colindex="1"]');
-      await expect(newCell.locator('[data-ui-name="ButtonLink"]')).toHaveAttribute('aria-expanded', 'true');
+      await expect(newCell.locator('[data-ui-name="ButtonLink"]')).toHaveAttribute(
+        'aria-expanded',
+        'true',
+      );
 
       const newRow2 = page.locator('[role="row"][aria-rowindex="11"]');
       const newCell2 = newRow2.locator('[data-ui-name="Body.Cell"][aria-colindex="1"]');
-      await expect(newCell2.locator('[data-ui-name="ButtonLink"]')).toHaveAttribute('aria-expanded', 'true');
+      await expect(newCell2.locator('[data-ui-name="ButtonLink"]')).toHaveAttribute(
+        'aria-expanded',
+        'true',
+      );
 
       await expect(page).toHaveScreenshot();
     });
