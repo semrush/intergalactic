@@ -57,4 +57,72 @@ test.describe('Vertical Scroll', () => {
     await page.waitForTimeout(1000);
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
   });
+
+  test('Verify keyboard interactions with accordion and chart inside', async ({ page }) => {
+    const standPath = 'stories/components/data-table/tests/examples/virtualization/accordion-inside-table.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    const plot = await page.locator('[data-ui-name="Plot"]');
+    await page.setContent(htmlContent);
+    const firstArrow = await page.locator('[data-ui-name="ButtonLink"]').first();
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+    await page.waitForTimeout(100);
+    await expect(plot).toHaveCount(1);
+
+    await page.keyboard.press('Enter');
+    await page.waitForTimeout(100);
+    await expect(plot).toHaveCount(0);
+
+    await expect(firstArrow).toBeFocused();
+    await page.keyboard.press('ArrowDown');
+    await page.keyboard.press('Enter');
+    await expect(plot).toHaveCount(0);
+    await page.keyboard.press('ArrowRight');
+    await page.keyboard.press('ArrowRight');
+    await page.keyboard.press('ArrowRight');
+    const secondArrow = await page.locator('[data-ui-name="ButtonLink"]').nth(1);
+
+    await expect(secondArrow).toBeFocused();
+
+    await page.keyboard.press('Enter');
+    await page.waitForTimeout(100);
+    await expect(plot).toBeVisible();
+    await expect(plot).toHaveCount(1);
+
+    await page.keyboard.press('Enter');
+    await page.waitForTimeout(100);
+
+    await expect(plot).not.toBeVisible();
+    await expect(plot).toHaveCount(0);
+
+    await page.keyboard.press('Enter');
+    await page.waitForTimeout(100);
+
+    await page.keyboard.press('ArrowDown');
+
+    await page.keyboard.press('ArrowDown');
+    const thirdArrow = await page.locator('[data-ui-name="ButtonLink"]').nth(2);
+    await expect(thirdArrow).toBeFocused();
+  });
+
+  test('Verify mouse interactions with accordion and chart inside', async ({ page }) => {
+    const standPath = 'stories/components/data-table/tests/examples/virtualization/accordion-inside-table.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+    const firstArrow = await page.locator('[data-ui-name="ButtonLink"]').first();
+
+    await firstArrow.click();
+    await page.keyboard.press('ArrowDown');
+    const plot = await page.locator('[data-ui-name="Plot"]');
+    await expect(plot).toHaveCount(1);
+    await firstArrow.click();
+    await expect(plot).toHaveCount(0);
+    await firstArrow.click();
+
+    const thirdArrow = await page.locator('[data-ui-name="ButtonLink"]').nth(2);
+    await thirdArrow.click();
+    await expect(plot).toHaveCount(2);
+  });
 });

@@ -6,6 +6,7 @@ import { DataTable } from '@semcore/data-table';
 import InteractiveHeaderExample from './examples/virtualization/table-with-1tf-and diff-elements';
 import HeaderContentExample from './examples/virtualization/header-content';
 import MultiLevelSortingExample from './examples/virtualization/multi-level-sorting';
+import TableInTableExample from './examples/virtualization/table-in-table-with-fixed-column';
 
 import HorizontalScrollWithoutFixedExample from './examples/virtualization/horizontal-scroll';
 import FixedColumnDiffWidthExample from './examples/virtualization/fixed-column-with-d-ff-width';
@@ -40,6 +41,11 @@ export const SecondaryHeader: Story = {
 export const AccordionWithChart: Story = {
   render: AccordionWithChartExample,
 };
+
+export const TableInTable: Story = {
+  render: TableInTableExample,
+};
+
 
 export const Perform: Story = {
   render: PerformExample,
