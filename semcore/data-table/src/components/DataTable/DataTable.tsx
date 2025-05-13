@@ -289,7 +289,9 @@ class DataTableRoot<D extends DataTableData> extends Component<
     const cell = row?.querySelector(
       `:scope > [role=gridcell][aria-colindex="${
         newCol + 1
-      }"], :scope > [role=columnheader][aria-colindex="${newCol + 1}"]`,
+      }"], :scope > [role=columnheader][aria-colindex="${
+        newCol + 1
+      }"], :scope > div > [role=columnheader][aria-colindex="${newCol + 1}"]`,
     );
 
     if (cell instanceof HTMLElement && currentCell !== cell) {
