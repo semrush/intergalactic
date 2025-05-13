@@ -1,3 +1,13 @@
+## [15.131.0] - 2025-05-13
+
+### @semcore/format-text
+
+- **Added** Esm-build by vite.
+
+### @semcore/utils
+
+- **Added** `CSSinJS` to the exports.
+
 ## [15.130.0] - 2025-05-09
 
 ### @semcore/icon

@@ -1,7 +1,7 @@
 {
   "name": "@semcore/flags",
   "description": "Semrush Flags Component",
-  "version": "4.40.3",
+  "version": "4.40.4",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -13,8 +13,8 @@
     "upload-static": "gcs-upload lib/sprites/*"
   },
   "dependencies": {
-    "@semcore/flex-box": "5.41.3",
-    "@semcore/utils": "4.48.4",
+    "@semcore/flex-box": "5.41.4",
+    "@semcore/utils": "4.48.5",
     "classnames": "2.2.6"
   },
   "peerDependencies": {

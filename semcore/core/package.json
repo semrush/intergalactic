@@ -1,7 +1,7 @@
 {
   "name": "@semcore/core",
   "description": "Semrush Core Component",
-  "version": "2.39.3",
+  "version": "2.39.4",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -17,7 +17,7 @@
     "types": "./lib/types/index.d.ts"
   },
   "dependencies": {
-    "@semcore/utils": "4.48.4"
+    "@semcore/utils": "4.48.5"
   },
   "peerDependencies": {
     "react": "16.8 - 18",
