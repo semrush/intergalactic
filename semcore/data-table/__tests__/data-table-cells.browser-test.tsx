@@ -238,4 +238,27 @@ test.describe('Cells', () => {
     await page.keyboard.press('ArrowDown');
     await expect(page.locator('[data-ui-name="Body.Cell"]')).toBeFocused();
   });
+
+  test('Verify colored cells', async ({ page, browserName }) => {
+    const standPath =
+      'stories/components/data-table/advanced/examples/row_cell_states.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('ArrowRight');
+    await page.keyboard.press('ArrowRight');
+    await page.keyboard.press('ArrowDown');
+    await expect(page).toHaveScreenshot();
+
+    if (browserName !== 'chromium') return;
+   const row = page.locator('[data-ui-name="Body.Row"][aria-rowindex="4"]');
+   const cell = row.locator('[aria-colindex="1"]');
+   const box = await cell.boundingBox();
+
+   if (box) {
+     await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+   }
+   await expect(page).toHaveScreenshot();
+
+  });
 });
