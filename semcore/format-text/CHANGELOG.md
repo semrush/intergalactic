@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.42.0] - 2025-05-13
+
+### Added
+
+- Esm-build by vite.
+
 ## [4.41.3] - 2025-05-09
 
 ### Changed
