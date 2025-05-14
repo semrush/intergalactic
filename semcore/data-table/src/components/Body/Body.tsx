@@ -9,47 +9,23 @@ import { Cell } from './Cell';
 import { DataTableRowProps, DTRow, RowPropsInner } from './Row.types';
 import { DataTableCellProps } from './Cell.types';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
-import { ACCORDION, ROW_GROUP, UNIQ_ROW_KEY } from '../DataTable/DataTable';
+import { ACCORDION, ROW_INDEX, UNIQ_ROW_KEY } from '../DataTable/DataTable';
 import ChevronRightM from '@semcore/icon/ChevronRight/m';
 import { ButtonLink } from '@semcore/button';
-import { DataRowItem, DataTableData, DTValue } from '../DataTable/DataTable.types';
+import { DataTableData, DTValue } from '../DataTable/DataTable.types';
 import Spin from '@semcore/spin';
-import { DTColumn } from '../Head/Column.types';
 
 const ROWS_BUFFER = 20;
 const APROX_ROWS_ON_PAGE = 20;
 
-class BodyRoot<D extends DataTableData> extends Component<
-  DataTableBodyProps,
-  {},
-  {},
-  [],
-  BodyPropsInner<D>
-> {
+class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner> {
   static displayName = 'Body';
   static style = style;
-
-  private columnsSplitter = '/';
-  private rows: Array<DTRow | DTRow[]> = [];
 
   rowsHeightMap = new Map<number, [number, number, HTMLElement]>();
 
   indexForDownIterate = 0;
   indexForUpIterate = 0;
-
-  componentDidMount() {
-    this.rows = this.calculateRows();
-
-    this.forceUpdate();
-  }
-
-  componentDidUpdate(prevProps: DataTableBodyProps & BodyPropsInner<D>) {
-    if (prevProps.data !== this.asProps.data) {
-      this.rows = this.calculateRows();
-
-      this.forceUpdate();
-    }
-  }
 
   handleRef = (index: number, row: DTRow) => (node: HTMLElement | null) => {
     if (!this.rowsHeightMap.has(index) && node) {
@@ -69,7 +45,7 @@ class BodyRoot<D extends DataTableData> extends Component<
     this.asProps.onExpandRow(row);
   };
 
-  getRowProps(props: { row: DTRow; offset: number }, i: number): RowPropsInner {
+  getRowProps(props: { row: DTRow }): RowPropsInner {
     const {
       use,
       gridTemplateAreas,
@@ -83,12 +59,14 @@ class BodyRoot<D extends DataTableData> extends Component<
       uid,
       onBackFromAccordion,
       rowProps,
+      rows,
+      flatRows,
+      sideIndents,
       selectedRows,
       onSelectRow,
     } = this.asProps;
     const row = props.row;
-    const index = props.offset + i;
-    const flatRows = this.rows.flat();
+    const index = row[ROW_INDEX];
 
     const rowIndex = Array.from(expandedRows ?? []).reduce((acc, item) => {
       const rowIndex = flatRows.findIndex((row) => row[UNIQ_ROW_KEY] === item);
@@ -125,7 +103,7 @@ class BodyRoot<D extends DataTableData> extends Component<
       rowIndex: index,
       ariaRowIndex,
       gridRowIndex,
-      rows: this.rows,
+      rows,
       onBackFromAccordion,
       row,
       expandedRows,
@@ -134,6 +112,7 @@ class BodyRoot<D extends DataTableData> extends Component<
       onSelectRow,
       inert: loading ? '' : undefined,
       scrollAreaRef,
+      sideIndents,
     };
   }
 
@@ -229,9 +208,13 @@ class BodyRoot<D extends DataTableData> extends Component<
       scrollDirection,
       tableContainerRef,
       scrollTop,
+      renderEmptyData,
+      columns,
+      uid,
+      rows,
     } = this.asProps;
 
-    let rowsToRender = this.rows;
+    let rowsToRender = rows;
     let startIndex = -1;
     let lastIndex = -1;
 
@@ -262,7 +245,7 @@ class BodyRoot<D extends DataTableData> extends Component<
             }
 
             if (startIndex !== -1 && scrollTop + offsetHeight < valueToToCompare) {
-              lastIndex = Math.min(key + nextPrepared, this.rows.length);
+              lastIndex = Math.min(key + nextPrepared, rows.length);
             }
 
             if (startIndex !== -1 && lastIndex !== -1) {
@@ -282,7 +265,7 @@ class BodyRoot<D extends DataTableData> extends Component<
             const valueToToCompare = value[0];
 
             if (lastIndex === -1 && scrollTop + offsetHeight > valueToToCompare) {
-              lastIndex = Math.min(key + nextPrepared, this.rows.length);
+              lastIndex = Math.min(key + nextPrepared, rows.length);
             }
 
             if (lastIndex !== -1 && scrollTop < valueFromToCompare) {
@@ -300,17 +283,17 @@ class BodyRoot<D extends DataTableData> extends Component<
         }
 
         if (startIndex === -1) {
-          startIndex = scrollTop === 0 ? 0 : Math.max(this.rows.length - aproxRowsOnPage, 0);
+          startIndex = scrollTop === 0 ? 0 : Math.max(rows.length - aproxRowsOnPage, 0);
         }
 
         if (lastIndex === -1) {
-          lastIndex = scrollTop === 0 ? aproxRowsOnPage : this.rows.length;
+          lastIndex = scrollTop === 0 ? aproxRowsOnPage : rows.length;
         }
 
         this.indexForDownIterate = startIndex;
         this.indexForUpIterate = lastIndex;
 
-        rowsToRender = this.rows.slice(startIndex, lastIndex);
+        rowsToRender = rows.slice(startIndex, lastIndex);
       } else if ('rowHeight' in virtualScroll) {
         const rowHeight = virtualScroll.rowHeight;
 
@@ -318,29 +301,43 @@ class BodyRoot<D extends DataTableData> extends Component<
 
         const lastIndex = Math.min(
           Math.ceil((scrollTop + offsetHeight) / rowHeight) + nextPrepared,
-          this.rows.length,
+          rows.length,
         );
 
-        rowsToRender = this.rows.slice(startIndex, lastIndex);
+        rowsToRender = rows.slice(startIndex, lastIndex);
       }
     }
 
     startIndex = startIndex === -1 ? 0 : startIndex;
+    const rowMarginTop = this.rowsHeightMap.get(startIndex - 1)?.[1];
+
+    let emptyRow: DTRow | null = null;
+
+    if (rowsToRender.length === 0) {
+      emptyRow = {
+        [UNIQ_ROW_KEY]: `${uid}_empty_data`,
+        [ROW_INDEX]: 0,
+        [columns[0].name]: new MergedColumnsCell(renderEmptyData(), {
+          dataKey: columns[0].name,
+          size: columns.length,
+        }),
+      };
+    }
 
     return sstyled(styles)(
       <SBody render={Box} __excludeProps={['data']}>
+        {emptyRow && <Body.Row row={emptyRow} offset={0} />}
+        {typeof virtualScroll === 'boolean' && rowMarginTop && <Box h={rowMarginTop} />}
         {rowsToRender.map((row, index) => {
-          let rowMarginTop: number | undefined = undefined;
-
-          if (index === 0 && typeof virtualScroll === 'boolean') {
-            rowMarginTop = this.rowsHeightMap.get(startIndex - 1)?.[1];
-          }
-
           if (Array.isArray(row)) {
             return sstyled(styles)(
-              <SRowGroup role={'rowgroup'} key={index}>
+              <SRowGroup
+                role={'rowgroup'}
+                key={`gg_${row[0][UNIQ_ROW_KEY]}`}
+                ref={this.handleRef(startIndex + index, row[0])}
+              >
                 {row.map((item, i) => {
-                  return <Body.Row key={item[UNIQ_ROW_KEY]} row={item} offset={startIndex} />;
+                  return <Body.Row key={item[UNIQ_ROW_KEY]} row={item} />;
                 })}
               </SRowGroup>,
             );
@@ -349,9 +346,7 @@ class BodyRoot<D extends DataTableData> extends Component<
             <Body.Row
               key={row[UNIQ_ROW_KEY]}
               row={row}
-              offset={startIndex}
               ref={this.handleRef(startIndex + index, row)}
-              rowMarginTop={rowMarginTop}
             />
           );
         })}
@@ -382,114 +377,13 @@ class BodyRoot<D extends DataTableData> extends Component<
     );
   }
 
-  private calculateRows(): Array<DTRow[] | DTRow> {
-    const { data, uid, columns } = this.asProps;
-
-    const rows: Array<DTRow[] | DTRow> = [];
-    const columnNames = columns.map((column: DTColumn) => column.name);
-
-    let rowIndex = 0;
-
-    const id = 100000000; // need this for gen keys by toString(36)
-
-    const makeDtRow = (row: DataRowItem, excludeColumns?: string[]) => {
-      const columns = new Set(columnNames);
-      const dtRow = Object.entries(row).reduce<DTRow>(
-        (acc, [key, value]) => {
-          const columnsToRow = key.split(this.columnsSplitter);
-
-          if (columnsToRow.length === 1) {
-            acc[key] = value ?? '';
-            columns.delete(key);
-          } else {
-            acc[columnsToRow[0]] = new MergedColumnsCell(value, {
-              dataKey: key,
-              size: columnsToRow.length,
-            });
-            columnsToRow.forEach((value) => {
-              columns.delete(value);
-            });
-          }
-
-          if (row[ACCORDION]) {
-            acc[ACCORDION] = row[ACCORDION];
-          }
-
-          return acc;
-        },
-        {
-          [UNIQ_ROW_KEY]: row[UNIQ_ROW_KEY] ?? `${uid}_${(rowIndex + id).toString(36)}`,
-        },
-      );
-
-      excludeColumns?.forEach((value) => {
-        columns.delete(value);
-      });
-
-      if (columns.size > 0) {
-        columns.forEach((value) => {
-          dtRow[value] = '';
-        });
-      }
-
-      return dtRow;
-    };
-
-    data.forEach((row) => {
-      const groupedRows: DataTableData | undefined = row[ROW_GROUP];
-
-      const fromRow = rowIndex + 2; // 1 - for header, 1 - because start not from 0, but from 1
-
-      if (groupedRows) {
-        const toRow = fromRow + groupedRows.length;
-        const innerRows: DTRow[] = [];
-
-        const groupedKeys: string[] = [];
-        const groupedRowData = Object.entries(row).reduce<DTRow>(
-          (acc, [key, value]) => {
-            acc[key] = new MergedRowsCell(value, [fromRow, toRow]);
-            groupedKeys.push(key);
-            return acc;
-          },
-          {
-            [UNIQ_ROW_KEY]: '', // will fill in makeDtRow
-          },
-        );
-
-        groupedRows.forEach((childRow, index) => {
-          let dtRow: DTRow;
-          if (index === 0) {
-            const rowData = {
-              ...childRow,
-              ...groupedRowData,
-            };
-            dtRow = makeDtRow(rowData);
-          } else {
-            dtRow = makeDtRow(childRow, groupedKeys);
-          }
-
-          innerRows.push(dtRow);
-          rowIndex++;
-        });
-
-        rows.push(innerRows);
-      } else {
-        const dtRow = makeDtRow(row);
-
-        rows.push(dtRow);
-        rowIndex++;
-      }
-    });
-
-    return rows;
-  }
-
   private setRowHeight(index: number, row: DTRow) {
-    const { expandedRows, stickyHeader, headerHeight } = this.asProps;
+    const { expandedRows } = this.asProps;
     const node = this.rowsHeightMap.get(index)?.[2];
-    const firstChild = node?.children.item(0);
+    const firstChild =
+      node?.role === 'rowgroup' ? node?.children.item(0)?.children.item(0) : node?.children.item(0);
     if (node && firstChild instanceof HTMLElement) {
-      const offset = firstChild.offsetTop - (stickyHeader ? headerHeight : 0);
+      const offset = firstChild.offsetTop - this.asProps.headerHeight;
       let height = firstChild.getBoundingClientRect().height;
 
       if (expandedRows.has(row[UNIQ_ROW_KEY]) && node.nextSibling instanceof HTMLElement) {

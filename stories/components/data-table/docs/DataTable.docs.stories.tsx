@@ -15,6 +15,7 @@ import ColumnsMergingExample from './examples/columns-merging';
 import CompactExample from './examples/compact';
 import CustomRowsRenderingExample from './examples/custom-rows-rendering';
 import CustomizingHeaderExample from './examples/customizing-header';
+import EmptyTableExample from './examples/empty-table';
 import ExportInImageExample from './examples/export-in-image';
 import FixedColumnsExample from './examples/fixed-columns';
 import FixedHeaderExample from './examples/fixed-header';
@@ -91,6 +92,10 @@ export const CustomRowsRendering: Story = {
 
 export const CustomizingHeader: Story = {
   render: CustomizingHeaderExample,
+};
+
+export const EmptyTable: Story = {
+  render: EmptyTableExample,
 };
 
 export const ExportInImage: Story = {

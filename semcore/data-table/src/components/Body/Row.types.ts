@@ -1,10 +1,11 @@
 import { DTValue, DTUse, DataTableData } from '../DataTable/DataTable.types';
 import { DTColumn } from '../Head/Column.types';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
-import { ACCORDION, UNIQ_ROW_KEY } from '../DataTable/DataTable';
+import { ACCORDION, ROW_INDEX, UNIQ_ROW_KEY } from '../DataTable/DataTable';
 
 export type DTRow = {
   [UNIQ_ROW_KEY]: string;
+  [ROW_INDEX]: number;
   [key: string]: DTValue | MergedRowsCell | MergedColumnsCell;
   [ACCORDION]?: React.ReactNode | DataTableData | undefined;
 };
@@ -13,7 +14,6 @@ export type DTRows = Array<DTRow | DTRow[]>;
 export type DataTableRowProps = {
   row: DTRow;
   offset?: number;
-  rowMarginTop?: React.CSSProperties['marginTop'];
 };
 
 export type RowPropsInner = {
@@ -52,4 +52,5 @@ export type RowPropsInner = {
 
   scrollAreaRef: React.RefObject<HTMLDivElement>;
   uid: string;
+  sideIndents?: 'l';
 };

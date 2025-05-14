@@ -1,12 +1,10 @@
 export class MergedRowsCell {
   public readonly value: any;
-  public readonly fromRow: number;
-  public readonly toRow: number;
+  public readonly rowsCount: number;
 
-  constructor(value: any, rows: [number, number]) {
+  constructor(value: any, rowsCount: number) {
     this.value = value;
-    this.fromRow = rows[0];
-    this.toRow = rows[1];
+    this.rowsCount = rowsCount;
   }
 }
 

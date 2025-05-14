@@ -1,6 +1,6 @@
-import { DTRow, DTRows } from './Row.types';
+import { DTRow } from './Row.types';
 import { DTColumn } from '../Head/Column.types';
-import { DataTableData, DTUse, VirtualScroll } from '../DataTable/DataTable.types';
+import { DTUse, VirtualScroll } from '../DataTable/DataTable.types';
 import { Theme } from './Cell.types';
 
 export type CellRenderProps = {
@@ -27,8 +27,9 @@ export type DataTableBodyProps = {
   ) => (Record<string, any> & { theme?: Theme }) | undefined;
 };
 
-export type BodyPropsInner<D extends DataTableData> = DataTableBodyProps & {
-  data: D;
+export type BodyPropsInner = DataTableBodyProps & {
+  rows: Array<DTRow | DTRow[]>;
+  flatRows: DTRow[];
   columns: DTColumn[];
   use: DTUse;
   compact: boolean;
@@ -48,6 +49,8 @@ export type BodyPropsInner<D extends DataTableData> = DataTableBodyProps & {
   virtualScroll?: VirtualScroll;
   hasGroups: boolean;
   uid: string;
+  rowProps?: (row: DTRow, rowIndex: number) => Record<string, any> | undefined;
+  renderCell?: (props: CellRenderProps) => React.ReactNode | Record<string, any>;
   onBackFromAccordion: (colIndex: number) => void;
   stickyHeader?: boolean;
   selectedRows?: number[];
@@ -57,4 +60,6 @@ export type BodyPropsInner<D extends DataTableData> = DataTableBodyProps & {
     row: DTRow,
     event: React.SyntheticEvent<HTMLElement>,
   ) => void;
+  renderEmptyData: () => React.ReactNode;
+  sideIndents?: 'l';
 };

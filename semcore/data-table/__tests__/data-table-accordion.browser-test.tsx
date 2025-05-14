@@ -274,6 +274,45 @@ test.describe('Accordion in table', () => {
     });
   });
 
+  test('Verify table in table keyboard navigation', async ({ page }) => {
+    const standPath = 'stories/components/data-table/docs/examples/table-in-table.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const rows = page.locator('[data-ui-name="Body.Row"]');
+    await page.keyboard.press('Tab');
+
+    await test.step('Verify it is possible to scroll the last cell by keyboard when accordion collapsed', async () => {
+      const rowCount = await rows.count();
+
+      for (let i = 0; i < rowCount; i++) {
+        await page.keyboard.press('ArrowDown');
+      }
+      const lastRow = page.locator('[data-ui-name="Body.Row"][aria-rowindex="6"]');
+      const cellinLastRow = lastRow.locator(
+        '[data-ui-name="Body.Cell"][aria-colindex="1"][data-aria-level="1"]',
+      );
+
+      await expect(cellinLastRow).toBeFocused();
+    });
+
+    await test.step('Verify it is possible to scroll the last cell by keyboard when accordion expanded', async () => {
+      await page.keyboard.press('ArrowUp');
+      await page.keyboard.press('ArrowUp');
+      await page.keyboard.press('ArrowUp');
+      await page.keyboard.press('Enter');
+      for (let i = 0; i < 6; i++) await page.keyboard.press('ArrowDown');
+
+      const lastRow = page.locator('[data-ui-name="Body.Row"][aria-rowindex="9"]');
+      const cellinLastRow = lastRow.locator(
+        '[data-ui-name="Body.Cell"][aria-colindex="1"][data-aria-level="1"]',
+      );
+
+      await expect(cellinLastRow).toBeFocused();
+    });
+  });
+
   test('Verify keyboard navigation when interactive element incide cell', async ({
     page,
     browserName,

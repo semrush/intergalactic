@@ -68,7 +68,6 @@ const DesignTokens = ({ tokens }) => {
 
   React.useEffect(() => {
     filteredTokensTimer = setTimeout(() => {
-      cache.clearAll();
       setFilteredTokensToTable(filteredTokens);
     }, 300);
   }, [filteredTokens]);
@@ -120,122 +119,139 @@ const DesignTokensTable = React.memo(({ filteredTokens }) => {
   const valueHeaderRef = React.useRef(null);
   const descriptionHeaderRef = React.useRef(null);
 
+  const columns = [
+    {
+      name: 'name',
+      children: 'Token name',
+      ref: nameHeaderRef,
+      gtcWidth: '20%',
+    },
+    {
+      name: 'value',
+      children: 'Value',
+      ref: valueHeaderRef,
+      gtcWidth: '20%',
+    },
+    {
+      name: 'description',
+      children: 'Description',
+      ref: descriptionHeaderRef,
+      gtcWidth: '40%',
+    },
+    {
+      name: 'components',
+      children: 'Used in',
+      gtcWidth: '20%',
+    },
+  ];
+
   return (
-    <DataTable data={filteredTokens} className={styles.tokensTable}>
-      <DataTable.Head>
-        <DataTable.Head.Column name='name' children='Token name' ref={nameHeaderRef} w={0.15} />
-        <DataTable.Head.Column name='value' children='Value' ref={valueHeaderRef} w={0.25} />
-        <DataTable.Head.Column
-          name='description'
-          children='Description'
-          ref={descriptionHeaderRef}
-          w={0.4}
-        />
-        <DataTable.Head.Column name='components' children='Used in' w={0.2} />
-      </DataTable.Head>
-      {filteredTokens.length ? (
-        <DataTable.Body
-          virtualScroll
-          renderCell={(props) => {
-            if (props.dataKey === 'name') {
-              return (
-                <Copy
-                  copiedToast='Copied'
-                  toCopy={props.value}
-                  title={'Copy to clipboard'}
-                  trigger='click'
-                  className={styles.tokenNameWrapper}
-                >
-                  <button
-                    type='button'
-                    className={styles.tokenName}
-                    data-token-type={'semanticToken'}
-                  >
-                    {props.value}
-                  </button>
-                </Copy>
-              );
-            } else if (props.dataKey === 'value') {
-              return (
-                <Copy
-                  copiedToast='Copied'
-                  toCopy={props.row.rawValue}
-                  title={'Copy to clipboard'}
-                  trigger='click'
-                  className={styles.tokenValueWrapper}
-                >
-                  <button
-                    type='button'
-                    className={styles.tokenValue}
-                    data-token-type={'semanticToken'}
-                  >
-                    <ColorPreview color={props.row.computedValue} />
-                    {props.row.rawValue}
-                  </button>
-                </Copy>
-              );
-            } else if (props.dataKey === 'components') {
-              const value = props.row[props.dataKey];
-              if (!value.length) {
-                return { children: null };
-              }
-
-              if (value.length === 1) {
-                return (
-                  <div>
-                    <Link
-                      target='_blank'
-                      href={`/intergalactic/components/${value[0]}/${value[0]}`}
-                      data-link-in-tooltip={row['name']}
-                    >
-                      {value[0]}
-                    </Link>
-                  </div>
-                );
-              }
-
-              return (
-                <>
-                  <DescriptionTooltip>
-                    <DescriptionTooltip.Trigger
-                      tag={ButtonLink}
-                      use={'secondary'}
-                      data-used-in-tooltip={row['name']}
-                    >
-                      {value.length} components
-                    </DescriptionTooltip.Trigger>
-                    <DescriptionTooltip.Popper>
-                      {value.map((componentName, index) => (
-                        <React.Fragment key={componentName}>
-                          <Link
-                            target='_blank'
-                            href={`/intergalactic/components/${componentName}/${componentName}`}
-                            data-link-in-tooltip={row['name']}
-                          >
-                            {componentName}
-                          </Link>
-                          {index < value.length - 1 && ', '}
-                        </React.Fragment>
-                      ))}
-                    </DescriptionTooltip.Popper>
-                  </DescriptionTooltip>
-                </>
-              );
-            }
-
+    <DataTable
+      data={filteredTokens}
+      className={styles.tokensTable}
+      hMax={400}
+      w={'100%'}
+      columns={columns}
+      headerProps={{ sticky: true }}
+      virtualScroll={true}
+      renderCell={(props) => {
+        if (props.dataKey === 'name') {
+          if (filteredTokens.length === 0) {
             return props.defaultRender();
-          }}
-        />
-      ) : (
-        <NoData
-          py={10}
-          type={'nothing-found'}
-          description={
-            'Try searching by component name or its category, for example, "control", “bg”, “border”.'
           }
-        />
-      )}
-    </DataTable>
+
+          return (
+            <Copy
+              copiedToast='Copied'
+              toCopy={props.value}
+              title={'Copy to clipboard'}
+              trigger='click'
+              className={styles.tokenNameWrapper}
+            >
+              <button type='button' className={styles.tokenName} data-token-type={'semanticToken'}>
+                {props.value}
+              </button>
+            </Copy>
+          );
+        } else if (props.dataKey === 'value') {
+          return (
+            <Copy
+              copiedToast='Copied'
+              toCopy={props.row.rawValue}
+              title={'Copy to clipboard'}
+              trigger='click'
+              className={styles.tokenValueWrapper}
+            >
+              <button type='button' className={styles.tokenValue} data-token-type={'semanticToken'}>
+                <ColorPreview color={props.row.computedValue} />
+                {props.row.rawValue}
+              </button>
+            </Copy>
+          );
+        } else if (props.dataKey === 'components') {
+          const value = props.row[props.dataKey];
+          if (!value.length) {
+            return { children: null };
+          }
+
+          if (value.length === 1) {
+            return (
+              <div>
+                <Link
+                  target='_blank'
+                  href={`/intergalactic/components/${value[0]}/${value[0]}`}
+                  data-link-in-tooltip={props.row['name']}
+                >
+                  {value[0]}
+                </Link>
+              </div>
+            );
+          }
+
+          return (
+            <>
+              <DescriptionTooltip>
+                <DescriptionTooltip.Trigger
+                  tag={ButtonLink}
+                  use={'secondary'}
+                  data-used-in-tooltip={props.row['name']}
+                >
+                  {value.length} components
+                </DescriptionTooltip.Trigger>
+                <DescriptionTooltip.Popper>
+                  {value.map((componentName, index) => (
+                    <React.Fragment key={componentName}>
+                      <Link
+                        target='_blank'
+                        href={`/intergalactic/components/${componentName}/${componentName}`}
+                        data-link-in-tooltip={props.row['name']}
+                      >
+                        {componentName}
+                      </Link>
+                      {index < value.length - 1 && ', '}
+                    </React.Fragment>
+                  ))}
+                </DescriptionTooltip.Popper>
+              </DescriptionTooltip>
+            </>
+          );
+        }
+
+        return props.defaultRender();
+      }}
+      renderEmptyData={() => {
+        return (
+          <NoData
+            py={10}
+            type={'nothing-found'}
+            description={
+              'Try searching by component name or its category, for example, "control", “bg”, “border”.'
+            }
+            w={'100%'}
+          />
+        );
+      }}
+    />
   );
 });
 

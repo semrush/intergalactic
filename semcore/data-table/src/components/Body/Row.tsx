@@ -56,7 +56,6 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
       expandedRows,
       onExpandRow,
       'aria-level': ariaLevel = 1,
-      rowMarginTop,
       scrollAreaRef,
       selectedRows,
       uid,
@@ -88,7 +87,6 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
           accordionType={accordionType}
           theme={selectedRows?.includes(rowIndex) ? 'info' : undefined}
         >
-          {rowMarginTop && <Box h={rowMarginTop} />}
           {columns.map((column, i) => {
             if (selectedRows && i === 0) {
               const checked = selectedRows.includes(rowIndex);
@@ -132,11 +130,6 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
             return (
               <Body.Cell
                 key={index}
-                aria-expanded={
-                  (row[ACCORDION] && index === 0) || this.cellHasAccordion(cellValue)
-                    ? expanded
-                    : undefined
-                }
                 id={`${uid}_${ariaRowIndex}_${index}`}
                 accordionId={`${uid}_${ariaRowIndex + 1}`}
                 data-aria-level={index === 0 ? ariaLevel : undefined}
