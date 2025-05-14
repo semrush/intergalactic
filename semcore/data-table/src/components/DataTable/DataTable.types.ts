@@ -4,6 +4,7 @@ import { ACCORDION, ROW_GROUP, UNIQ_ROW_KEY } from './DataTable';
 import { DataTableColumnProps } from '../Head/Column.types';
 import { CellRenderProps } from '../Body/Body.types';
 import Tooltip from '@semcore/tooltip';
+import { DTRow } from '../Body/Row.types';
 
 /**
  * Datatable must have an accessible name (aria-table-name).
@@ -66,6 +67,11 @@ export type DataTableProps<D extends DataTableData> = DataTableAriaProps &
      * Flag for compact view (fewer paddings)
      */
     compact?: boolean;
+
+    /**
+     * Size of paddings for the first and last columns in the table
+     */
+    sideIndents?: 'l';
 
     /**
      * Flag for showing spinner on table body

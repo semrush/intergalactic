@@ -5,6 +5,7 @@ import {DataTable } from '@semcore/data-table';
 import FixedColumnsWithDiffWidthsExample from './examples/fixed_columns_with_diff_widths';
 import LinkInTableExample from './examples/link_in_table';
 import RowCellStatesExample from './examples/row_cell_states';
+import SideIndentsExample from './examples/side-indents';
 
 const meta: Meta<typeof DataTable> = {
   title: 'Components/DataTable/Advanced',
@@ -24,4 +25,8 @@ export const LinkInTable: Story = {
 
 export const RowCellStates: Story = {
   render: RowCellStatesExample,
+};
+
+export const SideIndents: Story = {
+  render: SideIndentsExample,
 };
