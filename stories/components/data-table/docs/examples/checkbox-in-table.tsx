@@ -38,7 +38,7 @@ const Demo = () => {
   }, [ariaMessage]);
 
   return (
-    <Flex direction='column' wMax={800} h={'100%'} hMax={800} style={{ overflow: 'auto' }}>
+    <Flex direction='column' wMax={800} h={'100%'} hMax={800} style={{ overflow: 'auto', scrollPaddingTop: !!selectedRows.length ? '44px' : undefined }}>
       <ScreenReaderOnly role='status' aria-live='polite'>
         {ariaMessage}
       </ScreenReaderOnly>
