@@ -89,6 +89,8 @@ class DataTableRoot<D extends DataTableData> extends Component<
   private columnsSplitter = '/';
   private rows: Array<DTRow | DTRow[]> = [];
 
+  private selectAllMessageTimer = 0;
+
   constructor(props: DataTableProps<D>) {
     super(props);
 
@@ -120,10 +122,18 @@ class DataTableRoot<D extends DataTableData> extends Component<
   }
 
   componentDidUpdate(prevProps: any) {
-    if (prevProps.data !== this.asProps.data) {
+    const { data, selectedRows } = this.asProps;
+    if (prevProps.data !== data) {
       this.rows = this.calculateRows();
 
       this.forceUpdate();
+    }
+    if (prevProps.selectedRows !== selectedRows && selectedRows !== undefined) {
+      if (prevProps.selectedRows.length < data.length && selectedRows.length === data.length) {
+        this.setSelectAllMessage(true);
+      } else if (prevProps.selectedRows.length > 0 && selectedRows.length === 0) {
+        this.setSelectAllMessage(false);
+      }
     }
   }
 
@@ -284,12 +294,6 @@ class DataTableRoot<D extends DataTableData> extends Component<
         newSelectedRows.delete(selectedRowIndex);
       }
 
-      if (selectedRows.length < data.length && newSelectedRows.size === data.length) {
-        this.setSelectAllMessage(true);
-      } else if (selectedRows.length > 0 && newSelectedRows.size === 0) {
-        this.setSelectAllMessage(false);
-      }
-
       onSelectedRowsChange([...newSelectedRows], event, {
         selectedRowIndex,
         isSelected,
@@ -299,6 +303,10 @@ class DataTableRoot<D extends DataTableData> extends Component<
   };
 
   setSelectAllMessage = (selectedAll: boolean) => {
+    if (this.selectAllMessageTimer) {
+      clearTimeout(this.selectAllMessageTimer);
+    }
+
     const { getI18nText } = this.asProps;
     const message = getI18nText(
       selectedAll
@@ -307,9 +315,9 @@ class DataTableRoot<D extends DataTableData> extends Component<
     );
     this.setState({ selectAllMessage: message });
 
-    setTimeout(() => {
+    this.selectAllMessageTimer = window.setTimeout(() => {
       this.setState({ selectAllMessage: '' });
-    }, 500);
+    }, 5000);
   };
 
   setInert(value: boolean) {
