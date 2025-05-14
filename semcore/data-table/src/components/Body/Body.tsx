@@ -310,6 +310,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
     if (rowsToRender.length === 0) {
       emptyRow = {
         [UNIQ_ROW_KEY]: `${uid}_empty_data`,
+        [ROW_INDEX]: 0,
         [columns[0].name]: new MergedColumnsCell(renderEmptyData(), {
           dataKey: columns[0].name,
           size: columns.length,

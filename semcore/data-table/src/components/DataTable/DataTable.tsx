@@ -952,6 +952,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
           },
           {
             [UNIQ_ROW_KEY]: '', // will fill in makeDtRow
+            [ROW_INDEX]: -1,
           },
         );
 
