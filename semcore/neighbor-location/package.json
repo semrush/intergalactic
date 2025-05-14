@@ -1,7 +1,7 @@
 {
   "name": "@semcore/neighbor-location",
   "description": "Semrush NeighborLocation Component",
-  "version": "4.40.2",
+  "version": "4.40.3",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -17,7 +17,7 @@
     "types": "./lib/types/index.d.ts"
   },
   "dependencies": {
-    "@semcore/utils": "4.48.2"
+    "@semcore/utils": "4.48.4"
   },
   "peerDependencies": {
     "@semcore/core": "^2.17.5",

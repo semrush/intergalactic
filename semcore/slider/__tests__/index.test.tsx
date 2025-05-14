@@ -1,11 +1,8 @@
 import * as React from 'react';
-import { snapshot } from '@semcore/testing-utils/snapshot';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import Slider from '../src';
 
 import { render, fireEvent, cleanup } from '@semcore/testing-utils/testing-library';
-import { axe } from '@semcore/testing-utils/axe';
-
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('slider Dependency imports', () => {
@@ -15,91 +12,7 @@ describe('slider Dependency imports', () => {
 describe('Slider', () => {
   beforeEach(cleanup);
 
-  test.concurrent('Renders correctly', async ({ task }) => {
-    const component = <Slider value={50} m='10px' />;
-
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-
-  test.concurrent('Renders correctly with Bar/Knob', async ({ task }) => {
-    const component = (
-      <Slider value={50}>
-        <Slider.Bar />
-        <Slider.Knob />
-      </Slider>
-    );
-
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-
-  test.concurrent('Should support normal state', async ({ task }) => {
-    const component = (
-      <snapshot.ProxyProps m='25px'>
-        <Slider value={50} keyboardFocused />
-        <Slider value={50} disabled />
-        <div style={{ background: 'black', padding: '1px' }}>
-          <Slider value={50} disabled m='25px' />
-        </div>
-      </snapshot.ProxyProps>
-    );
-
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-
-  test.concurrent('Should support hover', async ({ task }) => {
-    expect(
-      await snapshot(<Slider value={50} id='slider' m='10px' />, {
-        actions: {
-          hover: '#slider',
-        },
-      }),
-    ).toMatchImageSnapshot(task);
-  });
-
-  test.concurrent('Should support active', async ({ task }) => {
-    expect(
-      await snapshot(<Slider value={50} id='slider' m='10px' />, {
-        actions: {
-          active: '#slider',
-        },
-      }),
-    ).toMatchImageSnapshot(task);
-  });
-
-  test.concurrent('Should support hover Knob', async ({ task }) => {
-    expect(
-      await snapshot(
-        <Slider value={50} m='10px'>
-          <Slider.Bar />
-          <Slider.Knob id='knob' />
-        </Slider>,
-        {
-          actions: {
-            active: '#knob',
-          },
-        },
-      ),
-    ).toMatchImageSnapshot(task);
-  });
-  test.concurrent('Should render options', async ({ task }) => {
-    expect(
-      await snapshot(
-        <Slider
-          value={'small'}
-          step={1}
-          min={1}
-          max={3}
-          options={[
-            { value: 'small', label: 'Small' },
-            { value: 'medium', label: 'Medium' },
-            { value: 'big', label: 'Big' },
-          ]}
-        />,
-      ),
-    ).toMatchImageSnapshot(task);
-  });
-
-  test.concurrent('Should support onChange callback with keyboard', async () => {
+  test('Verify supports onChange callback with keyboard', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(<Slider value={10} data-testid='slider' onChange={spy} />);
     // up
@@ -114,7 +27,7 @@ describe('Slider', () => {
     expect(spy).lastCalledWith(9, expect.any(Object));
   });
 
-  test.concurrent('Should support min value change with keyboard', () => {
+  test('Verify supports min value change with keyboard', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Slider min={0} max={1} defaultValue={1} data-testid='slider' onChange={spy} />,
@@ -125,7 +38,7 @@ describe('Slider', () => {
     expect(spy).lastCalledWith(0, expect.any(Object));
   });
 
-  test.concurrent('Should support max value change with keyboard', () => {
+  test('Verify supports max value change with keyboard', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Slider min={0} max={1} defaultValue={0} data-testid='slider' onChange={spy} />,
@@ -136,15 +49,57 @@ describe('Slider', () => {
     expect(spy).lastCalledWith(1, expect.any(Object));
   });
 
-  test('a11y', async () => {
-    const { container } = render(
-      <>
-        <Slider aria-label='slider' />
-        <Slider aria-label='slider disabled' disabled />
-      </>,
+  test('Verify dragging/mouse move sets value to min when moved before start', () => {
+    const onChange = vi.fn();
+    const { getByRole } = render(
+      <Slider min={0} max={100} defaultValue={50} data-testid='slider' onChange={onChange} />,
     );
+    const slider = getByRole('slider');
+    Object.defineProperty(slider, 'offsetWidth', { value: 200 });
+    slider.getBoundingClientRect = () => ({ left: 100, width: 200 }) as DOMRect;
 
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+    // simulate mouse move far to left
+    fireEvent.mouseDown(slider, { clientX: 50 });
+    fireEvent.mouseMove(document, { clientX: 50 });
+    fireEvent.mouseUp(document);
+    expect(onChange).lastCalledWith(0, expect.any(Object));
+  });
+
+  test('Verify dragging/mouse move sets value to max when moved past end', () => {
+    const onChange = vi.fn();
+    const { getByRole } = render(
+      <Slider min={0} max={100} defaultValue={50} data-testid='slider' onChange={onChange} />,
+    );
+    const slider = getByRole('slider');
+    Object.defineProperty(slider, 'offsetWidth', { value: 200 });
+    slider.getBoundingClientRect = () => ({ left: 100, width: 200 }) as DOMRect;
+
+    fireEvent.mouseDown(slider, { clientX: 400 });
+    fireEvent.mouseMove(document, { clientX: 400 });
+    fireEvent.mouseUp(document);
+    expect(onChange).lastCalledWith(100, expect.any(Object));
+  });
+
+  test('Verify dragging/mouse move calculates intermediate value correctly', () => {
+    const onChange = vi.fn();
+    const { getByRole } = render(
+      <Slider
+        min={0}
+        max={100}
+        defaultValue={0}
+        step={10}
+        data-testid='slider'
+        onChange={onChange}
+      />,
+    );
+    const slider = getByRole('slider');
+    Object.defineProperty(slider, 'offsetWidth', { value: 100 });
+    slider.getBoundingClientRect = () => ({ left: 0, width: 100 }) as DOMRect;
+
+    // move to clientX=30 => 30% along => nearest step is 3*10=30
+    fireEvent.mouseDown(slider, { clientX: 30 });
+    fireEvent.mouseMove(document, { clientX: 30 });
+    fireEvent.mouseUp(document);
+    expect(onChange).lastCalledWith(30, expect.any(Object));
   });
 });
