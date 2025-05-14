@@ -22,7 +22,8 @@
     "@semcore/flex-box": "16.0.0",
     "@semcore/scroll-area": "16.0.0",
     "@semcore/spin": "16.0.0",
-    "@semcore/tooltip": "16.0.0"
+    "@semcore/tooltip": "16.0.0",
+    "@semcore/widget-empty": "16.0.0"
   },
   "devDependencies": {
     "@types/react": "18.0.21",

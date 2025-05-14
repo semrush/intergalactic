@@ -119,10 +119,34 @@ test.describe('Vertical Scroll', () => {
     expect(nowNumber).toBeLessThanOrEqual(initialValue);
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
   });
+
+  test('Verify keyboard when sticky header with top props', async ({ page }) => {
+    const standPath =
+      'stories/components/data-table/tests/examples/scroll-tests/scroll-in-top-header.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    await page.keyboard.press('Tab');
+    for (let i = 0; i < 6; i++) {
+      await page.keyboard.press('ArrowDown');
+    }
+    await page.waitForTimeout(100);
+
+    const headColumns = page.locator('[data-ui-name="Head.Column"]');
+    const count = await headColumns.count();
+
+    for (let i = 0; i < count; i++) {
+      const column = headColumns.nth(i);
+      const topStyle = await column.evaluate((el) => getComputedStyle(el).top);
+      expect(topStyle).toBe('100px');
+    }
+
+    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+  });
 });
 
 test.describe('Horizontal Scroll', () => {
-  //add test with scroll on header!
   test('Verify keyboard scroll when no fixed columns', async ({ page }) => {
     const standPath =
       'stories/components/data-table/tests/examples/scroll-tests/horizontal-scroll.tsx';
@@ -319,7 +343,7 @@ test.describe('Horizontal Scroll', () => {
     const initialValue2 = await checkAriaMaxValue(scrollBar2);
 
     await page.keyboard.press('Tab');
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < 15; i++) {
       await page.keyboard.press('ArrowDown');
     }
     await page.waitForTimeout(100);
@@ -355,30 +379,5 @@ test.describe('Horizontal Scroll', () => {
     await page.waitForTimeout(100);
     const nowNumber2 = await checkScrollNowIncreased(scrollBar2);
     expect(nowNumber2).toBeLessThanOrEqual(initialValue2);
-  });
-
-  test('Verify keyboard when sticky header with top props', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/scroll-tests/scroll-in-top-header.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    await page.keyboard.press('Tab');
-    for (let i = 0; i < 6; i++) {
-      await page.keyboard.press('ArrowDown');
-    }
-    await page.waitForTimeout(100);
-
-    const headColumns = page.locator('[data-ui-name="Head.Column"]');
-    const count = await headColumns.count();
-
-    for (let i = 0; i < count; i++) {
-      const column = headColumns.nth(i);
-      const topStyle = await column.evaluate((el) => getComputedStyle(el).top);
-      expect(topStyle).toBe('100px');
-    }
-
-    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
   });
 });

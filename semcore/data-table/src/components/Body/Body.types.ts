@@ -1,6 +1,6 @@
-import { DTRow, DTRows } from './Row.types';
+import { DTRow } from './Row.types';
 import { DTColumn } from '../Head/Column.types';
-import { DataTableData, DTUse, VirtualScroll } from '../DataTable/DataTable.types';
+import { DTUse, VirtualScroll } from '../DataTable/DataTable.types';
 
 export type CellRenderProps = {
   dataKey: string;
@@ -19,8 +19,9 @@ export type DataTableBodyProps = {
   renderCell?: (props: CellRenderProps) => React.ReactNode | Record<string, any>;
 };
 
-export type BodyPropsInner<D extends DataTableData> = {
-  data: D;
+export type BodyPropsInner = {
+  rows: Array<DTRow | DTRow[]>;
+  flatRows: DTRow[];
   columns: DTColumn[];
   use: DTUse;
   compact: boolean;
