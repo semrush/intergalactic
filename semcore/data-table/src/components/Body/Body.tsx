@@ -9,7 +9,7 @@ import { Cell } from './Cell';
 import { DataTableRowProps, DTRow, RowPropsInner } from './Row.types';
 import { DataTableCellProps } from './Cell.types';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
-import { ACCORDION, UNIQ_ROW_KEY } from '../DataTable/DataTable';
+import { ACCORDION, ROW_INDEX, UNIQ_ROW_KEY } from '../DataTable/DataTable';
 import ChevronRightM from '@semcore/icon/ChevronRight/m';
 import { ButtonLink } from '@semcore/button';
 import { DataTableData, DTValue } from '../DataTable/DataTable.types';
@@ -18,13 +18,7 @@ import Spin from '@semcore/spin';
 const ROWS_BUFFER = 20;
 const APROX_ROWS_ON_PAGE = 20;
 
-class BodyRoot<D extends DataTableData> extends Component<
-  DataTableBodyProps,
-  {},
-  {},
-  [],
-  BodyPropsInner
-> {
+class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner> {
   static displayName = 'Body';
   static style = style;
 
@@ -51,7 +45,7 @@ class BodyRoot<D extends DataTableData> extends Component<
     this.asProps.onExpandRow(row);
   };
 
-  getRowProps(props: { row: DTRow; offset: number }, i: number): RowPropsInner {
+  getRowProps(props: { row: DTRow }): RowPropsInner {
     const {
       use,
       gridTemplateAreas,
@@ -69,7 +63,7 @@ class BodyRoot<D extends DataTableData> extends Component<
       flatRows,
     } = this.asProps;
     const row = props.row;
-    const index = props.offset + i;
+    const index = row[ROW_INDEX];
 
     const rowIndex = Array.from(expandedRows ?? []).reduce((acc, item) => {
       const rowIndex = flatRows.findIndex((row) => row[UNIQ_ROW_KEY] === item);
@@ -316,11 +310,11 @@ class BodyRoot<D extends DataTableData> extends Component<
             return sstyled(styles)(
               <SRowGroup
                 role={'rowgroup'}
-                key={index}
+                key={`gg_${row[0][UNIQ_ROW_KEY]}`}
                 ref={this.handleRef(startIndex + index, row[0])}
               >
                 {row.map((item, i) => {
-                  return <Body.Row key={item[UNIQ_ROW_KEY]} row={item} offset={startIndex} />;
+                  return <Body.Row key={item[UNIQ_ROW_KEY]} row={item} />;
                 })}
               </SRowGroup>,
             );
@@ -329,7 +323,6 @@ class BodyRoot<D extends DataTableData> extends Component<
             <Body.Row
               key={row[UNIQ_ROW_KEY]}
               row={row}
-              offset={startIndex}
               ref={this.handleRef(startIndex + index, row)}
             />
           );

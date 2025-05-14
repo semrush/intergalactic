@@ -38,6 +38,7 @@ import { MergedColumnsCell, MergedRowsCell } from '../Body/MergedCells';
 export const ACCORDION = Symbol('accordion');
 export const ROW_GROUP = Symbol('ROW_GROUP');
 export const UNIQ_ROW_KEY = Symbol('UNIQ_ROW_KEY');
+export const ROW_INDEX = Symbol('ROW_INDEX');
 
 const SCROLL_BAR_HEIGHT = 12;
 
@@ -914,7 +915,8 @@ class DataTableRoot<D extends DataTableData> extends Component<
           return acc;
         },
         {
-          [UNIQ_ROW_KEY]: row[UNIQ_ROW_KEY] ?? `${uid}_${(rowIndex + id).toString(36)}`,
+          [UNIQ_ROW_KEY]: row[UNIQ_ROW_KEY] || `${uid}_${(rowIndex + id).toString(36)}`,
+          [ROW_INDEX]: rowIndex,
         },
       );
 
