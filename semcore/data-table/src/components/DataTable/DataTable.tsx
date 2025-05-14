@@ -724,7 +724,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
           this.ref.current = node;
         },
-        gridColumnWidth: '30px',
+        gridColumnWidth: '40px',
         calculatedWidth: 0,
         calculatedHeight: 0,
 
@@ -874,7 +874,6 @@ class DataTableRoot<D extends DataTableData> extends Component<
       };
 
       calculatedColumns.push(column);
-      treeColumns.push(column);
     }
 
     const makeColumn = (

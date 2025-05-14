@@ -27,7 +27,8 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
     );
   }
 
-  handleSelectRow = (value: boolean) => (event: React.SyntheticEvent<HTMLElement>) => {
+  handleSelectRow = (value: boolean) => (event?: React.SyntheticEvent<HTMLElement>) => {
+    event?.preventDefault();
     const { row, rowIndex, onSelectRow } = this.asProps;
 
     onSelectRow?.(value, rowIndex, row, event);
@@ -102,7 +103,11 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
                   gridRowIndex={gridRowIndex}
                   onClick={this.handleSelectRow(!checked)}
                 >
-                  <Checkbox checked={checked} aria-labelledby={`${uid}_${ariaRowIndex}_1`} />
+                  <Checkbox
+                    checked={checked}
+                    aria-labelledby={`${uid}_${ariaRowIndex}_1`}
+                    onChange={(value, e) => this.handleSelectRow(value)(e)}
+                  />
                 </Body.Cell>
               );
             }
@@ -195,9 +200,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
                 aria-level={ariaLevel + 1}
                 ariaRowIndex={ariaRowIndex + 1 + i}
                 gridRowIndex={gridRowIndex + 1 + i}
-                // expanded={false}
-                // onExpandRow={() => onExpandRow(subrow)}
-                theme={'muted'}
+                expanded={true}
               />
             );
           })}

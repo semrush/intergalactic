@@ -100,7 +100,7 @@ export type DataTableProps<D extends DataTableData> = DataTableAriaProps &
       withScrollBar?: boolean;
     };
 
-    rowProps?: (row: DTRow, rowIndex: number) => Record<string, any> | undefined;
+    rowProps?: DataTableBodyProps['rowProps'];
 
     renderCell?: DataTableBodyProps['renderCell'];
 
@@ -111,7 +111,7 @@ export type DataTableProps<D extends DataTableData> = DataTableAriaProps &
 
     onSelectedRowsChange?: (
       selectedRows: number[],
-      event: React.SyntheticEvent<HTMLElement>,
+      event?: React.SyntheticEvent<HTMLElement>,
       opts?: {
         selectedRowIndex: number;
         isSelected: boolean;

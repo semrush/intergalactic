@@ -4,6 +4,16 @@ import { Flex, ScreenReaderOnly } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import { Collapse } from '@semcore/animation';
 import Button from '@semcore/button';
+import { sstyled } from '@semcore/core';
+
+const style = sstyled.css`
+  SDataTable > [aria-rowindex='1'] > div {
+    transition: top 150ms ease-in-out;
+  }
+  SDataTable[activePanel] > [aria-rowindex='1'] > div {
+    top: 44px;
+  }
+`;
 
 const Demo = () => {
   const [selectedRows, setSelectedRows] = React.useState<number[]>([]);
@@ -63,15 +73,16 @@ const Demo = () => {
         selectedRows={selectedRows}
         onSelectedRowsChange={handleChangeSelectedRows}
         ref={tableRef}
-      >
-        <DataTable.Head sticky top={!selectedRows.length ? 0 : 44}>
-          <DataTable.Head.Column name='keyword'>keyword</DataTable.Head.Column>
-          <DataTable.Head.Column name='kd' children='KD,%' />
-          <DataTable.Head.Column name='cpc' children='CPC' />
-          <DataTable.Head.Column name='vol' children='Vol.' />
-        </DataTable.Head>
-        <DataTable.Body />
-      </DataTable>
+        headerProps={{sticky: true}}
+        columns={[
+          { name: 'keyword', children: 'Keyword' },
+          { name: 'kd', children: 'KD,%' },
+          { name: 'cpc', children: 'CPC' },
+          { name: 'vol', children: 'Vol.' },
+        ]}
+        styles={style}
+        activePanel={!!selectedRows.length}
+      />
     </Flex>
   );
 };
