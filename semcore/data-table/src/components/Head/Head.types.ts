@@ -35,5 +35,5 @@ export type HeadPropsInner<D extends DataTableData> = {
 
   totalRows: number;
   selectedRows?: number[];
-  onChangeSelectAll?: (value: boolean, event?: React.SyntheticEvent<HTMLInputElement>) => void;
+  onChangeSelectAll?: (value: boolean, event: React.SyntheticEvent<HTMLElement>) => void;
 };

@@ -25,7 +25,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
     );
   }
 
-  handleSelectRow = (value: boolean, event?: React.SyntheticEvent<HTMLInputElement>) => {
+  handleSelectRow = (value: boolean) => (event: React.SyntheticEvent<HTMLElement>) => {
     const { row, rowIndex, onSelectRow } = this.asProps;
 
     onSelectRow?.(value, rowIndex, row, event);
@@ -50,6 +50,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
       rowMarginTop,
       scrollAreaRef,
       selectedRows,
+      uid,
     } = this.asProps;
 
     let accordion = row[ACCORDION];
@@ -64,6 +65,8 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
       accordionType = 'cell';
     }
 
+    const firstCellId = `${row[UNIQ_ROW_KEY]}_first_cell`;
+
     return sstyled(styles)(
       <>
         <SRow
@@ -75,6 +78,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
         >
           {columns.map((column, i) => {
             if (selectedRows && i === 0) {
+              const checked = selectedRows.includes(rowIndex);
               return (
                 <Body.Cell
                   key={i}
@@ -84,11 +88,9 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
                   column={{ name: SELECT_ALL.toString() }}
                   columnIndex={0}
                   gridRowIndex={gridRowIndex}
+                  onClick={this.handleSelectRow(!checked)}
                 >
-                  <Checkbox
-                    checked={selectedRows.includes(rowIndex)}
-                    onChange={this.handleSelectRow}
-                  />
+                  <Checkbox checked={checked} aria-labelledby={firstCellId} />
                 </Body.Cell>
               );
             }
@@ -121,6 +123,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
                     ? expanded
                     : undefined
                 }
+                id={selectedRows && index === 1 ? firstCellId : undefined}
                 data-aria-level={index === 0 ? ariaLevel : undefined}
                 row={row}
                 rowIndex={rowIndex}

@@ -18,6 +18,7 @@ export type DataTableRowProps = {
 
 export type RowPropsInner = {
   use: DTUse;
+  uid: string;
   /**
    * Expanded flag for rows with accordion
    * @default false
@@ -43,7 +44,7 @@ export type RowPropsInner = {
     isSelect: boolean,
     selectedRowIndex: number,
     row: DTRow,
-    event?: React.SyntheticEvent<HTMLInputElement>,
+    event: React.SyntheticEvent<HTMLElement>,
   ) => void;
 
   inert?: '';

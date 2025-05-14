@@ -2,7 +2,7 @@ import { Intergalactic } from '@semcore/core';
 import { BoxProps } from '@semcore/base-components';
 import { ACCORDION, ROW_GROUP, UNIQ_ROW_KEY } from './DataTable';
 import { DataTableColumnProps } from '../Head/Column.types';
-import { CellRenderProps } from '../Body/Body.types';
+import { CellRenderProps, DataTableBodyProps } from '../Body/Body.types';
 import Tooltip from '@semcore/tooltip';
 import { DTRow } from '../Body/Row.types';
 
@@ -100,7 +100,7 @@ export type DataTableProps<D extends DataTableData> = DataTableAriaProps &
       withScrollBar?: boolean;
     };
 
-    renderCell?: (props: CellRenderProps) => React.ReactNode | Record<string, any>;
+    renderCell?: DataTableBodyProps['renderCell'];
 
     /**
      * List of selected rows (indexes from data array)
@@ -109,7 +109,7 @@ export type DataTableProps<D extends DataTableData> = DataTableAriaProps &
 
     onSelectedRowsChange?: (
       selectedRows: number[],
-      event?: React.SyntheticEvent<HTMLInputElement>,
+      event: React.SyntheticEvent<HTMLElement>,
       opts?: {
         selectedRowIndex: number;
         isSelected: boolean;

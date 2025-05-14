@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Component, createComponent, lastInteraction, Root, sstyled } from '@semcore/core';
-import { Box, ScrollArea } from '@semcore/base-components';
+import { Box, ScreenReaderOnly, ScrollArea } from '@semcore/base-components';
 
 import {
   DataTableProps,
@@ -43,6 +43,7 @@ const SCROLL_BAR_HEIGHT = 12;
 type State = {
   scrollTop: number;
   scrollDirection: 'down' | 'up';
+  selectAllMessage: string;
 };
 
 class DataTableRoot<D extends DataTableData> extends Component<
@@ -95,6 +96,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
   state: State = {
     scrollTop: 0,
     scrollDirection: 'down',
+    selectAllMessage: '',
   };
 
   uncontrolledProps() {
@@ -240,9 +242,9 @@ class DataTableRoot<D extends DataTableData> extends Component<
     isSelected: boolean,
     selectedRowIndex: number,
     row: DTRow,
-    event?: React.SyntheticEvent<HTMLInputElement>,
+    event: React.SyntheticEvent<HTMLElement>,
   ) => {
-    const { selectedRows, onSelectedRowsChange } = this.asProps;
+    const { selectedRows, onSelectedRowsChange, data } = this.asProps;
 
     if (selectedRows && onSelectedRowsChange) {
       const newSelectedRows = new Set(selectedRows);
@@ -253,12 +255,32 @@ class DataTableRoot<D extends DataTableData> extends Component<
         newSelectedRows.delete(selectedRowIndex);
       }
 
+      if (selectedRows.length < data.length && newSelectedRows.size === data.length) {
+        this.setSelectAllMessage(true);
+      } else if (selectedRows.length > 0 && newSelectedRows.size === 0) {
+        this.setSelectAllMessage(false);
+      }
+
       onSelectedRowsChange([...newSelectedRows], event, {
         selectedRowIndex,
         isSelected,
         row,
       });
     }
+  };
+
+  setSelectAllMessage = (selectedAll: boolean) => {
+    const { getI18nText } = this.asProps;
+    const message = getI18nText(
+      selectedAll
+        ? 'DataTable.allItemsSelected:aria-live'
+        : 'DataTable.allItemsDeselected:aria-live',
+    );
+    this.setState({ selectAllMessage: message });
+
+    setTimeout(() => {
+      this.setState({ selectAllMessage: '' });
+    }, 500);
   };
 
   setInert(value: boolean) {
@@ -526,8 +548,20 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
   render() {
     const SDataTable = Root;
-    const { Children, styles, w, wMax, wMin, h, hMax, hMin, virtualScroll, children, headerProps } =
-      this.asProps;
+    const {
+      Children,
+      styles,
+      w,
+      wMax,
+      wMin,
+      h,
+      hMax,
+      hMin,
+      virtualScroll,
+      children,
+      headerProps,
+      selectedRows,
+    } = this.asProps;
 
     const [offsetLeftSum, offsetRightSum] = getScrollOffsetValue(this.columns);
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
@@ -631,6 +665,12 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
         <ScrollArea.Bar orientation='horizontal' zIndex={10} />
         <ScrollArea.Bar orientation='vertical' zIndex={10} />
+
+        {selectedRows !== undefined && (
+          <ScreenReaderOnly aria-live='polite' role='status'>
+            {this.state.selectAllMessage}
+          </ScreenReaderOnly>
+        )}
       </ScrollArea>,
     );
   }
