@@ -38,7 +38,14 @@ const Demo = () => {
   }, [ariaMessage]);
 
   return (
-    <Box wMax={800} h={'100%'} hMax={800} style={{ overflow: 'auto', scrollPaddingTop: !!selectedRows.length ? '44px' : undefined }}>
+    <Box
+      // need this for FF
+      tabIndex={-1}
+      wMax={800}
+      h={'100%'}
+      hMax={800}
+      style={{ overflow: 'auto', scrollPaddingTop: !!selectedRows.length ? '44px' : undefined }}
+    >
       <ScreenReaderOnly role='status' aria-live='polite'>
         {ariaMessage}
       </ScreenReaderOnly>
