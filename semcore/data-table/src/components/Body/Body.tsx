@@ -202,6 +202,9 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
       scrollDirection,
       tableContainerRef,
       scrollTop,
+      renderEmptyData,
+      columns,
+      uid,
       rows,
     } = this.asProps;
 
@@ -302,8 +305,21 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
     startIndex = startIndex === -1 ? 0 : startIndex;
     const rowMarginTop = this.rowsHeightMap.get(startIndex - 1)?.[1];
 
+    let emptyRow: DTRow | null = null;
+
+    if (rowsToRender.length === 0) {
+      emptyRow = {
+        [UNIQ_ROW_KEY]: `${uid}_empty_data`,
+        [columns[0].name]: new MergedColumnsCell(renderEmptyData(), {
+          dataKey: columns[0].name,
+          size: columns.length,
+        }),
+      };
+    }
+
     return sstyled(styles)(
       <SBody render={Box} __excludeProps={['data']}>
+        {emptyRow && <Body.Row row={emptyRow} offset={0} />}
         {typeof virtualScroll === 'boolean' && rowMarginTop && <Box h={rowMarginTop} />}
         {rowsToRender.map((row, index) => {
           if (Array.isArray(row)) {
