@@ -62,9 +62,8 @@ test.describe('Loading states', () => {
 
     const noData = page.locator('[data-ui-name="WidgetNoData"]');
     await expect(noData).toHaveAttribute('role', 'status');
-    
+
     await page.keyboard.press('Tab');
     await expect(page).toHaveScreenshot();
-
   });
 });
