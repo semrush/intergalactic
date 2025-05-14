@@ -7,7 +7,7 @@ const getColorVars = require('./utils/vars');
 
 const RESHADOW_MAGIC_COMMENTS = {
   CSS_START: '__reshadow_css_start__',
-  FILE_PATH: '__reshadow-styles__',
+  FILE_PATH: '!__reshadow-styles__',
 };
 
 const SEMCORE_MAGIC_COMMENTS = {

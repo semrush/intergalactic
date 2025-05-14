@@ -9,7 +9,7 @@ const Demo = () => {
       <Text tag='label' size={200} htmlFor='main-theme-color'>
         Main theme color
       </Text>
-      <ColorPicker>
+      <ColorPicker >
         <ColorPicker.Trigger mt={2} id='main-theme-color' />
         <ColorPicker.Popper>
           <ColorPicker.Colors />
