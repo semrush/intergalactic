@@ -147,6 +147,11 @@
       "import": "./lib/utils/canUseDOM.mjs",
       "types": "./lib/utils/canUseDOM.d.ts"
     },
+    "./lib/utils/CSSinJS": {
+      "require": "./lib/utils/CSSinJS.js",
+      "import": "./lib/utils/CSSinJS.mjs",
+      "types": "./lib/utils/CSSinJS.d.ts"
+    },
     "./lib/utils/cssToIntDefault": {
       "require": "./lib/utils/cssToIntDefault.js",
       "import": "./lib/utils/cssToIntDefault.mjs",

@@ -18,6 +18,18 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Margins and paddings for addons and text, sizes of `Circle` addons for different tag sizes.
 
+## [5.54.2] - 2025-05-13
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.48.4 ~> 4.48.5], `@semcore/icon` [4.62.0 ~> 4.62.1], `@semcore/flex-box` [5.41.3 ~> 5.41.4], `@semcore/core` [2.39.3 ~> 2.39.4]).
+
+## [5.54.1] - 2025-05-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.48.2 ~> 4.48.4], `@semcore/icon` [4.61.0 ~> 4.62.0], `@semcore/flex-box` [5.41.2 ~> 5.41.3], `@semcore/core` [2.39.2 ~> 2.39.3]).
+
 ## [5.54.0] - 2025-04-11
 
 ### Changed

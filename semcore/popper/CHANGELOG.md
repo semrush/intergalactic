@@ -8,6 +8,18 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Import it from `@semcore/core`.
 
+## [5.46.4] - 2025-05-13
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [2.41.3 ~> 2.41.4], `@semcore/flex-box` [5.41.3 ~> 5.41.4], `@semcore/neighbor-location` [4.40.3 ~> 4.40.4], `@semcore/outside-click` [3.40.1 ~> 3.40.2], `@semcore/utils` [4.48.4 ~> 4.48.5], `@semcore/core` [2.39.3 ~> 2.39.4]).
+
+## [5.46.3] - 2025-05-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [2.41.2 ~> 2.41.3], `@semcore/flex-box` [5.41.2 ~> 5.41.3], `@semcore/neighbor-location` [4.40.2 ~> 4.40.3], `@semcore/outside-click` [3.40.0 ~> 3.40.1], `@semcore/utils` [4.48.2 ~> 4.48.4], `@semcore/core` [2.39.2 ~> 2.39.3]).
+
 ## [5.46.2] - 2025-04-04
 
 ### Changed

@@ -11,7 +11,7 @@ To animate the appearance and hiding of an element, it is better to pass a `hidd
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/example_of_dot_animation.tsx';
+  export Demo from 'stories/components/dot/docs/examples/example_of_dot_animation.tsx';
 </script>
 
 :::

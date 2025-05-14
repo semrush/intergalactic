@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.2.1] - 2025-05-13
+
+### Fixed
+
+- Plugin to work with both esm and cjs.
+
+## [1.2.0] - 2025-05-07
+
+### Fixed
+
+- Plugin to work with esm-builds by vite.
+
 ## [1.1.1] - 2023-03-31
 
 ### Fixed

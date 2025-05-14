@@ -8,6 +8,18 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Major version.
 
+## [4.52.2] - 2025-05-13
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/base-trigger` [4.53.1 ~> 4.53.2], `@semcore/button` [5.43.2 ~> 5.43.3], `@semcore/checkbox` [7.44.3 ~> 7.44.4], `@semcore/divider` [4.40.3 ~> 4.40.4], `@semcore/dropdown-menu` [4.48.1 ~> 4.48.2], `@semcore/dropdown` [4.43.3 ~> 4.43.4], `@semcore/popper` [5.46.3 ~> 5.46.4], `@semcore/flex-box` [5.41.3 ~> 5.41.4], `@semcore/icon` [4.62.0 ~> 4.62.1], `@semcore/input` [4.42.3 ~> 4.42.4], `@semcore/utils` [4.48.4 ~> 4.48.5], `@semcore/core` [2.39.3 ~> 2.39.4]).
+
+## [4.52.1] - 2025-05-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/base-trigger` [4.53.0 ~> 4.53.1], `@semcore/button` [5.43.1 ~> 5.43.2], `@semcore/checkbox` [7.44.2 ~> 7.44.3], `@semcore/divider` [4.40.2 ~> 4.40.3], `@semcore/dropdown-menu` [4.48.0 ~> 4.48.1], `@semcore/dropdown` [4.43.2 ~> 4.43.3], `@semcore/popper` [5.46.2 ~> 5.46.3], `@semcore/flex-box` [5.41.2 ~> 5.41.3], `@semcore/icon` [4.61.0 ~> 4.62.0], `@semcore/input` [4.42.2 ~> 4.42.3], `@semcore/utils` [4.48.2 ~> 4.48.4], `@semcore/core` [2.39.2 ~> 2.39.3]).
+
 ## [4.52.0] - 2025-04-11
 
 ### Changed

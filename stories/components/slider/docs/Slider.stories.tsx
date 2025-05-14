@@ -1,27 +1,27 @@
 import type { Meta, StoryObj } from '@storybook/react';
-
 import Slider from '@semcore/slider';
 
-import NumericSliderExample from './examples/numeric_slider';
-import CustomizedOptionsViewExample from './examples/customized_options_view';
+import NumericExampleExample from './examples/numeric_slider';
 import SliderWithOptionsExample from './examples/slider_with_options';
+import CustomizesOptionsViewExample from './examples/customized_options_view';
+
 
 const meta: Meta<typeof Slider> = {
-    title: 'Components/Slider/Documentation',
-    component: Slider,
+  title: 'Components/Slider/Documentation',
+  component: Slider,
 };
 
 export default meta;
 type Story = StoryObj<typeof Slider>;
 
-export const NumericSlider: Story = {
-    render: NumericSliderExample,
-};
-
-export const CustomizedOptionsView: Story = {
-    render: CustomizedOptionsViewExample,
+export const NumericExample: Story = {
+  render: NumericExampleExample,
 };
 
 export const SliderWithOptions: Story = {
-    render: SliderWithOptionsExample,
+  render: SliderWithOptionsExample,
+};
+
+export const CustomizesOptionsView: Story = {
+  render: CustomizesOptionsViewExample,
 };
