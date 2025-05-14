@@ -11,27 +11,8 @@ const data = [
   ];
 
 const Demo = () => {
-  const [sort, setSort] = React.useState<DataTableSort<keyof typeof data[0]>>(['keyword','desc']);
-  const sortedData = React.useMemo(
-    () =>
-      [...data].sort((aRow, bRow) => {
-        const [prop, sortDirection] = sort;
-        const a = aRow[prop as SortableColumn];
-        const b = bRow[prop as SortableColumn];
-        if (a === b) return 0;
-        if (sortDirection === 'asc') return a > b ? 1 : -1;
-        else return a > b ? -1 : 1;
-      }),
-    [sort],
-  );
-  const numberFormat = React.useMemo(() => new Intl.NumberFormat('en-US'), []);
-  const currencyFormat = React.useMemo(
-    () => new Intl.NumberFormat('en-US', { currency: 'USD', style: 'currency' }),
-    [],
-  );
-  const handleSortChange: (sort: DataTableSort<string>, e?: React.SyntheticEvent) => void = (newSort) => {
-    setSort(newSort as DataTableSort<SortableColumn>);
-  };
+  const [sort, setSort] = React.useState<DataTableSort<keyof typeof data[0]>>(['keyword/kd/cpc/vol','desc']);
+
   return (
 
     <DataTable  data={[]} sort={sort}  aria-label={'Sorting'}
