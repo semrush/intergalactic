@@ -274,7 +274,8 @@ test.describe('Base styles Secondary Table', () => {
   });
 
   test('Verify Secondary padding when sideIndent l is set', async ({ page, browserName }) => {
-    const standPath = 'stories/components/data-table/tests/examples/header-tests/secondary-header.tsx';
+    const standPath =
+      'stories/components/data-table/tests/examples/header-tests/secondary-header.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
     const table = page.locator('[data-ui-name="DataTable"]');
@@ -304,7 +305,6 @@ test.describe('Base styles Secondary Table', () => {
       });
     }
   });
-
 
   test('Verify styles when long text and icons in header', async ({ page }) => {
     const standPath =
