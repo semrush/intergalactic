@@ -39,6 +39,7 @@ import { NoData } from '@semcore/widget-empty';
 export const ACCORDION = Symbol('accordion');
 export const ROW_GROUP = Symbol('ROW_GROUP');
 export const UNIQ_ROW_KEY = Symbol('UNIQ_ROW_KEY');
+export const ROW_INDEX = Symbol('ROW_INDEX');
 
 const SCROLL_BAR_HEIGHT = 12;
 
@@ -918,7 +919,8 @@ class DataTableRoot<D extends DataTableData> extends Component<
           return acc;
         },
         {
-          [UNIQ_ROW_KEY]: row[UNIQ_ROW_KEY] ?? `${uid}_${(rowIndex + id).toString(36)}`,
+          [UNIQ_ROW_KEY]: row[UNIQ_ROW_KEY] || `${uid}_${(rowIndex + id).toString(36)}`,
+          [ROW_INDEX]: rowIndex,
         },
       );
 
@@ -938,21 +940,19 @@ class DataTableRoot<D extends DataTableData> extends Component<
     data.forEach((row) => {
       const groupedRows: DataTableData | undefined = row[ROW_GROUP];
 
-      const fromRow = rowIndex + 2; // 1 - for header, 1 - because start not from 0, but from 1
-
       if (groupedRows) {
-        const toRow = fromRow + groupedRows.length;
         const innerRows: DTRow[] = [];
 
         const groupedKeys: string[] = [];
         const groupedRowData = Object.entries(row).reduce<DTRow>(
           (acc, [key, value]) => {
-            acc[key] = new MergedRowsCell(value, [fromRow, toRow]);
+            acc[key] = new MergedRowsCell(value, groupedRows.length);
             groupedKeys.push(key);
             return acc;
           },
           {
             [UNIQ_ROW_KEY]: '', // will fill in makeDtRow
+            [ROW_INDEX]: -1,
           },
         );
 

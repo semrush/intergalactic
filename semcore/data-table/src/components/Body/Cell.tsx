@@ -94,7 +94,7 @@ class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner>
       gridArea = `${fromRow} / ${fromCol} / ${fromRow + 1} / ${fromCol + cell.columnsCount}`;
       scope = 'colgroup';
     } else if (cell instanceof MergedRowsCell) {
-      gridArea = `${cell.fromRow} / ${fromCol} / ${cell.toRow} / ${fromCol + 1}`;
+      gridArea = `${fromRow} / ${fromCol} / ${fromRow + cell.rowsCount} / ${fromCol + 1}`;
       scope = 'rowgroup';
     } else {
       gridArea = `${fromRow} / ${fromCol} / ${fromRow + 1} / ${fromCol + 1}`;
@@ -114,7 +114,7 @@ class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner>
         data-grouped-by={scope}
         scope={scope}
         aria-colspan={cell instanceof MergedColumnsCell ? cell.columnsCount : undefined}
-        aria-rowspan={cell instanceof MergedRowsCell ? cell.toRow - cell.fromRow : undefined}
+        aria-rowspan={cell instanceof MergedRowsCell ? cell.rowsCount : undefined}
         gridArea={gridArea}
         borders={column.borders}
         flexWrap={column.flexWrap}
