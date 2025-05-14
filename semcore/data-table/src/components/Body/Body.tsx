@@ -61,6 +61,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
       rowProps,
       rows,
       flatRows,
+      sideIndents,
     } = this.asProps;
     const row = props.row;
     const index = row[ROW_INDEX];
@@ -107,6 +108,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
       inert: loading ? '' : undefined,
       scrollAreaRef,
       uid,
+      sideIndents,
     };
   }
 

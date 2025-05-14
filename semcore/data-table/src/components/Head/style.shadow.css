@@ -165,3 +165,12 @@ SSortButton {
   opacity: 0;
   transition: opacity 0.3s ease;
 }
+
+SHead[sideIndents='l'] {
+  SColumn:first-child {
+    padding-left: var(--intergalactic-spacing-5x, 20px);
+  }
+  SColumn:last-child {
+    padding-right: var(--intergalactic-spacing-5x, 20px);
+  }
+}

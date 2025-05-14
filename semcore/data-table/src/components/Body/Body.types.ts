@@ -46,4 +46,5 @@ export type BodyPropsInner = {
   onBackFromAccordion: (colIndex: number) => void;
   stickyHeader?: boolean;
   renderEmptyData: () => React.ReactNode;
+  sideIndents?: 'l';
 };
