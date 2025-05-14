@@ -239,7 +239,7 @@ const DesignTokensTable = React.memo(({ filteredTokens }) => {
 
         return props.defaultRender();
       }}
-      renderEmpryData={() => {
+      renderEmptyData={() => {
         return (
           <NoData
             py={10}

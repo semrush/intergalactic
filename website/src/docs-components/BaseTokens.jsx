@@ -96,7 +96,7 @@ const BaseTokensTable = React.memo(({ filteredTokens }) => {
       columns={columns}
       headerProps={{ sticky: true }}
       virtualScroll
-      renderEmpryData={() => {
+      renderEmptyData={() => {
         return (
           <NoData
             py={10}
