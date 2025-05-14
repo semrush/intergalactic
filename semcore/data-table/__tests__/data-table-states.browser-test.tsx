@@ -68,7 +68,6 @@ test.describe('Loading states', () => {
   });
 });
 
-
 test.describe('Additional states', () => {
   test('Verify table with checkbox attributes and mouse interaction', async ({ page }) => {
     const standPath = 'stories/components/data-table/docs/examples/checkbox-in-table.tsx';
@@ -81,11 +80,9 @@ test.describe('Additional states', () => {
     const firstColumnCells = page.locator('[data-ui-name="Body.Cell"][aria-colindex="1"]');
     const headerCheckbox = firstHeader.locator('input');
 
-
-    await test.step('Verify checkbox in header aria label is All items', async () => { 
+    await test.step('Verify checkbox in header aria label is All items', async () => {
       await expect(headerCheckbox).toHaveAttribute('aria-label', 'All items');
       await expect(headerCheckbox).toHaveAttribute('aria-invalid', 'false');
-
     });
 
     await test.step('Verify no action bar when nothing selected', async () => {
@@ -93,13 +90,12 @@ test.describe('Additional states', () => {
     });
 
     await test.step('Verify neach checkbox in cell has aria-labelledby ', async () => {
-   
-     const count = await firstColumnCells.count();
-     for (let i = 0; i < count; i++) {
-      const firstColumnCell = firstColumnCells.nth(i);
-      const checkbox = firstColumnCell.locator('input');
-      await expect(checkbox).toHaveAttribute('aria-labelledby');
-    }
+      const count = await firstColumnCells.count();
+      for (let i = 0; i < count; i++) {
+        const firstColumnCell = firstColumnCells.nth(i);
+        const checkbox = firstColumnCell.locator('input');
+        await expect(checkbox).toHaveAttribute('aria-labelledby');
+      }
     });
 
     await test.step('Verify  action bar when one checkbox is selected', async () => {
@@ -114,12 +110,10 @@ test.describe('Additional states', () => {
       firstColumnCells.nth(3).click();
       await expect(actionBar).toBeVisible();
 
-      const button =page.locator('[data-ui-name="Button"]');
+      const button = page.locator('[data-ui-name="Button"]');
       button.click();
       await expect(actionBar).toBeHidden();
-
     });
-
   });
 
   test('Verify table with checkbox keyboard interaction', async ({ page }) => {
@@ -133,14 +127,13 @@ test.describe('Additional states', () => {
     const firstColumnCells = page.locator('[data-ui-name="Body.Cell"][aria-colindex="1"]');
     const headerCheckbox = firstHeader.locator('input');
 
-    await test.step('Verify checkbox in header focused by tab', async () => { 
+    await test.step('Verify checkbox in header focused by tab', async () => {
       await page.keyboard.press('Tab');
       await expect(headerCheckbox).toBeFocused();
       const classAttr = await headerCheckbox.getAttribute('class');
-    
+
       // Проверяем, содержит ли класс слово "checked"
       expect(classAttr).not.toContain('checked');
-
     });
 
     await test.step('Verify no action bar when nothing selected', async () => {
@@ -148,44 +141,43 @@ test.describe('Additional states', () => {
     });
 
     await test.step('Verify all checkoxes checked by activating header ', async () => {
-   
       await page.keyboard.press('Space');
       await page.waitForTimeout(100);
       const classAttr = await headerCheckbox.getAttribute('class');
-          expect(classAttr).toContain('checked');
-          await expect(actionBar).toBeVisible();
-
-     const count = await firstColumnCells.count();
-     for (let i = 0; i < count; i++) {
-      const firstColumnCell = firstColumnCells.nth(i);
-      const checkbox = firstColumnCell.locator('input[type="checkbox"][data-ui-name="Checkbox.Value"]');
-
-      await expect(checkbox).toHaveCount(1);
-    
-      const classAttr = await checkbox.getAttribute('class');
-    
       expect(classAttr).toContain('checked');
-    }
+      await expect(actionBar).toBeVisible();
+
+      const count = await firstColumnCells.count();
+      for (let i = 0; i < count; i++) {
+        const firstColumnCell = firstColumnCells.nth(i);
+        const checkbox = firstColumnCell.locator(
+          'input[type="checkbox"][data-ui-name="Checkbox.Value"]',
+        );
+
+        await expect(checkbox).toHaveCount(1);
+
+        const classAttr = await checkbox.getAttribute('class');
+
+        expect(classAttr).toContain('checked');
+      }
     });
 
     await test.step('Verify all checkoxes checked by activating header ', async () => {
-   
       await page.keyboard.press('Space');
       await page.waitForTimeout(100);
-       await expect(actionBar).not.toBeVisible();
-       await expect(actionBar).toBeHidden();
+      await expect(actionBar).not.toBeVisible();
+      await expect(actionBar).toBeHidden();
 
-       await page.keyboard.press('ArrowDown');
-       await page.keyboard.press('Space');
-       await expect(actionBar).toBeVisible();
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('Space');
+      await expect(actionBar).toBeVisible();
 
-       const checkbox = firstColumnCells.nth(0).locator('input[type="checkbox"][data-ui-name="Checkbox.Value"]');
+      const checkbox = firstColumnCells
+        .nth(0)
+        .locator('input[type="checkbox"][data-ui-name="Checkbox.Value"]');
 
-       const classAttr = await checkbox.getAttribute('class');
-       expect(classAttr).toContain('checked');
-     
+      const classAttr = await checkbox.getAttribute('class');
+      expect(classAttr).toContain('checked');
     });
-
-    
   });
 });
