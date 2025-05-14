@@ -158,10 +158,10 @@ test.describe('Accordion in table', () => {
       const row3 = page.locator('[data-ui-name="Body.Row"][aria-rowindex="2"]');
       const cells = row3.locator('div');
 
-      await expect(cells.first()).toHaveAttribute('aria-expanded', 'false');
+      await expect(firstArrow).toHaveAttribute('aria-expanded', 'false');
       await expect(cells.nth(1)).not.toHaveAttribute('aria-expanded', 'false');
       await firstArrow.click();
-      await expect(cells.first()).toHaveAttribute('aria-expanded', 'true');
+      await expect(firstArrow).toHaveAttribute('aria-expanded', 'true');
       await expect(cells.first()).toHaveAttribute('data-aria-level', '1');
     });
 
@@ -240,10 +240,10 @@ test.describe('Accordion in table', () => {
       const row3 = page.locator('[data-ui-name="Body.Row"][aria-rowindex="2"]');
       const cells = row3.locator('div');
 
-      await expect(cells.first()).toHaveAttribute('aria-expanded', 'false');
+      await expect(firstArrow).toHaveAttribute('aria-expanded', 'false');
       await expect(cells.nth(1)).not.toHaveAttribute('aria-expanded', 'false');
       await firstArrow.click();
-      await expect(cells.first()).toHaveAttribute('aria-expanded', 'true');
+      await expect(firstArrow).toHaveAttribute('aria-expanded', 'true');
       await expect(cells.first()).toHaveAttribute('data-aria-level', '1');
     });
 
@@ -271,6 +271,45 @@ test.describe('Accordion in table', () => {
           await expect(cell).toHaveAttribute('data-ui-name', 'Body.Cell');
         }
       }
+    });
+  });
+
+  test('Verify table in table keyboard navigation', async ({ page }) => {
+    const standPath = 'stories/components/data-table/docs/examples/table-in-table.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const rows = page.locator('[data-ui-name="Body.Row"]');
+    await page.keyboard.press('Tab');
+
+    await test.step('Verify it is possible to scroll the last cell by keyboard when accordion collapsed', async () => {
+      const rowCount = await rows.count();
+
+      for (let i = 0; i < rowCount; i++) {
+        await page.keyboard.press('ArrowDown');
+      }
+      const lastRow = page.locator('[data-ui-name="Body.Row"][aria-rowindex="6"]');
+      const cellinLastRow = lastRow.locator(
+        '[data-ui-name="Body.Cell"][aria-colindex="1"][data-aria-level="1"]',
+      );
+
+      await expect(cellinLastRow).toBeFocused();
+    });
+
+    await test.step('Verify it is possible to scroll the last cell by keyboard when accordion expanded', async () => {
+      await page.keyboard.press('ArrowUp');
+      await page.keyboard.press('ArrowUp');
+      await page.keyboard.press('ArrowUp');
+      await page.keyboard.press('Enter');
+      for (let i = 0; i < 6; i++) await page.keyboard.press('ArrowDown');
+
+      const lastRow = page.locator('[data-ui-name="Body.Row"][aria-rowindex="9"]');
+      const cellinLastRow = lastRow.locator(
+        '[data-ui-name="Body.Cell"][aria-colindex="1"][data-aria-level="1"]',
+      );
+
+      await expect(cellinLastRow).toBeFocused();
     });
   });
 
@@ -367,14 +406,20 @@ test.describe('Accordion in table', () => {
 
     await test.step('Verify rowcount when accordion not expanded', async () => {
       await expect(table).toHaveAttribute('aria-rowcount', '7');
-      await expect(firstrowCell).toHaveAttribute('aria-expanded', 'false');
+      await expect(firstrowCell.locator('[data-ui-name="ButtonLink"]')).toHaveAttribute(
+        'aria-expanded',
+        'false',
+      );
     });
 
     await test.step('Verify table in table expands', async () => {
       await page.keyboard.press('Enter');
       await expect(elementsIncell.first()).toBeFocused();
       await expect(table).toHaveAttribute('aria-rowcount', '10');
-      await expect(firstrowCell).toHaveAttribute('aria-expanded', 'true');
+      await expect(firstrowCell.locator('[data-ui-name="ButtonLink"]')).toHaveAttribute(
+        'aria-expanded',
+        'true',
+      );
     });
 
     await test.step('Verify focus table in table cell and back by arrows', async () => {
@@ -384,7 +429,10 @@ test.describe('Accordion in table', () => {
       await expect(cell).toBeFocused();
       await page.keyboard.press('ArrowUp');
       await expect(table).toHaveAttribute('aria-rowcount', '10');
-      await expect(firstrowCell).toHaveAttribute('aria-expanded', 'true');
+      await expect(firstrowCell.locator('[data-ui-name="ButtonLink"]')).toHaveAttribute(
+        'aria-expanded',
+        'true',
+      );
     });
 
     await test.step('Verify focus on the next paren row when child table finished', async () => {
@@ -397,7 +445,10 @@ test.describe('Accordion in table', () => {
       const cell2 = row.locator('[data-ui-name="Body.Cell"][aria-colindex="2"]');
       await expect(cell2).toBeFocused();
       await expect(table).toHaveAttribute('aria-rowcount', '10');
-      await expect(firstrowCell).toHaveAttribute('aria-expanded', 'true');
+      await expect(firstrowCell.locator('[data-ui-name="ButtonLink"]')).toHaveAttribute(
+        'aria-expanded',
+        'true',
+      );
       await page.keyboard.press('Enter');
       await expect(table).toHaveAttribute('aria-rowcount', '10');
       await page.keyboard.press('ArrowLeft');
@@ -406,8 +457,14 @@ test.describe('Accordion in table', () => {
       await page.keyboard.press('Enter');
       const cell1 = row.locator('[data-ui-name="Body.Cell"][aria-colindex="1"]');
       await expect(table).toHaveAttribute('aria-rowcount', '13');
-      await expect(firstrowCell).toHaveAttribute('aria-expanded', 'true');
-      await expect(cell1).toHaveAttribute('aria-expanded', 'true');
+      await expect(firstrowCell.locator('[data-ui-name="ButtonLink"]')).toHaveAttribute(
+        'aria-expanded',
+        'true',
+      );
+      await expect(cell1.locator('[data-ui-name="ButtonLink"]')).toHaveAttribute(
+        'aria-expanded',
+        'true',
+      );
     });
 
     await test.step('Verify expanded cell dont collapse when changing place by sorting', async () => {
@@ -424,11 +481,17 @@ test.describe('Accordion in table', () => {
 
       const newRow1 = page.locator('[role="row"][aria-rowindex="7"]');
       const newCell = newRow1.locator('[data-ui-name="Body.Cell"][aria-colindex="1"]');
-      await expect(newCell).toHaveAttribute('aria-expanded', 'true');
+      await expect(newCell.locator('[data-ui-name="ButtonLink"]')).toHaveAttribute(
+        'aria-expanded',
+        'true',
+      );
 
       const newRow2 = page.locator('[role="row"][aria-rowindex="11"]');
       const newCell2 = newRow2.locator('[data-ui-name="Body.Cell"][aria-colindex="1"]');
-      await expect(newCell2).toHaveAttribute('aria-expanded', 'true');
+      await expect(newCell2.locator('[data-ui-name="ButtonLink"]')).toHaveAttribute(
+        'aria-expanded',
+        'true',
+      );
 
       await expect(page).toHaveScreenshot();
     });
@@ -476,7 +539,7 @@ test.describe('Accordion in table', () => {
 
     await test.step('Verify rowcount when accordion expanded', async () => {
       await expect(table.first()).toHaveAttribute('aria-rowcount', '8');
-      await expect(rowCellWithAcc.first()).toHaveAttribute('aria-expanded', 'true');
+      await expect(sortIconKeywordAcc).toHaveAttribute('aria-expanded', 'true');
     });
 
     const collapse = page.locator('[data-ui-name="Collapse"]');
@@ -532,6 +595,7 @@ test.describe('Accordion in table', () => {
 
     await test.step('Verify keyboard navigation when child table collapsed', async () => {
       await page.keyboard.press('Enter');
+      await expect(sortIconKeywordAcc).toHaveAttribute('aria-expanded', 'false');
       await page.keyboard.press('ArrowDown');
       const nextRow = table.first().locator('[data-ui-name="Body.Row"][aria-rowindex="5"]');
       const nextCell = nextRow.locator('[data-ui-name="Body.Cell"][aria-colindex="4"]').first();
@@ -558,7 +622,7 @@ test.describe('Accordion in table', () => {
       await sortIconKeywordAcc.click();
 
       await expect(table.first()).toHaveAttribute('aria-rowcount', '8');
-      await expect(rowCellWithAcc.first()).toHaveAttribute('aria-expanded', 'true');
+      await expect(sortIconKeywordAcc).toHaveAttribute('aria-expanded', 'true');
       await expect(datatableChild).toBeVisible();
     });
 
@@ -566,7 +630,7 @@ test.describe('Accordion in table', () => {
       await sortIconKeywordAcc.click();
 
       await expect(table.first()).toHaveAttribute('aria-rowcount', '7');
-      await expect(rowCellWithAcc.first()).toHaveAttribute('aria-expanded', 'false');
+      await expect(sortIconKeywordAcc).toHaveAttribute('aria-expanded', 'false');
       await expect(datatableChild).not.toBeVisible();
     });
   });

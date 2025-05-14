@@ -36,19 +36,19 @@ const Demo = () => {
           {name: 'cpc', children: 'CPC', gtcWidth: 'minmax(0, 60px)', sortable: true, changeSortSize: true},
           {name: 'vol', children: 'Vol.', gtcWidth: 'minmax(0, 120px)', justifyContent: 'left', sortable: true},
       ]}
-          renderCell={(props) => {
-            if (props.columnName === 'keyword') {
-              return props.defaultRender();
-            }
-
-            const value = props.defaultRender();
-
-            return typeof value === 'number' && value !== -1
-                ? (
-                    props.columnName === 'cpc' ? currencyFormat.format(value) : numberFormat.format(value)
-                )
-                : 'n/a';
-          }}
+      renderCell={(props) => {
+        if (props.columnName === 'keyword') {
+          return props.defaultRender();
+        }
+      
+        const rawValue = props.row[props.columnName as SortableColumn];
+      
+        return typeof rawValue === 'number' && rawValue !== -1
+          ? (props.columnName === 'cpc'
+              ? currencyFormat.format(rawValue)
+              : numberFormat.format(rawValue))
+          : 'n/a';
+      }}
       />
   );
 };
