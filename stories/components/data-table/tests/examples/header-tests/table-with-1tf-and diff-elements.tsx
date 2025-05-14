@@ -1,5 +1,5 @@
 import React from 'react';
-import { DataTable } from '@semcore/data-table';
+import { DataTable, DataTableSort } from '@semcore/data-table';
 import LinkExternalM from '@semcore/icon/LinkExternal/m';
 import Tooltip, { Hint } from '@semcore/tooltip';
 import Link from '@semcore/link';
@@ -9,13 +9,31 @@ import InfoM from '@semcore/icon/Info/m';
 import { ButtonLink } from '@semcore/button';
 import Ellipsis from '@semcore/ellipsis';
 import { Text } from '@semcore/typography';
+type SortableColumn = Exclude<keyof typeof data[0], 'keyword'>;
 
 const Demo = () => {
-
+  const [sort, setSort] = React.useState<DataTableSort<keyof typeof data[0]>>(['kd', 'asc']);
+  const sortedData = React.useMemo(
+    () =>
+      [...data].sort((aRow, bRow) => {
+        const [prop, sortDirection] = sort;
+        const a = aRow[prop as SortableColumn];
+        const b = bRow[prop as SortableColumn];
+        if (a === b) return 0;
+        if (sortDirection === 'asc') return a > b ? 1 : -1;
+        else return a > b ? -1 : 1;
+      }),
+    [sort],
+  );
+  const numberFormat = React.useMemo(() => new Intl.NumberFormat('en-US'), []);
+  const currencyFormat = React.useMemo(
+    () => new Intl.NumberFormat('en-US', { currency: 'USD', style: 'currency' }),
+    [],
+  );
   return (
 
     <DataTable
-    data={data} aria-label={'Base table example'} defaultGridTemplateColumnWidth={'1fr'} wMax={'1200px'} hMax={'200px'}
+    data={sortedData}  aria-label={'Base table example'} defaultGridTemplateColumnWidth={'1fr'} wMax={'1200px'} hMax={'200px'} sort={sort} onSortChange={setSort}
     headerProps={{
       sticky: true,
     }}
@@ -77,7 +95,7 @@ const Demo = () => {
       },
       {
         name: 'kd',
-        sortable: true,
+        sortable:  'asc',
         children: (
           <>
             <Text noWrap>
@@ -118,7 +136,7 @@ const Demo = () => {
       },
       {
         name: 'vol',
-        sortable: true,
+        sortable:  'desc',
         children: 'Vol.',
         tag: Tooltip,
   
