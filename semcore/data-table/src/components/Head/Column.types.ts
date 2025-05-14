@@ -3,6 +3,7 @@ import {
   DataTableData,
   DataTableProps,
   DTUse,
+  SortDirection,
 } from '../DataTable/DataTable.types';
 import { Property } from 'csstype';
 
@@ -14,7 +15,7 @@ export type CommonColumnType = {
   /**
    * Flag to define column as sortable
    */
-  sortable?: boolean;
+  sortable?: boolean | SortDirection;
   /**
    * Fixes column to some side of table
    */

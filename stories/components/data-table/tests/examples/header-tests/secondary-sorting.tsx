@@ -3,7 +3,7 @@ import { DataTable, DataTableSort } from '@semcore/data-table';
 type SortableColumn = Exclude<keyof typeof data[0], 'keyword'>;
 
 const Demo = () => {
-  const [sort, setSort] = React.useState<DataTableSort<keyof typeof data[0]>>(['kd', 'desc']);
+  const [sort, setSort] = React.useState<DataTableSort<keyof typeof data[0]>>(['kd', 'asc']);
   const sortedData = React.useMemo(
     () =>
       [...data].sort((aRow, bRow) => {
@@ -28,8 +28,8 @@ const Demo = () => {
         data={sortedData} use='secondary' defaultGridTemplateColumnWidth={'1fr'} aria-label={'Secondary'} sort={sort} onSortChange={setSort} hMax = {400}
             columns={[
                 { name: 'keyword', children: 'Keyword', sortable: true },
-                { name: 'kd', children: 'KD,%', sortable: true },
-                { name: 'cpc', children: 'CPC', sortable: true },
+                { name: 'kd', children: 'KD,%', sortable: 'asc' },
+                { name: 'cpc', children: 'CPC', sortable:  'desc' },
                 { name: 'vol', children: 'Vol.' },
           ]}
     />
