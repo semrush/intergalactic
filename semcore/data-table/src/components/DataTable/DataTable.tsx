@@ -284,7 +284,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
     const hasFocusable = this.hasFocusableInHeader();
 
     const maxCol = this.columns.length - 1;
-    const maxRow = this.totalRows;
+    const maxRow = this.totalRows || 1;
 
     const currentRow = this.tableRef.current?.querySelector(
       `[aria-rowindex="${this.focusedCell[0] + 1}"]`,
