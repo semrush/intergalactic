@@ -23,8 +23,8 @@ const Demo = () => {
 
   const handleChangeSelectedRows = (value: number[]) => {
     setSelectedRows(value);
-    setAriaMessage(value.length > 0 ? 'Action bar appeared before the table' : '');
-    if (value.length > 0) setSelectedRowsDisplay(value.length);
+    if (!selectedRows.length) setAriaMessage('Action bar appeared before the table');
+    if (value.length) setSelectedRowsDisplay(value.length);
   };
 
   const handleDeselectAll = () => {
@@ -42,30 +42,30 @@ const Demo = () => {
       <ScreenReaderOnly role='status' aria-live='polite'>
         {ariaMessage}
       </ScreenReaderOnly>
-      <Flex
-        role='region'
-        aria-label='Table action bar'
-        alignItems='center'
-        gap={6}
-        py={2}
-        px={3}
-        style={{
-          position: 'sticky',
-          top: 0,
-          zIndex: 2,
-          backgroundColor: 'var(--intergalactic-bg-primary-neutral, #ffffff)',
-        }}
-        tag={Collapse}
+      <Collapse
         visible={!!selectedRows.length}
         duration={150}
+        style={{ position: 'sticky', top: 0, zIndex: 2 }}
       >
-        <Text size={200}>
-          Selected rows: <Text bold>{selectedRowsDisplay}</Text>
-        </Text>
-        <Button use='tertiary' onClick={handleDeselectAll}>
-          Deselect all
-        </Button>
-      </Flex>
+        <Flex
+          role='region'
+          aria-label='Table action bar'
+          alignItems='center'
+          gap={6}
+          py={2}
+          px={3}
+          style={{
+            backgroundColor: 'var(--intergalactic-bg-primary-neutral, #ffffff)',
+          }}
+        >
+          <Text size={200}>
+            Selected rows: <Text bold>{selectedRowsDisplay}</Text>
+          </Text>
+          <Button use='tertiary' onClick={handleDeselectAll}>
+            Deselect all
+          </Button>
+        </Flex>
+      </Collapse>
       <DataTable
         data={data}
         aria-label={'Table example with selectable rows'}
@@ -73,7 +73,7 @@ const Demo = () => {
         selectedRows={selectedRows}
         onSelectedRowsChange={handleChangeSelectedRows}
         ref={tableRef}
-        headerProps={{sticky: true}}
+        headerProps={{ sticky: true }}
         columns={[
           { name: 'keyword', children: 'Keyword' },
           { name: 'kd', children: 'KD,%' },
