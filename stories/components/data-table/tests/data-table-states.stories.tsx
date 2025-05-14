@@ -5,7 +5,7 @@ import { DataTable } from '@semcore/data-table';
 
 import LoadingScrollExample from './examples/table-states-tests/loading-in-scroll';
 import LoadingPaginationExample from './examples/table-states-tests/loading-in-pagination';
-import NothingFoundSortableExample from './examples/table-states-tests/nothing-found-sortable';
+import EmptyStateSortableExample from './examples/table-states-tests/nothing-found-sortable';
 import LoadingWithScrollAndButtonExample from './examples/table-states-tests/loading-with-button-and-scroll';
 
 
@@ -18,8 +18,8 @@ export default meta;
 type Story = StoryObj<typeof DataTable>;
 
 
-export const NothingFoundSortable: Story = {
-  render: NothingFoundSortableExample,
+export const EmptyStateSortable: Story = {
+  render: EmptyStateSortableExample,
 };
 
 export const LoadingWithScrollAndButton: Story = {
