@@ -34,6 +34,7 @@ import { DataTableGroupProps } from '../Head/Group.type';
 import { hasParent } from '@semcore/core/lib/utils/hasParent';
 import trottle from '@semcore/core/lib/utils/rafTrottle';
 import { MergedColumnsCell, MergedRowsCell } from '../Body/MergedCells';
+import { NoData } from '@semcore/widget-empty';
 
 export const ACCORDION = Symbol('accordion');
 export const ROW_GROUP = Symbol('ROW_GROUP');
@@ -51,7 +52,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
   {},
   {},
   typeof DataTableRoot.enhance,
-  { use: DTRow; expandedRows: Set<string> }
+  { use: DTRow; expandedRows: Set<string>; renderEmptyData: () => React.ReactNode }
 > {
   static displayName = 'DataTable';
   static style = style;
@@ -63,6 +64,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
     defaultGridTemplateColumnWidth: 'auto',
     defaultExpandedRows: new Set<string>(),
     h: 'fit-content',
+    renderEmptyData: () => <NoData py={10} type={'nothing-found'} description={''} w={'100%'} />,
   };
 
   private columns: DTColumn[] = [];
@@ -202,6 +204,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
       rowProps,
       renderCell,
       headerProps,
+      renderEmptyData,
     } = this.asProps;
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
     return {
@@ -230,6 +233,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
       uid,
       rowProps,
       renderCell,
+      renderEmptyData,
     };
   }
 
@@ -280,7 +284,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
     const hasFocusable = this.hasFocusableInHeader();
 
     const maxCol = this.columns.length - 1;
-    const maxRow = this.totalRows;
+    const maxRow = this.totalRows || 1;
 
     const currentRow = this.tableRef.current?.querySelector(
       `[aria-rowindex="${this.focusedCell[0] + 1}"]`,

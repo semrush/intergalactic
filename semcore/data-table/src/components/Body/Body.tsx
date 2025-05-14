@@ -208,6 +208,9 @@ class BodyRoot<D extends DataTableData> extends Component<
       scrollDirection,
       tableContainerRef,
       scrollTop,
+      renderEmptyData,
+      columns,
+      uid,
       rows,
     } = this.asProps;
 
@@ -307,8 +310,21 @@ class BodyRoot<D extends DataTableData> extends Component<
 
     startIndex = startIndex === -1 ? 0 : startIndex;
 
+    let emptyRow: DTRow | null = null;
+
+    if (rowsToRender.length === 0) {
+      emptyRow = {
+        [UNIQ_ROW_KEY]: `${uid}_empty_data`,
+        [columns[0].name]: new MergedColumnsCell(renderEmptyData(), {
+          dataKey: columns[0].name,
+          size: columns.length,
+        }),
+      };
+    }
+
     return sstyled(styles)(
       <SBody render={Box} __excludeProps={['data']}>
+        {emptyRow && <Body.Row row={emptyRow} offset={0} />}
         {rowsToRender.map((row, index) => {
           let rowMarginTop: number | undefined = undefined;
 

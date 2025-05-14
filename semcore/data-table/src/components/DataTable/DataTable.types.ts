@@ -102,6 +102,8 @@ export type DataTableProps<D extends DataTableData> = DataTableAriaProps &
     rowProps?: (row: DTRow, rowIndex: number) => Record<string, any> | undefined;
 
     renderCell?: (props: CellRenderProps) => React.ReactNode | Record<string, any>;
+
+    renderEmptyData?: () => React.ReactNode;
   };
 
 export type ColumnItemConfig = Intergalactic.InternalTypings.EfficientOmit<
