@@ -1,6 +1,6 @@
 import React from 'react';
 import { DataTable } from '@semcore/data-table';
-import { Flex, ScreenReaderOnly } from '@semcore/flex-box';
+import { Box, Flex, ScreenReaderOnly } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import { Collapse } from '@semcore/animation';
 import Button from '@semcore/button';
@@ -38,7 +38,7 @@ const Demo = () => {
   }, [ariaMessage]);
 
   return (
-    <Flex direction='column' wMax={800} h={'100%'} hMax={800} style={{ overflow: 'auto', scrollPaddingTop: !!selectedRows.length ? '44px' : undefined }}>
+    <Box wMax={800} h={'100%'} hMax={800} style={{ overflow: 'auto', scrollPaddingTop: !!selectedRows.length ? '44px' : undefined }}>
       <ScreenReaderOnly role='status' aria-live='polite'>
         {ariaMessage}
       </ScreenReaderOnly>
@@ -83,7 +83,7 @@ const Demo = () => {
         styles={style}
         activePanel={!!selectedRows.length}
       />
-    </Flex>
+    </Box>
   );
 };
 
