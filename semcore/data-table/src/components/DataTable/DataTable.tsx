@@ -62,7 +62,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
     defaultGridTemplateColumnWidth: 'auto',
     defaultExpandedRows: new Set<string>(),
     h: 'fit-content',
-    renderEmptyData: () => <NoData py={10} type={'nothing-found'} description={''} />,
+    renderEmptyData: () => <NoData py={10} type={'nothing-found'} description={''} w={'100%'} />,
   };
 
   private columns: DTColumn[] = [];

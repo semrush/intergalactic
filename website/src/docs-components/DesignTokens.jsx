@@ -156,6 +156,10 @@ const DesignTokensTable = React.memo(({ filteredTokens }) => {
       virtualScroll={true}
       renderCell={(props) => {
         if (props.dataKey === 'name') {
+          if (filteredTokens.length === 0) {
+            return props.defaultRender();
+          }
+
           return (
             <Copy
               copiedToast='Copied'
@@ -243,6 +247,7 @@ const DesignTokensTable = React.memo(({ filteredTokens }) => {
             description={
               'Try searching by component name or its category, for example, "control", “bg”, “border”.'
             }
+            w={'100%'}
           />
         );
       }}

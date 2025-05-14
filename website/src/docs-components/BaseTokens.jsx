@@ -102,21 +102,25 @@ const BaseTokensTable = React.memo(({ filteredTokens }) => {
             py={10}
             type={'nothing-found'}
             description={'Try searching by color, for example, "blue" or #c4e5fe.'}
+            w={'100%'}
           />
         );
       }}
       renderCell={(props) => {
         if (props.dataKey === 'name') {
+          if (filteredTokens.length === 0) {
+            return props.defaultRender();
+          }
           return (
             <Copy
               copiedToast='Copied'
-              toCopy={props.row[props.dataKey]}
+              toCopy={props.value}
               title={'Copy to clipboard'}
               trigger='click'
               className={styles.tokenNameWrapper}
             >
               <button type='button' className={styles.tokenName} data-token-type={'baseToken'}>
-                {props.row[props.dataKey]}
+                {props.value}
               </button>
             </Copy>
           );
@@ -131,7 +135,7 @@ const BaseTokensTable = React.memo(({ filteredTokens }) => {
             >
               <button type='button' className={styles.tokenValue} data-token-type={'baseToken'}>
                 <ColorPreview color={props.row[props.dataKey]} />
-                {props.row[props.name]}
+                {props.row[props.dataKey]}
               </button>
             </Copy>
           );
