@@ -8,7 +8,7 @@ const Demo = () => {
             aria-label={'Base table example'}
             defaultGridTemplateColumnWidth={'auto'}
             wMax={'800px'}
-            sideIndents={'wide'}
+            sideIndents={'l'}
             headerProps={{
                 sticky: true,
             }}
