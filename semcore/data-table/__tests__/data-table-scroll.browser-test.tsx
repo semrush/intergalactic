@@ -343,7 +343,7 @@ test.describe('Horizontal Scroll', () => {
     const initialValue2 = await checkAriaMaxValue(scrollBar2);
 
     await page.keyboard.press('Tab');
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < 15; i++) {
       await page.keyboard.press('ArrowDown');
     }
     await page.waitForTimeout(100);
