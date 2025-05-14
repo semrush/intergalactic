@@ -17,6 +17,8 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
     'aria-level': undefined,
   };
 
+  private cellIndex = -1;
+
   cellHasAccordion(cellValue?: DTValue | MergedColumnsCell | MergedRowsCell): cellValue is DTValue {
     return (
       !(cellValue instanceof MergedRowsCell || cellValue instanceof MergedColumnsCell) &&
@@ -24,11 +26,18 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
     );
   }
 
+  handleBackFromAccordion = (e: React.KeyboardEvent) => {
+    if (e.key === 'Escape') {
+      this.asProps.onBackFromAccordion(this.cellIndex);
+    }
+  };
+
   render() {
     const SRow = Root;
     const SCollapseRow = Collapse;
     const SCell = Body.Cell;
     const {
+      uid,
       columns,
       row,
       styles,
@@ -48,9 +57,14 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
     let accordionType = accordion ? 'row' : undefined;
 
     if (!accordion) {
-      const cellWithAccordion = Object.values(row).find((value) => {
+      const cells = Object.values(row);
+      const cellWithAccordionIndex = cells.findIndex((value) => {
         return this.cellHasAccordion(value);
-      }) as DTValue | undefined;
+      });
+
+      this.cellIndex = cellWithAccordionIndex;
+
+      const cellWithAccordion = cells[cellWithAccordionIndex] as DTValue | undefined;
 
       accordion = cellWithAccordion?.[ACCORDION];
       accordionType = 'cell';
@@ -59,6 +73,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
     return sstyled(styles)(
       <>
         <SRow render={Box} role={'row'} aria-rowindex={ariaRowIndex} accordionType={accordionType}>
+          {rowMarginTop && <Box h={rowMarginTop} />}
           {columns.map((column, i) => {
             const index = i;
             const cellValue = row[column.name];
@@ -76,18 +91,12 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
                 style[name] = value;
               }
             }
-            if (rowMarginTop) {
-              style.marginTop = rowMarginTop;
-            }
 
             return (
               <Body.Cell
                 key={index}
-                aria-expanded={
-                  (row[ACCORDION] && index === 0) || this.cellHasAccordion(cellValue)
-                    ? expanded
-                    : undefined
-                }
+                id={`${uid}_${ariaRowIndex}_${index}`}
+                accordionId={`${uid}_${ariaRowIndex + 1}`}
                 data-aria-level={index === 0 ? ariaLevel : undefined}
                 row={row}
                 rowIndex={rowIndex}
@@ -107,6 +116,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
             key={rowIndex}
             role={'row'}
             aria-rowindex={ariaRowIndex + 1}
+            id={`${uid}_${ariaRowIndex + 1}`}
             visible={expanded}
             interactive
             gridArea={accordionDataGridArea}
@@ -126,6 +136,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
               position={'sticky'}
               left={0}
               w={scrollAreaRef.current?.clientWidth}
+              onKeyDown={this.handleBackFromAccordion}
             >
               {accordion}
             </SCell>

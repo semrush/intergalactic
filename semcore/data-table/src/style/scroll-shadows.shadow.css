@@ -15,7 +15,13 @@ SScrollArea {
       overflow-x: unset;
       overflow-y: auto;
     }
+    &[loading] {
+      overflow: hidden;
+    }
 
+    &[headerHeight] {
+      scroll-padding-top: var(--headerHeight);
+    }
   }
 
   SShadowVertical {

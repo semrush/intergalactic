@@ -32,7 +32,7 @@ class BodyRoot<D extends DataTableData> extends Component<
   private columnsSplitter = '/';
   private rows: Array<DTRow | DTRow[]> = [];
 
-  rowsHeightMap = new Map<number, [number, number]>();
+  rowsHeightMap = new Map<number, [number, number, HTMLElement]>();
 
   indexForDownIterate = 0;
   indexForUpIterate = 0;
@@ -51,16 +51,22 @@ class BodyRoot<D extends DataTableData> extends Component<
     }
   }
 
-  handleRef = (index: number) => (node: HTMLElement | null) => {
-    if (!this.rowsHeightMap.has(index)) {
-      const firstChild = node?.children.item(0);
-      if (firstChild instanceof HTMLElement) {
-        const offset = firstChild.offsetTop - this.asProps.headerHeight;
-        const height = firstChild.getBoundingClientRect().height;
-
-        this.rowsHeightMap.set(index, [offset, offset + height]);
-      }
+  handleRef = (index: number, row: DTRow) => (node: HTMLElement | null) => {
+    if (!this.rowsHeightMap.has(index) && node) {
+      this.rowsHeightMap.set(index, [0, 0, node]);
+      this.setRowHeight(index, row);
     }
+  };
+
+  handleExpandRow = (row: DTRow, index: number) => {
+    setTimeout(() => {
+      this.setRowHeight(index, row);
+      for (let i = index; i < this.rowsHeightMap.size; i++) {
+        this.setRowHeight(i, row);
+      }
+    }, 300); // we need to calculate after expanding animation
+
+    this.asProps.onExpandRow(row);
   };
 
   getRowProps(props: { row: DTRow; offset: number }, i: number): RowPropsInner {
@@ -74,6 +80,9 @@ class BodyRoot<D extends DataTableData> extends Component<
       loading,
       hasGroups,
       scrollAreaRef,
+      uid,
+      onBackFromAccordion,
+      rowProps,
     } = this.asProps;
     const row = props.row;
     const index = props.offset + i;
@@ -103,6 +112,7 @@ class BodyRoot<D extends DataTableData> extends Component<
       : `${gridRowIndex + 1} / 1 / ${gridRowIndex + 1} / ${columns.length + 1}`;
 
     return {
+      ...rowProps?.(row, index),
       use,
       gridTemplateAreas,
       gridTemplateColumns,
@@ -113,25 +123,19 @@ class BodyRoot<D extends DataTableData> extends Component<
       ariaRowIndex,
       gridRowIndex,
       rows: this.rows,
+      onBackFromAccordion,
       row,
       expandedRows,
       onExpandRow,
       inert: loading ? '' : undefined,
       scrollAreaRef,
+      uid,
     };
   }
 
   getCellProps(props: DataTableCellProps) {
-    const {
-      use,
-      renderCell,
-      expandedRows,
-      styles,
-      getI18nText,
-      onExpandRow,
-      virtualScroll,
-      tableRef,
-    } = this.asProps;
+    const { use, renderCell, expandedRows, styles, getI18nText, virtualScroll, tableRef } =
+      this.asProps;
     const SAccordionToggle = ButtonLink;
 
     let dataKey = props.column.name;
@@ -185,14 +189,18 @@ class BodyRoot<D extends DataTableData> extends Component<
     }
 
     if ((props.columnIndex === 0 && props.row[ACCORDION]) || value?.[ACCORDION]) {
+      const expanded = expandedRows?.has(props.row[UNIQ_ROW_KEY]);
       extraProps.children = sstyled(styles)(
         <>
           <SAccordionToggle
             aria-label={getI18nText('DataTable.Cell.AccordionToggle.expand:aria-label')}
             // @ts-ignore
-            expanded={expandedRows?.has(props.row[UNIQ_ROW_KEY])}
-            onClick={() => onExpandRow(props.row)}
+            expanded={expanded}
+            onClick={() => this.handleExpandRow(props.row, props.rowIndex)}
             color={'--intergalactic-icon-primary-neutral'}
+            aria-expanded={expanded}
+            aria-describedby={props.id}
+            aria-controls={props.accordionId}
           >
             <SAccordionToggle.Addon tag={ChevronRightM} />
           </SAccordionToggle>
@@ -283,7 +291,7 @@ class BodyRoot<D extends DataTableData> extends Component<
           }
 
           if (scrollTop < (this.rowsHeightMap.get(startIndex ?? 0)?.[0] ?? 0)) {
-            startIndex = startIndex - aproxRowsOnPage;
+            startIndex = Math.max(startIndex - aproxRowsOnPage, 0);
           }
         }
 
@@ -338,7 +346,7 @@ class BodyRoot<D extends DataTableData> extends Component<
               key={row[UNIQ_ROW_KEY]}
               row={row}
               offset={startIndex}
-              ref={this.handleRef(startIndex + index)}
+              ref={this.handleRef(startIndex + index, row)}
               rowMarginTop={rowMarginTop}
             />
           );
@@ -470,6 +478,22 @@ class BodyRoot<D extends DataTableData> extends Component<
     });
 
     return rows;
+  }
+
+  private setRowHeight(index: number, row: DTRow) {
+    const { expandedRows, stickyHeader, headerHeight } = this.asProps;
+    const node = this.rowsHeightMap.get(index)?.[2];
+    const firstChild = node?.children.item(0);
+    if (node && firstChild instanceof HTMLElement) {
+      const offset = firstChild.offsetTop - (stickyHeader ? headerHeight : 0);
+      let height = firstChild.getBoundingClientRect().height;
+
+      if (expandedRows.has(row[UNIQ_ROW_KEY]) && node.nextSibling instanceof HTMLElement) {
+        height = height + node.nextSibling.getBoundingClientRect().height;
+      }
+
+      this.rowsHeightMap.set(index, [offset, offset + height, node]);
+    }
   }
 }
 
