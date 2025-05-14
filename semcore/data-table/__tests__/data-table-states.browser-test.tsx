@@ -46,4 +46,25 @@ test.describe('Loading states', () => {
       expect(role).toBe('img');
     }
   });
+
+  test('Verify empty table state', async ({ page }) => {
+    const standPath = 'stories/components/data-table/docs/examples/empty-table.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const rowCell = page.locator('div[data-ui-name="Body.Cell"]');
+
+    await expect(rowCell).toHaveAttribute('tabindex', '-1');
+    await expect(rowCell).toHaveAttribute('data-grouped-by', 'colgroup');
+    await expect(rowCell).toHaveAttribute('scope', 'colgroup');
+    await expect(rowCell).toHaveAttribute('aria-colspan', '5');
+
+    const noData = page.locator('[data-ui-name="WidgetNoData"]');
+    await expect(noData).toHaveAttribute('role', 'status');
+    
+    await page.keyboard.press('Tab');
+    await expect(page).toHaveScreenshot();
+
+  });
 });
