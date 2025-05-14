@@ -206,11 +206,12 @@ class DataTableRoot<D extends DataTableData> extends Component<
       virtualScroll,
       data,
       uid,
+      rowProps,
       renderCell,
+      headerProps,
       selectedRows,
     } = this.asProps;
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
-
     return {
       columns: this.columns,
       data,
@@ -219,7 +220,8 @@ class DataTableRoot<D extends DataTableData> extends Component<
       gridTemplateColumns,
       gridTemplateAreas,
       loading,
-      headerHeight: this.getTopScrollOffset(),
+      headerHeight: this.getHeaderHeight(),
+      stickyHeader: headerProps?.sticky,
       getI18nText,
       expandedRows,
       onExpandRow: this.onExpandRow,
@@ -229,9 +231,11 @@ class DataTableRoot<D extends DataTableData> extends Component<
       tableContainerRef: this.tableContainerRef,
       tableRef: this.tableRef,
       scrollAreaRef: this.scrollAreaRef,
+      onBackFromAccordion: this.handleBackFromAccordion,
       virtualScroll,
       hasGroups: this.hasGroups,
       uid,
+      rowProps,
       renderCell,
       selectedRows,
       onSelectRow: this.handleSelectRow,
@@ -360,9 +364,11 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
     const row = this.getRow(newRow);
     const cell = row?.querySelector(
-      `[role=gridcell][aria-colindex="${newCol + 1}"], [role=columnheader][aria-colindex="${
+      `:scope > [role=gridcell][aria-colindex="${
         newCol + 1
-      }"]`,
+      }"], :scope > [role=columnheader][aria-colindex="${
+        newCol + 1
+      }"], :scope > div > [role=columnheader][aria-colindex="${newCol + 1}"]`,
     );
 
     if (cell instanceof HTMLElement && currentCell !== cell) {
@@ -546,6 +552,10 @@ class DataTableRoot<D extends DataTableData> extends Component<
     this.setInert(false);
   };
 
+  handleBackFromAccordion = (cellIndex: number) => {
+    this.changeFocusCell(-1, cellIndex === -1 ? 0 : cellIndex, 'up');
+  };
+
   render() {
     const SDataTable = Root;
     const {
@@ -560,6 +570,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
       virtualScroll,
       children,
       headerProps,
+      loading,
       selectedRows,
     } = this.asProps;
 
@@ -568,11 +579,9 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
     const Head = findComponent<DataTableHeadProps>(Children, ['DataTable.Head']);
     const headerPropsToCheck = headerProps ?? Head?.props;
-
+    const headerHeight = this.getHeaderHeight();
     const topOffset =
-      headerPropsToCheck?.sticky || headerPropsToCheck?.withScrollBar
-        ? this.getTopScrollOffset()
-        : undefined;
+      headerPropsToCheck?.sticky || headerPropsToCheck?.withScrollBar ? headerHeight : undefined;
 
     const width =
       w ??
@@ -620,6 +629,9 @@ class DataTableRoot<D extends DataTableData> extends Component<
           tabIndex={-1}
           // @ts-ignore
           scrollDirection={scrollDirection}
+          // @ts-ignore
+          loading={loading}
+          headerHeight={`${headerHeight}px`}
         >
           <SDataTable
             render={Box}
@@ -655,7 +667,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
           </SDataTable>
         </ScrollArea.Container>
 
-        {headerPropsToCheck?.withScrollBar && topOffset && (
+        {headerPropsToCheck?.withScrollBar && topOffset && !loading && (
           <ScrollArea.Bar
             orientation='horizontal'
             top={topOffset - SCROLL_BAR_HEIGHT}
@@ -663,8 +675,12 @@ class DataTableRoot<D extends DataTableData> extends Component<
           />
         )}
 
-        <ScrollArea.Bar orientation='horizontal' zIndex={10} />
-        <ScrollArea.Bar orientation='vertical' zIndex={10} />
+        {!loading && (
+          <>
+            <ScrollArea.Bar orientation='horizontal' zIndex={10} />
+            <ScrollArea.Bar orientation='vertical' zIndex={10} />
+          </>
+        )}
 
         {selectedRows !== undefined && (
           <ScreenReaderOnly aria-live='polite' role='status'>
@@ -979,7 +995,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
     );
   }
 
-  private getTopScrollOffset() {
+  private getHeaderHeight() {
     const header = this.headerRef.current?.children;
 
     let height = 0;

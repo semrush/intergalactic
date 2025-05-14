@@ -100,6 +100,8 @@ export type DataTableProps<D extends DataTableData> = DataTableAriaProps &
       withScrollBar?: boolean;
     };
 
+    rowProps?: (row: DTRow, rowIndex: number) => Record<string, any> | undefined;
+
     renderCell?: DataTableBodyProps['renderCell'];
 
     /**

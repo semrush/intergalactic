@@ -5,6 +5,8 @@ import { DTColumn } from '../Head/Column.types';
 export type Theme = 'muted' | 'info' | 'success' | 'warning' | 'danger';
 
 export type DataTableCellProps = {
+  id: string;
+  accordionId: string;
   row: DTRow;
   rowIndex: number;
   column: DTColumn;

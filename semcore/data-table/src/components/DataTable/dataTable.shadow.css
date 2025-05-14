@@ -1,6 +1,5 @@
 SDataTable {
   display: grid;
-  position: relative;
   align-items: start;
   min-width: fit-content;
 }
