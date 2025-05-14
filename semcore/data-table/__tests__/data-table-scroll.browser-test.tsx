@@ -63,7 +63,7 @@ test.describe('Vertical Scroll', () => {
     const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]');
     const initialValue = await checkAriaMaxValue(scrollBar);
     await page.keyboard.press('Tab');
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < 5; i++) {
       await page.keyboard.press('ArrowDown');
     }
     const nowNumber = await checkScrollNowIncreased(scrollBar);
