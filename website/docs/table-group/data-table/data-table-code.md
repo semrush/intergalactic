@@ -343,7 +343,7 @@ Render [WidgetEmpty](../../components/widget-empty/widget-empty) inside a single
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/data-table/docs/examples/nothing-found.tsx';
+  export Demo from 'stories/components/data-table/docs/examples/empty-table.tsx';
 </script>
 
 :::

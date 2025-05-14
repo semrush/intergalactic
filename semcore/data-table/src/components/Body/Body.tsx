@@ -9,7 +9,7 @@ import { Cell } from './Cell';
 import { DataTableRowProps, DTRow, RowPropsInner } from './Row.types';
 import { DataTableCellProps } from './Cell.types';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
-import { ACCORDION, UNIQ_ROW_KEY } from '../DataTable/DataTable';
+import { ACCORDION, ROW_INDEX, UNIQ_ROW_KEY } from '../DataTable/DataTable';
 import ChevronRightM from '@semcore/icon/ChevronRight/m';
 import { ButtonLink } from '@semcore/button';
 import { DataTableData, DTValue } from '../DataTable/DataTable.types';
@@ -18,13 +18,7 @@ import Spin from '@semcore/spin';
 const ROWS_BUFFER = 20;
 const APROX_ROWS_ON_PAGE = 20;
 
-class BodyRoot<D extends DataTableData> extends Component<
-  DataTableBodyProps,
-  {},
-  {},
-  [],
-  BodyPropsInner
-> {
+class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner> {
   static displayName = 'Body';
   static style = style;
 
@@ -51,7 +45,7 @@ class BodyRoot<D extends DataTableData> extends Component<
     this.asProps.onExpandRow(row);
   };
 
-  getRowProps(props: { row: DTRow; offset: number }, i: number): RowPropsInner {
+  getRowProps(props: { row: DTRow }): RowPropsInner {
     const {
       use,
       gridTemplateAreas,
@@ -70,7 +64,7 @@ class BodyRoot<D extends DataTableData> extends Component<
       sideIndents,
     } = this.asProps;
     const row = props.row;
-    const index = props.offset + i;
+    const index = row[ROW_INDEX];
 
     const rowIndex = Array.from(expandedRows ?? []).reduce((acc, item) => {
       const rowIndex = flatRows.findIndex((row) => row[UNIQ_ROW_KEY] === item);
@@ -311,12 +305,14 @@ class BodyRoot<D extends DataTableData> extends Component<
     }
 
     startIndex = startIndex === -1 ? 0 : startIndex;
+    const rowMarginTop = this.rowsHeightMap.get(startIndex - 1)?.[1];
 
     let emptyRow: DTRow | null = null;
 
     if (rowsToRender.length === 0) {
       emptyRow = {
         [UNIQ_ROW_KEY]: `${uid}_empty_data`,
+        [ROW_INDEX]: 0,
         [columns[0].name]: new MergedColumnsCell(renderEmptyData(), {
           dataKey: columns[0].name,
           size: columns.length,
@@ -327,18 +323,17 @@ class BodyRoot<D extends DataTableData> extends Component<
     return sstyled(styles)(
       <SBody render={Box} __excludeProps={['data']}>
         {emptyRow && <Body.Row row={emptyRow} offset={0} />}
+        {typeof virtualScroll === 'boolean' && rowMarginTop && <Box h={rowMarginTop} />}
         {rowsToRender.map((row, index) => {
-          let rowMarginTop: number | undefined = undefined;
-
-          if (index === 0 && typeof virtualScroll === 'boolean') {
-            rowMarginTop = this.rowsHeightMap.get(startIndex - 1)?.[1];
-          }
-
           if (Array.isArray(row)) {
             return sstyled(styles)(
-              <SRowGroup role={'rowgroup'} key={index}>
+              <SRowGroup
+                role={'rowgroup'}
+                key={`gg_${row[0][UNIQ_ROW_KEY]}`}
+                ref={this.handleRef(startIndex + index, row[0])}
+              >
                 {row.map((item, i) => {
-                  return <Body.Row key={item[UNIQ_ROW_KEY]} row={item} offset={startIndex} />;
+                  return <Body.Row key={item[UNIQ_ROW_KEY]} row={item} />;
                 })}
               </SRowGroup>,
             );
@@ -347,9 +342,7 @@ class BodyRoot<D extends DataTableData> extends Component<
             <Body.Row
               key={row[UNIQ_ROW_KEY]}
               row={row}
-              offset={startIndex}
               ref={this.handleRef(startIndex + index, row)}
-              rowMarginTop={rowMarginTop}
             />
           );
         })}
@@ -381,11 +374,12 @@ class BodyRoot<D extends DataTableData> extends Component<
   }
 
   private setRowHeight(index: number, row: DTRow) {
-    const { expandedRows, stickyHeader, headerHeight } = this.asProps;
+    const { expandedRows } = this.asProps;
     const node = this.rowsHeightMap.get(index)?.[2];
-    const firstChild = node?.children.item(0);
+    const firstChild =
+      node?.role === 'rowgroup' ? node?.children.item(0)?.children.item(0) : node?.children.item(0);
     if (node && firstChild instanceof HTMLElement) {
-      const offset = firstChild.offsetTop - (stickyHeader ? headerHeight : 0);
+      const offset = firstChild.offsetTop - this.asProps.headerHeight;
       let height = firstChild.getBoundingClientRect().height;
 
       if (expandedRows.has(row[UNIQ_ROW_KEY]) && node.nextSibling instanceof HTMLElement) {
