@@ -809,6 +809,9 @@ importers:
       '@semcore/button':
         specifier: 16.0.0
         version: link:../button
+      '@semcore/checkbox':
+        specifier: 16.0.0
+        version: link:../checkbox
       '@semcore/flex-box':
         specifier: 16.0.0
         version: link:../flex-box
