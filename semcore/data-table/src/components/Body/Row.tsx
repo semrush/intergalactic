@@ -4,8 +4,7 @@ import { DataTableRowProps, RowPropsInner } from './Row.types';
 import { Box, Collapse } from '@semcore/base-components';
 import style from './style.shadow.css';
 import { Body } from './Body';
-import { getFixedStyle } from '../../utils';
-import { ACCORDION, UNIQ_ROW_KEY, SELECT_ALL } from '../DataTable/DataTable';
+import { ACCORDION, SELECT_ALL } from '../DataTable/DataTable';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
 import { DTValue } from '../DataTable/DataTable.types';
 import Checkbox from '@semcore/checkbox';
@@ -59,6 +58,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
       scrollAreaRef,
       selectedRows,
       uid,
+      getFixedStyle,
     } = this.asProps;
 
     let accordion = row[ACCORDION];

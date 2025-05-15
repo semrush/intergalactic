@@ -76,6 +76,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
       sideIndents,
       selectedRows,
       onSelectRow,
+      getFixedStyle,
     } = this.asProps;
     const row = props.row;
     const index = row[ROW_INDEX];
@@ -126,6 +127,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
       inert: loading ? '' : undefined,
       scrollAreaRef,
       sideIndents,
+      getFixedStyle,
     };
   }
 
