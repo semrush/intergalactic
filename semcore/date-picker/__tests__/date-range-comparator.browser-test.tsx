@@ -88,25 +88,27 @@ test.describe('DateRangeComparator range', () => {
       }
 
       const inputValues = page.locator('input[data-ui-name="DateRangeComparator.ValueDateRange"]');
-const compareValues = page.locator('input[data-ui-name="DateRangeComparator.CompareDateRange"]');
+      const compareValues = page.locator(
+        'input[data-ui-name="DateRangeComparator.CompareDateRange"]',
+      );
 
-const inputAttributesCommon = [
-  { name: 'type', value: 'text' },
-  { name: 'inputmode', value: 'numeric' },
-  { name: 'aria-invalid', value: 'false' },
-];
+      const inputAttributesCommon = [
+        { name: 'type', value: 'text' },
+        { name: 'inputmode', value: 'numeric' },
+        { name: 'aria-invalid', value: 'false' },
+      ];
 
-const inputs = [inputValues, compareValues];
+      const inputs = [inputValues, compareValues];
 
-for (const locator of inputs) {
-  const count = await locator.count();
-  for (let i = 0; i < count; i++) {
-    const input = locator.nth(i);
-    for (const { name, value } of inputAttributesCommon) {
-      await expect(input).toHaveAttribute(name, value);
-    }
-  }
-}
+      for (const locator of inputs) {
+        const count = await locator.count();
+        for (let i = 0; i < count; i++) {
+          const input = locator.nth(i);
+          for (const { name, value } of inputAttributesCommon) {
+            await expect(input).toHaveAttribute(name, value);
+          }
+        }
+      }
 
       const calendars = page.locator('[data-name="Calendar"]');
       const calendarAttributes = [
@@ -320,7 +322,7 @@ for (const locator of inputs) {
       throw new Error(`Invalid aria-label date: ${ariaLabel}`);
     }
 
-    const month = (parsedDate.getMonth() + 1).toString().padStart(2, '0'); 
+    const month = (parsedDate.getMonth() + 1).toString().padStart(2, '0');
     const day = parsedDate.getDate().toString().padStart(2, '0');
     const year = parsedDate.getFullYear().toString();
 
@@ -484,15 +486,15 @@ for (const locator of inputs) {
     });
   });
 
-  test('Verify Date range comparator keyboard interactions', async ({ page, browserName}) => {
+  test('Verify Date range comparator keyboard interactions', async ({ page, browserName }) => {
     const standPath = 'stories/components/date-picker/docs/examples/date_range_comparator.tsx';
     await page.setContent(await e2eStandToHtml(standPath, 'en'));
-  
+
     const getInputValues = async (locator) => ({
       from: await locator.nth(0).inputValue(),
       to: await locator.nth(1).inputValue(),
     });
-  
+
     const datePicker = page.locator('[data-ui-name="DateRangeComparator.Trigger"]');
     const popper = page.locator('[data-ui-name="DateRangeComparator.Popper"]');
     const headTitle = page.locator('[data-ui-name="DateRangeComparator.Title"]');
@@ -502,18 +504,18 @@ for (const locator of inputs) {
     const reset = page.locator('[data-ui-name="DateRangeComparator.Reset"]');
     const headPrev = page.locator('[data-ui-name="DateRangeComparator.Prev"]');
     const headNext = page.locator('[data-ui-name="DateRangeComparator.Next"]');
-  
+
     if (browserName === 'webkit') return;
 
     await test.step('Open and close calendar using keyboard', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
       await page.waitForTimeout(300);
-  
+
       await page.keyboard.press('Tab');
       await page.keyboard.type('04042024');
       await page.keyboard.type('04042024');
-     
+
       for (let i = 0; i < 9; i++) await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
       await page.waitForTimeout(300);
@@ -525,118 +527,119 @@ for (const locator of inputs) {
       await expect(popper).toBeVisible();
       await expect(datePicker).not.toBeFocused();
       await expect(popper).toBeFocused();
-    
+
       await page.keyboard.press('Escape');
       await expect(popper).not.toBeVisible();
-  
+
       await page.keyboard.press('Space');
       await page.waitForTimeout(300);
       await expect(popper).toBeVisible();
     });
-  
+
     await test.step('Navigate months backwards and forwards', async () => {
       const initial = {
         from: await headTitle.first().textContent(),
         to: await headTitle.nth(1).textContent(),
       };
-  
+
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab'); 
+      await page.keyboard.press('Tab');
       await expect(headPrev).toBeFocused();
       await page.keyboard.press('Enter');
-  
+
       const changed = {
         from: await headTitle.first().textContent(),
         to: await headTitle.nth(1).textContent(),
       };
-  
+
       expect(changed.from).not.toBe(initial.from);
       expect(changed.to).not.toBe(initial.to);
-  
-      await page.keyboard.press('Tab'); 
+
+      await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await expect(headNext).toBeFocused();
       await page.keyboard.press('Enter');
-  
+
       const reverted = {
         from: await headTitle.first().textContent(),
         to: await headTitle.nth(1).textContent(),
       };
-  
+
       expect(reverted.from).toBe(initial.from);
       expect(reverted.to).toBe(initial.to);
     });
-  
+
     await test.step('Select From dates with keyboard', async () => {
       const initial = await getInputValues(inputFrom);
-  
+
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('ArrowRight');
-  
+
       const unchanged = await getInputValues(inputFrom);
       expect(unchanged).toEqual(initial);
-  
+
       await page.keyboard.press('Space');
       await page.waitForTimeout(50);
-  
+
       const changed = await getInputValues(inputFrom);
       expect(changed.from).not.toBe(initial.from);
       expect(changed.to).not.toBe(initial.to);
-  
+
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('Space');
-  
+
       const final = await getInputValues(inputFrom);
       expect(final.from).toBe(changed.from);
       expect(final.to).not.toBe(initial.to);
     });
-  
+
     await test.step('Switch to Compare mode and select To dates', async () => {
       for (let i = 0; i < 3; i++) await page.keyboard.press('Shift+Tab');
       await page.keyboard.press('Space');
       await page.waitForTimeout(200);
-  
+
       for (let i = 0; i < 3; i++) await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
-  
+
       const initial = await getInputValues(inputTo);
       await page.keyboard.press('ArrowLeft');
       await page.keyboard.press('ArrowUp');
       await page.keyboard.press('Space');
-  
+
       const mid = await getInputValues(inputTo);
       expect(mid.from).not.toBe(initial.from);
       expect(mid.to).toBe(initial.to);
-  
+
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('Space');
-  
+
       const final = await getInputValues(inputTo);
       expect(final.from).toBe(mid.from);
       expect(final.to).not.toBe(mid.to);
     });
-  
+
     await test.step('Apply and reset selected dates', async () => {
       for (let i = 0; i < 6; i++) await page.keyboard.press('Tab');
       await expect(apply).toBeFocused();
       await page.keyboard.press('Enter');
       await expect(popper).not.toBeVisible();
-  
+
       await page.keyboard.press('Enter');
       await page.waitForTimeout(300);
-  
+
       for (let i = 0; i < 14; i++) await page.keyboard.press('Tab');
       await expect(reset).toBeFocused();
       await page.keyboard.press('Space');
       await page.waitForTimeout(300);
-  
-      await expect(page.locator('[data-ui-name="LinkTrigger.Text"]').first()).toHaveText('Select date ranges');
+
+      await expect(page.locator('[data-ui-name="LinkTrigger.Text"]').first()).toHaveText(
+        'Select date ranges',
+      );
     });
   });
-  
 });
 
 test.describe('Date Range comparator with advanced use', () => {

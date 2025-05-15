@@ -107,7 +107,6 @@ test.describe('MonthRangeComparator range', () => {
         await expect(calendar).toHaveAttribute('role', 'grid');
         await expect(calendar).toHaveAttribute('disabled', '');
       }
-
     });
 
     await test.step('Verify days attributes', async () => {
@@ -411,7 +410,7 @@ test.describe('MonthRangeComparator range', () => {
     const standPath = 'stories/components/date-picker/docs/examples/date_range_comparator.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
-  
+
     const datePicker = page.locator('[data-ui-name="MonthDateRangeComparator.Trigger"]');
     const popper = page.locator('[data-ui-name="MonthDateRangeComparator.Popper"]');
     const headPrev = page.locator('[data-ui-name="MonthDateRangeComparator.Prev"]');
@@ -422,7 +421,7 @@ test.describe('MonthRangeComparator range', () => {
     const inputTo = page.locator('input[data-ui-name="MonthDateRangeComparator.CompareDateRange"]');
     const apply = page.locator('[data-ui-name="MonthDateRangeComparator.Apply"]');
     const reset = page.locator('[data-ui-name="MonthDateRangeComparator.Reset"]');
-  
+
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
     await datePicker.hover();
@@ -430,205 +429,210 @@ test.describe('MonthRangeComparator range', () => {
     await page.keyboard.press('Enter');
     await page.waitForTimeout(300);
     await expect(popper).toBeVisible();
-  
+
     await expect(datePicker).not.toBeFocused();
     await expect(popper).toBeFocused();
-  
+
     await page.keyboard.press('Escape');
     await expect(popper).not.toBeVisible();
-  
+
     await page.keyboard.press('Space');
     await page.waitForTimeout(300);
     await expect(popper).toBeVisible();
     await expect(datePicker.first()).not.toBeFocused();
     await expect(popper).toBeFocused();
-  
+
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
     await expect(page.getByLabel('To Date field').first()).toBeFocused();
-    
+
     if (browserName === 'webkit') return; // works not ctable in test browser
 
     await page.keyboard.press('Tab');
     await expect(page.locator('[data-ui-name="Checkbox.Value"]')).toBeFocused();
-  
+
     const [initialTitleFrom, initialTitleTo] = await Promise.all([
       headTitle.first().textContent(),
       headTitle.nth(1).textContent(),
     ]);
-  
+
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter'); // space doesn't work - bug!
     await page.waitForTimeout(50);
-  
+
     const [titleAfterFirstEnterFrom, titleAfterFirstEnterTo] = await Promise.all([
       headTitle.first().textContent(),
       headTitle.nth(1).textContent(),
     ]);
-  
+
     expect(titleAfterFirstEnterFrom).not.toBe(initialTitleFrom);
     expect(titleAfterFirstEnterTo).not.toBe(initialTitleTo);
-  
+
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
     await expect(headNext).toBeFocused();
-  
+
     await page.keyboard.press('Enter'); // space doesn't work - bug!
     await page.waitForTimeout(50);
-  
+
     const [titleAfterSecondEnterFrom, titleAfterSecondEnterTo] = await Promise.all([
       headTitle.first().textContent(),
       headTitle.nth(1).textContent(),
     ]);
     expect(titleAfterSecondEnterFrom).toBe(initialTitleFrom);
     expect(titleAfterSecondEnterTo).toBe(initialTitleTo);
-  
+
     await page.keyboard.press('Shift+Tab');
-    await expect(page.locator('[data-ui-name="MonthDateRangeComparator.Calendar"]').first()).toBeFocused();
-  
+    await expect(
+      page.locator('[data-ui-name="MonthDateRangeComparator.Calendar"]').first(),
+    ).toBeFocused();
+
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
     await page.waitForTimeout(50);
     await expect(buttons.first()).toBeFocused();
-  
+
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
     await page.waitForTimeout(50);
     await expect(apply).toBeFocused();
-  
+
     await page.keyboard.press('Tab');
     await expect(reset).toBeFocused();
-  
+
     await page.keyboard.press('Tab');
     await expect(popper).toBeFocused();
-  
+
     const [initialFrom1, initialFrom2] = await Promise.all([
       inputFrom.nth(0).inputValue(),
       inputFrom.nth(1).inputValue(),
     ]);
-  
+
     await page.keyboard.press('ArrowLeft');
-  
+
     const [afterLeftFrom1, afterLeftFrom2] = await Promise.all([
       inputFrom.nth(0).inputValue(),
       inputFrom.nth(1).inputValue(),
     ]);
-  
+
     expect(afterLeftFrom1).toBe(initialFrom1);
     expect(afterLeftFrom2).toBe(initialFrom2);
-  
+
     await page.keyboard.press('ArrowUp');
     await page.keyboard.press('Space');
     await page.waitForTimeout(50);
-  
+
     const [afterUpFrom1, afterUpFrom2] = await Promise.all([
       inputFrom.nth(0).inputValue(),
       inputFrom.nth(1).inputValue(),
     ]);
-  
+
     expect(afterUpFrom1).not.toBe(afterLeftFrom1);
     expect(afterUpFrom2).toBe(afterLeftFrom2);
-  
+
     await page.keyboard.press('ArrowRight');
     await page.keyboard.press('ArrowRight');
     await page.keyboard.press('Space');
     await page.waitForTimeout(100);
-  
+
     const [afterRightFrom1, afterRightFrom2] = await Promise.all([
       inputFrom.nth(0).inputValue(),
       inputFrom.nth(1).inputValue(),
     ]);
-  
+
     expect(afterRightFrom1).toBe(afterUpFrom1);
     expect(afterRightFrom2).not.toBe(afterUpFrom2);
-  
+
     await page.keyboard.press('Shift+Tab');
     await page.keyboard.press('Shift+Tab');
     await page.keyboard.press('Shift+Tab');
-  
+
     await page.keyboard.press('Space');
     await page.waitForTimeout(100);
-  
+
     await page.keyboard.press('Tab');
     await expect(
       page.locator('[data-ui-name="MonthDateRangeComparator.CompareDateRange"]').nth(2),
     ).toBeFocused();
-  
+
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
     await expect(headPrev).toBeFocused();
-  
+
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
-  
+
     await page.keyboard.press('Enter');
     await page.keyboard.press('ArrowLeft');
-  
+
     const [initialTo1, initialTo2] = await Promise.all([
       inputTo.nth(0).inputValue(),
       inputTo.nth(1).inputValue(),
     ]);
-  
+
     await page.keyboard.press('ArrowUp');
     await page.keyboard.press('Space');
-  
+
     const [afterUpTo1, afterUpTo2] = await Promise.all([
       inputTo.nth(0).inputValue(),
       inputTo.nth(1).inputValue(),
     ]);
-  
+
     expect(afterUpTo1).not.toBe(initialTo1);
     expect(afterUpTo2).toBe(initialTo2);
-  
+
     await page.keyboard.press('ArrowRight');
     await page.keyboard.press('ArrowRight');
     await page.keyboard.press('Space');
     await page.waitForTimeout(50);
-  
+
     const [afterRightTo1, afterRightTo2] = await Promise.all([
       inputTo.nth(0).inputValue(),
       inputTo.nth(1).inputValue(),
     ]);
-  
+
     expect(afterRightTo1).toBe(afterUpTo1);
     expect(afterRightTo2).not.toBe(afterUpTo2);
-  
+
     const [finalFrom1, finalFrom2] = await Promise.all([
       inputFrom.nth(0).inputValue(),
       inputFrom.nth(1).inputValue(),
     ]);
-  
+
     expect(finalFrom1).toBe(afterRightFrom1);
     expect(finalFrom2).toBe(afterRightFrom2);
-  
+
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
-  
+
     await expect(apply).toBeFocused();
     await page.keyboard.press('Enter');
     await page.waitForTimeout(50);
     await expect(popper).not.toBeVisible();
-  
-    await expect(page.locator('[data-ui-name="LinkTrigger.Text"]').nth(1)).not.toHaveText('Select date ranges');
-  
+
+    await expect(page.locator('[data-ui-name="LinkTrigger.Text"]').nth(1)).not.toHaveText(
+      'Select date ranges',
+    );
+
     await page.keyboard.press('Enter');
     await page.waitForTimeout(300);
-  
+
     for (let i = 0; i < 14; i++) await page.keyboard.press('Tab');
     await expect(reset).toBeFocused();
-  
+
     await page.keyboard.press('Space');
     await page.waitForTimeout(300);
-  
-    await expect(page.locator('[data-ui-name="LinkTrigger.Text"]').nth(1)).toHaveText('Select date ranges');
+
+    await expect(page.locator('[data-ui-name="LinkTrigger.Text"]').nth(1)).toHaveText(
+      'Select date ranges',
+    );
   });
-  
 });
 
 test.describe('Month Range comparator with advanced use', () => {

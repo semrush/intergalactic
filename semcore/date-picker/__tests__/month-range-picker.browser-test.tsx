@@ -195,7 +195,6 @@ test.describe('Month range', () => {
         await expect(calendar).toHaveAttribute('role', 'grid');
         await expect(calendar).toHaveAttribute('disabled', '');
       }
-
     });
 
     await test.step('Verify days attributes', async () => {

@@ -223,9 +223,7 @@ test.describe('DayPicker with today button', () => {
 
     await test.step('Verify today button attributes', async () => {
       const todayButton = page.locator('[data-ui-name="Button"]');
-      const todayAttributes = [
-        ['type', 'button'],
-      ];
+      const todayAttributes = [['type', 'button']];
 
       for (const [attr, value] of todayAttributes) {
         await expect(todayButton).toHaveAttribute(attr, value);
@@ -409,7 +407,7 @@ test.describe('DayPicker with today button', () => {
       await prev.hover();
       const initialTitle = await title.textContent();
 
-      await page.keyboard.press('Enter'); 
+      await page.keyboard.press('Enter');
       const titleAfterFirstEnter = await title.textContent();
       expect(titleAfterFirstEnter).not.toBe(initialTitle);
       await expect(title).not.toHaveText(initialTitle!);
@@ -473,7 +471,7 @@ test.describe('DayPicker with today button', () => {
       await expect(todayButton).toBeFocused();
       const newValue2 = await input.inputValue();
 
-      await page.keyboard.press('Enter'); 
+      await page.keyboard.press('Enter');
       await expect(popper).not.toBeVisible();
 
       const newValue3 = await input.inputValue();
@@ -558,7 +556,6 @@ test.describe('DayPicker with custom days', () => {
       const headTitle = page.locator('[data-ui-name="DatePicker.Title"]');
       await expect(headTitle).toHaveAttribute('aria-live', 'polite');
     });
-
 
     const weekDaysAttributes = [{ name: 'role', value: 'row' }];
 
@@ -673,8 +670,6 @@ test.describe('DayPicker with custom days', () => {
         expect(text).not.toBe('');
       }
     });
-
-
   });
 
   test('Verify datepicker with custom days styles', async ({ page }) => {

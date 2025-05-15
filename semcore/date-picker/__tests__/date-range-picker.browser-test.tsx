@@ -489,9 +489,9 @@ test.describe('Date range with standart ranges', () => {
   test('Verify Date range picker keyboard interactions', async ({ page, browserName }) => {
     const standPath = 'stories/components/date-picker/docs/examples/custom_date_ranges.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
-  
+
     await page.setContent(htmlContent);
-  
+
     const datePicker = page.locator('[data-ui-name="DateRangePicker.Trigger"]');
     const popper = page.locator('[data-ui-name="DateRangePicker.Popper"]');
     const headPrev = page.locator('[data-ui-name="DateRangePicker.Prev"]');
@@ -501,7 +501,7 @@ test.describe('Date range with standart ranges', () => {
     const input = page.locator('input[data-ui-name="DateRangePicker.Trigger"]');
     const apply = page.locator('[data-ui-name="DateRangePicker.Apply"]');
     const reset = page.locator('[data-ui-name="DateRangePicker.Reset"]');
-  
+
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
@@ -509,17 +509,17 @@ test.describe('Date range with standart ranges', () => {
     await expect(popper).toBeVisible();
     await expect(datePicker.nth(4)).not.toBeFocused();
     await expect(popper).toBeFocused();
-  
+
     await page.keyboard.press('Escape');
     await expect(popper).not.toBeVisible();
-  
+
     await page.keyboard.press('Space');
     await expect(popper).toBeVisible();
     await expect(datePicker.nth(4)).not.toBeFocused();
     await expect(popper).toBeFocused();
-  
+
     if (browserName === 'webkit') return;
-  
+
     await page.keyboard.press('Tab');
     await expect(headPrev).toBeFocused();
     await headPrev.hover();
@@ -527,7 +527,7 @@ test.describe('Date range with standart ranges', () => {
       headTitle.first().textContent(),
       headTitle.nth(1).textContent(),
     ]);
-  
+
     await page.keyboard.press('Enter');
     const [titleAfterFirstEnterFrom, titleAfterFirstEnterTo] = await Promise.all([
       headTitle.first().textContent(),
@@ -535,11 +535,11 @@ test.describe('Date range with standart ranges', () => {
     ]);
     expect(titleAfterFirstEnterFrom).not.toBe(initialTitleFrom);
     expect(titleAfterFirstEnterTo).not.toBe(initialTitleTo);
-  
+
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
     await expect(headNext).toBeFocused();
-  
+
     await page.keyboard.press('Enter');
     const [titleAfterSecondEnterFrom, titleAfterSecondEnterTo] = await Promise.all([
       headTitle.first().textContent(),
@@ -547,29 +547,29 @@ test.describe('Date range with standart ranges', () => {
     ]);
     expect(titleAfterSecondEnterFrom).toBe(initialTitleFrom);
     expect(titleAfterSecondEnterTo).toBe(initialTitleTo);
-  
+
     await page.keyboard.press('Shift+Tab');
     await expect(page.locator('[data-ui-name="DateRangePicker.Calendar"]').first()).toBeFocused();
-  
+
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
     await expect(buttons.first()).toBeFocused();
-  
+
     for (let i = 0; i < 5; i++) await page.keyboard.press('Tab');
     await expect(apply).toBeFocused();
-  
+
     await page.keyboard.press('Tab');
     await expect(reset).toBeFocused();
-  
+
     await page.keyboard.press('Tab');
     await expect(popper).toBeFocused();
-  
+
     await page.keyboard.press('ArrowLeft');
     const [initialValue1, initialValue2] = await Promise.all([
       input.nth(2).inputValue(),
       input.nth(3).inputValue(),
     ]);
-  
+
     await page.keyboard.press('Escape');
     const [value1_1, value2_1] = await Promise.all([
       input.nth(2).inputValue(),
@@ -577,7 +577,7 @@ test.describe('Date range with standart ranges', () => {
     ]);
     expect(value1_1).toBe(initialValue1);
     expect(value2_1).toBe(initialValue2);
-  
+
     await page.keyboard.press('Space');
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('Space');
@@ -587,7 +587,7 @@ test.describe('Date range with standart ranges', () => {
     ]);
     expect(value1_2).not.toBe(value1_1);
     expect(value2_2).toBe(value2_1);
-  
+
     await page.keyboard.press('Space');
     const [value1_3, value2_3] = await Promise.all([
       input.nth(2).inputValue(),
@@ -595,7 +595,7 @@ test.describe('Date range with standart ranges', () => {
     ]);
     expect(value1_3).toBe(value1_2);
     expect(value2_3).not.toBe(value2_2);
-  
+
     await page.keyboard.press('Escape');
     const [value1_4, value2_4] = await Promise.all([
       input.nth(2).inputValue(),
@@ -603,35 +603,35 @@ test.describe('Date range with standart ranges', () => {
     ]);
     expect(value1_4).toBe(initialValue1);
     expect(value2_4).toBe(initialValue2);
-  
+
     await page.keyboard.press('Space');
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('ArrowRight');
     await page.keyboard.press('ArrowRight');
     await page.keyboard.press('ArrowRight');
     await page.keyboard.press('Space');
-  
+
     for (let i = 0; i < 6; i++) await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-  
+
     const [value1_6, value2_6] = await Promise.all([
       input.nth(2).inputValue(),
       input.nth(3).inputValue(),
     ]);
     expect(value1_6).not.toBe(value1_4);
     expect(value2_6).not.toBe(value2_4);
-  
+
     await page.keyboard.press('Space');
-  
+
     for (let i = 0; i < 5; i++) await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
     await expect(popper).not.toBeVisible();
-  
+
     await page.keyboard.press('Enter');
     await page.waitForTimeout(300);
     for (let i = 0; i < 10; i++) await page.keyboard.press('Tab');
     await expect(reset).toBeFocused();
-  
+
     await page.keyboard.press('Space');
     await page.waitForTimeout(300);
     const [value1_5, value2_5] = await Promise.all([
@@ -642,7 +642,6 @@ test.describe('Date range with standart ranges', () => {
     expect(value2_5).toBe(initialValue2);
     await expect(popper).not.toBeVisible();
   });
-  
 });
 
 test.describe('Date Range picker with custom ranges', () => {
