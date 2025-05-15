@@ -231,7 +231,7 @@ test.describe('Color-picker', () => {
         expect(box).not.toBeNull();
         if (box) {
           expect(Math.round(box.width)).toBeGreaterThanOrEqual(26);
-  expect(Math.round(box.height)).toBeGreaterThanOrEqual(26);
+          expect(Math.round(box.height)).toBeGreaterThanOrEqual(26);
         }
       }
 
@@ -336,8 +336,7 @@ test.describe('Color-picker', () => {
   });
 
   test('Custom colors states ', async ({ page }) => {
-    const standPath =
-      'stories/components/color-picker/docs/examples/predefined_palette.tsx';
+    const standPath = 'stories/components/color-picker/docs/examples/predefined_palette.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
