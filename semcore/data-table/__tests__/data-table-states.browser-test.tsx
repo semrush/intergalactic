@@ -178,7 +178,7 @@ test.describe('Additional states', () => {
       expect(classAttr).toContain('checked');
     });
 
-    if(browserName==='webkit') return; // skipped step for webkit because works unstable
+    if (browserName === 'webkit') return; // skipped step for webkit because works unstable
     await test.step('Verify focus returns correctly by activating Deseslect all', async () => {
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowDown');
@@ -187,13 +187,12 @@ test.describe('Additional states', () => {
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('ArrowRight');
       const row = page.locator('[data-ui-name="Body.Row"][aria-rowindex="5"]');
-const cell = row.locator('[data-ui-name="Body.Cell"][aria-colindex="4"]');
-await expect(cell).toBeFocused();
+      const cell = row.locator('[data-ui-name="Body.Cell"][aria-colindex="4"]');
+      await expect(cell).toBeFocused();
 
       await page.keyboard.press('Shift+Tab');
       const button = page.locator('[data-ui-name="Button"]');
       await expect(button).toBeFocused();
-
 
       await page.keyboard.press('Space');
       await page.waitForTimeout(150);
