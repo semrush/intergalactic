@@ -121,8 +121,8 @@ class DataTableRoot<D extends DataTableData> extends Component<
   }
 
   componentDidMount() {
-    const { headerProps } = this.asProps;
-    if ((headerProps?.sticky && !headerProps.h) || this.columns.some((c) => c.fixed)) {
+    const { headerProps, loading } = this.asProps;
+    if ((headerProps?.sticky && !headerProps.h) || loading || this.columns.some((c) => c.fixed)) {
       requestAnimationFrame(() => {
         this.forceUpdate();
       });
@@ -734,11 +734,25 @@ class DataTableRoot<D extends DataTableData> extends Component<
       return [0, 0];
     }
 
-    this.headerRef.current.childNodes.forEach((node) => {
-      if (node instanceof HTMLElement && node.getAttribute('name')) {
-        const name = node.getAttribute('name');
+    const setToMap = (element: HTMLElement) => {
+      if (element.getAttribute('name') && element.dataset.uiName === 'Head.Column') {
+        const name = element.getAttribute('name');
         if (name) {
-          this.headerNodesMap.set(name, node);
+          this.headerNodesMap.set(name, element);
+        }
+      }
+    };
+
+    this.headerRef.current.childNodes.forEach((node) => {
+      if (node instanceof HTMLElement) {
+        if (node.classList.value.includes('SGroupContainer')) {
+          node.childNodes.forEach((columnNode) => {
+            if (columnNode instanceof HTMLElement) {
+              setToMap(columnNode);
+            }
+          })
+        } else {
+          setToMap(node);
         }
       }
     });

@@ -120,7 +120,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
             const style: React.CSSProperties = {};
 
             if (column.fixed) {
-              const [name, value] = getFixedStyle(column, columns);
+              const [name, value] = getFixedStyle(column);
 
               if (name !== undefined && value !== undefined) {
                 style[name] = value;
@@ -194,6 +194,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
                 ariaRowIndex={ariaRowIndex + 1 + i}
                 gridRowIndex={gridRowIndex + 1 + i}
                 expanded={true}
+                getFixedStyle={getFixedStyle}
               />
             );
           })}
