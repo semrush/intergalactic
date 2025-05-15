@@ -87,7 +87,8 @@ const Demo = () => {
           { name: 'cpc', children: 'CPC' },
           { name: 'vol', children: 'Vol.' },
         ]}
-        style={style}
+        // @ts-ignore
+        styles={style}
         // @ts-ignore
         activePanel={!!selectedRows.length}
       />
