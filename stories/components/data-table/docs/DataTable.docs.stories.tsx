@@ -20,7 +20,6 @@ import ExportInImageExample from './examples/export-in-image';
 import FixedColumnsExample from './examples/fixed-columns';
 import FixedHeaderExample from './examples/fixed-header';
 import MultiLevelHeaderExample from './examples/multi-level-header';
-import NothingFoundExample from './examples/nothing-found';
 import PaginationExample from './examples/pagination';
 import RowsMergingExample from './examples/rows-merging';
 import ScrollInTableExample from './examples/scroll-in-table';
@@ -112,10 +111,6 @@ export const FixedHeader: Story = {
 
 export const MultiLevelHeader: Story = {
   render: MultiLevelHeaderExample,
-};
-
-export const NothingFound: Story = {
-  render: NothingFoundExample,
 };
 
 export const Pagination: Story = {
