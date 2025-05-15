@@ -69,6 +69,11 @@ export type DataTableProps<D extends DataTableData> = DataTableAriaProps &
     compact?: boolean;
 
     /**
+     * Size of paddings for the first and last columns in the table
+     */
+    sideIndents?: 'l';
+
+    /**
      * Flag for showing spinner on table body
      */
     loading?: boolean;

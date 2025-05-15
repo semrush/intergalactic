@@ -164,9 +164,12 @@ SCell {
 
   SAccordionToggle {
     margin-right: var(--intergalactic-spacing-3x, 12px);
-    transition: transform calc(var(--intergalactic-duration-accordion, 200) * 1ms) ease-out;
 
-    &[expanded] {
+    svg {
+      transition: transform calc(var(--intergalactic-duration-accordion, 200) * 1ms) ease-out;
+    }
+
+    &[expanded] svg {
       transform: rotate(90deg);
     }
   }
@@ -242,4 +245,13 @@ SSpinContainer[headerHeight] {
 
 SEmptyData {
   grid-column: 1 / -1;
+}
+
+SRow[sideIndents='l'] {
+  SCell:first-child {
+    padding-left: var(--intergalactic-spacing-5x, 20px);
+  }
+  SCell:last-child {
+    padding-right: var(--intergalactic-spacing-5x, 20px);
+  }
 }

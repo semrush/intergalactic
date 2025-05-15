@@ -8,6 +8,18 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Full package. Use `Text` from `@semcore/typography`.
 
+## [4.42.0] - 2025-05-13
+
+### Added
+
+- Esm-build by vite.
+
+## [4.41.3] - 2025-05-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.48.2 ~> 4.48.4], `@semcore/flex-box` [5.41.2 ~> 5.41.3], `@semcore/core` [2.39.2 ~> 2.39.3]).
+
 ## [4.41.2] - 2025-04-04
 
 ### Changed

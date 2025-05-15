@@ -44,4 +44,5 @@ export type RowPropsInner = JSX.IntrinsicElements['div'] & {
 
   scrollAreaRef: React.RefObject<HTMLDivElement>;
   uid: string;
+  sideIndents?: 'l';
 };

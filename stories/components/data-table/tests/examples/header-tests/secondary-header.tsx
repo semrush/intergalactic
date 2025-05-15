@@ -32,6 +32,7 @@ const Demo = () => {
 
     <DataTable
       data={sortedData} use='secondary' aria-label={'Column expanded'} hMax={200} sort={sort} onSortChange={setSort}
+      sideIndents={'l'}
       columns={[
         {
           name: 'keyword',

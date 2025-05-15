@@ -87,15 +87,17 @@ async function loader(source) {
       //   `button {
       //     /* Some CSS rules here... */
       //     content: "*"; /* With some quotes maybe */
-      //   }`
+      //   }`,
       //   /*__inner_css_end__*/
-      // , "2845693891")
-      // /*__reshadow_css_end__*/
+      //   "2845693891"
+      // ), /*__reshadow_css_end__*/
       //
       // We're using comment blocks to find the end of the code to extract.
-      /\/\*__reshadow_css_start__\*\/([\s\S]*?)\/\*__reshadow_css_end__\*\//g,
+      /\/\*__reshadow_css_start__\*\/([\s\S]*?),( ?)(\n?)\/\*__reshadow_css_end__\*\//g,
       (match, codeBlock) => {
-        let [, code] = codeBlock.match(/__inner_css_start__\*\/([\s\S]*?)\/\*__inner_css_end__/);
+        let [, code] = codeBlock.match(
+          /__inner_css_start__\*\/([\s\S]*?),(\n?)\s*\/\*__inner_css_end__/,
+        );
         // also remove ',' in the end of line
         code = code.trim().replace(/,$/, '').replace(/^[`'"]([\s\S]*?)[`'"]$/, '$1');
         const filepath = options.getFilepath(resourcePath, code);
@@ -107,10 +109,10 @@ async function loader(source) {
         );
         const [requirePath] = filepath.split('node_modules/').slice(-1);
         styleImports.push(requirePath);
-        return 'undefined';
+        return resourcePath.includes('@semcore/flags') || !es6Mode ? 'undefined, ' : '(undefined, '; // flags and cjs has the old build system
       },
     )
-    .replace(/\/\*__reshadow-styles__:"(.*?)"\*\//g, (match, dep) => {
+    .replace(/\/\*!__reshadow-styles__:"(.*?)"\*\//g, (match, dep) => {
       const depPath = utils.resolveDependency({
         filename: dep,
         basedir: path.dirname(resourcePath),

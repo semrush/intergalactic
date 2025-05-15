@@ -172,7 +172,8 @@ class DataTableRoot<D extends DataTableData> extends Component<
   }
 
   getHeadProps(): HeadPropsInner<D> {
-    const { use, compact, sort, onSortChange, getI18nText, uid, headerProps } = this.asProps;
+    const { use, compact, sort, onSortChange, getI18nText, uid, headerProps, sideIndents } =
+      this.asProps;
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
 
     return {
@@ -189,6 +190,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
       gridAreaGroupMap: this.gridAreaGroupMap,
       gridTemplateColumns,
       gridTemplateAreas,
+      sideIndents,
       ...headerProps,
     };
   }
@@ -206,6 +208,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
       renderCell,
       headerProps,
       renderEmptyData,
+      sideIndents,
     } = this.asProps;
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
     return {
@@ -235,6 +238,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
       rowProps,
       renderCell,
       renderEmptyData,
+      sideIndents,
     };
   }
 

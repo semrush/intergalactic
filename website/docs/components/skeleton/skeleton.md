@@ -153,9 +153,8 @@ For charts, avoid showing axes and labels. Replace the legend with a Skeleton, a
 - If a button or link submits data or confirms user actions, set them to a `disabled` state while loading.
 
 ::: tip
-When you don’t know what type of button (`primary` or `secondary`) should be loaded,
+When you don’t know what type of button (`primary` or `secondary`) should be loaded, show Skeleton instead of the button.
 :::
-show Skeleton instead of the button.
 
 ## Skeleton in complex components
 

@@ -56,6 +56,38 @@ test.describe('Base styles Primary Table', () => {
       await expect(firstCell).toHaveCSS('background-color', 'rgb(240, 240, 244)');
   });
 
+  test('Verify padding when sideIndent l is set', async ({ page, browserName }) => {
+    const standPath = 'stories/components/data-table/advanced/examples/side-indents.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+    const table = page.locator('[data-ui-name="DataTable"]');
+    await expect(table).toBeVisible();
+
+    const cellsFirstColumn = page.locator('[aria-colindex="1"]');
+    const cellsMiddleColumn = page.locator('[aria-colindex="3"]');
+    const cellsMLastColumn = page.locator('[aria-colindex="5"]');
+
+    const count1 = await cellsFirstColumn.count();
+    for (let i = 0; i < count1; i++) {
+      await checkStyles(cellsFirstColumn.nth(i), {
+        padding: '12px 12px 12px 20px',
+      });
+    }
+
+    const count2 = await cellsMiddleColumn.count();
+    for (let i = 0; i < count2; i++) {
+      await checkStyles(cellsMiddleColumn.nth(i), {
+        padding: '12px',
+      });
+    }
+    const count3 = await cellsMLastColumn.count();
+    for (let i = 0; i < count3; i++) {
+      await checkStyles(cellsMLastColumn.nth(i), {
+        padding: '12px 20px 12px 12px',
+      });
+    }
+  });
+
   test('Verify styles when long text and icons in header', async ({ page }) => {
     const standPath =
       'stories/components/data-table/tests/examples/header-tests/header-content.tsx';
@@ -239,6 +271,39 @@ test.describe('Base styles Secondary Table', () => {
     await page.keyboard.press('Tab');
     if (browserName !== 'firefox')
       await expect(firstCell).toHaveCSS('background-color', 'rgb(240, 240, 244)');
+  });
+
+  test('Verify Secondary padding when sideIndent l is set', async ({ page, browserName }) => {
+    const standPath =
+      'stories/components/data-table/tests/examples/header-tests/secondary-header.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+    const table = page.locator('[data-ui-name="DataTable"]');
+    await expect(table).toBeVisible();
+
+    const cellsFirstColumn = page.locator('[aria-colindex="1"]');
+    const cellsMiddleColumn = page.locator('[aria-colindex="3"]');
+    const cellsMLastColumn = page.locator('[aria-colindex="5"]');
+
+    const count1 = await cellsFirstColumn.count();
+    for (let i = 0; i < count1; i++) {
+      await checkStyles(cellsFirstColumn.nth(i), {
+        padding: '8px 8px 8px 20px',
+      });
+    }
+
+    const count2 = await cellsMiddleColumn.count();
+    for (let i = 0; i < count2; i++) {
+      await checkStyles(cellsMiddleColumn.nth(i), {
+        padding: '8px',
+      });
+    }
+    const count3 = await cellsMLastColumn.count();
+    for (let i = 0; i < count3; i++) {
+      await checkStyles(cellsMLastColumn.nth(i), {
+        padding: '8px 20px 8px 8px',
+      });
+    }
   });
 
   test('Verify styles when long text and icons in header', async ({ page }) => {

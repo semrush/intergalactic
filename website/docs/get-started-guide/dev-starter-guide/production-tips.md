@@ -23,7 +23,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.m?js$/,
         include: /node_modules\/(@semcore|\.cache\/reshadow)/,
         use: '@semcore/shadow-loader',
       },
@@ -53,7 +53,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|css)$/,
+        test: /\.(m?js|css)$/,
         include: /node_modules\/(@semcore|\.cache\/reshadow)/,
         enforce: 'pre',
         use: [

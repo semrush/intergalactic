@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.10.0] - 2025-05-07
+
+### Changed
+
+- "Magic comments" placements for work with esm-builds by vite.
+
 ## [1.9.3] - 2024-02-01
 
 ### Fixed

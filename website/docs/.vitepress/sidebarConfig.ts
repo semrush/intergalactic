@@ -523,6 +523,11 @@ export const sideBarConfig: SidebarConfig = [
             text: 'Bubble chart',
           },
           {
+            link: '/data-display/cigarette-chart/cigarette-chart',
+            activeMatch: '/data-display/cigarette-chart/',
+            text: 'Cigarette chart',
+          },
+          {
             link: '/data-display/donut-chart/donut-chart',
             activeMatch: '/data-display/donut-chart/',
             text: 'Donut / Pie chart',
