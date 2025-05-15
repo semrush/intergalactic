@@ -3,7 +3,7 @@ import { render, cleanup } from '@semcore/testing-utils/testing-library';
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 
-import React from 'react';
+import React, { useRef } from 'react';
 import { assertType } from 'vitest';
 import { Intergalactic } from '@semcore/core';
 import { DataTable } from '../src';
@@ -50,19 +50,34 @@ describe('DataTable', () => {
   beforeEach(cleanup);
 });
 
-describe('DataTable.Column', () => {
-  test.concurrent('Should support ref', () => {
+describe('DataTable.Cell', () => {
+  test('Should support ref via renderCell', () => {
     const spy = vi.fn();
-    render(
-      <DataTable
-        data={[]}
-        aria-label={'table label'}
-        columns={[
-          { name: 'keyword', ref: spy, children: '' },
-          { name: 'kd', children: '' },
-        ]}
-      />,
-    );
+
+    const Test = () => {
+      const ref = (el: HTMLElement | null) => {
+        if (el) spy(el);
+      };
+
+      return (
+        <DataTable
+          data={[{ keyword: 'test', kd: '1' }]}
+          aria-label='table'
+          columns={[
+            { name: 'keyword', children: 'Keyword' },
+            { name: 'kd', children: 'KD' },
+          ]}
+          renderCell={({ columnName, value }) => {
+            if (columnName === 'keyword') {
+              return <div ref={ref}>{value}</div>;
+            }
+            return value;
+          }}
+        />
+      );
+    };
+
+    render(<Test />);
     expect(spy).toBeCalled();
   });
 });

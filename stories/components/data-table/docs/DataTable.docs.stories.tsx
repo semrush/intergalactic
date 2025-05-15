@@ -7,6 +7,7 @@ import AccessToCellsExample from './examples/access-to-cells';
 import AccessToSetOfCellsExample from './examples/access-to-set-of-cells';
 import AccordionInsideTableExample from './examples/accordion-inside-table';
 import BordersExample from './examples/borders';
+import CheckboxInTableExample from './examples/checkbox-in-table';
 import ColumnAlignmentExample from './examples/column-alignment';
 import ColumnExpandExample from './examples/column-expand';
 import ColumnSizeExample from './examples/column-sizes';
@@ -59,6 +60,10 @@ export const AccordionInsideTable: Story = {
 
 export const Borders: Story = {
   render: BordersExample,
+};
+
+export const CheckboxInTable: Story = {
+  render: CheckboxInTableExample,
 };
 
 export const ColumnAlignment: Story = {

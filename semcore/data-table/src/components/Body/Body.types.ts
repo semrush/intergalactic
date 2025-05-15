@@ -1,6 +1,7 @@
 import { DTRow } from './Row.types';
 import { DTColumn } from '../Head/Column.types';
 import { DTUse, VirtualScroll } from '../DataTable/DataTable.types';
+import { Theme } from './Cell.types';
 
 export type CellRenderProps = {
   dataKey: string;
@@ -16,10 +17,17 @@ export type CellRenderProps = {
 };
 
 export type DataTableBodyProps = {
-  renderCell?: (props: CellRenderProps) => React.ReactNode | Record<string, any>;
+  renderCell?: (
+    props: CellRenderProps,
+  ) => React.ReactNode | (Record<string, any> & { theme?: Theme });
+
+  rowProps?: (
+    row: DTRow,
+    rowIndex: number,
+  ) => (Record<string, any> & { theme?: Theme }) | undefined;
 };
 
-export type BodyPropsInner = {
+export type BodyPropsInner = DataTableBodyProps & {
   rows: Array<DTRow | DTRow[]>;
   flatRows: DTRow[];
   columns: DTColumn[];
@@ -45,6 +53,13 @@ export type BodyPropsInner = {
   renderCell?: (props: CellRenderProps) => React.ReactNode | Record<string, any>;
   onBackFromAccordion: (colIndex: number) => void;
   stickyHeader?: boolean;
+  selectedRows?: number[];
+  onSelectRow?: (
+    isSelect: boolean,
+    selectedRowIndex: number,
+    row: DTRow,
+    event?: React.SyntheticEvent<HTMLElement>,
+  ) => void;
   renderEmptyData: () => React.ReactNode;
   sideIndents?: 'l';
 };

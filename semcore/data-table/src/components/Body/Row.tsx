@@ -5,9 +5,10 @@ import { Box, Collapse } from '@semcore/base-components';
 import style from './style.shadow.css';
 import { Body } from './Body';
 import { getFixedStyle } from '../../utils';
-import { ACCORDION, UNIQ_ROW_KEY } from '../DataTable/DataTable';
+import { ACCORDION, UNIQ_ROW_KEY, SELECT_ALL } from '../DataTable/DataTable';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
 import { DTValue } from '../DataTable/DataTable.types';
+import Checkbox from '@semcore/checkbox';
 
 class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
   static displayName = 'Row';
@@ -26,6 +27,13 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
     );
   }
 
+  handleSelectRow = (value: boolean) => (event?: React.SyntheticEvent<HTMLElement>) => {
+    event?.preventDefault();
+    const { row, rowIndex, onSelectRow } = this.asProps;
+
+    onSelectRow?.(value, rowIndex, row, event);
+  };
+
   handleBackFromAccordion = (e: React.KeyboardEvent) => {
     if (e.key === 'Escape') {
       this.asProps.onBackFromAccordion(this.cellIndex);
@@ -37,7 +45,6 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
     const SCollapseRow = Collapse;
     const SCell = Body.Cell;
     const {
-      uid,
       columns,
       row,
       styles,
@@ -50,6 +57,8 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
       onExpandRow,
       'aria-level': ariaLevel = 1,
       scrollAreaRef,
+      selectedRows,
+      uid,
     } = this.asProps;
 
     let accordion = row[ACCORDION];
@@ -71,8 +80,36 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
 
     return sstyled(styles)(
       <>
-        <SRow render={Box} role={'row'} aria-rowindex={ariaRowIndex} accordionType={accordionType}>
+        <SRow
+          render={Box}
+          role={'row'}
+          aria-rowindex={ariaRowIndex}
+          accordionType={accordionType}
+          theme={selectedRows?.includes(rowIndex) ? 'info' : undefined}
+        >
           {columns.map((column, i) => {
+            if (selectedRows && i === 0) {
+              const checked = selectedRows.includes(rowIndex);
+              return (
+                <Body.Cell
+                  key={i}
+                  row={row}
+                  rowIndex={rowIndex}
+                  // @ts-ignore
+                  column={{ name: SELECT_ALL.toString() }}
+                  columnIndex={0}
+                  gridRowIndex={gridRowIndex}
+                  onClick={this.handleSelectRow(!checked)}
+                >
+                  <Checkbox
+                    checked={checked}
+                    aria-labelledby={`${uid}_${ariaRowIndex}_1`}
+                    onChange={(value, e) => this.handleSelectRow(value)(e)}
+                  />
+                </Body.Cell>
+              );
+            }
+
             const index = i;
             const cellValue = row[column.name];
 
@@ -156,9 +193,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
                 aria-level={ariaLevel + 1}
                 ariaRowIndex={ariaRowIndex + 1 + i}
                 gridRowIndex={gridRowIndex + 1 + i}
-                // expanded={false}
-                // onExpandRow={() => onExpandRow(subrow)}
-                theme={'muted'}
+                expanded={true}
               />
             );
           })}

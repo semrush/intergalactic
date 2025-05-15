@@ -1571,11 +1571,11 @@
     "components": ["data-table"]
   },
   {
-    "name": "--intergalactic-table-td-cell-actions-accordion",
+    "name": "--intergalactic-table-td-cell-accordion",
     "type": "color",
     "rawValue": "{gray.50}",
     "computedValue": "#f4f5f9",
-    "description": "Background of the cell used for Accordion or actions row, in the Table.",
+    "description": "Background of the cell inside an Accordion in the Table.",
     "components": ["data-table"]
   },
   {

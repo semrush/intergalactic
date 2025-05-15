@@ -1338,10 +1338,10 @@
           "type": "color",
           "description": "Background of the unread cell in the Table."
         },
-        "cell-actions-accordion": {
+        "cell-accordion": {
           "value": "{gray.50}",
           "type": "color",
-          "description": "Background of the cell used for Accordion or actions row, in the Table."
+          "description": "Background of the cell inside an Accordion in the Table."
         },
         "cell-selected": {
           "value": "{blue.50}",

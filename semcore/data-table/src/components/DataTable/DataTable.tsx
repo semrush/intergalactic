@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Component, createComponent, lastInteraction, Root, sstyled } from '@semcore/core';
-import { Box, ScrollArea } from '@semcore/base-components';
+import { Box, ScreenReaderOnly, ScrollArea } from '@semcore/base-components';
 
 import {
   DataTableProps,
@@ -39,6 +39,7 @@ import { NoData } from '@semcore/widget-empty';
 export const ACCORDION = Symbol('accordion');
 export const ROW_GROUP = Symbol('ROW_GROUP');
 export const UNIQ_ROW_KEY = Symbol('UNIQ_ROW_KEY');
+export const SELECT_ALL = Symbol('SELECT_ALL');
 export const ROW_INDEX = Symbol('ROW_INDEX');
 
 const SCROLL_BAR_HEIGHT = 12;
@@ -46,6 +47,7 @@ const SCROLL_BAR_HEIGHT = 12;
 type State = {
   scrollTop: number;
   scrollDirection: 'down' | 'up';
+  selectAllMessage: string;
 };
 
 class DataTableRoot<D extends DataTableData> extends Component<
@@ -64,6 +66,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
     use: 'primary',
     defaultGridTemplateColumnWidth: 'auto',
     defaultExpandedRows: new Set<string>(),
+    defaultSelectedRows: undefined,
     h: 'fit-content',
     renderEmptyData: () => <NoData py={10} type={'nothing-found'} description={''} w={'100%'} />,
   };
@@ -86,6 +89,8 @@ class DataTableRoot<D extends DataTableData> extends Component<
   private columnsSplitter = '/';
   private rows: Array<DTRow | DTRow[]> = [];
 
+  private selectAllMessageTimer = 0;
+
   constructor(props: DataTableProps<D>) {
     super(props);
 
@@ -103,6 +108,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
   state: State = {
     scrollTop: 0,
     scrollDirection: 'down',
+    selectAllMessage: '',
   };
 
   uncontrolledProps() {
@@ -116,10 +122,18 @@ class DataTableRoot<D extends DataTableData> extends Component<
   }
 
   componentDidUpdate(prevProps: any) {
-    if (prevProps.data !== this.asProps.data) {
+    const { data, selectedRows } = this.asProps;
+    if (prevProps.data !== data) {
       this.rows = this.calculateRows();
 
       this.forceUpdate();
+    }
+    if (prevProps.selectedRows !== selectedRows && selectedRows !== undefined) {
+      if (prevProps.selectedRows.length < data.length && selectedRows.length === data.length) {
+        this.setSelectAllMessage(true);
+      } else if (prevProps.selectedRows.length > 0 && selectedRows.length === 0) {
+        this.setSelectAllMessage(false);
+      }
     }
   }
 
@@ -172,8 +186,18 @@ class DataTableRoot<D extends DataTableData> extends Component<
   }
 
   getHeadProps(): HeadPropsInner<D> {
-    const { use, compact, sort, onSortChange, getI18nText, uid, headerProps, sideIndents } =
-      this.asProps;
+    const {
+      use,
+      compact,
+      sort,
+      onSortChange,
+      getI18nText,
+      uid,
+      headerProps,
+      onSelectedRowsChange,
+      selectedRows,
+      sideIndents,
+    } = this.asProps;
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
 
     return {
@@ -191,6 +215,14 @@ class DataTableRoot<D extends DataTableData> extends Component<
       gridTemplateColumns,
       gridTemplateAreas,
       sideIndents,
+      totalRows: this.totalRows,
+      selectedRows: selectedRows,
+      onChangeSelectAll: (value, e) => {
+        const selectedRowsIndexes = value
+          ? new Array(this.totalRows).fill(undefined).map((_, i) => i)
+          : [];
+        onSelectedRowsChange?.(selectedRowsIndexes, e);
+      },
       ...headerProps,
     };
   }
@@ -209,6 +241,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
       headerProps,
       renderEmptyData,
       sideIndents,
+      selectedRows,
     } = this.asProps;
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
     return {
@@ -239,8 +272,53 @@ class DataTableRoot<D extends DataTableData> extends Component<
       renderCell,
       renderEmptyData,
       sideIndents,
+      selectedRows,
+      onSelectRow: this.handleSelectRow,
     };
   }
+
+  handleSelectRow = (
+    isSelected: boolean,
+    selectedRowIndex: number,
+    row: DTRow,
+    event?: React.SyntheticEvent<HTMLElement>,
+  ) => {
+    const { selectedRows, onSelectedRowsChange, data } = this.asProps;
+
+    if (selectedRows && onSelectedRowsChange) {
+      const newSelectedRows = new Set(selectedRows);
+
+      if (isSelected && !newSelectedRows.has(selectedRowIndex)) {
+        newSelectedRows.add(selectedRowIndex);
+      } else if (!isSelected && newSelectedRows.has(selectedRowIndex)) {
+        newSelectedRows.delete(selectedRowIndex);
+      }
+
+      onSelectedRowsChange([...newSelectedRows], event, {
+        selectedRowIndex,
+        isSelected,
+        row,
+      });
+    }
+  };
+
+  setSelectAllMessage = (selectedAll: boolean) => {
+    if (this.selectAllMessageTimer) {
+      clearTimeout(this.selectAllMessageTimer);
+    }
+
+    const { getI18nText } = this.asProps;
+    const message = getI18nText(
+      selectedAll
+        ? 'DataTable.allItemsSelected:aria-live'
+        : 'DataTable.allItemsDeselected:aria-live',
+    );
+    this.setState({ selectAllMessage: message });
+
+    this.selectAllMessageTimer = window.setTimeout(() => {
+      this.setState({ selectAllMessage: '' });
+    }, 5000);
+  };
 
   setInert(value: boolean) {
     const cells = this.tableRef.current?.querySelectorAll<HTMLDivElement>(
@@ -526,6 +604,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
       children,
       headerProps,
       loading,
+      selectedRows,
     } = this.asProps;
 
     const [offsetLeftSum, offsetRightSum] = getScrollOffsetValue(this.columns);
@@ -635,12 +714,18 @@ class DataTableRoot<D extends DataTableData> extends Component<
             <ScrollArea.Bar orientation='vertical' zIndex={10} />
           </>
         )}
+
+        {selectedRows !== undefined && (
+          <ScreenReaderOnly aria-live='polite' role='status'>
+            {this.state.selectAllMessage}
+          </ScreenReaderOnly>
+        )}
       </ScrollArea>,
     );
   }
 
   private calculateColumns(): DTColumn[] {
-    const { children, data } = this.props;
+    const { children, data, selectedRows } = this.props;
 
     const HeadComponent = findComponent(children, ['Head']) as ReactElement<DataTableHeadProps> & {
       props: {
@@ -652,11 +737,35 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
     let columnIndex = 0;
     let groupIndex = 0;
-    let gridColumnIndex = 1;
+    let gridColumnIndex = selectedRows ? 2 : 1;
 
     const calculateGridTemplateColumn = this.calculateGridTemplateColumn.bind(this);
 
     const columns: DTColumn[] = [];
+
+    if (selectedRows) {
+      const column: DTColumn = {
+        name: SELECT_ALL.toString(),
+        // @ts-ignore
+        ref: function (node: HTMLElement | null) {
+          if (node) {
+            const calculatedWidth = node.getBoundingClientRect().width;
+            const calculatedHeight = node.getBoundingClientRect().height;
+            column.calculatedWidth = calculatedWidth;
+            column.calculatedHeight = calculatedHeight;
+          }
+
+          this.ref.current = node;
+        },
+        gridColumnWidth: '40px',
+        calculatedWidth: 0,
+        calculatedHeight: 0,
+
+        alignItems: 'flex-start',
+      };
+
+      columns.push(column);
+    }
 
     const makeColumn = (
       columnElement: ReactElement<DataTableColumnProps>,
@@ -763,18 +872,42 @@ class DataTableRoot<D extends DataTableData> extends Component<
   }
 
   private calculateColumnsFromConfig(): [DTColumn[], DTColumn[]] {
-    const { columns, data } = this.props;
+    const { columns, data, selectedRows } = this.props;
 
     this.hasGroups = columns.some((column) => 'columns' in column);
 
     let columnIndex = 0;
     let groupIndex = 0;
-    let gridColumnIndex = 1;
+    let gridColumnIndex = selectedRows ? 2 : 1;
 
     const calculateGridTemplateColumn = this.calculateGridTemplateColumn.bind(this);
 
     const calculatedColumns: DTColumn[] = [];
     const treeColumns: DTColumn[] = [];
+
+    if (selectedRows) {
+      const column: DTColumn = {
+        name: SELECT_ALL.toString(),
+        // @ts-ignore
+        ref: function (node: HTMLElement | null) {
+          if (node) {
+            const calculatedWidth = node.getBoundingClientRect().width;
+            const calculatedHeight = node.getBoundingClientRect().height;
+            column.calculatedWidth = calculatedWidth;
+            column.calculatedHeight = calculatedHeight;
+          }
+
+          this.ref.current = node;
+        },
+        gridColumnWidth: '40px',
+        calculatedWidth: 0,
+        calculatedHeight: 0,
+
+        alignItems: 'flex-start',
+      };
+
+      calculatedColumns.push(column);
+    }
 
     const makeColumn = (
       columnElement: ColumnItemConfig | ColumnGroupConfig,

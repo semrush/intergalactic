@@ -74,6 +74,8 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
       rows,
       flatRows,
       sideIndents,
+      selectedRows,
+      onSelectRow,
     } = this.asProps;
     const row = props.row;
     const index = row[ROW_INDEX];
@@ -105,6 +107,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
       onClick: row[ACCORDION] ? this.handleClickRow(row, index) : undefined,
       ...rowProps?.(row, index),
       use,
+      uid,
       gridTemplateAreas,
       gridTemplateColumns,
       expanded: expandedRows?.has(row[UNIQ_ROW_KEY]),
@@ -118,9 +121,10 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
       row,
       expandedRows,
       onExpandRow,
+      selectedRows,
+      onSelectRow,
       inert: loading ? '' : undefined,
       scrollAreaRef,
-      uid,
       sideIndents,
     };
   }

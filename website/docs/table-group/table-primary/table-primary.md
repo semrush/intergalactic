@@ -33,7 +33,7 @@ Table: Primary table styles
 | Header                         | ![](static/th-styles.png)        | `background-color: var(--table-th-primary-cell)`, `border-bottom: 1px solid var(--border-secondary)` |
 | Header of the scrollable table | ![](static/th-styles-scroll.png) | When scrolling a page with a table, the header shouldn't have a shadow.      |
 | Default row                     | ![](static/td-default.png)      | `border-bottom: 1px solid var(--border-secondary)`                                   |
-| The last line of the accordion  | ![](static/accordion.png)  | `border-bottom: 1px solid var(--table-td-cell-actions-accordion)`                                   |
+| The last line of the accordion  | ![](static/accordion.png)  | `border-bottom: 1px solid var(--table-td-cell-accordion)`                                   |
 
 ## Multi-level header
 

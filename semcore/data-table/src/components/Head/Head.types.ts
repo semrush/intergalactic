@@ -33,4 +33,8 @@ export type HeadPropsInner<D extends DataTableData> = {
   gridTemplateColumns: string[];
   gridTemplateAreas: string[];
   sideIndents?: 'l';
+
+  totalRows: number;
+  selectedRows?: number[];
+  onChangeSelectAll?: (value: boolean, event?: React.SyntheticEvent<HTMLElement>) => void;
 };

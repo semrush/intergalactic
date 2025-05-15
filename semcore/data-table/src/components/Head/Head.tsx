@@ -12,6 +12,8 @@ import { getFixedStyle } from '../../utils';
 import { DataTableGroupProps } from './Group.type';
 import { DataTableData } from '../DataTable/DataTable.types';
 import { DataTable } from '../DataTable/DataTable';
+import { SELECT_ALL } from '../DataTable/DataTable';
+import Checkbox from '@semcore/checkbox';
 
 class HeadRoot<D extends DataTableData> extends Component<
   DataTableHeadProps,
@@ -52,8 +54,14 @@ class HeadRoot<D extends DataTableData> extends Component<
       gridTemplateAreas,
       sticky,
       top,
+      selectedRows,
     } = this.asProps;
     const column = columns[index];
+
+    if (index === 0 && selectedRows && columns[index + 1].fixed) {
+      column.fixed = 'left';
+    }
+
     const [name, value] = getFixedStyle(column, columns);
     const style: any = {};
 
@@ -87,13 +95,38 @@ class HeadRoot<D extends DataTableData> extends Component<
     };
   }
 
+  handleSelectAll = (value: boolean) => (event?: React.SyntheticEvent<HTMLElement>) => {
+    event?.preventDefault();
+    this.asProps.onChangeSelectAll?.(value, event);
+  };
+
   render() {
     const SHead = Root;
-    const { Children, styles, getI18nText, children, treeColumns } = this.asProps;
+    const { Children, styles, getI18nText, children, treeColumns, selectedRows, totalRows } =
+      this.asProps;
+
+    const checked = selectedRows && selectedRows.length === totalRows && totalRows > 0;
+    const indeterminate = selectedRows && selectedRows.length > 0 && !checked;
 
     return sstyled(styles)(
       <>
         <SHead render={Box} role='row' aria-rowindex={1}>
+          {selectedRows && (
+            <Head.Column name={SELECT_ALL.toString()} onClick={this.handleSelectAll(!checked)}>
+              <Checkbox
+                checked={checked}
+                indeterminate={indeterminate}
+                aria-label={getI18nText('DataTable.Header.selectAllCheckbox:aria-label')}
+                onChange={(value, e) => this.handleSelectAll(value)(e)}
+              >
+                <Checkbox.Value>
+                  <Checkbox.Value.Control />
+                  <Checkbox.Value.CheckMark mt={0} />
+                </Checkbox.Value>
+              </Checkbox>
+            </Head.Column>
+          )}
+
           {children ? (
             <Children />
           ) : (

@@ -169,7 +169,7 @@ export default {
   '--intergalactic-table-td-cell-hover': '#2b2e38',
   '--intergalactic-table-td-cell-active': '#2b2e38',
   '--intergalactic-table-td-cell-unread': '#f4f5f9',
-  '--intergalactic-table-td-cell-actions-accordion': 'rgba(54, 56, 67, 1)',
+  '--intergalactic-table-td-cell-accordion': 'rgba(54, 56, 67, 1)',
   '--intergalactic-table-td-cell-selected': 'rgba(43, 54, 69, 1)',
   '--intergalactic-table-td-cell-selected-hover': '#c4e5fe',
   '--intergalactic-table-td-cell-selected-active': '#c4e5fe',

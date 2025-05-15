@@ -35,7 +35,7 @@ If you have too much data inside such an accordion, we consider you to think abo
 - The accordion row should have a `ChevronRight` icon in the leftmost column to indicate expandability. Use icon with M size and `--icon-secondary-neutral` token for color.
 - The active state of an opened accordion row is highlighted with the `--table-td-cell-active` token.
 - When opened, the `ChevronRight` icon changes to `ChevronDown` of the same size and color.
-- Rows inside the accordion have specific styling to prevent visual merging when multiple rows are open. Use `--table-td-cell-actions-accordion` for background-color and `--border-table-accent` for 1px solid border-bottom.
+- Rows inside the accordion have specific styling to prevent visual merging when multiple rows are open. Use `--table-td-cell-accordion` for background-color and `--border-table-accent` for 1px solid border-bottom.
 
 ![](static/accordion.png)
 
@@ -207,7 +207,7 @@ Use the status row for multi-row selection and pagination (you can also show pop
 
 ### Styles
 
-Use `--table-td-cell-actions-accordion` token for background-color and `--border-secondary` token for 1px solid border-bottom.
+Use `--table-td-cell-accordion` token for background-color and `--border-secondary` token for 1px solid border-bottom.
 
 ::: tip
 Specify a 400ms transition for appearing and hiding of such a row.
