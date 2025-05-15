@@ -750,7 +750,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
             if (columnNode instanceof HTMLElement) {
               setToMap(columnNode);
             }
-          })
+          });
         } else {
           setToMap(node);
         }
