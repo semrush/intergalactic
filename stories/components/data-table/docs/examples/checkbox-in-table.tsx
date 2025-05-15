@@ -8,10 +8,11 @@ import { sstyled } from '@semcore/core';
 
 const style = sstyled.css`
   SDataTable > [aria-rowindex='1'] > div {
-    transition: top 150ms ease-in-out;
+    transition: top 150ms ease-out;
   }
   SDataTable[activePanel] > [aria-rowindex='1'] > div {
     top: 44px;
+    transition-delay: 80ms;
   }
 `;
 
