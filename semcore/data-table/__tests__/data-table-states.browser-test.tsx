@@ -116,7 +116,7 @@ test.describe('Additional states', () => {
     });
   });
 
-  test('Verify table with checkbox keyboard interaction', async ({ page }) => {
+  test('Verify table with checkbox keyboard interaction', async ({ page, browserName }) => {
     const standPath = 'stories/components/data-table/docs/examples/checkbox-in-table.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
@@ -131,8 +131,6 @@ test.describe('Additional states', () => {
       await page.keyboard.press('Tab');
       await expect(headerCheckbox).toBeFocused();
       const classAttr = await headerCheckbox.getAttribute('class');
-
-      // Проверяем, содержит ли класс слово "checked"
       expect(classAttr).not.toContain('checked');
     });
 
@@ -162,14 +160,14 @@ test.describe('Additional states', () => {
       }
     });
 
-    await test.step('Verify all checkoxes checked by activating header ', async () => {
+    await test.step('Verify panel appears by activating at least one checkbox ', async () => {
       await page.keyboard.press('Space');
-      await page.waitForTimeout(100);
-      await expect(actionBar).not.toBeVisible();
+      await page.waitForTimeout(150);
       await expect(actionBar).toBeHidden();
 
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('Space');
+      await page.waitForTimeout(150);
       await expect(actionBar).toBeVisible();
 
       const checkbox = firstColumnCells
@@ -178,6 +176,29 @@ test.describe('Additional states', () => {
 
       const classAttr = await checkbox.getAttribute('class');
       expect(classAttr).toContain('checked');
+    });
+
+    if(browserName==='webkit') return; // skipped step for webkit because works unstable
+    await test.step('Verify focus returns correctly by activating Deseslect all', async () => {
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowRight');
+      const row = page.locator('[data-ui-name="Body.Row"][aria-rowindex="5"]');
+const cell = row.locator('[data-ui-name="Body.Cell"][aria-colindex="4"]');
+await expect(cell).toBeFocused();
+
+      await page.keyboard.press('Shift+Tab');
+      const button = page.locator('[data-ui-name="Button"]');
+      await expect(button).toBeFocused();
+
+
+      await page.keyboard.press('Space');
+      await page.waitForTimeout(150);
+      await expect(actionBar).toBeHidden();
+      await expect(cell).toBeFocused();
     });
   });
 });
