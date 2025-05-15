@@ -51,37 +51,33 @@ describe('DataTable', () => {
 });
 
 describe('DataTable.Cell', () => {
+  test('Should support ref via renderCell', () => {
+    const spy = vi.fn();
 
-    test('Should support ref via renderCell', () => {
-      const spy = vi.fn();
-  
-      const Test = () => {
-        const ref = (el: HTMLElement | null) => {
-          if (el) spy(el);
-        };
-  
-        return (
-          <DataTable
-            data={[{ keyword: 'test', kd: '1' }]}
-            aria-label="table"
-            columns={[
-              { name: 'keyword', children: 'Keyword' },
-              { name: 'kd', children: 'KD' },
-            ]}
-            renderCell={({ columnName, value }) => {
-              if (columnName === 'keyword') {
-                return <div ref={ref}>{value}</div>;
-              }
-              return value;
-            }}
-          />
-        );
+    const Test = () => {
+      const ref = (el: HTMLElement | null) => {
+        if (el) spy(el);
       };
-  
-      render(<Test />);
-      expect(spy).toBeCalled(); 
-    });
-  
-}); 
-  
-  
+
+      return (
+        <DataTable
+          data={[{ keyword: 'test', kd: '1' }]}
+          aria-label='table'
+          columns={[
+            { name: 'keyword', children: 'Keyword' },
+            { name: 'kd', children: 'KD' },
+          ]}
+          renderCell={({ columnName, value }) => {
+            if (columnName === 'keyword') {
+              return <div ref={ref}>{value}</div>;
+            }
+            return value;
+          }}
+        />
+      );
+    };
+
+    render(<Test />);
+    expect(spy).toBeCalled();
+  });
+});
