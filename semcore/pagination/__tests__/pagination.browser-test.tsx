@@ -215,7 +215,7 @@ test.describe('Interactions', () => {
       await expect(total).toBeFocused();
       await total.hover();
       await expect(page).toHaveScreenshot();
-         });
+    });
 
     await test.step('Verify change pages by buttons interaction', async () => {
       await page.keyboard.press('Shift+Tab');
