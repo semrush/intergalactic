@@ -64,18 +64,63 @@ test.describe('Accordion in table', () => {
 
     await page.setContent(htmlContent);
     const firstArrow = await page.locator('[data-ui-name="ButtonLink"]').first();
-
-    await firstArrow.click();
-    await page.keyboard.press('ArrowDown');
     const plot = await page.locator('[data-ui-name="Plot"]');
-    await expect(plot).toHaveCount(1);
-    await firstArrow.click();
-    await expect(plot).toHaveCount(0);
-    await firstArrow.click();
 
-    const thirdArrow = await page.locator('[data-ui-name="ButtonLink"]').nth(2);
-    await thirdArrow.click();
-    await expect(plot).toHaveCount(2);
+    await test.step('Verify accordion collapse when clicking directly on toggle', async () => {
+      await firstArrow.click();
+      await page.keyboard.press('ArrowDown');
+      await expect(plot).toHaveCount(1);
+      await firstArrow.click();
+      await expect(plot).toHaveCount(0);
+      await firstArrow.click();
+
+      const thirdArrow = await page.locator('[data-ui-name="ButtonLink"]').nth(2);
+      await thirdArrow.click();
+      await expect(plot).toHaveCount(2);
+      await thirdArrow.click();
+      await firstArrow.click();
+      await expect(plot).toHaveCount(0);
+    });
+
+    await test.step('Verify accordion collapse when clicking any cell in row in case accordion in 1st cell', async () => {
+      const row = page.locator('[data-ui-name="Body.Row"][aria-rowindex="2"]');
+      const firstCell = row.locator('[data-ui-name="Body.Cell"][aria-colindex="1"]');
+      const lastCell = row.locator('[data-ui-name="Body.Cell"][aria-colindex="4"]');
+
+      const firstBox = await firstCell.boundingBox();
+      const lastBox = await lastCell.boundingBox();
+
+      if (firstBox && lastBox) {
+        await page.mouse.click(firstBox.x + firstBox.width / 2, firstBox.y + firstBox.height / 2);
+        await expect(plot).toBeVisible();
+        await page.mouse.click(lastBox.x + lastBox.width / 2, lastBox.y + lastBox.height / 2);
+        await expect(plot).not.toBeVisible();
+      }
+    });
+
+    await test.step('Verify accordion collapse logic when clicking cell in case accordion not in 1st cell', async () => {
+      const row = page.locator('[data-ui-name="Body.Row"][aria-rowindex="3"]');
+      const firstCell = row.locator('[data-ui-name="Body.Cell"][aria-colindex="1"]');
+      const lastCell = row.locator('[data-ui-name="Body.Cell"][aria-colindex="4"]');
+
+      const firstBox = await firstCell.boundingBox();
+      const lastBox = await lastCell.boundingBox();
+
+      if (firstBox && lastBox) {
+        await page.mouse.click(firstBox.x + firstBox.width / 2, firstBox.y + firstBox.height / 2);
+        await expect(plot).not.toBeVisible();
+        await page.mouse.click(lastBox.x + lastBox.width / 2, lastBox.y + lastBox.height / 2);
+        await expect(plot).toBeVisible();
+        await page.mouse.click(lastBox.x + lastBox.width / 2, lastBox.y + lastBox.height / 2);
+        await expect(plot).not.toBeVisible();
+      }
+    });
+
+    await test.step('Verify accordion not expands when clicking interactive element in any cell when accordion on 1st', async () => {
+      const button = page.getByRole('button', { name: 'someB' });
+      await button.click();
+      await expect(plot).not.toBeVisible();
+    });
   });
 
   test('Verify accordion with chart styles', async ({ page, browserName }) => {
@@ -313,7 +358,7 @@ test.describe('Accordion in table', () => {
     });
   });
 
-  test('Verify keyboard navigation when interactive element incide cell', async ({
+  test('Verify keyboard navigation when interactive element inside cell', async ({
     page,
     browserName,
   }) => {
@@ -376,6 +421,30 @@ test.describe('Accordion in table', () => {
         .nth(1);
       await expect(secondrowCell).toBeFocused();
     });
+  });
+
+  //will be failed right now
+  test('Verify mouse inreaction when interactive element inside cell with toggle', async ({
+    page,
+  }) => {
+    const standPath =
+      'stories/components/data-table/tests/examples/accordion-tests/accordion-with-render-cell.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+    const row = page.locator('[data-ui-name="Body.Row"][aria-rowindex="2"]');
+    const elementsIncell = await row.locator('[data-ui-name="ButtonLink"]');
+    const firstrowCell = row.locator('[data-ui-name="Body.Cell"][aria-colindex="1"]');
+    const widget = page.locator('[data-ui-name="WidgetNoData"]');
+
+    await firstrowCell.click();
+    await expect(widget).toBeVisible();
+    await firstrowCell.click();
+    await expect(widget).not.toBeVisible();
+
+    await elementsIncell.nth(1).click();
+    await page.keyboard.press('Escape');
+    await expect(widget).not.toBeVisible();
   });
 
   test('Verify table in table with sorting keyboard interaction', async ({ page }) => {

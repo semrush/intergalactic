@@ -207,6 +207,11 @@
       "import": "./lib/utils/inputProps.mjs",
       "types": "./lib/utils/inputProps.d.ts"
     },
+    "./lib/utils/isInteractiveElement": {
+      "require": "./lib/utils/isInteractiveElement.js",
+      "import": "./lib/utils/isInteractiveElement.mjs",
+      "types": "./lib/utils/isInteractiveElement.d.ts"
+    },
     "./lib/utils/isNode": {
       "require": "./lib/utils/isNode.js",
       "import": "./lib/utils/isNode.mjs",

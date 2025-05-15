@@ -12,8 +12,9 @@ import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
 import { ACCORDION, ROW_INDEX, UNIQ_ROW_KEY } from '../DataTable/DataTable';
 import ChevronRightM from '@semcore/icon/ChevronRight/m';
 import { ButtonLink } from '@semcore/button';
-import { DataTableData, DTValue } from '../DataTable/DataTable.types';
+import { DTValue } from '../DataTable/DataTable.types';
 import Spin from '@semcore/spin';
+import { isInteractiveElement } from '@semcore/core/lib/utils/isInteractiveElement';
 
 const ROWS_BUFFER = 20;
 const APROX_ROWS_ON_PAGE = 20;
@@ -43,6 +44,17 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
     }, 300); // we need to calculate after expanding animation
 
     this.asProps.onExpandRow(row);
+  };
+
+  handleClickRow = (row: DTRow, index: number) => (e: React.SyntheticEvent<HTMLElement>) => {
+    if (!isInteractiveElement(e.target)) {
+      this.handleExpandRow(row, index);
+    }
+  };
+  handleClickCell = (row: DTRow, index: number) => (e: React.SyntheticEvent<HTMLElement>) => {
+    if (!isInteractiveElement(e.target)) {
+      this.handleExpandRow(row, index);
+    }
   };
 
   getRowProps(props: { row: DTRow }): RowPropsInner {
@@ -90,6 +102,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
       : `${gridRowIndex + 1} / 1 / ${gridRowIndex + 1} / ${columns.length + 1}`;
 
     return {
+      onClick: row[ACCORDION] ? this.handleClickRow(row, index) : undefined,
       ...rowProps?.(row, index),
       use,
       gridTemplateAreas,
@@ -175,7 +188,10 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
             aria-label={getI18nText('DataTable.Cell.AccordionToggle.expand:aria-label')}
             // @ts-ignore
             expanded={expanded}
-            onClick={() => this.handleExpandRow(props.row, props.rowIndex)}
+            onClick={(e: React.SyntheticEvent<HTMLButtonElement>) => {
+              e.stopPropagation();
+              this.handleExpandRow(props.row, props.rowIndex);
+            }}
             color={'--intergalactic-icon-primary-neutral'}
             aria-expanded={expanded}
             aria-describedby={props.id}
@@ -186,6 +202,10 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
           {extraProps.children}
         </>,
       );
+    }
+
+    if (value?.[ACCORDION]) {
+      extraProps.onClick = this.handleClickCell(props.row, props.rowIndex);
     }
 
     return extraProps;

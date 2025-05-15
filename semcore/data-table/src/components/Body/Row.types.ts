@@ -16,7 +16,7 @@ export type DataTableRowProps = {
   offset?: number;
 };
 
-export type RowPropsInner = {
+export type RowPropsInner = JSX.IntrinsicElements['div'] & {
   use: DTUse;
   /**
    * Expanded flag for rows with accordion
