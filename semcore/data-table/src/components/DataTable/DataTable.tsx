@@ -123,9 +123,9 @@ class DataTableRoot<D extends DataTableData> extends Component<
   componentDidMount() {
     const { headerProps } = this.asProps;
     if ((headerProps?.sticky && !headerProps.h) || this.columns.some((c) => c.fixed)) {
-      setTimeout(() => {
+      requestAnimationFrame(() => {
         this.forceUpdate();
-      }, 30);
+      });
     }
   }
 

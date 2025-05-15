@@ -368,7 +368,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
             <Body.Row
               key={row[UNIQ_ROW_KEY]}
               row={row}
-              ref={this.handleRef(startIndex + index, row)}
+              ref={virtualScroll ? this.handleRef(startIndex + index, row) : undefined}
             />
           );
         })}
