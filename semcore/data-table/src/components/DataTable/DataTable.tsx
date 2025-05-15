@@ -281,7 +281,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
     isSelected: boolean,
     selectedRowIndex: number,
     row: DTRow,
-    event: React.SyntheticEvent<HTMLElement>,
+    event?: React.SyntheticEvent<HTMLElement>,
   ) => {
     const { selectedRows, onSelectedRowsChange, data } = this.asProps;
 

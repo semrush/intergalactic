@@ -58,7 +58,7 @@ export type BodyPropsInner = DataTableBodyProps & {
     isSelect: boolean,
     selectedRowIndex: number,
     row: DTRow,
-    event: React.SyntheticEvent<HTMLElement>,
+    event?: React.SyntheticEvent<HTMLElement>,
   ) => void;
   renderEmptyData: () => React.ReactNode;
   sideIndents?: 'l';
