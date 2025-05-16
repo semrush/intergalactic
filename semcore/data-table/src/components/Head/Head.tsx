@@ -103,6 +103,7 @@ class HeadRoot<D extends DataTableData> extends Component<
 
   render() {
     const SHead = Root;
+    const SHeadCheckboxCol = Head.Column;
     const { Children, styles, getI18nText, children, treeColumns, selectedRows, totalRows } =
       this.asProps;
 
@@ -113,7 +114,7 @@ class HeadRoot<D extends DataTableData> extends Component<
       <>
         <SHead render={Box} role='row' aria-rowindex={1}>
           {selectedRows && (
-            <Head.Column name={SELECT_ALL.toString()} onClick={this.handleSelectAll(!checked)}>
+            <SHeadCheckboxCol name={SELECT_ALL.toString()} onClick={this.handleSelectAll(!checked)}>
               <Checkbox
                 checked={checked}
                 indeterminate={indeterminate}
@@ -125,7 +126,7 @@ class HeadRoot<D extends DataTableData> extends Component<
                   <Checkbox.Value.CheckMark mt={0} />
                 </Checkbox.Value>
               </Checkbox>
-            </Head.Column>
+            </SHeadCheckboxCol>
           )}
 
           {children ? (

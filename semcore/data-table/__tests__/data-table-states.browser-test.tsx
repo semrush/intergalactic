@@ -162,7 +162,7 @@ test.describe('Additional states', () => {
 
     await test.step('Verify panel appears by activating at least one checkbox ', async () => {
       await page.keyboard.press('Space');
-      await page.waitForTimeout(150);
+      await page.waitForTimeout(200);
       await expect(actionBar).toBeHidden();
 
       await page.keyboard.press('ArrowDown');
