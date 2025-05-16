@@ -20,7 +20,7 @@ function generateData(count:any) {
     vol: volPatterns[Math.floor(Math.random() * volPatterns.length)](),
   }));
 }
-const data = generateData(1000);
+const data = generateData(500);
 
 const Demo = () => {
   return (
