@@ -175,7 +175,7 @@ SCell {
   }
 }
 
-SRow[accordionType='row'] > SCell, SRow[accordionType='cell'] > SCell[withAccordion] {
+SRow[accordionType='row'] > SCell, SRow[accordionType='cell'] > SCell[withAccordion], SCell[name='Symbol(SELECT_ALL)'], SColumn[name='Symbol(SELECT_ALL)'] {
   cursor: pointer;
 }
 
