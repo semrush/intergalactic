@@ -1,5 +1,6 @@
 import {
   ColumnGroupConfig,
+  ColumnItemConfig,
   DataTableData,
   DataTableProps,
   DTUse,
@@ -42,29 +43,20 @@ export type CommonColumnType = {
   justifyContent?: Property.JustifyContent;
 };
 
-export type DTColumn = CommonColumnType & {
-  ref: React.RefCallback<HTMLElement> & { current: HTMLElement | null };
-  /**
-   * Width for grid-template-columns
-   */
-  gridColumnWidth: string;
+export type DTColumn = ColumnItemConfig &
+  CommonColumnType & {
+    /**
+     * Width for grid-template-columns
+     */
+    gtcWidth: string;
 
-  /**
-   * Width of column by getBoundaryRect() value
-   */
-  calculatedWidth: number;
-  /**
-   * Height of column by getBoundaryRect() value
-   */
-  calculatedHeight: number;
+    parent?: DTColumn | ColumnGroupConfig;
 
-  parent?: DTColumn | ColumnGroupConfig;
+    columns?: DTColumn[];
+    children?: React.ReactNode | React.FC;
 
-  columns?: DTColumn[];
-  children: React.ReactNode;
-
-  gridArea?: string;
-};
+    gridArea?: string;
+  };
 
 export type DataTableColumnProps = CommonColumnType & {
   /**

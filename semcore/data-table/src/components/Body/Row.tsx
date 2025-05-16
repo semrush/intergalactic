@@ -4,8 +4,7 @@ import { DataTableRowProps, RowPropsInner } from './Row.types';
 import { Box, Collapse } from '@semcore/base-components';
 import style from './style.shadow.css';
 import { Body } from './Body';
-import { getFixedStyle } from '../../utils';
-import { ACCORDION, UNIQ_ROW_KEY, SELECT_ALL } from '../DataTable/DataTable';
+import { ACCORDION, SELECT_ALL } from '../DataTable/DataTable';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
 import { DTValue } from '../DataTable/DataTable.types';
 import Checkbox from '@semcore/checkbox';
@@ -59,6 +58,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
       scrollAreaRef,
       selectedRows,
       uid,
+      getFixedStyle,
     } = this.asProps;
 
     let accordion = row[ACCORDION];
@@ -120,7 +120,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
             const style: React.CSSProperties = {};
 
             if (column.fixed) {
-              const [name, value] = getFixedStyle(column, columns);
+              const [name, value] = getFixedStyle(column);
 
               if (name !== undefined && value !== undefined) {
                 style[name] = value;
@@ -194,6 +194,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
                 ariaRowIndex={ariaRowIndex + 1 + i}
                 gridRowIndex={gridRowIndex + 1 + i}
                 expanded={true}
+                getFixedStyle={getFixedStyle}
               />
             );
           })}
