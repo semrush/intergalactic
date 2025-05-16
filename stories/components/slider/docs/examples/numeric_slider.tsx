@@ -6,13 +6,13 @@ import { Box, Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 
 const Demo = () => {
-  const [value, setValue] = React.useState('51');
+  const [value, setValue] = React.useState(51);
   const [error, setError] = React.useState('');
   const min = 10;
   const max = 100;
 
-  const handleInput = (value: string) => {
-    if (!!value && (Number(value) > max || Number(value) < min)) {
+  const handleInput = (value: any) => {
+    if (!!value && (value > max ||value < min)) {
       setError('Please enter a valid value');
       setValue(value);
     } else {
@@ -54,7 +54,7 @@ const Demo = () => {
           <InputNumber.Value
             id='numeric-value-represantation'
             step={1}
-            value={value}
+            value={value.toString()}
             onChange={handleInput}
           />
           <InputNumber.Controls showControls />
