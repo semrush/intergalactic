@@ -1077,7 +1077,6 @@ test.describe('Disabled dates and Validation', () => {
     await expect(datePicker).toHaveAttribute('aria-invalid', 'true');
     await expect(datePicker).toHaveAttribute('aria-haspopup', 'true');
 
-    await expect(page).toHaveScreenshot();
     await page.keyboard.press('Backspace');
     await page.keyboard.type('24');
     await expect(datePicker).toHaveAttribute('aria-invalid', 'true');

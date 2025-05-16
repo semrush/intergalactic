@@ -142,7 +142,8 @@ test.describe('Popper', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
-
+    await new Promise((resolve) => setTimeout(resolve, 250));
+    
     const popperD = page.locator('text=Popper');
     const popperF = page.locator('text=Fixed');
     const popperDY = (await popperD.boundingBox())!.y;
