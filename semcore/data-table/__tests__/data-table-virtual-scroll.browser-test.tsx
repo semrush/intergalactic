@@ -116,15 +116,18 @@ test.describe('Vertical Scroll', () => {
     const firstArrow = await page.locator('[data-ui-name="ButtonLink"]').first();
 
     await firstArrow.click();
+    await page.waitForTimeout(200);
     await page.keyboard.press('ArrowDown');
     const plot = await page.locator('[data-ui-name="Plot"]');
     await expect(plot).toHaveCount(1);
     await firstArrow.click();
+    await page.waitForTimeout(200);
     await expect(plot).toHaveCount(0);
     await firstArrow.click();
 
     const thirdArrow = await page.locator('[data-ui-name="ButtonLink"]').nth(2);
     await thirdArrow.click();
+    await page.waitForTimeout(200);
     await expect(plot).toHaveCount(2);
   });
 });
