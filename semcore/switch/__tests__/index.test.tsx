@@ -86,7 +86,6 @@ describe('Switch', () => {
     );
 
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
-
   });
 
   test.concurrent('Should support a custom icon on the toggle', async ({ task }) => {
