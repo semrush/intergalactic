@@ -14,7 +14,7 @@ SContentBox, SModalBox {
   position: relative;
   overflow: hidden;
   border-radius: var(--intergalactic-surface-rounded, 6px);
-  &:has(SItem[keyboardFocused]) {
+  &:has(SItem:focus-visible) {
     &:after {
       content: '';
       display: block;
