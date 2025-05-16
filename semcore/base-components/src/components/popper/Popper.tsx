@@ -617,7 +617,6 @@ function Trigger(props: PopperTriggerProps & IRootComponentProps & InnerPopperTr
   activeRef.current = active;
   React.useEffect(() => {
     if (!active) return;
-    if (!popperRef.current) return;
     return () => {
       setTimeout(() => {
         if (activeRef.current) return;

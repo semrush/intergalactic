@@ -78,6 +78,7 @@ class TooltipRoot extends Component {
       interaction,
       resolveColor,
       visible,
+      timeout,
     } = this.asProps;
 
     let ariaLive = theme === 'warning' ? 'assertive' : 'polite';
@@ -95,6 +96,7 @@ class TooltipRoot extends Component {
       role: 'tooltip',
       'aria-live': ariaLive,
       visible,
+      timeout,
     };
   }
 
@@ -140,10 +142,12 @@ function TooltipPopper(props) {
     arrowBgColor,
     arrowShadowColor,
     visible,
+    timeout,
   } = props;
   const STooltip = Root;
   const SArrow = Box;
   const STooltipPortalledWrapper = Box;
+  const timeoutConfig = typeof timeout === 'number' ? [timeout, timeout] : timeout;
 
   const [isVisible, setIsVisible] = React.useState(false);
 
@@ -158,11 +162,13 @@ function TooltipPopper(props) {
         setIsVisible(true);
       }, 0);
     } else {
-      setIsVisible(false);
+      setTimeout(() => {
+        setIsVisible(false);
+      }, timeoutConfig[1] + 50);
     }
   }, [visible]);
 
-  if (!visible) {
+  if (!visible && !isVisible) {
     return null;
   }
 
@@ -175,7 +181,7 @@ function TooltipPopper(props) {
           zIndex={zIndex}
         >
           <STooltip
-            use:visible={isVisible}
+            use:visible={visible && isVisible}
             render={Popper.Popper}
             use:disablePortal
             use:theme={resolveColor(theme)}
