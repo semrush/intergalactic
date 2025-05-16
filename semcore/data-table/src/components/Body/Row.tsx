@@ -43,6 +43,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
     const SRow = Root;
     const SCollapseRow = Collapse;
     const SCell = Body.Cell;
+    const SCheckboxCell = Body.Cell;
     const {
       columns,
       row,
@@ -90,8 +91,8 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
           {columns.map((column, i) => {
             if (selectedRows && i === 0) {
               const checked = selectedRows.includes(rowIndex);
-              return (
-                <Body.Cell
+              return sstyled(styles)(
+                <SCheckboxCell
                   key={i}
                   row={row}
                   rowIndex={rowIndex}
@@ -106,7 +107,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
                     aria-labelledby={`${uid}_${ariaRowIndex}_1`}
                     onChange={(value, e) => this.handleSelectRow(value)(e)}
                   />
-                </Body.Cell>
+                </SCheckboxCell>,
               );
             }
 

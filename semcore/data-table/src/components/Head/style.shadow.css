@@ -174,3 +174,7 @@ SHead[sideIndents='l'] {
     padding-right: var(--intergalactic-spacing-5x, 20px);
   }
 }
+
+SHeadCheckboxCol {
+  cursor: pointer;
+}
