@@ -251,7 +251,7 @@ SEmptyData {
   grid-column: 1 / -1;
 }
 
-SRow[sideIndents='l'] {
+SRow[sideIndents='wide'] {
   SCell:first-child {
     padding-left: var(--intergalactic-spacing-5x, 20px);
   }

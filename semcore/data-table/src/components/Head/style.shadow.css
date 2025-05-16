@@ -166,7 +166,7 @@ SSortButton {
   transition: opacity 0.3s ease;
 }
 
-SHead[sideIndents='l'] {
+SHead[sideIndents='wide'] {
   SColumn:first-child {
     padding-left: var(--intergalactic-spacing-5x, 20px);
   }
