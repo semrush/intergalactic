@@ -5,7 +5,7 @@ import { axe } from '@semcore/testing-utils/axe';
 
 import Tooltip, { Hint, DescriptionTooltip } from '../src';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import {waitFor} from '@storybook/test';
+import { waitFor } from '@storybook/test';
 
 describe('tooltip Dependency imports', () => {
   runDependencyCheckTests('tooltip');
@@ -69,9 +69,12 @@ describe('Tooltip.Popper', () => {
       </Tooltip>,
     );
 
-    await waitFor(() => {
-      expect(getByTestId('popper').attributes['class'].value).toContain('more-than one-class');
-    }, {timeout: 100});
+    await waitFor(
+      () => {
+        expect(getByTestId('popper').attributes['class'].value).toContain('more-than one-class');
+      },
+      { timeout: 100 },
+    );
   });
 
   test('should support custom attributes', async ({ expect }) => {
@@ -82,9 +85,12 @@ describe('Tooltip.Popper', () => {
       </Tooltip>,
     );
 
-    await waitFor(() => {
-      expect(getByTestId('popper').attributes['name'].value).toBe('popper');
-    }, {timeout: 100});
+    await waitFor(
+      () => {
+        expect(getByTestId('popper').attributes['name'].value).toBe('popper');
+      },
+      { timeout: 100 },
+    );
   });
 
   test('should support ref', async ({ expect }) => {
@@ -96,9 +102,12 @@ describe('Tooltip.Popper', () => {
       </Tooltip>,
     );
 
-    await waitFor(() => {
-      expect(ref.current.nodeName).toBe('DIV');
-    }, {timeout: 100});
+    await waitFor(
+      () => {
+        expect(ref.current.nodeName).toBe('DIV');
+      },
+      { timeout: 100 },
+    );
   });
 
   test('should support children', async ({ expect }) => {
@@ -113,9 +122,12 @@ describe('Tooltip.Popper', () => {
 
     const { getAllByText } = render(component);
 
-    await waitFor(() => {
-      expect(getAllByText('test popper content', {})).toHaveLength(1);
-    }, {timeout: 100});
+    await waitFor(
+      () => {
+        expect(getAllByText('test popper content', {})).toHaveLength(1);
+      },
+      { timeout: 100 },
+    );
   });
 
   test('should support render function for children', async ({ expect }) => {
@@ -131,11 +143,14 @@ describe('Tooltip.Popper', () => {
     );
     render(component);
 
-    await waitFor(() => {
-      expect(
-        document.querySelectorAll('[data-ui-name^="Tooltip"][data-ui-name$="Popper"]').length,
-      ).toBe(1);
-    }, {timeout: 100});
+    await waitFor(
+      () => {
+        expect(
+          document.querySelectorAll('[data-ui-name^="Tooltip"][data-ui-name$="Popper"]').length,
+        ).toBe(1);
+      },
+      { timeout: 100 },
+    );
   });
 });
 
