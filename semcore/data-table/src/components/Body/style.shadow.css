@@ -177,7 +177,7 @@ SCell {
   }
 }
 
-SRow[accordionType='row'] > SCell, SRow[accordionType='cell'] > SCell[withAccordion] {
+SRow[accordionType='row'] > SCell, SRow[accordionType='cell'] > SCell[withAccordion], SCheckboxCell {
   cursor: pointer;
 }
 
