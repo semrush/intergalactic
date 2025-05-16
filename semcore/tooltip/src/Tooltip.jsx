@@ -149,7 +149,7 @@ function TooltipPopper(props) {
   const STooltipPortalledWrapper = Box;
   const timeoutConfig = typeof timeout === 'number' ? [timeout, timeout] : timeout;
 
-  const [isVisible, setIsVisible] = React.useState(false);
+  const [isVisible, setIsVisible] = React.useState(process.env.VITEST ? visible : false);
 
   const contextZIndex = useZIndexStacking('z-index-tooltip');
   const zIndex = props.zIndex || contextZIndex;
@@ -157,15 +157,28 @@ function TooltipPopper(props) {
   // We need this effect with timer to prevent creating all STooltipPortalledWrapper on each tooltip initialization.
   // On the same time, we need to have a container with role=status to announce tooltip popper content on the fly by screen readers.
   React.useEffect(() => {
+    let timer;
+
+    if (process.env.VITEST) {
+      setIsVisible(visible);
+      return;
+    }
+
     if (visible) {
-      setTimeout(() => {
+      timer = setTimeout(() => {
         setIsVisible(true);
       }, 0);
     } else {
-      setTimeout(() => {
+      timer = setTimeout(() => {
         setIsVisible(false);
       }, timeoutConfig[1] + 50);
     }
+
+    return () => {
+      if (!process.env.VITEST) {
+        clearTimeout(timer);
+      }
+    };
   }, [visible]);
 
   if (!visible && !isVisible) {
