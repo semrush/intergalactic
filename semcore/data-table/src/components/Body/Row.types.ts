@@ -52,7 +52,7 @@ export type RowPropsInner = JSX.IntrinsicElements['div'] & {
 
   scrollAreaRef: React.RefObject<HTMLDivElement>;
   uid: string;
-  sideIndents?: 'l';
+  sideIndents?: 'wide';
   getFixedStyle: (
     cell: Pick<DTColumn, 'name' | 'fixed'>,
   ) => [side: 'left' | 'right', style: string | number] | [side: undefined, style: undefined];
