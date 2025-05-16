@@ -18,7 +18,7 @@ test.describe('One level Header', () => {
     page,
     browserName,
   }) => {
-    const standPath = 'stories/components/data-table/docs/examples/base.tsx';
+    const standPath = 'stories/components/data-table/tests/examples/header-tests/base.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -100,17 +100,17 @@ test.describe('One level Header', () => {
       await expect(tooltipTrigger).toBeFocused();
 
       await page.keyboard.press('Enter');
-      await page.waitForTimeout(50);
+      await page.waitForTimeout(100);
       await expect(getTooltipPopper).toBeVisible();
       await expect(getTooltipPopper).toBeFocused();
 
       await page.keyboard.press('Escape');
-      await page.waitForTimeout(50);
+      await page.waitForTimeout(100);
       await expect(getTooltipPopper).toBeHidden();
       await expect(tooltipTrigger).toBeFocused();
 
       await page.keyboard.press('Enter');
-      await page.waitForTimeout(50);
+      await page.waitForTimeout(100);
       await page.keyboard.press('Tab');
       await expect(page.locator('[data-ui-name="Link"]')).toBeFocused();
 
