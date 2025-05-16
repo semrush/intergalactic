@@ -149,7 +149,7 @@ function TooltipPopper(props) {
   const STooltipPortalledWrapper = Box;
   const timeoutConfig = typeof timeout === 'number' ? [timeout, timeout] : timeout;
 
-  const [isVisible, setIsVisible] = React.useState(process.env.VITEST ? visible : false);
+  const [isVisible, setIsVisible] = React.useState(import.meta.env.VITEST ? visible : false);
 
   const contextZIndex = useZIndexStacking('z-index-tooltip');
   const zIndex = props.zIndex || contextZIndex;
@@ -159,7 +159,7 @@ function TooltipPopper(props) {
   React.useEffect(() => {
     let timer;
 
-    if (process.env.VITEST) {
+    if (import.meta.env.VITEST) {
       setIsVisible(visible);
       return;
     }
@@ -175,7 +175,7 @@ function TooltipPopper(props) {
     }
 
     return () => {
-      if (!process.env.VITEST) {
+      if (!import.meta.env.VITEST) {
         clearTimeout(timer);
       }
     };
