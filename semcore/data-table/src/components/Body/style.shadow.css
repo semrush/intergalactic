@@ -175,6 +175,10 @@ SCell {
   }
 }
 
+SRow[accordionType='row'] > SCell, SRow[accordionType='cell'] > SCell[withAccordion] {
+  cursor: pointer;
+}
+
 SCell[use='primary'] {
   padding: var(--intergalactic-spacing-3x, 12px);
   min-height: 45px;
