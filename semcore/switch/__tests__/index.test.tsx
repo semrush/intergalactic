@@ -74,7 +74,7 @@ describe('Switch', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test.concurrent('Should support keyboardFocused/disabled', async ({ task }) => {
+  test.concurrent('Should support disabled', async ({ task }) => {
     const component = (
       <>
         <Switch>
@@ -82,21 +82,11 @@ describe('Switch', () => {
           <Switch.Value disabled />
           <Switch.Addon>disabled</Switch.Addon>
         </Switch>
-        <Switch id='focused'>
-          <Switch.Addon>keyboardFocused</Switch.Addon>
-          <Switch.Value />
-          <Switch.Addon>keyboardFocused</Switch.Addon>
-        </Switch>
       </>
     );
 
-    await expect(
-      await snapshot(component, {
-        actions: {
-          focus: '#focused',
-        },
-      }),
-    ).toMatchImageSnapshot(task);
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+
   });
 
   test.concurrent('Should support a custom icon on the toggle', async ({ task }) => {

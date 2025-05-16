@@ -490,7 +490,7 @@ test.describe('DateRangeComparator range', () => {
     const standPath = 'stories/components/date-picker/docs/examples/date_range_comparator.tsx';
     await page.setContent(await e2eStandToHtml(standPath, 'en'));
 
-    const getInputValues = async (locator) => ({
+    const getInputValues = async (locator: any) => ({
       from: await locator.nth(0).inputValue(),
       to: await locator.nth(1).inputValue(),
     });
