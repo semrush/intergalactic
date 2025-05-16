@@ -17,7 +17,7 @@ const Demo = () => {
           <DataTable.Head.Group borders={'left'} title={'Borders left'} fixed='right' >
             <DataTable.Head.Column name='vol' children='Vol' gtcWidth={'200px'} />
             <DataTable.Head.Column name='vol1' children='Vol' gtcWidth={'150px'} />
-          </DataTable.Head.Group>      
+          </DataTable.Head.Group>
           </DataTable.Head>
         <DataTable.Body />
       </DataTable>

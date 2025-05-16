@@ -140,7 +140,7 @@ test.describe('Additional states', () => {
 
     await test.step('Verify all checkoxes checked by activating header ', async () => {
       await page.keyboard.press('Space');
-      await page.waitForTimeout(100);
+      await page.waitForTimeout(150);
       const classAttr = await headerCheckbox.getAttribute('class');
       expect(classAttr).toContain('checked');
       await expect(actionBar).toBeVisible();

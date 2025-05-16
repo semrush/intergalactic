@@ -8,7 +8,6 @@ import style from './style.shadow.css';
 import { Column } from './Column';
 import { Group } from './Group';
 import { DataTableColumnProps } from './Column.types';
-import { getFixedStyle } from '../../utils';
 import { DataTableGroupProps } from './Group.type';
 import { DataTableData } from '../DataTable/DataTable.types';
 import { DataTable } from '../DataTable/DataTable';
@@ -55,6 +54,8 @@ class HeadRoot<D extends DataTableData> extends Component<
       sticky,
       top,
       selectedRows,
+      h,
+      getFixedStyle,
     } = this.asProps;
     const column = columns[index];
 
@@ -62,7 +63,7 @@ class HeadRoot<D extends DataTableData> extends Component<
       column.fixed = 'left';
     }
 
-    const [name, value] = getFixedStyle(column, columns);
+    const [name, value] = getFixedStyle(column);
     const style: any = {};
 
     if (top) {
@@ -78,7 +79,6 @@ class HeadRoot<D extends DataTableData> extends Component<
     return {
       use,
       'aria-colindex': index + 1,
-      ref: (node: HTMLElement | null) => column.ref?.(node),
       style,
       gridArea: column.gridArea,
       fixed: column.fixed,
@@ -92,6 +92,7 @@ class HeadRoot<D extends DataTableData> extends Component<
       tableRef,
       gridTemplateColumns,
       gridTemplateAreas,
+      h,
     };
   }
 

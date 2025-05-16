@@ -97,6 +97,11 @@ export type DataTableProps<D extends DataTableData> = DataTableAriaProps &
       sticky?: boolean;
 
       /**
+       * Height of header in px. It's better to set it to improve performance with sticky header.
+       */
+      h?: number;
+
+      /**
        * offset for sticky header
        */
       top?: number;
@@ -124,6 +129,9 @@ export type DataTableProps<D extends DataTableData> = DataTableAriaProps &
       },
     ) => void;
 
+    /**
+     * For custom empty data widget.
+     */
     renderEmptyData?: () => React.ReactNode;
   };
 

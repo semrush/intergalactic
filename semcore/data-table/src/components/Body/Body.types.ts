@@ -62,4 +62,7 @@ export type BodyPropsInner = DataTableBodyProps & {
   ) => void;
   renderEmptyData: () => React.ReactNode;
   sideIndents?: 'l';
+  getFixedStyle: (
+    cell: Pick<DTColumn, 'name' | 'fixed'>,
+  ) => [side: 'left' | 'right', style: string | number] | [side: undefined, style: undefined];
 };
