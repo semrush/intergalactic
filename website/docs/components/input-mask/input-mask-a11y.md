@@ -40,5 +40,3 @@ See detailed information about the keyboard support for the input fields in the 
 ## Other recommendations
 
 See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
-
-<!--@include: ./input-mask-a11y-report.md-->

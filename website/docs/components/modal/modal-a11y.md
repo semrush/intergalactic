@@ -56,5 +56,3 @@ However, if your modal window has a separate URL, you can mark `Modal.Title` as 
 ## Other recommendations
 
 See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
-
-<!--@include: ./modal-a11y-report.md-->

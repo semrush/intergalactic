@@ -210,31 +210,3 @@ ${actionsList}
     getReport,
   };
 };
-
-export const getReportHeader = async () => {
-  const intergalacticPackageFile = await readFile(
-    resolvePath('./semcore/ui/package.json'),
-    'utf-8',
-  );
-  const reactPackageFile = await readFile(
-    resolvePath(require.resolve('react'), '../package.json'),
-    'utf-8',
-  );
-  const playwrightPackageFile = await readFile(
-    resolvePath(require.resolve('playwright'), '../package.json'),
-    'utf-8',
-  );
-  const guidepupPackageFile = await readFile(
-    resolvePath(require.resolve('@guidepup/guidepup'), '../../package.json'),
-    'utf-8',
-  );
-
-  const { version: intergalacticVersion } = JSON.parse(intergalacticPackageFile);
-  const { version: reactVersion } = JSON.parse(reactPackageFile);
-  const { version: playwrightVersion } = JSON.parse(playwrightPackageFile);
-  const { version: guidepupVersion } = JSON.parse(guidepupPackageFile);
-
-  return `## Automated screen reader testing
-
-_Intergalactic v${intergalacticVersion}, React v${reactVersion}, Playwright v${playwrightVersion},\nGuidepup v${guidepupVersion}, ${getOsName()}._`;
-};

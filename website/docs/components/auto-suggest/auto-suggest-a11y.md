@@ -29,5 +29,3 @@ For more information about the accessibility of these patterns, refer to the doc
 ## Other recommendations
 
 For more accessibility recommendations, refer to the [Accessibility guide](/core-principles/a11y/a11y).
-
-<!--@include: ./auto-suggest-a11y-report.md-->
