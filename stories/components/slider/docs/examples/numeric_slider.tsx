@@ -11,9 +11,8 @@ const Demo = () => {
   const min = 10;
   const max = 100;
 
-  const handleInput = (valueAsString: string) => {
-    const value = Number(valueAsString);
-    if (!!value && (value > max || value < min)) {
+  const handleInput = (value: any) => {
+    if (!!value && (value > max ||value < min)) {
       setError('Please enter a valid value');
       setValue(value);
     } else {
