@@ -3,14 +3,14 @@ import { DataTable, ACCORDION } from '@semcore/data-table';
 
 const Demo = () => {
   return (
-      <DataTable data={data} aria-label={'Parent with fixed column'} h={'100%'} virtualScroll
-                 columns={[
-                   {name: 'keyword', children: 'Keyword', gtcWidth: '400px', fixed: 'left'},
-                   {name: 'kd', children: 'KD,%', gtcWidth: '300px'},
-                   {name: 'cpc', children: 'CPC', gtcWidth: '300px'},
-                   {name: 'vol', children: 'Vol.', gtcWidth: '300px'},
-                 ]}
-      />
+    <DataTable data={data} aria-label={'Parent with fixed column'} h={'100%'} virtualScroll
+    columns={[
+      {name: 'keyword', children: 'Keyword', gtcWidth: '400px', fixed: 'left'},
+      {name: 'kd', children: 'KD,%', gtcWidth: '300px'},
+      {name: 'cpc', children: 'CPC', gtcWidth: '300px'},
+      {name: 'vol', children: 'Vol.', gtcWidth: '300px'},
+    ]}
+/>
   );
 };
 
