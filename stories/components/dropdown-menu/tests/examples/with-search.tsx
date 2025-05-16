@@ -19,8 +19,8 @@ const defaultSelectedColumns = ["uniquePageviews", "entranceSources"];
 
 
 const Demo = () => {
-    const searchRef = React.useRef(null);
-const [visible, setVisible] = React.useState(false);
+  const searchRef = React.useRef<HTMLInputElement>(null);
+  const [visible, setVisible] = React.useState(false);
   const [highlightedIndex, setHighlightedIndex] = React.useState<number | null>(
     null
   );
@@ -43,7 +43,7 @@ const [visible, setVisible] = React.useState(false);
   const [selectedColumns, setSelectedColumns] = React.useState<string[]>(
     defaultSelectedColumns
   );
-  const handleVisible = (visible) => {
+  const handleVisible = (visible: boolean) => {
     setVisible(visible);
     if (visible) {
       setTimeout(() => {
