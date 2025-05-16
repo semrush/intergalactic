@@ -1073,6 +1073,7 @@ test.describe('Disabled dates and Validation', () => {
     await expect(datePicker).toHaveAttribute('aria-invalid', 'false');
 
     await page.keyboard.type('7875');
+    await page.waitForTimeout(250);
     await expect(datePicker).toHaveAttribute('aria-invalid', 'true');
     await expect(datePicker).toHaveAttribute('aria-haspopup', 'true');
 
@@ -1081,7 +1082,7 @@ test.describe('Disabled dates and Validation', () => {
     await page.keyboard.type('24');
     await expect(datePicker).toHaveAttribute('aria-invalid', 'true');
     await page.keyboard.press('Enter');
-    await page.waitForTimeout(200);
+    await page.waitForTimeout(50);
     await expect(tooltip).toBeVisible();
     await expect(popper).toBeVisible();
 
