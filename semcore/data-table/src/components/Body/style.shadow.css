@@ -164,6 +164,8 @@ SCell {
 
   SAccordionToggle {
     margin-right: var(--intergalactic-spacing-3x, 12px);
+    margin-top: var(--intergalactic-spacing-05x, 2px);
+    height: fit-content;
 
     svg {
       transition: transform calc(var(--intergalactic-duration-accordion, 200) * 1ms) ease-out;
