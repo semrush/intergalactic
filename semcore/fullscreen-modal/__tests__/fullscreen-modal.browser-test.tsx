@@ -21,7 +21,6 @@ test.describe('Fullscreen modal', () => {
       await test.step('Verify back attributes', async () => {
         const backButton = page.locator('[data-ui-name="FullscreenModal.Back"]');
         await expect(backButton).toHaveAccessibleName('Go to Tool Name');
-        await expect(backButton).toHaveAttribute('tabindex', '0');
         const svg = backButton.locator('svg');
         await expect(svg).toHaveAttribute('tabindex', '-1');
         await expect(svg).toHaveAttribute('aria-hidden', 'true');
@@ -29,7 +28,6 @@ test.describe('Fullscreen modal', () => {
 
       await test.step('Verify close attributes', async () => {
         const closeButton = page.locator('[data-ui-name="FullscreenModal.Close"]');
-        await expect(closeButton).toHaveAttribute('tabindex', '0');
         await expect(closeButton).toHaveAttribute('aria-label', 'Close');
         const svg = closeButton.locator('svg');
         await expect(svg).toHaveAttribute('tabindex', '-1');
@@ -54,7 +52,6 @@ test.describe('Fullscreen modal', () => {
       await test.step('Verify back attributes', async () => {
         const backButton = page.locator('[data-ui-name="FullscreenModal.Back"]');
         await expect(backButton).toHaveAccessibleName('Go to Tool Name');
-        await expect(backButton).toHaveAttribute('tabindex', '0');
         const svg = backButton.locator('svg');
         await expect(svg).toHaveAttribute('tabindex', '-1');
         await expect(svg).toHaveAttribute('aria-hidden', 'true');
@@ -62,7 +59,6 @@ test.describe('Fullscreen modal', () => {
 
       await test.step('Verify close attributes', async () => {
         const closeButton = page.locator('[data-ui-name="FullscreenModal.Close"]');
-        await expect(closeButton).toHaveAttribute('tabindex', '0');
         await expect(closeButton).toHaveAttribute('aria-label', 'Close');
         const svg = closeButton.locator('svg');
         await expect(svg).toHaveAttribute('tabindex', '-1');

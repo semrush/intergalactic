@@ -2,7 +2,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 
-import FixedHeaderWithSpinOverlayExample from './examples/header-tests/fixed-header-with-spin-overlay';
 import InteractiveHeaderExample from './examples/header-tests/table-with-1tf-and diff-elements';
 import HeaderContentExample from './examples/header-tests/header-content';
 import MultiLevelSortingExample from './examples/header-tests/multi-level-sorting';
@@ -47,10 +46,6 @@ export const MultiLevelSorting: Story = {
 
 export const MultiLevelSticky: Story = {
   render: MultiLevelStickyExample,
-};
-
-export const FixedHeaderWithSpinOverlay: Story = {
-  render: FixedHeaderWithSpinOverlayExample,
 };
 
 export const MultiLevelBorders: Story = {

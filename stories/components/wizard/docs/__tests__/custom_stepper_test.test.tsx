@@ -81,7 +81,6 @@ export async function CustomStepperExampleTest({ canvasElement }: { canvasElemen
   await userEvent.keyboard('{Tab}');
   const prevButtonOnSecondStepFocus = canvas.getByRole('button', { name: 'Back to' });
   expect(document.activeElement).toBe(prevButtonOnSecondStepFocus);
-  expect(prevButtonOnSecondStepFocus).toHaveAttribute('tabindex', '0');
 
   await userEvent.keyboard('{Tab}');
   const nextButtonOnSecondStepFocus = canvas.getByRole('button', { name: 'Go to' });

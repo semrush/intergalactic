@@ -5,41 +5,79 @@ import { Flex } from '@semcore/flex-box';
 
 const Demo = () => {
   return (
-    <Flex direction='row'>
-      <DataTable data={data} aria-label={'Horizontal scroll'} wMax={200} virtualScroll>
-        <DataTable.Head sticky={true}  >
-          <DataTable.Head.Column name='keyword' children='Keyword' gtcWidth='100px' />
-          <DataTable.Head.Column name='kd' children='KD,%' gtcWidth='100px' />
-          <DataTable.Head.Column name='cpc' children='CPC'gtcWidth='80px' />
-          <DataTable.Head.Column name='vol' children='Vol.' gtcWidth='150px'/>
-        </DataTable.Head>
-        <DataTable.Body />
-      </DataTable>
-    
-      <DataTable data={data} aria-label={'Fixed header with scroll'} w={200} virtualScroll>
-        <DataTable.Head sticky={true} withScrollBar>
-          <DataTable.Head.Column name='keyword' children='Keyword' gtcWidth='200px' />
-          <DataTable.Head.Column name='kd' children='KD,%' gtcWidth='100px' />
-          <DataTable.Head.Column name='cpc' children='CPC' gtcWidth='200px'/>
-          <DataTable.Head.Column name='vol' children='Vol.' gtcWidth='150px'/>
-        </DataTable.Head>
-        <DataTable.Body />
-      </DataTable>
+    <Flex direction='row' gap={4}>
 
-      
-      <DataTable data={data} aria-label={'Fixed multi level header with scroll'} w={200} virtualScroll>
-        <DataTable.Head withScrollBar>
-          <DataTable.Head.Group borders={'left'} title={'Borders left'}>
-            <DataTable.Head.Column name='keyword' children='Keyword' gtcWidth='200px' />
-            <DataTable.Head.Column name='kd' children='KD,%' gtcWidth='100px' />
-          </DataTable.Head.Group>
-          <DataTable.Head.Column name='cpc' children='CPC' gtcWidth='80px'/>
-          <DataTable.Head.Column name='vol' children='Vol.' gtcWidth='150px'/>
-        </DataTable.Head>
-        <DataTable.Body />
-      </DataTable>
+    <DataTable
+    virtualScroll
+     data={data}
+     aria-label={'Horizontal scroll'} wMax={200}
+     headerProps={{
+       sticky: true,
+     }}
+     columns={[
+       { name: 'keyword', children: 'Keyword' , gtcWidth:'100px' },
+       { name: 'kd', children: 'KD,%',  gtcWidth:'100px' },
+       { name: 'cpc', children: 'CPC' , gtcWidth:'100px' },
+       { name: 'vol', children: 'Vol.', gtcWidth:'150px'  },
+     ]}
+   />
 
-    </Flex>
+<DataTable
+virtualScroll
+     data={data}
+     aria-label={'2 Horizontal scrolls'} wMax={200}
+     headerProps={{
+       sticky: true,
+       withScrollBar: true
+     }}
+     columns={[
+       { name: 'keyword', children: 'Keyword' , gtcWidth:'200px' },
+       { name: 'kd', children: 'KD,%',  gtcWidth:'100px' },
+       { name: 'cpc', children: 'CPC' , gtcWidth:'200px' },
+       { name: 'vol', children: 'Vol.', gtcWidth:'150px'  },
+     ]}
+   />
+
+<DataTable
+virtualScroll
+     data={data}
+     aria-label={'Fixed multi level header with 2 scrolls'} wMax={200}
+     headerProps={{
+       sticky: true,
+       withScrollBar: true
+     }}
+
+     columns={[
+       {name: 'keyword', children: 'Keyword', gtcWidth:'200px'},
+       {
+         children: 'Organic Sessions',
+         borders: 'both',
+         columns: [
+           {name: 'kd', children: 'KD,%', gtcWidth:'100px'},
+           {name: 'cpc', children: 'CPC', gtcWidth:'80px'},
+           {name: 'vol', children: 'Vol.', gtcWidth:'150px'},
+         ]}
+     ]}
+   />
+     <DataTable
+     virtualScroll
+     data={data}
+     aria-label={'Fixed multi level header with 1 scroll'} wMax={200}
+
+     columns={[
+       {
+         children: 'Organic Sessions',
+         borders: 'both',
+         columns: [
+           {name: 'keyword', children: 'Keyword', gtcWidth:'200px'},
+           {name: 'kd', children: 'KD,%', gtcWidth:'100px'},
+           {name: 'cpc', children: 'CPC', gtcWidth:'80px'},
+           {name: 'vol', children: 'Vol.', gtcWidth:'150px'},
+         ]}
+     ]}
+   />
+
+   </Flex>
   );
 };
 

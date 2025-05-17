@@ -27,13 +27,6 @@ const Demo = () => {
 
             <Box>
                 <Text tag='label' size={200} htmlFor='floppa-size'>
-                    Focused
-                </Text>
-                <Slider value={50} keyboardFocused />
-            </Box>
-
-            <Box>
-                <Text tag='label' size={200} htmlFor='floppa-size'>
                     Disabled
                 </Text>
                 <Slider value={50} disabled />

@@ -20,10 +20,8 @@ test.describe('Radio with group', () => {
       const radio = radios.nth(i);
       const input = radio.locator('input[data-ui-name="Radio.Value"]');
       const mark = radio.locator('[data-ui-name="Value.RadioMark"]');
-      const labelText = radio.locator('span[data-ui-name="Radio.Text"]');
       await expect(input).toHaveAttribute('type', 'radio');
       await expect(input).toHaveAttribute('name', 'radio');
-      await expect(input).toHaveAttribute('tabindex', '0');
       await expect(input).toHaveAttribute('aria-invalid', 'false');
 
       const value = await input.getAttribute('value');
@@ -47,7 +45,6 @@ test.describe('Radio with group', () => {
 
     for (let i = 0; i < count; i++) {
       const radio = radios.nth(i);
-      const input = radio.locator('input[data-ui-name="Radio.Value"]');
       const mark = radio.locator('[data-ui-name="Value.RadioMark"]');
       const labelText = radio.locator('span[data-ui-name="Radio.Text"]');
 
@@ -78,7 +75,6 @@ test.describe('Radio with group', () => {
 
     for (let i = 0; i < count; i++) {
       const radio = radios.nth(i);
-      const input = radio.locator('input[data-ui-name="Radio.Value"]');
       const mark = radio.locator('[data-ui-name="Value.RadioMark"]');
       const labelText = radio.locator('span[data-ui-name="Radio.Text"]');
 
@@ -103,7 +99,7 @@ test.describe('Radio with group', () => {
     const standPath = 'stories/components/radio/tests/examples/radiogroup_different_states.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
-
+    await page.keyboard.press('Tab');
     await expect(page).toHaveScreenshot();
   });
 
@@ -276,7 +272,6 @@ test.describe('Radio with Additional input props', () => {
       const labelText = radio.locator('span[data-ui-name="Radio.Text"]');
 
       await expect(input).toHaveAttribute('type', 'radio');
-      await expect(input).toHaveAttribute('tabindex', '0');
       await expect(input).toHaveAttribute('aria-invalid', 'false');
 
       await expect(input).not.toBeChecked();

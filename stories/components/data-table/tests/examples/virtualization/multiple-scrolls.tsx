@@ -5,16 +5,24 @@ const Demo = () => {
 
     return (
         <>
-            <h3>Scroll.Bar Horizontal and vertical</h3>
-            <DataTable data={dataNew} aria-label={'Fixed header with scroll'} w={200} h={300} virtualScroll>
-                <DataTable.Head sticky={true} withScrollBar>
-                    <DataTable.Head.Column name='keyword' children='Keyword' gtcWidth='200px' />
-                    <DataTable.Head.Column name='kd' children='KD,%' gtcWidth='100px' />
-                    <DataTable.Head.Column name='cpc' children='CPC' />
-                    <DataTable.Head.Column name='vol' children='Vol.' />
-                </DataTable.Head>
-                <DataTable.Body />
-            </DataTable>
+        <h3>Scroll.Bar Horizontal and vertical </h3>
+<DataTable
+virtualScroll
+      data={data}
+      w={200} h={300}
+      aria-label="Scroll Horizontal and vertical"
+      headerProps={{
+        sticky: true,
+        withScrollBar: true,
+      }}
+      columns={[
+        { name: 'keyword', children: 'Keyword' , gtcWidth:'200px' },
+        { name: 'kd', children: 'KD,%',  gtcWidth:'100px' },
+        { name: 'cpc', children: 'CPC' },
+        { name: 'vol', children: 'Vol.' },
+      ]}
+    />
+           
         </>
     );
 };

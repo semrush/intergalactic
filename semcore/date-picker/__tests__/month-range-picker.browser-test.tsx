@@ -102,7 +102,6 @@ test.describe('Month range', () => {
 
     await test.step('Verify popper attributes', async () => {
       const attributes = [
-        ['tabindex', '0'],
         ['role', 'dialog'],
         ['data-popper-placement', 'bottom-start'],
       ];
@@ -124,7 +123,6 @@ test.describe('Month range', () => {
       await expect(compareValue.first()).toHaveAttribute('disabled', '');
 
       const checkboxAttributes = [
-        ['tabindex', '0'],
         ['type', 'checkbox'],
         ['aria-invalid', 'false'],
       ];
@@ -146,7 +144,6 @@ test.describe('Month range', () => {
           const attributes = [
             ['type', 'text'],
             ['inputmode', 'numeric'],
-            ['tabindex', tabindex],
             ['aria-invalid', 'false'],
           ];
           for (const [attr, value] of attributes) {
@@ -155,14 +152,10 @@ test.describe('Month range', () => {
         }
       };
 
-      await checkInputAttributes(inputsValue, '0');
-      await checkInputAttributes(inputsCompare, '-1');
-
       const calendars = page.locator('[data-name="Calendar"]');
       const calendarCount = await calendars.count();
       for (let i = 0; i < calendarCount; i++) {
         const calendar = calendars.nth(i);
-        await expect(calendar).toHaveAttribute('tabindex', '-1');
         await expect(calendar).toHaveAttribute('aria-hidden', 'true');
       }
     });
@@ -173,12 +166,10 @@ test.describe('Month range', () => {
       const headNext = page.locator('[data-ui-name="MonthDateRangeComparator.Next"]');
 
       const prevAttributes = [
-        ['tabindex', '0'],
         ['type', 'button'],
         ['aria-label', 'Previous year'],
       ];
       const nextAttributes = [
-        ['tabindex', '0'],
         ['type', 'button'],
         ['aria-label', 'Next year'],
       ];
@@ -204,9 +195,6 @@ test.describe('Month range', () => {
         await expect(calendar).toHaveAttribute('role', 'grid');
         await expect(calendar).toHaveAttribute('disabled', '');
       }
-
-      await expect(calendars.first()).toHaveAttribute('tabindex', '0');
-      await expect(calendars.nth(1)).toHaveAttribute('tabindex', '-1');
     });
 
     await test.step('Verify days attributes', async () => {
@@ -261,7 +249,6 @@ test.describe('Month range', () => {
         const attributes = [
           ['type', 'button'],
           ['role', 'option'],
-          ['tabindex', '0'],
         ];
         for (const [attr, value] of attributes) {
           await expect(button).toHaveAttribute(attr, value);
@@ -276,7 +263,6 @@ test.describe('Month range', () => {
       const buttons = [apply, reset];
       for (const button of buttons) {
         await expect(button).toHaveAttribute('type', 'button');
-        await expect(button).toHaveAttribute('tabindex', '0');
       }
     });
   });

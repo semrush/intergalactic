@@ -31,7 +31,7 @@ test.describe('Basic notice with Interactive element', () => {
     await openNoticeByKeyboard(page);
     await new Promise((resolve) => setTimeout(resolve, 500));
     await expect(locators.closeButton(page)).toBeFocused();
-    await new Promise((resolve) => setTimeout(resolve, 50));
+    await new Promise((resolve) => setTimeout(resolve, 250));
     await expect(locators.closeHint(page)).toBeVisible();
     await expect(page).toHaveScreenshot();
 

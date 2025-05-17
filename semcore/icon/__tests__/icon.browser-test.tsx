@@ -15,7 +15,6 @@ test.describe('Icons size rendering and attributes', () => {
         height: '16',
         viewBox: '0 0 21 16',
         focusable: 'true',
-        tabindex: '0',
       },
       {
         'aria-label': 'PayL interactive',
@@ -25,7 +24,6 @@ test.describe('Icons size rendering and attributes', () => {
         height: '24',
         viewBox: '0 0 32 24',
         focusable: 'true',
-        tabindex: '0',
       },
       {
         'aria-label': 'AmericanExpressM non interactive',
@@ -78,7 +76,6 @@ test.describe('Icons size rendering and attributes', () => {
         height: '16',
         viewBox: '0 0 16 16',
         focusable: 'true',
-        tabindex: '0',
       },
       {
         'aria-label': 'Icon RegularL Interative',
@@ -88,7 +85,6 @@ test.describe('Icons size rendering and attributes', () => {
         height: '24',
         viewBox: '0 0 24 24',
         focusable: 'true',
-        tabindex: '0',
       },
       {
         'aria-label': 'Icon ColoredM Non Interactive',
@@ -143,7 +139,6 @@ test.describe('Icons size rendering and attributes', () => {
         height: '16',
         viewBox: '0 0 16 16',
         focusable: 'true',
-        tabindex: '0',
       },
       {
         'aria-label': 'ColorL interactive',
@@ -153,7 +148,6 @@ test.describe('Icons size rendering and attributes', () => {
         height: '24',
         viewBox: '0 0 24 24',
         focusable: 'true',
-        tabindex: '0',
       },
       {
         'aria-label': 'AmazonM non interactive',

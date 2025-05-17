@@ -230,10 +230,11 @@ describe('Ellipsis', () => {
   });
 
   test('a11y', async () => {
-    const { container } = render(
+    const { container, unmount } = render(
       <Ellipsis>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </Ellipsis>,
     );
     const results = await axe(container);
     expect(results).toHaveNoViolations();
+    unmount();
   });
 });

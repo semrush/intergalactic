@@ -4,7 +4,6 @@ import { ButtonLink } from '@semcore/button';
 import Checkbox from '@semcore/checkbox';
 import Link from '@semcore/link';
 import Button from '@semcore/button';
-import Ellipsis from '@semcore/ellipsis';
 import { Text } from '@semcore/typography';
 import { Flex } from '@semcore/flex-box';
 import { DescriptionTooltip, Hint } from '@semcore/tooltip';

@@ -28,6 +28,7 @@ test.describe('Accordion in table', () => {
     await expect(firstArrow).toBeFocused();
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('Enter');
+    await page.waitForTimeout(100);
     await expect(plot).toHaveCount(0);
     await page.keyboard.press('ArrowRight');
     await page.keyboard.press('ArrowRight');
@@ -117,7 +118,7 @@ test.describe('Accordion in table', () => {
     });
 
     await test.step('Verify accordion not expands when clicking interactive element in any cell when accordion on 1st', async () => {
-      const button = page.getByRole('button', { name: 'someB' });
+      const button = page.getByRole('button', { name: 'Click Me' });
       await button.click();
       await expect(plot).not.toBeVisible();
     });
@@ -182,6 +183,7 @@ test.describe('Accordion in table', () => {
     });
 
     await firstArrow.click();
+    await page.waitForTimeout(150);
     if (browserName !== 'firefox')
       for (let i = 0; i < cellCount; i++) {
         const cell = cells.nth(i);

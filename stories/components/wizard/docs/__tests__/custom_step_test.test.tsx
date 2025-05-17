@@ -82,7 +82,6 @@ export async function CustomStepExampleTest({ canvasElement }: { canvasElement: 
   await userEvent.keyboard('{Tab}');
   const prevButtonOnSecondStepFocus = canvas.getByRole('button', { name: /Back to Keywords/i });
   expect(document.activeElement).toBe(prevButtonOnSecondStepFocus);
-  expect(prevButtonOnSecondStepFocus).toHaveAttribute('tabindex', '0');
 
   await userEvent.keyboard('{Tab}');
   const nextButtonOnSecondStepFocus = canvas.getByRole('button', { name: /Go to Schedule/i });

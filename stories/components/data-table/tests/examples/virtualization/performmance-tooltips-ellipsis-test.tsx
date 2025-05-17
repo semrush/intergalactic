@@ -15,88 +15,109 @@ const Demo = () => {
 
     return (
         <>
-            <DataTable data={data} totalRows={data.length} aria-label={'Access to cells'} hMax={400} virtualScroll>
-                <DataTable.Head sticky>
-                <DataTable.Head.Column name="index" children="№" gtcWidth="50px" />
-                    <DataTable.Head.Column name='keyword' children='Keyword' gtcWidth='140px' />
-                    <DataTable.Head.Column name='kd' children='KD,%' gtcWidth='70px' />
-                    <DataTable.Head.Column name='cpc' children='CPC' gtcWidth='150px' />
-                    <DataTable.Head.Column name='vol' children='Vol.' gtcWidth='150px' />
+            <DataTable
+                data={data} aria-label={'Access to cells'} hMax={400} virtualScroll
+                headerProps={{
+                    sticky: true,
+                }}
+                columns={[
+                    {
+                        name: 'index',
+                        children: '№',
+                        gtcWidth: '50px',
+                    },
+                    {
+                        name: 'keyword',
+                        children: 'keyword',
+                        gtcWidth: '140px',
+                    },
+                    {
+                        name: 'kd',
+                        children: 'KD,%',
+                        gtcWidth: '70px'
+                    },
+                    {
+                        name: 'cpc',
+                        children: 'CPC',
+                        gtcWidth: '150px'
+                    },
+                    {
+                        name: 'vol',
+                        children: 'Vol.',
+                        gtcWidth: '150px'
+                    }
+                ]}
+                renderCell={(props) => {
+                    if (props.columnName === 'keyword') {
+                        return (
+                            <Flex>
 
-                </DataTable.Head>
-                <DataTable.Body
-                    renderCell={(props) => {
-                        if (props.columnName === 'keyword') {
-                            return (
-                                <Flex>
+                                <Text tag={Tooltip} noWrap={true}> NoWrapTrue {props.value}</Text>
+                                <Hint
+                                    ml={1}
+                                    tag={InfoM}
+                                    interactive
+                                    title='Go to our awesome article'
+                                    data-test-id='interactive-icon'
+                                    color='icon-secondary-neutral'
+                                />
+                                <DescriptionTooltip>
+                                    <DescriptionTooltip.Trigger tag={ButtonLink} use={'secondary'}>
+                                        About fastest animals
+                                    </DescriptionTooltip.Trigger>
+                                    <DescriptionTooltip.Popper aria-label='About fastest animals'>
+                                        <Text tag='p' mb={3}>
+                                            The <Link href='https://en.wikipedia.org/wiki/Peregrine_falcon'>peregrine falcon</Link>{' '}
+                                            is the fastest bird, and the fastest member of the animal kingdom, with a diving speed
+                                            of over 300 km/h (190 mph).
+                                        </Text>
 
-                                    <Text tag = {Tooltip} noWrap={true}> NoWrapTrue {props.value}</Text>
-                                    <Hint
-                                        ml={1}
-                                        tag={InfoM}
-                                        interactive
-                                        title='Go to our awesome article'
-                                        data-test-id='interactive-icon'
-                                        color='icon-secondary-neutral'
-                                    />
-                                    <DescriptionTooltip>
-                                        <DescriptionTooltip.Trigger tag={ButtonLink} use={'secondary'}>
-                                            About fastest animals
-                                        </DescriptionTooltip.Trigger>
-                                        <DescriptionTooltip.Popper aria-label='About fastest animals'>
-                                            <Text tag='p' mb={3}>
-                                                The <Link href='https://en.wikipedia.org/wiki/Peregrine_falcon'>peregrine falcon</Link>{' '}
-                                                is the fastest bird, and the fastest member of the animal kingdom, with a diving speed
-                                                of over 300 km/h (190 mph).
-                                            </Text>
+                                    </DescriptionTooltip.Popper>
+                                </DescriptionTooltip>
+                            </Flex>
+                        );
+                    }
 
-                                        </DescriptionTooltip.Popper>
-                                    </DescriptionTooltip>
-                                </Flex>
-                            );
-                        }
+                    if (props.columnName === 'cpc') {
+                        return (
+                            <Flex>
 
-                        if (props.columnName === 'cpc') {
-                            return (
-                                <Flex>
+                                <Text noWrap={false}>No Wrap False {props.value}</Text>
+                                <Link
+                                    href='#'
+                                    target='_blank'
+                                    rel='noreferrer'
+                                    addonLeft={InfoM}
+                                    color='gray-300'
+                                    ml={1}
+                                    title='TEST'
+                                />
+                            </Flex>
+                        );
+                    }
+                    if (props.columnName === 'vol') {
+                        return (
+                            <>
+                                <Ellipsis> {props.value}</Ellipsis>
+                                <Link
+                                    href='#'
+                                    target='_blank'
+                                    rel='noreferrer'
+                                    addonLeft={InfoM}
+                                    color='gray-300'
+                                    ml={1}
+                                    aria-label='TEST'
+                                />
+                            </>
+                        );
+                    }
+                    if (props.columnName === 'index') {
+                        return props.rowIndex + 1;
+                    }
+                    return props.defaultRender();
+                }}
+            />
 
-                                    <Text noWrap={false}>No Wrap False {props.value}</Text>
-                                    <Link
-                                        href='#'
-                                        target='_blank'
-                                        rel='noreferrer'
-                                        addonLeft={InfoM}
-                                        color='gray-300'
-                                        ml={1}
-                                          title='TEST'
-                                    />
-                                </Flex>
-                            );
-                        }
-                        if (props.columnName === 'vol') {
-                            return (
-                                <>
-                                    <Ellipsis> {props.value}</Ellipsis>
-                                    <Link
-                                        href='#'
-                                        target='_blank'
-                                        rel='noreferrer'
-                                        addonLeft={InfoM}
-                                        color='gray-300'
-                                        ml={1}
-                                            aria-label='TEST'
-                                    />
-                                </>
-                            );
-                        }
-                        if (props.columnName === 'index') {
-                            return props.rowIndex + 1;
-                          }
-                        return props.defaultRender();
-                    }}
-                />
-
-            </DataTable>
             <Button addonLeft={CheckM} data-test-id='button-after-table'> Button</Button>
         </>
     );

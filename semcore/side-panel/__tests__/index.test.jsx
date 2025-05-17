@@ -219,9 +219,9 @@ describe('SidePanel', () => {
       </Portal>,
     );
 
-    // 4 because: empty div, div with `Content in portal` and div with role=status for tooltip in close button
+    // 3 because: empty div, div with `Content in portal`
     // and div with `Content in body` should be in body too.
     // Without `ignorePortalsStacking`, it'll be in the first `SidePanel`.
-    expect(document.body.children).toHaveLength(4);
+    expect(document.body.children).toHaveLength(3);
   });
 });

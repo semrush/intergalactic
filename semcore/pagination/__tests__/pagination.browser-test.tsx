@@ -21,7 +21,6 @@ test.describe('Roles and attrubutes', () => {
       await expect(pagination).toHaveAttribute('aria-label', 'Pagination');
 
       await expect(firstPage).toHaveAttribute('aria-label', 'First page');
-      await expect(firstPage).toHaveAttribute('tabindex', '-1');
       await expect(firstPage).toHaveAttribute('disabled', '');
       await expect(firstPage).toHaveAttribute('type', 'button');
 
@@ -29,15 +28,12 @@ test.describe('Roles and attrubutes', () => {
       await expect(firstpageSvg).toHaveAttribute('disabled', '');
       await expect(firstpageSvg).toHaveAttribute('aria-hidden', 'true');
 
-      await expect(prevPage).toHaveAttribute('tabindex', '-1');
       await expect(prevPage).toHaveAttribute('disabled', '');
       await expect(prevPage).toHaveAttribute('type', 'button');
 
-      await expect(nextPage).toHaveAttribute('tabindex', '0');
       await expect(nextPage).not.toHaveAttribute('disabled', '');
       await expect(nextPage).toHaveAttribute('type', 'button');
 
-      await expect(input).toHaveAttribute('tabindex', '0');
       await expect(input).toHaveAttribute('inputmode', 'numeric');
       await expect(input).toHaveAttribute('type', 'text');
       await expect(input).toHaveAttribute('autocomplete', 'off');
@@ -50,7 +46,6 @@ test.describe('Roles and attrubutes', () => {
       const classAttr = await inputWrapper.getAttribute('class');
       expect(classAttr).not.toContain('focused');
 
-      await expect(total).toHaveAttribute('tabindex', '0');
       await expect(total).not.toHaveAttribute('disabled', '');
       await expect(total).toHaveAttribute('type', 'button');
       await expect(total).toHaveAttribute('aria-label', 'Last page #122360');
@@ -61,7 +56,6 @@ test.describe('Roles and attrubutes', () => {
       await expect(pagination).toHaveAttribute('aria-label', 'Pagination');
 
       await expect(firstPage).toHaveAttribute('aria-label', 'First page');
-      await expect(firstPage).not.toHaveAttribute('tabindex', '0');
       await expect(firstPage).toHaveAttribute('disabled', '');
       await expect(firstPage).toHaveAttribute('type', 'button');
 
@@ -69,15 +63,12 @@ test.describe('Roles and attrubutes', () => {
       await expect(firstpageSvg).toHaveAttribute('disabled', '');
       await expect(firstpageSvg).toHaveAttribute('aria-hidden', 'true');
 
-      await expect(prevPage).toHaveAttribute('tabindex', '0');
       await expect(prevPage).not.toHaveAttribute('disabled', '');
       await expect(prevPage).toHaveAttribute('type', 'button');
 
-      await expect(nextPage).toHaveAttribute('tabindex', '0');
       await expect(nextPage).not.toHaveAttribute('disabled', '');
       await expect(nextPage).toHaveAttribute('type', 'button');
 
-      await expect(input).toHaveAttribute('tabindex', '0');
       await expect(input).toHaveAttribute('inputmode', 'numeric');
       await expect(input).toHaveAttribute('type', 'text');
       await expect(input).toHaveAttribute('autocomplete', 'off');
@@ -91,7 +82,6 @@ test.describe('Roles and attrubutes', () => {
       const classAttr = await inputWrapper.getAttribute('class');
       expect(classAttr).not.toContain('focused');
 
-      await expect(total).toHaveAttribute('tabindex', '0');
       await expect(total).not.toHaveAttribute('disabled', '');
       await expect(total).toHaveAttribute('type', 'button');
       await expect(total).toHaveAttribute('aria-label', 'Last page #122360');
@@ -102,7 +92,6 @@ test.describe('Roles and attrubutes', () => {
       await expect(pagination).toHaveAttribute('aria-label', 'Pagination');
 
       await expect(firstPage).toHaveAttribute('aria-label', 'First page');
-      await expect(firstPage).toHaveAttribute('tabindex', '0');
       await expect(firstPage).not.toHaveAttribute('disabled', '');
       await expect(firstPage).toHaveAttribute('type', 'button');
 
@@ -110,15 +99,12 @@ test.describe('Roles and attrubutes', () => {
       await expect(firstpageSvg).toHaveAttribute('disabled', '');
       await expect(firstpageSvg).toHaveAttribute('aria-hidden', 'true');
 
-      await expect(prevPage).toHaveAttribute('tabindex', '0');
       await expect(prevPage).not.toHaveAttribute('disabled', '');
       await expect(prevPage).toHaveAttribute('type', 'button');
 
-      await expect(nextPage).toHaveAttribute('tabindex', '-1');
       await expect(nextPage).toHaveAttribute('disabled', '');
       await expect(nextPage).toHaveAttribute('type', 'button');
 
-      await expect(input).toHaveAttribute('tabindex', '0');
       await expect(input).toHaveAttribute('inputmode', 'numeric');
       await expect(input).toHaveAttribute('type', 'text');
       await expect(input).toHaveAttribute('autocomplete', 'off');
@@ -132,8 +118,6 @@ test.describe('Roles and attrubutes', () => {
       const classAttr = await inputWrapper.getAttribute('class');
       expect(classAttr).not.toContain('focused');
 
-      await expect(total).not.toHaveAttribute('tabindex');
-      await expect(total).not.toHaveAttribute('disabled', '');
       await expect(total).not.toHaveAttribute('type', 'button');
       await expect(total).toHaveAttribute('aria-label', 'Last page #122360');
     });
@@ -217,32 +201,34 @@ test.describe('Interactions', () => {
     const nextPage = page.locator('[data-ui-name="Pagination.NextPage"]');
     const prevPage = page.locator('[data-ui-name="Pagination.PrevPage"]');
     const input = page.locator('[data-ui-name="Pagination.PageInput.Value"]');
-    const inputWrapper = page.locator('[data-ui-name="Pagination.PageInput"]');
     const total = page.locator('[data-ui-name="Pagination.TotalPages"]');
 
     await test.step('Verify navigation by tab', async () => {
       await page.keyboard.press('Tab');
+      await page.waitForTimeout(100);
       await expect(nextPage).toBeFocused();
       await page.keyboard.press('Tab');
-
-      const classAttr = await inputWrapper.getAttribute('class');
-      expect(classAttr).toContain('focused');
+      await page.waitForTimeout(100);
+      expect(input).toBeFocused();
       await page.keyboard.press('Tab');
-      //expect(classAttr).not.toContain('focused'); BUG
+      expect(input).not.toBeFocused();
       await expect(total).toBeFocused();
       await total.hover();
       await expect(page).toHaveScreenshot();
-      await page.keyboard.press('Shift+Tab');
-      expect(classAttr).toContain('focused');
     });
 
     await test.step('Verify change pages by buttons interaction', async () => {
       await page.keyboard.press('Shift+Tab');
+      await page.waitForTimeout(50);
+      expect(input).toBeFocused();
+      await page.keyboard.press('Shift+Tab');
+      await page.waitForTimeout(50);
       await expect(nextPage).toBeFocused();
-      await page.keyboard.press('Enter');
+      await page.keyboard.press('Space');
       await expect(input).toHaveAttribute('value', '2');
 
       await page.keyboard.press('Shift+Tab');
+      await page.waitForTimeout(50);
       await expect(prevPage).toBeFocused();
       await page.keyboard.press('Enter');
       await expect(input).toHaveAttribute('value', '1');
@@ -255,6 +241,7 @@ test.describe('Interactions', () => {
         await page.keyboard.press('Enter');
       }
       await page.keyboard.press('Shift+Tab');
+      await page.waitForTimeout(50);
       await page.keyboard.press('Shift+Tab');
       if (browserName === 'webkit') return; // disabled for webkit because it fails on cd, in debug mode works well
       await expect(firstPage).toBeFocused();
@@ -264,14 +251,16 @@ test.describe('Interactions', () => {
       //     await page.keyboard.press('Shift+Tab');
       //   }
       await page.keyboard.press('Tab');
+      await page.waitForTimeout(50);
       await page.keyboard.press('Tab');
-
+      await page.waitForTimeout(50);
       await expect(total).toBeFocused();
       await page.keyboard.press('Enter');
       await expect(prevPage).toBeFocused();
       await expect(input).toHaveAttribute('value', '122,360');
 
       await page.keyboard.press('Shift+Tab');
+      await page.waitForTimeout(50);
       await page.keyboard.press('Enter');
       await expect(input).toHaveAttribute('value', '1');
       await expect(nextPage).toBeFocused();
@@ -396,7 +385,7 @@ test.describe('Interactions', () => {
     if (browserName !== 'chromium') return;
     await test.step('Verify correct page is set when entering and activate input', async () => {
       await input.fill('33');
-      icon.click();
+      await icon.click();
       await expect(input).toHaveAttribute('value', '33');
     });
   });

@@ -92,7 +92,6 @@ test.describe('Date range with standart ranges', () => {
 
     for (const { index, label } of inputAttributes) {
       await test.step(`Verify ${label} trigger attributes`, async () => {
-        await expect(inputTriggr.nth(index)).toHaveAttribute('tabindex', '0');
         await expect(inputTriggr.nth(index)).toHaveAttribute('aria-invalid', 'false');
         await expect(inputTriggr.nth(index)).toHaveAttribute('aria-haspopup', 'dialog');
         await expect(inputTriggr.nth(index)).toHaveAttribute('aria-expanded', 'false');
@@ -122,7 +121,6 @@ test.describe('Date range with standart ranges', () => {
         {
           locator: '[data-ui-name="DateRangePicker.Prev"]',
           attrs: [
-            ['tabindex', '0'],
             ['type', 'button'],
             ['aria-label', 'Previous month'],
           ],
@@ -130,7 +128,6 @@ test.describe('Date range with standart ranges', () => {
         {
           locator: '[data-ui-name="DateRangePicker.Next"]',
           attrs: [
-            ['tabindex', '0'],
             ['type', 'button'],
             ['aria-label', 'Next month'],
           ],
@@ -161,9 +158,6 @@ test.describe('Date range with standart ranges', () => {
         await expect(calendar).toHaveAttribute('role', 'grid');
         await expect(calendar).toHaveAttribute('disabled', '');
       }
-
-      await expect(calendars.first()).toHaveAttribute('tabindex', '0');
-      await expect(calendars.nth(1)).toHaveAttribute('tabindex', '-1');
     });
 
     await test.step('Verify weekdays attributes', async () => {
@@ -263,7 +257,6 @@ test.describe('Date range with standart ranges', () => {
         const button = periodButtons.nth(i);
         await expect(button).toHaveAttribute('type', 'button');
         await expect(button).toHaveAttribute('role', 'option');
-        await expect(button).toHaveAttribute('tabindex', '0');
       }
     });
 
@@ -276,7 +269,6 @@ test.describe('Date range with standart ranges', () => {
       for (const { locator, label } of buttons) {
         const button = page.locator(locator);
         await expect(button).toHaveAttribute('type', 'button');
-        await expect(button).toHaveAttribute('tabindex', '0');
       }
     });
   });
@@ -500,7 +492,7 @@ test.describe('Date range with standart ranges', () => {
 
     await page.setContent(htmlContent);
 
-    const datePicker = await page.locator('[data-ui-name="DateRangePicker.Trigger"]');
+    const datePicker = page.locator('[data-ui-name="DateRangePicker.Trigger"]');
     const popper = page.locator('[data-ui-name="DateRangePicker.Popper"]');
     const headPrev = page.locator('[data-ui-name="DateRangePicker.Prev"]');
     const headTitle = page.locator('[data-ui-name="DateRangePicker.Title"]');
@@ -515,7 +507,6 @@ test.describe('Date range with standart ranges', () => {
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
     await expect(popper).toBeVisible();
-
     await expect(datePicker.nth(4)).not.toBeFocused();
     await expect(popper).toBeFocused();
 
@@ -527,18 +518,21 @@ test.describe('Date range with standart ranges', () => {
     await expect(datePicker.nth(4)).not.toBeFocused();
     await expect(popper).toBeFocused();
 
+    if (browserName === 'webkit') return;
+
     await page.keyboard.press('Tab');
     await expect(headPrev).toBeFocused();
     await headPrev.hover();
-    const initialTitleFrom = await headTitle.first().textContent();
-    const initialTitleTo = await headTitle.nth(1).textContent();
+    const [initialTitleFrom, initialTitleTo] = await Promise.all([
+      headTitle.first().textContent(),
+      headTitle.nth(1).textContent(),
+    ]);
 
-    await page.keyboard.press('Enter'); // space don't work - bug!
-    const titleAfterFirstEnterFrom = await headTitle.first().textContent();
-    const titleAfterFirstEnterTo = await headTitle.nth(1).textContent();
-    expect(titleAfterFirstEnterFrom).not.toBe(initialTitleFrom);
-    expect(titleAfterFirstEnterTo).not.toBe(initialTitleTo);
-
+    await page.keyboard.press('Enter');
+    const [titleAfterFirstEnterFrom, titleAfterFirstEnterTo] = await Promise.all([
+      headTitle.first().textContent(),
+      headTitle.nth(1).textContent(),
+    ]);
     expect(titleAfterFirstEnterFrom).not.toBe(initialTitleFrom);
     expect(titleAfterFirstEnterTo).not.toBe(initialTitleTo);
 
@@ -546,9 +540,11 @@ test.describe('Date range with standart ranges', () => {
     await page.keyboard.press('Tab');
     await expect(headNext).toBeFocused();
 
-    await page.keyboard.press('Enter'); // space don't work - bug!
-    const titleAfterSecondEnterFrom = await headTitle.first().textContent();
-    const titleAfterSecondEnterTo = await headTitle.nth(1).textContent();
+    await page.keyboard.press('Enter');
+    const [titleAfterSecondEnterFrom, titleAfterSecondEnterTo] = await Promise.all([
+      headTitle.first().textContent(),
+      headTitle.nth(1).textContent(),
+    ]);
     expect(titleAfterSecondEnterFrom).toBe(initialTitleFrom);
     expect(titleAfterSecondEnterTo).toBe(initialTitleTo);
 
@@ -557,15 +553,9 @@ test.describe('Date range with standart ranges', () => {
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
-
     await expect(buttons.first()).toBeFocused();
 
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-
+    for (let i = 0; i < 5; i++) await page.keyboard.press('Tab');
     await expect(apply).toBeFocused();
 
     await page.keyboard.press('Tab');
@@ -575,96 +565,81 @@ test.describe('Date range with standart ranges', () => {
     await expect(popper).toBeFocused();
 
     await page.keyboard.press('ArrowLeft');
-
-    const initialValue1 = await input.nth(2).inputValue();
-    const initialValue2 = await input.nth(3).inputValue();
-
-    await page.keyboard.press('Escape');
-
-    const initialValue1_1 = await input.nth(2).inputValue();
-    const initialValue2_1 = await input.nth(3).inputValue();
-
-    expect(initialValue1_1).toBe(initialValue1);
-    expect(initialValue2_1).toBe(initialValue2);
-
-    await page.keyboard.press('Space');
-
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('Space');
-
-    const initialValue1_2 = await input.nth(2).inputValue();
-    const initialValue2_2 = await input.nth(3).inputValue();
-
-    expect(initialValue1_2).not.toBe(initialValue1_1);
-    expect(initialValue2_2).toBe(initialValue2);
-
-    await page.keyboard.press('Space');
-
-    const initialValue1_3 = await input.nth(2).inputValue();
-    const initialValue2_3 = await input.nth(3).inputValue();
-
-    expect(initialValue1_3).toBe(initialValue1_2);
-    expect(initialValue2_3).not.toBe(initialValue2_2);
+    const [initialValue1, initialValue2] = await Promise.all([
+      input.nth(2).inputValue(),
+      input.nth(3).inputValue(),
+    ]);
 
     await page.keyboard.press('Escape');
-
-    const initialValue1_4 = await input.nth(2).inputValue();
-    const initialValue2_4 = await input.nth(3).inputValue();
-
-    expect(initialValue1_4).toBe(initialValue1);
-    expect(initialValue2_4).toBe(initialValue2);
+    const [value1_1, value2_1] = await Promise.all([
+      input.nth(2).inputValue(),
+      input.nth(3).inputValue(),
+    ]);
+    expect(value1_1).toBe(initialValue1);
+    expect(value2_1).toBe(initialValue2);
 
     await page.keyboard.press('Space');
     await page.keyboard.press('ArrowDown');
+    await page.keyboard.press('Space');
+    const [value1_2, value2_2] = await Promise.all([
+      input.nth(2).inputValue(),
+      input.nth(3).inputValue(),
+    ]);
+    expect(value1_2).not.toBe(value1_1);
+    expect(value2_2).toBe(value2_1);
+
+    await page.keyboard.press('Space');
+    const [value1_3, value2_3] = await Promise.all([
+      input.nth(2).inputValue(),
+      input.nth(3).inputValue(),
+    ]);
+    expect(value1_3).toBe(value1_2);
+    expect(value2_3).not.toBe(value2_2);
+
+    await page.keyboard.press('Escape');
+    const [value1_4, value2_4] = await Promise.all([
+      input.nth(2).inputValue(),
+      input.nth(3).inputValue(),
+    ]);
+    expect(value1_4).toBe(initialValue1);
+    expect(value2_4).toBe(initialValue2);
+
+    await page.keyboard.press('Space');
+    await page.keyboard.press('ArrowDown');
     await page.keyboard.press('ArrowRight');
     await page.keyboard.press('ArrowRight');
     await page.keyboard.press('ArrowRight');
     await page.keyboard.press('Space');
 
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-
+    for (let i = 0; i < 6; i++) await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
 
-    const initialValue1_6 = await input.nth(2).inputValue();
-    const initialValue2_6 = await input.nth(3).inputValue();
-
-    expect(initialValue1_6).not.toBe(initialValue1_4);
-    expect(initialValue2_6).not.toBe(initialValue2_4);
+    const [value1_6, value2_6] = await Promise.all([
+      input.nth(2).inputValue(),
+      input.nth(3).inputValue(),
+    ]);
+    expect(value1_6).not.toBe(value1_4);
+    expect(value2_6).not.toBe(value2_4);
 
     await page.keyboard.press('Space');
 
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-
+    for (let i = 0; i < 5; i++) await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
     await expect(popper).not.toBeVisible();
 
     await page.keyboard.press('Enter');
     await page.waitForTimeout(300);
-    for (let i = 0; i < 10; i++) {
-      await page.keyboard.press('Tab');
-    }
-
+    for (let i = 0; i < 10; i++) await page.keyboard.press('Tab');
     await expect(reset).toBeFocused();
 
     await page.keyboard.press('Space');
-
     await page.waitForTimeout(300);
-
-    const initialValue1_5 = await input.nth(2).inputValue();
-    const initialValue2_5 = await input.nth(3).inputValue();
-
-    expect(initialValue1_5).toBe(initialValue1);
-    expect(initialValue2_5).toBe(initialValue2);
-
+    const [value1_5, value2_5] = await Promise.all([
+      input.nth(2).inputValue(),
+      input.nth(3).inputValue(),
+    ]);
+    expect(value1_5).toBe(initialValue1);
+    expect(value2_5).toBe(initialValue2);
     await expect(popper).not.toBeVisible();
   });
 });

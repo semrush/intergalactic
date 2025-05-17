@@ -211,7 +211,7 @@ describe('NoticeSmart', () => {
   });
 
   test('a11y', async () => {
-    const { container } = render(
+    const { container, unmount } = render(
       <NoticeSmart label='label' actions='actions' closable>
         Text NoticeSmart
       </NoticeSmart>,
@@ -219,5 +219,6 @@ describe('NoticeSmart', () => {
 
     const results = await axe(container);
     expect(results).toHaveNoViolations();
+    unmount();
   });
 });

@@ -21,23 +21,30 @@ const data = Array(10000)
     // ],
   }));
 
-const Demo = () => {
-  return (
-    <DataTable data={data} totalRows={10000} aria-label={'Virtual scroll'} h={400} w={400} virtualScroll>
-      <DataTable.Head sticky>
-        <DataTable.Head.Column name='id' children='ID' fixed='left' />
 
-                    <DataTable.Head.Column name='keyword' children='Keyword' gtcWidth={'150px'}  />
-                    <DataTable.Head.Column name='kd' children='KD,%' gtcWidth={'200px'} />
-                    <DataTable.Head.Column name='cpc' children='CPC' gtcWidth={'300px'} />
-                    <DataTable.Head.Column name='cpc' children='CPC' gtcWidth={'100px'} />
-                    <DataTable.Head.Column name='vol' children='Vol.' gtcWidth={'80px'} fixed='right' />
-
-      </DataTable.Head>
-      <DataTable.Body />
-    </DataTable>
-  );
-};
+  
+  const Demo = () => {
+      return (
+          <>
+  
+  <DataTable
+  virtualScroll
+        data={data}
+        aria-label={'Fixed columns'} wMax={700} h={300}
+        columns={[     
+          {name: 'keyword', children: 'Keyword',  fixed: 'left', gtcWidth:'150px' },
+          {name: 'kd', children: 'KD,%',fixed: 'left', gtcWidth:'200px'},
+          {name: 'kd', children: 'KD,%', gtcWidth:'200px'},
+          {name: 'cpc', children: 'CPC', gtcWidth:'300px' },
+          {name: 'cpc', children: 'CPC', gtcWidth:'100px' },
+          {name: 'vol', children: 'Vol.', gtcWidth:'80px',fixed: 'right' },
+  
+        ]}
+      />
+  
+          </>
+      );
+  };
 
 export default Demo;
 

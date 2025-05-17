@@ -38,6 +38,8 @@ test.describe('Slider', () => {
 
     await test.step('Verify bar hover on item', async () => {
       const item = page.locator('div[data-ui-name="Slider.Item"][value="big"]');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
       await item.hover();
       await expect(page).toHaveScreenshot();
     });
@@ -79,7 +81,6 @@ test.describe('Slider', () => {
       await expect(slider).toHaveAttribute('aria-valuemax', '3');
       await expect(slider).toHaveAttribute('aria-valuenow', '2');
       await expect(slider).toHaveAttribute('aria-valuetext', 'Medium');
-      await expect(slider).toHaveAttribute('tabindex', '0');
       await expect(slider).toHaveAttribute('min', '1');
       await expect(slider).toHaveAttribute('max', '3');
       await expect(slider).toHaveAttribute('step', '1');
