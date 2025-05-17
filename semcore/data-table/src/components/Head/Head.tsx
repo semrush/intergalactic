@@ -96,8 +96,13 @@ class HeadRoot<D extends DataTableData> extends Component<
     };
   }
 
-  handleSelectAll = (value: boolean) => (event?: React.SyntheticEvent<HTMLElement>) => {
+  handleSelectAll = (value: boolean, event?: React.SyntheticEvent<HTMLElement>) => {
+    this.asProps.onChangeSelectAll?.(value, event);
+  };
+
+  handleClickSelectAll = (value: boolean) => (event?: React.SyntheticEvent<HTMLElement>) => {
     event?.preventDefault();
+    event?.stopPropagation();
     this.asProps.onChangeSelectAll?.(value, event);
   };
 
@@ -114,12 +119,15 @@ class HeadRoot<D extends DataTableData> extends Component<
       <>
         <SHead render={Box} role='row' aria-rowindex={1}>
           {selectedRows && (
-            <SHeadCheckboxCol name={SELECT_ALL.toString()} onClick={this.handleSelectAll(!checked)}>
+            <SHeadCheckboxCol
+              name={SELECT_ALL.toString()}
+              onClick={this.handleClickSelectAll(!checked)}
+            >
               <Checkbox
                 checked={checked}
                 indeterminate={indeterminate}
                 aria-label={getI18nText('DataTable.Header.selectAllCheckbox:aria-label')}
-                onChange={(value, e) => this.handleSelectAll(value)(e)}
+                onChange={this.handleSelectAll}
               >
                 <Checkbox.Value>
                   <Checkbox.Value.Control />
