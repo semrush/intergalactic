@@ -182,6 +182,7 @@ test.describe('Accordion in table', () => {
     });
 
     await firstArrow.click();
+    await page.waitForTimeout(150);
     if (browserName !== 'firefox')
       for (let i = 0; i < cellCount; i++) {
         const cell = cells.nth(i);
