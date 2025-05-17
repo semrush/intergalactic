@@ -409,3 +409,13 @@ Refer to the [example with the table inside the table](/table-group/data-table/d
 </script>
 
 :::
+
+### Selectable rows
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/components/data-table/docs/examples/checkbox-in-table.tsx';
+</script>
+
+:::
