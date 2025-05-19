@@ -1,7 +1,8 @@
 import React from 'react';
 import { scaleLinear } from 'd3-scale';
 import { DataTable, ACCORDION, DataTableData } from '@semcore/data-table';
-import { Plot, Line, XAxis, YAxis, minMax } from '@semcore/d3-chart';
+import { Plot, Line, XAxis, YAxis, ResponsiveContainer, minMax } from '@semcore/d3-chart';
+import Button from '@semcore/button';
 
 const Demo = () => {
   return (
@@ -78,7 +79,7 @@ const data: DataTableData = [
   },
   {
     keyword: 'www.ebay.com',
-    kd: '10',
+    kd: (<span>10<Button>Click Me</Button></span>),
     cpc: '$0.65',
     vol: '47,354,640',
     [ACCORDION]: (<ChartExample/>),
