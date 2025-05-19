@@ -262,7 +262,6 @@ test.describe('One level Header', () => {
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowDown');
 
-  
       await page.keyboard.press('ArrowLeft');
       await page.keyboard.press('ArrowRight');
       await expect(menuItem.first()).toBeVisible();
@@ -274,7 +273,6 @@ test.describe('One level Header', () => {
       await page.keyboard.press('ArrowRight');
       await expect(menuItem.first()).not.toBeVisible();
       await expect(headerCell3).toBeFocused();
-
     });
 
     await test.step('Verify keyboard and mouse interactions', async () => {
