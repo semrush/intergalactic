@@ -7,7 +7,7 @@ const Demo = () => {
 
   return (
     <>
-      <DataTable data={data} aria-label={'Fixed header'} wMax={1000} hMax={200}
+      <DataTable data={data} aria-label={'Fixed header'} wMax={800} hMax={200}
                  headerProps={{sticky: true, top}}
                  columns={[
                    {name: 'keyword', children: 'Keyword'},
@@ -17,7 +17,7 @@ const Demo = () => {
                  ]}
       />
       <h3>with Scroll.Bar in Header</h3>
-      <DataTable data={data} aria-label={'Fixed header with scroll'} wMax={1000} hMax={200}
+      <DataTable data={data} aria-label={'Fixed header with scroll'} wMax={800} hMax={200}
                  headerProps={{sticky: true, top, withScrollBar: true}}
                  columns={[
                    {name: 'keyword', children: 'Keyword', gtcWidth: '340px'},

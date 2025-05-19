@@ -18,7 +18,7 @@ const data = Array(10000)
 
 const Demo = () => {
   return (
-    <DataTable data={data} totalRows={10000} aria-label={'Virtual scroll'} h={400} virtualScroll
+    <DataTable data={data} totalRows={10000} aria-label={'Virtual scroll with different height'} h={400} virtualScroll
                headerProps={{sticky: true}}
                columns={[
                    {name: 'id', children: 'ID'},

@@ -4,6 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { DataTable } from '@semcore/data-table';
 
 import AccordionWithRenderCellExample from './examples/accordion-tests/accordion-with-render-cell';
+import AccordionWithInlineEditExample from './examples/accordion-tests/accordion-with-inline-edit';
 import AccordionWithFixedColumnExample from './examples/accordion-tests/accordion-with-fixed-column';
 import TabeInTableFixedColumnExample from './examples/accordion-tests/table-in-table-with-fixed-column';
 import HorizontalScrollExample from './examples/accordion-tests/accordion-with-horizontal-scroll';
@@ -20,6 +21,10 @@ type Story = StoryObj<typeof DataTable>;
 
 export const HorizontalScroll: Story = {
   render: HorizontalScrollExample,
+};
+
+export const AccordionWithInlineEdit: Story = {
+  render: AccordionWithInlineEditExample,
 };
 
 export const TabeInTableSortable: Story = {
