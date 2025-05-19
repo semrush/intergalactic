@@ -191,7 +191,7 @@ describe('TooltipBase', () => {
   describe('a11y', () => {
     test('Hint', async () => {
       const { container } = render(
-        <Hint title='text' visible disablePortal tag='a'>
+        <Hint title='text' visible tag='a'>
           trigger
         </Hint>,
       );
