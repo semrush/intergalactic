@@ -279,7 +279,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
             lastIndex = lastIndex + aproxRowsOnPage;
           }
         } else if (scrollDirection === 'up') {
-          for (let i = this.indexForUpIterate; i > 0; i--) {
+          for (let i = this.indexForUpIterate; i >= 0; i--) {
             const value = this.rowsHeightMap.get(i);
             if (!value) continue;
             const key = i;
