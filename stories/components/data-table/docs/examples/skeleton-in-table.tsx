@@ -39,26 +39,28 @@ const Demo = () => {
       <ScreenReaderOnly role='status' aria-live='polite'>
         {message}
       </ScreenReaderOnly>
-      <DataTable data={data} aria-label={'Loading using Skeleton'}
-                 h={'auto'}
+      <DataTable
+        data={data}
+        aria-label={'Loading using Skeleton'}
+        h={'auto'}
         columns={[
-          {name: 'keyword', children: 'Keyword'},
-          {name: 'kd', children: 'KD,%'},
-          {name: 'cpc', children: 'CPC'},
-          {name: 'vol', children: 'Vol.'},
+          { name: 'keyword', children: 'Keyword' },
+          { name: 'kd', children: 'KD %' },
+          { name: 'cpc', children: 'CPC' },
+          { name: 'vol', children: 'Vol.' },
         ]}
-          renderCell={(props) => {
-            if (loading) {
-              return (
-                  <Skeleton height={17}>
-                    <Skeleton.Text y='5' width='60%'/>
-                  </Skeleton>
-              );
-            }
+        renderCell={(props) => {
+          if (loading) {
+            return (
+              <Skeleton height={17}>
+                <Skeleton.Text y='5' width='60%' />
+              </Skeleton>
+            );
+          }
 
-            return props.defaultRender();
-          }}
-        />
+          return props.defaultRender();
+        }}
+      />
       <Button onClick={toggleLoading} mt={3}>
         {loading ? 'Stop loading' : 'Start loading'}
       </Button>

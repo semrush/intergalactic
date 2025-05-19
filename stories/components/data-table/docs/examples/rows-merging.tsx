@@ -41,13 +41,15 @@ const data = [
 
 const Demo = () => {
   return (
-    <DataTable data={data} aria-label={'Rows grouping'}
-               columns={[
-                 {name: 'keyword', children: 'Keyword'},
-                 {name: 'kd', children: 'KD,%'},
-                 {name: 'cpc', children: 'CPC'},
-                 {name: 'vol', children: 'Vol.'},
-               ]}
+    <DataTable
+      data={data}
+      aria-label={'Rows grouping'}
+      columns={[
+        { name: 'keyword', children: 'Keyword' },
+        { name: 'kd', children: 'KD %' },
+        { name: 'cpc', children: 'CPC' },
+        { name: 'vol', children: 'Vol.' },
+      ]}
     />
   );
 };

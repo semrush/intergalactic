@@ -25,7 +25,7 @@ const Demo = () => {
         },
         {
           name: 'kd',
-          children: 'KD,%',
+          children: 'KD %',
         },
         {
           name: 'cpc',

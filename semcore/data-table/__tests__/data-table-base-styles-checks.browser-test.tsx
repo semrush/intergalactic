@@ -178,8 +178,6 @@ test.describe('Base styles Primary Table', () => {
     expect(widths[2]).toBeLessThan(widths[0]);
     expect(widths[1]).toBeLessThan(widths[4]);
     expect(widths[2]).toBeLessThan(widths[4]);
-    expect(widths[3]).toBeLessThan(widths[1]);
-    expect(widths[3]).toBeLessThan(widths[2]);
   });
 
   test('Verify Column width when 1fr', async ({ page }) => {

@@ -3,13 +3,16 @@ import { DataTable } from '@semcore/data-table';
 
 const Demo = () => {
   return (
-    <DataTable data={data} compact aria-label={'Compact'}
-               columns={[
-                 {name: 'keyword', children: 'Keyword'},
-                 {name: 'kd', children: 'KD,%'},
-                 {name: 'cpc', children: 'CPC'},
-                 {name: 'vol', children: 'Vol.'},
-               ]}
+    <DataTable
+      data={data}
+      compact
+      aria-label={'Compact'}
+      columns={[
+        { name: 'keyword', children: 'Keyword', gtcWidth: 'max-content' },
+        { name: 'kd', children: 'KD %', gtcWidth: 'max-content' },
+        { name: 'cpc', children: 'CPC', gtcWidth: 'max-content' },
+        { name: 'vol', children: 'Vol.', gtcWidth: 'max-content' },
+      ]}
     />
   );
 };

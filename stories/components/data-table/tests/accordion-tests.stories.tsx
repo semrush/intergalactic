@@ -9,7 +9,7 @@ import AccordionWithFixedColumnExample from './examples/accordion-tests/accordio
 import AccordionWithSelectExample from './examples/accordion-tests/accrodion-with-select';
 import AccordionWithMoreExample from './examples/accordion-tests/accrodion-with-more-interactive';
 import AccordionWithLinkExample from './examples/accordion-tests/accordion-with-link';
-
+import AccordionWithChartAndButtonExample from './examples/accordion-tests/accordion-inside-table';
 import TabeInTableFixedColumnExample from './examples/accordion-tests/table-in-table-with-fixed-column';
 import HorizontalScrollExample from './examples/accordion-tests/accordion-with-horizontal-scroll';
 import TabeInTableSortableExample from './examples/accordion-tests/table-in-table-with-sorting';
@@ -23,10 +23,13 @@ const meta: Meta<typeof DataTable> = {
 export default meta;
 type Story = StoryObj<typeof DataTable>;
 
+export const AccordionWithChartAndButton: Story = {
+  render: AccordionWithChartAndButtonExample,
+};
+
 export const HorizontalScroll: Story = {
   render: HorizontalScrollExample,
 };
-
 
 export const AccordionWithMore: Story = {
   render: AccordionWithMoreExample,
