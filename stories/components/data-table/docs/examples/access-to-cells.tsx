@@ -1,6 +1,6 @@
 import React from 'react';
 import { DataTable } from '@semcore/data-table';
-import { ButtonLink } from '@semcore/button';
+import  Link  from '@semcore/link';
 
 const Demo = () => {
   return (
@@ -14,7 +14,7 @@ const Demo = () => {
         renderCell={(props) => {
           if (props.dataKey === 'keyword') {
             return (
-                <ButtonLink
+                <Link
                         onClick={() => {
                           alert(`Click row 
                   props: ${JSON.stringify(Object.keys(props), null, '  ')};
@@ -23,7 +23,7 @@ const Demo = () => {
                         }}
                 >
                         {props.value}
-                      </ButtonLink>
+                      </Link>
             );
           }
 

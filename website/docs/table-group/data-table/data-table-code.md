@@ -194,12 +194,30 @@ Group cells from different rows by adding a special grouping key to the table da
 
 ### Custom rows rendering
 
-If built-in virtualization doesn't meet your requirements, you can implement your own virtualization using `renderRows` prop.
-
 ::: sandbox
 
 <script lang="tsx">
   export Demo from 'stories/components/data-table/docs/examples/custom-rows-rendering.tsx';
+</script>
+
+:::
+
+### Virtual scroll with known rows height
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/components/data-table/docs/examples/virtual-scroll-in-table.tsx';
+</script>
+
+:::
+
+### Virtual scroll with different heights
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/components/data-table/docs/examples/virtual-scroll-in-table-different-height.tsx';
 </script>
 
 :::
@@ -406,6 +424,16 @@ Refer to the [example with the table inside the table](/table-group/data-table/d
 
 <script lang="tsx">
   export Demo from 'stories/components/data-table/docs/examples/export-in-image.tsx';
+</script>
+
+:::
+
+### Selectable rows
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/components/data-table/docs/examples/checkbox-in-table.tsx';
 </script>
 
 :::
