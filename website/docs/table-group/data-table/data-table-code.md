@@ -186,7 +186,7 @@ Be cautious with setting column width, as the sort icon may obscure the header t
 
 ### Row grouping
 
-Group cells from different rows by adding a special grouping key to the table data.
+Merge cells across rows using the `[ROW_GROUP]` key in the data.
 
 ::: sandbox
 
