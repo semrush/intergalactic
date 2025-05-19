@@ -43,7 +43,7 @@ const Demo = () => {
       renderCell={(props) => {
         const rawValue = props.row[props.columnName as SortableColumn];
 
-        if (props.columnName === 'cpc') {
+        if (props.columnName === 'cpc' && typeof rawValue === 'number') {
           return currencyFormat.format(rawValue);
         }
 
