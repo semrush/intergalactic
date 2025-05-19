@@ -6,6 +6,10 @@ import { DataTable } from '@semcore/data-table';
 import AccordionWithRenderCellExample from './examples/accordion-tests/accordion-with-render-cell';
 import AccordionWithInlineEditExample from './examples/accordion-tests/accordion-with-inline-edit';
 import AccordionWithFixedColumnExample from './examples/accordion-tests/accordion-with-fixed-column';
+import AccordionWithSelectExample from './examples/accordion-tests/accrodion-with-select';
+import AccordionWithMoreExample from './examples/accordion-tests/accrodion-with-more-interactive';
+import AccordionWithLinkExample from './examples/accordion-tests/accordion-with-link';
+
 import TabeInTableFixedColumnExample from './examples/accordion-tests/table-in-table-with-fixed-column';
 import HorizontalScrollExample from './examples/accordion-tests/accordion-with-horizontal-scroll';
 import TabeInTableSortableExample from './examples/accordion-tests/table-in-table-with-sorting';
@@ -21,6 +25,19 @@ type Story = StoryObj<typeof DataTable>;
 
 export const HorizontalScroll: Story = {
   render: HorizontalScrollExample,
+};
+
+
+export const AccordionWithMore: Story = {
+  render: AccordionWithMoreExample,
+};
+
+export const AccordionWithLink: Story = {
+  render: AccordionWithLinkExample,
+};
+
+export const AccordionWithSelect: Story = {
+  render: AccordionWithSelectExample,
 };
 
 export const AccordionWithInlineEdit: Story = {
