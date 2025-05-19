@@ -44,7 +44,7 @@ const Demo = () => {
       tabIndex={-1}
       wMax={800}
       h={'100%'}
-      hMax={800}
+      hMax={400}
       style={{ overflow: 'auto', scrollPaddingTop: !!selectedRows.length ? '44px' : undefined }}
     >
       <ScreenReaderOnly role='status' aria-live='polite'>
