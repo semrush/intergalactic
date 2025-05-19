@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Component, createComponent, Intergalactic, Root, sstyled } from '@semcore/core';
 import { DataTableHeadProps, HeadPropsInner } from './Head.types';
 import { Box, ScreenReaderOnly } from '@semcore/base-components';
-import Tooltip from '@semcore/tooltip';
+import type Tooltip from '@semcore/tooltip';
 
 import style from './style.shadow.css';
 import { Column } from './Column';
