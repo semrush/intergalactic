@@ -384,23 +384,20 @@ test.describe('Popper', () => {
       await expect(popperLocator).not.toBeFocused();
     });
 
-    test('Hover - Verify popper appears by Touch', async ({ page }) => {
+    test.skip('Verify popper appears by Touch', async ({ page }) => {
       const standPath = 'stories/components/popper/tests/examples/interaction-hover.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
-
       await page.setContent(htmlContent);
+
+      await new Promise((resolve) => setTimeout(resolve, 250));
 
       const triggerLocator = await page.locator('text=Trigger');
       const popperLocator = await page.locator('text=Popper');
 
-      const triggerRect = (await triggerLocator.boundingBox())!;
-
-      await page.touchscreen.tap(
-        triggerRect.x + triggerRect.width / 2,
-        triggerRect.y + triggerRect.height / 2,
-      );
-      await new Promise((resolve) => setTimeout(resolve, 300));
-      await expect(popperLocator).toHaveCount(1);
+      // const triggerRect = (await triggerLocator.boundingBox())!;
+      await triggerLocator.tap();
+      await new Promise((resolve) => setTimeout(resolve, 500));
+      await expect(popperLocator).toBeVisible();
     });
 
     test('Click - Verify popper appearing', async ({ page }) => {

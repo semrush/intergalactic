@@ -217,11 +217,11 @@ test.describe('Dropdown-menu - Selectable radio items', () => {
     await expect(ddMenuTrigger).toBeFocused();
     await expect(Item1).not.toBeVisible();
     await page.keyboard.press('Enter');
-    await new Promise((resolve) => setTimeout(resolve, 500));
+    await new Promise((resolve) => setTimeout(resolve, 250));
 
     //Focus on interactive element by right arrow
     await page.keyboard.press('ArrowRight');
-    await new Promise((resolve) => setTimeout(resolve, 250));
+    await new Promise((resolve) => setTimeout(resolve, 500));
     const deleteButton1 = page
       .locator('[data-ui-name="DropdownMenu.Item"]')
       .filter({ hasText: /^Menu item 1$/ })
