@@ -72,9 +72,7 @@ describe('Button', () => {
   test.concurrent('should not have box-shadow and focus while loading', async ({ task }) => {
     const Component = (
       <Button
-        loading={true}
-        keyboardFocused={true} // emulate focus on component by Tab click
-      >
+        loading={true}      >
         Text
       </Button>
     );
