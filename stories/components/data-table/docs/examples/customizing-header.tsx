@@ -34,6 +34,7 @@ const Demo = () => {
             return (
               <Select
                 tag={LinkTrigger}
+                aria-label='Column'
                 color='text-primary'
                 style={{ fontSize: '12px' }}
                 visible={isVisible}
