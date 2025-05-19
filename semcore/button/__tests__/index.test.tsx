@@ -70,12 +70,7 @@ describe('Button', () => {
   });
 
   test.concurrent('should not have box-shadow and focus while loading', async ({ task }) => {
-    const Component = (
-      <Button
-        loading={true}      >
-        Text
-      </Button>
-    );
+    const Component = <Button loading={true}>Text</Button>;
     await expect(await snapshot(Component)).toMatchImageSnapshot(task);
   });
 
