@@ -7,6 +7,10 @@ import InlineEdit from '@semcore/inline-edit';
 import EditM from '@semcore/icon/Edit/m';
 import { Text } from '@semcore/typography';
 
+const stopPropagation = (event: React.SyntheticEvent) => {
+    event.stopPropagation();
+}
+
 const Vol = (props: {value: string | React.ReactElement}) => {
   const [text, setText] = React.useState('Martin Eden');
   const [confirmedText, setConfirmedText] = React.useState(text);
@@ -15,7 +19,7 @@ const Vol = (props: {value: string | React.ReactElement}) => {
   return (
       <Flex alignItems='center'>
           <Text w={80}> {props.value}</Text>
-          <InlineEdit editable={editable} onEditableChange={setEditable}>
+          <InlineEdit editable={editable} onEditableChange={setEditable} onClick={stopPropagation}>
               <InlineEdit.View style={{ display: 'flex', gap: 8, alignItems: 'center' }} pr={2}>
                   {text} <EditM color='icon-secondary-neutral' />
               </InlineEdit.View>

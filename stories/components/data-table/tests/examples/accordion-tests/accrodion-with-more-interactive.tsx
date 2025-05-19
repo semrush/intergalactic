@@ -9,7 +9,9 @@ import  Link  from '@semcore/link';
 import InfoM from '@semcore/icon/Info/m';
 import { DescriptionTooltip, Hint } from '@semcore/tooltip';
 
-
+const stopPropagation = (event: React.SyntheticEvent) => {
+    event.stopPropagation();
+}
 
 const Demo = () => {
   return (
@@ -31,7 +33,7 @@ const Demo = () => {
         if (props.dataKey === 'keyword') {
             return (
                 <Flex alignItems='center'>
-                    <Checkbox label="Option 1" />
+                    <Checkbox label="Option 1" onClick={stopPropagation} />
                     <Text noWrap>
                         Keyword <Text color='text-secondary'>(100)</Text>
                     </Text>
@@ -42,8 +44,9 @@ const Demo = () => {
                         title='Go to our awesome article'
                         data-test-id='interactive-icon'
                         color='icon-secondary-neutral'
+                        onClick={stopPropagation}
                     />
-                    <DescriptionTooltip>
+                    <DescriptionTooltip onClick={stopPropagation}>
                         <DescriptionTooltip.Trigger tag={ButtonLink} use={'secondary'}>
                             About fastest animals
                         </DescriptionTooltip.Trigger>
