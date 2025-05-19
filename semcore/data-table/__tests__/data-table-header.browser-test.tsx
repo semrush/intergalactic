@@ -69,6 +69,7 @@ test.describe('One level Header', () => {
     await test.step('Verify interaction with tooltip without interactive elements', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('ArrowRight');
+      await new Promise((resolve) => setTimeout(resolve, 250));
       const tooltipTrigger = getTooltip('tooltip-without-interactive-el');
       await expect(tooltipTrigger).toBeFocused();
       await expect(getTooltipPopper).toBeHidden();
@@ -80,6 +81,7 @@ test.describe('One level Header', () => {
       await expect(tooltipTrigger).toBeFocused();
 
       await page.keyboard.press('Enter');
+      await new Promise((resolve) => setTimeout(resolve, 250));
       await expect(getTooltipPopper).toBeVisible();
       await expect(getTooltipPopper).toBeFocused();
       await page.keyboard.press('Escape');
@@ -88,7 +90,7 @@ test.describe('One level Header', () => {
       await expect(tooltipTrigger).toBeFocused();
 
       await page.keyboard.press('ArrowRight');
-
+      await new Promise((resolve) => setTimeout(resolve, 250));
       await expect(getTooltip('tooltip-with-interactive-el')).toBeFocused();
     });
 
@@ -100,7 +102,7 @@ test.describe('One level Header', () => {
       await expect(tooltipTrigger).toBeFocused();
 
       await page.keyboard.press('Enter');
-      await page.waitForTimeout(100);
+      await new Promise((resolve) => setTimeout(resolve, 250));
       await expect(getTooltipPopper).toBeVisible();
       await expect(getTooltipPopper).toBeFocused();
 
@@ -110,7 +112,7 @@ test.describe('One level Header', () => {
       await expect(tooltipTrigger).toBeFocused();
 
       await page.keyboard.press('Enter');
-      await page.waitForTimeout(100);
+      await new Promise((resolve) => setTimeout(resolve, 250));
       await page.keyboard.press('Tab');
       await expect(page.locator('[data-ui-name="Link"]')).toBeFocused();
 
@@ -121,6 +123,7 @@ test.describe('One level Header', () => {
 
     await test.step('Verify interaction with inline tooltip', async () => {
       await page.keyboard.press('ArrowRight');
+      await new Promise((resolve) => setTimeout(resolve, 250));
       const linkTrigger = getTooltip('tooltip-with-tag-link');
       await expect(linkTrigger).toBeFocused();
       await expect(page.getByRole('tooltip', { name: 'Default tooltip contains' })).toBeVisible();
@@ -129,6 +132,7 @@ test.describe('One level Header', () => {
       await expect(page.getByRole('tooltip', { name: 'Default tooltip contains' })).toBeHidden();
 
       await page.keyboard.press('ArrowUp');
+      await new Promise((resolve) => setTimeout(resolve, 250));
       await expect(page.getByRole('tooltip', { name: 'Default tooltip contains' })).toBeVisible();
 
       await page.keyboard.press('Escape');
@@ -137,7 +141,7 @@ test.describe('One level Header', () => {
       const icon = page.locator('[data-test-id="interactive-icon"]');
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('Enter');
-
+      await new Promise((resolve) => setTimeout(resolve, 250));
       await expect(icon).toBeFocused();
       await expect(page.getByText('Go to our awesome article')).toBeVisible();
 
@@ -243,6 +247,7 @@ test.describe('One level Header', () => {
 
     await test.step('Verify tooltip on focus', async () => {
       await page.keyboard.press('Tab');
+      await new Promise((resolve) => setTimeout(resolve, 250));
       await expect(page).toHaveScreenshot();
     });
 
@@ -251,7 +256,7 @@ test.describe('One level Header', () => {
       await expect(ddTrigger).toBeFocused();
 
       await page.keyboard.press('Enter');
-      await page.waitForTimeout(200);
+      await new Promise((resolve) => setTimeout(resolve, 250));
       await expect(page).toHaveScreenshot();
       await expect(menuItem).toBeVisible();
       await page.keyboard.press('ArrowDown');
