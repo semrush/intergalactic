@@ -3,12 +3,12 @@ import { DataTable, ACCORDION } from '@semcore/data-table';
 
 const Demo = () => {
   return (
-      <DataTable data={data} aria-label={'Parent with fixed column'} h={'100%'}
+      <DataTable data={data} aria-label={'Parent with fixed column'} h={'100%'} wMax={600}
                  columns={[
                    {name: 'keyword', children: 'Keyword', gtcWidth: '400px', fixed: 'left'},
-                   {name: 'kd', children: 'KD,%', gtcWidth: '300px'},
-                   {name: 'cpc', children: 'CPC', gtcWidth: '300px'},
-                   {name: 'vol', children: 'Vol.', gtcWidth: '300px'},
+                   {name: 'kd', children: 'KD,%', gtcWidth: '150px'},
+                   {name: 'cpc', children: 'CPC', gtcWidth: '150px'},
+                   {name: 'vol', children: 'Vol.', gtcWidth: '100px'},
                  ]}
       />
   );

@@ -14,7 +14,7 @@ export const viteConfig = defineConfig({
   plugins: [
     pluginReact({
       babel: {
-        plugins: ['@babel/plugin-syntax-import-assertions'],
+        plugins: ['@babel/plugin-syntax-import-assertions', '@semcore/babel-plugin-styles'],
       },
     }),
     createUnplugin<{}>(() => ({
