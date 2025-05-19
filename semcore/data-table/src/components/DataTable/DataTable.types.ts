@@ -158,7 +158,7 @@ export type ColumnGroupConfig = {
   columns: ColumnItemConfig[];
 };
 
-type ColumnsConfig = Array<ColumnItemConfig | ColumnGroupConfig>;
+export type ColumnsConfig = Array<ColumnItemConfig | ColumnGroupConfig>;
 
 export type VirtualScroll =
   | boolean
