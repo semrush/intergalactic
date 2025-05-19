@@ -667,6 +667,11 @@
       "import": "./platform/ContentToolkit/index.mjs",
       "types": "./platform/ContentToolkit/index.d.ts"
     },
+    "./platform/EnterpriseSolutions": {
+      "require": "./platform/EnterpriseSolutions/index.js",
+      "import": "./platform/EnterpriseSolutions/index.mjs",
+      "types": "./platform/EnterpriseSolutions/index.d.ts"
+    },
     "./platform/HomePlatform": {
       "require": "./platform/HomePlatform/index.js",
       "import": "./platform/HomePlatform/index.mjs",

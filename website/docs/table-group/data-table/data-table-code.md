@@ -150,7 +150,7 @@ If fixed columns aren't visible in the following example, try reducing the windo
 
 :::
 
-### Columns grouping
+### Column grouping
 
 Merge columns by changing the table data and using `/` to combine column keys. You can merge columns for a specific row, as shown in the following example, or for all rows.
 
@@ -180,7 +180,7 @@ Be cautious with columns with a `wMax` property, as the sort icon may overlap th
 
 ## Table rows
 
-### Rows grouping
+### Row grouping
 
 Group cells from different rows by adding a special grouping key to the table data.
 
@@ -192,7 +192,19 @@ Group cells from different rows by adding a special grouping key to the table da
 
 :::
 
-### Custom rows rendering
+### Checkboxes and action bar
+
+You can enable selecting rows with checkboxes with the `selectedRows` and `onSelectedRowsChange` props.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/components/data-table/docs/examples/checkbox-in-table.tsx';
+</script>
+
+:::
+
+### Custom row rendering
 
 ::: sandbox
 
@@ -424,16 +436,6 @@ Refer to the [example with the table inside the table](/table-group/data-table/d
 
 <script lang="tsx">
   export Demo from 'stories/components/data-table/docs/examples/export-in-image.tsx';
-</script>
-
-:::
-
-### Selectable rows
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from 'stories/components/data-table/docs/examples/checkbox-in-table.tsx';
 </script>
 
 :::
