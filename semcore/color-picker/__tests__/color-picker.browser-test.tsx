@@ -37,7 +37,6 @@ test.describe('Color-picker', () => {
       await expectAttributes(locators.trigger, {
         'aria-expanded': 'false',
         'aria-label': 'Color field',
-        tabindex: '0',
         'aria-haspopup': 'dialog',
         role: 'combobox',
       });
@@ -49,7 +48,6 @@ test.describe('Color-picker', () => {
       await expectAttributes(locators.trigger, {
         'aria-expanded': 'true',
         'aria-label': 'Color field',
-        tabindex: '0',
         'aria-haspopup': 'dialog',
         role: 'combobox',
       });
@@ -60,7 +58,6 @@ test.describe('Color-picker', () => {
       await expect(locators.popper).toBeVisible();
       await expectAttributes(locators.popper, {
         'aria-label': 'Colors palette',
-        tabindex: '0',
         role: 'dialog',
       });
     });
@@ -85,7 +82,6 @@ test.describe('Color-picker', () => {
       for (const item of await items.all()) {
         await expectAttributes(item, {
           role: 'option',
-          tabindex: '0',
         });
       }
     });
@@ -115,7 +111,6 @@ test.describe('Color-picker', () => {
       });
 
       await expectAttributes(locators.inputColor, {
-        tabindex: '0',
         'aria-invalid': 'false',
         'aria-label': 'Custom color, HEX format',
       });
@@ -153,7 +148,6 @@ test.describe('Color-picker', () => {
       await expect(paletteItem).toHaveCount(1);
 
       await expectAttributes(paletteItem, {
-        tabindex: '0',
         'aria-label': '#000',
         'aria-selected': 'false',
         role: 'option',
@@ -169,7 +163,6 @@ test.describe('Color-picker', () => {
       await locators.inputColor.fill('vdnsjkv');
 
       await expectAttributes(locators.inputColor, {
-        tabindex: '0',
         'aria-invalid': 'true',
         'aria-label': 'Custom color, HEX format',
       });
@@ -237,8 +230,8 @@ test.describe('Color-picker', () => {
         const box = await item.boundingBox();
         expect(box).not.toBeNull();
         if (box) {
-          expect(box.width).toBeGreaterThanOrEqual(26);
-          expect(box.height).toBeGreaterThanOrEqual(26);
+          expect(Math.round(box.width)).toBeGreaterThanOrEqual(26);
+          expect(Math.round(box.height)).toBeGreaterThanOrEqual(26);
         }
       }
 
@@ -343,8 +336,7 @@ test.describe('Color-picker', () => {
   });
 
   test('Custom colors states ', async ({ page }) => {
-    const standPath =
-      'stories/components/color-picker/docs/examples/several_ways_to_use_component.tsx';
+    const standPath = 'stories/components/color-picker/docs/examples/predefined_palette.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);

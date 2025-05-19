@@ -28,51 +28,77 @@ const Demo = () => {
   );
 
   return (
-    <DataTable data={sortedData} aria-label={'Borders'} defaultGridTemplateColumnWidth={'1fr'} sort={sort} onSortChange={setSort} h ={300} virtualScroll >
-      <DataTable.Head>
-        <DataTable.Head.Group borders={'left'} title={'Organic Sessions'}>
-          <DataTable.Head.Column name='kd' gtcWidth={'100px'} sortable>
-            <Text>
-              Kd Organic Sessions Organic Sessions
-              <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
-            </Text>
-          </DataTable.Head.Column>
-          <DataTable.Head.Column name='cpc' children='CPC' sortable />
-          <DataTable.Head.Column name='vol' children='Vol.' />
-
-
-        </DataTable.Head.Group >
-        <DataTable.Head.Column name='keyword' children='Keyword' sortable />
-        <DataTable.Head.Group borders={'both'} title={'Organic Sessions Organic Sessions Organic SessionsOrganic Sessions Organic Sessions Organic Sessions '}>
-
-          <DataTable.Head.Column name='kd2' gtcWidth={'100px'} sortable >
-              <Ellipsis>
-              Kd Organic Sessions Organic Sessions
-              </Ellipsis>
-            <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
-
-          </DataTable.Head.Column>
-
-          <DataTable.Head.Column name='cpc2' children='CPC' sortable />
-          <DataTable.Head.Column name='vol' children='Vol.' />
-        </DataTable.Head.Group>
-        <DataTable.Head.Column name='other' children='Other' />
-
-        <DataTable.Head.Group borders={'right'} title={'Organic Sessions'}>
-          <DataTable.Head.Column name='kd'>
-            <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
-            <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
-          </DataTable.Head.Column>
-          <DataTable.Head.Column name='cpc' children='CPC' />
-          <DataTable.Head.Column name='vol' children='Vol.' />
-        </DataTable.Head.Group>
-        <DataTable.Head.Column name='other' children='Other' />
-
-
-
-      </DataTable.Head>
-      <DataTable.Body />
-    </DataTable>
+    <DataTable
+    virtualScroll
+    aria-label='Borders'
+    defaultGridTemplateColumnWidth='1fr'
+    sort={sort}
+    onSortChange={setSort}
+    h='100%'
+      data={sortedData}
+      columns={[
+        {
+          children: 'Organic Sessions',
+          borders: 'left',
+          columns: [
+            {
+              name: 'kd',
+              sortable: true,
+              gtcWidth: '100px',
+              children: (
+                <Text>
+                  Kd Organic Sessions Organic Sessions
+                  <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+                </Text>
+              ),
+            },
+            { name: 'cpc', children: 'CPC', sortable: true },
+            { name: 'vol', children: 'Vol.' },
+          ],
+        },
+        { name: 'keyword', children: 'Keyword', sortable: true },
+        {
+          children:  'Organic Sessions Organic Sessions Organic SessionsOrganic Sessions Organic Sessions Organic Sessions'   
+          ,
+          borders: 'both',
+          columns: [
+            {
+              name: 'kd2',
+              sortable: true,
+              gtcWidth: '100px',
+              children: (
+                <>
+                  <Ellipsis>Kd Organic Sessions</Ellipsis>
+                  <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+                </>
+              ),
+            },
+            { name: 'cpc2', children: 'CPC', sortable: true },
+            { name: 'vol', children: 'Vol.' },
+          ],
+        },
+        { name: 'other', children: 'Other' },
+        {
+          children: 'Organic Sessions',
+          borders: 'right',
+          columns: [
+            {
+              name: 'kd',
+              children: (
+                <>
+                  <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+                  <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+                </>
+              ),
+            },
+            { name: 'cpc', children: 'CPC' },
+            { name: 'vol', children: 'Vol.' },
+          ],
+        },
+        { name: 'other2', children: 'Other' },
+      ]}
+     
+    />
   );
 };
 
