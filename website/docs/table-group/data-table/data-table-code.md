@@ -56,6 +56,18 @@ Add borders to specific columns using the `borders` property.
 
 :::
 
+### Themes
+
+You can use different themes for cells and rows.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/components/data-table/docs/examples/row-themes.tsx';
+</script>
+
+:::
+
 ## Table header
 
 ### Sticky header
@@ -102,9 +114,9 @@ Create a multi-level header by nesting columns within each other.
 
 ## Table columns
 
-### Column sizes
+### Column width
 
-Columns are inherited from the `Flex` component and accept its parameters, such as `flex` , `wMin` , and `wMax` , to adjust the column width.
+Control the column width with the `gtcWidth` prop.
 
 ::: sandbox
 
@@ -128,10 +140,10 @@ Columns and cells inherit properties from the `Flex` component, so you can use `
 
 ### Fixed column
 
-To fix table columns, use the `fixed` property with `<DataTable.Column/>` .
+To fix table columns, use the `fixed` property.
 
 ::: tip
-If fixed columns aren't visible in the following example, try reducing the window size.
+If fixed columns aren't visible in the following example, try reducing the window width.
 :::
 
 ::: sandbox
@@ -144,7 +156,7 @@ If fixed columns aren't visible in the following example, try reducing the windo
 
 ### Column grouping
 
-Merge columns by changing the table data and using `/` to combine column keys. You can merge columns for a specific row, as shown in the following example, or for all rows.
+Merge cells by combining column keys in the data. You can merge cells in a specific row, as shown in the following example, or in all rows.
 
 ::: sandbox
 
@@ -159,7 +171,7 @@ Merge columns by changing the table data and using `/` to combine column keys. Y
 The active column will expand if there isn't enough space. Fixed-width columns won't change size.
 
 ::: tip
-Be cautious with columns with a `wMax` property, as the sort icon may overlap the header text on hover, hiding part of the text.
+Be cautious with setting column width, as the sort icon may obscure the header text.
 :::
 
 ::: sandbox
@@ -206,7 +218,7 @@ You can enable selecting rows with checkboxes with the `selectedRows` and `onSel
 
 :::
 
-### Virtual scroll with known rows height
+### Virtual scroll with constant row height
 
 ::: sandbox
 
@@ -216,7 +228,7 @@ You can enable selecting rows with checkboxes with the `selectedRows` and `onSel
 
 :::
 
-### Virtual scroll with different heights
+### Virtual scroll with variable row height
 
 ::: sandbox
 
@@ -230,14 +242,6 @@ You can enable selecting rows with checkboxes with the `selectedRows` and `onSel
 
 ### Access to cells
 
-Define `<DataTable.Cell/>` with the appropriate `name={name}` to apply properties to a table cell. You can use multiple `<DataTable.Cell/>` for different business logic.
-
-::: tip
-`<DataTable.Cell/>` must be a direct child component of `<DataTable.Body/>` . Don't wrap it in higher-order components, and using styled components (for example, `` styled(DataTable. Cell) `...` `` ) isn't allowed.
-:::
-
-You can provide `data` property for `<DataTable.Cell/>` . It isn't used in the component runtime but improves strict typings.
-
 ::: sandbox
 
 <script lang="tsx">
@@ -247,8 +251,6 @@ You can provide `data` property for `<DataTable.Cell/>` . It isn't used in the c
 :::
 
 ### Access to set of cells
-
-To apply properties to multiple table cells, define `<DataTable.Cell />` with their names listed using `/` .
 
 ::: sandbox
 
@@ -291,13 +293,9 @@ If some column has `changeSortSize={true}`, by default, it will be increased by 
 
 ### Basic scroll
 
-`<DataTable/>` , `<DataTable.Head/>` , and `<DataTable.Body/>` are inherited from the Box component and accept all its parameters. `<DataTable/>` serves as a container for `<DataTable.Head/>` and `<DataTable.Body/>` where scrolling is implemented.
+`<DataTable/>` inherits all `Box` properties, such as `wMax` and `hMax`, which can be used to enable internal scroll.
 
-::: tip
-If horizontal scrolling isn't visible, try reducing the window size
-:::
-
-By default, scrolling is displayed at the bottom of the table, but it can also be added to the table header. Scroll in the table header is useful for very long tables with fixed columns, allowing users to scroll more conveniently without reaching the end. For examples, refer to [Sticky header](/table-group/data-table/data-table#sticky_header).
+By default, horizontal scrolling is displayed at the bottom of the table, but it can also be added to the table header. Scroll in the table header is useful for long tables, allowing users to scroll horizontally without having to scroll to the end of the table. For examples, refer to [Sticky header](/table-group/data-table/data-table#sticky_header).
 
 ::: sandbox
 
@@ -336,7 +334,7 @@ Avoid placing [Pagination](/components/pagination/pagination) inside the table, 
 
 ### Initial loading (Skeleton)
 
-Add a skeleton to the table by directly substituting it in the `data` or replacing `rows` with `<DataTable.Body/>` .
+Add a skeleton to the table by directly substituting the cell content.
 
 ::: sandbox
 
@@ -348,7 +346,7 @@ Add a skeleton to the table by directly substituting it in the `data` or replaci
 
 ### Updating table (SpinContainer)
 
-Replace the `tag` property with `<DataTable.Body/>` on the `SpinContainer` to cover the table with a [Spin](/components/spin/spin).
+`SpinContainer` is the default loading state for the table and can be enabled by the `loading` prop.
 
 ::: sandbox
 
@@ -360,7 +358,7 @@ Replace the `tag` property with `<DataTable.Body/>` on the `SpinContainer` to co
 
 ### Empty state
 
-Render [WidgetEmpty](../../components/widget-empty/widget-empty) inside a single cell spanning across all columns.
+`DataTable` has a default empty state based on [WidgetEmpty](../../components/widget-empty/widget-empty) which is rendered automatically if the data is empty. You can customize the empty state using the `renderEmptyData` prop.
 
 ::: sandbox
 
@@ -370,33 +368,9 @@ Render [WidgetEmpty](../../components/widget-empty/widget-empty) inside a single
 
 :::
 
-## Accordion inside table
+## Accordion in table
 
-Extend table functionality using the `intergalactic/accordion` component. This allows you to add accordions to table rows.
-
-1. Wrap the table in the `Accordion` component.
-2. Replace the tag in `DataTable.Row` with our extended tag using `Accordion.Item`.
-3. Define a value for `Accordion.Item`.
-4. Calculate the active line to highlight.
-5. Render the children as accordion content.
-6. Add the arrow (`ChevronRight` icon) if needed.
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from 'stories/components/data-table/docs/examples/accordion-inside-table.tsx';
-</script>
-
-:::
-
-## Specific cases
-
-### Table in table
-
-Refer to the [example with the accordion](/table-group/data-table/data-table#accordion_in_table).
-
-1. Hide the table header.
-2. Set "inherit" to use the size from the top table for each column.
+Render expandable rows using the `[ACCORDION]` key in the data.
 
 ::: sandbox
 
@@ -406,13 +380,19 @@ Refer to the [example with the accordion](/table-group/data-table/data-table#acc
 
 :::
 
-### Table in table with fixed column
+### Custom accordion content
 
-Refer to the [example with the table inside the table](/table-group/data-table/data-table#table_in_table).
+You can also set a single cell as the accordion trigger, and customize the accordion content.
 
-1. Set the desired `z-index`.
-2. Set the variable to block the scroll.
-3. Set the variable to remove overflow.
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/components/data-table/docs/examples/accordion-inside-table.tsx';
+</script>
+
+:::
+
+### Accordion with fixed column
 
 ::: sandbox
 
@@ -422,7 +402,7 @@ Refer to the [example with the table inside the table](/table-group/data-table/d
 
 :::
 
-### Export to image
+## Export to image
 
 ::: sandbox
 

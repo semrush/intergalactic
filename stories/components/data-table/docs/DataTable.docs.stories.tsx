@@ -22,6 +22,7 @@ import FixedHeaderExample from './examples/fixed-header';
 import MultiLevelHeaderExample from './examples/multi-level-header';
 import PaginationExample from './examples/pagination';
 import RowsMergingExample from './examples/rows-merging';
+import RowThemesExample from './examples/row-themes';
 import ScrollInTableExample from './examples/scroll-in-table';
 import SecondaryTableExample from './examples/secondary-table';
 import SkeletonInTableExample from './examples/skeleton-in-table';
@@ -119,6 +120,10 @@ export const Pagination: Story = {
 
 export const RowsMerging: Story = {
   render: RowsMergingExample,
+};
+
+export const RowThemes: Story = {
+  render: RowThemesExample,
 };
 
 export const ScrollInTable: Story = {

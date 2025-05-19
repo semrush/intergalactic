@@ -2,7 +2,6 @@ import React from 'react';
 import { DataTable } from '@semcore/data-table';
 import Tooltip from '@semcore/tooltip';
 import { Text } from '@semcore/typography';
-import DropdownMenu from '@semcore/dropdown-menu';
 import Select from '@semcore/select';
 import { LinkTrigger } from '@semcore/base-trigger';
 
@@ -27,28 +26,35 @@ const Demo = () => {
           name: 'kd',
           children: () => {
             const [isVisible, setIsVisible] = React.useState(false);
+            const selectOptions = [
+              { value: 'kd', children: 'KD %', label: 'KD %' },
+              { value: 'Traffic', children: 'Traffic', label: 'Traffic' },
+            ];
 
             return (
               <Select
-                options={selectValues}
-                defaultValue={'kd'}
+                tag={LinkTrigger}
+                color='text-primary'
+                style={{ fontSize: '12px' }}
                 visible={isVisible}
                 onVisibleChange={setIsVisible}
-              >
-                <Select.Trigger
-                  tag={LinkTrigger}
-                  color='text-primary'
-                  style={{ fontSize: '12px' }}
-                  onKeyDown={(e) => {
-                    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
-                      return false;
-                    }
-                    if ((e.key === 'ArrowLeft' || e.key === 'ArrowRight') && isVisible) {
-                      e.stopPropagation();
-                    }
-                  }}
-                />
-              </Select>
+                options={selectOptions}
+                defaultValue={'kd'}
+                onKeyDown={(e) => {
+                  if (!isVisible && (e.key === 'ArrowDown' || e.key === 'ArrowUp')) {
+                    return false;
+                  }
+                  if (
+                    (e.key === 'ArrowLeft' ||
+                      e.key === 'ArrowRight' ||
+                      e.key === 'ArrowDown' ||
+                      e.key === 'ArrowUp') &&
+                    isVisible
+                  ) {
+                    e.stopPropagation();
+                  }
+                }}
+              />
             );
           },
         },
@@ -70,12 +76,6 @@ const Demo = () => {
     />
   );
 };
-
-const selectValues = [
-  { value: 'kd', children: 'KD %', label: 'KD %' },
-  { value: '2', children: 'a', label: 'a' },
-  { value: '3', children: 'b', label: 'b' },
-];
 
 const data = [
   {

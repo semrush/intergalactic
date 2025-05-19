@@ -7,14 +7,14 @@ const Demo = () => {
       data={data}
       aria-label={'Multi level header'}
       columns={[
-        { name: 'keyword', children: 'Keyword', gtcWidth: 'minmax(60%, 80%)' },
+        { name: 'keyword', children: 'Keyword' },
         {
           children: 'Organic Sessions',
           borders: 'both',
           columns: [
-            { name: 'kd', children: 'KD %' },
-            { name: 'cpc', children: 'CPC' },
-            { name: 'vol', children: 'Vol.' },
+            { name: 'kd', children: 'KD %', gtcWidth: 'max-content' },
+            { name: 'cpc', children: 'CPC', gtcWidth: 'max-content' },
+            { name: 'vol', children: 'Vol.', gtcWidth: 'max-content' },
           ],
         },
       ]}
