@@ -38,7 +38,7 @@
   "exports": {
     ".": {
       "require": "./lib/cjs/index.js",
-      "import": "./lib/es6/index.js",
+      "import": "./lib/esm/index.mjs",
       "types": "./lib/types/index.d.ts"
     },
     "./AccessDenied": {
