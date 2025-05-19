@@ -4,15 +4,11 @@ fileSource: data-table
 tabs: Design('data-table'), A11y('data-table-a11y'), API('data-table-api'), Example('data-table-code'), Changelog('data-table-changelog')
 ---
 
-The DataTable component simplifies the creation of tabular data. It uses CSS flex for layout and doesn't rely on native tables.
+The `DataTable` component simplifies rendering of tabular data. It uses CSS grid for layout and doesn't rely on native tables.
 
 ## Basic primary table
 
-To create a table, provide columns with titles using `<DataTable.Column name={name}/>` and data with `data={data}`.
-
-::: tip
-`<DataTable.Column/>` must be a child component of `<DataTable.Head/>`.
-:::
+To render a table, provide the list of columns with their titles using `columns={columns}`, and the list of rows using `data={data}`.
 
 ::: sandbox
 
@@ -24,7 +20,7 @@ To create a table, provide columns with titles using `<DataTable.Column name={na
 
 ## Basic secondary table
 
-Use the secondary table to compactly display a small amount of data.
+Use the secondary table to display small amounts of data in a compact layout.
 
 ::: sandbox
 
@@ -38,7 +34,7 @@ Use the secondary table to compactly display a small amount of data.
 
 ### Compact
 
-Reduce table cel paddings by adding the `compact` property.
+Cell paddings can be reduced by adding the `compact` property.
 
 ::: sandbox
 
@@ -50,7 +46,7 @@ Reduce table cel paddings by adding the `compact` property.
 
 ### Borders
 
-Add borders to columns by passing the `vBorders` property to specific columns.
+Add borders to specific columns using the `borders` property.
 
 ::: sandbox
 
@@ -62,15 +58,11 @@ Add borders to columns by passing the `vBorders` property to specific columns.
 
 ## Table header
 
-### Fixed header
+### Sticky header
 
-Use the `<Box position="sticky" top={top} />` to fix the table header.
+Use the `sticky` and `top` props to make the table header sticky.
 
-::: tip
-Set `zIndex=2` for correct display.
-:::
-
-Scroll in the table header is useful for very long tables with fixed columns, allowing users to scroll more conveniently without reaching the end. In such cases, scroll can be added to the header and the bottom of the table.
+Scroll in the table header is useful for long tables, allowing users to scroll horizontally without having to scroll to the bottom of the table.
 
 ::: sandbox
 
@@ -82,7 +74,7 @@ Scroll in the table header is useful for very long tables with fixed columns, al
 
 ### Header customization
 
-You can insert tooltips, selects, and other components into the table header using the `children` property.
+You can insert tooltips, selects, and other components into the table header using `children` and `tag`.
 
 ::: sandbox
 
@@ -305,7 +297,7 @@ If some column has `changeSortSize={true}`, by default, it will be increased by 
 If horizontal scrolling isn't visible, try reducing the window size
 :::
 
-By default, scrolling is displayed at the bottom of the table, but it can also be added to the table header. Scroll in the table header is useful for very long tables with fixed columns, allowing users to scroll more conveniently without reaching the end. For examples, refer to the [Fixed header section](/table-group/data-table/data-table#fixed_header).
+By default, scrolling is displayed at the bottom of the table, but it can also be added to the table header. Scroll in the table header is useful for very long tables with fixed columns, allowing users to scroll more conveniently without reaching the end. For examples, refer to [Sticky header](/table-group/data-table/data-table#sticky_header).
 
 ::: sandbox
 

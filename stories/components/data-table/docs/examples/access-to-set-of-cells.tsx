@@ -4,18 +4,20 @@ import Spin from '@semcore/spin';
 
 const Demo = () => {
   return (
-    <DataTable data={data} aria-label={'Access to set of cells'}
-               columns={[
-                 {name: 'keyword', children: 'Keyword'},
-                 {name: 'kd', children: 'KD,%'},
-                 {name: 'cpc', children: 'CPC'},
-                 {name: 'vol', children: 'Vol.'},
-               ]}
-        renderCell={({ dataKey, row, defaultRender }) => {
-          const value = row[dataKey].toString();
-          return ['-', '$0', 'n/a'].includes(value) ? <Spin /> : defaultRender();
-        }}
-      />
+    <DataTable
+      data={data}
+      aria-label={'Access to set of cells'}
+      columns={[
+        { name: 'keyword', children: 'Keyword' },
+        { name: 'kd', children: 'KD %' },
+        { name: 'cpc', children: 'CPC' },
+        { name: 'vol', children: 'Vol.' },
+      ]}
+      renderCell={({ dataKey, row, defaultRender }) => {
+        const value = row[dataKey].toString();
+        return ['-', '$0', 'n/a'].includes(value) ? <Spin /> : defaultRender();
+      }}
+    />
   );
 };
 

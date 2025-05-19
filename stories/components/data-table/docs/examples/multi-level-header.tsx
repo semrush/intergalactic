@@ -3,18 +3,21 @@ import { DataTable } from '@semcore/data-table';
 
 const Demo = () => {
   return (
-    <DataTable data={data} aria-label={'Multi level header'}
-               columns={[
-                 {name: 'keyword', children: 'Keyword', gtcWidth: 'minmax(60%, 80%)'},
-                 {
-                   children: 'Organic Sessions',
-                   borders: 'both',
-                   columns: [
-                     {name: 'kd', children: 'KD,%'},
-                     {name: 'cpc', children: 'CPC'},
-                     {name: 'vol', children: 'Vol.'},
-                   ]}
-               ]}
+    <DataTable
+      data={data}
+      aria-label={'Multi level header'}
+      columns={[
+        { name: 'keyword', children: 'Keyword', gtcWidth: 'minmax(60%, 80%)' },
+        {
+          children: 'Organic Sessions',
+          borders: 'both',
+          columns: [
+            { name: 'kd', children: 'KD %' },
+            { name: 'cpc', children: 'CPC' },
+            { name: 'vol', children: 'Vol.' },
+          ],
+        },
+      ]}
     />
   );
 };

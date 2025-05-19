@@ -87,7 +87,7 @@ const group = {
   },
     columnsManager: {
 
-    title: 'Columns manager',
+    title: 'Column manager',
     route: '/intergalactic/table-group/table-controls/table-controls#table-settings-and-column-manager',
     disabled: false,
     type: 'table',

@@ -3,38 +3,40 @@ import { DataTable } from '@semcore/data-table';
 
 const Demo = () => {
   return (
-    <DataTable data={data} aria-label={'Borders'}
-               headerProps={{
-                 sticky: true,
-               }}
-               columns={[
-                 {
-                   name: 'keyword',
-                   children: 'keyword'
-                 },
-                 {
-                   borders: 'both',
-                   children: 'Organic Sessions',
-                   columns: [
-                     {
-                       name: 'kd',
-                       children: 'KD,%',
-                     },
-                     {
-                       name: 'cpc',
-                       children: 'CPC'
-                     },
-                     {
-                       name: 'vol',
-                       children: 'Vol.'
-                     }
-                   ]
-                 },
-                 {
-                   name: 'other',
-                   children: 'Other'
-                 }
-               ]}
+    <DataTable
+      data={data}
+      aria-label={'Borders'}
+      headerProps={{
+        sticky: true,
+      }}
+      columns={[
+        {
+          name: 'keyword',
+          children: 'Keyword',
+        },
+        {
+          borders: 'both',
+          children: 'Organic Sessions',
+          columns: [
+            {
+              name: 'kd',
+              children: 'KD %',
+            },
+            {
+              name: 'cpc',
+              children: 'CPC',
+            },
+            {
+              name: 'vol',
+              children: 'Vol.',
+            },
+          ],
+        },
+        {
+          name: 'other',
+          children: 'Other',
+        },
+      ]}
     />
   );
 };

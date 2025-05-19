@@ -3,13 +3,17 @@ import { DataTable } from '@semcore/data-table';
 
 const Demo = () => {
   return (
-    <DataTable data={data} aria-label={'Scroll inside'} wMin={1000} hMax={200}
-               columns={[
-                 {name: 'keyword', children: 'Keyword'},
-                 {name: 'kd', children: 'KD,%'},
-                 {name: 'cpc', children: 'CPC'},
-                 {name: 'vol', children: 'Vol.'},
-               ]}
+    <DataTable
+      data={data}
+      aria-label={'Scroll inside'}
+      wMin={1000}
+      hMax={200}
+      columns={[
+        { name: 'keyword', children: 'Keyword' },
+        { name: 'kd', children: 'KD %' },
+        { name: 'cpc', children: 'CPC' },
+        { name: 'vol', children: 'Vol.' },
+      ]}
     />
   );
 };

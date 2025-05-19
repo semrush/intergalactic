@@ -3,13 +3,17 @@ import { DataTable } from '@semcore/data-table';
 
 const Demo = () => {
   return (
-    <DataTable data={data} use='secondary' sort={['kd', 'desc']} aria-label={'Secondary'}
-               columns={[
-                 {name: 'keyword', children: 'Keyword'},
-                 {name: 'kd', children: 'KD,%'},
-                 {name: 'cpc', children: 'CPC'},
-                 {name: 'vol', children: 'Vol.'},
-               ]}
+    <DataTable
+      data={data}
+      use='secondary'
+      sort={['kd', 'desc']}
+      aria-label={'Secondary'}
+      columns={[
+        { name: 'keyword', children: 'Keyword' },
+        { name: 'kd', children: 'KD %' },
+        { name: 'cpc', children: 'CPC' },
+        { name: 'vol', children: 'Vol.' },
+      ]}
     />
   );
 };
