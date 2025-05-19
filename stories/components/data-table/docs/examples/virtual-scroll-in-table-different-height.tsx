@@ -11,18 +11,14 @@ const data = Array(10000)
   .map((_, index) => ({
     id: `#${index + 1}`,
     keyword: index < 3 ? keyword[3] : keyword[Math.floor(keyword.length * Math.random())],
-    // [ROW_GROUP]: [
-    //   {
-        kd: kd[Math.floor(kd.length * Math.random())],
-        cpc: cpc[Math.floor(cpc.length * Math.random())],
-        vol: vol[Math.floor(vol.length * Math.random())],
-      // },
-    // ],
+    kd: kd[Math.floor(kd.length * Math.random())],
+    cpc: cpc[Math.floor(cpc.length * Math.random())],
+    vol: vol[Math.floor(vol.length * Math.random())],
   }));
 
 const Demo = () => {
   return (
-    <DataTable data={data} totalRows={10000} aria-label={'Virtual scroll'} h={400} virtualScroll
+    <DataTable data={data} totalRows={10000} aria-label={'Virtual scroll with different height'} h={400} virtualScroll
                headerProps={{sticky: true}}
                columns={[
                    {name: 'id', children: 'ID'},

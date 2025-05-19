@@ -1,21 +1,18 @@
 import React from 'react';
 import { DataTable } from '@semcore/data-table';
-import { AutoSizer, List, CellMeasurer, CellMeasurerCache } from 'react-virtualized';
-
-const cache = new CellMeasurerCache({
-  fixedWidth: true,
-  defaultHeight: 100,
-});
 
 const Demo = () => {
   return (
-    <DataTable data={data} aria-label={'Custom rows rendering'} h={'100%'}
+    <DataTable data={data} aria-label={'Custom rows rendering'} hMax={'500px'}
+               totalRows={data.length}
+               sort={['keyword', 'asc']}
                columns={[
-                   {name: 'keyword', children: 'Keyword'},
+                   {name: 'keyword', children: 'Keyword', sortable: true},
                    {name: 'tags', children: 'Tags'},
                    {name: 'cpc', children: 'CPC'},
                    {name: 'vol', children: 'Vol.'},
                ]}
+               virtualScroll={true}
           renderCell={(props) => {
               if (props.dataKey === 'tags') {
                   const tags = props.row[props.dataKey];
@@ -34,39 +31,6 @@ const Demo = () => {
               }
               return props.defaultRender();
           }}
-        // TODO Brauer Ilia add virtual logic
-        // renderRows={({ rows, renderRow }) => {
-        //   const rowRenderer = ({
-        //     key,
-        //     index,
-        //     style,
-        //     parent,
-        //   }: { key: string; index: number; style: any; parent: any }) => (
-        //     <CellMeasurer key={key} cache={cache} parent={parent} columnIndex={0} rowIndex={index}>
-        //       {({ measure }: { measure: (event: any) => void }) => (
-        //         <div key={key} style={style} onLoad={measure}>
-        //           {renderRow(rows[index], { dataIndex: index })}
-        //         </div>
-        //       )}
-        //     </CellMeasurer>
-        //   );
-        //
-        //   return (
-        //     <AutoSizer disableHeight>
-        //       {({ width }: { width: number }) => (
-        //         <List
-        //           height={600}
-        //           rowCount={rows.length}
-        //           deferredMeasurementCache={cache}
-        //           rowHeight={cache.rowHeight}
-        //           rowRenderer={rowRenderer}
-        //           width={width}
-        //           overscanRowCount={3}
-        //         />
-        //       )}
-        //     </AutoSizer>
-        //   );
-        // }}
       />
   );
 };

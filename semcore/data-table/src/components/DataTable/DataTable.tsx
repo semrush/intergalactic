@@ -130,8 +130,13 @@ class DataTableRoot<D extends DataTableData> extends Component<
   }
 
   componentDidUpdate(prevProps: any) {
-    const { data, selectedRows } = this.asProps;
-    if (prevProps.data !== data) {
+    const { data, selectedRows, columns } = this.asProps;
+    if (prevProps.columns !== columns) {
+      const cols = this.calculateColumnsFromConfig();
+      this.columns = cols[0];
+      this.treeColumns = cols[1];
+    }
+    if (prevProps.data !== data || prevProps.columns !== columns) {
       this.rows = this.calculateRows();
       this.flatRows = this.rows.flat();
 
@@ -675,6 +680,8 @@ class DataTableRoot<D extends DataTableData> extends Component<
           // @ts-ignore
           loading={loading}
           headerHeight={`${headerHeight}px`}
+          leftScrollPadding={`${offsetLeftSum}px`}
+          rightScrollPadding={`${offsetRightSum}px`}
         >
           <SDataTable
             render={Box}

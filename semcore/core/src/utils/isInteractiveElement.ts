@@ -19,18 +19,10 @@ const interactiveRoles = new Set([
   'menuitemradio',
 ]);
 
-const uikitInteractive = [
-  'Button',
-  'Link',
-  'Select',
-  'Dropdown',
-  'Tag',
-  'InlineInput',
-  'InlineEdit',
-];
+const uikitInteractive = ['Button', 'Link', 'Select', 'Dropdown', 'Tag'];
 
 export function isInteractiveElement(element: unknown): boolean {
-  if (!(element instanceof HTMLElement)) return false;
+  if (!(element instanceof HTMLElement) && !(element instanceof SVGElement)) return false;
   if (element.getAttribute('disabled') === 'true') return false;
 
   const uikitName = element.dataset.uiName;

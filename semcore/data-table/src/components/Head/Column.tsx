@@ -258,12 +258,6 @@ export class Column<D extends DataTableData> extends Component<
         }
       }
     });
-
-    /** Dirty hack to prevent table content from scrolling down after coming to header from elements after table when pressing shift+tab */
-    const tableElement = this.asProps.tableRef.current;
-    if (tableElement) {
-      tableElement.scrollIntoView({});
-    }
   };
 
   render() {
