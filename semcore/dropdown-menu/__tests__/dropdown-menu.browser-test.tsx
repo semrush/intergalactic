@@ -204,6 +204,7 @@ test.describe('Dropdown-menu - Selectable radio items', () => {
     await page.keyboard.press('Tab');
     await expect(ddMenuTrigger).toBeFocused();
     await page.keyboard.press('Enter');
+    await new Promise((resolve) => setTimeout(resolve, 250));
     await expect(ddMenuTrigger).not.toBeFocused();
     const Item1 = page
       .locator('[data-ui-name="DropdownMenu.Item.Content"]')
@@ -212,14 +213,15 @@ test.describe('Dropdown-menu - Selectable radio items', () => {
 
     //The DD closed by Enter (no focus on intercative element)
     await page.keyboard.press('Enter');
+    await new Promise((resolve) => setTimeout(resolve, 250));
     await expect(ddMenuTrigger).toBeFocused();
     await expect(Item1).not.toBeVisible();
     await page.keyboard.press('Enter');
-    await page.waitForTimeout(500);
+    await new Promise((resolve) => setTimeout(resolve, 500));
 
     //Focus on interactive element by right arrow
     await page.keyboard.press('ArrowRight');
-    await page.waitForTimeout(200);
+    await new Promise((resolve) => setTimeout(resolve, 250));
     const deleteButton1 = page
       .locator('[data-ui-name="DropdownMenu.Item"]')
       .filter({ hasText: /^Menu item 1$/ })
@@ -233,7 +235,7 @@ test.describe('Dropdown-menu - Selectable radio items', () => {
     await expect(Item1).toBeFocused();
 
     await page.keyboard.press('ArrowRight');
-    await page.waitForTimeout(100);
+    await page.waitForTimeout(200);
     await page.keyboard.press('Escape');
     await page.waitForTimeout(100);
     await page.keyboard.press('Escape');

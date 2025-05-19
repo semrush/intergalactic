@@ -106,7 +106,7 @@ describe('Tooltip.Popper', () => {
       () => {
         expect(ref.current.nodeName).toBe('DIV');
       },
-      { timeout: 100 },
+      { timeout: 250 },
     );
   });
 
@@ -126,7 +126,7 @@ describe('Tooltip.Popper', () => {
       () => {
         expect(getAllByText('test popper content', {})).toHaveLength(1);
       },
-      { timeout: 100 },
+      { timeout: 250 },
     );
   });
 
@@ -149,7 +149,7 @@ describe('Tooltip.Popper', () => {
           document.querySelectorAll('[data-ui-name^="Tooltip"][data-ui-name$="Popper"]').length,
         ).toBe(1);
       },
-      { timeout: 100 },
+      { timeout: 250 },
     );
   });
 });

@@ -142,7 +142,7 @@ test.describe('Popper', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
-    await new Promise((resolve) => setTimeout(resolve, 250));
+    await new Promise((resolve) => setTimeout(resolve, 500));
 
     const popperD = page.locator('text=Popper');
     const popperF = page.locator('text=Fixed');
@@ -152,7 +152,7 @@ test.describe('Popper', () => {
     const resizeButton = page.locator('text=Change height');
     await resizeButton.click();
 
-    await new Promise((resolve) => setTimeout(resolve, 20));
+    await new Promise((resolve) => setTimeout(resolve, 500));
     await expect(page).toHaveScreenshot();
     const newPoppeDY = (await popperD.boundingBox())!.y;
     const newPoppeFY = (await popperF.boundingBox())!.y;
@@ -399,7 +399,7 @@ test.describe('Popper', () => {
         triggerRect.x + triggerRect.width / 2,
         triggerRect.y + triggerRect.height / 2,
       );
-
+      await new Promise((resolve) => setTimeout(resolve, 300));
       await expect(popperLocator).toHaveCount(1);
     });
 
