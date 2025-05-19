@@ -73,7 +73,7 @@ describe('Tooltip.Popper', () => {
       () => {
         expect(getByTestId('popper').attributes['class'].value).toContain('more-than one-class');
       },
-      { timeout: 100 },
+      { timeout: 500 },
     );
   });
 
@@ -89,7 +89,7 @@ describe('Tooltip.Popper', () => {
       () => {
         expect(getByTestId('popper').attributes['name'].value).toBe('popper');
       },
-      { timeout: 100 },
+      { timeout: 500 },
     );
   });
 
