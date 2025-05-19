@@ -20,7 +20,6 @@ test.describe('Carousel', () => {
     await page.getByLabel('Next').click();
     await new Promise((resolve) => setTimeout(resolve, 100));
 
-
     const items = await page.locator('[data-ui-name="Carousel.Item"]').all();
 
     expect(items.length).toBe(3);
