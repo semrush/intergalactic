@@ -76,7 +76,7 @@ export type TagAddonProps = BoxProps & {};
 
 /** @deprecated */
 export interface ITagTextProps extends TagTextProps, UnknownProperties {}
-export type TagTextProps = BoxProps & KeyboardFocusProps & {};
+export type TagTextProps = BoxProps & {};
 
 declare const Tag: Intergalactic.Component<'div', TagProps, TagContext> & {
   Text: Intergalactic.Component<'div', TagTextProps>;
@@ -86,7 +86,7 @@ declare const Tag: Intergalactic.Component<'div', TagProps, TagContext> & {
 
 declare const TagContainer: Intergalactic.Component<'div', TagProps, TagContext> & {
   Tag: typeof Tag;
-  Close: Intergalactic.Component<'button', KeyboardFocusProps>;
+  Close: Intergalactic.Component<'button'>;
   Addon: Intergalactic.Component<'div', TagAddonProps>;
   Circle: Intergalactic.Component<'div', TagAddonProps>;
 };
