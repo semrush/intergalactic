@@ -10,7 +10,7 @@ import { Group } from './Group';
 import { DataTableColumnProps } from './Column.types';
 import { DataTableGroupProps } from './Group.type';
 import { DataTableData } from '../DataTable/DataTable.types';
-import { DataTable } from '../DataTable/DataTable';
+import { DataTableInternal } from '../DataTable/DataTable';
 import { SELECT_ALL } from '../DataTable/DataTable';
 import Checkbox from '@semcore/checkbox';
 
@@ -144,7 +144,7 @@ class HeadRoot<D extends DataTableData> extends Component<
               {treeColumns.map((column, i) => {
                 if ('columns' in column) {
                   return (
-                    <DataTable.Head.Group
+                    <DataTableInternal.Head.Group
                       key={column.name}
                       {...column}
                       name={column.columns?.map((c) => c.name).join('/')}
@@ -153,7 +153,7 @@ class HeadRoot<D extends DataTableData> extends Component<
                   );
                 }
 
-                return <DataTable.Head.Column key={column.name} {...column} />;
+                return <DataTableInternal.Head.Column key={column.name} {...column} />;
               })}
             </>
           )}
