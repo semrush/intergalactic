@@ -63,7 +63,7 @@ The table header should have a main [Checkbox](/components/checkbox/checkbox) to
 
 ### Row selection and pagination
 
-When switching pages, row selection should not reset.
+When switching pages, row selection shouldn't reset.
 
 _For example, user selects 3 rows on page 1, then goes to page 2, and selects 5 rows there. When user returns to page 1, the selected rows should be preserved._
 
@@ -104,7 +104,7 @@ Use `--bg-primary-neutral` token for background-color and `--border-secondary` t
 - **Select all in table (N)** selects all rows in the table
 - limit actions to 3-5 popular options
 
-**Select all** is not an obvious action name, so we recommend avoiding it and using the options above instead.
+**Select all** isn't an obvious action name, so we recommend avoiding it and using the options mentioned earlier instead.
 
 ## Column resizing
 
