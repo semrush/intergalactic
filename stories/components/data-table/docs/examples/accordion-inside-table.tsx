@@ -2,12 +2,13 @@ import React from 'react';
 import { scaleLinear } from 'd3-scale';
 import { DataTable, ACCORDION, DataTableData } from '@semcore/data-table';
 import { Plot, Line, XAxis, YAxis, ResponsiveContainer, minMax } from '@semcore/d3-chart';
+import Button from '@semcore/button';
 
 const Demo = () => {
   return (
       <DataTable data={data} aria-label={'Accordion inside table'} h={'100%'} defaultGridTemplateColumnWidth={'1fr'}
                  columns={[
-                   {name: 'keyword', children: 'Keyword', gtcWidth: 'minmax(60%, 80%)'},
+                   {name: 'keyword', children: 'Keyword', gtcWidth: 'minmax(20%, 50%)'},
                    {
                      children: 'Organic Sessions',
                      borders: 'both',
@@ -78,7 +79,7 @@ const data: DataTableData = [
   },
   {
     keyword: 'www.ebay.com',
-    kd: (<span>10<button>someB</button></span>),
+    kd: (<span>10<Button>Click Me</Button></span>),
     cpc: '$0.65',
     vol: '47,354,640',
     [ACCORDION]: (<ChartExample/>),

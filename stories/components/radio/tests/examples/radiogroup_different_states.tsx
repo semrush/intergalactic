@@ -15,17 +15,7 @@ const Demo = () => {
 
         <Radio value='1' state='invalid' label=' supports state=invalid' />
 
-        <Radio value='2' state='invalid'>
-          <Radio.Value keyboardFocused />
-          <Radio.Text>supports invalid and keyboardFocused</Radio.Text>
-        </Radio>
-
         <Radio value='3' theme='yellow' label='theme=yellow' />
-
-        <Radio value='4' theme='yellow' >
-          <Radio.Value keyboardFocused />
-          <Radio.Text> supports theme=yellow and keyboardFocused</Radio.Text>
-        </Radio>
 
         <Radio value='5' state='invalid' disabled label=' supports state=invalid and disabled' />
 
@@ -94,17 +84,9 @@ const Demo = () => {
 
         <Radio size = 'm' value='1' state='invalid' label='supports state=invalid and m' />
         <Radio size = 'l' value='2' state='invalid' label='supports state=invalid and l' />
-        <Radio  size = 'l' state='invalid'  value='3'>
-          <Radio.Value keyboardFocused />
-          <Radio.Text>supports invalid keyboardFocused and l</Radio.Text>
-        </Radio>
 
         <Radio size = 'm' value='4' state='normal' label='supports normal state and m' />
         <Radio size = 'l' value='5' state='normal' label='supports normal state and l' />
-        <Radio  size = 'l' state='normal'  value='6'>
-          <Radio.Value keyboardFocused />
-          <Radio.Text>supports normal keyboardFocused and l</Radio.Text>
-        </Radio>
         <Radio value='10' size = 'm' label='supports normal state checked m' />
       </Flex>
     </RadioGroup>

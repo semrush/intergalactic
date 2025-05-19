@@ -15,7 +15,7 @@ const checkStyles = async (element: any, styles: Record<string, string>) => {
 
 test.describe('Base styles Primary Table', () => {
   test('Verify styles when no interactive elements in header', async ({ page, browserName }) => {
-    const standPath = 'stories/components/data-table/tests/examples/header-tests/base.tsx';
+    const standPath = 'stories/components/data-table/docs/examples/base.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
     const table = page.locator('[data-ui-name="DataTable"]');
@@ -167,7 +167,7 @@ test.describe('Base styles Primary Table', () => {
   });
 
   test('Verify Column width by default - auto', async ({ page }) => {
-    const standPath = 'stories/components/data-table/tests/examples/header-tests/base.tsx';
+    const standPath = 'stories/components/data-table/docs/examples/base.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);

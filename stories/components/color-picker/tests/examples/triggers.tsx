@@ -16,8 +16,9 @@ const Demo = () => {
         New tag
       </Text>
       <ColorPicker value={value} onChange={setValue} >
+
         <Input w={300} size='l'>
-          <ColorPicker.Trigger tag={Input.Addon} interactive aria-label='New tag color'>
+          <ColorPicker.Trigger tag={Input.Addon}  tabIndex={0} interactive aria-label='New tag color'>
             <div
               style={{
                 width: '16px',

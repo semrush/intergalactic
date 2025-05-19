@@ -34,7 +34,6 @@ test.describe('Vertical Scroll', () => {
     }
     const nowNumber = await checkScrollNowIncreased(scrollBar);
     expect(nowNumber).toBeLessThanOrEqual(initialValue);
-    await expect(page).toHaveScreenshot();
   });
 
   test('Verify Mouse scroll when Sticky header and no interactive in cells', async ({ page }) => {

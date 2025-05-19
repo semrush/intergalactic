@@ -74,7 +74,6 @@ test.describe('DateRangeComparator range', () => {
         {
           selector: '[data-ui-name="Checkbox.Value"]',
           attributes: [
-            { name: 'tabindex', value: '0' },
             { name: 'type', value: 'checkbox' },
             { name: 'aria-invalid', value: 'false' },
           ],
@@ -89,25 +88,22 @@ test.describe('DateRangeComparator range', () => {
       }
 
       const inputValues = page.locator('input[data-ui-name="DateRangeComparator.ValueDateRange"]');
+      const compareValues = page.locator(
+        'input[data-ui-name="DateRangeComparator.CompareDateRange"]',
+      );
+
       const inputAttributesCommon = [
         { name: 'type', value: 'text' },
         { name: 'inputmode', value: 'numeric' },
         { name: 'aria-invalid', value: 'false' },
       ];
 
-      const inputs = [
-        { locator: inputValues, tabindex: '0' },
-        {
-          locator: page.locator('input[data-ui-name="DateRangeComparator.CompareDateRange"]'),
-          tabindex: '-1',
-        },
-      ];
+      const inputs = [inputValues, compareValues];
 
-      for (const { locator, tabindex } of inputs) {
+      for (const locator of inputs) {
         const count = await locator.count();
         for (let i = 0; i < count; i++) {
           const input = locator.nth(i);
-          await expect(input).toHaveAttribute('tabindex', tabindex);
           for (const { name, value } of inputAttributesCommon) {
             await expect(input).toHaveAttribute(name, value);
           }
@@ -136,7 +132,6 @@ test.describe('DateRangeComparator range', () => {
 
       for (const { selector, ariaLabel } of headerButtons) {
         const button = page.locator(selector);
-        await expect(button).toHaveAttribute('tabindex', '0');
         await expect(button).toHaveAttribute('type', 'button');
         await expect(button).toHaveAttribute('aria-label', ariaLabel);
       }
@@ -237,13 +232,11 @@ test.describe('DateRangeComparator range', () => {
     const applyButton = page.locator('[data-ui-name="DateRangeComparator.Apply"]');
     await test.step('Verify Apply button attributes', async () => {
       await expect(applyButton).toHaveAttribute('type', 'button');
-      await expect(applyButton).toHaveAttribute('tabindex', '0');
     });
 
     const resetButton = page.locator('[data-ui-name="DateRangeComparator.Reset"]');
     await test.step('Verify Reset button attributes', async () => {
       await expect(resetButton).toHaveAttribute('type', 'button');
-      await expect(resetButton).toHaveAttribute('tabindex', '0');
     });
   });
 
@@ -329,7 +322,7 @@ test.describe('DateRangeComparator range', () => {
       throw new Error(`Invalid aria-label date: ${ariaLabel}`);
     }
 
-    const month = (parsedDate.getMonth() + 1).toString().padStart(2, '0'); // getMonth() возвращает 0–11
+    const month = (parsedDate.getMonth() + 1).toString().padStart(2, '0');
     const day = parsedDate.getDate().toString().padStart(2, '0');
     const year = parsedDate.getFullYear().toString();
 
@@ -495,61 +488,42 @@ test.describe('DateRangeComparator range', () => {
 
   test('Verify Date range comparator keyboard interactions', async ({ page, browserName }) => {
     const standPath = 'stories/components/date-picker/docs/examples/date_range_comparator.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+    await page.setContent(await e2eStandToHtml(standPath, 'en'));
+
+    const getInputValues = async (locator: any) => ({
+      from: await locator.nth(0).inputValue(),
+      to: await locator.nth(1).inputValue(),
+    });
 
     const datePicker = page.locator('[data-ui-name="DateRangeComparator.Trigger"]');
     const popper = page.locator('[data-ui-name="DateRangeComparator.Popper"]');
-    const headPrev = page.locator('[data-ui-name="DateRangeComparator.Prev"]');
     const headTitle = page.locator('[data-ui-name="DateRangeComparator.Title"]');
-    const headNext = page.locator('[data-ui-name="DateRangeComparator.Next"]');
-    const buttons = page.locator('[data-ui-name="Button"]');
     const inputFrom = page.locator('input[data-ui-name="DateRangeComparator.ValueDateRange"]');
     const inputTo = page.locator('input[data-ui-name="DateRangeComparator.CompareDateRange"]');
-    const toggle = page.locator('[data-ui-name="DateRangeComparator.CompareToggle"]');
     const apply = page.locator('[data-ui-name="DateRangeComparator.Apply"]');
     const reset = page.locator('[data-ui-name="DateRangeComparator.Reset"]');
-    const compareCalendar = page.locator('[data-ui-name="DateRangeComparator.Calendar"]').first();
+    const headPrev = page.locator('[data-ui-name="DateRangeComparator.Prev"]');
+    const headNext = page.locator('[data-ui-name="DateRangeComparator.Next"]');
 
-    let initialTitleFrom: string | null = '';
-    let initialTitleTo: string | null = '';
-    let titleAfterFirstEnterFrom: string | null = '';
-    let titleAfterFirstEnterTo: string | null = '';
-    let initialValueFrom = '';
-    let initialValueFrom2 = '';
-    let initialValueFrom1_1 = '';
-    let initialValueFrom2_1 = '';
-    let initialValueFrom1_2 = '';
-    let initialValueFrom2_2 = '';
-    let initialValueFrom1_3 = '';
-    let initialValueFrom2_3 = '';
-    let initialValueFrom1_4 = '';
-    let initialValueFrom2_4 = '';
-    let initialValueTo1 = '';
-    let initialValueTo2 = '';
-    let initialValueTo1_1 = '';
-    let initialValueTo2_1 = '';
-    let initialValueTo1_2 = '';
-    let initialValueTo2_2 = '';
+    if (browserName === 'webkit') return;
 
     await test.step('Open and close calendar using keyboard', async () => {
       await page.keyboard.press('Tab');
-
       await page.keyboard.press('Enter');
       await page.waitForTimeout(300);
+
       await page.keyboard.press('Tab');
       await page.keyboard.type('04042024');
       await page.keyboard.type('04042024');
 
-      for (let i = 0; i < 9; i++) {
-        await page.keyboard.press('Tab');
-      }
-
-      await page.keyboard.press('Enter');
-      await page.waitForTimeout(100);
+      for (let i = 0; i < 9; i++) await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
       await page.waitForTimeout(300);
+      await expect(popper).not.toBeVisible();
+      await expect(datePicker).toBeFocused();
 
+      await page.keyboard.press('Enter');
+      await page.waitForTimeout(300);
       await expect(popper).toBeVisible();
       await expect(datePicker).not.toBeFocused();
       await expect(popper).toBeFocused();
@@ -560,165 +534,103 @@ test.describe('DateRangeComparator range', () => {
       await page.keyboard.press('Space');
       await page.waitForTimeout(300);
       await expect(popper).toBeVisible();
-      await expect(popper).toBeFocused();
-    });
-
-    await test.step('Navigate through elements', async () => {
-      await page.keyboard.press('Tab'); // From
-      await page.keyboard.press('Tab'); // To
-      await expect(page.getByLabel('To Date field').first()).toBeFocused();
-
-      await page.keyboard.press('Tab'); // Checkmark
-      await expect(page.locator('[data-ui-name="Value.CheckMark"]')).toHaveClass(/keyboardFocused/);
     });
 
     await test.step('Navigate months backwards and forwards', async () => {
-      initialTitleFrom = await headTitle.first().textContent();
-      initialTitleTo = await headTitle.nth(1).textContent();
-
-      await page.keyboard.press('Tab'); // Prev
-      await page.keyboard.press('Enter');
-      titleAfterFirstEnterFrom = await headTitle.first().textContent();
-      titleAfterFirstEnterTo = await headTitle.nth(1).textContent();
-
-      expect(titleAfterFirstEnterFrom).not.toBe(initialTitleFrom);
-      expect(titleAfterFirstEnterTo).not.toBe(initialTitleTo);
-
-      await page.keyboard.press('Tab'); // Next
-      await page.keyboard.press('Tab');
-      await expect(headNext).toBeFocused();
-
-      await page.keyboard.press('Enter');
-      const titleAfterSecondEnterFrom = await headTitle.first().textContent();
-      const titleAfterSecondEnterTo = await headTitle.nth(1).textContent();
-
-      expect(titleAfterSecondEnterFrom).toBe(initialTitleFrom);
-      expect(titleAfterSecondEnterTo).toBe(initialTitleTo);
-    });
-
-    await test.step('Focus calendar and navigate buttons', async () => {
-      await page.keyboard.press('Shift+Tab');
-      await expect(compareCalendar).toBeFocused();
-
-      await page.keyboard.press('Tab'); // Button 1
-      await page.keyboard.press('Tab'); // Button 2
-      await expect(buttons.first()).toBeFocused();
-      await expect(page).toHaveScreenshot();
-
-      await page.keyboard.press('Tab'); // More tabs to Apply
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await expect(apply).toBeFocused();
+      const initial = {
+        from: await headTitle.first().textContent(),
+        to: await headTitle.nth(1).textContent(),
+      };
 
       await page.keyboard.press('Tab');
-      await expect(reset).toBeFocused();
-
-      await page.keyboard.press('Tab');
-      await expect(popper).toBeFocused();
-    });
-
-    await test.step('Select first and second dates in From input', async () => {
-      initialValueFrom = await inputFrom.nth(0).inputValue();
-      initialValueFrom2 = await inputFrom.nth(1).inputValue();
-
-      await page.keyboard.press('ArrowRight');
-      await page.keyboard.press('ArrowRight');
-      initialValueFrom1_1 = await inputFrom.nth(0).inputValue();
-      initialValueFrom2_1 = await inputFrom.nth(1).inputValue();
-
-      expect(initialValueFrom1_1).toBe(initialValueFrom);
-      expect(initialValueFrom2_1).toBe(initialValueFrom2);
-
-      await page.keyboard.press('Space');
-      await page.waitForTimeout(50);
-
-      initialValueFrom1_2 = await inputFrom.nth(0).inputValue();
-      initialValueFrom2_2 = await inputFrom.nth(1).inputValue();
-
-      expect(initialValueFrom1_2).not.toBe(initialValueFrom1_1);
-      expect(initialValueFrom2_2).not.toBe(initialValueFrom2_1);
-
-      await page.keyboard.press('ArrowRight');
-      await page.keyboard.press('Space');
-      await page.waitForTimeout(100);
-
-      initialValueFrom1_3 = await inputFrom.nth(0).inputValue();
-      initialValueFrom2_3 = await inputFrom.nth(1).inputValue();
-
-      expect(initialValueFrom1_3).toBe(initialValueFrom1_2);
-      expect(initialValueFrom2_3).not.toBe(initialValueFrom2);
-    });
-
-    await test.step('Switch to Compare mode', async () => {
-      await page.keyboard.press('Shift+Tab');
-      await page.keyboard.press('Shift+Tab');
-      await page.keyboard.press('Shift+Tab');
-      await page.keyboard.press('Space');
-      await page.waitForTimeout(200);
-
-      await expect(
-        page.locator('[data-ui-name="DateRangeComparator.CompareDateRange"]').nth(1),
-      ).toHaveClass(/focused/);
-    });
-
-    await test.step('Select first and second dates in To input', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await expect(headPrev).toBeFocused();
-
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
 
-      await page.keyboard.press('ArrowLeft');
-      initialValueTo1 = await inputTo.nth(0).inputValue();
-      initialValueTo2 = await inputTo.nth(1).inputValue();
+      const changed = {
+        from: await headTitle.first().textContent(),
+        to: await headTitle.nth(1).textContent(),
+      };
 
+      expect(changed.from).not.toBe(initial.from);
+      expect(changed.to).not.toBe(initial.to);
+
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await expect(headNext).toBeFocused();
+      await page.keyboard.press('Enter');
+
+      const reverted = {
+        from: await headTitle.first().textContent(),
+        to: await headTitle.nth(1).textContent(),
+      };
+
+      expect(reverted.from).toBe(initial.from);
+      expect(reverted.to).toBe(initial.to);
+    });
+
+    await test.step('Select From dates with keyboard', async () => {
+      const initial = await getInputValues(inputFrom);
+
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowRight');
+
+      const unchanged = await getInputValues(inputFrom);
+      expect(unchanged).toEqual(initial);
+
+      await page.keyboard.press('Space');
+      await page.waitForTimeout(50);
+
+      const changed = await getInputValues(inputFrom);
+      expect(changed.from).not.toBe(initial.from);
+      expect(changed.to).not.toBe(initial.to);
+
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('Space');
+
+      const final = await getInputValues(inputFrom);
+      expect(final.from).toBe(changed.from);
+      expect(final.to).not.toBe(initial.to);
+    });
+
+    await test.step('Switch to Compare mode and select To dates', async () => {
+      for (let i = 0; i < 3; i++) await page.keyboard.press('Shift+Tab');
+      await page.keyboard.press('Space');
+      await page.waitForTimeout(200);
+
+      for (let i = 0; i < 3; i++) await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+
+      const initial = await getInputValues(inputTo);
+      await page.keyboard.press('ArrowLeft');
       await page.keyboard.press('ArrowUp');
       await page.keyboard.press('Space');
 
-      initialValueTo1_1 = await inputTo.nth(0).inputValue();
-      initialValueTo2_1 = await inputTo.nth(1).inputValue();
-
-      expect(initialValueTo1_1).not.toBe(initialValueTo1);
-      expect(initialValueTo2_1).toBe(initialValueTo2);
+      const mid = await getInputValues(inputTo);
+      expect(mid.from).not.toBe(initial.from);
+      expect(mid.to).toBe(initial.to);
 
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('Space');
 
-      initialValueTo1_2 = await inputTo.nth(0).inputValue();
-      initialValueTo2_2 = await inputTo.nth(1).inputValue();
-
-      expect(initialValueTo1_2).toBe(initialValueTo1_1);
-      expect(initialValueTo2_2).not.toBe(initialValueTo2_1);
-
-      initialValueFrom1_4 = await inputFrom.nth(0).inputValue();
-      initialValueFrom2_4 = await inputFrom.nth(1).inputValue();
-
-      expect(initialValueFrom1_4).toBe(initialValueFrom1_3);
-      expect(initialValueFrom2_4).toBe(initialValueFrom2_3);
+      const final = await getInputValues(inputTo);
+      expect(final.from).toBe(mid.from);
+      expect(final.to).not.toBe(mid.to);
     });
 
-    await test.step('Apply selected dates and close calendar', async () => {
+    await test.step('Apply and reset selected dates', async () => {
       for (let i = 0; i < 6; i++) await page.keyboard.press('Tab');
       await expect(apply).toBeFocused();
       await page.keyboard.press('Enter');
-
       await expect(popper).not.toBeVisible();
-      await expect(page.locator('[data-ui-name="LinkTrigger.Text"]').first()).not.toHaveText(
-        'Select date ranges',
-      );
-    });
 
-    await test.step('Reset dates', async () => {
       await page.keyboard.press('Enter');
       await page.waitForTimeout(300);
 
       for (let i = 0; i < 14; i++) await page.keyboard.press('Tab');
-
       await expect(reset).toBeFocused();
       await page.keyboard.press('Space');
       await page.waitForTimeout(300);

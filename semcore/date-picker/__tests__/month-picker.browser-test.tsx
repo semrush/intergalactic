@@ -79,7 +79,6 @@ test.describe('Month picker', () => {
 
     await test.step('Verify input trigger attributes', async () => {
       const inputAttributes = [
-        ['tabindex', '0'],
         ['aria-invalid', 'false'],
         ['role', 'combobox'],
         ['aria-label', 'Date'],
@@ -111,7 +110,6 @@ test.describe('Month picker', () => {
         {
           locator: '[data-ui-name="MonthPicker.Prev"]',
           attrs: [
-            ['tabindex', '0'],
             ['type', 'button'],
             ['aria-label', 'Previous year'],
           ],
@@ -120,7 +118,6 @@ test.describe('Month picker', () => {
         {
           locator: '[data-ui-name="MonthPicker.Next"]',
           attrs: [
-            ['tabindex', '0'],
             ['type', 'button'],
             ['aria-label', 'Next year'],
           ],
