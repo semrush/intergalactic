@@ -63,10 +63,10 @@ test.describe('Columns', () => {
     );
 
     expect(width1Mobile).toBeLessThan(width1Desktop);
-    expect(width2Mobile).toBeCloseTo(width2Desktop, 1);
-    expect(width3Mobile).toBeCloseTo(width3Desktop, 1);
+    expect(width2Mobile).toBeLessThan(width2Desktop);
+    expect(width3Mobile).toBeLessThan(width3Desktop);
     expect(width4Mobile).toBeLessThan(width4Desktop);
-    expect(width5Mobile).toBeCloseTo(width5Desktop, 1);
+    expect(width5Mobile).toBeLessThan(width5Desktop);
 
     await expect(page).toHaveScreenshot();
   });

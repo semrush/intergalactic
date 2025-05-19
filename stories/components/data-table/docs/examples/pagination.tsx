@@ -21,29 +21,39 @@ const Demo = () => {
         h={'auto'}
         columns={[
           { name: 'keyword', children: 'Keyword', justifyContent: 'left' },
-          { name: 'kd', children: 'KD,%', justifyContent: 'right', gtcWidth: 'minmax(fit-content, 68px)' },
+          {
+            name: 'kd',
+            children: 'KD %',
+            justifyContent: 'right',
+            gtcWidth: 'minmax(fit-content, 68px)',
+          },
           { name: 'cpc', children: 'CPC', gtcWidth: 'minmax(fit-content, 60px)' },
-          { name: 'vol', children: 'Vol.', gtcWidth: 'minmax(fit-content, 120px)', justifyContent: 'left' },
+          {
+            name: 'vol',
+            children: 'Vol.',
+            gtcWidth: 'minmax(fit-content, 120px)',
+            justifyContent: 'left',
+          },
         ]}
         renderCell={(props) => {
           const { column, row } = props;
-        
+
           if (!row) return props.defaultRender();
-        
+
           const value = row[column.name];
-        
+
           if (column.name === 'keyword') {
             return props.defaultRender();
           }
-        
+
           if (typeof value !== 'number' || value === -1) {
             return 'n/a';
           }
-        
+
           if (column.name === 'cpc') {
             return currencyFormat.format(value);
           }
-        
+
           return numberFormat.format(value);
         }}
       />

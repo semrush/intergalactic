@@ -1,30 +1,38 @@
 import React from 'react';
 import { DataTable } from '@semcore/data-table';
-import {Box} from '@semcore/base-components';
+import { Box } from '@semcore/base-components';
 
 const Demo = () => {
-  const top = 0; // Here should be height of Header in your application
+  const top = 0; // the height of the UI that should stick alongside the table header
 
   return (
     <>
-      <DataTable data={data} aria-label={'Fixed header'} wMax={800} hMax={200}
-                 headerProps={{sticky: true, top}}
-                 columns={[
-                   {name: 'keyword', children: 'Keyword'},
-                   {name: 'kd', children: 'KD,%'},
-                   {name: 'cpc', children: 'CPC'},
-                   {name: 'vol', children: 'Vol.'},
-                 ]}
+      <DataTable
+        data={data}
+        aria-label={'Fixed header'}
+        wMax={800}
+        hMax={200}
+        headerProps={{ sticky: true, top }}
+        columns={[
+          { name: 'keyword', children: 'Keyword' },
+          { name: 'kd', children: 'KD %' },
+          { name: 'cpc', children: 'CPC' },
+          { name: 'vol', children: 'Vol.' },
+        ]}
       />
-      <h3>with Scroll.Bar in Header</h3>
-      <DataTable data={data} aria-label={'Fixed header with scroll'} wMax={800} hMax={200}
-                 headerProps={{sticky: true, top, withScrollBar: true}}
-                 columns={[
-                   {name: 'keyword', children: 'Keyword', gtcWidth: '340px'},
-                   {name: 'kd', children: 'KD,%', gtcWidth: '340px'},
-                   {name: 'cpc', children: 'CPC', gtcWidth: '340px'},
-                   {name: 'vol', children: 'Vol.', gtcWidth: '340px'},
-                 ]}
+      <h4>With horizontal scroll</h4>
+      <DataTable
+        data={data}
+        aria-label={'Fixed header with scroll'}
+        wMax={800}
+        hMax={200}
+        headerProps={{ sticky: true, top, withScrollBar: true }}
+        columns={[
+          { name: 'keyword', children: 'Keyword', gtcWidth: '340px' },
+          { name: 'kd', children: 'KD %', gtcWidth: '340px' },
+          { name: 'cpc', children: 'CPC', gtcWidth: '340px' },
+          { name: 'vol', children: 'Vol.', gtcWidth: '340px' },
+        ]}
       />
     </>
   );

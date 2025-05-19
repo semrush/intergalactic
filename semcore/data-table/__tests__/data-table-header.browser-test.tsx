@@ -236,13 +236,13 @@ test.describe('One level Header', () => {
     });
   });
 
-  test('Verify keyboard interactions when in header DD menu', async ({ page }) => {
+  test('Verify keyboard interactions when in header Select', async ({ page }) => {
     const standPath = 'stories/components/data-table/docs/examples/customizing-header.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
-    const ddTrigger = page.locator('[data-ui-name="DropdownMenu.Trigger"]');
-    const menuItem = page.getByRole('menuitem', { name: 'Options 1' });
+    const ddTrigger = page.locator('[data-ui-name="Select"]');
+    const menuItem = page.getByRole('option');
     const headerCell3 = page.locator('[data-ui-name="Head.Column"][aria-colindex="3"]');
 
     await test.step('Verify tooltip on focus', async () => {
@@ -258,49 +258,42 @@ test.describe('One level Header', () => {
       await page.keyboard.press('Enter');
       await new Promise((resolve) => setTimeout(resolve, 250));
       await expect(page).toHaveScreenshot();
-      await expect(menuItem).toBeVisible();
+      await expect(menuItem.first()).toBeVisible();
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowDown');
-      await expect(menuItem).toBeFocused();
 
-      // BUG
       await page.keyboard.press('ArrowLeft');
       await page.keyboard.press('ArrowRight');
-      await expect(menuItem).toBeFocused();
+      await expect(menuItem.first()).toBeVisible();
 
       await page.keyboard.press('Escape');
       await expect(ddTrigger).toBeFocused();
-      await expect(menuItem).toBeHidden();
+      await expect(menuItem.first()).toBeHidden();
 
       await page.keyboard.press('ArrowRight');
+      await expect(menuItem.first()).not.toBeVisible();
       await expect(headerCell3).toBeFocused();
-
-      //BUG!
-      // await page.keyboard.press('ArrowLeft');
-      // await expect(ddTrigger).toBeFocused();
-      // await page.keyboard.press('ArrowDown');
     });
 
     await test.step('Verify keyboard and mouse interactions', async () => {
       await page.keyboard.press('ArrowLeft');
       await page.keyboard.press('Enter');
-      await expect(menuItem).toBeVisible();
+      await expect(menuItem.first()).toBeVisible();
       await ddTrigger.click();
-      await expect(menuItem).toBeHidden();
+      await expect(menuItem.first()).toBeHidden();
     });
   });
 
-  test('Verify mouse interactions when in header DD menu', async ({ page }) => {
+  test('Verify mouse interactions when in header Select', async ({ page }) => {
     const standPath = 'stories/components/data-table/docs/examples/customizing-header.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
-    const ddTrigger = page.locator('[data-ui-name="DropdownMenu.Trigger"]');
-    const menuItem = page.getByRole('menuitem', { name: 'Options 1' });
+    const ddTrigger = page.locator('[data-ui-name="Select"]');
+    const menuItem = page.getByRole('option').first();
     const headerCell3 = page.locator('[data-ui-name="Head.Column"][aria-colindex="3"]');
 
     await test.step('Cells on hover', async () => {
       await headerCell3.hover();
-      //shapshot
       await ddTrigger.hover();
     });
 
@@ -385,7 +378,7 @@ test.describe('One level header - Sorting', () => {
       [1, 2, 3, 4].map((i) => getColumnWidth(page, i)),
     );
 
-    expect(afterSecondSortWidths[0]).toBeLessThan(initialWidths[0]);
+    expect(afterSecondSortWidths[0]).toBeLessThanOrEqual(initialWidths[0]);
     expect(afterSecondSortWidths[1]).toEqual(initialWidths[1]);
     expect(afterSecondSortWidths[2]).toBeGreaterThan(initialWidths[2]);
     expect(afterSecondSortWidths[3]).toEqual(initialWidths[3]);

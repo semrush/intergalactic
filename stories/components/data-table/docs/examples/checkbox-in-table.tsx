@@ -84,7 +84,7 @@ const Demo = () => {
         headerProps={{ sticky: true }}
         columns={[
           { name: 'keyword', children: 'Keyword' },
-          { name: 'kd', children: 'KD,%' },
+          { name: 'kd', children: 'KD %' },
           { name: 'cpc', children: 'CPC' },
           { name: 'vol', children: 'Vol.' },
         ]}

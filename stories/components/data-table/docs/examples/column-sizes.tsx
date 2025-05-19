@@ -3,13 +3,15 @@ import { DataTable } from '@semcore/data-table';
 
 const Demo = () => {
   return (
-    <DataTable data={data} aria-label={'Column size'}
-               columns={[
-                 {name: 'keyword', children: 'Keyword', gtcWidth: 'minmax(min-content, 100px)'},
-                 {name: 'kd', children: 'KD,%', gtcWidth: 'minmax(min-content, 100px)'},
-                 {name: 'cpc', children: 'CPC'},
-                 {name: 'vol', children: 'Vol.'},
-               ]}
+    <DataTable
+      data={data}
+      aria-label={'Column size'}
+      columns={[
+        { name: 'keyword', children: 'Keyword', gtcWidth: 'minmax(min-content, 100px)' },
+        { name: 'kd', children: 'KD %', gtcWidth: 'minmax(min-content, 100px)' },
+        { name: 'cpc', children: 'CPC' },
+        { name: 'vol', children: 'Vol.' },
+      ]}
     />
   );
 };

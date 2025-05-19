@@ -4,35 +4,35 @@ import { DataTable } from '@semcore/data-table';
 const Demo = () => {
   return (
     <DataTable
-        data={data}
-        aria-label={'Fixed columns'}
-        wMax={800}
-        hMax={400}
-        headerProps={{sticky: true}}
-        columns={[
-          {
-            name: 'keyword',
-            children: 'keyword',
-            gtcWidth: '300px',
-            fixed: 'left',
-          },
-          {
-            name: 'kd',
-            children: 'KD,%',
-            gtcWidth: '300px',
-          },
-          {
-            name: 'cpc',
-            children: 'CPC',
-            gtcWidth: '300px',
-          },
-          {
-            name: 'vol',
-            children: 'Vol.',
-            gtcWidth: '300px',
-            fixed: 'right',
-          }
-        ]}
+      data={data}
+      aria-label={'Fixed columns'}
+      wMax={800}
+      hMax={400}
+      headerProps={{ sticky: true }}
+      columns={[
+        {
+          name: 'keyword',
+          children: 'keyword',
+          gtcWidth: '300px',
+          fixed: 'left',
+        },
+        {
+          name: 'kd',
+          children: 'KD %',
+          gtcWidth: '300px',
+        },
+        {
+          name: 'cpc',
+          children: 'CPC',
+          gtcWidth: '300px',
+        },
+        {
+          name: 'vol',
+          children: 'Vol.',
+          gtcWidth: '300px',
+          fixed: 'right',
+        },
+      ]}
     />
   );
 };

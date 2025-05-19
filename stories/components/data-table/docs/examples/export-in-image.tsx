@@ -57,13 +57,17 @@ const Demo = () => {
         </svg>
       </div>
 
-      <DataTable data={data} aria-label={'Export in image'} ref={tableRef} w={500}
-                 columns={[
-                   {name: 'keyword', children: 'Keyword'},
-                   {name: 'kd', children: 'KD,%'},
-                   {name: 'cpc', children: 'CPC'},
-                   {name: 'vol', children: 'Vol.'},
-                 ]}
+      <DataTable
+        data={data}
+        aria-label={'Export in image'}
+        ref={tableRef}
+        w={500}
+        columns={[
+          { name: 'keyword', children: 'Keyword' },
+          { name: 'kd', children: 'KD %' },
+          { name: 'cpc', children: 'CPC' },
+          { name: 'vol', children: 'Vol.' },
+        ]}
       />
 
       <DropdownMenu>

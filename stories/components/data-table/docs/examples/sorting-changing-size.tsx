@@ -31,25 +31,43 @@ const Demo = () => {
       onSortChange={setSort}
       aria-label={'Sorting with change sortable column size'}
       columns={[
-          {name: 'keyword', children: 'Keyword', justifyContent: 'left', sortable: true},
-          {name: 'kd', children: 'KD,%', justifyContent: 'right', gtcWidth: 'minmax(0, 68px)', sortable: true},
-          {name: 'cpc', children: 'CPC', gtcWidth: 'minmax(0, 60px)', sortable: true, changeSortSize: true},
-          {name: 'vol', children: 'Vol.', gtcWidth: 'minmax(0, 120px)', justifyContent: 'left', sortable: true},
+        { name: 'keyword', children: 'Keyword', justifyContent: 'left', sortable: true },
+        {
+          name: 'kd',
+          children: 'KD %',
+          justifyContent: 'right',
+          gtcWidth: 'minmax(0, 68px)',
+          sortable: true,
+        },
+        {
+          name: 'cpc',
+          children: 'CPC',
+          gtcWidth: 'minmax(0, 60px)',
+          sortable: true,
+          changeSortSize: true,
+        },
+        {
+          name: 'vol',
+          children: 'Vol.',
+          gtcWidth: 'minmax(0, 120px)',
+          justifyContent: 'left',
+          sortable: true,
+        },
       ]}
       renderCell={(props) => {
         if (props.columnName === 'keyword') {
           return props.defaultRender();
         }
-      
+
         const rawValue = props.row[props.columnName as SortableColumn];
-      
+
         return typeof rawValue === 'number' && rawValue !== -1
-          ? (props.columnName === 'cpc'
-              ? currencyFormat.format(rawValue)
-              : numberFormat.format(rawValue))
+          ? props.columnName === 'cpc'
+            ? currencyFormat.format(rawValue)
+            : numberFormat.format(rawValue)
           : 'n/a';
       }}
-      />
+    />
   );
 };
 
