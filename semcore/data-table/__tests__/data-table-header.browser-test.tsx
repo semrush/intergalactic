@@ -18,7 +18,7 @@ test.describe('One level Header', () => {
     page,
     browserName,
   }) => {
-    const standPath = 'stories/components/data-table/tests/examples/header-tests/base.tsx';
+    const standPath = 'stories/components/data-table/docs/examples/base.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);

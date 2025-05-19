@@ -51,8 +51,8 @@ test.describe('Vertical Scroll', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
-    const dataTable = await page.locator('[data-ui-name="DataTable"]');
-    await dataTable.hover();
+    const dataTable = await page.locator('[data-ui-name="Body.Row"]');
+    await dataTable.first().hover();
     await page.mouse.wheel(0, 600);
     await page.waitForTimeout(1000);
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });

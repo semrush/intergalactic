@@ -8,57 +8,118 @@ import AmazonM from '@semcore/icon/color/Amazon/m';
 const Demo = () => {
 
   return (
-    <DataTable data={data} aria-label={'Borders'} defaultGridTemplateColumnWidth={'1fr'} h={300} virtualScroll>
-      <DataTable.Head>
-        <DataTable.Head.Group borders={'left'} title={'Borders left'}>
-          <DataTable.Head.Column name='kd' gtcWidth={'100px'}>
-            <Text>
-              Kd Organic Sessions Organic Sessions
-              <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
-            </Text>
-          </DataTable.Head.Column>
-          <DataTable.Head.Column name='cpc' children='CPC' />
-          <DataTable.Head.Column name='vol' children='Vol.' />
+    <>
+      <DataTable
+        data={data}
+        virtualScroll
+        aria-label={'Borders'}
+        defaultGridTemplateColumnWidth={'1fr'} h={'100%'}
+
+        columns={[
+          { name: 'other', children: 'Other' },
+          {
+            children: 'Borders left',
+            borders: 'left',
+            columns: [
+              {
+                name: 'kd',
+                gtcWidth: '100px',
+                children: (
+                  <>
+                    <Text>
+                      Kd Organic Sessions Organic Sessions
+                      <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+                    </Text>
+                  </>
+                )
 
 
-        </DataTable.Head.Group >
-        <DataTable.Head.Column name='keyword' children='Keyword' />
-        <DataTable.Head.Group borders={'both'} title={(<Ellipsis>Bprders both - Organic Sessions rganic Sessions rganic Sessions</Ellipsis>)}>
+              },
+              { name: 'cpc', children: 'CPC' },
+              { name: 'vol', children: 'Vol.' },
 
-          <DataTable.Head.Column name='kd2' gtcWidth={'100px'} >
-            <Ellipsis>
-              Kd Organic Sessions Organic Sessions
-            </Ellipsis>
-            <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+            ]
+          },
 
-          </DataTable.Head.Column>
-
-          <DataTable.Head.Column name='cpc' children='CPC' />
-          <DataTable.Head.Column name='vol' children='Vol.' />
-        </DataTable.Head.Group>
-        <DataTable.Head.Column name='other' children='Other' />
-
-        <DataTable.Head.Group borders={'right'} title={'Borders right'}>
-          <DataTable.Head.Column name='kd'>
-            <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
-            <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
-          </DataTable.Head.Column>
-          <DataTable.Head.Column name='cpc' children='CPC' />
-        </DataTable.Head.Group>
-        <DataTable.Head.Column name='other' children='Other' />
-
-        <DataTable.Head.Group title={'Default borders'}>
-          <DataTable.Head.Column name='kd'>
-            <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
-            <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
-          </DataTable.Head.Column>
-          <DataTable.Head.Column name='cpc' children='CPC' />
-        </DataTable.Head.Group>
+          { name: 'keyword', children: 'Keyword' },
+          {
+            children: (
+              <Ellipsis>Borders both - Organic Sessions rganic Sessions rganic Sessions</Ellipsis>
+            ),
+            borders: 'both',
+            columns: [
+              {
+                name: 'kd2',
+                gtcWidth: '100px',
+                children: (
+                  <>
+                    <Ellipsis>
+                      Kd Organic Sessions Organic Sessions
+                    </Ellipsis>
+                    <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+                  </>
+                )
 
 
-      </DataTable.Head>
-      <DataTable.Body />
-    </DataTable>
+              },
+              { name: 'cpc', children: 'CPC' },
+              { name: 'vol', children: 'Vol.' },
+
+            ]
+          },
+
+          { name: 'other', children: 'Other' },
+
+          {
+            children: 'Borders right',
+            borders: 'right',
+            columns: [
+              {
+                name: 'kd',
+                gtcWidth: '100px',
+                children: (
+                  <>
+                    <Text>
+                      Kd Organic Sessions Organic Sessions
+                      <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+                    </Text>
+                  </>
+                )
+
+              },
+              { name: 'cpc', children: 'CPC' },
+
+            ]
+          },
+
+          { name: 'other', children: 'Other' },
+
+          {
+            children: 'Borders default',
+            columns: [
+              {
+                name: 'kd',
+                gtcWidth: '100px',
+                children: (
+                  <>
+                    <Text>
+                      Kd Organic Sessions Organic Sessions
+                      <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+                    </Text>
+                  </>
+                )
+
+
+              },
+              { name: 'cpc', children: 'CPC' },
+
+            ]
+          },
+
+
+        ]}
+      />
+    </>
   );
 };
 

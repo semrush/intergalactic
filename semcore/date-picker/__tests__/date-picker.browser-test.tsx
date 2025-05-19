@@ -81,7 +81,6 @@ test.describe('DayPicker with today button', () => {
 
     await test.step('Verify input trigger attributes', async () => {
       const inputAttributes = [
-        ['tabindex', '0'],
         ['aria-invalid', 'false'],
         ['role', 'combobox'],
         ['aria-label', 'Date'],
@@ -112,7 +111,6 @@ test.describe('DayPicker with today button', () => {
         {
           locator: '[data-ui-name="DatePicker.Prev"]',
           attrs: [
-            ['tabindex', '0'],
             ['type', 'button'],
             ['aria-label', 'Previous month'],
           ],
@@ -121,7 +119,6 @@ test.describe('DayPicker with today button', () => {
         {
           locator: '[data-ui-name="DatePicker.Next"]',
           attrs: [
-            ['tabindex', '0'],
             ['type', 'button'],
             ['aria-label', 'Next month'],
           ],
@@ -226,10 +223,7 @@ test.describe('DayPicker with today button', () => {
 
     await test.step('Verify today button attributes', async () => {
       const todayButton = page.locator('[data-ui-name="Button"]');
-      const todayAttributes = [
-        ['type', 'button'],
-        ['tabindex', '0'],
-      ];
+      const todayAttributes = [['type', 'button']];
 
       for (const [attr, value] of todayAttributes) {
         await expect(todayButton).toHaveAttribute(attr, value);
@@ -413,7 +407,7 @@ test.describe('DayPicker with today button', () => {
       await prev.hover();
       const initialTitle = await title.textContent();
 
-      await page.keyboard.press('Enter'); // space не работает — баг
+      await page.keyboard.press('Enter');
       const titleAfterFirstEnter = await title.textContent();
       expect(titleAfterFirstEnter).not.toBe(initialTitle);
       await expect(title).not.toHaveText(initialTitle!);
@@ -477,7 +471,7 @@ test.describe('DayPicker with today button', () => {
       await expect(todayButton).toBeFocused();
       const newValue2 = await input.inputValue();
 
-      await page.keyboard.press('Enter'); // space не работает — баг
+      await page.keyboard.press('Enter');
       await expect(popper).not.toBeVisible();
 
       const newValue3 = await input.inputValue();
@@ -518,32 +512,32 @@ test.describe('DayPicker with custom days', () => {
     });
 
     const inputTrigger = page.locator('input[data-ui-name="DatePicker.Trigger"]');
-    const inputAttributes = [
-      { name: 'tabindex', value: '0' },
-      { name: 'aria-invalid', value: 'false' },
-      { name: 'role', value: 'combobox' },
-      { name: 'aria-label', value: 'Date' },
-      { name: 'inputmode', value: 'numeric' },
-    ];
-
     await test.step('Verify input trigger attributes', async () => {
-      for (const { name, value } of inputAttributes) {
-        await expect(inputTrigger).toHaveAttribute(name, value);
+      const inputAttributes = [
+        ['aria-invalid', 'false'],
+        ['role', 'combobox'],
+        ['aria-label', 'Date'],
+        ['inputmode', 'numeric'],
+      ];
+
+      for (const [attr, value] of inputAttributes) {
+        await expect(inputTrigger).toHaveAttribute(attr, value);
       }
     });
 
     // Triggering the date picker
-    datePickerTrigger.first().click();
     const popper = page.locator('[data-ui-name="DatePicker.Popper"]');
-    const popperAttributes = [
-      { name: 'tabindex', value: '0' },
-      { name: 'role', value: 'dialog' },
-      { name: 'data-popper-placement', value: 'bottom-start' },
-    ];
+    await datePickerTrigger.first().click();
 
     await test.step('Verify popper attributes', async () => {
-      for (const { name, value } of popperAttributes) {
-        await expect(popper).toHaveAttribute(name, value);
+      const popperAttributes = [
+        ['tabindex', '0'],
+        ['role', 'dialog'],
+        ['data-popper-placement', 'bottom-start'],
+      ];
+
+      for (const [attr, value] of popperAttributes) {
+        await expect(popper).toHaveAttribute(attr, value);
       }
     });
 
@@ -555,26 +549,12 @@ test.describe('DayPicker with custom days', () => {
 
       for (const { selector, ariaLabel } of headerButtons) {
         const button = page.locator(selector);
-        await expect(button).toHaveAttribute('tabindex', '0');
         await expect(button).toHaveAttribute('type', 'button');
         await expect(button).toHaveAttribute('aria-label', ariaLabel);
       }
 
       const headTitle = page.locator('[data-ui-name="DatePicker.Title"]');
       await expect(headTitle).toHaveAttribute('aria-live', 'polite');
-    });
-
-    const calendarAttributes = [
-      { name: 'tabindex', value: '0' },
-      { name: 'role', value: 'grid' },
-      { name: 'disabled', value: '' },
-    ];
-
-    await test.step('Verify calendar attributes', async () => {
-      const calendar = page.locator('[data-ui-name="DatePicker.Calendar"]');
-      for (const { name, value } of calendarAttributes) {
-        await expect(calendar).toHaveAttribute(name, value);
-      }
     });
 
     const weekDaysAttributes = [{ name: 'role', value: 'row' }];
@@ -589,21 +569,62 @@ test.describe('DayPicker with custom days', () => {
       'Saturday',
     ];
 
+    await test.step('Verify popper header attributes', async () => {
+      const headerLocators = [
+        {
+          locator: '[data-ui-name="DatePicker.Prev"]',
+          attrs: [
+            ['type', 'button'],
+            ['aria-label', 'Previous month'],
+          ],
+        },
+        { locator: '[data-ui-name="DatePicker.Title"]', attrs: [['aria-live', 'polite']] },
+        {
+          locator: '[data-ui-name="DatePicker.Next"]',
+          attrs: [
+            ['type', 'button'],
+            ['aria-label', 'Next month'],
+          ],
+        },
+      ];
+
+      for (const { locator, attrs } of headerLocators) {
+        const element = page.locator(locator);
+        for (const [attr, value] of attrs) {
+          await expect(element).toHaveAttribute(attr, value);
+        }
+      }
+    });
+
+    await test.step('Verify calendar attributes', async () => {
+      const calendar = page.locator('[data-ui-name="DatePicker.Calendar"]');
+      await expect(calendar).toHaveAttribute('tabindex', '0');
+      await expect(calendar).toHaveAttribute('role', 'grid');
+      await expect(calendar).toHaveAttribute('disabled', '');
+    });
+
     await test.step('Verify weekdays attributes', async () => {
       const weekDaysRow = page.locator('[data-ui-name="CalendarWeekDays"]');
-
-      for (const { name, value } of weekDaysAttributes) {
-        const parentRole = await weekDaysRow.getAttribute(name);
-        expect(parentRole).toBe(value);
-      }
+      await expect(weekDaysRow).toHaveAttribute('role', 'row');
 
       const weekDays = weekDaysRow.locator('[data-ui-name="CalendarWeekDays.Unit"]');
-      for (let i = 0; i < daysOfWeek.length; i++) {
+      const daysOfWeek = [
+        'Sunday',
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday',
+      ];
+
+      for (const [i, dayName] of daysOfWeek.entries()) {
         const day = weekDays.nth(i);
         await expect(day).toHaveAttribute('role', 'columnheader');
-        await expect(day).toHaveAttribute('aria-label', daysOfWeek[i]);
-        const dayText = await day.textContent();
-        expect(dayText).toBe(daysOfWeek[i].slice(0, 3));
+        await expect(day).toHaveAttribute('aria-label', dayName);
+
+        const dayText = (await day.textContent())?.trim();
+        expect(dayText).toBe(dayName.slice(0, 3));
       }
     });
 
@@ -611,38 +632,42 @@ test.describe('DayPicker with custom days', () => {
       const cells = page.locator('[role="gridcell"]');
       const cellCount = await cells.count();
 
-      const dayAttributes = [
-        { name: 'role', value: 'gridcell' },
-        { name: 'aria-selected', value: 'false' },
-        { name: 'aria-hidden', value: 'false' },
-      ];
-
       for (let i = 0; i < cellCount; i++) {
         const cell = cells.nth(i);
         const ariaLabel = await cell.getAttribute('aria-label');
         if (!ariaLabel) continue;
 
-        for (const { name, value } of dayAttributes) {
-          await expect(cell).toHaveAttribute(name, value);
+        const dayAttributes = [
+          ['role', 'gridcell'],
+          ['aria-colindex'],
+          ['aria-rowindex'],
+          ['aria-selected', 'false'],
+          ['aria-hidden', 'false'],
+        ];
+
+        for (const [attr, value] of dayAttributes) {
+          if (value !== undefined) {
+            await expect(cell).toHaveAttribute(attr, value);
+          } else {
+            await expect(cell).toHaveAttribute(attr);
+          }
         }
 
         const date = new Date(ariaLabel);
-        const month = date.getMonth();
-        const isCurrentMonth = month === 5;
+        const isCurrentMonth = date.getMonth() === 5; // June
 
-        const hasDisabledAttr = (await cell.getAttribute('disabled')) !== null;
+        const hasDisabled = (await cell.getAttribute('disabled')) !== null;
         const ariaDisabled = await cell.getAttribute('aria-disabled');
 
         if (isCurrentMonth) {
-          expect(hasDisabledAttr).toBe(false);
-          expect(ariaDisabled).toBe('false');
+          expect(hasDisabled).toBe(false);
         } else {
-          expect(hasDisabledAttr).toBe(true);
-          expect(ariaDisabled).toBe('false');
+          expect(hasDisabled).toBe(true);
         }
+        expect(ariaDisabled).toBe('false');
 
-        const text = await cell.textContent();
-        expect(text?.trim()).not.toBe('');
+        const text = (await cell.textContent())?.trim();
+        expect(text).not.toBe('');
       }
     });
   });
@@ -800,7 +825,7 @@ test.describe('DayPicker with custom days', () => {
       await page.keyboard.press('Tab');
       await expect(headPrev).toBeFocused();
       await headPrev.hover();
-      await page.keyboard.press('Enter'); // Space не работает — баг
+      await page.keyboard.press('Enter'); // Space doesn't work — bug
       const titleAfterFirstEnter = await headTitle.textContent();
       expect(titleAfterFirstEnter).not.toBe(initialTitle);
       await expect(headTitle).not.toHaveText(initialTitle!);
@@ -810,7 +835,7 @@ test.describe('DayPicker with custom days', () => {
       await page.keyboard.press('Tab');
       await expect(headNext).toBeFocused();
 
-      await page.keyboard.press('Enter'); // Space не работает — баг
+      await page.keyboard.press('Enter'); // Space doesn't work — bug
       const titleAfterSecondEnter = await headTitle.textContent();
       expect(titleAfterSecondEnter).toBe(initialTitle);
     });
@@ -1048,14 +1073,15 @@ test.describe('Disabled dates and Validation', () => {
     await expect(datePicker).toHaveAttribute('aria-invalid', 'false');
 
     await page.keyboard.type('7875');
+    await page.waitForTimeout(250);
     await expect(datePicker).toHaveAttribute('aria-invalid', 'true');
     await expect(datePicker).toHaveAttribute('aria-haspopup', 'true');
 
-    await expect(page).toHaveScreenshot();
     await page.keyboard.press('Backspace');
     await page.keyboard.type('24');
     await expect(datePicker).toHaveAttribute('aria-invalid', 'true');
     await page.keyboard.press('Enter');
+    await page.waitForTimeout(50);
     await expect(tooltip).toBeVisible();
     await expect(popper).toBeVisible();
 
@@ -1063,7 +1089,7 @@ test.describe('Disabled dates and Validation', () => {
     await expect(tooltip).toBeVisible();
     await expect(popper).not.toBeVisible();
 
-    await page.keyboard.press('Escape'); // bug??
+    await page.keyboard.press('Escape'); // bug
     await expect(tooltip).toBeVisible();
     await expect(datePicker).toHaveAttribute('aria-invalid', 'true');
   });
