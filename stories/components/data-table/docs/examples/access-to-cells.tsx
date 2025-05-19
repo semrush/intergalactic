@@ -1,42 +1,41 @@
 import React from 'react';
 import { DataTable } from '@semcore/data-table';
-import  Link  from '@semcore/link';
+import {ButtonLink} from '@semcore/button';
 
 const Demo = () => {
-  return (
-    <DataTable data={data} aria-label={'Access to cells'}
-               columns={[
-                   {name: 'keyword', children: 'Keyword'},
-                   {name: 'kd', children: 'KD,%'},
-                   {name: 'cpc', children: 'CPC'},
-                   {name: 'vol', children: 'Vol.'},
-               ]}
-        renderCell={(props) => {
-          if (props.dataKey === 'keyword') {
-            return (
-                <Link
-                        onClick={() => {
-                          alert(`Click row 
+    return (
+        <DataTable data={data} aria-label={'Access to cells'}
+            columns={[
+                { name: 'keyword', children: 'Keyword' },
+                { name: 'kd', children: 'KD,%' },
+                { name: 'cpc', children: 'CPC' },
+                { name: 'vol', children: 'Vol.' },
+            ]}
+            renderCell={(props) => {
+                if (props.dataKey === 'keyword') {
+                    return (
+                        <ButtonLink 
+                            onClick={() => {
+                                alert(`Click row 
                   props: ${JSON.stringify(Object.keys(props), null, '  ')};
                   row: ${JSON.stringify(props.row, null, '  ')};
                   index: ${props.rowIndex};`);
-                        }}
-                >
-                        {props.value}
-                      </Link>
-            );
-          }
+                            }} >
+                            {props.value}
+                        </ButtonLink>
+                    );
+                }
 
-          if (props.dataKey === 'kd') {
-              return {
-                  'data-test-id': 'kd cell',
-              };
-          }
+                if (props.dataKey === 'kd') {
+                    return {
+                        'data-test-id': 'kd cell',
+                    };
+                }
 
-          return props.defaultRender();
-        }}
-      />
-  );
+                return props.defaultRender();
+            }}
+        />
+    );
 };
 
 const data = [
