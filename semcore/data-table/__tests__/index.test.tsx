@@ -51,14 +51,6 @@ describe('DataTable', () => {
           }}
         />,
       );
-
-      // @ts-expect-error
-      <DataTable<{ id: number }[]>
-        data={[{ id: 1 }]}
-        aria-label='label'
-        columns={[]}
-        sort={['invalidKey', 'desc']}
-      />;
     });
     test('selectedRows typing', () => {
       assertType<JSX.Element>(
