@@ -43,7 +43,7 @@ describe('DataTable', () => {
       assertType<JSX.Element>(
         <DataTable<{ id: number; name: string }[]>
           data={[{ id: 1, name: 'test' }]}
-          aria-label="label"
+          aria-label='label'
           columns={[]}
           sort={['name', 'asc']}
           onSortChange={(sort, e) => {
@@ -51,11 +51,11 @@ describe('DataTable', () => {
           }}
         />,
       );
-    
-        // @ts-expect-error
-        <DataTable<{ id: number }[]>
+
+      // @ts-expect-error
+      <DataTable<{ id: number }[]>
         data={[{ id: 1 }]}
-        aria-label="label"
+        aria-label='label'
         columns={[]}
         sort={['invalidKey', 'desc']}
       />;
@@ -64,7 +64,7 @@ describe('DataTable', () => {
       assertType<JSX.Element>(
         <DataTable<{ id: number }[]>
           data={[{ id: 1 }]}
-          aria-label="label"
+          aria-label='label'
           columns={[]}
           selectedRows={[0]}
           onSelectedRowsChange={(rows, e, opts) => {
@@ -78,37 +78,36 @@ describe('DataTable', () => {
       assertType<JSX.Element>(
         <DataTable<{ id: number }[]>
           data={[{ id: 1 }]}
-          aria-label="label"
+          aria-label='label'
           columns={[]}
           virtualScroll
         />,
       );
-    
+
       assertType<JSX.Element>(
         <DataTable<{ id: number }[]>
           data={[{ id: 1 }]}
-          aria-label="label"
+          aria-label='label'
           columns={[]}
           virtualScroll={{ rowsBuffer: 5 }}
         />,
       );
-    
+
       assertType<JSX.Element>(
         <DataTable<{ id: number }[]>
           data={[{ id: 1 }]}
-          aria-label="label"
+          aria-label='label'
           columns={[]}
           virtualScroll={{ rowHeight: 40, rowsBuffer: 10 }}
         />,
       );
-    });  
+    });
     test('requires aria-label or aria-labelledby or title', () => {
       // @ts-expect-error
       assertType<JSX.Element>(<DataTable data={[]} columns={[]} />);
-    }); 
+    });
   });
 
- 
   beforeEach(cleanup);
 });
 
