@@ -5,7 +5,7 @@ import { writeFile } from 'fs/promises';
 import { getReportHeader, makeVoiceOverReporter } from '@semcore/testing-utils/vo-reporter';
 
 test('Users can interact with Pills via VoiceOver', async ({ page, voiceOver: pureVoiceOver }) => {
-  const standPath = 'website/docs/components/pills/examples/basic_example.tsx';
+  const standPath = 'stories/components/pills/docs/examples/basic_example.tsx';
   const reportPath = 'website/docs/components/pills/pills-a11y-report.md';
 
   const htmlContent = await e2eStandToHtml(standPath, 'en');

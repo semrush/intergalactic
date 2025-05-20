@@ -1,14 +1,14 @@
 import React from 'react';
-import createComponent, { Component, Root, sstyled } from '@semcore/core';
+import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
-import EventEmitter from '@semcore/utils/lib/eventEmitter';
-import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import EventEmitter from '@semcore/core/lib/utils/eventEmitter';
+import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 import { eventToPoint, uniqueId } from './utils';
 import { PlotA11yModule } from './a11y/PlotA11yModule';
 import { makeDataHintsHandlers, makeDataHintsContainer } from './a11y/hints';
-import colorResolverEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
+import colorResolverEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 
 import style from './style/plot.shadow.css';
 

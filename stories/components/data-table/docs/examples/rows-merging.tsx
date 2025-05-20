@@ -1,5 +1,5 @@
 import React from 'react';
-import DataTable, { ROW_GROUP } from '@semcore/data-table';
+import { DataTable, ROW_GROUP } from '@semcore/data-table';
 
 const data = [
   {
@@ -41,15 +41,16 @@ const data = [
 
 const Demo = () => {
   return (
-    <DataTable data={data} aria-label={'Rows grouping'}>
-      <DataTable.Head>
-        <DataTable.Column name='keyword' children='Keyword' />
-        <DataTable.Column name='kd' children='KD,%' />
-        <DataTable.Column name='cpc' children='CPC' />
-        <DataTable.Column name='vol' children='Vol.' />
-      </DataTable.Head>
-      <DataTable.Body />
-    </DataTable>
+    <DataTable
+      data={data}
+      aria-label={'Rows grouping'}
+      columns={[
+        { name: 'keyword', children: 'Keyword' },
+        { name: 'kd', children: 'KD %' },
+        { name: 'cpc', children: 'CPC' },
+        { name: 'vol', children: 'Vol.' },
+      ]}
+    />
   );
 };
 

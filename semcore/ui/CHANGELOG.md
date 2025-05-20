@@ -1,3 +1,24 @@
+## [15.131.0] - 2025-05-13
+
+### @semcore/format-text
+
+- **Added** Esm-build by vite.
+
+### @semcore/utils
+
+- **Added** `CSSinJS` to the exports.
+
+## [15.130.0] - 2025-05-09
+
+### @semcore/icon
+
+- **Added** New `EnterpriseSolutions` icon.
+
+### @semcore/utils
+
+- **Fixed** Extraction styles for production build.
+- **Added** `createUUID` util to the exports list.
+
 ## [15.129.0] - 2025-04-11
 
 ### @semcore/icon

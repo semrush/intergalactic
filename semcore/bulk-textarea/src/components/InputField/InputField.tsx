@@ -6,8 +6,8 @@ import style from './inputField.shadow.css';
 import { PopperContext } from '@semcore/popper';
 import Tooltip from '@semcore/tooltip';
 import { InputFieldProps, ErrorItem } from './InputField.types';
-import { extractAriaProps } from '@semcore/utils/lib/ariaProps';
-import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
+import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import DOMPurify from 'dompurify';
 
 type IndexKeys = 'keyboardLineIndex' | 'mouseLineIndex';

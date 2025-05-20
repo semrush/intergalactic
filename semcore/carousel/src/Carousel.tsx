@@ -1,14 +1,14 @@
 import React from 'react';
-import createComponent, { Component, sstyled, Root } from '@semcore/core';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import Button from '@semcore/button';
 import Modal from '@semcore/modal';
 import { Box, Flex } from '@semcore/flex-box';
 import ChevronRight from '@semcore/icon/ChevronRight/l';
 import ChevronLeft from '@semcore/icon/ChevronLeft/l';
-import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
-import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-import logger from '@semcore/utils/lib/logger';
+import logger from '@semcore/core/lib/utils/logger';
 import style from './style/carousel.shadow.css';
 import CarouselType, {
   CarouselProps,
@@ -21,9 +21,8 @@ import CarouselType, {
   CarouselIndicatorProps,
 } from './Carousel.types';
 import { BoxProps } from '@semcore/flex-box';
-import { findAllComponents } from '@semcore/utils/lib/findComponent';
+import { findAllComponents } from '@semcore/core/lib/utils/findComponent';
 import { createBreakpoints } from '@semcore/breakpoints';
-import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
 const MAP_TRANSFORM: Record<string, 'left' | 'right'> = {
   ArrowLeft: 'left',
@@ -33,7 +32,7 @@ const MAP_TRANSFORM: Record<string, 'left' | 'right'> = {
 const enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages)] as const;
 const media = ['(min-width: 481px)', '(max-width: 480px)'];
 const BreakPoints = createBreakpoints(media);
-const isSmallScreen = (index: number) => index === 1;
+const isSmallScreen = (index?: number) => index === 1;
 
 class CarouselRoot extends Component<
   CarouselProps,
@@ -350,7 +349,9 @@ class CarouselRoot extends Component<
         };
       },
       () => {
-        this.state.isOpenZoom && this.transformContainer();
+        if (this.state.isOpenZoom) {
+          this.transformContainer();
+        }
       },
     );
   };
@@ -406,6 +407,7 @@ class CarouselRoot extends Component<
         key,
       })),
       role: 'tablist',
+      tabIndex: 0,
       'aria-label': getI18nText('slides'),
     };
   }
@@ -607,8 +609,6 @@ const ContentBox = (props: BoxProps) => {
 
 class Item extends Component<CarouselItemProps> {
   refItem = React.createRef<HTMLElement>();
-  keepFocusTimeout: NodeJS.Timeout | undefined;
-  static enhance = [keyboardFocusEnhance(false)];
 
   componentDidMount() {
     const { toggleItem, transform } = this.props;
@@ -626,37 +626,14 @@ class Item extends Component<CarouselItemProps> {
     const refItem = this.refItem.current;
 
     toggleItem && refItem && toggleItem({ node: refItem }, true);
-    clearTimeout(this.keepFocusTimeout);
   }
 
   componentDidUpdate(prevProps: CarouselItemProps) {
-    clearTimeout(this.keepFocusTimeout);
-
     const transform = this.props.transform;
     const refItem = this.refItem.current;
 
     if (prevProps.transform !== transform && refItem) {
       refItem.style.transform = `translateX(${transform}%)`;
-    }
-    if (this.props.current) {
-      this.keepFocusTimeout = setTimeout(() => {
-        if (
-          document.activeElement !== refItem &&
-          (document.activeElement as HTMLElement)?.dataset.carousel === refItem?.dataset.carousel
-        ) {
-          refItem?.focus();
-        }
-      }, 100);
-    }
-    if (
-      prevProps.isOpenZoom === true &&
-      this.props.isOpenZoom === false &&
-      this.props.current &&
-      !this.props.zoomOut
-    ) {
-      this.keepFocusTimeout = setTimeout(() => {
-        this.refItem.current?.focus();
-      }, 200);
     }
   }
 
@@ -696,6 +673,7 @@ const Prev = (props: CarouselButtonProps) => {
           theme={inverted ? 'invert' : 'muted'}
           use={'tertiary'}
           size={'l'}
+          innerOutline
         />
       )}
     </SPrev>,
@@ -718,6 +696,7 @@ const Next = (props: CarouselButtonProps) => {
           theme={inverted ? 'invert' : 'muted'}
           use={'tertiary'}
           size={'l'}
+          innerOutline
         />
       )}
     </SNext>,
@@ -735,13 +714,12 @@ const Indicators = ({ items, styles, Children, inverted }: CarouselIndicatorsPro
   }
   return sstyled(styles)(
     <SIndicators render={Box}>
-      {items?.map((item, index) => (
+      {items?.map((item: CarouselItem, index: number) => (
         <Carousel.Indicator key={index} {...item} inverted={inverted} />
       ))}
     </SIndicators>,
   );
 };
-Indicators.enhance = [keyboardFocusEnhance()];
 
 const Indicator = ({ styles, Children }: CarouselIndicatorProps) => {
   const SIndicator = Root;

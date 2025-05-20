@@ -2,8 +2,7 @@ import React from 'react';
 import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
 import { BoxProps } from '@semcore/flex-box';
 import { NeighborItemProps, NeighborLocationProps } from '@semcore/neighbor-location';
-import { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
-import { inputProps } from '@semcore/utils/lib/inputProps';
+import { inputProps } from '@semcore/core/lib/utils/inputProps';
 
 export type SwitchTheme = 'info' | 'success' | string;
 
@@ -24,8 +23,7 @@ export type SwitchProps = BoxProps &
 /** @deprecated */
 export interface ISwitchValueProps extends SwitchValueProps, UnknownProperties {}
 export type SwitchValueProps = BoxProps &
-  NeighborItemProps &
-  KeyboardFocusProps & {
+  NeighborItemProps & {
     /** Handler on change */
     onChange?: (checked: boolean, e?: React.SyntheticEvent<HTMLInputElement>) => void;
     /** Control state  */

@@ -6,6 +6,7 @@
     "computedValue": "#ffffff",
     "description": "Primary background of the interface which contains the main data and information.",
     "components": [
+      "base-components",
       "base-trigger",
       "bulk-textarea",
       "card",
@@ -16,7 +17,6 @@
       "data-table",
       "drag-and-drop",
       "dropdown",
-      "flex-box",
       "fullscreen-modal",
       "inline-input",
       "input",
@@ -29,7 +29,6 @@
       "switch",
       "tag",
       "textarea",
-      "utils",
       "wizard"
     ]
   },
@@ -330,6 +329,7 @@
     "description": "Primary text.",
     "components": [
       "accordion",
+      "base-components",
       "base-trigger",
       "breadcrumbs",
       "bulk-textarea",
@@ -352,7 +352,6 @@
       "notice",
       "pagination",
       "pills",
-      "popper",
       "product-head",
       "radio",
       "side-panel",
@@ -471,7 +470,15 @@
     "rawValue": "{blue.500}",
     "computedValue": "#006dca",
     "description": "Link text.",
-    "components": ["base-trigger", "button", "format-text", "link", "pagination", "tab-panel"]
+    "components": [
+      "base-trigger",
+      "button",
+      "format-text",
+      "link",
+      "pagination",
+      "tab-panel",
+      "typography"
+    ]
   },
   {
     "name": "--intergalactic-text-link-hover-active",
@@ -479,7 +486,7 @@
     "rawValue": "{blue.600}",
     "computedValue": "#044792",
     "description": "Hover and active states for the link text.",
-    "components": ["base-trigger", "button", "format-text", "link", "tab-panel"]
+    "components": ["base-trigger", "button", "format-text", "link", "tab-panel", "typography"]
   },
   {
     "name": "--intergalactic-text-link-invert",
@@ -783,7 +790,7 @@
     "rawValue": "repeating-linear-gradient(315deg, rgba($border.critical-active, 1) 0, rgba($border.critical-active, 1) 2px, transparent 0, transparent 50%)",
     "computedValue": "repeating-linear-gradient(315deg, rgba(209, 0, 47, 1) 0, rgba(209, 0, 47, 1) 2px, transparent 0, transparent 50%)",
     "description": "Used for the invalidStatePattern utils component to mark all kinds of inputs with invalid states.",
-    "components": ["bulk-textarea", "flex-box", "radio", "textarea", "utils"]
+    "components": ["base-components", "bulk-textarea", "radio", "textarea"]
   },
   {
     "name": "--intergalactic-control-switch-bg",
@@ -1094,7 +1101,8 @@
       "drag-and-drop",
       "format-text",
       "fullscreen-modal",
-      "notice"
+      "notice",
+      "typography"
     ]
   },
   {
@@ -1198,7 +1206,8 @@
       "inline-input",
       "input",
       "input-number",
-      "switch"
+      "switch",
+      "typography"
     ]
   },
   {
@@ -1511,7 +1520,7 @@
     "rawValue": "{gray.100}",
     "computedValue": "#e0e1e9",
     "description": "Background of the active header cell in the primary Table.",
-    "components": ["data-table"]
+    "components": []
   },
   {
     "name": "--intergalactic-table-th-secondary-cell",
@@ -1543,7 +1552,7 @@
     "rawValue": "{gray.100} / lighten(0.5) / hsl",
     "computedValue": "#f0f0f4",
     "description": "Background of the default hovered cell in the Table.",
-    "components": []
+    "components": ["data-table"]
   },
   {
     "name": "--intergalactic-table-td-cell-active",
@@ -1551,7 +1560,7 @@
     "rawValue": "{gray.100} / lighten(0.2) / hsl",
     "computedValue": "#e6e7ed",
     "description": "Background of the default active cell in the Table.",
-    "components": []
+    "components": ["data-table"]
   },
   {
     "name": "--intergalactic-table-td-cell-unread",
@@ -1562,12 +1571,12 @@
     "components": ["data-table"]
   },
   {
-    "name": "--intergalactic-table-td-cell-actions-accordion",
+    "name": "--intergalactic-table-td-cell-accordion",
     "type": "color",
     "rawValue": "{gray.50}",
     "computedValue": "#f4f5f9",
-    "description": "Background of the cell used for Accordion or actions row, in the Table.",
-    "components": []
+    "description": "Background of the cell inside an Accordion in the Table.",
+    "components": ["data-table"]
   },
   {
     "name": "--intergalactic-table-td-cell-selected",
@@ -1799,7 +1808,7 @@
     "rawValue": "rgba({blue.400}, 0.5)",
     "computedValue": "rgba(0, 143, 248, 0.5)",
     "description": "Color for default keyboard focus outline styles.",
-    "components": ["button", "format-text", "link"]
+    "components": ["base-components", "format-text", "typography"]
   },
   {
     "name": "--intergalactic-keyboard-focus-outline-invert",
@@ -1807,73 +1816,64 @@
     "rawValue": "rgba({gray.white}, 0.7)",
     "computedValue": "rgba(255, 255, 255, 0.7)",
     "description": "Color for default keyboard focus outline styles to use on the dark and color background.",
-    "components": []
+    "components": ["wizard"]
   },
   {
     "name": "--intergalactic-keyboard-focus",
     "type": "boxShadow",
     "rawValue": "0px 0px 0px 3px {keyboard-focus.outline}",
     "computedValue": "0px 0px 0px 3px rgba(0, 143, 248, 0.5)",
-    "description": "Default keyboard focus styles.",
+    "description": "Default keyboard focus box-shadow styles.",
     "components": [
-      "accordion",
-      "base-trigger",
-      "breadcrumbs",
+      "base-components",
       "bulk-textarea",
-      "button",
       "carousel",
       "checkbox",
-      "color-picker",
       "d3-chart",
-      "data-table",
       "date-picker",
-      "drag-and-drop",
       "dropdown",
       "dropdown-menu",
-      "feedback-form",
       "fullscreen-modal",
-      "icon",
-      "inline-edit",
       "inline-input",
       "input",
       "input-tags",
-      "pills",
-      "popper",
       "radio",
-      "scroll-area",
       "slider",
       "switch",
-      "tab-line",
-      "tab-panel",
-      "tag",
-      "textarea",
-      "time-picker",
-      "typography"
+      "tag"
     ]
+  },
+  {
+    "name": "--intergalactic-keyboard-focus-invalid-outline",
+    "type": "color",
+    "rawValue": "rgba({red.400}, 0.5)",
+    "computedValue": "rgba(255, 73, 83, 0.5)",
+    "description": "Color for keyboard focus outline styles for elements with invalid state.",
+    "components": ["base-trigger", "textarea"]
   },
   {
     "name": "--intergalactic-keyboard-focus-invalid",
     "type": "boxShadow",
-    "rawValue": "0px 0px 0px 3px rgba({red.400}, 0.5)",
+    "rawValue": "0px 0px 0px 3px {keyboard-focus-invalid.outline}",
     "computedValue": "0px 0px 0px 3px rgba(255, 73, 83, 0.5)",
     "description": "Keyboard focus styles for elements with invalid state.",
-    "components": [
-      "base-trigger",
-      "bulk-textarea",
-      "checkbox",
-      "inline-input",
-      "input",
-      "radio",
-      "textarea"
-    ]
+    "components": ["bulk-textarea", "checkbox", "inline-input", "input", "radio"]
+  },
+  {
+    "name": "--intergalactic-keyboard-focus-valid-outline",
+    "type": "color",
+    "rawValue": "rgba({green.400}, 0.5)",
+    "computedValue": "rgba(0, 159, 129, 0.5)",
+    "description": "Color for keyboard focus outline styles for elements with valid state.",
+    "components": ["textarea"]
   },
   {
     "name": "--intergalactic-keyboard-focus-valid",
     "type": "boxShadow",
-    "rawValue": "0px 0px 0px 3px rgba({green.400}, 0.5)",
+    "rawValue": "0px 0px 0px 3px {keyboard-focus-valid.outline}",
     "computedValue": "0px 0px 0px 3px rgba(0, 159, 129, 0.5)",
     "description": "Keyboard focus styles for elements with valid state.",
-    "components": ["bulk-textarea", "inline-input", "input", "textarea"]
+    "components": ["bulk-textarea", "inline-input", "input"]
   },
   {
     "name": "--intergalactic-keyboard-focus-invert",
@@ -2002,7 +2002,6 @@
     "components": [
       "button",
       "d3-chart",
-      "data-table",
       "format-text",
       "fullscreen-modal",
       "switch",
@@ -2247,6 +2246,7 @@
       "bulk-textarea",
       "checkbox",
       "counter",
+      "data-table",
       "dropdown",
       "feedback-form",
       "format-text",
@@ -2257,7 +2257,7 @@
       "select",
       "slider",
       "tag",
-      "wizard"
+      "typography"
     ]
   },
   {
@@ -2268,6 +2268,7 @@
     "description": "4px",
     "components": [
       "badge",
+      "base-components",
       "base-trigger",
       "bulk-textarea",
       "button",
@@ -2289,7 +2290,6 @@
       "notice-bubble",
       "pagination",
       "product-head",
-      "scroll-area",
       "side-panel",
       "tag",
       "textarea",
@@ -2307,6 +2307,7 @@
     "description": "8px",
     "components": [
       "accordion",
+      "base-components",
       "base-trigger",
       "breadcrumbs",
       "bulk-textarea",
@@ -2332,7 +2333,6 @@
       "pills",
       "product-head",
       "radio",
-      "scroll-area",
       "select",
       "side-panel",
       "slider",
@@ -2378,6 +2378,7 @@
       "textarea",
       "time-picker",
       "tooltip",
+      "typography",
       "widget-empty",
       "wizard"
     ]
@@ -2418,6 +2419,7 @@
     "components": [
       "bulk-textarea",
       "card",
+      "data-table",
       "errors",
       "format-text",
       "notice-bubble",
@@ -2441,7 +2443,8 @@
       "fullscreen-modal",
       "notice-bubble",
       "product-head",
-      "side-panel"
+      "side-panel",
+      "typography"
     ]
   },
   {
@@ -2457,7 +2460,7 @@
       "fullscreen-modal",
       "notice-bubble",
       "notice-global",
-      "wizard"
+      "typography"
     ]
   },
   {
@@ -2598,20 +2601,19 @@
     "computedValue": "6px",
     "description": "Use for rounding all form controls: Button, FilterTrigger, Input, Textarea, Pills, etc.",
     "components": [
+      "base-components",
       "base-trigger",
       "bulk-textarea",
       "button",
       "carousel",
       "date-picker",
       "dropdown-menu",
-      "flex-box",
       "input",
       "pills",
       "select",
       "tab-panel",
       "textarea",
       "time-picker",
-      "utils",
       "wizard"
     ]
   },
@@ -2637,7 +2639,14 @@
     "rawValue": "{rounded-medium}",
     "computedValue": "6px",
     "description": "Use for rounding all kinds of poppers and dropdowns.",
-    "components": ["d3-chart", "dropdown", "feature-popover", "notice-bubble", "popper", "tooltip"]
+    "components": [
+      "base-components",
+      "d3-chart",
+      "dropdown",
+      "feature-popover",
+      "notice-bubble",
+      "tooltip"
+    ]
   },
   {
     "name": "--intergalactic-modal-rounded",
@@ -2741,7 +2750,7 @@
     "rawValue": "rgba({gray.white}, 0.85)",
     "computedValue": "rgba(255, 255, 255, 0.85)",
     "description": "Use as a secondary cover of the content under the messages about limitations.",
-    "components": ["spin-container"]
+    "components": ["data-table", "spin-container"]
   },
   {
     "name": "--intergalactic-z-index-deep",
@@ -2838,7 +2847,7 @@
     "rawValue": "linear-gradient(to right, rgba($gray.800, 0.1) 20.55%, rgba($gray.white, 0.0001) 100%)",
     "computedValue": "linear-gradient(to right, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%)",
     "description": "Left-to-right fade shadow for the ScrollArea.",
-    "components": ["scroll-area"]
+    "components": ["base-components"]
   },
   {
     "name": "--intergalactic-scroll-area-shadow-right",
@@ -2846,7 +2855,7 @@
     "rawValue": "linear-gradient(to left, rgba($gray.800, 0.1) 20.55%, rgba($gray.white, 0.0001) 100%)",
     "computedValue": "linear-gradient(to left, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%)",
     "description": "Right-to-left fade shadow for the ScrollArea.",
-    "components": ["scroll-area"]
+    "components": ["base-components"]
   },
   {
     "name": "--intergalactic-scroll-area-shadow-top",
@@ -2854,7 +2863,7 @@
     "rawValue": "linear-gradient(to bottom, rgba($gray.800, 0.1) 20.55%, rgba($gray.white, 0.0001) 100%)",
     "computedValue": "linear-gradient(to bottom, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%)",
     "description": "Top-to-bottom fade shadow for the ScrollArea.",
-    "components": ["scroll-area"]
+    "components": ["base-components"]
   },
   {
     "name": "--intergalactic-scroll-area-shadow-bottom",
@@ -2862,7 +2871,7 @@
     "rawValue": "linear-gradient(to top, rgba($gray.800, 0.1) 20.55%, rgba($gray.white, 0.0001) 100%)",
     "computedValue": "linear-gradient(to top, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%)",
     "description": "Bottom-to-top fade shadow for the ScrollArea.",
-    "components": ["scroll-area"]
+    "components": ["base-components"]
   },
   {
     "name": "--intergalactic-scroll-area-dropdown-menu-left",
@@ -2902,7 +2911,7 @@
     "rawValue": "rgba({gray.800}, 0.3)",
     "computedValue": "rgba(25, 27, 35, 0.3)",
     "description": "Background color for ScrollBar.",
-    "components": ["scroll-area"]
+    "components": ["base-components"]
   },
   {
     "name": "--intergalactic-tag-primary-gray-normal",
@@ -3589,7 +3598,7 @@
     "rawValue": "{duration.fast}",
     "computedValue": "200",
     "description": "Use for Accordion.",
-    "components": ["accordion"]
+    "components": ["accordion", "data-table"]
   },
   {
     "name": "--intergalactic-duration-counter",

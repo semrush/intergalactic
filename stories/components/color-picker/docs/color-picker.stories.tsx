@@ -7,7 +7,7 @@ import BasicExampleExample from './examples/basic_example';
 import CustomTriggerExample from './examples/custom_trigger';
 import InputValidationExample from './examples/input_validation';
 import PalettemanagerExample from './examples/palettemanager';
-import SeveralWaysToUseComponentExample from './examples/several_ways_to_use_component';
+import PredefinedPaletteExample from './examples/predefined_palette';
 
 import { InputValidationTest } from './__tests__/input_validation.test';
 import { BasicExampleTest } from './__tests__/basic_example.test';
@@ -40,6 +40,6 @@ export const Palettemanager: Story = {
   render: PalettemanagerExample,
 };
 
-export const SeveralWaysToUseComponent: Story = {
-  render: SeveralWaysToUseComponentExample,
+export const PredefinedPalette: Story = {
+  render: PredefinedPaletteExample,
 };

@@ -1,6 +1,6 @@
 {
   "name": "@semcore/ui",
-  "version": "15.129.0",
+  "version": "16.0.0",
   "license": "MIT",
   "module": "./index.mjs",
   "sideEffects": false,
@@ -12,82 +12,81 @@
     "update-changelog": "pnpm update-release-changelog"
   },
   "dependencies": {
-    "@semcore/accordion": "5.32.0",
-    "@semcore/animation": "2.26.0",
-    "@semcore/add-filter": "1.1.0",
-    "@semcore/badge": "4.25.0",
-    "@semcore/base-trigger": "4.36.0",
-    "@semcore/breadcrumbs": "5.32.0",
-    "@semcore/breakpoints": "1.26.0",
-    "@semcore/bulk-textarea": "1.0.1",
-    "@semcore/button": "5.27.0",
-    "@semcore/card": "5.33.0",
-    "@semcore/carousel": "3.36.0",
-    "@semcore/checkbox": "7.29.0",
-    "@semcore/color-picker": "2.33.0",
-    "@semcore/core": "2.24.0",
-    "@semcore/counter": "3.25.0",
-    "@semcore/data-table": "4.38.0",
-    "@semcore/date-picker": "4.44.0",
-    "@semcore/divider": "4.25.0",
-    "@semcore/dot": "5.25.0",
-    "@semcore/drag-and-drop": "3.34.0",
-    "@semcore/dropdown": "4.30.0",
-    "@semcore/dropdown-menu": "4.32.0",
-    "@semcore/d3-chart": "3.43.0",
-    "@semcore/ellipsis": "2.27.0",
-    "@semcore/email": "1.0.2",
-    "@semcore/errors": "4.31.0",
-    "@semcore/feature-popover": "4.37.0",
-    "@semcore/feedback-form": "6.28.0",
-    "@semcore/flags": "4.25.0",
-    "@semcore/flex-box": "5.26.0",
-    "@semcore/format-text": "4.26.0",
-    "@semcore/fullscreen-modal": "3.35.0",
-    "@semcore/grid": "5.25.0",
-    "@semcore/icon": "4.35.0",
-    "@semcore/illustration": "2.26.0",
-    "@semcore/inline-input": "4.33.0",
-    "@semcore/inline-edit": "4.28.0",
-    "@semcore/input": "4.27.0",
-    "@semcore/input-mask": "5.28.0",
-    "@semcore/input-number": "5.28.0",
-    "@semcore/input-tags": "4.31.0",
-    "@semcore/link": "5.29.0",
-    "@semcore/mini-chart": "0.12.0",
-    "@semcore/modal": "4.36.0",
-    "@semcore/neighbor-location": "4.24.0",
-    "@semcore/notice": "5.33.0",
-    "@semcore/notice-global": "2.43.0",
-    "@semcore/notice-bubble": "5.32.0",
-    "@semcore/outside-click": "3.24.0",
-    "@semcore/pagination": "4.36.0",
-    "@semcore/pills": "5.27.0",
-    "@semcore/popper": "5.34.0",
-    "@semcore/portal": "3.26.0",
-    "@semcore/product-head": "4.26.0",
-    "@semcore/progress-bar": "4.25.0",
-    "@semcore/radio": "6.28.0",
-    "@semcore/scroll-area": "5.28.0",
-    "@semcore/select": "4.42.0",
-    "@semcore/side-panel": "3.34.0",
-    "@semcore/skeleton": "5.26.0",
-    "@semcore/slider": "4.25.0",
-    "@semcore/spin": "5.25.0",
-    "@semcore/spin-container": "7.26.0",
-    "@semcore/sticky": "3.25.0",
-    "@semcore/switch": "5.26.0",
-    "@semcore/tab-line": "4.25.0",
-    "@semcore/tab-panel": "4.27.0",
-    "@semcore/tag": "5.35.0",
-    "@semcore/textarea": "5.25.0",
-    "@semcore/time-picker": "4.42.0",
-    "@semcore/tooltip": "6.32.0",
-    "@semcore/typography": "5.34.0",
-    "@semcore/utils": "4.27.0",
-    "@semcore/widget-empty": "4.27.0",
-    "@semcore/wizard": "2.36.0",
-    "@semcore/i18n-unplugin": "0.17.19"
+    "@semcore/accordion": "16.0.0",
+    "@semcore/add-filter": "16.0.0",
+    "@semcore/animation": "16.0.0",
+    "@semcore/badge": "16.0.0",
+    "@semcore/base-components": "16.0.0",
+    "@semcore/base-trigger": "16.0.0",
+    "@semcore/breadcrumbs": "16.0.0",
+    "@semcore/breakpoints": "16.0.0",
+    "@semcore/bulk-textarea": "16.0.0",
+    "@semcore/button": "16.0.0",
+    "@semcore/card": "16.0.0",
+    "@semcore/carousel": "16.0.0",
+    "@semcore/checkbox": "16.0.0",
+    "@semcore/color-picker": "16.0.0",
+    "@semcore/core": "16.0.0",
+    "@semcore/counter": "16.0.0",
+    "@semcore/d3-chart": "16.0.0",
+    "@semcore/data-table": "16.0.0",
+    "@semcore/date-picker": "16.0.0",
+    "@semcore/divider": "16.0.0",
+    "@semcore/dot": "16.0.0",
+    "@semcore/drag-and-drop": "16.0.0",
+    "@semcore/dropdown": "16.0.0",
+    "@semcore/dropdown-menu": "16.0.0",
+    "@semcore/ellipsis": "16.0.0",
+    "@semcore/errors": "16.0.0",
+    "@semcore/feature-popover": "16.0.0",
+    "@semcore/feedback-form": "16.0.0",
+    "@semcore/flags": "16.0.0",
+    "@semcore/flex-box": "16.0.0",
+    "@semcore/format-text": "16.0.0",
+    "@semcore/fullscreen-modal": "16.0.0",
+    "@semcore/grid": "16.0.0",
+    "@semcore/icon": "16.0.0",
+    "@semcore/illustration": "16.0.0",
+    "@semcore/inline-edit": "16.0.0",
+    "@semcore/inline-input": "16.0.0",
+    "@semcore/input": "16.0.0",
+    "@semcore/input-mask": "16.0.0",
+    "@semcore/input-number": "16.0.0",
+    "@semcore/input-tags": "16.0.0",
+    "@semcore/link": "16.0.0",
+    "@semcore/mini-chart": "16.0.0",
+    "@semcore/modal": "16.0.0",
+    "@semcore/neighbor-location": "16.0.0",
+    "@semcore/notice": "16.0.0",
+    "@semcore/notice-bubble": "16.0.0",
+    "@semcore/notice-global": "16.0.0",
+    "@semcore/outside-click": "16.0.0",
+    "@semcore/pagination": "16.0.0",
+    "@semcore/pills": "16.0.0",
+    "@semcore/popper": "16.0.0",
+    "@semcore/portal": "16.0.0",
+    "@semcore/product-head": "16.0.0",
+    "@semcore/progress-bar": "16.0.0",
+    "@semcore/radio": "16.0.0",
+    "@semcore/scroll-area": "16.0.0",
+    "@semcore/select": "16.0.0",
+    "@semcore/side-panel": "16.0.0",
+    "@semcore/skeleton": "16.0.0",
+    "@semcore/slider": "16.0.0",
+    "@semcore/spin": "16.0.0",
+    "@semcore/spin-container": "16.0.0",
+    "@semcore/sticky": "16.0.0",
+    "@semcore/switch": "16.0.0",
+    "@semcore/tab-line": "16.0.0",
+    "@semcore/tab-panel": "16.0.0",
+    "@semcore/tag": "16.0.0",
+    "@semcore/textarea": "16.0.0",
+    "@semcore/time-picker": "16.0.0",
+    "@semcore/tooltip": "16.0.0",
+    "@semcore/typography": "16.0.0",
+    "@semcore/widget-empty": "16.0.0",
+    "@semcore/wizard": "16.0.0",
+    "@semcore/i18n-unplugin": "16.0.0"
   },
   "peerDependencies": {
     "react": "16.8 - 18",
@@ -129,6 +128,11 @@
       "require": "./badge/index.cjs",
       "import": "./badge/index.mjs",
       "types": "./badge/index.d.ts"
+    },
+    "./base-components": {
+      "require": "./base-components/index.cjs",
+      "import": "./base-components/index.mjs",
+      "types": "./base-components/index.d.ts"
     },
     "./base-trigger": {
       "require": "./base-trigger/index.cjs",
@@ -180,10 +184,381 @@
       "import": "./core/index.mjs",
       "types": "./core/index.d.ts"
     },
+    "./core/lib/utils/CSSinJS": {
+      "require": "./core/lib/utils/CSSinJS.cjs",
+      "import": "./core/lib/utils/CSSinJS.mjs",
+      "types": "./core/lib/utils/CSSinJS.d.ts"
+    },
+    "./core/lib/utils/ScreenReaderOnly": {
+      "require": "./core/lib/utils/ScreenReaderOnly.cjs",
+      "import": "./core/lib/utils/ScreenReaderOnly.mjs",
+      "types": "./core/lib/utils/ScreenReaderOnly.d.ts"
+    },
+    "./core/lib/utils/ThemeProvider": {
+      "require": "./core/lib/utils/ThemeProvider.cjs",
+      "import": "./core/lib/utils/ThemeProvider.mjs",
+      "types": "./core/lib/utils/ThemeProvider.d.ts"
+    },
+    "./core/lib/utils/addonText": {
+      "require": "./core/lib/utils/addonText.cjs",
+      "import": "./core/lib/utils/addonText.mjs",
+      "types": "./core/lib/utils/addonText.d.ts"
+    },
+    "./core/lib/utils/addonTextChildren": {
+      "require": "./core/lib/utils/addonTextChildren.cjs",
+      "import": "./core/lib/utils/addonTextChildren.mjs",
+      "types": "./core/lib/utils/addonTextChildren.d.ts"
+    },
+    "./core/lib/utils/ariaProps": {
+      "require": "./core/lib/utils/ariaProps.cjs",
+      "import": "./core/lib/utils/ariaProps.mjs",
+      "types": "./core/lib/utils/ariaProps.d.ts"
+    },
+    "./core/lib/utils/assignProps": {
+      "require": "./core/lib/utils/assignProps.cjs",
+      "import": "./core/lib/utils/assignProps.mjs",
+      "types": "./core/lib/utils/assignProps.d.ts"
+    },
+    "./core/lib/utils/canUseDOM": {
+      "require": "./core/lib/utils/canUseDOM.cjs",
+      "import": "./core/lib/utils/canUseDOM.mjs",
+      "types": "./core/lib/utils/canUseDOM.d.ts"
+    },
+    "./core/lib/utils/capitalizeFirstLetter": {
+      "require": "./core/lib/utils/capitalizeFirstLetter.cjs",
+      "import": "./core/lib/utils/capitalizeFirstLetter.mjs",
+      "types": "./core/lib/utils/capitalizeFirstLetter.d.ts"
+    },
+    "./core/lib/utils/color": {
+      "require": "./core/lib/utils/color.cjs",
+      "import": "./core/lib/utils/color.mjs",
+      "types": "./core/lib/utils/color.d.ts"
+    },
+    "./core/lib/utils/compose": {
+      "require": "./core/lib/utils/compose.cjs",
+      "import": "./core/lib/utils/compose.mjs",
+      "types": "./core/lib/utils/compose.d.ts"
+    },
+    "./core/lib/utils/createHoc": {
+      "require": "./core/lib/utils/createHoc.cjs",
+      "import": "./core/lib/utils/createHoc.mjs",
+      "types": "./core/lib/utils/createHoc.d.ts"
+    },
+    "./core/lib/utils/createUUID": {
+      "require": "./core/lib/utils/createUUID.cjs",
+      "import": "./core/lib/utils/createUUID.mjs",
+      "types": "./core/lib/utils/createUUID.d.ts"
+    },
+    "./core/lib/utils/cssToIntDefault": {
+      "require": "./core/lib/utils/cssToIntDefault.cjs",
+      "import": "./core/lib/utils/cssToIntDefault.mjs",
+      "types": "./core/lib/utils/cssToIntDefault.d.ts"
+    },
+    "./core/lib/utils/eventEmitter": {
+      "require": "./core/lib/utils/eventEmitter.cjs",
+      "import": "./core/lib/utils/eventEmitter.mjs",
+      "types": "./core/lib/utils/eventEmitter.d.ts"
+    },
+    "./core/lib/utils/findComponent": {
+      "require": "./core/lib/utils/findComponent.cjs",
+      "import": "./core/lib/utils/findComponent.mjs",
+      "types": "./core/lib/utils/findComponent.d.ts"
+    },
+    "./core/lib/utils/fire": {
+      "require": "./core/lib/utils/fire.cjs",
+      "import": "./core/lib/utils/fire.mjs",
+      "types": "./core/lib/utils/fire.d.ts"
+    },
+    "./core/lib/utils/getAccessibleName": {
+      "require": "./core/lib/utils/getAccessibleName.cjs",
+      "import": "./core/lib/utils/getAccessibleName.mjs",
+      "types": "./core/lib/utils/getAccessibleName.d.ts"
+    },
+    "./core/lib/utils/getDisplayName": {
+      "require": "./core/lib/utils/getDisplayName.cjs",
+      "import": "./core/lib/utils/getDisplayName.mjs",
+      "types": "./core/lib/utils/getDisplayName.d.ts"
+    },
+    "./core/lib/utils/getEventTarget": {
+      "require": "./core/lib/utils/getEventTarget.cjs",
+      "import": "./core/lib/utils/getEventTarget.mjs",
+      "types": "./core/lib/utils/getEventTarget.d.ts"
+    },
+    "./core/lib/utils/getOriginChildren": {
+      "require": "./core/lib/utils/getOriginChildren.cjs",
+      "import": "./core/lib/utils/getOriginChildren.mjs",
+      "types": "./core/lib/utils/getOriginChildren.d.ts"
+    },
+    "./core/lib/utils/getRandomInt": {
+      "require": "./core/lib/utils/getRandomInt.cjs",
+      "import": "./core/lib/utils/getRandomInt.mjs",
+      "types": "./core/lib/utils/getRandomInt.d.ts"
+    },
+    "./core/lib/utils/getValue": {
+      "require": "./core/lib/utils/getValue.cjs",
+      "import": "./core/lib/utils/getValue.mjs",
+      "types": "./core/lib/utils/getValue.d.ts"
+    },
+    "./core/lib/utils/hasLabels": {
+      "require": "./core/lib/utils/hasLabels.cjs",
+      "import": "./core/lib/utils/hasLabels.mjs",
+      "types": "./core/lib/utils/hasLabels.d.ts"
+    },
+    "./core/lib/utils/hasParent": {
+      "require": "./core/lib/utils/hasParent.cjs",
+      "import": "./core/lib/utils/hasParent.mjs",
+      "types": "./core/lib/utils/hasParent.d.ts"
+    },
+    "./core/lib/utils/if": {
+      "require": "./core/lib/utils/if.cjs",
+      "import": "./core/lib/utils/if.mjs",
+      "types": "./core/lib/utils/if.d.ts"
+    },
+    "./core/lib/utils/ifChildren": {
+      "require": "./core/lib/utils/ifChildren.cjs",
+      "import": "./core/lib/utils/ifChildren.mjs",
+      "types": "./core/lib/utils/ifChildren.d.ts"
+    },
+    "./core/lib/utils/injectStyle": {
+      "require": "./core/lib/utils/injectStyle.cjs",
+      "import": "./core/lib/utils/injectStyle.mjs",
+      "types": "./core/lib/utils/injectStyle.d.ts"
+    },
+    "./core/lib/utils/inputProps": {
+      "require": "./core/lib/utils/inputProps.cjs",
+      "import": "./core/lib/utils/inputProps.mjs",
+      "types": "./core/lib/utils/inputProps.d.ts"
+    },
+    "./core/lib/utils/isNode": {
+      "require": "./core/lib/utils/isNode.cjs",
+      "import": "./core/lib/utils/isNode.mjs",
+      "types": "./core/lib/utils/isNode.d.ts"
+    },
+    "./core/lib/utils/isPromise": {
+      "require": "./core/lib/utils/isPromise.cjs",
+      "import": "./core/lib/utils/isPromise.mjs",
+      "types": "./core/lib/utils/isPromise.d.ts"
+    },
+    "./core/lib/utils/isRetina": {
+      "require": "./core/lib/utils/isRetina.cjs",
+      "import": "./core/lib/utils/isRetina.mjs",
+      "types": "./core/lib/utils/isRetina.d.ts"
+    },
+    "./core/lib/utils/logger": {
+      "require": "./core/lib/utils/logger.cjs",
+      "import": "./core/lib/utils/logger.mjs",
+      "types": "./core/lib/utils/logger.d.ts"
+    },
+    "./core/lib/utils/numericChecker": {
+      "require": "./core/lib/utils/numericChecker.cjs",
+      "import": "./core/lib/utils/numericChecker.mjs",
+      "types": "./core/lib/utils/numericChecker.d.ts"
+    },
+    "./core/lib/utils/ownerDocument": {
+      "require": "./core/lib/utils/ownerDocument.cjs",
+      "import": "./core/lib/utils/ownerDocument.mjs",
+      "types": "./core/lib/utils/ownerDocument.d.ts"
+    },
+    "./core/lib/utils/pick": {
+      "require": "./core/lib/utils/pick.cjs",
+      "import": "./core/lib/utils/pick.mjs",
+      "types": "./core/lib/utils/pick.d.ts"
+    },
+    "./core/lib/utils/propsForElement": {
+      "require": "./core/lib/utils/propsForElement.cjs",
+      "import": "./core/lib/utils/propsForElement.mjs",
+      "types": "./core/lib/utils/propsForElement.d.ts"
+    },
+    "./core/lib/utils/rafTrottle": {
+      "require": "./core/lib/utils/rafTrottle.cjs",
+      "import": "./core/lib/utils/rafTrottle.mjs",
+      "types": "./core/lib/utils/rafTrottle.d.ts"
+    },
+    "./core/lib/utils/reactToText": {
+      "require": "./core/lib/utils/reactToText.cjs",
+      "import": "./core/lib/utils/reactToText.mjs",
+      "types": "./core/lib/utils/reactToText.d.ts"
+    },
+    "./core/lib/utils/ref": {
+      "require": "./core/lib/utils/ref.cjs",
+      "import": "./core/lib/utils/ref.mjs",
+      "types": "./core/lib/utils/ref.d.ts"
+    },
+    "./core/lib/utils/setRef": {
+      "require": "./core/lib/utils/setRef.cjs",
+      "import": "./core/lib/utils/setRef.mjs",
+      "types": "./core/lib/utils/setRef.d.ts"
+    },
+    "./core/lib/utils/syncScroll": {
+      "require": "./core/lib/utils/syncScroll.cjs",
+      "import": "./core/lib/utils/syncScroll.mjs",
+      "types": "./core/lib/utils/syncScroll.d.ts"
+    },
+    "./core/lib/utils/uncontroll": {
+      "require": "./core/lib/utils/uncontroll.cjs",
+      "import": "./core/lib/utils/uncontroll.mjs",
+      "types": "./core/lib/utils/uncontroll.d.ts"
+    },
+    "./core/lib/utils/uniqueID": {
+      "require": "./core/lib/utils/uniqueID.cjs",
+      "import": "./core/lib/utils/uniqueID.mjs",
+      "types": "./core/lib/utils/uniqueID.d.ts"
+    },
+    "./core/lib/utils/useCssVariable": {
+      "require": "./core/lib/utils/useCssVariable.cjs",
+      "import": "./core/lib/utils/useCssVariable.mjs",
+      "types": "./core/lib/utils/useCssVariable.d.ts"
+    },
+    "./core/lib/utils/zIndexStacking": {
+      "require": "./core/lib/utils/zIndexStacking.cjs",
+      "import": "./core/lib/utils/zIndexStacking.mjs",
+      "types": "./core/lib/utils/zIndexStacking.d.ts"
+    },
+    "./core/lib/utils/enhances/WithAutoFocus": {
+      "require": "./core/lib/utils/enhances/WithAutoFocus.cjs",
+      "import": "./core/lib/utils/enhances/WithAutoFocus.mjs",
+      "types": "./core/lib/utils/enhances/WithAutoFocus.d.ts"
+    },
+    "./core/lib/utils/enhances/WithCSS": {
+      "require": "./core/lib/utils/enhances/WithCSS.cjs",
+      "import": "./core/lib/utils/enhances/WithCSS.mjs",
+      "types": "./core/lib/utils/enhances/WithCSS.d.ts"
+    },
+    "./core/lib/utils/enhances/WithI18n": {
+      "require": "./core/lib/utils/enhances/WithI18n.cjs",
+      "import": "./core/lib/utils/enhances/WithI18n.mjs",
+      "types": "./core/lib/utils/enhances/WithI18n.d.ts"
+    },
+    "./core/lib/utils/enhances/WithKeyboardFocus": {
+      "require": "./core/lib/utils/enhances/WithKeyboardFocus.cjs",
+      "import": "./core/lib/utils/enhances/WithKeyboardFocus.mjs",
+      "types": "./core/lib/utils/enhances/WithKeyboardFocus.d.ts"
+    },
+    "./core/lib/utils/enhances/WithRef": {
+      "require": "./core/lib/utils/enhances/WithRef.cjs",
+      "import": "./core/lib/utils/enhances/WithRef.mjs",
+      "types": "./core/lib/utils/enhances/WithRef.d.ts"
+    },
+    "./core/lib/utils/enhances/a11yEnhance": {
+      "require": "./core/lib/utils/enhances/a11yEnhance.cjs",
+      "import": "./core/lib/utils/enhances/a11yEnhance.mjs",
+      "types": "./core/lib/utils/enhances/a11yEnhance.d.ts"
+    },
+    "./core/lib/utils/enhances/animatedSizeEnhance": {
+      "require": "./core/lib/utils/enhances/animatedSizeEnhance.cjs",
+      "import": "./core/lib/utils/enhances/animatedSizeEnhance.mjs",
+      "types": "./core/lib/utils/enhances/animatedSizeEnhance.d.ts"
+    },
+    "./core/lib/utils/enhances/autoFocusEnhance": {
+      "require": "./core/lib/utils/enhances/autoFocusEnhance.cjs",
+      "import": "./core/lib/utils/enhances/autoFocusEnhance.mjs",
+      "types": "./core/lib/utils/enhances/autoFocusEnhance.d.ts"
+    },
+    "./core/lib/utils/enhances/contextEnhance": {
+      "require": "./core/lib/utils/enhances/contextEnhance.cjs",
+      "import": "./core/lib/utils/enhances/contextEnhance.mjs",
+      "types": "./core/lib/utils/enhances/contextEnhance.d.ts"
+    },
+    "./core/lib/utils/enhances/i18nEnhance": {
+      "require": "./core/lib/utils/enhances/i18nEnhance.cjs",
+      "import": "./core/lib/utils/enhances/i18nEnhance.mjs",
+      "types": "./core/lib/utils/enhances/i18nEnhance.d.ts"
+    },
+    "./core/lib/utils/enhances/keyboardFocusEnhance": {
+      "require": "./core/lib/utils/enhances/keyboardFocusEnhance.cjs",
+      "import": "./core/lib/utils/enhances/keyboardFocusEnhance.mjs",
+      "types": "./core/lib/utils/enhances/keyboardFocusEnhance.d.ts"
+    },
+    "./core/lib/utils/enhances/resolveColorEnhance": {
+      "require": "./core/lib/utils/enhances/resolveColorEnhance.cjs",
+      "import": "./core/lib/utils/enhances/resolveColorEnhance.mjs",
+      "types": "./core/lib/utils/enhances/resolveColorEnhance.d.ts"
+    },
+    "./core/lib/utils/focus-lock/focusBorders": {
+      "require": "./core/lib/utils/focus-lock/focusBorders.cjs",
+      "import": "./core/lib/utils/focus-lock/focusBorders.mjs",
+      "types": "./core/lib/utils/focus-lock/focusBorders.d.ts"
+    },
+    "./core/lib/utils/focus-lock/getFocusableIn": {
+      "require": "./core/lib/utils/focus-lock/getFocusableIn.cjs",
+      "import": "./core/lib/utils/focus-lock/getFocusableIn.mjs",
+      "types": "./core/lib/utils/focus-lock/getFocusableIn.d.ts"
+    },
+    "./core/lib/utils/focus-lock/isFocusInside": {
+      "require": "./core/lib/utils/focus-lock/isFocusInside.cjs",
+      "import": "./core/lib/utils/focus-lock/isFocusInside.mjs",
+      "types": "./core/lib/utils/focus-lock/isFocusInside.d.ts"
+    },
+    "./core/lib/utils/focus-lock/isFocusable": {
+      "require": "./core/lib/utils/focus-lock/isFocusable.cjs",
+      "import": "./core/lib/utils/focus-lock/isFocusable.mjs",
+      "types": "./core/lib/utils/focus-lock/isFocusable.d.ts"
+    },
+    "./core/lib/utils/focus-lock/setFocus": {
+      "require": "./core/lib/utils/focus-lock/setFocus.cjs",
+      "import": "./core/lib/utils/focus-lock/setFocus.mjs",
+      "types": "./core/lib/utils/focus-lock/setFocus.d.ts"
+    },
+    "./core/lib/utils/use/useColorResolver": {
+      "require": "./core/lib/utils/use/useColorResolver.cjs",
+      "import": "./core/lib/utils/use/useColorResolver.mjs",
+      "types": "./core/lib/utils/use/useColorResolver.d.ts"
+    },
+    "./core/lib/utils/use/useCss": {
+      "require": "./core/lib/utils/use/useCss.cjs",
+      "import": "./core/lib/utils/use/useCss.mjs",
+      "types": "./core/lib/utils/use/useCss.d.ts"
+    },
+    "./core/lib/utils/use/useEnhancedEffect": {
+      "require": "./core/lib/utils/use/useEnhancedEffect.cjs",
+      "import": "./core/lib/utils/use/useEnhancedEffect.mjs",
+      "types": "./core/lib/utils/use/useEnhancedEffect.d.ts"
+    },
+    "./core/lib/utils/use/useEventCallback": {
+      "require": "./core/lib/utils/use/useEventCallback.cjs",
+      "import": "./core/lib/utils/use/useEventCallback.mjs",
+      "types": "./core/lib/utils/use/useEventCallback.d.ts"
+    },
+    "./core/lib/utils/use/useEventListener": {
+      "require": "./core/lib/utils/use/useEventListener.cjs",
+      "import": "./core/lib/utils/use/useEventListener.mjs",
+      "types": "./core/lib/utils/use/useEventListener.d.ts"
+    },
+    "./core/lib/utils/use/useFocusLock": {
+      "require": "./core/lib/utils/use/useFocusLock.cjs",
+      "import": "./core/lib/utils/use/useFocusLock.mjs",
+      "types": "./core/lib/utils/use/useFocusLock.d.ts"
+    },
+    "./core/lib/utils/use/usePreventScroll": {
+      "require": "./core/lib/utils/use/usePreventScroll.cjs",
+      "import": "./core/lib/utils/use/usePreventScroll.mjs",
+      "types": "./core/lib/utils/use/usePreventScroll.d.ts"
+    },
+    "./core/lib/theme/themes/auto.css": {
+      "require": "./core/lib/theme/themes/auto.css",
+      "import": "./core/lib/theme/themes/auto.css"
+    },
+    "./core/lib/theme/themes/dark.css": {
+      "require": "./core/lib/theme/themes/dark.css",
+      "import": "./core/lib/theme/themes/dark.css"
+    },
+    "./core/lib/theme/themes/default.css": {
+      "require": "./core/lib/theme/themes/default.css",
+      "import": "./core/lib/theme/themes/default.css"
+    },
+    "./core/lib/theme/themes/light.css": {
+      "require": "./core/lib/theme/themes/light.css",
+      "import": "./core/lib/theme/themes/light.css"
+    },
     "./counter": {
       "require": "./counter/index.cjs",
       "import": "./counter/index.mjs",
       "types": "./counter/index.d.ts"
+    },
+    "./d3-chart": {
+      "require": "./d3-chart/index.cjs",
+      "import": "./d3-chart/index.mjs",
+      "types": "./d3-chart/index.d.ts"
     },
     "./data-table": {
       "require": "./data-table/index.cjs",
@@ -220,20 +595,10 @@
       "import": "./dropdown-menu/index.mjs",
       "types": "./dropdown-menu/index.d.ts"
     },
-    "./d3-chart": {
-      "require": "./d3-chart/index.cjs",
-      "import": "./d3-chart/index.mjs",
-      "types": "./d3-chart/index.d.ts"
-    },
     "./ellipsis": {
       "require": "./ellipsis/index.cjs",
       "import": "./ellipsis/index.mjs",
       "types": "./ellipsis/index.d.ts"
-    },
-    "./email": {
-      "require": "./email/index.cjs",
-      "import": "./email/index.mjs",
-      "types": "./email/index.d.ts"
     },
     "./errors": {
       "require": "./errors/index.cjs",
@@ -294,6 +659,16 @@
       "require": "./icon/AdBottom/m/index.cjs",
       "import": "./icon/AdBottom/m/index.mjs",
       "types": "./icon/AdBottom/m/index.d.ts"
+    },
+    "./icon/AdMiddle/l": {
+      "require": "./icon/AdMiddle/l/index.cjs",
+      "import": "./icon/AdMiddle/l/index.mjs",
+      "types": "./icon/AdMiddle/l/index.d.ts"
+    },
+    "./icon/AdMiddle/m": {
+      "require": "./icon/AdMiddle/m/index.cjs",
+      "import": "./icon/AdMiddle/m/index.mjs",
+      "types": "./icon/AdMiddle/m/index.d.ts"
     },
     "./icon/AdTop/l": {
       "require": "./icon/AdTop/l/index.cjs",
@@ -794,6 +1169,16 @@
       "require": "./icon/ChatFilled/m/index.cjs",
       "import": "./icon/ChatFilled/m/index.mjs",
       "types": "./icon/ChatFilled/m/index.d.ts"
+    },
+    "./icon/ChatGPT/l": {
+      "require": "./icon/ChatGPT/l/index.cjs",
+      "import": "./icon/ChatGPT/l/index.mjs",
+      "types": "./icon/ChatGPT/l/index.d.ts"
+    },
+    "./icon/ChatGPT/m": {
+      "require": "./icon/ChatGPT/m/index.cjs",
+      "import": "./icon/ChatGPT/m/index.mjs",
+      "types": "./icon/ChatGPT/m/index.d.ts"
     },
     "./icon/ChatPlus/l": {
       "require": "./icon/ChatPlus/l/index.cjs",
@@ -2345,6 +2730,16 @@
       "import": "./icon/Organic/m/index.mjs",
       "types": "./icon/Organic/m/index.d.ts"
     },
+    "./icon/OrganicCarousel/l": {
+      "require": "./icon/OrganicCarousel/l/index.cjs",
+      "import": "./icon/OrganicCarousel/l/index.mjs",
+      "types": "./icon/OrganicCarousel/l/index.d.ts"
+    },
+    "./icon/OrganicCarousel/m": {
+      "require": "./icon/OrganicCarousel/m/index.cjs",
+      "import": "./icon/OrganicCarousel/m/index.mjs",
+      "types": "./icon/OrganicCarousel/m/index.d.ts"
+    },
     "./icon/OrientationLandscape/l": {
       "require": "./icon/OrientationLandscape/l/index.cjs",
       "import": "./icon/OrientationLandscape/l/index.mjs",
@@ -2535,6 +2930,16 @@
       "import": "./icon/PopularProducts/m/index.mjs",
       "types": "./icon/PopularProducts/m/index.d.ts"
     },
+    "./icon/PopularStores/l": {
+      "require": "./icon/PopularStores/l/index.cjs",
+      "import": "./icon/PopularStores/l/index.mjs",
+      "types": "./icon/PopularStores/l/index.d.ts"
+    },
+    "./icon/PopularStores/m": {
+      "require": "./icon/PopularStores/m/index.cjs",
+      "import": "./icon/PopularStores/m/index.mjs",
+      "types": "./icon/PopularStores/m/index.d.ts"
+    },
     "./icon/Popup/l": {
       "require": "./icon/Popup/l/index.cjs",
       "import": "./icon/Popup/l/index.mjs",
@@ -2544,6 +2949,16 @@
       "require": "./icon/Popup/m/index.cjs",
       "import": "./icon/Popup/m/index.mjs",
       "types": "./icon/Popup/m/index.d.ts"
+    },
+    "./icon/PopupAlt/l": {
+      "require": "./icon/PopupAlt/l/index.cjs",
+      "import": "./icon/PopupAlt/l/index.mjs",
+      "types": "./icon/PopupAlt/l/index.d.ts"
+    },
+    "./icon/PopupAlt/m": {
+      "require": "./icon/PopupAlt/m/index.cjs",
+      "import": "./icon/PopupAlt/m/index.mjs",
+      "types": "./icon/PopupAlt/m/index.d.ts"
     },
     "./icon/PositionBottom/l": {
       "require": "./icon/PositionBottom/l/index.cjs",
@@ -2565,6 +2980,16 @@
       "import": "./icon/PositionLeft/m/index.mjs",
       "types": "./icon/PositionLeft/m/index.d.ts"
     },
+    "./icon/PositionMiddle/l": {
+      "require": "./icon/PositionMiddle/l/index.cjs",
+      "import": "./icon/PositionMiddle/l/index.mjs",
+      "types": "./icon/PositionMiddle/l/index.d.ts"
+    },
+    "./icon/PositionMiddle/m": {
+      "require": "./icon/PositionMiddle/m/index.cjs",
+      "import": "./icon/PositionMiddle/m/index.mjs",
+      "types": "./icon/PositionMiddle/m/index.d.ts"
+    },
     "./icon/PositionRight/l": {
       "require": "./icon/PositionRight/l/index.cjs",
       "import": "./icon/PositionRight/l/index.mjs",
@@ -2584,6 +3009,16 @@
       "require": "./icon/PositionTop/m/index.cjs",
       "import": "./icon/PositionTop/m/index.mjs",
       "types": "./icon/PositionTop/m/index.d.ts"
+    },
+    "./icon/Power/l": {
+      "require": "./icon/Power/l/index.cjs",
+      "import": "./icon/Power/l/index.mjs",
+      "types": "./icon/Power/l/index.d.ts"
+    },
+    "./icon/Power/m": {
+      "require": "./icon/Power/m/index.cjs",
+      "import": "./icon/Power/m/index.mjs",
+      "types": "./icon/Power/m/index.d.ts"
     },
     "./icon/Printing/l": {
       "require": "./icon/Printing/l/index.cjs",
@@ -2654,6 +3089,26 @@
       "require": "./icon/QuestionSerp/m/index.cjs",
       "import": "./icon/QuestionSerp/m/index.mjs",
       "types": "./icon/QuestionSerp/m/index.d.ts"
+    },
+    "./icon/QuestionsAnswers/l": {
+      "require": "./icon/QuestionsAnswers/l/index.cjs",
+      "import": "./icon/QuestionsAnswers/l/index.mjs",
+      "types": "./icon/QuestionsAnswers/l/index.d.ts"
+    },
+    "./icon/QuestionsAnswers/m": {
+      "require": "./icon/QuestionsAnswers/m/index.cjs",
+      "import": "./icon/QuestionsAnswers/m/index.mjs",
+      "types": "./icon/QuestionsAnswers/m/index.d.ts"
+    },
+    "./icon/Recent/l": {
+      "require": "./icon/Recent/l/index.cjs",
+      "import": "./icon/Recent/l/index.mjs",
+      "types": "./icon/Recent/l/index.d.ts"
+    },
+    "./icon/Recent/m": {
+      "require": "./icon/Recent/m/index.cjs",
+      "import": "./icon/Recent/m/index.mjs",
+      "types": "./icon/Recent/m/index.d.ts"
     },
     "./icon/Recreation/l": {
       "require": "./icon/Recreation/l/index.cjs",
@@ -3205,6 +3660,26 @@
       "import": "./icon/Tablet/m/index.mjs",
       "types": "./icon/Tablet/m/index.d.ts"
     },
+    "./icon/Tack/l": {
+      "require": "./icon/Tack/l/index.cjs",
+      "import": "./icon/Tack/l/index.mjs",
+      "types": "./icon/Tack/l/index.d.ts"
+    },
+    "./icon/Tack/m": {
+      "require": "./icon/Tack/m/index.cjs",
+      "import": "./icon/Tack/m/index.mjs",
+      "types": "./icon/Tack/m/index.d.ts"
+    },
+    "./icon/TackNo/l": {
+      "require": "./icon/TackNo/l/index.cjs",
+      "import": "./icon/TackNo/l/index.mjs",
+      "types": "./icon/TackNo/l/index.d.ts"
+    },
+    "./icon/TackNo/m": {
+      "require": "./icon/TackNo/m/index.cjs",
+      "import": "./icon/TackNo/m/index.mjs",
+      "types": "./icon/TackNo/m/index.d.ts"
+    },
     "./icon/Tag/l": {
       "require": "./icon/Tag/l/index.cjs",
       "import": "./icon/Tag/l/index.mjs",
@@ -3264,6 +3739,16 @@
       "require": "./icon/ThumbUp/m/index.cjs",
       "import": "./icon/ThumbUp/m/index.mjs",
       "types": "./icon/ThumbUp/m/index.d.ts"
+    },
+    "./icon/TikTok/l": {
+      "require": "./icon/TikTok/l/index.cjs",
+      "import": "./icon/TikTok/l/index.mjs",
+      "types": "./icon/TikTok/l/index.d.ts"
+    },
+    "./icon/TikTok/m": {
+      "require": "./icon/TikTok/m/index.cjs",
+      "import": "./icon/TikTok/m/index.mjs",
+      "types": "./icon/TikTok/m/index.d.ts"
     },
     "./icon/Tile/l": {
       "require": "./icon/Tile/l/index.cjs",
@@ -3505,6 +3990,16 @@
       "import": "./icon/VideoCarousel/m/index.mjs",
       "types": "./icon/VideoCarousel/m/index.d.ts"
     },
+    "./icon/VideoList/l": {
+      "require": "./icon/VideoList/l/index.cjs",
+      "import": "./icon/VideoList/l/index.mjs",
+      "types": "./icon/VideoList/l/index.d.ts"
+    },
+    "./icon/VideoList/m": {
+      "require": "./icon/VideoList/m/index.cjs",
+      "import": "./icon/VideoList/m/index.mjs",
+      "types": "./icon/VideoList/m/index.d.ts"
+    },
     "./icon/VideoStop/l": {
       "require": "./icon/VideoStop/l/index.cjs",
       "import": "./icon/VideoStop/l/index.mjs",
@@ -3514,6 +4009,16 @@
       "require": "./icon/VideoStop/m/index.cjs",
       "import": "./icon/VideoStop/m/index.mjs",
       "types": "./icon/VideoStop/m/index.d.ts"
+    },
+    "./icon/VideoStreaming/l": {
+      "require": "./icon/VideoStreaming/l/index.cjs",
+      "import": "./icon/VideoStreaming/l/index.mjs",
+      "types": "./icon/VideoStreaming/l/index.d.ts"
+    },
+    "./icon/VideoStreaming/m": {
+      "require": "./icon/VideoStreaming/m/index.cjs",
+      "import": "./icon/VideoStreaming/m/index.mjs",
+      "types": "./icon/VideoStreaming/m/index.d.ts"
     },
     "./icon/Vk/l": {
       "require": "./icon/Vk/l/index.cjs",
@@ -3595,6 +4100,16 @@
       "import": "./icon/Wristwatch/m/index.mjs",
       "types": "./icon/Wristwatch/m/index.d.ts"
     },
+    "./icon/Yext/l": {
+      "require": "./icon/Yext/l/index.cjs",
+      "import": "./icon/Yext/l/index.mjs",
+      "types": "./icon/Yext/l/index.d.ts"
+    },
+    "./icon/Yext/m": {
+      "require": "./icon/Yext/m/index.cjs",
+      "import": "./icon/Yext/m/index.mjs",
+      "types": "./icon/Yext/m/index.d.ts"
+    },
     "./icon/Youtube/l": {
       "require": "./icon/Youtube/l/index.cjs",
       "import": "./icon/Youtube/l/index.mjs",
@@ -3635,6 +4150,66 @@
       "import": "./icon/ZoomPlus/m/index.mjs",
       "types": "./icon/ZoomPlus/m/index.d.ts"
     },
+    "./icon/color/Ahrefs/l": {
+      "require": "./icon/color/Ahrefs/l/index.cjs",
+      "import": "./icon/color/Ahrefs/l/index.mjs",
+      "types": "./icon/color/Ahrefs/l/index.d.ts"
+    },
+    "./icon/color/Ahrefs/m": {
+      "require": "./icon/color/Ahrefs/m/index.cjs",
+      "import": "./icon/color/Ahrefs/m/index.mjs",
+      "types": "./icon/color/Ahrefs/m/index.d.ts"
+    },
+    "./icon/color/Amazon/l": {
+      "require": "./icon/color/Amazon/l/index.cjs",
+      "import": "./icon/color/Amazon/l/index.mjs",
+      "types": "./icon/color/Amazon/l/index.d.ts"
+    },
+    "./icon/color/Amazon/m": {
+      "require": "./icon/color/Amazon/m/index.cjs",
+      "import": "./icon/color/Amazon/m/index.mjs",
+      "types": "./icon/color/Amazon/m/index.d.ts"
+    },
+    "./icon/color/BirdeyeColored/l": {
+      "require": "./icon/color/BirdeyeColored/l/index.cjs",
+      "import": "./icon/color/BirdeyeColored/l/index.mjs",
+      "types": "./icon/color/BirdeyeColored/l/index.d.ts"
+    },
+    "./icon/color/BirdeyeColored/m": {
+      "require": "./icon/color/BirdeyeColored/m/index.cjs",
+      "import": "./icon/color/BirdeyeColored/m/index.mjs",
+      "types": "./icon/color/BirdeyeColored/m/index.d.ts"
+    },
+    "./icon/color/CallRailColored/l": {
+      "require": "./icon/color/CallRailColored/l/index.cjs",
+      "import": "./icon/color/CallRailColored/l/index.mjs",
+      "types": "./icon/color/CallRailColored/l/index.d.ts"
+    },
+    "./icon/color/CallRailColored/m": {
+      "require": "./icon/color/CallRailColored/m/index.cjs",
+      "import": "./icon/color/CallRailColored/m/index.mjs",
+      "types": "./icon/color/CallRailColored/m/index.d.ts"
+    },
+    "./icon/color/CallTrackingMetricsColored/l": {
+      "require": "./icon/color/CallTrackingMetricsColored/l/index.cjs",
+      "import": "./icon/color/CallTrackingMetricsColored/l/index.mjs",
+      "types": "./icon/color/CallTrackingMetricsColored/l/index.d.ts"
+    },
+    "./icon/color/CallTrackingMetricsColored/m": {
+      "require": "./icon/color/CallTrackingMetricsColored/m/index.cjs",
+      "import": "./icon/color/CallTrackingMetricsColored/m/index.mjs",
+      "types": "./icon/color/CallTrackingMetricsColored/m/index.d.ts"
+    },
+    "./icon/color/CampaignMonitorColored/l": {
+      "require": "./icon/color/CampaignMonitorColored/l/index.cjs",
+      "import": "./icon/color/CampaignMonitorColored/l/index.mjs",
+      "types": "./icon/color/CampaignMonitorColored/l/index.d.ts"
+    },
+    "./icon/color/CampaignMonitorColored/m": {
+      "require": "./icon/color/CampaignMonitorColored/m/index.cjs",
+      "import": "./icon/color/CampaignMonitorColored/m/index.mjs",
+      "types": "./icon/color/CampaignMonitorColored/m/index.d.ts"
+    },
     "./icon/color/Confluence/l": {
       "require": "./icon/color/Confluence/l/index.cjs",
       "import": "./icon/color/Confluence/l/index.mjs",
@@ -3644,6 +4219,26 @@
       "require": "./icon/color/Confluence/m/index.cjs",
       "import": "./icon/color/Confluence/m/index.mjs",
       "types": "./icon/color/Confluence/m/index.d.ts"
+    },
+    "./icon/color/ConstantContactColored/l": {
+      "require": "./icon/color/ConstantContactColored/l/index.cjs",
+      "import": "./icon/color/ConstantContactColored/l/index.mjs",
+      "types": "./icon/color/ConstantContactColored/l/index.d.ts"
+    },
+    "./icon/color/ConstantContactColored/m": {
+      "require": "./icon/color/ConstantContactColored/m/index.cjs",
+      "import": "./icon/color/ConstantContactColored/m/index.mjs",
+      "types": "./icon/color/ConstantContactColored/m/index.d.ts"
+    },
+    "./icon/color/Copilot/l": {
+      "require": "./icon/color/Copilot/l/index.cjs",
+      "import": "./icon/color/Copilot/l/index.mjs",
+      "types": "./icon/color/Copilot/l/index.d.ts"
+    },
+    "./icon/color/Copilot/m": {
+      "require": "./icon/color/Copilot/m/index.cjs",
+      "import": "./icon/color/Copilot/m/index.mjs",
+      "types": "./icon/color/Copilot/m/index.d.ts"
     },
     "./icon/color/Figma/l": {
       "require": "./icon/color/Figma/l/index.cjs",
@@ -3745,6 +4340,16 @@
       "import": "./icon/color/GoogleDataStudio/m/index.mjs",
       "types": "./icon/color/GoogleDataStudio/m/index.d.ts"
     },
+    "./icon/color/GoogleDisplayVideoAds/l": {
+      "require": "./icon/color/GoogleDisplayVideoAds/l/index.cjs",
+      "import": "./icon/color/GoogleDisplayVideoAds/l/index.mjs",
+      "types": "./icon/color/GoogleDisplayVideoAds/l/index.d.ts"
+    },
+    "./icon/color/GoogleDisplayVideoAds/m": {
+      "require": "./icon/color/GoogleDisplayVideoAds/m/index.cjs",
+      "import": "./icon/color/GoogleDisplayVideoAds/m/index.mjs",
+      "types": "./icon/color/GoogleDisplayVideoAds/m/index.d.ts"
+    },
     "./icon/color/GoogleDocs/l": {
       "require": "./icon/color/GoogleDocs/l/index.cjs",
       "import": "./icon/color/GoogleDocs/l/index.mjs",
@@ -3815,6 +4420,16 @@
       "import": "./icon/color/Hubspot/m/index.mjs",
       "types": "./icon/color/Hubspot/m/index.d.ts"
     },
+    "./icon/color/InstagramColored/l": {
+      "require": "./icon/color/InstagramColored/l/index.cjs",
+      "import": "./icon/color/InstagramColored/l/index.mjs",
+      "types": "./icon/color/InstagramColored/l/index.d.ts"
+    },
+    "./icon/color/InstagramColored/m": {
+      "require": "./icon/color/InstagramColored/m/index.cjs",
+      "import": "./icon/color/InstagramColored/m/index.mjs",
+      "types": "./icon/color/InstagramColored/m/index.d.ts"
+    },
     "./icon/color/JavaScript/l": {
       "require": "./icon/color/JavaScript/l/index.cjs",
       "import": "./icon/color/JavaScript/l/index.mjs",
@@ -3825,6 +4440,16 @@
       "import": "./icon/color/JavaScript/m/index.mjs",
       "types": "./icon/color/JavaScript/m/index.d.ts"
     },
+    "./icon/color/LinkedInColored/l": {
+      "require": "./icon/color/LinkedInColored/l/index.cjs",
+      "import": "./icon/color/LinkedInColored/l/index.mjs",
+      "types": "./icon/color/LinkedInColored/l/index.d.ts"
+    },
+    "./icon/color/LinkedInColored/m": {
+      "require": "./icon/color/LinkedInColored/m/index.cjs",
+      "import": "./icon/color/LinkedInColored/m/index.mjs",
+      "types": "./icon/color/LinkedInColored/m/index.d.ts"
+    },
     "./icon/color/LookerStudio/l": {
       "require": "./icon/color/LookerStudio/l/index.cjs",
       "import": "./icon/color/LookerStudio/l/index.mjs",
@@ -3834,6 +4459,46 @@
       "require": "./icon/color/LookerStudio/m/index.cjs",
       "import": "./icon/color/LookerStudio/m/index.mjs",
       "types": "./icon/color/LookerStudio/m/index.d.ts"
+    },
+    "./icon/color/Mailchimp/l": {
+      "require": "./icon/color/Mailchimp/l/index.cjs",
+      "import": "./icon/color/Mailchimp/l/index.mjs",
+      "types": "./icon/color/Mailchimp/l/index.d.ts"
+    },
+    "./icon/color/Mailchimp/m": {
+      "require": "./icon/color/Mailchimp/m/index.cjs",
+      "import": "./icon/color/Mailchimp/m/index.mjs",
+      "types": "./icon/color/Mailchimp/m/index.d.ts"
+    },
+    "./icon/color/Matomo/l": {
+      "require": "./icon/color/Matomo/l/index.cjs",
+      "import": "./icon/color/Matomo/l/index.mjs",
+      "types": "./icon/color/Matomo/l/index.d.ts"
+    },
+    "./icon/color/Matomo/m": {
+      "require": "./icon/color/Matomo/m/index.cjs",
+      "import": "./icon/color/Matomo/m/index.mjs",
+      "types": "./icon/color/Matomo/m/index.d.ts"
+    },
+    "./icon/color/MetaColored/l": {
+      "require": "./icon/color/MetaColored/l/index.cjs",
+      "import": "./icon/color/MetaColored/l/index.mjs",
+      "types": "./icon/color/MetaColored/l/index.d.ts"
+    },
+    "./icon/color/MetaColored/m": {
+      "require": "./icon/color/MetaColored/m/index.cjs",
+      "import": "./icon/color/MetaColored/m/index.mjs",
+      "types": "./icon/color/MetaColored/m/index.d.ts"
+    },
+    "./icon/color/Microsoft/l": {
+      "require": "./icon/color/Microsoft/l/index.cjs",
+      "import": "./icon/color/Microsoft/l/index.mjs",
+      "types": "./icon/color/Microsoft/l/index.d.ts"
+    },
+    "./icon/color/Microsoft/m": {
+      "require": "./icon/color/Microsoft/m/index.cjs",
+      "import": "./icon/color/Microsoft/m/index.mjs",
+      "types": "./icon/color/Microsoft/m/index.d.ts"
     },
     "./icon/color/MicrosoftExchange/l": {
       "require": "./icon/color/MicrosoftExchange/l/index.cjs",
@@ -3865,6 +4530,86 @@
       "import": "./icon/color/MicrosoftOutlook/m/index.mjs",
       "types": "./icon/color/MicrosoftOutlook/m/index.d.ts"
     },
+    "./icon/color/Moz/l": {
+      "require": "./icon/color/Moz/l/index.cjs",
+      "import": "./icon/color/Moz/l/index.mjs",
+      "types": "./icon/color/Moz/l/index.d.ts"
+    },
+    "./icon/color/Moz/m": {
+      "require": "./icon/color/Moz/m/index.cjs",
+      "import": "./icon/color/Moz/m/index.mjs",
+      "types": "./icon/color/Moz/m/index.d.ts"
+    },
+    "./icon/color/PipedriveColored/l": {
+      "require": "./icon/color/PipedriveColored/l/index.cjs",
+      "import": "./icon/color/PipedriveColored/l/index.mjs",
+      "types": "./icon/color/PipedriveColored/l/index.d.ts"
+    },
+    "./icon/color/PipedriveColored/m": {
+      "require": "./icon/color/PipedriveColored/m/index.cjs",
+      "import": "./icon/color/PipedriveColored/m/index.mjs",
+      "types": "./icon/color/PipedriveColored/m/index.d.ts"
+    },
+    "./icon/color/Salesforce/l": {
+      "require": "./icon/color/Salesforce/l/index.cjs",
+      "import": "./icon/color/Salesforce/l/index.mjs",
+      "types": "./icon/color/Salesforce/l/index.d.ts"
+    },
+    "./icon/color/Salesforce/m": {
+      "require": "./icon/color/Salesforce/m/index.cjs",
+      "import": "./icon/color/Salesforce/m/index.mjs",
+      "types": "./icon/color/Salesforce/m/index.d.ts"
+    },
+    "./icon/color/ShopifyColored/l": {
+      "require": "./icon/color/ShopifyColored/l/index.cjs",
+      "import": "./icon/color/ShopifyColored/l/index.mjs",
+      "types": "./icon/color/ShopifyColored/l/index.d.ts"
+    },
+    "./icon/color/ShopifyColored/m": {
+      "require": "./icon/color/ShopifyColored/m/index.cjs",
+      "import": "./icon/color/ShopifyColored/m/index.mjs",
+      "types": "./icon/color/ShopifyColored/m/index.d.ts"
+    },
+    "./icon/color/Snapchat/l": {
+      "require": "./icon/color/Snapchat/l/index.cjs",
+      "import": "./icon/color/Snapchat/l/index.mjs",
+      "types": "./icon/color/Snapchat/l/index.d.ts"
+    },
+    "./icon/color/Snapchat/m": {
+      "require": "./icon/color/Snapchat/m/index.cjs",
+      "import": "./icon/color/Snapchat/m/index.mjs",
+      "types": "./icon/color/Snapchat/m/index.d.ts"
+    },
+    "./icon/color/TikTokColored/l": {
+      "require": "./icon/color/TikTokColored/l/index.cjs",
+      "import": "./icon/color/TikTokColored/l/index.mjs",
+      "types": "./icon/color/TikTokColored/l/index.d.ts"
+    },
+    "./icon/color/TikTokColored/m": {
+      "require": "./icon/color/TikTokColored/m/index.cjs",
+      "import": "./icon/color/TikTokColored/m/index.mjs",
+      "types": "./icon/color/TikTokColored/m/index.d.ts"
+    },
+    "./icon/color/TikTokColoredInvert/l": {
+      "require": "./icon/color/TikTokColoredInvert/l/index.cjs",
+      "import": "./icon/color/TikTokColoredInvert/l/index.mjs",
+      "types": "./icon/color/TikTokColoredInvert/l/index.d.ts"
+    },
+    "./icon/color/TikTokColoredInvert/m": {
+      "require": "./icon/color/TikTokColoredInvert/m/index.cjs",
+      "import": "./icon/color/TikTokColoredInvert/m/index.mjs",
+      "types": "./icon/color/TikTokColoredInvert/m/index.d.ts"
+    },
+    "./icon/color/WhatConvertsColored/l": {
+      "require": "./icon/color/WhatConvertsColored/l/index.cjs",
+      "import": "./icon/color/WhatConvertsColored/l/index.mjs",
+      "types": "./icon/color/WhatConvertsColored/l/index.d.ts"
+    },
+    "./icon/color/WhatConvertsColored/m": {
+      "require": "./icon/color/WhatConvertsColored/m/index.cjs",
+      "import": "./icon/color/WhatConvertsColored/m/index.mjs",
+      "types": "./icon/color/WhatConvertsColored/m/index.d.ts"
+    },
     "./icon/color/WhatsApp/l": {
       "require": "./icon/color/WhatsApp/l/index.cjs",
       "import": "./icon/color/WhatsApp/l/index.mjs",
@@ -3874,6 +4619,16 @@
       "require": "./icon/color/WhatsApp/m/index.cjs",
       "import": "./icon/color/WhatsApp/m/index.mjs",
       "types": "./icon/color/WhatsApp/m/index.d.ts"
+    },
+    "./icon/color/WooCommerceColored/l": {
+      "require": "./icon/color/WooCommerceColored/l/index.cjs",
+      "import": "./icon/color/WooCommerceColored/l/index.mjs",
+      "types": "./icon/color/WooCommerceColored/l/index.d.ts"
+    },
+    "./icon/color/WooCommerceColored/m": {
+      "require": "./icon/color/WooCommerceColored/m/index.cjs",
+      "import": "./icon/color/WooCommerceColored/m/index.mjs",
+      "types": "./icon/color/WooCommerceColored/m/index.d.ts"
     },
     "./icon/color/Yahoo/l": {
       "require": "./icon/color/Yahoo/l/index.cjs",
@@ -3904,136 +4659,6 @@
       "require": "./icon/color/YoutubeInvert/m/index.cjs",
       "import": "./icon/color/YoutubeInvert/m/index.mjs",
       "types": "./icon/color/YoutubeInvert/m/index.d.ts"
-    },
-    "./icon/external/FacebookClick": {
-      "require": "./icon/external/FacebookClick/index.cjs",
-      "import": "./icon/external/FacebookClick/index.mjs",
-      "types": "./icon/external/FacebookClick/index.d.ts"
-    },
-    "./icon/external/FacebookComment": {
-      "require": "./icon/external/FacebookComment/index.cjs",
-      "import": "./icon/external/FacebookComment/index.mjs",
-      "types": "./icon/external/FacebookComment/index.d.ts"
-    },
-    "./icon/external/FacebookLike": {
-      "require": "./icon/external/FacebookLike/index.cjs",
-      "import": "./icon/external/FacebookLike/index.mjs",
-      "types": "./icon/external/FacebookLike/index.d.ts"
-    },
-    "./icon/external/FacebookSemrush": {
-      "require": "./icon/external/FacebookSemrush/index.cjs",
-      "import": "./icon/external/FacebookSemrush/index.mjs",
-      "types": "./icon/external/FacebookSemrush/index.d.ts"
-    },
-    "./icon/external/FacebookShare": {
-      "require": "./icon/external/FacebookShare/index.cjs",
-      "import": "./icon/external/FacebookShare/index.mjs",
-      "types": "./icon/external/FacebookShare/index.d.ts"
-    },
-    "./icon/external/FacebookView": {
-      "require": "./icon/external/FacebookView/index.cjs",
-      "import": "./icon/external/FacebookView/index.mjs",
-      "types": "./icon/external/FacebookView/index.d.ts"
-    },
-    "./icon/external/InstagramClick": {
-      "require": "./icon/external/InstagramClick/index.cjs",
-      "import": "./icon/external/InstagramClick/index.mjs",
-      "types": "./icon/external/InstagramClick/index.d.ts"
-    },
-    "./icon/external/InstagramComment": {
-      "require": "./icon/external/InstagramComment/index.cjs",
-      "import": "./icon/external/InstagramComment/index.mjs",
-      "types": "./icon/external/InstagramComment/index.d.ts"
-    },
-    "./icon/external/InstagramLike": {
-      "require": "./icon/external/InstagramLike/index.cjs",
-      "import": "./icon/external/InstagramLike/index.mjs",
-      "types": "./icon/external/InstagramLike/index.d.ts"
-    },
-    "./icon/external/InstagramSave": {
-      "require": "./icon/external/InstagramSave/index.cjs",
-      "import": "./icon/external/InstagramSave/index.mjs",
-      "types": "./icon/external/InstagramSave/index.d.ts"
-    },
-    "./icon/external/InstagramView": {
-      "require": "./icon/external/InstagramView/index.cjs",
-      "import": "./icon/external/InstagramView/index.mjs",
-      "types": "./icon/external/InstagramView/index.d.ts"
-    },
-    "./icon/external/LinkedInClick": {
-      "require": "./icon/external/LinkedInClick/index.cjs",
-      "import": "./icon/external/LinkedInClick/index.mjs",
-      "types": "./icon/external/LinkedInClick/index.d.ts"
-    },
-    "./icon/external/LinkedInComment": {
-      "require": "./icon/external/LinkedInComment/index.cjs",
-      "import": "./icon/external/LinkedInComment/index.mjs",
-      "types": "./icon/external/LinkedInComment/index.d.ts"
-    },
-    "./icon/external/LinkedInLike": {
-      "require": "./icon/external/LinkedInLike/index.cjs",
-      "import": "./icon/external/LinkedInLike/index.mjs",
-      "types": "./icon/external/LinkedInLike/index.d.ts"
-    },
-    "./icon/external/LinkedInSemrush": {
-      "require": "./icon/external/LinkedInSemrush/index.cjs",
-      "import": "./icon/external/LinkedInSemrush/index.mjs",
-      "types": "./icon/external/LinkedInSemrush/index.d.ts"
-    },
-    "./icon/external/LinkedInShare": {
-      "require": "./icon/external/LinkedInShare/index.cjs",
-      "import": "./icon/external/LinkedInShare/index.mjs",
-      "types": "./icon/external/LinkedInShare/index.d.ts"
-    },
-    "./icon/external/LinkedInView": {
-      "require": "./icon/external/LinkedInView/index.cjs",
-      "import": "./icon/external/LinkedInView/index.mjs",
-      "types": "./icon/external/LinkedInView/index.d.ts"
-    },
-    "./icon/external/PinterestComment": {
-      "require": "./icon/external/PinterestComment/index.cjs",
-      "import": "./icon/external/PinterestComment/index.mjs",
-      "types": "./icon/external/PinterestComment/index.d.ts"
-    },
-    "./icon/external/PinterestSave": {
-      "require": "./icon/external/PinterestSave/index.cjs",
-      "import": "./icon/external/PinterestSave/index.mjs",
-      "types": "./icon/external/PinterestSave/index.d.ts"
-    },
-    "./icon/external/PinterestSend": {
-      "require": "./icon/external/PinterestSend/index.cjs",
-      "import": "./icon/external/PinterestSend/index.mjs",
-      "types": "./icon/external/PinterestSend/index.d.ts"
-    },
-    "./icon/external/TwitterClick": {
-      "require": "./icon/external/TwitterClick/index.cjs",
-      "import": "./icon/external/TwitterClick/index.mjs",
-      "types": "./icon/external/TwitterClick/index.d.ts"
-    },
-    "./icon/external/TwitterLike": {
-      "require": "./icon/external/TwitterLike/index.cjs",
-      "import": "./icon/external/TwitterLike/index.mjs",
-      "types": "./icon/external/TwitterLike/index.d.ts"
-    },
-    "./icon/external/TwitterReply": {
-      "require": "./icon/external/TwitterReply/index.cjs",
-      "import": "./icon/external/TwitterReply/index.mjs",
-      "types": "./icon/external/TwitterReply/index.d.ts"
-    },
-    "./icon/external/TwitterRetweet": {
-      "require": "./icon/external/TwitterRetweet/index.cjs",
-      "import": "./icon/external/TwitterRetweet/index.mjs",
-      "types": "./icon/external/TwitterRetweet/index.d.ts"
-    },
-    "./icon/external/TwitterSemrush": {
-      "require": "./icon/external/TwitterSemrush/index.cjs",
-      "import": "./icon/external/TwitterSemrush/index.mjs",
-      "types": "./icon/external/TwitterSemrush/index.d.ts"
-    },
-    "./icon/external/TwitterView": {
-      "require": "./icon/external/TwitterView/index.cjs",
-      "import": "./icon/external/TwitterView/index.mjs",
-      "types": "./icon/external/TwitterView/index.d.ts"
     },
     "./icon/lib/cjs": {
       "require": "./icon/lib/cjs/index.cjs",
@@ -4150,6 +4775,56 @@
       "import": "./icon/pay/WeChatPay/m/index.mjs",
       "types": "./icon/pay/WeChatPay/m/index.d.ts"
     },
+    "./icon/platform/AIToolkit": {
+      "require": "./icon/platform/AIToolkit/index.cjs",
+      "import": "./icon/platform/AIToolkit/index.mjs",
+      "types": "./icon/platform/AIToolkit/index.d.ts"
+    },
+    "./icon/platform/AdsToolkit": {
+      "require": "./icon/platform/AdsToolkit/index.cjs",
+      "import": "./icon/platform/AdsToolkit/index.mjs",
+      "types": "./icon/platform/AdsToolkit/index.d.ts"
+    },
+    "./icon/platform/AppCenter": {
+      "require": "./icon/platform/AppCenter/index.cjs",
+      "import": "./icon/platform/AppCenter/index.mjs",
+      "types": "./icon/platform/AppCenter/index.d.ts"
+    },
+    "./icon/platform/ContentToolkit": {
+      "require": "./icon/platform/ContentToolkit/index.cjs",
+      "import": "./icon/platform/ContentToolkit/index.mjs",
+      "types": "./icon/platform/ContentToolkit/index.d.ts"
+    },
+    "./icon/platform/HomePlatform": {
+      "require": "./icon/platform/HomePlatform/index.cjs",
+      "import": "./icon/platform/HomePlatform/index.mjs",
+      "types": "./icon/platform/HomePlatform/index.d.ts"
+    },
+    "./icon/platform/LocalToolkit": {
+      "require": "./icon/platform/LocalToolkit/index.cjs",
+      "import": "./icon/platform/LocalToolkit/index.mjs",
+      "types": "./icon/platform/LocalToolkit/index.d.ts"
+    },
+    "./icon/platform/ReportsToolkit": {
+      "require": "./icon/platform/ReportsToolkit/index.cjs",
+      "import": "./icon/platform/ReportsToolkit/index.mjs",
+      "types": "./icon/platform/ReportsToolkit/index.d.ts"
+    },
+    "./icon/platform/SEOToolkit": {
+      "require": "./icon/platform/SEOToolkit/index.cjs",
+      "import": "./icon/platform/SEOToolkit/index.mjs",
+      "types": "./icon/platform/SEOToolkit/index.d.ts"
+    },
+    "./icon/platform/SocialToolkit": {
+      "require": "./icon/platform/SocialToolkit/index.cjs",
+      "import": "./icon/platform/SocialToolkit/index.mjs",
+      "types": "./icon/platform/SocialToolkit/index.d.ts"
+    },
+    "./icon/platform/TrafficMarketToolkit": {
+      "require": "./icon/platform/TrafficMarketToolkit/index.cjs",
+      "import": "./icon/platform/TrafficMarketToolkit/index.mjs",
+      "types": "./icon/platform/TrafficMarketToolkit/index.d.ts"
+    },
     "./icon": {
       "require": "./icon/index.cjs",
       "import": "./icon/index.mjs",
@@ -4194,6 +4869,11 @@
       "require": "./illustration/CombinedChart/index.cjs",
       "import": "./illustration/CombinedChart/index.mjs",
       "types": "./illustration/CombinedChart/index.d.ts"
+    },
+    "./illustration/Configuration": {
+      "require": "./illustration/Configuration/index.cjs",
+      "import": "./illustration/Configuration/index.mjs",
+      "types": "./illustration/Configuration/index.d.ts"
     },
     "./illustration/Confirmation": {
       "require": "./illustration/Confirmation/index.cjs",
@@ -4435,15 +5115,15 @@
       "import": "./illustration/index.mjs",
       "types": "./illustration/index.d.ts"
     },
-    "./inline-input": {
-      "require": "./inline-input/index.cjs",
-      "import": "./inline-input/index.mjs",
-      "types": "./inline-input/index.d.ts"
-    },
     "./inline-edit": {
       "require": "./inline-edit/index.cjs",
       "import": "./inline-edit/index.mjs",
       "types": "./inline-edit/index.d.ts"
+    },
+    "./inline-input": {
+      "require": "./inline-input/index.cjs",
+      "import": "./inline-input/index.mjs",
+      "types": "./inline-input/index.d.ts"
     },
     "./input": {
       "require": "./input/index.cjs",
@@ -4490,15 +5170,15 @@
       "import": "./notice/index.mjs",
       "types": "./notice/index.d.ts"
     },
-    "./notice-global": {
-      "require": "./notice-global/index.cjs",
-      "import": "./notice-global/index.mjs",
-      "types": "./notice-global/index.d.ts"
-    },
     "./notice-bubble": {
       "require": "./notice-bubble/index.cjs",
       "import": "./notice-bubble/index.mjs",
       "types": "./notice-bubble/index.d.ts"
+    },
+    "./notice-global": {
+      "require": "./notice-global/index.cjs",
+      "import": "./notice-global/index.mjs",
+      "types": "./notice-global/index.d.ts"
     },
     "./outside-click": {
       "require": "./outside-click/index.cjs",
@@ -4619,475 +5299,6 @@
       "require": "./typography/index.cjs",
       "import": "./typography/index.mjs",
       "types": "./typography/index.d.ts"
-    },
-    "./utils/lib/CSSinJS": {
-      "require": "./utils/lib/CSSinJS.cjs",
-      "import": "./utils/lib/CSSinJS.mjs",
-      "types": "./utils/lib/CSSinJS.d.ts"
-    },
-    "./utils/lib/ScreenReaderOnly": {
-      "require": "./utils/lib/ScreenReaderOnly.cjs",
-      "import": "./utils/lib/ScreenReaderOnly.mjs",
-      "types": "./utils/lib/ScreenReaderOnly.d.ts"
-    },
-    "./utils/lib/ThemeProvider": {
-      "require": "./utils/lib/ThemeProvider.cjs",
-      "import": "./utils/lib/ThemeProvider.mjs",
-      "types": "./utils/lib/ThemeProvider.d.ts"
-    },
-    "./utils/lib/addonText": {
-      "require": "./utils/lib/addonText.cjs",
-      "import": "./utils/lib/addonText.mjs",
-      "types": "./utils/lib/addonText.d.ts"
-    },
-    "./utils/lib/addonTextChildren": {
-      "require": "./utils/lib/addonTextChildren.cjs",
-      "import": "./utils/lib/addonTextChildren.mjs",
-      "types": "./utils/lib/addonTextChildren.d.ts"
-    },
-    "./utils/lib/assignProps": {
-      "require": "./utils/lib/assignProps.cjs",
-      "import": "./utils/lib/assignProps.mjs",
-      "types": "./utils/lib/assignProps.d.ts"
-    },
-    "./utils/lib/canUseDOM": {
-      "require": "./utils/lib/canUseDOM.cjs",
-      "import": "./utils/lib/canUseDOM.mjs",
-      "types": "./utils/lib/canUseDOM.d.ts"
-    },
-    "./utils/lib/capitalizeFirstLetter": {
-      "require": "./utils/lib/capitalizeFirstLetter.cjs",
-      "import": "./utils/lib/capitalizeFirstLetter.mjs",
-      "types": "./utils/lib/capitalizeFirstLetter.d.ts"
-    },
-    "./utils/lib/color": {
-      "require": "./utils/lib/color.cjs",
-      "import": "./utils/lib/color.mjs",
-      "types": "./utils/lib/color.d.ts"
-    },
-    "./utils/lib/compose": {
-      "require": "./utils/lib/compose.cjs",
-      "import": "./utils/lib/compose.mjs",
-      "types": "./utils/lib/compose.d.ts"
-    },
-    "./utils/lib/createHoc": {
-      "require": "./utils/lib/createHoc.cjs",
-      "import": "./utils/lib/createHoc.mjs",
-      "types": "./utils/lib/createHoc.d.ts"
-    },
-    "./utils/lib/createUUID": {
-      "require": "./utils/lib/createUUID.cjs",
-      "import": "./utils/lib/createUUID.mjs",
-      "types": "./utils/lib/createUUID.d.ts"
-    },
-    "./utils/lib/cssToIntDefault": {
-      "require": "./utils/lib/cssToIntDefault.cjs",
-      "import": "./utils/lib/cssToIntDefault.mjs",
-      "types": "./utils/lib/cssToIntDefault.d.ts"
-    },
-    "./utils/lib/eventEmitter": {
-      "require": "./utils/lib/eventEmitter.cjs",
-      "import": "./utils/lib/eventEmitter.mjs",
-      "types": "./utils/lib/eventEmitter.d.ts"
-    },
-    "./utils/lib/findComponent": {
-      "require": "./utils/lib/findComponent.cjs",
-      "import": "./utils/lib/findComponent.mjs",
-      "types": "./utils/lib/findComponent.d.ts"
-    },
-    "./utils/lib/fire": {
-      "require": "./utils/lib/fire.cjs",
-      "import": "./utils/lib/fire.mjs",
-      "types": "./utils/lib/fire.d.ts"
-    },
-    "./utils/lib/getDisplayName": {
-      "require": "./utils/lib/getDisplayName.cjs",
-      "import": "./utils/lib/getDisplayName.mjs",
-      "types": "./utils/lib/getDisplayName.d.ts"
-    },
-    "./utils/lib/getEventTarget": {
-      "require": "./utils/lib/getEventTarget.cjs",
-      "import": "./utils/lib/getEventTarget.mjs",
-      "types": "./utils/lib/getEventTarget.d.ts"
-    },
-    "./utils/lib/getOriginChildren": {
-      "require": "./utils/lib/getOriginChildren.cjs",
-      "import": "./utils/lib/getOriginChildren.mjs",
-      "types": "./utils/lib/getOriginChildren.d.ts"
-    },
-    "./utils/lib/getRandomInt": {
-      "require": "./utils/lib/getRandomInt.cjs",
-      "import": "./utils/lib/getRandomInt.mjs",
-      "types": "./utils/lib/getRandomInt.d.ts"
-    },
-    "./utils/lib/getValue": {
-      "require": "./utils/lib/getValue.cjs",
-      "import": "./utils/lib/getValue.mjs",
-      "types": "./utils/lib/getValue.d.ts"
-    },
-    "./utils/lib/hasLabels": {
-      "require": "./utils/lib/hasLabels.cjs",
-      "import": "./utils/lib/hasLabels.mjs",
-      "types": "./utils/lib/hasLabels.d.ts"
-    },
-    "./utils/lib/hasParent": {
-      "require": "./utils/lib/hasParent.cjs",
-      "import": "./utils/lib/hasParent.mjs",
-      "types": "./utils/lib/hasParent.d.ts"
-    },
-    "./utils/lib/if": {
-      "require": "./utils/lib/if.cjs",
-      "import": "./utils/lib/if.mjs",
-      "types": "./utils/lib/if.d.ts"
-    },
-    "./utils/lib/ifChildren": {
-      "require": "./utils/lib/ifChildren.cjs",
-      "import": "./utils/lib/ifChildren.mjs",
-      "types": "./utils/lib/ifChildren.d.ts"
-    },
-    "./utils/lib/injectStyle": {
-      "require": "./utils/lib/injectStyle.cjs",
-      "import": "./utils/lib/injectStyle.mjs",
-      "types": "./utils/lib/injectStyle.d.ts"
-    },
-    "./utils/lib/inputProps": {
-      "require": "./utils/lib/inputProps.cjs",
-      "import": "./utils/lib/inputProps.mjs",
-      "types": "./utils/lib/inputProps.d.ts"
-    },
-    "./utils/lib/isNode": {
-      "require": "./utils/lib/isNode.cjs",
-      "import": "./utils/lib/isNode.mjs",
-      "types": "./utils/lib/isNode.d.ts"
-    },
-    "./utils/lib/isPromise": {
-      "require": "./utils/lib/isPromise.cjs",
-      "import": "./utils/lib/isPromise.mjs",
-      "types": "./utils/lib/isPromise.d.ts"
-    },
-    "./utils/lib/isRetina": {
-      "require": "./utils/lib/isRetina.cjs",
-      "import": "./utils/lib/isRetina.mjs",
-      "types": "./utils/lib/isRetina.d.ts"
-    },
-    "./utils/lib/logger": {
-      "require": "./utils/lib/logger.cjs",
-      "import": "./utils/lib/logger.mjs",
-      "types": "./utils/lib/logger.d.ts"
-    },
-    "./utils/lib/numericChecker": {
-      "require": "./utils/lib/numericChecker.cjs",
-      "import": "./utils/lib/numericChecker.mjs",
-      "types": "./utils/lib/numericChecker.d.ts"
-    },
-    "./utils/lib/ownerDocument": {
-      "require": "./utils/lib/ownerDocument.cjs",
-      "import": "./utils/lib/ownerDocument.mjs",
-      "types": "./utils/lib/ownerDocument.d.ts"
-    },
-    "./utils/lib/pick": {
-      "require": "./utils/lib/pick.cjs",
-      "import": "./utils/lib/pick.mjs",
-      "types": "./utils/lib/pick.d.ts"
-    },
-    "./utils/lib/propsForElement": {
-      "require": "./utils/lib/propsForElement.cjs",
-      "import": "./utils/lib/propsForElement.mjs",
-      "types": "./utils/lib/propsForElement.d.ts"
-    },
-    "./utils/lib/rafTrottle": {
-      "require": "./utils/lib/rafTrottle.cjs",
-      "import": "./utils/lib/rafTrottle.mjs",
-      "types": "./utils/lib/rafTrottle.d.ts"
-    },
-    "./utils/lib/reactToText": {
-      "require": "./utils/lib/reactToText.cjs",
-      "import": "./utils/lib/reactToText.mjs",
-      "types": "./utils/lib/reactToText.d.ts"
-    },
-    "./utils/lib/ref": {
-      "require": "./utils/lib/ref.cjs",
-      "import": "./utils/lib/ref.mjs",
-      "types": "./utils/lib/ref.d.ts"
-    },
-    "./utils/lib/setRef": {
-      "require": "./utils/lib/setRef.cjs",
-      "import": "./utils/lib/setRef.mjs",
-      "types": "./utils/lib/setRef.d.ts"
-    },
-    "./utils/lib/syncScroll": {
-      "require": "./utils/lib/syncScroll.cjs",
-      "import": "./utils/lib/syncScroll.mjs",
-      "types": "./utils/lib/syncScroll.d.ts"
-    },
-    "./utils/lib/uncontroll": {
-      "require": "./utils/lib/uncontroll.cjs",
-      "import": "./utils/lib/uncontroll.mjs",
-      "types": "./utils/lib/uncontroll.d.ts"
-    },
-    "./utils/lib/uniqueID": {
-      "require": "./utils/lib/uniqueID.cjs",
-      "import": "./utils/lib/uniqueID.mjs",
-      "types": "./utils/lib/uniqueID.d.ts"
-    },
-    "./utils/lib/useCssVariable": {
-      "require": "./utils/lib/useCssVariable.cjs",
-      "import": "./utils/lib/useCssVariable.mjs",
-      "types": "./utils/lib/useCssVariable.d.ts"
-    },
-    "./utils/lib/core/index": {
-      "require": "./utils/lib/core/index.cjs",
-      "import": "./utils/lib/core/index.mjs",
-      "types": "./utils/lib/core/index.d.ts"
-    },
-    "./utils/lib/core/register": {
-      "require": "./utils/lib/core/register.cjs",
-      "import": "./utils/lib/core/register.mjs",
-      "types": "./utils/lib/core/register.d.ts"
-    },
-    "./utils/lib/enhances/WithAutoFocus": {
-      "require": "./utils/lib/enhances/WithAutoFocus.cjs",
-      "import": "./utils/lib/enhances/WithAutoFocus.mjs",
-      "types": "./utils/lib/enhances/WithAutoFocus.d.ts"
-    },
-    "./utils/lib/enhances/WithCSS": {
-      "require": "./utils/lib/enhances/WithCSS.cjs",
-      "import": "./utils/lib/enhances/WithCSS.mjs",
-      "types": "./utils/lib/enhances/WithCSS.d.ts"
-    },
-    "./utils/lib/enhances/WithI18n": {
-      "require": "./utils/lib/enhances/WithI18n.cjs",
-      "import": "./utils/lib/enhances/WithI18n.mjs",
-      "types": "./utils/lib/enhances/WithI18n.d.ts"
-    },
-    "./utils/lib/enhances/WithKeyboardFocus": {
-      "require": "./utils/lib/enhances/WithKeyboardFocus.cjs",
-      "import": "./utils/lib/enhances/WithKeyboardFocus.mjs",
-      "types": "./utils/lib/enhances/WithKeyboardFocus.d.ts"
-    },
-    "./utils/lib/enhances/WithRef": {
-      "require": "./utils/lib/enhances/WithRef.cjs",
-      "import": "./utils/lib/enhances/WithRef.mjs",
-      "types": "./utils/lib/enhances/WithRef.d.ts"
-    },
-    "./utils/lib/enhances/a11yEnhance": {
-      "require": "./utils/lib/enhances/a11yEnhance.cjs",
-      "import": "./utils/lib/enhances/a11yEnhance.mjs",
-      "types": "./utils/lib/enhances/a11yEnhance.d.ts"
-    },
-    "./utils/lib/enhances/animatedSizeEnhance": {
-      "require": "./utils/lib/enhances/animatedSizeEnhance.cjs",
-      "import": "./utils/lib/enhances/animatedSizeEnhance.mjs",
-      "types": "./utils/lib/enhances/animatedSizeEnhance.d.ts"
-    },
-    "./utils/lib/enhances/autoFocusEnhance": {
-      "require": "./utils/lib/enhances/autoFocusEnhance.cjs",
-      "import": "./utils/lib/enhances/autoFocusEnhance.mjs",
-      "types": "./utils/lib/enhances/autoFocusEnhance.d.ts"
-    },
-    "./utils/lib/enhances/contextEnhance": {
-      "require": "./utils/lib/enhances/contextEnhance.cjs",
-      "import": "./utils/lib/enhances/contextEnhance.mjs",
-      "types": "./utils/lib/enhances/contextEnhance.d.ts"
-    },
-    "./utils/lib/enhances/i18nEnhance": {
-      "require": "./utils/lib/enhances/i18nEnhance.cjs",
-      "import": "./utils/lib/enhances/i18nEnhance.mjs",
-      "types": "./utils/lib/enhances/i18nEnhance.d.ts"
-    },
-    "./utils/lib/enhances/keyboardFocusEnhance": {
-      "require": "./utils/lib/enhances/keyboardFocusEnhance.cjs",
-      "import": "./utils/lib/enhances/keyboardFocusEnhance.mjs",
-      "types": "./utils/lib/enhances/keyboardFocusEnhance.d.ts"
-    },
-    "./utils/lib/enhances/resolveColorEnhance": {
-      "require": "./utils/lib/enhances/resolveColorEnhance.cjs",
-      "import": "./utils/lib/enhances/resolveColorEnhance.mjs",
-      "types": "./utils/lib/enhances/resolveColorEnhance.d.ts"
-    },
-    "./utils/lib/focus-lock/focusBorders": {
-      "require": "./utils/lib/focus-lock/focusBorders.cjs",
-      "import": "./utils/lib/focus-lock/focusBorders.mjs",
-      "types": "./utils/lib/focus-lock/focusBorders.d.ts"
-    },
-    "./utils/lib/focus-lock/getFocusableIn": {
-      "require": "./utils/lib/focus-lock/getFocusableIn.cjs",
-      "import": "./utils/lib/focus-lock/getFocusableIn.mjs",
-      "types": "./utils/lib/focus-lock/getFocusableIn.d.ts"
-    },
-    "./utils/lib/focus-lock/isFocusInside": {
-      "require": "./utils/lib/focus-lock/isFocusInside.cjs",
-      "import": "./utils/lib/focus-lock/isFocusInside.mjs",
-      "types": "./utils/lib/focus-lock/isFocusInside.d.ts"
-    },
-    "./utils/lib/focus-lock/isFocusable": {
-      "require": "./utils/lib/focus-lock/isFocusable.cjs",
-      "import": "./utils/lib/focus-lock/isFocusable.mjs",
-      "types": "./utils/lib/focus-lock/isFocusable.d.ts"
-    },
-    "./utils/lib/focus-lock/setFocus": {
-      "require": "./utils/lib/focus-lock/setFocus.cjs",
-      "import": "./utils/lib/focus-lock/setFocus.mjs",
-      "types": "./utils/lib/focus-lock/setFocus.d.ts"
-    },
-    "./utils/lib/themes/auto.css": {
-      "require": "./utils/lib/themes/auto.css",
-      "import": "./utils/lib/themes/auto.css"
-    },
-    "./utils/lib/themes/dark.css": {
-      "require": "./utils/lib/themes/dark.css",
-      "import": "./utils/lib/themes/dark.css"
-    },
-    "./utils/lib/themes/default.css": {
-      "require": "./utils/lib/themes/default.css",
-      "import": "./utils/lib/themes/default.css"
-    },
-    "./utils/lib/themes/light.css": {
-      "require": "./utils/lib/themes/light.css",
-      "import": "./utils/lib/themes/light.css"
-    },
-    "./utils/lib/use/useColorResolver": {
-      "require": "./utils/lib/use/useColorResolver.cjs",
-      "import": "./utils/lib/use/useColorResolver.mjs",
-      "types": "./utils/lib/use/useColorResolver.d.ts"
-    },
-    "./utils/lib/use/useCss": {
-      "require": "./utils/lib/use/useCss.cjs",
-      "import": "./utils/lib/use/useCss.mjs",
-      "types": "./utils/lib/use/useCss.d.ts"
-    },
-    "./utils/lib/use/useEnhancedEffect": {
-      "require": "./utils/lib/use/useEnhancedEffect.cjs",
-      "import": "./utils/lib/use/useEnhancedEffect.mjs",
-      "types": "./utils/lib/use/useEnhancedEffect.d.ts"
-    },
-    "./utils/lib/use/useEventCallback": {
-      "require": "./utils/lib/use/useEventCallback.cjs",
-      "import": "./utils/lib/use/useEventCallback.mjs",
-      "types": "./utils/lib/use/useEventCallback.d.ts"
-    },
-    "./utils/lib/use/useEventListener": {
-      "require": "./utils/lib/use/useEventListener.cjs",
-      "import": "./utils/lib/use/useEventListener.mjs",
-      "types": "./utils/lib/use/useEventListener.d.ts"
-    },
-    "./utils/lib/use/useFocusLock": {
-      "require": "./utils/lib/use/useFocusLock.cjs",
-      "import": "./utils/lib/use/useFocusLock.mjs",
-      "types": "./utils/lib/use/useFocusLock.d.ts"
-    },
-    "./utils/lib/use/usePreventScroll": {
-      "require": "./utils/lib/use/usePreventScroll.cjs",
-      "import": "./utils/lib/use/usePreventScroll.mjs",
-      "types": "./utils/lib/use/usePreventScroll.d.ts"
-    },
-    "./utils/lib/components/invalid-state-pattern/InvalidStatePattern": {
-      "require": "./utils/lib/components/invalid-state-pattern/InvalidStatePattern.cjs",
-      "import": "./utils/lib/components/invalid-state-pattern/InvalidStatePattern.mjs",
-      "types": "./utils/lib/components/invalid-state-pattern/InvalidStatePattern.d.ts"
-    },
-    "./utils/lib/components/invalid-state-pattern/invalidStatePattern.shadow.css": {
-      "require": "./utils/lib/components/invalid-state-pattern/invalidStatePattern.shadow.css",
-      "import": "./utils/lib/components/invalid-state-pattern/invalidStatePattern.shadow.css"
-    },
-    "./utils/lib/core/enhancement/Children": {
-      "require": "./utils/lib/core/enhancement/Children.cjs",
-      "import": "./utils/lib/core/enhancement/Children.mjs",
-      "types": "./utils/lib/core/enhancement/Children.d.ts"
-    },
-    "./utils/lib/core/enhancement/Root": {
-      "require": "./utils/lib/core/enhancement/Root.cjs",
-      "import": "./utils/lib/core/enhancement/Root.mjs",
-      "types": "./utils/lib/core/enhancement/Root.d.ts"
-    },
-    "./utils/lib/core/enhancement/bindHandler": {
-      "require": "./utils/lib/core/enhancement/bindHandler.cjs",
-      "import": "./utils/lib/core/enhancement/bindHandler.mjs",
-      "types": "./utils/lib/core/enhancement/bindHandler.d.ts"
-    },
-    "./utils/lib/core/enhancement/dataName": {
-      "require": "./utils/lib/core/enhancement/dataName.cjs",
-      "import": "./utils/lib/core/enhancement/dataName.mjs",
-      "types": "./utils/lib/core/enhancement/dataName.d.ts"
-    },
-    "./utils/lib/core/enhancement/enhance": {
-      "require": "./utils/lib/core/enhancement/enhance.cjs",
-      "import": "./utils/lib/core/enhancement/enhance.mjs",
-      "types": "./utils/lib/core/enhancement/enhance.d.ts"
-    },
-    "./utils/lib/core/enhancement/functionDefaultProps": {
-      "require": "./utils/lib/core/enhancement/functionDefaultProps.cjs",
-      "import": "./utils/lib/core/enhancement/functionDefaultProps.mjs",
-      "types": "./utils/lib/core/enhancement/functionDefaultProps.d.ts"
-    },
-    "./utils/lib/core/enhancement/hoistProps": {
-      "require": "./utils/lib/core/enhancement/hoistProps.cjs",
-      "import": "./utils/lib/core/enhancement/hoistProps.mjs",
-      "types": "./utils/lib/core/enhancement/hoistProps.d.ts"
-    },
-    "./utils/lib/core/enhancement/i18n": {
-      "require": "./utils/lib/core/enhancement/i18n.cjs",
-      "import": "./utils/lib/core/enhancement/i18n.mjs",
-      "types": "./utils/lib/core/enhancement/i18n.d.ts"
-    },
-    "./utils/lib/core/enhancement/inheritedName": {
-      "require": "./utils/lib/core/enhancement/inheritedName.cjs",
-      "import": "./utils/lib/core/enhancement/inheritedName.mjs",
-      "types": "./utils/lib/core/enhancement/inheritedName.d.ts"
-    },
-    "./utils/lib/core/enhancement/staticChildren": {
-      "require": "./utils/lib/core/enhancement/staticChildren.cjs",
-      "import": "./utils/lib/core/enhancement/staticChildren.mjs",
-      "types": "./utils/lib/core/enhancement/staticChildren.d.ts"
-    },
-    "./utils/lib/core/enhancement/style": {
-      "require": "./utils/lib/core/enhancement/style.cjs",
-      "import": "./utils/lib/core/enhancement/style.mjs",
-      "types": "./utils/lib/core/enhancement/style.d.ts"
-    },
-    "./utils/lib/core/enhancement/uncontrolledProps": {
-      "require": "./utils/lib/core/enhancement/uncontrolledProps.cjs",
-      "import": "./utils/lib/core/enhancement/uncontrolledProps.mjs",
-      "types": "./utils/lib/core/enhancement/uncontrolledProps.d.ts"
-    },
-    "./utils/lib/core/styled/index": {
-      "require": "./utils/lib/core/styled/index.cjs",
-      "import": "./utils/lib/core/styled/index.mjs",
-      "types": "./utils/lib/core/styled/index.d.ts"
-    },
-    "./utils/lib/core/styled/sstyled": {
-      "require": "./utils/lib/core/styled/sstyled.cjs",
-      "import": "./utils/lib/core/styled/sstyled.mjs",
-      "types": "./utils/lib/core/styled/sstyled.d.ts"
-    },
-    "./utils/lib/core/types/Component": {
-      "require": "./utils/lib/core/types/Component.cjs",
-      "import": "./utils/lib/core/types/Component.mjs",
-      "types": "./utils/lib/core/types/Component.d.ts"
-    },
-    "./utils/lib/core/types/UnknownProperties": {
-      "require": "./utils/lib/core/types/UnknownProperties.cjs",
-      "import": "./utils/lib/core/types/UnknownProperties.mjs",
-      "types": "./utils/lib/core/types/UnknownProperties.d.ts"
-    },
-    "./utils/lib/core/types/index": {
-      "require": "./utils/lib/core/types/index.cjs",
-      "import": "./utils/lib/core/types/index.mjs",
-      "types": "./utils/lib/core/types/index.d.ts"
-    },
-    "./utils/lib/core/types/symbols": {
-      "require": "./utils/lib/core/types/symbols.cjs",
-      "import": "./utils/lib/core/types/symbols.mjs",
-      "types": "./utils/lib/core/types/symbols.d.ts"
-    },
-    "./utils/lib/style/var": {
-      "require": "./utils/lib/style/var.css",
-      "import": "./utils/lib/style/var.css"
-    },
-    "./utils": {
-      "require": "./utils/index.cjs",
-      "import": "./utils/index.mjs",
-      "types": "./utils/index.d.ts"
     },
     "./widget-empty": {
       "require": "./widget-empty/index.cjs",

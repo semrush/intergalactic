@@ -3,7 +3,7 @@ import { Flex } from '@semcore/flex-box';
 import DropdownMenu from '@semcore/dropdown-menu';
 import Button from '@semcore/button';
 import FileExportM from '@semcore/icon/FileExport/m';
-import DataTable from '@semcore/data-table';
+import { DataTable } from '@semcore/data-table';
 
 const extensions = ['png', 'jpeg', 'webp'];
 
@@ -57,15 +57,18 @@ const Demo = () => {
         </svg>
       </div>
 
-      <DataTable data={data} aria-label={'Export in image'} ref={tableRef} w={500}>
-        <DataTable.Head>
-          <DataTable.Column name='keyword' children='Keyword' />
-          <DataTable.Column name='kd' children='KD,%' />
-          <DataTable.Column name='cpc' children='CPC' />
-          <DataTable.Column name='vol' children='Vol.' />
-        </DataTable.Head>
-        <DataTable.Body />
-      </DataTable>
+      <DataTable
+        data={data}
+        aria-label={'Export in image'}
+        ref={tableRef}
+        w={500}
+        columns={[
+          { name: 'keyword', children: 'Keyword' },
+          { name: 'kd', children: 'KD %' },
+          { name: 'cpc', children: 'CPC' },
+          { name: 'vol', children: 'Vol.' },
+        ]}
+      />
 
       <DropdownMenu>
         <DropdownMenu.Trigger tag={Button} ml={4}>

@@ -1,11 +1,10 @@
 import React from 'react';
-import createComponent, { Component, Root, sstyled } from '@semcore/core';
-import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
+import { createComponent, Component, Root, sstyled } from '@semcore/core';
+import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import ChevronDown from '@semcore/icon/ChevronDown/m';
 import Spin from '@semcore/spin';
 import { Box } from '@semcore/flex-box';
-import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
-import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 
 import style from './style/link-trigger.shadow.css';
 
@@ -15,7 +14,7 @@ class RootLinkTrigger extends Component {
   static defaultProps = {
     size: 'm',
   };
-  static enhance = [keyboardFocusEnhance(), resolveColorEnhance()];
+  static enhance = [resolveColorEnhance()];
 
   getTextProps() {
     const { placeholder, empty } = this.asProps;
@@ -33,7 +32,13 @@ class RootLinkTrigger extends Component {
     const color = resolveColor(providedColor);
 
     return sstyled(styles)(
-      <SLinkTrigger render={Box} tag='button' type='button' use:color={color}>
+      <SLinkTrigger
+        render={Box}
+        tag='button'
+        type='button'
+        tabIndex={loading ? -1 : 0}
+        use:color={color}
+      >
         {addonTextChildren(Children, LinkTrigger.Text, LinkTrigger.Addon, empty)}
         <SLinkAddon>
           {loading ? <Spin size='xs' theme='currentColor' /> : <ChevronDown />}

@@ -4,25 +4,16 @@ SCircle {
   justify-content: center;
   overflow: hidden;
   border-radius: 50%;
-  margin: 0 var(--intergalactic-spacing-1x, 4px);
-
-  &:first-child {
-    margin-left: 0;
-  }
-
-  &:last-child {
-    margin-right: 0;
-  }
 }
 
 SCircle[size="m"] {
-  width: 16px;
-  height: 16px;
+  width: 12px;
+  height: 12px;
 }
 
 SCircle[size="l"] {
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
 }
 
 SCircle[size="xl"] {
@@ -35,9 +26,11 @@ SAddon {
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  padding-left: var(--intergalactic-spacing-1x, 4px);
-  padding-right: var(--intergalactic-spacing-1x, 4px);
   position: relative;
+
+  &:last-child {
+    padding-right: 0;
+  }
 }
 
 STagContainer SAddon {
@@ -61,11 +54,7 @@ STagContainerClose {
   font-weight: var(--intergalactic-medium, 500);
   color: var(--tag-color);
 
-  &[interactive][keyboardFocused] {
-    box-shadow: var(
-      --intergalactic-keyboard-focus,
-      0px 0px 0px 3px rgba(0, 143, 248, 0.5)
-    );
+  &[interactive]:focus-visible {
     z-index: 1;
   }
 
@@ -97,9 +86,7 @@ STagContainerClose {
   }
 
   &:active,
-  &:hover,
-  &:focus {
-    outline: 0;
+  &:hover {
     text-decoration: none;
   }
 }
@@ -117,16 +104,12 @@ STag[interactiveView] {
 
 STag[size="m"],
 STagContainerClose[size="m"],
-STagContainer[size="m"] SAddon {
+STagContainer[size="m"] {
   height: 20px;
   min-width: 20px;
 
-  & SCircle:first-child {
-    margin-left: calc(-1 * var(--intergalactic-spacing-05x, 2px));
-  }
-
-  & SCircle:last-child {
-    margin-right: calc(-1 * var(--intergalactic-spacing-05x, 2px));
+  & SAddon:first-child {
+    padding-left: 0;
   }
 
   & SText {
@@ -137,7 +120,7 @@ STagContainer[size="m"] SAddon {
 
 STag[size="l"],
 STagContainerClose[size="l"],
-STagContainer[size="l"] SAddon {
+STagContainer[size="l"] {
   height: 28px;
   min-width: 28px;
 
@@ -241,29 +224,15 @@ SText {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  outline: none;
   position: relative;
 }
 
-SText[keyboardFocused] {
+SText:focus-visible {
   box-shadow: var(
     --intergalactic-keyboard-focus,
     0px 0px 0px 3px rgba(0, 143, 248, 0.5)
   );
   z-index: 1;
-}
-
-SText:not(:only-child):first-child {
-  padding-right: 0;
-}
-
-SText:not(:first-child):not(:last-child) {
-  padding-left: 0;
-  padding-right: 0;
-}
-
-SText:not(:only-child):last-child {
-  padding-left: 0;
 }
 
 SClose {
@@ -272,7 +241,7 @@ SClose {
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  padding: var(--intergalactic-spacing-1x, 4px);
+  padding: var(--intergalactic-spacing-1x, 4px) 0;
   position: relative;
 
   & path {
@@ -316,7 +285,6 @@ STagContainer {
     &:not(:first-child) {
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
-      padding-left: var(--intergalactic-spacing-05x, 2px);
 
       &::before,
       &::after {

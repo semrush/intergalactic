@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.0] - 2025-05-19
+
+### Removed
+
+- External icons.
+
+## [4.62.1] - 2025-05-13
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [5.41.3 ~> 5.41.4], `@semcore/utils` [4.48.4 ~> 4.48.5], `@semcore/core` [2.39.3 ~> 2.39.4]).
+
 ## [4.62.0] - 2025-04-25
 
 ### Added

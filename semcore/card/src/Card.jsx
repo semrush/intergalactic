@@ -1,12 +1,12 @@
 import React from 'react';
-import createComponent, { Component, sstyled, Root } from '@semcore/core';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import { ButtonLink } from '@semcore/button';
 import { DescriptionTooltip } from '@semcore/tooltip';
 import InfoM from '@semcore/icon/Info/m';
 import style from './style/card.shadow.css';
-import { isAdvanceMode } from '@semcore/utils/lib/findComponent';
+import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 
 class CardRoot extends Component {
   static displayName = 'Card';

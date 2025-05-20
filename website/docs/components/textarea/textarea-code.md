@@ -13,7 +13,7 @@ To control the automatic stretching, you can set limits on the number of lines u
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/textarea_with_auto_height.tsx';
+  export Demo from 'stories/components/textarea/docs/examples/textarea_with_auto_height.tsx';
 </script>
 
 :::

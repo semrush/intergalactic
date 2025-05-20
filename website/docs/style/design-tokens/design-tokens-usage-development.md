@@ -73,13 +73,13 @@ Design token JSON-files [produced by Tokens Studio Figma plugin](https://www.fig
 
 <script lang="tsx">
 import React from 'react';
-import '@semcore/ui/utils/lib/themes/default.css'; /** TO REMOVE WHEN THEME PR WILL BE MERGED */
-import Button from '@semcore/ui/button';
-import { Box } from '@semcore/ui/flex-box';
+import '@semcore/core/lib/themes/default.css'; /** TO REMOVE WHEN THEME PR WILL BE MERGED */
+import Button from '@semcore/button';
+import { Box } from '@semcore/flex-box';
 import CheckM from '@semcore/icon/Check/m';
-import CopyM from '@semcore/ui/icon/Copy/m'
+import CopyM from '@semcore/icon/Copy/m';
 import cx from 'classnames';
-import { processTokens, tokensToJson, tokensToCss } from '@semcore/utils/theme/utils';
+import { processTokens, tokensToJson, tokensToCss } from '@semcore/core/lib/theme/utils';
 import styles from './processor.module.css';
 import Copy from '@components/Copy';
 

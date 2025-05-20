@@ -1,7 +1,7 @@
 import React from 'react';
-import Card from 'intergalactic/card';
-import SettingsM from 'intergalactic/icon/Settings/m';
-import DataTable from 'intergalactic/data-table';
+import Card from '@semcore/card';
+import SettingsM from '@semcore/icon/Settings/m';
+import { DataTable } from '@semcore/data-table';
 
 const tooltipContent = `Hey! Don't forget to place some useful information here.`;
 const data = [
@@ -55,15 +55,16 @@ const Demo = () => (
       </Card.Description>
     </Card.Header>
     <Card.Body p={'0 0 20px 0'}>
-      <DataTable data={data} aria-label={'Table in card'}>
-        <DataTable.Head>
-          <DataTable.Column name='keyword' children='Keyword' />
-          <DataTable.Column name='kd' children='KD,%' />
-          <DataTable.Column name='cpc' children='CPC' />
-          <DataTable.Column name='vol' children='Vol.' />
-        </DataTable.Head>
-        <DataTable.Body />
-      </DataTable>
+      <DataTable
+        data={data}
+        aria-label={'Table in card'}
+        columns={[
+          { name: 'keyword', children: 'Keyword' },
+          { name: 'kd', children: 'KD,%' },
+          { name: 'cpc', children: 'CPC' },
+          { name: 'vol', children: 'Vol.' },
+        ]}
+      />
     </Card.Body>
   </Card>
 );

@@ -1,30 +1,29 @@
 import React from 'react';
 import Portal from '@semcore/portal';
 import manager from './NoticeBubbleManager';
-import createComponent, { Component, sstyled, Root } from '@semcore/core';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import { Animation } from '@semcore/animation';
 import { Flex, Box } from '@semcore/flex-box';
-import fire from '@semcore/utils/lib/fire';
-import isNode from '@semcore/utils/lib/isNode';
-import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
+import fire from '@semcore/core/lib/utils/fire';
+import isNode from '@semcore/core/lib/utils/isNode';
+import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import CloseIcon from '@semcore/icon/Close/m';
 import { Timer } from './utils';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
-import { useCssVariable } from '@semcore/utils/lib/useCssVariable';
-import { contextThemeEnhance } from '@semcore/utils/lib/ThemeProvider';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import { useCssVariable } from '@semcore/core/lib/utils/useCssVariable';
+import { contextThemeEnhance } from '@semcore/core/lib/utils/ThemeProvider';
 import Button from '@semcore/button';
-import { useFocusLock } from '@semcore/utils/lib/use/useFocusLock';
-import { Hint } from '@semcore/tooltip';
+import { useFocusLock } from '@semcore/core/lib/utils/use/useFocusLock';
 import {
   ZIndexStackingContextProvider,
   zIndexStackingEnhance,
-} from '@semcore/utils/lib/zIndexStacking';
+} from '@semcore/core/lib/utils/zIndexStacking';
 
 import style from './style/notice-bubble.shadow.css';
-import { forkRef, useForkRef } from '@semcore/utils/lib/ref';
-import { getFocusableIn } from '@semcore/utils/lib/focus-lock/getFocusableIn';
-import { setFocus } from '@semcore/utils/lib/use/useFocusLock';
+import { forkRef, useForkRef } from '@semcore/core/lib/utils/ref';
+import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
+import { setFocus } from '@semcore/core/lib/utils/use/useFocusLock';
 
 const Notices = (props) => {
   const { styles, data = [], tag: SView = ViewInfo } = props;
@@ -198,7 +197,7 @@ class ViewInfo extends Component {
 
   render() {
     const SBubble = FocusLock;
-    const SDismiss = Hint.Trigger;
+    const SDismiss = Button;
     const SContent = Flex;
     const SMessage = 'div';
     const SAction = 'div';
@@ -228,7 +227,6 @@ class ViewInfo extends Component {
         <SDismiss
           // biome-ignore lint/a11y/useValidAriaValues:
           aria-haspopup={undefined}
-          tag={Button}
           type='button'
           use='tertiary'
           size='m'

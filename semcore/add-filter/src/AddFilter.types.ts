@@ -1,4 +1,4 @@
-import { Intergalactic } from '@semcore/utils/lib/core';
+import { Intergalactic } from '@semcore/core';
 import { FlexProps } from '@semcore/flex-box';
 import Select from '@semcore/select';
 import Input from '@semcore/input';

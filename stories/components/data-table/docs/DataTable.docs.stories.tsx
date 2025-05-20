@@ -1,38 +1,38 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import DataTable from '@semcore/data-table';
+import { DataTable } from '@semcore/data-table';
 
 import BaseExample from './examples/base';
 import AccessToCellsExample from './examples/access-to-cells';
 import AccessToSetOfCellsExample from './examples/access-to-set-of-cells';
 import AccordionInsideTableExample from './examples/accordion-inside-table';
-import AddingAdditionalElementsToTableBodyExample from './examples/adding-additional-elements-to-table-body';
-import AdditionalElementsInHeaderExample from './examples/additional-elements-in-header';
 import BordersExample from './examples/borders';
+import CheckboxInTableExample from './examples/checkbox-in-table';
 import ColumnAlignmentExample from './examples/column-alignment';
 import ColumnExpandExample from './examples/column-expand';
 import ColumnSizeExample from './examples/column-sizes';
 import ColumnsMergingExample from './examples/columns-merging';
 import CompactExample from './examples/compact';
 import CustomRowsRenderingExample from './examples/custom-rows-rendering';
-import CustomViewForTableBodyExample from './examples/custom-view-for-table-body';
 import CustomizingHeaderExample from './examples/customizing-header';
+import EmptyTableExample from './examples/empty-table';
 import ExportInImageExample from './examples/export-in-image';
 import FixedColumnsExample from './examples/fixed-columns';
 import FixedHeaderExample from './examples/fixed-header';
 import MultiLevelHeaderExample from './examples/multi-level-header';
 import PaginationExample from './examples/pagination';
 import RowsMergingExample from './examples/rows-merging';
+import RowThemesExample from './examples/row-themes';
 import ScrollInTableExample from './examples/scroll-in-table';
 import SecondaryTableExample from './examples/secondary-table';
 import SkeletonInTableExample from './examples/skeleton-in-table';
 import SpinContainerInTableExample from './examples/spin-container-in-table';
 import SortingExample from './examples/sorting';
 import SortingChangingSizeExample from './examples/sorting-changing-size';
-import SortingChangingSizeByColumnsExample from './examples/sorting-changing-size-by-columns';
 import TableInTableExample from './examples/table-in-table';
 import TableInTableWithFixedColumnExample from './examples/table-in-table-with-fixed-column';
 import VirtualScrollInTableExample from './examples/virtual-scroll-in-table';
+import VirtualScrollInTableDifferentHeightExample from './examples/virtual-scroll-in-table-different-height';
 
 const meta: Meta<typeof DataTable> = {
   title: 'Components/DataTable/Documentation',
@@ -58,16 +58,12 @@ export const AccordionInsideTable: Story = {
   render: AccordionInsideTableExample,
 };
 
-export const AddingAdditionalElementsToTableBody: Story = {
-  render: AddingAdditionalElementsToTableBodyExample,
-};
-
-export const AdditionalElementsInHeader: Story = {
-  render: AdditionalElementsInHeaderExample,
-};
-
 export const Borders: Story = {
   render: BordersExample,
+};
+
+export const CheckboxInTable: Story = {
+  render: CheckboxInTableExample,
 };
 
 export const ColumnAlignment: Story = {
@@ -94,12 +90,12 @@ export const CustomRowsRendering: Story = {
   render: CustomRowsRenderingExample,
 };
 
-export const CustomViewForTableBody: Story = {
-  render: CustomViewForTableBodyExample,
-};
-
 export const CustomizingHeader: Story = {
   render: CustomizingHeaderExample,
+};
+
+export const EmptyTable: Story = {
+  render: EmptyTableExample,
 };
 
 export const ExportInImage: Story = {
@@ -126,6 +122,10 @@ export const RowsMerging: Story = {
   render: RowsMergingExample,
 };
 
+export const RowThemes: Story = {
+  render: RowThemesExample,
+};
+
 export const ScrollInTable: Story = {
   render: ScrollInTableExample,
 };
@@ -150,10 +150,6 @@ export const SortingChangingSize: Story = {
   render: SortingChangingSizeExample,
 };
 
-export const SortingChangingSizeByColumns: Story = {
-  render: SortingChangingSizeByColumnsExample,
-};
-
 export const TableInTable: Story = {
   render: TableInTableExample,
 };
@@ -164,4 +160,8 @@ export const TableInTableWithFixedColumn: Story = {
 
 export const VirtualScrollInTable: Story = {
   render: VirtualScrollInTableExample,
+};
+
+export const VirtualScrollInTableDifferentHeight: Story = {
+  render: VirtualScrollInTableDifferentHeightExample,
 };

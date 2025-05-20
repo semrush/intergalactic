@@ -1,17 +1,20 @@
 import React from 'react';
-import DataTable from '@semcore/data-table';
+import { DataTable } from '@semcore/data-table';
 
 const Demo = () => {
   return (
-    <DataTable data={data} aria-label={'Scroll inside'}>
-      <DataTable.Head wMin={1000}>
-        <DataTable.Column name='keyword' children='Keyword' />
-        <DataTable.Column name='kd' children='KD,%' />
-        <DataTable.Column name='cpc' children='CPC' />
-        <DataTable.Column name='vol' children='Vol.' />
-      </DataTable.Head>
-      <DataTable.Body hMax={200} />
-    </DataTable>
+    <DataTable
+      data={data}
+      aria-label={'Scroll inside'}
+      hMax={200}
+      wMax={400}
+      columns={[
+        { name: 'keyword', children: 'Keyword', gtcWidth: '150px' },
+        { name: 'kd', children: 'KD %', gtcWidth: '150px' },
+        { name: 'cpc', children: 'CPC', gtcWidth: '150px' },
+        { name: 'vol', children: 'Vol.', gtcWidth: '150px' },
+      ]}
+    />
   );
 };
 

@@ -1,7 +1,6 @@
 import { BoxProps, FlexProps, Flex } from '@semcore/flex-box';
 import { PropGetterFn, Intergalactic, UnknownProperties } from '@semcore/core';
 import { CollapseProps } from '@semcore/animation';
-import { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import { Text } from '@semcore/typography';
 
 export type AccordionValue = null | number | string | Array<number | string | null>;
@@ -70,10 +69,9 @@ export type AccordionItemContext = {
   selected?: boolean;
 };
 
-export type AccordionItemToggleProps = BoxProps &
-  KeyboardFocusProps & {
-    tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-  };
+export type AccordionItemToggleProps = BoxProps & {
+  tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+};
 export type ChevronItemProps = BoxProps & {
   /**
    * Chevron size

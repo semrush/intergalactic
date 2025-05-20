@@ -113,11 +113,11 @@ test.describe('Filter-trigger', () => {
         const buttonTRigger = await button.locator('[data-ui-name="FilterTrigger.TriggerButton"]');
         await expect(buttonTRigger).toHaveAttribute('type', 'button');
         await expect(buttonTRigger).toHaveAttribute('role', 'combobox');
-        await expect(buttonTRigger).toHaveAttribute('tabindex', '-1');
+        await expect(buttonTRigger).toHaveAttribute('tabindex', '0');
 
         const hint = button.locator('[data-ui-name="FilterTrigger.ClearButton"]');
 
-        await expect(hint).toHaveAttribute('tabindex', '-1');
+        await expect(hint).toHaveAttribute('tabindex', '0');
         await expect(hint).toHaveAttribute('aria-label', 'Clear');
         await expect(hint).toHaveAttribute('type', 'button');
       });
@@ -152,6 +152,7 @@ test.describe('Filter-trigger', () => {
       await page.keyboard.press('Tab');
       const trigger = page.locator('[data-ui-name="FilterTrigger.TriggerButton"]');
       await trigger.hover();
+      await new Promise((resolve) => setTimeout(resolve, 250));
       await expect(page).toHaveScreenshot();
       await page.keyboard.press('ArrowDown');
 
@@ -182,6 +183,7 @@ test.describe('Filter-trigger', () => {
 
       await page.keyboard.press('Tab');
       await expect(clearButtonLocator).toBeFocused();
+      await new Promise((resolve) => setTimeout(resolve, 250));
       await expect(page).toHaveScreenshot();
       await page.keyboard.press('Enter');
       await expect(clearButtonLocator).not.toBeVisible();

@@ -9,7 +9,7 @@ tabs: Design('pills'), A11y('pills-a11y'), API('pills-api'), Example('pills-code
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/basic_example.tsx';
+  export Demo from 'stories/components/pills/docs/examples/basic_example.tsx';
 </script>
 
 :::
@@ -23,7 +23,7 @@ Don't forget to add role `tabpanel` and `aria-labelledby` to the content of each
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/tabs_example.tsx';
+  export Demo from 'stories/components/pills/docs/examples/tabs_example.tsx';
 </script>
 
 :::

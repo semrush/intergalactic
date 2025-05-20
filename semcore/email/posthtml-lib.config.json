@@ -1,9 +1,0 @@
-{
-  "root": ".tmp",
-  "input": "**/*.html",
-  "output": ".tmp",
-  "plugins": {
-    "posthtml-inline-assets": {},
-    "posthtml-inline-css": {}
-  }
-}

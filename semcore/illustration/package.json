@@ -1,28 +1,25 @@
 {
   "name": "@semcore/illustration",
   "description": "Semrush Illustration Component",
-  "version": "2.44.0",
+  "version": "16.0.0",
   "main": "lib/cjs/index.js",
-  "module": "lib/es6/index.js",
+  "module": "lib/esm/index.mjs",
   "typings": "lib/types/index.d.ts",
   "sideEffects": false,
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "pnpm clear && pnpm semcore-builder --source=js && pnpm run transform",
+    "build": "pnpm clear && pnpm semcore-builder --source=js && pnpm run transform && pnpm vite build",
     "transform": "tsm --require=../../.ci/tsm-filter-warnings.js transform.ts",
     "clear": "tsm --require=../../.ci/tsm-filter-warnings.js clear.ts",
     "upload-static": "gcs-upload svg/*.svg"
   },
   "dependencies": {
     "@babel/runtime": "^7.17.9",
-    "@semcore/flex-box": "5.41.2",
     "colorjs.io": "0.4.3"
   },
   "peerDependencies": {
-    "@semcore/core": "^2.17.5",
-    "react": "16.8 - 18",
-    "react-dom": "16.8 - 18"
+    "@semcore/base-components": "^16.0.0"
   },
   "repository": {
     "type": "git",
@@ -33,7 +30,7 @@
     "esbuild": "0.14.29",
     "happy-dom": "9.20.3",
     "fs-extra": "8.1.0",
-    "svg-to-jsx": "^1.0.4",
+    "svg-to-jsx": "1.0.4",
     "@semcore/testing-utils": "1.0.0",
     "@types/react": "18.0.21",
     "@types/fs-extra": "8.1.0"
@@ -41,7 +38,7 @@
   "exports": {
     ".": {
       "require": "./lib/cjs/index.js",
-      "import": "./lib/es6/index.js",
+      "import": "./lib/esm/index.mjs",
       "types": "./lib/types/index.d.ts"
     },
     "./AccessDenied": {

@@ -66,7 +66,7 @@ SCheckbox {
     border-color: var(--intergalactic-border-primary, #c4c7cf);
   }
 
-  &[state='normal'][keyboardFocused]:before {
+  &[state='normal']:focus-visible:before {
     border-color: var(--intergalactic-border-info-active, #006dca);
   }
 }
@@ -119,17 +119,13 @@ SControl[checked]~SCheckbox[state='invalid'] {
   &:before {
     border-color: var(--intergalactic-border-critical-active, #d1002f);
   }
-
-  &[keyboardFocused]:before {
-    box-shadow: var(--intergalactic-keyboard-focus-invalid, 0px 0px 0px 3px rgba(255, 73, 83, 0.5));
-  }
 }
 
-SCheckbox[state='normal'],
-SControl[checked] {
-  &[keyboardFocused]:before {
-    box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
-  }
+SControl:focus-visible + SCheckbox[state='normal']:before {
+  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
+}
+SControl:focus-visible + SCheckbox[state='invalid']:before {
+  box-shadow: var(--intergalactic-keyboard-focus-invalid, 0px 0px 0px 3px rgba(255, 73, 83, 0.5));
 }
 
 SControl[disabled]~SCheckbox:before {
@@ -170,7 +166,7 @@ SCheckbox[theme][state='normal']:before {
   border-color: var(--theme);
 }
 
-SCheckbox[theme][state='normal'][keyboardFocused]:before {
+SCheckbox[theme][state='normal']:focus-visible:before {
   border-color: var(--theme);
 }
 

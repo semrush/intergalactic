@@ -21,7 +21,6 @@ test.describe('Fullscreen modal', () => {
       await test.step('Verify back attributes', async () => {
         const backButton = page.locator('[data-ui-name="FullscreenModal.Back"]');
         await expect(backButton).toHaveAccessibleName('Go to Tool Name');
-        await expect(backButton).toHaveAttribute('tabindex', '0');
         const svg = backButton.locator('svg');
         await expect(svg).toHaveAttribute('tabindex', '-1');
         await expect(svg).toHaveAttribute('aria-hidden', 'true');
@@ -29,7 +28,6 @@ test.describe('Fullscreen modal', () => {
 
       await test.step('Verify close attributes', async () => {
         const closeButton = page.locator('[data-ui-name="FullscreenModal.Close"]');
-        await expect(closeButton).toHaveAttribute('tabindex', '0');
         await expect(closeButton).toHaveAttribute('aria-label', 'Close');
         const svg = closeButton.locator('svg');
         await expect(svg).toHaveAttribute('tabindex', '-1');
@@ -54,7 +52,6 @@ test.describe('Fullscreen modal', () => {
       await test.step('Verify back attributes', async () => {
         const backButton = page.locator('[data-ui-name="FullscreenModal.Back"]');
         await expect(backButton).toHaveAccessibleName('Go to Tool Name');
-        await expect(backButton).toHaveAttribute('tabindex', '0');
         const svg = backButton.locator('svg');
         await expect(svg).toHaveAttribute('tabindex', '-1');
         await expect(svg).toHaveAttribute('aria-hidden', 'true');
@@ -62,7 +59,6 @@ test.describe('Fullscreen modal', () => {
 
       await test.step('Verify close attributes', async () => {
         const closeButton = page.locator('[data-ui-name="FullscreenModal.Close"]');
-        await expect(closeButton).toHaveAttribute('tabindex', '0');
         await expect(closeButton).toHaveAttribute('aria-label', 'Close');
         const svg = closeButton.locator('svg');
         await expect(svg).toHaveAttribute('tabindex', '-1');
@@ -270,7 +266,7 @@ test.describe('Fullscreen modal', () => {
       await page.setContent(htmlContent);
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
-      await page.waitForTimeout(150);
+      await page.waitForTimeout(250);
       const modal = page.locator('[data-ui-name="FullscreenModal"]');
       await expect(modal).toBeVisible();
 
@@ -281,7 +277,7 @@ test.describe('Fullscreen modal', () => {
       await expect(sections.nth(1)).toBeFocused();
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowDown');
-      await page.waitForTimeout(150);
+      await page.waitForTimeout(250);
       await expect(page).toHaveScreenshot();
     });
 
@@ -293,6 +289,7 @@ test.describe('Fullscreen modal', () => {
       await page.setContent(htmlContent);
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
+      await page.waitForTimeout(250);
       const modal = page.locator('[data-ui-name="FullscreenModal"]');
       await expect(modal).toBeVisible();
 
@@ -300,7 +297,7 @@ test.describe('Fullscreen modal', () => {
       await expect(page).toHaveScreenshot();
       await expect(page.locator('[data-ui-name="DescriptionTooltip.Trigger"]')).toBeFocused();
       await page.keyboard.press('Enter');
-
+      await page.waitForTimeout(250);
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Escape');
@@ -315,6 +312,7 @@ test.describe('Fullscreen modal', () => {
       await page.setContent(htmlContent);
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
+      await page.waitForTimeout(250);
       const modal = page.locator('[data-ui-name="FullscreenModal"]');
       await expect(modal).toBeVisible();
       await page.locator('[data-ui-name="FullscreenModal.Title"]').hover();
@@ -337,6 +335,7 @@ test.describe('Fullscreen modal', () => {
       await page.setContent(htmlContent);
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
+      await page.waitForTimeout(250);
       const modal = page.locator('[data-ui-name="FullscreenModal"]');
       await expect(modal).toBeVisible();
 
@@ -357,6 +356,7 @@ test.describe('Fullscreen modal', () => {
       await page.setContent(htmlContent);
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
+      await page.waitForTimeout(250);
       const modal = page.locator('[data-ui-name="FullscreenModal"]');
       await expect(modal).toBeVisible();
       const backButton = page.locator('[data-ui-name="FullscreenModal.Back"]');

@@ -1,9 +1,9 @@
 import React from 'react';
-import Table from 'intergalactic/table';
-import Skeleton from 'intergalactic/skeleton';
-import Checkbox from 'intergalactic/checkbox';
-import { Hint } from 'intergalactic/tooltip';
-import { Text } from 'intergalactic/typography';
+import Table from '@semcore/table';
+import Skeleton from '@semcore/skeleton';
+import Checkbox from '@semcore/checkbox';
+import { Hint } from '@semcore/tooltip';
+import { Text } from '@semcore/typography';
 
 const data = [
   {

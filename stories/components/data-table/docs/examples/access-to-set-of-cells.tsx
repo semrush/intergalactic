@@ -1,28 +1,23 @@
 import React from 'react';
-import DataTable from '@semcore/data-table';
+import { DataTable } from '@semcore/data-table';
 import Spin from '@semcore/spin';
 
 const Demo = () => {
   return (
-    <DataTable data={data} aria-label={'Access to set of cells'}>
-      <DataTable.Head>
-        <DataTable.Column name='keyword' children='Keyword' />
-        <DataTable.Column name='kd' children='KD,%' />
-        <DataTable.Column name='cpc' children='CPC' />
-        <DataTable.Column name='vol' children='Vol.' />
-      </DataTable.Head>
-      <DataTable.Body>
-        <DataTable.Cell data={data} name='keyword/kd/cpc/vol'>
-          {(props, row) => {
-            // @ts-ignore
-            const value = row[props.name];
-            return {
-              children: ['-', '$0', 'n/a'].includes(value) ? <Spin /> : props.children,
-            };
-          }}
-        </DataTable.Cell>
-      </DataTable.Body>
-    </DataTable>
+    <DataTable
+      data={data}
+      aria-label={'Access to set of cells'}
+      columns={[
+        { name: 'keyword', children: 'Keyword' },
+        { name: 'kd', children: 'KD %' },
+        { name: 'cpc', children: 'CPC' },
+        { name: 'vol', children: 'Vol.' },
+      ]}
+      renderCell={({ dataKey, row, defaultRender }) => {
+        const value = row[dataKey].toString();
+        return ['-', '$0', 'n/a'].includes(value) ? <Spin /> : defaultRender();
+      }}
+    />
   );
 };
 

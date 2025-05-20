@@ -2,10 +2,10 @@ import React from 'react';
 import { Box } from '@semcore/flex-box';
 import { Hint } from '@semcore/tooltip';
 import NeighborLocation from '@semcore/neighbor-location';
-import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
-import logger from '@semcore/utils/lib/logger';
+import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
+import logger from '@semcore/core/lib/utils/logger';
 import SpinButton from './SpinButton';
-import hasLabels from '@semcore/utils/lib/hasLabels';
+import hasLabels from '@semcore/core/lib/utils/hasLabels';
 import { AbstractButtonProps } from './AbstractButton.type';
 import { Component, CORE_INSTANCE, Root, sstyled } from '@semcore/core';
 
@@ -85,7 +85,7 @@ export abstract class AbstractButton extends Component<Props, {}, {}> {
     const SButton = Root;
 
     return sstyled(styles)(
-      <SButton render={Hint} {...buttonProps} {...hintProps}>
+      <SButton render={Hint} {...buttonProps} {...hintProps} ignorePortalsStacking>
         {children}
       </SButton>,
     );

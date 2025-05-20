@@ -2,8 +2,7 @@ import React from 'react';
 import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
 
 import { Property } from 'csstype';
-import { Box, BoxProps, Flex, FlexProps } from '@semcore/flex-box';
-import { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import { BoxProps, Flex, FlexProps } from '@semcore/flex-box';
 
 /** @deprecated */
 export interface ITextProps extends TextProps, UnknownProperties {}
@@ -72,34 +71,10 @@ export type ListContext = {
 };
 
 /** @deprecated */
-export interface IHintProps extends HintProps, UnknownProperties {}
-export type TypographyHintProps = TextProps &
-  KeyboardFocusProps & {
-    /** The value responsible for the activity of the element
-     * @default false
-     */
-    disabled?: boolean;
-    /** Enable `active` state */
-    active?: boolean;
-    /** Left addon hint  */
-    addonLeft?: React.ElementType;
-    /** Right addon hint  */
-    addonRight?: React.ElementType;
-  };
-
-/** @deprecated use `TypographyHintProps` instead */
-export type HintProps = TypographyHintProps;
-
-/** @deprecated */
 export interface IBlockquoteProps extends BlockquoteProps, UnknownProperties {}
 export type BlockquoteProps = BoxProps & {
   /** Source of the quote */
   author?: React.ReactNode;
-};
-
-declare const Hint: Intergalactic.Component<'abbr', HintProps> & {
-  Addon: typeof Box;
-  Text: typeof Box;
 };
 
 declare const Item: Intergalactic.Component<'li', ListItemProps> & {
@@ -114,4 +89,4 @@ declare const Text: Intergalactic.Component<'span', TextProps>;
 
 declare const Blockquote: Intergalactic.Component<'blockquote', BlockquoteProps>;
 
-export { Text, List, Hint, Blockquote };
+export { Text, List, Blockquote };

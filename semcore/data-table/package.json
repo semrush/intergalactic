@@ -1,7 +1,7 @@
 {
   "name": "@semcore/data-table",
   "description": "Semrush DataTable Component",
-  "version": "4.50.0",
+  "version": "16.0.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -9,7 +9,7 @@
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "pnpm semcore-builder --source=ts && pnpm vite build"
+    "build": "pnpm semcore-builder && pnpm vite build"
   },
   "exports": {
     "require": "./lib/cjs/index.js",
@@ -17,10 +17,14 @@
     "types": "./lib/types/index.d.ts"
   },
   "dependencies": {
-    "@semcore/flex-box": "5.41.2",
-    "@semcore/icon": "4.61.0",
-    "@semcore/scroll-area": "5.45.2",
-    "@semcore/utils": "4.48.2"
+    "@semcore/icon": "16.0.0",
+    "@semcore/button": "16.0.0",
+    "@semcore/checkbox": "16.0.0",
+    "@semcore/flex-box": "16.0.0",
+    "@semcore/scroll-area": "16.0.0",
+    "@semcore/spin": "16.0.0",
+    "@semcore/tooltip": "16.0.0",
+    "@semcore/widget-empty": "16.0.0"
   },
   "devDependencies": {
     "@types/react": "18.0.21",
@@ -40,9 +44,7 @@
     "csstype": "3.0.8"
   },
   "peerDependencies": {
-    "@semcore/core": "^2.17.5",
-    "react": "16.8 - 18",
-    "react-dom": "16.8 - 18"
+    "@semcore/base-components": "^16.0.0"
   },
   "repository": {
     "type": "git",

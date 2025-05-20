@@ -1,25 +1,25 @@
 import React from 'react';
-import createComponent, { Component, Root, sstyled } from '@semcore/core';
+import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import BaseTrigger from './BaseTrigger';
 import { Box } from '@semcore/flex-box';
 import NeighborLocation from '@semcore/neighbor-location';
 import Dot from '@semcore/dot';
 import Close from '@semcore/icon/Close/m';
 import ChevronDown from '@semcore/icon/ChevronDown/m';
-import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
-import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
+import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
+import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
-import animatedSizeEnhance from '@semcore/utils/lib/enhances/animatedSizeEnhance';
-import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
-import getInputProps, { inputProps } from '@semcore/utils/lib/inputProps';
-import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
-import { setFocus } from '@semcore/utils/lib/use/useFocusLock';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import animatedSizeEnhance from '@semcore/core/lib/utils/enhances/animatedSizeEnhance';
+import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
+import getInputProps, { inputProps } from '@semcore/core/lib/utils/inputProps';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import { setFocus } from '@semcore/core/lib/utils/use/useFocusLock';
 
 import style from './style/filter-trigger.shadow.css';
-import { isAdvanceMode } from '@semcore/utils/lib/findComponent';
+import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 import { Hint } from '@semcore/tooltip';
-import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
+import { ScreenReaderOnly } from '@semcore/core/lib/utils/ScreenReaderOnly';
 
 const filterTriggerInputProps = [
   ...inputProps,

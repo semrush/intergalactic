@@ -3,7 +3,7 @@ on:
   pull_request:
   workflow_dispatch:
   push:
-    branches: [master]
+    branches: [master, major/16]
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
 jobs:

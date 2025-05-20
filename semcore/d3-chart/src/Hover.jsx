@@ -1,7 +1,7 @@
 import React from 'react';
 import { Component, sstyled, Root } from '@semcore/core';
-import canUseDOM from '@semcore/utils/lib/canUseDOM';
-import trottle from '@semcore/utils/lib/rafTrottle';
+import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
+import trottle from '@semcore/core/lib/utils/rafTrottle';
 import createElement from './createElement';
 import { scaleOfBandwidth, getIndexFromData, eventToPoint, invert, scaleToBand } from './utils';
 

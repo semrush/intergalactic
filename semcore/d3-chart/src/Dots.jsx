@@ -1,7 +1,7 @@
 import { bisector } from 'd3-array';
 import React from 'react';
 import { sstyled } from '@semcore/core';
-import trottle from '@semcore/utils/lib/rafTrottle';
+import trottle from '@semcore/core/lib/utils/rafTrottle';
 import createElement from './createElement';
 import { eventToPoint, invert, interpolateValue, getChartDefaultColorName } from './utils';
 

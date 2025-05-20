@@ -9,7 +9,7 @@ test.skip('Users can interact with TimePicker via VoiceOver', async ({
   voiceOver: pureVoiceOver,
 }) => {
   const standPath =
-    'website/docs/components/time-picker/examples/expanded_access_to_all_the_components.tsx';
+    'stories/components/time-picker/docs/examples/expanded_access_to_all_the_components.tsx';
   const reportPath = 'website/docs/components/time-picker/time-picker-a11y-report.md';
 
   const htmlContent = await e2eStandToHtml(standPath, 'en');

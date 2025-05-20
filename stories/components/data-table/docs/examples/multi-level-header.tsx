@@ -1,20 +1,24 @@
 import React from 'react';
-import DataTable from '@semcore/data-table';
+import { DataTable } from '@semcore/data-table';
 
 const Demo = () => {
   return (
-    <DataTable data={data} aria-label={'Multi level header'}>
-      <DataTable.Head>
-        <DataTable.Column name='keyword' children='Keyword' />
-        <DataTable.Column vBorders wMax={'40%'}>
-          Organic Sessions
-          <DataTable.Column name='kd' children='KD,%' />
-          <DataTable.Column name='cpc' children='CPC' />
-          <DataTable.Column name='vol' children='Vol.' />
-        </DataTable.Column>
-      </DataTable.Head>
-      <DataTable.Body />
-    </DataTable>
+    <DataTable
+      data={data}
+      aria-label={'Multi level header'}
+      columns={[
+        { name: 'keyword', children: 'Keyword' },
+        {
+          children: 'Organic Sessions',
+          borders: 'both',
+          columns: [
+            { name: 'kd', children: 'KD %', gtcWidth: 'max-content' },
+            { name: 'cpc', children: 'CPC', gtcWidth: 'max-content' },
+            { name: 'vol', children: 'Vol.', gtcWidth: 'max-content' },
+          ],
+        },
+      ]}
+    />
   );
 };
 

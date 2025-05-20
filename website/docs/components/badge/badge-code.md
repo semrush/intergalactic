@@ -8,7 +8,7 @@ tabs: Design('badge'), A11y('badge-a11y'), API('badge-api'), Example('badge-code
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/badge_main_types.tsx';
+  export Demo from 'stories/components/badge/docs/examples/badge_main_types.tsx';
 </script>
 
 :::

@@ -1,7 +1,7 @@
 {
   "name": "@semcore/icon",
   "description": "Semrush Icon Component",
-  "version": "4.61.0",
+  "version": "16.0.0",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.mjs",
   "typings": "lib/types/index.d.ts",
@@ -14,15 +14,11 @@
     "clean": "node clean.js"
   },
   "dependencies": {
-    "@semcore/flex-box": "5.41.2",
-    "@semcore/icon": "4.61.0",
-    "@semcore/utils": "4.48.2",
+    "@semcore/flex-box": "16.0.0",
     "classnames": "2.2.6"
   },
   "peerDependencies": {
-    "@semcore/core": "^2.17.5",
-    "react": "16.8 - 18",
-    "react-dom": "16.8 - 18"
+    "@semcore/base-components": "^16.0.0"
   },
   "repository": {
     "type": "git",
@@ -550,136 +546,6 @@
       "require": "./color/YoutubeInvert/m/index.js",
       "import": "./color/YoutubeInvert/m/index.mjs",
       "types": "./color/YoutubeInvert/m/index.d.ts"
-    },
-    "./external/FacebookClick": {
-      "require": "./external/FacebookClick/index.js",
-      "import": "./external/FacebookClick/index.mjs",
-      "types": "./external/FacebookClick/index.d.ts"
-    },
-    "./external/FacebookComment": {
-      "require": "./external/FacebookComment/index.js",
-      "import": "./external/FacebookComment/index.mjs",
-      "types": "./external/FacebookComment/index.d.ts"
-    },
-    "./external/FacebookLike": {
-      "require": "./external/FacebookLike/index.js",
-      "import": "./external/FacebookLike/index.mjs",
-      "types": "./external/FacebookLike/index.d.ts"
-    },
-    "./external/FacebookSemrush": {
-      "require": "./external/FacebookSemrush/index.js",
-      "import": "./external/FacebookSemrush/index.mjs",
-      "types": "./external/FacebookSemrush/index.d.ts"
-    },
-    "./external/FacebookShare": {
-      "require": "./external/FacebookShare/index.js",
-      "import": "./external/FacebookShare/index.mjs",
-      "types": "./external/FacebookShare/index.d.ts"
-    },
-    "./external/FacebookView": {
-      "require": "./external/FacebookView/index.js",
-      "import": "./external/FacebookView/index.mjs",
-      "types": "./external/FacebookView/index.d.ts"
-    },
-    "./external/InstagramClick": {
-      "require": "./external/InstagramClick/index.js",
-      "import": "./external/InstagramClick/index.mjs",
-      "types": "./external/InstagramClick/index.d.ts"
-    },
-    "./external/InstagramComment": {
-      "require": "./external/InstagramComment/index.js",
-      "import": "./external/InstagramComment/index.mjs",
-      "types": "./external/InstagramComment/index.d.ts"
-    },
-    "./external/InstagramLike": {
-      "require": "./external/InstagramLike/index.js",
-      "import": "./external/InstagramLike/index.mjs",
-      "types": "./external/InstagramLike/index.d.ts"
-    },
-    "./external/InstagramSave": {
-      "require": "./external/InstagramSave/index.js",
-      "import": "./external/InstagramSave/index.mjs",
-      "types": "./external/InstagramSave/index.d.ts"
-    },
-    "./external/InstagramView": {
-      "require": "./external/InstagramView/index.js",
-      "import": "./external/InstagramView/index.mjs",
-      "types": "./external/InstagramView/index.d.ts"
-    },
-    "./external/LinkedInClick": {
-      "require": "./external/LinkedInClick/index.js",
-      "import": "./external/LinkedInClick/index.mjs",
-      "types": "./external/LinkedInClick/index.d.ts"
-    },
-    "./external/LinkedInComment": {
-      "require": "./external/LinkedInComment/index.js",
-      "import": "./external/LinkedInComment/index.mjs",
-      "types": "./external/LinkedInComment/index.d.ts"
-    },
-    "./external/LinkedInLike": {
-      "require": "./external/LinkedInLike/index.js",
-      "import": "./external/LinkedInLike/index.mjs",
-      "types": "./external/LinkedInLike/index.d.ts"
-    },
-    "./external/LinkedInSemrush": {
-      "require": "./external/LinkedInSemrush/index.js",
-      "import": "./external/LinkedInSemrush/index.mjs",
-      "types": "./external/LinkedInSemrush/index.d.ts"
-    },
-    "./external/LinkedInShare": {
-      "require": "./external/LinkedInShare/index.js",
-      "import": "./external/LinkedInShare/index.mjs",
-      "types": "./external/LinkedInShare/index.d.ts"
-    },
-    "./external/LinkedInView": {
-      "require": "./external/LinkedInView/index.js",
-      "import": "./external/LinkedInView/index.mjs",
-      "types": "./external/LinkedInView/index.d.ts"
-    },
-    "./external/PinterestComment": {
-      "require": "./external/PinterestComment/index.js",
-      "import": "./external/PinterestComment/index.mjs",
-      "types": "./external/PinterestComment/index.d.ts"
-    },
-    "./external/PinterestSave": {
-      "require": "./external/PinterestSave/index.js",
-      "import": "./external/PinterestSave/index.mjs",
-      "types": "./external/PinterestSave/index.d.ts"
-    },
-    "./external/PinterestSend": {
-      "require": "./external/PinterestSend/index.js",
-      "import": "./external/PinterestSend/index.mjs",
-      "types": "./external/PinterestSend/index.d.ts"
-    },
-    "./external/TwitterClick": {
-      "require": "./external/TwitterClick/index.js",
-      "import": "./external/TwitterClick/index.mjs",
-      "types": "./external/TwitterClick/index.d.ts"
-    },
-    "./external/TwitterLike": {
-      "require": "./external/TwitterLike/index.js",
-      "import": "./external/TwitterLike/index.mjs",
-      "types": "./external/TwitterLike/index.d.ts"
-    },
-    "./external/TwitterReply": {
-      "require": "./external/TwitterReply/index.js",
-      "import": "./external/TwitterReply/index.mjs",
-      "types": "./external/TwitterReply/index.d.ts"
-    },
-    "./external/TwitterRetweet": {
-      "require": "./external/TwitterRetweet/index.js",
-      "import": "./external/TwitterRetweet/index.mjs",
-      "types": "./external/TwitterRetweet/index.d.ts"
-    },
-    "./external/TwitterSemrush": {
-      "require": "./external/TwitterSemrush/index.js",
-      "import": "./external/TwitterSemrush/index.mjs",
-      "types": "./external/TwitterSemrush/index.d.ts"
-    },
-    "./external/TwitterView": {
-      "require": "./external/TwitterView/index.js",
-      "import": "./external/TwitterView/index.mjs",
-      "types": "./external/TwitterView/index.d.ts"
     },
     "./pay/AmericanExpress/l": {
       "require": "./pay/AmericanExpress/l/index.js",

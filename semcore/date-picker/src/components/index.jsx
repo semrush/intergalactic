@@ -6,7 +6,7 @@ import { Box } from '@semcore/flex-box';
 import Button from '@semcore/button';
 import ChevronLeft from '@semcore/icon/ChevronLeft/m';
 import ChevronRight from '@semcore/icon/ChevronRight/m';
-import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
+import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import ButtonTrigger from './ButtonTrigger';
 import InputTriggerBase from './InputTrigger';
 

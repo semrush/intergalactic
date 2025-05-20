@@ -2,6 +2,28 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.0] - 2025-05-19
+
+### Break
+
+- `keyboardFocusEnhance` to css `:focus-visible` property.
+
+### Deprecated
+
+- `Item` element for `ColorPicker.Colors` and `PaletteManager.Colors`.
+
+## [2.45.2] - 2025-05-13
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [5.43.2 ~> 5.43.3], `@semcore/utils` [4.48.4 ~> 4.48.5]).
+
+## [2.45.1] - 2025-05-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [5.43.1 ~> 5.43.2], `@semcore/icon` [4.61.0 ~> 4.62.0], `@semcore/utils` [4.48.2 ~> 4.48.4]).
+
 ## [2.45.0] - 2025-04-11
 
 ### Changed

@@ -14,7 +14,7 @@ SContentBox, SModalBox {
   position: relative;
   overflow: hidden;
   border-radius: var(--intergalactic-surface-rounded, 6px);
-  &:has(SItem[keyboardFocused]) {
+  &:has(SItem:focus-visible) {
     &:after {
       content: '';
       display: block;
@@ -54,21 +54,9 @@ SItem[zoomOut] {
 SIndicators {
   display: flex;
   justify-content: center;
-  margin-top: var(--intergalactic-spacing-4x, 16px);
+  margin: var(--intergalactic-spacing-4x, 16px) 3px 3px 3px;
   outline: none;
   position: relative;
-}
-
-SIndicators[keyboardFocused]:after {
-  content: '';
-  display: block;
-  position: absolute;
-  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
-  z-index: 1;
-  width: calc(100% - 3px * 2);
-  height: calc(100% - 3px);
-  top: 0;
-  left: 3px;
 }
 
 SIndicator {
@@ -107,24 +95,6 @@ SNext {
   SPrevButton span:has(> svg:only-child), SNextButton span:has(> svg:only-child) {
     margin-left: calc(2 * var(--intergalactic-spacing-1x, 4px) - 1px);
     margin-right: calc(2 * var(--intergalactic-spacing-1x, 4px) - 1px);
-  }
-}
-
-SPrevButton, SNextButton {
-  &:focus-visible {
-    box-shadow: none;
-    &:after {
-      content: '';
-      display: block;
-      position: absolute;
-      box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
-      z-index: 1;
-      width: calc(100% - 3px * 2);
-      height: calc(100% - 3px * 2);
-      top: 3px;
-      left: 3px;
-      border-radius: var(--intergalactic-control-rounded, 6px);
-    }
   }
 }
 

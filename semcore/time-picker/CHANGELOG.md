@@ -2,6 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.0] - 2025-05-19
+
+### Break
+
+- `keyboardFocusEnhance` to css `:focus-visible` property.
+
+## [4.52.2] - 2025-05-13
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [5.43.2 ~> 5.43.3], `@semcore/flex-box` [5.41.3 ~> 5.41.4], `@semcore/input` [4.42.3 ~> 4.42.4], `@semcore/select` [4.52.1 ~> 4.52.2], `@semcore/utils` [4.48.4 ~> 4.48.5], `@semcore/core` [2.39.3 ~> 2.39.4]).
+
+## [4.52.1] - 2025-05-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [5.43.1 ~> 5.43.2], `@semcore/flex-box` [5.41.2 ~> 5.41.3], `@semcore/input` [4.42.2 ~> 4.42.3], `@semcore/select` [4.52.0 ~> 4.52.1], `@semcore/utils` [4.48.2 ~> 4.48.4], `@semcore/core` [2.39.2 ~> 2.39.3]).
+
 ## [4.52.0] - 2025-04-11
 
 ### Changed

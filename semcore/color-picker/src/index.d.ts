@@ -154,6 +154,9 @@ declare const PaletteManager: Intergalactic.Component<
   PaletteManagerContext,
   [handlers: PaletteManagerHandlers]
 > & {
+  /**
+   * @deprecated Use `colors` property in `PaletteManager.Colors`
+   */
   Item: Intergalactic.Component<'div', ItemProps>;
   Colors: Intergalactic.Component<'div', ColorsCustomProps>;
   InputColor: Intergalactic.Component<'div', InputColorProps>;
@@ -167,6 +170,9 @@ declare const ColorPicker: Intergalactic.Component<
 > & {
   Trigger: typeof Dropdown.Trigger;
   Popper: typeof Popper.Popper;
+  /**
+   * @deprecated Use `colors` property in `ColorPicker.Colors`
+   */
   Item: Intergalactic.Component<'div', ItemProps>;
   Colors: Intergalactic.Component<'div', ColorsProps>;
 };

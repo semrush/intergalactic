@@ -1,5 +1,5 @@
 import React from 'react';
-import DataTable from '@semcore/data-table';
+import { DataTable } from '@semcore/data-table';
 import Skeleton from '@semcore/skeleton';
 import Button from '@semcore/ui/button';
 import { ScreenReaderOnly } from '@semcore/ui/flex-box';
@@ -39,17 +39,28 @@ const Demo = () => {
       <ScreenReaderOnly role='status' aria-live='polite'>
         {message}
       </ScreenReaderOnly>
-      <DataTable data={data} aria-label={'Loading using Skeleton'}>
-        <DataTable.Head>
-          <DataTable.Column name='keyword' children='Keyword' />
-          <DataTable.Column name='kd' children='KD,%' />
-          <DataTable.Column name='cpc' children='CPC' />
-          <DataTable.Column name='vol' children='Vol.' />
-        </DataTable.Head>
-        <DataTable.Body
-          {...(loading ? { rows: [getSkeleton(), getSkeleton(), getSkeleton()] } : {})}
-        />
-      </DataTable>
+      <DataTable
+        data={data}
+        aria-label={'Loading using Skeleton'}
+        h={'auto'}
+        columns={[
+          { name: 'keyword', children: 'Keyword' },
+          { name: 'kd', children: 'KD %' },
+          { name: 'cpc', children: 'CPC' },
+          { name: 'vol', children: 'Vol.' },
+        ]}
+        renderCell={(props) => {
+          if (loading) {
+            return (
+              <Skeleton height={17}>
+                <Skeleton.Text y='5' width='60%' />
+              </Skeleton>
+            );
+          }
+
+          return props.defaultRender();
+        }}
+      />
       <Button onClick={toggleLoading} mt={3}>
         {loading ? 'Stop loading' : 'Start loading'}
       </Button>

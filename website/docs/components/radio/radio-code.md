@@ -11,7 +11,7 @@ tabs: Design('radio'), A11y('radio-a11y'), API('radio-api'), Example('radio-code
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/radiogroup_example.tsx';
+  export Demo from 'stories/components/radio/docs/examples/radiogroup_example.tsx';
 </script>
 
 :::
@@ -29,7 +29,7 @@ For more control over the input, you can pass props to `Radio.Value.Control`.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/additional_props_for_input.tsx';
+  export Demo from 'stories/components/radio/docs/examples/additional_props_for_input.tsx';
 </script>
 
 :::

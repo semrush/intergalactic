@@ -1,5 +1,6 @@
 import React from 'react';
-import createComponent, {
+import {
+  createComponent,
   Component,
   sstyled,
   Root,
@@ -9,10 +10,10 @@ import createComponent, {
 import { Box, BoxProps } from '@semcore/flex-box';
 import { FadeInOut, FadeInOutProps } from '@semcore/animation';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
-import { useCssVariable } from '@semcore/utils/lib/useCssVariable';
-import reactToText from '@semcore/utils/lib/reactToText';
-import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import { useCssVariable } from '@semcore/core/lib/utils/useCssVariable';
+import reactToText from '@semcore/core/lib/utils/reactToText';
+import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
 
 import style from './style/inline-edit.shadow.css';
 

@@ -1,3 +1,5 @@
+# DEPRECATED
+
 # @semcore/sticky
 
 [![version](https://img.shields.io/npm/v/@semcore/sticky.svg)](https://www.npmjs.com/@semcore/sticky)

@@ -1,10 +1,10 @@
 import React, { ReactElement } from 'react';
-import createComponent, { Component, sstyled, Root } from '@semcore/core';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import { Field, Form } from 'react-final-form';
 import createFocusDecorator from 'final-form-focus';
 import SpinContainer from '@semcore/spin-container';
-import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
-import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import Notice from '@semcore/notice';
 import CheckM from '@semcore/icon/Check/m';
 import WarnM from '@semcore/icon/Warning/m';

@@ -5,7 +5,7 @@ import Modal from '@semcore/modal';
 import { Text, List } from '@semcore/typography';
 import Input from '@semcore/input';
 import Tooltip from '@semcore/tooltip';
-import '@semcore/utils/lib/themes/default.css';
+import '@semcore/core/lib/theme/themes/default.css';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
 const warningBlockStyles = {

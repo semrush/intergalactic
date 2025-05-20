@@ -1,7 +1,7 @@
 import React from 'react';
 import { Root, sstyled } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
-import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 import CloseM from '@semcore/icon/Close/m';
 import { ScreenReaderOnly } from '@semcore/flex-box';
 import { Hint } from '@semcore/tooltip';

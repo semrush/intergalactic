@@ -1,0 +1,180 @@
+SHead, SGroupContainer {
+  display: contents;
+}
+
+SHead[sticky] SColumn, SHead[sticky] SGroup {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+SHead[sticky] SGroupContainer > SColumn {
+  position: sticky;
+  z-index: 2;
+}
+
+SHead[compact] SColumn {
+  padding: var(--intergalactic-spacing-3x, 12px) var(--intergalactic-spacing-2x, 8px);
+}
+
+SGroup, SColumn {
+  display: flex;
+  align-items: flex-start;
+  font-size: var(--intergalactic-fs-100, 12px);
+  color: var(--intergalactic-text-primary, #191b23);
+  box-sizing: border-box;
+  height: 100%;
+  position: relative;
+  transition: width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out, min-width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out, max-width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
+  overflow: hidden;
+}
+
+SGroup {
+  justify-content: center;
+  text-align: center;
+  background-color: var(--intergalactic-table-th-primary-cell, #f4f5f9);
+}
+
+SGroup[use='primary'] {
+  padding: var(--intergalactic-spacing-3x, 12px);
+
+  &:has(~ SColumn[visibleSort]) {
+    background-color: var(--intergalactic-table-th-primary-cell-hover, #e0e1e9);
+  }
+}
+SGroup[use='secondary'] {
+  padding: var(--intergalactic-spacing-2x, 8px);
+}
+
+SGroup[borders='both'], SColumn[borders='both'], SGroup[borders='left'], SColumn[borders='left'] {
+  border-left: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
+}
+
+SGroup[borders='both'], SColumn[borders='both'], SGroup[borders='right'], SColumn[borders='right'] {
+  border-right: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
+}
+
+SColumn[use='primary'] {
+  padding: var(--intergalactic-spacing-3x, 12px);
+  border-bottom: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
+  background-color: var(--intergalactic-table-th-primary-cell, #f4f5f9);
+
+  SSortWrapper::before {
+    background: linear-gradient(
+      270deg,
+      var(--intergalactic-table-th-primary-cell-hover, #e0e1e9) 67.5%,
+      rgba(224, 225, 233, 0) 105%
+    );
+  }
+
+  &[visibleSort] {
+    background-color: var(--intergalactic-table-th-primary-cell-hover, #e0e1e9);
+
+    SSortWrapper {
+      flex-basis: calc(var(--intergalactic-spacing-1x, 4px) + 16px);
+      opacity: 1;
+
+      &::before {
+        display: flex;
+        opacity: 1;
+      }
+    }
+
+    SSortButton {
+      display: flex;
+      opacity: 1;
+    }
+  }
+}
+
+SColumn[use='secondary'] {
+  padding: var(--intergalactic-spacing-2x, 8px);
+  border-bottom: 1px solid var(--intergalactic-border-table-accent, #a9abb6);
+  background-color: var(--intergalactic-table-th-secondary-cell, #ffffff);
+
+  SSortWrapper::before {
+    background: linear-gradient(
+      270deg,
+      var(--intergalactic-table-th-secondary-cell, #ffffff) 67.5%,
+      rgba(255, 255, 255, 0) 105%
+    );
+  }
+
+  &[visibleSort] {
+    SSortWrapper {
+      flex-basis: calc(var(--intergalactic-spacing-1x, 4px) + 16px);
+      opacity: 1;
+
+      &::before {
+        display: flex;
+        opacity: 1;
+      }
+    }
+
+    SSortButton {
+      display: flex;
+      opacity: 1;
+    }
+  }
+}
+
+SColumn[gridArea], SGroup[gridArea], SGroupTitle[gridArea] {
+  grid-area: var(--gridArea);
+}
+
+SHead[sticky] SColumn[fixed], SHead SColumn[fixed], SHead[sticky] SGroup, SHead SGroup[fixed] {
+  position: sticky;
+  /* because up resizable */
+  z-index: 3;
+}
+
+SColumn[sortable]:hover {
+  cursor: pointer;
+}
+
+SSortWrapper {
+  align-items: center;
+  display: flex;
+  flex-shrink: 1;
+  position: relative;
+  flex-basis: 0;
+  min-height: 16px;
+  opacity: 0;
+  transition: all calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
+}
+
+SSortWrapper:before {
+  display: none;
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+SSortButton {
+  display: none;
+  fill: var(--intergalactic-icon-secondary-neutral-hover-active, #878992);
+  position: absolute;
+  top: calc(-1 * (1em * 1.25 - 16px));
+  right: 0;
+  margin-left: var(--intergalactic-spacing-1x, 4px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+SHead[sideIndents='wide'] {
+  SColumn:first-child {
+    padding-left: var(--intergalactic-spacing-5x, 20px);
+  }
+  SColumn:last-child {
+    padding-right: var(--intergalactic-spacing-5x, 20px);
+  }
+}
+
+SHeadCheckboxCol {
+  cursor: pointer;
+}

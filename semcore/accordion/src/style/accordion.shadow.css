@@ -6,15 +6,6 @@ SItemToggle {
   outline: 0;
 }
 
-SItemToggle[keyboardFocused]:not([tabIndex='-1'])::after {
-  position: absolute;
-  display: block;
-  content: '';
-  inset: 3px;
-  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
-  pointer-events: none;
-  z-index: 3;
-}
 SItemToggle[use][use] {
   color: var(--intergalactic-text-primary, #191b23);
   font-weight: var(--intergalactic-regular, 400);

@@ -1,11 +1,11 @@
 import React from 'react';
-import createComponent, { Component, Root, sstyled } from '@semcore/core';
-import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
+import { createComponent, Component, Root, sstyled } from '@semcore/core';
+import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import ChevronDown from '@semcore/icon/ChevronDown/m';
 import BaseTrigger from './BaseTrigger';
 import Spin from '@semcore/spin';
-import animatedSizeEnhance from '@semcore/utils/lib/enhances/animatedSizeEnhance';
-import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
+import animatedSizeEnhance from '@semcore/core/lib/utils/enhances/animatedSizeEnhance';
+import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
 
 import style from './style/button-trigger.shadow.css';
 
@@ -45,7 +45,7 @@ class RootButtonTrigger extends Component {
     const { Children, styles, loading, chevron, empty } = this.asProps;
 
     return sstyled(styles)(
-      <Root render={BaseTrigger}>
+      <Root render={BaseTrigger} tabIndex={loading ? -1 : 0}>
         {addonTextChildren(Children, ButtonTrigger.Text, ButtonTrigger.Addon, empty)}
         {(chevron || loading) && (
           <SButtonAddon>

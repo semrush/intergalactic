@@ -1,7 +1,7 @@
 import React from 'react';
-import Input from 'intergalactic/input';
-import Select from 'intergalactic/select';
-import { Flex } from 'intergalactic/flex-box';
+import Input from '@semcore/input';
+import Select from '@semcore/select';
+import { Flex } from '@semcore/flex-box';
 
 const Demo = () => {
   return (

@@ -1,9 +1,8 @@
 import React from 'react';
-import createComponent, { Component, sstyled, Root } from '@semcore/core';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import { Box, InvalidStateBox } from '@semcore/flex-box';
 import NeighborLocation from '@semcore/neighbor-location';
-import autoFocusEnhance from '@semcore/utils/lib/enhances/autoFocusEnhance';
-import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import autoFocusEnhance from '@semcore/core/lib/utils/enhances/autoFocusEnhance';
 
 import style from './style/input.shadow.css';
 
@@ -15,10 +14,6 @@ class Input extends Component {
     state: 'normal',
   };
   static style = style;
-
-  state = {
-    focused: false,
-  };
 
   inputRef = React.createRef();
 
@@ -35,8 +30,6 @@ class Input extends Component {
       }, 10);
     }
   };
-
-  bindHandleValueFocused = (focused) => () => this.setState({ focused });
 
   getAddonProps() {
     const { disabled, size } = this.asProps;
@@ -68,8 +61,6 @@ class Input extends Component {
       size,
       disabled,
       state,
-      onFocus: this.bindHandleValueFocused(true),
-      onBlur: this.bindHandleValueFocused(false),
       role,
       placeholder,
       'aria-haspopup': ariaHaspopup,
@@ -81,24 +72,16 @@ class Input extends Component {
     };
   }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.disabled !== this.asProps.disabled && this.asProps.disabled) {
-      this.setState({ focused: false });
-    }
-  }
-
   render() {
     const SInput = Root;
     const SOutline = 'div';
     const { Children, styles, neighborLocation, controlsLength, state } = this.asProps;
-    const { focused } = this.state;
     return (
       <NeighborLocation.Detect neighborLocation={neighborLocation}>
         {(neighborLocation) =>
           sstyled(styles)(
             <SInput
               render={Box}
-              focused={focused}
               onKeyDown={this.handleKeyDown}
               neighborLocation={neighborLocation}
               __excludeProps={[
@@ -129,7 +112,7 @@ class Value extends Component {
   static defaultProps = {
     defaultValue: '',
   };
-  static enhance = [keyboardFocusEnhance(), autoFocusEnhance()];
+  static enhance = [autoFocusEnhance()];
 
   uncontrolledProps() {
     return {

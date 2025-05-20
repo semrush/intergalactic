@@ -1,17 +1,17 @@
 import React from 'react';
-import createComponent, { Component, sstyled, Root } from '@semcore/core';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import { Flex } from '@semcore/flex-box';
 import CloseM from '@semcore/icon/Close/m';
-import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
+import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import { FadeInOut } from '@semcore/animation';
-import { isAdvanceMode } from '@semcore/utils/lib/findComponent';
+import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
-import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
 import Button from '@semcore/button';
 
 import style from './style/notice-global.shadow.css';
-import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 
 function isCustomTheme(theme) {
   return !['danger', 'warning', 'success', 'info', 'neutral'].includes(theme);

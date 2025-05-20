@@ -5,6 +5,7 @@ import { axe } from '@semcore/testing-utils/axe';
 
 import Tooltip, { Hint, DescriptionTooltip } from '../src';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { waitFor } from '@storybook/test';
 
 describe('tooltip Dependency imports', () => {
   runDependencyCheckTests('tooltip');
@@ -60,7 +61,7 @@ describe('Tooltip.Trigger', () => {
 describe('Tooltip.Popper', () => {
   beforeEach(cleanup);
 
-  test('should support custom className', () => {
+  test('should support custom className', async ({ expect }) => {
     const { getByTestId } = render(
       <Tooltip visible>
         <Tooltip.Trigger />
@@ -68,10 +69,15 @@ describe('Tooltip.Popper', () => {
       </Tooltip>,
     );
 
-    expect(getByTestId('popper').attributes['class'].value).toContain('more-than one-class');
+    await waitFor(
+      () => {
+        expect(getByTestId('popper').attributes['class'].value).toContain('more-than one-class');
+      },
+      { timeout: 500 },
+    );
   });
 
-  test('should support custom attributes', () => {
+  test('should support custom attributes', async ({ expect }) => {
     const { getByTestId } = render(
       <Tooltip visible>
         <Tooltip.Trigger />
@@ -79,10 +85,15 @@ describe('Tooltip.Popper', () => {
       </Tooltip>,
     );
 
-    expect(getByTestId('popper').attributes['name'].value).toBe('popper');
+    await waitFor(
+      () => {
+        expect(getByTestId('popper').attributes['name'].value).toBe('popper');
+      },
+      { timeout: 500 },
+    );
   });
 
-  test('should support ref', () => {
+  test('should support ref', async ({ expect }) => {
     const ref = React.createRef();
     render(
       <Tooltip visible>
@@ -90,10 +101,16 @@ describe('Tooltip.Popper', () => {
         <Tooltip.Popper ref={ref} />
       </Tooltip>,
     );
-    expect(ref.current.nodeName).toBe('DIV');
+
+    await waitFor(
+      () => {
+        expect(ref.current.nodeName).toBe('DIV');
+      },
+      { timeout: 250 },
+    );
   });
 
-  test('should support children', async () => {
+  test('should support children', async ({ expect }) => {
     const component = (
       <Tooltip visible>
         <Tooltip.Trigger />
@@ -105,10 +122,15 @@ describe('Tooltip.Popper', () => {
 
     const { getAllByText } = render(component);
 
-    expect(getAllByText('test popper content', {})).toHaveLength(1);
+    await waitFor(
+      () => {
+        expect(getAllByText('test popper content', {})).toHaveLength(1);
+      },
+      { timeout: 250 },
+    );
   });
 
-  test('should support render function for children', () => {
+  test('should support render function for children', async ({ expect }) => {
     const component = (
       <Tooltip visible>
         {() => (
@@ -121,9 +143,14 @@ describe('Tooltip.Popper', () => {
     );
     render(component);
 
-    expect(
-      document.querySelectorAll('[data-ui-name^="Tooltip"][data-ui-name$="Popper"]').length,
-    ).toBe(1);
+    await waitFor(
+      () => {
+        expect(
+          document.querySelectorAll('[data-ui-name^="Tooltip"][data-ui-name$="Popper"]').length,
+        ).toBe(1);
+      },
+      { timeout: 250 },
+    );
   });
 });
 
@@ -164,7 +191,7 @@ describe('TooltipBase', () => {
   describe('a11y', () => {
     test('Hint', async () => {
       const { container } = render(
-        <Hint title='text' visible disablePortal tag='a'>
+        <Hint title='text' visible tag='a'>
           trigger
         </Hint>,
       );

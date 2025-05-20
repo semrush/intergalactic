@@ -777,49 +777,6 @@ export const sideBarConfig: SidebarConfig = [
         ],
       },
       {
-        text: 'Product emails',
-        collapsed: true,
-        items: [
-          {
-            link: '/product-emails/grid-email/grid-email',
-            activeMatch: '/product-emails/grid-email/',
-            text: 'Email templates & grid',
-          },
-          {
-            link: '/product-emails/core-email/core-email',
-            text: 'Core email colors',
-          },
-          {
-            link: '/product-emails/button-email/button-email',
-            text: 'Email button',
-          },
-          {
-            link: '/product-emails/badge-email/badge-email',
-            text: 'Email badge and tag',
-          },
-          {
-            link: '/product-emails/divider-email/divider-email',
-            text: 'Divider for emails',
-          },
-          {
-            link: '/product-emails/typography-email/typography-email',
-            text: 'Email typography',
-          },
-          {
-            link: '/product-emails/table-email/table-email',
-            text: 'Email table',
-          },
-          {
-            link: '/product-emails/notice-email/notice-email',
-            text: 'Email notice',
-          },
-          {
-            link: '/product-emails/summary-email/summary-email',
-            text: 'Email summary',
-          },
-        ],
-      },
-      {
         text: 'Utils',
         collapsed: true,
         items: [

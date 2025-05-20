@@ -1,11 +1,11 @@
 import React from 'react';
-import createComponent, { Component, sstyled, Root } from '@semcore/core';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import SearchM from '@semcore/icon/Search/m';
 import CloseM from '@semcore/icon/Close/m';
 import Input from '@semcore/input';
 import { ButtonLink } from '@semcore/button';
 import { selectContext } from './context';
-import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 import style from './style/input-search.shadow.css';
@@ -44,8 +44,10 @@ class InputSearchRoot extends Component {
   };
 
   getValueProps() {
-    const { getI18nText } = this.asProps;
+    const { value, onChange, getI18nText, children: hasChildren } = this.asProps;
     return {
+      value,
+      onChange: hasChildren ? onChange : undefined,
       autoFocus: true,
       ref: this.inputRef,
       placeholder: getI18nText('Select.InputSearch.Value:placeholder'),

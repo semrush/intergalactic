@@ -2,11 +2,35 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.53.6] - 2025-05-19
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/scroll-area` [16.0.0 ~> 16.0.0], `@semcore/flex-box` [16.0.0 ~> 16.0.0], `@semcore/icon` [16.0.0 ~> 16.0.0], `@semcore/typography` [16.0.0 ~> 16.0.0], `@semcore/base-components` [16.0.0 ~> 16.0.0]).
+
+## [4.54.2] - 2025-05-13
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.48.4 ~> 4.48.5], `@semcore/icon` [4.62.0 ~> 4.62.1], `@semcore/flex-box` [5.41.3 ~> 5.41.4], `@semcore/scroll-area` [5.45.3 ~> 5.45.4], `@semcore/core` [2.39.3 ~> 2.39.4]).
+
+## [4.54.1] - 2025-05-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.48.2 ~> 4.48.4], `@semcore/icon` [4.61.0 ~> 4.62.0], `@semcore/flex-box` [5.41.2 ~> 5.41.3], `@semcore/scroll-area` [5.45.2 ~> 5.45.3], `@semcore/core` [2.39.2 ~> 2.39.3]).
+
 ## [4.54.0] - 2025-04-11
 
 ### Changed
 
 - Version minor update due to children dependencies update (`@semcore/icon` [4.60.2 ~> 4.61.0]).
+
+## [4.53.5] - 2025-03-26
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/scroll-area` [16.0.0 ~> 16.0.0], `@semcore/flex-box` [16.0.0 ~> 16.0.0], `@semcore/icon` [16.0.0 ~> 16.0.0], `@semcore/typography` [16.0.0 ~> 16.0.0], `@semcore/base-components` [16.0.0 ~> 16.0.0]).
 
 ## [4.53.2] - 2025-04-04
 

@@ -98,7 +98,7 @@ SToggle[checked][theme='custom'] {
   background-color: var(--color);
 }
 
-SToggle[keyboardFocused] {
+SToggle:has(SInput:focus-visible) {
   box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
 }
 

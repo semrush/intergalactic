@@ -1,14 +1,13 @@
 import React from 'react';
-import createComponent, { Component, sstyled, Root } from '@semcore/core';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import Input from '@semcore/input';
 import { Box } from '@semcore/flex-box';
 import { Hours, Minutes } from './PickerInput';
 import Format from './PickerFormat';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 
 import style from './style/time-picker.shadow.css';
-import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
 const MAP_MERIDIEM = {
   AM: 'PM',
@@ -64,7 +63,7 @@ export function formatHoursTo24(hours /* hours by 12 */, meridiem) {
 class TimePickerRoot extends Component {
   static displayName = 'TimePicker';
   static style = style;
-  static enhance = [i18nEnhance(localizedMessages), keyboardFocusEnhance()];
+  static enhance = [i18nEnhance(localizedMessages)];
   static defaultProps = ({ is12Hour }) => ({
     defaultValue: '',
     size: 'm',

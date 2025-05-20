@@ -1,18 +1,18 @@
 import React from 'react';
-import createComponent, { Component, CREATE_COMPONENT, sstyled, Root } from '@semcore/core';
+import { createComponent, Component, CREATE_COMPONENT, sstyled, Root } from '@semcore/core';
 import PopperOrigin from '@semcore/popper';
 import { Box } from '@semcore/flex-box';
-import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
-import { isAdvanceMode } from '@semcore/utils/lib/findComponent';
-import logger from '@semcore/utils/lib/logger';
-import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
+import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
+import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
+import logger from '@semcore/core/lib/utils/logger';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import Portal from '@semcore/portal';
 
 import style from './style/tooltip.shadow.css';
 import {
   useZIndexStacking,
   ZIndexStackingContextProvider,
-} from '@semcore/utils/lib/zIndexStacking';
+} from '@semcore/core/lib/utils/zIndexStacking';
 
 const Popper = PopperOrigin[CREATE_COMPONENT]();
 
@@ -78,6 +78,7 @@ class TooltipRoot extends Component {
       interaction,
       resolveColor,
       visible,
+      timeout,
     } = this.asProps;
 
     let ariaLive = theme === 'warning' ? 'assertive' : 'polite';
@@ -95,6 +96,7 @@ class TooltipRoot extends Component {
       role: 'tooltip',
       'aria-live': ariaLive,
       visible,
+      timeout,
     };
   }
 
@@ -139,13 +141,42 @@ function TooltipPopper(props) {
     'aria-live': ariaLive,
     arrowBgColor,
     arrowShadowColor,
+    visible,
+    timeout,
   } = props;
   const STooltip = Root;
   const SArrow = Box;
   const STooltipPortalledWrapper = Box;
+  const timeoutConfig = typeof timeout === 'number' ? [timeout, timeout] : timeout;
+
+  const [isVisible, setIsVisible] = React.useState(false);
 
   const contextZIndex = useZIndexStacking('z-index-tooltip');
   const zIndex = props.zIndex || contextZIndex;
+
+  // We need this effect with timer to prevent creating all STooltipPortalledWrapper on each tooltip initialization.
+  // On the same time, we need to have a container with role=status to announce tooltip popper content on the fly by screen readers.
+  React.useEffect(() => {
+    let timer;
+
+    if (visible) {
+      timer = setTimeout(() => {
+        setIsVisible(true);
+      }, timeoutConfig[0] + 50);
+    } else {
+      timer = setTimeout(() => {
+        setIsVisible(false);
+      }, timeoutConfig[1] + 50);
+    }
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [visible]);
+
+  if (!visible && !isVisible) {
+    return null;
+  }
 
   return sstyled(styles)(
     <ZIndexStackingContextProvider designToken='z-index-tooltip'>
@@ -156,6 +187,7 @@ function TooltipPopper(props) {
           zIndex={zIndex}
         >
           <STooltip
+            use:visible={visible && isVisible}
             render={Popper.Popper}
             use:disablePortal
             use:theme={resolveColor(theme)}

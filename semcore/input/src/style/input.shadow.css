@@ -122,7 +122,7 @@ SInput[size='l'] {
   height: var(--intergalactic-form-control-l, 40px);
 }
 
-SInput[focused] {
+SInput:has(SValue:focus-visible) {
   z-index: 1;
 }
 
@@ -131,7 +131,7 @@ SInput[state='normal'] {
     border-color: var(--intergalactic-border-primary, #c4c7cf);
   }
 
-  &[focused] SOutline {
+  &:has(SValue:focus-visible) SOutline {
     border-color: var(--intergalactic-border-info-active, #006dca);
     box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
   }
@@ -141,7 +141,7 @@ SInput[state='valid'] {
     border-color: var(--intergalactic-border-success-active, #007c65);
   }
 
-  &[focused] SOutline {
+  &:has(SValue:focus-visible) SOutline {
     border-color: var(--intergalactic-border-success-active, #007c65);
     box-shadow: var(--intergalactic-keyboard-focus-valid, 0px 0px 0px 3px rgba(0, 159, 129, 0.5));
   }
@@ -151,7 +151,7 @@ SInput[state='invalid'] {
     border-color: var(--intergalactic-border-critical-active, #d1002f);
   }
 
-  &[focused] SOutline {
+  &:has(SValue:focus-visible) SOutline {
     border-color: var(--intergalactic-border-critical-active, #d1002f);
     box-shadow: var(--intergalactic-keyboard-focus-invalid, 0px 0px 0px 3px rgba(255, 73, 83, 0.5));
   }

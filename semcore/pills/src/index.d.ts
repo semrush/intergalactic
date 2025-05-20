@@ -2,7 +2,6 @@ import React from 'react';
 import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
 import { Box, BoxProps } from '@semcore/flex-box';
 import { NeighborItemProps, NeighborLocationProps } from '@semcore/neighbor-location';
-import { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
 export type PillsValue = string | number | boolean | null;
 
@@ -11,7 +10,6 @@ export interface IPillsProps<T extends PillsValue = PillsValue>
   extends PillsProps<T>,
     UnknownProperties {}
 export type PillsProps<T extends PillsValue = PillsValue> = NeighborLocationProps &
-  KeyboardFocusProps &
   BoxProps & {
     /** Pills size */
     size?: 'l' | 'm';
@@ -44,8 +42,7 @@ export type PillsProps<T extends PillsValue = PillsValue> = NeighborLocationProp
 /** @deprecated */
 export interface IPillProps extends PillProps, UnknownProperties {}
 export type PillProps = BoxProps &
-  NeighborItemProps &
-  KeyboardFocusProps & {
+  NeighborItemProps & {
     /** Pill value */
     value?: PillsValue;
     /** Disabled state */

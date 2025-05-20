@@ -1,16 +1,16 @@
 import React from 'react';
-import createComponent, { Root, Component, sstyled } from '@semcore/core';
+import { createComponent, Root, Component, sstyled } from '@semcore/core';
 import Popper, { isInputTriggerTag } from '@semcore/popper';
-import capitalizeFirstLetter from '@semcore/utils/lib/capitalizeFirstLetter';
-import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
-import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import capitalizeFirstLetter from '@semcore/core/lib/utils/capitalizeFirstLetter';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 import style from './style/dropdown.shadow.css';
-import { hasFocusableIn } from '@semcore/utils/lib/use/useFocusLock';
+import { hasFocusableIn } from '@semcore/core/lib/utils/use/useFocusLock';
 import { DropdownItem } from './DropdownItem';
 import { Flex, Box } from '@semcore/flex-box';
-import { useUID } from '@semcore/utils/lib/uniqueID';
+import { useUID } from '@semcore/core/lib/utils/uniqueID';
 
 const INTERACTION_TAGS = ['INPUT', 'TEXTAREA'];
 

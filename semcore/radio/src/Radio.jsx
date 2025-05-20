@@ -1,14 +1,13 @@
 import React from 'react';
-import createComponent, { Component, CONTEXT_COMPONENT, sstyled, Root } from '@semcore/core';
+import { createComponent, Component, CONTEXT_COMPONENT, sstyled, Root } from '@semcore/core';
 import { Flex, Box, InvalidStateBox } from '@semcore/flex-box';
-import assignProps, { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
-import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
-import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
-import getInputProps, { inputProps } from '@semcore/utils/lib/inputProps';
-import { useColorResolver } from '@semcore/utils/lib/use/useColorResolver';
+import assignProps, { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
+import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
+import getInputProps, { inputProps } from '@semcore/core/lib/utils/inputProps';
+import { useColorResolver } from '@semcore/core/lib/utils/use/useColorResolver';
 
 import style from './style/radio.shadow.css';
-import logger from '@semcore/utils/lib/logger';
+import logger from '@semcore/core/lib/utils/logger';
 import { Text as TypographyText } from '@semcore/typography';
 
 class RadioGroupRoot extends Component {
@@ -133,7 +132,7 @@ class ValueRoot extends Component {
     includeInputProps: inputProps,
     defaultChecked: false,
   };
-  static enhance = [keyboardFocusEnhance(), resolveColorEnhance()];
+  static enhance = [resolveColorEnhance()];
   static displayName = 'Value';
   static contextType = RadioGroup[CONTEXT_COMPONENT];
   static style = style;
