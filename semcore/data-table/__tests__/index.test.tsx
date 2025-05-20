@@ -1,15 +1,9 @@
 import { render, cleanup } from '@semcore/testing-utils/testing-library';
-
-import * as sharedTests from '@semcore/testing-utils/shared-tests';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
-
 import React, { useRef } from 'react';
 import { assertType } from 'vitest';
 import { Intergalactic } from '@semcore/core';
 import { DataTable } from '../src';
-
-const { shouldSupportClassName, shouldSupportRef } = sharedTests;
-
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('data-table Dependency imports', () => {
@@ -45,8 +39,76 @@ describe('DataTable', () => {
         />,
       );
     });
+    test('sort typing', () => {
+      assertType<JSX.Element>(
+        <DataTable<{ id: number; name: string }[]>
+          data={[{ id: 1, name: 'test' }]}
+          aria-label="label"
+          columns={[]}
+          sort={['name', 'asc']}
+          onSortChange={(sort, e) => {
+            sort[0]; // should be 'id' | 'name'
+          }}
+        />,
+      );
+    
+        // @ts-expect-error
+        <DataTable<{ id: number }[]>
+        data={[{ id: 1 }]}
+        aria-label="label"
+        columns={[]}
+        sort={['invalidKey', 'desc']}
+      />;
+    });
+    test('selectedRows typing', () => {
+      assertType<JSX.Element>(
+        <DataTable<{ id: number }[]>
+          data={[{ id: 1 }]}
+          aria-label="label"
+          columns={[]}
+          selectedRows={[0]}
+          onSelectedRowsChange={(rows, e, opts) => {
+            rows; // number[]
+            opts?.row.id; // should be number
+          }}
+        />,
+      );
+    });
+    test('virtualScroll typing', () => {
+      assertType<JSX.Element>(
+        <DataTable<{ id: number }[]>
+          data={[{ id: 1 }]}
+          aria-label="label"
+          columns={[]}
+          virtualScroll
+        />,
+      );
+    
+      assertType<JSX.Element>(
+        <DataTable<{ id: number }[]>
+          data={[{ id: 1 }]}
+          aria-label="label"
+          columns={[]}
+          virtualScroll={{ rowsBuffer: 5 }}
+        />,
+      );
+    
+      assertType<JSX.Element>(
+        <DataTable<{ id: number }[]>
+          data={[{ id: 1 }]}
+          aria-label="label"
+          columns={[]}
+          virtualScroll={{ rowHeight: 40, rowsBuffer: 10 }}
+        />,
+      );
+    });  
+    test('requires aria-label or aria-labelledby or title', () => {
+      // @ts-expect-error
+      assertType<JSX.Element>(<DataTable data={[]} columns={[]} />);
+    }); 
   });
 
+ 
   beforeEach(cleanup);
 });
 

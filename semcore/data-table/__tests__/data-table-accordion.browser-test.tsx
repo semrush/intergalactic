@@ -53,7 +53,6 @@ test.describe('Accordion in table', () => {
     await page.waitForTimeout(100);
 
     await page.keyboard.press('ArrowDown');
-    // await expect(page.getByRole('gridcell', { name: 'Chart' })).toBeFocused();
 
     await page.keyboard.press('ArrowDown');
     const thirdArrow = await page.locator('[data-ui-name="ButtonLink"]').nth(2);
