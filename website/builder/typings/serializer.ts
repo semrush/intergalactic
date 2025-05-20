@@ -346,7 +346,7 @@ const serializeJSDoc = (jsDoc: ts.JSDoc[], dependencies: string[], genericsMap) 
         }
 
         if (!paramValue || computeTypingStringLength(paramValue) === 0) {
-          return [paramName, tag.comment];
+          return [paramName, tag.comment ?? true];
         }
         dependencies.push(...extractDependenciesList(paramValue));
 
