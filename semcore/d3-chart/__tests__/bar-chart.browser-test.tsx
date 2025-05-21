@@ -59,7 +59,7 @@ test.describe('Bar chart', () => {
   });
 
   test('Verify HoverRect component in bar chart', async ({ page }) => {
-    const standPath = 'stories/components/d3-chart/docs/examples/bar-chart/bar-hover.tsx';
+    const standPath = 'stories/components/d3-chart/tests/examples/bar-chart/bar-hover.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
