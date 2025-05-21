@@ -185,7 +185,7 @@ Table: Validation case for InputRange
 
 ## Appearance customization
 
-In certain cases, when you need to display the steppers as buttons with `Plus` and `Minus` icons, you can utilize an alternative view of this component. Refer to the [Example tab](/components/input-number/input-number-code#appearance_customization).
+In certain cases, when you need to display the steppers as buttons with `Plus` and `Minus` icons, you can utilize an alternative view of this component. Refer to the [Example tab](/components/input-number/input-number-code#appearance-customization).
 
 ![](static/alternative.png)
 

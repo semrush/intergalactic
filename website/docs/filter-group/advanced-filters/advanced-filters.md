@@ -43,7 +43,7 @@ Counter appears after applying the filter. It shows the number of filters applie
 
 ### Clear button
 
-The **Clear advanced filters** button works the same way as the **Clear** button in [FilterTrigger](/components/filter-trigger/filter-trigger#default-filtertrigger), with the only difference being its name.
+The **Clear advanced filters** button works the same way as the [**Clear** button in FilterTrigger](/components/filter-trigger/filter-trigger#interaction), with the only difference being its name.
 
 ## Dropdown or accordion?
 

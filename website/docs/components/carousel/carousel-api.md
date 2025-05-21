@@ -14,7 +14,7 @@ import Carousel from '@semcore/ui/carousel';
 
 ## Carousel.Container
 
-`Carousel.Container` is a wrap over `Carousel.Item`. `Carousel.Item` doesn't have own API, extends to [Box](/layout/box-system/box-api#a3cfce).
+`Carousel.Container` is a wrap over `Carousel.Item`. `Carousel.Item` doesn't have own API, extends to [Box](/layout/box-system/box-api#box).
 
 ```jsx
 import Carousel from '@semcore/ui/carousel';
@@ -23,7 +23,7 @@ import Carousel from '@semcore/ui/carousel';
 
 ## Carousel.Item
 
-`Carousel.Item` doesn't have own API, extends to [Box](/layout/box-system/box-api#a3cfce).
+`Carousel.Item` doesn't have own API, extends to [Box](/layout/box-system/box-api#box).
 
 ```jsx
 import Carousel from '@semcore/ui/carousel';
@@ -32,7 +32,7 @@ import Carousel from '@semcore/ui/carousel';
 
 ## Carousel.Indicators
 
-Component view for default dots. It doesn't have own API, extends to [Box](/layout/box-system/box-api#a3cfce).
+Component view for default dots. It doesn't have own API, extends to [Box](/layout/box-system/box-api#box).
 
 ```jsx
 import Carousel from '@semcore/ui/carousel';
@@ -41,7 +41,7 @@ import Carousel from '@semcore/ui/carousel';
 
 ## Carousel.Prev, Carousel.Next
 
-Component view for default Chevron icons. It doesn't have own API, extends to [Box](/layout/box-system/box-api#a3cfce).
+Component view for default Chevron icons. It doesn't have own API, extends to [Box](/layout/box-system/box-api#box).
 
 ```jsx
 import Carousel from '@semcore/ui/carousel';

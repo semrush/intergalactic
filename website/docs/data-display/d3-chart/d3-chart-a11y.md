@@ -107,7 +107,7 @@ Using patterns in charts instead of just colors makes them easier to understand 
 The `pattern` property enables pattern fills in charts with filled areas, symbols instead of dots, and dashed lines instead of solid ones in charts without filled areas.
 
 ::: tip
-Refer to [our live examples](/data-display/d3-chart/d3-chart-code#pattern-fill) for more details on the feature usage.
+Refer to [our live examples](/data-display/d3-chart/d3-chart-code#pattern-fills-dots-and-lines) for more details on the feature usage.
 :::
 
 ![](static/symbols.png) ![](static/stroke-dasarrays.png)

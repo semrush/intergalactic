@@ -6,7 +6,7 @@
 
 > This component is part of the Intergalactic Design System
 
-### 📖 [Component documentation](https://developer.semrush.com/intergalactic/utils/i18n/#locale_bundle_extracting)
+### 📖 [Component documentation](https://developer.semrush.com/intergalactic/utils/i18n/#locale-bundle-extracting)
 
 ### 🏠 [Design system](https://developer.semrush.com/intergalactic/)
 

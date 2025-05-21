@@ -25,4 +25,4 @@ If you use `Flags` with the short country code, do the same, and also hide the c
 
 ## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y#contrast).
+See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).

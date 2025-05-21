@@ -295,7 +295,7 @@ If some column has `changeSortSize={true}`, by default, it will be increased by 
 
 `<DataTable/>` inherits all `Box` properties, such as `wMax` and `hMax`, which can be used to enable internal scroll.
 
-By default, horizontal scrolling is displayed at the bottom of the table, but it can also be added to the table header. Scroll in the table header is useful for long tables, allowing users to scroll horizontally without having to scroll to the end of the table. For examples, refer to [Sticky header](/table-group/data-table/data-table#sticky_header).
+By default, horizontal scrolling is displayed at the bottom of the table, but it can also be added to the table header. Scroll in the table header is useful for long tables, allowing users to scroll horizontally without having to scroll to the end of the table. For examples, refer to [Sticky header](/table-group/data-table/data-table-code#sticky-header).
 
 ::: sandbox
 

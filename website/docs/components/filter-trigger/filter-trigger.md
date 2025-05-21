@@ -28,7 +28,7 @@ Table: FilterTrigger sizes
 
 ## Grouped filters
 
-Use the same margins as other inputs and [buttons](/components/button/button#margins_between_buttons) have.
+Use the same margins as other inputs and [buttons](/components/button/button#grouped-buttons) have.
 
 Table: Grouped filters
 
@@ -87,5 +87,5 @@ In the filter trigger, it's essential to show the applied value in a way that is
 
 ### Writing numbers, periods, etc
 
-You can find more details on writing numbers and periods in English in the [text guide provided by UX writers](https://docs.google.com/document/d/1HZHNKEW-5k0PqvgDaIWBgu8NWyRr3rM4xCm-725PoUU/edit#heading=h.iue5c2168b0n) (available for Semrush employees only).
+You can find more details on writing numbers and periods in English in the [Content guide](../../content/numbers/numbers.md).
 

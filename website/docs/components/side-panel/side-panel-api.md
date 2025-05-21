@@ -20,7 +20,7 @@ import SidePanel from '@semcore/ui/side-panel';
 <SidePanel.Overlay />;
 ```
 
-This is a wrap over the [Box](/layout/box-system/box-api#a3cfce) component.
+This is a wrap over the [Box](/layout/box-system/box-api#box) component.
 
 ## SidePanel.Panel
 
@@ -29,7 +29,7 @@ import SidePanel from '@semcore/ui/side-panel';
 <SidePanel.Panel />;
 ```
 
-This is a wrap over the [Box](/layout/box-system/box-api#a3cfce) and [FocusLock](https://github.com/theKashey/react-focus-lock/blob/master/interfaces.d.ts#L4).
+This is a wrap over [Box](/layout/box-system/box-api#box) and `FocusLock`.
 
 <TypesView type="SidePanelPanelProps" :types={...types} />
 
@@ -40,6 +40,6 @@ import SidePanel from '@semcore/ui/side-panel';
 <SidePanel.Close />;
 ```
 
-This is a wrap over the [Box](/layout/box-system/box-api#a3cfce) component.
+This is a wrap over the [Box](/layout/box-system/box-api#box) component.
 
 <script setup>import { data as types } from '@types.data.ts';</script>

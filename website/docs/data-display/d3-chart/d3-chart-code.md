@@ -250,7 +250,7 @@ Be careful when choosing the `scale` for the axis, since it's common across diff
 
 ## Initial data loading
 
-During initial chart data loading, use [Skeleton](/components/skeleton/skeleton) corresponding to the chart type. Refer to the specific chart type documentation and to [Chart Skeleton examples](../../components/skeleton/skeleton-code.md#skeleton-examples-for-charts) to choose the appropriate Skeleton type.
+During initial chart data loading, use [Skeleton](/components/skeleton/skeleton) corresponding to the chart type. Refer to the specific chart type documentation and to [Chart Skeleton examples](../../components/skeleton/skeleton-code.md#chart-skeleton) to choose the appropriate Skeleton type.
 
 If the chart has a title, it should be displayed while the chart is loading.
 

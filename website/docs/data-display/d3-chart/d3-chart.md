@@ -149,7 +149,7 @@ During the initial data loading, display the [Skeleton](/components/skeleton/ske
 If the chart has a title, it should be displayed during the initial loading. The user should be aware of what's being loaded, and whether they need to wait for the process to complete.
 
 ::: tip
-Each chart type has a specific skeleton. Refer to specific chart type guides and [Chart Skeleton examples](../../components/skeleton/skeleton-code.md#skeleton-examples-for-charts).
+Each chart type has a specific skeleton. Refer to specific chart type guides and [Chart Skeleton examples](../../components/skeleton/skeleton-code.md#chart-skeleton).
 :::
 
 ## Edge cases
