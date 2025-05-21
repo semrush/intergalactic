@@ -323,7 +323,6 @@ describe('Area', () => {
 
     await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
-
 });
 
 describe('Venn', () => {
@@ -583,7 +582,6 @@ describe('Bubble', () => {
 });
 
 describe('Donut', () => {
-
   test.concurrent('should render donut', async ({ task }) => {
     const data = {
       a: 3,
@@ -606,7 +604,6 @@ describe('Donut', () => {
 
     await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
-
 
   test.concurrent('should render semi-donut', async ({ task }) => {
     const data = {
@@ -640,7 +637,6 @@ describe('Donut', () => {
 });
 
 describe('Radial', () => {
-
   test.concurrent('should render radial-tree', async ({ task }) => {
     const Component: React.FC = () => {
       const width = 500;
@@ -800,7 +796,6 @@ describe('ChartLegend', () => {
 
     await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
-
 });
 
 describe('Cigarette chart', () => {

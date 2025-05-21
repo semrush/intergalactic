@@ -2,7 +2,6 @@ import { expect, test, getAccessibilityViolations } from '@semcore/testing-utils
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 test.describe('radar-chart', () => {
-
   test('basic-usage', async ({ page }) => {
     const standPath = 'stories/components/d3-chart/docs/examples/radar-chart/basic-usage.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');

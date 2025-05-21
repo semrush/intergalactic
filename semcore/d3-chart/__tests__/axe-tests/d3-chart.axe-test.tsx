@@ -89,5 +89,4 @@ test.describe('d3-chart', () => {
 
     expect(violations).toEqual([]);
   });
-
 });
