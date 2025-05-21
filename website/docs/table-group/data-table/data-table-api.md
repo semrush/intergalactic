@@ -12,5 +12,9 @@ import DataTable from '@semcore/ui/data-table';
 
 <TypesView type="DataTableProps" :types={...types} />
 
+`CellRenderProps` are passed to the `renderCell` prop of DataTable.
+
+<TypesView type="CellRenderProps" :types={...types} />
+
 
 <script setup>import { data as types } from '@types.data.ts';</script>
