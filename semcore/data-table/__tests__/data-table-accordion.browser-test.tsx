@@ -9,7 +9,8 @@ const checkStyles = async (element: any, styles: Record<string, string>) => {
 
 test.describe('Accordion in table', () => {
   test('Verify keyboard interactions with accordion and chart inside', async ({ page }) => {
-    const standPath = 'stories/components/data-table/docs/examples/accordion-inside-table.tsx';
+    const standPath =
+      'stories/components/data-table/tests/examples/accordion-tests/accordion-inside-table.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     const plot = await page.locator('[data-ui-name="Plot"]');
     await page.setContent(htmlContent);
@@ -52,7 +53,6 @@ test.describe('Accordion in table', () => {
     await page.waitForTimeout(100);
 
     await page.keyboard.press('ArrowDown');
-    // await expect(page.getByRole('gridcell', { name: 'Chart' })).toBeFocused();
 
     await page.keyboard.press('ArrowDown');
     const thirdArrow = await page.locator('[data-ui-name="ButtonLink"]').nth(2);
@@ -60,7 +60,8 @@ test.describe('Accordion in table', () => {
   });
 
   test('Verify mouse interactions with accordion and chart inside', async ({ page }) => {
-    const standPath = 'stories/components/data-table/docs/examples/accordion-inside-table.tsx';
+    const standPath =
+      'stories/components/data-table/tests/examples/accordion-tests/accordion-inside-table.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -125,7 +126,8 @@ test.describe('Accordion in table', () => {
   });
 
   test('Verify accordion with chart styles', async ({ page, browserName }) => {
-    const standPath = 'stories/components/data-table/docs/examples/accordion-inside-table.tsx';
+    const standPath =
+      'stories/components/data-table/tests/examples/accordion-tests/accordion-inside-table.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -194,7 +196,8 @@ test.describe('Accordion in table', () => {
   });
 
   test('Verify accordion with with chart attributes', async ({ page }) => {
-    const standPath = 'stories/components/data-table/docs/examples/accordion-inside-table.tsx';
+    const standPath =
+      'stories/components/data-table/tests/examples/accordion-tests/accordion-inside-table.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);

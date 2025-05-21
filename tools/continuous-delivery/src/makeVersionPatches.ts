@@ -56,7 +56,7 @@ export const makeVersionPatches = (packages: Package[]) => {
         : maxSemver(packageFile.currentVersion, packageFile.lastPublishedVersion);
     const hasNewerVersion = semver.compare(newVersion, lastChangelog.version) === -1;
 
-    if (!hasNewerVersion && newVersion !== '16.0.0') continue;
+    if (!hasNewerVersion) continue;
 
     if (lastChangelog.changes[0]) {
       lastChangelog.changes[0].version = lastChangelog.version;

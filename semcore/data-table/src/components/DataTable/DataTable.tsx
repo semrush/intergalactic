@@ -710,8 +710,8 @@ class DataTableRoot<D extends DataTableData> extends Component<
               <Children />
             ) : (
               <>
-                <DataTable.Head />
-                <DataTable.Body />
+                <DataTableInternal.Head />
+                <DataTableInternal.Body />
               </>
             )}
           </SDataTable>
@@ -1183,7 +1183,9 @@ class DataTableRoot<D extends DataTableData> extends Component<
 export const DataTable = createComponent(DataTableRoot, {
   Head,
   Body,
-}) as DataTableType & {
+}) as DataTableType;
+
+export const DataTableInternal = DataTable as DataTableType & {
   Head: typeof Head;
   Body: typeof Body;
 };

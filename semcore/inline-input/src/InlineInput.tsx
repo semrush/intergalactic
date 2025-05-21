@@ -2,7 +2,7 @@ import React from 'react';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import { Box, InvalidStateBox } from '@semcore/flex-box';
 import autoFocusEnhance from '@semcore/core/lib/utils/enhances/autoFocusEnhance';
-import Tooltip, { ITooltipProps } from '@semcore/tooltip';
+import { ITooltipProps } from '@semcore/tooltip';
 import style from './style/inline-input.shadow.css';
 import CheckM from '@semcore/icon/Check/m';
 import CloseM from '@semcore/icon/Close/m';

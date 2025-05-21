@@ -1,10 +1,4 @@
-import {
-  FormProps,
-  FieldProps,
-  FieldInputProps,
-  FieldMetaState,
-  FieldRenderProps,
-} from 'react-final-form';
+import { FormProps, FieldProps, FieldInputProps, FieldMetaState } from 'react-final-form';
 
 import { Intergalactic } from '@semcore/core';
 import Button from '@semcore/button';

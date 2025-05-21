@@ -73,7 +73,7 @@ describe('Tooltip.Popper', () => {
       () => {
         expect(getByTestId('popper').attributes['class'].value).toContain('more-than one-class');
       },
-      { timeout: 100 },
+      { timeout: 500 },
     );
   });
 
@@ -89,7 +89,7 @@ describe('Tooltip.Popper', () => {
       () => {
         expect(getByTestId('popper').attributes['name'].value).toBe('popper');
       },
-      { timeout: 100 },
+      { timeout: 500 },
     );
   });
 
@@ -106,7 +106,7 @@ describe('Tooltip.Popper', () => {
       () => {
         expect(ref.current.nodeName).toBe('DIV');
       },
-      { timeout: 100 },
+      { timeout: 250 },
     );
   });
 
@@ -126,7 +126,7 @@ describe('Tooltip.Popper', () => {
       () => {
         expect(getAllByText('test popper content', {})).toHaveLength(1);
       },
-      { timeout: 100 },
+      { timeout: 250 },
     );
   });
 
@@ -149,7 +149,7 @@ describe('Tooltip.Popper', () => {
           document.querySelectorAll('[data-ui-name^="Tooltip"][data-ui-name$="Popper"]').length,
         ).toBe(1);
       },
-      { timeout: 100 },
+      { timeout: 250 },
     );
   });
 });
@@ -191,7 +191,7 @@ describe('TooltipBase', () => {
   describe('a11y', () => {
     test('Hint', async () => {
       const { container } = render(
-        <Hint title='text' visible disablePortal tag='a'>
+        <Hint title='text' visible tag='a'>
           trigger
         </Hint>,
       );

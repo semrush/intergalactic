@@ -537,7 +537,7 @@ describe('InputSearch', () => {
 
   test('should call onChange ones per symbol', async ({ expect }) => {
     const spy = vi.fn();
-    const { getByRole } = render(
+    const { unmount } = render(
       <Select visible disablePortal>
         <InputSearch value='' onChange={spy} />
       </Select>,
@@ -547,5 +547,6 @@ describe('InputSearch', () => {
     await userEvent.keyboard('[Tab]');
     await userEvent.keyboard('test');
     expect(spy).toHaveBeenCalledTimes(4);
+    unmount();
   });
 });

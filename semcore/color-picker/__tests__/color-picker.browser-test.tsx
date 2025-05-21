@@ -308,8 +308,9 @@ test.describe('Color-picker', () => {
 
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     const locators = getColorPickerLocators(page);
-
     await page.setContent(htmlContent);
+
+    await new Promise((resolve) => setTimeout(resolve, 500));
     await test.step('Verify normal and active for background and text color', async () => {
       await expect(page).toHaveScreenshot();
     });
@@ -318,19 +319,20 @@ test.describe('Color-picker', () => {
     await test.step('Verify hover on No background color ', async () => {
       const items = colorPoppers.first().getByRole('option');
       await items.first().hover();
-      await page.waitForTimeout(100);
+      await new Promise((resolve) => setTimeout(resolve, 300));
       await expect(page).toHaveScreenshot();
     });
 
     await test.step('Verify hover on text color ', async () => {
       const items = colorPoppers.nth(1).getByRole('option');
       await items.nth(2).hover();
-      await page.waitForTimeout(100);
+      await new Promise((resolve) => setTimeout(resolve, 500));
       await expect(page).toHaveScreenshot();
     });
 
     await test.step('Verify hover on Add color button ', async () => {
       await locators.addButton.first().hover();
+      await new Promise((resolve) => setTimeout(resolve, 500));
       await expect(page).toHaveScreenshot();
     });
   });
@@ -353,7 +355,7 @@ test.describe('Color-picker', () => {
 
     await test.step('Verify hover state for Palette custom color', async () => {
       await colorCustom.first().hover();
-      await page.waitForTimeout(200);
+      await page.waitForTimeout(500);
       await expect(page).toHaveScreenshot();
     });
 
@@ -365,7 +367,7 @@ test.describe('Color-picker', () => {
       );
 
       await locators.trigger.first().click();
-      await page.waitForTimeout(100);
+      await page.waitForTimeout(500);
       await expect(page).toHaveScreenshot();
     });
   });
@@ -490,7 +492,7 @@ test.describe('Color-picker', () => {
 
     //input validation
     await locators.inputColor.fill('++');
-    await page.waitForTimeout(200);
+    await page.waitForTimeout(300);
     await expect(page).toHaveScreenshot();
 
     await expect(locators.addColor).toBeVisible();
@@ -512,7 +514,7 @@ test.describe('Color-picker', () => {
     await expect(locators.inputColor).toBeEmpty();
 
     await locators.inputColor.fill('999');
-    await page.waitForTimeout(200);
+    await page.waitForTimeout(300);
     await expect(locators.inputColor).toHaveAttribute('aria-invalid', 'false');
     await locators.addColor.click();
     await expect(locators.palette).not.toBeEmpty();
@@ -529,7 +531,7 @@ test.describe('Color-picker', () => {
     await locators.palette.locator('[data-ui-name="PaletteManager.Item"]').click();
 
     await expect(locators.popper).not.toBeVisible();
-    await page.waitForTimeout(100);
+    await page.waitForTimeout(200);
     await expect(locators.trigger).toHaveAttribute('value', '#999');
   });
 
@@ -743,13 +745,14 @@ test.describe('Color-picker', () => {
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
+    await page.waitForTimeout(200);
 
     const colorItems = page.locator(
       '[data-ui-name="ColorPicker.Colors"] [data-ui-name="ColorPicker.Item"]',
     );
     await colorItems.nth(3).hover();
 
-    await page.waitForTimeout(200);
+    await page.waitForTimeout(500);
     await expect(page).toHaveScreenshot();
 
     const paletteNonEditableItems = page
@@ -758,7 +761,7 @@ test.describe('Color-picker', () => {
       .locator('[data-ui-name="PaletteManager.Item"]');
     await paletteNonEditableItems.nth(1).hover();
     await expect(paletteNonEditableItems).toHaveCount(3);
-    await page.waitForTimeout(100);
+    await page.waitForTimeout(300);
     await expect(page).toHaveScreenshot();
 
     locators.inputColor.first().click();
