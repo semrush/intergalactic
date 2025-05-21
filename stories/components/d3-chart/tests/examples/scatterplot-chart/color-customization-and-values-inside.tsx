@@ -33,8 +33,11 @@ const Demo = () => {
             children: (
               <>
                 <ScatterPlot.Tooltip.Title>Data</ScatterPlot.Tooltip.Title>
+                 {/* @ts-ignore */}
                 <Text tag='div'>X axis {data[index][x]}</Text>
+                 {/* @ts-ignore */}
                 <Text tag='div'>Y axis {data[index][y]}</Text>
+                 {/* @ts-ignore */}
                 <Text tag='div'>Value {data[index][value]}</Text>
               </>
             ),

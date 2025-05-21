@@ -2,7 +2,7 @@ import React from 'react';
 import { Chart } from '@semcore/d3-chart';
 import { curveCardinal } from 'd3-shape';
 
-const formatDate = (type: 'axis' | 'tooltip') => (value) => {
+const formatDate = (type: 'axis' | 'tooltip') => (value: any) => {
   const options =
     type === 'axis'
       ? {

@@ -17,7 +17,7 @@ const data: Record<string, number | typeof interpolateValue> = {
   Cats: 3524,
   Dogs: interpolateValue,
   Capybaras: 6135,
-  Hamsters: null,
+  Hamsters: interpolateValue,
   Birds: 1823,
 };
 

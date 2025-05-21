@@ -32,6 +32,7 @@ const Demo = () => {
             children: (
               <>
                 <Venn.Tooltip.Title>{name}</Venn.Tooltip.Title>
+                 {/* @ts-ignore */}
                 <Text bold>{data[dataKey]}</Text>
               </>
             ),

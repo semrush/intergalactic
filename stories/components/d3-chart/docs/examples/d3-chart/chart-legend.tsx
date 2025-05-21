@@ -3,11 +3,12 @@ import { Line, minMax, XAxis, Plot, YAxis, ChartLegend } from '@semcore/d3-chart
 import { scaleLinear } from 'd3-scale';
 import { Box } from '@semcore/flex-box';
 
+const MAP_THEME = {
+  line1: 'orange',
+  line2: 'green',
+};
+
 const Demo = () => {
-  const MAP_THEME = {
-    line1: 'orange',
-    line2: 'green',
-  };
   const width = 500;
   const height = 300;
   const MARGIN = 40;
@@ -15,14 +16,12 @@ const Demo = () => {
   const [legendItems, setLegendItems] = React.useState(
     Object.keys(data[0])
       .filter((name) => name !== 'x')
-      .map((item) => {
-        return {
-          id: item,
-          label: item,
-          checked: true,
-          color: MAP_THEME[item],
-        };
-      }),
+      .map((item) => ({
+        id: item as keyof typeof MAP_THEME,
+        label: item,
+        checked: true,
+        color: MAP_THEME[item as keyof typeof MAP_THEME],
+      })),
   );
 
   const xScale = scaleLinear()
@@ -36,20 +35,17 @@ const Demo = () => {
   const [highlightedLine, setHighlightedLine] = React.useState(-1);
 
   const handleChangeVisible = React.useCallback((id: string, isVisible: boolean) => {
-    setLegendItems((prevItems) => {
-      return prevItems.map((item) => {
-        if (item.id === id) {
-          item.checked = isVisible;
-        }
-
-        return item;
-      });
-    });
+    setLegendItems((prevItems) =>
+      prevItems.map((item) =>
+        item.id === id ? { ...item, checked: isVisible } : item,
+      ),
+    );
   }, []);
 
   const handleMouseEnter = React.useCallback((id: string) => {
     setHighlightedLine(legendItems.findIndex((line) => line.id === id));
-  }, []);
+  }, [legendItems]);
+
   const handleMouseLeave = React.useCallback(() => {
     setHighlightedLine(-1);
   }, []);
@@ -73,19 +69,17 @@ const Demo = () => {
         <XAxis>
           <XAxis.Ticks />
         </XAxis>
-        {legendItems.map((item, index) => {
-          return (
-            item.checked && (
-              <Line
-                key={item.id}
-                x='x'
-                y={item.id}
-                color={MAP_THEME[item.id]}
-                transparent={highlightedLine !== -1 && highlightedLine !== index}
-              />
-            )
-          );
-        })}
+        {legendItems.map((item, index) =>
+          item.checked ? (
+            <Line
+              key={item.id}
+              x="x"
+              y={item.id}
+              color={MAP_THEME[item.id]}
+              transparent={highlightedLine !== -1 && highlightedLine !== index}
+            />
+          ) : null,
+        )}
       </Plot>
     </>
   );

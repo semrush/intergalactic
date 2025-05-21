@@ -4,7 +4,7 @@ import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import { scaleLinear, scaleTime } from 'd3-scale';
 
-function formatDate(value:any, options:any) {
+function formatDate(value: any, options: any) {
   return new Intl.DateTimeFormat('en', options).format(value);
 }
 
@@ -14,7 +14,9 @@ const Demo = () => {
   const MARGIN = 40;
   const width = 500;
   const height = 300;
-  const plotRef = React.useRef(null);
+  
+  // Добавляем типизацию рефа на SVG элемент
+  const plotRef = React.useRef<SVGSVGElement | null>(null);
 
   const xScale = scaleTime()
     .range([MARGIN, width - MARGIN])
@@ -27,6 +29,8 @@ const Demo = () => {
   React.useEffect(() => {
     const unsubscribe = eventEmitter.subscribe('setTooltipPosition', (x, y) => {
       const plotRect = plotRef.current?.getBoundingClientRect();
+      if (!plotRect) return;
+
       if (x - plotRect.x < 150) {
         eventEmitter.emit('setTooltipPosition', plotRect.x + 150, y);
       }

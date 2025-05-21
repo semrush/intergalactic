@@ -1,8 +1,8 @@
 import React from 'react';
 import { Plot, Line, XAxis, YAxis, HoverLine, minMax } from '@semcore/d3-chart';
 import { scaleLinear } from 'd3-scale';
-import { Flex } from 'intergalactic/flex-box';
-import { Text } from 'intergalactic/typography';
+import { Flex } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
 
 const Demo = () => {
     const MARGIN = 40;
@@ -18,7 +18,7 @@ const Demo = () => {
         .domain([0, 10]);
 
     return (
-        <Plot data={data} scale={[xScale, yScale]} width={width} height={height} showXAxis={false}>
+        <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
             <YAxis>
                 <YAxis.Ticks />
                 <YAxis.Grid />
@@ -26,34 +26,34 @@ const Demo = () => {
             <XAxis>
                 <XAxis.Ticks />
             </XAxis>
-            <HoverLine.Tooltip x='x' wMin={100} hideHoverLine={(xIndex, yIndex) => {return xIndex >= 5 ;}}>
-                {({ xIndex }) => {
-                    return {
-                        // visible: xIndex !== 2,
-                        children: (
-                            <>
-                                <HoverLine.Tooltip.Title>{data[xIndex].x}</HoverLine.Tooltip.Title>
-                                <Flex justifyContent='space-between'>
-                                    <HoverLine.Tooltip.Dot mr={4}>Line</HoverLine.Tooltip.Dot>
-                                    <Text bold>{data[xIndex].y}</Text>
-                                </Flex>
-                            </>
-                        ),
-                    };
-                }}
-            </HoverLine.Tooltip>
-            <Line x='x' y='y'>
-                {/*<Line.Dots display={null}/>*/}
-            </Line>
+            <HoverLine.Tooltip
+    x="x"
+    wMin={100}
+    hideHoverLine={(xIndex) => xIndex !== null && xIndex >= 5}
+>
+    {({ xIndex }) => ({
+        children: xIndex !== null ? (
+            <>
+                <HoverLine.Tooltip.Title>{data[xIndex].x}</HoverLine.Tooltip.Title>
+                <Flex justifyContent="space-between">
+                    <HoverLine.Tooltip.Dot mr={4}>Line</HoverLine.Tooltip.Dot>
+                    <Text bold>{data[xIndex].y}</Text>
+                </Flex>
+            </>
+        ) : (
+            <></> 
+        ),
+    })}
+</HoverLine.Tooltip>
+            <Line x="x" y="y" />
         </Plot>
     );
 };
 
-const data = Array(20)
-    .fill({})
-    .map((d, i) => ({
-        x: i,
-        y: Math.random() * 10,
-    }));
+const data = Array.from({ length: 20 }, (_, i) => ({
+    x: i,
+    y: (i % 5) + 2, 
+}));
+
 
 export default Demo;

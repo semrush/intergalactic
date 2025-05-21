@@ -1,9 +1,9 @@
 import React from 'react';
-import { Plot, XAxis, YAxis, Area } from '@semcore/d3-chart';
+import { Plot, XAxis, YAxis, minMax, Area } from '@semcore/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import { curveCardinal } from 'd3-shape';
 
-function formatDate(value: Date, options: Intl.DateTimeFormatOptions) {
+function formatDate(value: any, options: any) {
   return new Intl.DateTimeFormat('en', options).format(value);
 }
 
@@ -14,9 +14,11 @@ const Demo = () => {
 
   const xScale = scaleLinear()
     .range([MARGIN, width - MARGIN])
-    .domain([+data[0].time, +data[data.length - 1].time]);
+    .domain(minMax(data, 'time'));
 
-  const yScale = scaleLinear().range([height - MARGIN, MARGIN]).domain([0, 10]);
+  const yScale = scaleLinear()
+    .range([height - MARGIN, MARGIN])
+    .domain([0, 10]);
 
   return (
     <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
@@ -27,21 +29,20 @@ const Demo = () => {
       <XAxis>
         <XAxis.Ticks ticks={data.map((d) => +d.time)}>
           {({ value }) => ({
-            children: formatDate(new Date(value), {
+            children: formatDate(value, {
               month: 'short',
               day: 'numeric',
             }),
           })}
         </XAxis.Ticks>
       </XAxis>
-      <Area x="time" y="line" curve={curveCardinal}>
+      <Area x='time' y='line' curve={curveCardinal}>
         <Area.Dots display />
       </Area>
     </Plot>
   );
 };
 
-// Статичные значения
 const baseDate = new Date('2024-01-01');
 const data = [
   { time: new Date(baseDate.getTime() + 0 * 86400000), line: 2 },

@@ -49,6 +49,7 @@ const BarChartExamples = () => {
       {/* 2. Chart.Bar with group type */}
       <Chart.Bar
         groupKey="category"
+        aria-label='CompactHorizontalBar chart'
         type="group"
         invertAxis
         data={[

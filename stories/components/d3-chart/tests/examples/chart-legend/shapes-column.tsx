@@ -10,7 +10,7 @@ import Card from "@semcore/card";
 const dataHints = makeDataHintsContainer();
 
 const Demo = () => {
-
+    const [trendIsVisible, setTrendIsVisible] = React.useState(true);
     const [legendItems, setLegendItems] = React.useState(
         Object.keys(data[0])
             .filter((name) => name !== "bar")
@@ -221,7 +221,9 @@ const Demo = () => {
                             direction="column"
                             size='l'
                             aria-label={"Stacked bar chart legend"}
-                            withTrend={true}
+                            trendIsVisible={trendIsVisible}
+                            onTrendIsVisibleChange={setTrendIsVisible}
+                            withTrend
                             pr={4}
                         />
                         <ChartLegend
@@ -229,7 +231,9 @@ const Demo = () => {
                             patterns
                             direction="column"
                             aria-label={"Stacked bar chart legend"}
-                            withTrend={true}
+                            trendIsVisible={trendIsVisible}
+                            onTrendIsVisibleChange={setTrendIsVisible}
+                            withTrend
                         />
                     </Card.Body>
 

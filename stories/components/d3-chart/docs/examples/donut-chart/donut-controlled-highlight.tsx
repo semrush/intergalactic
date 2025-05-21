@@ -8,7 +8,7 @@ const data = { a: 3, b: 1, c: 2 };
 const Demo = () => {
   const [selected, setSelected] = React.useState(['b']);
   const handleCheckboxToggle = React.useCallback(
-    (name) => () => {
+    (name: any) => () => {
       setSelected((selected) => {
         if (selected.includes(name)) {
           return selected.filter((selectedName) => selectedName !== name);

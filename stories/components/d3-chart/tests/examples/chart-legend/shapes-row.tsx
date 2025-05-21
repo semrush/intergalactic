@@ -10,6 +10,7 @@ import Card from "@semcore/card";
 const dataHints = makeDataHintsContainer();
 
 const Demo = () => {
+    const [trendIsVisible, setTrendIsVisible] = React.useState(true);
 
     const [legendItems, setLegendItems] = React.useState(
         Object.keys(data[0])
@@ -71,7 +72,9 @@ const Demo = () => {
                         patterns
                         aria-label={"Checkboxes M with trend"}
                         pr={4}
-                        withTrend={true}
+                        trendIsVisible={trendIsVisible}
+                        onTrendIsVisibleChange={setTrendIsVisible}
+                        withTrend
 
                     />
                     <ChartLegend
@@ -83,7 +86,9 @@ const Demo = () => {
                         patterns
                         size='l'
                         aria-label={"Checkboxes L with trend"}
-                        withTrend={true}
+                        trendIsVisible={trendIsVisible}
+                        onTrendIsVisibleChange={setTrendIsVisible}
+                        withTrend
                     />
                 </Card.Body>
             </Card>

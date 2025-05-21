@@ -1,7 +1,7 @@
 import React from 'react';
 import { Chart } from '@semcore/d3-chart';
 
-function formatDate(value: Date) {
+function formatDate(value: any) {
   const options = {
     month: 'short' as const,
     day: 'numeric' as const,

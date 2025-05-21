@@ -4,7 +4,7 @@ import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import { scaleLinear, scaleTime } from 'd3-scale';
 
-function formatDate(value, options) {
+function formatDate(value: any, options: any) {
   return new Intl.DateTimeFormat('en', options).format(value);
 }
 

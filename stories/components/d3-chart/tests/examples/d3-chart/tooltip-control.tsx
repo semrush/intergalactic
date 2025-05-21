@@ -4,7 +4,7 @@ import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import { scaleLinear, scaleTime } from 'd3-scale';
 
-function formatDate(value, options) {
+function formatDate(value: any, options: any) {
   return new Intl.DateTimeFormat('en', options).format(value);
 }
 
@@ -39,6 +39,7 @@ const Demo = () => {
 
   React.useEffect(() => {
     const unsubscribe = eventEmitter.subscribe('setTooltipPosition', (x, y) => {
+       {/* @ts-ignore */}
       const plotRect = plotRef.current?.getBoundingClientRect();
       if (x - plotRect.x < 150) {
         eventEmitter.emit('setTooltipPosition', plotRect.x + 150, y);

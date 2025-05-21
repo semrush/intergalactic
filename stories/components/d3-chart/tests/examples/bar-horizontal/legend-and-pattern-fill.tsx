@@ -32,28 +32,33 @@ const Demo = () => {
   const [legendItems, setLegendItems] = React.useState(
     Object.keys(data[0])
       .filter((name) => name !== 'category')
-      .map((item, index) => ({
-        id: item,
-        label: `Bar ${item}`,
-        checked: true,
-        color: `chart-palette-order-${index + 1}`,
-      })),
+      .map((item, index) => {
+        return {
+          id: item,
+          label: `Bar ${item}`,
+          checked: true,
+          color: `chart-palette-order-${index + 1}`,
+        };
+      }),
   );
 
   const [highlightedLine, setHighlightedLine] = React.useState(-1);
 
-  const handleChangeVisible = React.useCallback((id, isVisible) => {
-    setLegendItems((prevItems) =>
-      prevItems.map((item) =>
-        item.id === id ? { ...item, checked: isVisible } : item,
-      ),
-    );
+  const handleChangeVisible = React.useCallback((id: string, isVisible: boolean) => {
+    setLegendItems((prevItems) => {
+      return prevItems.map((item) => {
+        if (item.id === id) {
+          item.checked = isVisible;
+        }
+
+        return item;
+      });
+    });
   }, []);
 
-  const handleMouseEnter = React.useCallback((id) => {
+  const handleMouseEnter = React.useCallback((id: string) => {
     setHighlightedLine(legendItems.findIndex((line) => line.id === id));
-  }, [legendItems]);
-
+  }, []);
   const handleMouseLeave = React.useCallback(() => {
     setHighlightedLine(-1);
   }, []);
@@ -108,14 +113,16 @@ const Demo = () => {
         <GroupBar y='category'>
           {legendItems
             .filter((item) => item.checked)
-            .map((item, index) => (
-              <GroupBar.HorizontalBar
-                key={item.id}
-                x={item.id}
-                color={item.color}
-                transparent={highlightedLine !== -1 && highlightedLine !== index}
-              />
-            ))}
+            .map((item, index) => {
+              return (
+                <GroupBar.HorizontalBar
+                  key={item.id}
+                  x={item.id}
+                  color={item.color}
+                  transparent={highlightedLine !== -1 && highlightedLine !== index}
+                />
+              );
+            })}
         </GroupBar>
       </Plot>
     </>

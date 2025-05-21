@@ -1,5 +1,5 @@
 import React from 'react';
-import { Chart } from '@semcore/ui/d3-chart';
+import { Chart } from '@semcore/d3-chart';
 
 const Demo = () => {
   return (
@@ -26,7 +26,6 @@ const Demo = () => {
       direction: 'column',
       disableHoverItems: true,
       disableSelectItems: true,
-      patterns: false,
       shape: 'Checkbox',
       size: 'm'
     }}

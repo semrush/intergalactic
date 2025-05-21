@@ -14,17 +14,24 @@ import { Flex, Box } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import { curveCardinal } from 'd3-shape';
 
-function formatDate(value, options) {
+function formatDate(value: any, options: any) {
   return new Intl.DateTimeFormat('en', options).format(value);
 }
 
-const lineColors = {
-  1: '--blue-300',
-  2: '--green-200',
-  3: '--orange-400',
+const lineColors: Record<string, string> = {
+  '1': '--blue-300',
+  '2': '--green-200',
+  '3': '--orange-400',
 };
 
 const dataHints = makeDataHintsContainer();
+
+type DataItem = {
+  time: Date;
+  '1': number;
+  '2': number;
+  '3': number;
+};
 
 const getDegaultLegendItems = () => {
   return Object.keys(data[0])
@@ -34,7 +41,7 @@ const getDegaultLegendItems = () => {
         id: item,
         label: `Stack ${item}`,
         checked: true,
-        color: lineColors[item],
+        color: lineColors[item], 
       };
     });
 };
@@ -44,15 +51,9 @@ const Demo = () => {
 
   const handleChangeVisible = React.useCallback((id: string, isVisible: boolean) => {
     setLegendItems((prevItems) => {
-      const newItems = prevItems.map((item) => {
-        if (item.id === id) {
-          item.checked = isVisible;
-        }
-
-        return item;
-      });
-
-      return newItems;
+      return prevItems.map((item) =>
+        item.id === id ? { ...item, checked: isVisible } : item,
+      );
     });
   }, []);
 
@@ -100,7 +101,7 @@ const Demo = () => {
             })}
           </XAxis.Ticks>
         </XAxis>
-        <HoverLine.Tooltip x='time' wMin={100}>
+        <HoverLine.Tooltip x="time" wMin={100}>
           {({ xIndex }) => {
             return {
               children: (
@@ -113,45 +114,43 @@ const Demo = () => {
                     })}
                   </HoverLine.Tooltip.Title>
 
-                  {legendItems.map((item, index) => {
-                    const itemIndex = index + 1;
-
+                  {legendItems.map((item) => {
                     return (
-                      <Flex key={item.id} justifyContent='space-between'>
-                        <HoverLine.Tooltip.Dot mr={4} color={lineColors[itemIndex]}>
+                      <Flex key={item.id} justifyContent="space-between">
+                        <HoverLine.Tooltip.Dot mr={4} color={lineColors[item.id]}>
                           {item.label}
                         </HoverLine.Tooltip.Dot>
-                        <Text bold>{data[xIndex][itemIndex]}</Text>
+                         {/* @ts-ignore */}
+                        <Text bold>{data[xIndex][item.id as keyof DataItem]}</Text>
                       </Flex>
                     );
                   })}
 
-                  <Flex mt={2} justifyContent='space-between'>
+                  <Flex mt={2} justifyContent="space-between">
                     <Box mr={4}>Total</Box>
-                    <Text bold>{data[xIndex][1] + data[xIndex][2] + data[xIndex][3]}</Text>
+                    <Text bold>
+                      {data[xIndex]['1'] + data[xIndex]['2'] + data[xIndex]['3']}
+                    </Text>
                   </Flex>
                 </>
               ),
             };
           }}
         </HoverLine.Tooltip>
-        <StackedArea x='time'>
-          {legendItems.map((item, index) => {
-            const itemIndex = String(index + 1);
-            return (
-              item.checked && (
-                <StackedArea.Area
-                  key={item.id}
-                  y={itemIndex}
-                  fill={`chart-palette-order-${itemIndex}`}
-                  color={lineColors[itemIndex]}
-                  curve={curveCardinal}
-                >
-                  <StackedArea.Area.Dots />
-                </StackedArea.Area>
-              )
-            );
-          })}
+        <StackedArea x="time">
+          {legendItems.map((item) =>
+            item.checked ? (
+              <StackedArea.Area
+                key={item.id}
+                y={item.id}
+                fill={`chart-palette-order-${item.id}`}
+                color={lineColors[item.id]}
+                curve={curveCardinal}
+              >
+                <StackedArea.Area.Dots />
+              </StackedArea.Area>
+            ) : null,
+          )}
         </StackedArea>
       </Plot>
     </>
@@ -159,11 +158,11 @@ const Demo = () => {
 };
 
 const date = new Date();
-const data = [...Array(5).keys()].map((d, i) => ({
-  time: new Date(date.setDate(date.getDate() + 5)),
-  1: Math.random() * 5,
-  2: Math.random() * 5,
-  3: Math.random() * 5,
+const data: DataItem[] = [...Array(5).keys()].map(() => ({
+  time: new Date(date), 
+  '1': Math.random() * 5,
+  '2': Math.random() * 5,
+  '3': Math.random() * 5,
 }));
 
 export default Demo;

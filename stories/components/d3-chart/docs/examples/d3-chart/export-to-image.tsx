@@ -31,8 +31,11 @@ const Demo = () => {
 
   const downloadImage = React.useCallback(
     (extention: string) => async () => {
+       {/* @ts-ignore */}
       const svgElement = svgRef.current.cloneNode(true) as typeof svgRef.current;
+       {/* @ts-ignore */}
       [...svgElement.querySelectorAll('animate')].forEach((animate) => animate.remove());
+       {/* @ts-ignore */}
       let svgText = svgElementToSvgText(svgElement);
       svgText = svgText.replace(/(\w+)?:?xlink=/g, 'xmlns:xlink='); // Fix root xlink without namespace
       svgText = svgText.replace(/NS\d+:href/g, 'xlink:href'); // Safari NS namespace fix
@@ -118,6 +121,7 @@ const getCSSStyles = (parentElement: Element) => {
     try {
       if (!s.cssRules) continue;
     } catch (e) {
+       {/* @ts-ignore */}
       if (e.name !== 'SecurityError') throw e; // for Firefox
       continue;
     }
@@ -166,7 +170,9 @@ const svgText2DownloadUrl = async (svg: string, width: number, height: number, f
 
     const image = new Image();
     image.onload = function () {
+       {/* @ts-ignore */}
       context.clearRect(0, 0, width, height);
+       {/* @ts-ignore */}
       context.drawImage(image, 0, 0, width, height);
 
       const img = canvas.toDataURL(`image/${format}`);

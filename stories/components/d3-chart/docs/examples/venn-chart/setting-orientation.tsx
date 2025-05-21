@@ -4,8 +4,8 @@ import { colors, Plot, Venn } from '@semcore/d3-chart';
 import { Flex } from '@semcore/flex-box';
 
 const orders = [
-  (val1, val2) => val2.radius - val1.radius,
-  (val1, val2) => val1.radius - val2.radius,
+  (val1: any, val2: any) => val2.radius - val1.radius,
+  (val1: any, val2: any) => val1.radius - val2.radius,
 ];
 
 const orientations = [Math.PI / 2, Math.PI];

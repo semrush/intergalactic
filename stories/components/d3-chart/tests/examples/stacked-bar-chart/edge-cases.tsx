@@ -46,10 +46,10 @@ const Demo = () => {
     { time: 9, stack1: 5, stack2: 0, stack3: 3 },
   ];
 
-  const buildScales = (data, yDomain = [0, 15]) => {
+  const buildScales = (data: any, yDomain = [0, 15]) => {
     const xScale = scaleBand()
       .range([MARGIN, width - MARGIN])
-      .domain(data.map((d) => d.time))
+      .domain(data.map((d: any) => d.time))
       .paddingInner(0.4)
       .paddingOuter(0.2);
 
@@ -94,7 +94,7 @@ const Demo = () => {
         </StackBar>
       </Plot>
 
-      {/* Третий чарт — положительные и отрицательные значения */}
+   
       <Plot data={data2} scale={buildScales(data2, [-4, 4])} width={width} height={height}>
         <YAxis>
           <YAxis.Ticks />
@@ -104,9 +104,9 @@ const Demo = () => {
           <XAxis.Ticks />
         </XAxis>
         <StackBar x="time">
-          <StackBar.Bar y="stack1" color='red' hMin={5} duration={0} />
-          <StackBar.Bar y="stack2" color='blue' hMin={5} duration={0} />
-          <StackBar.Bar y="stack3" color='yellow' hMin={5} duration={0} />
+          <StackBar.Bar y="stack1" color='red' duration={0} />
+          <StackBar.Bar y="stack2" color='blue'  duration={0} />
+          <StackBar.Bar y="stack3" color='yellow'  duration={0} />
         </StackBar>
       </Plot>
     </>

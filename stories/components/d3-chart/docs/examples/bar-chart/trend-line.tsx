@@ -1,19 +1,17 @@
 import React from 'react';
 import { Plot, Bar, Line, HoverRect, HoverLine, YAxis, XAxis, minMax } from '@semcore/d3-chart';
-import { useColorResolver } from '@semcore/core/lib/utils/use/useColorResolver';
 import { scaleLinear, scaleBand } from 'd3-scale';
 
 const Demo = () => {
   const MARGIN = 40;
   const width = 500;
   const height = 300;
-  const resolveColor = useColorResolver();
 
   const xScale = scaleBand()
-    .range([MARGIN, width - MARGIN])
-    .domain(data.map((d) => d.category))
-    .paddingInner(0.4)
-    .paddingOuter(0.2);
+  .range([MARGIN, width - MARGIN])
+  .domain(data.map((d) => String(d.category)))
+  .paddingInner(0.4)
+  .paddingOuter(0.2);
 
   const yScale = scaleLinear()
     .range([height - MARGIN, MARGIN])

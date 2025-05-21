@@ -89,9 +89,9 @@ const Demo = () => {
         </HoverRect.Tooltip>
 
         <StackBar y='category'>
-          <StackBar.HorizontalBar x='stack1' color="#27ae60" wMin={5} duration={0} />
-          <StackBar.HorizontalBar x='stack2' color="#2980b9" wMin={5} duration={0} />
-          <StackBar.HorizontalBar x='stack3' color="#c0392b" wMin={5} duration={0} />
+          <StackBar.HorizontalBar x='stack1' color="#27ae60"  duration={0} />
+          <StackBar.HorizontalBar x='stack2' color="#2980b9" duration={0} />
+          <StackBar.HorizontalBar x='stack3' color="#c0392b"  duration={0} />
         </StackBar>
       </Plot>
 

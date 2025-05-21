@@ -26,6 +26,7 @@ const Demo = () => {
               <>
                 <Donut.Tooltip.Title>{name}</Donut.Tooltip.Title>
                 <Flex justifyContent='space-between'>
+                   {/* @ts-ignore */}
                   <Text bold>{data[dataKey]}</Text>
                 </Flex>
               </>

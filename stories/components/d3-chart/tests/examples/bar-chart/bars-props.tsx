@@ -95,7 +95,7 @@ const Demo = () => {
               <XAxis>
                 <XAxis.Ticks />
               </XAxis>
-              <Bar x='time' y='stack1' duration={0} hide='true' />
+              <Bar x='time' y='stack1' duration={0} hide={true} />
             </Plot>
           </Flex>
         </Flex>
@@ -111,7 +111,7 @@ const Demo = () => {
             <XAxis>
               <XAxis.Ticks />
             </XAxis>
-            <Bar x='time' y='stack1' duration={0} transparent='true' />
+            <Bar x='time' y='stack1' duration={0} transparent={true} />
           </Plot>
         </Flex>
         <Flex direction='column'>

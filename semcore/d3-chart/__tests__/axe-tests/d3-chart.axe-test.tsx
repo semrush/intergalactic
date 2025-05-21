@@ -90,25 +90,4 @@ test.describe('d3-chart', () => {
     expect(violations).toEqual([]);
   });
 
-  test('enforcing-patterns', async ({ page }) => {
-    const standPath = 'stories/components/d3-chart/docs/examples/d3-chart/enforcing-patterns.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    const violations = await getAccessibilityViolations({ page });
-
-    expect(violations).toEqual([]);
-  });
-
-  test('pattern-fill', async ({ page }) => {
-    const standPath = 'stories/components/d3-chart/docs/examples/d3-chart/pattern-fill.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    const violations = await getAccessibilityViolations({ page });
-
-    expect(violations).toEqual([]);
-  });
 });

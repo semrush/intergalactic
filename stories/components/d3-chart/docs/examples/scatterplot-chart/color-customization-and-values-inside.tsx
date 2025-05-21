@@ -1,5 +1,5 @@
 import React from 'react';
-import { Plot, ScatterPlot, XAxis, YAxis, minMax } from '@semcore/d3-chart';
+import { Plot, ScatterPlot, XAxis, YAxis } from '@semcore/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import { Text } from '@semcore/typography';
 
@@ -25,17 +25,20 @@ const Demo = () => {
       <XAxis>
         <XAxis.Ticks />
       </XAxis>
-      <ScatterPlot x='x' y='y1' value='value' color='#2BB3FF' valueColor='#008ff8' />
-      <ScatterPlot x='x' y='y2' value='value' color='#59DDAA' valueColor='#00C192' />
+      <ScatterPlot x="x" y="y1" value="value" color="#2BB3FF" valueColor="#008ff8" />
+      <ScatterPlot x="x" y="y2" value="value" color="#59DDAA" valueColor="#00C192" />
       <ScatterPlot.Tooltip>
         {({ index, x, y, value }) => {
           return {
             children: (
               <>
                 <ScatterPlot.Tooltip.Title>Data</ScatterPlot.Tooltip.Title>
-                <Text tag='div'>X axis {data[index][x]}</Text>
-                <Text tag='div'>Y axis {data[index][y]}</Text>
-                <Text tag='div'>Value {data[index][value]}</Text>
+                {/* @ts-ignore */}
+                <Text tag="div">X axis {data[index][x]}</Text>
+                {/* @ts-ignore */}
+                <Text tag="div">Y axis {data[index][y]}</Text>
+                {/* @ts-ignore */}
+                <Text tag="div">Value {data[index][value]}</Text>
               </>
             ),
           };
@@ -47,7 +50,7 @@ const Demo = () => {
 
 const data = Array(20)
   .fill({})
-  .map((d, i) => ({
+  .map((_, i) => ({
     x: i,
     y1: Math.random() * 10,
     y2: Math.random() * 10,

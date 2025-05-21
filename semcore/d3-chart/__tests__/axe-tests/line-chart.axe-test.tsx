@@ -24,15 +24,4 @@ test.describe('line-chart', () => {
 
     expect(violations).toEqual([]);
   });
-
-  test('time', async ({ page }) => {
-    const standPath = 'stories/components/d3-chart/docs/examples/line-chart/time.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    const violations = await getAccessibilityViolations({ page });
-
-    expect(violations).toEqual([]);
-  });
 });

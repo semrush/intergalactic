@@ -12,7 +12,7 @@ import {
 import { scaleLinear } from 'd3-scale';
 import { curveCardinal } from 'd3-shape';
 
-function formatDate(value, options) {
+function formatDate(value: any, options: any) {
   return new Intl.DateTimeFormat('en', options).format(value);
 }
 

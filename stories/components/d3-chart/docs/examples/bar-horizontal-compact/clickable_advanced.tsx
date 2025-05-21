@@ -48,7 +48,7 @@ const Demo = () => {
             <CompactHorizontalBar.Percent />
             <CompactHorizontalBar.Value />
           </CompactHorizontalBar.Annotation>
-          <CompactHorizontalBar.Bar onClick={(barIndex) => alert(`Bar ${barIndex} clicked`)}>
+          <CompactHorizontalBar.Bar onClick={(barIndex: any) => alert(`Bar ${barIndex} clicked`)}>
             <CompactHorizontalBar.Bar.Background />
             <CompactHorizontalBar.Bar.Fill />
           </CompactHorizontalBar.Bar>

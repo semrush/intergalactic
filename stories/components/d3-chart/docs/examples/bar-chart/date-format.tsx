@@ -7,16 +7,16 @@ const Demo = () => {
   const MARGIN = 40;
 
   const xScale = scaleBand()
-    .domain(data.map((d) => d.date_chart))
-    .range([MARGIN, width - MARGIN])
-    .paddingInner(0.4)
-    .paddingOuter(0.2);
+  .domain(data.map((d) => String(d.date_chart)))
+  .range([MARGIN, width - MARGIN])
+  .paddingInner(0.4)
+  .paddingOuter(0.2);
 
   const yScale = scaleLinear()
     .domain([0, Math.max(...data.map((d) => d.download))])
     .range([height - MARGIN, MARGIN]);
 
-  const getDate = (date) =>
+  const getDate = (date: any) =>
     new Intl.DateTimeFormat('en-US', {
       month: 'short',
       day: 'numeric',
