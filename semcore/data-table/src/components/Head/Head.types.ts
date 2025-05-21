@@ -37,7 +37,7 @@ export type HeadPropsInner<D extends DataTableData> = {
   gridAreaGroupMap: Map<number, string>;
   gridTemplateColumns: string[];
   gridTemplateAreas: string[];
-  sideIndents?: 'l';
+  sideIndents?: 'wide';
 
   totalRows: number;
   selectedRows?: number[];

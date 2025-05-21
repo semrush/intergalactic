@@ -29,10 +29,14 @@ const Demo = () => {
   );
 
   return (
-
     <DataTable
-      data={sortedData} use='secondary' aria-label={'Column expanded'} hMax={200} sort={sort} onSortChange={setSort}
-      sideIndents={'l'}
+      data={sortedData}
+      use='secondary'
+      aria-label={'Column expanded'}
+      hMax={200}
+      sort={sort}
+      onSortChange={setSort}
+      sideIndents={'wide'}
       columns={[
         {
           name: 'keyword',

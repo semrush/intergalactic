@@ -187,4 +187,10 @@ test.describe('DataTable', () => {
 
     expect(violations).toEqual([]);
   });
+  test('row with themes', async ({ page }) => {
+    const standPath = 'stories/components/data-table/docs/examples/row-themes.tsx';
+    const violations = await checkAxe(page, standPath);
+
+    expect(violations).toEqual([]);
+  });
 });

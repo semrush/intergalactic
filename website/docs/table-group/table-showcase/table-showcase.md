@@ -47,8 +47,8 @@ const group = {
   }, 
   resizing: {
 
-    title: 'Columns resizing',
-    route: '/intergalactic/table-group/table-controls/table-controls#columns-resizing',
+    title: 'Column resizing',
+    route: '/intergalactic/table-group/table-controls/table-controls#column-resizing',
     disabled: false,
     type: 'table',
 
@@ -71,8 +71,8 @@ const group = {
   }, 
   actionsRow: {
 
-    title: 'Status and actions row',
-    route: '/intergalactic/table-group/table-controls/table-controls#status-and-actions-row',
+    title: 'Status and actions',
+    route: '/intergalactic/table-group/table-controls/table-controls#status-and-actions',
     disabled: false,
     type: 'table',
 
@@ -87,7 +87,7 @@ const group = {
   },
     columnsManager: {
 
-    title: 'Columns manager',
+    title: 'Column manager',
     route: '/intergalactic/table-group/table-controls/table-controls#table-settings-and-column-manager',
     disabled: false,
     type: 'table',

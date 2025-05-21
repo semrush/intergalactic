@@ -13,15 +13,6 @@ const Demo = () => {
         <Radio.Value checked />
         <Radio.Text >checked disabled</Radio.Text>
       </Radio>
-      <Radio>
-        <Radio.Value checked keyboardFocused />
-        <Radio.Text >checked focused</Radio.Text>
-      </Radio>
-
-      <Radio state='invalid'>
-        <Radio.Value keyboardFocused />
-        <Radio.Text >invalid focused</Radio.Text>
-      </Radio>
       <Radio state='invalid'>
         <Radio.Value checked />
         <Radio.Text >invalid focused checked </Radio.Text>
@@ -29,10 +20,6 @@ const Demo = () => {
       <Radio state='invalid' disabled>
         <Radio.Value checked />
         <Radio.Text >invalid focused checked disabled</Radio.Text>
-      </Radio>
-      <Radio state='invalid'>
-        <Radio.Value checked keyboardFocused />
-        <Radio.Text >invalid checked keyboardFocused</Radio.Text>
       </Radio>
 
       <Radio state='invalid'>
@@ -47,14 +34,6 @@ const Demo = () => {
       <Radio theme='yellow-400' size='l'>
         <Radio.Value checked />
         <Radio.Text >theme checked L</Radio.Text>
-      </Radio>
-      <Radio theme='yellow-400'>
-        <Radio.Value checked keyboardFocused />
-        <Radio.Text >theme checked keyboardFocused</Radio.Text>
-      </Radio>
-      <Radio theme='yellow-400' size='l'>
-        <Radio.Value checked keyboardFocused />
-        <Radio.Text >theme checked keyboardFocused L</Radio.Text>
       </Radio>
     </Flex>
   );

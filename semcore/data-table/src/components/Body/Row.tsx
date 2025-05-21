@@ -26,8 +26,15 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
     );
   }
 
-  handleSelectRow = (value: boolean) => (event?: React.SyntheticEvent<HTMLElement>) => {
+  handleSelectRow = (value: boolean, event?: React.SyntheticEvent<HTMLElement>) => {
+    const { row, rowIndex, onSelectRow } = this.asProps;
+
+    onSelectRow?.(value, rowIndex, row, event);
+  };
+
+  handleClickCheckbox = (value: boolean) => (event?: React.SyntheticEvent<HTMLElement>) => {
     event?.preventDefault();
+    event?.stopPropagation();
     const { row, rowIndex, onSelectRow } = this.asProps;
 
     onSelectRow?.(value, rowIndex, row, event);
@@ -43,6 +50,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
     const SRow = Root;
     const SCollapseRow = Collapse;
     const SCell = Body.Cell;
+    const SCheckboxCell = Body.Cell;
     const {
       columns,
       row,
@@ -90,8 +98,8 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
           {columns.map((column, i) => {
             if (selectedRows && i === 0) {
               const checked = selectedRows.includes(rowIndex);
-              return (
-                <Body.Cell
+              return sstyled(styles)(
+                <SCheckboxCell
                   key={i}
                   row={row}
                   rowIndex={rowIndex}
@@ -99,14 +107,14 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
                   column={{ name: SELECT_ALL.toString() }}
                   columnIndex={0}
                   gridRowIndex={gridRowIndex}
-                  onClick={this.handleSelectRow(!checked)}
+                  onClick={this.handleClickCheckbox(!checked)}
                 >
                   <Checkbox
                     checked={checked}
                     aria-labelledby={`${uid}_${ariaRowIndex}_1`}
-                    onChange={(value, e) => this.handleSelectRow(value)(e)}
+                    onChange={this.handleSelectRow}
                   />
-                </Body.Cell>
+                </SCheckboxCell>,
               );
             }
 

@@ -14,8 +14,11 @@ test.describe('Carousel', () => {
     await expect(page).toHaveScreenshot();
 
     await page.getByLabel('Next').click();
+    await new Promise((resolve) => setTimeout(resolve, 100));
     await page.getByLabel('Next').click();
+    await new Promise((resolve) => setTimeout(resolve, 100));
     await page.getByLabel('Next').click();
+    await new Promise((resolve) => setTimeout(resolve, 100));
 
     const items = await page.locator('[data-ui-name="Carousel.Item"]').all();
 
@@ -24,12 +27,13 @@ test.describe('Carousel', () => {
     for (const item of items) {
       if (await item.isVisible()) {
         await item.click();
+        await new Promise((resolve) => setTimeout(resolve, 100));
         break;
       }
     }
 
     /** Need this to be sure that the image is loaded **/
-    await new Promise((resolve) => setTimeout(resolve, 300));
+    await new Promise((resolve) => setTimeout(resolve, 400));
     await expect(page).toHaveScreenshot();
   });
 });

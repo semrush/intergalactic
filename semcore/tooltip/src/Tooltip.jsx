@@ -157,15 +157,21 @@ function TooltipPopper(props) {
   // We need this effect with timer to prevent creating all STooltipPortalledWrapper on each tooltip initialization.
   // On the same time, we need to have a container with role=status to announce tooltip popper content on the fly by screen readers.
   React.useEffect(() => {
+    let timer;
+
     if (visible) {
-      setTimeout(() => {
+      timer = setTimeout(() => {
         setIsVisible(true);
-      }, 0);
+      }, timeoutConfig[0] + 50);
     } else {
-      setTimeout(() => {
+      timer = setTimeout(() => {
         setIsVisible(false);
       }, timeoutConfig[1] + 50);
     }
+
+    return () => {
+      clearTimeout(timer);
+    };
   }, [visible]);
 
   if (!visible && !isVisible) {

@@ -3,13 +3,13 @@
   "description": "Semrush Illustration Component",
   "version": "16.0.0",
   "main": "lib/cjs/index.js",
-  "module": "lib/es6/index.js",
+  "module": "lib/esm/index.mjs",
   "typings": "lib/types/index.d.ts",
   "sideEffects": false,
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "pnpm clear && pnpm semcore-builder --source=js && pnpm run transform",
+    "build": "pnpm clear && pnpm semcore-builder --source=js && pnpm run transform && pnpm vite build",
     "transform": "tsm --require=../../.ci/tsm-filter-warnings.js transform.ts",
     "clear": "tsm --require=../../.ci/tsm-filter-warnings.js clear.ts",
     "upload-static": "gcs-upload svg/*.svg"
@@ -38,7 +38,7 @@
   "exports": {
     ".": {
       "require": "./lib/cjs/index.js",
-      "import": "./lib/es6/index.js",
+      "import": "./lib/esm/index.mjs",
       "types": "./lib/types/index.d.ts"
     },
     "./AccessDenied": {

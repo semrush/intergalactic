@@ -5,7 +5,7 @@ import { Box } from '@semcore/base-components';
 import style from './style.shadow.css';
 import { DataTableGroupProps, GroupPropsInner } from './Group.type';
 import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
-import { DataTable } from '../DataTable/DataTable';
+import { DataTableInternal } from '../DataTable/DataTable';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 
 export class Group extends Component<
@@ -58,7 +58,7 @@ export class Group extends Component<
         {withConfig ? (
           groupColumns.map((column, i) => {
             return (
-              <DataTable.Head.Column
+              <DataTableInternal.Head.Column
                 key={column.name}
                 {...column}
                 aria-describedby={this.groupId}

@@ -152,6 +152,7 @@ test.describe('Filter-trigger', () => {
       await page.keyboard.press('Tab');
       const trigger = page.locator('[data-ui-name="FilterTrigger.TriggerButton"]');
       await trigger.hover();
+      await new Promise((resolve) => setTimeout(resolve, 250));
       await expect(page).toHaveScreenshot();
       await page.keyboard.press('ArrowDown');
 
@@ -182,6 +183,7 @@ test.describe('Filter-trigger', () => {
 
       await page.keyboard.press('Tab');
       await expect(clearButtonLocator).toBeFocused();
+      await new Promise((resolve) => setTimeout(resolve, 250));
       await expect(page).toHaveScreenshot();
       await page.keyboard.press('Enter');
       await expect(clearButtonLocator).not.toBeVisible();

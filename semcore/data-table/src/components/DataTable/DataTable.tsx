@@ -130,8 +130,13 @@ class DataTableRoot<D extends DataTableData> extends Component<
   }
 
   componentDidUpdate(prevProps: any) {
-    const { data, selectedRows } = this.asProps;
-    if (prevProps.data !== data) {
+    const { data, selectedRows, columns } = this.asProps;
+    if (prevProps.columns !== columns) {
+      const cols = this.calculateColumnsFromConfig();
+      this.columns = cols[0];
+      this.treeColumns = cols[1];
+    }
+    if (prevProps.data !== data || prevProps.columns !== columns) {
       this.rows = this.calculateRows();
       this.flatRows = this.rows.flat();
 
@@ -439,6 +444,11 @@ class DataTableRoot<D extends DataTableData> extends Component<
       let colI = colIndex;
 
       if (direction === 'left' || direction === 'right') {
+        // we need to skip Collapse Element with one big component from keyboard left/right pressing
+        if (currentCell.parentElement?.dataset.uiName === 'Collapse') {
+          return;
+        }
+
         // left/right
         if (
           currentCell.dataset.groupedBy === 'colgroup' ||
@@ -670,6 +680,8 @@ class DataTableRoot<D extends DataTableData> extends Component<
           // @ts-ignore
           loading={loading}
           headerHeight={`${headerHeight}px`}
+          leftScrollPadding={`${offsetLeftSum}px`}
+          rightScrollPadding={`${offsetRightSum}px`}
         >
           <SDataTable
             render={Box}
@@ -698,8 +710,8 @@ class DataTableRoot<D extends DataTableData> extends Component<
               <Children />
             ) : (
               <>
-                <DataTable.Head />
-                <DataTable.Body />
+                <DataTableInternal.Head />
+                <DataTableInternal.Body />
               </>
             )}
           </SDataTable>
@@ -1171,7 +1183,9 @@ class DataTableRoot<D extends DataTableData> extends Component<
 export const DataTable = createComponent(DataTableRoot, {
   Head,
   Body,
-}) as DataTableType & {
+}) as DataTableType;
+
+export const DataTableInternal = DataTable as DataTableType & {
   Head: typeof Head;
   Body: typeof Body;
 };

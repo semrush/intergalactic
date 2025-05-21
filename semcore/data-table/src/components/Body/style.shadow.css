@@ -164,6 +164,8 @@ SCell {
 
   SAccordionToggle {
     margin-right: var(--intergalactic-spacing-3x, 12px);
+    margin-top: var(--intergalactic-spacing-05x, 2px);
+    height: fit-content;
 
     svg {
       transition: transform calc(var(--intergalactic-duration-accordion, 200) * 1ms) ease-out;
@@ -173,6 +175,10 @@ SCell {
       transform: rotate(90deg);
     }
   }
+}
+
+SRow[accordionType='row'] > SCell, SRow[accordionType='cell'] > SCell[withAccordion], SCheckboxCell {
+  cursor: pointer;
 }
 
 SCell[use='primary'] {
@@ -247,7 +253,7 @@ SEmptyData {
   grid-column: 1 / -1;
 }
 
-SRow[sideIndents='l'] {
+SRow[sideIndents='wide'] {
   SCell:first-child {
     padding-left: var(--intergalactic-spacing-5x, 20px);
   }

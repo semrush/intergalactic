@@ -26,14 +26,17 @@ const Demo = (): any => {
       <ScreenReaderOnly role='status' aria-live='polite'>
         {message}
       </ScreenReaderOnly>
-      <DataTable data={data} aria-label={'Loading using SpinContainer'} loading={loading}
-                 h={'auto'}
-                 columns={[
-                   {name: 'keyword', children: 'Keyword'},
-                   {name: 'kd', children: 'KD,%'},
-                   {name: 'cpc', children: 'CPC'},
-                   {name: 'vol', children: 'Vol.'},
-                 ]}
+      <DataTable
+        data={data}
+        aria-label={'Loading using SpinContainer'}
+        loading={loading}
+        h={'auto'}
+        columns={[
+          { name: 'keyword', children: 'Keyword' },
+          { name: 'kd', children: 'KD %' },
+          { name: 'cpc', children: 'CPC' },
+          { name: 'vol', children: 'Vol.' },
+        ]}
       />
       <Button onClick={toggleLoading} mt={3}>
         {loading ? 'Stop loading' : 'Start loading'}
