@@ -71,7 +71,7 @@ function checkLinks() {
     const content = fs.readFileSync(file, 'utf8');
     const anchors = extractAnchorsFromMarkdown(content);
     const relativePath = normalizePath(path.relative(docsDir, file));
-    fileAnchorMap[relativePath.slice(0, -3)] = anchors;
+    fileAnchorMap[relativePath] = anchors;
   }
 
   let hasErrors = false;
@@ -88,10 +88,16 @@ function checkLinks() {
       const [linkPathRaw, anchor] = link.split('#');
       let linkPath = fromFile;
 
-      if (linkPathRaw.startsWith('/')) {
+      if (linkPathRaw !== '') {
         linkPath = normalizePath(linkPathRaw.endsWith('.md') ? linkPathRaw : linkPathRaw + '.md');
-      } else if (linkPathRaw !== '') {
-        linkPath = fromFile;
+
+        if (linkPathRaw.startsWith('/')) {
+          linkPath = linkPath.slice(1);
+        } else {
+          linkPath = normalizePath(
+            path.relative(docsDir, path.resolve(docsDir, path.dirname(fromFile), linkPath)),
+          );
+        }
       }
       const targetFilePath = path.join(docsDir, linkPath);
 
