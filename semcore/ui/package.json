@@ -29,7 +29,7 @@
     "@semcore/core": "16.0.0",
     "@semcore/counter": "16.0.0",
     "@semcore/d3-chart": "16.0.0",
-    "@semcore/data-table": "16.0.0",
+    "@semcore/data-table": "16.0.1",
     "@semcore/date-picker": "16.0.0",
     "@semcore/divider": "16.0.0",
     "@semcore/dot": "16.0.0",

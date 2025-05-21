@@ -2304,7 +2304,7 @@ importers:
         specifier: 16.0.0
         version: link:../d3-chart
       '@semcore/data-table':
-        specifier: 16.0.0
+        specifier: 16.0.1
         version: link:../data-table
       '@semcore/date-picker':
         specifier: 16.0.0
@@ -15567,7 +15567,7 @@ packages:
     dependencies:
       '@tootallnate/once': 2.0.0
       agent-base: 6.0.2
-      debug: 4.3.4
+      debug: 4.4.0(supports-color@5.5.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -15669,7 +15669,7 @@ packages:
     engines: {node: '>= 6'}
     dependencies:
       agent-base: 6.0.2
-      debug: 4.3.4
+      debug: 4.4.0(supports-color@5.5.0)
     transitivePeerDependencies:
       - supports-color
 
