@@ -11,7 +11,6 @@ test.describe('Bar chart', () => {
     const bars = page.locator('[data-ui-name="GroupBar.Bar"]');
     await expect(chart).toBeVisible();
 
-
     await test.step('Verify bars aria-hidden', async () => {
       const count = await bars.count();
 
@@ -24,7 +23,7 @@ test.describe('Bar chart', () => {
     await test.step('Verify bar hihlights on hover and tooltip shown', async () => {
       await bars.nth(1).hover();
       await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot();   
+      await expect(page).toHaveScreenshot();
     });
   });
 
@@ -39,7 +38,8 @@ test.describe('Bar chart', () => {
 
     await test.step('Verify cases render correctly', async () => {
       await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot();    });
+      await expect(page).toHaveScreenshot();
+    });
 
     await test.step('Verify pies aria-hidden', async () => {
       const count = await bars.count();
@@ -69,11 +69,10 @@ test.describe('Bar chart', () => {
 
     await test.step('Verify bar do not render', async () => {
       const count = await bars.count();
-      expect(count).toBe(0); 
+      expect(count).toBe(0);
       await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot();    
+      await expect(page).toHaveScreenshot();
     });
-
   });
 
   test('Verify date format and tooltip in bar chart', async ({ page }) => {
@@ -98,7 +97,8 @@ test.describe('Bar chart', () => {
 
       await page.mouse.move(hoverX, hoverY);
       await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot();    });
+      await expect(page).toHaveScreenshot();
+    });
   });
 
   test('Verify negative values look good on bar charts', async ({ page }) => {
@@ -111,7 +111,6 @@ test.describe('Bar chart', () => {
     await expect(chart).toBeVisible();
 
     await test.step('Verify negative values rendering', async () => {
-  
       await page.waitForTimeout(500);
       await expect(page).toHaveScreenshot();
 
@@ -136,7 +135,8 @@ test.describe('Bar chart', () => {
 
       await page.mouse.move(hoverX, hoverY);
       await page.waitForTimeout(300);
-      await expect(page).toHaveScreenshot();    });
+      await expect(page).toHaveScreenshot();
+    });
   });
 
   test('Verify trend line', async ({ page }) => {
@@ -177,8 +177,9 @@ test.describe('Bar chart', () => {
       const hoverY = box.y + targetY;
 
       await page.mouse.move(hoverX, hoverY);
-     await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot();    });
+      await page.waitForTimeout(500);
+      await expect(page).toHaveScreenshot();
+    });
   });
 
   test('Verify grouped bars', async ({ page }) => {
@@ -212,7 +213,8 @@ test.describe('Bar chart', () => {
 
       await page.mouse.move(hoverX, hoverY);
       await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot();    });
+      await expect(page).toHaveScreenshot();
+    });
   });
 
   test('Verify bar legend and pattern fill', async ({ page, browserName }) => {
@@ -229,10 +231,9 @@ test.describe('Bar chart', () => {
       await label.hover();
       await page.waitForTimeout(300);
       await expect(page).toHaveScreenshot();
-      
     });
 
-    if(browserName==='webkit') return;
+    if (browserName === 'webkit') return;
     await test.step('Verify looks good when all items disabledby keyboatd', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Space');
@@ -248,7 +249,7 @@ test.describe('Bar chart', () => {
       const hoverY = box.y + targetY;
 
       await page.mouse.move(hoverX, hoverY);
-    await page.waitForTimeout(500);
+      await page.waitForTimeout(500);
       await expect(page).toHaveScreenshot();
     });
   });

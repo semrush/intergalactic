@@ -2,7 +2,6 @@ import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 test.describe('Radial tree chart', () => {
-
   test('Verify basic usage with select', async ({ page, browserName }) => {
     const standPath = 'stories/components/d3-chart/docs/examples/radial-tree-chart/basic.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -47,7 +46,6 @@ test.describe('Radial tree chart', () => {
         await expect(line).toHaveAttribute('aria-hidden', 'true');
       }
     });
-
   });
 
   test('Verify basic usage', async ({ page }) => {
@@ -59,11 +57,12 @@ test.describe('Radial tree chart', () => {
     await expect(chart).toBeVisible();
 
     await page.waitForTimeout(500);
-    await expect(page).toHaveScreenshot(); 
+    await expect(page).toHaveScreenshot();
   });
 
   test('Verify custom svg in center', async ({ page }) => {
-    const standPath = 'stories/components/d3-chart/docs/examples/radial-tree-chart/custom-svg-in-center.tsx';
+    const standPath =
+      'stories/components/d3-chart/docs/examples/radial-tree-chart/custom-svg-in-center.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
@@ -71,33 +70,32 @@ test.describe('Radial tree chart', () => {
     await expect(chart).toBeVisible();
 
     await page.waitForTimeout(500);
-    await expect(page).toHaveScreenshot(); 
-    });
-
-  test('Verify multicolor', async ({ page }) => {
-    const standPath = 'stories/components/d3-chart/docs/examples/radial-tree-chart/multicolor-and-accessibility.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-
-    const chart = page.locator('svg[data-ui-name="Plot"]').first();
-    await expect(chart).toBeVisible();
-
-    await page.waitForTimeout(500);
-    await expect(page).toHaveScreenshot(); 
-    });
-
-  test('Verify multiline', async ({ page }) => {
-    const standPath = 'stories/components/d3-chart/docs/examples/radial-tree-chart/multiline-text.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-
-    const chart = page.locator('svg[data-ui-name="Plot"]').first();
-    await expect(chart).toBeVisible();
-
-    await page.waitForTimeout(500);
-    await expect(page).toHaveScreenshot(); 
-  
+    await expect(page).toHaveScreenshot();
   });
 
+  test('Verify multicolor', async ({ page }) => {
+    const standPath =
+      'stories/components/d3-chart/docs/examples/radial-tree-chart/multicolor-and-accessibility.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
 
+    const chart = page.locator('svg[data-ui-name="Plot"]').first();
+    await expect(chart).toBeVisible();
+
+    await page.waitForTimeout(500);
+    await expect(page).toHaveScreenshot();
+  });
+
+  test('Verify multiline', async ({ page }) => {
+    const standPath =
+      'stories/components/d3-chart/docs/examples/radial-tree-chart/multiline-text.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+
+    const chart = page.locator('svg[data-ui-name="Plot"]').first();
+    await expect(chart).toBeVisible();
+
+    await page.waitForTimeout(500);
+    await expect(page).toHaveScreenshot();
+  });
 });

@@ -2,7 +2,6 @@ import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 test.describe('Radar chart', () => {
-
   test('Verify basic usage ', async ({ page, browserName }) => {
     const standPath = 'stories/components/d3-chart/docs/examples/radar-chart/basic-usage.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -44,23 +43,22 @@ test.describe('Radar chart', () => {
       }
     });
 
-
     await test.step('Verify hihlights and tooltip on hover', async () => {
       const box = await chart.boundingBox();
       if (!box) throw new Error('Bounding box not found');
-  
+
       const targetX = 128.42;
       const targetY = 190.53;
-  
+
       const hoverX = box.x + targetX;
       const hoverY = box.y + targetY;
-  
+
       await page.mouse.move(hoverX, hoverY);
       await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot();   
+      await expect(page).toHaveScreenshot();
     });
 
-    if(browserName==='webkit') return;
+    if (browserName === 'webkit') return;
     await test.step('Verify all items can be removed and chart looks good', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Space');
@@ -68,7 +66,7 @@ test.describe('Radar chart', () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Space');
       await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot();   
+      await expect(page).toHaveScreenshot();
     });
   });
 
@@ -81,7 +79,7 @@ test.describe('Radar chart', () => {
     await expect(chart).toBeVisible();
 
     await page.waitForTimeout(500);
-    await expect(page).toHaveScreenshot();   
+    await expect(page).toHaveScreenshot();
   });
 
   test('Verify Color', async ({ page }) => {
@@ -93,7 +91,7 @@ test.describe('Radar chart', () => {
     await expect(chart).toBeVisible();
 
     await page.waitForTimeout(500);
-    await expect(page).toHaveScreenshot();   
+    await expect(page).toHaveScreenshot();
   });
 
   test('Verify fill="transparent"', async ({ page }) => {
@@ -105,7 +103,7 @@ test.describe('Radar chart', () => {
     await expect(chart).toBeVisible();
 
     await page.waitForTimeout(500);
-    await expect(page).toHaveScreenshot();   
+    await expect(page).toHaveScreenshot();
   });
 
   test('Verify long label"', async ({ page }) => {
@@ -117,11 +115,11 @@ test.describe('Radar chart', () => {
     await expect(chart).toBeVisible();
 
     await page.waitForTimeout(500);
-    await expect(page).toHaveScreenshot();   
+    await expect(page).toHaveScreenshot();
   });
 
   test('Verify custom label"', async ({ page, browserName }) => {
-    if(browserName==='webkit') return;
+    if (browserName === 'webkit') return;
     const standPath = 'stories/components/d3-chart/docs/examples/radar-chart/label-custom.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
@@ -134,7 +132,7 @@ test.describe('Radar chart', () => {
     await page.keyboard.press('Tab');
 
     await page.waitForTimeout(500);
-    await expect(page).toHaveScreenshot();   
+    await expect(page).toHaveScreenshot();
   });
 
   test('Verify Radar.Tooltip', async ({ page }) => {
@@ -157,7 +155,7 @@ test.describe('Radar chart', () => {
     await page.mouse.move(hoverX, hoverY);
 
     await page.waitForTimeout(500);
-    await expect(page).toHaveScreenshot();   
+    await expect(page).toHaveScreenshot();
   });
 
   test('Verify circle radar', async ({ page }) => {
@@ -167,11 +165,10 @@ test.describe('Radar chart', () => {
 
     const chart = page.locator('svg[data-ui-name="Plot"]').first();
     await expect(chart).toBeVisible();
-   
-    await page.waitForTimeout(500);
-    await expect(page).toHaveScreenshot();   
-  });
 
+    await page.waitForTimeout(500);
+    await expect(page).toHaveScreenshot();
+  });
 
   test('Verify tick-size', async ({ page }) => {
     const standPath = 'stories/components/d3-chart/docs/examples/radar-chart/tick-size.tsx';
@@ -180,20 +177,20 @@ test.describe('Radar chart', () => {
 
     const chart = page.locator('svg[data-ui-name="Plot"]').first();
     await expect(chart).toBeVisible();
-   
+
     await page.waitForTimeout(500);
-    await expect(page).toHaveScreenshot();   
+    await expect(page).toHaveScreenshot();
   });
 
   test('Verify rotation', async ({ page, browserName }) => {
-    if(browserName==='webkit') return;
+    if (browserName === 'webkit') return;
     const standPath = 'stories/components/d3-chart/docs/examples/radar-chart/rotated.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
     const chart = page.locator('svg[data-ui-name="Plot"]').first();
     await expect(chart).toBeVisible();
-   
+
     await page.keyboard.press('Tab');
 
     await page.keyboard.press('ArrowRight');
@@ -203,22 +200,20 @@ test.describe('Radar chart', () => {
     await page.keyboard.press('ArrowRight');
 
     await page.waitForTimeout(500);
-    await expect(page).toHaveScreenshot();   
+    await expect(page).toHaveScreenshot();
   });
 
-
   test('Verify venn legend and pattern fill', async ({ page }) => {
-    const standPath = 'stories/components/d3-chart/docs/examples/radar-chart/legend-and-pattern-fill.tsx';
+    const standPath =
+      'stories/components/d3-chart/docs/examples/radar-chart/legend-and-pattern-fill.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
     await test.step('Verify looks good when some items disabled by keyboard', async () => {
-
       await page.keyboard.press('Tab');
       await page.keyboard.press('Space');
       await page.waitForTimeout(500);
-    await expect(page).toHaveScreenshot();   
+      await expect(page).toHaveScreenshot();
     });
   });
-
 });

@@ -30,7 +30,7 @@ test.describe('Line chart', () => {
       await expect(line.first()).toHaveAttribute('aria-hidden', 'true');
     }
     await page.waitForTimeout(500);
-    await expect(page).toHaveScreenshot();    
+    await expect(page).toHaveScreenshot();
   });
 
   test('Verify interpolation renders correctly when dost can be hovered', async ({ page }) => {
@@ -42,8 +42,8 @@ test.describe('Line chart', () => {
 
     await dots.nth(4).hover();
     await page.waitForTimeout(500);
-    await expect(page).toHaveScreenshot();    
-    });
+    await expect(page).toHaveScreenshot();
+  });
 
   test('Verify basic usage with legend ui and interactions', async ({ page }) => {
     const standPath = 'stories/components/d3-chart/tests/examples/line-chart/basic-usage.tsx';
@@ -58,13 +58,13 @@ test.describe('Line chart', () => {
     await test.step('Veriry highlight changes when hover the checkbox', async () => {
       await checkbox.first().hover();
       await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot();    
+      await expect(page).toHaveScreenshot();
     });
 
     await test.step('Veriry line disappears when uncheck the checkbox', async () => {
       await legendTitle.first().click();
       await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot();    
+      await expect(page).toHaveScreenshot();
     });
 
     await test.step('Veriry line added when uncheck checked and tooltip without total by def', async () => {
@@ -83,13 +83,13 @@ test.describe('Line chart', () => {
       await page.mouse.move(hoverX, hoverY);
 
       await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot();    
+      await expect(page).toHaveScreenshot();
     });
 
     await test.step('Veriry line not highlight on hover when props is false', async () => {
       await checkbox.nth(3).hover();
       await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot();    
+      await expect(page).toHaveScreenshot();
     });
 
     await test.step('Veriry tooltip with total looks well', async () => {
@@ -105,7 +105,7 @@ test.describe('Line chart', () => {
       await page.mouse.move(hoverX, hoverY);
 
       await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot();    
+      await expect(page).toHaveScreenshot();
     });
   });
 
@@ -121,7 +121,7 @@ test.describe('Line chart', () => {
 
     await test.step('Verify renders correctly', async () => {
       await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot();    
+      await expect(page).toHaveScreenshot();
     });
 
     await test.step('Veriry duration props applies to all lines inside the chart', async () => {
@@ -138,7 +138,7 @@ test.describe('Line chart', () => {
 
     await test.step('Verify renders correctly', async () => {
       await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot();    
+      await expect(page).toHaveScreenshot();
     });
 
     await test.step('Veriry Line.Null attributes', async () => {
@@ -154,7 +154,7 @@ test.describe('Line chart', () => {
 
     await test.step('Verify renders correctly', async () => {
       await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot();    
+      await expect(page).toHaveScreenshot();
     });
   });
 
@@ -178,7 +178,7 @@ test.describe('Line chart', () => {
       await page.mouse.move(hoverX, hoverY);
 
       await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot();    
+      await expect(page).toHaveScreenshot();
     });
 
     await test.step('Verify tooltip shown correctly without dots', async () => {
@@ -194,7 +194,7 @@ test.describe('Line chart', () => {
       await page.mouse.move(hoverX, hoverY);
 
       await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot();    
+      await expect(page).toHaveScreenshot();
     });
   });
 
@@ -208,7 +208,7 @@ test.describe('Line chart', () => {
 
     await test.step('Verify dots render partly', async () => {
       await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot();    
+      await expect(page).toHaveScreenshot();
     });
   });
 
@@ -219,11 +219,10 @@ test.describe('Line chart', () => {
     await page.setContent(htmlContent);
     const checkbox = page.locator('[data-ui-name="Checkbox"]');
 
-
     await test.step('Verify disable highlights when hover the checkbox', async () => {
       await checkbox.nth(1).hover();
       await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot();    
+      await expect(page).toHaveScreenshot();
     });
   });
 });

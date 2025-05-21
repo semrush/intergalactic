@@ -25,13 +25,13 @@ test.describe('Horizontal Bar chart', () => {
     await test.step('Verify bar hihlights on hover and tooltip shown', async () => {
       await bars.nth(2).hover();
       await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot();    
+      await expect(page).toHaveScreenshot();
     });
-
   });
 
   test('Verify HorizontalBar implementation', async ({ page }) => {
-    const standPath = 'stories/components/d3-chart/tests/examples/bar-horizontal/horizontal-bar.tsx';
+    const standPath =
+      'stories/components/d3-chart/tests/examples/bar-horizontal/horizontal-bar.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
@@ -53,7 +53,7 @@ test.describe('Horizontal Bar chart', () => {
     await test.step('Verify bar hihlights on hover and tooltip shown', async () => {
       await bars.nth(2).hover();
       await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot();    
+      await expect(page).toHaveScreenshot();
     });
   });
 
@@ -66,7 +66,7 @@ test.describe('Horizontal Bar chart', () => {
     await expect(chart).toBeVisible();
 
     await page.waitForTimeout(500);
-    await expect(page).toHaveScreenshot();    
+    await expect(page).toHaveScreenshot();
   });
 
   test('Verify background', async ({ page }) => {
@@ -77,7 +77,6 @@ test.describe('Horizontal Bar chart', () => {
     const chart = page.locator('svg[data-ui-name="Plot"]').first();
     await expect(chart).toBeVisible();
     const backgrounds = page.locator('[data-ui-name="HorizontalBar.Background"]');
-
 
     await test.step('Verify backgrounds aria-hidden', async () => {
       const count = await backgrounds.count();
@@ -91,35 +90,33 @@ test.describe('Horizontal Bar chart', () => {
     await test.step('Verify bar hihlights on hover and tooltip shown', async () => {
       await backgrounds.nth(1).hover();
       await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot();    
+      await expect(page).toHaveScreenshot();
     });
-
   });
 
   test('Verify grouped horizontal bar', async ({ page }) => {
-    const standPath = 'stories/components/d3-chart/tests/examples/bar-horizontal/grouped-horizontal-bars.tsx';
+    const standPath =
+      'stories/components/d3-chart/tests/examples/bar-horizontal/grouped-horizontal-bars.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
     const chart = page.locator('svg[data-ui-name="Plot"]').first();
     await expect(chart).toBeVisible();
 
-
     await test.step('Verify bar hihlights on hover and tooltip shown', async () => {
       const box = await chart.boundingBox();
-    if (!box) throw new Error('Bounding box not found');
+      if (!box) throw new Error('Bounding box not found');
 
-    const targetX = 128.42;
-    const targetY = 190.53;
+      const targetX = 128.42;
+      const targetY = 190.53;
 
-    const hoverX = box.x + targetX;
-    const hoverY = box.y + targetY;
+      const hoverX = box.x + targetX;
+      const hoverY = box.y + targetY;
 
-    await page.mouse.move(hoverX, hoverY);
-    await page.waitForTimeout(500);
-    await expect(page).toHaveScreenshot();    
+      await page.mouse.move(hoverX, hoverY);
+      await page.waitForTimeout(500);
+      await expect(page).toHaveScreenshot();
     });
-
   });
 
   test('Verify horizontal bar transparent radius maxsize', async ({ page }) => {
@@ -130,10 +127,8 @@ test.describe('Horizontal Bar chart', () => {
     const chart = page.locator('svg[data-ui-name="Plot"]').first();
     await expect(chart).toBeVisible();
 
-
     await page.waitForTimeout(500);
-    await expect(page).toHaveScreenshot();    
- 
+    await expect(page).toHaveScreenshot();
   });
 
   test('Verify horizontal bar legend and pattern fill', async ({ page, browserName }) => {
@@ -146,14 +141,13 @@ test.describe('Horizontal Bar chart', () => {
     await expect(chart).toBeVisible();
     const label = page.getByText('Bar 2');
 
-
     await test.step('Verify higlights by hover on label', async () => {
       await label.hover();
       await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot();    
+      await expect(page).toHaveScreenshot();
     });
 
-    if(browserName==='webkit') return;
+    if (browserName === 'webkit') return;
     await test.step('Verify looks good when all items disabledby keyboard', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Space');
@@ -161,7 +155,7 @@ test.describe('Horizontal Bar chart', () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Space');
       await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot();    
+      await expect(page).toHaveScreenshot();
     });
   });
 });

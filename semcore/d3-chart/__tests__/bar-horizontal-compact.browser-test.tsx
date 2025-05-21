@@ -2,9 +2,9 @@ import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 test.describe('Bar horizontal compact', () => {
-
   test('Verify basic usage of bar horizontal compact', async ({ page }) => {
-    const standPath = 'stories/components/d3-chart/docs/examples/bar-horizontal-compact/basic_usage.tsx';
+    const standPath =
+      'stories/components/d3-chart/docs/examples/bar-horizontal-compact/basic_usage.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
@@ -34,12 +34,13 @@ test.describe('Bar horizontal compact', () => {
     await test.step('Verify bar hihlights on hover and tooltip shown', async () => {
       await barFills.nth(1).hover();
       await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot();   
+      await expect(page).toHaveScreenshot();
     });
   });
 
   test('Verify advanced usage of bar horizontal compact', async ({ page }) => {
-    const standPath = 'stories/components/d3-chart/docs/examples/bar-horizontal-compact/advanced_usage.tsx';
+    const standPath =
+      'stories/components/d3-chart/docs/examples/bar-horizontal-compact/advanced_usage.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
@@ -69,7 +70,7 @@ test.describe('Bar horizontal compact', () => {
     await test.step('Verify bar hihlights on hover and tooltip shown', async () => {
       await barFills.nth(1).hover();
       await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot();   
+      await expect(page).toHaveScreenshot();
     });
   });
 
@@ -84,7 +85,7 @@ test.describe('Bar horizontal compact', () => {
     await test.step('Verify links by hover', async () => {
       await page.locator('[data-ui-name="Link.Text"]').nth(2).hover();
       await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot();   
+      await expect(page).toHaveScreenshot();
     });
 
     await test.step('Verify links by tab', async () => {
@@ -92,9 +93,7 @@ test.describe('Bar horizontal compact', () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot();   
+      await expect(page).toHaveScreenshot();
     });
   });
-
-
 });

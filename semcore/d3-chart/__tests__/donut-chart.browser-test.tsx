@@ -23,7 +23,7 @@ test.describe('Donut chart', () => {
     await test.step('Verify pie highlights on hover', async () => {
       await page.locator('path').nth(1).hover();
       await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot();    
+      await expect(page).toHaveScreenshot();
     });
   });
 
@@ -99,7 +99,7 @@ test.describe('Donut chart', () => {
       await expect(page).toHaveScreenshot();
     });
 
-    if(browserName==='webkit') return;
+    if (browserName === 'webkit') return;
     await test.step('Verify looks good when all items by keyboatd', async () => {
       for (let i = 0; i < 7; i++) await page.keyboard.press('Tab');
 

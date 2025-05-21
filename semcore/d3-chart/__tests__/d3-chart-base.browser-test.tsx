@@ -293,7 +293,6 @@ test.describe('Hover Line and Tooltip', () => {
     dots.first().hover();
     await page.waitForTimeout(500);
     await expect(page).toHaveScreenshot();
-
   });
 });
 
@@ -413,8 +412,8 @@ test.describe('Chart legend', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
-      await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot();
+    await page.waitForTimeout(500);
+    await expect(page).toHaveScreenshot();
   });
 
   test('Verify custom shape as leged item', async ({ page }) => {

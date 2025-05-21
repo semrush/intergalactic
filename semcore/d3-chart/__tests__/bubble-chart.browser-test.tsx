@@ -60,7 +60,6 @@ test.describe('Bubble chart', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
-
     await page.waitForTimeout(500);
     await expect(page).toHaveScreenshot();
   });
@@ -76,4 +75,3 @@ test.describe('Bubble chart', () => {
     await expect(page).toHaveScreenshot();
   });
 });
-

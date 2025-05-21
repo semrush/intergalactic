@@ -14,7 +14,6 @@ test.describe('Area chart', () => {
       await page.waitForTimeout(500);
       await expect(page).toHaveScreenshot();
     });
-
   });
 
   test('Verify chart renders using the Area component', async ({ page }) => {
@@ -51,8 +50,8 @@ test.describe('Area chart', () => {
     const chart = page.locator('svg[data-ui-name="Plot"]').first();
     await expect(chart).toBeVisible();
 
-      await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot();
+    await page.waitForTimeout(500);
+    await expect(page).toHaveScreenshot();
   });
 
   test('Verify chart with custom line', async ({ page }) => {
@@ -63,9 +62,8 @@ test.describe('Area chart', () => {
     const chart = page.locator('svg[data-ui-name="Plot"]').first();
     await expect(chart).toBeVisible();
 
-      await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot();
-
+    await page.waitForTimeout(500);
+    await expect(page).toHaveScreenshot();
   });
 
   test('Verify chart with interpolation function', async ({ page }) => {
@@ -80,7 +78,7 @@ test.describe('Area chart', () => {
     await expect(page).toHaveScreenshot();
   });
 
-  test('Verify legend and pattern fill', async ({ page , browserName}) => {
+  test('Verify legend and pattern fill', async ({ page, browserName }) => {
     const standPath =
       'stories/components/d3-chart/docs/examples/area-chart/legend-and-pattern-fill.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -96,7 +94,7 @@ test.describe('Area chart', () => {
       await expect(page).toHaveScreenshot();
     });
 
-    if (browserName==='webkit') return;
+    if (browserName === 'webkit') return;
 
     await test.step('Verify looks good when some items disabled by keyboard', async () => {
       await page.keyboard.press('Tab');

@@ -2,8 +2,11 @@ import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 test.describe('Cigarette chart', () => {
-  test('Verify cigarette renders tooltip shown on hover and click interaction', async ({ page }) => {
-    const standPath = 'stories/components/d3-chart/docs/examples/cigarette-chart/click-interaction.tsx';
+  test('Verify cigarette renders tooltip shown on hover and click interaction', async ({
+    page,
+  }) => {
+    const standPath =
+      'stories/components/d3-chart/docs/examples/cigarette-chart/click-interaction.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
@@ -18,7 +21,6 @@ test.describe('Cigarette chart', () => {
         const item = items.nth(i);
         await expect(item).toHaveAttribute('aria-hidden', 'true');
         await expect(item).toHaveAttribute('direction', 'horizontal');
-
       }
     });
 
@@ -30,7 +32,7 @@ test.describe('Cigarette chart', () => {
           messages.push(msg.text());
         }
       });
-    
+
       await page.locator('path').nth(2).click();
       const clickLogs = messages.filter((msg) => msg.includes('click Capybaras'));
       expect(clickLogs).toHaveLength(1);
@@ -59,11 +61,9 @@ test.describe('Cigarette chart', () => {
   });
 
   test('Verify layouts and highlights on hover', async ({ page }) => {
-    const standPath =
-      'stories/components/d3-chart/docs/examples/cigarette-chart/layouts.tsx';
+    const standPath = 'stories/components/d3-chart/docs/examples/cigarette-chart/layouts.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
-
 
     await test.step('Verify horizontal higlighted section by hover legend item', async () => {
       const cats = page.getByText('Cats');
@@ -83,11 +83,9 @@ test.describe('Cigarette chart', () => {
   });
 
   test('Verify empty values', async ({ page }) => {
-    const standPath =
-      'stories/components/d3-chart/docs/examples/cigarette-chart/no-values.tsx';
+    const standPath = 'stories/components/d3-chart/docs/examples/cigarette-chart/no-values.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
-
 
     await test.step('Verify empty values not displayed', async () => {
       await page.waitForTimeout(500);
@@ -106,4 +104,3 @@ test.describe('Cigarette chart', () => {
     });
   });
 });
-
