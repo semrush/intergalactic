@@ -243,10 +243,10 @@ You can enable selecting rows with checkboxes with the `selectedRows` and `onSel
 ### Access to cells
 
 To customize the content of a table cell, use the `renderCell` prop. 
-It receives a props described in [`CellRenderProps`](/table-group/data-table/data-table-api#cellrenderprops).
+It receives props described in [`CellRenderProps`](/table-group/data-table/data-table-api#cellrenderprops).
 
 You can return either a custom React element to override the rendering entirely, or an object that will be applied as props to the cell.
-If the returned object includes a children property, it will override the default cell content — otherwise, you can use it to apply custom attributes such as theming or data attributes.
+If the returned object includes a children property, it will override the default cell content—otherwise, you can use it to apply custom attributes such as theming or data attributes.
 
 ::: sandbox
 
