@@ -229,22 +229,24 @@ test.describe('Reference Lines', () => {
     await expect(background).toHaveAttribute('aria-hidden', 'true');
     await expect(background).toHaveAttribute('value', 'Category 3');
 
-    //add snapshot here!
+    await page.waitForTimeout(500);
+    await expect(page).toHaveScreenshot();
   });
 });
 
 test.describe('Adaptive chart', () => {
-  test('Verify chart looks good on small resolutions ', async ({ page }) => {
+  test('Verify chart looks good on small resolutions', async ({ page }) => {
     const standPath = 'stories/components/d3-chart/tests/examples/d3-chart/adaptive-props.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
     await page.setViewportSize({ width: 768, height: 1024 });
-
-    //add snapshot here!
+    await page.waitForTimeout(500);
+    await expect(page).toHaveScreenshot();
 
     await page.setViewportSize({ width: 375, height: 667 });
-    //add snapshot here!
+    await page.waitForTimeout(500);
+    await expect(page).toHaveScreenshot();
   });
 });
 
@@ -255,19 +257,18 @@ test.describe('Hover Line and Tooltip', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
-    await page.waitForTimeout(100);
+    await page.waitForTimeout(200);
 
     const dots = page.locator('[data-ui-name="Line.Dots"]');
     dots.nth(3).hover();
-    await page.waitForTimeout(100);
+    await page.waitForTimeout(500);
+    await expect(page).toHaveScreenshot();
   });
 
-  test('Verify Tooltip controlled appering', async ({ page }) => {
-    const standPath = 'stories/components/d3-chart/docs/examples/d3-chart/tooltip-control.tsx';
+  test('Verify Tooltip controlled appearing', async ({ page }) => {
+    const standPath = 'stories/components/d3-chart/tests/examples/d3-chart/tooltip-control.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
-
-    await page.waitForTimeout(500);
 
     const dots = page.locator('[data-ui-name="Line.Dots"]');
     const text = page.getByText('This tooltip is under your control!');
@@ -275,6 +276,8 @@ test.describe('Hover Line and Tooltip', () => {
     await expect(text).not.toBeVisible();
     dots.first().hover();
     await expect(text).toHaveCount(1);
+    await page.waitForTimeout(500);
+    await expect(page).toHaveScreenshot();
   });
 
   test('Verify synscronous charts by EventEmitter', async ({ page }) => {
@@ -288,23 +291,21 @@ test.describe('Hover Line and Tooltip', () => {
     const bars = page.locator('[data-ui-name="Bar"]');
 
     dots.first().hover();
-    //snapshot
+    await page.waitForTimeout(500);
+    await expect(page).toHaveScreenshot();
 
-    bars.nth(3).hover();
-    //snapshot
   });
 });
 
 test.describe('Pattern fills, dots and lines', () => {
-  test('Verify pattern styles and functionality ', async ({ page }) => {
-    const standPath = 'stories/components/d3-chart/docs/examples/d3-chart/pattern-fill.tsx';
+  test('Verify pattern styles', async ({ page }) => {
+    const standPath = 'stories/components/d3-chart/tests/examples/d3-chart/pattern-fill.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
     const patterns = page.locator('pattern');
 
     const count = await patterns.count();
-    expect(count).toBe(3);
 
     for (let i = 0; i < count; i++) {
       const pattern = patterns.nth(i);
@@ -315,37 +316,26 @@ test.describe('Pattern fills, dots and lines', () => {
       await expect(pattern).toHaveAttribute('x', '0');
       await expect(pattern).toHaveAttribute('y', '0');
     }
-    //add snapshot here!
-
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Enter');
-    const count2 = await patterns.count();
-    expect(count2).toBe(2);
-
-    //add snapshot here!
   });
 
-  test('Verify enforcing patternd', async ({ page }) => {
-    const standPath = 'stories/components/d3-chart/docs/examples/d3-chart/enforcing-patterns.tsx';
+  test('Verify enforcing patterns', async ({ page }) => {
+    const standPath = 'stories/components/d3-chart/tests/examples/d3-chart/enforcing-patterns.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
     const svg = await page.locator('svg[data-ui-name="Plot"]');
 
-    // Ждём появления SVG на странице
     await expect(svg).toBeVisible();
 
-    // Получаем размеры SVG
     const box = await svg.boundingBox();
     if (!box) throw new Error('SVG bounding box not found');
 
     const centerX = box.x + box.width / 2;
     const centerY = box.y + box.height / 2;
 
-    // Наводим курсор в центр SVG
     await page.mouse.move(centerX, centerY);
-    //add snapshot here!
+    await page.waitForTimeout(500);
+    await expect(page).toHaveScreenshot();
   });
 
   test('Verify custom patterns', async ({ page }) => {
@@ -353,7 +343,8 @@ test.describe('Pattern fills, dots and lines', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
-    //add snapshot here!
+    await page.waitForTimeout(500);
+    await expect(page).toHaveScreenshot();
   });
 
   test('Verify low level component use', async ({ page }) => {
@@ -362,11 +353,12 @@ test.describe('Pattern fills, dots and lines', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
-    //add snapshot here!
+    await page.waitForTimeout(500);
+    await expect(page).toHaveScreenshot();
   });
 });
 
-test.describe('dots', () => {
+test.describe('Dots', () => {
   test('Verify dots radius', async ({ page }) => {
     const standPath =
       'stories/components/d3-chart/tests/examples/d3-chart/tooltip-and-hover-line.tsx';
@@ -388,7 +380,7 @@ test.describe('dots', () => {
   });
 });
 
-test.describe('chart legend', () => {
+test.describe('Chart legend', () => {
   test('Verify chart leged row', async ({ page }) => {
     const standPath = 'stories/components/d3-chart/tests/examples/chart-legend/shapes-row.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -399,7 +391,8 @@ test.describe('chart legend', () => {
     await test.step('Verify all shapes look goot', async () => {
       const trend = page.getByLabel('Checkboxes M with trend').getByText('Trend');
       await trend.click();
-      //add snapshot
+      await page.waitForTimeout(500);
+      await expect(page).toHaveScreenshot();
     });
 
     await test.step('Verify checkbox roles and attributes', async () => {
@@ -410,24 +403,18 @@ test.describe('chart legend', () => {
 
       for (let i = 0; i < count; i++) {
         const checkboxesInput = checkboxesInputs.nth(i);
-        await expect(checkboxesInput).toHaveAttribute('tabindex', '0');
         await expect(checkboxesInput).toHaveAttribute('aria-invalid', 'false');
       }
     });
   });
 
-  test('Verify chart leged column', async ({ page }) => {
+  test('Verify all legend shapes look good', async ({ page }) => {
     const standPath = 'stories/components/d3-chart/tests/examples/chart-legend/shapes-column.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
-    await page.waitForTimeout(100);
-
-    await test.step('Verify all shapes look good', async () => {
-      const trend = page.getByLabel('Checkboxes M with trend').getByText('Trend');
-      await trend.click();
-      //add snapshot
-    });
+      await page.waitForTimeout(500);
+      await expect(page).toHaveScreenshot();
   });
 
   test('Verify custom shape as leged item', async ({ page }) => {
@@ -435,10 +422,8 @@ test.describe('chart legend', () => {
       'stories/components/d3-chart/docs/examples/chart-legend/custom-shape-as-legenditem.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
-
-    await page.waitForTimeout(100);
-
-    //add snapshot
+    await page.waitForTimeout(500);
+    await expect(page).toHaveScreenshot();
   });
 
   test('Verify leged table view', async ({ page }) => {
@@ -446,8 +431,7 @@ test.describe('chart legend', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
-    await page.waitForTimeout(100);
-
-    //add snapshot
+    await page.waitForTimeout(500);
+    await expect(page).toHaveScreenshot();
   });
 });

@@ -8,7 +8,7 @@ import HorizontalBarExample from './examples/bar-horizontal/horizontal-bar';
 import LegendAndPatternFillExample from './examples/bar-horizontal/legend-and-pattern-fill';
 
 const meta: Meta = {
-  title: 'Components/d3Charts/Documentation/Bar-Horizontal-Chart',
+  title: 'Components/d3Charts/Tests/Bar-Horizontal-Chart',
 };
 
 export default meta;

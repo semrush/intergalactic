@@ -5,7 +5,7 @@ import Ellipsis from '@semcore/ellipsis';
 type SortableColumn = Exclude<keyof typeof data[0], 'keyword'>;
 
 const Demo = () => {
-  const [sort, setSort] = React.useState<DataTableSort<keyof typeof data[0]>>(['kd', 'desc']);
+  const [sort, setSort] = React.useState<DataTableSort<keyof typeof data[0]>>(['cpc', 'desc']);
   const sortedData = React.useMemo(
     () =>
       [...data].sort((aRow, bRow) => {

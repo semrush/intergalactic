@@ -23,12 +23,14 @@ test.describe('Line chart', () => {
 
     const lines = page.locator('line');
     const count = await lines.count();
+    await expect(count).not.toBeNull();
 
     for (let i = 0; i < count; i++) {
       const line = lines.nth(i);
       await expect(line.first()).toHaveAttribute('aria-hidden', 'true');
     }
-    //snapshot
+    await page.waitForTimeout(500);
+    await expect(page).toHaveScreenshot();    
   });
 
   test('Verify interpolation renders correctly when dost can be hovered', async ({ page }) => {
@@ -39,8 +41,9 @@ test.describe('Line chart', () => {
     const dots = page.locator('[data-ui-name="Line.Dots"]');
 
     await dots.nth(4).hover();
-    //snapshot
-  });
+    await page.waitForTimeout(500);
+    await expect(page).toHaveScreenshot();    
+    });
 
   test('Verify basic usage with legend ui and interactions', async ({ page }) => {
     const standPath = 'stories/components/d3-chart/tests/examples/line-chart/basic-usage.tsx';
@@ -52,18 +55,16 @@ test.describe('Line chart', () => {
     const chart = page.locator('svg[data-ui-name="Plot"]');
     await expect(chart.first()).toBeVisible();
 
-    await test.step('Verify base render with different props', async () => {
-      //add snapshot
-    });
-
     await test.step('Veriry highlight changes when hover the checkbox', async () => {
       await checkbox.first().hover();
-      //add snapshot
+      await page.waitForTimeout(500);
+      await expect(page).toHaveScreenshot();    
     });
 
     await test.step('Veriry line disappears when uncheck the checkbox', async () => {
       await legendTitle.first().click();
-      //add snapshot
+      await page.waitForTimeout(500);
+      await expect(page).toHaveScreenshot();    
     });
 
     await test.step('Veriry line added when uncheck checked and tooltip without total by def', async () => {
@@ -81,12 +82,14 @@ test.describe('Line chart', () => {
 
       await page.mouse.move(hoverX, hoverY);
 
-      //add snapshot
+      await page.waitForTimeout(500);
+      await expect(page).toHaveScreenshot();    
     });
 
     await test.step('Veriry line not highlight on hover when props is false', async () => {
       await checkbox.nth(3).hover();
-      //add snapshot
+      await page.waitForTimeout(500);
+      await expect(page).toHaveScreenshot();    
     });
 
     await test.step('Veriry tooltip with total looks well', async () => {
@@ -101,7 +104,8 @@ test.describe('Line chart', () => {
 
       await page.mouse.move(hoverX, hoverY);
 
-      //add snapshot
+      await page.waitForTimeout(500);
+      await expect(page).toHaveScreenshot();    
     });
   });
 
@@ -115,8 +119,9 @@ test.describe('Line chart', () => {
     const chart = page.locator('svg[data-ui-name="Plot"]').first();
     await expect(chart).toBeVisible();
 
-    await test.step('Verify renders correctly with different props', async () => {
-      //snapshot
+    await test.step('Verify renders correctly', async () => {
+      await page.waitForTimeout(500);
+      await expect(page).toHaveScreenshot();    
     });
 
     await test.step('Veriry duration props applies to all lines inside the chart', async () => {
@@ -131,8 +136,9 @@ test.describe('Line chart', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
-    await test.step('Verify renders correctly with different props', async () => {
-      //snapshot
+    await test.step('Verify renders correctly', async () => {
+      await page.waitForTimeout(500);
+      await expect(page).toHaveScreenshot();    
     });
 
     await test.step('Veriry Line.Null attributes', async () => {
@@ -146,8 +152,9 @@ test.describe('Line chart', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
-    await test.step('Verify renders correctly with different props', async () => {
-      //snapshot
+    await test.step('Verify renders correctly', async () => {
+      await page.waitForTimeout(500);
+      await expect(page).toHaveScreenshot();    
     });
   });
 
@@ -157,10 +164,6 @@ test.describe('Line chart', () => {
     await page.setContent(htmlContent);
 
     const chart = page.locator('svg[data-ui-name="Plot"]');
-
-    await test.step('Verify renders correctly with curve props', async () => {
-      //snapshot
-    });
 
     await test.step('Verify tooltip shown correctly with dots', async () => {
       const box = await chart.first().boundingBox();
@@ -174,7 +177,8 @@ test.describe('Line chart', () => {
 
       await page.mouse.move(hoverX, hoverY);
 
-      //add snapshot
+      await page.waitForTimeout(500);
+      await expect(page).toHaveScreenshot();    
     });
 
     await test.step('Verify tooltip shown correctly without dots', async () => {
@@ -189,7 +193,8 @@ test.describe('Line chart', () => {
 
       await page.mouse.move(hoverX, hoverY);
 
-      //add snapshot
+      await page.waitForTimeout(500);
+      await expect(page).toHaveScreenshot();    
     });
   });
 
@@ -202,7 +207,8 @@ test.describe('Line chart', () => {
     const chart = page.locator('svg[data-ui-name="Plot"]');
 
     await test.step('Verify dots render partly', async () => {
-      //snapshot
+      await page.waitForTimeout(500);
+      await expect(page).toHaveScreenshot();    
     });
   });
 
@@ -211,17 +217,13 @@ test.describe('Line chart', () => {
       'stories/components/d3-chart/tests/examples/line-chart/legend-and-symbols-for-dots.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
-
-    const chart = page.locator('svg[data-ui-name="Plot"]');
     const checkbox = page.locator('[data-ui-name="Checkbox"]');
 
-    await test.step('Verify patterns display correctly', async () => {
-      //snapshot
-    });
 
-    await test.step('Verify disbale highlights when hover the checkbox', async () => {
+    await test.step('Verify disable highlights when hover the checkbox', async () => {
       await checkbox.nth(1).hover();
-      //snapshot
+      await page.waitForTimeout(500);
+      await expect(page).toHaveScreenshot();    
     });
   });
 });
