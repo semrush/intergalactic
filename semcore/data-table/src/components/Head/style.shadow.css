@@ -166,11 +166,15 @@ SSortButton {
   transition: opacity 0.3s ease;
 }
 
-SHead[sideIndents='l'] {
+SHead[sideIndents='wide'] {
   SColumn:first-child {
     padding-left: var(--intergalactic-spacing-5x, 20px);
   }
   SColumn:last-child {
     padding-right: var(--intergalactic-spacing-5x, 20px);
   }
+}
+
+SHeadCheckboxCol {
+  cursor: pointer;
 }

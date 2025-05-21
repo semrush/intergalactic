@@ -23,7 +23,6 @@ import CarouselType, {
 import { BoxProps } from '@semcore/flex-box';
 import { findAllComponents } from '@semcore/core/lib/utils/findComponent';
 import { createBreakpoints } from '@semcore/breakpoints';
-import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 
 const MAP_TRANSFORM: Record<string, 'left' | 'right'> = {
   ArrowLeft: 'left',
@@ -350,7 +349,9 @@ class CarouselRoot extends Component<
         };
       },
       () => {
-        this.state.isOpenZoom && this.transformContainer();
+        if (this.state.isOpenZoom) {
+          this.transformContainer();
+        }
       },
     );
   };
@@ -608,8 +609,6 @@ const ContentBox = (props: BoxProps) => {
 
 class Item extends Component<CarouselItemProps> {
   refItem = React.createRef<HTMLElement>();
-  keepFocusTimeout: NodeJS.Timeout | undefined;
-  static enhance = [keyboardFocusEnhance(false)];
 
   componentDidMount() {
     const { toggleItem, transform } = this.props;
@@ -627,37 +626,14 @@ class Item extends Component<CarouselItemProps> {
     const refItem = this.refItem.current;
 
     toggleItem && refItem && toggleItem({ node: refItem }, true);
-    clearTimeout(this.keepFocusTimeout);
   }
 
   componentDidUpdate(prevProps: CarouselItemProps) {
-    clearTimeout(this.keepFocusTimeout);
-
     const transform = this.props.transform;
     const refItem = this.refItem.current;
 
     if (prevProps.transform !== transform && refItem) {
       refItem.style.transform = `translateX(${transform}%)`;
-    }
-    if (this.props.current) {
-      this.keepFocusTimeout = setTimeout(() => {
-        if (
-          document.activeElement !== refItem &&
-          (document.activeElement as HTMLElement)?.dataset.carousel === refItem?.dataset.carousel
-        ) {
-          refItem?.focus();
-        }
-      }, 100);
-    }
-    if (
-      prevProps.isOpenZoom === true &&
-      this.props.isOpenZoom === false &&
-      this.props.current &&
-      !this.props.zoomOut
-    ) {
-      this.keepFocusTimeout = setTimeout(() => {
-        this.refItem.current?.focus();
-      }, 200);
     }
   }
 

@@ -1,12 +1,9 @@
 import React from 'react';
 import Radio, { RadioGroup } from '@semcore/radio';
 import Tooltip, { Hint, DescriptionTooltip } from '@semcore/tooltip';
-import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import Link from '@semcore/link';
-import Button, { ButtonLink } from '@semcore/button';
-import FileExportM from '@semcore/icon/FileExport/m';
-import CheckAltM from '@semcore/icon/CheckAlt/m';
+import { ButtonLink } from '@semcore/button';
 import InfoM from '@semcore/icon/Info/m';
 
 const Demo = () => {

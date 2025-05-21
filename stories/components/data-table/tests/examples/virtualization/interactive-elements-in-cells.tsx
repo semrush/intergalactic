@@ -15,108 +15,80 @@ import CheckM from '@semcore/icon/Check/m';
 const Demo = () => {
     return (
         <>
-            <DataTable data={data} aria-label={'Access to cells'} hMax={200}>
-                <DataTable.Head sticky withScrollBar>
-                    <DataTable.Head.Column name='keyword' children='Keyword' />
-                    <DataTable.Head.Column name='kd' children='KD,%' />
-                    <DataTable.Head.Column name='cpc' children='CPC' />
-                    <DataTable.Head.Column name='vol' children='Vol.' gtcWidth='80px' />
-                </DataTable.Head>
-                <DataTable.Body
-                    renderCell={(props) => {
-                        if (props.columnName === 'keyword') {
-                            return (
-                                <Flex alignItems='center'>
-                                    <Checkbox label="Option 1" />
-                                    <Text noWrap>
-                                        Keyword <Text color='text-secondary'>(100)</Text>
-                                    </Text>
-                                    <Hint
-                                        ml={1}
-                                        tag={InfoM}
-                                        interactive
-                                        title='Go to our awesome article'
-                                        data-test-id='interactive-icon'
-                                        color='icon-secondary-neutral'
-                                    />
-                                    <DescriptionTooltip>
-                                        <DescriptionTooltip.Trigger tag={ButtonLink} use={'secondary'}>
-                                            About fastest animals
-                                        </DescriptionTooltip.Trigger>
-                                        <DescriptionTooltip.Popper aria-label='About fastest animals'>
-                                            <Text tag='p' mb={3}>
-                                                The <Link href='https://en.wikipedia.org/wiki/Peregrine_falcon'>peregrine falcon</Link>{' '}
-                                                is the fastest bird, and the fastest member of the animal kingdom, with a diving speed
-                                                of over 300 km/h (190 mph).
-                                            </Text>
+            <DataTable data={data} aria-label={'Access to cells'} hMax={200} virtualScroll
+                columns={[
+                    { name: 'keyword', children: 'Keyword' },
+                    { name: 'kd', children: 'KD,%' },
+                    { name: 'cpc', children: 'CPC' },
+                    { name: 'vol', children: 'Vol.' },
+                ]}
+                renderCell={(props) => {
+                    if (props.columnName === 'keyword') {
+                        return (
+                            <Flex alignItems='center'>
+                                <Checkbox label="Option 1" />
+                                <Text noWrap>
+                                    Keyword <Text color='text-secondary'>(100)</Text>
+                                </Text>
+                                <Hint
+                                    ml={1}
+                                    tag={InfoM}
+                                    interactive
+                                    title='Go to our awesome article'
+                                    data-test-id='interactive-icon'
+                                    color='icon-secondary-neutral'
+                                />
+                                <DescriptionTooltip>
+                                    <DescriptionTooltip.Trigger tag={ButtonLink} use={'secondary'}>
+                                        About fastest animals
+                                    </DescriptionTooltip.Trigger>
+                                    <DescriptionTooltip.Popper aria-label='About fastest animals'>
+                                        <Text tag='p' mb={3}>
+                                            The <Link href='https://en.wikipedia.org/wiki/Peregrine_falcon'>peregrine falcon</Link>{' '}
+                                            is the fastest bird, and the fastest member of the animal kingdom, with a diving speed
+                                            of over 300 km/h (190 mph).
+                                        </Text>
 
-                                        </DescriptionTooltip.Popper>
-                                    </DescriptionTooltip>
-                                </Flex>
-                            );
-                        }
+                                    </DescriptionTooltip.Popper>
+                                </DescriptionTooltip>
+                            </Flex>
+                        );
+                    }
+                    if (props.columnName === 'kd') {
+                        return (
+                            <>
+                                <DescriptionTooltip>
+                                    <DescriptionTooltip.Trigger tag={ButtonLink} use={'secondary'}>
+                                        {props.value}
+                                    </DescriptionTooltip.Trigger>
+                                    <DescriptionTooltip.Popper aria-label='About fastest animals'>
+                                        <Text tag='p' mb={3}>
+                                            The <Link href='https://en.wikipedia.org/wiki/Peregrine_falcon'>peregrine falcon</Link>{' '}
+                                            is the fastest bird, and the fastest member of the animal kingdom, with a diving speed
+                                            of over 300 km/h (190 mph).
+                                        </Text>
+                                        <Text tag='p'>
+                                            The fastest land animal is the cheetah. Among the fastest animals in the sea is the
+                                            black marlin, with uncertain and conflicting reports of recorded speeds.
+                                        </Text>
+                                    </DescriptionTooltip.Popper>
+                                </DescriptionTooltip>
+                            </>
+                        );
+                    }
+                    if (props.columnName === 'cpc') {
+                        return (
+                            <>
+                                <Button addonLeft={CheckM}> {props.value}</Button>
+                                <Button addonLeft={CheckM}> {props.value}</Button>
 
+                            </>
+                        );
+                    }
 
-                        if (props.columnName === 'kd') {
-                            return (
-                                <>
-
-                                    <DescriptionTooltip>
-                                        <DescriptionTooltip.Trigger tag={ButtonLink} use={'secondary'}>
-                                            {props.value}
-                                        </DescriptionTooltip.Trigger>
-                                        <DescriptionTooltip.Popper aria-label='About fastest animals'>
-                                            <Text tag='p' mb={3}>
-                                                The <Link href='https://en.wikipedia.org/wiki/Peregrine_falcon'>peregrine falcon</Link>{' '}
-                                                is the fastest bird, and the fastest member of the animal kingdom, with a diving speed
-                                                of over 300 km/h (190 mph).
-                                            </Text>
-                                            <Text tag='p'>
-                                                The fastest land animal is the cheetah. Among the fastest animals in the sea is the
-                                                black marlin, with uncertain and conflicting reports of recorded speeds.
-                                            </Text>
-                                        </DescriptionTooltip.Popper>
-                                    </DescriptionTooltip>
-                                </>
-                            );
-                        }
-
-
-
-
-                        if (props.columnName === 'cpc') {
-                            return (
-                                <>
-                                    <Button addonLeft={CheckM}> {props.value}</Button>
-                                    <Button addonLeft={CheckM}> {props.value}</Button>
-
-                                </>
-                            );
-                        }
-
-                        return props.defaultRender();
-                    }}
-                />
-                {/*  <DataTable.Body.Cell data={data} name='keyword'>*/}
-                {/*    {(props, row, index) => {*/}
-                {/*      return {*/}
-                {/*        children: (*/}
-                {/*          <ButtonLink*/}
-                {/*            onClick={() => {*/}
-                {/*              alert(`Click row */}
-                {/*            props: ${JSON.stringify(Object.keys(props), null, '  ')};*/}
-                {/*            row: ${JSON.stringify(row, null, '  ')};*/}
-                {/*            index: ${index};`);*/}
-                {/*            }}*/}
-                {/*          >*/}
-                {/*            {row[props.name]}*/}
-                {/*          </ButtonLink>*/}
-                {/*        ),*/}
-                {/*      };*/}
-                {/*    }}*/}
-                {/*  </DataTable.Body.Cell>*/}
-                {/*</DataTable.Body>*/}
-            </DataTable>
+                    return props.defaultRender();
+                }}
+            />
             <Button addonLeft={CheckM} data-test-id='button-after-table'> Button</Button>
         </>
     );

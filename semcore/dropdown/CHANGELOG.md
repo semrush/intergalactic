@@ -2,9 +2,9 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [16.0.0] - 2025-01-09
+## [16.0.0] - 2025-05-19
 
-### Changed
+### Break
 
 - `keyboardFocusEnhance` to css `:focus-visible` property.
 

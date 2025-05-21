@@ -4,8 +4,7 @@ import { DataTableRowProps, RowPropsInner } from './Row.types';
 import { Box, Collapse } from '@semcore/base-components';
 import style from './style.shadow.css';
 import { Body } from './Body';
-import { getFixedStyle } from '../../utils';
-import { ACCORDION, UNIQ_ROW_KEY, SELECT_ALL } from '../DataTable/DataTable';
+import { ACCORDION, SELECT_ALL } from '../DataTable/DataTable';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
 import { DTValue } from '../DataTable/DataTable.types';
 import Checkbox from '@semcore/checkbox';
@@ -27,8 +26,15 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
     );
   }
 
-  handleSelectRow = (value: boolean) => (event?: React.SyntheticEvent<HTMLElement>) => {
+  handleSelectRow = (value: boolean, event?: React.SyntheticEvent<HTMLElement>) => {
+    const { row, rowIndex, onSelectRow } = this.asProps;
+
+    onSelectRow?.(value, rowIndex, row, event);
+  };
+
+  handleClickCheckbox = (value: boolean) => (event?: React.SyntheticEvent<HTMLElement>) => {
     event?.preventDefault();
+    event?.stopPropagation();
     const { row, rowIndex, onSelectRow } = this.asProps;
 
     onSelectRow?.(value, rowIndex, row, event);
@@ -44,6 +50,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
     const SRow = Root;
     const SCollapseRow = Collapse;
     const SCell = Body.Cell;
+    const SCheckboxCell = Body.Cell;
     const {
       columns,
       row,
@@ -59,6 +66,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
       scrollAreaRef,
       selectedRows,
       uid,
+      getFixedStyle,
     } = this.asProps;
 
     let accordion = row[ACCORDION];
@@ -90,8 +98,8 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
           {columns.map((column, i) => {
             if (selectedRows && i === 0) {
               const checked = selectedRows.includes(rowIndex);
-              return (
-                <Body.Cell
+              return sstyled(styles)(
+                <SCheckboxCell
                   key={i}
                   row={row}
                   rowIndex={rowIndex}
@@ -99,14 +107,14 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
                   column={{ name: SELECT_ALL.toString() }}
                   columnIndex={0}
                   gridRowIndex={gridRowIndex}
-                  onClick={this.handleSelectRow(!checked)}
+                  onClick={this.handleClickCheckbox(!checked)}
                 >
                   <Checkbox
                     checked={checked}
                     aria-labelledby={`${uid}_${ariaRowIndex}_1`}
-                    onChange={(value, e) => this.handleSelectRow(value)(e)}
+                    onChange={this.handleSelectRow}
                   />
-                </Body.Cell>
+                </SCheckboxCell>,
               );
             }
 
@@ -120,7 +128,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
             const style: React.CSSProperties = {};
 
             if (column.fixed) {
-              const [name, value] = getFixedStyle(column, columns);
+              const [name, value] = getFixedStyle(column);
 
               if (name !== undefined && value !== undefined) {
                 style[name] = value;
@@ -194,6 +202,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
                 ariaRowIndex={ariaRowIndex + 1 + i}
                 gridRowIndex={gridRowIndex + 1 + i}
                 expanded={true}
+                getFixedStyle={getFixedStyle}
               />
             );
           })}

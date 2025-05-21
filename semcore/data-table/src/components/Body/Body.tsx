@@ -76,6 +76,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
       sideIndents,
       selectedRows,
       onSelectRow,
+      getFixedStyle,
     } = this.asProps;
     const row = props.row;
     const index = row[ROW_INDEX];
@@ -126,6 +127,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
       inert: loading ? '' : undefined,
       scrollAreaRef,
       sideIndents,
+      getFixedStyle,
     };
   }
 
@@ -277,7 +279,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
             lastIndex = lastIndex + aproxRowsOnPage;
           }
         } else if (scrollDirection === 'up') {
-          for (let i = this.indexForUpIterate; i > 0; i--) {
+          for (let i = this.indexForUpIterate; i >= 0; i--) {
             const value = this.rowsHeightMap.get(i);
             if (!value) continue;
             const key = i;
@@ -366,7 +368,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
             <Body.Row
               key={row[UNIQ_ROW_KEY]}
               row={row}
-              ref={this.handleRef(startIndex + index, row)}
+              ref={virtualScroll ? this.handleRef(startIndex + index, row) : undefined}
             />
           );
         })}

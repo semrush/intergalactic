@@ -2,16 +2,15 @@ import * as React from 'react';
 import { Component, createComponent, Intergalactic, Root, sstyled } from '@semcore/core';
 import { DataTableHeadProps, HeadPropsInner } from './Head.types';
 import { Box, ScreenReaderOnly } from '@semcore/base-components';
-import Tooltip from '@semcore/tooltip';
+import type Tooltip from '@semcore/tooltip';
 
 import style from './style.shadow.css';
 import { Column } from './Column';
 import { Group } from './Group';
 import { DataTableColumnProps } from './Column.types';
-import { getFixedStyle } from '../../utils';
 import { DataTableGroupProps } from './Group.type';
 import { DataTableData } from '../DataTable/DataTable.types';
-import { DataTable } from '../DataTable/DataTable';
+import { DataTableInternal } from '../DataTable/DataTable';
 import { SELECT_ALL } from '../DataTable/DataTable';
 import Checkbox from '@semcore/checkbox';
 
@@ -55,6 +54,8 @@ class HeadRoot<D extends DataTableData> extends Component<
       sticky,
       top,
       selectedRows,
+      h,
+      getFixedStyle,
     } = this.asProps;
     const column = columns[index];
 
@@ -62,7 +63,7 @@ class HeadRoot<D extends DataTableData> extends Component<
       column.fixed = 'left';
     }
 
-    const [name, value] = getFixedStyle(column, columns);
+    const [name, value] = getFixedStyle(column);
     const style: any = {};
 
     if (top) {
@@ -78,7 +79,6 @@ class HeadRoot<D extends DataTableData> extends Component<
     return {
       use,
       'aria-colindex': index + 1,
-      ref: (node: HTMLElement | null) => column.ref?.(node),
       style,
       gridArea: column.gridArea,
       fixed: column.fixed,
@@ -92,16 +92,23 @@ class HeadRoot<D extends DataTableData> extends Component<
       tableRef,
       gridTemplateColumns,
       gridTemplateAreas,
+      h,
     };
   }
 
-  handleSelectAll = (value: boolean) => (event?: React.SyntheticEvent<HTMLElement>) => {
+  handleSelectAll = (value: boolean, event?: React.SyntheticEvent<HTMLElement>) => {
+    this.asProps.onChangeSelectAll?.(value, event);
+  };
+
+  handleClickSelectAll = (value: boolean) => (event?: React.SyntheticEvent<HTMLElement>) => {
     event?.preventDefault();
+    event?.stopPropagation();
     this.asProps.onChangeSelectAll?.(value, event);
   };
 
   render() {
     const SHead = Root;
+    const SHeadCheckboxCol = Head.Column;
     const { Children, styles, getI18nText, children, treeColumns, selectedRows, totalRows } =
       this.asProps;
 
@@ -112,19 +119,22 @@ class HeadRoot<D extends DataTableData> extends Component<
       <>
         <SHead render={Box} role='row' aria-rowindex={1}>
           {selectedRows && (
-            <Head.Column name={SELECT_ALL.toString()} onClick={this.handleSelectAll(!checked)}>
+            <SHeadCheckboxCol
+              name={SELECT_ALL.toString()}
+              onClick={this.handleClickSelectAll(!checked)}
+            >
               <Checkbox
                 checked={checked}
                 indeterminate={indeterminate}
                 aria-label={getI18nText('DataTable.Header.selectAllCheckbox:aria-label')}
-                onChange={(value, e) => this.handleSelectAll(value)(e)}
+                onChange={this.handleSelectAll}
               >
                 <Checkbox.Value>
                   <Checkbox.Value.Control />
                   <Checkbox.Value.CheckMark mt={0} />
                 </Checkbox.Value>
               </Checkbox>
-            </Head.Column>
+            </SHeadCheckboxCol>
           )}
 
           {children ? (
@@ -134,7 +144,7 @@ class HeadRoot<D extends DataTableData> extends Component<
               {treeColumns.map((column, i) => {
                 if ('columns' in column) {
                   return (
-                    <DataTable.Head.Group
+                    <DataTableInternal.Head.Group
                       key={column.name}
                       {...column}
                       name={column.columns?.map((c) => c.name).join('/')}
@@ -143,7 +153,7 @@ class HeadRoot<D extends DataTableData> extends Component<
                   );
                 }
 
-                return <DataTable.Head.Column key={column.name} {...column} />;
+                return <DataTableInternal.Head.Column key={column.name} {...column} />;
               })}
             </>
           )}

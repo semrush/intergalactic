@@ -22,6 +22,12 @@ SScrollArea {
     &[headerHeight] {
       scroll-padding-top: var(--headerHeight);
     }
+    &[leftScrollPadding] {
+      scroll-padding-left: var(--leftScrollPadding);
+    }
+    &[rightScrollPadding] {
+      scroll-padding-right: var(--rightScrollPadding);
+    }
   }
 
   SShadowVertical {

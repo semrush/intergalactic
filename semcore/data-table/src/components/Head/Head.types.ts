@@ -13,6 +13,11 @@ export type DataTableHeadProps = {
    */
   top?: number;
 
+  /**
+   * Height of header in px
+   */
+  h?: number;
+
   /** Enable scroll bar element in header */
   withScrollBar?: boolean;
 };
@@ -32,9 +37,13 @@ export type HeadPropsInner<D extends DataTableData> = {
   gridAreaGroupMap: Map<number, string>;
   gridTemplateColumns: string[];
   gridTemplateAreas: string[];
-  sideIndents?: 'l';
+  sideIndents?: 'wide';
 
   totalRows: number;
   selectedRows?: number[];
   onChangeSelectAll?: (value: boolean, event?: React.SyntheticEvent<HTMLElement>) => void;
+
+  getFixedStyle: (
+    cell: Pick<DTColumn, 'name' | 'fixed'>,
+  ) => [side: 'left' | 'right', style: string | number] | [side: undefined, style: undefined];
 };

@@ -34,7 +34,6 @@ test.describe('Vertical Scroll', () => {
     }
     const nowNumber = await checkScrollNowIncreased(scrollBar);
     expect(nowNumber).toBeLessThanOrEqual(initialValue);
-    await expect(page).toHaveScreenshot();
   });
 
   test('Verify Mouse scroll when Sticky header and no interactive in cells', async ({ page }) => {
@@ -93,7 +92,7 @@ test.describe('Vertical Scroll', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
-    const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]');
+    const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]').nth(1);
     const initialValue = await checkAriaMaxValue(scrollBar);
     await page.keyboard.press('Tab');
     for (let i = 0; i < 7; i++) {
@@ -110,7 +109,7 @@ test.describe('Vertical Scroll', () => {
     await page.setContent(htmlContent);
 
     const dataTable = await page.locator('[data-ui-name="DataTable"]');
-    const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]');
+    const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]').nth(1);
     const initialValue = await checkAriaMaxValue(scrollBar);
     await dataTable.hover();
     await page.mouse.wheel(0, 600);

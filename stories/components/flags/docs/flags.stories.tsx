@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Flags from 'intergalactic/flags';
+import Flags from '@semcore/flags';
 
 import BasicExample from './examples/basic';
 import AriaLabelExample from './examples/aria-label';

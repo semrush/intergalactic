@@ -2,9 +2,15 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [16.0.0] - 2025-03-26
+## [16.0.1] - 2025-05-21
 
-### Added
+### Fixed
+
+- Property `sideIndents`.
+
+## [16.0.0] - 2025-05-19
+
+### Break
 
 - Major version.
 
