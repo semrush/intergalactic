@@ -5,7 +5,6 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  csstype: 3.0.8
   minimist: 1.2.6
   semver-regex: 3.1.3
   nth-check: 2.0.1
@@ -371,8 +370,8 @@ importers:
         specifier: 2.2.6
         version: 2.2.6
       csstype:
-        specifier: 3.0.8
-        version: 3.0.8
+        specifier: 3.1.3
+        version: 3.1.3
       popper-max-size-modifier:
         specifier: 0.2.0
         version: 0.2.0(@popperjs/core@2.11.5)
@@ -479,9 +478,6 @@ importers:
       '@semcore/typography':
         specifier: 16.0.0
         version: link:../typography
-      csstype:
-        specifier: 3.0.8
-        version: 3.0.8
       dompurify:
         specifier: 3.2.3
         version: 3.2.3
@@ -653,9 +649,6 @@ importers:
       classnames:
         specifier: 2.2.6
         version: 2.2.6
-      csstype:
-        specifier: 3.0.8
-        version: 3.0.8
       hoist-non-react-statics:
         specifier: 3.3.2
         version: 3.3.2
@@ -862,14 +855,14 @@ importers:
         specifier: '*'
         version: link:../typography
       '@types/node':
-        specifier: ^18.16.15
+        specifier: 18.16.15
         version: 18.16.15
       '@types/react':
         specifier: 18.0.21
         version: 18.0.21
       csstype:
-        specifier: 3.0.8
-        version: 3.0.8
+        specifier: 3.1.3
+        version: 3.1.3
 
   semcore/date-picker:
     dependencies:
@@ -2167,9 +2160,6 @@ importers:
       '@semcore/flex-box':
         specifier: 16.0.0
         version: link:../flex-box
-      csstype:
-        specifier: 3.0.8
-        version: 3.0.8
     devDependencies:
       '@semcore/testing-utils':
         specifier: 1.0.0
@@ -2177,6 +2167,9 @@ importers:
       '@types/react':
         specifier: 18.0.21
         version: 18.0.21
+      csstype:
+        specifier: 3.1.3
+        version: 3.1.3
 
   semcore/time-picker:
     dependencies:
@@ -2239,9 +2232,6 @@ importers:
       '@semcore/icon':
         specifier: 16.0.0
         version: link:../icon
-      csstype:
-        specifier: 3.0.8
-        version: 3.0.8
     devDependencies:
       '@semcore/testing-utils':
         specifier: 1.0.0
@@ -2249,6 +2239,9 @@ importers:
       '@types/react':
         specifier: 18.0.21
         version: 18.0.21
+      csstype:
+        specifier: 3.1.3
+        version: 3.1.3
 
   semcore/ui:
     dependencies:
@@ -7221,7 +7214,7 @@ packages:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.0
       css-tree: 1.1.3
-      csstype: 3.0.8
+      csstype: 3.1.3
       fastest-stable-stringify: 2.0.2
       inline-style-prefixer: 6.0.4
       react: 18.2.0
@@ -9781,7 +9774,7 @@ packages:
     dependencies:
       '@vue/runtime-core': 3.3.4
       '@vue/shared': 3.3.4
-      csstype: 3.0.8
+      csstype: 3.1.3
     dev: false
 
   /@vue/runtime-dom@3.4.34:
@@ -9790,7 +9783,7 @@ packages:
       '@vue/reactivity': 3.4.34
       '@vue/runtime-core': 3.4.34
       '@vue/shared': 3.4.34
-      csstype: 3.0.8
+      csstype: 3.1.3
     dev: true
 
   /@vue/server-renderer@3.3.4(vue@3.3.4):
@@ -12364,6 +12357,9 @@ packages:
   /csstype@3.0.8:
     resolution: {integrity: sha512-jXKhWqXPmlUeoQnF/EhTtTl4C9SnrxSH/jZUih3jmO6lBKr99rP3/+FmrMj4EFpOXzMtXHAZkd3x0E6h6Fgflw==}
 
+  /csstype@3.1.3:
+    resolution: {integrity: sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==}
+
   /csv-generate@4.2.2:
     resolution: {integrity: sha512-Ah/NcMxHMqwQsuL173yp8EOzHrbLh8iyScqTy990b+TJZNjHhy7gs5FfSmyQ2arLC2QVrueO3DYJVQnibJB3WQ==}
     dev: true
@@ -13008,7 +13004,7 @@ packages:
     resolution: {integrity: sha512-nRCa7CK3VTrM2NmGkIy4cbK7IZlgBE/PYMn55rrXefr5xXDP0LdtfPnblFDoVdcAfslJ7or6iqAUnx0CCGIWQA==}
     dependencies:
       '@babel/runtime': 7.19.0
-      csstype: 3.0.8
+      csstype: 3.1.3
     dev: false
 
   /dom-serializer@0.1.1:
