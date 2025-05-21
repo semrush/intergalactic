@@ -17,8 +17,7 @@
     "types": "./lib/types/index.d.ts"
   },
   "dependencies": {
-    "@semcore/flex-box": "16.0.0",
-    "csstype": "3.0.8"
+    "@semcore/flex-box": "16.0.0"
   },
   "peerDependencies": {
     "@semcore/base-components": "^16.0.0"

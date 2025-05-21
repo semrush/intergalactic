@@ -24,7 +24,6 @@
     "@semcore/icon": "16.0.0",
     "@semcore/popper": "16.0.0",
     "@semcore/tooltip": "16.0.0",
-    "csstype": "3.0.8",
     "dompurify": "3.2.3"
   },
   "peerDependencies": {

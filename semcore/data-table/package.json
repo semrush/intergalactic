@@ -40,8 +40,7 @@
     "@semcore/spin": "*",
     "@semcore/spin-container": "*",
     "@semcore/tooltip": "*",
-    "@types/node": "^18.16.15",
-    "csstype": "3.0.8"
+    "@types/node": "18.16.15"
   },
   "peerDependencies": {
     "@semcore/base-components": "^16.0.0"
