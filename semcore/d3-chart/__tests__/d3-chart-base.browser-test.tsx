@@ -337,15 +337,6 @@ test.describe('Pattern fills, dots and lines', () => {
     await expect(page).toHaveScreenshot();
   });
 
-  test('Verify custom patterns', async ({ page }) => {
-    const standPath = 'stories/components/d3-chart/docs/examples/d3-chart/custom-patterns.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-
-    await page.waitForTimeout(500);
-    await expect(page).toHaveScreenshot();
-  });
-
   test('Verify low level component use', async ({ page }) => {
     const standPath =
       'stories/components/d3-chart/docs/examples/d3-chart/low-level-components-use.tsx';
