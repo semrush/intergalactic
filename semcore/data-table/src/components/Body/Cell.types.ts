@@ -13,6 +13,8 @@ export type DataTableCellProps = {
   columnIndex: number;
   gridRowIndex: number;
   children?: React.ReactNode;
+
+  withAccordion?: boolean;
 };
 
 export type CellPropsInner = {

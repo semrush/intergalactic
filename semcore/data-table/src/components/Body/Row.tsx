@@ -121,7 +121,8 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
             }
 
             const index = i;
-            const cellValue = row[column.name];
+            const cellValue: DTValue | MergedRowsCell | MergedColumnsCell | undefined =
+              row[column.name];
 
             if (cellValue === undefined) {
               return null;
@@ -149,10 +150,9 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
                 columnIndex={index}
                 style={style}
                 column={column}
-                // @ts-ignore
                 withAccordion={
-                  this.cellHasAccordion(cellValue) ||
-                  (cellValue instanceof MergedRowsCell && cellValue[ACCORDION])
+                  Boolean(cellValue instanceof MergedRowsCell && cellValue.accordion) ||
+                  this.cellHasAccordion(cellValue)
                 }
               />
             );
