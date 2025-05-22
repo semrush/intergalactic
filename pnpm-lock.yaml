@@ -3556,6 +3556,9 @@ importers:
       '@babel/preset-react':
         specifier: 7.12.1
         version: 7.12.1(@babel/core@7.19.1)
+      '@mdit-vue/shared':
+        specifier: 1.0.0
+        version: 1.0.0
       '@types/classnames':
         specifier: 2.2.6
         version: 2.2.6
@@ -3622,9 +3625,6 @@ importers:
       postcss:
         specifier: 8.4.33
         version: 8.4.33
-      slugify:
-        specifier: 1.6.6
-        version: 1.6.6
       tsm:
         specifier: 2.2.2
         version: 2.2.2
@@ -7166,6 +7166,18 @@ packages:
 
   /@kwsites/promise-deferred@1.1.1:
     resolution: {integrity: sha512-GaHYm+c0O9MjZRu0ongGBRbinu8gVAMd2UZjji6jVmqKtZluZnptXGWhz1E8j8D2HJ3f/yMxKAUC0b+57wncIw==}
+
+  /@mdit-vue/shared@1.0.0:
+    resolution: {integrity: sha512-nbYBfmEi+pR2Lm0Z6TMVX2/iBjfr/kGEsHW8CC0rQw+3+sG5dY6VG094HuFAkiAmmvZx9DZZb+7ZMWp9vkwCRw==}
+    dependencies:
+      '@mdit-vue/types': 1.0.0
+      '@types/markdown-it': 13.0.1
+      markdown-it: 13.0.1
+    dev: true
+
+  /@mdit-vue/types@1.0.0:
+    resolution: {integrity: sha512-xeF5+sHLzRNF7plbksywKCph4qli20l72of2fMlZQQ7RECvXYrRkE9+bjRFQCyULC7B8ydUYbpbkux5xJlVWyw==}
+    dev: true
 
   /@mdx-js/react@3.0.1(@types/react@18.0.21)(react@18.2.0):
     resolution: {integrity: sha512-9ZrPIU4MGf6et1m1ov3zKf+q9+deetI51zprKB1D/z3NOb+rUxxtEl3mCjW5wTGh6VhRdwPueh1oRzi6ezkA8A==}
@@ -22390,11 +22402,6 @@ packages:
       ansi-styles: 4.3.0
       astral-regex: 2.0.0
       is-fullwidth-code-point: 3.0.0
-    dev: true
-
-  /slugify@1.6.6:
-    resolution: {integrity: sha512-h+z7HKHYXj6wJU+AnS/+IH8Uh9fdcX1Lrhg1/VMdf9PwoBQXFcXiAdsy2tSK0P6gKwJLXp02r90ahUCqHk9rrw==}
-    engines: {node: '>=8.0.0'}
     dev: true
 
   /smart-buffer@4.2.0:

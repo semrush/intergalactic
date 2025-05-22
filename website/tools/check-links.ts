@@ -4,10 +4,10 @@ import { fileURLToPath } from 'url';
 import markdownIt from 'markdown-it';
 import { JSDOM } from 'jsdom';
 import markdownItAnchor from 'markdown-it-anchor';
-import slugify from 'slugify';
+import { slugify } from '@mdit-vue/shared';
 
 const md = new markdownIt().use(markdownItAnchor, {
-  slugify: (s) => slugify(s, { lower: true, strict: true }),
+  slugify,
 });
 
 // Resolve __dirname in ESM
@@ -36,11 +36,20 @@ function extractLinks(content: string) {
 
   for (const token of tokens) {
     if (token.type === 'inline' && token.children) {
+      let i = 0;
       for (const child of token.children) {
         if (child.type === 'link_open') {
+          // don't check commented links
+          const prev = token.children[i - 1];
+          if (prev && prev.type === 'text' && prev.content.startsWith('<!--')) {
+            continue;
+          }
+
           const href = child.attrs.find((attr) => attr[0] === 'href');
           if (href) links.push(href[1]);
         }
+
+        i++;
       }
     }
   }
