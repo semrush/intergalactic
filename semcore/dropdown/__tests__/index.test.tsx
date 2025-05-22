@@ -1,7 +1,13 @@
-import React, { useRef ,useEffect }  from 'react';
+import React, { useRef, useEffect } from 'react';
 import { snapshot } from '@semcore/testing-utils/snapshot';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
-import { cleanup, render, fireEvent, userEvent, screen } from '@semcore/testing-utils/testing-library';
+import {
+  cleanup,
+  render,
+  fireEvent,
+  userEvent,
+  screen,
+} from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
 
 import Dropdown from '../src';
@@ -32,26 +38,23 @@ describe('Dropdown', () => {
     expect(spy).not.toHaveBeenCalled();
   });
 
+  test('should not open popper by keypress enter if interaction not click', async ({ expect }) => {
+    const spy = vi.fn();
+    render(
+      <Dropdown onVisibleChange={spy} interaction={'none'}>
+        <Dropdown.Trigger>
+          <div tabIndex={0}>Select trigger</div>
+        </Dropdown.Trigger>
+        <Dropdown.Popper aria-label={'Dropdown popper description'} p={4}>
+          Content
+        </Dropdown.Popper>
+      </Dropdown>,
+    );
 
-  test('should not open popper by keypress enter if interaction not click',
-    async ({ expect }) => {
-      const spy = vi.fn();
-      render(
-        <Dropdown onVisibleChange={spy} interaction={'none'}>
-          <Dropdown.Trigger>
-            <div tabIndex={0}>Select trigger</div>
-          </Dropdown.Trigger>
-          <Dropdown.Popper aria-label={'Dropdown popper description'} p={4}>
-            Content
-          </Dropdown.Popper>
-        </Dropdown>,
-      );
-
-      await userEvent.keyboard('[Tab]');
-      await userEvent.keyboard('[Enter]');
-      expect(spy).not.toBeCalled();
-    },
-  );
+    await userEvent.keyboard('[Tab]');
+    await userEvent.keyboard('[Enter]');
+    expect(spy).not.toBeCalled();
+  });
 
   test.concurrent('Should correct enter space in input', () => {
     const spy = vi.fn();
@@ -68,43 +71,35 @@ describe('Dropdown', () => {
     expect(spy).not.toHaveBeenCalled();
   });
 
-  test.concurrent(
-    'should not open popper by keypress enter if interaction not click',
-    async () => {
-      const spy = vi.fn();
-      render(
-        <Dropdown onVisibleChange={spy} interaction={'none'}>
-          <Dropdown.Trigger>
-            <div tabIndex={0}>Select trigger</div>
-          </Dropdown.Trigger>
-          <Dropdown.Popper aria-label="test" p={4}>
-            Content
-          </Dropdown.Popper>
-        </Dropdown>,
-      );
+  test.concurrent('should not open popper by keypress enter if interaction not click', async () => {
+    const spy = vi.fn();
+    render(
+      <Dropdown onVisibleChange={spy} interaction={'none'}>
+        <Dropdown.Trigger>
+          <div tabIndex={0}>Select trigger</div>
+        </Dropdown.Trigger>
+        <Dropdown.Popper aria-label='test' p={4}>
+          Content
+        </Dropdown.Popper>
+      </Dropdown>,
+    );
 
-      await userEvent.keyboard('[Tab]');
-      await userEvent.keyboard('[Enter]');
-      expect(spy).not.toBeCalled();
-    },
-  );
+    await userEvent.keyboard('[Tab]');
+    await userEvent.keyboard('[Enter]');
+    expect(spy).not.toBeCalled();
+  });
 
-  
   test('should not prevent default if tab and popper has focusable elements', () => {
     render(
-      <Dropdown visible interaction="click">
-        <Dropdown.Trigger>
-          <button>Trigger</button>
-        </Dropdown.Trigger>
-        <Dropdown.Popper aria-label="test">
-          <button>Focusable</button>
-        </Dropdown.Popper>
+      <Dropdown visible interaction='click'>
+        <Dropdown.Trigger>Trigger</Dropdown.Trigger>
+        <Dropdown.Popper aria-label='test'>Focusable</Dropdown.Popper>
       </Dropdown>,
     );
 
     const buttons = screen.getAllByRole('button', { name: /Trigger/i });
     const triggerButton = buttons[0];
-        const prevent = vi.fn();
+    const prevent = vi.fn();
 
     const event = new KeyboardEvent('keydown', { key: 'Tab', bubbles: true, cancelable: true });
     Object.defineProperty(event, 'preventDefault', { value: prevent });
@@ -116,18 +111,17 @@ describe('Dropdown', () => {
 
   test('should prevent default on Tab keydown if no focusable elements in popper', () => {
     render(
-      <Dropdown visible interaction="click">
-        <Dropdown.Trigger>
-          <button>Trigger</button>
-        </Dropdown.Trigger>
-        <Dropdown.Popper aria-label="test">
+      <Dropdown visible interaction='click'>
+        <Dropdown.Trigger>Trigger</Dropdown.Trigger>
+        <Dropdown.Popper aria-label='test'>
           <div>No focusable elements</div>
         </Dropdown.Popper>
       </Dropdown>,
     );
 
     const buttons = screen.getAllByRole('button', { name: /Trigger/i });
-    const triggerButton = buttons[0];     const prevent = vi.fn();
+    const triggerButton = buttons[0];
+    const prevent = vi.fn();
 
     const event = new KeyboardEvent('keydown', { key: 'Tab', bubbles: true, cancelable: true });
     Object.defineProperty(event, 'preventDefault', { value: prevent });
@@ -137,21 +131,18 @@ describe('Dropdown', () => {
     expect(prevent).toHaveBeenCalled();
   });
 
-
   test('handlerTriggerKeyDown does not open dropdown if interaction is none', () => {
     const spyVisibleChange = vi.fn();
 
     render(
-      <Dropdown onVisibleChange={spyVisibleChange} interaction="none" defaultVisible={false}>
-        <Dropdown.Trigger>
-          <button>Trigger</button>
-        </Dropdown.Trigger>
-        <Dropdown.Popper aria-label="test">Content</Dropdown.Popper>
+      <Dropdown onVisibleChange={spyVisibleChange} interaction='none' defaultVisible={false}>
+        <Dropdown.Trigger>Trigger</Dropdown.Trigger>
+        <Dropdown.Popper aria-label='test'>Content</Dropdown.Popper>
       </Dropdown>,
     );
 
     const buttons = screen.getAllByRole('button', { name: /Trigger/i });
-    const triggerButton = buttons[0]; 
+    const triggerButton = buttons[0];
     fireEvent.keyDown(triggerButton, { key: 'Enter' });
     fireEvent.keyDown(triggerButton, { key: ' ' });
 
