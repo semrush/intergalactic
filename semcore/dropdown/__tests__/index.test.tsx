@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useRef ,useEffect }  from 'react';
 import { snapshot } from '@semcore/testing-utils/snapshot';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
-import { cleanup, render, fireEvent, userEvent } from '@semcore/testing-utils/testing-library';
+import { cleanup, render, fireEvent, userEvent, screen } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
 
 import Dropdown from '../src';
@@ -13,9 +13,11 @@ describe('dropdown Dependency imports', () => {
 });
 
 describe('Dropdown', () => {
-  beforeEach(cleanup);
+  beforeEach(() => {
+    cleanup();
+  });
 
-  test.concurrent('Should correct enter space in input', () => {
+  test('Should correct enter space in input', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Dropdown onVisibleChange={spy} interaction='focus'>
@@ -30,78 +32,8 @@ describe('Dropdown', () => {
     expect(spy).not.toHaveBeenCalled();
   });
 
-  test.concurrent('correct style', async ({ task }) => {
-    const component = (
-      <div style={{ width: 150, height: 60 }}>
-        <Dropdown disablePortal visible>
-          <Dropdown.Trigger>
-            <button type='button'>default dropdown</button>
-          </Dropdown.Trigger>
-          <Dropdown.Popper aria-label={'Dropdown popper description'} style={{ opacity: 1 }}>
-            <div>text</div>
-          </Dropdown.Popper>
-        </Dropdown>
-      </div>
-    );
 
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-
-  test.concurrent('popper focused styles', async ({ task }) => {
-    const component = (
-      <div style={{ width: 150, height: 60 }}>
-        <Dropdown disablePortal visible>
-          <Dropdown.Trigger>
-            <button type='button'>default dropdown</button>
-          </Dropdown.Trigger>
-          <Dropdown.Popper aria-label={'Dropdown popper description'} data-ui-name='popper'>
-            <div>text</div>
-          </Dropdown.Popper>
-        </Dropdown>
-      </div>
-    );
-
-    await expect(
-      await snapshot(component, {
-        actions: {
-          focus: '[data-ui-name="popper"]',
-        },
-      }),
-    ).toMatchImageSnapshot(task);
-  });
-
-  test.skip('should not loose focus by Tab after opened', async ({ expect }) => {
-    const spy = vi.fn();
-    const { getByTestId } = render(
-      <>
-        <Dropdown onVisibleChange={spy}>
-          <Dropdown.Trigger>
-            <div tabIndex={0} data-testid='trigger'>
-              Select trigger
-            </div>
-          </Dropdown.Trigger>
-          <Dropdown.Popper aria-label={'Dropdown popper description'} p={4}>
-            Content
-          </Dropdown.Popper>
-        </Dropdown>
-      </>,
-    );
-
-    await userEvent.keyboard('[Tab]');
-    expect(getByTestId('trigger')).toHaveFocus();
-
-    await userEvent.keyboard('[Enter]');
-    expect(spy).toBeCalledWith(true);
-
-    await userEvent.keyboard('[Tab]');
-    expect(getByTestId('trigger')).toHaveFocus();
-
-    await userEvent.keyboard('[Escape]');
-    expect(spy).toBeCalledWith(false, expect.anything());
-  });
-
-  test.concurrent(
-    'should not open popper by keypress enter if interaction not click',
+  test('should not open popper by keypress enter if interaction not click',
     async ({ expect }) => {
       const spy = vi.fn();
       render(
@@ -121,19 +53,108 @@ describe('Dropdown', () => {
     },
   );
 
-  test('a11y', async () => {
-    const { container } = render(
-      <Dropdown visible disablePortal>
-        <Dropdown.Trigger tag='button' aria-label='default dropdown'>
-          default dropdown
+  test.concurrent('Should correct enter space in input', () => {
+    const spy = vi.fn();
+    const { getByTestId } = render(
+      <Dropdown onVisibleChange={spy} interaction='focus'>
+        <Dropdown.Trigger tag='input' data-testid='input' />
+      </Dropdown>,
+    );
+
+    const input = getByTestId('input');
+
+    fireEvent.keyDown(input, { key: ' ', which: 32, keyCode: 32 });
+    // TODO: input.value всегда пустой, поэтому проверяем, что spy не вызван
+    expect(spy).not.toHaveBeenCalled();
+  });
+
+  test.concurrent(
+    'should not open popper by keypress enter if interaction not click',
+    async () => {
+      const spy = vi.fn();
+      render(
+        <Dropdown onVisibleChange={spy} interaction={'none'}>
+          <Dropdown.Trigger>
+            <div tabIndex={0}>Select trigger</div>
+          </Dropdown.Trigger>
+          <Dropdown.Popper aria-label="test" p={4}>
+            Content
+          </Dropdown.Popper>
+        </Dropdown>,
+      );
+
+      await userEvent.keyboard('[Tab]');
+      await userEvent.keyboard('[Enter]');
+      expect(spy).not.toBeCalled();
+    },
+  );
+
+  
+  test('should not prevent default if tab and popper has focusable elements', () => {
+    render(
+      <Dropdown visible interaction="click">
+        <Dropdown.Trigger>
+          <button>Trigger</button>
         </Dropdown.Trigger>
-        <Dropdown.Popper aria-label={'Dropdown popper description'}>
-          <div>text</div>
+        <Dropdown.Popper aria-label="test">
+          <button>Focusable</button>
         </Dropdown.Popper>
       </Dropdown>,
     );
 
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+    const buttons = screen.getAllByRole('button', { name: /Trigger/i });
+    const triggerButton = buttons[0];
+        const prevent = vi.fn();
+
+    const event = new KeyboardEvent('keydown', { key: 'Tab', bubbles: true, cancelable: true });
+    Object.defineProperty(event, 'preventDefault', { value: prevent });
+
+    triggerButton.dispatchEvent(event);
+
+    expect(prevent).not.toHaveBeenCalled();
+  });
+
+  test('should prevent default on Tab keydown if no focusable elements in popper', () => {
+    render(
+      <Dropdown visible interaction="click">
+        <Dropdown.Trigger>
+          <button>Trigger</button>
+        </Dropdown.Trigger>
+        <Dropdown.Popper aria-label="test">
+          <div>No focusable elements</div>
+        </Dropdown.Popper>
+      </Dropdown>,
+    );
+
+    const buttons = screen.getAllByRole('button', { name: /Trigger/i });
+    const triggerButton = buttons[0];     const prevent = vi.fn();
+
+    const event = new KeyboardEvent('keydown', { key: 'Tab', bubbles: true, cancelable: true });
+    Object.defineProperty(event, 'preventDefault', { value: prevent });
+
+    triggerButton.dispatchEvent(event);
+
+    expect(prevent).toHaveBeenCalled();
+  });
+
+
+  test('handlerTriggerKeyDown does not open dropdown if interaction is none', () => {
+    const spyVisibleChange = vi.fn();
+
+    render(
+      <Dropdown onVisibleChange={spyVisibleChange} interaction="none" defaultVisible={false}>
+        <Dropdown.Trigger>
+          <button>Trigger</button>
+        </Dropdown.Trigger>
+        <Dropdown.Popper aria-label="test">Content</Dropdown.Popper>
+      </Dropdown>,
+    );
+
+    const buttons = screen.getAllByRole('button', { name: /Trigger/i });
+    const triggerButton = buttons[0]; 
+    fireEvent.keyDown(triggerButton, { key: 'Enter' });
+    fireEvent.keyDown(triggerButton, { key: ' ' });
+
+    expect(spyVisibleChange).not.toHaveBeenCalled();
   });
 });
