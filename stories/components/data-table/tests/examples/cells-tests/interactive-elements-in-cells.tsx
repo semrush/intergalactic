@@ -124,7 +124,6 @@ const data = [
         cpc: '$0',
         vol: '21,644,290',
     },
-    ,
     {
         keyword: 'www.ebay.com',
         kd: '10',

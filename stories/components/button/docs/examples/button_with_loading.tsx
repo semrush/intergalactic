@@ -1,6 +1,6 @@
 import React from 'react';
-import Button from 'intergalactic/button';
-import Spin from 'intergalactic/spin';
+import Button from '@semcore/button';
+import Spin from '@semcore/spin';
 
 const Demo = () => {
   return (

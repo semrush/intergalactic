@@ -34,7 +34,11 @@ export const collectPackages = async (inNpmVersions: {
         const packageFilePath = resolvePath(packagePath, 'package.json');
         const changelogPath = resolvePath(packagePath, 'CHANGELOG.md');
 
-        if (!(await fs.pathExists(packageFilePath)) || !(await fs.pathExists(changelogPath)))
+        if (
+          !(await fs.pathExists(packageFilePath)) ||
+          !(await fs.pathExists(changelogPath)) ||
+          packagePath.endsWith('semcore/table')
+        )
           return null;
 
         const packageFile: {
