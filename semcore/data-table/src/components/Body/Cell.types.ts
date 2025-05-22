@@ -14,6 +14,7 @@ export type DataTableCellProps = {
   gridRowIndex: number;
   children?: React.ReactNode;
 
+  expanded?: boolean;
   withAccordion?: boolean;
 };
 

@@ -209,6 +209,8 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
         expanded = [...mergedKeysSet].some((key) => expandedRows?.has(key));
       }
 
+      extraProps.expanded = expanded;
+
       let row = props.row;
       let rowIndex = props.rowIndex;
 
@@ -394,7 +396,13 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
                 ref={this.handleRef(startIndex + index, row[0])}
               >
                 {row.map((item, i) => {
-                  return <Body.Row key={item[UNIQ_ROW_KEY]} row={item} mergedRow={true} />;
+                  return (
+                    <Body.Row
+                      key={item[UNIQ_ROW_KEY]}
+                      row={item}
+                      mergedRow={i > 0 ? true : false}
+                    />
+                  );
                 })}
               </SRowGroup>,
             );
