@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import {DataTable } from '@semcore/data-table';
 
 import AccordionInMergedRowsExample from './examples/accordion_in_merged_rows';
+import AccordionInMergedRowsCellsExample from './examples/accordion_in_merged_rows_cells';
 import FixedColumnsWithDiffWidthsExample from './examples/fixed_columns_with_diff_widths';
 import LinkInTableExample from './examples/link_in_table';
 import RowCellStatesExample from './examples/row_cell_states';
@@ -18,6 +19,10 @@ type Story = StoryObj<typeof DataTable>;
 
 export const AccordionInMergedRows: Story = {
   render: AccordionInMergedRowsExample,
+};
+
+export const AccordionInMergedRowsCells: Story = {
+  render: AccordionInMergedRowsCellsExample,
 };
 
 export const FixedColumnsWithDiffWidths: Story = {
