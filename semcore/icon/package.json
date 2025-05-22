@@ -682,6 +682,11 @@
       "import": "./platform/LocalToolkit/index.mjs",
       "types": "./platform/LocalToolkit/index.d.ts"
     },
+    "./platform/PRToolkit": {
+      "require": "./platform/PRToolkit/index.js",
+      "import": "./platform/PRToolkit/index.mjs",
+      "types": "./platform/PRToolkit/index.d.ts"
+    },
     "./platform/ReportsToolkit": {
       "require": "./platform/ReportsToolkit/index.js",
       "import": "./platform/ReportsToolkit/index.mjs",
