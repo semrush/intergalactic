@@ -130,7 +130,7 @@ In our design system, data is typically placed within a [Card](/components/card/
 
 Make sure each chart has a title, and it's clear which chart each title belongs to.
 
-If you're displaying the chart inside a `Card`, use the [Card.Title](../../components/card/card.md#cardheader) component.
+If you're displaying the chart inside a `Card`, use the [Card.Title](../../components/card/card.md#card-header) component.
 
 ![](static/heading.png)
 
@@ -138,7 +138,7 @@ If you're displaying the chart inside a `Card`, use the [Card.Title](../../compo
 
 You can add a description text to your chart. Typically, such a text can provide information on maximum/minimum data statuses, explains the data source, or offers insightful advice related to visualized data.
 
-If you're displaying the chart inside a `Card`, use the [Card.Description](../../components/card/card.md#cardheader) component.
+If you're displaying the chart inside a `Card`, use the [Card.Description](../../components/card/card.md#card-header) component.
 
 ![](static/subtitle.png)
 
