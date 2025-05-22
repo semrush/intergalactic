@@ -56,7 +56,9 @@ export class Column<D extends DataTableData> extends Component<
   };
 
   componentDidMount() {
-    if (this.asProps.parent && this.asProps.sticky) {
+    const { parent, sticky, changeSortSize, name, sort } = this.asProps;
+
+    if (parent && sticky) {
       const columnElement = this.columnRef.current;
       const groupElement = columnElement?.parentElement?.children.item(0);
 
@@ -66,6 +68,10 @@ export class Column<D extends DataTableData> extends Component<
         columnElement?.style.setProperty('top', `${groupHeight}px`);
       }
     }
+
+    if (canUseDOM() && changeSortSize && sort?.[0] === name) {
+      this.changeTemplateColumnBySort();
+    }
   }
 
   componentDidUpdate(prevProps: DataTableColumnProps & ColumnPropsInner<D>): void {
@@ -74,36 +80,40 @@ export class Column<D extends DataTableData> extends Component<
       canUseDOM() &&
       prevProps.sort?.[0] !== this.asProps.sort?.[0]
     ) {
-      const { tableRef, gridTemplateColumns, columnIndex } = this.asProps;
+      this.changeTemplateColumnBySort();
+    }
+  }
 
-      if (this.asProps.sort?.[0] === this.asProps.name) {
-        const newWidth = this.calculateActiveColumnMinWidth();
+  changeTemplateColumnBySort() {
+    const { tableRef, gridTemplateColumns, columnIndex, sort, name } = this.asProps;
 
-        setTimeout(() => {
-          if (tableRef.current && newWidth !== null) {
-            tableRef.current.style.setProperty(
-              'grid-template-columns',
-              gridTemplateColumns
-                .map((gtcWidth, index) => {
-                  if (index === columnIndex) {
-                    return `${newWidth}px`;
-                  }
-                  return gtcWidth;
-                })
-                .join(' '),
-            );
-          }
-        });
-      } else if (this.asProps.sort?.[0] !== this.asProps.name) {
-        setTimeout(() => {
-          if (tableRef.current) {
-            tableRef.current.style.setProperty(
-              'grid-template-columns',
-              gridTemplateColumns.join(' '),
-            );
-          }
-        });
-      }
+    if (sort?.[0] === name) {
+      const newWidth = this.calculateActiveColumnMinWidth();
+
+      setTimeout(() => {
+        if (tableRef.current && newWidth !== null) {
+          tableRef.current.style.setProperty(
+            'grid-template-columns',
+            gridTemplateColumns
+              .map((gtcWidth, index) => {
+                if (index === columnIndex) {
+                  return `${newWidth}px`;
+                }
+                return gtcWidth;
+              })
+              .join(' '),
+          );
+        }
+      });
+    } else if (sort?.[0] !== name) {
+      setTimeout(() => {
+        if (tableRef.current) {
+          tableRef.current.style.setProperty(
+            'grid-template-columns',
+            gridTemplateColumns.join(' '),
+          );
+        }
+      });
     }
   }
 
