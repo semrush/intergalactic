@@ -243,10 +243,10 @@ describe('utils', () => {
     expect(getIndexFromData(data, xScale, 'x', 2)).toBe(1);
     expect((getIndexFromData as any)(data, yScale, 'y', 'test')).toBe(0);
   });
-}); 
+});
 
 describe('Focus skip to content after plot', () => {
-  beforeEach(cleanup); 
+  beforeEach(cleanup);
 
   test.sequential('nested case', async ({ expect }) => {
     const data = Array(20)
