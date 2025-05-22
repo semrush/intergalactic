@@ -94,6 +94,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
           aria-rowindex={ariaRowIndex}
           accordionType={accordionType}
           theme={selectedRows?.includes(rowIndex) ? 'info' : undefined}
+          use:expanded={expanded && !mergedRow}
         >
           {columns.map((column, i) => {
             if (selectedRows && i === 0) {
