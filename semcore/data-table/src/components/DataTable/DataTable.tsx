@@ -17,7 +17,7 @@ import { Body } from '../Body/Body';
 import { DataTableColumnProps, DTColumn } from '../Head/Column.types';
 
 import style from './dataTable.shadow.css';
-import { DTRow } from '../Body/Row.types';
+import { DTRow, UniqRowKey } from '../Body/Row.types';
 import { isFocusInside, hasFocusableIn } from '@semcore/core/lib/utils/use/useFocusLock';
 
 import { ReactElement } from 'react';
@@ -362,11 +362,14 @@ class DataTableRoot<D extends DataTableData> extends Component<
     const { expandedRows } = this.asProps;
     if (expandedRows.has(expandedRow[UNIQ_ROW_KEY])) {
       expandedRows.delete(expandedRow[UNIQ_ROW_KEY]);
+
+      setTimeout(() => {
+        this.handlers.expandedRows(new Set([...expandedRows]));
+      }, 300);
     } else {
       expandedRows.add(expandedRow[UNIQ_ROW_KEY]);
+      this.handlers.expandedRows(new Set([...expandedRows]));
     }
-
-    this.handlers.expandedRows(new Set([...expandedRows]));
   };
 
   changeFocusCell = (
@@ -1089,7 +1092,8 @@ class DataTableRoot<D extends DataTableData> extends Component<
           return acc;
         },
         {
-          [UNIQ_ROW_KEY]: row[UNIQ_ROW_KEY] || `${uid}_${(rowIndex + id).toString(36)}`,
+          [UNIQ_ROW_KEY]:
+            row[UNIQ_ROW_KEY] || (`${uid}_${(rowIndex + id).toString(36)}` as UniqRowKey),
           [ROW_INDEX]: rowIndex,
         },
       );
@@ -1111,12 +1115,12 @@ class DataTableRoot<D extends DataTableData> extends Component<
       const groupedRows: DataTableData | undefined = row[ROW_GROUP];
 
       if (groupedRows) {
-        const innerRows: DTRow[] = [];
+        const innerRows: DTRow[] & { [ACCORDION]?: React.ReactElement } = [];
 
         const groupedKeys: string[] = [];
-        const groupedRowData = Object.entries(row).reduce<DTRow>(
+        const groupedRowData = Object.entries(row).reduce<Omit<DTRow, symbol>>(
           (acc, [key, value]) => {
-            acc[key] = new MergedRowsCell(value, groupedRows.length);
+            acc[key] = new MergedRowsCell(value, groupedRows.length, row[ACCORDION]);
             groupedKeys.push(key);
             return acc;
           },
@@ -1134,8 +1138,15 @@ class DataTableRoot<D extends DataTableData> extends Component<
               ...groupedRowData,
             };
             dtRow = makeDtRow(rowData);
+            dtRow[ROW_GROUP] = new Set();
           } else {
+            if (index === groupedRows.length - 1 && row[ACCORDION]) {
+              childRow[ACCORDION] = row[ACCORDION];
+            }
+
             dtRow = makeDtRow(childRow, groupedKeys);
+
+            innerRows[0]?.[ROW_GROUP]?.add(dtRow[UNIQ_ROW_KEY]);
           }
 
           innerRows.push(dtRow);

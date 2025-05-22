@@ -27,23 +27,20 @@ SRow[active] > SCell:not([theme]) {
   background-color: var(--intergalactic-table-td-cell-active, #e6e7ed);
 }
 
-SRow[expanded][accordionType='row'] > SCell:not([theme]) {
+SRow[accordionType='row'][expanded] > SCell:not([theme]),
+SCell:not([theme])[expanded][withAccordion] {
   background-color: var(--intergalactic-table-td-cell-active, #e6e7ed);
 }
 
-SRow[expanded][accordionType='cell'] > SCell:not([theme])[withAccordion] {
-  background-color: var(--intergalactic-table-td-cell-active, #e6e7ed);
-}
-
-SCollapseRow > SCell:not([theme]), SRow[expanded] > SCell:not([theme]) {
+SCollapseRow > SCell:not([theme]), SRow[isAccordionRow] > SCell:not([theme]) {
   background-color: var(--intergalactic-table-td-cell-accordion, #f4f5f9);
 }
 
 /* we need a media query here because of the postcssHoverMediaFeature plugin. it doesn't handle this type of selectors correctly */
 @media (hover: hover) {
-  SRow:hover > SCell:not([theme]),
-  SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow > SCell:not([theme]),
-  SRowGroup:has(SCell:hover) > SRow > SCell[data-grouped-by='rowgroup']:not([theme]) {
+  SRow:not([accordionType='row'][expanded]):hover > SCell:not([theme]):not([expanded][withAccordion]),
+  SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow > SCell:not([theme]):not([expanded][withAccordion]),
+  SRowGroup:has(SCell:hover) > SRow > SCell[data-grouped-by='rowgroup']:not([theme]):not([expanded][withAccordion]) {
     background-color: var(--intergalactic-table-td-cell-hover, #f0f0f4);
   }
 
@@ -177,7 +174,7 @@ SCell {
   }
 }
 
-SRow[accordionType='row'] > SCell, SRow[accordionType='cell'] > SCell[withAccordion], SCheckboxCell {
+SRow[accordionType='row'] > SCell, SCell[withAccordion], SCheckboxCell {
   cursor: pointer;
 }
 

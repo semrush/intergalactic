@@ -67,10 +67,11 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
       selectedRows,
       uid,
       getFixedStyle,
+      mergedRow,
     } = this.asProps;
 
     let accordion = row[ACCORDION];
-    let accordionType = accordion ? 'row' : undefined;
+    const accordionType = accordion && !mergedRow ? 'row' : undefined;
 
     if (!accordion) {
       const cells = Object.values(row);
@@ -83,7 +84,6 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
       const cellWithAccordion = cells[cellWithAccordionIndex] as DTValue | undefined;
 
       accordion = cellWithAccordion?.[ACCORDION];
-      accordionType = 'cell';
     }
 
     return sstyled(styles)(
@@ -94,6 +94,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
           aria-rowindex={ariaRowIndex}
           accordionType={accordionType}
           theme={selectedRows?.includes(rowIndex) ? 'info' : undefined}
+          use:expanded={expanded && !mergedRow}
         >
           {columns.map((column, i) => {
             if (selectedRows && i === 0) {
@@ -119,7 +120,8 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
             }
 
             const index = i;
-            const cellValue = row[column.name];
+            const cellValue: DTValue | MergedRowsCell | MergedColumnsCell | undefined =
+              row[column.name];
 
             if (cellValue === undefined) {
               return null;
@@ -147,8 +149,10 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
                 columnIndex={index}
                 style={style}
                 column={column}
-                // @ts-ignore
-                withAccordion={this.cellHasAccordion(cellValue)}
+                withAccordion={
+                  Boolean(cellValue instanceof MergedRowsCell && cellValue.accordion) ||
+                  this.cellHasAccordion(cellValue)
+                }
               />
             );
           })}
@@ -201,7 +205,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
                 aria-level={ariaLevel + 1}
                 ariaRowIndex={ariaRowIndex + 1 + i}
                 gridRowIndex={gridRowIndex + 1 + i}
-                expanded={true}
+                isAccordionRow={true}
                 getFixedStyle={getFixedStyle}
               />
             );
