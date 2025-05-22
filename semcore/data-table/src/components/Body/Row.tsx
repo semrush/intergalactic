@@ -205,7 +205,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
                 aria-level={ariaLevel + 1}
                 ariaRowIndex={ariaRowIndex + 1 + i}
                 gridRowIndex={gridRowIndex + 1 + i}
-                expanded={true}
+                isAccordionRow={true}
                 getFixedStyle={getFixedStyle}
               />
             );
