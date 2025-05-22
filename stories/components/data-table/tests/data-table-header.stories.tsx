@@ -10,6 +10,7 @@ import MultiLevelInteractiveExample from './examples/header-tests/multi-level-wi
 import SecondarySortingExample from './examples/header-tests/secondary-sorting';
 import SecondaryHeaderExample from './examples/header-tests/secondary-header';
 import MultiLevelExample from './examples/header-tests/multi-level-header';
+import SortingSizeExample from './examples/header-tests/sorting-changing-size';
 
 
 const meta: Meta = {
@@ -21,6 +22,10 @@ type Story = StoryObj;
 
 export const SecondaryHeader: Story = {
   render: SecondaryHeaderExample,
+};
+
+export const SortingSize: Story = {
+  render: SortingSizeExample,
 };
 
 export const MultiLevelInteractive: Story = {

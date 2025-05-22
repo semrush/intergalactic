@@ -67,7 +67,7 @@ test.describe('Area chart', () => {
   });
 
   test('Verify chart with interpolation function', async ({ page }) => {
-    const standPath = 'stories/components/d3-chart/docs/examples/area-chart/interpolation.tsx';
+    const standPath = 'stories/components/d3-chart/tests/examples/area-chart/interpolation.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
@@ -80,7 +80,7 @@ test.describe('Area chart', () => {
 
   test('Verify legend and pattern fill', async ({ page, browserName }) => {
     const standPath =
-      'stories/components/d3-chart/docs/examples/area-chart/legend-and-pattern-fill.tsx';
+      'stories/components/d3-chart/tests/examples/area-chart/legend-and-pattern-fill.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 

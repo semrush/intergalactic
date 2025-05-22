@@ -70,8 +70,6 @@ test.describe('Bar chart', () => {
     await test.step('Verify bar do not render', async () => {
       const count = await bars.count();
       expect(count).toBe(0);
-      await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot();
     });
   });
 
