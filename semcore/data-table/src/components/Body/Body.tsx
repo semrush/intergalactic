@@ -199,11 +199,11 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
     if (
       (props.columnIndex === 0 && props.row[ACCORDION]) ||
       value?.[ACCORDION] ||
-      (cellValue instanceof MergedRowsCell && cellValue[ACCORDION])
+      (cellValue instanceof MergedRowsCell && cellValue.accordion)
     ) {
       let expanded = expandedRows?.has(props.row[UNIQ_ROW_KEY]);
 
-      if (cellValue instanceof MergedRowsCell && cellValue[ACCORDION] && props.row[ROW_GROUP]) {
+      if (cellValue instanceof MergedRowsCell && cellValue.accordion && props.row[ROW_GROUP]) {
         const mergedKeysSet = props.row[ROW_GROUP];
 
         expanded = [...mergedKeysSet].some((key) => expandedRows?.has(key));
@@ -212,7 +212,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
       let row = props.row;
       let rowIndex = props.rowIndex;
 
-      if (cellValue instanceof MergedRowsCell && cellValue[ACCORDION]) {
+      if (cellValue instanceof MergedRowsCell && cellValue.accordion) {
         row = flatRows[props.rowIndex + cellValue.rowsCount - 1];
         rowIndex = props.rowIndex + cellValue.rowsCount - 1;
       }
@@ -223,7 +223,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
         this.handleExpandRow(row, rowIndex);
       };
 
-      if (value?.[ACCORDION] || (cellValue instanceof MergedRowsCell && cellValue[ACCORDION])) {
+      if (value?.[ACCORDION] || (cellValue instanceof MergedRowsCell && cellValue.accordion)) {
         extraProps.onClick = callAllEventHandlers(
           extraProps.onClick,
           this.handleClickCell(row, rowIndex),
