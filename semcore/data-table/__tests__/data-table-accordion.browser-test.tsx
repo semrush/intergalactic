@@ -165,7 +165,6 @@ test.describe('Accordion in table', () => {
 
     await firstArrow.hover();
 
-
     for (let i = 0; i < cellCount; i++) {
       const cell = cells.nth(i);
       await checkStyles(cell, {
@@ -184,12 +183,12 @@ test.describe('Accordion in table', () => {
     const cells5 = row5.locator('div');
 
     const cellCount5 = await cells5.count();
-      for (let i = 0; i < cellCount5 - 1; i++) {
-        const cell = cells5.nth(i);
-        await checkStyles(cell, {
-          'background-color': 'rgb(255, 255, 255)',
-        });
-      }
+    for (let i = 0; i < cellCount5 - 1; i++) {
+      const cell = cells5.nth(i);
+      await checkStyles(cell, {
+        'background-color': 'rgb(255, 255, 255)',
+      });
+    }
 
     await checkStyles(cells5.nth(3), {
       'background-color': 'rgb(230, 231, 237)',
@@ -204,9 +203,9 @@ test.describe('Accordion in table', () => {
         });
       }
 
-      await checkStyles(cells5.nth(3), {
-        'background-color': 'rgb(230, 231, 237)',
-      });
+    await checkStyles(cells5.nth(3), {
+      'background-color': 'rgb(230, 231, 237)',
+    });
 
     await firstArrow.click();
     await page.waitForTimeout(150);
