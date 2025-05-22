@@ -8,6 +8,10 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Property `sideIndents`.
 
+### Added
+
+- Support for using `Accordion` on merged rows.
+
 ## [16.0.0] - 2025-05-19
 
 ### Break
