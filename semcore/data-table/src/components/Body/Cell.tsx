@@ -108,7 +108,7 @@ class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner>
         tabIndex={-1}
         onKeyDown={this.handleKeyDown}
         onFocus={this.onFocusCell}
-        name={cellName}
+        name={cellName.toString()}
         role={'gridcell'}
         aria-colindex={columnIndex + 1}
         data-grouped-by={scope}

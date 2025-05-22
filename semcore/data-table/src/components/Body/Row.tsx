@@ -67,6 +67,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
       selectedRows,
       uid,
       getFixedStyle,
+      mergedRow,
     } = this.asProps;
 
     let accordion = row[ACCORDION];
@@ -83,7 +84,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
       const cellWithAccordion = cells[cellWithAccordionIndex] as DTValue | undefined;
 
       accordion = cellWithAccordion?.[ACCORDION];
-      accordionType = 'cell';
+      accordionType = accordion ? 'cell' : undefined;
     }
 
     return sstyled(styles)(
@@ -92,8 +93,9 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
           render={Box}
           role={'row'}
           aria-rowindex={ariaRowIndex}
-          accordionType={accordionType}
+          accordionType={!mergedRow ? accordionType : undefined}
           theme={selectedRows?.includes(rowIndex) ? 'info' : undefined}
+          use:expanded={expanded && !mergedRow}
         >
           {columns.map((column, i) => {
             if (selectedRows && i === 0) {
@@ -148,7 +150,10 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
                 style={style}
                 column={column}
                 // @ts-ignore
-                withAccordion={this.cellHasAccordion(cellValue)}
+                withAccordion={
+                  this.cellHasAccordion(cellValue) ||
+                  (cellValue instanceof MergedRowsCell && cellValue[ACCORDION])
+                }
               />
             );
           })}

@@ -9,12 +9,13 @@ import { Cell } from './Cell';
 import { DataTableRowProps, DTRow, RowPropsInner } from './Row.types';
 import { DataTableCellProps } from './Cell.types';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
-import { ACCORDION, ROW_INDEX, UNIQ_ROW_KEY } from '../DataTable/DataTable';
+import { ACCORDION, ROW_GROUP, ROW_INDEX, UNIQ_ROW_KEY } from '../DataTable/DataTable';
 import ChevronRightM from '@semcore/icon/ChevronRight/m';
 import { ButtonLink } from '@semcore/button';
 import { DTValue } from '../DataTable/DataTable.types';
 import Spin from '@semcore/spin';
 import { isInteractiveElement } from '@semcore/core/lib/utils/isInteractiveElement';
+import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 
 const ROWS_BUFFER = 20;
 const APROX_ROWS_ON_PAGE = 20;
@@ -57,7 +58,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
     }
   };
 
-  getRowProps(props: { row: DTRow }): RowPropsInner {
+  getRowProps(props: { row: DTRow; mergedRow?: boolean }): RowPropsInner {
     const {
       use,
       gridTemplateAreas,
@@ -105,7 +106,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
       : `${gridRowIndex + 1} / 1 / ${gridRowIndex + 1} / ${columns.length + 1}`;
 
     return {
-      onClick: row[ACCORDION] ? this.handleClickRow(row, index) : undefined,
+      onClick: row[ACCORDION] && !props.mergedRow ? this.handleClickRow(row, index) : undefined,
       ...rowProps?.(row, index),
       use,
       uid,
@@ -128,12 +129,21 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
       scrollAreaRef,
       sideIndents,
       getFixedStyle,
+      mergedRow: props.mergedRow,
     };
   }
 
   getCellProps(props: DataTableCellProps) {
-    const { use, renderCell, expandedRows, styles, getI18nText, virtualScroll, tableRef } =
-      this.asProps;
+    const {
+      use,
+      renderCell,
+      expandedRows,
+      styles,
+      getI18nText,
+      virtualScroll,
+      tableRef,
+      flatRows,
+    } = this.asProps;
     const SAccordionToggle = ButtonLink;
 
     let dataKey = props.column.name;
@@ -186,18 +196,47 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
       }
     }
 
-    if ((props.columnIndex === 0 && props.row[ACCORDION]) || value?.[ACCORDION]) {
-      const expanded = expandedRows?.has(props.row[UNIQ_ROW_KEY]);
+    if (
+      (props.columnIndex === 0 && props.row[ACCORDION]) ||
+      value?.[ACCORDION] ||
+      (cellValue instanceof MergedRowsCell && cellValue[ACCORDION])
+    ) {
+      let expanded = expandedRows?.has(props.row[UNIQ_ROW_KEY]);
+
+      if (cellValue instanceof MergedRowsCell && cellValue[ACCORDION] && props.row[ROW_GROUP]) {
+        const mergedKeysSet = props.row[ROW_GROUP];
+
+        expanded = [...mergedKeysSet].some((key) => expandedRows?.has(key));
+      }
+
+      let row = props.row;
+      let rowIndex = props.rowIndex;
+
+      if (cellValue instanceof MergedRowsCell && cellValue[ACCORDION]) {
+        row = flatRows[props.rowIndex + cellValue.rowsCount - 1];
+        rowIndex = props.rowIndex + cellValue.rowsCount - 1;
+      }
+
+      const handleClick = (e: React.SyntheticEvent<HTMLButtonElement>) => {
+        e.stopPropagation();
+
+        this.handleExpandRow(row, rowIndex);
+      };
+
+      if (value?.[ACCORDION] || (cellValue instanceof MergedRowsCell && cellValue[ACCORDION])) {
+        extraProps.onClick = callAllEventHandlers(
+          extraProps.onClick,
+          this.handleClickCell(row, rowIndex),
+        );
+      }
+
       extraProps.children = sstyled(styles)(
         <>
           <SAccordionToggle
             aria-label={getI18nText('DataTable.Cell.AccordionToggle.expand:aria-label')}
             // @ts-ignore
             expanded={expanded}
-            onClick={(e: React.SyntheticEvent<HTMLButtonElement>) => {
-              e.stopPropagation();
-              this.handleExpandRow(props.row, props.rowIndex);
-            }}
+            onClick={handleClick}
             color={'--intergalactic-icon-primary-neutral'}
             aria-expanded={expanded}
             aria-describedby={props.id}
@@ -208,10 +247,6 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
           {extraProps.children}
         </>,
       );
-    }
-
-    if (value?.[ACCORDION]) {
-      extraProps.onClick = this.handleClickCell(props.row, props.rowIndex);
     }
 
     return extraProps;
@@ -348,7 +383,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
 
     return sstyled(styles)(
       <SBody render={Box} __excludeProps={['data']}>
-        {emptyRow && <Body.Row row={emptyRow} offset={0} />}
+        {emptyRow && <Body.Row row={emptyRow} />}
         {typeof virtualScroll === 'boolean' && rowMarginTop && <Box h={rowMarginTop} />}
         {rowsToRender.map((row, index) => {
           if (Array.isArray(row)) {
@@ -359,7 +394,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
                 ref={this.handleRef(startIndex + index, row[0])}
               >
                 {row.map((item, i) => {
-                  return <Body.Row key={item[UNIQ_ROW_KEY]} row={item} />;
+                  return <Body.Row key={item[UNIQ_ROW_KEY]} row={item} mergedRow={true} />;
                 })}
               </SRowGroup>,
             );
