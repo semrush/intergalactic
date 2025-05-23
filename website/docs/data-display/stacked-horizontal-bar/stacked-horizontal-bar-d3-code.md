@@ -19,7 +19,7 @@ To draw a horizontal stacked chart, use the `<StackBar.HorizontalBar/>` componen
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/horizontal-stacked-bar.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/stacked-horizontal-bar/horizontal-stacked-bar.tsx';
 </script>
 
 :::
@@ -31,7 +31,7 @@ Note that for ChartLegend `patterns` property works only with default `shape={'C
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/legend-and-pattern-fill.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/stacked-horizontal-bar/legend-and-pattern-fill.tsx';
 </script>
 
 :::

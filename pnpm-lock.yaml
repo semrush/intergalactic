@@ -2570,6 +2570,9 @@ importers:
       d3-scale:
         specifier: 3.3.0
         version: 3.3.0
+      d3-shape:
+        specifier: 3.2.0
+        version: 3.2.0
       react-hook-form:
         specifier: 7.54.0
         version: 7.54.0(patch_hash=lgwrkd2rcwjl6lvsfcx5eegpjm)(react@16.14.0)
@@ -2583,6 +2586,9 @@ importers:
       '@types/d3-scale':
         specifier: 3.3.0
         version: 3.3.0
+      '@types/d3-shape':
+        specifier: 3.1.7
+        version: 3.1.7
       '@types/react-virtualized':
         specifier: 9.22.0
         version: 9.22.0
@@ -9511,7 +9517,6 @@ packages:
 
   /@types/d3-path@3.0.0:
     resolution: {integrity: sha512-0g/A+mZXgFkQxN3HniRDbXMN79K3CdTpLsevj+PXiTcb2hVyvkZUBg37StmgCQkaD84cUJ4uaDAWq7UJOQy2Tg==}
-    dev: false
 
   /@types/d3-scale@3.3.0:
     resolution: {integrity: sha512-rJj4nh/71Rw5bZgTF5cA5rW60WT3x8RbivEsScgQ66sqFnYZRmuyKSayyo7JiP+c9KJJiQhY9JXBmY16FZa3+g==}
@@ -9534,6 +9539,12 @@ packages:
     dependencies:
       '@types/d3-path': 3.0.0
     dev: false
+
+  /@types/d3-shape@3.1.7:
+    resolution: {integrity: sha512-VLvUQ33C+3J+8p+Daf+nYSOsjB4GXp19/S/aGo60m9h1v6XaxjiT82lKVWJCfzhtuZ3yD7i/TPeC/fuKLLOSmg==}
+    dependencies:
+      '@types/d3-path': 3.0.0
+    dev: true
 
   /@types/d3-time@3.0.0:
     resolution: {integrity: sha512-sZLCdHvBUcNby1cB6Fd3ZBrABbjz3v1Vm90nysCQ6Vt7vd6e/h9Lt7SiJUoEX0l4Dzc7P5llKyhqSi1ycSf1Hg==}

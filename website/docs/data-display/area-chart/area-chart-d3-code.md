@@ -13,7 +13,7 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/basic-usage.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/area-chart/basic-usage.tsx';
 </script>
 
 :::
@@ -27,7 +27,7 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/area.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/area-chart/area.tsx';
 </script>
 
 :::
@@ -41,7 +41,7 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/edge-cases.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/area-chart/edge-cases.tsx';
 </script>
 
 :::
@@ -51,7 +51,7 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/custom-line.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/area-chart/custom-line.tsx';
 </script>
 
 :::
@@ -67,7 +67,7 @@ If exact values of specific point is not available, you can pass `interpolateVal
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/interpolation.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/area-chart/interpolation.tsx';
 </script>
 
 :::
@@ -81,7 +81,7 @@ Note that for ChartLegend `patterns` property works only with default `shape={'C
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/legend-and-pattern-fill.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/area-chart/legend-and-pattern-fill.tsx';
 </script>
 
 :::

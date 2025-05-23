@@ -13,7 +13,7 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/basic_usage.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/bar-horizontal-compact/basic_usage.tsx';
 </script>
 
 :::
@@ -23,7 +23,7 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/advanced_usage.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/bar-horizontal-compact/advanced_usage.tsx';
 </script>
 
 :::
@@ -33,7 +33,7 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/links.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/bar-horizontal-compact/links.tsx';
 </script>
 
 :::
@@ -45,7 +45,7 @@ This is a basic example.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/clickable_basic.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/bar-horizontal-compact/clickable_basic.tsx';
 </script>
 
 :::
@@ -55,7 +55,7 @@ This is a more detailed example if you need to expand the component.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/clickable_advanced.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/bar-horizontal-compact/clickable_advanced.tsx';
 </script>
 
 :::

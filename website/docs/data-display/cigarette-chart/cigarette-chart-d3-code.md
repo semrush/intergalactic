@@ -9,7 +9,7 @@ tabs: Design('cigarette-chart'), A11y('cigarette-chart-a11y'), API('cigarette-ch
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/basic-usage.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/cigarette-chart/basic-usage.tsx';
 </script>
 
 :::
@@ -21,7 +21,7 @@ To change the layout of the chart from horizontal to vertical, just set `invertA
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/layouts.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/cigarette-chart/layouts.tsx';
 </script>
 
 :::
@@ -33,7 +33,7 @@ In the tooltip, you can display the values of all chart sectors or just one of t
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/tooltip-type.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/cigarette-chart/tooltip-type.tsx';
 </script>
 
 :::
@@ -45,7 +45,7 @@ You can add some click interaction for the chart sectors.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/click-interaction.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/cigarette-chart/click-interaction.tsx';
 </script>
 
 :::
@@ -57,7 +57,7 @@ Show null and not available data in the legend and tooltip but not on the chart.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/no-values.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/cigarette-chart/no-values.tsx';
 </script>
 
 :::
@@ -69,7 +69,7 @@ Use [Skeleton](/components/skeleton/skeleton) for the initial chart loading.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/skeleton.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/cigarette-chart/skeleton.tsx';
 </script>
 
 :::
@@ -81,7 +81,7 @@ You can set `a11yAltTextConfig` if you need accessible text that differs from th
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/custom-a11y.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/cigarette-chart/custom-a11y.tsx';
 </script>
 
 :::

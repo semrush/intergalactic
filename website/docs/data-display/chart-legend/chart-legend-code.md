@@ -17,7 +17,7 @@ You can set your custom SVG shape for a LegendItem.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/custom-shape-as-legenditem.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/chart-legend/custom-shape-as-legenditem.tsx';
 </script>
 
 :::
@@ -27,7 +27,7 @@ You can set your custom SVG shape for a LegendItem.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/table-view.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/chart-legend/table-view.tsx';
 </script>
 
 :::

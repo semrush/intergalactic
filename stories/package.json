@@ -9,12 +9,14 @@
     "@storybook/icons": "1.2.12",
     "@storybook/theming": "8.5.2",
     "d3-scale": "3.3.0",
+    "d3-shape": "3.2.0",
     "react-hook-form": "7.54.0",
     "react-virtualized": "9.22.3",
     "react-window": "1.8.11"
   },
   "devDependencies": {
     "@types/d3-scale": "3.3.0",
+    "@types/d3-shape": "3.1.7",
     "@types/react-virtualized": "9.22.0",
     "@types/react-window": "1.8.8"
   }
