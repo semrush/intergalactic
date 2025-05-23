@@ -23,23 +23,17 @@ export const gitUtils = {
   },
 
   getUpdatedPackages: async () => {
-    const scopes = await allowedScopes();
-    const updatedPackages = scopes.semcoreComponents.map((pkg) => `@semcore/${pkg}`);
+    const diff = await git.diffSummary('HEAD^1');
+    const components: string[] = [];
 
-    return updatedPackages;
+    diff.files.forEach((item) => {
+      if (item.file.startsWith('semcore') && item.file.endsWith('package.json')) {
+        const path = item.file.split('/');
+        components.push(`@${path[0]}/${path[1]}`);
+      }
+    });
 
-    // todo: Brauer Ilia turn back after 16 release
-    // const diff = await git.diffSummary('HEAD^1');
-    // const components: string[] = [];
-    //
-    // diff.files.forEach((item) => {
-    //   if (item.file.startsWith('semcore') && item.file.endsWith('package.json')) {
-    //     const path = item.file.split('/');
-    //     components.push(`@${path[0]}/${path[1]}`);
-    //   }
-    // });
-    //
-    // return components;
+    return components;
   },
 
   getCurrentTag: async (): Promise<string | null> => {

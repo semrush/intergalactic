@@ -43,6 +43,7 @@ export const renderComponentChangelog = (tokenList: any[], index: number) => {
             item.includes('- Version patch update due to children dependencies') ||
             item.includes('- Version preminor update due to children dependencies') ||
             item.includes('- Version prepatch update due to children dependencies') ||
+            item.includes('- Version prerelease update due to children dependencies') ||
             (itemRows.length === 3 && itemRows[1] === '' && itemRows[2] === '')
           ) {
             itemRows[0] = `### ${version} (${niceDate})`;

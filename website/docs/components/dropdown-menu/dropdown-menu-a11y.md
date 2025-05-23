@@ -66,5 +66,3 @@ Table: Roles and attributes
 ## Other recommendations
 
 For more accessibility recommendations, refer to the common [Accessibility guide](/core-principles/a11y/a11y).
-
-<!--@include: ./dropdown-menu-a11y-report.md-->

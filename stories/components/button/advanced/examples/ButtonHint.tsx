@@ -1,9 +1,9 @@
 import React from 'react';
-import Button from 'intergalactic/button';
+import Button from '@semcore/button';
 import Tooltip, { Hint, DescriptionTooltip } from '@semcore/tooltip';
 import SearchM from '@semcore/icon/Search/m';
 import SearchL from '@semcore/icon/Search/l';
-import { Flex } from 'intergalactic/flex-box';
+import { Flex } from '@semcore/flex-box';
 
 const Demo = () => {
   return (
