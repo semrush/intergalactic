@@ -8,7 +8,7 @@ import FileExportM from '@semcore/icon/FileExport/m';
 const Demo = () => (
   <>
   <Dropdown timeout = {1000} >
-    <Dropdown.Trigger id='dropdown-basic' tag={Button} ml={2}	>
+    <Dropdown.Trigger id='dropdown-basic' tag={Button} ml={2}	data-testid='timeout'>
     timeout
     </Dropdown.Trigger>
     <Dropdown.Popper p={4} wMax={260} aria-labelledby='dropdown-basic'>
@@ -25,7 +25,7 @@ const Demo = () => (
   </Dropdown>
 
   <Dropdown visible = {false}>
-    <Dropdown.Trigger id='dropdown-basic' tag={Button} ml={2} >
+    <Dropdown.Trigger id='dropdown-basic' tag={Button} ml={2} data-testid='visible'>
     visible
     </Dropdown.Trigger>
     <Dropdown.Popper p={4} wMax={260} aria-labelledby='dropdown-basic'>
@@ -42,10 +42,10 @@ const Demo = () => (
   </Dropdown>
 
   <Dropdown defaultVisible>
-    <Dropdown.Trigger id='dropdown-basic' tag={Button} ml={2} >
+    <Dropdown.Trigger id='dropdown-basic' tag={Button} ml={2} data-testid='defaultVisible'>
     defaultVisible
     </Dropdown.Trigger>
-    <Dropdown.Popper p={4} wMax={260} aria-labelledby='dropdown-basic'>
+    <Dropdown.Popper p={4} wMax={260} aria-labelledby='dropdown-basic' >
     <Text size={200}>
       Hello there! I'm Dropdown's content
     </Text>
@@ -59,7 +59,7 @@ const Demo = () => (
   </Dropdown>
 
   <Dropdown disabled={true}>
-    <Dropdown.Trigger id='dropdown-basic' tag={Button} ml={2} >
+    <Dropdown.Trigger id='dropdown-basic' tag={Button} ml={2} data-testid='disabled' >
     disabled    </Dropdown.Trigger>
     <Dropdown.Popper p={4} wMax={260} aria-labelledby='dropdown-basic'>
     <Text size={200}>
@@ -75,7 +75,7 @@ const Demo = () => (
   </Dropdown>
 
   <Dropdown disableEnforceFocus={true}>
-    <Dropdown.Trigger id='dropdown-basic' tag={Button} ml={2} >
+    <Dropdown.Trigger id='dropdown-basic' tag={Button} ml={2} data-testid='disableEnforceFocus'>
     disableEnforceFocus    </Dropdown.Trigger>
     <Dropdown.Popper p={4} wMax={260} aria-labelledby='dropdown-basic'>
     <Text size={200}>
@@ -91,7 +91,7 @@ const Demo = () => (
   </Dropdown>
 
   <Dropdown explicitTriggerSet={true}>
-    <Dropdown.Trigger id='dropdown-basic' tag={Button} ml={2} >
+    <Dropdown.Trigger id='dropdown-basic' tag={Button} ml={2} data-testid='explicitTriggerSet'>
     explicitTriggerSet    </Dropdown.Trigger>
     <Dropdown.Popper p={4} wMax={260} aria-labelledby='dropdown-basic'>
     <Text size={200}>
@@ -107,7 +107,7 @@ const Demo = () => (
   </Dropdown>
 
   <Dropdown popperMargin={100}>
-    <Dropdown.Trigger id='dropdown-basic' tag={Button} ml={2} >
+    <Dropdown.Trigger id='dropdown-basic' tag={Button} ml={2} data-testid='popperMargin'>
     popperMargin    </Dropdown.Trigger>
     <Dropdown.Popper p={4} wMax={260} aria-labelledby='dropdown-basic'>
     <Text size={200}>
@@ -138,7 +138,7 @@ const Demo = () => (
     console.log('Popper first update', state);
   }}
 >
-  <Dropdown.Trigger id='dropdown-basic' tag={Button} ml={2}>
+  <Dropdown.Trigger id='dropdown-basic' tag={Button} ml={2} data-testid='onVisibleChange onFirstUpdate'>
   onVisibleChange onFirstUpdate
   </Dropdown.Trigger>
   <Dropdown.Popper p={4} wMax={260} aria-labelledby='dropdown-basic'>
