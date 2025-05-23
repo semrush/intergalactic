@@ -48,5 +48,3 @@ Table: Recommended roles and attributes
 ## Other recommendations
 
 See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
-
-<!--@include: ./dropdown-a11y-report.md-->
