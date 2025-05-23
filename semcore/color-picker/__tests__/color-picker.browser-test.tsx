@@ -685,7 +685,6 @@ test.describe('Color-picker', () => {
       await expect(paletteItems.nth(2)).toHaveAttribute('aria-selected', 'true');
       await locators.trigger.first().click();
       await page.waitForTimeout(100);
-
     });
 
     await test.step('Verify paletter manager when defaultColors and onColorsChange pre set', async () => {
@@ -697,7 +696,7 @@ test.describe('Color-picker', () => {
       await expect(colorItems).toHaveCount(10);
 
       const expectedColors = [
-        'Clear color', 
+        'Clear color',
         '#8649E1',
         '#FF5733',
         '#98848D',
