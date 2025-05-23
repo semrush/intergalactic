@@ -94,7 +94,7 @@ The following font sizes are typically used for headings in content sections suc
 
 <!-- ### Headings for mobile devices
 
-To improve readability on different screens, adjust the size of headings based on the [breakpoints](/layout/grid-system/grid-system).
+To improve readability on different screens, adjust the size of headings based on the [breakpoints](/layout/breakpoints/breakpoints).
 
 ::: tip
 Only change font styles, not the markup.

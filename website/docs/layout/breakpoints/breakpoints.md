@@ -27,7 +27,7 @@ Here is a list of the main breakpoints we recommend using in the interfaces:
 
 ## Page layout
 
-Use [Grid component](/layout/grid-system/grid-system) to build a page layout. The component has an adaptive API.
+Use the [Grid component](/layout/grid-system/grid-system-layout) to build a page layout. The component has an adaptive API.
 
 The adaptivity (css with media-queries) of components can be enabled by adding our [babel-plugin-react-semcore plugin](https://github.com/semrush/intergalactic/blob/master/tools/babel-plugin-react-semcore/README.md).
 

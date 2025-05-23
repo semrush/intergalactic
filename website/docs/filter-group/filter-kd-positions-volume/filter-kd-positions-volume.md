@@ -1,6 +1,6 @@
 ---
 title: Keyword Difficulty, Positions, Volume
-tabs: Design('filter-kd-positions-volume'), Example('filter-kd-position-volume-code')
+tabs: Design('filter-kd-positions-volume'), Example('filter-kd-positions-volume-code')
 ---
 
 ::: tip

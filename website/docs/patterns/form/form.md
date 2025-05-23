@@ -54,7 +54,7 @@ For formatting entered values, use [InputMask](/components/input-mask/input-mask
 
 ## Input margins
 
-The key unit in the design system is 4. All spacings between components and widgets should be multiples of this unit. Refer to the [Spacing system](/layout/box-system/box-system#spacing_system) for further information.
+The key unit in the design system is 4. All spacings between components and widgets should be multiples of this unit. Refer to the [Spacing system](/layout/box-system/box-system-spacing) for further information.
 
 Table: Margins between inputs
 

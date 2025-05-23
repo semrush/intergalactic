@@ -1,5 +1,5 @@
 ---
-title: Tags
+title: Tags filter
 tabName: Design
 tabs: Design('filter-tags'), Example('filter-tags-code')
 ---

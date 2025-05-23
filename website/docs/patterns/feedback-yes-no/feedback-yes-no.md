@@ -8,7 +8,7 @@ tabs: Design('feedback-yes-no'), A11y('feedback-yes-no-a11y'), Example('feedback
 
 **FeedbackYesNo** represents a feedback collection pattern.
 
-This pattern consists of [Notice](/components/notice/notice) and [Feedback form](/components/feedback/feedback). Its purpose is to introduce a new feature to the user and pose a straightforward question about the product's performance. _For instance, "Discover our new Dashboard! Is it functioning effectively for you?"_
+This pattern consists of [Notice](/components/notice/notice) and [Feedback form](/components/feedback-form/feedback-form). Its purpose is to introduce a new feature to the user and pose a straightforward question about the product's performance. _For instance, "Discover our new Dashboard! Is it functioning effectively for you?"_
 
 ## Appearance
 
@@ -41,7 +41,7 @@ It can also be placed next to the feature for which feedback is desired.
 
 ## Form behavior
 
-Refer to the comprehensive behavior description of the feedback dropdown in the [Feedback](/components/feedback/feedback).
+Refer to the comprehensive behavior description of the feedback dropdown in the [Feedback](/components/feedback-form/feedback-form).
 
 ## Buttons behavior
 

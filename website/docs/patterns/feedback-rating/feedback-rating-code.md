@@ -4,7 +4,7 @@ fileSource: feedback-form
 tabs: Design('feedback-rating'), A11y('feedback-rating-a11y'), Example('feedback-rating-code')
 ---
 
-Refer to [FeedbackForm API](/components/feedback/feedback-form-api) for the full list of properties you can use in the feedback form.
+Refer to [FeedbackForm API](/components/feedback-form/feedback-form-api) for the full list of properties you can use in the feedback form.
 
 ## Basic usage
 

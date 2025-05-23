@@ -41,7 +41,7 @@ FeedbackRating form pattern consists of several components that have their own a
 - [Textarea](/components/textarea/textarea-a11y)
 - [Input](/components/input/input-a11y)
 - [Link component](/components/link/link-a11y)
-- [Feedback form](/components/feedback/feedback-form-a11y)
+- [Feedback form](/components/feedback-form/feedback-form-a11y)
 - [Form](/patterns/form/form-a11y)
 
 ## Considerations for developers
