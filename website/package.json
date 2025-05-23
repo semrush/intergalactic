@@ -10,8 +10,9 @@
     "upload-search-index": "tsm --require=../.ci/tsm-filter-warnings.js tools/searchIndexUpload.ts",
     "update-illustration": "tsm --require=../.ci/tsm-filter-warnings.js tools/figmaIllustration.ts",
     "dev": "vitepress dev docs",
-    "build": "vitepress build docs",
-    "preview": "vitepress preview docs"
+    "build": "pnpm check-links && vitepress build docs",
+    "preview": "vitepress preview docs",
+    "check-links": "tsm --require=../.ci/tsm-filter-warnings.js tools/check-links.ts"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^4.0.1",
@@ -66,6 +67,8 @@
     "whatwg-fetch": "3.6.2"
   },
   "devDependencies": {
+    "markdown-it-anchor": "9.2.0",
+    "@mdit-vue/shared": "1.0.0",
     "@babel/core": "7.19.1",
     "@babel/plugin-proposal-class-properties": "7.18.6",
     "@babel/plugin-proposal-export-default-from": "7.23.3",

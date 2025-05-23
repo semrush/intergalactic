@@ -59,6 +59,7 @@
       "website/ts.json",
       "website/docs/.vitepress/dist",
       "website/docs/.vitepress/cache",
+      "website/tools/check-links.ts",
       "./tools/playground/examples/**",
       "./tools/entry-point/**/*.js",
       "./tools/entry-point/**/*.mjs",
