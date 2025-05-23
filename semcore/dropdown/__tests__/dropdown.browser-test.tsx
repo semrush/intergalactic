@@ -131,11 +131,9 @@ test.describe('Dropdown', () => {
     await trigger.click();
     await popper.waitFor({ state: 'visible', timeout: 500 });
 
-
     await page.keyboard.press('Escape');
     await popper.waitFor({ state: 'hidden', timeout: 500 });
     await expect(trigger).toBeFocused();
-
   });
 
   test('Verify stretch and placement', async ({ page }) => {
@@ -159,7 +157,6 @@ test.describe('Dropdown', () => {
     //snapshot
   });
 
-
   test('Verify dropdown states functionality by mouse', async ({ page }) => {
     const standPath = 'stories/components/dropdown/tests/examples/dd-cases.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -172,19 +169,16 @@ test.describe('Dropdown', () => {
     await test.step('Verify default visible expanded', async () => {
       await expect(popper).toHaveCount(1);
       await expect(popper).toBeFocused();
-
     });
 
     await test.step('Verify no popper when visible = false', async () => {
       await page.locator('[data-testid="visible"]').click();
       await expect(popper).toHaveCount(0);
-
     });
-  
+
     await test.step('Verify no popper when disabled', async () => {
       await page.locator('[data-testid="disabled"]').click();
       await expect(popper).toHaveCount(0);
-
     });
 
     await test.step('Verify no focus outline when disableEnforceFocus', async () => {
@@ -196,8 +190,7 @@ test.describe('Dropdown', () => {
     await test.step('Verify no focus outline when explicitTriggerSet', async () => {
       await page.locator('[data-testid="explicitTriggerSet"]').click();
       await expect(popper).toHaveCount(1);
-     //snapshot
-
+      //snapshot
     });
 
     const messages: string[] = [];
@@ -208,20 +201,22 @@ test.describe('Dropdown', () => {
           messages.push(msg.text());
         }
       });
-     
+
       // Кликаем по кнопке-триггеру
       const trigger = page.getByTestId('onVisibleChange onFirstUpdate');
       await trigger.click();
-    
+
       // Ждём появления поповера (по aria-controls)
-    
+
       // Проверяем, что нужные сообщения были залогированы
-      expect(messages.some((msg) => msg.includes('Dropdown visibility changed: true'))).toBeTruthy();
+      expect(
+        messages.some((msg) => msg.includes('Dropdown visibility changed: true')),
+      ).toBeTruthy();
       expect(messages.some((msg) => msg.includes('Popper first update'))).toBeTruthy();
       await trigger.click();
-      expect(messages.some((msg) => msg.includes('Dropdown visibility changed: true'))).toBeTruthy();
-
-
+      expect(
+        messages.some((msg) => msg.includes('Dropdown visibility changed: true')),
+      ).toBeTruthy();
     });
   });
 
@@ -240,23 +235,20 @@ test.describe('Dropdown', () => {
       await page.keyboard.press('Shift+Tab');
       await page.keyboard.press('Space');
       await expect(popper).toHaveCount(0);
-
     });
-  
+
     await test.step('Verify popper when disabled', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Space');
       await expect(popper).toHaveCount(1);
       await page.keyboard.press('Escape');
-
-
     });
 
     await test.step('Verify no focus outline when disableEnforceFocus', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Space');
-            await expect(popper).toHaveCount(1);
+      await expect(popper).toHaveCount(1);
       await expect(popper).not.toBeFocused();
       await page.keyboard.press('Escape');
     });
@@ -266,9 +258,8 @@ test.describe('Dropdown', () => {
       await page.keyboard.press('Space');
       await expect(popper).toHaveCount(1);
 
-     //snapshot
-     await page.keyboard.press('Escape');
-
+      //snapshot
+      await page.keyboard.press('Escape');
     });
 
     const messages: string[] = [];
@@ -279,20 +270,21 @@ test.describe('Dropdown', () => {
           messages.push(msg.text());
         }
       });
-     
+
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
 
       await page.keyboard.press('Space');
-    
-      expect(messages.some((msg) => msg.includes('Dropdown visibility changed: true'))).toBeTruthy();
+
+      expect(
+        messages.some((msg) => msg.includes('Dropdown visibility changed: true')),
+      ).toBeTruthy();
       expect(messages.some((msg) => msg.includes('Popper first update'))).toBeTruthy();
 
-
       await page.keyboard.press('Escape');
-      expect(messages.some((msg) => msg.includes('Dropdown visibility changed: true'))).toBeTruthy();
-
-
+      expect(
+        messages.some((msg) => msg.includes('Dropdown visibility changed: true')),
+      ).toBeTruthy();
     });
   });
 });
