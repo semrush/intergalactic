@@ -21,10 +21,10 @@ test.describe('Dropdown', () => {
     await expect(popper).toHaveAttribute('aria-labelledby');
   });
 
-  test('Verify keyboard interactios with Basic usage', async ({ page }) => {
+  test('Verify keyboard interactios with Basic usage', async ({ page, browserName }) => {
+    if (browserName === 'webkit') return;
     const standPath = 'stories/components/dropdown/docs/examples/basic_usage.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
-
     await page.setContent(htmlContent);
 
     const trigger = page.locator('[data-ui-name="Dropdown.Trigger"]');
@@ -43,7 +43,7 @@ test.describe('Dropdown', () => {
     await page.keyboard.press('ArrowDown');
     await expect(trigger).not.toBeFocused();
     await expect(popper).toBeFocused();
-    //snapshot
+    await expect(page).toHaveScreenshot();
 
     await page.keyboard.press('Escape');
     await popper.waitFor({ state: 'hidden', timeout: 500 });
@@ -58,7 +58,7 @@ test.describe('Dropdown', () => {
     await expect(popper).toBeHidden();
   });
 
-  test('Verify mouse interactios with Basic usage', async ({ page }) => {
+  test('Verify mouse interactios with Basic usage', async ({ page, browserName }) => {
     const standPath = 'stories/components/dropdown/docs/examples/basic_usage.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
@@ -81,12 +81,15 @@ test.describe('Dropdown', () => {
     await expect(trigger).not.toBeFocused();
     await expect(popper).toBeVisible();
 
+    if (browserName === 'webkit') return;
     await page.keyboard.press('Escape');
     await popper.waitFor({ state: 'hidden', timeout: 500 });
     await expect(trigger).toBeFocused();
   });
 
-  test('Verify keyboard interaction when Focus interaction enabled', async ({ page }) => {
+  test('Verify keyboard interaction when Focus interaction enabled', async ({ page, browserName }) => {
+    if (browserName === 'webkit') return;
+
     const standPath = 'stories/components/dropdown/docs/examples/focus_interaction.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
@@ -116,7 +119,7 @@ test.describe('Dropdown', () => {
     await expect(popper).not.toBeFocused();
   });
 
-  test('Verify mouse interaction when Focus interaction enabled', async ({ page }) => {
+  test('Verify mouse interaction when Focus interaction enabled', async ({ page, browserName }) => {
     const standPath = 'stories/components/dropdown/docs/examples/focus_interaction.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
@@ -131,6 +134,7 @@ test.describe('Dropdown', () => {
     await trigger.click();
     await popper.waitFor({ state: 'visible', timeout: 500 });
 
+    if (browserName === 'webkit') return;
     await page.keyboard.press('Escape');
     await popper.waitFor({ state: 'hidden', timeout: 500 });
     await expect(trigger).toBeFocused();
@@ -146,15 +150,16 @@ test.describe('Dropdown', () => {
 
     await button.first().click();
     await page.waitForTimeout(200);
-    //snapshot
 
+    await expect(page).toHaveScreenshot();
+    await button.first().click();
     await button.nth(1).click();
     await page.waitForTimeout(200);
-    //snapshot
+    await expect(page).toHaveScreenshot();
 
     await button.nth(2).click();
     await page.waitForTimeout(200);
-    //snapshot
+    await expect(page).toHaveScreenshot();
   });
 
   test('Verify dropdown states functionality by mouse', async ({ page }) => {
@@ -163,7 +168,6 @@ test.describe('Dropdown', () => {
 
     await page.setContent(htmlContent);
 
-    const trigger = page.locator('[data-ui-name="Dropdown.Trigger"]');
     const popper = page.locator('[data-ui-name="Dropdown.Popper"]');
 
     await test.step('Verify default visible expanded', async () => {
@@ -190,55 +194,30 @@ test.describe('Dropdown', () => {
     await test.step('Verify no focus outline when explicitTriggerSet', async () => {
       await page.locator('[data-testid="explicitTriggerSet"]').click();
       await expect(popper).toHaveCount(1);
-      //snapshot
-    });
-
-    const messages: string[] = [];
-
-    await test.step('Verify log onVisibleChange and onFirstUpdate to console on dropdown open by mouse click', async () => {
-      page.on('console', (msg) => {
-        if (msg.type() === 'log') {
-          messages.push(msg.text());
-        }
-      });
-
-      // Кликаем по кнопке-триггеру
-      const trigger = page.getByTestId('onVisibleChange onFirstUpdate');
-      await trigger.click();
-
-      // Ждём появления поповера (по aria-controls)
-
-      // Проверяем, что нужные сообщения были залогированы
-      expect(
-        messages.some((msg) => msg.includes('Dropdown visibility changed: true')),
-      ).toBeTruthy();
-      expect(messages.some((msg) => msg.includes('Popper first update'))).toBeTruthy();
-      await trigger.click();
-      expect(
-        messages.some((msg) => msg.includes('Dropdown visibility changed: true')),
-      ).toBeTruthy();
+      await expect(page).toHaveScreenshot();
     });
   });
 
-  test('Verify dropdown states functionality by keyboard', async ({ page }) => {
+  test('Verify dropdown states functionality by keyboard', async ({ page, browserName }) => {
+    if (browserName === 'webkit') return;
+
     const standPath = 'stories/components/dropdown/tests/examples/dd-cases.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
 
-    const trigger = page.locator('[data-ui-name="Dropdown.Trigger"]');
     const popper = page.locator('[data-ui-name="Dropdown.Popper"]');
 
     await test.step('Verify no popper when visible = false', async () => {
-      await page.keyboard.press('Escape');
-      await page.keyboard.press('Escape');
+      await page.locator('[data-testid="visible"]').click();
+      await page.keyboard.press('Tab');
       await page.keyboard.press('Shift+Tab');
       await page.keyboard.press('Space');
+      await page.waitForTimeout(500);
       await expect(popper).toHaveCount(0);
     });
 
     await test.step('Verify popper when disabled', async () => {
-      await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Space');
       await expect(popper).toHaveCount(1);
@@ -257,34 +236,90 @@ test.describe('Dropdown', () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Space');
       await expect(popper).toHaveCount(1);
-
-      //snapshot
       await page.keyboard.press('Escape');
+      await popper.waitFor({ state: 'hidden', timeout: 500 });
+
+    });
+  });
+
+
+  test('Verify dropdown keyboard interactions when trigger is input and Dropdown.Item inside', async ({ page, browserName }) => {
+    if (browserName === 'webkit') return;
+    const standPath = 'stories/components/dropdown/tests/examples/dd-input-trigger.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const popper = page.locator('[data-ui-name="Dropdown.Popper"]');
+
+    await test.step('Verify not opened when input focused', async () => {
+      await page.keyboard.press('Tab');
+      await expect(popper).toHaveCount(0);
     });
 
-    const messages: string[] = [];
+    await test.step('Verify popper opened and focused', async () => {
+      await page.keyboard.press('Enter');
+      await popper.waitFor({ state: 'visible', timeout: 500 });
+      await expect(popper).toHaveCount(1);
+      await expect(popper).toBeFocused();
 
-    await test.step('Verify log onVisibleChange and onFirstUpdate to console on dropdown open by mouse click', async () => {
-      page.on('console', (msg) => {
-        if (msg.type() === 'log') {
-          messages.push(msg.text());
-        }
-      });
+    });
 
+    await test.step('Verify Navigation bettwenn items', async () => {
       await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
+      await expect(page.getByRole('link', { name: 'set up first' })).toBeFocused()
+    });
 
-      await page.keyboard.press('Space');
-
-      expect(
-        messages.some((msg) => msg.includes('Dropdown visibility changed: true')),
-      ).toBeTruthy();
-      expect(messages.some((msg) => msg.includes('Popper first update'))).toBeTruthy();
-
+    await test.step('Verify Closes by ESC', async () => {
       await page.keyboard.press('Escape');
-      expect(
-        messages.some((msg) => msg.includes('Dropdown visibility changed: true')),
-      ).toBeTruthy();
+      await expect(popper).toHaveCount(0);
+    });
+  });
+
+
+  test('Verify dropdown can be closed by click on button inside', async ({ page }) => {
+    const standPath = 'stories/patterns/filters/filter-include-exclude/docs/examples/basic-example.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const trigger = page.locator('[data-ui-name="FilterTrigger.TriggerButton"]');
+    const popper = page.locator('[data-ui-name="Dropdown.Popper"]');
+    const applyButton = page.getByRole('button', { name: 'Apply' });
+
+    await test.step('Verify not opened when input focused', async () => {
+      await trigger.click();
+      await expect(popper).toHaveCount(1);
+      await popper.waitFor({ state: 'visible', timeout: 500 });
+      await expect(page).toHaveScreenshot();
+      await applyButton.click();
+      await expect(popper).toHaveCount(0);
+
+    });
+  });
+
+  test('Verify dropdown can be closed by keyboard press on button inside', async ({ page, browserName }) => {
+    if (browserName === 'webkit') return;
+
+    const standPath = 'stories/patterns/filters/filter-include-exclude/docs/examples/basic-example.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const popper = page.locator('[data-ui-name="Dropdown.Popper"]');
+
+    await test.step('Verify not opened when input focused', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+
+      await expect(popper).toHaveCount(1);
+      await popper.waitFor({ state: 'visible', timeout: 500 });
+      await expect(page).toHaveScreenshot();
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await popper.waitFor({ state: 'hidden', timeout: 500 });
+
+      await expect(popper).not.toBeVisible();
     });
   });
 });

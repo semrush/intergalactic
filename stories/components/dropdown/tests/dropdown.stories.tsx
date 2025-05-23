@@ -7,6 +7,8 @@ import DDStretchExample from './examples/dd-stretch';
 import DDInteractionExample from './examples/dd-interaction';
 import DDCasesExample from './examples/dd-cases';
 import DDTriggerPopperExample from './examples/dd-trigger-and-popper';
+import DDInputTriggerFocusExample from './examples/dd-input-trigger-focus';
+import DDInputTriggerExample from './examples/dd-input-trigger';
 
 
 const meta: Meta<typeof Dropdown> = {
@@ -16,6 +18,14 @@ const meta: Meta<typeof Dropdown> = {
 export default meta;
 
 type Story = StoryObj<typeof Dropdown>;
+
+export const DDInputTrigger: Story = {
+  render: DDInputTriggerExample,
+};
+
+export const DDInputTriggerFocus: Story = {
+  render: DDInputTriggerFocusExample,
+};
 
 export const DDWithTooltip: Story = {
   render: DDWithTooltipExample,
