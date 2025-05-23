@@ -1,3 +1,17 @@
+## [16.1.0] - 2025-05-22
+
+### @semcore/icon
+
+- **Added** New `PRToolkit` icon.
+
+## [16.0.1] - 2025-05-19
+
+### @semcore/data-table
+
+- **Fixed** Property `sideIndents`.
+- **Fixed** Calculation of sorted columns width on the first render.
+- **Added** Support for using `Accordion` on merged rows.
+
 ## [15.131.0] - 2025-05-13
 
 ### @semcore/format-text
