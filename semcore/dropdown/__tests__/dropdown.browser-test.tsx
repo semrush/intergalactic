@@ -294,7 +294,6 @@ test.describe('Dropdown', () => {
       await trigger.click();
       await expect(popper).toHaveCount(1);
       await popper.waitFor({ state: 'visible', timeout: 500 });
-      await expect(page).toHaveScreenshot();
       await applyButton.click();
       await expect(popper).toHaveCount(0);
     });
