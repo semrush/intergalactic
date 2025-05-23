@@ -2,6 +2,48 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.1.0] - 2025-05-23
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/base-trigger` [16.0.0 ~> 16.1.0], `@semcore/icon` [16.0.0 ~> 16.1.0]).
+
+## [16.0.0] - 2025-05-19
+
+### Added
+
+- Major version.
+
+## [4.57.2] - 2025-05-13
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.48.4 ~> 4.48.5], `@semcore/base-trigger` [4.53.1 ~> 4.53.2], `@semcore/button` [5.43.2 ~> 5.43.3], `@semcore/checkbox` [7.44.3 ~> 7.44.4], `@semcore/core` [2.39.3 ~> 2.39.4]).
+
+## [4.57.1] - 2025-05-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.48.2 ~> 4.48.4], `@semcore/base-trigger` [4.53.0 ~> 4.53.1], `@semcore/button` [5.43.1 ~> 5.43.2], `@semcore/icon` [4.61.0 ~> 4.62.0], `@semcore/checkbox` [7.44.2 ~> 7.44.3], `@semcore/core` [2.39.2 ~> 2.39.3]).
+
+## [4.57.0] - 2025-04-11
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/base-trigger` [4.52.2 ~> 4.53.0], `@semcore/icon` [4.60.2 ~> 4.61.0]).
+
+## [4.56.1] - 2025-04-04
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.48.1 ~> 4.48.2], `@semcore/base-trigger` [4.52.1 ~> 4.52.2], `@semcore/button` [5.43.0 ~> 5.43.1], `@semcore/checkbox` [7.44.1 ~> 7.44.2], `@semcore/core` [2.39.1 ~> 2.39.2]).
+
+## [4.56.0] - 2025-03-28
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/button` [5.42.1 ~> 5.43.0]).
+
 ## [4.55.1] - 2025-03-18
 
 ### Fixed

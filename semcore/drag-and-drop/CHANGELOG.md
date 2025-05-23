@@ -2,6 +2,54 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.1.0] - 2025-05-23
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/card` [16.0.0 ~> 16.1.0]).
+
+## [16.0.0] - 2025-05-19
+
+### Break
+
+- `keyboardFocusEnhance` to css `:focus-visible` property.
+
+## [3.49.2] - 2025-05-13
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/card` [5.48.1 ~> 5.48.2], `@semcore/utils` [4.48.4 ~> 4.48.5], `@semcore/core` [2.39.3 ~> 2.39.4]).
+
+## [3.49.1] - 2025-05-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/card` [5.48.0 ~> 5.48.1], `@semcore/utils` [4.48.2 ~> 4.48.4], `@semcore/core` [2.39.2 ~> 2.39.3]).
+
+## [3.49.0] - 2025-04-11
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/card` [5.47.1 ~> 5.48.0]).
+
+## [3.48.1] - 2025-04-04
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/card` [5.47.0 ~> 5.47.1], `@semcore/utils` [4.48.1 ~> 4.48.2], `@semcore/core` [2.39.1 ~> 2.39.2]).
+
+## [3.48.0] - 2025-03-28
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/card` [5.46.1 ~> 5.47.0]).
+
+## [3.47.1] - 2025-03-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/card` [5.46.0 ~> 5.46.1], `@semcore/utils` [4.48.0 ~> 4.48.1], `@semcore/core` [2.39.0 ~> 2.39.1]).
+
 ## [3.47.0] - 2025-03-14
 
 ### Added

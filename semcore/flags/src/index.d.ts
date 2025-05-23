@@ -319,7 +319,7 @@ export declare const nameWithoutIso: {
 export interface IFlagsProps extends FlagsProps, UnknownProperties {}
 export type FlagsProps = BoxProps & {
   /** URL before css file with a sprite
-   * @default `//static.semrush.com/ui-kit/flags/${version package}`
+   * @default `//static.semrush.com/intergalactic/flags/${version package}`
    */
   staticPath?: string;
   /** Country code in two-letter format */

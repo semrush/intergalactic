@@ -7,9 +7,12 @@ const validateRow = (line: string, lines: string[]) => {
   let isValid = true;
   let errorMessage = '';
 
-  if (line.includes(']') || line.includes('[')) {
+  if (line.includes(']')) {
     isValid = false;
-    errorMessage = 'Please remove invalid charsets from the movie name.';
+    errorMessage = 'Please remove one error value';
+  } else if (line.includes('[')) {
+    isValid = false;
+    errorMessage = 'Please fix this value = another error';
   }
 
   return {

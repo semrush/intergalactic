@@ -12,7 +12,7 @@ const getLocators = (page: Page) => ({
 });
 
 test.describe('States size counter and placeholder checks', () => {
-  test('Verify all states and sizes visual and fucntionality', async ({ page }) => {
+  test('Verify all states and sizes visual and fucntionality', async ({ page, browserName }) => {
     const standPath = 'stories/components/bulk-textarea/tests/examples/sizes-states.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
@@ -40,17 +40,17 @@ test.describe('States size counter and placeholder checks', () => {
       'Zoom in on product categories to understand how each site segment drives conversions.\nSecond row\n3 row\n4 row\n5 row\n6 row\n7 row\n8 row\n9 row\n10 row';
     await page.keyboard.type(text, { delay: 20 });
     await page.waitForTimeout(100);
-    const normalTextArea4 = await page
-      .getByRole('textbox', { name: 'Readonly state of bulk textarea' })
-      .nth(4);
-    await normalTextArea4.click();
+    await page.keyboard.press('Shift+Tab');
     await page.waitForTimeout(100);
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.02 });
 
-    await normalTextArea.click();
+    const paragraphs = normalTextArea.locator('p');
+    await paragraphs.nth(5).click();
+
     await page.keyboard.type('[]', { delay: 20 });
     await page.keyboard.press('Enter');
     await page.keyboard.press('Enter');
+
     await page.waitForTimeout(100);
     await page.keyboard.press('Shift+Tab');
     await page.waitForTimeout(100);
@@ -446,6 +446,7 @@ test.describe('Common error ON - Validation Delimiter RowProcessing', () => {
       await page.keyboard.type('http://Test', { delay: 100 });
       await page.keyboard.press('Space');
       await page.keyboard.press('Enter');
+      await page.waitForTimeout(50);
       const lineCount = await contentDiv.locator('p').count();
       await expect(lineCount).toBe(2);
       await expect(locators.counter).toHaveText('1/15of 15 lines');
@@ -841,7 +842,7 @@ test.describe('Common error On - Error tooltips', () => {
       await expect(locators.textarea).toBeFocused();
       await expect(locators.errorMessage).toHaveText('Error 1 out of 2');
       await expect(tooltip).toHaveText('row has invalid charsets');
-      await page.keyboard.press('Backspace');
+      for (let i = 0; i < 6; i++) await page.keyboard.press('Backspace');
       await page.waitForTimeout(100);
       await expect(contentDiv).toHaveAttribute('aria-invalid', 'true');
       await expect(tooltip).toHaveText('some global error');
@@ -850,7 +851,7 @@ test.describe('Common error On - Error tooltips', () => {
       await page.waitForTimeout(200);
       await expect(locators.errorMessage).toHaveText('Error 1 out of 1');
       await expect(tooltip).toHaveText('row has invalid charsets');
-      await page.keyboard.press('Backspace');
+      for (let i = 0; i < 6; i++) await page.keyboard.press('Backspace');
       await page.waitForTimeout(200);
       await expect(contentDiv).not.toHaveAttribute('aria-invalid', 'true');
       await expect(tooltip).toBeEmpty;
@@ -998,10 +999,7 @@ test.describe('Common error Off - Error tooltips', () => {
 });
 
 test.describe('handleChange - Error validation', () => {
-  test('Verify Errors counter works when handleChange added rows', async ({
-    page,
-    browserName,
-  }) => {
+  test('Verify Errors counter works when handleChange added rows', async ({ page }) => {
     const standPath =
       'stories/components/bulk-textarea/tests/examples/with-new-value-on-handleChange.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -1018,5 +1016,42 @@ test.describe('handleChange - Error validation', () => {
     await page.waitForTimeout(100);
     await expect(tooltip).toHaveCount(0);
     await expect(locators.errorMessage).toHaveText('2 errors');
+  });
+});
+
+test.describe('lineProcessing cases', () => {
+  test('Verify lineProcessing when paste empty rows', async ({ page }) => {
+    const standPath =
+      'stories/components/bulk-textarea/tests/examples/test-empty-value-in-paste.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+    const locators = getLocators(page);
+    const firstTextArea = locators.textarea.first();
+    await firstTextArea.click();
+    const text = 'Zoom in[] \nSecond \n //[third';
+    await page.keyboard.type(text, { delay: 20 });
+    await page.keyboard.press('Tab');
+    await page.waitForTimeout(100);
+    await expect(locators.textarea.nth(1)).toBeEmpty();
+  });
+
+  test('Verify lineProcessing when counts lines and index', async ({ page }) => {
+    const standPath =
+      'stories/components/bulk-textarea/tests/examples/test-lines-and-index-in-paste.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+    const locators = getLocators(page);
+    const firstTextArea = locators.textarea.first();
+    await firstTextArea.click();
+    const text = 'Zoom in[] \nSecond \n //[third';
+    await page.keyboard.type(text, { delay: 20 });
+    await locators.textarea.nth(1).click();
+    await page.waitForTimeout(100);
+    await expect(locators.textarea.nth(1)).not.toBeEmpty();
+    const paragraphs = locators.textarea.nth(1).locator('p');
+    await expect(paragraphs).toHaveCount(3);
+    await expect(paragraphs.first()).toHaveText(/^#1\/3:/);
+    await expect(paragraphs.nth(1)).toHaveText(/^#2\/3:/);
+    await expect(paragraphs.nth(2)).toHaveText(/^#3\/3:/);
   });
 });

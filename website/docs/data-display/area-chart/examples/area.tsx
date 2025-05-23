@@ -1,5 +1,5 @@
 import React from 'react';
-import { Plot, XAxis, YAxis, minMax, Area } from 'intergalactic/d3-chart';
+import { Plot, XAxis, YAxis, minMax, Area } from '@semcore/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import { curveCardinal } from 'd3-shape';
 

@@ -1,4 +1,4 @@
-import { isFocusable } from '@semcore/utils/lib/focus-lock/isFocusable';
+import { isFocusable } from '@semcore/core/lib/utils/focus-lock/isFocusable';
 
 type FocusableElement = Element & { focus: () => void };
 

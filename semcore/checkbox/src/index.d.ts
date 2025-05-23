@@ -1,8 +1,7 @@
 import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
 import { Box, BoxProps, FlexProps } from '@semcore/flex-box';
 import { TextProps } from '@semcore/typography';
-import { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
-import { WithAutoFocusEnhanceProps } from '@semcore/utils/lib/enhances/autoFocusEnhance';
+import { WithAutoFocusEnhanceProps } from '@semcore/core/lib/utils/enhances/autoFocusEnhance';
 
 export type CheckboxSize = 'm' | 'l';
 export type CheckboxState = 'normal' | 'invalid';
@@ -38,8 +37,7 @@ export type CheckboxProps = BoxProps & {
 
 /** @deprecated */
 export interface ICheckboxValueProps extends CheckboxValueProps, UnknownProperties {}
-export type CheckboxValueProps = Omit<KeyboardFocusProps, 'autoFocus'> &
-  WithAutoFocusEnhanceProps &
+export type CheckboxValueProps = WithAutoFocusEnhanceProps &
   FlexProps &
   CheckboxValueControlProps & {
     /**

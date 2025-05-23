@@ -42,6 +42,7 @@ jobs:
           path: |
             semcore/*/lib
             tools/*/lib
+            semcore/icon/package.json
             semcore/icon/**/*.js
             semcore/icon/**/*.mjs
             semcore/icon/**/*.d.ts
@@ -61,7 +62,7 @@ jobs:
     needs: [build]
     env:
       GITHUB_SECRET: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
-      GCLOUD_SECRET: ${{ secrets.GCLOUD_SECRET }}
+      GCLOUD_SECRET: ${{ secrets.GCLOUD_SECRET_STATIC_UPLOADER }}
       SLACK_API_ENDPOINTS: ${{ secrets.SLACK_WEBHOOK_URLS }}
       INTERGALACTIC_BOT_CLOSE_TASKS_URL: ${{ secrets.INTERGALACTIC_BOT_CLOSE_TASKS_URL }}
       INTERGALACTIC_BOT_SECRET: ${{ secrets.INTERGALACTIC_BOT_SECRET }}
@@ -92,6 +93,7 @@ jobs:
           path: |
             semcore/*/lib
             tools/*/lib
+            semcore/icon/package.json
             semcore/icon/**/*.js
             semcore/icon/**/*.mjs
             semcore/icon/**/*.d.ts
@@ -118,40 +120,6 @@ jobs:
         run: pnpm whoami
       - name: Publish release
         run: pnpm --filter intergalactic-migrate run build && pnpm publish-release
-  publish-website:
-    runs-on: ubuntu-latest
-    needs: publish-unlocked-release
-    env:
-      GITHUB_SECRET: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
-      GCLOUD_SECRET: ${{ secrets.GCLOUD_SECRET }}
-    steps:
-      - uses: actions/checkout@v4.1.1
-        with:
-          token: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
-      - uses: pnpm/action-setup@v4.0.0
-        name: Install pnpm
-        id: pnpm-install
-        with:
-          version: 8.7.6
-          run_install: false
-      - uses: actions/setup-node@v4.0.1
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        run: |
-          echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
-      - name: Github GPG Auth
-        uses: crazy-max/ghaction-import-gpg@v5.3.0
-        with:
-          gpg_private_key: ${{ secrets.BOT_ACCOUNT_GPG_PRIVATE_KEY }}
-          git_user_signingkey: true
-          git_commit_gpgsign: true
-          git_committer_name: semrush-ci-whale
-          git_committer_email: semrush-ci-whale@users.noreply.github.com
-      - name: Update website/release branch
-        run: |
-          git checkout -b website/release
-          git push --force --set-upstream origin website/release
-          git push origin website/release --force
   create-pr:
     runs-on: ubuntu-latest
     needs: publish-unlocked-release

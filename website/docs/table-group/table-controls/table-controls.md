@@ -35,7 +35,7 @@ If you have too much data inside such an accordion, we consider you to think abo
 - The accordion row should have a `ChevronRight` icon in the leftmost column to indicate expandability. Use icon with M size and `--icon-secondary-neutral` token for color.
 - The active state of an opened accordion row is highlighted with the `--table-td-cell-active` token.
 - When opened, the `ChevronRight` icon changes to `ChevronDown` of the same size and color.
-- Rows inside the accordion have specific styling to prevent visual merging when multiple rows are open. Use `--table-td-cell-actions-accordion` for background-color and `--border-table-accent` for 1px solid border-bottom.
+- Rows inside the accordion have specific styling to prevent visual merging when multiple rows are open. Use `--table-td-cell-accordion` for background-color and `--border-table-accent` for 1px solid border-bottom.
 
 ![](static/accordion.png)
 
@@ -61,19 +61,52 @@ The table header should have a main [Checkbox](/components/checkbox/checkbox) to
 
 ![](static/checkbox-hover-zone.png)
 
-### Rows highlighting and pagination
+### Row selection and pagination
 
-When switching pages, checked checkboxes should not reset.
+When switching pages, row selection shouldn't reset.
 
-_For example, user selects 3 lines on page 1, then goes to page 2, and selects 5 lines there. When user returns to page 1, the selected rows should be saved._
+_For example, user selects 3 rows on page 1, then goes to page 2, and selects 5 rows there. When user returns to page 1, the selected rows should be preserved._
 
-### Keyboard shortcuts for working with rows
+### Selecting multiple rows with Shift
 
-Use `Shift` key for selecting multiple rows at once.
+Use `Shift` key to select a range of rows at once.
 
-![](static/selected-shift-1.png) ![](static/selected-shift-2.png)
+![](static/selected-shift.png)
 
-## Columns resizing
+## Status and actions
+
+Use the action bar to show info and actions for the selected rows.
+
+* Place the bar above the table. Placing the bar between the table header and body will make the table less accessible.
+* If the beginning of the table is currently visible, the action bar shifts the whole table down and up when appearing and disappearing.
+* Alternatively, the action bar can be displayed permanently. In this case selecting rows adds or replaces elements in the bar.
+
+::: tip
+If your action bar shifts the table down and up, set a 150–200ms transition for smooth entrance and exit. [Refer to our example](../data-table/data-table-code.md#checkboxes-and-action-bar).
+:::
+
+![](static/action-bar.png)
+
+When scrolling, pin the action bar alongside the table header.
+
+If the action bar appears or disappears when the beginning of the table is scrolled out of the view, it only shifts the header and doesn't shift the rows.
+
+![](static/action-bar-scroll.png)
+
+### Styles
+
+Use `--bg-primary-neutral` token for background-color and `--border-secondary` token for 1px solid border-bottom.
+
+### Actions and rules of use
+
+- **Deselect all** deselects all rows on all pages
+- **Select all on page (N)** selects all rows on the current page
+- **Select all in table (N)** selects all rows in the table
+- limit actions to 3-5 popular options
+
+**Select all** isn't an obvious action name, so we recommend avoiding it and using the options mentioned earlier instead.
+
+## Column resizing
 
 Hovering over the header border changes the cursor to `col-resize`, with a border color change to `--border-table-accent`.
 
@@ -198,29 +231,6 @@ Table: Sorting direction
 | **Texts**. If there are several languages in the table, it is recommended to divide them into groups and sort them according to the priority and user needs (it may also depend on the target audience, product specifics, etc.) | A to Z                               | Z to A                              |
 | **Statuses**. We recommend using gradations of the form: good/bad, necessary/not necessary, fresh/not fresh, higher/lower, etc.                               | At the discretion of UX and PO       | At the discretion of UX and PO      |
 | **Dates**                                                                                                                                                                                                                        | From a newer date to an older one    | From an older date to a newer one   |
-
-## Status and actions row
-
-![](static/action-row-scroll.png)
-
-Use the status row for multi-row selection and pagination (you can also show popular actions that can be performed on rows). Pin it to the table header when scrolling.
-
-### Styles
-
-Use `--table-td-cell-actions-accordion` token for background-color and `--border-secondary` token for 1px solid border-bottom.
-
-::: tip
-Specify a 400ms transition for appearing and hiding of such a row.
-:::
-
-### The actions and rules of use
-
-- "Deselect all" unselects all rows on any page.
-- "Select all on page (N)" selects all rows on the current page.
-- "Select all on table (N)" selects all rows in the table.
-- Limit actions to 3-5 popular options.
-
-"Select all" is not an obvious action, so we recommend avoiding it and using the options above instead.
 
 ## Table settings and column manager
 

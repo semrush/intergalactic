@@ -1,23 +1,304 @@
 {
   "name": "@semcore/core",
   "description": "Semrush Core Component",
-  "version": "2.39.0",
-  "main": "lib/cjs/index.js",
-  "module": "lib/es6/index.js",
-  "typings": "lib/types/index.d.ts",
+  "version": "16.0.0",
+  "main": "lib/index.js",
+  "module": "lib/index.mjs",
+  "typings": "lib/index.d.ts",
   "sideEffects": false,
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "pnpm semcore-builder && pnpm vite build"
+    "build": "pnpm semcore-builder --coreUtils && pnpm vite build"
   },
   "exports": {
-    "require": "./lib/cjs/index.js",
-    "import": "./lib/esm/index.mjs",
-    "types": "./lib/types/index.d.ts"
+    ".": {
+      "require": "./lib/index.js",
+      "import": "./lib/index.mjs",
+      "types": "./lib/index.d.ts"
+    },
+    "./src": {
+      "import": "./src/index.ts",
+      "types": "./src/index.ts"
+    },
+    "./lib/theme/themes/default.css": {
+      "require": "./lib/theme/themes/default.css",
+      "import": "./lib/theme/themes/default.css"
+    },
+    "./lib/theme/themes/light.css": {
+      "require": "./lib/theme/themes/light.css",
+      "import": "./lib/theme/themes/light.css"
+    },
+    "./lib/theme/themes/dark.css": {
+      "require": "./lib/theme/themes/dark.css",
+      "import": "./lib/theme/themes/dark.css"
+    },
+    "./lib/theme/themes/auto.css": {
+      "require": "./lib/theme/themes/auto.css",
+      "import": "./lib/theme/themes/auto.css"
+    },
+    "./lib/utils/focus-lock/getFocusableIn": {
+      "require": "./lib/utils/focus-lock/getFocusableIn.js",
+      "import": "./lib/utils/focus-lock/getFocusableIn.mjs",
+      "types": "./lib/utils/focus-lock/getFocusableIn.d.ts"
+    },
+    "./lib/utils/focus-lock/isFocusable": {
+      "require": "./lib/utils/focus-lock/isFocusable.js",
+      "import": "./lib/utils/focus-lock/isFocusable.mjs",
+      "types": "./lib/utils/focus-lock/isFocusable.d.ts"
+    },
+    "./lib/utils/focus-lock/isFocusInside": {
+      "require": "./lib/utils/focus-lock/isFocusInside.js",
+      "import": "./lib/utils/focus-lock/isFocusInside.mjs",
+      "types": "./lib/utils/focus-lock/isFocusInside.d.ts"
+    },
+    "./lib/utils/enhances/a11yEnhance": {
+      "require": "./lib/utils/enhances/a11yEnhance.js",
+      "import": "./lib/utils/enhances/a11yEnhance.mjs",
+      "types": "./lib/utils/enhances/a11yEnhance.d.ts"
+    },
+    "./lib/utils/enhances/animatedSizeEnhance": {
+      "require": "./lib/utils/enhances/animatedSizeEnhance.js",
+      "import": "./lib/utils/enhances/animatedSizeEnhance.mjs",
+      "types": "./lib/utils/enhances/animatedSizeEnhance.d.ts"
+    },
+    "./lib/utils/enhances/autoFocusEnhance": {
+      "require": "./lib/utils/enhances/autoFocusEnhance.js",
+      "import": "./lib/utils/enhances/autoFocusEnhance.mjs",
+      "types": "./lib/utils/enhances/autoFocusEnhance.d.ts"
+    },
+    "./lib/utils/enhances/contextEnhance": {
+      "require": "./lib/utils/enhances/contextEnhance.js",
+      "import": "./lib/utils/enhances/contextEnhance.mjs",
+      "types": "./lib/utils/enhances/contextEnhance.d.ts"
+    },
+    "./lib/utils/enhances/focusSourceEnhance": {
+      "require": "./lib/utils/enhances/focusSourceEnhance.js",
+      "import": "./lib/utils/enhances/focusSourceEnhance.mjs",
+      "types": "./lib/utils/enhances/focusSourceEnhance.d.ts"
+    },
+    "./lib/utils/enhances/keyboardFocusEnhance": {
+      "require": "./lib/utils/enhances/keyboardFocusEnhance.js",
+      "import": "./lib/utils/enhances/keyboardFocusEnhance.mjs",
+      "types": "./lib/utils/enhances/keyboardFocusEnhance.d.ts"
+    },
+    "./lib/utils/enhances/i18nEnhance": {
+      "require": "./lib/utils/enhances/i18nEnhance.js",
+      "import": "./lib/utils/enhances/i18nEnhance.mjs",
+      "types": "./lib/utils/enhances/i18nEnhance.d.ts"
+    },
+    "./lib/utils/enhances/resolveColorEnhance": {
+      "require": "./lib/utils/enhances/resolveColorEnhance.js",
+      "import": "./lib/utils/enhances/resolveColorEnhance.mjs",
+      "types": "./lib/utils/enhances/resolveColorEnhance.d.ts"
+    },
+    "./lib/utils/enhances/WithI18n": {
+      "require": "./lib/utils/enhances/WithI18n.js",
+      "import": "./lib/utils/enhances/WithI18n.mjs",
+      "types": "./lib/utils/enhances/WithI18n.d.ts"
+    },
+    "./lib/utils/use/useEnhancedEffect": {
+      "require": "./lib/utils/use/useEnhancedEffect.js",
+      "import": "./lib/utils/use/useEnhancedEffect.mjs",
+      "types": "./lib/utils/use/useEnhancedEffect.d.ts"
+    },
+    "./lib/utils/use/useFocusLock": {
+      "require": "./lib/utils/use/useFocusLock.js",
+      "import": "./lib/utils/use/useFocusLock.mjs",
+      "types": "./lib/utils/use/useFocusLock.d.ts"
+    },
+    "./lib/utils/use/useColorResolver": {
+      "require": "./lib/utils/use/useColorResolver.js",
+      "import": "./lib/utils/use/useColorResolver.mjs",
+      "types": "./lib/utils/use/useColorResolver.d.ts"
+    },
+    "./lib/utils/use/useEventCallback": {
+      "require": "./lib/utils/use/useEventCallback.js",
+      "import": "./lib/utils/use/useEventCallback.mjs",
+      "types": "./lib/utils/use/useEventCallback.d.ts"
+    },
+    "./lib/utils/use/usePreventScroll": {
+      "require": "./lib/utils/use/usePreventScroll.js",
+      "import": "./lib/utils/use/usePreventScroll.mjs",
+      "types": "./lib/utils/use/usePreventScroll.d.ts"
+    },
+    "./lib/utils/addonTextChildren": {
+      "require": "./lib/utils/addonTextChildren.js",
+      "import": "./lib/utils/addonTextChildren.mjs",
+      "types": "./lib/utils/addonTextChildren.d.ts"
+    },
+    "./lib/utils/ariaProps": {
+      "require": "./lib/utils/ariaProps.js",
+      "import": "./lib/utils/ariaProps.mjs",
+      "types": "./lib/utils/ariaProps.d.ts"
+    },
+    "./lib/utils/assignProps": {
+      "require": "./lib/utils/assignProps.js",
+      "import": "./lib/utils/assignProps.mjs",
+      "types": "./lib/utils/assignProps.d.ts"
+    },
+    "./lib/utils/capitalizeFirstLetter": {
+      "require": "./lib/utils/capitalizeFirstLetter.js",
+      "import": "./lib/utils/capitalizeFirstLetter.mjs",
+      "types": "./lib/utils/capitalizeFirstLetter.d.ts"
+    },
+    "./lib/utils/canUseDOM": {
+      "require": "./lib/utils/canUseDOM.js",
+      "import": "./lib/utils/canUseDOM.mjs",
+      "types": "./lib/utils/canUseDOM.d.ts"
+    },
+    "./lib/utils/CSSinJS": {
+      "require": "./lib/utils/CSSinJS.js",
+      "import": "./lib/utils/CSSinJS.mjs",
+      "types": "./lib/utils/CSSinJS.d.ts"
+    },
+    "./lib/utils/cssToIntDefault": {
+      "require": "./lib/utils/cssToIntDefault.js",
+      "import": "./lib/utils/cssToIntDefault.mjs",
+      "types": "./lib/utils/cssToIntDefault.d.ts"
+    },
+    "./lib/utils/eventEmitter": {
+      "require": "./lib/utils/eventEmitter.js",
+      "import": "./lib/utils/eventEmitter.mjs",
+      "types": "./lib/utils/eventEmitter.d.ts"
+    },
+    "./lib/utils/fire": {
+      "require": "./lib/utils/fire.js",
+      "import": "./lib/utils/fire.mjs",
+      "types": "./lib/utils/fire.d.ts"
+    },
+    "./lib/utils/findComponent": {
+      "require": "./lib/utils/findComponent.js",
+      "import": "./lib/utils/findComponent.mjs",
+      "types": "./lib/utils/findComponent.d.ts"
+    },
+    "./lib/utils/getAccessibleName": {
+      "require": "./lib/utils/getAccessibleName.js",
+      "import": "./lib/utils/getAccessibleName.mjs",
+      "types": "./lib/utils/getAccessibleName.d.ts"
+    },
+    "./lib/utils/getDisplayName": {
+      "require": "./lib/utils/getDisplayName.js",
+      "import": "./lib/utils/getDisplayName.mjs",
+      "types": "./lib/utils/getDisplayName.d.ts"
+    },
+    "./lib/utils/getEventTarget": {
+      "require": "./lib/utils/getEventTarget.js",
+      "import": "./lib/utils/getEventTarget.mjs",
+      "types": "./lib/utils/getEventTarget.d.ts"
+    },
+    "./lib/utils/getOriginChildren": {
+      "require": "./lib/utils/getOriginChildren.js",
+      "import": "./lib/utils/getOriginChildren.mjs",
+      "types": "./lib/utils/getOriginChildren.d.ts"
+    },
+    "./lib/utils/hasLabels": {
+      "require": "./lib/utils/hasLabels.js",
+      "import": "./lib/utils/hasLabels.mjs",
+      "types": "./lib/utils/hasLabels.d.ts"
+    },
+    "./lib/utils/hasParent": {
+      "require": "./lib/utils/hasParent.js",
+      "import": "./lib/utils/hasParent.mjs",
+      "types": "./lib/utils/hasParent.d.ts"
+    },
+    "./lib/utils/inputProps": {
+      "require": "./lib/utils/inputProps.js",
+      "import": "./lib/utils/inputProps.mjs",
+      "types": "./lib/utils/inputProps.d.ts"
+    },
+    "./lib/utils/isInteractiveElement": {
+      "require": "./lib/utils/isInteractiveElement.js",
+      "import": "./lib/utils/isInteractiveElement.mjs",
+      "types": "./lib/utils/isInteractiveElement.d.ts"
+    },
+    "./lib/utils/isNode": {
+      "require": "./lib/utils/isNode.js",
+      "import": "./lib/utils/isNode.mjs",
+      "types": "./lib/utils/isNode.d.ts"
+    },
+    "./lib/utils/isRetina": {
+      "require": "./lib/utils/isRetina.js",
+      "import": "./lib/utils/isRetina.mjs",
+      "types": "./lib/utils/isRetina.d.ts"
+    },
+    "./lib/utils/ownerDocument": {
+      "require": "./lib/utils/ownerDocument.js",
+      "import": "./lib/utils/ownerDocument.mjs",
+      "types": "./lib/utils/ownerDocument.d.ts"
+    },
+    "./lib/utils/pick": {
+      "require": "./lib/utils/pick.js",
+      "import": "./lib/utils/pick.mjs",
+      "types": "./lib/utils/pick.d.ts"
+    },
+    "./lib/utils/propsForElement": {
+      "require": "./lib/utils/propsForElement.js",
+      "import": "./lib/utils/propsForElement.mjs",
+      "types": "./lib/utils/propsForElement.d.ts"
+    },
+    "./lib/utils/logger": {
+      "require": "./lib/utils/logger.js",
+      "import": "./lib/utils/logger.mjs",
+      "types": "./lib/utils/logger.d.ts"
+    },
+    "./lib/utils/rafTrottle": {
+      "require": "./lib/utils/rafTrottle.js",
+      "import": "./lib/utils/rafTrottle.mjs",
+      "types": "./lib/utils/rafTrottle.d.ts"
+    },
+    "./lib/utils/reactToText": {
+      "require": "./lib/utils/reactToText.js",
+      "import": "./lib/utils/reactToText.mjs",
+      "types": "./lib/utils/reactToText.d.ts"
+    },
+    "./lib/utils/ref": {
+      "require": "./lib/utils/ref.js",
+      "import": "./lib/utils/ref.mjs",
+      "types": "./lib/utils/ref.d.ts"
+    },
+    "./lib/utils/setRef": {
+      "require": "./lib/utils/setRef.js",
+      "import": "./lib/utils/setRef.mjs",
+      "types": "./lib/utils/setRef.d.ts"
+    },
+    "./lib/utils/ScreenReaderOnly": {
+      "require": "./lib/utils/ScreenReaderOnly.js",
+      "import": "./lib/utils/ScreenReaderOnly.mjs",
+      "types": "./lib/utils/ScreenReaderOnly.d.ts"
+    },
+    "./lib/utils/syncScroll": {
+      "require": "./lib/utils/syncScroll.js",
+      "import": "./lib/utils/syncScroll.mjs",
+      "types": "./lib/utils/syncScroll.d.ts"
+    },
+    "./lib/utils/ThemeProvider": {
+      "require": "./lib/utils/ThemeProvider.js",
+      "import": "./lib/utils/ThemeProvider.mjs",
+      "types": "./lib/utils/ThemeProvider.d.ts"
+    },
+    "./lib/utils/uniqueID": {
+      "require": "./lib/utils/uniqueID.js",
+      "import": "./lib/utils/uniqueID.mjs",
+      "types": "./lib/utils/uniqueID.d.ts"
+    },
+    "./lib/utils/useCssVariable": {
+      "require": "./lib/utils/useCssVariable.js",
+      "import": "./lib/utils/useCssVariable.mjs",
+      "types": "./lib/utils/useCssVariable.d.ts"
+    },
+    "./lib/utils/zIndexStacking": {
+      "require": "./lib/utils/zIndexStacking.js",
+      "import": "./lib/utils/zIndexStacking.mjs",
+      "types": "./lib/utils/zIndexStacking.d.ts"
+    }
   },
   "dependencies": {
-    "@semcore/utils": "4.48.0"
+    "@formatjs/intl": "3.0.4",
+    "classnames": "2.2.6",
+    "hoist-non-react-statics": "3.3.2",
+    "@phytonmk/nano-css": "5.3.7",
+    "csstype": "3.0.8"
   },
   "peerDependencies": {
     "react": "16.8 - 18",
@@ -29,7 +310,13 @@
     "directory": "semcore/core"
   },
   "devDependencies": {
+    "@types/classnames": "2.2.6",
     "@types/react": "18.0.21",
-    "@semcore/testing-utils": "1.0.0"
+    "@semcore/testing-utils": "1.0.0",
+    "postcss": "8.4.33",
+    "postcss-value-parser": "4.1.0",
+    "colorjs.io": "0.4.3",
+    "@types/hoist-non-react-statics": "^3.3.1",
+    "@types/react-dom": "18.0.6"
   }
 }

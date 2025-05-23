@@ -1,5 +1,5 @@
 import React from 'react';
-import createComponent from '@semcore/core';
+import { createComponent } from '@semcore/core';
 import { BaseChartProps } from './AbstractChart.type';
 import { scaleLinear } from 'd3-scale';
 // @ts-ignore
@@ -8,7 +8,7 @@ import { AbstractChart } from './AbstractChart';
 import { Text } from '@semcore/typography';
 import { VennChartData, VennChartProps, VennChartType } from './VennChart.type';
 import { LegendItem } from '../ChartLegend/LegendItem/LegendItem.type';
-import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 
 class VennChartComponent extends AbstractChart<

@@ -2,6 +2,48 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.1] - 2025-05-23
+
+### Fixed
+
+- Esm-build by vite.
+
+## [16.0.0] - 2025-05-19
+
+### Added
+
+- Major version.
+
+## [3.60.2] - 2025-05-13
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [2.41.3 ~> 2.41.4], `@semcore/checkbox` [7.44.3 ~> 7.44.4], `@semcore/utils` [4.48.4 ~> 4.48.5], `@semcore/core` [2.39.3 ~> 2.39.4]).
+
+## [3.60.1] - 2025-05-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [2.41.2 ~> 2.41.3], `@semcore/checkbox` [7.44.2 ~> 7.44.3], `@semcore/utils` [4.48.2 ~> 4.48.4], `@semcore/icon` [4.61.0 ~> 4.62.0], `@semcore/core` [2.39.2 ~> 2.39.3]).
+
+## [3.60.0] - 2025-04-11
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/icon` [4.60.2 ~> 4.61.0]).
+
+## [3.59.2] - 2025-04-04
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [2.41.1 ~> 2.41.2], `@semcore/checkbox` [7.44.1 ~> 7.44.2], `@semcore/utils` [4.48.1 ~> 4.48.2], `@semcore/core` [2.39.1 ~> 2.39.2]).
+
+## [3.59.1] - 2025-03-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [2.41.0 ~> 2.41.1], `@semcore/checkbox` [7.44.0 ~> 7.44.1], `@semcore/utils` [4.48.0 ~> 4.48.1], `@semcore/icon` [4.60.0 ~> 4.60.1], `@semcore/core` [2.39.0 ~> 2.39.1]).
+
 ## [3.59.0] - 2025-03-14
 
 ### Added

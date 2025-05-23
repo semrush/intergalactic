@@ -1,7 +1,7 @@
 import React from 'react';
-import { Line, minMax, XAxis, Plot, YAxis, ChartLegend } from 'intergalactic/d3-chart';
+import { Line, minMax, XAxis, Plot, YAxis, ChartLegend } from '@semcore/d3-chart';
 import { scaleLinear } from 'd3-scale';
-import { Box } from 'intergalactic/flex-box';
+import { Box } from '@semcore/flex-box';
 
 const Demo = () => {
   const MAP_THEME = {

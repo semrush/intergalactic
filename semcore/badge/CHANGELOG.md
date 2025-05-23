@@ -2,6 +2,36 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.0] - 2025-05-19
+
+### Added
+
+- Major version.
+
+## [4.40.4] - 2025-05-13
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.48.4 ~> 4.48.5]).
+
+## [4.40.3] - 2025-05-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.48.2 ~> 4.48.4]).
+
+## [4.40.2] - 2025-04-04
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.48.1 ~> 4.48.2]).
+
+## [4.40.1] - 2025-03-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.48.0 ~> 4.48.1]).
+
 ## [4.40.0] - 2025-02-21
 
 ### Added

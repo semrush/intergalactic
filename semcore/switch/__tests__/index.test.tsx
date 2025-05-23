@@ -74,18 +74,13 @@ describe('Switch', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test.concurrent('Should support keyboardFocused/disabled', async ({ task }) => {
+  test.concurrent('Should support disabled', async ({ task }) => {
     const component = (
       <>
         <Switch>
           <Switch.Addon>disabled</Switch.Addon>
           <Switch.Value disabled />
           <Switch.Addon>disabled</Switch.Addon>
-        </Switch>
-        <Switch>
-          <Switch.Addon>keyboardFocused</Switch.Addon>
-          <Switch.Value keyboardFocused />
-          <Switch.Addon>keyboardFocused</Switch.Addon>
         </Switch>
       </>
     );

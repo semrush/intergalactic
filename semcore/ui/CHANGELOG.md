@@ -1,3 +1,98 @@
+## [16.1.0] - 2025-05-22
+
+### @semcore/icon
+
+- **Added** New `PRToolkit` icon.
+
+## [16.0.1] - 2025-05-19
+
+### @semcore/data-table
+
+- **Fixed** Property `sideIndents`.
+- **Fixed** Calculation of sorted columns width on the first render.
+- **Added** Support for using `Accordion` on merged rows.
+
+## [15.131.0] - 2025-05-13
+
+### @semcore/format-text
+
+- **Added** Esm-build by vite.
+
+### @semcore/utils
+
+- **Added** `CSSinJS` to the exports.
+
+## [15.130.0] - 2025-05-09
+
+### @semcore/icon
+
+- **Added** New `EnterpriseSolutions` icon.
+
+### @semcore/utils
+
+- **Fixed** Extraction styles for production build.
+- **Added** `createUUID` util to the exports list.
+
+## [15.129.0] - 2025-04-11
+
+### @semcore/icon
+
+- **Added** New `AIToolkit` icon.
+- **Changed** `SEOToolkit` icon a little bit.
+
+## [15.128.0] - 2025-04-04
+
+### @semcore/bulk-textarea
+
+- **Added** New type for value/onChange. It could be `string` or `string[]`, depends on type of `value` property. `string` by default.
+- **Fixed** Error if after processing the inserted value it will be empty array.
+- **Fixed** Error with empty `utf` characters in `onChange` / `lineProcessing`.
+- **Fixed** Cursor position after focusing a non-empty field.
+- **Fixed** Blinking previous error after clicking on another line with error.
+
+### @semcore/feedback-form
+
+- **Changed** Email in FeedbackRating error notice as a link.
+- **Changed** Star icons in Slider component.
+- **Changed** Close feedback form behavior - the rating value is cleared.
+- **Changed** It is impossible to open a form with an empty rating.
+
+### @semcore/illustration
+
+- **Added** Exports in `package.json` for correct ESM build.
+
+### @semcore/outside-click
+
+- **Fixed** Closing in some rare cases.
+
+### @semcore/select
+
+- **Fixed** Double call of `onChange` in InputSearch component.
+
+### @semcore/utils
+
+- **Added** `setRef` and `getDisplayName` utils to the exports list.
+
+## [15.127.0] - 2025-03-28
+
+### @semcore/button
+
+- **Added** New `brand` theme. `warning` theme was deprecated.
+
+## [15.126.1] - 2025-03-20
+
+### @semcore/date-picker
+
+- **Fixed** `dayjs` external setting in vite config.
+
+### @semcore/icon
+
+- **Added** Exports to package.json.
+
+### @semcore/utils
+
+- **Added** `color` and `if` utils to the exports list.
+
 ## [15.126.0] - 2025-03-14
 
 ### @semcore/accordion

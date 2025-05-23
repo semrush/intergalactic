@@ -1,13 +1,13 @@
 import React from 'react';
-import createComponent, { Component, sstyled, Root } from '@semcore/core';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import { Flex } from '@semcore/flex-box';
 import InputNumber from '@semcore/input-number';
 import { Text } from '@semcore/typography';
 import Button, { ButtonLink } from '@semcore/button';
 import { Hint } from '@semcore/tooltip';
 import ChevronDoubleLeft from '@semcore/icon/ChevronDoubleLeft/m';
-import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
-import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 import style from './style/pagination.shadow.css';

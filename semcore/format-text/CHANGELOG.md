@@ -2,6 +2,42 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.1] - 2025-05-23
+
+### Fixed
+
+- Esm-build by vite.
+
+## [16.0.0] - 2025-05-19
+
+### Deprecated
+
+- Full package. Use `Text` from `@semcore/typography`.
+
+## [4.42.0] - 2025-05-13
+
+### Added
+
+- Esm-build by vite.
+
+## [4.41.3] - 2025-05-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.48.2 ~> 4.48.4], `@semcore/flex-box` [5.41.2 ~> 5.41.3], `@semcore/core` [2.39.2 ~> 2.39.3]).
+
+## [4.41.2] - 2025-04-04
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.48.1 ~> 4.48.2], `@semcore/flex-box` [5.41.1 ~> 5.41.2], `@semcore/core` [2.39.1 ~> 2.39.2]).
+
+## [4.41.1] - 2025-03-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.48.0 ~> 4.48.1], `@semcore/flex-box` [5.41.0 ~> 5.41.1], `@semcore/core` [2.39.0 ~> 2.39.1]).
+
 ## [4.41.0] - 2025-03-14
 
 ### Changed

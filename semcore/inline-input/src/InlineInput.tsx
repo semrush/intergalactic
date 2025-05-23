@@ -1,18 +1,18 @@
 import React from 'react';
-import createComponent, { Component, sstyled, Root } from '@semcore/core';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import { Box, InvalidStateBox } from '@semcore/flex-box';
-import autoFocusEnhance from '@semcore/utils/lib/enhances/autoFocusEnhance';
-import Tooltip, { ITooltipProps } from '@semcore/tooltip';
+import autoFocusEnhance from '@semcore/core/lib/utils/enhances/autoFocusEnhance';
+import { ITooltipProps } from '@semcore/tooltip';
 import style from './style/inline-input.shadow.css';
 import CheckM from '@semcore/icon/Check/m';
 import CloseM from '@semcore/icon/Close/m';
 import Spin from '@semcore/spin';
 import { ButtonLink } from '@semcore/button';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import InputNumber, { InputNumberValueProps } from '@semcore/input-number';
 import { IRootComponentHandlers } from '@semcore/core';
-import { hasParent } from '@semcore/utils/lib/hasParent';
+import { hasParent } from '@semcore/core/lib/utils/hasParent';
 
 type OnConfirm = (
   value: string,
@@ -100,10 +100,6 @@ class InlineInputBase extends Component<RootAsProps> {
   };
   static style = style;
 
-  state = {
-    focused: false,
-  };
-
   rootRef = React.createRef<HTMLElement>();
   inputRef = React.createRef<HTMLInputElement>();
   inputHandlersRef = React.createRef<IRootComponentHandlers>();
@@ -164,8 +160,6 @@ class InlineInputBase extends Component<RootAsProps> {
       ref: this.inputRef,
       state,
       onKeyDown: this.handleKeyDown,
-      onFocus: this.bindHandlerValueFocused(true),
-      onBlur: this.bindHandlerValueFocused(false),
     };
   }
 
@@ -192,8 +186,6 @@ class InlineInputBase extends Component<RootAsProps> {
       inputHandlerRefs: this.inputHandlersRef,
       increment: this.increment,
       decrement: this.decrement,
-      onFocus: this.bindHandlerValueFocused(true),
-      onBlur: this.bindHandlerValueFocused(false),
     };
   }
   getNumberControlsProps() {
@@ -204,10 +196,6 @@ class InlineInputBase extends Component<RootAsProps> {
       getI18nText,
     };
   }
-
-  bindHandlerValueFocused = (focused: boolean) => () => {
-    this.setState({ focused });
-  };
 
   handleMouseDownAddon = (event: React.MouseEvent) => {
     event.preventDefault();
@@ -263,10 +251,9 @@ class InlineInputBase extends Component<RootAsProps> {
     const SUnderline = 'div';
     const SInvalidPattern = InvalidStateBox;
     const { Children, styles, state } = this.asProps;
-    const { focused } = this.state;
 
     return sstyled(styles)(
-      <SInlineInput render={Box} ref={this.rootRef} focused={focused} onBlur={this.handleBlur}>
+      <SInlineInput render={Box} ref={this.rootRef} onBlur={this.handleBlur}>
         <SUnderline>
           {state === 'invalid' && <SInvalidPattern />}
           <Children />

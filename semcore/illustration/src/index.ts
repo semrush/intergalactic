@@ -15,5 +15,5 @@ const formatName = (name: string) => {
 export const getIllustrationPath = (name: string) => {
   const formattedName = formatName(name);
 
-  return `https://static.semrush.com/ui-kit/illustration/${version}/${formattedName}.svg`;
+  return `https://static.semrush.com/intergalactic/illustrations/${version}/${formattedName}.svg`;
 };

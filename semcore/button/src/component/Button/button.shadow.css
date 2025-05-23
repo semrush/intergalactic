@@ -12,7 +12,6 @@ SButton {
   text-align: center;
   vertical-align: middle;
   border: 1px solid transparent;
-  outline: 0;
   box-shadow: none;
   cursor: pointer;
   box-sizing: border-box;
@@ -30,16 +29,9 @@ SButton {
   }
 
   &:active,
-  &:hover,
-  &:focus {
-    outline: 0;
+  &:hover {
     text-decoration: none;
   }
-}
-
-SButton[keyboardFocused] {
-  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
-  z-index: 1;
 }
 
 SButton[disabled] {
@@ -100,6 +92,22 @@ SButton[theme='primary-success'] {
   }
 }
 
+SButton[theme='primary-brand'] {
+  color: var(--intergalactic-text-primary-invert, #ffffff);
+  background-color: var(--intergalactic-control-primary-brand, #ff642d);
+
+  &:hover {
+    color: var(--intergalactic-text-primary-invert, #ffffff);
+    background-color: var(--intergalactic-control-primary-brand-hover, #c33909);
+  }
+
+  &:active,
+  &[active] {
+    color: var(--intergalactic-text-primary-invert, #ffffff);
+    background-color: var(--intergalactic-control-primary-brand-active, #8b1500);
+  }
+}
+
 SButton[theme='primary-warning'] {
   color: var(--intergalactic-text-primary-invert, #ffffff);
   background-color: var(--intergalactic-control-primary-brand, #ff642d);
@@ -112,7 +120,7 @@ SButton[theme='primary-warning'] {
   &:active,
   &[active] {
     color: var(--intergalactic-text-primary-invert, #ffffff);
-    background-color: var(--intergalactic-control-primary-brand-active, #c33909);
+    background-color: var(--intergalactic-control-primary-brand-active, #8b1500);
   }
 }
 

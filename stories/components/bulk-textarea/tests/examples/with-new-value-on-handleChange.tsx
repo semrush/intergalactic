@@ -1,9 +1,8 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import BulkTextarea from '@semcore/bulk-textarea';
-import { Box, Flex } from '@semcore/flex-box';
+import { Flex } from '@semcore/flex-box';
 import SidePanel from '@semcore/side-panel';
 import { Text } from '@semcore/typography';
-import { sstyled } from '@semcore/core';
 
 const validateRow = (line: string, lines: string[]) => {
   let isValid = true;

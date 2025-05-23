@@ -1,0 +1,21 @@
+SPopper {
+  outline: none;
+  color: var(--intergalactic-text-primary, #191b23);
+}
+
+SPopper:focus-visible {
+  border-radius: var(--intergalactic-popper-rounded, 6px);
+}
+
+SPopper[hideFocus] {
+  outline: none;
+}
+
+SFocusHint {
+  display: none;
+}
+
+STrigger:focus-within SFocusHint,
+STrigger:focus SFocusHint {
+  display: inline;
+}

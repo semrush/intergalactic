@@ -2,12 +2,12 @@ import React from 'react';
 import cn from 'classnames';
 import { createBaseComponent, sstyled } from '@semcore/core';
 import { useBox } from '@semcore/flex-box';
-import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
-import propsForElement from '@semcore/utils/lib/propsForElement';
-import logger from '@semcore/utils/lib/logger';
-import { useForkRef } from '@semcore/utils/lib/ref';
-import hasLabels from '@semcore/utils/lib/hasLabels';
-import { useColorResolver } from '@semcore/utils/lib/use/useColorResolver';
+import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
+import propsForElement from '@semcore/core/lib/utils/propsForElement';
+import logger from '@semcore/core/lib/utils/logger';
+import { useForkRef } from '@semcore/core/lib/utils/ref';
+import hasLabels from '@semcore/core/lib/utils/hasLabels';
+import { useColorResolver } from '@semcore/core/lib/utils/use/useColorResolver';
 
 import styles from './style/icon.shadow.css';
 

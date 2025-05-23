@@ -2,6 +2,54 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.1.0] - 2025-05-23
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/icon` [16.0.0 ~> 16.1.0]).
+
+## [16.0.0] - 2025-05-19
+
+### Break
+
+- `keyboardFocusEnhance` to css `:focus-visible` property for `Close` modal button.
+
+## [4.56.2] - 2025-05-13
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [5.43.2 ~> 5.43.3], `@semcore/animation` [2.41.3 ~> 2.41.4], `@semcore/flex-box` [5.41.3 ~> 5.41.4], `@semcore/icon` [4.62.0 ~> 4.62.1], `@semcore/utils` [4.48.4 ~> 4.48.5], `@semcore/core` [2.39.3 ~> 2.39.4]).
+
+## [4.56.1] - 2025-05-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [5.43.1 ~> 5.43.2], `@semcore/animation` [2.41.2 ~> 2.41.3], `@semcore/flex-box` [5.41.2 ~> 5.41.3], `@semcore/icon` [4.61.0 ~> 4.62.0], `@semcore/utils` [4.48.2 ~> 4.48.4], `@semcore/core` [2.39.2 ~> 2.39.3]).
+
+## [4.56.0] - 2025-04-11
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/icon` [4.60.2 ~> 4.61.0]).
+
+## [4.55.1] - 2025-04-04
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [5.43.0 ~> 5.43.1], `@semcore/animation` [2.41.1 ~> 2.41.2], `@semcore/flex-box` [5.41.1 ~> 5.41.2], `@semcore/icon` [4.60.1 ~> 4.60.2], `@semcore/outside-click` [3.39.1 ~> 3.40.0], `@semcore/utils` [4.48.1 ~> 4.48.2], `@semcore/core` [2.39.1 ~> 2.39.2]).
+
+## [4.55.0] - 2025-03-28
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/button` [5.42.1 ~> 5.43.0]).
+
+## [4.54.1] - 2025-03-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [5.42.0 ~> 5.42.1], `@semcore/animation` [2.41.0 ~> 2.41.1], `@semcore/flex-box` [5.41.0 ~> 5.41.1], `@semcore/icon` [4.60.0 ~> 4.60.1], `@semcore/utils` [4.48.0 ~> 4.48.1], `@semcore/core` [2.39.0 ~> 2.39.1]).
+
 ## [4.54.0] - 2025-03-14
 
 ### Added

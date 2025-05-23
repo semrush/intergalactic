@@ -7,23 +7,21 @@ import {
   StackedArea,
   HoverLine,
   makeDataHintsContainer,
-  LegendItem,
   ChartLegend,
-} from 'intergalactic/d3-chart';
+} from '@semcore/d3-chart';
 import { scaleLinear } from 'd3-scale';
-import { Flex, Box } from 'intergalactic/flex-box';
-import { Text } from 'intergalactic/typography';
+import { Flex, Box } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
 import { curveCardinal } from 'd3-shape';
-import resolveColor from '@semcore/utils/lib/color';
 
 function formatDate(value, options) {
   return new Intl.DateTimeFormat('en', options).format(value);
 }
 
 const lineColors = {
-  1: resolveColor('blue-300'),
-  2: resolveColor('green-200'),
-  3: resolveColor('orange-400'),
+  1: '--blue-300',
+  2: '--green-200',
+  3: '--orange-400',
 };
 
 const dataHints = makeDataHintsContainer();

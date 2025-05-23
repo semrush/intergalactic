@@ -1,16 +1,24 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Icon from '@semcore/icon';
-
+import AllIllustrationGeneratedExample from './examples/all-illustration-generated';
 import SizesExample from './examples/illustration_sizes';
 
-const meta: Meta<typeof Icon> = {
+import { CheckButtonsIllustrations } from './__tests__/all-allustrations-test.test';
+import { playWrapper } from '../../../utils/playWrapper';
+
+
+const meta: Meta = {
   title: 'Components/Illustration/Tests',
-  component: Icon,
 };
 
 export default meta;
-type Story = StoryObj<typeof Icon>;
+type Story = StoryObj;
+
+export const AllIllustrationGenerated: Story = {
+  render: AllIllustrationGeneratedExample,
+  play: playWrapper(CheckButtonsIllustrations),
+
+};
 
 export const Sizes: Story = {
   render: SizesExample,

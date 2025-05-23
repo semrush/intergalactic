@@ -1,12 +1,10 @@
 import { expect, voiceOverTest as test } from '@semcore/testing-utils/playwright';
 
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
-import { writeFile } from 'fs/promises';
-import { getReportHeader, makeVoiceOverReporter } from '@semcore/testing-utils/vo-reporter';
+import { makeVoiceOverReporter } from '@semcore/testing-utils/vo-reporter';
 
 test('Users can interact with Pills via VoiceOver', async ({ page, voiceOver: pureVoiceOver }) => {
-  const standPath = 'website/docs/components/pills/examples/basic_example.tsx';
-  const reportPath = 'website/docs/components/pills/pills-a11y-report.md';
+  const standPath = 'stories/components/pills/docs/examples/basic_example.tsx';
 
   const htmlContent = await e2eStandToHtml(standPath, 'en');
   await page.reload();
@@ -26,8 +24,4 @@ test('Users can interact with Pills via VoiceOver', async ({ page, voiceOver: pu
   expect(await voiceOver.lastSpokenPhrase()).toContain('selected');
   await voiceOver.previous();
   expect(await voiceOver.lastSpokenPhrase()).toContain('2 of 3');
-
-  const report = (await getReportHeader()) + '\n\n' + (await getReport(standPath));
-
-  await writeFile(reportPath, report);
 });

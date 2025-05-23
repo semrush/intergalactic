@@ -7,7 +7,7 @@ import { render } from '@semcore/testing-utils/testing-library';
 import NeighborLocation from '@semcore/neighbor-location';
 import { Flex } from '@semcore/flex-box';
 import CheckM from '@semcore/icon/Check/m';
-import propsForElement from '@semcore/utils/lib/propsForElement';
+import propsForElement from '@semcore/core/lib/utils/propsForElement';
 import Button, { ButtonLink } from '../src';
 import CloseM from '@semcore/icon/Close/m';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
@@ -70,14 +70,7 @@ describe('Button', () => {
   });
 
   test.concurrent('should not have box-shadow and focus while loading', async ({ task }) => {
-    const Component = (
-      <Button
-        loading={true}
-        keyboardFocused={true} // emulate focus on component by Tab click
-      >
-        Text
-      </Button>
-    );
+    const Component = <Button loading={true}>Text</Button>;
     await expect(await snapshot(Component)).toMatchImageSnapshot(task);
   });
 

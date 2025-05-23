@@ -1,6 +1,5 @@
 import React from 'react';
-import DataTable from '@semcore/data-table';
-import SpinContainer from '@semcore/spin-container';
+import { DataTable } from '@semcore/data-table';
 import Button from '@semcore/ui/button';
 import { ScreenReaderOnly } from '@semcore/ui/flex-box';
 
@@ -27,23 +26,18 @@ const Demo = (): any => {
       <ScreenReaderOnly role='status' aria-live='polite'>
         {message}
       </ScreenReaderOnly>
-      <DataTable data={data} aria-label={'Loading using SpinContainer'}>
-        <DataTable.Head>
-          <DataTable.Column name='keyword' children='Keyword' />
-          <DataTable.Column name='kd' children='KD,%' />
-          <DataTable.Column name='cpc' children='CPC' />
-          <DataTable.Column name='vol' children='Vol.' />
-        </DataTable.Head>
-        <SpinContainer
-          loading={loading}
-          style={{ overflow: 'initial' }}
-          // @ts-ignore
-          inert={loading ? '' : undefined}
-        >
-          <DataTable.Body />
-          <SpinContainer.Overlay />
-        </SpinContainer>
-      </DataTable>
+      <DataTable
+        data={data}
+        aria-label={'Loading using SpinContainer'}
+        loading={loading}
+        h={'auto'}
+        columns={[
+          { name: 'keyword', children: 'Keyword' },
+          { name: 'kd', children: 'KD %' },
+          { name: 'cpc', children: 'CPC' },
+          { name: 'vol', children: 'Vol.' },
+        ]}
+      />
       <Button onClick={toggleLoading} mt={3}>
         {loading ? 'Stop loading' : 'Start loading'}
       </Button>

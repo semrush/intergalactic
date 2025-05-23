@@ -1,6 +1,6 @@
 import React from 'react';
 import { scaleLinear, scaleBand } from 'd3-scale';
-import { Bar, ResponsiveContainer, XAxis, Plot, YAxis } from 'intergalactic/d3-chart';
+import { Bar, ResponsiveContainer, XAxis, Plot, YAxis } from '@semcore/d3-chart';
 
 const Demo = () => {
   const [[width, height], setSize] = React.useState([0, 0]);

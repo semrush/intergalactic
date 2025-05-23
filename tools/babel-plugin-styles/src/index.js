@@ -31,10 +31,7 @@ function StylesPlugin({ types: t }, opts) {
         t.VariableDeclarator(
           t.Identifier(ident),
           t.TaggedTemplateExpression(
-            t.MemberExpression(
-              addNamed(p, 'sstyled', '@semcore/utils/lib/core/index'),
-              t.Identifier('insert'),
-            ),
+            t.MemberExpression(addNamed(p, 'sstyled', '@semcore/core'), t.Identifier('insert')),
             t.TemplateLiteral(
               [
                 t.TemplateElement({
@@ -76,12 +73,19 @@ function StylesPlugin({ types: t }, opts) {
 
     const wrapBundlerComments = (node) => {
       t.addComment(node, 'leading', '__reshadow_css_start__');
-      t.addComment(node, 'trailing', '__reshadow_css_end__');
 
       t.addComment(node.arguments[0], 'leading', '__inner_css_start__');
-      t.addComment(node.arguments[0], 'trailing', '__inner_css_end__');
+      t.addComment(node.arguments[1], 'leading', '__inner_css_end__');
       return node;
     };
+
+    const tTokens = t.ObjectExpression(
+      Object.entries(tokens).map(([key, value]) =>
+        t.ObjectProperty(t.StringLiteral(key), t.StringLiteral(value)),
+      ),
+    );
+
+    t.addComment(tTokens, 'leading', '__reshadow_css_end__');
 
     p.replaceWith(
       t.SequenceExpression([
@@ -91,11 +95,7 @@ function StylesPlugin({ types: t }, opts) {
             t.StringLiteral(hash + postcss.PLACEHOLDER_REPLACER),
           ]),
         ),
-        t.ObjectExpression(
-          Object.entries(tokens).map(([key, value]) =>
-            t.ObjectProperty(t.StringLiteral(key), t.StringLiteral(value)),
-          ),
-        ),
+        tTokens,
       ]),
     );
     // p.addComment('leading', `__reshadow-styles__:"${source.value}"`);
@@ -158,7 +158,7 @@ function StylesPlugin({ types: t }, opts) {
     visitor: {
       ImportDeclaration(p, state) {
         const { source, specifiers } = p.node;
-        if (source.value === '@semcore/core' || source.value.endsWith('/core/index')) {
+        if (source.value === '@semcore/core') {
           specifiers.forEach((specifier) => {
             if (specifier.imported?.name === 'sstyled') {
               p.scope.getBinding(specifier.local.name)?.referencePaths.forEach((refP) => {
@@ -183,7 +183,7 @@ function StylesPlugin({ types: t }, opts) {
             if (t.isImportDefaultSpecifier(specifier)) {
               const cssPath = path.resolve(path.dirname(state.filename), source.value);
               importProcessing(p, specifier.local.name, cssPath);
-              p.addComment('leading', `__reshadow-styles__:"${source.value}"`);
+              p.addComment('leading', `!__reshadow-styles__:"${source.value}"`);
             }
           });
         }

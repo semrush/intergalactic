@@ -1,17 +1,17 @@
 import React, { RefObject } from 'react';
-import createComponent, { Component, Intergalactic, Root, sstyled } from '@semcore/core';
+import { createComponent, Component, Intergalactic, Root, sstyled } from '@semcore/core';
 import Tooltip, { TooltipProps } from '@semcore/tooltip';
 import { Box, BoxProps } from '@semcore/flex-box';
 import { useResizeObserver } from './useResizeObserver';
-import useEnhancedEffect from '@semcore/utils/lib/use/useEnhancedEffect';
-import findComponent, { isAdvanceMode } from '@semcore/utils/lib/findComponent';
+import useEnhancedEffect from '@semcore/core/lib/utils/use/useEnhancedEffect';
+import findComponent, { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 
 import style from './style/ellipsis.shadow.css';
-import reactToText from '@semcore/utils/lib/reactToText';
-import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
-import pick from '@semcore/utils/lib/pick';
-import { forkRef } from '@semcore/utils/lib/ref';
-import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
+import reactToText from '@semcore/core/lib/utils/reactToText';
+import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
+import pick from '@semcore/core/lib/utils/pick';
+import { forkRef } from '@semcore/core/lib/utils/ref';
+import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 
 type AsProps = {
   maxLine?: number;

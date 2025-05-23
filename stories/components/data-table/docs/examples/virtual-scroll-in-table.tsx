@@ -1,5 +1,5 @@
 import React from 'react';
-import DataTable, { ROW_GROUP } from '@semcore/data-table';
+import { DataTable, ROW_GROUP } from '@semcore/data-table';
 
 const keyword = ['ebay buy', 'www.ebay.com', 'ebay buy'];
 const kd = ['77.8', '10', '11.2', '-', '75.89'];
@@ -11,30 +11,37 @@ const data = Array(10000)
   .map((_, index) => ({
     id: `#${index + 1}`,
     keyword: keyword[Math.floor(keyword.length * Math.random())],
-    [ROW_GROUP]: [
-      {
-        kd: kd[Math.floor(kd.length * Math.random())],
-        cpc: cpc[Math.floor(cpc.length * Math.random())],
-        vol: vol[Math.floor(vol.length * Math.random())],
-      },
-    ],
+    // [ROW_GROUP]: [
+    //   {
+    kd: kd[Math.floor(kd.length * Math.random())],
+    cpc: cpc[Math.floor(cpc.length * Math.random())],
+    vol: vol[Math.floor(vol.length * Math.random())],
+    // },
+    // ],
   }));
 
 const Demo = () => {
   return (
-    <DataTable data={data} totalRows={10000} aria-label={'Virtual scroll'}>
-      <DataTable.Head>
-        <DataTable.Column name='id' children='ID' />
-        <DataTable.Column name='keyword' children='Keyword' />
-        <DataTable.Column>
-          Organic Sessions
-          <DataTable.Column name='kd' children='KD,%' />
-          <DataTable.Column name='cpc' children='CPC' />
-          <DataTable.Column name='vol' children='Vol.' />
-        </DataTable.Column>
-      </DataTable.Head>
-      <DataTable.Body h={400} virtualScroll />
-    </DataTable>
+    <DataTable
+      data={data}
+      totalRows={10000}
+      aria-label={'Virtual scroll'}
+      h={400}
+      virtualScroll={{ rowHeight: 45 }}
+      headerProps={{ sticky: true }}
+      columns={[
+        { name: 'id', children: 'ID' },
+        { name: 'keyword', children: 'Keyword', gtcWidth: '300px' },
+        {
+          children: 'Organic Sessions',
+          columns: [
+            { name: 'kd', children: 'KD %' },
+            { name: 'cpc', children: 'CPC' },
+            { name: 'vol', children: 'Vol.' },
+          ],
+        },
+      ]}
+    />
   );
 };
 

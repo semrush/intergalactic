@@ -1,11 +1,9 @@
 import React from 'react';
-import createComponent, { Component, Root, sstyled, Intergalactic } from '@semcore/core';
+import { createComponent, Component, Root, sstyled, Intergalactic } from '@semcore/core';
 import { Flex, Box, BoxProps } from '@semcore/flex-box';
 import style from '../../style/slider-rating.shadow.css';
-import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
-import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
-import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
-import { ScreenReaderOnly } from '@semcore/flex-box';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 
 type SliderRatingProps = {
@@ -35,11 +33,7 @@ class SliderRatingRoot extends Component<
   static displayName = 'SliderRating';
   static style = style;
 
-  static enhance = [
-    keyboardFocusEnhance(),
-    uniqueIDEnhancement(),
-    i18nEnhance(localizedMessages),
-  ] as const;
+  static enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages)] as const;
 
   state: State = {
     hoveredIndex: -1,
@@ -87,9 +81,9 @@ class SliderRatingRoot extends Component<
     }
 
     if (newValue <= value) {
-      this.setState({ clickedIndex: newValue });
+      this.setState({ clickedIndex: newValue, hoveredIndex: -1 });
     } else {
-      this.setState({ clickedIndex: -1 });
+      this.setState({ clickedIndex: -1, hoveredIndex: -1 });
     }
   };
 
@@ -151,7 +145,7 @@ class SliderRatingRoot extends Component<
 
     if (readonly) {
       return (
-        <SSliderRating render={Flex} gap={1} role='img' aria-label={label} use:tabIndex={-1}>
+        <SSliderRating render={Flex} gap={1} role='img' aria-label={label}>
           {new Array(MAX).fill(null).map((_, index) => {
             return (
               <Box key={index} position={'relative'}>
@@ -176,6 +170,7 @@ class SliderRatingRoot extends Component<
       <SSliderRating
         render={Flex}
         gap={1}
+        tabIndex={0}
         onMouseLeave={this.handleMouseLeave}
         onKeyDown={this.handleKeyDown}
         role={'slider'}
@@ -204,22 +199,19 @@ function Star(props: StarProps) {
       render={Box}
       tag={'svg'}
       role='none'
-      width='22'
-      height='21'
-      viewBox='0 0 22 21'
+      width='24'
+      height='24'
+      viewBox='0 0 24 24'
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
     >
       {props.filled ? (
-        <path
-          d='M10.6463 0.213566C10.7963 -0.0711885 11.2037 -0.071189 11.3537 0.213566L14.6682 6.50744L21.668 7.72084C21.9847 7.77572 22.1105 8.16305 21.8867 8.39378L16.9353 13.4978L17.9465 20.5422C17.9922 20.8607 17.6626 21.1002 17.3741 20.9581L11 17.8181L4.62585 20.9581C4.33738 21.1002 4.00781 20.8607 4.05353 20.5422L5.0647 13.4978L0.113338 8.39378C-0.110493 8.16305 0.0153421 7.77572 0.331965 7.72084L7.33178 6.50744L10.6463 0.213566Z'
-          // fill='#FDC23C'
-        />
+        <path d='M11.646 1.214a.4.4 0 0 1 .708 0l3.314 6.293 7 1.214a.4.4 0 0 1 .219.673l-4.952 5.104 1.012 7.044a.4.4 0 0 1-.573.416L12 18.818l-6.374 3.14a.4.4 0 0 1-.572-.416l1.01-7.044-4.95-5.104a.4.4 0 0 1 .218-.673l7-1.214 3.314-6.293Z' />
       ) : (
         <path
-          d='M13.7834 6.9734L14.0127 7.40871L14.4974 7.49274L20.3785 8.51222L16.2175 12.8015L15.8757 13.1539L15.9454 13.6399L16.7949 19.558L11.4419 16.921L11 16.7033L10.5581 16.921L5.20505 19.558L6.05456 13.6399L6.12432 13.1539L5.78246 12.8015L1.62146 8.51222L7.50258 7.49274L7.98734 7.40871L8.21659 6.9734L11 1.68803L13.7834 6.9734ZM21.4972 8.70614C21.4969 8.70608 21.4965 8.70602 21.4961 8.70595L21.4972 8.70614ZM0.502765 8.70614L0.503758 8.70597C0.503427 8.70603 0.503095 8.70609 0.502764 8.70614L0.400352 8.11535L0.502765 8.70614Z'
-          // stroke='#A9ABB6'
-          // strokeWidth='2'
+          d='M14.358 9.31 12 4.834 9.642 9.31l-4.985.864 3.526 3.634-.72 5.014L12 16.588l4.537 2.235-.72-5.014 3.526-3.634-4.985-.864Zm8.31-.59a.4.4 0 0 1 .219.674l-4.952 5.104 1.012 7.044a.4.4 0 0 1-.573.416L12 18.818l-6.374 3.14a.4.4 0 0 1-.572-.416l1.01-7.044-4.95-5.104a.4.4 0 0 1 .218-.673l7-1.214 3.314-6.293a.4.4 0 0 1 .708 0l3.314 6.293 7 1.214Z'
+          fillRule='evenodd'
+          clipRule='evenodd'
         />
       )}
     </SStar>,

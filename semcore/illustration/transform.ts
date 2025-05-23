@@ -1,5 +1,5 @@
-import fs from 'fs/promises';
-import { resolve as resolvePath } from 'path';
+import fs from 'fs-extra';
+import path, { resolve as resolvePath } from 'path';
 import svgToJsx from 'svg-to-jsx';
 import { Window } from 'happy-dom';
 import esbuild from 'esbuild';
@@ -108,7 +108,7 @@ await Promise.all(
 import React from 'react';
 import { createBaseComponent } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
-import { useColorResolver } from '@semcore/utils/lib/use/useColorResolver';
+import { useColorResolver } from '@semcore/core/lib/utils/use/useColorResolver';
 
 const ${illustration} = ({${props.join(', ')}, ...props}, ref) => {
 ${prerenderLines.join('\n')}
@@ -181,3 +181,36 @@ export default Illustration;
     await fs.writeFile(resolvePath(illustration, 'index.d.ts'), typesDeclaration);
   }),
 );
+
+async function patchExports(illustrations: string[]) {
+  const rootDir = process.cwd();
+  const packageJsonPath = path.resolve(rootDir, 'package.json');
+  const packageJson = await fs.readJson(packageJsonPath);
+
+  const exports: Record<string, any> = {
+    '.': {
+      require: './lib/cjs/index.js',
+      import: './lib/es6/index.js',
+      types: './lib/types/index.d.ts',
+    },
+  };
+
+  illustrations.forEach((item) => {
+    const name = item.replace('.svg', '');
+
+    exports[`./${name}`] = {
+      require: `./${name}/index.js`,
+      import: `./${name}/index.mjs`,
+      types: `./${name}/index.d.ts`,
+    };
+  });
+
+  packageJson.exports = exports;
+
+  await fs.writeJSON(packageJsonPath, packageJson, { spaces: 2 });
+
+  // biome-ignore lint/suspicious/noConsoleLog:
+  console.log('Patched exports in package.json.');
+}
+
+await patchExports(illustrations);

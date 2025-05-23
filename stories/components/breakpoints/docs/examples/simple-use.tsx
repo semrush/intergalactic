@@ -6,8 +6,9 @@ const buttonSizes = ['m', 'l'] as const;
 
 const Example = () => {
   const index = React.useContext(Breakpoints.Context);
+  const size = index !== undefined ? buttonSizes[index] : 'm';
 
-  return <Button size={buttonSizes[index]}>Size {['M', 'L'][index]}</Button>;
+  return <Button size={size}>Size {size.toUpperCase()}</Button>;
 };
 
 const Demo = () => {

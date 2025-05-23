@@ -9,7 +9,7 @@ tabs: Design('fullscreen-modal'), A11y('fullscreen-modal-a11y'), API('fullscreen
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/basic_fullscreen.headers_use.tsx';
+  export Demo from 'stories/components/fullscreen-modal/docs/examples/basic_fullscreen.headers_use.tsx';
 </script>
 
 :::
@@ -19,7 +19,7 @@ tabs: Design('fullscreen-modal'), A11y('fullscreen-modal-a11y'), API('fullscreen
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/example_of_a_dual-zone_modal_window.tsx';
+  export Demo from 'stories/components/fullscreen-modal/docs/examples/example_of_a_dual-zone_modal_window.tsx';
 </script>
 
 :::

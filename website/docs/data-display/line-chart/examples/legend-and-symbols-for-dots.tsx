@@ -7,8 +7,8 @@ import {
   YAxis,
   ChartLegend,
   makeDataHintsContainer,
-} from 'intergalactic/d3-chart';
-import { Flex } from 'intergalactic/flex-box';
+} from '@semcore/d3-chart';
+import { Flex } from '@semcore/flex-box';
 import { scaleLinear } from 'd3-scale';
 
 const dataHints = makeDataHintsContainer();

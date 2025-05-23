@@ -1,28 +1,25 @@
 {
   "name": "@semcore/illustration",
   "description": "Semrush Illustration Component",
-  "version": "2.43.0",
+  "version": "16.0.0",
   "main": "lib/cjs/index.js",
-  "module": "lib/es6/index.js",
+  "module": "lib/esm/index.mjs",
   "typings": "lib/types/index.d.ts",
   "sideEffects": false,
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "pnpm clear && pnpm semcore-builder --source=js && pnpm run transform",
+    "build": "pnpm clear && pnpm semcore-builder --source=js && pnpm run transform && pnpm vite build",
     "transform": "tsm --require=../../.ci/tsm-filter-warnings.js transform.ts",
     "clear": "tsm --require=../../.ci/tsm-filter-warnings.js clear.ts",
     "upload-static": "gcs-upload svg/*.svg"
   },
   "dependencies": {
     "@babel/runtime": "^7.17.9",
-    "@semcore/flex-box": "5.41.0",
     "colorjs.io": "0.4.3"
   },
   "peerDependencies": {
-    "@semcore/core": "^2.17.5",
-    "react": "16.8 - 18",
-    "react-dom": "16.8 - 18"
+    "@semcore/base-components": "^16.0.0"
   },
   "repository": {
     "type": "git",
@@ -32,8 +29,277 @@
   "devDependencies": {
     "esbuild": "0.14.29",
     "happy-dom": "9.20.3",
-    "svg-to-jsx": "^1.0.4",
+    "fs-extra": "8.1.0",
+    "svg-to-jsx": "1.0.4",
     "@semcore/testing-utils": "1.0.0",
-    "@types/react": "18.0.21"
+    "@types/react": "18.0.21",
+    "@types/fs-extra": "8.1.0"
+  },
+  "exports": {
+    ".": {
+      "require": "./lib/cjs/index.js",
+      "import": "./lib/esm/index.mjs",
+      "types": "./lib/types/index.d.ts"
+    },
+    "./AccessDenied": {
+      "require": "./AccessDenied/index.js",
+      "import": "./AccessDenied/index.mjs",
+      "types": "./AccessDenied/index.d.ts"
+    },
+    "./AccessLogIn": {
+      "require": "./AccessLogIn/index.js",
+      "import": "./AccessLogIn/index.mjs",
+      "types": "./AccessLogIn/index.d.ts"
+    },
+    "./AreaChart": {
+      "require": "./AreaChart/index.js",
+      "import": "./AreaChart/index.mjs",
+      "types": "./AreaChart/index.d.ts"
+    },
+    "./Blocked": {
+      "require": "./Blocked/index.js",
+      "import": "./Blocked/index.mjs",
+      "types": "./Blocked/index.d.ts"
+    },
+    "./ChoroplethMapChart": {
+      "require": "./ChoroplethMapChart/index.js",
+      "import": "./ChoroplethMapChart/index.mjs",
+      "types": "./ChoroplethMapChart/index.d.ts"
+    },
+    "./Coffee": {
+      "require": "./Coffee/index.js",
+      "import": "./Coffee/index.mjs",
+      "types": "./Coffee/index.d.ts"
+    },
+    "./Collection": {
+      "require": "./Collection/index.js",
+      "import": "./Collection/index.mjs",
+      "types": "./Collection/index.d.ts"
+    },
+    "./CombinedChart": {
+      "require": "./CombinedChart/index.js",
+      "import": "./CombinedChart/index.mjs",
+      "types": "./CombinedChart/index.d.ts"
+    },
+    "./Configuration": {
+      "require": "./Configuration/index.js",
+      "import": "./Configuration/index.mjs",
+      "types": "./Configuration/index.d.ts"
+    },
+    "./Confirmation": {
+      "require": "./Confirmation/index.js",
+      "import": "./Confirmation/index.mjs",
+      "types": "./Confirmation/index.d.ts"
+    },
+    "./Congrats": {
+      "require": "./Congrats/index.js",
+      "import": "./Congrats/index.mjs",
+      "types": "./Congrats/index.d.ts"
+    },
+    "./ConnectionLost": {
+      "require": "./ConnectionLost/index.js",
+      "import": "./ConnectionLost/index.mjs",
+      "types": "./ConnectionLost/index.d.ts"
+    },
+    "./DeletedAccount": {
+      "require": "./DeletedAccount/index.js",
+      "import": "./DeletedAccount/index.mjs",
+      "types": "./DeletedAccount/index.d.ts"
+    },
+    "./DeletedPage": {
+      "require": "./DeletedPage/index.js",
+      "import": "./DeletedPage/index.mjs",
+      "types": "./DeletedPage/index.d.ts"
+    },
+    "./Dns": {
+      "require": "./Dns/index.js",
+      "import": "./Dns/index.mjs",
+      "types": "./Dns/index.d.ts"
+    },
+    "./DonutChart": {
+      "require": "./DonutChart/index.js",
+      "import": "./DonutChart/index.mjs",
+      "types": "./DonutChart/index.d.ts"
+    },
+    "./Duplicates": {
+      "require": "./Duplicates/index.js",
+      "import": "./Duplicates/index.mjs",
+      "types": "./Duplicates/index.d.ts"
+    },
+    "./Feedback": {
+      "require": "./Feedback/index.js",
+      "import": "./Feedback/index.mjs",
+      "types": "./Feedback/index.d.ts"
+    },
+    "./FunnelChart": {
+      "require": "./FunnelChart/index.js",
+      "import": "./FunnelChart/index.mjs",
+      "types": "./FunnelChart/index.d.ts"
+    },
+    "./Good": {
+      "require": "./Good/index.js",
+      "import": "./Good/index.mjs",
+      "types": "./Good/index.d.ts"
+    },
+    "./HeatMapChart": {
+      "require": "./HeatMapChart/index.js",
+      "import": "./HeatMapChart/index.mjs",
+      "types": "./HeatMapChart/index.d.ts"
+    },
+    "./HorizontalBarChart": {
+      "require": "./HorizontalBarChart/index.js",
+      "import": "./HorizontalBarChart/index.mjs",
+      "types": "./HorizontalBarChart/index.d.ts"
+    },
+    "./KagiChart": {
+      "require": "./KagiChart/index.js",
+      "import": "./KagiChart/index.mjs",
+      "types": "./KagiChart/index.d.ts"
+    },
+    "./LineChart": {
+      "require": "./LineChart/index.js",
+      "import": "./LineChart/index.mjs",
+      "types": "./LineChart/index.d.ts"
+    },
+    "./LollipopChart": {
+      "require": "./LollipopChart/index.js",
+      "import": "./LollipopChart/index.mjs",
+      "types": "./LollipopChart/index.d.ts"
+    },
+    "./MailSent": {
+      "require": "./MailSent/index.js",
+      "import": "./MailSent/index.mjs",
+      "types": "./MailSent/index.d.ts"
+    },
+    "./Maintenance": {
+      "require": "./Maintenance/index.js",
+      "import": "./Maintenance/index.mjs",
+      "types": "./Maintenance/index.d.ts"
+    },
+    "./Nexttime": {
+      "require": "./Nexttime/index.js",
+      "import": "./Nexttime/index.mjs",
+      "types": "./Nexttime/index.d.ts"
+    },
+    "./NoPayment": {
+      "require": "./NoPayment/index.js",
+      "import": "./NoPayment/index.mjs",
+      "types": "./NoPayment/index.d.ts"
+    },
+    "./NothingFound": {
+      "require": "./NothingFound/index.js",
+      "import": "./NothingFound/index.mjs",
+      "types": "./NothingFound/index.d.ts"
+    },
+    "./OtherData": {
+      "require": "./OtherData/index.js",
+      "import": "./OtherData/index.mjs",
+      "types": "./OtherData/index.d.ts"
+    },
+    "./PageError": {
+      "require": "./PageError/index.js",
+      "import": "./PageError/index.mjs",
+      "types": "./PageError/index.d.ts"
+    },
+    "./PageNotFound": {
+      "require": "./PageNotFound/index.js",
+      "import": "./PageNotFound/index.mjs",
+      "types": "./PageNotFound/index.d.ts"
+    },
+    "./PieChart": {
+      "require": "./PieChart/index.js",
+      "import": "./PieChart/index.mjs",
+      "types": "./PieChart/index.d.ts"
+    },
+    "./Processing": {
+      "require": "./Processing/index.js",
+      "import": "./Processing/index.mjs",
+      "types": "./Processing/index.d.ts"
+    },
+    "./ProjectNotFound": {
+      "require": "./ProjectNotFound/index.js",
+      "import": "./ProjectNotFound/index.mjs",
+      "types": "./ProjectNotFound/index.d.ts"
+    },
+    "./RadarChart": {
+      "require": "./RadarChart/index.js",
+      "import": "./RadarChart/index.mjs",
+      "types": "./RadarChart/index.d.ts"
+    },
+    "./RadialTreeChart": {
+      "require": "./RadialTreeChart/index.js",
+      "import": "./RadialTreeChart/index.mjs",
+      "types": "./RadialTreeChart/index.d.ts"
+    },
+    "./SankeyChart": {
+      "require": "./SankeyChart/index.js",
+      "import": "./SankeyChart/index.mjs",
+      "types": "./SankeyChart/index.d.ts"
+    },
+    "./ScatterPlotChart": {
+      "require": "./ScatterPlotChart/index.js",
+      "import": "./ScatterPlotChart/index.mjs",
+      "types": "./ScatterPlotChart/index.d.ts"
+    },
+    "./StackedAreaChart": {
+      "require": "./StackedAreaChart/index.js",
+      "import": "./StackedAreaChart/index.mjs",
+      "types": "./StackedAreaChart/index.d.ts"
+    },
+    "./Suggestion": {
+      "require": "./Suggestion/index.js",
+      "import": "./Suggestion/index.mjs",
+      "types": "./Suggestion/index.d.ts"
+    },
+    "./Suggestions": {
+      "require": "./Suggestions/index.js",
+      "import": "./Suggestions/index.mjs",
+      "types": "./Suggestions/index.d.ts"
+    },
+    "./Table": {
+      "require": "./Table/index.js",
+      "import": "./Table/index.mjs",
+      "types": "./Table/index.d.ts"
+    },
+    "./TagCloud": {
+      "require": "./TagCloud/index.js",
+      "import": "./TagCloud/index.mjs",
+      "types": "./TagCloud/index.d.ts"
+    },
+    "./TextLinksEtc": {
+      "require": "./TextLinksEtc/index.js",
+      "import": "./TextLinksEtc/index.mjs",
+      "types": "./TextLinksEtc/index.d.ts"
+    },
+    "./Timeout": {
+      "require": "./Timeout/index.js",
+      "import": "./Timeout/index.mjs",
+      "types": "./Timeout/index.d.ts"
+    },
+    "./UnderConstruction": {
+      "require": "./UnderConstruction/index.js",
+      "import": "./UnderConstruction/index.mjs",
+      "types": "./UnderConstruction/index.d.ts"
+    },
+    "./VennChart": {
+      "require": "./VennChart/index.js",
+      "import": "./VennChart/index.mjs",
+      "types": "./VennChart/index.d.ts"
+    },
+    "./VerticalBarChart": {
+      "require": "./VerticalBarChart/index.js",
+      "import": "./VerticalBarChart/index.mjs",
+      "types": "./VerticalBarChart/index.d.ts"
+    },
+    "./Waiting": {
+      "require": "./Waiting/index.js",
+      "import": "./Waiting/index.mjs",
+      "types": "./Waiting/index.d.ts"
+    },
+    "./Warning": {
+      "require": "./Warning/index.js",
+      "import": "./Warning/index.mjs",
+      "types": "./Warning/index.d.ts"
+    }
   }
 }

@@ -1,41 +1,50 @@
-import { Intergalactic } from '@semcore/utils/lib/core';
+import { Intergalactic } from '@semcore/core';
 import { BoxProps } from '@semcore/flex-box';
 import Button from '@semcore/button';
 import { InputFieldProps } from './components/InputField/InputField';
 import { CounterProps } from './components/Counter';
 import { ErrorsNavigationProps } from './components/ErrorsNavigation';
 
-export type BulkTextareaProps = {
-  value?: InputFieldProps['value'];
-  onChange?: InputFieldProps['onBlur'];
-  placeholder?: InputFieldProps['placeholder'];
-  size?: InputFieldProps['size'];
-  state?: InputFieldProps['state'];
-  disabled?: InputFieldProps['disabled'];
-  readonly?: InputFieldProps['readonly'];
+export type BulkTextareaProps<T extends string | string[]> = {
+  value?: InputFieldProps<T>['value'];
+  onChange?: InputFieldProps<T>['onBlur'];
+  placeholder?: InputFieldProps<T>['placeholder'];
+  size?: InputFieldProps<T>['size'];
+  state?: InputFieldProps<T>['state'];
+  disabled?: InputFieldProps<T>['disabled'];
+  readonly?: InputFieldProps<T>['readonly'];
 
-  minRows?: InputFieldProps['minRows'];
-  maxRows?: InputFieldProps['maxRows'];
+  minRows?: InputFieldProps<T>['minRows'];
+  maxRows?: InputFieldProps<T>['maxRows'];
 
-  validateOn?: InputFieldProps['validateOn'];
-  lineValidation?: InputFieldProps['lineValidation'];
-  linesDelimiters?: InputFieldProps['linesDelimiters'];
-  pasteProps?: InputFieldProps['pasteProps'];
+  validateOn?: InputFieldProps<T>['validateOn'];
+  lineValidation?: InputFieldProps<T>['lineValidation'];
+  linesDelimiters?: InputFieldProps<T>['linesDelimiters'];
+  pasteProps?: InputFieldProps<T>['pasteProps'];
 
-  maxLines?: InputFieldProps['maxLines'];
-  lineProcessing?: InputFieldProps['lineProcessing'];
+  maxLines?: InputFieldProps<T>['maxLines'];
+  lineProcessing?: InputFieldProps<T>['lineProcessing'];
 
-  errors?: InputFieldProps['errors'];
+  errors?: InputFieldProps<T>['errors'];
   showErrors?: boolean;
 
-  onErrorsChange?: InputFieldProps['onErrorsChange'];
-  onShowErrorsChange?: InputFieldProps['onShowErrorsChange'];
+  onErrorsChange?: InputFieldProps<T>['onErrorsChange'];
+  onShowErrorsChange?: InputFieldProps<T>['onShowErrorsChange'];
 };
 
-export type BulkTextareaType = Intergalactic.Component<'div', BoxProps & BulkTextareaProps> & {
+type BulkTextareaComponent = (<T extends string | string[]>(
+  props: Intergalactic.InternalTypings.ComponentProps<
+    'div',
+    'div',
+    BoxProps & BulkTextareaProps<T>
+  >,
+) => Intergalactic.InternalTypings.ComponentRenderingResults) &
+  Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', {}>;
+
+export type BulkTextareaType<T extends string | string[]> = BulkTextareaComponent & {
   InputField: Intergalactic.Component<
     'div',
-    Pick<InputFieldProps, 'commonErrorMessage' | 'id'> & Partial<BulkTextareaProps> & BoxProps
+    Pick<InputFieldProps<T>, 'commonErrorMessage' | 'id'> & Partial<BulkTextareaProps<T>> & BoxProps
   >;
   Counter: Intergalactic.Component<'div', Partial<CounterProps>>;
   ClearAll: typeof Button;

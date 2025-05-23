@@ -1,27 +1,26 @@
 import React from 'react';
 import { FadeInOut, Slide } from '@semcore/animation';
-import createComponent, { Component, sstyled, Root } from '@semcore/core';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import Portal, { PortalProvider } from '@semcore/portal';
 import Button from '@semcore/button';
 import OutsideClick from '@semcore/outside-click';
 import CloseIcon from '@semcore/icon/Close/l';
-import fire from '@semcore/utils/lib/fire';
-import usePreventScroll from '@semcore/utils/lib/use/usePreventScroll';
-import { isAdvanceMode } from '@semcore/utils/lib/findComponent';
-import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import fire from '@semcore/core/lib/utils/fire';
+import usePreventScroll from '@semcore/core/lib/utils/use/usePreventScroll';
+import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 import style from './style/modal.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { Text } from '@semcore/typography';
-import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
-import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
-import { useFocusLock } from '@semcore/utils/lib/use/useFocusLock';
-import { useContextTheme } from '@semcore/utils/lib/ThemeProvider';
-import { useColorResolver } from '@semcore/utils/lib/use/useColorResolver';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
+import { useFocusLock } from '@semcore/core/lib/utils/use/useFocusLock';
+import { useContextTheme } from '@semcore/core/lib/utils/ThemeProvider';
+import { useColorResolver } from '@semcore/core/lib/utils/use/useColorResolver';
 import {
   ZIndexStackingContextProvider,
   useZIndexStacking,
-} from '@semcore/utils/lib/zIndexStacking';
+} from '@semcore/core/lib/utils/zIndexStacking';
 
 class ModalRoot extends Component {
   static displayName = 'Modal';
@@ -191,8 +190,6 @@ function Close(props) {
     </SClose>,
   );
 }
-
-Close.enhance = [keyboardFocusEnhance()];
 
 function Title(props) {
   const { setHasTitle, styles, color } = props;

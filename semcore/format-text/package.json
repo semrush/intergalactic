@@ -1,22 +1,23 @@
 {
   "name": "@semcore/format-text",
   "description": "Semrush FormatText Component",
-  "version": "4.41.0",
+  "version": "16.0.1",
   "main": "lib/cjs/index.js",
-  "module": "lib/es6/index.js",
+  "module": "lib/esm/index.mjs",
   "typings": "lib/types/index.d.ts",
   "sideEffects": false,
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "pnpm semcore-builder"
+    "build": "pnpm semcore-builder && pnpm vite build"
   },
-  "dependencies": {
-    "@semcore/utils": "4.48.0",
-    "@semcore/flex-box": "5.41.0"
+  "exports": {
+    "require": "./lib/cjs/index.js",
+    "import": "./lib/esm/index.mjs",
+    "types": "./lib/types/index.d.ts"
   },
   "peerDependencies": {
-    "@semcore/core": "^2.17.5",
+    "@semcore/base-components": "^16.0.0",
     "react": "16.8 - 18",
     "react-dom": "16.8 - 18"
   },

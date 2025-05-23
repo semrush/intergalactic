@@ -17,7 +17,7 @@ You can add icons, badges, and counters as addons to the left or right of the te
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/tab_line_item_addons.tsx';
+  export Demo from 'stories/components/tab-line/docs/examples/tab_line_item_addons.tsx';
 </script>
 
 :::
@@ -29,7 +29,7 @@ Use `disabled` property to make `<TabLine.Item />` disabled. Always add `Tooltip
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/disabled_tab_line_item.tsx';
+  export Demo from 'stories/components/tab-line/docs/examples/disabled_tab_line_item.tsx';
 </script>
 
 :::
@@ -41,7 +41,7 @@ By default, tabs are switched automatically when selected.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/automatic_tab_activation.tsx';
+  export Demo from 'stories/components/tab-line/docs/examples/automatic_tab_activation.tsx';
 </script>
 
 :::
@@ -53,7 +53,7 @@ You can set `behavior='manual'` on TabLine to change the tab activation method t
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/manual_tab_activation.tsx';
+  export Demo from 'stories/components/tab-line/docs/examples/manual_tab_activation.tsx';
 </script>
 
 :::

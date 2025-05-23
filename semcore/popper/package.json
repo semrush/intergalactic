@@ -1,7 +1,7 @@
 {
   "name": "@semcore/popper",
   "description": "Semrush Popper Component",
-  "version": "5.46.0",
+  "version": "16.0.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -9,35 +9,19 @@
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "pnpm semcore-builder --source=js && pnpm vite build"
+    "build": "pnpm semcore-builder --source=ts && pnpm vite build"
   },
   "exports": {
     "require": "./lib/cjs/index.js",
     "import": "./lib/esm/index.mjs",
     "types": "./lib/types/index.d.ts"
   },
-  "dependencies": {
-    "@popperjs/core": "2.11.5",
-    "popper-max-size-modifier": "0.2.0",
-    "@semcore/animation": "2.41.0",
-    "@semcore/flex-box": "5.41.0",
-    "@semcore/neighbor-location": "4.40.0",
-    "@semcore/outside-click": "3.39.0",
-    "@semcore/portal": "3.41.0",
-    "@semcore/utils": "4.48.0"
-  },
   "peerDependencies": {
-    "@semcore/core": "^2.17.5",
-    "react": "16.8 - 18",
-    "react-dom": "16.8 - 18"
+    "@semcore/base-components": "^16.0.0"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/semrush/intergalactic.git",
     "directory": "semcore/popper"
-  },
-  "devDependencies": {
-    "@types/react": "18.0.21",
-    "@semcore/testing-utils": "1.0.0"
   }
 }

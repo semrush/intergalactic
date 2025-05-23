@@ -1,13 +1,13 @@
 import React from 'react';
-import createComponent, { Component, Root, sstyled } from '@semcore/core';
+import { createComponent, Component, Root, sstyled, CORE_INSTANCE } from '@semcore/core';
 import { Text } from '@semcore/typography';
 import { Box } from '@semcore/flex-box';
 import { Hint } from '@semcore/tooltip';
-import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
-import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
-import logger from '@semcore/utils/lib/logger';
-import hasLabels from '@semcore/utils/lib/hasLabels';
-import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
+import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
+import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
+import logger from '@semcore/core/lib/utils/logger';
+import hasLabels from '@semcore/core/lib/utils/hasLabels';
+import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 
 import style from './style/link.shadow.css';
 
@@ -22,7 +22,6 @@ class RootLink extends Component {
 
   state = {
     ariaLabelledByContent: '',
-    visibleHint: false,
   };
 
   componentDidMount() {
@@ -44,53 +43,29 @@ class RootLink extends Component {
     }
   }
 
-  handleMouseEnterOnlyAddon = () => {
-    this.setState({ visibleHint: true });
-  };
-  handleMouseLeaveOnlyAddon = () => {
-    this.setState({ visibleHint: false });
-  };
-
-  renderChildren() {
-    const { Children, styles, addonLeft: AddonLeft, addonRight: AddonRight } = this.asProps;
+  renderLink({ linkProps, children }) {
+    const { styles } = this.asProps;
+    const SLink = Root;
 
     return sstyled(styles)(
-      <>
-        {AddonLeft ? <Link.Addon tag={AddonLeft} /> : null}
-        {addonTextChildren(Children, Link.Text, Link.Addon)}
-        {AddonRight ? <Link.Addon tag={AddonRight} /> : null}
-      </>,
+      <SLink render={Text} {...linkProps}>
+        {children}
+      </SLink>,
     );
   }
 
-  renderOnlyAddons() {
-    const {
-      styles,
-      addonLeft: AddonLeft,
-      addonRight: AddonRight,
-      title,
-      ['aria-label']: ariaLabel,
-      keyboardFocused,
-    } = this.asProps;
-    const { visibleHint } = this.state;
-
-    const hintContent = title ?? ariaLabel ?? this.state.ariaLabelledByContent ?? '';
+  renderLinkWithHint({ linkProps, children, hintProps }) {
+    const { styles } = this.asProps;
+    const SLink = Root;
 
     return sstyled(styles)(
-      <Link.Addon
-        tag={Hint}
-        title={hintContent}
-        timeout={[250, 50]}
-        visible={keyboardFocused || visibleHint}
-      >
-        {AddonLeft && <AddonLeft />}
-        {AddonRight && <AddonRight />}
-      </Link.Addon>,
+      <SLink render={Hint} {...linkProps} {...hintProps}>
+        {children}
+      </SLink>,
     );
   }
 
   render() {
-    const SLink = Root;
     const {
       styles,
       noWrap,
@@ -99,27 +74,60 @@ class RootLink extends Component {
       disabled,
       href,
       children: hasChildren,
+      addonLeft: AddonLeft,
+      addonRight: AddonRight,
+      Children,
+      title,
+      ['aria-label']: ariaLabel,
+      hintPlacement,
     } = this.asProps;
+    // @ts-ignore
+    const Link = this[CORE_INSTANCE];
 
-    return sstyled(styles)(
-      <SLink
-        role='link'
-        tabIndex={disabled ? -1 : 0}
-        use:href={disabled ? undefined : href}
-        visually-disabled={disabled}
-        render={Text}
-        text-color={resolveColor(color)}
-        tag='a'
-        noWrapText={noWrap}
-        use:noWrap={false}
-        ref={this.containerRef}
-        __excludeProps={['disabled', 'aria-disabled']}
-        onMouseEnter={this.handleMouseEnterOnlyAddon}
-        onMouseLeave={this.handleMouseLeaveOnlyAddon}
-      >
-        {hasChildren !== undefined ? this.renderChildren() : this.renderOnlyAddons()}
-      </SLink>,
+    const children = sstyled(styles)(
+      <>
+        {AddonLeft ? (
+          <Link.Addon>
+            <AddonLeft />
+          </Link.Addon>
+        ) : null}
+        {addonTextChildren(Children, Link.Text, Link.Addon)}
+        {AddonRight ? (
+          <Link.Addon>
+            <AddonRight />
+          </Link.Addon>
+        ) : null}
+      </>,
     );
+
+    const hintContent = title ?? ariaLabel ?? this.state.ariaLabelledByContent ?? '';
+
+    const linkProps = {
+      role: 'link',
+      tabIndex: disabled ? -1 : 0,
+      'use:href': disabled ? undefined : href,
+      'visually-disabled': disabled,
+      render: Text,
+      'text-color': resolveColor(color),
+      tag: 'a',
+      noWrapText: noWrap,
+      'use:noWrap': false,
+      ref: this.containerRef,
+      __excludeProps: ['disabled', 'aria-disabled'],
+    };
+
+    const hintProps = {
+      title: hintContent,
+      timeout: [250, 50],
+      placement: hintPlacement,
+      __excludeProps: [],
+    };
+
+    if (hasChildren === undefined || title) {
+      return this.renderLinkWithHint({ linkProps, hintProps, children });
+    }
+
+    return this.renderLink({ linkProps, children });
   }
 }
 

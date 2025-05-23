@@ -1,8 +1,8 @@
 import React from 'react';
-import FormatText from '@semcore/format-text';
+import { Text } from '@semcore/typography';
 
 const Demo = () => (
-  <FormatText>
+  <Text>
     <ol start={1}>
       <li>List item one</li>
       <li>
@@ -14,7 +14,7 @@ const Demo = () => (
       </li>
       <li>Final list item</li>
     </ol>
-  </FormatText>
+  </Text>
 );
 
 export default Demo;

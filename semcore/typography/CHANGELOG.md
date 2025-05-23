@@ -2,6 +2,56 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.1.0] - 2025-05-23
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/icon` [16.0.0 ~> 16.1.0]).
+
+## [16.0.0] - 2025-05-19
+
+### Removed
+
+- `Hint` component. Use `secondary` `ButtonLink` instead of it.
+
+### Added
+
+- Default styles for native html elements inside `Text` component.
+
+### Changed
+
+- Default `font-weight` for headings according to design guidelines.
+
+## [5.53.2] - 2025-05-13
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.48.4 ~> 4.48.5], `@semcore/flex-box` [5.41.3 ~> 5.41.4], `@semcore/icon` [4.62.0 ~> 4.62.1], `@semcore/core` [2.39.3 ~> 2.39.4]).
+
+## [5.53.1] - 2025-05-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.48.2 ~> 4.48.4], `@semcore/flex-box` [5.41.2 ~> 5.41.3], `@semcore/icon` [4.61.0 ~> 4.62.0], `@semcore/core` [2.39.2 ~> 2.39.3]).
+
+## [5.53.0] - 2025-04-11
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/icon` [4.60.2 ~> 4.61.0]).
+
+## [5.52.2] - 2025-04-04
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.48.1 ~> 4.48.2], `@semcore/flex-box` [5.41.1 ~> 5.41.2], `@semcore/icon` [4.60.1 ~> 4.60.2], `@semcore/core` [2.39.1 ~> 2.39.2]).
+
+## [5.52.1] - 2025-03-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.48.0 ~> 4.48.1], `@semcore/flex-box` [5.41.0 ~> 5.41.1], `@semcore/icon` [4.60.0 ~> 4.60.1], `@semcore/core` [2.39.0 ~> 2.39.1]).
+
 ## [5.52.0] - 2025-03-14
 
 ### Added
@@ -778,7 +828,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - Up version icons and use new icon.
 - Removed the ability to apply media styles via a plugin `babel-plugin-react-semcore`.
 
-## [3.2.2] - 2021-08-26
+## [3.2.2] - 2021-8-26
 
 ### Changed
 

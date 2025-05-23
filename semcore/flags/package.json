@@ -1,7 +1,7 @@
 {
   "name": "@semcore/flags",
   "description": "Semrush Flags Component",
-  "version": "4.40.0",
+  "version": "16.0.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -10,17 +10,14 @@
   "license": "MIT",
   "scripts": {
     "build": "pnpm semcore-builder --source=js && tsm --require=../../.ci/tsm-filter-warnings.js ./generate.ts",
-    "upload-static": "gcs-upload lib/sprites/*"
+    "upload-static": "gcs-upload intergalactic-flags lib/sprites/*"
   },
   "dependencies": {
-    "@semcore/flex-box": "5.41.0",
-    "@semcore/utils": "4.48.0",
+    "@semcore/flex-box": "16.0.0",
     "classnames": "2.2.6"
   },
   "peerDependencies": {
-    "@semcore/core": "^2.17.5",
-    "react": "16.8 - 18",
-    "react-dom": "16.8 - 18"
+    "@semcore/base-components": "^16.0.0"
   },
   "repository": {
     "type": "git",

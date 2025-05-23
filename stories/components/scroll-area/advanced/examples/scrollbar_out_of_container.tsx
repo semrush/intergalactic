@@ -1,6 +1,6 @@
 import React from 'react';
-import { Box, Flex } from 'intergalactic/flex-box';
-import ScrollArea from 'intergalactic/scroll-area';
+import { Box, Flex } from '@semcore/flex-box';
+import ScrollArea from '@semcore/scroll-area';
 
 let randomIndex = 1;
 const stableRandom = () => {
@@ -17,7 +17,7 @@ function getRandomColor() {
 }
 
 const Demo = () => {
-  const containerRef = React.useRef(null);
+  const containerRef = React.useRef<HTMLDivElement>(null);
   return (
     <Flex>
       <Box style={{ position: 'relative' }}>

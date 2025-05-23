@@ -16,8 +16,8 @@ export function runDependencyCheckTests(component: string) {
     const packageRawData = await fs.readFile(path.join(pathToComponent, 'package.json'), 'utf8');
     const packageData = JSON.parse(packageRawData);
     const definedDependencies = new Set([
-      ...Object.keys(packageData.dependencies),
-      ...Object.keys(packageData.peerDependencies),
+      ...Object.keys(packageData.dependencies ?? {}),
+      ...Object.keys(packageData.peerDependencies ?? {}),
     ]);
     const srcFiles = await glob(`${pathToComponent}/src/**/*.+(js|jsx|ts|tsx)`);
     const allImports = new Set<string>();
@@ -27,7 +27,8 @@ export function runDependencyCheckTests(component: string) {
         const extractedImports = await extractImports(filePath);
 
         extractedImports.forEach((imp) => {
-          if (imp.startsWith('@semcore/')) {
+          // @semcore/core - peer from peer base-components. We don't need to check it.
+          if (imp.startsWith('@semcore/') && !imp.startsWith('@semcore/core')) {
             const [scope, packageName] = imp.split('/');
             allImports.add(`${scope}/${packageName}`);
           }

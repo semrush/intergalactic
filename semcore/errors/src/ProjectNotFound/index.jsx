@@ -1,8 +1,8 @@
 import React from 'react';
 import Button from '@semcore/button';
 import FormatText from '@semcore/format-text';
-import createComponent, { Component, Root } from '@semcore/core';
-import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import { createComponent, Component, Root } from '@semcore/core';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import Error, { getIconPath } from '../Error';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 

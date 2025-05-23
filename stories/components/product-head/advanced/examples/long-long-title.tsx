@@ -6,7 +6,7 @@ import { DescriptionTooltip } from '@semcore/tooltip';
 import Chat from '@semcore/icon/Chat/m';
 import BookM from '@semcore/icon/Book/m';
 import InfoM from '@semcore/icon/Info/m';
-import { Flex } from '@semcore/flex-box';
+import { Flex, Box } from '@semcore/flex-box';
 import EditM from '@semcore/icon/Edit/m';
 import Select from '@semcore/select';
 import Ellipsis from '@semcore/ellipsis';
@@ -16,7 +16,7 @@ import Header, { Info, Title } from '@semcore/product-head';
 
 const Demo = () => {
   return (
-    <>
+    <Box w={800}>
       <Header mx={8}>
         <Header.Row>
           <Title toolName='Tool Name:'>
@@ -101,7 +101,7 @@ const Demo = () => {
           </Info>
         </Header.Row>
       </Header>
-    </>
+    </Box>
   );
 };
 

@@ -2,6 +2,36 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.0] - 2025-05-19
+
+### Added
+
+- Major version.
+
+## [2.44.2] - 2025-05-13
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [5.41.3 ~> 5.41.4], `@semcore/core` [2.39.3 ~> 2.39.4]).
+
+## [2.44.1] - 2025-05-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [5.41.2 ~> 5.41.3], `@semcore/core` [2.39.2 ~> 2.39.3]).
+
+## [2.44.0] - 2025-04-03
+
+### Added
+
+- Exports in `package.json` for correct ESM build.
+
+## [2.43.1] - 2025-03-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [5.41.0 ~> 5.41.1], `@semcore/core` [2.39.0 ~> 2.39.1]).
+
 ## [2.43.0] - 2025-03-14
 
 ### Changed

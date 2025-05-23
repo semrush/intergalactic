@@ -6,7 +6,7 @@ type PasteProps = {
   /**
    * @default row.trim();
    */
-  lineProcessing?: (line: string) => string;
+  lineProcessing?: (line: string, lineIndex: number, totalLinesCount: number) => string;
   /**
    * @default true
    */
@@ -19,7 +19,7 @@ export type ErrorItem = {
   errorMessage: string;
 };
 
-export type InputFieldProps = {
+export type InputFieldProps<T extends string | string[]> = {
   /**
    * Unique id
    */
@@ -32,11 +32,11 @@ export type InputFieldProps = {
   /**
    * String to render in textarea. OnChanging value, it will go throw paste pipeline
    */
-  value: string;
+  value: T;
   /**
    * This component doesn't have default onChange callback, because we think that you need only the result after every changes/fixes
    */
-  onBlur: (value: string, e: Event) => void;
+  onBlur: (value: T, e: Event) => void;
 
   /**
    * Size of component

@@ -25,7 +25,7 @@ const Preview = (preview) => {
     key: 'bg',
     defaultValue: 'gray-400',
     label: 'Background',
-    options: ['gray-400', 'blue-400', 'red-400', 'orange-400', 'green-400', 'white'],
+    options: ['gray-400', 'blue-400', 'red-400', 'orange-400', 'green-400', 'violet-400', 'white'],
   });
 
   const child = text({
@@ -48,15 +48,15 @@ const App = PlaygroundGeneration(Preview);
 
 ## Description
 
-**Badge** is a visual component used to indicate the status of a feature or product.
+**Badge** is a visual component used to indicate the status of a feature or a product.
 
-_For example, you added a new tab to the report. In this case, you can highlight a new feature in your product with a `new` badge._
+_For example, you've added a new tab to the report. In this case, you can highlight the new feature in your product with the `new` badge._
 
 **Main features of the component:**
 
-- Badge cannot be deleted or added by a user. Badge is added to the elements by the system according to the rules described below in the table.
+- Badge can't be deleted or added by a user. Badge is added to elements by the system according to the rules described in [Types](#types).
 - Badge isn’t clickable.
-- Don’t use badge for filtering the data.
+- Don’t use badge for filtering data.
 
 ## Appearance
 
@@ -68,17 +68,18 @@ Use the following badges in the products depending on the status of the feature 
 
 Table: Badge types
 
-| Badge                      | Background     | When used                                                                                                                                                                                                                                                                                 |
-| -------------------------- | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![](static/admin.png) | `--blue-400`   | Use it with features that are only available for users with admin rights. The functionality with `admin` badge isn’t visible to the other users.                                                                                                                                         |
-| ![](static/alpha.png) | `--red-400`    | Use it with features which are available only to admins and a limited number of users who have been granted access as `alpha` users. The functionality under this badge should be used without any guarantees, it is unstable, and may be changed significantly over time or be disabled. |
-| ![](static/beta.png)   | `--orange-400` | Use only for unstable functionality of a feature or product. A product/feature with this badge was released to test the product hypothesis, and it can have major changes in the future.                                                                                                  |
-| ![](static/new.png)     | `--green-400`  | Use with products and features that are out of beta, and with new features that are available to all users. Use it to attract attention to a new product or feature.                                                                                                                      |
-| ![](static/soon.png)   | `--gray-400`   | It can be set on “placeholders” for collecting feedback.                                                                                                                                                                                                                                  |
+| Badge                          | Background                  | When used                                                                        |
+| ------------------------------ | --------------------------- | -------------------------------------------------------------------------------- |
+| ![admin](static/admin.png)     | <nobr>`--blue-400`</nobr>   | Use it with features that are only available for users with admin rights. The functionality with `admin` badge isn’t visible to the other users.            |
+| ![alpha](static/alpha.png)     | <nobr>`--red-400`</nobr>    | Use it with features which are available only to admins and a limited number of users who have been granted access as `alpha` users. The functionality under this badge should be used without any guarantees, it's unstable, and may be changed significantly over time or be disabled. |
+| ![beta](static/beta.png)       | <nobr>`--orange-400`</nobr> | Use only for unstable functionality of a feature or product. A product/feature with this badge was released to test the product hypothesis, and it can have major changes in the future.                    |
+| ![new](static/new.png)         | <nobr>`--green-400`</nobr>  | Use with products and features that are out of beta, and with new features that are available to all users. Use it to attract attention to a new product or feature.            |
+| ![for you](static/for-you.png) | <nobr>`--voilet-400`</nobr> | Use to promote products in the main navigation sidebar or other places. |
+| ![soon](static/soon.png)       | <nobr>`--gray-400`</nobr>   | Can be placed on products and features that aren't yet available and are displayed for collecting feedback.         |
 
 ### Usage on dark/colored background
 
-Every badge can be inverted like this:
+Any badge can be inverted like this:
 
 ![](static/inverted.png)
 

@@ -1,9 +1,8 @@
 import React from 'react';
-import createComponent, { Component, sstyled, Root } from '@semcore/core';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
-import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
-import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
-import a11yEnhance from '@semcore/utils/lib/enhances/a11yEnhance';
+import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
+import a11yEnhance from '@semcore/core/lib/utils/enhances/a11yEnhance';
 import NeighborLocation from '@semcore/neighbor-location';
 
 import style from './style/tab-line.shadow.css';
@@ -158,6 +157,7 @@ function TabLineItem(props) {
           <STabLineItem
             render={Box}
             tag='button'
+            tabIndex={0}
             neighborLocation={neighborLocation}
             type='button'
             role='tab'
@@ -171,8 +171,6 @@ function TabLineItem(props) {
     </NeighborLocation.Detect>
   );
 }
-
-TabLineItem.enhance = [keyboardFocusEnhance()];
 
 function Text(props) {
   const { styles } = props;

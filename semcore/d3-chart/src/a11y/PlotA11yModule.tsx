@@ -4,7 +4,7 @@ import { normalizeLocale } from './locale';
 import { localizedMessages } from './translations/module/__intergalactic-dynamic-locales';
 import { Root, sstyled } from '@semcore/core';
 import styles from '../style/plotA11yModule.shadow.css';
-import { Context as I18nContext, useI18n } from '@semcore/utils/lib/enhances/WithI18n';
+import { Context as I18nContext, useI18n } from '@semcore/core/lib/utils/enhances/WithI18n';
 import { Box } from '@semcore/flex-box';
 
 let globalWasFocused = false;

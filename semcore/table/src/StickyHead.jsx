@@ -2,14 +2,14 @@ import React, { createContext } from 'react';
 
 import { createPortal } from 'react-dom';
 
-import canUseDOM from '@semcore/utils/lib/canUseDOM';
-import { fireFn } from '@semcore/utils/lib/fire';
+import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
+import { fireFn } from '@semcore/core/lib/utils/fire';
 import Table from './Table';
 import ScrollAreaSmart from '@semcore/scroll-area';
 import ContextTable from './context';
-import throttle from '@semcore/utils/lib/rafTrottle';
-import { getNodeByRef, setRef } from '@semcore/utils/lib/ref';
-import useEventCallback from '@semcore/utils/lib/use/useEventCallback';
+import throttle from '@semcore/core/lib/utils/rafTrottle';
+import { getNodeByRef, setRef } from '@semcore/core/lib/utils/ref';
+import useEventCallback from '@semcore/core/lib/utils/use/useEventCallback';
 import { createBaseComponent, sstyled } from '@semcore/core';
 
 const StickyHeadContext = createContext({

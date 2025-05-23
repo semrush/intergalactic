@@ -1,5 +1,5 @@
 import React from 'react';
-import DataTable from '@semcore/data-table';
+import { DataTable } from '@semcore/data-table';
 import Pagination from '@semcore/pagination';
 
 const Demo = () => {
@@ -15,31 +15,48 @@ const Demo = () => {
 
   return (
     <>
-      <DataTable data={tableData} aria-label={'Pagination'}>
-        <DataTable.Head>
-          <DataTable.Column name='keyword' children='Keyword' justifyContent='left' />
-          <DataTable.Column name='kd' children='KD,%' justifyContent='right' wMax={68} />
-          <DataTable.Column name='cpc' children='CPC' wMax={60} />
-          <DataTable.Column name='vol' children='Vol.' wMax={120} justifyContent='left' />
-        </DataTable.Head>
-        <DataTable.Body>
-          <DataTable.Cell data={data} name='kd'>
-            {(_, row) => ({
-              children: row.kd === -1 ? 'n/a' : numberFormat.format(row.kd),
-            })}
-          </DataTable.Cell>
-          <DataTable.Cell data={data} name='cpc'>
-            {(_, row) => ({
-              children: row.cpc === -1 ? 'n/a' : currencyFormat.format(row.cpc),
-            })}
-          </DataTable.Cell>
-          <DataTable.Cell data={data} name='vol'>
-            {(_, row) => ({
-              children: row.vol === -1 ? 'n/a' : numberFormat.format(row.vol),
-            })}
-          </DataTable.Cell>
-        </DataTable.Body>
-      </DataTable>
+      <DataTable
+        data={tableData}
+        aria-label={'Pagination'}
+        h={'auto'}
+        columns={[
+          { name: 'keyword', children: 'Keyword', justifyContent: 'left' },
+          {
+            name: 'kd',
+            children: 'KD %',
+            justifyContent: 'right',
+            gtcWidth: 'minmax(fit-content, 68px)',
+          },
+          { name: 'cpc', children: 'CPC', gtcWidth: 'minmax(fit-content, 60px)' },
+          {
+            name: 'vol',
+            children: 'Vol.',
+            gtcWidth: 'minmax(fit-content, 120px)',
+            justifyContent: 'left',
+          },
+        ]}
+        renderCell={(props) => {
+          const { column, row } = props;
+
+          if (!row) return props.defaultRender();
+
+          const value = row[column.name];
+
+          if (column.name === 'keyword') {
+            return props.defaultRender();
+          }
+
+          if (typeof value !== 'number' || value === -1) {
+            return 'n/a';
+          }
+
+          if (column.name === 'cpc') {
+            return currencyFormat.format(value);
+          }
+
+          return numberFormat.format(value);
+        }}
+      />
       <Pagination
         mt={4}
         totalPages={Math.ceil(data.length / limit)}

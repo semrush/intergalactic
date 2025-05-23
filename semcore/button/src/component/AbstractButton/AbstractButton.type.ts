@@ -1,13 +1,11 @@
 import React from 'react';
 import { PropGetterFn } from '@semcore/core';
-import { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import { BoxProps } from '@semcore/flex-box';
 import { NeighborItemProps } from '@semcore/neighbor-location';
 import { TooltipHintProps } from '@semcore/tooltip';
 
 export type AbstractButtonProps<S, U, T> = BoxProps &
-  NeighborItemProps &
-  KeyboardFocusProps & {
+  NeighborItemProps & {
     /** Button activity state */
     active?: boolean;
     /** Disabled button state */

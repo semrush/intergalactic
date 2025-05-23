@@ -2,6 +2,48 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.1.0] - 2025-05-23
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/icon` [16.0.0 ~> 16.1.0]).
+
+## [16.0.0] - 2025-05-19
+
+### Break
+
+- `keyboardFocusEnhance` to css `:focus-visible` property.
+
+## [5.49.2] - 2025-05-13
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.48.4 ~> 4.48.5]).
+
+## [5.49.1] - 2025-05-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.48.2 ~> 4.48.4], `@semcore/icon` [4.61.0 ~> 4.62.0]).
+
+## [5.49.0] - 2025-04-11
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/icon` [4.60.2 ~> 4.61.0]).
+
+## [5.48.2] - 2025-04-04
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.48.1 ~> 4.48.2]).
+
+## [5.48.1] - 2025-03-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.48.0 ~> 4.48.1], `@semcore/icon` [4.60.0 ~> 4.60.1]).
+
 ## [5.48.0] - 2025-03-14
 
 ### Added

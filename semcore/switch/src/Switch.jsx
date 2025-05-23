@@ -1,13 +1,11 @@
 import React from 'react';
-import createComponent, { Component, sstyled, Root } from '@semcore/core';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import NeighborLocation from '@semcore/neighbor-location';
-import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
-import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
-import getInputProps, { inputProps } from '@semcore/utils/lib/inputProps';
-import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
-import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
-import canUseDOM from '@semcore/utils/lib/canUseDOM';
+import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
+import getInputProps, { inputProps } from '@semcore/core/lib/utils/inputProps';
+import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 
 import style from './style/switch.shadow.css';
 
@@ -82,7 +80,7 @@ class Switch extends Component {
 
 class Value extends Component {
   static hoistProps = ['checked', 'disabled'];
-  static enhance = [keyboardFocusEnhance(), resolveColorEnhance()];
+  static enhance = [resolveColorEnhance()];
   static defaultProps = {
     includeInputProps: inputProps,
     defaultChecked: false,
@@ -140,7 +138,6 @@ class Value extends Component {
       forwardRef,
       styles,
       includeInputProps,
-      keyboardFocused,
       neighborLocation,
       theme,
       uid,
@@ -158,7 +155,6 @@ class Value extends Component {
         {(neighborLocation) =>
           sstyled(styles)(
             <SToggle
-              keyboardFocused={keyboardFocused}
               neighborLocation={neighborLocation}
               checked={inputProps.checked}
               active={active}

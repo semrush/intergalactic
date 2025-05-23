@@ -3,6 +3,7 @@ import { execSync } from 'child_process';
 import { log, prerelaseSuffix } from '../utils';
 import { VersionPatch } from '../makeVersionPatches';
 import { NpmUtils } from './npmUtils';
+import { allowedScopes } from './allowedScopes';
 
 const git = Git();
 
@@ -128,7 +129,7 @@ export const gitUtils = {
   getTag: async (startStr: string): Promise<string | null> => {
     try {
       const tag = execSync(
-        `git describe --tags --abbrev=0 --match "${startStr}*" $(git rev-list --tags --max-count=1) `,
+        `git describe --tags --abbrev=0 --match "${startStr}*" $(git rev-list --tags="${startStr}*" --max-count=1) `,
         {
           encoding: 'utf-8',
         },

@@ -1,0 +1,17 @@
+SDataTable {
+  display: grid;
+  align-items: start;
+  min-width: fit-content;
+}
+
+SDataTable[gridTemplateColumns] {
+  grid-template-columns: var(--gridTemplateColumns);
+}
+
+SDataTable[gridTemplateAreas] {
+  grid-template-areas: var(--gridTemplateAreas);
+}
+
+SDataTable[gridTemplateRows] {
+  grid-template-rows: var(--gridTemplateRows);
+}

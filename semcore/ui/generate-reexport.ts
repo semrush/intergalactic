@@ -9,8 +9,17 @@ import acornJSX from 'acorn-jsx';
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.resolve(filename, '..');
 
-const components = fs.readJSONSync(path.resolve(dirname, './components.json'));
+const packageJson = fs.readJSONSync(path.resolve(dirname, 'package.json'));
+const components = Object.keys(packageJson.dependencies ?? {});
 const JSXParser = Parser.extend(acornJSX());
+
+type PackageExportItem = {
+  require: string;
+  import: string;
+  types?: string;
+};
+
+const packageJsonExports: Record<string, PackageExportItem> = {};
 
 const hasExportDefault = async (dependency: string) => {
   const require = createRequire(import.meta.url);
@@ -87,16 +96,22 @@ const EXPORT_TEMPLATES: {
 } as const;
 
 const GENERATOR = {
-  UTILS: async (dependency: string, name: string) => {
+  UTILS: async (dependency: string) => {
+    const name = 'core/lib/utils';
     const require = createRequire(import.meta.url);
-    const utilsMain = require.resolve(dependency);
-    const utilsDistPath = path.join(utilsMain, '..');
-    const utilsPath = path.join(utilsDistPath, '..');
+    const utilsMain = require.resolve('@semcore/core');
+    const utilsDistPath = path.join(utilsMain, '..', 'utils');
     const utils = glob.sync('**/*.+(js|ts|css)', { cwd: utilsDistPath });
 
     for (const util of utils) {
       if (util.endsWith('.css')) {
-        await fs.outputFile(`./${name}/lib/${util}`, `@import '${dependency}/lib/${util}';`);
+        await fs.outputFile(`./${name}/${util}`, `@import '@semcore/${name}/${util}';`);
+
+        packageJsonExports[`./${name}/${util}`] = {
+          require: `./${name}/${util}`,
+          import: `./${name}/${util}`,
+        };
+
         continue;
       }
       if (util.endsWith('.d.js')) {
@@ -123,12 +138,32 @@ const GENERATOR = {
           : EXPORT_TEMPLATES[extension].LIB_NAMED;
 
         await fs.outputFile(
-          `./${name}/lib/${utilNameWithoutExtention}.${extension}`,
-          template(dependency, utilNameWithoutExtention),
+          `./${name}/${utilNameWithoutExtention}.${extension}`,
+          template(dependency, `utils/${utilNameWithoutExtention}`),
         );
       }
+
+      packageJsonExports[`./${name}/${utilNameWithoutExtention}`] = {
+        require: `./${name}/${utilNameWithoutExtention}.cjs`,
+        import: `./${name}/${utilNameWithoutExtention}.mjs`,
+        types: `./${name}/${utilNameWithoutExtention}.d.ts`,
+      };
     }
-    await fs.copy(`${utilsPath}/style`, `./${name}/style`);
+
+    const themesDistPath = path.join(utilsMain, '..', 'theme');
+    const themes = glob.sync('**/*.+(css)', { cwd: themesDistPath });
+
+    for (const theme of themes) {
+      await fs.outputFile(
+        `./core/lib/theme/${theme}`,
+        `@import '@semcore/core/lib/theme/${theme}';`,
+      );
+
+      packageJsonExports[`./core/lib/theme/${theme}`] = {
+        require: `./core/lib/theme/${theme}`,
+        import: `./core/lib/theme/${theme}`,
+      };
+    }
   },
   ICONS: async (dependency: string, name: string) => {
     const require = createRequire(import.meta.url);
@@ -181,6 +216,16 @@ const GENERATOR = {
             template(path.normalize(`${dependency}/${icon}/${subFile}`)),
           );
         }
+
+        const illustrationPath = `./${name}/${icon}${
+          subFile && subFile !== '.' ? `/${subFile}` : ''
+        }`;
+
+        packageJsonExports[illustrationPath] = {
+          require: `${illustrationPath}/index.cjs`,
+          import: `${illustrationPath}/index.mjs`,
+          types: `${illustrationPath}/index.d.ts`,
+        };
       }
     }
   },
@@ -193,6 +238,12 @@ const GENERATOR = {
         : EXPORT_TEMPLATES[extension].NAMED;
       await fs.outputFile(`./${name}/index.${extension}`, template(dependency));
     }
+
+    packageJsonExports[`./${name}`] = {
+      require: `./${name}/index.cjs`,
+      import: `./${name}/index.mjs`,
+      types: `./${name}/index.d.ts`,
+    };
   },
 };
 
@@ -200,11 +251,18 @@ const generateFiles = async (packages: string[]) => {
   for (const dep of packages) {
     const [, name] = dep.split('/');
 
-    if (name === 'utils') await GENERATOR.UTILS(dep, name);
+    if (name === 'core') {
+      await GENERATOR.OTHER(dep, name);
+      await GENERATOR.UTILS(dep);
+    }
     if (name === 'icon') await GENERATOR.ICONS(dep, name);
     if (name === 'illustration') await GENERATOR.ICONS(dep, name);
     await GENERATOR.OTHER(dep, name);
+
+    packageJson.exports = packageJsonExports;
+
+    await fs.writeJson(path.resolve(dirname, 'package.json'), packageJson, { spaces: 2 });
   }
 };
 
-await generateFiles(components.packages);
+await generateFiles(components);

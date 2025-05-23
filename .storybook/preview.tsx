@@ -28,7 +28,7 @@ const preview: Preview = {
       const rootRef = React.useRef<HTMLDivElement>(null);
 
       return (
-        <div style={{ display: 'grid', gridTemplateRows: '20px 70vh 20px' }}>
+        <div style={{ display: 'grid', gridTemplateRows: '20px auto 20px' }}>
           <div tabIndex={0} />
           <PortalProvider value={rootRef}>
             <div ref={rootRef}>

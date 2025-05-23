@@ -1,7 +1,7 @@
 {
   "name": "@semcore/flex-box",
   "description": "Semrush FlexBox Component",
-  "version": "5.41.0",
+  "version": "16.0.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -16,24 +16,12 @@
     "import": "./lib/esm/index.mjs",
     "types": "./lib/types/index.d.ts"
   },
-  "dependencies": {
-    "@semcore/utils": "4.48.0",
-    "classnames": "2.2.6",
-    "csstype": "3.0.8"
-  },
   "peerDependencies": {
-    "@semcore/core": "^2.17.5",
-    "react": "16.8 - 18",
-    "react-dom": "16.8 - 18"
+    "@semcore/base-components": "^16.0.0"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/semrush/intergalactic.git",
     "directory": "semcore/flex-box"
-  },
-  "devDependencies": {
-    "@types/react": "18.0.21",
-    "@types/classnames": "2.2.6",
-    "@semcore/testing-utils": "1.0.0"
   }
 }

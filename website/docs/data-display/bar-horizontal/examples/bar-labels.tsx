@@ -1,7 +1,7 @@
 import React from 'react';
-import { Plot, HorizontalBar, YAxis } from 'intergalactic/d3-chart';
+import { Plot, HorizontalBar, YAxis } from '@semcore/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
-import { useColorResolver } from 'intergalactic/utils/lib/use/useColorResolver';
+import { useColorResolver } from '@semcore/core/lib/utils/use/useColorResolver';
 
 const Demo = () => {
   const MARGIN = 40;

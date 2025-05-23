@@ -1,7 +1,6 @@
 import React from 'react';
 import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
 import { Box, BoxProps } from '@semcore/flex-box';
-import { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
 export type TabPanelValue = string | number | boolean;
 
@@ -31,19 +30,18 @@ export type TabPanelProps<T extends TabPanelValue = TabPanelValue> = BoxProps & 
 
 /** @deprecated */
 export interface ITabPanelItemProps extends TabPanelItemProps, UnknownProperties {}
-export type TabPanelItemProps = BoxProps &
-  KeyboardFocusProps & {
-    /** Makes a tab selected. This property is determined automatically depending on the value. */
-    selected?: boolean;
-    /** Disabled state */
-    disabled?: boolean;
-    /** Tab value */
-    value?: TabPanelValue;
-    /** Left addon tag  */
-    addonLeft?: React.ElementType;
-    /** Right addon tag  */
-    addonRight?: React.ElementType;
-  };
+export type TabPanelItemProps = BoxProps & {
+  /** Makes a tab selected. This property is determined automatically depending on the value. */
+  selected?: boolean;
+  /** Disabled state */
+  disabled?: boolean;
+  /** Tab value */
+  value?: TabPanelValue;
+  /** Left addon tag  */
+  addonLeft?: React.ElementType;
+  /** Right addon tag  */
+  addonRight?: React.ElementType;
+};
 
 /** @deprecated */
 export interface ITabPanelContext extends TabPanelContext, UnknownProperties {}

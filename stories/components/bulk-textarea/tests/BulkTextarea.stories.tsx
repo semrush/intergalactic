@@ -7,6 +7,10 @@ import ValidationBlurExample from './examples/validate-blur-base-example';
 import NoCommonErrorBlurLineExample from './examples/no-common-error-blur-line';
 import ValidationBlurLineExample from './examples/validate-blurRow-base-example';
 import WithNewValueOnHandleChangeExample from './examples/with-new-value-on-handleChange';
+import LinesAndIndexInPastePropsExample from './examples/test-lines-and-index-in-paste';
+import OnChangePropsExample from './examples/test-encode-onchange-array';
+import EmptyLineInPastePropsExample from './examples/test-empty-value-in-paste';
+
 
 const meta: Meta<typeof BulkTextarea> = {
   title: 'Components/BulkTextarea/Tests',
@@ -17,6 +21,18 @@ export default meta;
 
 export const NoCommonErrorBlur: StoryObj<typeof BulkTextarea> = {
   render: NoCommonErrorBlurLineExample,
+};
+
+export const OnChangeProps: StoryObj<typeof BulkTextarea> = {
+  render: OnChangePropsExample,
+};
+
+export const EmptyLineInPasteProps: StoryObj<typeof BulkTextarea> = {
+  render: EmptyLineInPastePropsExample,
+};
+
+export const LinesAndIndexInPasteProps: StoryObj<typeof BulkTextarea> = {
+  render: LinesAndIndexInPastePropsExample,
 };
 
 export const SizesAndStates: StoryObj<typeof BulkTextarea> = {

@@ -1,8 +1,0 @@
-*
-!.gitignore
-!.npmignore
-!CHANGELOG.md
-!components.json
-!package.json
-!tsconfig.json
-!README.md

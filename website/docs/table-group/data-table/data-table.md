@@ -146,7 +146,7 @@ Having a horizontal scroll in a large table isn't a bad practice; it's a familia
 
 ### Two scroll bars
 
-You can add two scroll bars to a table if needed—one in the header and one at the bottom. This is useful when the table is very long and has fixed columns, so users can scroll the table without scrolling to its very end. In these cases, the scroll bars can be in both the header and bottom. Refer to the [examples in the Fixed header section](/table-group/data-table/data-table-code#fixed_header).
+You can add two scroll bars to a table if needed—one in the header and one at the bottom. This is useful when the table is very long and has fixed columns, so users can scroll the table without scrolling to its very end. In these cases, the scroll bars can be in both the header and bottom. Refer to the [examples in the Sticky header section](/table-group/data-table/data-table-code#sticky_header).
 
 ![](static/table-scroll.png)
 

@@ -76,5 +76,3 @@ Table: Attributes
 ## Other recommendations
 
 See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
-
-<!--@include: ./pills-a11y-report.md-->

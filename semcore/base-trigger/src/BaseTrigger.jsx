@@ -1,19 +1,17 @@
 import React from 'react';
-import createComponent, { Component, Root, sstyled } from '@semcore/core';
+import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import { Box, InvalidStateBox } from '@semcore/flex-box';
 import NeighborLocation from '@semcore/neighbor-location';
-import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
-import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
-import logger from '@semcore/utils/lib/logger';
-import animatedSizeEnhance from '@semcore/utils/lib/enhances/animatedSizeEnhance';
-import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
+import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
+import logger from '@semcore/core/lib/utils/logger';
+import animatedSizeEnhance from '@semcore/core/lib/utils/enhances/animatedSizeEnhance';
+import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
 
 import style from './style/base-trigger.shadow.css';
 
 class RootBaseTrigger extends Component {
   static displayName = 'BaseTrigger';
   static enhance = [
-    keyboardFocusEnhance(),
     cssVariableEnhance({
       variable: '--intergalactic-duration-control',
       fallback: '200',
@@ -60,6 +58,7 @@ class RootBaseTrigger extends Component {
               render={Box}
               tag='button'
               type='button'
+              tabIndex={0}
               neighborLocation={neighborLocation}
               state={theme}
             >

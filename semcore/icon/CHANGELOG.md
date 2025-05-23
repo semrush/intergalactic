@@ -2,6 +2,46 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.1.0] - 2025-05-22
+
+### Added
+
+- New `PRToolkit` icon.
+
+## [16.0.0] - 2025-05-19
+
+### Removed
+
+- External icons.
+
+## [4.62.1] - 2025-05-13
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [5.41.3 ~> 5.41.4], `@semcore/utils` [4.48.4 ~> 4.48.5], `@semcore/core` [2.39.3 ~> 2.39.4]).
+
+## [4.62.0] - 2025-04-25
+
+### Added
+
+- New `EnterpriseSolutions` icon.
+
+## [4.61.0] - 2025-04-09
+
+### Added
+
+- New `AIToolkit` icon.
+
+### Changed
+
+- `SEOToolkit` icon a little bit.
+
+## [4.60.2] - 2025-04-04
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [5.41.1 ~> 5.41.2], `@semcore/utils` [4.48.1 ~> 4.48.2], `@semcore/core` [2.39.1 ~> 2.39.2]).
+
 ## [4.60.1] - 2025-03-18
 
 ### Added

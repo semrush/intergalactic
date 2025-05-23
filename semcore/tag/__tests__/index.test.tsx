@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { snapshot } from '@semcore/testing-utils/snapshot';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
-import propsForElement from '@semcore/utils/lib/propsForElement';
+import propsForElement from '@semcore/core/lib/utils/propsForElement';
 import Tag, { TagContainer } from '../src';
 
 import { render, fireEvent, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
@@ -34,7 +34,6 @@ describe('Tag', () => {
       colors.map((color) => (
         <Tag key={`${theme}-${color}`} theme={theme} color={color}>
           <Tag.Text>Tag name</Tag.Text>
-          <Tag.Close />
         </Tag>
       )),
     );
@@ -44,9 +43,8 @@ describe('Tag', () => {
 
   test.concurrent('Renders without focus ring when non interactive', async ({ task }) => {
     const component = (
-      <Tag id='non-interactive-tag' keyboardFocused>
+      <Tag id='non-interactive-tag'>
         <Tag.Text>Tag name</Tag.Text>
-        <Tag.Close />
       </Tag>
     );
     await expect(
@@ -58,45 +56,16 @@ describe('Tag', () => {
     ).toMatchImageSnapshot(task);
   });
 
-  test.concurrent('Renders with focus ring when interactive', async ({ task }) => {
+  test.concurrent('Renders correctly with keyboardFocused', async ({ task }) => {
     const component = (
-      <Tag id='interactive-tag' interactive>
-        <Tag.Text keyboardFocused>Tag name</Tag.Text>
-        <Tag.Close />
+      <Tag interactive id={'interactive-tag'}>
+        <Tag.Text>Tag name</Tag.Text>
       </Tag>
     );
+
     await expect(
-      await snapshot(component, {
-        actions: {
-          focus: '#interactive-tag',
-        },
-      }),
+      await snapshot(component, { actions: { focus: '#interactive-tag' } }),
     ).toMatchImageSnapshot(task);
-  });
-
-  test.concurrent('Renders correctly with keyboardFocused', async ({ task }) => {
-    const component = themes.flatMap((theme) =>
-      colors.map((color) => (
-        <Tag key={`${theme}-${color}`} theme={theme} color={color} keyboardFocused interactive>
-          <Tag.Text>Tag name</Tag.Text>
-        </Tag>
-      )),
-    );
-
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-
-  test.concurrent('Renders text correctly with keyboardFocused', async ({ task }) => {
-    const component = themes.flatMap((theme) =>
-      colors.map((color) => (
-        <Tag key={`${theme}-${color}`} theme={theme} color={color} interactive>
-          <Tag.Text keyboardFocused>Tag name</Tag.Text>
-          <Tag.Close />
-        </Tag>
-      )),
-    );
-
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
   test.concurrent('Renders correctly with Addon and Text', async ({ task }) => {
@@ -137,7 +106,6 @@ describe('Tag', () => {
     const component = (
       <Tag disabled>
         <Tag.Text>disabled</Tag.Text>
-        <Tag.Close />
       </Tag>
     );
 
@@ -149,7 +117,6 @@ describe('Tag', () => {
       colors.map((color) => (
         <Tag key={`${theme}-${color}`} theme={theme} color={color} active>
           <Tag.Text>Tag name</Tag.Text>
-          <Tag.Close />
         </Tag>
       )),
     );
@@ -164,7 +131,6 @@ describe('Tag', () => {
           <div style={{ width: 100, height: 100, background: 'black' }} />
         </Tag.Circle>
         <Tag.Text>{size}</Tag.Text>
-        <Tag.Close />
       </Tag>
     ));
 
@@ -176,72 +142,15 @@ describe('Tag', () => {
       colors.map((color) => (
         <Tag key={`${theme}-${color}`} theme={theme} color={color}>
           <Tag.Text>Tag name</Tag.Text>
-          <Tag.Close />
         </Tag>
       )),
     );
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  // test.skip('should support custom theme', async ({ task }) => {
-  //   const component = (
-  //     <>
-  //       <Tag theme={'blanchedalmond'}>
-  //         <Tag.Text>blanchedalmond</Tag.Text>
-  //         <Tag.Close />
-  //       </Tag>
-  //       <Tag theme='#3eeb4c'>
-  //         <Tag.Text>#3eeb4c</Tag.Text>
-  //         <Tag.Close />
-  //       </Tag>
-  //       <Tag theme='dark-violet'>
-  //         <Tag.Text>dark-violet</Tag.Text>
-  //         <Tag.Close />
-  //       </Tag>
-  //     </>
-  //   );
-  //   await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  // });
-
-  // test.skip('should support color text', async ({ task }) => {
-  //   const component = (
-  //     <Tag theme='dark-violet' color='white'>
-  //       dark-violet
-  //     </Tag>
-  //   );
-  //   await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  // });
-
   test.concurrent('should display ellipsis if text is too long', async ({ task }) => {
     const component = <Tag w={80}>Lorem ipsum dolor sit amet</Tag>;
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-
-  test.concurrent('should call onClick', async () => {
-    const onClick = vi.fn();
-    const { getByTestId } = render(
-      <Tag>
-        <Tag.Text>Tag</Tag.Text>
-        <Tag.Close data-testid='close' onClick={onClick} />
-      </Tag>,
-    );
-
-    fireEvent.keyDown(getByTestId('close'), { key: 'Enter' });
-    expect(onClick).toHaveBeenCalledTimes(1);
-  });
-
-  test('should not call onClick with onKeydown', async () => {
-    const onKeyDown = vi.fn();
-    const onClick = vi.fn();
-    const { getByTestId } = render(
-      <Tag>
-        <Tag.Text>Tag</Tag.Text>
-        <Tag.Close data-testid='close' onClick={onClick} onKeyDown={onKeyDown} />
-      </Tag>,
-    );
-
-    fireEvent.keyDown(getByTestId('close'), { key: 'Enter' });
-    expect(onClick).toHaveBeenCalledTimes(0);
   });
 
   test('should work as Button from keyboard', async ({ expect }) => {
@@ -287,7 +196,6 @@ describe('Tag', () => {
       <>
         <Tag theme='primary'>
           <Tag.Text>primary</Tag.Text>
-          <Tag.Close />
         </Tag>
         <Tag>Test</Tag>
       </>,
@@ -332,7 +240,7 @@ describe('TagContainer', () => {
   test.concurrent('Renders without focus ring when non interactive', async ({ task }) => {
     const component = (
       <TagContainer>
-        <TagContainer.Tag id='non-interactive-tag' keyboardFocused>
+        <TagContainer.Tag id='non-interactive-tag'>
           <TagContainer.Tag.Text>Tag name</TagContainer.Tag.Text>
         </TagContainer.Tag>
         <TagContainer.Close />
@@ -350,7 +258,7 @@ describe('TagContainer', () => {
   test.concurrent('Renders with focus ring when interactive', async ({ task }) => {
     const component = (
       <TagContainer>
-        <TagContainer.Tag id='interactive-tag' interactive keyboardFocused>
+        <TagContainer.Tag id='interactive-tag' interactive>
           <TagContainer.Tag.Text>Tag name</TagContainer.Tag.Text>
         </TagContainer.Tag>
         <TagContainer.Close />
@@ -366,33 +274,39 @@ describe('TagContainer', () => {
   });
 
   test.concurrent('Renders correctly with keyboardFocused', async ({ task }) => {
-    const component = themes.flatMap((theme) =>
-      colors.map((color) => (
-        <TagContainer key={`${theme}-${color}`} theme={theme} color={color}>
-          <TagContainer.Tag keyboardFocused interactive>
-            <TagContainer.Tag.Text>Tag name</TagContainer.Tag.Text>
-          </TagContainer.Tag>
-          <TagContainer.Close />
-        </TagContainer>
-      )),
+    const theme = themes[0];
+    const color = colors[0];
+    const component = (
+      <TagContainer key={`${theme}-${color}`} theme={theme} color={color}>
+        <TagContainer.Tag id='focused-interactive' interactive>
+          <TagContainer.Tag.Text>Tag name</TagContainer.Tag.Text>
+        </TagContainer.Tag>
+        <TagContainer.Close />
+      </TagContainer>
     );
 
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+    await expect(
+      await snapshot(component, { actions: { focus: '#focused-interactive' } }),
+    ).toMatchImageSnapshot(task);
   });
 
   test.concurrent('Renders text correctly with focused close button', async ({ task }) => {
-    const component = themes.flatMap((theme) =>
-      colors.map((color) => (
-        <TagContainer key={`${theme}-${color}`} theme={theme} color={color}>
-          <TagContainer.Tag>
-            <TagContainer.Tag.Text>Tag name</TagContainer.Tag.Text>
-          </TagContainer.Tag>
-          <TagContainer.Close keyboardFocused />
-        </TagContainer>
-      )),
+    const component = (
+      <TagContainer>
+        <TagContainer.Tag>
+          <TagContainer.Tag.Text>Tag name</TagContainer.Tag.Text>
+        </TagContainer.Tag>
+        <TagContainer.Close id='focused_close1' />
+      </TagContainer>
     );
 
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+    await expect(
+      await snapshot(component, {
+        actions: {
+          focus: '#focused_close1',
+        },
+      }),
+    ).toMatchImageSnapshot(task);
   });
 
   test.concurrent('Renders correctly with Addon and Text', async ({ task }) => {

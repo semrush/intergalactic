@@ -1,14 +1,13 @@
 import React from 'react';
-import createComponent, { Component, sstyled, Root } from '@semcore/core';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import { Box, Flex, InvalidStateBox } from '@semcore/flex-box';
 import { Text as TypographyText } from '@semcore/typography';
-import { useColorResolver } from '@semcore/utils/lib/use/useColorResolver';
-import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
-import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
-import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
-import autoFocusEnhance from '@semcore/utils/lib/enhances/autoFocusEnhance';
-import getInputProps, { inputProps } from '@semcore/utils/lib/inputProps';
-import logger from '@semcore/utils/lib/logger';
+import { useColorResolver } from '@semcore/core/lib/utils/use/useColorResolver';
+import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
+import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
+import autoFocusEnhance from '@semcore/core/lib/utils/enhances/autoFocusEnhance';
+import getInputProps, { inputProps } from '@semcore/core/lib/utils/inputProps';
+import logger from '@semcore/core/lib/utils/logger';
 
 import style from './style/checkbox.shadow.css';
 
@@ -111,7 +110,7 @@ class ValueRoot extends Component {
       ],
     };
   };
-  static enhance = [keyboardFocusEnhance(), autoFocusEnhance(), resolveColorEnhance()];
+  static enhance = [autoFocusEnhance(), resolveColorEnhance()];
   static displayName = 'Value';
   static style = style;
 
@@ -144,7 +143,7 @@ class ValueRoot extends Component {
       size,
       state,
       theme,
-      keyboardFocused,
+      // keyboardFocused,
       checked,
       indeterminate,
       includeInputProps,
@@ -157,7 +156,7 @@ class ValueRoot extends Component {
       theme,
       size,
       state,
-      keyboardFocused,
+      // keyboardFocused,
       checked,
       indeterminate,
       resolveColor,

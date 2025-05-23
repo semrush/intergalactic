@@ -1,6 +1,5 @@
 import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
 import { BoxProps } from '@semcore/flex-box';
-import { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
 /** @deprecated */
 export interface IBreadcrumbsProps extends BreadcrumbsProps, UnknownProperties {}
@@ -14,12 +13,11 @@ export type BreadcrumbsProps = BoxProps & {
 
 /** @deprecated */
 export interface IBreadcrumbsItemProps extends BreadcrumbsItemProps, UnknownProperties {}
-export type BreadcrumbsItemProps = BoxProps &
-  KeyboardFocusProps & {
-    /** The property is responsible for the activity of the element */
-    active?: boolean;
-    locale?: string;
-  };
+export type BreadcrumbsItemProps = BoxProps & {
+  /** The property is responsible for the activity of the element */
+  active?: boolean;
+  locale?: string;
+};
 
 /** @deprecated */
 export interface IBreadcrumbsContext extends BreadcrumbsContext, UnknownProperties {}

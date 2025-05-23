@@ -5,7 +5,7 @@ import { UnknownProperties, Intergalactic, PropGetterFn } from '@semcore/core';
 import Button, { ButtonProps } from '@semcore/button';
 import Divider from '@semcore/divider';
 import { DropdownProps, DropdownTriggerProps } from '@semcore/dropdown';
-import { WithI18nEnhanceProps } from '@semcore/utils/lib/enhances/i18nEnhance';
+import { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import BaseTrigger, { BaseTriggerProps } from '@semcore/base-trigger';
 import Input, { InputProps, InputValueProps } from '@semcore/input';
 import { InputMaskValueProps } from '@semcore/input-mask';

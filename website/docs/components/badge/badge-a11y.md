@@ -9,4 +9,4 @@ Don’t hide the badges from assistive technology users with the `aria-hidden` a
 
 ## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
+For more accessibility recommendations, refer to the common [Accessibility guide](/core-principles/a11y/a11y).

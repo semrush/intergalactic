@@ -1,16 +1,16 @@
 {
   "name": "@semcore/d3-chart",
   "description": "Semrush D3 Chart Component",
-  "version": "3.59.0",
+  "version": "16.0.1",
   "main": "lib/cjs/index.js",
-  "module": "lib/es6/index.js",
+  "module": "lib/esm/index.mjs",
   "typings": "lib/types/index.d.ts",
   "sideEffects": false,
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "exports": {
     "require": "./lib/cjs/index.js",
-    "import": "./lib/es6/index.js",
+    "import": "./lib/esm/index.mjs",
     "types": "./lib/types/index.d.ts"
   },
   "scripts": {
@@ -18,14 +18,13 @@
   },
   "dependencies": {
     "@formatjs/intl": "2.3.0",
-    "@semcore/animation": "2.41.0",
-    "@semcore/checkbox": "7.44.0",
-    "@semcore/divider": "4.40.0",
-    "@semcore/flex-box": "5.41.0",
-    "@semcore/popper": "5.46.0",
-    "@semcore/utils": "4.48.0",
-    "@semcore/typography": "5.52.0",
-    "@semcore/icon": "4.60.0",
+    "@semcore/divider": "16.0.0",
+    "@semcore/animation": "16.0.0",
+    "@semcore/checkbox": "16.0.0",
+    "@semcore/flex-box": "16.0.0",
+    "@semcore/popper": "16.0.0",
+    "@semcore/icon": "16.1.0",
+    "@semcore/typography": "16.1.0",
     "@types/d3-shape": "^3.1.0",
     "@upsetjs/venn.js": "1.4.2",
     "d3-array": "3.1.6",
@@ -39,9 +38,7 @@
     "hoist-non-react-statics": "3.3.2"
   },
   "peerDependencies": {
-    "@semcore/core": "^2.17.5",
-    "react": "16.8 - 18",
-    "react-dom": "16.8 - 18"
+    "@semcore/base-components": "^16.0.0"
   },
   "repository": {
     "type": "git",

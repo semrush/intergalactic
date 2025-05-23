@@ -1,58 +1,80 @@
 import React from 'react';
-import DataTable from '@semcore/data-table';
+import { DataTable } from '@semcore/data-table';
 import Tooltip from '@semcore/tooltip';
 import { Text } from '@semcore/typography';
-import DropdownMenu from '@semcore/dropdown-menu';
+import Select from '@semcore/select';
 import { LinkTrigger } from '@semcore/base-trigger';
 
 const Demo = () => {
   return (
-    <DataTable data={data} aria-label={'Customizing header'}>
-      <DataTable.Head>
-        <DataTable.Column
-          name='keyword'
-          tag={Tooltip}
-          title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on."
-          tabIndex={0}
-        >
-          <Text noWrap>
-            Keyword <Text color='text-secondary'>(1 - 100)</Text>
-          </Text>
-        </DataTable.Column>
-        <DataTable.Column name='kd'>
-          <DropdownMenu>
-            <DropdownMenu.Trigger
-              tag={LinkTrigger}
-              color='text-primary'
-              style={{ fontSize: '12px' }}
-            >
-              KD,%
-            </DropdownMenu.Trigger>
-            <DropdownMenu.Menu>
-              <DropdownMenu.Item>Options 1</DropdownMenu.Item>
-              <DropdownMenu.Item>Options 2</DropdownMenu.Item>
-            </DropdownMenu.Menu>
-          </DropdownMenu>
-        </DataTable.Column>
-        <DataTable.Column
-          name='cpc'
-          tag={Tooltip}
-          title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on."
-          tabIndex={0}
-        >
-          CPC
-        </DataTable.Column>
-        <DataTable.Column
-          name='vol'
-          tag={Tooltip}
-          title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on."
-          tabIndex={0}
-        >
-          Vol.
-        </DataTable.Column>
-      </DataTable.Head>
-      <DataTable.Body />
-    </DataTable>
+    <DataTable
+      data={data}
+      aria-label={'Customizing header'}
+      columns={[
+        {
+          name: 'keyword',
+          tag: Tooltip,
+          title: "Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on.",
+          tabIndex: 0,
+          children: (
+            <Text noWrap>
+              Keyword <Text color='text-secondary'>(1 - 100)</Text>
+            </Text>
+          ),
+        },
+        {
+          name: 'kd',
+          children: () => {
+            const [isVisible, setIsVisible] = React.useState(false);
+            const selectOptions = [
+              { value: 'kd', children: 'KD %', label: 'KD %' },
+              { value: 'Traffic', children: 'Traffic', label: 'Traffic' },
+            ];
+
+            return (
+              <Select
+                tag={LinkTrigger}
+                aria-label='Column'
+                color='text-primary'
+                style={{ fontSize: '12px' }}
+                visible={isVisible}
+                onVisibleChange={setIsVisible}
+                options={selectOptions}
+                defaultValue={'kd'}
+                onKeyDown={(e) => {
+                  if (!isVisible && (e.key === 'ArrowDown' || e.key === 'ArrowUp')) {
+                    return false;
+                  }
+                  if (
+                    (e.key === 'ArrowLeft' ||
+                      e.key === 'ArrowRight' ||
+                      e.key === 'ArrowDown' ||
+                      e.key === 'ArrowUp') &&
+                    isVisible
+                  ) {
+                    e.stopPropagation();
+                  }
+                }}
+              />
+            );
+          },
+        },
+        {
+          name: 'cpc',
+          tag: Tooltip,
+          title: "Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on.",
+          tabIndex: 0,
+          children: 'CPC',
+        },
+        {
+          name: 'vol',
+          tag: Tooltip,
+          title: "Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on.",
+          tabIndex: 0,
+          children: 'Vol.',
+        },
+      ]}
+    />
   );
 };
 

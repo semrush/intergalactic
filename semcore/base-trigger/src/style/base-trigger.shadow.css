@@ -14,7 +14,6 @@ SBaseTrigger {
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
   overflow: visible;
-  outline: 0;
   text-align: center;
   vertical-align: middle;
   font-family: inherit;
@@ -32,16 +31,12 @@ SBaseTrigger {
   }
 
   &:active,
-  &:hover,
-  &:focus {
-    outline: 0;
+  &:hover {
     text-decoration: none;
   }
 
-  &[keyboardFocused] {
+  &:focus-visible {
     border: 1px solid var(--intergalactic-border-info-active, #006dca);
-    box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
-    z-index: 1;
   }
 
   &:hover {
@@ -170,9 +165,8 @@ SBaseTrigger[state='valid'] {
 SBaseTrigger[state='invalid'] {
   border-color: var(--intergalactic-border-critical-active, #d1002f);
 
-  &[keyboardFocused] {
-    border-color: var(--intergalactic-border-critical-active, #d1002f);
-    box-shadow: var(--intergalactic-keyboard-focus-invalid, 0px 0px 0px 3px rgba(255, 73, 83, 0.5));
+  &:focus-visible {
+    outline-color: var(--intergalactic-keyboard-focus-invalid-outline, rgba(255, 73, 83, 0.5));
   }
 }
 

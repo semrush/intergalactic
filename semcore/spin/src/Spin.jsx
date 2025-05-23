@@ -1,8 +1,8 @@
 import React from 'react';
-import createComponent, { Component, sstyled, Root } from '@semcore/core';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
-import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
-import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 import style from './style/spin.shadow.css';

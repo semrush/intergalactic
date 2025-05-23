@@ -1,43 +1,49 @@
 import React from 'react';
-import DataTable from '@semcore/data-table';
+import { DataTable } from '@semcore/data-table';
 import { ButtonLink } from '@semcore/button';
 
 const Demo = () => {
   return (
-    <DataTable data={data} aria-label={'Access to cells'}>
-      <DataTable.Head>
-        <DataTable.Column name='keyword' children='Keyword' />
-        <DataTable.Column name='kd' children='KD,%' />
-        <DataTable.Column name='cpc' children='CPC' />
-        <DataTable.Column name='vol' children='Vol.' />
-      </DataTable.Head>
-      <DataTable.Body>
-        <DataTable.Cell data={data} name='keyword'>
-          {(props, row, index) => {
-            return {
-              children: (
-                <ButtonLink
-                  onClick={() => {
-                    alert(`Click row 
+    <DataTable
+      data={data}
+      aria-label={'Access to cells'}
+      columns={[
+        { name: 'keyword', children: 'Keyword' },
+        { name: 'kd', children: 'KD,%' },
+        { name: 'cpc', children: 'CPC' },
+        { name: 'vol', children: 'Vol.' },
+      ]}
+      renderCell={(props) => {
+        if (props.dataKey === 'keyword') {
+          return (
+            <ButtonLink
+              onClick={() => {
+                alert(`Click row 
                   props: ${JSON.stringify(Object.keys(props), null, '  ')};
-                  row: ${JSON.stringify(row, null, '  ')};
-                  index: ${index};`);
-                  }}
-                >
-                  {row[props.name]}
-                </ButtonLink>
-              ),
-            };
-          }}
-        </DataTable.Cell>
-      </DataTable.Body>
-    </DataTable>
+                  row: ${JSON.stringify(props.row, null, '  ')};
+                  index: ${props.rowIndex};`);
+              }}
+            >
+              {props.value}
+            </ButtonLink>
+          );
+        }
+
+        if (props.dataKey === 'kd') {
+          return {
+            'data-test-id': 'kd cell',
+          };
+        }
+
+        return props.defaultRender();
+      }}
+    />
   );
 };
 
 const data = [
   {
-    keyword: 'ebay buy',
+    keyword: 'it must be link ebay buy',
     kd: '77.8',
     cpc: '$1.25',
     vol: '32,500,000',
@@ -65,6 +71,10 @@ const data = [
     kd: '75.89',
     cpc: '$0',
     vol: '21,644,290',
+  },
+  {
+    'keyword/kd/cpc': '434',
+    vol: 'ebay buy',
   },
 ];
 

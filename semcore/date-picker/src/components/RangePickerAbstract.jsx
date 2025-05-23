@@ -5,7 +5,7 @@ import Button from '@semcore/button';
 import { Box, Flex } from '@semcore/flex-box';
 import Divider from '@semcore/divider';
 import Dropdown from '@semcore/dropdown';
-import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { localizedMessages } from '../translations/__intergalactic-dynamic-locales';
 import { includesDate } from '../utils/includesDate';
 import { formatDDMMYY, formatMMYY } from '../utils/formatDate';

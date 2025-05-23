@@ -1,5 +1,5 @@
 import React from 'react';
-import { Plot, ScatterPlot, XAxis, YAxis, minMax, ChartLegend } from 'intergalactic/d3-chart';
+import { Plot, ScatterPlot, XAxis, YAxis, minMax, ChartLegend } from '@semcore/d3-chart';
 import { scaleLinear } from 'd3-scale';
 
 const getDegaultLegendItems = () => {

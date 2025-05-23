@@ -1,5 +1,5 @@
 import React from 'react';
-import createComponent, { Component, Root } from '@semcore/core';
+import { createComponent, Component, Root } from '@semcore/core';
 import Input from '@semcore/input';
 import { AddFilterItemProps } from '../AddFilter.types';
 import { InputValueProps } from '@semcore/input';

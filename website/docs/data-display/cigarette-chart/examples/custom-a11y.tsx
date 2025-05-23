@@ -1,5 +1,5 @@
 import React from 'react';
-import { Chart, PlotSummarizerConfig } from 'intergalactic/d3-chart';
+import { Chart, PlotSummarizerConfig } from '@semcore/d3-chart';
 const data = {
   Cats: 3524,
   Dogs: 1344,

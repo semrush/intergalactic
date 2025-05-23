@@ -1,12 +1,12 @@
 import React from 'react';
-import createComponent from '@semcore/core';
+import { createComponent } from '@semcore/core';
 import { scaleLinear, ScaleLinear } from 'd3-scale';
 import { AbstractChart } from './AbstractChart';
 import { RadarChartData, RadarChartProps, RadarChartType } from './RadarChart.type';
 // @ts-ignore
 import { Radar } from '../..';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
-import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 
 class RadarChartComponent extends AbstractChart<
   RadarChartData,

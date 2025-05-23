@@ -2,6 +2,54 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.1.0] - 2025-05-23
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/icon` [16.0.0 ~> 16.1.0]).
+
+## [16.0.0] - 2025-05-19
+
+### Added
+
+- Major version.
+
+## [3.49.2] - 2025-05-13
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.48.4 ~> 4.48.5], `@semcore/button` [5.43.2 ~> 5.43.3], `@semcore/breakpoints` [1.41.3 ~> 1.41.4]).
+
+## [3.49.1] - 2025-05-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/icon` [4.61.0 ~> 4.62.0], `@semcore/utils` [4.48.2 ~> 4.48.4], `@semcore/button` [5.43.1 ~> 5.43.2], `@semcore/breakpoints` [1.41.2 ~> 1.41.3]).
+
+## [3.49.0] - 2025-04-11
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/icon` [4.60.2 ~> 4.61.0]).
+
+## [3.48.1] - 2025-04-04
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.48.1 ~> 4.48.2], `@semcore/button` [5.43.0 ~> 5.43.1], `@semcore/breakpoints` [1.41.1 ~> 1.41.2]).
+
+## [3.48.0] - 2025-03-28
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/button` [5.42.1 ~> 5.43.0]).
+
+## [3.47.1] - 2025-03-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/icon` [4.60.0 ~> 4.60.1], `@semcore/utils` [4.48.0 ~> 4.48.1], `@semcore/button` [5.42.0 ~> 5.42.1], `@semcore/breakpoints` [1.41.0 ~> 1.41.1]).
+
 ## [3.47.0] - 2025-03-14
 
 ### Added

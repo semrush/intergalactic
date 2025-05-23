@@ -9,6 +9,7 @@ import {
   act,
   userEvent,
   waitFor,
+  waitForElementToBeRemoved,
 } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
 
@@ -276,37 +277,6 @@ describe('DropdownMenu', () => {
     await userEvent.keyboard('[Enter]');
 
     expect(spy).toHaveBeenCalledOnce();
-  });
-
-  test.sequential('Should close by second click on trigger', async ({ expect }) => {
-    const Component = () => {
-      return (
-        <DropdownMenu>
-          <DropdownMenu.Trigger tag='button' data-testid='dd-button-trigger'>
-            Trigger
-          </DropdownMenu.Trigger>
-          <DropdownMenu.Menu data-testid='dd-menu'>
-            <DropdownMenu.Item>Item 1</DropdownMenu.Item>
-            <DropdownMenu.Item>Item 2</DropdownMenu.Item>
-            <DropdownMenu.Item>Item 3</DropdownMenu.Item>
-          </DropdownMenu.Menu>
-        </DropdownMenu>
-      );
-    };
-    const { getByTestId } = render(<Component />);
-
-    await userEvent.keyboard('[Tab]');
-    await userEvent.keyboard('[Enter]');
-
-    const element = getByTestId('dd-menu');
-
-    expect(element).toBeInTheDocument();
-
-    await userEvent.click(getByTestId('dd-button-trigger'));
-
-    await waitFor(() => {
-      expect(element).not.toBeInTheDocument();
-    });
   });
 
   describe.sequential('opens nested menu', () => {

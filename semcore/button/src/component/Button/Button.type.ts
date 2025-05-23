@@ -18,12 +18,17 @@ export type ButtonSize = 'l' | 'm';
  */
 type Use = 'primary' | 'secondary' | 'tertiary';
 
+/**
+ * @deprecated don't use it. use `danger` for incorrect or danger behavior and `brand` for the orange one.
+ */
+type DeprecatedTheme = 'warning';
+
 /** Button theme */
-type Theme = 'info' | 'success' | 'warning' | 'danger' | 'muted' | 'invert';
+type Theme = 'info' | 'success' | 'brand' | 'danger' | 'muted' | 'invert';
 
 /** @deprecated */
 export interface IButtonProps extends ButtonProps, UnknownProperties {}
-export type ButtonProps = AbstractButtonProps<ButtonSize, Use, Theme>;
+export type ButtonProps = AbstractButtonProps<ButtonSize, Use, Theme | DeprecatedTheme>;
 
 /** @deprecated */
 export interface IButtonTextProps extends ButtonTextProps, UnknownProperties {}

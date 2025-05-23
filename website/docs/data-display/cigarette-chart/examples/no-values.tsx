@@ -1,5 +1,5 @@
 import React from 'react';
-import { Chart, interpolateValue } from 'intergalactic/d3-chart';
+import { Chart, interpolateValue } from '@semcore/d3-chart';
 
 function Demo() {
   return (

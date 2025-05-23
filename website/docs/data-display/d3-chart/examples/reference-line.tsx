@@ -7,7 +7,7 @@ import {
   ReferenceBackground,
   XAxis,
   YAxis,
-} from 'intergalactic/d3-chart';
+} from '@semcore/d3-chart';
 
 const Demo = () => {
   const MARGIN = 40;

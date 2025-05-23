@@ -6,8 +6,8 @@ import style from './inputField.shadow.css';
 import { PopperContext } from '@semcore/popper';
 import Tooltip from '@semcore/tooltip';
 import { InputFieldProps, ErrorItem } from './InputField.types';
-import { extractAriaProps } from '@semcore/utils/lib/ariaProps';
-import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
+import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import DOMPurify from 'dompurify';
 
 type IndexKeys = 'keyboardLineIndex' | 'mouseLineIndex';
@@ -18,7 +18,12 @@ type State = {
   visibleErrorPopper: boolean;
 };
 
-class InputField extends Component<InputFieldProps, {}, State, typeof InputField.enhance> {
+class InputField<T extends string | string[]> extends Component<
+  InputFieldProps<T>,
+  {},
+  State,
+  typeof InputField.enhance
+> {
   static displayName = 'Textarea';
   static style = style;
 
@@ -64,7 +69,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     mouseLineIndex: -1,
   };
 
-  constructor(props: InputFieldProps) {
+  constructor(props: InputFieldProps<T>) {
     super(props);
 
     this.handlePaste = this.handlePaste.bind(this);
@@ -95,7 +100,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     this.handleValueOutChange();
   }
 
-  componentDidUpdate(prevProps: InputFieldProps, prevState: State): void {
+  componentDidUpdate(prevProps: InputFieldProps<T>, prevState: State): void {
     const {
       value,
       errors,
@@ -108,8 +113,15 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       ['aria-describedby']: ariaDescribedby = '',
     } = this.props;
 
-    if (prevProps.value !== value && value !== this.getValues().join(this.delimiter)) {
-      this.handleValueOutChange();
+    if (prevProps.value !== value) {
+      const currentValue = this.getValues().join(this.delimiter);
+      if (
+        typeof value === 'string'
+          ? value !== currentValue
+          : value.join(this.delimiter) !== currentValue
+      ) {
+        this.handleValueOutChange();
+      }
     }
 
     if (prevProps.showErrors !== showErrors || prevProps.errors.length !== errors.length) {
@@ -222,7 +234,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     };
   }
 
-  createContentEditableElement(props: InputFieldProps) {
+  createContentEditableElement(props: InputFieldProps<T>) {
     const textarea = document.createElement('div');
     textarea.setAttribute('contentEditable', props.disabled || props.readonly ? 'false' : 'true');
     textarea.setAttribute('role', 'textbox');
@@ -286,8 +298,6 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
   }
 
   handleMouseDown(event: MouseEvent): void {
-    // we need to change keyboardLineIndex, because the caret in real on that current row
-    this.errorByInteraction = 'keyboard';
     const element = event.target;
 
     if (element instanceof HTMLElement) {
@@ -336,6 +346,8 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     const value = event.clipboardData?.getData('text/plain');
     const listOfNodes = value ? this.prepareNodesForPaste(value) : [];
 
+    if (listOfNodes.length === 0) return;
+
     const selection = document.getSelection();
 
     if (selection?.anchorNode && selection?.focusNode) {
@@ -368,6 +380,9 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         const before = anchorNode?.textContent?.substring(0, fromOffset) ?? '';
         const after = focusNode?.textContent?.substring(toOffset) ?? '';
 
+        const noEmptyLineBefore = before.trim() === '' ? '' : before;
+        const noEmptyLineAfter = after.trim() === '' ? '' : after;
+
         selection.deleteFromDocument();
 
         if (documentPosition !== 0) {
@@ -377,12 +392,12 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         const firstNodeToInsert = listOfNodes.splice(0, 1)[0];
         const lastNodeToInsert = listOfNodes[listOfNodes.length - 1];
 
-        anchorNode.textContent = before + firstNodeToInsert?.textContent ?? '';
+        anchorNode.textContent = noEmptyLineBefore + firstNodeToInsert?.textContent ?? '';
 
         anchorNode.after(...listOfNodes);
 
         if (lastNodeToInsert) {
-          lastNodeToInsert.textContent = (lastNodeToInsert.textContent ?? '') + after;
+          lastNodeToInsert.textContent = (lastNodeToInsert.textContent ?? '') + noEmptyLineAfter;
           textNode = lastNodeToInsert.childNodes.item(0);
           position = (lastNodeToInsert.textContent ?? '').length;
 
@@ -390,7 +405,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
           this.setErrorIndex(lastNodeToInsert);
         } else {
           position = (anchorNode.textContent ?? '').length;
-          anchorNode.textContent = (anchorNode.textContent ?? '') + after;
+          anchorNode.textContent = (anchorNode.textContent ?? '') + noEmptyLineAfter;
           textNode = anchorNode.childNodes.item(0);
 
           this.validateLine(anchorNode);
@@ -552,13 +567,16 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     this.isFocusing = false;
     this.setState({ visibleErrorPopper: false });
 
-    const { validateOn, onBlur } = this.asProps;
+    const { validateOn, onBlur, value } = this.asProps;
 
     if (validateOn.includes('blur')) {
       this.recalculateErrors();
     }
 
-    onBlur(this.getValues().join(this.delimiter), event);
+    const valueToChange =
+      typeof value === 'string' ? this.getValues().join(this.delimiter) : this.getValues();
+
+    onBlur(valueToChange as T, event);
 
     setTimeout(() => {
       this.setState({ keyboardLineIndex: -1 });
@@ -824,7 +842,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     );
   }
 
-  private prepareNodesForPaste(value: string): HTMLParagraphElement[] {
+  private prepareNodesForPaste(value: string | string[]): HTMLParagraphElement[] {
     const listOfNodes: HTMLParagraphElement[] = [];
     const { pasteProps } = this.asProps;
     const lineProcessing =
@@ -835,9 +853,10 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       });
     const skipEmptyLines = pasteProps?.skipEmptyLines ?? this.skipEmptyLines;
     const delimiter = pasteProps?.delimiter ?? this.delimiter;
+    const lines: string[] = Array.isArray(value) ? value : value.split(delimiter);
 
-    value.split(delimiter).forEach((line) => {
-      const preparedLine = lineProcessing(line);
+    lines.forEach((line, index) => {
+      const preparedLine = lineProcessing(line, index, lines.length);
 
       if ((preparedLine === '' && skipEmptyLines === false) || preparedLine !== '') {
         const node = document.createElement('p');
@@ -914,7 +933,11 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
   private getValues(): string[] {
     const values: string[] = [];
     this.textarea.childNodes.forEach((node) => {
-      values.push(node.textContent ?? '');
+      if (node.textContent?.trim() === '') {
+        values.push('');
+      } else {
+        values.push(node.textContent ?? '');
+      }
     });
 
     return values;
@@ -980,6 +1003,8 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
               return newState;
             },
             () => {
+              this.errorByInteraction = key === 'mouseLineIndex' ? 'mouse' : 'keyboard';
+
               const trigger = isInvalidRow ? targetElement : this.textarea;
 
               if (this.shouldChangePopperTrigger(trigger)) {

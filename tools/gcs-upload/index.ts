@@ -11,8 +11,6 @@ const log = (message: string) => {
   console.log(`[gcs-upload tool]: ${message}`);
 };
 
-const BUCKET_NAME = 'ui-kit-flags';
-
 export const setupStorage = async () => {
   const configFilePath = path.join(path.dirname(filename), 'config.json');
   if (process.env.GCLOUD_SECRET) {
@@ -60,6 +58,7 @@ export const getPackageData = async () => {
 };
 
 export const upload = async (
+  bucketName: string,
   filePaths: string[],
   {
     uploadSrcBaseDir,
@@ -88,7 +87,7 @@ export const upload = async (
         const fileName = uploadSrcBaseDir
           ? path.relative(uploadSrcBaseDir, filePath)
           : filePath.split('/').pop();
-        const destination = ['ui-kit', packageName, packageVersion, destinationSubDir, fileName]
+        const destination = [packageVersion, destinationSubDir, fileName]
           .filter((part) => part !== undefined)
           .join('/');
 
@@ -96,7 +95,7 @@ export const upload = async (
 
         return (
           storage
-            .bucket(BUCKET_NAME)
+            .bucket(bucketName)
             .upload(filePath, {
               gzip: true,
               destination,
@@ -109,85 +108,5 @@ export const upload = async (
         );
       }),
     ),
-  );
-};
-
-export const remove = async (filePaths: string[]) => {
-  if (!filePaths || !filePaths.length) {
-    throw new Error(
-      `@semcore/gcs-upload package requires at least one file path to be provided for removing, got ${filePaths}`,
-    );
-  }
-
-  const storage = await setupStorage();
-
-  log(`Initiating removing of ${filePaths.join(', ')}`);
-
-  await Promise.all(
-    filePaths.map(async (filePath) => {
-      log(`Removing ${filePath}`);
-
-      await storage
-        .bucket(BUCKET_NAME)
-        .file(filePath)
-        .delete()
-
-        // biome-ignore lint/suspicious/noConsoleLog:
-        .then((file) => console.log(`gs://${BUCKET_NAME}/${file} removed`));
-    }),
-  );
-};
-
-export const ls = async () => {
-  const storage = await setupStorage();
-
-  log('Listing files');
-
-  const [files] = await storage.bucket(BUCKET_NAME).getFiles();
-
-  return files.map((file) => file.name);
-};
-
-export const uploadFilesInFolders = async (folderPaths: string[]) => {
-  if (!folderPaths || !folderPaths.length) {
-    throw new Error(
-      `@semcore/gcs-upload package requires at least one folder path to be provided for uploading, got ${folderPaths}`,
-    );
-  }
-
-  const storage = await setupStorage();
-
-  log(`Uploading files from folders ${folderPaths.join(', ')}`);
-
-  await Promise.all(
-    folderPaths.map(async (folderPath) => {
-      const folderName = folderPath.split('/').pop();
-      const fileNames = await fs.readdir(folderPath);
-
-      log(`Uploading files from folder ${folderPath}`);
-
-      return await Promise.all(
-        fileNames.map((fileName) => {
-          const destination = `ui-kit/${folderName}/${fileName}`;
-
-          log(`Uploading ${fileName} to ${destination}`);
-
-          return (
-            storage
-              .bucket(BUCKET_NAME)
-              .upload(`${folderName}/{${fileName}`, {
-                gzip: true,
-                destination,
-                metadata: {
-                  cacheControl: 'public, max-age=31536000',
-                },
-              })
-
-              // biome-ignore lint/suspicious/noConsoleLog:
-              .then(() => console.log(`${folderName}/{${fileName} uploaded to ${destination}`))
-          );
-        }),
-      );
-    }),
   );
 };

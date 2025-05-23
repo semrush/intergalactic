@@ -1,10 +1,10 @@
 import React from 'react';
 import { Box } from '@semcore/flex-box';
-import autoFocusEnhance from '@semcore/utils/lib/enhances/autoFocusEnhance';
-import canUseDOM from '@semcore/utils/lib/canUseDOM';
-import cssToIntDefault from '@semcore/utils/lib/cssToIntDefault';
-import rafTrottle from '@semcore/utils/lib/rafTrottle';
-import createComponent, { Component, sstyled, Root } from '@semcore/core';
+import autoFocusEnhance from '@semcore/core/lib/utils/enhances/autoFocusEnhance';
+import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
+import cssToIntDefault from '@semcore/core/lib/utils/cssToIntDefault';
+import rafTrottle from '@semcore/core/lib/utils/rafTrottle';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
 
 import style from './style/textarea.shadow.css';
 

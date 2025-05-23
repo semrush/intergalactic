@@ -2,6 +2,57 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.1.0] - 2025-05-23
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/icon` [16.0.0 ~> 16.1.0]).
+
+## [16.0.0] - 2025-05-19
+
+### Break
+
+- `keyboardFocusEnhance` to css `:focus-visible` property.
+
+## [6.42.2] - 2025-05-13
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/checkbox` [7.44.3 ~> 7.44.4], `@semcore/button` [5.43.2 ~> 5.43.3], `@semcore/utils` [4.48.4 ~> 4.48.5], `@semcore/core` [2.39.3 ~> 2.39.4]).
+
+## [6.42.1] - 2025-05-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/checkbox` [7.44.2 ~> 7.44.3], `@semcore/icon` [4.61.0 ~> 4.62.0], `@semcore/button` [5.43.1 ~> 5.43.2], `@semcore/utils` [4.48.2 ~> 4.48.4], `@semcore/core` [2.39.2 ~> 2.39.3]).
+
+## [6.42.0] - 2025-04-11
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/icon` [4.60.2 ~> 4.61.0]).
+
+## [6.41.0] - 2025-04-01
+
+### Changed
+
+- Email in FeedbackRating error notice as a link.
+- Star icons in Slider component.
+- Close feedback form behavior - the rating value is cleared.
+- It is impossible to open a form with an empty rating.
+
+## [6.40.0] - 2025-03-28
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/button` [5.42.1 ~> 5.43.0]).
+
+## [6.39.1] - 2025-03-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/checkbox` [7.44.0 ~> 7.44.1], `@semcore/icon` [4.60.0 ~> 4.60.1], `@semcore/button` [5.42.0 ~> 5.42.1], `@semcore/utils` [4.48.0 ~> 4.48.1], `@semcore/core` [2.39.0 ~> 2.39.1]).
+
 ## [6.39.0] - 2025-03-14
 
 ### Added

@@ -1,4 +1,4 @@
 include:
   - project: 'ui-kit/intergalactic-release'
-    ref: 'master'
+    ref: 'release/v16'
     file: '.intergalactic-gitlab-ci.yml'

@@ -1,5 +1,5 @@
 import React from 'react';
-import createComponent, { Component, Root } from '@semcore/core';
+import { createComponent, Component, Root } from '@semcore/core';
 import Select, { SelectProps } from '@semcore/select';
 import { AddFilterItemProps, AddFilterSelectType } from '../AddFilter.types';
 import { FilterTrigger } from '@semcore/base-trigger';
