@@ -69,6 +69,14 @@ export const renderComponentChangelog = (tokenList: any[], index: number) => {
             }
 
             changelogs.push(...itemRows);
+
+            if (version === '16.0.0') {
+              changelogs.push('::: tip Versioning update 🔄');
+              changelogs.push(
+                'Starting with `Intergalactic v16`, major versions of components are synchronized with the library version.',
+              );
+              changelogs.push(':::');
+            }
           }
         }
       });
