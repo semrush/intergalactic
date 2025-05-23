@@ -460,10 +460,10 @@ test.describe('Color-picker', () => {
     await page.keyboard.press('Space');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
-    await page.waitForTimeout(50);
+    await page.waitForTimeout(100);
     await page.keyboard.press('Escape');
     await expect(locators.popper).toBeVisible();
-    await page.waitForTimeout(50);
+    await page.waitForTimeout(100);
     await page.keyboard.press('Escape');
     await expect(locators.popper).not.toBeVisible();
     await page.keyboard.press('Space');
@@ -636,6 +636,7 @@ test.describe('Color-picker', () => {
     await test.step('Verify paletter manager when colors defaultColors and onColorsChange pre set', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
+      await page.waitForTimeout(100);
 
       const colorItems = page.locator(
         '[data-ui-name="ColorPicker.Colors"] [data-ui-name="ColorPicker.Item"]',
@@ -643,7 +644,7 @@ test.describe('Color-picker', () => {
       await expect(colorItems).toHaveCount(7);
 
       const expectedColors = [
-        'Clear color', // null — как правило, без value, только aria-label
+        'Clear color',
         '#8649E1',
         '#FF5733',
         '#27D3E7',
@@ -672,14 +673,19 @@ test.describe('Color-picker', () => {
 
       await locators.inputColor.fill('888');
       await page.keyboard.press('Enter');
+      await page.waitForTimeout(100);
       await expect(paletteItems).toHaveCount(3);
 
       await paletteItems.nth(2).click();
+      await page.waitForTimeout(100);
 
       await locators.trigger.first().click();
+      await page.waitForTimeout(100);
 
       await expect(paletteItems.nth(2)).toHaveAttribute('aria-selected', 'true');
       await locators.trigger.first().click();
+      await page.waitForTimeout(100);
+
     });
 
     await test.step('Verify paletter manager when defaultColors and onColorsChange pre set', async () => {
@@ -691,7 +697,7 @@ test.describe('Color-picker', () => {
       await expect(colorItems).toHaveCount(10);
 
       const expectedColors = [
-        'Clear color', // null — как правило, без value, только aria-label
+        'Clear color', 
         '#8649E1',
         '#FF5733',
         '#98848D',
@@ -723,12 +729,13 @@ test.describe('Color-picker', () => {
 
       await locators.inputColor.fill('888');
       await page.keyboard.press('Enter');
+      await page.waitForTimeout(100);
       await expect(paletteItems).toHaveCount(2);
 
       await paletteItems.nth(1).click();
-
+      await page.waitForTimeout(100);
       await locators.trigger.nth(1).click();
-
+      await page.waitForTimeout(100);
       await expect(paletteItems.nth(1)).toHaveAttribute('aria-selected', 'true');
     });
   });
@@ -761,7 +768,7 @@ test.describe('Color-picker', () => {
       .locator('[data-ui-name="PaletteManager.Item"]');
     await paletteNonEditableItems.nth(1).hover();
     await expect(paletteNonEditableItems).toHaveCount(3);
-    await page.waitForTimeout(300);
+    await page.waitForTimeout(500);
     await expect(page).toHaveScreenshot();
 
     locators.inputColor.first().click();
