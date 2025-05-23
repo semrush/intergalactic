@@ -146,7 +146,6 @@ test.describe('Dropdown', () => {
     await expect(trigger).not.toBeFocused();
     await expect(popper).not.toBeFocused();
 
-
     await page.keyboard.press('Escape');
     await page.waitForTimeout(200);
     await expect(trigger).toBeFocused();
@@ -155,7 +154,6 @@ test.describe('Dropdown', () => {
     await trigger.click();
     await expect(trigger).not.toBeFocused();
     await expect(popper).toBeFocused();
-  
   });
 
   test('Verify stretch and placement', async ({ page }) => {
@@ -168,15 +166,14 @@ test.describe('Dropdown', () => {
 
     await button.first().click();
     await page.waitForTimeout(200);
-   //snapshot
+    //snapshot
 
-   await button.nth(1).click();
-   await page.waitForTimeout(200);
-  //snapshot
+    await button.nth(1).click();
+    await page.waitForTimeout(200);
+    //snapshot
 
-  await button.nth(2).click();
-  await page.waitForTimeout(200);
- //snapshot
-  
+    await button.nth(2).click();
+    await page.waitForTimeout(200);
+    //snapshot
   });
 });
