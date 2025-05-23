@@ -87,7 +87,10 @@ test.describe('Dropdown', () => {
     await expect(trigger).toBeFocused();
   });
 
-  test('Verify keyboard interaction when Focus interaction enabled', async ({ page, browserName }) => {
+  test('Verify keyboard interaction when Focus interaction enabled', async ({
+    page,
+    browserName,
+  }) => {
     if (browserName === 'webkit') return;
 
     const standPath = 'stories/components/dropdown/docs/examples/focus_interaction.tsx';
@@ -238,12 +241,13 @@ test.describe('Dropdown', () => {
       await expect(popper).toHaveCount(1);
       await page.keyboard.press('Escape');
       await popper.waitFor({ state: 'hidden', timeout: 500 });
-
     });
   });
 
-
-  test('Verify dropdown keyboard interactions when trigger is input and Dropdown.Item inside', async ({ page, browserName }) => {
+  test('Verify dropdown keyboard interactions when trigger is input and Dropdown.Item inside', async ({
+    page,
+    browserName,
+  }) => {
     if (browserName === 'webkit') return;
     const standPath = 'stories/components/dropdown/tests/examples/dd-input-trigger.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -262,12 +266,11 @@ test.describe('Dropdown', () => {
       await popper.waitFor({ state: 'visible', timeout: 500 });
       await expect(popper).toHaveCount(1);
       await expect(popper).toBeFocused();
-
     });
 
     await test.step('Verify Navigation bettwenn items', async () => {
       await page.keyboard.press('Tab');
-      await expect(page.getByRole('link', { name: 'set up first' })).toBeFocused()
+      await expect(page.getByRole('link', { name: 'set up first' })).toBeFocused();
     });
 
     await test.step('Verify Closes by ESC', async () => {
@@ -276,9 +279,9 @@ test.describe('Dropdown', () => {
     });
   });
 
-
   test('Verify dropdown can be closed by click on button inside', async ({ page }) => {
-    const standPath = 'stories/patterns/filters/filter-include-exclude/docs/examples/basic-example.tsx';
+    const standPath =
+      'stories/patterns/filters/filter-include-exclude/docs/examples/basic-example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -294,14 +297,17 @@ test.describe('Dropdown', () => {
       await expect(page).toHaveScreenshot();
       await applyButton.click();
       await expect(popper).toHaveCount(0);
-
     });
   });
 
-  test('Verify dropdown can be closed by keyboard press on button inside', async ({ page, browserName }) => {
+  test('Verify dropdown can be closed by keyboard press on button inside', async ({
+    page,
+    browserName,
+  }) => {
     if (browserName === 'webkit') return;
 
-    const standPath = 'stories/patterns/filters/filter-include-exclude/docs/examples/basic-example.tsx';
+    const standPath =
+      'stories/patterns/filters/filter-include-exclude/docs/examples/basic-example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);

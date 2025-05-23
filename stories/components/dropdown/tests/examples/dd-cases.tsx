@@ -24,11 +24,11 @@ const Demo = () => (
     </Dropdown.Popper>
   </Dropdown>
 
-  <Dropdown visible = {false}>
-    <Dropdown.Trigger id='dropdown-basic' tag={Button} ml={2} data-testid='visible'>
-    visible
+  <Dropdown defaultVisible>
+    <Dropdown.Trigger id='dropdown-basic' tag={Button} ml={2} data-testid='defaultVisible'>
+    defaultVisible
     </Dropdown.Trigger>
-    <Dropdown.Popper p={4} wMax={260} aria-labelledby='dropdown-basic'>
+    <Dropdown.Popper p={4} wMax={260} aria-labelledby='dropdown-basic' >
     <Text size={200}>
       Hello there! I'm Dropdown's content
     </Text>
@@ -41,11 +41,11 @@ const Demo = () => (
     </Dropdown.Popper>
   </Dropdown>
 
-  <Dropdown defaultVisible>
-    <Dropdown.Trigger id='dropdown-basic' tag={Button} ml={2} data-testid='defaultVisible'>
-    defaultVisible
+  <Dropdown visible = {false}>
+    <Dropdown.Trigger id='dropdown-basic' tag={Button} ml={2} data-testid='visible'>
+    visible
     </Dropdown.Trigger>
-    <Dropdown.Popper p={4} wMax={260} aria-labelledby='dropdown-basic' >
+    <Dropdown.Popper p={4} wMax={260} aria-labelledby='dropdown-basic'>
     <Text size={200}>
       Hello there! I'm Dropdown's content
     </Text>
