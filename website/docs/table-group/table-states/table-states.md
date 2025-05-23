@@ -92,7 +92,7 @@ Show this message when:
 ![](static/no-data-button.png)
 
 ::: tip Useful links
-- Live example of this state in [WidgetEmpty > NoData example](/components/widget-empty/widget-empty-code#nodata-example)
+- Live example of this state in [WidgetEmpty > NoData example](/components/widget-empty/widget-empty-code#nodata-state)
 - [Full list of illustrations](/style/illustration/illustration)
 :::
 
@@ -109,7 +109,7 @@ Include a control, such as a "Clear filters" button, to help the user correct th
 ![](static/nothing-found-button.png)
 
 ::: tip Useful links
-- Live example of this state in [WidgetEmpty > Nothing found example](/components/widget-empty/widget-empty-code#nodata-example)
+- Live example of this state in [WidgetEmpty > Nothing found example](/components/widget-empty/widget-empty-code#nodata-state)
 - [Full list of illustrations](/style/illustration/illustration)
 :::
 
@@ -128,7 +128,7 @@ Table: Examples of "Something went wrong" state
 | We don't know about the problem yet        | ![](static/error-not-known.png) |
 
 ::: tip Useful links
-- Live example of this state in [WidgetEmpty > Error example](/components/widget-empty/widget-empty-code#error-example)
+- Live example of this state in [WidgetEmpty > Error example](/components/widget-empty/widget-empty-code#error-state)
 - [Full list of illustrations](/style/illustration/illustration)
 :::
 

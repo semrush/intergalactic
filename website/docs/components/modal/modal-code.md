@@ -56,7 +56,7 @@ To access the background or the close `Close` icon, you will need to expand the 
 
 In most cases, it is expected that you will not require this functionality. **There is no need for a custom `Close` icon.** Instead, consider the following solutions:
 
-- If you need to send analytics upon clicking the close icon, you can use the [`onClose` prop](/components/modal/modal-api#IModalProps.onClose) in the Modal component.
+- If you need to send analytics upon clicking the close icon, you can use the [`onClose` prop](/components/modal/modal-api#modal) in the Modal component.
 - To ensure the spinner overlaps the close icon, refer to the example provided above.
 
 ::: sandbox

@@ -70,7 +70,7 @@ Lines with values that exceed the limit are highlighted. Counter changes its the
 
 ## Controls
 
-In the component, the controls have a default placement, but if you need to position them elsewhere, you can arrange them differently. [Refer to the example](/components/bulk-textarea/bulk-textarea-code#expanded-bulktextarea).
+In the component, the controls have a default placement, but if you need to position them elsewhere, you can arrange them differently.
 
 ### Clear all button
 

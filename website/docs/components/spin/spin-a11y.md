@@ -17,7 +17,7 @@ Table: Roles & attributes
 
 ## Considerations for developers
 
-- Place `Spin` inside a container with `role="status"` and `aria-live="polite"` attributes for the screen reader to announce the start of the loading process ([example](./spin-code#basic-example)).
+- Place `Spin` inside a container with `role="status"` and `aria-live="polite"` attributes for the screen reader to announce the start of the loading process ([example](./spin-code#basic-usage)).
 - If there's more than one `Spin` in a `Table`, a `Card`, or another container, and they can start or finish loading simultaneously, add the `aria-busy="true"` attribute to the container and set it to `false` when all items have finished loading. This ensures the user isn't repeatedly notified about the loading of each element.
 
 ## Resources

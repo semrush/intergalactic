@@ -17,7 +17,7 @@ Table: Keyboard support
 | `Shift + Tab` | Moves focus to the previous focusable element. |
 | `Esc`         | Closes the panel.                         |
 
-See detailed information about the keyboard support for the clickable elements in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard#keyboard_support_for_button_link_input_etc).
+See detailed information about the keyboard support for clickable elements in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard#keyboard-support-for-controls).
 
 ### Default attributes
 

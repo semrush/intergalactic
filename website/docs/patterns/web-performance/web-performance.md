@@ -7,7 +7,7 @@ After adding new features to your product, check whether the loading time fits i
 
 You can also read about the skeleton and spinner in the guides:
 
-- [Skeleton](/components/skeleton/skeleton#adbd55) (it also describes loading heavy images)
+- [Skeleton](/components/skeleton/skeleton) (it also describes loading heavy images)
 - [Spin](/components/spin/spin)
 
 Animation of the appearance and disappearance of the skeleton and spinner – `ease-out 0.3`. **The exception is the first spinner that launches the product – it doesn't have animation**, because the `@semcore` components haven't loaded yet.

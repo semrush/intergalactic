@@ -6,9 +6,9 @@ tabs: Design('chart-legend'), API('chart-legend-api'), Example('chart-legend-cod
 
 ## Usage with charts
 
-- For usage with Line chart, refer to the example in the [Line chart](/data-display/line-chart/line-chart-d3-code#legend).
-- For usage with Bar chart, refer to the example in the [Stacked bar chart](/data-display/stacked-bar-chart/stacked-bar-chart-d3-code#legend).
-- For usage with Donut chart, refer to the example in the [Donut chart](/data-display/donut-chart/donut-chart-d3-code#legend).
+- For usage with Line chart, refer to the example in the [Line chart](/data-display/line-chart/line-chart-d3-code#legend-and-symbols-for-dots).
+- For usage with Bar chart, refer to the example in the [Stacked bar chart](/data-display/stacked-bar-chart/stacked-bar-chart-d3-code#legend-and-pattern-fill).
+- For usage with Donut chart, refer to the example in the [Donut chart](/data-display/donut-chart/donut-chart-d3-code#legend-and-pattern-fill).
 
 ## Custom shape
 

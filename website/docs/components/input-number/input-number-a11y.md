@@ -19,7 +19,7 @@ Table: Keyboard support
 | `Down Arrow` or `Shift` + `Down Arrow` | Decreases the value.                           |
 | `Enter`                          | Submits the entered value.                     |
 
-See detailed information about the keyboard support for the input fields in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard#input_i_textarea).
+See detailed information about the keyboard support for the input fields in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard#input-and-textarea).
 
 ### Roles & attributes
 

@@ -4,6 +4,10 @@ fileSource: input-mask
 tabs: Design('input-mask'), A11y('input-mask-a11y'), API('input-mask-api'), Example('input-mask-code'), Changelog('input-mask-changelog')
 ---
 
+::: warning
+`InputMask` is deprecated and will be removed in the next major release.
+:::
+
 ## Mask
 
 This is an example of a basic input with a `mask` feature. The mask is defined using the mask property, which specifies the input format and validates the entered value.

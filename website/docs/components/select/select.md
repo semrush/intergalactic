@@ -204,7 +204,7 @@ Don’t show **Select all** or **Deselect all** when the user has searched and g
 
 - Sometimes, user selection can be limited by the number of required items.
 - In this case, once the user has selected the required number, all other items should receive the `disabled` state.
-- Inform the user that the choice is limited. This can be done, for example, by putting a [Hint](/style/typography/typography#hints_hint_links) next to the input's label. Also, you can add a tooltip to the items in the `disabled` state that explains why they got this state.
+- Inform the user that the choice is limited. This can be done, for example, by putting an [Informer](../../patterns/informer/informer.md) next to the input label. Also, you can add a tooltip to the items in the `disabled` state that explains why they got this state.
 
 ::: tip
 Hide the **Select all** and **Deselect all** buttons from lists where the maximum number of selected options is limited.

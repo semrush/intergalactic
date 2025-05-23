@@ -303,7 +303,7 @@ export const sideBarConfig: SidebarConfig = [
           {
             link: '/components/input-mask/input-mask',
             activeMatch: '/components/input-mask/',
-            text: 'InputMask',
+            text: 'InputMask [deprecated]',
           },
           {
             link: '/components/input-number/input-number',
@@ -615,11 +615,6 @@ export const sideBarConfig: SidebarConfig = [
             text: 'DataTable',
           },
           {
-            link: '/table-group/table-old/table-old',
-            activeMatch: '/table-group/table-old/',
-            text: 'Table (old)',
-          },
-          {
             link: '/table-group/table-primary/table-primary',
             activeMatch: '/table-group/table-primary/',
             text: 'Primary table',
@@ -636,6 +631,11 @@ export const sideBarConfig: SidebarConfig = [
           {
             link: '/table-group/table-states/table-states',
             text: 'Table states',
+          },
+          {
+            link: '/table-group/table-old/table-old',
+            activeMatch: '/table-group/table-old/',
+            text: 'Table [deprecated]',
           },
         ],
       },

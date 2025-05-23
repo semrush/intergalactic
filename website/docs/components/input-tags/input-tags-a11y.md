@@ -16,7 +16,7 @@ Table: Keyboard support
 | `Enter`                              | **On an editable tag:** starts editing the tag. <br>**On a tag's Remove button:** removes the tag. <br>**In the filled text input:** adds a new tag. <br>**In the combobox input:** opens the list of items, or applies the selected item. |
 | `Space`                     | **On an editable tag:** starts editing the tag. <br>**On a tag's Remove button:** removes the tag. <br>**In the filled text input:** first `Space` adds a space, second `Space` adds a new tag. |
 
-Find detailed information about the keyboard support for input fields in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard#input_i_textarea).
+Find detailed information about the keyboard support for input fields in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard#input-and-textarea).
 
 ### Roles and attributes
 

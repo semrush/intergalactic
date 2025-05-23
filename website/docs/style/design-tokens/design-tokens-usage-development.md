@@ -31,7 +31,7 @@ To apply a global theme, define CSS variables on the `:root` via CSS or JS. For 
 }
 ```
 
-Any design token from the [tokens list](/style/design-tokens/design-tokens#semantic_tokens) may be applied.
+Any design token from the [tokens list](/style/design-tokens/design-tokens#semantic-tokens) may be applied.
 
 ## Local theme
 

@@ -149,11 +149,10 @@ const DesignTokensTable = React.memo(({ filteredTokens }) => {
     <DataTable
       data={filteredTokens}
       className={styles.tokensTable}
-      hMax={400}
+      hMax={'75vh'}
       w={'100%'}
       columns={columns}
       headerProps={{ sticky: true }}
-      virtualScroll={true}
       renderCell={(props) => {
         if (props.dataKey === 'name') {
           if (filteredTokens.length === 0) {

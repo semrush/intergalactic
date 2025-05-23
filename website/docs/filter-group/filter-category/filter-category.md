@@ -48,7 +48,7 @@ Table: Sorting variants for categories
 Add search if there are more than 10 categories in the list.
 :::
 
-Collapse long categories according to the [rules for long URLs](/table-group/table-controls/table-controls#a5b913) and add a tooltip to them.
+Collapse long categories according to the [rules for long URLs](../../table-group/table-controls/table-controls#long-links-and-text) and add a tooltip to them.
 
 ![long category](static/long-category.png)
 
@@ -56,7 +56,7 @@ The counters in the list are optional. If the table is heavy with data, it can b
 
 ### Filled trigger
 
-**Collapse long categories according to the [rules for long URLs](/table-group/table-controls/table-controls#a5b913).**
+**Collapse long categories according to the [rules for long URLs](../../table-group/table-controls/table-controls#long-links-and-text).**
 
 We recommend always add a label to the filter. But, if there isn’t enough space and if you are sure that without a label, users will understand what kind of filter they are using, you can remove the label.
 
@@ -110,7 +110,7 @@ Table: Sorting variants for categories
 Add search if there are more than 10 categories in the list.
 :::
 
-Collapse long categories according to the [rules for long URLs](/table-group/table-controls/table-controls#a5b913) and add a tooltip to them.
+Collapse long categories according to the [rules for long URLs](../../table-group/table-controls/table-controls#long-links-and-text) and add a tooltip to them.
 
 ![long category](static/long-category-multiselect.png)
 
@@ -128,7 +128,7 @@ The counters in the list are optional, as if there are many filters nearby, it c
 The label is required, as without the label it will be difficult for the user to understand what the filter is about.
 
 ::: tip
-Selected categories are always pinned at the very top of the list, as in the [example](/components/select/select#sorting_multiselect_options).
+Selected categories are pinned at the top of the list, as described in the [Select guide](/components/select/select#specific-multiselect-cases).
 :::
 
 ### Loading

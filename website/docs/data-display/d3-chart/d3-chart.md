@@ -130,7 +130,7 @@ In our design system, data is typically placed within a [Card](/components/card/
 
 Make sure each chart has a title, and it's clear which chart each title belongs to.
 
-If you're displaying the chart inside a `Card`, use the [Card.Title](../../components/card/card.md#cardheader) component.
+If you're displaying the chart inside a `Card`, use the [Card.Title](../../components/card/card.md#card-header) component.
 
 ![](static/heading.png)
 
@@ -138,7 +138,7 @@ If you're displaying the chart inside a `Card`, use the [Card.Title](../../compo
 
 You can add a description text to your chart. Typically, such a text can provide information on maximum/minimum data statuses, explains the data source, or offers insightful advice related to visualized data.
 
-If you're displaying the chart inside a `Card`, use the [Card.Description](../../components/card/card.md#cardheader) component.
+If you're displaying the chart inside a `Card`, use the [Card.Description](../../components/card/card.md#card-header) component.
 
 ![](static/subtitle.png)
 
@@ -149,7 +149,7 @@ During the initial data loading, display the [Skeleton](/components/skeleton/ske
 If the chart has a title, it should be displayed during the initial loading. The user should be aware of what's being loaded, and whether they need to wait for the process to complete.
 
 ::: tip
-Each chart type has a specific skeleton. Refer to specific chart type guides and [Chart Skeleton examples](../../components/skeleton/skeleton-code.md#skeleton-examples-for-charts).
+Each chart type has a specific skeleton. Refer to specific chart type guides and [Chart Skeleton examples](../../components/skeleton/skeleton-code.md#chart-skeleton).
 :::
 
 ## Edge cases
