@@ -6,7 +6,7 @@ import { Row } from './Row';
 
 import style from './style.shadow.css';
 import { Cell } from './Cell';
-import { DataTableRowProps, DTRow, RowPropsInner } from './Row.types';
+import {DataTableRowProps, DTRow, RowPropsInner, UniqRowKey} from './Row.types';
 import { DataTableCellProps } from './Cell.types';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
 import { ACCORDION, ROW_GROUP, ROW_INDEX, UNIQ_ROW_KEY } from '../DataTable/DataTable';
@@ -20,7 +20,11 @@ import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 const ROWS_BUFFER = 20;
 const APROX_ROWS_ON_PAGE = 20;
 
-class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner> {
+type State = {
+  expandedForAnimation: Set<UniqRowKey>;
+}
+
+class BodyRoot extends Component<DataTableBodyProps, {}, State, [], BodyPropsInner> {
   static displayName = 'Body';
   static style = style;
 
@@ -28,6 +32,10 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
 
   indexForDownIterate = 0;
   indexForUpIterate = 0;
+
+  state: State = {
+    expandedForAnimation: new Set(),
+  }
 
   handleRef = (index: number, row: DTRow) => (node: HTMLElement | null) => {
     if (!this.rowsHeightMap.has(index) && node) {
@@ -44,7 +52,26 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
       }
     }, 300); // we need to calculate after expanding animation
 
-    this.asProps.onExpandRow(row);
+    if (this.asProps.expandedRows.has(row[UNIQ_ROW_KEY])) {
+      this.setState((prevState) => {
+        prevState.expandedForAnimation.add(row[UNIQ_ROW_KEY]);
+        return {
+          expandedForAnimation: new Set([...prevState.expandedForAnimation]),
+        };
+      });
+      setTimeout(() => {
+        this.asProps.onExpandRow(row);
+
+        this.setState((prevState) => {
+          prevState.expandedForAnimation.delete(row[UNIQ_ROW_KEY]);
+          return {
+            expandedForAnimation: new Set([...prevState.expandedForAnimation]),
+          };
+        });
+      }, 300); // we need to remove it from list of grid calculations after expanding animation
+    } else {
+      this.asProps.onExpandRow(row);
+    }
   };
 
   handleClickRow = (row: DTRow, index: number) => (e: React.SyntheticEvent<HTMLElement>) => {
@@ -112,7 +139,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
       uid,
       gridTemplateAreas,
       gridTemplateColumns,
-      expanded: expandedRows?.has(row[UNIQ_ROW_KEY]),
+      expanded: expandedRows?.has(row[UNIQ_ROW_KEY]) && !this.state.expandedForAnimation.has(row[UNIQ_ROW_KEY]),
       accordionDataGridArea,
       columns,
       rowIndex: index,
@@ -201,7 +228,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
       value?.[ACCORDION] ||
       (cellValue instanceof MergedRowsCell && cellValue.accordion)
     ) {
-      let expanded = expandedRows?.has(props.row[UNIQ_ROW_KEY]);
+      let expanded = expandedRows?.has(props.row[UNIQ_ROW_KEY]) && !this.state.expandedForAnimation.has(props.row[UNIQ_ROW_KEY]);
 
       if (cellValue instanceof MergedRowsCell && cellValue.accordion && props.row[ROW_GROUP]) {
         const mergedKeysSet = props.row[ROW_GROUP];
