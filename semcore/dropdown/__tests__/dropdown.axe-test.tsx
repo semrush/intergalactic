@@ -25,4 +25,27 @@ test.describe('Dropdown', () => {
       expect(violations).toEqual([]);
     }
   });
+
+  test('Focus interaction', async ({ page }) => {
+    const standPath = 'stories/components/dropdown/docs/examples/focus_interaction.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    // base check
+    {
+      const violations = await getAccessibilityViolations({ page });
+
+      expect(violations).toEqual([]);
+    }
+
+    // opened dropdown check
+    {
+      await page.keyboard.press('Tab');
+
+      const violations = await getAccessibilityViolations({ page });
+
+      expect(violations).toEqual([]);
+    }
+  });
 });
