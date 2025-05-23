@@ -93,19 +93,6 @@ const App = PlaygroundGeneration(Preview);
 
 **Input** is a single-line text field. It's one of the basic components for all kinds of forms, search fields, etc.
 
-<!-- I'D REMOVED THIS LIST AT ALL
-Other input types for entering certain data:
-
-- [InputMask](/components/input-mask/input-mask)
-- [InputNumber](/components/input-number/input-number)
-- [InputPhone](/components/input-phone/input-phone)
-- [InputTags](/components/input-tags/input-tags)
-- [DatePicker](/components/date-picker/date-picker)
-- [TimePicker](/components/time-picker/time-picker)
-- [ColorPicker](/components/color-picker/color-picker)
-- [Checkbox](/components/checkbox/checkbox)
-- [Radio](/components/radio/radio) -->
-
 ## Appearance
 
 ### Sizes

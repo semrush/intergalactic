@@ -177,7 +177,7 @@ const group = {
     type: 'components',
   },
   inputMask: {
-    title: 'InputMask',
+    title: 'InputMask [deprecated]',
     route: '/intergalactic/components/input-mask/input-mask',
     disabled: false,
     type: 'components',

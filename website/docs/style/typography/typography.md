@@ -11,7 +11,6 @@ tabs: Design('typography'), A11y('typography-a11y'), API('typography-api'), Exam
 - Text with the full font sizes scale
 - List
 - Blockquote
-- Hint (not recommended for use, use the [ButtonLink](../../components/button/button-code#button-looking-like-link) component instead)
 
 ### Font
 
@@ -181,9 +180,3 @@ They're sufficient for the most common font sizes used in lists within our desig
 Each subsequent level of the nested list is indented to the left. The `margin` between list levels for all font sizes is 8px.
 
 ![](static/second-level.png)
-
-## Hints (hint links)
-
-::: warning
-The [ButtonLink](../../components/button/button.md#button-with-link-styles) component has been implemented to replace the `Hint` component. Using `Hint` as a button or pseudo-link is no longer recommended.
-:::
