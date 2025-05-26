@@ -98,7 +98,6 @@ const Demo = () => {
   );
 };
 
-// Статичная базовая дата
 const baseDate = new Date('2025-01-01T00:00:00Z');
 
 const data = [

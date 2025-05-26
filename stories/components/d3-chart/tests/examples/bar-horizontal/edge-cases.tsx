@@ -6,18 +6,15 @@ import {
   HorizontalBar,
   YAxis,
   XAxis,
-  HoverRect,
 } from '@semcore/d3-chart';
 import { scaleBand, scaleLinear } from 'd3-scale';
 import { Flex } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
 
 const BarChartExamples = () => {
   const width = 400;
   const height = 150;
   const MARGIN = 40;
 
-  // Общие масштабные функции
   const x = scaleLinear().domain([0, 15]).range([MARGIN * 2, width - MARGIN]);
   const y = scaleBand()
     .domain(['Alpha', 'Beta'])

@@ -9,7 +9,7 @@ const data = {
 };
 
 const lineColors: Record<keyof typeof data, string> = {
-  categories: '', // categories не используется для цвета, но нужно добавить, чтобы не было ошибки
+  categories: '', 
   data_1: colors['orange-04'],
   data_2: colors['violet-04'],
 };
@@ -23,7 +23,7 @@ const getDefaultLegendItems = () => {
       return {
         id: item,
         label: `Category ${index + 1}`,
-        data: data[item],  // теперь item — ключ из data, тип гарантирован
+        data: data[item],  
         checked: true,
         color: lineColors[item],
       };

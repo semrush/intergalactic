@@ -64,11 +64,10 @@ const Demo = () => {
   );
 };
 
-// Заданный промежуток: 1 января 2024 – 20 января 2024
 const startDate = new Date('2024-01-01');
 const data = Array.from({ length: 20 }, (_, i) => ({
   time: new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate() + i),
-  line: Math.sin(i / 3) * 4 + 5, // значения от ~1 до 9
+  line: Math.sin(i / 3) * 4 + 5, 
 }));
 
 export default Demo;

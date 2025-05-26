@@ -15,7 +15,6 @@ const Demo = () => {
   const width = 500;
   const height = 300;
   
-  // Добавляем типизацию рефа на SVG элемент
   const plotRef = React.useRef<SVGSVGElement | null>(null);
 
   const xScale = scaleTime()

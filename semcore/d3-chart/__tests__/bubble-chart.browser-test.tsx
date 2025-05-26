@@ -69,7 +69,7 @@ test.describe('Bubble chart', () => {
       'stories/components/d3-chart/docs/examples/bubble-chart/legend-and-pattern-fill.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
-    //only render because the fucnstionality doesnt; work
+    //only render because the fucnstionality doesnt work
 
     await page.waitForTimeout(500);
     await expect(page).toHaveScreenshot();

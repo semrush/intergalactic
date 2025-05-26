@@ -5,17 +5,17 @@ import { Text } from '@semcore/typography';
 
 const Demo = () => {
   const MARGIN = 40;
-  const LEFT_MARGIN = 60;  // больше отступ слева
-  const BOTTOM_MARGIN = 60; // больше отступ снизу
+  const LEFT_MARGIN = 60;  
+  const BOTTOM_MARGIN = 60; 
   const width = 500;
   const height = 300;
 
   const xScale = scaleLinear()
-    .range([LEFT_MARGIN, width - MARGIN])  // левый отступ больше
+    .range([LEFT_MARGIN, width - MARGIN])  
     .domain([-4, 14]);
 
   const yScale = scaleLinear()
-    .range([height - BOTTOM_MARGIN, MARGIN]) // нижний отступ больше
+    .range([height - BOTTOM_MARGIN, MARGIN]) 
     .domain([-4, 14]);
 
   return (

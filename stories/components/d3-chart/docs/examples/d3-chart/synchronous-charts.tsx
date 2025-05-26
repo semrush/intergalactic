@@ -86,10 +86,9 @@ const Demo = () => {
   );
 };
 
-// Преобразуем date_chart в строку сразу для использования в scaleBand
 const data = [...Array(10).keys()].map((i) => ({
   download: 172 + 10 * i,
-  date_chart: String(1594791280000 + 1000000000 * i), // строка
+  date_chart: String(1594791280000 + 1000000000 * i), 
 }));
 
 export default Demo;
