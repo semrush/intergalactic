@@ -52,7 +52,12 @@ const Demo = () => {
           <Wizard.Stepper step={2} onActive={handleStepChange(2)}>
             Keywords
           </Wizard.Stepper>
-          <Wizard.Stepper step={3} onActive={handleStepChange(3)} number={2.1}>
+          <Wizard.Stepper
+            step={3}
+            onActive={handleStepChange(3)}
+            number={2.1}
+            style={{ fontWeight: 400 }}
+          >
             Import source
             <Text color='text-secondary-invert' fontWeight={400} tag='div'>
               {value === '' ? 'Not selected' : value}
