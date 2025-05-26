@@ -150,6 +150,7 @@ class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner>
         duration={duration}
         delay={delay}
         timingFunction={'linear'}
+        defaultHeight={'100%'}
       >
         <SCell
           ref={this.cellRef}

@@ -32,7 +32,7 @@ SRow[active] > SCell:not([theme]) {
   background-color: var(--intergalactic-table-td-cell-active, #e6e7ed);
 }
 
-SRow[accordionType='row'][expanded] > SCell:not([theme]),
+SRow[accordionType='row'][expanded] > SCellWrapper > SCell:not([theme]),
 SCell:not([theme])[expanded][withAccordion] {
   background-color: var(--intergalactic-table-td-cell-active, #e6e7ed);
 }
