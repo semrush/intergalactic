@@ -10,9 +10,9 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [16.0.0] - 2025-05-19
 
-### Deprecated
+### Break
 
-- Full package. Use `Text` from `@semcore/typography`.
+- Deprecated full package. Use `Text` from `@semcore/typography`.
 
 ## [4.42.0] - 2025-05-13
 

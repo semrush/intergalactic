@@ -4,9 +4,9 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [16.0.0] - 2025-05-19
 
-### Added
+### Break
 
-- One global node for all `status` tooltips to mount into.
+- Render dom element for `status` only after them are visible. Render content via timeout because for correct pronunciation by a screen reader, the container for the tooltip must already be on the page at the time of its appearance.
 
 ## [6.49.4] - 2025-05-13
 
