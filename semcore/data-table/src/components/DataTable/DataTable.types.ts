@@ -133,6 +133,11 @@ export type DataTableProps<D extends DataTableData> = DataTableAriaProps &
      * For custom empty data widget.
      */
     renderEmptyData?: () => React.ReactNode;
+
+    /**
+     * Duration for collapse/expand accordion rows in tables.
+     */
+    accordionDuration?: number | [number, number];
   };
 
 export type ColumnItemConfig = Intergalactic.InternalTypings.EfficientOmit<

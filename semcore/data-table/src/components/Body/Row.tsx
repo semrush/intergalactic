@@ -49,25 +49,28 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
   render() {
     const SRow = Root;
     const SCollapseRow = Collapse;
+    const SAccordionRows = Box;
     const SCell = Body.Cell;
     const SCheckboxCell = Body.Cell;
     const {
       columns,
       row,
+      rows,
       styles,
       rowIndex,
       ariaRowIndex,
       gridRowIndex,
       expanded,
       accordionDataGridArea,
-      expandedRows,
-      onExpandRow,
       'aria-level': ariaLevel = 1,
       scrollAreaRef,
       selectedRows,
       uid,
       getFixedStyle,
       mergedRow,
+      isAccordionRow,
+      animationExpand,
+      accordionRowIndex,
     } = this.asProps;
 
     let accordion = row[ACCORDION];
@@ -153,6 +156,10 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
                   Boolean(cellValue instanceof MergedRowsCell && cellValue.accordion) ||
                   this.cellHasAccordion(cellValue)
                 }
+                isAccordionRow={isAccordionRow}
+                animationExpand={animationExpand}
+                accordionRowIndex={accordionRowIndex}
+                rows={rows}
               />
             );
           })}
@@ -190,26 +197,30 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
           </SCollapseRow>
         )}
 
-        {row[ACCORDION] &&
-          Array.isArray(row[ACCORDION]) &&
-          expanded &&
-          row[ACCORDION]?.map((subrow, i) => {
-            return (
-              <Row
-                key={i}
-                row={subrow}
-                columns={columns}
-                rows={row[ACCORDION]}
-                rowIndex={rowIndex}
-                aria-posinset={i + 1}
-                aria-level={ariaLevel + 1}
-                ariaRowIndex={ariaRowIndex + 1 + i}
-                gridRowIndex={gridRowIndex + 1 + i}
-                isAccordionRow={true}
-                getFixedStyle={getFixedStyle}
-              />
-            );
-          })}
+        {row[ACCORDION] && Array.isArray(row[ACCORDION]) && (
+          <SAccordionRows>
+            {row[ACCORDION].map((subrow, i) => {
+              return (
+                <Row
+                  key={i}
+                  row={subrow}
+                  columns={columns}
+                  rows={row[ACCORDION]}
+                  rowIndex={rowIndex}
+                  aria-hidden={!expanded}
+                  aria-posinset={i + 1}
+                  aria-level={ariaLevel + 1}
+                  ariaRowIndex={ariaRowIndex + 1 + i}
+                  gridRowIndex={gridRowIndex + 1 + i}
+                  isAccordionRow={true}
+                  getFixedStyle={getFixedStyle}
+                  animationExpand={expanded}
+                  accordionRowIndex={i}
+                />
+              );
+            })}
+          </SAccordionRows>
+        )}
       </>,
     );
   }

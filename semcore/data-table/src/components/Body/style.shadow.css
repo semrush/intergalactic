@@ -1,4 +1,4 @@
-SBody, SRow, SRowGroup {
+SBody, SRow, SRowGroup, SAccordionRows {
   display: contents;
 }
 
@@ -12,8 +12,13 @@ SBody[compact] {
   }
 }
 
-SRow[gridArea], SCell[gridArea], SCollapseRow[gridArea] {
+SRow[gridArea], SCellWrapper[gridArea], SCollapseRow[gridArea] {
   grid-area: var(--gridArea);
+}
+
+SCollapseRow[gridArea] > SCellWrapper > SCell,
+SAccordionRows > SRow[isAccordionRow]:last-child > SCellWrapper > SCell {
+  border-bottom: 1px solid var(--intergalactic-border-table-accent, #a9abb6);
 }
 
 SCollapseRow SCell {
@@ -32,7 +37,7 @@ SCell:not([theme])[expanded][withAccordion] {
   background-color: var(--intergalactic-table-td-cell-active, #e6e7ed);
 }
 
-SCollapseRow > SCell:not([theme]), SRow[isAccordionRow] > SCell:not([theme]) {
+SCollapseRow > SCellWrapper > SCell:not([theme]), SRow[isAccordionRow] > SCellWrapper > SCell:not([theme]) {
   background-color: var(--intergalactic-table-td-cell-accordion, #f4f5f9);
 }
 
@@ -174,7 +179,7 @@ SCell {
   }
 }
 
-SRow[accordionType='row'] > SCell, SCell[withAccordion], SCheckboxCell {
+SRow[accordionType='row'] > SCellWrapper > SCell, SCell[withAccordion], SCheckboxCell {
   cursor: pointer;
 }
 

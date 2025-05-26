@@ -68,6 +68,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
     defaultSelectedRows: undefined,
     h: 'fit-content',
     renderEmptyData: () => <NoData py={10} type={'nothing-found'} description={''} w={'100%'} />,
+    accordionDuration: 200,
   };
 
   private columns: DTColumn[] = [];
@@ -257,9 +258,11 @@ class DataTableRoot<D extends DataTableData> extends Component<
       renderEmptyData,
       sideIndents,
       selectedRows,
+      accordionDuration,
     } = this.asProps;
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
     return {
+      accordionDuration,
       columns: this.columns,
       rows: this.rows,
       flatRows: this.flatRows,

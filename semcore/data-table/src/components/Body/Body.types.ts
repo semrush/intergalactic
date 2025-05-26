@@ -65,4 +65,5 @@ export type BodyPropsInner = DataTableBodyProps & {
   getFixedStyle: (
     cell: Pick<DTColumn, 'name' | 'fixed'>,
   ) => [side: 'left' | 'right', style: string | number] | [side: undefined, style: undefined];
+  accordionDuration?: number | [number, number];
 };

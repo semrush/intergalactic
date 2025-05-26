@@ -45,12 +45,20 @@ class BodyRoot extends Component<DataTableBodyProps, {}, State, [], BodyPropsInn
   };
 
   handleExpandRow = (row: DTRow, index: number) => {
+    const { accordionDuration } = this.asProps;
+    const openDuration = Array.isArray(accordionDuration)
+      ? accordionDuration[0]
+      : accordionDuration ?? 200;
+    const closeDuration = Array.isArray(accordionDuration)
+      ? accordionDuration[1]
+      : accordionDuration ?? 200;
+
     setTimeout(() => {
       this.setRowHeight(index, row);
       for (let i = index; i < this.rowsHeightMap.size; i++) {
         this.setRowHeight(i, row);
       }
-    }, 300); // we need to calculate after expanding animation
+    }, openDuration + 100); // we need to calculate after expanding animation
 
     if (this.asProps.expandedRows.has(row[UNIQ_ROW_KEY])) {
       this.setState((prevState) => {
@@ -68,7 +76,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, State, [], BodyPropsInn
             expandedForAnimation: new Set([...prevState.expandedForAnimation]),
           };
         });
-      }, 300); // we need to remove it from list of grid calculations after expanding animation
+      }, closeDuration + 100); // we need to remove it from list of grid calculations after expanding animation
     } else {
       this.asProps.onExpandRow(row);
     }
@@ -172,6 +180,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, State, [], BodyPropsInn
       virtualScroll,
       tableRef,
       flatRows,
+      accordionDuration,
     } = this.asProps;
     const SAccordionToggle = ButtonLink;
 
@@ -200,6 +209,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, State, [], BodyPropsInn
       virtualScroll: Boolean(virtualScroll),
       tableRef,
       children: props.children ?? defaultRender(),
+      accordionDuration,
     };
 
     if (renderCell) {
