@@ -7,7 +7,7 @@ import FileExportM from '@semcore/icon/FileExport/m';
 
 const Demo = () => (
   <>
-  <Dropdown interaction="none" >
+  <Dropdown interaction='none' >
     <Dropdown.Trigger id='dropdown-basic' tag={Button} ml={2}	>
     interaction="none"
     </Dropdown.Trigger>
@@ -24,7 +24,7 @@ const Demo = () => (
     </Dropdown.Popper>
   </Dropdown>
 
-  <Dropdown interaction="click">
+  <Dropdown interaction='click'>
     <Dropdown.Trigger id='dropdown-basic' tag={Button} ml={2} >
     interaction="click"
     </Dropdown.Trigger>
@@ -41,7 +41,7 @@ const Demo = () => (
     </Dropdown.Popper>
   </Dropdown>
 
-  <Dropdown interaction="focus">
+  <Dropdown interaction='focus'>
     <Dropdown.Trigger id='dropdown-basic' tag={Button} ml={2} >
     interaction="focus"
     </Dropdown.Trigger>
@@ -58,7 +58,7 @@ const Demo = () => (
     </Dropdown.Popper>
   </Dropdown>
 
-  <Dropdown interaction="hover">
+  <Dropdown interaction='hover'>
     <Dropdown.Trigger id='dropdown-basic' tag={Button} ml={2} >
     interaction="hover"
     </Dropdown.Trigger>

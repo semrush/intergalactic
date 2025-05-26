@@ -1,9 +1,9 @@
-import React from "react";
-import Dropdown from "@semcore/ui/dropdown";
-import Input from "@semcore/ui/input";
-import Link from "@semcore/ui/link";
+import React from 'react';
+import Dropdown from '@semcore/ui/dropdown';
+import Input from '@semcore/ui/input';
+import Link from '@semcore/ui/link';
 
-const items = ["set up first", "set up second", "set up third"];
+const items = ['set up first', 'set up second', 'set up third'];
 
 const Demo = () => {
   const [value, setValue] = React.useState("");
@@ -12,21 +12,21 @@ const Demo = () => {
   return (
     <>
     <Dropdown
-      interaction="focus"
+      interaction='focus'
       visible={isItemsVisible && items.length > 0}
       onVisibleChange={setItemsVisible}
     >
-      <Dropdown.Trigger id="dropdown-basic">
+      <Dropdown.Trigger id='dropdown-basic'>
         <Input w={200}>
           <Input.Value value={value} onChange={setValue} />
         </Input>
       </Dropdown.Trigger>
-      <Dropdown.Popper aria-labelledby="dropdown-basic">
+      <Dropdown.Popper aria-labelledby='dropdown-basic'>
         <div>
           {items.map((item) => {
             return (
               <Dropdown.Item key={item}>
-                <Link href="#">{item}</Link>
+                <Link href='#'>{item}</Link>
               </Dropdown.Item>
             );
           })}

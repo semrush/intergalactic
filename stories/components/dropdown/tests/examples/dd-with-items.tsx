@@ -1,29 +1,28 @@
-import React from "react";
-import Dropdown from "@semcore/ui/dropdown";
-import Button from "@semcore/ui/button";
-import Link from "@semcore/ui/link";
+import React from 'react';
+import Dropdown from '@semcore/dropdown';
+import Button from '@semcore/button';
+import Link from '@semcore/link';
 
-const items = ["set up first", "set up second", "set up third"];
+const items = ['set up first', 'set up second', 'set up third'];
 
 const Demo = () => {
-  const [value, setValue] = React.useState("");
   const [isItemsVisible, setItemsVisible] = React.useState(false);
 
   return (
     <Dropdown
-      interaction="focus"
+      interaction='focus'
       visible={isItemsVisible && items.length > 0}
       onVisibleChange={setItemsVisible}
     >
      <Dropdown.Trigger id='dropdown-basic' tag={Button} ml={2} >
     disableEnforceFocus	 popper
     </Dropdown.Trigger>
-      <Dropdown.Popper aria-labelledby="dropdown-basic">
+      <Dropdown.Popper aria-labelledby='dropdown-basic'>
         <div>
           {items.map((item) => {
             return (
               <Dropdown.Item key={item}>
-                <Link href="#">{item}</Link>
+                <Link href='#'>{item}</Link>
               </Dropdown.Item>
             );
           })}
