@@ -45,7 +45,7 @@ const Demo = () => {
         <Wizard.Sidebar title='Site Audit Settings'>
           <Wizard.Stepper step={1} onActive={handleStepChange(1)}>
             Personal
-            <Text color='text-secondary-invert' fontWeight={400} tag='div'>
+            <Text color='text-secondary-invert' fontWeight={400} mt={1} tag='div'>
               optional
             </Text>
           </Wizard.Stepper>
@@ -54,7 +54,7 @@ const Demo = () => {
           </Wizard.Stepper>
           <Wizard.Stepper step={3} onActive={handleStepChange(3)} number={2.1}>
             <Text fontWeight={400}>Import source</Text>
-            <Text color='text-secondary-invert' fontWeight={400} tag='div'>
+            <Text color='text-secondary-invert' fontWeight={400} mt={1} tag='div'>
               {value === '' ? 'Not selected' : value}
             </Text>
           </Wizard.Stepper>
