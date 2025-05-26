@@ -280,8 +280,7 @@ test.describe('Dropdown', () => {
   });
 
   test('Verify dropdown can be closed by click on button inside', async ({ page }) => {
-    const standPath =
-      'stories/patterns/filters/filter-cp-cd-cpc/docs/examples/basic-example.tsx';
+    const standPath = 'stories/patterns/filters/filter-cp-cd-cpc/docs/examples/basic-example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -290,34 +289,32 @@ test.describe('Dropdown', () => {
     const popper = page.locator('[data-ui-name="Dropdown.Popper"]');
     const applyButton = page.getByRole('button', { name: 'Apply' });
 
-      await trigger.click();
-      await expect(popper).toHaveCount(1);
-      await popper.waitFor({ state: 'visible', timeout: 500 });
-      await applyButton.click();
-      await expect(popper).toHaveCount(0);
+    await trigger.click();
+    await expect(popper).toHaveCount(1);
+    await popper.waitFor({ state: 'visible', timeout: 500 });
+    await applyButton.click();
+    await expect(popper).toHaveCount(0);
   });
 
   test('Verify dropdown can be closed by keyboard press on button inside', async ({ page }) => {
-    const standPath =
-      'stories/patterns/filters/filter-cp-cd-cpc/docs/examples/basic-example.tsx';
+    const standPath = 'stories/patterns/filters/filter-cp-cd-cpc/docs/examples/basic-example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
 
     const popper = page.locator('[data-ui-name="Dropdown.Popper"]');
 
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Enter');
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
 
-      await expect(popper).toHaveCount(1);
-      await popper.waitFor({ state: 'visible', timeout: 500 });
-      await expect(page).toHaveScreenshot();
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Enter');
-      await popper.waitFor({ state: 'hidden', timeout: 500 });
+    await expect(popper).toHaveCount(1);
+    await popper.waitFor({ state: 'visible', timeout: 500 });
+    await expect(page).toHaveScreenshot();
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+    await popper.waitFor({ state: 'hidden', timeout: 500 });
 
-      await expect(popper).not.toBeVisible();
-
+    await expect(popper).not.toBeVisible();
   });
 });
