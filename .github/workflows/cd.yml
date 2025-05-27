@@ -152,7 +152,7 @@ jobs:
         run: pnpm test:setup
       - name: Test
         id: test
-        run: pnpm test:docker run -- --allowOnly=false
+        run: BASE=${{ github.event.pull_request.base.ref }} pnpm pkg-diff | tail -n 1 | xargs pnpm test:docker $1 run -- --allowOnly=false
         continue-on-error: true
       - name: Save test results as artifacts
         if: steps.test.outcome != 'success'
