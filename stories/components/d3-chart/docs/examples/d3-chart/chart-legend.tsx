@@ -35,11 +35,15 @@ const Demo = () => {
   const [highlightedLine, setHighlightedLine] = React.useState(-1);
 
   const handleChangeVisible = React.useCallback((id: string, isVisible: boolean) => {
-    setLegendItems((prevItems) =>
-      prevItems.map((item) =>
-        item.id === id ? { ...item, checked: isVisible } : item,
-      ),
-    );
+    setLegendItems((prevItems) => {
+      return prevItems.map((item) => {
+        if (item.id === id) {
+          item.checked = isVisible;
+        }
+
+        return item;
+      });
+    });
   }, []);
 
   const handleMouseEnter = React.useCallback((id: string) => {

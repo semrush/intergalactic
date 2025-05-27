@@ -1,5 +1,5 @@
 import React from 'react';
-import { Plot, Venn, colors } from '@semcore/d3-chart';
+import { Plot, Venn} from '@semcore/d3-chart';
 import { Text } from '@semcore/typography';
 
 const data = {

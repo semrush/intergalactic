@@ -11,7 +11,7 @@ const data = {
 const sum = Object.values(data).reduce((acc, item) => acc + item, 0);
 
 const a11yAltTextConfig: PlotSummarizerConfig = {
-  valuesFormatter: (value: unknown, key: string | number | null) => {
+  valuesFormatter: (value: unknown) => {
     const numericValue = typeof value === 'number' ? value : Number(value);
     const percent = ((numericValue / sum) * 100).toFixed(2);
     return `${numericValue} (${percent}%)`;

@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '@semcore/button';
-import { colors, Plot, Venn } from '@semcore/d3-chart';
+import { Plot, Venn } from '@semcore/d3-chart';
 import { Flex } from '@semcore/flex-box';
 
 const orders = [

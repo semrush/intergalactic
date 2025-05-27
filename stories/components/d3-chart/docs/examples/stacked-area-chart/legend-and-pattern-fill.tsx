@@ -51,9 +51,15 @@ const Demo = () => {
 
   const handleChangeVisible = React.useCallback((id: string, isVisible: boolean) => {
     setLegendItems((prevItems) => {
-      return prevItems.map((item) =>
-        item.id === id ? { ...item, checked: isVisible } : item,
-      );
+      const newItems = prevItems.map((item) => {
+        if (item.id === id) {
+          item.checked = isVisible;
+        }
+
+        return item;
+      });
+
+      return newItems;
     });
   }, []);
 
