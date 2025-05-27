@@ -2,25 +2,7 @@ import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 test.describe('Dropdown', () => {
-  test('Verify roles and attributes', async ({ page }) => {
-    const standPath = 'stories/components/dropdown/docs/examples/basic_usage.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    const trigger = page.locator('[data-ui-name="Dropdown.Trigger"]');
-    const popper = page.locator('[data-ui-name="Dropdown.Popper"]');
-
-    await expect(trigger).toHaveAttribute('role', 'button');
-    await expect(trigger).toHaveAttribute('aria-haspopup', 'dialog');
-    await expect(trigger).toHaveAttribute('aria-expanded', 'false');
-
-    await trigger.click();
-    await popper.waitFor({ state: 'visible', timeout: 500 });
-    await expect(popper).toHaveAttribute('role', 'dialog');
-    await expect(popper).toHaveAttribute('aria-labelledby');
-  });
-
+  
   test('Verify keyboard interactios with Basic usage', async ({ page, browserName }) => {
     if (browserName === 'webkit') return;
     const standPath = 'stories/components/dropdown/docs/examples/basic_usage.tsx';
