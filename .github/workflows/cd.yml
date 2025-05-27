@@ -147,14 +147,6 @@ jobs:
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
           key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
-      - name: Github GPG Auth
-        uses: crazy-max/ghaction-import-gpg@v5.3.0
-        with:
-          gpg_private_key: ${{ secrets.BOT_ACCOUNT_GPG_PRIVATE_KEY }}
-          git_user_signingkey: true
-          git_commit_gpgsign: true
-          git_committer_name: semrush-ci-whale
-          git_committer_email: semrush-ci-whale@users.noreply.github.com
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile
@@ -254,6 +246,9 @@ jobs:
     needs: build
     steps:
       - uses: actions/checkout@v4.1.1
+        with:
+          token: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
+          fetch-depth: 0
       - uses: pnpm/action-setup@v4.0.0
         with:
           version: 8.7.6
@@ -261,8 +256,7 @@ jobs:
 
       - name: Browser testing
         id: browser-testing
-        run: |
-          docker run --rm --network host -v $(pwd):/work -v /work/node_modules -v /work/.pnpm-store -v /work/.cache -w /work/ mcr.microsoft.com/playwright:v1.48.0-jammy bash -c "npm install --global pnpm@8.11.0 && pnpm install --ignore-scripts && pnpm build:icons && pnpm build:illustration && npx playwright install && CI=true pnpm playwright test --config playwright.browser.config.ts"
+        run: BASE=origin/${{ github.event.pull_request.base.ref }} pnpm pkg-diff | tail -n 1 | xargs docker run --rm --network host -v $(pwd):/work -v /work/node_modules -v /work/.pnpm-store -v /work/.cache -w /work/ mcr.microsoft.com/playwright:v1.48.0-jammy bash -c "npm install --global pnpm@8.11.0 && pnpm install --ignore-scripts && pnpm build:icons && pnpm build:illustration && npx playwright install && CI=true pnpm playwright test --config playwright.browser.config.ts $1"
         continue-on-error: true
       - name: Save test results as artifacts
         if: steps.browser-testing.outcome != 'success'
@@ -279,14 +273,16 @@ jobs:
     needs: build
     steps:
       - uses: actions/checkout@v4.1.1
+        with:
+          token: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
+          fetch-depth: 0
       - uses: pnpm/action-setup@v4.0.0
         with:
           version: 8.7.6
           run_install: false
       - name: Axe testing
         id: axe-testing
-        run: |
-          docker run --rm --network host -v $(pwd):/work -v /work/node_modules -v /work/.pnpm-store -v /work/.cache -w /work/ mcr.microsoft.com/playwright:v1.35.0-jammy bash -c "npm install --global pnpm@8.11.0 && pnpm install --ignore-scripts && pnpm build:icons && pnpm build:illustration && npx playwright install && CI=true pnpm playwright test --config playwright.axe.config.ts"
+        run: BASE=origin/${{ github.event.pull_request.base.ref }} pnpm pkg-diff | tail -n 1 | xargs docker run --rm --network host -v $(pwd):/work -v /work/node_modules -v /work/.pnpm-store -v /work/.cache -w /work/ mcr.microsoft.com/playwright:v1.35.0-jammy bash -c "npm install --global pnpm@8.11.0 && pnpm install --ignore-scripts && pnpm build:icons && pnpm build:illustration && npx playwright install && CI=true pnpm playwright test --config playwright.axe.config.ts $1"
         continue-on-error: true
       - name: Save test results as artifacts
         if: steps.axe-testing.outcome != 'success'
