@@ -118,6 +118,7 @@ class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner>
       gridRowIndex,
       isAccordionRow,
       animationExpand,
+      style,
     } = this.asProps;
 
     const cell = row[column.name];
@@ -151,6 +152,8 @@ class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner>
         delay={delay}
         timingFunction={'linear'}
         defaultHeight={'100%'}
+        style={style}
+        fixed={column.fixed}
       >
         <SCell
           ref={this.cellRef}
@@ -172,7 +175,6 @@ class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner>
           alignItems={column.alignItems}
           alignContent={column.alignContent}
           justifyContent={column.justifyContent}
-          fixed={column.fixed}
         >
           <Children />
         </SCell>

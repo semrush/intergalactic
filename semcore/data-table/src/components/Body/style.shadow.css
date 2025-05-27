@@ -215,7 +215,7 @@ SCell[borders='both'], SCell[borders='right'] {
   border-right: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
 }
 
-SCell[fixed] {
+SCellWrapper[fixed] {
   position: sticky;
   z-index: 2;
 }
