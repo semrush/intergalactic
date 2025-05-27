@@ -2,7 +2,6 @@ SDataTable {
   display: grid;
   align-items: start;
   min-width: fit-content;
-  overflow: hidden;
 }
 
 SDataTable[gridTemplateColumns] {
