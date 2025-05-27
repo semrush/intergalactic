@@ -1197,6 +1197,16 @@
       "import": "./ChartPie/m/index.mjs",
       "types": "./ChartPie/m/index.d.ts"
     },
+    "./ChartVenn/l": {
+      "require": "./ChartVenn/l/index.js",
+      "import": "./ChartVenn/l/index.mjs",
+      "types": "./ChartVenn/l/index.d.ts"
+    },
+    "./ChartVenn/m": {
+      "require": "./ChartVenn/m/index.js",
+      "import": "./ChartVenn/m/index.mjs",
+      "types": "./ChartVenn/m/index.d.ts"
+    },
     "./Chat/l": {
       "require": "./Chat/l/index.js",
       "import": "./Chat/l/index.mjs",
