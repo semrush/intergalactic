@@ -16,6 +16,10 @@ SRow[gridArea], SCellWrapper[gridArea], SCollapseRow[gridArea] {
   grid-area: var(--gridArea);
 }
 
+SCellWrapper {
+  height: 100%;
+}
+
 SCollapseRow[gridArea] > SCellWrapper > SCell,
 SAccordionRows > SRow[isAccordionRow]:last-child > SCellWrapper > SCell {
   border-bottom: 1px solid var(--intergalactic-border-table-accent, #a9abb6);
