@@ -2,7 +2,6 @@ import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 test.describe('Dropdown', () => {
-  
   test('Verify keyboard interactios with Basic usage', async ({ page, browserName }) => {
     if (browserName === 'webkit') return;
     const standPath = 'stories/components/dropdown/docs/examples/basic_usage.tsx';
