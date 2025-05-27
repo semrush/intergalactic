@@ -46,7 +46,7 @@ test.describe('Columns', () => {
   });
 
   test('Verify column width - static and based on content', async ({ page }) => {
-    const standPath = 'stories/components/data-table/docs/examples/column-expand.tsx';
+    const standPath = 'stories/components/data-table/tests/examples/rows-columns-tests/column-expand.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
