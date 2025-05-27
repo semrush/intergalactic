@@ -1,6 +1,5 @@
 import React from 'react';
 import { DataTable, DataTableSort } from '@semcore/data-table';
-import Ellipsis from '@semcore/ellipsis';
 
 type SortableColumn = Exclude<keyof typeof data[0], 'keyword'>;
 
