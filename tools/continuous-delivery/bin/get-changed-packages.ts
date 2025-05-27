@@ -10,6 +10,9 @@ if (!base) {
   process.exit(1);
 }
 
+// biome-ignore lint/suspicious/noConsoleLog:
+console.log(`Compare with "${base}"`);
+
 const list = await getChangedPackages(base);
 
 // biome-ignore lint/suspicious/noConsoleLog:
