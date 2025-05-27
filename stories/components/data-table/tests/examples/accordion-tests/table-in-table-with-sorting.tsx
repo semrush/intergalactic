@@ -10,8 +10,8 @@ const Demo = () => {
     () =>
       [...data].sort((aRow, bRow) => {
         const [prop, sortDirection] = sort;
-        const a = aRow[prop as SortableColumn];
-        const b = bRow[prop as SortableColumn];
+        const a = aRow[prop as SortableColumn]!;
+        const b = bRow[prop as SortableColumn]!;
         if (a === b) return 0;
         if (sortDirection === 'asc') return a > b ? 1 : -1;
         else return a > b ? -1 : 1;
@@ -20,8 +20,10 @@ const Demo = () => {
           ...row,
           [ACCORDION]: row[ACCORDION]?.sort((aRow, bRow) => {
             const [prop, sortDirection] = sort;
-            const a = aRow[prop as SortableColumn];
-            const b = bRow[prop as SortableColumn];
+            // @ts-ignore
+            const a = aRow[prop];
+            // @ts-ignore
+            const b = bRow[prop];
             if (a === b) return 0;
             if (sortDirection === 'asc') return a > b ? 1 : -1;
             else return a > b ? -1 : 1;
@@ -30,12 +32,7 @@ const Demo = () => {
       }),
     [sort],
   );
-  const numberFormat = React.useMemo(() => new Intl.NumberFormat('en-US'), []);
-  const currencyFormat = React.useMemo(
-    () => new Intl.NumberFormat('en-US', { currency: 'USD', style: 'currency' }),
-    [],
-  );
-  const handleSortChange: (sort: DataTableSort<string>, e?: React.SyntheticEvent) => void = (newSort) => {
+  const handleSortChange: (sort: DataTableSort<keyof typeof sortedData[0]>, e?: React.SyntheticEvent) => void = (newSort) => {
     setSort(newSort as DataTableSort<SortableColumn>);
   };
 

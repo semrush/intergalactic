@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from 'intergalactic/button';
+import Button from '@semcore/button';
 import CheckM from '@semcore/icon/Check/m';
 import CloseM from '@semcore/icon/Close/m';
 

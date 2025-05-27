@@ -1,5 +1,7 @@
 import type { Meta } from '@storybook/react';
 
+import AllIconsGeneratedExample from './examples/all-icons-generated';
+
 import IconTypesExample from './examples/icons_regular';
 import IconsCustomExample from './examples/icon_with_custom_size_color';
 import IconColorExample from './examples/icons_color';
@@ -17,6 +19,10 @@ const meta: Meta = {
 };
 
 export default meta;
+
+export const AllIconsGenerated = {
+  render: AllIconsGeneratedExample,
+};
 
 export const IconRegular = {
   render: IconTypesExample,

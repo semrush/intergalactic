@@ -1,6 +1,6 @@
 import React from 'react';
-import { ButtonLink } from 'intergalactic/button';
-import { Flex } from 'intergalactic/flex-box';
+import { ButtonLink } from '@semcore/button';
+import { Flex } from '@semcore/flex-box';
 import CheckM from '@semcore/icon/Check/m';
 import CheckL from '@semcore/icon/Check/l';
 import CloseM from '@semcore/icon/Close/m';

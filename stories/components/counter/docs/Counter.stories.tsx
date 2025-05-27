@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Counter from 'intergalactic/counter';
+import Counter from '@semcore/counter';
 
 import AnimatedNumberExample from './examples/animated_number';
 import CounterAndTypographyExample from './examples/counter_and_typography';

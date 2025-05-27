@@ -1,7 +1,7 @@
 {
   "name": "@semcore/icon",
   "description": "Semrush Icon Component",
-  "version": "16.0.0",
+  "version": "16.1.0",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.mjs",
   "typings": "lib/types/index.d.ts",
@@ -682,6 +682,11 @@
       "import": "./platform/LocalToolkit/index.mjs",
       "types": "./platform/LocalToolkit/index.d.ts"
     },
+    "./platform/PRToolkit": {
+      "require": "./platform/PRToolkit/index.js",
+      "import": "./platform/PRToolkit/index.mjs",
+      "types": "./platform/PRToolkit/index.d.ts"
+    },
     "./platform/ReportsToolkit": {
       "require": "./platform/ReportsToolkit/index.js",
       "import": "./platform/ReportsToolkit/index.mjs",
@@ -1191,6 +1196,16 @@
       "require": "./ChartPie/m/index.js",
       "import": "./ChartPie/m/index.mjs",
       "types": "./ChartPie/m/index.d.ts"
+    },
+    "./ChartVenn/l": {
+      "require": "./ChartVenn/l/index.js",
+      "import": "./ChartVenn/l/index.mjs",
+      "types": "./ChartVenn/l/index.d.ts"
+    },
+    "./ChartVenn/m": {
+      "require": "./ChartVenn/m/index.js",
+      "import": "./ChartVenn/m/index.mjs",
+      "types": "./ChartVenn/m/index.d.ts"
     },
     "./Chat/l": {
       "require": "./Chat/l/index.js",

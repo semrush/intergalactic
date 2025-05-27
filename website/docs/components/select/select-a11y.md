@@ -68,5 +68,3 @@ Refer to the [ARIA Authoring Practices Guide from W3C](https://www.w3.org/WAI/AR
 ## Other recommendations
 
 Find more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
-
-<!--@include: ./select-a11y-report.md-->
