@@ -35,5 +35,3 @@ Avoid hiding the input label on focus.
 ## Other recommendations
 
 See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
-
-<!--@include: ./inline-edit-a11y-report.md-->

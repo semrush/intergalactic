@@ -52,7 +52,3 @@ If you need to show different states for table rows or cells, avoid relying only
 ## Other recommendations
 
 For more accessibility recommendations, refer to the common [Accessibility guide](/core-principles/a11y/a11y).
-
-## Automated screen reader testing
-
-<!--@include: ./data-table-a11y-report.md-->

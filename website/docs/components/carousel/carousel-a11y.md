@@ -62,5 +62,3 @@ If you decide to add it, make sure to include a pause button that's keyboard acc
 ## Other recommendations
 
 For more accessibility recommendations, refer to the common [Accessibility guide](/core-principles/a11y/a11y).
-
-<!--@include: ./carousel-a11y-report.md-->

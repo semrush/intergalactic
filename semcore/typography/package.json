@@ -1,7 +1,7 @@
 {
   "name": "@semcore/typography",
   "description": "Semrush Typography Component",
-  "version": "16.0.0",
+  "version": "16.1.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@semcore/flex-box": "16.0.0",
-    "@semcore/icon": "16.0.0",
+    "@semcore/icon": "16.1.0",
     "csstype": "3.0.8"
   },
   "peerDependencies": {

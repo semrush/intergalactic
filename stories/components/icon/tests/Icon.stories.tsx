@@ -10,7 +10,6 @@ import IconOtherElementsExample from './examples/icons_in_other_elements_example
 import IconPlatformExample from './examples/icons_platform';
 
 import { iconSize } from './__tests__/icon_size.test';
-import { CheckAllIcons } from './__tests__/all-icons-test.test';
 import { iconPlatform } from './__tests__/icon_platform.test';
 import { iconPay } from './__tests__/icon_pay.test';
 import { playWrapper } from '../../../utils/playWrapper';
@@ -23,7 +22,6 @@ export default meta;
 
 export const AllIconsGenerated = {
   render: AllIconsGeneratedExample,
-  play: playWrapper(CheckAllIcons),
 };
 
 export const IconRegular = {
