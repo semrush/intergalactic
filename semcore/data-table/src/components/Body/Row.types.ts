@@ -61,6 +61,7 @@ export type RowPropsInner = JSX.IntrinsicElements['div'] & {
 
   inert?: '';
 
+  accordionDuration?: number | [number, number];
   onBackFromAccordion: (colIndex: number) => void;
 
   scrollAreaRef: React.RefObject<HTMLDivElement>;

@@ -71,6 +71,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
       isAccordionRow,
       animationExpand,
       accordionRowIndex,
+      accordionDuration,
     } = this.asProps;
 
     let accordion = row[ACCORDION];
@@ -174,7 +175,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
             visible={expanded}
             interactive
             gridArea={accordionDataGridArea}
-            duration={200}
+            duration={accordionDuration ?? 200}
             zIndex={5}
           >
             <SCell

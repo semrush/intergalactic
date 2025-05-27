@@ -135,7 +135,8 @@ export type DataTableProps<D extends DataTableData> = DataTableAriaProps &
     renderEmptyData?: () => React.ReactNode;
 
     /**
-     * Duration for collapse/expand accordion rows in tables.
+     * Duration for collapse/expand accordion rows in tables in ms.
+     * @default 200
      */
     accordionDuration?: number | [number, number];
   };

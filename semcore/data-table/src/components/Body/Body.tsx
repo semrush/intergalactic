@@ -113,6 +113,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, State, [], BodyPropsInn
       selectedRows,
       onSelectRow,
       getFixedStyle,
+      accordionDuration,
     } = this.asProps;
     const row = props.row;
     const index = row[ROW_INDEX];
@@ -167,6 +168,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, State, [], BodyPropsInn
       sideIndents,
       getFixedStyle,
       mergedRow: props.mergedRow,
+      accordionDuration,
     };
   }
 
