@@ -23,10 +23,14 @@ const Demo = () => {
   );
 };
 
-const baseDate = new Date('2024-01-01');
-const data = Array.from({ length: 10 }, (_, i) => ({
-  time: new Date(baseDate.getTime() + i * 24 * 60 * 60 * 1000), 
-  line: Math.random() * 10,
-}));
+const date = new Date();
+const data = Array(10)
+  .fill({})
+  .map((d, i) => {
+    return {
+      time: new Date(date.setDate(date.getDate() + 5)),
+      line: Math.random() * 10,
+    };
+  });
 
 export default Demo;

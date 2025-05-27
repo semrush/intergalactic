@@ -164,11 +164,11 @@ const Demo = () => {
 };
 
 const date = new Date();
-const data: DataItem[] = [...Array(5).keys()].map(() => ({
-  time: new Date(date), 
-  '1': Math.random() * 5,
-  '2': Math.random() * 5,
-  '3': Math.random() * 5,
+const data = [...Array(5).keys()].map((d, i) => ({
+  time: new Date(date.setDate(date.getDate() + 5)),
+  1: Math.random() * 5,
+  2: Math.random() * 5,
+  3: Math.random() * 5,
 }));
 
 export default Demo;
