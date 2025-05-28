@@ -7,6 +7,8 @@ import type {
 import { Intergalactic } from '@semcore/core';
 import React from 'react';
 
+
+
 const wrapDataTable = <PropsExtending extends {}>(
   wrapper: (
     props: Intergalactic.InternalTypings.UntypeRefAndTag<
