@@ -47,16 +47,18 @@ jobs:
           PR_NUMBER: ${{ github.event.pull_request.number }}
           REPO: ${{ github.repository }}
         run: |
+          EXISTING_LABELS=$(gh label list --repo "$REPO" --json name --jq '.[].name')
+
           for LABEL in $CHANGED; do
             echo "Checking/creating label: $LABEL"
             
-            if ! gh label view "$LABEL" --repo "$REPO" > /dev/null 2>&1; then
+            if ! echo "$EXISTING_LABELS" | grep -qx "$LABEL"; then
               echo "Creating label '$LABEL'"
               gh label create "$LABEL" --repo "$REPO"
             fi
-
-            gh pr edit "$PR_NUMBER" --add-label "$LABEL" --repo "$REPO"
           done
+          
+          gh pr edit "$PR_NUMBER" --add-label "$CHANGED" --repo "$REPO"
   build:
     runs-on: ubuntu-latest
     needs: defineChangedComponents
