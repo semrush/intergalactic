@@ -55,6 +55,8 @@ jobs:
           CHANGED_COMPONENTS=$(echo "$CHANGED" | tr ' ' '\n')
           LABELS_TO_REMOVE=""
           LABELS_TO_ADD=""
+          
+          echo CHANGED: "$CHANGED"
 
           for LABEL in $CHANGED; do
             if ! echo "$EXISTING_LABELS" | grep -qx "$LABEL"; then
