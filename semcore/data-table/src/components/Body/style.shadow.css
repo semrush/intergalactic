@@ -260,10 +260,10 @@ SEmptyData {
 }
 
 SRow[sideIndents='wide'] {
-  SCell:first-child {
+  SCellWrapper:first-child SCell {
     padding-left: var(--intergalactic-spacing-5x, 20px);
   }
-  SCell:last-child {
+  SCellWrapper:last-child SCell {
     padding-right: var(--intergalactic-spacing-5x, 20px);
   }
 }
