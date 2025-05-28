@@ -6,7 +6,7 @@ import { DataTable } from '@semcore/data-table';
 
 import RowColumnMergeExample from './examples/rows-columns-tests/row-and-column-merging';
 import ColumnAlignmentExample from './examples/rows-columns-tests/column-alignment';
-import ColumnExpandExample from './examples/rows-columns-tests/column-expand';
+import DefaultColumnWidthsExample from './examples/rows-columns-tests/column-expand';
 
 
 const meta: Meta<typeof DataTable> = {
@@ -26,6 +26,6 @@ export const ColumnAlignment: Story = {
   render: ColumnAlignmentExample,
 };
 
-export const ColumnExpand: Story = {
-  render: ColumnExpandExample,
+export const DefaultColumnWidth: Story = {
+  render: DefaultColumnWidthsExample,
 };
