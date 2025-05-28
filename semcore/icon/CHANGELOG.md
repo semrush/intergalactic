@@ -16,9 +16,9 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [16.0.0] - 2025-05-19
 
-### Removed
+### Break
 
-- External icons.
+- Removed all icons from the "External" group.
 
 ## [4.62.1] - 2025-05-13
 
