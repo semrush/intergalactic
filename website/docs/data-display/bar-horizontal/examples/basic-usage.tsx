@@ -17,7 +17,7 @@ const Demo = () => {
 const data = Array(5)
   .fill({})
   .map((d, i) => ({
-    category: `Category ${i}`,
+    category: `C.${i}`,
     bar: Math.random() * 10,
   }));
 

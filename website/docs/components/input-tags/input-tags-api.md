@@ -57,7 +57,7 @@ import InputTags from '@semcore/ui/input-tags';
 <InputTags.Tag.Close />;
 ```
 
-Inherited from the [Tag.Close](../tag/tag-api#tag-close) component.
+Inherited from the [TagContainer.Close](../tag/tag-api#tagcontainer-close) component.
 
 ## InputTags.Tag.Circle
 

@@ -3,11 +3,11 @@ title: InputPhone
 tabs: Design('input-phone'), A11y('input-phone-a11y'), Example('input-phone-code'), Changelog('input-phone-changelog')
 ---
 
-This pattern is built with Input, InputMask and Select components. For their API, refer to their documentation:
+For API documentation, refer to the components used in the InputPhone pattern:
 
-- [Input](/components/input/input-api)
-- [InputMask](/components/input-mask/input-mask-api)
-- [Select](/components/select/select-api)
+- [Input API](/components/input/input-api)
+- [Select API](/components/select/select-api)
+- [Flags API](/components/flags/flags-api)
 
 ## Unknown country and number format
 
@@ -38,6 +38,10 @@ Some countries may have multiple formats for phone numbers. Therefore, it's some
 :::
 
 ## Known country and number format
+
+::: warning
+`InputMask` is deprecated and will be removed in the next major release.
+:::
 
 The input includes the country code as a preset value: "+ {country code}". Additionally, it has the required format mask.
 

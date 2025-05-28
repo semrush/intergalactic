@@ -9,7 +9,7 @@ tabs: Design('dropdown-menu'), A11y('dropdown-menu-a11y'), API('dropdown-menu-ap
 **DropdownMenu** is a component for displaying the menu of options and their nested items.
 
 ::: tip
-Note that the DropdownMenu component doesn't handle the value change in the trigger. This mechanism is implemented in the [Select](/components/select/select#a24650).
+Note that the DropdownMenu component doesn't handle the value change in the trigger. This mechanism is implemented in [Select](/components/select/select).
 :::
 
 ## Appearance

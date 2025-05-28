@@ -8,4 +8,4 @@ Divider is a decorative component that doesn't require special compliance for ac
 
 ## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y#contrast).
+See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).

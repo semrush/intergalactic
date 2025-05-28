@@ -91,7 +91,7 @@ Component consists of the following:
 
 ## Formats
 
-The component includes [comboboxes](/components/auto-suggest/auto-suggest#Combobox) inside the input field.
+The component includes [comboboxes](/components/auto-suggest/auto-suggest#combobox) inside the input field.
 
 If the user needs to choose the time in a 12-hour format, an additional button for switching between AM/PM is provided, eliminating the need for an extra click on the dropdown.
 

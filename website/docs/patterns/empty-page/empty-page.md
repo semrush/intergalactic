@@ -41,12 +41,12 @@ You can create illustrations for specific scenarios. These illustrations should 
 
 ## Usage examples
 
-### "Empty" state and sidebar
+### Empty state and sidebar
 
 ![](static/empty-page-3.png)
 
-### "Empty" state in the table
+### Empty state in table
 
-For further details, refer to the [Table states](/table-group/table-states/table-states#empty_table/).
+For further details, refer to the [Table states](../../table-group/table-states/table-states#empty-table).
 
 ![](static/empty-page-4.png)

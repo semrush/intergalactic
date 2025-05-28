@@ -24,7 +24,7 @@ Read more about keyboard support for all form elements in the [Keyboard control 
 - Notify users about successful task completion, any errors, and provide instructions to help them correct mistakes.
 - Divide long forms into multiple smaller forms that constitute a series of logical steps or stages and inform users about their progress.
 - Show visible labels for inputs. Placeholder text isn’t a suitable substitute as it disappears when users start typing, which is difficult for those with cognitive disabilities. Also, assistive technology may not recognize it as the field's name. Input labels should always be visible.
-- Use appropriate form layout. Check [advantages and disadvantages of the vertical and horizontal form layouts](/patterns/form/form#vertical_form_layout_vs_horizontal_form_layout).
+- Use appropriate form layout. Check [advantages and disadvantages of the vertical and horizontal form layouts](/patterns/form/form#vertical-form-layout-vs-horizontal-form-layout).
 
 ## Resources
 
