@@ -49,6 +49,7 @@ jobs:
           PR_NUMBER: ${{ github.event.pull_request.number }}
           REPO: ${{ github.repository }}
         run: |
+          gh --version
           EXISTING_LABELS=$(gh label list --repo "$REPO" --limit 100 --json name --jq '.[].name')
 
           for LABEL in $CHANGED; do
