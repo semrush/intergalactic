@@ -24,7 +24,7 @@ Table: Roles and attributes
 
 ### Keyboard support
 
-For detailed information about keyboard support for the Input, refer to the [Keyboard control guide](/core-principles/a11y/a11y-keyboard#input_i_textarea).
+For detailed information about keyboard support for the Input, refer to the [Keyboard control guide](/core-principles/a11y/a11y-keyboard#input-and-textarea).
 
 ## Considerations for developers and designers
 

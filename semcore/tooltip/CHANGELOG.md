@@ -4,9 +4,9 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [16.0.0] - 2025-05-19
 
-### Added
+### Break
 
-- One global node for all `status` tooltips to mount into.
+- Render the tooltip container only when the tooltip is visible, for better performance. The content is rendered with a small timeout, to ensure correct announcement by the screen reader.
 
 ## [6.49.4] - 2025-05-13
 

@@ -53,7 +53,7 @@ This approach provides multiple benefits:
 
 ### Theme
 
-You have the ability to change the default styles for your project. We offer [design tokens](/style/design-tokens/design-tokens) that can be adjusted on a per-component basis or applied globally throughout the project. Additionally, we provide a [mechanism for changing styles](/style/design-tokens/design-tokens#themes/), enabling complete design customization and the extension of components with new properties.
+You have the ability to change the default styles for your project. We offer [design tokens](/style/design-tokens/design-tokens) that can be adjusted on a per-component basis or applied globally throughout the project. Additionally, we provide a [mechanism for changing styles](/style/design-tokens/design-tokens#themes), enabling complete design customization and the extension of components with new properties.
 
 ### Controlled & uncontrolled
 

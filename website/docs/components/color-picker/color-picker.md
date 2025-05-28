@@ -170,7 +170,7 @@ Components that you can use as a trigger for the ColorPicker:
 
 ![](static/color-picker-triggers.png)
 
-ColorPicker.Item can be placed inside the following components:
+`ColorPicker.Item` can be placed inside other components, such as:
 
 - [Button](/components/button/button)
 - [FilterTrigger](/components/filter-trigger/filter-trigger)
@@ -179,7 +179,6 @@ ColorPicker.Item can be placed inside the following components:
 - [TabLine](/components/tab-line/tab-line)
 - [TabPanel](/components/tab-panel/tab-panel)
 - [Tag](/components/tag/tag)
-- [Option](/components/dropdown-menu/dropdown-menu#a66af9)
 
 ![](static/color-picker-places.png)
 

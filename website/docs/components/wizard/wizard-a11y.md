@@ -42,7 +42,7 @@ Table: Roles and attributes
 
 ## Considerations for developers
 
-Ensure the proper heading hierarchy in the `Wizard`. The `Wizard` starts with an `h2` heading by default, so each step should start with an `h3` heading, and so on. Refer to the [example](./wizard-code#basic-example) for details.
+Ensure the proper heading hierarchy in the `Wizard`. The `Wizard` starts with an `h2` heading by default, so each step should start with an `h3` heading, and so on. Refer to the [example](./wizard-code#basic-usage) for details.
 
 ## Resources
 

@@ -5,7 +5,6 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  csstype: 3.0.8
   minimist: 1.2.6
   semver-regex: 3.1.3
   nth-check: 2.0.1
@@ -371,8 +370,8 @@ importers:
         specifier: 2.2.6
         version: 2.2.6
       csstype:
-        specifier: 3.0.8
-        version: 3.0.8
+        specifier: 3.1.3
+        version: 3.1.3
       popper-max-size-modifier:
         specifier: 0.2.0
         version: 0.2.0(@popperjs/core@2.11.5)
@@ -479,9 +478,6 @@ importers:
       '@semcore/typography':
         specifier: 16.1.0
         version: link:../typography
-      csstype:
-        specifier: 3.0.8
-        version: 3.0.8
       dompurify:
         specifier: 3.2.3
         version: 3.2.3
@@ -653,9 +649,6 @@ importers:
       classnames:
         specifier: 2.2.6
         version: 2.2.6
-      csstype:
-        specifier: 3.0.8
-        version: 3.0.8
       hoist-non-react-statics:
         specifier: 3.3.2
         version: 3.3.2
@@ -862,14 +855,14 @@ importers:
         specifier: '*'
         version: link:../typography
       '@types/node':
-        specifier: ^18.16.15
+        specifier: 18.16.15
         version: 18.16.15
       '@types/react':
         specifier: 18.0.21
         version: 18.0.21
       csstype:
-        specifier: 3.0.8
-        version: 3.0.8
+        specifier: 3.1.3
+        version: 3.1.3
 
   semcore/date-picker:
     dependencies:
@@ -2167,9 +2160,6 @@ importers:
       '@semcore/flex-box':
         specifier: 16.0.0
         version: link:../flex-box
-      csstype:
-        specifier: 3.0.8
-        version: 3.0.8
     devDependencies:
       '@semcore/testing-utils':
         specifier: 1.0.0
@@ -2177,6 +2167,9 @@ importers:
       '@types/react':
         specifier: 18.0.21
         version: 18.0.21
+      csstype:
+        specifier: 3.1.3
+        version: 3.1.3
 
   semcore/time-picker:
     dependencies:
@@ -2239,9 +2232,6 @@ importers:
       '@semcore/icon':
         specifier: 16.1.0
         version: link:../icon
-      csstype:
-        specifier: 3.0.8
-        version: 3.0.8
     devDependencies:
       '@semcore/testing-utils':
         specifier: 1.0.0
@@ -2249,6 +2239,9 @@ importers:
       '@types/react':
         specifier: 18.0.21
         version: 18.0.21
+      csstype:
+        specifier: 3.1.3
+        version: 3.1.3
 
   semcore/ui:
     dependencies:
@@ -3556,6 +3549,9 @@ importers:
       '@babel/preset-react':
         specifier: 7.12.1
         version: 7.12.1(@babel/core@7.19.1)
+      '@mdit-vue/shared':
+        specifier: 1.0.0
+        version: 1.0.0
       '@types/classnames':
         specifier: 2.2.6
         version: 2.2.6
@@ -3595,6 +3591,9 @@ importers:
       hast-util-to-html:
         specifier: 8.0.3
         version: 8.0.3
+      markdown-it-anchor:
+        specifier: 9.2.0
+        version: 9.2.0(@types/markdown-it@13.0.1)(markdown-it@13.0.1)
       mdast:
         specifier: 3.0.0
         version: 3.0.0
@@ -7161,6 +7160,18 @@ packages:
   /@kwsites/promise-deferred@1.1.1:
     resolution: {integrity: sha512-GaHYm+c0O9MjZRu0ongGBRbinu8gVAMd2UZjji6jVmqKtZluZnptXGWhz1E8j8D2HJ3f/yMxKAUC0b+57wncIw==}
 
+  /@mdit-vue/shared@1.0.0:
+    resolution: {integrity: sha512-nbYBfmEi+pR2Lm0Z6TMVX2/iBjfr/kGEsHW8CC0rQw+3+sG5dY6VG094HuFAkiAmmvZx9DZZb+7ZMWp9vkwCRw==}
+    dependencies:
+      '@mdit-vue/types': 1.0.0
+      '@types/markdown-it': 13.0.1
+      markdown-it: 13.0.1
+    dev: true
+
+  /@mdit-vue/types@1.0.0:
+    resolution: {integrity: sha512-xeF5+sHLzRNF7plbksywKCph4qli20l72of2fMlZQQ7RECvXYrRkE9+bjRFQCyULC7B8ydUYbpbkux5xJlVWyw==}
+    dev: true
+
   /@mdx-js/react@3.0.1(@types/react@18.0.21)(react@18.2.0):
     resolution: {integrity: sha512-9ZrPIU4MGf6et1m1ov3zKf+q9+deetI51zprKB1D/z3NOb+rUxxtEl3mCjW5wTGh6VhRdwPueh1oRzi6ezkA8A==}
     peerDependencies:
@@ -7221,7 +7232,7 @@ packages:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.0
       css-tree: 1.1.3
-      csstype: 3.0.8
+      csstype: 3.1.3
       fastest-stable-stringify: 2.0.2
       inline-style-prefixer: 6.0.4
       react: 18.2.0
@@ -10506,7 +10517,7 @@ packages:
     dependencies:
       '@vue/runtime-core': 3.3.4
       '@vue/shared': 3.3.4
-      csstype: 3.0.8
+      csstype: 3.1.3
     dev: false
 
   /@vue/runtime-dom@3.4.34:
@@ -10515,7 +10526,7 @@ packages:
       '@vue/reactivity': 3.4.34
       '@vue/runtime-core': 3.4.34
       '@vue/shared': 3.4.34
-      csstype: 3.0.8
+      csstype: 3.1.3
     dev: true
 
   /@vue/server-renderer@3.3.4(vue@3.3.4):
@@ -13089,6 +13100,9 @@ packages:
   /csstype@3.0.8:
     resolution: {integrity: sha512-jXKhWqXPmlUeoQnF/EhTtTl4C9SnrxSH/jZUih3jmO6lBKr99rP3/+FmrMj4EFpOXzMtXHAZkd3x0E6h6Fgflw==}
 
+  /csstype@3.1.3:
+    resolution: {integrity: sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==}
+
   /csv-generate@4.2.2:
     resolution: {integrity: sha512-Ah/NcMxHMqwQsuL173yp8EOzHrbLh8iyScqTy990b+TJZNjHhy7gs5FfSmyQ2arLC2QVrueO3DYJVQnibJB3WQ==}
     dev: true
@@ -13733,7 +13747,7 @@ packages:
     resolution: {integrity: sha512-nRCa7CK3VTrM2NmGkIy4cbK7IZlgBE/PYMn55rrXefr5xXDP0LdtfPnblFDoVdcAfslJ7or6iqAUnx0CCGIWQA==}
     dependencies:
       '@babel/runtime': 7.19.0
-      csstype: 3.0.8
+      csstype: 3.1.3
     dev: false
 
   /dom-serializer@0.1.1:
@@ -14000,7 +14014,6 @@ packages:
   /entities@3.0.1:
     resolution: {integrity: sha512-WiyBqoomrwMdFG1e0kqvASYfnlb0lp8M5o5Fw2OFq1hNZxxcNk8Ik0Xm7LxzBhuidnZB/UtBqVCgUz3kBOP51Q==}
     engines: {node: '>=0.12'}
-    dev: false
 
   /entities@4.5.0:
     resolution: {integrity: sha512-V0hjH4dGPh9Ao5p0MoRY6BVqtwCjhz6vI5LT8AJ55H+4g9/4vbHx1I54fS0XuclLhDHArPQCiMjDxjaL8fPxhw==}
@@ -18012,7 +18025,6 @@ packages:
     resolution: {integrity: sha512-C7bfi1UZmoj8+PQx22XyeXCuBlokoyWQL5pWSP+EI6nzRylyThouddufc2c1NDIcP9k5agmN9fLpA7VNJfIiqw==}
     dependencies:
       uc.micro: 1.0.6
-    dev: false
 
   /lint-staged@10.2.9:
     resolution: {integrity: sha512-ziRAuXEqvJLSXg43ezBpHxRW8FOJCXISaXU//BWrxRrp5cBdRkIx7g5IsB3OI45xYGE0S6cOacfekSjDyDKF2g==}
@@ -18357,6 +18369,16 @@ packages:
     resolution: {integrity: sha512-1I+1qpDt4idfgLQG+BNWmrqku+7/2bi5nLf4YwF8y8zXvmfiTBY3PV3ZibfrjBueCByROpuBjLLFCajqkgYoLQ==}
     dev: true
 
+  /markdown-it-anchor@9.2.0(@types/markdown-it@13.0.1)(markdown-it@13.0.1):
+    resolution: {integrity: sha512-sa2ErMQ6kKOA4l31gLGYliFQrMKkqSO0ZJgGhDHKijPf0pNFM9vghjAh3gn26pS4JDRs7Iwa9S36gxm3vgZTzg==}
+    peerDependencies:
+      '@types/markdown-it': '*'
+      markdown-it: '*'
+    dependencies:
+      '@types/markdown-it': 13.0.1
+      markdown-it: 13.0.1
+    dev: true
+
   /markdown-it-container@3.0.0:
     resolution: {integrity: sha512-y6oKTq4BB9OQuY/KLfk/O3ysFhB3IMYoIWhGJEidXt1NQFocFK2sA2t0NYZAMyMShAGL6x5OPIbrmXPIqaN9rw==}
     dev: false
@@ -18374,7 +18396,6 @@ packages:
       linkify-it: 4.0.1
       mdurl: 1.0.1
       uc.micro: 1.0.6
-    dev: false
 
   /markdown-table@3.0.3:
     resolution: {integrity: sha512-Z1NL3Tb1M9wH4XESsCDEksWoKTdlUafKc4pt0GRwjUyXaCFZ+dc3g2erqB6zm3szA2IUSi7VnPI+o/9jnxh9hw==}
@@ -24526,7 +24547,6 @@ packages:
 
   /uc.micro@1.0.6:
     resolution: {integrity: sha512-8Y75pvTYkLJW2hWQHXxoqRgV7qb9B+9vFEtidML+7koHUFapnVJAZ6cKs+Qjz5Aw3aZWHMC6u0wJE3At+nSGwA==}
-    dev: false
 
   /ufo@1.1.2:
     resolution: {integrity: sha512-TrY6DsjTQQgyS3E3dBaOXf0TpPD8u9FVrVYmKVegJuFw51n/YB9XPt+U6ydzFG5ZIN7+DIjPbNmXoBj9esYhgQ==}

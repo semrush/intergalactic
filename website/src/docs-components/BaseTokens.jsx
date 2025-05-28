@@ -92,10 +92,9 @@ const BaseTokensTable = React.memo(({ filteredTokens }) => {
       data={filteredTokens}
       className={styles.tokensTable}
       w={'100%'}
-      hMax={400}
+      hMax={'75vh'}
       columns={columns}
       headerProps={{ sticky: true }}
-      virtualScroll
       renderEmptyData={() => {
         return (
           <NoData
