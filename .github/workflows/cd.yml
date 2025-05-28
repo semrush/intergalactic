@@ -61,7 +61,7 @@ jobs:
             fi
           done
           
-          gh pr edit "$PR_NUMBER" --add-label $CHANGED --repo "$REPO"
+          gh pr edit "$PR_NUMBER" --add-label "$(echo $CHANGED | tr ' ' ',')" --repo "$REPO"
   build:
     runs-on: ubuntu-latest
     needs: defineChangedComponents
