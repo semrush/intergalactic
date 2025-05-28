@@ -44,7 +44,7 @@ jobs:
             semcore/illustration/**/*.js
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
-          key: ${{ runner.os }}-build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
+          key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile
@@ -90,7 +90,7 @@ jobs:
             semcore/illustration/**/*.js
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
-          key: ${{ runner.os }}-build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
+          key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile
@@ -146,7 +146,7 @@ jobs:
             semcore/illustration/**/*.js
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
-          key: ${{ runner.os }}-build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
+          key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile
@@ -204,7 +204,7 @@ jobs:
             semcore/illustration/**/*.js
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
-          key: ${{ runner.os }}-build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
+          key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile
@@ -271,25 +271,17 @@ jobs:
         with:
           path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-      - name: Restore cached build
-        uses: actions/cache@v4
-        id: cache-build
-        with:
-          path: |
-            semcore/*/lib
-            tools/*/lib
-            semcore/icon/**/*.js
-            semcore/icon/**/*.mjs
-            semcore/icon/**/*.d.ts
-            semcore/illustration/**/*.js
-            semcore/illustration/**/*.mjs
-            semcore/illustration/**/*.d.ts
-          key: ${{ runner.os }}-build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile --ignore-scripts
       - name: Install Browser
         run: npx playwright install --with-deps
+      - name: Build basic packages
+        run: |
+          pnpm build:core
+          pnpm build:base-components
+          pnpm build:icons
+          pnpm build:illustration
       - name: Browser testing
         id: browser-testing
         run: FOLDERS=$(BASE=origin/${{ github.event.pull_request.base.ref }} pnpm pkg-diff | tail -n 1 | xargs) && [ -n "$FOLDERS" ] && echo "$FOLDERS" | xargs pnpm playwright test --config playwright.browser.config.ts $1
