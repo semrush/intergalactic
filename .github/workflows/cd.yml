@@ -60,10 +60,17 @@ jobs:
             fi
           done
           
+          echo $DIFF
+          
           if "$DIFF" == "false"; then
+            echo 'in remove'
             PR_LABELS=$(gh pr view "$PR_NUMBER" --repo "$REPO" --limit 100 --json labels --jq '.labels[].name')
             PR_LABELS_STR=$(echo "$PR_LABELS" | tr '\n' ' ')
             CHANGED_ROWS=$(echo "$CHANGED" | tr ' ' '\n')
+          
+            echo $PR_LABELS_STR
+            echo $CHANGED_ROWS
+          
             for LABEL in $PR_LABELS_STR; do
               if ! echo "$CHANGED_ROWS" | grep -qx "$LABEL"; then
                 echo "Remove label from PR '$LABEL'"
