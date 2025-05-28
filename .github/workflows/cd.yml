@@ -278,8 +278,8 @@ jobs:
         run: npx playwright install --with-deps
       - name: Build basic packages
         run: |
-          pnpm build:core
-          pnpm build:base-components
+          pnpm --filter @semcore/core build
+          pnpm --filter @semcore/base-components build
           pnpm build:icons
           pnpm build:illustration
       - name: Browser testing
