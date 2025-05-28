@@ -7,6 +7,41 @@ on:
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
 jobs:
+  defineChangedComponents:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
+      - name: Install Node.js
+        uses: actions/setup-node@v4.0.1
+        with:
+          node-version: 20
+      - uses: pnpm/action-setup@v4.0.0
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 8.7.6
+          run_install: false
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: |
+          echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
+      - uses: actions/cache@v4
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+      - name: Install dependencies
+        run: |
+          pnpm install --frozen-lockfile
+      - name: Define changed components
+        id: pkg-diff
+        run: |
+          git fetch origin ${{ github.event.pull_request.base.ref }}
+          BASE=origin/${{ github.event.pull_request.base.ref }} pnpm pkg-diff | tail -n 1 >> $GITHUB_OUTPUT
+      - name: Set labels
+        if: steps.pkg-diff.outputs != ''
+        run: echo ${{ steps.pkg-diff.outputs }}
   build:
     runs-on: ubuntu-latest
     steps:
