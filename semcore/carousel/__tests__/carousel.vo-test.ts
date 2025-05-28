@@ -1,8 +1,7 @@
 import { expect, voiceOverTest as test } from '@semcore/testing-utils/playwright';
 
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
-import { writeFile } from 'fs/promises';
-import { getReportHeader, makeVoiceOverReporter } from '@semcore/testing-utils/vo-reporter';
+import { makeVoiceOverReporter } from '@semcore/testing-utils/vo-reporter';
 
 test('Users can interact with Carousel via VoiceOver', async ({
   page,
@@ -10,7 +9,6 @@ test('Users can interact with Carousel via VoiceOver', async ({
 }) => {
   const standPath =
     'website/docs/components/carousel/examples/carousel_with_default_indicators.tsx';
-  const reportPath = 'website/docs/components/carousel/carousel-a11y-report.md';
 
   const htmlContent = await e2eStandToHtml(standPath, 'en');
   await page.reload();
@@ -37,8 +35,4 @@ test('Users can interact with Carousel via VoiceOver', async ({
   expect(await voiceOver.lastSpokenPhrase()).toContain(
     'Open in fullscreen A pug wrapped in a blanket sits on the road in the forest button',
   );
-
-  const report = (await getReportHeader()) + '\n\n' + (await getReport(standPath));
-
-  await writeFile(reportPath, report);
 });

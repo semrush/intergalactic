@@ -8,6 +8,8 @@ import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableI
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
 import { isFocusInside } from '@semcore/core/lib/utils/focus-lock/isFocusInside';
 
+const DEFAULT_ROW_DURATION = 50;
+
 class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner> {
   static displayName = 'Cell';
   static style = style;
@@ -90,9 +92,14 @@ class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner>
       return {};
     }
 
+    const rowsLength = rows.length;
+    const durationPerRow = (duration: number) => duration / rowsLength;
+
     const duration = Array.isArray(accordionDuration)
-      ? [accordionDuration[0] / rows.length, accordionDuration[1] / rows.length]
-      : (accordionDuration ?? 0) / rows.length;
+      ? [durationPerRow(accordionDuration[0]), durationPerRow(accordionDuration[1])]
+      : accordionDuration !== undefined
+      ? durationPerRow(accordionDuration)
+      : DEFAULT_ROW_DURATION;
 
     let delay;
     const delayIndex = animationExpand ? accordionRowIndex : rows.length - 1 - accordionRowIndex;
@@ -118,6 +125,7 @@ class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner>
       gridRowIndex,
       isAccordionRow,
       animationExpand,
+      style,
     } = this.asProps;
 
     const cell = row[column.name];
@@ -151,6 +159,8 @@ class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner>
         delay={delay}
         timingFunction={'linear'}
         defaultHeight={'100%'}
+        style={style}
+        fixed={column.fixed}
       >
         <SCell
           ref={this.cellRef}
@@ -172,7 +182,6 @@ class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner>
           alignItems={column.alignItems}
           alignContent={column.alignContent}
           justifyContent={column.justifyContent}
-          fixed={column.fixed}
         >
           <Children />
         </SCell>

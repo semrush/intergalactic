@@ -68,7 +68,6 @@ class DataTableRoot<D extends DataTableData> extends Component<
     defaultSelectedRows: undefined,
     h: 'fit-content',
     renderEmptyData: () => <NoData py={10} type={'nothing-found'} description={''} w={'100%'} />,
-    accordionDuration: 200,
   };
 
   private columns: DTColumn[] = [];
@@ -354,7 +353,9 @@ class DataTableRoot<D extends DataTableData> extends Component<
   }
 
   getRow = (index: number) => {
-    return this.tableRef.current?.querySelector(`[aria-rowindex="${index + 1}"]`);
+    return this.tableRef.current?.querySelector(
+      `[aria-rowindex="${index + 1}"]:not([aria-hidden="true"])`,
+    );
   };
 
   hasFocusableInHeader = () => {
@@ -413,7 +414,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
     const row = this.getRow(newRow);
     const cell = row?.querySelector(
-      `:scope > [role=gridcell][aria-colindex="${
+      `:scope > div > [role=gridcell][aria-colindex="${
         newCol + 1
       }"], :scope > [role=columnheader][aria-colindex="${
         newCol + 1
@@ -458,8 +459,9 @@ class DataTableRoot<D extends DataTableData> extends Component<
         // left/right
         if (
           currentCell.dataset.groupedBy === 'colgroup' ||
-          Number(currentCell.parentElement?.getAttribute('aria-rowindex')) === 2 ||
-          Array.from(row?.children ?? []).indexOf(currentCell) > 0
+          Number(currentCell.parentElement?.parentElement?.getAttribute('aria-rowindex')) === 2 ||
+          (currentCell.parentElement &&
+            Array.from(row?.children ?? []).indexOf(currentCell.parentElement) > 0)
         ) {
           colI = direction === 'left' ? colI - 1 : colI + 1;
         } else {

@@ -95,7 +95,7 @@ To get curved lines, transfer `curve` property with the required rounding method
 
 :::
 
-## Dots partial display
+## Partial dots display
 
 You can pass function to `display` prop of `Dots` component to control which dots should be displayed.
 

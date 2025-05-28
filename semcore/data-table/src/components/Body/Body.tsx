@@ -48,10 +48,10 @@ class BodyRoot extends Component<DataTableBodyProps, {}, State, [], BodyPropsInn
     const { accordionDuration } = this.asProps;
     const openDuration = Array.isArray(accordionDuration)
       ? accordionDuration[0]
-      : accordionDuration ?? 200;
+      : accordionDuration ?? (Array.isArray(row[ACCORDION]) ? 50 * row[ACCORDION].length : 200);
     const closeDuration = Array.isArray(accordionDuration)
       ? accordionDuration[1]
-      : accordionDuration ?? 200;
+      : accordionDuration ?? (Array.isArray(row[ACCORDION]) ? 50 * row[ACCORDION].length : 200);
 
     setTimeout(() => {
       this.setRowHeight(index, row);
@@ -113,6 +113,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, State, [], BodyPropsInn
       selectedRows,
       onSelectRow,
       getFixedStyle,
+      accordionDuration,
     } = this.asProps;
     const row = props.row;
     const index = row[ROW_INDEX];
@@ -167,6 +168,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, State, [], BodyPropsInn
       sideIndents,
       getFixedStyle,
       mergedRow: props.mergedRow,
+      accordionDuration,
     };
   }
 
