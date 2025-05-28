@@ -60,12 +60,17 @@ jobs:
             fi
           done
           
-          for LABEL in $EXISTING_LABELS; do
-            if ! echo "$CHANGED" | grep -qx "$LABEL"; then
-              echo "Remove label from PR '$LABEL'"
-              DIFF="true"
-            fi
-          done
+          if "$DIFF" == "false"; then
+            PR_LABELS=$(gh pr view "$PR_NUMBER" --repo "$REPO" --limit 100 --json labels --jq '.labels[].name')
+            PR_LABELS_STR=$(echo "$PR_LABELS" | tr '\n' ' ')
+            CHANGED_ROWS=$(echo "$CHANGED" | tr ' ' '\n')
+            for LABEL in $PR_LABELS_STR; do
+              if ! echo "$CHANGED_ROWS" | grep -qx "$LABEL"; then
+                echo "Remove label from PR '$LABEL'"
+                DIFF="true"
+              fi
+            done
+          fi
           
           if "$DIFF" == "true"; then
             gh pr edit "$PR_NUMBER" --remove-label "$(echo $EXISTING_LABELS | tr ' ' ',')" --repo "$REPO"
