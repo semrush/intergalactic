@@ -415,7 +415,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
     const cell = row?.querySelector(
       `:scope > div > [role=gridcell][aria-colindex="${
         newCol + 1
-      }"], :scope > div > [role=columnheader][aria-colindex="${
+      }"], :scope > [role=columnheader][aria-colindex="${
         newCol + 1
       }"], :scope > div > [role=columnheader][aria-colindex="${newCol + 1}"]`,
     );
