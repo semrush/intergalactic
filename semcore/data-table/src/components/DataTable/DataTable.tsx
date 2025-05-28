@@ -461,7 +461,8 @@ class DataTableRoot<D extends DataTableData> extends Component<
         if (
           currentCell.dataset.groupedBy === 'colgroup' ||
           Number(currentCell.parentElement?.parentElement?.getAttribute('aria-rowindex')) === 2 ||
-            (currentCell.parentElement && Array.from(row?.children ?? []).indexOf(currentCell.parentElement) > 0)
+          (currentCell.parentElement &&
+            Array.from(row?.children ?? []).indexOf(currentCell.parentElement) > 0)
         ) {
           colI = direction === 'left' ? colI - 1 : colI + 1;
         } else {
