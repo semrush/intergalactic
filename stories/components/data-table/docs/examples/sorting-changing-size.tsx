@@ -36,7 +36,7 @@ const Demo = () => {
           children: 'KD %',
           justifyContent: 'right',
           gtcWidth: 'minmax(0, 68px)',
-          style: { textWrap: 'nowrap' },
+          style: { whiteSpace: 'nowrap' },
           borders: 'both',
           sortable: true,
         },
