@@ -44,5 +44,3 @@ Table: Roles and attributes
 ## Other recommendations
 
 See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
-
-<!--@include: ./slider-a11y-report.md-->

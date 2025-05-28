@@ -39,5 +39,3 @@ The following table will help you to keep in mind the necessary attributes to ma
 ## Other recommendations
 
 For more accessibility recommendations, read the common [Accessibility guide](/core-principles/a11y/a11y).
-
-<!--@include: ./filter-trigger-a11y-report.md-->

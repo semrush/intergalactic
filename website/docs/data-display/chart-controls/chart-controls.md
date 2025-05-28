@@ -78,7 +78,7 @@ The data period can be represented either by the [TabLine](/components/tab-line/
 
 #### Custom period
 
-For custom periods, use the [DateRangePicker](/components/date-picker/date-picker#a3d75b).
+For custom periods, use the [DateRangePicker](../../components/date-picker/date-picker#daterangepicker).
 
 ![](static/period-custom.png)
 

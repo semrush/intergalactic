@@ -9,7 +9,6 @@ import AccordionInsideTableExample from './examples/accordion-inside-table';
 import BordersExample from './examples/borders';
 import CheckboxInTableExample from './examples/checkbox-in-table';
 import ColumnAlignmentExample from './examples/column-alignment';
-import ColumnExpandExample from './examples/column-expand';
 import ColumnSizeExample from './examples/column-sizes';
 import ColumnsMergingExample from './examples/columns-merging';
 import CompactExample from './examples/compact';
@@ -68,10 +67,6 @@ export const CheckboxInTable: Story = {
 
 export const ColumnAlignment: Story = {
   render: ColumnAlignmentExample,
-};
-
-export const ColumnExpand: Story = {
-  render: ColumnExpandExample,
 };
 
 export const ColumnSize: Story = {

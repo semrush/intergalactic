@@ -17,7 +17,7 @@ We recommend using red carefully, as it is typically reserved for destructive ac
 
 ## Chart tokens
 
-For chart-related elements, refer to the [tokens list](/style/design-tokens/design-tokens#semantic_tokens) containing tokens with `chart` in their names.
+For chart-related elements, refer to the [tokens list](/style/design-tokens/design-tokens#semantic-tokens) containing tokens with `chart` in their names.
 
 ## Text and grid tokens
 
@@ -36,7 +36,7 @@ There are two approaches for applying colors from our palette:
 
 ### Categorical order
 
-This method assists in selecting colors in a predefined order with suitable contrast for your data. Use chart tokens from the [semantic tokens list](/style/design-tokens/design-tokens#semantic_tokens) or tokens from the base palette in the [base tokens list](/style/design-tokens/design-tokens#base_tokens_palette).
+This method assists in selecting colors in a predefined order with suitable contrast for your data. Use chart tokens from the [semantic tokens list](/style/design-tokens/design-tokens#semantic-tokens) or tokens from the base palette in the [base tokens list](/style/design-tokens/design-tokens#base-tokens-palette).
 
 #### Basic pack
 
@@ -248,7 +248,7 @@ const App = function (props) {
 
 ### Sequental order
 
-This method helps to color your data in a monochromatic way. In this case use tokens from the base palette in the [tokens list](/style/design-tokens/design-tokens#base).
+This method helps to color your data in a monochromatic way. In this case use tokens from the base palette in the [tokens list](/style/design-tokens/design-tokens#base-tokens-palette).
 
 #### Blue
 
@@ -519,8 +519,8 @@ The recommended maximum number of colors on a chart is 30.
 
 Using 30 or more colors is reserved for exceptionally complex scenarios when a large number of colors must be assigned by the system for data representation.
 
-To create a usable palette for such situations, begin by using [tokens from the base palette](/style/design-tokens/design-tokens#base_tokens_palette) with a hue of 300, followed by 200, and then 400. Continue this process until you achieve the desired quantity of colors.
+To create a usable palette for such situations, begin by using [tokens from the base palette](/style/design-tokens/design-tokens#base-tokens-palette) with a hue of 300, followed by 200, and then 400. Continue this process until you achieve the desired quantity of colors.
 
 ## Accessibility
 
-To make charts more visually accessible, you can fill them with patterns (`patterns` property in our D3 chart components). Refer to [D3 chart's accessibility section](/data-display/d3-chart/d3-chart-a11y#colorblind-and-low-vision-solution), for more details on usage of the feature.
+To make charts visually accessible, use [pattern fills, dots and lines](../d3-chart/d3-chart-a11y.md#pattern-fills-dots-and-lines).

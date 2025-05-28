@@ -1,19 +1,17 @@
 import { expect, voiceOverTest as test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
-import { writeFile } from 'fs/promises';
-import { getReportHeader, makeVoiceOverReporter } from '@semcore/testing-utils/vo-reporter';
+import { makeVoiceOverReporter } from '@semcore/testing-utils/vo-reporter';
 
 test.skip('Users can interact with DatePicker and DateRangePicker via VoiceOver', async ({
   page,
   voiceOver: pureVoiceOver,
 }) => {
   const standPath = 'stories/components/date-picker/docs/examples/datepicker.tsx';
-  const reportPath = 'stories/components/date-picker/docs/date-a11y-report.md';
 
   const htmlContent = await e2eStandToHtml(standPath, 'en');
   await page.reload();
   await page.setContent(htmlContent);
-  const { voiceOver, getReport } = await makeVoiceOverReporter(pureVoiceOver);
+  const { voiceOver } = await makeVoiceOverReporter(pureVoiceOver);
   await voiceOver.interact();
 
   expect(await voiceOver.itemText()).toContain('Date field');
@@ -36,8 +34,4 @@ test.skip('Users can interact with DatePicker and DateRangePicker via VoiceOver'
   await voiceOver.type('29', { application: 'Playwright' });
   await voiceOver.type('2000', { application: 'Playwright' });
   await voiceOver.stopInteracting();
-
-  const report = (await getReportHeader()) + '\n\n' + (await getReport(standPath));
-
-  await writeFile(reportPath, report);
 });

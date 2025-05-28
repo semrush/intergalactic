@@ -14,7 +14,7 @@ Table: Keyboard support
 | ------------- | ---------------------------------------------- |
 | `Tab`         | Moves focus to the next focusable element.     |
 | `Shift + Tab` | Moves focus to the previous focusable element. |
-| `Esc`         | Closes the modal. Refer to [Closing the modal](./modal#closing-the-modal) for more details. |
+| `Esc`         | Closes the modal. Refer to [Closing modal](./modal#closing-modal) for more details. |
 
 See more about the focus behavior in the modal in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard#keyboard-support-for-modal-window).
 
@@ -56,5 +56,3 @@ However, if your modal window has a separate URL, you can mark `Modal.Title` as 
 ## Other recommendations
 
 See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
-
-<!--@include: ./modal-a11y-report.md-->

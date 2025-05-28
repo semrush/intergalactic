@@ -50,22 +50,6 @@ import { Blockquote } from '@semcore/ui/typography';
 
 <TypesView type="BlockquoteProps" :types={...types} />
 
-## Hint
-
-::: warning
-The [ButtonLink](../../components/button/button-code#button-looking-like-link) component has been implemented to replace the `Hint` component. Using `Hint` as a button or a pseudo-link is no longer recommended.
-:::
-
-```jsx
-import { Hint } from '@semcore/ui/typography';
-<Hint>
-  <Hint.Addon />
-  <Hint.Text />
-</Hint>;
-```
-
-<TypesView type="TypographyHintProps" :types={...types} />
-
 ## FormatText
 
 A wrapper component required to add styles to native tags.
