@@ -276,7 +276,22 @@ jobs:
           pnpm install --frozen-lockfile --ignore-scripts
       - name: Install Browser
         run: npx playwright install --with-deps
+      - name: Restore cached build
+        uses: actions/cache@v4
+        id: cache-build
+        with:
+          path: |
+            semcore/*/lib
+            tools/*/lib
+            semcore/icon/**/*.js
+            semcore/icon/**/*.mjs
+            semcore/icon/**/*.d.ts
+            semcore/illustration/**/*.js
+            semcore/illustration/**/*.mjs
+            semcore/illustration/**/*.d.ts
+          key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
       - name: Build basic packages
+        if: steps.cache-build.outputs.cache-hit != 'true'
         run: |
           pnpm --filter @semcore/core build
           pnpm --filter @semcore/base-components build
@@ -284,7 +299,7 @@ jobs:
           pnpm build:illustration
       - name: Browser testing
         id: browser-testing
-        run: FOLDERS=$(BASE=origin/${{ github.event.pull_request.base.ref }} pnpm pkg-diff | tail -n 1 | xargs) && [ -n "$FOLDERS" ] && echo "$FOLDERS" | xargs HOME=root pnpm playwright test --config playwright.browser.config.ts $1
+        run: FOLDERS=$(BASE=origin/${{ github.event.pull_request.base.ref }} pnpm pkg-diff | tail -n 1 | xargs) && [ -n "$FOLDERS" ] && echo "$FOLDERS" | xargs bash -c 'HOME=/root pnpm playwright test --config playwright.browser.config.ts "$1"'
         continue-on-error: true
       - name: Save test results as artifacts
         if: steps.browser-testing.outcome != 'success'
