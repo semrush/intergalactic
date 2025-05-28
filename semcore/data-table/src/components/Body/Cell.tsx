@@ -99,7 +99,7 @@ class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner>
       ? [durationPerRow(accordionDuration[0]), durationPerRow(accordionDuration[1])]
       : accordionDuration !== undefined
       ? durationPerRow(accordionDuration)
-      : DEFAULT_ROW_DURATION * rowsLength;
+      : DEFAULT_ROW_DURATION;
 
     let delay;
     const delayIndex = animationExpand ? accordionRowIndex : rows.length - 1 - accordionRowIndex;
