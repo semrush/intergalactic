@@ -9,6 +9,8 @@ concurrency:
 jobs:
   defineChangedComponents:
     runs-on: ubuntu-latest
+    outputs:
+      changedComponents: ${{ steps.pkg-diff.outputs.changed }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4.1.1
@@ -49,19 +51,14 @@ jobs:
         run: |
           EXISTING_LABELS=$(gh label list --repo "$REPO" --limit 100 --json name --jq '.[].name')
 
-          echo "$CHANGED"
-          echo "$EXISTING_LABELS"
-
           for LABEL in $CHANGED; do
-            echo "Checking/creating label: $LABEL"
-            
             if ! echo "$EXISTING_LABELS" | grep -qx "$LABEL"; then
               echo "Creating label '$LABEL'"
               gh label create "$LABEL" --repo "$REPO"
             fi
           done
           
-          gh pr edit "$PR_NUMBER" --add-label "$(echo $CHANGED | tr ' ' ',')" --repo "$REPO"
+          gh pr edit "$PR_NUMBER" --labels "$(echo $CHANGED | tr ' ' ',')" --repo "$REPO"
   build:
     runs-on: ubuntu-latest
     needs: defineChangedComponents
@@ -163,13 +160,11 @@ jobs:
           files: README.md CONTRIBUTING.md semcore/*/README.md semcore/*/CHANGELOG.md website/docs
   unit-tests:
     runs-on: ubuntu-latest
-    needs: build
+    needs: [build, defineChangedComponents]
+    if: ${{ needs.defineChangedComponents.outputs.changedComponents != '' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4.1.1
-        with:
-          token: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
-          fetch-depth: 0
       - name: Install Node.js
         uses: actions/setup-node@v4.0.1
         with:
@@ -211,7 +206,7 @@ jobs:
         run: pnpm test:setup
       - name: Test
         id: test
-        run: FOLDERS=$(BASE=origin/${{ github.event.pull_request.base.ref }} pnpm pkg-diff | tail -n 1 | xargs) && [ -n "$FOLDERS" ] && echo "$FOLDERS" | xargs pnpm test:docker $1 run -- --allowOnly=false
+        run: pnpm test:docker ${{ needs.defineChangedComponents.outputs.changedComponents }} run -- --allowOnly=false
         continue-on-error: true
       - name: Save test results as artifacts
         if: steps.test.outcome != 'success'
@@ -299,7 +294,8 @@ jobs:
         run: git add . && git commit -m "[chore] a11y automatic check fixation" && git push || echo "nothing to commit"
   browser-tests:
     runs-on: ubuntu-latest
-    needs: build
+    needs: [ build, defineChangedComponents ]
+    if: ${{ needs.defineChangedComponents.outputs.changedComponents != '' }}
     container:
       image: mcr.microsoft.com/playwright:v1.48.2-jammy
       options: --ipc=host  # Needed for Chromium sandboxing
@@ -353,7 +349,7 @@ jobs:
           pnpm build:illustration
       - name: Browser testing
         id: browser-testing
-        run: FOLDERS=$(BASE=origin/${{ github.event.pull_request.base.ref }} pnpm pkg-diff | tail -n 1 | xargs) && [ -n "$FOLDERS" ] && echo "$FOLDERS" | xargs -I{} bash -c 'HOME=/root pnpm playwright test --config playwright.browser.config.ts {}'
+        run: HOME=/root pnpm playwright test --config playwright.browser.config.ts ${{ needs.defineChangedComponents.outputs.changedComponents }}
         continue-on-error: true
       - name: Save test results as artifacts
         if: steps.browser-testing.outcome != 'success'
@@ -367,7 +363,8 @@ jobs:
         run: exit 1
   axe-tests:
     runs-on: ubuntu-latest
-    needs: build
+    needs: [ build, defineChangedComponents ]
+    if: ${{ needs.defineChangedComponents.outputs.changedComponents != '' }}
     container:
       image: mcr.microsoft.com/playwright:v1.48.2-jammy
       options: --ipc=host  # Needed for Chromium sandboxing
@@ -421,7 +418,7 @@ jobs:
           pnpm build:illustration
       - name: Axe testing
         id: axe-testing
-        run: FOLDERS=$(BASE=origin/${{ github.event.pull_request.base.ref }} pnpm pkg-diff | tail -n 1 | xargs) && [ -n "$FOLDERS" ] && echo "$FOLDERS" | xargs -I{} bash -c 'HOME=/root pnpm playwright test --config playwright.axe.config.ts {}'
+        run: HOME=/root pnpm playwright test --config playwright.axe.config.ts ${{ needs.defineChangedComponents.outputs.changedComponents }}
         continue-on-error: true
       - name: Save test results as artifacts
         if: steps.axe-testing.outcome != 'success'
