@@ -35,7 +35,7 @@ Keyboard control should be performed sequentially across all interactive element
 
 - The focus state for all controls appears by pressing the `Tab` key.
 - For inputs and text fields, focus also appears by `onClick`.
-- When navigating the keyboard all controls are highlighted with a blue border (see keyboard-focus tokens in [Design tokens](/style/design-tokens/design-tokens#semantic_tokens)). Exceptions are inputs and text fields when validating, that on focus have same border color (orange or green).
+- When navigating the keyboard all controls are highlighted with a blue border (see keyboard-focus tokens in [Design tokens](/style/design-tokens/design-tokens#semantic-tokens)). Exceptions are inputs and text fields when validating, that on focus have same border color (orange or green).
 - The focus inside groups of controls is consistent. After the last control in the group, the focus should move to the next control in the interface.
 - If the control has a tooltip in the `hover` state, it should appear on focus with `Tab`.
 
@@ -44,7 +44,7 @@ Keyboard control should be performed sequentially across all interactive element
 ### Link
 
 - Links get focus by pressing the `Tab` key.
-- Links are highlighted with a blue border (see keyboard-focus tokens [Design tokens](/style/design-tokens/design-tokens#semantic_tokens)).
+- Links are highlighted with a blue border (see keyboard-focus tokens [Design tokens](/style/design-tokens/design-tokens#semantic-tokens)).
 - When you press `Enter`, the link is activated.
 
 ::: tip
@@ -53,7 +53,7 @@ Note that links (anchor elements) are only keyboard operable by default if they 
 
 ### Button
 
-- Buttons are highlighted with a blue border (see keyboard-focus tokens [Design tokens](/style/design-tokens/design-tokens#semantic_tokens)), regardless of the button theme.
+- Buttons are highlighted with a blue border (see keyboard-focus tokens [Design tokens](/style/design-tokens/design-tokens#semantic-tokens)), regardless of the button theme.
 - When you press `Enter` or `Space`, the button is activated.
 
 ### Input and textarea

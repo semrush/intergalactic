@@ -18,7 +18,7 @@ Table: Keyboard support
 | `Enter`       | Submits the entered value.                     |
 | `Backspace`   | Erases character or symbol before the cursor.  |
 
-See detailed information about the keyboard support for the inputs in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard#input_i_textarea).
+See detailed information about the keyboard support for the inputs in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard#input-and-textarea).
 
 ## Considerations for developers
 

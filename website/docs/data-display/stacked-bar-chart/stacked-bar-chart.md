@@ -100,7 +100,7 @@ Hovering highlights a bar with `--chart-grid-bar-chart-hover`, indicating focus 
 
 ![stacked bar chart](static/stacked-bar-chart-hover.png)
 
-For more, refer to the [Bar chart](/data-display/bar-chart/bar-chart#a61ee5/).
+For more, refer to the [Bar chart](../bar-chart/bar-chart#interaction).
 
 ## Trend
 
