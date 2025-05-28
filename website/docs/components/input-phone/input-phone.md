@@ -5,7 +5,7 @@ tabs: Design('input-phone'), A11y('input-phone-a11y'), Example('input-phone-code
 
 ## Description
 
-**InputPhone** is a pattern designed to facilitate the entry of phone numbers using a [mask](/components/input-mask/input-mask). This input ensures that users can enter their phone numbers correctly without any uncertainty about the format.
+**InputPhone** is a pattern designed to facilitate the entry of phone numbers. This input ensures that users can enter their phone numbers correctly without any uncertainty about the format.
 
 ### Usage recommendations
 

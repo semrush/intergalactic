@@ -22,7 +22,7 @@ The following list describes roles and attributes that component already has.
 
 | Component / element               | Role / Attribute                   | Usage                                                                                                                                                                                                                                                                                                             |
 | --------------------------------- | ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `DataTable`                       | `role="grid"`                      | Identifies the element that serves as the grid widget container. The `grid` element isn't focusable because it implements the practice described in the section on [Managing Focus Within Components Using a Roving tabindex](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_roving_tabindex). |
+| `DataTable`                       | `role="grid"`                      | Identifies the element that serves as the grid widget container. The `grid` element isn't focusable because it implements the practice described in the section on [Managing Focus Within Components Using a Roving tabindex](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd-roving-tabindex). |
 |                                   | `aria-rowcount="SOME_VALUE"`       | **Applied when not all rows are present in the DOM**. Defines the total number of rows in the `grid`.                                                                                                                                                                                                             |
 |                                   | `aria-colcount="SOME_VALUE"`       | **Applied when not all columns are present in the DOM**. Defines the total number of columns in the `grid`.                                                                                                                                                                                                       |
 | `DataTable.Head`, `DataTable.Row` | `role="row"`                       | Identifies a row of cells within a tabular structure. A `row` contains one or more grid cells or column headers, and possibly a row header, within a `grid`.                                                                                                                                                      |
@@ -52,7 +52,3 @@ If you need to show different states for table rows or cells, avoid relying only
 ## Other recommendations
 
 For more accessibility recommendations, refer to the common [Accessibility guide](/core-principles/a11y/a11y).
-
-## Automated screen reader testing
-
-<!--@include: ./data-table-a11y-report.md-->

@@ -5,6 +5,10 @@ a11y: AA
 tabs: Design('input-mask'), A11y('input-mask-a11y'), API('input-mask-api'), Example('input-mask-code'), Changelog('input-mask-changelog')
 ---
 
+::: warning
+`InputMask` is deprecated and will be removed in the next major release.
+:::
+
 ## What component has
 
 ### Keyboard support
@@ -17,7 +21,7 @@ Table: Keyboard support
 | `Shift + Tab` | Moves focus to the previous focusable element. |
 | `Enter` | Submits the entered value.                     |
 
-See detailed information about the keyboard support for the input fields in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard#input_i_textarea).
+See detailed information about the keyboard support for the input fields in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard#input-and-textarea).
 
 ## Considerations for developers
 
@@ -40,5 +44,3 @@ See detailed information about the keyboard support for the input fields in the 
 ## Other recommendations
 
 See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
-
-<!--@include: ./input-mask-a11y-report.md-->

@@ -34,7 +34,7 @@ The template already includes default `title`, `icon` and `description`. You can
 
 ## Custom states
 
-You can create custom messages, such as the "[Set up your tool](/components/widget-empty/widget-empty#set_up_your_product)" message.
+You can create custom messages, such as the "[Set up your tool](/components/widget-empty/widget-empty#set-up-your-product)" message.
 
 To get the link to the [illustration](/style/illustration/illustration), use the function `getIconPath` from the package.
 

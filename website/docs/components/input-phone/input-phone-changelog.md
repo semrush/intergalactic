@@ -3,8 +3,8 @@ title: InputPhone
 tabs: Design('input-phone'), A11y('input-phone-a11y'), Example('input-phone-code'), Changelog('input-phone-changelog')
 ---
 
-This pattern is built with Input, InputMask and Select components. For their changelogs, refer to their documentation:
+For changelogs, refer to the components used in the InputPhone pattern:
 
-- [Input](/components/input/input-changelog)
-- [InputMask](/components/input-mask/input-mask-changelog)
-- [Select](/components/select/select-changelog)
+- [Input Changelog](/components/input/input-changelog)
+- [Select Changelog](/components/select/select-changelog)
+- [Flags Changelog](/components/flags/flags-changelog)

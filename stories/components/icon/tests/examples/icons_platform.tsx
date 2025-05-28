@@ -10,6 +10,7 @@ import AdsToolkit from '@semcore/icon/platform/AdsToolkit';
 import ReportsToolkit from '@semcore/icon/platform/ReportsToolkit';
 import AppCenter from '@semcore/icon/platform/AppCenter';
 import AIToolkit from '@semcore/icon/platform/AIToolkit';
+import PRToolkit from '@semcore/icon/platform/PRToolkit';
 import EnterpriseSolutions from '@semcore/icon/platform/EnterpriseSolutions';
 import { Flex } from '@semcore/flex-box';
 
@@ -55,6 +56,16 @@ const Demo = () => {
         <Hint tag={AppCenter} interactive title='App Center' color='icon-secondary-neutral' />
 
         <Hint tag={AIToolkit} interactive title='AI Toolkit' color='icon-secondary-neutral' />
+
+        <Flex gap={4}>
+          <Hint tag={PRToolkit} interactive title='PR Toolkit' color='icon-secondary-neutral' />
+          <Hint
+            tag={PRToolkit}
+            interactive
+            title='PR Toolkit'
+            color='--intergalactic-sidebar-nav-control-icon-normal'
+          />
+        </Flex>
 
         <Hint
           tag={EnterpriseSolutions}

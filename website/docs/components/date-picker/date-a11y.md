@@ -88,5 +88,3 @@ Table: Attributes
 ## Other recommendations
 
 For more accessibility recommendations, refer to the common [Accessibility guide](/core-principles/a11y/a11y).
-
-<!--@include: ./date-a11y-report.md-->

@@ -78,7 +78,7 @@ Semantic tokens include tokens for:
 - box-shadows;
 - border-radius.
 
-To learn more about the tokens names see [Token naming structure section](/style/design-tokens/design-tokens-usage#token_naming_structure).
+To learn more about the tokens names see [Token naming structure section](/style/design-tokens/design-tokens-usage#token-naming-structure).
 
 ::: react-view
 

@@ -1,19 +1,22 @@
 import { DTValue, DTUse, DataTableData } from '../DataTable/DataTable.types';
 import { DTColumn } from '../Head/Column.types';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
-import { ACCORDION, ROW_INDEX, UNIQ_ROW_KEY } from '../DataTable/DataTable';
+import { ACCORDION, ROW_GROUP, ROW_INDEX, UNIQ_ROW_KEY } from '../DataTable/DataTable';
+
+export type UniqRowKey = string;
 
 export type DTRow = {
-  [UNIQ_ROW_KEY]: string;
+  [UNIQ_ROW_KEY]: UniqRowKey;
   [ROW_INDEX]: number;
   [key: string]: DTValue | MergedRowsCell | MergedColumnsCell;
   [ACCORDION]?: React.ReactNode | DataTableData | undefined;
+  [ROW_GROUP]?: Set<UniqRowKey>;
 };
 export type DTRows = Array<DTRow | DTRow[]>;
 
 export type DataTableRowProps = {
   row: DTRow;
-  offset?: number;
+  mergedRow?: boolean;
 };
 
 export type RowPropsInner = JSX.IntrinsicElements['div'] & {
@@ -23,6 +26,11 @@ export type RowPropsInner = JSX.IntrinsicElements['div'] & {
    * @default false
    */
   expanded?: boolean;
+
+  /**
+   * Flag to show is row in a merged list or not.
+   */
+  mergedRow?: boolean;
 
   columns: DTColumn[];
   row: DTRow | DTRow[];
