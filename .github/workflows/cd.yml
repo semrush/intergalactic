@@ -254,6 +254,8 @@ jobs:
         with:
           token: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
           fetch-depth: 0
+      - name: Mark workspace as safe
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
       - name: Use Git
         run: git status
       - uses: pnpm/action-setup@v4.0.0
