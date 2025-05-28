@@ -80,10 +80,10 @@ jobs:
           echo ADD: "$LABELS_TO_ADD"
           echo REMOVE: "$LABELS_TO_REMOVE"
          
-          if [[ echo "$LABELS_TO_REMOVE" != "" ]]; then
+          if [ -n $LABELS_TO_REMOVE ]; then
             gh pr edit "$PR_NUMBER" --remove-label "$(echo $LABELS_TO_REMOVE | tr ' ' ',')" --repo "$REPO"
           fi
-          if [[ echo "$LABELS_TO_ADD" != "" ]]; then
+          if [ -n $LABELS_TO_ADD ]; then
             gh pr edit "$PR_NUMBER" --add-label "$(echo $LABELS_TO_ADD | tr ' ' ',')" --repo "$REPO"
           fi
   build:
