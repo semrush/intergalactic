@@ -354,7 +354,9 @@ class DataTableRoot<D extends DataTableData> extends Component<
   }
 
   getRow = (index: number) => {
-    return this.tableRef.current?.querySelector(`[aria-rowindex="${index + 1}"]:not([aria-hidden="true"])`);
+    return this.tableRef.current?.querySelector(
+      `[aria-rowindex="${index + 1}"]:not([aria-hidden="true"])`,
+    );
   };
 
   hasFocusableInHeader = () => {
