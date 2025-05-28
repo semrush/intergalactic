@@ -49,6 +49,9 @@ jobs:
         run: |
           EXISTING_LABELS=$(gh label list --repo "$REPO" --json name --jq '.[].name')
 
+          echo "$CHANGED"
+          echo "$EXISTING_LABELS"
+
           for LABEL in $CHANGED; do
             echo "Checking/creating label: $LABEL"
             
