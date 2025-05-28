@@ -12,7 +12,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Break
 
-- `keyboardFocusEnhance` to css `:focus-visible` property.
+- replaced `keyboardFocusEnhance` with `:focus-visible` CSS pseudo-class.
 
 ## [5.48.2] - 2025-05-13
 
