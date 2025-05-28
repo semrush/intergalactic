@@ -104,7 +104,6 @@ test.describe('Accordion in table', () => {
       const row = page.locator('[data-ui-name="Body.Row"][aria-rowindex="3"]');
       const cells = row.locator('[data-ui-name="Box"]');
 
-
       const firstBox = await cells.first().boundingBox();
       const lastBox = await cells.nth(3).boundingBox();
 
@@ -326,7 +325,7 @@ test.describe('Accordion in table', () => {
     await test.step('Verify child table attributes when expanded', async () => {
       const nestedRows = page.locator('[role="row"][aria-level="2"]');
 
-      await expect(nestedRows.first()).toBeVisible();      
+      await expect(nestedRows.first()).toBeVisible();
       const rowCount = await nestedRows.count();
 
       for (let i = 0; i < rowCount; i++) {
@@ -448,7 +447,7 @@ test.describe('Accordion in table', () => {
       await expect(firstrowCell).toBeFocused();
       await expect(widget).toBeVisible();
       await page.keyboard.press('ArrowDown');
-      await page.waitForTimeout(100)
+      await page.waitForTimeout(100);
       await expect(page).toHaveScreenshot();
     });
   });
