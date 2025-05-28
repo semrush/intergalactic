@@ -1,6 +1,10 @@
 name: cd
 on:
   pull_request:
+    types:
+      - opened
+      - edited
+      - reopened
   workflow_dispatch:
   push:
     branches: [master, major/16]
