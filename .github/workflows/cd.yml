@@ -38,10 +38,10 @@ jobs:
         id: pkg-diff
         run: |
           git fetch origin ${{ github.event.pull_request.base.ref }}
-          BASE=origin/${{ github.event.pull_request.base.ref }} pnpm pkg-diff | tail -n 1 >> $GITHUB_OUTPUT
+          echo "changed=$(BASE=origin/${{ github.event.pull_request.base.ref }} pnpm pkg-diff | tail -n 1)" >> $GITHUB_OUTPUT
       - name: Set labels
-        if: steps.pkg-diff.outputs != ''
-        run: echo ${{ steps.pkg-diff.outputs }}
+        if: steps.pkg-diff.outputs.changed != ''
+        run: echo ${{ steps.pkg-diff.outputs.changed }}
   build:
     runs-on: ubuntu-latest
     steps:
