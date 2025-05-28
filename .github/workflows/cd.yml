@@ -62,7 +62,7 @@ jobs:
           
           echo $DIFF
           
-          if $DIFF == "false"; then
+          if [[ "$DIFF" == "false" ]]; then
             echo 'in remove'
             PR_LABELS=$(gh pr view "$PR_NUMBER" --repo "$REPO" --limit 100 --json labels --jq '.labels[].name')
             PR_LABELS_STR=$(echo "$PR_LABELS" | tr '\n' ' ')
@@ -79,7 +79,7 @@ jobs:
             done
           fi
           
-          if "$DIFF" == "true"; then
+          if [[ "$DIFF" == "true" ]]; then
             gh pr edit "$PR_NUMBER" --remove-label "$(echo $EXISTING_LABELS | tr ' ' ',')" --repo "$REPO"
             gh pr edit "$PR_NUMBER" --add-label "$(echo $CHANGED | tr ' ' ',')" --repo "$REPO"
           fi
