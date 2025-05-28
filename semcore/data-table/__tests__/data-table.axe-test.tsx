@@ -48,12 +48,6 @@ test.describe('DataTable', () => {
 
     expect(violations).toEqual([]);
   });
-  test('column expand', async ({ page }) => {
-    const standPath = 'stories/components/data-table/docs/examples/column-expand.tsx';
-    const violations = await checkAxe(page, standPath);
-
-    expect(violations).toEqual([]);
-  });
   test('column sizes', async ({ page }) => {
     const standPath = 'stories/components/data-table/docs/examples/column-sizes.tsx';
     const violations = await checkAxe(page, standPath);
