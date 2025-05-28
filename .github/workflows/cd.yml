@@ -299,7 +299,7 @@ jobs:
           pnpm build:illustration
       - name: Browser testing
         id: browser-testing
-        run: FOLDERS=$(BASE=origin/${{ github.event.pull_request.base.ref }} pnpm pkg-diff | tail -n 1 | xargs) && [ -n "$FOLDERS" ] && echo "$FOLDERS" | xargs -I{} bash -c 'HOME=/root pnpm playwright test --config playwright.browser.config.ts "{}"'
+        run: FOLDERS=$(BASE=origin/${{ github.event.pull_request.base.ref }} pnpm pkg-diff | tail -n 1 | xargs) && [ -n "$FOLDERS" ] && echo "$FOLDERS" | xargs -I{} bash -c 'HOME=/root pnpm playwright test --config playwright.browser.config.ts {}'
         continue-on-error: true
       - name: Save test results as artifacts
         if: steps.browser-testing.outcome != 'success'
