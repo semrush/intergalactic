@@ -68,7 +68,6 @@ class DataTableRoot<D extends DataTableData> extends Component<
     defaultSelectedRows: undefined,
     h: 'fit-content',
     renderEmptyData: () => <NoData py={10} type={'nothing-found'} description={''} w={'100%'} />,
-    accordionDuration: 200,
   };
 
   private columns: DTColumn[] = [];
