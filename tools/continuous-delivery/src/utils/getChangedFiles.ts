@@ -28,6 +28,8 @@ export async function getChangedFiles(command = 'HEAD^1'): Promise<Set<string>> 
       const path = item.file.split('/');
       const packageName = path[1];
 
+      components.add(`@semcore/${packageName}`);
+
       const dependentPackages = dependencyGraph.get(`@semcore/${packageName}`) ?? new Set();
       for (const dep of dependentPackages) {
         components.add(dep);

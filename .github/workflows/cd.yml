@@ -242,7 +242,7 @@ jobs:
         if: steps.a11y-testing.outcome == 'success'
         run: git add . && git commit -m "[chore] a11y automatic check fixation" && git push || echo "nothing to commit"
   browser-tests:
-    runs-on: ubuntu-latest
+    runs-on: mcr.microsoft.com/playwright:v1.48.0-jammy
     needs: build
     steps:
       - uses: actions/checkout@v4.1.1
@@ -253,11 +253,23 @@ jobs:
         with:
           version: 8.7.6
           run_install: false
-
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: |
+          echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
+      - uses: actions/cache@v4
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+      - name: Install dependencies
+        run: |
+          pnpm install --frozen-lockfile
+      - name: Install Browser
+        run: npx playwright install --with-deps
       - name: Browser testing
         id: browser-testing
-        run: |
-          docker run --rm --network host -v $(pwd):/work -v /work/node_modules -v /work/.pnpm-store -v /work/.cache -w /work/ mcr.microsoft.com/playwright:v1.48.0-jammy bash -c "npm install --global pnpm@8.11.0 && pnpm install --ignore-scripts && pnpm build:icons && pnpm build:illustration && npx playwright install && CI=true BASE=origin/${{ github.event.pull_request.base.ref }} pnpm pkg-diff | tail -n 1 | xargs pnpm playwright test --config playwright.browser.config.ts $1"
+        run: BASE=origin/${{ github.event.pull_request.base.ref }} pnpm pkg-diff | tail -n 1 | xargs pnpm playwright test --config playwright.browser.config.ts $1
         continue-on-error: true
       - name: Save test results as artifacts
         if: steps.browser-testing.outcome != 'success'
