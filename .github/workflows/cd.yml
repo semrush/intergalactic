@@ -155,7 +155,7 @@ jobs:
         run: pnpm test:setup
       - name: Test
         id: test
-        run: BASE=origin/${{ github.event.pull_request.base.ref }} pnpm pkg-diff | tail -n 1 | xargs pnpm test:docker $1 run -- --allowOnly=false
+        run: FOLDERS=$(BASE=origin/${{ github.event.pull_request.base.ref }} pnpm pkg-diff | tail -n 1 | xargs) && [ -n "$FOLDERS" ] && echo "$FOLDERS" | xargs pnpm test:docker $1 run -- --allowOnly=false
         continue-on-error: true
       - name: Save test results as artifacts
         if: steps.test.outcome != 'success'
@@ -256,8 +256,6 @@ jobs:
           fetch-depth: 0
       - name: Mark workspace as safe
         run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
-      - name: Use Git
-        run: git status
       - uses: pnpm/action-setup@v4.0.0
         with:
           version: 8.7.6
@@ -314,19 +312,60 @@ jobs:
   axe-tests:
     runs-on: ubuntu-latest
     needs: build
+    container:
+      image: mcr.microsoft.com/playwright:v1.48.2-jammy
+      options: --ipc=host  # Needed for Chromium sandboxing
     steps:
+      - name: Install Git
+        run: apt-get update && apt-get install -y git
       - uses: actions/checkout@v4.1.1
         with:
           token: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
           fetch-depth: 0
+      - name: Mark workspace as safe
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
       - uses: pnpm/action-setup@v4.0.0
         with:
           version: 8.7.6
           run_install: false
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: |
+          echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
+      - uses: actions/cache@v4
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+      - name: Install dependencies
+        run: |
+          pnpm install --frozen-lockfile --ignore-scripts
+      - name: Install Browser
+        run: npx playwright install --with-deps
+      - name: Restore cached build
+        uses: actions/cache@v4
+        id: cache-build
+        with:
+          path: |
+            semcore/*/lib
+            tools/*/lib
+            semcore/icon/**/*.js
+            semcore/icon/**/*.mjs
+            semcore/icon/**/*.d.ts
+            semcore/illustration/**/*.js
+            semcore/illustration/**/*.mjs
+            semcore/illustration/**/*.d.ts
+          key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
+      - name: Build basic packages
+        if: steps.cache-build.outputs.cache-hit != 'true'
+        run: |
+          pnpm --filter @semcore/core build
+          pnpm --filter @semcore/base-components build
+          pnpm build:icons
+          pnpm build:illustration
       - name: Axe testing
         id: axe-testing
-        run: |
-          docker run --rm --network host -v $(pwd):/work -v /work/node_modules -v /work/.pnpm-store -v /work/.cache -w /work/ mcr.microsoft.com/playwright:v1.35.0-jammy bash -c "npm install --global pnpm@8.11.0 && pnpm install --ignore-scripts && pnpm build:icons && pnpm build:illustration && npx playwright install && CI=true BASE=origin/${{ github.event.pull_request.base.ref }} pnpm pkg-diff | tail -n 1 | xargs pnpm playwright test --config playwright.axe.config.ts $1"
+        run: FOLDERS=$(BASE=origin/${{ github.event.pull_request.base.ref }} pnpm pkg-diff | tail -n 1 | xargs) && [ -n "$FOLDERS" ] && echo "$FOLDERS" | xargs -I{} bash -c 'HOME=/root pnpm playwright test --config playwright.axe.config.ts {}'
         continue-on-error: true
       - name: Save test results as artifacts
         if: steps.axe-testing.outcome != 'success'
