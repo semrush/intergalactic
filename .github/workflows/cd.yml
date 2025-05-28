@@ -247,6 +247,8 @@ jobs:
     container:
       image: mcr.microsoft.com/playwright:v1.48.2-jammy
       options: --ipc=host  # Needed for Chromium sandboxing
+    env:
+      HOME: /root
     steps:
       - name: Install Git
         run: apt-get update && apt-get install -y git
@@ -284,8 +286,6 @@ jobs:
           pnpm build:illustration
       - name: Browser testing
         id: browser-testing
-        env:
-          HOME: /root
         run: FOLDERS=$(BASE=origin/${{ github.event.pull_request.base.ref }} pnpm pkg-diff | tail -n 1 | xargs) && [ -n "$FOLDERS" ] && echo "$FOLDERS" | xargs pnpm playwright test --config playwright.browser.config.ts $1
         continue-on-error: true
       - name: Save test results as artifacts
