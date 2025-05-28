@@ -44,7 +44,7 @@ jobs:
             semcore/illustration/**/*.js
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
-          key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
+          key: ${{ runner.os }}-build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile
@@ -90,7 +90,7 @@ jobs:
             semcore/illustration/**/*.js
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
-          key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
+          key: ${{ runner.os }}-build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile
@@ -146,7 +146,7 @@ jobs:
             semcore/illustration/**/*.js
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
-          key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
+          key: ${{ runner.os }}-build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile
@@ -204,7 +204,7 @@ jobs:
             semcore/illustration/**/*.js
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
-          key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
+          key: ${{ runner.os }}-build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile
@@ -276,15 +276,15 @@ jobs:
         id: cache-build
         with:
           path: |
-            ./semcore/*/lib
-            ./tools/*/lib
-            ./semcore/icon/**/*.js
-            ./semcore/icon/**/*.mjs
-            ./semcore/icon/**/*.d.ts
-            ./semcore/illustration/**/*.js
-            ./semcore/illustration/**/*.mjs
-            ./semcore/illustration/**/*.d.ts
-          key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
+            semcore/*/lib
+            tools/*/lib
+            semcore/icon/**/*.js
+            semcore/icon/**/*.mjs
+            semcore/icon/**/*.d.ts
+            semcore/illustration/**/*.js
+            semcore/illustration/**/*.mjs
+            semcore/illustration/**/*.d.ts
+          key: ${{ runner.os }}-build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile --ignore-scripts
