@@ -1,4 +1,4 @@
-import React from 'react';
+
 import dayjs from 'dayjs';
 import { Component, Root, sstyled } from '@semcore/core';
 import Dropdown from '@semcore/dropdown';

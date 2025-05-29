@@ -1,4 +1,4 @@
-import * as React from 'react';
+
 import { Component, Root, sstyled } from '@semcore/core';
 import { Box } from '@semcore/base-components';
 

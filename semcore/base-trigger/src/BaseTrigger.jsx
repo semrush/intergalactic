@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import { Box, InvalidStateBox } from '@semcore/flex-box';
 import NeighborLocation from '@semcore/neighbor-location';

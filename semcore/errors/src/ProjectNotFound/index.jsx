@@ -1,4 +1,4 @@
-import React from 'react';
+
 import Button from '@semcore/button';
 import FormatText from '@semcore/format-text';
 import { createComponent, Component, Root } from '@semcore/core';

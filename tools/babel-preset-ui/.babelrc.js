@@ -3,7 +3,7 @@ module.exports = function (babel, opts = {}) {
     presets: [
       '@babel/preset-typescript',
       ['@babel/preset-env', { modules: false, ...opts.env }],
-      ['@babel/preset-react', { throwIfNamespace: false }],
+      ['@babel/preset-react', { throwIfNamespace: false, runtime: 'automatic' }],
     ],
     plugins: [
       ['@semcore/babel-plugin-root', opts.root],

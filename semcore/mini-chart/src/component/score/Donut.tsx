@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { createComponent, Component, Root, sstyled, ComponentType } from '@semcore/core';
 import { Box, BoxProps } from '@semcore/flex-box';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';

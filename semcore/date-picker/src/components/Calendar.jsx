@@ -1,4 +1,4 @@
-import React from 'react';
+
 import dayjs from 'dayjs';
 import isBetween from '../utils/isBetweenPlugin';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';

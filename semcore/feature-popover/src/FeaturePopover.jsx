@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Animation } from '@semcore/animation';
 import { createComponent, Root, Component, sstyled } from '@semcore/core';
 import Popper from '@semcore/popper';

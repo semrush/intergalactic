@@ -1,4 +1,4 @@
-import { DOMAttributes, HTMLAttributes } from 'react';
+import { DOMAttributes, } from 'react';
 import { Options, Instance } from '@popperjs/core/lib/types';
 import { Options as OptionsOffset } from '@popperjs/core/lib/modifiers/offset';
 import { Options as OptionsPreventOverflow } from '@popperjs/core/lib/modifiers/preventOverflow';
@@ -14,7 +14,6 @@ import { BoxProps } from '../flex-box';
 import { ScaleProps } from '../animation';
 import { NeighborLocationProps } from '../neighbor-location';
 import { UniqueIDProps } from '@semcore/core/lib/utils/uniqueID';
-import { KeyboardFocusProps } from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 
 export type PopperComponent = 'trigger' | 'popper';
 

@@ -1,6 +1,6 @@
 import { UnknownProperties } from '@semcore/core';
 import { Context } from './context';
-import { curveCardinal, CurveFactory } from 'd3-shape';
+import { CurveFactory } from 'd3-shape';
 import { FadeInOutProps } from '@semcore/animation';
 import { IntergalacticD3Component } from './Plot';
 import { PatternsConfig } from './Pattern';

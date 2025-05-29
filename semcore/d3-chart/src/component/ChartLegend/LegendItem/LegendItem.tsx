@@ -1,4 +1,4 @@
-import React, { DOMAttributes } from 'react';
+import { DOMAttributes } from 'react';
 import { createComponent, Component, sstyled, Root, IRootComponentProps } from '@semcore/core';
 import { Flex, Box } from '@semcore/flex-box';
 import Checkbox from '@semcore/checkbox';

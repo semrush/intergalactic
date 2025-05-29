@@ -1,4 +1,4 @@
-import React, { ChangeEvent, ComponentProps } from 'react';
+import React, { ChangeEvent, } from 'react';
 import dayjs from 'dayjs';
 import { Flex, Box, BoxProps } from '@semcore/flex-box';
 import { UnknownProperties, Intergalactic, PropGetterFn } from '@semcore/core';

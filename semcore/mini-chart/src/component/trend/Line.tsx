@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { createComponent, ComponentType, assignProps, Root, sstyled } from '@semcore/core';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';

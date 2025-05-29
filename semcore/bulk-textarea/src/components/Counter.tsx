@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Root } from '@semcore/core';
 import { ScreenReaderOnly } from '@semcore/flex-box';
 import CounterKit, { CounterProps as CounterPropsKit } from '@semcore/counter';

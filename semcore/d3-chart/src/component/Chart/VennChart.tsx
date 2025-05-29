@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { createComponent } from '@semcore/core';
 import { BaseChartProps } from './AbstractChart.type';
 import { scaleLinear } from 'd3-scale';

@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { IRootComponentProps, Root, sstyled } from '@semcore/core';
 import Button from '@semcore/button';
 import CloseM from '@semcore/icon/Close/m';

@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { createComponent, Component } from '@semcore/core';
 import propsForElement from '@semcore/core/lib/utils/propsForElement';
 

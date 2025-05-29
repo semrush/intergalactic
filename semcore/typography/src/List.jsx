@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import { Flex } from '@semcore/flex-box';
 import isNode from '@semcore/core/lib/utils/isNode';

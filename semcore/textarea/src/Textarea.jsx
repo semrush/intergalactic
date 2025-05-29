@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Box } from '@semcore/flex-box';
 import autoFocusEnhance from '@semcore/core/lib/utils/enhances/autoFocusEnhance';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';

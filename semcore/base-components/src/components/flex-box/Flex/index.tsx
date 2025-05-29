@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { createBaseComponent, Intergalactic } from '@semcore/core';
 import useFlex, { FlexProps } from './useFlex';
 

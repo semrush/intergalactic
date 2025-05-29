@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Component, sstyled } from '@semcore/core';
 import createElement from './createElement';
 import { scaleOfBandwidth } from './utils';

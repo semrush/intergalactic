@@ -8,7 +8,7 @@ import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import createElement from './createElement';
 import { getChartDefaultColorName, measureText } from './utils';
 import { DataHintsHandler } from './a11y/hints';
-import { PatternFill, PatternSymbol, PatternsConfig, getPatternSymbolSize } from './Pattern';
+import { PatternSymbol, PatternsConfig, getPatternSymbolSize } from './Pattern';
 
 import style from './style/radial-tree.shadow.css';
 

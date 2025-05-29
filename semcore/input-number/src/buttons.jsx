@@ -1,4 +1,4 @@
-import React from 'react';
+
 
 export const IncrementIcon = () => (
   <svg fill='currentColor' width='10' height='5' viewBox='0 0 10 5'>

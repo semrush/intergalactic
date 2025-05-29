@@ -3,7 +3,6 @@ import { BarContext, BarProps } from './Bar';
 import { HorizontalBarProps } from './HorizontalBar';
 import { Context } from './context';
 import { IntergalacticD3Component } from './Plot';
-import { PatternsConfig } from './Pattern';
 
 /** @deprecated */
 export interface IGroupBarProps extends GroupBarProps, UnknownProperties {}

@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { transition } from 'd3-transition';
 import { Component, Root, sstyled } from '@semcore/core';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';

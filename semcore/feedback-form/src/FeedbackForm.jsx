@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Field, Form } from 'react-final-form';
 import createFocusDecorator from 'final-form-focus';
 

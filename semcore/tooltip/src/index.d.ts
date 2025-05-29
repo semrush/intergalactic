@@ -1,6 +1,6 @@
 import React from 'react';
 import { Intergalactic, UnknownProperties } from '@semcore/core';
-import Popper, {
+import {
   PopperContext,
   PopperProps,
   PopperTriggerProps,

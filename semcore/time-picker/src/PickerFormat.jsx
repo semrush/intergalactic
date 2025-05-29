@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import { ScreenReaderOnly } from '@semcore/flex-box';

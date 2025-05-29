@@ -31,8 +31,6 @@ import {
   CORE_COMPONENT,
   CREATE_COMPONENT,
   CONTEXT_COMPONENT,
-  CHILDREN_COMPONENT,
-  INHERITED_NAME,
 } from './core-types/symbols';
 
 function isEmptyObject(obj: any) {
