@@ -85,7 +85,7 @@ function elementEnhancement() {
     init: function () {
       this.Element = createElementRender();
     },
-    asProps: function ({ $rootProps, ...props }, WrapperComponent, isFunction) {
+    asProps: function ({ $rootProps, ...props }, _WrapperComponent, isFunction) {
       if (isFunction) {
         return {
           ...$rootProps,

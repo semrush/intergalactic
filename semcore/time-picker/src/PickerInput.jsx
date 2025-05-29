@@ -19,7 +19,7 @@ function getOptions(min, max, step = 1) {
   const length = Number(((max + 1 - min) / step).toFixed(0));
   const options = Array(length).fill('');
   let numValue = min;
-  return options.map((i, index) => {
+  return options.map((_i, index) => {
     numValue = index === 0 ? numValue : numValue + step;
     const value = withLeadingZero(String(numValue));
     return (

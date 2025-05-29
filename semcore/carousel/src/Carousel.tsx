@@ -325,7 +325,7 @@ class CarouselRoot extends Component<
     };
   }
 
-  getItemProps(props: CarouselItemProps, index: number) {
+  getItemProps(_props: CarouselItemProps, index: number) {
     const { zoom } = this.asProps;
     const isCurrent = this.isSelected(index);
 
@@ -401,7 +401,7 @@ class CarouselRoot extends Component<
     const { getI18nText } = this.asProps;
 
     return {
-      items: items.map((item, key) => ({
+      items: items.map((_item, key) => ({
         active: this.isSelected(key),
         onClick: this.bindHandlerClickIndicator(key),
         key,

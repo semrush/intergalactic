@@ -143,7 +143,7 @@ export const getIndexFromData = <
   // detect cigarette chart
   else if ('invert' in scale && typeof scale.invert === 'function' && !Array.isArray(data)) {
     const keys = Object.keys(data);
-    const domain = keys.map((key, index) => {
+    const domain = keys.map((_key, index) => {
       return keys.slice(0, index).reduce((acc, item) => {
         if (data[item] !== interpolateValue) {
           acc = acc + data[item];

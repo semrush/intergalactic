@@ -71,7 +71,7 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
     return 'menuitem';
   }
 
-  handleClickTrigger = (e: React.SyntheticEvent) => {
+  handleClickTrigger = (_e: React.SyntheticEvent) => {
     const { interaction, inlineActions } = this.asProps;
 
     if (interaction === 'none' || inlineActions) return false;

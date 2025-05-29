@@ -45,7 +45,7 @@ class SliderRatingRoot extends Component<
     locale: 'en',
   };
 
-  handleClick = (newValue: number) => (e: React.SyntheticEvent<SVGElement>) => {
+  handleClick = (newValue: number) => (_e: React.SyntheticEvent<SVGElement>) => {
     const { readonly } = this.asProps;
 
     if (!readonly) {

@@ -71,7 +71,7 @@ function getTicks(tickSize, radius) {
   while (Math.trunc(radius / (tickSize / 2)) > ticks) {
     ticks += 1;
   }
-  return [...Array(ticks).keys()].reduce((ticks, t, i, total) => {
+  return [...Array(ticks).keys()].reduce((ticks, _t, i, total) => {
     if (i) ticks.push(i / total.length);
     return ticks;
   }, []);
@@ -224,7 +224,7 @@ class PolygonRoot extends Component {
         .radius((d) => {
           return scale(d || 0);
         })
-        .angle((d, i, data) => {
+        .angle((_d, i, data) => {
           return (i / data.length) * 2 * Math.PI - angleOffset;
         }),
     };
@@ -389,7 +389,7 @@ class AxisRoot extends Component {
       .radius(() => {
         return radius;
       })
-      .angle((d, i) => {
+      .angle((_d, i) => {
         return (i / total) * 2 * Math.PI;
       });
   }
@@ -446,7 +446,7 @@ class AxisRoot extends Component {
         ) : (
           <SAxis render='path' d={this.createLineRadial(radius, total)(categories)} />
         )}
-        {categories.map((category, i) => {
+        {categories.map((_category, i) => {
           const [x, y] = getRadianPosition(i, radius, total, angleOffset);
           const { className } = sstyled(styles).cn('SAxisLine', {
             active: activeLineIndex === i,
@@ -566,9 +566,9 @@ class Hover extends Component {
     const { categories, type } = this.asProps;
     let index;
     if (type === 'circle') {
-      index = categories.findIndex((c, i) => pieContains(this.getPie(i), point));
+      index = categories.findIndex((_c, i) => pieContains(this.getPie(i), point));
     } else {
-      index = categories.findIndex((c, i) => polygonContains(this.getPolygon(i), point));
+      index = categories.findIndex((_c, i) => polygonContains(this.getPolygon(i), point));
     }
     return index === -1 ? null : index;
   }

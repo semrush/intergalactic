@@ -374,7 +374,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
           left: 0,
         };
 
-        this.containerRef.current?.childNodes.forEach((childNode, index) => {
+        this.containerRef.current?.childNodes.forEach((childNode, _index) => {
           if (childNode instanceof HTMLElement && childNode.getAttribute('draggable') !== null) {
             const rect = childNode.getBoundingClientRect();
             const roundedRect = {

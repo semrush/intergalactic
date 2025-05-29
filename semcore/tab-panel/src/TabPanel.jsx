@@ -44,7 +44,7 @@ class TabPanelRoot extends Component {
     }
   };
 
-  getItemProps(props, index) {
+  getItemProps(props, _index) {
     const { value } = this.asProps;
     const isSelected = value === props.value;
     return {

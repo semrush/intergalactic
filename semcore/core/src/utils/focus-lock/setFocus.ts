@@ -60,7 +60,7 @@ const safeSetFocus: typeof unsafeSetFocus = (...args) => {
 if (canUseDOM()) {
   document.addEventListener(
     'keydown',
-    (event) => {
+    () => {
       lastUserAction = Date.now();
     },
     { capture: true },

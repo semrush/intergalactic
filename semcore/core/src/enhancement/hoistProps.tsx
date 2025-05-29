@@ -27,7 +27,7 @@ function Enhancement(childComponents: any, Context: any) {
         Boolean(Component.hoistProps?.length),
       );
     },
-    init: function (this: any, props: any, WrapperComponent: any, isFunction: boolean) {
+    init: function (this: any, _props: any, _WrapperComponent: any, isFunction: boolean) {
       if (isFunction) {
         // TODO: might breake rules of hooks (by lsroman)
         this[HOIST_SELF] = React.useState({});

@@ -3,7 +3,7 @@
  * See https://github.com/iamkun/dayjs/tree/dev/src/plugin/isBetween
  */
 
-export default (function (o, c, d) {
+export default (function (_o, c, d) {
   c.prototype.isBetween = function (a, b, u, i) {
     const dA = d(a);
     const dB = d(b);

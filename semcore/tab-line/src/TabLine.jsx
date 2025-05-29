@@ -92,7 +92,7 @@ class TabLineRoot extends Component {
     this.handlers.value(value, e);
   };
 
-  getItemProps(props, index) {
+  getItemProps(props, _index) {
     const { value, size } = this.asProps;
     const isSelected = value === props.value;
     return {

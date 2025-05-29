@@ -345,7 +345,7 @@ class DateRangeComparatorAbstract extends Component {
     ];
   }
 
-  getTitleProps(props, index) {
+  getTitleProps(_props, index) {
     const { locale, displayedPeriod } = this.asProps;
     return {
       children: new Intl.DateTimeFormat(locale, { month: 'long', year: 'numeric' }).format(

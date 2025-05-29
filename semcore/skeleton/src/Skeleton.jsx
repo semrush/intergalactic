@@ -119,7 +119,7 @@ function Text(props) {
 
   return (
     <React.Fragment>
-      {[...Array(amountLine)].map((el, index) =>
+      {[...Array(amountLine)].map((_el, index) =>
         renderRect({
           key: index,
           y: y || 20 * index,

@@ -58,7 +58,7 @@ function Enhancement() {
     init: function (this: any) {
       this.Root = createRootRender();
     },
-    asProps: function (this: any, props: any, WrapperComponent: any, isFunction: boolean) {
+    asProps: function (this: any, props: any, _WrapperComponent: any, isFunction: boolean) {
       if (isFunction) {
         return {
           ...props,

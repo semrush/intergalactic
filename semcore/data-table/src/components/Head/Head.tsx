@@ -141,7 +141,7 @@ class HeadRoot<D extends DataTableData> extends Component<
             <Children />
           ) : (
             <>
-              {treeColumns.map((column, i) => {
+              {treeColumns.map((column, _i) => {
                 if ('columns' in column) {
                   return (
                     <DataTableInternal.Head.Group

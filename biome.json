@@ -72,7 +72,8 @@
       },
       "correctness": {
         "noUnusedVariables": "error",
-        "noUnusedFunctionParameters": "off",
+        "noUnusedImports": "error",
+        "noUnusedFunctionParameters": "error",
         "useHookAtTopLevel": "off",
         "noInvalidUseBeforeDeclaration": "off",
         "noChildrenProp": "off",

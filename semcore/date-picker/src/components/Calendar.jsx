@@ -13,7 +13,7 @@ import style from '../style/calendar.shadow.css';
 
 dayjs.extend(isBetween);
 
-const range = (N, cb) => Array.from({ length: N }, (v, k) => cb(k));
+const range = (N, cb) => Array.from({ length: N }, (_v, k) => cb(k));
 
 function getDayJSLocaleParams(locale) {
   if (locale.includes('en') || locale.includes('ja')) {

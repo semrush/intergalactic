@@ -324,7 +324,7 @@ class InputField<T extends string | string[]> extends Component<
     }
   }
 
-  handleMouseLeave(event: MouseEvent): void {
+  handleMouseLeave(): void {
     if (this.changeTriggerTimeout) {
       clearTimeout(this.changeTriggerTimeout);
     }
@@ -553,7 +553,7 @@ class InputField<T extends string | string[]> extends Component<
     }
   }
 
-  handleFocus(event: FocusEvent) {
+  handleFocus() {
     this.isFocusing = true;
     this.errorByInteraction = 'keyboard';
 
@@ -909,7 +909,7 @@ class InputField<T extends string | string[]> extends Component<
       let lines = 0;
       const { maxLines, linesCount } = this.asProps;
 
-      this.textarea.childNodes.forEach((node, index) => {
+      this.textarea.childNodes.forEach((node) => {
         if (node instanceof HTMLParagraphElement) {
           node.dataset.overMaxRows = 'false';
 

@@ -77,7 +77,7 @@ class StackGroupBarRoot extends Component<StackGroupProps> {
     // or [] if hide bar
     const series = allGroupSeries[seriesIndex] || [];
 
-    const rBar = series.map((s, i) =>
+    const rBar = series.map((_s, i) =>
       allGroupSeries.slice(seriesIndex + 1).some((bar) => bar[i][0] !== bar[i][1]) ? 0 : r,
     );
 

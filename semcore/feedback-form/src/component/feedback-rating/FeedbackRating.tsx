@@ -104,7 +104,7 @@ class FeedbackRatingRoot extends Component<
   };
 
   handleChange =
-    (fn: (e: React.SyntheticEvent) => void) => (value: any, e: React.SyntheticEvent) => {
+    (fn: (e: React.SyntheticEvent) => void) => (_value: any, e: React.SyntheticEvent) => {
       fn(e);
     };
 

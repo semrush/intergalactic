@@ -137,7 +137,7 @@ function sstyled(styles = {}): ((ReactNode: any) => React.ReactNode) & {
   };
 }
 
-sstyled.css = function (css: any): { [key: string]: string } {
+sstyled.css = function (_css: any): { [key: string]: string } {
   throw new Error('Enable babel plugin');
 };
 sstyled.insert = insert;

@@ -65,7 +65,7 @@ class Animation extends Component {
     animationContext.onAnimationStartSubscribers.forEach((callback) => callback(duration[0]));
   };
 
-  onAnimationEnd = (event) => {
+  onAnimationEnd = () => {
     this.animationSupported = true;
     this.handleAnimationEnd();
   };

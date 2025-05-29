@@ -248,7 +248,7 @@ class RootSelect extends AbstractDropdown {
       : value;
   }
 
-  bindHandlerOptionClick = (optionValue, index) => (e) => {
+  bindHandlerOptionClick = (optionValue, _index) => (e) => {
     let newValue = optionValue;
     const { value, multiselect } = this.asProps;
     if (Array.isArray(value)) {

@@ -51,7 +51,7 @@ export const Title = ({ Children, styles }) => {
   );
 };
 
-export function Prev({ getI18nText, children, Children }) {
+export function Prev({ children, Children }) {
   return (
     <Root render={Button} use='tertiary' theme='muted' size='l'>
       {children ? (
@@ -65,7 +65,7 @@ export function Prev({ getI18nText, children, Children }) {
   );
 }
 
-export function Next({ getI18nText, children, Children }) {
+export function Next({ children, Children }) {
   return (
     <Root render={Button} use='tertiary' theme='muted' size='l'>
       {children ? (

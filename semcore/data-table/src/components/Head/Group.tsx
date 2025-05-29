@@ -56,7 +56,7 @@ export class Group extends Component<
           {withConfig ? children : title}
         </SGroup>
         {withConfig ? (
-          groupColumns.map((column, i) => {
+          groupColumns.map((column, _i) => {
             return (
               <DataTableInternal.Head.Column
                 key={column.name}
