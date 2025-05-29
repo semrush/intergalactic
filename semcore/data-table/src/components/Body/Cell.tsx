@@ -99,6 +99,8 @@ class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner>
       ? [durationPerRow(accordionDuration[0]), durationPerRow(accordionDuration[1])]
       : accordionDuration !== undefined
       ? durationPerRow(accordionDuration)
+      : rowsLength > 4
+      ? durationPerRow(200)
       : DEFAULT_ROW_DURATION;
 
     let delay;

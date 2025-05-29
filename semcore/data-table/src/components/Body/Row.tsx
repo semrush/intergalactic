@@ -90,6 +90,8 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
       accordion = cellWithAccordion?.[ACCORDION];
     }
 
+    const accordionId = `${uid}_${ariaRowIndex + 1}`;
+
     return sstyled(styles)(
       <>
         <SRow
@@ -145,7 +147,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
               <Body.Cell
                 key={index}
                 id={`${uid}_${ariaRowIndex}_${index}`}
-                accordionId={`${uid}_${ariaRowIndex + 1}`}
+                accordionId={accordionId}
                 data-aria-level={index === 0 ? ariaLevel : undefined}
                 row={row}
                 rowIndex={rowIndex}
@@ -171,7 +173,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
             key={rowIndex}
             role={'row'}
             aria-rowindex={ariaRowIndex + 1}
-            id={`${uid}_${ariaRowIndex + 1}`}
+            id={accordionId}
             visible={expanded}
             interactive
             gridArea={accordionDataGridArea}
@@ -199,7 +201,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
         )}
 
         {row[ACCORDION] && Array.isArray(row[ACCORDION]) && (
-          <SAccordionRows>
+          <SAccordionRows id={accordionId} role='rowgroup'>
             {row[ACCORDION].map((subrow, i) => {
               return (
                 <Row
