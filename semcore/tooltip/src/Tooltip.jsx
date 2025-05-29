@@ -101,7 +101,7 @@ class TooltipRoot extends Component {
   }
 
   render() {
-    const { Children, title, offset, forcedAdvancedMode, ...other } = this.asProps;
+    const { Children, title, offset: _offset, forcedAdvancedMode, ...other } = this.asProps;
 
     const advancedMode = forcedAdvancedMode || isAdvanceMode(Children, this.subcomponents);
 

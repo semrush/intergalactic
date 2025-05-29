@@ -75,7 +75,7 @@ class RootFilterTrigger extends Component {
       disabled,
       includeInputProps,
       triggerRef,
-      'data-ui-name': dataUiName,
+      'data-ui-name': _dataUiName,
       ...other
     } = this.asProps;
 

@@ -8,8 +8,6 @@ import { eventToPoint, invert, interpolateValue, getChartDefaultColorName } from
 import style from './style/dot.shadow.css';
 import { PatternSymbol, getPatternSymbolSize } from './Pattern';
 
-const EXCLUDE_PROPS = ['data', 'scale', 'value', 'display'];
-
 function Dots(props) {
   const {
     Element: SDot,

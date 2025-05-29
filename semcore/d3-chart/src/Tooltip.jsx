@@ -95,7 +95,7 @@ class TooltipRoot extends Component {
   };
 
   render() {
-    const { Children, children, tag, forcedAdvancedMode, onClick, ...other } = this.asProps;
+    const { Children, children, tag, forcedAdvancedMode, onClick: _, ...other } = this.asProps;
 
     const advancedMode =
       forcedAdvancedMode ||

@@ -518,7 +518,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
   render() {
     const { attach, detach } = this;
     const SA11yHint = 'div';
-    const { a11yHint, dragging } = this.state;
+    const { a11yHint } = this.state;
     const context = { attach, detach };
     const { getI18nText, uid } = this.asProps;
 

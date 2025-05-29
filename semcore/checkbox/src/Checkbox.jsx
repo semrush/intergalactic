@@ -151,7 +151,7 @@ class ValueRoot extends Component {
       ...other
     } = this.asProps;
     const [, checkMarkProps] = getInputProps(other, includeInputProps);
-    const { children, Children, ...propsWithoutChildren } = checkMarkProps;
+    const { children: _children, Children: _Children, ...propsWithoutChildren } = checkMarkProps;
     return {
       theme,
       size,

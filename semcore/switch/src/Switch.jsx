@@ -140,7 +140,7 @@ class Value extends Component {
       includeInputProps,
       neighborLocation,
       theme,
-      uid,
+      uid: _uid,
       active,
       resolveColor,
       ...other

@@ -343,7 +343,7 @@ function InputTagContainer(props: any) {
 }
 function InputTagContainerTag(props: any) {
   const STag = Root;
-  const { getI18nText, editable } = props;
+  const { getI18nText } = props;
 
   const ref = React.useRef<HTMLElement>();
 

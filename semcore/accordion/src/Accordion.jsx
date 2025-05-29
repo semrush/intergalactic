@@ -76,7 +76,7 @@ export class RootItem extends Component {
   };
 
   getToggleProps() {
-    const { value, uid, selected, disabled, use } = this.asProps;
+    const { value, uid, disabled, use } = this.asProps;
     return {
       use,
       disabled,

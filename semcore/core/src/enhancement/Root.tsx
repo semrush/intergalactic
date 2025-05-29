@@ -8,9 +8,9 @@ function createRootRender() {
     const {
       Root: _Root,
 
-      styles,
+      styles: _styles,
 
-      children,
+      children: _children,
       Children,
       forwardRef = null,
       ...props

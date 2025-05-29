@@ -17,7 +17,7 @@ class RadarChartComponent extends AbstractChart<
 
   protected renderChart(): React.ReactNode {
     const { groupKey, showDots, circle } = this.asProps;
-    const { dataDefinitions, highlightedLine } = this.state;
+    const { dataDefinitions } = this.state;
 
     return (
       <Radar scale={this.xScale} type={circle ? 'circle' : undefined}>

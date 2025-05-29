@@ -322,7 +322,7 @@ class Value extends Component<InputMaskValueProps, {}, {}, typeof Value.enhance>
     const {
       title,
       placeholder,
-      mask,
+      mask: _mask,
       neighborLocation,
       value,
       includeInputProps,

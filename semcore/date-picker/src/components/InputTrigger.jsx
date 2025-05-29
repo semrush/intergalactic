@@ -27,26 +27,26 @@ class InputTriggerRoot extends Component {
 
   getSingleDateInputProps() {
     const {
-      children,
+      children: _children,
       id,
-      role,
+      role: _role,
       'aria-haspopup': ariaHasPopup,
       // 'aria-expanded': ariaExpanded,
-      'aria-label': ariaLabel,
-      style,
+      'aria-label': _ariaLabel,
+      style: _style,
       ...otherProps
     } = this.asProps;
     return { ...otherProps, ariaHasPopup, inputId: id };
   }
   getDateRangeProps() {
     const {
-      children,
+      children: _children,
       id,
-      role,
+      role: _rolw,
       'aria-haspopup': ariaHasPopup,
-      'aria-label': ariaLabel,
+      'aria-label': _ariaLabel,
       // 'aria-expanded': ariaExpanded,
-      style,
+      style: _style,
       ...otherProps
     } = this.asProps;
     return { ...otherProps, ariaHasPopup, inputId: id };
@@ -132,9 +132,9 @@ class SingleDateInputRoot extends Component {
       onChange,
       onDisplayedPeriodChange,
       locale,
-      w,
-      ariaHasPopup,
-      showError,
+      w: _w,
+      ariaHasPopup: _ariaHasPopup,
+      showError: _showError,
       ...otherProps
     } = this.asProps;
 
@@ -304,7 +304,7 @@ class DateRangeRoot extends Component {
   };
 
   getFromMaskedInputProps() {
-    const { value, locale, onDisplayedPeriodChange, ariaHasPopup, showError, ...otherProps } =
+    const { value, locale, onDisplayedPeriodChange, ariaHasPopup, showError: _showError, ...otherProps } =
       this.asProps;
 
     return assignProps(
@@ -329,8 +329,8 @@ class DateRangeRoot extends Component {
       locale,
       onDisplayedPeriodChange,
       ariaHasPopup,
-      inputId,
-      showError,
+      inputId: _inputId,
+      showError: _showError,
       ...otherProps
     } = this.asProps;
     const ariaLabel = this.asProps.getI18nText('toDate', {

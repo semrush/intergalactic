@@ -460,7 +460,7 @@ class DateRangeComparatorAbstract extends Component {
   }
 
   getCompareToggleProps() {
-    const { getI18nText, value, compareToggle } = this.asProps;
+    const { getI18nText, compareToggle } = this.asProps;
 
     return {
       getI18nText,

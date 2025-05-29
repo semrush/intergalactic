@@ -199,7 +199,7 @@ class RootEllipsis extends Component<AsProps> {
       containerRect,
       containerRef,
       includeTooltipProps,
-      children,
+      children: _children,
       ...other
     } = this.asProps;
     const { visible } = this.state;

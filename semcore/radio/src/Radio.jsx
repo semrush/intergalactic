@@ -163,7 +163,7 @@ class ValueRoot extends Component {
     };
 
     if (currentValue !== undefined) {
-      const { onChange, onClick } = this.props;
+      const { onChange } = this.props;
 
       controlProps.checked = currentValue === inputValue;
       controlProps.onChange = callAllEventHandlers(onChange, this.bindHandlerChange(inputValue));
@@ -187,7 +187,7 @@ class ValueRoot extends Component {
       ...other
     } = this.asProps;
     const [commonControlProps, radioMarkProps] = getInputProps(other, includeInputProps);
-    const { children, Children, ...propsWithoutChildren } = radioMarkProps;
+    const { children: _children, Children: _Children, ...propsWithoutChildren } = radioMarkProps;
     const inputValue = value ?? '';
 
     const markProps = {

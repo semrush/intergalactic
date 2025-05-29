@@ -296,7 +296,7 @@ export type ComponentType<
   >;
 };
 
-interface ClassWithUncontrolledProps<Props> {
+interface ClassWithUncontrolledProps {
   uncontrolledProps(): unknown;
 }
 

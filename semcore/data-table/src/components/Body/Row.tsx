@@ -60,8 +60,6 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
       gridRowIndex,
       expanded,
       accordionDataGridArea,
-      expandedRows,
-      onExpandRow,
       'aria-level': ariaLevel = 1,
       scrollAreaRef,
       selectedRows,

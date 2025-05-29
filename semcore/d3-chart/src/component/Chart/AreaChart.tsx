@@ -38,7 +38,7 @@ class AreaChartComponent extends AbstractChart<
   }
 
   get yScale(): ScaleLinear<any, any> {
-    const { yScale, marginX = 24, plotHeight, stacked, data, groupKey } = this.asProps;
+    const { yScale, marginX = 24, plotHeight, stacked } = this.asProps;
 
     if (yScale) {
       return yScale;

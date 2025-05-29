@@ -51,7 +51,7 @@ class BarChartComponent extends AbstractChart<
   }
 
   renderTrend(key: LegendItemKey) {
-    const { groupKey, type = 'group', invertAxis, trend } = this.asProps;
+    const { groupKey, invertAxis, trend } = this.asProps;
     const { withTrend } = this.state;
     const trendItem = trend?.[key];
 

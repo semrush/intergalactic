@@ -140,8 +140,6 @@ function Sidebar(props) {
   const SSidebarHeader = 'h2';
   const SSidebarMenu = 'div';
 
-  const handleKeyDown = React.useCallback((e) => {}, []);
-
   return sstyled(styles)(
     <SSidebar render={Box} __excludeProps={['title']}>
       {title && <SSidebarHeader id={`${uid}-title`}>{title}</SSidebarHeader>}

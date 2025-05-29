@@ -71,7 +71,6 @@
         "useExportType": "off"
       },
       "correctness": {
-        "noUnusedVariables": "off",
         "noUnusedImports": "off",
         "noUnusedFunctionParameters": "off",
         "useHookAtTopLevel": "off",

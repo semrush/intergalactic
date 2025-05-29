@@ -69,7 +69,7 @@ class LegendItemRoot extends Component<LegendItemProps, {}, {}, typeof enhance> 
   }
 
   getLabelProps(): Omit<LegendItem, 'color'> & IRootComponentProps & { onClick: () => void } {
-    const { id, checked, color, onChangeLegendItem, shape, ...props } = this.asProps;
+    const { id, checked, color: _color, onChangeLegendItem, shape: _shape, ...props } = this.asProps;
 
     return {
       ...props,

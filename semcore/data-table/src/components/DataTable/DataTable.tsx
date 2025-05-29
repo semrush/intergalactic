@@ -299,7 +299,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
     row: DTRow,
     event?: React.SyntheticEvent<HTMLElement>,
   ) => {
-    const { selectedRows, onSelectedRowsChange, data } = this.asProps;
+    const { selectedRows, onSelectedRowsChange } = this.asProps;
 
     if (selectedRows && onSelectedRowsChange) {
       const newSelectedRows = new Set(selectedRows);
@@ -831,7 +831,6 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
     this.hasGroups = findComponent(HeadComponent.props.children, ['Head.Group']) !== undefined;
 
-    let columnIndex = 0;
     let groupIndex = 0;
     let gridColumnIndex = selectedRows ? 2 : 1;
 
@@ -903,7 +902,6 @@ class DataTableRoot<D extends DataTableData> extends Component<
           gridColumnIndex + 1
         }`;
 
-        columnIndex++;
         gridColumnIndex++;
 
         columns.push(col);
@@ -927,7 +925,6 @@ class DataTableRoot<D extends DataTableData> extends Component<
             }
 
             col.gridArea = `2 / ${gridColumnIndex} / 3 / ${gridColumnIndex + 1}`;
-            columnIndex++;
             gridColumnIndex++;
 
             columns.push(col);
@@ -947,7 +944,6 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
     this.hasGroups = columns.some((column) => 'columns' in column);
 
-    let columnIndex = 0;
     let groupIndex = 0;
     let gridColumnIndex = selectedRows ? 2 : 1;
 
@@ -1010,7 +1006,6 @@ class DataTableRoot<D extends DataTableData> extends Component<
           gridColumnIndex + 1
         }`;
 
-        columnIndex++;
         gridColumnIndex++;
 
         calculatedColumns.push(col);
@@ -1036,7 +1031,6 @@ class DataTableRoot<D extends DataTableData> extends Component<
           }
 
           col.gridArea = `2 / ${gridColumnIndex} / 3 / ${gridColumnIndex + 1}`;
-          columnIndex++;
           gridColumnIndex++;
 
           calculatedColumns.push(col);

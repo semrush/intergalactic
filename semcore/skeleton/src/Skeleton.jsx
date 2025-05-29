@@ -25,7 +25,7 @@ class SkeletonRoot extends Component {
 
   render() {
     const SSkeleton = Root;
-    const { Children, styles, duration, hidden, getI18nText, tag } = this.asProps;
+    const { styles, duration, hidden, getI18nText } = this.asProps;
 
     if (hidden) return null;
 

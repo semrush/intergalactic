@@ -273,7 +273,7 @@ class RootSelect extends AbstractDropdown {
   };
 
   render() {
-    const { Children, options, multiselect, value, uid, forcedAdvancedMode, ...other } =
+    const { Children, options, multiselect, value: _value, uid, forcedAdvancedMode, ...other } =
       this.asProps;
     const advancedMode =
       forcedAdvancedMode ||
