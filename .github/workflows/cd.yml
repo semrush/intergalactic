@@ -7,8 +7,88 @@ on:
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
 jobs:
+  defineChangedComponents:
+    runs-on: ubuntu-latest
+    outputs:
+      changedComponents: ${{ steps.pkg-diff.outputs.changed }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
+      - name: Install Node.js
+        uses: actions/setup-node@v4.0.1
+        with:
+          node-version: 20
+      - uses: pnpm/action-setup@v4.0.0
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 8.7.6
+          run_install: false
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: |
+          echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
+      - uses: actions/cache@v4
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+      - name: Install dependencies
+        run: |
+          pnpm install --frozen-lockfile
+      - name: Define changed components
+        id: pkg-diff
+        run: |
+          git fetch origin ${{ github.event.pull_request.base.ref }}
+          echo "changed=$(BASE=origin/${{ github.event.pull_request.base.ref }} pnpm pkg-diff | tail -n 1)" >> $GITHUB_OUTPUT
+      - name: Set labels
+        if: steps.pkg-diff.outputs.changed != ''
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CHANGED: ${{ steps.pkg-diff.outputs.changed }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          REPO: ${{ github.repository }}
+        run: |
+          EXISTING_LABELS=$(gh label list --repo "$REPO" --limit 100 --json name --jq '.[].name')
+          PR_LABELS=$(gh pr view "$PR_NUMBER" --repo "$REPO" --json labels --jq '.labels[].name')
+          PR_LABELS_LIST=$(echo "$PR_LABELS" | tr '\n' ' ')
+          CHANGED_COMPONENTS=$(echo "$CHANGED" | tr ' ' '\n')
+          LABELS_TO_REMOVE=""
+          LABELS_TO_ADD=""
+          
+          echo CHANGED: "$CHANGED"
+
+          for LABEL in $CHANGED; do
+            if ! echo "$EXISTING_LABELS" | grep -qx "$LABEL"; then
+              echo "Creating label '$LABEL'"
+              gh label create "$LABEL" --repo "$REPO"
+            fi
+            if ! echo "$PR_LABELS" | grep -qx "$LABEL"; then
+              LABELS_TO_ADD="$LABELS_TO_ADD,$LABEL"
+            fi
+          done
+          
+          for LABEL in $PR_LABELS_LIST; do
+            if ! echo "$CHANGED_COMPONENTS" | grep -qx "$LABEL"; then
+              LABELS_TO_REMOVE="$LABELS_TO_REMOVE,$LABEL"
+            fi
+          done
+          
+          LABELS_TO_ADD="${LABELS_TO_ADD#","}"
+          LABELS_TO_REMOVE="${LABELS_TO_REMOVE#","}"
+          
+          echo ADD: "$LABELS_TO_ADD"
+          echo REMOVE: "$LABELS_TO_REMOVE"
+         
+          if [ -n $LABELS_TO_REMOVE ]; then
+            gh pr edit "$PR_NUMBER" --remove-label "$LABELS_TO_REMOVE" --repo "$REPO"
+          fi
+          if [ -n $LABELS_TO_ADD ]; then
+            gh pr edit "$PR_NUMBER" --add-label "$LABELS_TO_ADD" --repo "$REPO"
+          fi
   build:
     runs-on: ubuntu-latest
+    needs: defineChangedComponents
     steps:
       - name: Checkout
         uses: actions/checkout@v4.1.1
@@ -107,7 +187,8 @@ jobs:
           files: README.md CONTRIBUTING.md semcore/*/README.md semcore/*/CHANGELOG.md website/docs
   unit-tests:
     runs-on: ubuntu-latest
-    needs: build
+    needs: [build, defineChangedComponents]
+    if: ${{ needs.defineChangedComponents.outputs.changedComponents != '' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4.1.1
@@ -152,7 +233,7 @@ jobs:
         run: pnpm test:setup
       - name: Test
         id: test
-        run: pnpm test:docker run -- --allowOnly=false
+        run: pnpm test:docker run ${{ needs.defineChangedComponents.outputs.changedComponents }} -- --allowOnly=false
         continue-on-error: true
       - name: Save test results as artifacts
         if: steps.test.outcome != 'success'
@@ -237,18 +318,62 @@ jobs:
           git_committer_email: semrush-ci-whale@users.noreply.github.com
   browser-tests:
     runs-on: ubuntu-latest
-    needs: build
+    needs: [ build, defineChangedComponents ]
+    if: ${{ needs.defineChangedComponents.outputs.changedComponents != '' }}
+    container:
+      image: mcr.microsoft.com/playwright:v1.48.2-jammy
+      options: --ipc=host  # Needed for Chromium sandboxing
     steps:
+      - name: Install Git
+        run: apt-get update && apt-get install -y git
       - uses: actions/checkout@v4.1.1
+        with:
+          token: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
+          fetch-depth: 0
+      - name: Mark workspace as safe
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
       - uses: pnpm/action-setup@v4.0.0
         with:
           version: 8.7.6
           run_install: false
-
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: |
+          echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
+      - uses: actions/cache@v4
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+      - name: Install dependencies
+        run: |
+          pnpm install --frozen-lockfile --ignore-scripts
+      - name: Install Browser
+        run: npx playwright install --with-deps
+      - name: Restore cached build
+        uses: actions/cache@v4
+        id: cache-build
+        with:
+          path: |
+            semcore/*/lib
+            tools/*/lib
+            semcore/icon/**/*.js
+            semcore/icon/**/*.mjs
+            semcore/icon/**/*.d.ts
+            semcore/illustration/**/*.js
+            semcore/illustration/**/*.mjs
+            semcore/illustration/**/*.d.ts
+          key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
+      - name: Build basic packages
+        if: steps.cache-build.outputs.cache-hit != 'true'
+        run: |
+          pnpm --filter @semcore/core build
+          pnpm --filter @semcore/base-components build
+          pnpm build:icons
+          pnpm build:illustration
       - name: Browser testing
         id: browser-testing
-        run: |
-          docker run --rm --network host -v $(pwd):/work -v /work/node_modules -v /work/.pnpm-store -v /work/.cache -w /work/ mcr.microsoft.com/playwright:v1.48.0-jammy bash -c "npm install --global pnpm@8.11.0 && pnpm install --ignore-scripts && pnpm build:icons && pnpm build:illustration && npx playwright install && CI=true pnpm playwright test --config playwright.browser.config.ts"
+        run: HOME=/root pnpm playwright test --config playwright.browser.config.ts ${{ needs.defineChangedComponents.outputs.changedComponents }}
         continue-on-error: true
       - name: Save test results as artifacts
         if: steps.browser-testing.outcome != 'success'
@@ -262,17 +387,62 @@ jobs:
         run: exit 1
   axe-tests:
     runs-on: ubuntu-latest
-    needs: build
+    needs: [ build, defineChangedComponents ]
+    if: ${{ needs.defineChangedComponents.outputs.changedComponents != '' }}
+    container:
+      image: mcr.microsoft.com/playwright:v1.48.2-jammy
+      options: --ipc=host  # Needed for Chromium sandboxing
     steps:
+      - name: Install Git
+        run: apt-get update && apt-get install -y git
       - uses: actions/checkout@v4.1.1
+        with:
+          token: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
+          fetch-depth: 0
+      - name: Mark workspace as safe
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
       - uses: pnpm/action-setup@v4.0.0
         with:
           version: 8.7.6
           run_install: false
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: |
+          echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
+      - uses: actions/cache@v4
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+      - name: Install dependencies
+        run: |
+          pnpm install --frozen-lockfile --ignore-scripts
+      - name: Install Browser
+        run: npx playwright install --with-deps
+      - name: Restore cached build
+        uses: actions/cache@v4
+        id: cache-build
+        with:
+          path: |
+            semcore/*/lib
+            tools/*/lib
+            semcore/icon/**/*.js
+            semcore/icon/**/*.mjs
+            semcore/icon/**/*.d.ts
+            semcore/illustration/**/*.js
+            semcore/illustration/**/*.mjs
+            semcore/illustration/**/*.d.ts
+          key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
+      - name: Build basic packages
+        if: steps.cache-build.outputs.cache-hit != 'true'
+        run: |
+          pnpm --filter @semcore/core build
+          pnpm --filter @semcore/base-components build
+          pnpm build:icons
+          pnpm build:illustration
       - name: Axe testing
         id: axe-testing
-        run: |
-          docker run --rm --network host -v $(pwd):/work -v /work/node_modules -v /work/.pnpm-store -v /work/.cache -w /work/ mcr.microsoft.com/playwright:v1.35.0-jammy bash -c "npm install --global pnpm@8.11.0 && pnpm install --ignore-scripts && pnpm build:icons && pnpm build:illustration && npx playwright install && CI=true pnpm playwright test --config playwright.axe.config.ts"
+        run: HOME=/root pnpm playwright test --config playwright.axe.config.ts ${{ needs.defineChangedComponents.outputs.changedComponents }}
         continue-on-error: true
       - name: Save test results as artifacts
         if: steps.axe-testing.outcome != 'success'
