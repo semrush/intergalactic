@@ -25,7 +25,7 @@ const downloadIllustrations = async () => {
       .toLowerCase()
       .split(' ')
       .join('-')}/static`;
-    // biome-ignore lint/suspicious/noConsoleLog:
+    // biome-ignore lint/suspicious/noConsole: explanation
     console.log('page', children.name);
 
     if (fs.existsSync(folderName)) {
@@ -47,7 +47,7 @@ const downloadIllustrations = async () => {
             });
 
           const fileName = `${illustration.name}.png`;
-          // biome-ignore lint/suspicious/noConsoleLog:
+          // biome-ignore lint/suspicious/noConsole: explanation
           console.log('illustration', fileName);
         } catch (error) {
           console.error(error.message);
@@ -66,7 +66,7 @@ const downloadIllustrations = async () => {
         const data: { name?: string; document?: { children: { name: string }[] } } =
           await response.json();
         const category = data.name.toLowerCase().split(' ').join('-');
-        // biome-ignore lint/suspicious/noConsoleLog:
+        // biome-ignore lint/suspicious/noConsole: explanation
         console.log('category', category);
         const downloadPromises = data.document.children
           .filter(

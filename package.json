@@ -32,7 +32,7 @@
     "clean:illustration": "pnpm --filter @semcore/illustration run clean",
     "format": "biome format ./semcore ./tools ./website ./stories ./.ci --config-path . --write",
     "format-changelogs": "tsm --require=./.ci/tsm-filter-warnings.js ./tools/continuous-delivery/bin/format-changelogs.ts",
-    "lint:es": "biome check ./semcore ./tools ./website ./.ci --config-path .",
+    "lint:es": "biome check ./semcore ./tools ./website ./stories ./.ci --config-path .",
     "lint:ts": "tsc --noEmit && cd website && tsc --noEmit",
     "lint:css": "stylelint **/*.css",
     "lint:docs": "vale README.md CONTRIBUTING.md semcore/*/README.md semcore/*/CHANGELOG.md tools/*/README.md tools/*/CHANGELOG.md website/docs",
@@ -50,7 +50,7 @@
   "devDependencies": {
     "@babel/preset-react": "7.12.1",
     "@babel/runtime": "7.17.9",
-    "@biomejs/biome": "1.2.2",
+    "@biomejs/biome": "2.0.0-beta.5",
     "@crowdin/cli": "3.10.1",
     "@guidepup/playwright": "0.13.2",
     "@jridgewell/set-array": "1.1.2",

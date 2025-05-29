@@ -8,7 +8,7 @@ try {
     throw new Error(`Found ${merge.conflictsCount} conflicts`);
   }
 } catch (error) {
-  // biome-ignore lint/suspicious/noConsoleLog:
+  // biome-ignore lint/suspicious/noConsole: explanation
   console.log(error);
   process.exit(1);
 }

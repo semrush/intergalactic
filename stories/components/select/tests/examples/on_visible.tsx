@@ -15,7 +15,7 @@ const Demo = () => {
   const [visible, setVisible] = React.useState(false);
 
   const handleVisibility = (visible: boolean) => {
-    // biome-ignore lint/suspicious/noConsoleLog: <explanation>
+    // biome-ignore lint/suspicious/noConsole: explanation <explanation>
     console.log(visible);
 
     setVisible(visible);

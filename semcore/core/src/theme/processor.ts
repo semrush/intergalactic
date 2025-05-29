@@ -226,16 +226,16 @@ for (const theme of themes) {
 
     if (warning) {
       if (unusedVariables.length > 0) {
-        // biome-ignore lint/suspicious/noConsoleLog:
+        // biome-ignore lint/suspicious/noConsole: explanation
         console.log('Unused design tokens:');
-        // biome-ignore lint/suspicious/noConsoleLog:
+        // biome-ignore lint/suspicious/noConsole: explanation
         console.log(unusedVariables.join('\n'));
       }
       if (colorLiterals.length > 0) {
-        // biome-ignore lint/suspicious/noConsoleLog:
+        // biome-ignore lint/suspicious/noConsole: explanation
         console.log('Unexpected color literals:');
         for (const literal of colorLiterals) {
-          // biome-ignore lint/suspicious/noConsoleLog:
+          // biome-ignore lint/suspicious/noConsole: explanation
           console.log(`${literal.name} in ${literal.path}`);
         }
       }

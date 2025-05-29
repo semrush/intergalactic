@@ -634,7 +634,7 @@ export const buildArticle = async (
             if (text.startsWith('@table-caption ')) {
               const nextToken = markdownAst.children[index + 1];
               if (nextToken.type !== 'table') {
-                // biome-ignore lint/suspicious/noConsoleLog:
+                // biome-ignore lint/suspicious/noConsole: explanation
                 console.log(nextToken);
                 throw new Error(
                   '@table-caption at-rule is only allowed right before tables, what was found see above',

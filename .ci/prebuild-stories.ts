@@ -104,7 +104,7 @@ class SourceMapper {
 async function run() {
   const files = await glob('./stories/**/*.stories.@(ts|tsx)');
 
-  // biome-ignore lint/suspicious/noConsoleLog:
+  // biome-ignore lint/suspicious/noConsole: explanation
   console.log('files to patch: ', files);
 
   for (const file of files) {

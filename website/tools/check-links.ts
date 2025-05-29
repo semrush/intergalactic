@@ -112,7 +112,7 @@ function checkLinks() {
 
       // Check if target file exists
       if (!fs.existsSync(targetFilePath)) {
-        // biome-ignore lint/suspicious/noConsoleLog:
+        // biome-ignore lint/suspicious/noConsole: explanation
         console.warn(`❌ [${fromFile}] → "${link}" — file not found: ${linkPath}`);
         hasErrors = true;
         continue;
@@ -122,7 +122,7 @@ function checkLinks() {
       if (anchor) {
         const anchors = fileAnchorMap[linkPath];
         if (!anchors || !anchors.includes(anchor)) {
-          // biome-ignore lint/suspicious/noConsoleLog:
+          // biome-ignore lint/suspicious/noConsole: explanation
           console.warn(
             `⚠️ [${fromFile}] → "${link}" — anchor "#${anchor}" not found in "${linkPath}"`,
           );
@@ -133,11 +133,11 @@ function checkLinks() {
   }
 
   if (hasErrors) {
-    // biome-ignore lint/suspicious/noConsoleLog:
+    // biome-ignore lint/suspicious/noConsole: explanation
     console.log('\n🔍 Check completed with errors.');
     process.exit(1);
   } else {
-    // biome-ignore lint/suspicious/noConsoleLog:
+    // biome-ignore lint/suspicious/noConsole: explanation
     console.log('✅ All links and anchors are valid.');
   }
 }

@@ -36,11 +36,11 @@ export const sendMessage = async ({
         log += `\nImage: ${image.full} (thumb ${image.thumb})\n===`;
       }
 
-      // biome-ignore lint/suspicious/noConsoleLog:
+      // biome-ignore lint/suspicious/noConsole: explanation
       console.log(log);
 
       if (dryRun) {
-        // biome-ignore lint/suspicious/noConsoleLog:
+        // biome-ignore lint/suspicious/noConsole: explanation
         console.log('Sending is canceled due to dry run');
         return null;
       }

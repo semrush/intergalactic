@@ -5,7 +5,7 @@ type KEY = string;
 
 function Demo() {
   const handleClick = (key: KEY, e: React.SyntheticEvent) => {
-    // biome-ignore lint/suspicious/noConsoleLog:
+    // biome-ignore lint/suspicious/noConsole: explanation
     console.log('click', key);
   };
 

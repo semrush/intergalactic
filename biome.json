@@ -1,70 +1,43 @@
 {
   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
-  "organizeImports": {
-    "enabled": false
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "off"
+      }
+    }
   },
   "formatter": {
     "enabled": true,
-    "ignore": [
-      "lib",
-      "dist",
-      "**/code_mod/**",
-      "**/node_modules/**",
-      "semcore/icon/**/**/*.js",
-      "semcore/icon/**/**/*.d.ts",
-      "semcore/illustration/**/*.js",
-      "semcore/illustration/**/*.d.ts",
-      "**/__fixtures__/**",
-      ".tmp",
-      "**/*.mjs",
-      "mailer",
-      "./tools/icon-transform-svg/__tests__",
-      "**/lcov-report/**",
-      "website/ts.json",
-      "website/docs/.vitepress/dist",
-      "website/docs/.vitepress/cache",
-      "./tools/entry-point/**/*.js",
-      "./tools/entry-point/**/*.mjs",
-      "./tools/entry-point/**/*.d.ts",
-      "./tools/intg-release-migrator/tools/*.js",
-      "./tools/playground/examples/**"
+    "includes": [
+      "semcore/*/src/**",
+      "!semcore/*/src/**/*.d.ts"
     ],
-    "lineWidth": 100,
-    "indentStyle": "space"
+    "lineWidth": 140,
+    "indentStyle": "space",
+    "attributePosition": "multiline",
+    "expand": "always"
   },
   "javascript": {
     "formatter": {
+      "trailingCommas": "all",
       "quoteStyle": "single",
-      "trailingComma": "all",
-      "jsxQuoteStyle": "single"
+      "jsxQuoteStyle": "single",
+      "bracketSameLine": true
+    }
+  },
+  "css": {
+    "formatter": {
+      "enabled": false
+    },
+    "linter": {
+      "enabled": false
     }
   },
   "linter": {
     "enabled": true,
-    "ignore": [
-      "lib",
-      "dist",
-      "**/code_mod/**",
-      "**/node_modules/**",
-      "semcore/icon/**/**/*.js",
-      "semcore/icon/**/**/*.d.ts",
-      "semcore/illustration/**/*.js",
-      "semcore/illustration/**/*.d.ts",
-      "**/__fixtures__/**",
-      ".tmp",
-      "**/*.mjs",
-      "mailer",
-      "./tools/icon-transform-svg/__tests__",
-      "**/lcov-report/**",
-      "website/ts.json",
-      "website/docs/.vitepress/dist",
-      "website/docs/.vitepress/cache",
-      "website/tools/check-links.ts",
-      "./tools/playground/examples/**",
-      "./tools/entry-point/**/*.js",
-      "./tools/entry-point/**/*.mjs",
-      "./tools/entry-point/**/*.d.ts",
-      "./tools/intg-release-migrator/tools/*.js"
+    "includes": [
+      "semcore/*/src/**"
     ],
     "rules": {
       "suspicious": {
@@ -74,13 +47,22 @@
         "noRedeclare": "off",
         "noShadowRestrictedNames": "off",
         "noArrayIndexKey": "off",
-        "noConsoleLog": "error"
+        "noConsole": "error"
       },
       "style": {
         "noParameterAssign": "off",
         "noNonNullAssertion": "off",
         "useTemplate": "off",
-        "useExponentiationOperator": "off"
+        "useExponentiationOperator": "off",
+        "useAsConstAssertion": "error",
+        "useDefaultParameterLast": "error",
+        "useEnumInitializers": "error",
+        "useSelfClosingElements": "error",
+        "useSingleVarDeclarator": "error",
+        "noUnusedTemplateLiteral": "error",
+        "useNumberNamespace": "error",
+        "noInferrableTypes": "error",
+        "noUselessElse": "error"
       },
       "correctness": {
         "noChildrenProp": "off",

@@ -209,7 +209,7 @@ async function patchExports(illustrations: string[]) {
 
   await fs.writeJSON(packageJsonPath, packageJson, { spaces: 2 });
 
-  // biome-ignore lint/suspicious/noConsoleLog:
+  // biome-ignore lint/suspicious/noConsole: explanation
   console.log('Patched exports in package.json.');
 }
 

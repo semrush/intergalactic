@@ -83,9 +83,9 @@ function UpdateBlock() {
       url: 'mailer/post',
       data: { email: value },
     })
-      // biome-ignore lint/suspicious/noConsoleLog:
+      // biome-ignore lint/suspicious/noConsole: explanation
       .then((response) => console.log(response))
-      // biome-ignore lint/suspicious/noConsoleLog:
+      // biome-ignore lint/suspicious/noConsole: explanation
       .catch((error) => console.log(error));
   };
 

@@ -22,19 +22,19 @@ const { replaceImports } = require('../tools/importUtils');
 const baseDir = argv.d || 'src';
 
 if (argv.t === 'check') {
-  // biome-ignore lint/suspicious/noConsoleLog:
+  // biome-ignore lint/suspicious/noConsole: explanation
   console.log('start check old imports in ', baseDir);
 
   checkImports(baseDir).then(() => {
-    // biome-ignore lint/suspicious/noConsoleLog:
+    // biome-ignore lint/suspicious/noConsole: explanation
     console.log('Done!');
   });
 } else {
-  // biome-ignore lint/suspicious/noConsoleLog:
+  // biome-ignore lint/suspicious/noConsole: explanation
   console.log('start replace old imports in ', baseDir);
 
   replaceImports(baseDir).then(() => {
-    // biome-ignore lint/suspicious/noConsoleLog:
+    // biome-ignore lint/suspicious/noConsole: explanation
     console.log('Done!');
   });
 }

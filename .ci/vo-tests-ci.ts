@@ -6,7 +6,7 @@ const oldHash = await fs.readFile('./.ci/.vo-test-hash.txt', 'utf-8');
 const newHash = await generateVoTestsHash();
 
 if (oldHash === newHash) {
-  // biome-ignore lint/suspicious/noConsoleLog:
+  // biome-ignore lint/suspicious/noConsole: explanation
   console.log('vo-test hash is not updated, skipping vo-test');
 } else {
   execSync('pnpm vo-test', { stdio: 'inherit' });

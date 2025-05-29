@@ -76,8 +76,7 @@ export default {
   '--intergalactic-border-tooltip-invert': '#6c6e79',
   '--intergalactic-border-table-accent': '#a9abb6',
   '--intergalactic-border-date-picker-range-comparison': '#8649e1',
-  '--intergalactic-border-critical-pattern':
-    'repeating-linear-gradient(315deg, rgba(209, 0, 47, 1) 0, rgba(209, 0, 47, 1) 2px, transparent 0, transparent 50%)',
+  '--intergalactic-border-critical-pattern': 'repeating-linear-gradient(315deg, rgba(209, 0, 47, 1) 0, rgba(209, 0, 47, 1) 2px, transparent 0, transparent 50%)',
   '--intergalactic-control-switch-bg': '#a9abb6',
   '--intergalactic-control-primary-info': '#008ff8',
   '--intergalactic-control-primary-info-hover': '#006dca',
@@ -157,10 +156,8 @@ export default {
   '--intergalactic-progress-bar-bg-hover': '#c4c7cf',
   '--intergalactic-progress-bar-bg-invert': 'rgba(255, 255, 255, 0.2)',
   '--intergalactic-progress-bar-bg-invert-hover': 'rgba(255, 255, 255, 0.4)',
-  '--intergalactic-progress-bar-value-gradient':
-    'linear-gradient(-45deg, rgba(0, 159, 129, 0.9) 25%, rgba(0, 159, 129, 1) 0%, rgba(0, 159, 129, 1) 50%, rgba(0, 159, 129, 0.9) 0%, rgba(0, 159, 129, 0.9) 75%, rgba(0, 159, 129, 1) 0%)',
-  '--intergalactic-progress-bar-pattern-gradient':
-    'linear-gradient(-45deg, rgba(224, 225, 233, 0.9) 25%, rgba(224, 225, 233, 1) 0%, rgba(224, 225, 233, 1) 50%, rgba(224, 225, 233, 0.9) 0%, rgba(224, 225, 233, 0.9) 75%, rgba(224, 225, 233, 1) 0%)',
+  '--intergalactic-progress-bar-value-gradient': 'linear-gradient(-45deg, rgba(0, 159, 129, 0.9) 25%, rgba(0, 159, 129, 1) 0%, rgba(0, 159, 129, 1) 50%, rgba(0, 159, 129, 0.9) 0%, rgba(0, 159, 129, 0.9) 75%, rgba(0, 159, 129, 1) 0%)',
+  '--intergalactic-progress-bar-pattern-gradient': 'linear-gradient(-45deg, rgba(224, 225, 233, 0.9) 25%, rgba(224, 225, 233, 1) 0%, rgba(224, 225, 233, 1) 50%, rgba(224, 225, 233, 0.9) 0%, rgba(224, 225, 233, 0.9) 75%, rgba(224, 225, 233, 1) 0%)',
   '--intergalactic-progress-bar-value-bg': '#000000',
   '--intergalactic-skeleton-bg': 'rgba(224, 225, 233, 0.8)',
   '--intergalactic-skeleton-bg-invert': 'rgba(255, 255, 255, 0.3)',
@@ -170,8 +167,7 @@ export default {
   '--intergalactic-table-th-primary-cell-hover': '#e0e1e9',
   '--intergalactic-table-th-primary-cell-active': '#e0e1e9',
   '--intergalactic-table-th-secondary-cell': '#ffffff',
-  '--intergalactic-table-th-gradient':
-    'linear-gradient(to right, rgba(224, 225, 233, 0) 0%, rgba(224, 225, 233, 1) 100%)',
+  '--intergalactic-table-th-gradient': 'linear-gradient(to right, rgba(224, 225, 233, 0) 0%, rgba(224, 225, 233, 1) 100%)',
   '--intergalactic-table-td-cell': '#ffffff',
   '--intergalactic-table-td-cell-hover': '#f0f0f4',
   '--intergalactic-table-td-cell-active': '#e6e7ed',
@@ -200,11 +196,9 @@ export default {
   '--intergalactic-brand-google-blue': '#1a0dab',
   '--intergalactic-brand-google-green': '#016723',
   '--intergalactic-brand-google-my-business': '#1a73e8',
-  '--intergalactic-box-shadow-card':
-    '0px 0px 1px 0px rgba(25, 27, 35, 0.16), 0px 1px 2px 0px rgba(25, 27, 35, 0.12)',
+  '--intergalactic-box-shadow-card': '0px 0px 1px 0px rgba(25, 27, 35, 0.16), 0px 1px 2px 0px rgba(25, 27, 35, 0.12)',
   '--intergalactic-box-shadow-card-hover': '3px 3px 30px 0px rgba(25, 27, 35, 0.15)',
-  '--intergalactic-box-shadow-dnd':
-    '0px 0px 1px 0px rgba(25, 27, 35, 0.16), 0px 12px 40px 0px rgba(25, 27, 35, 0.16)',
+  '--intergalactic-box-shadow-dnd': '0px 0px 1px 0px rgba(25, 27, 35, 0.16), 0px 12px 40px 0px rgba(25, 27, 35, 0.16)',
   '--intergalactic-box-shadow-modal': '0px 3px 8px 0px rgba(25, 27, 35, 0.2)',
   '--intergalactic-box-shadow-popper': '0px 1px 12px 0px rgba(25, 27, 35, 0.15)',
   '--intergalactic-keyboard-focus-outline': 'rgba(0, 143, 248, 0.5)',
@@ -292,22 +286,14 @@ export default {
   '--intergalactic-tooltip-invert': '#191b23',
   '--intergalactic-neighbor-location-neutral': 'rgba(255, 255, 255, 0.5)',
   '--intergalactic-neighbor-location-invert': 'rgba(0, 0, 0, 0.5)',
-  '--intergalactic-scroll-area-shadow-left':
-    'linear-gradient(to right, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%)',
-  '--intergalactic-scroll-area-shadow-right':
-    'linear-gradient(to left, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%)',
-  '--intergalactic-scroll-area-shadow-top':
-    'linear-gradient(to bottom, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%)',
-  '--intergalactic-scroll-area-shadow-bottom':
-    'linear-gradient(to top, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%)',
-  '--intergalactic-scroll-area-dropdown-menu-left':
-    'linear-gradient(to right, rgba(255, 255, 255, 1) 34.38%, rgba(255, 255, 255, 0) 100%)',
-  '--intergalactic-scroll-area-dropdown-menu-right':
-    'linear-gradient(to left, rgba(255, 255, 255, 1) 34.38%, rgba(255, 255, 255, 0) 100%)',
-  '--intergalactic-scroll-area-dropdown-menu-bottom':
-    'linear-gradient(to top, rgba(255, 255, 255, 1) 34.38%, rgba(255, 255, 255, 0) 100%)',
-  '--intergalactic-scroll-area-dropdown-menu-top':
-    'linear-gradient(to bottom, rgba(255, 255, 255, 1) 34.38%, rgba(255, 255, 255, 0) 100%)',
+  '--intergalactic-scroll-area-shadow-left': 'linear-gradient(to right, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%)',
+  '--intergalactic-scroll-area-shadow-right': 'linear-gradient(to left, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%)',
+  '--intergalactic-scroll-area-shadow-top': 'linear-gradient(to bottom, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%)',
+  '--intergalactic-scroll-area-shadow-bottom': 'linear-gradient(to top, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%)',
+  '--intergalactic-scroll-area-dropdown-menu-left': 'linear-gradient(to right, rgba(255, 255, 255, 1) 34.38%, rgba(255, 255, 255, 0) 100%)',
+  '--intergalactic-scroll-area-dropdown-menu-right': 'linear-gradient(to left, rgba(255, 255, 255, 1) 34.38%, rgba(255, 255, 255, 0) 100%)',
+  '--intergalactic-scroll-area-dropdown-menu-bottom': 'linear-gradient(to top, rgba(255, 255, 255, 1) 34.38%, rgba(255, 255, 255, 0) 100%)',
+  '--intergalactic-scroll-area-dropdown-menu-top': 'linear-gradient(to bottom, rgba(255, 255, 255, 1) 34.38%, rgba(255, 255, 255, 0) 100%)',
   '--intergalactic-scroll-bar-background': 'rgba(25, 27, 35, 0.3)',
   '--intergalactic-tag-primary-gray-normal': '#ECEDF0',
   '--intergalactic-tag-primary-gray-hover-active': '#E3E4E9',
@@ -397,4 +383,4 @@ export default {
   '--intergalactic-duration-modal': '200',
   '--intergalactic-duration-accordion': '200',
   '--intergalactic-duration-counter': '200',
-};
+}

@@ -111,7 +111,7 @@ export const gitUtils = {
     try {
       await git.pull('origin', branch, { '--rebase': 'true' });
     } catch (err) {
-      // biome-ignore lint/suspicious/noConsoleLog:
+      // biome-ignore lint/suspicious/noConsole: explanation
       console.log(await git.status());
       throw err;
     }

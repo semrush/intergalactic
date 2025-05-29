@@ -31,7 +31,7 @@ esbuild
     },
   )
   .then(() => {
-    // biome-ignore lint/suspicious/noConsoleLog:
+    // biome-ignore lint/suspicious/noConsole: explanation
     console.log('\nStarted on ' + picocolros.yellow(`http://localhost:${port}\n`));
   })
   .catch((err) => {

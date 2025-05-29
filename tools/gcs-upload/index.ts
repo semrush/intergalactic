@@ -7,7 +7,7 @@ import pLimit from 'p-limit';
 const filename = fileURLToPath(import.meta.url);
 
 const log = (message: string) => {
-  // biome-ignore lint/suspicious/noConsoleLog:
+  // biome-ignore lint/suspicious/noConsole: explanation
   console.log(`[gcs-upload tool]: ${message}`);
 };
 
@@ -103,7 +103,7 @@ export const upload = async (
                 cacheControl: 'public, max-age=31536000',
               },
             })
-            // biome-ignore lint/suspicious/noConsoleLog:
+            // biome-ignore lint/suspicious/noConsole: explanation
             .then(() => console.log(`${fileName} uploaded to ${destination}`))
         );
       }),

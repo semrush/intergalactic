@@ -111,9 +111,9 @@ export default {
       }
       return typings;
     } catch (err) {
-      // biome-ignore lint/suspicious/noConsoleLog:
+      // biome-ignore lint/suspicious/noConsole: explanation
       console.log(String(err).substring(0, 1000));
-      // biome-ignore lint/suspicious/noConsoleLog:
+      // biome-ignore lint/suspicious/noConsole: explanation
       console.log('Failed to serialize typings');
       return {};
     }
