@@ -15,7 +15,7 @@ class RootBaseTrigger extends Component {
     cssVariableEnhance({
       variable: '--intergalactic-duration-control',
       fallback: '200',
-      map: Number.parseInt,
+      map: Number.Number.parseInt,
       prop: 'duration',
     }),
     animatedSizeEnhance({

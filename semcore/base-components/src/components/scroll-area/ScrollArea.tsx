@@ -117,8 +117,8 @@ class ScrollAreaRoot extends Component<ScrollAreaProps, {}, State, typeof Scroll
       if (hMax) this.setStyleSizeProperty(this.$wrapper, 'max-height', hMax);
     }
 
-    let maxWidth = Number.parseInt(style.getPropertyValue('max-width'));
-    let maxHeight = Number.parseInt(style.getPropertyValue('max-height'));
+    let maxWidth = Number.Number.parseInt(style.getPropertyValue('max-width'));
+    let maxHeight = Number.Number.parseInt(style.getPropertyValue('max-height'));
 
     if (maxWidth && parent) {
       if (observeParentSize && wMax && parent.scrollWidth > parentRect.width) {

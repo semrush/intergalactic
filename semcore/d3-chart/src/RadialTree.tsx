@@ -171,7 +171,7 @@ class RadialTreeBase extends Component<RootAsProps> {
     if (!canUseDOM()) return;
     const preferReduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)')?.matches;
 
-    /** using `!(>)` instead of `<=` to get true on NaN and non numbers stuff  */
+    /** using `!(>)` instead of `<=` to get true on Number.NaN and non numbers stuff  */
     if (!(duration > 0)) return;
     if (preferReduceMotion) return;
 
@@ -198,7 +198,7 @@ class RadialTreeBase extends Component<RootAsProps> {
 
     if (circlesNodes.length > 0) {
       const attrs = circlesNodes.map((node) => {
-        const radianIndex = parseInt(node.dataset.radianIndex!, 10);
+        const radianIndex = Number.parseInt(node.dataset.radianIndex!, 10);
         const lineNode = linesNodes[radianIndex];
         return {
           from: {
@@ -226,7 +226,7 @@ class RadialTreeBase extends Component<RootAsProps> {
       const attrs = iconsNodes.map((node) => {
         const width = node.width?.baseVal?.value;
         const height = node.height?.baseVal?.value;
-        const radianIndex = parseInt(node.dataset.radianIndex!, 10);
+        const radianIndex = Number.parseInt(node.dataset.radianIndex!, 10);
         const lineNode = linesNodes[radianIndex];
         return {
           from: {

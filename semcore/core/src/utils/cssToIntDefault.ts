@@ -6,7 +6,7 @@
  * @returns {Number|number}
  */
 export default function cssToIntDefault(value: string, defaultValue = 0) {
-  let result = parseFloat(value);
+  let result = Number.parseFloat(value);
   if (Number.isNaN(result)) {
     result = defaultValue;
   }

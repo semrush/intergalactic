@@ -117,7 +117,7 @@ class PopperRoot extends Component<PopperProps, {}, {}, typeof PopperRoot.enhanc
     cssVariableEnhance({
       variable: '--intergalactic-duration-popper',
       fallback: '200',
-      map: (v: string) => Number.parseInt(v, 10).toString(),
+      map: (v: string) => Number.Number.parseInt(v, 10).toString(),
       prop: 'duration',
     }),
   ] as const;

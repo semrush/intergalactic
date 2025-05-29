@@ -69,7 +69,7 @@ class StackGroupBarRoot extends Component<StackGroupProps> {
   }
 
   getBarProps({ y, group, hMin = MIN_HEIGHT }: StackGroupBarProps, index: number) {
-    const { x, r, scale, maxBarSize = Infinity, patterns } = this.asProps;
+    const { x, r, scale, maxBarSize = Number.POSITIVE_INFINITY, patterns } = this.asProps;
     const [, yScale] = scale!; // scale always will be because of CreateElement wrapper
 
     const allGroupSeries = this.getSeries(group);

@@ -71,7 +71,7 @@ class ItemPicker extends Component {
   handleChange = (value, event) => {
     /* hide props for bubbling events */
     event.stopPropagation();
-    const numberValue = intOrDefault(Number(value), NaN);
+    const numberValue = intOrDefault(Number(value), Number.NaN);
 
     if (!Number.isNaN(numberValue)) {
       this.setState({ dirtyValue: value.slice(-2) });

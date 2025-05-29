@@ -59,7 +59,7 @@ class HorizontalBarRoot extends Component {
       onMouseLeave,
       groupKey,
       transparent,
-      maxBarSize = Infinity,
+      maxBarSize = Number.POSITIVE_INFINITY,
       resolveColor,
       patterns,
       onClick,

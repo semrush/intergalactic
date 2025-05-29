@@ -599,7 +599,7 @@ const findNextRectangleIndex = <
   direction: DirectionArrows,
 ): number => {
   let candidate: Rectangle | null = null;
-  let minDistance: number = Infinity;
+  let minDistance: number = Number.POSITIVE_INFINITY;
 
   for (let i = 0; i < rectangles.length; i++) {
     const rect = rectangles[i];

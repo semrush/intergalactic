@@ -44,7 +44,7 @@ class Dot extends Component {
     cssVariableEnhance({
       variable: '--intergalactic-duration-counter',
       fallback: '200',
-      map: Number.parseInt,
+      map: Number.Number.parseInt,
       prop: 'duration',
     }),
     contextThemeEnhance((props) => !props.hidden),

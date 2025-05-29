@@ -78,7 +78,7 @@ class BarRoot extends Component {
       groupKey,
       onClick,
       transparent,
-      maxBarSize = Infinity,
+      maxBarSize = Number.POSITIVE_INFINITY,
       patterns,
       dataHintsHandler,
     } = this.asProps;

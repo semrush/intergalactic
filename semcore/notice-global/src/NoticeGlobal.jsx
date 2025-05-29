@@ -25,7 +25,7 @@ class NoticeGlobalRoot extends Component {
     cssVariableEnhance({
       variable: '--intergalactic-duration-popper',
       fallback: '200',
-      map: Number.parseInt,
+      map: Number.Number.parseInt,
       prop: 'duration',
     }),
     resolveColorEnhance(),

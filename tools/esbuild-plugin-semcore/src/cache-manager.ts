@@ -72,7 +72,7 @@ export const makeCacheManager = (id: string, cwd = '.', cacheTtl = 1000 * 60 * 6
       )
         .map((textDate, index) => ({
           filename: lastUseFiles[index],
-          lastUse: parseInt(textDate, 10),
+          lastUse: Number.parseInt(textDate, 10),
           textDate,
         }))
         .filter(({ lastUse, textDate }) => {
@@ -127,7 +127,7 @@ export const makeCacheManager = (id: string, cwd = '.', cacheTtl = 1000 * 60 * 6
         return null;
       }
       const lastUseString = await readFile(cachedLastUseFilePath, 'utf-8');
-      const lastUse = parseInt(lastUseString, 10);
+      const lastUse = Number.parseInt(lastUseString, 10);
       if (Number.isNaN(lastUse) || Date.now() - lastUse > cacheTtl) {
         return null;
       }

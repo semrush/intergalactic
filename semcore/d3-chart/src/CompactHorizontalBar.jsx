@@ -153,7 +153,7 @@ class CompactHorizontalBarRoot extends Component {
       offset: offsetProps,
       wMin,
       height: heightProps,
-      maxBarSize = Infinity,
+      maxBarSize = Number.POSITIVE_INFINITY,
       size,
     } = this.asProps;
 

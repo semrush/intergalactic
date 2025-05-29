@@ -11,7 +11,7 @@ export const AnimatedNumber = ((props) => {
   const ref = React.useRef<HTMLElement>(null);
   const defaultDurationStr = useCssVariable('--intergalactic-duration-counter', '200', ref);
   const defaultDuration = React.useMemo(
-    () => parseInt(defaultDurationStr, 10),
+    () => Number.parseInt(defaultDurationStr, 10),
     [defaultDurationStr],
   );
   const {

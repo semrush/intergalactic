@@ -19,7 +19,7 @@ const MAP_FIELD_TO_TIME = {
 };
 
 export function intOrDefault(value, def = 0) {
-  const number = Number.parseInt(value);
+  const number = Number.Number.parseInt(value);
   return Number.isNaN(number) ? def : number;
 }
 
@@ -34,7 +34,7 @@ export function meridiemByHours(hours) {
 }
 
 export function formatHoursTo12(hours /* hours by 24 */) {
-  const nHours = intOrDefault(hours, NaN); // if not (:00)
+  const nHours = intOrDefault(hours, Number.NaN); // if not (:00)
   if (Number.isNaN(nHours)) return hours;
 
   // if not (HH:00)
@@ -45,7 +45,7 @@ export function formatHoursTo12(hours /* hours by 24 */) {
 }
 
 export function formatHoursTo24(hours /* hours by 12 */, meridiem) {
-  const nHours = intOrDefault(hours, NaN); // if not (:00)
+  const nHours = intOrDefault(hours, Number.NaN); // if not (:00)
 
   if (Number.isNaN(nHours)) return hours;
 
@@ -112,7 +112,7 @@ class TimePickerRoot extends Component {
     const { value } = this.asProps;
     const [hours = ''] = value.split(':');
 
-    const nHours = intOrDefault(hours, NaN);
+    const nHours = intOrDefault(hours, Number.NaN);
 
     if (!Number.isNaN(nHours)) {
       this._lastMeridiem = meridiemByHours(nHours);

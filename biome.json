@@ -64,7 +64,7 @@
         "useSelfClosingElements": "error",
         "useSingleVarDeclarator": "error",
         "noUnusedTemplateLiteral": "error",
-        "useNumberNamespace": "off",
+        "useNumberNamespace": "error",
         "noInferrableTypes": "off",
         "noUselessElse": "off",
         "useImportType": "off",

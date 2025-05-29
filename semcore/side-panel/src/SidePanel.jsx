@@ -31,7 +31,7 @@ class RootSidePanel extends Component {
     cssVariableEnhance({
       variable: '--intergalactic-duration-modal',
       fallback: '200',
-      map: Number.parseInt,
+      map: Number.Number.parseInt,
       prop: 'duration',
     }),
     i18nEnhance(localizedMessages),

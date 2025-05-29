@@ -32,8 +32,8 @@ class ResponsiveContainerRoot extends Component {
 
     if (aspect) {
       const style = window.getComputedStyle(this.$container);
-      const minHeight = Number.parseInt(style.getPropertyValue('min-height'));
-      const maxHeight = Number.parseInt(style.getPropertyValue('max-height'));
+      const minHeight = Number.Number.parseInt(style.getPropertyValue('min-height'));
+      const maxHeight = Number.Number.parseInt(style.getPropertyValue('max-height'));
       height = width * aspect;
 
       if (height < minHeight) {

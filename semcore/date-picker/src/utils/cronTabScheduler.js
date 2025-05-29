@@ -2,8 +2,8 @@ function cronUnitToArray(unit) {
   if (unit.includes('-')) {
     const [start, end] = unit.split('-');
     return Array.from(
-      { length: parseInt(end, 10) - parseInt(start, 10) + 1 },
-      (_, idx) => parseInt(start, 10) + idx,
+      { length: Number.parseInt(end, 10) - Number.parseInt(start, 10) + 1 },
+      (_, idx) => Number.parseInt(start, 10) + idx,
     );
   }
   return unit.split(/[,\/]/);
@@ -16,7 +16,7 @@ export function isValidSchedule(pattern) {
     const unitValues = cronUnitToArray(unit);
     const CRON_REG = /^\d+$|^\*$|^\*\/\d+$/;
     return unitValues.every((item) => {
-      const intItem = parseInt(item, 10);
+      const intItem = Number.parseInt(item, 10);
       return !(intItem < min || intItem > max || !CRON_REG.test(item));
     });
   }
@@ -63,7 +63,7 @@ export function isInPeriod(pattern, date) {
 
   function isInPeriod(date, period, dateMethod) {
     if (period === '*') return true;
-    return date[dateMethod]() === parseInt(period, 10);
+    return date[dateMethod]() === Number.parseInt(period, 10);
   }
 
   function monthInPeriod(date, period) {

@@ -368,7 +368,7 @@ describe('Utils reactToText', () => {
   test.concurrent('Verify support undefined types', () => {
     expect(reactToText(undefined)).toBe('');
     expect(reactToText(null)).toBe('');
-    expect(reactToText(NaN)).toBe('');
+    expect(reactToText(Number.NaN)).toBe('');
   });
 
   test.concurrent('Verify support array and obj', () => {
