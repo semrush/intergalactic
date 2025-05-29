@@ -1,7 +1,6 @@
 import React from 'react';
 import Button from '@semcore/button';
 import Dropdown from '@semcore/dropdown';
-import { Text } from '@semcore/typography';
 import Tooltip from '@semcore/tooltip';
 import FileExportM from '@semcore/icon/FileExport/m';
 
