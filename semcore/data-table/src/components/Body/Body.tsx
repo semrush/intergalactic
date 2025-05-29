@@ -48,10 +48,12 @@ class BodyRoot extends Component<DataTableBodyProps, {}, State, [], BodyPropsInn
     const { accordionDuration } = this.asProps;
     const openDuration = Array.isArray(accordionDuration)
       ? accordionDuration[0]
-      : accordionDuration ?? (Array.isArray(row[ACCORDION]) ? 50 * row[ACCORDION].length : 200);
+      : accordionDuration ??
+        (Array.isArray(row[ACCORDION]) ? Math.min(50 * row[ACCORDION].length, 200) : 200);
     const closeDuration = Array.isArray(accordionDuration)
       ? accordionDuration[1]
-      : accordionDuration ?? (Array.isArray(row[ACCORDION]) ? 50 * row[ACCORDION].length : 200);
+      : accordionDuration ??
+        (Array.isArray(row[ACCORDION]) ? Math.min(50 * row[ACCORDION].length, 200) : 200);
 
     setTimeout(() => {
       this.setRowHeight(index, row);
