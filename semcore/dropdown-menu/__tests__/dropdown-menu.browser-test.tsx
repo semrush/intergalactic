@@ -33,7 +33,7 @@ test.describe('Dropdown menu base', () => {
     await expect(page).toHaveScreenshot();
   });
 
-  test('Verify closes by clocking on trigger', async ({ page }) => {
+  test('Verify closes by clicking on trigger', async ({ page }) => {
     const standPath = 'stories/components/dropdown-menu/docs/examples/basic.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
@@ -141,6 +141,8 @@ test.describe('Dropdown menu base', () => {
 
     //snapshot
   });
+
+  
 });
 
 test.describe('Dropdown-menu - Item actions', () => {
@@ -360,6 +362,21 @@ test.describe('Selectable radio items', () => {
       '[data-ui-name="DropdownMenu.Item"]:not([role="menuitem"])',
     );
 
+    await test.step('Verify styles of m group title and subtitle', async () => {
+      const titleSubtitleGroup = ddM.locator('[data-ui-name="Dropdown.Item"]:not(:has(:scope > [data-ui-name="DropdownMenu.Group"]))');
+      const elements = titleSubtitleGroup.locator('[data-ui-name="Flex"]');
+      await checkStyles(elements.first(), {
+        'font-size': '14px',
+        'font-weight': '700',
+      });
+
+      await checkStyles(elements.nth(1), {
+        'font-size': '14px',
+        'font-weight': '400',
+      });
+     
+    });
+
     await test.step('Verify styles of M size', async () => {
       await checkStyles(mItems.first(), {
         'font-size': '14px',
@@ -380,6 +397,20 @@ test.describe('Selectable radio items', () => {
       }
     });
 
+    await test.step('Verify styles of L group title and subtitle', async () => {
+      const titleSubtitleGroup = ddL.locator('[data-ui-name="Dropdown.Item"]:not(:has(:scope > [data-ui-name="DropdownMenu.Group"]))');
+      const elements = titleSubtitleGroup.locator('[data-ui-name="Flex"]');
+      await checkStyles(elements.first(), {
+        'font-size': '16px',
+        'font-weight': '700',
+      });
+
+      await checkStyles(elements.nth(1), {
+        'font-size': '16px',
+        'font-weight': '400',
+      });
+     
+    });
     await test.step('Verify styles of L size', async () => {
       await checkStyles(mItems.first(), {
         'font-size': '14px',

@@ -9,7 +9,7 @@ import SizesExample from './examples/sizes';
 import WidthExample from './examples/dd-width';
 import SizesSelectableExample from './examples/sizes-selectable';
 import SizesMultiselectExample from './examples/sizes-multiselect';
-
+import WithDividerExample from './examples/dd-with-divider';
 
 const meta: Meta<typeof DropdownMenu> = {
   title: 'Components/Dropdown Menu/Tests',
@@ -18,6 +18,10 @@ const meta: Meta<typeof DropdownMenu> = {
 export default meta;
 
 type Story = StoryObj<typeof DropdownMenu>;
+
+export const WithDivider: Story = {
+  render: WithDividerExample,
+};
 
 export const OnVisible: Story = {
   render: OnVisibleExample,
