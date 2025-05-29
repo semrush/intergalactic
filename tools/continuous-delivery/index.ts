@@ -18,6 +18,7 @@ import { NpmUtils } from './src/utils/npmUtils';
 import * as process from 'process';
 import { closeTasks } from './src/intg-release/closeTasks';
 import { sendMessageAboutRelease } from './src/sendMessageAboutRelease';
+import { getChangedFiles } from './src/utils/getChangedFiles';
 
 export const initPrerelease = async () => {
   const npmData = await fetchFromNpm();
@@ -138,6 +139,16 @@ export const publishRelease = async () => {
 
     await sendMessageAboutRelease(version, lastVersionChangelogs);
   }
+};
+
+export const getChangedPackages = async (base: string): Promise<string[]> => {
+  const changedPackages = await getChangedFiles(base);
+
+  return Array.from(changedPackages).map((pack) => {
+    const [scope, name] = pack.split('/');
+
+    return name;
+  });
 };
 
 export {
