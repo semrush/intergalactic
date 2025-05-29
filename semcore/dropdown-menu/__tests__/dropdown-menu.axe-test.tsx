@@ -30,6 +30,25 @@ test.describe('Dropdown-menu', () => {
     }
   });
 
+  test('Dropdown menu', async ({ page }) => {
+    const standPath = 'stories/components/dropdown-menu/docs/examples/dropdown-menu.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    // base check
+    {
+      const violations = await getAccessibilityViolations({ page });
+
+      expect(violations).toEqual([]);
+    }
+
+    // opened dropdown check
+    {
+      expect(await checkByAxe(page)).toEqual([]);
+    }
+  });
+
   test('Nested', async ({ page }) => {
     const standPath = 'stories/components/dropdown-menu/docs/examples/nested.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -74,6 +93,15 @@ test.describe('Dropdown-menu', () => {
 
   test('Multiselect items', async ({ page }) => {
     const standPath = 'stories/components/dropdown-menu/docs/examples/multiselect_items.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    expect(await checkByAxe(page)).toEqual([]);
+  });
+
+  test('The second method', async ({ page }) => {
+    const standPath = 'stories/components/dropdown-menu/docs/examples/the_second_method.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);

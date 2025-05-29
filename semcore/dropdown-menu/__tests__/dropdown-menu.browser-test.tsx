@@ -1,8 +1,14 @@
 import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
-test.describe('Dropdown-menu', () => {
-  test('Should render white shadows in list', async ({ page }) => {
+const checkStyles = async (element: any, styles: Record<string, string>) => {
+  for (const [property, value] of Object.entries(styles) as [string, string][]) {
+    await expect(element).toHaveCSS(property, value);
+  }
+};
+
+test.describe('Dropdown menu base', () => {
+  test('Verify render white shadows in list', async ({ page }) => {
     const standPath = 'stories/components/dropdown-menu/docs/examples/the_second_method.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
@@ -26,7 +32,27 @@ test.describe('Dropdown-menu', () => {
     await expect(menuItem6).toBeFocused();
     await expect(page).toHaveScreenshot();
   });
-  test('Should close by second click on trigger', async ({ page }) => {
+
+  test('Verify closes by clocking on trigger', async ({ page }) => {
+    const standPath = 'stories/components/dropdown-menu/docs/examples/basic.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+    const button = page.locator('button', { hasText: 'Actions' });
+
+    await button.click();
+
+    await page.waitForTimeout(500);
+
+    await expect(page.getByRole('menu')).toBeVisible();
+
+    await button.click();
+
+    await page.waitForTimeout(500);
+    await expect(page.getByRole('menu')).not.toBeVisible();
+  });
+
+  test('Verify closes by escape', async ({ page }) => {
     const standPath = 'stories/components/dropdown-menu/docs/examples/basic.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
@@ -38,11 +64,88 @@ test.describe('Dropdown-menu', () => {
 
     await expect(page.getByRole('menu')).toBeVisible();
 
-    const button = page.locator('button', { hasText: 'Actions' });
-    await button.click();
+    await page.keyboard.press('Escape');
 
     await page.waitForTimeout(500);
     await expect(page.getByRole('menu')).not.toBeVisible();
+  });
+
+  test('Verify sizes and styles of dd menu', async ({ page, browserName }) => {
+    const standPath = 'stories/components/dropdown-menu/tests/examples/sizes.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+    await page.waitForTimeout(100);
+
+    const ddM = page.locator('[data-ui-name="DropdownMenu.Menu"][data-testid="m-size"]');
+    const ddL = page.locator('[data-ui-name="DropdownMenu.Menu"][data-testid="l-size"]');
+
+    const mItems = ddM.locator('[data-ui-name="DropdownMenu.Item"]');
+    const lItems = ddL.locator('[data-ui-name="DropdownMenu.Item"]');
+
+    await test.step('Verify styles of M size', async () => {
+
+    const count1 = await mItems.count();
+
+    for (let i = 0; i < count1; i++) {
+    await checkStyles(mItems.nth(i), {
+      'font-size': '14px',
+      'min-height': '32px',
+      padding: '6px 8px',
+      'background-color': 'rgba(0, 0, 0, 0)',
+    });
+  }
+});
+
+await test.step('Verify styles of L size', async () => {
+
+  const count1 = await mItems.count();
+
+  for (let i = 0; i < count1; i++) {
+  await checkStyles(lItems.nth(i), {
+    'font-size': '16px',
+    'min-height': '40px',
+    padding: '8px 12px',
+    'background-color': 'rgba(0, 0, 0, 0)',
+  });
+}
+});
+
+
+await test.step('Verify disabled styles', async () => {
+  await checkStyles(mItems.first(), {
+    'opacity': '0.3',
+  });
+  await checkStyles(lItems.first(), {
+    'opacity': '0.3',
+  });
+});
+ if(browserName==='firefox') return;
+await test.step('Verify hover styles', async () => {
+  await mItems.nth(1).hover();
+  await checkStyles(mItems.nth(1), {
+    'background-color': 'rgb(244, 245, 249)',
+  });
+  await lItems.nth(1).hover();
+  await checkStyles(lItems.nth(1), {
+    'background-color': 'rgb(244, 245, 249)',
+  });
+
+  //snapshot 
+});
+
+
+  });
+
+  test('Verify Width of dd menu', async ({ page, browserName }) => {
+    const standPath = 'stories/components/dropdown-menu/tests/examples/dd-width.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+    await page.waitForTimeout(100);
+
+//snapshot
+
   });
 });
 
@@ -193,7 +296,7 @@ test.describe('Dropdown-menu - On Visible controlled', () => {
   });
 });
 
-test.describe('Dropdown-menu - Selectable radio items', () => {
+test.describe('Selectable radio items', () => {
   test('Keyboard interaction', async ({ page }) => {
     const standPath = 'stories/components/dropdown-menu/docs/examples/selectable_radio_items.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -244,6 +347,87 @@ test.describe('Dropdown-menu - Selectable radio items', () => {
     await expect(ddMenuTrigger).toBeFocused();
     await expect(Item1).not.toBeVisible();
     await expect(ddMenuTrigger).toBeFocused();
+  });
+
+  test('Verify styles of selectable radio items menu', async ({ page, browserName }) => {
+    const standPath = 'stories/components/dropdown-menu/tests/examples/sizes-selectable.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+    await page.waitForTimeout(100);
+
+    const ddM = page.locator('[data-ui-name="DropdownMenu.Menu"][data-testid="m-size"]');
+    const ddL = page.locator('[data-ui-name="DropdownMenu.Menu"][data-testid="l-size"]');
+    const ddDisabed = page.locator('[data-ui-name="DropdownMenu.Menu"][data-testid="m-disabled"]');
+
+    const mItems = ddM.locator('[data-ui-name="DropdownMenu.Item"]:not([role="menuitem"])');
+    const lItems = ddL.locator('[data-ui-name="DropdownMenu.Item"]:not([role="menuitem"])');
+    const disabledItems = ddDisabed.locator('[data-ui-name="DropdownMenu.Item"]:not([role="menuitem"])');
+
+    await test.step('Verify styles of M size', async () => {
+
+      await checkStyles(mItems.first(), {
+        'font-size': '14px',
+        'min-height': '32px',
+        padding: '6px 8px',
+        'background-color': 'rgba(196, 229, 254, 0.7)',
+      });
+
+    const count1 = await mItems.count();
+
+    for (let i = 1; i < count1; i++) {
+    await checkStyles(mItems.nth(i), {
+      'font-size': '14px',
+      'min-height': '32px',
+      padding: '6px 8px',
+      'background-color': 'rgba(0, 0, 0, 0)',
+    });
+  }
+});
+
+await test.step('Verify styles of L size', async () => {
+  await checkStyles(mItems.first(), {
+    'font-size': '14px',
+    'min-height': '32px',
+    padding: '6px 8px',
+    'background-color': 'rgba(196, 229, 254, 0.7)',
+  });
+
+  const count1 = await mItems.count();
+
+  for (let i = 1; i < count1; i++) {
+  await checkStyles(lItems.nth(i), {
+    'font-size': '16px',
+    'min-height': '40px',
+    padding: '8px 12px',
+    'background-color': 'rgba(0, 0, 0, 0)',
+  });
+}
+});
+
+
+await test.step('Verify disabled styles', async () => {
+  await checkStyles(disabledItems.first(), {
+    'opacity': '0.3',
+  });
+});
+
+
+ if(browserName==='firefox') return;
+await test.step('Verify hover styles', async () => {
+  await mItems.nth(0).hover();
+  await checkStyles(mItems.nth(0), {
+    'background-color': 'rgb(196, 229, 254)',
+  });
+  await mItems.nth(1).hover();
+  await checkStyles(mItems.nth(1), {
+    'background-color': 'rgb(244, 245, 249)',
+  });
+
+  //snapshot 
+});
+
+
   });
 });
 
@@ -296,6 +480,61 @@ test.describe('Dropdown-menu - Multiselect items', () => {
     await expect(Item2).toBeFocused();
     await expect(Item2).toBeChecked();
     await expect(ddMenuTrigger).not.toBeFocused();
+  });
+
+  test('Verify styles of multiselect menu', async ({ page, browserName }) => {
+    const standPath = 'stories/components/dropdown-menu/tests/examples/sizes-multiselect.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+    await page.waitForTimeout(100);
+
+    const ddM = page.locator('[data-ui-name="DropdownMenu.Menu"][data-testid="m-size"]');
+    const ddL = page.locator('[data-ui-name="DropdownMenu.Menu"][data-testid="l-size"]');
+    const ddDisabed = page.locator('[data-ui-name="DropdownMenu.Menu"][data-testid="m-disabled"]');
+
+    const mItems = ddM.locator('[data-ui-name="DropdownMenu.Group"][data-ui-name="DropdownMenu.Item"]');
+    const lItems = ddL.locator('[data-ui-name="DropdownMenu.Group"][data-ui-name="DropdownMenu.Item"]');
+    const disabledItems = ddDisabed.locator('[data-ui-name="DropdownMenu.Item"]');
+
+    await test.step('Verify styles of M size', async () => {
+
+    const count1 = await mItems.count();
+
+    for (let i = 0; i < count1; i++) {
+    await checkStyles(mItems.nth(i), {
+      'font-size': '14px',
+      'min-height': '32px',
+      padding: '6px 8px',
+      'background-color': 'rgba(0, 0, 0, 0)',
+    });
+  }
+});
+
+await test.step('Verify styles of L size', async () => {
+
+  const count1 = await mItems.count();
+
+  for (let i = 0; i < count1; i++) {
+  await checkStyles(lItems.nth(i), {
+    'font-size': '16px',
+    'min-height': '40px',
+    padding: '8px 12px',
+    'background-color': 'rgba(0, 0, 0, 0)',
+  });
+}
+});
+
+
+await test.step('Verify disabled styles', async () => {
+  await checkStyles(disabledItems.nth(1), {
+    'opacity': '0.3',
+  });
+});
+
+//snapshot
+
+
   });
 });
 

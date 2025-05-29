@@ -5,6 +5,11 @@ import DropdownMenu from '@semcore/dropdown-menu';
 import OnVisibleExample from './examples/on-visible';
 import OnVisible2ndExample from './examples/on-visible-2nd';
 import WithSearchExample from './examples/with-search';
+import SizesExample from './examples/sizes';
+import WidthExample from './examples/dd-width';
+import SizesSelectableExample from './examples/sizes-selectable';
+import SizesMultiselectExample from './examples/sizes-multiselect';
+
 
 const meta: Meta<typeof DropdownMenu> = {
   title: 'Components/Dropdown Menu/Tests',
@@ -16,6 +21,22 @@ type Story = StoryObj<typeof DropdownMenu>;
 
 export const OnVisible: Story = {
   render: OnVisibleExample,
+};
+
+export const SizesSelectable: Story = {
+  render: SizesSelectableExample,
+};
+
+export const SizesMultiselect: Story = {
+  render: SizesMultiselectExample,
+};
+
+export const Sizes: Story = {
+  render: SizesExample,
+};
+
+export const Width: Story = {
+  render: WidthExample,
 };
 
 export const WithSearch: Story = {
