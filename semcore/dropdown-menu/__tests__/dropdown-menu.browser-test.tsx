@@ -141,8 +141,6 @@ test.describe('Dropdown menu base', () => {
 
     //snapshot
   });
-
-  
 });
 
 test.describe('Dropdown-menu - Item actions', () => {
@@ -363,7 +361,9 @@ test.describe('Selectable radio items', () => {
     );
 
     await test.step('Verify styles of m group title and subtitle', async () => {
-      const titleSubtitleGroup = ddM.locator('[data-ui-name="Dropdown.Item"]:not(:has(:scope > [data-ui-name="DropdownMenu.Group"]))');
+      const titleSubtitleGroup = ddM.locator(
+        '[data-ui-name="Dropdown.Item"]:not(:has(:scope > [data-ui-name="DropdownMenu.Group"]))',
+      );
       const elements = titleSubtitleGroup.locator('[data-ui-name="Flex"]');
       await checkStyles(elements.first(), {
         'font-size': '14px',
@@ -374,7 +374,6 @@ test.describe('Selectable radio items', () => {
         'font-size': '14px',
         'font-weight': '400',
       });
-     
     });
 
     await test.step('Verify styles of M size', async () => {
@@ -398,7 +397,9 @@ test.describe('Selectable radio items', () => {
     });
 
     await test.step('Verify styles of L group title and subtitle', async () => {
-      const titleSubtitleGroup = ddL.locator('[data-ui-name="Dropdown.Item"]:not(:has(:scope > [data-ui-name="DropdownMenu.Group"]))');
+      const titleSubtitleGroup = ddL.locator(
+        '[data-ui-name="Dropdown.Item"]:not(:has(:scope > [data-ui-name="DropdownMenu.Group"]))',
+      );
       const elements = titleSubtitleGroup.locator('[data-ui-name="Flex"]');
       await checkStyles(elements.first(), {
         'font-size': '16px',
@@ -409,7 +410,6 @@ test.describe('Selectable radio items', () => {
         'font-size': '16px',
         'font-weight': '400',
       });
-     
     });
     await test.step('Verify styles of L size', async () => {
       await checkStyles(mItems.first(), {
