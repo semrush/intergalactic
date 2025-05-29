@@ -1,7 +1,7 @@
 ---
 title: Stacked bar chart
 fileSource: d3-chart
-tabs: Design('stacked-bar-chart'), A11y('stacked-bar-chart-a11y'), API('stacked-bar-chart-api'), Examples('stacked-bar-chart-d3-code'), Changelog('d3-chart-changelog')
+tabs: Design('stacked-bar-chart'), A11y('stacked-bar-chart-a11y'), API('stacked-bar-chart-api'), Examples('stacked-bar-chart-code'), Changelog('stacked-bar-chart-changelog')
 ---
 
 ::: tip
@@ -50,7 +50,7 @@ Note that for ChartLegend `patterns` property works only with default `shape={'C
 
 ## Stacked and grouped chart
 
-To group bars that are not stacked, refer to [Grouped bars example](/data-display/bar-chart/bar-chart-d3-code#grouped-bars).
+To group bars that are not stacked, refer to [Grouped bars example](/data-display/bar-chart/bar-chart-code#grouped-bars).
 
 ::: sandbox
 

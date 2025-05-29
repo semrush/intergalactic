@@ -1,7 +1,7 @@
 ---
 title: Bubble chart
 fileSource: d3-chart
-tabs: Design('bubble-chart'), A11y('bubble-chart-a11y'), API('bubble-chart-api'), Examples('bubble-chart-d3-code'), Changelog('d3-chart-changelog')
+tabs: Design('bubble-chart'), A11y('bubble-chart-a11y'), API('bubble-chart-api'), Examples('bubble-chart-code'), Changelog('bubble-chart-changelog')
 ---
 
 ## D3 chart

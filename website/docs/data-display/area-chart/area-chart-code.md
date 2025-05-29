@@ -1,7 +1,7 @@
 ---
 title: Area chart
 fileSource: d3-chart
-tabs: Design('area-chart'), A11y('area-chart-a11y'), API('area-chart-api'), Examples('area-chart-d3-code'), Changelog('d3-chart-changelog')
+tabs: Design('area-chart'), A11y('area-chart-a11y'), API('area-chart-api'), Examples('area-chart-code'), Changelog('area-chart-changelog')
 ---
 
 ::: tip
@@ -22,7 +22,7 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 
 - You can draw a chart with areas using the `Area` component.
 - `Dots` are the dots on the line chart.
-- As with the [Line chart](/data-display/line-chart/line-chart-d3-code), you can draw a polyline or a smoothed chart by passing the required method to the curve property.
+- As with the [Line chart](/data-display/line-chart/line-chart-code), you can draw a polyline or a smoothed chart by passing the required method to the curve property.
 
 ::: sandbox
 

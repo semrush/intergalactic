@@ -1,7 +1,7 @@
 ---
 title: Stacked horizontal bar chart
 fileSource: d3-chart
-tabs: Design('stacked-horizontal-bar'), A11y('stacked-horizontal-bar-a11y'), API('stacked-horizontal-bar-api'), Examples('stacked-horizontal-bar-d3-code'), Changelog('d3-chart-changelog')
+tabs: Design('stacked-horizontal-bar'), A11y('stacked-horizontal-bar-a11y'), API('stacked-horizontal-bar-api'), Examples('stacked-horizontal-bar-code'), Changelog('stacked-horizontal-bar-changelog')
 ---
 
 ::: tip
@@ -10,7 +10,7 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 
 ## Horizontal bar
 
-You can rotate a chart using the `<HorizontalBar/>` component by swapping `scaleBand` and `scaleLinear`. See more about `scaleBand` and `scaleLiner` in the [Bar chart example](/data-display/bar-chart/bar-chart-d3-code#bar).
+You can rotate a chart using the `<HorizontalBar/>` component by swapping `scaleBand` and `scaleLinear`. See more about `scaleBand` and `scaleLiner` in the [Bar chart example](/data-display/bar-chart/bar-chart-code#bar).
 
 ## Horizontal stacked bar
 

@@ -1,7 +1,7 @@
 ---
 title: Horizontal bar chart
 fileSource: d3-chart
-tabs: Design('bar-horizontal'), A11y('bar-horizontal-a11y'), API('bar-horizontal-api'), Examples('bar-horizontal-d3-code'), Changelog('d3-chart-changelog')
+tabs: Design('bar-horizontal'), A11y('bar-horizontal-a11y'), API('bar-horizontal-api'), Examples('bar-horizontal-code'), Changelog('bar-horizontal-changelog')
 ---
 
 ::: tip
@@ -20,7 +20,7 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 
 ## Horizontal bar
 
-You can rotate a chart using the `<HorizontalBar/>` component by swapping `scaleBand` and `scaleLinear`. See more about `scaleBand` and `scaleLiner` in the [Bar chart example](/data-display/bar-chart/bar-chart-d3-code#bar).
+You can rotate a chart using the `<HorizontalBar/>` component by swapping `scaleBand` and `scaleLinear`. See more about `scaleBand` and `scaleLiner` in the [Bar chart example](/data-display/bar-chart/bar-chart-code#bar).
 
 ::: sandbox
 
