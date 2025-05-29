@@ -1,5 +1,5 @@
 import { makeBezier } from './bezier';
-import { DataStructureHints, DataSummarizationConfig } from './hints';
+import type { DataStructureHints, DataSummarizationConfig } from './hints';
 
 export type TrendNode = {
   type: 'trend';

@@ -1,15 +1,15 @@
-import * as React from 'react';
-import { Component, createComponent, Intergalactic, Root, sstyled } from '@semcore/core';
-import { DataTableHeadProps, HeadPropsInner } from './Head.types';
+import type * as React from 'react';
+import { Component, createComponent, type Intergalactic, Root, sstyled } from '@semcore/core';
+import type { DataTableHeadProps, HeadPropsInner } from './Head.types';
 import { Box, ScreenReaderOnly } from '@semcore/base-components';
 import type Tooltip from '@semcore/tooltip';
 
 import style from './style.shadow.css';
 import { Column } from './Column';
 import { Group } from './Group';
-import { DataTableColumnProps } from './Column.types';
-import { DataTableGroupProps } from './Group.type';
-import { DataTableData } from '../DataTable/DataTable.types';
+import type { DataTableColumnProps } from './Column.types';
+import type { DataTableGroupProps } from './Group.type';
+import type { DataTableData } from '../DataTable/DataTable.types';
 import { DataTableInternal } from '../DataTable/DataTable';
 import { SELECT_ALL } from '../DataTable/DataTable';
 import Checkbox from '@semcore/checkbox';

@@ -2,9 +2,9 @@ import React from 'react';
 import { createComponent, Component, Root, lastInteraction } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 
-import { BulkTextareaType, BulkTextareaProps } from './BulkTextarea.types';
+import type { BulkTextareaType, BulkTextareaProps } from './BulkTextarea.types';
 
-import { InputField, InputFieldProps } from './components/InputField/InputField';
+import { InputField, type InputFieldProps } from './components/InputField/InputField';
 import { Counter } from './components/Counter';
 import { ClearAll } from './components/ClearAll';
 import { ErrorsNavigation } from './components/ErrorsNavigation';

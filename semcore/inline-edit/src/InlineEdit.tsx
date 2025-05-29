@@ -4,11 +4,11 @@ import {
   Component,
   sstyled,
   Root,
-  Intergalactic,
-  PropGetterFn,
+  type Intergalactic,
+  type PropGetterFn,
 } from '@semcore/core';
-import { Box, BoxProps } from '@semcore/flex-box';
-import { FadeInOut, FadeInOutProps } from '@semcore/animation';
+import { Box, type BoxProps } from '@semcore/flex-box';
+import { FadeInOut, type FadeInOutProps } from '@semcore/animation';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { useCssVariable } from '@semcore/core/lib/utils/useCssVariable';

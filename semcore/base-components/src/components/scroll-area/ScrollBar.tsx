@@ -7,7 +7,7 @@ import contextEnhance from '@semcore/core/lib/utils/enhances/contextEnhance';
 
 import style from './style/scroll-bar.shadow.css';
 
-import { ScrollBar as ScrollBarType, ScrollBarProps } from './ScrollBar.types';
+import type { ScrollBar as ScrollBarType, ScrollBarProps } from './ScrollBar.types';
 
 export const hideScrollBarsFromScreenReadersContext = React.createContext(false);
 

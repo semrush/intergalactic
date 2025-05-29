@@ -3,7 +3,7 @@ import { Component, Root, sstyled, createComponent } from '@semcore/core';
 import { Flex } from '@semcore/base-components';
 
 import style from './style.shadow.css';
-import { CellPropsInner, DataTableCellProps } from './Cell.types';
+import type { CellPropsInner, DataTableCellProps } from './Cell.types';
 import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
 import { isFocusInside } from '@semcore/core/lib/utils/focus-lock/isFocusInside';

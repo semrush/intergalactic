@@ -1,6 +1,6 @@
 import React from 'react';
 import useEnhancedEffect from './use/useEnhancedEffect';
-import { UnknownProperties } from '../core-types/UnknownProperties';
+import type { UnknownProperties } from '../core-types/UnknownProperties';
 import register from '../register';
 
 type ContextType = {

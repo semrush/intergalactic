@@ -2,7 +2,7 @@ import React from 'react';
 import { createComponent, Component, Root, register } from '@semcore/core';
 import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
 import isNode from '@semcore/core/lib/utils/isNode';
-import {
+import type {
   NeighborItemProps,
   NeighborLocationUnion,
   NeighborLocationDetectProps,

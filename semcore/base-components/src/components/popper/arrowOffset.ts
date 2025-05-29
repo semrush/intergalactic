@@ -1,6 +1,6 @@
 import capitalizeFirstLetter from '@semcore/core/lib/utils/capitalizeFirstLetter';
-import { Modifier, Rect } from '@popperjs/core';
-import { ModifierArguments, Offsets } from '@popperjs/core/lib/types';
+import type { Modifier, Rect } from '@popperjs/core';
+import type { ModifierArguments, Offsets } from '@popperjs/core/lib/types';
 
 const MAP_OFFSET: Record<string, keyof Rect> = {
   top: 'width',

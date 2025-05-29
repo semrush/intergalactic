@@ -1,11 +1,11 @@
-import React, { ForwardRefExoticComponent, RefAttributes } from 'react';
+import React, { type ForwardRefExoticComponent, type RefAttributes } from 'react';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 
 import { useForkRef } from './utils/ref';
 import useEnhancedEffect from './utils/use/useEnhancedEffect';
 import _assignProps from './utils/assignProps';
 
-import { Component, PropsWithRenderFnChildren } from './core-types/Component';
+import { Component, type PropsWithRenderFnChildren } from './core-types/Component';
 
 import childrenEnhancement from './enhancement/Children';
 import rootEnhancement from './enhancement/Root';

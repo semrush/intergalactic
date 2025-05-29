@@ -4,7 +4,7 @@ import style from './buttonLink.shadow.css';
 import { Box } from '@semcore/flex-box';
 import { AbstractButton } from '../AbstractButton/AbstractButton';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
-import { ButtonLinkAddonProps, ButtonLinkComponent, ButtonLinkTextProps } from './ButtonLink.type';
+import type { ButtonLinkAddonProps, ButtonLinkComponent, ButtonLinkTextProps } from './ButtonLink.type';
 
 const enhance = {
   resolveColor: resolveColorEnhance(),

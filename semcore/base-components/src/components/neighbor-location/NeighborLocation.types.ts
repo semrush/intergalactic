@@ -1,5 +1,5 @@
-import React from 'react';
-import { UnknownProperties, Intergalactic, ReturnEl } from '@semcore/core';
+import type React from 'react';
+import type { UnknownProperties, Intergalactic, ReturnEl } from '@semcore/core';
 
 export type NeighborLocationUnion = 'right' | 'both' | 'left';
 

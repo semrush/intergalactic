@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { Component, Intergalactic, lastInteraction, Root, sstyled } from '@semcore/core';
-import { ColumnPropsInner, DataTableColumnProps } from './Column.types';
+import { Component, type Intergalactic, lastInteraction, Root, sstyled } from '@semcore/core';
+import type { ColumnPropsInner, DataTableColumnProps } from './Column.types';
 import { Flex } from '@semcore/base-components';
 import SortDesc from '@semcore/icon/SortDesc/m';
 import SortAsc from '@semcore/icon/SortAsc/m';
-import { IconProps } from '@semcore/icon';
+import type { IconProps } from '@semcore/icon';
 
 import style from './style.shadow.css';
 import { ButtonLink } from '@semcore/button';

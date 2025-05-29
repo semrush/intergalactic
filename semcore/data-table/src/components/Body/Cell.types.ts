@@ -1,6 +1,6 @@
-import { DTRow } from './Row.types';
-import { DTUse } from '../DataTable/DataTable.types';
-import { DTColumn } from '../Head/Column.types';
+import type { DTRow } from './Row.types';
+import type { DTUse } from '../DataTable/DataTable.types';
+import type { DTColumn } from '../Head/Column.types';
 
 export type Theme = 'muted' | 'info' | 'success' | 'warning' | 'danger';
 

@@ -1,6 +1,6 @@
-import { Intergalactic } from '@semcore/core';
+import type { Intergalactic } from '@semcore/core';
 
-import {
+import type {
   AbstractButtonAddonProps,
   AbstractButtonContext,
   AbstractButtonTextProps,

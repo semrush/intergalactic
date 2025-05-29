@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { Component, Root, sstyled, createComponent } from '@semcore/core';
-import { DataTableRowProps, RowPropsInner } from './Row.types';
+import type { DataTableRowProps, RowPropsInner } from './Row.types';
 import { Box, Collapse } from '@semcore/base-components';
 import style from './style.shadow.css';
 import { Body } from './Body';
 import { ACCORDION, SELECT_ALL } from '../DataTable/DataTable';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
-import { DTValue } from '../DataTable/DataTable.types';
+import type { DTValue } from '../DataTable/DataTable.types';
 import Checkbox from '@semcore/checkbox';
 
 class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {

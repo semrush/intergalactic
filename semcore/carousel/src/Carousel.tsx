@@ -10,7 +10,8 @@ import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import logger from '@semcore/core/lib/utils/logger';
 import style from './style/carousel.shadow.css';
-import CarouselType, {
+import type CarouselType from './Carousel.types';
+import type {
   CarouselProps,
   CarouselState,
   CarouselContext,
@@ -20,7 +21,7 @@ import CarouselType, {
   CarouselIndicatorsProps,
   CarouselIndicatorProps,
 } from './Carousel.types';
-import { BoxProps } from '@semcore/flex-box';
+import type { BoxProps } from '@semcore/flex-box';
 import { findAllComponents } from '@semcore/core/lib/utils/findComponent';
 import { createBreakpoints } from '@semcore/breakpoints';
 

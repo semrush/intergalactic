@@ -1,4 +1,4 @@
-import {
+import type {
   ColumnGroupConfig,
   ColumnItemConfig,
   DataTableData,

@@ -1,18 +1,18 @@
 import { makeDataHintsContainer } from '../../a11y/hints';
-import { LegendItem } from '../ChartLegend/LegendItem/LegendItem.type';
-import { ScaleBand, ScaleLinear, ScaleTime } from 'd3-scale';
+import type { LegendItem } from '../ChartLegend/LegendItem/LegendItem.type';
+import type { ScaleBand, ScaleLinear, ScaleTime } from 'd3-scale';
 import { interpolateValue } from '../../utils';
-import React from 'react';
+import type React from 'react';
 import { Component, Root, sstyled } from '@semcore/core';
-import { BaseChartProps, BaseLegendProps, ListData, ObjectData } from './AbstractChart.type';
+import type { BaseChartProps, BaseLegendProps, ListData, ObjectData } from './AbstractChart.type';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import ChartLegend, { ChartLegendTable } from '../ChartLegend';
 import { Flex } from '@semcore/flex-box';
 // @ts-ignore
 import { Plot, XAxis, YAxis } from '../..';
 import { Text } from '@semcore/typography';
-import { LegendFlexProps } from '../ChartLegend/LegendFlex/LegendFlex.type';
-import { LegendTableProps } from '../ChartLegend/LegendTable/LegendTable.type';
+import type { LegendFlexProps } from '../ChartLegend/LegendFlex/LegendFlex.type';
+import type { LegendTableProps } from '../ChartLegend/LegendTable/LegendTable.type';
 import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
 
 type ChartState = {

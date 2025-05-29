@@ -1,17 +1,17 @@
 import EventEmitter from '@semcore/core/lib/utils/eventEmitter';
-import { extent, bisector, Numeric } from 'd3-array';
+import { extent, bisector, type Numeric } from 'd3-array';
 import {
   scaleQuantize,
-  ScaleIdentity,
-  ScaleTime,
-  ScaleContinuousNumeric,
-  ScaleBand,
-  ScalePoint,
-  NumberValue,
+  type ScaleIdentity,
+  type ScaleTime,
+  type ScaleContinuousNumeric,
+  type ScaleBand,
+  type ScalePoint,
+  type NumberValue,
   scaleBand,
   scaleSqrt,
 } from 'd3-scale';
-import React from 'react';
+import type React from 'react';
 
 export const eventToPoint = (event: React.MouseEvent<HTMLElement>, svgRoot: SVGElement) => {
   const node = (event.currentTarget || event.target) as HTMLElement;

@@ -1,9 +1,9 @@
-import { Intergalactic } from '@semcore/core';
-import { BoxProps } from '@semcore/flex-box';
-import Button from '@semcore/button';
-import { InputFieldProps } from './components/InputField/InputField';
-import { CounterProps } from './components/Counter';
-import { ErrorsNavigationProps } from './components/ErrorsNavigation';
+import type { Intergalactic } from '@semcore/core';
+import type { BoxProps } from '@semcore/flex-box';
+import type Button from '@semcore/button';
+import type { InputFieldProps } from './components/InputField/InputField';
+import type { CounterProps } from './components/Counter';
+import type { ErrorsNavigationProps } from './components/ErrorsNavigation';
 
 export type BulkTextareaProps<T extends string | string[]> = {
   value?: InputFieldProps<T>['value'];

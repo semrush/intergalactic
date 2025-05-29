@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 
 /**
  * @deprecated Use ScreenReaderOnly from 'flex-box' component

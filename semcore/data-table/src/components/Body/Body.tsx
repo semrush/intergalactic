@@ -1,18 +1,18 @@
 import * as React from 'react';
-import { Component, createComponent, Intergalactic, Root, sstyled } from '@semcore/core';
-import { BodyPropsInner, DataTableBodyProps } from './Body.types';
+import { Component, createComponent, type Intergalactic, Root, sstyled } from '@semcore/core';
+import type { BodyPropsInner, DataTableBodyProps } from './Body.types';
 import { Box } from '@semcore/base-components';
 import { Row } from './Row';
 
 import style from './style.shadow.css';
 import { Cell } from './Cell';
-import { DataTableRowProps, DTRow, RowPropsInner } from './Row.types';
-import { DataTableCellProps } from './Cell.types';
+import type { DataTableRowProps, DTRow, RowPropsInner } from './Row.types';
+import type { DataTableCellProps } from './Cell.types';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
 import { ACCORDION, ROW_GROUP, ROW_INDEX, UNIQ_ROW_KEY } from '../DataTable/DataTable';
 import ChevronRightM from '@semcore/icon/ChevronRight/m';
 import { ButtonLink } from '@semcore/button';
-import { DTValue } from '../DataTable/DataTable.types';
+import type { DTValue } from '../DataTable/DataTable.types';
 import Spin from '@semcore/spin';
 import { isInteractiveElement } from '@semcore/core/lib/utils/isInteractiveElement';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';

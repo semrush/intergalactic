@@ -1,9 +1,9 @@
-import { Flex } from '@semcore/flex-box';
-import { Intergalactic, Root } from '@semcore/core';
-import Icon from '@semcore/icon';
-import { Text } from '@semcore/typography';
-import { LSize } from '../BaseLegend.type';
-import { PatternsConfig } from '../../../Pattern';
+import type { Flex } from '@semcore/flex-box';
+import type { Intergalactic, Root } from '@semcore/core';
+import type Icon from '@semcore/icon';
+import type { Text } from '@semcore/typography';
+import type { LSize } from '../BaseLegend.type';
+import type { PatternsConfig } from '../../../Pattern';
 
 /**
  * Key of chart data item

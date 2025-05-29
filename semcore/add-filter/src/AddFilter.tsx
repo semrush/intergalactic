@@ -5,14 +5,15 @@ import { createComponent, Component, Root, lastInteraction } from '@semcore/core
 import DropdownMenu from '@semcore/dropdown-menu';
 import MathPlusM from '@semcore/icon/MathPlus/m';
 import CloseM from '@semcore/icon/Close/m';
-import AddFilterType, { AddFilterProps, AddFilterItemProps } from './AddFilter.types';
+import type AddFilterType from './AddFilter.types';
+import type { AddFilterProps, AddFilterItemProps } from './AddFilter.types';
 import AddFilterSelect from './components/AddFilterSelect';
 import AddFilterInput from './components/AddFilterInput';
 import AddFilterDropdown from './components/AddFilterDropdown';
 import { extractFrom } from '@semcore/core/lib/utils/findComponent';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import { SelectProps } from '@semcore/select';
+import type { SelectProps } from '@semcore/select';
 
 type SelectItemProps = SelectProps & AddFilterItemProps;
 

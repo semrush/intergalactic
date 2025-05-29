@@ -1,7 +1,7 @@
 import React, { Component, createContext } from 'react';
 import createHoc from '../createHoc';
 import { useAsyncI18nMessages } from './i18nEnhance';
-import { UnknownProperties } from '../../core-types/UnknownProperties';
+import type { UnknownProperties } from '../../core-types/UnknownProperties';
 import { createIntl, createIntlCache } from '@formatjs/intl';
 
 export type LocaleKeys = string;

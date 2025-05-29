@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Component, createComponent, lastInteraction, Root, sstyled } from '@semcore/core';
 import { Box, ScreenReaderOnly, ScrollArea } from '@semcore/base-components';
 
-import {
+import type {
   DataTableProps,
   ColIndex,
   RowIndex,
@@ -14,22 +14,22 @@ import {
 } from './DataTable.types';
 import { Head } from '../Head/Head';
 import { Body } from '../Body/Body';
-import { DataTableColumnProps, DTColumn } from '../Head/Column.types';
+import type { DataTableColumnProps, DTColumn } from '../Head/Column.types';
 
 import style from './dataTable.shadow.css';
-import { DTRow, UniqRowKey } from '../Body/Row.types';
+import type { DTRow, UniqRowKey } from '../Body/Row.types';
 import { isFocusInside, hasFocusableIn } from '@semcore/core/lib/utils/use/useFocusLock';
 
-import { ReactElement } from 'react';
+import type { ReactElement } from 'react';
 import findComponent from '@semcore/core/lib/utils/findComponent';
-import { DataTableHeadProps, HeadPropsInner } from '../Head/Head.types';
-import { BodyPropsInner } from '../Body/Body.types';
+import type { DataTableHeadProps, HeadPropsInner } from '../Head/Head.types';
+import type { BodyPropsInner } from '../Body/Body.types';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { forkRef } from '@semcore/core/lib/utils/ref';
 import scrollStyles from '../../style/scroll-shadows.shadow.css';
-import { DataTableGroupProps } from '../Head/Group.type';
+import type { DataTableGroupProps } from '../Head/Group.type';
 import { hasParent } from '@semcore/core/lib/utils/hasParent';
 import trottle from '@semcore/core/lib/utils/rafTrottle';
 import { MergedColumnsCell, MergedRowsCell } from '../Body/MergedCells';

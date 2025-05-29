@@ -6,11 +6,11 @@ import {
   Component,
   sstyled,
   Root,
-  PropGetterFn,
-  UnknownProperties,
-  Intergalactic,
+  type PropGetterFn,
+  type UnknownProperties,
+  type Intergalactic,
 } from '@semcore/core';
-import Input, { InputProps, IInputProps, InputValueProps } from '@semcore/input';
+import Input, { type InputProps, type IInputProps, type InputValueProps } from '@semcore/input';
 import fire from '@semcore/core/lib/utils/fire';
 import logger from '@semcore/core/lib/utils/logger';
 import NeighborLocation from '@semcore/neighbor-location';

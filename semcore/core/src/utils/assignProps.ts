@@ -1,4 +1,4 @@
-import { CSSProperties, DetailedHTMLProps, Ref, StyleHTMLAttributes } from 'react';
+import type { CSSProperties, DetailedHTMLProps, Ref, StyleHTMLAttributes } from 'react';
 import cn from 'classnames';
 import { sstyled } from '../styled/index';
 import { forkRef } from './ref';

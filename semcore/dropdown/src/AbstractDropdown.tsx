@@ -4,7 +4,7 @@ import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import { isFocusInside, setFocus } from '@semcore/core/lib/utils/use/useFocusLock';
-import { DropdownProps } from './index';
+import type { DropdownProps } from './index';
 import { getAccessibleName } from '@semcore/core/lib/utils/getAccessibleName';
 
 type AbstractDDProps = {

@@ -1,15 +1,15 @@
-import { DOMAttributes } from 'react';
-import { createComponent, Component, sstyled, Root, IRootComponentProps } from '@semcore/core';
+import type { DOMAttributes } from 'react';
+import { createComponent, Component, sstyled, Root, type IRootComponentProps } from '@semcore/core';
 import { Flex, Box } from '@semcore/flex-box';
 import Checkbox from '@semcore/checkbox';
 import { Text as TypographyText } from '@semcore/typography';
 
 import style from './legend-item.shadow.css';
 import {
-  ShapeProps,
-  LegendItemProps,
-  LegendItemType,
-  LegendItem,
+  type ShapeProps,
+  type LegendItemProps,
+  type LegendItemType,
+  type LegendItem,
   StaticShapes,
 } from './LegendItem.type';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';

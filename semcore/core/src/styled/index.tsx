@@ -1,4 +1,4 @@
-import { UnknownProperties } from '../core-types/UnknownProperties';
+import type { UnknownProperties } from '../core-types/UnknownProperties';
 
 export type StyledProps = {
   // eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope

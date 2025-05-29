@@ -3,7 +3,7 @@ import React from 'react';
 import {
   createComponent,
   Component,
-  IRootComponentProps,
+  type IRootComponentProps,
   Root,
   sstyled,
   lastInteraction,
@@ -38,7 +38,7 @@ import {
   ZIndexStackingContextProvider,
 } from '@semcore/core/lib/utils/zIndexStacking';
 
-import {
+import type {
   InnerPopperPopperProps,
   InnerPopperTriggerProps,
   Popper as PopperType,
@@ -47,7 +47,7 @@ import {
   PopperProps,
   PopperTriggerProps,
 } from './Popper.types';
-import { Instance, Modifier } from '@popperjs/core/lib/types';
+import type { Instance, Modifier } from '@popperjs/core/lib/types';
 
 function isObject(obj: any) {
   return typeof obj === 'object' && !Array.isArray(obj);

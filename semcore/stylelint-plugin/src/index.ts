@@ -1,4 +1,4 @@
-import stylelint, { PostcssResult, Rule } from 'stylelint';
+import stylelint, { type PostcssResult, type Rule } from 'stylelint';
 import postcssValueParser from 'postcss-value-parser';
 import levenshtein from 'js-levenshtein';
 import type { Declaration } from 'postcss';

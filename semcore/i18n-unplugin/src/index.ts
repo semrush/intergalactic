@@ -1,4 +1,4 @@
-import { createUnplugin, UnpluginInstance } from 'unplugin';
+import { createUnplugin, type UnpluginInstance } from 'unplugin';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 

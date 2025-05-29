@@ -66,9 +66,7 @@
         "noUnusedTemplateLiteral": "error",
         "useNumberNamespace": "error",
         "noInferrableTypes": "off",
-        "noUselessElse": "off",
-        "useImportType": "off",
-        "useExportType": "off"
+        "noUselessElse": "off"
       },
       "correctness": {
         "noUnusedVariables": "error",

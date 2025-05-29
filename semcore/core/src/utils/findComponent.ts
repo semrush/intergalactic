@@ -1,4 +1,4 @@
-import React, { ReactElement, MutableRefObject } from 'react';
+import React, { type ReactElement, type MutableRefObject } from 'react';
 import getOriginChildren from './getOriginChildren';
 import { CHILDREN_COMPONENT, INHERITED_NAME } from '../core-types/symbols';
 

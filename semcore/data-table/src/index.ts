@@ -4,8 +4,8 @@ import type {
   DataTableType,
   DataTableData,
 } from './components/DataTable/DataTable.types';
-import { Intergalactic } from '@semcore/core';
-import React from 'react';
+import type { Intergalactic } from '@semcore/core';
+import type React from 'react';
 
 const wrapDataTable = <PropsExtending extends {}>(
   wrapper: (

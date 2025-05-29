@@ -3,9 +3,9 @@ import { Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 
 import style from './inputField.shadow.css';
-import { PopperContext } from '@semcore/popper';
+import type { PopperContext } from '@semcore/popper';
 import Tooltip from '@semcore/tooltip';
-import { InputFieldProps, ErrorItem } from './InputField.types';
+import type { InputFieldProps, ErrorItem } from './InputField.types';
 import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import DOMPurify from 'dompurify';

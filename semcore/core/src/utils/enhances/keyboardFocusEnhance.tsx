@@ -1,6 +1,6 @@
 import React from 'react';
 import assignProps from '../assignProps';
-import { UnknownProperties } from '../../core-types/UnknownProperties';
+import type { UnknownProperties } from '../../core-types/UnknownProperties';
 import { lastInteraction } from '../../LastInteractionType';
 
 /** @deprecated */

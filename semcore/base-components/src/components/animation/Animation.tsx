@@ -4,7 +4,7 @@ import { createComponent, sstyled, Root, Component } from '@semcore/core';
 import { Box } from '../flex-box';
 import contextEnhance from '@semcore/core/lib/utils/enhances/contextEnhance';
 import style from './style/animate.shadow.css';
-import { AnimationContext } from './Animation.types';
+import type { AnimationContext } from './Animation.types';
 
 function propToArray(prop: any[]) {
   return Array.isArray(prop) ? prop : [prop, prop];

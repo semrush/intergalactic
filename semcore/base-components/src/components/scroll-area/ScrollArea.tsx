@@ -1,7 +1,7 @@
-import React, { ForwardedRef } from 'react';
+import React, { type ForwardedRef } from 'react';
 import { findDOMNode } from 'react-dom';
 
-import { createComponent, sstyled, Component, Root, IRootComponentProps } from '@semcore/core';
+import { createComponent, sstyled, Component, Root, type IRootComponentProps } from '@semcore/core';
 import { Box } from '../flex-box';
 
 import trottle from '@semcore/core/lib/utils/rafTrottle';
@@ -14,7 +14,7 @@ import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 
 import style from './style/scroll-area.shadow.css';
-import {
+import type {
   ScrollAreaProps,
   ScrollArea as ScrollAreaType,
   ScrollAreaContainerProps,

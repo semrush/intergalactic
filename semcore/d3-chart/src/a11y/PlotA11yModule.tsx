@@ -1,5 +1,5 @@
 import React from 'react';
-import { DataStructureHints, PartialDataSummarizationConfig } from './hints';
+import type { DataStructureHints, PartialDataSummarizationConfig } from './hints';
 import { normalizeLocale } from './locale';
 import { localizedMessages } from './translations/module/__intergalactic-dynamic-locales';
 import { Root, sstyled } from '@semcore/core';

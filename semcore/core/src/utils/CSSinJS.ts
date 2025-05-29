@@ -1,4 +1,4 @@
-import { create, NanoOptions, NanoRenderer } from '@phytonmk/nano-css';
+import { create, type NanoOptions, type NanoRenderer } from '@phytonmk/nano-css';
 import { addon as addonRule } from '@phytonmk/nano-css/addon/rule';
 import { addon as addonCache } from '@phytonmk/nano-css/addon/cache';
 import { addon as addonPrefixer } from '@phytonmk/nano-css/addon/prefixer';

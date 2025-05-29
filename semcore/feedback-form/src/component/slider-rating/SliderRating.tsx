@@ -1,6 +1,6 @@
-import React from 'react';
-import { createComponent, Component, Root, sstyled, Intergalactic } from '@semcore/core';
-import { Flex, Box, BoxProps } from '@semcore/flex-box';
+import type React from 'react';
+import { createComponent, Component, Root, sstyled, type Intergalactic } from '@semcore/core';
+import { Flex, Box, type BoxProps } from '@semcore/flex-box';
 import style from '../../style/slider-rating.shadow.css';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';

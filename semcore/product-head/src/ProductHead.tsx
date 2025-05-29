@@ -1,6 +1,6 @@
 
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
-import { Box, BoxProps } from '@semcore/flex-box';
+import { Box, type BoxProps } from '@semcore/flex-box';
 
 import style from './style/product-head.shadow.css';
 

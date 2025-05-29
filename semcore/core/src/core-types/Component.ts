@@ -1,12 +1,13 @@
-import React, {
-  AllHTMLAttributes,
+import type React from 'react';
+import {type 
+  AllHTMLAttributes,type 
   ForwardRefExoticComponent,
-  PureComponent,
-  ReactNode,
-  RefAttributes,
+  PureComponent,type 
+  ReactNode,type 
+  RefAttributes,type 
   RefObject,
-} from 'react';
-import { IStyledProps } from '../styled/index';
+} from 'react'
+import type { IStyledProps } from '../styled/index';
 import { CORE_COMPONENT, CREATE_COMPONENT } from './symbols';
 
 /** @deprecated */

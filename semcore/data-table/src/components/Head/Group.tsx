@@ -3,7 +3,7 @@ import { Component, Root, sstyled } from '@semcore/core';
 import { Box } from '@semcore/base-components';
 
 import style from './style.shadow.css';
-import { DataTableGroupProps, GroupPropsInner } from './Group.type';
+import type { DataTableGroupProps, GroupPropsInner } from './Group.type';
 import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
 import { DataTableInternal } from '../DataTable/DataTable';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';

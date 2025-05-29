@@ -23,8 +23,8 @@ export {
   Collapse,
   Scale,
   Slide,
-  FadeInOutProps,
-  SlideProps,
-  CollapseProps,
-  AnimationProps,
+  type FadeInOutProps,
+  type SlideProps,
+  type CollapseProps,
+  type AnimationProps,
 };

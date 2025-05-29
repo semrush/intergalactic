@@ -1,8 +1,8 @@
 
-import { createComponent, ComponentType, assignProps, Root, sstyled } from '@semcore/core';
+import { createComponent, type ComponentType, assignProps, Root, sstyled } from '@semcore/core';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import { Trend, CommonTrendProps } from './Trend';
+import { Trend, type CommonTrendProps } from './Trend';
 import { Box } from '@semcore/flex-box';
 
 import style from '../skeleton/skeleton.shadow.css';

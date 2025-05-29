@@ -1,6 +1,6 @@
 import React from 'react';
 import { Component } from '@semcore/core';
-import { BoxProps } from '@semcore/flex-box';
+import type { BoxProps } from '@semcore/flex-box';
 
 export type CommonTrendProps = BoxProps & {
   /**
