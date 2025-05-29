@@ -84,57 +84,52 @@ test.describe('Dropdown menu base', () => {
     const lItems = ddL.locator('[data-ui-name="DropdownMenu.Item"]');
 
     await test.step('Verify styles of M size', async () => {
+      const count1 = await mItems.count();
 
-    const count1 = await mItems.count();
-
-    for (let i = 0; i < count1; i++) {
-    await checkStyles(mItems.nth(i), {
-      'font-size': '14px',
-      'min-height': '32px',
-      padding: '6px 8px',
-      'background-color': 'rgba(0, 0, 0, 0)',
+      for (let i = 0; i < count1; i++) {
+        await checkStyles(mItems.nth(i), {
+          'font-size': '14px',
+          'min-height': '32px',
+          padding: '6px 8px',
+          'background-color': 'rgba(0, 0, 0, 0)',
+        });
+      }
     });
-  }
-});
 
-await test.step('Verify styles of L size', async () => {
+    await test.step('Verify styles of L size', async () => {
+      const count1 = await mItems.count();
 
-  const count1 = await mItems.count();
+      for (let i = 0; i < count1; i++) {
+        await checkStyles(lItems.nth(i), {
+          'font-size': '16px',
+          'min-height': '40px',
+          padding: '8px 12px',
+          'background-color': 'rgba(0, 0, 0, 0)',
+        });
+      }
+    });
 
-  for (let i = 0; i < count1; i++) {
-  await checkStyles(lItems.nth(i), {
-    'font-size': '16px',
-    'min-height': '40px',
-    padding: '8px 12px',
-    'background-color': 'rgba(0, 0, 0, 0)',
-  });
-}
-});
+    await test.step('Verify disabled styles', async () => {
+      await checkStyles(mItems.first(), {
+        opacity: '0.3',
+      });
+      await checkStyles(lItems.first(), {
+        opacity: '0.3',
+      });
+    });
+    if (browserName === 'firefox') return;
+    await test.step('Verify hover styles', async () => {
+      await mItems.nth(1).hover();
+      await checkStyles(mItems.nth(1), {
+        'background-color': 'rgb(244, 245, 249)',
+      });
+      await lItems.nth(1).hover();
+      await checkStyles(lItems.nth(1), {
+        'background-color': 'rgb(244, 245, 249)',
+      });
 
-
-await test.step('Verify disabled styles', async () => {
-  await checkStyles(mItems.first(), {
-    'opacity': '0.3',
-  });
-  await checkStyles(lItems.first(), {
-    'opacity': '0.3',
-  });
-});
- if(browserName==='firefox') return;
-await test.step('Verify hover styles', async () => {
-  await mItems.nth(1).hover();
-  await checkStyles(mItems.nth(1), {
-    'background-color': 'rgb(244, 245, 249)',
-  });
-  await lItems.nth(1).hover();
-  await checkStyles(lItems.nth(1), {
-    'background-color': 'rgb(244, 245, 249)',
-  });
-
-  //snapshot 
-});
-
-
+      //snapshot
+    });
   });
 
   test('Verify Width of dd menu', async ({ page, browserName }) => {
@@ -144,8 +139,7 @@ await test.step('Verify hover styles', async () => {
     await page.setContent(htmlContent);
     await page.waitForTimeout(100);
 
-//snapshot
-
+    //snapshot
   });
 });
 
@@ -362,10 +356,11 @@ test.describe('Selectable radio items', () => {
 
     const mItems = ddM.locator('[data-ui-name="DropdownMenu.Item"]:not([role="menuitem"])');
     const lItems = ddL.locator('[data-ui-name="DropdownMenu.Item"]:not([role="menuitem"])');
-    const disabledItems = ddDisabed.locator('[data-ui-name="DropdownMenu.Item"]:not([role="menuitem"])');
+    const disabledItems = ddDisabed.locator(
+      '[data-ui-name="DropdownMenu.Item"]:not([role="menuitem"])',
+    );
 
     await test.step('Verify styles of M size', async () => {
-
       await checkStyles(mItems.first(), {
         'font-size': '14px',
         'min-height': '32px',
@@ -373,61 +368,57 @@ test.describe('Selectable radio items', () => {
         'background-color': 'rgba(196, 229, 254, 0.7)',
       });
 
-    const count1 = await mItems.count();
+      const count1 = await mItems.count();
 
-    for (let i = 1; i < count1; i++) {
-    await checkStyles(mItems.nth(i), {
-      'font-size': '14px',
-      'min-height': '32px',
-      padding: '6px 8px',
-      'background-color': 'rgba(0, 0, 0, 0)',
+      for (let i = 1; i < count1; i++) {
+        await checkStyles(mItems.nth(i), {
+          'font-size': '14px',
+          'min-height': '32px',
+          padding: '6px 8px',
+          'background-color': 'rgba(0, 0, 0, 0)',
+        });
+      }
     });
-  }
-});
 
-await test.step('Verify styles of L size', async () => {
-  await checkStyles(mItems.first(), {
-    'font-size': '14px',
-    'min-height': '32px',
-    padding: '6px 8px',
-    'background-color': 'rgba(196, 229, 254, 0.7)',
-  });
+    await test.step('Verify styles of L size', async () => {
+      await checkStyles(mItems.first(), {
+        'font-size': '14px',
+        'min-height': '32px',
+        padding: '6px 8px',
+        'background-color': 'rgba(196, 229, 254, 0.7)',
+      });
 
-  const count1 = await mItems.count();
+      const count1 = await mItems.count();
 
-  for (let i = 1; i < count1; i++) {
-  await checkStyles(lItems.nth(i), {
-    'font-size': '16px',
-    'min-height': '40px',
-    padding: '8px 12px',
-    'background-color': 'rgba(0, 0, 0, 0)',
-  });
-}
-});
+      for (let i = 1; i < count1; i++) {
+        await checkStyles(lItems.nth(i), {
+          'font-size': '16px',
+          'min-height': '40px',
+          padding: '8px 12px',
+          'background-color': 'rgba(0, 0, 0, 0)',
+        });
+      }
+    });
 
+    await test.step('Verify disabled styles', async () => {
+      await checkStyles(disabledItems.first(), {
+        opacity: '0.3',
+      });
+    });
 
-await test.step('Verify disabled styles', async () => {
-  await checkStyles(disabledItems.first(), {
-    'opacity': '0.3',
-  });
-});
+    if (browserName === 'firefox') return;
+    await test.step('Verify hover styles', async () => {
+      await mItems.nth(0).hover();
+      await checkStyles(mItems.nth(0), {
+        'background-color': 'rgb(196, 229, 254)',
+      });
+      await mItems.nth(1).hover();
+      await checkStyles(mItems.nth(1), {
+        'background-color': 'rgb(244, 245, 249)',
+      });
 
-
- if(browserName==='firefox') return;
-await test.step('Verify hover styles', async () => {
-  await mItems.nth(0).hover();
-  await checkStyles(mItems.nth(0), {
-    'background-color': 'rgb(196, 229, 254)',
-  });
-  await mItems.nth(1).hover();
-  await checkStyles(mItems.nth(1), {
-    'background-color': 'rgb(244, 245, 249)',
-  });
-
-  //snapshot 
-});
-
-
+      //snapshot
+    });
   });
 });
 
@@ -493,48 +484,47 @@ test.describe('Dropdown-menu - Multiselect items', () => {
     const ddL = page.locator('[data-ui-name="DropdownMenu.Menu"][data-testid="l-size"]');
     const ddDisabed = page.locator('[data-ui-name="DropdownMenu.Menu"][data-testid="m-disabled"]');
 
-    const mItems = ddM.locator('[data-ui-name="DropdownMenu.Group"][data-ui-name="DropdownMenu.Item"]');
-    const lItems = ddL.locator('[data-ui-name="DropdownMenu.Group"][data-ui-name="DropdownMenu.Item"]');
+    const mItems = ddM.locator(
+      '[data-ui-name="DropdownMenu.Group"][data-ui-name="DropdownMenu.Item"]',
+    );
+    const lItems = ddL.locator(
+      '[data-ui-name="DropdownMenu.Group"][data-ui-name="DropdownMenu.Item"]',
+    );
     const disabledItems = ddDisabed.locator('[data-ui-name="DropdownMenu.Item"]');
 
     await test.step('Verify styles of M size', async () => {
+      const count1 = await mItems.count();
 
-    const count1 = await mItems.count();
-
-    for (let i = 0; i < count1; i++) {
-    await checkStyles(mItems.nth(i), {
-      'font-size': '14px',
-      'min-height': '32px',
-      padding: '6px 8px',
-      'background-color': 'rgba(0, 0, 0, 0)',
+      for (let i = 0; i < count1; i++) {
+        await checkStyles(mItems.nth(i), {
+          'font-size': '14px',
+          'min-height': '32px',
+          padding: '6px 8px',
+          'background-color': 'rgba(0, 0, 0, 0)',
+        });
+      }
     });
-  }
-});
 
-await test.step('Verify styles of L size', async () => {
+    await test.step('Verify styles of L size', async () => {
+      const count1 = await mItems.count();
 
-  const count1 = await mItems.count();
+      for (let i = 0; i < count1; i++) {
+        await checkStyles(lItems.nth(i), {
+          'font-size': '16px',
+          'min-height': '40px',
+          padding: '8px 12px',
+          'background-color': 'rgba(0, 0, 0, 0)',
+        });
+      }
+    });
 
-  for (let i = 0; i < count1; i++) {
-  await checkStyles(lItems.nth(i), {
-    'font-size': '16px',
-    'min-height': '40px',
-    padding: '8px 12px',
-    'background-color': 'rgba(0, 0, 0, 0)',
-  });
-}
-});
+    await test.step('Verify disabled styles', async () => {
+      await checkStyles(disabledItems.nth(1), {
+        opacity: '0.3',
+      });
+    });
 
-
-await test.step('Verify disabled styles', async () => {
-  await checkStyles(disabledItems.nth(1), {
-    'opacity': '0.3',
-  });
-});
-
-//snapshot
-
-
+    //snapshot
   });
 });
 
