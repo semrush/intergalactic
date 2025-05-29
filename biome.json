@@ -13,7 +13,7 @@
     ]
   },
   "formatter": {
-    "enabled": true,
+    "enabled": false,
     "lineWidth": 140,
     "indentStyle": "space",
     "attributePosition": "multiline",
@@ -21,6 +21,10 @@
   },
   "javascript": {
     "formatter": {
+      "lineWidth": 140,
+      "indentStyle": "space",
+      "attributePosition": "multiline",
+      "expand": "always",
       "trailingCommas": "all",
       "quoteStyle": "single",
       "jsxQuoteStyle": "single",
