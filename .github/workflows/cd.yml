@@ -233,7 +233,7 @@ jobs:
         run: pnpm test:setup
       - name: Test
         id: test
-        run: pnpm test:docker ${{ needs.defineChangedComponents.outputs.changedComponents }} run -- --allowOnly=false
+        run: pnpm test:docker run ${{ needs.defineChangedComponents.outputs.changedComponents }} -- --allowOnly=false
         continue-on-error: true
       - name: Save test results as artifacts
         if: steps.test.outcome != 'success'
