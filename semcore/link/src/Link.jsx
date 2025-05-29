@@ -78,7 +78,7 @@ class RootLink extends Component {
       addonRight: AddonRight,
       Children,
       title,
-      ['aria-label']: ariaLabel,
+      'aria-label': ariaLabel,
       hintPlacement,
     } = this.asProps;
     // @ts-ignore

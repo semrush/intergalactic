@@ -13,15 +13,11 @@
     ]
   },
   "formatter": {
-    "enabled": false,
-    "lineWidth": 140,
-    "indentStyle": "space",
-    "attributePosition": "multiline",
-    "expand": "always"
+    "enabled": false
   },
   "javascript": {
     "formatter": {
-      "lineWidth": 140,
+      "lineWidth": 120,
       "indentStyle": "space",
       "attributePosition": "multiline",
       "expand": "always",
@@ -65,8 +61,10 @@
         "useSingleVarDeclarator": "error",
         "noUnusedTemplateLiteral": "error",
         "useNumberNamespace": "error",
-        "noInferrableTypes": "off",
-        "noUselessElse": "off"
+        "noInferrableTypes": "error",
+        "noUselessElse": "off",
+        "useImportType": "error",
+        "useExportType": "error"
       },
       "correctness": {
         "noUnusedVariables": "error",
