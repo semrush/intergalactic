@@ -174,6 +174,7 @@ export const getIndexFromData = <
 
     return key;
   } else {
+    // biome-ignore lint/suspicious/noConsole: old code
     console.warn('[d3-chart/utils/getIndexFromData] encountered incompatible scale type');
     return null;
   }

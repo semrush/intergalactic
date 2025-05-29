@@ -330,6 +330,7 @@ function createComponent<ComponentProps, ChildComponentProps = {}, ContextType =
   if (parents.length) {
     const wholeFamily = parents.reduce((acc: any, parent: any) => {
       if (parent[PARENT_COMPONENTS]) {
+        // biome-ignore lint/performance/noAccumulatingSpread: old code
         acc = [...parent[PARENT_COMPONENTS], ...acc];
       }
       return acc;

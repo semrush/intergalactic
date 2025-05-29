@@ -111,11 +111,9 @@ export const PlotA11yView: React.FC<A11yViewProps> = ({
       <button type={'button'} onClick={handleClose}>
         {texts.close}
       </button>
-      {/* biome-ignore lint/a11y/useValidAnchor: */}
       <a href={'#'} onKeyDown={handleSkipKeyboard} onClick={handleSkip}>
         {texts.skipPlot}
       </a>
-      {/* biome-ignore lint/a11y/useValidAnchor: */}
       <a href={`#${id}-data-table`} onKeyDown={handleGoToTableKeyboard} onClick={handleGoToTable}>
         {texts.goToTable}
       </a>

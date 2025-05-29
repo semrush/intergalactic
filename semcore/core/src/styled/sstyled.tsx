@@ -88,7 +88,7 @@ function getClassAndVars(styles: any, name: any, props: any) {
           acc[0][value] = Boolean(propValue ?? false);
         } else {
           // @ts-ignore
-          // biome-ignore lint/suspicious/noDoubleEquals:
+          // biome-ignore lint/suspicious/noDoubleEquals: external library
           acc[0][value] = propValue == modValue;
         }
       }

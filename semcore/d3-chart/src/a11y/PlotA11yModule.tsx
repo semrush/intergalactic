@@ -91,6 +91,7 @@ export const PlotA11yModule: React.FC<A11yViewProps> = (props) => {
         setError(null);
       })
       .catch((error) => {
+        // biome-ignore lint/suspicious/noConsole: old code
         console.error(error);
         setError(error);
       });

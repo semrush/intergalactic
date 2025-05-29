@@ -273,7 +273,6 @@ class RangePickerAbstract extends Component {
               </Box>
               <Box ml={2}>
                 <Picker.Header>
-                  {/* biome-ignore lint/a11y/useValidAriaValues: */}
                   <Picker.Title aria-live={undefined} />
                   <Picker.Next />
                 </Picker.Header>

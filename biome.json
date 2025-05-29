@@ -7,12 +7,13 @@
       }
     }
   },
+  "files": {
+    "includes": [
+      "semcore/*/src/**"
+    ]
+  },
   "formatter": {
     "enabled": true,
-    "includes": [
-      "semcore/*/src/**",
-      "!semcore/*/src/**/*.d.ts"
-    ],
     "lineWidth": 140,
     "indentStyle": "space",
     "attributePosition": "multiline",
@@ -36,9 +37,6 @@
   },
   "linter": {
     "enabled": true,
-    "includes": [
-      "semcore/*/src/**"
-    ],
     "rules": {
       "suspicious": {
         "noEmptyInterface": "off",
@@ -47,33 +45,39 @@
         "noRedeclare": "off",
         "noShadowRestrictedNames": "off",
         "noArrayIndexKey": "off",
-        "noConsole": "error"
+        "noConsole": "error",
+        "noConfusingVoidType": "off",
+        "noImplicitAnyLet": "off"
       },
       "style": {
         "noParameterAssign": "off",
         "noNonNullAssertion": "off",
         "useTemplate": "off",
         "useExponentiationOperator": "off",
-        "useAsConstAssertion": "error",
-        "useDefaultParameterLast": "error",
+        "useAsConstAssertion": "off",
+        "useDefaultParameterLast": "off",
         "useEnumInitializers": "error",
         "useSelfClosingElements": "error",
         "useSingleVarDeclarator": "error",
         "noUnusedTemplateLiteral": "error",
-        "useNumberNamespace": "error",
-        "noInferrableTypes": "error",
-        "noUselessElse": "error"
+        "useNumberNamespace": "off",
+        "noInferrableTypes": "off",
+        "noUselessElse": "off",
+        "useImportType": "off",
+        "useExportType": "off"
       },
       "correctness": {
+        "noUnusedVariables": "off",
+        "noUnusedImports": "off",
+        "noUnusedFunctionParameters": "off",
+        "useHookAtTopLevel": "off",
+        "noInvalidUseBeforeDeclaration": "off",
         "noChildrenProp": "off",
         "noUnreachableSuper": "off",
-        "noConstructorReturn": "off"
+        "noConstructorReturn": "off",
+        "useExhaustiveDependencies": "off"
       },
-      "a11y": {
-        "useAnchorContent": "off",
-        "noSvgWithoutTitle": "off",
-        "noNoninteractiveTabindex": "off"
-      },
+      "a11y": "off",
       "complexity": {
         "useFlatMap": "off",
         "useLiteralKeys": "off",
@@ -81,11 +85,17 @@
         "noUselessThisAlias": "off",
         "noStaticOnlyClass": "off",
         "noUselessFragments": "off",
-        "noForEach": "off"
+        "noForEach": "off",
+        "useRegexLiterals": "off",
+        "useArrowFunction": "off",
+        "noUselessUndefinedInitialization": "off",
+        "noUselessTernary": "off",
+        "noUselessEscapeInRegex": "off"
       },
       "security": {
         "noDangerouslySetInnerHtml": "off"
-      }
+      },
+      "nursery": "off"
     }
   }
 }

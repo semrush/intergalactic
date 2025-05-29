@@ -225,7 +225,6 @@ class ViewInfo extends Component {
         role={type === 'warning' ? 'alert' : this.props.role}
       >
         <SDismiss
-          // biome-ignore lint/a11y/useValidAriaValues:
           aria-haspopup={undefined}
           type='button'
           use='tertiary'
