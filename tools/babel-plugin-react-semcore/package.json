@@ -7,7 +7,7 @@
     "test": "jest --no-cache"
   },
   "dependencies": {
-    "@semcore/babel-plugin-styles": "workspace:^",
+    "@semcore/babel-plugin-styles": "^1.10.0",
     "find-package-json": "1.2.0",
     "semver": "7.3.5",
     "string-hash": "1.1.3",
