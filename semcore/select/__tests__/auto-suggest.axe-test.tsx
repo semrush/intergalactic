@@ -1,9 +1,9 @@
 import { expect, getAccessibilityViolations, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
-test.describe('Select', () => {
-  test('Basic usage', async ({ page }) => {
-    const standPath = 'stories/components/select/docs/examples/basic_usage.tsx';
+test.describe('AutoSuggest', () => {
+  test('Combobox', async ({ page }) => {
+    const standPath = 'stories/ux-patterns/auto-suggest/docs/examples/combobox_example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -18,7 +18,6 @@ test.describe('Select', () => {
     // opened select check
     {
       await page.keyboard.press('Tab');
-      await page.keyboard.press('Enter');
 
       await new Promise((resolve) => setTimeout(resolve, 100));
 
@@ -28,8 +27,8 @@ test.describe('Select', () => {
     }
   });
 
-  test('Custom selected label', async ({ page }) => {
-    const standPath = 'stories/components/select/docs/examples/custom_selected_label.tsx';
+  test('AutoSuggest', async ({ page }) => {
+    const standPath = 'stories/ux-patterns/auto-suggest/docs/examples/autosuggest_example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -44,8 +43,8 @@ test.describe('Select', () => {
     // opened select check
     {
       await page.keyboard.press('Tab');
-      await page.keyboard.press('Enter');
-
+      await page.keyboard.type('a');
+      await page.waitForSelector('text=persian');
       await new Promise((resolve) => setTimeout(resolve, 100));
 
       const violations = await getAccessibilityViolations({ page });
@@ -218,187 +217,3 @@ test.describe('Select', () => {
   });
 });
 
-
-test.describe('Option', () => {
-  test('Options', async ({ page }) => {
-    const standPath = 'stories/components/select/docs/examples/options.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    // default check
-    {
-      const violations = await getAccessibilityViolations({ page });
-
-      expect(violations).toEqual([]);
-    }
-
-    // opened select check
-    {
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Enter');
-
-      await new Promise((resolve) => setTimeout(resolve, 100));
-
-      const violations = await getAccessibilityViolations({ page });
-
-      expect(violations).toEqual([]);
-    }
-
-     // select option
-     {
-      await page.keyboard.press('ArrowDown');
-      await page.keyboard.press('Enter');
-
-      await new Promise((resolve) => setTimeout(resolve, 100));
-
-      const violations = await getAccessibilityViolations({ page });
-
-      expect(violations).toEqual([]);
-    }
-  });
-
-  test('Options Filtering', async ({ page }) => {
-    const standPath = 'stories/components/select/docs/examples/options_filtering.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    // default check
-    {
-      const violations = await getAccessibilityViolations({ page });
-
-      expect(violations).toEqual([]);
-    }
-
-    // opened select check
-    {
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Enter');
-
-      await new Promise((resolve) => setTimeout(resolve, 100));
-
-      const violations = await getAccessibilityViolations({ page });
-
-      expect(violations).toEqual([]);
-    }
-  });
-
-  test('Advanced Filtering Control', async ({ page }) => {
-    const standPath = 'stories/components/select/docs/examples/advanced_filtering_control.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    // default check
-    {
-      const violations = await getAccessibilityViolations({ page });
-
-      expect(violations).toEqual([]);
-    }
-
-    // opened select check
-    {
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Enter');
-
-      await new Promise((resolve) => setTimeout(resolve, 100));
-
-      const violations = await getAccessibilityViolations({ page });
-
-      expect(violations).toEqual([]);
-    }
-  });
-});
-
-test.describe('Multiselect', () => {
-  test('Multiselect', async ({ page }) => {
-    const standPath = 'stories/components/select/docs/examples/multiselect.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    // default check
-    {
-      const violations = await getAccessibilityViolations({ page });
-
-      expect(violations).toEqual([]);
-    }
-
-    // opened select check
-    {
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Enter');
-
-      await new Promise((resolve) => setTimeout(resolve, 100));
-
-      const violations = await getAccessibilityViolations({ page });
-
-      expect(violations).toEqual([]);
-    }
-
-     // select option
-     {
-      await page.keyboard.press('ArrowDown');
-      await page.keyboard.press('Enter');
-
-      await new Promise((resolve) => setTimeout(resolve, 100));
-
-      const violations = await getAccessibilityViolations({ page });
-
-      expect(violations).toEqual([]);
-    }
-  });
-
-  test('Sorting Multiselect Options', async ({ page }) => {
-    const standPath = 'stories/components/select/docs/examples/sorting_multiselect_options.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    // default check
-    {
-      const violations = await getAccessibilityViolations({ page });
-
-      expect(violations).toEqual([]);
-    }
-
-    // opened select check
-    {
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Enter');
-
-      await new Promise((resolve) => setTimeout(resolve, 100));
-
-      const violations = await getAccessibilityViolations({ page });
-
-      expect(violations).toEqual([]);
-    }
-  });
-
-  test('Render function', async ({ page }) => {
-    const standPath = 'stories/components/select/docs/examples/render_function.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    // default check
-    {
-      const violations = await getAccessibilityViolations({ page });
-
-      expect(violations).toEqual([]);
-    }
-
-    // opened select check
-    {
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Enter');
-
-      await new Promise((resolve) => setTimeout(resolve, 100));
-
-      const violations = await getAccessibilityViolations({ page });
-
-      expect(violations).toEqual([]);
-    }
-  });
-});

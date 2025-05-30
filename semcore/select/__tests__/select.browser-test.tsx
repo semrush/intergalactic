@@ -2,6 +2,30 @@ import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 test.describe('Options Filtering', () => {
+  test('Verify select trigger state', async ({ page }) => {
+    const standPath = 'stories/components/select/tests/examples/trigger.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const triggers = page.locator('[data-ui-name="Select.Trigger"]');
+    await page.keyboard.press('Tab');
+    await triggers.first().hover();
+
+    //snapshot 
+
+    await page.keyboard.press('Tab');
+      //snapshot 
+
+      await page.keyboard.press('Tab');
+      //snapshot 
+//verify disabled not focused 
+      await page.keyboard.press('Tab');
+ await expect(triggers.nth(4)).toBeFocused();
+  });
+});
+
+test.describe('Options Filtering', () => {
   test('Traps focus on input', async ({ page }) => {
     const standPath = 'stories/components/select/docs/examples/options_filtering.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');

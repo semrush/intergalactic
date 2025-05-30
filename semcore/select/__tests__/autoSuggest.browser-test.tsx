@@ -2,7 +2,7 @@ import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 test.describe('AutoSuggest', () => {
-  test('Keyboard Navigation', async ({ page }) => {
+  test('Verify keyboard Navigation', async ({ page }) => {
     const standPath =
       'stories/patterns/ux-patterns/auto-suggest/docs/examples/autosuggest_example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
