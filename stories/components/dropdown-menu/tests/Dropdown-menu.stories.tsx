@@ -10,6 +10,7 @@ import WidthExample from './examples/dd-width';
 import SizesSelectableExample from './examples/sizes-selectable';
 import SizesMultiselectExample from './examples/sizes-multiselect';
 import WithDividerExample from './examples/dd-with-divider';
+import ListItemsTypeExample from './examples/list_item_types';
 
 const meta: Meta<typeof DropdownMenu> = {
   title: 'Components/Dropdown Menu/Tests',
@@ -21,6 +22,10 @@ type Story = StoryObj<typeof DropdownMenu>;
 
 export const WithDivider: Story = {
   render: WithDividerExample,
+};
+
+export const ListItemsType: Story = {
+  render: ListItemsTypeExample,
 };
 
 export const OnVisible: Story = {
