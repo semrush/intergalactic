@@ -2598,7 +2598,7 @@ importers:
   tools/babel-plugin-react-semcore:
     dependencies:
       '@semcore/babel-plugin-styles':
-        specifier: workspace:^
+        specifier: ^1.10.0
         version: link:../babel-plugin-styles
       find-package-json:
         specifier: 1.2.0
@@ -3262,7 +3262,7 @@ importers:
   tools/slack-integration:
     dependencies:
       '@semcore/changelog-handler':
-        specifier: workspace:*
+        specifier: 0.0.1
         version: link:../changelog-handler
       axios:
         specifier: 0.21.2
@@ -17746,7 +17746,7 @@ packages:
       http-proxy: 1.18.1
       is-glob: 4.0.3
       is-plain-obj: 3.0.0
-      micromatch: 4.0.7
+      micromatch: 4.0.8
     transitivePeerDependencies:
       - debug
     dev: true
