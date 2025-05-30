@@ -1,7 +1,7 @@
 {
   "name": "@semcore/illustration",
   "description": "Semrush Illustration Component",
-  "version": "16.0.0",
+  "version": "16.0.1",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.mjs",
   "typings": "lib/types/index.d.ts",
@@ -12,7 +12,7 @@
     "build": "pnpm clear && pnpm semcore-builder --source=js && pnpm run transform && pnpm vite build",
     "transform": "tsm --require=../../.ci/tsm-filter-warnings.js transform.ts",
     "clear": "tsm --require=../../.ci/tsm-filter-warnings.js clear.ts",
-    "upload-static": "gcs-upload svg/*.svg"
+    "upload-static": "gcs-upload intergalactic-illustrations svg/*.svg"
   },
   "dependencies": {
     "@babel/runtime": "^7.17.9",
