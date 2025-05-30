@@ -14,6 +14,7 @@ if (process.cwd().includes('semcore')) {
   config.path = path.resolve(process.cwd(), '../../.env');
 }
 
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 require('dotenv').config(config);
 
 const DEFAULT_OPTIONS = { selector: '#root' };

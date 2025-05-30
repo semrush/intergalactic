@@ -34,9 +34,9 @@ export const runPublisher = async (versionPatches: VersionPatch[]) => {
     commitMessage += ' versions of ';
   }
   commitMessage += versionPatches.map((patch) => `${patch.package.name}@${patch.to}`).join(', ');
-  let pnpmOptions = process.argv.includes('--dry-run')
-    ? '--dry-run --no-git-checks'
-    : '--no-git-checks';
+  let pnpmOptions = process.argv.includes('--dry-run') ?
+    '--dry-run --no-git-checks' :
+    '--no-git-checks';
   const gitTags = versionPatches.map((patch) => `${patch.package.name}@${patch.to}`);
   const toPublish = versionPatches.filter((patch) => patch.needPublish);
 

@@ -16,7 +16,11 @@ export const PlaygroundWrapper: React.FC = () => {
         <div>To get started:</div>
         <ol>
           <li>
-            copy-paste <strong>./tools/playground/examples/index.tsx</strong> file
+            copy-paste
+            {' '}
+            <strong>./tools/playground/examples/index.tsx</strong>
+            {' '}
+            file
           </li>
           <li>rename it to anything meaninfgul</li>
           <li>
@@ -31,7 +35,11 @@ export const PlaygroundWrapper: React.FC = () => {
   if (!playgrounds[playground]) {
     return (
       <div>
-        Playground <strong>{playground}</strong> not found. Pick one in the list above or create new
+        Playground
+        {' '}
+        <strong>{playground}</strong>
+        {' '}
+        not found. Pick one in the list above or create new
       </div>
     );
   }
@@ -43,7 +51,11 @@ export const PlaygroundWrapper: React.FC = () => {
     console.log({ Playground });
     return (
       <div>
-        Playground <strong>{playground}</strong> has no function in default export (what we got see
+        Playground
+        {' '}
+        <strong>{playground}</strong>
+        {' '}
+        has no function in default export (what we got see
         in developer console)
       </div>
     );

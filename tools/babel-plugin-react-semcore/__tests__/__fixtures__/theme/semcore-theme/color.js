@@ -1,21 +1,21 @@
-"use strict";
+'use strict';
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+var _interopRequireDefault = require('@babel/runtime/helpers/interopRequireDefault');
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
+Object.defineProperty(exports, '__esModule', {
+  value: true,
 });
 
-exports["default"] = resolveColor;
+exports['default'] = resolveColor;
 
-var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
+var _slicedToArray2 = _interopRequireDefault(require('@babel/runtime/helpers/slicedToArray'));
 
-/*__semcore-vars__:"./var.css"*/
+/* __semcore-vars__:"./var.css" */
 
 /* @ts-ignore */
 var COLORS = {
-  "cyan": "#00b0ed",
-  "green": "#4fae33",
+  cyan: '#00b0ed',
+  green: '#4fae33',
 };
 
 function resolveColor(color) {
@@ -27,4 +27,4 @@ function resolveColor(color) {
 
   return color;
 }
-//# sourceMappingURL=color.js.map
+// # sourceMappingURL=color.js.map

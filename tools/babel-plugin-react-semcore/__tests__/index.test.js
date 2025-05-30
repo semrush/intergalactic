@@ -15,7 +15,7 @@ pluginTester({
   filename: __filename,
   tests: [
     {
-      title: "Doesn't change code",
+      title: 'Doesn\'t change code',
       fixture: absolutePath('__fixtures__/theme/unchanged/index.js'),
       outputFixture: absolutePath('__fixtures__/theme/unchanged/index.expected.js'),
       findPackage,

@@ -15,9 +15,9 @@ export const esbuildPluginPlaygroundsLoader = (playgroundsDir: string): Plugin =
         playgroundNames
           .map((name, index) => `import playground_${index} from "./${name}";`)
           .join('\n') +
-        '\nexport const playgrounds = {\n' +
-        playgroundNames.map((name, index) => `["${name}"]: playground_${index} `).join(',\n') +
-        '\n}';
+          '\nexport const playgrounds = {\n' +
+          playgroundNames.map((name, index) => `["${name}"]: playground_${index} `).join(',\n') +
+          '\n}';
 
       return {
         contents: playgroundExportFileContent,

@@ -19,7 +19,7 @@ const babelTransform = async (contents: string, path: string) => {
       },
       (error: any, result: any) => {
         if (error) reject(error);
-        else resolve(result?.code!);
+        else resolve(result?.code);
       },
     ),
   );

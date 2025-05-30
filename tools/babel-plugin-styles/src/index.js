@@ -133,9 +133,9 @@ function StylesPlugin({ types: t }, opts) {
                     acc.push(t.SpreadElement(attr.argument));
                   }
                   if (t.isJSXAttribute(attr)) {
-                    const value = t.isJSXExpressionContainer(attr.value)
-                      ? attr.value.expression
-                      : attr.value;
+                    const value = t.isJSXExpressionContainer(attr.value) ?
+                      attr.value.expression :
+                      attr.value;
                     acc.push(
                       t.ObjectProperty(
                         t.StringLiteral(getAttrKey(attr.name)),

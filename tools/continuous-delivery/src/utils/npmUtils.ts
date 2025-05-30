@@ -9,9 +9,9 @@ export class NpmUtils {
       return;
     }
 
-    let pnpmOptions = process.argv.includes('--dry-run')
-      ? '--dry-run --no-git-checks'
-      : '--no-git-checks';
+    let pnpmOptions = process.argv.includes('--dry-run') ?
+      '--dry-run --no-git-checks' :
+      '--no-git-checks';
 
     const hasSemcoreUi = packages.some((pack) => pack === '@semcore/ui');
     const nonSemcoreUiPatches = packages.filter((pack) => pack !== '@semcore/ui');

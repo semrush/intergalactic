@@ -32,6 +32,7 @@ export const skipButtonComboboxDiscernibleErrors = (v: axe.Result) => {
 };
 
 // biome-ignore lint/correctness/noEmptyPattern:
+// eslint-disable-next-line no-empty-pattern
 const beforeEachTests = async ({}, use: () => Promise<void>, testInfo: TestInfo) => {
   let layer = 'Other tests';
   const testFilePath = testInfo.file.split('/');

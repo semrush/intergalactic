@@ -6,13 +6,13 @@ import { fileURLToPath } from 'url';
 
 type VersionPatch =
   | {
-      name: string; // @semcore/COMPONENT from package.json
-      version: string;
-    }
+    name: string; // @semcore/COMPONENT from package.json
+    version: string;
+  }
   | {
-      name: string;
-      prerelease: string;
-    };
+    name: string;
+    prerelease: string;
+  };
 
 const dirname = resolveDirname(fileURLToPath(import.meta.url));
 

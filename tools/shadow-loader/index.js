@@ -104,7 +104,7 @@ async function loader(source) {
         queue.push(
           writeModule(
             filepath,
-            code.replace(/\\"/g, '"').replace(/\\'/g, "'").replace(/\\n/g, '\n'),
+            code.replace(/\\"/g, '"').replace(/\\'/g, '\'').replace(/\\n/g, '\n'),
           ),
         );
         const [requirePath] = filepath.split('node_modules/').slice(-1);
@@ -122,7 +122,7 @@ async function loader(source) {
     });
   await Promise.all(queue);
   // sourcemap breaks the out code. That's why it's disabled :(
-  return [result /* , inputSourceMap */];
+  return [result/* , inputSourceMap */];
 }
 
 module.exports = makeLoader(loader);

@@ -19,6 +19,7 @@ beforeEach(async (context) => {
 export * from 'vitest';
 
 declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace jest {
     interface Matchers<R> {
       toHaveAttribute(name: string, value: string): R;

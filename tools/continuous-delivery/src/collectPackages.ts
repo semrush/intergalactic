@@ -69,9 +69,9 @@ export const collectPackages = async (inNpmVersions: {
   for (const { packageFile, changelogFile, changelogPath, packageFilePath, packagePath } of files) {
     if (packageFile.name === 'intergalactic') continue;
     const changelogs: Changelog[] =
-      packageFile.name === '@semcore/ui'
-        ? []
-        : componentChangelogParser(packageFile.name, changelogFile, changelogPath);
+      packageFile.name === '@semcore/ui' ?
+          [] :
+          componentChangelogParser(packageFile.name, changelogFile, changelogPath);
 
     const dependencies: Package['dependencies'] = {};
     for (const dependenciesType of ['dependencies', 'peerDependencies']) {
@@ -117,9 +117,9 @@ export const collectPackages = async (inNpmVersions: {
   for (const packageFile of packages) {
     const component = inNpmVersions[packageFile.name];
     if (component) {
-      packageFile.lastPublishedVersion = isValidSemver(component.version)
-        ? component.version
-        : null;
+      packageFile.lastPublishedVersion = isValidSemver(component.version) ?
+        component.version :
+        null;
     }
   }
 

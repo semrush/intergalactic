@@ -56,17 +56,17 @@ export const patchReleaseChangelog = async (
 
   const componentChangedVersionIncrements = componentChanges.flatMap((changelogs) =>
     changelogs.map(({ version, component }) => {
-      return previousDependencies[component]
-        ? (semver.diff(previousDependencies[component], version) as semver.ReleaseType)
-        : 'patch';
+      return previousDependencies[component] ?
+          (semver.diff(previousDependencies[component], version) as semver.ReleaseType) :
+        'patch';
     }),
   );
 
   const releaseIncrement = componentChangedVersionIncrements.reduce(
     (max, current) =>
-      orderedVersionIncrement.indexOf(current) < orderedVersionIncrement.indexOf(max)
-        ? current
-        : max,
+      orderedVersionIncrement.indexOf(current) < orderedVersionIncrement.indexOf(max) ?
+        current :
+        max,
     'patch' as semver.ReleaseType,
   );
 

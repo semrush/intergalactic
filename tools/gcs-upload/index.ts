@@ -46,15 +46,14 @@ export const getPackageData = async () => {
       `@semcore/gcs-upload package requires package.json file to be located in your current working directory. Trying to find ${packageJsonFilePath}`,
     );
   }
-  let { version, name } = await fs.readJson(packageJsonFilePath);
+  const { version, name } = await fs.readJson(packageJsonFilePath);
   if (!version || !name) {
     throw new Error(
       `@semcore/gcs-upload package requires local package.json file to contain fulfilled version and name fields. Failed to read them in ${packageJsonFilePath}`,
     );
   }
-  name = name.replace('@semcore/', '');
 
-  return { version, name };
+  return { version, name: name.replace('@semcore/', '') };
 };
 
 export const upload = async (
@@ -84,9 +83,9 @@ export const upload = async (
   await Promise.all(
     filePaths.map((filePath) =>
       limit(() => {
-        const fileName = uploadSrcBaseDir
-          ? path.relative(uploadSrcBaseDir, filePath)
-          : filePath.split('/').pop();
+        const fileName = uploadSrcBaseDir ?
+            path.relative(uploadSrcBaseDir, filePath) :
+            filePath.split('/').pop();
         const destination = [packageVersion, destinationSubDir, fileName]
           .filter((part) => part !== undefined)
           .join('/');
