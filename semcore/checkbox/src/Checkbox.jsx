@@ -86,11 +86,11 @@ class CheckboxRoot extends Component {
           'aria-describedby',
         ]}
       >
-        {hasChildren ?
-            (
+        {hasChildren
+          ? (
               <Children />
-            ) :
-            (
+            )
+          : (
               <>
                 <Checkbox.Value />
                 <Checkbox.Text />

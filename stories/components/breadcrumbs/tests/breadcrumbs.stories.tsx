@@ -5,7 +5,6 @@ import Breadcrumbs from '@semcore/breadcrumbs';
 import BaseTruncationExample from './examples/item-truncation';
 import CasesWithSeparatorAndActiveExample from './examples/edge-cases';
 
-
 const meta: Meta<typeof Breadcrumbs> = {
   title: 'Components/Breadcrumbs/Tests',
 };

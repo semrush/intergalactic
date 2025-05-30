@@ -68,11 +68,11 @@ class SpinContainerRoot extends Component {
 
     return sstyled(styles)(
       <SSpinContainer render={Box}>
-        {advancedMode ?
-            (
+        {advancedMode
+          ? (
               <Children />
-            ) :
-            (
+            )
+          : (
               <>
                 <SpinContainer.Content>
                   <Children />

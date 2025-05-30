@@ -25,7 +25,7 @@ const Demo = () => {
                 Domain.com Domain.com Domain.com Domain.com Domain.com Domain.com Domain.com
                 Domain.com Domain.com Domain.com
               </Ellipsis>
-              <ButtonLink addonLeft={EditM} aria-label={'Hint for button-link'} />
+              <ButtonLink addonLeft={EditM} aria-label='Hint for button-link' />
             </Text>
           </Title>
           <Header.Links>
@@ -42,7 +42,7 @@ const Demo = () => {
               </Info.Item.Label>
               <Select
                 id='select-location'
-                defaultValue={'us'}
+                defaultValue='us'
                 placeholder='Select option'
                 m='auto'
                 tag={LinkTrigger}
@@ -72,7 +72,7 @@ const Demo = () => {
               </Info.Item.Label>
               <Select
                 id='select-device'
-                defaultValue={'Desktop'}
+                defaultValue='Desktop'
                 placeholder='Select option'
                 m='auto'
                 tag={LinkTrigger}

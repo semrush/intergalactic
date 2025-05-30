@@ -7,7 +7,7 @@ import { AnimatedNumber } from '@semcore/counter';
 const notificationsCount = 18;
 
 const Demo = () => (
-  <Button title={'Notifications'} aria-describedby='notification-count'>
+  <Button title='Notifications' aria-describedby='notification-count'>
     <Button.Addon>
       <NotificationM />
       <Dot up>

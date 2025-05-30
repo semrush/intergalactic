@@ -9,42 +9,42 @@ const Demo = () => {
   return (
     <>
       <Flex columnGap={2} mb={4}>
-      <Ellipsis w={200}> cndskjnvd vnkfdlnbklfdnb bfndklbnkld</Ellipsis>
-<Link
-    href='#'
-    target='_blank'
-    rel='noreferrer'
-    addonLeft={VideoListL}
-    color='gray-300'
-    ml={1}
-    title = 'test'
-    />
+        <Ellipsis w={200}> cndskjnvd vnkfdlnbklfdnb bfndklbnkld</Ellipsis>
+        <Link
+          href='#'
+          target='_blank'
+          rel='noreferrer'
+          addonLeft={VideoListL}
+          color='gray-300'
+          ml={1}
+          title='test'
+        />
 
       </Flex>
       <Flex columnGap={2} mb={4}>
-      <Ellipsis w={200}> cndskjnvd vnkfdlnbklfdnb bfndklbnkld</Ellipsis>
-<Link
-    href='#'
-    target='_blank'
-    rel='noreferrer'
-    addonLeft={VideoListL}
-    color='gray-300'
-    ml={1}
-      title = 'test'
-    />
+        <Ellipsis w={200}> cndskjnvd vnkfdlnbklfdnb bfndklbnkld</Ellipsis>
+        <Link
+          href='#'
+          target='_blank'
+          rel='noreferrer'
+          addonLeft={VideoListL}
+          color='gray-300'
+          ml={1}
+          title='test'
+        />
 
       </Flex>
       <Flex columnGap={2} mb={4}>
-      <Ellipsis w={200}> cndskjnvd vnkfdlnbklfdnb bfndklbnkld</Ellipsis>
-<Link
-    href='#'
-    target='_blank'
-    rel='noreferrer'
-    addonLeft={VideoListL}
-    color='gray-300'
-    ml={1}
-      title = 'test'
-    />
+        <Ellipsis w={200}> cndskjnvd vnkfdlnbklfdnb bfndklbnkld</Ellipsis>
+        <Link
+          href='#'
+          target='_blank'
+          rel='noreferrer'
+          addonLeft={VideoListL}
+          color='gray-300'
+          ml={1}
+          title='test'
+        />
 
       </Flex>
     </>
@@ -52,5 +52,3 @@ const Demo = () => {
 };
 
 export default Demo;
-
-

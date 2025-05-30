@@ -6,7 +6,6 @@ import SizesExample from './examples/illustration_sizes';
 import { CheckButtonsIllustrations } from './__tests__/all-allustrations-test.test';
 import { playWrapper } from '../../../utils/playWrapper';
 
-
 const meta: Meta = {
   title: 'Components/Illustration/Tests',
 };

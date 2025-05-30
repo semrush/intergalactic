@@ -9,5 +9,4 @@ export async function CustomHeaderTest({ canvasElement }: { canvasElement: HTMLE
   }
 
   await userEvent.click(triggers);
-
 }

@@ -20,9 +20,9 @@ const Demo = () => {
       <NeighborLocation tag={Flex} role='group' aria-label='wrapped secondary buttons'>
         <Button>First</Button>
         <Input w={200}>
-          <Input.Value placeholder='Placeholder' aria-label={'input example'} />
+          <Input.Value placeholder='Placeholder' aria-label='input example' />
           <Input.Addon>
-            <Hint title={'Test hint'} tag={ButtonLink} use='secondary' addonLeft={ShowYesM} />
+            <Hint title='Test hint' tag={ButtonLink} use='secondary' addonLeft={ShowYesM} />
           </Input.Addon>
         </Input>
         <Button>Middle</Button>
@@ -37,7 +37,7 @@ const Demo = () => {
         />
         <Button>Last</Button>
         <Input w={100}>
-          <Input.Value placeholder='Placeholder' aria-label={'input example2'} />
+          <Input.Value placeholder='Placeholder' aria-label='input example2' />
         </Input>
       </NeighborLocation>
     </>

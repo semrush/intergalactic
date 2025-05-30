@@ -4,7 +4,7 @@ import Spin from '@semcore/spin';
 const Demo = () => {
   return (
     <>
-    <div style={{ display: 'flex', width: 200, height: 200 }}>
+      <div style={{ display: 'flex', width: 200, height: 200 }}>
         <Spin centered />
       </div>
     </>

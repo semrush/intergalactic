@@ -132,9 +132,9 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
     if (color.split(', ').length === 2) {
       const baseColor = resolveColor(color.split(', ')[0]);
       const [r, g, b] = (
-        baseColor.length === 4 ?
-            [baseColor[1], baseColor[2], baseColor[3]] :
-            [baseColor.substring(1, 3), baseColor.substring(3, 5), baseColor.substring(5, 7)]
+        baseColor.length === 4
+          ? [baseColor[1], baseColor[2], baseColor[3]]
+          : [baseColor.substring(1, 3), baseColor.substring(3, 5), baseColor.substring(5, 7)]
       ).map((chunk) => Number.parseInt(chunk, 16));
       const a = Number.parseFloat(color.split(', ')[1]);
 

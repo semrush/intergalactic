@@ -144,9 +144,9 @@ class RootSelect extends AbstractDropdown {
       'aria-haspopup': isMenu ? 'listbox' : 'dialog',
       'aria-disabled': disabled ? 'true' : 'false',
       'aria-activedescendant':
-        visible && highlightedIndex !== null && this.itemRefs[highlightedIndex] ?
-          `igc-${uid}-option-${highlightedIndex}` :
-          undefined,
+        visible && highlightedIndex !== null && this.itemRefs[highlightedIndex]
+          ? `igc-${uid}-option-${highlightedIndex}`
+          : undefined,
       'empty': isEmptyValue(value),
       value,
       name,
@@ -239,13 +239,13 @@ class RootSelect extends AbstractDropdown {
         return acc;
       }, []);
     }
-    return Array.isArray(value) ?
-        value.reduce((acc, value) => {
+    return Array.isArray(value)
+      ? value.reduce((acc, value) => {
           if (acc.length) acc.push(', ');
           acc.push(value);
           return acc;
-        }, []) :
-      value;
+        }, [])
+      : value;
   }
 
   bindHandlerOptionClick = (optionValue, _index) => (e) => {
@@ -356,13 +356,13 @@ function Option(props) {
   return sstyled(styles)(
     <SSelectOption render={Dropdown.Item}>
       <optionPropsContext.Provider value={props}>
-        {hasCheckbox && !hasContent ?
-            (
+        {hasCheckbox && !hasContent
+          ? (
               <Select.Option.Content>
                 <Children />
               </Select.Option.Content>
-            ) :
-            (
+            )
+          : (
               <Children />
             )}
       </optionPropsContext.Provider>

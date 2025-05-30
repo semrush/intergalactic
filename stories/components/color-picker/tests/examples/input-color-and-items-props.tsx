@@ -84,21 +84,21 @@ const Demo = () => {
             </PaletteManager.Colors>
 
             <PaletteManager.InputColor
-              defaultValue="#ABCDEF"
+              defaultValue='#ABCDEF'
               ref={inputRef}
-              //disabled
+              // disabled
               onAdd={handleAdd}
-              size="l"
-              state="normal"
+              size='l'
+              state='normal'
               colors={customColors}
             />
             <PaletteManager.InputColor
-              defaultValue="#ABCDEF"
+              defaultValue='#ABCDEF'
               ref={inputRef}
               disabled
               onAdd={handleAdd}
-              size="l"
-              state="normal"
+              size='l'
+              state='normal'
               colors={customColors}
             />
           </PaletteManager>

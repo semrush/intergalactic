@@ -5,7 +5,7 @@ const Demo = () => {
   return (
     <DataTable
       data={data}
-      aria-label={'Parent'}
+      aria-label='Parent'
       columns={[
         { name: 'keyword', children: 'Keyword' },
         { name: 'kd', children: 'KD %' },

@@ -4,7 +4,6 @@ import Link from '@semcore/link';
 import Dot from '@semcore/dot';
 
 const Demo = () => {
-
   return (
     <Flex direction='row' gap={4} w={150}>
       <Link>
@@ -18,7 +17,7 @@ const Demo = () => {
       </Link>
 
       <Link>
-         Dot value Up
+        Dot value Up
         <Dot up aria-label='Value'>
           12
         </Dot>
@@ -31,7 +30,7 @@ const Demo = () => {
       <Link>
         Link Dot L
         <Dot size='l' aria-label='L size' />
-      </ Link>
+      </Link>
       <Link>
         Link Dot M
         <Dot size='m' aria-label='M size' />

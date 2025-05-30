@@ -24,7 +24,9 @@ const Example = () => {
       <Text tag='h3' mb={2}>
         <InlineEdit editable={editingTitle} onEditableChange={setEditingTitle}>
           <InlineEdit.View pr={5}>
-            {title} <EditM ml={1} />
+            {title}
+            {' '}
+            <EditM ml={1} />
           </InlineEdit.View>
           <InlineEdit.Edit>
             <InlineInput onConfirm={handleTitle} onCancel={stopEditing} loading={savingTitle}>

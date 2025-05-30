@@ -1,4 +1,3 @@
-
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { DataTable } from '@semcore/data-table';
@@ -9,7 +8,6 @@ import EmptyStateSortableExample from './examples/table-states-tests/empty-sorta
 import LoadingWithScrollAndButtonExample from './examples/table-states-tests/loading-with-button-and-scroll';
 import WidgetEmptyInCellExample from './examples/table-states-tests/widget-empty-in-cell';
 import NothingFoundExample from './examples/table-states-tests/nothing-found';
-
 
 const meta: Meta<typeof DataTable> = {
   title: 'Components/DataTable/Tests/TableStates',

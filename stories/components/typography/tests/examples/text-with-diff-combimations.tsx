@@ -4,7 +4,7 @@ import { Text } from '@semcore/typography';
 
 const Demo = () => (
   <>
-    <Text fontSize='10px' mb={2} >Tiny text 10px</Text>
+    <Text fontSize='10px' mb={2}>Tiny text 10px</Text>
     <br />
     <Text fontSize='20px'>Larger text 20px</Text>
     <br />
@@ -15,25 +15,25 @@ const Demo = () => (
     <br />
     <Text inline fontWeight={100}>fontWeight = 100 text </Text>
     <br />
-    <Text inline fontWeight={900} mb={3} > fontWeight = 900 text</Text>
+    <Text inline fontWeight={900} mb={3}> fontWeight = 900 text</Text>
     <br />
 
     <Text>Normal text</Text>
     <br />
     <Text use='primary'>Use primary</Text>
     <br />
-    <Text inline use='secondary' mb={2} >Use secondary</Text>
+    <Text inline use='secondary' mb={2}>Use secondary</Text>
     <br />
     <div style={{ width: 200 }}>
       <Text inline textAlign='left'>Left-aligned text example</Text>
     </div>
     <div style={{ width: 200 }}>
-      <Text w={200} inline textAlign='center'  >
+      <Text w={200} inline textAlign='center'>
         Centered text example
       </Text>
     </div>
     <div style={{ width: 200 }}>
-      <Text w={200} inline textAlign='right' >
+      <Text w={200} inline textAlign='right'>
         Right-aligned text example
       </Text>
     </div>

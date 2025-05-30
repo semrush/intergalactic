@@ -25,5 +25,3 @@ export const CustomBackground: Story = {
 export const Sizes: Story = {
   render: SizesExample,
 };
-
-

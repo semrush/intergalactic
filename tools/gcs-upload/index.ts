@@ -83,9 +83,9 @@ export const upload = async (
   await Promise.all(
     filePaths.map((filePath) =>
       limit(() => {
-        const fileName = uploadSrcBaseDir ?
-            path.relative(uploadSrcBaseDir, filePath) :
-            filePath.split('/').pop();
+        const fileName = uploadSrcBaseDir
+          ? path.relative(uploadSrcBaseDir, filePath)
+          : filePath.split('/').pop();
         const destination = [packageVersion, destinationSubDir, fileName]
           .filter((part) => part !== undefined)
           .join('/');

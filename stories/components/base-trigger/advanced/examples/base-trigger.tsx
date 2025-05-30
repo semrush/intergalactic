@@ -26,7 +26,7 @@ const Demo = () => (
 
     <BaseTrigger aria-label='base trigger'>
       <BaseTrigger.Text>Button</BaseTrigger.Text>
-      <BaseTrigger.Addon tag={ChevronDownM}/>
+      <BaseTrigger.Addon tag={ChevronDownM} />
     </BaseTrigger>
 
     <Dropdown>

@@ -12,12 +12,16 @@ const Demo = () => {
           <Accordion.Item.Toggle pb={2}>
             <Accordion.Item.ToggleButton>
               <Accordion.Item.Chevron mr={2} />
-              Section {index + 1}
+              Section
+              {' '}
+              {index + 1}
             </Accordion.Item.ToggleButton>
           </Accordion.Item.Toggle>
           <Accordion.Item.Collapse preserveNode>
             <Box p='12px 24px 24px'>
-              {`Hello Section ${index + 1}`} <a href={'#'}>Some focusable link in content</a>
+              {`Hello Section ${index + 1}`}
+              {' '}
+              <a href='#'>Some focusable link in content</a>
             </Box>
           </Accordion.Item.Collapse>
         </Accordion.Item>

@@ -199,8 +199,8 @@ const PlaygroundView = ({ result, source, widgetControls }) => {
           </div>
         )}
       </div>
-      {hasWidget ?
-          (
+      {hasWidget
+        ? (
             <div
               className={`${styles.widgetsBar} playground-widgets-bar`}
               role='group'
@@ -214,8 +214,8 @@ const PlaygroundView = ({ result, source, widgetControls }) => {
                 );
               })}
             </div>
-          ) :
-        null}
+          )
+        : null}
     </div>
   );
 };

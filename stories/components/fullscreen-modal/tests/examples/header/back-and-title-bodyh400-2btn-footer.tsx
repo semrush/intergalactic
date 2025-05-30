@@ -18,8 +18,9 @@ const Demo = () => {
       <FullscreenModal disablePortal visible={visible} onClose={() => setVisible(false)}>
 
         <FullscreenModal.Header>
-          <FullscreenModal.Back w={200} >Go to Tool Name long long long name </FullscreenModal.Back>
-          <FullscreenModal.Title >Go to Tool Name Go to Tool Name
+          <FullscreenModal.Back w={200}>Go to Tool Name long long long name </FullscreenModal.Back>
+          <FullscreenModal.Title>
+            Go to Tool Name Go to Tool Name
             DescriptionTooltip:
             <DescriptionTooltip>
               <DescriptionTooltip.Trigger
@@ -30,7 +31,10 @@ const Demo = () => {
               />
               <DescriptionTooltip.Popper aria-label='About fastest animals'>
                 <Text tag='p' mb={3}>
-                  The <Link href='https://en.wikipedia.org/wiki/Peregrine_falcon'>peregrine falcon</Link>{' '}
+                  The
+                  {' '}
+                  <Link href='https://en.wikipedia.org/wiki/Peregrine_falcon'>peregrine falcon</Link>
+                  {' '}
                   is the fastest bird, and the fastest member of the animal kingdom, with a diving speed
                   of over 300 km/h (190 mph).
                 </Text>
@@ -41,10 +45,9 @@ const Demo = () => {
               </DescriptionTooltip.Popper>
             </DescriptionTooltip>
 
-
           </FullscreenModal.Title>
-        </FullscreenModal.Header >
-        <FullscreenModal.Body h={400} >
+        </FullscreenModal.Header>
+        <FullscreenModal.Body h={400}>
           <FullscreenModal.Section>
             <Text>Content Title</Text>
           </FullscreenModal.Section>

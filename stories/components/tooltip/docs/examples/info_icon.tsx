@@ -7,7 +7,7 @@ const Demo = () => {
     <Tooltip>
       <Tooltip.Trigger
         tag={IconInfo}
-        color={'--intergalactic-icon-secondary-neutral'}
+        color='--intergalactic-icon-secondary-neutral'
         interactive={true}
         aria-label='Hint'
       />

@@ -43,9 +43,9 @@ const Demo = () => {
       // need this for FF
       tabIndex={-1}
       wMax={800}
-      h={'100%'}
+      h='100%'
       hMax={400}
-      style={{ overflow: 'auto', scrollPaddingTop: !!selectedRows.length ? '44px' : undefined }}
+      style={{ overflow: 'auto', scrollPaddingTop: selectedRows.length ? '44px' : undefined }}
     >
       <ScreenReaderOnly role='status' aria-live='polite'>
         {ariaMessage}
@@ -67,7 +67,9 @@ const Demo = () => {
           }}
         >
           <Text size={200}>
-            Selected rows: <Text bold>{selectedRowsDisplay}</Text>
+            Selected rows:
+            {' '}
+            <Text bold>{selectedRowsDisplay}</Text>
           </Text>
           <Button use='tertiary' onClick={handleDeselectAll}>
             Deselect all
@@ -76,8 +78,8 @@ const Demo = () => {
       </Collapse>
       <DataTable
         data={data}
-        aria-label={'Table example with selectable rows'}
-        defaultGridTemplateColumnWidth={'auto'}
+        aria-label='Table example with selectable rows'
+        defaultGridTemplateColumnWidth='auto'
         selectedRows={selectedRows}
         onSelectedRowsChange={handleChangeSelectedRows}
         ref={tableRef}

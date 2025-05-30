@@ -39,12 +39,15 @@ const Demo = () => (
     <Flex gap={4} alignItems='center'>
       DescriptionTooltip:
       <DescriptionTooltip>
-        <DescriptionTooltip.Trigger tag={ButtonLink} use={'secondary'}>
+        <DescriptionTooltip.Trigger tag={ButtonLink} use='secondary'>
           About fastest animals
         </DescriptionTooltip.Trigger>
         <DescriptionTooltip.Popper aria-label='About fastest animals'>
           <Text tag='p' mb={3}>
-            The <Link href='https://en.wikipedia.org/wiki/Peregrine_falcon'>peregrine falcon</Link>{' '}
+            The
+            {' '}
+            <Link href='https://en.wikipedia.org/wiki/Peregrine_falcon'>peregrine falcon</Link>
+            {' '}
             is the fastest bird, and the fastest member of the animal kingdom, with a diving speed
             of over 300 km/h (190 mph).
           </Text>
@@ -64,8 +67,10 @@ const Demo = () => (
         <DescriptionTooltip.Popper aria-label='About peregrine falcon'>
           <Text tag='p' mb={3}>
             The peregrine falcon is the fastest aerial animal, fastest animal in flight, fastest
-            bird, and the overall fastest member of the{' '}
-            <Link href='https://en.wikipedia.org/wiki/Animal'>animal kingdom</Link>.
+            bird, and the overall fastest member of the
+            {' '}
+            <Link href='https://en.wikipedia.org/wiki/Animal'>animal kingdom</Link>
+            .
           </Text>
           <Text tag='p'>
             The peregrine achieves its highest velocity not in horizontal level flight, but during

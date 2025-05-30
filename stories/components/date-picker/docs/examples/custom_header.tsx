@@ -21,8 +21,7 @@ const Demo = () => {
                   : new Intl.DateTimeFormat('en-US', {
                       month: 'short',
                       year: 'numeric',
-                    }).format(displayedPeriod)
-              }
+                    }).format(displayedPeriod)}
             </DatePicker.Title>
             <DatePicker.Next />
           </DatePicker.Header>

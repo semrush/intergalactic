@@ -1,6 +1,4 @@
-
 import type { Meta, StoryObj } from '@storybook/react';
-
 
 import InteractiveHeaderExample from './examples/header-tests/table-with-1tf-and diff-elements';
 import HeaderContentExample from './examples/header-tests/header-content';
@@ -10,7 +8,6 @@ import MultiLevelInteractiveExample from './examples/header-tests/multi-level-wi
 import SecondarySortingExample from './examples/header-tests/secondary-sorting';
 import SecondaryHeaderExample from './examples/header-tests/secondary-header';
 import MultiLevelExample from './examples/header-tests/multi-level-header';
-
 
 const meta: Meta = {
   title: 'Components/DataTable/Tests/Header',
@@ -26,7 +23,6 @@ export const SecondaryHeader: Story = {
 export const MultiLevelInteractive: Story = {
   render: MultiLevelInteractiveExample,
 };
-
 
 export const SecondarySorting: Story = {
   render: SecondarySortingExample,
@@ -51,4 +47,3 @@ export const MultiLevelSticky: Story = {
 export const MultiLevelBorders: Story = {
   render: MultiLevelExample,
 };
-

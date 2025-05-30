@@ -13,7 +13,7 @@ const Demo = () => {
   return (
     <label>
       <div>Label</div>
-      <Select placeholder={'Select something'} options={options} disablePortal />
+      <Select placeholder='Select something' options={options} disablePortal />
     </label>
   );
 };

@@ -24,11 +24,11 @@ const config: StorybookConfig = {
           output: {
             assetFileNames: 'assets/[hash][extname]',
             chunkFileNames: '[hash].js',
-            entryFileNames: '[hash].js'
-          }
-        }
-      }
-    })
-  }
+            entryFileNames: '[hash].js',
+          },
+        },
+      },
+    });
+  },
 };
 export default config;

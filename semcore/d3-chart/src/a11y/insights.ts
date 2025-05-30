@@ -240,9 +240,9 @@ export const extractDataInsights = (
             const trendStrength = trendStrengths[i];
             if (tang <= config.trendTangens[trendStrength] || i === trendStrengths.length - 1) {
               const strength =
-                value.to > value.from ?
-                  strengthsMap.growth[trendStrength] :
-                  strengthsMap.reduction[trendStrength];
+                value.to > value.from
+                  ? strengthsMap.growth[trendStrength]
+                  : strengthsMap.reduction[trendStrength];
 
               return {
                 type,

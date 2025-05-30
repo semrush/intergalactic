@@ -137,11 +137,11 @@ class HeadRoot<D extends DataTableData> extends Component<
             </SHeadCheckboxCol>
           )}
 
-          {children ?
-              (
+          {children
+            ? (
                 <Children />
-              ) :
-              (
+              )
+            : (
                 <>
                   {treeColumns.map((column, _i) => {
                     if ('columns' in column) {

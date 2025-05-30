@@ -7,7 +7,6 @@ import DotLinkExample from './examples/different-sizes-and-positions-link';
 import DotPillExample from './examples/different-sizes-and-positions-pill';
 import LinkTriggerExample from './examples/different-sizes-and-positions copy';
 
-
 const meta: Meta<typeof Dot> = {
   title: 'Components/Dot/Tests',
   component: Dot,

@@ -7,8 +7,8 @@ const Demo = () => (
   <Tooltip>
     <Tooltip.Trigger tag={ButtonLink}>Colored tooltip</Tooltip.Trigger>
     <Tooltip.Popper
-      arrowBgColor={'bg-primary-advertising'}
-      arrowShadowColor={'border-tooltip-invert'}
+      arrowBgColor='bg-primary-advertising'
+      arrowShadowColor='border-tooltip-invert'
       p={0}
     >
       <Box

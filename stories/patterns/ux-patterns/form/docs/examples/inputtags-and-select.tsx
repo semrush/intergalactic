@@ -38,7 +38,7 @@ const Demo = () => {
   const handleAppendTags = (newTags: string[]) => {
     const tags = getValues('emails');
     if (newTags.some((tag) => !isEmailValid(tag))) {
-      setError('emails', { message: "Email isn't valid" });
+      setError('emails', { message: 'Email isn\'t valid' });
       return;
     }
     if (tags.length + newTags.length > 5) {
@@ -51,7 +51,7 @@ const Demo = () => {
 
   const handleInputBlur = (e: React.FocusEvent<HTMLInputElement>) => {
     if (e.target.value && !isEmailValid(e.target.value)) {
-      setError('emails', { message: "Email isn't valid" });
+      setError('emails', { message: 'Email isn\'t valid' });
     }
     setIsFocused(false);
   };
@@ -124,7 +124,9 @@ const Demo = () => {
                 ml={1}
                 size='xl'
                 theme={tags.length < 5 ? '' : 'warning'}
-              >{`${tags.length}/5`}</Counter>
+              >
+                {`${tags.length}/5`}
+              </Counter>
             </Flex>
             <Tooltip
               interaction='none'

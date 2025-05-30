@@ -17,8 +17,8 @@ const Demo = () => {
     <>
       <DataTable
         data={tableData}
-        aria-label={'Pagination'}
-        h={'auto'}
+        aria-label='Pagination'
+        h='auto'
         columns={[
           { name: 'keyword', children: 'Keyword', justifyContent: 'left' },
           {

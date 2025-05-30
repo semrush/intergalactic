@@ -22,7 +22,7 @@ const Demo = () => (
           color='icon-secondary-neutral'
           aria-label='Additional info'
         />
-        <DescriptionTooltip.Popper aria-label={'Additional info about checkbox item'}>
+        <DescriptionTooltip.Popper aria-label='Additional info about checkbox item'>
           Place an additional information here!
         </DescriptionTooltip.Popper>
       </DescriptionTooltip>

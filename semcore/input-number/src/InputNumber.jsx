@@ -145,9 +145,9 @@ class Value extends Component {
 
   round(value, step) {
     const countDecimals = Math.floor(step) === step ? 0 : step.toString().split('.')[1].length || 0;
-    return countDecimals === 0 ?
-        Number.Number.parseFloat(value) :
-        Number.Number.parseFloat(value).toPrecision(countDecimals);
+    return countDecimals === 0
+      ? Number.Number.parseFloat(value)
+      : Number.Number.parseFloat(value).toPrecision(countDecimals);
   }
 
   handleValidation = (event) => {
@@ -338,9 +338,9 @@ class Value extends Component {
     const nextPosition = element.selectionStart - 1 >= 0 ? element.selectionStart - 1 : 0;
 
     const cursorPosition =
-      value[element.selectionStart - cursorIndex] === this.separatorThousands ?
-        element.selectionStart - cursorIndex :
-        nextPosition;
+      value[element.selectionStart - cursorIndex] === this.separatorThousands
+        ? element.selectionStart - cursorIndex
+        : nextPosition;
 
     if (this.cursorPosition === -1) {
       // without shift
@@ -354,9 +354,9 @@ class Value extends Component {
       } else {
         element.setSelectionRange(
           element.selectionStart,
-          value[element.selectionEnd - cursorIndex] === this.separatorThousands ?
-            element.selectionEnd - cursorIndex :
-            element.selectionEnd - 1,
+          value[element.selectionEnd - cursorIndex] === this.separatorThousands
+            ? element.selectionEnd - cursorIndex
+            : element.selectionEnd - 1,
         );
       }
     }
@@ -367,9 +367,9 @@ class Value extends Component {
     const nextPosition = element.selectionEnd + 1;
 
     const cursorPosition =
-      value[element.selectionEnd] === this.separatorThousands ?
-        element.selectionEnd + cursorIndex :
-        nextPosition;
+      value[element.selectionEnd] === this.separatorThousands
+        ? element.selectionEnd + cursorIndex
+        : nextPosition;
 
     if (this.cursorPosition === -1) {
       // without shift
@@ -382,9 +382,9 @@ class Value extends Component {
         element.setSelectionRange(element.selectionStart, cursorPosition);
       } else {
         element.setSelectionRange(
-          value[element.selectionStart] === this.separatorThousands ?
-            element.selectionStart + cursorIndex :
-            element.selectionStart + 1,
+          value[element.selectionStart] === this.separatorThousands
+            ? element.selectionStart + cursorIndex
+            : element.selectionStart + 1,
           element.selectionEnd,
         );
       }

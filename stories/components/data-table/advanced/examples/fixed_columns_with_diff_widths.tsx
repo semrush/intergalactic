@@ -21,19 +21,22 @@ export default function App() {
 
   return (
     <Box w={800}>
-      <DataTable data={data} aria-label={'Table with fixed columns'} w={'700px'}
+      <DataTable
+        data={data}
+        aria-label='Table with fixed columns'
+        w='700px'
         columns={[
-            {name: 'col_1', children: 'Column 1', fixed: 'left', borders: 'both', gtcWidth: '100px'},
-            {name: 'col_2', children: 'Column 2', borders: 'both', gtcWidth: '100px'},
-            {name: 'col_3', children: 'Column 3', borders: 'both', gtcWidth: '100px'},
-            {name: 'col_4', children: 'Column 4', borders: 'both', gtcWidth: '100px'},
-            {name: 'col_5', children: 'Column 5', borders: 'both', gtcWidth: '100px'},
-            {name: 'col_6', children: 'Column 6', borders: 'both', gtcWidth: '100px'},
-            {name: 'col_7', children: 'Column 7', borders: 'both', gtcWidth: '100px'},
+          { name: 'col_1', children: 'Column 1', fixed: 'left', borders: 'both', gtcWidth: '100px' },
+          { name: 'col_2', children: 'Column 2', borders: 'both', gtcWidth: '100px' },
+          { name: 'col_3', children: 'Column 3', borders: 'both', gtcWidth: '100px' },
+          { name: 'col_4', children: 'Column 4', borders: 'both', gtcWidth: '100px' },
+          { name: 'col_5', children: 'Column 5', borders: 'both', gtcWidth: '100px' },
+          { name: 'col_6', children: 'Column 6', borders: 'both', gtcWidth: '100px' },
+          { name: 'col_7', children: 'Column 7', borders: 'both', gtcWidth: '100px' },
 
-            {name: 'col_8', children: 'Column 8', fixed: 'right', borders: 'both', gtcWidth: '75px'},
-            {name: 'col_9', children: 'Column 9', fixed: 'right', borders: 'both', gtcWidth: '125px'},
-            {name: 'col_10', children: 'Column 10', fixed: 'right', borders: 'both', gtcWidth: '100px'},
+          { name: 'col_8', children: 'Column 8', fixed: 'right', borders: 'both', gtcWidth: '75px' },
+          { name: 'col_9', children: 'Column 9', fixed: 'right', borders: 'both', gtcWidth: '125px' },
+          { name: 'col_10', children: 'Column 10', fixed: 'right', borders: 'both', gtcWidth: '100px' },
         ]}
       />
     </Box>

@@ -5,7 +5,7 @@ const Demo = () => {
   return (
     <DataTable
       data={data}
-      aria-label={'Fixed columns'}
+      aria-label='Fixed columns'
       wMax={800}
       hMax={400}
       headerProps={{ sticky: true }}

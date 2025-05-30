@@ -106,7 +106,7 @@ const Filter = React.forwardRef(
               theme='muted'
               addonLeft={TrashM}
               onClick={handleRemove}
-              title={'Remove condition'}
+              title='Remove condition'
               hintPlacement='right'
               ml={-2}
             />
@@ -214,7 +214,9 @@ const Demo = () => {
           <FilterTrigger.Text aria-hidden>Advanced filters</FilterTrigger.Text>
           {!!savedFilters.length && (
             <FilterTrigger.Counter>
-              {savedFilters.length} <ScreenReaderOnly>applied</ScreenReaderOnly>
+              {savedFilters.length}
+              {' '}
+              <ScreenReaderOnly>applied</ScreenReaderOnly>
             </FilterTrigger.Counter>
           )}
         </FilterTrigger.TriggerButton>

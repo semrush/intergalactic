@@ -3,7 +3,7 @@ import React from 'react';
 import Illustrations from '../../../../../website/docs/style/illustration/illustrations.jsx';
 
 const Demo = () => (
-    <Illustrations/>
+  <Illustrations />
 );
 
 export default Demo;

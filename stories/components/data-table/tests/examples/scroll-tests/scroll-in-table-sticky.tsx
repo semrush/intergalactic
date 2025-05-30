@@ -5,7 +5,7 @@ const Demo = () => {
   return (
     <DataTable
       data={data}
-      aria-label="Scroll inside"
+      aria-label='Scroll inside'
       wMax={800}
       hMax={200}
       headerProps={{ sticky: true }}

@@ -19,22 +19,25 @@ const Demo = () => {
 
   return (
     <>
-      <DataTable data={data} aria-label={'Table title'}  h={'auto'}
+      <DataTable
+        data={data}
+        aria-label='Table title'
+        h='auto'
         columns={[
-          {name: 'fruit', children: 'Fruit'},
-          {name: 'quantity', children: 'Quantity'},
+          { name: 'fruit', children: 'Fruit' },
+          { name: 'quantity', children: 'Quantity' },
         ]}
-                 renderCell={(props) => {
-                   if (props.columnName === 'quantity') {
-                     return (
-                         <div role='status' aria-live='polite'>
-                           {props.value}
-                         </div>
-                     );
-                   }
+        renderCell={(props) => {
+          if (props.columnName === 'quantity') {
+            return (
+              <div role='status' aria-live='polite'>
+                {props.value}
+              </div>
+            );
+          }
 
-                   return props.defaultRender();
-                 }}
+          return props.defaultRender();
+        }}
       />
       <Button onClick={() => setLoading(!loading)} mt={3}>
         {loading ? 'Stop loading' : 'Start loading'}

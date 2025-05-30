@@ -9,5 +9,4 @@ export async function DateRangeComparatorAdvancedTest({ canvasElement }: { canva
   }
 
   await userEvent.click(triggers);
-
 }

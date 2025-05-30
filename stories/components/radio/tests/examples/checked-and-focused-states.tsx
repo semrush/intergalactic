@@ -11,29 +11,29 @@ const Demo = () => {
       </Radio>
       <Radio disabled>
         <Radio.Value checked />
-        <Radio.Text >checked disabled</Radio.Text>
+        <Radio.Text>checked disabled</Radio.Text>
       </Radio>
       <Radio state='invalid'>
         <Radio.Value checked />
-        <Radio.Text >invalid focused checked </Radio.Text>
+        <Radio.Text>invalid focused checked </Radio.Text>
       </Radio>
       <Radio state='invalid' disabled>
         <Radio.Value checked />
-        <Radio.Text >invalid focused checked disabled</Radio.Text>
+        <Radio.Text>invalid focused checked disabled</Radio.Text>
       </Radio>
 
       <Radio state='invalid'>
         <Radio.Value checked />
-        <Radio.Text >invalid checked </Radio.Text>
+        <Radio.Text>invalid checked </Radio.Text>
       </Radio>
 
       <Radio theme='yellow-400'>
         <Radio.Value checked />
-        <Radio.Text >theme checked </Radio.Text>
+        <Radio.Text>theme checked </Radio.Text>
       </Radio>
       <Radio theme='yellow-400' size='l'>
         <Radio.Value checked />
-        <Radio.Text >theme checked L</Radio.Text>
+        <Radio.Text>theme checked L</Radio.Text>
       </Radio>
     </Flex>
   );

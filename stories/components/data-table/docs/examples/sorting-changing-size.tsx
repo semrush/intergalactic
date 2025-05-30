@@ -28,7 +28,7 @@ const Demo = () => {
       data={sortedData}
       sort={sort}
       onSortChange={setSort}
-      aria-label={'Expanding sortable column'}
+      aria-label='Expanding sortable column'
       columns={[
         { name: 'keyword', children: 'Keyword', justifyContent: 'left', sortable: true },
         {

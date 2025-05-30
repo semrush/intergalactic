@@ -7,7 +7,7 @@ import {
 const Demo = () => {
   return (
     <>
-       <Card mb={5}>
+      <Card mb={5}>
         <Card.Header>
           <Card.Title>ScatterPlotChart skeleton</Card.Title>
         </Card.Header>

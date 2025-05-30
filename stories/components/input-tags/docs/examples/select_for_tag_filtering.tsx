@@ -92,18 +92,23 @@ const Demo = () => {
             </Select.Option>
           ))}
           {tagsFilter.length !== 0 && valueInput !== '' && (
-            <ScreenReaderOnly id='search-result' aria-hidden={'true'}>
-              {tagsFilter.length} result{tagsFilter.length > 1 && 's'} found
+            <ScreenReaderOnly id='search-result' aria-hidden='true'>
+              {tagsFilter.length}
+              {' '}
+              result
+              {tagsFilter.length > 1 && 's'}
+              {' '}
+              found
             </ScreenReaderOnly>
           )}
           {tagsFilter.length === 0 && valueInput !== '' && (
             <Text
-              tag={'div'}
+              tag='div'
               id='search-result'
               key='Nothing'
-              p={'6px 8px'}
+              p='6px 8px'
               size={200}
-              use={'secondary'}
+              use='secondary'
             >
               Nothing found
             </Text>

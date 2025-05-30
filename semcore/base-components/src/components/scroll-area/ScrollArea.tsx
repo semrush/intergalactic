@@ -358,11 +358,11 @@ class ScrollAreaRoot extends Component<ScrollAreaProps, {}, State, typeof Scroll
         onScroll={this.handleScroll}
         __excludeProps={['tabIndex']}
       >
-        {advancedMode ?
-            (
+        {advancedMode
+          ? (
               <Children />
-            ) :
-            (
+            )
+          : (
               <>
                 <ScrollArea.Container tabIndex={tabIndex}>
                   <Children />

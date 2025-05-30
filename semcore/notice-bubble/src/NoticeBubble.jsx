@@ -240,8 +240,8 @@ class ViewInfo extends Component {
           <Button.Addon tag={CloseIcon} color='icon-primary-invert' />
         </SDismiss>
 
-        {isNode(icon) ?
-            (
+        {isNode(icon)
+          ? (
               <>
                 <SIcon>{icon}</SIcon>
                 <SContent>
@@ -249,8 +249,8 @@ class ViewInfo extends Component {
                   {isNode(actionNode) ? <SAction>{actionNode}</SAction> : null}
                 </SContent>
               </>
-            ) :
-            (
+            )
+          : (
               <SContent>
                 <SMessage>{children}</SMessage>
                 {isNode(actionNode) ? <SAction>{actionNode}</SAction> : null}

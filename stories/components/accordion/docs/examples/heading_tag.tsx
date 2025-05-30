@@ -8,10 +8,12 @@ const Demo = () => {
     <Accordion value={value} onChange={onChange}>
       {[...new Array(3)].map((_, index) => (
         <Accordion.Item value={index} key={index} disabled={index === 2}>
-          <Accordion.Item.Toggle pb={2} tag={'h2'}>
+          <Accordion.Item.Toggle pb={2} tag='h2'>
             <Accordion.Item.ToggleButton>
               <Accordion.Item.Chevron mr={2} />
-              Section {index + 1}
+              Section
+              {' '}
+              {index + 1}
             </Accordion.Item.ToggleButton>
           </Accordion.Item.Toggle>
           <Accordion.Item.Collapse>

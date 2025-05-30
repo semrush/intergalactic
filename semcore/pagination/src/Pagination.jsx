@@ -215,15 +215,15 @@ class PaginationRoot extends Component {
         tag='nav'
         aria-label={getI18nText('pagination')}
       >
-        {hasChildren ?
-            (
+        {hasChildren
+          ? (
               <Children />
-            ) :
-            (
+            )
+          : (
               <>
-                {totalPages === 1 ?
-                  null :
-                    (
+                {totalPages === 1
+                  ? null
+                  : (
                       <Flex>
                         <Pagination.FirstPage />
                         <Pagination.PrevPage />
@@ -302,8 +302,8 @@ class TotalPages extends Component {
     return sstyled(styles)(
       <>
         <STotalPagesLabel size={textSize}>{getI18nText('totalPagesLabel')}</STotalPagesLabel>
-        {isLastOrSingle ?
-            (
+        {isLastOrSingle
+          ? (
               <STotalLastPages
                 size={textSize}
                 aria-label={getI18nText('lastPage', { lastPageNumber: totalPages })}
@@ -311,8 +311,8 @@ class TotalPages extends Component {
               >
                 {children}
               </STotalLastPages>
-            ) :
-            (
+            )
+          : (
               <STotalPages
                 render={ButtonLink}
                 aria-label={getI18nText('lastPage', { lastPageNumber: totalPages })}
@@ -359,11 +359,11 @@ class PageInput extends Component {
           controlsLength={Children.origin ? undefined : 2}
           locale={locale}
         >
-          {Children.origin ?
-              (
+          {Children.origin
+            ? (
                 <Children />
-              ) :
-              (
+              )
+            : (
                 <Pagination.PageInput.Value id={`pagination-input-${uid}`} />
               )}
         </SPageInput>

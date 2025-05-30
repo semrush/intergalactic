@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import FeedbackRatingWithTitleAndSubtitleExample from './examples/with-title-and-subtitle';
 import WithErrorOnSendExample from './examples/with-error-on-send';
 
-import {WithErrorTest } from './__tests__/with-error.test';
+import { WithErrorTest } from './__tests__/with-error.test';
 import { playWrapper } from '../../../../utils/playWrapper';
 
 const meta: Meta = {

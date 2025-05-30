@@ -1,7 +1,7 @@
 import React from 'react';
 import InlineInput from '@semcore/inline-input';
 import InlineEdit from '@semcore/inline-edit';
-import {TagContainer} from '@semcore/tag';
+import { TagContainer } from '@semcore/tag';
 
 const Demo = () => {
   const [value, setValue] = React.useState('Default tag');
@@ -23,7 +23,7 @@ const Demo = () => {
   return (
     <>
       <InlineEdit editable={editable} onEditableChange={setEditable}>
-        <InlineEdit.View pr={2} tag={TagContainer} interactive size='l' role={''} tabIndex={-1} onFocus={handleTagContainerFocus}>
+        <InlineEdit.View pr={2} tag={TagContainer} interactive size='l' role='' tabIndex={-1} onFocus={handleTagContainerFocus}>
           <TagContainer.Tag ref={tagRef}>{value}</TagContainer.Tag>
           <TagContainer.Close onClick={(e: React.SyntheticEvent) => e.stopPropagation()} />
         </InlineEdit.View>

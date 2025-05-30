@@ -211,9 +211,9 @@ class RootEllipsis extends Component<AsProps> {
     const tooltipProps = pick(this.asProps, includeTooltipProps as any) as TooltipProps;
 
     tooltipProps.visible = tooltipProps.visible ?? visible;
-    tooltipProps.onVisibleChange = tooltipProps.onVisibleChange ?
-        callAllEventHandlers(tooltipProps.onVisibleChange, this.handlerVisibleChange) :
-      this.handlerVisibleChange;
+    tooltipProps.onVisibleChange = tooltipProps.onVisibleChange
+      ? callAllEventHandlers(tooltipProps.onVisibleChange, this.handlerVisibleChange)
+      : this.handlerVisibleChange;
 
     if (trim === 'middle') {
       return sstyled(styles)(
@@ -240,11 +240,11 @@ class RootEllipsis extends Component<AsProps> {
           {...tooltipProps}
           {...(advanceMode ? forcedAdvancedMode : noAdvancedMode)}
         >
-          {advanceMode ?
-              (
+          {advanceMode
+            ? (
                 <Children />
-              ) :
-              (
+              )
+            : (
                 <SEllipsis render={Box} ref={this.textRef} maxLine={maxLine} {...other}>
                   <Children />
                 </SEllipsis>
@@ -254,11 +254,11 @@ class RootEllipsis extends Component<AsProps> {
     }
     return sstyled(styles)(
       <SNoTooltipContainer>
-        {advanceMode ?
-            (
+        {advanceMode
+          ? (
               <Children />
-            ) :
-            (
+            )
+          : (
               <SEllipsis render={Box} ref={this.textRef} maxLine={maxLine} {...other}>
                 <Children />
               </SEllipsis>

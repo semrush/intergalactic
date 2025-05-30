@@ -51,9 +51,9 @@ export const makeVersionPatches = (packages: Package[]) => {
     if (!lastChangelog) continue;
 
     const newVersion =
-      packageFile.lastPublishedVersion === null ?
-        packageFile.currentVersion :
-          maxSemver(packageFile.currentVersion, packageFile.lastPublishedVersion);
+      packageFile.lastPublishedVersion === null
+        ? packageFile.currentVersion
+        : maxSemver(packageFile.currentVersion, packageFile.lastPublishedVersion);
     const hasNewerVersion = semver.compare(newVersion, lastChangelog.version) === -1;
 
     if (!hasNewerVersion) continue;
@@ -126,9 +126,9 @@ export const makeVersionPatches = (packages: Package[]) => {
         const versionBase = semver.compare(
           packageFile.currentVersion,
           packageFile.lastPublishedVersion ?? packageFile.currentVersion,
-        ) ?
-          packageFile.currentVersion :
-          packageFile.lastPublishedVersion ?? packageFile.currentVersion;
+        )
+          ? packageFile.currentVersion
+          : packageFile.lastPublishedVersion ?? packageFile.currentVersion;
 
         const version = semver.inc(versionBase, updateType || updateTypeFallback)!;
         const updateTypeLabel = updateType || updateTypeFallback;

@@ -5,7 +5,7 @@ const Demo = () => {
   return (
     <DataTable
       data={data}
-      aria-label={'Scroll inside'}
+      aria-label='Scroll inside'
       hMax={200}
       wMax={400}
       columns={[

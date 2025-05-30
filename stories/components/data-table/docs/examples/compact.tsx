@@ -6,7 +6,7 @@ const Demo = () => {
     <DataTable
       data={data}
       compact
-      aria-label={'Compact'}
+      aria-label='Compact'
       columns={[
         { name: 'keyword', children: 'Keyword', gtcWidth: 'max-content' },
         { name: 'kd', children: 'KD %', gtcWidth: 'max-content' },

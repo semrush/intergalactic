@@ -10,7 +10,6 @@ import DDTriggerPopperExample from './examples/dd-trigger-and-popper';
 import DDInputTriggerFocusExample from './examples/dd-input-trigger-focus';
 import DDInputTriggerExample from './examples/dd-input-trigger';
 
-
 const meta: Meta<typeof Dropdown> = {
   title: 'Components/Dropdown/Tests',
   component: Dropdown,

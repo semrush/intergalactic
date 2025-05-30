@@ -9,23 +9,25 @@ const Demo = () => {
     <Flex direction='row' gap={6} alignItems='flex-start' justifyContent='space-between'>
       <Box style={{ flex: '1 1 45%', minWidth: '45%' }}>
         <Error
-          description={
+          description={(
             <>
-              Please try again later. If the problem persists, contact us at{' '}
+              Please try again later. If the problem persists, contact us at
+              {' '}
               <Link href='mailto:mail@semrush.com'>mail@semrush.com</Link>
             </>
-          }
+          )}
         />
         <Error />
 
         <Error
           icon={getIconPath('good')}
-          description={
+          description={(
             <>
-              Please try again later. If the problem persists, contact us at{' '}
+              Please try again later. If the problem persists, contact us at
+              {' '}
               <Button>mail@semrush.com</Button>
             </>
-          }
+          )}
         />
       </Box>
       <Box style={{ flex: '1 1 45%', minWidth: '45%' }}>
@@ -37,15 +39,17 @@ const Demo = () => {
           </Box>
         </Error>
 
-        <Error>NoData</Error>;
+        <Error>NoData</Error>
+        ;
         <Error
           icon={getIconPath('good')}
-          description={
+          description={(
             <>
-              Please try again later. If the problem persists, contact us at{' '}
+              Please try again later. If the problem persists, contact us at
+              {' '}
               <ButtonLink>mail@semrush.com</ButtonLink>
             </>
-          }
+          )}
         />
       </Box>
     </Flex>

@@ -4,12 +4,12 @@ import { curveCardinal } from 'd3-shape';
 
 const formatDate = (type: 'axis' | 'tooltip') => (value) => {
   const options =
-    type === 'axis' ?
-        {
+    type === 'axis'
+      ? {
           month: 'short' as const,
           day: 'numeric' as const,
-        } :
-        {
+        }
+      : {
           year: 'numeric' as const,
           month: 'long' as const,
           day: 'numeric' as const,

@@ -142,9 +142,9 @@ const useFocusLockHook = (
         if (!trapRef.current) return;
         const currentFocusMaster = focusMastersStack[focusMastersStack.length - 1];
         if (currentFocusMaster && currentFocusMaster !== trapRef.current) return;
-        const trapNodes = currentFocusMaster ?
-            [trapRef.current] :
-            [trapRef.current, ...focusLockAllTraps];
+        const trapNodes = currentFocusMaster
+          ? [trapRef.current]
+          : [trapRef.current, ...focusLockAllTraps];
         if (isFocusInside(trapNodes, focusMovedTo)) return;
         if (
           typeof returnFocusTo === 'object' &&

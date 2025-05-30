@@ -289,13 +289,13 @@ const AddFilterDropdownMenu = React.forwardRef<HTMLButtonElement, AddFilterDropd
 );
 
 function ClearAllFilters({ hasFilterData, clearAll, getI18nText }: ClearAllFiltersButtonProps) {
-  return hasFilterData ?
-      (
+  return hasFilterData
+    ? (
         <Button use='tertiary' theme='muted' addonLeft={CloseM} ml='auto' onClick={clearAll}>
           {getI18nText('AddFilter.Button.Text')}
         </Button>
-      ) :
-    null;
+      )
+    : null;
 }
 
 const AddFilter: typeof AddFilterType = createComponent(RootAddFilter, {

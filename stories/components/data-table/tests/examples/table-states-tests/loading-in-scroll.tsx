@@ -5,26 +5,30 @@ const Demo = () => {
   return (
 
     <DataTable
-    data={data} aria-label={'Scroll inside'} loading wMax={800} hMax={200} 
-    columns={[
-      {
-        name: 'keyword',
-        children: 'keyword'
-      },
-      {
-        name: 'kd',
-        children: 'KD,%'
-      },
-      {
-        name: 'cpc',
-        children: 'CPC'
-      },
-      {
-        name: 'vol',
-        children: 'Vol.'
-      }
-    ]}
-/>
+      data={data}
+      aria-label='Scroll inside'
+      loading
+      wMax={800}
+      hMax={200}
+      columns={[
+        {
+          name: 'keyword',
+          children: 'keyword',
+        },
+        {
+          name: 'kd',
+          children: 'KD,%',
+        },
+        {
+          name: 'cpc',
+          children: 'CPC',
+        },
+        {
+          name: 'vol',
+          children: 'Vol.',
+        },
+      ]}
+    />
   );
 };
 

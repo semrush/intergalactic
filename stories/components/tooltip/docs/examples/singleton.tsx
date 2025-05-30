@@ -12,7 +12,14 @@ const tooltipIndexContext = React.createContext(0);
 
 const TooltipContent = () => {
   const tooltipIndex = React.useContext(tooltipIndexContext);
-  return <>Option {tooltipIndex} description</>;
+  return (
+    <>
+      Option
+      {tooltipIndex}
+      {' '}
+      description
+    </>
+  );
 };
 
 const SelectWithTooltip = React.memo(

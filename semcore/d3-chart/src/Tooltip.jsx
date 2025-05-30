@@ -120,11 +120,11 @@ class TooltipRoot extends Component {
             this.setPopperTrigger = setTrigger;
             this.popper = popper;
             this.popper.current?.update();
-            return advancedMode ?
-                (
+            return advancedMode
+              ? (
                   <Children />
-                ) :
-                (
+                )
+              : (
                   <>
                     {tag && <Tooltip.Trigger tag={tag} onClick={this.handleTriggerClick} />}
                     <Tooltip.Popper {...other}>{children}</Tooltip.Popper>
@@ -180,16 +180,16 @@ function Dot(props) {
   const SDotCircle = Box;
   return sstyled(styles)(
     <SDotGroup render={Box} __excludeProps={['data', 'scale']}>
-      {patterns ?
-          (
+      {patterns
+        ? (
             <SDot>
               <PatternSymbol
                 color={resolveColor(color ?? defaultColor)}
                 patternKey={color ?? defaultColor}
               />
             </SDot>
-          ) :
-          (
+          )
+        : (
             <SDot>
               <SDotCircle color={resolveColor(color ?? defaultColor)} />
             </SDot>

@@ -65,11 +65,11 @@ export default defineConfig({
       '.idea',
       '.git',
       '.cache',
-      'tools/*/__tests__/utils.ts'
+      'tools/*/__tests__/utils.ts',
     ],
     environment: 'jsdom',
     setupFiles: ['allure-vitest/setup', resolvePath(__dirname, 'tools/testing-utils/setupTests')],
-    reporters: ["default", new AllureReporter({})],
+    reporters: ['default', new AllureReporter({})],
   },
   define: {
     'globalThis.__intergalacticFlagsBaseUrl': '"https://static.semrush.com/ui-kit/flags/"',
@@ -77,6 +77,7 @@ export default defineConfig({
 });
 
 declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace jest {
     interface Matchers<R> {
       toMatchImageSnapshot(task: any, options: any): R;

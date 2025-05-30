@@ -7,7 +7,6 @@ import SizesExample from './examples/current-page-props';
 import CustomStylesExample from './examples/pages-and-input-custom-styles';
 import IntearctiveIconInInputExample from './examples/interactive-icon-in-input';
 
-
 const meta: Meta<typeof Pagination> = {
   title: 'Components/Pagination/Tests',
   component: Pagination,

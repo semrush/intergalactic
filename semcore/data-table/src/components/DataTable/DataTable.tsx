@@ -232,9 +232,9 @@ class DataTableRoot<D extends DataTableData> extends Component<
       totalRows: this.totalRows,
       selectedRows: selectedRows,
       onChangeSelectAll: (value, e) => {
-        const selectedRowsIndexes = value ?
-            new Array(this.totalRows).fill(undefined).map((_, i) => i) :
-            [];
+        const selectedRowsIndexes = value
+          ? new Array(this.totalRows).fill(undefined).map((_, i) => i)
+          : [];
         onSelectedRowsChange?.(selectedRowsIndexes, e);
       },
       getFixedStyle: this.getFixedStyle,
@@ -325,9 +325,9 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
     const { getI18nText } = this.asProps;
     const message = getI18nText(
-      selectedAll ?
-        'DataTable.allItemsSelected:aria-live' :
-        'DataTable.allItemsDeselected:aria-live',
+      selectedAll
+        ? 'DataTable.allItemsSelected:aria-live'
+        : 'DataTable.allItemsDeselected:aria-live',
     );
     this.setState({ selectAllMessage: message });
 
@@ -636,9 +636,9 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
     const width =
       w ??
-      (this.columns.some((c) => c.gtcWidth === 'auto' || c.gtcWidth === '1fr') ?
-        '100%' :
-        undefined);
+      (this.columns.some((c) => c.gtcWidth === 'auto' || c.gtcWidth === '1fr')
+        ? '100%'
+        : undefined);
 
     let gridTemplateRows: string | undefined = undefined;
 
@@ -709,11 +709,11 @@ class DataTableRoot<D extends DataTableData> extends Component<
             use:hMax={undefined}
             use:hMin={undefined}
           >
-            {children ?
-                (
+            {children
+              ? (
                   <Children />
-                ) :
-                (
+                )
+              : (
                   <>
                     <DataTableInternal.Head />
                     <DataTableInternal.Body />
@@ -858,13 +858,13 @@ class DataTableRoot<D extends DataTableData> extends Component<
       isLast?: boolean,
     ): DTColumn => {
       const leftBordersFromParent =
-        isFirst && (parent?.props.borders === 'both' || parent?.props.borders === 'left') ?
-          'left' :
-          undefined;
+        isFirst && (parent?.props.borders === 'both' || parent?.props.borders === 'left')
+          ? 'left'
+          : undefined;
       const rightBordersFromParent =
-        isLast && (parent?.props.borders === 'both' || parent?.props.borders === 'right') ?
-          'right' :
-          undefined;
+        isLast && (parent?.props.borders === 'both' || parent?.props.borders === 'right')
+          ? 'right'
+          : undefined;
 
       const column: DTColumn = {
         name: columnElement.props.name,

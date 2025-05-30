@@ -1,4 +1,3 @@
-
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { DataTable } from '@semcore/data-table';
@@ -29,7 +28,6 @@ const meta: Meta<typeof DataTable> = {
 export default meta;
 type Story = StoryObj<typeof DataTable>;
 
-
 export const AccordionWithChart: Story = {
   render: AccordionWithChartExample,
 };
@@ -37,7 +35,6 @@ export const AccordionWithChart: Story = {
 export const TableInTable: Story = {
   render: TableInTableExample,
 };
-
 
 export const Perform: Story = {
   render: PerformExample,
@@ -50,7 +47,6 @@ export const SecondarySorting: Story = {
 export const DDSelectInCell: Story = {
   render: DDSelectInCellExample,
 };
-
 
 export const LoadingScroll: Story = {
   render: LoadingScrollExample,
@@ -80,7 +76,6 @@ export const InteractiveHeader: Story = {
   render: InteractiveHeaderExample,
 };
 
-
 export const HeaderContent: Story = {
   render: HeaderContentExample,
 };
@@ -88,7 +83,6 @@ export const HeaderContent: Story = {
 export const MultiLevelSorting: Story = {
   render: MultiLevelSortingExample,
 };
-
 
 export const MultipleScrolls: Story = {
   render: MultipleScrollsExample,
@@ -98,8 +92,6 @@ export const HorizontalScrollWithoutFixed: Story = {
   render: HorizontalScrollWithoutFixedExample,
 };
 
-
 export const MultiLevelBorders: Story = {
   render: MultiLevelExample,
 };
-

@@ -5,7 +5,7 @@ const Demo = () => {
   return (
     <DataTable
       data={data}
-      aria-label={'Column alignment'}
+      aria-label='Column alignment'
       columns={[
         { name: 'keyword', children: 'Keyword' },
         { name: 'kd', children: 'KD %', justifyContent: 'flex-end' },

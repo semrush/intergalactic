@@ -38,8 +38,7 @@ class SourceMapper {
             if (
               ts.isVariableDeclaration(declaration) &&
               declaration.type?.kind === ts.SyntaxKind.TypeReference &&
-              (declaration.type.getText() === 'Story' ||
-                declaration.type.getText() === 'StoryObj') &&
+              (declaration.type.getText() === 'Story' || declaration.type.getText() === 'StoryObj') &&
               declaration.initializer &&
               ts.isObjectLiteralExpression(declaration.initializer)
             ) {

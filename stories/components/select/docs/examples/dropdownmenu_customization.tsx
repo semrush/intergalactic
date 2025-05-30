@@ -21,7 +21,7 @@ const Demo = () => (
     </Text>
     <Select>
       <Select.Trigger mt={2} mr='auto' id='customized-dropdown-select' />
-      <Select.Popper aria-label={'Select with notice'}>
+      <Select.Popper aria-label='Select with notice'>
         <Select.List hMax='240px'>
           {options.map((option, index) => (
             <Select.Option value={option} key={index}>

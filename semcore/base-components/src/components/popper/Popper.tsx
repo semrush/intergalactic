@@ -206,9 +206,9 @@ class PopperRoot extends Component<PopperProps, {}, {}, typeof PopperRoot.enhanc
       (name) => optionsModifiers[name] !== undefined,
     ).map((name) => ({
       name,
-      options: isObject(optionsModifiers[name]) ?
-        optionsModifiers[name] :
-          { [name]: optionsModifiers[name] },
+      options: isObject(optionsModifiers[name])
+        ? optionsModifiers[name]
+        : { [name]: optionsModifiers[name] },
     }));
 
     modifiersOptions.push({
@@ -340,9 +340,9 @@ class PopperRoot extends Component<PopperProps, {}, {}, typeof PopperRoot.enhanc
       handlers[action] = this.bindHandlerChangeVisibleWithTimer(false, component, action);
     });
     crossEvents.forEach((action) => {
-      handlers[action] = visible ?
-          this.bindHandlerChangeVisibleWithTimer(false, component, action) :
-          this.bindHandlerChangeVisibleWithTimer(true, component, action);
+      handlers[action] = visible
+        ? this.bindHandlerChangeVisibleWithTimer(false, component, action)
+        : this.bindHandlerChangeVisibleWithTimer(true, component, action);
     });
     return handlers;
   }
@@ -564,8 +564,8 @@ class PopperRoot extends Component<PopperProps, {}, {}, typeof PopperRoot.enhanc
     const { Children, visible, root, onOutsideClick, excludeRefs = [] } = this.asProps;
     return (
       <>
-        {visible ?
-            (
+        {visible
+          ? (
               <OutsideClick
                 root={root}
                 excludeRefs={[this.triggerRef, this.popperRef, ...excludeRefs]}
@@ -574,8 +574,8 @@ class PopperRoot extends Component<PopperProps, {}, {}, typeof PopperRoot.enhanc
                   this.bindHandlerChangeVisibleWithTimer(false),
                 )}
               />
-            ) :
-          null}
+            )
+          : null}
         <Children />
       </>
     );

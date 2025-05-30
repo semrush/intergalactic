@@ -225,12 +225,12 @@ class TimePickerRoot extends Component {
     const { styles, Children, value, is12Hour, getI18nText, title } = this.asProps;
     const [hours, minutes] = this.valueToTime(this.value);
 
-    const label = value ?
-      `${title} ${getI18nText('title', {
+    const label = value
+      ? `${title} ${getI18nText('title', {
         time: `${hours}:${withLeadingZero(minutes)}`,
         meridiem: is12Hour ? this.meridiem : '',
-      })}` :
-      `${title} ${getI18nText('titleEmpty')}`;
+      })}`
+      : `${title} ${getI18nText('titleEmpty')}`;
 
     return sstyled(styles)(
       <>

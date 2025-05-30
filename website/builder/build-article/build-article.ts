@@ -658,9 +658,9 @@ export const buildArticle = async (
     .filter((token) => token !== null)
     .flat();
 
-  const sourcePath = relativePath.startsWith('./') ?
-      relativePath.substring('./'.length) :
-    relativePath;
+  const sourcePath = relativePath.startsWith('./')
+    ? relativePath.substring('./'.length)
+    : relativePath;
   const beta = Boolean(meta.beta);
 
   return {

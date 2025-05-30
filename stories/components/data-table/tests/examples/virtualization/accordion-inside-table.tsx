@@ -5,19 +5,24 @@ import { Plot, Line, XAxis, YAxis, ResponsiveContainer, minMax } from '@semcore/
 
 const Demo = () => {
   return (
-      <DataTable data={data} aria-label={'Accordion inside table'} h={'100%'} defaultGridTemplateColumnWidth={'1fr'} virtualScroll
-                 columns={[
-                   {name: 'keyword', children: 'Keyword', gtcWidth: 'minmax(60%, 80%)'},
-                   {
-                     children: 'Organic Sessions',
-                     borders: 'both',
-                     columns: [
-                       {name: 'kd', children: 'KD,%'},
-                       {name: 'cpc', children: 'CPC'},
-                       {name: 'vol', children: 'Vol.'},
-                     ]}
-                 ]}
-      />
+    <DataTable
+      data={data}
+      aria-label='Accordion inside table'
+      h='100%'
+      defaultGridTemplateColumnWidth='1fr'
+      virtualScroll
+      columns={[
+        { name: 'keyword', children: 'Keyword', gtcWidth: 'minmax(60%, 80%)' },
+        {
+          children: 'Organic Sessions',
+          borders: 'both',
+          columns: [
+            { name: 'kd', children: 'KD,%' },
+            { name: 'cpc', children: 'CPC' },
+            { name: 'vol', children: 'Vol.' },
+          ] },
+      ]}
+    />
   );
 };
 
@@ -42,7 +47,7 @@ const ChartExample = () => {
     .range([height - MARGIN, MARGIN])
     .domain([0, 10]);
   return (
-    <ResponsiveContainer h={300} onResize={setSize} style={{background: '#fff'}}>
+    <ResponsiveContainer h={300} onResize={setSize} style={{ background: '#fff' }}>
       <Plot data={dataChart} scale={[xScale, yScale]} width={width} height={height}>
         <YAxis>
           <YAxis.Ticks />
@@ -65,7 +70,7 @@ const data: DataTableData = [
     kd: '77.8',
     cpc: '$1.25',
     vol: '32,500,000',
-    [ACCORDION]: (<ChartExample/>),
+    [ACCORDION]: (<ChartExample />),
   },
   {
     keyword: 'www.ebay.com',
@@ -73,7 +78,7 @@ const data: DataTableData = [
     cpc: '$3.4',
     vol: {
       toString: () => '65,457,920',
-      [ACCORDION]: (<ChartExample/>),
+      [ACCORDION]: (<ChartExample />),
     },
   },
   {
@@ -81,82 +86,82 @@ const data: DataTableData = [
     kd: '10',
     cpc: '$0.65',
     vol: '47,354,640',
-    [ACCORDION]: (<ChartExample/>),
+    [ACCORDION]: (<ChartExample />),
   },
   {
     keyword: 'ebay buy',
     kd: '-',
     cpc: '$0',
     vol: 'n/a',
-    [ACCORDION]: (<ChartExample/>),
+    [ACCORDION]: (<ChartExample />),
   },
   {
     keyword: 'ebay buy',
     kd: '75.89',
     cpc: '$0',
     vol: '21,644,290',
-    [ACCORDION]: (<ChartExample/>),
+    [ACCORDION]: (<ChartExample />),
   },
   {
     keyword: 'www.ebay.com',
     kd: '10',
     cpc: '$0.65',
     vol: '47,354,640',
-    [ACCORDION]: (<ChartExample/>),
+    [ACCORDION]: (<ChartExample />),
   },
   {
     keyword: 'ebay buy',
     kd: '-',
     cpc: '$0',
     vol: 'n/a',
-    [ACCORDION]: (<ChartExample/>),
+    [ACCORDION]: (<ChartExample />),
   },
   {
     keyword: 'ebay buy',
     kd: '75.89',
     cpc: '$0',
     vol: '21,644,290',
-    [ACCORDION]: (<ChartExample/>),
-  },{
+    [ACCORDION]: (<ChartExample />),
+  }, {
     keyword: 'www.ebay.com',
     kd: '10',
     cpc: '$0.65',
     vol: '47,354,640',
-    [ACCORDION]: (<ChartExample/>),
+    [ACCORDION]: (<ChartExample />),
   },
   {
     keyword: 'ebay buy',
     kd: '-',
     cpc: '$0',
     vol: 'n/a',
-    [ACCORDION]: (<ChartExample/>),
+    [ACCORDION]: (<ChartExample />),
   },
   {
     keyword: 'ebay buy',
     kd: '75.89',
     cpc: '$0',
     vol: '21,644,290',
-    [ACCORDION]: (<ChartExample/>),
-  },{
+    [ACCORDION]: (<ChartExample />),
+  }, {
     keyword: 'www.ebay.com',
     kd: '10',
     cpc: '$0.65',
     vol: '47,354,640',
-    [ACCORDION]: (<ChartExample/>),
+    [ACCORDION]: (<ChartExample />),
   },
   {
     keyword: 'ebay buy',
     kd: '-',
     cpc: '$0',
     vol: 'n/a',
-    [ACCORDION]: (<ChartExample/>),
+    [ACCORDION]: (<ChartExample />),
   },
   {
     keyword: 'ebay buy',
     kd: '75.89',
     cpc: '$0',
     vol: '21,644,290',
-    [ACCORDION]: (<ChartExample/>),
+    [ACCORDION]: (<ChartExample />),
   },
 ];
 

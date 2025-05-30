@@ -8,25 +8,25 @@ import ManualTabActivationExample from './examples/manual_tab_activation';
 import TabLineItemAddonsExample from './examples/tab_line_item_addons';
 
 const meta: Meta<typeof TabLine> = {
-    title: 'Components/TabLine/Documentation',
-    component: TabLine,
+  title: 'Components/TabLine/Documentation',
+  component: TabLine,
 };
 
 export default meta;
 type Story = StoryObj<typeof TabLine>;
 
 export const AutomaticTabActivation: Story = {
-    render: AutomaticTabActivationExample,
+  render: AutomaticTabActivationExample,
 };
 
 export const DisabledTabLineItem: Story = {
-    render: DisabledTabLineItemExample,
+  render: DisabledTabLineItemExample,
 };
 
 export const ManualTabActivation: Story = {
-    render: ManualTabActivationExample,
+  render: ManualTabActivationExample,
 };
 
 export const TabLineItemAddons: Story = {
-    render: TabLineItemAddonsExample,
+  render: TabLineItemAddonsExample,
 };

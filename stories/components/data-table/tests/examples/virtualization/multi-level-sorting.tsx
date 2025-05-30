@@ -29,12 +29,12 @@ const Demo = () => {
 
   return (
     <DataTable
-    virtualScroll
-    aria-label='Borders'
-    defaultGridTemplateColumnWidth='1fr'
-    sort={sort}
-    onSortChange={setSort}
-    h='100%'
+      virtualScroll
+      aria-label='Borders'
+      defaultGridTemplateColumnWidth='1fr'
+      sort={sort}
+      onSortChange={setSort}
+      h='100%'
       data={sortedData}
       columns={[
         {
@@ -58,8 +58,7 @@ const Demo = () => {
         },
         { name: 'keyword', children: 'Keyword', sortable: true },
         {
-          children:  'Organic Sessions Organic Sessions Organic SessionsOrganic Sessions Organic Sessions Organic Sessions'   
-          ,
+          children: 'Organic Sessions Organic Sessions Organic SessionsOrganic Sessions Organic Sessions Organic Sessions',
           borders: 'both',
           columns: [
             {
@@ -97,7 +96,7 @@ const Demo = () => {
         },
         { name: 'other2', children: 'Other' },
       ]}
-     
+
     />
   );
 };

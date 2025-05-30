@@ -11,11 +11,9 @@ import TriggerExample from './examples/day-trigger';
 import MonthTriggerExample from './examples/month-trigger';
 import MonthRangeTriggerExample from './examples/month-range-trigger';
 
-
 import DateRandePickerPropsExample from './examples/day-range-picker';
 import DateRandePickerPeriodPropsExample from './examples/day-range-picker-perios-props';
 import DateRandeComparatorPropsExample from './examples/date-range-comparator-props';
-
 
 const meta: Meta = {
   title: 'Components/DatePicker/Tests',
@@ -29,7 +27,6 @@ export const CustomDateRanges: StoryObj = {
 export const DateRandeComparatorProps: StoryObj = {
   render: DateRandeComparatorPropsExample,
 };
-
 
 export const CustomDayFixedForTests: StoryObj = {
   render: CustomDayFixedForTestsExample,

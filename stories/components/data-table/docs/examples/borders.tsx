@@ -5,7 +5,7 @@ const Demo = () => {
   return (
     <DataTable
       data={data}
-      aria-label={'Borders'}
+      aria-label='Borders'
       headerProps={{
         sticky: true,
       }}

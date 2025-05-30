@@ -36,9 +36,9 @@ class HistogramChartComponent extends AbstractChart<
     }
 
     const testItem = data[0][groupKey];
-    const range = invertAxis ?
-        [plotHeight - marginX, this.plotPadding] :
-        [marginY, plotWidth - this.plotPadding];
+    const range = invertAxis
+      ? [plotHeight - marginX, this.plotPadding]
+      : [marginY, plotWidth - this.plotPadding];
 
     if (testItem instanceof Date && !Number.isNaN(testItem.getMilliseconds())) {
       const domain = minMax(data, groupKey);
@@ -90,9 +90,9 @@ class HistogramChartComponent extends AbstractChart<
       yScale ??
       scaleLinear()
         .range(
-          invertAxis ?
-              [marginY, plotWidth - this.plotPadding] :
-              [plotHeight - marginX, this.plotPadding],
+          invertAxis
+            ? [marginY, plotWidth - this.plotPadding]
+            : [plotHeight - marginX, this.plotPadding],
         )
         .domain([0, max])
     );

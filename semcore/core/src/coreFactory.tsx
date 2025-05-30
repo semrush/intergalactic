@@ -63,9 +63,9 @@ function createGetField(enhancements: any, Component: any, isFunction: boolean) 
 function createForwardWrapper(Component: any, wrapperProps: any, statics: any, isFunction: any) {
   const RootComponent = Component[ROOT_COMPONENT];
   const getterMethodName = getterMethodNameByDisplayName(Component?.displayName);
-  const getterMethod = RootComponent?.prototype ?
-    RootComponent.prototype[getterMethodName] :
-    undefined;
+  const getterMethod = RootComponent?.prototype
+    ? RootComponent.prototype[getterMethodName]
+    : undefined;
   const useGetterIndex = getterMethod?.length >= 2;
 
   function WrapperForwardRefWithBind({ forwardRef = null, ...other }, ref: any) {

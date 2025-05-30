@@ -5,7 +5,6 @@ import TextExample from './examples/different-types-states';
 import SliderWithOptionsExample from './examples/numeric_slider';
 import CustomizesOptionsViewExample from './examples/customized_options_view';
 
-
 const meta: Meta<typeof Slider> = {
   title: 'Components/Slider/Tests',
   component: Slider,

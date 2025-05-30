@@ -13,7 +13,13 @@ const Breakpoints = createBreakpoints(MEDIA);
 const Example = () => {
   const index = React.useContext(Breakpoints.Context);
 
-  return <div>Media matches "{(index !== undefined && MEDIA[index]) || 'ZOOM WINDOW'}"</div>;
+  return (
+    <div>
+      Media matches "
+      {(index !== undefined && MEDIA[index]) || 'ZOOM WINDOW'}
+      "
+    </div>
+  );
 };
 
 const Demo = () => {

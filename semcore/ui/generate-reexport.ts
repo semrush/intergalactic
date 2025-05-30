@@ -133,9 +133,9 @@ const GENERATOR = {
         const defaultExport = await hasExportDefault(
           `${utilsDistPath}/${utilNameWithoutExtention}`,
         );
-        const template = defaultExport ?
-          EXPORT_TEMPLATES[extension].LIB_DEFAULT :
-          EXPORT_TEMPLATES[extension].LIB_NAMED;
+        const template = defaultExport
+          ? EXPORT_TEMPLATES[extension].LIB_DEFAULT
+          : EXPORT_TEMPLATES[extension].LIB_NAMED;
 
         await fs.outputFile(
           `./${name}/${utilNameWithoutExtention}.${extension}`,
@@ -233,9 +233,9 @@ const GENERATOR = {
     const defaultExport = await hasExportDefault(dependency);
 
     for (const extension of exportExtensions) {
-      const template = defaultExport ?
-        EXPORT_TEMPLATES[extension].DEFAULT :
-        EXPORT_TEMPLATES[extension].NAMED;
+      const template = defaultExport
+        ? EXPORT_TEMPLATES[extension].DEFAULT
+        : EXPORT_TEMPLATES[extension].NAMED;
       await fs.outputFile(`./${name}/index.${extension}`, template(dependency));
     }
 

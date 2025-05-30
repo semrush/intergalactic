@@ -8,7 +8,7 @@ const Demo = () => {
   return (
     <>
       <Link addonLeft={HomeM} aria-label='Home page' href='#' />
-      <Link ml={4} href='#' tag={Hint} title={'Go to the next page'}>
+      <Link ml={4} href='#' tag={Hint} title='Go to the next page'>
         <Link.Addon>
           <LinkExternalM />
         </Link.Addon>

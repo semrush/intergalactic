@@ -10,7 +10,7 @@ const Demo = () => {
     <Flex flexWrap>
       {keys.map((name) => (
         <Flex direction='column' alignItems='center' p={5} key={name}>
-          <Flags name={name} mb={2}/>
+          <Flags name={name} mb={2} />
           <Text style={{ textAlign: 'center' }} noWrap w={160}>
             {iso2Name[name]}
           </Text>

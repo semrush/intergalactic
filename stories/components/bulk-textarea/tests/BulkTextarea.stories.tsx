@@ -11,7 +11,6 @@ import LinesAndIndexInPastePropsExample from './examples/test-lines-and-index-in
 import OnChangePropsExample from './examples/test-encode-onchange-array';
 import EmptyLineInPastePropsExample from './examples/test-empty-value-in-paste';
 
-
 const meta: Meta<typeof BulkTextarea> = {
   title: 'Components/BulkTextarea/Tests',
   component: BulkTextarea,

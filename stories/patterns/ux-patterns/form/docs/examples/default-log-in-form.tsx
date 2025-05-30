@@ -54,13 +54,15 @@ const FormControl = ({ name, type, options, autocomplete }: FormControlProps) =>
     onChange: (_v: string, e: React.SyntheticEvent) => {
       // important: keep call order, otherwise validation breaks
       onChange(e);
-      hasError() && trigger();
+      if (hasError()) {
+        trigger();
+      }
     },
     ...restField,
   };
 
   return (
-    <Tooltip placement='top' interaction={'none'} animationsDisabled>
+    <Tooltip placement='top' interaction='none' animationsDisabled>
       <Tooltip.Popper visible={showErrorTooltip()} id={`form-${name}-error`} theme='warning'>
         {showErrorTooltip() && (error?.message as any)}
       </Tooltip.Popper>

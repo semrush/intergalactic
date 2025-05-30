@@ -75,11 +75,11 @@ class InputSearchRoot extends Component {
 
     return sstyled(styles)(
       <SInputSearch size={size || this.context.size || 'm'} styles={styles}>
-        {hasChildren ?
-            (
+        {hasChildren
+          ? (
               <Children />
-            ) :
-            (
+            )
+          : (
               <>
                 <InputSearch.SearchIcon />
                 <Value render={InputSearch.Value} />

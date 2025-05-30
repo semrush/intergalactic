@@ -12,9 +12,9 @@ class AnimatedClipPath extends Component {
   render() {
     const { id, transition: _transition, tag: Tag, style: _style, className: _className, ...other } = this.asProps;
     const duration =
-      typeof this.asProps.duration === 'number' ?
-        `${this.asProps.duration}ms` :
-        this.asProps.duration;
+      typeof this.asProps.duration === 'number'
+        ? `${this.asProps.duration}ms`
+        : this.asProps.duration;
     return (
       <clipPath aria-hidden ref={this.refClipPath} id={id}>
         <rect x={0} y={0} width='100%' height='100%'>

@@ -6,7 +6,6 @@ import BloquoteExample from './examples/blockquote';
 import TextFontAndSizeExample from './examples/text-font-size-and-weight-headers-and-paragrapsh';
 import ListAxeExample from './examples/list-axe-test';
 
-
 const meta: Meta = {
   title: 'Components/Typography/Tests',
 };

@@ -120,11 +120,11 @@ class RootSidePanel extends Component {
 
     return (
       <Portal disablePortal={disablePortal} ignorePortalsStacking={ignorePortalsStacking}>
-        {this.isAdvanceMode() ?
-            (
+        {this.isAdvanceMode()
+          ? (
               <Children />
-            ) :
-            (
+            )
+          : (
               <SidePanel.Overlay>
                 <Root render={SidePanel.Panel} />
               </SidePanel.Overlay>
@@ -182,11 +182,11 @@ function Panel(props) {
         <ZIndexStackingContextProvider designToken='z-index-modal'>
           <PortalProvider value={sidebarRef}>
             {closable && <SidePanel.Close />}
-            {advancedMode ?
-                (
+            {advancedMode
+              ? (
                   <Children />
-                ) :
-                (
+                )
+              : (
                   <SidePanel.Body>
                     <Children />
                   </SidePanel.Body>

@@ -1,5 +1,5 @@
 import { PlaywrightTestConfig, devices } from '@playwright/test';
-import { testPlanFilter } from "allure-playwright/testplan";
+import { testPlanFilter } from 'allure-playwright/testplan';
 
 const config: PlaywrightTestConfig = {
   testMatch: /\.axe-test.ts(x){0,1}$/,

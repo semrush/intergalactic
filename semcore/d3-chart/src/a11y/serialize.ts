@@ -276,12 +276,12 @@ export const serialize = (
     const maxSize = clustersInsights[0].size;
     const minSize = clustersInsights[clustersInsights.length - 1].size;
     const entities =
-      maxSize === minSize ?
-          intl.formatMessage(
+      maxSize === minSize
+        ? intl.formatMessage(
             { id: 'entity-type-clusters-single-size' },
             { count: entitiesCount, size: maxSize },
-          ) :
-          intl.formatMessage(
+          )
+        : intl.formatMessage(
             { id: 'entity-type-clusters-multiple-size' },
             { count: entitiesCount, maxSize, minSize },
           );
@@ -354,12 +354,12 @@ export const serialize = (
     const maxValuesCount = Math.max(...valueCounts);
 
     const entities =
-      minValuesCount === maxValuesCount ?
-          intl.formatMessage(
+      minValuesCount === maxValuesCount
+        ? intl.formatMessage(
             { id: 'entity-type-grouped-values-single-size' },
             { groupsCount: groupInsights.length, valuesCount: valueCounts[0] },
-          ) :
-          intl.formatMessage(
+          )
+        : intl.formatMessage(
             { id: 'entity-type-grouped-values-multiple-size' },
             { groupsCount: groupInsights.length, minValuesCount, maxValuesCount },
           );

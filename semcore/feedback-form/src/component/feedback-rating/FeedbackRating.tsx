@@ -152,13 +152,13 @@ class FeedbackRatingRoot extends Component<
     const initialValue = this.props.initialValues[config.key];
 
     const label =
-      typeof config.label === 'string' ?
-          (
+      typeof config.label === 'string'
+        ? (
             <Text mb={2} size={200}>
               {config.label}
             </Text>
-          ) :
-          (
+          )
+        : (
             (config.label as unknown as JSX.Element)
           );
 
@@ -213,13 +213,13 @@ class FeedbackRatingRoot extends Component<
         </FeedbackRating.Item>
         {config.description && (
           <Box mt={2}>
-            {typeof config.description === 'string' || isDescriptionReactFragment ?
-                (
+            {typeof config.description === 'string' || isDescriptionReactFragment
+              ? (
                   <Text size={200} color='text-secondary' id={config.key + '-description'}>
                     {config.description}
                   </Text>
-                ) :
-                (
+                )
+              : (
                   config.description
                 )}
           </Box>
@@ -317,11 +317,11 @@ class FeedbackRatingRoot extends Component<
                     <SliderRating value={rating} readonly={true} />
                   </Flex>
 
-                  {(header as ReactElement)?.type === FeedbackRating.Header ?
-                      (
+                  {(header as ReactElement)?.type === FeedbackRating.Header
+                    ? (
                         header
-                      ) :
-                      (
+                      )
+                    : (
                         <FeedbackRating.Header>{header}</FeedbackRating.Header>
                       )}
 

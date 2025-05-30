@@ -37,14 +37,20 @@ const Demo = () => {
     }
     const [checked, unchecked] = options.reduce<[Option[], Option[]]>(
       (acc, o) => {
-        prevSelected.find((v) => v.value === o.value) ? acc[0].push(o) : acc[1].push(o);
+        if (prevSelected.some((v) => {
+          return v.value === o.value;
+        })) {
+          acc[0].push(o);
+        } else {
+          acc[1].push(o);
+        }
         return acc;
       },
       [[], []],
     );
     return [
       ...checked.map((props) => <Option key={props.value} {...props} />),
-      <Select.Divider />,
+      <Select.Divider key='divider' />,
       ...unchecked.map((props) => <Option key={props.value} {...props} />),
     ];
   };

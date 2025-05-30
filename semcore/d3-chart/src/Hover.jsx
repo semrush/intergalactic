@@ -93,8 +93,8 @@ class HoverLineRoot extends Hover {
 
     return sstyled(styles)(
       <>
-        {xIndex !== null ?
-            (
+        {xIndex !== null
+          ? (
               <SHoverLine
                 aria-hidden
                 render='line'
@@ -104,10 +104,10 @@ class HoverLineRoot extends Hover {
                 x2={x1}
                 y2={yRange[1]}
               />
-            ) :
-          null}
-        {yIndex !== null ?
-            (
+            )
+          : null}
+        {yIndex !== null
+          ? (
               <SHoverLine
                 aria-hidden
                 render='line'
@@ -117,8 +117,8 @@ class HoverLineRoot extends Hover {
                 x2={xRange[1]}
                 y2={y1}
               />
-            ) :
-          null}
+            )
+          : null}
       </>,
     );
   }
@@ -144,8 +144,8 @@ class HoverRectRoot extends Hover {
 
     return sstyled(styles)(
       <>
-        {xIndex !== null ?
-            (
+        {xIndex !== null
+          ? (
               <SHoverRect
                 aria-hidden
                 render='rect'
@@ -155,10 +155,10 @@ class HoverRectRoot extends Hover {
                 x={xScale(data[xIndex][x]) - (xBand.step() * xBand.paddingInner()) / 2}
                 y={yRange[1]}
               />
-            ) :
-          null}
-        {yIndex !== null ?
-            (
+            )
+          : null}
+        {yIndex !== null
+          ? (
               <SHoverRect
                 aria-hidden
                 render='rect'
@@ -168,8 +168,8 @@ class HoverRectRoot extends Hover {
                 x={xRange[0]}
                 y={yScale(data[yIndex][y]) - (yBand.step() * yBand.paddingInner()) / 2}
               />
-            ) :
-          null}
+            )
+          : null}
       </>,
     );
   }

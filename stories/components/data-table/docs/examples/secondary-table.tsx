@@ -7,7 +7,7 @@ const Demo = () => {
       data={data}
       use='secondary'
       sort={['kd', 'desc']}
-      aria-label={'Secondary'}
+      aria-label='Secondary'
       columns={[
         { name: 'keyword', children: 'Keyword' },
         { name: 'kd', children: 'KD %' },

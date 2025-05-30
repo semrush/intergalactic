@@ -143,11 +143,11 @@ class RootFilterTrigger extends Component {
         use:aria-labelledby={undefined}
       >
         <NeighborLocation>
-          {advancedMode ?
-              (
+          {advancedMode
+            ? (
                 <Children />
-              ) :
-              (
+              )
+            : (
                 <>
                   <FilterTrigger.TriggerButton>
                     <Children />
@@ -225,16 +225,16 @@ function Counter({ styles, Children, count, getI18nText }) {
   const SCounter = Root;
   return sstyled(styles)(
     <SCounter render={BaseTrigger.Addon} tag={Dot}>
-      {count !== undefined ?
-          (
+      {count !== undefined
+        ? (
             <>
               {count}
               <ScreenReaderOnly>
                 {getI18nText('BaseTrigger.FilterTrigger.Counter.selected:aria-label')}
               </ScreenReaderOnly>
             </>
-          ) :
-          (
+          )
+        : (
             <Children />
           )}
     </SCounter>,

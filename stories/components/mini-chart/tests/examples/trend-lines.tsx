@@ -10,10 +10,10 @@ const Demo = () => {
     <Flex id='mylabel'>
       <MiniChart.TrendLine data={data} aria-hidden />
       <MiniChart.TrendLine data={data} loading={true} aria-label='test' />
-      <MiniChart.TrendArea data={data} aria-labelledby={'mylabel'} />
-      <MiniChart.TrendArea data={data} loading={true} aria-describedby={'mylabel'} />
-      <MiniChart.TrendLine data={data} lastPointColor={'chart-palette-order-4'} />
-      <MiniChart.TrendArea data={data} lastPointColor={'chart-palette-order-7'} />
+      <MiniChart.TrendArea data={data} aria-labelledby='mylabel' />
+      <MiniChart.TrendArea data={data} loading={true} aria-describedby='mylabel' />
+      <MiniChart.TrendLine data={data} lastPointColor='chart-palette-order-4' />
+      <MiniChart.TrendArea data={data} lastPointColor='chart-palette-order-7' />
     </Flex>
   );
 };

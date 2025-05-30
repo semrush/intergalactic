@@ -7,7 +7,7 @@ const Demo = () => {
   return (
     <Flex role='group' aria-label='input with select'>
       <Input neighborLocation='right' w={200}>
-        <Input.Value placeholder='Placeholder' aria-label={'input example'} />
+        <Input.Value placeholder='Placeholder' aria-label='input example' />
       </Input>
       <Select
         aria-label='select example'

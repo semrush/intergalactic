@@ -7,8 +7,8 @@ const Demo = () => {
     <DropdownMenu>
       <DropdownMenu.Trigger tag={Button}>Explore menu items</DropdownMenu.Trigger>
       {/* Adding max-height to the dropdown menu */}
-      <DropdownMenu.Menu hMax={'180px'}>
-        <DropdownMenu.Group title={'List heading'} subTitle={'Subtitle'}>
+      <DropdownMenu.Menu hMax='180px'>
+        <DropdownMenu.Group title='List heading' subTitle='Subtitle'>
           <DropdownMenu.Item>Menu item 1</DropdownMenu.Item>
           <DropdownMenu.Item>Menu item 2</DropdownMenu.Item>
           <DropdownMenu.Item>Menu item 3</DropdownMenu.Item>

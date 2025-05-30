@@ -5,7 +5,8 @@ import Spin from '@semcore/spin';
 const Demo = () => {
   return (
     <>
-      <Button loading>Loading</Button>{' '}
+      <Button loading>Loading</Button>
+      {' '}
       <Button disabled>
         <Button.Addon>
           <Spin size='xs' />

@@ -23,7 +23,7 @@ const Demo = () => {
         </Button.Addon>
         <Button.Text>Export</Button.Text>
       </DropdownMenu.Trigger>
-      <DropdownMenu.Popper wMax='256px' aria-label={'Export options'}>
+      <DropdownMenu.Popper wMax='256px' aria-label='Export options'>
         <SpinContainer loading={loading}>
           <DropdownMenu.List>
             <DropdownMenu.Item onClick={handleClick}>Excel</DropdownMenu.Item>
@@ -46,7 +46,8 @@ const Demo = () => {
                 Export failed
               </Text>
               <Text>
-                If the problem persists, please contact us at{' '}
+                If the problem persists, please contact us at
+                {' '}
                 <Link inline href='mailto:feedback@semrush.com'>
                   feedback@semrush.com
                 </Link>

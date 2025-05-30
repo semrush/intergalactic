@@ -31,14 +31,11 @@ const Demo = () => (
       <BaseTrigger empty state='valid' placeholder='Placeholder' data-test-id='placeholder-trigger-state-valid'>Button with placeholder</BaseTrigger>
       <BaseTrigger empty state='invalid' placeholder='Placeholder' data-test-id='placeholder-trigger-state-invalid'>Button with placeholder</BaseTrigger>
 
-    
-    
-
     </Flex>
     <Flex gap={2} justifyContent='flex-start'>
       <BaseTrigger aria-label='base trigger' data-test-id='text-addon-trigger-1'>
         <BaseTrigger.Text>Base trigger.Text</BaseTrigger.Text>
-        <BaseTrigger.Addon tag={ChevronDownM}  />
+        <BaseTrigger.Addon tag={ChevronDownM} />
       </BaseTrigger>
       <BaseTrigger aria-label='base trigger' disabled data-test-id='text-addon-trigger-2'>
         <BaseTrigger.Text>Base trigger.Text</BaseTrigger.Text>
@@ -57,7 +54,7 @@ const Demo = () => (
           </BaseTrigger>
         </Dropdown.Trigger>
       </Dropdown>
-          </Flex>
+    </Flex>
   </Flex>
 );
 

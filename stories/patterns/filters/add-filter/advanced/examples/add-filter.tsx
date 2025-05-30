@@ -134,7 +134,7 @@ const AddFilterExample = () => {
           onChange={(v: string) => {
             setFilterData({ ...filterData, name: v });
           }}
-          placeholder={'Filter by name'}
+          placeholder='Filter by name'
         />
         {Boolean(filterData['name']) && (
           <Input.Addon>
@@ -154,16 +154,16 @@ const AddFilterExample = () => {
         <Select
           placeholder='Everywhere'
           options={selectOptions}
-          neighborLocation={'right'}
+          neighborLocation='right'
           value={filterData.searchFullnameOption}
           onChange={(v: any) => {
             setFilterData({ ...filterData, searchFullnameOption: v });
           }}
           w={120}
         />
-        <Input w={125} neighborLocation={'both'}>
+        <Input w={125} neighborLocation='both'>
           <Input.Value
-            placeholder={'Filter by fullname'}
+            placeholder='Filter by fullname'
             onChange={(v) => {
               setFilterData({ ...filterData, fullname: v });
             }}
@@ -184,7 +184,7 @@ const AddFilterExample = () => {
             </Input.Addon>
           )}
         </Input>
-        <Button neighborLocation={'left'}>
+        <Button neighborLocation='left'>
           <Button.Addon>
             <SearchM />
           </Button.Addon>
@@ -204,7 +204,9 @@ const AddFilterExample = () => {
             return clearField('size');
           }}
         >
-          {'Size'}: {filterData.size}
+          Size:
+          {' '}
+          {filterData.size}
         </Select.Trigger>
         <Select.Menu>
           {sizes.map((item, idx) => (
@@ -248,7 +250,7 @@ const AddFilterExample = () => {
         </AddFilter.Dropdown.Popper>
       </AddFilter.Dropdown>
 
-      <AddFilter.Input name={'position'} displayName={'Position'} w={160}>
+      <AddFilter.Input name='position' displayName='Position' w={160}>
         <AddFilter.Input.Addon>
           <SearchM />
         </AddFilter.Input.Addon>
@@ -257,7 +259,7 @@ const AddFilterExample = () => {
           onChange={(v) => {
             setFilterData({ ...filterData, position: v });
           }}
-          placeholder={'Filter by position'}
+          placeholder='Filter by position'
         />
         {Boolean(filterData['position']) && (
           <AddFilter.Input.Addon>
@@ -286,7 +288,9 @@ const AddFilterExample = () => {
             clearField('device');
           }}
         >
-          {'Device'}: {filterData.device}
+          Device:
+          {' '}
+          {filterData.device}
         </AddFilter.Select.Trigger>
         <AddFilter.Select.Menu>
           {devices.map((item, idx) => (

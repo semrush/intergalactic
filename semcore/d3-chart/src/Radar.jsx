@@ -441,11 +441,11 @@ class AxisRoot extends Component {
 
     return sstyled(styles)(
       <>
-        {type === 'circle' ?
-            (
+        {type === 'circle'
+          ? (
               <SAxis render='circle' cx={0} cy={0} r={radius} />
-            ) :
-            (
+            )
+          : (
               <SAxis render='path' d={this.createLineRadial(radius, total)(categories)} />
             )}
         {categories.map((_category, i) => {
@@ -467,11 +467,11 @@ function AxisTicks(props) {
   return ticks.map((tick, i) => {
     d3.radius(() => radius * tick);
     return sstyled(styles)(
-      type === 'circle' ?
-          (
+      type === 'circle'
+        ? (
             <SAxisTick key={i} render='circle' cx={0} cy={0} r={radius * tick} />
-          ) :
-          (
+          )
+        : (
             <SAxisTick render='path' key={i} d={d3(categories)} />
           ),
     );

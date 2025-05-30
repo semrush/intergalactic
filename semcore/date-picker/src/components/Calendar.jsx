@@ -291,18 +291,18 @@ class CalendarDaysRoot extends CalendarAbstract {
     const dateStartOfWeek = date
       .locale(locale, getDayJSLocaleParams(locale))
       .startOf('week')
-      .get('d') ?
-        (date.get('d') || 7) - 1 :
-        date.get('d');
+      .get('d')
+      ? (date.get('d') || 7) - 1
+      : date.get('d');
 
-    let prevMonthDays = dateStartOfWeek ?
-        range(prevDate.daysInMonth(), (i) => {
+    let prevMonthDays = dateStartOfWeek
+      ? range(prevDate.daysInMonth(), (i) => {
           const day = this.createUnit({ date: prevDate, outdated: true, i }, 'date');
           day.children = String(prevDate.get('date'));
           prevDate = prevDate.add(1, 'day');
           return day;
-        }).slice(-dateStartOfWeek) :
-        [];
+        }).slice(-dateStartOfWeek)
+      : [];
 
     const monthDays = range(date.daysInMonth(), (i) => {
       const day = this.createUnit({ date, i }, 'date');

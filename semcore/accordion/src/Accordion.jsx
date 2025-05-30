@@ -48,9 +48,9 @@ class RootAccordion extends Component {
 
   getItemProps({ value }) {
     const { value: selectedValue, duration, use } = this.asProps;
-    const selected = Array.isArray(selectedValue) ?
-        selectedValue.includes(value) :
-      selectedValue === value;
+    const selected = Array.isArray(selectedValue)
+      ? selectedValue.includes(value)
+      : selectedValue === value;
     return {
       selected,
       duration,

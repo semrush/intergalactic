@@ -9,7 +9,7 @@ const Demo = () => {
     <>
       <DataTable
         data={data}
-        aria-label={'Fixed header'}
+        aria-label='Fixed header'
         wMax={800}
         hMax={200}
         headerProps={{ sticky: true, top }}
@@ -23,7 +23,7 @@ const Demo = () => {
       <h4>With horizontal scroll</h4>
       <DataTable
         data={data}
-        aria-label={'Fixed header with scroll'}
+        aria-label='Fixed header with scroll'
         wMax={800}
         hMax={200}
         headerProps={{ sticky: true, top, withScrollBar: true }}

@@ -93,7 +93,7 @@ const Demo = () => {
               }, 1);
             }}
           >
-            <Select.Trigger aria-label={'Country code'}>
+            <Select.Trigger aria-label='Country code'>
               <Select.Trigger.Addon mx={0}>
                 <Flag role='img' iso2={country} aria-label={countries[country].name} />
               </Select.Trigger.Addon>

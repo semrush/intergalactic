@@ -204,11 +204,11 @@ class RootTagContainer extends Component {
 
     return sstyled(styles)(
       <STagContainer render={Box}>
-        {advancedMode ?
-            (
+        {advancedMode
+          ? (
               <Children />
-            ) :
-            (
+            )
+          : (
               <TagContainer.Tag>
                 <Children />
               </TagContainer.Tag>

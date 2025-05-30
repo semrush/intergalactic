@@ -8,7 +8,6 @@ import SpinThemeExample from './examples/spin-theme';
 import SpinCustomThemeExample from './examples/spin-custom-theme';
 import SpinBoxPropsExample from './examples/spin-box-props';
 
-
 const meta: Meta<typeof Spin> = {
   title: 'Components/Spin/Tests',
   component: Spin,
@@ -22,21 +21,21 @@ export const SpinSizes: Story = {
 };
 
 export const SpinBoxProps: Story = {
-    render: SpinBoxPropsExample,
-  };
+  render: SpinBoxPropsExample,
+};
 
 export const SpinSizesBottomText: Story = {
-    render: SpinSizesBottomTextExample,
+  render: SpinSizesBottomTextExample,
 };
 
 export const SpinCentered: Story = {
-    render: SpinCenteredExample,
+  render: SpinCenteredExample,
 };
 
 export const SpinTheme: Story = {
-    render: SpinThemeExample,
+  render: SpinThemeExample,
 };
 
 export const SpinCustomTheme: Story = {
-    render: SpinCustomThemeExample,
+  render: SpinCustomThemeExample,
 };

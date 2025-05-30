@@ -7,7 +7,6 @@ import OrientationUseAndThemePairsExample from './examples/orientation-use-theme
 import RenderInCenterExample from './examples/render-in-center';
 import BoxPropsExample from './examples/box-props';
 
-
 const meta: Meta<typeof Divider> = {
   title: 'Components/Divider/Tests',
   component: Divider,

@@ -63,15 +63,15 @@ class TrendLineRoot extends Trend<TrendLineProps, typeof TrendLineRoot.enhance> 
   }
 
   override get svgWidth(): number {
-    return this.asProps.lastPointColor ?
-      this.defaultWidth + this.lastPointRadius :
-      this.defaultWidth;
+    return this.asProps.lastPointColor
+      ? this.defaultWidth + this.lastPointRadius
+      : this.defaultWidth;
   }
 
   override get svgHeight(): number {
-    return this.asProps.lastPointColor ?
-      this.defaultHeight + this.lastPointRadius :
-      this.defaultHeight;
+    return this.asProps.lastPointColor
+      ? this.defaultHeight + this.lastPointRadius
+      : this.defaultHeight;
   }
 
   get color() {

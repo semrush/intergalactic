@@ -7,9 +7,9 @@ const Demo = () => {
   return (
     <DataTable
       data={data}
-      aria-label={'Accordion inside table'}
-      h={'100%'}
-      defaultGridTemplateColumnWidth={'1fr'}
+      aria-label='Accordion inside table'
+      h='100%'
+      defaultGridTemplateColumnWidth='1fr'
       columns={[
         { name: 'keyword', children: 'Keyword', gtcWidth: 'minmax(20%, 50%)' },
         {

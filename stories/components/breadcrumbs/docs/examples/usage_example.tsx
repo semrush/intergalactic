@@ -5,13 +5,13 @@ import Ellipsis from '@semcore/ellipsis';
 const Demo = () => (
   <Breadcrumbs aria-label='Truncation example'>
     <Ellipsis>
-      <Ellipsis.Content tag={Breadcrumbs.Item} active={false} href='#' role={'link'}>
+      <Ellipsis.Content tag={Breadcrumbs.Item} active={false} href='#' role='link'>
         Ellipsis
       </Ellipsis.Content>
       <Ellipsis.Popper />
     </Ellipsis>
     <Ellipsis>
-      <Ellipsis.Content tag={Breadcrumbs.Item} active={false} href='#' role={'link'} w={300}>
+      <Ellipsis.Content tag={Breadcrumbs.Item} active={false} href='#' role='link' w={300}>
         This title is longer than a giraffe's neck, I bet it's been doing neck workouts!
       </Ellipsis.Content>
       <Ellipsis.Popper />

@@ -20,25 +20,25 @@ export const InputWithSubmitButton: Story = {
 };
 
 export const InputWithTextAddon: Story = {
-    render: InputWithTextAddonExample,
-  };
+  render: InputWithTextAddonExample,
+};
 
-  export const InputWithMultipleAddons: Story = {
-    render: InputWithMultipleAddonsExample,
-  };
+export const InputWithMultipleAddons: Story = {
+  render: InputWithMultipleAddonsExample,
+};
 
-  export const InputWithOtherComponentInside: Story = {
-    render: InputWithOtherComponentInsideExample,
-  };
+export const InputWithOtherComponentInside: Story = {
+  render: InputWithOtherComponentInsideExample,
+};
 
-  export const InputWithTheClearingAbility: Story = {
-    render: InputWithTheClearingAbilityExample,
-  };
-  
-  export const LoadingStateInTheInput: Story = {
-    render: LoadingStateInTheInputExample,
-  };
+export const InputWithTheClearingAbility: Story = {
+  render: InputWithTheClearingAbilityExample,
+};
 
-  export const PasswordInput: Story = {
-    render: PasswordInputExample,
-  };
+export const LoadingStateInTheInput: Story = {
+  render: LoadingStateInTheInputExample,
+};
+
+export const PasswordInput: Story = {
+  render: PasswordInputExample,
+};

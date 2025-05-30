@@ -19,7 +19,9 @@ const Demo = () => {
 
   const content = (
     <p key={`1_${passed}`}>
-      {!passed ? '•' : <CheckAltM aria-hidden={false} aria-label='passed' />} Should contain min 5
+      {!passed ? '•' : <CheckAltM aria-hidden={false} aria-label='passed' />}
+      {' '}
+      Should contain min 5
       symbols
     </p>
   );

@@ -141,21 +141,21 @@ export abstract class AbstractButton extends Component<Props, {}, {}> {
             <>
               {/* @ts-ignore */}
               <SInner tag='span' loading={loading}>
-                {AddonLeft ?
-                    (
+                {AddonLeft
+                  ? (
                       <Button.Addon>
                         <AddonLeft />
                       </Button.Addon>
-                    ) :
-                  null}
+                    )
+                  : null}
                 {addonTextChildren(Children, Button.Text, Button.Addon)}
-                {AddonRight ?
-                    (
+                {AddonRight
+                  ? (
                       <Button.Addon>
                         <AddonRight />
                       </Button.Addon>
-                    ) :
-                  null}
+                    )
+                  : null}
               </SInner>
               {loading && (
                 <SSpin tag='span'>

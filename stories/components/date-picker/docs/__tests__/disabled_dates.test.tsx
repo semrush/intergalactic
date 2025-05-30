@@ -9,5 +9,4 @@ export async function DisabledDatesTest({ canvasElement }: { canvasElement: HTML
   }
 
   await userEvent.click(triggers);
-
 }

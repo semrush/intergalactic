@@ -188,7 +188,9 @@ const Demo = () => {
           onClear={handleClear}
           onKeyDown={handleKeyDownTrigger}
         >
-          <span aria-hidden>SERP Features:</span> {triggerValueText}
+          <span aria-hidden>SERP Features:</span>
+          {' '}
+          {triggerValueText}
         </Select.Trigger>
         <Select.Popper aria-label='SERP Features'>
           <InputSearch
@@ -198,7 +200,7 @@ const Demo = () => {
           />
           {(loading || error) && (
             <Flex direction='column' alignItems='start' gap={1} p={2}>
-              <Text size={200} use={'secondary'} aria-live='polite' role='status'>
+              <Text size={200} use='secondary' aria-live='polite' role='status'>
                 {message}
               </Text>
               {error && !loading && (
@@ -211,14 +213,14 @@ const Demo = () => {
           {!loading && !error && (
             <>
               <div
-                role={'listbox'}
+                role='listbox'
                 aria-label='SERP Features'
                 id='search-list'
                 aria-multiselectable='true'
               >
                 {options.length > 0 && (
                   <Select.Option
-                    value={'%all%'}
+                    value='%all%'
                     onClick={isAllSelected ? handleDeselectAll : handleSelectAll}
                     disabled={value.length === 1 && value[0] === '%none%'}
                   >
@@ -228,11 +230,11 @@ const Demo = () => {
                 <hideScrollBarsFromScreenReadersContext.Provider value={true}>
                   <ScrollAreaComponent
                     shadow={true}
-                    hMax={'224px'}
-                    wMin={'224px'}
-                    wMax={'260px'}
+                    hMax='224px'
+                    wMin='224px'
+                    wMax='260px'
                     p={0}
-                    orientation={'vertical'}
+                    orientation='vertical'
                   >
                     <ScrollAreaComponent.Container tabIndex={undefined}>
                       {options.map((option) => {
@@ -244,39 +246,46 @@ const Demo = () => {
                             disabled={value.length === 1 && value[0] === '%none%'}
                           >
                             <Select.Option.Checkbox />
-                            <Ellipsis placement={'right'}>
-                              <Ellipsis.Content flex={'auto'}>{option.label}</Ellipsis.Content>
+                            <Ellipsis placement='right'>
+                              <Ellipsis.Content flex='auto'>{option.label}</Ellipsis.Content>
                               <Ellipsis.Popper wMin={300}>{option.label}</Ellipsis.Popper>
                             </Ellipsis>
                           </Select.Option>
                         );
                       })}
-                      {options.length ? (
-                        <ScreenReaderOnly id='search-result'>
-                          {options.length} result{options.length > 1 && 's'} found
-                        </ScreenReaderOnly>
-                      ) : (
-                        <Text
-                          tag='div'
-                          key='Nothing'
-                          id='search-result'
-                          use='secondary'
-                          size={200}
-                          p={2}
-                        >
-                          Nothing found
-                        </Text>
-                      )}
+                      {options.length
+                        ? (
+                            <ScreenReaderOnly id='search-result'>
+                              {options.length}
+                              {' '}
+                              result
+                              {options.length > 1 && 's'}
+                              {' '}
+                              found
+                            </ScreenReaderOnly>
+                          )
+                        : (
+                            <Text
+                              tag='div'
+                              key='Nothing'
+                              id='search-result'
+                              use='secondary'
+                              size={200}
+                              p={2}
+                            >
+                              Nothing found
+                            </Text>
+                          )}
                     </ScrollAreaComponent.Container>
                     <ScrollAreaComponent.Bar orientation='vertical' />
                   </ScrollAreaComponent>
                 </hideScrollBarsFromScreenReadersContext.Provider>
 
-                {/*<Select.Divider mt={0} role={''} use:aria-orientation={undefined} />*/}
+                {/* <Select.Divider mt={0} role={''} use:aria-orientation={undefined} /> */}
                 {options.length > 0 && (
                   <Select.Option
-                    value={'%none%'}
-                    key={'none'}
+                    value='%none%'
+                    key='none'
                     onClick={handleNoneClick}
                     disabled={valueHasSerpFeatures(value)}
                   >
@@ -286,7 +295,7 @@ const Demo = () => {
                 )}
               </div>
               <Box my={3} mx={2}>
-                <Button use={'primary'} w={'100%'} onClick={handleApply} ref={applyButtonRef}>
+                <Button use='primary' w='100%' onClick={handleApply} ref={applyButtonRef}>
                   Apply
                 </Button>
               </Box>

@@ -3,7 +3,7 @@ import { expect, userEvent, within } from '@storybook/test';
 export async function BasicUsageTest({ canvasElement }: { canvasElement: HTMLElement }) {
   const canvas = within(canvasElement);
 
-  //Interactions by the mouse
+  // Interactions by the mouse
   const section1 = within(document.body).queryByText('Section 1');
   const section2 = within(document.body).queryByText('Section 2');
   const section3 = within(document.body).queryByText('Section 3');

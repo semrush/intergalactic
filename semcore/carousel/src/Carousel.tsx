@@ -166,9 +166,9 @@ class CarouselRoot extends Component<
 
   toggleItem = (item: CarouselItem, removeItem = false) => {
     this.setState((prevState) => {
-      const newItems = removeItem ?
-          prevState.items.filter((element) => element.node !== item.node) :
-          [...prevState.items, item];
+      const newItems = removeItem
+        ? prevState.items.filter((element) => element.node !== item.node)
+        : [...prevState.items, item];
 
       return {
         items: newItems,
@@ -431,9 +431,9 @@ class CarouselRoot extends Component<
     const direction = selectedIndex > 0 ? 1 : -1;
     const count = items.length === 0 ? 0 : Math.floor(selectedIndex / items.length) * direction;
     const transform =
-            selectedIndex > 0 && selectedIndex < items.length ?
-              0 :
-              100 * direction * count * items.length;
+            selectedIndex > 0 && selectedIndex < items.length
+              ? 0
+              : 100 * direction * count * items.length;
 
     return transform;
   }
@@ -503,14 +503,14 @@ class CarouselRoot extends Component<
               })}
             </SModalContainer>
           </SModalBox>
-          {isSmall ?
-              (
+          {isSmall
+            ? (
                 <Flex justifyContent='center' mt={2}>
                   <Carousel.Prev inverted={true} />
                   <Carousel.Next inverted={true} />
                 </Flex>
-              ) :
-              (
+              )
+            : (
                 <Carousel.Next inverted={true} />
               )}
         </Flex>
@@ -549,8 +549,8 @@ class CarouselRoot extends Component<
         id={`igc-${uid}-carousel`}
         aria-roledescription={ariaRoledescription}
       >
-        {Controls.length === 0 ?
-            (
+        {Controls.length === 0
+          ? (
               <>
                 <Flex>
                   <Carousel.Prev />
@@ -579,8 +579,8 @@ class CarouselRoot extends Component<
                   </Carousel.Indicators>
                 )}
               </>
-            ) :
-            (
+            )
+          : (
               <Children />
             )}
         {hasZoom && (
@@ -672,11 +672,11 @@ const Prev = (props: CarouselButtonProps) => {
 
   return sstyled(styles)(
     <SPrev render={Box} top={top}>
-      {children ?
-          (
+      {children
+        ? (
             <Children />
-          ) :
-          (
+          )
+        : (
             <SPrevButton
               addonLeft={ChevronLeft}
               aria-label={label}
@@ -697,11 +697,11 @@ const Next = (props: CarouselButtonProps) => {
 
   return sstyled(styles)(
     <SNext render={Box} top={top}>
-      {children ?
-          (
+      {children
+        ? (
             <Children />
-          ) :
-          (
+          )
+        : (
             <SNextButton
               addonLeft={ChevronRight}
               aria-label={label}

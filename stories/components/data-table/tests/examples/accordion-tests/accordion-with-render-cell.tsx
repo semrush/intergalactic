@@ -5,7 +5,10 @@ import { NoData } from '@semcore/widget-empty';
 
 const Demo = () => {
   return (
-    <DataTable data={data} aria-label={'Accordion inside table'} h={'100%'}
+    <DataTable
+      data={data}
+      aria-label='Accordion inside table'
+      h='100%'
       columns={[
         { name: 'keyword', children: 'Keyword', gtcWidth: 'minmax(60%, 80%)' },
         {
@@ -15,8 +18,8 @@ const Demo = () => {
             { name: 'kd', children: 'KD,%' },
             { name: 'cpc', children: 'CPC' },
             { name: 'vol', children: 'Vol.' },
-          ]
-        }
+          ],
+        },
       ]}
 
       renderCell={(props) => {

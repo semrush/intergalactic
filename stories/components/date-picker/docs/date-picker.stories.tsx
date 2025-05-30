@@ -44,48 +44,48 @@ export const CustomDay: StoryObj = {
 };
 
 export const CustomHeader: StoryObj = {
-    render: CustomHeaderExample,
-    play: playWrapper(CustomHeaderTest),
+  render: CustomHeaderExample,
+  play: playWrapper(CustomHeaderTest),
 
-  };
+};
 
-  export const DateRangeComparator: StoryObj = {
-    render: DateRangeComparatorExample,
-    play: playWrapper(DateRangeComparatorTest),
-  };
+export const DateRangeComparator: StoryObj = {
+  render: DateRangeComparatorExample,
+  play: playWrapper(DateRangeComparatorTest),
+};
 
-  export const DateRangeComparatorAdvanceUse: StoryObj = {
-    render: DateRangeComparatorAdvanceUseExample,
-    play: playWrapper(DateRangeComparatorAdvancedTest),
+export const DateRangeComparatorAdvanceUse: StoryObj = {
+  render: DateRangeComparatorAdvanceUseExample,
+  play: playWrapper(DateRangeComparatorAdvancedTest),
 
-  };
+};
 
-  export const Datepicker: StoryObj = {
-    render: DatepickerExample,
-    play: playWrapper(DatePickerTest),
-  };
+export const Datepicker: StoryObj = {
+  render: DatepickerExample,
+  play: playWrapper(DatePickerTest),
+};
 
-  export const DisabledDates: StoryObj = {
-    render: DisabledDatesExample,
-    play: playWrapper(DisabledDatesTest),
-  };
+export const DisabledDates: StoryObj = {
+  render: DisabledDatesExample,
+  play: playWrapper(DisabledDatesTest),
+};
 
-  export const MonthRangeComparatorAdvanceUse: StoryObj = {
-    render: MonthRangeComparatorAdvanceUseExample,
-    play: playWrapper(MonthRangeComparatorTest),
-  };
+export const MonthRangeComparatorAdvanceUse: StoryObj = {
+  render: MonthRangeComparatorAdvanceUseExample,
+  play: playWrapper(MonthRangeComparatorTest),
+};
 
-  export const MonthRangePicker: StoryObj = {
-    render: MonthRangePickerExample,
-    play: playWrapper(MonthRangePickerTest),
-  };
+export const MonthRangePicker: StoryObj = {
+  render: MonthRangePickerExample,
+  play: playWrapper(MonthRangePickerTest),
+};
 
-  export const TriggerAndPopper: StoryObj = {
-    render: TriggerAndPopperExample,
-    play: playWrapper(TriggerAndPopperTest),
-  };
+export const TriggerAndPopper: StoryObj = {
+  render: TriggerAndPopperExample,
+  play: playWrapper(TriggerAndPopperTest),
+};
 
-  export const WeekPicker: StoryObj = {
-    render: WeekPickerExample,
-    play: playWrapper(WeekPickerTest),
-  };
+export const WeekPicker: StoryObj = {
+  render: WeekPickerExample,
+  play: playWrapper(WeekPickerTest),
+};

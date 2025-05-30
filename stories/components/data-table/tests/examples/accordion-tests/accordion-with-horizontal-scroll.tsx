@@ -28,7 +28,13 @@ const Demo = () => {
   };
 
   return (
-    <DataTable aria-label={'Accordion inside table'} h={'100%'} w={400} data={sortedData} sort={sort} onSortChange={handleSortChange}
+    <DataTable
+      aria-label='Accordion inside table'
+      h='100%'
+      w={400}
+      data={sortedData}
+      sort={sort}
+      onSortChange={handleSortChange}
       columns={[
         { name: 'keyword', children: 'Keyword', gtcWidth: '200px', sortable: true },
         { name: 'kd', children: 'KD,%', gtcWidth: '200px', sortable: true },

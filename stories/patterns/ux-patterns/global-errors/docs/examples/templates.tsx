@@ -10,7 +10,7 @@ import {
 const Demo = () => (
   <>
     <AccessDenied />
-    <Maintenance toolName={'Intergalactic'} />
+    <Maintenance toolName='Intergalactic' />
     <PageNotFound />
     <ProjectNotFound />
     <PageError />

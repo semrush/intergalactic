@@ -16,14 +16,15 @@ const Demo = () => {
           <SidePanel.Back>Go to Tool Name</SidePanel.Back>
           <SidePanel.Title w={100}><Ellipsis>Heading 6, 16px Heading 6, 16px</Ellipsis></SidePanel.Title>
         </SidePanel.Header>
-        <SidePanel.Body>Content
+        <SidePanel.Body>
+          Content
 
-        <Tooltip
-                    title='Default tooltip contains short text explaining something about the trigger.'
-                    tag={Button}
-                    aria-label='Export to PDF'
-                    addonLeft={FileExportM}
-                />
+          <Tooltip
+            title='Default tooltip contains short text explaining something about the trigger.'
+            tag={Button}
+            aria-label='Export to PDF'
+            addonLeft={FileExportM}
+          />
 
         </SidePanel.Body>
         <SidePanel.Footer justifyContent='center' pt={2}>

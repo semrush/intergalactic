@@ -195,7 +195,7 @@ const AddFilterDropdownAndSelectsExample = () => {
           onChange={(v: string) => {
             setFilterData({ ...filterData, name: v });
           }}
-          placeholder={'Filter by name'}
+          placeholder='Filter by name'
         />
         {Boolean(filterData['name']) && (
           <Input.Addon>
@@ -226,7 +226,9 @@ const AddFilterDropdownAndSelectsExample = () => {
           onClear={clearVolume}
           triggerRef={volumeTriggerRef}
         >
-          {'Volume'}: {filterData.volume}
+          Volume:
+          {' '}
+          {filterData.volume}
         </AddFilter.Select.Trigger>
         <AddFilter.Select.Popper w={224} aria-label='Volume'>
           {({ onApply }) => (
@@ -280,28 +282,32 @@ const AddFilterDropdownAndSelectsExample = () => {
         }}
       >
         <AddFilter.Select.Trigger placeholder='Select a fruit' onClear={() => clearField('fruit')}>
-          {'Fruit'}: {filterData.fruit}
+          Fruit:
+          {' '}
+          {filterData.fruit}
         </AddFilter.Select.Trigger>
         <AddFilter.Select.Popper aria-label='Search fruits'>
           <AddFilter.Select.InputSearch value={filter} onChange={setFilter} />
-          <AddFilter.Select.List hMax={'224px'}>
+          <AddFilter.Select.List hMax='224px'>
             {filteredOptions.map(({ value, label }) => (
               <AddFilter.Select.Option value={value} key={value}>
                 {label}
               </AddFilter.Select.Option>
             ))}
-            {!filteredOptions.length ? (
-              <Text
-                tag={'div'}
-                id='search-result'
-                key='Nothing'
-                p={'6px 8px'}
-                size={200}
-                use={'secondary'}
-              >
-                Nothing found
-              </Text>
-            ) : null}
+            {!filteredOptions.length
+              ? (
+                  <Text
+                    tag='div'
+                    id='search-result'
+                    key='Nothing'
+                    p='6px 8px'
+                    size={200}
+                    use='secondary'
+                  >
+                    Nothing found
+                  </Text>
+                )
+              : null}
           </AddFilter.Select.List>
         </AddFilter.Select.Popper>
       </AddFilter.Select>
@@ -318,7 +324,9 @@ const AddFilterDropdownAndSelectsExample = () => {
           onClear={() => clearField('multiValue')}
           placeholder='Select values'
         >
-          {'Multiselect'}: {filterData.multiValue.join(', ')}
+          Multiselect:
+          {' '}
+          {filterData.multiValue.join(', ')}
         </AddFilter.Select.Trigger>
 
         <AddFilter.Select.Menu hMax='240px'>

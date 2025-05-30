@@ -5,7 +5,7 @@ const Demo = () => {
   return (
     <DataTable
       data={data}
-      aria-label={'Column size'}
+      aria-label='Column size'
       columns={[
         { name: 'keyword', children: 'Keyword', gtcWidth: 'minmax(min-content, 100px)' },
         { name: 'kd', children: 'KD %', gtcWidth: 'minmax(min-content, 100px)' },

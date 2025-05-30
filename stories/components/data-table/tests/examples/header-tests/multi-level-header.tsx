@@ -6,13 +6,13 @@ import Ellipsis from '@semcore/ellipsis';
 import AmazonM from '@semcore/icon/color/Amazon/m';
 
 const Demo = () => {
-
   return (
     <>
       <DataTable
         data={data}
-        aria-label={'Borders'}
-        defaultGridTemplateColumnWidth={'1fr'} h={'100%'}
+        aria-label='Borders'
+        defaultGridTemplateColumnWidth='1fr'
+        h='100%'
 
         columns={[
           { name: 'other', children: 'Other' },
@@ -30,14 +30,13 @@ const Demo = () => {
                       <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
                     </Text>
                   </>
-                )
-
+                ),
 
               },
               { name: 'cpc', children: 'CPC' },
               { name: 'vol', children: 'Vol.' },
 
-            ]
+            ],
           },
 
           { name: 'keyword', children: 'Keyword' },
@@ -57,14 +56,13 @@ const Demo = () => {
                     </Ellipsis>
                     <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
                   </>
-                )
-
+                ),
 
               },
               { name: 'cpc', children: 'CPC' },
               { name: 'vol', children: 'Vol.' },
 
-            ]
+            ],
           },
 
           { name: 'other', children: 'Other' },
@@ -83,12 +81,12 @@ const Demo = () => {
                       <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
                     </Text>
                   </>
-                )
+                ),
 
               },
               { name: 'cpc', children: 'CPC' },
 
-            ]
+            ],
           },
 
           { name: 'other', children: 'Other' },
@@ -106,15 +104,13 @@ const Demo = () => {
                       <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
                     </Text>
                   </>
-                )
-
+                ),
 
               },
               { name: 'cpc', children: 'CPC' },
 
-            ]
+            ],
           },
-
 
         ]}
       />

@@ -62,7 +62,9 @@ const Demo = () => {
             <Radio>
               <Radio.Value value='selected' />
               <Radio.Text>
-                Selected <Text use='secondary'>(3)</Text>
+                Selected
+                {' '}
+                <Text use='secondary'>(3)</Text>
               </Radio.Text>
             </Radio>
             <Radio style={{ alignItems: 'center' }}>

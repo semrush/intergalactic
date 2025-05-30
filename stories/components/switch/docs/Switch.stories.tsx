@@ -7,21 +7,21 @@ import BasicWithIconExample from './examples/basic_example_with_icon';
 import ExternalLabelExample from './examples/external_label';
 
 const meta: Meta<typeof Switch> = {
-    title: 'Components/Switch/Documentation',
-    component: Switch,
+  title: 'Components/Switch/Documentation',
+  component: Switch,
 };
 
 export default meta;
 type Story = StoryObj<typeof Switch>;
 
 export const Basic: Story = {
-    render: BasicExample,
+  render: BasicExample,
 };
 
 export const BasicWithIcon: Story = {
-    render: BasicWithIconExample,
+  render: BasicWithIconExample,
 };
 
 export const ExternalLabel: Story = {
-    render: ExternalLabelExample,
+  render: ExternalLabelExample,
 };

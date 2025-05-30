@@ -126,9 +126,9 @@ class PickerAbstract extends Component {
     if (day) {
       if (INTERACTION_TAGS.includes(e.target.tagName)) return;
       const current_highlighted =
-        !highlighted[0] && !value ?
-            dayjs(highlighted[0] || displayedPeriod) :
-            dayjs(displayedPeriod).add(day, this.keyStep);
+        !highlighted[0] && !value
+          ? dayjs(highlighted[0] || displayedPeriod)
+          : dayjs(displayedPeriod).add(day, this.keyStep);
       const current_day =
         getCurrentHighlightedDay(current_highlighted) ||
         getCurrentHighlightedDay(dayjs(highlighted[0] || displayedPeriod));

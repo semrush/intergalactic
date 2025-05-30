@@ -4,7 +4,11 @@ import { NoData } from '@semcore/widget-empty';
 
 const Demo = () => {
   return (
-    <DataTable data={data} aria-label={'Accordion inside table'} h={'100%'} w={400}
+    <DataTable
+      data={data}
+      aria-label='Accordion inside table'
+      h='100%'
+      w={400}
       columns={[
         { name: 'keyword', children: 'Keyword', gtcWidth: '200px', fixed: 'left' },
         { name: 'kd', children: 'KD,%', gtcWidth: '200px' },

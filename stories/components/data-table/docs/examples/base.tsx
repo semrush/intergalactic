@@ -5,9 +5,9 @@ const Demo = () => {
   return (
     <DataTable
       data={data}
-      aria-label={'Basic table example'}
-      defaultGridTemplateColumnWidth={'auto'}
-      wMax={'800px'}
+      aria-label='Basic table example'
+      defaultGridTemplateColumnWidth='auto'
+      wMax='800px'
       headerProps={{
         sticky: true,
       }}

@@ -110,13 +110,13 @@ export default function ({ illustrations, json }) {
         setSelectedIllustration={setSelectedIllustration}
         ref={illustrationContainerRef}
       >
-        {inputValue.length ?
-            (
-              filterIllustrations.length ?
-                  (
+        {inputValue.length
+          ? (
+              filterIllustrations.length
+                ? (
                     <ListIllustrations data={filterIllustrations} aria-label='Search results' />
-                  ) :
-                  (
+                  )
+                : (
                     <NoData
                       type='nothing-found'
                       description='Try searching by illustration or group name, for example "mail" or "chart".'
@@ -127,8 +127,8 @@ export default function ({ illustrations, json }) {
                       py={10}
                     />
                   )
-            ) :
-            (
+            )
+          : (
               <>
                 <IllustrationGroup title='States' />
                 <IllustrationGroup title='Chart types' />

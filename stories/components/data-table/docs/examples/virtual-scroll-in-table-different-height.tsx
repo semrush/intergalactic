@@ -26,7 +26,7 @@ const Demo = () => {
     <DataTable
       data={data}
       totalRows={10000}
-      aria-label={'Virtual scroll with variable row height'}
+      aria-label='Virtual scroll with variable row height'
       h={400}
       virtualScroll
       headerProps={{ sticky: true }}

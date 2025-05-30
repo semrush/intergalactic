@@ -5,7 +5,7 @@ const Demo = () => {
   return (
     <DataTable
       data={data}
-      aria-label={'Multi level header'}
+      aria-label='Multi level header'
       columns={[
         { name: 'keyword', children: 'Keyword' },
         {

@@ -273,9 +273,9 @@ function map(element) {
 
   if (vars) {
     nextProps.style =
-      typeof style === 'string' ?
-        vars + (nextProps.style || '') :
-          Object.assign({}, vars, nextProps.style || {});
+      typeof style === 'string'
+        ? vars + (nextProps.style || '')
+        : Object.assign({}, vars, nextProps.style || {});
   }
 
   return nextProps;

@@ -3,7 +3,7 @@ import React from 'react';
 import Icons from '../../../../../website/docs/style/icon/icons.jsx';
 
 const Demo = () => (
-    <Icons/>
+  <Icons />
 );
 
 export default Demo;

@@ -40,7 +40,7 @@ const Demo = () => {
   );
 };
 
-function arrToOptions(arr:any) {
+function arrToOptions(arr: any) {
   return arr.map((i: any) => ({ value: i, label: i, children: i }));
 }
 

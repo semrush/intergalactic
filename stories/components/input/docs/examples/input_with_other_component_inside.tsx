@@ -25,7 +25,8 @@ const Demo = () => {
           />
           <Input.Addon>
             <Tag size='m' id='chars-counter'>
-              {value.length}/10
+              {value.length}
+              /10
             </Tag>
           </Input.Addon>
         </Input>

@@ -1,4 +1,3 @@
-
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { DataTable } from '@semcore/data-table';
@@ -22,7 +21,6 @@ export const PerformanceTest: Story = {
 export const PerformanceBaseTest: Story = {
   render: PerformanceBaseTestExample,
 };
-
 
 export const ColoredMergedCellsColumns: Story = {
   render: ColoredMergedCellsExample,

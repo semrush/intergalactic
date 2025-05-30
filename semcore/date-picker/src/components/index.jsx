@@ -53,11 +53,11 @@ export const Title = ({ Children, styles }) => {
 export function Prev({ children, Children }) {
   return (
     <Root render={Button} use='tertiary' theme='muted' size='l'>
-      {children ?
-          (
+      {children
+        ? (
             <Children />
-          ) :
-          (
+          )
+        : (
             <Button.Addon>
               <ChevronLeft />
             </Button.Addon>
@@ -69,11 +69,11 @@ export function Prev({ children, Children }) {
 export function Next({ children, Children }) {
   return (
     <Root render={Button} use='tertiary' theme='muted' size='l'>
-      {children ?
-          (
+      {children
+        ? (
             <Children />
-          ) :
-          (
+          )
+        : (
             <Button.Addon>
               <ChevronRight />
             </Button.Addon>

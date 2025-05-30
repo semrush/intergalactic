@@ -78,7 +78,7 @@ const Demo = () => {
           <Tag.Text>Tag</Tag.Text>
         </Tag>
       </Flex>
-      
+
       <Flex gap={1}>
         <Tag size='m' addonRight={SmileHappyM}>
           Tag
@@ -119,7 +119,7 @@ const Demo = () => {
         <Tag size='xl'>
           <Tag.Text>Tag</Tag.Text>
         </Tag>
-        
+
       </Flex>
 
     </Flex>

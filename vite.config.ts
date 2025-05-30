@@ -10,7 +10,7 @@ import { loadSemcoreSources } from './website/docs/.vitepress/load-semcore-sourc
 import pluginReact from '@vitejs/plugin-react';
 import { unpluginIcons } from './website/docs/.vitepress/unplugins/unplugin-icons';
 import { resolve as resolvePath } from 'path';
-import {unpluginIllustrations} from './website/docs/.vitepress/unplugins/unplugin-illustrations';
+import { unpluginIllustrations } from './website/docs/.vitepress/unplugins/unplugin-illustrations';
 
 export default defineConfig({
   plugins: [

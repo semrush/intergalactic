@@ -26,7 +26,7 @@ const Demo = () => {
       </TabPanel>
       {
         [
-          <div id='tab-panel-2-1' role='tabpanel' aria-labelledby='tab-label-2-1' tabIndex={-1}>
+          <div key='2-1' id='tab-panel-2-1' role='tabpanel' aria-labelledby='tab-label-2-1' tabIndex={-1}>
             <h3>Normal tab</h3>
             <p>
               Here you can place your content, or just leave it blank for that avant-garde

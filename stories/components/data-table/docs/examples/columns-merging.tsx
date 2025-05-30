@@ -3,7 +3,7 @@ import { DataTable } from '@semcore/data-table';
 
 const data = [
   {
-    keyword: 'ebay buy',
+    'keyword': 'ebay buy',
     'kd/cpc/vol': 'These three columns are grouped.',
   },
   {
@@ -36,7 +36,7 @@ const Demo = () => {
   return (
     <DataTable
       data={data}
-      aria-label={'Columns merging'}
+      aria-label='Columns merging'
       columns={[
         { name: 'keyword', children: 'Keyword' },
         { name: 'kd', children: 'KD %' },

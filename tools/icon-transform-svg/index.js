@@ -125,9 +125,9 @@ async function svgToReactComponent({ iconPath, name, group, type, buildType }) {
     patchClipPath($svg, name, group);
 
     $svg.find('path').attr('shape-rendering', 'geometricPrecision');
-    const iconSvg = converter ?
-        converter.convert(`<svg>${$svg.html()}</svg>`) :
-      `<svg>${$svg.html()}</svg>`;
+    const iconSvg = converter
+      ? converter.convert(`<svg>${$svg.html()}</svg>`)
+      : `<svg>${$svg.html()}</svg>`;
 
     const source = template({
       ...$svg[0].attribs,

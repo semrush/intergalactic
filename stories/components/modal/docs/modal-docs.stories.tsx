@@ -31,4 +31,3 @@ export const ModalWindowHeightBiggerThanBrowser: StoryObj = {
 export const ModalInsideModal: StoryObj = {
   render: ModalInsideModalExample,
 };
-

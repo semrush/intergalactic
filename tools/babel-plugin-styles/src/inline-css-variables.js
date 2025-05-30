@@ -87,11 +87,11 @@ module.exports = () => {
 
           // for each html or :root rule
           root.nodes.slice().forEach((rule) => {
-            const customPropertiesObject = isHtmlRule(rule) ?
-              customPropertiesFromHtmlElement :
-              isRootRule(rule) ?
-                customPropertiesFromRootPseudo :
-                null;
+            const customPropertiesObject = isHtmlRule(rule)
+              ? customPropertiesFromHtmlElement
+              : isRootRule(rule)
+                ? customPropertiesFromRootPseudo
+                : null;
 
             // for each custom property
             if (customPropertiesObject) {

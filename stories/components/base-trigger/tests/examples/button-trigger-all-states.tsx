@@ -1,7 +1,7 @@
 import React from 'react';
 import Select from '@semcore/select';
 import Dropdown from '@semcore/dropdown';
-import {ButtonTrigger} from '@semcore/base-trigger';
+import { ButtonTrigger } from '@semcore/base-trigger';
 import { Flex } from '@semcore/flex-box';
 import NeighborLocation from '@semcore/neighbor-location';
 import ChevronDownM from '@semcore/icon/ChevronDown/m';
@@ -13,7 +13,7 @@ const Demo = () => (
       <ButtonTrigger disabled data-test-id='disabled-trigger'>Disabled</ButtonTrigger>
     </Flex>
     <Flex gap={2} justifyContent='flex-start'>
-      <ButtonTrigger  state='normal' data-test-id='normal-state-trigger'>Normal state</ButtonTrigger>
+      <ButtonTrigger state='normal' data-test-id='normal-state-trigger'>Normal state</ButtonTrigger>
       <ButtonTrigger state='valid' data-test-id='valid-state-trigger'>Valid state</ButtonTrigger>
       <ButtonTrigger state='invalid' data-test-id='invalid-state-trigger'>Invalid state</ButtonTrigger>
     </Flex>
@@ -33,12 +33,12 @@ const Demo = () => (
     </Flex>
     <Flex gap={2} justifyContent='flex-start'>
       <ButtonTrigger aria-label='base trigger' data-test-id='text-addon-trigger-1'>
-      <ButtonTrigger.Addon tag={ChevronDownM}  />
+        <ButtonTrigger.Addon tag={ChevronDownM} />
         <ButtonTrigger.Text>Base trigger.Text</ButtonTrigger.Text>
-       
+
       </ButtonTrigger>
       <ButtonTrigger aria-label='base trigger' disabled data-test-id='text-addon-trigger-2'>
-      <ButtonTrigger.Addon tag={ChevronDownM} />
+        <ButtonTrigger.Addon tag={ChevronDownM} />
         <ButtonTrigger.Text>Base trigger.Text</ButtonTrigger.Text>
       </ButtonTrigger>
     </Flex>
@@ -54,7 +54,6 @@ const Demo = () => (
           </ButtonTrigger>
         </Dropdown.Trigger>
       </Dropdown>
-
 
     </Flex>
   </Flex>

@@ -180,9 +180,9 @@ class DonutRoot extends Component {
   animationActivePie = ({ data, active, selector, element }) => {
     const { duration, innerRadius, d3Arc, paddingAngle } = this.asProps;
     const outerRadius = d3Arc.outerRadius()();
-    const outerRadiusStartEnd = active ?
-        [+element.dataset['currentRadius'] || outerRadius, outerRadius + increaseFactor] :
-        [+element.dataset['currentRadius'] || outerRadius, outerRadius];
+    const outerRadiusStartEnd = active
+      ? [+element.dataset['currentRadius'] || outerRadius, outerRadius + increaseFactor]
+      : [+element.dataset['currentRadius'] || outerRadius, outerRadius];
     if (this.canAnimatedHover && duration > 0) {
       transitionRadiusPie({
         data,

@@ -9,7 +9,7 @@ const Demo = () => {
     <>
       <Flex>
         <Button data-position='before'>1</Button>
-        <Popper interaction={'focus'} timeout={[0, 100]}>
+        <Popper interaction='focus' timeout={[0, 100]}>
           <Popper.Trigger>
             <Button data-testid='button'>Click</Button>
           </Popper.Trigger>

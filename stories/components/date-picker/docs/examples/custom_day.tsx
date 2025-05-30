@@ -25,7 +25,7 @@ const Demo = () => {
                   const progress = stableRandom(i) * 100;
                   return (
                     <DatePicker.Calendar.Unit {...data} key={i}>
-                      <Flex direction='column' p={1} w={'100%'} alignItems='center'>
+                      <Flex direction='column' p={1} w='100%' alignItems='center'>
                         {data.children}
                         <ProgressBar
                           size='s'
@@ -38,8 +38,7 @@ const Demo = () => {
                       </Flex>
                     </DatePicker.Calendar.Unit>
                   );
-                })
-              }
+                })}
             </DatePicker.Calendar>
           </DatePicker.Popper>
         </DatePicker>

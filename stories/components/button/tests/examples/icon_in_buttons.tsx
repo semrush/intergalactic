@@ -9,23 +9,23 @@ const Demo = () => {
     <>
       <Flex columnGap={2} mb={4}>
         <Button addonLeft={VideoListM}>AddonLeftM</Button>
-        <Button addonLeft={VideoListL} size={'l'}>
+        <Button addonLeft={VideoListL} size='l'>
           AddonLeftL
         </Button>
 
         <Button addonRight={VideoListM}>AddonRightM</Button>
-        <Button addonRight={VideoListL} size={'l'}>
+        <Button addonRight={VideoListL} size='l'>
           AddonRightL
         </Button>
 
         <Button addonRight={VideoListM} addonLeft={VideoListM}>
           AddonRighLefttM
         </Button>
-        <Button addonRight={VideoListL} addonLeft={VideoListL} size={'l'}>
+        <Button addonRight={VideoListL} addonLeft={VideoListL} size='l'>
           AddonRightLeftL
         </Button>
 
-        <Button addonRight={VideoListL} addonLeft={VideoListM} size={'l'} disabled>
+        <Button addonRight={VideoListL} addonLeft={VideoListM} size='l' disabled>
           AddonRightLeftL
         </Button>
       </Flex>

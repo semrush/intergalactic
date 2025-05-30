@@ -11,7 +11,6 @@ import RadialChartExample from './examples/skeleton-in-charts/radial-tree-chart-
 import SkatterplotChartExample from './examples/skeleton-in-charts/skatterplot-chart-skeleton';
 import VennChartExample from './examples/skeleton-in-charts/venn-chart-skeleton';
 
-
 import SkeletonThemesExample from './examples/skeleton-themes';
 import ObserveParentSizeExample from './examples/observe-parent-size';
 
@@ -58,7 +57,6 @@ export const HistogramChart: Story = {
 export const RadialChart: Story = {
   render: RadialChartExample,
 };
-
 
 export const SkeletonThemes: Story = {
   render: SkeletonThemesExample,

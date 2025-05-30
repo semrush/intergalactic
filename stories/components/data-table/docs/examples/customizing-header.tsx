@@ -9,16 +9,18 @@ const Demo = () => {
   return (
     <DataTable
       data={data}
-      aria-label={'Customizing header'}
+      aria-label='Customizing header'
       columns={[
         {
           name: 'keyword',
           tag: Tooltip,
-          title: "Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on.",
+          title: 'Jesus Christ, Joe, fucking forget about it. I\'m Mr. Pink. Let\'s move on.',
           tabIndex: 0,
           children: (
             <Text noWrap>
-              Keyword <Text color='text-secondary'>(1 - 100)</Text>
+              Keyword
+              {' '}
+              <Text color='text-secondary'>(1 - 100)</Text>
             </Text>
           ),
         },
@@ -40,7 +42,7 @@ const Demo = () => {
                 visible={isVisible}
                 onVisibleChange={setIsVisible}
                 options={selectOptions}
-                defaultValue={'kd'}
+                defaultValue='kd'
                 onKeyDown={(e) => {
                   if (!isVisible && (e.key === 'ArrowDown' || e.key === 'ArrowUp')) {
                     return false;
@@ -50,7 +52,7 @@ const Demo = () => {
                       e.key === 'ArrowRight' ||
                       e.key === 'ArrowDown' ||
                       e.key === 'ArrowUp') &&
-                    isVisible
+                      isVisible
                   ) {
                     e.stopPropagation();
                   }
@@ -62,14 +64,14 @@ const Demo = () => {
         {
           name: 'cpc',
           tag: Tooltip,
-          title: "Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on.",
+          title: 'Jesus Christ, Joe, fucking forget about it. I\'m Mr. Pink. Let\'s move on.',
           tabIndex: 0,
           children: 'CPC',
         },
         {
           name: 'vol',
           tag: Tooltip,
-          title: "Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on.",
+          title: 'Jesus Christ, Joe, fucking forget about it. I\'m Mr. Pink. Let\'s move on.',
           tabIndex: 0,
           children: 'Vol.',
         },

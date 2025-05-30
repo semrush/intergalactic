@@ -4,7 +4,6 @@ import Button from '@semcore/button';
 import Dot from '@semcore/dot';
 
 const Demo = () => {
-
   return (
     <Flex direction='row' gap={2}>
 
@@ -35,7 +34,7 @@ const Demo = () => {
       <Button>
         Button Dot L
         <Dot size='l' aria-label='L size' />
-      </ Button>
+      </Button>
       <Button>
         Button Dot M
         <Dot size='m' aria-label='M size' />

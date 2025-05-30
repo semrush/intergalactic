@@ -82,11 +82,11 @@ export abstract class AbstractChart<
       };
 
       if (legendData?.additionalInfo || legendData?.count) {
-        dataDefinition.additionalInfo = legendData.additionalInfo ?
-            { label: legendData.additionalInfo } :
-          legendData.count ?
-              { count: legendData.count } :
-            undefined;
+        dataDefinition.additionalInfo = legendData.additionalInfo
+          ? { label: legendData.additionalInfo }
+          : legendData.count
+            ? { count: legendData.count }
+            : undefined;
       }
 
       if (legendData && 'columns' in legendData) {
@@ -369,15 +369,15 @@ export abstract class AbstractChart<
       patterns,
       'direction':
         lProps.direction ?? (direction === 'row' || direction === 'row-reverse' ? 'column' : 'row'),
-      'onChangeVisibleItem': lProps.disableSelectItems ?
-        undefined :
-          callAllEventHandlers(lProps.onChangeVisibleItem, this.handleChangeVisible),
-      'onMouseEnterItem': lProps.disableHoverItems ?
-        undefined :
-          callAllEventHandlers(lProps.onMouseEnterItem, this.handleMouseEnter),
-      'onMouseLeaveItem': lProps.disableHoverItems ?
-        undefined :
-          callAllEventHandlers(lProps.onMouseLeaveItem, this.handleMouseLeave),
+      'onChangeVisibleItem': lProps.disableSelectItems
+        ? undefined
+        : callAllEventHandlers(lProps.onChangeVisibleItem, this.handleChangeVisible),
+      'onMouseEnterItem': lProps.disableHoverItems
+        ? undefined
+        : callAllEventHandlers(lProps.onMouseEnterItem, this.handleMouseEnter),
+      'onMouseLeaveItem': lProps.disableHoverItems
+        ? undefined
+        : callAllEventHandlers(lProps.onMouseLeaveItem, this.handleMouseLeave),
       'aria-label': this.getLegendAriaLabel(),
     };
 
@@ -411,22 +411,22 @@ export abstract class AbstractChart<
     const xTicks = this.xTicks;
     const yTicks = this.yTicks;
 
-    const childrenX = axisXValueFormatter ?
-        ({ value }: any) => ({ children: axisXValueFormatter(value) }) :
-      undefined;
-    const childrenY = axisYValueFormatter ?
-        ({ value }: any) => ({ children: axisYValueFormatter(value) }) :
-      undefined;
+    const childrenX = axisXValueFormatter
+      ? ({ value }: any) => ({ children: axisXValueFormatter(value) })
+      : undefined;
+    const childrenY = axisYValueFormatter
+      ? ({ value }: any) => ({ children: axisYValueFormatter(value) })
+      : undefined;
 
     return (
       <>
         {showYAxis && (
           <YAxis>
-            {yTicks ?
-                (
+            {yTicks
+              ? (
                   <YAxis.Ticks ticks={yTicks}>{childrenY}</YAxis.Ticks>
-                ) :
-                (
+                )
+              : (
                   <YAxis.Ticks>{childrenY}</YAxis.Ticks>
                 )}
             {invertAxis !== true && (yTicks ? <YAxis.Grid ticks={yTicks} /> : <YAxis.Grid />)}
@@ -435,11 +435,11 @@ export abstract class AbstractChart<
 
         {showXAxis && (
           <XAxis>
-            {xTicks ?
-                (
+            {xTicks
+              ? (
                   <XAxis.Ticks ticks={xTicks}>{childrenX}</XAxis.Ticks>
-                ) :
-                (
+                )
+              : (
                   <XAxis.Ticks>{childrenX}</XAxis.Ticks>
                 )}
             {invertAxis === true && (xTicks ? <XAxis.Grid ticks={xTicks} /> : <XAxis.Grid />)}

@@ -18,7 +18,7 @@ const Demo = () => {
         Main theme color
       </Text>
       <ColorPicker
-        stretch={'min'}
+        stretch='min'
         defaultValue={selectedColor}
         colors={paletteColors}
         onChange={(color) => {

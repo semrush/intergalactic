@@ -33,18 +33,18 @@ const Demo = () => {
         closable
         onClose={() => setSecondHidden(true)}
         hidden={secondHidden}
-        actions={
+        actions={(
           <Button use='primary' theme='success'>
             Learn more
           </Button>
-        }
+        )}
       >
         Unveiling a breakthrough feature, our latest product enhancement redefines the user
         experience with unparalleled innovation and functionality.
       </NoticeSmart>
       <NoticeSmart
         theme='warning'
-        title={'The Link Building tool is under maintenance.'}
+        title='The Link Building tool is under maintenance.'
         label={<WarningM />}
         aria-label='Maintenance notice'
       >

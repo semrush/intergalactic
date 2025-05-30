@@ -100,13 +100,13 @@ export default function ({ icons, old, json }) {
         setSelectedIcon={setSelectedIcon}
         ref={iconsContainerRef}
       >
-        {inputValue.length ?
-            (
-              filterIcons.length ?
-                  (
+        {inputValue.length
+          ? (
+              filterIcons.length
+                ? (
                     <ListIcons data={filterIcons} aria-label='Search results' />
-                  ) :
-                  (
+                  )
+                : (
                     <NoData
                       type='nothing-found'
                       description='Try entering another keyword, for example "key" or "play".'
@@ -117,8 +117,8 @@ export default function ({ icons, old, json }) {
                       py={10}
                     />
                   )
-            ) :
-            (
+            )
+          : (
               <>
                 <IconGroup title='Navigation' />
                 <IconGroup title='Action' />

@@ -30,13 +30,13 @@ function addonTextChildren(
     }
     // @ts-ignore
     const inheritedNames = element.type[INHERITED_NAME] || [element.type.displayName];
-    const addonNames = Array.isArray(Addon) ?
-        Addon.map((Component) => Component.displayName) :
-        [Addon.displayName];
+    const addonNames = Array.isArray(Addon)
+      ? Addon.map((Component) => Component.displayName)
+      : [Addon.displayName];
     return [Text.displayName, ...addonNames].find((name) => inheritedNames.includes(name));
-  }) ?
-      (<Children />) :
-      (
+  })
+    ? (<Children />)
+    : (
         <Text>
           <Children />
         </Text>

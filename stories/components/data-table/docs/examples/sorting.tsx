@@ -34,7 +34,7 @@ const Demo = () => {
       data={sortedData}
       sort={sort}
       onSortChange={handleSortChange}
-      aria-label={'Sorting'}
+      aria-label='Sorting'
       columns={[
         { name: 'keyword', children: 'Keyword', justifyContent: 'left', sortable: true },
         {

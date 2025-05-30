@@ -12,8 +12,8 @@ const Demo = () => {
   return (
     <DropdownMenu selectable>
       <DropdownMenu.Trigger tag={Button}>Explore menu items</DropdownMenu.Trigger>
-      <DropdownMenu.Menu hMax={'180px'}>
-        <DropdownMenu.Group title={'List heading'} subTitle={'Subtitle'}>
+      <DropdownMenu.Menu hMax='180px'>
+        <DropdownMenu.Group title='List heading' subTitle='Subtitle'>
           {menuItems.map((_, index) => (
             <DropdownMenu.Item
               key={index}
@@ -22,16 +22,18 @@ const Demo = () => {
                 setSelected(index);
               }}
             >
-              <DropdownMenu inlineActions placement={'right'}>
+              <DropdownMenu inlineActions placement='right'>
                 <Flex justifyContent='space-between'>
                   <DropdownMenu.Item.Content tag={DropdownMenu.Trigger}>
-                    Menu item {index + 1}
+                    Menu item
+                    {' '}
+                    {index + 1}
                   </DropdownMenu.Item.Content>
                   <DropdownMenu.Actions>
                     <DropdownMenu.Item
                       tag={Button}
                       addonLeft={Trash}
-                      title={'Delete item'}
+                      title='Delete item'
                       hintPlacement='right'
                       onClick={(e) => e.stopPropagation()}
                     />

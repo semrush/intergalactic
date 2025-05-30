@@ -6,7 +6,7 @@ const Demo = () => {
   return (
     <DataTable
       data={data}
-      aria-label={'Access to cells'}
+      aria-label='Access to cells'
       columns={[
         { name: 'keyword', children: 'Keyword' },
         { name: 'kd', children: 'KD,%' },
@@ -74,7 +74,7 @@ const data = [
   },
   {
     'keyword/kd/cpc': '434',
-    vol: 'ebay buy',
+    'vol': 'ebay buy',
   },
 ];
 

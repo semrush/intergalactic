@@ -8,8 +8,7 @@ type DataRow = {
   vol: string;
 };
 
-
-type SortableColumn = Exclude<keyof DataRow, never>; 
+type SortableColumn = Exclude<keyof DataRow, never>;
 
 const Demo = () => {
   const [sort, setSort] = React.useState<DataTableSort<keyof DataRow>>(['keyword', 'desc']);
@@ -18,8 +17,8 @@ const Demo = () => {
     <DataTable
       data={[]}
       sort={sort}
-     
-      aria-label="Sorting"
+
+      aria-label='Sorting'
       columns={[
         { name: 'keyword', children: 'Keyword', sortable: true },
         { name: 'kd', children: 'KD,%', sortable: true },

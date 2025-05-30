@@ -67,10 +67,10 @@ const Demo = () => {
         }}
       </HoverRect.Tooltip>
       <StackGroupBar x='category'>
-        <StackGroupBar.Bar group='x' y={'a'} />
-        <StackGroupBar.Bar group='x' y={'b'} />
-        <StackGroupBar.Bar group='z' y={'c'} />
-        <StackGroupBar.Bar group='z' y={'d'} />
+        <StackGroupBar.Bar group='x' y='a' />
+        <StackGroupBar.Bar group='x' y='b' />
+        <StackGroupBar.Bar group='z' y='c' />
+        <StackGroupBar.Bar group='z' y='d' />
       </StackGroupBar>
     </Plot>
   );

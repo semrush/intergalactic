@@ -3,7 +3,11 @@ import { DataTable, ACCORDION } from '@semcore/data-table';
 
 const Demo = () => {
   return (
-    <DataTable data={data} aria-label={'Parent'} h={'100%'} w={400}
+    <DataTable
+      data={data}
+      aria-label='Parent'
+      h='100%'
+      w={400}
       columns={[
         { name: 'keyword', children: 'Keyword', gtcWidth: '200px', fixed: 'left' },
         { name: 'kd', children: 'KD,%', gtcWidth: '200px' },
@@ -39,7 +43,7 @@ const data = [
         cpc: '$0',
         vol: 'n/a',
       },
-    ]
+    ],
   },
   {
     keyword: 'www.ebay.com',
@@ -65,7 +69,7 @@ const data = [
         cpc: '$0',
         vol: 'n/a',
       },
-    ]
+    ],
   },
   {
     keyword: 'www.ebay.com',

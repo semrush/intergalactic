@@ -6,7 +6,6 @@ import BadgeColorsExample from './examples/badge-colors';
 import BadgeBgExample from './examples/badge-bg-colors';
 import BadgeBoxPropsExample from './examples/badge-box-props';
 
-
 const meta: Meta<typeof Badge> = {
   title: 'Components/Badge/Tests',
   component: Badge,

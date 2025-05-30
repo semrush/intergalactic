@@ -100,11 +100,11 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
     const gridRowIndex = rowIndex + (hasGroups ? 3 : 2); // 1 - for header, 1 - because start not from 0, but from 1
     const ariaRowIndex = rowIndex + 2; // 1 - for header, 1 - because start not from 0, but from 1
 
-    const accordionDataGridArea = Array.isArray(row[ACCORDION]) ?
-      `${gridRowIndex + 1} / 1 / ${gridRowIndex + 1 + row[ACCORDION].length} / ${
+    const accordionDataGridArea = Array.isArray(row[ACCORDION])
+      ? `${gridRowIndex + 1} / 1 / ${gridRowIndex + 1 + row[ACCORDION].length} / ${
         columns.length + 1
-      }` :
-      `${gridRowIndex + 1} / 1 / ${gridRowIndex + 1} / ${columns.length + 1}`;
+      }`
+      : `${gridRowIndex + 1} / 1 / ${gridRowIndex + 1} / ${columns.length + 1}`;
 
     return {
       onClick: row[ACCORDION] && !props.mergedRow ? this.handleClickRow(row, index) : undefined,
@@ -280,18 +280,18 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
 
     if (virtualScroll) {
       const rowsBuffer =
-        typeof virtualScroll !== 'boolean' && 'rowsBuffer' in virtualScroll ?
-          virtualScroll.rowsBuffer ?? ROWS_BUFFER :
-          ROWS_BUFFER;
+        typeof virtualScroll !== 'boolean' && 'rowsBuffer' in virtualScroll
+          ? virtualScroll.rowsBuffer ?? ROWS_BUFFER
+          : ROWS_BUFFER;
       const offsetHeight = tableContainerRef.current?.offsetHeight ?? 0;
       const prevPrepared = scrollDirection === 'up' ? rowsBuffer : 4;
       const nextPrepared = scrollDirection === 'up' ? 4 : rowsBuffer;
 
       if (typeof virtualScroll === 'boolean' || 'aproxRowsOnPage' in virtualScroll) {
         const aproxRowsOnPage =
-          typeof virtualScroll !== 'boolean' ?
-            virtualScroll.aproxRowsOnPage ?? APROX_ROWS_ON_PAGE :
-            APROX_ROWS_ON_PAGE;
+          typeof virtualScroll !== 'boolean'
+            ? virtualScroll.aproxRowsOnPage ?? APROX_ROWS_ON_PAGE
+            : APROX_ROWS_ON_PAGE;
         if (scrollDirection === 'down') {
           for (let i = this.indexForDownIterate; i < this.rowsHeightMap.size - 1; i++) {
             const value = this.rowsHeightMap.get(i);

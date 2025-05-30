@@ -11,7 +11,6 @@ import BackWithoutTextClose1bthFooterExample from './examples/header/back-no-tex
 import BackAndTitleBody400Example from './examples/header/back-and-title-bodyh400-2btn-footer';
 import CloseInHeaderExample from './examples/header/close-in-header';
 
-
 const meta: Meta = {
   title: 'Components/FullscreenModal/Tests',
 };
@@ -21,36 +20,35 @@ export const DisablePortalVisible: StoryObj = {
 };
 
 export const WithSpinContainer: StoryObj = {
-    render: WithSpinContainerExample,
-  };
-  
+  render: WithSpinContainerExample,
+};
+
 export const ModalProps: StoryObj = {
-    render: ModalPropsExample,
+  render: ModalPropsExample,
 };
 
 export const CloseTitleDescription: StoryObj = {
-    render: CloseTitleDescriptionExample,
+  render: CloseTitleDescriptionExample,
 };
 
 export const CloseBackTitleDescription: StoryObj = {
-    render: CloseBackTitleDescriptionExample,
+  render: CloseBackTitleDescriptionExample,
 };
 
 export const TitleDescription: StoryObj = {
-    render: TitleDescriptionExample,
+  render: TitleDescriptionExample,
 };
 
 export const BackWithoutTextClose1bthFooter: StoryObj = {
-    render: BackWithoutTextClose1bthFooterExample,
+  render: BackWithoutTextClose1bthFooterExample,
 };
 
 export const BackAndTitleBody400: StoryObj = {
-    render: BackAndTitleBody400Example,
+  render: BackAndTitleBody400Example,
 };
 
 export const CloseInHeader: StoryObj = {
-    render: CloseInHeaderExample,
+  render: CloseInHeaderExample,
 };
-
 
 export default meta;

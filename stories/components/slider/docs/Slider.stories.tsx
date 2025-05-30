@@ -5,7 +5,6 @@ import NumericExampleExample from './examples/numeric_slider';
 import SliderWithOptionsExample from './examples/slider_with_options';
 import CustomizesOptionsViewExample from './examples/customized_options_view';
 
-
 const meta: Meta<typeof Slider> = {
   title: 'Components/Slider/Documentation',
   component: Slider,

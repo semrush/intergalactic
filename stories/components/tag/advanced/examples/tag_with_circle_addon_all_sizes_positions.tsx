@@ -7,28 +7,28 @@ const Demo = () => {
     <Flex direction='column' gap={3}>
       <Flex gap={1}>
         <Tag size='m'>
-        <Tag.Circle>
+          <Tag.Circle>
             <img
-              src="https://picsum.photos/id/1025/28/28"
-              alt="tag"
+              src='https://picsum.photos/id/1025/28/28'
+              alt='tag'
             />
           </Tag.Circle>
           <Tag.Text>Tag</Tag.Text>
         </Tag>
         <Tag size='l'>
-        <Tag.Circle>
+          <Tag.Circle>
             <img
-              src="https://picsum.photos/id/1025/28/28"
-              alt="tag"
+              src='https://picsum.photos/id/1025/28/28'
+              alt='tag'
             />
           </Tag.Circle>
           <Tag.Text>Tag</Tag.Text>
         </Tag>
         <Tag size='xl'>
-        <Tag.Circle>
+          <Tag.Circle>
             <img
-              src="https://picsum.photos/id/1025/28/28"
-              alt="tag"
+              src='https://picsum.photos/id/1025/28/28'
+              alt='tag'
             />
           </Tag.Circle>
           <Tag.Text>Tag</Tag.Text>
@@ -40,8 +40,8 @@ const Demo = () => {
           <Tag.Text>Tag</Tag.Text>
           <Tag.Circle>
             <img
-              src="https://picsum.photos/id/1025/28/28"
-              alt="tag"
+              src='https://picsum.photos/id/1025/28/28'
+              alt='tag'
             />
           </Tag.Circle>
         </Tag>
@@ -49,8 +49,8 @@ const Demo = () => {
           <Tag.Text>Tag</Tag.Text>
           <Tag.Circle>
             <img
-              src="https://picsum.photos/id/1025/28/28"
-              alt="tag"
+              src='https://picsum.photos/id/1025/28/28'
+              alt='tag'
             />
           </Tag.Circle>
         </Tag>
@@ -58,8 +58,8 @@ const Demo = () => {
           <Tag.Text>Tag</Tag.Text>
           <Tag.Circle>
             <img
-              src="https://picsum.photos/id/1025/28/28"
-              alt="tag"
+              src='https://picsum.photos/id/1025/28/28'
+              alt='tag'
             />
           </Tag.Circle>
         </Tag>
@@ -67,47 +67,47 @@ const Demo = () => {
 
       <Flex gap={1}>
         <Tag size='m'>
-        <Tag.Circle>
+          <Tag.Circle>
             <img
-              src="https://picsum.photos/id/1025/28/28"
-              alt="tag"
+              src='https://picsum.photos/id/1025/28/28'
+              alt='tag'
             />
           </Tag.Circle>
           <Tag.Text>Tag</Tag.Text>
           <Tag.Circle>
             <img
-              src="https://picsum.photos/id/1025/28/28"
-              alt="tag"
+              src='https://picsum.photos/id/1025/28/28'
+              alt='tag'
             />
           </Tag.Circle>
         </Tag>
         <Tag size='l'>
-        <Tag.Circle>
+          <Tag.Circle>
             <img
-              src="https://picsum.photos/id/1025/28/28"
-              alt="tag"
+              src='https://picsum.photos/id/1025/28/28'
+              alt='tag'
             />
           </Tag.Circle>
           <Tag.Text>Tag</Tag.Text>
           <Tag.Circle>
             <img
-              src="https://picsum.photos/id/1025/28/28"
-              alt="tag"
+              src='https://picsum.photos/id/1025/28/28'
+              alt='tag'
             />
           </Tag.Circle>
         </Tag>
         <Tag size='xl'>
-        <Tag.Circle>
+          <Tag.Circle>
             <img
-              src="https://picsum.photos/id/1025/28/28"
-              alt="tag"
+              src='https://picsum.photos/id/1025/28/28'
+              alt='tag'
             />
           </Tag.Circle>
           <Tag.Text>Tag</Tag.Text>
           <Tag.Circle>
             <img
-              src="https://picsum.photos/id/1025/28/28"
-              alt="tag"
+              src='https://picsum.photos/id/1025/28/28'
+              alt='tag'
             />
           </Tag.Circle>
         </Tag>
@@ -123,9 +123,9 @@ const Demo = () => {
         <Tag size='xl'>
           <Tag.Text>Tag</Tag.Text>
         </Tag>
-        
+
       </Flex>
-      
+
     </Flex>
   );
 };

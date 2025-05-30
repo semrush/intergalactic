@@ -26,11 +26,11 @@ export function Colors(props: ColorsAsProps) {
       aria-orientation='horizontal'
       aria-label={getI18nText('presetColors')}
     >
-      {Children.origin ?
-          (
+      {Children.origin
+        ? (
             <Children />
-          ) :
-          (
+          )
+        : (
             colors?.map((color) => <ColorPicker.Item value={color} key={color} />)
           )}
     </SColors>,
@@ -51,11 +51,11 @@ export function ColorsCustom(props: ColorsCustomAsProps) {
         aria-orientation='horizontal'
         aria-label={getI18nText('customColors')}
       >
-        {Children.origin ?
-            (
+        {Children.origin
+          ? (
               <Children />
-            ) :
-            (
+            )
+          : (
               colors?.map((color) => <PaletteManager.Item value={color} key={color} />)
             )}
       </SColors>

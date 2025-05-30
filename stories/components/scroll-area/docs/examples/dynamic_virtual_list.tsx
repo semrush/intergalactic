@@ -19,9 +19,9 @@ const renderRow = ({
       w={120}
       h={120}
       style={{ border: '1px solid black', ...style }}
-      role={'row'}
+      role='row'
     >
-      <Text bold size={200} m='auto' role={'gridcell'}>
+      <Text bold size={200} m='auto' role='gridcell'>
         {index + 1}
       </Text>
     </Box>
@@ -49,25 +49,29 @@ const Demo = () => {
         </Button>
         <Button onClick={() => setData(data.slice(0, -1))}>Remove item</Button>
         <Text role='status' aria-live='polite'>
-          Count: {data.length}
+          Count:
+          {' '}
+          {data.length}
         </Text>
       </Flex>
       <Box h={500}>
-        {data.length ? (
-          <ScrollArea inner={innerRef}>
-            <ScrollArea.Container
-              ref={ref}
-              // @ts-ignore
-              tag={List}
-              height={500}
-              rowCount={data.length}
-              width={500}
-              rowHeight={120}
-              rowRenderer={renderRow}
-            />
-            <ScrollArea.Bar orientation='vertical' />
-          </ScrollArea>
-        ) : null}
+        {data.length
+        // eslint-disable-next-line @stylistic/multiline-ternary
+          ? (
+              <ScrollArea inner={innerRef}>
+                <ScrollArea.Container
+                  ref={ref}
+                  // @ts-ignore
+                  tag={List}
+                  height={500}
+                  rowCount={data.length}
+                  width={500}
+                  rowHeight={120}
+                  rowRenderer={renderRow}
+                />
+                <ScrollArea.Bar orientation='vertical' />
+              </ScrollArea>
+            ) : null}
       </Box>
     </Flex>
   );

@@ -114,11 +114,11 @@ class RadioRoot extends Component {
 
     return sstyled(styles)(
       <SRadio render={Box} tag='label' __excludeProps={['onChange', 'label', 'disabled']}>
-        {hasChildren ?
-            (
+        {hasChildren
+          ? (
               <Children />
-            ) :
-            (
+            )
+          : (
               <>
                 <Radio.Value />
                 <Radio.Text />

@@ -116,9 +116,9 @@ class InputField<T extends string | string[]> extends Component<
     if (prevProps.value !== value) {
       const currentValue = this.getValues().join(this.delimiter);
       if (
-        typeof value === 'string' ?
-          value !== currentValue :
-          value.join(this.delimiter) !== currentValue
+        typeof value === 'string'
+          ? value !== currentValue
+          : value.join(this.delimiter) !== currentValue
       ) {
         this.handleValueOutChange();
       }
@@ -206,11 +206,11 @@ class InputField<T extends string | string[]> extends Component<
     const { errors, errorIndex, commonErrorMessage, prevError } = this.asProps;
     const { mouseLineIndex, keyboardLineIndex } = this.state;
     const currentLineIndex =
-      this.errorByInteraction === 'keyboard' ?
-        keyboardLineIndex :
-        this.errorByInteraction === 'mouse' ?
-          mouseLineIndex :
-            -1;
+      this.errorByInteraction === 'keyboard'
+        ? keyboardLineIndex
+        : this.errorByInteraction === 'mouse'
+          ? mouseLineIndex
+          : -1;
     let errorItem: ErrorItem | undefined = errors[errorIndex];
 
     if (currentLineIndex !== -1) {
@@ -218,12 +218,12 @@ class InputField<T extends string | string[]> extends Component<
     }
 
     const errorMessage =
-      errors.length === 0 && !prevError ? // show any errors only if there are at least one error
-        null :
-        errorItem?.errorMessage ??
-        (commonErrorMessage === '' || errors.length === 0 ?
-          prevError?.errorMessage :
-          commonErrorMessage);
+      errors.length === 0 && !prevError // show any errors only if there are at least one error
+        ? null
+        : errorItem?.errorMessage ??
+          (commonErrorMessage === '' || errors.length === 0
+            ? prevError?.errorMessage
+            : commonErrorMessage);
     const isCommonError =
       !errorItem?.errorMessage &&
       (commonErrorMessage === '' || errors.length === 0 ? !prevError?.errorMessage : true);
@@ -490,9 +490,9 @@ class InputField<T extends string | string[]> extends Component<
               rowNode.textContent = textContent.substring(1);
               offset =
                 event.inputType === 'deleteContentBackward' ||
-                event.inputType === 'deleteContentForward' ?
-                  0 :
-                  rowNode.textContent.length;
+                event.inputType === 'deleteContentForward'
+                  ? 0
+                  : rowNode.textContent.length;
             } else if (lastSymbol === this.getEmptyParagraph().textContent) {
               rowNode.textContent = textContent.substring(0, textContent.length - 1);
               offset = rowNode.textContent.length;
@@ -516,9 +516,9 @@ class InputField<T extends string | string[]> extends Component<
         }
 
         const trigger =
-          !isValid || (isValid && errors.length === 1 && errors[0].lineNode === rowNode) ?
-            rowNode :
-            this.textarea;
+          !isValid || (isValid && errors.length === 1 && errors[0].lineNode === rowNode)
+            ? rowNode
+            : this.textarea;
 
         if (showErrors && this.popper?.current.state.elements.reference !== trigger) {
           if (this.shouldChangePopperTrigger(trigger)) {
@@ -603,9 +603,9 @@ class InputField<T extends string | string[]> extends Component<
           event.preventDefault();
           const selection = document.getSelection();
           const selectionNode =
-            selection?.focusNode instanceof Text ?
-              selection.focusNode :
-                selection?.focusNode?.childNodes.item(0);
+            selection?.focusNode instanceof Text
+              ? selection.focusNode
+              : selection?.focusNode?.childNodes.item(0);
           const selectionOffset = selection?.focusOffset;
 
           let newRowValue = '';

@@ -57,12 +57,13 @@ const Demo = () => {
           </Card.Header>
           <Card.Body>
             <Error
-              description={
+              description={(
                 <>
-                  Try again later. If the problem persists,{' '}
+                  Try again later. If the problem persists,
+                  {' '}
                   <Link href='https://www.semrush.com/kb/support/'>contact our support</Link>
                 </>
-              }
+              )}
             >
               <Box mt={4}>
                 <Button addonLeft={ReloadM}>

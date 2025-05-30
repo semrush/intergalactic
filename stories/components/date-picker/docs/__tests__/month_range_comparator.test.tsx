@@ -9,5 +9,4 @@ export async function MonthRangeComparatorTest({ canvasElement }: { canvasElemen
   }
 
   await userEvent.click(triggers);
-
 }

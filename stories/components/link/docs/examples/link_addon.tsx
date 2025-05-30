@@ -6,7 +6,7 @@ import FormatText from '@semcore/format-text';
 
 const Demo = () => {
   return (
-    <FormatText size={'l'}>
+    <FormatText size='l'>
       <Link ml={4} href='#' size={300}>
         <Link.Addon>
           <CheckM />

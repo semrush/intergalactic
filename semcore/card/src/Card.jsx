@@ -22,11 +22,11 @@ class CardRoot extends Component {
 
     return sstyled(styles)(
       <SCard render={Box}>
-        {advancedMode ?
-            (
+        {advancedMode
+          ? (
               <Children />
-            ) :
-            (
+            )
+          : (
               <Card.Body>
                 <Children />
               </Card.Body>

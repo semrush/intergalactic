@@ -1,7 +1,6 @@
 import React from 'react';
-import {ButtonTrigger} from '@semcore/base-trigger';
+import { ButtonTrigger } from '@semcore/base-trigger';
 import { Flex, Box } from '@semcore/flex-box';
-
 
 const Demo = () => (
   <Flex direction='column' gap={3}>
@@ -10,7 +9,7 @@ const Demo = () => (
       <ButtonTrigger loading disabled data-test-id='disabled-trigger'>Disabled</ButtonTrigger>
     </Flex>
     <Flex gap={2} justifyContent='flex-start'>
-      <ButtonTrigger  loading state='normal' data-test-id='normal-state-trigger'>Normal state</ButtonTrigger>
+      <ButtonTrigger loading state='normal' data-test-id='normal-state-trigger'>Normal state</ButtonTrigger>
       <ButtonTrigger loading state='valid' data-test-id='valid-state-trigger'>Valid state</ButtonTrigger>
       <ButtonTrigger loading state='invalid' data-test-id='invalid-state-trigger'>Invalid state</ButtonTrigger>
     </Flex>
@@ -21,7 +20,5 @@ const Demo = () => (
     </Flex>
   </Flex>
 );
-
-
 
 export default Demo;

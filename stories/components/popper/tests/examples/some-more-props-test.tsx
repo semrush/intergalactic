@@ -26,7 +26,7 @@ const Demo = () => (
       <DropdownMenu.Popper
         p={5}
         data-testid='popper'
-        aria-label={'Select popper'}
+        aria-label='Select popper'
         popperMargin={30}
       >
         <Input w={240} data-testid='input-in-popper'>

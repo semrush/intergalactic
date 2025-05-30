@@ -5,8 +5,8 @@ import { Text } from '@semcore/typography';
 
 const contentBLocks = [
   'Cats walk like camels and giraffes: They move both of their right feet first, then move both of their left feet. No other animals walk this way.',
-  "According to Guinness World Records, a Great Dane named Zeus is the world's tallest male dog. Zeus is 3 feet, 5.18 inches tall.",
-  "Since hamsters are nocturnal, they naturally sleep more during the day and are more active at twilight. Don't wake them up to play.",
+  'According to Guinness World Records, a Great Dane named Zeus is the world\'s tallest male dog. Zeus is 3 feet, 5.18 inches tall.',
+  'Since hamsters are nocturnal, they naturally sleep more during the day and are more active at twilight. Don\'t wake them up to play.',
 ];
 
 const Demo = () => {

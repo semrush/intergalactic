@@ -42,8 +42,8 @@ export default defineConfig({
             { src: 'src/**/*.shadow.css', dest: 'lib/esm' },
           ],
           flatten: false,
-        })
-      ]
+        }),
+      ],
     },
   },
 }) as UserConfig;

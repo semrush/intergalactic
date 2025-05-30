@@ -10,7 +10,9 @@ const renderTab = (tab: string) => {
   } else if (tab === 'activity') {
     return (
       <>
-        <TabPanel.Item.Text>Activity</TabPanel.Item.Text> <Counter>23</Counter>
+        <TabPanel.Item.Text>Activity</TabPanel.Item.Text>
+        {' '}
+        <Counter>23</Counter>
       </>
     );
   } else if (tab === 'users') {
@@ -66,7 +68,7 @@ const Demo = () => {
       value={currentTab}
       onChange={(tab: string | number | boolean) => setCurrentTab(tab.toString())}
       onDnD={handleDnD}
-      aria-label={'drag-and-drop container'}
+      aria-label='drag-and-drop container'
     >
       {tabs.map((tab) => (
         <DnD.Draggable

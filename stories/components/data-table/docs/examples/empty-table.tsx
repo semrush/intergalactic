@@ -12,9 +12,9 @@ const Demo = () => {
           <Button mt={4}>Clear filters</Button>
         </NoData>
       )}
-      aria-label={'Empty table example'}
-      defaultGridTemplateColumnWidth={'auto'}
-      wMax={'800px'}
+      aria-label='Empty table example'
+      defaultGridTemplateColumnWidth='auto'
+      wMax='800px'
       headerProps={{
         sticky: true,
       }}

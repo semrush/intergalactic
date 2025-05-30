@@ -30,7 +30,9 @@ const Demo = () => {
   const refreshBtnRef = React.useRef<HTMLButtonElement>(null);
 
   React.useEffect(() => {
-    refreshBtnVisible && refreshBtnRef.current?.focus();
+    if (refreshBtnVisible) {
+      refreshBtnRef.current?.focus();
+    }
   }, [refreshBtnVisible]);
 
   const showRefreshButton = () => setTimeout(() => setRefreshBtnVisible(true), 300);
@@ -47,7 +49,6 @@ const Demo = () => {
       setStatus('error');
     }
   }, []);
-  
 
   const handleVisibleChange = React.useCallback((visible: boolean, rating: number) => {
     setVisible(visible);
@@ -62,12 +63,10 @@ const Demo = () => {
     <>
       <FeedbackRating
         notificationVisible={notificationVisible}
-        notificationText={'Is it working well for you?'}
-        learnMoreLink={
-          'https://developer.semrush.com/intergalactic/patterns/feedback-rating/feedback-rating-a11y'
-        }
-        header={'Great! What do you like the most?'}
-        submitText={'Send feedback'}
+        notificationText='Is it working well for you?'
+        learnMoreLink='https://developer.semrush.com/intergalactic/patterns/feedback-rating/feedback-rating-a11y'
+        header='Great! What do you like the most?'
+        submitText='Send feedback'
         initialValues={initValue}
         rating={rating}
         visible={visible}
@@ -75,7 +74,7 @@ const Demo = () => {
         onNotificationClose={handleCloseNotification}
         status={status}
         onSubmit={handleSubmit}
-        errorFeedbackEmail={'some@default.email'}
+        errorFeedbackEmail='some@default.email'
         formConfig={[
           {
             key: 'option1',
@@ -89,7 +88,7 @@ const Demo = () => {
           },
           {
             key: 'option3',
-            label: "It's easier to use for evaluation",
+            label: 'It\'s easier to use for evaluation',
             type: 'checkbox',
           },
           {
@@ -105,7 +104,8 @@ const Demo = () => {
             validate: FeedbackRating.validate.email('Please enter valid email'),
             description: (
               <>
-                We will only use this email to respond to you on your feedback.{' '}
+                We will only use this email to respond to you on your feedback.
+                {' '}
                 <Link href='https://www.semrush.com/company/legal/privacy-policy/'>
                   Privacy Policy
                 </Link>
@@ -115,11 +115,13 @@ const Demo = () => {
         ]}
       />
 
-      {refreshBtnVisible ? (
-        <Button ref={refreshBtnRef} use='tertiary' onClick={() => window.location.reload()}>
-          Reload page
-        </Button>
-      ) : null}
+      {refreshBtnVisible
+        ? (
+            <Button ref={refreshBtnRef} use='tertiary' onClick={() => window.location.reload()}>
+              Reload page
+            </Button>
+          )
+        : null}
     </>
   );
 };

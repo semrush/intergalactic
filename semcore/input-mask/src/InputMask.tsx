@@ -367,11 +367,11 @@ class Value extends Component<InputMaskValueProps, {}, {}, typeof Value.enhance>
                   {this.state.lastConformed && (
                     <SMaskHidden data-content={this.state.lastConformed.userInput} />
                   )}
-                  {this.state.lastConformed ?
-                      (
+                  {this.state.lastConformed
+                    ? (
                         <SMaskVisible data-content={this.state.lastConformed.maskOnly} />
-                      ) :
-                      (
+                      )
+                    : (
                         <SPlaceholder data-content={placeholder} />
                       )}
                 </SMask>

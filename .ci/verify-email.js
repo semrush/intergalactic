@@ -19,10 +19,10 @@ const gitSignatureEnabled = execSync('git config commit.gpgsign', { encoding: 'u
 if (gitSignatureEnabled !== 'true\n') {
   log(pc.red(`Seems like you have't enabled signing of all your commits in git. How to fix it:`));
   log(
-    "1. Generate GPG key if you haven't yet: https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key",
+    '1. Generate GPG key if you haven\'t yet: https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key',
   );
   log(
-    "2. Tell git about your signing key (not X.509 key!) if you haven't yet: https://docs.github.com/en/authentication/managing-commit-signature-verification/telling-git-about-your-signing-key",
+    '2. Tell git about your signing key (not X.509 key!) if you haven\'t yet: https://docs.github.com/en/authentication/managing-commit-signature-verification/telling-git-about-your-signing-key',
   );
   log('3. Run "git config --global commit.gpgsign true"\n');
   process.exit(1);

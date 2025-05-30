@@ -128,9 +128,9 @@ class SliderRatingRoot extends Component<
       });
     }
 
-    return hoveredIndex === -1 ?
-        getI18nText('FeedbackRating.SliderRating.aria-valuetext.empty') :
-        getI18nText('FeedbackRating.SliderRating.aria-valuetext', {
+    return hoveredIndex === -1
+      ? getI18nText('FeedbackRating.SliderRating.aria-valuetext.empty')
+      : getI18nText('FeedbackRating.SliderRating.aria-valuetext', {
           selectedRating: hoveredIndex + 1,
           max: MAX,
         });
@@ -160,11 +160,11 @@ class SliderRatingRoot extends Component<
     const hoverValue = hoveredIndex + 1;
 
     const editModeLabel =
-      hoverValue > 0 || value ?
-        `${label}. ${getI18nText(
+      hoverValue > 0 || value
+        ? `${label}. ${getI18nText(
           'FeedbackRating.SliderRating.ScreenReaderOnly.sliderDescriber',
-        )}.` :
-        label;
+        )}.`
+        : label;
 
     return sstyled(styles)(
       <SSliderRating
@@ -205,11 +205,11 @@ function Star(props: StarProps) {
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
     >
-      {props.filled ?
-          (
+      {props.filled
+        ? (
             <path d='M11.646 1.214a.4.4 0 0 1 .708 0l3.314 6.293 7 1.214a.4.4 0 0 1 .219.673l-4.952 5.104 1.012 7.044a.4.4 0 0 1-.573.416L12 18.818l-6.374 3.14a.4.4 0 0 1-.572-.416l1.01-7.044-4.95-5.104a.4.4 0 0 1 .218-.673l7-1.214 3.314-6.293Z' />
-          ) :
-          (
+          )
+        : (
             <path
               d='M14.358 9.31 12 4.834 9.642 9.31l-4.985.864 3.526 3.634-.72 5.014L12 16.588l4.537 2.235-.72-5.014 3.526-3.634-4.985-.864Zm8.31-.59a.4.4 0 0 1 .219.674l-4.952 5.104 1.012 7.044a.4.4 0 0 1-.573.416L12 18.818l-6.374 3.14a.4.4 0 0 1-.572-.416l1.01-7.044-4.95-5.104a.4.4 0 0 1 .218-.673l7-1.214 3.314-6.293a.4.4 0 0 1 .708 0l3.314 6.293 7 1.214Z'
               fillRule='evenodd'

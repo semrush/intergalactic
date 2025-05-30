@@ -10,16 +10,23 @@ const Demo = () => {
   return (
 
     <>
-      <DataTable data={data} aria-label={'Header with different content'} hMax={200}
-      headerProps={{
-        sticky: true,
-      }}
+      <DataTable
+        data={data}
+        aria-label='Header with different content'
+        hMax={200}
+        headerProps={{
+          sticky: true,
+        }}
         columns={[
           {
             name: 'keyword', gtcWidth: '65px', sortable: true,
-            children: (<Text noWrap>,
-              Keyword <Text color='text-secondary'>(Keyword 1-100)</Text>
-            </Text>)
+            children: (
+              <Text noWrap>
+                ,
+                Keyword
+                <Text color='text-secondary'>(Keyword 1-100)</Text>
+              </Text>
+            ),
           },
           {
             name: 'kd',
@@ -30,7 +37,7 @@ const Demo = () => {
                 <Hint tag={WhatsAppM} title='AmazonM non interactive' color='icon-secondary-neutral' />
                 <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
               </Text>
-            )
+            ),
           },
           {
             name: 'cpc', gtcWidth: '85px',
@@ -40,7 +47,7 @@ const Demo = () => {
                 <Hint tag={WhatsAppM} title='AmazonM non interactive' color='icon-secondary-neutral' />
                 <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
               </>
-            )
+            ),
           },
           { name: 'cpc', gtcWidth: '90px', children: 'CPC CPC CPC CPC CPC' },
           { name: 'vol', children: 'Vol.', gtcWidth: 'minmax(0, 300px)' },
@@ -52,7 +59,7 @@ const Demo = () => {
                 Marketing SEO
                 <Text color='text-secondary'>(Marketing SEO Marketing SEO 1-100)</Text>
               </Text>
-            )
+            ),
           }, {
             name: 'md',
             gtcWidth: '90px',
@@ -61,7 +68,7 @@ const Demo = () => {
                 Marketing SEO
                 <Text color='text-secondary'>(Marketing SEO Marketing SEO 1-100)</Text>
               </Text>
-            )
+            ),
           },
         ]}
       />

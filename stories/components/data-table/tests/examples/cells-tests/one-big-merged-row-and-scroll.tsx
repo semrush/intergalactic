@@ -47,14 +47,14 @@ const data = [
       },
     ],
   },
-  
+
 ];
 
 const Demo = () => {
   return (
     <DataTable
       data={data}
-      aria-label="Rows grouping"
+      aria-label='Rows grouping'
       h={200}
       columns={[
         { name: 'keyword', children: 'Keyword' },

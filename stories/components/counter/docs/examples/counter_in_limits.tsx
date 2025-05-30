@@ -16,7 +16,10 @@ const Demo = () => (
         {warning ? <WarningM color='icon-primary-warning' /> : null}
         <Text size={200} ml={1} bold aria-hidden>
           {limitsUsed}
-          <Text color='text-secondary'>/{limitsMax}</Text>
+          <Text color='text-secondary'>
+            /
+            {limitsMax}
+          </Text>
         </Text>
       </Flex>
     </Flex>

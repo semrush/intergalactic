@@ -12,46 +12,48 @@ const Demo = () => {
   const containerRect = useResizeObserver(containerRef);
 
   return (
-    <DataTable data={data} aria-label={'Table title'}
+    <DataTable
+      data={data}
+      aria-label='Table title'
       columns={[
-        {name: 'keyword', children: 'Keyword'},
-        {name: 'kd', children: 'KD,%', gtcWidth: 'minmax(70px, auto)', justifyContent: 'flex-end'},
-        {name: 'cpc', children: 'CPC', gtcWidth: 'minmax(70px, auto)', justifyContent: 'flex-end'},
-        {name: 'url', children: 'URL', gtcWidth: 'minmax(auto, 200px)', ref: containerRef},
+        { name: 'keyword', children: 'Keyword' },
+        { name: 'kd', children: 'KD,%', gtcWidth: 'minmax(70px, auto)', justifyContent: 'flex-end' },
+        { name: 'cpc', children: 'CPC', gtcWidth: 'minmax(70px, auto)', justifyContent: 'flex-end' },
+        { name: 'url', children: 'URL', gtcWidth: 'minmax(auto, 200px)', ref: containerRef },
       ]}
 
-        renderCell={(props) => {
-          if (props.columnName === 'url') {
-            const pageUrl = props.value.toString();
+      renderCell={(props) => {
+        if (props.columnName === 'url') {
+          const pageUrl = props.value.toString();
 
-            return (
-                <Link
-                    href={pageUrl}
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    color='text-primary'
-                    w='100%'
-                    wMin={0}
-                    style={{ display: 'inline-flex', alignItems: 'center' }}
+          return (
+            <Link
+              href={pageUrl}
+              target='_blank'
+              rel='noopener noreferrer'
+              color='text-primary'
+              w='100%'
+              wMin={0}
+              style={{ display: 'inline-flex', alignItems: 'center' }}
+            >
+              <Link.Text wMin={0}>
+                <Ellipsis
+                  trim='middle'
+                  // onVisibleChange={() => alert('Hi!')}
+                  containerRect={containerRect}
+                  containerRef={containerRef}
                 >
-                  <Link.Text wMin={0}>
-                    <Ellipsis
-                        trim='middle'
-                        //onVisibleChange={() => alert('Hi!')}
-                        containerRect={containerRect}
-                        containerRef={containerRef}
-                    >
-                      {removeProtocol(pageUrl)}
-                    </Ellipsis>
-                  </Link.Text>
-                  <Link.Addon tag={LinkExternalM} color='icon-secondary-neutral' />
-                </Link>
-            );
-          }
+                  {removeProtocol(pageUrl)}
+                </Ellipsis>
+              </Link.Text>
+              <Link.Addon tag={LinkExternalM} color='icon-secondary-neutral' />
+            </Link>
+          );
+        }
 
-          return props.defaultRender();
-        }}
-      />
+        return props.defaultRender();
+      }}
+    />
   );
 };
 

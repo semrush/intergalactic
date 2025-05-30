@@ -75,7 +75,9 @@ const Demo = () => {
     onChange: (_v: string, e: React.SyntheticEvent) => {
       // important: keep call order, otherwise validation breaks
       onChange(e);
-      hasError() && trigger();
+      if (hasError()) {
+        trigger();
+      }
     },
     ...restField,
   };
@@ -86,8 +88,15 @@ const Demo = () => {
       <Modal visible={visible} onClose={handleClose} w={536}>
         <Modal.Title mb={4}>Delete project?</Modal.Title>
         <Text size={300} mb={4} tag='p'>
-          This will <Text tag='strong'>delete</Text> the following campaigns set up for{' '}
-          <Text tag='strong'>test.com</Text> with all their data:
+          This will
+          {' '}
+          <Text tag='strong'>delete</Text>
+          {' '}
+          the following campaigns set up for
+          {' '}
+          <Text tag='strong'>test.com</Text>
+          {' '}
+          with all their data:
         </Text>
         <List size={300} mb={4}>
           <List.Item>Position Tracking</List.Item>
@@ -99,7 +108,8 @@ const Demo = () => {
         <form noValidate onSubmit={handleSubmit(onSubmit)}>
           <Flex style={warningBlockStyles} direction='column'>
             <Text size={300} mb={2} tag='label' htmlFor={fieldName}>
-              Confirm deletion by typing the project name{' '}
+              Confirm deletion by typing the project name
+              {' '}
               <Text tag='strong' color='red-500'>
                 Test
               </Text>
@@ -107,7 +117,7 @@ const Demo = () => {
 
             <Tooltip
               placement='right'
-              interaction={'none'}
+              interaction='none'
               theme='warning'
               animationsDisabled={true}
             >
@@ -120,8 +130,8 @@ const Demo = () => {
                   tag={Input.Value}
                   {...field}
                   id={fieldName}
-                  placeholder={'Enter project name'}
-                  w={'100%'}
+                  placeholder='Enter project name'
+                  w='100%'
                   onFocus={() => setFocusedFieldName(fieldName)}
                   aria-invalid={hasError()}
                   aria-describedby={showErrorTooltip() ? 'form-project-error' : undefined}
@@ -130,7 +140,7 @@ const Demo = () => {
             </Tooltip>
           </Flex>
 
-          <Flex direction={'row'}>
+          <Flex direction='row'>
             <Button use='primary' theme='danger' size='l' type='submit'>
               Delete
             </Button>

@@ -14,12 +14,12 @@ const Demo = () => {
         Your opinion
       </Text>
       <Pills mt={2} value={choice} onChange={setChoice} aria-labelledby='pills-basic-usage'>
-        <Pills.Item value={'like'}>
+        <Pills.Item value='like'>
           <Pills.Item.Addon tag={ThumbUpM} />
           <Pills.Item.Text>Like</Pills.Item.Text>
         </Pills.Item>
         <Pills.Item value={null}>Don't care</Pills.Item>
-        <Pills.Item value={'dislike'}>
+        <Pills.Item value='dislike'>
           <Pills.Item.Addon tag={ThumbDownM} />
           <Pills.Item.Text>Dislike</Pills.Item.Text>
         </Pills.Item>

@@ -86,9 +86,9 @@ export const ListIllustrations = ({ data, ...props }) => {
               aria-haspopup='dialog'
               aria-expanded={selectedIllustration === illustration.name}
               aria-controls={
-                selectedIllustration === illustration.name ?
-                  `${illustration.name}-dialog` :
-                  undefined
+                selectedIllustration === illustration.name
+                  ? `${illustration.name}-dialog`
+                  : undefined
               }
               onClick={() => {
                 setSelectedIllustration(illustration.name);

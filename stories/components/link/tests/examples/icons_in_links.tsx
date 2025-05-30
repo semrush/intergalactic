@@ -64,13 +64,13 @@ const Demo = () => {
         <Link addonLeft={VideoListM} aria-label='addonLeft M' href='#' />
         <Link addonLeft={VideoListL} aria-label='addonLeft L' href='#' />
 
-        <Link href='#' tag={Hint} title={'tag={Hint} Go to the next pageM'}>
+        <Link href='#' tag={Hint} title='tag={Hint} Go to the next pageM'>
           <Link.Addon>
             <VideoListM />
           </Link.Addon>
         </Link>
 
-        <Link href='#' tag={Hint} title={'tag={Hint} Go to the next pageL'} color='text-critical'>
+        <Link href='#' tag={Hint} title='tag={Hint} Go to the next pageL' color='text-critical'>
           <Link.Addon>
             <VideoListL />
           </Link.Addon>
@@ -79,7 +79,7 @@ const Demo = () => {
         <Link
           href='#'
           tag={Hint}
-          title={'tag={Hint} Go to the next pageL'}
+          title='tag={Hint} Go to the next pageL'
           color='text-critical'
           disabled
         >

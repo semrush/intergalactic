@@ -53,9 +53,9 @@ export const intergalacticI18nUnplugin: UnpluginInstance<Options> = createUnplug
             }
           }
         }
-        const filteredLocales = options.includeLocales ?
-          options.includeLocales :
-            allLocales.filter((locale) => !options?.excludeLocales?.includes(locale));
+        const filteredLocales = options.includeLocales
+          ? options.includeLocales
+          : allLocales.filter((locale) => !options?.excludeLocales?.includes(locale));
         const syncLocales = filteredLocales.filter((locale) =>
           (options?.bundleLocales ?? ['en']).includes(locale),
         );

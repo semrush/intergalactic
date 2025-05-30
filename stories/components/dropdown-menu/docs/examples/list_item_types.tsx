@@ -7,7 +7,12 @@ import DesktopIconM from '@semcore/icon/Desktop/m';
 const TooltipContent = () => {
   const tooltipIndex = React.useContext(DropdownMenu.selectedIndexContext);
 
-  return <div>Some tooltip for {tooltipIndex + 1}</div>;
+  return (
+    <div>
+      Some tooltip for
+      {tooltipIndex + 1}
+    </div>
+  );
 };
 
 const Demo = () => {
@@ -15,8 +20,8 @@ const Demo = () => {
     <DropdownMenu>
       <DropdownMenu.Trigger tag={Button}>Explore menu item types</DropdownMenu.Trigger>
       <DropdownMenu.Menu>
-        <Tooltip placement={'right'} timeout={[0, 50]}>
-          <DropdownMenu.Group title={'Menu title'} subTitle={'Subtitle'}>
+        <Tooltip placement='right' timeout={[0, 50]}>
+          <DropdownMenu.Group title='Menu title' subTitle='Subtitle'>
             <DropdownMenu.Item tag={Tooltip.Trigger}>Menu item 1</DropdownMenu.Item>
             <DropdownMenu.Item tag={Tooltip.Trigger}>
               <DropdownMenu.Item.Content>Menu item 2</DropdownMenu.Item.Content>

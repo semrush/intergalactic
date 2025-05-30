@@ -31,7 +31,7 @@ const Demo = () => {
       </TabLine>
       {
         [
-          <div id='tab-panel-3-1' role='tabpanel' aria-labelledby='tab-label-3-1' tabIndex={-1}>
+          <div key='tab-panel-3-1' id='tab-panel-3-1' role='tabpanel' aria-labelledby='tab-label-3-1' tabIndex={-1}>
             <h3>Cats</h3>
             <p>
               They are the only creatures that can simultaneously demand your attention and ignore
@@ -39,6 +39,7 @@ const Demo = () => {
             </p>
           </div>,
           <div
+            key='tab-panel-3-2'
             id='tab-panel-3-2'
             aria-hidden='true'
             role='tabpanel'
@@ -52,6 +53,7 @@ const Demo = () => {
             </p>
           </div>,
           <div
+            key='tab-panel-3-3'
             id='tab-panel-3-3'
             aria-hidden='true'
             role='tabpanel'

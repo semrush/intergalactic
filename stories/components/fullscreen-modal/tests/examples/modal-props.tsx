@@ -8,18 +8,18 @@ const Demo = () => {
   return (
     <>
       <Button onClick={() => setVisible(true)}>Open FullscreenModal</Button>
-      <FullscreenModal visible={visible} onClose={() => setVisible(false)} closable = {true} duration ={500}  aria-describedby="my-modal-description">
+      <FullscreenModal visible={visible} onClose={() => setVisible(false)} closable={true} duration={500} aria-describedby='my-modal-description'>
         <FullscreenModal.Back>Go to Tool Name</FullscreenModal.Back>
         <FullscreenModal.Header
-          title="Modal Window Title"
-          description={
-            <FullscreenModal.Description id="my-modal-description">
+          title='Modal Window Title'
+          description={(
+            <FullscreenModal.Description id='my-modal-description'>
               Additional information
             </FullscreenModal.Description>
-          }
+          )}
           w={300}
-        />    
-       <FullscreenModal.Body/>
+        />
+        <FullscreenModal.Body />
         <FullscreenModal.Footer />
       </FullscreenModal>
     </>

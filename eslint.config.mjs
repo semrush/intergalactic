@@ -11,6 +11,10 @@ export default defineConfig([
     '**/dist/',
     '**/cache/',
     '**/node_modules/',
+    '**/storybook-static',
+    '**/test-results/',
+    '**/allure-results/',
+    '**/.cache/',
     'semcore/table/',
     'semcore/stylelint-plugin',
     'semcore/illustration/**/*.mjs',
@@ -50,7 +54,7 @@ export default defineConfig([
 
       // stylistic
       '@stylistic/jsx-quotes': ['error', 'prefer-single'],
-      '@stylistic/operator-linebreak': ['error', 'after'],
+      '@stylistic/operator-linebreak': ['error', 'after', { overrides: { '?': 'before', ':': 'before' } }],
 
       // enable after migration
       '@typescript-eslint/ban-ts-comment': 'off',

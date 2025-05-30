@@ -27,7 +27,6 @@ const Demo = () => {
         </FullscreenModal.Body>
         <FullscreenModal.Footer justifyContent='center' alignItems='center'>
 
-
           <Button size='l' use='primary'>
             <Button.Text mr={2}>Next content</Button.Text>
 

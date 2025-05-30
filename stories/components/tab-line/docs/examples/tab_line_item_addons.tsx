@@ -46,7 +46,7 @@ const Demo = () => {
       </TabLine>
       {
         [
-          <div id='tab-panel-4-1' role='tabpanel' aria-labelledby='tab-label-4-1' tabIndex={-1}>
+          <div key='tab-panel-4-1' id='tab-panel-4-1' role='tabpanel' aria-labelledby='tab-label-4-1' tabIndex={-1}>
             <h3>Facebook</h3>
             <p>
               It's where your aunt's cat has more followers than you, and your high school nemesis
@@ -54,6 +54,7 @@ const Demo = () => {
             </p>
           </div>,
           <div
+            key='tab-panel-4-2'
             id='tab-panel-4-2'
             aria-hidden='true'
             role='tabpanel'
@@ -67,6 +68,7 @@ const Demo = () => {
             </p>
           </div>,
           <div
+            key='tab-panel-4-3'
             id='tab-panel-4-3'
             aria-hidden='true'
             role='tabpanel'

@@ -32,7 +32,7 @@ const Demo = () => {
       data={sortedData}
       sort={sort}
       onSortChange={handleSortChange}
-      aria-label={'Expanding column'}
+      aria-label='Expanding column'
       columns={[
         { name: 'keyword', children: 'Keyword Keyword' },
         { name: 'kd', children: 'Difficulty Difficulty' },

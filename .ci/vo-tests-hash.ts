@@ -26,7 +26,7 @@ export const generateVoTestsHash = async () => {
       const lines = content.split('\n');
       for (const line of lines) {
         if (!line.includes('website/docs')) continue;
-        const standPath = line.substring(line.indexOf("'website/docs") + 1, line.lastIndexOf("'"));
+        const standPath = line.substring(line.indexOf('\'website/docs') + 1, line.lastIndexOf('\''));
         if (standPath.endsWith('.jsx') || standPath.endsWith('.tsx')) {
           additionalFiles.push(standPath);
         }

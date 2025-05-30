@@ -328,11 +328,11 @@ const ConfirmControl: React.FC<ConfirmControlAsProps> = (props) => {
 
   return sstyled(props.styles)(
     <SAddon render={Box} onKeyDown={handleKeydown}>
-      {hasChildren ?
-          (
+      {hasChildren
+        ? (
             <Children />
-          ) :
-          (
+          )
+        : (
             <ButtonLink
               addonLeft={(props.icon as any) ?? CheckM}
               use='secondary'
@@ -379,11 +379,11 @@ const CancelControl: React.FC<CancelControlAsProps> = (props) => {
 
   return sstyled(props.styles)(
     <SAddon render={Box} onKeyDown={handleKeydown}>
-      {hasChildren ?
-          (
+      {hasChildren
+        ? (
             <Children />
-          ) :
-          (
+          )
+        : (
             <ButtonLink
               use='secondary'
               addonLeft={(props.icon as any) ?? CloseM}

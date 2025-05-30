@@ -11,7 +11,9 @@ const Demo = () => {
           <Accordion.Item.Toggle pb={2}>
             <Accordion.Item.ToggleButton>
               <Accordion.Item.Chevron mr={2} />
-              Section {index + 1}
+              Section
+              {' '}
+              {index + 1}
             </Accordion.Item.ToggleButton>
           </Accordion.Item.Toggle>
           <Accordion.Item.Collapse>

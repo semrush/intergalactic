@@ -11,7 +11,9 @@ const Demo = () => {
     manager.add({
       children: (
         <>
-          Link was moved to <Link href='#'>Cats from outer space group</Link>
+          Link was moved to
+          {' '}
+          <Link href='#'>Cats from outer space group</Link>
         </>
       ),
       action: <Button theme='invert'>Undo</Button>,

@@ -18,7 +18,7 @@ const Demo = () => {
         <Text size={200} mb={4} tag='p'>
           Your changes will be lost if you don't save them.
         </Text>
-        <iframe title={'test iframe in modal'} src={html} />
+        <iframe title='test iframe in modal' src={html} />
         <Button use='primary' theme='success' size='l' onClick={handleClose}>
           Save changes
         </Button>
