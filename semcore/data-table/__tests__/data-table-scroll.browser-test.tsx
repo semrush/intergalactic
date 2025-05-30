@@ -21,8 +21,8 @@ test.describe('Vertical Scroll', () => {
   test('Verify Keyboard scroll when Sticky header and no interactive in cells', async ({
     page,
   }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/scroll-tests/scroll-in-table-sticky.tsx';
+    const standPath
+      = 'stories/components/data-table/tests/examples/scroll-tests/scroll-in-table-sticky.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -37,8 +37,8 @@ test.describe('Vertical Scroll', () => {
   });
 
   test('Verify Mouse scroll when Sticky header and no interactive in cells', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples//scroll-tests/scroll-in-table-sticky.tsx';
+    const standPath
+      = 'stories/components/data-table/tests/examples//scroll-tests/scroll-in-table-sticky.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
@@ -54,8 +54,8 @@ test.describe('Vertical Scroll', () => {
   });
 
   test('Verify Keyboard scroll when Sticky header and interactive in cells', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/header-tests/table-with-1tf-and diff-elements.tsx';
+    const standPath
+      = 'stories/components/data-table/tests/examples/header-tests/table-with-1tf-and diff-elements.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -71,8 +71,8 @@ test.describe('Vertical Scroll', () => {
   });
 
   test('Verify mouse scroll when Sticky header and interactive in cells', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/header-tests/table-with-1tf-and diff-elements.tsx';
+    const standPath
+      = 'stories/components/data-table/tests/examples/header-tests/table-with-1tf-and diff-elements.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
@@ -120,8 +120,8 @@ test.describe('Vertical Scroll', () => {
   });
 
   test('Verify keyboard when sticky header with top props', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/scroll-tests/scroll-in-top-header.tsx';
+    const standPath
+      = 'stories/components/data-table/tests/examples/scroll-tests/scroll-in-top-header.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -147,8 +147,8 @@ test.describe('Vertical Scroll', () => {
 
 test.describe('Horizontal Scroll', () => {
   test('Verify keyboard scroll when no fixed columns', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/scroll-tests/horizontal-scroll.tsx';
+    const standPath
+      = 'stories/components/data-table/tests/examples/scroll-tests/horizontal-scroll.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -181,8 +181,8 @@ test.describe('Horizontal Scroll', () => {
   });
 
   test('Verify mouse scroll when no fixed columns', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/scroll-tests/horizontal-scroll.tsx';
+    const standPath
+      = 'stories/components/data-table/tests/examples/scroll-tests/horizontal-scroll.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
@@ -248,8 +248,8 @@ test.describe('Horizontal Scroll', () => {
   });
 
   test('Verify keyboard scroll when columns with differend width fixed', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/scroll-tests/fixed-column-with-d-ff-width.tsx';
+    const standPath
+      = 'stories/components/data-table/tests/examples/scroll-tests/fixed-column-with-d-ff-width.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
     const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]').first();
@@ -265,8 +265,8 @@ test.describe('Horizontal Scroll', () => {
   });
 
   test('Verify keyboard scroll when multilevel parent fixed', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/scroll-tests/horizontal-scroll-fixed-group.tsx';
+    const standPath
+      = 'stories/components/data-table/tests/examples/scroll-tests/horizontal-scroll-fixed-group.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -295,8 +295,8 @@ test.describe('Horizontal Scroll', () => {
   });
 
   test('Verify mouse scroll when multilevel parent fixed', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/scroll-tests/horizontal-scroll-fixed-group.tsx';
+    const standPath
+      = 'stories/components/data-table/tests/examples/scroll-tests/horizontal-scroll-fixed-group.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
@@ -322,8 +322,8 @@ test.describe('Horizontal Scroll', () => {
   });
 
   test('Verify keyboard when vertical and horizontal presents', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/scroll-tests/multiple-scrolls.tsx';
+    const standPath
+      = 'stories/components/data-table/tests/examples/scroll-tests/multiple-scrolls.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -353,8 +353,8 @@ test.describe('Horizontal Scroll', () => {
   });
 
   test('Verify mouse when vertical and horizontal presents', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/scroll-tests/multiple-scrolls.tsx';
+    const standPath
+      = 'stories/components/data-table/tests/examples/scroll-tests/multiple-scrolls.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 

@@ -37,7 +37,7 @@ describe('DropdownMenu', () => {
     const input = getByTestId('input');
 
     fireEvent.keyDown(input, { key: ' ', which: 32, keyCode: 32 });
-    //TODO, because input.value all time print empty string
+    // TODO, because input.value all time print empty string
     expect(spy).not.toHaveBeenCalled();
   });
 
@@ -126,7 +126,7 @@ describe('DropdownMenu', () => {
         </DropdownMenu.Trigger>
         <DropdownMenu.Menu>
           <DropdownMenu.Item>
-            <DropdownMenu visible={true} inlineActions placement={'right'}>
+            <DropdownMenu visible={true} inlineActions placement='right'>
               {({ getListProps, getTriggerProps }) => {
                 const listProps = getListProps();
                 const triggerProps = getTriggerProps();
@@ -137,7 +137,7 @@ describe('DropdownMenu', () => {
                       Item 4
                     </DropdownMenu.Item.Content>
                     <Box {...listProps}>
-                      <DropdownMenu.Item tag={Button} aria-label={'Add new'} onClick={spy} />
+                      <DropdownMenu.Item tag={Button} aria-label='Add new' onClick={spy} />
                     </Box>
                   </>
                 );
@@ -157,7 +157,7 @@ describe('DropdownMenu', () => {
     expect(spy).toHaveBeenCalledOnce();
   });
 
-  test.sequential("doesn't autofocus trigger when closed on just rerender", async ({ expect }) => {
+  test.sequential('doesn\'t autofocus trigger when closed on just rerender', async ({ expect }) => {
     const Component = () => {
       return (
         <DropdownMenu>
@@ -393,8 +393,8 @@ describe('DropdownMenu', () => {
   test.sequential('should have shadow style', async ({ task }) => {
     const component = (
       <DropdownMenu visible disablePortal>
-        <DropdownMenu.Menu hMax={'180px'}>
-          <DropdownMenu.Group title={'List heading'}>
+        <DropdownMenu.Menu hMax='180px'>
+          <DropdownMenu.Group title='List heading'>
             <DropdownMenu.Item>Item 1</DropdownMenu.Item>
             <DropdownMenu.Item>Item 2</DropdownMenu.Item>
             <DropdownMenu.Item>Item 3</DropdownMenu.Item>

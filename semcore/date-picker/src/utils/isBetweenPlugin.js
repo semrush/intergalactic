@@ -11,10 +11,10 @@ export default (function (_o, c, d) {
     const dAi = i[0] === '(';
     const dBi = i[1] === ')';
     return (
-      ((dAi ? this.isAfter(dA, u) : !this.isBefore(dA, u)) &&
-        (dBi ? this.isBefore(dB, u) : !this.isAfter(dB, u))) ||
-      ((dAi ? this.isBefore(dA, u) : !this.isAfter(dA, u)) &&
-        (dBi ? this.isAfter(dB, u) : !this.isBefore(dB, u)))
+      ((dAi ? this.isAfter(dA, u) : !this.isBefore(dA, u))
+        && (dBi ? this.isBefore(dB, u) : !this.isAfter(dB, u)))
+      || ((dAi ? this.isBefore(dA, u) : !this.isAfter(dA, u))
+        && (dBi ? this.isAfter(dB, u) : !this.isBefore(dB, u)))
     );
   };
 });

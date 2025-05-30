@@ -42,13 +42,15 @@ class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner>
           if (e.target === focusableChildren[0] && e.shiftKey) {
             focusableChildren[focusableChildren.length - 1]?.focus();
             e.preventDefault();
-          } else if (e.target === focusableChildren[focusableChildren.length - 1] && !e.shiftKey) {
+          }
+          else if (e.target === focusableChildren[focusableChildren.length - 1] && !e.shiftKey) {
             focusableChildren[0]?.focus();
             e.preventDefault();
           }
           e.stopPropagation();
         }
-      } else if (e.key === 'Enter') {
+      }
+      else if (e.key === 'Enter') {
         e.preventDefault();
         e.stopPropagation();
         this.lockedCell[1] = true;
@@ -71,7 +73,8 @@ class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner>
 
       if (focusableChildren.length === 1) {
         focusableChildren[0].focus();
-      } else if (focusableChildren.length > 1) {
+      }
+      else if (focusableChildren.length > 1) {
         this.lockedCell = [e.currentTarget, false];
       }
     }
@@ -93,10 +96,12 @@ class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner>
     if (cell instanceof MergedColumnsCell) {
       gridArea = `${fromRow} / ${fromCol} / ${fromRow + 1} / ${fromCol + cell.columnsCount}`;
       scope = 'colgroup';
-    } else if (cell instanceof MergedRowsCell) {
+    }
+    else if (cell instanceof MergedRowsCell) {
       gridArea = `${fromRow} / ${fromCol} / ${fromRow + cell.rowsCount} / ${fromCol + 1}`;
       scope = 'rowgroup';
-    } else {
+    }
+    else {
       gridArea = `${fromRow} / ${fromCol} / ${fromRow + 1} / ${fromCol + 1}`;
     }
 
@@ -109,7 +114,7 @@ class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner>
         onKeyDown={this.handleKeyDown}
         onFocus={this.onFocusCell}
         name={cellName.toString()}
-        role={'gridcell'}
+        role='gridcell'
         aria-colindex={columnIndex + 1}
         data-grouped-by={scope}
         scope={scope}

@@ -20,6 +20,7 @@ class InputSearchRoot extends Component {
     i18n: localizedMessages,
     locale: 'en',
   };
+
   inputRef = React.createRef();
   closeIconRef = React.createRef();
 
@@ -35,8 +36,8 @@ class InputSearchRoot extends Component {
     this.handlers.value('', e);
     setTimeout(() => {
       if (
-        document.activeElement === document.body ||
-        document.activeElement === this.closeIconRef.current
+        document.activeElement === document.body
+        || document.activeElement === this.closeIconRef.current
       ) {
         this.inputRef.current?.focus();
       }
@@ -47,22 +48,23 @@ class InputSearchRoot extends Component {
     const { value, onChange, getI18nText, children: hasChildren } = this.asProps;
     return {
       value,
-      onChange: hasChildren ? onChange : undefined,
-      autoFocus: true,
-      ref: this.inputRef,
-      placeholder: getI18nText('Select.InputSearch.Value:placeholder'),
+      'onChange': hasChildren ? onChange : undefined,
+      'autoFocus': true,
+      'ref': this.inputRef,
+      'placeholder': getI18nText('Select.InputSearch.Value:placeholder'),
       'aria-label': getI18nText('Select.InputSearch.Value:aria-label'),
     };
   }
+
   getClearProps() {
     const { value, getI18nText } = this.asProps;
     return {
-      ref: this.closeIconRef,
+      'ref': this.closeIconRef,
       /* hide through css because the width of the input changes */
-      hide: !value,
+      'hide': !value,
       'aria-hidden': !value,
       'aria-label': getI18nText('clearSearch'),
-      onClick: this.handleClear,
+      'onClick': this.handleClear,
     };
   }
 
@@ -73,15 +75,17 @@ class InputSearchRoot extends Component {
 
     return sstyled(styles)(
       <SInputSearch size={size || this.context.size || 'm'} styles={styles}>
-        {hasChildren ? (
-          <Children />
-        ) : (
-          <>
-            <InputSearch.SearchIcon />
-            <Value render={InputSearch.Value} />
-            <InputSearch.Clear />
-          </>
-        )}
+        {hasChildren
+          ? (
+              <Children />
+            )
+          : (
+              <>
+                <InputSearch.SearchIcon />
+                <Value render={InputSearch.Value} />
+                <InputSearch.Clear />
+              </>
+            )}
       </SInputSearch>,
     );
   }
@@ -104,7 +108,7 @@ const SearchValue = (props) => {
 const SearchClear = (props) => {
   const SSearchClear = Root;
   const { styles } = props;
-  return sstyled(styles)(<SSearchClear render={ButtonLink} addonLeft={CloseM} use={'secondary'} />);
+  return sstyled(styles)(<SSearchClear render={ButtonLink} addonLeft={CloseM} use='secondary' />);
 };
 
 const InputSearch = createComponent(InputSearchRoot, {

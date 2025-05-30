@@ -24,11 +24,11 @@ describe('Dropdown', () => {
   test('Verify not open popper by keyboard enter if interaction none', async ({ expect }) => {
     const spy = vi.fn();
     render(
-      <Dropdown onVisibleChange={spy} interaction={'none'}>
+      <Dropdown onVisibleChange={spy} interaction='none'>
         <Dropdown.Trigger>
           <div tabIndex={0}>Select trigger</div>
         </Dropdown.Trigger>
-        <Dropdown.Popper aria-label={'Dropdown popper description'} p={4}>
+        <Dropdown.Popper aria-label='Dropdown popper description' p={4}>
           Content
         </Dropdown.Popper>
       </Dropdown>,

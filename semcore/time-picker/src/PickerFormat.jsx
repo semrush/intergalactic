@@ -1,4 +1,3 @@
-
 import { Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import { ScreenReaderOnly } from '@semcore/flex-box';
@@ -40,10 +39,10 @@ class TimePickerFormat extends Component {
         >
           {Children.origin ? <Children /> : <SPickerFormatText>{meridiem}</SPickerFormatText>}
         </SPickerFormat>
-        <ScreenReaderOnly role={'status'} aria-live={'polite'}>
+        <ScreenReaderOnly role='status' aria-live='polite'>
           {changedFormatNotice}
         </ScreenReaderOnly>
-        <ScreenReaderOnly aria-hidden={'true'} id={`${uid}_describe`}>
+        <ScreenReaderOnly aria-hidden='true' id={`${uid}_describe`}>
           {getI18nText('formatToggler')}
         </ScreenReaderOnly>
       </>,

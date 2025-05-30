@@ -1,4 +1,3 @@
-
 import { createComponent, type ComponentType, assignProps, Root, sstyled } from '@semcore/core';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
@@ -111,7 +110,7 @@ class TrendLineRoot extends Trend<TrendLineProps, typeof TrendLineRoot.enhance> 
             points={points.join(' ')}
             stroke={this.color}
             strokeWidth='4'
-            fill={'none'}
+            fill='none'
             clipPath={`url(#${uid})`}
           />
           {withArea && (
@@ -138,7 +137,7 @@ class TrendLineRoot extends Trend<TrendLineProps, typeof TrendLineRoot.enhance> 
 
           {animate && !loading && (
             <clipPath id={uid}>
-              <rect x='0' y='0' width='100%' height='100%' fill={'black'}>
+              <rect x='0' y='0' width='100%' height='100%' fill='black'>
                 <animate dur='500ms' attributeName='width' values='0;100%' />
               </rect>
             </clipPath>
@@ -149,8 +148,8 @@ class TrendLineRoot extends Trend<TrendLineProps, typeof TrendLineRoot.enhance> 
   }
 }
 
-export const TrendLine: ComponentType<TrendLineProps, {}, {}, Enhances> =
-  createComponent(TrendLineRoot);
+export const TrendLine: ComponentType<TrendLineProps, {}, {}, Enhances>
+  = createComponent(TrendLineRoot);
 
 TrendLine.displayName = 'MiniChart.TrendLine';
 

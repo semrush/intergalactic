@@ -36,7 +36,8 @@ function insert(code: any, hash: any) {
 
     if (document.head) {
       document.head.appendChild(container);
-    } else {
+    }
+    else {
       document.addEventListener('DOMContentLoaded', function () {
         document.head.appendChild(container as any);
       });
@@ -60,7 +61,8 @@ function merge(s1 = {}, s2 = {}) {
   return Object.entries(s2).reduce((acc: any, [key, value]: any) => {
     if (key.startsWith('@') || key.startsWith('--')) {
       acc[key] = value;
-    } else {
+    }
+    else {
       acc[key] = cn(acc[key], value);
     }
     return acc;
@@ -77,16 +79,19 @@ function getClassAndVars(styles: any, name: any, props: any) {
       if (key.startsWith('--')) {
         // @ts-ignore
         acc[1][value] = getPropValue(key.substring(2), props);
-      } else if (name === key) {
+      }
+      else if (name === key) {
         // @ts-ignore
         acc[0][value] = true;
-      } else {
+      }
+      else {
         const [mod, modValue] = key.split('=');
         const propValue = getPropValue(mod, props);
         if (modValue === undefined) {
           // @ts-ignore
           acc[0][value] = Boolean(propValue ?? false);
-        } else {
+        }
+        else {
           // @ts-ignore
           // biome-ignore lint/suspicious/noDoubleEquals: external library
           acc[0][value] = propValue == modValue;
@@ -103,7 +108,8 @@ function reshadowToShadow(obj: any) {
     let n = name;
     if (name.startsWith('__')) {
       n = name.replace(/^__/, '');
-    } else if (name.startsWith('_')) {
+    }
+    else if (name.startsWith('_')) {
       n = name.replace(/^_/, '').replace('_', '=');
     }
     style[n] = value;

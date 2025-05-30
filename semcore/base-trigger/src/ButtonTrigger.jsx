@@ -1,4 +1,3 @@
-
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import ChevronDown from '@semcore/icon/ChevronDown/m';
@@ -24,6 +23,7 @@ class RootButtonTrigger extends Component {
       onChangeOf: ['value'],
     }),
   ];
+
   static defaultProps = {
     chevron: true,
   };
@@ -33,6 +33,7 @@ class RootButtonTrigger extends Component {
       tag: 'span',
     };
   }
+
   getAddonProps() {
     return {
       tag: 'span',

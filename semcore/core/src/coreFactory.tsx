@@ -35,10 +35,10 @@ import {
 
 function isEmptyObject(obj: any) {
   return (
-    Object.getOwnPropertyNames(obj).length === 0 &&
-    Object.getOwnPropertySymbols && // For IE 11
-    Object.getOwnPropertySymbols(obj).length === 0 &&
-    Object.getPrototypeOf(obj) === Object.prototype
+    Object.getOwnPropertyNames(obj).length === 0
+    && Object.getOwnPropertySymbols // For IE 11
+    && Object.getOwnPropertySymbols(obj).length === 0
+    && Object.getPrototypeOf(obj) === Object.prototype
   );
 }
 
@@ -173,7 +173,8 @@ function wrapClass(OriginComponent: any, enhancements: any, Context: any) {
       );
       if (!WrapperComponent[STATIC_COMPONENT] && !isEmptyObject(ctx)) {
         return <Context.Provider value={{ ...asProps, ...ctx }}>{render}</Context.Provider>;
-      } else {
+      }
+      else {
         return render;
       }
     }
@@ -227,7 +228,8 @@ function wrapFunction(OriginComponent: any, enhancements: any, Context: any) {
 
     if (!WrapperComponent[STATIC_COMPONENT] && !isEmptyObject(ctx)) {
       return <Context.Provider value={{ ...asProps, ...ctx }}>{render}</Context.Provider>;
-    } else {
+    }
+    else {
       return render;
     }
   });
@@ -248,19 +250,23 @@ function wrapCore(OriginComponent: any, enhancements: any, Context: any) {
 
 function createComposeComponent(OriginComponent: any, Context: any, enhancements: any): any {
   if (
-    React.PureComponent.isPrototypeOf(OriginComponent) ||
-    React.Component.isPrototypeOf(OriginComponent)
+    React.PureComponent.isPrototypeOf(OriginComponent)
+    || React.Component.isPrototypeOf(OriginComponent)
   ) {
     if (OriginComponent.prototype instanceof Component) {
       return wrapClass(OriginComponent, enhancements, Context);
-    } else {
+    }
+    else {
       throw new Error('Must inherit from our component');
     }
-  } else if (typeof OriginComponent === 'function') {
+  }
+  else if (typeof OriginComponent === 'function') {
     return wrapFunction(OriginComponent, enhancements, Context);
-  } else if (OriginComponent[CORE_COMPONENT]) {
+  }
+  else if (OriginComponent[CORE_COMPONENT]) {
     return wrapCore(OriginComponent, enhancements, Context);
-  } else {
+  }
+  else {
     throw new Error('Must be a React component');
   }
 }
@@ -283,16 +289,16 @@ export type ComponentType<
 > = (FNType extends null
   ? ForwardRefComponent<ComponentProps, ContextType, UCProps>
   : FNType & { displayName: string }) & {
-  [K in keyof ChildComponentProps]: ComponentOrProps<ChildComponentProps[K], ContextType, UCProps>;
-} & {
-  [CORE_COMPONENT]: boolean;
-  [CREATE_COMPONENT]: () => ComponentType<
-    ComponentProps,
-    ChildComponentProps,
-    ContextType,
-    UCProps
-  >;
-};
+    [K in keyof ChildComponentProps]: ComponentOrProps<ChildComponentProps[K], ContextType, UCProps>;
+  } & {
+    [CORE_COMPONENT]: boolean;
+    [CREATE_COMPONENT]: () => ComponentType<
+      ComponentProps,
+      ChildComponentProps,
+      ContextType,
+      UCProps
+    >;
+  };
 
 interface ClassWithUncontrolledProps {
   uncontrolledProps(): unknown;
@@ -311,14 +317,14 @@ function createComponent<ComponentProps, ChildComponentProps = {}, ContextType =
     enhancements?: [any];
   } = {},
 ): ComponentType<
-  ComponentProps extends Component<infer Props> ? Props : ComponentProps,
-  ChildComponentProps,
-  ContextType,
-  ComponentProps extends ClassWithUncontrolledProps<any>
-    ? ReturnType<ComponentProps['uncontrolledProps']>
-    : { [key: string]: (arg: unknown) => void },
-  FNType
-> {
+    ComponentProps extends Component<infer Props> ? Props : ComponentProps,
+    ChildComponentProps,
+    ContextType,
+    ComponentProps extends ClassWithUncontrolledProps<any>
+      ? ReturnType<ComponentProps['uncontrolledProps']>
+      : { [key: string]: (arg: unknown) => void },
+    FNType
+  > {
   const {
     context = React.createContext<ContextType>({} as ContextType),
     parent = [],
@@ -381,9 +387,9 @@ function createComponent<ComponentProps, ChildComponentProps = {}, ContextType =
 function createBaseComponent<ComponentProps>(OriginComponent: any): ComponentType<ComponentProps> {
   let Component = null;
   if (
-    !React.PureComponent.isPrototypeOf(OriginComponent) &&
-    !React.Component.isPrototypeOf(OriginComponent) &&
-    typeof OriginComponent === 'function'
+    !React.PureComponent.isPrototypeOf(OriginComponent)
+    && !React.Component.isPrototypeOf(OriginComponent)
+    && typeof OriginComponent === 'function'
   ) {
     Component = React.forwardRef(OriginComponent);
     Component.displayName = OriginComponent.displayName;
@@ -392,7 +398,8 @@ function createBaseComponent<ComponentProps>(OriginComponent: any): ComponentTyp
       ...OriginComponent.defaultProps,
     };
     (Component as any)[CORE_COMPONENT] = true;
-  } else {
+  }
+  else {
     throw new Error('createBaseComponent accepts only functional component');
   }
   return Component as any;

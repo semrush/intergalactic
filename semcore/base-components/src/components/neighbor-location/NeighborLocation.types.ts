@@ -26,7 +26,7 @@ export type NeighborItemProps = {
 /** @deprecated */
 export interface INeighborLocationDetectProps
   extends NeighborLocationDetectProps,
-    UnknownProperties {}
+  UnknownProperties {}
 export type NeighborLocationDetectProps = NeighborItemProps & {
   children?:
     | React.ReactElement

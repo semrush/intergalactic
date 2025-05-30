@@ -18,9 +18,9 @@
     "types": "./lib/types/index.d.ts"
   },
   "dependencies": {
-    "@semcore/flex-box": "16.0.0",
-    "@semcore/popper": "16.0.0",
-    "@semcore/portal": "16.0.0"
+    "@semcore/flex-box": "workspace:*",
+    "@semcore/popper": "workspace:*",
+    "@semcore/portal": "workspace:*"
   },
   "peerDependencies": {
     "@semcore/base-components": "^16.0.0"
@@ -31,9 +31,9 @@
     "directory": "semcore/tooltip"
   },
   "devDependencies": {
-    "@types/react": "18.0.21",
-    "@semcore/testing-utils": "1.0.0",
+    "@semcore/flex-box": "workspace:*",
     "@semcore/icon": "workspace:*",
-    "@semcore/flex-box": "workspace:*"
+    "@semcore/testing-utils": "workspace:*",
+    "@types/react": "18.0.21"
   }
 }

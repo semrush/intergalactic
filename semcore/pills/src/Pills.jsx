@@ -1,4 +1,3 @@
-
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import NeighborLocation, { useNeighborLocationDetect } from '@semcore/neighbor-location';
@@ -29,6 +28,7 @@ class RootPills extends Component {
     defaultValue: null,
     behavior: behavior ?? 'auto',
   });
+
   itemValues = [];
   static enhance = [a11yEnhance(optionsA11yEnhance)];
 
@@ -124,7 +124,8 @@ function Pill(props) {
   if (behavior === 'radio' || behavior === 'auto') {
     roleAreaProps.role = 'radio';
     roleAreaProps['aria-checked'] = selected;
-  } else {
+  }
+  else {
     roleAreaProps.role = 'tab';
     roleAreaProps['aria-selected'] = selected;
   }

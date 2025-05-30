@@ -192,7 +192,7 @@ describe('XAxis', () => {
     );
 
     fireEvent.mouseMove(getAllByTestId('tick')[9]);
-    expect(eventEmitter.emit).toHaveBeenCalledTimes(2); //onMouseMoveRoot, onMouseLeaveChart
+    expect(eventEmitter.emit).toHaveBeenCalledTimes(2); // onMouseMoveRoot, onMouseLeaveChart
     (window.requestAnimationFrame as any).mockRestore();
   });
 
@@ -217,7 +217,7 @@ describe('XAxis', () => {
       const component = (
         <Plot data={data} scale={[xScale, yScale]} width={120} height={130}>
           <XAxis>
-            <XAxis.Ticks ticks={xScale.ticks(5)} childrenPosition={'below'}>
+            <XAxis.Ticks ticks={xScale.ticks(5)} childrenPosition='below'>
               {({ value, x, y, index }: any) => ({
                 children: <TickFormatter value={value} x={x} y={y} index={index} />,
               })}
@@ -584,9 +584,9 @@ describe('Venn', () => {
 
   test.concurrent('should render venn-custom-intersection', async ({ task }) => {
     const data = {
-      G: 200,
-      F: 200,
-      C: 200,
+      'G': 200,
+      'F': 200,
+      'C': 200,
       'G/F': 100,
       'G/C': 100,
       'F/C': 100,
@@ -628,8 +628,8 @@ describe('Venn', () => {
     const orientations = [Math.PI / 2, Math.PI];
 
     const data = {
-      F: 5,
-      S: 7,
+      'F': 5,
+      'S': 7,
       'F/S': 3,
     };
 
@@ -661,11 +661,11 @@ describe('Venn', () => {
 
   test.skip('Should render venn [Too unstable]', async ({ task }) => {
     const data = {
-      G: 200,
-      F: 200,
-      C: 500,
-      U: 2,
-      O: 0,
+      'G': 200,
+      'F': 200,
+      'C': 500,
+      'U': 2,
+      'O': 0,
       'G/F': 100,
       'G/C': 100,
       'F/C': 100,
@@ -693,13 +693,13 @@ describe('Venn', () => {
     await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
 
-  //unstable test
+  // unstable test
   test.skip('should render venn width defaults min radius for item', async ({ task }) => {
     const data = {
-      G: 2000,
-      F: 2000,
-      C: 5000,
-      U: 2,
+      'G': 2000,
+      'F': 2000,
+      'C': 5000,
+      'U': 2,
       'G/F': 1000,
       'G/C': 1000,
       'F/C': 1000,
@@ -1422,7 +1422,9 @@ describe('Bar', () => {
                     alignmentBaseline='middle'
                     fill={resolveColor('chart-grid-text-label')}
                   >
-                    $ {value.bar}
+                    $
+                    {' '}
+                    {value.bar}
                   </text>
                 ),
               };
@@ -2227,16 +2229,19 @@ describe('ChartLegend', () => {
             checked: true,
             color: `chart-palette-order-${index + 1}`,
             columns: [
-              <Text use={'secondary'}>{(42 * (index + 3)) / 10}%</Text>,
-              <Text use={'primary'}>{42 * (index + 3)}</Text>,
-              <Text use={'primary'}>{22 * (index + 3)}</Text>,
+              <Text use='secondary' key={1}>
+                {(42 * (index + 3)) / 10}
+                %
+              </Text>,
+              <Text use='primary' key={2}>{42 * (index + 3)}</Text>,
+              <Text use='primary' key={3}>{22 * (index + 3)}</Text>,
             ],
           };
         });
 
       return (
         <div style={{ outline: '1px solid magenta', width: '500px' }}>
-          <ChartLegendTable items={lines} shape={'Circle'} />
+          <ChartLegendTable items={lines} shape='Circle' />
         </div>
       );
     };
@@ -2267,13 +2272,18 @@ describe('ChartLegend', () => {
             ),
             checked: true,
             color: `chart-palette-order-${index + 1}`,
-            columns: [<Text use={'secondary'}>{(42 * (index + 3)) / 10}%</Text>],
+            columns: [
+              <Text use='secondary' key={0}>
+                {(42 * (index + 3)) / 10}
+                %
+              </Text>,
+            ],
           };
         });
 
       return (
         <div style={{ outline: '1px solid magenta', width: '500px' }}>
-          <ChartLegendTable items={lines} shape={'Circle'} />
+          <ChartLegendTable items={lines} shape='Circle' />
         </div>
       );
     };
@@ -2782,24 +2792,24 @@ describe('Focus skip to content after plot', () => {
         <>
           <div ref={plotRef}>
             <PlotA11yView
-              id={'plotView'}
+              id='plotView'
               data={data}
               plotRef={plotRef}
-              plotLabel={'plot label'}
-              locale={'en'}
+              plotLabel='plot label'
+              locale='en'
               config={{}}
               hints={hints}
             />
           </div>
-          <div className={'one'}>
-            <div className={'two'}>
-              <div className={'tree'}>some text</div>
+          <div className='one'>
+            <div className='two'>
+              <div className='tree'>some text</div>
             </div>
           </div>
           <div>some data</div>
-          <div className={'one'}>
-            <div className={'two'} tabIndex={0} data-testid={'focusableElement-1'}>
-              <div className={'tree'}>some text 2</div>
+          <div className='one'>
+            <div className='two' tabIndex={0} data-testid='focusableElement-1'>
+              <div className='tree'>some text 2</div>
             </div>
           </div>
         </>
@@ -2832,28 +2842,28 @@ describe('Focus skip to content after plot', () => {
         <>
           <div ref={plotRef}>
             <PlotA11yView
-              id={'plotView'}
+              id='plotView'
               data={data}
               plotRef={plotRef}
-              plotLabel={'plot label'}
-              locale={'en'}
+              plotLabel='plot label'
+              locale='en'
               config={{}}
               hints={hints}
             />
           </div>
-          <div className={'one'}>
-            <div className={'two'}>
+          <div className='one'>
+            <div className='two'>
               <div />
               <div />
-              <div className={'tree'}>some text 3</div>
+              <div className='tree'>some text 3</div>
             </div>
           </div>
           <div>some data</div>
-          <div className={'one'}>
+          <div className='one'>
             <div />
             <div />
-            <div className={'two'} tabIndex={0} data-testid={'focusableElement-2'}>
-              <div className={'tree'}>some text 4</div>
+            <div className='two' tabIndex={0} data-testid='focusableElement-2'>
+              <div className='tree'>some text 4</div>
             </div>
           </div>
         </>
@@ -3018,11 +3028,11 @@ describe('Cigarette chart', () => {
           <Chart.Cigarette
             data={data}
             plotWidth={280}
-            header={
+            header={(
               <Text size={700} bold>
                 Total
               </Text>
-            }
+            )}
             showLegend={true}
             tooltipTitle='Some title for tooltip'
             showTotalInTooltip={true}
@@ -3032,11 +3042,11 @@ describe('Cigarette chart', () => {
             data={data}
             plotHeight={200}
             invertAxis={false}
-            header={
+            header={(
               <Text size={700} bold>
                 Total
               </Text>
-            }
+            )}
             showLegend={true}
             tooltipViewType='single'
           />

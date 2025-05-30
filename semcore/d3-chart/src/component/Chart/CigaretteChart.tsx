@@ -90,8 +90,8 @@ class CigaretteChartComponent extends AbstractChart<
   }
 
   renderChart() {
-    const { invertAxis, data, uid, duration, patterns, plotHeight, plotWidth, onClick } =
-      this.asProps;
+    const { invertAxis, data, uid, duration, patterns, plotHeight, plotWidth, onClick }
+      = this.asProps;
     const { dataDefinitions, highlightedLine } = this.state;
 
     this.offset = 0;
@@ -106,8 +106,8 @@ class CigaretteChartComponent extends AbstractChart<
           }
 
           const absWidth = Math.abs(
-            this.valueScale(value) -
-              Math.max(this.valueScale(this.valueScale.domain()[0]), this.valueScale(0)),
+            this.valueScale(value)
+            - Math.max(this.valueScale(this.valueScale.domain()[0]), this.valueScale(0)),
           );
           const height = scaleToBand(this.categoryScale).bandwidth() - 4;
           const width = value === 0 ? 0 : Math.max(absWidth, wMin * 2) - wMin;
@@ -155,8 +155,8 @@ class CigaretteChartComponent extends AbstractChart<
   }
 
   renderTooltip(): React.ReactNode {
-    const { data, showTotalInTooltip, showTooltip, invertAxis, tooltipTitle, tooltipViewType } =
-      this.asProps;
+    const { data, showTotalInTooltip, showTooltip, invertAxis, tooltipTitle, tooltipViewType }
+      = this.asProps;
     const { dataDefinitions } = this.state;
 
     if (!showTooltip) {
@@ -237,15 +237,15 @@ class CigaretteChartComponent extends AbstractChart<
 
   override render() {
     const SChart = Root;
-    const { styles, plotWidth, plotHeight, data, patterns, invertAxis, a11yAltTextConfig } =
-      this.asProps;
+    const { styles, plotWidth, plotHeight, data, patterns, invertAxis, a11yAltTextConfig }
+      = this.asProps;
 
     const header = this.renderHeader();
 
     if (invertAxis) {
       return sstyled(styles)(
-        <SChart render={Flex} gap={6} direction={'column'} __excludeProps={['onClick', 'data']}>
-          <Flex direction={'column'}>
+        <SChart render={Flex} gap={6} direction='column' __excludeProps={['onClick', 'data']}>
+          <Flex direction='column'>
             {header}
             <Plot
               data={data}
@@ -279,7 +279,7 @@ class CigaretteChartComponent extends AbstractChart<
           {this.renderTooltip()}
           {this.renderChart()}
         </Plot>
-        <Flex direction={'column'} gap={2}>
+        <Flex direction='column' gap={2}>
           {header && (
             <>
               <Box>{header}</Box>

@@ -1,4 +1,3 @@
-
 import WidgetEmpty, { getIconPath } from '../WidgetEmpty';
 import { createComponent, Component, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
@@ -10,6 +9,7 @@ class Error extends Component {
     i18n: localizedMessages,
     locale: 'en',
   };
+
   static enhance = [i18nEnhance(localizedMessages)];
 
   render() {

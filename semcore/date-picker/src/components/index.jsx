@@ -1,4 +1,3 @@
-
 import dayjs from 'dayjs';
 import { Component, Root, sstyled } from '@semcore/core';
 import Dropdown from '@semcore/dropdown';
@@ -54,13 +53,15 @@ export const Title = ({ Children, styles }) => {
 export function Prev({ children, Children }) {
   return (
     <Root render={Button} use='tertiary' theme='muted' size='l'>
-      {children ? (
-        <Children />
-      ) : (
-        <Button.Addon>
-          <ChevronLeft />
-        </Button.Addon>
-      )}
+      {children
+        ? (
+            <Children />
+          )
+        : (
+            <Button.Addon>
+              <ChevronLeft />
+            </Button.Addon>
+          )}
     </Root>
   );
 }
@@ -68,13 +69,15 @@ export function Prev({ children, Children }) {
 export function Next({ children, Children }) {
   return (
     <Root render={Button} use='tertiary' theme='muted' size='l'>
-      {children ? (
-        <Children />
-      ) : (
-        <Button.Addon>
-          <ChevronRight />
-        </Button.Addon>
-      )}
+      {children
+        ? (
+            <Children />
+          )
+        : (
+            <Button.Addon>
+              <ChevronRight />
+            </Button.Addon>
+          )}
     </Root>
   );
 }
@@ -96,8 +99,8 @@ export class Period extends Component {
 
   render() {
     const SPeriod = Root;
-    const { styles, value, onChange, periods, onHighlightedChange, onDisplayedPeriodChange } =
-      this.asProps;
+    const { styles, value, onChange, periods, onHighlightedChange, onDisplayedPeriodChange }
+      = this.asProps;
 
     return sstyled(styles)(
       <SPeriod render={Box}>

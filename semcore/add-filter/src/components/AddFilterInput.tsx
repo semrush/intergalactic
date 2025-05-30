@@ -46,7 +46,7 @@ class AddFilterInputRoot extends Component<AddFilterItemProps> {
   }
 
   render() {
-    return <Root render={Input} w={'auto'} inline={false} />;
+    return <Root render={Input} w='auto' inline={false} />;
   }
 }
 

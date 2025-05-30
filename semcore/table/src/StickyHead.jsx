@@ -80,11 +80,12 @@ function calculateWidthTh(nodeTable, disablePortal = false) {
         if (indexTr === 0) {
           listWidthTh[indexTr].push(getOffsetWidth(th));
           currentCellCursor += 1;
-        } else {
+        }
+        else {
           while (
-            listWidthTh[indexTr - 1][emptyCellIndex] !== undefined ||
-            (listWidthTh[indexTr][emptyCellIndex] !== undefined &&
-              emptyCellIndex < listWidthTh[indexTr].length)
+            listWidthTh[indexTr - 1][emptyCellIndex] !== undefined
+            || (listWidthTh[indexTr][emptyCellIndex] !== undefined
+              && emptyCellIndex < listWidthTh[indexTr].length)
           ) {
             emptyCellIndex += 1;
           }
@@ -113,7 +114,7 @@ function calculateWidthTh(nodeTable, disablePortal = false) {
     const listTdInsideTr = tr.getElementsByTagName('th');
     const amountTd = listTdInsideTr.length;
 
-    for (let indexTd = 0; indexTd < amountTd; ) {
+    for (let indexTd = 0; indexTd < amountTd;) {
       const th = listTdInsideTr[indexTd];
       if (listWidthTh[firstRowIndex][indexTd] === undefined) {
         listWidthTh[firstRowIndex][indexTd] = getOffsetWidth(th);
@@ -246,13 +247,15 @@ function ContainerSticky(props, ref) {
       {...other}
     >
       <ScrollAreaSmart.Container className='_master-scroll' ref={setRefContainer} tabIndex={-1}>
-        {typeof children === 'function' ? (
-          children({ Head: HeadCore })
-        ) : (
-          <>
-            <HeadCore>{children}</HeadCore>
-          </>
-        )}
+        {typeof children === 'function'
+          ? (
+              children({ Head: HeadCore })
+            )
+          : (
+              <>
+                <HeadCore>{children}</HeadCore>
+              </>
+            )}
       </ScrollAreaSmart.Container>
       <ScrollAreaSmart.Bar orientation='horizontal' style={styleBar} />
     </SStickyHead>,
@@ -371,7 +374,8 @@ function StickyHeadInner(props, ref) {
       if (container) {
         getScrollPage();
         document.addEventListener('scroll', getScrollPage);
-      } else {
+      }
+      else {
         setContainerNode(getScrollParent(getNodeByRef(self.ref)));
       }
       return () => {

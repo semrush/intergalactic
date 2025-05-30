@@ -636,6 +636,7 @@ export const PatternFill = ({
     return () => (
       <pattern
         id={id}
+        // eslint-disable-next-line react/no-unknown-property
         fill={color}
         x='0'
         y='0'

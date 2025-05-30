@@ -21,16 +21,16 @@ export const cursorAnchoringModifier: Modifier<'cursorAnchoring', Options> = {
   fn: ({ state, options }) => {
     const { placement } = state.options;
 
-    const verticalPlacement =
-      !placement || placement.startsWith('top') || placement.startsWith('bottom');
+    const verticalPlacement
+      = !placement || placement.startsWith('top') || placement.startsWith('bottom');
 
     const { cursorAnchoring, mouseEnterCursorPositionRef } = options;
     const { rects, elements } = state;
     if (!cursorAnchoring) return;
     if (verticalPlacement) {
       const offsetParent = getOffsetParent(elements.popper);
-      const offsetParentRect =
-        offsetParent === window ? getWindowRect() : offsetParent.getBoundingClientRect();
+      const offsetParentRect
+        = offsetParent === window ? getWindowRect() : offsetParent.getBoundingClientRect();
       const mouseX = mouseEnterCursorPositionRef?.current?.x;
       if (mouseX === undefined) return;
       const width = Math.min(rects.reference.width, rects.popper.width);
@@ -41,10 +41,11 @@ export const cursorAnchoringModifier: Modifier<'cursorAnchoring', Options> = {
       );
       rects.reference.x = x;
       rects.reference.width = width;
-    } else {
+    }
+    else {
       const offsetParent = getOffsetParent(elements.popper);
-      const offsetParentRect =
-        offsetParent === window ? getWindowRect() : offsetParent.getBoundingClientRect();
+      const offsetParentRect
+        = offsetParent === window ? getWindowRect() : offsetParent.getBoundingClientRect();
       const mouseY = mouseEnterCursorPositionRef?.current?.y;
       if (mouseY === undefined) return;
       const height = Math.min(rects.reference.height, rects.popper.height);

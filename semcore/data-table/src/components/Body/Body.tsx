@@ -52,6 +52,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
       this.handleExpandRow(row, index);
     }
   };
+
   handleClickCell = (row: DTRow, index: number) => (e: React.SyntheticEvent<HTMLElement>) => {
     if (!isInteractiveElement(e.target)) {
       this.handleExpandRow(row, index);
@@ -88,7 +89,8 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
         const expandedRow = flatRows[rowIndex]?.[ACCORDION];
         if (Array.isArray(expandedRow)) {
           acc = acc + expandedRow.length;
-        } else {
+        }
+        else {
           acc = acc + 1;
         }
       }
@@ -101,8 +103,8 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
 
     const accordionDataGridArea = Array.isArray(row[ACCORDION])
       ? `${gridRowIndex + 1} / 1 / ${gridRowIndex + 1 + row[ACCORDION].length} / ${
-          columns.length + 1
-        }`
+        columns.length + 1
+      }`
       : `${gridRowIndex + 1} / 1 / ${gridRowIndex + 1} / ${columns.length + 1}`;
 
     return {
@@ -158,7 +160,8 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
       if (isMergedColumns) {
         dataKey = cellValue.dataKey;
       }
-    } else {
+    }
+    else {
       value = cellValue;
     }
 
@@ -189,7 +192,8 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
 
       if (this.isReactNode(external) || Array.isArray(external)) {
         extraProps.children = external;
-      } else {
+      }
+      else {
         for (const key in external) {
           extraProps[key] = external[key];
         }
@@ -197,9 +201,9 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
     }
 
     if (
-      (props.columnIndex === 0 && props.row[ACCORDION]) ||
-      value?.[ACCORDION] ||
-      (cellValue instanceof MergedRowsCell && cellValue.accordion)
+      (props.columnIndex === 0 && props.row[ACCORDION])
+      || value?.[ACCORDION]
+      || (cellValue instanceof MergedRowsCell && cellValue.accordion)
     ) {
       let expanded = expandedRows?.has(props.row[UNIQ_ROW_KEY]);
 
@@ -239,7 +243,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
             // @ts-ignore
             expanded={expanded}
             onClick={handleClick}
-            color={'--intergalactic-icon-primary-neutral'}
+            color='--intergalactic-icon-primary-neutral'
             aria-expanded={expanded}
             aria-describedby={props.id}
             aria-controls={props.accordionId}
@@ -278,8 +282,8 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
     let lastIndex = -1;
 
     if (virtualScroll) {
-      const rowsBuffer =
-        typeof virtualScroll !== 'boolean' && 'rowsBuffer' in virtualScroll
+      const rowsBuffer
+        = typeof virtualScroll !== 'boolean' && 'rowsBuffer' in virtualScroll
           ? virtualScroll.rowsBuffer ?? ROWS_BUFFER
           : ROWS_BUFFER;
       const offsetHeight = tableContainerRef.current?.offsetHeight ?? 0;
@@ -287,8 +291,8 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
       const nextPrepared = scrollDirection === 'up' ? 4 : rowsBuffer;
 
       if (typeof virtualScroll === 'boolean' || 'aproxRowsOnPage' in virtualScroll) {
-        const aproxRowsOnPage =
-          typeof virtualScroll !== 'boolean'
+        const aproxRowsOnPage
+          = typeof virtualScroll !== 'boolean'
             ? virtualScroll.aproxRowsOnPage ?? APROX_ROWS_ON_PAGE
             : APROX_ROWS_ON_PAGE;
         if (scrollDirection === 'down') {
@@ -315,7 +319,8 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
           if (scrollTop + offsetHeight < (this.rowsHeightMap.get(lastIndex ?? 0)?.[1] ?? 0)) {
             lastIndex = lastIndex + aproxRowsOnPage;
           }
-        } else if (scrollDirection === 'up') {
+        }
+        else if (scrollDirection === 'up') {
           for (let i = this.indexForUpIterate; i >= 0; i--) {
             const value = this.rowsHeightMap.get(i);
             if (!value) continue;
@@ -353,7 +358,8 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
         this.indexForUpIterate = lastIndex;
 
         rowsToRender = rows.slice(startIndex, lastIndex);
-      } else if ('rowHeight' in virtualScroll) {
+      }
+      else if ('rowHeight' in virtualScroll) {
         const rowHeight = virtualScroll.rowHeight;
 
         startIndex = Math.max(Math.floor(scrollTop / rowHeight) - prevPrepared, 0);
@@ -391,7 +397,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
           if (Array.isArray(row)) {
             return sstyled(styles)(
               <SRowGroup
-                role={'rowgroup'}
+                role='rowgroup'
                 key={`gg_${row[0][UNIQ_ROW_KEY]}`}
                 ref={this.handleRef(startIndex + index, row[0])}
               >
@@ -422,9 +428,9 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
             headerHeight={`${headerHeight}px`}
             tabIndex={-1}
             ref={spinnerRef}
-            role={'row'}
+            role='row'
           >
-            <Spin size={'xxl'} role={'gridcell'} />
+            <Spin size='xxl' role='gridcell' />
           </SSpinContainer>
         )}
       </SBody>,
@@ -433,20 +439,20 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
 
   private isReactNode(obj: React.ReactNode | Record<string, any>): obj is React.ReactNode {
     return (
-      typeof obj === 'string' ||
-      typeof obj === 'number' ||
-      React.isValidElement(obj) ||
-      typeof obj === 'boolean' ||
-      obj === undefined ||
-      obj === null
+      typeof obj === 'string'
+      || typeof obj === 'number'
+      || React.isValidElement(obj)
+      || typeof obj === 'boolean'
+      || obj === undefined
+      || obj === null
     );
   }
 
   private setRowHeight(index: number, row: DTRow) {
     const { expandedRows } = this.asProps;
     const node = this.rowsHeightMap.get(index)?.[2];
-    const firstChild =
-      node?.role === 'rowgroup' ? node?.children.item(0)?.children.item(0) : node?.children.item(0);
+    const firstChild
+      = node?.role === 'rowgroup' ? node?.children.item(0)?.children.item(0) : node?.children.item(0);
     if (node && firstChild instanceof HTMLElement) {
       const offset = firstChild.offsetTop - this.asProps.headerHeight;
       let height = firstChild.getBoundingClientRect().height;

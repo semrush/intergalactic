@@ -21,6 +21,7 @@ class VennRoot extends Component {
     duration: 500,
     minRadius: 6,
   };
+
   static enhance = [uniqueIDEnhancement()];
 
   virtualElement = canUseDOM() ? document.createElement('div') : {};

@@ -160,7 +160,7 @@ test.describe('Slider', () => {
     await expect(input).toHaveValue('medium');
     await expect(slider).toHaveAttribute('aria-valuenow', '2');
 
-    //BUG - thpse actions dont work
+    // BUG - thpse actions dont work
     // await page.keyboard.press('Home');
     // await expect(slider).toHaveAttribute('aria-valuenow', '1');
 

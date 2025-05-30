@@ -1,4 +1,3 @@
-
 import BaseTrigger from '@semcore/base-trigger';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import Calendar from '@semcore/icon/Calendar/m';

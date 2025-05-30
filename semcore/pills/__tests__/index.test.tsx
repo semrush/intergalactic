@@ -46,7 +46,7 @@ describe('PillGroup', () => {
         <Pills.Item value={1}>1</Pills.Item>
         <Pills.Item value={2}>1</Pills.Item>
         <Pills.Item value={3}>1</Pills.Item>
-        <Pills.Item value={4} data-testid={'tab-4'}>
+        <Pills.Item value={4} data-testid='tab-4'>
           1
         </Pills.Item>
       </Pills>,
@@ -63,7 +63,7 @@ describe('PillGroup', () => {
         <Pills.Item value={1}>1</Pills.Item>
         <Pills.Item value={2}>1</Pills.Item>
         <Pills.Item value={3}>1</Pills.Item>
-        <Pills.Item value={4} onClick={spy} data-testid={'tab-4'}>
+        <Pills.Item value={4} onClick={spy} data-testid='tab-4'>
           1
         </Pills.Item>
       </Pills>,
@@ -81,7 +81,7 @@ describe('PillGroup', () => {
         <Pills.Item value={1}>1</Pills.Item>
         <Pills.Item value={2}>2</Pills.Item>
         <Pills.Item value={3}>3</Pills.Item>
-        <Pills.Item value={4} data-testid={'tab-4'} onClick={spyClick}>
+        <Pills.Item value={4} data-testid='tab-4' onClick={spyClick}>
           4
         </Pills.Item>
       </Pills>,
@@ -100,7 +100,7 @@ describe('PillGroup', () => {
         <Pills.Item value={1}>1</Pills.Item>
         <Pills.Item value={2}>3</Pills.Item>
         <Pills.Item value={3}>4</Pills.Item>
-        <Pills.Item value={3} data-testid={'tab-4'} disabled>
+        <Pills.Item value={3} data-testid='tab-4' disabled>
           4
         </Pills.Item>
       </Pills>,
@@ -119,10 +119,10 @@ describe('PillGroup', () => {
 
     const { getByTestId } = render(
       <Pills behavior='tabs' defaultValue={1} onChange={spy}>
-        <Pills.Item value={1} data-testid={'behavior=tabs_pill1'}>
+        <Pills.Item value={1} data-testid='behavior=tabs_pill1'>
           1
         </Pills.Item>
-        <Pills.Item value={2} data-testid={'behavior=tabs_pill2'}>
+        <Pills.Item value={2} data-testid='behavior=tabs_pill2'>
           2
         </Pills.Item>
         <Pills.Item value={3}>3</Pills.Item>
@@ -149,10 +149,10 @@ describe('PillGroup', () => {
 
     const { getByTestId } = render(
       <Pills behavior='radio' defaultValue={1} onChange={spy}>
-        <Pills.Item value={1} data-testid={'behavior=radio_pill1'}>
+        <Pills.Item value={1} data-testid='behavior=radio_pill1'>
           1
         </Pills.Item>
-        <Pills.Item value={2} data-testid={'behavior=radio_pill2'}>
+        <Pills.Item value={2} data-testid='behavior=radio_pill2'>
           2
         </Pills.Item>
         <Pills.Item value={3}>3</Pills.Item>
@@ -176,10 +176,10 @@ describe('PillGroup', () => {
 
     const { getByTestId } = render(
       <Pills behavior='tabs' defaultValue={1} onChange={spy}>
-        <Pills.Item value={1} data-testid={'behavior=manual_pill1'}>
+        <Pills.Item value={1} data-testid='behavior=manual_pill1'>
           1
         </Pills.Item>
-        <Pills.Item value={2} data-testid={'behavior=manual_pill2'}>
+        <Pills.Item value={2} data-testid='behavior=manual_pill2'>
           2
         </Pills.Item>
         <Pills.Item value={3}>3</Pills.Item>
@@ -203,10 +203,10 @@ describe('PillGroup', () => {
 
     const { getByTestId } = render(
       <Pills behavior='radio' defaultValue={1} onChange={spy}>
-        <Pills.Item value={1} data-testid={'behavior=auto_pill1'}>
+        <Pills.Item value={1} data-testid='behavior=auto_pill1'>
           1
         </Pills.Item>
-        <Pills.Item value={2} data-testid={'behavior=auto_pill2'}>
+        <Pills.Item value={2} data-testid='behavior=auto_pill2'>
           2
         </Pills.Item>
         <Pills.Item value={3}>3</Pills.Item>
@@ -228,7 +228,7 @@ describe('PillGroup', () => {
   test.concurrent('Should render correctly selected first with manual', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5 }}>
-        <Pills value={1} behavior={'manual'}>
+        <Pills value={1} behavior='manual'>
           <Pills.Item value={1} id='focused'>
             1
           </Pills.Item>
@@ -260,7 +260,7 @@ describe('PillGroup', () => {
   test.concurrent('Should render correctly selected with auto', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5 }}>
-        <Pills id={'focused'}>
+        <Pills id='focused'>
           <Pills.Item value={1}>1</Pills.Item>
           <Pills.Item value={2}>2</Pills.Item>
         </Pills>

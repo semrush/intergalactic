@@ -13,7 +13,7 @@
     "upload-static": "gcs-upload intergalactic-flags lib/sprites/*"
   },
   "dependencies": {
-    "@semcore/flex-box": "16.0.0",
+    "@semcore/flex-box": "workspace:*",
     "classnames": "2.2.6"
   },
   "peerDependencies": {
@@ -25,7 +25,7 @@
     "directory": "semcore/flags"
   },
   "devDependencies": {
-    "@semcore/testing-utils": "1.0.0",
+    "@semcore/testing-utils": "workspace:*",
     "@types/classnames": "2.2.6",
     "@types/react": "18.0.21",
     "imagemin": "8.0.1",

@@ -93,7 +93,7 @@ describe('Box', () => {
   shouldSupportClassName(Box);
   shouldSupportRef(Box);
 
-  test("Should support Box 'tag' prop", () => {
+  test('Should support Box \'tag\' prop', () => {
     const { getByTestId } = render(
       <Box tag='span' data-testid='box'>
         tag
@@ -102,7 +102,7 @@ describe('Box', () => {
     expect(getByTestId('box').tagName).toBe('SPAN');
   });
 
-  test("Should support Box 'tag' prop component", () => {
+  test('Should support Box \'tag\' prop component', () => {
     const Span = function (props) {
       return <span {...props} />;
     };
@@ -130,7 +130,7 @@ describe('Box', () => {
   });
 
   test('Should support display property', () => {
-    const { getByTestId } = render(<Box display={'grid'} data-testid='box' />);
+    const { getByTestId } = render(<Box display='grid' data-testid='box' />);
     expect(getByTestId('box').style.display).toBe('grid');
   });
 

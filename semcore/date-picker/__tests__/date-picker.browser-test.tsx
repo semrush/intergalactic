@@ -185,7 +185,8 @@ test.describe('DayPicker with today button', () => {
         for (const [attr, value] of dayAttributes) {
           if (value !== undefined) {
             await expect(cell).toHaveAttribute(attr, value);
-          } else {
+          }
+          else {
             await expect(cell).toHaveAttribute(attr);
           }
         }
@@ -198,7 +199,8 @@ test.describe('DayPicker with today button', () => {
 
         if (isCurrentMonth) {
           expect(hasDisabled).toBe(false);
-        } else {
+        }
+        else {
           expect(hasDisabled).toBe(true);
         }
         expect(ariaDisabled).toBe('false');
@@ -648,7 +650,8 @@ test.describe('DayPicker with custom days', () => {
         for (const [attr, value] of dayAttributes) {
           if (value !== undefined) {
             await expect(cell).toHaveAttribute(attr, value);
-          } else {
+          }
+          else {
             await expect(cell).toHaveAttribute(attr);
           }
         }
@@ -661,7 +664,8 @@ test.describe('DayPicker with custom days', () => {
 
         if (isCurrentMonth) {
           expect(hasDisabled).toBe(false);
-        } else {
+        }
+        else {
           expect(hasDisabled).toBe(true);
         }
         expect(ariaDisabled).toBe('false');

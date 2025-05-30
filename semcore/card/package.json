@@ -17,11 +17,11 @@
     "types": "./lib/types/index.d.ts"
   },
   "dependencies": {
-    "@semcore/typography": "16.1.0",
-    "@semcore/tooltip": "16.0.0",
-    "@semcore/button": "16.0.0",
-    "@semcore/icon": "16.1.0",
-    "@semcore/flex-box": "16.0.0"
+    "@semcore/button": "workspace:*",
+    "@semcore/flex-box": "workspace:*",
+    "@semcore/icon": "workspace:*",
+    "@semcore/tooltip": "workspace:*",
+    "@semcore/typography": "workspace:*"
   },
   "peerDependencies": {
     "@semcore/base-components": "^16.0.0"
@@ -32,9 +32,9 @@
     "directory": "semcore/card"
   },
   "devDependencies": {
-    "@types/react": "18.0.21",
-    "@semcore/testing-utils": "1.0.0",
+    "@semcore/icon": "*",
+    "@semcore/testing-utils": "workspace:*",
     "@semcore/typography": "*",
-    "@semcore/icon": "*"
+    "@types/react": "18.0.21"
   }
 }

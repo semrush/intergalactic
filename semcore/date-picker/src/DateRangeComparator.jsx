@@ -1,4 +1,3 @@
-
 import { createComponent, Root, sstyled } from '@semcore/core';
 import { Header as CalendarHeader, Next, Period, Popper, Prev, Title } from './components';
 import { CalendarDays as Calendar } from './components/Calendar';

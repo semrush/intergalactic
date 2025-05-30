@@ -19,7 +19,8 @@ export const writeIfChanged = async (path: string, content: string) => {
     if (originalContent.replace(/[\s\n]/g, '') === content.replace(/[\s\n]/g, '')) {
       return;
     }
-  } catch {}
+  }
+  catch {}
   await fs.writeFile(path, content);
 };
 
@@ -40,12 +41,13 @@ for (const theme of themes) {
   const { base, tokens } = JSON.parse(
     await fs.readFile(resolvePath(dirname, `./${theme}.json`), 'utf-8'),
   );
-
-  let { processedTokens, values, types, rawValues, descriptions } = processTokens(
+  const processed = processTokens(
     base,
     tokens,
     prefix,
   );
+  const { values, types, rawValues, descriptions } = processed;
+  let { processedTokens } = processed;
 
   for (const excludeToPath in excludeTokens) {
     const excludeList: string[] = excludeTokens[excludeToPath];
@@ -125,18 +127,18 @@ for (const theme of themes) {
                           );
                         }
 
-                        const parentIsVariable =
-                          parent?.type === 'function' && parent?.value === 'var';
+                        const parentIsVariable
+                          = parent?.type === 'function' && parent?.value === 'var';
                         if (!parentIsVariable) {
                           const prevNode = node.parent.nodes[node.parent.nodes.indexOf(node) - 1];
-                          const skipNode =
-                            prevNode?.type === 'comment' &&
-                            prevNode.text.trim() === 'disable-tokens-validator';
+                          const skipNode
+                            = prevNode?.type === 'comment'
+                              && prevNode.text.trim() === 'disable-tokens-validator';
                           if (skipNode) continue;
 
                           if (
-                            valueNode.type === 'word' &&
-                            (valueNode.value.startsWith('#') || valueNode.value.startsWith('rgb'))
+                            valueNode.type === 'word'
+                            && (valueNode.value.startsWith('#') || valueNode.value.startsWith('rgb'))
                           ) {
                             const location = `${node.source.start.line}:${node.source.start.offset}`;
                             colorLiterals.push({
@@ -145,12 +147,12 @@ for (const theme of themes) {
                             });
                           }
                           if (
-                            valueNode.type === 'word' &&
-                            valueNode.value.endsWith('px') &&
-                            (node.prop.includes('padding') ||
-                              node.prop.includes('margin') ||
-                              node.prop.includes('radius') ||
-                              node.prop.includes('font-size'))
+                            valueNode.type === 'word'
+                            && valueNode.value.endsWith('px')
+                            && (node.prop.includes('padding')
+                              || node.prop.includes('margin')
+                              || node.prop.includes('radius')
+                              || node.prop.includes('font-size'))
                           ) {
                             const location = `${node.source.start.line}:${node.source.start.offset}`;
                             colorLiterals.push({
@@ -281,7 +283,8 @@ for (const theme of themes) {
           }
 
           baseTokensDocumentation.push(token);
-        } else {
+        }
+        else {
           processGroup(`${group}-${key}`, data[key]);
         }
       }

@@ -1,4 +1,3 @@
-
 import { createComponent, sstyled, Root } from '@semcore/core';
 import { Flex } from '@semcore/flex-box';
 import style from './legend-flex.shadow.css';
@@ -29,7 +28,7 @@ class LegendFlexRoot extends BaseLegend<LegendFlexProps> {
       <Checkbox
         checked={trendIsVisible}
         onChange={onTrendIsVisibleChange}
-        theme={'gray-400'}
+        theme='gray-400'
         label={trendLabel ?? getI18nText('trend')}
         size={size}
       />
@@ -42,7 +41,7 @@ class LegendFlexRoot extends BaseLegend<LegendFlexProps> {
     const orientation = direction === 'row' ? 'vertical' : 'horizontal';
 
     return sstyled(styles)(
-      <SLegendFlex render={Flex} role={'group'}>
+      <SLegendFlex render={Flex} role='group'>
         {items.map(({ id }) => {
           return <Children key={id} />;
         })}

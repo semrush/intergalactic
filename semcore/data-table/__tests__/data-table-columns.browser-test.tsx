@@ -9,8 +9,8 @@ async function getColumnWidth(page: any, colIndex: any) {
 
 test.describe('Columns', () => {
   test('Verify alingnment props', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/rows-columns-tests/column-alignment.tsx';
+    const standPath
+      = 'stories/components/data-table/tests/examples/rows-columns-tests/column-alignment.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -46,8 +46,8 @@ test.describe('Columns', () => {
   });
 
   test('Verify column width - static and based on content', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/rows-columns-tests/column-expand.tsx';
+    const standPath
+      = 'stories/components/data-table/tests/examples/rows-columns-tests/column-expand.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -57,8 +57,8 @@ test.describe('Columns', () => {
       return widths;
     };
 
-    const [width1Desktop, width2Desktop, width3Desktop, width4Desktop, width5Desktop] =
-      await getWidths(1280);
+    const [width1Desktop, width2Desktop, width3Desktop, width4Desktop, width5Desktop]
+      = await getWidths(1280);
     const [width1Mobile, width2Mobile, width3Mobile, width4Mobile, width5Mobile] = await getWidths(
       375,
     );

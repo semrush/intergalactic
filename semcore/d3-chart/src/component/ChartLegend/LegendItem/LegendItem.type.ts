@@ -70,15 +70,15 @@ export type LegendItemProps = LegendItem & {
 export type ShapeProps = LegendItem &
   (
     | {
-        size: LSize;
-        shape: Exclude<ShapeType, 'Checkbox'>;
-      }
+      size: LSize;
+      shape: Exclude<ShapeType, 'Checkbox'>;
+    }
     | {
-        size: LSize;
-        shape: Extract<ShapeType, 'Checkbox'>;
-        onChange: (checked: boolean, e?: React.SyntheticEvent<HTMLInputElement>) => void;
-        'aria-labelledby'?: string;
-      }
+      'size': LSize;
+      'shape': Extract<ShapeType, 'Checkbox'>;
+      'onChange': (checked: boolean, e?: React.SyntheticEvent<HTMLInputElement>) => void;
+      'aria-labelledby'?: string;
+    }
   );
 
 export const StaticShapes = ['Circle', 'Line', 'Square', 'Pattern'] as const;

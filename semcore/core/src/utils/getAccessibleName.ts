@@ -4,11 +4,11 @@ export function getAccessibleName(element: HTMLElement | null): string {
   }
 
   return (
-    getByLabelledBy(element) ??
-    getByAriaLabel(element) ??
-    getByLabel(element) ??
-    getByTitle(element) ??
-    ''
+    getByLabelledBy(element)
+    ?? getByAriaLabel(element)
+    ?? getByLabel(element)
+    ?? getByTitle(element)
+    ?? ''
   );
 }
 
@@ -36,8 +36,8 @@ function getByAriaLabel(element: HTMLElement): string | null {
   return element.getAttribute('aria-label');
 }
 function getByLabel(element: HTMLElement): string | null {
-  const labels =
-    (element instanceof HTMLButtonElement || element instanceof HTMLInputElement) && element.labels;
+  const labels
+    = (element instanceof HTMLButtonElement || element instanceof HTMLInputElement) && element.labels;
 
   if (!labels || !labels.length) {
     return null;

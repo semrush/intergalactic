@@ -110,14 +110,16 @@ class PaletteManagerRoot extends Component<RootAsProps, {}, State, typeof enhanc
     return sstyled(styles)(
       <>
         <Divider mt={3} mb={3} />
-        {Children.origin ? (
-          <Children />
-        ) : (
-          <>
-            <PaletteManager.Colors />
-            <PaletteManager.InputColor />
-          </>
-        )}
+        {Children.origin
+          ? (
+              <Children />
+            )
+          : (
+              <>
+                <PaletteManager.Colors />
+                <PaletteManager.InputColor />
+              </>
+            )}
       </>,
     );
   }

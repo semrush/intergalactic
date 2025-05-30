@@ -1,12 +1,12 @@
 import type React from 'react';
-import {type 
-  AllHTMLAttributes,type 
-  ForwardRefExoticComponent,
-  PureComponent,type 
-  ReactNode,type 
-  RefAttributes,type 
-  RefObject,
-} from 'react'
+import { type
+AllHTMLAttributes, type
+ForwardRefExoticComponent,
+PureComponent, type
+ReactNode, type
+RefAttributes, type
+RefObject,
+} from 'react';
 import type { IStyledProps } from '../styled/index';
 import { CORE_COMPONENT, CREATE_COMPONENT } from './symbols';
 
@@ -34,10 +34,10 @@ export interface IRootComponentHandlers {
 
 /** @deprecated */
 export interface IRootComponentProps<Props = {}, Ctx = {}> {
-  forwardRef?: RefObject<any>;
-  Children?: any;
-  children?: ChildrenType<Props, Ctx>;
-  styles?: IStyledProps['styles'];
+  'forwardRef'?: RefObject<any>;
+  'Children'?: any;
+  'children'?: ChildrenType<Props, Ctx>;
+  'styles'?: IStyledProps['styles'];
   'data-ui-name'?: string;
 }
 
@@ -111,9 +111,9 @@ abstract class RootComponent<
     return {} as Readonly<
       Merge<
         Props &
-          IRootComponentProps<Props, Context> &
-          Intergalactic.InternalTypings.ExtractEnhanceType<Enhance> &
-          InnerProps,
+        IRootComponentProps<Props, Context> &
+        Intergalactic.InternalTypings.ExtractEnhanceType<Enhance> &
+        InnerProps,
         AllHTMLAttributes<any>
       >
     >;
@@ -141,6 +141,7 @@ export type Component<
   Root: Root;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace Intergalactic {
   type ReactFCProps<C extends React.FC> = C extends React.FC<infer Props> ? Omit<Props, 'tag'> : {};
   type ReactComponentProps<C extends React.ComponentClass> = C extends React.ComponentClass<
@@ -169,6 +170,7 @@ export namespace Intergalactic {
       : LowPriorityProps[K];
   } & HighPriorityProps;
   /** @private */
+  // eslint-disable-next-line @typescript-eslint/no-namespace
   export namespace InternalTypings {
     export type EfficientOmit<Type, Keys> = {
       [Property in keyof Type as Exclude<Property, Keys>]: Type[Property];
@@ -177,45 +179,48 @@ export namespace Intergalactic {
       F['length'] extends 0
         ? {}
         : F['length'] extends 1
-        ? {
-            [K in keyof ReturnType<F[0]>]: ReturnType<F[0]>[K];
-          }
-        : F['length'] extends 2
-        ? {
-            [K in keyof ReturnType<F[0]>]: ReturnType<F[0]>[K];
-          } & {
-            [K in keyof ReturnType<F[1]>]: ReturnType<F[1]>[K];
-          }
-        : F['length'] extends 3
-        ? {
-            [K in keyof ReturnType<F[0]>]: ReturnType<F[0]>[K];
-          } & {
-            [K in keyof ReturnType<F[1]>]: ReturnType<F[1]>[K];
-          } & {
-            [K in keyof ReturnType<F[2]>]: ReturnType<F[2]>[K];
-          }
-        : F['length'] extends 4
-        ? {
-            [K in keyof ReturnType<F[0]>]: ReturnType<F[0]>[K];
-          } & {
-            [K in keyof ReturnType<F[1]>]: ReturnType<F[1]>[K];
-          } & {
-            [K in keyof ReturnType<F[2]>]: ReturnType<F[2]>[K];
-          } & {
-            [K in keyof ReturnType<F[3]>]: ReturnType<F[3]>[K];
-          }
-        : {};
+          ? {
+              [K in keyof ReturnType<F[0]>]: ReturnType<F[0]>[K];
+            }
+          : F['length'] extends 2
+            // eslint-disable-next-line @stylistic/indent-binary-ops
+            ? {
+              [K in keyof ReturnType<F[0]>]: ReturnType<F[0]>[K];
+            } & {
+              [K in keyof ReturnType<F[1]>]: ReturnType<F[1]>[K];
+            }
+            : F['length'] extends 3
+              // eslint-disable-next-line @stylistic/indent-binary-ops
+              ? {
+                [K in keyof ReturnType<F[0]>]: ReturnType<F[0]>[K];
+              } & {
+                [K in keyof ReturnType<F[1]>]: ReturnType<F[1]>[K];
+              } & {
+                [K in keyof ReturnType<F[2]>]: ReturnType<F[2]>[K];
+              }
+              : F['length'] extends 4
+                // eslint-disable-next-line @stylistic/indent-binary-ops
+                ? {
+                  [K in keyof ReturnType<F[0]>]: ReturnType<F[0]>[K];
+                } & {
+                  [K in keyof ReturnType<F[1]>]: ReturnType<F[1]>[K];
+                } & {
+                  [K in keyof ReturnType<F[2]>]: ReturnType<F[2]>[K];
+                } & {
+                  [K in keyof ReturnType<F[3]>]: ReturnType<F[3]>[K];
+                }
+                : {};
     export type ComponentPropsNesting<Tag extends InternalTypings.ComponentTag> = Omit<
       MergeProps<
         Tag extends React.FC
           ? ReactFCProps<Tag>
           : Tag extends React.ComponentClass
-          ? ReactComponentProps<Tag>
-          : Tag extends ReactFCLike
-          ? ReactFCLikeProps<Tag>
-          : Tag extends keyof JSX.IntrinsicElements
-          ? JSX.IntrinsicElements[Tag]
-          : {},
+            ? ReactComponentProps<Tag>
+            : Tag extends ReactFCLike
+              ? ReactFCLikeProps<Tag>
+              : Tag extends keyof JSX.IntrinsicElements
+                ? JSX.IntrinsicElements[Tag]
+                : {},
         Tag extends { __nestedProps: infer NestedProps } ? NestedProps : {}
       >,
       'children' | 'tag'
@@ -246,10 +251,10 @@ export namespace Intergalactic {
         AdditionalContext
       >;
     } & ComponentBasicProps<Tag> &
-      MergeProps<
-        EfficientOmit<Props, 'tag' | 'children'>,
-        MergeProps<ComponentPropsNesting<Tag>, ComponentPropsNesting<BaseTag>>
-      >;
+    MergeProps<
+      EfficientOmit<Props, 'tag' | 'children'>,
+      MergeProps<ComponentPropsNesting<Tag>, ComponentPropsNesting<BaseTag>>
+    >;
     export type PropsRenderingResultComponentProps<
       Tag extends ComponentTag,
       Props,
@@ -271,7 +276,7 @@ export namespace Intergalactic {
         AdditionalContext
       >;
     } & ComponentBasicProps<Tag> &
-      MergeProps<EfficientOmit<Props, 'tag' | 'children'>, ComponentPropsNesting<Tag>>;
+    MergeProps<EfficientOmit<Props, 'tag' | 'children'>, ComponentPropsNesting<Tag>>;
     export type ComponentRenderingResults = React.ReactElement;
     export type ComponentAdditive<
       BaseTag extends ComponentTag,
@@ -297,8 +302,8 @@ export namespace Intergalactic {
       Tag extends keyof JSX.IntrinsicElements
         ? InferJsxIntrinsicElement<JSX.IntrinsicElements[Tag]>
         : Tag extends { __nestedProps: infer NestedProps }
-        ? InferRefElementFromProps<NestedProps>
-        : HTMLElement;
+          ? InferRefElementFromProps<NestedProps>
+          : HTMLElement;
     export type UntypeRefAndTag<Props> = Intergalactic.InternalTypings.EfficientOmit<
       Props,
       'ref' | 'tag'
@@ -315,7 +320,7 @@ export namespace Intergalactic {
   > = (<Tag extends InternalTypings.ComponentTag = BaseTag, Props extends BaseProps = BaseProps>(
     props: InternalTypings.ComponentProps<Tag, BaseTag, Props, Context, AdditionalContext>,
   ) => InternalTypings.ComponentRenderingResults) &
-    InternalTypings.ComponentAdditive<BaseTag, Tag, BaseProps, Context, AdditionalContext>;
+  InternalTypings.ComponentAdditive<BaseTag, Tag, BaseProps, Context, AdditionalContext>;
   export type Tag = InternalTypings.ComponentTag;
   export type DomProps<Tag extends keyof JSX.IntrinsicElements> =
     InternalTypings.InferJsxIntrinsicElement<JSX.IntrinsicElements[Tag]>;
@@ -323,9 +328,9 @@ export namespace Intergalactic {
     T,
     Exclude<keyof T, Keys>
   > &
-    {
-      [K in Keys]-?: Required<Pick<T, K>> & Partial<Pick<T, Exclude<Keys, K>>>;
-    }[Keys];
+  {
+    [K in Keys]-?: Required<Pick<T, K>> & Partial<Pick<T, Exclude<Keys, K>>>;
+  }[Keys];
 }
 
 export const wrapIntergalacticComponent = <
@@ -336,7 +341,7 @@ export const wrapIntergalacticComponent = <
     props: Intergalactic.InternalTypings.UntypeRefAndTag<
       Intergalactic.InternalTypings.ComponentPropsNesting<Component>
     > &
-      PropsExtending,
+    PropsExtending,
   ) => React.ReactNode,
 ): Intergalactic.Component<
   Component['__tag'],
@@ -363,13 +368,13 @@ export type ComponentType<
 > = (FNType extends null
   ? ForwardRefComponent<ComponentProps, ContextType, UCProps>
   : FNType & { displayName: string }) & {
-  [K in keyof ChildComponentProps]: ComponentOrProps<ChildComponentProps[K], ContextType, UCProps>;
-} & {
-  [CORE_COMPONENT]: boolean;
-  [CREATE_COMPONENT]: () => ComponentType<
-    ComponentProps,
-    ChildComponentProps,
-    ContextType,
-    UCProps
-  >;
-};
+    [K in keyof ChildComponentProps]: ComponentOrProps<ChildComponentProps[K], ContextType, UCProps>;
+  } & {
+    [CORE_COMPONENT]: boolean;
+    [CREATE_COMPONENT]: () => ComponentType<
+      ComponentProps,
+      ChildComponentProps,
+      ContextType,
+      UCProps
+    >;
+  };

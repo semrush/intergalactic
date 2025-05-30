@@ -33,6 +33,7 @@ class Switch extends Component {
   handleMouseUp = () => {
     this.setState({ active: false });
   };
+
   handleMouseDown = (event) => {
     if (event?.button !== 0) return;
     this.setState({ active: true });
@@ -176,8 +177,7 @@ class Value extends Component {
                 <Children />
               </SSlider>
             </SToggle>,
-          )
-        }
+          )}
       </NeighborLocation.Detect>
     );
   }
@@ -197,8 +197,7 @@ function Addon(props) {
             neighborLocation={neighborLocation}
             id={`igc-${uid}-switch-addon-${neighborLocation}`}
           />,
-        )
-      }
+        )}
     </NeighborLocation.Detect>
   );
 }

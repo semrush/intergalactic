@@ -12,7 +12,7 @@ const wrapDataTable = <PropsExtending extends {}>(
     props: Intergalactic.InternalTypings.UntypeRefAndTag<
       Intergalactic.InternalTypings.ComponentPropsNesting<DataTableType>
     > &
-      PropsExtending,
+    PropsExtending,
   ) => React.ReactNode,
 ): DataTableType => wrapper as any;
 

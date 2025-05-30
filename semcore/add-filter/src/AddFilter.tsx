@@ -93,8 +93,8 @@ class RootAddFilter extends Component<
       const currentVisibleFiltersList = Array.from(this.state.visibleFilters);
       const focusFilterName = currentVisibleFiltersList.at(deletedIndex);
 
-      const itemToFocus =
-        this.filtersFocusMap.get(focusFilterName) ?? this.addFilterTrigger.current;
+      const itemToFocus
+        = this.filtersFocusMap.get(focusFilterName) ?? this.addFilterTrigger.current;
       itemToFocus?.focus();
     }, 20);
   }
@@ -190,7 +190,8 @@ class RootAddFilter extends Component<
     const visibleFilters = new Set(Array.from(this.state.visibleFilters));
     if (status) {
       visibleFilters.add(name);
-    } else {
+    }
+    else {
       visibleFilters.delete(name);
     }
 
@@ -289,11 +290,13 @@ const AddFilterDropdownMenu = React.forwardRef<HTMLButtonElement, AddFilterDropd
 );
 
 function ClearAllFilters({ hasFilterData, clearAll, getI18nText }: ClearAllFiltersButtonProps) {
-  return hasFilterData ? (
-    <Button use='tertiary' theme='muted' addonLeft={CloseM} ml='auto' onClick={clearAll}>
-      {getI18nText('AddFilter.Button.Text')}
-    </Button>
-  ) : null;
+  return hasFilterData
+    ? (
+        <Button use='tertiary' theme='muted' addonLeft={CloseM} ml='auto' onClick={clearAll}>
+          {getI18nText('AddFilter.Button.Text')}
+        </Button>
+      )
+    : null;
 }
 
 const AddFilter: typeof AddFilterType = createComponent(RootAddFilter, {

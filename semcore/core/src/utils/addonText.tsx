@@ -11,13 +11,15 @@ export default function addonText(
   }
   return React.Children.toArray(children).some(
     (element) =>
-      React.isValidElement(element) &&
-      (element.type === React.Fragment ||
-        (element.type as any)['displayName'] === Text.displayName ||
-        (element.type as any)['displayName'] === Addon.displayName),
-  ) ? (
-    children
-  ) : (
-    <Text>{children}</Text>
-  );
+      React.isValidElement(element)
+      && (element.type === React.Fragment
+        || (element.type as any)['displayName'] === Text.displayName
+        || (element.type as any)['displayName'] === Addon.displayName),
+  )
+    ? (
+        children
+      )
+    : (
+        <Text>{children}</Text>
+      );
 }

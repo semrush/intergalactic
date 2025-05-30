@@ -189,17 +189,20 @@ class InputTags extends Component<IInputTagsProps> {
       },
     };
   }
+
   getTagTextProps(_: any, index: number) {
     return {
       uid: `${this.asProps.uid}-${index}`,
       getI18nText: this.asProps.getI18nText,
     };
   }
+
   getInputTagsContainerProps() {
     return {
       tagsContainerAriaLabel: this.state.tagsContainerAriaLabel,
     };
   }
+
   getTagContainerTextContentProps() {
     return {
       tabIndex: null,
@@ -278,9 +281,10 @@ class Value extends Component<IInputTagsValueProps> {
       spacerNode['innerText'] = placeholder;
       /* for [placeholder] {
           text-overflow: ellipsis;
-      }*/
+      } */
       magicOffset += 8;
-    } else {
+    }
+    else {
       spacerNode['innerText'] = value;
     }
     this.setState({
@@ -349,11 +353,12 @@ function InputTagContainerTag(props: any) {
 
   React.useEffect(() => {
     if (
-      ref.current instanceof HTMLButtonElement ||
-      ref.current?.getAttribute('role') === 'button'
+      ref.current instanceof HTMLButtonElement
+      || ref.current?.getAttribute('role') === 'button'
     ) {
       ref.current.setAttribute('aria-describedby', `${props.uid}-description`);
-    } else {
+    }
+    else {
       ref.current?.removeAttribute('aria-describedby');
     }
   }, [ref.current, props.uid]);

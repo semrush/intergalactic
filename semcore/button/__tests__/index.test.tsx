@@ -672,19 +672,19 @@ describe('Button', () => {
 describe('ButtonLink', () => {
   test.concurrent('renders correctly', async ({ task }) => {
     const component = (
-      <Flex direction={'column'} gap={6} alignItems={'flex-start'}>
+      <Flex direction='column' gap={6} alignItems='flex-start'>
         <ButtonLink addonLeft={CheckM}>Button Link primary</ButtonLink>
-        <ButtonLink use={'secondary'}>
+        <ButtonLink use='secondary'>
           <ButtonLink.Addon>
             <CheckM />
           </ButtonLink.Addon>
           <ButtonLink.Text>Button Link secondary</ButtonLink.Text>
         </ButtonLink>
-        <ButtonLink addonRight={CloseM} color={'text-critical'}>
+        <ButtonLink addonRight={CloseM} color='text-critical'>
           Close
         </ButtonLink>
 
-        <ButtonLink addonLeft={CheckM} aria-label={'Confirm'} />
+        <ButtonLink addonLeft={CheckM} aria-label='Confirm' />
 
         <ButtonLink addonLeft={CheckM} size={500}>
           Large size
@@ -697,21 +697,21 @@ describe('ButtonLink', () => {
 
   test.concurrent('disabled renders correctly', async ({ task }) => {
     const component = (
-      <Flex direction={'column'} gap={6} alignItems={'flex-start'}>
+      <Flex direction='column' gap={6} alignItems='flex-start'>
         <ButtonLink addonLeft={CheckM} disabled={true}>
           Button Link primary
         </ButtonLink>
-        <ButtonLink use={'secondary'} disabled={true}>
+        <ButtonLink use='secondary' disabled={true}>
           <ButtonLink.Addon>
             <CheckM />
           </ButtonLink.Addon>
           <ButtonLink.Text>Button Link secondary</ButtonLink.Text>
         </ButtonLink>
-        <ButtonLink addonRight={CloseM} color={'text-critical'} disabled={true}>
+        <ButtonLink addonRight={CloseM} color='text-critical' disabled={true}>
           Close
         </ButtonLink>
 
-        <ButtonLink addonLeft={CheckM} aria-label={'Confirm'} disabled={true} />
+        <ButtonLink addonLeft={CheckM} aria-label='Confirm' disabled={true} />
 
         <ButtonLink addonLeft={CheckM} size={500} disabled={true}>
           Large size

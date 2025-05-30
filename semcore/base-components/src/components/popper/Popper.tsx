@@ -299,9 +299,9 @@ class PopperRoot extends Component<PopperProps, {}, {}, typeof PopperRoot.enhanc
       'cursorAnchoring',
     ];
     if (
-      this.popper.current &&
+      this.popper.current
       // @ts-ignore
-      popperProps.some((propName) => prevProps[propName] !== this.asProps[propName])
+      && popperProps.some((propName) => prevProps[propName] !== this.asProps[propName])
     ) {
       this.popper.current.setOptions(this.getPopperOptions());
     }
@@ -324,8 +324,8 @@ class PopperRoot extends Component<PopperProps, {}, {}, typeof PopperRoot.enhanc
     component: PopperComponent,
     visible: boolean,
   ) {
-    const eventInteraction =
-      typeof interaction === 'string' ? this.eventsInteractionMap[interaction] : interaction;
+    const eventInteraction
+      = typeof interaction === 'string' ? this.eventsInteractionMap[interaction] : interaction;
 
     if (!eventInteraction) return;
 
@@ -355,30 +355,31 @@ class PopperRoot extends Component<PopperProps, {}, {}, typeof PopperRoot.enhanc
       this.bindHandlerChangeVisibleWithTimer(false, component, 'onKeyDown')(e);
     }
   };
+
   bindHandlerKeyDown = (
     onKeyDown: (event: React.KeyboardEvent) => void | false,
     component: PopperComponent,
   ) => callAllEventHandlers(onKeyDown, this.makeKeyDownHandler(component));
 
   lastPopperClick = 0;
-  bindHandlerChangeVisibleWithTimer =
-    (visible: boolean, component?: PopperComponent, action?: any) => (e: React.SyntheticEvent) => {
+  bindHandlerChangeVisibleWithTimer
+    = (visible: boolean, component?: PopperComponent, action?: any) => (e: React.SyntheticEvent) => {
       const trigger = this.triggerRef.current;
       if (
-        component === 'trigger' &&
-        action === 'onBlur' &&
-        e.target instanceof HTMLElement &&
-        'relatedTarget' in e &&
-        e.relatedTarget instanceof HTMLElement
+        component === 'trigger'
+        && action === 'onBlur'
+        && e.target instanceof HTMLElement
+        && 'relatedTarget' in e
+        && e.relatedTarget instanceof HTMLElement
       ) {
         const focused = e.relatedTarget;
         const blurred = e.target;
         if (
-          focused &&
-          trigger &&
-          blurred &&
-          hasParent(focused, trigger) &&
-          hasParent(blurred, trigger)
+          focused
+          && trigger
+          && blurred
+          && hasParent(focused, trigger)
+          && hasParent(blurred, trigger)
         ) {
           return;
         }
@@ -436,10 +437,10 @@ class PopperRoot extends Component<PopperProps, {}, {}, typeof PopperRoot.enhanc
         // instance popper is not here yet because the popperRef did not have time to come
         this.timerMultiTrigger = window.setTimeout(() => {
           if (
-            visible &&
-            component === 'trigger' &&
-            this.popper.current &&
-            this.lastPopperReference
+            visible
+            && component === 'trigger'
+            && this.popper.current
+            && this.lastPopperReference
           ) {
             if (this.popper.current.state.elements.reference !== this.lastPopperReference) {
               this.popper.current.state.elements.reference = this.lastPopperReference;
@@ -455,9 +456,9 @@ class PopperRoot extends Component<PopperProps, {}, {}, typeof PopperRoot.enhanc
         }, 0);
       });
       if (
-        component === 'popper' &&
-        !visible &&
-        ['onClick', 'onBlur', 'onKeyDown'].includes(action)
+        component === 'popper'
+        && !visible
+        && ['onClick', 'onBlur', 'onKeyDown'].includes(action)
       ) {
         this.ignoreTriggerFocus = true;
       }
@@ -534,9 +535,9 @@ class PopperRoot extends Component<PopperProps, {}, {}, typeof PopperRoot.enhanc
   handlePopperFocusOut = (event: React.SyntheticEvent) => {
     if (this.asProps.focusLoop) return;
     if (
-      this.triggerRef.current &&
-      event.target instanceof HTMLElement &&
-      hasParent(event.target, this.triggerRef.current)
+      this.triggerRef.current
+      && event.target instanceof HTMLElement
+      && hasParent(event.target, this.triggerRef.current)
     )
       return;
 
@@ -563,16 +564,18 @@ class PopperRoot extends Component<PopperProps, {}, {}, typeof PopperRoot.enhanc
     const { Children, visible, root, onOutsideClick, excludeRefs = [] } = this.asProps;
     return (
       <>
-        {visible ? (
-          <OutsideClick
-            root={root}
-            excludeRefs={[this.triggerRef, this.popperRef, ...excludeRefs]}
-            onOutsideClick={callAllEventHandlers(
-              onOutsideClick,
-              this.bindHandlerChangeVisibleWithTimer(false),
-            )}
-          />
-        ) : null}
+        {visible
+          ? (
+              <OutsideClick
+                root={root}
+                excludeRefs={[this.triggerRef, this.popperRef, ...excludeRefs]}
+                onOutsideClick={callAllEventHandlers(
+                  onOutsideClick,
+                  this.bindHandlerChangeVisibleWithTimer(false),
+                )}
+              />
+            )
+          : null}
         <Children />
       </>
     );
@@ -594,10 +597,10 @@ function Trigger(props: PopperTriggerProps & IRootComponentProps & InnerPopperTr
   const handleFocus = React.useCallback(
     (e: FocusEvent) => {
       if (
-        lastInteraction.isKeyboard() &&
-        triggerRef.current &&
-        (e.target instanceof HTMLElement || e.target instanceof SVGElement) &&
-        hasParent(e.target, triggerRef.current)
+        lastInteraction.isKeyboard()
+        && triggerRef.current
+        && (e.target instanceof HTMLElement || e.target instanceof SVGElement)
+        && hasParent(e.target, triggerRef.current)
       ) {
         onKeyboardFocus?.();
       }

@@ -22,6 +22,7 @@ class FullscreenModalRoot extends Component {
     i18n: localizedMessages,
     locale: 'en',
   };
+
   state = { hasTitle: false };
 
   bindHandlerClose = (trigger) => (e) => {
@@ -41,6 +42,7 @@ class FullscreenModalRoot extends Component {
       onClick: this.bindHandlerClose('onBackClick'),
     };
   }
+
   getTitleProps() {
     const { uid } = this.asProps;
     const setHasTitle = () => this.setState({ hasTitle: true });
@@ -109,7 +111,7 @@ function Body(props) {
 
 function Section(props) {
   const SSection = Root;
-  return sstyled(props.styles)(<SSection render={Box} tag={'section'} />);
+  return sstyled(props.styles)(<SSection render={Box} tag='section' />);
 }
 
 function Footer(props) {
@@ -122,7 +124,7 @@ function Close(props) {
   const { getI18nText } = props;
   return sstyled(props.styles)(
     <SClose render={Button} use='tertiary' size='l' theme='muted' aria-label={getI18nText('close')}>
-      <Button.Addon ml={'7px'} mr={'7px'}>
+      <Button.Addon ml='7px' mr='7px'>
         <CloseIcon title={getI18nText('close')} />
       </Button.Addon>
     </SClose>,

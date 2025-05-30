@@ -117,7 +117,7 @@ describe('FeedbackForm', () => {
     const { getByTestId } = render(
       <FeedbackForm onSubmit={onSubmit}>
         <FeedbackForm.Item name='description' validate={required}>
-          {({ input, meta }) => <input data-testid={'input'} {...input} />}
+          {({ input, meta }) => <input data-testid='input' {...input} />}
         </FeedbackForm.Item>
         <FeedbackForm.Submit data-testid='submit'>Send feedback</FeedbackForm.Submit>
       </FeedbackForm>,
@@ -137,7 +137,7 @@ describe('FeedbackForm', () => {
     const { getByTestId } = render(
       <FeedbackForm onSubmit={onSubmit} validateOnBlur={false}>
         <FeedbackForm.Item name='description' validate={required}>
-          {({ input, meta }) => <input data-testid={'input'} {...input} />}
+          {({ input, meta }) => <input data-testid='input' {...input} />}
         </FeedbackForm.Item>
         <FeedbackForm.Submit data-testid='submit'>Send feedback</FeedbackForm.Submit>
       </FeedbackForm>,

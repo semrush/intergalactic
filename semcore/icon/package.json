@@ -14,7 +14,7 @@
     "clean": "node clean.js"
   },
   "dependencies": {
-    "@semcore/flex-box": "16.0.0",
+    "@semcore/flex-box": "workspace:*",
     "classnames": "2.2.6"
   },
   "peerDependencies": {
@@ -26,9 +26,9 @@
     "directory": "semcore/icon"
   },
   "devDependencies": {
-    "@semcore/icon-transform-svg": "1.1.0",
+    "@semcore/icon-transform-svg": "workspace:*",
+    "@semcore/testing-utils": "workspace:*",
     "@types/classnames": "2.2.6",
-    "@semcore/testing-utils": "1.0.0",
     "@types/react": "18.0.21"
   },
   "exports": {

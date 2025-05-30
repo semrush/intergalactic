@@ -92,7 +92,7 @@ describe('Textarea', () => {
 
   test.concurrent('Should support onChange callback', () => {
     const spyChange = vi.fn();
-    const { getByTestId } = render(<Textarea data-testid={'textarea'} onChange={spyChange} />);
+    const { getByTestId } = render(<Textarea data-testid='textarea' onChange={spyChange} />);
 
     fireEvent.input(getByTestId('textarea'), { target: { value: 'text' } });
     expect(spyChange).toBeCalledWith('text', expect.any(Object));
@@ -102,20 +102,18 @@ describe('Textarea', () => {
   test.skip('Should support auto height', async ({ task }) => {
     const component = (
       <>
-        <Textarea w={200} minRows={1} maxRows={4} value={'lorem'} />
+        <Textarea w={200} minRows={1} maxRows={4} value='lorem' />
         <Textarea
           w={200}
           minRows={1}
           maxRows={4}
-          value={'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'}
+          value='Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
         />
         <Textarea
           w={200}
           minRows={1}
           maxRows={4}
-          value={
-            'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta doloribus impedit ipsum libero maxime modi quisquam ratione repellendus? Architecto at, consectetur culpa dolor dolores illum mollitia quam quidem reiciendis voluptates.'
-          }
+          value='Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta doloribus impedit ipsum libero maxime modi quisquam ratione repellendus? Architecto at, consectetur culpa dolor dolores illum mollitia quam quidem reiciendis voluptates.'
         />
       </>
     );

@@ -74,8 +74,8 @@ test.describe('Text', () => {
   });
 
   test('Verify size and font-weight work well for headers and paragrapsh', async ({ page }) => {
-    const standPath =
-      'stories/components/typography/tests/examples/text-font-size-and-weight-headers-and-paragrapsh.tsx';
+    const standPath
+      = 'stories/components/typography/tests/examples/text-font-size-and-weight-headers-and-paragrapsh.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -84,8 +84,8 @@ test.describe('Text', () => {
   });
 
   test('Verify fontSize, lineHeight, textAlign, use, disabled, noWrap props', async ({ page }) => {
-    const standPath =
-      'stories/components/typography/tests/examples/text-with-diff-combimations.tsx';
+    const standPath
+      = 'stories/components/typography/tests/examples/text-with-diff-combimations.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);

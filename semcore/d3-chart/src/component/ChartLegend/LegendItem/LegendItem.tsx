@@ -42,17 +42,17 @@ class LegendItemRoot extends Component<LegendItemProps, {}, {}, typeof enhance> 
   }
 
   getShapeProps() {
-    const { checked, color, shape, label, id, size, resolveColor, patterns, onChangeLegendItem } =
-      this.asProps;
+    const { checked, color, shape, label, id, size, resolveColor, patterns, onChangeLegendItem }
+      = this.asProps;
     return {
       label,
       shape,
       checked,
-      color: resolveColor(color),
-      patternKey: color,
+      'color': resolveColor(color),
+      'patternKey': color,
       patterns,
       size,
-      onChange: (value: boolean) => {
+      'onChange': (value: boolean) => {
         onChangeLegendItem(id, value);
       },
       'aria-labelledby': shape === 'Checkbox' ? this.getUniqueID() : null,
@@ -157,7 +157,7 @@ function Shape(props: IRootComponentProps & ShapeProps & DOMAttributes<HTMLLabel
           aria-labelledby={props['aria-labelledby']}
         />
         {patterns && (
-          <Box mt={'2px'} mr={1}>
+          <Box mt='2px' mr={1}>
             <SPatternSymbol color={color} patternKey={patternKey} aria-hidden />
           </Box>
         )}
@@ -180,7 +180,7 @@ function Icon({ styles, children: hasChildren, Children }: IRootComponentProps) 
   }
 
   return sstyled(styles)(
-    <SIcon render={Box} tag={'span'}>
+    <SIcon render={Box} tag='span'>
       <Children />
     </SIcon>,
   );
@@ -195,7 +195,7 @@ function Label({ styles, children: hasChildren, Children }: IRootComponentProps)
   }
 
   return sstyled(styles)(
-    <SLabel render={TypographyText} use={'primary'}>
+    <SLabel render={TypographyText} use='primary'>
       <Children />
     </SLabel>,
   );
@@ -210,7 +210,7 @@ function AdditionalLabel({ styles, children: hasChildren, Children }: IRootCompo
   }
 
   return sstyled(styles)(
-    <SAdditionalLabel render={TypographyText} use={'secondary'}>
+    <SAdditionalLabel render={TypographyText} use='secondary'>
       <Children />
     </SAdditionalLabel>,
   );
@@ -225,7 +225,7 @@ function Count({ styles, children: hasChildren, Children }: IRootComponentProps)
   }
 
   return sstyled(styles)(
-    <SCount render={TypographyText} use={'secondary'}>
+    <SCount render={TypographyText} use='secondary'>
       <Children />
     </SCount>,
   );

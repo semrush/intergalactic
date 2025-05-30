@@ -117,7 +117,7 @@ type IntergalacticRadioGroupComponent<PropsExtending = {}> = (<
   props: Intergalactic.InternalTypings.ComponentProps<Tag, typeof Flex, RadioGroupProps<Value>> &
     PropsExtending,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
-  Intergalactic.InternalTypings.ComponentAdditive<'div', typeof Flex, RadioGroupProps>;
+Intergalactic.InternalTypings.ComponentAdditive<'div', typeof Flex, RadioGroupProps>;
 
 export type RadioValueControlProps = {};
 export type RadioValueMarkProps = {};
@@ -139,7 +139,7 @@ declare const wrapRadioGroup: <PropsExtending extends {}>(
     props: Intergalactic.InternalTypings.UntypeRefAndTag<
       Intergalactic.InternalTypings.ComponentPropsNesting<IntergalacticRadioGroupComponent>
     > &
-      PropsExtending,
+    PropsExtending,
   ) => React.ReactNode,
 ) => IntergalacticRadioGroupComponent<PropsExtending>;
 export { wrapRadioGroup };

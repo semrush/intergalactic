@@ -78,13 +78,16 @@ class CigaretteBarRoot extends Component<any> {
       if (direction === 'horizontal') {
         if (index === 0) {
           return roundedPath(xV, yV, widthV, heightV, radius, true, false, true, false);
-        } else {
+        }
+        else {
           return roundedPath(xV, yV, widthV, heightV, radius, false, true, false, true);
         }
-      } else {
+      }
+      else {
         if (index === 0) {
           return roundedPath(xV, yV, widthV, heightV, radius, true, true, false, false);
-        } else {
+        }
+        else {
           return roundedPath(xV, yV, widthV, heightV, radius, false, false, true, true);
         }
       }

@@ -8,7 +8,7 @@ export default () => {
         <Tooltip.Trigger>
           <button type='button'>Test</button>
         </Tooltip.Trigger>
-        <Tooltip.Popper arrowBgColor={'green'} arrowShadowColor={'grey'}>
+        <Tooltip.Popper arrowBgColor='green' arrowShadowColor='grey'>
           text text text
         </Tooltip.Popper>
       </Tooltip>

@@ -180,8 +180,8 @@ test.describe('States and styles', () => {
   });
 
   test('Verify custom view when buttons and inputs have addons', async ({ page }) => {
-    const standPath =
-      'stories/components/pagination/tests/examples/pages-and-input-custom-styles.tsx';
+    const standPath
+      = 'stories/components/pagination/tests/examples/pages-and-input-custom-styles.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -236,7 +236,8 @@ test.describe('Interactions', () => {
       if (browserName === 'webkit') {
         await page.keyboard.press('Tab');
         await page.keyboard.press('Enter');
-      } else {
+      }
+      else {
         await expect(nextPage).toBeFocused();
         await page.keyboard.press('Enter');
       }
@@ -381,7 +382,7 @@ test.describe('Interactions', () => {
       await expect(input).toHaveAttribute('value', '100');
     });
 
-    //disabled for firefox and webskit because test example works unstable
+    // disabled for firefox and webskit because test example works unstable
     if (browserName !== 'chromium') return;
     await test.step('Verify correct page is set when entering and activate input', async () => {
       await input.fill('33');

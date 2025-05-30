@@ -6,10 +6,10 @@ function shadeHexColor(color: string, percent: number) {
   const G = (f >> 8) & 0x00ff;
   const B = f & 0x0000ff;
   return `#${(
-    0x1000000 +
-    (Math.round((t - R) * p) + R) * 0x10000 +
-    (Math.round((t - G) * p) + G) * 0x100 +
-    (Math.round((t - B) * p) + B)
+    0x1000000
+    + (Math.round((t - R) * p) + R) * 0x10000
+    + (Math.round((t - G) * p) + G) * 0x100
+    + (Math.round((t - B) * p) + B)
   )
     .toString(16)
     .slice(1)}`;
@@ -42,10 +42,10 @@ function blendHexColors(colorOne: string, colorTwo: string, percent: number) {
   const G2 = (t >> 8) & 0x00ff;
   const B2 = t & 0x0000ff;
   return `#${(
-    0x1000000 +
-    (Math.round((R2 - R1) * percent) + R1) * 0x10000 +
-    (Math.round((G2 - G1) * percent) + G1) * 0x100 +
-    (Math.round((B2 - B1) * percent) + B1)
+    0x1000000
+    + (Math.round((R2 - R1) * percent) + R1) * 0x10000
+    + (Math.round((G2 - G1) * percent) + G1) * 0x100
+    + (Math.round((B2 - B1) * percent) + B1)
   )
     .toString(16)
     .slice(1)}`;
@@ -84,6 +84,7 @@ function colorRGB(color: string) {
 }
 
 function hex2rgb(hex: string) {
+  // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
   return hex
     .replace(/^#?([a-f\d])([a-f\d])([a-f\d])$/i, (_m, r, g, b) => `#${r}${r}${g}${g}${b}${b}`)
     .substring(1)
@@ -95,9 +96,11 @@ export function opacity(color?: string, percent = 1) {
   if (!color) return;
   if (color.includes('#') && color.match(/^#?[a-fA-F\d]{6}$/)) {
     color = `rgba(${hex2rgb(color).join(', ')}, ${percent})`;
-  } else if (color.includes('rgb')) {
+  }
+  else if (color.includes('rgb')) {
     color = `rgba(${colorRGB(color).join(', ')}, ${percent})`;
-  } else {
+  }
+  else {
     return;
   }
   return color;
@@ -107,7 +110,8 @@ export function brightness(color: any) {
   if (!color) return;
   if (color.length <= 7) {
     color = hex2rgb(color);
-  } else {
+  }
+  else {
     color = colorRGB(color);
   }
   return Math.round(
@@ -134,21 +138,24 @@ export const light = (color?: string, factor = 1) => {
     g = Number.parseInt(color.substring(1 + partSize, 1 + partSize * 2), 16);
     b = Number.parseInt(color.substring(1 + partSize * 2, 1 + partSize * 3), 16);
     a = 1; // not handled for now
-  } else if (color.startsWith('rgb(')) {
+  }
+  else if (color.startsWith('rgb(')) {
     const trimmed = color.substring('rgb('.length, color.length - ')'.length);
     const parts = trimmed.split(',').map((part) => Number.parseInt(part.trim(), 10));
     r = parts[0];
     g = parts[1];
     b = parts[2];
     a = 1;
-  } else if (color.startsWith('rgba(')) {
+  }
+  else if (color.startsWith('rgba(')) {
     const trimmed = color.substring('rgba('.length, color.length - ')'.length);
     const parts = trimmed.split(',').map((part) => Number.parseInt(part.trim(), 10));
     r = parts[0];
     g = parts[1];
     b = parts[2];
     a = parts[2];
-  } else {
+  }
+  else {
     throw new Error(`Got invalid color ${color}`);
   }
 
@@ -174,7 +181,8 @@ const rgbToHsl = (r: number, g: number, b: number) => {
 
   if (max === min) {
     h = s = 0;
-  } else {
+  }
+  else {
     const d = max - min;
     s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
 
@@ -203,7 +211,8 @@ const hslToRgb = (h: number, s: number, l: number) => {
 
   if (s === 0) {
     r = g = b = l;
-  } else {
+  }
+  else {
     function hue2rgb(p: number, q: number, t: number) {
       if (t < 0) t += 1;
       if (t > 1) t -= 1;

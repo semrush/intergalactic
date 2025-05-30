@@ -17,10 +17,10 @@
     "types": "./lib/types/index.d.ts"
   },
   "dependencies": {
-    "@semcore/button": "16.0.0",
-    "@semcore/flex-box": "16.0.0",
-    "@semcore/icon": "16.1.0",
-    "@semcore/modal": "16.1.0"
+    "@semcore/button": "workspace:*",
+    "@semcore/flex-box": "workspace:*",
+    "@semcore/icon": "workspace:*",
+    "@semcore/modal": "workspace:*"
   },
   "peerDependencies": {
     "@semcore/base-components": "^16.0.0"
@@ -31,7 +31,7 @@
     "directory": "semcore/wizard"
   },
   "devDependencies": {
-    "@types/react": "18.0.21",
-    "@semcore/testing-utils": "1.0.0"
+    "@semcore/testing-utils": "workspace:*",
+    "@types/react": "18.0.21"
   }
 }

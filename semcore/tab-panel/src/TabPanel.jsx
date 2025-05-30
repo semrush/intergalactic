@@ -1,4 +1,3 @@
-
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
@@ -25,6 +24,7 @@ class TabPanelRoot extends Component {
     defaultValue: null,
     behavior: 'manual',
   };
+
   static enhance = [a11yEnhance(optionsA11yEnhance)];
 
   uncontrolledProps() {
@@ -48,10 +48,10 @@ class TabPanelRoot extends Component {
     const { value } = this.asProps;
     const isSelected = value === props.value;
     return {
-      selected: isSelected,
-      onClick: this.handleClick(props.value),
-      onKeyDown: this.handleKeyDown(props.value),
-      tabIndex: isSelected ? 0 : -1,
+      'selected': isSelected,
+      'onClick': this.handleClick(props.value),
+      'onKeyDown': this.handleKeyDown(props.value),
+      'tabIndex': isSelected ? 0 : -1,
       'aria-selected': isSelected,
     };
   }

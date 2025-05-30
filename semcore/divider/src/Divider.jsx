@@ -1,4 +1,3 @@
-
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';

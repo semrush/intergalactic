@@ -34,7 +34,7 @@ class LineRoot extends Component<ScoreLineGaugeProps, {}, {}, typeof LineRoot.en
     const width = sum > 0 ? (100 * segmentProps.value) / sum : 0;
 
     return {
-      w: `${width}%`,
+      'w': `${width}%`,
       'use:color': resolveColor(segmentProps.color),
     };
   }

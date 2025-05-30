@@ -32,8 +32,8 @@ export const useAsyncI18nMessages = (
     const container: MessagesContainer = {};
     for (const locale in primaryContainer) {
       if (
-        typeof primaryContainer[locale] === 'function' ||
-        typeof fallbackContainer[locale] === 'function'
+        typeof primaryContainer[locale] === 'function'
+        || typeof fallbackContainer[locale] === 'function'
       ) {
         container[locale] = async () => {
           const [primary, fallback] = await Promise.all([
@@ -42,7 +42,8 @@ export const useAsyncI18nMessages = (
           ]);
           return { ...primary, ...fallback };
         };
-      } else {
+      }
+      else {
         container[locale] = {
           ...(primaryContainer[locale] ?? {}),
           ...(fallbackContainer[locale] ?? {}),

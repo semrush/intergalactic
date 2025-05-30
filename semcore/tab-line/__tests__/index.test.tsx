@@ -145,7 +145,7 @@ describe('TabLine', () => {
         <TabLine.Item value={1}>Item 1</TabLine.Item>
         <TabLine.Item value={2}>Item 2</TabLine.Item>
         <TabLine.Item value={3}>Item 3</TabLine.Item>
-        <TabLine.Item value={4} onClick={spyClick} data-testid={'tab-4'}>
+        <TabLine.Item value={4} onClick={spyClick} data-testid='tab-4'>
           Item 4
         </TabLine.Item>
       </TabLine>,
@@ -164,7 +164,7 @@ describe('TabLine', () => {
         <TabLine.Item value={1}>Item 1</TabLine.Item>
         <TabLine.Item value={2}>Item 2</TabLine.Item>
         <TabLine.Item value={3}>Item 3</TabLine.Item>
-        <TabLine.Item value={4} data-testid={'tab-4'} disabled>
+        <TabLine.Item value={4} data-testid='tab-4' disabled>
           Item 4
         </TabLine.Item>
       </TabLine>,
@@ -225,7 +225,7 @@ describe('TabLine', () => {
     const spy = vi.fn();
 
     const { getByTestId } = render(
-      <TabLine value={1 as number} onChange={spy} data-testid={'tab-root'}>
+      <TabLine value={1 as number} onChange={spy} data-testid='tab-root'>
         <TabLine.Item value={1}>Item 1</TabLine.Item>
         <TabLine.Item value={2}>Item 2</TabLine.Item>
         <TabLine.Item value={3}>Item 3</TabLine.Item>

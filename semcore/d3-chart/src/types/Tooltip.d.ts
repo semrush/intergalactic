@@ -47,12 +47,12 @@ export type TooltipType<ChildrenRenderProps = {}, TooltipProps = {}> = (<
     ChildrenRenderProps & TooltipChartContext
   >,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
-  Intergalactic.InternalTypings.ComponentAdditive<
-    Intergalactic.Tag,
-    Intergalactic.Tag,
-    TooltipProps
-  > &
-  TooltipTypeBase;
+Intergalactic.InternalTypings.ComponentAdditive<
+  Intergalactic.Tag,
+  Intergalactic.Tag,
+  TooltipProps
+> &
+TooltipTypeBase;
 
 /**
  * @deprecated Consider migration to better typed Bubble.Tooltip, HoverLine.Tooltip,

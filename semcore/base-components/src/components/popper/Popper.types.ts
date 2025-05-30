@@ -1,4 +1,4 @@
-import type { DOMAttributes, } from 'react';
+import type { DOMAttributes } from 'react';
 import type { Options, Instance } from '@popperjs/core/lib/types';
 import type { Options as OptionsOffset } from '@popperjs/core/lib/modifiers/offset';
 import type { Options as OptionsPreventOverflow } from '@popperjs/core/lib/modifiers/preventOverflow';

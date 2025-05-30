@@ -74,10 +74,10 @@ class HorizontalBarRoot extends Component {
     const height = Math.min(bandHeight, maxBarSize);
     const width = Number(d[x] - (d[x0] ?? 0)) === 0 ? 0 : Math.max(absWidth, wMin);
     const barY = yScale(d[y]) + bandHeight / 2 - height / 2 + offset[1];
-    const barX =
-      xScale(Math.min(d[x0] ?? 0, width <= wMin && d[x] < 0 ? 0 : d[x])) +
-      offset[0] -
-      calcPartBarX(d[x], wMin, width);
+    const barX
+      = xScale(Math.min(d[x0] ?? 0, width <= wMin && d[x] < 0 ? 0 : d[x]))
+        + offset[0]
+        - calcPartBarX(d[x], wMin, width);
     const handleClick = (event) => onClick?.(d, event, i, x);
     const dSvg = getHorizontalRect({
       x: barX,
@@ -90,7 +90,8 @@ class HorizontalBarRoot extends Component {
 
     if (groupKey) {
       this.asProps.dataHintsHandler.describeGroupedValues(groupKey, x);
-    } else {
+    }
+    else {
       this.asProps.dataHintsHandler.describeValueEntity(`${i}.${x}`, groupKey ?? d[y]);
     }
 

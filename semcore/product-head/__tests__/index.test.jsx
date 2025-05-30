@@ -42,7 +42,8 @@ describe('ProductHead', () => {
           <Info.Item label='Device:'>Desktop</Info.Item>
           <Info.Item label='Data:'>Fresh</Info.Item>
           <Info.Item>
-            <Info.Item.Label>Last update:</Info.Item.Label>1 hour ago
+            <Info.Item.Label>Last update:</Info.Item.Label>
+            1 hour ago
           </Info.Item>
         </Info>
       </ProductHead.Row>
@@ -94,7 +95,8 @@ describe('Info', () => {
         </Info>
         <Info>
           <Info.Item>
-            <Info.Item.Label>Location:</Info.Item.Label>United States
+            <Info.Item.Label>Location:</Info.Item.Label>
+            United States
           </Info.Item>
         </Info>
       </snapshot.ProxyProps>
@@ -109,7 +111,8 @@ describe('Info', () => {
         <Info>
           <Info.Item label='Location:'>United States</Info.Item>
           <Info.Item>
-            <Info.Item.Label>Location:</Info.Item.Label>United States
+            <Info.Item.Label>Location:</Info.Item.Label>
+            United States
           </Info.Item>
         </Info>
       </snapshot.ProxyProps>

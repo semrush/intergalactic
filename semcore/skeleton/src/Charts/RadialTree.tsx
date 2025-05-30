@@ -1,4 +1,3 @@
-
 import { createComponent, Root, sstyled } from '@semcore/core';
 import { Skeleton } from '../Skeleton';
 import styles from '../style/chart.shadow.css';

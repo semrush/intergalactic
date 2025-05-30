@@ -4,7 +4,9 @@ import { findDOMNode } from 'react-dom';
 export function setRef<T>(ref: Ref<T>, value: T) {
   if (typeof ref === 'function') {
     ref(value);
-  } else if (ref?.hasOwnProperty('current')) {
+  }
+
+  else if (ref?.hasOwnProperty('current')) {
     // @ts-ignore
     ref['current'] = value;
   }

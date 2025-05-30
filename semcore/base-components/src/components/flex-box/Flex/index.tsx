@@ -1,4 +1,3 @@
-
 import { createBaseComponent, type Intergalactic } from '@semcore/core';
 import useFlex, { type FlexProps } from './useFlex';
 

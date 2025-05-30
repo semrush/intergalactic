@@ -24,7 +24,8 @@ function addonTextChildren(
       const wrapChildren: any = addonTextChildren(element.type, Text, Addon);
       if (wrapChildren.type[CHILDREN_COMPONENT]) {
         return true;
-      } else {
+      }
+      else {
         element = wrapChildren;
       }
     }
@@ -34,13 +35,13 @@ function addonTextChildren(
       ? Addon.map((Component) => Component.displayName)
       : [Addon.displayName];
     return [Text.displayName, ...addonNames].find((name) => inheritedNames.includes(name));
-  }) ? (
-    <Children />
-  ) : (
-    <Text>
-      <Children />
-    </Text>
-  );
+  })
+    ? (<Children />)
+    : (
+        <Text>
+          <Children />
+        </Text>
+      );
 }
 
 export default addonTextChildren;

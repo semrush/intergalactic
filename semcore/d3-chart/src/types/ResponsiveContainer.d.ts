@@ -14,7 +14,7 @@ export type ResponsiveContainerProps = BoxProps & {
 /** @deprecated */
 export interface IResponsiveContainerContext
   extends ResponsiveContainerContext,
-    UnknownProperties {}
+  UnknownProperties {}
 export type ResponsiveContainerContext = {
   width?: number;
   height?: number;

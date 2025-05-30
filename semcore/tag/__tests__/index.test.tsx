@@ -58,7 +58,7 @@ describe('Tag', () => {
 
   test.concurrent('Renders correctly with keyboardFocused', async ({ task }) => {
     const component = (
-      <Tag interactive id={'interactive-tag'}>
+      <Tag interactive id='interactive-tag'>
         <Tag.Text>Tag name</Tag.Text>
       </Tag>
     );
@@ -156,7 +156,7 @@ describe('Tag', () => {
   test('should work as Button from keyboard', async ({ expect }) => {
     const onClick = vi.fn();
     const { getByTestId } = render(
-      <Tag interactive onClick={onClick} data-testid={'tagAsButton'}>
+      <Tag interactive onClick={onClick} data-testid='tagAsButton'>
         some tag
       </Tag>,
     );
@@ -175,7 +175,7 @@ describe('Tag', () => {
   test('should call keydwon callback once per key down', async ({ expect }) => {
     const onKeyDown = vi.fn();
     const { getByTestId } = render(
-      <Tag interactive onKeyDown={onKeyDown} data-testid={'tagKeyboardTest'}>
+      <Tag interactive onKeyDown={onKeyDown} data-testid='tagKeyboardTest'>
         some tag
       </Tag>,
     );
@@ -476,7 +476,7 @@ describe('TagContainer', () => {
     const onClick = vi.fn();
     const { getByTestId } = render(
       <TagContainer>
-        <TagContainer.Tag interactive onClick={onClick} data-testid={'tagAsButton'}>
+        <TagContainer.Tag interactive onClick={onClick} data-testid='tagAsButton'>
           some tag
         </TagContainer.Tag>
       </TagContainer>,
@@ -497,7 +497,7 @@ describe('TagContainer', () => {
     const onKeyDown = vi.fn();
     const { getByTestId } = render(
       <TagContainer>
-        <TagContainer.Tag interactive onKeyDown={onKeyDown} data-testid={'tagKeyboardTest'}>
+        <TagContainer.Tag interactive onKeyDown={onKeyDown} data-testid='tagKeyboardTest'>
           some tag
         </TagContainer.Tag>
       </TagContainer>,

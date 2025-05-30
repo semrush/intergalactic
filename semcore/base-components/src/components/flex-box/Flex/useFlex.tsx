@@ -87,7 +87,7 @@ export default function useFlex<T extends FlexProps>(
     {
       'data-ui-name': 'Flex',
       ...props,
-      inline: false,
+      'inline': false,
     },
     ref,
   );

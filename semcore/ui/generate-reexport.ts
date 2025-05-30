@@ -27,7 +27,8 @@ const hasExportDefault = async (dependency: string) => {
   try {
     const resolved = require(dependency);
     return Object.hasOwnProperty.call(resolved, 'default');
-  } catch (e) {
+  }
+  catch (e) {
     // fallback resolver
     let dependencyDir = path.dirname(require.resolve(dependency));
     let module: string | null = null;
@@ -72,7 +73,7 @@ const EXPORT_TEMPLATES: {
     NAMED: (lib: string) => string;
   };
 } = {
-  cjs: {
+  'cjs': {
     LIB_DEFAULT: (lib: string, component: string) =>
       `module.exports = require('${lib}/lib/${component}');`,
     LIB_NAMED: (lib: string, component: string) =>
@@ -80,14 +81,14 @@ const EXPORT_TEMPLATES: {
     DEFAULT: (lib: string) => `module.exports = require('${lib}');`,
     NAMED: (lib: string) => `module.exports = require('${lib}');`,
   },
-  mjs: {
+  'mjs': {
     LIB_DEFAULT: (lib: string, component: string) =>
       `export { default } from '${lib}/lib/${component}';\nexport * from '${lib}/lib/${component}';`,
     LIB_NAMED: (lib: string, component: string) => `export * from '${lib}/lib/${component}';`,
     DEFAULT: (lib: string) => `export { default } from '${lib}';\nexport * from '${lib}';`,
     NAMED: (lib: string) => `export * from '${lib}';`,
   },
-  get js() {
+  get 'js'() {
     return EXPORT_TEMPLATES.mjs;
   },
   get 'd.ts'() {
@@ -173,8 +174,8 @@ const GENERATOR = {
     const newIconsDir = path.join(iconPath, '../../..');
 
     const isIconDir = (dir: string) =>
-      fs.statSync(dir).isDirectory() &&
-      !['__tests__', 'src', 'svg', 'svg-new', 'node_modules'].includes(path.basename(dir));
+      fs.statSync(dir).isDirectory()
+      && !['__tests__', 'src', 'svg', 'svg-new', 'node_modules'].includes(path.basename(dir));
     const oldIcons = fs
       .readdirSync(oldIconsDir)
       .filter((iconDir) => isIconDir(path.join(oldIconsDir, iconDir)));

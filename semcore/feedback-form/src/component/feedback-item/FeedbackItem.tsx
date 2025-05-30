@@ -47,7 +47,7 @@ export function FeedbackItem({
         const inputProps = assignProps(
           {
             ...propsForElement(other),
-            state: errorState ? 'invalid' : 'normal',
+            'state': errorState ? 'invalid' : 'normal',
             'aria-invalid': errorState ? true : false,
             'aria-describedby': meta.active ? (errorState ? popperId : ariaDescribedBy) : undefined,
           },
@@ -73,14 +73,14 @@ export function FeedbackItem({
               {...(tag ? inputProps : {})}
               __excludeProps={['type', 'aria-describedby']}
             >
-              {typeof Children.origin === 'function' &&
-                Children.origin({
+              {typeof Children.origin === 'function'
+                && Children.origin({
                   input: inputProps,
                   meta,
                   ...other,
                 })}
             </Tooltip.Trigger>
-            <Tooltip.Popper w={'100%'} id={popperId}>
+            <Tooltip.Popper w='100%' id={popperId}>
               {meta.error ?? lastErrorRef.current}
             </Tooltip.Popper>
           </Tooltip>

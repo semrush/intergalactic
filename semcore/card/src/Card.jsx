@@ -1,4 +1,3 @@
-
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
@@ -17,19 +16,21 @@ class CardRoot extends Component {
     const SCard = Root;
     const { Children, styles, forcedAdvancedMode } = this.asProps;
 
-    const advancedMode =
-      forcedAdvancedMode ||
-      isAdvanceMode(Children, [Card.Header.displayName, Card.Body.displayName]);
+    const advancedMode
+      = forcedAdvancedMode
+        || isAdvanceMode(Children, [Card.Header.displayName, Card.Body.displayName]);
 
     return sstyled(styles)(
       <SCard render={Box}>
-        {advancedMode ? (
-          <Children />
-        ) : (
-          <Card.Body>
-            <Children />
-          </Card.Body>
-        )}
+        {advancedMode
+          ? (
+              <Children />
+            )
+          : (
+              <Card.Body>
+                <Children />
+              </Card.Body>
+            )}
       </SCard>,
     );
   }
@@ -49,9 +50,9 @@ function Title(props) {
             <DescriptionTooltip.Trigger
               tag={ButtonLink}
               ml={1}
-              use={'secondary'}
+              use='secondary'
               aria-label={innerHintAriaLabel}
-              color={'--intergalactic-icon-secondary-neutral'}
+              color='--intergalactic-icon-secondary-neutral'
             >
               <ButtonLink.Addon>
                 <InfoM />
@@ -65,9 +66,9 @@ function Title(props) {
         <DescriptionTooltip>
           <DescriptionTooltip.Trigger
             tag={ButtonLink}
-            use={'secondary'}
+            use='secondary'
             aria-label={hintAfterAriaLabel}
-            color={'--intergalactic-icon-secondary-neutral'}
+            color='--intergalactic-icon-secondary-neutral'
           >
             <ButtonLink.Addon>
               <InfoM />

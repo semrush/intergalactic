@@ -1,4 +1,3 @@
-
 import { createComponent, type ComponentType, assignProps, Root, sstyled } from '@semcore/core';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import { Trend, type CommonTrendProps } from './Trend';
@@ -86,9 +85,9 @@ class TrendBarRoot extends Trend<TrendBarProps, typeof TrendBarRoot.enhance> {
               >
                 {animate && !loading && (
                   <animate
-                    attributeName={'y'}
+                    attributeName='y'
                     values={`${this.defaultHeight};${this.defaultHeight - barItem.value}`}
-                    dur={'500ms'}
+                    dur='500ms'
                   />
                 )}
               </rect>
@@ -100,8 +99,8 @@ class TrendBarRoot extends Trend<TrendBarProps, typeof TrendBarRoot.enhance> {
   }
 }
 
-export const TrendBar: ComponentType<TrendBarProps, {}, {}, Enhances> =
-  createComponent(TrendBarRoot);
+export const TrendBar: ComponentType<TrendBarProps, {}, {}, Enhances>
+  = createComponent(TrendBarRoot);
 
 TrendBar.displayName = 'MiniChart.TrendBar';
 

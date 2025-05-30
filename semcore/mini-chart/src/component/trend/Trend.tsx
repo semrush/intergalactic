@@ -35,11 +35,12 @@ export abstract class Trend<
   componentDidMount() {
     this.setSizes();
   }
+
   componentDidUpdate(prevProps: P) {
     if (
-      prevProps.w !== this.props.w ||
-      prevProps.h !== this.props.h ||
-      prevProps.data !== this.props.data
+      prevProps.w !== this.props.w
+      || prevProps.h !== this.props.h
+      || prevProps.data !== this.props.data
     ) {
       this.setSizes();
     }

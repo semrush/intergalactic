@@ -17,7 +17,7 @@ export type FullscreenModalProps = ModalProps & {
 /** @deprecated */
 export interface IFullscreenModalHeaderProps
   extends FullscreenModalHeaderProps,
-    UnknownProperties {}
+  UnknownProperties {}
 export type FullscreenModalHeaderProps = BoxProps & {
   title?: React.ReactNode;
   description?: React.ReactNode;

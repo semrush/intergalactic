@@ -1,4 +1,3 @@
-
 import { createComponent, sstyled, Root, type Intergalactic } from '@semcore/core';
 import style from './screenReaderOnlyBox.shadow.css';
 import Box from '../Box';
@@ -6,7 +5,7 @@ import Box from '../Box';
 const ScreenReaderOnlyComponent = () => {
   const SScreenReaderOnly = Root;
 
-  return sstyled(style)(<SScreenReaderOnly render={Box} tag={'span'} />);
+  return sstyled(style)(<SScreenReaderOnly render={Box} tag='span' />);
 };
 
 type ScreenReaderOnlyType = Intergalactic.Component<'span'>;

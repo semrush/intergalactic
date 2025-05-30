@@ -176,7 +176,7 @@ class RootTagContainer extends Component {
       size,
       theme,
       color,
-      id: `${id}-clear`,
+      'id': `${id}-clear`,
       'aria-labelledby': `${id}-clear ${id}-text`,
       'aria-label': getI18nText('remove'),
       resolveColor,
@@ -186,31 +186,33 @@ class RootTagContainer extends Component {
   render() {
     const STagContainer = Root;
     const { styles, Children, forcedAdvancedMode } = this.asProps;
-    const advancedMode =
-      forcedAdvancedMode ||
-      isAdvanceMode(
-        Children,
-        [
-          'InputTags.' + Tag.Text.displayName,
-          'InputTags.' + Tag.Addon.displayName,
-          'InputTags.' + Tag.Circle.displayName,
-          TagContainer.Tag.displayName,
-          TagContainer.Addon.displayName,
-          TagContainer.Close.displayName,
-          TagContainer.Circle.displayName,
-        ],
-        true,
-      );
+    const advancedMode
+      = forcedAdvancedMode
+        || isAdvanceMode(
+          Children,
+          [
+            'InputTags.' + Tag.Text.displayName,
+            'InputTags.' + Tag.Addon.displayName,
+            'InputTags.' + Tag.Circle.displayName,
+            TagContainer.Tag.displayName,
+            TagContainer.Addon.displayName,
+            TagContainer.Close.displayName,
+            TagContainer.Circle.displayName,
+          ],
+          true,
+        );
 
     return sstyled(styles)(
       <STagContainer render={Box}>
-        {advancedMode ? (
-          <Children />
-        ) : (
-          <TagContainer.Tag>
-            <Children />
-          </TagContainer.Tag>
-        )}
+        {advancedMode
+          ? (
+              <Children />
+            )
+          : (
+              <TagContainer.Tag>
+                <Children />
+              </TagContainer.Tag>
+            )}
       </STagContainer>,
     );
   }
@@ -253,7 +255,7 @@ class RootCloseTagContainer extends Component {
     return sstyled(styles)(
       <STagContainerClose
         render={Box}
-        tag={'button'}
+        tag='button'
         type='button'
         interactive={true}
         interactiveView={true}

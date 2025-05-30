@@ -8,12 +8,12 @@ describe('BulkTextarea Dependency imports', () => {
   runDependencyCheckTests('bulk-textarea');
 
   test('value&onChange relation', () => {
-    assertType<JSX.Element>(<BulkTextarea value={''} onChange={(value: string) => {}} />);
+    assertType<JSX.Element>(<BulkTextarea value='' onChange={(value: string) => {}} />);
     assertType<JSX.Element>(<BulkTextarea value={[]} onChange={(value: string[]) => {}} />);
     // @ts-expect-error
     assertType<JSX.Element>(<BulkTextarea value={[]} onChange={(value: string) => {}} />);
     // @ts-expect-error
-    assertType<JSX.Element>(<BulkTextarea value={''} onChange={(value: string[]) => {}} />);
+    assertType<JSX.Element>(<BulkTextarea value='' onChange={(value: string[]) => {}} />);
   });
 
   test('Verify onChange return the same type as value', async ({ expect }) => {
@@ -28,7 +28,7 @@ describe('BulkTextarea Dependency imports', () => {
 
     const { rerender } = render(
       <BulkTextarea w={400} value={value} onChange={spy}>
-        <BulkTextarea.InputField commonErrorMessage={''} />
+        <BulkTextarea.InputField commonErrorMessage='' />
       </BulkTextarea>,
     );
 
@@ -40,7 +40,7 @@ describe('BulkTextarea Dependency imports', () => {
 
     rerender(
       <BulkTextarea w={400} value={value} onChange={spy}>
-        <BulkTextarea.InputField commonErrorMessage={''} />
+        <BulkTextarea.InputField commonErrorMessage='' />
       </BulkTextarea>,
     );
 

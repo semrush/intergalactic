@@ -6,6 +6,7 @@ function cronUnitToArray(unit) {
       (_, idx) => Number.parseInt(start, 10) + idx,
     );
   }
+  // eslint-disable-next-line no-useless-escape
   return unit.split(/[,\/]/);
 }
 

@@ -1,4 +1,3 @@
-
 import { createComponent } from '@semcore/core';
 import type { LineChartData, LineChartProps, LineChartType } from './LineChart.type';
 import { type ScaleLinear, scaleLinear, scaleTime } from 'd3-scale';
@@ -71,7 +70,7 @@ class LineChartComponent extends AbstractChart<
           >
             {showDots && <Line.Dots display />}
             {area?.[item.id] && (
-              <Line.Area area={area[item.id]} y0={'y0'} y1={'y1'} curve={areaCurve} />
+              <Line.Area area={area[item.id]} y0='y0' y1='y1' curve={areaCurve} />
             )}
           </Line>
         )

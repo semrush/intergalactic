@@ -17,13 +17,13 @@
     "types": "./lib/types/index.d.ts"
   },
   "dependencies": {
-    "@semcore/flex-box": "16.0.0",
-    "@semcore/button": "16.0.0",
-    "@semcore/typography": "16.1.0",
-    "@semcore/counter": "16.0.0",
-    "@semcore/icon": "16.1.0",
-    "@semcore/popper": "16.0.0",
-    "@semcore/tooltip": "16.0.0",
+    "@semcore/button": "workspace:*",
+    "@semcore/counter": "workspace:*",
+    "@semcore/flex-box": "workspace:*",
+    "@semcore/icon": "workspace:*",
+    "@semcore/popper": "workspace:*",
+    "@semcore/tooltip": "workspace:*",
+    "@semcore/typography": "workspace:*",
     "dompurify": "3.2.3"
   },
   "peerDependencies": {
@@ -35,8 +35,8 @@
     "directory": "semcore/bulk-textarea"
   },
   "devDependencies": {
-    "@types/react": "18.0.21",
+    "@semcore/testing-utils": "workspace:*",
     "@types/dompurify": "3.2.0",
-    "@semcore/testing-utils": "1.0.0"
+    "@types/react": "18.0.21"
   }
 }

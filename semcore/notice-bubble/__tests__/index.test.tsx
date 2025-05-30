@@ -189,21 +189,21 @@ describe('NoticeBubble', () => {
           manager={manager}
         />
         <NoticeBubbleWarningImport
-          action={
+          action={(
             <button type='button' data-testid='action'>
               Action
             </button>
-          }
+          )}
           manager={manager}
         >
           Message
         </NoticeBubbleWarningImport>
         <NoticeBubbleImport
-          action={
+          action={(
             <button type='button' data-testid='action'>
               Action
             </button>
-          }
+          )}
           manager={manager}
         >
           Message

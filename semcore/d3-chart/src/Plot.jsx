@@ -47,7 +47,8 @@ class PlotRoot extends Component {
 
       if (pX >= minX && pX <= maxX && pY >= minY && pY <= maxY) {
         this.eventEmitter.emit('onMouseMoveChart', e);
-      } else {
+      }
+      else {
         this.eventEmitter.emit('onMouseLeaveChart', e);
       }
     }
@@ -87,8 +88,8 @@ class PlotRoot extends Component {
 
   render() {
     const SPlot = Root;
-    const { styles, width, height, Children, data, a11yAltTextConfig, label, locale, getI18nText } =
-      this.asProps;
+    const { styles, width, height, Children, data, a11yAltTextConfig, label, locale, getI18nText }
+      = this.asProps;
 
     if (!width || !height) return null;
 

@@ -39,6 +39,7 @@ class Dot extends Component {
     size: 'm',
     keyframes: [styleDot['@enter'], styleDot['@exit']],
   };
+
   static enhance = [
     uniqueIDEnhancement(),
     cssVariableEnhance({
@@ -49,6 +50,7 @@ class Dot extends Component {
     }),
     contextThemeEnhance((props) => !props.hidden),
   ];
+
   ref = React.createRef();
 
   render() {
@@ -73,7 +75,7 @@ class Dot extends Component {
 
     logger.warn(
       !hasLabel,
-      "'aria-label' or 'aria-labelledby' are required for Dot component",
+      '\'aria-label\' or \'aria-labelledby\' are required for Dot component',
       this.asProps['data-ui-name'] || Dot.displayName,
     );
 

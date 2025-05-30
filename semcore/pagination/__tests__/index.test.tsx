@@ -28,7 +28,7 @@ describe('Pagination', () => {
         </div>
         <div>
           DE:
-          <Pagination locale={'de'} currentPage={12345} totalPages={222333}>
+          <Pagination locale='de' currentPage={12345} totalPages={222333}>
             <Pagination.PageInput />
             <Pagination.TotalPages />
           </Pagination>
@@ -330,10 +330,10 @@ describe('Pagination.PageInput.Value', () => {
           <Pagination.PageInput>
             <Pagination.PageInput.Value data-testid='value' />
             {/* @ts-ignore */}
-            <Pagination.PageInput.Addon data-testid={'selectPageButton'} tag={Return} interactive />
+            <Pagination.PageInput.Addon data-testid='selectPageButton' tag={Return} interactive />
           </Pagination.PageInput>
         </Pagination>
-        <Button data-testid={'testButton'}>test button</Button>
+        <Button data-testid='testButton'>test button</Button>
       </>,
     );
 
@@ -377,7 +377,7 @@ describe('Pagination.PageInput.Value', () => {
             <Pagination.PageInput>
               <Pagination.PageInput.Value data-testid='paginationValue' />
             </Pagination.PageInput>
-            <Pagination.TotalPages data-testid={'totalPagesValue'} />
+            <Pagination.TotalPages data-testid='totalPagesValue' />
           </Pagination>
         </>
       );

@@ -42,7 +42,7 @@ export type DropdownTriggerProps = PopperTriggerProps;
 export type DropdownPopperAriaProps = Intergalactic.RequireAtLeastOne<{
   'aria-label'?: string;
   'aria-labelledby'?: string;
-  title?: string;
+  'title'?: string;
 }>;
 
 export type DropdownPopperProps = PopperPopperProps &

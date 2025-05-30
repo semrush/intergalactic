@@ -171,7 +171,7 @@ test.describe('Add filter button', () => {
     await expect(locators.addFilterBtn).toBeFocused();
     await page.keyboard.press('Enter');
     await page.waitForTimeout(500);
-    //await page.waitForSelector('div[data-ui-name="DropdownMenu.Item"]:has-text("Keywords")', { timeout: 5000 });
+    // await page.waitForSelector('div[data-ui-name="DropdownMenu.Item"]:has-text("Keywords")', { timeout: 5000 });
     await page.keyboard.press('ArrowDown');
     await page.waitForTimeout(200);
     await page.keyboard.press('ArrowDown');
@@ -430,8 +430,8 @@ test.describe('Different types of filters', () => {
   });
 
   test('Select with range - keyboard', async ({ page }) => {
-    const standPath =
-      'stories/patterns/filters/add-filter/advanced/examples/add-filter-complex-selects.tsx';
+    const standPath
+      = 'stories/patterns/filters/add-filter/advanced/examples/add-filter-complex-selects.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
     const locators = getLocators(page);
@@ -485,8 +485,8 @@ test.describe('Different types of filters', () => {
   });
 
   test('Select with range - mouse', async ({ page }) => {
-    const standPath =
-      'stories/patterns/filters/add-filter/advanced/examples/add-filter-complex-selects.tsx';
+    const standPath
+      = 'stories/patterns/filters/add-filter/advanced/examples/add-filter-complex-selects.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
     const locators = getLocators(page);
@@ -517,8 +517,8 @@ test.describe('Different types of filters', () => {
   });
 
   test('Select with search - keyboard', async ({ page }) => {
-    const standPath =
-      'stories/patterns/filters/add-filter/advanced/examples/add-filter-complex-selects.tsx';
+    const standPath
+      = 'stories/patterns/filters/add-filter/advanced/examples/add-filter-complex-selects.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
     const locators = getLocators(page);
@@ -551,8 +551,8 @@ test.describe('Different types of filters', () => {
   });
 
   test('Select with search - mouse', async ({ page }) => {
-    const standPath =
-      'stories/patterns/filters/add-filter/advanced/examples/add-filter-complex-selects.tsx';
+    const standPath
+      = 'stories/patterns/filters/add-filter/advanced/examples/add-filter-complex-selects.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
     const locators = getLocators(page);
@@ -573,8 +573,8 @@ test.describe('Different types of filters', () => {
   });
 
   test('Multiselect - keyboard', async ({ page }) => {
-    const standPath =
-      'stories/patterns/filters/add-filter/advanced/examples/add-filter-complex-selects.tsx';
+    const standPath
+      = 'stories/patterns/filters/add-filter/advanced/examples/add-filter-complex-selects.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
     const locators = getLocators(page);
@@ -602,8 +602,8 @@ test.describe('Different types of filters', () => {
   });
 
   test('Multiselect - mouse', async ({ page }) => {
-    const standPath =
-      'stories/patterns/filters/add-filter/advanced/examples/add-filter-complex-selects.tsx';
+    const standPath
+      = 'stories/patterns/filters/add-filter/advanced/examples/add-filter-complex-selects.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
     const locators = getLocators(page);

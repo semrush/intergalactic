@@ -17,11 +17,11 @@
     "types": "./lib/types/index.d.ts"
   },
   "dependencies": {
-    "@semcore/button": "16.0.0",
-    "@semcore/icon": "16.1.0",
-    "@semcore/flex-box": "16.0.0",
-    "@semcore/popper": "16.0.0",
-    "@semcore/animation": "16.0.0"
+    "@semcore/animation": "workspace:*",
+    "@semcore/button": "workspace:*",
+    "@semcore/flex-box": "workspace:*",
+    "@semcore/icon": "workspace:*",
+    "@semcore/popper": "workspace:*"
   },
   "peerDependencies": {
     "@semcore/base-components": "^16.0.0"
@@ -32,10 +32,10 @@
     "directory": "semcore/feature-popover"
   },
   "devDependencies": {
-    "@types/react": "18.0.21",
-    "@semcore/testing-utils": "1.0.0",
     "@semcore/button": "*",
-    "@semcore/typography": "*",
-    "@semcore/dropdown-menu": "*"
+    "@semcore/dropdown-menu": "^16.1.0",
+    "@semcore/testing-utils": "workspace:*",
+    "@semcore/typography": "^16.1.0",
+    "@types/react": "18.0.21"
   }
 }

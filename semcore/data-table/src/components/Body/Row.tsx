@@ -21,8 +21,8 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
 
   cellHasAccordion(cellValue?: DTValue | MergedColumnsCell | MergedRowsCell): cellValue is DTValue {
     return (
-      !(cellValue instanceof MergedRowsCell || cellValue instanceof MergedColumnsCell) &&
-      Boolean(cellValue?.[ACCORDION])
+      !(cellValue instanceof MergedRowsCell || cellValue instanceof MergedColumnsCell)
+      && Boolean(cellValue?.[ACCORDION])
     );
   }
 
@@ -88,7 +88,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
       <>
         <SRow
           render={Box}
-          role={'row'}
+          role='row'
           aria-rowindex={ariaRowIndex}
           accordionType={accordionType}
           theme={selectedRows?.includes(rowIndex) ? 'info' : undefined}
@@ -118,8 +118,8 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
             }
 
             const index = i;
-            const cellValue: DTValue | MergedRowsCell | MergedColumnsCell | undefined =
-              row[column.name];
+            const cellValue: DTValue | MergedRowsCell | MergedColumnsCell | undefined
+              = row[column.name];
 
             if (cellValue === undefined) {
               return null;
@@ -148,8 +148,8 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
                 style={style}
                 column={column}
                 withAccordion={
-                  Boolean(cellValue instanceof MergedRowsCell && cellValue.accordion) ||
-                  this.cellHasAccordion(cellValue)
+                  Boolean(cellValue instanceof MergedRowsCell && cellValue.accordion)
+                  || this.cellHasAccordion(cellValue)
                 }
               />
             );
@@ -159,7 +159,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
         {React.isValidElement(accordion) && (
           <SCollapseRow
             key={rowIndex}
-            role={'row'}
+            role='row'
             aria-rowindex={ariaRowIndex + 1}
             id={`${uid}_${ariaRowIndex + 1}`}
             visible={expanded}
@@ -178,7 +178,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
               columnIndex={1}
               // @ts-ignore
               column={{ name: ACCORDION }}
-              position={'sticky'}
+              position='sticky'
               left={0}
               w={scrollAreaRef.current?.clientWidth}
               onKeyDown={this.handleBackFromAccordion}
@@ -188,10 +188,10 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
           </SCollapseRow>
         )}
 
-        {row[ACCORDION] &&
-          Array.isArray(row[ACCORDION]) &&
-          expanded &&
-          row[ACCORDION]?.map((subrow, i) => {
+        {row[ACCORDION]
+          && Array.isArray(row[ACCORDION])
+          && expanded
+          && row[ACCORDION]?.map((subrow, i) => {
             return (
               <Row
                 key={i}

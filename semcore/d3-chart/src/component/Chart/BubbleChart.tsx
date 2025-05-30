@@ -51,8 +51,8 @@ class BubbleChartComponent extends AbstractChart<
         dataDefinition.additionalInfo = legendData.additionalInfo
           ? { label: legendData.additionalInfo }
           : legendData.count
-          ? { count: legendData.count }
-          : undefined;
+            ? { count: legendData.count }
+            : undefined;
       }
 
       return dataDefinition;
@@ -92,7 +92,7 @@ class BubbleChartComponent extends AbstractChart<
   }
 
   renderChart() {
-    return <Bubble x='x' y='y' value='value' color={'color'} label={'label'} />;
+    return <Bubble x='x' y='y' value='value' color='color' label='label' />;
   }
 
   renderTooltip() {
@@ -109,9 +109,18 @@ class BubbleChartComponent extends AbstractChart<
             children: (
               <>
                 <Bubble.Tooltip.Title>Data</Bubble.Tooltip.Title>
-                <Text tag='div'>X axis {data[index].x}</Text>
-                <Text tag='div'>Y axis {data[index].y}</Text>
-                <Text tag='div'>Value {data[index].value}</Text>
+                <Text tag='div'>
+                  X axis
+                  {data[index].x}
+                </Text>
+                <Text tag='div'>
+                  Y axis
+                  {data[index].y}
+                </Text>
+                <Text tag='div'>
+                  Value
+                  {data[index].value}
+                </Text>
               </>
             ),
           };

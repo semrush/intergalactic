@@ -110,7 +110,7 @@ const rule: Rule = (enabled: boolean, providedOptions: Partial<Options> = {}) =>
     : resolvePath(process.cwd(), options.tokensSource);
   const designTokens = require(tokensSource);
   const designTokensList = [...Object.keys(designTokens), ...options.include].filter(
-    (token) => !options.exclude.includes(token),
+    token => !options.exclude.includes(token),
   );
   const designTokensSet = new Set(designTokensList);
   const prefix = options.prefix;

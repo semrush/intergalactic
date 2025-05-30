@@ -20,6 +20,7 @@ class CheckboxRoot extends Component {
     state: 'normal',
     defaultChecked: false,
   };
+
   state = {
     hoistedDisabled: undefined,
   };
@@ -46,8 +47,8 @@ class CheckboxRoot extends Component {
   }
 
   getValueProps() {
-    const { size, state, theme, onChange, defaultChecked, checked, disabled, indeterminate } =
-      this.asProps;
+    const { size, state, theme, onChange, defaultChecked, checked, disabled, indeterminate }
+      = this.asProps;
     const { hoistedDisabled } = this.state;
 
     return {
@@ -85,14 +86,16 @@ class CheckboxRoot extends Component {
           'aria-describedby',
         ]}
       >
-        {hasChildren ? (
-          <Children />
-        ) : (
-          <>
-            <Checkbox.Value />
-            <Checkbox.Text />
-          </>
-        )}
+        {hasChildren
+          ? (
+              <Children />
+            )
+          : (
+              <>
+                <Checkbox.Value />
+                <Checkbox.Text />
+              </>
+            )}
       </SLabel>,
     );
   }
@@ -110,6 +113,7 @@ class ValueRoot extends Component {
       ],
     };
   };
+
   static enhance = [autoFocusEnhance(), resolveColorEnhance()];
   static displayName = 'Value';
   static style = style;
@@ -169,6 +173,7 @@ class ValueRoot extends Component {
       this.asProps.hoistDisabled(this.asProps.disabled);
     }
   }
+
   componentDidMount() {
     if (this.asProps.rootDisabled !== this.asProps.disabled) {
       this.asProps.hoistDisabled(this.asProps.disabled);

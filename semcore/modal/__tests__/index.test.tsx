@@ -267,13 +267,13 @@ describe('Modal', () => {
     expect,
   }) => {
     const { getByTestId } = render(
-      <Modal visible={true} data-testid={'Modal'}>
+      <Modal visible={true} data-testid='Modal'>
         <Modal.Title>Do you want to save your changes?</Modal.Title>
 
-        <Button use='primary' theme='success' size='l' data-testid={'SaveChangesButton'}>
+        <Button use='primary' theme='success' size='l' data-testid='SaveChangesButton'>
           Save changes
         </Button>
-        <Button size='l' ml={2} data-testid={'CancelButton'}>
+        <Button size='l' ml={2} data-testid='CancelButton'>
           Don't save
         </Button>
       </Modal>,
@@ -315,7 +315,7 @@ describe('Modal', () => {
 
       return (
         <Modal visible={visible} onClose={handleClose}>
-          <Modal.Title data-testid={'modalTitle'}>Do you want to save your changes?</Modal.Title>
+          <Modal.Title data-testid='modalTitle'>Do you want to save your changes?</Modal.Title>
           <Button use='primary' theme='success' size='l' onClick={handleClose}>
             Save changes
           </Button>
@@ -332,7 +332,7 @@ describe('Modal', () => {
 
       return (
         <React.Fragment>
-          <Button onClick={handleOpen} data-testid={'openModalButton'} autoFocus>
+          <Button onClick={handleOpen} data-testid='openModalButton' autoFocus>
             Open modal dynamically
           </Button>
 

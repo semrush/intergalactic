@@ -49,7 +49,7 @@ describe('Dot', () => {
   test('Verify logs warning if no aria-label or aria-labelledby', () => {
     render(<Dot />);
     expect(console.warn).toHaveBeenCalledWith(
-      "[Dot]: 'aria-label' or 'aria-labelledby' are required for Dot component",
+      '[Dot]: \'aria-label\' or \'aria-labelledby\' are required for Dot component',
     );
   });
 });

@@ -106,7 +106,7 @@ export type InlineInputValueProps = BoxProps & {
 /** @deprecated */
 export interface IInlineInputConfirmControlProps
   extends InlineInputConfirmControlProps,
-    UnknownProperties {}
+  UnknownProperties {}
 export type InlineInputConfirmControlProps = BoxProps & {
   /**
    * Text of tooltip
@@ -122,7 +122,7 @@ export type InlineInputConfirmControlProps = BoxProps & {
 /** @deprecated */
 export interface IInlineInputCancelControlProps
   extends InlineInputCancelControlProps,
-    UnknownProperties {}
+  UnknownProperties {}
 export type InlineInputCancelControlProps = BoxProps & {
   /**
    * Text of tooltip

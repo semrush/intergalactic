@@ -44,7 +44,7 @@ test.describe('One level Header', () => {
     await page.keyboard.press('Tab');
     await expect(secondCell).not.toBeFocused();
 
-    if (browserName === 'firefox') return; //skipped in ff because works unstable in test env
+    if (browserName === 'firefox') return; // skipped in ff because works unstable in test env
     await page.keyboard.press('Shift+Tab');
     await expect(secondCellSecondRow).toBeFocused();
   });
@@ -53,8 +53,8 @@ test.describe('One level Header', () => {
     page,
     browserName,
   }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/header-tests/table-with-1tf-and diff-elements.tsx';
+    const standPath
+      = 'stories/components/data-table/tests/examples/header-tests/table-with-1tf-and diff-elements.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
@@ -178,8 +178,8 @@ test.describe('One level Header', () => {
     page,
     browserName,
   }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/header-tests/table-with-1tf-and diff-elements.tsx';
+    const standPath
+      = 'stories/components/data-table/tests/examples/header-tests/table-with-1tf-and diff-elements.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
@@ -450,8 +450,8 @@ test.describe('One level header - Sorting', () => {
 
 test.describe('Multi level Header', () => {
   test('Verify lines props and ellipsis in header work correctly', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/header-tests/multi-level-header.tsx';
+    const standPath
+      = 'stories/components/data-table/tests/examples/header-tests/multi-level-header.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
     await expect(page).toHaveScreenshot();
@@ -473,8 +473,8 @@ test.describe('Multi level Header', () => {
   });
 
   test('Verify multi level looks good when it is sticky', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/header-tests/multi-level-header-sticky.tsx';
+    const standPath
+      = 'stories/components/data-table/tests/examples/header-tests/multi-level-header-sticky.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
     await page.keyboard.press('Tab');
@@ -485,8 +485,8 @@ test.describe('Multi level Header', () => {
     page,
     browserName,
   }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/header-tests/multi-level-with-interactive.tsx';
+    const standPath
+      = 'stories/components/data-table/tests/examples/header-tests/multi-level-with-interactive.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
@@ -571,8 +571,8 @@ test.describe('Multi level Header', () => {
   test('Verify mouse interactions in header with hint, checkbox, description tooltip, select', async ({
     page,
   }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/header-tests/multi-level-with-interactive.tsx';
+    const standPath
+      = 'stories/components/data-table/tests/examples/header-tests/multi-level-with-interactive.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
     const firstCell = page.locator('[data-ui-name="Body.Cell"]').first();
@@ -640,8 +640,8 @@ test.describe('Multi level Header', () => {
 
 test.describe('Multi level header - Sorting', () => {
   test('Verify keyboard interactions with sorting', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/header-tests/multi-level-sorting.tsx';
+    const standPath
+      = 'stories/components/data-table/tests/examples/header-tests/multi-level-sorting.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
     const buttonLink1 = page.locator(
@@ -686,8 +686,8 @@ test.describe('Multi level header - Sorting', () => {
   });
 
   test('Verify mouse interactions with sorting', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/header-tests/multi-level-sorting.tsx';
+    const standPath
+      = 'stories/components/data-table/tests/examples/header-tests/multi-level-sorting.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 

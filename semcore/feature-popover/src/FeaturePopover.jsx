@@ -1,4 +1,3 @@
-
 import { Animation } from '@semcore/animation';
 import { createComponent, Root, Component, sstyled } from '@semcore/core';
 import Popper from '@semcore/popper';
@@ -47,6 +46,7 @@ class FeaturePopover extends Component {
     i18n: localizedMessages,
     locale: 'en',
   };
+
   static enhance = [i18nEnhance(localizedMessages)];
 
   defaultModifiers = [
@@ -138,7 +138,7 @@ class FeaturePopoverPopper extends Component {
         zIndex={zIndex}
         tabIndex={0}
         autoFocus
-        role={'dialog'}
+        role='dialog'
         aria-describedby={ariaDescribedBy}
         aria-label={ariaLabel}
         aria-labelledby={ariaLabelledby}

@@ -84,7 +84,7 @@ type IntergalacticWizardStepperComponent<PropsExtending = {}> = (<
   props: Intergalactic.InternalTypings.ComponentProps<Tag, 'div', WizardStepperProps<Value>> &
     PropsExtending,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
-  Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', WizardStepperProps>;
+Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', WizardStepperProps>;
 
 declare const Wizard: Intergalactic.Component<'div', WizardProps> & {
   Sidebar: Intergalactic.Component<'div', WizardSidebarProps>;
@@ -100,7 +100,7 @@ declare const wrapWizardStepper: <PropsExtending extends {}>(
     props: Intergalactic.InternalTypings.UntypeRefAndTag<
       Intergalactic.InternalTypings.ComponentPropsNesting<IntergalacticWizardStepperComponent>
     > &
-      PropsExtending,
+    PropsExtending,
   ) => React.ReactNode,
 ) => IntergalacticWizardStepperComponent<PropsExtending>;
 export { wrapWizardStepper };

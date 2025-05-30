@@ -3,8 +3,8 @@ import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 test.describe('AutoSuggest', () => {
   test('Keyboard Navigation', async ({ page }) => {
-    const standPath =
-      'stories/patterns/ux-patterns/auto-suggest/docs/examples/autosuggest_example.tsx';
+    const standPath
+      = 'stories/patterns/ux-patterns/auto-suggest/docs/examples/autosuggest_example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -26,8 +26,8 @@ test.describe('AutoSuggest', () => {
     // TODO: in firefox it is very unstable
     if (browserName === 'firefox') return;
 
-    const standPath =
-      'stories/patterns/ux-patterns/auto-suggest/docs/examples/autosuggest_example.tsx';
+    const standPath
+      = 'stories/patterns/ux-patterns/auto-suggest/docs/examples/autosuggest_example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -60,8 +60,8 @@ test.describe('AutoSuggest', () => {
   test('Verify if it is possible to press Enter without selecting option in the list', async ({
     page,
   }) => {
-    const standPath =
-      'stories/patterns/ux-patterns/auto-suggest/docs/examples/autosuggest_example.tsx';
+    const standPath
+      = 'stories/patterns/ux-patterns/auto-suggest/docs/examples/autosuggest_example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);

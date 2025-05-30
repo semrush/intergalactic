@@ -27,7 +27,7 @@
     "directory": "semcore/format-text"
   },
   "devDependencies": {
-    "@types/react": "18.0.21",
-    "@semcore/testing-utils": "1.0.0"
+    "@semcore/testing-utils": "workspace:*",
+    "@types/react": "18.0.21"
   }
 }

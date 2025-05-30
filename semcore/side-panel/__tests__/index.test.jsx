@@ -78,7 +78,7 @@ describe('SidePanel', () => {
     const spy = vi.fn();
     const component = render(
       <SidePanel visible onClose={spy}>
-        <SidePanel.Overlay data-testid={'overlay'}>
+        <SidePanel.Overlay data-testid='overlay'>
           <SidePanel.Panel />
         </SidePanel.Overlay>
       </SidePanel>,
@@ -210,9 +210,9 @@ describe('SidePanel', () => {
   test.concurrent('Should support ignorePortalsStacking prop', async ({ expect }) => {
     const component = render(
       <Portal>
-        <SidePanel visible data-testid={'inP'}>
+        <SidePanel visible data-testid='inP'>
           Content in portal
-          <SidePanel ignorePortalsStacking visible data-testid={'outP'}>
+          <SidePanel ignorePortalsStacking visible data-testid='outP'>
             Content in body
           </SidePanel>
         </SidePanel>

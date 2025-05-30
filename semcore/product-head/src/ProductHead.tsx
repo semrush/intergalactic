@@ -1,4 +1,3 @@
-
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import { Box, type BoxProps } from '@semcore/flex-box';
 

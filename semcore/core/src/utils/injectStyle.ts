@@ -21,7 +21,8 @@ function injectStyle(css: string) {
       const prevSh = document.querySelector(`.${selectorClass}`);
       if (prevSh) {
         sh = prevSh;
-      } else {
+      }
+      else {
         // @ts-ignore
         const version = preval`
           module.exports = require('../../package.json').version

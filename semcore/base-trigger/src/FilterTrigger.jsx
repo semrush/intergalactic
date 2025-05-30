@@ -50,6 +50,7 @@ class RootFilterTrigger extends Component {
     }),
     uniqueIDEnhancement(),
   ];
+
   static defaultProps = () => ({
     includeInputProps: filterTriggerInputProps,
     i18n: localizedMessages,
@@ -118,13 +119,13 @@ class RootFilterTrigger extends Component {
     const SWrapper = Root;
     const { Children, styles, getI18nText, empty, forcedAdvancedMode } = this.asProps;
 
-    const advancedMode =
-      forcedAdvancedMode ||
-      isAdvanceMode(
-        Children,
-        [FilterTrigger.TriggerButton.displayName, FilterTrigger.ClearButton.displayName],
-        true,
-      );
+    const advancedMode
+      = forcedAdvancedMode
+        || isAdvanceMode(
+          Children,
+          [FilterTrigger.TriggerButton.displayName, FilterTrigger.ClearButton.displayName],
+          true,
+        );
 
     return sstyled(styles)(
       <SWrapper
@@ -142,16 +143,18 @@ class RootFilterTrigger extends Component {
         use:aria-labelledby={undefined}
       >
         <NeighborLocation>
-          {advancedMode ? (
-            <Children />
-          ) : (
-            <>
-              <FilterTrigger.TriggerButton>
+          {advancedMode
+            ? (
                 <Children />
-              </FilterTrigger.TriggerButton>
-              {!empty && <FilterTrigger.ClearButton />}
-            </>
-          )}
+              )
+            : (
+                <>
+                  <FilterTrigger.TriggerButton>
+                    <Children />
+                  </FilterTrigger.TriggerButton>
+                  {!empty && <FilterTrigger.ClearButton />}
+                </>
+              )}
         </NeighborLocation>
       </SWrapper>,
     );
@@ -222,16 +225,18 @@ function Counter({ styles, Children, count, getI18nText }) {
   const SCounter = Root;
   return sstyled(styles)(
     <SCounter render={BaseTrigger.Addon} tag={Dot}>
-      {count !== undefined ? (
-        <>
-          {count}
-          <ScreenReaderOnly>
-            {getI18nText('BaseTrigger.FilterTrigger.Counter.selected:aria-label')}
-          </ScreenReaderOnly>
-        </>
-      ) : (
-        <Children />
-      )}
+      {count !== undefined
+        ? (
+            <>
+              {count}
+              <ScreenReaderOnly>
+                {getI18nText('BaseTrigger.FilterTrigger.Counter.selected:aria-label')}
+              </ScreenReaderOnly>
+            </>
+          )
+        : (
+            <Children />
+          )}
     </SCounter>,
   );
 }

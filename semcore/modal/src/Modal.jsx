@@ -35,12 +35,14 @@ class ModalRoot extends Component {
       prop: 'duration',
     }),
   ];
+
   static defaultProps = {
     closable: true,
     i18n: localizedMessages,
     locale: 'en',
     disablePreventScroll: false,
   };
+
   state = { hasTitle: false };
 
   handleKeyDown = (e) => {
@@ -75,7 +77,7 @@ class ModalRoot extends Component {
     return {
       visible,
       closable,
-      onKeyDown: this.handleKeyDown,
+      'onKeyDown': this.handleKeyDown,
       'aria-label': hasTitle ? undefined : getI18nText('title'),
       'aria-labelledby': hasTitle ? `igc-${uid}-title` : undefined,
       duration,
@@ -106,19 +108,21 @@ class ModalRoot extends Component {
   render() {
     const { Children, disablePortal, forcedAdvancedMode, ignorePortalsStacking } = this.asProps;
 
-    const advancedMode =
-      forcedAdvancedMode ||
-      isAdvanceMode(Children, [Modal.Overlay.displayName, Modal.Window.displayName]);
+    const advancedMode
+      = forcedAdvancedMode
+        || isAdvanceMode(Children, [Modal.Overlay.displayName, Modal.Window.displayName]);
 
     return (
       <Portal disablePortal={disablePortal} ignorePortalsStacking={ignorePortalsStacking}>
-        {advancedMode ? (
-          <Children />
-        ) : (
-          <Modal.Overlay>
-            <Root render={Modal.Window} />
-          </Modal.Overlay>
-        )}
+        {advancedMode
+          ? (
+              <Children />
+            )
+          : (
+              <Modal.Overlay>
+                <Root render={Modal.Window} />
+              </Modal.Overlay>
+            )}
       </Portal>
     );
   }
@@ -180,13 +184,15 @@ function Close(props) {
       theme={ghost ? 'invert' : 'muted'}
       aria-label={getI18nText('close')}
     >
-      {hasChildren ? (
-        <Children />
-      ) : (
-        <Button.Addon ml={'7px'} mr={'7px'}>
-          <CloseIcon title={getI18nText('close')} />
-        </Button.Addon>
-      )}
+      {hasChildren
+        ? (
+            <Children />
+          )
+        : (
+            <Button.Addon ml='7px' mr='7px'>
+              <CloseIcon title={getI18nText('close')} />
+            </Button.Addon>
+          )}
     </SClose>,
   );
 }

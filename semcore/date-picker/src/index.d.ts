@@ -1,4 +1,4 @@
-import React, { ChangeEvent, } from 'react';
+import React, { ChangeEvent } from 'react';
 import dayjs from 'dayjs';
 import { Flex, Box, BoxProps } from '@semcore/flex-box';
 import { UnknownProperties, Intergalactic, PropGetterFn } from '@semcore/core';
@@ -107,54 +107,54 @@ export type DatePickerProps = Intergalactic.InternalTypings.EfficientOmit<
   DropdownProps,
   'disabled'
 > &
-  WithI18nEnhanceProps & {
-    /**
+WithI18nEnhanceProps & {
+  /**
      * The selected date, accepts everything which is accepted by `new Date()`
      * */
-    value?: DateConstructorParams;
-    /**
+  value?: DateConstructorParams;
+  /**
      * To be activated upon selecting the date
      * */
-    onChange?: (date: Date) => void;
-    /**
+  onChange?: (date: Date) => void;
+  /**
      * Array of dates blocked for selection
      * */
-    disabled?: (DateConstructorParams | (DateConstructorParams | false)[] | string)[];
-    /**
+  disabled?: (DateConstructorParams | (DateConstructorParams | false)[] | string)[];
+  /**
      * Error message when user attempts to input a disabled date
      * */
-    disabledErrorText?: ((attemptedDate: Date) => string) | string | null;
-    /**
+  disabledErrorText?: ((attemptedDate: Date) => string) | string | null;
+  /**
      * Date for showing the necessary month
      * @default new Date()
      * */
-    displayedPeriod?: DateConstructorParams;
-    /**
+  displayedPeriod?: DateConstructorParams;
+  /**
      * To be activated upon changing the current shown month
      * */
-    onDisplayedPeriodChange?: (date: Date) => void;
-    /**
+  onDisplayedPeriodChange?: (date: Date) => void;
+  /**
      * Component size
      * @default m
      */
-    size?: 'm' | 'l';
-    /**
+  size?: 'm' | 'l';
+  /**
      * The selected date, accepts everything which is accepted by `new Date()`
      * */
-    highlighted?: DateConstructorParams[];
-    /**
+  highlighted?: DateConstructorParams[];
+  /**
      * Default value selected date, accepts everything which is accepted by `new Date()`
      * */
-    defaultValue?: DateConstructorParams;
-    /**
+  defaultValue?: DateConstructorParams;
+  /**
      * Default value date for showing the necessary month
      * */
-    defaultDisplayedPeriod?: DateConstructorParams;
-    /**
+  defaultDisplayedPeriod?: DateConstructorParams;
+  /**
      * Default value selected date, accepts everything which is accepted by `new Date()`
      * */
-    defaultHighlighted?: DateConstructorParams[];
-  };
+  defaultHighlighted?: DateConstructorParams[];
+};
 
 /** @deprecated */
 export interface IDateRangePickerProps extends DateRangePickerProps, UnknownProperties {}
@@ -162,76 +162,76 @@ export type DateRangePickerProps = Intergalactic.InternalTypings.EfficientOmit<
   DropdownProps,
   'disabled'
 > &
-  WithI18nEnhanceProps & {
-    /**
+WithI18nEnhanceProps & {
+  /**
      * The selected date, accepts everything which is accepted by `new Date()`
      * */
-    value?: DateConstructorParams[];
-    /**
+  value?: DateConstructorParams[];
+  /**
      * Default value selected date, accepts everything which is accepted by `new Date()`
      * */
-    defaultValue?: DateConstructorParams[];
-    /**
+  defaultValue?: DateConstructorParams[];
+  /**
      * Default value date for showing the necessary month
      * */
-    defaultDisplayedPeriod?: DateConstructorParams;
-    /**
+  defaultDisplayedPeriod?: DateConstructorParams;
+  /**
      * Default value selected date, accepts everything which is accepted by `new Date()`
      * */
-    defaultHighlighted?: DateConstructorParams[];
-    /**
+  defaultHighlighted?: DateConstructorParams[];
+  /**
      * To be activated upon selecting the date
      * */
-    onChange?: (date: Date[]) => void;
-    /**
+  onChange?: (date: Date[]) => void;
+  /**
      * Array of dates blocked for selection
      * */
-    disabled?: (DateConstructorParams | (DateConstructorParams | false)[] | string)[];
-    /**
+  disabled?: (DateConstructorParams | (DateConstructorParams | false)[] | string)[];
+  /**
      * Error message when user attempts to input a disabled date
      * */
-    disabledErrorText?: ((attemptedDate: Date) => string) | string | null;
-    /**
+  disabledErrorText?: ((attemptedDate: Date) => string) | string | null;
+  /**
      * Date for showing the necessary month
      * @default new Date()
      * */
-    displayedPeriod?: DateConstructorParams;
-    /**
+  displayedPeriod?: DateConstructorParams;
+  /**
      * To be activated upon changing the current shown month
      * */
-    onDisplayedPeriodChange?: (date: Date) => void;
-    /**
+  onDisplayedPeriodChange?: (date: Date) => void;
+  /**
      * The selected date, accepts everything which is accepted by `new Date()`
      * */
-    highlighted?: DateConstructorParams[];
-    /**
+  highlighted?: DateConstructorParams[];
+  /**
      * Remove the 'Reset' button
      * */
-    unclearable?: boolean;
-    /**
+  unclearable?: boolean;
+  /**
      * To be activated upon selecting the date
      * */
-    onHighlightedChange?: (date: Date[]) => void;
-    /**
+  onHighlightedChange?: (date: Date[]) => void;
+  /**
      * Intermediate value between `highlighted` and `value` that user see before explicitly applying it.
      */
-    preselectedValue?: DateConstructorParams[];
-    /**
+  preselectedValue?: DateConstructorParams[];
+  /**
      * Normally called when user preselects a date range and when user applies this range.
      */
-    onPreselectedValueChange?: (date: Date[]) => void;
-    /**
+  onPreselectedValueChange?: (date: Date[]) => void;
+  /**
      * Array of periods
      * [{value: [new Date(), new Date()], children: "Today"}]
      * @default Past 2 days / Past week / Past 2 week / Past month / Past 2 month
      * */
-    periods?: (ButtonProps & { value: Date[] })[];
-  };
+  periods?: (ButtonProps & { value: Date[] })[];
+};
 
 /** @deprecated */
 export interface IDateRangePickerPeriodProps
   extends DateRangePickerPeriodProps,
-    UnknownProperties {}
+  UnknownProperties {}
 export type DateRangePickerPeriodProps = BoxProps & {
   /**
    * Current selected period
@@ -273,7 +273,7 @@ export type DatePickerContext = {
 /** @deprecated */
 export interface IAbstractDatePickerHandlers
   extends AbstractDatePickerHandlers,
-    UnknownProperties {}
+  UnknownProperties {}
 export type AbstractDatePickerHandlers = {
   displayedPeriod: (value: DateConstructorParams) => void;
   visible: (index: boolean) => void;
@@ -322,13 +322,13 @@ export type DateRangeProps = RangeInputTriggerProps & {};
 /** @deprecated */
 export interface IDatePickerMaskedInputProps
   extends DatePickerMaskedInputProps,
-    UnknownProperties {}
+  UnknownProperties {}
 export type DatePickerMaskedInputProps = {
   date?: Date;
   onDateChange?: (date: Date, event: ChangeEvent) => void;
   onDisplayedPeriodChange?: (date: Date) => void;
   locale?: string;
-  parts?: { year: Boolean; month: Boolean; day: Boolean };
+  parts?: { year: boolean; month: boolean; day: boolean };
   disabledDates?: (Date | (Date | false)[] | string)[];
 };
 
@@ -506,106 +506,106 @@ export type DateRangeComparatorProps = Intergalactic.InternalTypings.EfficientOm
   DropdownProps,
   'disabled'
 > &
-  WithI18nEnhanceProps & {
-    /**
+WithI18nEnhanceProps & {
+  /**
      * Selected date ranges
      * */
-    value?: DateRangeComparatorValue;
-    /**
+  value?: DateRangeComparatorValue;
+  /**
      * Default value for selected date ranges
      * */
-    defaultValue?: DateRangeComparatorValue;
-    /**
+  defaultValue?: DateRangeComparatorValue;
+  /**
      * Default value date for showing the necessary month
      * */
-    defaultDisplayedPeriod?: DateConstructorParams;
-    /**
+  defaultDisplayedPeriod?: DateConstructorParams;
+  /**
      * Default value selected date, accepts everything which is accepted by `new Date()`
      * */
-    defaultHighlighted?: DateConstructorParams[];
-    /**
+  defaultHighlighted?: DateConstructorParams[];
+  /**
      * Called with selected date when user clicks `Apply` button.
      * */
-    onChange?: (ranges: {
-      value?: DateConstructorParams[];
-      compare?: DateConstructorParams[];
-    }) => void;
-    /**
+  onChange?: (ranges: {
+    value?: DateConstructorParams[];
+    compare?: DateConstructorParams[];
+  }) => void;
+  /**
      * Array of dates blocked for selection
      * */
-    disabled?: (DateConstructorParams | (DateConstructorParams | false)[] | string)[];
-    /**
+  disabled?: (DateConstructorParams | (DateConstructorParams | false)[] | string)[];
+  /**
      * Error message when user attempts to input a disabled date
      * */
-    disabledErrorText?: ((attemptedDate: Date) => string) | string | null;
-    /**
+  disabledErrorText?: ((attemptedDate: Date) => string) | string | null;
+  /**
      * Date for showing the necessary month
      * @default new Date()
      * */
-    displayedPeriod?: DateConstructorParams;
-    /**
+  displayedPeriod?: DateConstructorParams;
+  /**
      * To be activated upon changing the current shown month
      * */
-    onDisplayedPeriodChange?: (date: Date) => void;
-    /**
+  onDisplayedPeriodChange?: (date: Date) => void;
+  /**
      * The selected date, accepts everything which is accepted by `new Date()`
      * */
-    highlighted?: DateConstructorParams[];
-    /**
+  highlighted?: DateConstructorParams[];
+  /**
      * To be activated upon selecting the date
      * */
-    onHighlightedChange?: (date: Date[]) => void;
-    /**
+  onHighlightedChange?: (date: Date[]) => void;
+  /**
      * The selected date, accepts everything which is accepted by `new Date()`
      * */
-    compareHighlighted?: DateConstructorParams[];
-    /**
+  compareHighlighted?: DateConstructorParams[];
+  /**
      * To be activated upon selecting the date
      * */
-    onCompareHighlightedChange?: (date: Date[]) => void;
-    /**
+  onCompareHighlightedChange?: (date: Date[]) => void;
+  /**
      * Intermediate value between `highlighted` and `value` that user see before explicitly applying it.
      */
-    preselectedValue?: DateConstructorParams[];
-    /**
+  preselectedValue?: DateConstructorParams[];
+  /**
      * Normally called when user preselects a date range and when user applies this range.
      */
-    onPreselectedValueChange?: (date: Date[]) => void;
-    /**
+  onPreselectedValueChange?: (date: Date[]) => void;
+  /**
      * Intermediate value between `compareHighlighted` and `compare` that user see before explicitly applying it.
      */
-    preselectedCompare?: DateConstructorParams[];
-    /**
+  preselectedCompare?: DateConstructorParams[];
+  /**
      * Normally called when user preselects a compare range and when user applies ranges.
      */
-    onPreselectedCompareChange?: (date: Date[]) => void;
-    /**
+  onPreselectedCompareChange?: (date: Date[]) => void;
+  /**
      * Controls that compare range input is enabled.
      */
-    compareToggle?: boolean;
-    /**
+  compareToggle?: boolean;
+  /**
      * Toggles when compare range input enables or disables.
      */
-    onCompareToggleChange?: (compareToggle: boolean) => void;
-    /**
+  onCompareToggleChange?: (compareToggle: boolean) => void;
+  /**
      * Controls which date range is focused.
      */
-    focusedRange?: DateRangeComparatorFocusRange;
-    /**
+  focusedRange?: DateRangeComparatorFocusRange;
+  /**
      * Called when user focuses or is focused on some of the date ranges.
      */
-    onFocusedRangeChange?: (focusedRange: DateRangeComparatorFocusRange) => void;
-    /**
+  onFocusedRangeChange?: (focusedRange: DateRangeComparatorFocusRange) => void;
+  /**
      * Remove the 'Reset' button
      * */
-    unclearable?: boolean;
-    /**
+  unclearable?: boolean;
+  /**
      * Array of periods
      * [{value: [new Date(), new Date()], children: "Today"}]
      * @default Past 2 days / Past week / Past 2 week / Past month / Past 2 month
      * */
-    periods?: (ButtonProps & { value: Date[] })[];
-  };
+  periods?: (ButtonProps & { value: Date[] })[];
+};
 
 export type DateRangeComparatorContext = {
   getTriggerProps: PropGetterFn;

@@ -39,20 +39,20 @@ export function ErrorsNavigation(props: ErrorsNavigationProps) {
           <Button
             onClick={onNextError}
             addonLeft={ChevronDownM}
-            use={'tertiary'}
-            theme={'muted'}
+            use='tertiary'
+            theme='muted'
             aria-label={getI18nText('BulkTextarea.ErrorsNavigation.nextError:aria-label')}
-            hintPlacement={'bottom'}
+            hintPlacement='bottom'
             disabled={disabled}
             ref={nextButtonRef}
           />
           <Button
             onClick={onPrevError}
             addonLeft={ChevronUpM}
-            use={'tertiary'}
-            theme={'muted'}
+            use='tertiary'
+            theme='muted'
             aria-label={getI18nText('BulkTextarea.ErrorsNavigation.previousError:aria-label')}
-            hintPlacement={'bottom'}
+            hintPlacement='bottom'
             disabled={disabled}
             ref={prevButtonRef}
           />

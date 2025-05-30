@@ -89,13 +89,16 @@ test.describe('Accordion collapse usage', () => {
       if (i === 0) {
         expect(animationDelay).toBe('0s');
         expect(animationDuration).toBe('0.5s');
-      } else if (i === 1) {
+      }
+      else if (i === 1) {
         expect(animationDelay).toBe('0.5s');
         expect(animationDuration).toBe('0.5s');
-      } else if (i === 2) {
+      }
+      else if (i === 2) {
         expect(animationDelay).toBe('0s');
         expect(animationDuration).toBe('0s');
-      } else if (i === 3) {
+      }
+      else if (i === 3) {
         expect(animationDelay).toBe('0s');
         expect(animationDuration).toBe('0.2s');
       }

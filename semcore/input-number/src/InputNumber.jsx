@@ -133,7 +133,8 @@ class Value extends Component {
     if (/\.[0-9]*0$/.test(stringNumber)) {
       const [int, decimal] = stringNumber.split(this.separatorDecimal);
       displayValue = numberFormatter.format(int) + this.separatorDecimal + decimal;
-    } else if (stringNumber !== '') {
+    }
+    else if (stringNumber !== '') {
       displayValue = numberFormatter.format(stringNumber);
     }
 
@@ -158,13 +159,15 @@ class Value extends Component {
     if (Number.isNaN(value) || Number.isNaN(Number.Number.parseFloat(parsedValue))) {
       event.currentTarget.value = '';
       this.handlers.value('', event);
-    } else {
+    }
+    else {
       let numberValue = parseValueWithMinMax(Number.Number.parseFloat(parsedValue), min, max);
       const rounded = this.round(numberValue % step, step);
       if (rounded !== 0) {
         if (rounded >= step / 2) {
           numberValue += step - rounded;
-        } else if (Math.abs(rounded) < step) {
+        }
+        else if (Math.abs(rounded) < step) {
           numberValue -= rounded;
         }
       }
@@ -216,7 +219,8 @@ class Value extends Component {
     event.preventDefault();
     if (event.wheelDelta > 0) {
       this.stepUp(event);
-    } else if (event.wheelDelta < 0) {
+    }
+    else if (event.wheelDelta < 0) {
       this.stepDown(event);
     }
   };
@@ -238,7 +242,8 @@ class Value extends Component {
       if (value.length > prevValue.length) {
         this.handlers.displayValue(numberFormatter.format(value) + this.separatorDecimal);
         return false;
-      } else {
+      }
+      else {
         this.handlers.value(value.slice(0, -1), event);
         return false;
       }
@@ -284,10 +289,10 @@ class Value extends Component {
     }
 
     if (
-      element.selectionStart !== length &&
-      (event.key === 'Backspace' ||
-        event.key === this.separatorDecimal ||
-        ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'].includes(event.key))
+      element.selectionStart !== length
+      && (event.key === 'Backspace'
+        || event.key === this.separatorDecimal
+        || ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'].includes(event.key))
     ) {
       const afterSelection = value.slice(element.selectionEnd);
 
@@ -339,21 +344,23 @@ class Value extends Component {
     const value = element.value;
     const nextPosition = element.selectionStart - 1 >= 0 ? element.selectionStart - 1 : 0;
 
-    const cursorPosition =
-      value[element.selectionStart - cursorIndex] === this.separatorThousands
+    const cursorPosition
+      = value[element.selectionStart - cursorIndex] === this.separatorThousands
         ? element.selectionStart - cursorIndex
         : nextPosition;
 
     if (this.cursorPosition === -1) {
       // without shift
       element.setSelectionRange(cursorPosition, cursorPosition);
-    } else {
+    }
+    else {
       if (
-        element.selectionStart <= this.cursorPosition &&
-        element.selectionEnd === this.cursorPosition
+        element.selectionStart <= this.cursorPosition
+        && element.selectionEnd === this.cursorPosition
       ) {
         element.setSelectionRange(cursorPosition, element.selectionEnd);
-      } else {
+      }
+      else {
         element.setSelectionRange(
           element.selectionStart,
           value[element.selectionEnd - cursorIndex] === this.separatorThousands
@@ -368,21 +375,23 @@ class Value extends Component {
     const value = element.value;
     const nextPosition = element.selectionEnd + 1;
 
-    const cursorPosition =
-      value[element.selectionEnd] === this.separatorThousands
+    const cursorPosition
+      = value[element.selectionEnd] === this.separatorThousands
         ? element.selectionEnd + cursorIndex
         : nextPosition;
 
     if (this.cursorPosition === -1) {
       // without shift
       element.setSelectionRange(cursorPosition, cursorPosition);
-    } else {
+    }
+    else {
       if (
-        element.selectionEnd >= this.cursorPosition &&
-        element.selectionStart === this.cursorPosition
+        element.selectionEnd >= this.cursorPosition
+        && element.selectionStart === this.cursorPosition
       ) {
         element.setSelectionRange(element.selectionStart, cursorPosition);
-      } else {
+      }
+      else {
         element.setSelectionRange(
           value[element.selectionStart] === this.separatorThousands
             ? element.selectionStart + cursorIndex
@@ -415,7 +424,8 @@ class Value extends Component {
     // https://stackoverflow.com/questions/68010124/safari-number-input-stepup-stepdown-not-functioning-with-empty-value
     if (value === '') {
       numberValue = min ?? 0;
-    } else {
+    }
+    else {
       numberValue = Number.Number.parseFloat(value);
     }
 
@@ -433,7 +443,8 @@ class Value extends Component {
 
     if (value === '') {
       numberValue = max ?? 0;
-    } else {
+    }
+    else {
       numberValue = Number.Number.parseFloat(value);
     }
 

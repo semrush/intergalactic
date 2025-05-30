@@ -17,13 +17,13 @@
     "types": "./lib/types/index.d.ts"
   },
   "dependencies": {
-    "@semcore/button": "16.0.0",
-    "@semcore/dropdown": "16.0.0",
-    "@semcore/icon": "16.1.0",
-    "@semcore/typography": "16.1.0",
-    "@semcore/popper": "16.0.0",
-    "@semcore/flex-box": "16.0.0",
-    "@semcore/scroll-area": "16.0.0",
+    "@semcore/button": "workspace:*",
+    "@semcore/dropdown": "workspace:*",
+    "@semcore/flex-box": "workspace:*",
+    "@semcore/icon": "workspace:*",
+    "@semcore/popper": "workspace:*",
+    "@semcore/scroll-area": "workspace:*",
+    "@semcore/typography": "workspace:*",
     "classnames": "2.2.6"
   },
   "peerDependencies": {
@@ -35,11 +35,11 @@
     "directory": "semcore/dropdown-menu"
   },
   "devDependencies": {
-    "@types/react": "18.0.21",
-    "@types/classnames": "2.2.6",
-    "@semcore/testing-utils": "1.0.0",
     "@semcore/base-trigger": "4.26.1",
+    "@semcore/button": "workspace:*",
     "@semcore/icon": "workspace:*",
-    "@semcore/button": "workspace:*"
+    "@semcore/testing-utils": "workspace:*",
+    "@types/classnames": "2.2.6",
+    "@types/react": "18.0.21"
   }
 }

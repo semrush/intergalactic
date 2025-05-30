@@ -55,11 +55,16 @@ describe('Accordion', () => {
           .fill('')
           .map((_, index) => (
             <Accordion.Item value={index} disabled={index === 3} key={index}>
-              <Accordion.Item.Toggle id={`item-${index}`} fontWeight={'normal'}>
+              <Accordion.Item.Toggle id={`item-${index}`} fontWeight='normal'>
                 <Accordion.Item.Chevron />
-                Item {index}
+                Item
+                {' '}
+                {index}
               </Accordion.Item.Toggle>
-              <Accordion.Item.Collapse>Content of item {index}</Accordion.Item.Collapse>
+              <Accordion.Item.Collapse>
+                Content of item
+                {index}
+              </Accordion.Item.Collapse>
             </Accordion.Item>
           ))}
       </Accordion>
@@ -79,9 +84,14 @@ describe('Accordion', () => {
             <Accordion.Item value={index} disabled={index === 3} key={index}>
               <Accordion.Item.Toggle id={`item-${index}`}>
                 <Accordion.Item.Chevron />
-                Item {index}
+                Item
+                {' '}
+                {index}
               </Accordion.Item.Toggle>
-              <Accordion.Item.Collapse>Content of item {index}</Accordion.Item.Collapse>
+              <Accordion.Item.Collapse>
+                Content of item
+                {index}
+              </Accordion.Item.Collapse>
             </Accordion.Item>
           ))}
       </Accordion>

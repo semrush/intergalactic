@@ -17,8 +17,8 @@
     "types": "./lib/types/index.d.ts"
   },
   "dependencies": {
-    "@semcore/input": "16.0.0",
-    "@semcore/flex-box": "16.0.0"
+    "@semcore/flex-box": "workspace:*",
+    "@semcore/input": "workspace:*"
   },
   "peerDependencies": {
     "@semcore/base-components": "^16.0.0"
@@ -29,7 +29,7 @@
     "directory": "semcore/input-number"
   },
   "devDependencies": {
-    "@types/react": "18.0.21",
-    "@semcore/testing-utils": "1.0.0"
+    "@semcore/testing-utils": "workspace:*",
+    "@types/react": "18.0.21"
   }
 }

@@ -1,4 +1,3 @@
-
 import { Root } from '@semcore/core';
 import { ScreenReaderOnly } from '@semcore/flex-box';
 import CounterKit, { type CounterProps as CounterPropsKit } from '@semcore/counter';
@@ -17,7 +16,10 @@ export function Counter(props: CounterProps) {
   return (
     <Root render={CounterKit} ml={1} theme={theme}>
       {linesCount}
-      <span aria-hidden='true'>/{maxLines}</span>
+      <span aria-hidden='true'>
+        /
+        {maxLines}
+      </span>
       <ScreenReaderOnly>
         {getI18nText('BulkTextarea.Counter.ofAllowedRows:sr-message', { rowsNumber: maxLines })}
       </ScreenReaderOnly>

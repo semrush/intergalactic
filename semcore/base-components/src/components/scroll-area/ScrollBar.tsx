@@ -20,8 +20,8 @@ const setAriaValues = (
   $verticalBar?: Element | null,
 ) => {
   if (!$container || !($horizontalBar || $verticalBar)) return;
-  const { scrollWidth, clientWidth, scrollHeight, clientHeight, scrollLeft, scrollTop } =
-    $container;
+  const { scrollWidth, clientWidth, scrollHeight, clientHeight, scrollLeft, scrollTop }
+    = $container;
   const maxScrollRight = scrollWidth - clientWidth;
   const maxScrollBottom = scrollHeight - clientHeight;
   if ($horizontalBar) {
@@ -89,7 +89,8 @@ class ScrollBarRoot extends Component<ScrollBarProps, {}, {}, typeof ScrollBarRo
 
     if (horizontal && orientation === 'horizontal') {
       return true;
-    } else if (vertical && orientation === 'vertical') {
+    }
+    else if (vertical && orientation === 'vertical') {
       return true;
     }
 
@@ -182,7 +183,8 @@ class ScrollBarRoot extends Component<ScrollBarProps, {}, {}, typeof ScrollBarRo
 
       if (orientation === 'horizontal') {
         this.$slider.style.width = `${this.sliderStyle.width}px`;
-      } else if (orientation === 'vertical') {
+      }
+      else if (orientation === 'vertical') {
         this.$slider.style.height = `${this.sliderStyle.height}px`;
       }
       this.handleScroll();
@@ -197,7 +199,8 @@ class ScrollBarRoot extends Component<ScrollBarProps, {}, {}, typeof ScrollBarRo
 
     if (orientation === 'horizontal') {
       this.$slider.style.transform = `translateX(${scrollLeft * this.kefScroll.x}px)`;
-    } else if (orientation === 'vertical') {
+    }
+    else if (orientation === 'vertical') {
       this.$slider.style.transform = `translateY(${scrollTop * this.kefScroll.y}px)`;
     }
   };
@@ -219,7 +222,8 @@ class ScrollBarRoot extends Component<ScrollBarProps, {}, {}, typeof ScrollBarRo
 
     if (orientation === 'horizontal' && this.$container) {
       this.$container.scrollLeft = this.calculateScrollByDiff(pageX, this._mouse.pageX, left, x);
-    } else if (orientation === 'vertical' && this.$container) {
+    }
+    else if (orientation === 'vertical' && this.$container) {
       this.$container.scrollTop = this.calculateScrollByDiff(pageY, this._mouse.pageY, top, y);
     }
   };
@@ -262,7 +266,8 @@ class ScrollBarRoot extends Component<ScrollBarProps, {}, {}, typeof ScrollBarRo
         this.kefBar.x,
         this.kefScroll.x,
       );
-    } else if (orientation === 'vertical') {
+    }
+    else if (orientation === 'vertical') {
       this.$container.scrollTop = this.calculateScrollByClick(
         top,
         pageYOffset,

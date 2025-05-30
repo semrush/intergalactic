@@ -17,14 +17,14 @@
     "types": "./lib/types/index.d.ts"
   },
   "dependencies": {
-    "@semcore/select": "16.1.0",
-    "@semcore/icon": "16.1.0",
-    "@semcore/button": "16.0.0",
-    "@semcore/flex-box": "16.0.0",
-    "@semcore/dropdown-menu": "16.1.0",
-    "@semcore/dropdown": "16.0.0",
-    "@semcore/input": "16.0.0",
-    "@semcore/base-trigger": "16.1.0"
+    "@semcore/base-trigger": "workspace:*",
+    "@semcore/button": "workspace:*",
+    "@semcore/dropdown": "workspace:*",
+    "@semcore/dropdown-menu": "workspace:*",
+    "@semcore/flex-box": "workspace:*",
+    "@semcore/icon": "workspace:*",
+    "@semcore/input": "workspace:*",
+    "@semcore/select": "workspace:*"
   },
   "peerDependencies": {
     "@semcore/base-components": "^16.0.0"
@@ -35,7 +35,7 @@
     "directory": "semcore/add-filter"
   },
   "devDependencies": {
-    "@types/react": "18.0.21",
-    "@semcore/testing-utils": "1.0.0"
+    "@semcore/testing-utils": "workspace:*",
+    "@types/react": "18.0.21"
   }
 }

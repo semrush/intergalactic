@@ -38,6 +38,7 @@ class InputTriggerRoot extends Component {
     } = this.asProps;
     return { ...otherProps, ariaHasPopup, inputId: id };
   }
+
   getDateRangeProps() {
     const {
       children: _children,
@@ -81,11 +82,13 @@ class SingleDateInputRoot extends Component {
     defaultDisabledDateInputAttempt: false,
     showError: true,
   };
+
   state = {
     errorText: null,
     showError: false,
     focused: false,
   };
+
   uncontrolledProps() {
     return {
       disabledDateInputAttempt: [
@@ -139,12 +142,12 @@ class SingleDateInputRoot extends Component {
     } = this.asProps;
 
     return {
-      date: value,
-      onDateChange: onChange,
+      'date': value,
+      'onDateChange': onChange,
       onDisplayedPeriodChange,
       locale,
       'aria-haspopup': 'true',
-      onMaskPipeBlock: this.handleInputMaskPipeBlock,
+      'onMaskPipeBlock': this.handleInputMaskPipeBlock,
       ...otherProps,
     };
   }
@@ -198,12 +201,14 @@ class DateRangeRoot extends Component {
     defaultDisabledDateInputAttempt: false,
     showError: true,
   };
+
   state = {
     containerFocused: false,
     errorText: null,
     showError: false,
     lastChangedInput: 'from',
   };
+
   uncontrolledProps() {
     return {
       disabledDateInputAttempt: [
@@ -253,20 +258,22 @@ class DateRangeRoot extends Component {
       }, 0);
     }
   };
+
   handleToChange = (value, event) => {
     const { onChange } = this.asProps;
     const prevValue = [this.asProps.value?.[0] ?? null, this.asProps.value?.[1] ?? null];
     onChange([prevValue[0], value], event);
   };
+
   handleFromKeydown = (event) => {
     if (!this.toRef.current) return;
     if (!this.fromRef.current) return;
     this.setState({ lastChangedInput: 'from' });
 
     if (
-      event.key === 'ArrowRight' &&
-      this.fromRef.current.selectionStart === this.fromRef.current.value.length &&
-      this.fromRef.current.selectionEnd === this.fromRef.current.value.length
+      event.key === 'ArrowRight'
+      && this.fromRef.current.selectionStart === this.fromRef.current.value.length
+      && this.fromRef.current.selectionEnd === this.fromRef.current.value.length
     ) {
       this.toRef.current.focus();
       setTimeout(() => {
@@ -274,6 +281,7 @@ class DateRangeRoot extends Component {
       }, 0);
     }
   };
+
   handleToKeydown = (event) => {
     if (!this.toRef.current) return;
     if (!this.fromRef.current) return;
@@ -287,9 +295,9 @@ class DateRangeRoot extends Component {
       }, 0);
     }
     if (
-      event.key === 'ArrowLeft' &&
-      this.toRef.current.selectionStart === 0 &&
-      this.toRef.current.selectionEnd === 0
+      event.key === 'ArrowLeft'
+      && this.toRef.current.selectionStart === 0
+      && this.toRef.current.selectionEnd === 0
     ) {
       const value = this.fromRef.current.value;
       this.fromRef.current.focus();
@@ -298,31 +306,33 @@ class DateRangeRoot extends Component {
       }, 0);
     }
   };
+
   handleInputMaskPipeBlock = (value) => {
     if (value === this.asProps.disabledDateInputAttempt) return;
     this.handlers.disabledDateInputAttempt(value);
   };
 
   getFromMaskedInputProps() {
-    const { value, locale, onDisplayedPeriodChange, ariaHasPopup, showError: _showError, ...otherProps } =
-      this.asProps;
+    const { value, locale, onDisplayedPeriodChange, ariaHasPopup, showError: _showError, ...otherProps }
+      = this.asProps;
 
     return assignProps(
       {
-        ref: this.fromRef,
-        date: value?.[0],
-        onDateChange: this.handleFromChange,
-        onKeyDown: this.handleFromKeydown,
+        'ref': this.fromRef,
+        'date': value?.[0],
+        'onDateChange': this.handleFromChange,
+        'onKeyDown': this.handleFromKeydown,
         locale,
-        flex: 1,
+        'flex': 1,
         onDisplayedPeriodChange,
         'aria-haspopup': ariaHasPopup,
-        onMaskPipeBlock: this.handleInputMaskPipeBlock,
-        containerFocused: this.state.containerFocused,
+        'onMaskPipeBlock': this.handleInputMaskPipeBlock,
+        'containerFocused': this.state.containerFocused,
       },
       otherProps,
     );
   }
+
   getToMaskedInputProps() {
     const {
       value,
@@ -339,21 +349,22 @@ class DateRangeRoot extends Component {
 
     return assignProps(
       {
-        ref: this.toRef,
-        date: value?.[1],
-        onDateChange: this.handleToChange,
-        onKeyDown: this.handleToKeydown,
+        'ref': this.toRef,
+        'date': value?.[1],
+        'onDateChange': this.handleToChange,
+        'onKeyDown': this.handleToKeydown,
         locale,
-        flex: 1,
+        'flex': 1,
         onDisplayedPeriodChange,
         'aria-label': ariaLabel,
         'aria-haspopup': ariaHasPopup,
-        onMaskPipeBlock: this.handleInputMaskPipeBlock,
-        containerFocused: this.state.containerFocused,
+        'onMaskPipeBlock': this.handleInputMaskPipeBlock,
+        'containerFocused': this.state.containerFocused,
       },
       otherProps,
     );
   }
+
   getRangeSepProps() {
     const { value } = this.asProps;
 
@@ -361,9 +372,11 @@ class DateRangeRoot extends Component {
       fulfilled: !!(value && (value[0] || value[1])),
     };
   }
+
   handleFocus = () => {
     this.setState({ containerFocused: true });
   };
+
   handleBlur = () => {
     this.setState({ containerFocused: false });
   };
@@ -507,9 +520,9 @@ const MaskedInput = ({
   }, [providedPlaceholders, getI18nText]);
 
   if (
-    placeholders.year.length !== 1 ||
-    placeholders.month.length !== 1 ||
-    placeholders.day.length !== 1
+    placeholders.year.length !== 1
+    || placeholders.month.length !== 1
+    || placeholders.day.length !== 1
   ) {
     // biome-ignore lint/suspicious/noConsole: old code
     console.error({ placeholders });
@@ -531,9 +544,9 @@ const MaskedInput = ({
         sep = part.value;
       }
       if (
-        order.length < 3 &&
-        ['day', 'month', 'year'].includes(part.type) &&
-        allowedParts[part.type]
+        order.length < 3
+        && ['day', 'month', 'year'].includes(part.type)
+        && allowedParts[part.type]
       ) {
         order.push(part.type);
       }
@@ -580,9 +593,9 @@ const MaskedInput = ({
   const lastKnownOuterValue = React.useRef(outer);
   React.useEffect(() => {
     if (
-      lastKnownOuterValue.current?.day !== outer?.day ||
-      lastKnownOuterValue.current?.month !== outer?.month ||
-      lastKnownOuterValue.current?.year !== outer?.year
+      lastKnownOuterValue.current?.day !== outer?.day
+      || lastKnownOuterValue.current?.month !== outer?.month
+      || lastKnownOuterValue.current?.year !== outer?.year
     ) {
       setInternalValue(outer);
     }
@@ -658,12 +671,12 @@ const MaskedInput = ({
         .map((char) => (char === '_' ? placeholders.day : char))
         .join('');
 
-      const yearFulfilled =
-        !allowedParts.year || (year && year.length >= 4 && !year.includes(placeholders.year));
-      const monthFulfilled =
-        !allowedParts.month || (month && month.length === 2 && !month.includes(placeholders.month));
-      const dayFulfilled =
-        !allowedParts.day || (day && day.length === 2 && !day.includes(placeholders.day));
+      const yearFulfilled
+        = !allowedParts.year || (year && year.length >= 4 && !year.includes(placeholders.year));
+      const monthFulfilled
+        = !allowedParts.month || (month && month.length === 2 && !month.includes(placeholders.month));
+      const dayFulfilled
+        = !allowedParts.day || (day && day.length === 2 && !day.includes(placeholders.day));
       const fulfilled = yearFulfilled && monthFulfilled && dayFulfilled;
 
       if (fulfilled) {
@@ -713,12 +726,12 @@ const MaskedInput = ({
       const { year, month, day } = parsed;
       setInternalValue({ year, month, day });
 
-      const yearFulfilled =
-        !allowedParts.year || (year && year.length >= 4 && !year.includes(placeholders.year));
-      const monthFulfilled =
-        !allowedParts.month || (month && month.length === 2 && !month.includes(placeholders.month));
-      const dayFulfilled =
-        !allowedParts.day || (day && day.length === 2 && !day.includes(placeholders.day));
+      const yearFulfilled
+        = !allowedParts.year || (year && year.length >= 4 && !year.includes(placeholders.year));
+      const monthFulfilled
+        = !allowedParts.month || (month && month.length === 2 && !month.includes(placeholders.month));
+      const dayFulfilled
+        = !allowedParts.day || (day && day.length === 2 && !day.includes(placeholders.day));
       const fulfilled = yearFulfilled && monthFulfilled && dayFulfilled;
       if (fulfilled) {
         const date = new Date(0, 0, 0, 0, 0, 0, 0);
@@ -873,7 +886,7 @@ const MaskedInput = ({
       noHumanizedDate={!humanizedDate}
       animationsDisabled={animationsDisabled}
       inputRole={inputRole}
-      inputMode={'numeric'}
+      inputMode='numeric'
     >
       {humanizedDate && <SHumanizedDate>{humanizedDate}</SHumanizedDate>}
     </InputMask.Value>,

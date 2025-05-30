@@ -60,6 +60,7 @@ const mockResizeObserver = (rect: { width?: number; height?: number }) => {
     observe() {
       this.cb([{ contentRect: rect }]);
     }
+
     unobserve() {}
     disconnect() {}
   }

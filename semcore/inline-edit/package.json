@@ -17,11 +17,11 @@
     "types": "./lib/types/index.d.ts"
   },
   "dependencies": {
-    "@semcore/animation": "16.0.0",
-    "@semcore/flex-box": "16.0.0"
+    "@semcore/animation": "workspace:*",
+    "@semcore/flex-box": "workspace:*"
   },
   "devDependencies": {
-    "@semcore/testing-utils": "1.0.0",
+    "@semcore/testing-utils": "workspace:*",
     "@types/react": "18.0.21"
   },
   "peerDependencies": {

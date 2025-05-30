@@ -1,4 +1,3 @@
-
 import { createComponent } from '@semcore/core';
 import { scaleLinear } from 'd3-scale';
 // @ts-ignore

@@ -8,7 +8,7 @@ export type TabLineValue = string | number | boolean;
 /** @deprecated */
 export interface ITabLineProps<T extends TabLineValue = TabLineValue>
   extends TabLineProps<T>,
-    UnknownProperties {}
+  UnknownProperties {}
 export type TabLineProps<T extends TabLineValue = TabLineValue> = BoxProps &
   NeighborLocationProps & {
     /** TabLine size
@@ -78,9 +78,9 @@ type IntergalacticTabLineComponent<PropsExtending = {}> = (<
     TabLineContext,
     [handlers: TabLineHandlers]
   > &
-    PropsExtending,
+  PropsExtending,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
-  Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', TabLineProps>;
+Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', TabLineProps>;
 
 declare const TabLine: IntergalacticTabLineComponent & {
   Item: Intergalactic.Component<'div', TabLineItemProps, {}, [handlers: TabLineHandlers]> & {
@@ -94,7 +94,7 @@ declare const wrapTabLine: <PropsExtending extends {}>(
     props: Intergalactic.InternalTypings.UntypeRefAndTag<
       Intergalactic.InternalTypings.ComponentPropsNesting<IntergalacticTabLineComponent>
     > &
-      PropsExtending,
+    PropsExtending,
   ) => React.ReactNode,
 ) => IntergalacticTabLineComponent<PropsExtending>;
 export { wrapTabLine };

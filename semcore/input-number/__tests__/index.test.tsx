@@ -182,7 +182,7 @@ describe('InputNumber', () => {
         </div>
         <div>
           DE:
-          <InputNumber locale={'de'}>
+          <InputNumber locale='de'>
             <InputNumber.Value data-testid='input5' value='999999' />
           </InputNumber>
         </div>
@@ -220,7 +220,7 @@ describe('InputNumber', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
-        <InputNumber.Value data-testid='input8' value={'100000'} max={10} onChange={spy} />
+        <InputNumber.Value data-testid='input8' value='100000' max={10} onChange={spy} />
       </InputNumber>,
     );
     const input = getByTestId('input8');
@@ -232,7 +232,7 @@ describe('InputNumber', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
-        <InputNumber.Value data-testid='input9' value={'199'} min={200} onChange={spy} />
+        <InputNumber.Value data-testid='input9' value='199' min={200} onChange={spy} />
       </InputNumber>,
     );
     const input = getByTestId('input9');
@@ -244,7 +244,7 @@ describe('InputNumber', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
-        <InputNumber.Value data-testid='input10' defaultValue={'0'} onChange={spy} />
+        <InputNumber.Value data-testid='input10' defaultValue='0' onChange={spy} />
         <InputNumber.Controls data-testid='controls' />
       </InputNumber>,
     );
@@ -263,7 +263,7 @@ describe('InputNumber', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
-        <InputNumber.Value data-testid='input11' defaultValue={'0'} onChange={spy} />
+        <InputNumber.Value data-testid='input11' defaultValue='0' onChange={spy} />
         <InputNumber.Controls data-testid='controls2' />
       </InputNumber>,
     );
@@ -287,7 +287,7 @@ describe('InputNumber', () => {
     const spy = vi.fn();
     render(
       <InputNumber>
-        <InputNumber.Value defaultValue={'0'} onChange={spy} />
+        <InputNumber.Value defaultValue='0' onChange={spy} />
       </InputNumber>,
     );
 
@@ -310,7 +310,7 @@ describe('InputNumber', () => {
     const spy = vi.fn();
     render(
       <InputNumber>
-        <InputNumber.Value defaultValue={'0'} onChange={spy} />
+        <InputNumber.Value defaultValue='0' onChange={spy} />
       </InputNumber>,
     );
 
@@ -403,7 +403,7 @@ describe('InputNumber', () => {
     const component = (
       <InputNumber>
         <InputNumber.Value />
-        <InputNumber.Controls showControls id={'controls'} />
+        <InputNumber.Controls showControls id='controls' />
       </InputNumber>
     );
 

@@ -159,7 +159,8 @@ function Area(props) {
         if (d[y0] === interpolateValue || d[y1] === interpolateValue) return acc;
         if (definedData(y0, y1)(d)) {
           acc[acc.length - 1].push(d);
-        } else if (acc[acc.length - 1].length > 0) {
+        }
+        else if (acc[acc.length - 1].length > 0) {
           acc.push([]);
         }
         return acc;

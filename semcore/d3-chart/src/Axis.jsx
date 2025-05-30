@@ -1,4 +1,3 @@
-
 import { Component, sstyled } from '@semcore/core';
 import createElement from './createElement';
 import { scaleOfBandwidth } from './utils';
@@ -227,8 +226,8 @@ class AxisRoot extends Component {
     const SAxis = this.Element;
     const { styles, position, scale, hide, indexScale } = this.asProps;
 
-    const pos =
-      MAP_POSITION_AXIS[position] ?? MAP_POSITION_AXIS[MAP_INDEX_SCALE_SYMBOL[indexScale]];
+    const pos
+      = MAP_POSITION_AXIS[position] ?? MAP_POSITION_AXIS[MAP_INDEX_SCALE_SYMBOL[indexScale]];
 
     return sstyled(styles)(<SAxis render='line' hide={hide} {...pos(scale, position)} />);
   }
@@ -258,7 +257,8 @@ function Ticks(props) {
     };
     if (position === 'left' || position === 'right') {
       dataHintsHandler.addKeyLabelGetter('vertical', labelGetter);
-    } else if (position === 'top' || position === 'bottom') {
+    }
+    else if (position === 'top' || position === 'bottom') {
       dataHintsHandler.addKeyLabelGetter('horizontal', labelGetter);
     }
   }
@@ -291,7 +291,8 @@ function Grid(props) {
   if (ticks.length >= 2) {
     if (indexScale === 1) {
       props.dataHintsHandler.setupGrid('vertical', Math.abs(ticks[1] - ticks[0]));
-    } else if (indexScale === 0) {
+    }
+    else if (indexScale === 0) {
       props.dataHintsHandler.setupGrid('horizontal', Math.abs(ticks[1] - ticks[0]));
     }
   }
@@ -310,7 +311,8 @@ function Title(props) {
 
   if (position === 'left' || position === 'right') {
     props.dataHintsHandler.setTitle('vertical', children);
-  } else if (position === 'top' || position === 'bottom') {
+  }
+  else if (position === 'top' || position === 'bottom') {
     props.dataHintsHandler.setTitle('horizontal', children);
   }
 

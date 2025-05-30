@@ -36,6 +36,7 @@ class RootSidePanel extends Component {
     }),
     i18nEnhance(localizedMessages),
   ];
+
   static defaultProps = {
     placement: 'right',
     closable: true,
@@ -97,10 +98,10 @@ class RootSidePanel extends Component {
       visible,
       placement,
       closable,
-      duration: duration + duration / 2,
-      disableEnforceFocus: !this.isUsedOverlay(),
-      onOutsideClick: this.handleOutsideClick,
-      onKeyDown: this.handleSidebarKeyDown,
+      'duration': duration + duration / 2,
+      'disableEnforceFocus': !this.isUsedOverlay(),
+      'onOutsideClick': this.handleOutsideClick,
+      'onKeyDown': this.handleSidebarKeyDown,
       animationsDisabled,
       'aria-label': ariaLabel,
       'aria-labelledby': ariaLabelledBy,
@@ -119,13 +120,15 @@ class RootSidePanel extends Component {
 
     return (
       <Portal disablePortal={disablePortal} ignorePortalsStacking={ignorePortalsStacking}>
-        {this.isAdvanceMode() ? (
-          <Children />
-        ) : (
-          <SidePanel.Overlay>
-            <Root render={SidePanel.Panel} />
-          </SidePanel.Overlay>
-        )}
+        {this.isAdvanceMode()
+          ? (
+              <Children />
+            )
+          : (
+              <SidePanel.Overlay>
+                <Root render={SidePanel.Panel} />
+              </SidePanel.Overlay>
+            )}
       </Portal>
     );
   }
@@ -142,15 +145,15 @@ function Overlay(props) {
 
 function Panel(props) {
   const SPanel = Root;
-  const { Children, styles, visible, closable, placement, onOutsideClick, forcedAdvancedMode } =
-    props;
-  const advancedMode =
-    forcedAdvancedMode ||
-    isAdvanceMode(Children, [
-      SidePanel.Header.displayName,
-      SidePanel.Body.displayName,
-      SidePanel.Footer.displayName,
-    ]);
+  const { Children, styles, visible, closable, placement, onOutsideClick, forcedAdvancedMode }
+    = props;
+  const advancedMode
+    = forcedAdvancedMode
+      || isAdvanceMode(Children, [
+        SidePanel.Header.displayName,
+        SidePanel.Body.displayName,
+        SidePanel.Footer.displayName,
+      ]);
 
   const sidebarRef = React.useRef(null);
 
@@ -160,7 +163,7 @@ function Panel(props) {
 
   logger.warn(
     !hasLabel,
-    "'aria-label' or 'aria-labelledby' are required for SidePanel component",
+    '\'aria-label\' or \'aria-labelledby\' are required for SidePanel component',
     props['data-ui-name'] || Panel.displayName,
   );
 
@@ -179,13 +182,15 @@ function Panel(props) {
         <ZIndexStackingContextProvider designToken='z-index-modal'>
           <PortalProvider value={sidebarRef}>
             {closable && <SidePanel.Close />}
-            {advancedMode ? (
-              <Children />
-            ) : (
-              <SidePanel.Body>
-                <Children />
-              </SidePanel.Body>
-            )}
+            {advancedMode
+              ? (
+                  <Children />
+                )
+              : (
+                  <SidePanel.Body>
+                    <Children />
+                  </SidePanel.Body>
+                )}
           </PortalProvider>
         </ZIndexStackingContextProvider>
       </SPanel>
@@ -226,8 +231,8 @@ function Back(props) {
   const { Children, styles } = props;
 
   return sstyled(styles)(
-    <SBack render={ButtonLink} color={'text-hint'} size={100} addonLeft={ArrowLeft}>
-      {/*<ButtonLink.Addon><ArrowLeft /></ButtonLink.Addon>*/}
+    <SBack render={ButtonLink} color='text-hint' size={100} addonLeft={ArrowLeft}>
+      {/* <ButtonLink.Addon><ArrowLeft /></ButtonLink.Addon> */}
       <SBackText>
         <Children />
       </SBackText>

@@ -17,12 +17,12 @@
     "types": "./lib/types/index.d.ts"
   },
   "dependencies": {
-    "@semcore/button": "16.0.0",
-    "@semcore/icon": "16.1.0",
-    "@semcore/notice-global": "16.1.0",
-    "@semcore/animation": "16.0.0",
-    "@semcore/flex-box": "16.0.0",
-    "@semcore/typography": "16.1.0"
+    "@semcore/animation": "workspace:*",
+    "@semcore/button": "workspace:*",
+    "@semcore/flex-box": "workspace:*",
+    "@semcore/icon": "workspace:*",
+    "@semcore/notice-global": "workspace:*",
+    "@semcore/typography": "workspace:*"
   },
   "peerDependencies": {
     "@semcore/base-components": "^16.0.0"
@@ -33,7 +33,7 @@
     "directory": "semcore/notice"
   },
   "devDependencies": {
-    "@types/react": "18.0.21",
-    "@semcore/testing-utils": "1.0.0"
+    "@semcore/testing-utils": "workspace:*",
+    "@types/react": "18.0.21"
   }
 }

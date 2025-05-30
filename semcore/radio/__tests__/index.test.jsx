@@ -136,12 +136,12 @@ describe('RadioGroup', () => {
   test.concurrent('Verify supports initial value in Radio', () => {
     const { getByTestId } = render(
       <RadioGroup name='test' value='2'>
-        <Radio value={'1'}>
+        <Radio value='1'>
           <Radio.Value>
             <Radio.Value.Control data-testid='radioControl' />
           </Radio.Value>
         </Radio>
-        <Radio value={'2'}>
+        <Radio value='2'>
           <Radio.Value>
             <Radio.Value.Control data-testid='radioControlSecond' />
           </Radio.Value>

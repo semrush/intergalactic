@@ -6,8 +6,8 @@ const Demo = () => {
   return (
     <InlineInput>
       <InlineInput.Value />
-      <InlineInput.ConfirmControl id={'confirm'} title='For love' />
-      <InlineInput.CancelControl id={'cancel'} title='DRAIN THE SWAMP!' />
+      <InlineInput.ConfirmControl id='confirm' title='For love' />
+      <InlineInput.CancelControl id='cancel' title='DRAIN THE SWAMP!' />
     </InlineInput>
   );
 };

@@ -20,25 +20,25 @@ export type BaseLegendProps = BaseChartLegendProps & {
   disableSelectItems?: boolean;
 } & (
     | (TrendProps & {
-        /**
+      /**
          * How to render Legend - Flex view. Just list of legend items
          */
-        legendType?: never | 'Flex';
-        /**
+      legendType?: never | 'Flex';
+      /**
          * Config for Legend items
          */
-        legendMap?: LegendDataMap<'Flex'>;
-      })
+      legendMap?: LegendDataMap<'Flex'>;
+    })
     | {
-        /**
+      /**
          * How to render Legend - Table view. Table of legend items with some additional information in columns
          */
-        legendType: 'Table';
-        /**
+      legendType: 'Table';
+      /**
          * Config for Legend items
          */
-        legendMap?: LegendDataMap<'Table'>;
-      }
+      legendMap?: LegendDataMap<'Table'>;
+    }
   );
 
 export type ObjectData = Record<string, unknown>;
@@ -51,7 +51,7 @@ export type ListData = ObjectData[];
 export type AriaNameProps = Intergalactic.RequireAtLeastOne<{
   'aria-label'?: string;
   'aria-labelledby'?: string;
-  title?: string;
+  'title'?: string;
 }>;
 
 export type BaseChartProps<T extends ListData | ObjectData> = FlexProps &
@@ -148,26 +148,26 @@ export type BaseChartProps<T extends ListData | ObjectData> = FlexProps &
   } /**
    * By default, we show the Legend for all charts with more the one data item.
    * For hide the Legend, you should set showLegend prop to `false`.
-   */ & (
+  */ & (
     | {
-        /**
+      /**
          * Don't show legend
          */
-        showLegend?: false;
-        legendProps?: never;
-      }
+      showLegend?: false;
+      legendProps?: never;
+    }
     | {
-        /**
+      /**
          *  By default (if showLegend don't set), for one data item on chart,
          *  Legend component will be hide, and show for more then 1 data item.
          *  If set `true` - Legend component will show always.
          */
-        showLegend?: true;
-        /**
+      showLegend?: true;
+      /**
          * Props for Legend
          */
-        legendProps?: Partial<BaseLegendProps>;
-      }
+      legendProps?: Partial<BaseLegendProps>;
+    }
   );
 
 type LegendDataMap<T extends 'Flex' | 'Table'> = Record<

@@ -14,11 +14,11 @@ const unsafeSetFocus = (
   let target = focusable[0];
 
   if (
-    activeElement &&
-    previousActiveElement &&
-    previousActiveElement.compareDocumentPosition(activeElement) &
-      Node.DOCUMENT_POSITION_PRECEDING &&
-    !(
+    activeElement
+    && previousActiveElement
+    && previousActiveElement.compareDocumentPosition(activeElement)
+    & Node.DOCUMENT_POSITION_PRECEDING
+    && !(
       previousActiveElement.compareDocumentPosition(activeElement) & Node.DOCUMENT_POSITION_CONTAINS
     )
   ) {

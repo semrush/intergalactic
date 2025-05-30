@@ -55,9 +55,9 @@ const DragAndDropContext = React.createContext<{
   attach: (details: AttachDetails) => void;
   detach: (index: number) => void;
 }>({
-  attach: noop,
-  detach: noop,
-});
+      attach: noop,
+      detach: noop,
+    });
 
 type State = {
   items: Array<Omit<AttachDetails, 'index'> | undefined>;
@@ -83,6 +83,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     i18n: localizedMessages,
     locale: 'en',
   };
+
   static style = style;
 
   state: State = {
@@ -104,8 +105,8 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     const currentItem = items[index];
     if (!currentItem) return;
 
-    const itemText =
-      currentItem.node.getAttribute('aria-label') || currentItem.node.textContent || `${index + 1}`;
+    const itemText
+      = currentItem.node.getAttribute('aria-label') || currentItem.node.textContent || `${index + 1}`;
 
     const zoneName = currentItem.zoneName;
     const zonedItems = !zoneName ? items : items.filter((i) => i?.zoneName === zoneName);
@@ -128,6 +129,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
       },
     }));
   };
+
   handleItemDragEnd = (event: DragEvent) => {
     event.preventDefault();
     this.setState({
@@ -137,17 +139,18 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
       keyboardDraggingIndex: null,
     });
   };
+
   handleItemDragOver = (event: DragEvent) => {
     event.preventDefault();
     const { items, dragging, dragOver } = this.state;
     if (!dragging) return;
     const itemIndex = dragging.initialItemsRects.findIndex(
       (rect) =>
-        rect &&
-        event.clientX > rect.x &&
-        event.clientX < rect.x + rect.width &&
-        event.clientY > rect.y &&
-        event.clientY < rect.y + rect.height,
+        rect
+        && event.clientX > rect.x
+        && event.clientX < rect.x + rect.width
+        && event.clientY > rect.y
+        && event.clientY < rect.y + rect.height,
     );
     const currentItem = items[itemIndex];
     const draggingItem = items[dragging.index];
@@ -166,8 +169,8 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     const i18nKey = !zoneName
       ? 'grabbing'
       : currentItem.isDropZone
-      ? 'grabbingJustWithZone'
-      : 'grabbingFullWithZone';
+        ? 'grabbingJustWithZone'
+        : 'grabbingFullWithZone';
 
     this.setA11yHint(i18nKey, {
       itemText,
@@ -178,6 +181,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
 
     this.setState({ dragOver: itemIndex }, this.swapElements);
   };
+
   handleItemDrop = () => {
     const { onDnD } = this.asProps;
     if (!onDnD) return;
@@ -190,8 +194,8 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     if (!currentItem || !draggingItem) return;
 
     const node = currentItem.isDropZone ? draggingItem.node : currentItem.node;
-    const itemText =
-      node.getAttribute('aria-label') || node.textContent || `${(dragOver ?? dragging.index) + 1}`;
+    const itemText
+      = node.getAttribute('aria-label') || node.textContent || `${(dragOver ?? dragging.index) + 1}`;
     const zoneName = currentItem.zoneName;
     const zonedItems = !zoneName ? items : items.filter((i) => i?.zoneName === zoneName);
     const itemsCount = zonedItems.length;
@@ -202,8 +206,8 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     const i18nKey = !zoneName
       ? 'dropped'
       : currentItem.isDropZone
-      ? 'droppedJustWithZone'
-      : 'droppedFullWithZone';
+        ? 'droppedJustWithZone'
+        : 'droppedFullWithZone';
 
     this.setA11yHint(i18nKey, {
       itemText,
@@ -232,17 +236,21 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     }
     if (!currentItem.draggingAllowed) {
       this.asProps.onInsertDroppable?.(items[dragging!.index]?.children, currentItem.children);
-    } else {
+    }
+    else {
       this.asProps.onSwapDraggable?.(items[dragging!.index]?.children, currentItem.children);
     }
   };
+
   handleItemDragEnter = (event: DragEvent) => {
     event.preventDefault();
   };
+
   handleItemMouseMove = () => {
     if (!this.state.hideHoverEffect) return;
     this.setState({ hideHoverEffect: false });
   };
+
   updateItemScaling = () => {
     const firstItemNode = this.state.items[0]?.node;
     if (!firstItemNode) return;
@@ -256,20 +264,21 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
       const rect = parent.getBoundingClientRect();
       if (computedStyle.overflow !== 'visible') {
         if (
-          rect.left >= firstItemRect.left ||
-          rect.right <= firstItemRect.right ||
-          rect.top >= firstItemRect.top ||
-          rect.bottom <= firstItemRect.bottom
+          rect.left >= firstItemRect.left
+          || rect.right <= firstItemRect.right
+          || rect.top >= firstItemRect.top
+          || rect.bottom <= firstItemRect.bottom
         ) {
           reversedScaling = true;
           break;
         }
-      } else {
+      }
+      else {
         if (
-          rect.left < firstItemRect.left &&
-          rect.right > firstItemRect.right &&
-          rect.top < firstItemRect.top &&
-          rect.bottom > firstItemRect.bottom
+          rect.left < firstItemRect.left
+          && rect.right > firstItemRect.right
+          && rect.top < firstItemRect.top
+          && rect.bottom > firstItemRect.bottom
         ) {
           break;
         }
@@ -281,6 +290,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
       this.setState({ reversedScaling });
     }
   };
+
   swapElements = () => {
     const { items, dragging, dragOver } = this.state;
     const draggingIndex = dragging?.index ?? null;
@@ -295,14 +305,17 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     if (draggingIndex === dragOver) {
       const nextDragNode = items[dragOver + 1]?.node ?? null;
       this.containerRef.current?.insertBefore(node, nextDragNode);
-    } else if (draggingIndex > dragOver) {
+    }
+    else if (draggingIndex > dragOver) {
       this.containerRef.current?.insertBefore(node, dragNode);
-    } else {
+    }
+    else {
       this.containerRef.current?.insertBefore(node, dragNode.nextSibling);
     }
 
     node.focus();
   };
+
   handleItemKeyDown = (event: KeyboardEvent, index: number) => {
     if (event.target !== event.currentTarget) {
       return;
@@ -325,13 +338,15 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
           animatedScaling: index,
           hideHoverEffect: true,
         });
-      } else if (this.state.items[index]?.draggingAllowed) {
+      }
+      else if (this.state.items[index]?.draggingAllowed) {
         this.handleItemDragStart(index);
         this.setState({ keyboardDraggingIndex: index, animatedScaling: index });
         this.updateItemScaling();
       }
       return false;
-    } else if (event.key === 'Escape' && this.state.dragging) {
+    }
+    else if (event.key === 'Escape' && this.state.dragging) {
       event.preventDefault();
       event.stopPropagation();
 
@@ -356,7 +371,8 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
       }
 
       return false;
-    } else if (event.key.startsWith('Arrow') && this.state.dragging) {
+    }
+    else if (event.key.startsWith('Arrow') && this.state.dragging) {
       if (this.state.animatedScaling !== null) {
         this.setState({ animatedScaling: null });
       }
@@ -407,6 +423,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
       });
     }
   };
+
   handleItemFocus = () => {
     if (!this.state.dragging) return;
     this.updateItemScaling();
@@ -464,6 +481,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
       return { items: [...items] };
     });
   };
+
   detach = (index: number) => {
     this.setState((prevState: State) => {
       if (!prevState.items[index]) return prevState;
@@ -529,8 +547,8 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
             {a11yHint}
           </SA11yHint>
         )}
-        <Root render={Box} role={'group'} ref={this.containerRef} />
-        <ScreenReaderOnly id={`describe-draggable-${uid}`} aria-hidden={'true'}>
+        <Root render={Box} role='group' ref={this.containerRef} />
+        <ScreenReaderOnly id={`describe-draggable-${uid}`} aria-hidden='true'>
           {getI18nText('describe', { control: 'Space' })}
         </ScreenReaderOnly>
       </DragAndDropContext.Provider>,
@@ -580,7 +598,7 @@ const Draggable = (props: any) => {
       ref={ref}
       draggable={!noDrag}
       placement={placement}
-      role={'group'}
+      role='group'
       aria-describedby={`describe-draggable-${uid}`}
       use:keyboardFocused={isCustomFocus ? false : keyboardFocused}
     >

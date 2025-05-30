@@ -253,7 +253,8 @@ test.describe('Keyboard and mouse interactions', () => {
     if (browserName === 'firefox') {
       await expect(breadcrumbLinks.first()).not.toBeFocused();
       await expect(breadcrumbLinks.nth(1)).toBeFocused();
-    } else {
+    }
+    else {
       await expect(breadcrumbLinks.first()).not.toBeFocused();
       await expect(breadcrumbLinks.nth(1)).not.toBeFocused();
       await expect(lastItem).not.toBeFocused();

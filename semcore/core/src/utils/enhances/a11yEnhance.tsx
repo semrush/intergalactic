@@ -54,8 +54,8 @@ const a11yEnhance = (options: A11yEnhanceOptions) => {
     const handleKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
       const parent = event.currentTarget;
       const selectedElement = event.target as HTMLElement;
-      const [childAttrName, childAttrValue] =
-        typeof childSelector === 'function' ? childSelector(props) : childSelector;
+      const [childAttrName, childAttrValue]
+        = typeof childSelector === 'function' ? childSelector(props) : childSelector;
       if (!selectedElement.getAttribute(childAttrName)) return;
 
       const listSelectors = Array.from(

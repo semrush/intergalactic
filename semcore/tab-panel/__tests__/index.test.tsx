@@ -153,7 +153,7 @@ describe('TabPanel', () => {
         <TabPanel.Item value={1}>Item 1</TabPanel.Item>
         <TabPanel.Item value={2}>Item 2</TabPanel.Item>
         <TabPanel.Item value={3}>Item 3</TabPanel.Item>
-        <TabPanel.Item value={4} onClick={spyClick} data-testid={'tab-4'}>
+        <TabPanel.Item value={4} onClick={spyClick} data-testid='tab-4'>
           Item 4
         </TabPanel.Item>
       </TabPanel>,
@@ -172,7 +172,7 @@ describe('TabPanel', () => {
         <TabPanel.Item value={1}>Item 1</TabPanel.Item>
         <TabPanel.Item value={2}>Item 2</TabPanel.Item>
         <TabPanel.Item value={3}>Item 3</TabPanel.Item>
-        <TabPanel.Item value={3} data-testid={'tab-4'} disabled>
+        <TabPanel.Item value={3} data-testid='tab-4' disabled>
           Item 4
         </TabPanel.Item>
       </TabPanel>,
@@ -188,7 +188,7 @@ describe('TabPanel', () => {
     const spy = vi.fn();
 
     const { getByTestId } = render(
-      <TabPanel value={1 as number} onChange={spy} data-testid={'tab-root'}>
+      <TabPanel value={1 as number} onChange={spy} data-testid='tab-root'>
         <TabPanel.Item value={1}>Item 1</TabPanel.Item>
         <TabPanel.Item value={2}>Item 2</TabPanel.Item>
         <TabPanel.Item value={3}>Item 3</TabPanel.Item>

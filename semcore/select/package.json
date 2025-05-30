@@ -16,16 +16,16 @@
     "types": "./lib/types/index.d.ts"
   },
   "dependencies": {
-    "@semcore/base-trigger": "16.1.0",
-    "@semcore/button": "16.0.0",
-    "@semcore/checkbox": "16.0.0",
-    "@semcore/divider": "16.0.0",
-    "@semcore/dropdown-menu": "16.1.0",
-    "@semcore/dropdown": "16.0.0",
-    "@semcore/icon": "16.1.0",
-    "@semcore/input": "16.0.0",
-    "@semcore/popper": "16.0.0",
-    "@semcore/flex-box": "16.0.0",
+    "@semcore/base-trigger": "workspace:*",
+    "@semcore/button": "workspace:*",
+    "@semcore/checkbox": "workspace:*",
+    "@semcore/divider": "workspace:*",
+    "@semcore/dropdown": "workspace:*",
+    "@semcore/dropdown-menu": "workspace:*",
+    "@semcore/flex-box": "workspace:*",
+    "@semcore/icon": "workspace:*",
+    "@semcore/input": "workspace:*",
+    "@semcore/popper": "workspace:*",
     "classnames": "2.2.6"
   },
   "peerDependencies": {
@@ -37,10 +37,10 @@
     "directory": "semcore/select"
   },
   "devDependencies": {
-    "@types/react": "18.0.21",
+    "@semcore/flex-box": "*",
+    "@semcore/testing-utils": "workspace:*",
+    "@semcore/typography": "^16.1.0",
     "@types/classnames": "2.2.6",
-    "@semcore/testing-utils": "1.0.0",
-    "@semcore/typography": "*",
-    "@semcore/flex-box": "*"
+    "@types/react": "18.0.21"
   }
 }

@@ -31,8 +31,8 @@ test.describe('Vertical Scroll', () => {
   });
 
   test('Verify Keyboard scroll when cells have different height', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/virtualization/header-content.tsx';
+    const standPath
+      = 'stories/components/data-table/tests/examples/virtualization/header-content.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -46,8 +46,8 @@ test.describe('Vertical Scroll', () => {
   });
 
   test('Verify Mouse scroll when cells have different height', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/virtualization/header-content.tsx';
+    const standPath
+      = 'stories/components/data-table/tests/examples/virtualization/header-content.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
@@ -59,8 +59,8 @@ test.describe('Vertical Scroll', () => {
   });
 
   test('Verify keyboard interactions with accordion and chart inside', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/virtualization/accordion-inside-table.tsx';
+    const standPath
+      = 'stories/components/data-table/tests/examples/virtualization/accordion-inside-table.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     const plot = await page.locator('[data-ui-name="Plot"]');
     await page.setContent(htmlContent);
@@ -108,8 +108,8 @@ test.describe('Vertical Scroll', () => {
   });
 
   test('Verify mouse interactions with accordion and chart inside', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/virtualization/accordion-inside-table.tsx';
+    const standPath
+      = 'stories/components/data-table/tests/examples/virtualization/accordion-inside-table.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);

@@ -26,7 +26,7 @@ export type ReferenceLineTitleProps = Context & {
 /** @deprecated **/
 export interface IReferenceLineBackgroundProps
   extends ReferenceLineBackgroundProps,
-    UnknownProperties {}
+  UnknownProperties {}
 export type ReferenceBackgroundProps = Context & {
   /** The position relative the `value` */
   position?: 'top' | 'right' | 'bottom' | 'left';

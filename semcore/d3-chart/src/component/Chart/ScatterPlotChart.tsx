@@ -1,4 +1,3 @@
-
 import { createComponent } from '@semcore/core';
 import { type ScaleLinear, scaleLinear, scaleTime } from 'd3-scale';
 // @ts-ignore
@@ -120,8 +119,14 @@ class ScatterPlotChartComponent extends AbstractChart<
                 children: (
                   <>
                     <ScatterPlot.Tooltip.Dot color={item.color}>Data</ScatterPlot.Tooltip.Dot>
-                    <Text tag='div'>X axis {this.tooltipValueFormatter(data[index][x])}</Text>
-                    <Text tag='div'>Y axis {this.tooltipValueFormatter(data[index][y])}</Text>
+                    <Text tag='div'>
+                      X axis
+                      {this.tooltipValueFormatter(data[index][x])}
+                    </Text>
+                    <Text tag='div'>
+                      Y axis
+                      {this.tooltipValueFormatter(data[index][y])}
+                    </Text>
                   </>
                 ),
               };

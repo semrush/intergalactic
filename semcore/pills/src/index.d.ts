@@ -8,7 +8,7 @@ export type PillsValue = string | number | boolean | null;
 /** @deprecated */
 export interface IPillsProps<T extends PillsValue = PillsValue>
   extends PillsProps<T>,
-    UnknownProperties {}
+  UnknownProperties {}
 export type PillsProps<T extends PillsValue = PillsValue> = NeighborLocationProps &
   BoxProps & {
     /** Pills size */
@@ -78,9 +78,9 @@ type IntergalacticPillsComponent<PropsExtending = {}> = (<
     PillsContext,
     [handlers: PillsHandlers]
   > &
-    PropsExtending,
+  PropsExtending,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
-  Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', PillsProps>;
+Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', PillsProps>;
 
 declare const Pills: IntergalacticPillsComponent & {
   Item: Intergalactic.Component<'button', PillProps, [handlers: PillsHandlers]> & {
@@ -94,7 +94,7 @@ declare const wrapPills: <PropsExtending extends {}>(
     props: Intergalactic.InternalTypings.UntypeRefAndTag<
       Intergalactic.InternalTypings.ComponentPropsNesting<IntergalacticPillsComponent>
     > &
-      PropsExtending,
+    PropsExtending,
   ) => React.ReactNode,
 ) => IntergalacticPillsComponent<PropsExtending>;
 export { wrapPills };

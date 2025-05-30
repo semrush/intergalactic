@@ -1,4 +1,3 @@
-
 import dayjs from 'dayjs';
 import { createComponent } from '@semcore/core';
 import shortDateRangeFormat from './utils/shortDateRangeFormat';

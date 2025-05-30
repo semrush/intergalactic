@@ -61,8 +61,8 @@ test.describe('Grid base tests', () => {
           secondSpanValue = spanMatches[1].match(/\d+/)[0];
         }
         // added this logic because sometimes the class can contain two spans, where the second one is correct, and sometimes it contains only one correct span in the class.
-        const spanValue =
-          spanMatches?.length > 1
+        const spanValue
+          = spanMatches?.length > 1
             ? spanMatches[1].match(/\d+/)?.[0]
             : spanMatches?.[0]?.match(/\d+/)?.[0] ?? null;
         expect(spanValue).toBe(expectedSpanValues[i]);

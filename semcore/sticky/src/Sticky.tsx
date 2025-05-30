@@ -18,6 +18,7 @@ class StickyRoot extends Component<IStickyProps> {
   static defaultProps = {
     top: 0,
   };
+
   static style = style;
 
   render() {

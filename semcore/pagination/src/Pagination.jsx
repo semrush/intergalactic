@@ -25,6 +25,7 @@ class PaginationRoot extends Component {
       size: 'm',
     };
   };
+
   static style = style;
   static enhance = [i18nEnhance(localizedMessages)];
 
@@ -60,7 +61,8 @@ class PaginationRoot extends Component {
 
       if (prevPageButton && !prevPageButton.disabled) {
         prevPageButton.focus();
-      } else if (nextPageButton && !nextPageButton.disabled) {
+      }
+      else if (nextPageButton && !nextPageButton.disabled) {
         nextPageButton.focus();
       }
     }, 0);
@@ -209,30 +211,36 @@ class PaginationRoot extends Component {
     return sstyled(this.asProps.styles)(
       <SPagination
         render={Flex}
-        flexWrap={'wrap'}
+        flexWrap='wrap'
         withGap={!hasChildren}
         tag='nav'
         aria-label={getI18nText('pagination')}
       >
-        {hasChildren ? (
-          <Children />
-        ) : (
-          <>
-            {totalPages === 1 ? null : (
-              <Flex>
-                <Pagination.FirstPage />
-                <Pagination.PrevPage />
-                <Pagination.NextPage />
-              </Flex>
+        {hasChildren
+          ? (
+              <Children />
+            )
+          : (
+              <>
+                {totalPages === 1
+                  ? null
+                  : (
+                      <Flex>
+                        <Pagination.FirstPage />
+                        <Pagination.PrevPage />
+                        <Pagination.NextPage />
+                      </Flex>
+                    )}
+                <Flex alignItems='center'>
+                  <Pagination.PageInput />
+                  <Pagination.TotalPages />
+                </Flex>
+              </>
             )}
-            <Flex alignItems={'center'}>
-              <Pagination.PageInput />
-              <Pagination.TotalPages />
-            </Flex>
-          </>
-        )}
-        <ScreenReaderOnly aria-live={'polite'} role={'status'}>
-          {getI18nText('pageInputLabel')} {currentPage}
+        <ScreenReaderOnly aria-live='polite' role='status'>
+          {getI18nText('pageInputLabel')}
+          {' '}
+          {currentPage}
         </ScreenReaderOnly>
       </SPagination>,
     );
@@ -295,20 +303,22 @@ class TotalPages extends Component {
     return sstyled(styles)(
       <>
         <STotalPagesLabel size={textSize}>{getI18nText('totalPagesLabel')}</STotalPagesLabel>
-        {isLastOrSingle ? (
-          <STotalLastPages
-            size={textSize}
-            aria-label={getI18nText('lastPage', { lastPageNumber: totalPages })}
-            {...other}
-          >
-            {children}
-          </STotalLastPages>
-        ) : (
-          <STotalPages
-            render={ButtonLink}
-            aria-label={getI18nText('lastPage', { lastPageNumber: totalPages })}
-          />
-        )}
+        {isLastOrSingle
+          ? (
+              <STotalLastPages
+                size={textSize}
+                aria-label={getI18nText('lastPage', { lastPageNumber: totalPages })}
+                {...other}
+              >
+                {children}
+              </STotalLastPages>
+            )
+          : (
+              <STotalPages
+                render={ButtonLink}
+                aria-label={getI18nText('lastPage', { lastPageNumber: totalPages })}
+              />
+            )}
       </>,
     );
   }
@@ -350,11 +360,13 @@ class PageInput extends Component {
           controlsLength={Children.origin ? undefined : 2}
           locale={locale}
         >
-          {Children.origin ? (
-            <Children />
-          ) : (
-            <Pagination.PageInput.Value id={`pagination-input-${uid}`} />
-          )}
+          {Children.origin
+            ? (
+                <Children />
+              )
+            : (
+                <Pagination.PageInput.Value id={`pagination-input-${uid}`} />
+              )}
         </SPageInput>
       </>,
     );

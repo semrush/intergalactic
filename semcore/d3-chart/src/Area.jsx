@@ -1,4 +1,3 @@
-
 import { area, curveLinear, line } from 'd3-shape';
 import { Component, sstyled } from '@semcore/core';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';

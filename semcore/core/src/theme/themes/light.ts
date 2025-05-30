@@ -383,4 +383,4 @@ export default {
   '--intergalactic-duration-modal': '200',
   '--intergalactic-duration-accordion': '200',
   '--intergalactic-duration-counter': '200',
-}
+};

@@ -79,10 +79,10 @@ export const defaultValueFormatter = (
   }
   if (value instanceof Date) {
     if (
-      datesWithTime ||
-      (siblingsTimeMark &&
-        siblingsTimeMark instanceof Date &&
-        Math.abs(value.getTime() - siblingsTimeMark.getTime()) < 1000 * 60 * 60 * 24 * 5)
+      datesWithTime
+      || (siblingsTimeMark
+        && siblingsTimeMark instanceof Date
+        && Math.abs(value.getTime() - siblingsTimeMark.getTime()) < 1000 * 60 * 60 * 24 * 5)
     ) {
       return intl.formatDate(value, { dateStyle: 'medium', timeStyle: 'medium' });
     }
@@ -162,20 +162,20 @@ export const serialize = (
 
   const dataRangeSummary = intl.formatList(
     dataRange.map((range) => {
-      const from =
-        valuesFormatter?.(range.from, range.label) ??
-        defaultValueFormatter(intl, range.from, {
-          siblingsTimeMark: range.to,
-          datesWithTime,
-          maxListSymbols,
-        });
-      const to =
-        valuesFormatter?.(range.to, range.label) ??
-        defaultValueFormatter(intl, range.to, {
-          siblingsTimeMark: range.from,
-          datesWithTime,
-          maxListSymbols,
-        });
+      const from
+        = valuesFormatter?.(range.from, range.label)
+          ?? defaultValueFormatter(intl, range.from, {
+            siblingsTimeMark: range.to,
+            datesWithTime,
+            maxListSymbols,
+          });
+      const to
+        = valuesFormatter?.(range.to, range.label)
+          ?? defaultValueFormatter(intl, range.to, {
+            siblingsTimeMark: range.from,
+            datesWithTime,
+            maxListSymbols,
+          });
 
       return intl.formatMessage(
         { id: range.label ? 'additional-axe' : 'additional-axe-no-label' },
@@ -210,11 +210,11 @@ export const serialize = (
           dataKey: titlesFormatter?.(summaryDataKey) ?? summaryDataKey,
           trend: intl.formatMessage({ id: `trend-${primaryTrend.change.strength}` }),
           from:
-            valuesFormatter?.(primaryTrend.change.from, dataKey) ??
-            intl.formatNumber(primaryTrend.change.from),
+            valuesFormatter?.(primaryTrend.change.from, dataKey)
+            ?? intl.formatNumber(primaryTrend.change.from),
           to:
-            valuesFormatter?.(primaryTrend.change.to, dataKey) ??
-            intl.formatNumber(primaryTrend.change.to),
+            valuesFormatter?.(primaryTrend.change.to, dataKey)
+            ?? intl.formatNumber(primaryTrend.change.to),
         },
       );
       const secondarySummaries = secondaryTrends.map((trend) =>
@@ -223,15 +223,15 @@ export const serialize = (
           {
             trend: intl.formatMessage({ id: `trend-${trend.change.strength}` }),
             from:
-              valuesFormatter?.(trend.from, trend.dataKey) ??
-              defaultValueFormatter(intl, trend.from, {
+              valuesFormatter?.(trend.from, trend.dataKey)
+              ?? defaultValueFormatter(intl, trend.from, {
                 siblingsTimeMark: trend.to,
                 datesWithTime,
                 maxListSymbols,
               }),
             to:
-              valuesFormatter?.(trend.to, trend.dataKey) ??
-              defaultValueFormatter(intl, trend.to, {
+              valuesFormatter?.(trend.to, trend.dataKey)
+              ?? defaultValueFormatter(intl, trend.to, {
                 siblingsTimeMark: trend.from,
                 datesWithTime,
                 maxListSymbols,
@@ -269,14 +269,15 @@ export const serialize = (
     }
 
     return summary;
-  } else if (dataType === 'points-cloud') {
+  }
+  else if (dataType === 'points-cloud') {
     const clustersInsights = insights as ClusterNode[];
     const biggestClusters = clustersInsights.slice(0, clustersLimit);
 
     const maxSize = clustersInsights[0].size;
     const minSize = clustersInsights[clustersInsights.length - 1].size;
-    const entities =
-      maxSize === minSize
+    const entities
+      = maxSize === minSize
         ? intl.formatMessage(
             { id: 'entity-type-clusters-single-size' },
             { count: entitiesCount, size: maxSize },
@@ -291,8 +292,8 @@ export const serialize = (
         intl,
         maxListSymbols,
       );
-      const anonymous =
-        clusterInsight.labels.length === 0 || labels === String(clusterInsight.size);
+      const anonymous
+        = clusterInsight.labels.length === 0 || labels === String(clusterInsight.size);
 
       return intl.formatMessage(
         {
@@ -303,12 +304,12 @@ export const serialize = (
           labels,
           size: clusterInsight.size,
           x:
-            valuesFormatter?.(clusterInsight.center.x, clusterInsight.labels as any) ??
-            intl.formatNumber(clusterInsight.center.x),
+            valuesFormatter?.(clusterInsight.center.x, clusterInsight.labels as any)
+            ?? intl.formatNumber(clusterInsight.center.x),
           xLabel: titlesFormatter?.(clusterInsight.center.xLabel) ?? clusterInsight.center.xLabel,
           y:
-            valuesFormatter?.(clusterInsight.center.y, clusterInsight.labels as any) ??
-            intl.formatNumber(clusterInsight.center.y),
+            valuesFormatter?.(clusterInsight.center.y, clusterInsight.labels as any)
+            ?? intl.formatNumber(clusterInsight.center.y),
           yLabel: titlesFormatter?.(clusterInsight.center.yLabel) ?? clusterInsight.center.yLabel,
         },
       );
@@ -333,7 +334,8 @@ export const serialize = (
     }
 
     return summary;
-  } else if (dataType === 'values-set') {
+  }
+  else if (dataType === 'values-set') {
     const [valuesInsight] = insights as [ComparisonNode];
     const entities = intl.formatMessage({ id: 'entity-type-values' }, { count: entitiesCount });
     const entitiesList = formatValuesList(valuesInsight.values, {
@@ -347,14 +349,15 @@ export const serialize = (
       { id: dataTitle ? 'chart-summary' : 'chart-summary-no-label' },
       { entities, entitiesList: entitiesList, label: titlesFormatter?.(dataTitle!) ?? dataTitle },
     );
-  } else if (dataType === 'grouped-values' || dataType === 'indexed-groups') {
+  }
+  else if (dataType === 'grouped-values' || dataType === 'indexed-groups') {
     const groupInsights = insights as ComparisonNode[];
     const valueCounts = groupInsights.map((group) => group.values.length);
     const minValuesCount = Math.min(...valueCounts);
     const maxValuesCount = Math.max(...valueCounts);
 
-    const entities =
-      minValuesCount === maxValuesCount
+    const entities
+      = minValuesCount === maxValuesCount
         ? intl.formatMessage(
             { id: 'entity-type-grouped-values-single-size' },
             { groupsCount: groupInsights.length, valuesCount: valueCounts[0] },

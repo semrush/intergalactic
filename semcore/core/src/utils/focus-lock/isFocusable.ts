@@ -24,8 +24,8 @@ export const isFocusable = (node: Node) => {
   if (!node.ownerDocument.defaultView?.HTMLElement) return false;
   if (
     !(
-      node instanceof node.ownerDocument.defaultView.HTMLElement ||
-      node instanceof node.ownerDocument.defaultView.SVGElement
+      node instanceof node.ownerDocument.defaultView.HTMLElement
+      || node instanceof node.ownerDocument.defaultView.SVGElement
     )
   )
     return false;
@@ -33,8 +33,8 @@ export const isFocusable = (node: Node) => {
   if (node.getAttribute('tabindex') === '-1') return false;
   if (node.getAttribute('hidden') !== null) return false;
   if (
-    node.getAttribute('data-id') === BEFORE_BORDER_ID ||
-    node.getAttribute('data-id') === AFTER_BORDER_ID
+    node.getAttribute('data-id') === BEFORE_BORDER_ID
+    || node.getAttribute('data-id') === AFTER_BORDER_ID
   )
     return false;
   const tagName = node.tagName;

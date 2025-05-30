@@ -1,4 +1,3 @@
-
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import SSeparator from '@semcore/icon/ChevronRight/m';

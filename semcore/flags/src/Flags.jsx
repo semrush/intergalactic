@@ -1,5 +1,3 @@
-
-
 import cn from 'classnames';
 import { createBaseComponent, sstyled } from '@semcore/core';
 import { useBox } from '@semcore/flex-box';
@@ -21,7 +19,7 @@ const versionForClassName = version.split('.').join('_');
 const normalizeName = (name) => {
   if (!name) return name;
   const noExtensions = name.includes('.') ? name.split('.').slice(0, -1).join('.') : name;
-  const noApostrophe = noExtensions.split("'").join('');
+  const noApostrophe = noExtensions.split('\'').join('');
   const noSpaces = noApostrophe.split(' ').join('-');
   const noComas = noSpaces.split(',').join('-');
   return noComas.toLowerCase();
@@ -72,14 +70,14 @@ function calculateName(iso2, iso3, name) {
 function Flags(props, ref) {
   const [SFlags, { className, ...other }] = useBox(
     {
-      tag: 'span',
+      'tag': 'span',
       'data-ui-name': 'Flags',
       ...props,
     },
     ref,
   );
-  const flagsBase =
-    globalThis?.__intergalacticFlagsBaseUrl ?? '//static.semrush.com/intergalactic/flags/';
+  const flagsBase
+    = globalThis?.__intergalacticFlagsBaseUrl ?? '//static.semrush.com/intergalactic/flags/';
   const { iso2, iso3, name, staticPath = `${flagsBase}${version}` } = props;
 
   if (!_addedStyle) {

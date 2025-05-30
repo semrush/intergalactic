@@ -85,13 +85,14 @@ export abstract class AbstractChart<
         dataDefinition.additionalInfo = legendData.additionalInfo
           ? { label: legendData.additionalInfo }
           : legendData.count
-          ? { count: legendData.count }
-          : undefined;
+            ? { count: legendData.count }
+            : undefined;
       }
 
       if (legendData && 'columns' in legendData) {
         dataDefinition.columns = legendData.columns || [];
-      } else if (!Array.isArray(data)) {
+      }
+      else if (!Array.isArray(data)) {
         let value: number | undefined = undefined;
         let dataValue = data[key];
 
@@ -113,7 +114,7 @@ export abstract class AbstractChart<
         const percent = value !== undefined ? ((value / total) * 100).toFixed(2) : undefined;
 
         dataDefinition.columns = [
-          <Text key={`${key}_percent`} use={'secondary'}>
+          <Text key={`${key}_percent`} use='secondary'>
             {percent !== undefined ? `${percent}%` : ''}
           </Text>,
           <Text key={`${key}_value`} use={value ? 'primary' : 'secondary'}>
@@ -140,7 +141,8 @@ export abstract class AbstractChart<
 
     if (Array.isArray(data) && groupKey) {
       dataKeys = Object.keys(data[0]).filter((key) => key !== groupKey);
-    } else {
+    }
+    else {
       dataKeys = Object.keys(data);
     }
 
@@ -155,7 +157,8 @@ export abstract class AbstractChart<
     if (Array.isArray(data) && 'ticks' in scale) {
       if (invertAxis && yTicksCount) {
         return scale.ticks(yTicksCount);
-      } else if (xTicksCount) {
+      }
+      else if (xTicksCount) {
         return scale.ticks(xTicksCount);
       }
 
@@ -173,7 +176,8 @@ export abstract class AbstractChart<
     if (Array.isArray(data) && 'ticks' in scale) {
       if (invertAxis && xTicksCount) {
         return scale.ticks(xTicksCount);
-      } else if (yTicksCount) {
+      }
+      else if (yTicksCount) {
         return scale.ticks(yTicksCount);
       }
 
@@ -190,7 +194,8 @@ export abstract class AbstractChart<
     const flatValues = values.reduce<Set<number>>((result, item) => {
       if (!groupKey && typeof item === 'number') {
         result.add(item);
-      } else {
+      }
+      else {
         Object.entries(item).forEach(([key, value]) => {
           if (key !== groupKey && typeof value === 'number') {
             result.add(value);
@@ -346,9 +351,9 @@ export abstract class AbstractChart<
     const { legendProps, direction, showLegend, patterns } = this.asProps;
 
     if (
-      !showLegend ||
+      !showLegend
       // we hide Legend for one item on chart except not manually set to show.
-      (this.dataKeys.length === 1 && showLegend === true)
+      || (this.dataKeys.length === 1 && showLegend === true)
     ) {
       return null;
     }
@@ -360,22 +365,22 @@ export abstract class AbstractChart<
     };
 
     const commonLegendProps: LegendFlexProps | LegendTableProps = {
-      dataHints: this.dataHints,
-      items: dataDefinitions,
-      size: lProps.size,
-      shape: lProps.shape,
-      w: lProps.w,
-      h: lProps.h,
+      'dataHints': this.dataHints,
+      'items': dataDefinitions,
+      'size': lProps.size,
+      'shape': lProps.shape,
+      'w': lProps.w,
+      'h': lProps.h,
       patterns,
-      direction:
+      'direction':
         lProps.direction ?? (direction === 'row' || direction === 'row-reverse' ? 'column' : 'row'),
-      onChangeVisibleItem: lProps.disableSelectItems
+      'onChangeVisibleItem': lProps.disableSelectItems
         ? undefined
         : callAllEventHandlers(lProps.onChangeVisibleItem, this.handleChangeVisible),
-      onMouseEnterItem: lProps.disableHoverItems
+      'onMouseEnterItem': lProps.disableHoverItems
         ? undefined
         : callAllEventHandlers(lProps.onMouseEnterItem, this.handleMouseEnter),
-      onMouseLeaveItem: lProps.disableHoverItems
+      'onMouseLeaveItem': lProps.disableHoverItems
         ? undefined
         : callAllEventHandlers(lProps.onMouseLeaveItem, this.handleMouseLeave),
       'aria-label': this.getLegendAriaLabel(),
@@ -401,8 +406,8 @@ export abstract class AbstractChart<
   }
 
   protected renderAxis(): React.ReactNode {
-    const { invertAxis, showXAxis, showYAxis, data, axisXValueFormatter, axisYValueFormatter } =
-      this.asProps;
+    const { invertAxis, showXAxis, showYAxis, data, axisXValueFormatter, axisYValueFormatter }
+      = this.asProps;
 
     if (!Array.isArray(data)) {
       return null;
@@ -422,22 +427,26 @@ export abstract class AbstractChart<
       <>
         {showYAxis && (
           <YAxis>
-            {yTicks ? (
-              <YAxis.Ticks ticks={yTicks}>{childrenY}</YAxis.Ticks>
-            ) : (
-              <YAxis.Ticks>{childrenY}</YAxis.Ticks>
-            )}
+            {yTicks
+              ? (
+                  <YAxis.Ticks ticks={yTicks}>{childrenY}</YAxis.Ticks>
+                )
+              : (
+                  <YAxis.Ticks>{childrenY}</YAxis.Ticks>
+                )}
             {invertAxis !== true && (yTicks ? <YAxis.Grid ticks={yTicks} /> : <YAxis.Grid />)}
           </YAxis>
         )}
 
         {showXAxis && (
           <XAxis>
-            {xTicks ? (
-              <XAxis.Ticks ticks={xTicks}>{childrenX}</XAxis.Ticks>
-            ) : (
-              <XAxis.Ticks>{childrenX}</XAxis.Ticks>
-            )}
+            {xTicks
+              ? (
+                  <XAxis.Ticks ticks={xTicks}>{childrenX}</XAxis.Ticks>
+                )
+              : (
+                  <XAxis.Ticks>{childrenX}</XAxis.Ticks>
+                )}
             {invertAxis === true && (xTicks ? <XAxis.Grid ticks={xTicks} /> : <XAxis.Grid />)}
           </XAxis>
         )}
@@ -447,13 +456,13 @@ export abstract class AbstractChart<
 
   public render() {
     const SChart = Root;
-    const { styles, plotWidth, plotHeight, data, patterns, a11yAltTextConfig, duration } =
-      this.asProps;
+    const { styles, plotWidth, plotHeight, data, patterns, a11yAltTextConfig, duration }
+      = this.asProps;
 
     const { extractedAriaProps } = extractAriaProps(this.asProps);
 
     return sstyled(styles)(
-      <SChart render={Flex} gap={5} __excludeProps={['data']} role={'group'}>
+      <SChart render={Flex} gap={5} __excludeProps={['data']} role='group'>
         {this.renderLegend()}
         <Plot
           data={data}

@@ -59,7 +59,6 @@ type EllipsisProps = BoxProps &
     /**
      * Ref to the item that will be observed by ResizeObserver
      */
-    // eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
     containerRef?: RefObject<HTMLDivElement>;
     /**
      * Explicit sizes of container text should be trimmed in
@@ -108,8 +107,8 @@ const createMeasurerElement = (element: HTMLDivElement, text?: string) => {
   temporaryElement.style.whiteSpace = styleElement.getPropertyValue('white-space');
   temporaryElement.style.wordWrap = styleElement.getPropertyValue('word-wrap');
 
-  temporaryElement.style.fontFeatureSettings =
-    styleElement.getPropertyValue('font-feature-settings');
+  temporaryElement.style.fontFeatureSettings
+    = styleElement.getPropertyValue('font-feature-settings');
   temporaryElement.style.fontVariantNumeric = styleElement.getPropertyValue('font-variant-numeric');
 
   temporaryElement.innerHTML = text ?? element.innerHTML;
@@ -133,7 +132,8 @@ function isTextOverflowing(element: HTMLDivElement, multiline: boolean, text?: s
     if (Math.ceil(currentHeight) < height || Math.ceil(currentWidth) < width) {
       isOverflowing = true;
     }
-  } else {
+  }
+  else {
     measuringElement.style.whiteSpace = 'nowrap';
     isOverflowing = Math.ceil(currentWidth) < measuringElement.getBoundingClientRect().width;
   }
@@ -241,25 +241,29 @@ class RootEllipsis extends Component<AsProps> {
           {...tooltipProps}
           {...(advanceMode ? forcedAdvancedMode : noAdvancedMode)}
         >
-          {advanceMode ? (
-            <Children />
-          ) : (
-            <SEllipsis render={Box} ref={this.textRef} maxLine={maxLine} {...other}>
-              <Children />
-            </SEllipsis>
-          )}
+          {advanceMode
+            ? (
+                <Children />
+              )
+            : (
+                <SEllipsis render={Box} ref={this.textRef} maxLine={maxLine} {...other}>
+                  <Children />
+                </SEllipsis>
+              )}
         </SContainer>,
       );
     }
     return sstyled(styles)(
       <SNoTooltipContainer>
-        {advanceMode ? (
-          <Children />
-        ) : (
-          <SEllipsis render={Box} ref={this.textRef} maxLine={maxLine} {...other}>
-            <Children />
-          </SEllipsis>
-        )}
+        {advanceMode
+          ? (
+              <Children />
+            )
+          : (
+              <SEllipsis render={Box} ref={this.textRef} maxLine={maxLine} {...other}>
+                <Children />
+              </SEllipsis>
+            )}
       </SNoTooltipContainer>,
     );
   }

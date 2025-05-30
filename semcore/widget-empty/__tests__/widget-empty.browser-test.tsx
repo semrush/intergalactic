@@ -52,8 +52,8 @@ test.describe('Widget empty', () => {
   });
 
   test('Verify WE with text or description and controls', async ({ page }) => {
-    const standPath =
-      'stories/components/widget-empty/tests/examples/widget-empty-with-controls.tsx';
+    const standPath
+      = 'stories/components/widget-empty/tests/examples/widget-empty-with-controls.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -83,7 +83,7 @@ test.describe('Error', () => {
     await page.keyboard.press('Tab');
     await expect(page.getByRole('button', { name: 'Reload page' }).first()).toBeFocused();
 
-    //this doesnt work on ff - the  tab not focuses the link
+    // this doesnt work on ff - the  tab not focuses the link
     // await page.keyboard.press('Tab');
     // await expect(page.getByRole('link', { name: 'mail@semrush.com' })).toBeFocused();
     // await page.keyboard.press('Tab');

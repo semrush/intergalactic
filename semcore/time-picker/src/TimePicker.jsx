@@ -95,8 +95,8 @@ class TimePickerRoot extends Component {
   componentDidMount() {
     const { id, 'aria-describedby': ariaDescribedBy } = this.asProps;
     const selector = `[for=${id}]`;
-    const titleElement =
-      document.querySelector(selector) ?? document.querySelector(`#${ariaDescribedBy}`);
+    const titleElement
+      = document.querySelector(selector) ?? document.querySelector(`#${ariaDescribedBy}`);
 
     if (titleElement) {
       this.handlers.title(titleElement.textContent);
@@ -153,7 +153,8 @@ class TimePickerRoot extends Component {
     if (field) {
       time = this.value.split(':');
       time[MAP_FIELD_TO_TIME[field]] = value;
-    } else {
+    }
+    else {
       time = value.split(':');
     }
 
@@ -195,6 +196,7 @@ class TimePickerRoot extends Component {
   getHoursProps = () => {
     return { ...this._getHoursAndMinutesProps(), ref: this.hoursInputRef };
   };
+
   getMinutesProps = () => {
     return { ...this._getHoursAndMinutesProps(), ref: this.minutesInputRef };
   };
@@ -226,16 +228,16 @@ class TimePickerRoot extends Component {
 
     const label = value
       ? `${title} ${getI18nText('title', {
-          time: `${hours}:${withLeadingZero(minutes)}`,
-          meridiem: is12Hour ? this.meridiem : '',
-        })}`
+        time: `${hours}:${withLeadingZero(minutes)}`,
+        meridiem: is12Hour ? this.meridiem : '',
+      })}`
       : `${title} ${getI18nText('titleEmpty')}`;
 
     return sstyled(styles)(
       <>
         <STimePicker
           render={Input}
-          role={'group'}
+          role='group'
           aria-label={label}
           __excludeProps={['value', 'title']}
         >

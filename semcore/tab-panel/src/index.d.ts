@@ -7,7 +7,7 @@ export type TabPanelValue = string | number | boolean;
 /** @deprecated */
 export interface ITabPanelProps<T extends TabPanelValue = TabPanelValue>
   extends TabPanelProps<T>,
-    UnknownProperties {}
+  UnknownProperties {}
 export type TabPanelProps<T extends TabPanelValue = TabPanelValue> = BoxProps & {
   /** Is invoked when changing the selection */
   onChange?:
@@ -66,9 +66,9 @@ type IntergalacticTabPanelComponent<PropsExtending = {}> = (<
     TabPanelContext,
     [handlers: TabPanelHandlers]
   > &
-    PropsExtending,
+  PropsExtending,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
-  Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', TabPanelProps>;
+Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', TabPanelProps>;
 
 declare const TabPanel: IntergalacticTabPanelComponent & {
   Item: Intergalactic.Component<'div', TabPanelItemProps, {}, [handlers: TabPanelHandlers]> & {
@@ -82,7 +82,7 @@ declare const wrapTabPanel: <PropsExtending extends {}>(
     props: Intergalactic.InternalTypings.UntypeRefAndTag<
       Intergalactic.InternalTypings.ComponentPropsNesting<IntergalacticTabPanelComponent>
     > &
-      PropsExtending,
+    PropsExtending,
   ) => React.ReactNode,
 ) => IntergalacticTabPanelComponent<PropsExtending>;
 export { wrapTabPanel };

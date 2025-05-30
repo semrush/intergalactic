@@ -53,17 +53,17 @@ describe('Switch', () => {
 
     const component = (
       <>
-        <Switch size={'m'}>
+        <Switch size='m'>
           <Switch.Addon>{longText}</Switch.Addon>
           <Switch.Value />
           <Switch.Addon>{longText}</Switch.Addon>
         </Switch>
-        <Switch size={'l'}>
+        <Switch size='l'>
           <Switch.Addon>{longText}</Switch.Addon>
           <Switch.Value checked />
           <Switch.Addon>{longText}</Switch.Addon>
         </Switch>
-        <Switch size={'xl'}>
+        <Switch size='xl'>
           <Switch.Addon>{longText}</Switch.Addon>
           <Switch.Value checked />
           <Switch.Addon>{longText}</Switch.Addon>

@@ -87,13 +87,13 @@ class TooltipRoot extends Component {
     }
 
     return {
-      id: `igc-${uid}-popper`,
+      'id': `igc-${uid}-popper`,
       theme,
       disablePortal,
       ignorePortalsStacking,
       interaction,
       resolveColor,
-      role: 'tooltip',
+      'role': 'tooltip',
       'aria-live': ariaLive,
       visible,
       timeout,
@@ -107,7 +107,7 @@ class TooltipRoot extends Component {
 
     logger.warn(
       title && advancedMode,
-      "You can't use 'title' and '<Tooltip.Trigger/>/<Tooltip.Popper/>' at the same time",
+      'You can\'t use \'title\' and \'<Tooltip.Trigger/>/<Tooltip.Popper/>\' at the same time',
       other['data-ui-name'] || Tooltip.displayName,
     );
 
@@ -163,7 +163,8 @@ function TooltipPopper(props) {
       timer = setTimeout(() => {
         setIsVisible(true);
       }, timeoutConfig[0] + 50);
-    } else {
+    }
+    else {
       timer = setTimeout(() => {
         setIsVisible(false);
       }, timeoutConfig[1] + 50);
@@ -216,6 +217,7 @@ class HintRoot extends TooltipRoot {
     ...defaultProps,
     liveRegion: false,
   };
+
   subcomponents = [Hint.Trigger.displayName, Hint.Popper.displayName];
   defaultChildren = (title, Children, props) => (
     <>
@@ -240,8 +242,8 @@ class HintRoot extends TooltipRoot {
     return {
       ...props,
       'aria-hidden': true,
-      role: undefined,
-      children: this.asProps.title,
+      'role': undefined,
+      'children': this.asProps.title,
     };
   }
 }
@@ -255,6 +257,7 @@ class DescriptionTooltipRoot extends TooltipRoot {
     liveRegion: false,
     interaction: 'click',
   };
+
   popperRef = React.createRef();
   subcomponents = [DescriptionTooltip.Trigger.displayName, DescriptionTooltip.Popper.displayName];
   defaultChildren = (title, Children, props) => (
@@ -286,8 +289,8 @@ class DescriptionTooltipRoot extends TooltipRoot {
       'aria-expanded': visible,
       'aria-describedby': undefined,
       'aria-controls': visible ? `igc-${this.asProps.uid}-popper` : undefined,
-      onKeyDown: this.handleTriggerKeyDown,
-      role: 'button',
+      'onKeyDown': this.handleTriggerKeyDown,
+      'role': 'button',
     };
   }
 

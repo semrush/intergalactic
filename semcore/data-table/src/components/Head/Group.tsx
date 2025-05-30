@@ -1,4 +1,3 @@
-
 import { Component, Root, sstyled } from '@semcore/core';
 import { Box } from '@semcore/base-components';
 
@@ -55,19 +54,21 @@ export class Group extends Component<
         <SGroup render={Box} style={style} __excludeProps={['title']} id={this.groupId}>
           {withConfig ? children : title}
         </SGroup>
-        {withConfig ? (
-          groupColumns.map((column, _i) => {
-            return (
-              <DataTableInternal.Head.Column
-                key={column.name}
-                {...column}
-                aria-describedby={this.groupId}
-              />
-            );
-          })
-        ) : (
-          <Children />
-        )}
+        {withConfig
+          ? (
+              groupColumns.map((column, _i) => {
+                return (
+                  <DataTableInternal.Head.Column
+                    key={column.name}
+                    {...column}
+                    aria-describedby={this.groupId}
+                  />
+                );
+              })
+            )
+          : (
+              <Children />
+            )}
       </SGroupContainer>,
     );
   }

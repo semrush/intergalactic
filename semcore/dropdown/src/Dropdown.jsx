@@ -27,6 +27,7 @@ class DropdownRoot extends Component {
     locale: 'en',
     interaction: 'click',
   };
+
   static enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages)];
 
   popperRef = React.createRef();
@@ -71,11 +72,11 @@ class DropdownRoot extends Component {
     const element = this.popperRef.current;
 
     if (
-      interaction === 'click' &&
-      visible &&
-      e.key === 'Tab' &&
-      element &&
-      !hasFocusableIn(element)
+      interaction === 'click'
+      && visible
+      && e.key === 'Tab'
+      && element
+      && !hasFocusableIn(element)
     ) {
       e.preventDefault();
 
@@ -95,11 +96,11 @@ class DropdownRoot extends Component {
     const { uid, visible, disablePortal, getI18nText } = this.asProps;
 
     return {
-      id: `igc-${uid}-trigger`,
+      'id': `igc-${uid}-trigger`,
       'aria-controls': visible ? `igc-${uid}-popper` : undefined,
-      focusHint: visible && !disablePortal ? getI18nText('triggerHint') : undefined,
+      'focusHint': visible && !disablePortal ? getI18nText('triggerHint') : undefined,
       'aria-expanded': visible ? 'true' : 'false',
-      onKeyDown: this.handlerTriggerKeyDown,
+      'onKeyDown': this.handlerTriggerKeyDown,
       'aria-haspopup': 'dialog',
     };
   }
@@ -169,11 +170,11 @@ function DropdownGroup(props) {
   };
   return sstyled(styles)(
     <>
-      <SDropdownItemContainer notInteractive aria-hidden={'true'} tabindex={-1} size={size}>
+      <SDropdownItemContainer notInteractive aria-hidden='true' tabindex={-1} size={size}>
         <SGroupTitle id={uidTitle}>{title}</SGroupTitle>
         {subTitle && <SGroupHint id={uidSubTitle}>{subTitle}</SGroupHint>}
       </SDropdownItemContainer>
-      <SGroup render={Box} role={'group'} {...groupAriaProps} __excludeProps={['title']}>
+      <SGroup render={Box} role='group' {...groupAriaProps} __excludeProps={['title']}>
         <Children />
       </SGroup>
     </>,

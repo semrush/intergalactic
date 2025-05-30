@@ -17,6 +17,7 @@ class RootAccordion extends Component {
     defaultValue: [],
     use: 'secondary',
   };
+
   static enhance = [
     cssVariableEnhance({
       variable: '--intergalactic-duration-accordion',
@@ -40,7 +41,8 @@ class RootAccordion extends Component {
       const result = [...value];
       indexOfNewValue === -1 ? result.push(newValue) : result.splice(indexOfNewValue, 1);
       this.handlers.value(result);
-    } else {
+    }
+    else {
       this.handlers.value(value === newValue ? null : newValue);
     }
   };
@@ -92,7 +94,7 @@ export class RootItem extends Component {
     const { value, uid, selected, disabled } = this.asProps;
     return {
       disabled,
-      id: `igc-${uid}-${value}-toggle-button`,
+      'id': `igc-${uid}-${value}-toggle-button`,
       'aria-expanded': selected ? 'true' : 'false',
       'aria-controls': selected ? `igc-${uid}-${value}-collapse` : undefined,
     };
@@ -103,8 +105,8 @@ export class RootItem extends Component {
     return {
       selected,
       duration,
-      id: `igc-${uid}-${value}-collapse`,
-      role: 'region',
+      'id': `igc-${uid}-${value}-collapse`,
+      'role': 'region',
       'aria-labelledby': `igc-${uid}-${value}-toggle-button`,
     };
   }
@@ -131,7 +133,8 @@ class Toggle extends Component {
       if (this.toggleRef.current === event.target) {
         event.currentTarget.click();
       }
-    } else if (event.key === ' ') {
+    }
+    else if (event.key === ' ') {
       event.preventDefault();
       if (this.toggleRef.current === event.target) {
         event.currentTarget.click();
@@ -167,7 +170,7 @@ function ToggleButton(props) {
 
   const SToggleButton = Root;
   return sstyled(styles)(
-    <SToggleButton alignItems='center' render={Flex} role={'button'} {...props} />,
+    <SToggleButton alignItems='center' render={Flex} role='button' {...props} />,
   );
 }
 

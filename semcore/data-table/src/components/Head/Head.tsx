@@ -80,15 +80,15 @@ class HeadRoot<D extends DataTableData> extends Component<
       use,
       'aria-colindex': index + 1,
       style,
-      gridArea: column.gridArea,
-      fixed: column.fixed,
+      'gridArea': column.gridArea,
+      'fixed': column.fixed,
       sticky,
-      borders: column.borders,
+      'borders': column.borders,
       sort,
       onSortChange,
-      parent: column.parent,
-      sortableColumnDescribeId: this.sortableColumnDescribeId(),
-      columnIndex: index,
+      'parent': column.parent,
+      'sortableColumnDescribeId': this.sortableColumnDescribeId(),
+      'columnIndex': index,
       tableRef,
       gridTemplateColumns,
       gridTemplateAreas,
@@ -109,8 +109,8 @@ class HeadRoot<D extends DataTableData> extends Component<
   render() {
     const SHead = Root;
     const SHeadCheckboxCol = Head.Column;
-    const { Children, styles, getI18nText, children, treeColumns, selectedRows, totalRows } =
-      this.asProps;
+    const { Children, styles, getI18nText, children, treeColumns, selectedRows, totalRows }
+      = this.asProps;
 
     const checked = selectedRows && selectedRows.length === totalRows && totalRows > 0;
     const indeterminate = selectedRows && selectedRows.length > 0 && !checked;
@@ -137,26 +137,28 @@ class HeadRoot<D extends DataTableData> extends Component<
             </SHeadCheckboxCol>
           )}
 
-          {children ? (
-            <Children />
-          ) : (
-            <>
-              {treeColumns.map((column, _i) => {
-                if ('columns' in column) {
-                  return (
-                    <DataTableInternal.Head.Group
-                      key={column.name}
-                      {...column}
-                      name={column.columns?.map((c) => c.name).join('/')}
-                      title={''}
-                    />
-                  );
-                }
+          {children
+            ? (
+                <Children />
+              )
+            : (
+                <>
+                  {treeColumns.map((column, _i) => {
+                    if ('columns' in column) {
+                      return (
+                        <DataTableInternal.Head.Group
+                          key={column.name}
+                          {...column}
+                          name={column.columns?.map((c) => c.name).join('/')}
+                          title=''
+                        />
+                      );
+                    }
 
-                return <DataTableInternal.Head.Column key={column.name} {...column} />;
-              })}
-            </>
-          )}
+                    return <DataTableInternal.Head.Column key={column.name} {...column} />;
+                  })}
+                </>
+              )}
         </SHead>
 
         <ScreenReaderOnly aria-hidden={true} id={this.sortableColumnDescribeId()}>

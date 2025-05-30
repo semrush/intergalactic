@@ -219,7 +219,9 @@ class RadialTreeBase extends Component<RootAsProps> {
         .transition()
         .duration(duration)
         .attr('opacity', 1)
+        // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
         .attr('cx', (_, index) => attrs[index].to?.cx!)
+        // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
         .attr('cy', (_, index) => attrs[index].to?.cy!);
     }
     if (iconsNodes.length > 0) {
@@ -242,12 +244,16 @@ class RadialTreeBase extends Component<RootAsProps> {
 
       iconsAnimation
         .attr('opacity', 0)
+        // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
         .attr('x', (_, index) => attrs[index].from?.x!)
+        // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
         .attr('y', (_, index) => attrs[index].from?.y!)
         .transition()
         .duration(duration)
         .attr('opacity', 1)
+        // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
         .attr('x', (_, index) => attrs[index].to?.x!)
+        // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
         .attr('y', (_, index) => attrs[index].to?.y!);
     }
     if (linesNodes.length > 0) {
@@ -266,12 +272,16 @@ class RadialTreeBase extends Component<RootAsProps> {
 
       linesAnimation
         .attr('opacity', 0)
+        // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
         .attr('x2', (_, index) => attrs[index].from?.x2!)
+        // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
         .attr('y2', (_, index) => attrs[index].from?.y2!)
         .transition()
         .duration(duration)
         .attr('opacity', 1)
+        // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
         .attr('x2', (_, index) => attrs[index].to?.x2!)
+        // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
         .attr('y2', (_, index) => attrs[index].to?.y2!);
     }
     if (labelsNodes.length > 0) {
@@ -370,6 +380,7 @@ class RadialTreeRadian extends Component<RadianAsProps> {
     iconSize: 16,
     textSize: 14,
   };
+
   Element!: React.FC<{ render: string }>;
 
   constructor(props: any) {
@@ -493,8 +504,8 @@ class RadialTreeRadian extends Component<RadianAsProps> {
   }
 
   computeRadianPosition(data: RadianData, index: number) {
-    const { centralMargin, labelMargin, angleOffset, activeKey, size, radiansCount, textWidth } =
-      this.asProps;
+    const { centralMargin, labelMargin, angleOffset, activeKey, size, radiansCount, textWidth }
+      = this.asProps;
     const [width, height] = size;
     const key = this.getRadianKey(data, index);
     const isActive = activeKey === key;
@@ -508,9 +519,9 @@ class RadialTreeRadian extends Component<RadianAsProps> {
     );
 
     const angle = baseAngle + angleOffset + (index / radiansCount) * (Math.PI * 2);
-    const isHorizontal =
-      (angle - baseAngle > (1 / 6) * Math.PI && angle - baseAngle < (5 / 6) * Math.PI) ||
-      (angle - baseAngle > (7 / 6) * Math.PI && angle - baseAngle < (11 / 6) * Math.PI);
+    const isHorizontal
+      = (angle - baseAngle > (1 / 6) * Math.PI && angle - baseAngle < (5 / 6) * Math.PI)
+        || (angle - baseAngle > (7 / 6) * Math.PI && angle - baseAngle < (11 / 6) * Math.PI);
     const topAngle = -Math.PI / 2;
     const labelAngle = ((angle - topAngle) % Math.PI) + topAngle;
 
@@ -528,10 +539,10 @@ class RadialTreeRadian extends Component<RadianAsProps> {
     const [xEnd, yEnd] = end;
 
     const labelCenter = [
-      xCenter +
-        Math.cos(angle) * (centralMargin + length + baseCapSize + textWidth / 2 + labelMargin),
-      yCenter +
-        Math.sin(angle) * (centralMargin + length + baseCapSize + textWidth / 2 + labelMargin),
+      xCenter
+      + Math.cos(angle) * (centralMargin + length + baseCapSize + textWidth / 2 + labelMargin),
+      yCenter
+      + Math.sin(angle) * (centralMargin + length + baseCapSize + textWidth / 2 + labelMargin),
     ];
     const [xLabelCenter, yLabelCenter] = labelCenter;
 
@@ -751,7 +762,7 @@ const Icon: React.FC<RadialTreeRadianIconAsProps> = ({
 /** @deprecated */
 export interface IRadialTreeRadianLabelProps
   extends RadialTreeRadianLabelProps,
-    UnknownProperties {}
+  UnknownProperties {}
 export type RadialTreeRadianLabelProps = {
   x?: number;
   y?: number;
@@ -799,7 +810,7 @@ const Label: React.FC<RadialTreeRadianLabelAsProps> = ({
 
   const sstyles = sstyled(styles);
   const sLabelStyles = sstyles.cn('SLabel', {
-    color: resolveColor(color),
+    'color': resolveColor(color),
     'text-cursor': isHorizontal ? 'text' : 'vertical-text',
     transparent,
   });
@@ -892,7 +903,7 @@ type IntergalacticD3Component<BaseTag extends Intergalactic.Tag, Props, Context 
 >(
   props: Intergalactic.InternalTypings.PropsRenderingResultComponentProps<Tag, Props, Context>,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
-  Intergalactic.InternalTypings.ComponentAdditive<BaseTag, BaseTag, Props>;
+Intergalactic.InternalTypings.ComponentAdditive<BaseTag, BaseTag, Props>;
 
 const RadialTree = createElement(RadialTreeBase, { Title, Radian }) as IntergalacticD3Component<
   'g',

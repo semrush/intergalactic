@@ -140,14 +140,16 @@ class InputField<T extends string | string[]> extends Component<
       if (this.isDisabled) {
         this.textarea.setAttribute('contenteditable', 'false');
         this.removeEventListeners(this.textarea);
-      } else {
+      }
+      else {
         this.textarea.setAttribute('contenteditable', 'true');
         this.addEventListeners(this.textarea);
       }
 
       if (disabled) {
         this.textarea.setAttribute('tabindex', '-1');
-      } else {
+      }
+      else {
         this.textarea.setAttribute('tabindex', '0');
       }
     }
@@ -164,7 +166,8 @@ class InputField<T extends string | string[]> extends Component<
         if (paragraph instanceof HTMLParagraphElement) {
           if (newValue === '') {
             paragraph.innerHTML = this.emptyLineValue;
-          } else {
+          }
+          else {
             paragraph.replaceChild(newValueTextNode, paragraph.childNodes.item(0));
           }
         }
@@ -205,28 +208,28 @@ class InputField<T extends string | string[]> extends Component<
   get errorMessage() {
     const { errors, errorIndex, commonErrorMessage, prevError } = this.asProps;
     const { mouseLineIndex, keyboardLineIndex } = this.state;
-    const currentLineIndex =
-      this.errorByInteraction === 'keyboard'
+    const currentLineIndex
+      = this.errorByInteraction === 'keyboard'
         ? keyboardLineIndex
         : this.errorByInteraction === 'mouse'
-        ? mouseLineIndex
-        : -1;
+          ? mouseLineIndex
+          : -1;
     let errorItem: ErrorItem | undefined = errors[errorIndex];
 
     if (currentLineIndex !== -1) {
       errorItem = errors.find((e) => e?.lineIndex === currentLineIndex);
     }
 
-    const errorMessage =
-      errors.length === 0 && !prevError // show any errors only if there are at least one error
+    const errorMessage
+      = errors.length === 0 && !prevError // show any errors only if there are at least one error
         ? null
-        : errorItem?.errorMessage ??
-          (commonErrorMessage === '' || errors.length === 0
+        : errorItem?.errorMessage
+          ?? (commonErrorMessage === '' || errors.length === 0
             ? prevError?.errorMessage
             : commonErrorMessage);
-    const isCommonError =
-      !errorItem?.errorMessage &&
-      (commonErrorMessage === '' || errors.length === 0 ? !prevError?.errorMessage : true);
+    const isCommonError
+      = !errorItem?.errorMessage
+        && (commonErrorMessage === '' || errors.length === 0 ? !prevError?.errorMessage : true);
 
     return {
       errorMessage,
@@ -256,13 +259,15 @@ class InputField<T extends string | string[]> extends Component<
 
     if (!props.disabled) {
       textarea.setAttribute('tabIndex', '0');
-    } else {
+    }
+    else {
       textarea.setAttribute('tabIndex', '-1');
     }
 
     if (!props.disabled && !props.readonly) {
       this.addEventListeners(textarea);
-    } else {
+    }
+    else {
       textarea.addEventListener('keydown', this.handleSelectAll.bind(this));
     }
 
@@ -275,7 +280,8 @@ class InputField<T extends string | string[]> extends Component<
     if (value === '') {
       this.textarea.textContent = '';
       onChangeLinesCount(0);
-    } else {
+    }
+    else {
       const listOfNodes = this.prepareNodesForPaste(value);
 
       this.textarea.replaceChildren(...listOfNodes);
@@ -314,11 +320,12 @@ class InputField<T extends string | string[]> extends Component<
 
     if (element !== this.textarea) {
       if (
-        this.isFocusing ||
-        (element instanceof HTMLElement && element.getAttribute('aria-invalid') === 'true')
+        this.isFocusing
+        || (element instanceof HTMLElement && element.getAttribute('aria-invalid') === 'true')
       ) {
         this.toggleErrorsPopper('mouseLineIndex', element);
-      } else {
+      }
+      else {
         this.setState({ visibleErrorPopper: false });
       }
     }
@@ -335,7 +342,8 @@ class InputField<T extends string | string[]> extends Component<
 
       this.toggleErrorsPopper('keyboardLineIndex', rowNode, 0);
       this.setState({ mouseLineIndex: -1 });
-    } else {
+    }
+    else {
       this.setState({ visibleErrorPopper: false });
     }
   }
@@ -360,8 +368,8 @@ class InputField<T extends string | string[]> extends Component<
       const focusElement = direction === 'forward' ? selection.focusNode : selection.anchorNode;
       const fromOffset = direction === 'forward' ? anchorOffset : focusOffset;
       const toOffset = direction === 'forward' ? focusOffset : anchorOffset;
-      const anchorNode =
-        anchorElement instanceof Text ? anchorElement.parentElement : anchorElement;
+      const anchorNode
+        = anchorElement instanceof Text ? anchorElement.parentElement : anchorElement;
       const focusNode = focusElement instanceof Text ? focusElement.parentElement : focusElement;
 
       let textNode: ChildNode | null = null;
@@ -373,9 +381,10 @@ class InputField<T extends string | string[]> extends Component<
         const lastNodeToInsert = listOfNodes[listOfNodes.length - 1];
         textNode = lastNodeToInsert.childNodes.item(0);
         position = (lastNodeToInsert.textContent ?? '').length;
-      } else if (
-        focusNode instanceof HTMLParagraphElement &&
-        anchorNode instanceof HTMLParagraphElement
+      }
+      else if (
+        focusNode instanceof HTMLParagraphElement
+        && anchorNode instanceof HTMLParagraphElement
       ) {
         const before = anchorNode?.textContent?.substring(0, fromOffset) ?? '';
         const after = focusNode?.textContent?.substring(toOffset) ?? '';
@@ -392,7 +401,7 @@ class InputField<T extends string | string[]> extends Component<
         const firstNodeToInsert = listOfNodes.splice(0, 1)[0];
         const lastNodeToInsert = listOfNodes[listOfNodes.length - 1];
 
-        anchorNode.textContent = noEmptyLineBefore + firstNodeToInsert?.textContent ?? '';
+        anchorNode.textContent = noEmptyLineBefore + (firstNodeToInsert?.textContent ?? '');
 
         anchorNode.after(...listOfNodes);
 
@@ -403,7 +412,8 @@ class InputField<T extends string | string[]> extends Component<
 
           this.validateLine(lastNodeToInsert);
           this.setErrorIndex(lastNodeToInsert);
-        } else {
+        }
+        else {
           position = (anchorNode.textContent ?? '').length;
           anchorNode.textContent = (anchorNode.textContent ?? '') + noEmptyLineAfter;
           textNode = anchorNode.childNodes.item(0);
@@ -416,7 +426,8 @@ class InputField<T extends string | string[]> extends Component<
       if (textNode instanceof Text) {
         this.setSelection(textNode, position ?? 1, position ?? 1);
         this.toggleErrorsPopper('keyboardLineIndex', textNode.parentNode);
-      } else {
+      }
+      else {
         // biome-ignore lint/suspicious/noConsole: need message
         console.warn('incorrect child type', textNode, textNode?.parentNode);
       }
@@ -445,10 +456,12 @@ class InputField<T extends string | string[]> extends Component<
         firstNode.replaceWith(firstRow);
 
         selection?.setPosition(firstRow, nodeText.length);
-      } else if (!firstNode || (firstNode instanceof HTMLBRElement && nodes.length === 1)) {
+      }
+      else if (!firstNode || (firstNode instanceof HTMLBRElement && nodes.length === 1)) {
         this.textarea.textContent = '';
         this.setState({ keyboardLineIndex: 0 });
-      } else if (firstNode instanceof HTMLParagraphElement && !firstNode.textContent?.trim()) {
+      }
+      else if (firstNode instanceof HTMLParagraphElement && !firstNode.textContent?.trim()) {
         if (nodes.length <= 1 || secondNode instanceof HTMLBRElement) {
           this.textarea.textContent = '';
           this.setState({ keyboardLineIndex: 0 });
@@ -482,18 +495,19 @@ class InputField<T extends string | string[]> extends Component<
           const lastSymbol = textContent.at(textContent.length - 1);
 
           if (
-            firstSymbol === this.getEmptyParagraph().textContent ||
-            lastSymbol === this.getEmptyParagraph().textContent
+            firstSymbol === this.getEmptyParagraph().textContent
+            || lastSymbol === this.getEmptyParagraph().textContent
           ) {
             let offset: number | null = null;
             if (firstSymbol === this.getEmptyParagraph().textContent) {
               rowNode.textContent = textContent.substring(1);
-              offset =
-                event.inputType === 'deleteContentBackward' ||
-                event.inputType === 'deleteContentForward'
+              offset
+                = event.inputType === 'deleteContentBackward'
+                  || event.inputType === 'deleteContentForward'
                   ? 0
                   : rowNode.textContent.length;
-            } else if (lastSymbol === this.getEmptyParagraph().textContent) {
+            }
+            else if (lastSymbol === this.getEmptyParagraph().textContent) {
               rowNode.textContent = textContent.substring(0, textContent.length - 1);
               offset = rowNode.textContent.length;
             }
@@ -502,7 +516,8 @@ class InputField<T extends string | string[]> extends Component<
               this.setSelection(rowNode.childNodes.item(0), offset, offset);
             }
           }
-        } else if (childNodes.length === 1 && childNodes[0] instanceof HTMLBRElement) {
+        }
+        else if (childNodes.length === 1 && childNodes[0] instanceof HTMLBRElement) {
           rowNode.innerHTML = this.emptyLineValue;
         }
 
@@ -515,19 +530,21 @@ class InputField<T extends string | string[]> extends Component<
           this.toggleErrorsPopper('keyboardLineIndex', rowNode, 0);
         }
 
-        const trigger =
-          !isValid || (isValid && errors.length === 1 && errors[0].lineNode === rowNode)
+        const trigger
+          = !isValid || (isValid && errors.length === 1 && errors[0].lineNode === rowNode)
             ? rowNode
             : this.textarea;
 
         if (showErrors && this.popper?.current.state.elements.reference !== trigger) {
           if (this.shouldChangePopperTrigger(trigger)) {
             this.setPopperTrigger?.(trigger);
-          } else {
+          }
+          else {
             this.setState({ visibleErrorPopper: false });
           }
         }
-      } else if (rowNode === null) {
+      }
+      else if (rowNode === null) {
         this.setPopperTrigger?.(this.textarea);
 
         if (selection?.focusNode === this.textarea && this.textarea.childNodes.length > 1) {
@@ -544,7 +561,8 @@ class InputField<T extends string | string[]> extends Component<
           if (emptyParagraph) {
             this.setSelection(emptyParagraph, 0, 0);
           }
-        } else {
+        }
+        else {
           this.setSelection(this.textarea, 0, 0);
         }
       }
@@ -559,7 +577,8 @@ class InputField<T extends string | string[]> extends Component<
 
     if (this.asProps.showErrors) {
       this.toggleErrorsPopperByKeyboard(150);
-    } else {
+    }
+    else {
       this.toggleErrorsPopper('keyboardLineIndex', this.textarea);
     }
   }
@@ -574,8 +593,8 @@ class InputField<T extends string | string[]> extends Component<
       this.recalculateErrors();
     }
 
-    const valueToChange =
-      typeof value === 'string' ? this.getValues().join(this.delimiter) : this.getValues();
+    const valueToChange
+      = typeof value === 'string' ? this.getValues().join(this.delimiter) : this.getValues();
 
     onBlur(valueToChange as T, event);
 
@@ -599,11 +618,12 @@ class InputField<T extends string | string[]> extends Component<
 
         if (!currentRowValue) {
           event.preventDefault();
-        } else {
+        }
+        else {
           event.preventDefault();
           const selection = document.getSelection();
-          const selectionNode =
-            selection?.focusNode instanceof Text
+          const selectionNode
+            = selection?.focusNode instanceof Text
               ? selection.focusNode
               : selection?.focusNode?.childNodes.item(0);
           const selectionOffset = selection?.focusOffset;
@@ -611,12 +631,12 @@ class InputField<T extends string | string[]> extends Component<
           let newRowValue = '';
 
           if (
-            selectionNode instanceof Text &&
-            selectionOffset !== undefined &&
-            selectionOffset !== selectionNode.textContent?.length
+            selectionNode instanceof Text
+            && selectionOffset !== undefined
+            && selectionOffset !== selectionNode.textContent?.length
           ) {
-            newRowValue =
-              selectionNode.textContent?.substring(selectionOffset) ?? this.emptyLineValue;
+            newRowValue
+              = selectionNode.textContent?.substring(selectionOffset) ?? this.emptyLineValue;
 
             if (selectionNode.textContent) {
               selectionNode.textContent = selectionNode.textContent.substring(0, selectionOffset);
@@ -630,7 +650,8 @@ class InputField<T extends string | string[]> extends Component<
           const row = document.createElement('p');
           if (newRowValue) {
             row.textContent = newRowValue;
-          } else {
+          }
+          else {
             row.innerHTML = this.emptyLineValue;
           }
           currentNode.after(row);
@@ -655,17 +676,19 @@ class InputField<T extends string | string[]> extends Component<
           this.toggleErrorsPopperByKeyboard(0);
         }
       }
-    } else if (
-      event.key === 'ArrowDown' ||
-      event.key === 'ArrowUp' ||
-      event.key === 'ArrowLeft' ||
-      event.key === 'ArrowRight'
+    }
+    else if (
+      event.key === 'ArrowDown'
+      || event.key === 'ArrowUp'
+      || event.key === 'ArrowLeft'
+      || event.key === 'ArrowRight'
     ) {
       if (currentNode instanceof HTMLParagraphElement) {
         this.handleCursorMovement(currentNode, event);
       }
       this.toggleErrorsPopperByKeyboard(200);
-    } else if (this.isDeleteKey(event) && currentNode instanceof HTMLParagraphElement) {
+    }
+    else if (this.isDeleteKey(event) && currentNode instanceof HTMLParagraphElement) {
       if (currentNode.textContent?.trim() === '' && !this.isRangeSelection()) {
         // Backspace on empty row
         const prevNode = currentNode.previousSibling;
@@ -675,18 +698,20 @@ class InputField<T extends string | string[]> extends Component<
           this.toggleErrorsPopperByKeyboard(0);
 
           if (
-            prevNode.textContent?.trim() === '' &&
-            prevNode.previousSibling === null &&
-            this.textarea.childNodes.length === 1
+            prevNode.textContent?.trim() === ''
+            && prevNode.previousSibling === null
+            && this.textarea.childNodes.length === 1
           ) {
             this.textarea.textContent = '';
             this.setSelection(this.textarea, 0, 0);
-          } else {
+          }
+          else {
             if (prevNode instanceof HTMLParagraphElement) {
               const text = prevNode.childNodes.item(0);
               const offset = text.textContent?.length ?? 0;
               this.setSelection(text, offset, offset);
-            } else {
+            }
+            else {
               // biome-ignore lint/suspicious/noConsole: need message
               console.warn('incorrect prevNode type', prevNode);
             }
@@ -698,25 +723,26 @@ class InputField<T extends string | string[]> extends Component<
 
           this.toggleErrorsPopperByKeyboard(0);
         }
-      } else if (this.isRangeSelection()) {
+      }
+      else if (this.isRangeSelection()) {
         const selection = document.getSelection();
 
         const direction = this.getSelectionDirection();
-        const anchorElement =
-          direction === 'backward' ? selection?.focusNode : selection?.anchorNode;
-        const focusElement =
-          direction === 'backward' ? selection?.anchorNode : selection?.focusNode;
-        const anchorOffset =
-          direction === 'backward' ? selection?.focusOffset : selection?.anchorOffset;
-        const focusOffset =
-          direction === 'backward' ? selection?.anchorOffset : selection?.focusOffset;
+        const anchorElement
+          = direction === 'backward' ? selection?.focusNode : selection?.anchorNode;
+        const focusElement
+          = direction === 'backward' ? selection?.anchorNode : selection?.focusNode;
+        const anchorOffset
+          = direction === 'backward' ? selection?.focusOffset : selection?.anchorOffset;
+        const focusOffset
+          = direction === 'backward' ? selection?.anchorOffset : selection?.focusOffset;
 
         // Backspace on selected full row
         if (
-          anchorElement === focusElement &&
-          anchorOffset === 0 &&
-          ((focusElement === currentNode && focusOffset === 1) ||
-            focusOffset === currentNode.textContent?.length)
+          anchorElement === focusElement
+          && anchorOffset === 0
+          && ((focusElement === currentNode && focusOffset === 1)
+            || focusOffset === currentNode.textContent?.length)
         ) {
           event.preventDefault();
 
@@ -724,12 +750,13 @@ class InputField<T extends string | string[]> extends Component<
           const focusParagraph = focusElement?.parentElement;
           const childNodes = this.textarea.childNodes;
           if (
-            anchorParagraph === childNodes.item(0) &&
-            focusParagraph === childNodes.item(childNodes.length - 1)
+            anchorParagraph === childNodes.item(0)
+            && focusParagraph === childNodes.item(childNodes.length - 1)
           ) {
             this.textarea.textContent = '';
             this.setSelection(this.textarea, 0, 0);
-          } else {
+          }
+          else {
             currentNode.innerHTML = this.emptyLineValue;
             this.validateLine(currentNode);
           }
@@ -745,13 +772,13 @@ class InputField<T extends string | string[]> extends Component<
         }
         // Backspace on selected few full rows
         else if (
-          focusElement !== anchorElement &&
-          focusElement instanceof Text &&
-          anchorElement instanceof Text &&
-          focusElement?.textContent === focusElement?.parentNode?.textContent &&
-          anchorElement?.textContent === anchorElement?.parentNode?.textContent &&
-          anchorOffset === 0 &&
-          focusOffset === focusElement?.parentNode?.textContent?.length
+          focusElement !== anchorElement
+          && focusElement instanceof Text
+          && anchorElement instanceof Text
+          && focusElement?.textContent === focusElement?.parentNode?.textContent
+          && anchorElement?.textContent === anchorElement?.parentNode?.textContent
+          && anchorOffset === 0
+          && focusOffset === focusElement?.parentNode?.textContent?.length
         ) {
           event.preventDefault();
 
@@ -761,12 +788,13 @@ class InputField<T extends string | string[]> extends Component<
           const childNodes = this.textarea.childNodes;
 
           if (
-            anchorParagraph === childNodes.item(0) &&
-            focusParagraph === childNodes.item(childNodes.length - 1)
+            anchorParagraph === childNodes.item(0)
+            && focusParagraph === childNodes.item(childNodes.length - 1)
           ) {
             this.textarea.textContent = '';
             this.setSelection(this.textarea, 0, 0);
-          } else {
+          }
+          else {
             let isCleaning = false;
 
             for (const paragraph of paragraphs) {
@@ -777,7 +805,8 @@ class InputField<T extends string | string[]> extends Component<
                   focusParagraph.innerHTML = this.emptyLineValue;
                   this.setSelection(focusParagraph, 0, 0);
                   break;
-                } else {
+                }
+                else {
                   this.textarea.removeChild(paragraph);
                 }
               }
@@ -796,7 +825,8 @@ class InputField<T extends string | string[]> extends Component<
           this.toggleErrorsPopperByKeyboard(0);
         }
       }
-    } else if (event.key === 'z' && (event.ctrlKey || event.metaKey)) {
+    }
+    else if (event.key === 'z' && (event.ctrlKey || event.metaKey)) {
       event.preventDefault();
     }
   }
@@ -807,18 +837,18 @@ class InputField<T extends string | string[]> extends Component<
     const { visibleErrorPopper } = this.state;
 
     const { errorMessage, isCommonError } = this.errorMessage;
-    const visibleErrorTooltip =
-      showErrors && visibleErrorPopper && Boolean(errorMessage) && !this.isDisabled;
+    const visibleErrorTooltip
+      = showErrors && visibleErrorPopper && Boolean(errorMessage) && !this.isDisabled;
 
     const { __excludeProps } = extractAriaProps(this.asProps);
 
     return sstyled(styles)(
       <>
         <Tooltip
-          interaction={'none'}
+          interaction='none'
           placement={isCommonError ? 'right-start' : 'right'}
           visible={visibleErrorTooltip}
-          theme={'warning'}
+          theme='warning'
           offset={isCommonError ? undefined : [0, 26]}
           preventOverflow={{
             boundary: this.containerRef.current ?? undefined,
@@ -847,12 +877,12 @@ class InputField<T extends string | string[]> extends Component<
   private prepareNodesForPaste(value: string | string[]): HTMLParagraphElement[] {
     const listOfNodes: HTMLParagraphElement[] = [];
     const { pasteProps } = this.asProps;
-    const lineProcessing =
-      pasteProps?.lineProcessing ??
-      ((line: string) => {
-        const trimmedLine = line.trim();
-        return trimmedLine === '' ? line : trimmedLine;
-      });
+    const lineProcessing
+      = pasteProps?.lineProcessing
+        ?? ((line: string) => {
+          const trimmedLine = line.trim();
+          return trimmedLine === '' ? line : trimmedLine;
+        });
     const skipEmptyLines = pasteProps?.skipEmptyLines ?? this.skipEmptyLines;
     const delimiter = pasteProps?.delimiter ?? this.delimiter;
     const lines: string[] = Array.isArray(value) ? value : value.split(delimiter);
@@ -865,12 +895,14 @@ class InputField<T extends string | string[]> extends Component<
 
         if (preparedLine === '') {
           node.innerHTML = this.emptyLineValue;
-        } else if (preparedLine.trim() === '') {
+        }
+        else if (preparedLine.trim() === '') {
           const allSpacesRegExp = new RegExp('\\s', 'g');
           node.innerHTML = DOMPurify.sanitize(
             preparedLine.replace(allSpacesRegExp, this.spaceLineValue),
           );
-        } else {
+        }
+        else {
           node.append(document.createTextNode(preparedLine));
         }
 
@@ -914,8 +946,8 @@ class InputField<T extends string | string[]> extends Component<
           node.dataset.overMaxRows = 'false';
 
           if (
-            node.textContent !== this.getEmptyParagraph().textContent &&
-            node.textContent !== ''
+            node.textContent !== this.getEmptyParagraph().textContent
+            && node.textContent !== ''
           ) {
             lines++;
 
@@ -937,7 +969,8 @@ class InputField<T extends string | string[]> extends Component<
     this.textarea.childNodes.forEach((node) => {
       if (node.textContent?.trim() === '') {
         values.push('');
-      } else {
+      }
+      else {
         values.push(node.textContent ?? '');
       }
     });
@@ -962,7 +995,8 @@ class InputField<T extends string | string[]> extends Component<
 
         this.toggleErrorsPopper('keyboardLineIndex', rowNode, timer);
       }, 0);
-    } else {
+    }
+    else {
       this.toggleErrorsPopperTimeout = window.setTimeout(() => {
         this.toggleErrorsPopperByKeyboard(timer);
       }, 50);
@@ -984,7 +1018,8 @@ class InputField<T extends string | string[]> extends Component<
         if (targetElement instanceof HTMLParagraphElement) {
           isInvalidRow = targetElement.getAttribute('aria-invalid') === 'true';
           lineIndex = Array.from(this.textarea.childNodes).indexOf(targetElement);
-        } else if (targetElement === this.textarea) {
+        }
+        else if (targetElement === this.textarea) {
           lineIndex = 0;
         }
 
@@ -1018,7 +1053,8 @@ class InputField<T extends string | string[]> extends Component<
           );
         }
       }, timer ?? 50);
-    } else {
+    }
+    else {
       this.setState({ visibleErrorPopper: false });
     }
   }
@@ -1027,7 +1063,8 @@ class InputField<T extends string | string[]> extends Component<
     if (showErrors && errorsLength > 0) {
       this.textarea.setAttribute('aria-describedby', this.popperDescribedId);
       this.textarea.setAttribute('aria-invalid', 'true');
-    } else {
+    }
+    else {
       this.textarea.removeAttribute('aria-invalid');
       this.textarea.removeAttribute('aria-describedby');
     }
@@ -1047,7 +1084,8 @@ class InputField<T extends string | string[]> extends Component<
         const text = node.childNodes.item(0);
         if (text instanceof Text) {
           this.setSelection(text, 0, text.length);
-        } else {
+        }
+        else {
           this.setSelection(node, 0, 1);
         }
       }, 150);
@@ -1062,7 +1100,8 @@ class InputField<T extends string | string[]> extends Component<
       if (!isValid) {
         node.setAttribute('aria-invalid', 'true');
         node.dataset.errormessage = errorMessage;
-      } else {
+      }
+      else {
         node.removeAttribute('aria-invalid');
         node.dataset.errormessage = undefined;
       }
@@ -1101,8 +1140,8 @@ class InputField<T extends string | string[]> extends Component<
   private getNodeFromSelection(): Node | null {
     const selection = document.getSelection();
 
-    const rowNode =
-      selection?.focusNode instanceof Text ? selection.focusNode.parentNode : selection?.focusNode;
+    const rowNode
+      = selection?.focusNode instanceof Text ? selection.focusNode.parentNode : selection?.focusNode;
 
     return rowNode ?? null;
   }
@@ -1145,7 +1184,8 @@ class InputField<T extends string | string[]> extends Component<
       // it only works if node is empty, that's why here we could set 0 or node.length
       if (event.key === 'ArrowLeft') {
         offset = textNode.length;
-      } else if (event.key === 'ArrowRight') {
+      }
+      else if (event.key === 'ArrowRight') {
         offset = 0;
       }
 
@@ -1190,6 +1230,7 @@ class InputField<T extends string | string[]> extends Component<
 
     textarea.removeEventListener('keydown', this.handleSelectAll);
   }
+
   private removeEventListeners(textarea: HTMLElement) {
     textarea.removeEventListener('paste', this.handlePaste);
     textarea.removeEventListener('input', this.handleChange);
@@ -1219,8 +1260,8 @@ class InputField<T extends string | string[]> extends Component<
     const selection = document.getSelection();
 
     return (
-      selection?.focusNode !== selection?.anchorNode ||
-      selection?.focusOffset !== selection?.anchorOffset
+      selection?.focusNode !== selection?.anchorNode
+      || selection?.focusOffset !== selection?.anchorOffset
     );
   }
 
@@ -1231,8 +1272,8 @@ class InputField<T extends string | string[]> extends Component<
       const documentPosition = selection.anchorNode.compareDocumentPosition(selection.focusNode);
 
       if (
-        (documentPosition === 0 && selection.anchorOffset > selection.focusOffset) || // if nodes are the same
-        documentPosition === Node.DOCUMENT_POSITION_PRECEDING
+        (documentPosition === 0 && selection.anchorOffset > selection.focusOffset) // if nodes are the same
+        || documentPosition === Node.DOCUMENT_POSITION_PRECEDING
       ) {
         return 'backward';
       }

@@ -30,10 +30,10 @@ describe('ButtonTrigger', () => {
   test.concurrent('Should work as button with labels', async ({ expect }) => {
     const component = (
       <>
-        <label htmlFor={'trigger'} id={'label'} data-testid={'label'}>
+        <label htmlFor='trigger' id='label' data-testid='label'>
           Test for button
         </label>
-        <ButtonTrigger id={'trigger'} data-testid={'buttonTrigger'}>
+        <ButtonTrigger id='trigger' data-testid='buttonTrigger'>
           Button
         </ButtonTrigger>
       </>

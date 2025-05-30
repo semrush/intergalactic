@@ -359,8 +359,7 @@ describe('Carousel visual regression', () => {
                 w={100}
                 h={100}
               />
-            ))
-          }
+            ))}
         </Carousel.Indicators>
       </Carousel>
     );

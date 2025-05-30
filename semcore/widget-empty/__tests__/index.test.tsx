@@ -48,7 +48,7 @@ describe('NoData', () => {
   });
 
   test.concurrent('Should support custom description', async ({ task }) => {
-    const component = <NoData description={'description'} />;
+    const component = <NoData description='description' />;
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
@@ -72,7 +72,7 @@ describe('Error', () => {
   });
 
   test.concurrent('Should support custom description', async ({ task }) => {
-    const component = <Error description={'description'} />;
+    const component = <Error description='description' />;
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 });

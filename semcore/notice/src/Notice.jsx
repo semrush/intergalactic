@@ -31,6 +31,7 @@ class RootNotice extends Component {
     }),
     resolveColorEnhance(),
   ];
+
   static defaultProps = {
     theme: 'info',
     i18n: localizedMessages,
@@ -41,9 +42,9 @@ class RootNotice extends Component {
 
   componentDidMount() {
     if (
-      this.ref.current &&
-      process.env.NODE_ENV !== 'production' &&
-      !['muted', 'danger'].includes(this.props.theme)
+      this.ref.current
+      && process.env.NODE_ENV !== 'production'
+      && !['muted', 'danger'].includes(this.props.theme)
     ) {
       const hasTitle = (node) => {
         if (node.hasAttribute('aria-label')) return true;
@@ -127,7 +128,7 @@ function Label({ styles, theme, resolveColor }) {
 
 function Title({ styles }) {
   const STitle = Root;
-  return sstyled(styles)(<STitle render={Text} tag='div' size={300} fontWeight={'bold'} />);
+  return sstyled(styles)(<STitle render={Text} tag='div' size={300} fontWeight='bold' />);
 }
 
 function NoticeText({ styles }) {

@@ -684,8 +684,8 @@ test.describe('Date range picker props', () => {
   });
 
   test('Verify  date range picker period work good', async ({ page }) => {
-    const standPath =
-      'stories/components/date-picker/tests/examples/day-range-picker-perios-props.tsx';
+    const standPath
+      = 'stories/components/date-picker/tests/examples/day-range-picker-perios-props.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);

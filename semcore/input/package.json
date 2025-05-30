@@ -17,8 +17,8 @@
     "types": "./lib/types/index.d.ts"
   },
   "dependencies": {
-    "@semcore/neighbor-location": "16.0.0",
-    "@semcore/flex-box": "16.0.0"
+    "@semcore/flex-box": "workspace:*",
+    "@semcore/neighbor-location": "workspace:*"
   },
   "peerDependencies": {
     "@semcore/base-components": "^16.0.0"
@@ -29,8 +29,8 @@
     "directory": "semcore/input"
   },
   "devDependencies": {
-    "@types/react": "18.0.21",
-    "@semcore/testing-utils": "1.0.0",
-    "@semcore/icon": "*"
+    "@semcore/icon": "^16.1.0",
+    "@semcore/testing-utils": "workspace:*",
+    "@types/react": "18.0.21"
   }
 }

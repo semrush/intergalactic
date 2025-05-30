@@ -91,9 +91,9 @@ type IntergalacticAccordionComponent<PropsExtending = {}> = (<
     AccordionContext & { value: Value },
     [handlers: AccordionHandlers]
   > &
-    PropsExtending,
+  PropsExtending,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
-  Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', AccordionProps>;
+Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', AccordionProps>;
 
 declare const Accordion: IntergalacticAccordionComponent & {
   Item: Intergalactic.Component<
@@ -114,7 +114,7 @@ declare const wrapAccordion: <PropsExtending extends {}>(
     props: Intergalactic.InternalTypings.UntypeRefAndTag<
       Intergalactic.InternalTypings.ComponentPropsNesting<IntergalacticAccordionComponent>
     > &
-      PropsExtending,
+    PropsExtending,
   ) => React.ReactNode,
 ) => IntergalacticAccordionComponent<PropsExtending>;
 export { wrapAccordion };

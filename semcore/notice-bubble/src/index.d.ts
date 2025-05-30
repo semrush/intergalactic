@@ -5,7 +5,7 @@ import { BoxProps } from '@semcore/flex-box';
 /** @deprecated */
 export interface INoticeBubbleContainerProps
   extends NoticeBubbleContainerProps,
-    UnknownProperties {}
+  UnknownProperties {}
 export type NoticeBubbleContainerProps = BoxProps &
   PortalProps & {
     /** Manager copy */

@@ -60,8 +60,8 @@ function OutsideClickRoot(props: IFunctionProps<IOutsideClickProps>) {
   });
 
   const toggleEvents = (status: boolean, outsideRoot: Element | Document | null) => {
-    const isModalRoot =
-      outsideRoot instanceof HTMLElement && outsideRoot.dataset.uiName === 'Modal.Overlay';
+    const isModalRoot
+      = outsideRoot instanceof HTMLElement && outsideRoot.dataset.uiName === 'Modal.Overlay';
     if (!isModalRoot) {
       return;
     }

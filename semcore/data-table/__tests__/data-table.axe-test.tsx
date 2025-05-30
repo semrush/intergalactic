@@ -151,8 +151,8 @@ test.describe('DataTable', () => {
     expect(violations).toEqual([]);
   });
   test('table in table with fixed column', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/docs/examples/table-in-table-with-fixed-column.tsx';
+    const standPath
+      = 'stories/components/data-table/docs/examples/table-in-table-with-fixed-column.tsx';
     const violations = await checkAxe(page, standPath);
 
     expect(violations).toEqual([]);

@@ -33,11 +33,11 @@ const getTrueOffsetParent = (element: HTMLElement): HTMLElement | null => {
   let offsetParent;
 
   if (
-    !isHTMLElement(element) ||
+    !isHTMLElement(element)
     // biome-ignore lint/suspicious/noAssignInExpressions: old code
-    !(offsetParent = element.offsetParent) ||
+    || !(offsetParent = element.offsetParent)
     // https://github.com/popperjs/popper-core/issues/837
-    (isFirefox() && getComputedStyle(offsetParent).position === 'fixed')
+    || (isFirefox() && getComputedStyle(offsetParent).position === 'fixed')
   ) {
     return null;
   }
@@ -56,9 +56,9 @@ export const getOffsetParent = (element: HTMLElement) => {
   }
 
   if (
-    offsetParent &&
-    getNodeName(offsetParent) === 'body' &&
-    getComputedStyle(offsetParent).position === 'static'
+    offsetParent
+    && getNodeName(offsetParent) === 'body'
+    && getComputedStyle(offsetParent).position === 'static'
   ) {
     return window;
   }

@@ -13,7 +13,7 @@ import type { DTRow } from '../Body/Row.types';
 export type DataTableAriaProps = Intergalactic.RequireAtLeastOne<{
   'aria-label'?: string;
   'aria-labelledby'?: string;
-  title?: string;
+  'title'?: string;
 }>;
 
 export type SortDirection = 'asc' | 'desc';
@@ -174,4 +174,4 @@ export type DataTableType = (<Data extends DataTableData, Tag extends Intergalac
     'tag' | 'children'
   >,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
-  Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', DataTableProps<any>>;
+Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', DataTableProps<any>>;

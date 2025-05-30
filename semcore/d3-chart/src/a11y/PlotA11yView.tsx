@@ -105,13 +105,13 @@ export const PlotA11yView: React.FC<A11yViewProps> = ({
       render={Box}
       tabIndex={0}
       aria-label={texts.label}
-      role={'dialog'}
+      role='dialog'
       __excludeProps={['data']}
     >
-      <button type={'button'} onClick={handleClose}>
+      <button type='button' onClick={handleClose}>
         {texts.close}
       </button>
-      <a href={'#'} onKeyDown={handleSkipKeyboard} onClick={handleSkip}>
+      <a href='#' onKeyDown={handleSkipKeyboard} onClick={handleSkip}>
         {texts.skipPlot}
       </a>
       <a href={`#${id}-data-table`} onKeyDown={handleGoToTableKeyboard} onClick={handleGoToTable}>

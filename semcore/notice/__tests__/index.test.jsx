@@ -199,7 +199,7 @@ describe('NoticeSmart', () => {
     const component = (
       <NoticeSmart
         theme='warning'
-        title={'The Link Building tool is under maintenance.'}
+        title='The Link Building tool is under maintenance.'
         aria-label='Maintenance notice'
         closable
       >

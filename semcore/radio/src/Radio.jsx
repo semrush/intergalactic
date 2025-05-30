@@ -114,14 +114,16 @@ class RadioRoot extends Component {
 
     return sstyled(styles)(
       <SRadio render={Box} tag='label' __excludeProps={['onChange', 'label', 'disabled']}>
-        {hasChildren ? (
-          <Children />
-        ) : (
-          <>
-            <Radio.Value />
-            <Radio.Text />
-          </>
-        )}
+        {hasChildren
+          ? (
+              <Children />
+            )
+          : (
+              <>
+                <Radio.Value />
+                <Radio.Text />
+              </>
+            )}
       </SRadio>,
     );
   }
@@ -132,6 +134,7 @@ class ValueRoot extends Component {
     includeInputProps: inputProps,
     defaultChecked: false,
   };
+
   static enhance = [resolveColorEnhance()];
   static displayName = 'Value';
   static contextType = RadioGroup[CONTEXT_COMPONENT];
@@ -217,6 +220,7 @@ class ValueRoot extends Component {
       this.asProps.hoistDisabled(this.asProps.disabled);
     }
   }
+
   componentDidMount() {
     if (this.asProps.rootDisabled !== this.asProps.disabled) {
       this.asProps.hoistDisabled(this.asProps.disabled);

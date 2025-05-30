@@ -157,8 +157,8 @@ class DonutRoot extends Component {
         .filter(([key, value]) => keys.includes(key) && value > 0)
         .sort(([a], [b]) => (keys.indexOf(a) > keys.indexOf(b) ? 1 : -1));
     }
-    const minValue =
-      pieData.reduce((acc, cur) => {
+    const minValue
+      = pieData.reduce((acc, cur) => {
         if (cur[1]) acc += cur[1];
         return acc;
       }, 0) / 100;
@@ -214,15 +214,16 @@ class DonutRoot extends Component {
         }).on('end', () => {
           this.canAnimatedHover = true;
         });
-      } else {
+      }
+      else {
         this.canAnimatedHover = true;
       }
     }, 0);
   };
 
   getPieProps(props, index) {
-    const { d3Arc, d3ArcOut, innerRadius, outerRadius, halfsize, resolveColor, uid, patterns } =
-      this.asProps;
+    const { d3Arc, d3ArcOut, innerRadius, outerRadius, halfsize, resolveColor, uid, patterns }
+      = this.asProps;
     const { active } = props;
     const data = this.arcs.find((arc) => arc.data[0] === props.dataKey);
     if (active) {

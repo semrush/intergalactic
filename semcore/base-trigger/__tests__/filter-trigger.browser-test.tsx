@@ -5,8 +5,8 @@ import { checkBackgroundColor, checkBorderColor, checkKeyboardNavigation } from 
 test.describe('Filter-trigger', () => {
   test.describe('Styles and a11y checks', () => {
     test('Verify main styles and props', async ({ page }) => {
-      const standPath =
-        'stories/components/base-trigger/tests/examples/filter-trigger-all-states.tsx';
+      const standPath
+        = 'stories/components/base-trigger/tests/examples/filter-trigger-all-states.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
       await page.setContent(htmlContent);
       const button = page.locator(
@@ -77,8 +77,8 @@ test.describe('Filter-trigger', () => {
     });
 
     test('Verify a11y attributes', async ({ page }) => {
-      const standPath =
-        'stories/components/base-trigger/tests/examples/filter-trigger-all-states.tsx';
+      const standPath
+        = 'stories/components/base-trigger/tests/examples/filter-trigger-all-states.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
 
       await page.setContent(htmlContent);
@@ -124,8 +124,8 @@ test.describe('Filter-trigger', () => {
     });
 
     test('Verify Hint appearing', async ({ page }) => {
-      const standPath =
-        'stories/components/base-trigger/tests/examples/filter-trigger-all-states.tsx';
+      const standPath
+        = 'stories/components/base-trigger/tests/examples/filter-trigger-all-states.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
       await page.setContent(htmlContent);
       const hint = page.locator('[data-test-id="tooltip-hint-text"]');
@@ -350,8 +350,8 @@ test.describe('Filter-trigger', () => {
 
   test.describe('Counter and On Clear props', () => {
     test('Verify Keyboard interactions and focus', async ({ page, browserName }) => {
-      const standPath =
-        'stories/components/filter-trigger/advanced/examples/advanced_with_counter.tsx';
+      const standPath
+        = 'stories/components/filter-trigger/advanced/examples/advanced_with_counter.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
 
       await page.setContent(htmlContent);
@@ -386,8 +386,8 @@ test.describe('Filter-trigger', () => {
     });
 
     test('Verify Mouse interactions', async ({ page, browserName }) => {
-      const standPath =
-        'stories/components/filter-trigger/advanced/examples/advanced_with_counter.tsx';
+      const standPath
+        = 'stories/components/filter-trigger/advanced/examples/advanced_with_counter.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
 
       await page.setContent(htmlContent);

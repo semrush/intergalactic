@@ -30,6 +30,7 @@ class PickerAbstract extends Component {
       size: 'm',
     };
   }
+
   static enhance = [i18nEnhance(localizedMessages)];
 
   static add = (date, amount, unit) => {
@@ -62,7 +63,8 @@ class PickerAbstract extends Component {
           if (visible) {
             if (value && value !== displayedPeriod) {
               this.handlers.displayedPeriod(value);
-            } else if (!value) {
+            }
+            else if (!value) {
               const { displayedPeriod, defaultDisplayedPeriod } = this.props;
               this.handlers.displayedPeriod(displayedPeriod || defaultDisplayedPeriod);
             }
@@ -124,13 +126,13 @@ class PickerAbstract extends Component {
     }
     if (day) {
       if (INTERACTION_TAGS.includes(e.target.tagName)) return;
-      const current_highlighted =
-        !highlighted[0] && !value
+      const current_highlighted
+        = !highlighted[0] && !value
           ? dayjs(highlighted[0] || displayedPeriod)
           : dayjs(displayedPeriod).add(day, this.keyStep);
-      const current_day =
-        getCurrentHighlightedDay(current_highlighted) ||
-        getCurrentHighlightedDay(dayjs(highlighted[0] || displayedPeriod));
+      const current_day
+        = getCurrentHighlightedDay(current_highlighted)
+          || getCurrentHighlightedDay(dayjs(highlighted[0] || displayedPeriod));
 
       if (current_day) {
         this.handlers.highlighted([current_day]);
@@ -197,7 +199,7 @@ class PickerAbstract extends Component {
     const { navigateStep } = this;
 
     return {
-      onClick: this.bindHandlerNavigateClick(1),
+      'onClick': this.bindHandlerNavigateClick(1),
       getI18nText,
       'aria-label': navigateStep === 'month' ? getI18nText('nextMonth') : getI18nText('nextYear'),
     };
@@ -208,7 +210,7 @@ class PickerAbstract extends Component {
     const { navigateStep } = this;
 
     return {
-      onClick: this.bindHandlerNavigateClick(-1),
+      'onClick': this.bindHandlerNavigateClick(-1),
       getI18nText,
       'aria-label': navigateStep === 'month' ? getI18nText('prevMonth') : getI18nText('prevYear'),
     };

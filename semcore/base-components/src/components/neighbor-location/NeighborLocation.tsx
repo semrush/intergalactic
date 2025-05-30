@@ -18,8 +18,10 @@ const Context = register.get(
 function childrenWithoutFragment(children: React.ReactNode) {
   return React.Children.toArray(children).reduce<React.ReactNode[]>((acc, node) => {
     if (React.isValidElement(node) && node.type === React.Fragment) {
+      // eslint-disable-next-line prefer-spread
       acc.push.apply(acc, childrenWithoutFragment(node.props.children));
-    } else {
+    }
+    else {
       acc.push(node);
     }
     return acc;
@@ -82,8 +84,8 @@ export class NeighborLocationRoot extends Component<NeighborLocationProps> {
   render() {
     // @ts-ignore
     const { Children, tag: Tag, controlsLength } = this.asProps;
-    this.controlsLengthRef.current =
-      controlsLength ?? childrenWithoutFragment(getOriginChildren(Children)).filter(isNode).length;
+    this.controlsLengthRef.current
+      = controlsLength ?? childrenWithoutFragment(getOriginChildren(Children)).filter(isNode).length;
     this.cacheChild.clear();
 
     if (Tag)

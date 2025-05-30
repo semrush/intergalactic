@@ -37,8 +37,8 @@ function uncontrolledProp(
     return isControlled(propValue)
       ? propValue
       : propName in self.state
-      ? self.state[propName]
-      : propDefaultValue;
+        ? self.state[propName]
+        : propDefaultValue;
   }
 
   return [

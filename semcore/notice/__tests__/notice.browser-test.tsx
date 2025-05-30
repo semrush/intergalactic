@@ -16,7 +16,8 @@ test.describe('Notice', () => {
 
       if (classAttribute?.includes('mute')) {
         expect(roleAttribute).toBeNull();
-      } else {
+      }
+      else {
         expect(roleAttribute).toBe('region');
       }
     }

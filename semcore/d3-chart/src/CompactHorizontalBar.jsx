@@ -37,6 +37,7 @@ class CompactHorizontalBarRoot extends Component {
       index,
     };
   }
+
   getBarBackgroundProps(_props, index) {
     const { data, scale } = this.asProps;
     const bar = this.computeBarData(data[index], index);
@@ -70,6 +71,7 @@ class CompactHorizontalBarRoot extends Component {
       index,
     };
   }
+
   getAnnotationProps(_props, index) {
     const { data, size } = this.asProps;
     const bar = this.computeBarData(data[index], index);
@@ -121,6 +123,7 @@ class CompactHorizontalBarRoot extends Component {
 
     return { children: formatted, formatted, percent };
   }
+
   getValueProps(_props, index) {
     const { data, x } = this.asProps;
     const value = data[index][x];
@@ -138,6 +141,7 @@ class CompactHorizontalBarRoot extends Component {
       render: index === 0,
     };
   }
+
   getTooltipProps(_props, index) {
     return {
       render: index === 0,
@@ -378,15 +382,16 @@ class Hover extends Component {
   generateGetBoundingClientRect(x = 0, y = 0) {
     return () => ({ width: 0, height: 0, top: y, right: x, bottom: y, left: x });
   }
+
   getIndex(point) {
     const { data, getBarData } = this.asProps;
     for (let i = 0; i < data.length; i++) {
       const bar = getBarData(i);
       if (
-        point[0] >= bar.x &&
-        point[0] <= bar.x + bar.fullWidth &&
-        point[1] >= bar.y &&
-        point[1] <= bar.y + bar.height
+        point[0] >= bar.x
+        && point[0] <= bar.x + bar.fullWidth
+        && point[1] >= bar.y
+        && point[1] <= bar.y + bar.height
       ) {
         return i;
       }

@@ -1,4 +1,3 @@
-
 import { createComponent } from '@semcore/core';
 import type { BaseChartProps } from './AbstractChart.type';
 import { scaleLinear } from 'd3-scale';

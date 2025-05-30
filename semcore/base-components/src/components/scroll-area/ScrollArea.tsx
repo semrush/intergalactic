@@ -90,7 +90,8 @@ class ScrollAreaRoot extends Component<ScrollAreaProps, {}, State, typeof Scroll
 
     if (typeof value === 'number') {
       propertyValue = value < 1 ? `${100 * value}%` : `${value}px`;
-    } else {
+    }
+    else {
       propertyValue = value;
     }
 
@@ -123,9 +124,9 @@ class ScrollAreaRoot extends Component<ScrollAreaProps, {}, State, typeof Scroll
     if (maxWidth && parent) {
       if (observeParentSize && wMax && parent.scrollWidth > parentRect.width) {
         /** even if width is like 100.486px we should round it to 100, not 101 */
-        const diff =
-          Math.round(Number(parent.scrollWidth.toFixed(1))) -
-          Math.round(Number(parentRect.width.toFixed(1)));
+        const diff
+          = Math.round(Number(parent.scrollWidth.toFixed(1)))
+            - Math.round(Number(parentRect.width.toFixed(1)));
 
         if (diff < maxWidth) {
           maxWidth = maxWidth - diff;
@@ -136,7 +137,8 @@ class ScrollAreaRoot extends Component<ScrollAreaProps, {}, State, typeof Scroll
 
       if (scrollWidth > maxWidth) {
         size.width = `${maxWidth}px`;
-      } else {
+      }
+      else {
         size.width = '100%';
       }
     }
@@ -144,9 +146,9 @@ class ScrollAreaRoot extends Component<ScrollAreaProps, {}, State, typeof Scroll
     if (maxHeight && parent) {
       if (observeParentSize && hMax && parent.scrollHeight > parentRect.height) {
         /** even if height is like 100.486px we should round it to 100, not 101 */
-        const diff =
-          Math.round(Number(parent.scrollHeight.toFixed(1))) -
-          Math.round(Number(parentRect.height.toFixed(1)));
+        const diff
+          = Math.round(Number(parent.scrollHeight.toFixed(1)))
+            - Math.round(Number(parentRect.height.toFixed(1)));
 
         if (diff < maxHeight) {
           maxHeight = maxHeight - diff;
@@ -156,7 +158,8 @@ class ScrollAreaRoot extends Component<ScrollAreaProps, {}, State, typeof Scroll
       }
       if (scrollHeight > maxHeight) {
         size.height = `${maxHeight}px`;
-      } else {
+      }
+      else {
         size.height = '100%';
       }
     }
@@ -197,9 +200,9 @@ class ScrollAreaRoot extends Component<ScrollAreaProps, {}, State, typeof Scroll
       const { keyboardFocused, leftOffset, rightOffset, topOffset, bottomOffset } = this.asProps;
 
       if (
-        e.target instanceof HTMLElement &&
-        this.$container &&
-        typeof this.$container.scrollTo === 'function'
+        e.target instanceof HTMLElement
+        && this.$container
+        && typeof this.$container.scrollTo === 'function'
       ) {
         const viewPort = this.$container.getBoundingClientRect();
         const element = e.target.getBoundingClientRect();
@@ -212,11 +215,11 @@ class ScrollAreaRoot extends Component<ScrollAreaProps, {}, State, typeof Scroll
         };
 
         if (viewPort) {
-          const outOfViewport =
-            Math.floor(element.top) >= viewPort.bottom - offset.bottom ||
-            Math.floor(element.bottom) <= viewPort.top + offset.top ||
-            Math.floor(element.left) >= viewPort.right - offset.right ||
-            Math.floor(element.right) <= viewPort.left + offset.left;
+          const outOfViewport
+            = Math.floor(element.top) >= viewPort.bottom - offset.bottom
+              || Math.floor(element.bottom) <= viewPort.top + offset.top
+              || Math.floor(element.left) >= viewPort.right - offset.right
+              || Math.floor(element.right) <= viewPort.left + offset.left;
 
           if (outOfViewport && keyboardFocused) {
             this.$container.scrollTo({
@@ -236,13 +239,16 @@ class ScrollAreaRoot extends Component<ScrollAreaProps, {}, State, typeof Scroll
     // not scroll
     if (roundedMaxScroll <= 0) {
       // start scroll
-    } else if (roundedScroll <= 0) {
+    }
+    else if (roundedScroll <= 0) {
       shadow = 'end';
       // end scroll
-    } else if (roundedScroll >= roundedMaxScroll) {
+    }
+    else if (roundedScroll >= roundedMaxScroll) {
       shadow = 'start';
       // median scroll
-    } else if (roundedScroll > 0) {
+    }
+    else if (roundedScroll > 0) {
       shadow = 'median';
     }
 
@@ -253,8 +259,8 @@ class ScrollAreaRoot extends Component<ScrollAreaProps, {}, State, typeof Scroll
   setShadowContainer = () => {
     if (!this.asProps.shadow || !this.$container || !this.$wrapper) return;
 
-    const { scrollWidth, clientWidth, scrollHeight, clientHeight, scrollLeft, scrollTop } =
-      this.$container;
+    const { scrollWidth, clientWidth, scrollHeight, clientHeight, scrollLeft, scrollTop }
+      = this.$container;
     const maxScrollRight = scrollWidth - clientWidth;
     const maxScrollBottom = scrollHeight - clientHeight;
 
@@ -273,8 +279,8 @@ class ScrollAreaRoot extends Component<ScrollAreaProps, {}, State, typeof Scroll
   }
 
   getBarProps() {
-    const { container, orientation, uid, leftOffset, rightOffset, topOffset, bottomOffset } =
-      this.asProps;
+    const { container, orientation, uid, leftOffset, rightOffset, topOffset, bottomOffset }
+      = this.asProps;
 
     return {
       container,
@@ -314,7 +320,8 @@ class ScrollAreaRoot extends Component<ScrollAreaProps, {}, State, typeof Scroll
       if (disableAutofocusToContent && this.hasAutoFocusToContent) {
         this.hasAutoFocusToContent = false;
         this.$inner?.removeEventListener('focusin', this.handleFocusIn);
-      } else if (!this.hasAutoFocusToContent) {
+      }
+      else if (!this.hasAutoFocusToContent) {
         this.hasAutoFocusToContent = true;
         this.$inner?.addEventListener('focusin', this.handleFocusIn);
       }
@@ -347,9 +354,9 @@ class ScrollAreaRoot extends Component<ScrollAreaProps, {}, State, typeof Scroll
     } = this.asProps;
     const { shadowVertical, shadowHorizontal } = this.state;
 
-    const advancedMode =
-      forcedAdvancedMode ||
-      isAdvanceMode(Children, [ScrollArea.Container.displayName, ScrollArea.Bar.displayName], true);
+    const advancedMode
+      = forcedAdvancedMode
+        || isAdvanceMode(Children, [ScrollArea.Container.displayName, ScrollArea.Bar.displayName], true);
 
     return sstyled(styles)(
       <SScrollArea
@@ -358,21 +365,23 @@ class ScrollAreaRoot extends Component<ScrollAreaProps, {}, State, typeof Scroll
         onScroll={this.handleScroll}
         __excludeProps={['tabIndex']}
       >
-        {advancedMode ? (
-          <Children />
-        ) : (
-          <>
-            <ScrollArea.Container tabIndex={tabIndex}>
+        {advancedMode
+          ? (
               <Children />
-            </ScrollArea.Container>
-            {(orientation === undefined || orientation === 'horizontal') && (
-              <ScrollArea.Bar orientation='horizontal' />
+            )
+          : (
+              <>
+                <ScrollArea.Container tabIndex={tabIndex}>
+                  <Children />
+                </ScrollArea.Container>
+                {(orientation === undefined || orientation === 'horizontal') && (
+                  <ScrollArea.Bar orientation='horizontal' />
+                )}
+                {(orientation === undefined || orientation === 'vertical') && (
+                  <ScrollArea.Bar orientation='vertical' />
+                )}
+              </>
             )}
-            {(orientation === undefined || orientation === 'vertical') && (
-              <ScrollArea.Bar orientation='vertical' />
-            )}
-          </>
-        )}
         {shadowVertical && (
           <SShadowVertical
             position={shadowVertical}

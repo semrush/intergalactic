@@ -50,7 +50,7 @@ describe('InputTags', () => {
     };
     await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
-  test("renders url's example", async ({ task }) => {
+  test('renders url\'s example', async ({ task }) => {
     const isValidEmail = (value: string) => /.+@.+\..+/i.test(value.toLowerCase());
 
     const component = (

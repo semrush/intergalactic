@@ -98,12 +98,12 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
 
     return {
       size,
-      id: `igc-${uid}-trigger`,
-      focusHint: visible && !disablePortal ? getI18nText('triggerHint') : undefined,
+      'id': `igc-${uid}-trigger`,
+      'focusHint': visible && !disablePortal ? getI18nText('triggerHint') : undefined,
       'aria-haspopup': 'true',
       'aria-expanded': visible ? 'true' : 'false',
-      onClick: this.handleClickTrigger,
-      ref: this.triggerRef,
+      'onClick': this.handleClickTrigger,
+      'ref': this.triggerRef,
     };
   }
 
@@ -116,17 +116,17 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
   }
 
   getPopperProps() {
-    const { uid, disablePortal, ignorePortalsStacking, interaction, highlightedIndex } =
-      this.asProps;
+    const { uid, disablePortal, ignorePortalsStacking, interaction, highlightedIndex }
+      = this.asProps;
 
     return {
-      ref: this.popperRef,
-      tabIndex: -1,
-      id: `igc-${uid}-popper`,
+      'ref': this.popperRef,
+      'tabIndex': -1,
+      'id': `igc-${uid}-popper`,
       disablePortal,
       ignorePortalsStacking,
-      focusMaster: interaction === 'click',
-      hideFocus: highlightedIndex !== null,
+      'focusMaster': interaction === 'click',
+      'hideFocus': highlightedIndex !== null,
       'use:autoFocus': false,
     };
   }
@@ -143,14 +143,14 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
     const role = this.childRole;
 
     return {
-      id: `igc-${uid}-option-${index}`,
+      'id': `igc-${uid}-option-${index}`,
       size,
       index,
-      onMouseEnter: () => {
+      'onMouseEnter': () => {
         this.handlers.selectedIndex(index);
       },
       role,
-      isMenuItemCheckbox: role === 'menuitemcheckbox',
+      'isMenuItemCheckbox': role === 'menuitemcheckbox',
       'aria-checked': role === 'menuitemcheckbox' || role === 'menuitemradio' ? false : undefined,
     };
   }
@@ -200,28 +200,34 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
     if (highlightedIndex == null) {
       if (selectedIndex !== -1) {
         innerHighlightedIndex = selectedIndex;
-      } else if (this.highlightedItemRef.current && this.prevHighlightedIndex !== null) {
-        innerHighlightedIndex =
-          this.prevHighlightedIndex > itemsLastIndex ? itemsLastIndex : this.prevHighlightedIndex;
-      } else {
+      }
+      else if (this.highlightedItemRef.current && this.prevHighlightedIndex !== null) {
+        innerHighlightedIndex
+          = this.prevHighlightedIndex > itemsLastIndex ? itemsLastIndex : this.prevHighlightedIndex;
+      }
+      else {
         innerHighlightedIndex = amount < 0 ? 0 : itemsLastIndex;
       }
-    } else {
+    }
+    else {
       innerHighlightedIndex = highlightedIndex > itemsLastIndex ? itemsLastIndex : highlightedIndex;
     }
 
     let newIndex = innerHighlightedIndex + amount;
     if (newIndex < 0) {
       newIndex = amount + itemsLastIndex + 1;
-    } else if (newIndex > itemsLastIndex) {
+    }
+    else if (newIndex > itemsLastIndex) {
       newIndex = newIndex - itemsLastIndex - 1;
     }
 
     if (this.itemProps[newIndex]?.disabled) {
       return this.getHighlightedIndex(amount < 0 ? amount - 1 : amount + 1);
-    } else if (!this.itemProps[newIndex]) {
+    }
+    else if (!this.itemProps[newIndex]) {
       return -1;
-    } else {
+    }
+    else {
       return newIndex;
     }
   }
@@ -236,10 +242,10 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
       // @ts-ignore
       this.highlightedItemRef.current = null;
       if (
-        this.popperRef.current &&
-        this.triggerRef.current &&
-        (document.activeElement === document.body || isFocusInside(this.popperRef.current)) &&
-        lastInteraction.isKeyboard()
+        this.popperRef.current
+        && this.triggerRef.current
+        && (document.activeElement === document.body || isFocusInside(this.popperRef.current))
+        && lastInteraction.isKeyboard()
       ) {
         setFocus(this.triggerRef.current);
       }
@@ -261,22 +267,24 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
       if (e.key === 'Enter' && targetTagName === 'TEXTAREA') return false;
     }
   }
+
   protected handlePreventPopperKeyDown(e: React.KeyboardEvent<HTMLElement>) {
     if (e.target instanceof Element) {
       const targetTagName = e.target.tagName;
 
       if (
-        (e.key === ' ' || e.key === 'Enter') &&
-        (targetTagName === 'BUTTON' || targetTagName === 'A')
+        (e.key === ' ' || e.key === 'Enter')
+        && (targetTagName === 'BUTTON' || targetTagName === 'A')
       )
         return false;
     }
   }
+
   protected handleOpenKeyDown(e: React.KeyboardEvent<HTMLElement>) {
     if (
-      this.asProps.visible !== true &&
-      ['ArrowDown', 'ArrowUp', 'Enter', ' '].includes(e.key) &&
-      !e.currentTarget.getAttribute('role')?.startsWith(this.childRole)
+      this.asProps.visible !== true
+      && ['ArrowDown', 'ArrowUp', 'Enter', ' '].includes(e.key)
+      && !e.currentTarget.getAttribute('role')?.startsWith(this.childRole)
     ) {
       if (['ArrowDown', 'ArrowUp'].includes(e.key)) {
         this.handlers.visible(true);
@@ -320,9 +328,9 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
       case ' ':
       case 'Enter':
         if (
-          this.highlightedItemRef.current &&
-          highlightedIndex !== null &&
-          !this.itemProps[highlightedIndex].disabled
+          this.highlightedItemRef.current
+          && highlightedIndex !== null
+          && !this.itemProps[highlightedIndex].disabled
         ) {
           e.stopPropagation();
           e.preventDefault();
@@ -336,9 +344,9 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
       const newHighlightedIndex = this.getHighlightedIndex(amount);
 
       if (
-        this.role === 'listbox' &&
-        this.triggerRef.current &&
-        !isFocusInside(this.triggerRef.current)
+        this.role === 'listbox'
+        && this.triggerRef.current
+        && !isFocusInside(this.triggerRef.current)
       ) {
         this.focusTrigger();
       }
@@ -369,11 +377,11 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
 
     return {
       size,
-      index: this.asProps.highlightedIndex,
-      tabIndex: -1,
-      ref: this.menuRef,
-      id: `igc-${uid}-list`,
-      role: this.role,
+      'index': this.asProps.highlightedIndex,
+      'tabIndex': -1,
+      'ref': this.menuRef,
+      'id': `igc-${uid}-list`,
+      'role': this.role,
       'aria-label': getAccessibleName(triggerElement),
     };
   }

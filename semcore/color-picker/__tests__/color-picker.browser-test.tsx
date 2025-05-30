@@ -38,7 +38,7 @@ test.describe('Color-picker', () => {
         'aria-expanded': 'false',
         'aria-label': 'Color field',
         'aria-haspopup': 'dialog',
-        role: 'combobox',
+        'role': 'combobox',
       });
       await expect(locators.trigger).not.toHaveAttribute('aria-controls', /popper/);
     });
@@ -49,7 +49,7 @@ test.describe('Color-picker', () => {
         'aria-expanded': 'true',
         'aria-label': 'Color field',
         'aria-haspopup': 'dialog',
-        role: 'combobox',
+        'role': 'combobox',
       });
       await expect(locators.trigger).toHaveAttribute('aria-controls', /popper/);
     });
@@ -58,14 +58,14 @@ test.describe('Color-picker', () => {
       await expect(locators.popper).toBeVisible();
       await expectAttributes(locators.popper, {
         'aria-label': 'Colors palette',
-        role: 'dialog',
+        'role': 'dialog',
       });
     });
 
     await test.step('Verify preset colors attributes', async () => {
       await expectAttributes(locators.colors, {
         'aria-label': 'Preset colors',
-        role: 'listbox',
+        'role': 'listbox',
         'aria-orientation': 'horizontal',
       });
     });
@@ -88,14 +88,14 @@ test.describe('Color-picker', () => {
 
     await test.step('Verify divider attributes', async () => {
       await expectAttributes(locators.divider, {
-        role: 'separator',
+        'role': 'separator',
         'aria-orientation': 'horizontal',
       });
     });
 
     await test.step('Verify palette manager attributes', async () => {
       await expectAttributes(locators.palette, {
-        role: 'listbox',
+        'role': 'listbox',
         'aria-orientation': 'horizontal',
         'aria-label': 'Custom preset colors',
       });
@@ -106,7 +106,7 @@ test.describe('Color-picker', () => {
 
       const addButtonSvg = locators.addButton.locator('svg');
       await expectAttributes(addButtonSvg, {
-        tabindex: '-1',
+        'tabindex': '-1',
         'aria-hidden': 'true',
       });
 
@@ -118,24 +118,24 @@ test.describe('Color-picker', () => {
       await expectAttributes(locators.addColor, {
         'aria-hidden': 'true',
         'aria-label': 'Add color to the list of custom colors',
-        role: 'button',
+        'role': 'button',
       });
 
       const addSvg = locators.addColor.locator('svg');
       await expectAttributes(addSvg, {
-        tabindex: '-1',
+        'tabindex': '-1',
         'aria-hidden': 'true',
       });
 
       await expectAttributes(locators.clearColor, {
         'aria-hidden': 'true',
         'aria-label': 'Clear custom color field',
-        role: 'button',
+        'role': 'button',
       });
 
       const clearSvg = locators.clearColor.locator('svg');
       await expectAttributes(clearSvg, {
-        tabindex: '-1',
+        'tabindex': '-1',
         'aria-hidden': 'true',
       });
     });
@@ -150,7 +150,7 @@ test.describe('Color-picker', () => {
       await expectAttributes(paletteItem, {
         'aria-label': '#000',
         'aria-selected': 'false',
-        role: 'option',
+        'role': 'option',
       });
 
       await paletteItem.click();
@@ -169,7 +169,7 @@ test.describe('Color-picker', () => {
 
       const paletteClose = paletteItem.locator('svg');
       await expectAttributes(paletteClose, {
-        tabindex: '-1',
+        'tabindex': '-1',
         'aria-hidden': 'true',
       });
     });
@@ -485,12 +485,12 @@ test.describe('Color-picker', () => {
 
     await expect(locators.popper).toBeVisible();
 
-    //verify input focused by click on add
+    // verify input focused by click on add
     await locators.addButton.click();
 
     await expect(locators.inputColor).toBeFocused();
 
-    //input validation
+    // input validation
     await locators.inputColor.fill('++');
     await page.waitForTimeout(300);
     await expect(page).toHaveScreenshot();
@@ -626,8 +626,8 @@ test.describe('Color-picker', () => {
   });
 
   test('Verify Colors and Palette.Manager props', async ({ page }) => {
-    const standPath =
-      'stories/components/color-picker/tests/examples/colors-and-palette-manager-colors-props.tsx';
+    const standPath
+      = 'stories/components/color-picker/tests/examples/colors-and-palette-manager-colors-props.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -742,8 +742,8 @@ test.describe('Color-picker', () => {
   test('Verify ColorPicker.Item PaletteManager.Item and ColorPicker.Input props', async ({
     page,
   }) => {
-    const standPath =
-      'stories/components/color-picker/tests/examples/input-color-and-items-props.tsx';
+    const standPath
+      = 'stories/components/color-picker/tests/examples/input-color-and-items-props.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);

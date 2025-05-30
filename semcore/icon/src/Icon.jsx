@@ -14,12 +14,12 @@ import styles from './style/icon.shadow.css';
 function Icon(props, ref) {
   const [SIcon, other] = useBox(
     {
-      tag: 'svg',
+      'tag': 'svg',
       'data-ui-name': 'Icon',
-      width: 16,
-      height: 16,
-      viewBox: '0 0 16 16',
-      focusable: props.interactive,
+      'width': 16,
+      'height': 16,
+      'viewBox': '0 0 16 16',
+      'focusable': props.interactive,
       ...props,
     },
     ref,
@@ -35,8 +35,8 @@ function Icon(props, ref) {
   const sstyles = sstyled(styles);
   const { className, style } = sstyles.cn('SIcon', {
     'use:color': color,
-    interactive: interactive,
-    keyboardFocused: keyboardFocused,
+    'interactive': interactive,
+    'keyboardFocused': keyboardFocused,
   });
 
   function onKeyDown(event) {

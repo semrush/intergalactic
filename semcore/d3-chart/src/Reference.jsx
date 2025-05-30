@@ -1,4 +1,3 @@
-
 import { Component, sstyled } from '@semcore/core';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import createElement from './createElement';

@@ -27,8 +27,8 @@ test.describe('Base styles Primary Table', () => {
     await checkStyles(keywordHeader, {
       'font-size': '12px',
       'line-height': 'normal',
-      color: 'rgb(25, 27, 35)',
-      padding: '12px',
+      'color': 'rgb(25, 27, 35)',
+      'padding': '12px',
       'background-color': 'rgb(244, 245, 249)',
       'border-bottom': '1px solid rgb(224, 225, 233)',
     });
@@ -40,9 +40,9 @@ test.describe('Base styles Primary Table', () => {
     await checkStyles(firstCell, {
       'font-size': '14px',
       'border-bottom': '1px solid rgb(224, 225, 233)',
-      color: 'rgb(25, 27, 35)',
+      'color': 'rgb(25, 27, 35)',
       'background-color': 'rgb(255, 255, 255)',
-      padding: '12px',
+      'padding': '12px',
       'min-height': '45px',
     });
 
@@ -89,8 +89,8 @@ test.describe('Base styles Primary Table', () => {
   });
 
   test('Verify styles when long text and icons in header', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/header-tests/header-content.tsx';
+    const standPath
+      = 'stories/components/data-table/tests/examples/header-tests/header-content.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -126,8 +126,8 @@ test.describe('Base styles Primary Table', () => {
     await checkStyles(keywordHeader, {
       'font-size': '12px',
       'line-height': 'normal',
-      color: 'rgb(25, 27, 35)',
-      padding: '12px 8px',
+      'color': 'rgb(25, 27, 35)',
+      'padding': '12px 8px',
       'background-color': 'rgb(244, 245, 249)',
       'border-bottom': '1px solid rgb(224, 225, 233)',
     });
@@ -136,8 +136,8 @@ test.describe('Base styles Primary Table', () => {
       'font-size': '14px',
       'border-bottom': '1px solid rgb(224, 225, 233)',
       'background-color': 'rgb(255, 255, 255)',
-      color: 'rgb(25, 27, 35)',
-      padding: '12px 8px',
+      'color': 'rgb(25, 27, 35)',
+      'padding': '12px 8px',
     });
 
     await firstCell.hover();
@@ -181,8 +181,8 @@ test.describe('Base styles Primary Table', () => {
   });
 
   test('Verify Column width when 1fr', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/header-tests/table-with-1tf-and diff-elements.tsx';
+    const standPath
+      = 'stories/components/data-table/tests/examples/header-tests/table-with-1tf-and diff-elements.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -243,8 +243,8 @@ test.describe('Base styles Secondary Table', () => {
     await checkStyles(keywordHeader, {
       'font-size': '12px',
       'line-height': 'normal',
-      color: 'rgb(25, 27, 35)',
-      padding: '8px',
+      'color': 'rgb(25, 27, 35)',
+      'padding': '8px',
       'background-color': 'rgb(255, 255, 255)',
       'border-bottom': '1px solid rgb(169, 171, 182)',
     });
@@ -256,9 +256,9 @@ test.describe('Base styles Secondary Table', () => {
     await checkStyles(firstCell, {
       'font-size': '14px',
       'border-bottom': '1px solid rgb(224, 225, 233)',
-      color: 'rgb(25, 27, 35)',
+      'color': 'rgb(25, 27, 35)',
       'background-color': 'rgb(255, 255, 255)',
-      padding: '8px',
+      'padding': '8px',
     });
 
     await firstCell.hover();
@@ -272,8 +272,8 @@ test.describe('Base styles Secondary Table', () => {
   });
 
   test('Verify Secondary padding when sideIndent l is set', async ({ page, browserName }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/header-tests/secondary-header.tsx';
+    const standPath
+      = 'stories/components/data-table/tests/examples/header-tests/secondary-header.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
     const table = page.locator('[data-ui-name="DataTable"]');
@@ -305,8 +305,8 @@ test.describe('Base styles Secondary Table', () => {
   });
 
   test('Verify styles when long text and icons in header', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/header-tests/secondary-header.tsx';
+    const standPath
+      = 'stories/components/data-table/tests/examples/header-tests/secondary-header.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -327,8 +327,8 @@ test.describe('Base styles Secondary Table', () => {
   });
 
   test('Verify sorting icon style and interactions ', async ({ page, browserName }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/header-tests/secondary-sorting.tsx';
+    const standPath
+      = 'stories/components/data-table/tests/examples/header-tests/secondary-sorting.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -364,8 +364,8 @@ test.describe('Base styles Secondary Table', () => {
   });
 
   test('Verify Column width when 1fr', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/header-tests/secondary-sorting.tsx';
+    const standPath
+      = 'stories/components/data-table/tests/examples/header-tests/secondary-sorting.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);

@@ -1,4 +1,3 @@
-
 import { Box } from '@semcore/flex-box';
 import autoFocusEnhance from '@semcore/core/lib/utils/enhances/autoFocusEnhance';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
@@ -17,6 +16,7 @@ class Textarea extends Component {
     minRows: 2,
     defaultValue: '',
   };
+
   static enhance = [autoFocusEnhance()];
   static style = style;
 
@@ -91,9 +91,9 @@ class Textarea extends Component {
       node.rows = maxRows;
     }
     if (
-      (minRows !== undefined || maxRows !== undefined) &&
-      (minRows === undefined || computed >= minRows) &&
-      (maxRows === undefined || computed <= maxRows)
+      (minRows !== undefined || maxRows !== undefined)
+      && (minRows === undefined || computed >= minRows)
+      && (maxRows === undefined || computed <= maxRows)
     ) {
       node.rows = computed;
     }
@@ -113,9 +113,9 @@ class Textarea extends Component {
   componentDidUpdate(prevProps) {
     const { minRows, maxRows, value } = this.asProps;
     if (
-      prevProps.minRows !== minRows ||
-      prevProps.maxRows !== maxRows ||
-      prevProps.value !== value
+      prevProps.minRows !== minRows
+      || prevProps.maxRows !== maxRows
+      || prevProps.value !== value
     ) {
       this.calculateRows();
     }

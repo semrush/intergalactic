@@ -41,27 +41,39 @@ describe('FormatText', () => {
         </blockquote>
         <h1>test</h1>
         <h1>
-          test <small>small</small>
+          test
+          {' '}
+          <small>small</small>
         </h1>
         <h2>test</h2>
         <h2>
-          test <small>small</small>
+          test
+          {' '}
+          <small>small</small>
         </h2>
         <h3>test</h3>
         <h3>
-          test <small>small</small>
+          test
+          {' '}
+          <small>small</small>
         </h3>
         <h4>test</h4>
         <h4>
-          test <small>small</small>
+          test
+          {' '}
+          <small>small</small>
         </h4>
         <h5>test</h5>
         <h5>
-          test <small>small</small>
+          test
+          {' '}
+          <small>small</small>
         </h5>
         <h6>test</h6>
         <h6>
-          test <small>small</small>
+          test
+          {' '}
+          <small>small</small>
         </h6>
         <ul>
           <li>doggo 1</li>

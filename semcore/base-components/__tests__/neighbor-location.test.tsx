@@ -77,7 +77,7 @@ describe('neighbor-location', () => {
         {[]}
         {true}
         {false}
-        {''}
+
         <NeighborLocationItem data-testid='1' />
         <NeighborLocationItem />
       </NeighborLocation>,

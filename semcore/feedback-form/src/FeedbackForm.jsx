@@ -1,4 +1,3 @@
-
 import { Field, Form } from 'react-final-form';
 import createFocusDecorator from 'final-form-focus';
 
@@ -75,8 +74,7 @@ class FeedbackForm extends Component {
                 {typeof Children.origin === 'function' ? Children.origin(api) : <Children />}
               </SFeedbackForm>
             </SpinContainer>,
-          )
-        }
+          )}
       </Form>
     );
   }

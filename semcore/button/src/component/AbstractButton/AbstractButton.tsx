@@ -116,14 +116,14 @@ export abstract class AbstractButton extends Component<Props, {}, {}> {
     const buttonAriaLabel = title ?? ariaLabel ?? this.state.ariaLabelledByContent ?? '';
 
     const buttonProps: Record<string, any> = {
-      type: 'button',
-      tag: 'button',
+      'type': 'button',
+      'tag': 'button',
       disabled,
       'use:theme': useTheme,
-      ref: this.containerRef,
+      'ref': this.containerRef,
       'text-color': this.getTextColor(),
       'aria-busy': loading,
-      __excludeProps: ['title'],
+      '__excludeProps': ['title'],
     };
 
     const hintProps = {
@@ -141,17 +141,21 @@ export abstract class AbstractButton extends Component<Props, {}, {}> {
             <>
               {/* @ts-ignore */}
               <SInner tag='span' loading={loading}>
-                {AddonLeft ? (
-                  <Button.Addon>
-                    <AddonLeft />
-                  </Button.Addon>
-                ) : null}
+                {AddonLeft
+                  ? (
+                      <Button.Addon>
+                        <AddonLeft />
+                      </Button.Addon>
+                    )
+                  : null}
                 {addonTextChildren(Children, Button.Text, Button.Addon)}
-                {AddonRight ? (
-                  <Button.Addon>
-                    <AddonRight />
-                  </Button.Addon>
-                ) : null}
+                {AddonRight
+                  ? (
+                      <Button.Addon>
+                        <AddonRight />
+                      </Button.Addon>
+                    )
+                  : null}
               </SInner>
               {loading && (
                 <SSpin tag='span'>

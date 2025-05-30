@@ -27,7 +27,8 @@ test.describe('Radio with group', () => {
       const value = await input.getAttribute('value');
       if (value === '1') {
         await expect(input).toBeChecked();
-      } else {
+      }
+      else {
         await expect(input).not.toBeChecked();
       }
 
@@ -195,7 +196,8 @@ test.describe('Radio with group', () => {
         await expect(radios.first().locator('[data-ui-name="Radio.Value"]')).toBeChecked();
         await expect(radios.first().locator('[data-ui-name="Radio.Value"]')).toBeFocused();
       });
-    } else {
+    }
+    else {
       await test.step('Verify focus and selection changes by Up/Down arrows', async () => {
         await page.keyboard.press('ArrowDown');
         await page.keyboard.press('ArrowDown');
@@ -379,7 +381,8 @@ test.describe('Radio with Additional input props', () => {
         // BUG!
         await page.keyboard.press('Tab');
         await page.keyboard.press('Space');
-      } else await page.keyboard.press('ArrowDown');
+      }
+      else await page.keyboard.press('ArrowDown');
 
       await expect(radioGroup).toHaveAttribute('value', '2');
 
@@ -428,7 +431,8 @@ test.describe('Radio with Additional input props', () => {
         await expect(radios.nth(1).locator('[data-ui-name="Radio.Value"]')).toBeChecked();
         await expect(radios.nth(1).locator('[data-ui-name="Radio.Value"]')).toBeFocused();
       });
-    } else {
+    }
+    else {
       await test.step('Verify focus and selection changes in Firefox', async () => {
         await page.keyboard.press('Tab');
         await expect(radioGroup).not.toHaveAttribute('value', '');
@@ -449,8 +453,8 @@ test.describe('Radio with Additional input props', () => {
   });
 
   test('Verify actions when interactive element in text2', async ({ page, browserName }) => {
-    const standPath =
-      'stories/components/radio/tests/examples/additional_props_for_input_tooltip.tsx';
+    const standPath
+      = 'stories/components/radio/tests/examples/additional_props_for_input_tooltip.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
     const radioGroup = page.locator('[data-ui-name="RadioGroup"]');
@@ -468,7 +472,8 @@ test.describe('Radio with Additional input props', () => {
         await page.keyboard.press('Tab');
         await page.keyboard.press('Tab');
         await page.keyboard.press('Tab');
-      } else await page.keyboard.press('Tab');
+      }
+      else await page.keyboard.press('Tab');
       await expect(radioGroup).not.toHaveAttribute('value', '');
       await expect(page.locator('[data-ui-name="DescriptionTooltip.Trigger"]')).toBeFocused();
       await expect(radios.first().locator('[data-ui-name="Radio.Value"]')).not.toBeChecked();

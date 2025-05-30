@@ -147,9 +147,9 @@ const useFocusLockHook = (
           : [trapRef.current, ...focusLockAllTraps];
         if (isFocusInside(trapNodes, focusMovedTo)) return;
         if (
-          typeof returnFocusTo === 'object' &&
-          returnFocusTo?.current &&
-          isFocusInside(returnFocusTo.current)
+          typeof returnFocusTo === 'object'
+          && returnFocusTo?.current
+          && isFocusInside(returnFocusTo.current)
         )
           return;
 
@@ -254,7 +254,8 @@ const useFocusLockHook = (
       if (!focusMaster) return;
       if (focusMastersStack[focusMastersStack.length - 1] === trapRef.current) {
         focusMastersStack.pop();
-      } else {
+      }
+      else {
         focusMastersStack.splice(focusMastersStack.indexOf(trapRef.current!), 1);
       }
     };
@@ -279,9 +280,11 @@ const establishHookAsGlobal = () => {
 };
 if (!(globalThis as any)[globalFocusLockHookKey]) {
   establishHookAsGlobal();
-} else if (typeof (globalThis as any)[globalFocusLockHookKey].version !== 'number') {
+}
+else if (typeof (globalThis as any)[globalFocusLockHookKey].version !== 'number') {
   establishHookAsGlobal();
-} else {
+}
+else {
   const { version: theirVersion, usedInComponents } = (globalThis as any)[globalFocusLockHookKey];
   if (focusLockVersion > theirVersion && usedInComponents.size === 0) {
     establishHookAsGlobal();

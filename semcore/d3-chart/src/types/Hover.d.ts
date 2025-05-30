@@ -33,7 +33,7 @@ type HoverTooltip = (<X, Y>(
     hideHoverLine?: boolean | ((xIndex: number | null, yIndex: number | null) => boolean);
   } & Omit<BoxProps, 'children'>,
 ) => ReturnEl) &
-  TooltipTypeBase;
+TooltipTypeBase;
 
 type HoverContext = {
   /** Index in `data` array of the current item */

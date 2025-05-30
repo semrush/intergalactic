@@ -51,17 +51,17 @@ export type TooltipHintProps = Intergalactic.InternalTypings.EfficientOmit<
   PopperProps,
   'interaction'
 > &
-  PopperTriggerProps & {
-    /**
+PopperTriggerProps & {
+  /**
      * Tooltip text
      */
-    title?: string;
-    /**
+  title?: string;
+  /**
      * Tooltip theme. You can use the default themes or create your own
      * @default default
      */
-    theme?: 'default' | 'invert';
-  };
+  theme?: 'default' | 'invert';
+};
 export type TooltipHintPopperProps = Intergalactic.InternalTypings.EfficientOmit<
   HintProps,
   'title'
@@ -81,20 +81,20 @@ export type DescriptionTooltipProps = Intergalactic.InternalTypings.EfficientOmi
   PopperProps,
   'interaction'
 > &
-  PopperTriggerProps & {
-    /**
+PopperTriggerProps & {
+  /**
      * Tooltip theme. You can use the default themes or create your own
      * @default default
      */
-    theme?: 'default' | 'warning' | 'invert';
+  theme?: 'default' | 'warning' | 'invert';
 
-    /**
+  /**
      * Hover interaction means that popper will be shown on mouse hover or keyboard focus.
      * Click interactions means that popper will be shown on mouse click or keyboard Space/Enter keydown.
      * @default click
      */
-    interaction?: 'hover' | 'click';
-  };
+  interaction?: 'hover' | 'click';
+};
 
 /**
  * DescriptionTooltipPopper must have an accessible name (aria-dialog-name).
@@ -103,7 +103,7 @@ export type DescriptionTooltipProps = Intergalactic.InternalTypings.EfficientOmi
 type DescriptionTooltipPopperAriaProps = Intergalactic.RequireAtLeastOne<{
   'aria-label'?: string;
   'aria-labelledby'?: string;
-  title?: string;
+  'title'?: string;
 }>;
 
 export type DescriptionTooltipPopperProps = DescriptionTooltipProps &

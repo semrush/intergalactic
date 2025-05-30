@@ -1,4 +1,3 @@
-
 import { createComponent, Component } from '@semcore/core';
 import propsForElement from '@semcore/core/lib/utils/propsForElement';
 
@@ -12,8 +11,8 @@ class AnimatedClipPath extends Component {
 
   render() {
     const { id, transition: _transition, tag: Tag, style: _style, className: _className, ...other } = this.asProps;
-    const duration =
-      typeof this.asProps.duration === 'number'
+    const duration
+      = typeof this.asProps.duration === 'number'
         ? `${this.asProps.duration}ms`
         : this.asProps.duration;
     return (

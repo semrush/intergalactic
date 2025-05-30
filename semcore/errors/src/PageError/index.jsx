@@ -1,4 +1,3 @@
-
 import Button from '@semcore/button';
 import { createComponent, Component } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';

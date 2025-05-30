@@ -131,9 +131,9 @@ type IntergalacticSelectComponent<PropsExtending = {}> = (<
     SelectContext,
     [handlers: SelectHandlers]
   > &
-    PropsExtending,
+  PropsExtending,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
-  Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', SelectProps>;
+Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', SelectProps>;
 
 declare const Select: IntergalacticSelectComponent & {
   Trigger: Intergalactic.Component<
@@ -178,7 +178,7 @@ declare const wrapSelect: <PropsExtending extends {}>(
     props: Intergalactic.InternalTypings.UntypeRefAndTag<
       Intergalactic.InternalTypings.ComponentPropsNesting<IntergalacticSelectComponent>
     > &
-      PropsExtending,
+    PropsExtending,
   ) => React.ReactNode,
 ) => IntergalacticSelectComponent<PropsExtending>;
 

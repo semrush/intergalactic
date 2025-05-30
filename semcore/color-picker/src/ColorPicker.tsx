@@ -117,6 +117,7 @@ class ColorPickerRoot extends Component<RootAsProps> {
       getI18nText,
     };
   }
+
   getItemProps(props: ItemAsProps) {
     const { value, displayLabel, getI18nText } = this.asProps;
     const isSelected = value === props.value;

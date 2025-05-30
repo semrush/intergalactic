@@ -9,7 +9,7 @@ export interface IAreaProps extends AreaProps, UnknownProperties {}
 export type AreaProps = Context & {
   /** Field name from `data` array item for the XAxis */
   x?: string;
-  /** Field name from `data` array item for the YAxis*/
+  /** Field name from `data` array item for the YAxis */
   y?: string;
   /** Line color */
   color?: string;

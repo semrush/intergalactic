@@ -59,8 +59,8 @@ test.describe('Styles', () => {
   });
 
   test('Verify styles when orientation use and theme props set', async ({ page }) => {
-    const standPath =
-      'stories/components/divider/tests/examples/orientation-use-theme-variations.tsx';
+    const standPath
+      = 'stories/components/divider/tests/examples/orientation-use-theme-variations.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
@@ -92,8 +92,8 @@ test.describe('Styles', () => {
 
 test.describe('Attributes and interactions', () => {
   test('Verify styles when orientation use and theme props set', async ({ page }) => {
-    const standPath =
-      'stories/components/divider/tests/examples/orientation-use-theme-variations.tsx';
+    const standPath
+      = 'stories/components/divider/tests/examples/orientation-use-theme-variations.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
@@ -129,16 +129,16 @@ test.describe('Attributes and interactions', () => {
 
 test.describe('Complex examples', () => {
   test('Verify horizontal divider renders in complex examples', async ({ page }) => {
-    const standPath =
-      'stories/patterns/ux-patterns/summary/docs/examples/default-summary-example.tsx';
+    const standPath
+      = 'stories/patterns/ux-patterns/summary/docs/examples/default-summary-example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
     await expect(page).toHaveScreenshot();
   });
 
   test('Verify vertical divider renders in complex examples', async ({ page }) => {
-    const standPath =
-      'stories/patterns/ux-patterns/summary/docs/examples/summary-with-minitrend.tsx';
+    const standPath
+      = 'stories/patterns/ux-patterns/summary/docs/examples/summary-with-minitrend.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
     await expect(page).toHaveScreenshot();

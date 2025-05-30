@@ -39,7 +39,7 @@ type BulkTextareaComponent = (<T extends string | string[]>(
     BoxProps & BulkTextareaProps<T>
   >,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
-  Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', {}>;
+Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', {}>;
 
 export type BulkTextareaType<T extends string | string[]> = BulkTextareaComponent & {
   InputField: Intergalactic.Component<

@@ -54,7 +54,8 @@ await Promise.all(
       }
       if (illustrationPrimaryColor === undefined) {
         illustrationPrimaryColor = color;
-      } else if (illustrationPrimaryColor !== color) {
+      }
+      else if (illustrationPrimaryColor !== color) {
         throw new Error(
           `Illustration ${illustration} has multiple primary colors: ${illustrationPrimaryColor} and ${color}`,
         );
@@ -172,7 +173,8 @@ export default Illustration;
 
     try {
       await fs.access(illustration);
-    } catch {
+    }
+    catch {
       await fs.mkdir(illustration);
     }
 

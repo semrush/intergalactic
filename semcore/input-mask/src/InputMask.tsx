@@ -123,7 +123,7 @@ class Value extends Component<InputMaskValueProps, {}, {}, typeof Value.enhance>
     keepCharPositions: false,
     aliases: {
       '9': /\d/,
-      a: /[a-zA-Zа-яА-Я]/,
+      'a': /[a-zA-Zа-яА-Я]/,
       '*': /[\da-zA-Zа-яА-Я]/,
     },
     maskOnlySymbols: {
@@ -141,10 +141,10 @@ class Value extends Component<InputMaskValueProps, {}, {}, typeof Value.enhance>
   state: {
     lastConformed:
       | {
-          all: string;
-          userInput: string;
-          maskOnly: string;
-        }
+        all: string;
+        userInput: string;
+        maskOnly: string;
+      }
       | undefined;
     maskWidth: number | undefined;
   } = {
@@ -234,7 +234,8 @@ class Value extends Component<InputMaskValueProps, {}, {}, typeof Value.enhance>
           if (typeof piped === 'object' && piped) {
             conformedValue = piped.value;
             indexesOfPipedChars = piped.indexesOfPipedChars;
-          } else {
+          }
+          else {
             conformedValue = piped;
           }
         }
@@ -242,8 +243,8 @@ class Value extends Component<InputMaskValueProps, {}, {}, typeof Value.enhance>
         let lastNonMaskCharPosition = 0;
         for (let i = 0; i < conformedValue?.length; i++) {
           if (
-            !(this.asProps.maskOnlySymbols as any)[conformedValue[i]] &&
-            /\w/.test(conformedValue[i])
+            !(this.asProps.maskOnlySymbols as any)[conformedValue[i]]
+            && /\w/.test(conformedValue[i])
           )
             lastNonMaskCharPosition = i + 1;
         }
@@ -253,7 +254,8 @@ class Value extends Component<InputMaskValueProps, {}, {}, typeof Value.enhance>
             this.setState({ lastConformed: conformedValueBeforPiping });
             if (indexesOfPipedChars !== null) {
               return { value: conformedValueBeforPiping, indexesOfPipedChars };
-            } else {
+            }
+            else {
               return conformedValueBeforPiping;
             }
           }
@@ -261,7 +263,8 @@ class Value extends Component<InputMaskValueProps, {}, {}, typeof Value.enhance>
           this.setState({ lastConformed: this.prevConfirmedValue });
           if (indexesOfPipedChars !== null) {
             return { value: conformedValue, indexesOfPipedChars };
-          } else {
+          }
+          else {
             return conformedValue;
           }
         }
@@ -275,7 +278,8 @@ class Value extends Component<InputMaskValueProps, {}, {}, typeof Value.enhance>
 
         if (indexesOfPipedChars !== null) {
           return { value: userInput, indexesOfPipedChars };
-        } else {
+        }
+        else {
           return userInput;
         }
       },
@@ -367,11 +371,13 @@ class Value extends Component<InputMaskValueProps, {}, {}, typeof Value.enhance>
                   {this.state.lastConformed && (
                     <SMaskHidden data-content={this.state.lastConformed.userInput} />
                   )}
-                  {this.state.lastConformed ? (
-                    <SMaskVisible data-content={this.state.lastConformed.maskOnly} />
-                  ) : (
-                    <SPlaceholder data-content={placeholder} />
-                  )}
+                  {this.state.lastConformed
+                    ? (
+                        <SMaskVisible data-content={this.state.lastConformed.maskOnly} />
+                      )
+                    : (
+                        <SPlaceholder data-content={placeholder} />
+                      )}
                 </SMask>
                 <SValue
                   render={Input.Value}
@@ -390,8 +396,7 @@ class Value extends Component<InputMaskValueProps, {}, {}, typeof Value.enhance>
               </SInputMask>
               <ScreenReaderOnly id={`hint-${uid}`}>{title}</ScreenReaderOnly>
             </>,
-          ) as React.ReactElement
-        }
+          ) as React.ReactElement}
       </NeighborLocation.Detect>
     );
   }

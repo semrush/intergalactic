@@ -20,8 +20,8 @@ export default function syncScroll() {
   }
 
   function syncScrollPosition(scrolledNode: HTMLElement, node: HTMLElement) {
-    const { scrollTop, scrollHeight, clientHeight, scrollLeft, scrollWidth, clientWidth } =
-      scrolledNode;
+    const { scrollTop, scrollHeight, clientHeight, scrollLeft, scrollWidth, clientWidth }
+      = scrolledNode;
 
     const scrollTopOffset = scrollHeight - clientHeight;
     const scrollLeftOffset = scrollWidth - clientWidth;

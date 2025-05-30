@@ -24,7 +24,7 @@ export type EnhancedWithKeyboardFocusInjectedProps = {
 /** @deprecated */
 export interface IEnhancedWithKeyboardFocusProps
   extends EnhancedWithKeyboardFocusProps,
-    UnknownProperties {}
+  UnknownProperties {}
 export type EnhancedWithKeyboardFocusProps = {
   keyboardFocused?: boolean;
   tabIndex?: number;
@@ -36,7 +36,7 @@ export type EnhancedWithKeyboardFocusProps = {
 /** @deprecated */
 export interface IEnhancedWithKeyboardFocusState
   extends EnhancedWithKeyboardFocusState,
-    UnknownProperties {}
+  UnknownProperties {}
 export type EnhancedWithKeyboardFocusState = {
   keyboardFocused: boolean;
 };

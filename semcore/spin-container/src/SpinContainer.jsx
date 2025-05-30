@@ -1,4 +1,3 @@
-
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import { FadeInOut } from '@semcore/animation';
 import Spin from '@semcore/spin';
@@ -16,6 +15,7 @@ class SpinContainerRoot extends Component {
     theme: 'dark',
     duration: 200,
   };
+
   static enhance = [resolveColorEnhance()];
 
   state = {
@@ -31,7 +31,8 @@ class SpinContainerRoot extends Component {
 
       if (loading) {
         this.setState({ inert: true });
-      } else {
+      }
+      else {
         this.inertTimer = setTimeout(() => {
           this.setState({ inert: false });
         }, this.asProps.duration + 50);
@@ -63,21 +64,23 @@ class SpinContainerRoot extends Component {
     const SSpinContainer = Root;
     const { styles, Children, forcedAdvancedMode } = this.asProps;
 
-    const advancedMode =
-      forcedAdvancedMode || isAdvanceMode(Children, [SpinContainer.Overlay.displayName]);
+    const advancedMode
+      = forcedAdvancedMode || isAdvanceMode(Children, [SpinContainer.Overlay.displayName]);
 
     return sstyled(styles)(
       <SSpinContainer render={Box}>
-        {advancedMode ? (
-          <Children />
-        ) : (
-          <>
-            <SpinContainer.Content>
+        {advancedMode
+          ? (
               <Children />
-            </SpinContainer.Content>
-            <SpinContainer.Overlay />
-          </>
-        )}
+            )
+          : (
+              <>
+                <SpinContainer.Content>
+                  <Children />
+                </SpinContainer.Content>
+                <SpinContainer.Overlay />
+              </>
+            )}
       </SSpinContainer>,
     );
   }

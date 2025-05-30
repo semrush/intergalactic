@@ -1,4 +1,3 @@
-
 import { createComponent, Component, Root, sstyled, type ComponentType } from '@semcore/core';
 import { Box, type BoxProps } from '@semcore/flex-box';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
@@ -93,7 +92,7 @@ class DonutRoot extends Component<ScoreDonutProps, {}, {}, typeof DonutRoot.enha
                   strokeDashoffset={valueStrokeDasharray}
                 >
                   <animate
-                    attributeName={'stroke-dashoffset'}
+                    attributeName='stroke-dashoffset'
                     values={`0;${valueStrokeDasharray}`}
                   />
                 </circle>
@@ -117,8 +116,8 @@ class DonutRoot extends Component<ScoreDonutProps, {}, {}, typeof DonutRoot.enha
   }
 }
 
-export const ScoreDonut: ComponentType<ScoreDonutProps, {}, {}, Enhances> =
-  createComponent(DonutRoot);
+export const ScoreDonut: ComponentType<ScoreDonutProps, {}, {}, Enhances>
+  = createComponent(DonutRoot);
 
 ScoreDonut.displayName = 'MiniChart.ScoreDonut';
 

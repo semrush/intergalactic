@@ -98,6 +98,7 @@ class InlineInputBase extends Component<RootAsProps> {
     i18n: localizedMessages,
     locale: 'en',
   };
+
   static style = style;
 
   rootRef = React.createRef<HTMLElement>();
@@ -111,6 +112,7 @@ class InlineInputBase extends Component<RootAsProps> {
     this.lastMouseDownPosition = { x: event.clientX, y: event.clientY };
     this.lastHandledKeyboardEvent = -1;
   };
+
   handleDocumentKeyDown = () => {
     this.lastMouseDownPosition = null;
   };
@@ -177,6 +179,7 @@ class InlineInputBase extends Component<RootAsProps> {
     this.inputRef.current?.stepDown?.(event as any);
     this.inputHandlersRef.current?.value(this.inputRef.current?.value, event);
   };
+
   getNumberValueProps() {
     const numberFormatter = new Intl.NumberFormat(this.asProps.locale, { style: 'decimal' });
 
@@ -188,6 +191,7 @@ class InlineInputBase extends Component<RootAsProps> {
       decrement: this.decrement,
     };
   }
+
   getNumberControlsProps() {
     const { getI18nText } = this.asProps;
     return {
@@ -208,6 +212,7 @@ class InlineInputBase extends Component<RootAsProps> {
   ) => {
     this.asProps.onConfirm?.(text, event);
   };
+
   handleCancel = (
     prevText: string,
     event: React.MouseEvent | React.FocusEvent | React.KeyboardEvent,
@@ -267,6 +272,7 @@ class Value extends Component<RootAsProps> {
   static defaultProps = {
     defaultValue: '',
   };
+
   static enhance = [autoFocusEnhance()];
   static hoistProps = ['disabled'];
 
@@ -322,18 +328,20 @@ const ConfirmControl: React.FC<ConfirmControlAsProps> = (props) => {
 
   return sstyled(props.styles)(
     <SAddon render={Box} onKeyDown={handleKeydown}>
-      {hasChildren ? (
-        <Children />
-      ) : (
-        <ButtonLink
-          addonLeft={(props.icon as any) ?? CheckM}
-          use={'secondary'}
-          onClick={handleConfirm}
-          className={sConfirmIconStyles.className}
-          style={sConfirmIconStyles.style}
-          aria-label={title}
-        />
-      )}
+      {hasChildren
+        ? (
+            <Children />
+          )
+        : (
+            <ButtonLink
+              addonLeft={(props.icon as any) ?? CheckM}
+              use='secondary'
+              onClick={handleConfirm}
+              className={sConfirmIconStyles.className}
+              style={sConfirmIconStyles.style}
+              aria-label={title}
+            />
+          )}
     </SAddon>,
   ) as React.ReactElement;
 };
@@ -371,18 +379,20 @@ const CancelControl: React.FC<CancelControlAsProps> = (props) => {
 
   return sstyled(props.styles)(
     <SAddon render={Box} onKeyDown={handleKeydown}>
-      {hasChildren ? (
-        <Children />
-      ) : (
-        <ButtonLink
-          use={'secondary'}
-          addonLeft={(props.icon as any) ?? CloseM}
-          onClick={handleCancel}
-          className={sCancelIconStyles.className}
-          style={sCancelIconStyles.style}
-          aria-label={title}
-        />
-      )}
+      {hasChildren
+        ? (
+            <Children />
+          )
+        : (
+            <ButtonLink
+              use='secondary'
+              addonLeft={(props.icon as any) ?? CloseM}
+              onClick={handleCancel}
+              className={sCancelIconStyles.className}
+              style={sCancelIconStyles.style}
+              aria-label={title}
+            />
+          )}
     </SAddon>,
   ) as React.ReactElement;
 };

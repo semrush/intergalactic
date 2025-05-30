@@ -28,6 +28,7 @@ class TabLineRoot extends Component {
     underlined: true,
     behavior: 'auto',
   };
+
   static enhance = [a11yEnhance(optionsA11yEnhance)];
   state = { animation: null };
   prevValue = undefined;
@@ -43,17 +44,19 @@ class TabLineRoot extends Component {
 
   componentDidUpdate() {
     if (
-      this.prevValue !== null &&
-      this.asProps.value !== null &&
-      this.prevValue !== this.asProps.value
+      this.prevValue !== null
+      && this.asProps.value !== null
+      && this.prevValue !== this.asProps.value
     ) {
       this.animate();
     }
     this.prevValue = this.asProps.value;
   }
+
   componentDidMount() {
     this.prevValue = this.asProps.value;
   }
+
   componentWillUnmount() {
     clearTimeout(this.animationStartTimeout);
   }
@@ -84,6 +87,7 @@ class TabLineRoot extends Component {
       this.setState({ animation: { ...this.state.animation, started: true } });
     }
   };
+
   handleAnimationEnd = () => {
     this.setState({ animation: null });
   };
@@ -97,11 +101,11 @@ class TabLineRoot extends Component {
     const isSelected = value === props.value;
     return {
       size,
-      selected: isSelected,
-      onClick: this.bindHandlerClick(props.value),
-      tabIndex: isSelected ? 0 : -1,
+      'selected': isSelected,
+      'onClick': this.bindHandlerClick(props.value),
+      'tabIndex': isSelected ? 0 : -1,
       'aria-selected': isSelected,
-      ref: (node) => {
+      'ref': (node) => {
         this.itemRefs[props.value] = node;
       },
     };
@@ -118,7 +122,8 @@ class TabLineRoot extends Component {
         },
         onTransitionEnd: this.handleAnimationEnd,
       };
-    } else {
+    }
+    else {
       return {
         style: {
           left: animation.fromLeft,
@@ -166,8 +171,7 @@ function TabLineItem(props) {
             {addonTextChildren(Children, TabLine.Item.Text, TabLine.Item.Addon)}
             {addonRight ? <TabLine.Item.Addon tag={addonRight} /> : null}
           </STabLineItem>,
-        )
-      }
+        )}
     </NeighborLocation.Detect>
   );
 }

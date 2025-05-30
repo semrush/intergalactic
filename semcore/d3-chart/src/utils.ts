@@ -79,7 +79,8 @@ export const getNullData = <
       acc.push({
         [name]: null,
       } as Data);
-    } else {
+    }
+    else {
       const prev = data[i - 1];
       const next = data[i + 1];
 
@@ -159,7 +160,8 @@ export const getIndexFromData = <
 
     if (value > domain[lastKeyIndex]) {
       key = keys[lastKeyIndex];
-    } else {
+    }
+    else {
       for (let i = 0; i < lastKeyIndex; i++) {
         if (i === 0 && value < domain[i]) {
           break;
@@ -173,7 +175,8 @@ export const getIndexFromData = <
     }
 
     return key;
-  } else {
+  }
+  else {
     // biome-ignore lint/suspicious/noConsole: old code
     console.warn('[d3-chart/utils/getIndexFromData] encountered incompatible scale type');
     return null;
@@ -195,28 +198,32 @@ export const roundedPath = (
   result += `h${w - 2 * r}`;
   if (tr) {
     result += `a${r},${r} 0 0 1 ${r},${r}`;
-  } else {
+  }
+  else {
     result += `h${r}`;
     result += `v${r}`;
   }
   result += `v${h - 2 * r}`;
   if (br) {
     result += `a${r},${r} 0 0 1 ${-r},${r}`;
-  } else {
+  }
+  else {
     result += `v${r}`;
     result += `h${-r}`;
   }
   result += `h${2 * r - w}`;
   if (bl) {
     result += `a${r},${r} 0 0 1 ${-r},${-r}`;
-  } else {
+  }
+  else {
     result += `h${-r}`;
     result += `v${-r}`;
   }
   result += `v${2 * r - h}`;
   if (tl) {
     result += `a${r},${r} 0 0 1 ${r},${-r}`;
-  } else {
+  }
+  else {
     result += `v${-r}`;
     result += `h${r}`;
   }

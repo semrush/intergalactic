@@ -62,7 +62,7 @@ class BarChartComponent extends AbstractChart<
           key={`${key}_${groupKey}`}
           x={invertAxis ? 'y' : 'x'}
           y={invertAxis ? 'x' : 'y'}
-          color={'wall'}
+          color='wall'
           style={{ strokeWidth: 3, strokeDasharray: 5 }}
         >
           <Line.Dots data={trendItem} display />
@@ -110,7 +110,8 @@ class BarChartComponent extends AbstractChart<
 
               if (invertAxis) {
                 commonBarComponentProps.x = item.id;
-              } else {
+              }
+              else {
                 commonBarComponentProps.y = item.id;
               }
 
@@ -137,7 +138,8 @@ class BarChartComponent extends AbstractChart<
 
               if (invertAxis) {
                 commonBarComponentProps.x = item.id;
-              } else {
+              }
+              else {
                 commonBarComponentProps.y = item.id;
               }
 
@@ -153,8 +155,8 @@ class BarChartComponent extends AbstractChart<
   }
 
   renderTooltip(): React.ReactNode {
-    const { data, groupKey, showTotalInTooltip, showTooltip, invertAxis, onClickHoverRect } =
-      this.asProps;
+    const { data, groupKey, showTotalInTooltip, showTooltip, invertAxis, onClickHoverRect }
+      = this.asProps;
     const { dataDefinitions } = this.state;
 
     if (!showTooltip) {

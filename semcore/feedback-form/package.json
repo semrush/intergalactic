@@ -17,21 +17,21 @@
     "types": "./lib/types/index.d.ts"
   },
   "dependencies": {
-    "@semcore/flex-box": "16.0.0",
-    "@semcore/checkbox": "16.0.0",
-    "@semcore/notice-bubble": "16.1.0",
-    "@semcore/typography": "16.1.0",
-    "@semcore/link": "16.0.0",
-    "@semcore/modal": "16.1.0",
-    "@semcore/illustration": "16.0.0",
-    "@semcore/icon": "16.1.0",
-    "@semcore/textarea": "16.0.0",
-    "@semcore/input": "16.0.0",
+    "@semcore/button": "workspace:*",
+    "@semcore/checkbox": "workspace:*",
+    "@semcore/flex-box": "workspace:*",
+    "@semcore/icon": "workspace:*",
+    "@semcore/illustration": "workspace:*",
+    "@semcore/input": "workspace:*",
+    "@semcore/link": "workspace:*",
+    "@semcore/modal": "workspace:*",
+    "@semcore/notice": "workspace:*",
+    "@semcore/notice-bubble": "workspace:*",
+    "@semcore/spin-container": "workspace:*",
+    "@semcore/textarea": "workspace:*",
+    "@semcore/tooltip": "workspace:*",
+    "@semcore/typography": "workspace:*",
     "final-form": "4.20.7",
-    "@semcore/button": "16.0.0",
-    "@semcore/notice": "16.1.0",
-    "@semcore/spin-container": "16.0.0",
-    "@semcore/tooltip": "16.0.0",
     "final-form-focus": "1.1.2",
     "react-final-form": "6.5.9"
   },
@@ -44,9 +44,9 @@
     "directory": "semcore/feedback-form"
   },
   "devDependencies": {
-    "@types/react": "18.0.21",
+    "@semcore/testing-utils": "workspace:*",
     "@types/final-form-focus": "1.1.7",
-    "@semcore/testing-utils": "1.0.0"
+    "@types/react": "18.0.21"
   },
   "overrides": {
     "final-form": {

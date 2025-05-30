@@ -80,15 +80,16 @@ class HistogramChartComponent extends AbstractChart<
 
         return max;
       }, 0);
-    } else {
+    }
+    else {
       const flatValues = super.flatValues;
 
       max = Math.max(...flatValues);
     }
 
     return (
-      yScale ??
-      scaleLinear()
+      yScale
+      ?? scaleLinear()
         .range(
           invertAxis
             ? [marginY, plotWidth - this.plotPadding]
@@ -121,7 +122,8 @@ class HistogramChartComponent extends AbstractChart<
 
             if (invertAxis) {
               commonBarComponentProps.x = item.id;
-            } else {
+            }
+            else {
               commonBarComponentProps.y = item.id;
             }
 

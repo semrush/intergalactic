@@ -49,13 +49,15 @@ export function findAllComponents(Children: any, names: string[]): Intergalactic
       if (React.isValidElement(child)) {
         if (child.type === React.Fragment) {
           findAllAndAdd(child.props.children);
-        } else if (
-          typeof child.type === 'function' &&
-          CHILDREN_COMPONENT in child.type &&
-          child.type[CHILDREN_COMPONENT]
+        }
+        else if (
+          typeof child.type === 'function'
+          && CHILDREN_COMPONENT in child.type
+          && child.type[CHILDREN_COMPONENT]
         ) {
           findAllAndAdd(child.type);
-        } else {
+        }
+        else {
           // @ts-ignore
           const inheritedNames = child.type[INHERITED_NAME] || [child.type.displayName];
           const component = !!inheritedNames.find((name: string) => names.includes(name));
@@ -90,20 +92,23 @@ export function extractFrom(Children: any, names: string[]): IntergalacticCompon
       if (React.isValidElement(child)) {
         if (child.type === React.Fragment) {
           extractor(child.props.children);
-        } else if (
-          typeof child.type === 'function' &&
-          CHILDREN_COMPONENT in child.type &&
-          child.type[CHILDREN_COMPONENT]
+        }
+        else if (
+          typeof child.type === 'function'
+          && CHILDREN_COMPONENT in child.type
+          && child.type[CHILDREN_COMPONENT]
         ) {
           extractor(child.type);
-        } else {
+        }
+        else {
           // @ts-ignore
           const inheritedNames = child.type[INHERITED_NAME] || [child.type.displayName];
           const component = !!inheritedNames.find((name: string) => names.includes(name));
 
           if (component) {
             extracted.push(child);
-          } else {
+          }
+          else {
             rest.push(child);
           }
         }

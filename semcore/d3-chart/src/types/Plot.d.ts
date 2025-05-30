@@ -10,10 +10,10 @@ export interface IPlotProps extends PlotProps, UnknownProperties {}
 export type PlotProps = Context &
   BoxProps & {
     /** Width of the svg element
-     * @default 0*/
+     * @default 0 */
     width?: number;
     /** Height of the svg element
-     * @default 0*/
+     * @default 0 */
     height?: number;
     /** Human readable chart name (e.g "Last market trends") */
     label?: string;
@@ -120,7 +120,7 @@ export type IntergalacticD3Component<BaseTag extends Intergalactic.Tag, Props, C
 >(
   props: Intergalactic.InternalTypings.PropsRenderingResultComponentProps<Tag, Props, Context>,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
-  Intergalactic.InternalTypings.ComponentAdditive<BaseTag, BaseTag, Props>;
+Intergalactic.InternalTypings.ComponentAdditive<BaseTag, BaseTag, Props>;
 
 declare const Plot: IntergalacticD3Component<'svg', PlotProps, Context>;
 export default Plot;

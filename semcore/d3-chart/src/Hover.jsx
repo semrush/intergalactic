@@ -1,4 +1,3 @@
-
 import { Component, sstyled, Root } from '@semcore/core';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import trottle from '@semcore/core/lib/utils/rafTrottle';
@@ -25,10 +24,10 @@ class Hover extends Component {
     const [pX, pY] = eventToPoint(e, rootRef.current);
     const vX = invert(xScale, pX);
     const vY = invert(yScale, pY);
-    const xIndex =
-      x === undefined || vX === undefined ? null : getIndexFromData(data, xScale, x, vX);
-    const yIndex =
-      y === undefined || vY === undefined ? null : getIndexFromData(data, yScale, y, vY);
+    const xIndex
+      = x === undefined || vX === undefined ? null : getIndexFromData(data, xScale, x, vX);
+    const yIndex
+      = y === undefined || vY === undefined ? null : getIndexFromData(data, yScale, y, vY);
     const state = { xIndex, yIndex, patterns };
 
     this.setState(state, () => {
@@ -85,8 +84,8 @@ class HoverLineRoot extends Hover {
     const x1 = xIndex !== null ? scaleOfBandwidth(xScale, data[xIndex][x]) : undefined;
     const y1 = yIndex !== null ? scaleOfBandwidth(yScale, data[yIndex][y]) : undefined;
 
-    const isHide =
-      typeof hideHoverLine === 'function' ? hideHoverLine(xIndex, yIndex) : hideHoverLine;
+    const isHide
+      = typeof hideHoverLine === 'function' ? hideHoverLine(xIndex, yIndex) : hideHoverLine;
 
     if (isHide) {
       return null;
@@ -94,28 +93,32 @@ class HoverLineRoot extends Hover {
 
     return sstyled(styles)(
       <>
-        {xIndex !== null ? (
-          <SHoverLine
-            aria-hidden
-            render='line'
-            index={xIndex}
-            x1={x1}
-            y1={yRange[0]}
-            x2={x1}
-            y2={yRange[1]}
-          />
-        ) : null}
-        {yIndex !== null ? (
-          <SHoverLine
-            aria-hidden
-            render='line'
-            index={yIndex}
-            x1={xRange[0]}
-            y1={y1}
-            x2={xRange[1]}
-            y2={y1}
-          />
-        ) : null}
+        {xIndex !== null
+          ? (
+              <SHoverLine
+                aria-hidden
+                render='line'
+                index={xIndex}
+                x1={x1}
+                y1={yRange[0]}
+                x2={x1}
+                y2={yRange[1]}
+              />
+            )
+          : null}
+        {yIndex !== null
+          ? (
+              <SHoverLine
+                aria-hidden
+                render='line'
+                index={yIndex}
+                x1={xRange[0]}
+                y1={y1}
+                x2={xRange[1]}
+                y2={y1}
+              />
+            )
+          : null}
       </>,
     );
   }
@@ -141,28 +144,32 @@ class HoverRectRoot extends Hover {
 
     return sstyled(styles)(
       <>
-        {xIndex !== null ? (
-          <SHoverRect
-            aria-hidden
-            render='rect'
-            index={xIndex}
-            width={xBand.step() - xBand.paddingInner() / 2}
-            height={yRange[0] - yRange[1]}
-            x={xScale(data[xIndex][x]) - (xBand.step() * xBand.paddingInner()) / 2}
-            y={yRange[1]}
-          />
-        ) : null}
-        {yIndex !== null ? (
-          <SHoverRect
-            aria-hidden
-            render='rect'
-            index={yIndex}
-            width={xRange[1] - xRange[0]}
-            height={yBand.step() - yBand.paddingInner() / 2}
-            x={xRange[0]}
-            y={yScale(data[yIndex][y]) - (yBand.step() * yBand.paddingInner()) / 2}
-          />
-        ) : null}
+        {xIndex !== null
+          ? (
+              <SHoverRect
+                aria-hidden
+                render='rect'
+                index={xIndex}
+                width={xBand.step() - xBand.paddingInner() / 2}
+                height={yRange[0] - yRange[1]}
+                x={xScale(data[xIndex][x]) - (xBand.step() * xBand.paddingInner()) / 2}
+                y={yRange[1]}
+              />
+            )
+          : null}
+        {yIndex !== null
+          ? (
+              <SHoverRect
+                aria-hidden
+                render='rect'
+                index={yIndex}
+                width={xRange[1] - xRange[0]}
+                height={yBand.step() - yBand.paddingInner() / 2}
+                x={xRange[0]}
+                y={yScale(data[yIndex][y]) - (yBand.step() * yBand.paddingInner()) / 2}
+              />
+            )
+          : null}
       </>,
     );
   }

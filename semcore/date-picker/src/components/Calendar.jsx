@@ -1,4 +1,3 @@
-
 import dayjs from 'dayjs';
 import isBetween from '../utils/isBetweenPlugin';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
@@ -45,7 +44,7 @@ class CalendarWeekDaysRoot extends Component {
       const long = new Intl.DateTimeFormat(locale, { weekday: 'long' }).format(date.valueOf());
       date = date.add(1, 'day');
       return {
-        children: short,
+        'children': short,
         'aria-label': long,
       };
     });
@@ -132,47 +131,49 @@ class CalendarAbstract extends Component {
     const disabled = _disabled.some(includesDate(date, unit));
 
     return {
-      date: formatDDMMYY(date, locale),
-      dateKey: this.formatter(date, locale),
-      children: '',
-      role: 'gridcell',
-      startSelected: selecting.startSelected,
-      endSelected: selecting.endSelected,
-      selected: selecting.selected,
-      highlighted: highlighting.highlighted,
-      startHighlighted: highlighting.startHighlighted,
-      endHighlighted: highlighting.endHighlighted,
+      'date': formatDDMMYY(date, locale),
+      'dateKey': this.formatter(date, locale),
+      'children': '',
+      'role': 'gridcell',
+      'startSelected': selecting.startSelected,
+      'endSelected': selecting.endSelected,
+      'selected': selecting.selected,
+      'highlighted': highlighting.highlighted,
+      'startHighlighted': highlighting.startHighlighted,
+      'endHighlighted': highlighting.endHighlighted,
 
-      compareHighlighted: comparedHighlighting.highlighted || comparing.selected,
-      compareStartHighlighted: comparedHighlighting.startHighlighted,
-      compareEndHighlighted: comparedHighlighting.endHighlighted,
-      compareStart: comparing.startSelected,
-      compareEnd: comparing.endSelected,
+      'compareHighlighted': comparedHighlighting.highlighted || comparing.selected,
+      'compareStartHighlighted': comparedHighlighting.startHighlighted,
+      'compareEndHighlighted': comparedHighlighting.endHighlighted,
+      'compareStart': comparing.startSelected,
+      'compareEnd': comparing.endSelected,
 
       'aria-selected': selecting.selected,
       'aria-disabled': disabled,
       'aria-current': highlighting.highlighted ? 'date' : undefined,
 
       disabled,
-      today: date.isSame(self.today, unit),
-      onClick: () => {
+      'today': date.isSame(self.today, unit),
+      'onClick': () => {
         const { range, highlighted: _highlighted } = this.asProps;
         let highlighted = [date.valueOf()];
 
         if (_highlighted.length === 1) {
           highlighted = [_highlighted[0], date.valueOf()];
-        } else if (_highlighted.length >= 2) {
+        }
+        else if (_highlighted.length >= 2) {
           highlighted = [];
         }
 
         if (range === 'compare') {
           fire(this, 'onCompareHighlightedChange', highlighted);
-        } else {
+        }
+        else {
           fire(this, 'onHighlightedChange', highlighted);
         }
         fire(this, 'onChange', date.toDate());
       },
-      onMouseEnter: () => {
+      'onMouseEnter': () => {
         const { range, highlighted: _highlighted } = this.asProps;
         const value = range === 'compare' ? this.asProps.compare : this.asProps.value;
         if (_highlighted[0] || (value ?? []).length === 1) {
@@ -180,7 +181,8 @@ class CalendarAbstract extends Component {
           const highlighted = [startDate.valueOf(), date.valueOf()];
           if (range === 'compare') {
             fire(this, 'onCompareHighlightedChange', highlighted);
-          } else {
+          }
+          else {
             fire(this, 'onHighlightedChange', highlighted);
           }
         }
@@ -201,7 +203,7 @@ class CalendarAbstract extends Component {
     return {
       'aria-colindex': (index % inRow) + 1,
       'aria-rowindex': Math.floor(index / inRow) + 1,
-      ref: (node) => {
+      'ref': (node) => {
         if (!dateKey) return;
         unitRefs[dateKey] = node;
       },
@@ -229,7 +231,8 @@ class CalendarAbstract extends Component {
     let description = '';
     if (value.length === 1 || compare.length === 1) {
       description += t('selectingStarted') + '. ';
-    } else if (value.length === 2 || compare.length === 2) {
+    }
+    else if (value.length === 2 || compare.length === 2) {
       description += t('selectingFinished') + '. ';
     }
 
@@ -237,12 +240,14 @@ class CalendarAbstract extends Component {
       if (value[0] || value[1]) description += t('dateRange') + ' ';
       if (value[0]) description += t('fromDate', value[0]) + ', ';
       if (value[1]) description += t('toDate', value[1]) + '. ';
-    } else if (actionsDescribing === 'range-compare') {
+    }
+    else if (actionsDescribing === 'range-compare') {
       if (compare.length === 1) {
         description += t('dateRange2') + ' ';
         if (compare[0]) description += t('fromDate', value[0]) + ', ';
         if (compare[1]) description += t('toDate', value[1]) + '. ';
-      } else {
+      }
+      else {
         if (value[0] || value[1]) description += t('dateRange1') + ' ';
         if (value[0]) description += t('fromDate', value[0]) + ', ';
         if (value[1]) description += t('toDate', value[1]) + '. ';

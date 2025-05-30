@@ -1,4 +1,3 @@
-
 import { Context } from './context';
 import { BackgroundProps } from './Bar';
 import { IntergalacticD3Component } from './Plot';

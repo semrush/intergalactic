@@ -103,8 +103,8 @@ class FeedbackRatingRoot extends Component<
     this.asProps.onVisibleChange(false, this.asProps.rating);
   };
 
-  handleChange =
-    (fn: (e: React.SyntheticEvent) => void) => (_value: any, e: React.SyntheticEvent) => {
+  handleChange
+    = (fn: (e: React.SyntheticEvent) => void) => (_value: any, e: React.SyntheticEvent) => {
       fn(e);
     };
 
@@ -124,7 +124,8 @@ class FeedbackRatingRoot extends Component<
             duration: 5000,
           });
         }, 300);
-      } else if (status === 'error') {
+      }
+      else if (status === 'error') {
         this.setState({ error: true });
       }
     }
@@ -134,7 +135,7 @@ class FeedbackRatingRoot extends Component<
     const initialValue = this.props.initialValues[config.key];
 
     return (
-      <Field name={config.key} initialValue={initialValue} type={'checkbox'} key={config.key}>
+      <Field name={config.key} initialValue={initialValue} type='checkbox' key={config.key}>
         {({ input }) => (
           <FeedbackRating.Checkbox
             {...input}
@@ -151,17 +152,19 @@ class FeedbackRatingRoot extends Component<
   renderTextField = (config: FormConfigItem) => {
     const initialValue = this.props.initialValues[config.key];
 
-    const label =
-      typeof config.label === 'string' ? (
-        <Text mb={2} size={200}>
-          {config.label}
-        </Text>
-      ) : (
-        (config.label as unknown as JSX.Element)
-      );
+    const label
+      = typeof config.label === 'string'
+        ? (
+            <Text mb={2} size={200}>
+              {config.label}
+            </Text>
+          )
+        : (
+            (config.label as unknown as JSX.Element)
+          );
 
-    const isDescriptionReactFragment =
-      (config.description as ReactElement)?.type === React.Fragment;
+    const isDescriptionReactFragment
+      = (config.description as ReactElement)?.type === React.Fragment;
 
     return (
       <Flex direction='column'>
@@ -211,13 +214,15 @@ class FeedbackRatingRoot extends Component<
         </FeedbackRating.Item>
         {config.description && (
           <Box mt={2}>
-            {typeof config.description === 'string' || isDescriptionReactFragment ? (
-              <Text size={200} color='text-secondary' id={config.key + '-description'}>
-                {config.description}
-              </Text>
-            ) : (
-              config.description
-            )}
+            {typeof config.description === 'string' || isDescriptionReactFragment
+              ? (
+                  <Text size={200} color='text-secondary' id={config.key + '-description'}>
+                    {config.description}
+                  </Text>
+                )
+              : (
+                  config.description
+                )}
           </Box>
         )}
       </Flex>
@@ -313,11 +318,13 @@ class FeedbackRatingRoot extends Component<
                     <SliderRating value={rating} readonly={true} />
                   </Flex>
 
-                  {(header as ReactElement)?.type === FeedbackRating.Header ? (
-                    header
-                  ) : (
-                    <FeedbackRating.Header>{header}</FeedbackRating.Header>
-                  )}
+                  {(header as ReactElement)?.type === FeedbackRating.Header
+                    ? (
+                        header
+                      )
+                    : (
+                        <FeedbackRating.Header>{header}</FeedbackRating.Header>
+                      )}
 
                   <Box
                     tag='form'
@@ -327,11 +334,11 @@ class FeedbackRatingRoot extends Component<
                     {...other}
                     onSubmit={api.handleSubmit}
                   >
-                    <Field name={'rating'} initialValue={rating}>
+                    <Field name='rating' initialValue={rating}>
                       {({ input }) => <input {...input} type='hidden' />}
                     </Field>
 
-                    <div role={'group'} aria-labelledby={this.headerId}>
+                    <div role='group' aria-labelledby={this.headerId}>
                       {checkboxFields.map((formConfigItem, index) =>
                         this.renderCheckbox(formConfigItem, index),
                       )}
@@ -340,7 +347,7 @@ class FeedbackRatingRoot extends Component<
                     {textFields.map((formConfigItem) => this.renderTextField(formConfigItem))}
 
                     {this.state.error && (
-                      <Notice theme={'warning'} mt={4} mb={4}>
+                      <Notice theme='warning' mt={4} mb={4}>
                         <Notice.Label>
                           <WarnM />
                         </Notice.Label>
@@ -358,18 +365,17 @@ class FeedbackRatingRoot extends Component<
                       </Notice>
                     )}
 
-                    <Flex mt={4} justifyContent={'center'}>
+                    <Flex mt={4} justifyContent='center'>
                       <FeedbackRating.Submit
                         loading={status !== 'loading' ? api.submitting : status === 'loading'}
-                        size={'l'}
+                        size='l'
                       >
                         {submitText ?? getI18nText('submitButton')}
                       </FeedbackRating.Submit>
                     </Flex>
                   </Box>
                 </SpinContainer>,
-              )
-            }
+              )}
           </Form>
         </SFeedbackRating>
 
@@ -383,12 +389,12 @@ function Header(props: any) {
   const { styles } = props;
   const SHeader = Root;
   return sstyled(styles)(
-    <SHeader render={Text} size={300} tag='h2' mb={4} mt={4} textAlign={'center'} />,
+    <SHeader render={Text} size={300} tag='h2' mb={4} mt={4} textAlign='center' />,
   );
 }
 
-const FeedbackRating: typeof FeedbackRatingType & { validate: typeof FeedbackRatingRoot.validate } =
-  createComponent(FeedbackRatingRoot, {
+const FeedbackRating: typeof FeedbackRatingType & { validate: typeof FeedbackRatingRoot.validate }
+  = createComponent(FeedbackRatingRoot, {
     Header,
     Item: FeedbackItem,
     Checkbox: CheckboxButton,

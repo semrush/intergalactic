@@ -17,19 +17,19 @@
     "types": "./lib/types/index.d.ts"
   },
   "dependencies": {
-    "@semcore/base-trigger": "16.1.0",
-    "@semcore/button": "16.0.0",
-    "@semcore/divider": "16.0.0",
-    "@semcore/popper": "16.0.0",
-    "@semcore/dropdown": "16.0.0",
-    "@semcore/icon": "16.1.0",
-    "@semcore/input": "16.0.0",
-    "@semcore/input-mask": "16.0.0",
-    "@semcore/typography": "16.1.0",
-    "@semcore/checkbox": "16.0.0",
-    "@semcore/tooltip": "16.0.0",
-    "@semcore/flex-box": "16.0.0",
-    "@semcore/neighbor-location": "16.0.0",
+    "@semcore/base-trigger": "workspace:*",
+    "@semcore/button": "workspace:*",
+    "@semcore/checkbox": "workspace:*",
+    "@semcore/divider": "workspace:*",
+    "@semcore/dropdown": "workspace:*",
+    "@semcore/flex-box": "workspace:*",
+    "@semcore/icon": "workspace:*",
+    "@semcore/input": "workspace:*",
+    "@semcore/input-mask": "workspace:*",
+    "@semcore/neighbor-location": "workspace:*",
+    "@semcore/popper": "workspace:*",
+    "@semcore/tooltip": "workspace:*",
+    "@semcore/typography": "workspace:*",
     "dayjs": "1.8.36"
   },
   "peerDependencies": {
@@ -41,7 +41,7 @@
     "directory": "semcore/date-picker"
   },
   "devDependencies": {
-    "@semcore/testing-utils": "1.0.0",
+    "@semcore/testing-utils": "workspace:*",
     "@types/react": "18.0.21"
   }
 }

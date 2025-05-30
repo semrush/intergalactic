@@ -105,11 +105,9 @@ const getStyles = () => ({
   },
 });
 
-/* eslint-disable no-undef */
 const clearStyles = () => {
   serverStyles = '';
 };
-/* eslint-disable no-undef */
 
 const RESHADOW_ID = '__reshadow__';
 
@@ -130,7 +128,8 @@ const css = (code, hash) => {
 
     if (document.head) {
       appendChildToDocumentHead(container);
-    } else {
+    }
+    else {
       document.addEventListener('DOMContentLoaded', () => {
         appendChildToDocumentHead(container);
       });
@@ -225,7 +224,7 @@ function map(element) {
   let useProps;
 
   for (let i = len - 1; i > 0; i--) {
-    // biome-ignore lint/style/noArguments: external library
+    // eslint-disable-next-line prefer-rest-params
     const currProps = arguments[i];
 
     if (!currProps) continue;
@@ -274,8 +273,8 @@ function map(element) {
   if (cn) nextProps[KEYS.__classProp__] = cn;
 
   if (vars) {
-    nextProps.style =
-      typeof style === 'string'
+    nextProps.style
+      = typeof style === 'string'
         ? vars + (nextProps.style || '')
         : Object.assign({}, vars, nextProps.style || {});
   }

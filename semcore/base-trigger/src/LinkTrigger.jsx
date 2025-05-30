@@ -1,4 +1,3 @@
-
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import ChevronDown from '@semcore/icon/ChevronDown/m';
@@ -14,6 +13,7 @@ class RootLinkTrigger extends Component {
   static defaultProps = {
     size: 'm',
   };
+
   static enhance = [resolveColorEnhance()];
 
   getTextProps() {

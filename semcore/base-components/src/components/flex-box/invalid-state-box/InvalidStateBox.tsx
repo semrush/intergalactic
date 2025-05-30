@@ -1,4 +1,3 @@
-
 import { createComponent, sstyled, Root } from '@semcore/core';
 import style from './invalidStateBox.shadow.css';
 import Box from '../Box';

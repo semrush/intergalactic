@@ -306,8 +306,8 @@ describe('Utils isNode', () => {
     const nodes = [
       'test',
       1,
-      <div>test</div>,
-      [<div>test</div>, <div>test2</div>, <div>test3</div>],
+      <div key={2}>test</div>,
+      [<div key={33}>test</div>, <div key={44}>test2</div>, <div key={55}>test3</div>],
     ];
     const factory = (node: any) => {
       expect(isNode(node)).toBeTruthy();
@@ -381,7 +381,9 @@ describe('Utils reactToText', () => {
     expect(
       reactToText(
         <>
-          <span>multi</span> <span>component</span>
+          <span>multi</span>
+          {' '}
+          <span>component</span>
         </>,
       ),
     ).toBe('multi component');
@@ -472,18 +474,18 @@ describe('Enhances - keyboardFocusEnhances', () => {
 describe('extractAriaProps', () => {
   test('Verify extract all aria attributes', () => {
     const props = {
-      title: 'Test Title',
+      'title': 'Test Title',
       'aria-label': 'Test Label',
       'aria-labelledby': 'label-id',
       'aria-describedby': 'desc-id',
-      otherProp: 'ignored',
+      'otherProp': 'ignored',
     };
     const result = extractAriaProps(props);
 
     expect(result).toEqual({
       __excludeProps: ['title', 'aria-label', 'aria-labelledby', 'aria-describedby'],
       extractedAriaProps: {
-        title: 'Test Title',
+        'title': 'Test Title',
         'aria-label': 'Test Label',
         'aria-labelledby': 'label-id',
         'aria-describedby': 'desc-id',
@@ -494,7 +496,7 @@ describe('extractAriaProps', () => {
   test('Verify extract only available aria attributes', () => {
     const props = {
       'aria-label': 'Test Label',
-      otherProp: 'ignored',
+      'otherProp': 'ignored',
     };
     const result = extractAriaProps(props);
 
@@ -719,7 +721,7 @@ describe('getInputProps', () => {
     const props = {
       'aria-label': 'label',
       'aria-hidden': 'true',
-      customProp: 'custom',
+      'customProp': 'custom',
     };
 
     const [includedProps, excludedProps] = getInputProps(props, [], true);
@@ -803,7 +805,7 @@ describe('getInputProps', () => {
 
     const [includedProps, excludedProps] = getInputProps(props);
 
-    //all required props are correctly included in the result
+    // all required props are correctly included in the result
     requiredProps.forEach((prop) => {
       expect(includedProps).toHaveProperty(prop, 'test');
     });

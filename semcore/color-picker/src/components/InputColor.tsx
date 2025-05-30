@@ -59,7 +59,8 @@ class InputColorRoot extends Component<InputColorAsProps> {
     if (value.length !== 0 && state === 'normal') {
       if (value[0] === '#') {
         this.asProps?.onAdd?.(value.toLowerCase(), event);
-      } else {
+      }
+      else {
         this.asProps?.onAdd?.(`#${value.toLowerCase()}`, event);
       }
       this.handlers.value('', event);
@@ -74,10 +75,12 @@ class InputColorRoot extends Component<InputColorAsProps> {
     if (value.length !== 0) {
       if (isValidHex(value)) {
         this.handlers.state('normal');
-      } else {
+      }
+      else {
         this.handlers.state('invalid');
       }
-    } else {
+    }
+    else {
       this.handlers.state('normal');
     }
   }, 300);

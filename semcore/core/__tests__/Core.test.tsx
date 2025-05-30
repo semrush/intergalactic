@@ -119,7 +119,7 @@ function shouldSupportCallEnhanceWithProps(RootComponent: any, typeRootComponent
   test(`Should support call enhance with props and data-ui-name in ${typeRootComponent}`, () => {
     const spy = vi.fn();
     const props = {
-      children: 'test',
+      'children': 'test',
       'data-testid': 'core',
     };
     const enhance = (props: any) => {
@@ -265,7 +265,7 @@ describe('Root', () => {
         const { Root } = this;
         return (
           <div>
-            <Root data-testid={'root'} render={'div'} />
+            <Root data-testid='root' render='div' />
           </div>
         );
       }
@@ -284,8 +284,8 @@ describe('Root', () => {
         const { Root } = this;
         return (
           <Root
-            data-testid={'root'}
-            render={'div'}
+            data-testid='root'
+            render='div'
             id='root-test'
             className='root-test'
             style={{

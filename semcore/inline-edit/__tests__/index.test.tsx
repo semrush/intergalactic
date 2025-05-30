@@ -12,8 +12,8 @@ describe('imline-edit Dependency imports', () => {
   runDependencyCheckTests('inline-edit');
 });
 
-const InstantFadeInOut: React.FC<{ children: React.ReactNode; visible?: boolean }> =
-  React.forwardRef((props, ref: React.Ref<HTMLDivElement>) => {
+const InstantFadeInOut: React.FC<{ children: React.ReactNode; visible?: boolean }>
+  = React.forwardRef((props, ref: React.Ref<HTMLDivElement>) => {
     return (
       <div ref={ref} style={{ opacity: props.visible ? 1 : 0 }}>
         {props.children}

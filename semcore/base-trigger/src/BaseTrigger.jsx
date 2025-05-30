@@ -1,4 +1,3 @@
-
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import { Box, InvalidStateBox } from '@semcore/flex-box';
 import NeighborLocation from '@semcore/neighbor-location';
@@ -23,6 +22,7 @@ class RootBaseTrigger extends Component {
       onChangeOf: ['value'],
     }),
   ];
+
   static style = style;
   static defaultProps = {
     size: 'm',
@@ -45,7 +45,7 @@ class RootBaseTrigger extends Component {
 
     logger.warn(
       theme !== undefined,
-      "The 'theme' property is deprecated, use 'state'",
+      'The \'theme\' property is deprecated, use \'state\'',
       this.asProps['data-ui-name'] || BaseTrigger.displayName,
     );
 
@@ -67,8 +67,7 @@ class RootBaseTrigger extends Component {
                 {addonTextChildren(Children, BaseTrigger.Text, BaseTrigger.Addon, empty)}
               </SInner>
             </SBaseTrigger>,
-          )
-        }
+          )}
       </NeighborLocation.Detect>
     );
   }

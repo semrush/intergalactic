@@ -113,7 +113,7 @@ export type DropdownMenuItemHintProps = FlexProps & {
 /** @deprecated */
 export interface IDropdownMenuItemTitleProps
   extends DropdownMenuItemTitleProps,
-    UnknownProperties {}
+  UnknownProperties {}
 export type DropdownMenuItemTitleProps = FlexProps & {
   /**
    * Size of the component

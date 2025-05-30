@@ -29,8 +29,8 @@ test.describe('List', () => {
 
 test.describe('Text', () => {
   test('Verify Heading and paragraphs no Axe issues', async ({ page }) => {
-    const standPath =
-      'stories/components/typography/tests/examples/text-font-size-and-weight-headers-and-paragrapsh.tsx';
+    const standPath
+      = 'stories/components/typography/tests/examples/text-font-size-and-weight-headers-and-paragrapsh.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);

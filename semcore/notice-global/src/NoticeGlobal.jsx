@@ -1,4 +1,3 @@
-
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import { Flex } from '@semcore/flex-box';
 import CloseM from '@semcore/icon/Close/m';
@@ -30,6 +29,7 @@ class NoticeGlobalRoot extends Component {
     }),
     resolveColorEnhance(),
   ];
+
   static defaultProps = {
     theme: 'neutral',
     i18n: localizedMessages,
@@ -59,8 +59,8 @@ class NoticeGlobalRoot extends Component {
     const color = resolveColor(theme);
     const useTheme = isCustomTheme(theme) ? 'custom' : theme;
 
-    const advancedMode =
-      forcedAdvancedMode || isAdvanceMode(Children, [NoticeGlobal.Content.displayName]);
+    const advancedMode
+      = forcedAdvancedMode || isAdvanceMode(Children, [NoticeGlobal.Content.displayName]);
 
     return sstyled(styles)(
       <SNoticeGlobal
@@ -72,13 +72,15 @@ class NoticeGlobalRoot extends Component {
         aria-live={isAssertive ? 'assertive' : 'polite'}
         aria-label={getI18nText(theme === 'danger' ? 'criticalNotification' : 'notification')}
       >
-        {advancedMode ? (
-          <Children />
-        ) : (
-          <NoticeGlobal.Content>
-            <Children />
-          </NoticeGlobal.Content>
-        )}
+        {advancedMode
+          ? (
+              <Children />
+            )
+          : (
+              <NoticeGlobal.Content>
+                <Children />
+              </NoticeGlobal.Content>
+            )}
         {closable && <NoticeGlobal.CloseIcon onClick={onClose} />}
       </SNoticeGlobal>,
     );

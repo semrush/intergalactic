@@ -76,7 +76,8 @@ class RangePickerAbstract extends Component {
           if (visible) {
             if (endDate && endDate !== displayedPeriod) {
               this.handlers.displayedPeriod(endDate);
-            } else if (!endDate) {
+            }
+            else if (!endDate) {
               const { displayedPeriod, defaultDisplayedPeriod } = this.props;
               this.handlers.displayedPeriod(displayedPeriod || defaultDisplayedPeriod);
             }
@@ -97,6 +98,7 @@ class RangePickerAbstract extends Component {
       ],
     };
   }
+
   navigateView = (direction) => {
     const { displayedPeriod } = this.asProps;
     const action = direction >= 1 ? 'add' : 'subtract';
@@ -171,7 +173,8 @@ class RangePickerAbstract extends Component {
               .toDate(),
           ];
           changedDate = next_highlighted[1];
-        } else {
+        }
+        else {
           next_highlighted = [
             dayjs(highlighted[0])
               .add(day, this.keyStep)
@@ -181,7 +184,8 @@ class RangePickerAbstract extends Component {
         }
         this.handlers.highlighted(next_highlighted);
         this.handlers.displayedPeriod(setNextDisplayedPeriod(next_highlighted));
-      } else {
+      }
+      else {
         const highlighted = [displayedPeriod ? displayedPeriod : dayjs().toDate()];
         this.handlers.highlighted(highlighted);
         changedDate = highlighted[0];
@@ -214,15 +218,19 @@ class RangePickerAbstract extends Component {
     let highlighted = [];
     if (Array.isArray(date)) {
       preselectedValue = date;
-    } else if (!preselectedValue.length) {
+    }
+    else if (!preselectedValue.length) {
       preselectedValue = [date];
       highlighted = [date];
-    } else if (preselectedValue.length >= 2) {
+    }
+    else if (preselectedValue.length >= 2) {
       preselectedValue = [date];
       highlighted = [date];
-    } else if (preselectedValue[0] > date) {
+    }
+    else if (preselectedValue[0] > date) {
       preselectedValue = [date, preselectedValue[0]];
-    } else {
+    }
+    else {
       preselectedValue = [preselectedValue[0], date];
     }
 
@@ -330,7 +338,7 @@ class RangePickerAbstract extends Component {
     const { navigateStep } = this;
 
     return {
-      onClick: this.bindHandlerNavigateClick(1),
+      'onClick': this.bindHandlerNavigateClick(1),
       getI18nText,
       'aria-label': navigateStep === 'month' ? getI18nText('nextMonth') : getI18nText('nextYear'),
     };
@@ -341,7 +349,7 @@ class RangePickerAbstract extends Component {
     const { navigateStep } = this;
 
     return {
-      onClick: this.bindHandlerNavigateClick(-1),
+      'onClick': this.bindHandlerNavigateClick(-1),
       getI18nText,
       'aria-label': navigateStep === 'month' ? getI18nText('prevMonth') : getI18nText('prevYear'),
     };
@@ -390,11 +398,11 @@ class RangePickerAbstract extends Component {
     } = this.asProps;
     return {
       periods,
-      value: preselectedValue.length ? preselectedValue : value,
-      onChange: this.handleApply,
+      'value': preselectedValue.length ? preselectedValue : value,
+      'onChange': this.handleApply,
       onHighlightedChange,
       onDisplayedPeriodChange,
-      role: 'listbox',
+      'role': 'listbox',
       'aria-label': getI18nText('periods'),
     };
   }
@@ -403,6 +411,7 @@ class RangePickerAbstract extends Component {
     const { value, preselectedValue } = this.asProps;
     return this.handleApply(preselectedValue.length ? preselectedValue : value);
   };
+
   getApplyProps() {
     const { getI18nText } = this.asProps;
     return {

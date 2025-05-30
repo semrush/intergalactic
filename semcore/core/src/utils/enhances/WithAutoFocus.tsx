@@ -7,7 +7,7 @@ import type { UnknownProperties } from '../../core-types/UnknownProperties';
 /** @deprecated */
 export interface IEnhancedWithAutoFocusProps
   extends EnhancedWithAutoFocusProps,
-    UnknownProperties {}
+  UnknownProperties {}
 export type EnhancedWithAutoFocusProps = {
   /**
    * @default undefined
@@ -36,7 +36,7 @@ class EnhancedWithAutoFocus extends PureComponent<IEnhancedWithAutoFocusProps> {
       if (autoFocus === false) return;
       const node = findDOMNode(this);
       if (!node) return;
-      //@ts-ignore
+      // @ts-ignore
       this.timer = setTimeout(() => node.focus(), (autoFocus as number) || 0);
     }
   }

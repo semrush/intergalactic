@@ -1,4 +1,3 @@
-
 import { transition } from 'd3-transition';
 import { Component, Root, sstyled } from '@semcore/core';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
@@ -91,8 +90,8 @@ class BubbleRoot extends Component {
 
     const margin = Math.min(xScale.range()[0], xScale.range()[1]);
 
-    const labelPosition =
-      size[0] - 2 * margin - (xScale(d[x]) + offset[0] + z(d[value])) < measureText(d[label])
+    const labelPosition
+      = size[0] - 2 * margin - (xScale(d[x]) + offset[0] + z(d[value])) < measureText(d[label])
         ? 'right'
         : 'left';
     const labelDistance = {
@@ -174,7 +173,8 @@ class BubbleRoot extends Component {
       <>
         {data.map(this.renderCircle.bind(this))}
         <clipPath aria-hidden id={uid}>
-          <rect x={xMargin} y={yMargin} width={`${xSize}px`} height={`${ySize}px`} />{' '}
+          <rect x={xMargin} y={yMargin} width={`${xSize}px`} height={`${ySize}px`} />
+          {' '}
         </clipPath>
       </>
     );

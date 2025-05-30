@@ -39,6 +39,7 @@ class Animation extends Component {
     timingFunction: 'ease-out',
     animationsDisabled: false,
   };
+
   static enhance = [contextEnhance(animationContext, 'parentAnimationContext')];
 
   static getDerivedStateFromProps(props, state) {
@@ -54,6 +55,7 @@ class Animation extends Component {
     render: this.props.visible || this.props.preserveNode,
     wasInvisible: !this.props.visible,
   };
+
   animationSupported = false;
   animationContext = makeAnimationContextValue();
 
@@ -69,6 +71,7 @@ class Animation extends Component {
     this.animationSupported = true;
     this.handleAnimationEnd();
   };
+
   handleAnimationEnd = () => {
     if (!this.asProps.visible && !this.props.preserveNode) {
       this.setState({ render: false });
@@ -89,9 +92,11 @@ class Animation extends Component {
       this.handleAnimationEnd();
     }, duration + delay);
   };
+
   componentDidMount() {
     this.animationEventFallback();
   }
+
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.visible !== this.props.visible || prevState.render !== this.state.render) {
       this.animationEventFallback();

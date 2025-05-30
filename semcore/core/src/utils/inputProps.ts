@@ -41,7 +41,8 @@ export default function getInputProps<
   for (const key in props) {
     if (keysToSplit.includes(key) || (allAriaPropsToControl && key.startsWith('aria-'))) {
       result[0][key as unknown as keyof ExtractedProps<T, K>] = props[key];
-    } else {
+    }
+    else {
       result[1][key as unknown as keyof ExcludedProps<T, K>] = props[key];
     }
   }

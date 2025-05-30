@@ -69,7 +69,7 @@ describe('Select Trigger', () => {
     'Trigger with selected option ellipsis text renders correctly',
     async ({ task }) => {
       const component = (
-        <Select value={'English burashka gpq 1'}>
+        <Select value='English burashka gpq 1'>
           <Select.Trigger w={100} />
         </Select>
       );
@@ -99,7 +99,7 @@ describe('Select Trigger', () => {
       const { getByTestId } = render(
         <Select multiselect onChange={spy} visible value={['1']}>
           <Select.Trigger />
-          <Select.Popper aria-label={'Select popper'}>
+          <Select.Popper aria-label='Select popper'>
             <Select.Option value='1' />
             <Select.Option data-testid='option' value='2' />
           </Select.Popper>
@@ -116,9 +116,9 @@ describe('Select Trigger', () => {
     async ({ expect }) => {
       const spy = vi.fn();
       render(
-        <Select onVisibleChange={spy} interaction={'none'}>
+        <Select onVisibleChange={spy} interaction='none'>
           <Select.Trigger />
-          <Select.Popper aria-label={'Select popper'}>
+          <Select.Popper aria-label='Select popper'>
             <Select.Option value='1' />
             <Select.Option value='2' />
           </Select.Popper>
@@ -136,7 +136,7 @@ describe('Select Trigger', () => {
     const { getByTestId } = render(
       <Select visible onVisibleChange={spy}>
         <Select.Trigger />
-        <Select.Popper aria-label={'Select popper'}>
+        <Select.Popper aria-label='Select popper'>
           <Select.Option data-testid='option' value='test' />
         </Select.Popper>
       </Select>,
@@ -190,8 +190,8 @@ describe('Select Trigger', () => {
 
     const component = (
       <Select onChange={spyChange}>
-        <Select.Trigger tag={'button'} data-testid='buttonTrigger' />
-        <Select.Popper aria-label={'Select popper'}>
+        <Select.Trigger tag='button' data-testid='buttonTrigger' />
+        <Select.Popper aria-label='Select popper'>
           <Select.Option value={1}>Option1</Select.Option>
           <Select.Option value={2}>Option2</Select.Option>
           <Select.Option value={3}>Option3</Select.Option>
@@ -246,18 +246,26 @@ describe('Select Trigger', () => {
       <div style={{ position: 'relative', width: '150px', height: '100px' }}>
         <Select {...props} size={size} visible disablePortal value='1'>
           <Select.Trigger />
-          <Select.Popper aria-label={'Select popper'}>
+          <Select.Popper aria-label='Select popper'>
             <Select.Option value='1'>
               <Select.Option.Checkbox theme={theme} />
-              size {size ?? 'default'} selected
+              size
+              {' '}
+              {size ?? 'default'}
+              {' '}
+              selected
             </Select.Option>
             <Select.Option value='2'>
               <Select.Option.Checkbox theme={theme} />
-              size {size ?? 'default'}
+              size
+              {' '}
+              {size ?? 'default'}
             </Select.Option>
             <Select.Option value='3'>
               <Select.Option.Checkbox indeterminate />
-              size {size ?? 'default'}
+              size
+              {' '}
+              {size ?? 'default'}
             </Select.Option>
           </Select.Popper>
         </Select>
@@ -279,7 +287,7 @@ describe('Select Trigger', () => {
       <div style={{ position: 'relative', width: '150px', height: '100px' }}>
         <Select {...props} visible disablePortal>
           <Select.Trigger />
-          <Select.Popper aria-label={'Select popper'}>
+          <Select.Popper aria-label='Select popper'>
             <Select.Option value='1' id='option'>
               <Select.Option.Checkbox theme={theme} />
               size m selected
@@ -462,17 +470,17 @@ describe('Option.Checkbox', () => {
   test.skip('should not focused by Tab between Select.Option.Checkbox', async ({ expect }) => {
     const { getByTestId } = render(
       <Select>
-        <Select.Trigger placeholder="I'll show u some options" data-testid={'selectTrigger'} />
+        <Select.Trigger placeholder="I'll show u some options" data-testid='selectTrigger' />
         <Select.Menu>
-          <Select.Option value={1} data-testid={'firstOption'}>
+          <Select.Option value={1} data-testid='firstOption'>
             I'm option
           </Select.Option>
           <Select.Option value={2}>
-            <Select.Option.Checkbox data-testid={'secondOptionCheckbox'} />
+            <Select.Option.Checkbox data-testid='secondOptionCheckbox' />
             I'm option-checkbox
           </Select.Option>
           <Select.Option value={3} disabled>
-            <Select.Option.Checkbox data-testid={'thirdOptionCheckbox'} />
+            <Select.Option.Checkbox data-testid='thirdOptionCheckbox' />
             I'm disabled option-checkbox
           </Select.Option>
           <Select.OptionTitle>I'm title</Select.OptionTitle>

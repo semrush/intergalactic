@@ -43,6 +43,7 @@ class WizardRoot extends Component {
       uid: this.asProps.uid,
     };
   }
+
   getContentProps() {
     return {
       uid: this.asProps.uid,
@@ -50,12 +51,14 @@ class WizardRoot extends Component {
       ref: this.contentRef,
     };
   }
+
   getStepBackProps() {
     return {
       getI18nText: this.asProps.getI18nText,
       step: this.asProps.step,
     };
   }
+
   getStepNextProps() {
     return {
       getI18nText: this.asProps.getI18nText,
@@ -72,6 +75,7 @@ class WizardRoot extends Component {
       this.stepperRefs[i - 1]?.focus();
     }, 0);
   };
+
   stepperFocusNext = (i) => () => {
     const nextStep = this._steps.get(i + 2);
     if (!nextStep) return;
@@ -86,12 +90,13 @@ class WizardRoot extends Component {
     if (this._steps.has(props.step)) {
       const step = this._steps.get(props.step);
       number = step.number;
-    } else {
+    }
+    else {
       this._steps.set(props.step, { number, ...props });
     }
     const active = props.step === this.asProps.step;
-    const highlighted =
-      this.state.highlighted === props.step || (this.state.highlighted === null && i === 0);
+    const highlighted
+      = this.state.highlighted === props.step || (this.state.highlighted === null && i === 0);
     return {
       active,
       tabIndex: highlighted ? 0 : -1,

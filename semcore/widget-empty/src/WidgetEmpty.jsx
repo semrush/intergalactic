@@ -1,4 +1,3 @@
-
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import { getIllustrationPath } from '@semcore/illustration';
 import { Box, Flex } from '@semcore/flex-box';
