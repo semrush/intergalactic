@@ -6,7 +6,7 @@ import {Flex} from '@semcore/flex-box';
 
 const Demo = () => {
   return (
-    <Flex gap={6} direction='row'>
+    <Flex gap={16} direction='row'>
     <DropdownMenu size = 'm' visible disablePortal stretch='min'>
       <DropdownMenu.Trigger tag={Button}>Actions</DropdownMenu.Trigger>
       <DropdownMenu.Menu  >
