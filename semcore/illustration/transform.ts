@@ -190,7 +190,7 @@ async function patchExports(illustrations: string[]) {
   const exports: Record<string, any> = {
     '.': {
       require: './lib/cjs/index.js',
-      import: './lib/es6/index.js',
+      import: './lib/esm/index.mjs',
       types: './lib/types/index.d.ts',
     },
   };

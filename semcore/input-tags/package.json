@@ -1,7 +1,7 @@
 {
   "name": "@semcore/input-tags",
   "description": "Semrush InputTags Component",
-  "version": "16.0.0",
+  "version": "16.0.1",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -17,11 +17,11 @@
     "types": "./lib/types/index.d.ts"
   },
   "dependencies": {
-    "@semcore/flex-box": "workspace:*",
-    "@semcore/input": "workspace:*",
-    "@semcore/portal": "workspace:*",
-    "@semcore/scroll-area": "workspace:*",
-    "@semcore/tag": "16.0.0"
+    "@semcore/input": "16.0.1",
+    "@semcore/flex-box": "16.0.1",
+    "@semcore/tag": "16.1.1",
+    "@semcore/scroll-area": "16.0.1",
+    "@semcore/portal": "16.0.1"
   },
   "peerDependencies": {
     "@semcore/base-components": "^16.0.0"
@@ -32,13 +32,13 @@
     "directory": "semcore/input-tags"
   },
   "devDependencies": {
-    "@semcore/button": "^16.0.0",
+    "@types/react": "18.0.21",
+    "@semcore/testing-utils": "1.0.0",
+    "@semcore/tooltip": "*",
+    "@semcore/select": "*",
+    "@semcore/typography": "*",
     "@semcore/flex-box": "*",
-    "@semcore/icon": "^16.1.0",
-    "@semcore/select": "^16.1.0",
-    "@semcore/testing-utils": "workspace:*",
-    "@semcore/tooltip": "^16.0.0",
-    "@semcore/typography": "^16.1.0",
-    "@types/react": "18.0.21"
+    "@semcore/button": "*",
+    "@semcore/icon": "*"
   }
 }

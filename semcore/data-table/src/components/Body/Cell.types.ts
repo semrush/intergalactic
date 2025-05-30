@@ -1,4 +1,4 @@
-import type { DTRow } from './Row.types';
+import type { DTRow, DTRows } from './Row.types';
 import type { DTUse } from '../DataTable/DataTable.types';
 import type { DTColumn } from '../Head/Column.types';
 
@@ -16,6 +16,11 @@ export type DataTableCellProps = {
 
   expanded?: boolean;
   withAccordion?: boolean;
+
+  isAccordionRow?: boolean;
+  animationExpand?: boolean;
+  accordionRowIndex?: number;
+  rows: DTRows;
 };
 
 export type CellPropsInner = {
@@ -23,4 +28,5 @@ export type CellPropsInner = {
 
   virtualScroll: boolean;
   tableRef: React.RefObject<HTMLDivElement>;
+  accordionDuration?: number | [number, number];
 };

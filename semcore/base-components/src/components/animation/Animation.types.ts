@@ -49,6 +49,12 @@ export type CollapseProps = AnimationProps & {
    * @default true
    * */
   overflowHidden?: boolean;
+
+  /**
+   * Value for height after animation
+   * @default auto
+   */
+  defaultHeight?: 'auto' | '100%';
 };
 
 /** @deprecated */

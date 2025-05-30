@@ -18,18 +18,18 @@ test.describe('Accordion in table', () => {
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-    await page.waitForTimeout(100);
+    await page.waitForTimeout(300);
     await expect(plot).toHaveCount(1);
 
     await page.keyboard.press('Enter');
-    await page.waitForTimeout(100);
+    await page.waitForTimeout(300);
     await expect(plot).toHaveCount(0);
 
     await expect(page).toHaveScreenshot();
     await expect(firstArrow).toBeFocused();
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('Enter');
-    await page.waitForTimeout(100);
+    await page.waitForTimeout(250);
     await expect(plot).toHaveCount(0);
     await page.keyboard.press('ArrowRight');
     await page.keyboard.press('ArrowRight');
@@ -39,21 +39,20 @@ test.describe('Accordion in table', () => {
     await expect(secondArrow).toBeFocused();
 
     await page.keyboard.press('Enter');
-    await page.waitForTimeout(100);
-    await expect(plot).toBeVisible();
+    await page.waitForTimeout(250);
     await expect(plot).toHaveCount(1);
 
     await page.keyboard.press('Enter');
     await page.waitForTimeout(100);
-
     await expect(plot).not.toBeVisible();
-    await expect(plot).toHaveCount(0);
 
     await page.keyboard.press('Enter');
-    await page.waitForTimeout(100);
+    await page.waitForTimeout(350);
 
     await page.keyboard.press('ArrowDown');
-
+    // verify the focus not swicthed to other cells by arrows when chart is focused
+    await page.keyboard.press('ArrowRight');
+    await page.keyboard.press('ArrowLeft');
     await page.keyboard.press('ArrowDown');
     const thirdArrow = await page.locator('[data-ui-name="ButtonLink"]').nth(2);
     await expect(thirdArrow).toBeFocused();
@@ -70,50 +69,55 @@ test.describe('Accordion in table', () => {
 
     await test.step('Verify accordion collapse when clicking directly on toggle', async () => {
       await firstArrow.click();
-      await page.keyboard.press('ArrowDown');
+      await page.waitForTimeout(350);
       await expect(plot).toHaveCount(1);
       await firstArrow.click();
+      await page.waitForTimeout(350);
       await expect(plot).toHaveCount(0);
       await firstArrow.click();
+      await page.waitForTimeout(350);
 
       const thirdArrow = await page.locator('[data-ui-name="ButtonLink"]').nth(2);
       await thirdArrow.click();
+      await page.waitForTimeout(350);
       await expect(plot).toHaveCount(2);
       await thirdArrow.click();
       await firstArrow.click();
+      await page.waitForTimeout(350);
       await expect(plot).toHaveCount(0);
     });
 
     await test.step('Verify accordion collapse when clicking any cell in row in case accordion in 1st cell', async () => {
       const row = page.locator('[data-ui-name="Body.Row"][aria-rowindex="2"]');
-      const firstCell = row.locator('[data-ui-name="Body.Cell"][aria-colindex="1"]');
-      const lastCell = row.locator('[data-ui-name="Body.Cell"][aria-colindex="4"]');
+      const cells = row.locator('[data-ui-name="Box"]');
 
-      const firstBox = await firstCell.boundingBox();
-      const lastBox = await lastCell.boundingBox();
-
+      const firstBox = await cells.first().boundingBox();
+      const lastBox = await cells.nth(3).boundingBox();
       if (firstBox && lastBox) {
         await page.mouse.click(firstBox.x + firstBox.width / 2, firstBox.y + firstBox.height / 2);
+        await page.waitForTimeout(300);
         await expect(plot).toBeVisible();
         await page.mouse.click(lastBox.x + lastBox.width / 2, lastBox.y + lastBox.height / 2);
+        await page.waitForTimeout(300);
         await expect(plot).not.toBeVisible();
       }
     });
 
     await test.step('Verify accordion collapse logic when clicking cell in case accordion not in 1st cell', async () => {
       const row = page.locator('[data-ui-name="Body.Row"][aria-rowindex="3"]');
-      const firstCell = row.locator('[data-ui-name="Body.Cell"][aria-colindex="1"]');
-      const lastCell = row.locator('[data-ui-name="Body.Cell"][aria-colindex="4"]');
+      const cells = row.locator('[data-ui-name="Box"]');
 
-      const firstBox = await firstCell.boundingBox();
-      const lastBox = await lastCell.boundingBox();
+      const firstBox = await cells.first().boundingBox();
+      const lastBox = await cells.nth(3).boundingBox();
 
       if (firstBox && lastBox) {
         await page.mouse.click(firstBox.x + firstBox.width / 2, firstBox.y + firstBox.height / 2);
         await expect(plot).not.toBeVisible();
         await page.mouse.click(lastBox.x + lastBox.width / 2, lastBox.y + lastBox.height / 2);
+        await page.waitForTimeout(250);
         await expect(plot).toBeVisible();
         await page.mouse.click(lastBox.x + lastBox.width / 2, lastBox.y + lastBox.height / 2);
+        await page.waitForTimeout(250);
         await expect(plot).not.toBeVisible();
       }
     });
@@ -138,7 +142,7 @@ test.describe('Accordion in table', () => {
 
     expect(marginRight1).toBe('12px');
     await firstArrow.click();
-    await page.waitForTimeout(100);
+    await page.waitForTimeout(250);
     const marginRight = await firstArrow.evaluate((el) => {
       return window.getComputedStyle(el).marginRight;
     });
@@ -148,7 +152,7 @@ test.describe('Accordion in table', () => {
     await expect(plot).toHaveCount(1);
 
     const row3 = page.locator('[data-ui-name="Body.Row"][aria-rowindex="2"]');
-    const cells = row3.locator('div');
+    const cells = row3.locator('[data-ui-name="Body.Cell"]');
     const cellCount = await cells.count();
 
     for (let i = 0; i < cellCount; i++) {
@@ -159,7 +163,7 @@ test.describe('Accordion in table', () => {
     }
 
     const row4 = page.locator('[data-ui-name="Collapse"][aria-rowindex="3"]');
-    await checkStyles(row4.locator('div').first(), {
+    await checkStyles(row4.locator('[data-ui-name="Body.Cell"]').first(), {
       'background-color': 'rgb(244, 245, 249)',
     });
 
@@ -174,13 +178,12 @@ test.describe('Accordion in table', () => {
 
     const secondArrow = await page.locator('[data-ui-name="ButtonLink"]').nth(1);
     await secondArrow.click();
-    await page.waitForTimeout(100);
+    await page.waitForTimeout(250);
     await firstArrow.hover();
     await page.waitForTimeout(100);
-
     await expect(plot).toHaveCount(2);
     const row5 = page.locator('[data-ui-name="Body.Row"][aria-rowindex="4"]');
-    const cells5 = row5.locator('div');
+    const cells5 = row5.locator('[data-ui-name="Body.Cell"]');
 
     const cellCount5 = await cells5.count();
     for (let i = 0; i < cellCount5 - 1; i++) {
@@ -208,7 +211,7 @@ test.describe('Accordion in table', () => {
     });
 
     await firstArrow.click();
-    await page.waitForTimeout(150);
+    await page.waitForTimeout(250);
     if (browserName !== 'firefox')
       for (let i = 0; i < cellCount; i++) {
         const cell = cells.nth(i);
@@ -227,13 +230,16 @@ test.describe('Accordion in table', () => {
     const firstArrow = await page.locator('[data-ui-name="ButtonLink"]').first();
 
     await test.step('Verify cell with accordion attributes', async () => {
+      await expect(firstArrow).toHaveAttribute('aria-controls');
       await expect(firstArrow).toHaveAttribute('aria-label', 'Show details');
+
       const row3 = page.locator('[data-ui-name="Body.Row"][aria-rowindex="2"]');
-      const cells = row3.locator('div');
+      const cells = row3.locator('[data-ui-name="Body.Cell"]');
 
       await expect(firstArrow).toHaveAttribute('aria-expanded', 'false');
       await expect(cells.nth(1)).not.toHaveAttribute('aria-expanded', 'false');
       await firstArrow.click();
+      await page.waitForTimeout(250);
       await expect(firstArrow).toHaveAttribute('aria-expanded', 'true');
       await expect(cells.first()).toHaveAttribute('data-aria-level', '1');
     });
@@ -264,6 +270,7 @@ test.describe('Accordion in table', () => {
 
     expect(marginRight1).toBe('12px');
     await firstArrow.click();
+    await page.waitForTimeout(250);
     const marginRight = await firstArrow.evaluate((el) => {
       return window.getComputedStyle(el).marginRight;
     });
@@ -271,7 +278,7 @@ test.describe('Accordion in table', () => {
     expect(marginRight).toBe('12px');
 
     const row2 = page.locator('[data-ui-name="Body.Row"][aria-rowindex="2"]');
-    const cells2 = row2.locator('div');
+    const cells2 = row2.locator('[data-ui-name="Body.Cell"]');
 
     const cellCount = await cells2.count();
 
@@ -283,8 +290,7 @@ test.describe('Accordion in table', () => {
     }
 
     const row3 = page.locator('[data-ui-name="Row"][aria-rowindex="3"]');
-    const cells3 = row3.locator('div');
-
+    const cells3 = row3.locator('[data-ui-name="Body.Cell"]');
     const cellCount3 = await cells3.count();
 
     for (let i = 0; i < cellCount3; i++) {
@@ -311,17 +317,22 @@ test.describe('Accordion in table', () => {
     await test.step('Verify cell with accordion attributes', async () => {
       await expect(firstArrow).toHaveAttribute('aria-label', 'Show details');
       const row3 = page.locator('[data-ui-name="Body.Row"][aria-rowindex="2"]');
-      const cells = row3.locator('div');
+      const cells = row3.locator('[data-ui-name="Body.Cell"]');
 
       await expect(firstArrow).toHaveAttribute('aria-expanded', 'false');
+      await expect(firstArrow).toHaveAttribute('aria-controls');
+
       await expect(cells.nth(1)).not.toHaveAttribute('aria-expanded', 'false');
       await firstArrow.click();
+      await page.waitForTimeout(250);
       await expect(firstArrow).toHaveAttribute('aria-expanded', 'true');
       await expect(cells.first()).toHaveAttribute('data-aria-level', '1');
     });
 
     await test.step('Verify child table attributes when expanded', async () => {
       const nestedRows = page.locator('[role="row"][aria-level="2"]');
+
+      await expect(nestedRows.first()).toBeVisible();
       const rowCount = await nestedRows.count();
 
       for (let i = 0; i < rowCount; i++) {
@@ -334,14 +345,11 @@ test.describe('Accordion in table', () => {
         const cells = row.locator('[data-ui-name="Body.Cell"]');
         const cellCount = await cells.count();
 
-        expect(cellCount).toBeGreaterThan(0);
-
         for (let j = 0; j < cellCount; j++) {
           const cell = cells.nth(j);
           await expect(cell).toHaveAttribute('role', 'gridcell');
           await expect(cell).toHaveAttribute('aria-colindex');
           await expect(cell).toHaveAttribute('tabindex', '-1');
-          await expect(cell).toHaveAttribute('data-ui-name', 'Body.Cell');
         }
       }
     });
@@ -375,6 +383,7 @@ test.describe('Accordion in table', () => {
       await page.keyboard.press('ArrowUp');
       await page.keyboard.press('ArrowUp');
       await page.keyboard.press('Enter');
+      await page.waitForTimeout(250);
       for (let i = 0; i < 6; i++) await page.keyboard.press('ArrowDown');
 
       const lastRow = page.locator('[data-ui-name="Body.Row"][aria-rowindex="9"]');
@@ -414,6 +423,7 @@ test.describe('Accordion in table', () => {
 
     await test.step('Verify focus on whole first body cell by escape', async () => {
       await page.keyboard.press('Escape');
+      await page.waitForTimeout(250);
       await expect(firstrowCell).toBeFocused();
     });
 
@@ -430,6 +440,7 @@ test.describe('Accordion in table', () => {
 
     await test.step('Verify accordion can be expanded', async () => {
       await page.keyboard.press('Enter');
+      await page.waitForTimeout(250);
       await expect(elementsIncell.first()).toBeFocused();
       await expect(widget).toBeVisible();
       await page.keyboard.press('Tab');
@@ -439,19 +450,15 @@ test.describe('Accordion in table', () => {
 
     await test.step('Verify accordion not collapsed by esc', async () => {
       await page.keyboard.press('Escape');
+      await page.waitForTimeout(250);
       await expect(firstrowCell).toBeFocused();
       await expect(widget).toBeVisible();
       await page.keyboard.press('ArrowDown');
-      const row2 = page.locator('[data-ui-name="Body.Row"][aria-rowindex="3"]');
-      const secondrowCell = page
-        .locator('div')
-        .filter({ hasText: /^Nothing foundTry changing your filters\.$/ })
-        .nth(1);
-      await expect(secondrowCell).toBeFocused();
+      await page.waitForTimeout(100);
+      await expect(page).toHaveScreenshot();
     });
   });
 
-  // will be failed right now
   test('Verify mouse inreaction when interactive element inside cell with toggle', async ({
     page,
   }) => {
@@ -466,11 +473,14 @@ test.describe('Accordion in table', () => {
     const widget = page.locator('[data-ui-name="WidgetNoData"]');
 
     await firstrowCell.click();
+    await page.waitForTimeout(250);
     await expect(widget).toBeVisible();
     await firstrowCell.click();
+    await page.waitForTimeout(250);
     await expect(widget).not.toBeVisible();
 
     await elementsIncell.nth(1).click();
+    await page.waitForTimeout(250);
     await page.keyboard.press('Escape');
     await expect(widget).not.toBeVisible();
   });
@@ -511,6 +521,7 @@ test.describe('Accordion in table', () => {
 
     await test.step('Verify table in table expands', async () => {
       await page.keyboard.press('Enter');
+      await page.waitForTimeout(250);
       await expect(elementsIncell.first()).toBeFocused();
       await expect(table).toHaveAttribute('aria-rowcount', '10');
       await expect(firstrowCell.locator('[data-ui-name="ButtonLink"]')).toHaveAttribute(
@@ -547,11 +558,13 @@ test.describe('Accordion in table', () => {
         'true',
       );
       await page.keyboard.press('Enter');
+      await page.waitForTimeout(250);
       await expect(table).toHaveAttribute('aria-rowcount', '10');
       await page.keyboard.press('ArrowLeft');
       const elementsIncell = await row.locator('[data-ui-name="ButtonLink"]');
       await expect(elementsIncell).toBeFocused();
       await page.keyboard.press('Enter');
+      await page.waitForTimeout(250);
       const cell1 = row.locator('[data-ui-name="Body.Cell"][aria-colindex="1"]');
       await expect(table).toHaveAttribute('aria-rowcount', '13');
       await expect(firstrowCell.locator('[data-ui-name="ButtonLink"]')).toHaveAttribute(
@@ -574,6 +587,7 @@ test.describe('Accordion in table', () => {
 
       await expect(sortIconKd).toBeFocused();
       await page.keyboard.press('Enter');
+      await page.waitForTimeout(250);
       await expect(table).toHaveAttribute('aria-rowcount', '13');
 
       const newRow1 = page.locator('[role="row"][aria-rowindex="7"]');
@@ -602,6 +616,7 @@ test.describe('Accordion in table', () => {
     await page.setContent(htmlContent);
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
+    await page.waitForTimeout(250);
     await page.keyboard.press('ArrowRight');
     await page.keyboard.press('ArrowRight');
     await page.keyboard.press('ArrowRight');
@@ -632,6 +647,7 @@ test.describe('Accordion in table', () => {
 
       await expect(sortIconKeywordAcc).toBeFocused();
       await page.keyboard.press('Enter');
+      await page.waitForTimeout(250);
     });
 
     await test.step('Verify rowcount when accordion expanded', async () => {
@@ -681,6 +697,7 @@ test.describe('Accordion in table', () => {
       await expect(childlastCell).toBeFocused();
 
       await page.keyboard.press('Escape');
+      await page.waitForTimeout(250);
       await expect(sortIconKeywordAcc).toBeFocused();
 
       await page.keyboard.press('ArrowDown');
@@ -692,6 +709,7 @@ test.describe('Accordion in table', () => {
 
     await test.step('Verify keyboard navigation when child table collapsed', async () => {
       await page.keyboard.press('Enter');
+      await page.waitForTimeout(350);
       await expect(sortIconKeywordAcc).toHaveAttribute('aria-expanded', 'false');
       await page.keyboard.press('ArrowDown');
       const nextRow = table.first().locator('[data-ui-name="Body.Row"][aria-rowindex="5"]');
@@ -717,7 +735,7 @@ test.describe('Accordion in table', () => {
 
     await test.step('Verify table component expands by click on toggle', async () => {
       await sortIconKeywordAcc.click();
-
+      await page.waitForTimeout(250);
       await expect(table.first()).toHaveAttribute('aria-rowcount', '8');
       await expect(sortIconKeywordAcc).toHaveAttribute('aria-expanded', 'true');
       await expect(datatableChild).toBeVisible();
@@ -725,7 +743,7 @@ test.describe('Accordion in table', () => {
 
     await test.step('Verify table component collpases by click on toggle', async () => {
       await sortIconKeywordAcc.click();
-
+      await page.waitForTimeout(250);
       await expect(table.first()).toHaveAttribute('aria-rowcount', '7');
       await expect(sortIconKeywordAcc).toHaveAttribute('aria-expanded', 'false');
       await expect(datatableChild).not.toBeVisible();

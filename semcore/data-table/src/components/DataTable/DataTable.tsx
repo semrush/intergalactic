@@ -257,9 +257,11 @@ class DataTableRoot<D extends DataTableData> extends Component<
       renderEmptyData,
       sideIndents,
       selectedRows,
+      accordionDuration,
     } = this.asProps;
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
     return {
+      accordionDuration,
       columns: this.columns,
       rows: this.rows,
       flatRows: this.flatRows,
@@ -351,7 +353,9 @@ class DataTableRoot<D extends DataTableData> extends Component<
   }
 
   getRow = (index: number) => {
-    return this.tableRef.current?.querySelector(`[aria-rowindex="${index + 1}"]`);
+    return this.tableRef.current?.querySelector(
+      `[aria-rowindex="${index + 1}"]:not([aria-hidden="true"])`,
+    );
   };
 
   hasFocusableInHeader = () => {
@@ -410,7 +414,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
     const row = this.getRow(newRow);
     const cell = row?.querySelector(
-      `:scope > [role=gridcell][aria-colindex="${
+      `:scope > div > [role=gridcell][aria-colindex="${
         newCol + 1
       }"], :scope > [role=columnheader][aria-colindex="${
         newCol + 1
@@ -448,15 +452,16 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
       if (direction === 'left' || direction === 'right') {
         // we need to skip Collapse Element with one big component from keyboard left/right pressing
-        if (currentCell.parentElement?.dataset.uiName === 'Collapse') {
+        if (currentCell.parentElement?.parentElement?.dataset.uiName === 'Collapse') {
           return;
         }
 
         // left/right
         if (
           currentCell.dataset.groupedBy === 'colgroup' ||
-          Number(currentCell.parentElement?.getAttribute('aria-rowindex')) === 2 ||
-          Array.from(row?.children ?? []).indexOf(currentCell) > 0
+          Number(currentCell.parentElement?.parentElement?.getAttribute('aria-rowindex')) === 2 ||
+          (currentCell.parentElement &&
+            Array.from(row?.children ?? []).indexOf(currentCell.parentElement) > 0)
         ) {
           colI = direction === 'left' ? colI - 1 : colI + 1;
         } else {
@@ -555,7 +560,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
       if (!row && this.asProps.virtualScroll) {
         const firstAvailableCell = this.tableRef.current?.querySelector(`[role="gridcell"]`);
-        const firstAvailableRow = firstAvailableCell?.parentElement;
+        const firstAvailableRow = firstAvailableCell?.parentElement?.parentElement;
         if (firstAvailableCell && firstAvailableRow) {
           const colIndex = Number(firstAvailableCell.getAttribute('aria-colindex') ?? 1) - 1;
           const rowIndex = Number(firstAvailableRow.getAttribute('aria-rowindex') ?? 1) - 1;

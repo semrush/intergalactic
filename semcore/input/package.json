@@ -1,7 +1,7 @@
 {
   "name": "@semcore/input",
   "description": "Semrush Input Component",
-  "version": "16.0.0",
+  "version": "16.0.1",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -17,8 +17,8 @@
     "types": "./lib/types/index.d.ts"
   },
   "dependencies": {
-    "@semcore/flex-box": "workspace:*",
-    "@semcore/neighbor-location": "workspace:*"
+    "@semcore/neighbor-location": "16.0.1",
+    "@semcore/flex-box": "16.0.1"
   },
   "peerDependencies": {
     "@semcore/base-components": "^16.0.0"
@@ -29,8 +29,8 @@
     "directory": "semcore/input"
   },
   "devDependencies": {
-    "@semcore/icon": "^16.1.0",
-    "@semcore/testing-utils": "workspace:*",
-    "@types/react": "18.0.21"
+    "@types/react": "18.0.21",
+    "@semcore/testing-utils": "1.0.0",
+    "@semcore/icon": "*"
   }
 }

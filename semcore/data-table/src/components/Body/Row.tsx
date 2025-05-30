@@ -49,11 +49,13 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
   render() {
     const SRow = Root;
     const SCollapseRow = Collapse;
+    const SAccordionRows = Box;
     const SCell = Body.Cell;
     const SCheckboxCell = Body.Cell;
     const {
       columns,
       row,
+      rows,
       styles,
       rowIndex,
       ariaRowIndex,
@@ -66,6 +68,10 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
       uid,
       getFixedStyle,
       mergedRow,
+      isAccordionRow,
+      animationExpand,
+      accordionRowIndex,
+      accordionDuration,
     } = this.asProps;
 
     let accordion = row[ACCORDION];
@@ -83,6 +89,8 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
 
       accordion = cellWithAccordion?.[ACCORDION];
     }
+
+    const accordionId = `${uid}_${ariaRowIndex + 1}`;
 
     return sstyled(styles)(
       <>
@@ -139,7 +147,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
               <Body.Cell
                 key={index}
                 id={`${uid}_${ariaRowIndex}_${index}`}
-                accordionId={`${uid}_${ariaRowIndex + 1}`}
+                accordionId={accordionId}
                 data-aria-level={index === 0 ? ariaLevel : undefined}
                 row={row}
                 rowIndex={rowIndex}
@@ -151,6 +159,10 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
                   Boolean(cellValue instanceof MergedRowsCell && cellValue.accordion) ||
                   this.cellHasAccordion(cellValue)
                 }
+                isAccordionRow={isAccordionRow}
+                animationExpand={animationExpand}
+                accordionRowIndex={accordionRowIndex}
+                rows={rows}
               />
             );
           })}
@@ -161,11 +173,11 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
             key={rowIndex}
             role='row'
             aria-rowindex={ariaRowIndex + 1}
-            id={`${uid}_${ariaRowIndex + 1}`}
+            id={accordionId}
             visible={expanded}
             interactive
             gridArea={accordionDataGridArea}
-            duration={200}
+            duration={accordionDuration ?? 200}
             zIndex={5}
           >
             <SCell
@@ -188,26 +200,30 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
           </SCollapseRow>
         )}
 
-        {row[ACCORDION] &&
-          Array.isArray(row[ACCORDION]) &&
-          expanded &&
-          row[ACCORDION]?.map((subrow, i) => {
-            return (
-              <Row
-                key={i}
-                row={subrow}
-                columns={columns}
-                rows={row[ACCORDION]}
-                rowIndex={rowIndex}
-                aria-posinset={i + 1}
-                aria-level={ariaLevel + 1}
-                ariaRowIndex={ariaRowIndex + 1 + i}
-                gridRowIndex={gridRowIndex + 1 + i}
-                isAccordionRow={true}
-                getFixedStyle={getFixedStyle}
-              />
-            );
-          })}
+        {row[ACCORDION] && Array.isArray(row[ACCORDION]) && (
+          <SAccordionRows id={accordionId} role='rowgroup'>
+            {row[ACCORDION].map((subrow, i) => {
+              return (
+                <Row
+                  key={i}
+                  row={subrow}
+                  columns={columns}
+                  rows={row[ACCORDION]}
+                  rowIndex={rowIndex}
+                  aria-hidden={!expanded}
+                  aria-posinset={i + 1}
+                  aria-level={ariaLevel + 1}
+                  ariaRowIndex={ariaRowIndex + 1 + i}
+                  gridRowIndex={gridRowIndex + 1 + i}
+                  isAccordionRow={true}
+                  getFixedStyle={getFixedStyle}
+                  animationExpand={expanded}
+                  accordionRowIndex={i}
+                />
+              );
+            })}
+          </SAccordionRows>
+        )}
       </>,
     );
   }

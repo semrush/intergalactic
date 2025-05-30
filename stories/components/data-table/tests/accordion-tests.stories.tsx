@@ -13,6 +13,8 @@ import TabeInTableFixedColumnExample from './examples/accordion-tests/table-in-t
 import HorizontalScrollExample from './examples/accordion-tests/accordion-with-horizontal-scroll';
 import TabeInTableSortableExample from './examples/accordion-tests/table-in-table-with-sorting';
 import ColoredAccordionExample from './examples/accordion-tests/colored-accordion';
+import TabeInTableAnimationTestExample from './examples/accordion-tests/table-in-table-animation-test';
+import AnimationDurationTestExample from './examples/accordion-tests/accordion-duration';
 
 const meta: Meta<typeof DataTable> = {
   title: 'Components/DataTable/Tests/AccordionTests',
@@ -24,6 +26,14 @@ type Story = StoryObj<typeof DataTable>;
 
 export const AccordionWithChartAndButton: Story = {
   render: AccordionWithChartAndButtonExample,
+};
+
+export const AnimationDurationTest: Story = {
+  render: AnimationDurationTestExample,
+};
+
+export const TabeInTableAnimationTest: Story = {
+  render: TabeInTableAnimationTestExample,
 };
 
 export const HorizontalScroll: Story = {

@@ -9,7 +9,7 @@ const Demo = () => {
     <DataTable
       data={data}
       aria-label='Accordion inside table'
-      h='100%'
+      h='300px'
       defaultGridTemplateColumnWidth='1fr'
       columns={[
         { name: 'keyword', children: 'Keyword', gtcWidth: 'minmax(20%, 50%)' },

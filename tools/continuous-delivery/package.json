@@ -6,7 +6,8 @@
     "init-prerelease": "bin/init-prerelease.ts",
     "publish-prerelease": "bin/publish-prerelease.ts",
     "publish-release": "bin/publish-release.ts",
-    "upload-static": "bin/upload-static.ts"
+    "upload-static": "bin/upload-static.ts",
+    "pkg-diff": "bin/get-changed-packages.ts"
   },
   "private": true,
   "license": "MIT",
