@@ -452,7 +452,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
       if (direction === 'left' || direction === 'right') {
         // we need to skip Collapse Element with one big component from keyboard left/right pressing
-        if (currentCell.parentElement?.dataset.uiName === 'Collapse') {
+        if (currentCell.parentElement?.parentElement?.dataset.uiName === 'Collapse') {
           return;
         }
 
