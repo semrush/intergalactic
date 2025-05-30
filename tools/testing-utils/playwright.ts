@@ -60,16 +60,19 @@ const test = base.extend<{ testHook: void }>({
   testHook: [beforeEachTests, { auto: true }],
 
   page: async ({ page }, use) => {
-    await page.route('https://static.semrush.com/ui-kit/illustration/**/*.svg', async (route) => {
-      const illustrationName = route.request().url().split('/').pop()!;
+    await page.route(
+      'https://static.semrush.com/intergalactic/illustrations/**/*.svg',
+      async (route) => {
+        const illustrationName = route.request().url().split('/').pop()!;
 
-      const svg = await fs.readFile(
-        path.resolve(process.cwd(), 'semcore', 'illustration', 'svg', illustrationName),
-        'utf-8',
-      );
+        const svg = await fs.readFile(
+          path.resolve(process.cwd(), 'semcore', 'illustration', 'svg', illustrationName),
+          'utf-8',
+        );
 
-      await route.fulfill({ body: svg, contentType: 'image/svg+xml' });
-    });
+        await route.fulfill({ body: svg, contentType: 'image/svg+xml' });
+      },
+    );
 
     await use(page);
   },
