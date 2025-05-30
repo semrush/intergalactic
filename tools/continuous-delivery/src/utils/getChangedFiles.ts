@@ -35,6 +35,12 @@ export async function getChangedFiles(command = 'HEAD^1'): Promise<Set<string>> 
         components.add(dep);
       }
     }
+    if (item.file.startsWith('stories/components')) {
+      const path = item.file.split('/');
+      const packageName = path[2];
+
+      components.add(`@semcore/${packageName}`);
+    }
   });
 
   return components;
