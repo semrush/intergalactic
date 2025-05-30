@@ -560,7 +560,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
       if (!row && this.asProps.virtualScroll) {
         const firstAvailableCell = this.tableRef.current?.querySelector(`[role="gridcell"]`);
-        const firstAvailableRow = firstAvailableCell?.parentElement;
+        const firstAvailableRow = firstAvailableCell?.parentElement?.parentElement;
         if (firstAvailableCell && firstAvailableRow) {
           const colIndex = (Number(firstAvailableCell.getAttribute('aria-colindex')) ?? 1) - 1;
           const rowIndex = (Number(firstAvailableRow.getAttribute('aria-rowindex')) ?? 1) - 1;
