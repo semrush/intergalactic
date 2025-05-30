@@ -2,11 +2,7 @@ import React from 'react';
 import { snapshot } from '@semcore/testing-utils/snapshot';
 import Button from '@semcore/button';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
-import {
-  cleanup,
-  render,
-  userEvent,
-} from '@semcore/testing-utils/testing-library';
+import { cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
 
 import DropdownMenu from '../src';
 import { Box } from '@semcore/flex-box';
@@ -80,28 +76,31 @@ describe('DropdownMenu', () => {
     expect(spy).toHaveBeenCalledOnce();
   });
 
-  test.sequential('Verify no autofocus trigger when closed on just rerender', async ({ expect }) => {
-    const Component = () => {
-      return (
-        <DropdownMenu>
-          <DropdownMenu.Trigger tag='button' data-testid='dd-button-trigger'>
-            Trigger
-          </DropdownMenu.Trigger>
-          <DropdownMenu.Menu>
-            <DropdownMenu.Item>Item 1</DropdownMenu.Item>
-            <DropdownMenu.Item>Item 2</DropdownMenu.Item>
-            <DropdownMenu.Item selected>Item 3</DropdownMenu.Item>
-          </DropdownMenu.Menu>
-        </DropdownMenu>
-      );
-    };
-    const component = render(<Component />);
+  test.sequential(
+    'Verify no autofocus trigger when closed on just rerender',
+    async ({ expect }) => {
+      const Component = () => {
+        return (
+          <DropdownMenu>
+            <DropdownMenu.Trigger tag='button' data-testid='dd-button-trigger'>
+              Trigger
+            </DropdownMenu.Trigger>
+            <DropdownMenu.Menu>
+              <DropdownMenu.Item>Item 1</DropdownMenu.Item>
+              <DropdownMenu.Item>Item 2</DropdownMenu.Item>
+              <DropdownMenu.Item selected>Item 3</DropdownMenu.Item>
+            </DropdownMenu.Menu>
+          </DropdownMenu>
+        );
+      };
+      const component = render(<Component />);
 
-    await new Promise((resolve) => setTimeout(resolve, 1));
-    component.rerender(<Component />);
-    await new Promise((resolve) => setTimeout(resolve, 1));
-    expect(component.getByTestId('dd-button-trigger')).not.toHaveFocus();
-  });
+      await new Promise((resolve) => setTimeout(resolve, 1));
+      component.rerender(<Component />);
+      await new Promise((resolve) => setTimeout(resolve, 1));
+      expect(component.getByTestId('dd-button-trigger')).not.toHaveFocus();
+    },
+  );
 
   test.sequential('Verify onVisibleChange event calls once', async ({ expect }) => {
     const spy = vi.fn();
@@ -231,5 +230,4 @@ describe('DropdownMenu', () => {
     await userEvent.keyboard('[ArrowDown]');
     expect(getByTestId('dd-menu-item-1')).toHaveFocus();
   });
-
 });

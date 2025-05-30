@@ -16,16 +16,18 @@ test.describe('Dropdown menu base', () => {
 
     const trigger = page.locator('[data-ui-name="DropdownMenu.Trigger"]');
     const popper = page.locator('[data-ui-name="DropdownMenu.Popper"]');
-const ddMenu = page.locator('[data-ui-name="DropdownMenu.Menu"]');
-const items = page.locator('[data-ui-name="DropdownMenu.Group"] [data-ui-name="DropdownMenu.Item"]');
-const dropdownItemWithTitle = page.locator('[data-ui-name="ScrollArea.Container"] >> [data-ui-name="Dropdown.Item"]:not(:has([data-ui-name="DropdownMenu.Group"] *))');
+    const ddMenu = page.locator('[data-ui-name="DropdownMenu.Menu"]');
+    const items = page.locator(
+      '[data-ui-name="DropdownMenu.Group"] [data-ui-name="DropdownMenu.Item"]',
+    );
+    const dropdownItemWithTitle = page.locator(
+      '[data-ui-name="ScrollArea.Container"] >> [data-ui-name="Dropdown.Item"]:not(:has([data-ui-name="DropdownMenu.Group"] *))',
+    );
 
     await test.step('Verify attributes of trigger', async () => {
-
       await expect(trigger).toHaveAttribute('role', 'button');
       await expect(trigger).toHaveAttribute('aria-haspopup', 'true');
       await expect(trigger).toHaveAttribute('aria-expanded', 'false');
-
     });
 
     await page.keyboard.press('Tab');
@@ -37,7 +39,6 @@ const dropdownItemWithTitle = page.locator('[data-ui-name="ScrollArea.Container"
       await expect(trigger).toHaveAttribute('aria-haspopup', 'true');
       await expect(trigger).toHaveAttribute('aria-expanded', 'true');
       await expect(trigger).toHaveAttribute('aria-controls');
-
     });
 
     await test.step('Verify popper attributes', async () => {
@@ -107,11 +108,10 @@ const dropdownItemWithTitle = page.locator('[data-ui-name="ScrollArea.Container"
     });
 
     await test.step('Verify closes by trigger click', async () => {
-    await button.click();
-    await menu.waitFor();
-    await expect(menu).not.toBeVisible();
-  });
-
+      await button.click();
+      await menu.waitFor();
+      await expect(menu).not.toBeVisible();
+    });
   });
 
   test('Verify keyboard interactions with Base dropdown menu', async ({ page }) => {
@@ -120,63 +120,59 @@ const dropdownItemWithTitle = page.locator('[data-ui-name="ScrollArea.Container"
 
     await page.setContent(htmlContent);
     const menu = page.getByRole('menu');
- const items = page.getByRole('menuitem');
+    const items = page.getByRole('menuitem');
 
     await test.step('Verify opens by Enter', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await menu.waitFor();
+      await expect(menu).toBeVisible();
+    });
 
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Enter');
-    await menu.waitFor();
-    await expect(menu).toBeVisible(); 
-  });
+    await test.step('Verify closed by Escape', async () => {
+      await page.keyboard.press('Escape');
+      await expect(menu).not.toBeVisible();
+    });
 
-  await test.step('Verify closed by Escape', async () => {
+    await test.step('Verify opens by Space', async () => {
+      await page.keyboard.press('Space');
+      await menu.waitFor();
+      await expect(menu).toBeVisible();
+    });
 
-    await page.keyboard.press('Escape');
-    await expect(menu).not.toBeVisible();
-  });
+    await test.step('Verify opens by ArrowDown', async () => {
+      await page.keyboard.press('Escape');
+      await page.waitForTimeout(200);
+      await page.keyboard.press('ArrowDown');
+      await menu.waitFor();
+      await expect(menu).toBeVisible();
+      await expect(items.first()).toBeFocused();
+    });
 
-  await test.step('Verify opens by Space', async () => {
-  await page.keyboard.press('Space');
-  await menu.waitFor();
-  await expect(menu).toBeVisible(); 
-});
+    await test.step('Verify opens by ArrowUp', async () => {
+      await page.keyboard.press('Escape');
+      await page.waitForTimeout(200);
+      await page.keyboard.press('ArrowUp');
+      await menu.waitFor();
+      await expect(menu).toBeVisible();
+      await expect(items.first()).toBeFocused();
+    });
 
-await test.step('Verify opens by ArrowDown', async () => {
-  await page.keyboard.press('Escape');
-  await page.waitForTimeout(200);
-  await page.keyboard.press('ArrowDown');
-  await menu.waitFor();
-  await expect(menu).toBeVisible(); 
-  await expect(items.first()).toBeFocused();
-});
+    await test.step('Verify Tab not swicthes focus', async () => {
+      await page.keyboard.press('Tab');
+      await expect(menu).toBeVisible();
+      await expect(items.first()).toBeFocused();
+    });
 
-await test.step('Verify opens by ArrowUp', async () => {
-  await page.keyboard.press('Escape');
-  await page.waitForTimeout(200);
-  await page.keyboard.press('ArrowUp');
-  await menu.waitFor();
-  await expect(menu).toBeVisible(); 
-  await expect(items.first()).toBeFocused();
-});
-
-await test.step('Verify Tab not swicthes focus', async () => {
-  await page.keyboard.press('Tab');
-  await expect(menu).toBeVisible(); 
-  await expect(items.first()).toBeFocused();
-});
-
-await test.step('Verify ArrowNavigation', async () => {
-  await page.keyboard.press('ArrowUp');
-  await expect(menu).toBeVisible(); 
-  await expect(items.nth(3)).toBeFocused();
-  await page.keyboard.press('ArrowUp');
-  await page.keyboard.press('ArrowUp');
-  await page.keyboard.press('ArrowUp');
-  await expect(items.first()).toBeFocused();
-});
-
-
+    await test.step('Verify ArrowNavigation', async () => {
+      await page.keyboard.press('ArrowUp');
+      await expect(menu).toBeVisible();
+      await expect(items.nth(3)).toBeFocused();
+      await page.keyboard.press('ArrowUp');
+      await page.keyboard.press('ArrowUp');
+      await page.keyboard.press('ArrowUp');
+      await expect(items.first()).toBeFocused();
+    });
   });
 
   test('Verify sizes and styles of dd menu', async ({ page, browserName }) => {
@@ -251,52 +247,49 @@ await test.step('Verify ArrowNavigation', async () => {
     await expect(page).toHaveScreenshot();
   });
 
-  test('Verify keyboard interactions dd menu with notice and interactive item inside', async ({ page }) => {
+  test('Verify keyboard interactions dd menu with notice and interactive item inside', async ({
+    page,
+  }) => {
     const standPath = 'stories/components/dropdown-menu/docs/examples/dropdown-menu.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
 
     const menu = page.getByRole('menu');
- const items = page.getByRole('menuitem');
- const link = page.getByRole('link');
+    const items = page.getByRole('menuitem');
+    const link = page.getByRole('link');
 
     await test.step('Verify opens by Enter and first item focused', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await menu.waitFor();
+      await expect(menu).toBeVisible();
+      await expect(items.first()).toBeFocused();
+      await expect(page).toHaveScreenshot();
+    });
 
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Enter');
-    await menu.waitFor();
-    await expect(menu).toBeVisible(); 
-    await expect(items.first()).toBeFocused();
-    await expect(page).toHaveScreenshot();
-  });  
+    await test.step('Verify cant switch to interactive element by arrows', async () => {
+      await page.keyboard.press('ArrowUp');
+      await expect(items.nth(2)).toBeFocused();
+    });
 
-  await test.step('Verify cant switch to interactive element by arrows', async () => {
+    await test.step('Verify switch beiween interactive elements by tab', async () => {
+      await page.keyboard.press('Tab');
+      await expect(link).toBeFocused();
 
-    await page.keyboard.press('ArrowUp');
-    await expect(items.nth(2)).toBeFocused();
-  });  
+      await page.keyboard.press('Shift+Tab');
+      await expect(items.nth(2)).toBeFocused();
+    });
 
-  await test.step('Verify switch beiween interactive elements by tab', async () => {
-
-    await page.keyboard.press('Tab');
-    await expect(link).toBeFocused();
-
-    await page.keyboard.press('Shift+Tab');
-    await expect(items.nth(2)).toBeFocused();
-  });  
-
-  await test.step('Verify closed by escape when focus on notice', async () => {
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Escape');
-    await expect(menu).not.toBeVisible();
-  }); 
-});
-
+    await test.step('Verify closed by escape when focus on notice', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Escape');
+      await expect(menu).not.toBeVisible();
+    });
+  });
 });
 
 test.describe('Menu item types and elements inside', () => {
-
   test('Verify hint badges icons and counter styles in menus ', async ({ page }) => {
     const standPath = 'stories/components/dropdown-menu/tests/examples/list_item_types.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -304,7 +297,9 @@ test.describe('Menu item types and elements inside', () => {
     await page.setContent(htmlContent);
     const button = page.locator('button');
     const menu = page.getByRole('menu');
-    const items = page.locator('[data-ui-name="DropdownMenu.Group"] [data-ui-name="DropdownMenu.Item"]');
+    const items = page.locator(
+      '[data-ui-name="DropdownMenu.Group"] [data-ui-name="DropdownMenu.Item"]',
+    );
 
     await button.click();
     await menu.waitFor();
@@ -331,18 +326,14 @@ test.describe('Menu item types and elements inside', () => {
     await test.step('Verify padding between item and icon', async () => {
       const ItemAddon = items.nth(3).locator('[data-ui-name="DropdownMenu.Item.Text"]');
       await checkStyles(ItemAddon, {
-    
         'margin-left': '4px',
-      
       });
     });
 
     await test.step('Verify padding between item badge', async () => {
       const ItemAddon = items.nth(4).locator('[data-ui-name="DropdownMenu.Item.Text"]');
       await checkStyles(ItemAddon, {
-    
         'margin-right': '4px',
-      
       });
     });
 
@@ -351,16 +342,13 @@ test.describe('Menu item types and elements inside', () => {
       await page.waitForTimeout(300);
 
       await expect(page).toHaveScreenshot();
-
     });
 
     await test.step('Verify closed by trigger click', async () => {
       await button.click();
       await expect(menu).not.toBeVisible();
     });
-
   });
-
 });
 
 test.describe('Item actions', () => {
@@ -381,117 +369,110 @@ test.describe('Item actions', () => {
     const Item3 = page.locator(
       '[data-ui-name="DropdownMenu.Item.Content"]:has-text("Menu item 3")',
     );
-    
+
     await test.step('Verify 1st item focused when menu expanded by Enter', async () => {
+      await page.keyboard.press('Tab');
+      await expect(ddMenuTrigger).toBeFocused();
 
-    await page.keyboard.press('Tab');
-    await expect(ddMenuTrigger).toBeFocused();
+      await page.keyboard.press('Enter');
+      await menu.waitFor();
+      await expect(ddMenuTrigger).not.toBeFocused();
+      await expect(menu).toBeVisible();
+      const Item1 = page.locator('[data-ui-name="DropdownMenu.Item"]:has-text("Menu item 1")');
+      await expect(Item1).toBeFocused();
+      await expect(page).toHaveScreenshot();
+    });
 
-    await page.keyboard.press('Enter');
-    await menu.waitFor();
-    await expect(ddMenuTrigger).not.toBeFocused();
-    await expect(menu).toBeVisible();
-    const Item1 = page.locator('[data-ui-name="DropdownMenu.Item"]:has-text("Menu item 1")');
-    await expect(Item1).toBeFocused();
-    await expect(page).toHaveScreenshot();
-  });
+    await test.step('Verify 1st item focused when menu expanded ArrowDown', async () => {
+      await page.keyboard.press('Escape');
+      await expect(ddMenuTrigger).toBeFocused();
 
-  await test.step('Verify 1st item focused when menu expanded ArrowDown', async () => {
+      await page.keyboard.press('Enter');
+      await menu.waitFor();
+      await expect(ddMenuTrigger).not.toBeFocused();
+      await expect(menu).toBeVisible();
+      const Item1 = page.locator('[data-ui-name="DropdownMenu.Item"]:has-text("Menu item 1")');
+      await expect(Item1).toBeFocused();
+    });
 
-    await page.keyboard.press('Escape');
-    await expect(ddMenuTrigger).toBeFocused();
+    await test.step('Verify item focused but items inside not focused when navigate to item', async () => {
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
 
-    await page.keyboard.press('Enter');
-    await menu.waitFor();
-    await expect(ddMenuTrigger).not.toBeFocused();
-    await expect(menu).toBeVisible();
-    const Item1 = page.locator('[data-ui-name="DropdownMenu.Item"]:has-text("Menu item 1")');
-    await expect(Item1).toBeFocused();
-  });
+      await expect(Item3).toBeFocused();
+      await expect(MathPlus).not.toBeFocused();
+      await expect(Trash).not.toBeFocused();
+    });
 
-  await test.step('Verify item focused but items inside not focused when navigate to item', async () => {
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-
-    await expect(Item3).toBeFocused();
-    await expect(MathPlus).not.toBeFocused();
-    await expect(Trash).not.toBeFocused();
-  });
-
-  await test.step('Verify enter not switch focus', async () => {
-
-    await page.keyboard.press('Enter');
-    await expect(MathPlus).not.toBeFocused();
-    await expect(Trash).not.toBeFocused();
-
-     
+    await test.step('Verify enter not switch focus', async () => {
+      await page.keyboard.press('Enter');
+      await expect(MathPlus).not.toBeFocused();
+      await expect(Trash).not.toBeFocused();
     });
 
     await test.step('Verify focus swicthes by tab', async () => {
- await page.keyboard.press('Tab');
- await expect(MathPlus).toBeFocused();
- await expect(Trash).not.toBeFocused();
- await page.keyboard.press('Escape');
-
+      await page.keyboard.press('Tab');
+      await expect(MathPlus).toBeFocused();
+      await expect(Trash).not.toBeFocused();
+      await page.keyboard.press('Escape');
     });
     await test.step('Verify focus swicthes by ArrowRight', async () => {
       await page.keyboard.press('ArrowRight');
-    await expect(MathPlus).toBeFocused();
-    await page.waitForTimeout(500);
-    await expect(page).toHaveScreenshot();
+      await expect(MathPlus).toBeFocused();
+      await page.waitForTimeout(500);
+      await expect(page).toHaveScreenshot();
 
-    await page.keyboard.press('ArrowRight');
-    await expect(Trash).toBeFocused();
-  });
+      await page.keyboard.press('ArrowRight');
+      await expect(Trash).toBeFocused();
+    });
 
-  await test.step('Verify Escape returns to the menu item', async () => {
-    await page.keyboard.press('Escape');
-    await page.waitForTimeout(100);
-    await expect(Item3).toBeFocused();
-    await expect(MathPlus).not.toBeFocused();
-    await expect(Trash).not.toBeFocused();
-  });
+    await test.step('Verify Escape returns to the menu item', async () => {
+      await page.keyboard.press('Escape');
+      await page.waitForTimeout(100);
+      await expect(Item3).toBeFocused();
+      await expect(MathPlus).not.toBeFocused();
+      await expect(Trash).not.toBeFocused();
+    });
 
-  const Item4 = page.locator('[data-ui-name="DropdownMenu.Item.Content"][role="menuitem"]', {
-    hasText: 'Menu item 4',
-  });
-  const Add = page.locator('[data-ui-name="DropdownMenu.Item"]:has-text("Add")');
+    const Item4 = page.locator('[data-ui-name="DropdownMenu.Item.Content"][role="menuitem"]', {
+      hasText: 'Menu item 4',
+    });
+    const Add = page.locator('[data-ui-name="DropdownMenu.Item"]:has-text("Add")');
 
-  await test.step('Verify submenu not expands automatically', async () => {
-    await page.keyboard.press('ArrowDown');
-    await expect(Item4).toBeFocused();
-    await expect(Add).not.toBeVisible();
-  });
+    await test.step('Verify submenu not expands automatically', async () => {
+      await page.keyboard.press('ArrowDown');
+      await expect(Item4).toBeFocused();
+      await expect(Add).not.toBeVisible();
+    });
 
-  await test.step('Verify submenu expands by enter', async () => {
-    await page.keyboard.press('Enter');
-    await Add.waitFor();
-    await expect(Item4).not.toBeFocused();
-    await expect(Add).toBeVisible();
-    await expect(Add).toBeFocused();
-    await expect(page).toHaveScreenshot();
-  });
+    await test.step('Verify submenu expands by enter', async () => {
+      await page.keyboard.press('Enter');
+      await Add.waitFor();
+      await expect(Item4).not.toBeFocused();
+      await expect(Add).toBeVisible();
+      await expect(Add).toBeFocused();
+      await expect(page).toHaveScreenshot();
+    });
 
-  await test.step('Verify submenu expands by ArrowRight', async () => {
-    await page.keyboard.press('Escape');
-    await page.waitForTimeout(100);
-    await page.keyboard.press('ArrowRight');
-    await Add.waitFor();
-    await expect(Item4).not.toBeFocused();
-    await expect(Add).toBeVisible();
-    await expect(Add).toBeFocused();
-  });
+    await test.step('Verify submenu expands by ArrowRight', async () => {
+      await page.keyboard.press('Escape');
+      await page.waitForTimeout(100);
+      await page.keyboard.press('ArrowRight');
+      await Add.waitFor();
+      await expect(Item4).not.toBeFocused();
+      await expect(Add).toBeVisible();
+      await expect(Add).toBeFocused();
+    });
 
-
-  await test.step('Verify escape retuns and closes all submenus', async () => {
-    await page.keyboard.press('Escape');
-    await expect(Item4).toBeFocused();
-    await expect(Add).not.toBeVisible();
-    await page.keyboard.press('Escape');
-    await page.waitForTimeout(500);
-    await expect(ddMenuTrigger).toBeFocused();
-    await expect(menu).not.toBeVisible();
-  });
+    await test.step('Verify escape retuns and closes all submenus', async () => {
+      await page.keyboard.press('Escape');
+      await expect(Item4).toBeFocused();
+      await expect(Add).not.toBeVisible();
+      await page.keyboard.press('Escape');
+      await page.waitForTimeout(500);
+      await expect(ddMenuTrigger).toBeFocused();
+      await expect(menu).not.toBeVisible();
+    });
   });
 });
 
@@ -508,52 +489,50 @@ test.describe('Nested menus with focusable elements', () => {
     const button = page.locator('button[data-ui-name="Button"]:has-text("Apply")');
 
     await test.step('Verify 1st item focused when Menu expands and submenu dont displayed', async () => {
+      await page.keyboard.press('Tab');
+      await expect(ddMenu).toBeFocused();
+      await page.keyboard.press('Enter');
+      await expect(ddMenu).not.toBeFocused();
 
-    await page.keyboard.press('Tab');
-    await expect(ddMenu).toBeFocused();
-    await page.keyboard.press('Enter');
-    await expect(ddMenu).not.toBeFocused();
-  
-    await expect(items.first()).toBeFocused();
-    await expect(SubItem1).not.toBeVisible();
-  });
+      await expect(items.first()).toBeFocused();
+      await expect(SubItem1).not.toBeVisible();
+    });
 
-  await test.step('Verify 3rd item focused and 3rd submenu shown', async () => {
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-    await page.waitForTimeout(500);
-    await expect(items.nth(2)).toBeFocused();
-  });
+    await test.step('Verify 3rd item focused and 3rd submenu shown', async () => {
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+      await page.waitForTimeout(500);
+      await expect(items.nth(2)).toBeFocused();
+    });
 
-  await test.step('Verify 1st item  submenu focused', async () => {
-    await page.keyboard.press('Enter');
-    await expect(SubItem1).toBeVisible();
-    await expect(SubItem1).toBeFocused();
-  });
+    await test.step('Verify 1st item  submenu focused', async () => {
+      await page.keyboard.press('Enter');
+      await expect(SubItem1).toBeVisible();
+      await expect(SubItem1).toBeFocused();
+    });
 
-  await test.step('Verify Input number focused and focus not lost by clicking up/down', async () => {
+    await test.step('Verify Input number focused and focus not lost by clicking up/down', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('ArrowDown');
+      await expect(input1).toBeFocused();
+    });
 
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('ArrowDown');
-    await expect(input1).toBeFocused();
-  });
+    await test.step('Verify Apply btn focused and focus not loast by clicking up/down', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('ArrowDown');
+      await expect(button).toBeFocused();
+      await expect(SubItem1).not.toBeFocused();
+    });
 
-  await test.step('Verify Apply btn focused and focus not loast by clicking up/down', async () => {
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('ArrowDown');
-    await expect(button).toBeFocused();
-    await expect(SubItem1).not.toBeFocused();
-  });
-
-  await test.step('Verify closed by ESC', async () => {
-    await page.keyboard.press('Escape');
-    await expect(button).not.toBeFocused();
-    await expect(items.nth(2)).toBeFocused();
-    await page.keyboard.press('Escape');
-    await new Promise((resolve) => setTimeout(resolve, 200));
-    await expect(page.locator('[data-ui-name="DropdownMenu"]')).not.toBeVisible();
-  });
+    await test.step('Verify closed by ESC', async () => {
+      await page.keyboard.press('Escape');
+      await expect(button).not.toBeFocused();
+      await expect(items.nth(2)).toBeFocused();
+      await page.keyboard.press('Escape');
+      await new Promise((resolve) => setTimeout(resolve, 200));
+      await expect(page.locator('[data-ui-name="DropdownMenu"]')).not.toBeVisible();
+    });
   });
 });
 
@@ -605,79 +584,75 @@ test.describe('Selectable radio items', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
-    const ddMenuTrigger =  page.locator('[data-ui-name="DropdownMenu.Trigger"]');
+    const ddMenuTrigger = page.locator('[data-ui-name="DropdownMenu.Trigger"]');
     const items = page.locator('[data-ui-name="DropdownMenu.Item.Content"]');
     const deleteButton1 = page.locator('[aria-label="Delete item"]').nth(0);
     const menu = page.locator('[data-ui-name="DropdownMenu.Menu"]');
 
-  await test.step('Verify 1st item focused when menu expanded', async () => {
-    await page.keyboard.press('Tab');
-    await expect(ddMenuTrigger).toBeFocused();
-    await page.keyboard.press('Enter');
-    await menu.waitFor();
-    await expect(ddMenuTrigger).not.toBeFocused();
-    await expect(items.first()).toBeFocused();
-  });
+    await test.step('Verify 1st item focused when menu expanded', async () => {
+      await page.keyboard.press('Tab');
+      await expect(ddMenuTrigger).toBeFocused();
+      await page.keyboard.press('Enter');
+      await menu.waitFor();
+      await expect(ddMenuTrigger).not.toBeFocused();
+      await expect(items.first()).toBeFocused();
+    });
 
-  const contentItems = page.locator('[data-ui-name="DropdownMenu.Item.Content"]');
+    const contentItems = page.locator('[data-ui-name="DropdownMenu.Item.Content"]');
 
-  await test.step('Verify items in group attributes', async () => {
-    await expect(contentItems.nth(0)).toHaveAttribute('aria-checked', 'true');
-    await expect(contentItems.nth(0)).toHaveAttribute('aria-haspopup', 'true');
-    await expect(contentItems.nth(0)).toHaveAttribute('role', 'menuitemradio');
-    await expect(contentItems.nth(0)).toHaveAttribute('tabindex', '0');
-    await expect(contentItems.nth(0)).toHaveAttribute('aria-describedby');
+    await test.step('Verify items in group attributes', async () => {
+      await expect(contentItems.nth(0)).toHaveAttribute('aria-checked', 'true');
+      await expect(contentItems.nth(0)).toHaveAttribute('aria-haspopup', 'true');
+      await expect(contentItems.nth(0)).toHaveAttribute('role', 'menuitemradio');
+      await expect(contentItems.nth(0)).toHaveAttribute('tabindex', '0');
+      await expect(contentItems.nth(0)).toHaveAttribute('aria-describedby');
 
-    const count1 = await contentItems.count();
+      const count1 = await contentItems.count();
 
-    for (let i = 1; i < count1; i++) {
-      await expect(contentItems.nth(i)).toHaveAttribute('aria-haspopup', 'true');
-      await expect(contentItems.nth(i)).toHaveAttribute('role', 'menuitemradio');
-      await expect(contentItems.nth(i)).toHaveAttribute('tabindex', '-1');
-      await expect(contentItems.nth(i)).toHaveAttribute('aria-describedby');
+      for (let i = 1; i < count1; i++) {
+        await expect(contentItems.nth(i)).toHaveAttribute('aria-haspopup', 'true');
+        await expect(contentItems.nth(i)).toHaveAttribute('role', 'menuitemradio');
+        await expect(contentItems.nth(i)).toHaveAttribute('tabindex', '-1');
+        await expect(contentItems.nth(i)).toHaveAttribute('aria-describedby');
+      }
+    });
 
-    }
-  });
+    await test.step('Verify menu closed by enter when interactive icon not focused', async () => {
+      await page.keyboard.press('Enter');
+      await new Promise((resolve) => setTimeout(resolve, 250));
+      await expect(ddMenuTrigger).toBeFocused();
+      await expect(items.first()).not.toBeVisible();
+      await page.keyboard.press('Enter');
+      await new Promise((resolve) => setTimeout(resolve, 500));
+    });
 
+    await test.step('Verify interactive item focused by right arrow', async () => {
+      await page.keyboard.press('ArrowRight');
+      await new Promise((resolve) => setTimeout(resolve, 500));
+      await expect(deleteButton1).toBeFocused();
+      await expect(deleteButton1).toHaveAttribute('tabindex', '0');
+      await expect(deleteButton1).toHaveAttribute('role', 'menuitem');
+      await expect(page).toHaveScreenshot();
+    });
 
-  await test.step('Verify menu closed by enter when interactive icon not focused', async () => {
+    await test.step('Verify Left Arrow switches focus from interactive item to menu item', async () => {
+      await page.keyboard.press('ArrowLeft');
+      await expect(deleteButton1).not.toBeFocused();
+      await expect(items.first()).toBeFocused();
+    });
 
-    await page.keyboard.press('Enter');
-    await new Promise((resolve) => setTimeout(resolve, 250));
-    await expect(ddMenuTrigger).toBeFocused();
-    await expect(items.first()).not.toBeVisible();
-    await page.keyboard.press('Enter');
-    await new Promise((resolve) => setTimeout(resolve, 500));
-  });
-
-  await test.step('Verify interactive item focused by right arrow', async () => {
-
-    await page.keyboard.press('ArrowRight');
-    await new Promise((resolve) => setTimeout(resolve, 500));
-    await expect(deleteButton1).toBeFocused();
-    await expect(deleteButton1).toHaveAttribute('tabindex', '0');
-    await expect(deleteButton1).toHaveAttribute('role', 'menuitem');
-    await expect(page).toHaveScreenshot();
-  });
-
-  await test.step('Verify Left Arrow switches focus from interactive item to menu item', async () => {
-    await page.keyboard.press('ArrowLeft');
-    await expect(deleteButton1).not.toBeFocused();
-    await expect(items.first()).toBeFocused();
-  });
-
-  await test.step('Verify escape closes all tooltips and menu', async () => {
-    await page.keyboard.press('ArrowRight');
-    await new Promise((resolve) => setTimeout(resolve, 200));
-    await page.keyboard.press('Escape');
-    await new Promise((resolve) => setTimeout(resolve, 100));
-    await page.keyboard.press('Escape');
-    await new Promise((resolve) => setTimeout(resolve, 100));
-    await page.keyboard.press('Escape');
-    await expect(ddMenuTrigger).toBeFocused();
-    await expect(items.first()).not.toBeVisible();
-    await expect(ddMenuTrigger).toBeFocused();
-  });
+    await test.step('Verify escape closes all tooltips and menu', async () => {
+      await page.keyboard.press('ArrowRight');
+      await new Promise((resolve) => setTimeout(resolve, 200));
+      await page.keyboard.press('Escape');
+      await new Promise((resolve) => setTimeout(resolve, 100));
+      await page.keyboard.press('Escape');
+      await new Promise((resolve) => setTimeout(resolve, 100));
+      await page.keyboard.press('Escape');
+      await expect(ddMenuTrigger).toBeFocused();
+      await expect(items.first()).not.toBeVisible();
+      await expect(ddMenuTrigger).toBeFocused();
+    });
   });
 
   test('Verify Selectable radio mouse interaction', async ({ page }) => {
@@ -687,35 +662,34 @@ test.describe('Selectable radio items', () => {
 
     const ddMenuTrigger = page.getByRole('button');
     const items = page.locator('[data-ui-name="DropdownMenu.Item.Content"]');
-   
+
     const deleteButton4 = page.locator('[aria-label="Delete item"]').nth(3);
     const menu = page.locator('[data-ui-name="DropdownMenu.Menu"]');
 
-  await test.step('Verify opened by trigger click', async () => {
-    await ddMenuTrigger.click();
-    await menu.waitFor();
-    await expect(ddMenuTrigger).not.toBeFocused();
-    await expect(items.first()).toBeFocused();
-  });
+    await test.step('Verify opened by trigger click', async () => {
+      await ddMenuTrigger.click();
+      await menu.waitFor();
+      await expect(ddMenuTrigger).not.toBeFocused();
+      await expect(items.first()).toBeFocused();
+    });
 
-  await test.step('Verify menu closed click on item', async () => {
-    await items.nth(4).click();
-    await expect(items.first()).not.toBeVisible();
-  });
+    await test.step('Verify menu closed click on item', async () => {
+      await items.nth(4).click();
+      await expect(items.first()).not.toBeVisible();
+    });
 
-  await test.step('Verify prev selected item selected and tooltip shown on hover', async () => {
-    await ddMenuTrigger.click();
-    await menu.waitFor();
-    await deleteButton4.hover();
-    await new Promise((resolve) => setTimeout(resolve, 500));
-//snapshot
-  });
+    await test.step('Verify prev selected item selected and tooltip shown on hover', async () => {
+      await ddMenuTrigger.click();
+      await menu.waitFor();
+      await deleteButton4.hover();
+      await new Promise((resolve) => setTimeout(resolve, 500));
+      //snapshot
+    });
 
-  await test.step('Verify menu not closed by click on addon', async () => {
-    await deleteButton4.click();
-    await expect(menu).toBeVisible();
-  });
-
+    await test.step('Verify menu not closed by click on addon', async () => {
+      await deleteButton4.click();
+      await expect(menu).toBeVisible();
+    });
   });
 
   test('Verify styles of selectable radio items menu', async ({ page, browserName }) => {
@@ -829,7 +803,6 @@ test.describe('Selectable radio items', () => {
 });
 
 test.describe('Multiselect items', () => {
-
   test('Verify Multiselect items keyboard interaction', async ({ page }) => {
     const standPath = 'stories/components/dropdown-menu/docs/examples/multiselect_items.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -838,106 +811,93 @@ test.describe('Multiselect items', () => {
     const items = page.locator('[data-ui-name="DropdownMenu.Item"]');
     const menu = page.getByRole('menu');
 
+    await test.step('Verify 1st item focused when menu expanded', async () => {
+      await page.keyboard.press('Tab');
+      await expect(ddMenuTrigger).toBeFocused();
+      await page.keyboard.press('Enter');
+      await expect(ddMenuTrigger).not.toBeFocused();
+      await items.first().waitFor({ state: 'visible' });
+      await expect(items.first()).toBeFocused();
+    });
 
-  await test.step('Verify 1st item focused when menu expanded', async () => {
-    await page.keyboard.press('Tab');
-    await expect(ddMenuTrigger).toBeFocused();
-    await page.keyboard.press('Enter');
-    await expect(ddMenuTrigger).not.toBeFocused();
-    await items.first().waitFor({ state: 'visible' });
-    await expect(items.first()).toBeFocused();
+    await test.step('Verify items attributes', async () => {
+      await expect(items.nth(0)).toHaveAttribute('aria-checked', 'true');
+      await expect(items.nth(0)).toHaveAttribute('tabindex', '0');
+      await expect(items.nth(0)).toHaveAttribute('role', 'menuitemcheckbox');
+      const count1 = await items.count();
+      for (let i = 1; i < count1; i++) {
+        await expect(items.nth(i)).toHaveAttribute('role', 'menuitemcheckbox');
+        await expect(items.nth(i)).toHaveAttribute('tabindex', '-1');
+      }
+    });
+
+    await test.step('Verify enter checks item and menu is not closed', async () => {
+      await page.keyboard.press('Enter');
+      await expect(items.first()).not.toBeChecked();
+      await expect(items.nth(1)).toBeChecked();
+      await expect(page).toHaveScreenshot();
+    });
+
+    await test.step('Verify arrows navigation', async () => {
+      await page.keyboard.press('ArrowUp');
+      await items.nth(9).waitFor({ state: 'visible' });
+      await expect(items.nth(9)).toBeFocused();
+      await expect(page).toHaveScreenshot();
+    });
+
+    await test.step('Verify escape closes menu', async () => {
+      await page.keyboard.press('Space');
+      await expect(items.nth(9)).toBeChecked();
+      await page.keyboard.press('Escape');
+      await expect(items.nth(9)).not.toBeVisible();
+      await expect(ddMenuTrigger).toBeFocused();
+    });
+
+    await test.step('Verify last checked item checked when menu reopened', async () => {
+      await page.keyboard.press('Enter');
+      await items.nth(1).waitFor({ state: 'visible' });
+      await expect(items.nth(1)).toBeFocused();
+      await expect(items.nth(1)).toBeChecked();
+      await expect(ddMenuTrigger).not.toBeFocused();
+    });
   });
-
-
-  await test.step('Verify items attributes', async () => {
-    await expect(items.nth(0)).toHaveAttribute('aria-checked', 'true');
-    await expect(items.nth(0)).toHaveAttribute('tabindex', '0');
-    await expect(items.nth(0)).toHaveAttribute('role', 'menuitemcheckbox');
-    const count1 = await items.count();
-    for (let i = 1; i < count1; i++) {
-      await expect(items.nth(i)).toHaveAttribute('role', 'menuitemcheckbox');
-      await expect(items.nth(i)).toHaveAttribute('tabindex', '-1');
-    }
-  });
-
-  await test.step('Verify enter checks item and menu is not closed', async () => {
-
-    await page.keyboard.press('Enter');
-    await expect(items.first()).not.toBeChecked();
-    await expect(items.nth(1)).toBeChecked();
-    await expect(page).toHaveScreenshot();
-  });
-
-  await test.step('Verify arrows navigation', async () => {
-
-    await page.keyboard.press('ArrowUp');
-    await items.nth(9).waitFor({ state: 'visible' });
-    await expect(items.nth(9)).toBeFocused();
-    await expect(page).toHaveScreenshot();
-  });
-
-  await test.step('Verify escape closes menu', async () => {
-    await page.keyboard.press('Space');
-    await expect(items.nth(9)).toBeChecked();
-    await page.keyboard.press('Escape');
-    await expect(items.nth(9)).not.toBeVisible();
-    await expect(ddMenuTrigger).toBeFocused();
-  });
-
-  await test.step('Verify last checked item checked when menu reopened', async () => {
-    await page.keyboard.press('Enter');
-    await items.nth(1).waitFor({ state: 'visible' });
-    await expect(items.nth(1)).toBeFocused();
-    await expect(items.nth(1)).toBeChecked();
-    await expect(ddMenuTrigger).not.toBeFocused();
-  });
-  });
-
 
   test('Verify Multiselect items mouse interaction', async ({ page }) => {
     const standPath = 'stories/components/dropdown-menu/docs/examples/multiselect_items.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
     const ddMenuTrigger = await page.locator('[data-ui-name="DropdownMenu.Trigger"]');
-    const items = page
-    .locator('[data-ui-name="DropdownMenu.Item"]');
+    const items = page.locator('[data-ui-name="DropdownMenu.Item"]');
     const menu = page.getByRole('menu');
-   
 
-  await test.step('Verify clicking on items check them', async () => {
-  
-    await ddMenuTrigger.click();
-    await menu.waitFor();
-    await expect(items.first()).toBeChecked();
-    await expect(items.nth(1)).toBeChecked();
+    await test.step('Verify clicking on items check them', async () => {
+      await ddMenuTrigger.click();
+      await menu.waitFor();
+      await expect(items.first()).toBeChecked();
+      await expect(items.nth(1)).toBeChecked();
 
+      await items.first().click();
+      await expect(items.first()).not.toBeChecked();
 
-    await items.first().click();
-    await expect(items.first()).not.toBeChecked();
+      await items.nth(2).click();
+      await expect(items.nth(2)).toBeChecked();
+      await items.nth(3).click();
 
-    await items.nth(2).click();
-    await expect(items.nth(2)).toBeChecked();
-    await items.nth(3).click();
+      await expect(items.nth(2)).toBeChecked();
+      await items.nth(3).click();
+      await expect(items.nth(1)).toBeChecked();
+    });
 
-    await expect(items.nth(2)).toBeChecked();
-    await items.nth(3).click();
-    await expect(items.nth(1)).toBeChecked();
+    await test.step('Verify checking state saved when close and reopen the menu', async () => {
+      await ddMenuTrigger.click();
+      await ddMenuTrigger.click();
+      await menu.waitFor();
 
-  });
-
-  await test.step('Verify checking state saved when close and reopen the menu', async () => {
-  
-    await ddMenuTrigger.click();
-    await ddMenuTrigger.click();
-    await menu.waitFor();
-
-    await expect(items.first()).not.toBeChecked();
-    await expect(items.nth(2)).toBeChecked();
-    await expect(items.nth(2)).toBeChecked();
-    await expect(items.nth(1)).toBeChecked();
-
-  });
- 
+      await expect(items.first()).not.toBeChecked();
+      await expect(items.nth(2)).toBeChecked();
+      await expect(items.nth(2)).toBeChecked();
+      await expect(items.nth(1)).toBeChecked();
+    });
   });
 
   test('Verify styles of Multiselect items', async ({ page, browserName }) => {
