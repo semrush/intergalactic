@@ -7,10 +7,10 @@ import Button from '@semcore/button';
 import { sstyled } from '@semcore/core';
 
 const style = sstyled.css`
-  SDataTable > [aria-rowindex='1'] > div > div {
+  SDataTable > [aria-rowindex='1'] > div {
     transition: top 150ms ease-out;
   }
-  SDataTable[activePanel] > [aria-rowindex='1'] > div > div {
+  SDataTable[activePanel] > [aria-rowindex='1'] > div {
     top: 44px;
     transition-delay: 80ms;
   }
