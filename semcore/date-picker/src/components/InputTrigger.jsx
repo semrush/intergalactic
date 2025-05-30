@@ -524,7 +524,6 @@ const MaskedInput = ({
     placeholders.month.length !== 1 ||
     placeholders.day.length !== 1
   ) {
-    // biome-ignore lint/suspicious/noConsole: old code
     console.error({ placeholders });
     throw new Error(
       `InputTrigger placeholder prop should contain fields year, month and day each one with string value of single character length. [see above what was received] (${placeholders})`,

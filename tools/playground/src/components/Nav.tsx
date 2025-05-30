@@ -30,7 +30,7 @@ export const Nav: React.FC = () => {
       </h1>
       <ul>
         {playgroundsList.map((playgroundName) => (
-          // biome-ignore lint/a11y/useKeyWithClickEvents:
+
           <li
             onClick={handlePlaygroundNameClick(playgroundName)}
             key={playgroundName}

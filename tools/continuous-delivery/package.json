@@ -19,7 +19,6 @@
     "dotenv": "^16.5.0",
     "execa": "6.1.0",
     "fs-extra": "9.0.1",
-    "intergalactic-migrate": "workspace:*",
     "marked-ast": "0.3.0",
     "marked-ast-markdown": "2.1.0",
     "node-fetch": "3.3.2",

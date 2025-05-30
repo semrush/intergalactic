@@ -7,14 +7,12 @@ export const syncCheck = async (packages: Package[]) => {
   );
 
   if (unsynchronizedPackages.length > 0) {
-    // biome-ignore lint/suspicious/noConsole: explanation
     console.log('\n\n');
 
     for (const { name, currentVersion, lastPublishedVersion } of unsynchronizedPackages) {
-      // biome-ignore lint/suspicious/noConsole: explanation
       console.log(`[${name}]: ${currentVersion} (in repo) ${lastPublishedVersion} (in npm)`);
     }
-    // biome-ignore lint/suspicious/noConsole: explanation
+
     console.log('\n\n');
   }
 

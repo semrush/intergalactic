@@ -150,7 +150,6 @@ export const makeCacheManager = (id: string, cwd = '.', cacheTtl = 1000 * 60 * 6
 
       if (hashSum !== cachedHashSum) {
         if (verbose) {
-          // biome-ignore lint/suspicious/noConsole: explanation
           console.log(`Cache invalidated for ${filePath}`);
         }
         return null;

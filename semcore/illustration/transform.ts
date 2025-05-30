@@ -113,7 +113,7 @@ import { useColorResolver } from '@semcore/core/lib/utils/use/useColorResolver';
 const ${illustration} = ({${props.join(', ')}, ...props}, ref) => {
 ${prerenderLines.join('\n')}
   return (
-    <Box 
+    <Box
       ref={ref}
       width={width}
       height={height}
@@ -158,7 +158,7 @@ type IllustrationProps = BoxProps & {
     height?: string | number;
 }
 declare const Illustration: Intergalactic.Component<'svg', IllustrationProps>;
-export default Illustration;    
+export default Illustration;
 `;
 
     const { code: cjs } = await esbuild.transform(component, {
@@ -209,7 +209,6 @@ async function patchExports(illustrations: string[]) {
 
   await fs.writeJSON(packageJsonPath, packageJson, { spaces: 2 });
 
-  // biome-ignore lint/suspicious/noConsole: explanation
   console.log('Patched exports in package.json.');
 }
 

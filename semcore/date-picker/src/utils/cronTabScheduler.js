@@ -36,7 +36,7 @@ export function isValidSchedule(pattern) {
 
   function validate(pattern, validateFn, msg) {
     if (validateFn(pattern)) return true;
-    // biome-ignore lint/suspicious/noConsole: need message
+
     console.warn(`DatePicker disabledSchedule: ${msg} format is invalid`);
     return false;
   }

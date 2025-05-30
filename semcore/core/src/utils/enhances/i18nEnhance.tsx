@@ -80,7 +80,7 @@ export const useAsyncI18nMessages = (
             [locale]: messages,
           }));
         })
-        // biome-ignore lint/suspicious/noConsole: old code
+
         .catch(console.error);
     }
   }, [container, locale]);

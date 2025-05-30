@@ -54,13 +54,12 @@ export const mergeChangelogs = async (
       output.push(bChangelog);
       bIndex--;
     } else {
-      // biome-ignore lint/suspicious/noConsole: explanation
       console.log('changelog a:');
-      // biome-ignore lint/suspicious/noConsole: explanation
+
       console.log(aChangelog);
-      // biome-ignore lint/suspicious/noConsole: explanation
+
       console.log('changelog b:');
-      // biome-ignore lint/suspicious/noConsole: explanation
+
       console.log(bChangelog);
       throw new Error(
         `Unable to handle merging of changelogs above from ${gitOursRef} merged into ${gitBaseRef}`,

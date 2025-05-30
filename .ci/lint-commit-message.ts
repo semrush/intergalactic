@@ -10,7 +10,6 @@ const commitMessage = await fs.readFile(commitMessageFilePath, 'utf-8');
 const commitTitle = commitMessage.split('\n')[0];
 
 const outputError = (message: string) => {
-  // biome-ignore lint/suspicious/noConsole: explanation
   console.log(
     `\n${pc.red('Invalid commit message!')} ${message}\nGot commit message: ${pc.gray(
       commitMessage,

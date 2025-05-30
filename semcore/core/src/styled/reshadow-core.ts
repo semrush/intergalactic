@@ -217,7 +217,6 @@ function map(element) {
   let vars = null;
   const uses = currStyles[KEYS.__use__] || {};
 
-  // biome-ignore lint/style/noArguments: external library
   const len = arguments.length;
 
   let useProps;

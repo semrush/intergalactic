@@ -222,7 +222,6 @@ async function patchExports(result) {
 
   await fs.writeJSON(packageJsonPath, packageJson, { spaces: 2 });
 
-  // biome-ignore lint/suspicious/noConsole: explanation
   console.log('Patched exports in package.json.');
 }
 
@@ -239,7 +238,6 @@ module.exports = function () {
     .then(async (result) => {
       await patchExports(result);
 
-      // biome-ignore lint/suspicious/noConsole: explanation
       console.log('Done! Wrote all icon files.');
     })
     .catch((err) => {

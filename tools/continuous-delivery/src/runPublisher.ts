@@ -133,7 +133,6 @@ export const runPublisher = async (versionPatches: VersionPatch[]) => {
     try {
       await git.pull('origin', 'master', { '--rebase': 'true' });
     } catch (err) {
-      // biome-ignore lint/suspicious/noConsole: explanation
       console.log(await git.status());
       throw err;
     }

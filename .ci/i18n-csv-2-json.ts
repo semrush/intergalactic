@@ -37,7 +37,7 @@ await Promise.all(
       csvFiles.map(
         (fileName) =>
           new Promise<{ identifier: string; source_phrase: string; translation: string }[]>(
-            // biome-ignore lint/suspicious/noAsyncPromiseExecutor:
+
             // eslint-disable-next-line no-async-promise-executor
             async (resolve, reject) => {
               const fileContent = await readFile(resolvePath(dirPath, fileName), 'utf-8');

@@ -417,7 +417,6 @@ class InputField<T extends string | string[]> extends Component<
         this.setSelection(textNode, position ?? 1, position ?? 1);
         this.toggleErrorsPopper('keyboardLineIndex', textNode.parentNode);
       } else {
-        // biome-ignore lint/suspicious/noConsole: need message
         console.warn('incorrect child type', textNode, textNode?.parentNode);
       }
     }
@@ -687,7 +686,6 @@ class InputField<T extends string | string[]> extends Component<
               const offset = text.textContent?.length ?? 0;
               this.setSelection(text, offset, offset);
             } else {
-              // biome-ignore lint/suspicious/noConsole: need message
               console.warn('incorrect prevNode type', prevNode);
             }
           }

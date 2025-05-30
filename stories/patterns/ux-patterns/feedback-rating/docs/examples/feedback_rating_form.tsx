@@ -14,7 +14,6 @@ const initValue = {
 
 const fakeSendDataToServer = (data: Record<string, any>) => {
   return new Promise((resolve) => {
-    // biome-ignore lint/suspicious/noConsole: explanation
     console.log('Send data to server', data);
     setTimeout(resolve, 500);
   });

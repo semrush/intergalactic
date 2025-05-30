@@ -409,7 +409,7 @@ describe('Plot a11y summarization', () => {
 
 
 
-            
+
   BBBBB
   CCAABB  DD
   EEE
@@ -786,7 +786,6 @@ describe('Plot a11y summarization', () => {
     const length = text!.length;
 
     if (length >= limit) {
-      // biome-ignore lint/suspicious/noConsole: explanation
       console.log(
         `Expected summarization result for a huge count of insights be limited, for example, by ${limit} characters (got ${length})`,
       );
@@ -1213,7 +1212,6 @@ describe('Plot a11y summarization', () => {
     const unusedMessagesJoin = unusedMessages.join(', ');
 
     if (unusedMessagesCount !== 0) {
-      // biome-ignore lint/suspicious/noConsole: explanation
       console.log(
         `Expected all non-view translations messages be used (unused messages [${unusedMessagesCount}]: ${unusedMessagesJoin})`,
       );

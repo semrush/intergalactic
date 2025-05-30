@@ -65,7 +65,6 @@ function uncontrolledUniversal(props: any, config: any, uncontrolledProp: any) {
     } = result;
 
     if (propDefaultValue === undefined) {
-      // biome-ignore lint/suspicious/noConsole: old code
       console.warn(defaultPropName, 'must be installed in "defaultProps"');
     }
 

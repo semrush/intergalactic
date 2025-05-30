@@ -105,7 +105,6 @@
     "http-server": "14.1.1",
     "husky": "8.0.0",
     "inquirer": "6.3.1",
-    "intergalactic-migrate": "workspace:*",
     "jsdom": "22.1.0",
     "lint-staged": "10.2.9",
     "picocolors": "1.0.0",

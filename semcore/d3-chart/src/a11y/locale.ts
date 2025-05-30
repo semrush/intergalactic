@@ -19,7 +19,6 @@ export const normalizeLocale = (
   if (!translations[locale]) {
     const availableLocales = Object.keys(translations).join(', ');
     if (process.env.NODE_ENV !== 'production') {
-      // biome-ignore lint/suspicious/noConsole: need this not in prod
       console.error(
         `[Intergalactic @semcore/d3-charts a11y module]: No locale "${providedLocale}" available. Available locales: ${availableLocales}`,
       );

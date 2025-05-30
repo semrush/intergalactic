@@ -122,7 +122,6 @@ const amplitudeHttp = {
     }
 
     if (process.env.NODE_ENV !== 'production') {
-      // biome-ignore lint/suspicious/noConsole: explanation
       console.log('logEvent [disabled in dev mode]', eventType, eventArguments);
       return this;
     }

@@ -47,7 +47,6 @@ export const PlaygroundWrapper: React.FC = () => {
   const Playground = playgrounds[playground];
 
   if (typeof Playground !== 'function') {
-    // biome-ignore lint/suspicious/noConsole: explanation
     console.log({ Playground });
     return (
       <div>
