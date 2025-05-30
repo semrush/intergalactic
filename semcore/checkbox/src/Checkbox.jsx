@@ -47,8 +47,8 @@ class CheckboxRoot extends Component {
   }
 
   getValueProps() {
-    const { size, state, theme, onChange, defaultChecked, checked, disabled, indeterminate }
-      = this.asProps;
+    const { size, state, theme, onChange, defaultChecked, checked, disabled, indeterminate } =
+      this.asProps;
     const { hoistedDisabled } = this.state;
 
     return {
@@ -86,11 +86,11 @@ class CheckboxRoot extends Component {
           'aria-describedby',
         ]}
       >
-        {hasChildren
-          ? (
+        {hasChildren ?
+            (
               <Children />
-            )
-          : (
+            ) :
+            (
               <>
                 <Checkbox.Value />
                 <Checkbox.Text />

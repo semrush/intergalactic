@@ -18,8 +18,7 @@ export const applyMaxSize: Modifier<'applyMaxSize', Options> = {
 
     if (state.placement.startsWith('top') || state.placement.startsWith('bottom')) {
       styles.maxHeight = `${height - margin}px`;
-    }
-    else {
+    } else {
       styles.maxWidth = `${width - margin}px`;
     }
 

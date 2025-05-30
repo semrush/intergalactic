@@ -108,17 +108,17 @@ class ModalRoot extends Component {
   render() {
     const { Children, disablePortal, forcedAdvancedMode, ignorePortalsStacking } = this.asProps;
 
-    const advancedMode
-      = forcedAdvancedMode
-        || isAdvanceMode(Children, [Modal.Overlay.displayName, Modal.Window.displayName]);
+    const advancedMode =
+      forcedAdvancedMode ||
+      isAdvanceMode(Children, [Modal.Overlay.displayName, Modal.Window.displayName]);
 
     return (
       <Portal disablePortal={disablePortal} ignorePortalsStacking={ignorePortalsStacking}>
-        {advancedMode
-          ? (
+        {advancedMode ?
+            (
               <Children />
-            )
-          : (
+            ) :
+            (
               <Modal.Overlay>
                 <Root render={Modal.Window} />
               </Modal.Overlay>
@@ -184,11 +184,11 @@ function Close(props) {
       theme={ghost ? 'invert' : 'muted'}
       aria-label={getI18nText('close')}
     >
-      {hasChildren
-        ? (
+      {hasChildren ?
+          (
             <Children />
-          )
-        : (
+          ) :
+          (
             <Button.Addon ml='7px' mr='7px'>
               <CloseIcon title={getI18nText('close')} />
             </Button.Addon>

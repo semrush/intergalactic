@@ -113,8 +113,7 @@ export const makeDataHintsHandlers = (mutableContainer: DataStructureHints) => {
     setupGrid: (direction: 'vertical' | 'horizontal', size: number) => {
       if (direction === 'horizontal') {
         mutableContainer.grid.horizontalAxes = size;
-      }
-      else if (direction === 'vertical') {
+      } else if (direction === 'vertical') {
         mutableContainer.grid.verticalAxes = size;
       }
     },
@@ -148,9 +147,9 @@ export const makeDataHintsHandlers = (mutableContainer: DataStructureHints) => {
     },
     setTitle: (describedDataAxes: 'vertical' | 'horizontal', title: string) => {
       if (
-        typeof title === 'number'
-        || typeof title === 'bigint'
-        || (typeof title === 'object' && (title as any) instanceof Date)
+        typeof title === 'number' ||
+        typeof title === 'bigint' ||
+        (typeof title === 'object' && (title as any) instanceof Date)
       ) {
         title = String(title);
       }
@@ -159,8 +158,7 @@ export const makeDataHintsHandlers = (mutableContainer: DataStructureHints) => {
       }
       if (describedDataAxes === 'horizontal') {
         mutableContainer.axesTitle.horizontal = title;
-      }
-      else if (describedDataAxes === 'vertical') {
+      } else if (describedDataAxes === 'vertical') {
         mutableContainer.axesTitle.vertical = title;
       }
     },

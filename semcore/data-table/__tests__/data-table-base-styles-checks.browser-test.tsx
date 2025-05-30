@@ -89,8 +89,8 @@ test.describe('Base styles Primary Table', () => {
   });
 
   test('Verify styles when long text and icons in header', async ({ page }) => {
-    const standPath
-      = 'stories/components/data-table/tests/examples/header-tests/header-content.tsx';
+    const standPath =
+      'stories/components/data-table/tests/examples/header-tests/header-content.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -181,8 +181,8 @@ test.describe('Base styles Primary Table', () => {
   });
 
   test('Verify Column width when 1fr', async ({ page }) => {
-    const standPath
-      = 'stories/components/data-table/tests/examples/header-tests/table-with-1tf-and diff-elements.tsx';
+    const standPath =
+      'stories/components/data-table/tests/examples/header-tests/table-with-1tf-and diff-elements.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -272,8 +272,8 @@ test.describe('Base styles Secondary Table', () => {
   });
 
   test('Verify Secondary padding when sideIndent l is set', async ({ page, browserName }) => {
-    const standPath
-      = 'stories/components/data-table/tests/examples/header-tests/secondary-header.tsx';
+    const standPath =
+      'stories/components/data-table/tests/examples/header-tests/secondary-header.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
     const table = page.locator('[data-ui-name="DataTable"]');
@@ -305,8 +305,8 @@ test.describe('Base styles Secondary Table', () => {
   });
 
   test('Verify styles when long text and icons in header', async ({ page }) => {
-    const standPath
-      = 'stories/components/data-table/tests/examples/header-tests/secondary-header.tsx';
+    const standPath =
+      'stories/components/data-table/tests/examples/header-tests/secondary-header.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -327,8 +327,8 @@ test.describe('Base styles Secondary Table', () => {
   });
 
   test('Verify sorting icon style and interactions ', async ({ page, browserName }) => {
-    const standPath
-      = 'stories/components/data-table/tests/examples/header-tests/secondary-sorting.tsx';
+    const standPath =
+      'stories/components/data-table/tests/examples/header-tests/secondary-sorting.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -364,8 +364,8 @@ test.describe('Base styles Secondary Table', () => {
   });
 
   test('Verify Column width when 1fr', async ({ page }) => {
-    const standPath
-      = 'stories/components/data-table/tests/examples/header-tests/secondary-sorting.tsx';
+    const standPath =
+      'stories/components/data-table/tests/examples/header-tests/secondary-sorting.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);

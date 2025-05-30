@@ -72,11 +72,11 @@ class DropdownRoot extends Component {
     const element = this.popperRef.current;
 
     if (
-      interaction === 'click'
-      && visible
-      && e.key === 'Tab'
-      && element
-      && !hasFocusableIn(element)
+      interaction === 'click' &&
+      visible &&
+      e.key === 'Tab' &&
+      element &&
+      !hasFocusableIn(element)
     ) {
       e.preventDefault();
 

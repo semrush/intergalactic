@@ -4,12 +4,12 @@ import { curveCardinal } from 'd3-shape';
 
 const formatDate = (type: 'axis' | 'tooltip') => (value) => {
   const options =
-    type === 'axis'
-      ? {
+    type === 'axis' ?
+        {
           month: 'short' as const,
           day: 'numeric' as const,
-        }
-      : {
+        } :
+        {
           year: 'numeric' as const,
           month: 'long' as const,
           day: 'numeric' as const,
@@ -24,12 +24,12 @@ const Demo = () => {
       data={data}
       plotWidth={500}
       plotHeight={200}
-      groupKey={'time'}
+      groupKey='time'
       tooltipValueFormatter={formatDate('tooltip')}
       axisXValueFormatter={formatDate('axis')}
       stacked={true}
       curve={curveCardinal}
-      aria-label={'Stacked area chart'}
+      aria-label='Stacked area chart'
     />
   );
 };

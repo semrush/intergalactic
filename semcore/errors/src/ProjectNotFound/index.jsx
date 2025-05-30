@@ -19,8 +19,8 @@ class RootProjectNotFound extends Component {
   };
 
   render() {
-    const { Children, getI18nText, projectsLink, contactsLink, supportTeamLink, titleTag }
-      = this.asProps;
+    const { Children, getI18nText, projectsLink, contactsLink, supportTeamLink, titleTag } =
+      this.asProps;
     const text = getI18nText('text', { url: supportTeamLink });
     return (
       <Root render={Error}>

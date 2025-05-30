@@ -7,9 +7,9 @@ const Demo = () => {
       data={data}
       plotWidth={500}
       plotHeight={200}
-      groupKey={'x'}
+      groupKey='x'
       xTicksCount={data.length / 2}
-      aria-label={'Line chart'}
+      aria-label='Line chart'
     />
   );
 };

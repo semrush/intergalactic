@@ -15,14 +15,14 @@ class NoticeSmart extends Component {
     let textContent = <Children />;
 
     if (typeof Children.origin === 'string') {
-      textContent
-        = isNode(title) || isNode(label) || closable
-          ? (
+      textContent =
+        isNode(title) || isNode(label) || closable ?
+            (
               <Notice.Text>
                 <Children />
               </Notice.Text>
-            )
-          : (
+            ) :
+            (
               <Children />
             );
     }

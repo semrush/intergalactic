@@ -42,9 +42,9 @@ class RootNotice extends Component {
 
   componentDidMount() {
     if (
-      this.ref.current
-      && process.env.NODE_ENV !== 'production'
-      && !['muted', 'danger'].includes(this.props.theme)
+      this.ref.current &&
+      process.env.NODE_ENV !== 'production' &&
+      !['muted', 'danger'].includes(this.props.theme)
     ) {
       const hasTitle = (node) => {
         if (node.hasAttribute('aria-label')) return true;

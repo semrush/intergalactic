@@ -30,13 +30,13 @@ export const websiteEsbuildConfig: esbuild.BuildOptions = {
     esbuildPluginIllustrations(),
     esbuildPluginCrutches(),
     esbuildPluginCssModules(),
-    process.env.NODE_ENV !== 'production'
-      ? esbuildPluginAlias({
-          react: resolvePath('./node_modules/react/index.js'),
+    process.env.NODE_ENV !== 'production' ?
+        esbuildPluginAlias({
+          'react': resolvePath('./node_modules/react/index.js'),
           'react-dom': resolvePath('./node_modules/react-dom/index.js'),
-        })
-      : esbuildPluginAlias({
-          react: resolvePath('./node_modules/react/umd/react.production.min.js'),
+        }) :
+        esbuildPluginAlias({
+          'react': resolvePath('./node_modules/react/umd/react.production.min.js'),
           'react-dom': resolvePath('./node_modules/react-dom/umd/react-dom.production.min.js'),
         }),
   ],

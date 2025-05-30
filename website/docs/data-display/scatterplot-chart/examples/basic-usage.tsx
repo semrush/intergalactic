@@ -7,8 +7,8 @@ const Demo = () => {
       data={data}
       plotWidth={500}
       plotHeight={300}
-      groupKey={'x'}
-      aria-label={'ScatterPlot chart'}
+      groupKey='x'
+      aria-label='ScatterPlot chart'
     />
   );
 };

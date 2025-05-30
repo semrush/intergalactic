@@ -59,8 +59,8 @@ class NoticeGlobalRoot extends Component {
     const color = resolveColor(theme);
     const useTheme = isCustomTheme(theme) ? 'custom' : theme;
 
-    const advancedMode
-      = forcedAdvancedMode || isAdvanceMode(Children, [NoticeGlobal.Content.displayName]);
+    const advancedMode =
+      forcedAdvancedMode || isAdvanceMode(Children, [NoticeGlobal.Content.displayName]);
 
     return sstyled(styles)(
       <SNoticeGlobal
@@ -72,11 +72,11 @@ class NoticeGlobalRoot extends Component {
         aria-live={isAssertive ? 'assertive' : 'polite'}
         aria-label={getI18nText(theme === 'danger' ? 'criticalNotification' : 'notification')}
       >
-        {advancedMode
-          ? (
+        {advancedMode ?
+            (
               <Children />
-            )
-          : (
+            ) :
+            (
               <NoticeGlobal.Content>
                 <Children />
               </NoticeGlobal.Content>

@@ -16,17 +16,17 @@ class CardRoot extends Component {
     const SCard = Root;
     const { Children, styles, forcedAdvancedMode } = this.asProps;
 
-    const advancedMode
-      = forcedAdvancedMode
-        || isAdvanceMode(Children, [Card.Header.displayName, Card.Body.displayName]);
+    const advancedMode =
+      forcedAdvancedMode ||
+      isAdvanceMode(Children, [Card.Header.displayName, Card.Body.displayName]);
 
     return sstyled(styles)(
       <SCard render={Box}>
-        {advancedMode
-          ? (
+        {advancedMode ?
+            (
               <Children />
-            )
-          : (
+            ) :
+            (
               <Card.Body>
                 <Children />
               </Card.Body>

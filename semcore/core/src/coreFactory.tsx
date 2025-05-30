@@ -35,10 +35,10 @@ import {
 
 function isEmptyObject(obj: any) {
   return (
-    Object.getOwnPropertyNames(obj).length === 0
-    && Object.getOwnPropertySymbols // For IE 11
-    && Object.getOwnPropertySymbols(obj).length === 0
-    && Object.getPrototypeOf(obj) === Object.prototype
+    Object.getOwnPropertyNames(obj).length === 0 &&
+    Object.getOwnPropertySymbols && // For IE 11
+    Object.getOwnPropertySymbols(obj).length === 0 &&
+    Object.getPrototypeOf(obj) === Object.prototype
   );
 }
 
@@ -63,9 +63,9 @@ function createGetField(enhancements: any, Component: any, isFunction: boolean) 
 function createForwardWrapper(Component: any, wrapperProps: any, statics: any, isFunction: any) {
   const RootComponent = Component[ROOT_COMPONENT];
   const getterMethodName = getterMethodNameByDisplayName(Component?.displayName);
-  const getterMethod = RootComponent?.prototype
-    ? RootComponent.prototype[getterMethodName]
-    : undefined;
+  const getterMethod = RootComponent?.prototype ?
+    RootComponent.prototype[getterMethodName] :
+    undefined;
   const useGetterIndex = getterMethod?.length >= 2;
 
   function WrapperForwardRefWithBind({ forwardRef = null, ...other }, ref: any) {
@@ -173,8 +173,7 @@ function wrapClass(OriginComponent: any, enhancements: any, Context: any) {
       );
       if (!WrapperComponent[STATIC_COMPONENT] && !isEmptyObject(ctx)) {
         return <Context.Provider value={{ ...asProps, ...ctx }}>{render}</Context.Provider>;
-      }
-      else {
+      } else {
         return render;
       }
     }
@@ -228,8 +227,7 @@ function wrapFunction(OriginComponent: any, enhancements: any, Context: any) {
 
     if (!WrapperComponent[STATIC_COMPONENT] && !isEmptyObject(ctx)) {
       return <Context.Provider value={{ ...asProps, ...ctx }}>{render}</Context.Provider>;
-    }
-    else {
+    } else {
       return render;
     }
   });
@@ -250,23 +248,19 @@ function wrapCore(OriginComponent: any, enhancements: any, Context: any) {
 
 function createComposeComponent(OriginComponent: any, Context: any, enhancements: any): any {
   if (
-    React.PureComponent.isPrototypeOf(OriginComponent)
-    || React.Component.isPrototypeOf(OriginComponent)
+    React.PureComponent.isPrototypeOf(OriginComponent) ||
+    React.Component.isPrototypeOf(OriginComponent)
   ) {
     if (OriginComponent.prototype instanceof Component) {
       return wrapClass(OriginComponent, enhancements, Context);
-    }
-    else {
+    } else {
       throw new Error('Must inherit from our component');
     }
-  }
-  else if (typeof OriginComponent === 'function') {
+  } else if (typeof OriginComponent === 'function') {
     return wrapFunction(OriginComponent, enhancements, Context);
-  }
-  else if (OriginComponent[CORE_COMPONENT]) {
+  } else if (OriginComponent[CORE_COMPONENT]) {
     return wrapCore(OriginComponent, enhancements, Context);
-  }
-  else {
+  } else {
     throw new Error('Must be a React component');
   }
 }
@@ -387,9 +381,9 @@ function createComponent<ComponentProps, ChildComponentProps = {}, ContextType =
 function createBaseComponent<ComponentProps>(OriginComponent: any): ComponentType<ComponentProps> {
   let Component = null;
   if (
-    !React.PureComponent.isPrototypeOf(OriginComponent)
-    && !React.Component.isPrototypeOf(OriginComponent)
-    && typeof OriginComponent === 'function'
+    !React.PureComponent.isPrototypeOf(OriginComponent) &&
+    !React.Component.isPrototypeOf(OriginComponent) &&
+    typeof OriginComponent === 'function'
   ) {
     Component = React.forwardRef(OriginComponent);
     Component.displayName = OriginComponent.displayName;
@@ -398,8 +392,7 @@ function createBaseComponent<ComponentProps>(OriginComponent: any): ComponentTyp
       ...OriginComponent.defaultProps,
     };
     (Component as any)[CORE_COMPONENT] = true;
-  }
-  else {
+  } else {
     throw new Error('createBaseComponent accepts only functional component');
   }
   return Component as any;

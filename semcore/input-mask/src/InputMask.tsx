@@ -234,8 +234,7 @@ class Value extends Component<InputMaskValueProps, {}, {}, typeof Value.enhance>
           if (typeof piped === 'object' && piped) {
             conformedValue = piped.value;
             indexesOfPipedChars = piped.indexesOfPipedChars;
-          }
-          else {
+          } else {
             conformedValue = piped;
           }
         }
@@ -243,8 +242,8 @@ class Value extends Component<InputMaskValueProps, {}, {}, typeof Value.enhance>
         let lastNonMaskCharPosition = 0;
         for (let i = 0; i < conformedValue?.length; i++) {
           if (
-            !(this.asProps.maskOnlySymbols as any)[conformedValue[i]]
-            && /\w/.test(conformedValue[i])
+            !(this.asProps.maskOnlySymbols as any)[conformedValue[i]] &&
+            /\w/.test(conformedValue[i])
           )
             lastNonMaskCharPosition = i + 1;
         }
@@ -254,8 +253,7 @@ class Value extends Component<InputMaskValueProps, {}, {}, typeof Value.enhance>
             this.setState({ lastConformed: conformedValueBeforPiping });
             if (indexesOfPipedChars !== null) {
               return { value: conformedValueBeforPiping, indexesOfPipedChars };
-            }
-            else {
+            } else {
               return conformedValueBeforPiping;
             }
           }
@@ -263,8 +261,7 @@ class Value extends Component<InputMaskValueProps, {}, {}, typeof Value.enhance>
           this.setState({ lastConformed: this.prevConfirmedValue });
           if (indexesOfPipedChars !== null) {
             return { value: conformedValue, indexesOfPipedChars };
-          }
-          else {
+          } else {
             return conformedValue;
           }
         }
@@ -278,8 +275,7 @@ class Value extends Component<InputMaskValueProps, {}, {}, typeof Value.enhance>
 
         if (indexesOfPipedChars !== null) {
           return { value: userInput, indexesOfPipedChars };
-        }
-        else {
+        } else {
           return userInput;
         }
       },
@@ -371,11 +367,11 @@ class Value extends Component<InputMaskValueProps, {}, {}, typeof Value.enhance>
                   {this.state.lastConformed && (
                     <SMaskHidden data-content={this.state.lastConformed.userInput} />
                   )}
-                  {this.state.lastConformed
-                    ? (
+                  {this.state.lastConformed ?
+                      (
                         <SMaskVisible data-content={this.state.lastConformed.maskOnly} />
-                      )
-                    : (
+                      ) :
+                      (
                         <SPlaceholder data-content={placeholder} />
                       )}
                 </SMask>

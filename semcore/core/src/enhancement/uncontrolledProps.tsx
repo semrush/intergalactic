@@ -34,11 +34,11 @@ function uncontrolledProp(
   chainHandler: any,
 ) {
   function getValue() {
-    return isControlled(propValue)
-      ? propValue
-      : propName in self.state
-        ? self.state[propName]
-        : propDefaultValue;
+    return isControlled(propValue) ?
+      propValue :
+      propName in self.state ?
+        self.state[propName] :
+        propDefaultValue;
   }
 
   return [

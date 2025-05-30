@@ -189,31 +189,31 @@ function calculateIndentStyles(props: BoxProps, scaleIndent: number) {
 
     margin: getAutoOrScaleIndent(props['m'], scaleIndent),
     marginTop:
-      getAutoOrScaleIndent(props['mt'], scaleIndent)
-      || getAutoOrScaleIndent(props['my'], scaleIndent),
+      getAutoOrScaleIndent(props['mt'], scaleIndent) ||
+      getAutoOrScaleIndent(props['my'], scaleIndent),
     marginBottom:
-      getAutoOrScaleIndent(props['mb'], scaleIndent)
-      || getAutoOrScaleIndent(props['my'], scaleIndent),
+      getAutoOrScaleIndent(props['mb'], scaleIndent) ||
+      getAutoOrScaleIndent(props['my'], scaleIndent),
     marginLeft:
-      getAutoOrScaleIndent(props['ml'], scaleIndent)
-      || getAutoOrScaleIndent(props['mx'], scaleIndent),
+      getAutoOrScaleIndent(props['ml'], scaleIndent) ||
+      getAutoOrScaleIndent(props['mx'], scaleIndent),
     marginRight:
-      getAutoOrScaleIndent(props['mr'], scaleIndent)
-      || getAutoOrScaleIndent(props['mx'], scaleIndent),
+      getAutoOrScaleIndent(props['mr'], scaleIndent) ||
+      getAutoOrScaleIndent(props['mx'], scaleIndent),
 
     padding: getAutoOrScaleIndent(props['p'], scaleIndent),
     paddingTop:
-      getAutoOrScaleIndent(props['pt'], scaleIndent)
-      || getAutoOrScaleIndent(props['py'], scaleIndent),
+      getAutoOrScaleIndent(props['pt'], scaleIndent) ||
+      getAutoOrScaleIndent(props['py'], scaleIndent),
     paddingBottom:
-      getAutoOrScaleIndent(props['pb'], scaleIndent)
-      || getAutoOrScaleIndent(props['py'], scaleIndent),
+      getAutoOrScaleIndent(props['pb'], scaleIndent) ||
+      getAutoOrScaleIndent(props['py'], scaleIndent),
     paddingLeft:
-      getAutoOrScaleIndent(props['pl'], scaleIndent)
-      || getAutoOrScaleIndent(props['px'], scaleIndent),
+      getAutoOrScaleIndent(props['pl'], scaleIndent) ||
+      getAutoOrScaleIndent(props['px'], scaleIndent),
     paddingRight:
-      getAutoOrScaleIndent(props['pr'], scaleIndent)
-      || getAutoOrScaleIndent(props['px'], scaleIndent),
+      getAutoOrScaleIndent(props['pr'], scaleIndent) ||
+      getAutoOrScaleIndent(props['px'], scaleIndent),
   });
 }
 

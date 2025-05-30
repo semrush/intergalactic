@@ -4,8 +4,7 @@ class Register {
   get<D>(name: string, defaultValue?: D): D {
     if (name in this.data) {
       return this.data[name];
-    }
-    else {
+    } else {
       return this.set(name, defaultValue) as any;
     }
   }

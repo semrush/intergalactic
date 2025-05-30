@@ -123,8 +123,8 @@ test.describe('DatePicker', () => {
   });
 
   test('Date range comparator advanced', async ({ page }) => {
-    const standPath
-      = 'stories/components/date-picker/docs/examples/date_range_comparator_advanced_use.tsx';
+    const standPath =
+      'stories/components/date-picker/docs/examples/date_range_comparator_advanced_use.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -172,8 +172,8 @@ test.describe('DatePicker', () => {
   });
 
   test('Month range comparator', async ({ page }) => {
-    const standPath
-      = 'stories/components/date-picker/docs/examples/month_range_comparator_advanced_use.tsx';
+    const standPath =
+      'stories/components/date-picker/docs/examples/month_range_comparator_advanced_use.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);

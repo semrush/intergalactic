@@ -10,8 +10,7 @@ function splitPropsAndGetters(props: any) {
     (acc: any, [key, value]) => {
       if (GETTER_REG.exec(key) === null) {
         acc.props[key] = value;
-      }
-      else {
+      } else {
         acc.getters[key] = value;
       }
       return acc;
@@ -69,8 +68,7 @@ function createChildren(Context: any, contexts: any) {
       }, {});
 
       return children({ ...props, ...mergedGetters }, handlers);
-    }
-    else if (children === undefined) {
+    } else if (children === undefined) {
       return null;
     }
     return children;

@@ -110,13 +110,11 @@ class SliderRoot extends Component {
     if (newLeft <= 0) {
       const resolvedMin = options ? options[0]?.value : min;
       this.handlers.value(resolvedMin, event);
-    }
-    else if (newLeft >= sliderSize) {
+    } else if (newLeft >= sliderSize) {
       const lastOption = options?.[options?.length - 1];
       const resolvedMax = options ? lastOption?.value : max;
       this.handlers.value(resolvedMax, event);
-    }
-    else {
+    } else {
       const relativeValue = newLeft / sliderSize;
       const relativeStep = step / (max - min);
       const countSteps = Math.round(relativeValue / relativeStep);
@@ -142,8 +140,7 @@ class SliderRoot extends Component {
     if (options) {
       const option = options[value - (min ?? 0)];
       this.handlers.value(option.value, event);
-    }
-    else {
+    } else {
       this.handlers.value(value, event);
     }
   };
@@ -156,8 +153,7 @@ class SliderRoot extends Component {
     if (resolvedIndex < min) return min;
     if (min !== undefined) {
       if (resolvedIndex + min > max) return max;
-    }
-    else {
+    } else {
       if (resolvedIndex > max) return max;
     }
 

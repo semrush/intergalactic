@@ -48,7 +48,7 @@ const SuggestSearch = connectAutoComplete(
           onChange={handleChangeValue}
           value={currentRefinement}
           placeholder='What icon are you looking for?'
-          aria-label={'Search icons'}
+          aria-label='Search icons'
           aria-describedby='search-message'
         />
         <Input.Addon
@@ -100,38 +100,42 @@ export default function ({ icons, old, json }) {
         setSelectedIcon={setSelectedIcon}
         ref={iconsContainerRef}
       >
-        {inputValue.length ? (
-          filterIcons.length ? (
-            <ListIcons data={filterIcons} aria-label={'Search results'} />
-          ) : (
-            <NoData
-              type='nothing-found'
-              description='Try entering another keyword, for example "key" or "play".'
-              style={{
-                borderRadius: 'var(--intergalactic-rounded-medium)',
-                border: 'solid 1px var(--intergalactic-border-secondary)',
-              }}
-              py={10}
-            />
-          )
-        ) : (
-          <>
-            <IconGroup title='Navigation' />
-            <IconGroup title='Action' />
-            <IconGroup title='Status' />
-            <IconGroup title='Social' />
-            <IconGroup title='File' />
-            <IconGroup title='Hardware' />
-            <IconGroup title='Format' />
-            <IconGroup title='Map' />
-            <IconGroup title='AI' />
-            <IconGroup title='SERP Features' />
-            <IconGroup title='Misc' />
-            {!old && <IconGroup title='Brand' />}
-            <IconGroup title='Color' />
-            <IconGroup title='Pay' />
-          </>
-        )}
+        {inputValue.length ?
+            (
+              filterIcons.length ?
+                  (
+                    <ListIcons data={filterIcons} aria-label='Search results' />
+                  ) :
+                  (
+                    <NoData
+                      type='nothing-found'
+                      description='Try entering another keyword, for example "key" or "play".'
+                      style={{
+                        borderRadius: 'var(--intergalactic-rounded-medium)',
+                        border: 'solid 1px var(--intergalactic-border-secondary)',
+                      }}
+                      py={10}
+                    />
+                  )
+            ) :
+            (
+              <>
+                <IconGroup title='Navigation' />
+                <IconGroup title='Action' />
+                <IconGroup title='Status' />
+                <IconGroup title='Social' />
+                <IconGroup title='File' />
+                <IconGroup title='Hardware' />
+                <IconGroup title='Format' />
+                <IconGroup title='Map' />
+                <IconGroup title='AI' />
+                <IconGroup title='SERP Features' />
+                <IconGroup title='Misc' />
+                {!old && <IconGroup title='Brand' />}
+                <IconGroup title='Color' />
+                <IconGroup title='Pay' />
+              </>
+            )}
         <IconDetailsPanel
           name={selectedIcon}
           visible={selectedIcon !== null}

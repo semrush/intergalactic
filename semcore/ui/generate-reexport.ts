@@ -27,8 +27,7 @@ const hasExportDefault = async (dependency: string) => {
   try {
     const resolved = require(dependency);
     return Object.hasOwnProperty.call(resolved, 'default');
-  }
-  catch (e) {
+  } catch (e) {
     // fallback resolver
     let dependencyDir = path.dirname(require.resolve(dependency));
     let module: string | null = null;
@@ -134,9 +133,9 @@ const GENERATOR = {
         const defaultExport = await hasExportDefault(
           `${utilsDistPath}/${utilNameWithoutExtention}`,
         );
-        const template = defaultExport
-          ? EXPORT_TEMPLATES[extension].LIB_DEFAULT
-          : EXPORT_TEMPLATES[extension].LIB_NAMED;
+        const template = defaultExport ?
+          EXPORT_TEMPLATES[extension].LIB_DEFAULT :
+          EXPORT_TEMPLATES[extension].LIB_NAMED;
 
         await fs.outputFile(
           `./${name}/${utilNameWithoutExtention}.${extension}`,
@@ -174,8 +173,8 @@ const GENERATOR = {
     const newIconsDir = path.join(iconPath, '../../..');
 
     const isIconDir = (dir: string) =>
-      fs.statSync(dir).isDirectory()
-      && !['__tests__', 'src', 'svg', 'svg-new', 'node_modules'].includes(path.basename(dir));
+      fs.statSync(dir).isDirectory() &&
+      !['__tests__', 'src', 'svg', 'svg-new', 'node_modules'].includes(path.basename(dir));
     const oldIcons = fs
       .readdirSync(oldIconsDir)
       .filter((iconDir) => isIconDir(path.join(oldIconsDir, iconDir)));
@@ -234,9 +233,9 @@ const GENERATOR = {
     const defaultExport = await hasExportDefault(dependency);
 
     for (const extension of exportExtensions) {
-      const template = defaultExport
-        ? EXPORT_TEMPLATES[extension].DEFAULT
-        : EXPORT_TEMPLATES[extension].NAMED;
+      const template = defaultExport ?
+        EXPORT_TEMPLATES[extension].DEFAULT :
+        EXPORT_TEMPLATES[extension].NAMED;
       await fs.outputFile(`./${name}/index.${extension}`, template(dependency));
     }
 

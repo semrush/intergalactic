@@ -87,21 +87,21 @@ class RootLink extends Component {
 
     const children = sstyled(styles)(
       <>
-        {AddonLeft
-          ? (
+        {AddonLeft ?
+            (
               <Link.Addon>
                 <AddonLeft />
               </Link.Addon>
-            )
-          : null}
+            ) :
+          null}
         {addonTextChildren(Children, Link.Text, Link.Addon)}
-        {AddonRight
-          ? (
+        {AddonRight ?
+            (
               <Link.Addon>
                 <AddonRight />
               </Link.Addon>
-            )
-          : null}
+            ) :
+          null}
       </>,
     );
 

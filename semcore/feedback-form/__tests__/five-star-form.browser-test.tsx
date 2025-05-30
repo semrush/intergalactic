@@ -3,8 +3,8 @@ import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 test.describe('5-star Feedback form', () => {
   test('Verify mouse interaction with base cases', async ({ page, browserName }) => {
-    const standPath
-      = 'stories/patterns/ux-patterns/feedback-rating/docs/examples/feedback_rating_form.tsx';
+    const standPath =
+      'stories/patterns/ux-patterns/feedback-rating/docs/examples/feedback_rating_form.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -36,8 +36,8 @@ test.describe('5-star Feedback form', () => {
   });
 
   test('Verify keyboard interaction with base cases', async ({ page, browserName }) => {
-    const standPath
-      = 'stories/patterns/ux-patterns/feedback-rating/docs/examples/feedback_rating_form.tsx';
+    const standPath =
+      'stories/patterns/ux-patterns/feedback-rating/docs/examples/feedback_rating_form.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -78,8 +78,8 @@ test.describe('5-star Feedback form', () => {
   });
 
   test('Verify default validation', async ({ page }) => {
-    const standPath
-      = 'stories/patterns/ux-patterns/feedback-rating/docs/examples/feedback_rating_form.tsx';
+    const standPath =
+      'stories/patterns/ux-patterns/feedback-rating/docs/examples/feedback_rating_form.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -106,8 +106,8 @@ test.describe('5-star Feedback form', () => {
   });
 
   test('Verify feedback rating with error notice on submit', async ({ page, browserName }) => {
-    const standPath
-      = 'stories/patterns/ux-patterns/feedback-rating/tests/examples/with-error-on-send.tsx';
+    const standPath =
+      'stories/patterns/ux-patterns/feedback-rating/tests/examples/with-error-on-send.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);

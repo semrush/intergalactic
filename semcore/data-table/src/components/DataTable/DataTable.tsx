@@ -98,8 +98,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
     if (props.children) {
       this.columns = this.calculateColumns();
-    }
-    else {
+    } else {
       const cols = this.calculateColumnsFromConfig();
       this.columns = cols[0];
       this.treeColumns = cols[1];
@@ -146,8 +145,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
     if (prevProps.selectedRows !== selectedRows && selectedRows !== undefined) {
       if (prevProps.selectedRows.length < data.length && selectedRows.length === data.length) {
         this.setSelectAllMessage(true);
-      }
-      else if (prevProps.selectedRows.length > 0 && selectedRows.length === 0) {
+      } else if (prevProps.selectedRows.length > 0 && selectedRows.length === 0) {
         this.setSelectAllMessage(false);
       }
     }
@@ -164,8 +162,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
         if (Array.isArray(expandedRows)) {
           acc = acc + expandedRows.length;
-        }
-        else {
+        } else {
           acc = acc + 1;
         }
       }
@@ -235,9 +232,9 @@ class DataTableRoot<D extends DataTableData> extends Component<
       totalRows: this.totalRows,
       selectedRows: selectedRows,
       onChangeSelectAll: (value, e) => {
-        const selectedRowsIndexes = value
-          ? new Array(this.totalRows).fill(undefined).map((_, i) => i)
-          : [];
+        const selectedRowsIndexes = value ?
+            new Array(this.totalRows).fill(undefined).map((_, i) => i) :
+            [];
         onSelectedRowsChange?.(selectedRowsIndexes, e);
       },
       getFixedStyle: this.getFixedStyle,
@@ -309,8 +306,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
       if (isSelected && !newSelectedRows.has(selectedRowIndex)) {
         newSelectedRows.add(selectedRowIndex);
-      }
-      else if (!isSelected && newSelectedRows.has(selectedRowIndex)) {
+      } else if (!isSelected && newSelectedRows.has(selectedRowIndex)) {
         newSelectedRows.delete(selectedRowIndex);
       }
 
@@ -329,9 +325,9 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
     const { getI18nText } = this.asProps;
     const message = getI18nText(
-      selectedAll
-        ? 'DataTable.allItemsSelected:aria-live'
-        : 'DataTable.allItemsDeselected:aria-live',
+      selectedAll ?
+        'DataTable.allItemsSelected:aria-live' :
+        'DataTable.allItemsDeselected:aria-live',
     );
     this.setState({ selectAllMessage: message });
 
@@ -348,8 +344,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
     cells?.forEach((cell) => {
       if (value === true) {
         cell.setAttribute('inert', '');
-      }
-      else {
+      } else {
         cell.removeAttribute('inert');
       }
     });
@@ -371,8 +366,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
       setTimeout(() => {
         this.handlers.expandedRows(new Set([...expandedRows]));
       }, 300);
-    }
-    else {
+    } else {
       expandedRows.add(expandedRow[UNIQ_ROW_KEY]);
       this.handlers.expandedRows(new Set([...expandedRows]));
     }
@@ -403,8 +397,8 @@ class DataTableRoot<D extends DataTableData> extends Component<
     const newCol = this.focusedCell[1] + colIndex;
 
     if (
-      ((hasFocusable && newRow < 0) || (!hasFocusable && newRow < 1) || newRow > maxRow)
-      && newRow !== this.focusedCell[0]
+      ((hasFocusable && newRow < 0) || (!hasFocusable && newRow < 1) || newRow > maxRow) &&
+      newRow !== this.focusedCell[0]
     ) {
       changed = false;
     }
@@ -448,8 +442,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
         headerCell?.removeAttribute('inert');
       }
-    }
-    else if (cell === null && currentCell instanceof HTMLElement) {
+    } else if (cell === null && currentCell instanceof HTMLElement) {
       let rowI = rowIndex;
       let colI = colIndex;
 
@@ -461,39 +454,34 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
         // left/right
         if (
-          currentCell.dataset.groupedBy === 'colgroup'
-          || Number(currentCell.parentElement?.getAttribute('aria-rowindex')) === 2
-          || Array.from(row?.children ?? []).indexOf(currentCell) > 0
+          currentCell.dataset.groupedBy === 'colgroup' ||
+          Number(currentCell.parentElement?.getAttribute('aria-rowindex')) === 2 ||
+          Array.from(row?.children ?? []).indexOf(currentCell) > 0
         ) {
           colI = direction === 'left' ? colI - 1 : colI + 1;
-        }
-        else {
+        } else {
           rowI = rowI - 1;
         }
-      }
-      else if (direction === 'up' || direction === 'down') {
+      } else if (direction === 'up' || direction === 'down') {
         // top/bottom
         if (
-          currentCell.dataset.groupedBy === 'rowgroup'
-          || Number(currentCell.getAttribute('aria-colindex')) === 1
+          currentCell.dataset.groupedBy === 'rowgroup' ||
+          Number(currentCell.getAttribute('aria-colindex')) === 1
         ) {
           rowI = direction === 'up' ? rowI - 1 : rowI + 1;
-        }
-        else {
+        } else {
           colI = colI - 1;
         }
       }
       this.changeFocusCell(rowI, colI, direction);
-    }
-    else if (cell === null && currentHeaderCell instanceof HTMLElement && direction === 'down') {
+    } else if (cell === null && currentHeaderCell instanceof HTMLElement && direction === 'down') {
       const colI = colIndex - 1;
       this.changeFocusCell(rowIndex, colI, direction);
-    }
-    else if (
-      row === null
-      && this.focusedCell[0] === 0
-      && direction === 'down'
-      && this.asProps.virtualScroll
+    } else if (
+      row === null &&
+      this.focusedCell[0] === 0 &&
+      direction === 'down' &&
+      this.asProps.virtualScroll
     ) {
       this.changeFocusCell(rowIndex + 1, colIndex, direction);
     }
@@ -533,8 +521,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
     if (hasFocusable) {
       this.focusedCell = [0, 0];
-    }
-    else {
+    } else {
       this.focusedCell = [1, 0];
     }
   };
@@ -549,10 +536,9 @@ class DataTableRoot<D extends DataTableData> extends Component<
     if (this.asProps.loading) {
       this.spinnerRef.current?.focus();
       e.currentTarget.setAttribute('tabIndex', '-1');
-    }
-    else if (
-      (!e.relatedTarget || !isFocusInside(e.currentTarget, e.relatedTarget))
-      && lastInteraction.isKeyboard()
+    } else if (
+      (!e.relatedTarget || !isFocusInside(e.currentTarget, e.relatedTarget)) &&
+      lastInteraction.isKeyboard()
     ) {
       if (this.focusedCell[0] === -1 && this.focusedCell[1] === -1) {
         this.initFocusableCell();
@@ -589,8 +575,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
       if (cell instanceof HTMLElement) {
         if (hasParent(e.target, cell)) {
           e.target.focus();
-        }
-        else {
+        } else {
           cell.focus();
         }
       }
@@ -604,10 +589,10 @@ class DataTableRoot<D extends DataTableData> extends Component<
     const tableElement = this.tableRef.current;
 
     if (
-      tableElement
-      && (!relatedTarget
-        || !isFocusInside(tableElement, relatedTarget)
-        || !lastInteraction.isKeyboard())
+      tableElement &&
+      (!relatedTarget ||
+        !isFocusInside(tableElement, relatedTarget) ||
+        !lastInteraction.isKeyboard())
     ) {
       this.setInert(false);
       tableElement.setAttribute('tabIndex', '0');
@@ -646,14 +631,14 @@ class DataTableRoot<D extends DataTableData> extends Component<
     const Head = findComponent<DataTableHeadProps>(Children, ['DataTable.Head']);
     const headerPropsToCheck = headerProps ?? Head?.props;
     const headerHeight = headerProps?.h || this.getHeaderHeight();
-    const topOffset
-      = headerPropsToCheck?.sticky || headerPropsToCheck?.withScrollBar ? headerHeight : undefined;
+    const topOffset =
+      headerPropsToCheck?.sticky || headerPropsToCheck?.withScrollBar ? headerHeight : undefined;
 
-    const width
-      = w
-        ?? (this.columns.some((c) => c.gtcWidth === 'auto' || c.gtcWidth === '1fr')
-          ? '100%'
-          : undefined);
+    const width =
+      w ??
+      (this.columns.some((c) => c.gtcWidth === 'auto' || c.gtcWidth === '1fr') ?
+        '100%' :
+        undefined);
 
     let gridTemplateRows: string | undefined = undefined;
 
@@ -667,11 +652,9 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
     if (hasWidthSettings && !hasHeightSettings) {
       scrollDirection = 'horizontal';
-    }
-    else if (hasHeightSettings && !hasWidthSettings) {
+    } else if (hasHeightSettings && !hasWidthSettings) {
       scrollDirection = 'vertical';
-    }
-    else if (hasWidthSettings && hasHeightSettings) {
+    } else if (hasWidthSettings && hasHeightSettings) {
       scrollDirection = 'both';
     }
 
@@ -726,11 +709,11 @@ class DataTableRoot<D extends DataTableData> extends Component<
             use:hMax={undefined}
             use:hMin={undefined}
           >
-            {children
-              ? (
+            {children ?
+                (
                   <Children />
-                )
-              : (
+                ) :
+                (
                   <>
                     <DataTableInternal.Head />
                     <DataTableInternal.Body />
@@ -785,8 +768,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
               setToMap(columnNode);
             }
           });
-        }
-        else {
+        } else {
           setToMap(node);
         }
       }
@@ -875,14 +857,14 @@ class DataTableRoot<D extends DataTableData> extends Component<
       isFirst?: boolean,
       isLast?: boolean,
     ): DTColumn => {
-      const leftBordersFromParent
-        = isFirst && (parent?.props.borders === 'both' || parent?.props.borders === 'left')
-          ? 'left'
-          : undefined;
-      const rightBordersFromParent
-        = isLast && (parent?.props.borders === 'both' || parent?.props.borders === 'right')
-          ? 'right'
-          : undefined;
+      const leftBordersFromParent =
+        isFirst && (parent?.props.borders === 'both' || parent?.props.borders === 'left') ?
+          'left' :
+          undefined;
+      const rightBordersFromParent =
+        isLast && (parent?.props.borders === 'both' || parent?.props.borders === 'right') ?
+          'right' :
+          undefined;
 
       const column: DTColumn = {
         name: columnElement.props.name,
@@ -925,8 +907,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
         gridColumnIndex++;
 
         columns.push(col);
-      }
-      else if (childIsGroup(child)) {
+      } else if (childIsGroup(child)) {
         const Group = child;
         const childCount = React.Children.count(child.props.children);
 
@@ -941,8 +922,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
             if (i === 0 && j === 0 && data.some((d) => d[ACCORDION])) {
               gridColumnIndex++;
               col.gridArea = `2 / ${gridColumnIndex - 1} / 3 / ${gridColumnIndex + 1}`;
-            }
-            else {
+            } else {
               col.gridArea = `2 / ${gridColumnIndex} / 3 / ${gridColumnIndex + 1}`;
             }
 
@@ -991,10 +971,10 @@ class DataTableRoot<D extends DataTableData> extends Component<
       isFirst?: boolean,
       isLast?: boolean,
     ): DTColumn => {
-      const leftBordersFromParent
-        = isFirst && (parent?.borders === 'both' || parent?.borders === 'left') ? 'left' : undefined;
-      const rightBordersFromParent
-        = isLast && (parent?.borders === 'both' || parent?.borders === 'right') ? 'right' : undefined;
+      const leftBordersFromParent =
+        isFirst && (parent?.borders === 'both' || parent?.borders === 'left') ? 'left' : undefined;
+      const rightBordersFromParent =
+        isLast && (parent?.borders === 'both' || parent?.borders === 'right') ? 'right' : undefined;
 
       const column = {
         ...columnElement,
@@ -1032,8 +1012,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
         calculatedColumns.push(col);
         treeColumns.push(col);
-      }
-      else if (childIsGroup(child)) {
+      } else if (childIsGroup(child)) {
         const Group = makeColumn(child);
         const childCount = child.columns.length;
 
@@ -1049,8 +1028,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
           if (i === 0 && j === 0 && data.some((d) => d[ACCORDION])) {
             gridColumnIndex++;
             col.gridArea = `2 / ${gridColumnIndex - 1} / 3 / ${gridColumnIndex + 1}`;
-          }
-          else {
+          } else {
             col.gridArea = `2 / ${gridColumnIndex} / 3 / ${gridColumnIndex + 1}`;
           }
 
@@ -1093,8 +1071,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
           if (columnsToRow.length === 1) {
             acc[key] = value ?? '';
             columns.delete(key);
-          }
-          else {
+          } else {
             acc[columnsToRow[0]] = new MergedColumnsCell(value, {
               dataKey: key,
               size: columnsToRow.length,
@@ -1158,8 +1135,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
             };
             dtRow = makeDtRow(rowData);
             dtRow[ROW_GROUP] = new Set();
-          }
-          else {
+          } else {
             if (index === groupedRows.length - 1 && row[ACCORDION]) {
               childRow[ACCORDION] = row[ACCORDION];
             }
@@ -1174,8 +1150,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
         });
 
         rows.push(innerRows);
-      }
-      else {
+      } else {
         const dtRow = makeDtRow(row);
 
         rows.push(dtRow);
@@ -1190,8 +1165,8 @@ class DataTableRoot<D extends DataTableData> extends Component<
     c: ReactElement<DataTableColumnProps> | ColumnItemConfig,
   ): string {
     return (
-      (React.isValidElement(c) ? c.props.gtcWidth : c.gtcWidth)
-      ?? (this.props.defaultGridTemplateColumnWidth as string)
+      (React.isValidElement(c) ? c.props.gtcWidth : c.gtcWidth) ??
+      (this.props.defaultGridTemplateColumnWidth as string)
     );
   }
 

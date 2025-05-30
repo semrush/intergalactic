@@ -98,8 +98,8 @@ class ItemPicker extends Component {
 
   render() {
     const SPickerInput = Root;
-    const { styles, step, onSelect, time, size, disabled, onVisibleChange, ...other }
-      = this.asProps;
+    const { styles, step, onSelect, time, size, disabled, onVisibleChange, ...other } =
+      this.asProps;
     const { dirtyValue, visible } = this.state;
     const timeValue = time[MAP_FIELD_TO_TIME[this.field]];
     const value = dirtyValue === undefined ? timeValue : dirtyValue;
@@ -146,8 +146,7 @@ class Hours extends ItemPicker {
     const { is12Hour } = this.asProps;
     if (is12Hour) {
       return [1, 12];
-    }
-    else {
+    } else {
       return [0, 23];
     }
   }
@@ -166,8 +165,8 @@ class Hours extends ItemPicker {
     }
     if (event.key === 'ArrowRight') {
       if (
-        currentTarget.selectionStart >= currentTarget.value.length
-        && currentTarget.selectionStart === currentTarget.selectionEnd
+        currentTarget.selectionStart >= currentTarget.value.length &&
+        currentTarget.selectionStart === currentTarget.selectionEnd
       ) {
         event.preventDefault();
         this.focusNext();
@@ -207,8 +206,8 @@ class Minutes extends ItemPicker {
     const { currentTarget } = event;
     if (event.key === 'ArrowLeft') {
       if (
-        currentTarget.selectionStart <= 0
-        && currentTarget.selectionStart === currentTarget.selectionEnd
+        currentTarget.selectionStart <= 0 &&
+        currentTarget.selectionStart === currentTarget.selectionEnd
       ) {
         event.preventDefault();
         this.focusPrev();

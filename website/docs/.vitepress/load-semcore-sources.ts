@@ -21,7 +21,7 @@ const babelTransform = async (contents: string, path: string, isEsm?: true) => {
       },
       (error: Error | undefined, result: any) => {
         if (error) reject(error);
-        else resolve(result?.code!);
+        else resolve(result?.code);
       },
     ),
   );

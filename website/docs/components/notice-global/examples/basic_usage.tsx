@@ -24,7 +24,9 @@ const Demo = () => {
       </Text>
       <Select options={options} defaultValue={defaultTheme} onChange={setTheme} id='select-theme' />
       <Button onClick={() => setVisible(!visible)}>
-        {visible ? 'Close' : 'Open'} NoticeGlobal
+        {visible ? 'Close' : 'Open'}
+        {' '}
+        NoticeGlobal
       </Button>
       <Portal>
         <NoticeGlobal

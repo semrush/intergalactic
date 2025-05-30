@@ -7,8 +7,8 @@ export default function getValue(obj: any, path: string | string[], def?: any) {
       .split('.')
       .filter(Boolean)
       // biome-ignore lint/suspicious/noAssignInExpressions: old code
-      .every((step: string) => (obj = obj[step]) !== undefined)
-      ? obj
-      : def
+      .every((step: string) => (obj = obj[step]) !== undefined) ?
+      obj :
+      def
   );
 }

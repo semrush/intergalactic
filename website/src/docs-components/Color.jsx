@@ -74,13 +74,13 @@ const Color = ({ name, className, ...other }) => {
   return (
     <Copy
       toCopy={varValue ? `${name}: ${value}` : value}
-      title={
+      title={(
         <span>
           Click to copy:
           <br />
           {varValue ? `${name}: "${value}"` : value}
         </span>
-      }
+      )}
     >
       <span
         className={cx(styles.paintedElement, className)}

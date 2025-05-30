@@ -89,8 +89,8 @@ class NoticeBubbleContainerRoot extends Component {
   render() {
     const SNoticeBubble = Root;
     const SNoticeAriaLiveWrapper = 'div';
-    const { Children, styles, disablePortal, getI18nText, ref, parentZIndexStacking }
-      = this.asProps;
+    const { Children, styles, disablePortal, getI18nText, ref, parentZIndexStacking } =
+      this.asProps;
     const { notices, warnings } = this.state;
 
     return sstyled(styles)(
@@ -187,11 +187,11 @@ class ViewInfo extends Component {
   handleBodyMouseMove = (event) => {
     if (!this.timer?.paused) return;
     const rect = this.ref.current.getBoundingClientRect();
-    const mouseInRect
-      = event.clientX >= rect.left
-        && event.clientX <= rect.right
-        && event.clientY >= rect.top
-        && event.clientY <= rect.bottom;
+    const mouseInRect =
+      event.clientX >= rect.left &&
+      event.clientX <= rect.right &&
+      event.clientY >= rect.top &&
+      event.clientY <= rect.bottom;
     if (mouseInRect) return;
     this.timer.resume();
   };
@@ -240,8 +240,8 @@ class ViewInfo extends Component {
           <Button.Addon tag={CloseIcon} color='icon-primary-invert' />
         </SDismiss>
 
-        {isNode(icon)
-          ? (
+        {isNode(icon) ?
+            (
               <>
                 <SIcon>{icon}</SIcon>
                 <SContent>
@@ -249,8 +249,8 @@ class ViewInfo extends Component {
                   {isNode(actionNode) ? <SAction>{actionNode}</SAction> : null}
                 </SContent>
               </>
-            )
-          : (
+            ) :
+            (
               <SContent>
                 <SMessage>{children}</SMessage>
                 {isNode(actionNode) ? <SAction>{actionNode}</SAction> : null}

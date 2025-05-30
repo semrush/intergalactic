@@ -6,8 +6,8 @@ export const normalizeLocale = (
   for (const locale in translations) {
     translationNames[locale.toLowerCase()] = locale;
   }
-  providedLocale
-    = providedLocale ?? isAvailableLocale(globalThis?.navigator?.language, translations) ?? 'en';
+  providedLocale =
+    providedLocale ?? isAvailableLocale(globalThis?.navigator?.language, translations) ?? 'en';
   let locale = providedLocale.toLowerCase();
   if (locale.includes('-') && !translations[locale]) {
     const [localeBase] = locale.split('-');

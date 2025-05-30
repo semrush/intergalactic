@@ -324,45 +324,45 @@ type Token =
   | MarkdownToken
   | HeadingToken
   | {
-      type: 'example';
-      raw: string;
-      relativePath: string;
-      filePath: string;
-      load: string;
-    }
+    type: 'example';
+    raw: string;
+    relativePath: string;
+    filePath: string;
+    load: string;
+  }
   | {
-      type: 'import';
-      props: { [propName: string]: unknown };
-      filePath: string;
-      load: string;
-    }
+    type: 'import';
+    props: { [propName: string]: unknown };
+    filePath: string;
+    load: string;
+  }
   | {
-      type: 'embedded_video';
-      url: string;
-    }
+    type: 'embedded_video';
+    url: string;
+  }
   | {
-      type: 'email_html';
-      raw: string;
-      compiled: string;
-    }
+    type: 'email_html';
+    raw: string;
+    compiled: string;
+  }
   | {
-      type: 'changelogByComponent';
-      blocks: GlobalChangelogBlock[];
-    }
+    type: 'changelogByComponent';
+    blocks: GlobalChangelogBlock[];
+  }
   | {
-      type: 'changelog';
-      blocks: ComponentChangelogBlock[];
-    }
+    type: 'changelog';
+    blocks: ComponentChangelogBlock[];
+  }
   | {
-      type: 'typescriptDeclaration';
-      declaration: unknown;
-      dependencies: { [dependantName: string]: unknown };
-      route: string;
-    }
+    type: 'typescriptDeclaration';
+    declaration: unknown;
+    dependencies: { [dependantName: string]: unknown };
+    route: string;
+  }
   | {
-      type: 'text';
-      html: string;
-    };
+    type: 'text';
+    html: string;
+  };
 
 export const buildArticle = async (
   docsDir: string,
@@ -658,9 +658,9 @@ export const buildArticle = async (
     .filter((token) => token !== null)
     .flat();
 
-  const sourcePath = relativePath.startsWith('./')
-    ? relativePath.substring('./'.length)
-    : relativePath;
+  const sourcePath = relativePath.startsWith('./') ?
+      relativePath.substring('./'.length) :
+    relativePath;
   const beta = Boolean(meta.beta);
 
   return {

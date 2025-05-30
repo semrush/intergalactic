@@ -68,7 +68,7 @@ const amplitudeHttp = {
         },
       ]);
     } catch (error) {
-      console.error("amplitude-client: can't prepare user properties for sending", error);
+      console.error('amplitude-client: can\'t prepare user properties for sending', error);
       return this;
     }
 
@@ -117,7 +117,7 @@ const amplitudeHttp = {
         },
       });
     } catch (error) {
-      console.error("amplitude-client: can't prepare event for sending", error);
+      console.error('amplitude-client: can\'t prepare event for sending', error);
       return this;
     }
 
@@ -131,7 +131,7 @@ const amplitudeHttp = {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Accept: 'application/json',
+        'Accept': 'application/json',
       },
       body,
     }).catch((error) => {

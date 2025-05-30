@@ -38,7 +38,7 @@ const validate = (values: Data) => {
 
 const Demo = () => (
   <FeedbackForm validate={validate} p={1} onSubmit={() => ({})}>
-    <Box tag={'label'} htmlFor='acitivty'>
+    <Box tag='label' htmlFor='acitivty'>
       <Text mb={2} tag='p' size={200}>
         Activity
       </Text>
@@ -59,7 +59,7 @@ const Demo = () => (
       </FeedbackForm.Item>
     </Box>
 
-    <Box tag={'label'} htmlFor='campaign' mt={4}>
+    <Box tag='label' htmlFor='campaign' mt={4}>
       <Text mb={2} tag='p' size={200}>
         Campaign
       </Text>
@@ -74,7 +74,9 @@ const Demo = () => (
                   <Select.Option
                     value={`Company ${ind}`}
                     key={ind}
-                  >{`Company ${ind}`}</Select.Option>
+                  >
+                    {`Company ${ind}`}
+                  </Select.Option>
                 ))}
             </Select.Menu>
           </Select>
@@ -82,7 +84,7 @@ const Demo = () => (
       </FeedbackForm.Item>
     </Box>
 
-    <Box tag={'label'} htmlFor='day' mt={4}>
+    <Box tag='label' htmlFor='day' mt={4}>
       <Text mb={2} tag='p' size={200}>
         Day
       </Text>

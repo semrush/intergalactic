@@ -72,7 +72,7 @@ const Demo = () => {
         onMouseEnterItem={handleMouseEnter}
         onMouseLeaveItem={handleMouseLeave}
         patterns
-        aria-label={'Bar chart legend'}
+        aria-label='Bar chart legend'
       />
       <Plot
         data={data}
@@ -116,6 +116,7 @@ const Demo = () => {
             .map((item, index) => {
               return (
                 <GroupBar.Bar
+                  key={item.id}
                   y={item.id}
                   color={item.color}
                   transparent={highlightedLine !== -1 && highlightedLine !== index}

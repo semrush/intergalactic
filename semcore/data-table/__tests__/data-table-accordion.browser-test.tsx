@@ -9,8 +9,8 @@ const checkStyles = async (element: any, styles: Record<string, string>) => {
 
 test.describe('Accordion in table', () => {
   test('Verify keyboard interactions with accordion and chart inside', async ({ page }) => {
-    const standPath
-      = 'stories/components/data-table/tests/examples/accordion-tests/accordion-inside-table.tsx';
+    const standPath =
+      'stories/components/data-table/tests/examples/accordion-tests/accordion-inside-table.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     const plot = await page.locator('[data-ui-name="Plot"]');
     await page.setContent(htmlContent);
@@ -60,8 +60,8 @@ test.describe('Accordion in table', () => {
   });
 
   test('Verify mouse interactions with accordion and chart inside', async ({ page }) => {
-    const standPath
-      = 'stories/components/data-table/tests/examples/accordion-tests/accordion-inside-table.tsx';
+    const standPath =
+      'stories/components/data-table/tests/examples/accordion-tests/accordion-inside-table.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -126,8 +126,8 @@ test.describe('Accordion in table', () => {
   });
 
   test('Verify accordion with chart styles', async ({ page, browserName }) => {
-    const standPath
-      = 'stories/components/data-table/tests/examples/accordion-tests/accordion-inside-table.tsx';
+    const standPath =
+      'stories/components/data-table/tests/examples/accordion-tests/accordion-inside-table.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -219,8 +219,8 @@ test.describe('Accordion in table', () => {
   });
 
   test('Verify accordion with with chart attributes', async ({ page }) => {
-    const standPath
-      = 'stories/components/data-table/tests/examples/accordion-tests/accordion-inside-table.tsx';
+    const standPath =
+      'stories/components/data-table/tests/examples/accordion-tests/accordion-inside-table.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -390,8 +390,8 @@ test.describe('Accordion in table', () => {
     page,
     browserName,
   }) => {
-    const standPath
-      = 'stories/components/data-table/tests/examples/accordion-tests/accordion-with-render-cell.tsx';
+    const standPath =
+      'stories/components/data-table/tests/examples/accordion-tests/accordion-with-render-cell.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -455,8 +455,8 @@ test.describe('Accordion in table', () => {
   test('Verify mouse inreaction when interactive element inside cell with toggle', async ({
     page,
   }) => {
-    const standPath
-      = 'stories/components/data-table/tests/examples/accordion-tests/accordion-with-render-cell.tsx';
+    const standPath =
+      'stories/components/data-table/tests/examples/accordion-tests/accordion-with-render-cell.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -476,8 +476,8 @@ test.describe('Accordion in table', () => {
   });
 
   test('Verify table in table with sorting keyboard interaction', async ({ page }) => {
-    const standPath
-      = 'stories/components/data-table/tests/examples/accordion-tests/table-in-table-with-sorting.tsx';
+    const standPath =
+      'stories/components/data-table/tests/examples/accordion-tests/table-in-table-with-sorting.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -595,8 +595,8 @@ test.describe('Accordion in table', () => {
   });
 
   test('Verify accordion with fixed column', async ({ page }) => {
-    const standPath
-      = 'stories/components/data-table/tests/examples/accordion-tests/accordion-with-fixed-column.tsx';
+    const standPath =
+      'stories/components/data-table/tests/examples/accordion-tests/accordion-with-fixed-column.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -610,8 +610,8 @@ test.describe('Accordion in table', () => {
   });
 
   test('Verify keyboard navigation when table component inside table', async ({ page }) => {
-    const standPath
-      = 'stories/components/data-table/tests/examples/accordion-tests/table-in-table-with-sorting.tsx';
+    const standPath =
+      'stories/components/data-table/tests/examples/accordion-tests/table-in-table-with-sorting.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -701,8 +701,8 @@ test.describe('Accordion in table', () => {
   });
 
   test('Verify table component inside table expands by mouse', async ({ page }) => {
-    const standPath
-      = 'stories/components/data-table/tests/examples/accordion-tests/table-in-table-with-sorting.tsx';
+    const standPath =
+      'stories/components/data-table/tests/examples/accordion-tests/table-in-table-with-sorting.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);

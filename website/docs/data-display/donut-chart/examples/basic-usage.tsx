@@ -4,7 +4,7 @@ import { Chart } from '@semcore/d3-chart';
 const Demo = () => {
   return (
     <div style={{ width: '450px' }}>
-      <Chart.Donut plotWidth={300} plotHeight={300} data={data} aria-label={'Donut chart'} />
+      <Chart.Donut plotWidth={300} plotHeight={300} data={data} aria-label='Donut chart' />
     </div>
   );
 };

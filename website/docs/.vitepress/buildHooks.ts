@@ -68,7 +68,7 @@ const transformHtml: UserConfig<DefaultTheme.Config>['transformHtml'] = async (
       .filter(Boolean)
       .map((tab) => {
         const title = tab.split('(')[0].trim();
-        const fileName = tab.split("('")[1].split("')")[0].trim() + '.md';
+        const fileName = tab.split('(\'')[1].split('\')')[0].trim() + '.md';
         return { title, fileName };
       });
     const tab = tabs.find((tab) => tab.fileName === markdownPath.split('/').pop());

@@ -44,9 +44,9 @@ class TabLineRoot extends Component {
 
   componentDidUpdate() {
     if (
-      this.prevValue !== null
-      && this.asProps.value !== null
-      && this.prevValue !== this.asProps.value
+      this.prevValue !== null &&
+      this.asProps.value !== null &&
+      this.prevValue !== this.asProps.value
     ) {
       this.animate();
     }
@@ -122,8 +122,7 @@ class TabLineRoot extends Component {
         },
         onTransitionEnd: this.handleAnimationEnd,
       };
-    }
-    else {
+    } else {
       return {
         style: {
           left: animation.fromLeft,

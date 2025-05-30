@@ -57,9 +57,9 @@ export function ErrorsNavigation(props: ErrorsNavigationProps) {
             ref={prevButtonRef}
           />
           <Text size={size === 'l' ? 300 : 200} color='text-critical' ml={1} disabled={disabled}>
-            {errorIndex === -1
-              ? getI18nText('BulkTextarea.ErrorsNavigation.totalErrors', { errorsCount })
-              : getI18nText('BulkTextarea.ErrorsNavigation.selectedError', {
+            {errorIndex === -1 ?
+                getI18nText('BulkTextarea.ErrorsNavigation.totalErrors', { errorsCount }) :
+                getI18nText('BulkTextarea.ErrorsNavigation.selectedError', {
                   errorIndex: errorIndex + 1,
                   errorsCount,
                 })}

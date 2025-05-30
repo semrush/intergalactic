@@ -103,8 +103,8 @@ class FeedbackRatingRoot extends Component<
     this.asProps.onVisibleChange(false, this.asProps.rating);
   };
 
-  handleChange
-    = (fn: (e: React.SyntheticEvent) => void) => (_value: any, e: React.SyntheticEvent) => {
+  handleChange =
+    (fn: (e: React.SyntheticEvent) => void) => (_value: any, e: React.SyntheticEvent) => {
       fn(e);
     };
 
@@ -124,8 +124,7 @@ class FeedbackRatingRoot extends Component<
             duration: 5000,
           });
         }, 300);
-      }
-      else if (status === 'error') {
+      } else if (status === 'error') {
         this.setState({ error: true });
       }
     }
@@ -152,19 +151,19 @@ class FeedbackRatingRoot extends Component<
   renderTextField = (config: FormConfigItem) => {
     const initialValue = this.props.initialValues[config.key];
 
-    const label
-      = typeof config.label === 'string'
-        ? (
+    const label =
+      typeof config.label === 'string' ?
+          (
             <Text mb={2} size={200}>
               {config.label}
             </Text>
-          )
-        : (
+          ) :
+          (
             (config.label as unknown as JSX.Element)
           );
 
-    const isDescriptionReactFragment
-      = (config.description as ReactElement)?.type === React.Fragment;
+    const isDescriptionReactFragment =
+      (config.description as ReactElement)?.type === React.Fragment;
 
     return (
       <Flex direction='column'>
@@ -214,13 +213,13 @@ class FeedbackRatingRoot extends Component<
         </FeedbackRating.Item>
         {config.description && (
           <Box mt={2}>
-            {typeof config.description === 'string' || isDescriptionReactFragment
-              ? (
+            {typeof config.description === 'string' || isDescriptionReactFragment ?
+                (
                   <Text size={200} color='text-secondary' id={config.key + '-description'}>
                     {config.description}
                   </Text>
-                )
-              : (
+                ) :
+                (
                   config.description
                 )}
           </Box>
@@ -318,11 +317,11 @@ class FeedbackRatingRoot extends Component<
                     <SliderRating value={rating} readonly={true} />
                   </Flex>
 
-                  {(header as ReactElement)?.type === FeedbackRating.Header
-                    ? (
+                  {(header as ReactElement)?.type === FeedbackRating.Header ?
+                      (
                         header
-                      )
-                    : (
+                      ) :
+                      (
                         <FeedbackRating.Header>{header}</FeedbackRating.Header>
                       )}
 
@@ -393,8 +392,8 @@ function Header(props: any) {
   );
 }
 
-const FeedbackRating: typeof FeedbackRatingType & { validate: typeof FeedbackRatingRoot.validate }
-  = createComponent(FeedbackRatingRoot, {
+const FeedbackRating: typeof FeedbackRatingType & { validate: typeof FeedbackRatingRoot.validate } =
+  createComponent(FeedbackRatingRoot, {
     Header,
     Item: FeedbackItem,
     Checkbox: CheckboxButton,

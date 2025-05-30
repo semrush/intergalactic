@@ -124,8 +124,7 @@ function Pill(props) {
   if (behavior === 'radio' || behavior === 'auto') {
     roleAreaProps.role = 'radio';
     roleAreaProps['aria-checked'] = selected;
-  }
-  else {
+  } else {
     roleAreaProps.role = 'tab';
     roleAreaProps['aria-selected'] = selected;
   }

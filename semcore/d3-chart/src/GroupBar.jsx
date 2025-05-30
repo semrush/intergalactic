@@ -22,9 +22,9 @@ class GroupBarRoot extends Component {
         acc.push(child.props.y);
       }
       if (
-        React.isValidElement(child)
-        && child.type === GroupBar.HorizontalBar
-        && !child.props.hide
+        React.isValidElement(child) &&
+        child.type === GroupBar.HorizontalBar &&
+        !child.props.hide
       ) {
         acc.push(child.props.x);
       }

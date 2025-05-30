@@ -30,8 +30,8 @@ const interaction = {
 };
 
 export function Item(props: ItemAsProps) {
-  const { Children, styles, value, displayLabel, editable, selected, onRemove, getI18nText, uid }
-    = props as any;
+  const { Children, styles, value, displayLabel, editable, selected, onRemove, getI18nText, uid } =
+    props as any;
   const SItemContainer = Root;
   const SLabel = Box;
   const SCloseIcon = Box;

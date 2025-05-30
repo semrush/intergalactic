@@ -115,8 +115,7 @@ const useHidden = (visible: boolean) => {
   React.useEffect(() => {
     if (visible) {
       setHidden(false);
-    }
-    else {
+    } else {
       setTimeout(() => {
         setHidden(true);
       }, 200);

@@ -91,10 +91,10 @@ class BarRoot extends Component {
     const bandWidth = widthProps || scaleToBand(xScale).bandwidth();
     const width = Math.min(bandWidth, maxBarSize);
     const barX = xScale(d[x]) + bandWidth / 2 - width / 2 + offset[0];
-    const barY
-      = yScale(Math.max(d[y0] ?? 0, height <= hMin && d[y] > 0 ? 0 : d[y]))
-        + offset[1]
-        - calcPartBarY(d[y], hMin, height);
+    const barY =
+      yScale(Math.max(d[y0] ?? 0, height <= hMin && d[y] > 0 ? 0 : d[y])) +
+      offset[1] -
+      calcPartBarY(d[y], hMin, height);
     const handleClick = (event) => onClick?.(d, event, i, y);
     const dSvg = getRect({
       x: barX,
@@ -107,8 +107,7 @@ class BarRoot extends Component {
 
     if (groupKey) {
       dataHintsHandler.describeGroupedValues(groupKey, y);
-    }
-    else {
+    } else {
       dataHintsHandler.describeValueEntity(`${i}.${y}`, groupKey ?? d[x]);
       dataHintsHandler.specifyDataRowFields(x, y);
     }

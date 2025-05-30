@@ -30,9 +30,9 @@ class StackBarRoot extends Component {
           acc.push(child.props.y);
         }
         if (
-          React.isValidElement(child)
-          && child.type === StackBar.HorizontalBar
-          && !child.props.hide
+          React.isValidElement(child) &&
+          child.type === StackBar.HorizontalBar &&
+          !child.props.hide
         ) {
           acc.push(child.props.x);
         }
@@ -74,8 +74,7 @@ class StackBarRoot extends Component {
 
       if (isEmptyValue || absHeight >= hMin) {
         this.offsetBars[seriesIndex][i] = 0;
-      }
-      else {
+      } else {
         const offsetValue = hMin - absHeight;
         this.offsetBars[seriesIndex][i] = d[y] > 0 ? offsetValue : -offsetValue;
       }
@@ -121,8 +120,8 @@ class StackBarRoot extends Component {
       const absWidth = Math.abs(
         xScale(d[x]) - Math.max(xScale(xScale.domain()[0]), xScale(d[XY0] ?? 0)),
       );
-      this.offsetBars[seriesIndex][i]
-        = Number(d[x] - (d[XY0] ?? 0)) === 0 ? 0 : absWidth >= wMin ? 0 : d[x] > 0 ? -wMin : wMin;
+      this.offsetBars[seriesIndex][i] =
+        Number(d[x] - (d[XY0] ?? 0)) === 0 ? 0 : absWidth >= wMin ? 0 : d[x] > 0 ? -wMin : wMin;
       return [offset, 0];
     };
 

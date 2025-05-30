@@ -48,7 +48,7 @@ const Demo = () => {
       <ChartLegend
         items={legendItems}
         patterns
-        aria-label={'Radar chart legend'}
+        aria-label='Radar chart legend'
         onChangeVisibleItem={handleChangeVisible}
       />
       <Plot data={data} width={width} height={height} patterns>

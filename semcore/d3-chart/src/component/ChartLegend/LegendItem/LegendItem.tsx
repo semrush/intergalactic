@@ -42,8 +42,8 @@ class LegendItemRoot extends Component<LegendItemProps, {}, {}, typeof enhance> 
   }
 
   getShapeProps() {
-    const { checked, color, shape, label, id, size, resolveColor, patterns, onChangeLegendItem }
-      = this.asProps;
+    const { checked, color, shape, label, id, size, resolveColor, patterns, onChangeLegendItem } =
+      this.asProps;
     return {
       label,
       shape,

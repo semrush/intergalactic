@@ -13,12 +13,12 @@ function formatDate(value) {
 const Demo = () => {
   return (
     <Chart.Area
-      groupKey={'time'}
+      groupKey='time'
       data={data}
       plotWidth={500}
       plotHeight={200}
       tooltipValueFormatter={formatDate}
-      aria-label={'Area chart'}
+      aria-label='Area chart'
     />
   );
 };

@@ -8,12 +8,12 @@ const Demo = () => {
       data={data}
       plotWidth={500}
       plotHeight={200}
-      groupKey={'time'}
+      groupKey='time'
       stacked={true}
       curve={curveCardinal}
       patterns
       showXAxis={false}
-      aria-label={'Area chart'}
+      aria-label='Area chart'
     />
   );
 };

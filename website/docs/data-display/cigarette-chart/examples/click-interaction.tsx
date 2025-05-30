@@ -15,7 +15,7 @@ function Demo() {
       plotWidth={400}
       plotHeight={28}
       onClick={handleClick}
-      aria-label={'Cigarette chart'}
+      aria-label='Cigarette chart'
     />
   );
 }

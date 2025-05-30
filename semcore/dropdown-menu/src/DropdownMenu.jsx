@@ -182,13 +182,13 @@ class DropdownMenuRoot extends AbstractDropdown {
         return false;
       }
 
-      const show
-        = (e.key === 'ArrowRight' && placement?.startsWith('right'))
-          || (e.key === 'ArrowLeft' && placement?.startsWith('left'));
-      const hide
-        = (e.key === 'ArrowLeft' && placement?.startsWith('right'))
-          || (e.key === 'ArrowRight' && placement?.startsWith('left'))
-          || e.key === 'Escape';
+      const show =
+        (e.key === 'ArrowRight' && placement?.startsWith('right')) ||
+        (e.key === 'ArrowLeft' && placement?.startsWith('left'));
+      const hide =
+        (e.key === 'ArrowLeft' && placement?.startsWith('right')) ||
+        (e.key === 'ArrowRight' && placement?.startsWith('left')) ||
+        e.key === 'Escape';
       const isMenuItem = e.target.getAttribute('role')?.startsWith(super.childRole);
 
       if (place === 'trigger' && (!visible || inlineActions) && show && isMenuItem) {
@@ -205,8 +205,8 @@ class DropdownMenuRoot extends AbstractDropdown {
       }
       if (place === 'list' && visible && hide && isMenuItem) {
         if (
-          !inlineActions
-          || (inlineActions && (e.key === 'Escape' || this.asProps.highlightedIndex === 0))
+          !inlineActions ||
+          (inlineActions && (e.key === 'Escape' || this.asProps.highlightedIndex === 0))
         ) {
           this.handlers.visible(false);
           this.triggerRef.current?.focus();
@@ -321,8 +321,8 @@ function Item({
 
   const hasSubMenu = isAdvanceMode(Children, [DropdownMenu.displayName], true);
   const hasHint = isAdvanceMode(Children, [DropdownMenu.Item.Hint.displayName], true);
-  const advancedMode
-    = isAdvanceMode(Children, [DropdownMenu.Item.Content.displayName], true) || hasSubMenu || hasHint;
+  const advancedMode =
+    isAdvanceMode(Children, [DropdownMenu.Item.Content.displayName], true) || hasSubMenu || hasHint;
 
   if (hasHint) {
     const hintId = `igc-${useUID()}-option-hint`;
@@ -416,8 +416,8 @@ function ItemContent({ styles }) {
     const parent = element?.parentElement;
 
     if (
-      parent.getAttribute('aria-haspopup') === 'true'
-      && parent.getAttribute('aria-describedby')
+      parent.getAttribute('aria-haspopup') === 'true' &&
+      parent.getAttribute('aria-describedby')
     ) {
       setDescribedby((prev) => {
         prev.add(parent.getAttribute('aria-describedby'));

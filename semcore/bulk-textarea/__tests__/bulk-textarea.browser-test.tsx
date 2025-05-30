@@ -36,8 +36,8 @@ test.describe('States size counter and placeholder checks', () => {
       .nth(2);
     await expect(normalTextArea).toBeFocused();
 
-    const text
-      = 'Zoom in on product categories to understand how each site segment drives conversions.\nSecond row\n3 row\n4 row\n5 row\n6 row\n7 row\n8 row\n9 row\n10 row';
+    const text =
+      'Zoom in on product categories to understand how each site segment drives conversions.\nSecond row\n3 row\n4 row\n5 row\n6 row\n7 row\n8 row\n9 row\n10 row';
     await page.keyboard.type(text, { delay: 20 });
     await page.waitForTimeout(100);
     await page.keyboard.press('Shift+Tab');
@@ -60,8 +60,8 @@ test.describe('States size counter and placeholder checks', () => {
 
 test.describe('Counter and Clear all', () => {
   test('Verify counter fucntionality', async ({ page, browserName }) => {
-    const standPath
-      = 'stories/components/bulk-textarea/tests/examples/validate-blur-base-example.tsx';
+    const standPath =
+      'stories/components/bulk-textarea/tests/examples/validate-blur-base-example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
     const locators = getLocators(page);
@@ -93,8 +93,8 @@ test.describe('Counter and Clear all', () => {
 
     await test.step('Add more rows and reach counter limit', async () => {
       await locators.textarea.click();
-      const text
-        = 'Zoom in \nSecond row\n3 row\n4 row\n5 row\n6 row\n7 row\n8 row\n9 row\n10 row\n11 row\n12 row\n13 row\n14 row\n15 row';
+      const text =
+        'Zoom in \nSecond row\n3 row\n4 row\n5 row\n6 row\n7 row\n8 row\n9 row\n10 row\n11 row\n12 row\n13 row\n14 row\n15 row';
       await page.keyboard.type(text, { delay: 10 });
       await expect(locators.counter).toHaveText('15/15of 15 linesLimit reached');
     });
@@ -113,8 +113,8 @@ test.describe('Counter and Clear all', () => {
       await page.keyboard.up(modifier);
       await page.keyboard.press('Backspace');
       await expect(locators.counter).toHaveText('0/15of 15 lines');
-      const text
-        = 'Zoom in \nSecond row\n3 row\n4 row\n5 row\n6 row\n7 row\n8 row\n9 row\n10 row\n11 row\n12 row\n13 row\n14 row\n15 row';
+      const text =
+        'Zoom in \nSecond row\n3 row\n4 row\n5 row\n6 row\n7 row\n8 row\n9 row\n10 row\n11 row\n12 row\n13 row\n14 row\n15 row';
       await page.keyboard.type(text, { delay: 10 });
       await expect(locators.counter).toHaveText('15/15of 15 linesLimit reached');
     });
@@ -135,8 +135,8 @@ test.describe('Counter and Clear all', () => {
   });
 
   test('Verify Clear all works by mouse when no validation', async ({ page }) => {
-    const standPath
-      = 'stories/components/bulk-textarea/tests/examples/validate-blur-base-example.tsx';
+    const standPath =
+      'stories/components/bulk-textarea/tests/examples/validate-blur-base-example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
     const locators = getLocators(page);
@@ -221,8 +221,8 @@ test.describe('Counter and Clear all', () => {
 
 test.describe('Common error ON - Validation Delimiter RowProcessing', () => {
   test('Verity Validation on Blur', async ({ page }) => {
-    const standPath
-      = 'stories/components/bulk-textarea/tests/examples/validate-blur-base-example.tsx';
+    const standPath =
+      'stories/components/bulk-textarea/tests/examples/validate-blur-base-example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
     const locators = getLocators(page);
@@ -277,8 +277,8 @@ test.describe('Common error ON - Validation Delimiter RowProcessing', () => {
     await test.step('Verify multiple rows with errors validation', async () => {
       await locators.clearAllBtn.click();
 
-      const text
-        = 'Zoom in \nSecond row\n3 row\n4[] row\n5 row\n6 ]]row\n7 row\n8 row\n9 row\n10 row\n11[[row\n12 row\n13 row\n14 row\n15 row';
+      const text =
+        'Zoom in \nSecond row\n3 row\n4[] row\n5 row\n6 ]]row\n7 row\n8 row\n9 row\n10 row\n11[[row\n12 row\n13 row\n14 row\n15 row';
       await page.keyboard.type(text, { delay: 10 });
       await page.keyboard.press('Enter');
       await expect(locators.errorMessage).not.toBeVisible();
@@ -300,8 +300,8 @@ test.describe('Common error ON - Validation Delimiter RowProcessing', () => {
   });
 
   test('Verify Validation on BlurRow', async ({ page }) => {
-    const standPath
-      = 'stories/components/bulk-textarea/tests/examples/validate-blurRow-base-example.tsx';
+    const standPath =
+      'stories/components/bulk-textarea/tests/examples/validate-blurRow-base-example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
     const locators = getLocators(page);
@@ -365,8 +365,8 @@ test.describe('Common error ON - Validation Delimiter RowProcessing', () => {
     });
 
     await test.step('Verify multiple rows with errors validation', async () => {
-      const text
-        = 'Zoom in \nSecond row\n3 row\n4[] row\n5 row\n6 ]]row\n7 row\n8 row\n9 row\n10 row\n11[[row\n12 row\n13 row\n14 row\n15 row';
+      const text =
+        'Zoom in \nSecond row\n3 row\n4[] row\n5 row\n6 ]]row\n7 row\n8 row\n9 row\n10 row\n11[[row\n12 row\n13 row\n14 row\n15 row';
       await page.keyboard.type(text, { delay: 10 });
       await expect(locators.errorMessage).toBeVisible();
       await expect(locators.errorMessage).toHaveText('3 errors');
@@ -384,8 +384,8 @@ test.describe('Common error ON - Validation Delimiter RowProcessing', () => {
   });
 
   test('Verify Validation on Submit', async ({ page }) => {
-    const standPath
-      = 'stories/components/bulk-textarea/tests/examples/validate-blur-base-example.tsx';
+    const standPath =
+      'stories/components/bulk-textarea/tests/examples/validate-blur-base-example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
     const locators = getLocators(page);
@@ -407,8 +407,8 @@ test.describe('Common error ON - Validation Delimiter RowProcessing', () => {
   });
 
   test('Verify Delimiter and Rows Processing fucntionality', async ({ page }) => {
-    const standPath
-      = 'stories/components/bulk-textarea/tests/examples/validate-blur-base-example.tsx';
+    const standPath =
+      'stories/components/bulk-textarea/tests/examples/validate-blur-base-example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
     const locators = getLocators(page);
@@ -533,8 +533,8 @@ test.describe('Common error OFF - Validation Delimiter RowProcessing', () => {
   });
 
   test('Verify Validation on BlurRow', async ({ page }) => {
-    const standPath
-      = 'stories/components/bulk-textarea/tests/examples/no-common-error-blur-line.tsx';
+    const standPath =
+      'stories/components/bulk-textarea/tests/examples/no-common-error-blur-line.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
     const locators = getLocators(page);
@@ -662,8 +662,8 @@ test.describe('Common error OFF - Validation Delimiter RowProcessing', () => {
 
 test.describe('Common error On - Error tooltips', () => {
   test('Verify tooltips by mouse hover and click', async ({ page }) => {
-    const standPath
-      = 'stories/components/bulk-textarea/tests/examples/validate-blur-base-example.tsx';
+    const standPath =
+      'stories/components/bulk-textarea/tests/examples/validate-blur-base-example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
     const locators = getLocators(page);
@@ -671,8 +671,8 @@ test.describe('Common error On - Error tooltips', () => {
     const tooltip = page.locator('div[data-ui-name="Tooltip.Popper"]');
     await test.step('Row Error on Hover', async () => {
       await page.keyboard.press('Tab');
-      const text
-        = 'Zoom in \nSecond row\n3 row\n4[] row\n5 row\n6 ]]row\n7 row\n8 row\n9 row\n10 row\n11[[row\n12 row\n13 row';
+      const text =
+        'Zoom in \nSecond row\n3 row\n4[] row\n5 row\n6 ]]row\n7 row\n8 row\n9 row\n10 row\n11[[row\n12 row\n13 row';
       await page.keyboard.type(text, { delay: 50 });
       await page.keyboard.press('Enter');
       await page.waitForTimeout(100);
@@ -734,8 +734,8 @@ test.describe('Common error On - Error tooltips', () => {
     page,
     browserName,
   }) => {
-    const standPath
-      = 'stories/components/bulk-textarea/tests/examples/validate-blur-base-example.tsx';
+    const standPath =
+      'stories/components/bulk-textarea/tests/examples/validate-blur-base-example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
     const locators = getLocators(page);
@@ -744,8 +744,8 @@ test.describe('Common error On - Error tooltips', () => {
 
     await test.step('Row Error on Focus', async () => {
       await page.keyboard.press('Tab');
-      const text
-        = 'Zoom in \nSecond row\n3 row\n4[] row\n5 row\n6 ]]row\n7 row\n8 row\n9 row\n10 row\n11[[row\n12 row';
+      const text =
+        'Zoom in \nSecond row\n3 row\n4[] row\n5 row\n6 ]]row\n7 row\n8 row\n9 row\n10 row\n11[[row\n12 row';
       await page.keyboard.type(text, { delay: 10 });
       await page.waitForTimeout(100);
       await page.keyboard.press('Tab');
@@ -791,8 +791,8 @@ test.describe('Common error On - Error tooltips', () => {
 
   test('Verify tooltips when fixing errors', async ({ page, browserName }) => {
     if (browserName === 'webkit') return; // not stable for webkit
-    const standPath
-      = 'stories/components/bulk-textarea/tests/examples/validate-blur-base-example.tsx';
+    const standPath =
+      'stories/components/bulk-textarea/tests/examples/validate-blur-base-example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
     const locators = getLocators(page);
@@ -802,8 +802,8 @@ test.describe('Common error On - Error tooltips', () => {
     await test.step('Row Error on Focus', async () => {
       await page.keyboard.press('Tab');
       await page.waitForTimeout(100);
-      const text
-        = 'Zoom in \nSecond row\n3 row\n4[] row\n5 row\n6 ]]row\n7 row\n8 row\n9 row\n10 row\n11[[row\n12 row';
+      const text =
+        'Zoom in \nSecond row\n3 row\n4[] row\n5 row\n6 ]]row\n7 row\n8 row\n9 row\n10 row\n11[[row\n12 row';
       await page.keyboard.type(text, { delay: 20 });
       await page.keyboard.press('Tab');
       await page.waitForTimeout(50);
@@ -859,8 +859,8 @@ test.describe('Common error On - Error tooltips', () => {
   });
 
   test('Verify tooltips when adding errors ', async ({ page, browserName }) => {
-    const standPath
-      = 'stories/components/bulk-textarea/tests/examples/validate-blur-base-example.tsx';
+    const standPath =
+      'stories/components/bulk-textarea/tests/examples/validate-blur-base-example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
     const locators = getLocators(page);
@@ -1000,8 +1000,8 @@ test.describe('Common error Off - Error tooltips', () => {
 
 test.describe('handleChange - Error validation', () => {
   test('Verify Errors counter works when handleChange added rows', async ({ page }) => {
-    const standPath
-      = 'stories/components/bulk-textarea/tests/examples/with-new-value-on-handleChange.tsx';
+    const standPath =
+      'stories/components/bulk-textarea/tests/examples/with-new-value-on-handleChange.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
     await page.waitForTimeout(100);
@@ -1021,8 +1021,8 @@ test.describe('handleChange - Error validation', () => {
 
 test.describe('lineProcessing cases', () => {
   test('Verify lineProcessing when paste empty rows', async ({ page }) => {
-    const standPath
-      = 'stories/components/bulk-textarea/tests/examples/test-empty-value-in-paste.tsx';
+    const standPath =
+      'stories/components/bulk-textarea/tests/examples/test-empty-value-in-paste.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
     const locators = getLocators(page);
@@ -1036,8 +1036,8 @@ test.describe('lineProcessing cases', () => {
   });
 
   test('Verify lineProcessing when counts lines and index', async ({ page }) => {
-    const standPath
-      = 'stories/components/bulk-textarea/tests/examples/test-lines-and-index-in-paste.tsx';
+    const standPath =
+      'stories/components/bulk-textarea/tests/examples/test-lines-and-index-in-paste.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
     const locators = getLocators(page);

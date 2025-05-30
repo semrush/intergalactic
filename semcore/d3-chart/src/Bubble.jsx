@@ -90,10 +90,10 @@ class BubbleRoot extends Component {
 
     const margin = Math.min(xScale.range()[0], xScale.range()[1]);
 
-    const labelPosition
-      = size[0] - 2 * margin - (xScale(d[x]) + offset[0] + z(d[value])) < measureText(d[label])
-        ? 'right'
-        : 'left';
+    const labelPosition =
+      size[0] - 2 * margin - (xScale(d[x]) + offset[0] + z(d[value])) < measureText(d[label]) ?
+        'right' :
+        'left';
     const labelDistance = {
       right: xScale(d[x]) + offset[0] - z(d[value]),
       left: xScale(d[x]) + offset[0] + z(d[value]),

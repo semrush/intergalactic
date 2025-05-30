@@ -5,8 +5,8 @@ import { checkBackgroundColor, checkBorderColor, checkKeyboardNavigation } from 
 test.describe('Base-trigger', () => {
   test.describe('Styles and a11y checks', () => {
     test('Verify main styles and props', async ({ page }) => {
-      const standPath
-        = 'stories/components/base-trigger/tests/examples/base-trigger-all-states.tsx';
+      const standPath =
+        'stories/components/base-trigger/tests/examples/base-trigger-all-states.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
       await page.setContent(htmlContent);
 
@@ -55,8 +55,8 @@ test.describe('Base-trigger', () => {
     });
 
     test('Verify main styles a11y attributes and focus', async ({ page }) => {
-      const standPath
-        = 'stories/components/base-trigger/tests/examples/base-trigger-all-states.tsx';
+      const standPath =
+        'stories/components/base-trigger/tests/examples/base-trigger-all-states.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
       await page.setContent(htmlContent);
 
@@ -78,8 +78,8 @@ test.describe('Base-trigger', () => {
     });
 
     test('Verify ellipsis', async ({ page }) => {
-      const standPath
-        = 'stories/components/base-trigger/advanced/examples/base-trigger-ellipsis.tsx';
+      const standPath =
+        'stories/components/base-trigger/advanced/examples/base-trigger-ellipsis.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
       await page.setContent(htmlContent);
       await expect(page).toHaveScreenshot();

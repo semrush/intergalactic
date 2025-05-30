@@ -41,17 +41,16 @@ class RootAccordion extends Component {
       const result = [...value];
       indexOfNewValue === -1 ? result.push(newValue) : result.splice(indexOfNewValue, 1);
       this.handlers.value(result);
-    }
-    else {
+    } else {
       this.handlers.value(value === newValue ? null : newValue);
     }
   };
 
   getItemProps({ value }) {
     const { value: selectedValue, duration, use } = this.asProps;
-    const selected = Array.isArray(selectedValue)
-      ? selectedValue.includes(value)
-      : selectedValue === value;
+    const selected = Array.isArray(selectedValue) ?
+        selectedValue.includes(value) :
+      selectedValue === value;
     return {
       selected,
       duration,
@@ -133,8 +132,7 @@ class Toggle extends Component {
       if (this.toggleRef.current === event.target) {
         event.currentTarget.click();
       }
-    }
-    else if (event.key === ' ') {
+    } else if (event.key === ' ') {
       event.preventDefault();
       if (this.toggleRef.current === event.target) {
         event.currentTarget.click();

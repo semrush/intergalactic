@@ -63,7 +63,7 @@ const Demo = () => {
         items={legendItems}
         onChangeVisibleItem={handleChangeVisible}
         patterns
-        aria-label={'Area chart legend'}
+        aria-label='Area chart legend'
       />
       <Plot
         data={data}

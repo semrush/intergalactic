@@ -32,8 +32,8 @@ function animatedSizeEnhance({
     useEnhancedEffect(() => {
       if (props.animationsDisabled) return;
       if (
-        __animatedEnhanceInstanceId !== undefined
-        && __animatedEnhanceInstanceId !== animatedSizeInstanceIdRef.current
+        __animatedEnhanceInstanceId !== undefined &&
+        __animatedEnhanceInstanceId !== animatedSizeInstanceIdRef.current
       )
         return;
       if (!nodeRef.current) {
@@ -51,8 +51,8 @@ function animatedSizeEnhance({
       for (let i = 0; i < animateProps.length; i++) {
         sizes[i] = node.getBoundingClientRect()[animateProps[i]];
         if (
-          Math.abs(lastSizesRef.current[i]! - sizes[i]!) < 3
-          || node.style.getPropertyValue(animateProps[i]).endsWith('%')
+          Math.abs(lastSizesRef.current[i]! - sizes[i]!) < 3 ||
+          node.style.getPropertyValue(animateProps[i]).endsWith('%')
         ) {
           lastSizesRef.current[i] = sizes[i];
           sizes[i] = undefined;

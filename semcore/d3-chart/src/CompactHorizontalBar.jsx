@@ -388,10 +388,10 @@ class Hover extends Component {
     for (let i = 0; i < data.length; i++) {
       const bar = getBarData(i);
       if (
-        point[0] >= bar.x
-        && point[0] <= bar.x + bar.fullWidth
-        && point[1] >= bar.y
-        && point[1] <= bar.y + bar.height
+        point[0] >= bar.x &&
+        point[0] <= bar.x + bar.fullWidth &&
+        point[1] >= bar.y &&
+        point[1] <= bar.y + bar.height
       ) {
         return i;
       }

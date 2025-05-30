@@ -626,8 +626,8 @@ test.describe('Color-picker', () => {
   });
 
   test('Verify Colors and Palette.Manager props', async ({ page }) => {
-    const standPath
-      = 'stories/components/color-picker/tests/examples/colors-and-palette-manager-colors-props.tsx';
+    const standPath =
+      'stories/components/color-picker/tests/examples/colors-and-palette-manager-colors-props.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -742,8 +742,8 @@ test.describe('Color-picker', () => {
   test('Verify ColorPicker.Item PaletteManager.Item and ColorPicker.Input props', async ({
     page,
   }) => {
-    const standPath
-      = 'stories/components/color-picker/tests/examples/input-color-and-items-props.tsx';
+    const standPath =
+      'stories/components/color-picker/tests/examples/input-color-and-items-props.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);

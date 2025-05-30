@@ -15,8 +15,7 @@ export function getState<C extends Component | PureComponent>(
   return Object.entries(state).reduce((combinedState: any, [key, value]) => {
     if (isControlled(self, key)) {
       combinedState[key] = (self as any).props[key];
-    }
-    else {
+    } else {
       combinedState[key] = value;
     }
     return combinedState;

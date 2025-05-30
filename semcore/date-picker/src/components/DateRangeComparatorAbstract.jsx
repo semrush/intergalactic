@@ -48,8 +48,8 @@ class DateRangeComparatorAbstract extends Component {
       defaultHighlighted: [],
       defaultCompareHighlighted: [],
       defaultDisplayedPeriod:
-        getLatestDate(primaryRange, defaultPrimaryRange, secondaryRange, defaultSecondaryRange)
-        || defaultDisplayedPeriod,
+        getLatestDate(primaryRange, defaultPrimaryRange, secondaryRange, defaultSecondaryRange) ||
+        defaultDisplayedPeriod,
       defaultVisible: false,
       defaultPreselectedValue: null,
       defaultPreselectedCompare: null,
@@ -91,8 +91,7 @@ class DateRangeComparatorAbstract extends Component {
       'onChange': (value) => {
         if (focusedRange === 'compare') {
           this.handlers.preselectedCompare(value);
-        }
-        else {
+        } else {
           this.handlers.preselectedValue(value);
         }
       },
@@ -146,8 +145,7 @@ class DateRangeComparatorAbstract extends Component {
             this.handlers.preselectedCompare(undefined);
             this.handlers.compareToggle(undefined);
             this.handlers.focusedRange('value');
-          }
-          else {
+          } else {
             this.handlers.compareToggle(!!this.asProps.value?.compare?.length);
           }
 
@@ -157,8 +155,7 @@ class DateRangeComparatorAbstract extends Component {
           if (visible) {
             if (newDisplayedPeriod && newDisplayedPeriod !== displayedPeriod) {
               this.handlers.displayedPeriod(newDisplayedPeriod);
-            }
-            else if (!newDisplayedPeriod) {
+            } else if (!newDisplayedPeriod) {
               const { displayedPeriod, defaultDisplayedPeriod } = this.props;
               this.handlers.displayedPeriod(displayedPeriod || defaultDisplayedPeriod);
             }
@@ -216,8 +213,8 @@ class DateRangeComparatorAbstract extends Component {
   handleKeydownDown = (place) => (e) => {
     const { displayedPeriod, preselectedValue, visible, focusedRange } = this.asProps;
     const key = e.key;
-    const highlighted
-      = focusedRange === 'compare' ? this.asProps.compareHighlighted : this.asProps.highlighted;
+    const highlighted =
+      focusedRange === 'compare' ? this.asProps.compareHighlighted : this.asProps.highlighted;
 
     if (place === 'trigger' && INTERACTION_KEYS.includes(key)) {
       e.preventDefault();
@@ -281,8 +278,7 @@ class DateRangeComparatorAbstract extends Component {
               .toDate(),
           ];
           changedDate = next_highlighted[1];
-        }
-        else {
+        } else {
           next_highlighted = [
             dayjs(highlighted[0])
               .add(day, this.keyStep)
@@ -292,18 +288,15 @@ class DateRangeComparatorAbstract extends Component {
         }
         if (focusedRange === 'compare') {
           this.handlers.compareHighlighted(next_highlighted);
-        }
-        else {
+        } else {
           this.handlers.highlighted(next_highlighted);
         }
         this.handlers.displayedPeriod(setNextDisplayedPeriod(next_highlighted));
-      }
-      else {
+      } else {
         const highlighted = [displayedPeriod ? displayedPeriod : dayjs().toDate()];
         if (focusedRange === 'compare') {
           this.handlers.compareHighlighted(highlighted);
-        }
-        else {
+        } else {
           this.handlers.highlighted(highlighted);
         }
         changedDate = highlighted[0];
@@ -477,8 +470,7 @@ class DateRangeComparatorAbstract extends Component {
         if (checked) {
           this.handlers.compareToggle(true);
           this.handlers.focusedRange('compare');
-        }
-        else {
+        } else {
           this.handlers.compareToggle(false);
           this.handlers.focusedRange('value');
           this.handlers.preselectedCompare([]);
@@ -531,27 +523,22 @@ class DateRangeComparatorAbstract extends Component {
     let value = focusedRange === 'compare' ? preselectedCompare : preselectedValue;
     if (Array.isArray(date)) {
       value = date;
-    }
-    else if (!value?.length) {
+    } else if (!value?.length) {
       value = [date];
       highlighted = [date];
-    }
-    else if (value?.length >= 2) {
+    } else if (value?.length >= 2) {
       value = [date];
       highlighted = [date];
-    }
-    else if (value?.[0] > date) {
+    } else if (value?.[0] > date) {
       value = [date, value?.[0]];
-    }
-    else {
+    } else {
       value = [value?.[0], date];
     }
 
     if (focusedRange === 'compare') {
       this.handlers.preselectedCompare(value);
       this.handlers.compareHighlighted(highlighted);
-    }
-    else {
+    } else {
       this.handlers.preselectedValue(value);
       this.handlers.highlighted(highlighted);
     }

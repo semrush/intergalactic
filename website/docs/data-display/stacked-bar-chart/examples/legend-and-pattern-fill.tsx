@@ -63,9 +63,9 @@ const Demo = () => {
   }, []);
 
   return (
-    <Card w={'550px'}>
+    <Card w='550px'>
       <Card.Header pt={4}>
-        <Card.Title tag={'h4'} m={0} inline={true}>
+        <Card.Title tag='h4' m={0} inline={true}>
           Chart legend
         </Card.Title>
       </Card.Header>
@@ -77,7 +77,7 @@ const Demo = () => {
           onMouseLeaveItem={handleMouseLeave}
           dataHints={dataHints}
           patterns
-          aria-label={'Stacked bar chart legend'}
+          aria-label='Stacked bar chart legend'
         />
         <Plot
           data={data}

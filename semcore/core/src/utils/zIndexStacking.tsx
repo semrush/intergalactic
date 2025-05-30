@@ -19,9 +19,9 @@ export const useZIndexStacking = (designToken?: ZIndexDesignTokens) => {
   const parentContextValue = React.useContext(zIndexStackingContext);
   const contextValue = React.useMemo(() => {
     if (!designToken) return parentContextValue;
-    const tokenName = designToken.startsWith('--intergalactic-')
-      ? designToken
-      : `--intergalactic-${designToken}`;
+    const tokenName = designToken.startsWith('--intergalactic-') ?
+      designToken :
+      `--intergalactic-${designToken}`;
     const tokenValue = Number.parseInt(
       contextTokens?.[tokenName] || defaultDesignThemeTokens[tokenName],
       10,

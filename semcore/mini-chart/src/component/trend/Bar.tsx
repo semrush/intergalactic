@@ -99,8 +99,8 @@ class TrendBarRoot extends Trend<TrendBarProps, typeof TrendBarRoot.enhance> {
   }
 }
 
-export const TrendBar: ComponentType<TrendBarProps, {}, {}, Enhances>
-  = createComponent(TrendBarRoot);
+export const TrendBar: ComponentType<TrendBarProps, {}, {}, Enhances> =
+  createComponent(TrendBarRoot);
 
 TrendBar.displayName = 'MiniChart.TrendBar';
 

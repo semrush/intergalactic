@@ -637,8 +637,8 @@ test.describe('MonthRangeComparator range', () => {
 
 test.describe('Month Range comparator with advanced use', () => {
   test('Verify mouse intearctions and styles of advanced use', async ({ page }) => {
-    const standPath
-      = 'stories/components/date-picker/docs/examples/month_range_comparator_advanced_use.tsx';
+    const standPath =
+      'stories/components/date-picker/docs/examples/month_range_comparator_advanced_use.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);

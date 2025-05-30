@@ -110,8 +110,7 @@ class BarChartComponent extends AbstractChart<
 
               if (invertAxis) {
                 commonBarComponentProps.x = item.id;
-              }
-              else {
+              } else {
                 commonBarComponentProps.y = item.id;
               }
 
@@ -138,8 +137,7 @@ class BarChartComponent extends AbstractChart<
 
               if (invertAxis) {
                 commonBarComponentProps.x = item.id;
-              }
-              else {
+              } else {
                 commonBarComponentProps.y = item.id;
               }
 
@@ -155,8 +153,8 @@ class BarChartComponent extends AbstractChart<
   }
 
   renderTooltip(): React.ReactNode {
-    const { data, groupKey, showTotalInTooltip, showTooltip, invertAxis, onClickHoverRect }
-      = this.asProps;
+    const { data, groupKey, showTotalInTooltip, showTooltip, invertAxis, onClickHoverRect } =
+      this.asProps;
     const { dataDefinitions } = this.state;
 
     if (!showTooltip) {
@@ -236,9 +234,9 @@ class BarChartComponent extends AbstractChart<
     } = this.asProps;
 
     const testItem = data[0][groupKey];
-    const range = invertAxis
-      ? [plotHeight - marginX, this.plotPadding]
-      : [marginY, plotWidth - this.plotPadding];
+    const range = invertAxis ?
+        [plotHeight - marginX, this.plotPadding] :
+        [marginY, plotWidth - this.plotPadding];
 
     if (testItem instanceof Date && !Number.isNaN(testItem.getMilliseconds())) {
       const domain = minMax(data, groupKey);
@@ -258,9 +256,9 @@ class BarChartComponent extends AbstractChart<
 
     return scaleLinear()
       .range(
-        invertAxis
-          ? [marginY, plotWidth - this.plotPadding]
-          : [plotHeight - marginX, this.plotPadding],
+        invertAxis ?
+            [marginY, plotWidth - this.plotPadding] :
+            [plotHeight - marginX, this.plotPadding],
       )
       .domain([0, max]);
   }

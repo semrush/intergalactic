@@ -73,9 +73,9 @@ const Demo = () => {
       <ChartLegend
         dataHints={dataHints}
         items={legendItems}
-        shape={'Checkbox'}
+        shape='Checkbox'
         patterns
-        aria-label={'Stacked area chart legend'}
+        aria-label='Stacked area chart legend'
         onChangeVisibleItem={handleChangeVisible}
       />
       <Plot

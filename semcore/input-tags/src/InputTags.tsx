@@ -283,8 +283,7 @@ class Value extends Component<IInputTagsValueProps> {
           text-overflow: ellipsis;
       } */
       magicOffset += 8;
-    }
-    else {
+    } else {
       spacerNode['innerText'] = value;
     }
     this.setState({
@@ -353,12 +352,11 @@ function InputTagContainerTag(props: any) {
 
   React.useEffect(() => {
     if (
-      ref.current instanceof HTMLButtonElement
-      || ref.current?.getAttribute('role') === 'button'
+      ref.current instanceof HTMLButtonElement ||
+      ref.current?.getAttribute('role') === 'button'
     ) {
       ref.current.setAttribute('aria-describedby', `${props.uid}-description`);
-    }
-    else {
+    } else {
       ref.current?.removeAttribute('aria-describedby');
     }
   }, [ref.current, props.uid]);

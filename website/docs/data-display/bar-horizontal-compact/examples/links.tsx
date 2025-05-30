@@ -46,7 +46,12 @@ const Demo = () => {
           <CompactHorizontalBar.Percent />
           <CompactHorizontalBar.Value tag={Link} href='https://semrush.com'>
             {({ formatted }) => {
-              return <Link.Text>~{formatted}</Link.Text>;
+              return (
+                <Link.Text>
+                  ~
+                  {formatted}
+                </Link.Text>
+              );
             }}
           </CompactHorizontalBar.Value>
         </CompactHorizontalBar.Annotation>

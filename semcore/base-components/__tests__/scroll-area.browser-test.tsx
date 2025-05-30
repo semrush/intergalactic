@@ -82,8 +82,8 @@ test.describe('ScrollArea - Basic Usage', () => {
 
 test.describe('ScrollArea - Reverse amd synch scrolls', () => {
   test(' Verify keyboard scroll', async ({ page }) => {
-    const standPath
-      = 'stories/components/scroll-area/docs/examples/synchronized_reverse_scroll_on_two_different_screens.tsx';
+    const standPath =
+      'stories/components/scroll-area/docs/examples/synchronized_reverse_scroll_on_two_different_screens.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -125,8 +125,8 @@ test.describe('ScrollArea - Reverse amd synch scrolls', () => {
   });
 
   test('Verify mouse scroll ', async ({ page }) => {
-    const standPath
-      = 'stories/components/scroll-area/docs/examples/synchronized_scroll_on_two_different_screens.tsx';
+    const standPath =
+      'stories/components/scroll-area/docs/examples/synchronized_scroll_on_two_different_screens.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -248,8 +248,8 @@ test.describe('ScrollArea - Dynamic Virtual List', () => {
 
 test.describe('ScrollArea - Horizontal scroll with Shadow and offset', () => {
   test('Verify horizontal scroll with shadow and offsets ', async ({ page }) => {
-    const standPath
-      = 'stories/components/scroll-area/tests/examples/horizontal-scroll-with-shadow-and-offset.tsx';
+    const standPath =
+      'stories/components/scroll-area/tests/examples/horizontal-scroll-with-shadow-and-offset.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -303,8 +303,8 @@ test.describe('ScrollArea - Horizontal scroll with Shadow and offset', () => {
   });
 
   test('Verify vertical scroll with shadow and ring offsets', async ({ page }) => {
-    const standPath
-      = 'stories/components/scroll-area/tests/examples/vertical-scroll-with-shadow-and-offset.tsx';
+    const standPath =
+      'stories/components/scroll-area/tests/examples/vertical-scroll-with-shadow-and-offset.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);

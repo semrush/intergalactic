@@ -36,9 +36,9 @@ class HistogramChartComponent extends AbstractChart<
     }
 
     const testItem = data[0][groupKey];
-    const range = invertAxis
-      ? [plotHeight - marginX, this.plotPadding]
-      : [marginY, plotWidth - this.plotPadding];
+    const range = invertAxis ?
+        [plotHeight - marginX, this.plotPadding] :
+        [marginY, plotWidth - this.plotPadding];
 
     if (testItem instanceof Date && !Number.isNaN(testItem.getMilliseconds())) {
       const domain = minMax(data, groupKey);
@@ -80,20 +80,19 @@ class HistogramChartComponent extends AbstractChart<
 
         return max;
       }, 0);
-    }
-    else {
+    } else {
       const flatValues = super.flatValues;
 
       max = Math.max(...flatValues);
     }
 
     return (
-      yScale
-      ?? scaleLinear()
+      yScale ??
+      scaleLinear()
         .range(
-          invertAxis
-            ? [marginY, plotWidth - this.plotPadding]
-            : [plotHeight - marginX, this.plotPadding],
+          invertAxis ?
+              [marginY, plotWidth - this.plotPadding] :
+              [plotHeight - marginX, this.plotPadding],
         )
         .domain([0, max])
     );
@@ -122,8 +121,7 @@ class HistogramChartComponent extends AbstractChart<
 
             if (invertAxis) {
               commonBarComponentProps.x = item.id;
-            }
-            else {
+            } else {
               commonBarComponentProps.y = item.id;
             }
 

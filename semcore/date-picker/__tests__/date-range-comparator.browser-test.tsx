@@ -644,8 +644,8 @@ test.describe('DateRangeComparator range', () => {
 
 test.describe('Date Range comparator with advanced use', () => {
   test('Verify mouse intearctions and styles of advanced use', async ({ page }) => {
-    const standPath
-      = 'stories/components/date-picker/docs/examples/date_range_comparator_advanced_use.tsx';
+    const standPath =
+      'stories/components/date-picker/docs/examples/date_range_comparator_advanced_use.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -682,8 +682,8 @@ test.describe('Date Range comparator with advanced use', () => {
 test.describe('Date range comparator props', () => {
   test('Verify all date range comparator props work good', async ({ page, browserName }) => {
     if (browserName === 'webkit') return; // skipped for webkit because of unstable focus outline on the dialog
-    const standPath
-      = 'stories/components/date-picker/tests/examples/date-range-comparator-props.tsx';
+    const standPath =
+      'stories/components/date-picker/tests/examples/date-range-comparator-props.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);

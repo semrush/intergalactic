@@ -8,6 +8,9 @@ import stylistic from '@stylistic/eslint-plugin';
 export default defineConfig([
   globalIgnores([
     '**/lib/',
+    '**/dist/',
+    '**/cache/',
+    '**/node_modules/',
     'semcore/table/',
     'semcore/stylelint-plugin',
     'semcore/illustration/**/*.mjs',
@@ -29,6 +32,7 @@ export default defineConfig([
     semi: true,
     commaDangle: 'always-multiline',
     arrowParens: 'always',
+    braceStyle: '1tbs',
   }),
   {
     rules: {
@@ -44,8 +48,9 @@ export default defineConfig([
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-empty-object-type': 'off',
 
-      // JSX
+      // stylistic
       '@stylistic/jsx-quotes': ['error', 'prefer-single'],
+      '@stylistic/operator-linebreak': ['error', 'after'],
 
       // enable after migration
       '@typescript-eslint/ban-ts-comment': 'off',

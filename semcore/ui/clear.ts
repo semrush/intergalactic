@@ -12,5 +12,4 @@ const toRemove = [
 ];
 try {
   await Promise.all(toRemove.map((filePath) => fs.remove(path.resolve(dirname, filePath))));
-}
-catch (e) {}
+} catch (e) {}

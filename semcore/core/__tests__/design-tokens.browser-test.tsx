@@ -93,8 +93,8 @@ test.describe('Theme providers', () => {
 
 test.describe('Tokens with custom component', () => {
   test('Verify token applies for switch and svg', async ({ page }) => {
-    const standPath
-      = 'stories/components/utils/design-tokens/docs/examples/tokens-with-custom-component.tsx';
+    const standPath =
+      'stories/components/utils/design-tokens/docs/examples/tokens-with-custom-component.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
     await expect(page).toHaveScreenshot();

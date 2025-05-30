@@ -110,16 +110,16 @@ class BulkTextareaRoot<T extends string | string[]> extends Component<
       },
       onBlur: (value: T, event: Event) => {
         if (
-          validateOn?.includes('blur')
-          && (lastInteraction.isKeyboard()
-            || (event instanceof FocusEvent && event.relatedTarget !== this.clearAllButtonRef.current))
+          validateOn?.includes('blur') &&
+          (lastInteraction.isKeyboard() ||
+            (event instanceof FocusEvent && event.relatedTarget !== this.clearAllButtonRef.current))
         ) {
           this.handlers.showErrors(true);
         }
 
         if (
-          this.asProps.showErrors === false
-          && (validateOn?.includes('blur') || validateOn?.includes('blurLine'))
+          this.asProps.showErrors === false &&
+          (validateOn?.includes('blur') || validateOn?.includes('blurLine'))
         ) {
           setTimeout(() => {
             this.nextButtonRef.current?.focus();
@@ -172,8 +172,7 @@ class BulkTextareaRoot<T extends string | string[]> extends Component<
 
     if (linesCount === maxLines) {
       counterTheme = 'warning';
-    }
-    else if (linesCount > maxLines!) {
+    } else if (linesCount > maxLines!) {
       counterTheme = 'danger';
     }
 
@@ -250,15 +249,13 @@ class BulkTextareaRoot<T extends string | string[]> extends Component<
 
     if (newIndex < 0) {
       newIndex = amount + itemsIndex + 1;
-    }
-    else if (newIndex > itemsIndex) {
+    } else if (newIndex > itemsIndex) {
       newIndex = newIndex - itemsIndex - 1;
     }
 
     if (!errors[newIndex]) {
       this.handleChangeErrorIndex(amount < 0 ? amount - 1 : amount + 1)();
-    }
-    else {
+    } else {
       this.handlers.showErrors(false);
       this.setState({ errorIndex: -1 });
 

@@ -107,8 +107,8 @@ const createMeasurerElement = (element: HTMLDivElement, text?: string) => {
   temporaryElement.style.whiteSpace = styleElement.getPropertyValue('white-space');
   temporaryElement.style.wordWrap = styleElement.getPropertyValue('word-wrap');
 
-  temporaryElement.style.fontFeatureSettings
-    = styleElement.getPropertyValue('font-feature-settings');
+  temporaryElement.style.fontFeatureSettings =
+    styleElement.getPropertyValue('font-feature-settings');
   temporaryElement.style.fontVariantNumeric = styleElement.getPropertyValue('font-variant-numeric');
 
   temporaryElement.innerHTML = text ?? element.innerHTML;
@@ -132,8 +132,7 @@ function isTextOverflowing(element: HTMLDivElement, multiline: boolean, text?: s
     if (Math.ceil(currentHeight) < height || Math.ceil(currentWidth) < width) {
       isOverflowing = true;
     }
-  }
-  else {
+  } else {
     measuringElement.style.whiteSpace = 'nowrap';
     isOverflowing = Math.ceil(currentWidth) < measuringElement.getBoundingClientRect().width;
   }
@@ -212,9 +211,9 @@ class RootEllipsis extends Component<AsProps> {
     const tooltipProps = pick(this.asProps, includeTooltipProps as any) as TooltipProps;
 
     tooltipProps.visible = tooltipProps.visible ?? visible;
-    tooltipProps.onVisibleChange = tooltipProps.onVisibleChange
-      ? callAllEventHandlers(tooltipProps.onVisibleChange, this.handlerVisibleChange)
-      : this.handlerVisibleChange;
+    tooltipProps.onVisibleChange = tooltipProps.onVisibleChange ?
+        callAllEventHandlers(tooltipProps.onVisibleChange, this.handlerVisibleChange) :
+      this.handlerVisibleChange;
 
     if (trim === 'middle') {
       return sstyled(styles)(
@@ -241,11 +240,11 @@ class RootEllipsis extends Component<AsProps> {
           {...tooltipProps}
           {...(advanceMode ? forcedAdvancedMode : noAdvancedMode)}
         >
-          {advanceMode
-            ? (
+          {advanceMode ?
+              (
                 <Children />
-              )
-            : (
+              ) :
+              (
                 <SEllipsis render={Box} ref={this.textRef} maxLine={maxLine} {...other}>
                   <Children />
                 </SEllipsis>
@@ -255,11 +254,11 @@ class RootEllipsis extends Component<AsProps> {
     }
     return sstyled(styles)(
       <SNoTooltipContainer>
-        {advanceMode
-          ? (
+        {advanceMode ?
+            (
               <Children />
-            )
-          : (
+            ) :
+            (
               <SEllipsis render={Box} ref={this.textRef} maxLine={maxLine} {...other}>
                 <Children />
               </SEllipsis>

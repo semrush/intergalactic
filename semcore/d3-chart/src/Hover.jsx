@@ -24,10 +24,10 @@ class Hover extends Component {
     const [pX, pY] = eventToPoint(e, rootRef.current);
     const vX = invert(xScale, pX);
     const vY = invert(yScale, pY);
-    const xIndex
-      = x === undefined || vX === undefined ? null : getIndexFromData(data, xScale, x, vX);
-    const yIndex
-      = y === undefined || vY === undefined ? null : getIndexFromData(data, yScale, y, vY);
+    const xIndex =
+      x === undefined || vX === undefined ? null : getIndexFromData(data, xScale, x, vX);
+    const yIndex =
+      y === undefined || vY === undefined ? null : getIndexFromData(data, yScale, y, vY);
     const state = { xIndex, yIndex, patterns };
 
     this.setState(state, () => {
@@ -84,8 +84,8 @@ class HoverLineRoot extends Hover {
     const x1 = xIndex !== null ? scaleOfBandwidth(xScale, data[xIndex][x]) : undefined;
     const y1 = yIndex !== null ? scaleOfBandwidth(yScale, data[yIndex][y]) : undefined;
 
-    const isHide
-      = typeof hideHoverLine === 'function' ? hideHoverLine(xIndex, yIndex) : hideHoverLine;
+    const isHide =
+      typeof hideHoverLine === 'function' ? hideHoverLine(xIndex, yIndex) : hideHoverLine;
 
     if (isHide) {
       return null;
@@ -93,8 +93,8 @@ class HoverLineRoot extends Hover {
 
     return sstyled(styles)(
       <>
-        {xIndex !== null
-          ? (
+        {xIndex !== null ?
+            (
               <SHoverLine
                 aria-hidden
                 render='line'
@@ -104,10 +104,10 @@ class HoverLineRoot extends Hover {
                 x2={x1}
                 y2={yRange[1]}
               />
-            )
-          : null}
-        {yIndex !== null
-          ? (
+            ) :
+          null}
+        {yIndex !== null ?
+            (
               <SHoverLine
                 aria-hidden
                 render='line'
@@ -117,8 +117,8 @@ class HoverLineRoot extends Hover {
                 x2={xRange[1]}
                 y2={y1}
               />
-            )
-          : null}
+            ) :
+          null}
       </>,
     );
   }
@@ -144,8 +144,8 @@ class HoverRectRoot extends Hover {
 
     return sstyled(styles)(
       <>
-        {xIndex !== null
-          ? (
+        {xIndex !== null ?
+            (
               <SHoverRect
                 aria-hidden
                 render='rect'
@@ -155,10 +155,10 @@ class HoverRectRoot extends Hover {
                 x={xScale(data[xIndex][x]) - (xBand.step() * xBand.paddingInner()) / 2}
                 y={yRange[1]}
               />
-            )
-          : null}
-        {yIndex !== null
-          ? (
+            ) :
+          null}
+        {yIndex !== null ?
+            (
               <SHoverRect
                 aria-hidden
                 render='rect'
@@ -168,8 +168,8 @@ class HoverRectRoot extends Hover {
                 x={xRange[0]}
                 y={yScale(data[yIndex][y]) - (yBand.step() * yBand.paddingInner()) / 2}
               />
-            )
-          : null}
+            ) :
+          null}
       </>,
     );
   }

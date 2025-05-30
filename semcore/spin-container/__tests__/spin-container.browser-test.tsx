@@ -54,8 +54,8 @@ test.describe('Styles', () => {
 
 test.describe('Attributes and interactions', () => {
   test('Verify interactions when elements when spin container added', async ({ page }) => {
-    const standPath
-      = 'stories/components/spin-container/tests/examples/over-interactive-cotent.tsx';
+    const standPath =
+      'stories/components/spin-container/tests/examples/over-interactive-cotent.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);

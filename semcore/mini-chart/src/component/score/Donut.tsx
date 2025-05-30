@@ -116,8 +116,8 @@ class DonutRoot extends Component<ScoreDonutProps, {}, {}, typeof DonutRoot.enha
   }
 }
 
-export const ScoreDonut: ComponentType<ScoreDonutProps, {}, {}, Enhances>
-  = createComponent(DonutRoot);
+export const ScoreDonut: ComponentType<ScoreDonutProps, {}, {}, Enhances> =
+  createComponent(DonutRoot);
 
 ScoreDonut.displayName = 'MiniChart.ScoreDonut';
 

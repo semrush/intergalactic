@@ -28,11 +28,9 @@ function assignHandlersInner(props: any, source: any) {
     if (propName !== 'ref' && propName.startsWith('on')) {
       if (typeof source[propName] === 'function' && typeof props[propName] === 'function') {
         proxySource[propName] = callAllEventHandlers(props[propName], source[propName]);
-      }
-      else if (typeof source[propName] === 'function') {
+      } else if (typeof source[propName] === 'function') {
         proxySource[propName] = source[propName];
-      }
-      else if (typeof props[propName] === 'function') {
+      } else if (typeof props[propName] === 'function') {
         proxySource[propName] = props[propName];
       }
     }

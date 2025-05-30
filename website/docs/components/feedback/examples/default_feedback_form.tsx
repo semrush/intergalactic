@@ -78,7 +78,7 @@ class Feedback extends React.PureComponent<FeedbackProps> {
             <FeedbackForm.Item
               name='description'
               validate={validate.description}
-              initialValue={''}
+              initialValue=''
               placement='left-start'
               flip={{
                 fallbackPlacements: ['right-start', 'bottom'],
@@ -103,7 +103,7 @@ class Feedback extends React.PureComponent<FeedbackProps> {
             <FeedbackForm.Item
               name='email'
               validate={validate.email}
-              initialValue={''}
+              initialValue=''
               validateOnBlur={value.email === '' ? false : true}
             >
               {({ input }) => (
@@ -122,7 +122,8 @@ class Feedback extends React.PureComponent<FeedbackProps> {
           </Flex>
           <Box mt={2}>
             <Text size={200} color='text-secondary' id='email-description'>
-              We will only use this email to respond to you on your feedback.{' '}
+              We will only use this email to respond to you on your feedback.
+              {' '}
               <Link href='https://www.semrush.com/company/legal/privacy-policy/'>
                 Privacy Policy
               </Link>
@@ -134,7 +135,9 @@ class Feedback extends React.PureComponent<FeedbackProps> {
           </Flex>
         </Box>
         <FeedbackForm.Notice hidden={status === 'failed'}>
-          You can also send us an email to <Link>backlink.audit@semrush.com</Link>
+          You can also send us an email to
+          {' '}
+          <Link>backlink.audit@semrush.com</Link>
         </FeedbackForm.Notice>
         <FeedbackForm.Notice hidden={status !== 'failed'} theme='danger'>
           Your message has not been sent.
@@ -151,10 +154,12 @@ class FeedbackLink extends React.PureComponent {
     this.requestServer('success', 1000);
     this.setState({ status: 'loading' });
   };
+
   onChange = (e, trigger) => {
     const { value } = e.currentTarget;
     this.setState({ value: { ...this.state.value, [trigger]: value } });
   };
+
   requestServer = (status, time = 500, cb = () => {}) => {
     this.timeout = setTimeout(() => {
       this.setState({ status });
@@ -173,7 +178,7 @@ class FeedbackLink extends React.PureComponent {
         <Dropdown.Trigger tag={ButtonLink} addonLeft={ChatM}>
           Send feedback
         </Dropdown.Trigger>
-        <Dropdown.Popper aria-label={'Feedback form'} tabIndex={-1}>
+        <Dropdown.Popper aria-label='Feedback form' tabIndex={-1}>
           {(_props, { visible }) => (
             <Feedback
               status={status}

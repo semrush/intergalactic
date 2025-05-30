@@ -52,8 +52,8 @@ test.describe('Widget empty', () => {
   });
 
   test('Verify WE with text or description and controls', async ({ page }) => {
-    const standPath
-      = 'stories/components/widget-empty/tests/examples/widget-empty-with-controls.tsx';
+    const standPath =
+      'stories/components/widget-empty/tests/examples/widget-empty-with-controls.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);

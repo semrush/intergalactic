@@ -591,8 +591,7 @@ export default function propsForElement<T extends {}>(
 ): Partial<T> {
   if (element && typeof element !== 'string') {
     return props;
-  }
-  else {
+  } else {
     // @ts-ignore
     const { __excludeProps = [], ...other } = props as any;
     const validProps = Object.keys(other).reduce((acc: any, propName) => {

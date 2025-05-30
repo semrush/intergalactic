@@ -31,8 +31,7 @@ class SpinContainerRoot extends Component {
 
       if (loading) {
         this.setState({ inert: true });
-      }
-      else {
+      } else {
         this.inertTimer = setTimeout(() => {
           this.setState({ inert: false });
         }, this.asProps.duration + 50);
@@ -64,16 +63,16 @@ class SpinContainerRoot extends Component {
     const SSpinContainer = Root;
     const { styles, Children, forcedAdvancedMode } = this.asProps;
 
-    const advancedMode
-      = forcedAdvancedMode || isAdvanceMode(Children, [SpinContainer.Overlay.displayName]);
+    const advancedMode =
+      forcedAdvancedMode || isAdvanceMode(Children, [SpinContainer.Overlay.displayName]);
 
     return sstyled(styles)(
       <SSpinContainer render={Box}>
-        {advancedMode
-          ? (
+        {advancedMode ?
+            (
               <Children />
-            )
-          : (
+            ) :
+            (
               <>
                 <SpinContainer.Content>
                   <Children />

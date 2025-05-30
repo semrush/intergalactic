@@ -28,7 +28,7 @@ const Demo = () => (
               ))}
             </Accordion.Item.Toggle>
             <Accordion.Item.Collapse>
-              <Box p={'12px 32px'}>{`Section ${index + 1}`}</Box>
+              <Box p='12px 32px'>{`Section ${index + 1}`}</Box>
             </Accordion.Item.Collapse>
           </Accordion.Item>
         ))}

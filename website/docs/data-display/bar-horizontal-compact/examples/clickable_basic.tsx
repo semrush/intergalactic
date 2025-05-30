@@ -21,13 +21,13 @@ const Demo = () => {
   return (
     <Flex flexWrap gap={5}>
       <Chart.CompactHorizontalBar
-        y={'category'}
-        x={'value'}
+        y='category'
+        x='value'
         data={data}
         plotWidth={500}
         plotHeight={450}
         onClickBar={(barIndex) => alert(`Bar ${barIndex} clicked`)}
-        aria-label={'CompactHorizontalBar chart'}
+        aria-label='CompactHorizontalBar chart'
       />
     </Flex>
   );

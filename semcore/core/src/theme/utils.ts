@@ -80,8 +80,7 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
           if (extension === 'studio.tokens') {
             modifications[path] ??= [];
             modifications[path].push((node.$extensions as any)['studio.tokens'].modify);
-          }
-          else {
+          } else {
             throw new Error(`Unsupported extension "${extension}" for design token "${path}"`);
           }
         }
@@ -109,8 +108,7 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
           resolvedColor = [resolvedColor[1], resolvedColor[2], resolvedColor[3]]
             .map((hex) => Number.parseInt(hex, 16))
             .join(', ');
-        }
-        else if (resolvedColor.length === 1 + 6) {
+        } else if (resolvedColor.length === 1 + 6) {
           resolvedColor = [
             resolvedColor.substring(1, 3),
             resolvedColor.substring(3, 5),
@@ -118,8 +116,7 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
           ]
             .map((hex) => Number.parseInt(hex, 16))
             .join(', ');
-        }
-        else {
+        } else {
           throw new Error(
             `Unable to convert hex ${resolveColor} to rgb list of colors (processing ${color})`,
           );
@@ -135,9 +132,9 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
     if (color.split(', ').length === 2) {
       const baseColor = resolveColor(color.split(', ')[0]);
       const [r, g, b] = (
-        baseColor.length === 4
-          ? [baseColor[1], baseColor[2], baseColor[3]]
-          : [baseColor.substring(1, 3), baseColor.substring(3, 5), baseColor.substring(5, 7)]
+        baseColor.length === 4 ?
+            [baseColor[1], baseColor[2], baseColor[3]] :
+            [baseColor.substring(1, 3), baseColor.substring(3, 5), baseColor.substring(5, 7)]
       ).map((chunk) => Number.parseInt(chunk, 16));
       const a = Number.parseFloat(color.split(', ')[1]);
 
@@ -145,8 +142,8 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
     }
     if (color.startsWith('{') && color.split('.').length > 0 && color.endsWith('}')) {
       const path = color.substring(1, color.length - 1);
-      const resolvedColor
-        = getByPath(base as any, path)?.value ?? values[path.split('.').join('-')];
+      const resolvedColor =
+        getByPath(base as any, path)?.value ?? values[path.split('.').join('-')];
       if (!resolvedColor) {
         throw new Error(`Color ${color} was not found in base palette`);
       }
@@ -154,8 +151,8 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
     }
     if (color.startsWith('$') && color.split('.').length > 0) {
       const path = color.substring(1);
-      const resolvedColor
-        = getByPath(base as any, path)?.value ?? values[path.split('.').join('-')];
+      const resolvedColor =
+        getByPath(base as any, path)?.value ?? values[path.split('.').join('-')];
       if (!resolvedColor) {
         throw new Error(`Color ${color} was not found`);
       }
@@ -174,21 +171,19 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
         throw new Error(`Unsupported expression ${token}`);
       }
       return `${Number.parseFloat(resolvedValue) * Number.parseFloat(factor)}px`;
-    }
-    else if (token.includes('{') && token.includes('}')) {
+    } else if (token.includes('{') && token.includes('}')) {
       const reference = token
         .substring(token.indexOf('{') + 1, token.indexOf('}'))
         .replace(/\./g, '-');
-      const resolvedToken
-        = token.substring(0, token.indexOf('{'))
-          + values[reference]
-          + token.substring(token.indexOf('}') + 1);
+      const resolvedToken =
+        token.substring(0, token.indexOf('{')) +
+        values[reference] +
+        token.substring(token.indexOf('}') + 1);
       if (!resolvedToken || resolvedToken.includes('{')) {
         throw new Error(`On moment of resolving ${token}, ${resolvedToken} was not resolved yet`);
       }
       return resolvedToken;
-    }
-    else {
+    } else {
       return token;
     }
   };
@@ -199,8 +194,7 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
         const start = i;
         while (str[i] !== undefined && str[i] !== ')') i++;
         result += resolveColor(str.substring(start, i + 1));
-      }
-      else {
+      } else {
         result += str[i];
       }
     }
@@ -213,15 +207,13 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
   for (const token in values) {
     if (types[token] === 'color') {
       values[token] = resolveColor(values[token]);
-    }
-    else if (types[token] === 'boxShadow') {
+    } else if (types[token] === 'boxShadow') {
       values[token] = resolveToken(values[token].split('; ').map(replaceColors).join(', '));
-    }
-    else if (
-      types[token] === 'sizing'
-      || types[token] === 'spacing'
-      || types[token] === 'borderRadius'
-      || types[token] === 'other'
+    } else if (
+      types[token] === 'sizing' ||
+      types[token] === 'spacing' ||
+      types[token] === 'borderRadius' ||
+      types[token] === 'other'
     ) {
       values[token] = resolveToken(values[token]);
     }
@@ -235,12 +227,10 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
           const difference = 100 - lightness;
           color.set('hsl.l', Math.min(100, lightness + difference * modification.value));
           rawValues[token] = `${rawValues[token]} / lighten(${modification.value}) / hsl`;
-        }
-        else {
+        } else {
           throw new Error(`Unsupported color modification ${modification.type} of token ${token}`);
         }
-      }
-      else {
+      } else {
         throw new Error(`Unsupported color space ${modification.space} of token ${token}`);
       }
 
@@ -252,8 +242,7 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
         const b = Math.round(color.b * 255);
         const a = color.alpha;
         values[token] = `rgba(${r}, ${g}, ${b}, ${a})`;
-      }
-      else {
+      } else {
         values[token] = color.toString({ format: 'hex' });
       }
     }

@@ -107,8 +107,7 @@ class StackGroupBarRoot extends Component<StackGroupProps> {
 
       if (isEmptyValue || absHeight >= hMin) {
         this.offsetBars[seriesIndex][i] = 0;
-      }
-      else {
+      } else {
         const offsetValue = hMin - absHeight;
         this.offsetBars[seriesIndex][i] = d[y] > 0 ? offsetValue : -offsetValue;
       }

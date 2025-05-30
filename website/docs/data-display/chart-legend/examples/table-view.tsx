@@ -21,15 +21,18 @@ const Demo = () => {
         checked: true,
         color: `chart-palette-order-${index + 1}`,
         columns: [
-          <Text use={'secondary'}>{(42 * (index + 3)) / 10}%</Text>,
-          <Text use={'primary'}>{42 * (index + 3)}</Text>,
+          <Text use='secondary' key={1}>
+            {(42 * (index + 3)) / 10}
+            %
+          </Text>,
+          <Text use='primary' key={2}>{42 * (index + 3)}</Text>,
         ],
       };
     });
 
   return (
     <div style={{ width: '200px' }}>
-      <ChartLegendTable items={lines} aria-label={'Chart legend aria label'} />
+      <ChartLegendTable items={lines} aria-label='Chart legend aria label' />
     </div>
   );
 };

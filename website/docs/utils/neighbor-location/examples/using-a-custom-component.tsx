@@ -12,7 +12,16 @@ const Demo = () => {
         {(neighborLocation) => <span>{neighborLocation}</span>}
       </NeighborLocation.Detect>
       <NeighborLocation.Detect>
-        {(neighborLocation) => <span> | {neighborLocation} | </span>}
+        {(neighborLocation) => (
+          <span>
+            {' '}
+            |
+            {neighborLocation}
+            {' '}
+            |
+            {' '}
+          </span>
+        )}
       </NeighborLocation.Detect>
       <NeighborLocation.Detect>
         <CustomComponent />

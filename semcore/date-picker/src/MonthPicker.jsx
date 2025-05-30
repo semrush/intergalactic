@@ -41,12 +41,12 @@ class MonthPickerRoot extends PickerAbstract {
     return {
       ...super.getButtonTriggerProps(),
       placeholder: 'Select month',
-      children: value
-        ? new Intl.DateTimeFormat(locale, {
+      children: value ?
+          new Intl.DateTimeFormat(locale, {
             month: 'short',
             year: 'numeric',
-          }).format(dayjs(value).toDate())
-        : null,
+          }).format(dayjs(value).toDate()) :
+        null,
     };
   }
 

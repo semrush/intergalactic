@@ -14,8 +14,7 @@ test.describe('InlineEdit', () => {
     await page.click('[data-ui-name="InlineEdit"]');
     if (platform() === 'darwin') {
       await page.keyboard.press('Meta+A');
-    }
-    else {
+    } else {
       await page.keyboard.press('Control+A');
     }
     await page.type('input', randomText);

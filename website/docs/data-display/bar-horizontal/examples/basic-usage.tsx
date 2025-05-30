@@ -4,12 +4,12 @@ import { Chart } from '@semcore/d3-chart';
 const Demo = () => {
   return (
     <Chart.Bar
-      groupKey={'category'}
+      groupKey='category'
       data={data}
       plotWidth={500}
       plotHeight={300}
       invertAxis={true}
-      aria-label={'CompactHorizontalBar chart'}
+      aria-label='CompactHorizontalBar chart'
     />
   );
 };

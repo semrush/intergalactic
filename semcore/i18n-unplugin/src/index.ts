@@ -14,11 +14,11 @@ export const intergalacticI18nUnplugin: UnpluginInstance<Options> = createUnplug
       name: 'semcore-i18n-unplugin',
       loadInclude(id) {
         return (
-          (id.includes('/@semcore/') || id.includes('/intergalactic/'))
-          && (id.endsWith('/__intergalactic-dynamic-locales.ts')
-            || id.endsWith('/__intergalactic-dynamic-locales.js')
-            || id.endsWith('/__intergalactic-dynamic-locales.cjs')
-            || id.endsWith('/__intergalactic-dynamic-locales.mjs'))
+          (id.includes('/@semcore/') || id.includes('/intergalactic/')) &&
+          (id.endsWith('/__intergalactic-dynamic-locales.ts') ||
+            id.endsWith('/__intergalactic-dynamic-locales.js') ||
+            id.endsWith('/__intergalactic-dynamic-locales.cjs') ||
+            id.endsWith('/__intergalactic-dynamic-locales.mjs'))
         );
       },
       async load(id) {
@@ -53,9 +53,9 @@ export const intergalacticI18nUnplugin: UnpluginInstance<Options> = createUnplug
             }
           }
         }
-        const filteredLocales = options.includeLocales
-          ? options.includeLocales
-          : allLocales.filter((locale) => !options?.excludeLocales?.includes(locale));
+        const filteredLocales = options.includeLocales ?
+          options.includeLocales :
+            allLocales.filter((locale) => !options?.excludeLocales?.includes(locale));
         const syncLocales = filteredLocales.filter((locale) =>
           (options?.bundleLocales ?? ['en']).includes(locale),
         );
@@ -81,14 +81,14 @@ export const intergalacticI18nUnplugin: UnpluginInstance<Options> = createUnplug
   },
 );
 
-export const intergalacticI18nVitePlugin: UnpluginInstance<Options>['vite']
-  = intergalacticI18nUnplugin.vite;
-export const intergalacticI18nRollupPlugin: UnpluginInstance<Options>['rollup']
-  = intergalacticI18nUnplugin.rollup;
-export const intergalacticI18nWebpackPlugin: UnpluginInstance<Options>['webpack']
-  = intergalacticI18nUnplugin.webpack;
-export const intergalacticI18nEsbuildPlugin: UnpluginInstance<Options>['esbuild']
-  = intergalacticI18nUnplugin.esbuild;
+export const intergalacticI18nVitePlugin: UnpluginInstance<Options>['vite'] =
+  intergalacticI18nUnplugin.vite;
+export const intergalacticI18nRollupPlugin: UnpluginInstance<Options>['rollup'] =
+  intergalacticI18nUnplugin.rollup;
+export const intergalacticI18nWebpackPlugin: UnpluginInstance<Options>['webpack'] =
+  intergalacticI18nUnplugin.webpack;
+export const intergalacticI18nEsbuildPlugin: UnpluginInstance<Options>['esbuild'] =
+  intergalacticI18nUnplugin.esbuild;
 
 /**
  * @deprecated
@@ -104,17 +104,17 @@ export const semcoreI18nVitePlugin: UnpluginInstance<Options>['vite'] = intergal
  * @deprecated
  * Please use `intergalacticI18nRollupPlugin` instead.
  */
-export const semcoreI18nRollupPlugin: UnpluginInstance<Options>['rollup']
-  = intergalacticI18nRollupPlugin;
+export const semcoreI18nRollupPlugin: UnpluginInstance<Options>['rollup'] =
+  intergalacticI18nRollupPlugin;
 /**
  * @deprecated
  * Please use `intergalacticI18nWebpackPlugin` instead.
  */
-export const semcoreI18nWebpackPlugin: UnpluginInstance<Options>['webpack']
-  = intergalacticI18nWebpackPlugin;
+export const semcoreI18nWebpackPlugin: UnpluginInstance<Options>['webpack'] =
+  intergalacticI18nWebpackPlugin;
 /**
  * @deprecated
  * Please use `intergalacticI18nEsbuildPlugin` instead.
  */
-export const semcoreI18nEsbuildPlugin: UnpluginInstance<Options>['esbuild']
-  = intergalacticI18nEsbuildPlugin;
+export const semcoreI18nEsbuildPlugin: UnpluginInstance<Options>['esbuild'] =
+  intergalacticI18nEsbuildPlugin;

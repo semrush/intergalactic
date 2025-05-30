@@ -72,7 +72,7 @@ const Demo = () => {
         onMouseEnterItem={handleMouseEnter}
         onMouseLeaveItem={handleMouseLeave}
         patterns
-        aria-label={'Horizontal bar chart legend'}
+        aria-label='Horizontal bar chart legend'
       />
       <Plot
         data={data}

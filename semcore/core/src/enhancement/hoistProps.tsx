@@ -12,8 +12,7 @@ function flatChildComponent(childComponents: any) {
     if (Array.isArray(Component)) {
       acc.push(Component[0]);
       acc.push(...flatChildComponent(Component[1]));
-    }
-    else {
+    } else {
       acc.push(Component);
     }
     return acc;
@@ -32,8 +31,7 @@ function Enhancement(childComponents: any, Context: any) {
       if (isFunction) {
         // TODO: might breake rules of hooks (by lsroman)
         this[HOIST_SELF] = React.useState({});
-      }
-      else {
+      } else {
         this[HOIST_SELF] = [
           {},
           (obj: any) => {

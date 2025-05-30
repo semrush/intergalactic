@@ -507,8 +507,7 @@ test.describe('Popper', () => {
         await page.keyboard.press('Tab');
         await page.keyboard.press('Shift+Tab');
         await page.keyboard.press('Shift+Tab');
-      }
-      else await page.keyboard.press('Shift+Tab');
+      } else await page.keyboard.press('Shift+Tab');
 
       await expect(popperLocator).toHaveCount(0);
       await expect(before).toBeFocused();
@@ -534,8 +533,8 @@ test.describe('Popper', () => {
     test('Verify popper visibility when focusable elements on trigger and after trigger', async ({
       page,
     }) => {
-      const standPath
-        = 'stories/components/popper/tests/examples/multiple-focusables-in-trigger.tsx';
+      const standPath =
+        'stories/components/popper/tests/examples/multiple-focusables-in-trigger.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
 
       await page.setContent(htmlContent);

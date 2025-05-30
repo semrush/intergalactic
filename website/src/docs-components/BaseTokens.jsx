@@ -52,8 +52,8 @@ const BaseTokens = ({ tokens }) => {
           setFilter={handleChangeFilter}
           resultsCount={filteredTokens.length}
           placeholder='Enter color name to find token'
-          ariaLabel={'Search base tokens'}
-          statusAddonId={'search-message-base'}
+          ariaLabel='Search base tokens'
+          statusAddonId='search-message-base'
         />
       </div>
       <BaseTokensTable filteredTokens={filteredTokensToTable} />
@@ -91,17 +91,17 @@ const BaseTokensTable = React.memo(({ filteredTokens }) => {
     <DataTable
       data={filteredTokens}
       className={styles.tokensTable}
-      w={'100%'}
-      hMax={'75vh'}
+      w='100%'
+      hMax='75vh'
       columns={columns}
       headerProps={{ sticky: true }}
       renderEmptyData={() => {
         return (
           <NoData
             py={10}
-            type={'nothing-found'}
+            type='nothing-found'
             description={'Try searching by color, for example, "blue" or #c4e5fe.'}
-            w={'100%'}
+            w='100%'
           />
         );
       }}
@@ -114,11 +114,11 @@ const BaseTokensTable = React.memo(({ filteredTokens }) => {
             <Copy
               copiedToast='Copied'
               toCopy={props.value}
-              title={'Copy to clipboard'}
+              title='Copy to clipboard'
               trigger='click'
               className={styles.tokenNameWrapper}
             >
-              <button type='button' className={styles.tokenName} data-token-type={'baseToken'}>
+              <button type='button' className={styles.tokenName} data-token-type='baseToken'>
                 {props.value}
               </button>
             </Copy>
@@ -128,11 +128,11 @@ const BaseTokensTable = React.memo(({ filteredTokens }) => {
             <Copy
               copiedToast='Copied'
               toCopy={props.row[props.dataKey]}
-              title={'Copy to clipboard'}
+              title='Copy to clipboard'
               trigger='click'
               className={styles.tokenValueWrapper}
             >
-              <button type='button' className={styles.tokenValue} data-token-type={'baseToken'}>
+              <button type='button' className={styles.tokenValue} data-token-type='baseToken'>
                 <ColorPreview color={props.row[props.dataKey]} />
                 {props.row[props.dataKey]}
               </button>

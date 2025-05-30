@@ -504,8 +504,8 @@ class RadialTreeRadian extends Component<RadianAsProps> {
   }
 
   computeRadianPosition(data: RadianData, index: number) {
-    const { centralMargin, labelMargin, angleOffset, activeKey, size, radiansCount, textWidth }
-      = this.asProps;
+    const { centralMargin, labelMargin, angleOffset, activeKey, size, radiansCount, textWidth } =
+      this.asProps;
     const [width, height] = size;
     const key = this.getRadianKey(data, index);
     const isActive = activeKey === key;
@@ -519,9 +519,9 @@ class RadialTreeRadian extends Component<RadianAsProps> {
     );
 
     const angle = baseAngle + angleOffset + (index / radiansCount) * (Math.PI * 2);
-    const isHorizontal
-      = (angle - baseAngle > (1 / 6) * Math.PI && angle - baseAngle < (5 / 6) * Math.PI)
-        || (angle - baseAngle > (7 / 6) * Math.PI && angle - baseAngle < (11 / 6) * Math.PI);
+    const isHorizontal =
+      (angle - baseAngle > (1 / 6) * Math.PI && angle - baseAngle < (5 / 6) * Math.PI) ||
+      (angle - baseAngle > (7 / 6) * Math.PI && angle - baseAngle < (11 / 6) * Math.PI);
     const topAngle = -Math.PI / 2;
     const labelAngle = ((angle - topAngle) % Math.PI) + topAngle;
 
@@ -539,10 +539,10 @@ class RadialTreeRadian extends Component<RadianAsProps> {
     const [xEnd, yEnd] = end;
 
     const labelCenter = [
-      xCenter
-      + Math.cos(angle) * (centralMargin + length + baseCapSize + textWidth / 2 + labelMargin),
-      yCenter
-      + Math.sin(angle) * (centralMargin + length + baseCapSize + textWidth / 2 + labelMargin),
+      xCenter +
+      Math.cos(angle) * (centralMargin + length + baseCapSize + textWidth / 2 + labelMargin),
+      yCenter +
+      Math.sin(angle) * (centralMargin + length + baseCapSize + textWidth / 2 + labelMargin),
     ];
     const [xLabelCenter, yLabelCenter] = labelCenter;
 

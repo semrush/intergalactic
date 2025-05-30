@@ -120,11 +120,11 @@ class RootSidePanel extends Component {
 
     return (
       <Portal disablePortal={disablePortal} ignorePortalsStacking={ignorePortalsStacking}>
-        {this.isAdvanceMode()
-          ? (
+        {this.isAdvanceMode() ?
+            (
               <Children />
-            )
-          : (
+            ) :
+            (
               <SidePanel.Overlay>
                 <Root render={SidePanel.Panel} />
               </SidePanel.Overlay>
@@ -145,15 +145,15 @@ function Overlay(props) {
 
 function Panel(props) {
   const SPanel = Root;
-  const { Children, styles, visible, closable, placement, onOutsideClick, forcedAdvancedMode }
-    = props;
-  const advancedMode
-    = forcedAdvancedMode
-      || isAdvanceMode(Children, [
-        SidePanel.Header.displayName,
-        SidePanel.Body.displayName,
-        SidePanel.Footer.displayName,
-      ]);
+  const { Children, styles, visible, closable, placement, onOutsideClick, forcedAdvancedMode } =
+    props;
+  const advancedMode =
+    forcedAdvancedMode ||
+    isAdvanceMode(Children, [
+      SidePanel.Header.displayName,
+      SidePanel.Body.displayName,
+      SidePanel.Footer.displayName,
+    ]);
 
   const sidebarRef = React.useRef(null);
 
@@ -182,11 +182,11 @@ function Panel(props) {
         <ZIndexStackingContextProvider designToken='z-index-modal'>
           <PortalProvider value={sidebarRef}>
             {closable && <SidePanel.Close />}
-            {advancedMode
-              ? (
+            {advancedMode ?
+                (
                   <Children />
-                )
-              : (
+                ) :
+                (
                   <SidePanel.Body>
                     <Children />
                   </SidePanel.Body>

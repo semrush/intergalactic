@@ -76,9 +76,9 @@ export class Column<D extends DataTableData> extends Component<
 
   componentDidUpdate(prevProps: DataTableColumnProps & ColumnPropsInner<D>): void {
     if (
-      this.asProps.changeSortSize
-      && canUseDOM()
-      && prevProps.sort?.[0] !== this.asProps.sort?.[0]
+      this.asProps.changeSortSize &&
+      canUseDOM() &&
+      prevProps.sort?.[0] !== this.asProps.sort?.[0]
     ) {
       this.changeTemplateColumnBySort();
     }
@@ -105,8 +105,7 @@ export class Column<D extends DataTableData> extends Component<
           );
         }
       });
-    }
-    else if (sort?.[0] !== name) {
+    } else if (sort?.[0] !== name) {
       setTimeout(() => {
         if (tableRef.current) {
           tableRef.current.style.setProperty(
@@ -165,8 +164,7 @@ export class Column<D extends DataTableData> extends Component<
 
       if (computedWidth >= defaultNodeWidth) {
         return defaultNodeWidth + SORT_ICON_WIDTH;
-      }
-      else {
+      } else {
         const freeSpace = defaultNodeWidth - computedWidth;
 
         if (freeSpace < SORT_ICON_WIDTH) {
@@ -207,12 +205,12 @@ export class Column<D extends DataTableData> extends Component<
     const { sort, onSortChange, name } = this.asProps;
 
     if (
-      lastInteraction.isMouse()
-      || (lastInteraction.isKeyboard() && e.target === e.currentTarget)
+      lastInteraction.isMouse() ||
+      (lastInteraction.isKeyboard() && e.target === e.currentTarget)
     ) {
       if (sort && onSortChange) {
-        const sortDirection
-          = sort[0] === name ? reversedSortDirection[sort[1]] : this.defaultDirection;
+        const sortDirection =
+          sort[0] === name ? reversedSortDirection[sort[1]] : this.defaultDirection;
 
         onSortChange([name, sortDirection], e);
       }
@@ -237,20 +235,17 @@ export class Column<D extends DataTableData> extends Component<
           if (e.target === focusableChildren[0] && e.shiftKey) {
             focusableChildren[focusableChildren.length - 1]?.focus();
             e.preventDefault();
-          }
-          else if (e.target === focusableChildren[focusableChildren.length - 1] && !e.shiftKey) {
+          } else if (e.target === focusableChildren[focusableChildren.length - 1] && !e.shiftKey) {
             focusableChildren[0]?.focus();
             e.preventDefault();
           }
 
           e.stopPropagation();
         }
-      }
-      else if (e.key === 'Enter') {
+      } else if (e.key === 'Enter') {
         this.lockedCell[1] = true;
         focusableChildren[0]?.focus();
-      }
-      else if (e.key === 'Tab') {
+      } else if (e.key === 'Tab') {
         this.lockedCell[0]?.setAttribute('inert', '');
       }
     }
@@ -268,8 +263,7 @@ export class Column<D extends DataTableData> extends Component<
 
         if (focusableChildren.length === 1) {
           focusableChildren[0].focus();
-        }
-        else if (focusableChildren.length > 1) {
+        } else if (focusableChildren.length > 1) {
           this.lockedCell = [cellElement, false];
         }
       }
@@ -280,11 +274,11 @@ export class Column<D extends DataTableData> extends Component<
     const SColumn = Root;
     const SSortWrapper = 'div';
     const SSortButton = ButtonLink;
-    const { styles, sortable, sort, uid, name, parent, sortableColumnDescribeId, Children }
-      = this.asProps;
+    const { styles, sortable, sort, uid, name, parent, sortableColumnDescribeId, Children } =
+      this.asProps;
 
-    const SSortIcon
-      = sort && sort[0] === name ? SORTING_ICON[sort[1]] : SORTING_ICON[this.defaultDirection];
+    const SSortIcon =
+      sort && sort[0] === name ? SORTING_ICON[sort[1]] : SORTING_ICON[this.defaultDirection];
     const isSorted = sort?.[0] === name;
     const visibleSort = Boolean(sortable) && (this.state.sortVisible || isSorted);
 

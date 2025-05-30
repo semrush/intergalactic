@@ -168,7 +168,8 @@ const PlaygroundView = ({ result, source, widgetControls }) => {
       <div className={styles.workArea}>
         <div className={`${styles.playgroundRuntime}`} style={{ margin: 0 }}>
           <ShadowRooted>
-            <style>{`
+            <style>
+              {`
               .playground-runtime {
                 padding-top: 40px;
                 margin-top: 20px;
@@ -187,7 +188,8 @@ const PlaygroundView = ({ result, source, widgetControls }) => {
                   padding-right: 24px;
                 }
               }
-            `}</style>
+            `}
+            </style>
             <div className='playground-runtime'>{result}</div>
           </ShadowRooted>
         </div>
@@ -197,21 +199,23 @@ const PlaygroundView = ({ result, source, widgetControls }) => {
           </div>
         )}
       </div>
-      {hasWidget ? (
-        <div
-          className={`${styles.widgetsBar} playground-widgets-bar`}
-          role='group'
-          aria-label='Component properties'
-        >
-          {widgetControls.map((control, i) => {
-            return (
-              <div className={styles.widgetGroup} key={i}>
-                {control.widgets}
-              </div>
-            );
-          })}
-        </div>
-      ) : null}
+      {hasWidget ?
+          (
+            <div
+              className={`${styles.widgetsBar} playground-widgets-bar`}
+              role='group'
+              aria-label='Component properties'
+            >
+              {widgetControls.map((control, i) => {
+                return (
+                  <div className={styles.widgetGroup} key={i}>
+                    {control.widgets}
+                  </div>
+                );
+              })}
+            </div>
+          ) :
+        null}
     </div>
   );
 };

@@ -271,9 +271,9 @@ class DateRangeRoot extends Component {
     this.setState({ lastChangedInput: 'from' });
 
     if (
-      event.key === 'ArrowRight'
-      && this.fromRef.current.selectionStart === this.fromRef.current.value.length
-      && this.fromRef.current.selectionEnd === this.fromRef.current.value.length
+      event.key === 'ArrowRight' &&
+      this.fromRef.current.selectionStart === this.fromRef.current.value.length &&
+      this.fromRef.current.selectionEnd === this.fromRef.current.value.length
     ) {
       this.toRef.current.focus();
       setTimeout(() => {
@@ -295,9 +295,9 @@ class DateRangeRoot extends Component {
       }, 0);
     }
     if (
-      event.key === 'ArrowLeft'
-      && this.toRef.current.selectionStart === 0
-      && this.toRef.current.selectionEnd === 0
+      event.key === 'ArrowLeft' &&
+      this.toRef.current.selectionStart === 0 &&
+      this.toRef.current.selectionEnd === 0
     ) {
       const value = this.fromRef.current.value;
       this.fromRef.current.focus();
@@ -313,8 +313,8 @@ class DateRangeRoot extends Component {
   };
 
   getFromMaskedInputProps() {
-    const { value, locale, onDisplayedPeriodChange, ariaHasPopup, showError: _showError, ...otherProps }
-      = this.asProps;
+    const { value, locale, onDisplayedPeriodChange, ariaHasPopup, showError: _showError, ...otherProps } =
+      this.asProps;
 
     return assignProps(
       {
@@ -520,9 +520,9 @@ const MaskedInput = ({
   }, [providedPlaceholders, getI18nText]);
 
   if (
-    placeholders.year.length !== 1
-    || placeholders.month.length !== 1
-    || placeholders.day.length !== 1
+    placeholders.year.length !== 1 ||
+    placeholders.month.length !== 1 ||
+    placeholders.day.length !== 1
   ) {
     // biome-ignore lint/suspicious/noConsole: old code
     console.error({ placeholders });
@@ -544,9 +544,9 @@ const MaskedInput = ({
         sep = part.value;
       }
       if (
-        order.length < 3
-        && ['day', 'month', 'year'].includes(part.type)
-        && allowedParts[part.type]
+        order.length < 3 &&
+        ['day', 'month', 'year'].includes(part.type) &&
+        allowedParts[part.type]
       ) {
         order.push(part.type);
       }
@@ -593,9 +593,9 @@ const MaskedInput = ({
   const lastKnownOuterValue = React.useRef(outer);
   React.useEffect(() => {
     if (
-      lastKnownOuterValue.current?.day !== outer?.day
-      || lastKnownOuterValue.current?.month !== outer?.month
-      || lastKnownOuterValue.current?.year !== outer?.year
+      lastKnownOuterValue.current?.day !== outer?.day ||
+      lastKnownOuterValue.current?.month !== outer?.month ||
+      lastKnownOuterValue.current?.year !== outer?.year
     ) {
       setInternalValue(outer);
     }
@@ -671,12 +671,12 @@ const MaskedInput = ({
         .map((char) => (char === '_' ? placeholders.day : char))
         .join('');
 
-      const yearFulfilled
-        = !allowedParts.year || (year && year.length >= 4 && !year.includes(placeholders.year));
-      const monthFulfilled
-        = !allowedParts.month || (month && month.length === 2 && !month.includes(placeholders.month));
-      const dayFulfilled
-        = !allowedParts.day || (day && day.length === 2 && !day.includes(placeholders.day));
+      const yearFulfilled =
+        !allowedParts.year || (year && year.length >= 4 && !year.includes(placeholders.year));
+      const monthFulfilled =
+        !allowedParts.month || (month && month.length === 2 && !month.includes(placeholders.month));
+      const dayFulfilled =
+        !allowedParts.day || (day && day.length === 2 && !day.includes(placeholders.day));
       const fulfilled = yearFulfilled && monthFulfilled && dayFulfilled;
 
       if (fulfilled) {
@@ -726,12 +726,12 @@ const MaskedInput = ({
       const { year, month, day } = parsed;
       setInternalValue({ year, month, day });
 
-      const yearFulfilled
-        = !allowedParts.year || (year && year.length >= 4 && !year.includes(placeholders.year));
-      const monthFulfilled
-        = !allowedParts.month || (month && month.length === 2 && !month.includes(placeholders.month));
-      const dayFulfilled
-        = !allowedParts.day || (day && day.length === 2 && !day.includes(placeholders.day));
+      const yearFulfilled =
+        !allowedParts.year || (year && year.length >= 4 && !year.includes(placeholders.year));
+      const monthFulfilled =
+        !allowedParts.month || (month && month.length === 2 && !month.includes(placeholders.month));
+      const dayFulfilled =
+        !allowedParts.day || (day && day.length === 2 && !day.includes(placeholders.day));
       const fulfilled = yearFulfilled && monthFulfilled && dayFulfilled;
       if (fulfilled) {
         const date = new Date(0, 0, 0, 0, 0, 0, 0);

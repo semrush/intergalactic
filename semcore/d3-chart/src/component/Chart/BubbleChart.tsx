@@ -48,11 +48,11 @@ class BubbleChartComponent extends AbstractChart<
       };
 
       if (legendData?.additionalInfo || legendData?.count) {
-        dataDefinition.additionalInfo = legendData.additionalInfo
-          ? { label: legendData.additionalInfo }
-          : legendData.count
-            ? { count: legendData.count }
-            : undefined;
+        dataDefinition.additionalInfo = legendData.additionalInfo ?
+            { label: legendData.additionalInfo } :
+          legendData.count ?
+              { count: legendData.count } :
+            undefined;
       }
 
       return dataDefinition;

@@ -91,9 +91,9 @@ class Textarea extends Component {
       node.rows = maxRows;
     }
     if (
-      (minRows !== undefined || maxRows !== undefined)
-      && (minRows === undefined || computed >= minRows)
-      && (maxRows === undefined || computed <= maxRows)
+      (minRows !== undefined || maxRows !== undefined) &&
+      (minRows === undefined || computed >= minRows) &&
+      (maxRows === undefined || computed <= maxRows)
     ) {
       node.rows = computed;
     }
@@ -113,9 +113,9 @@ class Textarea extends Component {
   componentDidUpdate(prevProps) {
     const { minRows, maxRows, value } = this.asProps;
     if (
-      prevProps.minRows !== minRows
-      || prevProps.maxRows !== maxRows
-      || prevProps.value !== value
+      prevProps.minRows !== minRows ||
+      prevProps.maxRows !== maxRows ||
+      prevProps.value !== value
     ) {
       this.calculateRows();
     }

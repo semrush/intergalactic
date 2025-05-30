@@ -73,8 +73,8 @@ export function FeedbackItem({
               {...(tag ? inputProps : {})}
               __excludeProps={['type', 'aria-describedby']}
             >
-              {typeof Children.origin === 'function'
-                && Children.origin({
+              {typeof Children.origin === 'function' &&
+                Children.origin({
                   input: inputProps,
                   meta,
                   ...other,

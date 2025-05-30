@@ -97,9 +97,9 @@ class TooltipRoot extends Component {
   render() {
     const { Children, children, tag, forcedAdvancedMode, onClick: _, ...other } = this.asProps;
 
-    const advancedMode
-      = forcedAdvancedMode
-        || !!findComponent(Children, [Tooltip.Trigger.displayName, Tooltip.Popper.displayName]);
+    const advancedMode =
+      forcedAdvancedMode ||
+      !!findComponent(Children, [Tooltip.Trigger.displayName, Tooltip.Popper.displayName]);
     this.renderContext.index = -1;
     this.renderContext.indexKeysCache.clear();
     this.renderContext.patterns = this.asProps.patterns ?? this.state.tooltipProps.patterns;
@@ -120,11 +120,11 @@ class TooltipRoot extends Component {
             this.setPopperTrigger = setTrigger;
             this.popper = popper;
             this.popper.current?.update();
-            return advancedMode
-              ? (
+            return advancedMode ?
+                (
                   <Children />
-                )
-              : (
+                ) :
+                (
                   <>
                     {tag && <Tooltip.Trigger tag={tag} onClick={this.handleTriggerClick} />}
                     <Tooltip.Popper {...other}>{children}</Tooltip.Popper>
@@ -180,16 +180,16 @@ function Dot(props) {
   const SDotCircle = Box;
   return sstyled(styles)(
     <SDotGroup render={Box} __excludeProps={['data', 'scale']}>
-      {patterns
-        ? (
+      {patterns ?
+          (
             <SDot>
               <PatternSymbol
                 color={resolveColor(color ?? defaultColor)}
                 patternKey={color ?? defaultColor}
               />
             </SDot>
-          )
-        : (
+          ) :
+          (
             <SDot>
               <SDotCircle color={resolveColor(color ?? defaultColor)} />
             </SDot>

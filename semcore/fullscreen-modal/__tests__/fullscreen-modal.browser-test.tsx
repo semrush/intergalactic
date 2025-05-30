@@ -4,8 +4,8 @@ import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 test.describe('Fullscreen modal', () => {
   test.describe('Styles and a11y checks', () => {
     test('Verify base fullscreen modal attributes', async ({ page }) => {
-      const standPath
-        = 'stories/components/fullscreen-modal/docs/examples/basic_fullscreen.headers_use.tsx';
+      const standPath =
+        'stories/components/fullscreen-modal/docs/examples/basic_fullscreen.headers_use.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
 
       await page.setContent(htmlContent);
@@ -36,8 +36,8 @@ test.describe('Fullscreen modal', () => {
     });
 
     test('Verify dual fullscreen modal attributes', async ({ page }) => {
-      const standPath
-        = 'stories/components/fullscreen-modal/docs/examples/example_of_a_dual-zone_modal_window.tsx';
+      const standPath =
+        'stories/components/fullscreen-modal/docs/examples/example_of_a_dual-zone_modal_window.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
 
       await page.setContent(htmlContent);
@@ -78,8 +78,8 @@ test.describe('Fullscreen modal', () => {
     });
 
     test('Verify body paddings', async ({ page }) => {
-      const standPath
-        = 'stories/components/fullscreen-modal/docs/examples/example_of_a_dual-zone_modal_window.tsx';
+      const standPath =
+        'stories/components/fullscreen-modal/docs/examples/example_of_a_dual-zone_modal_window.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
 
       await page.setContent(htmlContent);
@@ -126,8 +126,8 @@ test.describe('Fullscreen modal', () => {
     });
 
     test('Verify dual render and styles', async ({ page }) => {
-      const standPath
-        = 'stories/components/fullscreen-modal/docs/examples/example_of_a_dual-zone_modal_window.tsx';
+      const standPath =
+        'stories/components/fullscreen-modal/docs/examples/example_of_a_dual-zone_modal_window.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
 
       await page.setContent(htmlContent);
@@ -151,8 +151,8 @@ test.describe('Fullscreen modal', () => {
 
   test.describe('Interactions', () => {
     test('Verify keyboard navigation when no footer and 1 zone in body', async ({ page }) => {
-      const standPath
-        = 'stories/components/fullscreen-modal/docs/examples/basic_fullscreen.headers_use.tsx';
+      const standPath =
+        'stories/components/fullscreen-modal/docs/examples/basic_fullscreen.headers_use.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
 
       await page.setContent(htmlContent);
@@ -195,8 +195,8 @@ test.describe('Fullscreen modal', () => {
     });
 
     test('Verify mouse navigation when no footer and 1 zone in body', async ({ page }) => {
-      const standPath
-        = 'stories/components/fullscreen-modal/docs/examples/basic_fullscreen.headers_use.tsx';
+      const standPath =
+        'stories/components/fullscreen-modal/docs/examples/basic_fullscreen.headers_use.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
 
       await page.setContent(htmlContent);
@@ -223,8 +223,8 @@ test.describe('Fullscreen modal', () => {
     });
 
     test('Verify keyboard navigation footer and 2 zones in body', async ({ page, browserName }) => {
-      const standPath
-        = 'stories/components/fullscreen-modal/docs/examples/example_of_a_dual-zone_modal_window.tsx';
+      const standPath =
+        'stories/components/fullscreen-modal/docs/examples/example_of_a_dual-zone_modal_window.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
 
       await page.setContent(htmlContent);
@@ -259,8 +259,8 @@ test.describe('Fullscreen modal', () => {
 
   test.describe('Header, body and footer variations', () => {
     test('Verify header is fixed when scrolling body', async ({ page, browserName }) => {
-      const standPath
-        = 'stories/components/fullscreen-modal/docs/examples/example_of_a_dual-zone_modal_window.tsx';
+      const standPath =
+        'stories/components/fullscreen-modal/docs/examples/example_of_a_dual-zone_modal_window.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
       if (browserName === 'webkit') return;
       await page.setContent(htmlContent);
@@ -282,8 +282,8 @@ test.describe('Fullscreen modal', () => {
     });
 
     test('Verify Close, LongTitle and Description with interactive element', async ({ page }) => {
-      const standPath
-        = 'stories/components/fullscreen-modal/tests/examples/header/close-title-description.tsx';
+      const standPath =
+        'stories/components/fullscreen-modal/tests/examples/header/close-title-description.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
 
       await page.setContent(htmlContent);
@@ -305,8 +305,8 @@ test.describe('Fullscreen modal', () => {
     });
 
     test('Verify LongTitle withEllipsis and Description ', async ({ page }) => {
-      const standPath
-        = 'stories/components/fullscreen-modal/tests/examples/header/title-description.tsx';
+      const standPath =
+        'stories/components/fullscreen-modal/tests/examples/header/title-description.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
 
       await page.setContent(htmlContent);
@@ -328,8 +328,8 @@ test.describe('Fullscreen modal', () => {
     });
 
     test('Verify Close Back without Header ', async ({ page }) => {
-      const standPath
-        = 'stories/components/fullscreen-modal/tests/examples/header/back-no-text-close-no-header-1bth-footer.tsx';
+      const standPath =
+        'stories/components/fullscreen-modal/tests/examples/header/back-no-text-close-no-header-1bth-footer.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
 
       await page.setContent(htmlContent);
@@ -349,8 +349,8 @@ test.describe('Fullscreen modal', () => {
     });
 
     test('Verify Back and title with long text and with Header', async ({ page }) => {
-      const standPath
-        = 'stories/components/fullscreen-modal/tests/examples/header/back-and-title-bodyh400-2btn-footer.tsx';
+      const standPath =
+        'stories/components/fullscreen-modal/tests/examples/header/back-and-title-bodyh400-2btn-footer.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
 
       await page.setContent(htmlContent);

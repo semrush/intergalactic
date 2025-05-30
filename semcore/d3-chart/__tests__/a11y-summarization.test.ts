@@ -722,8 +722,8 @@ describe('Plot a11y summarization', () => {
       makeConfig(),
     );
     expect(
-      insights.find((insight) => insight.type === 'trend' && (insight as any).from >= 5)
-      !== undefined,
+      insights.find((insight) => insight.type === 'trend' && (insight as any).from >= 5) !==
+      undefined,
     ).toBeTruthy();
   });
 

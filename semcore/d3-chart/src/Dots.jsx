@@ -72,10 +72,10 @@ function Dots(props) {
     const isPrev = d3.defined()(data[i - 1] || {});
     const isNext = d3.defined()(data[i + 1] || {});
     const active = i === activeIndex;
-    const visible
-      = typeof display === 'function'
-        ? display(i, i === activeIndex, !isPrev && !isNext)
-        : display || i === activeIndex || (!isPrev && !isNext);
+    const visible =
+      typeof display === 'function' ?
+          display(i, i === activeIndex, !isPrev && !isNext) :
+        display || i === activeIndex || (!isPrev && !isNext);
     const radius = radiusBase * (active ? 5 / 4 : 1);
     if (!d3.defined()(d)) return acc;
     if (!visible) return acc;
@@ -106,8 +106,7 @@ function Dots(props) {
           />,
         ),
       );
-    }
-    else {
+    } else {
       acc.push(
         sstyled(styles)(
           <SDot

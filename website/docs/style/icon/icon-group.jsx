@@ -15,9 +15,9 @@ const iconDimensions = {
 const DownloadIconButton = ({ size, name, action, iconData, icon: Icon }) => {
   let nameSvg = `${name}/${size}`;
   const groupName = iconData.group.toLowerCase();
-  const iconSize = iconDimensions[groupName]
-    ? iconDimensions[groupName][size]
-    : iconDimensions.common[size];
+  const iconSize = iconDimensions[groupName] ?
+    iconDimensions[groupName][size] :
+    iconDimensions.common[size];
   const haveGroupName = ['pay', 'external', 'color'].includes(groupName);
   let includeGroupName = haveGroupName ? `/${groupName}` : '';
 

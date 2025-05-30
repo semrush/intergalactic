@@ -38,9 +38,9 @@ const cyrillicFallback = {
   ч: 'ch',
   ш: 'sh',
   щ: 'shch',
-  ъ: "'",
+  ъ: '\'',
   ы: 'y',
-  ь: "'",
+  ь: '\'',
   э: 'e',
   ю: 'yu',
   я: 'ya',
@@ -125,7 +125,7 @@ export const markdownTokenToHtml = (
         return h(node, 'a', props, [{ type: 'text', value: text }]);
       },
       image: (h, node) => {
-        const props = { src: node.url, alt: node.alt, 'aria-hidden': 'true' };
+        const props = { 'src': node.url, 'alt': node.alt, 'aria-hidden': 'true' };
         return h(node, 'img', props);
       },
     },

@@ -32,8 +32,7 @@ export async function checkKeyboardNavigation(page: any, elementsSelector: any) 
     const isDisabled = (await element.getAttribute('disabled')) !== null;
     if (isDisabled) {
       await expect(element).not.toBeFocused({ timeout: 5000 });
-    }
-    else {
+    } else {
       await page.keyboard.press('Tab');
       await expect(elements.nth(i)).toBeFocused({ timeout: 5000 });
     }

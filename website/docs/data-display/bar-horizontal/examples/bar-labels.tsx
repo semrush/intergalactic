@@ -35,7 +35,9 @@ const Demo = () => {
                 alignmentBaseline='middle'
                 fill={resolveColor('--intergalactic-text-secondary')}
               >
-                $ {data[index].bar}
+                $
+                {' '}
+                {data[index].bar}
               </text>
             ),
           };

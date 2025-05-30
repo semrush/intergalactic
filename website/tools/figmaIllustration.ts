@@ -91,9 +91,9 @@ const downloadIllustrations = async () => {
 
   if (response.ok) {
     try {
-      const data: { files?: { key: string; name: string }[] } = await response.json();
+      const data = await response.json() as { files?: { key: string; name: string }[] };
       data.files
-        .filter((file) => !chosenPath.length || file.name.toLowerCase() === chosenPath[0])
+        ?.filter((file) => !chosenPath.length || file.name.toLowerCase() === chosenPath[0])
         .map((file) => getIllustrationList(file.key));
     } catch (error) {
       console.error(error);

@@ -33,8 +33,14 @@ const Demo = () => {
             children: (
               <>
                 <ScatterPlot.Tooltip.Dot color={color}>Data</ScatterPlot.Tooltip.Dot>
-                <Text tag='div'>X axis {data[index][x]}</Text>
-                <Text tag='div'>Y axis {data[index][y]}</Text>
+                <Text tag='div'>
+                  X axis
+                  {data[index][x]}
+                </Text>
+                <Text tag='div'>
+                  Y axis
+                  {data[index][y]}
+                </Text>
               </>
             ),
           };

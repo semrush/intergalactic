@@ -53,7 +53,7 @@ const SuggestSearch = connectAutoComplete(
           onChange={handleChangeValue}
           value={currentRefinement}
           placeholder='What illustration are you looking for?'
-          aria-label={'Search illustrations'}
+          aria-label='Search illustrations'
           aria-describedby='search-message'
         />
         <Input.Addon
@@ -110,29 +110,33 @@ export default function ({ illustrations, json }) {
         setSelectedIllustration={setSelectedIllustration}
         ref={illustrationContainerRef}
       >
-        {inputValue.length ? (
-          filterIllustrations.length ? (
-            <ListIllustrations data={filterIllustrations} aria-label='Search results' />
-          ) : (
-            <NoData
-              type='nothing-found'
-              description='Try searching by illustration or group name, for example "mail" or "chart".'
-              style={{
-                borderRadius: 'var(--intergalactic-rounded-medium)',
-                border: 'solid 1px var(--intergalactic-border-secondary)',
-              }}
-              py={10}
-            />
-          )
-        ) : (
-          <>
-            <IllustrationGroup title='States' />
-            <IllustrationGroup title='Chart types' />
-            <IllustrationGroup title='Data types' />
-            <IllustrationGroup title='Errors' />
-            <IllustrationGroup title='Other' />
-          </>
-        )}
+        {inputValue.length ?
+            (
+              filterIllustrations.length ?
+                  (
+                    <ListIllustrations data={filterIllustrations} aria-label='Search results' />
+                  ) :
+                  (
+                    <NoData
+                      type='nothing-found'
+                      description='Try searching by illustration or group name, for example "mail" or "chart".'
+                      style={{
+                        borderRadius: 'var(--intergalactic-rounded-medium)',
+                        border: 'solid 1px var(--intergalactic-border-secondary)',
+                      }}
+                      py={10}
+                    />
+                  )
+            ) :
+            (
+              <>
+                <IllustrationGroup title='States' />
+                <IllustrationGroup title='Chart types' />
+                <IllustrationGroup title='Data types' />
+                <IllustrationGroup title='Errors' />
+                <IllustrationGroup title='Other' />
+              </>
+            )}
         <IllustrationDetailsPanel
           name={selectedIllustration}
           visible={selectedIllustration !== null}

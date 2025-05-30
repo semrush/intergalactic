@@ -128,8 +128,7 @@ const css = (code, hash) => {
 
     if (document.head) {
       appendChildToDocumentHead(container);
-    }
-    else {
+    } else {
       document.addEventListener('DOMContentLoaded', () => {
         appendChildToDocumentHead(container);
       });
@@ -273,10 +272,10 @@ function map(element) {
   if (cn) nextProps[KEYS.__classProp__] = cn;
 
   if (vars) {
-    nextProps.style
-      = typeof style === 'string'
-        ? vars + (nextProps.style || '')
-        : Object.assign({}, vars, nextProps.style || {});
+    nextProps.style =
+      typeof style === 'string' ?
+        vars + (nextProps.style || '') :
+          Object.assign({}, vars, nextProps.style || {});
   }
 
   return nextProps;

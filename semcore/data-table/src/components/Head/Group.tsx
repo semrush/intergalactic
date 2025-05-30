@@ -36,9 +36,9 @@ export class Group extends Component<
     const children = getOriginChildren(Children);
 
     const firstName = withConfig ? groupColumns[0]?.name : children[0]?.props.name;
-    const lastName = withConfig
-      ? groupColumns[groupColumns.length - 1]?.name
-      : children[children.length - 1]?.props.name;
+    const lastName = withConfig ?
+      groupColumns[groupColumns.length - 1]?.name :
+      children[children.length - 1]?.props.name;
 
     const style: any = {};
 
@@ -54,8 +54,8 @@ export class Group extends Component<
         <SGroup render={Box} style={style} __excludeProps={['title']} id={this.groupId}>
           {withConfig ? children : title}
         </SGroup>
-        {withConfig
-          ? (
+        {withConfig ?
+            (
               groupColumns.map((column, _i) => {
                 return (
                   <DataTableInternal.Head.Column
@@ -65,8 +65,8 @@ export class Group extends Component<
                   />
                 );
               })
-            )
-          : (
+            ) :
+            (
               <Children />
             )}
       </SGroupContainer>,

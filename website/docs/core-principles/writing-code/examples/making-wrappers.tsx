@@ -9,19 +9,19 @@ const AlertButton = wrapIntergalacticComponent<
     message: string;
   }
 >(({ handle, message, ...restProps }) => {
-  const handleClick = () => {
-    if (handle.includes('click')) {
-      alert(message);
-    }
-  };
-  const handleMouseOver = () => {
-    if (handle.includes('hover')) {
-      alert(message);
-    }
-  };
+        const handleClick = () => {
+          if (handle.includes('click')) {
+            alert(message);
+          }
+        };
+        const handleMouseOver = () => {
+          if (handle.includes('hover')) {
+            alert(message);
+          }
+        };
 
-  return <Button {...restProps} onClick={handleClick} onMouseOver={handleMouseOver} />;
-});
+        return <Button {...restProps} onClick={handleClick} onMouseOver={handleMouseOver} />;
+      });
 
 const Demo = () => (
   <AlertButton handle={['click']} message='Hello world'>

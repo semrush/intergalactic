@@ -4,10 +4,10 @@ import { Text } from '@semcore/typography';
 import { ChartLegend } from '@semcore/d3-chart';
 
 const data = {
-  G: 200,
-  F: 200,
-  C: 500,
-  U: 1,
+  'G': 200,
+  'F': 200,
+  'C': 500,
+  'U': 1,
   'G/F': 100,
   'G/C': 100,
   'F/C': 100,
@@ -94,7 +94,7 @@ const Demo = () => {
       <ChartLegend
         items={legendItems}
         patterns
-        aria-label={'Venn chart legend'}
+        aria-label='Venn chart legend'
         onChangeVisibleItem={handleChangeVisible}
       />
       <Plot height={300} width={400} data={data} patterns>

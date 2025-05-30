@@ -5,10 +5,10 @@ const Demo = () => {
   return (
     <Chart.Radar
       data={data}
-      groupKey={'categories'}
+      groupKey='categories'
       plotWidth={400}
       plotHeight={400}
-      aria-label={'Radar chart'}
+      aria-label='Radar chart'
     />
   );
 };

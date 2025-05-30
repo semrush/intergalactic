@@ -186,29 +186,29 @@ class RootTagContainer extends Component {
   render() {
     const STagContainer = Root;
     const { styles, Children, forcedAdvancedMode } = this.asProps;
-    const advancedMode
-      = forcedAdvancedMode
-        || isAdvanceMode(
-          Children,
-          [
-            'InputTags.' + Tag.Text.displayName,
-            'InputTags.' + Tag.Addon.displayName,
-            'InputTags.' + Tag.Circle.displayName,
-            TagContainer.Tag.displayName,
-            TagContainer.Addon.displayName,
-            TagContainer.Close.displayName,
-            TagContainer.Circle.displayName,
-          ],
-          true,
-        );
+    const advancedMode =
+      forcedAdvancedMode ||
+      isAdvanceMode(
+        Children,
+        [
+          'InputTags.' + Tag.Text.displayName,
+          'InputTags.' + Tag.Addon.displayName,
+          'InputTags.' + Tag.Circle.displayName,
+          TagContainer.Tag.displayName,
+          TagContainer.Addon.displayName,
+          TagContainer.Close.displayName,
+          TagContainer.Circle.displayName,
+        ],
+        true,
+      );
 
     return sstyled(styles)(
       <STagContainer render={Box}>
-        {advancedMode
-          ? (
+        {advancedMode ?
+            (
               <Children />
-            )
-          : (
+            ) :
+            (
               <TagContainer.Tag>
                 <Children />
               </TagContainer.Tag>

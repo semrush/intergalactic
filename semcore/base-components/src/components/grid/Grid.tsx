@@ -40,14 +40,14 @@ function Col(props: ColProps) {
   }
 
   span = span !== undefined ? span : md !== undefined ? md : sm !== undefined ? sm : xs;
-  offset
-    = offset !== undefined
-      ? offset
-      : mdOffset !== undefined
-        ? mdOffset
-        : smOffset !== undefined
-          ? smOffset
-          : xsOffset;
+  offset =
+    offset !== undefined ?
+      offset :
+      mdOffset !== undefined ?
+        mdOffset :
+        smOffset !== undefined ?
+          smOffset :
+          xsOffset;
 
   return sstyled(styles)(
     <SCol

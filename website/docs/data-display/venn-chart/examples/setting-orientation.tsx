@@ -34,8 +34,8 @@ const Demo = () => {
 };
 
 const data = {
-  F: 5,
-  S: 7,
+  'F': 5,
+  'S': 7,
   'F/S': 3,
 };
 

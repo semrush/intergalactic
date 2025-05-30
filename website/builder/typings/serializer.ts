@@ -2,7 +2,7 @@ import ts from 'typescript';
 
 const hideGenerics = {
   'Intergalactic.InternalTypings.EfficientOmit': 1,
-  Omit: 1,
+  'Omit': 1,
 };
 
 export const extractDependenciesList = (typingsParts) => {
