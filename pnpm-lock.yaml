@@ -2259,229 +2259,229 @@ importers:
     dependencies:
       '@semcore/accordion':
         specifier: 16.0.0
-        version: 16.0.0(@semcore/base-components@semcore+base-components)
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/add-filter':
         specifier: 16.0.0
-        version: 16.0.0(@semcore/base-components@semcore+base-components)(react-dom@18.2.0)(react@18.2.0)
+        version: 16.0.0(@semcore/base-components@16.0.0)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/animation':
-        specifier: workspace:*
-        version: link:../animation
+        specifier: 16.0.0
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/badge':
-        specifier: workspace:*
-        version: link:../badge
+        specifier: 16.0.0
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/base-components':
-        specifier: workspace:*
-        version: link:../base-components
+        specifier: 16.0.0
+        version: 16.0.0(@semcore/core@semcore+core)
       '@semcore/base-trigger':
         specifier: 16.0.0
-        version: 16.0.0(@semcore/base-components@semcore+base-components)
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/breadcrumbs':
         specifier: 16.0.0
-        version: 16.0.0(@semcore/base-components@semcore+base-components)
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/breakpoints':
-        specifier: workspace:*
-        version: link:../breakpoints
+        specifier: 16.0.0
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/bulk-textarea':
         specifier: 16.0.0
-        version: 16.0.0(@semcore/base-components@semcore+base-components)
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/button':
-        specifier: workspace:*
-        version: link:../button
+        specifier: 16.0.0
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/card':
         specifier: 16.0.0
-        version: 16.0.0(@semcore/base-components@semcore+base-components)
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/carousel':
         specifier: 16.0.0
-        version: 16.0.0(@semcore/base-components@semcore+base-components)
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/checkbox':
-        specifier: workspace:*
-        version: link:../checkbox
+        specifier: 16.0.0
+        version: 16.0.0(@semcore/base-components@16.0.0)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/color-picker':
         specifier: 16.0.0
-        version: 16.0.0(@semcore/base-components@semcore+base-components)
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/core':
-        specifier: workspace:*
+        specifier: 16.0.0
         version: link:../core
       '@semcore/counter':
-        specifier: workspace:*
-        version: link:../counter
+        specifier: 16.0.0
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/d3-chart':
         specifier: 16.0.0
-        version: 16.0.0(@semcore/base-components@semcore+base-components)(d3-selection@2.0.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+        version: 16.0.0(@semcore/base-components@16.0.0)(d3-selection@2.0.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
       '@semcore/data-table':
         specifier: 16.0.0
-        version: 16.0.0(@semcore/base-components@semcore+base-components)(react-dom@18.2.0)(react@18.2.0)
+        version: 16.0.0(@semcore/base-components@16.0.0)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/date-picker':
         specifier: 16.0.0
-        version: 16.0.0(@semcore/base-components@semcore+base-components)(react-dom@18.2.0)(react@18.2.0)
+        version: 16.0.0(@semcore/base-components@16.0.0)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/divider':
-        specifier: workspace:*
-        version: link:../divider
+        specifier: 16.0.0
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/dot':
-        specifier: workspace:*
-        version: link:../dot
+        specifier: 16.0.0
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/drag-and-drop':
         specifier: 16.0.0
-        version: 16.0.0(@semcore/base-components@semcore+base-components)(react-dom@18.2.0)(react@18.2.0)
+        version: 16.0.0(@semcore/base-components@16.0.0)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/dropdown':
-        specifier: workspace:*
-        version: link:../dropdown
+        specifier: 16.0.0
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/dropdown-menu':
         specifier: 16.0.0
-        version: 16.0.0(@semcore/base-components@semcore+base-components)
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/ellipsis':
-        specifier: workspace:*
-        version: link:../ellipsis
+        specifier: 16.0.0
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/errors':
         specifier: 16.0.0
-        version: 16.0.0(@semcore/base-components@semcore+base-components)(react-dom@18.2.0)(react@18.2.0)
+        version: 16.0.0(@semcore/base-components@16.0.0)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/feature-popover':
         specifier: 16.0.0
-        version: 16.0.0(@semcore/base-components@semcore+base-components)
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/feedback-form':
         specifier: 16.0.0
-        version: 16.0.0(@semcore/base-components@semcore+base-components)(react-dom@18.2.0)(react@18.2.0)
+        version: 16.0.0(@semcore/base-components@16.0.0)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flags':
-        specifier: workspace:*
-        version: link:../flags
+        specifier: 16.0.0
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/flex-box':
-        specifier: workspace:*
-        version: link:../flex-box
+        specifier: 16.0.0
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/format-text':
         specifier: 16.0.0
-        version: 16.0.0(@semcore/base-components@semcore+base-components)(react-dom@18.2.0)(react@18.2.0)
+        version: 16.0.0(@semcore/base-components@16.0.0)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/fullscreen-modal':
         specifier: 16.0.0
-        version: 16.0.0(@semcore/base-components@semcore+base-components)
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/grid':
-        specifier: workspace:*
-        version: link:../grid
+        specifier: 16.0.0
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/i18n-unplugin':
-        specifier: workspace:*
+        specifier: 16.0.0
         version: link:../i18n-unplugin
       '@semcore/icon':
         specifier: 16.0.0
-        version: 16.0.0(@semcore/base-components@semcore+base-components)
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/illustration':
-        specifier: workspace:*
-        version: link:../illustration
+        specifier: 16.0.0
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/inline-edit':
-        specifier: workspace:*
-        version: link:../inline-edit
+        specifier: 16.0.0
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/inline-input':
         specifier: 16.0.0
-        version: 16.0.0(@semcore/base-components@semcore+base-components)
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/input':
-        specifier: workspace:*
-        version: link:../input
+        specifier: 16.0.0
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/input-mask':
-        specifier: workspace:*
-        version: link:../input-mask
+        specifier: 16.0.0
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/input-number':
-        specifier: workspace:*
-        version: link:../input-number
+        specifier: 16.0.0
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/input-tags':
-        specifier: workspace:*
-        version: link:../input-tags
+        specifier: 16.0.0
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/link':
-        specifier: workspace:*
-        version: link:../link
+        specifier: 16.0.0
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/mini-chart':
-        specifier: workspace:*
-        version: link:../mini-chart
+        specifier: 16.0.0
+        version: 16.0.0(@semcore/base-components@16.0.0)(@semcore/flex-box@16.0.0)
       '@semcore/modal':
         specifier: 16.0.0
-        version: 16.0.0(@semcore/base-components@semcore+base-components)
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/neighbor-location':
-        specifier: workspace:*
-        version: link:../neighbor-location
+        specifier: 16.0.0
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/notice':
         specifier: 16.0.0
-        version: 16.0.0(@semcore/base-components@semcore+base-components)
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/notice-bubble':
         specifier: 16.0.0
-        version: 16.0.0(@semcore/base-components@semcore+base-components)
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/notice-global':
         specifier: 16.0.0
-        version: 16.0.0(@semcore/base-components@semcore+base-components)
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/outside-click':
-        specifier: workspace:*
-        version: link:../outside-click
+        specifier: 16.0.0
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/pagination':
         specifier: 16.0.0
-        version: 16.0.0(@semcore/base-components@semcore+base-components)
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/pills':
-        specifier: workspace:*
-        version: link:../pills
+        specifier: 16.0.0
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/popper':
-        specifier: workspace:*
-        version: link:../popper
+        specifier: 16.0.0
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/portal':
-        specifier: workspace:*
-        version: link:../portal
+        specifier: 16.0.0
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/product-head':
-        specifier: workspace:*
-        version: link:../product-head
+        specifier: 16.0.0
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/progress-bar':
-        specifier: workspace:*
-        version: link:../progress-bar
+        specifier: 16.0.0
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/radio':
-        specifier: workspace:*
-        version: link:../radio
+        specifier: 16.0.0
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/scroll-area':
-        specifier: workspace:*
-        version: link:../scroll-area
+        specifier: 16.0.0
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/select':
         specifier: 16.0.0
-        version: 16.0.0(@semcore/base-components@semcore+base-components)(react-dom@18.2.0)(react@18.2.0)
+        version: 16.0.0(@semcore/base-components@16.0.0)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/side-panel':
         specifier: 16.0.0
-        version: 16.0.0(@semcore/base-components@semcore+base-components)
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/skeleton':
-        specifier: workspace:*
-        version: link:../skeleton
+        specifier: 16.0.0
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/slider':
-        specifier: workspace:*
-        version: link:../slider
+        specifier: 16.0.0
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/spin':
-        specifier: workspace:*
-        version: link:../spin
+        specifier: 16.0.0
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/spin-container':
-        specifier: workspace:*
-        version: link:../spin-container
+        specifier: 16.0.0
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/sticky':
-        specifier: workspace:*
-        version: link:../sticky
+        specifier: 16.0.0
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/switch':
-        specifier: workspace:*
-        version: link:../switch
+        specifier: 16.0.0
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/tab-line':
-        specifier: workspace:*
-        version: link:../tab-line
+        specifier: 16.0.0
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/tab-panel':
-        specifier: workspace:*
-        version: link:../tab-panel
+        specifier: 16.0.0
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/tag':
         specifier: 16.0.0
-        version: 16.0.0(@semcore/base-components@semcore+base-components)
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/textarea':
-        specifier: workspace:*
-        version: link:../textarea
+        specifier: 16.0.0
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/time-picker':
         specifier: 16.0.0
-        version: 16.0.0(@semcore/base-components@semcore+base-components)(react-dom@18.2.0)(react@18.2.0)
+        version: 16.0.0(@semcore/base-components@16.0.0)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/tooltip':
-        specifier: workspace:*
-        version: link:../tooltip
+        specifier: 16.0.0
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/typography':
         specifier: 16.0.0
-        version: 16.0.0(@semcore/base-components@semcore+base-components)
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/widget-empty':
-        specifier: workspace:*
-        version: link:../widget-empty
+        specifier: 16.0.0
+        version: 16.0.0(@semcore/base-components@16.0.0)
       '@semcore/wizard':
         specifier: 16.0.0
-        version: 16.0.0(@semcore/base-components@semcore+base-components)
+        version: 16.0.0(@semcore/base-components@16.0.0)
       react:
         specifier: 16.8 - 18
         version: 18.2.0
@@ -3290,10 +3290,10 @@ importers:
         version: 1.48.0
       '@previewjs/plugin-react':
         specifier: ^15.0.2
-        version: 15.0.2(@types/node@18.19.110)(vite@5.4.9)(yaml@2.1.1)
+        version: 15.0.2(@types/node@18.19.110)(vite@4.5.14)(yaml@2.1.1)
       '@previewjs/screenshot':
         specifier: ^0.2.13
-        version: 0.2.13(@types/node@18.19.110)(esbuild@0.14.29)(vite@5.4.9)(yaml@2.1.1)
+        version: 0.2.13(@types/node@18.19.110)(esbuild@0.14.29)(vite@4.5.14)(yaml@2.1.1)
       '@semcore/babel-preset-ui':
         specifier: ^1.0.1
         version: link:../babel-preset-ui
@@ -4056,24 +4056,6 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /@babel/helper-create-class-features-plugin@7.22.15(@babel/core@7.19.1):
-    resolution: {integrity: sha512-jKkwA59IXcvSaiK2UN45kKwSC9o+KuoXsBDvHvU/7BecYIp8GQ2UwrVvFgJASUT+hBnwJx6MhvMCuMzwZZ7jlg==}
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': 7.19.1
-    dependencies:
-      '@babel/core': 7.19.1
-      '@babel/helper-annotate-as-pure': 7.22.5
-      '@babel/helper-environment-visitor': 7.22.20
-      '@babel/helper-function-name': 7.22.5
-      '@babel/helper-member-expression-to-functions': 7.22.15
-      '@babel/helper-optimise-call-expression': 7.22.5
-      '@babel/helper-replace-supers': 7.22.20(@babel/core@7.19.1)
-      '@babel/helper-skip-transparent-expression-wrappers': 7.22.5
-      '@babel/helper-split-export-declaration': 7.22.6
-      semver: 6.3.1
-    dev: false
-
   /@babel/helper-create-class-features-plugin@7.27.1(@babel/core@7.19.1):
     resolution: {integrity: sha512-QwGAmuvM17btKU5VqXfb+Giw4JcN0hjuufz3DYnpeVDvZLAObloM77bhMXiqry3Iio+Ai4phVRDwl6WU10+r5A==}
     engines: {node: '>=6.9.0'}
@@ -4163,13 +4145,6 @@ packages:
     dependencies:
       '@babel/types': 7.22.19
 
-  /@babel/helper-member-expression-to-functions@7.22.15:
-    resolution: {integrity: sha512-qLNsZbgrNh0fDQBCPocSL8guki1hcPvltGDv/NxvUoABwFq7GkKSu1nRXeJkVZc+wJvne2E0RKQz+2SQrz6eAA==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      '@babel/types': 7.22.19
-    dev: false
-
   /@babel/helper-member-expression-to-functions@7.27.1:
     resolution: {integrity: sha512-E5chM8eWjTp/aNoVpcbfM7mLxu9XGLWYise2eBKGQomAk/Mb4XoxyqXTZbuTohbsl8EKqdlMhnDI2CCLfcs9wA==}
     engines: {node: '>=6.9.0'}
@@ -4213,13 +4188,6 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/types': 7.22.19
-
-  /@babel/helper-optimise-call-expression@7.22.5:
-    resolution: {integrity: sha512-HBwaojN0xFRx4yIvpwGqxiV2tUfl7401jlok564NgB9EHS1y6QT17FmKWm4ztqjeVdXLuC4fSvHc5ePpQjoTbw==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      '@babel/types': 7.22.19
-    dev: false
 
   /@babel/helper-optimise-call-expression@7.27.1:
     resolution: {integrity: sha512-URMGH08NzYFhubNSGJrpUEphGKQwMQYBySzat5cAByY1/YgIRkULnIy3tAMeszlL/so2HbeilYloUmSpd7GdVw==}
@@ -4272,18 +4240,6 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /@babel/helper-replace-supers@7.22.20(@babel/core@7.19.1):
-    resolution: {integrity: sha512-qsW0In3dbwQUbK8kejJ4R7IHVGwHJlV6lpG6UA7a9hSa2YEiAib+N1T2kr6PEeUT+Fl7najmSOS6SmAwCHK6Tw==}
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': 7.19.1
-    dependencies:
-      '@babel/core': 7.19.1
-      '@babel/helper-environment-visitor': 7.22.20
-      '@babel/helper-member-expression-to-functions': 7.22.15
-      '@babel/helper-optimise-call-expression': 7.22.5
-    dev: false
-
   /@babel/helper-replace-supers@7.27.1(@babel/core@7.19.1):
     resolution: {integrity: sha512-7EHz6qDZc8RYS5ElPoShMheWvEgERonFCs7IAonWLLUTXW59DP14bCZt89/GKyreYn8g3S83m21FelHKbeDCKA==}
     engines: {node: '>=6.9.0'}
@@ -4309,13 +4265,6 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/types': 7.22.19
-
-  /@babel/helper-skip-transparent-expression-wrappers@7.22.5:
-    resolution: {integrity: sha512-tK14r66JZKiC43p8Ki33yLBVJKlQDFoA8GYN67lWCDCqoL6EMMSuM9b+Iff2jHaM/RRFYl7K+iiru7hbRqNx8Q==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      '@babel/types': 7.22.19
-    dev: false
 
   /@babel/helper-skip-transparent-expression-wrappers@7.27.1:
     resolution: {integrity: sha512-Tub4ZKEXqbPjXgWLl2+3JpQAYBJ8+ikpQ2Ocj/q/r0LwE3UhENh7EUabyHjz2kCEsrRY83ew2DQdHluuiDQFzg==}
@@ -4725,7 +4674,7 @@ packages:
       '@babel/core': 7.19.1
     dependencies:
       '@babel/core': 7.19.1
-      '@babel/helper-plugin-utils': 7.25.9
+      '@babel/helper-plugin-utils': 7.27.1
     dev: false
 
   /@babel/plugin-syntax-import-assertions@7.26.0(@babel/core@7.19.1):
@@ -4846,16 +4795,6 @@ packages:
     dependencies:
       '@babel/core': 7.19.1
       '@babel/helper-plugin-utils': 7.25.9
-
-  /@babel/plugin-syntax-typescript@7.22.5(@babel/core@7.19.1):
-    resolution: {integrity: sha512-1mS2o03i7t1c6VzH6fdQ3OA8tcEIxwG18zIPRp+UY1Ihv6W+XZzBCVxExF9upussPXJ0xE9XRHwMoNs1ep/nRQ==}
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': 7.19.1
-    dependencies:
-      '@babel/core': 7.19.1
-      '@babel/helper-plugin-utils': 7.25.9
-    dev: false
 
   /@babel/plugin-syntax-typescript@7.27.1(@babel/core@7.19.1):
     resolution: {integrity: sha512-xfYCBMxveHrRMnAWl1ZlPXOZjzkN82THFvLhQhFXFt81Z5HnN+EtUkZhv/zcKpmT3fzmWZB0ywiBrbC3vogbwQ==}
@@ -4981,7 +4920,7 @@ packages:
       '@babel/core': 7.19.1
     dependencies:
       '@babel/core': 7.19.1
-      '@babel/helper-plugin-utils': 7.25.9
+      '@babel/helper-plugin-utils': 7.27.1
       '@babel/plugin-syntax-flow': 7.22.5(@babel/core@7.19.1)
     dev: false
 
@@ -5151,16 +5090,6 @@ packages:
       '@babel/core': 7.19.1
       '@babel/helper-plugin-utils': 7.20.2
 
-  /@babel/plugin-transform-react-jsx-self@7.23.3(@babel/core@7.19.1):
-    resolution: {integrity: sha512-qXRvbeKDSfwnlJnanVRp0SfuWE5DQhwQr5xtLBzp56Wabyo+4CMosF6Kfp+eOD/4FYpql64XVJ2W0pVLlJZxOQ==}
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': 7.19.1
-    dependencies:
-      '@babel/core': 7.19.1
-      '@babel/helper-plugin-utils': 7.25.9
-    dev: false
-
   /@babel/plugin-transform-react-jsx-self@7.27.1(@babel/core@7.19.1):
     resolution: {integrity: sha512-6UzkCs+ejGdZ5mFFC/OCUrv028ab2fp1znZmCZjAOBKiBK2jXD1O+BPSfX8X2qjJ75fZBMSnQn3Rq2mrBJK2mw==}
     engines: {node: '>=6.9.0'}
@@ -5179,16 +5108,6 @@ packages:
     dependencies:
       '@babel/core': 7.19.1
       '@babel/helper-plugin-utils': 7.20.2
-
-  /@babel/plugin-transform-react-jsx-source@7.23.3(@babel/core@7.19.1):
-    resolution: {integrity: sha512-91RS0MDnAWDNvGC6Wio5XYkyWI39FMFO+JK9+4AlgaTH+yWwVTsw7/sn6LK0lH7c5F+TFkpv/3LfCJ1Ydwof/g==}
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': 7.19.1
-    dependencies:
-      '@babel/core': 7.19.1
-      '@babel/helper-plugin-utils': 7.25.9
-    dev: false
 
   /@babel/plugin-transform-react-jsx-source@7.27.1(@babel/core@7.19.1):
     resolution: {integrity: sha512-zbwoTsBruTeKB9hSq73ha66iFeJHuaFkUbwvqElnygoNbj/jHRsSeokowZFN3CZ64IvEqcmmkVe89OPXc7ldAw==}
@@ -5313,19 +5232,6 @@ packages:
       '@babel/plugin-syntax-typescript': 7.20.0(@babel/core@7.19.1)
     transitivePeerDependencies:
       - supports-color
-    dev: false
-
-  /@babel/plugin-transform-typescript@7.22.15(@babel/core@7.19.1):
-    resolution: {integrity: sha512-1uirS0TnijxvQLnlv5wQBwOX3E1wCFX7ITv+9pBV2wKEk4K+M5tqDaoNXnTH8tjEIYHLO98MwiTWO04Ggz4XuA==}
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': 7.19.1
-    dependencies:
-      '@babel/core': 7.19.1
-      '@babel/helper-annotate-as-pure': 7.22.5
-      '@babel/helper-create-class-features-plugin': 7.22.15(@babel/core@7.19.1)
-      '@babel/helper-plugin-utils': 7.25.9
-      '@babel/plugin-syntax-typescript': 7.22.5(@babel/core@7.19.1)
     dev: false
 
   /@babel/plugin-transform-typescript@7.27.1(@babel/core@7.19.1):
@@ -5455,7 +5361,7 @@ packages:
       '@babel/core': 7.19.1
     dependencies:
       '@babel/core': 7.19.1
-      '@babel/helper-plugin-utils': 7.25.9
+      '@babel/helper-plugin-utils': 7.27.1
       '@babel/helper-validator-option': 7.22.15
       '@babel/plugin-transform-flow-strip-types': 7.22.5(@babel/core@7.19.1)
     dev: false
@@ -7646,7 +7552,7 @@ packages:
       pino-pretty: 11.3.0
     dev: false
 
-  /@previewjs/analyzer-react@0.1.11(@types/node@18.19.110)(vite@5.4.9)(yaml@2.1.1):
+  /@previewjs/analyzer-react@0.1.11(@types/node@18.19.110)(vite@4.5.14)(yaml@2.1.1):
     resolution: {integrity: sha512-fuqfzf5J9T90wYa7CDbsA+ykiGIOqwPv0kYIGzmBo1A6m1EX903lGazg/G+zgEnyqMWNdAIsFsYAwXIlcY9HNw==}
     dependencies:
       '@previewjs/analyzer-api': 0.1.8
@@ -7654,7 +7560,7 @@ packages:
       '@previewjs/storybook-helpers': 6.0.1(@types/node@18.19.110)(yaml@2.1.1)
       '@previewjs/type-analyzer': 10.1.5
       '@previewjs/vfs': 2.1.4
-      '@vitejs/plugin-react': 4.5.0(vite@5.4.9)
+      '@vitejs/plugin-react': 4.5.0(vite@4.5.14)
       typescript: 5.8.3
     transitivePeerDependencies:
       - '@swc/core'
@@ -7840,11 +7746,11 @@ packages:
     resolution: {integrity: sha512-wFHq6boBz0MwW4lurGnxT0V03BUef2eVEVAFGIJ/JsKK1vNtsHhO/GuUFMlpsyL4QS94hNuutDNYTXoq3SKAOw==}
     dev: false
 
-  /@previewjs/plugin-react@15.0.2(@types/node@18.19.110)(vite@5.4.9)(yaml@2.1.1):
+  /@previewjs/plugin-react@15.0.2(@types/node@18.19.110)(vite@4.5.14)(yaml@2.1.1):
     resolution: {integrity: sha512-7AwsdFKtV9QEDabLla5FgrM4/s1/efeoICBTIibnW4lXOpC4yL+1ICWx3FpO+tOKsQwW92AQPqTE5Kpcp3EUdA==}
     dependencies:
-      '@previewjs/analyzer-react': 0.1.11(@types/node@18.19.110)(vite@5.4.9)(yaml@2.1.1)
-      '@vitejs/plugin-react': 4.5.0(vite@5.4.9)
+      '@previewjs/analyzer-react': 0.1.11(@types/node@18.19.110)(vite@4.5.14)(yaml@2.1.1)
+      '@vitejs/plugin-react': 4.5.0(vite@4.5.14)
     transitivePeerDependencies:
       - '@swc/core'
       - '@swc/wasm'
@@ -7871,14 +7777,14 @@ packages:
       '@previewjs/type-analyzer': 10.1.5
     dev: false
 
-  /@previewjs/screenshot@0.2.13(@types/node@18.19.110)(esbuild@0.14.29)(vite@5.4.9)(yaml@2.1.1):
+  /@previewjs/screenshot@0.2.13(@types/node@18.19.110)(esbuild@0.14.29)(vite@4.5.14)(yaml@2.1.1):
     resolution: {integrity: sha512-gfagMjY3/F4SZxMut7OBivJGkKOo512VJm9z2SIKl2wzh3HKA6U6mNRfDbbfBbiKY4u/6ApcZQY8ksjM0mlsig==}
     engines: {node: ^14.18.0 || >=16.0.0}
     dependencies:
       '@previewjs/analyzer-api': 0.1.8
       '@previewjs/chromeless': 12.0.2(@types/node@18.19.110)(esbuild@0.14.29)
       '@previewjs/core': 28.1.0(@types/node@18.19.110)(esbuild@0.14.29)
-      '@previewjs/plugin-react': 15.0.2(@types/node@18.19.110)(vite@5.4.9)(yaml@2.1.1)
+      '@previewjs/plugin-react': 15.0.2(@types/node@18.19.110)(vite@4.5.14)(yaml@2.1.1)
       globby: 13.2.2
       playwright: 1.48.0
     transitivePeerDependencies:
@@ -8188,7 +8094,7 @@ packages:
     peerDependencies:
       '@babel/preset-env': ^7.1.6
     dependencies:
-      '@babel/parser': 7.25.0
+      '@babel/parser': 7.27.4
       '@babel/preset-env': 7.19.1(@babel/core@7.19.1)
       flow-parser: 0.206.0
       jscodeshift: 0.14.0(@babel/preset-env@7.19.1)
@@ -8522,44 +8428,44 @@ packages:
     dev: false
     optional: true
 
-  /@semcore/accordion@16.0.0(@semcore/base-components@semcore+base-components):
+  /@semcore/accordion@16.0.0(@semcore/base-components@16.0.0):
     resolution: {integrity: sha512-74h4MBPVrjt0zopX3lkhJgE9+4RoK/lBv2rAcsj2E/Bo3WD+m5XoOvoRhzBtP1H03Imavwa/KG+h9ApacZcZ2Q==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
     dependencies:
-      '@semcore/animation': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/button': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/flex-box': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/icon': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/typography': 16.0.0(@semcore/base-components@semcore+base-components)
+      '@semcore/animation': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/button': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/icon': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/typography': 16.0.0(@semcore/base-components@16.0.0)
     dev: false
 
-  /@semcore/add-filter@16.0.0(@semcore/base-components@semcore+base-components)(react-dom@18.2.0)(react@18.2.0):
+  /@semcore/add-filter@16.0.0(@semcore/base-components@16.0.0)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-uFZ4xuxLsbX5fEJio/W7TBRDLF73zGLZYd9yMPoAt10AocHQ6nlgo/lBkXiJ5ILYZwQkBWrCydwCXJxjMbn0wg==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
     dependencies:
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/base-trigger': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/button': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/dropdown': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/dropdown-menu': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/flex-box': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/icon': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/input': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/select': 16.0.0(@semcore/base-components@semcore+base-components)(react-dom@18.2.0)(react@18.2.0)
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/base-trigger': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/button': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/dropdown': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/dropdown-menu': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/icon': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/input': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/select': 16.0.0(@semcore/base-components@16.0.0)(react-dom@18.2.0)(react@18.2.0)
     transitivePeerDependencies:
       - react
       - react-dom
     dev: false
 
-  /@semcore/animation@16.0.0(@semcore/base-components@semcore+base-components):
+  /@semcore/animation@16.0.0(@semcore/base-components@16.0.0):
     resolution: {integrity: sha512-5DKwEuG89FMHk8rYaVNDjVFNAW3oKZtjZ1n7T8FM0wxeoFoeEHfR7SgpPu4WrVVmc7ao+z0LCmGPWTcHUD2xDw==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
     dependencies:
-      '@semcore/base-components': link:semcore/base-components
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
     dev: false
 
   /@semcore/animation@2.18.2(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0):
@@ -8576,18 +8482,39 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: true
 
-  /@semcore/base-trigger@16.0.0(@semcore/base-components@semcore+base-components):
+  /@semcore/badge@16.0.0(@semcore/base-components@16.0.0):
+    resolution: {integrity: sha512-IojIDNvMgxpSh/0PPZfgneZpUjRjgZFMhf2m7Uz1b5wNrL724GpiEJcZ9P2w8B/EOmcTqIeOLyP4Gtl+1OrUDg==}
+    peerDependencies:
+      '@semcore/base-components': ^16.0.0
+    dependencies:
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+    dev: false
+
+  /@semcore/base-components@16.0.0(@semcore/core@semcore+core):
+    resolution: {integrity: sha512-RlsVlsukAr//Qys5zdI/s3+WQZRoCJG/Pd4Np7JQ+SjpWtqRfWNv588FXpJNLho84gTUne/aUYe0+UNJiISWFQ==}
+    peerDependencies:
+      '@semcore/core': ^16.0.0
+    dependencies:
+      '@popperjs/core': 2.11.5
+      '@semcore/core': link:semcore/core
+      classnames: 2.2.6
+      csstype: 3.0.8
+      popper-max-size-modifier: 0.2.0(@popperjs/core@2.11.5)
+    dev: false
+
+  /@semcore/base-trigger@16.0.0(@semcore/base-components@16.0.0):
     resolution: {integrity: sha512-lKL+eHfs5hDnfmZdA/lfiesQQJXxVWXke7QtHGBDsA2XBCX2GcJRnTf+NzzoV+/txtWul9NWUfZcs4Zg/dv//g==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
     dependencies:
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/dot': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/flex-box': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/icon': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/neighbor-location': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/spin': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/tooltip': 16.0.0(@semcore/base-components@semcore+base-components)
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/dot': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/icon': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/neighbor-location': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/spin': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/tooltip': 16.0.0(@semcore/base-components@16.0.0)
     dev: false
 
   /@semcore/base-trigger@4.26.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0):
@@ -8608,107 +8535,107 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: true
 
-  /@semcore/breadcrumbs@16.0.0(@semcore/base-components@semcore+base-components):
+  /@semcore/breadcrumbs@16.0.0(@semcore/base-components@16.0.0):
     resolution: {integrity: sha512-Q4Qf8PXo5/BRR9FVML+glXrtgy+XPDuz6NeCbRwBc3nPZzx7TJi4c9Y+jJuRfkvWvg2tv1Isr6vOjux8cfvqfQ==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
     dependencies:
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/flex-box': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/icon': 16.0.0(@semcore/base-components@semcore+base-components)
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/icon': 16.0.0(@semcore/base-components@16.0.0)
     dev: false
 
-  /@semcore/breakpoints@16.0.0(@semcore/base-components@semcore+base-components):
+  /@semcore/breakpoints@16.0.0(@semcore/base-components@16.0.0):
     resolution: {integrity: sha512-+oxUbFiCbdfkghr10WL6Bv71M3U7AUlwhCjKmovBlE37WlSVMfogE2nmlpJXzRUQJRdp9oPjyENbP3lxW4PX4Q==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
     dependencies:
-      '@semcore/base-components': link:semcore/base-components
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
     dev: false
 
-  /@semcore/bulk-textarea@16.0.0(@semcore/base-components@semcore+base-components):
+  /@semcore/bulk-textarea@16.0.0(@semcore/base-components@16.0.0):
     resolution: {integrity: sha512-RmPIbHqbzRbNis4/o9loG3SDBF2FrIGN6JyKWY6cH1GhA4UtdcP+VAsDfqAinZt+3NMXa08DDMjScRyWE30Ayg==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
     dependencies:
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/button': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/counter': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/flex-box': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/icon': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/popper': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/tooltip': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/typography': 16.0.0(@semcore/base-components@semcore+base-components)
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/button': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/counter': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/icon': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/popper': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/tooltip': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/typography': 16.0.0(@semcore/base-components@16.0.0)
       csstype: 3.0.8
       dompurify: 3.2.3
     dev: false
 
-  /@semcore/button@16.0.0(@semcore/base-components@semcore+base-components):
+  /@semcore/button@16.0.0(@semcore/base-components@16.0.0):
     resolution: {integrity: sha512-YRc8u3SJ2iVxcV/W60KdYmTtg3q4d9Fl8yqWjnPAGhbWLoa3SFAGmr2sGAYMWh6Kd9tcNLz8mcU0fZjaCFGUQA==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
     dependencies:
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/flex-box': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/neighbor-location': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/spin': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/tooltip': 16.0.0(@semcore/base-components@semcore+base-components)
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/neighbor-location': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/spin': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/tooltip': 16.0.0(@semcore/base-components@16.0.0)
     dev: false
 
-  /@semcore/card@16.0.0(@semcore/base-components@semcore+base-components):
+  /@semcore/card@16.0.0(@semcore/base-components@16.0.0):
     resolution: {integrity: sha512-eskLSs8bKx3OwvE12Ha0HDu/B2HkCIxly8JrNE707O94xlgc7gbZTcFbrlGBwffc/Do+PNmcjVXGOuFywnr98w==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
     dependencies:
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/button': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/flex-box': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/icon': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/tooltip': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/typography': 16.0.0(@semcore/base-components@semcore+base-components)
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/button': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/icon': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/tooltip': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/typography': 16.0.0(@semcore/base-components@16.0.0)
     dev: false
 
-  /@semcore/carousel@16.0.0(@semcore/base-components@semcore+base-components):
+  /@semcore/carousel@16.0.0(@semcore/base-components@16.0.0):
     resolution: {integrity: sha512-yQ+uo4QBsyJB8Z1edAMpGWdqNY8sOuRWVK/Zj1Jh1x/JmM8GClGKWr5UWotMBYrKDBpTPy6nFAlnoybTZLBWVw==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
     dependencies:
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/breakpoints': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/button': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/flex-box': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/icon': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/modal': 16.0.0(@semcore/base-components@semcore+base-components)
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/breakpoints': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/button': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/icon': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/modal': 16.0.0(@semcore/base-components@16.0.0)
     dev: false
 
-  /@semcore/checkbox@16.0.0(@semcore/base-components@semcore+base-components)(react-dom@18.2.0)(react@18.2.0):
+  /@semcore/checkbox@16.0.0(@semcore/base-components@16.0.0)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-HKbnuaH7r16hAR3NDHXL4GM/xWNGnoSHyEhDPBCotigaDMIEufgOZUqTXmuZZm+Y1RUdZx0F1G8Mw2TlmEJtWQ==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
       react: 16.8 - 18
       react-dom: 16.8 - 18
     dependencies:
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/flex-box': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/typography': 16.0.0(@semcore/base-components@semcore+base-components)
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/typography': 16.0.0(@semcore/base-components@16.0.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@semcore/color-picker@16.0.0(@semcore/base-components@semcore+base-components):
+  /@semcore/color-picker@16.0.0(@semcore/base-components@16.0.0):
     resolution: {integrity: sha512-JJegor5qHf5m93a0Gtr4MNzEt1IgF1cb5bUXCw0mO6049+jyy1l7bIhyvn5Cb9qbe8uiqH0qFvOAByYM+N7Oyg==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
     dependencies:
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/button': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/divider': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/dropdown': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/flex-box': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/icon': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/input': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/popper': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/tooltip': 16.0.0(@semcore/base-components@semcore+base-components)
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/button': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/divider': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/dropdown': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/icon': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/input': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/popper': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/tooltip': 16.0.0(@semcore/base-components@16.0.0)
     dev: false
 
   /@semcore/core@2.37.1(react-dom@18.2.0)(react@18.2.0):
@@ -8722,29 +8649,29 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: true
 
-  /@semcore/counter@16.0.0(@semcore/base-components@semcore+base-components):
+  /@semcore/counter@16.0.0(@semcore/base-components@16.0.0):
     resolution: {integrity: sha512-wh7ds5MvtK8FfTBXoLEG4GLvr1gPFM7PqEktTl3QyYMSjt6AGLSpNymxVGTKWSE68eu5A+B6ZMnq8n4jXcy3IQ==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
     dependencies:
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/flex-box': 16.0.0(@semcore/base-components@semcore+base-components)
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
     dev: false
 
-  /@semcore/d3-chart@16.0.0(@semcore/base-components@semcore+base-components)(d3-selection@2.0.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6):
+  /@semcore/d3-chart@16.0.0(@semcore/base-components@16.0.0)(d3-selection@2.0.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6):
     resolution: {integrity: sha512-qLavrFJFXraPRrekRv4n7NpkAzbTA1ZGD2VI1AQ8wXXjjTf0TZ2MGxVK9guiGak1ZLq12yWg1WQanZNhmlM/6w==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
     dependencies:
       '@formatjs/intl': 2.3.0(typescript@5.1.6)
-      '@semcore/animation': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/checkbox': 16.0.0(@semcore/base-components@semcore+base-components)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/divider': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/flex-box': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/icon': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/popper': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/typography': 16.0.0(@semcore/base-components@semcore+base-components)
+      '@semcore/animation': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/checkbox': 16.0.0(@semcore/base-components@16.0.0)(react-dom@18.2.0)(react@18.2.0)
+      '@semcore/divider': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/icon': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/popper': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/typography': 16.0.0(@semcore/base-components@16.0.0)
       '@types/d3-shape': 3.1.1
       '@upsetjs/venn.js': 1.4.2
       d3-array: 3.1.6
@@ -8763,68 +8690,68 @@ packages:
       - typescript
     dev: false
 
-  /@semcore/data-table@16.0.0(@semcore/base-components@semcore+base-components)(react-dom@18.2.0)(react@18.2.0):
+  /@semcore/data-table@16.0.0(@semcore/base-components@16.0.0)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-ZCZijNt+AC3brVlf4h5MWB4ut2UioYk+g3zpgKHea+uyFm8Ezcc9QYyZexnai3X7TJMiIarccdYRrgrtOcEDfA==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
     dependencies:
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/button': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/checkbox': 16.0.0(@semcore/base-components@semcore+base-components)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/flex-box': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/icon': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/scroll-area': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/spin': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/tooltip': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/widget-empty': 16.0.0(@semcore/base-components@semcore+base-components)
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/button': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/checkbox': 16.0.0(@semcore/base-components@16.0.0)(react-dom@18.2.0)(react@18.2.0)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/icon': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/scroll-area': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/spin': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/tooltip': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/widget-empty': 16.0.0(@semcore/base-components@16.0.0)
     transitivePeerDependencies:
       - react
       - react-dom
     dev: false
 
-  /@semcore/date-picker@16.0.0(@semcore/base-components@semcore+base-components)(react-dom@18.2.0)(react@18.2.0):
+  /@semcore/date-picker@16.0.0(@semcore/base-components@16.0.0)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-SCojNn9VQL3p81tK24hYogjqa7dSw1as2/hAz3jSGDb3xt3170l8UbJNRYXa+mGiO0GZ4DoCfgHxYVMIOTqUGA==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
     dependencies:
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/base-trigger': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/button': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/checkbox': 16.0.0(@semcore/base-components@semcore+base-components)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/divider': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/dropdown': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/flex-box': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/icon': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/input': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/input-mask': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/neighbor-location': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/popper': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/tooltip': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/typography': 16.0.0(@semcore/base-components@semcore+base-components)
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/base-trigger': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/button': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/checkbox': 16.0.0(@semcore/base-components@16.0.0)(react-dom@18.2.0)(react@18.2.0)
+      '@semcore/divider': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/dropdown': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/icon': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/input': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/input-mask': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/neighbor-location': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/popper': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/tooltip': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/typography': 16.0.0(@semcore/base-components@16.0.0)
       dayjs: 1.8.36
     transitivePeerDependencies:
       - react
       - react-dom
     dev: false
 
-  /@semcore/divider@16.0.0(@semcore/base-components@semcore+base-components):
+  /@semcore/divider@16.0.0(@semcore/base-components@16.0.0):
     resolution: {integrity: sha512-f2GjPIwRo1aGO10LqW/ERd9oF8WGCBwJfz5p6UkwlghWQzWjNiSjzq9L2LGveEdktzaUblaGSKzATEOXHsr9Lg==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
     dependencies:
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/flex-box': 16.0.0(@semcore/base-components@semcore+base-components)
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
     dev: false
 
-  /@semcore/dot@16.0.0(@semcore/base-components@semcore+base-components):
+  /@semcore/dot@16.0.0(@semcore/base-components@16.0.0):
     resolution: {integrity: sha512-qAxuPdj2/qcOpyMkASzaEmjR+KAA2sxmMFoRVmHn8c6NWnxz4yv9c3rDTXrjAIxtYo3fHxLOGqtcz7F8vnifhw==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
     dependencies:
-      '@semcore/animation': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/flex-box': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/portal': 16.0.0(@semcore/base-components@semcore+base-components)
+      '@semcore/animation': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/portal': 16.0.0(@semcore/base-components@16.0.0)
     dev: false
 
   /@semcore/dot@5.18.2(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0):
@@ -8843,102 +8770,130 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: true
 
-  /@semcore/drag-and-drop@16.0.0(@semcore/base-components@semcore+base-components)(react-dom@18.2.0)(react@18.2.0):
+  /@semcore/drag-and-drop@16.0.0(@semcore/base-components@16.0.0)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-BviFRairwBXBFWwKJoDo83aHQurFGRNWjdOdETVEFYXaISSaR5H9gxmRNgQEpBI6b7pv5GleeFSRwm7MzXPTDg==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
       react: 16.8 - 18
       react-dom: 16.8 - 18
     dependencies:
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/card': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/flex-box': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/grid': 16.0.0(@semcore/base-components@semcore+base-components)
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/card': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/grid': 16.0.0(@semcore/base-components@16.0.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@semcore/dropdown-menu@16.0.0(@semcore/base-components@semcore+base-components):
+  /@semcore/dropdown-menu@16.0.0(@semcore/base-components@16.0.0):
     resolution: {integrity: sha512-d7eN0vYDXXqK42ZcrPdzd+VilJZ5Ms7gS4BL5x6/Wbo83iZw6bYhv4TpjLONL6Fjpa5TbEIxb1NR/IXshE2Y0w==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
     dependencies:
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/button': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/dropdown': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/flex-box': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/icon': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/popper': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/scroll-area': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/typography': 16.0.0(@semcore/base-components@semcore+base-components)
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/button': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/dropdown': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/icon': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/popper': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/scroll-area': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/typography': 16.0.0(@semcore/base-components@16.0.0)
       classnames: 2.2.6
     dev: false
 
-  /@semcore/dropdown@16.0.0(@semcore/base-components@semcore+base-components):
+  /@semcore/dropdown@16.0.0(@semcore/base-components@16.0.0):
     resolution: {integrity: sha512-PNaNPn3lBpEZR8G2sR7IhDBIaKEP1LtOjs7y6v8nH1scTSGv4auRZFBsLnF8R9bDLWPW1RtDK8uGL7PHQRmVUw==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
     dependencies:
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/flex-box': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/popper': 16.0.0(@semcore/base-components@semcore+base-components)
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/popper': 16.0.0(@semcore/base-components@16.0.0)
     dev: false
 
-  /@semcore/errors@16.0.0(@semcore/base-components@semcore+base-components)(react-dom@18.2.0)(react@18.2.0):
+  /@semcore/ellipsis@16.0.0(@semcore/base-components@16.0.0):
+    resolution: {integrity: sha512-wckDVmVj+rjeq52QwGmNdt4nl1Pm5xZy91QjgkVYuLYjI85EHGTMdlv7d8WMXcWmQfIqDlecWpHfKUM9Ms2o2Q==}
+    peerDependencies:
+      '@semcore/base-components': ^16.0.0
+    dependencies:
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/tooltip': 16.0.0(@semcore/base-components@16.0.0)
+    dev: false
+
+  /@semcore/errors@16.0.0(@semcore/base-components@16.0.0)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-fZ+NG5/IUunWUWy9Bw1NDP/dLXdOTO8eMpLc5hw3fstnYjqi+tGJX9j2r209hl9aLwIsNZxoq8WZ6ZP9DUy0mA==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
     dependencies:
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/button': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/flex-box': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/format-text': 16.0.0(@semcore/base-components@semcore+base-components)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/illustration': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/typography': 16.0.0(@semcore/base-components@semcore+base-components)
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/button': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/format-text': 16.0.0(@semcore/base-components@16.0.0)(react-dom@18.2.0)(react@18.2.0)
+      '@semcore/illustration': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/typography': 16.0.0(@semcore/base-components@16.0.0)
     transitivePeerDependencies:
       - react
       - react-dom
     dev: false
 
-  /@semcore/feature-popover@16.0.0(@semcore/base-components@semcore+base-components):
+  /@semcore/feature-popover@16.0.0(@semcore/base-components@16.0.0):
     resolution: {integrity: sha512-uSoHNSqIVgt3FNXN684LLdVbgLAAZynqNGgSbT3KGSTPb7qelNo9CNzrequh08gKa8bYOkz5CPrmyNlwz99ong==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
     dependencies:
-      '@semcore/animation': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/button': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/flex-box': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/icon': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/popper': 16.0.0(@semcore/base-components@semcore+base-components)
+      '@semcore/animation': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/button': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/icon': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/popper': 16.0.0(@semcore/base-components@16.0.0)
     dev: false
 
-  /@semcore/feedback-form@16.0.0(@semcore/base-components@semcore+base-components)(react-dom@18.2.0)(react@18.2.0):
+  /@semcore/feedback-form@16.0.0(@semcore/base-components@16.0.0)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-JDcLknTEqRi/7jB8OQQDZ3SYJsRc22xFL7l5G/016trE5AAOC1KQuLQFb+iQtVhZpPB7jSc4u69EJR0Dz1KImw==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
     dependencies:
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/button': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/checkbox': 16.0.0(@semcore/base-components@semcore+base-components)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/flex-box': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/icon': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/illustration': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/input': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/link': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/modal': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/notice': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/notice-bubble': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/spin-container': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/textarea': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/tooltip': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/typography': 16.0.0(@semcore/base-components@semcore+base-components)
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/button': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/checkbox': 16.0.0(@semcore/base-components@16.0.0)(react-dom@18.2.0)(react@18.2.0)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/icon': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/illustration': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/input': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/link': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/modal': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/notice': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/notice-bubble': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/spin-container': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/textarea': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/tooltip': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/typography': 16.0.0(@semcore/base-components@16.0.0)
       final-form: 4.20.7
       final-form-focus: 1.1.2(final-form@4.20.7)
       react-final-form: 6.5.9(final-form@4.20.7)(react@18.2.0)
     transitivePeerDependencies:
       - react
       - react-dom
+    dev: false
+
+  /@semcore/flags@16.0.0(@semcore/base-components@16.0.0):
+    resolution: {integrity: sha512-4GBXtG3vXfjMTHvAGWQLgMhJa8IqJ2IR30YucxV8/bdRJm2Nz1+PCbgYBy5nFzWcQptJ8UWH4VGF9Nq9qpVfAw==}
+    peerDependencies:
+      '@semcore/base-components': ^16.0.0
+    dependencies:
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+      classnames: 2.2.6
+    dev: false
+
+  /@semcore/flex-box@16.0.0(@semcore/base-components@16.0.0):
+    resolution: {integrity: sha512-Z2WjYAkAfjnMNLtkHqHcQIjbQQeoYrBdjnt+WeMG8eP410BOJ9WRsvurbSLm+9pE3xGxtg/esMUXxrr8vFR0JQ==}
+    peerDependencies:
+      '@semcore/base-components': ^16.0.0
+    dependencies:
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
     dev: false
 
   /@semcore/flex-box@16.0.0(@semcore/base-components@semcore+base-components):
@@ -8964,37 +8919,47 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: true
 
-  /@semcore/format-text@16.0.0(@semcore/base-components@semcore+base-components)(react-dom@18.2.0)(react@18.2.0):
+  /@semcore/format-text@16.0.0(@semcore/base-components@16.0.0)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-cEXFxv6BQzjxKqdw8I40cRWqBOE2tgsmeLF1wXalrirTACI62brSC2CkA4eVXFyCd4Mr0Bsd7DleLl8SCsPVRw==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
       react: 16.8 - 18
       react-dom: 16.8 - 18
     dependencies:
-      '@semcore/base-components': link:semcore/base-components
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@semcore/fullscreen-modal@16.0.0(@semcore/base-components@semcore+base-components):
+  /@semcore/fullscreen-modal@16.0.0(@semcore/base-components@16.0.0):
     resolution: {integrity: sha512-lIQb/mLK/dPjnS364DqN9wn/4tdWuvtyG9lOGjG+IlIbgLk3Z2la033/AOShqVKjdAMuKAZNTIJc86IsiseHyg==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
     dependencies:
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/button': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/flex-box': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/icon': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/modal': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/typography': 16.0.0(@semcore/base-components@semcore+base-components)
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/button': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/icon': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/modal': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/typography': 16.0.0(@semcore/base-components@16.0.0)
     dev: false
 
-  /@semcore/grid@16.0.0(@semcore/base-components@semcore+base-components):
+  /@semcore/grid@16.0.0(@semcore/base-components@16.0.0):
     resolution: {integrity: sha512-FLeR/S9GKIoMcr4cDm4drm5ZNUamxdfoTY2PCLqlJOnFyR/lMSiunQ70Y6iHWSmdTW/5dVmTwbd/qI1x96aZwQ==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
     dependencies:
-      '@semcore/base-components': link:semcore/base-components
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+    dev: false
+
+  /@semcore/icon@16.0.0(@semcore/base-components@16.0.0):
+    resolution: {integrity: sha512-Ua2V8zxItGmPxgESB2/gNha75keUvKgcVsocXRnN8wAg6P9wcT0PYZ2XMjR/Jxvbwfv/Qgb0NRKMI5b/lLCGUQ==}
+    peerDependencies:
+      '@semcore/base-components': ^16.0.0
+    dependencies:
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+      classnames: 2.2.6
     dev: false
 
   /@semcore/icon@16.0.0(@semcore/base-components@semcore+base-components):
@@ -9022,95 +8987,128 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: true
 
-  /@semcore/illustration@16.0.0(@semcore/base-components@semcore+base-components):
+  /@semcore/illustration@16.0.0(@semcore/base-components@16.0.0):
     resolution: {integrity: sha512-lbEI9SbE6Z2824yNvdVIe4OJ5VqlpZTTBRwISnjDnurWci/O8w7mEu9G1yHGG2BVxg3VvN3jAPKc/SxOmN+RxQ==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
     dependencies:
       '@babel/runtime': 7.19.0
-      '@semcore/base-components': link:semcore/base-components
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
       colorjs.io: 0.4.3
     dev: false
 
-  /@semcore/inline-input@16.0.0(@semcore/base-components@semcore+base-components):
+  /@semcore/inline-edit@16.0.0(@semcore/base-components@16.0.0):
+    resolution: {integrity: sha512-ZdwXLG5uMJJ8/p3pPR/n4xhQZdK5meNG71IY2RIxTDC+d78IfZImhjM5rmdtt5+kwIvxdT3UN4jzFIH5Xswzkw==}
+    peerDependencies:
+      '@semcore/base-components': ^16.0.0
+    dependencies:
+      '@semcore/animation': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+    dev: false
+
+  /@semcore/inline-input@16.0.0(@semcore/base-components@16.0.0):
     resolution: {integrity: sha512-uYBTu2djM15xSX/o3znxU2cswyvcZmdQyRZ7RFbQUEe+KZErvMXO+YOLY4V50H+E8FDV2w0Omrry1GJJgy9jFw==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
     dependencies:
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/button': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/flex-box': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/icon': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/input': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/input-number': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/spin': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/tooltip': 16.0.0(@semcore/base-components@semcore+base-components)
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/button': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/icon': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/input': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/input-number': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/spin': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/tooltip': 16.0.0(@semcore/base-components@16.0.0)
     dev: false
 
-  /@semcore/input-mask@16.0.0(@semcore/base-components@semcore+base-components):
+  /@semcore/input-mask@16.0.0(@semcore/base-components@16.0.0):
     resolution: {integrity: sha512-ucogWTsXRkUi/UR1rfg8/ch4HrhWtryHXwoB/9KJtcqellBEXEEvyLSbsUnDluYhLIO/z7QDv5ppHKdmTDdihw==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
     dependencies:
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/flex-box': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/input': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/neighbor-location': 16.0.0(@semcore/base-components@semcore+base-components)
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/input': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/neighbor-location': 16.0.0(@semcore/base-components@16.0.0)
       text-mask-core: 5.1.2
     dev: false
 
-  /@semcore/input-number@16.0.0(@semcore/base-components@semcore+base-components):
+  /@semcore/input-number@16.0.0(@semcore/base-components@16.0.0):
     resolution: {integrity: sha512-Doxl8Jh9gaR2dEOoE5wIYKxZyfmxWLO0y0qJKDzBv5ywhTnL5GfExojmf3E6YbyjThvVc6t7Klj2PFYktz7BEw==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
     dependencies:
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/flex-box': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/input': 16.0.0(@semcore/base-components@semcore+base-components)
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/input': 16.0.0(@semcore/base-components@16.0.0)
     dev: false
 
-  /@semcore/input@16.0.0(@semcore/base-components@semcore+base-components):
+  /@semcore/input-tags@16.0.0(@semcore/base-components@16.0.0):
+    resolution: {integrity: sha512-rSP2vZsjscez/Bxydct29Ic3YMS2cu5om2fS/sKAB8AVpN0HEpE4AAqxCkgmuNcp+XDuF1tlw5BWm/qb/o67jg==}
+    peerDependencies:
+      '@semcore/base-components': ^16.0.0
+    dependencies:
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/input': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/portal': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/scroll-area': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/tag': 16.0.0(@semcore/base-components@16.0.0)
+    dev: false
+
+  /@semcore/input@16.0.0(@semcore/base-components@16.0.0):
     resolution: {integrity: sha512-URbIvgH6HePK1Lph2IylFmqx/48+4vG9m3NiZMyygN8XPiNPU5vvrE3iYSOv4O53OT+lKP1IH0TU5fJWIP8TvA==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
     dependencies:
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/flex-box': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/neighbor-location': 16.0.0(@semcore/base-components@semcore+base-components)
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/neighbor-location': 16.0.0(@semcore/base-components@16.0.0)
     dev: false
 
-  /@semcore/link@16.0.0(@semcore/base-components@semcore+base-components):
+  /@semcore/link@16.0.0(@semcore/base-components@16.0.0):
     resolution: {integrity: sha512-+iJSsOys/vQl8avXQzId5bc6TpZ43y0q/mMtTiafht8/KkDTEZJvfT461nxMnYA5iXlr9HD7aCPwjo0COEGK7A==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
     dependencies:
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/flex-box': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/tooltip': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/typography': 16.0.0(@semcore/base-components@semcore+base-components)
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/tooltip': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/typography': 16.0.0(@semcore/base-components@16.0.0)
     dev: false
 
-  /@semcore/modal@16.0.0(@semcore/base-components@semcore+base-components):
+  /@semcore/mini-chart@16.0.0(@semcore/base-components@16.0.0)(@semcore/flex-box@16.0.0):
+    resolution: {integrity: sha512-tAVDwsa4Lf4WwJt3RB6sHpunapFrgHcBQ+N56Ok6hjffCRD5K6xobrq/9lMDUWsUHg98ECUOoCVlg6UPou0j0w==}
+    peerDependencies:
+      '@semcore/base-components': ^16.0.0
+      '@semcore/flex-box': ^16.0.0
+    dependencies:
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+    dev: false
+
+  /@semcore/modal@16.0.0(@semcore/base-components@16.0.0):
     resolution: {integrity: sha512-P4Tz7eHfLmIT7k8SH+6xjl7xaUZddCG5Coee66Zlq5HmE3B1iuuLBf4F2fLZursf1wtisY+Gw9HUe7eSDcKm2g==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
     dependencies:
-      '@semcore/animation': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/button': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/flex-box': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/icon': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/outside-click': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/portal': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/typography': 16.0.0(@semcore/base-components@semcore+base-components)
+      '@semcore/animation': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/button': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/icon': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/outside-click': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/portal': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/typography': 16.0.0(@semcore/base-components@16.0.0)
     dev: false
 
-  /@semcore/neighbor-location@16.0.0(@semcore/base-components@semcore+base-components):
+  /@semcore/neighbor-location@16.0.0(@semcore/base-components@16.0.0):
     resolution: {integrity: sha512-8+/1QJPo3oP/ahCyvQM5NS+pBVdEgvFEmLZ33BwkFUXH/iDrgBdeX6C7EpHcv+HJedhUeTGOWR5Mv9ov01CetQ==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
     dependencies:
-      '@semcore/base-components': link:semcore/base-components
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
     dev: false
 
   /@semcore/neighbor-location@4.17.2(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0):
@@ -9126,83 +9124,93 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: true
 
-  /@semcore/notice-bubble@16.0.0(@semcore/base-components@semcore+base-components):
+  /@semcore/notice-bubble@16.0.0(@semcore/base-components@16.0.0):
     resolution: {integrity: sha512-S+uypp76BsaVbr/wLCWKAtIlwgb9hgiGLeXkRs3nFkQjS1zB/hNbjS+FIRjSWYAx10NpsJvG4hQNJ0gDrUiDpA==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
     dependencies:
-      '@semcore/animation': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/button': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/flex-box': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/icon': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/portal': 16.0.0(@semcore/base-components@semcore+base-components)
+      '@semcore/animation': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/button': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/icon': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/portal': 16.0.0(@semcore/base-components@16.0.0)
     dev: false
 
-  /@semcore/notice-global@16.0.0(@semcore/base-components@semcore+base-components):
+  /@semcore/notice-global@16.0.0(@semcore/base-components@16.0.0):
     resolution: {integrity: sha512-ru2QcuZuFXk0lRN5z8yUmAW6GHQ1WOr5fozM/90IvknJ1SBufOtQXC42onbcHee94gRYDpyZw4uTSZjkAQpOiw==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
     dependencies:
-      '@semcore/animation': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/button': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/flex-box': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/icon': 16.0.0(@semcore/base-components@semcore+base-components)
+      '@semcore/animation': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/button': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/icon': 16.0.0(@semcore/base-components@16.0.0)
     dev: false
 
-  /@semcore/notice@16.0.0(@semcore/base-components@semcore+base-components):
+  /@semcore/notice@16.0.0(@semcore/base-components@16.0.0):
     resolution: {integrity: sha512-2hxFUBPBzEkTRrtRWt96GfneJiwRxG4X3eSNdmtKJVJtM5TFjgovBiwYRq+uzWZuxR6ruVBx7HD0uAIc2Q5K9Q==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
     dependencies:
-      '@semcore/animation': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/button': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/flex-box': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/icon': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/notice-global': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/typography': 16.0.0(@semcore/base-components@semcore+base-components)
+      '@semcore/animation': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/button': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/icon': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/notice-global': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/typography': 16.0.0(@semcore/base-components@16.0.0)
     dev: false
 
-  /@semcore/outside-click@16.0.0(@semcore/base-components@semcore+base-components):
+  /@semcore/outside-click@16.0.0(@semcore/base-components@16.0.0):
     resolution: {integrity: sha512-biHkevXcv9uzg1+RLqAjQTwpw5Lgkk9zKiJBnKCoE1KS+TRkVSQlbJxWpmHhtwAtZ4zyXFPQNe1fZcdDF59QRQ==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
     dependencies:
-      '@semcore/base-components': link:semcore/base-components
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
     dev: false
 
-  /@semcore/pagination@16.0.0(@semcore/base-components@semcore+base-components):
+  /@semcore/pagination@16.0.0(@semcore/base-components@16.0.0):
     resolution: {integrity: sha512-CT7LF/9b5rec/OZDnDVU9HSDTl2rFIh/FVP3ibD+G7Ttx6NcKXYaGt5QlNr9SqBTRLJSiIlNKz0qNsGcGfM3oQ==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
     dependencies:
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/button': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/flex-box': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/icon': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/input': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/input-number': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/link': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/tooltip': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/typography': 16.0.0(@semcore/base-components@semcore+base-components)
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/button': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/icon': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/input': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/input-number': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/link': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/tooltip': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/typography': 16.0.0(@semcore/base-components@16.0.0)
     dev: false
 
-  /@semcore/popper@16.0.0(@semcore/base-components@semcore+base-components):
+  /@semcore/pills@16.0.0(@semcore/base-components@16.0.0):
+    resolution: {integrity: sha512-XAWpLNWnFrWh46AOKNC3yVId83QxMqpNskZ1GqwLQiweqOzBlEaJ7Snz5v9voCC+QbDNO0qgsubzjawjoj2fCw==}
+    peerDependencies:
+      '@semcore/base-components': ^16.0.0
+    dependencies:
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/neighbor-location': 16.0.0(@semcore/base-components@16.0.0)
+    dev: false
+
+  /@semcore/popper@16.0.0(@semcore/base-components@16.0.0):
     resolution: {integrity: sha512-JdWTSVsioZTaqpx9O3epYkaYywrVQ0jAOB7namKzD5uaZSusdfv/oAuc1+b0dIi/UvWQVvJwGVjgGfx+mcKBRA==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
     dependencies:
-      '@semcore/base-components': link:semcore/base-components
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
     dev: false
 
-  /@semcore/portal@16.0.0(@semcore/base-components@semcore+base-components):
+  /@semcore/portal@16.0.0(@semcore/base-components@16.0.0):
     resolution: {integrity: sha512-M+XXRZ2my2y+vJgCF4isTFHfpg3cxv4D1AYmLlolosdiVnFE1Rm8S5vEe8WThvcY7CtoBct8A4CtPoKjDGGpEQ==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
     dependencies:
-      '@semcore/base-components': link:semcore/base-components
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
     dev: false
 
   /@semcore/portal@3.17.2(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0):
@@ -9218,69 +9226,115 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: true
 
-  /@semcore/scroll-area@16.0.0(@semcore/base-components@semcore+base-components):
+  /@semcore/product-head@16.0.0(@semcore/base-components@16.0.0):
+    resolution: {integrity: sha512-8D45Ts4xb6fKvkpZICyJTemUArpBeTnOAc5flPKJ4Bn+j6s67Ltikd1/e4kcZOVCFsmu/1d9Epr4KWFbi7vXPA==}
+    peerDependencies:
+      '@semcore/base-components': ^16.0.0
+    dependencies:
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+    dev: false
+
+  /@semcore/progress-bar@16.0.0(@semcore/base-components@16.0.0):
+    resolution: {integrity: sha512-KM6g3/IPd86ht2wpazqK5pkO60IuKbv5w5vk+pVMn0HfE9iiDD6Rv+L8fScygAzllCBN/K/6oy2JVO/GDJ54fQ==}
+    peerDependencies:
+      '@semcore/base-components': ^16.0.0
+    dependencies:
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+    dev: false
+
+  /@semcore/radio@16.0.0(@semcore/base-components@16.0.0):
+    resolution: {integrity: sha512-wattW3pAYGan/fjhRDcaXvfYB9ZdK0EggyYOtNSXri4jsDwVek5v+hHfHHIdQXdqDHgN6+QhesKmhvVwHMiGIg==}
+    peerDependencies:
+      '@semcore/base-components': ^16.0.0
+    dependencies:
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/typography': 16.0.0(@semcore/base-components@16.0.0)
+    dev: false
+
+  /@semcore/scroll-area@16.0.0(@semcore/base-components@16.0.0):
     resolution: {integrity: sha512-oUulLsJ8mJ10EPeU1y8S+fP/OZ+6AivtOzjOJJcWsfrX8QNBWcZea4gHhNz9eH1dZZGgn4CwOyoRZatykK96Zg==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
     dependencies:
-      '@semcore/base-components': link:semcore/base-components
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
     dev: false
 
-  /@semcore/select@16.0.0(@semcore/base-components@semcore+base-components)(react-dom@18.2.0)(react@18.2.0):
+  /@semcore/select@16.0.0(@semcore/base-components@16.0.0)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-+sMY1lCDcj13f5k24TzLOQtOrYmDoCJWkZ27Lckc7d2leLv90Av771kOzs8xa4iEIvvGyihpsnEfVPgDqzi1Uw==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
     dependencies:
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/base-trigger': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/button': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/checkbox': 16.0.0(@semcore/base-components@semcore+base-components)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/divider': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/dropdown': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/dropdown-menu': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/flex-box': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/icon': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/input': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/popper': 16.0.0(@semcore/base-components@semcore+base-components)
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/base-trigger': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/button': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/checkbox': 16.0.0(@semcore/base-components@16.0.0)(react-dom@18.2.0)(react@18.2.0)
+      '@semcore/divider': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/dropdown': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/dropdown-menu': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/icon': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/input': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/popper': 16.0.0(@semcore/base-components@16.0.0)
       classnames: 2.2.6
     transitivePeerDependencies:
       - react
       - react-dom
     dev: false
 
-  /@semcore/side-panel@16.0.0(@semcore/base-components@semcore+base-components):
+  /@semcore/side-panel@16.0.0(@semcore/base-components@16.0.0):
     resolution: {integrity: sha512-YB9uWn3Ombzv/nPRwEZcpzRQwYQwy2UgbwzDrSioMBz6pg3hSFStXBxcnzlFHW8qC4dmNlT9oox1pQwD/KqvoQ==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
     dependencies:
-      '@semcore/animation': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/button': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/flex-box': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/icon': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/outside-click': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/portal': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/typography': 16.0.0(@semcore/base-components@semcore+base-components)
+      '@semcore/animation': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/button': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/icon': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/outside-click': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/portal': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/typography': 16.0.0(@semcore/base-components@16.0.0)
     dev: false
 
-  /@semcore/spin-container@16.0.0(@semcore/base-components@semcore+base-components):
+  /@semcore/skeleton@16.0.0(@semcore/base-components@16.0.0):
+    resolution: {integrity: sha512-XxcplLj6l+KFUjDj33G3drjmwR3uIVU0QMncAX+cpO3rANqBeoxao9fBYoo+P8Pk8SzbcJFY+bPnNx42WyuDtA==}
+    peerDependencies:
+      '@semcore/base-components': ^16.0.0
+    dependencies:
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+    dev: false
+
+  /@semcore/slider@16.0.0(@semcore/base-components@16.0.0):
+    resolution: {integrity: sha512-I2cUxX41JHm6tT9mSIlO7WhBtPu1E7z80PRZn8TZURXL91sFRr2yQ286P9Emld01mfixU7kcNSfP1SwoHTowMw==}
+    peerDependencies:
+      '@semcore/base-components': ^16.0.0
+    dependencies:
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+    dev: false
+
+  /@semcore/spin-container@16.0.0(@semcore/base-components@16.0.0):
     resolution: {integrity: sha512-2+w4BJVr4WxE7O8GPdC/XnPVwVwRfqqDeas2TY0fAbgnjNszIwJl1p/nCafxR1Q84TnOqNYrz4jdGwb2UJrnFQ==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
     dependencies:
-      '@semcore/animation': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/flex-box': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/spin': 16.0.0(@semcore/base-components@semcore+base-components)
+      '@semcore/animation': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/spin': 16.0.0(@semcore/base-components@16.0.0)
     dev: false
 
-  /@semcore/spin@16.0.0(@semcore/base-components@semcore+base-components):
+  /@semcore/spin@16.0.0(@semcore/base-components@16.0.0):
     resolution: {integrity: sha512-theIGhNAVukWccZtCMT1g+xxiV2+2r1fOidWAU9AVX6FCtxT5ZNNNYom/46hYO2bYYeX7pCg0vbyQvg4L0Isow==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
     dependencies:
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/flex-box': 16.0.0(@semcore/base-components@semcore+base-components)
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
     dev: false
 
   /@semcore/spin@5.18.2(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0):
@@ -9297,23 +9351,61 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: true
 
-  /@semcore/tag@16.0.0(@semcore/base-components@semcore+base-components):
+  /@semcore/sticky@16.0.0(@semcore/base-components@16.0.0):
+    resolution: {integrity: sha512-uyEZyK8llitTV8j6XPdet22MY8CBKQHiG+EpGN0FmdaXvwJUZvafirP+yB81NTaWc5wqqLj0Is7kt1a8017CLQ==}
+    peerDependencies:
+      '@semcore/base-components': ^16.0.0
+    dependencies:
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+    dev: false
+
+  /@semcore/switch@16.0.0(@semcore/base-components@16.0.0):
+    resolution: {integrity: sha512-9kgYFfwdOnM+p/pCA54EidyaaXAAww2pq2Lyt+VAu80Hd/XXuzfO5wqi9DaXSrvqOnncxsryQdMRihdbKgqMBA==}
+    peerDependencies:
+      '@semcore/base-components': ^16.0.0
+    dependencies:
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/neighbor-location': 16.0.0(@semcore/base-components@16.0.0)
+    dev: false
+
+  /@semcore/tab-line@16.0.0(@semcore/base-components@16.0.0):
+    resolution: {integrity: sha512-ap4ZbUxeJ6x0EQbxndc0y5/+EsdRhxq76zeKTwXONK5RsKfTXgRHFvstmPBEIa6UaUoBTK59rwhxRhpsr8Mrrw==}
+    peerDependencies:
+      '@semcore/base-components': ^16.0.0
+    dependencies:
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/neighbor-location': 16.0.0(@semcore/base-components@16.0.0)
+    dev: false
+
+  /@semcore/tab-panel@16.0.0(@semcore/base-components@16.0.0):
+    resolution: {integrity: sha512-DFknm7tMixj1IUz1vhAQDFqCXOpgpFYs8SMh5zj3f61sw1CkLb4veTl0VzzxcTwzrWson635ZB0dgK8nv6vkxw==}
+    peerDependencies:
+      '@semcore/base-components': ^16.0.0
+    dependencies:
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+    dev: false
+
+  /@semcore/tag@16.0.0(@semcore/base-components@16.0.0):
     resolution: {integrity: sha512-L1MWG4pgZxKWLtn6c53b/JJA0EKGN2mRQXvsnIvqIt3o8i5pMDgvKOXjGDikivd2zVONvpgom8OwEuaeoiLmtg==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
     dependencies:
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/flex-box': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/icon': 16.0.0(@semcore/base-components@semcore+base-components)
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/icon': 16.0.0(@semcore/base-components@16.0.0)
     dev: false
 
-  /@semcore/textarea@16.0.0(@semcore/base-components@semcore+base-components):
+  /@semcore/textarea@16.0.0(@semcore/base-components@16.0.0):
     resolution: {integrity: sha512-blkBmhA/jGCxnlh6w46XnfY9zmCxdrr6/xoO9QbZBziqzxJ9E3I3ADq25URvbtuq1gPp8XgL1+MNipUjVBInNQ==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
     dependencies:
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/flex-box': 16.0.0(@semcore/base-components@semcore+base-components)
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
       csstype: 3.0.8
     dev: false
 
@@ -9321,30 +9413,41 @@ packages:
     resolution: {integrity: sha512-zmABHHcsbbEHCTX3YWIXcIIzQx6S1oyj2NyPkea6QOh2HE+vopSWdNbUhWYT2Zax5NhQQ3HrDRdvkolhr6aBKA==}
     dev: true
 
-  /@semcore/time-picker@16.0.0(@semcore/base-components@semcore+base-components)(react-dom@18.2.0)(react@18.2.0):
+  /@semcore/time-picker@16.0.0(@semcore/base-components@16.0.0)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-MoQFqfFD2oKG1r6zVSM+H/zsXCGNg6G23imh8HrjisBVrj8zVIm6y83VzcjF7hvBGYa+DWBiBwqY1SMYNl+M2g==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
     dependencies:
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/button': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/flex-box': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/input': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/select': 16.0.0(@semcore/base-components@semcore+base-components)(react-dom@18.2.0)(react@18.2.0)
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/button': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/input': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/select': 16.0.0(@semcore/base-components@16.0.0)(react-dom@18.2.0)(react@18.2.0)
     transitivePeerDependencies:
       - react
       - react-dom
     dev: false
 
-  /@semcore/tooltip@16.0.0(@semcore/base-components@semcore+base-components):
+  /@semcore/tooltip@16.0.0(@semcore/base-components@16.0.0):
     resolution: {integrity: sha512-0EdAv1hQBoOs6oacI/5jLtpW3yN8MtBjr8QI04XccJ8g8u4ihDjKUMaf1jQIjIhlW0iYG5wswe/WI7P3I0681Q==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
     dependencies:
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/flex-box': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/popper': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/portal': 16.0.0(@semcore/base-components@semcore+base-components)
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/popper': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/portal': 16.0.0(@semcore/base-components@16.0.0)
+    dev: false
+
+  /@semcore/typography@16.0.0(@semcore/base-components@16.0.0):
+    resolution: {integrity: sha512-+DhcuQZuxR9DGlf8HCHk5kGJ59ZxYaB3hjOaUtu/gCJEAzzo+XQoTRMGHS0gP3qeA7Go3910Cx84mo9ZGknDYQ==}
+    peerDependencies:
+      '@semcore/base-components': ^16.0.0
+    dependencies:
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/icon': 16.0.0(@semcore/base-components@16.0.0)
+      csstype: 3.0.8
     dev: false
 
   /@semcore/typography@16.0.0(@semcore/base-components@semcore+base-components):
@@ -9390,26 +9493,26 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: true
 
-  /@semcore/widget-empty@16.0.0(@semcore/base-components@semcore+base-components):
+  /@semcore/widget-empty@16.0.0(@semcore/base-components@16.0.0):
     resolution: {integrity: sha512-LoMEGjqQTCGraehPL6yd/3jTbTFuBSCaLepQtkw5Tt1alP9pcN7HSidPJ1YHNPPPdUTUrteIeacoMeSYYnUAVQ==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
     dependencies:
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/flex-box': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/illustration': 16.0.0(@semcore/base-components@semcore+base-components)
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/illustration': 16.0.0(@semcore/base-components@16.0.0)
     dev: false
 
-  /@semcore/wizard@16.0.0(@semcore/base-components@semcore+base-components):
+  /@semcore/wizard@16.0.0(@semcore/base-components@16.0.0):
     resolution: {integrity: sha512-UckGt9DxWX0t2IG+O3dvIaAIUhNV/VjiFSU0k69EI+DMYVOrAUXiGdrIIcO7jTelr0tblNA7qvHTKo1GIJ3ysA==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
     dependencies:
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/button': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/flex-box': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/icon': 16.0.0(@semcore/base-components@semcore+base-components)
-      '@semcore/modal': 16.0.0(@semcore/base-components@semcore+base-components)
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/button': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/icon': 16.0.0(@semcore/base-components@16.0.0)
+      '@semcore/modal': 16.0.0(@semcore/base-components@16.0.0)
     dev: false
 
   /@shikijs/core@1.12.0:
@@ -10929,23 +11032,6 @@ packages:
       '@types/babel__core': 7.20.5
       react-refresh: 0.17.0
       vite: 4.5.14(@types/node@18.19.110)
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
-
-  /@vitejs/plugin-react@4.5.0(vite@5.4.9):
-    resolution: {integrity: sha512-JuLWaEqypaJmOJPLWwO335Ig6jSgC1FTONCWAxnqcQthLTK/Yc9aH6hr9z/87xciejbQcnP3GnA1FWUSWeXaeg==}
-    engines: {node: ^14.18.0 || >=16.0.0}
-    peerDependencies:
-      vite: ^4.2.0 || ^5.0.0 || ^6.0.0
-    dependencies:
-      '@babel/core': 7.19.1
-      '@babel/plugin-transform-react-jsx-self': 7.27.1(@babel/core@7.19.1)
-      '@babel/plugin-transform-react-jsx-source': 7.27.1(@babel/core@7.19.1)
-      '@rolldown/pluginutils': 1.0.0-beta.9
-      '@types/babel__core': 7.20.5
-      react-refresh: 0.17.0
-      vite: 5.4.9(@types/node@18.19.110)
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -18829,7 +18915,7 @@ packages:
       jest-runner: 29.5.0
       jest-util: 29.5.0
       jest-validate: 29.5.0
-      micromatch: 4.0.7
+      micromatch: 4.0.8
       parse-json: 5.2.0
       pretty-format: 29.7.0
       slash: 3.0.0
@@ -18907,7 +18993,7 @@ packages:
       jest-regex-util: 29.4.3
       jest-util: 29.5.0
       jest-worker: 29.5.0
-      micromatch: 4.0.7
+      micromatch: 4.0.8
       walker: 1.0.8
     optionalDependencies:
       fsevents: 2.3.3
@@ -18948,7 +19034,7 @@ packages:
       '@types/stack-utils': 2.0.1
       chalk: 4.1.2
       graceful-fs: 4.2.11
-      micromatch: 4.0.7
+      micromatch: 4.0.8
       pretty-format: 29.7.0
       slash: 3.0.0
       stack-utils: 2.0.6
@@ -19241,7 +19327,7 @@ packages:
       '@babel/preset-env': ^7.1.6
     dependencies:
       '@babel/core': 7.19.1
-      '@babel/parser': 7.25.0
+      '@babel/parser': 7.27.4
       '@babel/plugin-proposal-class-properties': 7.18.6(@babel/core@7.19.1)
       '@babel/plugin-proposal-nullish-coalescing-operator': 7.18.6(@babel/core@7.19.1)
       '@babel/plugin-proposal-optional-chaining': 7.18.9(@babel/core@7.19.1)
@@ -19254,7 +19340,7 @@ packages:
       chalk: 4.1.2
       flow-parser: 0.206.0
       graceful-fs: 4.2.11
-      micromatch: 4.0.7
+      micromatch: 4.0.8
       neo-async: 2.6.2
       node-dir: 0.1.17
       recast: 0.21.5
@@ -20240,7 +20326,7 @@ packages:
       jest-regex-util: 27.5.1
       jest-util: 27.5.1
       jest-worker: 27.5.1
-      micromatch: 4.0.7
+      micromatch: 4.0.8
       node-abort-controller: 3.1.1
       nullthrows: 1.1.1
       walker: 1.0.8
@@ -20315,15 +20401,15 @@ packages:
       '@babel/plugin-transform-parameters': 7.21.3(@babel/core@7.19.1)
       '@babel/plugin-transform-react-display-name': 7.18.6(@babel/core@7.19.1)
       '@babel/plugin-transform-react-jsx': 7.21.0(@babel/core@7.19.1)
-      '@babel/plugin-transform-react-jsx-self': 7.23.3(@babel/core@7.19.1)
-      '@babel/plugin-transform-react-jsx-source': 7.23.3(@babel/core@7.19.1)
+      '@babel/plugin-transform-react-jsx-self': 7.27.1(@babel/core@7.19.1)
+      '@babel/plugin-transform-react-jsx-source': 7.27.1(@babel/core@7.19.1)
       '@babel/plugin-transform-runtime': 7.8.0(@babel/core@7.19.1)
       '@babel/plugin-transform-shorthand-properties': 7.18.6(@babel/core@7.19.1)
       '@babel/plugin-transform-spread': 7.20.7(@babel/core@7.19.1)
       '@babel/plugin-transform-sticky-regex': 7.18.6(@babel/core@7.19.1)
-      '@babel/plugin-transform-typescript': 7.22.15(@babel/core@7.19.1)
+      '@babel/plugin-transform-typescript': 7.27.1(@babel/core@7.19.1)
       '@babel/plugin-transform-unicode-regex': 7.18.6(@babel/core@7.19.1)
-      '@babel/template': 7.22.15
+      '@babel/template': 7.27.2
       babel-plugin-transform-flow-enums: 0.0.2(@babel/core@7.19.1)
       react-refresh: 0.4.3
     transitivePeerDependencies:
@@ -20370,8 +20456,8 @@ packages:
     resolution: {integrity: sha512-Prhx7PeRV1LuogT0Kn5VjCuFu9fVD68eefntdWabrksmNY6mXK8pRqzvNJOhTojh6nek+RxBzZeD6MIOOyXS6w==}
     engines: {node: '>=16'}
     dependencies:
-      '@babel/traverse': 7.22.20
-      '@babel/types': 7.22.19
+      '@babel/traverse': 7.27.4
+      '@babel/types': 7.27.3
       invariant: 2.2.4
       metro-symbolicate: 0.76.7
       nullthrows: 1.1.1
@@ -20386,8 +20472,8 @@ packages:
     resolution: {integrity: sha512-Hh0ncPsHPVf6wXQSqJqB3K9Zbudht4aUtNpNXYXSxH+pteWqGAXnjtPsRAnCsCWl38wL0jYF0rJDdMajUI3BDw==}
     engines: {node: '>=16'}
     dependencies:
-      '@babel/traverse': 7.22.20
-      '@babel/types': 7.22.19
+      '@babel/traverse': 7.27.4
+      '@babel/types': 7.27.3
       invariant: 2.2.4
       metro-symbolicate: 0.76.8
       nullthrows: 1.1.1
@@ -20433,9 +20519,9 @@ packages:
     engines: {node: '>=16'}
     dependencies:
       '@babel/core': 7.19.1
-      '@babel/generator': 7.22.15
-      '@babel/template': 7.22.15
-      '@babel/traverse': 7.22.20
+      '@babel/generator': 7.27.3
+      '@babel/template': 7.27.2
+      '@babel/traverse': 7.27.4
       nullthrows: 1.1.1
     transitivePeerDependencies:
       - supports-color
@@ -20446,9 +20532,9 @@ packages:
     engines: {node: '>=16'}
     dependencies:
       '@babel/core': 7.19.1
-      '@babel/generator': 7.22.15
-      '@babel/parser': 7.25.0
-      '@babel/types': 7.22.19
+      '@babel/generator': 7.27.3
+      '@babel/parser': 7.27.4
+      '@babel/types': 7.27.3
       babel-preset-fbjs: 3.4.0(@babel/core@7.19.1)
       metro: 0.76.7
       metro-babel-transformer: 0.76.7
@@ -20469,13 +20555,13 @@ packages:
     engines: {node: '>=16'}
     hasBin: true
     dependencies:
-      '@babel/code-frame': 7.22.13
+      '@babel/code-frame': 7.27.1
       '@babel/core': 7.19.1
-      '@babel/generator': 7.22.15
-      '@babel/parser': 7.25.0
-      '@babel/template': 7.22.15
-      '@babel/traverse': 7.22.20
-      '@babel/types': 7.22.19
+      '@babel/generator': 7.27.3
+      '@babel/parser': 7.27.4
+      '@babel/template': 7.27.2
+      '@babel/traverse': 7.27.4
+      '@babel/types': 7.27.3
       accepts: 1.3.8
       async: 3.2.4
       chalk: 4.1.2
@@ -20838,7 +20924,6 @@ packages:
     dependencies:
       braces: 3.0.2
       picomatch: 2.3.1
-    dev: false
 
   /mime-db@1.52.0:
     resolution: {integrity: sha512-sPU4uV7dYlvtWJxwwxHD0PuihVNiE7TyAbQ5SWxDCB9mUYvOgroQOwYQQOKPJ8CIbE+1ETVlOoK1UC2nU3gYvg==}
@@ -27277,6 +27362,7 @@ packages:
       rollup: 4.24.0
     optionalDependencies:
       fsevents: 2.3.3
+    dev: true
 
   /vite@6.3.5(@types/node@18.19.110)(yaml@2.1.1):
     resolution: {integrity: sha512-cZn6NDFE7wdTpINgs++ZJ4N49W2vRp8LCKrn3Ob1kYNtOo21vfDoaV5GzBfLU4MovSAB8uNRm4jgzVQZ+mBzPQ==}
