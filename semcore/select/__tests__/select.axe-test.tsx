@@ -55,7 +55,8 @@ test.describe('Select', () => {
   });
 
   test('Controlled and uncontrolled mode', async ({ page }) => {
-    const standPath = 'stories/components/select/docs/examples/controlled_and_uncontrolled_modes.tsx';
+    const standPath =
+      'stories/components/select/docs/examples/controlled_and_uncontrolled_modes.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -95,7 +96,7 @@ test.describe('Select', () => {
       expect(violations).toEqual([]);
     }
 
-    // select option in Unontrolled 
+    // select option in Unontrolled
     {
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowDown');
@@ -133,7 +134,6 @@ test.describe('Select', () => {
 
       expect(violations).toEqual([]);
     }
-
   });
 
   test('Trigger Customization Deep', async ({ page }) => {
@@ -160,7 +160,6 @@ test.describe('Select', () => {
 
       expect(violations).toEqual([]);
     }
-
   });
 
   test('Menu Customization With Notice', async ({ page }) => {
@@ -187,7 +186,6 @@ test.describe('Select', () => {
 
       expect(violations).toEqual([]);
     }
-
   });
 
   test('Loading state', async ({ page }) => {
@@ -214,10 +212,8 @@ test.describe('Select', () => {
 
       expect(violations).toEqual([]);
     }
-
   });
 });
-
 
 test.describe('Option', () => {
   test('Options', async ({ page }) => {
@@ -245,8 +241,8 @@ test.describe('Option', () => {
       expect(violations).toEqual([]);
     }
 
-     // select option
-     {
+    // select option
+    {
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('Enter');
 
@@ -337,8 +333,8 @@ test.describe('Multiselect', () => {
       expect(violations).toEqual([]);
     }
 
-     // select option
-     {
+    // select option
+    {
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('Enter');
 

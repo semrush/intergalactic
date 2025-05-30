@@ -12,16 +12,16 @@ test.describe('Options Filtering', () => {
     await page.keyboard.press('Tab');
     await triggers.first().hover();
 
-    //snapshot 
+    //snapshot
 
     await page.keyboard.press('Tab');
-      //snapshot 
+    //snapshot
 
-      await page.keyboard.press('Tab');
-      //snapshot 
-//verify disabled not focused 
-      await page.keyboard.press('Tab');
- await expect(triggers.nth(4)).toBeFocused();
+    await page.keyboard.press('Tab');
+    //snapshot
+    //verify disabled not focused
+    await page.keyboard.press('Tab');
+    await expect(triggers.nth(4)).toBeFocused();
   });
 });
 
