@@ -51,6 +51,7 @@ export default defineConfig([
       // TYPESCRIPT
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-empty-object-type': 'off',
+      '@typescript-eslint/semi': 'off', // because of stylistic.semi: true
 
       // stylistic
       '@stylistic/jsx-quotes': ['error', 'prefer-single'],
