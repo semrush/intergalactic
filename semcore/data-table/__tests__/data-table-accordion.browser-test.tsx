@@ -50,6 +50,9 @@ test.describe('Accordion in table', () => {
     await page.waitForTimeout(350);
 
     await page.keyboard.press('ArrowDown');
+    //verify the focus not swicthed to other cells by arrows when chart is focused
+    await page.keyboard.press('ArrowRight');
+    await page.keyboard.press('ArrowLeft');
     await page.keyboard.press('ArrowDown');
     const thirdArrow = await page.locator('[data-ui-name="ButtonLink"]').nth(2);
     await expect(thirdArrow).toBeFocused();
