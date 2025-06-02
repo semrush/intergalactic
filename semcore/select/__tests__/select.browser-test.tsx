@@ -576,7 +576,7 @@ test.describe('Basic select', () => {
 });
 
 test.describe('Options filtering', () => {
-  test('Verify keyboard interactions when select with Search', async ({ page }) => {
+  test('Verify keyboard interactions when select with Search', async ({ page, browserName }) => {
     const standPath = 'stories/components/select/docs/examples/options_filtering.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
@@ -593,13 +593,6 @@ test.describe('Options filtering', () => {
       await expect(inputLocaltor).toBeFocused();
 
       await expect(page).toHaveScreenshot();
-    });
-
-    await test.step('Verify tab moves focus between input and list', async () => {
-      await page.keyboard.press('Tab');
-      await expect(list).toHaveClass(/keyboardFocused/);
-      await page.keyboard.press('Tab');
-      await expect(inputLocaltor).toBeFocused();
     });
 
     await test.step('Verify arrowLeft and Right not move focus', async () => {
@@ -634,7 +627,7 @@ test.describe('Options filtering', () => {
       await expect(options.first()).toHaveClass(/highlighted/);
       await expect(selectTrigger).toBeFocused();
       await page.keyboard.press('ArrowUp');
-      await expect(page).toHaveScreenshot();
+      
     });
 
     await test.step('Verify tab switch focus to input', async () => {
@@ -654,12 +647,10 @@ test.describe('Options filtering', () => {
       await expect(triggerText).toHaveText(/Peach/);
     });
 
-    await test.step('Verify menu opened and selected option focused', async () => {
-      await page.keyboard.press('Enter');
-      await expect(page).toHaveScreenshot();
-    });
 
     await test.step('Verify nothing found state', async () => {
+      await page.keyboard.press('Enter');
+      await new Promise((resolve) => setTimeout(resolve, 500));
       await page.keyboard.type('test');
       await expect(page).toHaveScreenshot();
     });

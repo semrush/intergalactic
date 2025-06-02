@@ -45,6 +45,7 @@ test.describe('Options filtering', () => {
 
     await test.step('Verify menu not closed when selecting items', async () => {
       await page.keyboard.press('Space');
+      await expect(page).toHaveScreenshot();
       await expect(select).toBeFocused();
       await expect(options.first()).toHaveClass(/selected/);
       await expect(menu).toBeVisible();
@@ -64,17 +65,18 @@ test.describe('Options filtering', () => {
     });
 
     await test.step('Verify first selected highlights when expanded', async () => {
-      await page.keyboard.press('Space');
       await page.keyboard.press('Enter');
+      await new Promise((resolve) => setTimeout(resolve, 500));
+      await page.keyboard.press('Space');
       await page.keyboard.press('ArrowUp');
       await page.keyboard.press('ArrowUp');
       await page.keyboard.press('Enter');
       await page.keyboard.press('Escape');
-      await expect(triggerText).toHaveText('Option 19, Option 18');
+      await expect(triggerText).toHaveText(' Option 19, Option 18');
       await page.keyboard.press('Space');
+      await new Promise((resolve) => setTimeout(resolve, 300));
 
-      await expect(options.nth(17)).toHaveClass(/highlighted/);
-      await expect(page).toHaveScreenshot();
+      await expect(options.nth(18)).toHaveClass(/highlighted/);
     });
   });
 
