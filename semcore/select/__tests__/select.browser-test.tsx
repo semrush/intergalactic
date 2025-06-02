@@ -627,7 +627,6 @@ test.describe('Options filtering', () => {
       await expect(options.first()).toHaveClass(/highlighted/);
       await expect(selectTrigger).toBeFocused();
       await page.keyboard.press('ArrowUp');
-      
     });
 
     await test.step('Verify tab switch focus to input', async () => {
@@ -646,7 +645,6 @@ test.describe('Options filtering', () => {
       await expect(selectTrigger).toHaveAttribute('value', 'Peach');
       await expect(triggerText).toHaveText(/Peach/);
     });
-
 
     await test.step('Verify nothing found state', async () => {
       await page.keyboard.press('Enter');
