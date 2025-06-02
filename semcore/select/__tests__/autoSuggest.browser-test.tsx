@@ -22,6 +22,7 @@ test.describe('AutoSuggest', () => {
 
     await expect(page).toHaveScreenshot();
   });
+
   test('Mouse Navigation', async ({ page, browserName }) => {
     // TODO: in firefox it is very unstable
     if (browserName === 'firefox') return;
