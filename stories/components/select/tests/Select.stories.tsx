@@ -7,6 +7,7 @@ import OnVisibleExample from './examples/on_visible';
 import FocusExample from './examples/focus_interaction';
 import OnChangeInputSearchExample from './examples/on_change_input_search';
 import TriggerExample from './examples/trigger';
+import OptionsExample from './examples/options';
 
 
 const meta: Meta<typeof Select> = {
@@ -16,6 +17,11 @@ const meta: Meta<typeof Select> = {
 
 export default meta;
 type Story = StoryObj<typeof Select>;
+
+export const Options: Story = {
+  render: OptionsExample,
+};
+
 
 export const Trigger: Story = {
   render: TriggerExample,
