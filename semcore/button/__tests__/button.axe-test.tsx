@@ -45,20 +45,17 @@ test.describe('Button', () => {
 
     expect(violations).toEqual([]);
   });
-
 });
 
 test.describe('Button Link', () => {
-    test('ButtonLink', async ({ page }) => {
-      const standPath = 'stories/components/button/docs/examples/button_link.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en');
-  
-      await page.setContent(htmlContent);
-  
-      const violations = await getAccessibilityViolations({ page });
-  
-      expect(violations).toEqual([]);
-    });
-  
+  test('ButtonLink', async ({ page }) => {
+    const standPath = 'stories/components/button/docs/examples/button_link.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const violations = await getAccessibilityViolations({ page });
+
+    expect(violations).toEqual([]);
+  });
 });
-  

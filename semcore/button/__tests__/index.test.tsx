@@ -41,47 +41,49 @@ describe('Button', () => {
     await expect(await snapshot(Component)).toMatchImageSnapshot(task);
   });
 
-  test.concurrent('Verify supports neighbor location with [left, both, right]', async ({ task }) => {
-    const component = (
-      <snapshot.ProxyProps style={{ margin: 5 }}>
-        <Flex inline alignItems='center'>
-          <NeighborLocation>
-            <Button>Left</Button>
-            <Button>Both</Button>
-            <Button>Right</Button>
-          </NeighborLocation>
-        </Flex>
-        <Flex inline alignItems='center'>
-          <NeighborLocation>
-            <Button use='primary'>Left</Button>
-            <Button use='primary'>Both</Button>
-            <Button use='primary'>Right</Button>
-          </NeighborLocation>
-        </Flex>
-        <Flex inline alignItems='center'>
-          <NeighborLocation>
-            <Button use='primary' theme='invert'>
-              Left
-            </Button>
-            <Button use='primary' theme='invert'>
-              Both
-            </Button>
-            <Button use='primary' theme='invert'>
-              Right
-            </Button>
-          </NeighborLocation>
-        </Flex>
-        <Flex inline alignItems='center'>
-          <NeighborLocation>
-            <Button use='tertiary'>Left</Button>
-            <Button use='tertiary'>Both</Button>
-            <Button use='tertiary'>Right</Button>
-          </NeighborLocation>
-        </Flex>
-      </snapshot.ProxyProps>
-    );
+  test.concurrent(
+    'Verify supports neighbor location with [left, both, right]',
+    async ({ task }) => {
+      const component = (
+        <snapshot.ProxyProps style={{ margin: 5 }}>
+          <Flex inline alignItems='center'>
+            <NeighborLocation>
+              <Button>Left</Button>
+              <Button>Both</Button>
+              <Button>Right</Button>
+            </NeighborLocation>
+          </Flex>
+          <Flex inline alignItems='center'>
+            <NeighborLocation>
+              <Button use='primary'>Left</Button>
+              <Button use='primary'>Both</Button>
+              <Button use='primary'>Right</Button>
+            </NeighborLocation>
+          </Flex>
+          <Flex inline alignItems='center'>
+            <NeighborLocation>
+              <Button use='primary' theme='invert'>
+                Left
+              </Button>
+              <Button use='primary' theme='invert'>
+                Both
+              </Button>
+              <Button use='primary' theme='invert'>
+                Right
+              </Button>
+            </NeighborLocation>
+          </Flex>
+          <Flex inline alignItems='center'>
+            <NeighborLocation>
+              <Button use='tertiary'>Left</Button>
+              <Button use='tertiary'>Both</Button>
+              <Button use='tertiary'>Right</Button>
+            </NeighborLocation>
+          </Flex>
+        </snapshot.ProxyProps>
+      );
 
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
+      await expect(await snapshot(component)).toMatchImageSnapshot(task);
+    },
+  );
 });
-
