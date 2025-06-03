@@ -8,10 +8,9 @@ test.describe('Link', () => {
 
     await page.setContent(htmlContent);
 
-      const violations = await getAccessibilityViolations({ page });
+    const violations = await getAccessibilityViolations({ page });
 
-      expect(violations).toEqual([]);
-
+    expect(violations).toEqual([]);
   });
 
   test('Link without text', async ({ page }) => {
@@ -20,10 +19,9 @@ test.describe('Link', () => {
 
     await page.setContent(htmlContent);
 
-      const violations = await getAccessibilityViolations({ page });
+    const violations = await getAccessibilityViolations({ page });
 
-      expect(violations).toEqual([]);
-
+    expect(violations).toEqual([]);
   });
 
   test('Link disabled', async ({ page }) => {
@@ -32,10 +30,9 @@ test.describe('Link', () => {
 
     await page.setContent(htmlContent);
 
-      const violations = await getAccessibilityViolations({ page });
+    const violations = await getAccessibilityViolations({ page });
 
-      expect(violations).toEqual([]);
-
+    expect(violations).toEqual([]);
   });
 
   test('Link addon', async ({ page }) => {
@@ -44,10 +41,9 @@ test.describe('Link', () => {
 
     await page.setContent(htmlContent);
 
-      const violations = await getAccessibilityViolations({ page });
+    const violations = await getAccessibilityViolations({ page });
 
-      expect(violations).toEqual([]);
-
+    expect(violations).toEqual([]);
   });
 
   test('Link with ellipsis', async ({ page }) => {
@@ -56,10 +52,9 @@ test.describe('Link', () => {
 
     await page.setContent(htmlContent);
 
-      const violations = await getAccessibilityViolations({ page });
+    const violations = await getAccessibilityViolations({ page });
 
-      expect(violations).toEqual([]);
-
+    expect(violations).toEqual([]);
   });
 
   test('Link color', async ({ page }) => {
@@ -68,10 +63,9 @@ test.describe('Link', () => {
 
     await page.setContent(htmlContent);
 
-      const violations = await getAccessibilityViolations({ page });
+    const violations = await getAccessibilityViolations({ page });
 
-      expect(violations).toEqual([]);
-
+    expect(violations).toEqual([]);
   });
 
   test('Link button', async ({ page }) => {
@@ -80,10 +74,8 @@ test.describe('Link', () => {
 
     await page.setContent(htmlContent);
 
-      const violations = await getAccessibilityViolations({ page });
+    const violations = await getAccessibilityViolations({ page });
 
-      expect(violations).toEqual([]);
-
+    expect(violations).toEqual([]);
   });
-
 });

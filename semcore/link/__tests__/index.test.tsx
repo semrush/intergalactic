@@ -65,5 +65,4 @@ describe('Link', () => {
     );
     expect(getByTestId('link').className).not.contains('noWrap');
   });
-
 });
