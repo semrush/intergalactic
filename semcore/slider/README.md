@@ -13,40 +13,14 @@
 ## Install
 
 ```sh
-npm install intergalactic
+npm install @semcore/slider
 ```
 
 ## Usage
 
 ```jsx
-import Slider from 'intergalactic/slider';
-```
-
-<details>
-  <summary>Alternative installation and use</summary>
-
-**We do not recommend this usage path due to possible dependency and update issues.**
-
-### Install
-
-You can only install one package from the design system
-
-```sh
-npm install @semcore/slider @semcore/core
-```
-
-`@semcore/core` - _is the basic package by which we create our components, and it contains all of the common logic
-of the components that is discussed below. There should only be one version of the package in the project._
-
-### Usage
-
-You can use the package the same way but without `/ui/` in the import path.
-
-```jsx
 import Slider from '@semcore/slider';
 ```
-
-</details>
 
 ## 👤 Author
 
