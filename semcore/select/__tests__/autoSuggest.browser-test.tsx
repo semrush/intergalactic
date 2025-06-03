@@ -9,20 +9,17 @@ test.describe('AutoSuggest', () => {
 
     await page.setContent(htmlContent);
 
-    const menu = page.locator('[data-ui-name="Select.Menu"]')
+    const menu = page.locator('[data-ui-name="Select.Menu"]');
     const options = page.locator('[data-ui-name="Select.Option"]');
     const trigger = page.locator('[data-ui-name="Select.Trigger"]');
 
     await test.step('Verify menu not expanded when nothing entered', async () => {
-
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
       await page.keyboard.press('ArrowDown');
       await expect(menu).not.toBeVisible();
-
     });
     await test.step('Verify menu appears when character entered but nothing is selected', async () => {
-
       await page.keyboard.type('a');
       await page.waitForSelector('text=persian');
       const count = await options.count();
@@ -32,7 +29,6 @@ test.describe('AutoSuggest', () => {
     });
 
     await test.step('Verify arrows navigation between options', async () => {
-
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowDown');
@@ -41,7 +37,6 @@ test.describe('AutoSuggest', () => {
     });
 
     await test.step('Verify option not selected and menu closed by Escape', async () => {
-
       await page.keyboard.press('Escape');
 
       await expect(menu).not.toBeVisible();
@@ -56,7 +51,6 @@ test.describe('AutoSuggest', () => {
     });
 
     await test.step('Verify option selected and menu closed by Enter', async () => {
-
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowDown');
@@ -67,24 +61,21 @@ test.describe('AutoSuggest', () => {
     });
 
     await test.step('Verify selected item shown and highlighted but not focused', async () => {
-
       await page.keyboard.press('Enter');
       await page.waitForSelector('text=ragdoll');
       await expect(options.first()).toHaveClass(/selected/);
       await expect(options.first()).not.toHaveClass(/highlighted/);
-
     });
   });
 
   test('Verify mouse Navigation', async ({ page }) => {
-
     const standPath =
       'stories/patterns/ux-patterns/auto-suggest/docs/examples/autosuggest_example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
 
-    const menu = page.locator('[data-ui-name="Select.Menu"]')
+    const menu = page.locator('[data-ui-name="Select.Menu"]');
     const options = page.locator('[data-ui-name="Select.Option"]');
     const trigger = page.locator('[data-ui-name="Select.Trigger"]');
 
@@ -93,12 +84,10 @@ test.describe('AutoSuggest', () => {
     const inputCoords = [inputRect.x + inputRect.width / 2, inputRect.y + inputRect.height / 2];
 
     await test.step('Verify menu not expanded when nothing entered', async () => {
-
       await page.mouse.click(inputCoords[0], inputCoords[1]);
     });
 
     await test.step('Verify menu expanded when character entered', async () => {
-
       await page.keyboard.type('a');
       await page.waitForSelector('text=persian');
       await expect(menu).toBeVisible();
@@ -109,7 +98,6 @@ test.describe('AutoSuggest', () => {
     });
 
     await test.step('Verify menu closed when option clicked', async () => {
-
       const persianOption = await page.locator('text=persian');
       await expect(page).toHaveScreenshot();
       const persianOptionRect = (await persianOption.boundingBox())!;
@@ -122,12 +110,9 @@ test.describe('AutoSuggest', () => {
 
       await expect(persianOption).toHaveCount(0);
       await expect(trigger).toHaveAttribute('value', 'persian');
-
-
     });
 
     await test.step('Verify menu opened and selected option highlighted', async () => {
-
       await page.mouse.click(inputCoords[0], inputCoords[1]);
       await page.waitForSelector('text=persian');
       await expect(trigger).toHaveAttribute('value', 'persian');
@@ -136,9 +121,6 @@ test.describe('AutoSuggest', () => {
       await expect(options.first()).not.toHaveClass(/highlighted/);
 
       await expect(page).toHaveScreenshot();
-
-
     });
-
   });
 });

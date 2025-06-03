@@ -766,8 +766,7 @@ test.describe('Options filtering', () => {
 
     await page.setContent(htmlContent);
     const inputLocaltor = await page.locator('input');
-    const {label, options, triggerText, list, selectTrigger } =
-      getSelectLocators(page);
+    const { label, options, triggerText, list, selectTrigger } = getSelectLocators(page);
 
     await test.step('Verify input focused when menu expanded', async () => {
       await selectTrigger.click();
@@ -819,8 +818,7 @@ test.describe('Focus interaction', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
-    const { select, menu} =
-      getSelectLocators(page);
+    const { select, menu } = getSelectLocators(page);
 
     await select.click();
     await expect(menu).toBeVisible();
@@ -833,8 +831,7 @@ test.describe('Focus interaction', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
-    const {menu} =
-      getSelectLocators(page);
+    const { menu } = getSelectLocators(page);
 
     await page.keyboard.press('Tab');
     await expect(menu).toBeVisible();
