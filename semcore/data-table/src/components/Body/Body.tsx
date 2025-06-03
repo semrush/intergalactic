@@ -287,7 +287,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, State, [], BodyPropsInn
             color={'--intergalactic-icon-primary-neutral'}
             aria-expanded={expanded}
             aria-describedby={props.id}
-            aria-controls={props.accordionId}
+            aria-controls={expanded ? props.accordionId : undefined}
           >
             <SAccordionToggle.Addon tag={ChevronRightM} />
           </SAccordionToggle>
