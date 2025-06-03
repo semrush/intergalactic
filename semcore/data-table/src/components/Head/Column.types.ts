@@ -6,7 +6,7 @@ import {
   DTUse,
   SortDirection,
 } from '../DataTable/DataTable.types';
-import { Property } from 'csstype';
+import type { Property } from 'csstype';
 
 export type CommonColumnType = {
   /**

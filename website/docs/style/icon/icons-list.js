@@ -2814,6 +2814,23 @@ const iconsList = {
       tags: ['chart', 'pie', 'donut', 'circle', 'график', 'пирог', 'пай'],
     },
     {
+      name: 'ChartVenn',
+      size: ['l', 'm'],
+      group: 'Misc',
+      tags: [
+        'chart',
+        'diagram',
+        'venn',
+        'circle',
+        'intersection',
+        'sets',
+        'график',
+        'венна',
+        'пересечение',
+        'множества',
+      ],
+    },
+    {
       name: 'ClusteredList',
       size: ['l', 'm'],
       group: 'Misc',

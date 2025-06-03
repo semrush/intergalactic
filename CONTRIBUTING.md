@@ -36,7 +36,7 @@ We appreciate your contributions and will review your pull request as soon as po
 We have a robust playground designed for developing components. To get started:
 
 1. Run `pnpm start` and navigate to `http://localhost:2077` in your browser to access the playground.
-2. On the documentation website, copy example code by clicking the copy icon in the top-right corner of a code snippet. For instance, you can use [the Input component example](https://developer.semrush.com/intergalactic/components/input/input-code/#loading_state_in_the_input).
+2. On the documentation website, copy example code by clicking the copy icon in the top-right corner of a code snippet. For instance, you can use [the Input component example](https://developer.semrush.com/intergalactic/components/input/input-code/#loading-state).
 3. Create a playground page using your favorite code editor (for example, `vi tools/playground/examples/input.tsx`) and paste the example code there.
 4. Return to `http://localhost:2077` and reload the page. The link to `input.tsx` will appear in the top panel. Edit the playground page code, and after making changes, reload the page to see your modifications.
 

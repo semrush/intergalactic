@@ -1,6 +1,5 @@
 import React from 'react';
 import { DataTable, DataTableSort } from '@semcore/data-table';
-import Ellipsis from '@semcore/ellipsis';
 
 type SortableColumn = Exclude<keyof typeof data[0], 'keyword'>;
 
@@ -29,7 +28,7 @@ const Demo = () => {
       data={sortedData}
       sort={sort}
       onSortChange={setSort}
-      aria-label={'Sorting with change sortable column size'}
+      aria-label={'Expanding sortable column'}
       columns={[
         { name: 'keyword', children: 'Keyword', justifyContent: 'left', sortable: true },
         {
@@ -37,12 +36,15 @@ const Demo = () => {
           children: 'KD %',
           justifyContent: 'right',
           gtcWidth: 'minmax(0, 68px)',
+          style: { whiteSpace: 'nowrap' },
+          borders: 'both',
           sortable: true,
         },
         {
           name: 'cpc',
           children: 'CPC',
           gtcWidth: 'minmax(0, 60px)',
+          borders: 'right',
           sortable: true,
           changeSortSize: true,
         },

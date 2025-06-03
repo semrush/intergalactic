@@ -1,7 +1,7 @@
 {
   "name": "@semcore/base-components",
   "description": "Semrush Base Components",
-  "version": "16.0.0",
+  "version": "16.0.1",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.mjs",
   "typings": "lib/types/index.d.ts",
@@ -22,7 +22,7 @@
     "@popperjs/core": "2.11.5",
     "popper-max-size-modifier": "0.2.0",
     "classnames": "2.2.6",
-    "csstype": "3.0.8"
+    "csstype": "3.1.3"
   },
   "peerDependencies": {
     "@semcore/core": "^16.0.0"

@@ -9,6 +9,16 @@ export default mergeConfig(
       lib: {
         entry: './src/index.ts',
       },
+      rollupOptions: {
+        external: [
+          'react',
+          'react-dom',
+          'react/jsx-runtime',
+          /@babel\/runtime\/*/,
+          /@semcore\/*/,
+          'csstype',
+        ],
+      },
     },
   }),
 );

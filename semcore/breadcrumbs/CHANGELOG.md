@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.2.0] - 2025-05-30
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/icon` [16.1.0 ~> 16.2.0], `@semcore/base-components` [16.0.0 ~> 16.0.1]).
+
 ## [16.1.0] - 2025-05-23
 
 ### Changed
@@ -12,7 +18,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Break
 
-- `keyboardFocusEnhance` to css `:focus-visible` property.
+- replaced `keyboardFocusEnhance` with `:focus-visible` CSS pseudo-class.
 
 ## [5.49.2] - 2025-05-13
 
