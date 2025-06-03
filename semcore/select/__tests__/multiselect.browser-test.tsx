@@ -37,7 +37,7 @@ test.describe('Options filtering', () => {
       await expect(options.first()).toHaveClass(/highlighted/);
     });
 
-    await test.step('Verify tab not moves ', async () => {
+    await test.step('Verify tab not moves focus', async () => {
       await page.keyboard.press('Tab');
       await expect(select).toBeFocused();
       await expect(options.first()).toHaveClass(/highlighted/);
@@ -64,7 +64,7 @@ test.describe('Options filtering', () => {
       await expect(triggerText).toHaveText('Option 0, Option 19');
     });
 
-    await test.step('Verify first selected highlights when expanded', async () => {
+    await test.step('Verify first selected highlights when menu expanded', async () => {
       await page.keyboard.press('Enter');
       await new Promise((resolve) => setTimeout(resolve, 500));
       await page.keyboard.press('Space');
@@ -175,7 +175,7 @@ test.describe('Options filtering', () => {
       await expect(options.nth(1)).toHaveClass(/highlighted/);
     });
 
-    await test.step('Verify tab not moves ', async () => {
+    await test.step('Verify tab not moves focus', async () => {
       await page.keyboard.press('Tab');
       await expect(selectTrigger).toBeFocused();
       await expect(options.nth(1)).toHaveClass(/highlighted/);

@@ -91,7 +91,7 @@ test.describe('Trigger and menu options', () => {
       await expect(content1).toHaveAttribute('aria-describedby');
     });
 
-    await test.step('Verify option h-nt attributes', async () => {
+    await test.step('Verify option hint attributes', async () => {
       await expect(optionHint).toHaveAttribute('aria-hidden', 'true');
     });
 
@@ -117,7 +117,7 @@ test.describe('Trigger and menu options', () => {
 
     const { select, label, menu, options, triggerText } = getSelectLocators(page);
 
-    await test.step('Verify menu opens and hides button trigger label and trigger click', async () => {
+    await test.step('Verify menu opens and hides by click on label or button trigger', async () => {
       await label.first().click();
       await expect(menu).toBeVisible();
       await select.first().click();
@@ -134,7 +134,7 @@ test.describe('Trigger and menu options', () => {
       await expect(triggerText.first()).toHaveText(/Option 0/);
     });
 
-    await test.step('Verify menu opens and hides link trigger label and trigger click', async () => {
+    await test.step('Verify menu opens and hides by click on link trigger or label', async () => {
       await label.nth(1).click();
       await expect(menu).toBeVisible();
       await select.nth(1).click();
@@ -159,7 +159,7 @@ test.describe('Trigger and menu options', () => {
 
     await page.setContent(htmlContent);
 
-    const { select, label, menu, options, triggerText } = getSelectLocators(page);
+    const { select, menu, triggerText } = getSelectLocators(page);
 
     await test.step('Verify button trigger keyboard interactions', async () => {
       await page.keyboard.press('Tab');
@@ -621,7 +621,7 @@ test.describe('Options filtering', () => {
       await expect(inputLocaltor).toBeFocused();
     });
 
-    await test.step('Verify Arrows switch focus from itput to the option', async () => {
+    await test.step('Verify Arrows switch focus from input to the option', async () => {
       await page.keyboard.press('ArrowDown');
       await expect(inputLocaltor).not.toBeFocused();
       await expect(options.first()).toHaveClass(/highlighted/);
@@ -654,7 +654,7 @@ test.describe('Options filtering', () => {
     });
 
     const hint = page.locator('[data-ui-name="InputSearch.Clear"]');
-    await test.step('Verify hint on X in search', async () => {
+    await test.step('Verify hint by focus X in search', async () => {
       await page.keyboard.press('Tab');
       await expect(hint).toBeFocused();
       await new Promise((resolve) => setTimeout(resolve, 500));
@@ -662,7 +662,7 @@ test.describe('Options filtering', () => {
       await expect(page).toHaveScreenshot();
     });
 
-    await test.step('Verify focuse swicthes between X and input by Tab', async () => {
+    await test.step('Verify focus swicthes between X and input by Tab', async () => {
       await page.keyboard.press('Tab');
       await expect(inputLocaltor).toBeFocused();
       await page.keyboard.press('Tab');
@@ -727,7 +727,8 @@ test.describe('Options filtering', () => {
     });
 
     const hint = page.locator('[data-ui-name="InputSearch.Clear"]');
-    await test.step('Verify hint on X by hover', async () => {
+
+    await test.step('Verify hint on hover X', async () => {
       await page.keyboard.type('test');
 
       await hint.hover();
@@ -765,7 +766,7 @@ test.describe('Options filtering', () => {
 
     await page.setContent(htmlContent);
     const inputLocaltor = await page.locator('input');
-    const { select, label, menu, options, triggerText, list, selectTrigger } =
+    const {label, options, triggerText, list, selectTrigger } =
       getSelectLocators(page);
 
     await test.step('Verify input focused when menu expanded', async () => {
@@ -790,7 +791,8 @@ test.describe('Options filtering', () => {
     });
 
     const hint = page.locator('[data-ui-name="InputSearch.Clear"]');
-    await test.step('Verify hint on X by hover', async () => {
+
+    await test.step('Verify hint on hover X', async () => {
       await label.click();
       await page.waitForSelector('input');
 
@@ -817,7 +819,7 @@ test.describe('Focus interaction', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
-    const { select, label, menu, options, triggerText, list, selectTrigger } =
+    const { select, menu} =
       getSelectLocators(page);
 
     await select.click();
@@ -831,7 +833,7 @@ test.describe('Focus interaction', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
-    const { select, label, menu, options, triggerText, list, selectTrigger } =
+    const {menu} =
       getSelectLocators(page);
 
     await page.keyboard.press('Tab');

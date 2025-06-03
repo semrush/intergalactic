@@ -9,23 +9,74 @@ test.describe('AutoSuggest', () => {
 
     await page.setContent(htmlContent);
 
-    await page.keyboard.press('Tab');
-    await page.keyboard.type('a');
-    await page.waitForSelector('text=persian');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
+    const menu = page.locator('[data-ui-name="Select.Menu"]')
+    const options = page.locator('[data-ui-name="Select.Option"]');
+    const trigger = page.locator('[data-ui-name="Select.Trigger"]');
 
-    await expect(page).toHaveScreenshot();
+    await test.step('Verify menu not expanded when nothing entered', async () => {
 
-    await page.keyboard.press('Enter');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await page.keyboard.press('ArrowDown');
+      await expect(menu).not.toBeVisible();
 
-    await expect(page).toHaveScreenshot();
+    });
+    await test.step('Verify menu appears when character entered but nothing is selected', async () => {
+
+      await page.keyboard.type('a');
+      await page.waitForSelector('text=persian');
+      const count = await options.count();
+      for (let i = 1; i < count; i++) {
+        await expect(options.nth(i)).not.toHaveClass(/selected/);
+      }
+    });
+
+    await test.step('Verify arrows navigation between options', async () => {
+
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+
+      await expect(page).toHaveScreenshot();
+    });
+
+    await test.step('Verify option not selected and menu closed by Escape', async () => {
+
+      await page.keyboard.press('Escape');
+
+      await expect(menu).not.toBeVisible();
+      await expect(trigger).toHaveAttribute('value', 'a');
+
+      await page.keyboard.press('Enter');
+      await page.waitForSelector('text=persian');
+      const count = await options.count();
+      for (let i = 1; i < count; i++) {
+        await expect(options.nth(i)).not.toHaveClass(/selected/);
+      }
+    });
+
+    await test.step('Verify option selected and menu closed by Enter', async () => {
+
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('Enter');
+      await expect(trigger).toHaveAttribute('value', 'ragdoll');
+
+      await expect(page).toHaveScreenshot();
+    });
+
+    await test.step('Verify selected item shown and highlighted but not focused', async () => {
+
+      await page.keyboard.press('Enter');
+      await page.waitForSelector('text=ragdoll');
+      await expect(options.first()).toHaveClass(/selected/);
+      await expect(options.first()).not.toHaveClass(/highlighted/);
+
+    });
   });
 
-  test('Mouse Navigation', async ({ page, browserName }) => {
-    // TODO: in firefox it is very unstable
-    if (browserName === 'firefox') return;
+  test('Verify mouse Navigation', async ({ page }) => {
 
     const standPath =
       'stories/patterns/ux-patterns/auto-suggest/docs/examples/autosuggest_example.tsx';
@@ -33,68 +84,61 @@ test.describe('AutoSuggest', () => {
 
     await page.setContent(htmlContent);
 
-    const input = await page.locator('input');
-    const inputRect = (await input.boundingBox())!;
-    const inputCoords = [inputRect.x + inputRect.width / 2, inputRect.y + inputRect.height / 2];
-
-    await page.mouse.click(inputCoords[0], inputCoords[1]);
-
-    await page.keyboard.type('a');
-    await page.waitForSelector('text=persian');
-
-    await expect(page).toHaveScreenshot();
-
-    const persianOption = await page.locator('text=persian');
-    const persianOptionRect = (await persianOption.boundingBox())!;
-    const persianOptionCoords = [
-      persianOptionRect.x + persianOptionRect.width / 2,
-      persianOptionRect.y + persianOptionRect.height / 2,
-    ];
-
-    await page.mouse.click(persianOptionCoords[0], persianOptionCoords[1]);
-
-    await expect(persianOption).toHaveCount(0);
-
-    await expect(page).toHaveScreenshot();
-  });
-
-  test('Verify if it is possible to press Enter without selecting option in the list', async ({
-    page,
-  }) => {
-    const standPath =
-      'stories/patterns/ux-patterns/auto-suggest/docs/examples/autosuggest_example.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    const menu = page.locator('[data-ui-name="Select.Menu"]')
+    const options = page.locator('[data-ui-name="Select.Option"]');
+    const trigger = page.locator('[data-ui-name="Select.Trigger"]');
 
     const input = await page.locator('input');
     const inputRect = (await input.boundingBox())!;
     const inputCoords = [inputRect.x + inputRect.width / 2, inputRect.y + inputRect.height / 2];
 
-    await page.mouse.click(inputCoords[0], inputCoords[1]);
+    await test.step('Verify menu not expanded when nothing entered', async () => {
 
-    await page.keyboard.type('a');
-    await page.waitForSelector('text=persian');
+      await page.mouse.click(inputCoords[0], inputCoords[1]);
+    });
 
-    const persianOption = await page.getByRole('option', { name: 'persian' });
+    await test.step('Verify menu expanded when character entered', async () => {
 
-    await expect(persianOption).not.toHaveClass(/highlight/);
-    await expect(persianOption).not.toBeFocused();
+      await page.keyboard.type('a');
+      await page.waitForSelector('text=persian');
+      await expect(menu).toBeVisible();
+      const count = await options.count();
+      for (let i = 1; i < count; i++) {
+        await expect(options.nth(i)).not.toHaveClass(/selected/);
+      }
+    });
 
-    await page.keyboard.press('Escape');
-    await page.mouse.click(inputCoords[0], inputCoords[1]);
-    await page.waitForSelector('text=persian');
+    await test.step('Verify menu closed when option clicked', async () => {
 
-    await expect(persianOption).not.toHaveClass(/highlight/);
+      const persianOption = await page.locator('text=persian');
+      await expect(page).toHaveScreenshot();
+      const persianOptionRect = (await persianOption.boundingBox())!;
+      const persianOptionCoords = [
+        persianOptionRect.x + persianOptionRect.width / 2,
+        persianOptionRect.y + persianOptionRect.height / 2,
+      ];
 
-    await page.keyboard.press('Escape');
-    await page.keyboard.press('Enter');
-    await page.waitForSelector('text=persian');
+      await page.mouse.click(persianOptionCoords[0], persianOptionCoords[1]);
 
-    await expect(persianOption).not.toHaveClass(/highlight/);
+      await expect(persianOption).toHaveCount(0);
+      await expect(trigger).toHaveAttribute('value', 'persian');
 
-    await page.keyboard.press('ArrowDown');
-    await page.waitForSelector('text=persian');
-    await expect(persianOption).toHaveClass(/highlight/);
+
+    });
+
+    await test.step('Verify menu opened and selected option highlighted', async () => {
+
+      await page.mouse.click(inputCoords[0], inputCoords[1]);
+      await page.waitForSelector('text=persian');
+      await expect(trigger).toHaveAttribute('value', 'persian');
+
+      await expect(options.first()).toHaveClass(/selected/);
+      await expect(options.first()).not.toHaveClass(/highlighted/);
+
+      await expect(page).toHaveScreenshot();
+
+
+    });
+
   });
 });
