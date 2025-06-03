@@ -19,16 +19,28 @@ const Demo = () => {
         </p>
         <p>
           Aliens from distant galaxies use it to{' '}
-          <Link href='#' inline noWrap={false}>
-            create otherworldly websites{' '}
+          <Link href='#' inline noWrap={false} active={true}>
+            create otherworldly websites{' '} active with addon
+            <Link.Addon>
+              <LinkExternalM />
+            </Link.Addon>
+          </Link> 
+          </p>
+          <p>
+          Aliens from distant galaxies use it to{' '}
+          <Link href='#' inline noWrap={false} active={true}>
+            create otherworldly websites{' '} active without addon
           </Link>{' '}
           that are so user-friendly, even a space-faring cat with paws can navigate them.
         </p>
         <p>Look at these:</p>
       <List size={300}>
         <List.Item>
-          <Link href='#' noWrap={false}>
+          <Link href='#' noWrap={false} disabled>
             Alien fashionistas on Mars are rocking sleek spacesuits with astonishing components.
+            <Link.Addon>
+              <LinkExternalM />
+            </Link.Addon>
           </Link>
         </List.Item>
         <List.Item>
