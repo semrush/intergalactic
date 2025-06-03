@@ -3,7 +3,8 @@ import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 test.describe('AutoSuggest', () => {
   test('Combobox', async ({ page }) => {
-    const standPath = 'stories/patterns/ux-patterns/auto-suggest/docs/examples/combobox_example.tsx';
+    const standPath =
+      'stories/patterns/ux-patterns/auto-suggest/docs/examples/combobox_example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -28,7 +29,8 @@ test.describe('AutoSuggest', () => {
   });
 
   test('AutoSuggest', async ({ page }) => {
-    const standPath = 'stories/patterns/ux-patterns/auto-suggest/docs/examples/autosuggest_example.tsx';
+    const standPath =
+      'stories/patterns/ux-patterns/auto-suggest/docs/examples/autosuggest_example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
