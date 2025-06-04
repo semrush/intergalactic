@@ -16,11 +16,7 @@
 npm install @semcore/pills
 ```
 
-## Usage
 
-```jsx
-import Pills from '@semcore/pills';
-```
 
 ## 👤 Author
 

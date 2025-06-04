@@ -16,11 +16,7 @@
 npm install @semcore/input-tags
 ```
 
-## Usage
 
-```jsx
-import InputTags from '@semcore/input-tags';
-```
 
 ## 👤 Author
 

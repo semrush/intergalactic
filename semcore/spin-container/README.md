@@ -16,11 +16,7 @@
 npm install @semcore/spin-container
 ```
 
-## Usage
 
-```jsx
-import SpinContainer from '@semcore/spin-container';
-```
 
 ## 👤 Author
 

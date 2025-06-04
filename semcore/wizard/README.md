@@ -16,11 +16,7 @@
 npm install @semcore/wizard
 ```
 
-## Usage
 
-```jsx
-import Wizard from '@semcore/wizard';
-```
 
 ## 👤 Author
 

@@ -16,11 +16,7 @@
 npm install @semcore/accordion
 ```
 
-## Usage
 
-```jsx
-import Accordion from '@semcore/accordion';
-```
 
 ## 👤 Author
 

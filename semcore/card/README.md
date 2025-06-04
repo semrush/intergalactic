@@ -16,11 +16,7 @@
 npm install @semcore/card
 ```
 
-## Usage
 
-```jsx
-import Card from '@semcore/card';
-```
 
 ## 👤 Author
 

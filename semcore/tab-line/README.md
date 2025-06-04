@@ -16,11 +16,7 @@
 npm install @semcore/tab-line
 ```
 
-## Usage
 
-```jsx
-import TabLine from '@semcore/tab-line';
-```
 
 ## 👤 Author
 

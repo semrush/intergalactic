@@ -16,11 +16,7 @@
 npm install @semcore/breakpoints
 ```
 
-## Usage
 
-```jsx
-import Breakpoints from '@semcore/breakpoints';
-```
 
 ## 👤 Author
 

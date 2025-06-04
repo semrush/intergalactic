@@ -16,11 +16,7 @@
 npm install @semcore/outside-click
 ```
 
-## Usage
 
-```jsx
-import OutsideClick from '@semcore/outside-click';
-```
 
 ## 👤 Author
 

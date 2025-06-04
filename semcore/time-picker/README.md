@@ -16,11 +16,7 @@
 npm install @semcore/time-picker
 ```
 
-## Usage
 
-```jsx
-import TimePicker from '@semcore/time-picker';
-```
 
 ## 👤 Author
 

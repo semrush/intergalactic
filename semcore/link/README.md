@@ -16,11 +16,7 @@
 npm install @semcore/link
 ```
 
-## Usage
 
-```jsx
-import Link from '@semcore/link';
-```
 
 ## 👤 Author
 

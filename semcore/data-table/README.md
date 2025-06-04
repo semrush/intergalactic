@@ -16,11 +16,7 @@
 npm install @semcore/data-table
 ```
 
-## Usage
 
-```jsx
-import DataTable from '@semcore/data-table';
-```
 
 ## 👤 Author
 

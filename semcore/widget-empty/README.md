@@ -16,11 +16,7 @@
 npm install @semcore/widget-empty
 ```
 
-## Usage
 
-```jsx
-import WidgetEmpty, { NoData, Error } from '@semcore/widget-empty';
-```
 
 ## 👤 Author
 

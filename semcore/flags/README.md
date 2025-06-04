@@ -16,11 +16,7 @@
 npm install @semcore/flags
 ```
 
-## Usage
 
-```jsx
-import Flags, { iso2Name, iso3iso2 } from '@semcore/flags';
-```
 
 ## 👤 Author
 

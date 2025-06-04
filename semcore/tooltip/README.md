@@ -16,11 +16,7 @@
 npm install @semcore/tooltip
 ```
 
-## Usage
 
-```jsx
-import Tooltip from '@semcore/tooltip';
-```
 
 ## 👤 Author
 

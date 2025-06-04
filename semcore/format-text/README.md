@@ -18,11 +18,7 @@
 npm install @semcore/format-text
 ```
 
-## Usage
 
-```jsx
-import FormatText from '@semcore/format-text';
-```
 
 ## 👤 Author
 

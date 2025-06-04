@@ -16,11 +16,7 @@
 npm install @semcore/switch
 ```
 
-## Usage
 
-```jsx
-import Switch from '@semcore/switch';
-```
 
 ## 👤 Author
 

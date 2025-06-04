@@ -16,11 +16,7 @@
 npm install @semcore/typography
 ```
 
-## Usage
 
-```jsx
-import { Text, Blockquote, List, Hint } from '@semcore/typography';
-```
 
 ## 👤 Author
 

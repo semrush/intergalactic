@@ -16,11 +16,7 @@
 npm install @semcore/table
 ```
 
-## Usage
 
-```jsx
-import Table from '@semcore/table';
-```
 
 ## 👤 Author
 

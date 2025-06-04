@@ -16,11 +16,7 @@
 npm install @semcore/inline-edit
 ```
 
-## Usage
 
-```jsx
-import InlineEdit from '@semcore/inline-edit';
-```
 
 ## 👤 Author
 

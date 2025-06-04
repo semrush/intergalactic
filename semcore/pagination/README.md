@@ -16,11 +16,7 @@
 npm install @semcore/pagination
 ```
 
-## Usage
 
-```jsx
-import Pagination from '@semcore/pagination';
-```
 
 ## 👤 Author
 

@@ -16,11 +16,7 @@
 npm install @semcore/side-panel
 ```
 
-## Usage
 
-```jsx
-import SidePanel from '@semcore/side-panel';
-```
 
 ## 👤 Author
 

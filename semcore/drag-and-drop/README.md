@@ -16,11 +16,7 @@
 npm install @semcore/drag-and-drop
 ```
 
-## Usage
 
-```jsx
-import DragAndDrop from '@semcore/drag-and-drop';
-```
 
 ## 👤 Author
 

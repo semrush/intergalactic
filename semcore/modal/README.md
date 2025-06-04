@@ -16,11 +16,7 @@
 npm install @semcore/modal
 ```
 
-## Usage
 
-```jsx
-import Modal from '@semcore/modal';
-```
 
 ## 👤 Author
 

@@ -16,11 +16,7 @@
 npm install @semcore/notice
 ```
 
-## Usage
 
-```jsx
-import Notice, { NoticeSmart } from '@semcore/notice';
-```
 
 ## 👤 Author
 

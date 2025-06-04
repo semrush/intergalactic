@@ -16,11 +16,7 @@
 npm install @semcore/counter
 ```
 
-## Usage
 
-```jsx
-import Counter from '@semcore/counter';
-```
 
 ## 👤 Author
 

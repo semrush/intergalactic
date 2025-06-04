@@ -16,11 +16,7 @@
 npm install @semcore/radio
 ```
 
-## Usage
 
-```jsx
-import Radio, { RadioGroup } from '@semcore/radio';
-```
 
 ## 👤 Author
 

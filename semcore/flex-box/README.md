@@ -16,11 +16,7 @@
 npm install @semcore/flex-box
 ```
 
-## Usage
 
-```jsx
-import { Flex, Box } from '@semcore/flex-box';
-```
 
 ## 👤 Author
 

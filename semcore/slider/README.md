@@ -16,11 +16,7 @@
 npm install @semcore/slider
 ```
 
-## Usage
 
-```jsx
-import Slider from '@semcore/slider';
-```
 
 ## 👤 Author
 

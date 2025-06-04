@@ -16,11 +16,7 @@
 npm install @semcore/breadcrumbs
 ```
 
-## Usage
 
-```jsx
-import Breadcrumbs from '@semcore/breadcrumbs';
-```
 
 ## 👤 Author
 

@@ -16,11 +16,7 @@
 npm install @semcore/popper
 ```
 
-## Usage
 
-```jsx
-import Popper from '@semcore/popper';
-```
 
 ## 👤 Author
 

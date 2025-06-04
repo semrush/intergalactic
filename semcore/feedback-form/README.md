@@ -16,11 +16,7 @@
 npm install @semcore/feedback-form
 ```
 
-## Usage
 
-```jsx
-import FeedbackForm from '@semcore/feedback-form';
-```
 
 ## 👤 Author
 

@@ -16,11 +16,7 @@
 npm install @semcore/tab-panel
 ```
 
-## Usage
 
-```jsx
-import TabPanel from '@semcore/tab-panel';
-```
 
 ## 👤 Author
 

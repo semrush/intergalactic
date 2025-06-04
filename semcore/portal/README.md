@@ -16,11 +16,7 @@
 npm install @semcore/portal
 ```
 
-## Usage
 
-```jsx
-import Portal, { PortalProvider } from '@semcore/portal';
-```
 
 ## 👤 Author
 

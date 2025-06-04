@@ -16,11 +16,7 @@
 npm install @semcore/fullscreen-modal
 ```
 
-## Usage
 
-```jsx
-import FullscreenModal from '@semcore/fullscreen-modal';
-```
 
 ## 👤 Author
 

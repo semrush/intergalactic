@@ -16,11 +16,7 @@
 npm install @semcore/dot
 ```
 
-## Usage
 
-```jsx
-import Dot from '@semcore/dot';
-```
 
 ## 👤 Author
 

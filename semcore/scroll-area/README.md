@@ -16,11 +16,7 @@
 npm install @semcore/scroll-area
 ```
 
-## Usage
 
-```jsx
-import ScrollArea from '@semcore/scroll-area';
-```
 
 ## 👤 Author
 

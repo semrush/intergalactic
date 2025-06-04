@@ -16,11 +16,7 @@
 npm install @semcore/add-filter
 ```
 
-## Usage
 
-```jsx
-import AddFilter from '@semcore/add-filter';
-```
 
 ## 👤 Author
 

@@ -16,11 +16,7 @@
 npm install @semcore/inline-input
 ```
 
-## Usage
 
-```jsx
-import InlineInput from '@semcore/inline-input';
-```
 
 ## 👤 Author
 

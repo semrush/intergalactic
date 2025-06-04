@@ -16,11 +16,7 @@
 npm install @semcore/textarea
 ```
 
-## Usage
 
-```jsx
-import Textarea from '@semcore/textarea';
-```
 
 ## 👤 Author
 

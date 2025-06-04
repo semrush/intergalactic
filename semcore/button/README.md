@@ -16,11 +16,7 @@
 npm install @semcore/button
 ```
 
-## Usage
 
-```jsx
-import Button from '@semcore/button';
-```
 
 ## 👤 Author
 

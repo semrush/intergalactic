@@ -16,11 +16,7 @@
 npm install @semcore/spin
 ```
 
-## Usage
 
-```jsx
-import Spin from '@semcore/spin';
-```
 
 ## 👤 Author
 

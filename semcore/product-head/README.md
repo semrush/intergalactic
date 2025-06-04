@@ -16,11 +16,7 @@
 npm install @semcore/product-head
 ```
 
-## Usage
 
-```jsx
-import ProductHead, { Info, Title } from '@semcore/product-head';
-```
 
 ## 👤 Author
 

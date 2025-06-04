@@ -16,11 +16,7 @@
 npm install @semcore/badge
 ```
 
-## Usage
 
-```jsx
-import Badge from '@semcore/badge';
-```
 
 ## 👤 Author
 

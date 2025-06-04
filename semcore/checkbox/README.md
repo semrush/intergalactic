@@ -16,11 +16,7 @@
 npm install @semcore/checkbox
 ```
 
-## Usage
 
-```jsx
-import Checkbox from '@semcore/checkbox';
-```
 
 ## 👤 Author
 

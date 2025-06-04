@@ -16,11 +16,7 @@
 npm install @semcore/select
 ```
 
-## Usage
 
-```jsx
-import Select, { InputSearch } from '@semcore/select';
-```
 
 ## 👤 Author
 

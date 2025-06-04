@@ -18,11 +18,7 @@
 npm install @semcore/input-mask
 ```
 
-## Usage
 
-```jsx
-import InputMask from '@semcore/input-mask';
-```
 
 ## 👤 Author
 

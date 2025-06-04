@@ -16,11 +16,7 @@
 npm install @semcore/ellipsis
 ```
 
-## Usage
 
-```jsx
-import Ellipsis from '@semcore/ellipsis';
-```
 
 ## 👤 Author
 

@@ -16,11 +16,7 @@
 npm install @semcore/input
 ```
 
-## Usage
 
-```jsx
-import Input from '@semcore/input';
-```
 
 ## 👤 Author
 

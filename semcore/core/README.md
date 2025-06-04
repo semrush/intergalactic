@@ -16,11 +16,7 @@
 npm install @semcore/core
 ```
 
-## Usage
 
-```jsx
-import { createComponent, Root, sstyled } from '@semcore/core';
-```
 
 ## 👤 Author
 

@@ -16,11 +16,7 @@
 npm install @semcore/bulk-textarea
 ```
 
-## Usage
 
-```jsx
-import BulkTextarea from '@semcore/bulk-textarea';
-```
 
 ## 👤 Author
 

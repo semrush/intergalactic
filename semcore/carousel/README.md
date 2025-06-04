@@ -16,11 +16,7 @@
 npm install @semcore/carousel
 ```
 
-## Usage
 
-```jsx
-import Carousel from '@semcore/carousel';
-```
 
 ## 👤 Author
 

@@ -16,11 +16,7 @@
 npm install @semcore/divider
 ```
 
-## Usage
 
-```jsx
-import Divider from '@semcore/divider';
-```
 
 ## 👤 Author
 

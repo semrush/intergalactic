@@ -16,11 +16,7 @@
 npm install @semcore/progress-bar
 ```
 
-## Usage
 
-```jsx
-import ProgressBar from '@semcore/progress-bar';
-```
 
 ## 👤 Author
 

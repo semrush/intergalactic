@@ -18,11 +18,7 @@
 npm install @semcore/animation
 ```
 
-## Usage
 
-```jsx
-import { Animation, Transform, FadeInOut, Collapse } from '@semcore/animation';
-```
 
 ## 👤 Author
 

@@ -16,11 +16,7 @@
 npm install @semcore/feature-popover
 ```
 
-## Usage
 
-```jsx
-import FeaturePopover from '@semcore/feature-popover';
-```
 
 ## 👤 Author
 

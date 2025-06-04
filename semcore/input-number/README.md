@@ -16,11 +16,7 @@
 npm install @semcore/input-number
 ```
 
-## Usage
 
-```jsx
-import InputNumber from '@semcore/input-number';
-```
 
 ## 👤 Author
 

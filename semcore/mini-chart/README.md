@@ -16,11 +16,7 @@
 npm install @semcore/mini-chart
 ```
 
-## Usage
 
-```jsx
-import MiniChart from '@semcore/mini-chart';
-```
 
 ## 👤 Author
 

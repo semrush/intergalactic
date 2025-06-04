@@ -16,11 +16,7 @@
 npm install @semcore/sticky
 ```
 
-## Usage
 
-```jsx
-import Sticky from '@semcore/sticky';
-```
 
 ## 👤 Author
 

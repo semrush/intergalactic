@@ -16,11 +16,7 @@
 npm install @semcore/notice-global
 ```
 
-## Usage
 
-```jsx
-import NoticeGlobal from '@semcore/notice-global';
-```
 
 ## 👤 Author
 

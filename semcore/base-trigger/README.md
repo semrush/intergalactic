@@ -16,11 +16,7 @@
 npm install @semcore/base-trigger
 ```
 
-## Usage
 
-```jsx
-import BaseTrigger, { ButtonTrigger, FilterTrigger, LinkTrigger } from '@semcore/base-trigger';
-```
 
 ## 👤 Author
 

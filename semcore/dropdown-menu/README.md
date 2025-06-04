@@ -16,11 +16,7 @@
 npm install @semcore/dropdown-menu
 ```
 
-## Usage
 
-```jsx
-import DropdownMenu from '@semcore/dropdown-menu';
-```
 
 ## 👤 Author
 

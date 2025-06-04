@@ -16,11 +16,7 @@
 npm install @semcore/grid
 ```
 
-## Usage
 
-```jsx
-import Grid from '@semcore/grid';
-```
 
 ## 👤 Author
 

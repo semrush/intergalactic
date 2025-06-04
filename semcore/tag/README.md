@@ -16,11 +16,7 @@
 npm install @semcore/tag
 ```
 
-## Usage
 
-```jsx
-import Tag from '@semcore/tag';
-```
 
 ## 👤 Author
 

@@ -16,11 +16,7 @@
 npm install @semcore/neighbor-location
 ```
 
-## Usage
 
-```jsx
-import NeighborLocation from '@semcore/neighbor-location';
-```
 
 ## 👤 Author
 
