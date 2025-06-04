@@ -23,9 +23,15 @@ export const intergalacticI18nUnplugin: UnpluginInstance<Options> = createUnplug
       },
       async load(id) {
         const sameDirFiles: string[] = await fs.readdir(path.dirname(id));
-        const allLocales = sameDirFiles
-          .filter((filename) => filename.endsWith('.json'))
-          .map((filename) => filename.substring(0, filename.length - '.json'.length));
+        const allLocales = sameDirFiles.reduce<string[]>((acc, filename) => {
+          if (filename.endsWith('.json.mjs')) {
+            acc.push(filename.substring(0, filename.length - '.json.mjs'.length));
+          } else if (filename.endsWith('.json')) {
+            acc.push(filename.substring(0, filename.length - '.json'.length));
+          }
+
+          return acc;
+        }, []);
 
         if (options?.bundleLocales?.length === 0) {
           throw new Error(`At least one locale should be mentioned in "bundleLocales" list.`);

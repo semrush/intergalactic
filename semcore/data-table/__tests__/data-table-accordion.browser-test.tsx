@@ -230,8 +230,8 @@ test.describe('Accordion in table', () => {
     const firstArrow = await page.locator('[data-ui-name="ButtonLink"]').first();
 
     await test.step('Verify cell with accordion attributes', async () => {
-      await expect(firstArrow).toHaveAttribute('aria-controls');
       await expect(firstArrow).toHaveAttribute('aria-label', 'Show details');
+      await expect(firstArrow).not.toHaveAttribute('aria-controls');
 
       const row3 = page.locator('[data-ui-name="Body.Row"][aria-rowindex="2"]');
       const cells = row3.locator('[data-ui-name="Body.Cell"]');
@@ -241,6 +241,7 @@ test.describe('Accordion in table', () => {
       await firstArrow.click();
       await page.waitForTimeout(250);
       await expect(firstArrow).toHaveAttribute('aria-expanded', 'true');
+      await expect(firstArrow).toHaveAttribute('aria-controls');
       await expect(cells.first()).toHaveAttribute('data-aria-level', '1');
     });
 
@@ -320,12 +321,13 @@ test.describe('Accordion in table', () => {
       const cells = row3.locator('[data-ui-name="Body.Cell"]');
 
       await expect(firstArrow).toHaveAttribute('aria-expanded', 'false');
-      await expect(firstArrow).toHaveAttribute('aria-controls');
+      await expect(firstArrow).not.toHaveAttribute('aria-controls');
 
       await expect(cells.nth(1)).not.toHaveAttribute('aria-expanded', 'false');
       await firstArrow.click();
       await page.waitForTimeout(250);
       await expect(firstArrow).toHaveAttribute('aria-expanded', 'true');
+      await expect(firstArrow).toHaveAttribute('aria-controls');
       await expect(cells.first()).toHaveAttribute('data-aria-level', '1');
     });
 
