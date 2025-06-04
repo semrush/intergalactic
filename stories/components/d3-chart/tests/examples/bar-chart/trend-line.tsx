@@ -1,0 +1,57 @@
+import React from 'react';
+import { Plot, Bar, Line, HoverRect, HoverLine, YAxis, XAxis, minMax } from '@semcore/d3-chart';
+import { scaleLinear, scaleBand } from 'd3-scale';
+
+const Demo = () => {
+  const MARGIN = 40;
+  const width = 500;
+  const height = 300;
+
+  const xScale = scaleBand()
+  .range([MARGIN, width - MARGIN])
+  .domain(data.map((d) => String(d.category)))
+  .paddingInner(0.4)
+  .paddingOuter(0.2);
+
+  const yScale = scaleLinear()
+    .range([height - MARGIN, MARGIN])
+    .domain(minMax(data, 'bar'));
+
+  return (
+    <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+      <YAxis>
+        <YAxis.Ticks />
+        <YAxis.Grid />
+      </YAxis>
+      <XAxis>
+        <XAxis.Ticks />
+      </XAxis>
+      <HoverLine x='category' />
+      <HoverRect x='category' />
+      <Bar x='category' y='bar' />
+      <Line
+        x='category'
+        y='bar'
+        color='chart-palette-order-total-amount'
+        style={{ strokeWidth: 3, strokeDasharray: 5 }}
+      >
+        <Line.Dots display />
+      </Line>
+    </Plot>
+  );
+};
+
+const data = [
+  { category: 0, bar: 0 },
+  { category: 1, bar: 1 },
+  { category: 2, bar: 2 },
+  { category: 3, bar: 3 },
+  { category: 4, bar: 4 },
+  { category: 5, bar: 3 },
+  { category: 6, bar: 2 },
+  { category: 7, bar: 1 },
+  { category: 8, bar: 2 },
+  { category: 9, bar: 4 },
+];
+
+export default Demo;
