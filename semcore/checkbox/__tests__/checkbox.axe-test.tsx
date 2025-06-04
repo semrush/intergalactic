@@ -9,18 +9,17 @@ test.describe('Checkbox', () => {
     await page.setContent(htmlContent);
 
     {
-    const violations = await getAccessibilityViolations({ page });
-    expect(violations).toEqual([]);
+      const violations = await getAccessibilityViolations({ page });
+      expect(violations).toEqual([]);
     }
 
     {
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Space');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Space');
 
-    const violations = await getAccessibilityViolations({ page });
-    expect(violations).toEqual([]);
+      const violations = await getAccessibilityViolations({ page });
+      expect(violations).toEqual([]);
     }
-
   });
 
   test('Partial selection', async ({ page }) => {
@@ -30,32 +29,31 @@ test.describe('Checkbox', () => {
     await page.setContent(htmlContent);
 
     {
-    const violations = await getAccessibilityViolations({ page });
-    expect(violations).toEqual([]);
+      const violations = await getAccessibilityViolations({ page });
+      expect(violations).toEqual([]);
     }
 
     {
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Space');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Space');
 
-    const violations = await getAccessibilityViolations({ page });
-    expect(violations).toEqual([]);
+      const violations = await getAccessibilityViolations({ page });
+      expect(violations).toEqual([]);
     }
-
   });
 
   test('With other components', async ({ page }) => {
-    const standPath = 'stories/components/checkbox/docs/examples/checkbox_with_other_components.tsx';
+    const standPath =
+      'stories/components/checkbox/docs/examples/checkbox_with_other_components.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
 
     {
-    const violations = await getAccessibilityViolations({ page });
-    expect(violations).toEqual([]);
+      const violations = await getAccessibilityViolations({ page });
+      expect(violations).toEqual([]);
     }
-
   });
 
   test('Additional props for input', async ({ page }) => {
@@ -65,12 +63,10 @@ test.describe('Checkbox', () => {
     await page.setContent(htmlContent);
 
     {
-    const violations = await getAccessibilityViolations({ page });
-    expect(violations).toEqual([]);
+      const violations = await getAccessibilityViolations({ page });
+      expect(violations).toEqual([]);
     }
-
   });
-
 
   test('Aria label props drilling', async ({ page }) => {
     const standPath = 'stories/components/checkbox/advanced/examples/aria_label_props_drilling.tsx';
@@ -79,18 +75,16 @@ test.describe('Checkbox', () => {
     await page.setContent(htmlContent);
 
     {
-    const violations = await getAccessibilityViolations({ page });
-    expect(violations).toEqual([]);
+      const violations = await getAccessibilityViolations({ page });
+      expect(violations).toEqual([]);
     }
 
     {
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Space');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Space');
 
-    const violations = await getAccessibilityViolations({ page });
-    expect(violations).toEqual([]);
+      const violations = await getAccessibilityViolations({ page });
+      expect(violations).toEqual([]);
     }
-
   });
-
 });
