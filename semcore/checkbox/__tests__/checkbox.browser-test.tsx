@@ -113,10 +113,8 @@ test.describe('Checkbox states and styles', () => {
         '12px',
       );
     });
-
   });
 });
-
 
 test.describe('Checkbox interactions', () => {
   test('Verify Checkbox group mouse interactions', async ({ page }) => {
@@ -130,14 +128,14 @@ test.describe('Checkbox interactions', () => {
     const checkbox = page.locator('[data-ui-name="Checkbox"]');
 
     await test.step('Verify checkbox checked when clicking on label ', async () => {
-      await checkboxText.first().click()
+      await checkboxText.first().click();
       await expect(checkbox.first()).toHaveClass(/checked/);
       await expect(checkboxValue.first()).toHaveClass(/checked/);
       await expect(valueCheckmark.first()).toHaveClass(/checked/);
     });
 
     await test.step('Verify checkbox checked when clicking on checkbox ', async () => {
-      await valueCheckmark.nth(1).click()
+      await valueCheckmark.nth(1).click();
       await expect(checkbox.first()).toHaveClass(/checked/);
       await expect(checkboxValue.first()).toHaveClass(/checked/);
       await expect(valueCheckmark.first()).toHaveClass(/checked/);
@@ -147,7 +145,7 @@ test.describe('Checkbox interactions', () => {
     });
 
     await test.step('Verify checkbox unchecked when clicking on label ', async () => {
-      await checkboxText.first().click()
+      await checkboxText.first().click();
       await expect(checkbox.first()).not.toHaveClass(/checked/);
       await expect(checkboxValue.first()).not.toHaveClass(/checked/);
       await expect(valueCheckmark.first()).not.toHaveClass(/checked/);
@@ -157,7 +155,7 @@ test.describe('Checkbox interactions', () => {
     });
 
     await test.step('Verify checkbox unchecked when clicking on checkbox ', async () => {
-      await valueCheckmark.nth(1).click()
+      await valueCheckmark.nth(1).click();
       await expect(checkbox.first()).not.toHaveClass(/checked/);
       await expect(checkboxValue.first()).not.toHaveClass(/checked/);
       await expect(valueCheckmark.first()).not.toHaveClass(/checked/);
@@ -165,7 +163,6 @@ test.describe('Checkbox interactions', () => {
       await expect(checkboxValue.nth(1)).not.toHaveClass(/checked/);
       await expect(valueCheckmark.nth(1)).not.toHaveClass(/checked/);
     });
-
   });
 
   test('Verify Checkbox group keyboard interactions', async ({ page }) => {
@@ -222,7 +219,6 @@ test.describe('Checkbox interactions', () => {
       await expect(checkboxValue.nth(1)).not.toHaveClass(/checked/);
       await expect(valueCheckmark.nth(1)).not.toHaveClass(/checked/);
     });
-
   });
 
   test('Verify Partial selection mouse interactions', async ({ page }) => {
@@ -236,31 +232,29 @@ test.describe('Checkbox interactions', () => {
     const checkbox = page.locator('[data-ui-name="Checkbox"]');
 
     await test.step('Verify all checkboxes checked when clicking on group label', async () => {
-      await checkboxText.first().click()
+      await checkboxText.first().click();
 
       const count1 = await checkboxText.count();
-    for (let i = 0; i < count1; i++) {
-      await expect(checkbox.nth(i)).toHaveClass(/checked/);
-      await expect(checkboxValue.nth(i)).toHaveClass(/checked/);
-      await expect(valueCheckmark.nth(i)).toHaveClass(/checked/);
-    }
-     
+      for (let i = 0; i < count1; i++) {
+        await expect(checkbox.nth(i)).toHaveClass(/checked/);
+        await expect(checkboxValue.nth(i)).toHaveClass(/checked/);
+        await expect(valueCheckmark.nth(i)).toHaveClass(/checked/);
+      }
     });
 
     await test.step('Verify all checkboxes unchecked when clicking on group label', async () => {
-      await valueCheckmark.first().click()
+      await valueCheckmark.first().click();
 
       const count1 = await checkboxText.count();
-    for (let i = 0; i < count1; i++) {
-      await expect(checkbox.nth(i)).not.toHaveClass(/checked/);
-      await expect(checkboxValue.nth(i)).not.toHaveClass(/checked/);
-      await expect(valueCheckmark.nth(i)).not.toHaveClass(/checked/);
-    }
-     
+      for (let i = 0; i < count1; i++) {
+        await expect(checkbox.nth(i)).not.toHaveClass(/checked/);
+        await expect(checkboxValue.nth(i)).not.toHaveClass(/checked/);
+        await expect(valueCheckmark.nth(i)).not.toHaveClass(/checked/);
+      }
     });
 
     await test.step('Verify group gets indeterminate when one item checked', async () => {
-      await checkboxText.nth(2).click()
+      await checkboxText.nth(2).click();
 
       await expect(checkbox.nth(0)).toHaveClass(/indeterminate/);
       await expect(checkboxValue.nth(0)).toHaveClass(/indeterminate/);
@@ -268,24 +262,23 @@ test.describe('Checkbox interactions', () => {
 
       await expect(checkbox.nth(2)).toHaveClass(/checked/);
       await expect(checkboxValue.nth(2)).toHaveClass(/checked/);
-      await expect(valueCheckmark.nth(2)).toHaveClass(/checked/); 
+      await expect(valueCheckmark.nth(2)).toHaveClass(/checked/);
     });
 
     await test.step('Verify all checkboxes unchecked when clicking indeterminate on group label', async () => {
-      await valueCheckmark.first().click()
+      await valueCheckmark.first().click();
 
       const count1 = await checkboxText.count();
-    for (let i = 0; i < count1; i++) {
-      await expect(checkbox.nth(i)).not.toHaveClass(/checked/);
-      await expect(checkboxValue.nth(i)).not.toHaveClass(/checked/);
-      await expect(valueCheckmark.nth(i)).not.toHaveClass(/checked/);
-    }
-     
+      for (let i = 0; i < count1; i++) {
+        await expect(checkbox.nth(i)).not.toHaveClass(/checked/);
+        await expect(checkboxValue.nth(i)).not.toHaveClass(/checked/);
+        await expect(valueCheckmark.nth(i)).not.toHaveClass(/checked/);
+      }
     });
 
     await test.step('Verify group gets indeterminate when one item unchecked', async () => {
-      await valueCheckmark.first().click()
-      await checkboxText.nth(2).click()
+      await valueCheckmark.first().click();
+      await checkboxText.nth(2).click();
 
       await expect(checkbox.nth(0)).toHaveClass(/indeterminate/);
       await expect(checkboxValue.nth(0)).toHaveClass(/indeterminate/);
@@ -293,13 +286,11 @@ test.describe('Checkbox interactions', () => {
 
       await expect(checkbox.nth(2)).not.toHaveClass(/checked/);
       await expect(checkboxValue.nth(2)).not.toHaveClass(/checked/);
-      await expect(valueCheckmark.nth(2)).not.toHaveClass(/checked/); 
+      await expect(valueCheckmark.nth(2)).not.toHaveClass(/checked/);
 
       await expect(page).toHaveScreenshot();
     });
-
   });
-
 
   test('Verify Partial selection keyboard interactions', async ({ page }) => {
     const standPath = 'stories/components/checkbox/docs/examples/partial_selection.tsx';
@@ -316,23 +307,21 @@ test.describe('Checkbox interactions', () => {
       await page.keyboard.press('Space');
 
       const count1 = await checkboxText.count();
-    for (let i = 0; i < count1; i++) {
-      await expect(checkbox.nth(i)).toHaveClass(/checked/);
-      await expect(checkboxValue.nth(i)).toHaveClass(/checked/);
-      await expect(valueCheckmark.nth(i)).toHaveClass(/checked/);
-    }
-     
+      for (let i = 0; i < count1; i++) {
+        await expect(checkbox.nth(i)).toHaveClass(/checked/);
+        await expect(checkboxValue.nth(i)).toHaveClass(/checked/);
+        await expect(valueCheckmark.nth(i)).toHaveClass(/checked/);
+      }
     });
 
     await test.step('Verify all checkboxes unchecked when pressing group', async () => {
       await page.keyboard.press('Space');
       const count1 = await checkboxText.count();
-    for (let i = 0; i < count1; i++) {
-      await expect(checkbox.nth(i)).not.toHaveClass(/checked/);
-      await expect(checkboxValue.nth(i)).not.toHaveClass(/checked/);
-      await expect(valueCheckmark.nth(i)).not.toHaveClass(/checked/);
-    }
-     
+      for (let i = 0; i < count1; i++) {
+        await expect(checkbox.nth(i)).not.toHaveClass(/checked/);
+        await expect(checkboxValue.nth(i)).not.toHaveClass(/checked/);
+        await expect(valueCheckmark.nth(i)).not.toHaveClass(/checked/);
+      }
     });
 
     await test.step('Verify group gets indeterminate when one item checked', async () => {
@@ -346,9 +335,9 @@ test.describe('Checkbox interactions', () => {
 
       await expect(checkbox.nth(2)).toHaveClass(/checked/);
       await expect(checkboxValue.nth(2)).toHaveClass(/checked/);
-      await expect(valueCheckmark.nth(2)).toHaveClass(/checked/); 
-  await expect(page).toHaveScreenshot();
-});
+      await expect(valueCheckmark.nth(2)).toHaveClass(/checked/);
+      await expect(page).toHaveScreenshot();
+    });
 
     await test.step('Verify all checkboxes unchecked when clicking indeterminate on group label', async () => {
       await page.keyboard.press('Shift+Tab');
@@ -356,12 +345,11 @@ test.describe('Checkbox interactions', () => {
       await page.keyboard.press('Space');
 
       const count1 = await checkboxText.count();
-    for (let i = 0; i < count1; i++) {
-      await expect(checkbox.nth(i)).not.toHaveClass(/checked/);
-      await expect(checkboxValue.nth(i)).not.toHaveClass(/checked/);
-      await expect(valueCheckmark.nth(i)).not.toHaveClass(/checked/);
-    }
-     
+      for (let i = 0; i < count1; i++) {
+        await expect(checkbox.nth(i)).not.toHaveClass(/checked/);
+        await expect(checkboxValue.nth(i)).not.toHaveClass(/checked/);
+        await expect(valueCheckmark.nth(i)).not.toHaveClass(/checked/);
+      }
     });
 
     await test.step('Verify group gets indeterminate when one item unchecked', async () => {
@@ -375,16 +363,15 @@ test.describe('Checkbox interactions', () => {
 
       await expect(checkbox.nth(1)).not.toHaveClass(/checked/);
       await expect(checkboxValue.nth(1)).not.toHaveClass(/checked/);
-      await expect(valueCheckmark.nth(1)).not.toHaveClass(/checked/); 
+      await expect(valueCheckmark.nth(1)).not.toHaveClass(/checked/);
 
       await expect(page).toHaveScreenshot();
     });
-
   });
 
-
   test('Verify Checkbox with onther elements keyboard interactions', async ({ page }) => {
-    const standPath = 'stories/components/checkbox/docs/examples/checkbox_with_other_components.tsx';
+    const standPath =
+      'stories/components/checkbox/docs/examples/checkbox_with_other_components.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -399,56 +386,49 @@ test.describe('Checkbox interactions', () => {
       await expect(checkboxValue.first()).toBeFocused();
 
       await page.keyboard.press('Tab');
-      await expect(checkboxValue.first()).not.toBeFocused(); 
+      await expect(checkboxValue.first()).not.toBeFocused();
       await expect(descriptionTooltipTrigger).toBeFocused();
-
-     
     });
-
 
     await test.step('Verify interactions with Focusable element not check checkbox', async () => {
       await page.keyboard.press('Space');
       await expect(checkboxValue.first()).not.toBeFocused();
 
       await page.keyboard.press('Escape');
-      await expect(checkboxValue.first()).not.toBeFocused(); 
+      await expect(checkboxValue.first()).not.toBeFocused();
       await expect(descriptionTooltipTrigger).toBeFocused();
-
     });
 
     await test.step('Verify focus on 2nd checkbox by tab', async () => {
       await page.keyboard.press('Tab');
-      await expect(checkboxValue.nth(1)).toBeFocused(); 
-     
+      await expect(checkboxValue.nth(1)).toBeFocused();
     });
 
     await test.step('Verify focus on prev by shift+tab', async () => {
       await page.keyboard.press('Shift+Tab');
-      await expect(checkboxValue.nth(1)).not.toBeFocused(); 
+      await expect(checkboxValue.nth(1)).not.toBeFocused();
       await expect(descriptionTooltipTrigger).toBeFocused();
-
     });
 
     await test.step('Verify focus on element after 2nd checkbox', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
-      await expect(checkboxValue.nth(1)).not.toBeFocused(); 
+      await expect(checkboxValue.nth(1)).not.toBeFocused();
       await expect(link).toBeFocused();
 
       await expect(page).toHaveScreenshot();
     });
-
-
   });
 
   test('Verify Checkbox with onther elements mouse interactions', async ({ page }) => {
-    const standPath = 'stories/components/checkbox/docs/examples/checkbox_with_other_components.tsx';
+    const standPath =
+      'stories/components/checkbox/docs/examples/checkbox_with_other_components.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
     const checkboxText = page.locator('[data-ui-name="Checkbox.Text"]');
     const checkboxValue = page.locator('[data-ui-name="Checkbox.Value"]');
-    const valueCheckmark = page.locator('[data-ui-name="Value.CheckMark"]');    
+    const valueCheckmark = page.locator('[data-ui-name="Value.CheckMark"]');
     const descriptionTooltipTrigger = page.locator('[data-ui-name="DescriptionTooltip.Trigger"]');
     const link = page.locator('[data-ui-name="Link"]');
 
@@ -456,29 +436,22 @@ test.describe('Checkbox interactions', () => {
 
     await test.step('Verify clicking on Focusable element not activate checkbox', async () => {
       await descriptionTooltipTrigger.click();
-     
+
       const count1 = await checkboxText.count();
       for (let i = 0; i < count1; i++) {
         await expect(checkbox.nth(i)).not.toHaveClass(/checked/);
         await expect(checkboxValue.nth(i)).not.toHaveClass(/checked/);
         await expect(valueCheckmark.nth(i)).not.toHaveClass(/checked/);
       }
-
     });
-
 
     await test.step('Verify clicking on label checks checkbox', async () => {
       await page.locator('label:has-text("Option 2")').click();
-     
+
       await expect(checkbox.nth(1)).not.toHaveClass(/checked/);
 
-        await expect(checkboxValue.nth(1)).toHaveClass(/checked/);
-        await expect(valueCheckmark.nth(1)).toHaveClass(/checked/);
-      
-
+      await expect(checkboxValue.nth(1)).toHaveClass(/checked/);
+      await expect(valueCheckmark.nth(1)).toHaveClass(/checked/);
     });
-
-
   });
-
 });
