@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.3] - 2025-05-30
+
+### Fixed
+
+- Incorrect `aria-controls` attribute on Accordion button.
+
 ## [16.0.2] - 2025-05-30
 
 ### Fixed
