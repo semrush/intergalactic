@@ -116,7 +116,7 @@ describe('Modal', () => {
     ).toBe(1);
   });
 
-  test.sequential('should block global scroll when visible', async ({ expect }) => {
+  test.sequential('Verify blocks global scroll when visible', async ({ expect }) => {
     const component = render(<Modal visible>Content</Modal>);
     expect(document.body).toHaveStyle('overflow: hidden');
     component.unmount();
