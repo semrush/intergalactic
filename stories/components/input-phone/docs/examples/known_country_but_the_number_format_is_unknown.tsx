@@ -25,7 +25,7 @@ const Demo = () => {
           autoComplete='tel'
           aria-labelledby='phone-label country-flag'
         />
-        {Number.Number.parseInt(value, 10) > 2 && (
+        {Number.parseInt(value, 10) > 2 && (
           <Input.Addon>
             <ButtonLink
               use='secondary'

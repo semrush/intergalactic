@@ -32,19 +32,19 @@ const Demo = () => {
             children: (
               <>
                 <ScatterPlot.Tooltip.Title>Data</ScatterPlot.Tooltip.Title>
-                {/* @ts-ignore */}
                 <Text tag='div'>
                   X axis
+                  {/* @ts-ignore */}
                   {data[index][x]}
                 </Text>
-                {/* @ts-ignore */}
                 <Text tag='div'>
                   Y axis
+                  {/* @ts-ignore */}
                   {data[index][y]}
                 </Text>
-                {/* @ts-ignore */}
                 <Text tag='div'>
                   Value
+                  {/* @ts-ignore */}
                   {data[index][value]}
                 </Text>
               </>

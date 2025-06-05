@@ -11,7 +11,7 @@ const Demo = () => {
   const resolveColor = useColorResolver();
   const xScale = scaleLinear()
     .range([MARGIN * 2, width - MARGIN * 2])
-    .domain([0, Math.max(...data.map((d) => Number.Number.parseFloat(d.bar)))]);
+    .domain([0, Math.max(...data.map((d) => Number.parseFloat(d.bar)))]);
 
   const yScale = scaleBand()
     .range([height - MARGIN, MARGIN])
