@@ -12,8 +12,8 @@
   "private": true,
   "license": "MIT",
   "dependencies": {
-    "@semcore/changelog-handler": "^0.0.1",
-    "@semcore/slack-integration": "^0.0.3",
+    "@semcore/changelog-handler": "workspace:*",
+    "@semcore/slack-integration": "workspace:*",
     "axios": "0.25.0",
     "compressing": "^1.10.3",
     "dayjs": "1.8.36",
