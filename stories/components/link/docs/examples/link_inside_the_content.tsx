@@ -1,37 +1,34 @@
-import FormatText from '@semcore/format-text';
-import LinkExternalM from '@semcore/icon/LinkExternal/m';
-import Link from '@semcore/link';
-import { List } from '@semcore/typography';
 import React from 'react';
+import { List } from '@semcore/typography';
+import Link from '@semcore/link';
+import LinkExternalM from '@semcore/icon/LinkExternal/m';
 
 const Demo = () => {
   return (
     <div>
-      <FormatText size='l'>
-        <p>
-          The Intergalactic Design System is so cutting-edge that even black holes are jealous of
-          its sleek interface,
+      <p>
+        The Intergalactic Design System is so cutting-edge that even black holes are jealous of
+        its sleek interface,
+        {' '}
+        <Link href='https://developer.semrush.com/intergalactic/components/link/link-api' inline noWrap={false} enableVisited>
+          <Link.Text>look at them</Link.Text>
+          <Link.Addon>
+            <LinkExternalM />
+          </Link.Addon>
+        </Link>
+        .
+      </p>
+      <p>
+        Aliens from distant galaxies use it to
+        {' '}
+        <Link href='#' inline noWrap={false}>
+          create otherworldly websites
           {' '}
-          <Link href='#' inline noWrap={false}>
-            <Link.Text>look at them</Link.Text>
-            <Link.Addon>
-              <LinkExternalM />
-            </Link.Addon>
-          </Link>
-          .
-        </p>
-        <p>
-          Aliens from distant galaxies use it to
-          {' '}
-          <Link href='#' inline noWrap={false}>
-            create otherworldly websites
-            {' '}
-          </Link>
-          {' '}
-          that are so user-friendly, even a space-faring cat with paws can navigate them.
-        </p>
-        <p>Look at these:</p>
-      </FormatText>
+        </Link>
+        {' '}
+        that are so user-friendly, even a space-faring cat with paws can navigate them.
+      </p>
+      <p>Look at these:</p>
       <List size={300}>
         <List.Item>
           <Link href='#' noWrap={false}>

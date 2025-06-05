@@ -10,7 +10,7 @@ const Demo = () => {
     <Flex>
       <Text flex='0 0 auto'>Sep 3</Text>
       <Divider mx={4} orientation='vertical' />
-      <Link w='100%' wMin={0} href='#'>
+      <Link w={500} wMin={0} href='#'>
         <Flex alignItems='center'>
           <Link.Text w='100%' inline noWrap>
             <Text w='100%' inline noWrap>
