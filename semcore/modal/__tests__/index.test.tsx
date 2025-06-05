@@ -114,7 +114,7 @@ describe('Modal', () => {
     component.unmount();
     expect(document.body).not.toHaveStyle('overflow: hidden');
   });
-  
+
   test.sequential('Verify default aria-label when no title is provided', () => {
     const { getByRole } = render(<Modal visible />);
     const dialog = getByRole('dialog');
