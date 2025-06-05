@@ -12,6 +12,14 @@ test.describe('Link', () => {
     await test.step('Verify links styles active disabled and normal', async () => {
       await expect(page).toHaveScreenshot();
     });
+
+    await test.step('Verify inline props', async () => {
+      const inlineTrue = page.locator('[data-testid="Inline-true"]');
+      const inlineFalse = page.locator('[data-testid="Inline-false"]')
+
+      await expect(inlineTrue).toHaveClass(/inline/);
+      await expect(inlineFalse).not.toHaveClass(/inline/);
+    });
   });
 
   test('Verify colored link styles', async ({ page }) => {

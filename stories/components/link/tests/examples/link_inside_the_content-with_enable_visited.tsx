@@ -30,22 +30,44 @@ const Demo = () => {
           Aliens from distant galaxies use it to{' '}
           <Link href='#' inline noWrap={false} active={true}>
             create otherworldly websites{' '} active without addon
-          </Link>{' '}
+          </Link> {' '}
           that are so user-friendly, even a space-faring cat with paws can navigate them.
         </p>
         <p>Look at these:</p>
       <List size={300}>
-        <List.Item>
-          <Link href='#' noWrap={false} disabled>
-            Alien fashionistas on Mars are rocking sleek spacesuits with astonishing components.
+      <List.Item w={200}>
+          <Link href='#' disabled  w={100}>
+            Disabled Alien fashionistas on Mars are rocking sleek spacesuits with astonishing components.
+            <Link.Addon>
+              <LinkExternalM />
+            </Link.Addon>
+          </Link>
+        </List.Item >
+        <List.Item w={200}>
+          <Link href='#' inline = {true}  w={100} data-testid = 'Inline-true'>
+            Inline = true Alien fashionistas on Mars are rocking sleek spacesuits with astonishing components.
+            <Link.Addon>
+              <LinkExternalM />
+            </Link.Addon>
+          </Link>
+        </List.Item >
+        <List.Item >
+          <Link href='#' inline = {false}  w={100} data-testid = 'Inline-false'> 
+            Inline = false Alien fashionistas on Mars are rocking sleek spacesuits with astonishing components.
             <Link.Addon>
               <LinkExternalM />
             </Link.Addon>
           </Link>
         </List.Item>
-        <List.Item>
+        <List.Item w={200}>
           <Link href='#' noWrap={false}>
-            Rumor has it that our design system's official font is so futuristic that it writes its
+          noWrap=false Rumor has it that our design system's official font is so futuristic that it writes its
+            own code while you're reading it.
+          </Link>
+          </List.Item>
+          <List.Item w={200}>
+          <Link href='#' noWrap={true}>
+          noWrap=true Rumor has it that our design system's official font is so futuristic that it writes its
             own code while you're reading it.
           </Link>
         </List.Item>

@@ -44,25 +44,4 @@ describe('Link', () => {
     expect(getByTestId('link').tagName).toBe('SPAN');
   });
 
-  test.sequential('Verify supports inline property', () => {
-    const { rerender, getByTestId } = render(<Link data-testid='link'>Link</Link>);
-    expect(getByTestId('link').className).not.toContain('inline');
-    rerender(
-      <Link data-testid='link' inline>
-        Link
-      </Link>,
-    );
-    expect(getByTestId('link').className).toContain('inline');
-  });
-
-  test('Verify supports noWrap property', () => {
-    const { rerender, getByTestId } = render(<Link data-testid='link'>Link</Link>);
-    expect(getByTestId('link').className).contains('noWrap');
-    rerender(
-      <Link data-testid='link' noWrap={false}>
-        Link
-      </Link>,
-    );
-    expect(getByTestId('link').className).not.contains('noWrap');
-  });
 });
