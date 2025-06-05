@@ -1,5 +1,6 @@
 import { createComponent, Component, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import React from 'react';
 
 import WidgetEmpty, { getIconPath } from '../WidgetEmpty';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';

@@ -26,7 +26,7 @@ describe('FeedbackForm', () => {
   test.concurrent('Should call onSubmit', () => {
     const onSubmit = vi.fn();
 
-    const { getByTestId } = render(
+    const { getByTestId, unmount } = render(
       <FeedbackForm onSubmit={onSubmit}>
         <FeedbackForm.Item name='input'>{({ input }) => <input {...input} />}</FeedbackForm.Item>
         <FeedbackForm.Submit data-testid='submit'>Send feedback</FeedbackForm.Submit>
@@ -35,13 +35,14 @@ describe('FeedbackForm', () => {
 
     fireEvent.click(getByTestId('submit'));
     expect(onSubmit).toHaveBeenCalledTimes(1);
+    unmount();
   });
 
   test.sequential('Should not call onSubmit for validation error', () => {
     const required = (value) => (value ? undefined : 'Required');
     const onSubmit = vi.fn();
 
-    const { getByTestId } = render(
+    const { getByTestId, unmount } = render(
       <FeedbackForm onSubmit={onSubmit}>
         <FeedbackForm.Item name='input' validate={required}>
           {({ input }) => <input {...input} />}
@@ -52,6 +53,7 @@ describe('FeedbackForm', () => {
 
     fireEvent.click(getByTestId('submit'));
     expect(onSubmit).toHaveBeenCalledTimes(0);
+    unmount();
   });
 
   test.concurrent('Should correct render form', async ({ task }) => {
@@ -115,7 +117,7 @@ describe('FeedbackForm', () => {
     const required = (value) => (value ? undefined : 'Required');
     const onSubmit = vi.fn();
 
-    const { getByTestId } = render(
+    const { getByTestId, unmount } = render(
       <FeedbackForm onSubmit={onSubmit}>
         <FeedbackForm.Item name='description' validate={required}>
           {({ input, meta }) => <input data-testid='input' {...input} />}
@@ -129,13 +131,14 @@ describe('FeedbackForm', () => {
     await userEvent.keyboard('[Tab]');
     await userEvent.keyboard('[Tab]');
     expect(Input.attributes.state.value).toBe('invalid');
+    unmount();
   });
 
   test('Should work with validationOnBlur=false', async ({ expect }) => {
     const required = (value) => (value ? undefined : 'Required');
     const onSubmit = vi.fn();
 
-    const { getByTestId } = render(
+    const { getByTestId, unmount } = render(
       <FeedbackForm onSubmit={onSubmit} validateOnBlur={false}>
         <FeedbackForm.Item name='description' validate={required}>
           {({ input, meta }) => <input data-testid='input' {...input} />}
@@ -152,10 +155,11 @@ describe('FeedbackForm', () => {
 
     await userEvent.keyboard('[Enter]');
     expect(Input.attributes.state.value).toBe('invalid');
+    unmount();
   });
 
   test('a11y', async () => {
-    const { container } = render(
+    const { container, unmount } = render(
       <FeedbackForm>
         <label htmlFor='suggestions'>Tell us your suggestion or report an issue</label>
         <FeedbackForm.Item name='input'>
@@ -168,6 +172,7 @@ describe('FeedbackForm', () => {
     const results = await axe(container);
 
     expect(results).toHaveNoViolations();
+    unmount();
   });
 });
 
@@ -191,7 +196,7 @@ describe('5-star FeedbackForm', () => {
     const required = (value) => (value ? undefined : 'Required');
     const onSubmit = vi.fn();
 
-    const { getByText } = render(
+    const { getByText, unmount } = render(
       <FeedbackRating
         initialValues={{ input: '' }}
         onSubmit={onSubmit}
@@ -208,5 +213,6 @@ describe('5-star FeedbackForm', () => {
     await userEvent.keyboard('[Enter]');
 
     expect(onSubmit).not.toHaveBeenCalled();
+    unmount();
   });
 });

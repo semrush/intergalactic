@@ -8,6 +8,7 @@ import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
 import { Flex } from '@semcore/flex-box';
 import CloseM from '@semcore/icon/Close/m';
+import React from 'react';
 
 import style from './style/notice-global.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
