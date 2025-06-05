@@ -19,7 +19,7 @@ const MAP_FIELD_TO_TIME = {
 };
 
 export function intOrDefault(value, def = 0) {
-  const number = Number.Number.parseInt(value);
+  const number = Number.parseInt(value);
   return Number.isNaN(number) ? def : number;
 }
 

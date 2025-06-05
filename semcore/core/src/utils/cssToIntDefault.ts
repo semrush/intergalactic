@@ -3,7 +3,7 @@
  * value is not numeric
  * @param {string} value
  * @param {number} defaultValue
- * @returns {Number|number}
+ * @returns {Number}
  */
 export default function cssToIntDefault(value: string, defaultValue = 0) {
   let result = Number.parseFloat(value);

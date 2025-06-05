@@ -22,7 +22,7 @@ class RootAccordion extends Component {
     cssVariableEnhance({
       variable: '--intergalactic-duration-accordion',
       fallback: '200',
-      map: Number.Number.parseInt,
+      map: Number.parseInt,
       prop: 'duration',
     }),
   ];

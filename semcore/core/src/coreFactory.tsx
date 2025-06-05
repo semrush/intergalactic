@@ -314,7 +314,7 @@ function createComponent<ComponentProps, ChildComponentProps = {}, ContextType =
     ComponentProps extends Component<infer Props> ? Props : ComponentProps,
     ChildComponentProps,
     ContextType,
-    ComponentProps extends ClassWithUncontrolledProps<any>
+    ComponentProps extends ClassWithUncontrolledProps
       ? ReturnType<ComponentProps['uncontrolledProps']>
       : { [key: string]: (arg: unknown) => void },
     FNType

@@ -95,6 +95,7 @@
     "dotenv": "8.2.0",
     "esbuild": "0.14.29",
     "eslint": "9.27.0",
+    "eslint-plugin-simple-import-sort": "2.1.0",
     "eslint-plugin-react": "7.37.5",
     "execa": "6.1.0",
     "fast-glob": "3.2.11",

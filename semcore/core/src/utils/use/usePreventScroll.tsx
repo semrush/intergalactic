@@ -26,7 +26,7 @@ export function getScrollbarWidth(): number {
 }
 
 function getIntValueFromCss(value: any) {
-  return !Number.isNaN(Number(value)) ? Number(value) : Number.Number.parseInt(value, 10);
+  return !Number.isNaN(Number(value)) ? Number(value) : Number.parseInt(value, 10);
 }
 
 const scrollPreventers = new Set<string>();

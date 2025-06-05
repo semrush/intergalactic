@@ -31,7 +31,7 @@ class ModalRoot extends Component {
     cssVariableEnhance({
       variable: '--intergalactic-duration-modal',
       fallback: '200',
-      map: Number.Number.parseInt,
+      map: Number.parseInt,
       prop: 'duration',
     }),
   ];

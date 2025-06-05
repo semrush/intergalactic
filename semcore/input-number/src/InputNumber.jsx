@@ -146,8 +146,8 @@ class Value extends Component {
   round(value, step) {
     const countDecimals = Math.floor(step) === step ? 0 : step.toString().split('.')[1].length || 0;
     return countDecimals === 0
-      ? Number.Number.parseFloat(value)
-      : Number.Number.parseFloat(value).toPrecision(countDecimals);
+      ? Number.parseFloat(value)
+      : Number.parseFloat(value).toPrecision(countDecimals);
   }
 
   handleValidation = (event) => {
@@ -155,11 +155,11 @@ class Value extends Component {
     const { parsedValue } = this.valueParser(event.currentTarget.value, value, displayValue);
     const roundCoefficient = step < 1 ? step.toString().split('.')[1].length : 1;
 
-    if (Number.isNaN(value) || Number.isNaN(Number.Number.parseFloat(parsedValue))) {
+    if (Number.isNaN(value) || Number.isNaN(Number.parseFloat(parsedValue))) {
       event.currentTarget.value = '';
       this.handlers.value('', event);
     } else {
-      let numberValue = parseValueWithMinMax(Number.Number.parseFloat(parsedValue), min, max);
+      let numberValue = parseValueWithMinMax(Number.parseFloat(parsedValue), min, max);
       const rounded = this.round(numberValue % step, step);
       if (rounded !== 0) {
         if (rounded >= step / 2) {
@@ -414,7 +414,7 @@ class Value extends Component {
     if (value === '') {
       numberValue = min ?? 0;
     } else {
-      numberValue = Number.Number.parseFloat(value);
+      numberValue = Number.parseFloat(value);
     }
 
     if (!Number.isNaN(numberValue)) {
@@ -432,7 +432,7 @@ class Value extends Component {
     if (value === '') {
       numberValue = max ?? 0;
     } else {
-      numberValue = Number.Number.parseFloat(value);
+      numberValue = Number.parseFloat(value);
     }
 
     if (!Number.isNaN(numberValue)) {
