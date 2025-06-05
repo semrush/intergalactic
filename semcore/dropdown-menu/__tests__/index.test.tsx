@@ -2,7 +2,7 @@ import React from 'react';
 import { snapshot } from '@semcore/testing-utils/snapshot';
 import Button from '@semcore/button';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
-import {fireEvent, cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
+import { fireEvent, cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
 
 import DropdownMenu from '../src';
 import { Box } from '@semcore/flex-box';
