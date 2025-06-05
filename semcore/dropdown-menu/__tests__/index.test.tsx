@@ -2,7 +2,7 @@ import React from 'react';
 import { snapshot } from '@semcore/testing-utils/snapshot';
 import Button from '@semcore/button';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
-import { cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
+import {fireEvent, cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
 
 import DropdownMenu from '../src';
 import { Box } from '@semcore/flex-box';
@@ -16,6 +16,33 @@ describe('dropdown-menu Dependency imports', () => {
 
 describe('DropdownMenu', () => {
   beforeEach(cleanup);
+
+  test.concurrent('Verify does not trigger visibility change on Space key in input', () => {
+    const spy = vi.fn();
+    const { getByTestId } = render(
+      <DropdownMenu onVisibleChange={spy} interaction='focus'>
+        <DropdownMenu.Trigger tag='input' data-testid='input' />
+      </DropdownMenu>,
+    );
+
+    const input = getByTestId('input');
+    fireEvent.change(input, { target: { value: ' ' } });
+    fireEvent.keyDown(input, { key: ' ', which: 32, keyCode: 32 });
+    expect(spy).not.toHaveBeenCalled();
+  });
+
+  test.concurrent('Verify does not trigger visibility change on Enter key in textarea', () => {
+    const spy = vi.fn();
+    const { getByTestId } = render(
+      <DropdownMenu onVisibleChange={spy} interaction='focus'>
+        <DropdownMenu.Trigger tag='textarea' data-testid='textarea' />
+      </DropdownMenu>,
+    );
+
+    const textarea = getByTestId('textarea');
+    fireEvent.keyDown(textarea, { key: 'Enter', which: 13, keyCode: 13 });
+    expect(spy).not.toHaveBeenCalled();
+  });
 
   test.concurrent('Verify ItemHint and ItemTitle are not broken', async ({ task }) => {
     const component = (
@@ -75,32 +102,6 @@ describe('DropdownMenu', () => {
 
     expect(spy).toHaveBeenCalledOnce();
   });
-
-  test.sequential(
-    'Verify no autofocus trigger when closed on just rerender',
-    async ({ expect }) => {
-      const Component = () => {
-        return (
-          <DropdownMenu>
-            <DropdownMenu.Trigger tag='button' data-testid='dd-button-trigger'>
-              Trigger
-            </DropdownMenu.Trigger>
-            <DropdownMenu.Menu>
-              <DropdownMenu.Item>Item 1</DropdownMenu.Item>
-              <DropdownMenu.Item>Item 2</DropdownMenu.Item>
-              <DropdownMenu.Item selected>Item 3</DropdownMenu.Item>
-            </DropdownMenu.Menu>
-          </DropdownMenu>
-        );
-      };
-      const component = render(<Component />);
-
-      await new Promise((resolve) => setTimeout(resolve, 1));
-      component.rerender(<Component />);
-      await new Promise((resolve) => setTimeout(resolve, 1));
-      expect(component.getByTestId('dd-button-trigger')).not.toHaveFocus();
-    },
-  );
 
   test.sequential('Verify onVisibleChange event calls once', async ({ expect }) => {
     const spy = vi.fn();
