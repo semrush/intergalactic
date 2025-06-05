@@ -15,6 +15,7 @@ const TooltipContent = () => {
   return (
     <>
       Option
+      {' '}
       {tooltipIndex}
       {' '}
       description

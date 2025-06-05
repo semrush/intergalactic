@@ -464,7 +464,7 @@ test.describe('Custom stepper example', () => {
     await test.step('Open modal using keyboard and verify focus', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
-      await page.waitForTimeout(50);
+      await page.waitForTimeout(150);
       await page.keyboard.press('Tab');
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowDown');
