@@ -1,5 +1,4 @@
 import React from 'react';
-import FormatText from '@semcore/format-text';
 import { List } from '@semcore/typography';
 import Link from '@semcore/link';
 import LinkExternalM from '@semcore/icon/LinkExternal/m';
@@ -7,11 +6,10 @@ import LinkExternalM from '@semcore/icon/LinkExternal/m';
 const Demo = () => {
   return (
     <div>
-      <FormatText size={'l'}>
         <p>
           The Intergalactic Design System is so cutting-edge that even black holes are jealous of
           its sleek interface,{' '}
-          <Link href='#' inline noWrap={false}>
+          <Link href='https://developer.semrush.com/intergalactic/components/link/link-api' inline noWrap={false} enableVisited>
             <Link.Text>look at them</Link.Text>
             <Link.Addon>
               <LinkExternalM />
@@ -27,7 +25,6 @@ const Demo = () => {
           that are so user-friendly, even a space-faring cat with paws can navigate them.
         </p>
         <p>Look at these:</p>
-      </FormatText>
       <List size={300}>
         <List.Item>
           <Link href='#' noWrap={false}>
