@@ -320,7 +320,6 @@ test.describe('Modal positioning ans styles', () => {
     await page.mouse.wheel(0, 600);
     await new Promise((resolve) => setTimeout(resolve, 500));
 
-
     await expect(page).toHaveScreenshot();
   });
 
@@ -457,7 +456,5 @@ test.describe('Confirmation modal dialog pattern', () => {
       await page.keyboard.press('Shift+Tab');
       await expect(bths.nth(1)).toBeFocused();
     });
-
-   
   });
 });
