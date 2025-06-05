@@ -46,7 +46,7 @@ export abstract class BaseLegend<T extends LegendProps> extends Component<T> {
       shape,
       size,
       onChangeLegendItem: this.onChangeLegendItem,
-      onMouseEnter: this.bindOnMouseEnterItem(line.id),
+      ...(line.checked && { onMouseEnter: this.bindOnMouseEnterItem(line.id) }),
       onMouseLeave: this.bindOnMouseLeaveItem(line.id),
       style: { gridRowStart: `${index + 1}`, gridRowEnd: `${index + 2}` },
       patterns,
@@ -55,6 +55,12 @@ export abstract class BaseLegend<T extends LegendProps> extends Component<T> {
 
   onChangeLegendItem = (id: LegendItemKey, checked: boolean) => {
     this.props.onChangeVisibleItem?.(id, checked);
+
+    if (checked) {
+      this.props.onMouseEnterItem?.(id);
+    } else {
+      this.props.onMouseLeaveItem?.(id);
+    }
   };
 
   bindOnMouseEnterItem = (id: LegendItemKey) => {
