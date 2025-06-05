@@ -5,7 +5,7 @@ import Checkbox from '@semcore/checkbox';
 import AriaLabelPropsDrillingExample from './examples/aria_label_props_drilling';
 
 const meta: Meta<typeof Checkbox> = {
-  title: 'Components/Checkbox/Additional',
+  title: 'Components/Checkbox/Advanced',
   component: Checkbox,
 };
 
