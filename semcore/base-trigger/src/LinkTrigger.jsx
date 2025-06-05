@@ -4,6 +4,7 @@ import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEn
 import { Box } from '@semcore/flex-box';
 import ChevronDown from '@semcore/icon/ChevronDown/m';
 import Spin from '@semcore/spin';
+import React from 'react';
 
 import style from './style/link-trigger.shadow.css';
 

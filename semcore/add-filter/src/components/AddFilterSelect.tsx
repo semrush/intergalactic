@@ -1,7 +1,7 @@
 import { FilterTrigger } from '@semcore/base-trigger';
 import { createComponent, Component, Root } from '@semcore/core';
 import Select, { type SelectProps } from '@semcore/select';
-import type React from 'react';
+import React from 'react';
 
 import type { AddFilterItemProps, AddFilterSelectType } from '../AddFilter.types';
 

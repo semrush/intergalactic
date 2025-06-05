@@ -6,7 +6,7 @@ import Divider from '@semcore/divider';
 import { Box, Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import { scaleBand, scaleLinear } from 'd3-scale';
-import type React from 'react';
+import React from 'react';
 
 import type { CigaretteChartData, CigaretteChartProps, CigaretteChartType } from './CigaretteChart.type';
 

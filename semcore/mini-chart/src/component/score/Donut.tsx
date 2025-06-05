@@ -3,6 +3,7 @@ import { assignProps } from '@semcore/core';
 import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import { Box, type BoxProps } from '@semcore/flex-box';
+import React from 'react';
 
 import style from './donut.shadow.css';
 import type { CommonScoreProps } from './Score';

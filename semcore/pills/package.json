@@ -29,7 +29,7 @@
     "directory": "semcore/pills"
   },
   "devDependencies": {
-    "@types/react": "18.0.21",
+
     "@semcore/badge": "*",
     "@semcore/icon": "*",
     "@semcore/testing-utils": "1.0.0"

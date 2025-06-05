@@ -5,6 +5,7 @@ import { Box } from '@semcore/flex-box';
 import InfoM from '@semcore/icon/Info/m';
 import { DescriptionTooltip } from '@semcore/tooltip';
 import { Text } from '@semcore/typography';
+import React from 'react';
 
 import style from './style/card.shadow.css';
 

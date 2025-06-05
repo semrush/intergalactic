@@ -3,7 +3,7 @@ import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { Box, Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import { scaleBand, scaleLinear, type ScaleLinear, scaleTime } from 'd3-scale';
-import type React from 'react';
+import React from 'react';
 
 // @ts-ignore
 import { Bar, minMax, HoverRect, StackBar, type BarProps } from '../..';

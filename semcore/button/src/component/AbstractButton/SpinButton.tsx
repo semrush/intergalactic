@@ -1,4 +1,5 @@
 import Spin from '@semcore/spin';
+import React from 'react';
 
 export const SPIN_SIZE_MAP: Record<string, string> = {
   xl: 'm',

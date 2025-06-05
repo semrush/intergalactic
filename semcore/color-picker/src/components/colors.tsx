@@ -1,7 +1,7 @@
 import { Root, sstyled } from '@semcore/core';
 import { Box, Flex } from '@semcore/flex-box';
 import MathPlusM from '@semcore/icon/MathPlus/m';
-import type React from 'react';
+import React from 'react';
 
 import ColorPicker, { PaletteManager } from '../ColorPicker';
 

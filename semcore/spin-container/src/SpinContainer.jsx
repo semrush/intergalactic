@@ -4,6 +4,7 @@ import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEn
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 import { Box } from '@semcore/flex-box';
 import Spin from '@semcore/spin';
+import React from 'react';
 
 import style from './style/spin-container.shadow.css';
 

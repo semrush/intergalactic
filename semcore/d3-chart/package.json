@@ -58,7 +58,6 @@
     "@semcore/utils": "*",
     "@types/d3-array": "^3.0.2",
     "@types/d3-scale": "^4.0.2",
-    "@types/d3-transition": "^3.0.1",
-    "@types/react": "18.0.21"
+    "@types/d3-transition": "^3.0.1"
   }
 }

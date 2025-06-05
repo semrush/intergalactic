@@ -69,7 +69,7 @@ export default defineConfig({
       'tools/*/__tests__/utils.ts',
     ],
     environment: 'jsdom',
-    setupFiles: ['allure-vitest/setup', resolvePath(__dirname, 'tools/testing-utils/setupTests')],
+    setupFiles: [resolvePath(__dirname, 'tools/testing-utils/setupTests')],
     reporters: ['default', new AllureReporter({})],
   },
   define: {

@@ -14,7 +14,7 @@ describe('Button Dependency imports', () => {
 });
 
 describe('Button', () => {
-  test.concurrent('Verify loading attributes', () => {
+  test.concurrent('Verify loading attributes', ({ expect }) => {
     const { queryByTestId } = render(
       <Button data-testid='button' loading>
         Text

@@ -5,6 +5,7 @@ import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { Flex, Box } from '@semcore/flex-box';
 import { Text as TypographyText } from '@semcore/typography';
 import type { DOMAttributes } from 'react';
+import React from 'react';
 
 import style from './legend-item.shadow.css';
 import {

@@ -3,7 +3,7 @@ import { Box } from '@semcore/flex-box';
 import CheckM from '@semcore/icon/Check/m';
 import CloseM from '@semcore/icon/Close/m';
 import Input from '@semcore/input';
-import type React from 'react';
+import React from 'react';
 
 import style from '../style/color-picker.shadow.css';
 

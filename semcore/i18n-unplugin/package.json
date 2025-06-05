@@ -25,7 +25,7 @@
   },
   "devDependencies": {
     "@semcore/testing-utils": "workspace:*",
-    "@types/react": "18.0.21",
+
     "@types/rollup": "^0.54.0",
     "@types/watchpack": "^2.4.4",
     "@types/webpack": "^5.28.5",

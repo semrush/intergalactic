@@ -1,7 +1,7 @@
 import { createComponent } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { scaleLinear, type ScaleLinear } from 'd3-scale';
-import type React from 'react';
+import React from 'react';
 
 import { AbstractChart } from './AbstractChart';
 import type { RadarChartData, RadarChartProps, RadarChartType } from './RadarChart.type';

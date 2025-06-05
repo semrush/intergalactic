@@ -3,6 +3,7 @@ import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocus
 import fire from '@semcore/core/lib/utils/fire';
 import { Box, ScreenReaderOnly } from '@semcore/flex-box';
 import dayjs from 'dayjs';
+import React from 'react';
 
 import style from '../style/calendar.shadow.css';
 import { formatDDMMYY, formatMMYY } from '../utils/formatDate';

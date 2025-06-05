@@ -29,7 +29,6 @@
   "devDependencies": {
     "@semcore/testing-utils": "workspace:*",
     "@types/fs-extra": "8.1.0",
-    "@types/react": "18.0.21",
     "esbuild": "0.14.29",
     "fs-extra": "8.1.0",
     "happy-dom": "9.20.3",

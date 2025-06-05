@@ -2,7 +2,7 @@ import { createComponent, Component, Root, sstyled, type Intergalactic } from '@
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { Flex, Box, type BoxProps } from '@semcore/flex-box';
-import type React from 'react';
+import React from 'react';
 
 import style from '../../style/slider-rating.shadow.css';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';

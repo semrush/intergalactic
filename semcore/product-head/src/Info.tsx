@@ -8,7 +8,7 @@ import {
 } from '@semcore/core';
 import isNode from '@semcore/core/lib/utils/isNode';
 import { Box, type BoxProps } from '@semcore/flex-box';
-import type React from 'react';
+import React from 'react';
 
 import style from './style/info.shadow.css';
 

@@ -2,6 +2,7 @@ import { createComponent } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { Text } from '@semcore/typography';
 import { scaleLinear } from 'd3-scale';
+import React from 'react';
 
 import type { BaseChartProps } from './AbstractChart.type';
 // @ts-ignore

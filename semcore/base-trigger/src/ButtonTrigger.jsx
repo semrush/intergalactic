@@ -4,6 +4,7 @@ import animatedSizeEnhance from '@semcore/core/lib/utils/enhances/animatedSizeEn
 import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
 import ChevronDown from '@semcore/icon/ChevronDown/m';
 import Spin from '@semcore/spin';
+import React from 'react';
 
 import BaseTrigger from './BaseTrigger';
 import style from './style/button-trigger.shadow.css';

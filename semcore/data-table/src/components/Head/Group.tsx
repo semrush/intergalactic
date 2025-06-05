@@ -2,6 +2,7 @@ import { Box } from '@semcore/base-components';
 import { Component, Root, sstyled } from '@semcore/core';
 import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import React from 'react';
 
 import type { DataTableGroupProps, GroupPropsInner } from './Group.type';
 import style from './style.shadow.css';

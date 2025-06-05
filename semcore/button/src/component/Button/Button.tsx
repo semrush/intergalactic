@@ -1,5 +1,6 @@
 import { createComponent, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
+import React from 'react';
 
 import style from './button.shadow.css';
 import type { ButtonAddonProps, ButtonComponent, ButtonTextProps } from './Button.type';

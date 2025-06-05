@@ -1,6 +1,6 @@
 import { Root, sstyled } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
-import type React from 'react';
+import React from 'react';
 
 type DropdownItemProps = {
   styles: React.DetailedHTMLProps<React.StyleHTMLAttributes<HTMLStyleElement>, HTMLStyleElement>;

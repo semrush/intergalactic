@@ -33,7 +33,6 @@
   },
   "devDependencies": {
     "@semcore/testing-utils": "workspace:*",
-    "@types/classnames": "2.2.6",
-    "@types/react": "18.0.21"
+    "@types/classnames": "2.2.6"
   }
 }

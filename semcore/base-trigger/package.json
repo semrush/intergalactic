@@ -34,7 +34,6 @@
   },
   "devDependencies": {
     "@semcore/testing-utils": "workspace:*",
-    "@semcore/tooltip": "6.22.0",
-    "@types/react": "18.0.21"
+    "@semcore/tooltip": "6.22.0"
   }
 }

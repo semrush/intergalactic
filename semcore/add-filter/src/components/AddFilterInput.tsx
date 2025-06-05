@@ -2,7 +2,7 @@ import { ButtonLink } from '@semcore/button';
 import { createComponent, Component, Root } from '@semcore/core';
 import Input from '@semcore/input';
 import type { InputValueProps } from '@semcore/input';
-import type React from 'react';
+import React from 'react';
 
 import type { AddFilterItemProps } from '../AddFilter.types';
 

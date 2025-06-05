@@ -4,7 +4,7 @@ import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { transition } from 'd3-transition';
-import type React from 'react';
+import React from 'react';
 
 import type { DataHintsHandler } from './a11y/hints';
 import createElement from './createElement';

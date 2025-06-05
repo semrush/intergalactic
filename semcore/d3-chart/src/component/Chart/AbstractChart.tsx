@@ -4,7 +4,7 @@ import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import type { ScaleBand, ScaleLinear, ScaleTime } from 'd3-scale';
-import type React from 'react';
+import React from 'react';
 
 import type { BaseChartProps, BaseLegendProps, ListData, ObjectData } from './AbstractChart.type';
 

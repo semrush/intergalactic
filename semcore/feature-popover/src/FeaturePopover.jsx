@@ -6,6 +6,7 @@ import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { Box } from '@semcore/flex-box';
 import CloseIcon from '@semcore/icon/Close/m';
 import Popper from '@semcore/popper';
+import React from 'react';
 
 import style from './style/feature-popover.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';

@@ -7,6 +7,7 @@ import {
   Root,
   createComponent,
 } from '@semcore/core';
+import React from 'react';
 
 import style from './style/format-text.shadow.css';
 

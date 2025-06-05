@@ -4,6 +4,7 @@ import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import Divider from '@semcore/divider';
 import { Box } from '@semcore/flex-box';
 import dayjs from 'dayjs';
+import React from 'react';
 
 import {
   Header,

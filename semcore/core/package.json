@@ -312,8 +312,6 @@
     "@semcore/testing-utils": "workspace:*",
     "@types/classnames": "2.2.6",
     "@types/hoist-non-react-statics": "^3.3.6",
-    "@types/react": "18.0.21",
-    "@types/react-dom": "18.0.6",
     "colorjs.io": "0.4.3",
     "postcss": "8.4.33",
     "postcss-value-parser": "4.1.0"

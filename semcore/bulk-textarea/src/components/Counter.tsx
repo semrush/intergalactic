@@ -2,6 +2,7 @@ import { Root } from '@semcore/core';
 import type { useI18n } from '@semcore/core/lib/utils/enhances/WithI18n';
 import CounterKit, { type CounterProps as CounterPropsKit } from '@semcore/counter';
 import { ScreenReaderOnly } from '@semcore/flex-box';
+import React from 'react';
 
 export type CounterProps = {
   theme: CounterPropsKit['theme'];

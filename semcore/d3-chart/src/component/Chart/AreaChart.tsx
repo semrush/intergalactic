@@ -3,6 +3,7 @@ import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { Flex, Box } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import { type ScaleLinear, scaleLinear, scaleTime } from 'd3-scale';
+import React from 'react';
 
 // @ts-ignore
 import { Area, minMax, HoverLine, StackedArea } from '../..';

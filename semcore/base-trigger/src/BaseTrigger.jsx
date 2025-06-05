@@ -5,6 +5,7 @@ import logger from '@semcore/core/lib/utils/logger';
 import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
 import { Box, InvalidStateBox } from '@semcore/flex-box';
 import NeighborLocation from '@semcore/neighbor-location';
+import React from 'react';
 
 import style from './style/base-trigger.shadow.css';
 

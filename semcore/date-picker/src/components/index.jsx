@@ -6,6 +6,7 @@ import { Box } from '@semcore/flex-box';
 import ChevronLeft from '@semcore/icon/ChevronLeft/m';
 import ChevronRight from '@semcore/icon/ChevronRight/m';
 import dayjs from 'dayjs';
+import React from 'react';
 
 import ButtonTrigger from './ButtonTrigger';
 import InputTriggerBase from './InputTrigger';

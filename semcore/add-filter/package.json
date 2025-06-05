@@ -35,7 +35,6 @@
     "directory": "semcore/add-filter"
   },
   "devDependencies": {
-    "@semcore/testing-utils": "workspace:*",
-    "@types/react": "18.0.21"
+    "@semcore/testing-utils": "workspace:*"
   }
 }

@@ -36,7 +36,6 @@
   },
   "devDependencies": {
     "@semcore/testing-utils": "1.0.0",
-    "@types/dompurify": "3.2.0",
-    "@types/react": "18.0.21"
+    "@types/dompurify": "3.2.0"
   }
 }

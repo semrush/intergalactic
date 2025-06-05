@@ -3,6 +3,7 @@ import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import isRetina from '@semcore/core/lib/utils/isRetina';
 import { useBox } from '@semcore/flex-box';
 import cn from 'classnames';
+import React from 'react';
 
 import countries from './countries.json';
 import styles from './style/flags.shadow.css';

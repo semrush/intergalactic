@@ -1,6 +1,7 @@
 import { createComponent, sstyled, Root } from '@semcore/core';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import { Box } from '@semcore/flex-box';
+import React from 'react';
 
 import style from './buttonLink.shadow.css';
 import type { ButtonLinkAddonProps, ButtonLinkComponent, ButtonLinkTextProps } from './ButtonLink.type';

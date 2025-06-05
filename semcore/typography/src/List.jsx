@@ -2,6 +2,7 @@ import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 import isNode from '@semcore/core/lib/utils/isNode';
 import { Flex } from '@semcore/flex-box';
+import React from 'react';
 
 import style from './style/list.shadow.css';
 import Text from './Text';

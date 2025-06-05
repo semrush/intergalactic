@@ -4,7 +4,7 @@ import { Flex } from '@semcore/flex-box';
 import ChevronDownM from '@semcore/icon/ChevronDown/m';
 import ChevronUpM from '@semcore/icon/ChevronUp/m';
 import { Text } from '@semcore/typography';
-import type React from 'react';
+import React from 'react';
 
 export type ErrorsNavigationProps = {
   errorIndex: number;
