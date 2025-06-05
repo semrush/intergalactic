@@ -104,7 +104,7 @@ test.describe('Modal', () => {
 
   test('Confirmation modal', async ({ page }) => {
     const standPath =
-      'stories/components/patterns/ux-patterms/confirmation-modal-dialog/docs/examples/confirmation-modal-example.tsx';
+      'stories/patterns/ux-patterns/confirmation-modal-dialog/docs/examples/confirmation-modal-example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
