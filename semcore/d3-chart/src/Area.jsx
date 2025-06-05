@@ -2,6 +2,7 @@ import { Component, sstyled } from '@semcore/core';
 import findComponent from '@semcore/core/lib/utils/findComponent';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { area, curveLinear, line } from 'd3-shape';
+import React from 'react';
 
 import AnimatedClipPath from './AnimatedClipPath';
 import createElement from './createElement';

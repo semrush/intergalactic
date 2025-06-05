@@ -8,6 +8,7 @@ import { extractSemcoreImplicitDependencies } from './semcore-implicit-dependnci
 export { esbuildPluginSemcoreSourcesResolve } from './esbuild-plugin-semcore-sources-resolve';
 
 const babelTransform = async (contents: string, path: string) => {
+  // @ts-ignore
   const { default: babelConfig } = await import('@semcore/babel-preset-ui/.babelrc.js');
   const babel = await import('@babel/core');
 

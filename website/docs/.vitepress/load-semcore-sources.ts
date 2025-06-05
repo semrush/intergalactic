@@ -8,6 +8,7 @@ import { Plugin } from 'esbuild';
 // export { esbuildPluginSemcoreSourcesResolve } from './esbuild-plugin-semcore-sources-resolve';
 
 const babelTransform = async (contents: string, path: string, isEsm?: true) => {
+  // @ts-ignore
   const babelPresetUi = await import('@semcore/babel-preset-ui/.babelrc.js');
   const babelConfig = babelPresetUi.default as (babel: any, opts: any) => any;
   // @ts-ignore

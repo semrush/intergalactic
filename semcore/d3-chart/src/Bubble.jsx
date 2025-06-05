@@ -1,6 +1,7 @@
 import { Component, Root, sstyled } from '@semcore/core';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { transition } from 'd3-transition';
+import React from 'react';
 
 import createElement from './createElement';
 import { PatternFill } from './Pattern';
