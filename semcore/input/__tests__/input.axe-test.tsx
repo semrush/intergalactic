@@ -2,32 +2,10 @@ import { expect, getAccessibilityViolations, test } from '@semcore/testing-utils
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 test.describe('Input', () => {
-  test('Dynamic search', async ({ page }) => {
-    const standPath = 'stories/patterns/filters/filter-search/docs/examples/dynamic_search.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    {
-      await page.keyboard.press('Tab');
-
-      const violations = await getAccessibilityViolations({ page });
-
-      expect(violations).toEqual([]);
-    }
-
-    {
-      await page.keyboard.type('Hello');
-
-      const violations = await getAccessibilityViolations({ page });
-
-      expect(violations).toEqual([]);
-    }
-  });
 
   test('Input with submit', async ({ page }) => {
     const standPath =
-      'stories/patterns/filters/filter-search/docs/examples/input_with_a_submit_icon.tsx';
+      'stories/components/input/docs/examples/input_with_a_submit_icon.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -51,7 +29,7 @@ test.describe('Input', () => {
 
   test('Input with text addon', async ({ page }) => {
     const standPath =
-      'stories/patterns/filters/filter-search/docs/examples/input_with_a_text_addon.tsx';
+      'stories/components/input/docs/examples/input_with_a_text_addon.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -75,7 +53,7 @@ test.describe('Input', () => {
 
   test('Input with multiple addons', async ({ page }) => {
     const standPath =
-      'stories/patterns/filters/filter-search/docs/examples/input_with_multiple_addons.tsx';
+      'stories/components/input/docs/examples/input_with_multiple_addons.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -99,7 +77,7 @@ test.describe('Input', () => {
 
   test('Input with other component ', async ({ page }) => {
     const standPath =
-      'stories/patterns/filters/filter-search/docs/examples/input_with_other_component_inside.tsx';
+      'stories/components/input/docs/examples/input_with_other_component_inside.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -115,7 +93,7 @@ test.describe('Input', () => {
 
   test('Input with clear ', async ({ page }) => {
     const standPath =
-      'stories/patterns/filters/filter-search/docs/examples/input_with_the_clearing_ability.tsx';
+      'stories/components/input/docs/examples/input_with_the_clearing_ability.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -139,7 +117,7 @@ test.describe('Input', () => {
 
   test('Input with loading state ', async ({ page }) => {
     const standPath =
-      'stories/patterns/filters/filter-search/docs/examples/input_with_the_clearing_ability.tsx';
+      'stories/components/input/docs/examples/input_with_the_clearing_ability.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -162,7 +140,7 @@ test.describe('Input', () => {
   });
 
   test('Input password ', async ({ page }) => {
-    const standPath = 'stories/patterns/filters/filter-search/docs/examples/password_input.tsx';
+    const standPath = 'stories/components/input/docs/examples/password_input.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -183,4 +161,28 @@ test.describe('Input', () => {
       expect(violations).toEqual([]);
     }
   });
+
+  test('Dynamic search', async ({ page }) => {
+    const standPath = 'stories/patterns/filters/filter-search/docs/examples/dynamic_search.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    {
+      await page.keyboard.press('Tab');
+
+      const violations = await getAccessibilityViolations({ page });
+
+      expect(violations).toEqual([]);
+    }
+
+    {
+      await page.keyboard.type('Hello');
+
+      const violations = await getAccessibilityViolations({ page });
+
+      expect(violations).toEqual([]);
+    }
+  });
+
 });
