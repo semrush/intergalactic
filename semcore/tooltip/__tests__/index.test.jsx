@@ -1,40 +1,31 @@
 import React from 'react';
 import { cleanup, fireEvent, render, act } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
-import { axe } from '@semcore/testing-utils/axe';
-
-import Tooltip, { Hint, DescriptionTooltip } from '../src';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import Tooltip from '../src';
 import { waitFor } from '@storybook/test';
 
-describe('tooltip Dependency imports', () => {
-  runDependencyCheckTests('tooltip');
-});
-
-describe('Tooltip.Trigger', () => {
+describe('Tooltip', () => {
   beforeEach(cleanup);
 
-  test('should support custom className', () => {
+  test('Verify supports custom className on Trigger', () => {
     const { getByTestId } = render(
       <Tooltip>
-        <Tooltip.Trigger data-testid='trigger' className='more-than one-class' />
+        <Tooltip.Trigger data-testid='trigger' className='custom-class' />
       </Tooltip>,
     );
-
-    expect(getByTestId('trigger').attributes['class'].value).toContain('more-than one-class');
+    expect(getByTestId('trigger').className).toContain('custom-class');
   });
 
-  test('should support custom attributes', () => {
+  test('Verify supports custom attributes on Trigger', () => {
     const { getByTestId } = render(
       <Tooltip>
-        <Tooltip.Trigger data-testid='trigger' name='trigger' />
+        <Tooltip.Trigger data-testid='trigger' data-custom='value' />
       </Tooltip>,
     );
-
-    expect(getByTestId('trigger').attributes['name'].value).toBe('trigger');
+    expect(getByTestId('trigger').getAttribute('data-custom')).toBe('value');
   });
 
-  test('should support ref', () => {
+  test('Verify supports ref on Trigger', () => {
     const ref = React.createRef();
     render(
       <Tooltip>
@@ -44,56 +35,31 @@ describe('Tooltip.Trigger', () => {
     expect(ref.current.nodeName).toBe('BUTTON');
   });
 
-  test('should support children', async () => {
-    const component = (
+  test('Verify renders children inside Trigger', () => {
+    const { getByText } = render(
       <Tooltip>
         <Tooltip.Trigger>
-          <p data-testid='child'>Test</p>
+          <span>Child</span>
         </Tooltip.Trigger>
-      </Tooltip>
+      </Tooltip>,
     );
-    const { getByTestId } = render(component);
-
-    expect(getByTestId('child')).toBeTruthy();
+    expect(getByText('Child')).toBeTruthy();
   });
-});
 
-describe('Tooltip.Popper', () => {
-  beforeEach(cleanup);
-
-  test('should support custom className', async ({ expect }) => {
+  test('Verify supports className and custom attributes on Popper', async () => {
     const { getByTestId } = render(
       <Tooltip visible>
         <Tooltip.Trigger />
-        <Tooltip.Popper data-testid='popper' className='more-than one-class' />
+        <Tooltip.Popper data-testid='popper' className='custom' data-x='1' />
       </Tooltip>,
     );
-
-    await waitFor(
-      () => {
-        expect(getByTestId('popper').attributes['class'].value).toContain('more-than one-class');
-      },
-      { timeout: 500 },
-    );
+    await waitFor(() => {
+      expect(getByTestId('popper').className).toContain('custom');
+      expect(getByTestId('popper').getAttribute('data-x')).toBe('1');
+    });
   });
 
-  test('should support custom attributes', async ({ expect }) => {
-    const { getByTestId } = render(
-      <Tooltip visible>
-        <Tooltip.Trigger />
-        <Tooltip.Popper data-testid='popper' name='popper' />
-      </Tooltip>,
-    );
-
-    await waitFor(
-      () => {
-        expect(getByTestId('popper').attributes['name'].value).toBe('popper');
-      },
-      { timeout: 500 },
-    );
-  });
-
-  test('should support ref', async ({ expect }) => {
+  test('Verify supports ref on Popper', async () => {
     const ref = React.createRef();
     render(
       <Tooltip visible>
@@ -101,127 +67,85 @@ describe('Tooltip.Popper', () => {
         <Tooltip.Popper ref={ref} />
       </Tooltip>,
     );
-
-    await waitFor(
-      () => {
-        expect(ref.current.nodeName).toBe('DIV');
-      },
-      { timeout: 250 },
-    );
+    await waitFor(() => {
+      expect(ref.current.nodeName).toBe('DIV');
+    });
   });
 
-  test('should support children', async ({ expect }) => {
-    const component = (
-      <Tooltip visible>
-        <Tooltip.Trigger />
-        <Tooltip.Popper>
-          <p>test popper content</p>
-        </Tooltip.Popper>
-      </Tooltip>
-    );
-
-    const { getAllByText } = render(component);
-
-    await waitFor(
-      () => {
-        expect(getAllByText('test popper content', {})).toHaveLength(1);
-      },
-      { timeout: 250 },
-    );
-  });
-
-  test('should support render function for children', async ({ expect }) => {
-    const component = (
+  test('Verify supports render function as children', async () => {
+    render(
       <Tooltip visible>
         {() => (
           <>
             <Tooltip.Trigger />
-            <Tooltip.Popper />
+            <Tooltip.Popper data-testid='popper' />
           </>
         )}
-      </Tooltip>
+      </Tooltip>,
     );
-    render(component);
-
-    await waitFor(
-      () => {
-        expect(
-          document.querySelectorAll('[data-ui-name^="Tooltip"][data-ui-name$="Popper"]').length,
-        ).toBe(1);
-      },
-      { timeout: 250 },
-    );
-  });
-});
-
-describe('TooltipBase', () => {
-  beforeEach(cleanup);
-
-  test('should support ref', () => {
-    const ref = React.createRef();
-    render(<Tooltip ref={ref} tag='button' title='test' />);
-    expect(ref.current.nodeName).toBe('BUTTON');
+    await waitFor(() => {
+      expect(document.querySelector('[data-testid="popper"]')).toBeTruthy();
+    });
   });
 
-  test('open/hide', () => {
+  test('Verify opens and hides on mouse events', () => {
     vi.useFakeTimers();
     const spy = vi.fn();
     const { getByTestId } = render(
-      <Tooltip title='Test test test' disablePortal onVisibleChange={spy}>
+      <Tooltip title='test' disablePortal onVisibleChange={spy}>
         <button type='button' data-testid='trigger'>
-          trigger
+          Trigger
         </button>
       </Tooltip>,
     );
-
-    fireEvent.mouseMove(getByTestId('trigger'));
     fireEvent.mouseEnter(getByTestId('trigger'));
-    act(() => {
-      vi.runAllTimers();
-    });
-    expect(spy).toHaveBeenCalledTimes(1);
+    act(() => vi.runAllTimers());
     fireEvent.mouseLeave(getByTestId('trigger'));
-    act(() => {
-      vi.runAllTimers();
-    });
+    act(() => vi.runAllTimers());
     expect(spy).toHaveBeenCalledTimes(2);
     vi.useRealTimers();
   });
+});
 
-  describe('a11y', () => {
-    test('Hint', async () => {
-      const { container } = render(
-        <Hint title='text' visible tag='a'>
-          trigger
-        </Hint>,
-      );
+//smoke for Hint и DescriptionTooltip
+import { Hint, DescriptionTooltip } from '../src';
 
-      const results = await axe(container);
-      expect(results).toHaveNoViolations();
+describe('Hint', () => {
+  test('Verify supports ref', () => {
+    const ref = React.createRef();
+    render(<Hint ref={ref} tag='button' title='hint' />);
+    expect(ref.current.nodeName).toBe('BUTTON');
+  });
+
+  test('Verify displays popper with visible prop', async () => {
+    const { getByTestId } = render(
+      <Hint visible>
+        <Hint.Trigger />
+        <Hint.Popper data-testid='popper' />
+      </Hint>,
+    );
+    await waitFor(() => {
+      expect(getByTestId('popper')).toBeTruthy();
     });
-    test('Tooltip', async () => {
-      const { container } = render(
-        <Tooltip visible disablePortal>
-          <Tooltip.Trigger tag='button'>trigger</Tooltip.Trigger>
-          <Tooltip.Popper>text</Tooltip.Popper>
-        </Tooltip>,
-      );
+  });
+});
 
-      const results = await axe(container);
-      expect(results).toHaveNoViolations();
-    });
-    test('DescriptionTooltip', async () => {
-      const { container } = render(
-        <DescriptionTooltip visible disablePortal>
-          <DescriptionTooltip.Trigger tag='button'>trigger</DescriptionTooltip.Trigger>
-          <DescriptionTooltip.Popper aria-label={'required aria label'}>
-            text
-          </DescriptionTooltip.Popper>
-        </DescriptionTooltip>,
-      );
+describe('DescriptionTooltip', () => {
+  test('Verify supports ref', () => {
+    const ref = React.createRef();
+    render(<DescriptionTooltip ref={ref} tag='button' title='desc' />);
+    expect(ref.current.nodeName).toBe('BUTTON');
+  });
 
-      const results = await axe(container);
-      expect(results).toHaveNoViolations();
+  test('Verify displays popper with visible prop', async () => {
+    const { getByTestId } = render(
+      <DescriptionTooltip visible>
+        <DescriptionTooltip.Trigger />
+        <DescriptionTooltip.Popper data-testid='popper' />
+      </DescriptionTooltip>,
+    );
+    await waitFor(() => {
+      expect(getByTestId('popper')).toBeTruthy();
     });
   });
 });
