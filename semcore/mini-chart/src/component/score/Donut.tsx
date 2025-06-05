@@ -1,11 +1,11 @@
 import { createComponent, Component, Root, sstyled, type ComponentType } from '@semcore/core';
-import { Box, type BoxProps } from '@semcore/flex-box';
-import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import { assignProps } from '@semcore/core';
-import type { CommonScoreProps } from './Score';
+import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
+import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
+import { Box, type BoxProps } from '@semcore/flex-box';
 
 import style from './donut.shadow.css';
-import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
+import type { CommonScoreProps } from './Score';
 
 export type ScoreDonutProps = BoxProps & CommonScoreProps;
 

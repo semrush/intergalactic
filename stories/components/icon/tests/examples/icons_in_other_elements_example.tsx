@@ -1,17 +1,17 @@
-import React from 'react';
-import Button, { ButtonLink } from '@semcore/button';
 import { ButtonTrigger, LinkTrigger, FilterTrigger } from '@semcore/base-trigger';
-import { Hint, DescriptionTooltip } from '@semcore/tooltip';
+import Button, { ButtonLink } from '@semcore/button';
+import DropdownMenu from '@semcore/dropdown-menu';
 import { Flex, Box } from '@semcore/flex-box';
+import IconL from '@semcore/icon/ChartVenn/l';
+import IconM from '@semcore/icon/ChartVenn/m';
 import Input from '@semcore/input';
 import Link from '@semcore/link';
 import Switch from '@semcore/switch';
-import DropdownMenu from '@semcore/dropdown-menu';
+import { Hint, DescriptionTooltip } from '@semcore/tooltip';
 import { List } from '@semcore/ui/typography';
 
 // you only need to edit the paths to choose other icons
-import IconM from '@semcore/icon/ChartVenn/m';
-import IconL from '@semcore/icon/ChartVenn/l';
+import React from 'react';
 
 const Demo = () => {
   return (

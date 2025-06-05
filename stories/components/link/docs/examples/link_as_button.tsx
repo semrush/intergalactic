@@ -1,6 +1,6 @@
-import React from 'react';
 import Button from '@semcore/button';
 import PlusM from '@semcore/icon/MathPlus/m';
+import React from 'react';
 
 const Demo = () => {
   return (

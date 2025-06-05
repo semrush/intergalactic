@@ -1,9 +1,10 @@
-import React, { PureComponent } from 'react';
 import type { NanoOptions } from '@phytonmk/nano-css';
 import type { CssLikeObject } from '@phytonmk/nano-css/types/common';
+import React, { PureComponent } from 'react';
+
+import type { UnknownProperties } from '../../core-types/UnknownProperties';
 import createHoc from '../createHoc';
 import CSSinJS from '../CSSinJS';
-import type { UnknownProperties } from '../../core-types/UnknownProperties';
 
 const getStylesheet = () => CSSinJS().raw;
 

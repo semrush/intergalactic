@@ -1,11 +1,11 @@
-import React from 'react';
-import { Text } from '@semcore/typography';
-import { Flex } from '@semcore/flex-box';
-import { DescriptionTooltip } from '@semcore/tooltip';
-import Link from '@semcore/link';
 import { ButtonLink } from '@semcore/button';
-import InfoM from '@semcore/icon/Info/m';
+import { Flex } from '@semcore/flex-box';
 import InfoL from '@semcore/icon/Info/l';
+import InfoM from '@semcore/icon/Info/m';
+import Link from '@semcore/link';
+import { DescriptionTooltip } from '@semcore/tooltip';
+import { Text } from '@semcore/typography';
+import React from 'react';
 
 const Demo = () => (
   <>

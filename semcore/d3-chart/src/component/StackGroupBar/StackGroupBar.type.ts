@@ -1,5 +1,6 @@
 import type { ScaleBand, ScaleLinear } from 'd3-scale';
 import type { Stack } from 'd3-shape';
+
 // @ts-ignore
 import type { IntergalacticD3Component } from '../../Plot';
 

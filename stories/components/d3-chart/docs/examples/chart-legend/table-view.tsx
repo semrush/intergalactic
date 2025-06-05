@@ -1,6 +1,6 @@
-import React from 'react';
 import { ChartLegendTable } from '@semcore/d3-chart';
 import { Text } from '@semcore/typography';
+import React from 'react';
 
 const data = [...Array(5).keys()].map((d, i) => ({
   x: i,

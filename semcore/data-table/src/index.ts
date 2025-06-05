@@ -1,11 +1,12 @@
+import type { Intergalactic } from '@semcore/core';
+import type React from 'react';
+
 import { DataTable, ACCORDION, ROW_GROUP, UNIQ_ROW_KEY } from './components/DataTable/DataTable';
 import type {
   DataTableSort,
   DataTableType,
   DataTableData,
 } from './components/DataTable/DataTable.types';
-import type { Intergalactic } from '@semcore/core';
-import type React from 'react';
 
 const wrapDataTable = <PropsExtending extends {}>(
   wrapper: (

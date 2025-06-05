@@ -1,7 +1,8 @@
-import type { Flex, FlexProps } from '@semcore/flex-box';
 import type { Intergalactic } from '@semcore/core';
-import type { LegendItemType } from '../LegendItem/LegendItem.type';
+import type { Flex, FlexProps } from '@semcore/flex-box';
+
 import type { LegendProps } from '../BaseLegend.type';
+import type { LegendItemType } from '../LegendItem/LegendItem.type';
 
 export type TrendProps = {
   /**

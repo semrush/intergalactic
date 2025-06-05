@@ -1,6 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
-
 import Pills from '@semcore/pills';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import BasicUsageExample from './examples/basic_example';
 import TabsExample from './examples/tabs_example';

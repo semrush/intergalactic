@@ -1,16 +1,15 @@
-import React, { useEffect, useRef, useState } from 'react';
-import Dropdown from '@semcore/dropdown';
-import Select from '@semcore/select';
-import Input from '@semcore/input';
-import MathPlusM from '@semcore/icon/MathPlus/m';
-import { Hint } from '@semcore/ui/tooltip';
-import { Flex } from '@semcore/flex-box';
-import Divider from '@semcore/divider';
-import Button from '@semcore/button';
 import { FilterTrigger } from '@semcore/base-trigger';
+import Button from '@semcore/button';
+import Divider from '@semcore/divider';
+import Dropdown from '@semcore/dropdown';
+import { Flex, ScreenReaderOnly } from '@semcore/flex-box';
 import CloseM from '@semcore/icon/Close/m';
+import MathPlusM from '@semcore/icon/MathPlus/m';
 import TrashM from '@semcore/icon/Trash/m';
-import { ScreenReaderOnly } from '@semcore/flex-box';
+import Input from '@semcore/input';
+import Select from '@semcore/select';
+import { Hint } from '@semcore/ui/tooltip';
+import React, { useEffect, useRef, useState } from 'react';
 
 const makeOptions = (options: string[]) => options.map((value) => ({ value, children: value }));
 

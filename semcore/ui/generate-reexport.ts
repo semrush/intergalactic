@@ -1,10 +1,11 @@
-import path from 'path';
-import fs from 'fs-extra';
-import glob from 'fast-glob';
-import { fileURLToPath } from 'url';
 import { createRequire } from 'module';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
 import { Parser } from 'acorn';
 import acornJSX from 'acorn-jsx';
+import glob from 'fast-glob';
+import fs from 'fs-extra';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.resolve(filename, '..');

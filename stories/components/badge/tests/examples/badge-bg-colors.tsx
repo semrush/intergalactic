@@ -1,6 +1,6 @@
-import React from 'react';
 import Badge from '@semcore/badge';
 import { Flex } from '@semcore/flex-box';
+import React from 'react';
 
 const Demo = () => {
   return (

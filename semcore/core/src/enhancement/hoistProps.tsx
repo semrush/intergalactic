@@ -1,7 +1,8 @@
 import React from 'react';
+
 import assignProps from '../utils/assignProps';
-import useEnhancedEffect from '../utils/use/useEnhancedEffect';
 import pick from '../utils/pick';
+import useEnhancedEffect from '../utils/use/useEnhancedEffect';
 
 export const HOIST_CONTEXT = Symbol('HOIST_CONTEXT');
 const HOIST_SELF = Symbol('HOIST_SELF');

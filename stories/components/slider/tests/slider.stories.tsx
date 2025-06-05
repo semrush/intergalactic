@@ -1,9 +1,9 @@
-import type { Meta, StoryObj } from '@storybook/react';
 import Slider from '@semcore/slider';
+import type { Meta, StoryObj } from '@storybook/react';
 
+import CustomizesOptionsViewExample from './examples/customized_options_view';
 import TextExample from './examples/different-types-states';
 import SliderWithOptionsExample from './examples/numeric_slider';
-import CustomizesOptionsViewExample from './examples/customized_options_view';
 
 const meta: Meta<typeof Slider> = {
   title: 'Components/Slider/Tests',

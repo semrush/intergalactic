@@ -1,7 +1,7 @@
 import BaseTrigger from '@semcore/base-trigger';
+import { createComponent, Root } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import Calendar from '@semcore/icon/Calendar/m';
-import { createComponent, Root } from '@semcore/core';
 
 const ButtonTriggerRoot = ({ Children }) => {
   return (

@@ -1,5 +1,5 @@
-import React from 'react';
 import { DataTable, ROW_GROUP, ACCORDION } from '@semcore/ui/data-table';
+import React from 'react';
 
 const data = [
   {

@@ -1,8 +1,8 @@
-import React from 'react';
-import Popper from '@semcore/popper';
-import { Box, Flex } from '@semcore/flex-box';
-import Card from '@semcore/card';
 import Button from '@semcore/button';
+import Card from '@semcore/card';
+import { Box, Flex } from '@semcore/flex-box';
+import Popper from '@semcore/popper';
+import React from 'react';
 
 const Demo = () => {
   return (

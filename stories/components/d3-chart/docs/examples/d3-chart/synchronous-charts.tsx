@@ -1,5 +1,3 @@
-import React from 'react';
-import { scaleLinear, scaleBand } from 'd3-scale';
 import {
   Bar,
   HoverLine,
@@ -10,6 +8,8 @@ import {
   YAxis,
   PlotEventEmitter,
 } from '@semcore/d3-chart';
+import { scaleLinear, scaleBand } from 'd3-scale';
+import React from 'react';
 
 const eventEmitter = new PlotEventEmitter();
 

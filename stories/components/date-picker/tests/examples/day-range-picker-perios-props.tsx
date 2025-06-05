@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
 import { DateRangePicker } from '@semcore/date-picker';
 import { Flex } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
 import CheckM from '@semcore/icon/Check/m';
+import { Text } from '@semcore/typography';
+import React, { useState } from 'react';
 
 const Demo = () => {
   const [value, setValue] = useState<[Date, Date]>([

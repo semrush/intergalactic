@@ -1,5 +1,5 @@
-import type { DataTableData, DataTableProps, DTUse } from '../DataTable/DataTable.types';
 import type { DTColumn } from './Column.types';
+import type { DataTableData, DataTableProps, DTUse } from '../DataTable/DataTable.types';
 
 export type DataTableHeadProps = {
   /**

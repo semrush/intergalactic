@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import DifferentPropsExample from './examples/area-chart/different-props';
 import AreaExample from './examples/area-chart/area';
 import BasicUsageExample from './examples/area-chart/basic-usage';
+import DifferentPropsExample from './examples/area-chart/different-props';
 import InterpolationExample from './examples/area-chart/interpolation';
 import LegendPatternExample from './examples/area-chart/legend-and-pattern-fill';
 

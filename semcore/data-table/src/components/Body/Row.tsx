@@ -1,13 +1,14 @@
-import * as React from 'react';
-import { Component, Root, sstyled, createComponent } from '@semcore/core';
-import type { DataTableRowProps, RowPropsInner } from './Row.types';
 import { Box, Collapse } from '@semcore/base-components';
-import style from './style.shadow.css';
-import { Body } from './Body';
-import { ACCORDION, SELECT_ALL } from '../DataTable/DataTable';
-import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
-import type { DTValue } from '../DataTable/DataTable.types';
 import Checkbox from '@semcore/checkbox';
+import { Component, Root, sstyled, createComponent } from '@semcore/core';
+import * as React from 'react';
+
+import { Body } from './Body';
+import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
+import type { DataTableRowProps, RowPropsInner } from './Row.types';
+import style from './style.shadow.css';
+import { ACCORDION, SELECT_ALL } from '../DataTable/DataTable';
+import type { DTValue } from '../DataTable/DataTable.types';
 
 class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
   static displayName = 'Row';

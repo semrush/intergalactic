@@ -1,7 +1,7 @@
-import React from 'react';
 import BulkTextarea from '@semcore/bulk-textarea';
 import { Box, Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
+import React from 'react';
 
 const validateRow = (line: string, lines: string[]) => {
   let isValid = true;

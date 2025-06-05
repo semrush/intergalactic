@@ -1,11 +1,11 @@
-import React from 'react';
 import { DataTable } from '@semcore/data-table';
 import { Box, Flex } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
-import MiniChart from '@semcore/mini-chart';
-import InlineInput from '@semcore/inline-input';
-import InlineEdit from '@semcore/inline-edit';
 import EditM from '@semcore/icon/Edit/m';
+import InlineEdit from '@semcore/inline-edit';
+import InlineInput from '@semcore/inline-input';
+import MiniChart from '@semcore/mini-chart';
+import { Text } from '@semcore/typography';
+import React from 'react';
 
 const Vol = (props: { value: string | React.ReactElement }) => {
   const [text, setText] = React.useState('Martin Eden');

@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import DifferentTextPropsExample from './examples/text-with-diff-combimations';
-import ListNestedExample from './examples/nested-list';
 import BloquoteExample from './examples/blockquote';
-import TextFontAndSizeExample from './examples/text-font-size-and-weight-headers-and-paragrapsh';
 import ListAxeExample from './examples/list-axe-test';
+import ListNestedExample from './examples/nested-list';
+import TextFontAndSizeExample from './examples/text-font-size-and-weight-headers-and-paragrapsh';
+import DifferentTextPropsExample from './examples/text-with-diff-combimations';
 
 const meta: Meta = {
   title: 'Components/Typography/Tests',

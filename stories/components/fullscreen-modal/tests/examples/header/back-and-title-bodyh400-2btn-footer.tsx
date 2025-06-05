@@ -1,12 +1,12 @@
-import React from 'react';
-import FullscreenModal from '@semcore/fullscreen-modal';
-import { DescriptionTooltip } from '@semcore/tooltip';
-import { Text } from '@semcore/typography';
-import Link from '@semcore/link';
 import Button, { ButtonLink } from '@semcore/button';
-import InfoM from '@semcore/icon/Info/m';
+import FullscreenModal from '@semcore/fullscreen-modal';
 import ArrowLeftM from '@semcore/icon/ArrowLeft/m';
 import ArrowRightM from '@semcore/icon/ArrowRight/m';
+import InfoM from '@semcore/icon/Info/m';
+import Link from '@semcore/link';
+import { DescriptionTooltip } from '@semcore/tooltip';
+import { Text } from '@semcore/typography';
+import React from 'react';
 
 const Demo = () => {
   const [visible, setVisible] = React.useState(false);

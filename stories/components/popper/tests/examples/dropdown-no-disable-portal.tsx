@@ -1,7 +1,7 @@
-import React from 'react';
-import DropdownMenu from '@semcore/dropdown-menu';
 import { ButtonTrigger } from '@semcore/base-trigger';
+import DropdownMenu from '@semcore/dropdown-menu';
 import Input from '@semcore/input';
+import React from 'react';
 
 const Demo = () => {
   return (

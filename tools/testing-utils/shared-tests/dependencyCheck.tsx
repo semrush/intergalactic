@@ -1,8 +1,9 @@
-import { test, expect } from 'vitest';
 import * as fs from 'node:fs/promises';
 import * as path from 'node:path';
 import * as process from 'node:process';
+
 import glob from 'fast-glob';
+import { test, expect } from 'vitest';
 
 async function extractImports(filePath: string) {
   const content = await fs.readFile(filePath, 'utf8');

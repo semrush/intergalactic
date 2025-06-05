@@ -1,16 +1,16 @@
-import React from 'react';
-import FeedbackForm from '@semcore/feedback-form';
-import Input from '@semcore/input';
-import { Box, Flex } from '@semcore/flex-box';
-import Link from '@semcore/link';
-import Dropdown from '@semcore/dropdown';
-import Textarea from '@semcore/textarea';
-import Notice from '@semcore/notice';
 import Button from '@semcore/button';
-import ThumbUpM from '@semcore/icon/ThumbUp/m';
+import Dropdown from '@semcore/dropdown';
+import FeedbackForm from '@semcore/feedback-form';
+import { Box, Flex } from '@semcore/flex-box';
 import ThumbDownM from '@semcore/icon/ThumbDown/m';
-import { Text } from '@semcore/typography';
+import ThumbUpM from '@semcore/icon/ThumbUp/m';
 import FeedbackIllustration from '@semcore/illustration/Feedback';
+import Input from '@semcore/input';
+import Link from '@semcore/link';
+import Notice from '@semcore/notice';
+import Textarea from '@semcore/textarea';
+import { Text } from '@semcore/typography';
+import React from 'react';
 
 const validate = {
   description: (value = '') => {

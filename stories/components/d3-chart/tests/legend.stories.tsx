@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import LegendShapesRowExample from './examples/chart-legend/shapes-row';
 import LegendShapesColumnExample from './examples/chart-legend/shapes-column';
+import LegendShapesRowExample from './examples/chart-legend/shapes-row';
 
 const meta: Meta = {
   title: 'Components/d3Charts/tests/ChartLegend',

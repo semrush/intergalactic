@@ -1,7 +1,7 @@
-import React from 'react';
-import { scaleLinear } from 'd3-scale';
 import { Line, minMax, ResponsiveContainer, XAxis, Plot, YAxis } from '@semcore/d3-chart';
 import { Flex } from '@semcore/flex-box';
+import { scaleLinear } from 'd3-scale';
+import React from 'react';
 
 const Demo = () => {
   const [[width, height], setSize] = React.useState([0, 0]);

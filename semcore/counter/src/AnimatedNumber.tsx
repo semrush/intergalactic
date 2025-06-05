@@ -1,7 +1,8 @@
-import React from 'react';
-import { useCssVariable } from '@semcore/core/lib/utils/useCssVariable';
-import useEnhancedEffect from '@semcore/core/lib/utils/use/useEnhancedEffect';
 import type { Intergalactic } from '@semcore/core';
+import useEnhancedEffect from '@semcore/core/lib/utils/use/useEnhancedEffect';
+import { useCssVariable } from '@semcore/core/lib/utils/useCssVariable';
+import React from 'react';
+
 import type { AnimatedNumberBaseProps } from './index';
 
 const easeInOutSine = (t: number) => -(Math.cos(Math.PI * t) - 1) / 2;

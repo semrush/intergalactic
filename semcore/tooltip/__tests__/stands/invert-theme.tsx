@@ -1,5 +1,5 @@
-import React from 'react';
 import Tooltip from '@semcore/tooltip';
+import React from 'react';
 
 export default () => {
   return (

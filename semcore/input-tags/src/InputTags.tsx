@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   createComponent,
   Component,
@@ -9,19 +8,20 @@ import {
   type Intergalactic,
   type IRootComponentProps,
 } from '@semcore/core';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import { extractFrom, isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
+import fire from '@semcore/core/lib/utils/fire';
+import { getAccessibleName } from '@semcore/core/lib/utils/getAccessibleName';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import { ScreenReaderOnly } from '@semcore/flex-box';
 import Input, { type InputProps, type InputValueProps } from '@semcore/input';
+import Portal from '@semcore/portal';
 import ScrollArea, { type ScrollAreaProps } from '@semcore/scroll-area';
 import Tag, { type TagProps, TagContainer, type TagTextProps, type TagContext } from '@semcore/tag';
-import fire from '@semcore/core/lib/utils/fire';
-import { ScreenReaderOnly } from '@semcore/flex-box';
-import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import Portal from '@semcore/portal';
-import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import React from 'react';
 
 import style from './style/input-tag.shadow.css';
-import { extractFrom, isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
-import { getAccessibleName } from '@semcore/core/lib/utils/getAccessibleName';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 /** @deprecated */
 export interface IInputTagsValueProps extends InputTagsValueProps, UnknownProperties {}

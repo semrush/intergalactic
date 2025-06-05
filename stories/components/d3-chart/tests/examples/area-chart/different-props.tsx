@@ -1,9 +1,9 @@
-import React from 'react';
 import { Chart, Area, Plot, YAxis, XAxis } from '@semcore/d3-chart';
-import { scaleTime, scaleLinear } from 'd3-scale';
-import { curveBasis, curveStep, curveCardinal } from 'd3-shape';
 import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
+import { scaleTime, scaleLinear } from 'd3-scale';
+import { curveBasis, curveStep, curveCardinal } from 'd3-shape';
+import React from 'react';
 
 function formatDate(value: Date) {
   const options = {

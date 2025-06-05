@@ -1,17 +1,17 @@
-import React, { type RefObject } from 'react';
 import { createComponent, Component, type Intergalactic, Root, sstyled } from '@semcore/core';
-import Tooltip, { type TooltipProps } from '@semcore/tooltip';
-import { Box, type BoxProps } from '@semcore/flex-box';
-import { useResizeObserver } from './useResizeObserver';
-import useEnhancedEffect from '@semcore/core/lib/utils/use/useEnhancedEffect';
+import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import findComponent, { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
-
-import style from './style/ellipsis.shadow.css';
-import reactToText from '@semcore/core/lib/utils/reactToText';
 import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
 import pick from '@semcore/core/lib/utils/pick';
+import reactToText from '@semcore/core/lib/utils/reactToText';
 import { forkRef } from '@semcore/core/lib/utils/ref';
-import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
+import useEnhancedEffect from '@semcore/core/lib/utils/use/useEnhancedEffect';
+import { Box, type BoxProps } from '@semcore/flex-box';
+import Tooltip, { type TooltipProps } from '@semcore/tooltip';
+import React, { type RefObject } from 'react';
+
+import style from './style/ellipsis.shadow.css';
+import { useResizeObserver } from './useResizeObserver';
 
 type AsProps = {
   maxLine?: number;

@@ -1,11 +1,11 @@
-import React from 'react';
 import Button from '@semcore/button';
-import Modal from '@semcore/modal';
-import InlineEdit from '@semcore/inline-edit';
-import InlineInput from '@semcore/inline-input';
 import EditM from '@semcore/icon/Edit/m';
 import FileExportM from '@semcore/icon/FileExport/m';
+import InlineEdit from '@semcore/inline-edit';
+import InlineInput from '@semcore/inline-input';
+import Modal from '@semcore/modal';
 import Tooltip from '@semcore/tooltip';
+import React from 'react';
 
 const Demo = () => {
   const [visible, setVisible] = React.useState(false);

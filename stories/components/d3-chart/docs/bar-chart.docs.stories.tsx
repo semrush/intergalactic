@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import BarHoverExample from './examples/bar-chart/bar-hover';
 import BarExample from './examples//bar-chart/bar';
+import BarHoverExample from './examples/bar-chart/bar-hover';
 import BasicUsageExample from './examples/bar-chart/basic-usage';
 import DateFormatExample from './examples/bar-chart/date-format';
 import GroupedBarsExample from './examples/bar-chart/grouped-bars';

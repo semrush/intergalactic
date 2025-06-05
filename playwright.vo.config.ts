@@ -1,5 +1,6 @@
-import { devices, PlaywrightTestConfig } from '@playwright/test';
 import { screenReaderConfig } from '@guidepup/playwright';
+import type { PlaywrightTestConfig } from '@playwright/test';
+import { devices } from '@playwright/test';
 import { testPlanFilter } from 'allure-playwright/testplan';
 
 const config: PlaywrightTestConfig = {

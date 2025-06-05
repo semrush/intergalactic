@@ -1,7 +1,8 @@
-import type React from 'react';
 import type { Intergalactic } from '@semcore/core';
 import type { Flex } from '@semcore/flex-box';
 import type { ScaleBand, ScaleLinear, ScaleTime } from 'd3-scale';
+import type React from 'react';
+
 import type { BaseChartProps } from './AbstractChart.type';
 
 type BarKey = string;

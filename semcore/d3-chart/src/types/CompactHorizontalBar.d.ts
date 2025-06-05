@@ -1,9 +1,10 @@
-import { Context } from './context';
-import { BackgroundProps } from './Bar';
-import { IntergalacticD3Component } from './Plot';
-import { PatternsConfig } from './Pattern';
-import { BoxProps } from '@semcore/flex-box';
-import { TooltipType } from './Tooltip';
+import type { BoxProps } from '@semcore/flex-box';
+
+import type { BackgroundProps } from './Bar';
+import type { Context } from './context';
+import type { PatternsConfig } from './Pattern';
+import type { IntergalacticD3Component } from './Plot';
+import type { TooltipType } from './Tooltip';
 
 export type CompactHorizontalBarProps = Context & {
   /** Field name from `data` array item for the XAxis */

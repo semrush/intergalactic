@@ -1,12 +1,13 @@
-import React from 'react';
 import Button from '@semcore/button';
 import { Flex } from '@semcore/flex-box';
-import Modal from '@semcore/modal';
-import { Text, List } from '@semcore/typography';
 import Input from '@semcore/input';
+import Modal from '@semcore/modal';
 import Tooltip from '@semcore/tooltip';
+import { Text, List } from '@semcore/typography';
+import React from 'react';
 import '@semcore/core/lib/theme/themes/default.css';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import type { SubmitHandler } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 
 const warningBlockStyles = {
   background: 'var(--intergalactic-bg-secondary-critical)',

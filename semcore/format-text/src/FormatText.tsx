@@ -1,3 +1,4 @@
+import { Box, type BoxProps } from '@semcore/base-components';
 import {
   type UnknownProperties,
   type Intergalactic,
@@ -6,7 +7,6 @@ import {
   Root,
   createComponent,
 } from '@semcore/core';
-import { Box, type BoxProps } from '@semcore/base-components';
 
 import style from './style/format-text.shadow.css';
 

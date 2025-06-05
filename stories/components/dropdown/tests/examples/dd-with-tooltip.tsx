@@ -1,8 +1,8 @@
-import React from 'react';
 import Button from '@semcore/button';
 import Dropdown from '@semcore/dropdown';
-import Tooltip from '@semcore/tooltip';
 import FileExportM from '@semcore/icon/FileExport/m';
+import Tooltip from '@semcore/tooltip';
+import React from 'react';
 
 const Demo = () => (
   <Dropdown>

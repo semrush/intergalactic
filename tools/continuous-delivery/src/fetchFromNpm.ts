@@ -1,6 +1,7 @@
 import axios from 'axios';
 import pLimit from 'p-limit';
 import semver from 'semver';
+
 import { log } from './utils';
 
 type PackageNpmRegistry = {

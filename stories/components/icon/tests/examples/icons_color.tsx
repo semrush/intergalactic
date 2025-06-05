@@ -1,10 +1,10 @@
-import React from 'react';
-import { Hint } from '@semcore/tooltip';
-import WhatsAppM from '@semcore/icon/color/WhatsApp/m';
-import WhatsAppL from '@semcore/icon/color/WhatsApp/l';
 import { Flex } from '@semcore/flex-box';
-import AmazonM from '@semcore/icon/color/Amazon/m';
 import AmazonL from '@semcore/icon/color/Amazon/l';
+import AmazonM from '@semcore/icon/color/Amazon/m';
+import WhatsAppL from '@semcore/icon/color/WhatsApp/l';
+import WhatsAppM from '@semcore/icon/color/WhatsApp/m';
+import { Hint } from '@semcore/tooltip';
+import React from 'react';
 
 const Demo = () => {
   return (

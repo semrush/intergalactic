@@ -1,4 +1,4 @@
-import { Package } from './collectPackages';
+import type { Package } from './collectPackages';
 
 export const syncCheck = async (packages: Package[]) => {
   const unsynchronizedPackages = packages.filter(

@@ -1,15 +1,15 @@
-import React from 'react';
-import styles from './design-tokens.module.css';
+import Copy from '@components/Copy';
 import { ButtonLink } from '@semcore/button';
-import Select from '@semcore/select';
 import { DataTable } from '@semcore/data-table';
 import Link from '@semcore/link';
+import Select from '@semcore/select';
 import { DescriptionTooltip } from '@semcore/tooltip';
 import { NoData } from '@semcore/widget-empty';
-import Copy from '@components/Copy';
 import Fuse from 'fuse.js';
-import { SearchInput } from './SearchInput.jsx';
+import React from 'react';
 
+import styles from './design-tokens.module.css';
+import { SearchInput } from './SearchInput.jsx';
 import { logEvent } from '../../docs/.vitepress/theme/amplitude/amplitude';
 
 export const ColorPreview = ({ color }) => {

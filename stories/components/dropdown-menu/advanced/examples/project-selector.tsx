@@ -1,16 +1,16 @@
-import React from 'react';
-import DropdownMenu from '@semcore/dropdown-menu';
 import { ButtonTrigger } from '@semcore/base-trigger';
-import Divider from '@semcore/divider';
-import PlusM from '@semcore/icon/MathPlus/m';
-import SearchM from '@semcore/icon/Search/m';
-import CloseM from '@semcore/icon/Close/m';
-import { Flex, Box } from '@semcore/flex-box';
-import Input from '@semcore/input';
 import Button, { ButtonLink } from '@semcore/button';
+import Divider from '@semcore/divider';
+import DropdownMenu from '@semcore/dropdown-menu';
+import { Flex, Box } from '@semcore/flex-box';
+import CloseM from '@semcore/icon/Close/m';
+import PlusM from '@semcore/icon/MathPlus/m';
 import Pin from '@semcore/icon/Pin/m';
+import SearchM from '@semcore/icon/Search/m';
 import Settings from '@semcore/icon/Settings/m';
+import Input from '@semcore/input';
 import { Text } from '@semcore/typography';
+import React from 'react';
 import { FixedSizeList } from 'react-window';
 
 const projects = Array.from({ length: 100 }, (_, index) => `project ${index}`);

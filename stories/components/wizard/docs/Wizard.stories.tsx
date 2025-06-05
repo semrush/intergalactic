@@ -1,14 +1,12 @@
-import type { Meta, StoryObj } from '@storybook/react';
-
 import Wizard from '@semcore/wizard';
-
-import BasicExample from './examples/basic_example';
-import CustomStepExample from './examples/custom_step';
-import CustomStepperExample from './examples/custom_stepper';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { BasicExampleTest } from './__tests__/basic_example_test.test';
 import { CustomStepExampleTest } from './__tests__/custom_step_test.test';
 import { CustomStepperExampleTest } from './__tests__/custom_stepper_test.test';
+import BasicExample from './examples/basic_example';
+import CustomStepExample from './examples/custom_step';
+import CustomStepperExample from './examples/custom_stepper';
 import { playWrapper } from '../../../utils/playWrapper';
 
 const meta: Meta<typeof Wizard> = {

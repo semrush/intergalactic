@@ -1,6 +1,6 @@
-import React from 'react';
-import { DataTable, wrapDataTable } from '@semcore/data-table';
 import Card from '@semcore/card';
+import { DataTable, wrapDataTable } from '@semcore/data-table';
+import React from 'react';
 
 const CardDataTable = wrapDataTable<{ title: string }>(({ title, ...restProps }) => {
   return (

@@ -1,13 +1,13 @@
-import React from 'react';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
-import { Box, Flex, InvalidStateBox } from '@semcore/flex-box';
-import { Text as TypographyText } from '@semcore/typography';
-import { useColorResolver } from '@semcore/core/lib/utils/use/useColorResolver';
-import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import autoFocusEnhance from '@semcore/core/lib/utils/enhances/autoFocusEnhance';
+import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import getInputProps, { inputProps } from '@semcore/core/lib/utils/inputProps';
 import logger from '@semcore/core/lib/utils/logger';
+import { useColorResolver } from '@semcore/core/lib/utils/use/useColorResolver';
+import { Box, Flex, InvalidStateBox } from '@semcore/flex-box';
+import { Text as TypographyText } from '@semcore/typography';
+import React from 'react';
 
 import style from './style/checkbox.shadow.css';
 

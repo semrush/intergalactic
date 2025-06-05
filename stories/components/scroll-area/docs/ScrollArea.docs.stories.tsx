@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
 import ScrollArea from '@semcore/scroll-area';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import BasicUsageExample from './examples/basic_usage';
 import DynamicVirtualListExample from './examples/dynamic_virtual_list';

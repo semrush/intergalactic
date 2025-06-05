@@ -1,8 +1,8 @@
-import React from 'react';
-import Select from '@semcore/select';
 import { Flex } from '@semcore/flex-box';
 import Notice from '@semcore/notice';
+import Select from '@semcore/select';
 import { Text } from '@semcore/typography';
+import React from 'react';
 
 const options = Array(12)
   .fill('')

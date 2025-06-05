@@ -1,10 +1,10 @@
-import React from 'react';
 import { DataTable } from '@semcore/data-table';
 import Ellipsis from '@semcore/ellipsis';
+import AmazonM from '@semcore/icon/color/Amazon/m';
 import WhatsAppM from '@semcore/icon/color/WhatsApp/m';
 import { Hint } from '@semcore/tooltip';
 import { Text } from '@semcore/typography';
-import AmazonM from '@semcore/icon/color/Amazon/m';
+import React from 'react';
 
 const keyword = ['ebay buy', 'www.ebay.com', 'ebay buy'];
 const kd = ['77.8', '10', '11.2', '-', '75.89'];

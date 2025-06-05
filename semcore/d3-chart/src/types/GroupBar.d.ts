@@ -1,8 +1,9 @@
-import { UnknownProperties } from '@semcore/core';
-import { BarContext, BarProps } from './Bar';
-import { HorizontalBarProps } from './HorizontalBar';
-import { Context } from './context';
-import { IntergalacticD3Component } from './Plot';
+import type { UnknownProperties } from '@semcore/core';
+
+import type { BarContext, BarProps } from './Bar';
+import type { Context } from './context';
+import type { HorizontalBarProps } from './HorizontalBar';
+import type { IntergalacticD3Component } from './Plot';
 
 /** @deprecated */
 export interface IGroupBarProps extends GroupBarProps, UnknownProperties {}

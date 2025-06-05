@@ -1,8 +1,10 @@
-import type { DOMAttributes } from 'react';
-import { createComponent, Component, sstyled, Root, type IRootComponentProps } from '@semcore/core';
-import { Flex, Box } from '@semcore/flex-box';
 import Checkbox from '@semcore/checkbox';
+import { createComponent, Component, sstyled, Root, type IRootComponentProps } from '@semcore/core';
+import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import { Flex, Box } from '@semcore/flex-box';
 import { Text as TypographyText } from '@semcore/typography';
+import type { DOMAttributes } from 'react';
 
 import style from './legend-item.shadow.css';
 import {
@@ -12,8 +14,6 @@ import {
   type LegendItem,
   StaticShapes,
 } from './LegendItem.type';
-import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
-import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { PatternSymbol } from '../../../Pattern';
 import { getChartDefaultColorName } from '../../../utils';
 

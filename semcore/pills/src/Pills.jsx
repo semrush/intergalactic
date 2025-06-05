@@ -1,9 +1,9 @@
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
-import { Box } from '@semcore/flex-box';
-import NeighborLocation, { useNeighborLocationDetect } from '@semcore/neighbor-location';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import a11yEnhance from '@semcore/core/lib/utils/enhances/a11yEnhance';
 import log from '@semcore/core/lib/utils/logger';
+import { Box } from '@semcore/flex-box';
+import NeighborLocation, { useNeighborLocationDetect } from '@semcore/neighbor-location';
 
 import style from './style/pills.shadow.css';
 

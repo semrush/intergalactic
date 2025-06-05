@@ -1,17 +1,18 @@
-import React from 'react';
-import cn from 'classnames';
+import ButtonComponent from '@semcore/button';
 import { createComponent, sstyled, Root, lastInteraction } from '@semcore/core';
+import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
+import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
+import { forkRef } from '@semcore/core/lib/utils/ref';
+import { useUID } from '@semcore/core/lib/utils/uniqueID';
 import Dropdown, { AbstractDropdown, selectedIndexContext, enhance } from '@semcore/dropdown';
 import { Flex, useBox } from '@semcore/flex-box';
 import ScrollAreaComponent, { hideScrollBarsFromScreenReadersContext } from '@semcore/scroll-area';
-import { useUID } from '@semcore/core/lib/utils/uniqueID';
-import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-import style from './style/dropdown-menu.shadow.css';
-import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
-import { forkRef } from '@semcore/core/lib/utils/ref';
-import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
-import ButtonComponent from '@semcore/button';
 import { Text } from '@semcore/typography';
+import cn from 'classnames';
+import React from 'react';
+
+import style from './style/dropdown-menu.shadow.css';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 const ListBoxContextProvider = ({ children }) => (
   <hideScrollBarsFromScreenReadersContext.Provider value={true}>

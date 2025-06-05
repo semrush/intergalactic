@@ -1,10 +1,10 @@
-import React from 'react';
-import { Hint } from '@semcore/tooltip';
-import ArrowsM from '@semcore/icon/Arrows/m';
-import ArrowsL from '@semcore/icon/Arrows/l';
-import MailFilledM from '@semcore/icon/MailFilled/m';
-import MailFilledL from '@semcore/icon/MailFilled/l';
 import { Flex } from '@semcore/flex-box';
+import ArrowsL from '@semcore/icon/Arrows/l';
+import ArrowsM from '@semcore/icon/Arrows/m';
+import MailFilledL from '@semcore/icon/MailFilled/l';
+import MailFilledM from '@semcore/icon/MailFilled/m';
+import { Hint } from '@semcore/tooltip';
+import React from 'react';
 
 const Demo = () => {
   return (

@@ -1,7 +1,8 @@
 import 'whatwg-fetch';
-import { nanoid } from 'nanoid';
-import { getCookie, setCookie, AMPLITUDE_COOKIE_NAME, AMPLITUDE_COOKIE_EXP_DATE } from './cookie';
 import Bowser from 'bowser';
+import { nanoid } from 'nanoid';
+
+import { getCookie, setCookie, AMPLITUDE_COOKIE_NAME, AMPLITUDE_COOKIE_EXP_DATE } from './cookie';
 
 type IdentificationParameter = {
   platform: string;

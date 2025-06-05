@@ -1,11 +1,10 @@
+import Divider from '@semcore/divider';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Divider from '@semcore/divider';
-
-import UseAndThemePairsExample from './examples/use-theme-variations';
+import BoxPropsExample from './examples/box-props';
 import OrientationUseAndThemePairsExample from './examples/orientation-use-theme-variations';
 import RenderInCenterExample from './examples/render-in-center';
-import BoxPropsExample from './examples/box-props';
+import UseAndThemePairsExample from './examples/use-theme-variations';
 
 const meta: Meta<typeof Divider> = {
   title: 'Components/Divider/Tests',

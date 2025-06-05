@@ -1,15 +1,15 @@
-import React from 'react';
-import { venn, normalizeSolution, scaleSolution, intersectionAreaPath } from '@upsetjs/venn.js';
+import { FadeInOut } from '@semcore/animation';
 import { Component, Root, sstyled } from '@semcore/core';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
-import { FadeInOut } from '@semcore/animation';
-import createElement from './createElement';
-import { getChartDefaultColorName } from './utils';
-import Tooltip from './Tooltip';
-import { PatternFill } from './Pattern';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import { venn, normalizeSolution, scaleSolution, intersectionAreaPath } from '@upsetjs/venn.js';
+import React from 'react';
 
+import createElement from './createElement';
+import { PatternFill } from './Pattern';
 import style from './style/venn.shadow.css';
+import Tooltip from './Tooltip';
+import { getChartDefaultColorName } from './utils';
 
 class VennRoot extends Component {
   static displayName = 'Venn';

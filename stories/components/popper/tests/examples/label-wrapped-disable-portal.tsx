@@ -1,5 +1,5 @@
-import React from 'react';
 import Select from '@semcore/select';
+import React from 'react';
 
 const options = Array(5)
   .fill('')

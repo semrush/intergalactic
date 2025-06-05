@@ -1,10 +1,9 @@
-import React from 'react';
-
+import { sstyled, type UnknownProperties, type StyledProps } from '@semcore/core';
+import logger from '@semcore/core/lib/utils/logger';
+import propsForElement from '@semcore/core/lib/utils/propsForElement';
 import cn from 'classnames';
 import type { Properties, Property } from 'csstype';
-import propsForElement from '@semcore/core/lib/utils/propsForElement';
-import logger from '@semcore/core/lib/utils/logger';
-import { sstyled, type UnknownProperties, type StyledProps } from '@semcore/core';
+import React from 'react';
 
 import style from '../style/use-box.shadow.css';
 import { getAutoOrScaleIndent } from '../utils';

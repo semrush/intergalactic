@@ -1,5 +1,6 @@
-import fs from 'fs/promises';
 import { execSync } from 'child_process';
+import fs from 'fs/promises';
+
 import { generateVoTestsHash } from './vo-tests-hash';
 
 const oldHash = await fs.readFile('./.ci/.vo-test-hash.txt', 'utf-8');

@@ -1,5 +1,4 @@
-import React from 'react';
-import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import {
   cleanup,
   render,
@@ -7,10 +6,10 @@ import {
   userEvent,
   screen,
 } from '@semcore/testing-utils/testing-library';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import React from 'react';
 
 import Dropdown from '../src';
-
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('dropdown Dependency imports', () => {
   runDependencyCheckTests('dropdown');

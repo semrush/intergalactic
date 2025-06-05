@@ -1,7 +1,7 @@
-import React from 'react';
 import { LinkTrigger } from '@semcore/base-trigger';
-import { Flex } from '@semcore/flex-box';
 import Ellipsis from '@semcore/ellipsis';
+import { Flex } from '@semcore/flex-box';
+import React from 'react';
 
 const Demo = () => (
   <Flex direction='column' gap={3}>

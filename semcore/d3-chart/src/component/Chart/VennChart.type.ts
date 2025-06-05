@@ -1,6 +1,7 @@
 import type { Intergalactic } from '@semcore/core';
 import type { Flex } from '@semcore/flex-box';
 import type { ScaleLinear } from 'd3-scale';
+
 import type { BaseChartProps } from './AbstractChart.type';
 
 export type VennChartData = Record<string, number>;

@@ -1,12 +1,12 @@
-import type React from 'react';
-import type { FeedbackFormProps } from '../../index';
-import type { FieldProps } from 'react-final-form';
-
-import type { Intergalactic } from '@semcore/core';
 import type Button from '@semcore/button';
-import type { Text } from '@semcore/typography';
 import type Checkbox from '@semcore/checkbox';
 import type { CheckboxProps } from '@semcore/checkbox';
+import type { Intergalactic } from '@semcore/core';
+import type { Text } from '@semcore/typography';
+import type React from 'react';
+import type { FieldProps } from 'react-final-form';
+
+import type { FeedbackFormProps } from '../../index';
 
 export type FormConfigItem = {
   key: string;

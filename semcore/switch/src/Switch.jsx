@@ -1,11 +1,11 @@
-import React from 'react';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
-import { Box } from '@semcore/flex-box';
-import NeighborLocation from '@semcore/neighbor-location';
+import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import getInputProps, { inputProps } from '@semcore/core/lib/utils/inputProps';
-import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import { Box } from '@semcore/flex-box';
+import NeighborLocation from '@semcore/neighbor-location';
+import React from 'react';
 
 import style from './style/switch.shadow.css';
 

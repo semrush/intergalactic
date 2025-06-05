@@ -1,5 +1,6 @@
-import { expect, test, Page } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import type { Page } from '@semcore/testing-utils/playwright';
+import { expect, test } from '@semcore/testing-utils/playwright';
 
 const getLocators = (page: Page) => ({
   textarea: page.getByRole('textbox'),

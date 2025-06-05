@@ -1,4 +1,5 @@
-import { AxeCore, configureAxe } from 'vitest-axe';
+import type { AxeCore } from 'vitest-axe';
+import { configureAxe } from 'vitest-axe';
 
 export const axe: (
   html: Element | string,

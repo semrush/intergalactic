@@ -1,6 +1,6 @@
-import React from 'react';
 import { DatePicker } from '@semcore/ui/date-picker';
 import { Text } from '@semcore/ui/typography';
+import React from 'react';
 
 const Demo = () => {
   const [value, setValue] = React.useState(new Date('2024-04-06'));

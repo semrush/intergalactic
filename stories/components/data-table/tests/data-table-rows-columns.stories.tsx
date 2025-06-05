@@ -1,10 +1,9 @@
+import { DataTable } from '@semcore/data-table';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { DataTable } from '@semcore/data-table';
-
-import RowColumnMergeExample from './examples/rows-columns-tests/row-and-column-merging';
 import ColumnAlignmentExample from './examples/rows-columns-tests/column-alignment';
 import DefaultColumnWidthsExample from './examples/rows-columns-tests/column-expand';
+import RowColumnMergeExample from './examples/rows-columns-tests/row-and-column-merging';
 
 const meta: Meta<typeof DataTable> = {
   title: 'Components/DataTable/Tests/Rows-Columns',

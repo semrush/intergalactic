@@ -1,18 +1,17 @@
-import type * as React from 'react';
-import { Component, createComponent, type Intergalactic, Root, sstyled } from '@semcore/core';
-import type { DataTableHeadProps, HeadPropsInner } from './Head.types';
 import { Box, ScreenReaderOnly } from '@semcore/base-components';
-import type Tooltip from '@semcore/tooltip';
-
-import style from './style.shadow.css';
-import { Column } from './Column';
-import { Group } from './Group';
-import type { DataTableColumnProps } from './Column.types';
-import type { DataTableGroupProps } from './Group.type';
-import type { DataTableData } from '../DataTable/DataTable.types';
-import { DataTableInternal } from '../DataTable/DataTable';
-import { SELECT_ALL } from '../DataTable/DataTable';
 import Checkbox from '@semcore/checkbox';
+import { Component, createComponent, type Intergalactic, Root, sstyled } from '@semcore/core';
+import type Tooltip from '@semcore/tooltip';
+import type * as React from 'react';
+
+import { Column } from './Column';
+import type { DataTableColumnProps } from './Column.types';
+import { Group } from './Group';
+import type { DataTableGroupProps } from './Group.type';
+import type { DataTableHeadProps, HeadPropsInner } from './Head.types';
+import style from './style.shadow.css';
+import { DataTableInternal, SELECT_ALL } from '../DataTable/DataTable';
+import type { DataTableData } from '../DataTable/DataTable.types';
 
 class HeadRoot<D extends DataTableData> extends Component<
   DataTableHeadProps,

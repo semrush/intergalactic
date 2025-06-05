@@ -1,13 +1,13 @@
-import React from 'react';
+import { ButtonLink } from '@semcore/button';
+import Flag from '@semcore/flags';
+import { Box, Flex } from '@semcore/flex-box';
+import CloseM from '@semcore/icon/Close/m';
 import Input from '@semcore/input';
 import InputMask from '@semcore/input-mask';
-import Select from '@semcore/select';
-import { ButtonLink } from '@semcore/button';
 import NeighborLocation from '@semcore/neighbor-location';
-import Flag from '@semcore/flags';
+import Select from '@semcore/select';
 import { Text } from '@semcore/typography';
-import CloseM from '@semcore/icon/Close/m';
-import { Box, Flex } from '@semcore/flex-box';
+import React from 'react';
 
 const Demo = () => {
   const inputRef = React.useRef<HTMLInputElement>(null);

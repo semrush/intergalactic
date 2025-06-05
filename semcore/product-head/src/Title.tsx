@@ -1,4 +1,3 @@
-import type React from 'react';
 import {
   createComponent,
   Component,
@@ -7,8 +6,9 @@ import {
   type UnknownProperties,
   type Intergalactic,
 } from '@semcore/core';
-import { Box, type BoxProps } from '@semcore/flex-box';
 import isNode from '@semcore/core/lib/utils/isNode';
+import { Box, type BoxProps } from '@semcore/flex-box';
+import type React from 'react';
 
 import style from './style/title.shadow.css';
 

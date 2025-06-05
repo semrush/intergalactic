@@ -1,26 +1,24 @@
+import DropdownMenu from '@semcore/dropdown-menu';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import DropdownMenu from '@semcore/dropdown-menu';
-
+import { BasicUsageTest } from './__tests__/basic.test';
+import { DropdownMenuTest } from './__tests__/dropdown-menu.test';
+import { ItemActionsTest } from './__tests__/item_actions.test';
+import { ListItemTypesTest } from './__tests__/list_item_types.test';
+import { MultiselectItemsTest } from './__tests__/multiselect_items.test';
+import { NestedTest } from './__tests__/nested.test';
+import { NestedWithFocusableTest } from './__tests__/nested_with_focusable.test';
+import { SelectableRadioTest } from './__tests__/selectable_radio_items.test';
+import { TheSecondMethodTest } from './__tests__/the_second_method.test';
 import BasicExample from './examples/basic';
 import DropdownMenuExample from './examples/dropdown-menu';
 import ItemActionsExample from './examples/item_actions';
 import ListItemTypesExample from './examples/list_item_types';
+import MultiselectItemsExample from './examples/multiselect_items';
 import NestedExample from './examples/nested';
 import NestedWithFocusableExample from './examples/nested_with_focusable';
-import TheSecondMethodExample from './examples/the_second_method';
 import SelectableRadioItemsExample from './examples/selectable_radio_items';
-import MultiselectItemsExample from './examples/multiselect_items';
-
-import { BasicUsageTest } from './__tests__/basic.test';
-import { DropdownMenuTest } from './__tests__/dropdown-menu.test';
-import { ListItemTypesTest } from './__tests__/list_item_types.test';
-import { ItemActionsTest } from './__tests__/item_actions.test';
-import { NestedWithFocusableTest } from './__tests__/nested_with_focusable.test';
-import { NestedTest } from './__tests__/nested.test';
-import { TheSecondMethodTest } from './__tests__/the_second_method.test';
-import { MultiselectItemsTest } from './__tests__/multiselect_items.test';
-import { SelectableRadioTest } from './__tests__/selectable_radio_items.test';
+import TheSecondMethodExample from './examples/the_second_method';
 import { playWrapper } from '../../../utils/playWrapper';
 
 const meta: Meta<typeof DropdownMenu> = {

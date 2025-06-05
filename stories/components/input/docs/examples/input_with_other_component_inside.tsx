@@ -1,9 +1,9 @@
-import React from 'react';
-import Input from '@semcore/input';
 import Badge from '@semcore/badge';
+import { Box } from '@semcore/flex-box';
+import Input from '@semcore/input';
 import Tag from '@semcore/tag';
 import { Text } from '@semcore/typography';
-import { Box } from '@semcore/flex-box';
+import React from 'react';
 
 const Demo = () => {
   const [value, setValue] = React.useState('heh');

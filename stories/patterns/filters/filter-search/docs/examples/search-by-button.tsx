@@ -1,13 +1,12 @@
-import React from 'react';
-import Input from '@semcore/input';
-import { Hint } from '@semcore/tooltip';
-import { ButtonLink } from '@semcore/button';
+import Button, { ButtonLink } from '@semcore/button';
+import { Flex, Box } from '@semcore/flex-box';
 import CloseM from '@semcore/icon/Close/m';
 import Search from '@semcore/icon/Search/m';
-import Button from '@semcore/button';
+import Input from '@semcore/input';
 import NeighborLocation from '@semcore/neighbor-location';
+import { Hint } from '@semcore/tooltip';
 import { Text } from '@semcore/typography';
-import { Flex, Box } from '@semcore/flex-box';
+import React from 'react';
 
 const Demo = () => {
   const [value, setValue] = React.useState('');

@@ -1,12 +1,11 @@
-import React from 'react';
+import Portal from '@semcore/portal';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { snapshot } from '@semcore/testing-utils/snapshot';
-import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import { render, fireEvent, cleanup } from '@semcore/testing-utils/testing-library';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import React from 'react';
 
 import SidePanel from '../src';
-import Portal from '@semcore/portal';
-
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('side-panel Dependency imports', () => {
   runDependencyCheckTests('side-panel');

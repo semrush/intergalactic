@@ -1,7 +1,7 @@
-import React from 'react';
+import Button from '@semcore/button';
 import { FeedbackRating } from '@semcore/feedback-form';
 import Link from '@semcore/link';
-import Button from '@semcore/button';
+import React from 'react';
 
 const initValue = {
   rating: 0,

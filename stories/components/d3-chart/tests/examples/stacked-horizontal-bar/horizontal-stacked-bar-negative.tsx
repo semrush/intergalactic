@@ -1,8 +1,8 @@
-import React from 'react';
 import { Plot, StackBar, YAxis, XAxis, HoverRect, HorizontalBar } from '@semcore/d3-chart';
-import { scaleLinear, scaleBand } from 'd3-scale';
 import { Flex, Box } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
+import { scaleLinear, scaleBand } from 'd3-scale';
+import React from 'react';
 
 const stackedData = [
   { category: 'Category 1', stack1: 0.01, stack2: 0.03, stack3: 0.01 },

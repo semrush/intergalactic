@@ -1,6 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
-
 import Switch from '@semcore/switch';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import BasicExample from './examples/basic_example';
 import BasicWithIconExample from './examples/basic_example_with_icon';

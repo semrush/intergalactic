@@ -1,12 +1,12 @@
-import React from 'react';
-import { DataTable } from '@semcore/data-table';
-import Link from '@semcore/link';
+import { LinkTrigger } from '@semcore/base-trigger';
+import { ButtonLink } from '@semcore/button';
 import Checkbox from '@semcore/checkbox';
+import { DataTable } from '@semcore/data-table';
+import InfoM from '@semcore/icon/Info/m';
+import Link from '@semcore/link';
 import Select from '@semcore/select';
 import { DescriptionTooltip } from '@semcore/tooltip';
-import { LinkTrigger } from '@semcore/base-trigger';
-import InfoM from '@semcore/icon/Info/m';
-import { ButtonLink } from '@semcore/button';
+import React from 'react';
 
 const options = Array(6)
   .fill('')

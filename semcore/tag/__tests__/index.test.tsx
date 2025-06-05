@@ -1,13 +1,12 @@
-import * as React from 'react';
-import { snapshot } from '@semcore/testing-utils/snapshot';
-import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import propsForElement from '@semcore/core/lib/utils/propsForElement';
-import Tag, { TagContainer } from '../src';
-
-import { render, fireEvent, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
-
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { render, fireEvent, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import * as React from 'react';
+
+import Tag, { TagContainer } from '../src';
 
 describe('tag Dependency imports', () => {
   runDependencyCheckTests('tag');

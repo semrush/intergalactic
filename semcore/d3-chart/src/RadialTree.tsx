@@ -1,16 +1,16 @@
-import type React from 'react';
-import { transition } from 'd3-transition';
 import { Component, sstyled, type UnknownProperties, type Intergalactic } from '@semcore/core';
-import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import assignProps from '@semcore/core/lib/utils/assignProps';
-import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
-import createElement from './createElement';
-import { getChartDefaultColorName, measureText } from './utils';
-import type { DataHintsHandler } from './a11y/hints';
-import { PatternSymbol, type PatternsConfig, getPatternSymbolSize } from './Pattern';
+import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import { transition } from 'd3-transition';
+import type React from 'react';
 
+import type { DataHintsHandler } from './a11y/hints';
+import createElement from './createElement';
+import { PatternSymbol, type PatternsConfig, getPatternSymbolSize } from './Pattern';
 import style from './style/radial-tree.shadow.css';
+import { getChartDefaultColorName, measureText } from './utils';
 
 const baseAngle = -Math.PI / 2; // The top vertical line
 

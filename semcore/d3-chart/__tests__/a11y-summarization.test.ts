@@ -1,16 +1,18 @@
 import { expect, test, describe } from '@semcore/testing-utils/vitest';
 
+import type {
+  DataStructureHints } from '../src/a11y/hints';
 import {
-  DataStructureHints,
   makeDataHintsContainer as makeHints,
   makeDataSummarizationConfig as makeConfig,
 } from '../src/a11y/hints';
-import {
+import type {
   AnalyzedData,
   ClusterNode,
   ComparisonNode,
+  Insight } from '../src/a11y/insights';
+import {
   extractDataInsights,
-  Insight,
 } from '../src/a11y/insights';
 import { serialize } from '../src/a11y/serialize';
 import { localizedMessages as translations } from '../src/a11y/translations/view/__intergalactic-dynamic-locales';

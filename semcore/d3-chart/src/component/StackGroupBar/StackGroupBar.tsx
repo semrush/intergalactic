@@ -1,13 +1,13 @@
-import React from 'react';
 import { Component } from '@semcore/core';
-import createElement from '../../createElement';
-import { getChartDefaultColorName, scaleToBand } from '../../utils';
-// @ts-ignore
-import Bar, { MIN_HEIGHT } from '../../Bar';
 import { type ScaleBand, scaleBand } from 'd3-scale';
+import { type Stack, stack as d3Stack } from 'd3-shape';
+import React from 'react';
 
 import type { StackGroupProps, StackGroupBarProps, StackGroupType } from './StackGroupBar.type';
-import { type Stack, stack as d3Stack } from 'd3-shape';
+// @ts-ignore
+import Bar, { MIN_HEIGHT } from '../../Bar';
+import createElement from '../../createElement';
+import { getChartDefaultColorName, scaleToBand } from '../../utils';
 
 const XY0 = Symbol('XY0');
 

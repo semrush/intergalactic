@@ -1,6 +1,6 @@
-import React from 'react';
-import Scroll from '@semcore/scroll-area';
 import { Box } from '@semcore/flex-box';
+import Scroll from '@semcore/scroll-area';
+import React from 'react';
 
 let randomIndex = 1;
 const stableRandom = () => {

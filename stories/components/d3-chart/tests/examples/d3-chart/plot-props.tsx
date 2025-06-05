@@ -1,6 +1,7 @@
-import React from 'react';
-import { Plot, Line, minMax, PlotSummarizerConfig } from '@semcore/d3-chart';
+import type { PlotSummarizerConfig } from '@semcore/d3-chart';
+import { Plot, Line, minMax } from '@semcore/d3-chart';
 import { scaleLinear } from 'd3-scale';
+import React from 'react';
 
 const a11yAltTextConfig: PlotSummarizerConfig = {
   titlesFormatter: (title) => {

@@ -1,7 +1,7 @@
-import React from 'react';
 import Card from '@semcore/card';
-import SettingsM from '@semcore/icon/Settings/m';
 import { DataTable } from '@semcore/data-table';
+import SettingsM from '@semcore/icon/Settings/m';
+import React from 'react';
 
 const tooltipContent = `Hey! Don't forget to place some useful information here.`;
 const data = [

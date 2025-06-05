@@ -1,25 +1,22 @@
+import { createComponent, sstyled, Component, Root, type IRootComponentProps } from '@semcore/core';
+import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
+import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
+import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
+import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
+import trottle from '@semcore/core/lib/utils/rafTrottle';
+import { getNodeByRef } from '@semcore/core/lib/utils/ref';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import React, { type ForwardedRef } from 'react';
 import { findDOMNode } from 'react-dom';
 
-import { createComponent, sstyled, Component, Root, type IRootComponentProps } from '@semcore/core';
 import { Box } from '../flex-box';
-
-import trottle from '@semcore/core/lib/utils/rafTrottle';
-import { getNodeByRef } from '@semcore/core/lib/utils/ref';
-import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
-import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
-import { setAreaValue } from './ScrollBar';
-import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
-import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
-import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-
-import style from './style/scroll-area.shadow.css';
+import { setAreaValue, ScrollBar } from './ScrollBar';
 import type {
   ScrollAreaProps,
   ScrollArea as ScrollAreaType,
   ScrollAreaContainerProps,
 } from './ScrollBar.types';
-import { ScrollBar } from './ScrollBar';
+import style from './style/scroll-area.shadow.css';
 
 let eventCalculate: Event | undefined = undefined;
 if (typeof window !== 'undefined') {
@@ -117,8 +114,8 @@ class ScrollAreaRoot extends Component<ScrollAreaProps, {}, State, typeof Scroll
       if (hMax) this.setStyleSizeProperty(this.$wrapper, 'max-height', hMax);
     }
 
-    let maxWidth = Number.Number.parseInt(style.getPropertyValue('max-width'));
-    let maxHeight = Number.Number.parseInt(style.getPropertyValue('max-height'));
+    let maxWidth = Number.parseInt(style.getPropertyValue('max-width'));
+    let maxHeight = Number.parseInt(style.getPropertyValue('max-height'));
 
     if (maxWidth && parent) {
       if (observeParentSize && wMax && parent.scrollWidth > parentRect.width) {

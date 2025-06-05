@@ -1,14 +1,15 @@
-import type React from 'react';
 import { createComponent } from '@semcore/core';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import { Text } from '@semcore/typography';
 import { scaleLinear, type ScaleLinear } from 'd3-scale';
+import type React from 'react';
+
 // @ts-ignore
 import { Bubble, calculateBubbleDomain } from '../..';
 import { AbstractChart } from './AbstractChart';
 import type { BubbleChartData, BubbleChartProps, BubbleChartType } from './BubbleChart.type';
-import { Text } from '@semcore/typography';
-import type { LegendItem } from '../ChartLegend/LegendItem/LegendItem.type';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
-import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import type { LegendItem } from '../ChartLegend/LegendItem/LegendItem.type';
 
 class BubbleChartComponent extends AbstractChart<
   BubbleChartData,

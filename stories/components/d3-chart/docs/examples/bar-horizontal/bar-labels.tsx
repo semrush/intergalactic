@@ -1,7 +1,7 @@
-import React from 'react';
+import { useColorResolver } from '@semcore/core/lib/utils/use/useColorResolver';
 import { Plot, HorizontalBar, YAxis } from '@semcore/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
-import { useColorResolver } from '@semcore/core/lib/utils/use/useColorResolver';
+import React from 'react';
 
 const Demo = () => {
   const MARGIN = 40;

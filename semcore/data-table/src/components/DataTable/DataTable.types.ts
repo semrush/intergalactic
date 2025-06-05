@@ -1,10 +1,11 @@
-import type { Intergalactic } from '@semcore/core';
 import type { BoxProps } from '@semcore/base-components';
-import { ACCORDION, ROW_GROUP, UNIQ_ROW_KEY } from './DataTable';
-import type { DataTableColumnProps } from '../Head/Column.types';
-import type { DataTableBodyProps } from '../Body/Body.types';
+import type { Intergalactic } from '@semcore/core';
 import type Tooltip from '@semcore/tooltip';
+
+import type { ACCORDION, ROW_GROUP, UNIQ_ROW_KEY } from './DataTable';
+import type { DataTableBodyProps } from '../Body/Body.types';
 import type { DTRow } from '../Body/Row.types';
+import type { DataTableColumnProps } from '../Head/Column.types';
 
 /**
  * Datatable must have an accessible name (aria-table-name).

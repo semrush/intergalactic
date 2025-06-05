@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { InstantSearch } from 'react-instantsearch/dom';
-import { connectAutoComplete } from 'react-instantsearch/connectors';
-import algoliasearch from 'algoliasearch/lite';
-import { Text } from '@semcore/typography';
-import IconGroup, { IconGroups, ListIcons, IconDetailsPanel } from './icon-group';
-import Input from '@semcore/input';
 import { ButtonLink } from '@semcore/button';
-import { NoData } from '@semcore/widget-empty';
-import SearchM from '@semcore/icon/Search/m';
 import CloseM from '@semcore/icon/Close/m';
+import SearchM from '@semcore/icon/Search/m';
+import Input from '@semcore/input';
+import { Text } from '@semcore/typography';
+import { NoData } from '@semcore/widget-empty';
+import algoliasearch from 'algoliasearch/lite';
+import React, { useState, useEffect } from 'react';
+import { connectAutoComplete } from 'react-instantsearch/connectors';
+import { InstantSearch } from 'react-instantsearch/dom';
+
+import IconGroup, { IconGroups, ListIcons, IconDetailsPanel } from './icon-group';
 import { algoliaConfig } from '../../../algoliaConfig';
 import { logEvent } from '../../.vitepress/theme/amplitude/amplitude';
 

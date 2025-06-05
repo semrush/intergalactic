@@ -1,7 +1,7 @@
-import React from 'react';
+import Button from '@semcore/button';
 import { Box } from '@semcore/flex-box';
 import Popper from '@semcore/popper';
-import Button from '@semcore/button';
+import React from 'react';
 
 const style = { background: '#FFF', color: '#000', border: '1px solid #000', padding: '10px' };
 

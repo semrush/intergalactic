@@ -1,20 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import { InstantSearch } from 'react-instantsearch/dom';
-import { connectAutoComplete } from 'react-instantsearch/connectors';
+import { ButtonLink } from '@semcore/button';
+import { NoData } from '@semcore/widget-empty';
 import algoliasearch from 'algoliasearch/lite';
+import CloseM from 'intergalactic/icon/Close/m';
+import SearchM from 'intergalactic/icon/Search/m';
+import Input from 'intergalactic/input';
+import { Text } from 'intergalactic/typography';
+import React, { useState, useEffect } from 'react';
+import { connectAutoComplete } from 'react-instantsearch/connectors';
+import { InstantSearch } from 'react-instantsearch/dom';
+
 import IllustrationGroup, {
   IllustrationGroups,
   ListIllustrations,
   IllustrationDetailsPanel,
 } from './illustration-group';
-import Input from 'intergalactic/input';
-import { ButtonLink } from '@semcore/button';
-import { Text } from 'intergalactic/typography';
-import { NoData } from '@semcore/widget-empty';
-import SearchM from 'intergalactic/icon/Search/m';
-import CloseM from 'intergalactic/icon/Close/m';
-import { algoliaConfig } from '../../../algoliaConfig';
 import styles from './styles.module.css';
+import { algoliaConfig } from '../../../algoliaConfig';
 import { logEvent } from '../../.vitepress/theme/amplitude/amplitude';
 
 const searchClient = algoliasearch(algoliaConfig.appName, algoliaConfig.openKey);

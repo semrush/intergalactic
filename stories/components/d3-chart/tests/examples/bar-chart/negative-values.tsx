@@ -1,8 +1,8 @@
-import React from 'react';
 import { Plot, Bar, YAxis, XAxis, HoverRect } from '@semcore/d3-chart';
-import { scaleLinear, scaleBand } from 'd3-scale';
 import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
+import { scaleLinear, scaleBand } from 'd3-scale';
+import React from 'react';
 
 const Demo = () => {
   const MARGIN = 40;

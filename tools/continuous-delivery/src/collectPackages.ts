@@ -1,8 +1,11 @@
 import { resolve as resolvePath, dirname as resolveDirname } from 'path';
-import fs from 'fs-extra';
-import { isValidSemver, log } from './utils';
-import { componentChangelogParser, Changelog } from '@semcore/changelog-handler';
 import { fileURLToPath } from 'url';
+
+import type { Changelog } from '@semcore/changelog-handler';
+import { componentChangelogParser } from '@semcore/changelog-handler';
+import fs from 'fs-extra';
+
+import { isValidSemver, log } from './utils';
 
 const dirname = resolveDirname(fileURLToPath(import.meta.url));
 

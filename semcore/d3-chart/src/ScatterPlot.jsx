@@ -1,13 +1,13 @@
-import { transition } from 'd3-transition';
 import { Component, Root, sstyled } from '@semcore/core';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import createElement from './createElement';
-import { getScatterPlotRadius } from './utils';
-import Tooltip from './Tooltip';
-import { PatternFill } from './Pattern';
+import { transition } from 'd3-transition';
 
+import createElement from './createElement';
+import { PatternFill } from './Pattern';
 import style from './style/scatterplot.shadow.css';
+import Tooltip from './Tooltip';
+import { getScatterPlotRadius } from './utils';
 
 class ScatterPlotRoot extends Component {
   static displayName = 'ScatterPlot';

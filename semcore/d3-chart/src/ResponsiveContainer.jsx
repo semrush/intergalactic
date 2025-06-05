@@ -1,10 +1,10 @@
-import React from 'react';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
-import { Box } from '@semcore/flex-box';
-import trottle from '@semcore/core/lib/utils/rafTrottle';
+import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import fire from '@semcore/core/lib/utils/fire';
 import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
-import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
+import trottle from '@semcore/core/lib/utils/rafTrottle';
+import { Box } from '@semcore/flex-box';
+import React from 'react';
 
 class ResponsiveContainerRoot extends Component {
   static displayName = 'ResponsiveContainer';
@@ -32,8 +32,8 @@ class ResponsiveContainerRoot extends Component {
 
     if (aspect) {
       const style = window.getComputedStyle(this.$container);
-      const minHeight = Number.Number.parseInt(style.getPropertyValue('min-height'));
-      const maxHeight = Number.Number.parseInt(style.getPropertyValue('max-height'));
+      const minHeight = Number.parseInt(style.getPropertyValue('min-height'));
+      const maxHeight = Number.parseInt(style.getPropertyValue('max-height'));
       height = width * aspect;
 
       if (height < minHeight) {

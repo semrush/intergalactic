@@ -1,9 +1,9 @@
-import React from 'react';
-import { Flex } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
 import Divider from '@semcore/divider';
-import Link from '@semcore/link';
+import { Flex } from '@semcore/flex-box';
 import LinkExternalM from '@semcore/icon/LinkExternal/m';
+import Link from '@semcore/link';
+import { Text } from '@semcore/typography';
+import React from 'react';
 
 const Demo = () => {
   return (

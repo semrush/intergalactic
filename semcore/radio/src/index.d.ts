@@ -1,7 +1,7 @@
-import React from 'react';
-import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import { Box, BoxProps, Flex } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
+import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import type { Box, BoxProps, Flex } from '@semcore/flex-box';
+import type { Text } from '@semcore/typography';
+import type React from 'react';
 
 export type RadioSize = 'm' | 'l';
 export type RadioState = 'normal' | 'invalid';

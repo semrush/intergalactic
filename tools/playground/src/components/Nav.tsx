@@ -1,7 +1,8 @@
+import { playgrounds } from '@playgrounds';
 import React from 'react';
+
 import { useLocationHash } from './useLocationHash';
 
-import { playgrounds } from '@playgrounds';
 import './nav.css';
 import LogoImage from '../../../../website/src/static/illustration/whale.svg';
 

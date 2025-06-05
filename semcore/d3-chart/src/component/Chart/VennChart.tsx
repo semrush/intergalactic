@@ -1,14 +1,15 @@
 import { createComponent } from '@semcore/core';
-import type { BaseChartProps } from './AbstractChart.type';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import { Text } from '@semcore/typography';
 import { scaleLinear } from 'd3-scale';
+
+import type { BaseChartProps } from './AbstractChart.type';
 // @ts-ignore
 import { Venn } from '../..';
 import { AbstractChart } from './AbstractChart';
-import { Text } from '@semcore/typography';
 import type { VennChartData, VennChartProps, VennChartType } from './VennChart.type';
-import type { LegendItem } from '../ChartLegend/LegendItem/LegendItem.type';
-import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
+import type { LegendItem } from '../ChartLegend/LegendItem/LegendItem.type';
 
 class VennChartComponent extends AbstractChart<
   VennChartData,

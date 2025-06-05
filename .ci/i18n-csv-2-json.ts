@@ -1,11 +1,12 @@
 #!/usr/bin/env tsm
 
-import yaml from 'yaml';
-import { parse as parseCsv } from 'csv';
 import { readFile, writeFile, rm as removeFile } from 'fs/promises';
-import glob from 'fast-glob';
-import { fileURLToPath } from 'url';
 import { resolve as resolvePath, dirname as resolveParentPath } from 'path';
+import { fileURLToPath } from 'url';
+
+import { parse as parseCsv } from 'csv';
+import glob from 'fast-glob';
+import yaml from 'yaml';
 
 const dirname = resolvePath(fileURLToPath(import.meta.url), '..');
 const crowdinConfigPath = resolvePath(dirname, '../crowdin.yml');

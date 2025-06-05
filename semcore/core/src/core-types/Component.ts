@@ -7,8 +7,9 @@ ReactNode, type
 RefAttributes, type
 RefObject,
 } from 'react';
+
+import type { CORE_COMPONENT, CREATE_COMPONENT } from './symbols';
 import type { IStyledProps } from '../styled/index';
-import { CORE_COMPONENT, CREATE_COMPONENT } from './symbols';
 
 /** @deprecated */
 type KnownKeys<T> = {

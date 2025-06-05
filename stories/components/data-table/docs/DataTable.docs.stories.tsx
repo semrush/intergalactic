@@ -1,11 +1,10 @@
+import { DataTable } from '@semcore/data-table';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { DataTable } from '@semcore/data-table';
-
-import BaseExample from './examples/base';
 import AccessToCellsExample from './examples/access-to-cells';
 import AccessToSetOfCellsExample from './examples/access-to-set-of-cells';
 import AccordionInsideTableExample from './examples/accordion-inside-table';
+import BaseExample from './examples/base';
 import BordersExample from './examples/borders';
 import CheckboxInTableExample from './examples/checkbox-in-table';
 import ColumnAlignmentExample from './examples/column-alignment';
@@ -20,14 +19,14 @@ import FixedColumnsExample from './examples/fixed-columns';
 import FixedHeaderExample from './examples/fixed-header';
 import MultiLevelHeaderExample from './examples/multi-level-header';
 import PaginationExample from './examples/pagination';
-import RowsMergingExample from './examples/rows-merging';
 import RowThemesExample from './examples/row-themes';
+import RowsMergingExample from './examples/rows-merging';
 import ScrollInTableExample from './examples/scroll-in-table';
 import SecondaryTableExample from './examples/secondary-table';
 import SkeletonInTableExample from './examples/skeleton-in-table';
-import SpinContainerInTableExample from './examples/spin-container-in-table';
 import SortingExample from './examples/sorting';
 import SortingChangingSizeExample from './examples/sorting-changing-size';
+import SpinContainerInTableExample from './examples/spin-container-in-table';
 import TableInTableExample from './examples/table-in-table';
 import TableInTableWithFixedColumnExample from './examples/table-in-table-with-fixed-column';
 import VirtualScrollInTableExample from './examples/virtual-scroll-in-table';

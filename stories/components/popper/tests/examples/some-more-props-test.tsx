@@ -1,11 +1,11 @@
-import React from 'react';
-import Popper from '@semcore/popper';
+import { ButtonTrigger } from '@semcore/base-trigger';
 import Button from '@semcore/button';
+import DropdownMenu from '@semcore/dropdown-menu';
 import { Flex } from '@semcore/flex-box';
 import HamburgerM from '@semcore/icon/Hamburger/m';
-import DropdownMenu from '@semcore/dropdown-menu';
-import { ButtonTrigger } from '@semcore/base-trigger';
 import Input from '@semcore/input';
+import Popper from '@semcore/popper';
+import React from 'react';
 
 const style = { background: '#FFF', color: '#000', border: '1px solid #000', padding: '10px' };
 

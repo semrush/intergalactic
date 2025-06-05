@@ -1,6 +1,6 @@
-import React from 'react';
 import { Plot, ScatterPlot, XAxis, YAxis, minMax, ChartLegend } from '@semcore/d3-chart';
 import { scaleLinear } from 'd3-scale';
+import React from 'react';
 
 const getDegaultLegendItems = () => {
   return Object.keys(data[0])

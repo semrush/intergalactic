@@ -1,5 +1,6 @@
-import { Box, Flex } from '../flex-box';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
+
+import { Box, Flex } from '../flex-box';
 import type { RowProps, ColProps, Row as RowType } from './Grid.types';
 import style from './style/grid.shadow.css';
 

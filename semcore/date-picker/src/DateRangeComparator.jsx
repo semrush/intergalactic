@@ -1,8 +1,9 @@
 import { createComponent, Root, sstyled } from '@semcore/core';
+import Divider from '@semcore/divider';
+import { Box, Flex } from '@semcore/flex-box';
+
 import { Header as CalendarHeader, Next, Period, Popper, Prev, Title } from './components';
 import { CalendarDays as Calendar } from './components/Calendar';
-import { Box, Flex } from '@semcore/flex-box';
-import Divider from '@semcore/divider';
 import RangeComparatorAbstract, {
   Apply,
   Reset,

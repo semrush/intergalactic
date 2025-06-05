@@ -1,10 +1,12 @@
-import esbuild from 'esbuild';
+import { resolve as resolvePath } from 'path';
+import { fileURLToPath } from 'url';
+
 import { esbuildPluginSemcore } from '@semcore/esbuild-plugin-semcore';
 import { esbuildPluginSemcoreSourcesResolve } from '@semcore/esbuild-plugin-semcore/esbuild-plugin-semcore-sources-resolve';
-import { esbuildPluginPlaygroundsLoader } from './esbuild-plugin-playgrounds-loader';
+import esbuild from 'esbuild';
 import picocolros from 'picocolors';
-import { fileURLToPath } from 'url';
-import { resolve as resolvePath } from 'path';
+
+import { esbuildPluginPlaygroundsLoader } from './esbuild-plugin-playgrounds-loader';
 
 const port = 2077;
 

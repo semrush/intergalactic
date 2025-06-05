@@ -1,12 +1,12 @@
-import { transition } from 'd3-transition';
 import { Component, Root, sstyled } from '@semcore/core';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import createElement from './createElement';
-import { getBubbleChartValueScale, measureText } from './utils';
-import Tooltip from './Tooltip';
-import { PatternFill } from './Pattern';
+import { transition } from 'd3-transition';
 
+import createElement from './createElement';
+import { PatternFill } from './Pattern';
 import style from './style/bubble.shadow.css';
+import Tooltip from './Tooltip';
+import { getBubbleChartValueScale, measureText } from './utils';
 
 class BubbleRoot extends Component {
   static displayName = 'Bubble';

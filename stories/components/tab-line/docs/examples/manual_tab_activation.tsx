@@ -1,5 +1,5 @@
-import React from 'react';
 import TabLine from '@semcore/tab-line';
+import React from 'react';
 
 const Demo = () => {
   const [value, setValue] = React.useState(1);

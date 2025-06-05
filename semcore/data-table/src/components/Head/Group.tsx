@@ -1,11 +1,11 @@
-import { Component, Root, sstyled } from '@semcore/core';
 import { Box } from '@semcore/base-components';
-
-import style from './style.shadow.css';
-import type { DataTableGroupProps, GroupPropsInner } from './Group.type';
+import { Component, Root, sstyled } from '@semcore/core';
 import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
-import { DataTableInternal } from '../DataTable/DataTable';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+
+import type { DataTableGroupProps, GroupPropsInner } from './Group.type';
+import style from './style.shadow.css';
+import { DataTableInternal } from '../DataTable/DataTable';
 
 export class Group extends Component<
   DataTableGroupProps,

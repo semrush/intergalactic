@@ -1,6 +1,6 @@
-import React from 'react';
-import Tooltip from '@semcore/tooltip';
 import IconInfo from '@semcore/icon/Info/m';
+import Tooltip from '@semcore/tooltip';
+import React from 'react';
 
 const Demo = () => {
   return (

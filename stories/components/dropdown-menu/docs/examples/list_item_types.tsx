@@ -1,8 +1,8 @@
-import React from 'react';
-import DropdownMenu from '@semcore/dropdown-menu';
 import Button from '@semcore/button';
-import Tooltip from '@semcore/tooltip';
+import DropdownMenu from '@semcore/dropdown-menu';
 import DesktopIconM from '@semcore/icon/Desktop/m';
+import Tooltip from '@semcore/tooltip';
+import React from 'react';
 
 const TooltipContent = () => {
   const tooltipIndex = React.useContext(DropdownMenu.selectedIndexContext);

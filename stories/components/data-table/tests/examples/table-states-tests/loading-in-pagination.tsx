@@ -1,6 +1,6 @@
-import React from 'react';
 import { DataTable } from '@semcore/data-table';
 import Pagination from '@semcore/pagination';
+import React from 'react';
 
 const Demo = () => {
   const [currentPage, setCurrentPage] = React.useState(0);

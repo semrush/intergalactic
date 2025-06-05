@@ -1,6 +1,6 @@
-import React from 'react';
 import { ChartLegend, Donut, makeDataHintsContainer, Plot, Chart } from '@semcore/d3-chart';
 import { Flex } from '@semcore/flex-box';
+import React from 'react';
 
 const dataHints = makeDataHintsContainer();
 

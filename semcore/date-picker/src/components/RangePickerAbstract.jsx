@@ -1,16 +1,16 @@
-import React from 'react';
-import dayjs from 'dayjs';
-import { Component, Root, CORE_INSTANCE, sstyled } from '@semcore/core';
 import Button from '@semcore/button';
-import { Box, Flex } from '@semcore/flex-box';
+import { Component, Root, CORE_INSTANCE, sstyled } from '@semcore/core';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import Divider from '@semcore/divider';
 import Dropdown from '@semcore/dropdown';
-import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import { localizedMessages } from '../translations/__intergalactic-dynamic-locales';
-import { includesDate } from '../utils/includesDate';
-import { formatDDMMYY, formatMMYY } from '../utils/formatDate';
+import { Box, Flex } from '@semcore/flex-box';
+import dayjs from 'dayjs';
+import React from 'react';
 
 import style from '../style/date-picker.shadow.css';
+import { localizedMessages } from '../translations/__intergalactic-dynamic-locales';
+import { formatDDMMYY, formatMMYY } from '../utils/formatDate';
+import { includesDate } from '../utils/includesDate';
 
 const INTERACTION_TAGS = ['INPUT'];
 const INTERACTION_KEYS = ['ArrowDown', 'Enter', ' '];

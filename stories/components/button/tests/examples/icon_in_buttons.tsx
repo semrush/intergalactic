@@ -1,8 +1,8 @@
-import React from 'react';
 import Button from '@semcore/button';
-import VideoListM from '@semcore/icon/VideoList/m';
-import VideoListL from '@semcore/icon/VideoList/l';
 import { Flex } from '@semcore/flex-box';
+import VideoListL from '@semcore/icon/VideoList/l';
+import VideoListM from '@semcore/icon/VideoList/m';
+import React from 'react';
 
 const Demo = () => {
   return (

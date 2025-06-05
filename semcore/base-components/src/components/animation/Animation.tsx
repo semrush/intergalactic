@@ -1,10 +1,11 @@
 // @ts-nocheck
-import React from 'react';
 import { createComponent, sstyled, Root, Component } from '@semcore/core';
-import { Box } from '../flex-box';
 import contextEnhance from '@semcore/core/lib/utils/enhances/contextEnhance';
-import style from './style/animate.shadow.css';
+import React from 'react';
+
+import { Box } from '../flex-box';
 import type { AnimationContext } from './Animation.types';
+import style from './style/animate.shadow.css';
 
 function propToArray(prop: any[]) {
   return Array.isArray(prop) ? prop : [prop, prop];

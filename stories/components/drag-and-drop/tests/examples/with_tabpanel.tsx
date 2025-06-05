@@ -1,8 +1,8 @@
-import React from 'react';
-import DnD from '@semcore/drag-and-drop';
-import TabPanel from '@semcore/tab-panel';
 import Counter from '@semcore/counter';
+import DnD from '@semcore/drag-and-drop';
 import Flag from '@semcore/flags';
+import TabPanel from '@semcore/tab-panel';
+import React from 'react';
 
 const renderTab = (tab: string) => {
   if (tab === 'overview') {

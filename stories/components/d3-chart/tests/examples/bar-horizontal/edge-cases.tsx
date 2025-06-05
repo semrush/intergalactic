@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   Plot,
   Chart,
@@ -7,8 +6,9 @@ import {
   YAxis,
   XAxis,
 } from '@semcore/d3-chart';
-import { scaleBand, scaleLinear } from 'd3-scale';
 import { Flex } from '@semcore/flex-box';
+import { scaleBand, scaleLinear } from 'd3-scale';
+import React from 'react';
 
 const BarChartExamples = () => {
   const width = 400;

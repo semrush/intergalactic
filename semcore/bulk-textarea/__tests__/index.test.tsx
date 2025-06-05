@@ -2,6 +2,7 @@ import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, userEvent } from '@semcore/testing-utils/testing-library';
 import { describe, test, vi, assertType } from '@semcore/testing-utils/vitest';
 import React from 'react';
+
 import BulkTextarea from '../src';
 
 describe('BulkTextarea Dependency imports', () => {

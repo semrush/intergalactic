@@ -1,7 +1,7 @@
-import React from 'react';
 import Flags, { iso2Name, type FlagsIso2 } from '@semcore/flags';
-import { Text } from '@semcore/typography';
 import { Flex } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
+import React from 'react';
 
 const Demo = () => {
   const keys = Object.keys(iso2Name) as FlagsIso2[];

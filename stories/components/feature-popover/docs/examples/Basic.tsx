@@ -1,10 +1,10 @@
-import React from 'react';
-import FeaturePopover from '@semcore/feature-popover';
 import Button from '@semcore/button';
-import { Text } from '@semcore/typography';
-import { Flex, Box } from '@semcore/flex-box';
 import DropdownMenu from '@semcore/dropdown-menu';
+import FeaturePopover from '@semcore/feature-popover';
+import { Flex, Box } from '@semcore/flex-box';
 import FileExport from '@semcore/icon/FileExport/m';
+import { Text } from '@semcore/typography';
+import React from 'react';
 
 const Demo = () => {
   const [visible, setVisible] = React.useState(true);

@@ -1,20 +1,19 @@
+import { DataTable } from '@semcore/data-table';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { DataTable } from '@semcore/data-table';
-
-import AccordionWithRenderCellExample from './examples/accordion-tests/accordion-with-render-cell';
-import AccordionWithInlineEditExample from './examples/accordion-tests/accordion-with-inline-edit';
-import AccordionWithFixedColumnExample from './examples/accordion-tests/accordion-with-fixed-column';
-import AccordionWithSelectExample from './examples/accordion-tests/accrodion-with-select';
-import AccordionWithMoreExample from './examples/accordion-tests/accrodion-with-more-interactive';
-import AccordionWithLinkExample from './examples/accordion-tests/accordion-with-link';
+import AnimationDurationTestExample from './examples/accordion-tests/accordion-duration';
 import AccordionWithChartAndButtonExample from './examples/accordion-tests/accordion-inside-table';
-import TabeInTableFixedColumnExample from './examples/accordion-tests/table-in-table-with-fixed-column';
+import AccordionWithFixedColumnExample from './examples/accordion-tests/accordion-with-fixed-column';
 import HorizontalScrollExample from './examples/accordion-tests/accordion-with-horizontal-scroll';
-import TabeInTableSortableExample from './examples/accordion-tests/table-in-table-with-sorting';
+import AccordionWithInlineEditExample from './examples/accordion-tests/accordion-with-inline-edit';
+import AccordionWithLinkExample from './examples/accordion-tests/accordion-with-link';
+import AccordionWithRenderCellExample from './examples/accordion-tests/accordion-with-render-cell';
+import AccordionWithMoreExample from './examples/accordion-tests/accrodion-with-more-interactive';
+import AccordionWithSelectExample from './examples/accordion-tests/accrodion-with-select';
 import ColoredAccordionExample from './examples/accordion-tests/colored-accordion';
 import TabeInTableAnimationTestExample from './examples/accordion-tests/table-in-table-animation-test';
-import AnimationDurationTestExample from './examples/accordion-tests/accordion-duration';
+import TabeInTableFixedColumnExample from './examples/accordion-tests/table-in-table-with-fixed-column';
+import TabeInTableSortableExample from './examples/accordion-tests/table-in-table-with-sorting';
 
 const meta: Meta<typeof DataTable> = {
   title: 'Components/DataTable/Tests/AccordionTests',

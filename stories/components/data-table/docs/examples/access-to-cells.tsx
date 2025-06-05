@@ -1,6 +1,6 @@
-import React from 'react';
-import { DataTable } from '@semcore/data-table';
 import { ButtonLink } from '@semcore/button';
+import { DataTable } from '@semcore/data-table';
+import React from 'react';
 
 const Demo = () => {
   return (

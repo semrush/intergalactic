@@ -1,8 +1,9 @@
-import React from 'react';
-import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
-import { render, fireEvent, cleanup, waitFor } from '@semcore/testing-utils/testing-library';
-import AddFilter from '../src';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { render, fireEvent, cleanup, waitFor } from '@semcore/testing-utils/testing-library';
+import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
+import React from 'react';
+
+import AddFilter from '../src';
 
 describe('AddFilter Dependency imports', () => {
   runDependencyCheckTests('add-filter');

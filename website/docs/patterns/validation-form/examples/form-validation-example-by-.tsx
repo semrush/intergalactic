@@ -1,16 +1,16 @@
-import React from 'react';
-import { Text } from '@semcore/typography';
-import Input from '@semcore/input';
-import Checkbox from '@semcore/checkbox';
-import Radio, { RadioGroup } from '@semcore/radio';
-import Textarea from '@semcore/textarea';
-import Select from '@semcore/select';
-import { DatePicker } from '@semcore/date-picker';
-import Tooltip from '@semcore/tooltip';
 import Button from '@semcore/button';
+import Checkbox from '@semcore/checkbox';
+import { DatePicker } from '@semcore/date-picker';
 import { Box, Flex } from '@semcore/flex-box';
-import { Field, FieldInputProps, Form } from 'react-final-form';
+import Input from '@semcore/input';
+import Radio, { RadioGroup } from '@semcore/radio';
+import Select from '@semcore/select';
+import Textarea from '@semcore/textarea';
+import Tooltip from '@semcore/tooltip';
+import { Text } from '@semcore/typography';
 import createFocusDecorator from 'final-form-focus';
+import React from 'react';
+import { Field, Form } from 'react-final-form';
 
 const required = (value) => (value ? undefined : 'Please fill in this field.');
 const email = (value) => (value?.includes('@') ? undefined : 'Please enter valid email.');

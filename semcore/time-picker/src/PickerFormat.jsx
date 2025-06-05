@@ -1,7 +1,6 @@
 import { Component, sstyled, Root } from '@semcore/core';
-import { Box } from '@semcore/flex-box';
-import { ScreenReaderOnly } from '@semcore/flex-box';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import { Box, ScreenReaderOnly } from '@semcore/flex-box';
 
 class TimePickerFormat extends Component {
   static enhance = [uniqueIDEnhancement()];

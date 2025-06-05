@@ -1,17 +1,21 @@
-import React, { ChangeEvent } from 'react';
-import dayjs from 'dayjs';
-import { Flex, Box, BoxProps } from '@semcore/flex-box';
-import { UnknownProperties, Intergalactic, PropGetterFn } from '@semcore/core';
-import Button, { ButtonProps } from '@semcore/button';
-import Divider from '@semcore/divider';
-import { DropdownProps, DropdownTriggerProps } from '@semcore/dropdown';
-import { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import BaseTrigger, { BaseTriggerProps } from '@semcore/base-trigger';
-import Input, { InputProps, InputValueProps } from '@semcore/input';
-import { InputMaskValueProps } from '@semcore/input-mask';
-import Checkbox from '@semcore/checkbox';
-import { TooltipProps } from '@semcore/tooltip';
-import Popper from '@semcore/popper';
+import type { BaseTriggerProps } from '@semcore/base-trigger';
+import type BaseTrigger from '@semcore/base-trigger';
+import type { ButtonProps } from '@semcore/button';
+import type Button from '@semcore/button';
+import type Checkbox from '@semcore/checkbox';
+import type { UnknownProperties, Intergalactic, PropGetterFn } from '@semcore/core';
+import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import type Divider from '@semcore/divider';
+import type { DropdownProps, DropdownTriggerProps } from '@semcore/dropdown';
+import type { Flex, Box, BoxProps } from '@semcore/flex-box';
+import type { InputProps, InputValueProps } from '@semcore/input';
+import type Input from '@semcore/input';
+import type { InputMaskValueProps } from '@semcore/input-mask';
+import type Popper from '@semcore/popper';
+import type { TooltipProps } from '@semcore/tooltip';
+import type dayjs from 'dayjs';
+import type { ChangeEvent } from 'react';
+import type React from 'react';
 
 export type DateConstructorParams = string | number | Date;
 

@@ -1,8 +1,9 @@
 import { readFile } from 'fs/promises';
-import { relative as resolveRelativePath, resolve as resolvePath } from 'path';
 import os from 'os';
-import { VoiceOverPlaywright } from '@guidepup/playwright/lib/voiceOverTest';
+import { relative as resolveRelativePath, resolve as resolvePath } from 'path';
+
 import { CommandOptions } from '@guidepup/guidepup';
+import type { VoiceOverPlaywright } from '@guidepup/playwright/lib/voiceOverTest';
 
 const darwin2macos: Record<number, string> = {
   23: 'Sonoma 14',

@@ -1,16 +1,15 @@
-import React from 'react';
 import { createComponent, Component, Root, lastInteraction } from '@semcore/core';
-import { Box } from '@semcore/flex-box';
-
-import type { BulkTextareaType, BulkTextareaProps } from './BulkTextarea.types';
-
-import { InputField, type InputFieldProps } from './components/InputField/InputField';
-import { Counter } from './components/Counter';
-import { ClearAll } from './components/ClearAll';
-import { ErrorsNavigation } from './components/ErrorsNavigation';
-import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import uniqueIdEnhance from '@semcore/core/lib/utils/uniqueID';
+import { Box } from '@semcore/flex-box';
+import React from 'react';
+
+import type { BulkTextareaType, BulkTextareaProps } from './BulkTextarea.types';
+import { ClearAll } from './components/ClearAll';
+import { Counter } from './components/Counter';
+import { ErrorsNavigation } from './components/ErrorsNavigation';
+import { InputField, type InputFieldProps } from './components/InputField/InputField';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 type State<T extends string | string[]> = {
   linesCount: number;

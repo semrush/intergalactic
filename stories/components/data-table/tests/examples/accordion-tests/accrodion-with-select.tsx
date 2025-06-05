@@ -1,7 +1,8 @@
-import React from 'react';
-import { DataTable, ACCORDION, DataTableData } from '@semcore/data-table';
-import { NoData } from '@semcore/widget-empty';
+import type { DataTableData } from '@semcore/data-table';
+import { DataTable, ACCORDION } from '@semcore/data-table';
 import Select from '@semcore/select';
+import { NoData } from '@semcore/widget-empty';
+import React from 'react';
 
 const options = Array(6)
   .fill('')

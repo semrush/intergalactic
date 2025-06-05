@@ -1,12 +1,12 @@
-import React from 'react';
-import Button, { ButtonLink } from '@semcore/button';
-import { Text } from '@semcore/typography';
-import { Flex, Box, ScreenReaderOnly } from '@semcore/flex-box';
-import Select, { InputSearch } from '@semcore/select';
 import { FilterTrigger } from '@semcore/base-trigger';
+import Button, { ButtonLink } from '@semcore/button';
 import Ellipsis from '@semcore/ellipsis';
+import { Flex, Box, ScreenReaderOnly } from '@semcore/flex-box';
 import ReloadIcon from '@semcore/icon/Reload/m';
 import ScrollAreaComponent, { hideScrollBarsFromScreenReadersContext } from '@semcore/scroll-area';
+import Select, { InputSearch } from '@semcore/select';
+import { Text } from '@semcore/typography';
+import React from 'react';
 
 const serpFeatures = [
   'Featured Snippet',

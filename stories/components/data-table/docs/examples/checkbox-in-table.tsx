@@ -1,10 +1,10 @@
-import React from 'react';
-import { DataTable } from '@semcore/data-table';
-import { Box, Flex, ScreenReaderOnly } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
 import { Collapse } from '@semcore/animation';
 import Button from '@semcore/button';
 import { sstyled } from '@semcore/core';
+import { DataTable } from '@semcore/data-table';
+import { Box, Flex, ScreenReaderOnly } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
+import React from 'react';
 
 const style = sstyled.css`
   SDataTable > [aria-rowindex='1'] > div {

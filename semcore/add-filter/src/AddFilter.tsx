@@ -1,19 +1,20 @@
-import React from 'react';
-import { Flex, ScreenReaderOnly } from '@semcore/flex-box';
 import Button from '@semcore/button';
 import { createComponent, Component, Root, lastInteraction } from '@semcore/core';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import { extractFrom } from '@semcore/core/lib/utils/findComponent';
 import DropdownMenu from '@semcore/dropdown-menu';
-import MathPlusM from '@semcore/icon/MathPlus/m';
+import { Flex, ScreenReaderOnly } from '@semcore/flex-box';
 import CloseM from '@semcore/icon/Close/m';
+import MathPlusM from '@semcore/icon/MathPlus/m';
+import type { SelectProps } from '@semcore/select';
+import React from 'react';
+
 import type AddFilterType from './AddFilter.types';
 import type { AddFilterProps, AddFilterItemProps } from './AddFilter.types';
-import AddFilterSelect from './components/AddFilterSelect';
-import AddFilterInput from './components/AddFilterInput';
 import AddFilterDropdown from './components/AddFilterDropdown';
-import { extractFrom } from '@semcore/core/lib/utils/findComponent';
+import AddFilterInput from './components/AddFilterInput';
+import AddFilterSelect from './components/AddFilterSelect';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import type { SelectProps } from '@semcore/select';
 
 type SelectItemProps = SelectProps & AddFilterItemProps;
 

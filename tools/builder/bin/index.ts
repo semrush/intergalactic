@@ -1,9 +1,10 @@
 #!/usr/bin/env tsm
 
-import execa from 'execa';
-import mri from 'mri';
 import { resolve as resolvePath } from 'path';
 import { fileURLToPath } from 'url';
+
+import execa from 'execa';
+import mri from 'mri';
 
 const argv = mri<{
   source: string;

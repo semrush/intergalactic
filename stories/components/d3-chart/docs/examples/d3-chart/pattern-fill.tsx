@@ -1,6 +1,6 @@
-import React from 'react';
 import { Chart } from '@semcore/d3-chart';
 import { curveCardinal } from 'd3-shape';
+import React from 'react';
 
 const Demo = () => {
   return (

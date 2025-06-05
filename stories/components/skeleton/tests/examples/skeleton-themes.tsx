@@ -1,5 +1,5 @@
-import React from 'react';
 import Skeleton from '@semcore/skeleton';
+import React from 'react';
 
 const Demo = () => {
   const [loading, setLoading] = React.useState(true);

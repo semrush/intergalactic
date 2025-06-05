@@ -1,5 +1,5 @@
-import React from 'react';
 import Carousel from '@semcore/carousel';
+import React from 'react';
 
 const images = [
   'https://picsum.photos/id/1023/600/400',

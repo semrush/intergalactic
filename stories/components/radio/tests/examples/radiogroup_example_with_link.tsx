@@ -1,8 +1,8 @@
-import React from 'react';
-import Radio, { RadioGroup } from '@semcore/radio';
-import { Text } from '@semcore/typography';
 import { Flex } from '@semcore/flex-box';
 import Link from '@semcore/link';
+import Radio, { RadioGroup } from '@semcore/radio';
+import { Text } from '@semcore/typography';
+import React from 'react';
 
 const Demo = () => {
   const [value, setValue] = React.useState('1');

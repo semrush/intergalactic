@@ -1,12 +1,12 @@
-import React from 'react';
-import styles from './design-tokens.module.css';
+import Copy from '@components/Copy';
 import { DataTable } from '@semcore/data-table';
 import { NoData } from '@semcore/widget-empty';
-import Copy from '@components/Copy';
-import { ColorPreview } from './DesignTokens';
 import Fuse from 'fuse.js';
-import { SearchInput } from './SearchInput.jsx';
+import React from 'react';
 
+import styles from './design-tokens.module.css';
+import { ColorPreview } from './DesignTokens';
+import { SearchInput } from './SearchInput.jsx';
 import { logEvent } from '../../docs/.vitepress/theme/amplitude/amplitude';
 
 let filteredTokensTimer = 0;

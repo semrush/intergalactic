@@ -1,5 +1,5 @@
-import React from 'react';
 import { Blockquote, List, Text } from '@semcore/typography';
+import React from 'react';
 
 const Demo = () => (
   <div>

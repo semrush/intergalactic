@@ -1,7 +1,7 @@
-import React from 'react';
 import { DataTable } from '@semcore/data-table';
 import Button from '@semcore/ui/button';
 import { ScreenReaderOnly } from '@semcore/ui/flex-box';
+import React from 'react';
 
 const Demo = (): any => {
   const [loading, setLoading] = React.useState(true);

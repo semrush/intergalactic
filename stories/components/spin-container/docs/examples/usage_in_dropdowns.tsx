@@ -1,8 +1,8 @@
-import React from 'react';
+import Button from '@semcore/button';
+import Dropdown from '@semcore/dropdown';
 import SpinContainer from '@semcore/spin-container';
 import { Text } from '@semcore/typography';
-import Dropdown from '@semcore/dropdown';
-import Button from '@semcore/button';
+import React from 'react';
 
 class Demo extends React.PureComponent {
   state = { loading: true, visible: false };

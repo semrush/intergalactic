@@ -1,6 +1,6 @@
-import React from 'react';
-import MiniChart from '@semcore/mini-chart';
 import { Flex, Box } from '@semcore/flex-box';
+import MiniChart from '@semcore/mini-chart';
+import React from 'react';
 
 const Demo = () => {
   const value = 30;

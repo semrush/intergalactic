@@ -1,8 +1,8 @@
 import React from 'react';
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
-import { test, describe, beforeEach } from '@semcore/testing-utils/vitest';
-import { cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
+import { test, describe, beforeEach } from '@semcore/testing-utils/vitest';
 
 describe('BaseTrigger Dependency imports', () => {
   runDependencyCheckTests('base-trigger');
@@ -10,9 +10,10 @@ describe('BaseTrigger Dependency imports', () => {
 
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
-import BaseTrigger, { ButtonTrigger, FilterTrigger, LinkTrigger } from '../src';
 // @ts-ignore
 import Tooltip from '@semcore/tooltip';
+
+import BaseTrigger, { ButtonTrigger, FilterTrigger, LinkTrigger } from '../src';
 
 describe('BaseTrigger', () => {
   beforeEach(cleanup);

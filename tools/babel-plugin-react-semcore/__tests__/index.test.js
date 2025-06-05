@@ -1,6 +1,8 @@
-import pluginTester from 'babel-plugin-tester';
 import path from 'path';
+
+import pluginTester from 'babel-plugin-tester';
 import { describe, it } from 'vitest';
+
 const plugin = require('../src/index');
 
 const absolutePath = (relativePath) => path.resolve(__dirname, relativePath);

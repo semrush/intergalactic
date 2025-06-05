@@ -1,7 +1,7 @@
-import React from 'react';
+import Button from '@semcore/button';
 import { DataTable } from '@semcore/data-table';
 import Spin from '@semcore/spin';
-import Button from '@semcore/button';
+import React from 'react';
 
 const Demo = () => {
   const [loading, setLoading] = React.useState(true);

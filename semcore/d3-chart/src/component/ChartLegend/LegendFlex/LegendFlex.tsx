@@ -1,13 +1,14 @@
+import Checkbox from '@semcore/checkbox';
 import { createComponent, sstyled, Root } from '@semcore/core';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import Divider from '@semcore/divider';
 import { Flex } from '@semcore/flex-box';
+
 import style from './legend-flex.shadow.css';
 import type { LegendFlexType, LegendFlexProps, TrendProps } from './LegendFlex.type';
-import { LegendItemComponent } from '../LegendItem/LegendItem';
-import Divider from '@semcore/divider';
-import Checkbox from '@semcore/checkbox';
-import { BaseLegend } from '../BaseLegend';
 import { localizedMessages } from '../../../translations/__intergalactic-dynamic-locales';
-import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import { BaseLegend } from '../BaseLegend';
+import { LegendItemComponent } from '../LegendItem/LegendItem';
 
 class LegendFlexRoot extends BaseLegend<LegendFlexProps> {
   static displayName = 'LegendFlex';

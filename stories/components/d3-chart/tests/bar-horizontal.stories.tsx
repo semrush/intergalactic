@@ -3,9 +3,9 @@ import type { Meta, StoryObj } from '@storybook/react';
 import BackgroundExample from './examples/bar-horizontal/background';
 import BarLabelsExample from './examples/bar-horizontal/bar-labels';
 import BasicUsageExample from './examples/bar-horizontal/basic-usage';
+import GroupedHorizontalExample from './examples/bar-horizontal/grouped-horizontal-bars';
 import HorizontalBarExample from './examples/bar-horizontal/horizontal-bar';
 import LegendAndPatternFillExample from './examples/bar-horizontal/legend-and-pattern-fill';
-import GroupedHorizontalExample from './examples/bar-horizontal/grouped-horizontal-bars';
 
 const meta: Meta = {
   title: 'Components/d3Charts/Documentation/Bar-Horizontal-Chart',

@@ -1,19 +1,18 @@
-import React from 'react';
-import { createComponent, Component, Root, sstyled } from '@semcore/core';
-import { Box } from '@semcore/flex-box';
-import Modal from '@semcore/modal';
-import CheckM from '@semcore/icon/Check/m';
-import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
-import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-import { ScreenReaderOnly } from '@semcore/flex-box';
-import { setFocus } from '@semcore/core/lib/utils/use/useFocusLock';
-import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import Button from '@semcore/button';
-import ArrowRight from '@semcore/icon/ArrowRight/m';
+import { createComponent, Component, Root, sstyled } from '@semcore/core';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import { setFocus } from '@semcore/core/lib/utils/use/useFocusLock';
+import { ScreenReaderOnly, Box } from '@semcore/flex-box';
 import ArrowLeft from '@semcore/icon/ArrowLeft/m';
+import ArrowRight from '@semcore/icon/ArrowRight/m';
+import CheckM from '@semcore/icon/Check/m';
+import Modal from '@semcore/modal';
+import React from 'react';
 
 import style from './style/wizard.shadow.css';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 class WizardRoot extends Component {
   static displayName = 'Wizard';

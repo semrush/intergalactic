@@ -1,6 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
-
 import { DataTable } from '@semcore/data-table';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import AccordionInMergedRowsExample from './examples/accordion_in_merged_rows';
 import FixedColumnsWithDiffWidthsExample from './examples/fixed_columns_with_diff_widths';

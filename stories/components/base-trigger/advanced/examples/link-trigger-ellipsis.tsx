@@ -1,8 +1,8 @@
-import React from 'react';
-import Ellipsis from '@semcore/ellipsis';
-import DropdownMenu from '@semcore/dropdown-menu';
 import { LinkTrigger } from '@semcore/base-trigger';
+import DropdownMenu from '@semcore/dropdown-menu';
+import Ellipsis from '@semcore/ellipsis';
 import { Text } from '@semcore/typography';
+import React from 'react';
 
 const Demo = () => {
   return (

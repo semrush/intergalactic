@@ -1,6 +1,6 @@
-import React from 'react';
 import { DataTable } from '@semcore/data-table';
 import Spin from '@semcore/spin';
+import React from 'react';
 
 const Demo = () => {
   return (

@@ -1,8 +1,8 @@
-import React from 'react';
 import { Plot, StackBar, YAxis, XAxis, HoverRect } from '@semcore/d3-chart';
-import { scaleLinear, scaleBand } from 'd3-scale';
 import { Flex, Box } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
+import { scaleLinear, scaleBand } from 'd3-scale';
+import React from 'react';
 
 const data = [...Array(5).keys()].map((_, i) => ({
   bar: `Bar ${i + 1}`,

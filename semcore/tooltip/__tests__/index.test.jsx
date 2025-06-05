@@ -1,11 +1,11 @@
-import React from 'react';
+import { axe } from '@semcore/testing-utils/axe';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, fireEvent, render, act } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
-import { axe } from '@semcore/testing-utils/axe';
+import { waitFor } from '@storybook/test';
+import React from 'react';
 
 import Tooltip, { Hint, DescriptionTooltip } from '../src';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { waitFor } from '@storybook/test';
 
 describe('tooltip Dependency imports', () => {
   runDependencyCheckTests('tooltip');

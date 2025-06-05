@@ -1,12 +1,12 @@
-import { bisector } from 'd3-array';
-import React from 'react';
 import { sstyled } from '@semcore/core';
 import trottle from '@semcore/core/lib/utils/rafTrottle';
-import createElement from './createElement';
-import { eventToPoint, invert, interpolateValue, getChartDefaultColorName } from './utils';
+import { bisector } from 'd3-array';
+import React from 'react';
 
-import style from './style/dot.shadow.css';
+import createElement from './createElement';
 import { PatternSymbol, getPatternSymbolSize } from './Pattern';
+import style from './style/dot.shadow.css';
+import { eventToPoint, invert, interpolateValue, getChartDefaultColorName } from './utils';
 
 function Dots(props) {
   const {

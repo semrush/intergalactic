@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import ColorCustomizationExample from './examples/scatterplot-chart/color-customization';
 import BasicUsageExample from './examples/scatterplot-chart/basic-usage';
+import ColorCustomizationExample from './examples/scatterplot-chart/color-customization';
 import ColorCustomizationAndValuesInsideExample from './examples/scatterplot-chart/color-customization-and-values-inside';
 import InitialDataLoadingExample from './examples/scatterplot-chart/initial-data-loading';
 import LegendAndPatternFillExample from './examples/scatterplot-chart/legend-and-pattern-fill';

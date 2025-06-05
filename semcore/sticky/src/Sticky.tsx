@@ -1,6 +1,6 @@
-import type React from 'react';
-import { createComponent, type UnknownProperties, Component, sstyled, Root } from '@semcore/core';
 import { Box, type BoxProps } from '@semcore/base-components';
+import { createComponent, type UnknownProperties, Component, sstyled, Root } from '@semcore/core';
+import type React from 'react';
 
 import style from './style/sticky.shadow.css';
 

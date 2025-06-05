@@ -1,10 +1,10 @@
-import * as React from 'react';
-import { snapshot } from '@semcore/testing-utils/snapshot';
-import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
-import WidgetEmpty, { NoData, Error, getIconPath } from '../src';
-
-import { cleanup } from '@semcore/testing-utils/testing-library';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { cleanup } from '@semcore/testing-utils/testing-library';
+import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
+import * as React from 'react';
+
+import WidgetEmpty, { NoData, Error, getIconPath } from '../src';
 
 describe('widget-empty Dependency imports', () => {
   runDependencyCheckTests('widget-empty');

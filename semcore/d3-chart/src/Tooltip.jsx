@@ -1,14 +1,14 @@
-import React from 'react';
 import { Component, Root, sstyled } from '@semcore/core';
-import Popper from '@semcore/popper';
-import { Box } from '@semcore/flex-box';
 import findComponent from '@semcore/core/lib/utils/findComponent';
-import createElement from './createElement';
-import { getChartDefaultColorName } from './utils';
 import { useColorResolver } from '@semcore/core/lib/utils/use/useColorResolver';
+import { Box } from '@semcore/flex-box';
+import Popper from '@semcore/popper';
+import React from 'react';
 
-import style from './style/tooltip.shadow.css';
+import createElement from './createElement';
 import { PatternSymbol } from './Pattern';
+import style from './style/tooltip.shadow.css';
+import { getChartDefaultColorName } from './utils';
 
 /**
  * `TooltipDotRenderContext` is a hack to bypass problem that getDotProps doesn't work for D3 tooltip.

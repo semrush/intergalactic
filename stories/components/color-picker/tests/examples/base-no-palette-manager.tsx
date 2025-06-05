@@ -1,7 +1,7 @@
-import React from 'react';
 import ColorPicker, { PaletteManager } from '@semcore/color-picker';
-import { Text } from '@semcore/typography';
 import { Flex } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
+import React from 'react';
 
 const Demo = () => {
   return (

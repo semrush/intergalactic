@@ -1,8 +1,9 @@
-import fetch from 'node-fetch';
 import * as fs from 'fs';
-import sharp from 'sharp';
+
 import * as dotenv from 'dotenv';
+import fetch from 'node-fetch';
 import pLimit from 'p-limit';
+import sharp from 'sharp';
 
 const limit = pLimit(1);
 const FIGMA_PROJECT_ID = '74268036';

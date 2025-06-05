@@ -1,11 +1,11 @@
-import React from 'react';
 import FeedbackForm from '@semcore/feedback-form';
+import { Flex, Box } from '@semcore/flex-box';
 import Input from '@semcore/input';
 import InputNumber from '@semcore/input-number';
 import Radio, { RadioGroup } from '@semcore/radio';
 import Select from '@semcore/select';
 import { Text } from '@semcore/typography';
-import { Flex, Box } from '@semcore/flex-box';
+import React from 'react';
 
 type Data = {
   title: string;

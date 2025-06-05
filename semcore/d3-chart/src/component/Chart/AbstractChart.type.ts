@@ -1,13 +1,14 @@
-import type React from 'react';
+import type { Intergalactic } from '@semcore/core';
 import type { FlexProps } from '@semcore/flex-box';
-import type { LegendItemKey } from '../ChartLegend/LegendItem/LegendItem.type';
 import type Icon from '@semcore/icon';
-import type { BaseChartLegendProps } from '../ChartLegend/BaseLegend.type';
-import type { TrendProps } from '../ChartLegend/LegendFlex/LegendFlex.type';
+import type React from 'react';
+
 import type { PatternsConfig } from '../../Pattern';
 // @ts-ignore
 import type { PlotSummarizerConfig } from '../../Plot';
-import type { Intergalactic } from '@semcore/core';
+import type { BaseChartLegendProps } from '../ChartLegend/BaseLegend.type';
+import type { TrendProps } from '../ChartLegend/LegendFlex/LegendFlex.type';
+import type { LegendItemKey } from '../ChartLegend/LegendItem/LegendItem.type';
 
 export type BaseLegendProps = BaseChartLegendProps & {
   /**

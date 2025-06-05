@@ -1,7 +1,7 @@
-import type { AnalyzedData, ClusterNode, ComparisonNode, GeneralTrendNode, TrendNode } from './insights';
-
 import type React from 'react';
+
 import type { DataSummarizationConfig } from './hints';
+import type { AnalyzedData, ClusterNode, ComparisonNode, GeneralTrendNode, TrendNode } from './insights';
 import { getIntl, type Intl } from './intl';
 
 const formatLimitedSizeList = (

@@ -1,5 +1,5 @@
-import React from 'react';
 import Spin from '@semcore/spin';
+import React from 'react';
 
 const Demo = () => {
   return (

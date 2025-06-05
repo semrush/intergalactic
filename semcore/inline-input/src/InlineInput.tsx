@@ -1,18 +1,19 @@
-import React from 'react';
+import { ButtonLink } from '@semcore/button';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
-import { Box, InvalidStateBox } from '@semcore/flex-box';
+import type { IRootComponentHandlers } from '@semcore/core';
 import autoFocusEnhance from '@semcore/core/lib/utils/enhances/autoFocusEnhance';
-import type { ITooltipProps } from '@semcore/tooltip';
-import style from './style/inline-input.shadow.css';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import { hasParent } from '@semcore/core/lib/utils/hasParent';
+import { Box, InvalidStateBox } from '@semcore/flex-box';
 import CheckM from '@semcore/icon/Check/m';
 import CloseM from '@semcore/icon/Close/m';
-import Spin from '@semcore/spin';
-import { ButtonLink } from '@semcore/button';
-import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import InputNumber, { type InputNumberValueProps } from '@semcore/input-number';
-import type { IRootComponentHandlers } from '@semcore/core';
-import { hasParent } from '@semcore/core/lib/utils/hasParent';
+import Spin from '@semcore/spin';
+import type { ITooltipProps } from '@semcore/tooltip';
+import React from 'react';
+
+import style from './style/inline-input.shadow.css';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 type OnConfirm = (
   value: string,

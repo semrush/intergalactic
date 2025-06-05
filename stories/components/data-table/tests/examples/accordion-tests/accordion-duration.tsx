@@ -1,7 +1,7 @@
-import React from 'react';
 import { DataTable, ACCORDION, DataTableSort, UNIQ_ROW_KEY } from '@semcore/data-table';
 import Ellipsis, { useResizeObserver } from '@semcore/ellipsis';
 import { NoData } from '@semcore/widget-empty';
+import React from 'react';
 
 type SortableColumn = Exclude<keyof typeof data[0], 'keyword'>;
 const ChartExample1 = () => {

@@ -1,14 +1,14 @@
 import { Animation } from '@semcore/animation';
+import Button from '@semcore/button';
 import { createComponent, Root, Component, sstyled } from '@semcore/core';
-import Popper from '@semcore/popper';
-import { Box } from '@semcore/flex-box';
-import CloseIcon from '@semcore/icon/Close/m';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-import Button from '@semcore/button';
+import { Box } from '@semcore/flex-box';
+import CloseIcon from '@semcore/icon/Close/m';
+import Popper from '@semcore/popper';
 
 import style from './style/feature-popover.shadow.css';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 const stylePopper = sstyled.css`
   @keyframes enter {

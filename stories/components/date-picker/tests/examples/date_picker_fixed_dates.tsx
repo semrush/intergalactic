@@ -1,7 +1,7 @@
-import React from 'react';
 import { DatePicker, DateRangePicker } from '@semcore/date-picker';
 import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
+import React from 'react';
 
 const Demo = () => {
   const today = new Date('2020-06-29');

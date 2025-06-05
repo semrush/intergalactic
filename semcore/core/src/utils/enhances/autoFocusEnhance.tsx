@@ -1,6 +1,7 @@
 import React from 'react';
-import { useForkRef } from '../ref';
+
 import type { UnknownProperties } from '../../core-types/UnknownProperties';
+import { useForkRef } from '../ref';
 
 function notUsingNativeAutoFocus(autoFocus: any) {
   return typeof autoFocus === 'boolean' || typeof autoFocus === 'number';

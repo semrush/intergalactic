@@ -1,6 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
-
 import TabLine from '@semcore/tab-line';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import AutomaticTabActivationExample from './examples/automatic_tab_activation';
 import DisabledTabLineItemExample from './examples/disabled_tab_line_item';

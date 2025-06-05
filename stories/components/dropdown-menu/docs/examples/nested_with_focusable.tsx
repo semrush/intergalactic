@@ -1,11 +1,11 @@
-import React from 'react';
+import Button from '@semcore/button';
+import Divider from '@semcore/divider';
 import DropdownMenu from '@semcore/dropdown-menu';
+import { Box } from '@semcore/flex-box';
 import ChevronRightIcon from '@semcore/icon/ChevronRight/m';
 import InputNumber from '@semcore/input-number';
 import NeighborLocation from '@semcore/neighbor-location';
-import Divider from '@semcore/divider';
-import { Box } from '@semcore/flex-box';
-import Button from '@semcore/button';
+import React from 'react';
 
 const options = ['Item 1', 'Item 2', 'Item 3'];
 const min = 1;

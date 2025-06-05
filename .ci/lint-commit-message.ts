@@ -1,7 +1,9 @@
 #!/usr/bin/env tsm
 
 import fs from 'fs/promises';
+
 import pc from 'picocolors';
+
 import { allowedScopes } from '../tools/continuous-delivery/src/utils/allowedScopes';
 
 const commitMessageFilePath = [...process.argv].pop();

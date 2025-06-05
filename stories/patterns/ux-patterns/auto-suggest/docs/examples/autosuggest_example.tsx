@@ -1,8 +1,8 @@
-import React from 'react';
-import Select from 'intergalactic/select';
-import Input from 'intergalactic/input';
-import { Text } from 'intergalactic/typography';
 import { Box } from 'intergalactic/flex-box';
+import Input from 'intergalactic/input';
+import Select from 'intergalactic/select';
+import { Text } from 'intergalactic/typography';
+import React from 'react';
 
 const Highlight = ({ highlight, children }: { highlight: string; children: string }) => {
   let html = children;

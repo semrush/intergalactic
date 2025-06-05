@@ -1,18 +1,17 @@
-import React from 'react';
 import { Component, Root, sstyled } from '@semcore/core';
-import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import createElement from './createElement';
-import AnimatedClipPath from './AnimatedClipPath';
-import { roundedPath, scaleToBand } from './utils';
-import { PatternFill } from './Pattern';
-import trottle from '@semcore/core/lib/utils/rafTrottle';
-import Tooltip from './Tooltip';
-import { eventToPoint } from './utils';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
-
-import style from './style/bar.shadow.css';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
+import trottle from '@semcore/core/lib/utils/rafTrottle';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { Box } from '@semcore/flex-box';
+import React from 'react';
+
+import AnimatedClipPath from './AnimatedClipPath';
+import createElement from './createElement';
+import { PatternFill } from './Pattern';
+import style from './style/bar.shadow.css';
+import Tooltip from './Tooltip';
+import { roundedPath, scaleToBand, eventToPoint } from './utils';
 
 export const MIN_WIDTH = 4;
 

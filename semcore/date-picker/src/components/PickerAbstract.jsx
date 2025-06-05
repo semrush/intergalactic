@@ -1,14 +1,13 @@
-import React from 'react';
-import dayjs from 'dayjs';
 import { Component, Root, CORE_INSTANCE, sstyled } from '@semcore/core';
-import Dropdown from '@semcore/dropdown';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
-
-import { localizedMessages } from '../translations/__intergalactic-dynamic-locales';
+import Dropdown from '@semcore/dropdown';
+import dayjs from 'dayjs';
+import React from 'react';
 
 import style from '../style/date-picker.shadow.css';
-import { includesDate } from '../utils/includesDate';
+import { localizedMessages } from '../translations/__intergalactic-dynamic-locales';
 import { formatDDMMYY, formatMMYY } from '../utils/formatDate';
+import { includesDate } from '../utils/includesDate';
 
 const INTERACTION_TAGS = ['INPUT'];
 const INTERACTION_KEYS = ['ArrowDown', 'Enter', ' '];

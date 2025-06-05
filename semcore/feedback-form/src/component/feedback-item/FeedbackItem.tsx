@@ -1,10 +1,10 @@
+import { assignProps } from '@semcore/core';
+import pick from '@semcore/core/lib/utils/pick';
+import propsForElement from '@semcore/core/lib/utils/propsForElement';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import Tooltip from '@semcore/tooltip';
 import React from 'react';
 import { Field } from 'react-final-form';
-import Tooltip from '@semcore/tooltip';
-import pick from '@semcore/core/lib/utils/pick';
-import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import { assignProps } from '@semcore/core';
-import propsForElement from '@semcore/core/lib/utils/propsForElement';
 
 const deafultTooltipPropsList = [
   'title',

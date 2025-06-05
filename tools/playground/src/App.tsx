@@ -1,8 +1,8 @@
+import { playgrounds } from '@playgrounds';
 import React, { StrictMode } from 'react';
 
-import { playgrounds } from '@playgrounds';
-import { useLocationHash } from './components/useLocationHash';
 import { Nav } from './components/Nav';
+import { useLocationHash } from './components/useLocationHash';
 import './app.css';
 import { ErrorBoundary } from './components/ErrorBoundary';
 

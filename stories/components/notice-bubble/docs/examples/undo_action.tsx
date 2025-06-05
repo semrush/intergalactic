@@ -1,7 +1,7 @@
-import React from 'react';
-import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/notice-bubble';
 import Button from '@semcore/button';
 import Link from '@semcore/link';
+import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/notice-bubble';
+import React from 'react';
 
 const manager = new NoticeBubbleManager();
 

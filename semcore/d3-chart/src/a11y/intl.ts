@@ -1,4 +1,5 @@
 import { createIntl, createIntlCache, type IntlShape } from '@formatjs/intl';
+
 import { normalizeLocale } from './locale';
 import type { localizedMessages as localizedMessagesTypeBase } from './translations/view/__intergalactic-dynamic-locales';
 

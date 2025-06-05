@@ -1,11 +1,12 @@
-import React from 'react';
 import { Component, lastInteraction } from '@semcore/core';
-import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-import { isFocusInside, setFocus } from '@semcore/core/lib/utils/use/useFocusLock';
-import type { DropdownProps } from './index';
 import { getAccessibleName } from '@semcore/core/lib/utils/getAccessibleName';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import { isFocusInside, setFocus } from '@semcore/core/lib/utils/use/useFocusLock';
+import React from 'react';
+
+import type { DropdownProps } from './index';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 type AbstractDDProps = {
   visible: boolean;

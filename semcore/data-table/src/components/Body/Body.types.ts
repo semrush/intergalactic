@@ -1,7 +1,7 @@
-import type { DTRow } from './Row.types';
-import type { DTColumn } from '../Head/Column.types';
-import type { DTUse, VirtualScroll } from '../DataTable/DataTable.types';
 import type { Theme } from './Cell.types';
+import type { DTRow } from './Row.types';
+import type { DTUse, VirtualScroll } from '../DataTable/DataTable.types';
+import type { DTColumn } from '../Head/Column.types';
 
 export type CellRenderProps = {
   dataKey: string;

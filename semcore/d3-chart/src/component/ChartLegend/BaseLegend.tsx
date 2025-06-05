@@ -1,7 +1,8 @@
-import type React from 'react';
 import { Component, type Intergalactic } from '@semcore/core';
-import type { LegendItemKey, LegendItemProps } from './LegendItem/LegendItem.type';
+import type React from 'react';
+
 import type { LegendProps } from './BaseLegend.type';
+import type { LegendItemKey, LegendItemProps } from './LegendItem/LegendItem.type';
 import { makeDataHintsHandlers } from '../../a11y/hints';
 
 export abstract class BaseLegend<T extends LegendProps> extends Component<T> {

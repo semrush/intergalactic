@@ -1,5 +1,5 @@
-import { expect, test, getAccessibilityViolations } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import { expect, test, getAccessibilityViolations } from '@semcore/testing-utils/playwright';
 
 // bug UIK-3605
 test.describe('Dot', () => {

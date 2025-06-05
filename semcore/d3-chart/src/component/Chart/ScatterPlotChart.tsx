@@ -1,16 +1,17 @@
 import { createComponent } from '@semcore/core';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import { Text } from '@semcore/typography';
 import { type ScaleLinear, scaleLinear, scaleTime } from 'd3-scale';
+
 // @ts-ignore
 import { minMax, ScatterPlot, getScatterPlotRadius } from '../..';
 import { AbstractChart } from './AbstractChart';
+import type { BaseChartProps, ListData } from './AbstractChart.type';
 import type {
   ScatterPlotChartData,
   ScatterPlotChartProps,
   ScatterPlotChartType,
 } from './ScatterPlotChart.type';
-import { Text } from '@semcore/typography';
-import type { BaseChartProps, ListData } from './AbstractChart.type';
-import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 
 class ScatterPlotChartComponent extends AbstractChart<

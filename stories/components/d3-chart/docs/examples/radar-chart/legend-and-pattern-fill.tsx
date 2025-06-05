@@ -1,6 +1,6 @@
-import React from 'react';
 import { Plot, Radar, colors, ChartLegend } from '@semcore/d3-chart';
 import { scaleLinear } from 'd3-scale';
+import React from 'react';
 
 const data = {
   categories: ['Variable 1', 'Variable 2', 'Variable 3', 'Variable 4', 'Variable 5', 'Variable 6'],

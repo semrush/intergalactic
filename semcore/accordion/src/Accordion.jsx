@@ -1,12 +1,12 @@
-import React from 'react';
-import { createComponent, Component, sstyled, Root } from '@semcore/core';
-import { Flex } from '@semcore/flex-box';
 import { Collapse as CollapseAnimate } from '@semcore/animation';
-import { Text } from '@semcore/typography';
-import ChevronRightM from '@semcore/icon/ChevronRight/m';
-import ChevronRightL from '@semcore/icon/ChevronRight/l';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
+import { Flex } from '@semcore/flex-box';
+import ChevronRightL from '@semcore/icon/ChevronRight/l';
+import ChevronRightM from '@semcore/icon/ChevronRight/m';
+import { Text } from '@semcore/typography';
+import React from 'react';
 
 import style from './style/accordion.shadow.css';
 
@@ -22,7 +22,7 @@ class RootAccordion extends Component {
     cssVariableEnhance({
       variable: '--intergalactic-duration-accordion',
       fallback: '200',
-      map: Number.Number.parseInt,
+      map: Number.parseInt,
       prop: 'duration',
     }),
   ];
@@ -39,6 +39,7 @@ class RootAccordion extends Component {
     if (Array.isArray(value)) {
       const indexOfNewValue = value.indexOf(newValue);
       const result = [...value];
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
       indexOfNewValue === -1 ? result.push(newValue) : result.splice(indexOfNewValue, 1);
       this.handlers.value(result);
     } else {

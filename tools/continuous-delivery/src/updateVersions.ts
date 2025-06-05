@@ -1,8 +1,10 @@
 import { dirname as resolveDirname, resolve as resolvePath } from 'path';
+import { fileURLToPath } from 'url';
+
 import fs from 'fs-extra';
 import semver from 'semver';
+
 import { carefulVersionUpdate, log } from './utils';
-import { fileURLToPath } from 'url';
 
 type VersionPatch =
   | {

@@ -1,19 +1,21 @@
-import { makeDataHintsContainer } from '../../a11y/hints';
-import type { LegendItem } from '../ChartLegend/LegendItem/LegendItem.type';
-import type { ScaleBand, ScaleLinear, ScaleTime } from 'd3-scale';
-import { interpolateValue } from '../../utils';
-import type React from 'react';
 import { Component, Root, sstyled } from '@semcore/core';
-import type { BaseChartProps, BaseLegendProps, ListData, ObjectData } from './AbstractChart.type';
+import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
-import ChartLegend, { ChartLegendTable } from '../ChartLegend';
 import { Flex } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
+import type { ScaleBand, ScaleLinear, ScaleTime } from 'd3-scale';
+import type React from 'react';
+
+import type { BaseChartProps, BaseLegendProps, ListData, ObjectData } from './AbstractChart.type';
+
 // @ts-ignore
 import { Plot, XAxis, YAxis } from '../..';
-import { Text } from '@semcore/typography';
+import { makeDataHintsContainer } from '../../a11y/hints';
+import { interpolateValue } from '../../utils';
+import ChartLegend, { ChartLegendTable } from '../ChartLegend';
 import type { LegendFlexProps } from '../ChartLegend/LegendFlex/LegendFlex.type';
+import type { LegendItem } from '../ChartLegend/LegendItem/LegendItem.type';
 import type { LegendTableProps } from '../ChartLegend/LegendTable/LegendTable.type';
-import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
 
 type ChartState = {
   dataDefinitions: Array<LegendItem & { columns: React.ReactNode[] }>;

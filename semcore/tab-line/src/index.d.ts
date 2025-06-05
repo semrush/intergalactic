@@ -1,7 +1,7 @@
-import React from 'react';
-import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import { Box, BoxProps } from '@semcore/flex-box';
-import { NeighborItemProps, NeighborLocationProps } from '@semcore/neighbor-location';
+import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import type { Box, BoxProps } from '@semcore/flex-box';
+import type { NeighborItemProps, NeighborLocationProps } from '@semcore/neighbor-location';
+import type React from 'react';
 
 export type TabLineValue = string | number | boolean;
 

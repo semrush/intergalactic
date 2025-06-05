@@ -1,6 +1,7 @@
 import type { Intergalactic } from '@semcore/core';
 import type { Flex } from '@semcore/flex-box';
 import type { ScaleBand, ScaleLinear, ScaleTime } from 'd3-scale';
+
 import type { BaseChartProps } from './AbstractChart.type';
 
 export type HistogramChartData = Array<Record<string, number | Date>>;

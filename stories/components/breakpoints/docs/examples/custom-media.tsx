@@ -1,5 +1,5 @@
-import React from 'react';
 import { createBreakpoints } from '@semcore/breakpoints';
+import React from 'react';
 
 const MEDIA = [
   '(max-width: 300px)',

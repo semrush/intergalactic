@@ -1,7 +1,17 @@
-import * as React from 'react';
-import { Component, createComponent, lastInteraction, Root, sstyled } from '@semcore/core';
 import { Box, ScreenReaderOnly, ScrollArea } from '@semcore/base-components';
+import { Component, createComponent, lastInteraction, Root, sstyled } from '@semcore/core';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import findComponent from '@semcore/core/lib/utils/findComponent';
+import { hasParent } from '@semcore/core/lib/utils/hasParent';
+import trottle from '@semcore/core/lib/utils/rafTrottle';
+import { forkRef } from '@semcore/core/lib/utils/ref';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import { isFocusInside, hasFocusableIn } from '@semcore/core/lib/utils/use/useFocusLock';
+import { NoData } from '@semcore/widget-empty';
+import type { ReactElement } from 'react';
+import * as React from 'react';
 
+import style from './dataTable.shadow.css';
 import type {
   DataTableProps,
   ColIndex,
@@ -12,28 +22,16 @@ import type {
   ColumnItemConfig,
   DataRowItem,
 } from './DataTable.types';
-import { Head } from '../Head/Head';
-import { Body } from '../Body/Body';
-import type { DataTableColumnProps, DTColumn } from '../Head/Column.types';
-
-import style from './dataTable.shadow.css';
-import type { DTRow, UniqRowKey } from '../Body/Row.types';
-import { isFocusInside, hasFocusableIn } from '@semcore/core/lib/utils/use/useFocusLock';
-
-import type { ReactElement } from 'react';
-import findComponent from '@semcore/core/lib/utils/findComponent';
-import type { DataTableHeadProps, HeadPropsInner } from '../Head/Head.types';
-import type { BodyPropsInner } from '../Body/Body.types';
-import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
-import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import { forkRef } from '@semcore/core/lib/utils/ref';
 import scrollStyles from '../../style/scroll-shadows.shadow.css';
-import type { DataTableGroupProps } from '../Head/Group.type';
-import { hasParent } from '@semcore/core/lib/utils/hasParent';
-import trottle from '@semcore/core/lib/utils/rafTrottle';
+import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
+import { Body } from '../Body/Body';
+import type { BodyPropsInner } from '../Body/Body.types';
 import { MergedColumnsCell, MergedRowsCell } from '../Body/MergedCells';
-import { NoData } from '@semcore/widget-empty';
+import type { DTRow, UniqRowKey } from '../Body/Row.types';
+import type { DataTableColumnProps, DTColumn } from '../Head/Column.types';
+import type { DataTableGroupProps } from '../Head/Group.type';
+import { Head } from '../Head/Head';
+import type { DataTableHeadProps, HeadPropsInner } from '../Head/Head.types';
 
 export const ACCORDION = Symbol('accordion');
 export const ROW_GROUP = Symbol('ROW_GROUP');

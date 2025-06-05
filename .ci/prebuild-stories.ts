@@ -1,8 +1,9 @@
-import glob from 'fast-glob';
-import ts from 'typescript';
-import { resolve, dirname } from 'path';
 import { readFileSync } from 'fs';
 import { readFile, writeFile } from 'fs/promises';
+import { resolve, dirname } from 'path';
+
+import glob from 'fast-glob';
+import ts from 'typescript';
 
 class SourceMapper {
   private importsMap = new Map<string, string>();

@@ -1,8 +1,8 @@
+import Checkbox from '@semcore/checkbox';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 
 import style from '../../style/checkbox-button.shadow.css';
-import Checkbox from '@semcore/checkbox';
 import type { FeedbackRatingCheckboxProps } from '../feedback-rating/FeedbackRating.type';
 
 class CheckboxButtonRoot extends Component<FeedbackRatingCheckboxProps> {

@@ -1,13 +1,12 @@
+import { createComponent, sstyled, Component, Root } from '@semcore/core';
+import contextEnhance from '@semcore/core/lib/utils/enhances/contextEnhance';
+import { getNodeByRef } from '@semcore/core/lib/utils/ref';
 import React from 'react';
 import { findDOMNode } from 'react-dom';
-import { createComponent, sstyled, Component, Root } from '@semcore/core';
+
 import { Box } from '../flex-box';
-import { getNodeByRef } from '@semcore/core/lib/utils/ref';
-import contextEnhance from '@semcore/core/lib/utils/enhances/contextEnhance';
-
-import style from './style/scroll-bar.shadow.css';
-
 import type { ScrollBar as ScrollBarType, ScrollBarProps } from './ScrollBar.types';
+import style from './style/scroll-bar.shadow.css';
 
 export const hideScrollBarsFromScreenReadersContext = React.createContext(false);
 

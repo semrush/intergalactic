@@ -1,10 +1,11 @@
 import * as path from 'path';
-import * as React from 'react';
-import { createRoot } from 'react-dom/client';
-import { act } from './testing-library';
 
 import playwright from 'playwright';
+import * as React from 'react';
+import { createRoot } from 'react-dom/client';
+
 import { mockIllustrationsRequest } from './shared/mockIllustrationsRequest';
+import { act } from './testing-library';
 
 let browser: playwright.Browser | null = null;
 
@@ -14,7 +15,6 @@ if (process.cwd().includes('semcore')) {
   config.path = path.resolve(process.cwd(), '../../.env');
 }
 
-// eslint-disable-next-line @typescript-eslint/no-require-imports
 require('dotenv').config(config);
 
 const DEFAULT_OPTIONS = { selector: '#root' };

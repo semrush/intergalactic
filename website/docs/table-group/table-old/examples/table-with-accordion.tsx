@@ -1,7 +1,7 @@
-import React from 'react';
-import Table from '@semcore/table';
 import Accordion from '@semcore/accordion';
 import { Box } from '@semcore/flex-box';
+import Table from '@semcore/table';
+import React from 'react';
 
 const Demo = () => (
   <Table>

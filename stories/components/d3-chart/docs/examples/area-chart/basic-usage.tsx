@@ -1,5 +1,5 @@
-import React from 'react';
 import { Chart } from '@semcore/d3-chart';
+import React from 'react';
 
 function formatDate(value: any) {
   const options = {

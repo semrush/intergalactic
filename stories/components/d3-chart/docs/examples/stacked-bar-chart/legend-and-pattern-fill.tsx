@@ -1,4 +1,4 @@
-import React from 'react';
+import Card from '@semcore/card';
 import {
   Plot,
   StackBar,
@@ -7,9 +7,9 @@ import {
   ChartLegend,
   makeDataHintsContainer,
 } from '@semcore/d3-chart';
-import { scaleLinear, scaleBand } from 'd3-scale';
 import { Flex } from '@semcore/flex-box';
-import Card from '@semcore/card';
+import { scaleLinear, scaleBand } from 'd3-scale';
+import React from 'react';
 
 const dataHints = makeDataHintsContainer();
 

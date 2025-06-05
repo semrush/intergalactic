@@ -1,8 +1,8 @@
-import React from 'react';
 import { Plot, Bubble, XAxis, YAxis, ChartLegend, makeDataHintsContainer } from '@semcore/d3-chart';
-import { scaleLinear } from 'd3-scale';
-import { Text } from '@semcore/typography';
 import { Flex } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
+import { scaleLinear } from 'd3-scale';
+import React from 'react';
 
 const dataHints = makeDataHintsContainer();
 

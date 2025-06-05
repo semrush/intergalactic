@@ -1,6 +1,7 @@
-import React from 'react';
-import { ChartLegend, LegendItem } from '@semcore/d3-chart';
 import { useColorResolver } from '@semcore/core/lib/utils/use/useColorResolver';
+import type { LegendItem } from '@semcore/d3-chart';
+import { ChartLegend } from '@semcore/d3-chart';
+import React from 'react';
 
 const data = [...Array(5).keys()].map((d, i) => ({
   x: i,

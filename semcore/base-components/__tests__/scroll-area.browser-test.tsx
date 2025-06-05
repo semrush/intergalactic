@@ -1,5 +1,5 @@
-import { expect, Page, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import { expect, Page, test } from '@semcore/testing-utils/playwright';
 
 async function checkAriaMaxValue(scrollBar: any) {
   await expect(scrollBar).toHaveAttribute('aria-valuemax');

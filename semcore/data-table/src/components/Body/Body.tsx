@@ -1,21 +1,21 @@
-import * as React from 'react';
-import { Component, createComponent, type Intergalactic, Root, sstyled } from '@semcore/core';
-import type { BodyPropsInner, DataTableBodyProps } from './Body.types';
 import { Box } from '@semcore/base-components';
-import { Row } from './Row';
+import { ButtonLink } from '@semcore/button';
+import { Component, createComponent, type Intergalactic, Root, sstyled } from '@semcore/core';
+import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
+import { isInteractiveElement } from '@semcore/core/lib/utils/isInteractiveElement';
+import ChevronRightM from '@semcore/icon/ChevronRight/m';
+import Spin from '@semcore/spin';
+import * as React from 'react';
 
-import style from './style.shadow.css';
+import type { BodyPropsInner, DataTableBodyProps } from './Body.types';
 import { Cell } from './Cell';
-import type { DataTableRowProps, DTRow, RowPropsInner, UniqRowKey } from './Row.types';
 import type { DataTableCellProps } from './Cell.types';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
+import { Row } from './Row';
+import type { DataTableRowProps, DTRow, RowPropsInner, UniqRowKey } from './Row.types';
+import style from './style.shadow.css';
 import { ACCORDION, ROW_GROUP, ROW_INDEX, UNIQ_ROW_KEY } from '../DataTable/DataTable';
-import ChevronRightM from '@semcore/icon/ChevronRight/m';
-import { ButtonLink } from '@semcore/button';
 import type { DTValue } from '../DataTable/DataTable.types';
-import Spin from '@semcore/spin';
-import { isInteractiveElement } from '@semcore/core/lib/utils/isInteractiveElement';
-import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 
 const ROWS_BUFFER = 20;
 const APROX_ROWS_ON_PAGE = 20;

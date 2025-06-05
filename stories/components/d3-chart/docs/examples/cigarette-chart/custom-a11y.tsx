@@ -1,5 +1,6 @@
+import type { PlotSummarizerConfig } from '@semcore/d3-chart';
+import { Chart } from '@semcore/d3-chart';
 import React from 'react';
-import { Chart, PlotSummarizerConfig } from '@semcore/d3-chart';
 const data = {
   Cats: 3524,
   Dogs: 1344,

@@ -1,8 +1,8 @@
-import React from 'react';
-import Link from '@semcore/link';
+import FormatText from '@semcore/format-text';
 import CheckM from '@semcore/icon/Check/m';
 import ChevronRightM from '@semcore/icon/ChevronRight/m';
-import FormatText from '@semcore/format-text';
+import Link from '@semcore/link';
+import React from 'react';
 
 const Demo = () => {
   return (

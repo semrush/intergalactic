@@ -1,12 +1,10 @@
+import Button from '@semcore/button';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Button from '@semcore/button';
-
-import ButtonExample from './examples/Basic';
-import ButtonSizesExample from './examples/ButtonSizes';
-import ButtonHintExample from './examples/ButtonHint';
-
 import { ButtonHintColorTest } from './__tests__/ButtonHintColor.test';
+import ButtonExample from './examples/Basic';
+import ButtonHintExample from './examples/ButtonHint';
+import ButtonSizesExample from './examples/ButtonSizes';
 import { playWrapper } from '../../../utils/playWrapper';
 
 const meta: Meta<typeof Button> = {

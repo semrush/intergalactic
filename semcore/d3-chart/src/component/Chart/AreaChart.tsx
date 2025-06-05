@@ -1,13 +1,14 @@
 import { createComponent } from '@semcore/core';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import { Flex, Box } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
 import { type ScaleLinear, scaleLinear, scaleTime } from 'd3-scale';
+
 // @ts-ignore
 import { Area, minMax, HoverLine, StackedArea } from '../..';
 import { AbstractChart } from './AbstractChart';
 import type { AreaChartData, AreaChartProps, AreaChartType } from './AreaChart.type';
-import { Flex, Box } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
-import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 
 class AreaChartComponent extends AbstractChart<
   AreaChartData,

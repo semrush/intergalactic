@@ -1,28 +1,29 @@
-import React from 'react';
-import { createComponent, Component, Root, sstyled } from '@semcore/core';
-import { Flex, Box } from '@semcore/flex-box';
 import { FadeInOut, Slide } from '@semcore/animation';
-import Portal, { PortalProvider } from '@semcore/portal';
-import OutsideClick from '@semcore/outside-click';
-import CloseIcon from '@semcore/icon/Close/l';
-import fire from '@semcore/core/lib/utils/fire';
-import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
-import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
-import usePreventScroll from '@semcore/core/lib/utils/use/usePreventScroll';
-import { Text } from '@semcore/typography';
-import ArrowLeft from '@semcore/icon/ArrowLeft/m';
 import Button, { ButtonLink } from '@semcore/button';
-import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
-import { useFocusLock } from '@semcore/core/lib/utils/use/useFocusLock';
-import { useContextTheme } from '@semcore/core/lib/utils/ThemeProvider';
-import logger from '@semcore/core/lib/utils/logger';
+import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
+import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
+import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
+import fire from '@semcore/core/lib/utils/fire';
+import logger from '@semcore/core/lib/utils/logger';
+import { useContextTheme } from '@semcore/core/lib/utils/ThemeProvider';
+import { useFocusLock } from '@semcore/core/lib/utils/use/useFocusLock';
+import usePreventScroll from '@semcore/core/lib/utils/use/usePreventScroll';
+import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
 import {
   ZIndexStackingContextProvider,
   useZIndexStacking,
 } from '@semcore/core/lib/utils/zIndexStacking';
+import { Flex, Box } from '@semcore/flex-box';
+import ArrowLeft from '@semcore/icon/ArrowLeft/m';
+import CloseIcon from '@semcore/icon/Close/l';
+import OutsideClick from '@semcore/outside-click';
+import Portal, { PortalProvider } from '@semcore/portal';
+import { Text } from '@semcore/typography';
+import React from 'react';
+
 import style from './style/side-panel.shadow.css';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 class RootSidePanel extends Component {
   static displayName = 'SidePanel';
@@ -31,7 +32,7 @@ class RootSidePanel extends Component {
     cssVariableEnhance({
       variable: '--intergalactic-duration-modal',
       fallback: '200',
-      map: Number.Number.parseInt,
+      map: Number.parseInt,
       prop: 'duration',
     }),
     i18nEnhance(localizedMessages),

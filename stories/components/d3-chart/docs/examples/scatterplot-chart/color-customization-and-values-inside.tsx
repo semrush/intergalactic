@@ -1,7 +1,7 @@
-import React from 'react';
 import { Plot, ScatterPlot, XAxis, YAxis } from '@semcore/d3-chart';
-import { scaleLinear } from 'd3-scale';
 import { Text } from '@semcore/typography';
+import { scaleLinear } from 'd3-scale';
+import React from 'react';
 
 const Demo = () => {
   const MARGIN = 40;

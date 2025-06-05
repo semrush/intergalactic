@@ -1,7 +1,8 @@
-import type { CSSProperties, DetailedHTMLProps, Ref, StyleHTMLAttributes } from 'react';
 import cn from 'classnames';
-import { sstyled } from '../styled/index';
+import type { CSSProperties, DetailedHTMLProps, Ref, StyleHTMLAttributes } from 'react';
+
 import { forkRef } from './ref';
+import { sstyled } from '../styled/index';
 
 export function callAllEventHandlers(...fns: Array<Function | undefined>) {
   return (...args: any[]) =>

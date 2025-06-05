@@ -1,6 +1,6 @@
-import React from 'react';
 import { DataTable } from '@semcore/data-table';
 import { Box } from '@semcore/flex-box';
+import React from 'react';
 
 const stylesMap = {
   5: 'success',

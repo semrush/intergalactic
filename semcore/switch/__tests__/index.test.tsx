@@ -1,11 +1,11 @@
-import * as React from 'react';
-import { snapshot } from '@semcore/testing-utils/snapshot';
-import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
-import Switch, { inputProps } from '../src';
-
-import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import * as React from 'react';
+
+import Switch, { inputProps } from '../src';
 
 describe('switch Dependency imports', () => {
   runDependencyCheckTests('switch');

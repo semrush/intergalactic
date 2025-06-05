@@ -1,14 +1,13 @@
-import dayjs from 'dayjs';
-import isBetween from '../utils/isBetweenPlugin';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
-import { Box } from '@semcore/flex-box';
-import fire from '@semcore/core/lib/utils/fire';
-import { includesDate } from '../utils/includesDate';
-import { formatDDMMYY, formatMMYY } from '../utils/formatDate';
 import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
-import { ScreenReaderOnly } from '@semcore/flex-box';
+import fire from '@semcore/core/lib/utils/fire';
+import { Box, ScreenReaderOnly } from '@semcore/flex-box';
+import dayjs from 'dayjs';
 
 import style from '../style/calendar.shadow.css';
+import { formatDDMMYY, formatMMYY } from '../utils/formatDate';
+import { includesDate } from '../utils/includesDate';
+import isBetween from '../utils/isBetweenPlugin';
 
 dayjs.extend(isBetween);
 

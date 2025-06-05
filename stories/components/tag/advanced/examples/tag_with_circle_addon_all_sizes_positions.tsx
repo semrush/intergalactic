@@ -1,6 +1,6 @@
-import React from 'react';
-import Tag from '@semcore/tag';
 import { Flex } from '@semcore/flex-box';
+import Tag from '@semcore/tag';
+import React from 'react';
 
 const Demo = () => {
   return (

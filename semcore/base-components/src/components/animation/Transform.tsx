@@ -1,5 +1,6 @@
-import type React from 'react';
 import { createBaseComponent, sstyled } from '@semcore/core';
+import type React from 'react';
+
 import Animation from './Animation';
 import style from './style/keyframes.shadow.css';
 

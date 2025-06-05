@@ -1,9 +1,9 @@
-import * as React from 'react';
-import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
-import { List } from '../src';
-
-import { cleanup, render } from '@semcore/testing-utils/testing-library';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { cleanup, render } from '@semcore/testing-utils/testing-library';
+import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
+import * as React from 'react';
+
+import { List } from '../src';
 
 describe('typography Dependency imports', () => {
   runDependencyCheckTests('typography');

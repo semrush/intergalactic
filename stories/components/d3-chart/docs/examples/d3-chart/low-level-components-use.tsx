@@ -1,5 +1,5 @@
-import React from 'react';
 import { PatternFill, PatternSymbol, getPatternSymbolSize } from '@semcore/d3-chart';
+import React from 'react';
 
 const Demo = () => {
   const patterns = 'zigzag';

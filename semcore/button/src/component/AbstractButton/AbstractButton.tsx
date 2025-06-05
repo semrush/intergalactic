@@ -1,13 +1,14 @@
-import React from 'react';
-import { Box } from '@semcore/flex-box';
-import { Hint } from '@semcore/tooltip';
-import NeighborLocation from '@semcore/neighbor-location';
-import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
-import logger from '@semcore/core/lib/utils/logger';
-import SpinButton from './SpinButton';
-import hasLabels from '@semcore/core/lib/utils/hasLabels';
-import type { AbstractButtonProps } from './AbstractButton.type';
 import { Component, CORE_INSTANCE, Root, sstyled } from '@semcore/core';
+import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
+import hasLabels from '@semcore/core/lib/utils/hasLabels';
+import logger from '@semcore/core/lib/utils/logger';
+import { Box } from '@semcore/flex-box';
+import NeighborLocation from '@semcore/neighbor-location';
+import { Hint } from '@semcore/tooltip';
+import React from 'react';
+
+import type { AbstractButtonProps } from './AbstractButton.type';
+import SpinButton from './SpinButton';
 
 export const MAP_USE_DEFAULT_THEME: Record<string, string> = {
   primary: 'info',

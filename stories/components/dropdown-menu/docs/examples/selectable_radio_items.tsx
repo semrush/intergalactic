@@ -1,8 +1,8 @@
-import React from 'react';
-import DropdownMenu from '@semcore/dropdown-menu';
 import Button from '@semcore/button';
-import Trash from '@semcore/icon/Trash/m';
+import DropdownMenu from '@semcore/dropdown-menu';
 import { Flex } from '@semcore/flex-box';
+import Trash from '@semcore/icon/Trash/m';
+import React from 'react';
 
 const menuItems: null[] = new Array(10).fill(null);
 

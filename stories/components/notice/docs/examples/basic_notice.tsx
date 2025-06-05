@@ -1,10 +1,10 @@
-import React from 'react';
-import Notice from '@semcore/notice';
-import Question from '@semcore/icon/Question/m';
-import Warning from '@semcore/icon/Warning/m';
 import Button from '@semcore/button';
 import { Flex } from '@semcore/flex-box';
+import Question from '@semcore/icon/Question/m';
 import ThumbUpM from '@semcore/icon/ThumbUp/m';
+import Warning from '@semcore/icon/Warning/m';
+import Notice from '@semcore/notice';
+import React from 'react';
 
 const Demo = () => (
   <Flex direction='column'>

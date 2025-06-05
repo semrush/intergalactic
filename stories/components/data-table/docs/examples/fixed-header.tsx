@@ -1,6 +1,6 @@
-import React from 'react';
-import { DataTable } from '@semcore/data-table';
 import { Box } from '@semcore/base-components';
+import { DataTable } from '@semcore/data-table';
+import React from 'react';
 
 const Demo = () => {
   const top = 0; // the height of the UI that should stick alongside the table header

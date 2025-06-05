@@ -1,13 +1,14 @@
-import React from 'react';
-import { Intergalactic, UnknownProperties, PropGetterFn } from '@semcore/core';
-import Popper, {
+import type { Intergalactic, UnknownProperties, PropGetterFn } from '@semcore/core';
+import type { Box, BoxProps } from '@semcore/flex-box';
+import type {
   PopperContext,
   PopperProps,
   PopperHandlers,
   PopperTriggerProps,
   PopperPopperProps,
 } from '@semcore/popper';
-import { Box, BoxProps } from '@semcore/flex-box';
+import type Popper from '@semcore/popper';
+import type React from 'react';
 
 /** @deprecated */
 export interface IDropdownProps extends DropdownProps, UnknownProperties {}

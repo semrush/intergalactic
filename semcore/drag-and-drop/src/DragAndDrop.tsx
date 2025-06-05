@@ -1,16 +1,15 @@
-import React from 'react';
 import { createComponent, sstyled, Component, Root } from '@semcore/core';
-import { Box } from '@semcore/flex-box';
-import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import useEnhancedEffect from '@semcore/core/lib/utils/use/useEnhancedEffect';
-
-import style from './style/drag-and-drop.shadow.css';
-import type { DropZoneProps } from './index';
-import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
-import { ScreenReaderOnly } from '@semcore/flex-box';
-import uniqueIDEnhance from '@semcore/core/lib/utils/uniqueID';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
+import uniqueIDEnhance from '@semcore/core/lib/utils/uniqueID';
+import useEnhancedEffect from '@semcore/core/lib/utils/use/useEnhancedEffect';
+import { Box, ScreenReaderOnly } from '@semcore/flex-box';
+import React from 'react';
+
+import type { DropZoneProps } from './index';
+import style from './style/drag-and-drop.shadow.css';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 type AsProps = {
   /**

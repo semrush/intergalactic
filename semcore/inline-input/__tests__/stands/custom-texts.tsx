@@ -1,6 +1,6 @@
+import InlineInput from 'intergalactic/inline-input';
 import React from 'react';
 // @ts-ignore
-import InlineInput from 'intergalactic/inline-input';
 
 const Demo = () => {
   return (

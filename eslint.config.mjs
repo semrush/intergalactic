@@ -1,9 +1,10 @@
 import js from '@eslint/js';
+import stylistic from '@stylistic/eslint-plugin';
+import { defineConfig, globalIgnores } from 'eslint/config';
+// import pluginImport from 'eslint-plugin-import';
+import pluginReact from 'eslint-plugin-react';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
-import pluginReact from 'eslint-plugin-react';
-import { defineConfig, globalIgnores } from 'eslint/config';
-import stylistic from '@stylistic/eslint-plugin';
 
 export default defineConfig([
   globalIgnores([
@@ -15,21 +16,25 @@ export default defineConfig([
     '**/test-results/',
     '**/allure-results/',
     '**/.cache/',
+    '**/__fixtures__/**',
     'semcore/table/',
     'semcore/stylelint-plugin',
     'semcore/illustration/**/*.mjs',
     'semcore/illustration/**/*.js',
+    'semcore/illustration/**/*.d.ts',
     'semcore/icon/**/*.mjs',
     'semcore/icon/**/*.js',
+    'semcore/icon/**/*.d.ts',
   ]),
   { files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'], plugins: { js }, extends: ['js/recommended'] },
+  pluginReact.configs.flat.recommended,
+  tseslint.configs.recommended,
+  // pluginImport.flatConfigs.recommended,
+  // { files: ['**/*.{ts,mts,cts,tsx}'], extends: [tseslint.configs.recommended] },
   {
     files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
-    languageOptions: { globals: { ...globals.browser, ...globals.node } },
+    languageOptions: { globals: { ...globals.browser, ...globals.node }, ecmaVersion: 'latest', sourceType: 'module' },
   },
-
-  { files: ['**/*.{ts,mts,cts,tsx}'], extends: [tseslint.configs.recommended] },
-  pluginReact.configs.flat.recommended,
   stylistic.configs.customize({
     indent: 2,
     quotes: 'single',
@@ -53,9 +58,29 @@ export default defineConfig([
       '@typescript-eslint/no-empty-object-type': 'off',
       '@typescript-eslint/semi': 'off', // because of stylistic.semi: true
 
+      '@typescript-eslint/consistent-type-imports': 'error',
+      '@typescript-eslint/no-require-imports': 'off',
+      '@typescript-eslint/no-this-alias': 'off',
+
       // stylistic
       '@stylistic/jsx-quotes': ['error', 'prefer-single'],
       '@stylistic/operator-linebreak': ['error', 'after', { overrides: { '?': 'before', ':': 'before' } }],
+      // 'import/order': [
+      //   'error',
+      //   {
+      //     'groups': ['builtin', 'external', 'internal'],
+      //     'newlines-between': 'always',
+      //     'alphabetize': { order: 'asc', caseInsensitive: true },
+      //   },
+      // ],
+      // 'import/namespace': 'off',
+      // 'import/no-unresolved': 'off',
+      // 'sort-imports': ['error', {
+      //   ignoreCase: false,
+      //   ignoreDeclarationSort: false,
+      //   ignoreMemberSort: false,
+      //   allowSeparatedGroups: false,
+      // }],
 
       // enable after migration
       '@typescript-eslint/ban-ts-comment': 'off',

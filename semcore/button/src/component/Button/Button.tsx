@@ -2,8 +2,8 @@ import { createComponent, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 
 import style from './button.shadow.css';
-import { AbstractButton } from '../AbstractButton/AbstractButton';
 import type { ButtonAddonProps, ButtonComponent, ButtonTextProps } from './Button.type';
+import { AbstractButton } from '../AbstractButton/AbstractButton';
 
 class RootButton extends AbstractButton {
   static displayName = 'Button';

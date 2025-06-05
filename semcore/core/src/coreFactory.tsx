@@ -1,37 +1,35 @@
-import React, { type ForwardRefExoticComponent, type RefAttributes } from 'react';
 import hoistNonReactStatics from 'hoist-non-react-statics';
-
-import { useForkRef } from './utils/ref';
-import useEnhancedEffect from './utils/use/useEnhancedEffect';
-import _assignProps from './utils/assignProps';
+import React, { type ForwardRefExoticComponent, type RefAttributes } from 'react';
 
 import { Component, type PropsWithRenderFnChildren } from './core-types/Component';
-
+import {
+  CONTEXT_COMPONENT,
+  CORE_AS_PROPS,
+  CORE_COMPONENT,
+  CORE_INIT,
+  CORE_INSTANCE,
+  CREATE_COMPONENT,
+  PARENT_COMPONENTS,
+} from './core-types/symbols';
+import bindHandlerEnhancement from './enhancement/bindHandler';
 import childrenEnhancement from './enhancement/Children';
-import rootEnhancement from './enhancement/Root';
-import uncontrolledPropsEnhancement from './enhancement/uncontrolledProps';
-import functionDefaultPropsEnhancement from './enhancement/functionDefaultProps';
-import staticChildrenEnhancement, {
-  STATIC_COMPONENT,
-  ROOT_COMPONENT,
-  getterMethodNameByDisplayName,
-} from './enhancement/staticChildren';
-import inheritedNameEnhancement from './enhancement/inheritedName';
-import hoistPropsEnhancement from './enhancement/hoistProps';
 import dataNameEnhancement from './enhancement/dataName';
 import enhanceEnhancement from './enhancement/enhance';
-import styleEnhancement from './enhancement/style';
-import bindHandlerEnhancement from './enhancement/bindHandler';
+import functionDefaultPropsEnhancement from './enhancement/functionDefaultProps';
+import hoistPropsEnhancement from './enhancement/hoistProps';
 import i18nAppLocaleEnhance from './enhancement/i18n';
-import {
-  CORE_AS_PROPS,
-  CORE_INIT,
-  PARENT_COMPONENTS,
-  CORE_INSTANCE,
-  CORE_COMPONENT,
-  CREATE_COMPONENT,
-  CONTEXT_COMPONENT,
-} from './core-types/symbols';
+import inheritedNameEnhancement from './enhancement/inheritedName';
+import rootEnhancement from './enhancement/Root';
+import staticChildrenEnhancement, {
+  getterMethodNameByDisplayName,
+  ROOT_COMPONENT,
+  STATIC_COMPONENT,
+} from './enhancement/staticChildren';
+import styleEnhancement from './enhancement/style';
+import uncontrolledPropsEnhancement from './enhancement/uncontrolledProps';
+import _assignProps from './utils/assignProps';
+import { useForkRef } from './utils/ref';
+import useEnhancedEffect from './utils/use/useEnhancedEffect';
 
 function isEmptyObject(obj: any) {
   return (
@@ -314,7 +312,7 @@ function createComponent<ComponentProps, ChildComponentProps = {}, ContextType =
     ComponentProps extends Component<infer Props> ? Props : ComponentProps,
     ChildComponentProps,
     ContextType,
-    ComponentProps extends ClassWithUncontrolledProps<any>
+    ComponentProps extends ClassWithUncontrolledProps
       ? ReturnType<ComponentProps['uncontrolledProps']>
       : { [key: string]: (arg: unknown) => void },
     FNType

@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import AdvancedUsageExample from './examples/bar-horizontal-compact/advanced_usage';
-import ClickableAdvancedExample from './examples/bar-horizontal-compact/clickable_advanced';
 import BasicUsageExample from './examples/bar-horizontal-compact/basic_usage';
+import ClickableAdvancedExample from './examples/bar-horizontal-compact/clickable_advanced';
 import ClickableBasicExample from './examples/bar-horizontal-compact/clickable_basic';
 import LinksExample from './examples/bar-horizontal-compact/links';
 

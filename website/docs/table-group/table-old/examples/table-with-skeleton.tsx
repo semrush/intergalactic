@@ -1,9 +1,9 @@
-import React from 'react';
-import Table from '@semcore/table';
-import Skeleton from '@semcore/skeleton';
 import Checkbox from '@semcore/checkbox';
+import Skeleton from '@semcore/skeleton';
+import Table from '@semcore/table';
 import { Hint } from '@semcore/tooltip';
 import { Text } from '@semcore/typography';
+import React from 'react';
 
 const data = [
   {

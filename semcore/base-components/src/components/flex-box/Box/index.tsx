@@ -1,4 +1,5 @@
 import { createBaseComponent, type Intergalactic } from '@semcore/core';
+
 import useBox, { type BoxProps } from './useBox';
 
 function Box(props: any, ref: any) {

@@ -1,6 +1,7 @@
-import React from 'react';
-import getDisplayName from '../getDisplayName';
 import hoistNonReactStatics from 'hoist-non-react-statics';
+import React from 'react';
+
+import getDisplayName from '../getDisplayName';
 
 function WithForwardRef() {
   return function ForwardRef<T extends React.ComponentType>(Component: T) {

@@ -1,9 +1,9 @@
-import React from 'react';
 import { Plot, Line, XAxis, YAxis, HoverLine, minMax, Chart } from '@semcore/d3-chart';
-import { scaleLinear } from 'd3-scale';
 import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
+import { scaleLinear } from 'd3-scale';
 import { curveCardinal } from 'd3-shape';
+import React from 'react';
 
 const Demo = () => {
   const MARGIN = 40;

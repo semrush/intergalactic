@@ -1,11 +1,11 @@
-import React from 'react';
-import { Intergalactic, UnknownProperties } from '@semcore/core';
-import {
+import type { Intergalactic, UnknownProperties } from '@semcore/core';
+import type {
   PopperContext,
   PopperProps,
   PopperTriggerProps,
   eventInteraction,
 } from '@semcore/popper';
+import type React from 'react';
 
 export type ArrowCustom = {
   arrowBgColor?: string;

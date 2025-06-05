@@ -1,13 +1,13 @@
-import React from 'react';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
-import Input from '@semcore/input';
-import { Box } from '@semcore/flex-box';
-import { Hours, Minutes } from './PickerInput';
-import Format from './PickerFormat';
-import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import { Box } from '@semcore/flex-box';
+import Input from '@semcore/input';
+import React from 'react';
 
+import Format from './PickerFormat';
+import { Hours, Minutes } from './PickerInput';
 import style from './style/time-picker.shadow.css';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 const MAP_MERIDIEM = {
   AM: 'PM',
@@ -19,7 +19,7 @@ const MAP_FIELD_TO_TIME = {
 };
 
 export function intOrDefault(value, def = 0) {
-  const number = Number.Number.parseInt(value);
+  const number = Number.parseInt(value);
   return Number.isNaN(number) ? def : number;
 }
 

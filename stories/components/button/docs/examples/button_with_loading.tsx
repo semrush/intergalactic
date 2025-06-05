@@ -1,6 +1,6 @@
-import React from 'react';
 import Button from '@semcore/button';
 import Spin from '@semcore/spin';
+import React from 'react';
 
 const Demo = () => {
   return (

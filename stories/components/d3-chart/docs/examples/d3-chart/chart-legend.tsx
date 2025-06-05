@@ -1,7 +1,7 @@
-import React from 'react';
 import { Line, minMax, XAxis, Plot, YAxis, ChartLegend } from '@semcore/d3-chart';
-import { scaleLinear } from 'd3-scale';
 import { Box } from '@semcore/flex-box';
+import { scaleLinear } from 'd3-scale';
+import React from 'react';
 
 const MAP_THEME = {
   line1: 'orange',

@@ -1,6 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
-
 import Link from '@semcore/link';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import IconsInLinksExample from './examples/icons_in_links';
 import LinkHintExample from './examples/link-hint';

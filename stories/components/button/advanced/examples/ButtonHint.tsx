@@ -1,9 +1,9 @@
-import React from 'react';
 import Button from '@semcore/button';
-import Tooltip, { Hint, DescriptionTooltip } from '@semcore/tooltip';
-import SearchM from '@semcore/icon/Search/m';
-import SearchL from '@semcore/icon/Search/l';
 import { Flex } from '@semcore/flex-box';
+import SearchL from '@semcore/icon/Search/l';
+import SearchM from '@semcore/icon/Search/m';
+import Tooltip, { Hint, DescriptionTooltip } from '@semcore/tooltip';
+import React from 'react';
 
 const Demo = () => {
   return (

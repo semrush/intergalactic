@@ -1,11 +1,12 @@
-const os = require('os');
 const fs = require('fs');
+const os = require('os');
 const path = require('path');
-const mkdirp = require('mkdirp');
-const loaderUtils = require('loader-utils');
-const findCacheDir = require('find-cache-dir');
-const VirtualModulesPlugin = require('webpack-virtual-modules');
+
 const utils = require('@reshadow/utils');
+const findCacheDir = require('find-cache-dir');
+const loaderUtils = require('loader-utils');
+const mkdirp = require('mkdirp');
+const VirtualModulesPlugin = require('webpack-virtual-modules');
 
 const virtualModules = new VirtualModulesPlugin();
 let cacheDirectory;

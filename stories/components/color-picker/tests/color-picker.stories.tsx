@@ -1,13 +1,12 @@
-import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
-
 import ColorPicker from '@semcore/color-picker';
+import type { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
 
 import BasicWithouPaletterManagerExample from './examples/base-no-palette-manager';
-import LabelAndColorExpandedExample from './examples/label-and-color-expanded';
 import ColorPickerPropsExample from './examples/color-picker-props';
 import ColorsAndPaletterManagerPropsExample from './examples/colors-and-palette-manager-colors-props';
 import PropsExample from './examples/input-color-and-items-props';
+import LabelAndColorExpandedExample from './examples/label-and-color-expanded';
 import TriggersExample from './examples/triggers';
 
 const meta: Meta<typeof ColorPicker> = {

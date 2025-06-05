@@ -1,12 +1,12 @@
+import Button from '@semcore/button';
+import Counter from '@semcore/counter';
+import { Flex } from '@semcore/flex-box';
+import InputTags from '@semcore/input-tags/';
+import Select from '@semcore/select';
+import Tooltip from '@semcore/tooltip';
+import { Text } from '@semcore/typography';
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import { Flex } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
-import Select from '@semcore/select';
-import Counter from '@semcore/counter';
-import Tooltip from '@semcore/tooltip';
-import InputTags from '@semcore/input-tags/';
-import Button from '@semcore/button';
 
 const Demo = () => {
   const defaultValues = {

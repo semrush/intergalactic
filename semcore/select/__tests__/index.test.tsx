@@ -1,20 +1,19 @@
 import React from 'react';
 import { FilterTrigger } from '@semcore/base-trigger';
-import { snapshot } from '@semcore/testing-utils/snapshot';
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
-import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
-
 import { cleanup, fireEvent, render, act, userEvent } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
 
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
-import Select from '../src';
 // @ts-ignore
-import InputSearch from '../src/InputSearch';
 import { skipButtonComboboxDiscernibleErrors } from '@semcore/testing-utils/playwright';
-
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+
+import Select from '../src';
+import InputSearch from '../src/InputSearch';
 
 describe('select Dependency imports', () => {
   runDependencyCheckTests('select');

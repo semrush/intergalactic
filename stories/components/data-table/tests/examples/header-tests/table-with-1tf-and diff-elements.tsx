@@ -1,14 +1,14 @@
-import React from 'react';
-import { DataTable, DataTableSort } from '@semcore/data-table';
-import LinkExternalM from '@semcore/icon/LinkExternal/m';
-import Tooltip, { Hint } from '@semcore/tooltip';
-import Link from '@semcore/link';
-import Checkbox from '@semcore/checkbox';
-import { DescriptionTooltip } from '@semcore/tooltip';
-import InfoM from '@semcore/icon/Info/m';
 import { ButtonLink } from '@semcore/button';
+import Checkbox from '@semcore/checkbox';
+import type { DataTableSort } from '@semcore/data-table';
+import { DataTable } from '@semcore/data-table';
 import Ellipsis from '@semcore/ellipsis';
+import InfoM from '@semcore/icon/Info/m';
+import LinkExternalM from '@semcore/icon/LinkExternal/m';
+import Link from '@semcore/link';
+import Tooltip, { Hint, DescriptionTooltip } from '@semcore/tooltip';
 import { Text } from '@semcore/typography';
+import React from 'react';
 type SortableColumn = Exclude<keyof typeof data[0], 'keyword'>;
 
 const Demo = () => {

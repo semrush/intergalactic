@@ -1,13 +1,13 @@
-import React from 'react';
-import { DataTable } from '@semcore/data-table';
-import Checkbox from '@semcore/checkbox';
-import { Flex } from '@semcore/flex-box';
 import Button from '@semcore/button';
-import Dropdown from '@semcore/ui/dropdown';
-import Select from '@semcore/select';
-import { Text } from '@semcore/typography';
-import { Hint } from '@semcore/tooltip';
+import Checkbox from '@semcore/checkbox';
+import { DataTable } from '@semcore/data-table';
+import { Flex } from '@semcore/flex-box';
 import InfoM from '@semcore/icon/Info/m';
+import Select from '@semcore/select';
+import { Hint } from '@semcore/tooltip';
+import { Text } from '@semcore/typography';
+import Dropdown from '@semcore/ui/dropdown';
+import React from 'react';
 
 const keyword = ['ebay buy', 'www.ebay.com', 'ebay buy'];
 const kd = ['77.8', '10', '11.2', '-', '75.89'];

@@ -1,15 +1,17 @@
-import React from 'react';
-import { createComponent, Component, sstyled, Root } from '@semcore/core';
+import { createBreakpoints } from '@semcore/breakpoints';
 import Button from '@semcore/button';
-import Modal from '@semcore/modal';
-import { Box, Flex } from '@semcore/flex-box';
-import ChevronRight from '@semcore/icon/ChevronRight/l';
-import ChevronLeft from '@semcore/icon/ChevronLeft/l';
-import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
+import { findAllComponents } from '@semcore/core/lib/utils/findComponent';
 import logger from '@semcore/core/lib/utils/logger';
-import style from './style/carousel.shadow.css';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import { Box, Flex } from '@semcore/flex-box';
+import type { BoxProps } from '@semcore/flex-box';
+import ChevronLeft from '@semcore/icon/ChevronLeft/l';
+import ChevronRight from '@semcore/icon/ChevronRight/l';
+import Modal from '@semcore/modal';
+import React from 'react';
+
 import type CarouselType from './Carousel.types';
 import type {
   CarouselProps,
@@ -21,9 +23,8 @@ import type {
   CarouselIndicatorsProps,
   CarouselIndicatorProps,
 } from './Carousel.types';
-import type { BoxProps } from '@semcore/flex-box';
-import { findAllComponents } from '@semcore/core/lib/utils/findComponent';
-import { createBreakpoints } from '@semcore/breakpoints';
+import style from './style/carousel.shadow.css';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 const MAP_TRANSFORM: Record<string, 'left' | 'right'> = {
   ArrowLeft: 'left',

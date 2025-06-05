@@ -1,7 +1,8 @@
-import type { Intergalactic } from '../src';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { test, describe, assertType } from '@semcore/testing-utils/vitest';
 import * as React from 'react';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+import type { Intergalactic } from '../src';
 
 describe('Core Dependency imports', () => {
   runDependencyCheckTests('core');

@@ -1,9 +1,9 @@
-import React from 'react';
 import Card from '@semcore/card';
 import {
   BarChartSkeleton,
   CompactHorizontalBarChartSkeleton,
 } from '@semcore/skeleton';
+import React from 'react';
 
 const Demo = () => {
   return (

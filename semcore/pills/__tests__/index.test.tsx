@@ -1,20 +1,18 @@
-import React from 'react';
-import { snapshot } from '@semcore/testing-utils/snapshot';
-import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
-import Globe from '@semcore/icon/Globe/m';
 import Badge from '@semcore/badge';
-
-import { render, fireEvent, cleanup, act, userEvent } from '@semcore/testing-utils/testing-library';
+import type { Intergalactic } from '@semcore/core';
+import { Box } from '@semcore/flex-box';
+import Globe from '@semcore/icon/Globe/m';
+import ThumbDownM from '@semcore/icon/ThumbDown/m';
+import ThumbUpM from '@semcore/icon/ThumbUp/m';
 import { axe } from '@semcore/testing-utils/axe';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { render, fireEvent, cleanup, act, userEvent } from '@semcore/testing-utils/testing-library';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import React from 'react';
+import { assertType } from 'vitest';
 
 import Pills from '../src';
-import { Intergalactic } from '@semcore/core';
-import { assertType } from 'vitest';
-import ThumbUpM from '@semcore/icon/ThumbUp/m';
-import ThumbDownM from '@semcore/icon/ThumbDown/m';
-import { Box } from '@semcore/flex-box';
-
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('pills Dependency imports', () => {
   runDependencyCheckTests('pills');

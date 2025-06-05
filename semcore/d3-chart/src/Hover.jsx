@@ -1,11 +1,11 @@
 import { Component, sstyled, Root } from '@semcore/core';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import trottle from '@semcore/core/lib/utils/rafTrottle';
-import createElement from './createElement';
-import { scaleOfBandwidth, getIndexFromData, eventToPoint, invert, scaleToBand } from './utils';
 
+import createElement from './createElement';
 import style from './style/hover.shadow.css';
 import Tooltip from './Tooltip';
+import { scaleOfBandwidth, getIndexFromData, eventToPoint, invert, scaleToBand } from './utils';
 
 class Hover extends Component {
   static style = style;

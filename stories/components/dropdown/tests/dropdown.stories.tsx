@@ -1,14 +1,13 @@
+import Dropdown from '@semcore/dropdown';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Dropdown from '@semcore/dropdown';
-
-import DDWithTooltipExample from './examples/dd-with-tooltip';
-import DDStretchExample from './examples/dd-stretch';
-import DDInteractionExample from './examples/dd-interaction';
 import DDCasesExample from './examples/dd-cases';
-import DDTriggerPopperExample from './examples/dd-trigger-and-popper';
-import DDInputTriggerFocusExample from './examples/dd-input-trigger-focus';
 import DDInputTriggerExample from './examples/dd-input-trigger';
+import DDInputTriggerFocusExample from './examples/dd-input-trigger-focus';
+import DDInteractionExample from './examples/dd-interaction';
+import DDStretchExample from './examples/dd-stretch';
+import DDTriggerPopperExample from './examples/dd-trigger-and-popper';
+import DDWithTooltipExample from './examples/dd-with-tooltip';
 
 const meta: Meta<typeof Dropdown> = {
   title: 'Components/Dropdown/Tests',

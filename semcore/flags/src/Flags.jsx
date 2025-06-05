@@ -1,10 +1,10 @@
-import cn from 'classnames';
 import { createBaseComponent, sstyled } from '@semcore/core';
-import { useBox } from '@semcore/flex-box';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import isRetina from '@semcore/core/lib/utils/isRetina';
-import countries from './countries.json';
+import { useBox } from '@semcore/flex-box';
+import cn from 'classnames';
 
+import countries from './countries.json';
 import styles from './style/flags.shadow.css';
 
 export const iso2Name = countries.iso2Name;

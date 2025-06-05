@@ -1,14 +1,14 @@
-import React from 'react';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import Dropdown from '@semcore/dropdown';
 import { Box } from '@semcore/flex-box';
 import ChevronDownM from '@semcore/icon/ChevronDown/m';
-import PaletteManagerRoot from './PaletteManager';
-import { Item, Colors, ColorsCustom, InputColor } from './components';
-import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import React from 'react';
 
+import { Item, Colors, ColorsCustom, InputColor } from './components';
+import PaletteManagerRoot from './PaletteManager';
 import style from './style/color-picker.shadow.css';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 const defaultColors = [
   null,

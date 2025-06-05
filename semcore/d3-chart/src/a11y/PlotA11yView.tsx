@@ -1,15 +1,16 @@
+import { Root, sstyled } from '@semcore/core';
+import { useAsyncI18nMessages } from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import { Box } from '@semcore/flex-box';
 import React from 'react';
+
+import { DataAccessibilityTable } from './DataAccessibilityTable';
 import { heavyFindNextFocusableElement } from './focus';
 import { makeDataSummarizationConfig } from './hints';
-import type { A11yViewProps } from './PlotA11yModule';
 import { getIntl } from './intl';
+import type { A11yViewProps } from './PlotA11yModule';
 import { summarize } from './summarize';
-import { Root, sstyled } from '@semcore/core';
 import styles from '../style/plotA11yView.shadow.css';
-import { Box } from '@semcore/flex-box';
-import { useAsyncI18nMessages } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { localizedMessages } from './translations/view/__intergalactic-dynamic-locales';
-import { DataAccessibilityTable } from './DataAccessibilityTable';
 
 export const PlotA11yView: React.FC<A11yViewProps> = ({
   id,

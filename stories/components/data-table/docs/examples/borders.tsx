@@ -1,5 +1,5 @@
-import React from 'react';
 import { DataTable } from '@semcore/data-table';
+import React from 'react';
 
 const Demo = () => {
   return (

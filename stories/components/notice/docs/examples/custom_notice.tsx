@@ -1,7 +1,7 @@
-import React from 'react';
-import Notice from '@semcore/notice';
-import Calendar from '@semcore/icon/Calendar/l';
 import Button from '@semcore/button';
+import Calendar from '@semcore/icon/Calendar/l';
+import Notice from '@semcore/notice';
+import React from 'react';
 
 const Demo = () => (
   <Notice aria-label='Custom notice example'>

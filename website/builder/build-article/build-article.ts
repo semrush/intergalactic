@@ -1,14 +1,21 @@
-import glob from 'fast-glob';
-import {
-  Content as MarkdownToken,
-  Root as MarkdownRoot,
-  Paragraph as MarkdownParagraph,
-} from 'mdast';
+import { readFile } from 'fs/promises';
 import {
   resolve as resolvePath,
   dirname as resolveDirname,
   relative as resolveRelativePath,
 } from 'path';
+import { fileURLToPath } from 'url';
+
+import glob from 'fast-glob';
+import type {
+  Content as MarkdownToken,
+  Root as MarkdownRoot,
+  Paragraph as MarkdownParagraph,
+} from 'mdast';
+import watch from 'node-watch';
+
+import { makeCacheManager } from '../../../tools/esbuild-plugin-semcore/cache-manager';
+import { resolveRepoTypings } from '../typings/resolveRepoTypings';
 import {
   fsExists,
   generateHeadingId,
@@ -18,12 +25,8 @@ import {
   parseMarkdownMeta,
   removeMarkdownMeta,
 } from '../utils';
-import { readFile } from 'fs/promises';
-import { fileURLToPath } from 'url';
-import { resolveRepoTypings } from '../typings/resolveRepoTypings';
+
 // @ts-ignore
-import { makeCacheManager } from '../../../tools/esbuild-plugin-semcore/cache-manager';
-import watch from 'node-watch';
 
 const __dirname = resolveDirname(fileURLToPath(import.meta.url));
 const repoRoot = resolvePath(__dirname, '../../..');

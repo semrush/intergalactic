@@ -1,6 +1,6 @@
-import React from 'react';
-import Tag from '@semcore/tag';
 import SmileHappyM from '@semcore/icon/SmileHappy/m';
+import Tag from '@semcore/tag';
+import React from 'react';
 
 const Demo = () => {
   return (

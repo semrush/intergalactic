@@ -1,9 +1,11 @@
-import Git from 'simple-git';
 import { execSync } from 'child_process';
+
+import Git from 'simple-git';
+
+import type { VersionPatch } from '../makeVersionPatches';
 import { log, prerelaseSuffix } from '../utils';
-import { VersionPatch } from '../makeVersionPatches';
-import { NpmUtils } from './npmUtils';
 import { allowedScopes } from './allowedScopes';
+import { NpmUtils } from './npmUtils';
 
 const git = Git();
 

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import type { DataStructureHints, DataSummarizationConfig } from './hints';
 import type { Intl } from './intl';
 import { defaultValueFormatter } from './serialize';

@@ -1,16 +1,16 @@
-import React from 'react';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
-import { Box } from '@semcore/flex-box';
-import EventEmitter from '@semcore/core/lib/utils/eventEmitter';
-import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
-import { eventToPoint, uniqueId } from './utils';
-import { PlotA11yModule } from './a11y/PlotA11yModule';
-import { makeDataHintsHandlers, makeDataHintsContainer } from './a11y/hints';
-import colorResolverEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
-import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
+import colorResolverEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
+import EventEmitter from '@semcore/core/lib/utils/eventEmitter';
+import { Box } from '@semcore/flex-box';
+import React from 'react';
 
+import { makeDataHintsHandlers, makeDataHintsContainer } from './a11y/hints';
+import { PlotA11yModule } from './a11y/PlotA11yModule';
 import style from './style/plot.shadow.css';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
+import { eventToPoint, uniqueId } from './utils';
 
 class PlotRoot extends Component {
   static displayName = 'Plot';

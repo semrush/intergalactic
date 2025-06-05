@@ -1,9 +1,8 @@
-import React from 'react';
+import { Flex, ScreenReaderOnly } from '@semcore/flex-box';
 import InputTags from '@semcore/input-tags';
-import { Text } from '@semcore/typography';
-import { Flex } from '@semcore/flex-box';
 import Select from '@semcore/select';
-import { ScreenReaderOnly } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
+import React from 'react';
 
 const tagsSelect = ['LinkedIn', 'Facebook', 'TikTok', 'Instagram'];
 

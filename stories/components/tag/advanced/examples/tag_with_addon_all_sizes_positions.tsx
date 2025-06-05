@@ -1,10 +1,10 @@
-import React from 'react';
-import Tag from '@semcore/tag';
 import { Flex } from '@semcore/flex-box';
-import SmileHappyM from '@semcore/icon/SmileHappy/m';
 import SmileHappyL from '@semcore/icon/SmileHappy/l';
-import SmileSadM from '@semcore/icon/SmileSad/m';
+import SmileHappyM from '@semcore/icon/SmileHappy/m';
 import SmileSadL from '@semcore/icon/SmileSad/l';
+import SmileSadM from '@semcore/icon/SmileSad/m';
+import Tag from '@semcore/tag';
+import React from 'react';
 
 const Demo = () => {
   return (

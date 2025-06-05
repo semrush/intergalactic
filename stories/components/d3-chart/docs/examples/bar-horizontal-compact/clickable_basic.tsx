@@ -1,7 +1,7 @@
-import React from 'react';
-import { scaleLinear, scaleBand } from 'd3-scale';
-import { Flex } from '@semcore/flex-box';
 import { Chart } from '@semcore/d3-chart';
+import { Flex } from '@semcore/flex-box';
+import { scaleLinear, scaleBand } from 'd3-scale';
+import React from 'react';
 
 const Demo = () => {
   const MARGIN = 30;

@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import BasicUsageExample from './examples/venn-chart/basic-usage';
-import LegendAndPatternFillExample from './examples/venn-chart/legend-and-pattern-fill';
 import CustomIntersectionsStylesExample from './examples/venn-chart/custom-intersection-styles';
+import LegendAndPatternFillExample from './examples/venn-chart/legend-and-pattern-fill';
 import SettingOrientationExample from './examples/venn-chart/setting-orientation';
 import VennExample from './examples/venn-chart/venn';
 

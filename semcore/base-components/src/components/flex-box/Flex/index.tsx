@@ -1,4 +1,5 @@
 import { createBaseComponent, type Intergalactic } from '@semcore/core';
+
 import useFlex, { type FlexProps } from './useFlex';
 
 function Flex(props: any, ref: any) {

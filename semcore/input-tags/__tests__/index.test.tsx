@@ -1,12 +1,12 @@
-import * as React from 'react';
+import { axe } from '@semcore/testing-utils/axe';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { snapshot } from '@semcore/testing-utils/snapshot';
 import { render, cleanup, fireEvent, act } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import Tooltip from '@semcore/tooltip';
-import { axe } from '@semcore/testing-utils/axe';
+import * as React from 'react';
 
 import InputTags from '../src';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('input-tags Dependency imports', () => {
   runDependencyCheckTests('input-tags');

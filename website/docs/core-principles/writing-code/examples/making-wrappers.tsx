@@ -1,6 +1,6 @@
-import React from 'react';
-import { wrapIntergalacticComponent } from '@semcore/core';
 import Button from '@semcore/button';
+import { wrapIntergalacticComponent } from '@semcore/core';
+import React from 'react';
 
 const AlertButton = wrapIntergalacticComponent<
   typeof Button,

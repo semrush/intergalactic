@@ -1,14 +1,13 @@
-import React from 'react';
-import { createComponent, Component, Root, sstyled } from '@semcore/core';
-import logger from '@semcore/core/lib/utils/logger';
-import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-
 import { Animation } from '@semcore/animation';
+import { createComponent, Component, Root, sstyled } from '@semcore/core';
+import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
+import logger from '@semcore/core/lib/utils/logger';
+import { contextThemeEnhance } from '@semcore/core/lib/utils/ThemeProvider';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
 import { Box } from '@semcore/flex-box';
 import Portal from '@semcore/portal';
-import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
-import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
-import { contextThemeEnhance } from '@semcore/core/lib/utils/ThemeProvider';
+import React from 'react';
 
 import style from './style/dot.shadow.css';
 
@@ -45,7 +44,7 @@ class Dot extends Component {
     cssVariableEnhance({
       variable: '--intergalactic-duration-counter',
       fallback: '200',
-      map: Number.Number.parseInt,
+      map: Number.parseInt,
       prop: 'duration',
     }),
     contextThemeEnhance((props) => !props.hidden),

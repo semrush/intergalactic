@@ -1,10 +1,10 @@
-import React from 'react';
+import Button, { ButtonLink } from '@semcore/button';
 import FullscreenModal from '@semcore/fullscreen-modal';
+import InfoM from '@semcore/icon/Info/m';
+import Link from '@semcore/link';
 import { DescriptionTooltip } from '@semcore/tooltip';
 import { Text } from '@semcore/typography';
-import Link from '@semcore/link';
-import Button, { ButtonLink } from '@semcore/button';
-import InfoM from '@semcore/icon/Info/m';
+import React from 'react';
 
 const Demo = () => {
   const [visible, setVisible] = React.useState(false);

@@ -1,5 +1,5 @@
-import React from 'react';
 import Divider from '@semcore/divider';
+import React from 'react';
 
 const Demo = () => {
   return (

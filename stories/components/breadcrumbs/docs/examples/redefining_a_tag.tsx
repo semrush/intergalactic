@@ -1,6 +1,6 @@
-import React from 'react';
 import Breadcrumbs from '@semcore/breadcrumbs';
 import Link from '@semcore/link';
+import React from 'react';
 
 const Demo = () => (
   <Breadcrumbs aria-label='Redefining tag example'>

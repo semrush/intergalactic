@@ -1,5 +1,6 @@
-import { expect, Locator, Page, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import type { Page } from '@semcore/testing-utils/playwright';
+import { expect, Locator, test } from '@semcore/testing-utils/playwright';
 
 const getLocators = (page: Page) => ({
   addFilterBtn: page.getByRole('button', { name: 'Add filter' }),

@@ -1,6 +1,5 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
 import { snapshot } from '@semcore/testing-utils/snapshot';
+import { cleanup, renderHook, act } from '@semcore/testing-utils/testing-library';
 import {
   expect,
   test,
@@ -10,25 +9,27 @@ import {
   it,
   afterEach,
 } from '@semcore/testing-utils/vitest';
-import { cleanup, renderHook, act } from '@semcore/testing-utils/testing-library';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-import isNode from '../src/utils/isNode';
-import compose from '../src/utils/compose';
-import useCss from '../src/utils/use/useCss';
-import { shade, opacity } from '../src/utils/color';
-import assignProps, { assignHandlers } from '../src/utils/assignProps';
-import EventEmitter from '../src/utils/eventEmitter';
-import reactToText from '../src/utils/reactToText';
-import { getEventTarget } from '../src/utils/getEventTarget';
 import { extractAriaProps } from '../src/utils/ariaProps';
-import { getRef, setRef, getNodeByRef } from '../src/utils/ref';
-import getInputProps, { inputProps } from '../src/utils/inputProps';
-import propsForElement, { validAttr } from '../src/utils/propsForElement';
-import keyboardFocusEnhance, {
+import assignProps, { assignHandlers } from '../src/utils/assignProps';
+import { shade, opacity } from '../src/utils/color';
+import compose from '../src/utils/compose';
+import type {
   KeyboardFocusEnhanceHook,
 } from '../src/utils/enhances/keyboardFocusEnhance';
-import { isFocusable } from '../src/utils/focus-lock/isFocusable';
+import keyboardFocusEnhance from '../src/utils/enhances/keyboardFocusEnhance';
+import EventEmitter from '../src/utils/eventEmitter';
 import { BEFORE_BORDER_ID, AFTER_BORDER_ID } from '../src/utils/focus-lock/focusBorders';
+import { isFocusable } from '../src/utils/focus-lock/isFocusable';
+import { getEventTarget } from '../src/utils/getEventTarget';
+import getInputProps, { inputProps } from '../src/utils/inputProps';
+import isNode from '../src/utils/isNode';
+import propsForElement, { validAttr } from '../src/utils/propsForElement';
+import reactToText from '../src/utils/reactToText';
+import { getRef, setRef, getNodeByRef } from '../src/utils/ref';
+import useCss from '../src/utils/use/useCss';
 
 describe('Utils CSS in JS', () => {
   beforeEach(cleanup);

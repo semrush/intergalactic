@@ -1,18 +1,18 @@
-import React from 'react';
-import { createComponent, Component, sstyled, Root } from '@semcore/core';
-import { Box } from '@semcore/flex-box';
-import Button from '@semcore/button';
-import CloseIconM from '@semcore/icon/Close/m';
-import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import { FadeInOut } from '@semcore/animation';
-import logger from '@semcore/core/lib/utils/logger';
-import NoticeGlobal from '@semcore/notice-global';
-import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
+import Button from '@semcore/button';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
+import logger from '@semcore/core/lib/utils/logger';
 import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
+import { Box } from '@semcore/flex-box';
+import CloseIconM from '@semcore/icon/Close/m';
+import NoticeGlobal from '@semcore/notice-global';
 import { Text } from '@semcore/typography';
+import React from 'react';
 
 import style from './style/notice.shadow.css';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 function isCustomTheme(theme) {
   return !['danger', 'warning', 'success', 'info', 'muted'].includes(theme);
@@ -26,7 +26,7 @@ class RootNotice extends Component {
     cssVariableEnhance({
       variable: '--intergalactic-duration-popper',
       fallback: '200',
-      map: Number.Number.parseInt,
+      map: Number.parseInt,
       prop: 'duration',
     }),
     resolveColorEnhance(),

@@ -1,14 +1,14 @@
-import React from 'react';
 import { Component, sstyled, Root } from '@semcore/core';
-import { Box } from '@semcore/flex-box';
-
-import style from './inputField.shadow.css';
-import type { PopperContext } from '@semcore/popper';
-import Tooltip from '@semcore/tooltip';
-import type { InputFieldProps, ErrorItem } from './InputField.types';
 import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import { Box } from '@semcore/flex-box';
+import type { PopperContext } from '@semcore/popper';
+import Tooltip from '@semcore/tooltip';
 import DOMPurify from 'dompurify';
+import React from 'react';
+
+import style from './inputField.shadow.css';
+import type { InputFieldProps, ErrorItem } from './InputField.types';
 
 type IndexKeys = 'keyboardLineIndex' | 'mouseLineIndex';
 

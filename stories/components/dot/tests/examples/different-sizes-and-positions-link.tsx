@@ -1,7 +1,7 @@
-import React from 'react';
+import Dot from '@semcore/dot';
 import { Flex } from '@semcore/flex-box';
 import Link from '@semcore/link';
-import Dot from '@semcore/dot';
+import React from 'react';
 
 const Demo = () => {
   return (

@@ -1,5 +1,6 @@
-import React from 'react';
 import type { CssLikeObject } from '@phytonmk/nano-css/types/common';
+import React from 'react';
+
 import { initNanoCss, normaliseCss, WithCssContext } from '../enhances/WithCSS';
 
 export type IUseCssArg = CssLikeObject;

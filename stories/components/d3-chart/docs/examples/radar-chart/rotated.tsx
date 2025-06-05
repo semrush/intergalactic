@@ -1,8 +1,8 @@
-import React from 'react';
 import { Plot, Radar } from '@semcore/d3-chart';
+import Slider from '@semcore/slider';
 import { scaleLinear } from 'd3-scale';
 import { curveCardinalClosed } from 'd3-shape';
-import Slider from '@semcore/slider';
+import React from 'react';
 
 const scale = scaleLinear().domain([0, 10]);
 const Demo = () => {

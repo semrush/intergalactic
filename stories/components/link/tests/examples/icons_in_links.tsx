@@ -1,9 +1,9 @@
-import React from 'react';
-import { Hint } from '@semcore/tooltip';
-import Link from '@semcore/link';
-import VideoListM from '@semcore/icon/VideoList/m';
-import VideoListL from '@semcore/icon/VideoList/l';
 import { Flex } from '@semcore/flex-box';
+import VideoListL from '@semcore/icon/VideoList/l';
+import VideoListM from '@semcore/icon/VideoList/m';
+import Link from '@semcore/link';
+import { Hint } from '@semcore/tooltip';
+import React from 'react';
 
 const Demo = () => {
   return (

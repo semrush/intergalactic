@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   Line,
   minMax,
@@ -10,6 +9,7 @@ import {
 } from '@semcore/d3-chart';
 import { Flex } from '@semcore/flex-box';
 import { scaleLinear } from 'd3-scale';
+import React from 'react';
 
 const dataHints = makeDataHintsContainer();
 

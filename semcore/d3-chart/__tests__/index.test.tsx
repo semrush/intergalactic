@@ -1,11 +1,35 @@
 import React from 'react';
 import { snapshot } from '@semcore/testing-utils/snapshot';
-import * as sharedTests from '@semcore/testing-utils/shared-tests';
-import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
-import { render, fireEvent, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
+import Button from '@semcore/button';
+import { I18nProvider } from '@semcore/core/lib/utils/enhances/WithI18n';
+import Ellipsis from '@semcore/ellipsis';
+import { Flex, Box } from '@semcore/flex-box';
+import LikeM from '@semcore/icon/Like/m';
+import Icon from '@semcore/icon/Video/m';
+import * as sharedTests from '@semcore/testing-utils/shared-tests';
+
+const xScale = scaleLinear().range([10, 100]).domain([0, 10]);
+
+const yScale = scaleLinear().range([100, 10]).domain([0, 10]);
+
+const data = [...Array(10).keys()].map((d, i) => ({
+  x: i,
+  y: Math.abs(Math.sin(Math.exp(i))) * i,
+}));
+
+const PlotTest = React.forwardRef((props, ref) => (
+  <Plot ref={ref} data={data} scale={[xScale, yScale]} width={100} height={100} {...props} />
+));
+
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { render, fireEvent, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import { Text } from '@semcore/typography';
 import { scaleLinear, scaleBand } from 'd3-scale';
+import { curveCardinal } from 'd3-shape';
+
 import {
   Plot,
   YAxis,
@@ -37,32 +61,8 @@ import {
   Chart,
   // @ts-ignore
 } from '../src';
-import { getIndexFromData } from '../src/utils';
 import { PlotA11yView } from '../src/a11y/PlotA11yView';
-
-import { curveCardinal } from 'd3-shape';
-import { Flex, Box } from '@semcore/flex-box';
-import Ellipsis from '@semcore/ellipsis';
-import { Text } from '@semcore/typography';
-import Button from '@semcore/button';
-import LikeM from '@semcore/icon/Like/m';
-import { I18nProvider } from '@semcore/core/lib/utils/enhances/WithI18n';
-import Icon from '@semcore/icon/Video/m';
-
-const xScale = scaleLinear().range([10, 100]).domain([0, 10]);
-
-const yScale = scaleLinear().range([100, 10]).domain([0, 10]);
-
-const data = [...Array(10).keys()].map((d, i) => ({
-  x: i,
-  y: Math.abs(Math.sin(Math.exp(i))) * i,
-}));
-
-const PlotTest = React.forwardRef((props, ref) => (
-  <Plot ref={ref} data={data} scale={[xScale, yScale]} width={100} height={100} {...props} />
-));
-
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { getIndexFromData } from '../src/utils';
 
 describe('d3-chart Dependency imports', () => {
   runDependencyCheckTests('d3-chart');

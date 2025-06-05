@@ -1,11 +1,11 @@
 import { createComponent, type ComponentType, assignProps, Root, sstyled } from '@semcore/core';
+import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import { Trend, type CommonTrendProps } from './Trend';
 import { Box } from '@semcore/flex-box';
 
+import { Trend, type CommonTrendProps } from './Trend';
 import style from '../skeleton/skeleton.shadow.css';
-import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
 
 export type TrendLineProps = CommonTrendProps & {
   /**

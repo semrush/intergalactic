@@ -1,17 +1,17 @@
-import * as React from 'react';
-import { Component, type Intergalactic, lastInteraction, Root, sstyled } from '@semcore/core';
-import type { ColumnPropsInner, DataTableColumnProps } from './Column.types';
 import { Flex } from '@semcore/base-components';
-import SortDesc from '@semcore/icon/SortDesc/m';
-import SortAsc from '@semcore/icon/SortAsc/m';
-import type { IconProps } from '@semcore/icon';
-
-import style from './style.shadow.css';
 import { ButtonLink } from '@semcore/button';
-import type { DataTableData, SortDirection } from '../DataTable/DataTable.types';
-import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
+import { Component, type Intergalactic, lastInteraction, Root, sstyled } from '@semcore/core';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
+import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
 import { isFocusInside } from '@semcore/core/lib/utils/focus-lock/isFocusInside';
+import type { IconProps } from '@semcore/icon';
+import SortAsc from '@semcore/icon/SortAsc/m';
+import SortDesc from '@semcore/icon/SortDesc/m';
+import * as React from 'react';
+
+import type { ColumnPropsInner, DataTableColumnProps } from './Column.types';
+import style from './style.shadow.css';
+import type { DataTableData, SortDirection } from '../DataTable/DataTable.types';
 
 const SORTING_ICON: { [key in SortDirection]: Intergalactic.Component<'svg', IconProps> } = {
   desc: SortDesc,

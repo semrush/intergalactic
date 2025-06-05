@@ -1,9 +1,10 @@
 import type React from 'react';
 import { PureComponent } from 'react';
-import createHoc from '../createHoc';
-import { internalSetState } from '../uncontroll';
-import fire from '../fire';
+
 import type { UnknownProperties } from '../../core-types/UnknownProperties';
+import createHoc from '../createHoc';
+import fire from '../fire';
+import { internalSetState } from '../uncontroll';
 
 /** @deprecated */
 export interface IEnhancedWithKeyboardFocusInjectedProps

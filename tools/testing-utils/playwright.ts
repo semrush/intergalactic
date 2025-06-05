@@ -1,10 +1,11 @@
 import AxeBuilder from '@axe-core/playwright';
-import type { Page } from 'playwright';
-import { test as base } from '@playwright/test';
 import { voiceOverTest as voiceOverBase } from '@guidepup/playwright';
+import { test as base } from '@playwright/test';
 import { allure } from 'allure-playwright';
+import type axe from 'axe-core';
+import type { Page } from 'playwright';
 import type { TestInfo } from 'playwright/types/test';
-import axe from 'axe-core';
+
 import { mockIllustrationsRequest } from './shared/mockIllustrationsRequest';
 
 type GetAccessibilityViolations = (params: { page: Page }) => Promise<axe.AxeResults['violations']>;

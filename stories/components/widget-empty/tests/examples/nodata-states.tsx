@@ -1,8 +1,8 @@
-import React from 'react';
-import { NoData, getIconPath } from '@semcore/widget-empty';
+import Button, { ButtonLink } from '@semcore/button';
 import { Box, Flex } from '@semcore/flex-box';
 import Link from '@semcore/link';
-import Button, { ButtonLink } from '@semcore/button';
+import { NoData, getIconPath } from '@semcore/widget-empty';
+import React from 'react';
 
 const Demo = () => {
   return (

@@ -1,6 +1,6 @@
-import React from 'react';
 import Breadcrumbs from '@semcore/breadcrumbs';
 import Ellipsis from '@semcore/ellipsis';
+import React from 'react';
 
 const Demo = () => (
   <Breadcrumbs w={600}>

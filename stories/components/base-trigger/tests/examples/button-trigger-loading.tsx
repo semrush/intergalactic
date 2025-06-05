@@ -1,6 +1,6 @@
-import React from 'react';
 import { ButtonTrigger } from '@semcore/base-trigger';
 import { Flex, Box } from '@semcore/flex-box';
+import React from 'react';
 
 const Demo = () => (
   <Flex direction='column' gap={3}>

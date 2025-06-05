@@ -1,8 +1,8 @@
-import React from 'react';
-import InputTags from '@semcore/input-tags';
 import { Box } from '@semcore/flex-box';
+import InputTags from '@semcore/input-tags';
 import Notice from '@semcore/notice';
 import { Text, List } from '@semcore/ui/typography';
+import React from 'react';
 
 type InputWrapperProps = {
   value: string;

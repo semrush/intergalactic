@@ -1,28 +1,29 @@
-import React, { type ReactElement } from 'react';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
-import { Field, Form } from 'react-final-form';
-import createFocusDecorator from 'final-form-focus';
-import SpinContainer from '@semcore/spin-container';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import Notice from '@semcore/notice';
+import { Box, Flex } from '@semcore/flex-box';
 import CheckM from '@semcore/icon/Check/m';
 import WarnM from '@semcore/icon/Warning/m';
-import { Text } from '@semcore/typography';
 import FeedbackIllustration from '@semcore/illustration/Feedback';
-import Link from '@semcore/link';
-import SliderRating from '../slider-rating/SliderRating';
-import Modal from '@semcore/modal';
-import Textarea from '@semcore/textarea';
-import { Box, Flex } from '@semcore/flex-box';
-import { FeedbackItem } from '../feedback-item/FeedbackItem';
-import { SubmitButton } from '../submit-button/SubmitButton';
-import type { FeedbackRatingProps, FeedbackRatingType, FormConfigItem } from './FeedbackRating.type';
-import CheckboxButton from '../checkbox-button/CheckboxButton';
 import Input from '@semcore/input';
-import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
+import Link from '@semcore/link';
+import Modal from '@semcore/modal';
+import Notice from '@semcore/notice';
 import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/notice-bubble';
+import SpinContainer from '@semcore/spin-container';
+import Textarea from '@semcore/textarea';
+import { Text } from '@semcore/typography';
+import createFocusDecorator from 'final-form-focus';
+import React, { type ReactElement } from 'react';
+import { Field, Form } from 'react-final-form';
+
+import type { FeedbackRatingProps, FeedbackRatingType, FormConfigItem } from './FeedbackRating.type';
 import style from '../../style/feedback-rating.shadow.css';
+import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
+import CheckboxButton from '../checkbox-button/CheckboxButton';
+import { FeedbackItem } from '../feedback-item/FeedbackItem';
+import SliderRating from '../slider-rating/SliderRating';
+import { SubmitButton } from '../submit-button/SubmitButton';
 
 type State = {
   error: boolean;

@@ -1,10 +1,10 @@
-import React from 'react';
-import DnD from '@semcore/drag-and-drop';
 import Card from '@semcore/card';
-import { Flex } from '@semcore/flex-box';
 import { Chart } from '@semcore/d3-chart';
+import DnD from '@semcore/drag-and-drop';
+import { Flex } from '@semcore/flex-box';
 import MathPlusL from '@semcore/icon/MathPlus/l';
 import { Text } from '@semcore/typography';
+import React from 'react';
 
 const stableRandom = (seed: number) => {
   let randomIndex = seed;

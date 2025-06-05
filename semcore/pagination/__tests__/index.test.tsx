@@ -1,13 +1,12 @@
-import React from 'react';
-import { snapshot } from '@semcore/testing-utils/snapshot';
-import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
-import { render, fireEvent, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
-
-import Return from '@semcore/icon/Return/m';
-import Pagination from '../src';
 import Button from '@semcore/button';
-
+import Return from '@semcore/icon/Return/m';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { render, fireEvent, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import React from 'react';
+
+import Pagination from '../src';
 
 describe('pagination Dependency imports', () => {
   runDependencyCheckTests('pagination');

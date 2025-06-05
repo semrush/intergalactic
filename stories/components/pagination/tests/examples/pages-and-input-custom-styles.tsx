@@ -1,8 +1,8 @@
-import React from 'react';
-import Pagination from '@semcore/pagination';
 import { Flex } from '@semcore/flex-box';
 import CheckM from '@semcore/icon/Check/m';
 import Return from '@semcore/icon/Return/m';
+import Pagination from '@semcore/pagination';
+import React from 'react';
 
 const Demo = () => {
   return (

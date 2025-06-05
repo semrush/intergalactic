@@ -1,9 +1,9 @@
-import React from 'react';
-import TabLine from '@semcore/tab-line';
+import Badge from '@semcore/badge';
 import FacebookM from '@semcore/icon/Facebook/m';
 import InstagramM from '@semcore/icon/Instagram/m';
 import TwitterM from '@semcore/icon/Twitter/m';
-import Badge from '@semcore/badge';
+import TabLine from '@semcore/tab-line';
+import React from 'react';
 
 const Demo = () => {
   const [value, setValue] = React.useState(1);

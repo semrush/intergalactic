@@ -1,5 +1,5 @@
-import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import { expect, test } from '@semcore/testing-utils/playwright';
 
 const locators = {
   trigger: (page: any, name = 'Open wizard') => page.getByRole('button', { name }),

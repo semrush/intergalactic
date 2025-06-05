@@ -1,16 +1,15 @@
-import React from 'react';
-
-import { snapshot } from '@semcore/testing-utils/snapshot';
-import { expect, test, describe } from '@semcore/testing-utils/vitest';
-import { render } from '@semcore/testing-utils/testing-library';
-
-import NeighborLocation from '@semcore/neighbor-location';
+import propsForElement from '@semcore/core/lib/utils/propsForElement';
 import { Flex } from '@semcore/flex-box';
 import CheckM from '@semcore/icon/Check/m';
-import propsForElement from '@semcore/core/lib/utils/propsForElement';
-import Button, { ButtonLink } from '../src';
 import CloseM from '@semcore/icon/Close/m';
+import NeighborLocation from '@semcore/neighbor-location';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { render } from '@semcore/testing-utils/testing-library';
+import { expect, test, describe } from '@semcore/testing-utils/vitest';
+import React from 'react';
+
+import Button, { ButtonLink } from '../src';
 
 describe('Button Dependency imports', () => {
   runDependencyCheckTests('button');

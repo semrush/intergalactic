@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
 import { DateRangeComparator } from '@semcore/date-picker';
 import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
+import React, { useState } from 'react';
 
 const Demo = () => {
   const [value, setValue] = useState<{ value?: [Date, Date]; compare?: [Date, Date] }>({

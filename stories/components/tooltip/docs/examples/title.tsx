@@ -1,7 +1,7 @@
-import React from 'react';
-import { Hint } from '@semcore/tooltip';
 import { Box, Flex } from '@semcore/flex-box';
 import Link from '@semcore/link';
+import { Hint } from '@semcore/tooltip';
+import React from 'react';
 
 const Demo = () => (
   <Flex>

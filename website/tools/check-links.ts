@@ -1,10 +1,11 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import markdownIt from 'markdown-it';
-import { JSDOM } from 'jsdom';
-import markdownItAnchor from 'markdown-it-anchor';
+
 import { slugify } from '@mdit-vue/shared';
+import { JSDOM } from 'jsdom';
+import markdownIt from 'markdown-it';
+import markdownItAnchor from 'markdown-it-anchor';
 
 const md = new markdownIt().use(markdownItAnchor, {
   slugify,

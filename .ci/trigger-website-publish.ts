@@ -1,12 +1,13 @@
 #!/usr/bin/env tsm
 
-import Git from 'simple-git';
-import semver from 'semver';
 import { resolve as resolvePath } from 'path';
 import { fileURLToPath } from 'url';
+
 import fs from 'fs-extra';
 import inquirer from 'inquirer';
 import picocolors from 'picocolors';
+import semver from 'semver';
+import Git from 'simple-git';
 
 const git = Git();
 const log = console.log;

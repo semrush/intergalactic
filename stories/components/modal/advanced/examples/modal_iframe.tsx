@@ -1,7 +1,7 @@
-import React from 'react';
 import Button from '@semcore/button';
 import Modal from '@semcore/modal';
 import { Text } from '@semcore/typography';
+import React from 'react';
 
 const html = 'data:text/html,' + encodeURIComponent('<html><body><input /></body></html>');
 

@@ -1,5 +1,5 @@
-import React from 'react';
 import { DataTable } from '@semcore/data-table';
+import React from 'react';
 
 const keywords = ['ebay buy', 'www.ebay.com'];
 const kdValues = ['77.8', '11.2', '10', '75.89', '-', '65.3'];

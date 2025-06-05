@@ -1,24 +1,24 @@
-import type React from 'react';
 import { createComponent, Root, sstyled } from '@semcore/core';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import Divider from '@semcore/divider';
 import { Box, Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
-import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
-import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import type { CigaretteChartData, CigaretteChartProps, CigaretteChartType } from './CigaretteChart.type';
 import { scaleBand, scaleLinear } from 'd3-scale';
+import type React from 'react';
+
+import type { CigaretteChartData, CigaretteChartProps, CigaretteChartType } from './CigaretteChart.type';
+
 // @ts-ignore
 import { HoverRect, Plot } from '../..';
+import { AbstractChart } from './AbstractChart';
 // @ts-ignore
 import AnimatedClipPath from '../../AnimatedClipPath';
-
-import { AbstractChart } from './AbstractChart';
-import { interpolateValue, scaleToBand } from '../../utils';
-
-import Cigarette from '../Cigarette/Cigarette';
-import type { LegendItem } from '../ChartLegend/LegendItem/LegendItem.type';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
-import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import { interpolateValue, scaleToBand } from '../../utils';
+import type { LegendItem } from '../ChartLegend/LegendItem/LegendItem.type';
+import Cigarette from '../Cigarette/Cigarette';
 
 const wMin = 2;
 

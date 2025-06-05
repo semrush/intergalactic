@@ -1,7 +1,7 @@
-import React from 'react';
 import Dropdown from '@semcore/ui/dropdown';
 import Input from '@semcore/ui/input';
 import Link from '@semcore/ui/link';
+import React from 'react';
 
 const items = ['set up first', 'set up second', 'set up third'];
 

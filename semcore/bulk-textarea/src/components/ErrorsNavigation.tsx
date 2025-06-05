@@ -1,10 +1,10 @@
-import type React from 'react';
 import Button from '@semcore/button';
-import { Flex } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
-import ChevronUpM from '@semcore/icon/ChevronUp/m';
-import ChevronDownM from '@semcore/icon/ChevronDown/m';
 import type { useI18n } from '@semcore/core/lib/utils/enhances/WithI18n';
+import { Flex } from '@semcore/flex-box';
+import ChevronDownM from '@semcore/icon/ChevronDown/m';
+import ChevronUpM from '@semcore/icon/ChevronUp/m';
+import { Text } from '@semcore/typography';
+import type React from 'react';
 
 export type ErrorsNavigationProps = {
   errorIndex: number;

@@ -1,7 +1,7 @@
-import React from 'react';
-import Spin from '@semcore/spin';
 import { Flex } from '@semcore/flex-box';
+import Spin from '@semcore/spin';
 import { Text } from '@semcore/typography';
+import React from 'react';
 
 const Demo = () => {
   return (

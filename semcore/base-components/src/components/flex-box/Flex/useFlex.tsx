@@ -1,10 +1,9 @@
-import React from 'react';
-
+import { sstyled } from '@semcore/core';
 import cn from 'classnames';
 import type { Property, Properties } from 'csstype';
-import { sstyled } from '@semcore/core';
-import useBox, { type BoxProps, removeUndefinedKeys } from '../Box/useBox';
+import React from 'react';
 
+import useBox, { type BoxProps, removeUndefinedKeys } from '../Box/useBox';
 import style from '../style/use-flex.shadow.css';
 import { getAutoOrScaleIndent } from '../utils';
 

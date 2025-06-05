@@ -1,8 +1,9 @@
 /// <reference types="vitest" />
-import AllureReporter from 'allure-vitest/reporter';
-import { defineConfig } from 'vitest/config';
-import babel from 'vite-plugin-babel';
 import { resolve as resolvePath } from 'path';
+
+import AllureReporter from 'allure-vitest/reporter';
+import babel from 'vite-plugin-babel';
+import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
   plugins: [

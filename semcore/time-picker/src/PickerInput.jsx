@@ -1,9 +1,10 @@
-import React from 'react';
-import Input from '@semcore/input';
-import Select from '@semcore/select';
-import { intOrDefault, withLeadingZero } from './TimePicker';
 import { Component, sstyled, Root } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
+import Input from '@semcore/input';
+import Select from '@semcore/select';
+import React from 'react';
+
+import { intOrDefault, withLeadingZero } from './TimePicker';
 
 const MAP_FIELD_TO_TIME = {
   hours: 0,

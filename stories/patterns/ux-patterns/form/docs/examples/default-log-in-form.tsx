@@ -1,10 +1,11 @@
-import React from 'react';
-import { FormProvider, useForm, useFormContext, RegisterOptions } from 'react-hook-form';
-import { Flex } from '@semcore/flex-box';
-import Tooltip from '@semcore/tooltip';
-import Input from '@semcore/input';
 import Button from '@semcore/button';
+import { Flex } from '@semcore/flex-box';
+import Input from '@semcore/input';
+import Tooltip from '@semcore/tooltip';
 import { Text } from '@semcore/typography';
+import React from 'react';
+import type { RegisterOptions } from 'react-hook-form';
+import { FormProvider, useForm, useFormContext } from 'react-hook-form';
 
 type FormValues = {
   email: string;

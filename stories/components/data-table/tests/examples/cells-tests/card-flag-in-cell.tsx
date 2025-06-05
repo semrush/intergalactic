@@ -1,12 +1,12 @@
-import React from 'react';
+import Button from '@semcore/button';
+import Card from '@semcore/card';
 import { DataTable } from '@semcore/data-table';
 import { Box, Flex } from '@semcore/flex-box';
-import Button from '@semcore/button';
-import { Text } from '@semcore/typography';
-import MiniChart from '@semcore/mini-chart';
-import Card from '@semcore/card';
 import SettingsM from '@semcore/icon/Settings/m';
+import MiniChart from '@semcore/mini-chart';
+import { Text } from '@semcore/typography';
 import Flags, { iso2Name } from '@semcore/ui/flags';
+import React from 'react';
 
 const tooltipContent =
     'When drawing comparisons between different classes of animals, an alternative unit is sometimes used for organisms: body length per second.';

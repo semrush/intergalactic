@@ -1,11 +1,11 @@
-import React from 'react';
-import ColorPicker from '@semcore/color-picker';
-import Input from '@semcore/input';
-import Button from '@semcore/button';
-import Tag from '@semcore/tag';
 import { FilterTrigger } from '@semcore/base-trigger';
+import Button from '@semcore/button';
+import ColorPicker from '@semcore/color-picker';
 import { Flex, Box } from '@semcore/flex-box';
+import Input from '@semcore/input';
+import Tag from '@semcore/tag';
 import { Text } from '@semcore/typography';
+import React from 'react';
 
 const Demo = () => {
   const [value, setValue] = React.useState('#C695FF');

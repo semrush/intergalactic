@@ -1,11 +1,10 @@
-import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
-
 import Select from '@semcore/select';
+import type { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
 
-import OnVisibleExample from './examples/on_visible';
 import FocusExample from './examples/focus_interaction';
 import OnChangeInputSearchExample from './examples/on_change_input_search';
+import OnVisibleExample from './examples/on_visible';
 
 const meta: Meta<typeof Select> = {
   title: 'Components/Select/Test',

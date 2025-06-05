@@ -1,9 +1,10 @@
-import React from 'react';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { snapshot } from '@semcore/testing-utils/snapshot';
-import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import { cleanup, render, fireEvent, act, userEvent } from '@semcore/testing-utils/testing-library';
-import { mockDate, RealDate } from './utils';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import React from 'react';
 
+import { mockDate, RealDate } from './utils';
 import {
   DatePicker,
   DateRangePicker,
@@ -11,8 +12,6 @@ import {
   DateRangeComparator,
   MonthDateRangeComparator,
 } from '../src';
-
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('date-picker Dependency imports', () => {
   runDependencyCheckTests('date-picker');

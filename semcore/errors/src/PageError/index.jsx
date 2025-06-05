@@ -1,8 +1,9 @@
 import Button from '@semcore/button';
 import { createComponent, Component } from '@semcore/core';
-import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
+import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+
 import Error, { getIconPath } from '../Error';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 

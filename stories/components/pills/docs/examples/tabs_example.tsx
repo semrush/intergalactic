@@ -1,7 +1,7 @@
-import React from 'react';
-import Pills from '@semcore/pills';
 import { Flex } from '@semcore/flex-box';
+import Pills from '@semcore/pills';
 import { Text } from '@semcore/typography';
+import React from 'react';
 
 const contentBLocks = [
   'Cats walk like camels and giraffes: They move both of their right feet first, then move both of their left feet. No other animals walk this way.',

@@ -1,3 +1,4 @@
+import { createHash } from 'crypto';
 import {
   readdir,
   access as fsAccess,
@@ -7,7 +8,6 @@ import {
   mkdir as createDir,
 } from 'fs/promises';
 import { relative as resolveRelativePath, resolve as resolvePath } from 'path';
-import { createHash } from 'crypto';
 
 const verbose = false;
 

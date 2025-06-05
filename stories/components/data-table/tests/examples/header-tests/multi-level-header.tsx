@@ -1,9 +1,9 @@
-import React from 'react';
 import { DataTable } from '@semcore/data-table';
-import { Hint } from '@semcore/tooltip';
-import { Text } from '@semcore/typography';
 import Ellipsis from '@semcore/ellipsis';
 import AmazonM from '@semcore/icon/color/Amazon/m';
+import { Hint } from '@semcore/tooltip';
+import { Text } from '@semcore/typography';
+import React from 'react';
 
 const Demo = () => {
   return (

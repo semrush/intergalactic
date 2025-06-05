@@ -1,6 +1,6 @@
 import _extends from '@babel/runtime/helpers/extends';
-import React from 'react';
 import { styled, css, __css__, set, create, map } from '@semcore/core';
+import React from 'react';
 
 /* __reshadow-styles__:'./button.shadow.css' */
 var _ref =

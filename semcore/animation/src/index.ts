@@ -7,7 +7,6 @@ import {
   Slide,
   Scale,
 } from '@semcore/base-components';
-
 import type {
   FadeInOutProps,
   SlideProps,

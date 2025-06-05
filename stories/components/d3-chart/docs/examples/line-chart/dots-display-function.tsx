@@ -1,7 +1,7 @@
-import React from 'react';
 import { Plot, Line, XAxis, YAxis, minMax } from '@semcore/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import { curveCardinal } from 'd3-shape';
+import React from 'react';
 
 const displayDots = (index: number, active: boolean, single: boolean) => {
   if (single || active) return true;

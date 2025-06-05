@@ -1,5 +1,6 @@
-import { expect, getAccessibilityViolations, test, Page } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import type { Page } from '@semcore/testing-utils/playwright';
+import { expect, getAccessibilityViolations, test } from '@semcore/testing-utils/playwright';
 
 async function checkByAxe(page: Page) {
   await page.keyboard.press('Tab');

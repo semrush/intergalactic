@@ -1,8 +1,8 @@
-import React from 'react';
 import { DataTable } from '@semcore/data-table';
 import Skeleton from '@semcore/skeleton';
 import Button from '@semcore/ui/button';
 import { ScreenReaderOnly } from '@semcore/ui/flex-box';
+import React from 'react';
 
 function getSkeleton() {
   return ['keyword', 'kd', 'cpc', 'vol'].map((c) => ({

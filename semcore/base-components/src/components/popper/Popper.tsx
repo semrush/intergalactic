@@ -1,5 +1,4 @@
-import React from 'react';
-
+import type { Instance, Modifier } from '@popperjs/core/lib/types';
 import {
   createComponent,
   Component,
@@ -8,36 +7,34 @@ import {
   sstyled,
   lastInteraction,
 } from '@semcore/core';
+import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
-import { Box } from '../flex-box';
-import { OutsideClick } from '../outside-click';
-import { Portal, PortalProvider } from '../portal';
-import { NeighborLocation } from '../neighbor-location';
+import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
+import { hasParent } from '@semcore/core/lib/utils/hasParent';
+import logger from '@semcore/core/lib/utils/logger';
+import pick from '@semcore/core/lib/utils/pick';
 import { setRef, forkRef } from '@semcore/core/lib/utils/ref';
+import { useContextTheme } from '@semcore/core/lib/utils/ThemeProvider';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import {
   useFocusLock,
   isFocusInside,
   setFocus,
   makeFocusLockSyntheticEvent,
 } from '@semcore/core/lib/utils/use/useFocusLock';
-import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
-import pick from '@semcore/core/lib/utils/pick';
-import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import { Scale, animationContext } from '../animation';
 import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
-import { useContextTheme } from '@semcore/core/lib/utils/ThemeProvider';
-import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
-import { hasParent } from '@semcore/core/lib/utils/hasParent';
-import logger from '@semcore/core/lib/utils/logger';
-
-import createPopper from './createPopper';
-
-import style from './style/popper.shadow.css';
 import {
   useZIndexStacking,
   ZIndexStackingContextProvider,
 } from '@semcore/core/lib/utils/zIndexStacking';
+import React from 'react';
 
+import { Scale, animationContext } from '../animation';
+import { Box } from '../flex-box';
+import { NeighborLocation } from '../neighbor-location';
+import { OutsideClick } from '../outside-click';
+import { Portal, PortalProvider } from '../portal';
+import createPopper from './createPopper';
 import type {
   InnerPopperPopperProps,
   InnerPopperTriggerProps,
@@ -47,7 +44,7 @@ import type {
   PopperProps,
   PopperTriggerProps,
 } from './Popper.types';
-import type { Instance, Modifier } from '@popperjs/core/lib/types';
+import style from './style/popper.shadow.css';
 
 function isObject(obj: any) {
   return typeof obj === 'object' && !Array.isArray(obj);
@@ -117,7 +114,7 @@ class PopperRoot extends Component<PopperProps, {}, {}, typeof PopperRoot.enhanc
     cssVariableEnhance({
       variable: '--intergalactic-duration-popper',
       fallback: '200',
-      map: (v: string) => Number.Number.parseInt(v, 10).toString(),
+      map: (v: string) => Number.parseInt(v, 10).toString(),
       prop: 'duration',
     }),
   ] as const;

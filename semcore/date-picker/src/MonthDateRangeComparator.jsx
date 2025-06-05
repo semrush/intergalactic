@@ -1,9 +1,10 @@
 import { createComponent, Root, sstyled } from '@semcore/core';
-import { Header as CalendarHeader, Next, Period, Popper, Prev, Title } from './components';
-import { CalendarMonths as Calendar } from './components/Calendar';
+import Divider from '@semcore/divider';
 import { Box, Flex } from '@semcore/flex-box';
 import dayjs from 'dayjs';
-import Divider from '@semcore/divider';
+
+import { Header as CalendarHeader, Next, Period, Popper, Prev, Title } from './components';
+import { CalendarMonths as Calendar } from './components/Calendar';
 import RangeComparatorAbstract, {
   Apply,
   Reset,

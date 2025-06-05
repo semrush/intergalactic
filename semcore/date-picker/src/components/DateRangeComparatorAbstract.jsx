@@ -1,18 +1,18 @@
-import React from 'react';
-import dayjs from 'dayjs';
-import { Component, Root, sstyled } from '@semcore/core';
-import Button from '@semcore/button';
-import { Flex } from '@semcore/flex-box';
-import Dropdown from '@semcore/dropdown';
-import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import { localizedMessages } from '../translations/__intergalactic-dynamic-locales';
-import shortDateRangeFormat from '../utils/shortDateRangeFormat';
-import Checkbox from '@semcore/checkbox';
 import { LinkTrigger } from '@semcore/base-trigger';
-import { includesDate } from '../utils/includesDate';
-import { formatDDMMYY, formatMMYY } from '../utils/formatDate';
+import Button from '@semcore/button';
+import Checkbox from '@semcore/checkbox';
+import { Component, Root, sstyled } from '@semcore/core';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import Dropdown from '@semcore/dropdown';
+import { Flex } from '@semcore/flex-box';
+import dayjs from 'dayjs';
+import React from 'react';
 
 import style from '../style/date-picker.shadow.css';
+import { localizedMessages } from '../translations/__intergalactic-dynamic-locales';
+import { formatDDMMYY, formatMMYY } from '../utils/formatDate';
+import { includesDate } from '../utils/includesDate';
+import shortDateRangeFormat from '../utils/shortDateRangeFormat';
 
 const INTERACTION_TAGS = ['INPUT'];
 const INTERACTION_KEYS = ['ArrowDown', 'Enter', ' '];

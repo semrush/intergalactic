@@ -1,5 +1,6 @@
+import type { DataTableSort } from '@semcore/data-table';
+import { DataTable } from '@semcore/data-table';
 import React from 'react';
-import { DataTable, DataTableSort } from '@semcore/data-table';
 type SortableColumn = Exclude<keyof typeof data[0], 'keyword'>;
 
 const Demo = () => {

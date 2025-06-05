@@ -1,9 +1,10 @@
-import fs from 'fs-extra';
 import path, { resolve as resolvePath } from 'path';
-import svgToJsx from 'svg-to-jsx';
-import { Window } from 'happy-dom';
-import esbuild from 'esbuild';
+
 import ColorJSIO from 'colorjs.io';
+import esbuild from 'esbuild';
+import fs from 'fs-extra';
+import { Window } from 'happy-dom';
+import svgToJsx from 'svg-to-jsx';
 const Color = ColorJSIO as any;
 
 const illustrations = await fs.readdir('svg');

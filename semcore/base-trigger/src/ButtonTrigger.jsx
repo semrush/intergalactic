@@ -1,11 +1,11 @@
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
-import ChevronDown from '@semcore/icon/ChevronDown/m';
-import BaseTrigger from './BaseTrigger';
-import Spin from '@semcore/spin';
 import animatedSizeEnhance from '@semcore/core/lib/utils/enhances/animatedSizeEnhance';
 import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
+import ChevronDown from '@semcore/icon/ChevronDown/m';
+import Spin from '@semcore/spin';
 
+import BaseTrigger from './BaseTrigger';
 import style from './style/button-trigger.shadow.css';
 
 class RootButtonTrigger extends Component {
@@ -15,7 +15,7 @@ class RootButtonTrigger extends Component {
     cssVariableEnhance({
       variable: '--intergalactic-duration-control',
       fallback: '200',
-      map: Number.Number.parseInt,
+      map: Number.parseInt,
       prop: 'duration',
     }),
     animatedSizeEnhance({

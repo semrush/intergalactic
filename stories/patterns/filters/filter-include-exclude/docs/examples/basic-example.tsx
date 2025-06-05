@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import { ScreenReaderOnly } from '@semcore/ui/flex-box';
+import { FilterTrigger } from 'intergalactic/base-trigger';
+import Button from 'intergalactic/button';
 import Dropdown from 'intergalactic/dropdown';
 import { Flex } from 'intergalactic/flex-box';
-import Button from 'intergalactic/button';
-import { FilterTrigger } from 'intergalactic/base-trigger';
-import { Text } from 'intergalactic/typography';
 import Radio, { RadioGroup } from 'intergalactic/radio';
 import Textarea from 'intergalactic/textarea';
-import { ScreenReaderOnly } from '@semcore/ui/flex-box';
+import { Text } from 'intergalactic/typography';
+import React, { useState, useEffect } from 'react';
 
 const Demo = () => {
   const [keywords, setKeywords] = useState(0);

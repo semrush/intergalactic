@@ -1,12 +1,12 @@
-import React from 'react';
 import Button, { ButtonLink } from '@semcore/button';
 import Counter from '@semcore/counter';
-import SettingsM from '@semcore/icon/Settings/m';
-import DropdownMenu from '@semcore/dropdown-menu';
-import { Text } from '@semcore/typography';
-import { Flex } from '@semcore/flex-box';
 import DnD from '@semcore/drag-and-drop';
+import DropdownMenu from '@semcore/dropdown-menu';
+import { Flex } from '@semcore/flex-box';
+import SettingsM from '@semcore/icon/Settings/m';
 import Select from '@semcore/select';
+import { Text } from '@semcore/typography';
+import React from 'react';
 
 const defeaultColumns = [
   { id: 'uniquePageviews', label: 'Unique Pageviews' },

@@ -1,13 +1,13 @@
-import React from 'react';
-import { transition } from 'd3-transition';
 import { Component, sstyled } from '@semcore/core';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import createElement from './createElement';
-import AnimatedClipPath from './AnimatedClipPath';
-import { scaleToBand, roundedPath } from './utils';
-import { PatternFill } from './Pattern';
+import { transition } from 'd3-transition';
+import React from 'react';
 
+import AnimatedClipPath from './AnimatedClipPath';
+import createElement from './createElement';
+import { PatternFill } from './Pattern';
 import style from './style/bar.shadow.css';
+import { scaleToBand, roundedPath } from './utils';
 
 export const MIN_HEIGHT = 2;
 

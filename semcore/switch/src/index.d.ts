@@ -1,8 +1,8 @@
-import React from 'react';
-import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import { BoxProps } from '@semcore/flex-box';
-import { NeighborItemProps, NeighborLocationProps } from '@semcore/neighbor-location';
+import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
 import { inputProps } from '@semcore/core/lib/utils/inputProps';
+import type { BoxProps } from '@semcore/flex-box';
+import type { NeighborItemProps, NeighborLocationProps } from '@semcore/neighbor-location';
+import type React from 'react';
 
 export type SwitchTheme = 'info' | 'success' | string;
 

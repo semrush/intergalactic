@@ -1,10 +1,12 @@
+import { execSync } from 'node:child_process';
 import fs from 'node:fs/promises';
+import { resolve as resolvePath } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
 import glob from 'fast-glob';
 import postcss from 'postcss';
 import valuesParser from 'postcss-value-parser';
-import { resolve as resolvePath } from 'node:path';
-import { fileURLToPath } from 'node:url';
-import { execSync } from 'node:child_process';
+
 import { processTokens, tokensToCss, tokensToJs, tokensToJson } from './utils';
 
 type Token = {

@@ -1,9 +1,8 @@
+import type Breadcrumbs from '@semcore/breadcrumbs';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Breadcrumbs from '@semcore/breadcrumbs';
-
-import UsageExample from './examples/usage_example';
 import RedefiningATagExample from './examples/redefining_a_tag';
+import UsageExample from './examples/usage_example';
 
 const meta: Meta<typeof Breadcrumbs> = {
   title: 'Components/Breadcrumbs/Documentation',

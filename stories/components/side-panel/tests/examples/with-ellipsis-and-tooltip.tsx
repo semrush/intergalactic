@@ -1,9 +1,9 @@
-import React from 'react';
 import Button from '@semcore/button';
-import SidePanel from '@semcore/side-panel';
 import Ellipsis from '@semcore/ellipsis';
 import FileExportM from '@semcore/icon/FileExport/m';
+import SidePanel from '@semcore/side-panel';
 import Tooltip from '@semcore/tooltip';
+import React from 'react';
 
 const Demo = () => {
   const [visible, setVisible] = React.useState(false);

@@ -1,10 +1,11 @@
 // @ts-nocheck
-import React from 'react';
 import { createBaseComponent, sstyled } from '@semcore/core';
-import Animation from './Animation';
-import style from './style/keyframes.shadow.css';
 import { useForkRef } from '@semcore/core/lib/utils/ref';
 import useEnhancedEffect from '@semcore/core/lib/utils/use/useEnhancedEffect';
+import React from 'react';
+
+import Animation from './Animation';
+import style from './style/keyframes.shadow.css';
 
 function Collapse(
   { onAnimationStart, onAnimationEnd, overflowHidden = true, defaultHeight = 'auto', ...props },

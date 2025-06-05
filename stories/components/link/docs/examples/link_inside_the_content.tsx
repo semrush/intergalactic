@@ -1,8 +1,8 @@
-import React from 'react';
 import FormatText from '@semcore/format-text';
-import { List } from '@semcore/typography';
-import Link from '@semcore/link';
 import LinkExternalM from '@semcore/icon/LinkExternal/m';
+import Link from '@semcore/link';
+import { List } from '@semcore/typography';
+import React from 'react';
 
 const Demo = () => {
   return (

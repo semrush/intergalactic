@@ -1,6 +1,6 @@
-import React from 'react';
 import Table from '@semcore/table';
 import { NoData } from '@semcore/widget-empty';
+import React from 'react';
 
 const Demo = () => {
   const data = [...new Array(5)];

@@ -1,6 +1,6 @@
-import React from 'react';
 import { Plot, Venn } from '@semcore/d3-chart';
 import { Text } from '@semcore/typography';
+import React from 'react';
 
 const data = {
   'G': 200,

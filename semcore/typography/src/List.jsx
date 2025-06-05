@@ -1,11 +1,10 @@
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
-import { Flex } from '@semcore/flex-box';
-import isNode from '@semcore/core/lib/utils/isNode';
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
-
-import Text from './Text';
+import isNode from '@semcore/core/lib/utils/isNode';
+import { Flex } from '@semcore/flex-box';
 
 import style from './style/list.shadow.css';
+import Text from './Text';
 
 class ListRoot extends Component {
   static displayName = 'List';

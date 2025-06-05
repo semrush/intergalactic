@@ -1,9 +1,9 @@
-import React from 'react';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
-import { Box } from '@semcore/flex-box';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import a11yEnhance from '@semcore/core/lib/utils/enhances/a11yEnhance';
+import { Box } from '@semcore/flex-box';
 import NeighborLocation from '@semcore/neighbor-location';
+import React from 'react';
 
 import style from './style/tab-line.shadow.css';
 

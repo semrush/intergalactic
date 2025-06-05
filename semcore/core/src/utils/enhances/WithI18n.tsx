@@ -1,8 +1,9 @@
+import { createIntl, createIntlCache } from '@formatjs/intl';
 import React, { Component, createContext } from 'react';
+
 import createHoc from '../createHoc';
 import { useAsyncI18nMessages } from './i18nEnhance';
 import type { UnknownProperties } from '../../core-types/UnknownProperties';
-import { createIntl, createIntlCache } from '@formatjs/intl';
 
 export type LocaleKeys = string;
 export type DictionaryItem = { [key: string]: string };

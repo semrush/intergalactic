@@ -1,5 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { CustomDateRangesTest } from './__tests__/custom_date_ranges.test';
+import { CustomDaysTest } from './__tests__/custom_days.test';
+import { CustomHeaderTest } from './__tests__/custom_header.test';
+import { DatePickerTest } from './__tests__/date_picker.test';
+import { DateRangeComparatorTest } from './__tests__/date_range_comparator.test';
+import { DateRangeComparatorAdvancedTest } from './__tests__/date_range_comparator_advanced.test';
+import { DisabledDatesTest } from './__tests__/disabled_dates.test';
+import { MonthRangeComparatorTest } from './__tests__/month_range_comparator.test';
+import { MonthRangePickerTest } from './__tests__/month_range_picker.test';
+import { TriggerAndPopperTest } from './__tests__/trigger_popper.test';
+import { WeekPickerTest } from './__tests__/week_picker.test';
 import CustomDateRangesExample from './examples/custom_date_ranges';
 import CustomDayExample from './examples/custom_day';
 import CustomHeaderExample from './examples/custom_header';
@@ -11,19 +22,6 @@ import MonthRangeComparatorAdvanceUseExample from './examples/month_range_compar
 import MonthRangePickerExample from './examples/monthrangepicker';
 import TriggerAndPopperExample from './examples/trigger_and_popper';
 import WeekPickerExample from './examples/week_picker';
-
-import { CustomDateRangesTest } from './__tests__/custom_date_ranges.test';
-import { CustomDaysTest } from './__tests__/custom_days.test';
-import { CustomHeaderTest } from './__tests__/custom_header.test';
-import { DateRangeComparatorTest } from './__tests__/date_range_comparator.test';
-import { DateRangeComparatorAdvancedTest } from './__tests__/date_range_comparator_advanced.test';
-import { DatePickerTest } from './__tests__/date_picker.test';
-import { DisabledDatesTest } from './__tests__/disabled_dates.test';
-import { MonthRangeComparatorTest } from './__tests__/month_range_comparator.test';
-import { MonthRangePickerTest } from './__tests__/month_range_picker.test';
-import { TriggerAndPopperTest } from './__tests__/trigger_popper.test';
-import { WeekPickerTest } from './__tests__/week_picker.test';
-
 import { playWrapper } from '../../../utils/playWrapper';
 
 const meta: Meta = {

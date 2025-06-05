@@ -1,10 +1,10 @@
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
+import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
+import animatedSizeEnhance from '@semcore/core/lib/utils/enhances/animatedSizeEnhance';
+import logger from '@semcore/core/lib/utils/logger';
+import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
 import { Box, InvalidStateBox } from '@semcore/flex-box';
 import NeighborLocation from '@semcore/neighbor-location';
-import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
-import logger from '@semcore/core/lib/utils/logger';
-import animatedSizeEnhance from '@semcore/core/lib/utils/enhances/animatedSizeEnhance';
-import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
 
 import style from './style/base-trigger.shadow.css';
 
@@ -14,7 +14,7 @@ class RootBaseTrigger extends Component {
     cssVariableEnhance({
       variable: '--intergalactic-duration-control',
       fallback: '200',
-      map: Number.Number.parseInt,
+      map: Number.parseInt,
       prop: 'duration',
     }),
     animatedSizeEnhance({

@@ -1,12 +1,12 @@
-import * as React from 'react';
-import { Component, Root, sstyled, createComponent } from '@semcore/core';
 import { Box, Collapse, Flex } from '@semcore/base-components';
-
-import style from './style.shadow.css';
-import type { CellPropsInner, DataTableCellProps } from './Cell.types';
+import { Component, Root, sstyled, createComponent } from '@semcore/core';
 import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
-import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
 import { isFocusInside } from '@semcore/core/lib/utils/focus-lock/isFocusInside';
+import * as React from 'react';
+
+import type { CellPropsInner, DataTableCellProps } from './Cell.types';
+import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
+import style from './style.shadow.css';
 
 const DEFAULT_ROW_DURATION = 50;
 

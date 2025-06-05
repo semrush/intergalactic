@@ -1,6 +1,6 @@
-import React from 'react';
-import Radio, { RadioGroup } from '@semcore/radio';
 import { Flex } from '@semcore/flex-box';
+import Radio, { RadioGroup } from '@semcore/radio';
+import React from 'react';
 
 const Demo = () => {
   return (

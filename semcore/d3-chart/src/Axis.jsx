@@ -1,8 +1,8 @@
 import { Component, sstyled } from '@semcore/core';
-import createElement from './createElement';
-import { scaleOfBandwidth } from './utils';
 
+import createElement from './createElement';
 import style from './style/axis.shadow.css';
+import { scaleOfBandwidth } from './utils';
 
 const CUSTOM_0 = Symbol('custom_0');
 const CUSTOM_1 = Symbol('custom_1');

@@ -1,6 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
-
 import Textarea from '@semcore/textarea';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import TextareaWithAutoHeightExample from './examples/textarea_with_auto_height';
 

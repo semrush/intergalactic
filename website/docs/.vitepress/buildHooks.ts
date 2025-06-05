@@ -1,15 +1,17 @@
 import { createWriteStream } from 'fs';
-import { resolve as resolvePath } from 'path';
-import { SitemapStream } from 'sitemap';
-import { UserConfig, DefaultTheme } from 'vitepress';
 import fs from 'fs/promises';
+import { resolve as resolvePath } from 'path';
+
 import algoliasearch from 'algoliasearch';
 import parseMarkdownMetadata from 'parse-md';
+import { SitemapStream } from 'sitemap';
+import type { UserConfig, DefaultTheme } from 'vitepress';
+
+import { algoliaConfig } from '../../algoliaConfig.js';
 import iconsList from '../style/icon/icons-list.js';
 import illustrationsList from '../style/illustration/illustrations-list.js';
 
 import 'dotenv/config';
-import { algoliaConfig } from '../../algoliaConfig.js';
 
 const excludeFromSearch = ['a11y-report'];
 

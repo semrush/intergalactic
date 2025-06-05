@@ -1,5 +1,6 @@
-import type React from 'react';
 import type { Intergalactic } from '@semcore/core';
+import type React from 'react';
+
 import type { BaseChartProps } from './AbstractChart.type';
 import type { interpolateValue } from '../../utils';
 

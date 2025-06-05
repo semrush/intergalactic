@@ -1,23 +1,22 @@
-import React from 'react';
-import cn from 'classnames';
-import { createComponent, Root, sstyled, lastInteraction } from '@semcore/core';
-import DropdownMenu from '@semcore/dropdown-menu';
-import Dropdown, { AbstractDropdown, enhance, selectedIndexContext } from '@semcore/dropdown';
 import { ButtonTrigger } from '@semcore/base-trigger';
-import Divider from '@semcore/divider';
-import findComponent from '@semcore/core/lib/utils/findComponent';
-import logger from '@semcore/core/lib/utils/logger';
-import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
+import { createComponent, Root, sstyled, lastInteraction } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
-import InputSearch from './InputSearch';
-import { useBox } from '@semcore/flex-box';
-import { selectContext } from './context';
-import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-import { isInputTriggerTag } from '@semcore/popper';
-
-import style from './style/select.shadow.css';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
-import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
+import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
+import findComponent, { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
+import logger from '@semcore/core/lib/utils/logger';
+import Divider from '@semcore/divider';
+import Dropdown, { AbstractDropdown, enhance, selectedIndexContext } from '@semcore/dropdown';
+import DropdownMenu from '@semcore/dropdown-menu';
+import { useBox } from '@semcore/flex-box';
+import { isInputTriggerTag } from '@semcore/popper';
+import cn from 'classnames';
+import React from 'react';
+
+import { selectContext } from './context';
+import InputSearch from './InputSearch';
+import style from './style/select.shadow.css';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 function isSelectedOption(value, valueOption) {
   return Array.isArray(value) ? value.includes(valueOption) : valueOption === value;

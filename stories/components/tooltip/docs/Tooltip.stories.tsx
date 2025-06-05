@@ -1,6 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
-
 import Tooltip from '@semcore/tooltip';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import BasicUsageExample from './examples/basic_usage';
 import CustomBgColorExample from './examples/custom_bg_color';

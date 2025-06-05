@@ -1,9 +1,9 @@
-import React from 'react';
 import { ButtonLink } from '@semcore/button';
 import { Flex } from '@semcore/flex-box';
-import CheckM from '@semcore/icon/Check/m';
 import CheckL from '@semcore/icon/Check/l';
+import CheckM from '@semcore/icon/Check/m';
 import CloseM from '@semcore/icon/Close/m';
+import React from 'react';
 
 const Demo = () => {
   return (

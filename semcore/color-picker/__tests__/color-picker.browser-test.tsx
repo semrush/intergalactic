@@ -1,5 +1,6 @@
-import { expect, test, Locator, Page } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import type { Locator } from '@semcore/testing-utils/playwright';
+import { expect, test, Page } from '@semcore/testing-utils/playwright';
 
 export async function expectAttributes(
   locator: Locator,

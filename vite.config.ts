@@ -3,13 +3,15 @@
  * See build configuration in the component package folder.
  */
 
-import { defineConfig } from 'vite';
-import { createUnplugin } from 'unplugin';
-import { resolveSemcoreSources } from './website/docs/.vitepress/resolve-semcore-sources';
-import { loadSemcoreSources } from './website/docs/.vitepress/load-semcore-sources';
-import pluginReact from '@vitejs/plugin-react';
-import { unpluginIcons } from './website/docs/.vitepress/unplugins/unplugin-icons';
 import { resolve as resolvePath } from 'path';
+
+import pluginReact from '@vitejs/plugin-react';
+import { createUnplugin } from 'unplugin';
+import { defineConfig } from 'vite';
+
+import { loadSemcoreSources } from './website/docs/.vitepress/load-semcore-sources';
+import { resolveSemcoreSources } from './website/docs/.vitepress/resolve-semcore-sources';
+import { unpluginIcons } from './website/docs/.vitepress/unplugins/unplugin-icons';
 import { unpluginIllustrations } from './website/docs/.vitepress/unplugins/unplugin-illustrations';
 
 export default defineConfig({

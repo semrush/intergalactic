@@ -1,14 +1,15 @@
-import type React from 'react';
 import { createComponent } from '@semcore/core';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import { Box, Flex } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
 import { scaleBand, scaleLinear, type ScaleLinear, scaleTime } from 'd3-scale';
+import type React from 'react';
+
 // @ts-ignore
 import { Bar, minMax, HoverRect, StackBar, type BarProps } from '../..';
 import { AbstractChart } from './AbstractChart';
 import type { HistogramChartData, HistogramChartProps, HistogramChartType } from './HistogramChart.type';
-import { Box, Flex } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
-import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 
 class HistogramChartComponent extends AbstractChart<
   HistogramChartData,

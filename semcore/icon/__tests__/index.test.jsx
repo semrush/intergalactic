@@ -1,9 +1,9 @@
-import React from 'react';
-import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
-import Icon from '../src';
-import { render, cleanup, fireEvent } from '@semcore/testing-utils/testing-library';
-
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { render, cleanup, fireEvent } from '@semcore/testing-utils/testing-library';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import React from 'react';
+
+import Icon from '../src';
 
 describe('icon Dependency imports', () => {
   runDependencyCheckTests('icon');

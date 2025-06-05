@@ -1,8 +1,8 @@
-import React from 'react';
-import Dropdown from '@semcore/dropdown';
 import { LinkTrigger } from '@semcore/base-trigger';
+import Dropdown from '@semcore/dropdown';
 import { Flex } from '@semcore/flex-box';
 import CheckM from '@semcore/icon/Check/m';
+import React from 'react';
 
 const Demo = () => (
   <Flex direction='column' gap={3}>

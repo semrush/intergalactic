@@ -1,6 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
-
 import TabPanel from '@semcore/tab-panel';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import AutomaticTabActivationExample from './examples/automatic_tab_activation';
 import DisabledTabPanelItemExample from './examples/disabled_tab_panel_item';

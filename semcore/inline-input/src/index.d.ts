@@ -1,7 +1,7 @@
-import React from 'react';
-import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import { BoxProps } from '@semcore/flex-box';
-import { ButtonLinkComponent } from '@semcore/button';
+import type { ButtonLinkComponent } from '@semcore/button';
+import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import type { BoxProps } from '@semcore/flex-box';
+import type React from 'react';
 
 /** @deprecated */
 export interface IInlineInputProps extends InlineInputProps, UnknownProperties {}

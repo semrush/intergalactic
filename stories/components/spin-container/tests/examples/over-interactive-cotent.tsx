@@ -1,8 +1,8 @@
-import React from 'react';
-import { Text } from '@semcore/typography';
-import SpinContainer from '@semcore/spin-container';
-import Input from '@semcore/input';
 import { Flex } from '@semcore/flex-box';
+import Input from '@semcore/input';
+import SpinContainer from '@semcore/spin-container';
+import { Text } from '@semcore/typography';
+import React from 'react';
 
 class Demo extends React.PureComponent {
   render() {

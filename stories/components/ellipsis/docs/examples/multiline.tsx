@@ -1,7 +1,7 @@
-import React from 'react';
-import Ellipsis from '@semcore/ellipsis';
 import Card from '@semcore/card';
+import Ellipsis from '@semcore/ellipsis';
 import { Text } from '@semcore/typography';
+import React from 'react';
 
 const Demo = () => {
   return (

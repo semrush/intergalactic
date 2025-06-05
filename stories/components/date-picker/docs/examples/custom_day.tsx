@@ -1,8 +1,8 @@
-import React from 'react';
 import { DatePicker } from '@semcore/date-picker';
-import ProgressBar from '@semcore/progress-bar';
 import { Flex } from '@semcore/flex-box';
+import ProgressBar from '@semcore/progress-bar';
 import { Text } from '@semcore/typography';
+import React from 'react';
 
 const stableRandom = (randomIndex: number) => {
   return Math.abs(Math.sin(Math.PI * randomIndex * Math.cos(100 - randomIndex++)));

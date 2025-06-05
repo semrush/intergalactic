@@ -1,17 +1,16 @@
-import React from 'react';
-import { createComponent, Component, sstyled, Root } from '@semcore/core';
-import { Flex } from '@semcore/flex-box';
-import InputNumber from '@semcore/input-number';
-import { Text } from '@semcore/typography';
 import Button, { ButtonLink } from '@semcore/button';
-import { Hint } from '@semcore/tooltip';
-import ChevronDoubleLeft from '@semcore/icon/ChevronDoubleLeft/m';
-import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import { Flex, ScreenReaderOnly } from '@semcore/flex-box';
+import ChevronDoubleLeft from '@semcore/icon/ChevronDoubleLeft/m';
+import InputNumber from '@semcore/input-number';
+import { Hint } from '@semcore/tooltip';
+import { Text } from '@semcore/typography';
+import React from 'react';
 
 import style from './style/pagination.shadow.css';
-import { ScreenReaderOnly } from '@semcore/flex-box';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 class PaginationRoot extends Component {
   static displayName = 'Pagination';
