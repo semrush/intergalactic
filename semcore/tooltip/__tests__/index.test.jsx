@@ -93,7 +93,9 @@ describe('Tooltip', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Tooltip title='test' disablePortal onVisibleChange={spy}>
-        <button type = 'button' data-testid='trigger'>Trigger</button>
+        <button type='button' data-testid='trigger'>
+          Trigger
+        </button>
       </Tooltip>,
     );
     fireEvent.mouseEnter(getByTestId('trigger'));
