@@ -43,5 +43,4 @@ describe('Link', () => {
     );
     expect(getByTestId('link').tagName).toBe('SPAN');
   });
-
 });
