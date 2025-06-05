@@ -65,6 +65,7 @@ export default defineConfig([
       // stylistic
       '@stylistic/jsx-quotes': ['error', 'prefer-single'],
       '@stylistic/operator-linebreak': ['error', 'after', { overrides: { '?': 'before', ':': 'before' } }],
+      '@stylistic/jsx-one-expression-per-line': ['error', { allow: 'single-line' }],
       // 'import/order': [
       //   'error',
       //   {

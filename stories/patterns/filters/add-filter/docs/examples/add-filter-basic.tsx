@@ -75,9 +75,7 @@ const Demo = () => {
           onClear={() => clearField('size')}
           aria-label='Size'
         >
-          <span aria-hidden>Size:</span>
-          {' '}
-          {filterData.size}
+          <span aria-hidden>Size:</span> {filterData.size}
         </Select.Trigger>
         <Select.Menu aria-label='Size'>
           {sizes.map((item, idx) => (
@@ -105,12 +103,7 @@ const Demo = () => {
                 clearField(name);
               }}
             >
-              <span aria-hidden>
-                {name}
-                :
-              </span>
-              {' '}
-              {filterData[name]}
+              <span aria-hidden>{name}:</span> {filterData[name]}
             </AddFilter.Select.Trigger>
             <AddFilter.Select.Menu aria-label={name}>
               {values.map((item, idx) => (

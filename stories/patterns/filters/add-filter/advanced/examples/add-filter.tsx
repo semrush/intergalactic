@@ -203,9 +203,7 @@ const AddFilterExample = () => {
             return clearField('size');
           }}
         >
-          Size:
-          {' '}
-          {filterData.size}
+          Size: {filterData.size}
         </Select.Trigger>
         <Select.Menu>
           {sizes.map((item, idx) => (
@@ -287,9 +285,7 @@ const AddFilterExample = () => {
             clearField('device');
           }}
         >
-          Device:
-          {' '}
-          {filterData.device}
+          Device: {filterData.device}
         </AddFilter.Select.Trigger>
         <AddFilter.Select.Menu>
           {devices.map((item, idx) => (
