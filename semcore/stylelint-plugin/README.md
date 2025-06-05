@@ -15,7 +15,7 @@ The stylelint plugin help developers avoid mistakes in design token names.
 ## Install
 
 ```sh
-npm install intergalactic
+npm install @semcore
 ```
 
 ## Usage
@@ -24,7 +24,7 @@ npm install intergalactic
 // .stylelintrc.json
 {
   "extends": ["stylelint-config-standard"],
-  "plugins": ["intergalactic/stylelint-plugin"],
+  "plugins": ["@semcore/stylelint-plugin"],
   "rules": {
 		"intergalactic/design-tokens": true
 	}
@@ -35,7 +35,7 @@ npm install intergalactic
 
 - `include` - adds custom design tokens to the list of allowed tokens.
 - `exclude` - removes design tokens from the list of allowed tokens.
-- `tokensSource` - path to the file with design tokens. Default is `intergalactic/utils/lib/themes/default.json`.
+- `tokensSource` - path to the file with design tokens. Default is `@semcore/core/lib/utils/themes/default.json`.
 - `tokensPrefix` - design tokens (default is `--intergalactic-`). Only CSS variables with this prefix are considered as design tokens.
 
 ### Alternative usage
@@ -46,7 +46,7 @@ With `@semcore/ui` package:
 // .stylelintrc.json
 {
   "extends": ["stylelint-config-standard"],
-  "plugins": ["intergalactic/stylelint-plugin"],
+  "plugins": ["@semcore/stylelint-plugin"],
   "rules": {
 		"intergalactic/design-tokens": [true, {
       "tokensSource": "node_modules/@semcore/ui/utils/lib/themes/default.json",
@@ -61,7 +61,7 @@ With `@semcore/utils` package:
 // .stylelintrc.json
 {
   "extends": ["stylelint-config-standard"],
-  "plugins": ["intergalactic/stylelint-plugin"],
+  "plugins": ["@semcore/stylelint-plugin"],
   "rules": {
 		"intergalactic/design-tokens": [true, {
       "tokensSource": "node_modules/@semcore/core/lib/utils/themes/default.json",

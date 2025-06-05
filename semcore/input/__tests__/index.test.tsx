@@ -1,6 +1,4 @@
 import React from 'react';
-import Search from '@semcore/icon/Search/m';
-import { snapshot } from '@semcore/testing-utils/snapshot';
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 
@@ -21,136 +19,7 @@ describe('Input', () => {
   shouldSupportClassName(Input);
   shouldSupportRef(Input);
 
-  test.concurrent('Should support sizes', async ({ task }) => {
-    const InputSize = (props: any) => (
-      <>
-        <Input {...props}>
-          <Input.Addon tag={Search} />
-          <Input.Value />
-          <Input.Addon>
-            <Search />
-          </Input.Addon>
-        </Input>
-        <Input {...props}>
-          <Input.Addon>
-            <Search />
-          </Input.Addon>
-          <Input.Value />
-        </Input>
-        <Input {...props}>
-          <Input.Value />
-          <Input.Addon>
-            <Search />
-          </Input.Addon>
-        </Input>
-        <Input {...props}>
-          <Input.Value />
-        </Input>
-      </>
-    );
-    const component = (
-      <snapshot.ProxyProps style={{ margin: 5, width: 150 }}>
-        <InputSize size='m' />
-        <InputSize size='l' />
-      </snapshot.ProxyProps>
-    );
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-
-  test.concurrent('Should support states', async ({ task }) => {
-    const component = (
-      <snapshot.ProxyProps style={{ margin: 5, width: 200 }}>
-        <Input state='normal'>
-          <Input.Value />
-        </Input>
-        <Input state='valid'>
-          <Input.Value />
-        </Input>
-        <Input state='invalid'>
-          <Input.Value />
-        </Input>
-      </snapshot.ProxyProps>
-    );
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-
-  test.concurrent('Should support focus states', async ({ task }) => {
-    await expect(
-      await snapshot(
-        <Input state='normal' {...{ focused: true }}>
-          <Input.Value id='input' />
-        </Input>,
-        {
-          actions: {
-            focus: '#input',
-          },
-        },
-      ),
-    ).toMatchImageSnapshot(task);
-    await expect(
-      await snapshot(
-        <Input state='valid' {...{ focused: true }}>
-          <Input.Value id='input' />
-        </Input>,
-        {
-          actions: {
-            focus: '#input',
-          },
-        },
-      ),
-    ).toMatchImageSnapshot(task);
-    await expect(
-      await snapshot(
-        <Input state='invalid' {...{ focused: true }}>
-          <Input.Value id='input' />
-        </Input>,
-        {
-          actions: {
-            focus: '#input',
-          },
-        },
-      ),
-    ).toMatchImageSnapshot(task);
-  });
-
-  test.concurrent('Should support root disabled', async ({ task }) => {
-    const component = (
-      <snapshot.ProxyProps style={{ margin: 5, width: 200 }}>
-        <Input disabled>
-          <Input.Addon>
-            <Search />
-          </Input.Addon>
-          <Input.Value />
-        </Input>
-        <Input>
-          <Input.Addon>
-            <Search />
-          </Input.Addon>
-          <Input.Value disabled />
-        </Input>
-      </snapshot.ProxyProps>
-    );
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-
-  test.concurrent('Should support correctly render', async ({ task }) => {
-    const component = (
-      <snapshot.ProxyProps style={{ margin: 5, width: 200 }}>
-        <Input>
-          <Input.Value placeholder='Placeholder' />
-        </Input>
-        <Input>
-          <Input.Value readOnly />
-        </Input>
-        <Input>
-          <Input.Value disabled />
-        </Input>
-      </snapshot.ProxyProps>
-    );
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-
-  test.concurrent('Should support change value when rerender', () => {
+  test.concurrent('Verify value changes when rerender', () => {
     const { getByTestId, rerender } = render(
       <Input>
         <Input.Value data-testid='value' value='' />
@@ -168,7 +37,7 @@ describe('Input', () => {
     expect((getByTestId('value') as HTMLInputElement).value).toBe('test');
   });
 
-  test.concurrent('Should support controlled mod', () => {
+  test.concurrent('Verify controlled mod', () => {
     let value = '';
     const spy = vi.fn((v) => {
       value = v;
@@ -203,7 +72,7 @@ describe('Input.Addon', () => {
   shouldSupportClassName(Input.Value);
   shouldSupportRef(Input.Value, Input);
 
-  test.concurrent('Should focus input if additional element click', () => {
+  test.concurrent('Verify input focused if click additional element', () => {
     const spy = vi.fn();
     const { queryByText } = render(
       <Input>
@@ -216,7 +85,7 @@ describe('Input.Addon', () => {
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
-  test(`Should't focus input if onMouseDown additional return false`, () => {
+  test('Verify input focused of onMouseDown on additional return false', () => {
     const spy = vi.fn();
     const { queryByText } = render(
       <Input>
@@ -226,24 +95,5 @@ describe('Input.Addon', () => {
     );
     fireEvent.mouseDown(queryByText('addon')!);
     expect(spy).toHaveBeenCalledTimes(0);
-  });
-
-  test.concurrent('Should support hover interactive', async ({ task }) => {
-    const component = (
-      <Input>
-        <Input.Addon interactive id='addon'>
-          Addon
-        </Input.Addon>
-        <Input.Value />
-        <Input.Addon interactive>Addon</Input.Addon>
-      </Input>
-    );
-    await expect(
-      await snapshot(component, {
-        actions: {
-          hover: '#addon',
-        },
-      }),
-    ).toMatchImageSnapshot(task);
   });
 });

@@ -33,14 +33,14 @@ Intergalactic is a constantly developing design system of [React](https://reactj
 ### Installation
 
 ```sh
-pnpm add intergalactic
+pnpm add @semcore/ui --shamefully-hoist
 ```
 or
 ```sh
-npm install intergalactic
+npm install @semcore/ui
 ```
 
-After the installation, all components will be available at `intergalactic/{{component_name}}`.
+After the installation, all components will be available at `@semcore/{{component_name}}`.
 
 ### How to contribute to the project
 
