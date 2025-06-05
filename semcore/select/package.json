@@ -39,7 +39,7 @@
   "devDependencies": {
 
     "@types/classnames": "2.2.6",
-    "@semcore/testing-utils": "1.0.0",
+    "@semcore/testing-utils": "workspace:*",
     "@semcore/typography": "*",
     "@semcore/flex-box": "*"
   }

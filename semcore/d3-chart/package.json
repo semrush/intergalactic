@@ -53,7 +53,7 @@
     "@semcore/dropdown-menu": "*",
     "@semcore/ellipsis": "*",
     "@semcore/icon": "*",
-    "@semcore/testing-utils": "1.0.0",
+    "@semcore/testing-utils": "workspace:*",
     "@semcore/typography": "*",
     "@semcore/utils": "*",
     "@types/d3-array": "^3.0.2",

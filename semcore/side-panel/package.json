@@ -35,6 +35,6 @@
   },
   "devDependencies": {
 
-    "@semcore/testing-utils": "1.0.0"
+    "@semcore/testing-utils": "workspace:*"
   }
 }

@@ -474,7 +474,7 @@ importers:
         version: 3.2.3
     devDependencies:
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
       '@types/dompurify':
         specifier: 3.2.0
@@ -502,7 +502,7 @@ importers:
         specifier: '*'
         version: link:../icon
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
 
   semcore/card:
@@ -527,7 +527,7 @@ importers:
         version: link:../typography
     devDependencies:
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
 
   semcore/carousel:
@@ -552,7 +552,7 @@ importers:
         version: link:../modal
     devDependencies:
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
 
   semcore/checkbox:
@@ -574,7 +574,7 @@ importers:
         version: 18.3.1(react@18.3.1)
     devDependencies:
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
 
   semcore/color-picker:
@@ -608,7 +608,7 @@ importers:
         version: link:../tooltip
     devDependencies:
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
 
   semcore/core:
@@ -661,7 +661,7 @@ importers:
         version: link:../flex-box
     devDependencies:
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
 
   semcore/d3-chart:
@@ -740,7 +740,7 @@ importers:
         specifier: '*'
         version: link:../ellipsis
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
       '@semcore/utils':
         specifier: '*'
@@ -810,7 +810,7 @@ importers:
         specifier: '*'
         version: link:../spin-container
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
       '@semcore/typography':
         specifier: '*'
@@ -871,7 +871,7 @@ importers:
         version: 1.8.36
     devDependencies:
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
 
   semcore/divider:
@@ -884,7 +884,7 @@ importers:
         version: link:../flex-box
     devDependencies:
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
 
   semcore/dot:
@@ -906,7 +906,7 @@ importers:
         specifier: '*'
         version: link:../button
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
 
   semcore/drag-and-drop:
@@ -940,7 +940,7 @@ importers:
         specifier: '*'
         version: link:../tab-panel
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
 
   semcore/dropdown:
@@ -956,7 +956,7 @@ importers:
         version: link:../popper
     devDependencies:
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
 
   semcore/dropdown-menu:
@@ -993,7 +993,7 @@ importers:
         specifier: 4.26.1
         version: 4.26.1(@semcore/core@2.39.4)(react-dom@18.3.1)(react@18.3.1)
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
       '@types/classnames':
         specifier: 2.2.6
@@ -1012,7 +1012,7 @@ importers:
         version: link:../tooltip
     devDependencies:
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
 
   semcore/errors:
@@ -1037,7 +1037,7 @@ importers:
         version: link:../typography
     devDependencies:
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
 
   semcore/feature-popover:
@@ -1065,7 +1065,7 @@ importers:
         specifier: '*'
         version: link:../dropdown-menu
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
       '@semcore/typography':
         specifier: '*'
@@ -1129,7 +1129,7 @@ importers:
         version: 6.5.9(final-form@4.20.7)(react@18.3.1)
     devDependencies:
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
       '@types/final-form-focus':
         specifier: 1.1.7
@@ -1148,7 +1148,7 @@ importers:
         version: 2.2.6
     devDependencies:
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
       '@types/classnames':
         specifier: 2.2.6
@@ -1207,7 +1207,7 @@ importers:
         version: link:../typography
     devDependencies:
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
 
   semcore/grid:
@@ -1257,10 +1257,10 @@ importers:
         version: 2.2.6
     devDependencies:
       '@semcore/icon-transform-svg':
-        specifier: 1.1.0
+        specifier: workspace:*
         version: link:../../tools/icon-transform-svg
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
       '@types/classnames':
         specifier: 2.2.6
@@ -1310,7 +1310,7 @@ importers:
         version: link:../flex-box
     devDependencies:
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
 
   semcore/inline-input:
@@ -1341,7 +1341,7 @@ importers:
         version: link:../tooltip
     devDependencies:
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
 
   semcore/input:
@@ -1360,7 +1360,7 @@ importers:
         specifier: '*'
         version: link:../icon
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
 
   semcore/input-mask:
@@ -1382,7 +1382,7 @@ importers:
         version: 5.1.2
     devDependencies:
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
 
   semcore/input-number:
@@ -1398,7 +1398,7 @@ importers:
         version: link:../input
     devDependencies:
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
 
   semcore/input-tags:
@@ -1432,7 +1432,7 @@ importers:
         specifier: '*'
         version: link:../select
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
       '@semcore/tooltip':
         specifier: '*'
@@ -1460,7 +1460,7 @@ importers:
         specifier: '*'
         version: link:../icon
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
 
   semcore/mini-chart:
@@ -1504,7 +1504,7 @@ importers:
         version: link:../typography
     devDependencies:
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
 
   semcore/neighbor-location:
@@ -1538,7 +1538,7 @@ importers:
         version: link:../typography
     devDependencies:
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
 
   semcore/notice-bubble:
@@ -1563,7 +1563,7 @@ importers:
         version: link:../portal
     devDependencies:
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
 
   semcore/notice-global:
@@ -1585,7 +1585,7 @@ importers:
         version: link:../icon
     devDependencies:
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
 
   semcore/outside-click:
@@ -1625,7 +1625,7 @@ importers:
         version: link:../typography
     devDependencies:
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
 
   semcore/pills:
@@ -1647,7 +1647,7 @@ importers:
         specifier: '*'
         version: link:../icon
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
 
   semcore/popper:
@@ -1672,7 +1672,7 @@ importers:
         version: link:../flex-box
     devDependencies:
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
 
   semcore/progress-bar:
@@ -1685,7 +1685,7 @@ importers:
         version: link:../flex-box
     devDependencies:
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
 
   semcore/radio:
@@ -1701,7 +1701,7 @@ importers:
         version: link:../typography
     devDependencies:
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
 
   semcore/scroll-area:
@@ -1750,7 +1750,7 @@ importers:
         version: 2.2.6
     devDependencies:
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
       '@semcore/typography':
         specifier: '*'
@@ -1787,7 +1787,7 @@ importers:
         version: link:../typography
     devDependencies:
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
 
   semcore/skeleton:
@@ -1800,7 +1800,7 @@ importers:
         version: link:../flex-box
     devDependencies:
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
 
   semcore/slider:
@@ -1813,7 +1813,7 @@ importers:
         version: link:../flex-box
     devDependencies:
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
 
   semcore/spin:
@@ -1826,7 +1826,7 @@ importers:
         version: link:../flex-box
     devDependencies:
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
 
   semcore/spin-container:
@@ -1845,7 +1845,7 @@ importers:
         version: link:../spin
     devDependencies:
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
 
   semcore/sticky:
@@ -1858,7 +1858,7 @@ importers:
         version: link:../flex-box
     devDependencies:
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
 
   semcore/stylelint-plugin:
@@ -1896,7 +1896,7 @@ importers:
         version: link:../neighbor-location
     devDependencies:
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
 
   semcore/tab-line:
@@ -1912,7 +1912,7 @@ importers:
         version: link:../neighbor-location
     devDependencies:
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
 
   semcore/tab-panel:
@@ -1928,7 +1928,7 @@ importers:
         specifier: '*'
         version: link:../icon
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
 
   semcore/table:
@@ -1972,7 +1972,7 @@ importers:
         version: link:../icon
     devDependencies:
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
 
   semcore/textarea:
@@ -1985,7 +1985,7 @@ importers:
         version: link:../flex-box
     devDependencies:
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
       csstype:
         specifier: 3.1.3
@@ -2010,7 +2010,7 @@ importers:
         version: link:../select
     devDependencies:
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
 
   semcore/tooltip:
@@ -2032,7 +2032,7 @@ importers:
         specifier: workspace:*
         version: link:../icon
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
 
   semcore/typography:
@@ -2048,7 +2048,7 @@ importers:
         version: link:../icon
     devDependencies:
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
       csstype:
         specifier: 3.1.3
@@ -2289,7 +2289,7 @@ importers:
         version: 18.3.1(react@18.3.1)
     devDependencies:
       '@semcore/continuous-delivery':
-        specifier: ^0.0.1
+        specifier: workspace:*
         version: link:../../tools/continuous-delivery
       '@semcore/testing-utils':
         specifier: workspace:*
@@ -2326,7 +2326,7 @@ importers:
         version: link:../illustration
     devDependencies:
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
 
   semcore/wizard:
@@ -2348,7 +2348,7 @@ importers:
         version: link:../modal
     devDependencies:
       '@semcore/testing-utils':
-        specifier: 1.0.0
+        specifier: workspace:*
         version: link:../../tools/testing-utils
 
   stories:
@@ -2524,7 +2524,7 @@ importers:
         specifier: 7.19.1
         version: 7.19.1
       '@semcore/babel-preset-ui':
-        specifier: ^1.0.1
+        specifier: workspace:*
         version: link:../babel-preset-ui
       execa:
         specifier: 5.0.0
@@ -2557,7 +2557,7 @@ importers:
   tools/changelog-handler:
     dependencies:
       '@semcore/continuous-delivery':
-        specifier: ^0.0.1
+        specifier: workspace:*
         version: link:../continuous-delivery
       dayjs:
         specifier: 1.8.36
@@ -2667,10 +2667,10 @@ importers:
         specifier: 7.19.1
         version: 7.19.1
       '@semcore/babel-plugin-react-semcore':
-        specifier: ^4.9.0
+        specifier: workspace:*
         version: link:../babel-plugin-react-semcore
       '@semcore/babel-preset-ui':
-        specifier: ^1.0.1
+        specifier: workspace:*
         version: link:../babel-preset-ui
     devDependencies:
       '@types/babel__core':
@@ -2733,7 +2733,7 @@ importers:
         version: 1.2.0
     devDependencies:
       '@semcore/testing-utils':
-        specifier: ^1.0.0
+        specifier: workspace:*
         version: link:../testing-utils
       babel-plugin-tester:
         specifier: 7.0.1
@@ -2788,15 +2788,15 @@ importers:
         version: 1.48.0
       '@previewjs/plugin-react':
         specifier: 17.1.0
-        version: 17.1.0(@types/node@18.19.110)(esbuild@0.14.29)(vite@4.5.14)(yaml@2.1.1)
+        version: 17.1.0(@types/node@18.19.110)(esbuild@0.14.29)(vite@5.4.9)(yaml@2.1.1)
       '@previewjs/screenshot':
         specifier: 0.3.2
-        version: 0.3.2(@types/node@18.19.110)(esbuild@0.14.29)(vite@4.5.14)(yaml@2.1.1)
+        version: 0.3.2(@types/node@18.19.110)(esbuild@0.14.29)(vite@5.4.9)(yaml@2.1.1)
       '@semcore/babel-preset-ui':
-        specifier: '*'
+        specifier: workspace:*
         version: link:../babel-preset-ui
       '@semcore/esbuild-plugin-semcore':
-        specifier: '*'
+        specifier: workspace:*
         version: link:../esbuild-plugin-semcore
       '@testing-library/jest-dom':
         specifier: 6.6.3
@@ -2852,7 +2852,7 @@ importers:
         version: 0.14.29
       vitest-axe:
         specifier: 0.1.0
-        version: 0.1.0(vitest@0.34.6)
+        version: 0.1.0(vitest@3.2.2)
 
   website:
     dependencies:
@@ -6842,7 +6842,7 @@ packages:
       pino-pretty: 11.3.0
     dev: false
 
-  /@previewjs/analyzer-react@0.1.11(@types/node@18.19.110)(vite@4.5.14)(yaml@2.1.1):
+  /@previewjs/analyzer-react@0.1.11(@types/node@18.19.110)(vite@5.4.9)(yaml@2.1.1):
     resolution: {integrity: sha512-fuqfzf5J9T90wYa7CDbsA+ykiGIOqwPv0kYIGzmBo1A6m1EX903lGazg/G+zgEnyqMWNdAIsFsYAwXIlcY9HNw==}
     dependencies:
       '@previewjs/analyzer-api': 0.1.8
@@ -6850,7 +6850,7 @@ packages:
       '@previewjs/storybook-helpers': 6.0.1(@types/node@18.19.110)(yaml@2.1.1)
       '@previewjs/type-analyzer': 10.1.5
       '@previewjs/vfs': 2.1.4
-      '@vitejs/plugin-react': 4.5.1(vite@4.5.14)
+      '@vitejs/plugin-react': 4.5.1(vite@5.4.9)
       typescript: 5.8.3
     transitivePeerDependencies:
       - '@swc/core'
@@ -7039,11 +7039,11 @@ packages:
     resolution: {integrity: sha512-wFHq6boBz0MwW4lurGnxT0V03BUef2eVEVAFGIJ/JsKK1vNtsHhO/GuUFMlpsyL4QS94hNuutDNYTXoq3SKAOw==}
     dev: false
 
-  /@previewjs/plugin-react@16.0.2(@types/node@18.19.110)(vite@4.5.14)(yaml@2.1.1):
+  /@previewjs/plugin-react@16.0.2(@types/node@18.19.110)(vite@5.4.9)(yaml@2.1.1):
     resolution: {integrity: sha512-5zOjzzUHE0QESKQAULQcSOlfQCabxvowddIvEd5HDqyxCVBd8tMYeARzda5SnMwVYYZukRN/NoN14dgM9yDEgw==}
     dependencies:
-      '@previewjs/analyzer-react': 0.1.11(@types/node@18.19.110)(vite@4.5.14)(yaml@2.1.1)
-      '@vitejs/plugin-react': 4.5.1(vite@4.5.14)
+      '@previewjs/analyzer-react': 0.1.11(@types/node@18.19.110)(vite@5.4.9)(yaml@2.1.1)
+      '@vitejs/plugin-react': 4.5.1(vite@5.4.9)
     transitivePeerDependencies:
       - '@swc/core'
       - '@swc/wasm'
@@ -7063,11 +7063,11 @@ packages:
       - yaml
     dev: false
 
-  /@previewjs/plugin-react@17.1.0(@types/node@18.19.110)(esbuild@0.14.29)(vite@4.5.14)(yaml@2.1.1):
+  /@previewjs/plugin-react@17.1.0(@types/node@18.19.110)(esbuild@0.14.29)(vite@5.4.9)(yaml@2.1.1):
     resolution: {integrity: sha512-R+C2NJyzSWv3nVwbka9pu8kaAvRdJboSd1wMAaQdTBQ76VNBOmSnhTLkwHOvs0p2mDec78eqWmGfG423flToaA==}
     dependencies:
-      '@previewjs/analyzer-react': 0.1.11(@types/node@18.19.110)(vite@4.5.14)(yaml@2.1.1)
-      '@vitejs/plugin-react': 4.5.1(vite@4.5.14)
+      '@previewjs/analyzer-react': 0.1.11(@types/node@18.19.110)(vite@5.4.9)(yaml@2.1.1)
+      '@vitejs/plugin-react': 4.5.1(vite@5.4.9)
       esbuild-plugin-polyfill-node: 0.3.0(esbuild@0.14.29)
     transitivePeerDependencies:
       - '@swc/core'
@@ -7096,14 +7096,14 @@ packages:
       '@previewjs/type-analyzer': 10.1.5
     dev: false
 
-  /@previewjs/screenshot@0.3.2(@types/node@18.19.110)(esbuild@0.14.29)(vite@4.5.14)(yaml@2.1.1):
+  /@previewjs/screenshot@0.3.2(@types/node@18.19.110)(esbuild@0.14.29)(vite@5.4.9)(yaml@2.1.1):
     resolution: {integrity: sha512-AYjn2Rb9p7XDMxcIm9ufFmpxGtmgPXzG2hFregLzOesI41hwBWzGGw08Rnf8bLengSysEt9WRbjt4outDD7fTQ==}
     engines: {node: '>=18.20.3'}
     dependencies:
       '@previewjs/analyzer-api': 0.1.8
       '@previewjs/chromeless': 13.1.1(@types/node@18.19.110)(esbuild@0.14.29)
       '@previewjs/core': 29.1.1(@types/node@18.19.110)(esbuild@0.14.29)
-      '@previewjs/plugin-react': 16.0.2(@types/node@18.19.110)(vite@4.5.14)(yaml@2.1.1)
+      '@previewjs/plugin-react': 16.0.2(@types/node@18.19.110)(vite@5.4.9)(yaml@2.1.1)
       globby: 14.1.0
       playwright: 1.52.0
     transitivePeerDependencies:
@@ -9325,9 +9325,11 @@ packages:
       '@types/chai': <5.2.0
     dependencies:
       '@types/chai': 4.3.20
+    dev: false
 
   /@types/chai@4.3.20:
     resolution: {integrity: sha512-/pC9HAB5I/xMlc5FP77qjCnI16ChlJfW0tGa0IUcFn38VJrTV6DeZ60NU5KZBtaOZqjdpwTWohz5HU1RrhiYxQ==}
+    dev: false
 
   /@types/chai@5.2.2:
     resolution: {integrity: sha512-8kB30R7Hwqf40JPiKhVzodJs2Qc1ZJ5zuT3uzw5Hq/dhNCl3G3l83jfpdI1e20BP348+fV7VIL/+FxaXkqBmWg==}
@@ -10162,6 +10164,23 @@ packages:
       - supports-color
     dev: false
 
+  /@vitejs/plugin-react@4.5.1(vite@5.4.9):
+    resolution: {integrity: sha512-uPZBqSI0YD4lpkIru6M35sIfylLGTyhGHvDZbNLuMA73lMlwJKz5xweH7FajfcCAc2HnINciejA9qTz0dr0M7A==}
+    engines: {node: ^14.18.0 || >=16.0.0}
+    peerDependencies:
+      vite: ^4.2.0 || ^5.0.0 || ^6.0.0
+    dependencies:
+      '@babel/core': 7.19.1
+      '@babel/plugin-transform-react-jsx-self': 7.27.1(@babel/core@7.19.1)
+      '@babel/plugin-transform-react-jsx-source': 7.27.1(@babel/core@7.19.1)
+      '@rolldown/pluginutils': 1.0.0-beta.9
+      '@types/babel__core': 7.20.5
+      react-refresh: 0.17.0
+      vite: 5.4.9(@types/node@18.19.110)
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
   /@vitejs/plugin-vue-jsx@3.1.0(vite@4.5.14)(vue@3.5.16):
     resolution: {integrity: sha512-w9M6F3LSEU5kszVb9An2/MmXNxocAnUb3WhRr8bHlimhDrXNt6n6D2nJQR3UXpGlZHh/EsgouOHCsM8V3Ln+WA==}
     engines: {node: ^14.18.0 || >=16.0.0}
@@ -10229,6 +10248,7 @@ packages:
       '@vitest/spy': 0.34.6
       '@vitest/utils': 0.34.6
       chai: 4.5.0
+    dev: false
 
   /@vitest/expect@2.0.5:
     resolution: {integrity: sha512-yHZtwuP7JZivj65Gxoi8upUN2OzHTi3zVfjwdpu2WrvCZPLwsJ2Ey5ILIPccoW23dd/zQBlJ4/dhi7DWNyXCpA==}
@@ -10309,6 +10329,7 @@ packages:
       '@vitest/utils': 0.34.6
       p-limit: 4.0.0
       pathe: 1.1.2
+    dev: false
 
   /@vitest/runner@3.2.2:
     resolution: {integrity: sha512-GYcHcaS3ejGRZYed2GAkvsjBeXIEerDKdX3orQrBJqLRiea4NSS9qvn9Nxmuy1IwIB+EjFOaxXnX79l8HFaBwg==}
@@ -10322,6 +10343,7 @@ packages:
       magic-string: 0.30.17
       pathe: 1.1.2
       pretty-format: 29.7.0
+    dev: false
 
   /@vitest/snapshot@3.2.2:
     resolution: {integrity: sha512-aMEI2XFlR1aNECbBs5C5IZopfi5Lb8QJZGGpzS8ZUHML5La5wCbrbhLOVSME68qwpT05ROEEOAZPRXFpxZV2wA==}
@@ -10334,6 +10356,7 @@ packages:
     resolution: {integrity: sha512-xaCvneSaeBw/cz8ySmF7ZwGvL0lBjfvqc1LpQ/vcdHEvpLn3Ff1vAvjw+CoGn0802l++5L/pxb7whwcWAw+DUQ==}
     dependencies:
       tinyspy: 2.2.1
+    dev: false
 
   /@vitest/spy@2.0.5:
     resolution: {integrity: sha512-c/jdthAhvJdpfVuaexSrnawxZz6pywlTPe84LUB2m/4t3rl2fTo9NFGBG4oWgaD+FTgDDV8hJ/nibT7IfH3JfA==}
@@ -10371,6 +10394,7 @@ packages:
       diff-sequences: 29.6.3
       loupe: 2.3.7
       pretty-format: 29.7.0
+    dev: false
 
   /@vitest/utils@2.0.5:
     resolution: {integrity: sha512-d8HKbqIcya+GR67mkZbrzhS5kKhtp8dQLcmRZLGTscGVg7yImT82cIrhtn2L8+VujWcy6KZweApgNmPsTAO/UQ==}
@@ -10873,6 +10897,7 @@ packages:
     engines: {node: '>=0.4.0'}
     dependencies:
       acorn: 8.14.1
+    dev: false
 
   /acorn@7.4.1:
     resolution: {integrity: sha512-nQyp0o1/mNdbTO1PO6kHkwSrmgZ0MT/jCCpNiwbUjGoRN4dlBhqJtoQuCnEOKzgTVwg0ZWiCoQy6SxMebQVh8A==}
@@ -11333,6 +11358,7 @@ packages:
 
   /assertion-error@1.1.0:
     resolution: {integrity: sha512-jgsaNduz+ndvGyFt3uSuWqvy4lCnIJiovtouQN5JZHOKCS2QuhEdbcQHFhVksz2N2U9hXJo8odG7ETyWlEeuDw==}
+    dev: false
 
   /assertion-error@2.0.1:
     resolution: {integrity: sha512-Izi8RQcffqCeNVgFigKli1ssklIbpHnCYc6AknXGYoB6grJqyeby7jv12JUQgmTAnIDnbck1uxksT4dzN3PWBA==}
@@ -11478,7 +11504,7 @@ packages:
     resolution: {integrity: sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==}
     dependencies:
       follow-redirects: 1.15.9
-      form-data: 4.0.2
+      form-data: 4.0.3
     transitivePeerDependencies:
       - debug
     dev: false
@@ -11487,7 +11513,7 @@ packages:
     resolution: {integrity: sha512-re4CqKTJaURpzbLHtIi6XpDv20/CnpXOtjRY5/CU32L8gU8ek9UIivcfvSWvmKEngmVbrUtPpdDwWDWL7DNHvg==}
     dependencies:
       follow-redirects: 1.15.9
-      form-data: 4.0.2
+      form-data: 4.0.3
       proxy-from-env: 1.1.0
     transitivePeerDependencies:
       - debug
@@ -12184,6 +12210,7 @@ packages:
       loupe: 2.3.7
       pathval: 1.1.1
       type-detect: 4.1.0
+    dev: false
 
   /chai@5.2.0:
     resolution: {integrity: sha512-mCuXncKXk5iCLhfhwTc0izo0gtEmpz5CtG2y8GiOINBlMVS6v8TMRc5TaLWKS6692m9+dVVfzgeVxR5UxWHTYw==}
@@ -12254,6 +12281,7 @@ packages:
     resolution: {integrity: sha512-iKEoDYaRmd1mxM90a2OEfWhjsjPpYPuQ+lMYsoxB126+t8fw7ySEO48nmDg5COTjxDI65/Y2OWpeEHk3ZOe8zg==}
     dependencies:
       get-func-name: 2.0.2
+    dev: false
 
   /check-error@2.1.1:
     resolution: {integrity: sha512-OAlb+T7V4Op9OwdkjmguYRqncdlx5JiofwOAUkmTF+jNdHwzTaTs4sRAGpzLF3oOz5xAyDGrPgeIDFQmDOTiJw==}
@@ -12643,6 +12671,7 @@ packages:
 
   /confbox@0.1.8:
     resolution: {integrity: sha512-RMtmw0iFkeR4YV+fUOSucriAQNb9g8zFR52MWCtl+cCZOFRNL6zeB395vPzFhEjjn4fMxXudmELnl/KF/WrK6w==}
+    dev: false
 
   /config-chain@1.1.13:
     resolution: {integrity: sha512-qj+f8APARXHrM0hraqXYb2/bOVSV4PvJQlNZ/DVj0QrmNM2q2euizkeuVckQ57J+W0mRH6Hvi+k50M4Jul2VRQ==}
@@ -13407,6 +13436,7 @@ packages:
     engines: {node: '>=6'}
     dependencies:
       type-detect: 4.1.0
+    dev: false
 
   /deep-eql@5.0.2:
     resolution: {integrity: sha512-h5k/5U50IJJFpzfL6nO9jaaumfjO/f2NjK/oYB2Djzm4p9L+3T9qWpZqZ2hAbLPuuYq9wrU08WQyBTL5GbPk5Q==}
@@ -14973,7 +15003,7 @@ packages:
     engines: {node: '>= 10.17.0'}
     hasBin: true
     dependencies:
-      debug: 4.4.1
+      debug: 4.3.4
       get-stream: 5.2.0
       yauzl: 2.10.0
     optionalDependencies:
@@ -15442,13 +15472,14 @@ packages:
       safe-buffer: 5.2.1
     dev: true
 
-  /form-data@4.0.2:
-    resolution: {integrity: sha512-hGfm/slu0ZabnNt4oaRZ6uREyfCj6P4fT/n6A1rGV+Z0VdGXjfOhVUpkn6qVQONHGIFwmveGXyDs75+nr6FM8w==}
+  /form-data@4.0.3:
+    resolution: {integrity: sha512-qsITQPfmvMOSAdeyZ+12I1c+CKSstAFAwu+97zrnWAbIr5u8wfsExUzCesVLC8NgHuRUqNN4Zy6UPWUTRGslcA==}
     engines: {node: '>= 6'}
     dependencies:
       asynckit: 0.4.0
       combined-stream: 1.0.8
       es-set-tostringtag: 2.1.0
+      hasown: 2.0.2
       mime-types: 2.1.35
 
   /formdata-polyfill@4.0.10:
@@ -15650,6 +15681,7 @@ packages:
 
   /get-func-name@2.0.2:
     resolution: {integrity: sha512-8vXOvuE167CtIc3OyItco7N/dpRtBbYOsPsXCz7X/PMnlGjYjSGuZJgM1Y7mmew7BKf9BqvLX2tnOVy1BBUsxQ==}
+    dev: false
 
   /get-intrinsic@1.3.0:
     resolution: {integrity: sha512-9fSjSaos/fRIVIp+xSJlE6lfwhES7LNtKaCBIamHsjr2na1BiABJPo0mOjjz8GJDURarmCPGqaiVg5mfjb98CQ==}
@@ -15746,7 +15778,7 @@ packages:
     dependencies:
       basic-ftp: 5.0.5
       data-uri-to-buffer: 6.0.2
-      debug: 4.4.1
+      debug: 4.3.4
     transitivePeerDependencies:
       - supports-color
 
@@ -17559,7 +17591,7 @@ packages:
       data-urls: 4.0.0
       decimal.js: 10.5.0
       domexception: 4.0.0
-      form-data: 4.0.2
+      form-data: 4.0.3
       html-encoding-sniffer: 3.0.0
       http-proxy-agent: 5.0.0
       https-proxy-agent: 5.0.1
@@ -17892,6 +17924,7 @@ packages:
   /local-pkg@0.4.3:
     resolution: {integrity: sha512-SFppqq5p42fe2qcZQqqEOiVRXl+WCP1MdT6k7BDEW1j++sp5fIY+/fdRQitvKgB5BrBcmrs5m/L0v2FrU5MY1g==}
     engines: {node: '>=14'}
+    dev: false
 
   /locate-app@2.5.0:
     resolution: {integrity: sha512-xIqbzPMBYArJRmPGUZD9CzV9wOqmVtQnaAn3wrj3s6WYW0bQvPI7x+sPYUGmDTYMHefVK//zc6HEYZ1qnxIK+Q==}
@@ -17999,6 +18032,7 @@ packages:
     resolution: {integrity: sha512-zSMINGVYkdpYSOBmLi0D1Uo7JU9nVdQKrHxC8eYlV+9YKK9WePqAlL7lSlorG/U2Fw1w0hTBmaa/jrQ3UbPHtA==}
     dependencies:
       get-func-name: 2.0.2
+    dev: false
 
   /loupe@3.1.3:
     resolution: {integrity: sha512-kkIp7XSkP78ZxJEsSxW3712C6teJVoeHHwgo9zJ380de7IYyJ2ISlxojcH2pC5OFLewESmnRi/+XCDIEEVyoug==}
@@ -19106,6 +19140,7 @@ packages:
       pathe: 2.0.3
       pkg-types: 1.3.1
       ufo: 1.6.1
+    dev: false
 
   /mock-property@1.0.3:
     resolution: {integrity: sha512-2emPTb1reeLLYwHxyVx993iYyCHEiRRO+y8NFXFPL5kl5q14sgTK76cXyEKkeKCHeRw35SfdkUJ10Q1KfHuiIQ==}
@@ -19735,6 +19770,7 @@ packages:
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dependencies:
       yocto-queue: 1.2.1
+    dev: false
 
   /p-locate@4.1.0:
     resolution: {integrity: sha512-R79ZZ/0wAxKGu3oYMlz8jy/kbhsNrS7SKZ7PxEHBgJ5+F2mtFW2fK2cOtBh1cHYkQsbzFV7I+EoRKe6Yt0oK7A==}
@@ -19820,7 +19856,7 @@ packages:
     dependencies:
       '@tootallnate/quickjs-emscripten': 0.23.0
       agent-base: 7.1.3
-      debug: 4.4.1
+      debug: 4.3.4
       get-uri: 6.0.4
       http-proxy-agent: 7.0.2
       https-proxy-agent: 7.0.6
@@ -19959,12 +19995,14 @@ packages:
 
   /pathe@1.1.2:
     resolution: {integrity: sha512-whLdWMYL2TwI08hn8/ZqAbrVemu0LNaNNJZX73O6qaIdCTfXutsLhMkjdENX0qhsQ9uIimo4/aQOmXkoon2nDQ==}
+    dev: false
 
   /pathe@2.0.3:
     resolution: {integrity: sha512-WUjGcAqP1gQacoQe+OBJsFA7Ld4DyXuUIjZ5cc75cLHvJ7dtNsTugphxIADwspS+AraAUePCKrSVtPLFj/F88w==}
 
   /pathval@1.1.1:
     resolution: {integrity: sha512-Dp6zGqpTdETdR63lehJYPeIOqpiNBNtc7BpWSLrOje7UaIsE5aY92r/AunQA7rsXvet3lrJ3JnZX29UPTKXyKQ==}
+    dev: false
 
   /pathval@2.0.0:
     resolution: {integrity: sha512-vE7JKRyES09KiunauX7nd2Q9/L7lhok4smP9RZTDeD4MVs72Dp2qNFVz39Nz5a0FVEW0BJR6C0DYrq6unoziZA==}
@@ -20099,6 +20137,7 @@ packages:
       confbox: 0.1.8
       mlly: 1.7.4
       pathe: 2.0.3
+    dev: false
 
   /playwright-core@1.48.0:
     resolution: {integrity: sha512-RBvzjM9rdpP7UUFrQzRwR8L/xR4HyC1QXMzGYTbf1vjw25/ya9NRAVnXi/0fvFopjebvyPzsmoK58xxeEOaVvA==}
@@ -21145,7 +21184,7 @@ packages:
     engines: {node: '>= 14'}
     dependencies:
       agent-base: 7.1.3
-      debug: 4.4.1
+      debug: 4.3.4
       http-proxy-agent: 7.0.2
       https-proxy-agent: 7.0.6
       lru-cache: 7.18.3
@@ -21160,7 +21199,7 @@ packages:
     engines: {node: '>= 14'}
     dependencies:
       agent-base: 7.1.3
-      debug: 4.4.1
+      debug: 4.3.4
       http-proxy-agent: 7.0.2
       https-proxy-agent: 7.0.6
       lru-cache: 7.18.3
@@ -22860,7 +22899,7 @@ packages:
     engines: {node: '>= 14'}
     dependencies:
       agent-base: 7.1.3
-      debug: 4.4.1
+      debug: 4.3.4
       socks: 2.8.4
     transitivePeerDependencies:
       - supports-color
@@ -23396,6 +23435,7 @@ packages:
     resolution: {integrity: sha512-PugKzOsyXpArk0yWmUwqOZecSO0GH0bPoctLcqNDH9J04pVW3lflYE0ujElBGTloevcxF5MofAOZ7C5l2b+wLg==}
     dependencies:
       acorn: 8.14.1
+    dev: false
 
   /strip-outer@1.0.1:
     resolution: {integrity: sha512-k55yxKHwaXnpYGsOzg4Vl8+tDrWylxDEpknGjhTiZB8dFRU5rTo9CAzeycivxV3s+zlTKwrs6WxMxR95n26kwg==}
@@ -23887,6 +23927,7 @@ packages:
   /tinypool@0.7.0:
     resolution: {integrity: sha512-zSYNUlYSMhJ6Zdou4cJwo/p7w5nmAH17GRfU/ui3ctvjXFErXXkruT4MWW6poDeXgCaIBlGLrfU6TbTXxyGMww==}
     engines: {node: '>=14.0.0'}
+    dev: false
 
   /tinypool@1.1.0:
     resolution: {integrity: sha512-7CotroY9a8DKsKprEy/a14aCCm8jYVmR7aFy4fpkZM8sdpNJbKkixuNjgM50yCmip2ezc8z4N7k3oe2+rfRJCQ==}
@@ -23904,6 +23945,7 @@ packages:
   /tinyspy@2.2.1:
     resolution: {integrity: sha512-KYad6Vy5VDWV4GH3fjpseMQ/XU2BhIYP7Vzd0LG44qRWm/Yt2WCOTicFdvmgo6gWaqooMQCawTtILVQJupKu7A==}
     engines: {node: '>=14.0.0'}
+    dev: false
 
   /tinyspy@3.0.2:
     resolution: {integrity: sha512-n1cw8k1k0x4pgA2+9XrOkFydTerNcJ1zWCO5Nn9scWHTD+5tp8dghT2x1uduQePZTZgd3Tupf+x9BxJjeJi77Q==}
@@ -24141,6 +24183,7 @@ packages:
   /type-detect@4.1.0:
     resolution: {integrity: sha512-Acylog8/luQ8L7il+geoSxhEkazvkslg7PSNKOX59mbB9cOveP5aq9h74Y7YU8yDpJwetzQQrfIwtf4Wp4LKcw==}
     engines: {node: '>=4'}
+    dev: false
 
   /type-fest@0.11.0:
     resolution: {integrity: sha512-OdjXJxnCN1AvyLSzeKIgXTXxV+99ZuXl3Hpo9XpJAv9MBcHrrJOQ5kV7ypXOuQie+AmWG25hLbiKdwYTifzcfQ==}
@@ -24305,6 +24348,7 @@ packages:
 
   /ufo@1.6.1:
     resolution: {integrity: sha512-9a4/uxlTWJ4+a5i0ooc1rU7C7YOw3wT+UGqdeNNHWnOF9qcMBgLRS+4IYUqbczewFx4mLEig6gawh7X6mFlEkA==}
+    dev: false
 
   /uglify-js@2.8.29:
     resolution: {integrity: sha512-qLq/4y2pjcU3vhlhseXGGJ7VbFO4pBANu0kwl8VCa9KEI0V8VfZIx2Fy3w01iSTA/pGwKZSmu/+I4etLNDdt5w==}
@@ -24729,6 +24773,7 @@ packages:
       - sugarss
       - supports-color
       - terser
+    dev: false
 
   /vite-node@3.2.2(@types/node@18.16.15):
     resolution: {integrity: sha512-Xj/jovjZvDXOq2FgLXu8NsY4uHUMWtzVmMC2LkCu9HWdr9Qu1Is5sanX3Z4jOFKdohfaWDnEJWp9pRP0vVpAcA==}
@@ -24750,6 +24795,28 @@ packages:
       - sugarss
       - supports-color
       - terser
+
+  /vite-node@3.2.2(@types/node@18.19.110):
+    resolution: {integrity: sha512-Xj/jovjZvDXOq2FgLXu8NsY4uHUMWtzVmMC2LkCu9HWdr9Qu1Is5sanX3Z4jOFKdohfaWDnEJWp9pRP0vVpAcA==}
+    engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
+    hasBin: true
+    dependencies:
+      cac: 6.7.14
+      debug: 4.4.1
+      es-module-lexer: 1.7.0
+      pathe: 2.0.3
+      vite: 5.4.9(@types/node@18.19.110)
+    transitivePeerDependencies:
+      - '@types/node'
+      - less
+      - lightningcss
+      - sass
+      - sass-embedded
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
+    dev: true
 
   /vite-plugin-babel@1.1.3(@babel/core@7.19.1)(vite@5.4.9):
     resolution: {integrity: sha512-WE8ORQm8530kj0geiDL1r/+P2MaU0b+5wL5E8Jq07aounFwRIUeJXziGiMr2DFQs78vaefB5GRKh257M8Z6gFQ==}
@@ -24910,7 +24977,6 @@ packages:
       rollup: 4.41.1
     optionalDependencies:
       fsevents: 2.3.3
-    dev: true
 
   /vite@6.3.5(@types/node@18.19.110)(yaml@2.1.1):
     resolution: {integrity: sha512-cZn6NDFE7wdTpINgs++ZJ4N49W2vRp8LCKrn3Ob1kYNtOo21vfDoaV5GzBfLU4MovSAB8uNRm4jgzVQZ+mBzPQ==}
@@ -25022,7 +25088,7 @@ packages:
       - universal-cookie
     dev: true
 
-  /vitest-axe@0.1.0(vitest@0.34.6):
+  /vitest-axe@0.1.0(vitest@3.2.2):
     resolution: {integrity: sha512-jvtXxeQPg8R/2ANTY8QicA5pvvdRP4F0FsVUAHANJ46YCDASie/cuhlSzu0DGcLmZvGBSBNsNuK3HqfaeknyvA==}
     peerDependencies:
       vitest: '>=0.16.0'
@@ -25033,7 +25099,7 @@ packages:
       dom-accessibility-api: 0.5.16
       lodash-es: 4.17.21
       redent: 3.0.0
-      vitest: 0.34.6(@vitest/browser@3.0.6)(@vitest/ui@3.0.6)(jsdom@22.1.0)(playwright@1.48.0)(webdriverio@8.24.3)
+      vitest: 3.2.2(@types/node@18.19.110)(@vitest/browser@3.0.6)(@vitest/ui@3.0.6)(jsdom@22.1.0)
     dev: true
 
   /vitest@0.34.6(@vitest/browser@3.0.6)(@vitest/ui@3.0.6)(jsdom@22.1.0)(playwright@1.48.0)(webdriverio@8.24.3):
@@ -25104,6 +25170,7 @@ packages:
       - sugarss
       - supports-color
       - terser
+    dev: false
 
   /vitest@3.2.2(@types/node@18.16.15)(@vitest/browser@3.0.6)(@vitest/ui@3.0.6)(jsdom@22.1.0):
     resolution: {integrity: sha512-fyNn/Rp016Bt5qvY0OQvIUCwW2vnaEBLxP42PmKbNIoasSYjML+8xyeADOPvBe+Xfl/ubIw4og7Lt9jflRsCNw==}
@@ -25170,6 +25237,73 @@ packages:
       - sugarss
       - supports-color
       - terser
+
+  /vitest@3.2.2(@types/node@18.19.110)(@vitest/browser@3.0.6)(@vitest/ui@3.0.6)(jsdom@22.1.0):
+    resolution: {integrity: sha512-fyNn/Rp016Bt5qvY0OQvIUCwW2vnaEBLxP42PmKbNIoasSYjML+8xyeADOPvBe+Xfl/ubIw4og7Lt9jflRsCNw==}
+    engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
+    hasBin: true
+    peerDependencies:
+      '@edge-runtime/vm': '*'
+      '@types/debug': ^4.1.12
+      '@types/node': ^18.0.0 || ^20.0.0 || >=22.0.0
+      '@vitest/browser': 3.2.2
+      '@vitest/ui': 3.2.2
+      happy-dom: '*'
+      jsdom: '*'
+    peerDependenciesMeta:
+      '@edge-runtime/vm':
+        optional: true
+      '@types/debug':
+        optional: true
+      '@types/node':
+        optional: true
+      '@vitest/browser':
+        optional: true
+      '@vitest/ui':
+        optional: true
+      happy-dom:
+        optional: true
+      jsdom:
+        optional: true
+    dependencies:
+      '@types/chai': 5.2.2
+      '@types/node': 18.19.110
+      '@vitest/browser': 3.0.6(@types/node@18.16.15)(playwright@1.48.0)(typescript@5.1.6)(vite@5.4.9)(vitest@3.2.2)(webdriverio@8.24.3)
+      '@vitest/expect': 3.2.2
+      '@vitest/mocker': 3.2.2(vite@5.4.9)
+      '@vitest/pretty-format': 3.2.2
+      '@vitest/runner': 3.2.2
+      '@vitest/snapshot': 3.2.2
+      '@vitest/spy': 3.2.2
+      '@vitest/ui': 3.0.6(vitest@3.2.2)
+      '@vitest/utils': 3.2.2
+      chai: 5.2.0
+      debug: 4.4.1
+      expect-type: 1.2.1
+      jsdom: 22.1.0
+      magic-string: 0.30.17
+      pathe: 2.0.3
+      picomatch: 4.0.2
+      std-env: 3.9.0
+      tinybench: 2.9.0
+      tinyexec: 0.3.2
+      tinyglobby: 0.2.14
+      tinypool: 1.1.0
+      tinyrainbow: 2.0.0
+      vite: 5.4.9(@types/node@18.19.110)
+      vite-node: 3.2.2(@types/node@18.19.110)
+      why-is-node-running: 2.3.0
+    transitivePeerDependencies:
+      - less
+      - lightningcss
+      - msw
+      - sass
+      - sass-embedded
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
+    dev: true
 
   /vlq@1.0.1:
     resolution: {integrity: sha512-gQpnTgkubC6hQgdIcRdYGDSDc+SaujOdyesZQMv6JlfQee/9Mp0Qhnys6WxDWvQnL5WZdT7o2Ul187aSt0Rq+w==}
@@ -25866,6 +26000,7 @@ packages:
   /yocto-queue@1.2.1:
     resolution: {integrity: sha512-AyeEbWOu/TAXdxlV9wmGcR0+yh2j3vYPGOECcIj2S7MkrLyC7ne+oye2BKTItt0ii2PHk4cDy+95+LshzbXnGg==}
     engines: {node: '>=12.20'}
+    dev: false
 
   /yoctocolors-cjs@2.1.2:
     resolution: {integrity: sha512-cYVsTjKl8b+FrnidjibDWskAv7UKOfcwaVZdp/it9n1s9fU3IkgDbhdIRKCW4JDsAlECJY0ytoVPT3sK6kideA==}

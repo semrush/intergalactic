@@ -28,7 +28,7 @@
   },
   "devDependencies": {
 
-    "@semcore/testing-utils": "1.0.0",
+    "@semcore/testing-utils": "workspace:*",
     "@semcore/base-trigger": "*",
     "@semcore/dropdown-menu": "*",
     "@semcore/typography": "*",

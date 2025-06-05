@@ -25,7 +25,7 @@
     "mri": "1.2.0"
   },
   "devDependencies": {
-    "@semcore/testing-utils": "^1.0.0",
+    "@semcore/testing-utils": "workspace:*",
     "babel-plugin-tester": "7.0.1"
   }
 }

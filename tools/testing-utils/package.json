@@ -12,7 +12,7 @@
     "@playwright/test": "1.48.0",
     "@previewjs/plugin-react": "17.1.0",
     "@previewjs/screenshot": "0.3.2",
-    "@semcore/babel-preset-ui": "*",
+    "@semcore/babel-preset-ui": "workspace:*",
     "@testing-library/jest-dom": "6.6.3",
     "@testing-library/react": "16.3.0",
     "@testing-library/user-event": "14.6.1",
@@ -36,7 +36,7 @@
   },
   "peerDependencies": {
     "@guidepup/guidepup": "*",
-    "@semcore/esbuild-plugin-semcore": "*",
+    "@semcore/esbuild-plugin-semcore": "workspace:*",
     "esbuild": "*"
   }
 }

@@ -93,7 +93,7 @@
     "react-dom": "16.8 - 18"
   },
   "devDependencies": {
-    "@semcore/continuous-delivery": "^0.0.1",
+    "@semcore/continuous-delivery": "workspace:*",
     "@semcore/testing-utils": "workspace:*",
     "@types/fs-extra": "9.0.13",
 

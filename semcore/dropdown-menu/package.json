@@ -37,7 +37,7 @@
   "devDependencies": {
 
     "@types/classnames": "2.2.6",
-    "@semcore/testing-utils": "1.0.0",
+    "@semcore/testing-utils": "workspace:*",
     "@semcore/base-trigger": "4.26.1",
     "@semcore/icon": "workspace:*",
     "@semcore/button": "workspace:*"

@@ -25,7 +25,7 @@
     "directory": "semcore/flags"
   },
   "devDependencies": {
-    "@semcore/testing-utils": "1.0.0",
+    "@semcore/testing-utils": "workspace:*",
     "@types/classnames": "2.2.6",
 
     "imagemin": "8.0.1",

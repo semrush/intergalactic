@@ -26,9 +26,9 @@
     "directory": "semcore/icon"
   },
   "devDependencies": {
-    "@semcore/icon-transform-svg": "1.1.0",
+    "@semcore/icon-transform-svg": "workspace:*",
     "@types/classnames": "2.2.6",
-    "@semcore/testing-utils": "1.0.0"
+    "@semcore/testing-utils": "workspace:*"
   },
   "exports": {
     ".": {

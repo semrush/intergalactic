@@ -35,7 +35,7 @@
     "directory": "semcore/bulk-textarea"
   },
   "devDependencies": {
-    "@semcore/testing-utils": "1.0.0",
+    "@semcore/testing-utils": "workspace:*",
     "@types/dompurify": "3.2.0"
   }
 }
