@@ -13,14 +13,10 @@
 ## Install
 
 ```sh
-npm install intergalactic
+npm install @semcore/mini-chart
 ```
 
-## Usage
 
-```jsx
-import MiniChart from 'intergalactic/mini-chart';
-```
 
 ## 👤 Author
 
