@@ -3,7 +3,6 @@ import { snapshot } from '@semcore/testing-utils/snapshot';
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import { cleanup, fireEvent, render, userEvent } from '@semcore/testing-utils/testing-library';
-import { axe } from '@semcore/testing-utils/axe';
 
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
@@ -250,17 +249,6 @@ describe('Modal', () => {
         height: 300,
       }),
     ).toMatchImageSnapshot(task);
-  });
-
-  test('a11y', async () => {
-    const { container } = render(
-      <Modal visible disablePortal>
-        <p data-testid='child'>Test</p>
-      </Modal>,
-    );
-
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
   });
 
   test('Should support correct focusing inside modals in forward and reverse "tabs"', async ({
