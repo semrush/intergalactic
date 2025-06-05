@@ -75,6 +75,8 @@ test.describe('Modal', () => {
     }
   });
 
+
+
   test('Modal inside modal', async ({ page }) => {
     const standPath =
       'stories/components/modal/docs/examples/modal_window_inside_a_modal_window.tsx';
@@ -100,5 +102,22 @@ test.describe('Modal', () => {
       const violations = await getAccessibilityViolations({ page });
       expect(violations).toEqual([]);
     }
+  });
+
+  test('Confirmation modal', async ({ page }) => {
+    const standPath = 'stories/components/patterns/ux-patterms/confirmation-modal-dialog/docs/examples/confirmation-modal-example.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+  
+
+    {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await page.waitForSelector('text=Delete project?');
+      const violations = await getAccessibilityViolations({ page });
+      expect(violations).toEqual([]);
+    }
+
+   
   });
 });
