@@ -21,11 +21,11 @@ SDropdownPopper {
   }
 
   SDropdownItem:not(button) {
-      color: var(--intergalactic-text-primary, #191b23);
+    color: var(--intergalactic-text-primary, #191b23);
 
-      &:hover {
-          background-color: var(--intergalactic-dropdown-menu-item-hover, #f4f5f9);
-      }
+    &:hover {
+      background-color: var(--intergalactic-dropdown-menu-item-hover, #f4f5f9);
+    }
   }
 
   SDropdownItem[isMenuItemCheckbox] {
