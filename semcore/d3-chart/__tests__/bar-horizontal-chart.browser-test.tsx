@@ -1,5 +1,5 @@
-import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import { expect, test } from '@semcore/testing-utils/playwright';
 
 test.describe('Horizontal Bar chart', () => {
   test('Verify Chart.Bar renders and tooltip shown on hover', async ({ page }) => {

@@ -6,10 +6,12 @@ const seed = 0;
  * skip vo tests runs when no files changed
  */
 
-import glob from 'fast-glob';
-import esbuild from 'esbuild';
-import { fastHashCode as hash } from 'fast-hash-code';
 import fs from 'fs/promises';
+
+import esbuild from 'esbuild';
+import glob from 'fast-glob';
+import { fastHashCode as hash } from 'fast-hash-code';
+
 import { esbuildPluginSemcoreSourcesResolve } from '../tools/esbuild-plugin-semcore/src/esbuild-plugin-semcore-sources-resolve';
 
 export const generateVoTestsHash = async () => {
@@ -26,7 +28,7 @@ export const generateVoTestsHash = async () => {
       const lines = content.split('\n');
       for (const line of lines) {
         if (!line.includes('website/docs')) continue;
-        const standPath = line.substring(line.indexOf("'website/docs") + 1, line.lastIndexOf("'"));
+        const standPath = line.substring(line.indexOf('\'website/docs') + 1, line.lastIndexOf('\''));
         if (standPath.endsWith('.jsx') || standPath.endsWith('.tsx')) {
           additionalFiles.push(standPath);
         }

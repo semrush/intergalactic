@@ -1,20 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import { InstantSearch } from 'react-instantsearch/dom';
-import { connectAutoComplete } from 'react-instantsearch/connectors';
+import { ButtonLink } from '@semcore/button';
+import { NoData } from '@semcore/widget-empty';
 import algoliasearch from 'algoliasearch/lite';
+import CloseM from 'intergalactic/icon/Close/m';
+import SearchM from 'intergalactic/icon/Search/m';
+import Input from 'intergalactic/input';
+import { Text } from 'intergalactic/typography';
+import React, { useState, useEffect } from 'react';
+import { connectAutoComplete } from 'react-instantsearch/connectors';
+import { InstantSearch } from 'react-instantsearch/dom';
+
 import IllustrationGroup, {
   IllustrationGroups,
   ListIllustrations,
   IllustrationDetailsPanel,
 } from './illustration-group';
-import Input from 'intergalactic/input';
-import { ButtonLink } from '@semcore/button';
-import { Text } from 'intergalactic/typography';
-import { NoData } from '@semcore/widget-empty';
-import SearchM from 'intergalactic/icon/Search/m';
-import CloseM from 'intergalactic/icon/Close/m';
-import { algoliaConfig } from '../../../algoliaConfig';
 import styles from './styles.module.css';
+import { algoliaConfig } from '../../../algoliaConfig';
 import { logEvent } from '../../.vitepress/theme/amplitude/amplitude';
 
 const searchClient = algoliasearch(algoliaConfig.appName, algoliaConfig.openKey);
@@ -53,7 +54,7 @@ const SuggestSearch = connectAutoComplete(
           onChange={handleChangeValue}
           value={currentRefinement}
           placeholder='What illustration are you looking for?'
-          aria-label={'Search illustrations'}
+          aria-label='Search illustrations'
           aria-describedby='search-message'
         />
         <Input.Addon
@@ -110,29 +111,33 @@ export default function ({ illustrations, json }) {
         setSelectedIllustration={setSelectedIllustration}
         ref={illustrationContainerRef}
       >
-        {inputValue.length ? (
-          filterIllustrations.length ? (
-            <ListIllustrations data={filterIllustrations} aria-label='Search results' />
-          ) : (
-            <NoData
-              type='nothing-found'
-              description='Try searching by illustration or group name, for example "mail" or "chart".'
-              style={{
-                borderRadius: 'var(--intergalactic-rounded-medium)',
-                border: 'solid 1px var(--intergalactic-border-secondary)',
-              }}
-              py={10}
-            />
-          )
-        ) : (
-          <>
-            <IllustrationGroup title='States' />
-            <IllustrationGroup title='Chart types' />
-            <IllustrationGroup title='Data types' />
-            <IllustrationGroup title='Errors' />
-            <IllustrationGroup title='Other' />
-          </>
-        )}
+        {inputValue.length
+          ? (
+              filterIllustrations.length
+                ? (
+                    <ListIllustrations data={filterIllustrations} aria-label='Search results' />
+                  )
+                : (
+                    <NoData
+                      type='nothing-found'
+                      description='Try searching by illustration or group name, for example "mail" or "chart".'
+                      style={{
+                        borderRadius: 'var(--intergalactic-rounded-medium)',
+                        border: 'solid 1px var(--intergalactic-border-secondary)',
+                      }}
+                      py={10}
+                    />
+                  )
+            )
+          : (
+              <>
+                <IllustrationGroup title='States' />
+                <IllustrationGroup title='Chart types' />
+                <IllustrationGroup title='Data types' />
+                <IllustrationGroup title='Errors' />
+                <IllustrationGroup title='Other' />
+              </>
+            )}
         <IllustrationDetailsPanel
           name={selectedIllustration}
           visible={selectedIllustration !== null}

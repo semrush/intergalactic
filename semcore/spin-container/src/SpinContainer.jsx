@@ -1,10 +1,10 @@
-import React from 'react';
-import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import { FadeInOut } from '@semcore/animation';
-import Spin from '@semcore/spin';
-import { Box } from '@semcore/flex-box';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
+import { Box } from '@semcore/flex-box';
+import Spin from '@semcore/spin';
+import React from 'react';
 
 import style from './style/spin-container.shadow.css';
 
@@ -16,6 +16,7 @@ class SpinContainerRoot extends Component {
     theme: 'dark',
     duration: 200,
   };
+
   static enhance = [resolveColorEnhance()];
 
   state = {
@@ -68,16 +69,18 @@ class SpinContainerRoot extends Component {
 
     return sstyled(styles)(
       <SSpinContainer render={Box}>
-        {advancedMode ? (
-          <Children />
-        ) : (
-          <>
-            <SpinContainer.Content>
+        {advancedMode
+          ? (
               <Children />
-            </SpinContainer.Content>
-            <SpinContainer.Overlay />
-          </>
-        )}
+            )
+          : (
+              <>
+                <SpinContainer.Content>
+                  <Children />
+                </SpinContainer.Content>
+                <SpinContainer.Overlay />
+              </>
+            )}
       </SSpinContainer>,
     );
   }

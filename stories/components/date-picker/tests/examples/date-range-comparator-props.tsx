@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
 import { DateRangeComparator } from '@semcore/date-picker';
 import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
+import React, { useState } from 'react';
 
 const Demo = () => {
   const [value, setValue] = useState<{ value?: [Date, Date]; compare?: [Date, Date] }>({
@@ -27,8 +27,8 @@ const Demo = () => {
 
   return (
     <Flex gap={5} flexWrap>
-      <Flex direction="column">
-        <Text tag="label" size={200} htmlFor="date-range-comparator">
+      <Flex direction='column'>
+        <Text tag='label' size={200} htmlFor='date-range-comparator'>
           Date Range Comparator
         </Text>
         <DateRangeComparator
@@ -43,7 +43,7 @@ const Demo = () => {
             value: [new Date(2024, 3, 5), new Date(2024, 3, 10)],
             compare: [new Date(2024, 2, 5), new Date(2024, 2, 10)],
           }}
-          defaultDisplayedPeriod={new Date(2024, 3, 1)} 
+          defaultDisplayedPeriod={new Date(2024, 3, 1)}
           displayedPeriod={displayedPeriod}
           onDisplayedPeriodChange={(date) => {
             setDisplayedPeriod(date);
@@ -62,11 +62,11 @@ const Demo = () => {
           focusedRange={focusedRange}
           onFocusedRangeChange={setFocusedRange}
           unclearable
-        //   disabled={[new Date(2024, 3, 15)]}
-         //disabledErrorText="This date is disabled"
+          //   disabled={[new Date(2024, 3, 15)]}
+          // disabledErrorText="This date is disabled"
           periods={periods}
         >
-          <DateRangeComparator.Trigger mt={2} id="date-range-comparator" onClick={handleTriggerClick} />
+          <DateRangeComparator.Trigger mt={2} id='date-range-comparator' onClick={handleTriggerClick} />
           <DateRangeComparator.Popper />
         </DateRangeComparator>
       </Flex>

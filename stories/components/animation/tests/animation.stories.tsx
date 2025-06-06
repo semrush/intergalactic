@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import FeaturePopoverExample from './examples/animation-feature-popover';
 import AnimationExample from './examples/basic-usage';
 import AccordionCollapseExample from './examples/in-accordion-collapse';
-import FeaturePopoverExample from './examples/animation-feature-popover';
 import ModalExample from './examples/in-modal-fadeinout-slide';
 
 const meta: Meta = {

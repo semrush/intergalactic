@@ -1,6 +1,7 @@
-import { DTUse } from '../DataTable/DataTable.types';
-import { ReactElement } from 'react';
-import { DataTableColumnProps, DTColumn } from './Column.types';
+import type { ReactElement } from 'react';
+
+import type { DataTableColumnProps, DTColumn } from './Column.types';
+import type { DTUse } from '../DataTable/DataTable.types';
 
 export type DataTableGroupProps = {
   title: React.ReactNode;

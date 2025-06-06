@@ -1,8 +1,8 @@
-import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
-
 import Counter from '@semcore/counter';
+import type { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
 
+import { CounterInFiltersTest } from './__tests__/counter_in_filters.test';
 import AnimatedNumberExample from './examples/animated_number';
 import CounterAndTypographyExample from './examples/counter_and_typography';
 import CounterInButtonExample from './examples/counter_in_button';
@@ -11,8 +11,6 @@ import CounterInFiltersExample from './examples/counter_in_filters';
 import CounterInFormsExample from './examples/counter_in_forms';
 import CounterInLimitsExample from './examples/counter_in_limits';
 import CounterInPillsExample from './examples/counter_in_pills';
-
-import { CounterInFiltersTest } from './__tests__/counter_in_filters.test';
 import { playWrapper } from '../../../utils/playWrapper';
 
 const meta: Meta<typeof Counter> = {

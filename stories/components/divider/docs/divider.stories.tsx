@@ -1,9 +1,8 @@
+import Divider from '@semcore/divider';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Divider from '@semcore/divider';
-
-import DividerExample from './examples/divider';
 import CustomColorExample from './examples/custom_color';
+import DividerExample from './examples/divider';
 
 const meta: Meta<typeof Divider> = {
   title: 'Components/Divider/Documentation',

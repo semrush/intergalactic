@@ -1,7 +1,7 @@
-import React from 'react';
 import Button from '@semcore/button';
 import Modal from '@semcore/modal';
 import { Text } from '@semcore/typography';
+import React from 'react';
 
 const html = 'data:text/html,' + encodeURIComponent('<html><body><input /></body></html>');
 
@@ -18,7 +18,7 @@ const Demo = () => {
         <Text size={200} mb={4} tag='p'>
           Your changes will be lost if you don't save them.
         </Text>
-        <iframe title={'test iframe in modal'} src={html} />
+        <iframe title='test iframe in modal' src={html} />
         <Button use='primary' theme='success' size='l' onClick={handleClose}>
           Save changes
         </Button>

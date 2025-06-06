@@ -1,7 +1,7 @@
-import React from 'react';
-import { snapshot } from '@semcore/testing-utils/snapshot';
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
+import { snapshot } from '@semcore/testing-utils/snapshot';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import React from 'react';
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 import { render, fireEvent, cleanup } from '@semcore/testing-utils/testing-library';
 

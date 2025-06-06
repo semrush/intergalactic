@@ -1,8 +1,10 @@
-import React, { PureComponent } from 'react';
+import type React from 'react';
+import { PureComponent } from 'react';
+
+import type { UnknownProperties } from '../../core-types/UnknownProperties';
 import createHoc from '../createHoc';
-import { internalSetState } from '../uncontroll';
 import fire from '../fire';
-import { UnknownProperties } from '../../core-types/UnknownProperties';
+import { internalSetState } from '../uncontroll';
 
 /** @deprecated */
 export interface IEnhancedWithKeyboardFocusInjectedProps
@@ -23,7 +25,7 @@ export type EnhancedWithKeyboardFocusInjectedProps = {
 /** @deprecated */
 export interface IEnhancedWithKeyboardFocusProps
   extends EnhancedWithKeyboardFocusProps,
-    UnknownProperties {}
+  UnknownProperties {}
 export type EnhancedWithKeyboardFocusProps = {
   keyboardFocused?: boolean;
   tabIndex?: number;
@@ -35,7 +37,7 @@ export type EnhancedWithKeyboardFocusProps = {
 /** @deprecated */
 export interface IEnhancedWithKeyboardFocusState
   extends EnhancedWithKeyboardFocusState,
-    UnknownProperties {}
+  UnknownProperties {}
 export type EnhancedWithKeyboardFocusState = {
   keyboardFocused: boolean;
 };

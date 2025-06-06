@@ -8,6 +8,4 @@ export async function WithErrorTest({ canvasElement }: { canvasElement: HTMLElem
   await userEvent.keyboard('{ArrowRight}');
   await userEvent.keyboard('{Enter}');
   await userEvent.keyboard('{Enter}');
-
-  
 }

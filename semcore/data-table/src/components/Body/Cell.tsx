@@ -1,12 +1,12 @@
-import * as React from 'react';
-import { Component, Root, sstyled, createComponent } from '@semcore/core';
 import { Box, Collapse, Flex } from '@semcore/base-components';
-
-import style from './style.shadow.css';
-import { CellPropsInner, DataTableCellProps } from './Cell.types';
+import { Component, Root, sstyled, createComponent } from '@semcore/core';
 import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
-import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
 import { isFocusInside } from '@semcore/core/lib/utils/focus-lock/isFocusInside';
+import * as React from 'react';
+
+import type { CellPropsInner, DataTableCellProps } from './Cell.types';
+import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
+import style from './style.shadow.css';
 
 const DEFAULT_ROW_DURATION = 50;
 
@@ -98,10 +98,10 @@ class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner>
     const duration = Array.isArray(accordionDuration)
       ? [durationPerRow(accordionDuration[0]), durationPerRow(accordionDuration[1])]
       : accordionDuration !== undefined
-      ? durationPerRow(accordionDuration)
-      : rowsLength > 4
-      ? durationPerRow(200)
-      : DEFAULT_ROW_DURATION;
+        ? durationPerRow(accordionDuration)
+        : rowsLength > 4
+          ? durationPerRow(200)
+          : DEFAULT_ROW_DURATION;
 
     let delay;
     const delayIndex = animationExpand ? accordionRowIndex : rows.length - 1 - accordionRowIndex;
@@ -159,8 +159,8 @@ class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner>
         interactive
         duration={duration}
         delay={delay}
-        timingFunction={'linear'}
-        defaultHeight={'100%'}
+        timingFunction='linear'
+        defaultHeight='100%'
         style={style}
         fixed={column.fixed}
       >
@@ -172,7 +172,7 @@ class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner>
           onKeyDown={this.handleKeyDown}
           onFocus={this.onFocusCell}
           name={cellName.toString()}
-          role={'gridcell'}
+          role='gridcell'
           aria-colindex={columnIndex + 1}
           data-grouped-by={scope}
           scope={scope}

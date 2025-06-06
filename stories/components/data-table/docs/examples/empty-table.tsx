@@ -1,7 +1,7 @@
-import React from 'react';
+import Button from '@semcore/button';
 import { DataTable } from '@semcore/data-table';
 import { NoData } from '@semcore/widget-empty';
-import Button from '@semcore/button';
+import React from 'react';
 
 const Demo = () => {
   return (
@@ -12,9 +12,9 @@ const Demo = () => {
           <Button mt={4}>Clear filters</Button>
         </NoData>
       )}
-      aria-label={'Empty table example'}
-      defaultGridTemplateColumnWidth={'auto'}
-      wMax={'800px'}
+      aria-label='Empty table example'
+      defaultGridTemplateColumnWidth='auto'
+      wMax='800px'
       headerProps={{
         sticky: true,
       }}

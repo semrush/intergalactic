@@ -1,11 +1,12 @@
-import React from 'react';
-import { DataStructureHints, PartialDataSummarizationConfig } from './hints';
-import { normalizeLocale } from './locale';
-import { localizedMessages } from './translations/module/__intergalactic-dynamic-locales';
 import { Root, sstyled } from '@semcore/core';
-import styles from '../style/plotA11yModule.shadow.css';
 import { Context as I18nContext, useI18n } from '@semcore/core/lib/utils/enhances/WithI18n';
 import { Box } from '@semcore/flex-box';
+import React from 'react';
+
+import type { DataStructureHints, PartialDataSummarizationConfig } from './hints';
+import { normalizeLocale } from './locale';
+import styles from '../style/plotA11yModule.shadow.css';
+import { localizedMessages } from './translations/module/__intergalactic-dynamic-locales';
 
 let globalWasFocused = false;
 let globalNavWithKeyboard = false;

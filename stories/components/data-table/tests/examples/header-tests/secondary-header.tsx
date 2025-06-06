@@ -1,10 +1,11 @@
-import React from 'react';
-import { DataTable, DataTableSort } from '@semcore/data-table';
+import type { DataTableSort } from '@semcore/data-table';
+import { DataTable } from '@semcore/data-table';
 import Ellipsis from '@semcore/ellipsis';
+import AmazonM from '@semcore/icon/color/Amazon/m';
 import WhatsAppM from '@semcore/icon/color/WhatsApp/m';
 import { Hint } from '@semcore/tooltip';
 import { Text } from '@semcore/typography';
-import AmazonM from '@semcore/icon/color/Amazon/m';
+import React from 'react';
 
 type SortableColumn = Exclude<keyof typeof data[0], 'kd'>;
 
@@ -32,17 +33,19 @@ const Demo = () => {
     <DataTable
       data={sortedData}
       use='secondary'
-      aria-label={'Column expanded'}
+      aria-label='Column expanded'
       hMax={200}
       sort={sort}
       onSortChange={setSort}
-      sideIndents={'wide'}
+      sideIndents='wide'
       columns={[
         {
           name: 'keyword',
           children: (
             <Text noWrap>
-              Keyword <Text color='text-secondary'>(Keyword 1–100)</Text>
+              Keyword
+              {' '}
+              <Text color='text-secondary'>(Keyword 1–100)</Text>
             </Text>
           ),
           gtcWidth: '65px',
@@ -73,7 +76,9 @@ const Demo = () => {
           name: 'md',
           children: (
             <Text>
-              Marketing SEO <Text color='text-secondary'>(1–100)</Text>
+              Marketing SEO
+              {' '}
+              <Text color='text-secondary'>(1–100)</Text>
             </Text>
           ),
           gtcWidth: '90px',

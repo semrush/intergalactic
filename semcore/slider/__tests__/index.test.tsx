@@ -1,9 +1,9 @@
-import * as React from 'react';
-import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
-import Slider from '../src';
-
-import { render, fireEvent, cleanup } from '@semcore/testing-utils/testing-library';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { render, fireEvent, cleanup } from '@semcore/testing-utils/testing-library';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import * as React from 'react';
+
+import Slider from '../src';
 
 describe('slider Dependency imports', () => {
   runDependencyCheckTests('slider');

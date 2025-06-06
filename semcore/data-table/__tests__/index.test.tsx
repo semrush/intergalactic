@@ -1,10 +1,11 @@
+import type { Intergalactic } from '@semcore/core';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, cleanup } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React, { useRef } from 'react';
 import { assertType } from 'vitest';
-import { Intergalactic } from '@semcore/core';
+
 import { DataTable } from '../src';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('data-table Dependency imports', () => {
   runDependencyCheckTests('data-table');
@@ -18,16 +19,16 @@ describe('DataTable', () => {
 
       assertType<JSX.Element>(
         // @ts-expect-error
-        <DataTable aria-label={'table label'} tag={Link} href='https://google.com' xProp1={1} />,
+        <DataTable aria-label='table label' tag={Link} href='https://google.com' xProp1={1} />,
       );
       // @ts-expect-error
-      assertType<JSX.Element>(<DataTable href='https://google.com' aria-label={'table label'} />);
+      assertType<JSX.Element>(<DataTable href='https://google.com' aria-label='table label' />);
     });
     test('typed data', () => {
       assertType<JSX.Element>(
         <DataTable<{ a: number; b: number; c: number }[]>
           data={[{ a: 1, b: 2, c: 3 }]}
-          aria-label={'table label'}
+          aria-label='table label'
           columns={[]}
         />,
       );
@@ -35,7 +36,7 @@ describe('DataTable', () => {
         <DataTable<{ a: string; b: string; c: string }[]>
           // @ts-expect-error
           data={[{ a: 1, b: 2, c: 3 }]}
-          aria-label={'table label'}
+          aria-label='table label'
         />,
       );
     });
@@ -47,6 +48,7 @@ describe('DataTable', () => {
           columns={[]}
           sort={['name', 'asc']}
           onSortChange={(sort, e) => {
+            // eslint-disable-next-line @typescript-eslint/no-unused-expressions
             sort[0]; // should be 'id' | 'name'
           }}
         />,
@@ -60,7 +62,9 @@ describe('DataTable', () => {
           columns={[]}
           selectedRows={[0]}
           onSelectedRowsChange={(rows, e, opts) => {
+            // eslint-disable-next-line @typescript-eslint/no-unused-expressions
             rows; // number[]
+            // eslint-disable-next-line @typescript-eslint/no-unused-expressions
             opts?.row.id; // should be number
           }}
         />,

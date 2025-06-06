@@ -1,11 +1,10 @@
-import type { Meta, StoryObj } from '@storybook/react';
 import SpinContainer from '@semcore/spin-container';
+import type { Meta, StoryObj } from '@storybook/react';
 
+import { UsageinDDTest } from './__tests__/usage-in-dropdowns.test';
 import ContentExample from './examples/usage_in_content';
 import DropDownExample from './examples/usage_in_dropdowns';
-
 import { playWrapper } from '../../../utils/playWrapper';
-import { UsageinDDTest } from './__tests__/usage-in-dropdowns.test';
 
 const meta: Meta<typeof SpinContainer> = {
   title: 'Components/SpinContainer/Documentation',

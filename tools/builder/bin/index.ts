@@ -1,9 +1,10 @@
 #!/usr/bin/env tsm
 
-import execa from 'execa';
-import mri from 'mri';
 import { resolve as resolvePath } from 'path';
 import { fileURLToPath } from 'url';
+
+import execa from 'execa';
+import mri from 'mri';
 
 const argv = mri<{
   source: string;
@@ -32,9 +33,9 @@ const makeCommand: Record<string, (...args: any[]) => string> = {
   BABEL: (output: string, babelArgs: string) =>
     `pnpm babel ${workingDir}/src --out-dir ${workingDir}/lib/${output} ${babelArgs}`,
   CORE_UTILS: (output: string, babelArgs) => {
-    return `pnpm babel ${workingDir}/src/index.ts --out-dir ${workingDir}/lib ${babelArgs} && 
-    pnpm babel ${workingDir}/src/coreFactory.tsx --out-dir ${workingDir}/lib ${babelArgs} && 
-    pnpm babel ${workingDir}/src/utils --out-dir ${workingDir}/lib/utils ${babelArgs} && 
+    return `pnpm babel ${workingDir}/src/index.ts --out-dir ${workingDir}/lib ${babelArgs} &&
+    pnpm babel ${workingDir}/src/coreFactory.tsx --out-dir ${workingDir}/lib ${babelArgs} &&
+    pnpm babel ${workingDir}/src/utils --out-dir ${workingDir}/lib/utils ${babelArgs} &&
     pnpm babel ${workingDir}/src/core-types --out-dir ${workingDir}/lib/core-types ${babelArgs} &&
     pnpm babel ${workingDir}/src/enhancement --out-dir ${workingDir}/lib/enhancement ${babelArgs} &&
     pnpm babel ${workingDir}/src/styled --out-dir ${workingDir}/lib/styled ${babelArgs} &&
@@ -58,7 +59,6 @@ const MAP_BABEL_ENV: Record<string, string> = {
   es6: 'es6',
 };
 
-// biome-ignore lint/suspicious/noConsoleLog:
 console.log(`running builder from dir ${workingDir}\n`);
 
 await runCommand('CLEANUP');

@@ -1,20 +1,19 @@
-import { DOMAttributes, HTMLAttributes } from 'react';
-import { Options, Instance } from '@popperjs/core/lib/types';
-import { Options as OptionsOffset } from '@popperjs/core/lib/modifiers/offset';
-import { Options as OptionsPreventOverflow } from '@popperjs/core/lib/modifiers/preventOverflow';
-import { Options as OptionsArrow } from '@popperjs/core/lib/modifiers/arrow';
-import { Options as OptionsFlip } from '@popperjs/core/lib/modifiers/flip';
-import { Options as OptionsComputeStyles } from '@popperjs/core/lib/modifiers/computeStyles';
-import { Options as OptionsEventListeners } from '@popperjs/core/lib/modifiers/eventListeners';
+import type { Options as OptionsArrow } from '@popperjs/core/lib/modifiers/arrow';
+import type { Options as OptionsComputeStyles } from '@popperjs/core/lib/modifiers/computeStyles';
+import type { Options as OptionsEventListeners } from '@popperjs/core/lib/modifiers/eventListeners';
+import type { Options as OptionsFlip } from '@popperjs/core/lib/modifiers/flip';
+import type { Options as OptionsOffset } from '@popperjs/core/lib/modifiers/offset';
+import type { Options as OptionsPreventOverflow } from '@popperjs/core/lib/modifiers/preventOverflow';
+import type { Options, Instance } from '@popperjs/core/lib/types';
+import type { PropGetterFn, Intergalactic, UnknownProperties } from '@semcore/core';
+import type { UniqueIDProps } from '@semcore/core/lib/utils/uniqueID';
+import type { DOMAttributes } from 'react';
 
-import { PropGetterFn, Intergalactic, UnknownProperties } from '@semcore/core';
-import { OutsideClickProps } from '../outside-click';
-import { PortalProps } from '../portal';
-import { BoxProps } from '../flex-box';
-import { ScaleProps } from '../animation';
-import { NeighborLocationProps } from '../neighbor-location';
-import { UniqueIDProps } from '@semcore/core/lib/utils/uniqueID';
-import { KeyboardFocusProps } from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
+import type { ScaleProps } from '../animation';
+import type { BoxProps } from '../flex-box';
+import type { NeighborLocationProps } from '../neighbor-location';
+import type { OutsideClickProps } from '../outside-click';
+import type { PortalProps } from '../portal';
 
 export type PopperComponent = 'trigger' | 'popper';
 

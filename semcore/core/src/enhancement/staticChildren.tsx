@@ -1,7 +1,8 @@
 import React from 'react';
+
 import assignProps from '../utils/assignProps';
-import pick from '../utils/pick';
 import logger from '../utils/logger';
+import pick from '../utils/pick';
 
 function assign(target: any, source: any) {
   return Object.defineProperties(
@@ -95,7 +96,7 @@ function Enhancement(childComponents: any, createComponent: any, options: any) {
         return acc;
       }, {});
     },
-    context: function (context: any /*, WrapperComponent*/) {
+    context: function (context: any /* , WrapperComponent */) {
       // const getterMethod = getterMethodNameByDisplayName(WrapperComponent.displayName);
       return {
         ...context,

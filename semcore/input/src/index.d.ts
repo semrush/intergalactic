@@ -1,8 +1,8 @@
-import React from 'react';
-import { Intergalactic, PropGetterFn, UnknownProperties } from '@semcore/core';
-import { BoxProps } from '@semcore/flex-box';
-import { NeighborItemProps, NeighborLocationProps } from '@semcore/neighbor-location';
-import { WithAutoFocusEnhanceProps } from '@semcore/core/lib/utils/enhances/autoFocusEnhance';
+import type { Intergalactic, PropGetterFn, UnknownProperties } from '@semcore/core';
+import type { WithAutoFocusEnhanceProps } from '@semcore/core/lib/utils/enhances/autoFocusEnhance';
+import type { BoxProps } from '@semcore/flex-box';
+import type { NeighborItemProps, NeighborLocationProps } from '@semcore/neighbor-location';
+import type React from 'react';
 
 export type InputSize = 'm' | 'l';
 

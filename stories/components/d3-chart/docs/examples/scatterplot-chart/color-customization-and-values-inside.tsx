@@ -1,7 +1,7 @@
-import React from 'react';
 import { Plot, ScatterPlot, XAxis, YAxis } from '@semcore/d3-chart';
-import { scaleLinear } from 'd3-scale';
 import { Text } from '@semcore/typography';
+import { scaleLinear } from 'd3-scale';
+import React from 'react';
 
 const Demo = () => {
   const MARGIN = 40;
@@ -25,20 +25,29 @@ const Demo = () => {
       <XAxis>
         <XAxis.Ticks />
       </XAxis>
-      <ScatterPlot x="x" y="y1" value="value" color="#2BB3FF" valueColor="#008ff8" />
-      <ScatterPlot x="x" y="y2" value="value" color="#59DDAA" valueColor="#00C192" />
+      <ScatterPlot x='x' y='y1' value='value' color='#2BB3FF' valueColor='#008ff8' />
+      <ScatterPlot x='x' y='y2' value='value' color='#59DDAA' valueColor='#00C192' />
       <ScatterPlot.Tooltip>
         {({ index, x, y, value }) => {
           return {
             children: (
               <>
                 <ScatterPlot.Tooltip.Title>Data</ScatterPlot.Tooltip.Title>
-                {/* @ts-ignore */}
-                <Text tag="div">X axis {data[index][x]}</Text>
-                {/* @ts-ignore */}
-                <Text tag="div">Y axis {data[index][y]}</Text>
-                {/* @ts-ignore */}
-                <Text tag="div">Value {data[index][value]}</Text>
+                <Text tag='div'>
+                  X axis
+                  {/* @ts-ignore */}
+                  {data[index][x]}
+                </Text>
+                <Text tag='div'>
+                  Y axis
+                  {/* @ts-ignore */}
+                  {data[index][y]}
+                </Text>
+                <Text tag='div'>
+                  Value
+                  {/* @ts-ignore */}
+                  {data[index][value]}
+                </Text>
               </>
             ),
           };

@@ -1,5 +1,6 @@
-import { mergeChangelogs } from '../tools/changelog-handler/index';
 import fs from 'fs/promises';
+
+import { mergeChangelogs } from '../tools/changelog-handler/index';
 
 try {
   const merge = await mergeChangelogs(process.argv[2], process.argv[3], '', '');
@@ -8,7 +9,6 @@ try {
     throw new Error(`Found ${merge.conflictsCount} conflicts`);
   }
 } catch (error) {
-  // biome-ignore lint/suspicious/noConsoleLog:
   console.log(error);
   process.exit(1);
 }

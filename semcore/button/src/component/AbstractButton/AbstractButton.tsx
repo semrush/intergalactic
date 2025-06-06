@@ -1,13 +1,14 @@
-import React from 'react';
-import { Box } from '@semcore/flex-box';
-import { Hint } from '@semcore/tooltip';
-import NeighborLocation from '@semcore/neighbor-location';
-import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
-import logger from '@semcore/core/lib/utils/logger';
-import SpinButton from './SpinButton';
-import hasLabels from '@semcore/core/lib/utils/hasLabels';
-import { AbstractButtonProps } from './AbstractButton.type';
 import { Component, CORE_INSTANCE, Root, sstyled } from '@semcore/core';
+import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
+import hasLabels from '@semcore/core/lib/utils/hasLabels';
+import logger from '@semcore/core/lib/utils/logger';
+import { Box } from '@semcore/flex-box';
+import NeighborLocation from '@semcore/neighbor-location';
+import { Hint } from '@semcore/tooltip';
+import React from 'react';
+
+import type { AbstractButtonProps } from './AbstractButton.type';
+import SpinButton from './SpinButton';
 
 export const MAP_USE_DEFAULT_THEME: Record<string, string> = {
   primary: 'info',
@@ -116,14 +117,14 @@ export abstract class AbstractButton extends Component<Props, {}, {}> {
     const buttonAriaLabel = title ?? ariaLabel ?? this.state.ariaLabelledByContent ?? '';
 
     const buttonProps: Record<string, any> = {
-      type: 'button',
-      tag: 'button',
+      'type': 'button',
+      'tag': 'button',
       disabled,
       'use:theme': useTheme,
-      ref: this.containerRef,
+      'ref': this.containerRef,
       'text-color': this.getTextColor(),
       'aria-busy': loading,
-      __excludeProps: ['title'],
+      '__excludeProps': ['title'],
     };
 
     const hintProps = {
@@ -141,17 +142,21 @@ export abstract class AbstractButton extends Component<Props, {}, {}> {
             <>
               {/* @ts-ignore */}
               <SInner tag='span' loading={loading}>
-                {AddonLeft ? (
-                  <Button.Addon>
-                    <AddonLeft />
-                  </Button.Addon>
-                ) : null}
+                {AddonLeft
+                  ? (
+                      <Button.Addon>
+                        <AddonLeft />
+                      </Button.Addon>
+                    )
+                  : null}
                 {addonTextChildren(Children, Button.Text, Button.Addon)}
-                {AddonRight ? (
-                  <Button.Addon>
-                    <AddonRight />
-                  </Button.Addon>
-                ) : null}
+                {AddonRight
+                  ? (
+                      <Button.Addon>
+                        <AddonRight />
+                      </Button.Addon>
+                    )
+                  : null}
               </SInner>
               {loading && (
                 <SSpin tag='span'>

@@ -1,7 +1,7 @@
-import React from 'react';
 import Card from '@semcore/card';
-import SettingsM from '@semcore/icon/Settings/m';
 import { DataTable } from '@semcore/data-table';
+import SettingsM from '@semcore/icon/Settings/m';
+import React from 'react';
 
 const tooltipContent = `Hey! Don't forget to place some useful information here.`;
 const data = [
@@ -54,10 +54,10 @@ const Demo = () => (
         This is a description with additional information or insights.
       </Card.Description>
     </Card.Header>
-    <Card.Body p={'0 0 20px 0'}>
+    <Card.Body p='0 0 20px 0'>
       <DataTable
         data={data}
-        aria-label={'Table in card'}
+        aria-label='Table in card'
         columns={[
           { name: 'keyword', children: 'Keyword' },
           { name: 'kd', children: 'KD,%' },

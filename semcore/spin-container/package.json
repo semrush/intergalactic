@@ -30,7 +30,7 @@
     "directory": "semcore/spin-container"
   },
   "devDependencies": {
-    "@types/react": "18.0.21",
+
     "@semcore/testing-utils": "1.0.0"
   }
 }

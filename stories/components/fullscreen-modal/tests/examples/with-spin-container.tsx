@@ -1,8 +1,7 @@
-import React from 'react';
-import FullscreenModal from '@semcore/fullscreen-modal';
 import Button from '@semcore/button';
+import FullscreenModal from '@semcore/fullscreen-modal';
 import SpinContainer from '@semcore/spin-container';
-
+import React from 'react';
 
 const Demo = () => {
   const [visible, setVisible] = React.useState(false);
@@ -18,7 +17,7 @@ const Demo = () => {
         <FullscreenModal.Footer />
 
         <SpinContainer loading size='xxl' aria-live='polite' role='status' h={500}>
-          <FullscreenModal.Body >
+          <FullscreenModal.Body>
 
             <FullscreenModal.Section aria-label='Head content 1'>
 

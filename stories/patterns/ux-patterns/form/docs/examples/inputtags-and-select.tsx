@@ -1,12 +1,12 @@
+import Button from '@semcore/button';
+import Counter from '@semcore/counter';
+import { Flex } from '@semcore/flex-box';
+import InputTags from '@semcore/input-tags/';
+import Select from '@semcore/select';
+import Tooltip from '@semcore/tooltip';
+import { Text } from '@semcore/typography';
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import { Flex } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
-import Select from '@semcore/select';
-import Counter from '@semcore/counter';
-import Tooltip from '@semcore/tooltip';
-import InputTags from '@semcore/input-tags/';
-import Button from '@semcore/button';
 
 const Demo = () => {
   const defaultValues = {
@@ -38,7 +38,7 @@ const Demo = () => {
   const handleAppendTags = (newTags: string[]) => {
     const tags = getValues('emails');
     if (newTags.some((tag) => !isEmailValid(tag))) {
-      setError('emails', { message: "Email isn't valid" });
+      setError('emails', { message: 'Email isn\'t valid' });
       return;
     }
     if (tags.length + newTags.length > 5) {
@@ -51,7 +51,7 @@ const Demo = () => {
 
   const handleInputBlur = (e: React.FocusEvent<HTMLInputElement>) => {
     if (e.target.value && !isEmailValid(e.target.value)) {
-      setError('emails', { message: "Email isn't valid" });
+      setError('emails', { message: 'Email isn\'t valid' });
     }
     setIsFocused(false);
   };
@@ -124,7 +124,9 @@ const Demo = () => {
                 ml={1}
                 size='xl'
                 theme={tags.length < 5 ? '' : 'warning'}
-              >{`${tags.length}/5`}</Counter>
+              >
+                {`${tags.length}/5`}
+              </Counter>
             </Flex>
             <Tooltip
               interaction='none'

@@ -1,19 +1,22 @@
-import React from 'react';
 import { DataTable, ACCORDION, DataTableSort, UNIQ_ROW_KEY } from '@semcore/data-table';
 import Ellipsis, { useResizeObserver } from '@semcore/ellipsis';
 import { NoData } from '@semcore/widget-empty';
+import React from 'react';
 
 type SortableColumn = Exclude<keyof typeof data[0], 'keyword'>;
 const ChartExample1 = () => {
   return (
-      <NoData type='nothing-found' my={7} mx='auto'>
-      </NoData>
+    <NoData type='nothing-found' my={7} mx='auto'>
+    </NoData>
   );
 };
 const Demo = () => {
-
   return (
-    <DataTable aria-label={'Parent'} h={'100%'} data={data}  accordionDuration={900}
+    <DataTable
+      aria-label='Parent'
+      h='100%'
+      data={data}
+      accordionDuration={900}
       columns={[
         { name: 'keyword', children: 'Keyword', gtcWidth: '200px', fixed: 'left' },
         { name: 'kd', children: 'KD,%', gtcWidth: '200px' },
@@ -24,13 +27,14 @@ const Demo = () => {
   );
 };
 
-
 const ChartExample = () => {
   const containerRef = React.useRef(null);
   const containerRect = useResizeObserver(containerRef);
 
   return (
-    <DataTable data={data1} aria-label={'Table title'}
+    <DataTable
+      data={data1}
+      aria-label='Table title'
       columns={[
         { name: 'keyword', children: 'Keyword' },
         { name: 'kd', children: 'KD,%' },

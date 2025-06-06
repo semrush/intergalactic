@@ -1,8 +1,8 @@
-import React from 'react';
 import { Plot, YAxis, XAxis, StackGroupBar, HoverRect } from '@semcore/d3-chart';
-import { scaleLinear, scaleBand } from 'd3-scale';
 import { Box, Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
+import { scaleLinear, scaleBand } from 'd3-scale';
+import React from 'react';
 
 const data = [
   { category: 'Category 1', a: 4, b: 6, c: 3, d: 5 },
@@ -38,7 +38,7 @@ const Demo = () => {
       </XAxis>
 
       {/* Required for tooltip hover area */}
-      <HoverRect x="category" />
+      <HoverRect x='category' />
 
       <HoverRect.Tooltip x='category' wMin={100}>
         {({ xIndex }) => {

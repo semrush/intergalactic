@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import HorizontalStackedBarNegativeExample from './examples/stacked-horizontal-bar/horizontal-stacked-bar-negative';
 import HorizontalStackedBarExample from './examples/stacked-horizontal-bar/horizontal-stacked-bar';
+import HorizontalStackedBarNegativeExample from './examples/stacked-horizontal-bar/horizontal-stacked-bar-negative';
 import LegendAndPatternFillExample from './examples/stacked-horizontal-bar/legend-and-pattern-fill';
 
 const meta: Meta = {

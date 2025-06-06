@@ -1,18 +1,20 @@
 import { dirname as resolveDirname, resolve as resolvePath } from 'path';
+import { fileURLToPath } from 'url';
+
 import fs from 'fs-extra';
 import semver from 'semver';
+
 import { carefulVersionUpdate, log } from './utils';
-import { fileURLToPath } from 'url';
 
 type VersionPatch =
   | {
-      name: string; // @semcore/COMPONENT from package.json
-      version: string;
-    }
+    name: string; // @semcore/COMPONENT from package.json
+    version: string;
+  }
   | {
-      name: string;
-      prerelease: string;
-    };
+    name: string;
+    prerelease: string;
+  };
 
 const dirname = resolveDirname(fileURLToPath(import.meta.url));
 

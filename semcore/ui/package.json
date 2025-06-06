@@ -45,6 +45,7 @@
     "@semcore/format-text": "16.0.0",
     "@semcore/fullscreen-modal": "16.0.0",
     "@semcore/grid": "16.0.0",
+    "@semcore/i18n-unplugin": "16.0.0",
     "@semcore/icon": "16.0.0",
     "@semcore/illustration": "16.0.0",
     "@semcore/inline-edit": "16.0.0",
@@ -85,19 +86,18 @@
     "@semcore/tooltip": "16.0.0",
     "@semcore/typography": "16.0.0",
     "@semcore/widget-empty": "16.0.0",
-    "@semcore/wizard": "16.0.0",
-    "@semcore/i18n-unplugin": "16.0.0"
+    "@semcore/wizard": "16.0.0"
   },
   "peerDependencies": {
     "react": "16.8 - 18",
     "react-dom": "16.8 - 18"
   },
   "devDependencies": {
-    "@semcore/continuous-delivery": "*",
-    "@semcore/testing-utils": "1.0.0",
+    "@semcore/continuous-delivery": "^0.0.1",
+    "@semcore/testing-utils": "workspace:*",
     "@types/fs-extra": "9.0.13",
-    "@types/react": "18.0.21",
-    "acorn": "^8.11.3",
+
+    "acorn": "^8.14.1",
     "acorn-jsx": "^5.3.2",
     "fast-glob": "3.2.11",
     "fs-extra": "9.0.1",

@@ -107,7 +107,7 @@ describe('Tooltip', () => {
   });
 });
 
-//smoke for Hint и DescriptionTooltip
+// smoke for Hint и DescriptionTooltip
 import { Hint, DescriptionTooltip } from '../src';
 
 describe('Hint', () => {

@@ -1,8 +1,8 @@
-import React from 'react';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
+import autoFocusEnhance from '@semcore/core/lib/utils/enhances/autoFocusEnhance';
 import { Box, InvalidStateBox } from '@semcore/flex-box';
 import NeighborLocation from '@semcore/neighbor-location';
-import autoFocusEnhance from '@semcore/core/lib/utils/enhances/autoFocusEnhance';
+import React from 'react';
 
 import style from './style/input.shadow.css';
 
@@ -13,6 +13,7 @@ class Input extends Component {
     size: 'm',
     state: 'normal',
   };
+
   static style = style;
 
   inputRef = React.createRef();
@@ -21,6 +22,7 @@ class Input extends Component {
     event.preventDefault();
     this.inputRef.current?.focus();
   };
+
   handleKeyDown = (event) => {
     if (event.key === 'Enter') {
       setTimeout(() => {
@@ -57,7 +59,7 @@ class Input extends Component {
     } = this.asProps;
 
     return {
-      ref: this.inputRef,
+      'ref': this.inputRef,
       size,
       disabled,
       state,
@@ -101,8 +103,7 @@ class Input extends Component {
               </NeighborLocation>
               <SOutline>{state === 'invalid' && <InvalidStateBox />}</SOutline>
             </SInput>,
-          )
-        }
+          )}
       </NeighborLocation.Detect>
     );
   }
@@ -112,6 +113,7 @@ class Value extends Component {
   static defaultProps = {
     defaultValue: '',
   };
+
   static enhance = [autoFocusEnhance()];
 
   uncontrolledProps() {
@@ -135,8 +137,7 @@ class Value extends Component {
               type='text'
               aria-invalid={state === 'invalid'}
             />,
-          )
-        }
+          )}
       </NeighborLocation.Detect>
     );
   }
@@ -152,8 +153,7 @@ function Addon(props) {
           <SAddon render={Box} neighborLocation={neighborLocation}>
             <Children />
           </SAddon>,
-        )
-      }
+        )}
     </NeighborLocation.Detect>
   );
 }

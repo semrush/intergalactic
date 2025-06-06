@@ -1,5 +1,5 @@
-import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import { expect, test } from '@semcore/testing-utils/playwright';
 
 async function getColumnWidth(page: any, colIndex: any) {
   const column = await page.locator(`[aria-colindex="${colIndex}"][role="columnheader"]`);
@@ -44,7 +44,7 @@ test.describe('One level Header', () => {
     await page.keyboard.press('Tab');
     await expect(secondCell).not.toBeFocused();
 
-    if (browserName === 'firefox') return; //skipped in ff because works unstable in test env
+    if (browserName === 'firefox') return; // skipped in ff because works unstable in test env
     await page.keyboard.press('Shift+Tab');
     await expect(secondCellSecondRow).toBeFocused();
   });

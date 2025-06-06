@@ -1,6 +1,6 @@
-import React from 'react';
-import { TagContainer } from '@semcore/tag';
 import { Box } from '@semcore/flex-box';
+import { TagContainer } from '@semcore/tag';
+import React from 'react';
 
 const Demo = () => {
   const [tags, setTags] = React.useState(['Facebook', 'X (Twitter)', 'Instagram']);

@@ -5,7 +5,7 @@ import ChevronRightM from '@semcore/icon/ChevronRight/m';
 
 const Demo = () => {
   return (
-   <>
+    <>
       <Link ml={4} href='#' size={300}>
         <Link.Addon>
           <CheckM />

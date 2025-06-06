@@ -1,6 +1,6 @@
-import React from 'react';
 import { Plot, Radar, colors, ChartLegend } from '@semcore/d3-chart';
 import { scaleLinear } from 'd3-scale';
+import React from 'react';
 
 const data = {
   categories: ['Variable 1', 'Variable 2', 'Variable 3', 'Variable 4', 'Variable 5', 'Variable 6'],
@@ -9,7 +9,7 @@ const data = {
 };
 
 const lineColors: Record<keyof typeof data, string> = {
-  categories: '', 
+  categories: '',
   data_1: colors['orange-04'],
   data_2: colors['violet-04'],
 };
@@ -23,7 +23,7 @@ const getDefaultLegendItems = () => {
       return {
         id: item,
         label: `Category ${index + 1}`,
-        data: data[item],  
+        data: data[item],
         checked: true,
         color: lineColors[item],
       };
@@ -36,8 +36,8 @@ const Demo = () => {
   const handleChangeVisible = React.useCallback((id: string, isVisible: boolean) => {
     setLegendItems((prevItems) =>
       prevItems.map((item) =>
-        item.id === id ? { ...item, checked: isVisible } : item
-      )
+        item.id === id ? { ...item, checked: isVisible } : item,
+      ),
     );
   }, []);
 
@@ -51,12 +51,12 @@ const Demo = () => {
       <ChartLegend
         items={legendItems}
         patterns
-        aria-label={'Radar chart legend'}
+        aria-label='Radar chart legend'
         onChangeVisibleItem={handleChangeVisible}
       />
       <Plot data={data} width={width} height={height} patterns>
         <Radar scale={scale}>
-          <Radar.Axis dataKey="categories">
+          <Radar.Axis dataKey='categories'>
             <Radar.Axis.Ticks />
             <Radar.Axis.Labels />
           </Radar.Axis>
@@ -68,7 +68,7 @@ const Demo = () => {
                   <Radar.Polygon.Line />
                   <Radar.Polygon.Dots />
                 </Radar.Polygon>
-              )
+              ),
           )}
         </Radar>
       </Plot>

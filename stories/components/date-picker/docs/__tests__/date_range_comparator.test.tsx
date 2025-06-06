@@ -16,5 +16,4 @@ export async function DateRangeComparatorTest({ canvasElement }: { canvasElement
   }
 
   await userEvent.click(triggersMonth);
-
 }

@@ -1,24 +1,24 @@
-import React from 'react';
 import { createComponent, Root, sstyled } from '@semcore/core';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import Divider from '@semcore/divider';
 import { Box, Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
-import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
-import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import { CigaretteChartData, CigaretteChartProps, CigaretteChartType } from './CigaretteChart.type';
 import { scaleBand, scaleLinear } from 'd3-scale';
+import React from 'react';
+
+import type { CigaretteChartData, CigaretteChartProps, CigaretteChartType } from './CigaretteChart.type';
+
 // @ts-ignore
 import { HoverRect, Plot } from '../..';
+import { AbstractChart } from './AbstractChart';
 // @ts-ignore
 import AnimatedClipPath from '../../AnimatedClipPath';
-
-import { AbstractChart } from './AbstractChart';
-import { interpolateValue, scaleToBand } from '../../utils';
-
-import Cigarette from '../Cigarette/Cigarette';
-import { LegendItem } from '../ChartLegend/LegendItem/LegendItem.type';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
-import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import { interpolateValue, scaleToBand } from '../../utils';
+import type { LegendItem } from '../ChartLegend/LegendItem/LegendItem.type';
+import Cigarette from '../Cigarette/Cigarette';
 
 const wMin = 2;
 
@@ -107,7 +107,7 @@ class CigaretteChartComponent extends AbstractChart<
 
           const absWidth = Math.abs(
             this.valueScale(value) -
-              Math.max(this.valueScale(this.valueScale.domain()[0]), this.valueScale(0)),
+            Math.max(this.valueScale(this.valueScale.domain()[0]), this.valueScale(0)),
           );
           const height = scaleToBand(this.categoryScale).bandwidth() - 4;
           const width = value === 0 ? 0 : Math.max(absWidth, wMin * 2) - wMin;
@@ -244,8 +244,8 @@ class CigaretteChartComponent extends AbstractChart<
 
     if (invertAxis) {
       return sstyled(styles)(
-        <SChart render={Flex} gap={6} direction={'column'} __excludeProps={['onClick', 'data']}>
-          <Flex direction={'column'}>
+        <SChart render={Flex} gap={6} direction='column' __excludeProps={['onClick', 'data']}>
+          <Flex direction='column'>
             {header}
             <Plot
               data={data}
@@ -279,7 +279,7 @@ class CigaretteChartComponent extends AbstractChart<
           {this.renderTooltip()}
           {this.renderChart()}
         </Plot>
-        <Flex direction={'column'} gap={2}>
+        <Flex direction='column' gap={2}>
           {header && (
             <>
               <Box>{header}</Box>

@@ -1,9 +1,9 @@
-import React from 'react';
-import { Hint } from '@semcore/tooltip';
-import Link from '@semcore/link';
-import VideoListM from '@semcore/icon/VideoList/m';
-import VideoListL from '@semcore/icon/VideoList/l';
 import { Flex } from '@semcore/flex-box';
+import VideoListL from '@semcore/icon/VideoList/l';
+import VideoListM from '@semcore/icon/VideoList/m';
+import Link from '@semcore/link';
+import { Hint } from '@semcore/tooltip';
+import React from 'react';
 
 const Demo = () => {
   return (
@@ -64,13 +64,13 @@ const Demo = () => {
         <Link addonLeft={VideoListM} aria-label='addonLeft M' href='#' />
         <Link addonLeft={VideoListL} aria-label='addonLeft L' href='#' />
 
-        <Link href='#' tag={Hint} title={'tag={Hint} Go to the next pageM'}>
+        <Link href='#' tag={Hint} title='tag={Hint} Go to the next pageM'>
           <Link.Addon>
             <VideoListM />
           </Link.Addon>
         </Link>
 
-        <Link href='#' tag={Hint} title={'tag={Hint} Go to the next pageL'} color='text-critical'>
+        <Link href='#' tag={Hint} title='tag={Hint} Go to the next pageL' color='text-critical'>
           <Link.Addon>
             <VideoListL />
           </Link.Addon>
@@ -79,7 +79,7 @@ const Demo = () => {
         <Link
           href='#'
           tag={Hint}
-          title={'tag={Hint} Go to the next pageL'}
+          title='tag={Hint} Go to the next pageL'
           color='text-critical'
           disabled
         >

@@ -5,5 +5,4 @@ export async function InfoIconTest({ canvasElement }: { canvasElement: HTMLEleme
 
   await userEvent.keyboard('{Tab}');
   await userEvent.keyboard('{Tab}');
-
 }

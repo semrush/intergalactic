@@ -1,7 +1,9 @@
 const fs = require('fs');
 const path = require('path');
-const semver = require('semver');
+
 const finderPackageJson = require('find-package-json');
+const semver = require('semver');
+
 const parse = require('./process');
 const getColorVars = require('./utils/vars');
 

@@ -5,7 +5,6 @@ import Checkbox from '@semcore/checkbox';
 import StatesExample from './examples/states';
 import GroupsExample from './examples/groups';
 
-
 const meta: Meta<typeof Checkbox> = {
   title: 'Components/Checkbox/Tests',
   component: Checkbox,

@@ -19,7 +19,6 @@ import SynchronousChartsExample from './examples/d3-chart/synchronous-charts';
 import TooltipExample from './examples/d3-chart/tooltip';
 import TooltipControlExample from './examples/d3-chart/tooltip-control';
 
-
 const meta: Meta = {
   title: 'Components/d3Charts/Documentation/D3-Chart',
 };

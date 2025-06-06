@@ -72,7 +72,7 @@ describe('DropdownMenu', () => {
         </DropdownMenu.Trigger>
         <DropdownMenu.Menu>
           <DropdownMenu.Item>
-            <DropdownMenu visible={true} inlineActions placement={'right'}>
+            <DropdownMenu visible={true} inlineActions placement='right'>
               {({ getListProps, getTriggerProps }) => {
                 const listProps = getListProps();
                 const triggerProps = getTriggerProps();
@@ -83,7 +83,7 @@ describe('DropdownMenu', () => {
                       Item 4
                     </DropdownMenu.Item.Content>
                     <Box {...listProps}>
-                      <DropdownMenu.Item tag={Button} aria-label={'Add new'} onClick={spy} />
+                      <DropdownMenu.Item tag={Button} aria-label='Add new' onClick={spy} />
                     </Box>
                   </>
                 );

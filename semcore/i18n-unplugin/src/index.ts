@@ -1,6 +1,7 @@
-import { createUnplugin, UnpluginInstance } from 'unplugin';
-import fs from 'fs/promises';
-import path from 'path';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+
+import { createUnplugin, type UnpluginInstance } from 'unplugin';
 
 type Options = {
   bundleLocales?: string[];

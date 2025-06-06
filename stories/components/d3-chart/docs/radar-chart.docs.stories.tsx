@@ -9,9 +9,8 @@ import LabelLongExample from './examples/radar-chart/label-long';
 import LegendAndPatternFillExample from './examples/radar-chart/legend-and-pattern-fill';
 import RotatedExample from './examples/radar-chart/rotated';
 import ScaleExample from './examples/radar-chart/scale';
-import TooltipExample from './examples/radar-chart/tooltip';
 import TickSizeExample from './examples/radar-chart/tick-size';
-
+import TooltipExample from './examples/radar-chart/tooltip';
 
 const meta: Meta = {
   title: 'Components/d3Charts/Documentation/Radar-Chart',

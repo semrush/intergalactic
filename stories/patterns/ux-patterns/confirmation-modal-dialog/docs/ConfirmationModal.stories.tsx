@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import ConfirmationModalEx from './examples/confirmation-modal-example';
 import { ConfirmationModalDialogTest } from './__tests__/ConfirmationModalDialog.test';
+import ConfirmationModalEx from './examples/confirmation-modal-example';
 import { playWrapper } from '../../../../utils/playWrapper';
 
 const meta: Meta = {

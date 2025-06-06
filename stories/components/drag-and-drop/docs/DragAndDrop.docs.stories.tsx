@@ -1,11 +1,9 @@
+import DnD from '@semcore/drag-and-drop';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import DnD from '@semcore/drag-and-drop';
-
+import { WithDropdownMenuTest } from './__tests__/with_dropdownmenu.test';
 import CardsExample from './examples/with_cards';
 import DropdownMenuExample from './examples/with_dropdownmenu';
-
-import { WithDropdownMenuTest } from './__tests__/with_dropdownmenu.test';
 import { playWrapper } from '../../../utils/playWrapper';
 
 const meta: Meta<typeof DnD> = {

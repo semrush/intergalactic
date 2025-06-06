@@ -1,11 +1,10 @@
-import React from 'react';
 import { Chart } from '@semcore/d3-chart';
+import React from 'react';
 
 type KEY = string;
 
 function Demo() {
   const handleClick = (key: KEY, e: React.SyntheticEvent) => {
-    // biome-ignore lint/suspicious/noConsoleLog:
     console.log('click', key);
   };
 
@@ -15,7 +14,7 @@ function Demo() {
       plotWidth={400}
       plotHeight={28}
       onClick={handleClick}
-      aria-label={'Cigarette chart'}
+      aria-label='Cigarette chart'
     />
   );
 }

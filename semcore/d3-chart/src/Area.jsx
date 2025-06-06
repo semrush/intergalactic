@@ -1,10 +1,14 @@
-import React from 'react';
-import { area, curveLinear, line } from 'd3-shape';
 import { Component, sstyled } from '@semcore/core';
-import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import findComponent from '@semcore/core/lib/utils/findComponent';
-import Dots from './Dots';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import { area, curveLinear, line } from 'd3-shape';
+import React from 'react';
+
+import AnimatedClipPath from './AnimatedClipPath';
 import createElement from './createElement';
+import Dots from './Dots';
+import { PatternFill } from './Pattern';
+import style from './style/area.shadow.css';
 import {
   definedData,
   scaleOfBandwidth,
@@ -12,10 +16,6 @@ import {
   definedNullData,
   interpolateValue,
 } from './utils';
-import AnimatedClipPath from './AnimatedClipPath';
-import { PatternFill } from './Pattern';
-
-import style from './style/area.shadow.css';
 
 class AreaRoot extends Component {
   static displayName = 'Area';

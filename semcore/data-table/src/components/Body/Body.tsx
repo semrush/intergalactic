@@ -1,21 +1,21 @@
-import * as React from 'react';
-import { Component, createComponent, Intergalactic, Root, sstyled } from '@semcore/core';
-import { BodyPropsInner, DataTableBodyProps } from './Body.types';
 import { Box } from '@semcore/base-components';
-import { Row } from './Row';
-
-import style from './style.shadow.css';
-import { Cell } from './Cell';
-import { DataTableRowProps, DTRow, RowPropsInner, UniqRowKey } from './Row.types';
-import { DataTableCellProps } from './Cell.types';
-import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
-import { ACCORDION, ROW_GROUP, ROW_INDEX, UNIQ_ROW_KEY } from '../DataTable/DataTable';
-import ChevronRightM from '@semcore/icon/ChevronRight/m';
 import { ButtonLink } from '@semcore/button';
-import { DTValue } from '../DataTable/DataTable.types';
-import Spin from '@semcore/spin';
-import { isInteractiveElement } from '@semcore/core/lib/utils/isInteractiveElement';
+import { Component, createComponent, type Intergalactic, Root, sstyled } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
+import { isInteractiveElement } from '@semcore/core/lib/utils/isInteractiveElement';
+import ChevronRightM from '@semcore/icon/ChevronRight/m';
+import Spin from '@semcore/spin';
+import * as React from 'react';
+
+import type { BodyPropsInner, DataTableBodyProps } from './Body.types';
+import { Cell } from './Cell';
+import type { DataTableCellProps } from './Cell.types';
+import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
+import { Row } from './Row';
+import type { DataTableRowProps, DTRow, RowPropsInner, UniqRowKey } from './Row.types';
+import style from './style.shadow.css';
+import { ACCORDION, ROW_GROUP, ROW_INDEX, UNIQ_ROW_KEY } from '../DataTable/DataTable';
+import type { DTValue } from '../DataTable/DataTable.types';
 
 const ROWS_BUFFER = 20;
 const APROX_ROWS_ON_PAGE = 20;
@@ -89,6 +89,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, State, [], BodyPropsInn
       this.handleExpandRow(row, index);
     }
   };
+
   handleClickCell = (row: DTRow, index: number) => (e: React.SyntheticEvent<HTMLElement>) => {
     if (!isInteractiveElement(e.target)) {
       this.handleExpandRow(row, index);
@@ -139,8 +140,8 @@ class BodyRoot extends Component<DataTableBodyProps, {}, State, [], BodyPropsInn
 
     const accordionDataGridArea = Array.isArray(row[ACCORDION])
       ? `${gridRowIndex + 1} / 1 / ${gridRowIndex + 1 + row[ACCORDION].length} / ${
-          columns.length + 1
-        }`
+        columns.length + 1
+      }`
       : `${gridRowIndex + 1} / 1 / ${gridRowIndex + 1} / ${columns.length + 1}`;
 
     return {
@@ -284,7 +285,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, State, [], BodyPropsInn
             // @ts-ignore
             expanded={expanded}
             onClick={handleClick}
-            color={'--intergalactic-icon-primary-neutral'}
+            color='--intergalactic-icon-primary-neutral'
             aria-expanded={expanded}
             aria-describedby={props.id}
             aria-controls={expanded ? props.accordionId : undefined}
@@ -436,7 +437,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, State, [], BodyPropsInn
           if (Array.isArray(row)) {
             return sstyled(styles)(
               <SRowGroup
-                role={'rowgroup'}
+                role='rowgroup'
                 key={`gg_${row[0][UNIQ_ROW_KEY]}`}
                 ref={this.handleRef(startIndex + index, row[0])}
               >
@@ -467,9 +468,9 @@ class BodyRoot extends Component<DataTableBodyProps, {}, State, [], BodyPropsInn
             headerHeight={`${headerHeight}px`}
             tabIndex={-1}
             ref={spinnerRef}
-            role={'row'}
+            role='row'
           >
-            <Spin size={'xxl'} role={'gridcell'} />
+            <Spin size='xxl' role='gridcell' />
           </SSpinContainer>
         )}
       </SBody>,

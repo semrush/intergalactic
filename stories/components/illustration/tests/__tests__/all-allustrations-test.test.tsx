@@ -15,7 +15,7 @@ export async function CheckButtonsIllustrations({ canvasElement }: { canvasEleme
       expect(button).toHaveAttribute('aria-expanded', 'false');
 
       const svg = button.querySelector('svg');
-      expect(svg).not.toBeNull(); 
+      expect(svg).not.toBeNull();
 
       if (svg) {
         expect(svg).toBeVisible();

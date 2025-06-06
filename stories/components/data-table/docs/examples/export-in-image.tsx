@@ -1,9 +1,9 @@
-import React from 'react';
-import { Flex } from '@semcore/flex-box';
-import DropdownMenu from '@semcore/dropdown-menu';
 import Button from '@semcore/button';
-import FileExportM from '@semcore/icon/FileExport/m';
 import { DataTable } from '@semcore/data-table';
+import DropdownMenu from '@semcore/dropdown-menu';
+import { Flex } from '@semcore/flex-box';
+import FileExportM from '@semcore/icon/FileExport/m';
+import React from 'react';
 
 const extensions = ['png', 'jpeg', 'webp'];
 
@@ -59,7 +59,7 @@ const Demo = () => {
 
       <DataTable
         data={data}
-        aria-label={'Export in image'}
+        aria-label='Export in image'
         ref={tableRef}
         w={500}
         columns={[
@@ -77,7 +77,7 @@ const Demo = () => {
           </Button.Addon>
           <Button.Text>Export</Button.Text>
         </DropdownMenu.Trigger>
-        <DropdownMenu.Popper wMax='257px' aria-label={'Extensions'}>
+        <DropdownMenu.Popper wMax='257px' aria-label='Extensions'>
           <DropdownMenu.List>
             {extensions.map((name) => (
               <DropdownMenu.Item key={name} onClick={downloadImage(name)}>

@@ -1,10 +1,11 @@
-import React from 'react';
-import dayjs from 'dayjs';
-import { createComponent, Component, Root, sstyled } from '@semcore/core';
-import { Box } from '@semcore/flex-box';
 import Button from '@semcore/button';
-import Divider from '@semcore/divider';
+import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import Divider from '@semcore/divider';
+import { Box } from '@semcore/flex-box';
+import dayjs from 'dayjs';
+import React from 'react';
+
 import {
   Header,
   Next,
@@ -16,9 +17,9 @@ import {
 } from './components';
 import { CalendarDays as Calendar } from './components/Calendar';
 import PickerAbstract from './components/PickerAbstract';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import { formatDDMMYY } from './utils/formatDate';
 import { includesDate } from './utils/includesDate';
-import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 export class DatePickerRoot extends PickerAbstract {
   static displayName = 'DatePicker';

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import SpanNumberExample from './examples/span-number';
 import AutoSpanExample from './examples/auto-span';
+import SpanNumberExample from './examples/span-number';
 
 const meta: Meta = {
   title: 'Components/Grid/Tests',

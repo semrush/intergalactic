@@ -1,16 +1,15 @@
-import React from 'react';
 import { createComponent, Root, Component, sstyled } from '@semcore/core';
-import Popper, { isInputTriggerTag } from '@semcore/popper';
 import capitalizeFirstLetter from '@semcore/core/lib/utils/capitalizeFirstLetter';
-import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-
-import style from './style/dropdown.shadow.css';
+import uniqueIDEnhancement, { useUID } from '@semcore/core/lib/utils/uniqueID';
 import { hasFocusableIn } from '@semcore/core/lib/utils/use/useFocusLock';
-import { DropdownItem } from './DropdownItem';
 import { Flex, Box } from '@semcore/flex-box';
-import { useUID } from '@semcore/core/lib/utils/uniqueID';
+import Popper, { isInputTriggerTag } from '@semcore/popper';
+import React from 'react';
+
+import { DropdownItem } from './DropdownItem';
+import style from './style/dropdown.shadow.css';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 const INTERACTION_TAGS = ['INPUT', 'TEXTAREA'];
 
@@ -27,6 +26,7 @@ class DropdownRoot extends Component {
     locale: 'en',
     interaction: 'click',
   };
+
   static enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages)];
 
   popperRef = React.createRef();
@@ -95,11 +95,11 @@ class DropdownRoot extends Component {
     const { uid, visible, disablePortal, getI18nText } = this.asProps;
 
     return {
-      id: `igc-${uid}-trigger`,
+      'id': `igc-${uid}-trigger`,
       'aria-controls': visible ? `igc-${uid}-popper` : undefined,
-      focusHint: visible && !disablePortal ? getI18nText('triggerHint') : undefined,
+      'focusHint': visible && !disablePortal ? getI18nText('triggerHint') : undefined,
       'aria-expanded': visible ? 'true' : 'false',
-      onKeyDown: this.handlerTriggerKeyDown,
+      'onKeyDown': this.handlerTriggerKeyDown,
       'aria-haspopup': 'dialog',
     };
   }
@@ -169,11 +169,11 @@ function DropdownGroup(props) {
   };
   return sstyled(styles)(
     <>
-      <SDropdownItemContainer notInteractive aria-hidden={'true'} tabindex={-1} size={size}>
+      <SDropdownItemContainer notInteractive aria-hidden='true' tabindex={-1} size={size}>
         <SGroupTitle id={uidTitle}>{title}</SGroupTitle>
         {subTitle && <SGroupHint id={uidSubTitle}>{subTitle}</SGroupHint>}
       </SDropdownItemContainer>
-      <SGroup render={Box} role={'group'} {...groupAriaProps} __excludeProps={['title']}>
+      <SGroup render={Box} role='group' {...groupAriaProps} __excludeProps={['title']}>
         <Children />
       </SGroup>
     </>,

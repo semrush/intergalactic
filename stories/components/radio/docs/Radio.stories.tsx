@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
 import Radio, { RadioGroup } from '@semcore/radio';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import AdditionalPropsInputExample from './examples/additional_props_for_input';
 import RadioGroupExampleExample from './examples/radiogroup_example';

@@ -1,6 +1,6 @@
-import React from 'react';
 import Accordion from '@semcore/accordion';
 import { Box } from '@semcore/flex-box';
+import React from 'react';
 
 const Demo = () => {
   const [value, onChange] = React.useState(null); // or []
@@ -11,7 +11,9 @@ const Demo = () => {
           <Accordion.Item.Toggle pb={2}>
             <Accordion.Item.ToggleButton>
               <Accordion.Item.Chevron mr={2} />
-              Section {index + 1}
+              Section
+              {' '}
+              {index + 1}
             </Accordion.Item.ToggleButton>
           </Accordion.Item.Toggle>
           <Accordion.Item.Collapse>

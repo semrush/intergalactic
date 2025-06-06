@@ -1,13 +1,13 @@
-import React from 'react';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
-import Input from '@semcore/input';
-import { Box } from '@semcore/flex-box';
-import { Hours, Minutes } from './PickerInput';
-import Format from './PickerFormat';
-import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import { Box } from '@semcore/flex-box';
+import Input from '@semcore/input';
+import React from 'react';
 
+import Format from './PickerFormat';
+import { Hours, Minutes } from './PickerInput';
 import style from './style/time-picker.shadow.css';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 const MAP_MERIDIEM = {
   AM: 'PM',
@@ -34,7 +34,7 @@ export function meridiemByHours(hours) {
 }
 
 export function formatHoursTo12(hours /* hours by 24 */) {
-  const nHours = intOrDefault(hours, NaN); // if not (:00)
+  const nHours = intOrDefault(hours, Number.NaN); // if not (:00)
   if (Number.isNaN(nHours)) return hours;
 
   // if not (HH:00)
@@ -45,7 +45,7 @@ export function formatHoursTo12(hours /* hours by 24 */) {
 }
 
 export function formatHoursTo24(hours /* hours by 12 */, meridiem) {
-  const nHours = intOrDefault(hours, NaN); // if not (:00)
+  const nHours = intOrDefault(hours, Number.NaN); // if not (:00)
 
   if (Number.isNaN(nHours)) return hours;
 
@@ -112,7 +112,7 @@ class TimePickerRoot extends Component {
     const { value } = this.asProps;
     const [hours = ''] = value.split(':');
 
-    const nHours = intOrDefault(hours, NaN);
+    const nHours = intOrDefault(hours, Number.NaN);
 
     if (!Number.isNaN(nHours)) {
       this._lastMeridiem = meridiemByHours(nHours);
@@ -195,6 +195,7 @@ class TimePickerRoot extends Component {
   getHoursProps = () => {
     return { ...this._getHoursAndMinutesProps(), ref: this.hoursInputRef };
   };
+
   getMinutesProps = () => {
     return { ...this._getHoursAndMinutesProps(), ref: this.minutesInputRef };
   };
@@ -226,16 +227,16 @@ class TimePickerRoot extends Component {
 
     const label = value
       ? `${title} ${getI18nText('title', {
-          time: `${hours}:${withLeadingZero(minutes)}`,
-          meridiem: is12Hour ? this.meridiem : '',
-        })}`
+        time: `${hours}:${withLeadingZero(minutes)}`,
+        meridiem: is12Hour ? this.meridiem : '',
+      })}`
       : `${title} ${getI18nText('titleEmpty')}`;
 
     return sstyled(styles)(
       <>
         <STimePicker
           render={Input}
-          role={'group'}
+          role='group'
           aria-label={label}
           __excludeProps={['value', 'title']}
         >

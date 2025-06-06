@@ -1,8 +1,9 @@
-import { resolve as resolvePath, dirname as resolveDirname } from 'path';
 import fs from 'fs';
+import { resolve as resolvePath, dirname as resolveDirname } from 'path';
+import { promisify } from 'util';
+
 import pixelmatch from 'pixelmatch';
 import { PNG } from 'pngjs';
-import { promisify } from 'util';
 
 const mkdir = promisify(fs.mkdir);
 const stat = promisify(fs.stat);

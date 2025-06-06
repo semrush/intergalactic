@@ -1,13 +1,13 @@
-import React from 'react';
 import Card from '@semcore/card';
 import {
   ScatterPlotChartSkeleton,
 } from '@semcore/skeleton';
+import React from 'react';
 
 const Demo = () => {
   return (
     <>
-       <Card mb={5}>
+      <Card mb={5}>
         <Card.Header>
           <Card.Title>ScatterPlotChart skeleton</Card.Title>
         </Card.Header>

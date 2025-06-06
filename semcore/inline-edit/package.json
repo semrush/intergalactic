@@ -21,8 +21,7 @@
     "@semcore/flex-box": "16.0.1"
   },
   "devDependencies": {
-    "@semcore/testing-utils": "1.0.0",
-    "@types/react": "18.0.21"
+    "@semcore/testing-utils": "1.0.0"
   },
   "peerDependencies": {
     "@semcore/base-components": "^16.0.0"

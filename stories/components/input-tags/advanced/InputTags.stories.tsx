@@ -1,6 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
-
 import InputTags from '@semcore/input-tags';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import TagsWithAddonsExample from './examples/tags_with_addons';
 

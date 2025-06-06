@@ -1,11 +1,11 @@
-import React from 'react';
 import FeedbackForm from '@semcore/feedback-form';
+import { Flex, Box } from '@semcore/flex-box';
 import Input from '@semcore/input';
 import InputNumber from '@semcore/input-number';
 import Radio, { RadioGroup } from '@semcore/radio';
 import Select from '@semcore/select';
 import { Text } from '@semcore/typography';
-import { Flex, Box } from '@semcore/flex-box';
+import React from 'react';
 
 type Data = {
   title: string;
@@ -38,7 +38,7 @@ const validate = (values: Data) => {
 
 const Demo = () => (
   <FeedbackForm validate={validate} p={1} onSubmit={() => ({})}>
-    <Box tag={'label'} htmlFor='acitivty'>
+    <Box tag='label' htmlFor='acitivty'>
       <Text mb={2} tag='p' size={200}>
         Activity
       </Text>
@@ -59,7 +59,7 @@ const Demo = () => (
       </FeedbackForm.Item>
     </Box>
 
-    <Box tag={'label'} htmlFor='campaign' mt={4}>
+    <Box tag='label' htmlFor='campaign' mt={4}>
       <Text mb={2} tag='p' size={200}>
         Campaign
       </Text>
@@ -74,7 +74,9 @@ const Demo = () => (
                   <Select.Option
                     value={`Company ${ind}`}
                     key={ind}
-                  >{`Company ${ind}`}</Select.Option>
+                  >
+                    {`Company ${ind}`}
+                  </Select.Option>
                 ))}
             </Select.Menu>
           </Select>
@@ -82,7 +84,7 @@ const Demo = () => (
       </FeedbackForm.Item>
     </Box>
 
-    <Box tag={'label'} htmlFor='day' mt={4}>
+    <Box tag='label' htmlFor='day' mt={4}>
       <Text mb={2} tag='p' size={200}>
         Day
       </Text>

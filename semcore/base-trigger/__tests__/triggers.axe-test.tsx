@@ -1,5 +1,6 @@
-import { expect, getAccessibilityViolations, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import { expect, getAccessibilityViolations, test } from '@semcore/testing-utils/playwright';
+
 import { selectOption } from './utils';
 
 test.describe('Filter-Trigger', () => {

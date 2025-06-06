@@ -1,16 +1,16 @@
-import React from 'react';
-import dayjs from 'dayjs';
-import { Component, Root, CORE_INSTANCE, sstyled } from '@semcore/core';
 import Button from '@semcore/button';
-import { Box, Flex } from '@semcore/flex-box';
+import { Component, Root, CORE_INSTANCE, sstyled } from '@semcore/core';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import Divider from '@semcore/divider';
 import Dropdown from '@semcore/dropdown';
-import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import { localizedMessages } from '../translations/__intergalactic-dynamic-locales';
-import { includesDate } from '../utils/includesDate';
-import { formatDDMMYY, formatMMYY } from '../utils/formatDate';
+import { Box, Flex } from '@semcore/flex-box';
+import dayjs from 'dayjs';
+import React from 'react';
 
 import style from '../style/date-picker.shadow.css';
+import { localizedMessages } from '../translations/__intergalactic-dynamic-locales';
+import { formatDDMMYY, formatMMYY } from '../utils/formatDate';
+import { includesDate } from '../utils/includesDate';
 
 const INTERACTION_TAGS = ['INPUT'];
 const INTERACTION_KEYS = ['ArrowDown', 'Enter', ' '];
@@ -97,6 +97,7 @@ class RangePickerAbstract extends Component {
       ],
     };
   }
+
   navigateView = (direction) => {
     const { displayedPeriod } = this.asProps;
     const action = direction >= 1 ? 'add' : 'subtract';
@@ -273,7 +274,6 @@ class RangePickerAbstract extends Component {
               </Box>
               <Box ml={2}>
                 <Picker.Header>
-                  {/* biome-ignore lint/a11y/useValidAriaValues: */}
                   <Picker.Title aria-live={undefined} />
                   <Picker.Next />
                 </Picker.Header>
@@ -317,7 +317,7 @@ class RangePickerAbstract extends Component {
     };
   }
 
-  getTitleProps(props, index) {
+  getTitleProps(_props, index) {
     const { locale, displayedPeriod } = this.asProps;
     return {
       children: new Intl.DateTimeFormat(locale, { month: 'long', year: 'numeric' }).format(
@@ -331,7 +331,7 @@ class RangePickerAbstract extends Component {
     const { navigateStep } = this;
 
     return {
-      onClick: this.bindHandlerNavigateClick(1),
+      'onClick': this.bindHandlerNavigateClick(1),
       getI18nText,
       'aria-label': navigateStep === 'month' ? getI18nText('nextMonth') : getI18nText('nextYear'),
     };
@@ -342,7 +342,7 @@ class RangePickerAbstract extends Component {
     const { navigateStep } = this;
 
     return {
-      onClick: this.bindHandlerNavigateClick(-1),
+      'onClick': this.bindHandlerNavigateClick(-1),
       getI18nText,
       'aria-label': navigateStep === 'month' ? getI18nText('prevMonth') : getI18nText('prevYear'),
     };
@@ -391,11 +391,11 @@ class RangePickerAbstract extends Component {
     } = this.asProps;
     return {
       periods,
-      value: preselectedValue.length ? preselectedValue : value,
-      onChange: this.handleApply,
+      'value': preselectedValue.length ? preselectedValue : value,
+      'onChange': this.handleApply,
       onHighlightedChange,
       onDisplayedPeriodChange,
-      role: 'listbox',
+      'role': 'listbox',
       'aria-label': getI18nText('periods'),
     };
   }
@@ -404,6 +404,7 @@ class RangePickerAbstract extends Component {
     const { value, preselectedValue } = this.asProps;
     return this.handleApply(preselectedValue.length ? preselectedValue : value);
   };
+
   getApplyProps() {
     const { getI18nText } = this.asProps;
     return {

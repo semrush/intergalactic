@@ -1,18 +1,18 @@
-import React from 'react';
 import { createComponent, Component, CREATE_COMPONENT, sstyled, Root } from '@semcore/core';
-import PopperOrigin from '@semcore/popper';
-import { Box } from '@semcore/flex-box';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 import logger from '@semcore/core/lib/utils/logger';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import Portal from '@semcore/portal';
-
-import style from './style/tooltip.shadow.css';
 import {
   useZIndexStacking,
   ZIndexStackingContextProvider,
 } from '@semcore/core/lib/utils/zIndexStacking';
+import { Box } from '@semcore/flex-box';
+import PopperOrigin from '@semcore/popper';
+import Portal from '@semcore/portal';
+import React from 'react';
+
+import style from './style/tooltip.shadow.css';
 
 const Popper = PopperOrigin[CREATE_COMPONENT]();
 
@@ -87,13 +87,13 @@ class TooltipRoot extends Component {
     }
 
     return {
-      id: `igc-${uid}-popper`,
+      'id': `igc-${uid}-popper`,
       theme,
       disablePortal,
       ignorePortalsStacking,
       interaction,
       resolveColor,
-      role: 'tooltip',
+      'role': 'tooltip',
       'aria-live': ariaLive,
       visible,
       timeout,
@@ -101,13 +101,13 @@ class TooltipRoot extends Component {
   }
 
   render() {
-    const { Children, title, offset, forcedAdvancedMode, ...other } = this.asProps;
+    const { Children, title, offset: _offset, forcedAdvancedMode, ...other } = this.asProps;
 
     const advancedMode = forcedAdvancedMode || isAdvanceMode(Children, this.subcomponents);
 
     logger.warn(
       title && advancedMode,
-      "You can't use 'title' and '<Tooltip.Trigger/>/<Tooltip.Popper/>' at the same time",
+      'You can\'t use \'title\' and \'<Tooltip.Trigger/>/<Tooltip.Popper/>\' at the same time',
       other['data-ui-name'] || Tooltip.displayName,
     );
 
@@ -216,6 +216,7 @@ class HintRoot extends TooltipRoot {
     ...defaultProps,
     liveRegion: false,
   };
+
   subcomponents = [Hint.Trigger.displayName, Hint.Popper.displayName];
   defaultChildren = (title, Children, props) => (
     <>
@@ -240,8 +241,8 @@ class HintRoot extends TooltipRoot {
     return {
       ...props,
       'aria-hidden': true,
-      role: undefined,
-      children: this.asProps.title,
+      'role': undefined,
+      'children': this.asProps.title,
     };
   }
 }
@@ -255,6 +256,7 @@ class DescriptionTooltipRoot extends TooltipRoot {
     liveRegion: false,
     interaction: 'click',
   };
+
   popperRef = React.createRef();
   subcomponents = [DescriptionTooltip.Trigger.displayName, DescriptionTooltip.Popper.displayName];
   defaultChildren = (title, Children, props) => (
@@ -286,8 +288,8 @@ class DescriptionTooltipRoot extends TooltipRoot {
       'aria-expanded': visible,
       'aria-describedby': undefined,
       'aria-controls': visible ? `igc-${this.asProps.uid}-popper` : undefined,
-      onKeyDown: this.handleTriggerKeyDown,
-      role: 'button',
+      'onKeyDown': this.handleTriggerKeyDown,
+      'role': 'button',
     };
   }
 

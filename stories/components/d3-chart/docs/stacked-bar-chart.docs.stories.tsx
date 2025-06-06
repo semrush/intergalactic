@@ -5,7 +5,6 @@ import LegendAndPatternFillExample from './examples/stacked-bar-chart/legend-and
 import StackedBarChartExample from './examples/stacked-bar-chart/stacked-bar-chart';
 import StackedGroupedBarExample from './examples/stacked-bar-chart/stacked-grouped-bar';
 
-
 const meta: Meta = {
   title: 'Components/d3Charts/Documentation/Stacked-Bar-Chart',
 };

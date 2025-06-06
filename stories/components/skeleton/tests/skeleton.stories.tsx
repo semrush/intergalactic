@@ -1,19 +1,17 @@
-import type { Meta, StoryObj } from '@storybook/react';
 import Skeleton from '@semcore/skeleton';
+import type { Meta, StoryObj } from '@storybook/react';
 
-import LineChartExample from './examples/skeleton-in-charts/line-chart-skeleton';
+import ObserveParentSizeExample from './examples/observe-parent-size';
 import AreaChartExample from './examples/skeleton-in-charts/area-chart-skeleton';
 import BarChartExample from './examples/skeleton-in-charts/bar-chart-skeleton';
 import BubbleChartExample from './examples/skeleton-in-charts/bubble-chart-skeleton';
 import DonutChartExample from './examples/skeleton-in-charts/donut-chart-skeleton';
 import HistogramChartExample from './examples/skeleton-in-charts/histogram-chart-skeleton';
+import LineChartExample from './examples/skeleton-in-charts/line-chart-skeleton';
 import RadialChartExample from './examples/skeleton-in-charts/radial-tree-chart-skeleton';
 import SkatterplotChartExample from './examples/skeleton-in-charts/skatterplot-chart-skeleton';
 import VennChartExample from './examples/skeleton-in-charts/venn-chart-skeleton';
-
-
 import SkeletonThemesExample from './examples/skeleton-themes';
-import ObserveParentSizeExample from './examples/observe-parent-size';
 
 const meta: Meta<typeof Skeleton> = {
   title: 'Components/Skeleton/Tests',
@@ -58,7 +56,6 @@ export const HistogramChart: Story = {
 export const RadialChart: Story = {
   render: RadialChartExample,
 };
-
 
 export const SkeletonThemes: Story = {
   render: SkeletonThemesExample,

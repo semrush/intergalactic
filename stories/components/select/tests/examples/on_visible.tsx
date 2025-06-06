@@ -1,7 +1,7 @@
-import React from 'react';
 import { Flex } from '@semcore/flex-box';
 import Select from '@semcore/select';
 import { Text } from '@semcore/typography';
+import React from 'react';
 
 const options = Array(6)
   .fill('')
@@ -15,7 +15,6 @@ const Demo = () => {
   const [visible, setVisible] = React.useState(false);
 
   const handleVisibility = (visible: boolean) => {
-    // biome-ignore lint/suspicious/noConsoleLog: <explanation>
     console.log(visible);
 
     setVisible(visible);

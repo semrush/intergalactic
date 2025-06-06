@@ -1,15 +1,12 @@
-
+import { DataTable } from '@semcore/data-table';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { DataTable } from '@semcore/data-table';
-
-import LoadingScrollExample from './examples/table-states-tests/loading-in-scroll';
-import LoadingPaginationExample from './examples/table-states-tests/loading-in-pagination';
 import EmptyStateSortableExample from './examples/table-states-tests/empty-sortable';
+import LoadingPaginationExample from './examples/table-states-tests/loading-in-pagination';
+import LoadingScrollExample from './examples/table-states-tests/loading-in-scroll';
 import LoadingWithScrollAndButtonExample from './examples/table-states-tests/loading-with-button-and-scroll';
-import WidgetEmptyInCellExample from './examples/table-states-tests/widget-empty-in-cell';
 import NothingFoundExample from './examples/table-states-tests/nothing-found';
-
+import WidgetEmptyInCellExample from './examples/table-states-tests/widget-empty-in-cell';
 
 const meta: Meta<typeof DataTable> = {
   title: 'Components/DataTable/Tests/TableStates',

@@ -1,7 +1,7 @@
-import { Intergalactic, UnknownProperties } from '@semcore/core';
-import { Box, FlexProps } from '@semcore/flex-box';
-import { TIllustrationNamesWidgetEmpty } from '@semcore/illustration';
-import { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import type { Intergalactic, UnknownProperties } from '@semcore/core';
+import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import type { Box, FlexProps } from '@semcore/flex-box';
+import type { TIllustrationNamesWidgetEmpty } from '@semcore/illustration';
 
 export type iconNamesWidgetEmpty = TIllustrationNamesWidgetEmpty;
 

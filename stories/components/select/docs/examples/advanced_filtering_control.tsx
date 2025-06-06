@@ -1,8 +1,7 @@
-import React from 'react';
+import { ScreenReaderOnly, Flex } from '@semcore/flex-box';
 import Select, { InputSearch } from '@semcore/select';
-import { ScreenReaderOnly } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
-import { Flex } from '@semcore/flex-box';
+import React from 'react';
 
 const Demo = () => {
   const [filter, setFilter] = React.useState('');
@@ -21,7 +20,7 @@ const Demo = () => {
       </Text>
       <Select placeholder='Select a fruit'>
         <Select.Trigger id='options-filtering-advanced' mr='auto' mt={2} />
-        <Select.Popper aria-label={'Fruit options with search'}>
+        <Select.Popper aria-label='Fruit options with search'>
           <InputSearch value={filter} onChange={setFilter}>
             <InputSearch.SearchIcon />
             <InputSearch.Value aria-describedby={filter ? 'search-result-advanced' : undefined} />
@@ -31,21 +30,28 @@ const Demo = () => {
               }}
             />
           </InputSearch>
-          <Select.List hMax={'224px'}>
+          <Select.List hMax='224px'>
             {options.map(({ value, label }) => (
               <Select.Option value={value} key={value}>
                 {label}
               </Select.Option>
             ))}
-            {options.length ? (
-              <ScreenReaderOnly id='search-result-advanced' aria-hidden={'true'}>
-                {options.length} result{options.length > 1 && 's'} found
-              </ScreenReaderOnly>
-            ) : (
-              <Select.OptionHint id='search-result-advanced' key='Nothing'>
-                Nothing found
-              </Select.OptionHint>
-            )}
+            {options.length
+              ? (
+                  <ScreenReaderOnly id='search-result-advanced' aria-hidden='true'>
+                    {options.length}
+                    {' '}
+                    result
+                    {options.length > 1 && 's'}
+                    {' '}
+                    found
+                  </ScreenReaderOnly>
+                )
+              : (
+                  <Select.OptionHint id='search-result-advanced' key='Nothing'>
+                    Nothing found
+                  </Select.OptionHint>
+                )}
           </Select.List>
         </Select.Popper>
       </Select>

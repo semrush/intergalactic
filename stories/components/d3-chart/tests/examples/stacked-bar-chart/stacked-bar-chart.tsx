@@ -1,8 +1,8 @@
-import React from 'react';
 import { Plot, StackBar, YAxis, XAxis, HoverRect } from '@semcore/d3-chart';
-import { scaleLinear, scaleBand } from 'd3-scale';
 import { Box, Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
+import { scaleLinear, scaleBand } from 'd3-scale';
+import React from 'react';
 
 const Demo = () => {
   const MARGIN = 40;
@@ -38,9 +38,9 @@ const Demo = () => {
       </XAxis>
 
       {/* Add this for tooltip interaction */}
-      <HoverRect x="bar" />
+      <HoverRect x='bar' />
 
-      <HoverRect.Tooltip x="bar" wMin={100}>
+      <HoverRect.Tooltip x='bar' wMin={100}>
         {({ xIndex }) => {
           const item = data[xIndex];
           return {

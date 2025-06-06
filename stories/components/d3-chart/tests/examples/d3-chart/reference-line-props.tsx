@@ -1,5 +1,3 @@
-import React from 'react';
-import { scaleLinear, scaleBand } from 'd3-scale';
 import {
   Plot,
   ReferenceLine,
@@ -8,6 +6,8 @@ import {
   XAxis,
   YAxis,
 } from '@semcore/d3-chart';
+import { scaleLinear, scaleBand } from 'd3-scale';
+import React from 'react';
 
 const Demo = () => {
   const MARGIN = 40;
@@ -26,37 +26,37 @@ const Demo = () => {
 
   return (
     <>
-    <Plot data={dataBar} scale={[xScale, yScale]} width={width} height={height}>
-      <YAxis>
-        <YAxis.Ticks />
-      </YAxis>
-      <XAxis>
-        <XAxis.Ticks />
-      </XAxis>
-      <ReferenceLine title='Left data' value={dataBar[0].category} />
-      <ReferenceStripes value={dataBar[0].category} endValue={dataBar[1].category} />
-      <ReferenceLine title='Right data' position='right' value={dataBar[1].category} />
-      <ReferenceLine title='Top data' position='top' value={9} />
-      <ReferenceLine title='Bottom data' position='bottom' value={3} />
-      <ReferenceBackground value={dataBar[3].category} endValue={dataBar[4].category} />
-    </Plot>
+      <Plot data={dataBar} scale={[xScale, yScale]} width={width} height={height}>
+        <YAxis>
+          <YAxis.Ticks />
+        </YAxis>
+        <XAxis>
+          <XAxis.Ticks />
+        </XAxis>
+        <ReferenceLine title='Left data' value={dataBar[0].category} />
+        <ReferenceStripes value={dataBar[0].category} endValue={dataBar[1].category} />
+        <ReferenceLine title='Right data' position='right' value={dataBar[1].category} />
+        <ReferenceLine title='Top data' position='top' value={9} />
+        <ReferenceLine title='Bottom data' position='bottom' value={3} />
+        <ReferenceBackground value={dataBar[3].category} endValue={dataBar[4].category} />
+      </Plot>
 
-    <Plot data={dataBar} scale={[xScale, yScale]} width={width} height={height}>
-      <YAxis>
-        <YAxis.Ticks />
-      </YAxis>
-      <XAxis>
-        <XAxis.Ticks />
-      </XAxis>
-      <ReferenceLine title='Left data' value={dataBar[0].category} />
-      <ReferenceStripes value={dataBar[0].category}  endValue={dataBar[2].category} />
-      <ReferenceLine title='Right data' position='right' value={dataBar[1].category} />
-      <ReferenceLine title='Top data' position='top' value={9} />
-      <ReferenceLine >
-        <ReferenceLine.Title position='bottom' value={3}> ReferenceLine.Title</ReferenceLine.Title>
+      <Plot data={dataBar} scale={[xScale, yScale]} width={width} height={height}>
+        <YAxis>
+          <YAxis.Ticks />
+        </YAxis>
+        <XAxis>
+          <XAxis.Ticks />
+        </XAxis>
+        <ReferenceLine title='Left data' value={dataBar[0].category} />
+        <ReferenceStripes value={dataBar[0].category} endValue={dataBar[2].category} />
+        <ReferenceLine title='Right data' position='right' value={dataBar[1].category} />
+        <ReferenceLine title='Top data' position='top' value={9} />
+        <ReferenceLine>
+          <ReferenceLine.Title position='bottom' value={3}> ReferenceLine.Title</ReferenceLine.Title>
         </ReferenceLine>
-      <ReferenceBackground value={dataBar[2].category}  endValue={dataBar[4].category} />
-    </Plot>
+        <ReferenceBackground value={dataBar[2].category} endValue={dataBar[4].category} />
+      </Plot>
     </>
   );
 };

@@ -1,8 +1,8 @@
-import React from 'react';
 import { Plot, Line, XAxis, YAxis, HoverLine, minMax } from '@semcore/d3-chart';
 import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import { scaleLinear, scaleTime } from 'd3-scale';
+import React from 'react';
 
 function formatDate(value: any, options: any) {
   return new Intl.DateTimeFormat('en', options).format(value);
@@ -74,6 +74,5 @@ const data = Array(10)
       line: Math.abs(Math.sin(Math.exp(i))) * 10,
     };
   });
-
 
 export default Demo;

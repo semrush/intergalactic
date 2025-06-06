@@ -1,5 +1,6 @@
+import type { PlotSummarizerConfig } from '@semcore/d3-chart';
+import { Chart } from '@semcore/d3-chart';
 import React from 'react';
-import { Chart, PlotSummarizerConfig } from '@semcore/d3-chart';
 const data = {
   Cats: 3524,
   Dogs: 1344,
@@ -26,7 +27,7 @@ function Demo() {
       plotHeight={28}
       showLegend={true}
       a11yAltTextConfig={a11yAltTextConfig}
-      aria-label={'Cigarette chart'}
+      aria-label='Cigarette chart'
     />
   );
 }

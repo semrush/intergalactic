@@ -1,18 +1,18 @@
-import React from 'react';
-import { Hint } from '@semcore/tooltip';
-import HomePlatform from '@semcore/icon/platform/HomePlatform';
-import SEOToolkit from '@semcore/icon/platform/SEOToolkit';
-import TrafficMarketToolkit from '@semcore/icon/platform/TrafficMarketToolkit';
-import LocalToolkit from '@semcore/icon/platform/LocalToolkit';
-import SocialToolkit from '@semcore/icon/platform/SocialToolkit';
-import ContentToolkit from '@semcore/icon/platform/ContentToolkit';
-import AdsToolkit from '@semcore/icon/platform/AdsToolkit';
-import ReportsToolkit from '@semcore/icon/platform/ReportsToolkit';
-import AppCenter from '@semcore/icon/platform/AppCenter';
-import AIToolkit from '@semcore/icon/platform/AIToolkit';
-import PRToolkit from '@semcore/icon/platform/PRToolkit';
-import EnterpriseSolutions from '@semcore/icon/platform/EnterpriseSolutions';
 import { Flex } from '@semcore/flex-box';
+import AdsToolkit from '@semcore/icon/platform/AdsToolkit';
+import AIToolkit from '@semcore/icon/platform/AIToolkit';
+import AppCenter from '@semcore/icon/platform/AppCenter';
+import ContentToolkit from '@semcore/icon/platform/ContentToolkit';
+import EnterpriseSolutions from '@semcore/icon/platform/EnterpriseSolutions';
+import HomePlatform from '@semcore/icon/platform/HomePlatform';
+import LocalToolkit from '@semcore/icon/platform/LocalToolkit';
+import PRToolkit from '@semcore/icon/platform/PRToolkit';
+import ReportsToolkit from '@semcore/icon/platform/ReportsToolkit';
+import SEOToolkit from '@semcore/icon/platform/SEOToolkit';
+import SocialToolkit from '@semcore/icon/platform/SocialToolkit';
+import TrafficMarketToolkit from '@semcore/icon/platform/TrafficMarketToolkit';
+import { Hint } from '@semcore/tooltip';
+import React from 'react';
 
 const Demo = () => {
   return (

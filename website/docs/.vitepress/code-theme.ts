@@ -1,4 +1,4 @@
-import { ThemeRegistrationAny } from 'shiki/core';
+import type { ThemeRegistrationAny } from 'shiki/core';
 
 const lightTheme: ThemeRegistrationAny = {
   colors: {
@@ -24,7 +24,7 @@ const lightTheme: ThemeRegistrationAny = {
     'checkbox.background': '#fafbfc',
     'checkbox.border': '#d1d5da',
     'debugToolBar.background': '#fff',
-    descriptionForeground: '#6a737d',
+    'descriptionForeground': '#6a737d',
     'diffEditor.insertedTextBackground': '#34d05822',
     'diffEditor.removedTextBackground': '#c2004622',
     'dropdown.background': '#fafbfc',
@@ -72,9 +72,9 @@ const lightTheme: ThemeRegistrationAny = {
     'editorWarning.foreground': '#f9c513',
     'editorWhitespace.foreground': '#d1d5da',
     'editorWidget.background': '#f6f8fa',
-    errorForeground: '#c20046',
-    focusBorder: '#2188ff',
-    foreground: '#444d56',
+    'errorForeground': '#c20046',
+    'focusBorder': '#2188ff',
+    'foreground': '#444d56',
     'gitDecoration.addedResourceForeground': '#28a745',
     'gitDecoration.conflictingResourceForeground': '#d85d00',
     'gitDecoration.deletedResourceForeground': '#c20046',
@@ -524,7 +524,7 @@ const darkTheme: ThemeRegistrationAny = {
     'checkbox.background': '#444d56',
     'checkbox.border': '#1b1f23',
     'debugToolBar.background': '#2b3036',
-    descriptionForeground: '#959da5',
+    'descriptionForeground': '#959da5',
     'diffEditor.insertedTextBackground': '#28a74530',
     'diffEditor.removedTextBackground': '#d73a4930',
     'dropdown.background': '#2f363d',
@@ -572,9 +572,9 @@ const darkTheme: ThemeRegistrationAny = {
     'editorWarning.foreground': '#ffea7f',
     'editorWhitespace.foreground': '#444d56',
     'editorWidget.background': '#1f2428',
-    errorForeground: '#f97583',
-    focusBorder: '#005cc5',
-    foreground: '#d1d5da',
+    'errorForeground': '#f97583',
+    'focusBorder': '#005cc5',
+    'foreground': '#d1d5da',
     'gitDecoration.addedResourceForeground': '#34d058',
     'gitDecoration.conflictingResourceForeground': '#ffab70',
     'gitDecoration.deletedResourceForeground': '#ea4a5a',

@@ -1,9 +1,11 @@
-import Git from 'simple-git';
 import { execSync } from 'child_process';
+
+import Git from 'simple-git';
+
+import type { VersionPatch } from '../makeVersionPatches';
 import { log, prerelaseSuffix } from '../utils';
-import { VersionPatch } from '../makeVersionPatches';
-import { NpmUtils } from './npmUtils';
 import { allowedScopes } from './allowedScopes';
+import { NpmUtils } from './npmUtils';
 
 const git = Git();
 
@@ -111,7 +113,6 @@ export const gitUtils = {
     try {
       await git.pull('origin', branch, { '--rebase': 'true' });
     } catch (err) {
-      // biome-ignore lint/suspicious/noConsoleLog:
       console.log(await git.status());
       throw err;
     }

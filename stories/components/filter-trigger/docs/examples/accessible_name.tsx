@@ -1,7 +1,7 @@
-import React from 'react';
 import { FilterTrigger } from '@semcore/base-trigger';
-import Select from '@semcore/select';
 import { Flex } from '@semcore/flex-box';
+import Select from '@semcore/select';
+import React from 'react';
 
 const Demo = () => {
   const [material, setMaterial] = React.useState([]);

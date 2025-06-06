@@ -1,6 +1,6 @@
-import React from 'react';
-import { AnimatedNumber } from '@semcore/counter';
 import Button from '@semcore/button';
+import { AnimatedNumber } from '@semcore/counter';
+import React from 'react';
 
 const Demo = () => {
   const [value, setValue] = React.useState(20);

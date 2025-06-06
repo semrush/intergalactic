@@ -1,6 +1,7 @@
-import React from 'react';
-import { ChartLegend, LegendItem } from '@semcore/d3-chart';
 import { useColorResolver } from '@semcore/core/lib/utils/use/useColorResolver';
+import type { LegendItem } from '@semcore/d3-chart';
+import { ChartLegend } from '@semcore/d3-chart';
+import React from 'react';
 
 const data = [...Array(5).keys()].map((d, i) => ({
   x: i,
@@ -11,7 +12,7 @@ const data = [...Array(5).keys()].map((d, i) => ({
   Line5: Math.random() * 10,
 }));
 
-const Shape = (props:any) => {
+const Shape = (props: any) => {
   const colorResolver = useColorResolver();
 
   return (
@@ -44,7 +45,7 @@ const Demo = () => {
 
   return (
     <div>
-      <ChartLegend items={lines} aria-label={'Chart legend aria label'}>
+      <ChartLegend items={lines} aria-label='Chart legend aria label'>
         <ChartLegend.LegendItem>
           <ChartLegend.LegendItem.Shape style={{ background: 'transparent' }}>
             {(props) => {

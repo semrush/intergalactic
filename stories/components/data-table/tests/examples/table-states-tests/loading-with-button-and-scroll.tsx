@@ -1,7 +1,7 @@
-import React from 'react';
 import { DataTable } from '@semcore/data-table';
 import Button from '@semcore/ui/button';
 import { ScreenReaderOnly } from '@semcore/ui/flex-box';
+import React from 'react';
 
 const Demo = (): any => {
   const [loading, setLoading] = React.useState(true);
@@ -26,14 +26,17 @@ const Demo = (): any => {
       <ScreenReaderOnly role='status' aria-live='polite'>
         {message}
       </ScreenReaderOnly>
-      <DataTable data={data} aria-label={'Loading using SpinContainer'} loading={loading}
-                 h={150}
-                 columns={[
-                   {name: 'keyword', children: 'Keyword'},
-                   {name: 'kd', children: 'KD,%'},
-                   {name: 'cpc', children: 'CPC'},
-                   {name: 'vol', children: 'Vol.'},
-                 ]}
+      <DataTable
+        data={data}
+        aria-label='Loading using SpinContainer'
+        loading={loading}
+        h={150}
+        columns={[
+          { name: 'keyword', children: 'Keyword' },
+          { name: 'kd', children: 'KD,%' },
+          { name: 'cpc', children: 'CPC' },
+          { name: 'vol', children: 'Vol.' },
+        ]}
       />
       <Button onClick={toggleLoading} mt={3}>
         {loading ? 'Stop loading' : 'Start loading'}

@@ -1,6 +1,6 @@
-import React from 'react';
 import { createComponent, Component } from '@semcore/core';
 import propsForElement from '@semcore/core/lib/utils/propsForElement';
+import React from 'react';
 
 class AnimatedClipPath extends Component {
   static defaultProps = {
@@ -11,7 +11,7 @@ class AnimatedClipPath extends Component {
   };
 
   render() {
-    const { id, transition, tag: Tag, style, className, ...other } = this.asProps;
+    const { id, transition: _transition, tag: Tag, style: _style, className: _className, ...other } = this.asProps;
     const duration =
       typeof this.asProps.duration === 'number'
         ? `${this.asProps.duration}ms`

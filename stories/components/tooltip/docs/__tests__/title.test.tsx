@@ -5,5 +5,4 @@ export async function TitleTest({ canvasElement }: { canvasElement: HTMLElement 
 
   await userEvent.keyboard('{Tab}');
   await userEvent.keyboard('{Tab}');
-
 }

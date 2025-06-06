@@ -1,8 +1,9 @@
-import React from 'react';
 import { createComponent, Component, Root, register } from '@semcore/core';
 import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
 import isNode from '@semcore/core/lib/utils/isNode';
-import {
+import React from 'react';
+
+import type {
   NeighborItemProps,
   NeighborLocationUnion,
   NeighborLocationDetectProps,
@@ -18,6 +19,7 @@ const Context = register.get(
 function childrenWithoutFragment(children: React.ReactNode) {
   return React.Children.toArray(children).reduce<React.ReactNode[]>((acc, node) => {
     if (React.isValidElement(node) && node.type === React.Fragment) {
+      // eslint-disable-next-line prefer-spread
       acc.push.apply(acc, childrenWithoutFragment(node.props.children));
     } else {
       acc.push(node);

@@ -1,6 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
-
 import Icon from '@semcore/icon';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import BasicUsageExample from './examples/basic-usage';
 import CustomColorExample from './examples/custom-color';

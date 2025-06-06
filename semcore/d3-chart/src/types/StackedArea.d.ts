@@ -1,8 +1,9 @@
-import { UnknownProperties } from '@semcore/core';
-import { Context } from './context';
-import Area from './Area';
-import { IntergalacticD3Component } from './Plot';
-import { PatternsConfig } from './Pattern';
+import type { UnknownProperties } from '@semcore/core';
+
+import type Area from './Area';
+import type { Context } from './context';
+import type { PatternsConfig } from './Pattern';
+import type { IntergalacticD3Component } from './Plot';
 
 /** @deprecated */
 export interface IStackedAreaProps extends StackedAreaProps, UnknownProperties {}

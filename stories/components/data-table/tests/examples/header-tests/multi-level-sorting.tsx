@@ -1,9 +1,10 @@
-import React from 'react';
-import { DataTable, DataTableSort } from '@semcore/data-table';
-import { Hint } from '@semcore/tooltip';
-import { Text } from '@semcore/typography';
+import type { DataTableSort } from '@semcore/data-table';
+import { DataTable } from '@semcore/data-table';
 import Ellipsis from '@semcore/ellipsis';
 import AmazonM from '@semcore/icon/color/Amazon/m';
+import { Hint } from '@semcore/tooltip';
+import { Text } from '@semcore/typography';
+import React from 'react';
 
 type RowData = typeof data[0];
 type SortableColumn = Exclude<keyof RowData, 'keyword' | 'other'>;
@@ -22,15 +23,14 @@ const Demo = () => {
       return aValue > bValue ? -1 : 1;
     });
   }, [sort]);
-    
 
   return (
     <DataTable
-    aria-label='Borders'
-    defaultGridTemplateColumnWidth='1fr'
-    sort={sort}
-    onSortChange={setSort}
-    h='100%'
+      aria-label='Borders'
+      defaultGridTemplateColumnWidth='1fr'
+      sort={sort}
+      onSortChange={setSort}
+      h='100%'
       data={sortedData}
       columns={[
         {
@@ -54,8 +54,7 @@ const Demo = () => {
         },
         { name: 'keyword', children: 'Keyword', sortable: true },
         {
-          children:  'Organic Sessions Organic Sessions Organic SessionsOrganic Sessions Organic Sessions Organic Sessions'   
-          ,
+          children: 'Organic Sessions Organic Sessions Organic SessionsOrganic Sessions Organic Sessions Organic Sessions',
           borders: 'both',
           columns: [
             {
@@ -93,7 +92,7 @@ const Demo = () => {
         },
         { name: 'other2', children: 'Other' },
       ]}
-     
+
     />
   );
 };

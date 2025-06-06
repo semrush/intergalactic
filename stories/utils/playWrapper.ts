@@ -1,4 +1,4 @@
-import { StoryObj } from '@storybook/react';
+import type { StoryObj } from '@storybook/react';
 
 export const INTERACTION_STORAGE_KEY = 'enableInteractions';
 

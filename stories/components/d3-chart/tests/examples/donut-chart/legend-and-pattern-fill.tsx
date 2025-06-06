@@ -1,6 +1,6 @@
-import React from 'react';
 import { ChartLegend, Donut, makeDataHintsContainer, Plot, Chart } from '@semcore/d3-chart';
 import { Flex } from '@semcore/flex-box';
+import React from 'react';
 
 const dataHints = makeDataHintsContainer();
 
@@ -42,67 +42,71 @@ const Demo = () => {
 
   return (
     <>
-    <Flex direction='row' gap={5} mb={4}>
-      <Plot width={width} height={height} data={data} dataHints={dataHints} patterns>
-        <Donut innerRadius={height / 2 - 50}>
-          {legendItems.filter((item) => item.checked).length === 0 && <Donut.EmptyData />}
-          {legendItems.map((item, index) => {
-            return (
-              item.checked && (
-                <Donut.Pie
-                  dataKey={item.id}
-                  key={item.id}
-                  name={item.label}
-                  color={item.color}
-                  transparent={highlightedLine !== -1 && highlightedLine !== index}
-                />
-              )
-            );
-          })}
-        </Donut>
-      </Plot>
-      <ChartLegend
-        direction={'column'}
-        wMin={100}
-        items={legendItems}
-        onChangeVisibleItem={handleChangeVisible}
-        onMouseEnterItem={handleMouseEnter}
-        onMouseLeaveItem={handleMouseLeave}
-        dataHints={dataHints}
-        patterns
-        aria-label={'Donut chart legend'}
-      />
-    </Flex>
+      <Flex direction='row' gap={5} mb={4}>
+        <Plot width={width} height={height} data={data} dataHints={dataHints} patterns>
+          <Donut innerRadius={height / 2 - 50}>
+            {legendItems.filter((item) => item.checked).length === 0 && <Donut.EmptyData />}
+            {legendItems.map((item, index) => {
+              return (
+                item.checked && (
+                  <Donut.Pie
+                    dataKey={item.id}
+                    key={item.id}
+                    name={item.label}
+                    color={item.color}
+                    transparent={highlightedLine !== -1 && highlightedLine !== index}
+                  />
+                )
+              );
+            })}
+          </Donut>
+        </Plot>
+        <ChartLegend
+          direction='column'
+          wMin={100}
+          items={legendItems}
+          onChangeVisibleItem={handleChangeVisible}
+          onMouseEnterItem={handleMouseEnter}
+          onMouseLeaveItem={handleMouseLeave}
+          dataHints={dataHints}
+          patterns
+          aria-label='Donut chart legend'
+        />
+      </Flex>
 
-    <Flex direction='row' gap={5}>
-    <Chart.Donut plotWidth={300} plotHeight={300} data={data} aria-label={'Donut chart'} 
-     alignItems="flex-start"
-  direction="row"
-  innerLabel="Example"
-  showLegend={true}
-  showXAxis={true}
-  showYAxis={true}
-  innerRadius={60}
-    legendProps={{
+      <Flex direction='row' gap={5}>
+        <Chart.Donut
+          plotWidth={300}
+          plotHeight={300}
+          data={data}
+          aria-label='Donut chart'
+          alignItems='flex-start'
+          direction='row'
+          innerLabel='Example'
+          showLegend={true}
+          showXAxis={true}
+          showYAxis={true}
+          innerRadius={60}
+          legendProps={{
 
-      disableHoverItems: true,
-      disableSelectItems: false,
-      legendMap: {
-        a: {
-          label: 'Nuts'
-        },
-        b: {
-          label: 'Fruits'
-        },
-        c: {
-          label: 'Milk'
-        }
-      },
-      shape: 'Checkbox',
-      size: 'l'
-    }}
-    />
-</Flex>
+            disableHoverItems: true,
+            disableSelectItems: false,
+            legendMap: {
+              a: {
+                label: 'Nuts',
+              },
+              b: {
+                label: 'Fruits',
+              },
+              c: {
+                label: 'Milk',
+              },
+            },
+            shape: 'Checkbox',
+            size: 'l',
+          }}
+        />
+      </Flex>
 
     </>
   );

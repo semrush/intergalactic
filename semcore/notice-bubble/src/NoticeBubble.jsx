@@ -1,35 +1,34 @@
-import React from 'react';
-import Portal from '@semcore/portal';
-import manager from './NoticeBubbleManager';
-import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import { Animation } from '@semcore/animation';
-import { Flex, Box } from '@semcore/flex-box';
-import fire from '@semcore/core/lib/utils/fire';
-import isNode from '@semcore/core/lib/utils/isNode';
-import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
-import CloseIcon from '@semcore/icon/Close/m';
-import { Timer } from './utils';
-import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import { useCssVariable } from '@semcore/core/lib/utils/useCssVariable';
-import { contextThemeEnhance } from '@semcore/core/lib/utils/ThemeProvider';
 import Button from '@semcore/button';
-import { useFocusLock } from '@semcore/core/lib/utils/use/useFocusLock';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
+import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import fire from '@semcore/core/lib/utils/fire';
+import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
+import isNode from '@semcore/core/lib/utils/isNode';
+import { forkRef, useForkRef } from '@semcore/core/lib/utils/ref';
+import { contextThemeEnhance } from '@semcore/core/lib/utils/ThemeProvider';
+import { useFocusLock, setFocus } from '@semcore/core/lib/utils/use/useFocusLock';
+import { useCssVariable } from '@semcore/core/lib/utils/useCssVariable';
 import {
   ZIndexStackingContextProvider,
   zIndexStackingEnhance,
 } from '@semcore/core/lib/utils/zIndexStacking';
+import { Flex, Box } from '@semcore/flex-box';
+import CloseIcon from '@semcore/icon/Close/m';
+import Portal from '@semcore/portal';
+import React from 'react';
 
+import manager from './NoticeBubbleManager';
 import style from './style/notice-bubble.shadow.css';
-import { forkRef, useForkRef } from '@semcore/core/lib/utils/ref';
-import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
-import { setFocus } from '@semcore/core/lib/utils/use/useFocusLock';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
+import { Timer } from './utils';
 
 const Notices = (props) => {
   const { styles, data = [], tag: SView = ViewInfo } = props;
   const ref = React.useRef();
   const durationStr = useCssVariable('--intergalactic-duration-popper', '200', ref);
-  const duration = React.useMemo(() => parseInt(durationStr, 10), [durationStr]);
+  const duration = React.useMemo(() => Number.parseInt(durationStr, 10), [durationStr]);
 
   return data.map((notice) => {
     return sstyled(styles)(
@@ -55,6 +54,7 @@ class NoticeBubbleContainerRoot extends Component {
     contextThemeEnhance(),
     zIndexStackingEnhance('z-index-notice-bubble'),
   ];
+
   static defaultProps = {
     manager,
     i18n: localizedMessages,
@@ -225,7 +225,6 @@ class ViewInfo extends Component {
         role={type === 'warning' ? 'alert' : this.props.role}
       >
         <SDismiss
-          // biome-ignore lint/a11y/useValidAriaValues:
           aria-haspopup={undefined}
           type='button'
           use='tertiary'
@@ -240,20 +239,22 @@ class ViewInfo extends Component {
           <Button.Addon tag={CloseIcon} color='icon-primary-invert' />
         </SDismiss>
 
-        {isNode(icon) ? (
-          <>
-            <SIcon>{icon}</SIcon>
-            <SContent>
-              <SMessage>{children}</SMessage>
-              {isNode(actionNode) ? <SAction>{actionNode}</SAction> : null}
-            </SContent>
-          </>
-        ) : (
-          <SContent>
-            <SMessage>{children}</SMessage>
-            {isNode(actionNode) ? <SAction>{actionNode}</SAction> : null}
-          </SContent>
-        )}
+        {isNode(icon)
+          ? (
+              <>
+                <SIcon>{icon}</SIcon>
+                <SContent>
+                  <SMessage>{children}</SMessage>
+                  {isNode(actionNode) ? <SAction>{actionNode}</SAction> : null}
+                </SContent>
+              </>
+            )
+          : (
+              <SContent>
+                <SMessage>{children}</SMessage>
+                {isNode(actionNode) ? <SAction>{actionNode}</SAction> : null}
+              </SContent>
+            )}
       </SBubble>,
     );
   }

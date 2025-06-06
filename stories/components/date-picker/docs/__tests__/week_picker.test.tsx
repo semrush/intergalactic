@@ -9,5 +9,4 @@ export async function WeekPickerTest({ canvasElement }: { canvasElement: HTMLEle
   }
 
   await userEvent.click(triggers);
-
 }

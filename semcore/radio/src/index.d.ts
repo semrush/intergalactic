@@ -1,7 +1,7 @@
-import React from 'react';
-import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import { Box, BoxProps, Flex } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
+import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import type { Box, BoxProps, Flex } from '@semcore/flex-box';
+import type { Text } from '@semcore/typography';
+import type React from 'react';
 
 export type RadioSize = 'm' | 'l';
 export type RadioState = 'normal' | 'invalid';
@@ -117,7 +117,7 @@ type IntergalacticRadioGroupComponent<PropsExtending = {}> = (<
   props: Intergalactic.InternalTypings.ComponentProps<Tag, typeof Flex, RadioGroupProps<Value>> &
     PropsExtending,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
-  Intergalactic.InternalTypings.ComponentAdditive<'div', typeof Flex, RadioGroupProps>;
+Intergalactic.InternalTypings.ComponentAdditive<'div', typeof Flex, RadioGroupProps>;
 
 export type RadioValueControlProps = {};
 export type RadioValueMarkProps = {};
@@ -139,7 +139,7 @@ declare const wrapRadioGroup: <PropsExtending extends {}>(
     props: Intergalactic.InternalTypings.UntypeRefAndTag<
       Intergalactic.InternalTypings.ComponentPropsNesting<IntergalacticRadioGroupComponent>
     > &
-      PropsExtending,
+    PropsExtending,
   ) => React.ReactNode,
 ) => IntergalacticRadioGroupComponent<PropsExtending>;
 export { wrapRadioGroup };

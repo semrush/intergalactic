@@ -1,7 +1,7 @@
-import React from 'react';
 import { Plot, Line, XAxis, YAxis, minMax } from '@semcore/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import { curveCardinal } from 'd3-shape';
+import React from 'react';
 
 const displayDots = (index: number, active: boolean, single: boolean) => {
   if (single || active) return true;
@@ -38,13 +38,13 @@ const Demo = () => {
 };
 
 const data = Array(20)
-      .fill({})
-      .map((d, i) => {
-        const y = Math.abs(Math.sin(Math.exp(i))) * 10;
-        return {
-          x: i,
-          y: i === 2 || i === 3 ? null : y,
-        };
-      });
+  .fill({})
+  .map((d, i) => {
+    const y = Math.abs(Math.sin(Math.exp(i))) * 10;
+    return {
+      x: i,
+      y: i === 2 || i === 3 ? null : y,
+    };
+  });
 
 export default Demo;

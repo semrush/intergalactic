@@ -1,6 +1,6 @@
-import React from 'react';
 import { Plot, Line, XAxis, YAxis, minMax } from '@semcore/d3-chart';
 import { scaleLinear } from 'd3-scale';
+import React from 'react';
 
 const Demo = () => {
   const MARGIN = 40;
@@ -24,15 +24,15 @@ const Demo = () => {
       <XAxis>
         <XAxis.Ticks />
       </XAxis>
-      <Line x='x' y='y1' duration = {0} color ='yellow'>
+      <Line x='x' y='y1' duration={0} color='yellow'>
         <Line.Dots display />
       </Line>
 
-      <Line x='x' y='y2' duration = {0} transparent={true}>
+      <Line x='x' y='y2' duration={0} transparent={true}>
         <Line.Dots display />
       </Line>
 
-      <Line x='x' y='y3' duration = {0} color ='red' hide>
+      <Line x='x' y='y3' duration={0} color='red' hide>
         <Line.Dots display />
       </Line>
     </Plot>
@@ -40,17 +40,17 @@ const Demo = () => {
 };
 
 const data = Array(20)
-      .fill({})
-      .map((d, i) => {
-        const y1 = Math.abs(Math.sin(Math.exp(i))) * 10;
-        const y2 = Math.abs(Math.cos(Math.exp(i))) * 10;
-        const y3 = Math.abs(Math.cos(Math.exp(i))) * 5;
-        return {
-          x: i,
-          y1: i === 2 || i === 3 ? null : y1,
-          y2: y2,
-          y3: y3,
-        };
-      });
+  .fill({})
+  .map((d, i) => {
+    const y1 = Math.abs(Math.sin(Math.exp(i))) * 10;
+    const y2 = Math.abs(Math.cos(Math.exp(i))) * 10;
+    const y3 = Math.abs(Math.cos(Math.exp(i))) * 5;
+    return {
+      x: i,
+      y1: i === 2 || i === 3 ? null : y1,
+      y2: y2,
+      y3: y3,
+    };
+  });
 
 export default Demo;

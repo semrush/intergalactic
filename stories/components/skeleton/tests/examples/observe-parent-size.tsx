@@ -1,6 +1,6 @@
-import React from 'react';
-import Skeleton from '@semcore/skeleton';
 import Button from '@semcore/button';
+import Skeleton from '@semcore/skeleton';
+import React from 'react';
 
 const Demo = () => {
   const [wide, setWide] = React.useState(false);

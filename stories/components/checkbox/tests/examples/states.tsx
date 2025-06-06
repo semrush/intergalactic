@@ -1,15 +1,14 @@
 import React from 'react';
 import Checkbox from '@semcore/checkbox';
-import {Flex} from '@semcore/flex-box';
-import {Text} from '@semcore/typography';
-
+import { Flex } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
 
 const Demo = () => {
   return (
     <Flex direction='row' gap={2}>
-       <Flex direction='column' gap={2} mb={3} data-testid = 'default'>
-      <Text size = {100}>default</Text>
-      <Checkbox >
+      <Flex direction='column' gap={2} mb={3} data-testid='default'>
+        <Text size={100}>default</Text>
+        <Checkbox>
           <Checkbox.Value />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
@@ -19,65 +18,60 @@ const Demo = () => {
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
 
-        <Checkbox size = 'l'>
+        <Checkbox size='l'>
           <Checkbox.Value />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
-
-      
-
-
 
         <Checkbox>
           <Checkbox.Value />
           <Checkbox.Text color='text-critical'>Label</Checkbox.Text>
         </Checkbox>
 
-        <Checkbox size = 'l'>
+        <Checkbox size='l'>
           <Checkbox.Value />
           <Checkbox.Text color='text-critical'>Label</Checkbox.Text>
         </Checkbox>
 
-        <Checkbox size = 'l' disabled>
+        <Checkbox size='l' disabled>
           <Checkbox.Value />
           <Checkbox.Text color='text-critical'>Label</Checkbox.Text>
         </Checkbox>
 
-        <Checkbox state="invalid">
+        <Checkbox state='invalid'>
           <Checkbox.Value id='focused' />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
 
-        <Checkbox state="invalid" disabled>
+        <Checkbox state='invalid' disabled>
           <Checkbox.Value id='focused' />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
 
-        <Checkbox state="invalid" size='l'>
+        <Checkbox state='invalid' size='l'>
           <Checkbox.Value id='focused' />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
 
-
-        <Checkbox  theme='pink'>
+        <Checkbox theme='pink'>
           <Checkbox.Value id='focused' />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
 
-        <Checkbox size = 'l' theme='pink'>
+        <Checkbox size='l' theme='pink'>
           <Checkbox.Value id='focused' />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
 
-        <Checkbox size = 'l' theme='pink' disabled>
+        <Checkbox size='l' theme='pink' disabled>
           <Checkbox.Value id='focused' />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
-    </Flex>
+      </Flex>
 
-    <Flex direction='column' gap={2} mb={3} data-testid = 'checked'>
-      <Text size = {100}>checked</Text>
-      <Checkbox checked>
+      <Flex direction='column' gap={2} mb={3} data-testid='checked'>
+        <Text size={100}>checked</Text>
+        <Checkbox checked>
           <Checkbox.Value />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
@@ -87,7 +81,7 @@ const Demo = () => {
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
 
-        <Checkbox size = 'l' checked>
+        <Checkbox size='l' checked>
           <Checkbox.Value />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
@@ -97,51 +91,50 @@ const Demo = () => {
           <Checkbox.Text color='text-critical'>Label</Checkbox.Text>
         </Checkbox>
 
-        <Checkbox size = 'l' checked>
+        <Checkbox size='l' checked>
           <Checkbox.Value />
           <Checkbox.Text color='text-critical'>Label</Checkbox.Text>
         </Checkbox>
 
-        <Checkbox size = 'l' disabled checked>
+        <Checkbox size='l' disabled checked>
           <Checkbox.Value />
           <Checkbox.Text color='text-critical'>Label</Checkbox.Text>
         </Checkbox>
 
-        <Checkbox state="invalid" checked>
+        <Checkbox state='invalid' checked>
           <Checkbox.Value id='focused' />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
 
-        <Checkbox state="invalid" disabled checked>
+        <Checkbox state='invalid' disabled checked>
           <Checkbox.Value id='focused' />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
 
-        <Checkbox state="invalid" size='l' checked>
+        <Checkbox state='invalid' size='l' checked>
           <Checkbox.Value id='focused' />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
 
-
-        <Checkbox  theme='pink' checked>
+        <Checkbox theme='pink' checked>
           <Checkbox.Value id='focused' />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
 
-        <Checkbox size = 'l' theme='pink' checked>
+        <Checkbox size='l' theme='pink' checked>
           <Checkbox.Value id='focused' />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
 
-        <Checkbox size = 'l' theme='pink' disabled checked>
+        <Checkbox size='l' theme='pink' disabled checked>
           <Checkbox.Value id='focused' />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
-    </Flex>
+      </Flex>
 
-    <Flex direction='column' gap={2} mb={3} data-testid = 'indeterminate'>
-      <Text size = {100}>indeterminate</Text>
-      <Checkbox indeterminate>
+      <Flex direction='column' gap={2} mb={3} data-testid='indeterminate'>
+        <Text size={100}>indeterminate</Text>
+        <Checkbox indeterminate>
           <Checkbox.Value />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
@@ -151,7 +144,7 @@ const Demo = () => {
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
 
-        <Checkbox size = 'l' indeterminate>
+        <Checkbox size='l' indeterminate>
           <Checkbox.Value />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
@@ -161,47 +154,46 @@ const Demo = () => {
           <Checkbox.Text color='text-critical'>Label</Checkbox.Text>
         </Checkbox>
 
-        <Checkbox size = 'l' indeterminate>
+        <Checkbox size='l' indeterminate>
           <Checkbox.Value />
           <Checkbox.Text color='text-critical'>Label</Checkbox.Text>
         </Checkbox>
 
-        <Checkbox size = 'l' disabled indeterminate>
+        <Checkbox size='l' disabled indeterminate>
           <Checkbox.Value />
           <Checkbox.Text color='text-critical'>Label</Checkbox.Text>
         </Checkbox>
 
-        <Checkbox state="invalid" indeterminate>
+        <Checkbox state='invalid' indeterminate>
           <Checkbox.Value id='focused' />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
 
-        <Checkbox state="invalid" disabled indeterminate>
+        <Checkbox state='invalid' disabled indeterminate>
           <Checkbox.Value id='focused' />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
 
-        <Checkbox state="invalid" size='l' indeterminate>
+        <Checkbox state='invalid' size='l' indeterminate>
           <Checkbox.Value id='focused' />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
 
-
-        <Checkbox  theme='pink' indeterminate>
+        <Checkbox theme='pink' indeterminate>
           <Checkbox.Value id='focused' />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
 
-        <Checkbox size = 'l' theme='pink' indeterminate>
+        <Checkbox size='l' theme='pink' indeterminate>
           <Checkbox.Value id='focused' />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
 
-        <Checkbox size = 'l' theme='pink' disabled indeterminate>
+        <Checkbox size='l' theme='pink' disabled indeterminate>
           <Checkbox.Value id='focused' />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
-    </Flex>
+      </Flex>
 
     </Flex>
   );

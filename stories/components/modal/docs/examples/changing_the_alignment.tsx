@@ -1,6 +1,6 @@
-import React from 'react';
 import Button from '@semcore/button';
 import Modal from '@semcore/modal';
+import React from 'react';
 
 const DEFAULT_TEXT =
   'Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab atque commodi corporis culpa, eius error impedit itaque minus nemo nostrum numquam odio omnis sapiente soluta temporibus vel voluptatibus? Exercitationem?';

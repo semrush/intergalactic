@@ -15,14 +15,14 @@ const Demo = () => (
         mt={2}
         id='options-select'
       />
-      <Select.Menu hMax = {600}>
+      <Select.Menu hMax={600}>
         <Select.Option value={1}>Default option</Select.Option>
         <Select.Option value={1} disabled>Default option disabled</Select.Option>
 
         <Select.Option value={2} selected>Default option selected</Select.Option>
 
         <Select.Option value={3} selected>
-          <Select.Option.Checkbox selected/>
+          <Select.Option.Checkbox selected />
           Checkbox option selected
         </Select.Option>
 
@@ -30,7 +30,7 @@ const Demo = () => (
           <Select.Option.Checkbox />
           Checkbox option
         </Select.Option>
-        
+
         <Select.Option value={4} disabled>
           <Select.Option.Checkbox />
           Disabled checkbox option
@@ -43,8 +43,8 @@ const Demo = () => (
           <Select.Option.Hint>Hint for the option</Select.Option.Hint>
         </Select.Option>
 
-        <Select.Group title={'Group title'} subTitle={'Hint for the title'}>
-          <Select.Option value={4} >1st option in group</Select.Option>
+        <Select.Group title='Group title' subTitle='Hint for the title'>
+          <Select.Option value={4}>1st option in group</Select.Option>
           <Select.Option value={5} selected>2nd option in group</Select.Option>
           <Select.Option value={6}>3rd option in group</Select.Option>
         </Select.Group>

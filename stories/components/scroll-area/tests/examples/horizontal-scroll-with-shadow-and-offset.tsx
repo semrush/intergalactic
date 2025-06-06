@@ -1,6 +1,6 @@
-import React from 'react';
 import { Box, Flex } from '@semcore/flex-box';
 import ScrollArea from '@semcore/scroll-area';
+import React from 'react';
 
 declare const eventCalculate: any;
 

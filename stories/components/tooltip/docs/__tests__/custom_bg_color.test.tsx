@@ -5,5 +5,4 @@ export async function CustomBgColorTest({ canvasElement }: { canvasElement: HTML
 
   await userEvent.keyboard('{Tab}');
   await userEvent.keyboard('{Tab}');
-
 }

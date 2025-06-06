@@ -9,5 +9,4 @@ export async function CustomDaysTest({ canvasElement }: { canvasElement: HTMLEle
   }
 
   await userEvent.click(triggers);
-
 }

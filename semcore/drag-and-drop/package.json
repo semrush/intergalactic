@@ -35,7 +35,6 @@
     "@semcore/badge": "*",
     "@semcore/icon": "*",
     "@semcore/testing-utils": "1.0.0",
-    "@semcore/tab-panel": "*",
-    "@types/react": "18.0.21"
+    "@semcore/tab-panel": "*"
   }
 }

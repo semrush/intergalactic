@@ -1,12 +1,12 @@
-import React from 'react';
 import { Plot, ScatterPlot, XAxis, YAxis, ChartLegend } from '@semcore/d3-chart';
 import { scaleLinear } from 'd3-scale';
+import React from 'react';
 
 const data = Array.from({ length: 10 }, (_, i) => ({
   x: i,
-  1: i + 1,       
-  2: 10 - i,      
-  3: (i % 3) * 3, 
+  1: i + 1,
+  2: 10 - i,
+  3: (i % 3) * 3,
   value: i,
 }));
 
@@ -30,7 +30,7 @@ const Demo = () => {
     setLegendItems((prevItems) =>
       prevItems.map((item) =>
         item.id === id ? { ...item, checked: isVisible } : item,
-      )
+      ),
     );
   }, []);
 

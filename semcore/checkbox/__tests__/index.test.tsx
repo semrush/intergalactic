@@ -27,14 +27,14 @@ describe('Checkbox', () => {
     async ({ expect }) => {
       const { getByTestId } = render(
         <Checkbox
-          aria-label={'test aria label'}
-          aria-labelledby={'test aria labelledby'}
-          aria-describedby={'test aria describedby'}
-          data-testid={'checkboxContainer'}
+          aria-label='test aria label'
+          aria-labelledby='test aria labelledby'
+          aria-describedby='test aria describedby'
+          data-testid='checkboxContainer'
         >
           <Checkbox.Value>
-            <Checkbox.Value.Control data-testid={'checkboxControl'} />
-            <Checkbox.Value.CheckMark data-testid={'checkboxCheckMark'} />
+            <Checkbox.Value.Control data-testid='checkboxControl' />
+            <Checkbox.Value.CheckMark data-testid='checkboxCheckMark' />
           </Checkbox.Value>
         </Checkbox>,
       );

@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import BarPropsExample from './examples/bar-chart/bars-props';
 import BarExample from './examples/bar-chart/bar';
+import BarHoverExample from './examples/bar-chart/bar-hover';
+import BarPropsExample from './examples/bar-chart/bars-props';
 import BasicUsageExample from './examples/bar-chart/basic-usage';
 import DateFormatExample from './examples/bar-chart/date-format-with-tooltip';
 import GroupedBarsExample from './examples/bar-chart/grouped-bars';
@@ -9,8 +10,6 @@ import LegendAndPatternFillExample from './examples/bar-chart/legend-and-pattern
 import NegativeValuesExample from './examples/bar-chart/negative-values';
 import TooltipExample from './examples/bar-chart/tooltip';
 import TrendLineExample from './examples/bar-chart/trend-line';
-import BarHoverExample from './examples/bar-chart/bar-hover';
-
 
 const meta: Meta = {
   title: 'Components/d3Charts/Tests/Bar-Chart',

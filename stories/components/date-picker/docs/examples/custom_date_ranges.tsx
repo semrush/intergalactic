@@ -1,7 +1,7 @@
-import React from 'react';
 import { DateRangePicker } from '@semcore/date-picker';
 import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
+import React from 'react';
 
 const Demo = () => {
   const pastYear = new Date();

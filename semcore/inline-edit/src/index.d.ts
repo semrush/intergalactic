@@ -1,6 +1,6 @@
-import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import { BoxProps } from '@semcore/flex-box';
-import { FadeInOutProps } from '@semcore/animation';
+import type { FadeInOutProps } from '@semcore/animation';
+import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import type { BoxProps } from '@semcore/flex-box';
 
 /** @deprecated */
 export interface IInlineEditProps extends InlineEditProps, UnknownProperties {}

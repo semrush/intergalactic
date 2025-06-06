@@ -1,8 +1,8 @@
-import React from 'react';
-import InlineInput from '@semcore/inline-input';
-import InlineEdit from '@semcore/inline-edit';
 import EditM from '@semcore/icon/Edit/m';
+import InlineEdit from '@semcore/inline-edit';
+import InlineInput from '@semcore/inline-input';
 import { Text } from '@semcore/typography';
+import React from 'react';
 
 const Example = () => {
   const [title, setTitle] = React.useState('The Adventures of Intergalactic Whale');
@@ -24,7 +24,9 @@ const Example = () => {
       <Text tag='h3' mb={2}>
         <InlineEdit editable={editingTitle} onEditableChange={setEditingTitle}>
           <InlineEdit.View pr={5}>
-            {title} <EditM color='icon-secondary-neutral' />
+            {title}
+            {' '}
+            <EditM color='icon-secondary-neutral' />
           </InlineEdit.View>
           <InlineEdit.Edit>
             <InlineInput onConfirm={handleTitle} onCancel={stopEditing} loading={savingTitle}>

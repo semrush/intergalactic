@@ -16,5 +16,4 @@ export async function DatePickerTest({ canvasElement }: { canvasElement: HTMLEle
   }
 
   await userEvent.click(triggersRange);
-
 }

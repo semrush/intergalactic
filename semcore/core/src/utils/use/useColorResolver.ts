@@ -1,7 +1,7 @@
-import { useContextTokens } from '../ThemeProvider';
-import logger from '../logger';
-
 import defaultDesignThemeJson from '../../theme/themes/default';
+import logger from '../logger';
+import { useContextTokens } from '../ThemeProvider';
+
 const defaultDesignTheme = defaultDesignThemeJson as Record<string, string>;
 const basicPalette: Record<string, string> = {
   '--white': '#ffffff',

@@ -1,16 +1,16 @@
-import React from 'react';
-import FeedbackForm from '@semcore/feedback-form';
-import Input from '@semcore/input';
-import { Box, Flex } from '@semcore/flex-box';
-import Link from '@semcore/link';
-import Dropdown from '@semcore/dropdown';
-import Textarea from '@semcore/textarea';
-import Notice from '@semcore/notice';
 import Button from '@semcore/button';
-import ThumbUpM from '@semcore/icon/ThumbUp/m';
+import Dropdown from '@semcore/dropdown';
+import FeedbackForm from '@semcore/feedback-form';
+import { Box, Flex } from '@semcore/flex-box';
 import ThumbDownM from '@semcore/icon/ThumbDown/m';
-import { Text } from '@semcore/typography';
+import ThumbUpM from '@semcore/icon/ThumbUp/m';
 import FeedbackIllustration from '@semcore/illustration/Feedback';
+import Input from '@semcore/input';
+import Link from '@semcore/link';
+import Notice from '@semcore/notice';
+import Textarea from '@semcore/textarea';
+import { Text } from '@semcore/typography';
+import React from 'react';
 
 const validate = {
   description: (value = '') => {
@@ -82,7 +82,7 @@ class Feedback extends React.PureComponent<FeedbackProps> {
             <FeedbackForm.Item
               name='feedback'
               validate={validate.description}
-              initialValue={''}
+              initialValue=''
               placement='left-start'
               flip={{
                 fallbackPlacements: ['right-start', 'bottom'],
@@ -107,7 +107,7 @@ class Feedback extends React.PureComponent<FeedbackProps> {
             <FeedbackForm.Item
               name='email'
               validate={validate.email}
-              initialValue={''}
+              initialValue=''
               validateOnBlur={value.email === '' ? false : true}
             >
               {({ input }) => {
@@ -118,8 +118,8 @@ class Feedback extends React.PureComponent<FeedbackProps> {
                       {...input}
                       onChange={this.handleChange(input.onChange)}
                       id='email'
-                      autoComplete={'email'}
-                      type={'email'}
+                      autoComplete='email'
+                      type='email'
                       aria-describedby={ariaDescribeBy}
                     />
                   </Input>
@@ -129,7 +129,8 @@ class Feedback extends React.PureComponent<FeedbackProps> {
           </Flex>
           <Box mt={2}>
             <Text size={200} color='text-secondary' id='privacy-description'>
-              We will only use this email to respond to you on your feedback.{' '}
+              We will only use this email to respond to you on your feedback.
+              {' '}
               <Link href='https://www.semrush.com/company/legal/privacy-policy/'>
                 Privacy Policy
               </Link>
@@ -141,7 +142,9 @@ class Feedback extends React.PureComponent<FeedbackProps> {
           </Flex>
         </Box>
         <FeedbackForm.Notice hidden={status === 'failed'}>
-          You can also send us an email to <Link>some.team@domain.com</Link>
+          You can also send us an email to
+          {' '}
+          <Link>some.team@domain.com</Link>
         </FeedbackForm.Notice>
         <FeedbackForm.Notice hidden={status !== 'failed'} theme='danger'>
           Your message has not been sent.
@@ -158,21 +161,25 @@ class FeedbackYesNo extends React.PureComponent {
     feedbackType: null,
     value: { feedback: '', email: '' },
   };
+
   timeout: any;
   onSubmit = () => {
     this.requestServer('success', 1000);
     this.setState({ status: 'loading' });
   };
+
   onChange = (e: FeedbackChangeEvent) => {
     const { value, id } = e.currentTarget;
     this.setState({ value: { ...this.state.value, [id]: value } });
   };
+
   requestServer = (status: string, time: number, cb?: () => void) => {
     this.timeout = setTimeout(() => {
       this.setState({ status });
       cb?.();
     }, time || 500);
   };
+
   changeVisible = (visible: boolean) => {
     this.setState({ visible });
   };

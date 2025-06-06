@@ -7,7 +7,6 @@ import EdgeCasesExample from './examples/area-chart/edge-cases';
 import InterpolationExample from './examples/area-chart/interpolation';
 import LegendAndPatternFillExample from './examples/area-chart/legend-and-pattern-fill';
 
-
 const meta: Meta = {
   title: 'Components/d3Charts/Documentation/Area-Chart',
 };

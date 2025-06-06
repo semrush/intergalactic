@@ -1,8 +1,9 @@
-import React from 'react';
-import { createComponent, Component, Root } from '@semcore/core';
-import Select, { SelectProps } from '@semcore/select';
-import { AddFilterItemProps, AddFilterSelectType } from '../AddFilter.types';
 import { FilterTrigger } from '@semcore/base-trigger';
+import { createComponent, Component, Root } from '@semcore/core';
+import Select, { type SelectProps } from '@semcore/select';
+import React from 'react';
+
+import type { AddFilterItemProps, AddFilterSelectType } from '../AddFilter.types';
 
 type AsPropsWithOnClear<T> = T & {
   onClear: () => void;

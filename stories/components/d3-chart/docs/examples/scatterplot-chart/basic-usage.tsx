@@ -1,5 +1,5 @@
-import React from 'react';
 import { Chart } from '@semcore/d3-chart';
+import React from 'react';
 
 const Demo = () => {
   return (
@@ -7,8 +7,8 @@ const Demo = () => {
       data={data}
       plotWidth={500}
       plotHeight={300}
-      groupKey={'x'}
-      aria-label={'ScatterPlot chart'}
+      groupKey='x'
+      aria-label='ScatterPlot chart'
     />
   );
 };

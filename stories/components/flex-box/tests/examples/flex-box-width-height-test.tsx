@@ -1,5 +1,5 @@
-import React from 'react';
 import { Box, Flex } from '@semcore/flex-box';
+import React from 'react';
 
 const Demo = () => {
   const styleBox = {
@@ -10,7 +10,11 @@ const Demo = () => {
     <div>
       <Flex direction='row' alignItems='flex-start' w='400px' h='100px'>
         <Box style={styleBox} w={0.5} h={0.25}>
-          w={0.5} h={0.25}
+          w=
+          {0.5}
+          {' '}
+          h=
+          {0.25}
         </Box>
       </Flex>
 
@@ -22,13 +26,17 @@ const Demo = () => {
 
       <Flex direction='row' alignItems='flex-start' w='400px' h='100px'>
         <Box style={styleBox} w={2 / 5} h='auto'>
-          w={2 / 5}
+          w=
+          {2 / 5}
           h='auto'
         </Box>
       </Flex>
       <Flex direction='row' alignItems='flex-start' w='400px' h='100px'>
         <Box style={styleBox} h={2 / 5} w='50px'>
-          h={2 / 5} w='auto'
+          h=
+          {2 / 5}
+          {' '}
+          w='auto'
         </Box>
       </Flex>
       <Flex direction='row' alignItems='flex-start' w='400px' h='100px'>

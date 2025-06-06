@@ -1,19 +1,18 @@
-import React from 'react';
-import dayjs from 'dayjs';
-import isBetween from '../utils/isBetweenPlugin';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
-import { Box } from '@semcore/flex-box';
-import fire from '@semcore/core/lib/utils/fire';
-import { includesDate } from '../utils/includesDate';
-import { formatDDMMYY, formatMMYY } from '../utils/formatDate';
 import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
-import { ScreenReaderOnly } from '@semcore/flex-box';
+import fire from '@semcore/core/lib/utils/fire';
+import { Box, ScreenReaderOnly } from '@semcore/flex-box';
+import dayjs from 'dayjs';
+import React from 'react';
 
 import style from '../style/calendar.shadow.css';
+import { formatDDMMYY, formatMMYY } from '../utils/formatDate';
+import { includesDate } from '../utils/includesDate';
+import isBetween from '../utils/isBetweenPlugin';
 
 dayjs.extend(isBetween);
 
-const range = (N, cb) => Array.from({ length: N }, (v, k) => cb(k));
+const range = (N, cb) => Array.from({ length: N }, (_v, k) => cb(k));
 
 function getDayJSLocaleParams(locale) {
   if (locale.includes('en') || locale.includes('ja')) {
@@ -45,7 +44,7 @@ class CalendarWeekDaysRoot extends Component {
       const long = new Intl.DateTimeFormat(locale, { weekday: 'long' }).format(date.valueOf());
       date = date.add(1, 'day');
       return {
-        children: short,
+        'children': short,
         'aria-label': long,
       };
     });
@@ -132,30 +131,30 @@ class CalendarAbstract extends Component {
     const disabled = _disabled.some(includesDate(date, unit));
 
     return {
-      date: formatDDMMYY(date, locale),
-      dateKey: this.formatter(date, locale),
-      children: '',
-      role: 'gridcell',
-      startSelected: selecting.startSelected,
-      endSelected: selecting.endSelected,
-      selected: selecting.selected,
-      highlighted: highlighting.highlighted,
-      startHighlighted: highlighting.startHighlighted,
-      endHighlighted: highlighting.endHighlighted,
+      'date': formatDDMMYY(date, locale),
+      'dateKey': this.formatter(date, locale),
+      'children': '',
+      'role': 'gridcell',
+      'startSelected': selecting.startSelected,
+      'endSelected': selecting.endSelected,
+      'selected': selecting.selected,
+      'highlighted': highlighting.highlighted,
+      'startHighlighted': highlighting.startHighlighted,
+      'endHighlighted': highlighting.endHighlighted,
 
-      compareHighlighted: comparedHighlighting.highlighted || comparing.selected,
-      compareStartHighlighted: comparedHighlighting.startHighlighted,
-      compareEndHighlighted: comparedHighlighting.endHighlighted,
-      compareStart: comparing.startSelected,
-      compareEnd: comparing.endSelected,
+      'compareHighlighted': comparedHighlighting.highlighted || comparing.selected,
+      'compareStartHighlighted': comparedHighlighting.startHighlighted,
+      'compareEndHighlighted': comparedHighlighting.endHighlighted,
+      'compareStart': comparing.startSelected,
+      'compareEnd': comparing.endSelected,
 
       'aria-selected': selecting.selected,
       'aria-disabled': disabled,
       'aria-current': highlighting.highlighted ? 'date' : undefined,
 
       disabled,
-      today: date.isSame(self.today, unit),
-      onClick: () => {
+      'today': date.isSame(self.today, unit),
+      'onClick': () => {
         const { range, highlighted: _highlighted } = this.asProps;
         let highlighted = [date.valueOf()];
 
@@ -172,7 +171,7 @@ class CalendarAbstract extends Component {
         }
         fire(this, 'onChange', date.toDate());
       },
-      onMouseEnter: () => {
+      'onMouseEnter': () => {
         const { range, highlighted: _highlighted } = this.asProps;
         const value = range === 'compare' ? this.asProps.compare : this.asProps.value;
         if (_highlighted[0] || (value ?? []).length === 1) {
@@ -201,7 +200,7 @@ class CalendarAbstract extends Component {
     return {
       'aria-colindex': (index % inRow) + 1,
       'aria-rowindex': Math.floor(index / inRow) + 1,
-      ref: (node) => {
+      'ref': (node) => {
         if (!dateKey) return;
         unitRefs[dateKey] = node;
       },

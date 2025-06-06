@@ -1,11 +1,11 @@
-import React from 'react';
 import { DataTable } from '@semcore/data-table';
+import React from 'react';
 
 const Demo = () => {
   return (
     <DataTable
       data={data}
-      aria-label={'Fixed columns'}
+      aria-label='Fixed columns'
       wMax={800}
       hMax={400}
       headerProps={{ sticky: true }}

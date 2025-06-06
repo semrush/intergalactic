@@ -1,25 +1,25 @@
-import React from 'react';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
-import BaseTrigger from './BaseTrigger';
-import { Box } from '@semcore/flex-box';
-import NeighborLocation from '@semcore/neighbor-location';
-import Dot from '@semcore/dot';
-import Close from '@semcore/icon/Close/m';
-import ChevronDown from '@semcore/icon/ChevronDown/m';
-import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
-import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import animatedSizeEnhance from '@semcore/core/lib/utils/enhances/animatedSizeEnhance';
-import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 import getInputProps, { inputProps } from '@semcore/core/lib/utils/inputProps';
+import { ScreenReaderOnly } from '@semcore/core/lib/utils/ScreenReaderOnly';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { setFocus } from '@semcore/core/lib/utils/use/useFocusLock';
-
-import style from './style/filter-trigger.shadow.css';
-import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
+import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
+import Dot from '@semcore/dot';
+import { Box } from '@semcore/flex-box';
+import ChevronDown from '@semcore/icon/ChevronDown/m';
+import Close from '@semcore/icon/Close/m';
+import NeighborLocation from '@semcore/neighbor-location';
 import { Hint } from '@semcore/tooltip';
-import { ScreenReaderOnly } from '@semcore/core/lib/utils/ScreenReaderOnly';
+import React from 'react';
+
+import BaseTrigger from './BaseTrigger';
+import style from './style/filter-trigger.shadow.css';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 const filterTriggerInputProps = [
   ...inputProps,
@@ -50,6 +50,7 @@ class RootFilterTrigger extends Component {
     }),
     uniqueIDEnhancement(),
   ];
+
   static defaultProps = () => ({
     includeInputProps: filterTriggerInputProps,
     i18n: localizedMessages,
@@ -75,7 +76,7 @@ class RootFilterTrigger extends Component {
       disabled,
       includeInputProps,
       triggerRef,
-      'data-ui-name': dataUiName,
+      'data-ui-name': _dataUiName,
       ...other
     } = this.asProps;
 
@@ -142,16 +143,18 @@ class RootFilterTrigger extends Component {
         use:aria-labelledby={undefined}
       >
         <NeighborLocation>
-          {advancedMode ? (
-            <Children />
-          ) : (
-            <>
-              <FilterTrigger.TriggerButton>
+          {advancedMode
+            ? (
                 <Children />
-              </FilterTrigger.TriggerButton>
-              {!empty && <FilterTrigger.ClearButton />}
-            </>
-          )}
+              )
+            : (
+                <>
+                  <FilterTrigger.TriggerButton>
+                    <Children />
+                  </FilterTrigger.TriggerButton>
+                  {!empty && <FilterTrigger.ClearButton />}
+                </>
+              )}
         </NeighborLocation>
       </SWrapper>,
     );
@@ -222,16 +225,18 @@ function Counter({ styles, Children, count, getI18nText }) {
   const SCounter = Root;
   return sstyled(styles)(
     <SCounter render={BaseTrigger.Addon} tag={Dot}>
-      {count !== undefined ? (
-        <>
-          {count}
-          <ScreenReaderOnly>
-            {getI18nText('BaseTrigger.FilterTrigger.Counter.selected:aria-label')}
-          </ScreenReaderOnly>
-        </>
-      ) : (
-        <Children />
-      )}
+      {count !== undefined
+        ? (
+            <>
+              {count}
+              <ScreenReaderOnly>
+                {getI18nText('BaseTrigger.FilterTrigger.Counter.selected:aria-label')}
+              </ScreenReaderOnly>
+            </>
+          )
+        : (
+            <Children />
+          )}
     </SCounter>,
   );
 }

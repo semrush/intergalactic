@@ -1,16 +1,16 @@
-import React from 'react';
-import { Text } from '@semcore/typography';
-import Input from '@semcore/input';
-import Checkbox from '@semcore/checkbox';
-import Radio, { RadioGroup } from '@semcore/radio';
-import Textarea from '@semcore/textarea';
-import Select from '@semcore/select';
-import { DatePicker } from '@semcore/date-picker';
-import Tooltip from '@semcore/tooltip';
 import Button from '@semcore/button';
+import Checkbox from '@semcore/checkbox';
+import { DatePicker } from '@semcore/date-picker';
 import { Box, Flex } from '@semcore/flex-box';
-import { Field, FieldInputProps, Form } from 'react-final-form';
+import Input from '@semcore/input';
+import Radio, { RadioGroup } from '@semcore/radio';
+import Select from '@semcore/select';
+import Textarea from '@semcore/textarea';
+import Tooltip from '@semcore/tooltip';
+import { Text } from '@semcore/typography';
 import createFocusDecorator from 'final-form-focus';
+import React from 'react';
+import { Field, Form } from 'react-final-form';
 
 const required = (value) => (value ? undefined : 'Please fill in this field.');
 const email = (value) => (value?.includes('@') ? undefined : 'Please enter valid email.');
@@ -147,13 +147,13 @@ class Demo extends React.Component {
 
                         <DatePicker
                           value={input.value}
-                          size={'l'}
+                          size='l'
                           onChange={(e) => input.onChange(e)}
                         >
-                          <Tooltip.Trigger w={'100%'}>
+                          <Tooltip.Trigger w='100%'>
                             <DatePicker.Trigger
                               {...input}
-                              w={'100%'}
+                              w='100%'
                               state={meta.touched && meta.invalid ? 'invalid' : 'normal'}
                             />
                           </Tooltip.Trigger>
@@ -183,11 +183,11 @@ class Demo extends React.Component {
                         >
                           {meta.error}
                         </Tooltip.Popper>
-                        <Tooltip.Trigger w={'100%'} inline={false} {...input}>
+                        <Tooltip.Trigger w='100%' inline={false} {...input}>
                           <Select
                             value={input.value === '' ? undefined : input.value}
-                            size={'l'}
-                            placeholder={'Select'}
+                            size='l'
+                            placeholder='Select'
                             state={meta.touched && meta.invalid ? 'invalid' : 'normal'}
                             onChange={(value, event) => {
                               Object.defineProperty(event.target, 'value', {
@@ -198,8 +198,8 @@ class Demo extends React.Component {
                               input.onChange(event);
                             }}
                           >
-                            <Select.Trigger w={'100%'} onBlur={(e) => input.onBlur(e)} />
-                            <Select.Popper aria-label={'Options'}>
+                            <Select.Trigger w='100%' onBlur={(e) => input.onBlur(e)} />
+                            <Select.Popper aria-label='Options'>
                               <Select.Option value={1}>Morning</Select.Option>
                               <Select.Option value={2}>Afternoon</Select.Option>
                               <Select.Option value={3}>Evening</Select.Option>
@@ -216,7 +216,7 @@ class Demo extends React.Component {
                 <Text w={80} size={300} mr={3} flex='0 0 auto'>
                   Visit purpose
                 </Text>
-                <Field name='radio' type={'radio'} validate={required}>
+                <Field name='radio' type='radio' validate={required}>
                   {({ input, meta }) => {
                     const showError = Boolean(meta.touched && meta.active && meta.error);
 
@@ -267,7 +267,7 @@ class Demo extends React.Component {
                         >
                           {meta.error}
                         </Tooltip.Popper>
-                        <Tooltip.Trigger w={'100%'}>
+                        <Tooltip.Trigger w='100%'>
                           <Textarea
                             {...input}
                             h={80}
@@ -287,7 +287,7 @@ class Demo extends React.Component {
               <Flex mb={4}>
                 <Field
                   name='confirm'
-                  type={'checkbox'}
+                  type='checkbox'
                   validate={(value) => (value === true ? undefined : 'Please confirm')}
                 >
                   {({ input, meta }) => {
@@ -301,7 +301,7 @@ class Demo extends React.Component {
                         <Checkbox
                           {...input}
                           state={meta.touched && meta.invalid ? 'invalid' : 'normal'}
-                          size={'l'}
+                          size='l'
                           ml='92px'
                           onChange={(value, e) => input.onChange(e)}
                         >

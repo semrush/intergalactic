@@ -1,5 +1,5 @@
-import React from 'react';
 import { Chart } from '@semcore/d3-chart';
+import React from 'react';
 
 const Demo = () => {
   return (
@@ -9,21 +9,21 @@ const Demo = () => {
         plotWidth={300}
         plotHeight={300}
         legendProps={legendProps}
-        aria-label={'Venn chart'}
+        aria-label='Venn chart'
       />
     </div>
   );
 };
 
 const data = {
-  G: 200,
-  F: 200,
-  C: 500,
-  U: 1,
+  'G': 200,
+  'F': 200,
+  'C': 500,
+  'U': 1,
   'G/F': 100,
   'G/C': 100,
   'F/C': 100,
-  'G/F/C': 100, 
+  'G/F/C': 100,
 };
 
 const legendProps = {

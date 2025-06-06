@@ -1,5 +1,5 @@
-import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import { expect, test } from '@semcore/testing-utils/playwright';
 
 test.describe('Bubble chart', () => {
   test('Verify bubble base example renders and tooltip works', async ({ page }) => {
@@ -69,7 +69,7 @@ test.describe('Bubble chart', () => {
       'stories/components/d3-chart/docs/examples/bubble-chart/legend-and-pattern-fill.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
-    //only render because the fucnstionality doesnt work
+    // only render because the fucnstionality doesnt work
 
     await page.waitForTimeout(500);
     await expect(page).toHaveScreenshot();

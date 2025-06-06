@@ -1,5 +1,5 @@
-import React from 'react';
 import { DataTable } from '@semcore/data-table';
+import React from 'react';
 
 const keywords = ['ebay buy', 'www.ebay.com'];
 const kdValues = ['77.8', '11.2', '10', '75.89', '-', '65.3'];
@@ -12,7 +12,7 @@ const volPatterns = [
   () => '47,354,640,000,500'.repeat(Math.floor(Math.random() * 4) + 1),
 ];
 
-function generateData(count:any) {
+function generateData(count: any) {
   return Array.from({ length: count }, () => ({
     keyword: keywords[Math.floor(Math.random() * keywords.length)],
     kd: kdValues[Math.floor(Math.random() * kdValues.length)],
@@ -25,40 +25,39 @@ const data = generateData(500);
 const Demo = () => {
   return (
     <DataTable
-        data={data}
-        aria-label={'Base table example'}
-        defaultGridTemplateColumnWidth={'auto'}
-        wMax={'800px'}
-        hMax={'400px'}
-        headerProps={{
-          sticky: true,
-          h: 38,
-        }}
-        columns={[
-          {
-            name: 'keyword',
-            children: 'keyword'
-          },
-          {
-            name: 'kd',
-            children: 'KD,%'
-          },
-          {
-            name: 'cpc',
-            children: 'CPC'
-          },
-          {
-            name: 'hiddenColumn',
-            children: 'HC'
-          },
-          {
-            name: 'vol',
-            children: 'Vol.'
-          }
-        ]}
+      data={data}
+      aria-label='Base table example'
+      defaultGridTemplateColumnWidth='auto'
+      wMax='800px'
+      hMax='400px'
+      headerProps={{
+        sticky: true,
+        h: 38,
+      }}
+      columns={[
+        {
+          name: 'keyword',
+          children: 'keyword',
+        },
+        {
+          name: 'kd',
+          children: 'KD,%',
+        },
+        {
+          name: 'cpc',
+          children: 'CPC',
+        },
+        {
+          name: 'hiddenColumn',
+          children: 'HC',
+        },
+        {
+          name: 'vol',
+          children: 'Vol.',
+        },
+      ]}
     />
   );
-
 };
 
 export default Demo;

@@ -1,11 +1,10 @@
-import React from 'react';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { snapshot } from '@semcore/testing-utils/snapshot';
-import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
 import { cleanup } from '@semcore/testing-utils/testing-library';
+import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
+import React from 'react';
 
 import ProductHead, { Info, Title } from '../src';
-
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('product-head Dependency imports', () => {
   runDependencyCheckTests('product-head');
@@ -42,7 +41,8 @@ describe('ProductHead', () => {
           <Info.Item label='Device:'>Desktop</Info.Item>
           <Info.Item label='Data:'>Fresh</Info.Item>
           <Info.Item>
-            <Info.Item.Label>Last update:</Info.Item.Label>1 hour ago
+            <Info.Item.Label>Last update:</Info.Item.Label>
+            1 hour ago
           </Info.Item>
         </Info>
       </ProductHead.Row>
@@ -94,7 +94,8 @@ describe('Info', () => {
         </Info>
         <Info>
           <Info.Item>
-            <Info.Item.Label>Location:</Info.Item.Label>United States
+            <Info.Item.Label>Location:</Info.Item.Label>
+            United States
           </Info.Item>
         </Info>
       </snapshot.ProxyProps>
@@ -109,7 +110,8 @@ describe('Info', () => {
         <Info>
           <Info.Item label='Location:'>United States</Info.Item>
           <Info.Item>
-            <Info.Item.Label>Location:</Info.Item.Label>United States
+            <Info.Item.Label>Location:</Info.Item.Label>
+            United States
           </Info.Item>
         </Info>
       </snapshot.ProxyProps>

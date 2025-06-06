@@ -1,10 +1,11 @@
-import React from 'react';
-import Portal from '@semcore/portal';
-import NoticeGlobal, { NoticeGlobalTheme } from '@semcore/notice-global';
 import Button from '@semcore/button';
+import { Flex } from '@semcore/flex-box';
+import type { NoticeGlobalTheme } from '@semcore/notice-global';
+import NoticeGlobal from '@semcore/notice-global';
+import Portal from '@semcore/portal';
 import Select from '@semcore/select';
 import { Text } from '@semcore/typography';
-import { Flex } from '@semcore/flex-box';
+import React from 'react';
 
 const themes = ['neutral', 'info', 'success', 'warning', 'danger'] as const;
 const options = themes.map((theme) => ({
@@ -24,7 +25,9 @@ const Demo = () => {
       </Text>
       <Select options={options} defaultValue={defaultTheme} onChange={setTheme} id='select-theme' />
       <Button onClick={() => setVisible(!visible)}>
-        {visible ? 'Close' : 'Open'} NoticeGlobal
+        {visible ? 'Close' : 'Open'}
+        {' '}
+        NoticeGlobal
       </Button>
       <Portal>
         <NoticeGlobal

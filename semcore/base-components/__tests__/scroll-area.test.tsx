@@ -1,7 +1,7 @@
-import React from 'react';
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
-import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import { cleanup, render, fireEvent, waitFor } from '@semcore/testing-utils/testing-library';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import React from 'react';
 
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 import { ScrollArea, eventCalculate } from '../src';

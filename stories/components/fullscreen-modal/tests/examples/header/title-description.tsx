@@ -1,7 +1,7 @@
-import React from 'react';
-import FullscreenModal from '@semcore/fullscreen-modal';
-import Ellipsis from '@semcore/ellipsis';
 import Button from '@semcore/button';
+import Ellipsis from '@semcore/ellipsis';
+import FullscreenModal from '@semcore/fullscreen-modal';
+import React from 'react';
 
 const Demo = () => {
   const [visible, setVisible] = React.useState(false);

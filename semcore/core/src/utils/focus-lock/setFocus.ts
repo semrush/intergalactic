@@ -17,7 +17,7 @@ const unsafeSetFocus = (
     activeElement &&
     previousActiveElement &&
     previousActiveElement.compareDocumentPosition(activeElement) &
-      Node.DOCUMENT_POSITION_PRECEDING &&
+    Node.DOCUMENT_POSITION_PRECEDING &&
     !(
       previousActiveElement.compareDocumentPosition(activeElement) & Node.DOCUMENT_POSITION_CONTAINS
     )
@@ -46,6 +46,7 @@ const safeSetFocus: typeof unsafeSetFocus = (...args) => {
     if (timeBetweenFocusMoveRequests.every((time) => time < 250)) {
       focusMoveDisabledUntil = Date.now() + 10000;
       focusMoveRequests = [];
+
       console.error(
         '[useFocusLock] Probably the focus war was detected. It is a process when multiple browser focus control subjects are reacting to "blur" event on their element and are trying to get it back. Focus move function was disabled for 10 seconds. Probably your page has different focus lock systems. If you have multiple versions of Intergalactic components, updated them to the latest version (at least to 15.16.3).',
       );
@@ -59,7 +60,7 @@ const safeSetFocus: typeof unsafeSetFocus = (...args) => {
 if (canUseDOM()) {
   document.addEventListener(
     'keydown',
-    (event) => {
+    () => {
       lastUserAction = Date.now();
     },
     { capture: true },

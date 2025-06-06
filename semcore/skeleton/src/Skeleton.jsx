@@ -1,12 +1,12 @@
-import React from 'react';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
-import { Box } from '@semcore/flex-box';
-import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import { Box } from '@semcore/flex-box';
+import React from 'react';
 
 import style from './style/skeleton.shadow.css';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 const MAP_COLOR_THEME = {
   dark: 'rgba(255, 255, 255, 0.3)',
@@ -25,7 +25,7 @@ class SkeletonRoot extends Component {
 
   render() {
     const SSkeleton = Root;
-    const { Children, styles, duration, hidden, getI18nText, tag } = this.asProps;
+    const { styles, duration, hidden, getI18nText } = this.asProps;
 
     if (hidden) return null;
 
@@ -33,7 +33,7 @@ class SkeletonRoot extends Component {
       <SSkeleton
         render={Box}
         durationAnim={`${duration}ms`}
-        role={'img'}
+        role='img'
         aria-label={getI18nText('loading')}
       />,
     );
@@ -119,7 +119,7 @@ function Text(props) {
 
   return (
     <React.Fragment>
-      {[...Array(amountLine)].map((el, index) =>
+      {[...Array(amountLine)].map((_el, index) =>
         renderRect({
           key: index,
           y: y || 20 * index,

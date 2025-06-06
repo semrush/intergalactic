@@ -1,7 +1,7 @@
-import React from 'react';
-import Table from '@semcore/table';
 import Accordion from '@semcore/accordion';
 import { Box } from '@semcore/flex-box';
+import Table from '@semcore/table';
+import React from 'react';
 
 const Demo = () => (
   <Table>
@@ -28,7 +28,7 @@ const Demo = () => (
               ))}
             </Accordion.Item.Toggle>
             <Accordion.Item.Collapse>
-              <Box p={'12px 32px'}>{`Section ${index + 1}`}</Box>
+              <Box p='12px 32px'>{`Section ${index + 1}`}</Box>
             </Accordion.Item.Collapse>
           </Accordion.Item>
         ))}

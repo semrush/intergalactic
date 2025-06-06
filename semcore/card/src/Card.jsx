@@ -1,12 +1,13 @@
-import React from 'react';
-import { createComponent, Component, sstyled, Root } from '@semcore/core';
-import { Box } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
 import { ButtonLink } from '@semcore/button';
-import { DescriptionTooltip } from '@semcore/tooltip';
-import InfoM from '@semcore/icon/Info/m';
-import style from './style/card.shadow.css';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
+import { Box } from '@semcore/flex-box';
+import InfoM from '@semcore/icon/Info/m';
+import { DescriptionTooltip } from '@semcore/tooltip';
+import { Text } from '@semcore/typography';
+import React from 'react';
+
+import style from './style/card.shadow.css';
 
 class CardRoot extends Component {
   static displayName = 'Card';
@@ -23,13 +24,15 @@ class CardRoot extends Component {
 
     return sstyled(styles)(
       <SCard render={Box}>
-        {advancedMode ? (
-          <Children />
-        ) : (
-          <Card.Body>
-            <Children />
-          </Card.Body>
-        )}
+        {advancedMode
+          ? (
+              <Children />
+            )
+          : (
+              <Card.Body>
+                <Children />
+              </Card.Body>
+            )}
       </SCard>,
     );
   }
@@ -49,9 +52,9 @@ function Title(props) {
             <DescriptionTooltip.Trigger
               tag={ButtonLink}
               ml={1}
-              use={'secondary'}
+              use='secondary'
               aria-label={innerHintAriaLabel}
-              color={'--intergalactic-icon-secondary-neutral'}
+              color='--intergalactic-icon-secondary-neutral'
             >
               <ButtonLink.Addon>
                 <InfoM />
@@ -65,9 +68,9 @@ function Title(props) {
         <DescriptionTooltip>
           <DescriptionTooltip.Trigger
             tag={ButtonLink}
-            use={'secondary'}
+            use='secondary'
             aria-label={hintAfterAriaLabel}
-            color={'--intergalactic-icon-secondary-neutral'}
+            color='--intergalactic-icon-secondary-neutral'
           >
             <ButtonLink.Addon>
               <InfoM />

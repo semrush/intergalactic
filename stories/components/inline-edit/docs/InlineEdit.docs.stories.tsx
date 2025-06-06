@@ -1,6 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
-
 import InlineEdit from '@semcore/inline-edit';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import EditableTagExample from './examples/editable_tag';
 import PseudoNetworkInteractionExample from './examples/pseudo_network_interaction';

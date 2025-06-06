@@ -6,5 +6,4 @@ export async function SingletonTest({ canvasElement }: { canvasElement: HTMLElem
   await userEvent.keyboard('{Tab}');
   await userEvent.keyboard('{Tab}');
   await userEvent.keyboard('{Enter}');
-
 }

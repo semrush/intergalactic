@@ -9,5 +9,4 @@ export async function TriggerAndPopperTest({ canvasElement }: { canvasElement: H
   }
 
   await userEvent.click(triggers);
-
 }

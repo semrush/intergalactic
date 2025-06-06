@@ -1,16 +1,18 @@
-import esbuild from 'esbuild';
+import { createHash } from 'crypto';
 import fs from 'fs/promises';
-import { websiteEsbuildConfig } from './esbuild.config';
-import { buildNavigation } from './navigation';
 import {
   resolve as resolvePath,
   relative as resolveRelativePath,
   dirname as resolveDirname,
 } from 'path';
-import { buildArticle, serializeArticle } from './build-article/build-article';
-import { createHash } from 'crypto';
-import { SitemapStream, streamToPromise } from 'sitemap';
 import { Readable } from 'stream';
+
+import esbuild from 'esbuild';
+import { SitemapStream, streamToPromise } from 'sitemap';
+
+import { buildArticle, serializeArticle } from './build-article/build-article';
+import { websiteEsbuildConfig } from './esbuild.config';
+import { buildNavigation } from './navigation';
 
 const fsExists = async (path: string) => {
   try {

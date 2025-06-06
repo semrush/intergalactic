@@ -1,25 +1,25 @@
-import React from 'react';
-import cn from 'classnames';
 import { createBaseComponent, sstyled } from '@semcore/core';
-import { useBox } from '@semcore/flex-box';
 import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
-import propsForElement from '@semcore/core/lib/utils/propsForElement';
-import logger from '@semcore/core/lib/utils/logger';
-import { useForkRef } from '@semcore/core/lib/utils/ref';
 import hasLabels from '@semcore/core/lib/utils/hasLabels';
+import logger from '@semcore/core/lib/utils/logger';
+import propsForElement from '@semcore/core/lib/utils/propsForElement';
+import { useForkRef } from '@semcore/core/lib/utils/ref';
 import { useColorResolver } from '@semcore/core/lib/utils/use/useColorResolver';
+import { useBox } from '@semcore/flex-box';
+import cn from 'classnames';
+import React from 'react';
 
 import styles from './style/icon.shadow.css';
 
 function Icon(props, ref) {
   const [SIcon, other] = useBox(
     {
-      tag: 'svg',
+      'tag': 'svg',
       'data-ui-name': 'Icon',
-      width: 16,
-      height: 16,
-      viewBox: '0 0 16 16',
-      focusable: props.interactive,
+      'width': 16,
+      'height': 16,
+      'viewBox': '0 0 16 16',
+      'focusable': props.interactive,
       ...props,
     },
     ref,
@@ -35,8 +35,8 @@ function Icon(props, ref) {
   const sstyles = sstyled(styles);
   const { className, style } = sstyles.cn('SIcon', {
     'use:color': color,
-    interactive: interactive,
-    keyboardFocused: keyboardFocused,
+    'interactive': interactive,
+    'keyboardFocused': keyboardFocused,
   });
 
   function onKeyDown(event) {

@@ -1,7 +1,7 @@
-import React from 'react';
 import { Flex } from '@semcore/flex-box';
 import Select from '@semcore/select';
 import { Text } from '@semcore/typography';
+import React from 'react';
 
 const Demo = () => (
   <Flex direction='column'>
@@ -33,7 +33,7 @@ const Demo = () => (
           <Select.Option.Hint>Hint for the option</Select.Option.Hint>
         </Select.Option>
 
-        <Select.Group title={'Group title'} subTitle={'Hint for the title'}>
+        <Select.Group title='Group title' subTitle='Hint for the title'>
           <Select.Option value={4}>1st option in group</Select.Option>
           <Select.Option value={5}>2nd option in group</Select.Option>
           <Select.Option value={6}>3rd option in group</Select.Option>
