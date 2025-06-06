@@ -1,7 +1,6 @@
-import { expect, userEvent, within } from '@storybook/test';
+import { userEvent } from 'storybook/test';
 
-export async function ModalInModalTest({ canvasElement }: { canvasElement: HTMLElement }) {
-  const canvas = within(canvasElement);
+export async function ModalInModalTest() {
   await userEvent.keyboard('{Tab}');
   await userEvent.keyboard('{Tab}');
   await userEvent.keyboard('{Enter}');
