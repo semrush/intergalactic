@@ -1,5 +1,6 @@
-import React, { ComponentClass, ComponentType, PureComponent } from 'react';
 import hoistNonReactStatics from 'hoist-non-react-statics';
+import React, { type ComponentClass, type ComponentType, PureComponent } from 'react';
+
 import getDisplayName from './getDisplayName';
 
 function createHoc(

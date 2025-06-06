@@ -1,8 +1,8 @@
-import React from 'react';
 import { Flex } from '@semcore/flex-box';
 import Select from '@semcore/select';
 import Spin from '@semcore/spin';
 import { Text } from '@semcore/typography';
+import React from 'react';
 
 const Demo = () => (
   <Flex gap={4} flexWrap>

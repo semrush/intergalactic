@@ -1,5 +1,5 @@
-import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import { expect, test } from '@semcore/testing-utils/playwright';
 
 test.describe('Roles and attrubutes', () => {
   test('Verify Base example roles and attributes', async ({ page }) => {
@@ -381,7 +381,7 @@ test.describe('Interactions', () => {
       await expect(input).toHaveAttribute('value', '100');
     });
 
-    //disabled for firefox and webskit because test example works unstable
+    // disabled for firefox and webskit because test example works unstable
     if (browserName !== 'chromium') return;
     await test.step('Verify correct page is set when entering and activate input', async () => {
       await input.fill('33');

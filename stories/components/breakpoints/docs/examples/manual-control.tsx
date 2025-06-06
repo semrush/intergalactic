@@ -1,6 +1,6 @@
-import React from 'react';
 import Breakpoints from '@semcore/breakpoints';
 import Button from '@semcore/button';
+import React from 'react';
 
 const Demo = () => {
   const [index, setIndex] = React.useState(Breakpoints.mediaList.matches());
@@ -14,7 +14,12 @@ const Demo = () => {
     };
   }, []);
 
-  return <Button size={(['m', 'l'] as const)[index]}>Size {['M', 'L'][index]}</Button>;
+  return (
+    <Button size={(['m', 'l'] as const)[index]}>
+      Size
+      {['M', 'L'][index]}
+    </Button>
+  );
 };
 
 export default Demo;

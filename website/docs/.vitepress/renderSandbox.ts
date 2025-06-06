@@ -1,8 +1,10 @@
-import { createMarkdownRenderer } from 'vitepress/dist/node/index';
-import { resolve as resolvePath } from 'path';
-import parseImports from 'parse-es-import';
-import { transformSync } from 'esbuild';
 import fs from 'fs';
+import { resolve as resolvePath } from 'path';
+
+import { transformSync } from 'esbuild';
+import parseImports from 'parse-es-import';
+import { createMarkdownRenderer } from 'vitepress/dist/node/index';
+
 import { codeTheme } from './code-theme';
 
 const markdownRenderer = await createMarkdownRenderer(resolvePath(__dirname, '..'), {

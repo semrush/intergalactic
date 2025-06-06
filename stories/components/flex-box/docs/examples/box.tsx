@@ -1,6 +1,6 @@
-import React from 'react';
-import { Box } from '@semcore/flex-box';
 import Button from '@semcore/button';
+import { Box } from '@semcore/flex-box';
+import React from 'react';
 
 const Demo = () => (
   <div>

@@ -1,10 +1,11 @@
-import React from 'react';
 import { createComponent, sstyled, Root } from '@semcore/core';
-import style from './buttonLink.shadow.css';
-import { Box } from '@semcore/flex-box';
-import { AbstractButton } from '../AbstractButton/AbstractButton';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
-import { ButtonLinkAddonProps, ButtonLinkComponent, ButtonLinkTextProps } from './ButtonLink.type';
+import { Box } from '@semcore/flex-box';
+import React from 'react';
+
+import style from './buttonLink.shadow.css';
+import type { ButtonLinkAddonProps, ButtonLinkComponent, ButtonLinkTextProps } from './ButtonLink.type';
+import { AbstractButton } from '../AbstractButton/AbstractButton';
 
 const enhance = {
   resolveColor: resolveColorEnhance(),

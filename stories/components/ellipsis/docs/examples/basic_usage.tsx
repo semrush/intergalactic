@@ -1,7 +1,7 @@
-import React from 'react';
 import Ellipsis from '@semcore/ellipsis';
 import { Box } from '@semcore/flex-box';
 import Link from '@semcore/link';
+import React from 'react';
 
 const Demo = () => {
   return (

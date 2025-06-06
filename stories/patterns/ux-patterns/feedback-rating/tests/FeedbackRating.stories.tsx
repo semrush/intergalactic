@@ -1,9 +1,8 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import FeedbackRatingWithTitleAndSubtitleExample from './examples/with-title-and-subtitle';
+import { WithErrorTest } from './__tests__/with-error.test';
 import WithErrorOnSendExample from './examples/with-error-on-send';
-
-import {WithErrorTest } from './__tests__/with-error.test';
+import FeedbackRatingWithTitleAndSubtitleExample from './examples/with-title-and-subtitle';
 import { playWrapper } from '../../../../utils/playWrapper';
 
 const meta: Meta = {

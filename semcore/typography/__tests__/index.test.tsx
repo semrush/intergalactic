@@ -1,9 +1,9 @@
-import * as React from 'react';
-import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
-import { List } from '../src';
-
-import { cleanup, render } from '@semcore/testing-utils/testing-library';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { cleanup, render } from '@semcore/testing-utils/testing-library';
+import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
+import * as React from 'react';
+
+import { List } from '../src';
 
 describe('typography Dependency imports', () => {
   runDependencyCheckTests('typography');
@@ -14,7 +14,7 @@ describe('List', () => {
   test('Default List.Item should have display block for content', async ({ task }) => {
     const component = (
       <List>
-        <List.Item marker={null} data-testid={'itemToCheck'}>
+        <List.Item marker={null} data-testid='itemToCheck'>
           List item
         </List.Item>
       </List>
@@ -26,10 +26,10 @@ describe('List', () => {
   test('Nested List.Item should have display flex for content', async ({ task }) => {
     const component = (
       <List>
-        <List.Item marker={null} data-testid={'itemToCheck'}>
+        <List.Item marker={null} data-testid='itemToCheck'>
           List item 3
           <List>
-            <List.Item data-testid={'itemToCheckFlex'}>List item</List.Item>
+            <List.Item data-testid='itemToCheckFlex'>List item</List.Item>
           </List>
         </List.Item>
       </List>

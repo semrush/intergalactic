@@ -1,7 +1,7 @@
-import React from 'react';
 import { Plot, YAxis, minMax, StackedArea } from '@semcore/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import { curveCardinal } from 'd3-shape';
+import React from 'react';
 
 const Demo = () => {
   const MARGIN = 40;

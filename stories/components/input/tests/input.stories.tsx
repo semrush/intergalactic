@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import WithSubmitExample from './examples/input-styles';
 import WithLabelExample from './examples/input--with-label';

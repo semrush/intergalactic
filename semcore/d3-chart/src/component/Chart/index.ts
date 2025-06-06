@@ -1,14 +1,14 @@
-import { LineChart } from './LineChart';
-import { BarChart } from './BarChart';
-import { CompactHorizontalBarChart } from './CompactHorizontalBarChart';
-import { HistogramChart } from './HistogramChart';
-import { ScatterPlotChart } from './ScatterPlotChart';
 import { AreaChart } from './AreaChart';
+import { BarChart } from './BarChart';
 import { BubbleChart } from './BubbleChart';
-import { DonutChart } from './DonutChart';
-import { VennChart } from './VennChart';
-import { RadarChart } from './RadarChart';
 import { CigaretteChart } from './CigaretteChart';
+import { CompactHorizontalBarChart } from './CompactHorizontalBarChart';
+import { DonutChart } from './DonutChart';
+import { HistogramChart } from './HistogramChart';
+import { LineChart } from './LineChart';
+import { RadarChart } from './RadarChart';
+import { ScatterPlotChart } from './ScatterPlotChart';
+import { VennChart } from './VennChart';
 
 export default {
   Line: LineChart,

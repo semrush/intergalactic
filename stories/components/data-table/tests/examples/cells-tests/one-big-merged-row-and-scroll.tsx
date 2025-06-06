@@ -1,5 +1,5 @@
-import React from 'react';
 import { DataTable, ROW_GROUP } from '@semcore/data-table';
+import React from 'react';
 
 const data = [
   {
@@ -47,14 +47,14 @@ const data = [
       },
     ],
   },
-  
+
 ];
 
 const Demo = () => {
   return (
     <DataTable
       data={data}
-      aria-label="Rows grouping"
+      aria-label='Rows grouping'
       h={200}
       columns={[
         { name: 'keyword', children: 'Keyword' },

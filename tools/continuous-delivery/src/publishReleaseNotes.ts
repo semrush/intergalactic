@@ -1,7 +1,10 @@
-import { log } from './utils';
-import { Changelog, serializeReleaseChangelog, toMarkdown } from '@semcore/changelog-handler';
-import fs from 'fs/promises';
 import { execSync } from 'child_process';
+import fs from 'fs/promises';
+
+import type { Changelog } from '@semcore/changelog-handler';
+import { serializeReleaseChangelog, toMarkdown } from '@semcore/changelog-handler';
+
+import { log } from './utils';
 
 export const publishReleaseNotes = async (version: string, lastVersionChangelogs: Changelog[]) => {
   log('Publishing release note.');

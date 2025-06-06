@@ -1,13 +1,13 @@
-import React from 'react';
+import { ButtonLink } from '@semcore/button';
+import { Box } from '@semcore/flex-box';
+import CloseM from '@semcore/icon/Close/m';
+import ShowNoM from '@semcore/icon/ShowNo/m';
+import ShowYesM from '@semcore/icon/ShowYes/m';
 import Input from '@semcore/input';
 import Link from '@semcore/link';
-import CloseM from '@semcore/icon/Close/m';
-import ShowYesM from '@semcore/icon/ShowYes/m';
-import ShowNoM from '@semcore/icon/ShowNo/m';
-import { Text } from '@semcore/typography';
-import { Box } from '@semcore/flex-box';
-import { ButtonLink } from '@semcore/button';
 import { Hint } from '@semcore/tooltip';
+import { Text } from '@semcore/typography';
+import React from 'react';
 
 const Demo = () => {
   const [value, setValue] = React.useState('');

@@ -1,10 +1,11 @@
-import styles from './design-tokens.module.css';
-import SearchIcon from '@semcore/icon/Search/m/index.js';
-import CloseIcon from '@semcore/icon/Close/m/index.js';
-import React from 'react';
-import { Text } from '@semcore/typography';
 import { ButtonLink } from '@semcore/button';
+import CloseIcon from '@semcore/icon/Close/m/index.js';
+import SearchIcon from '@semcore/icon/Search/m/index.js';
 import Input from '@semcore/input';
+import { Text } from '@semcore/typography';
+import React from 'react';
+
+import styles from './design-tokens.module.css';
 
 export const SearchInput = ({
   filter,

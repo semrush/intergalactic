@@ -1,10 +1,11 @@
-import path from 'path';
-import fs from 'fs-extra';
-import glob from 'fast-glob';
-import { fileURLToPath } from 'url';
 import { createRequire } from 'module';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
 import { Parser } from 'acorn';
 import acornJSX from 'acorn-jsx';
+import glob from 'fast-glob';
+import fs from 'fs-extra';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.resolve(filename, '..');
@@ -72,7 +73,7 @@ const EXPORT_TEMPLATES: {
     NAMED: (lib: string) => string;
   };
 } = {
-  cjs: {
+  'cjs': {
     LIB_DEFAULT: (lib: string, component: string) =>
       `module.exports = require('${lib}/lib/${component}');`,
     LIB_NAMED: (lib: string, component: string) =>
@@ -80,14 +81,14 @@ const EXPORT_TEMPLATES: {
     DEFAULT: (lib: string) => `module.exports = require('${lib}');`,
     NAMED: (lib: string) => `module.exports = require('${lib}');`,
   },
-  mjs: {
+  'mjs': {
     LIB_DEFAULT: (lib: string, component: string) =>
       `export { default } from '${lib}/lib/${component}';\nexport * from '${lib}/lib/${component}';`,
     LIB_NAMED: (lib: string, component: string) => `export * from '${lib}/lib/${component}';`,
     DEFAULT: (lib: string) => `export { default } from '${lib}';\nexport * from '${lib}';`,
     NAMED: (lib: string) => `export * from '${lib}';`,
   },
-  get js() {
+  get 'js'() {
     return EXPORT_TEMPLATES.mjs;
   },
   get 'd.ts'() {

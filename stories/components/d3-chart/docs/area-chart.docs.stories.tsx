@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import AreaExample from './examples/area-chart/area';
 import BasicUsageExample from './examples/area-chart/basic-usage';
@@ -6,7 +6,6 @@ import CustomLineExample from './examples/area-chart/custom-line';
 import EdgeCasesExample from './examples/area-chart/edge-cases';
 import InterpolationExample from './examples/area-chart/interpolation';
 import LegendAndPatternFillExample from './examples/area-chart/legend-and-pattern-fill';
-
 
 const meta: Meta = {
   title: 'Components/d3Charts/Documentation/Area-Chart',

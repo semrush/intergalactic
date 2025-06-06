@@ -1,9 +1,10 @@
-import React from 'react';
-import Input from '@semcore/input';
-import Select from '@semcore/select';
-import { intOrDefault, withLeadingZero } from './TimePicker';
 import { Component, sstyled, Root } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
+import Input from '@semcore/input';
+import Select from '@semcore/select';
+import React from 'react';
+
+import { intOrDefault, withLeadingZero } from './TimePicker';
 
 const MAP_FIELD_TO_TIME = {
   hours: 0,
@@ -19,7 +20,7 @@ function getOptions(min, max, step = 1) {
   const length = Number(((max + 1 - min) / step).toFixed(0));
   const options = Array(length).fill('');
   let numValue = min;
-  return options.map((i, index) => {
+  return options.map((_i, index) => {
     numValue = index === 0 ? numValue : numValue + step;
     const value = withLeadingZero(String(numValue));
     return (
@@ -71,7 +72,7 @@ class ItemPicker extends Component {
   handleChange = (value, event) => {
     /* hide props for bubbling events */
     event.stopPropagation();
-    const numberValue = intOrDefault(Number(value), NaN);
+    const numberValue = intOrDefault(Number(value), Number.NaN);
 
     if (!Number.isNaN(numberValue)) {
       this.setState({ dirtyValue: value.slice(-2) });
@@ -119,7 +120,7 @@ class ItemPicker extends Component {
           render={Select.Trigger}
           tag={Input.Value}
           ref={this.inputRef}
-          inputMode={'numeric'}
+          inputMode='numeric'
           size={size}
           disabled={disabled}
           neighborLocation={false}

@@ -29,7 +29,7 @@
     "directory": "semcore/dropdown"
   },
   "devDependencies": {
-    "@types/react": "18.0.21",
-    "@semcore/testing-utils": "1.0.0"
+    "@semcore/core": "workspace:*",
+    "@semcore/testing-utils": "workspace:*"
   }
 }

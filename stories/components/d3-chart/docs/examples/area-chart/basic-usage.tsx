@@ -1,5 +1,5 @@
-import React from 'react';
 import { Chart } from '@semcore/d3-chart';
+import React from 'react';
 
 function formatDate(value: any) {
   const options = {
@@ -13,12 +13,12 @@ function formatDate(value: any) {
 const Demo = () => {
   return (
     <Chart.Area
-      groupKey="time"
+      groupKey='time'
       data={data}
       plotWidth={500}
       plotHeight={200}
       tooltipValueFormatter={formatDate}
-      aria-label="Area chart"
+      aria-label='Area chart'
     />
   );
 };

@@ -1,9 +1,9 @@
-import React from 'react';
 import { Plot, CompactHorizontalBar } from '@semcore/d3-chart';
-import { scaleLinear, scaleBand } from 'd3-scale';
 import { Flex } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
 import Link from '@semcore/link';
+import { Text } from '@semcore/typography';
+import { scaleLinear, scaleBand } from 'd3-scale';
+import React from 'react';
 
 const Demo = () => {
   const MARGIN = 30;
@@ -46,7 +46,12 @@ const Demo = () => {
           <CompactHorizontalBar.Percent />
           <CompactHorizontalBar.Value tag={Link} href='https://semrush.com'>
             {({ formatted }) => {
-              return <Link.Text>~{formatted}</Link.Text>;
+              return (
+                <Link.Text>
+                  ~
+                  {formatted}
+                </Link.Text>
+              );
             }}
           </CompactHorizontalBar.Value>
         </CompactHorizontalBar.Annotation>

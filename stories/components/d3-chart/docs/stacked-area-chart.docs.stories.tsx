@@ -1,10 +1,9 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import BasicUsageExample from './examples/stacked-area-chart/basic-usage';
 import EdgeCasesExample from './examples/stacked-area-chart/edge-cases';
-import StackedAreaExample from './examples/stacked-area-chart/stacked-area';
 import LegendAndPatternFillExample from './examples/stacked-area-chart/legend-and-pattern-fill';
-
+import StackedAreaExample from './examples/stacked-area-chart/stacked-area';
 
 const meta: Meta = {
   title: 'Components/d3Charts/Documentation/Stacked-Area-Chart',

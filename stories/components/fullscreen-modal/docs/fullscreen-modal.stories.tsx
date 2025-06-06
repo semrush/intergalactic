@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import BasicExample from './examples/basic_fullscreen.headers_use';
 import DualZoneExample from './examples/example_of_a_dual-zone_modal_window';

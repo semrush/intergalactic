@@ -1,6 +1,7 @@
-import playwright from 'playwright';
 import fs from 'node:fs/promises';
 import path from 'path';
+
+import type playwright from 'playwright';
 
 export async function mockIllustrationsRequest(page: playwright.Page) {
   await page.route(

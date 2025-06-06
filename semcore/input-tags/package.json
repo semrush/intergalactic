@@ -17,11 +17,11 @@
     "types": "./lib/types/index.d.ts"
   },
   "dependencies": {
-    "@semcore/input": "16.0.1",
     "@semcore/flex-box": "16.0.1",
-    "@semcore/tag": "16.1.1",
+    "@semcore/input": "16.0.1",
+    "@semcore/portal": "16.0.1",
     "@semcore/scroll-area": "16.0.1",
-    "@semcore/portal": "16.0.1"
+    "@semcore/tag": "16.1.1"
   },
   "peerDependencies": {
     "@semcore/base-components": "^16.0.0"
@@ -32,13 +32,13 @@
     "directory": "semcore/input-tags"
   },
   "devDependencies": {
-    "@types/react": "18.0.21",
-    "@semcore/testing-utils": "1.0.0",
-    "@semcore/tooltip": "*",
-    "@semcore/select": "*",
-    "@semcore/typography": "*",
-    "@semcore/flex-box": "*",
-    "@semcore/button": "*",
-    "@semcore/icon": "*"
+    "@semcore/core": "workspace:*",
+    "@semcore/button": "workspace:*",
+    "@semcore/flex-box": "workspace:*",
+    "@semcore/icon": "workspace:*",
+    "@semcore/select": "workspace:*",
+    "@semcore/testing-utils": "workspace:*",
+    "@semcore/tooltip": "workspace:*",
+    "@semcore/typography": "workspace:*"
   }
 }

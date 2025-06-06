@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
 import ColorPicker, { PaletteManager } from '@semcore/color-picker';
-import { Text } from '@semcore/typography';
 import { Flex } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
+import React, { useState } from 'react';
 
 const Demo = () => {
   const [selectedColor, setSelectedColor] = useState('#ff0000');
@@ -18,7 +18,7 @@ const Demo = () => {
         Main theme color
       </Text>
       <ColorPicker
-        stretch={'min'}
+        stretch='min'
         defaultValue={selectedColor}
         colors={paletteColors}
         onChange={(color) => {

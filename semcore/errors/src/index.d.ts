@@ -1,8 +1,8 @@
-import React from 'react';
-import { Box, FlexProps } from '@semcore/flex-box';
-import { Intergalactic, PropGetterFn, UnknownProperties } from '@semcore/core';
-import { TIllustrationNamesErrors } from '@semcore/illustration';
-import { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import type { Intergalactic, PropGetterFn, UnknownProperties } from '@semcore/core';
+import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import type { Box, FlexProps } from '@semcore/flex-box';
+import type { TIllustrationNamesErrors } from '@semcore/illustration';
+import type React from 'react';
 
 export type iconNamesErrors = TIllustrationNamesErrors;
 

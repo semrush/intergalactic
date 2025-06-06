@@ -1,8 +1,9 @@
-import fetch from 'node-fetch';
 import * as fs from 'fs';
-import sharp from 'sharp';
+
 import * as dotenv from 'dotenv';
+import fetch from 'node-fetch';
 import pLimit from 'p-limit';
+import sharp from 'sharp';
 
 const limit = pLimit(1);
 const FIGMA_PROJECT_ID = '74268036';
@@ -25,7 +26,7 @@ const downloadIllustrations = async () => {
       .toLowerCase()
       .split(' ')
       .join('-')}/static`;
-    // biome-ignore lint/suspicious/noConsoleLog:
+
     console.log('page', children.name);
 
     if (fs.existsSync(folderName)) {
@@ -47,7 +48,7 @@ const downloadIllustrations = async () => {
             });
 
           const fileName = `${illustration.name}.png`;
-          // biome-ignore lint/suspicious/noConsoleLog:
+
           console.log('illustration', fileName);
         } catch (error) {
           console.error(error.message);
@@ -66,7 +67,7 @@ const downloadIllustrations = async () => {
         const data: { name?: string; document?: { children: { name: string }[] } } =
           await response.json();
         const category = data.name.toLowerCase().split(' ').join('-');
-        // biome-ignore lint/suspicious/noConsoleLog:
+
         console.log('category', category);
         const downloadPromises = data.document.children
           .filter(
@@ -91,9 +92,9 @@ const downloadIllustrations = async () => {
 
   if (response.ok) {
     try {
-      const data: { files?: { key: string; name: string }[] } = await response.json();
+      const data = await response.json() as { files?: { key: string; name: string }[] };
       data.files
-        .filter((file) => !chosenPath.length || file.name.toLowerCase() === chosenPath[0])
+        ?.filter((file) => !chosenPath.length || file.name.toLowerCase() === chosenPath[0])
         .map((file) => getIllustrationList(file.key));
     } catch (error) {
       console.error(error);

@@ -1,5 +1,6 @@
-import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import { expect, test } from '@semcore/testing-utils/playwright';
+
 import { checkBackgroundColor, checkBorderColor, checkKeyboardNavigation } from './utils';
 
 test.describe('Base-trigger', () => {

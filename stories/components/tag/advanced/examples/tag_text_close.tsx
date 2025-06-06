@@ -1,26 +1,26 @@
-import React from 'react';
-import Tag, { TagContainer } from '@semcore/tag';
 import { Flex } from '@semcore/flex-box';
-import SmileHappyM from '@semcore/icon/SmileHappy/m';
 import SmileHappyL from '@semcore/icon/SmileHappy/l';
-import SmileSadM from '@semcore/icon/SmileSad/m';
+import SmileHappyM from '@semcore/icon/SmileHappy/m';
 import SmileSadL from '@semcore/icon/SmileSad/l';
+import SmileSadM from '@semcore/icon/SmileSad/m';
+import Tag, { TagContainer } from '@semcore/tag';
+import React from 'react';
 
 const Demo = () => {
   return (
     <Flex direction='column' gap={3}>
 
       <Flex gap={1}>
-      <TagContainer
-          color="gray-500"
+        <TagContainer
+          color='gray-500'
           disabled={false}
-          size="m"
-          theme="primary"
+          size='m'
+          theme='primary'
         >
           <TagContainer.Tag>
-          <Tag.Addon>
-      <SmileHappyL />
-    </Tag.Addon>
+            <Tag.Addon>
+              <SmileHappyL />
+            </Tag.Addon>
             <Tag.Text>
               Tag text
             </Tag.Text>
@@ -29,17 +29,17 @@ const Demo = () => {
         </TagContainer>
 
         <TagContainer
-          color="gray-500"
+          color='gray-500'
           disabled={false}
           interactive={false}
-          size="l"
-          theme="primary"
+          size='l'
+          theme='primary'
           addonLeft={SmileHappyL}
         >
-          <TagContainer.Tag >
-          <Tag.Addon>
-      <SmileHappyL />
-    </Tag.Addon>
+          <TagContainer.Tag>
+            <Tag.Addon>
+              <SmileHappyL />
+            </Tag.Addon>
             <Tag.Text>
               Tag text
             </Tag.Text>
@@ -48,16 +48,16 @@ const Demo = () => {
         </TagContainer>
 
         <TagContainer
-          color="gray-500"
+          color='gray-500'
           disabled={false}
-          size="xl"
-          theme="primary"
+          size='xl'
+          theme='primary'
           addonLeft={SmileHappyL}
         >
-          <TagContainer.Tag >
-          <Tag.Addon>
-      <SmileHappyL />
-    </Tag.Addon>
+          <TagContainer.Tag>
+            <Tag.Addon>
+              <SmileHappyL />
+            </Tag.Addon>
             <Tag.Text>
               Tag text
             </Tag.Text>
@@ -99,9 +99,8 @@ const Demo = () => {
         </Tag>
       </Flex> */}
 
-
       {/* <Flex gap={1}> */}
-        {/* <Tag size='m' addonRight={SmileHappyM}>
+      {/* <Tag size='m' addonRight={SmileHappyM}>
           <Tag.Text>Tag</Tag.Text>
           <Tag.Close />
         </Tag>
@@ -113,7 +112,7 @@ const Demo = () => {
           <Tag.Text>Tag</Tag.Text>
           <Tag.Close />
         </Tag> */}
-        {/* <Tag size='m'>
+      {/* <Tag size='m'>
           <Tag.Text>Tag</Tag.Text>
           <Tag.Addon>
             <SmileSadM />

@@ -1,9 +1,9 @@
 const postcss = require('postcss');
-const presetEnv = require('postcss-preset-env');
-const atImport = require('postcss-import-sync2');
-const csso = require('postcss-csso');
 const postcssColorMod = require('postcss-color-mod-function');
+const csso = require('postcss-csso');
 const postcssHoverMediaFeature = require('postcss-hover-media-feature');
+const atImport = require('postcss-import-sync2');
+const presetEnv = require('postcss-preset-env');
 
 const inlineCssVariables = require('./inline-css-variables');
 const shadowStyles = require('./postcss-shadow-styles');

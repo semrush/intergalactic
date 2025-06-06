@@ -1,8 +1,8 @@
-import React from 'react';
-import Select from '@semcore/select';
 import { LinkTrigger } from '@semcore/base-trigger';
 import { Flex } from '@semcore/flex-box';
+import Select from '@semcore/select';
 import { Text } from '@semcore/typography';
+import React from 'react';
 
 const Demo = () => (
   <Flex gap={2}>

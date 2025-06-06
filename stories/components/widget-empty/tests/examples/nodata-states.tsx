@@ -1,44 +1,48 @@
-import React from 'react';
-import { NoData, getIconPath } from '@semcore/widget-empty';
+import Button, { ButtonLink } from '@semcore/button';
 import { Box, Flex } from '@semcore/flex-box';
 import Link from '@semcore/link';
-import Button, { ButtonLink } from '@semcore/button';
+import { NoData, getIconPath } from '@semcore/widget-empty';
+import React from 'react';
 
 const Demo = () => {
   return (
     <Flex direction='row' gap={6} alignItems='flex-start' justifyContent='space-between'>
       <Box style={{ flex: '1 1 45%', minWidth: '45%' }}>
         <NoData
-          description={
+          description={(
             <>
-              Please try again later. If the problem persists, contact us at{' '}
+              Please try again later. If the problem persists, contact us at
+              {' '}
               <Link href='mailto:mail@semrush.com'>mail@semrush.com</Link>
             </>
-          }
+          )}
         />
         <NoData />
 
         <NoData
           icon={getIconPath('good')}
-          description={
+          description={(
             <>
-              Please try again later. If the problem persists, contact us at{' '}
+              Please try again later. If the problem persists, contact us at
+              {' '}
               <Button>mail@semrush.com</Button>
             </>
-          }
+          )}
         />
       </Box>
 
       <Box style={{ flex: '1 1 45%', minWidth: '45%' }}>
-        <NoData>NoData</NoData>;
+        <NoData>NoData</NoData>
+        ;
         <NoData
           icon={getIconPath('good')}
-          description={
+          description={(
             <>
-              Please try again later. If the problem persists, contact us at{' '}
+              Please try again later. If the problem persists, contact us at
+              {' '}
               <ButtonLink>mail@semrush.com</ButtonLink>
             </>
-          }
+          )}
         />
 
         <NoData description={<>Please try again later. If the problem persists, contact us at </>}>

@@ -1,8 +1,8 @@
-import React from 'react';
-import { sstyled } from '@semcore/core';
-import Button from '@semcore/button';
-import { Flex } from '@semcore/flex-box';
 import { Animation, Collapse, FadeInOut, Transform, Slide } from '@semcore/animation';
+import Button from '@semcore/button';
+import { sstyled } from '@semcore/core';
+import { Flex } from '@semcore/flex-box';
+import React from 'react';
 
 const stylePopper = sstyled.css`
   @keyframes enter {

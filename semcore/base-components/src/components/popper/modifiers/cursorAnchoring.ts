@@ -1,5 +1,6 @@
+import type { Modifier } from '@popperjs/core';
+
 import { getOffsetParent } from '../utils/getOffsetParent';
-import { Modifier } from '@popperjs/core';
 
 const clamp = (value: number, boundary1: number, boundary2: number) => {
   const min = Math.min(boundary1, boundary2);

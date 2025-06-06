@@ -1,11 +1,12 @@
-import React from 'react';
 import { Component, lastInteraction } from '@semcore/core';
-import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-import { isFocusInside, setFocus } from '@semcore/core/lib/utils/use/useFocusLock';
-import { DropdownProps } from './index';
 import { getAccessibleName } from '@semcore/core/lib/utils/getAccessibleName';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import { isFocusInside, setFocus } from '@semcore/core/lib/utils/use/useFocusLock';
+import React from 'react';
+
+import type { DropdownProps } from './index';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 type AbstractDDProps = {
   visible: boolean;
@@ -71,7 +72,7 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
     return 'menuitem';
   }
 
-  handleClickTrigger = (e: React.SyntheticEvent) => {
+  handleClickTrigger = (_e: React.SyntheticEvent) => {
     const { interaction, inlineActions } = this.asProps;
 
     if (interaction === 'none' || inlineActions) return false;
@@ -98,12 +99,12 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
 
     return {
       size,
-      id: `igc-${uid}-trigger`,
-      focusHint: visible && !disablePortal ? getI18nText('triggerHint') : undefined,
+      'id': `igc-${uid}-trigger`,
+      'focusHint': visible && !disablePortal ? getI18nText('triggerHint') : undefined,
       'aria-haspopup': 'true',
       'aria-expanded': visible ? 'true' : 'false',
-      onClick: this.handleClickTrigger,
-      ref: this.triggerRef,
+      'onClick': this.handleClickTrigger,
+      'ref': this.triggerRef,
     };
   }
 
@@ -120,13 +121,13 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
       this.asProps;
 
     return {
-      ref: this.popperRef,
-      tabIndex: -1,
-      id: `igc-${uid}-popper`,
+      'ref': this.popperRef,
+      'tabIndex': -1,
+      'id': `igc-${uid}-popper`,
       disablePortal,
       ignorePortalsStacking,
-      focusMaster: interaction === 'click',
-      hideFocus: highlightedIndex !== null,
+      'focusMaster': interaction === 'click',
+      'hideFocus': highlightedIndex !== null,
       'use:autoFocus': false,
     };
   }
@@ -143,14 +144,14 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
     const role = this.childRole;
 
     return {
-      id: `igc-${uid}-option-${index}`,
+      'id': `igc-${uid}-option-${index}`,
       size,
       index,
-      onMouseEnter: () => {
+      'onMouseEnter': () => {
         this.handlers.selectedIndex(index);
       },
       role,
-      isMenuItemCheckbox: role === 'menuitemcheckbox',
+      'isMenuItemCheckbox': role === 'menuitemcheckbox',
       'aria-checked': role === 'menuitemcheckbox' || role === 'menuitemradio' ? false : undefined,
     };
   }
@@ -261,6 +262,7 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
       if (e.key === 'Enter' && targetTagName === 'TEXTAREA') return false;
     }
   }
+
   protected handlePreventPopperKeyDown(e: React.KeyboardEvent<HTMLElement>) {
     if (e.target instanceof Element) {
       const targetTagName = e.target.tagName;
@@ -272,6 +274,7 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
         return false;
     }
   }
+
   protected handleOpenKeyDown(e: React.KeyboardEvent<HTMLElement>) {
     if (
       this.asProps.visible !== true &&
@@ -369,11 +372,11 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
 
     return {
       size,
-      index: this.asProps.highlightedIndex,
-      tabIndex: -1,
-      ref: this.menuRef,
-      id: `igc-${uid}-list`,
-      role: this.role,
+      'index': this.asProps.highlightedIndex,
+      'tabIndex': -1,
+      'ref': this.menuRef,
+      'id': `igc-${uid}-list`,
+      'role': this.role,
       'aria-label': getAccessibleName(triggerElement),
     };
   }

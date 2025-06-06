@@ -1,7 +1,7 @@
-import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import { SpinProps } from '@semcore/spin';
-import { BoxProps } from '@semcore/flex-box';
-import { FadeInOutProps } from '@semcore/animation';
+import type { FadeInOutProps } from '@semcore/animation';
+import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import type { BoxProps } from '@semcore/flex-box';
+import type { SpinProps } from '@semcore/spin';
 
 /** @deprecated */
 export interface ISpinContainerProps extends SpinContainerProps, UnknownProperties {}

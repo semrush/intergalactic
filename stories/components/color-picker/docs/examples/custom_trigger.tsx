@@ -1,8 +1,8 @@
-import React from 'react';
 import ColorPicker from '@semcore/color-picker';
-import Input from '@semcore/input';
 import { Flex, Box } from '@semcore/flex-box';
+import Input from '@semcore/input';
 import { Text } from '@semcore/typography';
+import React from 'react';
 
 const Demo = () => {
   const [value, setValue] = React.useState('#C695FF');

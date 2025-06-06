@@ -1,4 +1,4 @@
-import React from 'react';
+import Card from '@semcore/card';
 import {
   Plot,
   StackBar,
@@ -7,9 +7,9 @@ import {
   ChartLegend,
   makeDataHintsContainer,
 } from '@semcore/d3-chart';
-import { scaleLinear, scaleBand } from 'd3-scale';
 import { Flex } from '@semcore/flex-box';
-import Card from '@semcore/card';
+import { scaleLinear, scaleBand } from 'd3-scale';
+import React from 'react';
 
 const dataHints = makeDataHintsContainer();
 
@@ -68,9 +68,9 @@ const Demo = () => {
   }, []);
 
   return (
-    <Card w={'550px'}>
+    <Card w='550px'>
       <Card.Header pt={4}>
-        <Card.Title tag={'h4'} m={0} inline={true}>
+        <Card.Title tag='h4' m={0} inline={true}>
           Chart legend
         </Card.Title>
       </Card.Header>
@@ -82,7 +82,7 @@ const Demo = () => {
           onMouseLeaveItem={handleMouseLeave}
           dataHints={dataHints}
           patterns
-          aria-label={'Stacked horizontal bar chart legend'}
+          aria-label='Stacked horizontal bar chart legend'
         />
         <Plot
           data={data}
@@ -101,14 +101,16 @@ const Demo = () => {
           </XAxis>
           <StackBar y='bar'>
             {legendItems.map((stack, index) =>
-              stack.checked ? (
-                <StackBar.HorizontalBar
-                  key={stack.id}
-                  x={stack.id}
-                  color={stack.color}
-                  transparent={highlightedLine !== -1 && highlightedLine !== index}
-                />
-              ) : null,
+              stack.checked
+                ? (
+                    <StackBar.HorizontalBar
+                      key={stack.id}
+                      x={stack.id}
+                      color={stack.color}
+                      transparent={highlightedLine !== -1 && highlightedLine !== index}
+                    />
+                  )
+                : null,
             )}
           </StackBar>
         </Plot>

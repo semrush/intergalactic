@@ -1,11 +1,13 @@
 import { resolve as resolvePath } from 'path';
-import fs from 'fs-extra';
+
 import {
   collectComponentChangelogs,
   componentChangelogParser,
   serializeComponentChangelog,
   toMarkdown,
 } from '@semcore/changelog-handler';
+import fs from 'fs-extra';
+
 import { formatMarkdown } from './utils';
 
 export const formatChangelogs = async () => {

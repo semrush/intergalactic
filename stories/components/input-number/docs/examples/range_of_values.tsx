@@ -1,8 +1,8 @@
-import React from 'react';
+import { Flex } from '@semcore/flex-box';
 import InputNumber from '@semcore/input-number';
 import NeighborLocation from '@semcore/neighbor-location';
-import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
+import React from 'react';
 
 const min = 1;
 const max = 8;

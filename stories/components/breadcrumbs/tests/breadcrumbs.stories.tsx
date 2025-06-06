@@ -1,10 +1,8 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type Breadcrumbs from '@semcore/breadcrumbs';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import Breadcrumbs from '@semcore/breadcrumbs';
-
-import BaseTruncationExample from './examples/item-truncation';
 import CasesWithSeparatorAndActiveExample from './examples/edge-cases';
-
+import BaseTruncationExample from './examples/item-truncation';
 
 const meta: Meta<typeof Breadcrumbs> = {
   title: 'Components/Breadcrumbs/Tests',

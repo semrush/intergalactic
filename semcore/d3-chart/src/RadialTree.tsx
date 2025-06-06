@@ -1,16 +1,16 @@
-import React from 'react';
-import { transition } from 'd3-transition';
-import { Component, sstyled, UnknownProperties, Intergalactic } from '@semcore/core';
-import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import { Component, sstyled, type UnknownProperties, type Intergalactic } from '@semcore/core';
 import assignProps from '@semcore/core/lib/utils/assignProps';
-import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
-import createElement from './createElement';
-import { getChartDefaultColorName, measureText } from './utils';
-import { DataHintsHandler } from './a11y/hints';
-import { PatternFill, PatternSymbol, PatternsConfig, getPatternSymbolSize } from './Pattern';
+import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import { transition } from 'd3-transition';
+import React from 'react';
 
+import type { DataHintsHandler } from './a11y/hints';
+import createElement from './createElement';
+import { PatternSymbol, type PatternsConfig, getPatternSymbolSize } from './Pattern';
 import style from './style/radial-tree.shadow.css';
+import { getChartDefaultColorName, measureText } from './utils';
 
 const baseAngle = -Math.PI / 2; // The top vertical line
 
@@ -171,7 +171,7 @@ class RadialTreeBase extends Component<RootAsProps> {
     if (!canUseDOM()) return;
     const preferReduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)')?.matches;
 
-    /** using `!(>)` instead of `<=` to get true on NaN and non numbers stuff  */
+    /** using `!(>)` instead of `<=` to get true on Number.NaN and non numbers stuff  */
     if (!(duration > 0)) return;
     if (preferReduceMotion) return;
 
@@ -198,7 +198,7 @@ class RadialTreeBase extends Component<RootAsProps> {
 
     if (circlesNodes.length > 0) {
       const attrs = circlesNodes.map((node) => {
-        const radianIndex = parseInt(node.dataset.radianIndex!, 10);
+        const radianIndex = Number.parseInt(node.dataset.radianIndex!, 10);
         const lineNode = linesNodes[radianIndex];
         return {
           from: {
@@ -219,14 +219,16 @@ class RadialTreeBase extends Component<RootAsProps> {
         .transition()
         .duration(duration)
         .attr('opacity', 1)
+        // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
         .attr('cx', (_, index) => attrs[index].to?.cx!)
+        // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
         .attr('cy', (_, index) => attrs[index].to?.cy!);
     }
     if (iconsNodes.length > 0) {
       const attrs = iconsNodes.map((node) => {
         const width = node.width?.baseVal?.value;
         const height = node.height?.baseVal?.value;
-        const radianIndex = parseInt(node.dataset.radianIndex!, 10);
+        const radianIndex = Number.parseInt(node.dataset.radianIndex!, 10);
         const lineNode = linesNodes[radianIndex];
         return {
           from: {
@@ -242,12 +244,16 @@ class RadialTreeBase extends Component<RootAsProps> {
 
       iconsAnimation
         .attr('opacity', 0)
+        // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
         .attr('x', (_, index) => attrs[index].from?.x!)
+        // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
         .attr('y', (_, index) => attrs[index].from?.y!)
         .transition()
         .duration(duration)
         .attr('opacity', 1)
+        // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
         .attr('x', (_, index) => attrs[index].to?.x!)
+        // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
         .attr('y', (_, index) => attrs[index].to?.y!);
     }
     if (linesNodes.length > 0) {
@@ -266,12 +272,16 @@ class RadialTreeBase extends Component<RootAsProps> {
 
       linesAnimation
         .attr('opacity', 0)
+        // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
         .attr('x2', (_, index) => attrs[index].from?.x2!)
+        // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
         .attr('y2', (_, index) => attrs[index].from?.y2!)
         .transition()
         .duration(duration)
         .attr('opacity', 1)
+        // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
         .attr('x2', (_, index) => attrs[index].to?.x2!)
+        // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
         .attr('y2', (_, index) => attrs[index].to?.y2!);
     }
     if (labelsNodes.length > 0) {
@@ -370,6 +380,7 @@ class RadialTreeRadian extends Component<RadianAsProps> {
     iconSize: 16,
     textSize: 14,
   };
+
   Element!: React.FC<{ render: string }>;
 
   constructor(props: any) {
@@ -529,9 +540,9 @@ class RadialTreeRadian extends Component<RadianAsProps> {
 
     const labelCenter = [
       xCenter +
-        Math.cos(angle) * (centralMargin + length + baseCapSize + textWidth / 2 + labelMargin),
+      Math.cos(angle) * (centralMargin + length + baseCapSize + textWidth / 2 + labelMargin),
       yCenter +
-        Math.sin(angle) * (centralMargin + length + baseCapSize + textWidth / 2 + labelMargin),
+      Math.sin(angle) * (centralMargin + length + baseCapSize + textWidth / 2 + labelMargin),
     ];
     const [xLabelCenter, yLabelCenter] = labelCenter;
 
@@ -751,7 +762,7 @@ const Icon: React.FC<RadialTreeRadianIconAsProps> = ({
 /** @deprecated */
 export interface IRadialTreeRadianLabelProps
   extends RadialTreeRadianLabelProps,
-    UnknownProperties {}
+  UnknownProperties {}
 export type RadialTreeRadianLabelProps = {
   x?: number;
   y?: number;
@@ -799,7 +810,7 @@ const Label: React.FC<RadialTreeRadianLabelAsProps> = ({
 
   const sstyles = sstyled(styles);
   const sLabelStyles = sstyles.cn('SLabel', {
-    color: resolveColor(color),
+    'color': resolveColor(color),
     'text-cursor': isHorizontal ? 'text' : 'vertical-text',
     transparent,
   });
@@ -892,7 +903,7 @@ type IntergalacticD3Component<BaseTag extends Intergalactic.Tag, Props, Context 
 >(
   props: Intergalactic.InternalTypings.PropsRenderingResultComponentProps<Tag, Props, Context>,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
-  Intergalactic.InternalTypings.ComponentAdditive<BaseTag, BaseTag, Props>;
+Intergalactic.InternalTypings.ComponentAdditive<BaseTag, BaseTag, Props>;
 
 const RadialTree = createElement(RadialTreeBase, { Title, Radian }) as IntergalacticD3Component<
   'g',

@@ -1,6 +1,6 @@
-import React from 'react';
 import Accordion from '@semcore/accordion';
 import { Box } from '@semcore/flex-box';
+import React from 'react';
 
 const cn = (...classes: any[]) => classes.filter(Boolean).join(' ');
 
@@ -41,7 +41,9 @@ const Demo = () => {
                 >
                   <Accordion.Item.ToggleButton>
                     <Accordion.Item.Chevron mr={2} />
-                    Section {index + 1}
+                    Section
+                    {' '}
+                    {index + 1}
                   </Accordion.Item.ToggleButton>
                 </Accordion.Item.Toggle>
                 <Accordion.Item.Collapse>

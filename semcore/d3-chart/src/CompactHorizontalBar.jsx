@@ -1,18 +1,17 @@
-import React from 'react';
 import { Component, Root, sstyled } from '@semcore/core';
-import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import createElement from './createElement';
-import AnimatedClipPath from './AnimatedClipPath';
-import { roundedPath, scaleToBand } from './utils';
-import { PatternFill } from './Pattern';
-import trottle from '@semcore/core/lib/utils/rafTrottle';
-import Tooltip from './Tooltip';
-import { eventToPoint } from './utils';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
-
-import style from './style/bar.shadow.css';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
+import trottle from '@semcore/core/lib/utils/rafTrottle';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { Box } from '@semcore/flex-box';
+import React from 'react';
+
+import AnimatedClipPath from './AnimatedClipPath';
+import createElement from './createElement';
+import { PatternFill } from './Pattern';
+import style from './style/bar.shadow.css';
+import Tooltip from './Tooltip';
+import { roundedPath, scaleToBand, eventToPoint } from './utils';
 
 export const MIN_WIDTH = 4;
 
@@ -37,6 +36,7 @@ class CompactHorizontalBarRoot extends Component {
       index,
     };
   }
+
   getBarBackgroundProps(_props, index) {
     const { data, scale } = this.asProps;
     const bar = this.computeBarData(data[index], index);
@@ -70,6 +70,7 @@ class CompactHorizontalBarRoot extends Component {
       index,
     };
   }
+
   getAnnotationProps(_props, index) {
     const { data, size } = this.asProps;
     const bar = this.computeBarData(data[index], index);
@@ -121,6 +122,7 @@ class CompactHorizontalBarRoot extends Component {
 
     return { children: formatted, formatted, percent };
   }
+
   getValueProps(_props, index) {
     const { data, x } = this.asProps;
     const value = data[index][x];
@@ -138,6 +140,7 @@ class CompactHorizontalBarRoot extends Component {
       render: index === 0,
     };
   }
+
   getTooltipProps(_props, index) {
     return {
       render: index === 0,
@@ -153,7 +156,7 @@ class CompactHorizontalBarRoot extends Component {
       offset: offsetProps,
       wMin,
       height: heightProps,
-      maxBarSize = Infinity,
+      maxBarSize = Number.POSITIVE_INFINITY,
       size,
     } = this.asProps;
 
@@ -378,6 +381,7 @@ class Hover extends Component {
   generateGetBoundingClientRect(x = 0, y = 0) {
     return () => ({ width: 0, height: 0, top: y, right: x, bottom: y, left: x });
   }
+
   getIndex(point) {
     const { data, getBarData } = this.asProps;
     for (let i = 0; i < data.length; i++) {

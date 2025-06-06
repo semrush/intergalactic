@@ -1,9 +1,10 @@
-import React from 'react';
-import { UnknownProperties } from '@semcore/core';
-import { Context } from './context';
-import { IntergalacticD3Component } from './Plot';
-import { ScaleBand, ScaleLinear } from 'd3-scale';
-import { PatternsConfig } from './Pattern';
+import type { UnknownProperties } from '@semcore/core';
+import type { ScaleBand, ScaleLinear } from 'd3-scale';
+import type React from 'react';
+
+import type { Context } from './context';
+import type { PatternsConfig } from './Pattern';
+import type { IntergalacticD3Component } from './Plot';
 
 /** @deprecated */
 export interface IBarProps extends BarProps, UnknownProperties {}

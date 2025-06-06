@@ -1,16 +1,16 @@
 import React from 'react';
 import { snapshot } from '@semcore/testing-utils/snapshot';
-import * as sharedTests from '@semcore/testing-utils/shared-tests';
 import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
 import { cleanup, render, screen, userEvent } from '@semcore/testing-utils/testing-library';
-
 import { Text } from '@semcore/typography';
 import { Flex } from '@semcore/flex-box';
 import SettingsM from '@semcore/icon/Settings/m';
+import * as sharedTests from '@semcore/testing-utils/shared-tests';
 
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
-import Card from '../src';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+import Card from '../src';
 
 describe('Card Dependency imports', () => {
   runDependencyCheckTests('card');

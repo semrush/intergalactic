@@ -18,44 +18,44 @@ const Demo = () => {
 
   return (
     <>
-    <fieldset style={fieldsetStyle} data-testid = 'm'>
-      <Text tag='legend' size={200} mb={3}>
-        List of options
-      </Text>
-      <ul style={ulStyle}>
-        {checked.map((value, index) => (
-          <li key={index} style={liStyle}>
-            <Checkbox
-              mb={3}
-              key={index}
-              checked={value}
-              onChange={handleItemChange(index)}
-              label={`Option ${index + 1}`}
-            />
-          </li>
-        ))}
-      </ul>
-    </fieldset>
+      <fieldset style={fieldsetStyle} data-testid='m'>
+        <Text tag='legend' size={200} mb={3}>
+          List of options
+        </Text>
+        <ul style={ulStyle}>
+          {checked.map((value, index) => (
+            <li key={index} style={liStyle}>
+              <Checkbox
+                mb={3}
+                key={index}
+                checked={value}
+                onChange={handleItemChange(index)}
+                label={`Option ${index + 1}`}
+              />
+            </li>
+          ))}
+        </ul>
+      </fieldset>
 
-    <fieldset style={fieldsetStyle} data-testid = 'l'>
-      <Text tag='legend' size={200} mb={3}>
-        List of options
-      </Text>
-      <ul style={ulStyle}>
-        {checked.map((value, index) => (
-          <li key={index} style={liStyle}>
-            <Checkbox
-            size = 'l'
-              mb={3}
-              key={index}
-              checked={value}
-              onChange={handleItemChange(index)}
-              label={`Option ${index + 1}`}
-            />
-          </li>
-        ))}
-      </ul>
-    </fieldset>
+      <fieldset style={fieldsetStyle} data-testid='l'>
+        <Text tag='legend' size={200} mb={3}>
+          List of options
+        </Text>
+        <ul style={ulStyle}>
+          {checked.map((value, index) => (
+            <li key={index} style={liStyle}>
+              <Checkbox
+                size='l'
+                mb={3}
+                key={index}
+                checked={value}
+                onChange={handleItemChange(index)}
+                label={`Option ${index + 1}`}
+              />
+            </li>
+          ))}
+        </ul>
+      </fieldset>
     </>
   );
 };

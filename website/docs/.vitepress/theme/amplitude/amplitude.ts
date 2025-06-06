@@ -1,5 +1,6 @@
+import type { Router } from 'vitepress';
 import { watch } from 'vue';
-import { Router } from 'vitepress';
+
 import amplitudeHttp from './amplitude-client';
 
 const clickedPlaygrounds = new Set<string>();

@@ -1,6 +1,7 @@
-import React from 'react';
-import { DataTable, ACCORDION, DataTableSort, UNIQ_ROW_KEY } from '@semcore/data-table';
+import type { DataTableSort } from '@semcore/data-table';
+import { DataTable, ACCORDION, UNIQ_ROW_KEY } from '@semcore/data-table';
 import Ellipsis, { useResizeObserver } from '@semcore/ellipsis';
+import React from 'react';
 
 type SortableColumn = Exclude<keyof typeof data[0], 'keyword'>;
 
@@ -28,7 +29,7 @@ const Demo = () => {
             if (sortDirection === 'asc') return a > b ? 1 : -1;
             else return a > b ? -1 : 1;
           }),
-        }
+        };
       }),
     [sort],
   );
@@ -37,7 +38,12 @@ const Demo = () => {
   };
 
   return (
-    <DataTable aria-label={'Parent'} h={'100%'} data={sortedData} sort={sort} onSortChange={handleSortChange}
+    <DataTable
+      aria-label='Parent'
+      h='100%'
+      data={sortedData}
+      sort={sort}
+      onSortChange={handleSortChange}
       columns={[
         { name: 'keyword', children: 'Keyword', gtcWidth: '200px', fixed: 'left', sortable: true },
         { name: 'kd', children: 'KD,%', gtcWidth: '200px', sortable: true },
@@ -48,13 +54,14 @@ const Demo = () => {
   );
 };
 
-
 const ChartExample = () => {
   const containerRef = React.useRef(null);
   const containerRect = useResizeObserver(containerRef);
 
   return (
-    <DataTable data={data1} aria-label={'Table title'}
+    <DataTable
+      data={data1}
+      aria-label='Table title'
       columns={[
         { name: 'keyword', children: 'Keyword' },
         { name: 'kd', children: 'KD,%' },

@@ -1,8 +1,8 @@
-import React from 'react';
 import { Plot, Line, XAxis, YAxis, HoverLine, minMax, PlotEventEmitter } from '@semcore/d3-chart';
 import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import { scaleLinear, scaleTime } from 'd3-scale';
+import React from 'react';
 
 function formatDate(value: any, options: any) {
   return new Intl.DateTimeFormat('en', options).format(value);
@@ -14,7 +14,7 @@ const Demo = () => {
   const MARGIN = 40;
   const width = 500;
   const height = 300;
-  
+
   const plotRef = React.useRef<SVGSVGElement | null>(null);
 
   const xScale = scaleTime()

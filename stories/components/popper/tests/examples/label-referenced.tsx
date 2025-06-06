@@ -1,5 +1,5 @@
-import React from 'react';
 import Select from '@semcore/select';
+import React from 'react';
 
 const options = Array(5)
   .fill('')
@@ -16,7 +16,7 @@ const Demo = () => {
         <label htmlFor='select'>Label</label>
       </div>
       {/* @ts-ignore */}
-      <Select placeholder={'Select something'} options={options} id='select' />
+      <Select placeholder='Select something' options={options} id='select' />
     </div>
   );
 };

@@ -1,10 +1,11 @@
 import { execSync } from 'child_process';
-import { VersionPatch } from './makeVersionPatches';
-import Git from 'simple-git';
-import dotenv from 'dotenv';
 
-import { log, prerelaseSuffix } from './utils';
+import dotenv from 'dotenv';
+import Git from 'simple-git';
+
+import type { VersionPatch } from './makeVersionPatches';
 import { publishReleaseNotes } from './publishReleaseNotes';
+import { log, prerelaseSuffix } from './utils';
 
 dotenv.config();
 const git = Git();
@@ -133,7 +134,6 @@ export const runPublisher = async (versionPatches: VersionPatch[]) => {
     try {
       await git.pull('origin', 'master', { '--rebase': 'true' });
     } catch (err) {
-      // biome-ignore lint/suspicious/noConsoleLog:
       console.log(await git.status());
       throw err;
     }

@@ -1,7 +1,8 @@
 #!/usr/bin/env tsm
 
-import { getChangedPackages } from '../index';
 import * as process from 'node:process';
+
+import { getChangedPackages } from '../index';
 
 const base = process.env.BASE;
 

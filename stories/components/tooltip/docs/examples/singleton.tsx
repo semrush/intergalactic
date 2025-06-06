@@ -1,8 +1,8 @@
-import React from 'react';
-import Tooltip from '@semcore/tooltip';
-import Select from '@semcore/select';
-import { Text } from '@semcore/typography';
 import { Flex } from '@semcore/flex-box';
+import Select from '@semcore/select';
+import Tooltip from '@semcore/tooltip';
+import { Text } from '@semcore/typography';
+import React from 'react';
 
 const options = Array(50)
   .fill('')
@@ -12,7 +12,15 @@ const tooltipIndexContext = React.createContext(0);
 
 const TooltipContent = () => {
   const tooltipIndex = React.useContext(tooltipIndexContext);
-  return <>Option {tooltipIndex} description</>;
+  return (
+    <>
+      Option
+      {' '}
+      {tooltipIndex}
+      {' '}
+      description
+    </>
+  );
 };
 
 const SelectWithTooltip = React.memo(

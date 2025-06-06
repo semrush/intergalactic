@@ -1,5 +1,5 @@
-import React from 'react';
 import Skeleton from '@semcore/skeleton';
+import React from 'react';
 
 function Demo() {
   return (

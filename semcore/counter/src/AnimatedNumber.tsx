@@ -1,8 +1,9 @@
-import React from 'react';
-import { useCssVariable } from '@semcore/core/lib/utils/useCssVariable';
+import type { Intergalactic } from '@semcore/core';
 import useEnhancedEffect from '@semcore/core/lib/utils/use/useEnhancedEffect';
-import { Intergalactic } from '@semcore/core';
-import { AnimatedNumberBaseProps } from './index';
+import { useCssVariable } from '@semcore/core/lib/utils/useCssVariable';
+import React from 'react';
+
+import type { AnimatedNumberBaseProps } from './index';
 
 const easeInOutSine = (t: number) => -(Math.cos(Math.PI * t) - 1) / 2;
 const defaultFormatValue = (value: number) => value.toFixed(2);
@@ -11,7 +12,7 @@ export const AnimatedNumber = ((props) => {
   const ref = React.useRef<HTMLElement>(null);
   const defaultDurationStr = useCssVariable('--intergalactic-duration-counter', '200', ref);
   const defaultDuration = React.useMemo(
-    () => parseInt(defaultDurationStr, 10),
+    () => Number.parseInt(defaultDurationStr, 10),
     [defaultDurationStr],
   );
   const {

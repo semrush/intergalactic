@@ -1,12 +1,11 @@
-import React from 'react';
-import { snapshot } from '@semcore/testing-utils/snapshot';
-import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
-
-import { render, cleanup } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { render, cleanup } from '@semcore/testing-utils/testing-library';
+import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
+import React from 'react';
 
 import TimePicker from '../src';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('time-picker Dependency imports', () => {
   runDependencyCheckTests('time-picker');

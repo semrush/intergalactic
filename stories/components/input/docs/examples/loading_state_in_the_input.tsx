@@ -1,8 +1,8 @@
-import React from 'react';
+import { Box, ScreenReaderOnly } from '@semcore/flex-box';
 import Input from '@semcore/input';
 import Spin from '@semcore/spin';
 import { Text } from '@semcore/typography';
-import { Box, ScreenReaderOnly } from '@semcore/flex-box';
+import React from 'react';
 
 const Demo = () => {
   const [value, setValue] = React.useState('');

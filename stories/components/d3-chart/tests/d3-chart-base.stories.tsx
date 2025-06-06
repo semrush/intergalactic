@@ -1,12 +1,10 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import PlotAndA11yPropsExample from './examples/d3-chart/plot-props';
-import GridAxisPropsExample from './examples/d3-chart/grid-axis-props';
-import ReferenceLinePropsExample from './examples/d3-chart/reference-line-props';
 import AdaptivePropsExample from './examples/d3-chart/adaptive-props';
+import GridAxisPropsExample from './examples/d3-chart/grid-axis-props';
+import PlotAndA11yPropsExample from './examples/d3-chart/plot-props';
+import ReferenceLinePropsExample from './examples/d3-chart/reference-line-props';
 import TooltipHoverExample from './examples/d3-chart/tooltip-and-hover-line';
-
-
 
 const meta: Meta = {
   title: 'Components/d3Charts/Tests/D3-Chart',

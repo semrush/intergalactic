@@ -1,8 +1,8 @@
-import React from 'react';
 import { Plot, Radar } from '@semcore/d3-chart';
+import Slider from '@semcore/slider';
 import { scaleLinear } from 'd3-scale';
 import { curveCardinalClosed } from 'd3-shape';
-import Slider from '@semcore/slider';
+import React from 'react';
 
 const scale = scaleLinear().domain([0, 10]);
 const Demo = () => {
@@ -24,8 +24,14 @@ const Demo = () => {
         id='angle-slider'
       />
       <div>
-        <label htmlFor='angle-slider'>Angle:</label> {angleOffset.toFixed(2)} rad (
-        {angleDegOffset.toFixed(0)} deg)
+        <label htmlFor='angle-slider'>Angle:</label>
+        {' '}
+        {angleOffset.toFixed(2)}
+        {' '}
+        rad (
+        {angleDegOffset.toFixed(0)}
+        {' '}
+        deg)
       </div>
       <Plot data={data} width={width} height={height}>
         <Radar scale={scale} type='circle' angleOffset={angleOffset}>

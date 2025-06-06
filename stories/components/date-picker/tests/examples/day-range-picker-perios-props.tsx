@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
 import { DateRangePicker } from '@semcore/date-picker';
 import { Flex } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
 import CheckM from '@semcore/icon/Check/m';
+import { Text } from '@semcore/typography';
+import React, { useState } from 'react';
 
 const Demo = () => {
   const [value, setValue] = useState<[Date, Date]>([
-    new Date(2023, 3, 10), 
-    new Date(2023, 3, 20), 
+    new Date(2023, 3, 10),
+    new Date(2023, 3, 20),
   ]);
   const [preselectedValue, setPreselectedValue] = useState<[Date, Date]>([
     new Date(2023, 3, 12),
@@ -36,8 +36,8 @@ const Demo = () => {
 
   return (
     <Flex gap={5} flexWrap>
-      <Flex direction="column">
-        <Text tag="label" size={200} htmlFor="normal-periods">
+      <Flex direction='column'>
+        <Text tag='label' size={200} htmlFor='normal-periods'>
           Normal periods
         </Text>
         <DateRangePicker
@@ -54,25 +54,25 @@ const Demo = () => {
           onDisplayedPeriodChange={(newDate) => setDisplayedPeriod(newDate)}
           unclearable
         >
-          <DateRangePicker.Trigger mt={2} id="normal-periods" />
+          <DateRangePicker.Trigger mt={2} id='normal-periods' />
           <DateRangePicker.Popper>
             <Flex>
-          <DateRangePicker.Prev/>
-          <DateRangePicker.Title/>
-          <DateRangePicker.Next/>
-          </Flex>
-          <DateRangePicker.Calendar/>
-          <DateRangePicker.Period
+              <DateRangePicker.Prev />
+              <DateRangePicker.Title />
+              <DateRangePicker.Next />
+            </Flex>
+            <DateRangePicker.Calendar />
+            <DateRangePicker.Period
               value={value}
               onChange={(newValue) => setValue(newValue as [Date, Date])}
               onDisplayedPeriodChange={(newDate) => setDisplayedPeriod(newDate)}
               onHighlightedChange={(newValue) => setHighlighted(newValue as [Date, Date])}
               periods={periods}
             />
-            <DateRangePicker.Apply addonLeft={CheckM}/>
+            <DateRangePicker.Apply addonLeft={CheckM} />
             <DateRangePicker.Reset addonLeft={CheckM} />
           </DateRangePicker.Popper>
-          
+
         </DateRangePicker>
       </Flex>
     </Flex>

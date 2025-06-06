@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Context } from '../utils/enhances/WithI18n';
 
 function i18nAppLocaleEnhance() {

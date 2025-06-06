@@ -1,13 +1,13 @@
-import { Storage } from '@google-cloud/storage';
 import path from 'path';
-import fs from 'fs-extra';
 import { fileURLToPath } from 'url';
+
+import { Storage } from '@google-cloud/storage';
+import fs from 'fs-extra';
 import pLimit from 'p-limit';
 
 const filename = fileURLToPath(import.meta.url);
 
 const log = (message: string) => {
-  // biome-ignore lint/suspicious/noConsoleLog:
   console.log(`[gcs-upload tool]: ${message}`);
 };
 
@@ -46,15 +46,14 @@ export const getPackageData = async () => {
       `@semcore/gcs-upload package requires package.json file to be located in your current working directory. Trying to find ${packageJsonFilePath}`,
     );
   }
-  let { version, name } = await fs.readJson(packageJsonFilePath);
+  const { version, name } = await fs.readJson(packageJsonFilePath);
   if (!version || !name) {
     throw new Error(
       `@semcore/gcs-upload package requires local package.json file to contain fulfilled version and name fields. Failed to read them in ${packageJsonFilePath}`,
     );
   }
-  name = name.replace('@semcore/', '');
 
-  return { version, name };
+  return { version, name: name.replace('@semcore/', '') };
 };
 
 export const upload = async (
@@ -103,7 +102,7 @@ export const upload = async (
                 cacheControl: 'public, max-age=31536000',
               },
             })
-            // biome-ignore lint/suspicious/noConsoleLog:
+
             .then(() => console.log(`${fileName} uploaded to ${destination}`))
         );
       }),

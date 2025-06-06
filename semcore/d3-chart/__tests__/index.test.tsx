@@ -1,11 +1,35 @@
 import React from 'react';
 import { snapshot } from '@semcore/testing-utils/snapshot';
-import * as sharedTests from '@semcore/testing-utils/shared-tests';
-import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
-import { render, fireEvent, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
+import Button from '@semcore/button';
+import { I18nProvider } from '@semcore/core/lib/utils/enhances/WithI18n';
+import Ellipsis from '@semcore/ellipsis';
+import { Flex, Box } from '@semcore/flex-box';
+import LikeM from '@semcore/icon/Like/m';
+import Icon from '@semcore/icon/Video/m';
+import * as sharedTests from '@semcore/testing-utils/shared-tests';
+
+const xScale = scaleLinear().range([10, 100]).domain([0, 10]);
+
+const yScale = scaleLinear().range([100, 10]).domain([0, 10]);
+
+const data = [...Array(10).keys()].map((d, i) => ({
+  x: i,
+  y: Math.abs(Math.sin(Math.exp(i))) * i,
+}));
+
+const PlotTest = React.forwardRef((props, ref) => (
+  <Plot ref={ref} data={data} scale={[xScale, yScale]} width={100} height={100} {...props} />
+));
+
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { render, fireEvent, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import { Text } from '@semcore/typography';
 import { scaleLinear, scaleBand } from 'd3-scale';
+import { curveCardinal } from 'd3-shape';
+
 import {
   Plot,
   YAxis,
@@ -37,32 +61,8 @@ import {
   Chart,
   // @ts-ignore
 } from '../src';
-import { getIndexFromData } from '../src/utils';
 import { PlotA11yView } from '../src/a11y/PlotA11yView';
-
-import { curveCardinal } from 'd3-shape';
-import { Flex, Box } from '@semcore/flex-box';
-import Ellipsis from '@semcore/ellipsis';
-import { Text } from '@semcore/typography';
-import Button from '@semcore/button';
-import LikeM from '@semcore/icon/Like/m';
-import { I18nProvider } from '@semcore/core/lib/utils/enhances/WithI18n';
-import Icon from '@semcore/icon/Video/m';
-
-const xScale = scaleLinear().range([10, 100]).domain([0, 10]);
-
-const yScale = scaleLinear().range([100, 10]).domain([0, 10]);
-
-const data = [...Array(10).keys()].map((d, i) => ({
-  x: i,
-  y: Math.abs(Math.sin(Math.exp(i))) * i,
-}));
-
-const PlotTest = React.forwardRef((props, ref) => (
-  <Plot ref={ref} data={data} scale={[xScale, yScale]} width={100} height={100} {...props} />
-));
-
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { getIndexFromData } from '../src/utils';
 
 describe('d3-chart Dependency imports', () => {
   runDependencyCheckTests('d3-chart');
@@ -191,7 +191,7 @@ describe('XAxis', () => {
     );
 
     fireEvent.mouseMove(getAllByTestId('tick')[9]);
-    expect(eventEmitter.emit).toHaveBeenCalledTimes(2); //onMouseMoveRoot, onMouseLeaveChart
+    expect(eventEmitter.emit).toHaveBeenCalledTimes(2); // onMouseMoveRoot, onMouseLeaveChart
     (window.requestAnimationFrame as any).mockRestore();
   });
 
@@ -216,7 +216,7 @@ describe('XAxis', () => {
       const component = (
         <Plot data={data} scale={[xScale, yScale]} width={120} height={130}>
           <XAxis>
-            <XAxis.Ticks ticks={xScale.ticks(5)} childrenPosition={'below'}>
+            <XAxis.Ticks ticks={xScale.ticks(5)} childrenPosition='below'>
               {({ value, x, y, index }: any) => ({
                 children: <TickFormatter value={value} x={x} y={y} index={index} />,
               })}
@@ -264,24 +264,24 @@ describe('Focus skip to content after plot', () => {
         <>
           <div ref={plotRef}>
             <PlotA11yView
-              id={'plotView'}
+              id='plotView'
               data={data}
               plotRef={plotRef}
-              plotLabel={'plot label'}
-              locale={'en'}
+              plotLabel='plot label'
+              locale='en'
               config={{}}
               hints={hints}
             />
           </div>
-          <div className={'one'}>
-            <div className={'two'}>
-              <div className={'tree'}>some text</div>
+          <div className='one'>
+            <div className='two'>
+              <div className='tree'>some text</div>
             </div>
           </div>
           <div>some data</div>
-          <div className={'one'}>
-            <div className={'two'} tabIndex={0} data-testid={'focusableElement-1'}>
-              <div className={'tree'}>some text 2</div>
+          <div className='one'>
+            <div className='two' tabIndex={0} data-testid='focusableElement-1'>
+              <div className='tree'>some text 2</div>
             </div>
           </div>
         </>
@@ -314,28 +314,28 @@ describe('Focus skip to content after plot', () => {
         <>
           <div ref={plotRef}>
             <PlotA11yView
-              id={'plotView'}
+              id='plotView'
               data={data}
               plotRef={plotRef}
-              plotLabel={'plot label'}
-              locale={'en'}
+              plotLabel='plot label'
+              locale='en'
               config={{}}
               hints={hints}
             />
           </div>
-          <div className={'one'}>
-            <div className={'two'}>
+          <div className='one'>
+            <div className='two'>
               <div />
               <div />
-              <div className={'tree'}>some text 3</div>
+              <div className='tree'>some text 3</div>
             </div>
           </div>
           <div>some data</div>
-          <div className={'one'}>
+          <div className='one'>
             <div />
             <div />
-            <div className={'two'} tabIndex={0} data-testid={'focusableElement-2'}>
-              <div className={'tree'}>some text 4</div>
+            <div className='two' tabIndex={0} data-testid='focusableElement-2'>
+              <div className='tree'>some text 4</div>
             </div>
           </div>
         </>

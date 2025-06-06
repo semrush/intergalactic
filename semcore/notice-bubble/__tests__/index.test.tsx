@@ -1,9 +1,8 @@
-import React from 'react';
 import { snapshot } from '@semcore/testing-utils/snapshot';
-// import * as sharedTests from '@semcore/testing-utils/shared-tests';
-
 import { render, fireEvent, cleanup, act } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import React from 'react';
+// import * as sharedTests from '@semcore/testing-utils/shared-tests';
 
 import {
   NoticeBubbleContainer,
@@ -189,21 +188,21 @@ describe('NoticeBubble', () => {
           manager={manager}
         />
         <NoticeBubbleWarningImport
-          action={
+          action={(
             <button type='button' data-testid='action'>
               Action
             </button>
-          }
+          )}
           manager={manager}
         >
           Message
         </NoticeBubbleWarningImport>
         <NoticeBubbleImport
-          action={
+          action={(
             <button type='button' data-testid='action'>
               Action
             </button>
-          }
+          )}
           manager={manager}
         >
           Message

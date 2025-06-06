@@ -1,19 +1,18 @@
-import React from 'react';
-import { createComponent, Component, Root, sstyled } from '@semcore/core';
-import { Box } from '@semcore/flex-box';
-import Modal from '@semcore/modal';
-import CheckM from '@semcore/icon/Check/m';
-import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
-import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-import { ScreenReaderOnly } from '@semcore/flex-box';
-import { setFocus } from '@semcore/core/lib/utils/use/useFocusLock';
-import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import Button from '@semcore/button';
-import ArrowRight from '@semcore/icon/ArrowRight/m';
+import { createComponent, Component, Root, sstyled } from '@semcore/core';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import { setFocus } from '@semcore/core/lib/utils/use/useFocusLock';
+import { ScreenReaderOnly, Box } from '@semcore/flex-box';
 import ArrowLeft from '@semcore/icon/ArrowLeft/m';
+import ArrowRight from '@semcore/icon/ArrowRight/m';
+import CheckM from '@semcore/icon/Check/m';
+import Modal from '@semcore/modal';
+import React from 'react';
 
 import style from './style/wizard.shadow.css';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 class WizardRoot extends Component {
   static displayName = 'Wizard';
@@ -43,6 +42,7 @@ class WizardRoot extends Component {
       uid: this.asProps.uid,
     };
   }
+
   getContentProps() {
     return {
       uid: this.asProps.uid,
@@ -50,12 +50,14 @@ class WizardRoot extends Component {
       ref: this.contentRef,
     };
   }
+
   getStepBackProps() {
     return {
       getI18nText: this.asProps.getI18nText,
       step: this.asProps.step,
     };
   }
+
   getStepNextProps() {
     return {
       getI18nText: this.asProps.getI18nText,
@@ -72,6 +74,7 @@ class WizardRoot extends Component {
       this.stepperRefs[i - 1]?.focus();
     }, 0);
   };
+
   stepperFocusNext = (i) => () => {
     const nextStep = this._steps.get(i + 2);
     if (!nextStep) return;
@@ -139,8 +142,6 @@ function Sidebar(props) {
   const SSidebar = Root;
   const SSidebarHeader = 'h2';
   const SSidebarMenu = 'div';
-
-  const handleKeyDown = React.useCallback((e) => {}, []);
 
   return sstyled(styles)(
     <SSidebar render={Box} __excludeProps={['title']}>

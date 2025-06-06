@@ -1,5 +1,6 @@
-import { expect, test, Page } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import type { Page } from '@semcore/testing-utils/playwright';
+import { expect, test } from '@semcore/testing-utils/playwright';
 
 const getLocators = (page: Page) => ({
   textarea: page.getByRole('textbox'),
@@ -790,7 +791,7 @@ test.describe('Common error On - Error tooltips', () => {
   });
 
   test('Verify tooltips when fixing errors', async ({ page, browserName }) => {
-    if (browserName === 'webkit') return; //not stable for webkit
+    if (browserName === 'webkit') return; // not stable for webkit
     const standPath =
       'stories/components/bulk-textarea/tests/examples/validate-blur-base-example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');

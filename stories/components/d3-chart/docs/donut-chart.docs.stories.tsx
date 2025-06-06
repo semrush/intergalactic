@@ -1,12 +1,11 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import DonutExample from './examples/donut-chart/donut';
 import BasicUsageExample from './examples/donut-chart/basic-usage';
+import DonutExample from './examples/donut-chart/donut';
 import DonutControlledHighlightExample from './examples/donut-chart/donut-controlled-highlight';
 import EdgeCasesExample from './examples/donut-chart/edge-cases';
-import SemiDonutExample from './examples/donut-chart/semi-donut';
 import LegendAndPatternFillExample from './examples/donut-chart/legend-and-pattern-fill';
-
+import SemiDonutExample from './examples/donut-chart/semi-donut';
 
 const meta: Meta = {
   title: 'Components/d3Charts/Documentation/Donut-Chart',

@@ -1,11 +1,11 @@
-import React from 'react';
-import { Text } from '@semcore/typography';
-import { Flex } from '@semcore/flex-box';
-import { DescriptionTooltip } from '@semcore/tooltip';
-import Link from '@semcore/link';
 import { ButtonLink } from '@semcore/button';
-import InfoM from '@semcore/icon/Info/m';
+import { Flex } from '@semcore/flex-box';
 import InfoL from '@semcore/icon/Info/l';
+import InfoM from '@semcore/icon/Info/m';
+import Link from '@semcore/link';
+import { DescriptionTooltip } from '@semcore/tooltip';
+import { Text } from '@semcore/typography';
+import React from 'react';
 
 const Demo = () => (
   <>
@@ -20,7 +20,10 @@ const Demo = () => (
         />
         <DescriptionTooltip.Popper aria-label='About fastest animals'>
           <Text tag='p' mb={3}>
-            The <Link href='https://en.wikipedia.org/wiki/Peregrine_falcon'>peregrine falcon</Link>{' '}
+            The
+            {' '}
+            <Link href='https://en.wikipedia.org/wiki/Peregrine_falcon'>peregrine falcon</Link>
+            {' '}
             is the fastest bird, and the fastest member of the animal kingdom, with a diving speed
             of over 300 km/h (190 mph).
           </Text>
@@ -43,8 +46,10 @@ const Demo = () => (
         <DescriptionTooltip.Popper aria-label='About peregrine falcon'>
           <Text tag='p' mb={3}>
             The peregrine falcon is the fastest aerial animal, fastest animal in flight, fastest
-            bird, and the overall fastest member of the{' '}
-            <Link href='https://en.wikipedia.org/wiki/Animal'>animal kingdom</Link>.
+            bird, and the overall fastest member of the
+            {' '}
+            <Link href='https://en.wikipedia.org/wiki/Animal'>animal kingdom</Link>
+            .
           </Text>
           <Text tag='p'>
             The peregrine achieves its highest velocity not in horizontal level flight, but during

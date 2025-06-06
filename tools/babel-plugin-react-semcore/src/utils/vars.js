@@ -1,5 +1,6 @@
 const fs = require('fs');
 
+// eslint-disable-next-line no-useless-escape
 const CSS_VARS_REG = /--[\w+\-]+:\s+(#[\w\d]+|rgba?\(\d+,\s*\d+,\s*\d+(?:,\s*(\d+(?:\.\d+)?))?\))/g;
 
 function getColorVars(cssPath) {

@@ -1,13 +1,13 @@
-import React from 'react';
-import { snapshot } from '@semcore/testing-utils/snapshot';
-import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
-import DnD from '../src';
 import Badge from '@semcore/badge';
 import LinkedInS from '@semcore/icon/LinkedIn/m';
 import TabPanel from '@semcore/tab-panel';
-import { cleanup } from '@semcore/testing-utils/testing-library';
-
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { cleanup } from '@semcore/testing-utils/testing-library';
+import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
+import React from 'react';
+
+import DnD from '../src';
 
 describe('drag-and-drop Dependency imports', () => {
   runDependencyCheckTests('drag-and-drop');
@@ -39,7 +39,7 @@ describe('DragAndDrop', () => {
     const currentTab = 'overview';
 
     const component = (
-      <DnD tag={TabPanel} value={currentTab} onDnD={() => {}} aria-label={'dnd group'}>
+      <DnD tag={TabPanel} value={currentTab} onDnD={() => {}} aria-label='dnd group'>
         {tabs.map((tab) => (
           <DnD.Draggable
             placement='bottom'

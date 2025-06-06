@@ -1,8 +1,9 @@
 import dayjs from 'dayjs';
 import { parse as parseMarkdown } from 'marked-ast';
-import { isValidSemver } from '../utils';
-import { Changelog, ChangelogChangeLabel } from '../types';
 import { toMarkdown } from 'marked-ast-markdown';
+
+import type { Changelog, ChangelogChangeLabel } from '../types';
+import { isValidSemver } from '../utils';
 
 export const componentChangelogParser = (
   component: string,

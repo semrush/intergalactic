@@ -1,18 +1,13 @@
-import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
-
 import ColorPicker from '@semcore/color-picker';
-
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import React from 'react';
 
 import BasicWithouPaletterManagerExample from './examples/base-no-palette-manager';
-import LabelAndColorExpandedExample from './examples/label-and-color-expanded';
 import ColorPickerPropsExample from './examples/color-picker-props';
 import ColorsAndPaletterManagerPropsExample from './examples/colors-and-palette-manager-colors-props';
 import PropsExample from './examples/input-color-and-items-props';
+import LabelAndColorExpandedExample from './examples/label-and-color-expanded';
 import TriggersExample from './examples/triggers';
-
-
-
 
 const meta: Meta<typeof ColorPicker> = {
   title: 'Components/ColorPicker/Tests',
@@ -28,21 +23,21 @@ export const BasicWithouPaletterManager: Story = {
 };
 
 export const Props: Story = {
-    render: PropsExample,
+  render: PropsExample,
 };
 
 export const Triggers: Story = {
-    render: TriggersExample,
+  render: TriggersExample,
 };
 
 export const LabelAndColorExpanded: Story = {
-    render: LabelAndColorExpandedExample,
-  };
+  render: LabelAndColorExpandedExample,
+};
 
-  export const ColorPickerProps: Story = {
-    render: ColorPickerPropsExample,
-  };
+export const ColorPickerProps: Story = {
+  render: ColorPickerPropsExample,
+};
 
-  export const ColorsAndPaletterManagerProps: Story = {
-    render: ColorsAndPaletterManagerPropsExample,
-  };
+export const ColorsAndPaletterManagerProps: Story = {
+  render: ColorsAndPaletterManagerPropsExample,
+};

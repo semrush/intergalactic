@@ -1,6 +1,7 @@
 import React from 'react';
-import { sstyled } from '../styled/index';
+
 import { STATIC_COMPONENT } from './staticChildren';
+import { sstyled } from '../styled/index';
 
 export const STYLES_CONTEXT = Symbol('STYLES_CONTEXT');
 const STYLES_SELF = Symbol('STYLES_SELF');

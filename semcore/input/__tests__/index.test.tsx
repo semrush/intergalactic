@@ -1,6 +1,7 @@
 import React from 'react';
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+
 import Input from '../src';
 
 import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';

@@ -1,8 +1,9 @@
-import React from 'react';
-import Select from '@semcore/select';
+import type { FlagsIso2 } from '@semcore/flags';
+import Flags, { iso2Name } from '@semcore/flags';
 import { Flex } from '@semcore/flex-box';
-import Flags, { iso2Name, FlagsIso2 } from '@semcore/flags';
+import Select from '@semcore/select';
 import { Text } from '@semcore/typography';
+import React from 'react';
 
 const formatName = (name?: string) => name?.replace(/([a-z])([A-Z])/g, '$1 $2');
 const flags = Object.keys(iso2Name) as FlagsIso2[];

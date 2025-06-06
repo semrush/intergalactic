@@ -1,14 +1,15 @@
-import React from 'react';
 import { createComponent } from '@semcore/core';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import { Flex } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
 import { scaleLinear } from 'd3-scale';
+import React from 'react';
+
 // @ts-ignore
 import { Donut } from '../..';
 import { AbstractChart } from './AbstractChart';
-import { Text } from '@semcore/typography';
-import { DonutChartData, DonutChartProps, DonutChartType } from './DonutChart.type';
-import { Flex } from '@semcore/flex-box';
+import type { DonutChartData, DonutChartProps, DonutChartType } from './DonutChart.type';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
-import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 
 class DonutChartComponent extends AbstractChart<
   DonutChartData,

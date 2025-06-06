@@ -1,4 +1,4 @@
-import { Component, PureComponent } from 'react';
+import type { Component, PureComponent } from 'react';
 
 export function isControlled<
   P extends {},

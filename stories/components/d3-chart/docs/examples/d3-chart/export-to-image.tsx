@@ -1,10 +1,10 @@
-import React from 'react';
-import { scaleLinear } from 'd3-scale';
-import { Line, minMax, Plot, XAxis, YAxis } from '@semcore/d3-chart';
-import { Flex } from '@semcore/flex-box';
-import DropdownMenu from '@semcore/dropdown-menu';
 import Button from '@semcore/button';
+import { Line, minMax, Plot, XAxis, YAxis } from '@semcore/d3-chart';
+import DropdownMenu from '@semcore/dropdown-menu';
+import { Flex } from '@semcore/flex-box';
 import FileExportM from '@semcore/icon/FileExport/m';
+import { scaleLinear } from 'd3-scale';
+import React from 'react';
 
 const extensions = ['png', 'jpeg', 'webp'];
 
@@ -31,11 +31,11 @@ const Demo = () => {
 
   const downloadImage = React.useCallback(
     (extention: string) => async () => {
-       {/* @ts-ignore */}
+      { /* @ts-ignore */ }
       const svgElement = svgRef.current.cloneNode(true) as typeof svgRef.current;
-       {/* @ts-ignore */}
+      { /* @ts-ignore */ }
       [...svgElement.querySelectorAll('animate')].forEach((animate) => animate.remove());
-       {/* @ts-ignore */}
+      { /* @ts-ignore */ }
       let svgText = svgElementToSvgText(svgElement);
       svgText = svgText.replace(/(\w+)?:?xlink=/g, 'xmlns:xlink='); // Fix root xlink without namespace
       svgText = svgText.replace(/NS\d+:href/g, 'xlink:href'); // Safari NS namespace fix
@@ -82,10 +82,10 @@ const Demo = () => {
           </Button.Addon>
           <Button.Text>Export</Button.Text>
         </DropdownMenu.Trigger>
-        <DropdownMenu.Popper wMax='257px' aria-label={'Extensions'}>
+        <DropdownMenu.Popper wMax='257px' aria-label='Extensions'>
           <DropdownMenu.List>
             {extensions.map((name) => (
-              <DropdownMenu.Item onClick={downloadImage(name)}>{name}</DropdownMenu.Item>
+              <DropdownMenu.Item key={name} onClick={downloadImage(name)}>{name}</DropdownMenu.Item>
             ))}
           </DropdownMenu.List>
         </DropdownMenu.Popper>
@@ -121,7 +121,7 @@ const getCSSStyles = (parentElement: Element) => {
     try {
       if (!s.cssRules) continue;
     } catch (e) {
-       {/* @ts-ignore */}
+      { /* @ts-ignore */ }
       if (e.name !== 'SecurityError') throw e; // for Firefox
       continue;
     }
@@ -170,9 +170,9 @@ const svgText2DownloadUrl = async (svg: string, width: number, height: number, f
 
     const image = new Image();
     image.onload = function () {
-       {/* @ts-ignore */}
+      { /* @ts-ignore */ }
       context.clearRect(0, 0, width, height);
-       {/* @ts-ignore */}
+      { /* @ts-ignore */ }
       context.drawImage(image, 0, 0, width, height);
 
       const img = canvas.toDataURL(`image/${format}`);

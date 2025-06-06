@@ -1,5 +1,5 @@
-import React from 'react';
 import InputNumber from '@semcore/input-number';
+import React from 'react';
 
 const Demo = () => {
   return (

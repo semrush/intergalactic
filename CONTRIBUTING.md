@@ -3,7 +3,7 @@ First of all, thank you for your interest in the library. We'd love to accept yo
 ## Prerequisites
 
 1. Install the latest LTS version of [Node.js](https://nodejs.org/en).
-2. Install [pnpm](https://pnpm.js.org) globally by running: `npm i -g pnpm@8`.
+2. Install [pnpm](https://pnpm.js.org) globally by running: `npm i -g pnpm@10`.
 3. Set up commit signing for your contributions. Follow these steps:
    - [Generate a GPG key](https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key)
    - [Add your GPG key to your GitHub account](https://docs.github.com/en/authentication/managing-commit-signature-verification/adding-a-gpg-key-to-your-github-account)

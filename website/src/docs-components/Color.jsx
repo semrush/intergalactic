@@ -1,8 +1,9 @@
-import React from 'react';
+import { useColorResolver } from '@semcore/core/lib/utils/use/useColorResolver';
 import cx from 'classnames';
+import React from 'react';
+
 import styles from './Color.module.css';
 import Copy from '../components/Copy';
-import { useColorResolver } from '@semcore/core/lib/utils/use/useColorResolver';
 
 const cssVariableFile = `
 @custom-media --desktop (min-width: 480px);
@@ -74,13 +75,13 @@ const Color = ({ name, className, ...other }) => {
   return (
     <Copy
       toCopy={varValue ? `${name}: ${value}` : value}
-      title={
+      title={(
         <span>
           Click to copy:
           <br />
           {varValue ? `${name}: "${value}"` : value}
         </span>
-      }
+      )}
     >
       <span
         className={cx(styles.paintedElement, className)}

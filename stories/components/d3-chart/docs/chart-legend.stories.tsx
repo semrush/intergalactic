@@ -1,24 +1,23 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import ChartLegendExample from './examples/chart-legend/chart-legend';
 import CustomShapeAsLegendItemExample from './examples/chart-legend/custom-shape-as-legenditem';
 import TableViewExample from './examples/chart-legend/table-view';
 
-
 const meta: Meta = {
-    title: 'Components/d3Charts/Documentation/ChartLegend',
+  title: 'Components/d3Charts/Documentation/ChartLegend',
 };
 
 export default meta;
 
 export const ChartLegend: StoryObj = {
-    render: ChartLegendExample,
+  render: ChartLegendExample,
 };
 
 export const TableView: StoryObj = {
-    render: TableViewExample,
+  render: TableViewExample,
 };
 
 export const CustomShapeAsLegendItem: StoryObj = {
-    render: CustomShapeAsLegendItemExample,
+  render: CustomShapeAsLegendItemExample,
 };

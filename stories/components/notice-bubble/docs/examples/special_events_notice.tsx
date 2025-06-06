@@ -1,8 +1,8 @@
-import React from 'react';
-import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/notice-bubble';
 import Button from '@semcore/button';
-import MailSent from '@semcore/illustration/MailSent';
 import { Flex } from '@semcore/flex-box';
+import MailSent from '@semcore/illustration/MailSent';
+import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/notice-bubble';
+import React from 'react';
 
 const manager = new NoticeBubbleManager();
 

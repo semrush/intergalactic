@@ -1,5 +1,5 @@
-import React from 'react';
 import Tooltip from '@semcore/tooltip';
+import React from 'react';
 
 const Copy = (props) => {
   const [copied, setCopied] = React.useState(false);
@@ -27,10 +27,9 @@ const Copy = (props) => {
       <Tooltip.Trigger aria-describedby={undefined}>
         {({ popperId }) =>
           React.cloneElement(props.children, {
-            onClick: handleClick,
+            'onClick': handleClick,
             'aria-describedby': popperId,
-          })
-        }
+          })}
       </Tooltip.Trigger>
       <Tooltip.Popper>{copied || props.onlyCopiedToast ? copiedText : copyText}</Tooltip.Popper>
     </Tooltip>

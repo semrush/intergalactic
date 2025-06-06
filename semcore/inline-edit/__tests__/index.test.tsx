@@ -1,9 +1,9 @@
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { render } from '@semcore/testing-utils/testing-library';
+import { expect, test, describe, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
-import { test, expect, describe, vi } from '@semcore/testing-utils/vitest';
-import { cleanup, render } from '@semcore/testing-utils/testing-library';
 
 import InlineEdit from '../src';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('inline-edit Dependency imports', () => {
   runDependencyCheckTests('inline-edit');

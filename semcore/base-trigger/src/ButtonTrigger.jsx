@@ -1,12 +1,12 @@
-import React from 'react';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
-import ChevronDown from '@semcore/icon/ChevronDown/m';
-import BaseTrigger from './BaseTrigger';
-import Spin from '@semcore/spin';
 import animatedSizeEnhance from '@semcore/core/lib/utils/enhances/animatedSizeEnhance';
 import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
+import ChevronDown from '@semcore/icon/ChevronDown/m';
+import Spin from '@semcore/spin';
+import React from 'react';
 
+import BaseTrigger from './BaseTrigger';
 import style from './style/button-trigger.shadow.css';
 
 class RootButtonTrigger extends Component {
@@ -24,6 +24,7 @@ class RootButtonTrigger extends Component {
       onChangeOf: ['value'],
     }),
   ];
+
   static defaultProps = {
     chevron: true,
   };
@@ -33,6 +34,7 @@ class RootButtonTrigger extends Component {
       tag: 'span',
     };
   }
+
   getAddonProps() {
     return {
       tag: 'span',

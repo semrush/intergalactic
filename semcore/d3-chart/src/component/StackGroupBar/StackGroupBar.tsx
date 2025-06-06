@@ -1,13 +1,13 @@
-import React from 'react';
 import { Component } from '@semcore/core';
-import createElement from '../../createElement';
-import { getChartDefaultColorName, scaleToBand } from '../../utils';
+import { type ScaleBand, scaleBand } from 'd3-scale';
+import { type Stack, stack as d3Stack } from 'd3-shape';
+import React from 'react';
+
+import type { StackGroupProps, StackGroupBarProps, StackGroupType } from './StackGroupBar.type';
 // @ts-ignore
 import Bar, { MIN_HEIGHT } from '../../Bar';
-import { ScaleBand, scaleBand } from 'd3-scale';
-
-import { StackGroupProps, StackGroupBarProps, StackGroupType } from './StackGroupBar.type';
-import { Stack, stack as d3Stack } from 'd3-shape';
+import createElement from '../../createElement';
+import { getChartDefaultColorName, scaleToBand } from '../../utils';
 
 const XY0 = Symbol('XY0');
 
@@ -69,7 +69,7 @@ class StackGroupBarRoot extends Component<StackGroupProps> {
   }
 
   getBarProps({ y, group, hMin = MIN_HEIGHT }: StackGroupBarProps, index: number) {
-    const { x, r, scale, maxBarSize = Infinity, patterns } = this.asProps;
+    const { x, r, scale, maxBarSize = Number.POSITIVE_INFINITY, patterns } = this.asProps;
     const [, yScale] = scale!; // scale always will be because of CreateElement wrapper
 
     const allGroupSeries = this.getSeries(group);
@@ -77,7 +77,7 @@ class StackGroupBarRoot extends Component<StackGroupProps> {
     // or [] if hide bar
     const series = allGroupSeries[seriesIndex] || [];
 
-    const rBar = series.map((s, i) =>
+    const rBar = series.map((_s, i) =>
       allGroupSeries.slice(seriesIndex + 1).some((bar) => bar[i][0] !== bar[i][1]) ? 0 : r,
     );
 

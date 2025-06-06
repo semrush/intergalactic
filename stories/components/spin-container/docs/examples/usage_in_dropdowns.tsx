@@ -1,8 +1,8 @@
-import React from 'react';
+import Button from '@semcore/button';
+import Dropdown from '@semcore/dropdown';
 import SpinContainer from '@semcore/spin-container';
 import { Text } from '@semcore/typography';
-import Dropdown from '@semcore/dropdown';
-import Button from '@semcore/button';
+import React from 'react';
 
 class Demo extends React.PureComponent {
   state = { loading: true, visible: false };
@@ -32,7 +32,7 @@ class Demo extends React.PureComponent {
           Dropdown with SpinContainer
         </Dropdown.Trigger>
         <Dropdown.Popper w={290} p={4} aria-labelledby='dropdown-trigger'>
-          <SpinContainer loading={loading} size={'xl'} aria-live='polite' role='status'>
+          <SpinContainer loading={loading} size='xl' aria-live='polite' role='status'>
             <Text size={200}>
               The Intergalactic Design System uses two sets of design tokens: basic and semantic.
               Basic tokens set the main colors, while semantic tokens build on them. Changing the

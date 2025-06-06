@@ -1,7 +1,7 @@
-import React from 'react';
-import { scaleLinear, scaleBand } from 'd3-scale';
-import { Flex } from '@semcore/flex-box';
 import { Chart } from '@semcore/d3-chart';
+import { Flex } from '@semcore/flex-box';
+import { scaleLinear, scaleBand } from 'd3-scale';
+import React from 'react';
 
 const Demo = () => {
   const MARGIN = 30;
@@ -21,13 +21,13 @@ const Demo = () => {
   return (
     <Flex flexWrap gap={5}>
       <Chart.CompactHorizontalBar
-        y={'category'}
-        x={'value'}
+        y='category'
+        x='value'
         data={data}
         plotWidth={500}
         plotHeight={450}
         onClickBar={(barIndex) => alert(`Bar ${barIndex} clicked`)}
-        aria-label={'CompactHorizontalBar chart'}
+        aria-label='CompactHorizontalBar chart'
       />
     </Flex>
   );

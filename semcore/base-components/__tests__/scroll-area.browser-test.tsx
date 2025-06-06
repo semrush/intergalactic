@@ -1,5 +1,5 @@
-import { expect, Page, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import { expect, Page, test } from '@semcore/testing-utils/playwright';
 
 async function checkAriaMaxValue(scrollBar: any) {
   await expect(scrollBar).toHaveAttribute('aria-valuemax');
@@ -242,7 +242,7 @@ test.describe('ScrollArea - Dynamic Virtual List', () => {
     await removeItemBtn.click();
     await removeItemBtn.click();
     await removeItemBtn.click();
-    await expect(page.locator('[data-ui-name="ScrollArea.Bar"]')).toHaveCount(0); //removes from DOM
+    await expect(page.locator('[data-ui-name="ScrollArea.Bar"]')).toHaveCount(0); // removes from DOM
   });
 });
 

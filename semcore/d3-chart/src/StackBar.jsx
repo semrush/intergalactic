@@ -1,9 +1,10 @@
-import React from 'react';
-import { stack as d3Stack } from 'd3-shape';
 import { Component } from '@semcore/core';
 import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
-import createElement from './createElement';
+import { stack as d3Stack } from 'd3-shape';
+import React from 'react';
+
 import Bar, { MIN_HEIGHT } from './Bar';
+import createElement from './createElement';
 import HorizontalBar, { MIN_WIDTH } from './HorizontalBar';
 import { getChartDefaultColorName } from './utils';
 
@@ -52,7 +53,7 @@ class StackBarRoot extends Component {
     // or [] if hide bar
     const series = this.series[seriesIndex] || [];
 
-    const rBar = series.map((s, i) =>
+    const rBar = series.map((_s, i) =>
       this.series.slice(seriesIndex + 1).some((bar) => bar[i][0] !== bar[i][1]) ? 0 : r,
     );
 
@@ -103,7 +104,7 @@ class StackBarRoot extends Component {
     const seriesIndex = this.series.findIndex((s) => s.key === x);
     const series = this.series[seriesIndex];
 
-    const rBar = series.map((s, i) =>
+    const rBar = series.map((_s, i) =>
       this.series.slice(seriesIndex + 1).some((bar) => bar[i][0] !== bar[i][1]) ? 0 : r,
     );
 

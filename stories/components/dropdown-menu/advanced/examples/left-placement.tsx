@@ -1,8 +1,8 @@
-import React from 'react';
+import Button from '@semcore/button';
 import DropdownMenu from '@semcore/dropdown-menu';
 import { Flex } from '@semcore/flex-box';
-import Button from '@semcore/button';
 import ChevronRightIcon from '@semcore/icon/ChevronRight/m';
+import React from 'react';
 
 const Demo = () => {
   return (

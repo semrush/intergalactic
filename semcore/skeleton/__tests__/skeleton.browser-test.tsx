@@ -1,5 +1,5 @@
-import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import { expect, test } from '@semcore/testing-utils/playwright';
 
 test.describe('Skeleton and skeleton.text props and styles', () => {
   test('Verify supports amount, hidden, and box props', async ({ page }) => {

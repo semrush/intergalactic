@@ -1,16 +1,14 @@
-import type { Meta, StoryObj } from '@storybook/react';
-
 import BulkTextarea from '@semcore/bulk-textarea';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import SizesAndStatesExample from './examples/sizes-states';
-import ValidationBlurExample from './examples/validate-blur-base-example';
 import NoCommonErrorBlurLineExample from './examples/no-common-error-blur-line';
+import SizesAndStatesExample from './examples/sizes-states';
+import EmptyLineInPastePropsExample from './examples/test-empty-value-in-paste';
+import OnChangePropsExample from './examples/test-encode-onchange-array';
+import LinesAndIndexInPastePropsExample from './examples/test-lines-and-index-in-paste';
+import ValidationBlurExample from './examples/validate-blur-base-example';
 import ValidationBlurLineExample from './examples/validate-blurRow-base-example';
 import WithNewValueOnHandleChangeExample from './examples/with-new-value-on-handleChange';
-import LinesAndIndexInPastePropsExample from './examples/test-lines-and-index-in-paste';
-import OnChangePropsExample from './examples/test-encode-onchange-array';
-import EmptyLineInPastePropsExample from './examples/test-empty-value-in-paste';
-
 
 const meta: Meta<typeof BulkTextarea> = {
   title: 'Components/BulkTextarea/Tests',

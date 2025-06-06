@@ -1,7 +1,7 @@
-import React from 'react';
-import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import { BoxProps } from '@semcore/flex-box';
-import { IconProps } from '@semcore/icon';
+import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import type { BoxProps } from '@semcore/flex-box';
+import type { IconProps } from '@semcore/icon';
+import type React from 'react';
 
 export type TagSize = 'xl' | 'l' | 'm';
 /** @deprecated */

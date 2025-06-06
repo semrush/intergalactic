@@ -1,8 +1,8 @@
-import stylelint, { PostcssResult, Rule } from 'stylelint';
-import postcssValueParser, {} from 'postcss-value-parser';
+import stylelint, { type PostcssResult, type Rule } from 'stylelint';
+import postcssValueParser from 'postcss-value-parser';
 import levenshtein from 'js-levenshtein';
 import type { Declaration } from 'postcss';
-import { resolve as resolvePath, isAbsolute as isAbsolutePath } from 'path';
+import { resolve as resolvePath, isAbsolute as isAbsolutePath } from 'node:path';
 
 const ruleName = 'intergalactic/design-tokens';
 const messages = stylelint.utils.ruleMessages(ruleName, {
@@ -110,7 +110,7 @@ const rule: Rule = (enabled: boolean, providedOptions: Partial<Options> = {}) =>
     : resolvePath(process.cwd(), options.tokensSource);
   const designTokens = require(tokensSource);
   const designTokensList = [...Object.keys(designTokens), ...options.include].filter(
-    (token) => !options.exclude.includes(token),
+    token => !options.exclude.includes(token),
   );
   const designTokensSet = new Set(designTokensList);
   const prefix = options.prefix;

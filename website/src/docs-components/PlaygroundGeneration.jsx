@@ -1,16 +1,17 @@
-import React from 'react';
 import Button from '@semcore/button';
 import Checkbox from '@semcore/checkbox';
 import Input from '@semcore/input';
-import Select from '@semcore/select';
 import Pills from '@semcore/pills';
-import { createPlayground, Playground } from '../components/playground';
-import styles from './PlaygroundGeneration.module.css';
-import { getHighlighterCore } from 'shiki/core';
+import Select from '@semcore/select';
+import React from 'react';
 import { createPortal } from 'react-dom';
-import { isolateStyles } from '../../docs/.vitepress/theme/isolateStyles';
+import { getHighlighterCore } from 'shiki/core';
 import getWasm from 'shiki/wasm';
+
+import styles from './PlaygroundGeneration.module.css';
 import { codeTheme } from '../../docs/.vitepress/code-theme';
+import { isolateStyles } from '../../docs/.vitepress/theme/isolateStyles';
+import { createPlayground, Playground } from '../components/playground';
 
 const ShadowRooted = ({ children }) => {
   const ref = React.useRef();
@@ -168,7 +169,8 @@ const PlaygroundView = ({ result, source, widgetControls }) => {
       <div className={styles.workArea}>
         <div className={`${styles.playgroundRuntime}`} style={{ margin: 0 }}>
           <ShadowRooted>
-            <style>{`
+            <style>
+              {`
               .playground-runtime {
                 padding-top: 40px;
                 margin-top: 20px;
@@ -187,7 +189,8 @@ const PlaygroundView = ({ result, source, widgetControls }) => {
                   padding-right: 24px;
                 }
               }
-            `}</style>
+            `}
+            </style>
             <div className='playground-runtime'>{result}</div>
           </ShadowRooted>
         </div>
@@ -197,21 +200,23 @@ const PlaygroundView = ({ result, source, widgetControls }) => {
           </div>
         )}
       </div>
-      {hasWidget ? (
-        <div
-          className={`${styles.widgetsBar} playground-widgets-bar`}
-          role='group'
-          aria-label='Component properties'
-        >
-          {widgetControls.map((control, i) => {
-            return (
-              <div className={styles.widgetGroup} key={i}>
-                {control.widgets}
-              </div>
-            );
-          })}
-        </div>
-      ) : null}
+      {hasWidget
+        ? (
+            <div
+              className={`${styles.widgetsBar} playground-widgets-bar`}
+              role='group'
+              aria-label='Component properties'
+            >
+              {widgetControls.map((control, i) => {
+                return (
+                  <div className={styles.widgetGroup} key={i}>
+                    {control.widgets}
+                  </div>
+                );
+              })}
+            </div>
+          )
+        : null}
     </div>
   );
 };

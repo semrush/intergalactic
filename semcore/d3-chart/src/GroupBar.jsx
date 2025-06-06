@@ -1,10 +1,11 @@
-import React from 'react';
 import { Component } from '@semcore/core';
 import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
-import createElement from './createElement';
-import Bar from './Bar';
-import HorizontalBar from './HorizontalBar';
 import { scaleBand } from 'd3-scale';
+import React from 'react';
+
+import Bar from './Bar';
+import createElement from './createElement';
+import HorizontalBar from './HorizontalBar';
 import { getChartDefaultColorName, scaleToBand } from './utils';
 
 class GroupBarRoot extends Component {
@@ -39,7 +40,7 @@ class GroupBarRoot extends Component {
   }
 
   getBarProps({ y }, index) {
-    const { x, maxBarSize = Infinity, patterns } = this.asProps;
+    const { x, maxBarSize = Number.POSITIVE_INFINITY, patterns } = this.asProps;
 
     const bandWidth = this.scaleGroup.bandwidth();
     const width = Math.min(bandWidth, maxBarSize);
@@ -56,7 +57,7 @@ class GroupBarRoot extends Component {
   }
 
   getHorizontalBarProps({ x }, index) {
-    const { y, maxBarSize = Infinity } = this.asProps;
+    const { y, maxBarSize = Number.POSITIVE_INFINITY } = this.asProps;
 
     const bandWidth = this.scaleGroup.bandwidth();
     const height = Math.min(bandWidth, maxBarSize);

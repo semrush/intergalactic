@@ -1,8 +1,8 @@
-import { DTValue, DTUse, DataTableData } from '../DataTable/DataTable.types';
-import { DTColumn } from '../Head/Column.types';
-import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
-import { ACCORDION, ROW_GROUP, ROW_INDEX, UNIQ_ROW_KEY } from '../DataTable/DataTable';
-import { DataTableCellProps } from './Cell.types';
+import type { DataTableCellProps } from './Cell.types';
+import type { MergedColumnsCell, MergedRowsCell } from './MergedCells';
+import type { ACCORDION, ROW_GROUP, ROW_INDEX, UNIQ_ROW_KEY } from '../DataTable/DataTable';
+import type { DTValue, DTUse, DataTableData } from '../DataTable/DataTable.types';
+import type { DTColumn } from '../Head/Column.types';
 
 export type UniqRowKey = string;
 

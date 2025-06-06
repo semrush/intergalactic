@@ -1,14 +1,14 @@
-import React from 'react';
-import Tooltip from '@semcore/tooltip';
-import { Box } from '@semcore/flex-box';
 import { ButtonLink } from '@semcore/button';
+import { Box } from '@semcore/flex-box';
+import Tooltip from '@semcore/tooltip';
+import React from 'react';
 
 const Demo = () => (
   <Tooltip>
     <Tooltip.Trigger tag={ButtonLink}>Colored tooltip</Tooltip.Trigger>
     <Tooltip.Popper
-      arrowBgColor={'bg-primary-advertising'}
-      arrowShadowColor={'border-tooltip-invert'}
+      arrowBgColor='bg-primary-advertising'
+      arrowShadowColor='border-tooltip-invert'
       p={0}
     >
       <Box

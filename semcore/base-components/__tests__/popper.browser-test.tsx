@@ -1,5 +1,5 @@
-import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import { expect, test } from '@semcore/testing-utils/playwright';
 
 test.describe('Popper', () => {
   test.describe('Focus Lock', () => {
@@ -581,7 +581,7 @@ test.describe('Popper', () => {
       const popperLocator = page.locator('[data-ui-name="Popper.Popper"]');
       await expect(popperLocator).toHaveCount(0);
 
-      //mouse interactions
+      // mouse interactions
       await buttonTrigger.hover();
       await expect(popperLocator).toHaveCount(0);
       await buttonTrigger.click();
@@ -598,7 +598,7 @@ test.describe('Popper', () => {
       await closePopper.click();
       await expect(popperLocator).toHaveCount(0);
 
-      //keyboard interactions
+      // keyboard interactions
       await page.mouse.click(1, 1);
       await page.keyboard.press('Tab');
       await expect(buttonTrigger).toBeFocused();
@@ -612,7 +612,7 @@ test.describe('Popper', () => {
 
       await expect(popperLocator).toHaveCount(0);
 
-      //the focus not returns to trigger in ff and webkit
+      // the focus not returns to trigger in ff and webkit
       if (browserName === 'chromium') await expect(buttonTrigger).toBeFocused();
     });
   });

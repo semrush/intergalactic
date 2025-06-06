@@ -1,5 +1,5 @@
-import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import { expect, test } from '@semcore/testing-utils/playwright';
 
 test.describe('Month Range Trigger', () => {
   test('Verify trigger when entering date manually', async ({ page }) => {
@@ -555,7 +555,7 @@ test.describe('Month range', () => {
         page.locator('[data-ui-name="MonthRangePicker.Calendar"]').first(),
       ).toBeFocused();
 
-      await pressTab(2); //period button
+      await pressTab(2); // period button
       await expect(buttons.first()).toBeFocused();
 
       await pressTab(4); // Apply
@@ -587,7 +587,7 @@ test.describe('Month range', () => {
       ]);
 
       if (browserName !== 'webkit') {
-        //works unstable on webkit in non debug mode
+        // works unstable on webkit in non debug mode
         expect(start).not.toBe(initialLeft);
         expect(middle).toBe(initialRight);
       }
@@ -599,7 +599,7 @@ test.describe('Month range', () => {
         input.nth(1).inputValue(),
       ]);
       if (browserName !== 'webkit') {
-        //wprks unstable on webkit in non debug mode
+        // wprks unstable on webkit in non debug mode
         expect(confirmedStart).toBe(start);
         expect(confirmedEnd).not.toBe(middle);
       }

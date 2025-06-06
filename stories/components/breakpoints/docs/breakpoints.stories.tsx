@@ -1,6 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
-
 import Breakpoints from '@semcore/breakpoints';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import CustomMediaExample from './examples/custom-media';
 import ManualControlExample from './examples/manual-control';

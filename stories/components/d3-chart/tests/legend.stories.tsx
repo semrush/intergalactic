@@ -1,7 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import LegendShapesRowExample from './examples/chart-legend/shapes-row';
 import LegendShapesColumnExample from './examples/chart-legend/shapes-column';
+import LegendShapesRowExample from './examples/chart-legend/shapes-row';
 
 const meta: Meta = {
   title: 'Components/d3Charts/tests/ChartLegend',
@@ -14,5 +14,5 @@ export const LegendShapesColumn: StoryObj = {
 };
 
 export const LegendShapesRow: StoryObj = {
-    render: LegendShapesRowExample,
-  };
+  render: LegendShapesRowExample,
+};

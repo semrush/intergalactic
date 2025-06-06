@@ -1,9 +1,8 @@
-import { FormProps, FieldProps, FieldInputProps, FieldMetaState } from 'react-final-form';
-
-import { Intergalactic } from '@semcore/core';
-import Button from '@semcore/button';
-import { NoticeSmart } from '@semcore/notice';
-import { Box } from '@semcore/flex-box';
+import type Button from '@semcore/button';
+import type { Intergalactic } from '@semcore/core';
+import type { Box } from '@semcore/flex-box';
+import type { NoticeSmart } from '@semcore/notice';
+import type { FormProps, FieldProps, FieldInputProps, FieldMetaState } from 'react-final-form';
 
 import { default as FeedbackRating } from './component/feedback-rating/FeedbackRating';
 

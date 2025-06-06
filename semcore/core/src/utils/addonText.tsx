@@ -15,9 +15,11 @@ export default function addonText(
       (element.type === React.Fragment ||
         (element.type as any)['displayName'] === Text.displayName ||
         (element.type as any)['displayName'] === Addon.displayName),
-  ) ? (
-    children
-  ) : (
-    <Text>{children}</Text>
-  );
+  )
+    ? (
+        children
+      )
+    : (
+        <Text>{children}</Text>
+      );
 }

@@ -1,8 +1,8 @@
-import React from 'react';
-import InputTags from '@semcore/input-tags';
-import Check from '@semcore/icon/Check/m';
 import { Box } from '@semcore/flex-box';
+import Check from '@semcore/icon/Check/m';
 import Edit from '@semcore/icon/Edit/m';
+import InputTags from '@semcore/input-tags';
+import React from 'react';
 
 const Demo = () => {
   return (

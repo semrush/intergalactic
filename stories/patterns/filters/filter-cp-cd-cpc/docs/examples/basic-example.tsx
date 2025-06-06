@@ -1,11 +1,11 @@
-import React, { useState, useRef } from 'react';
+import { FilterTrigger } from '@semcore/ui/base-trigger';
+import Button from '@semcore/ui/button';
 import Dropdown from '@semcore/ui/dropdown';
 import { Flex } from '@semcore/ui/flex-box';
-import Button from '@semcore/ui/button';
-import { FilterTrigger } from '@semcore/ui/base-trigger';
-import NeighborLocation from '@semcore/ui/neighbor-location';
 import InputNumber from '@semcore/ui/input-number';
+import NeighborLocation from '@semcore/ui/neighbor-location';
 import { Text } from '@semcore/ui/typography';
+import React, { useState, useRef } from 'react';
 
 interface ValueState {
   from: string;
@@ -126,7 +126,9 @@ const Demo = () => {
         onClear={clearAll}
         tag={FilterTrigger}
       >
-        <span aria-hidden>Com.:</span> {displayValue}
+        <span aria-hidden>Com.:</span>
+        {' '}
+        {displayValue}
       </Dropdown.Trigger>
       <Dropdown.Popper w={240} p={2} pb={3} aria-label='Competitive Density' tabIndex={-1}>
         <Text id='title-CD' size={200} bold>

@@ -1,9 +1,10 @@
-import React from 'react';
-import Tooltip from '@semcore/tooltip';
+import Copy from '@components/Copy';
 import { Flex } from '@semcore/flex-box';
 import Pills from '@semcore/pills';
 import SidePanel from '@semcore/side-panel';
-import Copy from '@components/Copy';
+import Tooltip from '@semcore/tooltip';
+import React from 'react';
+
 import styles from './styles.module.css';
 
 const iconDimensions = {

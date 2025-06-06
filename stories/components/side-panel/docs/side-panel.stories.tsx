@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
 import SidePanel from '@semcore/side-panel';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import AccessToInternalComponentsExample from './examples/access_to_internal_components';
 import AdvancedExampleExample from './examples/advanced_example';
@@ -7,8 +7,6 @@ import BasicExampleExample from './examples/basic_example';
 import DisablingOverlayExample from './examples/disabling_overlay';
 import PlacementExample from './examples/placement';
 import PortalsExample from './examples/portals';
-
-
 
 const meta: Meta<typeof SidePanel> = {
   title: 'Components/SidePanel/Documentation',
@@ -31,13 +29,13 @@ export const BasicExample: Story = {
 };
 
 export const DisablingOverlay: Story = {
-    render: DisablingOverlayExample,
+  render: DisablingOverlayExample,
 };
 
 export const Placement: Story = {
-    render: PlacementExample,
+  render: PlacementExample,
 };
-  
+
 export const Portals: Story = {
-    render: PortalsExample,
+  render: PortalsExample,
 };

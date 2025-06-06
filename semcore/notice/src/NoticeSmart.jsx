@@ -1,6 +1,7 @@
-import React from 'react';
 import { createComponent, Component, Root } from '@semcore/core';
 import isNode from '@semcore/core/lib/utils/isNode';
+import React from 'react';
+
 import Notice from './Notice';
 
 class NoticeSmart extends Component {
@@ -17,13 +18,15 @@ class NoticeSmart extends Component {
 
     if (typeof Children.origin === 'string') {
       textContent =
-        isNode(title) || isNode(label) || closable ? (
-          <Notice.Text>
-            <Children />
-          </Notice.Text>
-        ) : (
-          <Children />
-        );
+        isNode(title) || isNode(label) || closable
+          ? (
+              <Notice.Text>
+                <Children />
+              </Notice.Text>
+            )
+          : (
+              <Children />
+            );
     }
 
     return (

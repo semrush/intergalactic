@@ -1,10 +1,9 @@
-import type { Meta, StoryObj } from '@storybook/react';
-
 import BulkTextarea from '@semcore/bulk-textarea';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import NoCommonErrorExample from './examples/no-common-error';
 import EmptyValuesInPasteRowExample from './examples/empty-values-in-paste-row';
 import EncodeOnChangeValueExample from './examples/encode-onchange-value';
+import NoCommonErrorExample from './examples/no-common-error';
 
 const meta: Meta<typeof BulkTextarea> = {
   title: 'Components/BulkTextarea/Advanced',

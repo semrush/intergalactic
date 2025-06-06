@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { CHILDREN_COMPONENT } from '../core-types/symbols';
 
 function getOriginChildren(Children: any): any {

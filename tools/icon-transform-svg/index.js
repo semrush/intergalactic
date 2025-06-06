@@ -1,10 +1,14 @@
 const path = require('path');
-const fs = require('fs-extra');
-const glob = require('glob');
+
 const cheerio = require('cheerio');
+const fs = require('fs-extra');
+const { glob } = require('glob');
 const { configFile } = require('mri')(process.argv.slice(2));
+
 const util = require('util');
+
 const config = require('./config');
+
 const babel = require('@babel/core');
 
 const outputFile = util.promisify(fs.outputFile);
@@ -151,9 +155,11 @@ const generateIcons = (
   getDescriptionIcons,
   babelConfig = defaultBabelConfig,
 ) => {
-  return new Promise((resolve, reject) => {
-    glob(`${rootDir}/${sourceLib}/**/*svg`, async (err, icons) => {
-      if (err) reject(err);
+  // eslint-disable-next-line no-async-promise-executor
+  return new Promise(async (resolve, reject) => {
+    try {
+      const icons = await glob(`${rootDir}/${sourceLib}/**/*svg`);
+
       const results = icons.map(async (iconPath) => {
         const { name, location, type, group } = getDescriptionIcons(iconPath, outLib);
         const sourceCjs = await svgToReactComponent({
@@ -181,7 +187,9 @@ const generateIcons = (
 
       const data = await Promise.all(results);
       resolve(data);
-    });
+    } catch (err) {
+      reject(err);
+    }
   });
 };
 
@@ -222,7 +230,6 @@ async function patchExports(result) {
 
   await fs.writeJSON(packageJsonPath, packageJson, { spaces: 2 });
 
-  // biome-ignore lint/suspicious/noConsoleLog:
   console.log('Patched exports in package.json.');
 }
 
@@ -239,7 +246,6 @@ module.exports = function () {
     .then(async (result) => {
       await patchExports(result);
 
-      // biome-ignore lint/suspicious/noConsoleLog:
       console.log('Done! Wrote all icon files.');
     })
     .catch((err) => {

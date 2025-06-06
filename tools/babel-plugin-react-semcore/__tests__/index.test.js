@@ -1,6 +1,8 @@
-import pluginTester from 'babel-plugin-tester';
 import path from 'path';
+
+import pluginTester from 'babel-plugin-tester';
 import { describe, it } from 'vitest';
+
 const plugin = require('../src/index');
 
 const absolutePath = (relativePath) => path.resolve(__dirname, relativePath);
@@ -15,7 +17,7 @@ pluginTester({
   filename: __filename,
   tests: [
     {
-      title: "Doesn't change code",
+      title: 'Doesn\'t change code',
       fixture: absolutePath('__fixtures__/theme/unchanged/index.js'),
       outputFixture: absolutePath('__fixtures__/theme/unchanged/index.expected.js'),
       findPackage,

@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import HorizontalStackedBarExample from './examples/stacked-horizontal-bar/horizontal-stacked-bar';
 import LegendAndPatternFillExample from './examples/stacked-horizontal-bar/legend-and-pattern-fill';

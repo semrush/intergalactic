@@ -1,8 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/react';
-
-import FilterKDPositionsVolumeExample from './examples/basic-example';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { FilterKDPositionsVolumeTest } from './__tests__/filter-kd-positions-volume.test';
+import FilterKDPositionsVolumeExample from './examples/basic-example';
 import { playWrapper } from '../../../../utils/playWrapper';
 
 const meta: Meta = {

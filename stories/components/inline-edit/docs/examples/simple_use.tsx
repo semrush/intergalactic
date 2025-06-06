@@ -1,8 +1,8 @@
-import React from 'react';
-import InlineInput from '@semcore/inline-input';
-import InlineEdit from '@semcore/inline-edit';
 import EditM from '@semcore/icon/Edit/m';
+import InlineEdit from '@semcore/inline-edit';
+import InlineInput from '@semcore/inline-input';
 import { Text } from '@semcore/typography';
+import React from 'react';
 
 const Example = () => {
   const [text, setText] = React.useState('Martin Eden');
@@ -16,7 +16,9 @@ const Example = () => {
       </Text>
       <InlineEdit editable={editable} onEditableChange={setEditable}>
         <InlineEdit.View style={{ display: 'flex', gap: 8, alignItems: 'center' }} pr={2}>
-          {text} <EditM color='icon-secondary-neutral' />
+          {text}
+          {' '}
+          <EditM color='icon-secondary-neutral' />
         </InlineEdit.View>
         <InlineEdit.Edit>
           <InlineInput
@@ -28,7 +30,7 @@ const Example = () => {
               setText(confirmedText);
               setEditable(false);
             }}
-            onBlurBehavior={'confirm'}
+            onBlurBehavior='confirm'
           >
             <InlineInput.Value
               autoFocus

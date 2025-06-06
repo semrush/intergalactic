@@ -1,9 +1,11 @@
 const path = require('path');
+
 const syntaxJsx = require('@babel/plugin-syntax-jsx').default;
 const { addNamed } = require('@babel/helper-module-imports');
-const fs = require('fs-extra');
 const finderPackageJson = require('find-package-json');
+const fs = require('fs-extra');
 const stringHash = require('string-hash');
+
 const postcss = require('./postcss');
 
 const DEFAULT_OPTS = {

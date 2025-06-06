@@ -1,7 +1,8 @@
-import React from 'react';
-import { Intergalactic } from '@semcore/core';
-import { BaseChartProps } from './AbstractChart.type';
-import { interpolateValue } from '../../utils';
+import type { Intergalactic } from '@semcore/core';
+import type React from 'react';
+
+import type { BaseChartProps } from './AbstractChart.type';
+import type { interpolateValue } from '../../utils';
 
 type DataKey = string;
 

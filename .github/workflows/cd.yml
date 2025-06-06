@@ -17,12 +17,12 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v4.0.1
         with:
-          node-version: 20
+          node-version: 22
       - uses: pnpm/action-setup@v4.0.0
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 8.7.6
+          version: 10.11.1
           run_install: false
       - name: Get pnpm store directory
         id: pnpm-cache
@@ -55,7 +55,7 @@ jobs:
           CHANGED_COMPONENTS=$(echo "$CHANGED" | tr ' ' '\n')
           LABELS_TO_REMOVE=""
           LABELS_TO_ADD=""
-          
+
           echo CHANGED: "$CHANGED"
 
           for LABEL in $CHANGED; do
@@ -67,19 +67,19 @@ jobs:
               LABELS_TO_ADD="$LABELS_TO_ADD,$LABEL"
             fi
           done
-          
+
           for LABEL in $PR_LABELS_LIST; do
             if ! echo "$CHANGED_COMPONENTS" | grep -qx "$LABEL"; then
               LABELS_TO_REMOVE="$LABELS_TO_REMOVE,$LABEL"
             fi
           done
-          
+
           LABELS_TO_ADD="${LABELS_TO_ADD#","}"
           LABELS_TO_REMOVE="${LABELS_TO_REMOVE#","}"
-          
+
           echo ADD: "$LABELS_TO_ADD"
           echo REMOVE: "$LABELS_TO_REMOVE"
-         
+
           if [ -n $LABELS_TO_REMOVE ]; then
             gh pr edit "$PR_NUMBER" --remove-label "$LABELS_TO_REMOVE" --repo "$REPO"
           fi
@@ -95,12 +95,12 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v4.0.1
         with:
-          node-version: 20
+          node-version: 22
       - uses: pnpm/action-setup@v4.0.0
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 8.7.6
+          version: 10.11.1
           run_install: false
       - name: Get pnpm store directory
         id: pnpm-cache
@@ -141,12 +141,12 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v4.0.1
         with:
-          node-version: 20
+          node-version: 22
       - uses: pnpm/action-setup@v4.0.0
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 8.7.6
+          version: 10.11.1
           run_install: false
       - name: Get pnpm store directory
         id: pnpm-cache
@@ -195,12 +195,12 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v4.0.1
         with:
-          node-version: 20
+          node-version: 22
       - uses: pnpm/action-setup@v4.0.0
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 8.7.6
+          version: 10.11.1
           run_install: false
       - name: Get pnpm store directory
         id: pnpm-cache
@@ -253,12 +253,12 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v4.0.1
         with:
-          node-version: 20
+          node-version: 22
       - uses: pnpm/action-setup@v4.0.0
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 8.7.6
+          version: 10.11.1
           run_install: false
       - name: Get pnpm store directory
         id: pnpm-cache
@@ -334,7 +334,7 @@ jobs:
         run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
       - uses: pnpm/action-setup@v4.0.0
         with:
-          version: 8.7.6
+          version: 10.11.1
           run_install: false
       - name: Get pnpm store directory
         id: pnpm-cache
@@ -403,7 +403,7 @@ jobs:
         run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
       - uses: pnpm/action-setup@v4.0.0
         with:
-          version: 8.7.6
+          version: 10.11.1
           run_install: false
       - name: Get pnpm store directory
         id: pnpm-cache

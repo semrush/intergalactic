@@ -195,7 +195,7 @@ test.describe('Dropdown menu base', () => {
         await checkStyles(mItems.nth(i), {
           'font-size': '14px',
           'min-height': '32px',
-          padding: '6px 8px',
+          'padding': '6px 8px',
           'background-color': 'rgba(0, 0, 0, 0)',
         });
       }
@@ -208,7 +208,7 @@ test.describe('Dropdown menu base', () => {
         await checkStyles(lItems.nth(i), {
           'font-size': '16px',
           'min-height': '40px',
-          padding: '8px 12px',
+          'padding': '8px 12px',
           'background-color': 'rgba(0, 0, 0, 0)',
         });
       }
@@ -309,7 +309,7 @@ test.describe('Menu item types and elements inside', () => {
       await checkStyles(items.nth(1), {
         'font-size': '16px',
         'min-height': '40px',
-        padding: '8px 12px',
+        'padding': '8px 12px',
         'background-color': 'rgba(0, 0, 0, 0)',
       });
     });
@@ -318,7 +318,7 @@ test.describe('Menu item types and elements inside', () => {
       await checkStyles(items.nth(2), {
         'font-size': '14px',
         'min-height': '32px',
-        padding: '6px 8px',
+        'padding': '6px 8px',
         'background-color': 'rgba(0, 0, 0, 0)',
       });
     });
@@ -542,7 +542,7 @@ test.describe('On Visible controlled', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
-    //1st item focused when Menu expands
+    // 1st item focused when Menu expands
     const ddMenuTrigger = await page.locator('[data-ui-name="DropdownMenu.Trigger"]');
     const menu = page.getByRole('menu');
     await page.keyboard.press('Tab');
@@ -553,7 +553,7 @@ test.describe('On Visible controlled', () => {
     const Item1 = page.locator('[data-ui-name="DropdownMenu.Item"]:has-text("save")');
     await expect(Item1).toBeFocused();
 
-    //2nd item focused by 1st click on down
+    // 2nd item focused by 1st click on down
     await page.keyboard.press('ArrowDown');
     const Item2 = page.locator('[data-ui-name="DropdownMenu.Item"]:has-text("rename")');
     await expect(Item2).toBeFocused();
@@ -683,7 +683,7 @@ test.describe('Selectable radio items', () => {
       await menu.waitFor();
       await deleteButton4.hover();
       await new Promise((resolve) => setTimeout(resolve, 500));
-      //snapshot
+      // snapshot
     });
 
     await test.step('Verify menu not closed by click on addon', async () => {
@@ -729,7 +729,7 @@ test.describe('Selectable radio items', () => {
       await checkStyles(mItems.first(), {
         'font-size': '14px',
         'min-height': '32px',
-        padding: '6px 8px',
+        'padding': '6px 8px',
         'background-color': 'rgba(196, 229, 254, 0.7)',
       });
 
@@ -739,7 +739,7 @@ test.describe('Selectable radio items', () => {
         await checkStyles(mItems.nth(i), {
           'font-size': '14px',
           'min-height': '32px',
-          padding: '6px 8px',
+          'padding': '6px 8px',
           'background-color': 'rgba(0, 0, 0, 0)',
         });
       }
@@ -764,7 +764,7 @@ test.describe('Selectable radio items', () => {
       await checkStyles(mItems.first(), {
         'font-size': '14px',
         'min-height': '32px',
-        padding: '6px 8px',
+        'padding': '6px 8px',
         'background-color': 'rgba(196, 229, 254, 0.7)',
       });
 
@@ -774,7 +774,7 @@ test.describe('Selectable radio items', () => {
         await checkStyles(lItems.nth(i), {
           'font-size': '16px',
           'min-height': '40px',
-          padding: '8px 12px',
+          'padding': '8px 12px',
           'background-color': 'rgba(0, 0, 0, 0)',
         });
       }
@@ -797,7 +797,7 @@ test.describe('Selectable radio items', () => {
         'background-color': 'rgb(244, 245, 249)',
       });
 
-      //snapshot
+      // snapshot
     });
   });
 });
@@ -926,7 +926,7 @@ test.describe('Multiselect items', () => {
         await checkStyles(mItems.nth(i), {
           'font-size': '14px',
           'min-height': '32px',
-          padding: '6px 8px',
+          'padding': '6px 8px',
           'background-color': 'rgba(0, 0, 0, 0)',
         });
       }
@@ -939,7 +939,7 @@ test.describe('Multiselect items', () => {
         await checkStyles(lItems.nth(i), {
           'font-size': '16px',
           'min-height': '40px',
-          padding: '8px 12px',
+          'padding': '8px 12px',
           'background-color': 'rgba(0, 0, 0, 0)',
         });
       }
@@ -951,7 +951,7 @@ test.describe('Multiselect items', () => {
       });
     });
 
-    //snapshot
+    // snapshot
   });
 });
 
@@ -983,7 +983,7 @@ test.describe('Virtual scroll', () => {
     await expect(project33).not.toBeFocused();
     await expect(page).toHaveScreenshot();
 
-    if (browserName === 'firefox') return; //because of bug on firefox UIK-3349
+    if (browserName === 'firefox') return; // because of bug on firefox UIK-3349
     await page.keyboard.press('Tab');
     const createProject = page.getByRole('button', { name: 'Create new project' });
     await expect(createProject).toBeFocused();

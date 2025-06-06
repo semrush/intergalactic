@@ -1,16 +1,20 @@
-import React from 'react';
 import { DataTable, ACCORDION } from '@semcore/data-table';
+import React from 'react';
 
 const Demo = () => {
   return (
-    <DataTable data={data} aria-label={'Parent with fixed column'} h={'100%'} virtualScroll
-    columns={[
-      {name: 'keyword', children: 'Keyword', gtcWidth: '400px', fixed: 'left'},
-      {name: 'kd', children: 'KD,%', gtcWidth: '300px'},
-      {name: 'cpc', children: 'CPC', gtcWidth: '300px'},
-      {name: 'vol', children: 'Vol.', gtcWidth: '300px'},
-    ]}
-/>
+    <DataTable
+      data={data}
+      aria-label='Parent with fixed column'
+      h='100%'
+      virtualScroll
+      columns={[
+        { name: 'keyword', children: 'Keyword', gtcWidth: '400px', fixed: 'left' },
+        { name: 'kd', children: 'KD,%', gtcWidth: '300px' },
+        { name: 'cpc', children: 'CPC', gtcWidth: '300px' },
+        { name: 'vol', children: 'Vol.', gtcWidth: '300px' },
+      ]}
+    />
   );
 };
 
@@ -45,7 +49,7 @@ const data = [
         cpc: '$0',
         vol: '21,644,290',
       },
-    ]
+    ],
   },
   {
     keyword: 'www.ebay.com',

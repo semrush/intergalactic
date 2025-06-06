@@ -1,8 +1,9 @@
-import React from 'react';
-import { snapshot } from '@semcore/testing-utils/snapshot';
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
-import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
+import { snapshot } from '@semcore/testing-utils/snapshot';
 import { cleanup, render } from '@semcore/testing-utils/testing-library';
+import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
+import React from 'react';
+
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 import { Box, Flex } from '../src';
 
@@ -93,7 +94,7 @@ describe('Box', () => {
   shouldSupportClassName(Box);
   shouldSupportRef(Box);
 
-  test("Should support Box 'tag' prop", () => {
+  test('Should support Box \'tag\' prop', () => {
     const { getByTestId } = render(
       <Box tag='span' data-testid='box'>
         tag
@@ -102,7 +103,7 @@ describe('Box', () => {
     expect(getByTestId('box').tagName).toBe('SPAN');
   });
 
-  test("Should support Box 'tag' prop component", () => {
+  test('Should support Box \'tag\' prop component', () => {
     const Span = function (props) {
       return <span {...props} />;
     };
@@ -130,7 +131,7 @@ describe('Box', () => {
   });
 
   test('Should support display property', () => {
-    const { getByTestId } = render(<Box display={'grid'} data-testid='box' />);
+    const { getByTestId } = render(<Box display='grid' data-testid='box' />);
     expect(getByTestId('box').style.display).toBe('grid');
   });
 

@@ -1,9 +1,11 @@
-import ts from 'typescript';
-import { resolve as resolvePath } from 'path';
 import { readFile } from 'fs/promises';
+import { resolve as resolvePath } from 'path';
+
+import ts from 'typescript';
+
+import { serializeClassDeclaration } from './classes';
 import { serializeInterfaceDeclaration } from './interfaces';
 import { serializeTypeDeclaration } from './typeAliases';
-import { serializeClassDeclaration } from './classes';
 
 const mapTypes = {
   ButtonProps: 'AbstractButtonProps',
@@ -111,9 +113,8 @@ export default {
       }
       return typings;
     } catch (err) {
-      // biome-ignore lint/suspicious/noConsoleLog:
       console.log(String(err).substring(0, 1000));
-      // biome-ignore lint/suspicious/noConsoleLog:
+
       console.log('Failed to serialize typings');
       return {};
     }
