@@ -3,7 +3,6 @@ import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 test.describe('InlineEdit', () => {
-
   test('Verify Base exmaple keyboard interactions', async ({ page }) => {
     const standPath = 'stories/components/inline-edit/docs/examples/simple_use.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -24,44 +23,33 @@ test.describe('InlineEdit', () => {
       await expect(inlineEditView).toHaveAttribute('role', 'button');
       await expect(inlineEditView).toHaveAttribute('aria-label', 'Edit: Martin Eden');
       await expect(inlineEditView).not.toHaveAttribute('aria-hidden', 'true');
-
     });
 
     await test.step('Verify inline focused by tab', async () => {
-
       await page.keyboard.press('Tab');
       await expect(inlineEditView).toBeFocused();
       await expect(inlineEditEdit).toHaveCount(0);
-
     });
 
     await test.step('Verify enter activated edit mode', async () => {
-
       await page.keyboard.press('Enter');
       await expect(inlineEditView).toHaveAttribute('aria-hidden', 'true');
       await expect(inlineEditEdit).toHaveCount(1);
-
     });
 
     await test.step('Verify edit mode skipped by ESC', async () => {
-
       await page.keyboard.press('Escape');
       await expect(inlineEditView).not.toHaveAttribute('aria-hidden', 'true');
       await expect(inlineEditEdit).toHaveCount(0);
-
     });
 
     await test.step('Verify space activated edit mode', async () => {
-
       await page.keyboard.press('Space');
       await expect(inlineEditView).toHaveAttribute('aria-hidden', 'true');
       await expect(inlineEditEdit).toHaveCount(1);
-
     });
 
-
     await test.step('Verify escape not saves text updates', async () => {
-
       if (platform() === 'darwin') {
         await page.keyboard.press('Meta+A');
       } else {
@@ -72,7 +60,6 @@ test.describe('InlineEdit', () => {
       await expect(inlineEditView).not.toHaveAttribute('aria-hidden', 'true');
       await expect(inlineEditEdit).toHaveCount(0);
       await expect(inlineEditView).toHaveAttribute('aria-label', 'Edit: Martin Eden');
-
     });
 
     await test.step('Verify enter saves text updates', async () => {
@@ -87,7 +74,6 @@ test.describe('InlineEdit', () => {
       await expect(inlineEditView).not.toHaveAttribute('aria-hidden', 'true');
       await expect(inlineEditEdit).toHaveCount(0);
       await expect(inlineEditView).toHaveAttribute('aria-label', `Edit: ${randomText}`);
-
     });
 
     await test.step('Verify confirm updates value and returns to edit mode', async () => {
@@ -104,10 +90,8 @@ test.describe('InlineEdit', () => {
       await page.keyboard.press('Enter');
       await expect(inlineEditView).not.toHaveAttribute('aria-hidden', 'true');
       await expect(inlineEditEdit).toHaveCount(0);
-      await expect(inlineEditView).toHaveAttribute('aria-label', `Edit: Test Test Test`);
+      await expect(inlineEditView).toHaveAttribute('aria-label', 'Edit: Test Test Test');
       await expect(inlineEditView).toBeFocused();
-
-
     });
 
     await test.step('Verify cancel updates value and returns to edit mode', async () => {
@@ -124,10 +108,8 @@ test.describe('InlineEdit', () => {
       await page.keyboard.press('Enter');
       await expect(inlineEditView).not.toHaveAttribute('aria-hidden', 'true');
       await expect(inlineEditEdit).toHaveCount(0);
-      await expect(inlineEditView).toHaveAttribute('aria-label', `Edit: Test Test Test`);
+      await expect(inlineEditView).toHaveAttribute('aria-label', 'Edit: Test Test Test');
       await expect(inlineEditView).toBeFocused();
-
-
     });
 
     await test.step('Verify empty state', async () => {
@@ -142,12 +124,10 @@ test.describe('InlineEdit', () => {
 
       await expect(inlineEditView).not.toHaveAttribute('aria-hidden', 'true');
       await expect(inlineEditEdit).toHaveCount(0);
-      await expect(inlineEditView).toHaveAttribute('aria-label', `Edit: `);
+      await expect(inlineEditView).toHaveAttribute('aria-label', 'Edit: ');
       await expect(inlineEditView).toBeFocused();
       await expect(page).toHaveScreenshot();
-
     });
-
   });
 
   test('Verify Base exmaple mouse interactions', async ({ page }) => {
@@ -165,13 +145,10 @@ test.describe('InlineEdit', () => {
 
     const inlineEdit = page.locator('[data-ui-name="InlineEdit"]');
 
-
     await test.step('Verify Edit mode activated by mouse click', async () => {
-
       await inlineEdit.click();
       await expect(inlineEditEdit).toHaveCount(1);
       await expect(page).toHaveScreenshot();
-
     });
 
     await test.step('Verify Edit mode activated by icon click', async () => {
@@ -180,7 +157,6 @@ test.describe('InlineEdit', () => {
       await editIcon.click();
       await expect(inlineEditEdit).toHaveCount(1);
     });
-
 
     await test.step('Verify click on Close not saves text updates and returns to edit mode', async () => {
       if (platform() === 'darwin') {
@@ -195,7 +171,6 @@ test.describe('InlineEdit', () => {
       await expect(inlineEditView).not.toHaveAttribute('aria-hidden', 'true');
       await expect(inlineEditEdit).toHaveCount(0);
       await expect(inlineEditView).toHaveAttribute('aria-label', 'Edit: Martin Eden');
-
     });
 
     await test.step('Verify click on Confirm updates value and returns to edit mode', async () => {
@@ -211,10 +186,8 @@ test.describe('InlineEdit', () => {
       await check.click();
       await expect(inlineEditView).not.toHaveAttribute('aria-hidden', 'true');
       await expect(inlineEditEdit).toHaveCount(0);
-      await expect(inlineEditView).toHaveAttribute('aria-label', `Edit: Test Test Test`);
+      await expect(inlineEditView).toHaveAttribute('aria-label', 'Edit: Test Test Test');
       await expect(inlineEditView).toBeFocused();
-
-
     });
 
     await test.step('Verify empty state', async () => {
@@ -228,12 +201,10 @@ test.describe('InlineEdit', () => {
       await check.click();
       await expect(inlineEditView).not.toHaveAttribute('aria-hidden', 'true');
       await expect(inlineEditEdit).toHaveCount(0);
-      await expect(inlineEditView).toHaveAttribute('aria-label', `Edit: `);
+      await expect(inlineEditView).toHaveAttribute('aria-label', 'Edit: ');
       await expect(inlineEditView).toBeFocused();
       await expect(page).toHaveScreenshot();
-
     });
-
   });
 
   test('Verify inline input interactions after page scrolling', async ({ page }) => {
@@ -271,70 +242,54 @@ test.describe('InlineEdit', () => {
     const tagContainer = page.locator('[data-ui-name="TagContainer.Tag"]');
     const tagContainerClose = page.locator('[data-ui-name="TagContainer.Close"]');
 
-
     await test.step('Verify inline view mode attributes', async () => {
       await expect(inlineEditView).toHaveAttribute('tabindex', '-1');
       await expect(inlineEditView).toHaveAttribute('role');
       await expect(inlineEditView).toHaveAttribute('aria-label', 'Edit: Default tag');
       await expect(inlineEditView).not.toHaveAttribute('aria-hidden', 'true');
-
     });
 
     await test.step('Verify tag focused by tab', async () => {
-
       await page.keyboard.press('Tab');
       await expect(inlineEditView).not.toBeFocused();
       await expect(inlineEditEdit).toHaveCount(0);
       await expect(tagContainer).toBeFocused();
-
     });
 
     await test.step('Verify tag closefocused by tab', async () => {
-
       await page.keyboard.press('Tab');
       await expect(inlineEditView).not.toBeFocused();
       await expect(inlineEditEdit).toHaveCount(0);
       await expect(tagContainer).not.toBeFocused();
       await expect(tagContainerClose).toBeFocused();
-
     });
 
     await test.step('Verify tag focused by shift+tab', async () => {
-
       await page.keyboard.press('Shift+Tab');
       await expect(inlineEditView).not.toBeFocused();
       await expect(inlineEditEdit).toHaveCount(0);
       await expect(tagContainer).toBeFocused();
-
     });
 
     await test.step('Verify enter on tag activated edit mode', async () => {
-
       await page.keyboard.press('Enter');
       await expect(inlineEditView).toHaveAttribute('aria-hidden', 'true');
       await expect(inlineEditEdit).toHaveCount(1);
-
     });
 
     await test.step('Verify edit mode skipped by ESC', async () => {
-
       await page.keyboard.press('Escape');
       await expect(inlineEditView).not.toHaveAttribute('aria-hidden', 'true');
       await expect(inlineEditEdit).toHaveCount(0);
-
     });
 
     await test.step('Verify space activated edit mode', async () => {
-
       await page.keyboard.press('Space');
       await expect(inlineEditView).toHaveAttribute('aria-hidden', 'true');
       await expect(inlineEditEdit).toHaveCount(1);
-
     });
 
-
     await test.step('Verify escape not saves text updates', async () => {
-
       if (platform() === 'darwin') {
         await page.keyboard.press('Meta+A');
       } else {
@@ -345,7 +300,6 @@ test.describe('InlineEdit', () => {
       await expect(inlineEditView).not.toHaveAttribute('aria-hidden', 'true');
       await expect(inlineEditEdit).toHaveCount(0);
       await expect(inlineEditView).toHaveAttribute('aria-label', 'Edit: Default tag');
-
     });
 
     await test.step('Verify enter saves text updates', async () => {
@@ -360,7 +314,6 @@ test.describe('InlineEdit', () => {
       await expect(inlineEditView).not.toHaveAttribute('aria-hidden', 'true');
       await expect(inlineEditEdit).toHaveCount(0);
       await expect(inlineEditView).toHaveAttribute('aria-label', `Edit: ${randomText}`);
-
     });
 
     await test.step('Verify confirm updates value and returns to edit mode', async () => {
@@ -376,10 +329,8 @@ test.describe('InlineEdit', () => {
       await page.keyboard.press('Enter');
       await expect(inlineEditView).not.toHaveAttribute('aria-hidden', 'true');
       await expect(inlineEditEdit).toHaveCount(0);
-      await expect(inlineEditView).toHaveAttribute('aria-label', `Edit: Test Test Test`);
+      await expect(inlineEditView).toHaveAttribute('aria-label', 'Edit: Test Test Test');
       await expect(tagContainer).toBeFocused();
-
-
     });
 
     await test.step('Verify cancel updates value and returns to edit mode', async () => {
@@ -396,10 +347,8 @@ test.describe('InlineEdit', () => {
       await page.keyboard.press('Enter');
       await expect(inlineEditView).not.toHaveAttribute('aria-hidden', 'true');
       await expect(inlineEditEdit).toHaveCount(0);
-      await expect(inlineEditView).toHaveAttribute('aria-label', `Edit: Test`);
+      await expect(inlineEditView).toHaveAttribute('aria-label', 'Edit: Test');
       await expect(tagContainer).toBeFocused();
-
-
     });
 
     if (browserName === 'chromium')
@@ -415,10 +364,7 @@ test.describe('InlineEdit', () => {
         await expect(tagContainerClose).toBeFocused();
         await page.keyboard.press('Enter');
         await expect(tagContainerClose).toBeFocused();
-
-
       });
-
   });
 
   test('Verify Editable tag mouse interactions', async ({ page }) => {
@@ -435,13 +381,9 @@ test.describe('InlineEdit', () => {
     const inlineEdit = page.locator('[data-ui-name="InlineEdit"]');
 
     await test.step('Verify Edit mode activated by mouse click', async () => {
-
       await inlineEdit.click();
       await expect(inlineEditEdit).toHaveCount(1);
     });
-
-
-
 
     await test.step('Verify click on Close not saves text updates and returns to edit mode', async () => {
       if (platform() === 'darwin') {
@@ -456,7 +398,6 @@ test.describe('InlineEdit', () => {
       await expect(inlineEditView).not.toHaveAttribute('aria-hidden', 'true');
       await expect(inlineEditEdit).toHaveCount(0);
       await expect(inlineEditView).toHaveAttribute('aria-label', 'Edit: Default tag');
-
     });
 
     await test.step('Verify click on Confirm updates value and returns to edit mode', async () => {
@@ -475,9 +416,7 @@ test.describe('InlineEdit', () => {
       await expect(inlineEditView).not.toHaveAttribute('aria-hidden', 'true');
       await expect(inlineEditEdit).toHaveCount(0);
       await expect(inlineEditView).toHaveAttribute('aria-label', 'Edit: Default tag');
-
     });
-
   });
 
   test('Verify Pseudo network mouse interactions', async ({ page }) => {
@@ -523,7 +462,6 @@ test.describe('InlineEdit', () => {
     });
   });
 
-
   test('Verify Pseudo network keyboard interactions', async ({ page }) => {
     const standPath = 'stories/components/inline-edit/docs/examples/pseudo_network_interaction.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -532,7 +470,6 @@ test.describe('InlineEdit', () => {
 
     const spinLocator = page.locator('[data-ui-name="Spin"]');
 
-  
     await test.step('Verify spin is NOT shown on Escape', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
@@ -567,7 +504,6 @@ test.describe('InlineEdit', () => {
     });
   });
 
-
   test('Verify edit and view settings functionality', async ({ page }) => {
     const standPath = 'stories/components/inline-edit/tests/examples/test_use.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -579,35 +515,29 @@ test.describe('InlineEdit', () => {
 
     await expect(page).toHaveScreenshot();
     await test.step('Verify no edit when edit disabled', async () => {
-     await inlineEditView.first().click();
+      await inlineEditView.first().click();
       await expect(inlineEditView.first()).not.toHaveAttribute('aria-hidden', 'true');
       await expect(inlineEditEdit).toHaveCount(1);
-
     });
 
     await test.step('Verify edit shown when edit enabled', async () => {
       await inlineEditView.nth(1).click();
-       await expect(inlineEditView.nth(1)).toHaveAttribute('aria-hidden', 'true');
-       await expect(inlineEditEdit).toHaveCount(2);
+      await expect(inlineEditView.nth(1)).toHaveAttribute('aria-hidden', 'true');
+      await expect(inlineEditEdit).toHaveCount(2);
+    });
 
-     });
-
-     await test.step('Verify edit shown when has styles', async () => {
+    await test.step('Verify edit shown when has styles', async () => {
       await inlineEditView.nth(2).click();
-       await expect(inlineEditView.nth(2)).toHaveAttribute('aria-hidden', 'true');
-       await expect(inlineEditEdit).toHaveCount(3);
+      await expect(inlineEditView.nth(2)).toHaveAttribute('aria-hidden', 'true');
+      await expect(inlineEditEdit).toHaveCount(3);
+    });
 
-     });
-
-     await test.step('Verify edit hidden when view enabled', async () => {
+    await test.step('Verify edit hidden when view enabled', async () => {
       await inlineEditEdit.nth(2).click();
-       await expect(inlineEditView.nth(3)).toHaveAttribute('aria-hidden', 'true');
-       await expect(inlineEditEdit).toHaveCount(3);
+      await expect(inlineEditView.nth(3)).toHaveAttribute('aria-hidden', 'true');
+      await expect(inlineEditEdit).toHaveCount(3);
+    });
 
-     });
-
-     await expect(page).toHaveScreenshot();
-
+    await expect(page).toHaveScreenshot();
   });
-
 });

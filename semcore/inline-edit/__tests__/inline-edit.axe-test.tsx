@@ -25,8 +25,8 @@ test.describe('InlineEdit', () => {
       expect(violations).toEqual([]);
     }
 
-     // edit mode
-     {
+    // edit mode
+    {
       await page.keyboard.press('Enter');
 
       const violations = await getAccessibilityViolations({ page });
@@ -57,8 +57,8 @@ test.describe('InlineEdit', () => {
       expect(violations).toEqual([]);
     }
 
-     // edit mode
-     {
+    // edit mode
+    {
       await page.keyboard.press('Enter');
 
       const violations = await getAccessibilityViolations({ page });
@@ -89,8 +89,8 @@ test.describe('InlineEdit', () => {
       expect(violations).toEqual([]);
     }
 
-     // edit mode
-     {
+    // edit mode
+    {
       await page.keyboard.press('Enter');
 
       const violations = await getAccessibilityViolations({ page });
