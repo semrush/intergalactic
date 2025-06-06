@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import BasicUsageExample from './examples/stacked-area-chart/basic-usage';
 import EdgeCasesExample from './examples/stacked-area-chart/edge-cases';

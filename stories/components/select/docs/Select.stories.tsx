@@ -1,5 +1,5 @@
 import Select from '@semcore/select';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { AdvancedFilteringControlTest } from './__tests__/advanced_filtering_control.test';
 import { BasicUsageTest } from './__tests__/basic_usage.test';

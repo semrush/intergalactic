@@ -1,5 +1,5 @@
 import { FilterTrigger } from '@semcore/base-trigger';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import AccessibleNameExample from './examples/accessible_name';
 import ProgrammaticFocusExample from './examples/programmatic_focus';

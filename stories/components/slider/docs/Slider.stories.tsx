@@ -1,5 +1,5 @@
 import Slider from '@semcore/slider';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import CustomizesOptionsViewExample from './examples/customized_options_view';
 import NumericExampleExample from './examples/numeric_slider';

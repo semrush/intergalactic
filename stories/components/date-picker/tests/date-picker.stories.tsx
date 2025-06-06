@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import CalendarUnitPropsExample from './examples/calendar_props';
 import CustomDayFixedForTestsExample from './examples/custom_day_test';

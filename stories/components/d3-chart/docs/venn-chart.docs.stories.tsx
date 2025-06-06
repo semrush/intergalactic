@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import BasicUsageExample from './examples/venn-chart/basic-usage';
 import CustomIntersectionsStylesExample from './examples/venn-chart/custom-intersection-styles';

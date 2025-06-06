@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { SerpFilterTest } from './__tests__/serp-filter.test';
 import SerpFilterExample from './examples/serp-filter';

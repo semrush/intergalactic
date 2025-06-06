@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { LinkTriggerTest } from './__tests__/linktrigger.test';
 import LinkTriggerExample from './examples/link-trigger';

@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { AdvancedFiltersTest } from './__tests__/filters-with-filter-conditions.test';
 import FiltersWithConditionsEx from './examples/filters-with-filter-conditions';

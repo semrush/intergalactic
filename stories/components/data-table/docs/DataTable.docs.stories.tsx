@@ -1,5 +1,5 @@
 import { DataTable } from '@semcore/data-table';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import AccessToCellsExample from './examples/access-to-cells';
 import AccessToSetOfCellsExample from './examples/access-to-set-of-cells';

@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import BloquoteExample from './examples/blockquote';
 import ListAxeExample from './examples/list-axe-test';

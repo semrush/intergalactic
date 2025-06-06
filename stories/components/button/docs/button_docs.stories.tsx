@@ -1,5 +1,5 @@
 import Button from '@semcore/button';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { ButtonAccessibilityTest } from './__tests__/ButtonAccessibility.test';
 import AddonsExample from './examples/addons';

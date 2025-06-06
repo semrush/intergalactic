@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import DynamicSearchExample from './examples/dynamic_search';
 import SearchByButtonExample from './examples/search-by-button';

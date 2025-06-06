@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import DisablePortalVisibleExample from './examples/disable-portal-visible';
 import BackAndTitleBody400Example from './examples/header/back-and-title-bodyh400-2btn-footer';

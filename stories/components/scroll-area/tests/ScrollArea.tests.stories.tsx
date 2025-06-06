@@ -1,5 +1,5 @@
 import ScrollArea from '@semcore/scroll-area';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import HorizontalScrollWithShadowAndOffsetExample from './examples/horizontal-scroll-with-shadow-and-offset';
 import VerticalScrollWithShadowAndOffseExample from './examples/vertical-scroll-with-shadow-and-offset';

@@ -1,5 +1,5 @@
 import SidePanel from '@semcore/side-panel';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import WithEllipsisAndTooltipExample from './examples/with-ellipsis-and-tooltip';
 

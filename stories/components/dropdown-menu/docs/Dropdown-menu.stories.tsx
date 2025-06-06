@@ -1,5 +1,5 @@
 import DropdownMenu from '@semcore/dropdown-menu';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { BasicUsageTest } from './__tests__/basic.test';
 import { DropdownMenuTest } from './__tests__/dropdown-menu.test';

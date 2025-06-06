@@ -1,5 +1,5 @@
 import { DataTable } from '@semcore/data-table';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import CardFlagInCellExample from './examples/cells-tests/card-flag-in-cell';
 import DDSelectInCellExample from './examples/cells-tests/dd-select-in-cell';

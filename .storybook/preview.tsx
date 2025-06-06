@@ -1,5 +1,5 @@
 import { PortalProvider } from '@semcore/portal';
-import type { Preview } from '@storybook/react';
+import type { Preview } from '@storybook/react-vite';
 import React from 'react';
 
 const preview: Preview = {

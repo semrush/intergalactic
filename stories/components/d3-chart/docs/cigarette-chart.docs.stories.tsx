@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import BasicUsageExample from './examples/cigarette-chart/basic-usage';
 import ClickInteractionExample from './examples/cigarette-chart/click-interaction';

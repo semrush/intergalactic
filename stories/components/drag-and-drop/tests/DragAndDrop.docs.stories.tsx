@@ -1,5 +1,5 @@
 import DnD from '@semcore/drag-and-drop';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import TabPanelExample from './examples/with_tabpanel';
 

@@ -1,5 +1,5 @@
 import { DataTable } from '@semcore/data-table';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import FixedColumnDiffWidthExample from './examples/scroll-tests/fixed-column-with-d-ff-width';
 import FixedColumnWithoutVerticalExample from './examples/scroll-tests/fixed-column-without-vertical';

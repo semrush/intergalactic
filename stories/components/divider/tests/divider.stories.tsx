@@ -1,5 +1,5 @@
 import Divider from '@semcore/divider';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import BoxPropsExample from './examples/box-props';
 import OrientationUseAndThemePairsExample from './examples/orientation-use-theme-variations';

@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import AccessToInternalHtmlNodesExample from './examples/access_to_internal_html_nodes';
 import BasicModalWindowExample from './examples/basic_modal_window_usage';

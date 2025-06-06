@@ -1,5 +1,5 @@
 import Tooltip from '@semcore/tooltip';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import InteractiveInTooltipsExample from './examples/interactive-in-tooltip';
 import TooltipStatesExample from './examples/tooltip-styles';

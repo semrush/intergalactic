@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import ThemeProviderExample from './examples/themeprovider';
 import TokensWithCustomComponentExample from './examples/tokens-with-custom-component';

@@ -1,5 +1,5 @@
 import Popper from '@semcore/popper';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import ClickOutsideExample from './examples/click-outside';
 import CustomTagExample from './examples/custom-tag';

@@ -1,5 +1,5 @@
 import DropdownMenu from '@semcore/dropdown-menu';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { ProjectSelectorTest } from './__tests__/project-selector.test';
 import LeftPlacementExample from './examples/left-placement';

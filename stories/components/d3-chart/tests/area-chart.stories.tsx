@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import AreaExample from './examples/area-chart/area';
 import BasicUsageExample from './examples/area-chart/basic-usage';

@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { FiltersIncludeExcludeTest } from './__tests__/filter-include-exclude.test';
 import FiltersIncludeExcludeExample from './examples/basic-example';

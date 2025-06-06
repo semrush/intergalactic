@@ -1,5 +1,5 @@
 import Badge from '@semcore/badge';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import BadgeBgExample from './examples/badge-bg-colors';
 import BadgeBoxPropsExample from './examples/badge-box-props';

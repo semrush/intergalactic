@@ -1,5 +1,5 @@
 import Icon from '@semcore/icon';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import InteractiveExample from './examples/interactive';
 

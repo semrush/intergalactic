@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { FilterKDPositionsVolumeTest } from './__tests__/filter-kd-positions-volume.test';
 import FilterKDPositionsVolumeExample from './examples/basic-example';

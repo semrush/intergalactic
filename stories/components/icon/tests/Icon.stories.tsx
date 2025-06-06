@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { iconPay } from './__tests__/icon_pay.test';
 import { iconPlatform } from './__tests__/icon_platform.test';

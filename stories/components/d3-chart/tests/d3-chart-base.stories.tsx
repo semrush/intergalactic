@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import AdaptivePropsExample from './examples/d3-chart/adaptive-props';
 import GridAxisPropsExample from './examples/d3-chart/grid-axis-props';

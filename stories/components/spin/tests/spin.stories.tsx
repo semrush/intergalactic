@@ -1,5 +1,5 @@
 import Spin from '@semcore/spin';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import SpinBoxPropsExample from './examples/spin-box-props';
 import SpinCenteredExample from './examples/spin-centered';

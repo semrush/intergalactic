@@ -1,5 +1,5 @@
 import Dropdown from '@semcore/dropdown';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import DDCasesExample from './examples/dd-cases';
 import DDInputTriggerExample from './examples/dd-input-trigger';

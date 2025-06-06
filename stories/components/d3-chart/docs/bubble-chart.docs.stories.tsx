@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import BasicUsageExample from './examples/bubble-chart/basic-usage';
 import BubbleChartExample from './examples/bubble-chart/bubble-chart';

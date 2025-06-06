@@ -1,5 +1,5 @@
 import SpinContainer from '@semcore/spin-container';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { UsageinDDTest } from './__tests__/usage-in-dropdowns.test';
 import ContentExample from './examples/usage_in_content';

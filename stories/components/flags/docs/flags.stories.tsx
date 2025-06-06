@@ -1,5 +1,5 @@
 import Flags from '@semcore/flags';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import AriaLabelExample from './examples/aria-label';
 import BasicExample from './examples/basic';

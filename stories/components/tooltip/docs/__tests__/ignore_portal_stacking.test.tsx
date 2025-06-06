@@ -1,4 +1,4 @@
-import { expect, userEvent, within } from '@storybook/test';
+import { expect, userEvent, within } from 'storybook/test';
 
 export async function IgnorePortalStackingTest({ canvasElement }: { canvasElement: HTMLElement }) {
   const canvas = within(canvasElement);

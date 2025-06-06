@@ -1,4 +1,4 @@
-import { expect, userEvent, within } from '@storybook/test';
+import { expect, userEvent, within } from 'storybook/test';
 
 export async function WithErrorTest({ canvasElement }: { canvasElement: HTMLElement }) {
   const canvas = within(canvasElement);

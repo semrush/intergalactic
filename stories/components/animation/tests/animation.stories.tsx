@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import FeaturePopoverExample from './examples/animation-feature-popover';
 import AnimationExample from './examples/basic-usage';

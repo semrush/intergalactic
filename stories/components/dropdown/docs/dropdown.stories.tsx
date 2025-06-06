@@ -1,5 +1,5 @@
 import Dropdown from '@semcore/dropdown';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import BasicUsageExample from './examples/basic_usage';
 import FocusInteractionExample from './examples/focus_interaction';

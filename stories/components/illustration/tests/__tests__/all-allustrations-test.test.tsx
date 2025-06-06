@@ -1,4 +1,4 @@
-import { expect, within } from '@storybook/test';
+import { expect, within } from 'storybook/test';
 
 export async function CheckButtonsIllustrations({ canvasElement }: { canvasElement: HTMLElement }) {
   const canvas = within(canvasElement);

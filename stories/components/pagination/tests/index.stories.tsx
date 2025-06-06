@@ -1,5 +1,5 @@
 import Pagination from '@semcore/pagination';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import SizesExample from './examples/current-page-props';
 import IntearctiveIconInInputExample from './examples/interactive-icon-in-input';
