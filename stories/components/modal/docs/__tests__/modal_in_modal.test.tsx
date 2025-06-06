@@ -7,5 +7,4 @@ export async function ModalInModalTest({ canvasElement }: { canvasElement: HTMLE
   await userEvent.keyboard('{Enter}');
   await userEvent.keyboard('{Tab}');
   await userEvent.keyboard('{Enter}');
-
 }

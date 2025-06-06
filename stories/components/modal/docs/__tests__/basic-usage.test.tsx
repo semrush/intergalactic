@@ -5,5 +5,4 @@ export async function BasicUsageTest({ canvasElement }: { canvasElement: HTMLEle
   await userEvent.keyboard('{Tab}');
   await userEvent.keyboard('{Tab}');
   await userEvent.keyboard('{Enter}');
-
 }

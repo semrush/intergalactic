@@ -12,7 +12,6 @@ const loremString = `Lorem ipsum dolor sit amet, consectetur adipisicing elit. D
 
 const Demo = () => {
   const [visible, setVisible] = useState(false);
-
   const openModal = () => setVisible(true);
   const closeModal = () => setVisible(false);
 
@@ -26,7 +25,6 @@ const Demo = () => {
             .map((_, index) => (
               <p key={index}>{loremString}</p>
             ))}
-
           <Flex justifyContent='center' mt={8}>
             <Button use='primary' theme='success' size='l' onClick={closeModal}>
               Got it!
