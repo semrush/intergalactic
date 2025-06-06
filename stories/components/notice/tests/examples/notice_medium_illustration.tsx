@@ -1,9 +1,9 @@
-import React from 'react';
-import Notice from '@semcore/notice';
 import Button from '@semcore/button';
 import { Flex } from '@semcore/flex-box';
 import Coffee from '@semcore/illustration/Coffee';
 import MailSent from '@semcore/illustration/MailSent';
+import Notice from '@semcore/notice';
+import React from 'react';
 
 const Demo = () => (
   <Flex direction='column'>

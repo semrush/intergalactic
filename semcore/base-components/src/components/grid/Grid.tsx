@@ -1,7 +1,8 @@
-import React from 'react';
-import { Box, Flex } from '../flex-box';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
-import { RowProps, ColProps, Row as RowType } from './Grid.types';
+import React from 'react';
+
+import { Box, Flex } from '../flex-box';
+import type { RowProps, ColProps, Row as RowType } from './Grid.types';
 import style from './style/grid.shadow.css';
 
 class Row extends Component<RowProps> {
@@ -29,7 +30,8 @@ const excludeProps = ['span'];
 
 function Col(props: ColProps) {
   const SCol = Root;
-  let { styles, gutter, span, md, sm, xs, offset, mdOffset, smOffset, xsOffset } = props;
+  const { styles, gutter } = props;
+  let { span, md, sm, xs, offset, mdOffset, smOffset, xsOffset } = props;
 
   if (Array.isArray(span)) {
     [span, md, sm, xs] = span;
@@ -44,10 +46,10 @@ function Col(props: ColProps) {
     offset !== undefined
       ? offset
       : mdOffset !== undefined
-      ? mdOffset
-      : smOffset !== undefined
-      ? smOffset
-      : xsOffset;
+        ? mdOffset
+        : smOffset !== undefined
+          ? smOffset
+          : xsOffset;
 
   return sstyled(styles)(
     <SCol

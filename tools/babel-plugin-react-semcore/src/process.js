@@ -1,9 +1,10 @@
 const fs = require('fs');
 const path = require('path');
-const stringHash = require('string-hash');
-const replaceAll = require('string.prototype.replaceall');
+
 const { postcss } = require('@semcore/babel-plugin-styles');
 const finderPackageJson = require('find-package-json');
+const stringHash = require('string-hash');
+const replaceAll = require('string.prototype.replaceall');
 
 const projectRoot = path.resolve(__dirname, '../../..');
 

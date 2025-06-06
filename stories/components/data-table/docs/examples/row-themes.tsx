@@ -1,6 +1,6 @@
-import React from 'react';
 import { DataTable } from '@semcore/data-table';
 import { Box } from '@semcore/flex-box';
+import React from 'react';
 
 const styles = ['success', 'info', 'muted', 'warning', 'danger'];
 
@@ -11,7 +11,7 @@ const Demo = () => {
     <Box wMax={800}>
       <DataTable
         data={data}
-        aria-label={'Example with themed rows'}
+        aria-label='Example with themed rows'
         columns={[
           { name: 'col_1', children: 'Theme', gtcWidth: '100px' },
           { name: 'col_2', children: 'Column 2', gtcWidth: '100px' },

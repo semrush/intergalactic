@@ -1,28 +1,29 @@
-import React, { ReactElement } from 'react';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
-import { Field, Form } from 'react-final-form';
-import createFocusDecorator from 'final-form-focus';
-import SpinContainer from '@semcore/spin-container';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import Notice from '@semcore/notice';
+import { Box, Flex } from '@semcore/flex-box';
 import CheckM from '@semcore/icon/Check/m';
 import WarnM from '@semcore/icon/Warning/m';
-import { Text } from '@semcore/typography';
 import FeedbackIllustration from '@semcore/illustration/Feedback';
-import Link from '@semcore/link';
-import SliderRating from '../slider-rating/SliderRating';
-import Modal from '@semcore/modal';
-import Textarea from '@semcore/textarea';
-import { Box, Flex } from '@semcore/flex-box';
-import { FeedbackItem } from '../feedback-item/FeedbackItem';
-import { SubmitButton } from '../submit-button/SubmitButton';
-import { FeedbackRatingProps, FeedbackRatingType, FormConfigItem } from './FeedbackRating.type';
-import CheckboxButton from '../checkbox-button/CheckboxButton';
 import Input from '@semcore/input';
-import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
+import Link from '@semcore/link';
+import Modal from '@semcore/modal';
+import Notice from '@semcore/notice';
 import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/notice-bubble';
+import SpinContainer from '@semcore/spin-container';
+import Textarea from '@semcore/textarea';
+import { Text } from '@semcore/typography';
+import createFocusDecorator from 'final-form-focus';
+import React, { type ReactElement } from 'react';
+import { Field, Form } from 'react-final-form';
+
+import type { FeedbackRatingProps, FeedbackRatingType, FormConfigItem } from './FeedbackRating.type';
 import style from '../../style/feedback-rating.shadow.css';
+import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
+import CheckboxButton from '../checkbox-button/CheckboxButton';
+import { FeedbackItem } from '../feedback-item/FeedbackItem';
+import SliderRating from '../slider-rating/SliderRating';
+import { SubmitButton } from '../submit-button/SubmitButton';
 
 type State = {
   error: boolean;
@@ -104,7 +105,7 @@ class FeedbackRatingRoot extends Component<
   };
 
   handleChange =
-    (fn: (e: React.SyntheticEvent) => void) => (value: any, e: React.SyntheticEvent) => {
+    (fn: (e: React.SyntheticEvent) => void) => (_value: any, e: React.SyntheticEvent) => {
       fn(e);
     };
 
@@ -134,7 +135,7 @@ class FeedbackRatingRoot extends Component<
     const initialValue = this.props.initialValues[config.key];
 
     return (
-      <Field name={config.key} initialValue={initialValue} type={'checkbox'} key={config.key}>
+      <Field name={config.key} initialValue={initialValue} type='checkbox' key={config.key}>
         {({ input }) => (
           <FeedbackRating.Checkbox
             {...input}
@@ -152,13 +153,15 @@ class FeedbackRatingRoot extends Component<
     const initialValue = this.props.initialValues[config.key];
 
     const label =
-      typeof config.label === 'string' ? (
-        <Text mb={2} size={200}>
-          {config.label}
-        </Text>
-      ) : (
-        (config.label as unknown as JSX.Element)
-      );
+      typeof config.label === 'string'
+        ? (
+            <Text mb={2} size={200}>
+              {config.label}
+            </Text>
+          )
+        : (
+            (config.label as unknown as JSX.Element)
+          );
 
     const isDescriptionReactFragment =
       (config.description as ReactElement)?.type === React.Fragment;
@@ -211,13 +214,15 @@ class FeedbackRatingRoot extends Component<
         </FeedbackRating.Item>
         {config.description && (
           <Box mt={2}>
-            {typeof config.description === 'string' || isDescriptionReactFragment ? (
-              <Text size={200} color='text-secondary' id={config.key + '-description'}>
-                {config.description}
-              </Text>
-            ) : (
-              config.description
-            )}
+            {typeof config.description === 'string' || isDescriptionReactFragment
+              ? (
+                  <Text size={200} color='text-secondary' id={config.key + '-description'}>
+                    {config.description}
+                  </Text>
+                )
+              : (
+                  config.description
+                )}
           </Box>
         )}
       </Flex>
@@ -232,7 +237,7 @@ class FeedbackRatingRoot extends Component<
       notificationText,
       notificationTitle,
       learnMoreLink,
-      Children,
+      Children: _Children,
       styles,
       forwardRef,
       status,
@@ -240,7 +245,7 @@ class FeedbackRatingRoot extends Component<
       background,
       rating,
       visible,
-      onVisibleChange,
+      onVisibleChange: _onVisibleChange,
       notificationVisible,
       onNotificationClose,
       getI18nText,
@@ -313,11 +318,13 @@ class FeedbackRatingRoot extends Component<
                     <SliderRating value={rating} readonly={true} />
                   </Flex>
 
-                  {(header as ReactElement)?.type === FeedbackRating.Header ? (
-                    header
-                  ) : (
-                    <FeedbackRating.Header>{header}</FeedbackRating.Header>
-                  )}
+                  {(header as ReactElement)?.type === FeedbackRating.Header
+                    ? (
+                        header
+                      )
+                    : (
+                        <FeedbackRating.Header>{header}</FeedbackRating.Header>
+                      )}
 
                   <Box
                     tag='form'
@@ -327,11 +334,11 @@ class FeedbackRatingRoot extends Component<
                     {...other}
                     onSubmit={api.handleSubmit}
                   >
-                    <Field name={'rating'} initialValue={rating}>
+                    <Field name='rating' initialValue={rating}>
                       {({ input }) => <input {...input} type='hidden' />}
                     </Field>
 
-                    <div role={'group'} aria-labelledby={this.headerId}>
+                    <div role='group' aria-labelledby={this.headerId}>
                       {checkboxFields.map((formConfigItem, index) =>
                         this.renderCheckbox(formConfigItem, index),
                       )}
@@ -340,7 +347,7 @@ class FeedbackRatingRoot extends Component<
                     {textFields.map((formConfigItem) => this.renderTextField(formConfigItem))}
 
                     {this.state.error && (
-                      <Notice theme={'warning'} mt={4} mb={4}>
+                      <Notice theme='warning' mt={4} mb={4}>
                         <Notice.Label>
                           <WarnM />
                         </Notice.Label>
@@ -358,18 +365,17 @@ class FeedbackRatingRoot extends Component<
                       </Notice>
                     )}
 
-                    <Flex mt={4} justifyContent={'center'}>
+                    <Flex mt={4} justifyContent='center'>
                       <FeedbackRating.Submit
                         loading={status !== 'loading' ? api.submitting : status === 'loading'}
-                        size={'l'}
+                        size='l'
                       >
                         {submitText ?? getI18nText('submitButton')}
                       </FeedbackRating.Submit>
                     </Flex>
                   </Box>
                 </SpinContainer>,
-              )
-            }
+              )}
           </Form>
         </SFeedbackRating>
 
@@ -383,7 +389,7 @@ function Header(props: any) {
   const { styles } = props;
   const SHeader = Root;
   return sstyled(styles)(
-    <SHeader render={Text} size={300} tag='h2' mb={4} mt={4} textAlign={'center'} />,
+    <SHeader render={Text} size={300} tag='h2' mb={4} mt={4} textAlign='center' />,
   );
 }
 

@@ -1,6 +1,6 @@
-import React from 'react';
-import { Box, Flex } from '@semcore/flex-box';
 import Carousel from '@semcore/carousel';
+import { Box, Flex } from '@semcore/flex-box';
+import React from 'react';
 
 const images = [
   'https://picsum.photos/id/1023/600/400',
@@ -24,7 +24,7 @@ const Demo = () => (
             {images.map((url, index) => (
               <Carousel.Item key={url} w={imageWidth}>
                 <img
-                  // biome-ignore lint/a11y/noNoninteractiveElementToInteractiveRole:
+
                   role='button'
                   src={url}
                   alt={altTexts[index]}

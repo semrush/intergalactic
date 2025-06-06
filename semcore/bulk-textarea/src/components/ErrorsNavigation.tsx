@@ -1,10 +1,10 @@
-import React from 'react';
 import Button from '@semcore/button';
+import type { useI18n } from '@semcore/core/lib/utils/enhances/WithI18n';
 import { Flex } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
-import ChevronUpM from '@semcore/icon/ChevronUp/m';
 import ChevronDownM from '@semcore/icon/ChevronDown/m';
-import { useI18n } from '@semcore/core/lib/utils/enhances/WithI18n';
+import ChevronUpM from '@semcore/icon/ChevronUp/m';
+import { Text } from '@semcore/typography';
+import React from 'react';
 
 export type ErrorsNavigationProps = {
   errorIndex: number;
@@ -39,20 +39,20 @@ export function ErrorsNavigation(props: ErrorsNavigationProps) {
           <Button
             onClick={onNextError}
             addonLeft={ChevronDownM}
-            use={'tertiary'}
-            theme={'muted'}
+            use='tertiary'
+            theme='muted'
             aria-label={getI18nText('BulkTextarea.ErrorsNavigation.nextError:aria-label')}
-            hintPlacement={'bottom'}
+            hintPlacement='bottom'
             disabled={disabled}
             ref={nextButtonRef}
           />
           <Button
             onClick={onPrevError}
             addonLeft={ChevronUpM}
-            use={'tertiary'}
-            theme={'muted'}
+            use='tertiary'
+            theme='muted'
             aria-label={getI18nText('BulkTextarea.ErrorsNavigation.previousError:aria-label')}
-            hintPlacement={'bottom'}
+            hintPlacement='bottom'
             disabled={disabled}
             ref={prevButtonRef}
           />

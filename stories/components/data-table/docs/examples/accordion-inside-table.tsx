@@ -1,15 +1,16 @@
-import React from 'react';
-import { scaleLinear } from 'd3-scale';
-import { DataTable, ACCORDION, DataTableData } from '@semcore/data-table';
 import { Plot, Line, XAxis, YAxis, minMax } from '@semcore/d3-chart';
+import type { DataTableData } from '@semcore/data-table';
+import { DataTable, ACCORDION } from '@semcore/data-table';
+import { scaleLinear } from 'd3-scale';
+import React from 'react';
 
 const Demo = () => {
   return (
     <DataTable
       data={data}
-      aria-label={'Accordion inside table'}
-      h={'100%'}
-      defaultGridTemplateColumnWidth={'1fr'}
+      aria-label='Accordion inside table'
+      h='100%'
+      defaultGridTemplateColumnWidth='1fr'
       columns={[
         { name: 'keyword', children: 'Keyword', gtcWidth: 'minmax(20%, 50%)' },
         {

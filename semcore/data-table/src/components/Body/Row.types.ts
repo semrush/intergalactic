@@ -1,19 +1,27 @@
-import { DTValue, DTUse, DataTableData } from '../DataTable/DataTable.types';
-import { DTColumn } from '../Head/Column.types';
-import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
-import { ACCORDION, ROW_INDEX, UNIQ_ROW_KEY } from '../DataTable/DataTable';
+import type { DataTableCellProps } from './Cell.types';
+import type { MergedColumnsCell, MergedRowsCell } from './MergedCells';
+import type { ACCORDION, ROW_GROUP, ROW_INDEX, UNIQ_ROW_KEY } from '../DataTable/DataTable';
+import type { DTValue, DTUse, DataTableData } from '../DataTable/DataTable.types';
+import type { DTColumn } from '../Head/Column.types';
+
+export type UniqRowKey = string;
 
 export type DTRow = {
-  [UNIQ_ROW_KEY]: string;
+  [UNIQ_ROW_KEY]: UniqRowKey;
   [ROW_INDEX]: number;
   [key: string]: DTValue | MergedRowsCell | MergedColumnsCell;
   [ACCORDION]?: React.ReactNode | DataTableData | undefined;
+  [ROW_GROUP]?: Set<UniqRowKey>;
 };
 export type DTRows = Array<DTRow | DTRow[]>;
 
 export type DataTableRowProps = {
   row: DTRow;
-  offset?: number;
+  mergedRow?: boolean;
+
+  isAccordionRow?: DataTableCellProps['isAccordionRow'];
+  animationExpand?: DataTableCellProps['animationExpand'];
+  accordionRowIndex?: DataTableCellProps['accordionRowIndex'];
 };
 
 export type RowPropsInner = JSX.IntrinsicElements['div'] & {
@@ -23,6 +31,11 @@ export type RowPropsInner = JSX.IntrinsicElements['div'] & {
    * @default false
    */
   expanded?: boolean;
+
+  /**
+   * Flag to show is row in a merged list or not.
+   */
+  mergedRow?: boolean;
 
   columns: DTColumn[];
   row: DTRow | DTRow[];
@@ -48,6 +61,7 @@ export type RowPropsInner = JSX.IntrinsicElements['div'] & {
 
   inert?: '';
 
+  accordionDuration?: number | [number, number];
   onBackFromAccordion: (colIndex: number) => void;
 
   scrollAreaRef: React.RefObject<HTMLDivElement>;

@@ -1,12 +1,12 @@
 import React from 'react';
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
-import { cleanup, fireEvent, render, userEvent } from '@semcore/testing-utils/testing-library';
+import React from 'react';
 
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
-import Modal from '../src';
 import Button from '../../button/src';
+import Modal from '../src';
 
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
@@ -122,9 +122,11 @@ describe('Modal', () => {
     expect(document.body).not.toHaveStyle('overflow: hidden');
   });
 
+
   test.sequential('Verify default aria-label when no title is provided', () => {
     const { getByRole } = render(<Modal visible />);
     const dialog = getByRole('dialog');
     expect(dialog).toHaveAttribute('aria-label', 'Modal window');
+
   });
 });

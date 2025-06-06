@@ -1,8 +1,10 @@
-import { defineConfig, UserConfig } from 'vite';
-import { createUnplugin } from 'unplugin';
-import { resolveSemcoreSources } from './website/docs/.vitepress/resolve-semcore-sources';
-import { loadSemcoreSources } from './website/docs/.vitepress/load-semcore-sources';
 import copy from 'rollup-plugin-copy';
+import { createUnplugin } from 'unplugin';
+import type { UserConfig } from 'vite';
+import { defineConfig } from 'vite';
+
+import { loadSemcoreSources } from './website/docs/.vitepress/load-semcore-sources';
+import { resolveSemcoreSources } from './website/docs/.vitepress/resolve-semcore-sources';
 
 export default defineConfig({
   plugins: [
@@ -42,8 +44,8 @@ export default defineConfig({
             { src: 'src/**/*.shadow.css', dest: 'lib/esm' },
           ],
           flatten: false,
-        })
-      ]
+        }),
+      ],
     },
   },
 }) as UserConfig;

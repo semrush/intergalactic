@@ -29,7 +29,7 @@ import Button from '@semcore/ui/button';
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/the-`tag`-property.tsx';
+  export Demo from './examples/the-tag-property.tsx';
 </script>
 
 :::
@@ -62,7 +62,7 @@ Use the special utility `wrapIntergalacticComponent` to wrap components. It does
 
 ## Complex wrappers
 
-Some components props are generic, for example `Select` component has generic `value` and `DataTable` has generic `data`. For such components, special wrapping utilities are provided. 
+Some components props are generic, for example `Select` component has generic `value` and `DataTable` has generic `data`. For such components, special wrapping utilities are provided.
 
 
 It available for the following components:

@@ -1,38 +1,38 @@
 // Source: https://developer.mozilla.org/en-US/docs/Web/SVG/Element#SVG_elements
 const svgElementTagNames = {
-  animatemotion: 'animateMotion',
-  animatetransform: 'animateTransform',
-  clippath: 'clipPath',
+  'animatemotion': 'animateMotion',
+  'animatetransform': 'animateTransform',
+  'clippath': 'clipPath',
   'color-profile': 'colorProfile',
-  feblend: 'feBlend',
-  fecolormatrix: 'feColorMatrix',
-  fecomponenttransfer: 'feComponentTransfer',
-  fecomposite: 'feComposite',
-  feconvolvematrix: 'feConvolveMatrix',
-  fediffuselighting: 'feDiffuseLighting',
-  fedisplacementmap: 'feDisplacementMap',
-  fedistantlight: 'feDistantLight',
-  fedropshadow: 'feDropShadow',
-  feflood: 'feFlood',
-  fefunca: 'feFuncA',
-  fefuncb: 'feFuncB',
-  fefuncg: 'feFuncG',
-  fefuncr: 'feFuncR',
-  fegaussianblur: 'feGaussianBlur',
-  feimage: 'feImage',
-  femerge: 'feMerge',
-  femergenode: 'feMergeNode',
-  femorphology: 'feMorphology',
-  feoffset: 'feOffset',
-  fepointlight: 'fePointLight',
-  fespecularlighting: 'feSpecularLighting',
-  fespotlight: 'feSpotLight',
-  fetile: 'feTile',
-  feturbulence: 'feTurbulence',
-  foreignobject: 'foreignObject',
-  lineargradient: 'linearGradient',
-  radialgradient: 'radialGradient',
-  textpath: 'textPath',
+  'feblend': 'feBlend',
+  'fecolormatrix': 'feColorMatrix',
+  'fecomponenttransfer': 'feComponentTransfer',
+  'fecomposite': 'feComposite',
+  'feconvolvematrix': 'feConvolveMatrix',
+  'fediffuselighting': 'feDiffuseLighting',
+  'fedisplacementmap': 'feDisplacementMap',
+  'fedistantlight': 'feDistantLight',
+  'fedropshadow': 'feDropShadow',
+  'feflood': 'feFlood',
+  'fefunca': 'feFuncA',
+  'fefuncb': 'feFuncB',
+  'fefuncg': 'feFuncG',
+  'fefuncr': 'feFuncR',
+  'fegaussianblur': 'feGaussianBlur',
+  'feimage': 'feImage',
+  'femerge': 'feMerge',
+  'femergenode': 'feMergeNode',
+  'femorphology': 'feMorphology',
+  'feoffset': 'feOffset',
+  'fepointlight': 'fePointLight',
+  'fespecularlighting': 'feSpecularLighting',
+  'fespotlight': 'feSpotLight',
+  'fetile': 'feTile',
+  'feturbulence': 'feTurbulence',
+  'foreignobject': 'foreignObject',
+  'lineargradient': 'linearGradient',
+  'radialgradient': 'radialGradient',
+  'textpath': 'textPath',
 };
 const getConfig = () => {
   return {
@@ -41,12 +41,12 @@ const getConfig = () => {
 import React from 'react';
 import { createBaseComponent } from '@semcore/core';
 import Icon from '../..${obj.type ? '/../' : '/'}lib/${
-      obj.buildType === 'esm' ? 'esm/index.mjs' : 'cjs/index.js'
-    }';
+  obj.buildType === 'esm' ? 'esm/index.mjs' : 'cjs/index.js'
+}';
 
 function Root${obj.name}({width = '${obj.width}', height = '${obj.height}', viewBox = '${
-      obj.viewBox
-    }', ...props}, ref) {
+  obj.viewBox
+}', ...props}, ref) {
   return (
       <Icon 
         ref={ref}

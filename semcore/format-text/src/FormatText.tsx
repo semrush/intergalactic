@@ -1,13 +1,13 @@
-import React from 'react';
+import { Box, type BoxProps } from '@semcore/base-components';
 import {
-  UnknownProperties,
-  Intergalactic,
+  type UnknownProperties,
+  type Intergalactic,
   Component,
   sstyled,
   Root,
   createComponent,
 } from '@semcore/core';
-import { Box, BoxProps } from '@semcore/base-components';
+import React from 'react';
 
 import style from './style/format-text.shadow.css';
 

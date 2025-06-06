@@ -1,14 +1,15 @@
-import React from 'react';
 import { createComponent } from '@semcore/core';
-import { LineChartData, LineChartProps, LineChartType } from './LineChart.type';
-import { ScaleLinear, scaleLinear, scaleTime } from 'd3-scale';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import { Box, Flex } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
+import { type ScaleLinear, scaleLinear, scaleTime } from 'd3-scale';
+import React from 'react';
+
+import type { LineChartData, LineChartProps, LineChartType } from './LineChart.type';
 // @ts-ignore
 import { Line, minMax, HoverLine } from '../..';
 import { AbstractChart } from './AbstractChart';
-import { Box, Flex } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
-import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 
 class LineChartComponent extends AbstractChart<
   LineChartData,
@@ -71,7 +72,7 @@ class LineChartComponent extends AbstractChart<
           >
             {showDots && <Line.Dots display />}
             {area?.[item.id] && (
-              <Line.Area area={area[item.id]} y0={'y0'} y1={'y1'} curve={areaCurve} />
+              <Line.Area area={area[item.id]} y0='y0' y1='y1' curve={areaCurve} />
             )}
           </Line>
         )

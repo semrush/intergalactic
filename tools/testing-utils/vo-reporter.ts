@@ -1,8 +1,9 @@
 import { readFile } from 'fs/promises';
-import { relative as resolveRelativePath, resolve as resolvePath } from 'path';
 import os from 'os';
-import { VoiceOverPlaywright } from '@guidepup/playwright/lib/voiceOverTest';
+import { relative as resolveRelativePath, resolve as resolvePath } from 'path';
+
 import { CommandOptions } from '@guidepup/guidepup';
+import type { VoiceOverPlaywright } from '@guidepup/playwright/lib/voiceOverTest';
 
 const darwin2macos: Record<number, string> = {
   23: 'Sonoma 14',
@@ -209,32 +210,4 @@ ${actionsList}
     voiceOver: baseVoiceOver,
     getReport,
   };
-};
-
-export const getReportHeader = async () => {
-  const intergalacticPackageFile = await readFile(
-    resolvePath('./semcore/ui/package.json'),
-    'utf-8',
-  );
-  const reactPackageFile = await readFile(
-    resolvePath(require.resolve('react'), '../package.json'),
-    'utf-8',
-  );
-  const playwrightPackageFile = await readFile(
-    resolvePath(require.resolve('playwright'), '../package.json'),
-    'utf-8',
-  );
-  const guidepupPackageFile = await readFile(
-    resolvePath(require.resolve('@guidepup/guidepup'), '../../package.json'),
-    'utf-8',
-  );
-
-  const { version: intergalacticVersion } = JSON.parse(intergalacticPackageFile);
-  const { version: reactVersion } = JSON.parse(reactPackageFile);
-  const { version: playwrightVersion } = JSON.parse(playwrightPackageFile);
-  const { version: guidepupVersion } = JSON.parse(guidepupPackageFile);
-
-  return `## Automated screen reader testing
-
-_Intergalactic v${intergalacticVersion}, React v${reactVersion}, Playwright v${playwrightVersion},\nGuidepup v${guidepupVersion}, ${getOsName()}._`;
 };

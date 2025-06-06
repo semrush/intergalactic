@@ -1,10 +1,15 @@
-import React from 'react';
-import { DataTable, ACCORDION, DataTableData } from '@semcore/data-table';
+import type { DataTableData } from '@semcore/data-table';
+import { DataTable, ACCORDION } from '@semcore/data-table';
 import { NoData } from '@semcore/widget-empty';
+import React from 'react';
 
 const Demo = () => {
   return (
-    <DataTable data={data} aria-label={'Accordion inside table'} h={'100%'} w={400}
+    <DataTable
+      data={data}
+      aria-label='Accordion inside table'
+      h='100%'
+      w={400}
       columns={[
         { name: 'keyword', children: 'Keyword', gtcWidth: '200px', fixed: 'left' },
         { name: 'kd', children: 'KD,%', gtcWidth: '200px' },

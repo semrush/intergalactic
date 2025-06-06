@@ -1,7 +1,8 @@
 import 'whatwg-fetch';
-import { nanoid } from 'nanoid';
-import { getCookie, setCookie, AMPLITUDE_COOKIE_NAME, AMPLITUDE_COOKIE_EXP_DATE } from './cookie';
 import Bowser from 'bowser';
+import { nanoid } from 'nanoid';
+
+import { getCookie, setCookie, AMPLITUDE_COOKIE_NAME, AMPLITUDE_COOKIE_EXP_DATE } from './cookie';
 
 type IdentificationParameter = {
   platform: string;
@@ -68,7 +69,7 @@ const amplitudeHttp = {
         },
       ]);
     } catch (error) {
-      console.error("amplitude-client: can't prepare user properties for sending", error);
+      console.error('amplitude-client: can\'t prepare user properties for sending', error);
       return this;
     }
 
@@ -117,12 +118,11 @@ const amplitudeHttp = {
         },
       });
     } catch (error) {
-      console.error("amplitude-client: can't prepare event for sending", error);
+      console.error('amplitude-client: can\'t prepare event for sending', error);
       return this;
     }
 
     if (process.env.NODE_ENV !== 'production') {
-      // biome-ignore lint/suspicious/noConsoleLog: <explanation>
       console.log('logEvent [disabled in dev mode]', eventType, eventArguments);
       return this;
     }
@@ -131,7 +131,7 @@ const amplitudeHttp = {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Accept: 'application/json',
+        'Accept': 'application/json',
       },
       body,
     }).catch((error) => {

@@ -1,12 +1,12 @@
+import type MarkdownIt from 'markdown-it';
 import container from 'markdown-it-container';
-import MarkdownIt from 'markdown-it';
-import { renderSandbox } from './renderSandbox';
-import { renderLoomVideo } from './renderLoomVideo';
-
 import tableCaptions from 'markdown-it-table-captions';
+
 import { renderComponentChangelog } from './renderComponentChangelog';
-import { renderLegacyEmails } from './renderLegacyEmails';
 import { renderIframe } from './renderIframe';
+import { renderLegacyEmails } from './renderLegacyEmails';
+import { renderLoomVideo } from './renderLoomVideo';
+import { renderSandbox } from './renderSandbox';
 
 export const configureMarkdownIt = (md: MarkdownIt, plainTextOnly = false) => {
   md.renderer.rules.table_open = function (tokens, idx) {

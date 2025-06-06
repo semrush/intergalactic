@@ -1,12 +1,13 @@
-import React from 'react';
-import dayjs from 'dayjs';
+import Button from '@semcore/button';
 import { Component, Root, sstyled } from '@semcore/core';
+import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import Dropdown from '@semcore/dropdown';
 import { Box } from '@semcore/flex-box';
-import Button from '@semcore/button';
 import ChevronLeft from '@semcore/icon/ChevronLeft/m';
 import ChevronRight from '@semcore/icon/ChevronRight/m';
-import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
+import dayjs from 'dayjs';
+import React from 'react';
+
 import ButtonTrigger from './ButtonTrigger';
 import InputTriggerBase from './InputTrigger';
 
@@ -51,30 +52,34 @@ export const Title = ({ Children, styles }) => {
   );
 };
 
-export function Prev({ getI18nText, children, Children }) {
+export function Prev({ children, Children }) {
   return (
     <Root render={Button} use='tertiary' theme='muted' size='l'>
-      {children ? (
-        <Children />
-      ) : (
-        <Button.Addon>
-          <ChevronLeft />
-        </Button.Addon>
-      )}
+      {children
+        ? (
+            <Children />
+          )
+        : (
+            <Button.Addon>
+              <ChevronLeft />
+            </Button.Addon>
+          )}
     </Root>
   );
 }
 
-export function Next({ getI18nText, children, Children }) {
+export function Next({ children, Children }) {
   return (
     <Root render={Button} use='tertiary' theme='muted' size='l'>
-      {children ? (
-        <Children />
-      ) : (
-        <Button.Addon>
-          <ChevronRight />
-        </Button.Addon>
-      )}
+      {children
+        ? (
+            <Children />
+          )
+        : (
+            <Button.Addon>
+              <ChevronRight />
+            </Button.Addon>
+          )}
     </Root>
   );
 }

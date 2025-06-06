@@ -1,6 +1,6 @@
-import React from 'react';
-import Error, { getIconPath } from '@semcore/errors';
 import Button from '@semcore/button';
+import Error, { getIconPath } from '@semcore/errors';
+import React from 'react';
 
 const Demo = () => (
   <Error icon={getIconPath('confirmation')}>

@@ -1,12 +1,14 @@
-import * as React from 'react';
+import { Box, Collapse, Flex } from '@semcore/base-components';
 import { Component, Root, sstyled, createComponent } from '@semcore/core';
-import { Flex } from '@semcore/base-components';
-
-import style from './style.shadow.css';
-import { CellPropsInner, DataTableCellProps } from './Cell.types';
 import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
-import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
 import { isFocusInside } from '@semcore/core/lib/utils/focus-lock/isFocusInside';
+import * as React from 'react';
+
+import type { CellPropsInner, DataTableCellProps } from './Cell.types';
+import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
+import style from './style.shadow.css';
+
+const DEFAULT_ROW_DURATION = 50;
 
 class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner> {
   static displayName = 'Cell';
@@ -77,9 +79,56 @@ class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner>
     }
   };
 
+  calculateAnimationSettings() {
+    const {
+      accordionRowIndex = 0,
+      isAccordionRow,
+      animationExpand,
+      accordionDuration,
+      rows,
+    } = this.asProps;
+
+    if (!isAccordionRow) {
+      return {};
+    }
+
+    const rowsLength = rows.length;
+    const durationPerRow = (duration: number) => duration / rowsLength;
+
+    const duration = Array.isArray(accordionDuration)
+      ? [durationPerRow(accordionDuration[0]), durationPerRow(accordionDuration[1])]
+      : accordionDuration !== undefined
+        ? durationPerRow(accordionDuration)
+        : rowsLength > 4
+          ? durationPerRow(200)
+          : DEFAULT_ROW_DURATION;
+
+    let delay;
+    const delayIndex = animationExpand ? accordionRowIndex : rows.length - 1 - accordionRowIndex;
+
+    if (Array.isArray(duration)) {
+      delay = [duration[0] * delayIndex, duration[1] * delayIndex];
+    } else if (duration !== undefined) {
+      delay = duration * delayIndex;
+    }
+
+    return { duration, delay };
+  }
+
   render() {
+    const SCellWrapper = Box;
     const SCell = Root;
-    const { Children, styles, row, column, columnIndex, gridRowIndex } = this.asProps;
+    const {
+      Children,
+      styles,
+      row,
+      column,
+      columnIndex,
+      gridRowIndex,
+      isAccordionRow,
+      animationExpand,
+      style,
+    } = this.asProps;
 
     const cell = row[column.name];
     const cellName = cell instanceof MergedColumnsCell ? cell.dataKey : column.name;
@@ -100,31 +149,45 @@ class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner>
       gridArea = `${fromRow} / ${fromCol} / ${fromRow + 1} / ${fromCol + 1}`;
     }
 
+    const { duration, delay } = this.calculateAnimationSettings();
+
     return sstyled(styles)(
-      <SCell
-        ref={this.cellRef}
-        render={Flex}
-        innerOutline
-        tabIndex={-1}
-        onKeyDown={this.handleKeyDown}
-        onFocus={this.onFocusCell}
-        name={cellName}
-        role={'gridcell'}
-        aria-colindex={columnIndex + 1}
-        data-grouped-by={scope}
-        scope={scope}
-        aria-colspan={cell instanceof MergedColumnsCell ? cell.columnsCount : undefined}
-        aria-rowspan={cell instanceof MergedRowsCell ? cell.rowsCount : undefined}
+      <SCellWrapper
         gridArea={gridArea}
-        borders={column.borders}
-        flexWrap={column.flexWrap}
-        alignItems={column.alignItems}
-        alignContent={column.alignContent}
-        justifyContent={column.justifyContent}
+        tag={isAccordionRow ? Collapse : undefined}
+        visible={animationExpand}
+        interactive
+        duration={duration}
+        delay={delay}
+        timingFunction='linear'
+        defaultHeight='100%'
+        style={style}
         fixed={column.fixed}
       >
-        <Children />
-      </SCell>,
+        <SCell
+          ref={this.cellRef}
+          render={Flex}
+          innerOutline
+          tabIndex={-1}
+          onKeyDown={this.handleKeyDown}
+          onFocus={this.onFocusCell}
+          name={cellName.toString()}
+          role='gridcell'
+          aria-colindex={columnIndex + 1}
+          data-grouped-by={scope}
+          scope={scope}
+          aria-colspan={cell instanceof MergedColumnsCell ? cell.columnsCount : undefined}
+          aria-rowspan={cell instanceof MergedRowsCell ? cell.rowsCount : undefined}
+          gridArea={gridArea}
+          borders={column.borders}
+          flexWrap={column.flexWrap}
+          alignItems={column.alignItems}
+          alignContent={column.alignContent}
+          justifyContent={column.justifyContent}
+        >
+          <Children />
+        </SCell>
+      </SCellWrapper>,
     );
   }
 }

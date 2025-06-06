@@ -13,7 +13,7 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/basic-usage.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/radar-chart/basic-usage.tsx';
 </script>
 
 :::
@@ -26,7 +26,7 @@ You can modify the range or use a non-linear scale.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/scale.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/radar-chart/scale.tsx';
 </script>
 
 :::
@@ -39,7 +39,7 @@ It is also possible to pass the 'color' property to `<Radar.Polygon.Line/>` and 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/color.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/radar-chart/color.tsx';
 </script>
 
 :::
@@ -51,7 +51,7 @@ You can use the `fill="transparent"` property to make polygons transparent.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/background-color.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/radar-chart/background-color.tsx';
 </script>
 
 :::
@@ -63,7 +63,7 @@ If your labels are too long, you can move them to the next line using the line b
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/label-long.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/radar-chart/label-long.tsx';
 </script>
 
 :::
@@ -75,7 +75,7 @@ If you need a custom React component instead of a label, you can change the disp
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/label-custom.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/radar-chart/label-custom.tsx';
 </script>
 
 :::
@@ -87,7 +87,7 @@ You need to use the `<Radar.Tooltip />` component to add interactivity.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/tooltip.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/radar-chart/tooltip.tsx';
 </script>
 
 :::
@@ -100,7 +100,7 @@ You can also round the polygons by passing the "curve" parameter from D3 into th
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/circle.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/radar-chart/circle.tsx';
 </script>
 
 :::
@@ -112,7 +112,7 @@ To change the distance between the grid lines, you need to change the value of t
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/tick-size.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/radar-chart/tick-size.tsx';
 </script>
 
 :::
@@ -124,7 +124,7 @@ To change base angle of the chart, set `angleOffset` (in radians) parameter.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/rotated.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/radar-chart/rotated.tsx';
 </script>
 
 :::
@@ -136,7 +136,7 @@ Note that for ChartLegend `patterns` property works only with default `shape={'C
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/legend-and-pattern-fill.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/radar-chart/legend-and-pattern-fill.tsx';
 </script>
 
 :::

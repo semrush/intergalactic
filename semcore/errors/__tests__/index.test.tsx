@@ -1,9 +1,9 @@
-import React from 'react';
-import { snapshot } from '@semcore/testing-utils/snapshot';
-import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
-
-import { render, cleanup } from '@semcore/testing-utils/testing-library';
+import Button from '@semcore/button';
 import { axe } from '@semcore/testing-utils/axe';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { render, cleanup } from '@semcore/testing-utils/testing-library';
+import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
+import React from 'react';
 
 import Error, {
   AccessDenied,
@@ -13,7 +13,6 @@ import Error, {
   PageNotFound,
   ProjectNotFound,
 } from '../src';
-import Button from '@semcore/button';
 
 describe('Error', () => {
   beforeEach(cleanup);

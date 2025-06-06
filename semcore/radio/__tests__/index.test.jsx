@@ -1,9 +1,9 @@
-import React from 'react';
-import { snapshot } from '@semcore/testing-utils/snapshot';
-import * as sharedTests from '@semcore/testing-utils/shared-tests';
-import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
-import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
+import * as sharedTests from '@semcore/testing-utils/shared-tests';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import React from 'react';
 
 import Radio, { RadioGroup, inputProps } from '../src/Radio';
 
@@ -136,12 +136,12 @@ describe('RadioGroup', () => {
   test.concurrent('Verify supports initial value in Radio', () => {
     const { getByTestId } = render(
       <RadioGroup name='test' value='2'>
-        <Radio value={'1'}>
+        <Radio value='1'>
           <Radio.Value>
             <Radio.Value.Control data-testid='radioControl' />
           </Radio.Value>
         </Radio>
-        <Radio value={'2'}>
+        <Radio value='2'>
           <Radio.Value>
             <Radio.Value.Control data-testid='radioControlSecond' />
           </Radio.Value>

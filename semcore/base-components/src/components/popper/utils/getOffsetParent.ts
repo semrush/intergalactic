@@ -34,7 +34,7 @@ const getTrueOffsetParent = (element: HTMLElement): HTMLElement | null => {
 
   if (
     !isHTMLElement(element) ||
-    // biome-ignore lint/suspicious/noAssignInExpressions: <explanation>
+
     !(offsetParent = element.offsetParent) ||
     // https://github.com/popperjs/popper-core/issues/837
     (isFirefox() && getComputedStyle(offsetParent).position === 'fixed')

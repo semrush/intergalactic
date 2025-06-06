@@ -1,10 +1,11 @@
 // @ts-nocheck
-import React from 'react';
 import { createComponent, sstyled, Root, Component } from '@semcore/core';
-import { Box } from '../flex-box';
 import contextEnhance from '@semcore/core/lib/utils/enhances/contextEnhance';
+import React from 'react';
+
+import { Box } from '../flex-box';
+import type { AnimationContext } from './Animation.types';
 import style from './style/animate.shadow.css';
-import { AnimationContext } from './Animation.types';
 
 function propToArray(prop: any[]) {
   return Array.isArray(prop) ? prop : [prop, prop];
@@ -39,6 +40,7 @@ class Animation extends Component {
     timingFunction: 'ease-out',
     animationsDisabled: false,
   };
+
   static enhance = [contextEnhance(animationContext, 'parentAnimationContext')];
 
   static getDerivedStateFromProps(props, state) {
@@ -54,6 +56,7 @@ class Animation extends Component {
     render: this.props.visible || this.props.preserveNode,
     wasInvisible: !this.props.visible,
   };
+
   animationSupported = false;
   animationContext = makeAnimationContextValue();
 
@@ -65,10 +68,11 @@ class Animation extends Component {
     animationContext.onAnimationStartSubscribers.forEach((callback) => callback(duration[0]));
   };
 
-  onAnimationEnd = (event) => {
+  onAnimationEnd = () => {
     this.animationSupported = true;
     this.handleAnimationEnd();
   };
+
   handleAnimationEnd = () => {
     if (!this.asProps.visible && !this.props.preserveNode) {
       this.setState({ render: false });
@@ -89,9 +93,11 @@ class Animation extends Component {
       this.handleAnimationEnd();
     }, duration + delay);
   };
+
   componentDidMount() {
     this.animationEventFallback();
   }
+
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.visible !== this.props.visible || prevState.render !== this.state.render) {
       this.animationEventFallback();

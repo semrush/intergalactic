@@ -1,7 +1,8 @@
-import React from 'react';
 import Button from '@semcore/button';
 import Modal from '@semcore/modal';
-import Select, { SelectProps } from '@semcore/select';
+import type { SelectProps } from '@semcore/select';
+import Select from '@semcore/select';
+import React from 'react';
 
 const options: SelectProps['options'] = [
   { children: 'option1', value: '1' },
@@ -24,7 +25,7 @@ const Demo = () => {
       <Button onClick={() => setVisible(true)}>Open modal dynamically</Button>
       <Modal visible={visible} onClose={handleClose}>
         <Modal.Title>Do you want to save your changes?</Modal.Title>
-        <Select pb={'40px'}>
+        <Select pb='40px'>
           <Select.Trigger />
           <Select.Menu>
             {options.map((option) => (
@@ -37,7 +38,7 @@ const Demo = () => {
 
         <Select popperMargin={48}>
           {({ popper }) => {
-            const height = popper.current?.state.rects.popper.height - 8 ?? 0;
+            const height = (popper.current?.state.rects.popper.height ?? 8) - 8;
             const hMax = height > 180 ? 180 : height;
             return (
               <>

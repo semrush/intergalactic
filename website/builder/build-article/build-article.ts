@@ -1,14 +1,21 @@
-import glob from 'fast-glob';
-import {
-  Content as MarkdownToken,
-  Root as MarkdownRoot,
-  Paragraph as MarkdownParagraph,
-} from 'mdast';
+import { readFile } from 'fs/promises';
 import {
   resolve as resolvePath,
   dirname as resolveDirname,
   relative as resolveRelativePath,
 } from 'path';
+import { fileURLToPath } from 'url';
+
+import glob from 'fast-glob';
+import type {
+  Content as MarkdownToken,
+  Root as MarkdownRoot,
+  Paragraph as MarkdownParagraph,
+} from 'mdast';
+import watch from 'node-watch';
+
+import { makeCacheManager } from '../../../tools/esbuild-plugin-semcore/cache-manager';
+import { resolveRepoTypings } from '../typings/resolveRepoTypings';
 import {
   fsExists,
   generateHeadingId,
@@ -18,12 +25,8 @@ import {
   parseMarkdownMeta,
   removeMarkdownMeta,
 } from '../utils';
-import { readFile } from 'fs/promises';
-import { fileURLToPath } from 'url';
-import { resolveRepoTypings } from '../typings/resolveRepoTypings';
+
 // @ts-ignore
-import { makeCacheManager } from '../../../tools/esbuild-plugin-semcore/cache-manager';
-import watch from 'node-watch';
 
 const __dirname = resolveDirname(fileURLToPath(import.meta.url));
 const repoRoot = resolvePath(__dirname, '../../..');
@@ -324,45 +327,45 @@ type Token =
   | MarkdownToken
   | HeadingToken
   | {
-      type: 'example';
-      raw: string;
-      relativePath: string;
-      filePath: string;
-      load: string;
-    }
+    type: 'example';
+    raw: string;
+    relativePath: string;
+    filePath: string;
+    load: string;
+  }
   | {
-      type: 'import';
-      props: { [propName: string]: unknown };
-      filePath: string;
-      load: string;
-    }
+    type: 'import';
+    props: { [propName: string]: unknown };
+    filePath: string;
+    load: string;
+  }
   | {
-      type: 'embedded_video';
-      url: string;
-    }
+    type: 'embedded_video';
+    url: string;
+  }
   | {
-      type: 'email_html';
-      raw: string;
-      compiled: string;
-    }
+    type: 'email_html';
+    raw: string;
+    compiled: string;
+  }
   | {
-      type: 'changelogByComponent';
-      blocks: GlobalChangelogBlock[];
-    }
+    type: 'changelogByComponent';
+    blocks: GlobalChangelogBlock[];
+  }
   | {
-      type: 'changelog';
-      blocks: ComponentChangelogBlock[];
-    }
+    type: 'changelog';
+    blocks: ComponentChangelogBlock[];
+  }
   | {
-      type: 'typescriptDeclaration';
-      declaration: unknown;
-      dependencies: { [dependantName: string]: unknown };
-      route: string;
-    }
+    type: 'typescriptDeclaration';
+    declaration: unknown;
+    dependencies: { [dependantName: string]: unknown };
+    route: string;
+  }
   | {
-      type: 'text';
-      html: string;
-    };
+    type: 'text';
+    html: string;
+  };
 
 export const buildArticle = async (
   docsDir: string,
@@ -634,7 +637,6 @@ export const buildArticle = async (
             if (text.startsWith('@table-caption ')) {
               const nextToken = markdownAst.children[index + 1];
               if (nextToken.type !== 'table') {
-                // biome-ignore lint/suspicious/noConsoleLog:
                 console.log(nextToken);
                 throw new Error(
                   '@table-caption at-rule is only allowed right before tables, what was found see above',

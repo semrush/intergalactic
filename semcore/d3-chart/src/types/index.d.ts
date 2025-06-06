@@ -1,6 +1,7 @@
 // Utils
 // @ts-ignore
-import { interpolateValue as intValue, PlotEventEmitter } from './utils';
+import type { interpolateValue as intValue } from './utils';
+import { PlotEventEmitter } from './utils';
 
 export declare const interpolateValue: typeof intValue;
 export declare function minMax(data: any, key: string | number): any;

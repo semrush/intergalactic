@@ -1,5 +1,5 @@
-import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import { Box, BoxProps } from '@semcore/flex-box';
+import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import type { Box, BoxProps } from '@semcore/flex-box';
 
 /**
  * DragAndDrop and Draggable containers must have an accessible names (aria-group-name).
@@ -7,7 +7,7 @@ import { Box, BoxProps } from '@semcore/flex-box';
 type DNDAriaProps = Intergalactic.RequireAtLeastOne<{
   'aria-label'?: string;
   'aria-labelledby'?: string;
-  title?: string;
+  'title'?: string;
 }>;
 
 /** @deprecated */

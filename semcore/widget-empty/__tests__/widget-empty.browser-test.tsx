@@ -1,5 +1,5 @@
-import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import { expect, test } from '@semcore/testing-utils/playwright';
 
 test.describe('Widget empty', () => {
   test('Verify WE inside card without actions renders and have correct attributes', async ({
@@ -83,7 +83,7 @@ test.describe('Error', () => {
     await page.keyboard.press('Tab');
     await expect(page.getByRole('button', { name: 'Reload page' }).first()).toBeFocused();
 
-    //this doesnt work on ff - the  tab not focuses the link
+    // this doesnt work on ff - the  tab not focuses the link
     // await page.keyboard.press('Tab');
     // await expect(page.getByRole('link', { name: 'mail@semrush.com' })).toBeFocused();
     // await page.keyboard.press('Tab');

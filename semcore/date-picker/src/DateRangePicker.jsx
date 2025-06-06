@@ -1,7 +1,7 @@
-import React from 'react';
-import dayjs from 'dayjs';
 import { createComponent } from '@semcore/core';
-import shortDateRangeFormat from './utils/shortDateRangeFormat';
+import dayjs from 'dayjs';
+import React from 'react';
+
 import {
   Header,
   Next,
@@ -14,6 +14,7 @@ import {
 } from './components';
 import { CalendarDays as Calendar } from './components/Calendar';
 import RangePickerAbstract, { Apply, Reset } from './components/RangePickerAbstract';
+import shortDateRangeFormat from './utils/shortDateRangeFormat';
 
 class DateRangePickerRoot extends RangePickerAbstract {
   static displayName = 'DateRangePicker';

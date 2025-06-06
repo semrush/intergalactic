@@ -1,13 +1,13 @@
-import React from 'react';
-import Tooltip from '@semcore/tooltip';
 import IconInfo from '@semcore/icon/Info/m';
+import Tooltip from '@semcore/tooltip';
+import React from 'react';
 
 const Demo = () => {
   return (
     <Tooltip>
       <Tooltip.Trigger
         tag={IconInfo}
-        color={'--intergalactic-icon-secondary-neutral'}
+        color='--intergalactic-icon-secondary-neutral'
         interactive={true}
         aria-label='Hint'
       />

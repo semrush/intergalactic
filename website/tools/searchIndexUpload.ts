@@ -1,14 +1,13 @@
-import dotenv from 'dotenv';
-
-import CONFIG from '../src/algolia.js';
-
-import dataIcons from '../docs/style/icon/components/icons-list.js';
-import dataIllustrations from '../docs/style/illustration/components/illustrations-list.js';
+import { resolve as resolvePath } from 'path';
 
 import algoliasearch from 'algoliasearch';
-import { buildNavigation } from '../builder/navigation';
-import { resolve as resolvePath } from 'path';
+import dotenv from 'dotenv';
+
 import { buildArticle } from '../builder/build-article/build-article';
+import { buildNavigation } from '../builder/navigation';
+import dataIcons from '../docs/style/icon/components/icons-list.js';
+import dataIllustrations from '../docs/style/illustration/components/illustrations-list.js';
+import CONFIG from '../src/algolia.js';
 
 dotenv.config();
 

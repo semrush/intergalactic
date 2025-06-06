@@ -46,4 +46,3 @@ export const ModalInsideModal: StoryObj = {
   play: playWrapper(ModalInModalTest),
 
 };
-

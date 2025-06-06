@@ -1,4 +1,5 @@
 import ts from 'typescript';
+
 import { extractDependenciesList, serializeProperty, serializeTsNode } from './serializer';
 
 export const serializeInterfaceDeclaration = (interfaceDeclaration: ts.InterfaceDeclaration) => {

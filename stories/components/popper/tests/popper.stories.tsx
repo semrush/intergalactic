@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import CursorAnchoringExample from './examples/cursor-anchoring';
+import disableEnforceFocusExample from './examples/disableEnforceFocus';
 import DisablePortalExample from './examples/dropdown-disable-portal';
 import DropdownExample from './examples/dropdown-no-disable-portal';
+import ClickInteractionExample from './examples/interaction-click';
 import FocusInteractionExample from './examples/interaction-focus';
 import HoverInteractionExample from './examples/interaction-hover';
-import ClickInteractionExample from './examples/interaction-click';
 import NoneInteractionExample from './examples/interaction-none';
 import LabelReferencedExample from './examples/label-referenced';
 import LabelWrappedExample from './examples/label-wrapped';
 import LabelWrappedDisablePortalExample from './examples/label-wrapped-disable-portal';
 import MultipleFocusabledInTriggerExample from './examples/multiple-focusables-in-trigger';
-import PageResizingExample from './examples/page-resizing';
 import offSetExample from './examples/offSet';
-import disableEnforceFocusExample from './examples/disableEnforceFocus';
+import PageResizingExample from './examples/page-resizing';
 import SomeMorePropsExample from './examples/some-more-props-test';
 
 const meta: Meta = {

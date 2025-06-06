@@ -1,12 +1,11 @@
-import React from 'react';
-
-import cn from 'classnames';
 import { createBaseComponent, sstyled } from '@semcore/core';
-import { useBox } from '@semcore/flex-box';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import isRetina from '@semcore/core/lib/utils/isRetina';
-import countries from './countries.json';
+import { useBox } from '@semcore/flex-box';
+import cn from 'classnames';
+import React from 'react';
 
+import countries from './countries.json';
 import styles from './style/flags.shadow.css';
 
 export const iso2Name = countries.iso2Name;
@@ -21,7 +20,7 @@ const versionForClassName = version.split('.').join('_');
 const normalizeName = (name) => {
   if (!name) return name;
   const noExtensions = name.includes('.') ? name.split('.').slice(0, -1).join('.') : name;
-  const noApostrophe = noExtensions.split("'").join('');
+  const noApostrophe = noExtensions.split('\'').join('');
   const noSpaces = noApostrophe.split(' ').join('-');
   const noComas = noSpaces.split(',').join('-');
   return noComas.toLowerCase();
@@ -72,7 +71,7 @@ function calculateName(iso2, iso3, name) {
 function Flags(props, ref) {
   const [SFlags, { className, ...other }] = useBox(
     {
-      tag: 'span',
+      'tag': 'span',
       'data-ui-name': 'Flags',
       ...props,
     },

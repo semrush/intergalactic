@@ -10,7 +10,7 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 
 ## Horizontal bar
 
-You can rotate a chart using the `<HorizontalBar/>` component by swapping `scaleBand` and `scaleLinear`. See more about `scaleBand` and `scaleLiner` in the [Bar chart guide](/data-display/bar-chart/bar-chart-d3-code#addc35).
+You can rotate a chart using the `<HorizontalBar/>` component by swapping `scaleBand` and `scaleLinear`. See more about `scaleBand` and `scaleLiner` in the [Bar chart example](/data-display/bar-chart/bar-chart-d3-code#bar).
 
 ## Horizontal stacked bar
 
@@ -19,7 +19,7 @@ To draw a horizontal stacked chart, use the `<StackBar.HorizontalBar/>` componen
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/horizontal-stacked-bar.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/stacked-horizontal-bar/horizontal-stacked-bar.tsx';
 </script>
 
 :::
@@ -31,7 +31,7 @@ Note that for ChartLegend `patterns` property works only with default `shape={'C
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/legend-and-pattern-fill.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/stacked-horizontal-bar/legend-and-pattern-fill.tsx';
 </script>
 
 :::

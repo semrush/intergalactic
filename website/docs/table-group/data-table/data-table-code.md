@@ -30,7 +30,7 @@ Use the secondary table to display small amounts of data in a compact layout.
 
 :::
 
-## Table styles
+## Styles
 
 ### Compact
 
@@ -68,7 +68,7 @@ You can use different themes for cells and rows.
 
 :::
 
-## Table header
+## Header
 
 ### Sticky header
 
@@ -112,7 +112,7 @@ Create a multi-level header by nesting columns within each other.
 
 :::
 
-## Table columns
+## Columns
 
 ### Column width
 
@@ -166,23 +166,7 @@ Merge cells by combining column keys in the data. You can merge cells in a speci
 
 :::
 
-### Column expansion
-
-The active column will expand if there isn't enough space. Fixed-width columns won't change size.
-
-::: tip
-Be cautious with setting column width, as the sort icon may obscure the header text.
-:::
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from 'stories/components/data-table/docs/examples/column-expand.tsx';
-</script>
-
-:::
-
-## Table rows
+## Rows
 
 ### Row grouping
 
@@ -218,29 +202,15 @@ You can enable selecting rows with checkboxes with the `selectedRows` and `onSel
 
 :::
 
-### Virtual scroll with constant row height
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from 'stories/components/data-table/docs/examples/virtual-scroll-in-table.tsx';
-</script>
-
-:::
-
-### Virtual scroll with variable row height
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from 'stories/components/data-table/docs/examples/virtual-scroll-in-table-different-height.tsx';
-</script>
-
-:::
-
-## Table cells
+## Cells
 
 ### Access to cells
+
+To customize the content of a table cell, use the `renderCell` prop. 
+It receives props described in [`CellRenderProps`](/table-group/data-table/data-table-api#datatable).
+
+You can return either a custom React element to override the rendering entirely, or an object that will be applied as props to the cell.
+If the returned object includes a children property, it will override the default cell content—otherwise, you can use it to apply custom attributes such as theming or data attributes.
 
 ::: sandbox
 
@@ -277,9 +247,9 @@ To enable column sorting:
 
 :::
 
-### Changing width for sorting column
+### Expanding column
 
-If some column has `changeSortSize={true}`, by default, it will be increased by the largest column if the computed width less than `content width` + `sorting icon width`.
+`changeSortSize` allows the sorted column to grow in width to fit the sort icon.
 
 ::: sandbox
 
@@ -289,13 +259,13 @@ If some column has `changeSortSize={true}`, by default, it will be increased by 
 
 :::
 
-## Table scroll
+## Scroll
 
 ### Basic scroll
 
 `<DataTable/>` inherits all `Box` properties, such as `wMax` and `hMax`, which can be used to enable internal scroll.
 
-By default, horizontal scrolling is displayed at the bottom of the table, but it can also be added to the table header. Scroll in the table header is useful for long tables, allowing users to scroll horizontally without having to scroll to the end of the table. For examples, refer to [Sticky header](/table-group/data-table/data-table#sticky_header).
+By default, horizontal scrolling is displayed at the bottom of the table, but it can also be added to the table header. Scroll in the table header is useful for long tables, allowing users to scroll horizontally without having to scroll to the end of the table. For examples, refer to [Sticky header](/table-group/data-table/data-table-code#sticky-header).
 
 ::: sandbox
 
@@ -305,15 +275,26 @@ By default, horizontal scrolling is displayed at the bottom of the table, but it
 
 :::
 
-### Virtual scroll
+### Virtual scroll with constant row height
 
-Enable scroll virtualization using the `virtualScroll` property.
-Note that built-in virtualization support tables with fixed-height rows only.
+Enable scroll virtualization using the `virtualScroll` property. Passing `rowHeight` as its subproperty will ensure the best performance.
 
 ::: sandbox
 
 <script lang="tsx">
   export Demo from 'stories/components/data-table/docs/examples/virtual-scroll-in-table.tsx';
+</script>
+
+:::
+
+### Virtual scroll with variable row height
+
+Omit `rowHeight` for tables with variable row heights.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/components/data-table/docs/examples/virtual-scroll-in-table-different-height.tsx';
 </script>
 
 :::

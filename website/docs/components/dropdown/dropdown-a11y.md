@@ -19,7 +19,7 @@ Table: Keyboard support
 | `Space` , `Enter` | **On the trigger:** opens the dropdown.      |
 | `Esc` | Closes the dropdown.                           |
 
-<!-- See detailed information for the controlling dropdown with the keyboard in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard#keyboard_support_for_popper). -->
+<!-- See detailed information for the controlling dropdown with the keyboard in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard#keyboard-support-for-popper). -->
 
 ### Roles & attributes
 
@@ -48,5 +48,3 @@ Table: Recommended roles and attributes
 ## Other recommendations
 
 See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
-
-<!--@include: ./dropdown-a11y-report.md-->

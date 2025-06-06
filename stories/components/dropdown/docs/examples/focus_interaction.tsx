@@ -1,10 +1,10 @@
+import Button from '@semcore/button';
+import Dropdown from '@semcore/dropdown';
+import { Text } from '@semcore/typography';
 import React from 'react';
-import Button from 'intergalactic/button';
-import Dropdown from 'intergalactic/dropdown';
-import { Text } from 'intergalactic/typography';
 
 const Demo = () => (
-  <Dropdown interaction={'focus'}>
+  <Dropdown interaction='focus'>
     <Dropdown.Trigger id='dropdown-focus' tag={Button}>
       About export
     </Dropdown.Trigger>

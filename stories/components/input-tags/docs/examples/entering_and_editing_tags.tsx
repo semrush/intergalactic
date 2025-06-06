@@ -1,8 +1,8 @@
-import React from 'react';
-import InputTags from '@semcore/input-tags';
 import Ellipsis from '@semcore/ellipsis';
-import { Text } from '@semcore/typography';
 import { Flex } from '@semcore/flex-box';
+import InputTags from '@semcore/input-tags';
+import { Text } from '@semcore/typography';
+import React from 'react';
 
 const Demo = () => {
   const inputValueRef = React.useRef<HTMLInputElement>(null);

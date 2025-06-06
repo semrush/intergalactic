@@ -1,18 +1,19 @@
-import React from 'react';
+import { ButtonLink } from '@semcore/button';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
-import { Box, InvalidStateBox } from '@semcore/flex-box';
+import type { IRootComponentHandlers } from '@semcore/core';
 import autoFocusEnhance from '@semcore/core/lib/utils/enhances/autoFocusEnhance';
-import { ITooltipProps } from '@semcore/tooltip';
-import style from './style/inline-input.shadow.css';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import { hasParent } from '@semcore/core/lib/utils/hasParent';
+import { Box, InvalidStateBox } from '@semcore/flex-box';
 import CheckM from '@semcore/icon/Check/m';
 import CloseM from '@semcore/icon/Close/m';
+import InputNumber, { type InputNumberValueProps } from '@semcore/input-number';
 import Spin from '@semcore/spin';
-import { ButtonLink } from '@semcore/button';
+import type { ITooltipProps } from '@semcore/tooltip';
+import React from 'react';
+
+import style from './style/inline-input.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import InputNumber, { InputNumberValueProps } from '@semcore/input-number';
-import { IRootComponentHandlers } from '@semcore/core';
-import { hasParent } from '@semcore/core/lib/utils/hasParent';
 
 type OnConfirm = (
   value: string,
@@ -98,6 +99,7 @@ class InlineInputBase extends Component<RootAsProps> {
     i18n: localizedMessages,
     locale: 'en',
   };
+
   static style = style;
 
   rootRef = React.createRef<HTMLElement>();
@@ -111,6 +113,7 @@ class InlineInputBase extends Component<RootAsProps> {
     this.lastMouseDownPosition = { x: event.clientX, y: event.clientY };
     this.lastHandledKeyboardEvent = -1;
   };
+
   handleDocumentKeyDown = () => {
     this.lastMouseDownPosition = null;
   };
@@ -177,6 +180,7 @@ class InlineInputBase extends Component<RootAsProps> {
     this.inputRef.current?.stepDown?.(event as any);
     this.inputHandlersRef.current?.value(this.inputRef.current?.value, event);
   };
+
   getNumberValueProps() {
     const numberFormatter = new Intl.NumberFormat(this.asProps.locale, { style: 'decimal' });
 
@@ -188,6 +192,7 @@ class InlineInputBase extends Component<RootAsProps> {
       decrement: this.decrement,
     };
   }
+
   getNumberControlsProps() {
     const { getI18nText } = this.asProps;
     return {
@@ -208,6 +213,7 @@ class InlineInputBase extends Component<RootAsProps> {
   ) => {
     this.asProps.onConfirm?.(text, event);
   };
+
   handleCancel = (
     prevText: string,
     event: React.MouseEvent | React.FocusEvent | React.KeyboardEvent,
@@ -267,6 +273,7 @@ class Value extends Component<RootAsProps> {
   static defaultProps = {
     defaultValue: '',
   };
+
   static enhance = [autoFocusEnhance()];
   static hoistProps = ['disabled'];
 
@@ -322,18 +329,20 @@ const ConfirmControl: React.FC<ConfirmControlAsProps> = (props) => {
 
   return sstyled(props.styles)(
     <SAddon render={Box} onKeyDown={handleKeydown}>
-      {hasChildren ? (
-        <Children />
-      ) : (
-        <ButtonLink
-          addonLeft={(props.icon as any) ?? CheckM}
-          use={'secondary'}
-          onClick={handleConfirm}
-          className={sConfirmIconStyles.className}
-          style={sConfirmIconStyles.style}
-          aria-label={title}
-        />
-      )}
+      {hasChildren
+        ? (
+            <Children />
+          )
+        : (
+            <ButtonLink
+              addonLeft={(props.icon as any) ?? CheckM}
+              use='secondary'
+              onClick={handleConfirm}
+              className={sConfirmIconStyles.className}
+              style={sConfirmIconStyles.style}
+              aria-label={title}
+            />
+          )}
     </SAddon>,
   ) as React.ReactElement;
 };
@@ -371,18 +380,20 @@ const CancelControl: React.FC<CancelControlAsProps> = (props) => {
 
   return sstyled(props.styles)(
     <SAddon render={Box} onKeyDown={handleKeydown}>
-      {hasChildren ? (
-        <Children />
-      ) : (
-        <ButtonLink
-          use={'secondary'}
-          addonLeft={(props.icon as any) ?? CloseM}
-          onClick={handleCancel}
-          className={sCancelIconStyles.className}
-          style={sCancelIconStyles.style}
-          aria-label={title}
-        />
-      )}
+      {hasChildren
+        ? (
+            <Children />
+          )
+        : (
+            <ButtonLink
+              use='secondary'
+              addonLeft={(props.icon as any) ?? CloseM}
+              onClick={handleCancel}
+              className={sCancelIconStyles.className}
+              style={sCancelIconStyles.style}
+              aria-label={title}
+            />
+          )}
     </SAddon>,
   ) as React.ReactElement;
 };

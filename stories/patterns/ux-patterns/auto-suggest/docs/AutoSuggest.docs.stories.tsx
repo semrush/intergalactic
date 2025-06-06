@@ -1,10 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import AutosuggestExample from './examples/autosuggest_example';
-import ComboboxExample from './examples/combobox_example';
-
 import { AutoSuggestTest } from './__tests__/autosuggest_example.test';
 import { ComboboxTest } from './__tests__/combobox_example.test';
+import AutosuggestExample from './examples/autosuggest_example';
+import ComboboxExample from './examples/combobox_example';
 import { playWrapper } from '../../../../utils/playWrapper';
 
 const meta: Meta = {

@@ -1,5 +1,6 @@
-import { UnknownProperties, Intergalactic } from '@semcore/core';
-import { BoxProps } from '../flex-box';
+import type { UnknownProperties, Intergalactic } from '@semcore/core';
+
+import type { BoxProps } from '../flex-box';
 
 type CssTimingFunction =
   | 'ease'
@@ -49,6 +50,12 @@ export type CollapseProps = AnimationProps & {
    * @default true
    * */
   overflowHidden?: boolean;
+
+  /**
+   * Value for height after animation
+   * @default auto
+   */
+  defaultHeight?: 'auto' | '100%';
 };
 
 /** @deprecated */

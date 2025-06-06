@@ -1,8 +1,8 @@
-import React from 'react';
-import Select from '@semcore/select';
 import { Flex } from '@semcore/flex-box';
 import Notice from '@semcore/notice';
+import Select from '@semcore/select';
 import { Text } from '@semcore/typography';
+import React from 'react';
 
 const options = Array(12)
   .fill('')
@@ -21,7 +21,7 @@ const Demo = () => (
     </Text>
     <Select>
       <Select.Trigger mt={2} mr='auto' id='customized-dropdown-select' />
-      <Select.Popper aria-label={'Select with notice'}>
+      <Select.Popper aria-label='Select with notice'>
         <Select.List hMax='240px'>
           {options.map((option, index) => (
             <Select.Option value={option} key={index}>

@@ -1,12 +1,13 @@
-import React from 'react';
-import { Flex } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
-import SidePanel from '@semcore/side-panel';
-import Ellipsis from '@semcore/ellipsis';
 import Copy from '@components/Copy';
 import Button from '@semcore/button';
-import FileDownloadM from '@semcore/icon/FileDownload/m';
+import Ellipsis from '@semcore/ellipsis';
+import { Flex } from '@semcore/flex-box';
 import CopyM from '@semcore/icon/Copy/m';
+import FileDownloadM from '@semcore/icon/FileDownload/m';
+import SidePanel from '@semcore/side-panel';
+import { Text } from '@semcore/typography';
+import React from 'react';
+
 import styles from './styles.module.css';
 
 export const IllustrationDetailsPanel = ({ name, visible, onClose }) => {

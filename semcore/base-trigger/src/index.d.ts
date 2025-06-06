@@ -1,9 +1,9 @@
-import React from 'react';
-import { UnknownProperties, Intergalactic } from '@semcore/core';
-import { Box, BoxProps } from '@semcore/flex-box';
-import { DotProps } from '@semcore/dot';
-import { NeighborItemProps } from '@semcore/neighbor-location';
-import { WithAnimatedSizeEnhanceProps } from '@semcore/core/lib/utils/enhances/animatedSizeEnhance';
+import type { UnknownProperties, Intergalactic } from '@semcore/core';
+import type { WithAnimatedSizeEnhanceProps } from '@semcore/core/lib/utils/enhances/animatedSizeEnhance';
+import type { DotProps } from '@semcore/dot';
+import type { Box, BoxProps } from '@semcore/flex-box';
+import type { NeighborItemProps } from '@semcore/neighbor-location';
+import type React from 'react';
 
 /** @deprecated */
 export interface IBaseTriggerProps extends BaseTriggerProps, UnknownProperties {}

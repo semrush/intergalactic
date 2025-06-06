@@ -1,7 +1,7 @@
-import React from 'react';
+import { Box } from '@semcore/flex-box';
 import Slider from '@semcore/slider';
 import { Text } from '@semcore/typography';
-import { Box } from '@semcore/flex-box';
+import React from 'react';
 
 const Demo = () => {
   const [value, setValue] = React.useState('medium');
@@ -17,7 +17,7 @@ const Demo = () => {
           step={1}
           min={1}
           max={3}
-          
+
           id='data-chunk-size'
           options={[
             { value: 'small', label: 'Small' },

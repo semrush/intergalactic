@@ -1,8 +1,9 @@
-import React from 'react';
 import Button from '@semcore/button';
-import { Text } from '@semcore/typography';
 import Select from '@semcore/select';
-import SidePanel, { SidePanelPlacement } from '@semcore/side-panel';
+import type { SidePanelPlacement } from '@semcore/side-panel';
+import SidePanel from '@semcore/side-panel';
+import { Text } from '@semcore/typography';
+import React from 'react';
 
 const placements: SidePanelPlacement[] = ['left', 'right', 'bottom'];
 
@@ -40,7 +41,7 @@ const Demo = () => {
   );
 };
 
-function arrToOptions(arr:any) {
+function arrToOptions(arr: any) {
   return arr.map((i: any) => ({ value: i, label: i, children: i }));
 }
 

@@ -1,12 +1,12 @@
-import React from 'react';
 import { DataTable } from '@semcore/data-table';
 import Spin from '@semcore/spin';
+import React from 'react';
 
 const Demo = () => {
   return (
     <DataTable
       data={data}
-      aria-label={'Access to set of cells'}
+      aria-label='Access to set of cells'
       columns={[
         { name: 'keyword', children: 'Keyword' },
         { name: 'kd', children: 'KD %' },

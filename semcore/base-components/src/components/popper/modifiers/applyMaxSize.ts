@@ -1,4 +1,4 @@
-import { Modifier } from '@popperjs/core';
+import type { Modifier } from '@popperjs/core';
 
 type Options = {
   margin?: number;

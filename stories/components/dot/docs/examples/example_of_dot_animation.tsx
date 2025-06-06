@@ -1,7 +1,7 @@
-import React from 'react';
-import NotificationM from '@semcore/icon/Notification/m';
 import Button from '@semcore/button';
 import Dot from '@semcore/dot';
+import NotificationM from '@semcore/icon/Notification/m';
+import React from 'react';
 
 const Demo = () => {
   const [dotVisible, setDotVisible] = React.useState(true);

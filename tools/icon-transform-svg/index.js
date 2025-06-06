@@ -1,10 +1,14 @@
 const path = require('path');
+
+const cheerio = require('cheerio');
 const fs = require('fs-extra');
 const glob = require('glob');
-const cheerio = require('cheerio');
 const { configFile } = require('mri')(process.argv.slice(2));
+
 const util = require('util');
+
 const config = require('./config');
+
 const babel = require('@babel/core');
 
 const outputFile = util.promisify(fs.outputFile);
@@ -222,7 +226,6 @@ async function patchExports(result) {
 
   await fs.writeJSON(packageJsonPath, packageJson, { spaces: 2 });
 
-  // biome-ignore lint/suspicious/noConsoleLog:
   console.log('Patched exports in package.json.');
 }
 
@@ -239,7 +242,6 @@ module.exports = function () {
     .then(async (result) => {
       await patchExports(result);
 
-      // biome-ignore lint/suspicious/noConsoleLog:
       console.log('Done! Wrote all icon files.');
     })
     .catch((err) => {

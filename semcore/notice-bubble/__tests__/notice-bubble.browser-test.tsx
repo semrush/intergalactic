@@ -1,6 +1,6 @@
-import { expect, test } from '@semcore/testing-utils/playwright';
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import type { Page } from '@playwright/test';
+import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import { expect, test } from '@semcore/testing-utils/playwright';
 
 // Utility for setting up content
 async function setupPage(page: Page, standPath: string) {
@@ -35,12 +35,12 @@ test.describe('Basic notice with Interactive element', () => {
     await expect(locators.closeHint(page)).toBeVisible();
     await expect(page).toHaveScreenshot();
 
-    //the focus returns to the trigger by press enter
+    // the focus returns to the trigger by press enter
     await page.keyboard.press('Enter');
     const buttonTrigger = locators.buttonTrigger(page, 'Show basic notice');
     await expect(buttonTrigger).toBeFocused();
 
-    //еhe focus returns to the trigger by 2 escapes - 1st closes hint, 2nd-notice
+    // еhe focus returns to the trigger by 2 escapes - 1st closes hint, 2nd-notice
     await page.keyboard.press('Enter');
     await page.keyboard.press('Escape');
     await page.keyboard.press('Escape');
@@ -65,6 +65,7 @@ test.describe('Basic notice with Interactive element', () => {
     await page.keyboard.press('Shift+Tab');
     await expect(locators.buttonTrigger(page, 'Show basic notice')).toBeFocused();
     await page.keyboard.press('Enter');
+    await new Promise((resolve) => setTimeout(resolve, 200));
     await expect(locators.closeHint(page)).toBeVisible();
     await expect(page).toHaveScreenshot();
   });
@@ -74,7 +75,7 @@ test.describe('Success notice without Interactive element ', () => {
   test('Open notice by keyboard click', async ({ page }) => {
     await setupPage(page, 'stories/components/notice-bubble/docs/examples/success_notice.tsx');
 
-    //the X button is not focused on the notice
+    // the X button is not focused on the notice
     await openNoticeByKeyboard(page);
     await new Promise((resolve) => setTimeout(resolve, 500));
     const successNotice = locators.successNotice(
@@ -106,7 +107,7 @@ test.describe('Success notice without Interactive element ', () => {
   test('Open 2 notices by 2 keyboard clicks - 2 enters', async ({ page }) => {
     await setupPage(page, 'stories/components/notice-bubble/docs/examples/success_notice.tsx');
 
-    //the focus is on the trigger always
+    // the focus is on the trigger always
     await openNoticeByKeyboard(page);
     await page.keyboard.press('Enter');
     await new Promise((resolve) => setTimeout(resolve, 500));
@@ -133,12 +134,12 @@ test.describe('Replace last notice', () => {
 
     const buttonTrigger = locators.buttonTrigger(page, 'Show basic notice');
     await buttonTrigger.click();
-    await new Promise((resolve) => setTimeout(resolve, 100));
+    await new Promise((resolve) => setTimeout(resolve, 200));
     const noticeBubble = page.locator('[data-ui-name="NoticeBubbleContainer"]');
     await expect(noticeBubble).toBeVisible();
     await expect(noticeBubble).toContainText('Link 1 was moved to');
     await buttonTrigger.click();
-    await new Promise((resolve) => setTimeout(resolve, 100));
+    await new Promise((resolve) => setTimeout(resolve, 200));
     await expect(noticeBubble).toContainText('Link 2 was moved to');
   });
 });
@@ -151,13 +152,13 @@ test.describe('Notice with illustration', () => {
     );
 
     await openNoticeByKeyboard(page);
-    await new Promise((resolve) => setTimeout(resolve, 50));
+    await new Promise((resolve) => setTimeout(resolve, 250));
     const mailSentIcon = page.locator('svg[data-ui-name="MailSent"]');
 
     // Validate the dimensions of the SVG
     await expect(mailSentIcon).toHaveAttribute('width', '80');
     await expect(mailSentIcon).toHaveAttribute('height', '80');
-    await new Promise((resolve) => setTimeout(resolve, 50));
+    await new Promise((resolve) => setTimeout(resolve, 250));
     await expect(page).toHaveScreenshot();
   });
 });

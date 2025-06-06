@@ -1,8 +1,8 @@
-import React from 'react';
-import { Text } from '@semcore/typography';
 import { Flex } from '@semcore/flex-box';
-import ProgressBar from '@semcore/progress-bar';
 import WarningM from '@semcore/icon/Warning/m';
+import ProgressBar from '@semcore/progress-bar';
+import { Text } from '@semcore/typography';
+import React from 'react';
 
 const limitsMax = 10;
 const limitsUsed = 10;
@@ -16,7 +16,10 @@ const Demo = () => (
         {warning ? <WarningM color='icon-primary-warning' /> : null}
         <Text size={200} ml={1} bold aria-hidden>
           {limitsUsed}
-          <Text color='text-secondary'>/{limitsMax}</Text>
+          <Text color='text-secondary'>
+            /
+            {limitsMax}
+          </Text>
         </Text>
       </Flex>
     </Flex>

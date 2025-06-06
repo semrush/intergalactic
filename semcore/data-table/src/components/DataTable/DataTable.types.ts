@@ -1,10 +1,11 @@
-import { Intergalactic } from '@semcore/core';
-import { BoxProps } from '@semcore/base-components';
-import { ACCORDION, ROW_GROUP, UNIQ_ROW_KEY } from './DataTable';
-import { DataTableColumnProps } from '../Head/Column.types';
-import { DataTableBodyProps } from '../Body/Body.types';
-import Tooltip from '@semcore/tooltip';
-import { DTRow } from '../Body/Row.types';
+import type { BoxProps } from '@semcore/base-components';
+import type { Intergalactic } from '@semcore/core';
+import type Tooltip from '@semcore/tooltip';
+
+import type { ACCORDION, ROW_GROUP, UNIQ_ROW_KEY } from './DataTable';
+import type { DataTableBodyProps } from '../Body/Body.types';
+import type { DTRow } from '../Body/Row.types';
+import type { DataTableColumnProps } from '../Head/Column.types';
 
 /**
  * Datatable must have an accessible name (aria-table-name).
@@ -13,7 +14,7 @@ import { DTRow } from '../Body/Row.types';
 export type DataTableAriaProps = Intergalactic.RequireAtLeastOne<{
   'aria-label'?: string;
   'aria-labelledby'?: string;
-  title?: string;
+  'title'?: string;
 }>;
 
 export type SortDirection = 'asc' | 'desc';
@@ -133,6 +134,12 @@ export type DataTableProps<D extends DataTableData> = DataTableAriaProps &
      * For custom empty data widget.
      */
     renderEmptyData?: () => React.ReactNode;
+
+    /**
+     * Duration for collapse/expand accordion rows in tables in ms.
+     * @default 200
+     */
+    accordionDuration?: number | [number, number];
   };
 
 export type ColumnItemConfig = Intergalactic.InternalTypings.EfficientOmit<
@@ -174,4 +181,4 @@ export type DataTableType = (<Data extends DataTableData, Tag extends Intergalac
     'tag' | 'children'
   >,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
-  Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', DataTableProps<any>>;
+Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', DataTableProps<any>>;

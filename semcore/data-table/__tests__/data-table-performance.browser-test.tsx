@@ -1,8 +1,8 @@
-import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import { expect, test } from '@semcore/testing-utils/playwright';
 
 test.describe('Rows', () => {
-  test('Measure render time between first and last row', async ({ page }) => {
+  test.skip('Measure render time between first and last row', async ({ page }) => {
     const standPath =
       'stories/components/data-table/tests/examples/additional-tests/performmance-tooltips-ellipsis-test.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');

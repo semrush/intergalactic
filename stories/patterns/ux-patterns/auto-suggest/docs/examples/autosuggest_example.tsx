@@ -1,8 +1,8 @@
-import React from 'react';
-import Select from 'intergalactic/select';
-import Input from 'intergalactic/input';
-import { Text } from 'intergalactic/typography';
 import { Box } from 'intergalactic/flex-box';
+import Input from 'intergalactic/input';
+import Select from 'intergalactic/select';
+import { Text } from 'intergalactic/typography';
+import React from 'react';
 
 const Highlight = ({ highlight, children }: { highlight: string; children: string }) => {
   let html = children;
@@ -83,7 +83,7 @@ const Demo = () => {
   }, []);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (!e.key.startsWith("Array")) {
+    if (!e.key.startsWith('Array')) {
       setHighlightedIndex(-1);
     }
   };
@@ -94,7 +94,7 @@ const Demo = () => {
 
   const handleChangeVisible = (visible: boolean) => {
     setVisible(visible);
-  }
+  };
 
   return (
     <>
@@ -121,7 +121,7 @@ const Demo = () => {
                 onChange={setQuery}
                 id='website-autosuggest'
                 onKeyDown={handleKeyDown}
-                autoComplete={"off"}
+                autoComplete='off'
               />
             )}
           </Select.Trigger>

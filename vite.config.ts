@@ -1,8 +1,18 @@
-import { defineConfig } from 'vite';
-import { createUnplugin } from 'unplugin';
-import { resolveSemcoreSources } from './website/docs/.vitepress/resolve-semcore-sources';
-import { loadSemcoreSources } from './website/docs/.vitepress/load-semcore-sources';
+/**
+ * Configuration for storybook only!
+ * See build configuration in the component package folder.
+ */
+
+import { resolve as resolvePath } from 'path';
+
 import pluginReact from '@vitejs/plugin-react';
+import { createUnplugin } from 'unplugin';
+import { defineConfig } from 'vite';
+
+import { loadSemcoreSources } from './website/docs/.vitepress/load-semcore-sources';
+import { resolveSemcoreSources } from './website/docs/.vitepress/resolve-semcore-sources';
+import { unpluginIcons } from './website/docs/.vitepress/unplugins/unplugin-icons';
+import { unpluginIllustrations } from './website/docs/.vitepress/unplugins/unplugin-illustrations';
 
 export default defineConfig({
   plugins: [
@@ -30,6 +40,16 @@ export default defineConfig({
         return await loadSemcoreSources(id);
       },
       enforce: 'pre',
+    })).vite({}),
+    unpluginIcons.vite({}),
+    unpluginIllustrations.vite({}),
+    createUnplugin<{}>(() => ({
+      name: 'docs-components-resolver',
+      async resolveId(id) {
+        if (!id.startsWith('@components/')) return null;
+        const purePath = id.substring('@components/'.length);
+        return `${resolvePath(__dirname, 'website', 'src', 'docs-components', purePath)}.jsx`;
+      },
     })).vite({}),
   ],
 });

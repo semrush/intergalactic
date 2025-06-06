@@ -1,12 +1,12 @@
-import React from 'react';
-import { createComponent, Component, sstyled, Root } from '@semcore/core';
-import { Flex } from '@semcore/flex-box';
 import { Collapse as CollapseAnimate } from '@semcore/animation';
-import { Text } from '@semcore/typography';
-import ChevronRightM from '@semcore/icon/ChevronRight/m';
-import ChevronRightL from '@semcore/icon/ChevronRight/l';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
+import { Flex } from '@semcore/flex-box';
+import ChevronRightL from '@semcore/icon/ChevronRight/l';
+import ChevronRightM from '@semcore/icon/ChevronRight/m';
+import { Text } from '@semcore/typography';
+import React from 'react';
 
 import style from './style/accordion.shadow.css';
 
@@ -17,6 +17,7 @@ class RootAccordion extends Component {
     defaultValue: [],
     use: 'secondary',
   };
+
   static enhance = [
     cssVariableEnhance({
       variable: '--intergalactic-duration-accordion',
@@ -38,6 +39,7 @@ class RootAccordion extends Component {
     if (Array.isArray(value)) {
       const indexOfNewValue = value.indexOf(newValue);
       const result = [...value];
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
       indexOfNewValue === -1 ? result.push(newValue) : result.splice(indexOfNewValue, 1);
       this.handlers.value(result);
     } else {
@@ -76,7 +78,7 @@ export class RootItem extends Component {
   };
 
   getToggleProps() {
-    const { value, uid, selected, disabled, use } = this.asProps;
+    const { value, uid, disabled, use } = this.asProps;
     return {
       use,
       disabled,
@@ -92,7 +94,7 @@ export class RootItem extends Component {
     const { value, uid, selected, disabled } = this.asProps;
     return {
       disabled,
-      id: `igc-${uid}-${value}-toggle-button`,
+      'id': `igc-${uid}-${value}-toggle-button`,
       'aria-expanded': selected ? 'true' : 'false',
       'aria-controls': selected ? `igc-${uid}-${value}-collapse` : undefined,
     };
@@ -103,8 +105,8 @@ export class RootItem extends Component {
     return {
       selected,
       duration,
-      id: `igc-${uid}-${value}-collapse`,
-      role: 'region',
+      'id': `igc-${uid}-${value}-collapse`,
+      'role': 'region',
       'aria-labelledby': `igc-${uid}-${value}-toggle-button`,
     };
   }
@@ -167,7 +169,7 @@ function ToggleButton(props) {
 
   const SToggleButton = Root;
   return sstyled(styles)(
-    <SToggleButton alignItems='center' render={Flex} role={'button'} {...props} />,
+    <SToggleButton alignItems='center' render={Flex} role='button' {...props} />,
   );
 }
 

@@ -1,11 +1,11 @@
-import React from 'react';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
+import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
+import animatedSizeEnhance from '@semcore/core/lib/utils/enhances/animatedSizeEnhance';
+import logger from '@semcore/core/lib/utils/logger';
+import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
 import { Box, InvalidStateBox } from '@semcore/flex-box';
 import NeighborLocation from '@semcore/neighbor-location';
-import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
-import logger from '@semcore/core/lib/utils/logger';
-import animatedSizeEnhance from '@semcore/core/lib/utils/enhances/animatedSizeEnhance';
-import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
+import React from 'react';
 
 import style from './style/base-trigger.shadow.css';
 
@@ -23,6 +23,7 @@ class RootBaseTrigger extends Component {
       onChangeOf: ['value'],
     }),
   ];
+
   static style = style;
   static defaultProps = {
     size: 'm',
@@ -45,7 +46,7 @@ class RootBaseTrigger extends Component {
 
     logger.warn(
       theme !== undefined,
-      "The 'theme' property is deprecated, use 'state'",
+      'The \'theme\' property is deprecated, use \'state\'',
       this.asProps['data-ui-name'] || BaseTrigger.displayName,
     );
 
@@ -67,8 +68,7 @@ class RootBaseTrigger extends Component {
                 {addonTextChildren(Children, BaseTrigger.Text, BaseTrigger.Addon, empty)}
               </SInner>
             </SBaseTrigger>,
-          )
-        }
+          )}
       </NeighborLocation.Detect>
     );
   }

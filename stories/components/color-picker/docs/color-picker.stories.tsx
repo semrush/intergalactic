@@ -1,16 +1,14 @@
-import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
-
 import ColorPicker from '@semcore/color-picker';
+import type { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
 
+import { BasicExampleTest } from './__tests__/basic_example.test';
+import { InputValidationTest } from './__tests__/input_validation.test';
 import BasicExampleExample from './examples/basic_example';
 import CustomTriggerExample from './examples/custom_trigger';
 import InputValidationExample from './examples/input_validation';
 import PalettemanagerExample from './examples/palettemanager';
 import PredefinedPaletteExample from './examples/predefined_palette';
-
-import { InputValidationTest } from './__tests__/input_validation.test';
-import { BasicExampleTest } from './__tests__/basic_example.test';
 import { playWrapper } from '../../../utils/playWrapper';
 
 const meta: Meta<typeof ColorPicker> = {

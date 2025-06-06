@@ -1,6 +1,6 @@
-import React from 'react';
 import { DataTable } from '@semcore/data-table';
 import Pagination from '@semcore/pagination';
+import React from 'react';
 
 const Demo = () => {
   const [currentPage, setCurrentPage] = React.useState(0);
@@ -15,23 +15,27 @@ const Demo = () => {
 
   return (
     <>
-      <DataTable data={tableData} aria-label={'Pagination'} h={'auto'} loading
-                 columns={[
-                   {name: 'keyword', children: 'Keyword', justifyContent: 'left'},
-                   {name: 'kd', children: 'KD,%', justifyContent: 'right', gtcWidth: 'minmax(fit-content, 68px)'},
-                   {name: 'cpc', children: 'CPC', gtcWidth: 'minmax(fit-content, 60px)'},
-                   {name: 'vol', children: 'Vol.', gtcWidth: 'minmax(fit-content, 120px)', justifyContent: 'left'},
-                 ]}
-          renderCell={(props) => {
-            if (props.columnName === 'keyword') {
-              return props.defaultRender();
-            }
+      <DataTable
+        data={tableData}
+        aria-label='Pagination'
+        h='auto'
+        loading
+        columns={[
+          { name: 'keyword', children: 'Keyword', justifyContent: 'left' },
+          { name: 'kd', children: 'KD,%', justifyContent: 'right', gtcWidth: 'minmax(fit-content, 68px)' },
+          { name: 'cpc', children: 'CPC', gtcWidth: 'minmax(fit-content, 60px)' },
+          { name: 'vol', children: 'Vol.', gtcWidth: 'minmax(fit-content, 120px)', justifyContent: 'left' },
+        ]}
+        renderCell={(props) => {
+          if (props.columnName === 'keyword') {
+            return props.defaultRender();
+          }
 
-            const value = props.defaultRender();
+          const value = props.defaultRender();
 
-            return typeof value === 'number' && value !== -1 ? numberFormat.format(value) : 'n/a';
-          }}
-        />
+          return typeof value === 'number' && value !== -1 ? numberFormat.format(value) : 'n/a';
+        }}
+      />
       <Pagination
         mt={4}
         totalPages={Math.ceil(data.length / limit)}

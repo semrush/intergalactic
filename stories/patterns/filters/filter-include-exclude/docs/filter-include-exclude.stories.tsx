@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import FiltersIncludeExcludeExample from './examples/basic-example';
-
 import { FiltersIncludeExcludeTest } from './__tests__/filter-include-exclude.test';
+import FiltersIncludeExcludeExample from './examples/basic-example';
 import { playWrapper } from '../../../../utils/playWrapper';
 
 const meta: Meta = {

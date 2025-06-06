@@ -1,6 +1,6 @@
-import React from 'react';
-import type { Preview } from '@storybook/react';
 import { PortalProvider } from '@semcore/portal';
+import type { Preview } from '@storybook/react';
+import React from 'react';
 
 const preview: Preview = {
   parameters: {
@@ -28,10 +28,10 @@ const preview: Preview = {
       const rootRef = React.useRef<HTMLDivElement>(null);
 
       return (
-        <div style={{ display: 'grid', gridTemplateRows: '20px 70vh 20px' }}>
+        <div style={{ display: 'grid', gridTemplateRows: '20px auto 20px' }}>
           <div tabIndex={0} />
           <PortalProvider value={rootRef}>
-            <div ref={rootRef} style={{overflow: 'hidden'}}>
+            <div ref={rootRef}>
               <Story />
             </div>
           </PortalProvider>

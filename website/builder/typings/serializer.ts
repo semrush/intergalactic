@@ -2,7 +2,7 @@ import ts from 'typescript';
 
 const hideGenerics = {
   'Intergalactic.InternalTypings.EfficientOmit': 1,
-  Omit: 1,
+  'Omit': 1,
 };
 
 export const extractDependenciesList = (typingsParts) => {
@@ -179,7 +179,6 @@ export const serializeTsNode = (node: ts.Node, genericsMap = {}, minimizeMembers
       case ts.SyntaxKind.IndexSignature: {
         const { type, parameters } = node as ts.IndexSignatureDeclaration;
         if (parameters.length !== 1) {
-          // biome-ignore lint/suspicious/noConsoleLog:
           console.log(node);
           throw new Error('Unable to handle IndexSignature with node.paraments.length !== 1');
         }
@@ -346,7 +345,7 @@ const serializeJSDoc = (jsDoc: ts.JSDoc[], dependencies: string[], genericsMap) 
         }
 
         if (!paramValue || computeTypingStringLength(paramValue) === 0) {
-          return [paramName, tag.comment];
+          return [paramName, tag.comment ?? true];
         }
         dependencies.push(...extractDependenciesList(paramValue));
 

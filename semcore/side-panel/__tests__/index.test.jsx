@@ -1,12 +1,11 @@
-import React from 'react';
+import Portal from '@semcore/portal';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { snapshot } from '@semcore/testing-utils/snapshot';
-import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import { render, fireEvent, cleanup } from '@semcore/testing-utils/testing-library';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import React from 'react';
 
 import SidePanel from '../src';
-import Portal from '@semcore/portal';
-
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('side-panel Dependency imports', () => {
   runDependencyCheckTests('side-panel');
@@ -78,7 +77,7 @@ describe('SidePanel', () => {
     const spy = vi.fn();
     const component = render(
       <SidePanel visible onClose={spy}>
-        <SidePanel.Overlay data-testid={'overlay'}>
+        <SidePanel.Overlay data-testid='overlay'>
           <SidePanel.Panel />
         </SidePanel.Overlay>
       </SidePanel>,
@@ -210,9 +209,9 @@ describe('SidePanel', () => {
   test.concurrent('Should support ignorePortalsStacking prop', async ({ expect }) => {
     const component = render(
       <Portal>
-        <SidePanel visible data-testid={'inP'}>
+        <SidePanel visible data-testid='inP'>
           Content in portal
-          <SidePanel ignorePortalsStacking visible data-testid={'outP'}>
+          <SidePanel ignorePortalsStacking visible data-testid='outP'>
             Content in body
           </SidePanel>
         </SidePanel>

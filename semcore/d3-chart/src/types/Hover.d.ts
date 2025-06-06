@@ -1,10 +1,10 @@
-import React from 'react';
-import { UnknownProperties } from '@semcore/core';
-import { Context } from './context';
-import { ReturnEl } from '@semcore/core';
-import { TooltipTypeBase } from './Tooltip';
-import { BoxProps } from '@semcore/flex-box';
-import { IntergalacticD3Component } from './Plot';
+import type { UnknownProperties, ReturnEl } from '@semcore/core';
+import type { BoxProps } from '@semcore/flex-box';
+import type React from 'react';
+
+import type { Context } from './context';
+import type { IntergalacticD3Component } from './Plot';
+import type { TooltipTypeBase } from './Tooltip';
 
 /** @deprecated */
 export interface IHoverProps extends HoverProps, UnknownProperties {}
@@ -33,7 +33,7 @@ type HoverTooltip = (<X, Y>(
     hideHoverLine?: boolean | ((xIndex: number | null, yIndex: number | null) => boolean);
   } & Omit<BoxProps, 'children'>,
 ) => ReturnEl) &
-  TooltipTypeBase;
+TooltipTypeBase;
 
 type HoverContext = {
   /** Index in `data` array of the current item */

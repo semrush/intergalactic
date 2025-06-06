@@ -1,11 +1,12 @@
+import Button from '@semcore/button';
+import Spin from '@semcore/spin';
 import React from 'react';
-import Button from 'intergalactic/button';
-import Spin from 'intergalactic/spin';
 
 const Demo = () => {
   return (
     <>
-      <Button loading>Loading</Button>{' '}
+      <Button loading>Loading</Button>
+      {' '}
       <Button disabled>
         <Button.Addon>
           <Spin size='xs' />

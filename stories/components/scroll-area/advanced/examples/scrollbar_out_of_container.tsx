@@ -1,6 +1,6 @@
+import { Box, Flex } from '@semcore/flex-box';
+import ScrollArea from '@semcore/scroll-area';
 import React from 'react';
-import { Box, Flex } from 'intergalactic/flex-box';
-import ScrollArea from 'intergalactic/scroll-area';
 
 let randomIndex = 1;
 const stableRandom = () => {

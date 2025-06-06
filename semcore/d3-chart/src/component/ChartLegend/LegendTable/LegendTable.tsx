@@ -1,10 +1,11 @@
-import React from 'react';
-import { createComponent, sstyled, Root, IRootComponentProps } from '@semcore/core';
+import { createComponent, sstyled, Root, type IRootComponentProps } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
-import { LegendTableType, LegendTableProps, LegendColumnProps } from './LegendTable.type';
+import React from 'react';
+
 import style from './legend-table.shadow.css';
-import { LegendItemComponent } from '../LegendItem/LegendItem';
+import type { LegendTableType, LegendTableProps, LegendColumnProps } from './LegendTable.type';
 import { BaseLegend } from '../BaseLegend';
+import { LegendItemComponent } from '../LegendItem/LegendItem';
 
 class LegendTableRoot extends BaseLegend<LegendTableProps> {
   static displayName = 'LegendTable';
@@ -20,8 +21,8 @@ class LegendTableRoot extends BaseLegend<LegendTableProps> {
     const columnsCount = items[0]?.columns.length;
 
     return sstyled(styles)(
-      <SLegendTable render={Box} columns-count={columnsCount + 1} role={'group'}>
-        {items.map(({ id, columns = [] }, index) => {
+      <SLegendTable render={Box} columns-count={columnsCount + 1} role='group'>
+        {items.map(({ id, columns = [] }, _index) => {
           return (
             <React.Fragment key={id}>
               <Children />

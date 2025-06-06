@@ -1,14 +1,13 @@
-import React from 'react';
-import dayjs from 'dayjs';
 import { Component, Root, CORE_INSTANCE, sstyled } from '@semcore/core';
-import Dropdown from '@semcore/dropdown';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
-
-import { localizedMessages } from '../translations/__intergalactic-dynamic-locales';
+import Dropdown from '@semcore/dropdown';
+import dayjs from 'dayjs';
+import React from 'react';
 
 import style from '../style/date-picker.shadow.css';
-import { includesDate } from '../utils/includesDate';
+import { localizedMessages } from '../translations/__intergalactic-dynamic-locales';
 import { formatDDMMYY, formatMMYY } from '../utils/formatDate';
+import { includesDate } from '../utils/includesDate';
 
 const INTERACTION_TAGS = ['INPUT'];
 const INTERACTION_KEYS = ['ArrowDown', 'Enter', ' '];
@@ -30,6 +29,7 @@ class PickerAbstract extends Component {
       size: 'm',
     };
   }
+
   static enhance = [i18nEnhance(localizedMessages)];
 
   static add = (date, amount, unit) => {
@@ -197,7 +197,7 @@ class PickerAbstract extends Component {
     const { navigateStep } = this;
 
     return {
-      onClick: this.bindHandlerNavigateClick(1),
+      'onClick': this.bindHandlerNavigateClick(1),
       getI18nText,
       'aria-label': navigateStep === 'month' ? getI18nText('nextMonth') : getI18nText('nextYear'),
     };
@@ -208,7 +208,7 @@ class PickerAbstract extends Component {
     const { navigateStep } = this;
 
     return {
-      onClick: this.bindHandlerNavigateClick(-1),
+      'onClick': this.bindHandlerNavigateClick(-1),
       getI18nText,
       'aria-label': navigateStep === 'month' ? getI18nText('prevMonth') : getI18nText('prevYear'),
     };

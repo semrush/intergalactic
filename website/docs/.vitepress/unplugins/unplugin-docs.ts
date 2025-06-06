@@ -1,4 +1,3 @@
-import { Plugin } from 'esbuild';
 import { readFile } from 'fs/promises';
 import {
   resolve as resolvePath,
@@ -6,9 +5,12 @@ import {
   relative as resolveRelativePath,
 } from 'path';
 import { fileURLToPath } from 'url';
-import { serializeNavigation } from './navigation';
-import { bundleArticle, getRepoTyping } from './build-article/build-article';
+
+import type { Plugin } from 'esbuild';
 import { createUnplugin } from 'unplugin';
+
+import { bundleArticle, getRepoTyping } from './build-article/build-article';
+import { serializeNavigation } from './navigation';
 
 const __dirname = resolveDirname(fileURLToPath(import.meta.url));
 const docsDir = resolvePath(__dirname, '../docs');

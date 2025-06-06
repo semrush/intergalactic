@@ -1,24 +1,22 @@
-import React from 'react';
-import { createTextMaskInputElement } from 'text-mask-core';
-
 import {
   createComponent,
   Component,
   sstyled,
   Root,
-  PropGetterFn,
-  UnknownProperties,
-  Intergalactic,
+  type PropGetterFn,
+  type UnknownProperties,
+  type Intergalactic,
 } from '@semcore/core';
-import Input, { InputProps, IInputProps, InputValueProps } from '@semcore/input';
 import fire from '@semcore/core/lib/utils/fire';
-import logger from '@semcore/core/lib/utils/logger';
-import NeighborLocation from '@semcore/neighbor-location';
 import getInputProps, { inputProps } from '@semcore/core/lib/utils/inputProps';
-import { Box, Flex } from '@semcore/flex-box';
+import logger from '@semcore/core/lib/utils/logger';
 import { forkRef } from '@semcore/core/lib/utils/ref';
-import { ScreenReaderOnly } from '@semcore/flex-box';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import { Box, Flex, ScreenReaderOnly } from '@semcore/flex-box';
+import Input, { type InputProps, type IInputProps, type InputValueProps } from '@semcore/input';
+import NeighborLocation from '@semcore/neighbor-location';
+import React from 'react';
+import { createTextMaskInputElement } from 'text-mask-core';
 
 import style from './style/input-mask.shadow.css';
 
@@ -123,7 +121,7 @@ class Value extends Component<InputMaskValueProps, {}, {}, typeof Value.enhance>
     keepCharPositions: false,
     aliases: {
       '9': /\d/,
-      a: /[a-zA-Zа-яА-Я]/,
+      'a': /[a-zA-Zа-яА-Я]/,
       '*': /[\da-zA-Zа-яА-Я]/,
     },
     maskOnlySymbols: {
@@ -141,10 +139,10 @@ class Value extends Component<InputMaskValueProps, {}, {}, typeof Value.enhance>
   state: {
     lastConformed:
       | {
-          all: string;
-          userInput: string;
-          maskOnly: string;
-        }
+        all: string;
+        userInput: string;
+        maskOnly: string;
+      }
       | undefined;
     maskWidth: number | undefined;
   } = {
@@ -322,7 +320,7 @@ class Value extends Component<InputMaskValueProps, {}, {}, typeof Value.enhance>
     const {
       title,
       placeholder,
-      mask,
+      mask: _mask,
       neighborLocation,
       value,
       includeInputProps,
@@ -367,11 +365,13 @@ class Value extends Component<InputMaskValueProps, {}, {}, typeof Value.enhance>
                   {this.state.lastConformed && (
                     <SMaskHidden data-content={this.state.lastConformed.userInput} />
                   )}
-                  {this.state.lastConformed ? (
-                    <SMaskVisible data-content={this.state.lastConformed.maskOnly} />
-                  ) : (
-                    <SPlaceholder data-content={placeholder} />
-                  )}
+                  {this.state.lastConformed
+                    ? (
+                        <SMaskVisible data-content={this.state.lastConformed.maskOnly} />
+                      )
+                    : (
+                        <SPlaceholder data-content={placeholder} />
+                      )}
                 </SMask>
                 <SValue
                   render={Input.Value}
@@ -390,8 +390,7 @@ class Value extends Component<InputMaskValueProps, {}, {}, typeof Value.enhance>
               </SInputMask>
               <ScreenReaderOnly id={`hint-${uid}`}>{title}</ScreenReaderOnly>
             </>,
-          ) as React.ReactElement
-        }
+          ) as React.ReactElement}
       </NeighborLocation.Detect>
     );
   }

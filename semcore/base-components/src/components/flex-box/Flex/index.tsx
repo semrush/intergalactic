@@ -1,6 +1,7 @@
+import { createBaseComponent, type Intergalactic } from '@semcore/core';
 import React from 'react';
-import { createBaseComponent, Intergalactic } from '@semcore/core';
-import useFlex, { FlexProps } from './useFlex';
+
+import useFlex, { type FlexProps } from './useFlex';
 
 function Flex(props: any, ref: any) {
   const [Tag, flexProps] = useFlex(props, ref);

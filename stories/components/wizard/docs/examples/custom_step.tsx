@@ -1,9 +1,9 @@
-import React from 'react';
-import Wizard from '@semcore/wizard';
 import Button from '@semcore/button';
-import { Text } from '@semcore/typography';
 import { Flex } from '@semcore/flex-box';
 import Input from '@semcore/input';
+import { Text } from '@semcore/typography';
+import Wizard from '@semcore/wizard';
+import React from 'react';
 
 const Step1 = React.forwardRef(function (_props, ref: React.Ref<HTMLDivElement>) {
   return (

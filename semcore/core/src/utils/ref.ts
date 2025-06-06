@@ -1,4 +1,4 @@
-import React, { MutableRefObject, Ref, RefObject } from 'react';
+import React, { type MutableRefObject, type Ref, type RefObject } from 'react';
 import { findDOMNode } from 'react-dom';
 
 export function setRef<T>(ref: Ref<T>, value: T) {

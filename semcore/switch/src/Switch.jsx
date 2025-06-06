@@ -1,11 +1,11 @@
-import React from 'react';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
-import { Box } from '@semcore/flex-box';
-import NeighborLocation from '@semcore/neighbor-location';
+import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import getInputProps, { inputProps } from '@semcore/core/lib/utils/inputProps';
-import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import { Box } from '@semcore/flex-box';
+import NeighborLocation from '@semcore/neighbor-location';
+import React from 'react';
 
 import style from './style/switch.shadow.css';
 
@@ -33,6 +33,7 @@ class Switch extends Component {
   handleMouseUp = () => {
     this.setState({ active: false });
   };
+
   handleMouseDown = (event) => {
     if (event?.button !== 0) return;
     this.setState({ active: true });
@@ -140,7 +141,7 @@ class Value extends Component {
       includeInputProps,
       neighborLocation,
       theme,
-      uid,
+      uid: _uid,
       active,
       resolveColor,
       ...other
@@ -176,8 +177,7 @@ class Value extends Component {
                 <Children />
               </SSlider>
             </SToggle>,
-          )
-        }
+          )}
       </NeighborLocation.Detect>
     );
   }
@@ -197,8 +197,7 @@ function Addon(props) {
             neighborLocation={neighborLocation}
             id={`igc-${uid}-switch-addon-${neighborLocation}`}
           />,
-        )
-      }
+        )}
     </NeighborLocation.Detect>
   );
 }

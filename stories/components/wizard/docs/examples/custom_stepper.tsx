@@ -1,10 +1,10 @@
-import React from 'react';
-import Wizard from '@semcore/wizard';
 import Button from '@semcore/button';
-import { Text } from '@semcore/typography';
 import { Flex } from '@semcore/flex-box';
 import Input from '@semcore/input';
 import Radio, { RadioGroup } from '@semcore/radio';
+import { Text } from '@semcore/typography';
+import Wizard from '@semcore/wizard';
+import React from 'react';
 
 const Step1 = React.forwardRef(function (_props, ref: React.Ref<HTMLDivElement>) {
   return (
@@ -45,7 +45,7 @@ const Demo = () => {
         <Wizard.Sidebar title='Site Audit Settings'>
           <Wizard.Stepper step={1} onActive={handleStepChange(1)}>
             Personal
-            <Text color='text-secondary-invert' fontWeight={400} tag='div'>
+            <Text color='text-secondary-invert' fontWeight={400} mt={1} tag='div'>
               optional
             </Text>
           </Wizard.Stepper>
@@ -53,8 +53,8 @@ const Demo = () => {
             Keywords
           </Wizard.Stepper>
           <Wizard.Stepper step={3} onActive={handleStepChange(3)} number={2.1}>
-            Import source
-            <Text color='text-secondary-invert' fontWeight={400} tag='div'>
+            <Text fontWeight={400}>Import source</Text>
+            <Text color='text-secondary-invert' fontWeight={400} mt={1} tag='div'>
               {value === '' ? 'Not selected' : value}
             </Text>
           </Wizard.Stepper>

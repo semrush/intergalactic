@@ -1,5 +1,6 @@
 import axios from 'axios';
 import dotenv from 'dotenv';
+
 import { validateSlackIntegrationEnv } from './validateEnv';
 dotenv.config();
 
@@ -36,11 +37,9 @@ export const sendMessage = async ({
         log += `\nImage: ${image.full} (thumb ${image.thumb})\n===`;
       }
 
-      // biome-ignore lint/suspicious/noConsoleLog:
       console.log(log);
 
       if (dryRun) {
-        // biome-ignore lint/suspicious/noConsoleLog:
         console.log('Sending is canceled due to dry run');
         return null;
       }

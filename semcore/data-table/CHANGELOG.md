@@ -2,9 +2,32 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [16.0.0] - 2025-05-19
+## [16.0.3] - 2025-05-30
+
+### Fixed
+
+- Incorrect `aria-controls` attribute on Accordion button.
+
+## [16.0.2] - 2025-05-30
+
+### Fixed
+
+- Animation for accordions in table.
+
+## [16.0.1] - 2025-05-21
+
+### Fixed
+
+- Property `sideIndents`.
+- Calculation of sorted columns width on the first render.
 
 ### Added
+
+- Support for using `Accordion` on merged rows.
+
+## [16.0.0] - 2025-05-19
+
+### Break
 
 - Major version.
 

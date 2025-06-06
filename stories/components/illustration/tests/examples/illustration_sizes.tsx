@@ -1,8 +1,8 @@
-import React from 'react';
-import MailSent from '@semcore/illustration/MailSent';
-import Congrats from '@semcore/illustration/Congrats';
-import { Flex } from '@semcore/flex-box';
 import Button from '@semcore/button';
+import { Flex } from '@semcore/flex-box';
+import Congrats from '@semcore/illustration/Congrats';
+import MailSent from '@semcore/illustration/MailSent';
+import React from 'react';
 
 const Demo = () => {
   return (

@@ -1,17 +1,17 @@
-import React, { cloneElement } from 'react';
 import { Component, sstyled, Root } from '@semcore/core';
-import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
 import trottle from '@semcore/core/lib/utils/rafTrottle';
-import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { polygonContains } from 'd3-polygon';
 import { line, lineRadial, curveLinearClosed, arc } from 'd3-shape';
-import createElement from './createElement';
-import { eventToPoint, getChartDefaultColorName, measureText } from './utils';
-import Tooltip from './Tooltip';
-import { PatternFill, PatternSymbol, getPatternSymbolSize } from './Pattern';
+import React, { cloneElement } from 'react';
 
+import createElement from './createElement';
+import { PatternFill, PatternSymbol, getPatternSymbolSize } from './Pattern';
 import style from './style/radar.shadow.css';
+import Tooltip from './Tooltip';
+import { eventToPoint, getChartDefaultColorName, measureText } from './utils';
 
 const clampAngle = (angle) => {
   angle = angle % (2 * Math.PI);
@@ -71,7 +71,7 @@ function getTicks(tickSize, radius) {
   while (Math.trunc(radius / (tickSize / 2)) > ticks) {
     ticks += 1;
   }
-  return [...Array(ticks).keys()].reduce((ticks, t, i, total) => {
+  return [...Array(ticks).keys()].reduce((ticks, _t, i, total) => {
     if (i) ticks.push(i / total.length);
     return ticks;
   }, []);
@@ -224,7 +224,7 @@ class PolygonRoot extends Component {
         .radius((d) => {
           return scale(d || 0);
         })
-        .angle((d, i, data) => {
+        .angle((_d, i, data) => {
           return (i / data.length) * 2 * Math.PI - angleOffset;
         }),
     };
@@ -389,7 +389,7 @@ class AxisRoot extends Component {
       .radius(() => {
         return radius;
       })
-      .angle((d, i) => {
+      .angle((_d, i) => {
         return (i / total) * 2 * Math.PI;
       });
   }
@@ -441,12 +441,14 @@ class AxisRoot extends Component {
 
     return sstyled(styles)(
       <>
-        {type === 'circle' ? (
-          <SAxis render='circle' cx={0} cy={0} r={radius} />
-        ) : (
-          <SAxis render='path' d={this.createLineRadial(radius, total)(categories)} />
-        )}
-        {categories.map((category, i) => {
+        {type === 'circle'
+          ? (
+              <SAxis render='circle' cx={0} cy={0} r={radius} />
+            )
+          : (
+              <SAxis render='path' d={this.createLineRadial(radius, total)(categories)} />
+            )}
+        {categories.map((_category, i) => {
           const [x, y] = getRadianPosition(i, radius, total, angleOffset);
           const { className } = sstyled(styles).cn('SAxisLine', {
             active: activeLineIndex === i,
@@ -465,11 +467,13 @@ function AxisTicks(props) {
   return ticks.map((tick, i) => {
     d3.radius(() => radius * tick);
     return sstyled(styles)(
-      type === 'circle' ? (
-        <SAxisTick key={i} render='circle' cx={0} cy={0} r={radius * tick} />
-      ) : (
-        <SAxisTick render='path' key={i} d={d3(categories)} />
-      ),
+      type === 'circle'
+        ? (
+            <SAxisTick key={i} render='circle' cx={0} cy={0} r={radius * tick} />
+          )
+        : (
+            <SAxisTick render='path' key={i} d={d3(categories)} />
+          ),
     );
   });
 }
@@ -566,9 +570,9 @@ class Hover extends Component {
     const { categories, type } = this.asProps;
     let index;
     if (type === 'circle') {
-      index = categories.findIndex((c, i) => pieContains(this.getPie(i), point));
+      index = categories.findIndex((_c, i) => pieContains(this.getPie(i), point));
     } else {
-      index = categories.findIndex((c, i) => polygonContains(this.getPolygon(i), point));
+      index = categories.findIndex((_c, i) => polygonContains(this.getPolygon(i), point));
     }
     return index === -1 ? null : index;
   }

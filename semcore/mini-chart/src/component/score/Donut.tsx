@@ -1,12 +1,12 @@
-import React from 'react';
-import { createComponent, Component, Root, sstyled, ComponentType } from '@semcore/core';
-import { Box, BoxProps } from '@semcore/flex-box';
-import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
+import { createComponent, Component, Root, sstyled, type ComponentType } from '@semcore/core';
 import { assignProps } from '@semcore/core';
-import { CommonScoreProps } from './Score';
+import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
+import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
+import { Box, type BoxProps } from '@semcore/flex-box';
+import React from 'react';
 
 import style from './donut.shadow.css';
-import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
+import type { CommonScoreProps } from './Score';
 
 export type ScoreDonutProps = BoxProps & CommonScoreProps;
 
@@ -93,7 +93,7 @@ class DonutRoot extends Component<ScoreDonutProps, {}, {}, typeof DonutRoot.enha
                   strokeDashoffset={valueStrokeDasharray}
                 >
                   <animate
-                    attributeName={'stroke-dashoffset'}
+                    attributeName='stroke-dashoffset'
                     values={`0;${valueStrokeDasharray}`}
                   />
                 </circle>

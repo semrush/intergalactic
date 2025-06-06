@@ -1,9 +1,11 @@
-import React from 'react';
-import Popper, { PopperProps, PopperTriggerProps } from '@semcore/popper';
-import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import { Box, BoxProps } from '@semcore/flex-box';
-import { Context } from './context';
-import { IntergalacticD3Component } from './Plot';
+import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import type { Box, BoxProps } from '@semcore/flex-box';
+import type { PopperProps, PopperTriggerProps } from '@semcore/popper';
+import type Popper from '@semcore/popper';
+import type React from 'react';
+
+import type { Context } from './context';
+import type { IntergalacticD3Component } from './Plot';
 
 /** @deprecated */
 export interface ITooltipChartProps extends TooltipChartProps, UnknownProperties {}
@@ -47,12 +49,12 @@ export type TooltipType<ChildrenRenderProps = {}, TooltipProps = {}> = (<
     ChildrenRenderProps & TooltipChartContext
   >,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
-  Intergalactic.InternalTypings.ComponentAdditive<
-    Intergalactic.Tag,
-    Intergalactic.Tag,
-    TooltipProps
-  > &
-  TooltipTypeBase;
+Intergalactic.InternalTypings.ComponentAdditive<
+  Intergalactic.Tag,
+  Intergalactic.Tag,
+  TooltipProps
+> &
+TooltipTypeBase;
 
 /**
  * @deprecated Consider migration to better typed Bubble.Tooltip, HoverLine.Tooltip,

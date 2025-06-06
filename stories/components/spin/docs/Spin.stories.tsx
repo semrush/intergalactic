@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
 import Spin from '@semcore/spin';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import BasicExample from './examples/basic_example';
 

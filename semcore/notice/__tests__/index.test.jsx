@@ -1,9 +1,9 @@
-import React from 'react';
-import { snapshot } from '@semcore/testing-utils/snapshot';
-import * as sharedTests from '@semcore/testing-utils/shared-tests';
-import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
-import { render, cleanup } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
+import * as sharedTests from '@semcore/testing-utils/shared-tests';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { render, cleanup } from '@semcore/testing-utils/testing-library';
+import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
+import React from 'react';
 
 import Notice, { NoticeSmart } from '../src';
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
@@ -199,7 +199,7 @@ describe('NoticeSmart', () => {
     const component = (
       <NoticeSmart
         theme='warning'
-        title={'The Link Building tool is under maintenance.'}
+        title='The Link Building tool is under maintenance.'
         aria-label='Maintenance notice'
         closable
       >

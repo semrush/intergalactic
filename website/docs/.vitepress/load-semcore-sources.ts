@@ -1,11 +1,14 @@
-import { Loader, Plugin } from 'esbuild';
 import { readFile, access } from 'fs/promises';
 import { dirname as resolveDirname } from 'path';
+
+import type { Loader } from 'esbuild';
+import { Plugin } from 'esbuild';
 // import { makeCacheManager } from './cache-manager';
 // import { extractSemcoreImplicitDependencies } from './semcore-implicit-dependncies-resolver';
 // export { esbuildPluginSemcoreSourcesResolve } from './esbuild-plugin-semcore-sources-resolve';
 
 const babelTransform = async (contents: string, path: string, isEsm?: true) => {
+  // @ts-ignore
   const babelPresetUi = await import('@semcore/babel-preset-ui/.babelrc.js');
   const babelConfig = babelPresetUi.default as (babel: any, opts: any) => any;
   // @ts-ignore
@@ -21,7 +24,7 @@ const babelTransform = async (contents: string, path: string, isEsm?: true) => {
       },
       (error: Error | undefined, result: any) => {
         if (error) reject(error);
-        else resolve(result?.code!);
+        else resolve(result?.code);
       },
     ),
   );

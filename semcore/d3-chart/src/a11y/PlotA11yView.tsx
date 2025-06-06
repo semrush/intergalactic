@@ -1,15 +1,16 @@
+import { Root, sstyled } from '@semcore/core';
+import { useAsyncI18nMessages } from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import { Box } from '@semcore/flex-box';
 import React from 'react';
+
+import { DataAccessibilityTable } from './DataAccessibilityTable';
 import { heavyFindNextFocusableElement } from './focus';
 import { makeDataSummarizationConfig } from './hints';
-import type { A11yViewProps } from './PlotA11yModule';
 import { getIntl } from './intl';
+import type { A11yViewProps } from './PlotA11yModule';
 import { summarize } from './summarize';
-import { Root, sstyled } from '@semcore/core';
 import styles from '../style/plotA11yView.shadow.css';
-import { Box } from '@semcore/flex-box';
-import { useAsyncI18nMessages } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { localizedMessages } from './translations/view/__intergalactic-dynamic-locales';
-import { DataAccessibilityTable } from './DataAccessibilityTable';
 
 export const PlotA11yView: React.FC<A11yViewProps> = ({
   id,
@@ -105,17 +106,15 @@ export const PlotA11yView: React.FC<A11yViewProps> = ({
       render={Box}
       tabIndex={0}
       aria-label={texts.label}
-      role={'dialog'}
+      role='dialog'
       __excludeProps={['data']}
     >
-      <button type={'button'} onClick={handleClose}>
+      <button type='button' onClick={handleClose}>
         {texts.close}
       </button>
-      {/* biome-ignore lint/a11y/useValidAnchor: */}
-      <a href={'#'} onKeyDown={handleSkipKeyboard} onClick={handleSkip}>
+      <a href='#' onKeyDown={handleSkipKeyboard} onClick={handleSkip}>
         {texts.skipPlot}
       </a>
-      {/* biome-ignore lint/a11y/useValidAnchor: */}
       <a href={`#${id}-data-table`} onKeyDown={handleGoToTableKeyboard} onClick={handleGoToTable}>
         {texts.goToTable}
       </a>

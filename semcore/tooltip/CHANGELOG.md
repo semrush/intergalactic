@@ -2,11 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.1] - 2025-05-30
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [16.0.0 ~> 16.0.1], `@semcore/popper` [16.0.0 ~> 16.0.1], `@semcore/portal` [16.0.0 ~> 16.0.1], `@semcore/base-components` [16.0.0 ~> 16.0.1]).
+
 ## [16.0.0] - 2025-05-19
 
-### Added
+### Break
 
-- One global node for all `status` tooltips to mount into.
+- Render the tooltip container only when the tooltip is visible, for better performance. The content is rendered with a small timeout, to ensure correct announcement by the screen reader.
 
 ## [6.49.4] - 2025-05-13
 

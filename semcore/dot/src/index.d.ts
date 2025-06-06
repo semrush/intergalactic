@@ -1,6 +1,6 @@
-import { BoxProps } from '@semcore/flex-box';
-import { UnknownProperties, Intergalactic } from '@semcore/core';
-import { AnimationProps } from '@semcore/animation';
+import type { AnimationProps } from '@semcore/animation';
+import type { UnknownProperties, Intergalactic } from '@semcore/core';
+import type { BoxProps } from '@semcore/flex-box';
 
 /** @deprecated */
 export interface IDotProps extends DotProps, UnknownProperties {}

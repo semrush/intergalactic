@@ -1,11 +1,12 @@
-const os = require('os');
 const fs = require('fs');
+const os = require('os');
 const path = require('path');
-const mkdirp = require('mkdirp');
-const loaderUtils = require('loader-utils');
-const findCacheDir = require('find-cache-dir');
-const VirtualModulesPlugin = require('webpack-virtual-modules');
+
 const utils = require('@reshadow/utils');
+const findCacheDir = require('find-cache-dir');
+const loaderUtils = require('loader-utils');
+const mkdirp = require('mkdirp');
+const VirtualModulesPlugin = require('webpack-virtual-modules');
 
 const virtualModules = new VirtualModulesPlugin();
 let cacheDirectory;
@@ -55,7 +56,7 @@ async function loader(source) {
     compiler.hooks.afterEnvironment.intercept({
       name: 'VirtualModulesPlugin',
       context: true,
-      // biome-ignore lint/style/noCommaOperator:
+
       register: (tap) => (tap.fn(), tap),
     });
     virtualModules.apply(compiler);
@@ -104,7 +105,7 @@ async function loader(source) {
         queue.push(
           writeModule(
             filepath,
-            code.replace(/\\"/g, '"').replace(/\\'/g, "'").replace(/\\n/g, '\n'),
+            code.replace(/\\"/g, '"').replace(/\\'/g, '\'').replace(/\\n/g, '\n'),
           ),
         );
         const [requirePath] = filepath.split('node_modules/').slice(-1);
@@ -122,7 +123,7 @@ async function loader(source) {
     });
   await Promise.all(queue);
   // sourcemap breaks the out code. That's why it's disabled :(
-  return [result /* , inputSourceMap */];
+  return [result/* , inputSourceMap */];
 }
 
 module.exports = makeLoader(loader);

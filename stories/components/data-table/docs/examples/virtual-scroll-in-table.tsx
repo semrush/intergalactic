@@ -1,5 +1,5 @@
+import { DataTable } from '@semcore/data-table';
 import React from 'react';
-import { DataTable, ROW_GROUP } from '@semcore/data-table';
 
 const keyword = ['ebay buy', 'www.ebay.com', 'ebay buy'];
 const kd = ['77.8', '10', '11.2', '-', '75.89'];
@@ -25,7 +25,7 @@ const Demo = () => {
     <DataTable
       data={data}
       totalRows={10000}
-      aria-label={'Virtual scroll'}
+      aria-label='Virtual scroll'
       h={400}
       virtualScroll={{ rowHeight: 45 }}
       headerProps={{ sticky: true }}

@@ -1,15 +1,15 @@
-import React from 'react';
-import styles from './design-tokens.module.css';
+import Copy from '@components/Copy';
 import { ButtonLink } from '@semcore/button';
-import Select from '@semcore/select';
 import { DataTable } from '@semcore/data-table';
 import Link from '@semcore/link';
+import Select from '@semcore/select';
 import { DescriptionTooltip } from '@semcore/tooltip';
 import { NoData } from '@semcore/widget-empty';
-import Copy from '@components/Copy';
 import Fuse from 'fuse.js';
-import { SearchInput } from './SearchInput.jsx';
+import React from 'react';
 
+import styles from './design-tokens.module.css';
+import { SearchInput } from './SearchInput.jsx';
 import { logEvent } from '../../docs/.vitepress/theme/amplitude/amplitude';
 
 export const ColorPreview = ({ color }) => {
@@ -18,7 +18,7 @@ export const ColorPreview = ({ color }) => {
   return (
     <div
       style={{
-        background: color,
+        'background': color,
         '--cell-bg-color': color,
       }}
       className={styles.colorPreview}
@@ -96,8 +96,8 @@ const DesignTokens = ({ tokens }) => {
           setFilter={handleChangeFilter}
           resultsCount={filteredTokens.length}
           placeholder='Enter component or element name to find token'
-          ariaLabel={'Search semantic tokens'}
-          statusAddonId={'search-message-design'}
+          ariaLabel='Search semantic tokens'
+          statusAddonId='search-message-design'
         />
         <Select
           className={styles.componentsFilterSelect}
@@ -149,11 +149,10 @@ const DesignTokensTable = React.memo(({ filteredTokens }) => {
     <DataTable
       data={filteredTokens}
       className={styles.tokensTable}
-      hMax={400}
-      w={'100%'}
+      hMax='75vh'
+      w='100%'
       columns={columns}
       headerProps={{ sticky: true }}
-      virtualScroll={true}
       renderCell={(props) => {
         if (props.dataKey === 'name') {
           if (filteredTokens.length === 0) {
@@ -164,11 +163,11 @@ const DesignTokensTable = React.memo(({ filteredTokens }) => {
             <Copy
               copiedToast='Copied'
               toCopy={props.value}
-              title={'Copy to clipboard'}
+              title='Copy to clipboard'
               trigger='click'
               className={styles.tokenNameWrapper}
             >
-              <button type='button' className={styles.tokenName} data-token-type={'semanticToken'}>
+              <button type='button' className={styles.tokenName} data-token-type='semanticToken'>
                 {props.value}
               </button>
             </Copy>
@@ -178,11 +177,11 @@ const DesignTokensTable = React.memo(({ filteredTokens }) => {
             <Copy
               copiedToast='Copied'
               toCopy={props.row.rawValue}
-              title={'Copy to clipboard'}
+              title='Copy to clipboard'
               trigger='click'
               className={styles.tokenValueWrapper}
             >
-              <button type='button' className={styles.tokenValue} data-token-type={'semanticToken'}>
+              <button type='button' className={styles.tokenValue} data-token-type='semanticToken'>
                 <ColorPreview color={props.row.computedValue} />
                 {props.row.rawValue}
               </button>
@@ -213,10 +212,12 @@ const DesignTokensTable = React.memo(({ filteredTokens }) => {
               <DescriptionTooltip>
                 <DescriptionTooltip.Trigger
                   tag={ButtonLink}
-                  use={'secondary'}
+                  use='secondary'
                   data-used-in-tooltip={props.row['name']}
                 >
-                  {value.length} components
+                  {value.length}
+                  {' '}
+                  components
                 </DescriptionTooltip.Trigger>
                 <DescriptionTooltip.Popper>
                   {value.map((componentName, index) => (
@@ -243,11 +244,11 @@ const DesignTokensTable = React.memo(({ filteredTokens }) => {
         return (
           <NoData
             py={10}
-            type={'nothing-found'}
+            type='nothing-found'
             description={
               'Try searching by component name or its category, for example, "control", “bg”, “border”.'
             }
-            w={'100%'}
+            w='100%'
           />
         );
       }}

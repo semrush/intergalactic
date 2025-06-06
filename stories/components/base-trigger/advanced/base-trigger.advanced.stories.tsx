@@ -8,7 +8,6 @@ const meta: Meta = {
   title: 'Components/BaseTrigger/Advanced',
 };
 
-
 export const LinkTriggerAndEllipsis: StoryObj = {
   render: LinkTriggerAndEllipsisExample,
 };

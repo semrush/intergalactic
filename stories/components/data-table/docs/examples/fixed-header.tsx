@@ -1,6 +1,6 @@
-import React from 'react';
-import { DataTable } from '@semcore/data-table';
 import { Box } from '@semcore/base-components';
+import { DataTable } from '@semcore/data-table';
+import React from 'react';
 
 const Demo = () => {
   const top = 0; // the height of the UI that should stick alongside the table header
@@ -9,7 +9,7 @@ const Demo = () => {
     <>
       <DataTable
         data={data}
-        aria-label={'Fixed header'}
+        aria-label='Fixed header'
         wMax={800}
         hMax={200}
         headerProps={{ sticky: true, top }}
@@ -23,7 +23,7 @@ const Demo = () => {
       <h4>With horizontal scroll</h4>
       <DataTable
         data={data}
-        aria-label={'Fixed header with scroll'}
+        aria-label='Fixed header with scroll'
         wMax={800}
         hMax={200}
         headerProps={{ sticky: true, top, withScrollBar: true }}

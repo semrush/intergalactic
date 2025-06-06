@@ -16,5 +16,4 @@ export async function MonthRangePickerTest({ canvasElement }: { canvasElement: H
   }
 
   await userEvent.click(triggersRange);
-
 }

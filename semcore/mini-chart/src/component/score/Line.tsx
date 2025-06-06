@@ -1,10 +1,10 @@
-import React from 'react';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
-import { Box, Flex } from '@semcore/flex-box';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
+import { Box, Flex } from '@semcore/flex-box';
+import React from 'react';
 
 import style from './line.shadow.css';
-import {
+import type {
   ScoreLineComponent,
   ScoreLineGaugeProps,
   SegmentProps,
@@ -34,7 +34,7 @@ class LineRoot extends Component<ScoreLineGaugeProps, {}, {}, typeof LineRoot.en
     const width = sum > 0 ? (100 * segmentProps.value) / sum : 0;
 
     return {
-      w: `${width}%`,
+      'w': `${width}%`,
       'use:color': resolveColor(segmentProps.color),
     };
   }

@@ -1,12 +1,12 @@
-import React from 'react';
-import styles from './design-tokens.module.css';
+import Copy from '@components/Copy';
 import { DataTable } from '@semcore/data-table';
 import { NoData } from '@semcore/widget-empty';
-import Copy from '@components/Copy';
-import { ColorPreview } from './DesignTokens';
 import Fuse from 'fuse.js';
-import { SearchInput } from './SearchInput.jsx';
+import React from 'react';
 
+import styles from './design-tokens.module.css';
+import { ColorPreview } from './DesignTokens';
+import { SearchInput } from './SearchInput.jsx';
 import { logEvent } from '../../docs/.vitepress/theme/amplitude/amplitude';
 
 let filteredTokensTimer = 0;
@@ -52,8 +52,8 @@ const BaseTokens = ({ tokens }) => {
           setFilter={handleChangeFilter}
           resultsCount={filteredTokens.length}
           placeholder='Enter color name to find token'
-          ariaLabel={'Search base tokens'}
-          statusAddonId={'search-message-base'}
+          ariaLabel='Search base tokens'
+          statusAddonId='search-message-base'
         />
       </div>
       <BaseTokensTable filteredTokens={filteredTokensToTable} />
@@ -91,18 +91,17 @@ const BaseTokensTable = React.memo(({ filteredTokens }) => {
     <DataTable
       data={filteredTokens}
       className={styles.tokensTable}
-      w={'100%'}
-      hMax={400}
+      w='100%'
+      hMax='75vh'
       columns={columns}
       headerProps={{ sticky: true }}
-      virtualScroll
       renderEmptyData={() => {
         return (
           <NoData
             py={10}
-            type={'nothing-found'}
+            type='nothing-found'
             description={'Try searching by color, for example, "blue" or #c4e5fe.'}
-            w={'100%'}
+            w='100%'
           />
         );
       }}
@@ -115,11 +114,11 @@ const BaseTokensTable = React.memo(({ filteredTokens }) => {
             <Copy
               copiedToast='Copied'
               toCopy={props.value}
-              title={'Copy to clipboard'}
+              title='Copy to clipboard'
               trigger='click'
               className={styles.tokenNameWrapper}
             >
-              <button type='button' className={styles.tokenName} data-token-type={'baseToken'}>
+              <button type='button' className={styles.tokenName} data-token-type='baseToken'>
                 {props.value}
               </button>
             </Copy>
@@ -129,11 +128,11 @@ const BaseTokensTable = React.memo(({ filteredTokens }) => {
             <Copy
               copiedToast='Copied'
               toCopy={props.row[props.dataKey]}
-              title={'Copy to clipboard'}
+              title='Copy to clipboard'
               trigger='click'
               className={styles.tokenValueWrapper}
             >
-              <button type='button' className={styles.tokenValue} data-token-type={'baseToken'}>
+              <button type='button' className={styles.tokenValue} data-token-type='baseToken'>
                 <ColorPreview color={props.row[props.dataKey]} />
                 {props.row[props.dataKey]}
               </button>

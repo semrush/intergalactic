@@ -1,16 +1,14 @@
-import React from 'react';
-import { Field, Form } from 'react-final-form';
-import createFocusDecorator from 'final-form-focus';
-
-import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import Button from '@semcore/button';
-import SpinContainer from '@semcore/spin-container';
-import { NoticeSmart } from '@semcore/notice';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
+import { NoticeSmart } from '@semcore/notice';
+import SpinContainer from '@semcore/spin-container';
+import createFocusDecorator from 'final-form-focus';
+import { Field, Form } from 'react-final-form';
+import React from 'react';
 
 import { FeedbackItem } from './component/feedback-item/FeedbackItem';
 import { SubmitButton } from './component/submit-button/SubmitButton';
-
 import style from './style/feedback-form.shadow.css';
 
 class FeedbackForm extends Component {
@@ -75,8 +73,7 @@ class FeedbackForm extends Component {
                 {typeof Children.origin === 'function' ? Children.origin(api) : <Children />}
               </SFeedbackForm>
             </SpinContainer>,
-          )
-        }
+          )}
       </Form>
     );
   }

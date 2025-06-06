@@ -42,11 +42,11 @@ Table: Roles and attributes
 |                            | `aria-disabled="true/false"`      | Indicates whether the option is disabled or enabled.                                                                                                                                |
 | `Select.InputSearch.Clear` | `aria-label="Clear search field"` | Defines an accessible name for the **Clear** button.                                                                                                                                |
 
-<!-- * For information about the dropdown behavior see [Keyboard support for dropdown](/core-principles/a11y/a11y-keyboard#keyboard_support_for_popper). -->
+<!-- * For information about the dropdown behavior see [Keyboard support for dropdown](/core-principles/a11y/a11y-keyboard#keyboard-support-for-popper). -->
 
 ## Considerations for developers
 
-Only use `Select.Popper` explicitly if it must have additional elements beside the list, such as `InputSearch` or `Notice`, as in the [menu customization example](./select-code.md#menu-customization) and the [option filtering example](./select-code.md#options-filtering). In that case the popper will be presented as a dialog, which hints to the screen reader user to use the `Tab` key to navigate between the list of options and other elements.
+Only use `Select.Popper` explicitly if it must have additional elements beside the list, such as `InputSearch` or `Notice`, as in the [menu customization example](./select-code.md#menu-customization) and the [option filtering example](./select-code.md#option-filtering). In that case the popper will be presented as a dialog, which hints to the screen reader user to use the `Tab` key to navigate between the list of options and other elements.
 
 If your `Select` is a list of options without additional features, use it without children or with `Select.Menu`, as in the [basic example](./select-code.md#basic-usage). This will let the screen reader user know that `Up` and `Down` keys are enough to navigate within the control.
 
@@ -59,7 +59,7 @@ Table: Roles and attributes
 | Component            | Attribute                         | Usage                                                     |
 | -------------------- | --------------------------------- | --------------------------------------------------------- |
 | `Select.Popper`      | `aria-label` or `aria-labelledby` | **Only if `Select.Popper` is used explicitly.** Defines an accessible name for the popper. |
-| `Select.InputSearch` | `aria-describedby="IDREF"`        | Defines an accessible description for the **Search** input. Use it to announce the number of search results, as demonstrated in the [options filtering example](./select-code.md#options-filtering). |
+| `Select.InputSearch` | `aria-describedby="IDREF"`        | Defines an accessible description for the **Search** input. Use it to announce the number of search results, as demonstrated in the [option filtering example](./select-code.md#option-filtering). |
 
 ## Resources
 
@@ -68,5 +68,3 @@ Refer to the [ARIA Authoring Practices Guide from W3C](https://www.w3.org/WAI/AR
 ## Other recommendations
 
 Find more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
-
-<!--@include: ./select-a11y-report.md-->

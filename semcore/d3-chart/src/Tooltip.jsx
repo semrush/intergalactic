@@ -1,14 +1,14 @@
-import React from 'react';
 import { Component, Root, sstyled } from '@semcore/core';
-import Popper from '@semcore/popper';
-import { Box } from '@semcore/flex-box';
 import findComponent from '@semcore/core/lib/utils/findComponent';
-import createElement from './createElement';
-import { getChartDefaultColorName } from './utils';
 import { useColorResolver } from '@semcore/core/lib/utils/use/useColorResolver';
+import { Box } from '@semcore/flex-box';
+import Popper from '@semcore/popper';
+import React from 'react';
 
-import style from './style/tooltip.shadow.css';
+import createElement from './createElement';
 import { PatternSymbol } from './Pattern';
+import style from './style/tooltip.shadow.css';
+import { getChartDefaultColorName } from './utils';
 
 /**
  * `TooltipDotRenderContext` is a hack to bypass problem that getDotProps doesn't work for D3 tooltip.
@@ -95,7 +95,7 @@ class TooltipRoot extends Component {
   };
 
   render() {
-    const { Children, children, tag, forcedAdvancedMode, onClick, ...other } = this.asProps;
+    const { Children, children, tag, forcedAdvancedMode, onClick: _, ...other } = this.asProps;
 
     const advancedMode =
       forcedAdvancedMode ||
@@ -120,14 +120,16 @@ class TooltipRoot extends Component {
             this.setPopperTrigger = setTrigger;
             this.popper = popper;
             this.popper.current?.update();
-            return advancedMode ? (
-              <Children />
-            ) : (
-              <>
-                {tag && <Tooltip.Trigger tag={tag} onClick={this.handleTriggerClick} />}
-                <Tooltip.Popper {...other}>{children}</Tooltip.Popper>
-              </>
-            );
+            return advancedMode
+              ? (
+                  <Children />
+                )
+              : (
+                  <>
+                    {tag && <Tooltip.Trigger tag={tag} onClick={this.handleTriggerClick} />}
+                    <Tooltip.Popper {...other}>{children}</Tooltip.Popper>
+                  </>
+                );
           }}
         </Root>
       </TooltipDotRenderContext.Provider>
@@ -178,18 +180,20 @@ function Dot(props) {
   const SDotCircle = Box;
   return sstyled(styles)(
     <SDotGroup render={Box} __excludeProps={['data', 'scale']}>
-      {patterns ? (
-        <SDot>
-          <PatternSymbol
-            color={resolveColor(color ?? defaultColor)}
-            patternKey={color ?? defaultColor}
-          />
-        </SDot>
-      ) : (
-        <SDot>
-          <SDotCircle color={resolveColor(color ?? defaultColor)} />
-        </SDot>
-      )}
+      {patterns
+        ? (
+            <SDot>
+              <PatternSymbol
+                color={resolveColor(color ?? defaultColor)}
+                patternKey={color ?? defaultColor}
+              />
+            </SDot>
+          )
+        : (
+            <SDot>
+              <SDotCircle color={resolveColor(color ?? defaultColor)} />
+            </SDot>
+          )}
       <Children />
     </SDotGroup>,
   );

@@ -2,11 +2,23 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.2.0] - 2025-05-26
+
+### Added
+
+- New `ChartVenn` icon.
+
+## [16.1.0] - 2025-05-22
+
+### Added
+
+- New `PRToolkit` icon.
+
 ## [16.0.0] - 2025-05-19
 
-### Removed
+### Break
 
-- External icons.
+- Removed all icons from the "External" group.
 
 ## [4.62.1] - 2025-05-13
 

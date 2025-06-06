@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import SerpFilterExample from './examples/serp-filter';
 import { SerpFilterTest } from './__tests__/serp-filter.test';
+import SerpFilterExample from './examples/serp-filter';
 import { playWrapper } from '../../../../utils/playWrapper';
 
 const meta: Meta = {

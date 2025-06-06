@@ -1,12 +1,16 @@
 // @ts-nocheck
-import React from 'react';
 import { createBaseComponent, sstyled } from '@semcore/core';
-import Animation from './Animation';
-import style from './style/keyframes.shadow.css';
 import { useForkRef } from '@semcore/core/lib/utils/ref';
 import useEnhancedEffect from '@semcore/core/lib/utils/use/useEnhancedEffect';
+import React from 'react';
 
-function Collapse({ onAnimationStart, onAnimationEnd, overflowHidden = true, ...props }, ref) {
+import Animation from './Animation';
+import style from './style/keyframes.shadow.css';
+
+function Collapse(
+  { onAnimationStart, onAnimationEnd, overflowHidden = true, defaultHeight = 'auto', ...props },
+  ref,
+) {
   const SCollapse = Animation;
   const overflowRef = React.useRef('initial');
   const innerRef = React.useRef(null);
@@ -22,7 +26,7 @@ function Collapse({ onAnimationStart, onAnimationEnd, overflowHidden = true, ...
 
   useEnhancedEffect(() => {
     if (!innerRef.current) return;
-    if (props.visible) innerRef.current.style.height = 'auto';
+    if (props.visible) innerRef.current.style.height = defaultHeight;
     if (!props.visible) innerRef.current.style.height = `${0}px`;
   }, []);
 
@@ -50,7 +54,7 @@ function Collapse({ onAnimationStart, onAnimationEnd, overflowHidden = true, ...
 
     setTimeout(() => {
       if (!element) return;
-      if (visibleRef.current) element.style.height = 'auto';
+      if (visibleRef.current) element.style.height = defaultHeight;
       if (!visibleRef.current) element.style.height = `${0}px`;
       if (overflowHidden) {
         element.style.overflow = overflowRef.current;

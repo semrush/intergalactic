@@ -1,5 +1,5 @@
-import EventEmitter from '@semcore/core/lib/utils/eventEmitter';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
+import EventEmitter from '@semcore/core/lib/utils/eventEmitter';
 import { setFocus } from '@semcore/core/lib/utils/use/useFocusLock';
 import React from 'react';
 

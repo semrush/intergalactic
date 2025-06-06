@@ -1,10 +1,11 @@
-import React from 'react';
-import { FormProvider, useForm, useFormContext, RegisterOptions } from 'react-hook-form';
-import { Flex } from '@semcore/flex-box';
-import Tooltip from '@semcore/tooltip';
-import Input from '@semcore/input';
 import Button from '@semcore/button';
+import { Flex } from '@semcore/flex-box';
+import Input from '@semcore/input';
+import Tooltip from '@semcore/tooltip';
 import { Text } from '@semcore/typography';
+import React from 'react';
+import type { RegisterOptions } from 'react-hook-form';
+import { FormProvider, useForm, useFormContext } from 'react-hook-form';
 
 type FormValues = {
   email: string;
@@ -54,13 +55,15 @@ const FormControl = ({ name, type, options, autocomplete }: FormControlProps) =>
     onChange: (_v: string, e: React.SyntheticEvent) => {
       // important: keep call order, otherwise validation breaks
       onChange(e);
-      hasError() && trigger();
+      if (hasError()) {
+        trigger();
+      }
     },
     ...restField,
   };
 
   return (
-    <Tooltip placement='top' interaction={'none'} animationsDisabled>
+    <Tooltip placement='top' interaction='none' animationsDisabled>
       <Tooltip.Popper visible={showErrorTooltip()} id={`form-${name}-error`} theme='warning'>
         {showErrorTooltip() && (error?.message as any)}
       </Tooltip.Popper>

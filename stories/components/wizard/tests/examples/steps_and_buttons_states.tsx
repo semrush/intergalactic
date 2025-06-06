@@ -1,8 +1,8 @@
-import React from 'react';
-import Wizard from '@semcore/wizard';
 import Button from '@semcore/button';
 import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
+import Wizard from '@semcore/wizard';
+import React from 'react';
 
 const steps = [
   { title: 'Personal Info' },

@@ -1,6 +1,7 @@
-import React from 'react';
-import { DataTable, ACCORDION, DataTableData, DataTableSort } from '@semcore/data-table';
+import type { DataTableData, DataTableSort } from '@semcore/data-table';
+import { DataTable, ACCORDION } from '@semcore/data-table';
 import { NoData } from '@semcore/widget-empty';
+import React from 'react';
 
 type SortableColumn = Exclude<keyof typeof data[0], 'keyword'>;
 
@@ -10,8 +11,8 @@ const Demo = () => {
     () =>
       [...data].sort((aRow, bRow) => {
         const [prop, sortDirection] = sort;
-        const a = aRow[prop as SortableColumn];
-        const b = bRow[prop as SortableColumn];
+        const a = aRow[prop as SortableColumn]!;
+        const b = bRow[prop as SortableColumn]!;
         if (a === b) return 0;
         if (sortDirection === 'asc') return a > b ? 1 : -1;
         else return a > b ? -1 : 1;
@@ -23,12 +24,18 @@ const Demo = () => {
     () => new Intl.NumberFormat('en-US', { currency: 'USD', style: 'currency' }),
     [],
   );
-  const handleSortChange: (sort: DataTableSort<string>, e?: React.SyntheticEvent) => void = (newSort) => {
+  const handleSortChange: (sort: DataTableSort<keyof typeof sortedData[0]>, e?: React.SyntheticEvent) => void = (newSort) => {
     setSort(newSort as DataTableSort<SortableColumn>);
   };
 
   return (
-    <DataTable aria-label={'Accordion inside table'} h={'100%'} w={400} data={sortedData} sort={sort} onSortChange={handleSortChange}
+    <DataTable
+      aria-label='Accordion inside table'
+      h='100%'
+      w={400}
+      data={sortedData}
+      sort={sort}
+      onSortChange={handleSortChange}
       columns={[
         { name: 'keyword', children: 'Keyword', gtcWidth: '200px', sortable: true },
         { name: 'kd', children: 'KD,%', gtcWidth: '200px', sortable: true },

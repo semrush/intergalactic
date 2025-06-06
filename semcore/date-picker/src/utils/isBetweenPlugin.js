@@ -3,7 +3,7 @@
  * See https://github.com/iamkun/dayjs/tree/dev/src/plugin/isBetween
  */
 
-export default (function (o, c, d) {
+export default (function (_o, c, d) {
   c.prototype.isBetween = function (a, b, u, i) {
     const dA = d(a);
     const dB = d(b);
@@ -13,8 +13,8 @@ export default (function (o, c, d) {
     return (
       ((dAi ? this.isAfter(dA, u) : !this.isBefore(dA, u)) &&
         (dBi ? this.isBefore(dB, u) : !this.isAfter(dB, u))) ||
-      ((dAi ? this.isBefore(dA, u) : !this.isAfter(dA, u)) &&
-        (dBi ? this.isAfter(dB, u) : !this.isBefore(dB, u)))
+        ((dAi ? this.isBefore(dA, u) : !this.isAfter(dA, u)) &&
+          (dBi ? this.isAfter(dB, u) : !this.isBefore(dB, u)))
     );
   };
 });

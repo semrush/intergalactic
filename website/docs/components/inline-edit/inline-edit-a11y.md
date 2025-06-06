@@ -17,7 +17,7 @@ Table: Keyboard support
 | `Enter`       | Opens edit mode (shows [InlineInput](/components/inline-input/inline-input-code)) for entering a value. In edit mode, saves the entered data and returns to view mode. |
 | `Esc`         | Returns from edit mode to view mode and discards any entered data that wasn't submitted.                                                                |
 
-See detailed information about the keyboard support for the input fileds in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard#input_i_textarea).
+See detailed information about the keyboard support for the input fileds in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard#input-and-textarea).
 
 ## Considerations for developers
 
@@ -35,5 +35,3 @@ Avoid hiding the input label on focus.
 ## Other recommendations
 
 See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
-
-<!--@include: ./inline-edit-a11y-report.md-->

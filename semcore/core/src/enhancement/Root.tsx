@@ -1,4 +1,5 @@
 import React from 'react';
+
 import assignProps from '../utils/assignProps';
 import { useForkRef } from '../utils/ref';
 
@@ -8,9 +9,9 @@ function createRootRender() {
     const {
       Root: _Root,
 
-      styles,
+      styles: _styles,
 
-      children,
+      children: _children,
       Children,
       forwardRef = null,
       ...props
@@ -58,7 +59,7 @@ function Enhancement() {
     init: function (this: any) {
       this.Root = createRootRender();
     },
-    asProps: function (this: any, props: any, WrapperComponent: any, isFunction: boolean) {
+    asProps: function (this: any, props: any, _WrapperComponent: any, isFunction: boolean) {
       if (isFunction) {
         return {
           ...props,

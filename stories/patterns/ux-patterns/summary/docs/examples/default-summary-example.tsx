@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { Flex } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
+import Button from '@semcore/button';
 import Divider from '@semcore/divider';
-import { DescriptionTooltip } from '@semcore/tooltip';
+import { Flex } from '@semcore/flex-box';
 import Info from '@semcore/icon/Info/m';
 import Link from '@semcore/link';
-import Button from '@semcore/button';
 import Skeleton from '@semcore/skeleton';
+import { DescriptionTooltip } from '@semcore/tooltip';
+import { Text } from '@semcore/typography';
+import React, { useEffect, useState } from 'react';
 
 const Demo = () => {
   const [loading, setLoading] = useState(true);

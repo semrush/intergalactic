@@ -1,5 +1,6 @@
-import { expect, Locator, Page, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import type { Page } from '@semcore/testing-utils/playwright';
+import { expect, Locator, test } from '@semcore/testing-utils/playwright';
 
 const getLocators = (page: Page) => ({
   addFilterBtn: page.getByRole('button', { name: 'Add filter' }),
@@ -171,7 +172,7 @@ test.describe('Add filter button', () => {
     await expect(locators.addFilterBtn).toBeFocused();
     await page.keyboard.press('Enter');
     await page.waitForTimeout(500);
-    //await page.waitForSelector('div[data-ui-name="DropdownMenu.Item"]:has-text("Keywords")', { timeout: 5000 });
+    // await page.waitForSelector('div[data-ui-name="DropdownMenu.Item"]:has-text("Keywords")', { timeout: 5000 });
     await page.keyboard.press('ArrowDown');
     await page.waitForTimeout(200);
     await page.keyboard.press('ArrowDown');
@@ -398,6 +399,7 @@ test.describe('Different types of filters', () => {
     await locators.addFilterInput('Keyword - broad match\n[Keyword] - exact match').fill('Test');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
+    await page.waitForTimeout(50);
     await expect(
       page.locator('[data-ui-name="FilterTrigger.Text"][placeholder="Exclude keywords"]'),
     ).toHaveText('Exclude: 1 keywords');
@@ -545,6 +547,7 @@ test.describe('Different types of filters', () => {
     await selectInputSearch.fill('Banana');
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('Enter');
+    await page.waitForTimeout(50);
     await expect(page).toHaveScreenshot();
     await expect(page.locator('[data-ui-name="FilterTrigger.Text"]')).toHaveText('Fruit: Banana');
     await expect(page.locator('[data-ui-name="FilterTrigger.TriggerButton"]')).toBeFocused();
@@ -661,6 +664,7 @@ test.describe('Different types of filters', () => {
     await page.keyboard.press('Enter');
     await locators.addFilterInput('Filter by position').fill('Test');
     await page.keyboard.press('Tab');
+    await page.waitForTimeout(50);
     await expect(page).toHaveScreenshot();
     await page.keyboard.press('Enter');
     await expect(locators.addFilterBtn).toBeFocused();
@@ -714,7 +718,7 @@ test.describe('Different types of filters', () => {
     await page.waitForTimeout(50);
     await page.keyboard.press('Enter');
     await page.keyboard.press('Tab');
-
+    await page.waitForTimeout(50);
     await expect(page).toHaveScreenshot();
     await page.keyboard.press('Enter');
     await expect(locators.addFilterBtn).toBeFocused();

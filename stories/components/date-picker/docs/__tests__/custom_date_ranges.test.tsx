@@ -10,5 +10,4 @@ export async function CustomDateRangesTest({ canvasElement }: { canvasElement: H
 
   const firstTrigger = triggers[2] as HTMLElement;
   await userEvent.click(firstTrigger);
-
 }

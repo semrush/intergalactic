@@ -1,10 +1,9 @@
-import type { Meta, StoryObj } from '@storybook/react';
 import SpinContainer from '@semcore/spin-container';
-
-import OverInteractiveContentExample from './examples/over-interactive-cotent';
-import SizesExample from './examples/sizes';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import CustomBackgroundExample from './examples/custom-background';
+import OverInteractiveContentExample from './examples/over-interactive-cotent';
+import SizesExample from './examples/sizes';
 
 const meta: Meta<typeof SpinContainer> = {
   title: 'Components/SpinContainer/Tests',
@@ -25,5 +24,3 @@ export const CustomBackground: Story = {
 export const Sizes: Story = {
   render: SizesExample,
 };
-
-

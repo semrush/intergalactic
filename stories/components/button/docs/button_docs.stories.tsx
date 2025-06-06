@@ -1,14 +1,12 @@
+import Button from '@semcore/button';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Button from '@semcore/button';
-
+import { ButtonAccessibilityTest } from './__tests__/ButtonAccessibility.test';
 import AddonsExample from './examples/addons';
 import ButtonAccessibilityExample from './examples/button_accessibility';
 import ButtonLinkExample from './examples/button_link';
 import ButtonWithIconExample from './examples/button_with_icon';
 import ButtonLoadingExample from './examples/button_with_loading';
-
-import { ButtonAccessibilityTest } from './__tests__/ButtonAccessibility.test';
 import { playWrapper } from '../../../utils/playWrapper';
 
 const meta: Meta<typeof Button> = {

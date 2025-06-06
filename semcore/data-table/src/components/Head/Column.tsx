@@ -1,17 +1,17 @@
-import * as React from 'react';
-import { Component, Intergalactic, lastInteraction, Root, sstyled } from '@semcore/core';
-import { ColumnPropsInner, DataTableColumnProps } from './Column.types';
 import { Flex } from '@semcore/base-components';
-import SortDesc from '@semcore/icon/SortDesc/m';
-import SortAsc from '@semcore/icon/SortAsc/m';
-import { IconProps } from '@semcore/icon';
-
-import style from './style.shadow.css';
 import { ButtonLink } from '@semcore/button';
-import type { DataTableData, SortDirection } from '../DataTable/DataTable.types';
-import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
+import { Component, type Intergalactic, lastInteraction, Root, sstyled } from '@semcore/core';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
+import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
 import { isFocusInside } from '@semcore/core/lib/utils/focus-lock/isFocusInside';
+import type { IconProps } from '@semcore/icon';
+import SortAsc from '@semcore/icon/SortAsc/m';
+import SortDesc from '@semcore/icon/SortDesc/m';
+import * as React from 'react';
+
+import type { ColumnPropsInner, DataTableColumnProps } from './Column.types';
+import style from './style.shadow.css';
+import type { DataTableData, SortDirection } from '../DataTable/DataTable.types';
 
 const SORTING_ICON: { [key in SortDirection]: Intergalactic.Component<'svg', IconProps> } = {
   desc: SortDesc,
@@ -56,7 +56,9 @@ export class Column<D extends DataTableData> extends Component<
   };
 
   componentDidMount() {
-    if (this.asProps.parent && this.asProps.sticky) {
+    const { parent, sticky, changeSortSize, name, sort } = this.asProps;
+
+    if (parent && sticky) {
       const columnElement = this.columnRef.current;
       const groupElement = columnElement?.parentElement?.children.item(0);
 
@@ -66,6 +68,10 @@ export class Column<D extends DataTableData> extends Component<
         columnElement?.style.setProperty('top', `${groupHeight}px`);
       }
     }
+
+    if (canUseDOM() && changeSortSize && sort?.[0] === name) {
+      this.changeTemplateColumnBySort();
+    }
   }
 
   componentDidUpdate(prevProps: DataTableColumnProps & ColumnPropsInner<D>): void {
@@ -74,36 +80,40 @@ export class Column<D extends DataTableData> extends Component<
       canUseDOM() &&
       prevProps.sort?.[0] !== this.asProps.sort?.[0]
     ) {
-      const { tableRef, gridTemplateColumns, columnIndex } = this.asProps;
+      this.changeTemplateColumnBySort();
+    }
+  }
 
-      if (this.asProps.sort?.[0] === this.asProps.name) {
-        const newWidth = this.calculateActiveColumnMinWidth();
+  changeTemplateColumnBySort() {
+    const { tableRef, gridTemplateColumns, columnIndex, sort, name } = this.asProps;
 
-        setTimeout(() => {
-          if (tableRef.current && newWidth !== null) {
-            tableRef.current.style.setProperty(
-              'grid-template-columns',
-              gridTemplateColumns
-                .map((gtcWidth, index) => {
-                  if (index === columnIndex) {
-                    return `${newWidth}px`;
-                  }
-                  return gtcWidth;
-                })
-                .join(' '),
-            );
-          }
-        });
-      } else if (this.asProps.sort?.[0] !== this.asProps.name) {
-        setTimeout(() => {
-          if (tableRef.current) {
-            tableRef.current.style.setProperty(
-              'grid-template-columns',
-              gridTemplateColumns.join(' '),
-            );
-          }
-        });
-      }
+    if (sort?.[0] === name) {
+      const newWidth = this.calculateActiveColumnMinWidth();
+
+      setTimeout(() => {
+        if (tableRef.current && newWidth !== null) {
+          tableRef.current.style.setProperty(
+            'grid-template-columns',
+            gridTemplateColumns
+              .map((gtcWidth, index) => {
+                if (index === columnIndex) {
+                  return `${newWidth}px`;
+                }
+                return gtcWidth;
+              })
+              .join(' '),
+          );
+        }
+      });
+    } else if (sort?.[0] !== name) {
+      setTimeout(() => {
+        if (tableRef.current) {
+          tableRef.current.style.setProperty(
+            'grid-template-columns',
+            gridTemplateColumns.join(' '),
+          );
+        }
+      });
     }
   }
 
@@ -286,7 +296,7 @@ export class Column<D extends DataTableData> extends Component<
       <SColumn
         render={Flex}
         ref={this.columnRef}
-        role={'columnheader'}
+        role='columnheader'
         tabIndex={-1}
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
@@ -307,7 +317,7 @@ export class Column<D extends DataTableData> extends Component<
             <SSortButton
               onClick={this.handleSortClick}
               aria-label={ariaSortValue}
-              color={'--intergalactic-icon-primary-neutral'}
+              color='--intergalactic-icon-primary-neutral'
             >
               <SSortButton.Addon tag={SSortIcon} />
             </SSortButton>

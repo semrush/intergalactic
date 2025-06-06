@@ -1,12 +1,12 @@
-import React from 'react';
-import { DataTable } from '@semcore/data-table';
 import { ButtonLink } from '@semcore/button';
+import { DataTable } from '@semcore/data-table';
+import React from 'react';
 
 const Demo = () => {
   return (
     <DataTable
       data={data}
-      aria-label={'Access to cells'}
+      aria-label='Access to cells'
       columns={[
         { name: 'keyword', children: 'Keyword' },
         { name: 'kd', children: 'KD,%' },
@@ -74,7 +74,7 @@ const data = [
   },
   {
     'keyword/kd/cpc': '434',
-    vol: 'ebay buy',
+    'vol': 'ebay buy',
   },
 ];
 

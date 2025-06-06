@@ -1,10 +1,11 @@
-import React from 'react';
-import hoistNonReactStatics from 'hoist-non-react-statics';
 import { createComponent, createBaseComponent, CONTEXT_COMPONENT } from '@semcore/core';
 import assignProps from '@semcore/core/lib/utils/assignProps';
-import { useForkRef } from '@semcore/core/lib/utils/ref';
-import propsForElement from '@semcore/core/lib/utils/propsForElement';
 import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
+import propsForElement from '@semcore/core/lib/utils/propsForElement';
+import { useForkRef } from '@semcore/core/lib/utils/ref';
+import hoistNonReactStatics from 'hoist-non-react-statics';
+import React from 'react';
+
 import Plot from './Plot';
 
 const EXCLUDE_PROPS = ['data', 'scale'];
@@ -85,7 +86,7 @@ function elementEnhancement() {
     init: function () {
       this.Element = createElementRender();
     },
-    asProps: function ({ $rootProps, ...props }, WrapperComponent, isFunction) {
+    asProps: function ({ $rootProps, ...props }, _WrapperComponent, isFunction) {
       if (isFunction) {
         return {
           ...$rootProps,

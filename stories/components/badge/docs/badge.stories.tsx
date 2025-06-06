@@ -1,6 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
-
 import Badge from '@semcore/badge';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import BadgeMainTypesExample from './examples/badge_main_types';
 

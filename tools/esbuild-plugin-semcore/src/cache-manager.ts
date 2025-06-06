@@ -1,3 +1,4 @@
+import { createHash } from 'crypto';
 import {
   readdir,
   access as fsAccess,
@@ -7,7 +8,6 @@ import {
   mkdir as createDir,
 } from 'fs/promises';
 import { relative as resolveRelativePath, resolve as resolvePath } from 'path';
-import { createHash } from 'crypto';
 
 const verbose = false;
 
@@ -23,12 +23,10 @@ const fsExists = async (path: string) => {
 };
 
 const ensureDir = async (path: string) => {
-  const parts = path.split('/');
-  for (let i = 1; i <= parts.length; i++) {
-    const subPath = resolvePath(parts.slice(0, i).join('/'));
-    if (!(await fsExists(subPath))) {
-      await createDir(subPath);
-    }
+  const isExists = await fsExists(path);
+
+  if (!isExists) {
+    await createDir(path, { recursive: true });
   }
 };
 
@@ -72,7 +70,7 @@ export const makeCacheManager = (id: string, cwd = '.', cacheTtl = 1000 * 60 * 6
       )
         .map((textDate, index) => ({
           filename: lastUseFiles[index],
-          lastUse: parseInt(textDate, 10),
+          lastUse: Number.parseInt(textDate, 10),
           textDate,
         }))
         .filter(({ lastUse, textDate }) => {
@@ -127,7 +125,7 @@ export const makeCacheManager = (id: string, cwd = '.', cacheTtl = 1000 * 60 * 6
         return null;
       }
       const lastUseString = await readFile(cachedLastUseFilePath, 'utf-8');
-      const lastUse = parseInt(lastUseString, 10);
+      const lastUse = Number.parseInt(lastUseString, 10);
       if (Number.isNaN(lastUse) || Date.now() - lastUse > cacheTtl) {
         return null;
       }
@@ -150,7 +148,6 @@ export const makeCacheManager = (id: string, cwd = '.', cacheTtl = 1000 * 60 * 6
 
       if (hashSum !== cachedHashSum) {
         if (verbose) {
-          // biome-ignore lint/suspicious/noConsoleLog:
           console.log(`Cache invalidated for ${filePath}`);
         }
         return null;

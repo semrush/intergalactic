@@ -1,19 +1,21 @@
-import { PNG } from 'pngjs';
 import fs from 'fs/promises';
+import { resolve as resolvePath } from 'path';
+import { fileURLToPath } from 'url';
+
 import imagemin from 'imagemin';
 import imageminPngquant from 'imagemin-pngquant';
-import expectedOutputRequirements from './src/countries.json';
-import aliases from './src/aliases.json';
-import { fileURLToPath } from 'url';
-import { resolve as resolvePath } from 'path';
+import { PNG } from 'pngjs';
+
 import { version } from './package.json';
+import aliases from './src/aliases.json';
+import expectedOutputRequirements from './src/countries.json';
 
 const __dirname = resolvePath(fileURLToPath(import.meta.url), '..');
 
 const normalizeName = (name: string) => {
   if (!name) return name;
   const noExtensions = name.includes('.') ? name.split('.').slice(0, -1).join('.') : name;
-  const noApostrophe = noExtensions.split("'").join('');
+  const noApostrophe = noExtensions.split('\'').join('');
   const noSpaces = noApostrophe.split(' ').join('-');
   const noComas = noSpaces.split(',').join('-');
   return noComas.toLowerCase();

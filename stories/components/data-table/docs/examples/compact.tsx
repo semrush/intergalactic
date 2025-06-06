@@ -1,12 +1,12 @@
-import React from 'react';
 import { DataTable } from '@semcore/data-table';
+import React from 'react';
 
 const Demo = () => {
   return (
     <DataTable
       data={data}
       compact
-      aria-label={'Compact'}
+      aria-label='Compact'
       columns={[
         { name: 'keyword', children: 'Keyword', gtcWidth: 'max-content' },
         { name: 'kd', children: 'KD %', gtcWidth: 'max-content' },

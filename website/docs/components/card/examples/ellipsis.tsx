@@ -1,13 +1,13 @@
-import React from 'react';
 import Card from '@semcore/card';
-import { Text } from '@semcore/typography';
 import Ellipsis from '@semcore/ellipsis';
 import { Flex } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
+import React from 'react';
 
 const tooltipContent = `Hey! Don't forget to place some useful information here.`;
 
 const Demo = () => (
-  <Card w={'50%'}>
+  <Card w='50%'>
     <Card.Header>
       <Flex alignItems='center' tag='h3'>
         <Card.Title

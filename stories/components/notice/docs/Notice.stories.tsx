@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import BasicNoticeExample from './examples/basic_notice';
-import SmartNoticeExample from './examples/noticesmart';
 import CustomNoticeExample from './examples/custom_notice';
+import SmartNoticeExample from './examples/noticesmart';
 
 const meta: Meta = {
   title: 'Components/Notice/Documentation',

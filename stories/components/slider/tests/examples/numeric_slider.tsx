@@ -1,9 +1,9 @@
-import React from 'react';
-import Slider from '@semcore/slider';
-import InputNumber from '@semcore/input-number';
-import Tooltip from '@semcore/tooltip';
 import { Box, Flex } from '@semcore/flex-box';
+import InputNumber from '@semcore/input-number';
+import Slider from '@semcore/slider';
+import Tooltip from '@semcore/tooltip';
 import { Text } from '@semcore/typography';
+import React from 'react';
 
 const Demo = () => {
   const [value, setValue] = React.useState(51);
@@ -11,7 +11,7 @@ const Demo = () => {
   const min = 10;
   const max = 100;
 
-  const handleInput = (value:any) => {
+  const handleInput = (value: any) => {
     if (!!value && (value > max || value < min)) {
       setError('Please enter a valid value');
       setValue(value);
@@ -30,7 +30,7 @@ const Demo = () => {
         <Slider
           id='slider-represantation'
           mb={4}
-        
+
           onChange={setValue}
           step={1}
           defaultValue={30}

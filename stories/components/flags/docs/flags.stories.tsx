@@ -1,9 +1,8 @@
+import Flags from '@semcore/flags';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Flags from 'intergalactic/flags';
-
-import BasicExample from './examples/basic';
 import AriaLabelExample from './examples/aria-label';
+import BasicExample from './examples/basic';
 
 const meta: Meta<typeof Flags> = {
   title: 'Components/Flags/Documentation',
