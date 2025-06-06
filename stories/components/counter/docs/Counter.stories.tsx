@@ -1,5 +1,5 @@
 import Counter from '@semcore/counter';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import React from 'react';
 
 import { CounterInFiltersTest } from './__tests__/counter_in_filters.test';

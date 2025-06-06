@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import ModaliFrameExample from './examples/modal_iframe';
 import OpenModalDynamicallyExample from './examples/modal_open_dynamically';

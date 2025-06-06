@@ -1,5 +1,5 @@
 import BulkTextarea from '@semcore/bulk-textarea';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import EmptyValuesInPasteRowExample from './examples/empty-values-in-paste-row';
 import EncodeOnChangeValueExample from './examples/encode-onchange-value';

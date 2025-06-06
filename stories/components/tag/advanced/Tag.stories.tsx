@@ -1,5 +1,5 @@
 import Tag from '@semcore/tag';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import TagContainerAddonExample from './examples/tag_container_addon';
 import TagTextCloseExample from './examples/tag_text_close';

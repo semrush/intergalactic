@@ -1,5 +1,5 @@
 import { DataTable } from '@semcore/data-table';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import PerformanceBaseTestExample from './examples/additional-tests/base-huge';
 import ColoredMergedCellsExample from './examples/additional-tests/colored-merged-cells';

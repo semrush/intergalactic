@@ -1,4 +1,4 @@
-import type { Meta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { iconPay } from './__tests__/icon_pay.test';
 import { iconPlatform } from './__tests__/icon_platform.test';
@@ -18,34 +18,34 @@ const meta: Meta = {
 
 export default meta;
 
-export const AllIconsGenerated = {
+export const AllIconsGenerated: StoryObj = {
   render: AllIconsGeneratedExample,
 };
 
-export const IconRegular = {
+export const IconRegular: StoryObj = {
   render: IconTypesExample,
   play: playWrapper(iconSize),
 };
 
-export const IconColorType = {
+export const IconColorType: StoryObj = {
   render: IconColorExample,
   play: playWrapper(iconSize),
 };
 
-export const IconPay = {
+export const IconPay: StoryObj = {
   render: IconPayExample,
   play: playWrapper(iconPay),
 };
 
-export const IconsCustom = {
+export const IconsCustom: StoryObj = {
   render: IconsCustomExample,
 };
 
-export const IconOtherElements = {
+export const IconOtherElements: StoryObj = {
   render: IconOtherElementsExample,
 };
 
-export const IconPlatform = {
+export const IconPlatform: StoryObj = {
   render: IconPlatformExample,
   play: playWrapper(iconPlatform),
 };

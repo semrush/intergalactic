@@ -1,5 +1,5 @@
 import Radio, { RadioGroup } from '@semcore/radio';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import AdditionalPropsInputLExample from './examples/additional_props_for_input_L';
 import AdditionalPropsInputTooltipExample from './examples/additional_props_for_input_tooltip';

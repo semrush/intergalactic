@@ -89,6 +89,7 @@ class Feedback extends React.PureComponent<FeedbackProps> {
               }}
               validateOnBlur={value.feedback === '' ? false : true}
             >
+              {/* @ts-ignore */}
               {({ input }) => (
                 <Textarea
                   {...input}
@@ -110,6 +111,7 @@ class Feedback extends React.PureComponent<FeedbackProps> {
               initialValue=''
               validateOnBlur={value.email === '' ? false : true}
             >
+              {/* @ts-ignore */}
               {({ input }) => {
                 const ariaDescribeBy = input['aria-describedby'] ?? 'privacy-description';
                 return (

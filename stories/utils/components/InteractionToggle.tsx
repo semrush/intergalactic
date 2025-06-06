@@ -1,4 +1,4 @@
-import { IconButton } from '@storybook/components';
+import { IconButton } from 'storybook/internal/components';
 import { PlayIcon, StopIcon } from '@storybook/icons';
 import React, { useCallback } from 'react';
 

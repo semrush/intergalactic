@@ -1,5 +1,5 @@
 import SpinContainer from '@semcore/spin-container';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import CustomBackgroundExample from './examples/custom-background';
 import OverInteractiveContentExample from './examples/over-interactive-cotent';

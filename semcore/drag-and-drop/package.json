@@ -32,9 +32,10 @@
     "directory": "semcore/drag-and-drop"
   },
   "devDependencies": {
-    "@semcore/badge": "*",
-    "@semcore/icon": "*",
-    "@semcore/testing-utils": "1.0.0",
-    "@semcore/tab-panel": "*"
+    "@semcore/core": "workspace:*",
+    "@semcore/badge": "workspace:*",
+    "@semcore/icon": "workspace:*",
+    "@semcore/tab-panel": "workspace:*",
+    "@semcore/testing-utils": "workspace:*"
   }
 }

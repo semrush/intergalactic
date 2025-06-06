@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import AddFilterExample from './examples/add-filter';
 import AddFilterComplexSelectsExample from './examples/add-filter-complex-selects';

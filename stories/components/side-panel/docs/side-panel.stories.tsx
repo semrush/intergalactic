@@ -1,5 +1,5 @@
 import SidePanel from '@semcore/side-panel';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import AccessToInternalComponentsExample from './examples/access_to_internal_components';
 import AdvancedExampleExample from './examples/advanced_example';

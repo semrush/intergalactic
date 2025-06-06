@@ -38,7 +38,7 @@ for (const scaling of [1, 2]) {
     spritesList.map(async (spriteName) => {
       const filePath = resolvePath(__dirname, `./png/${scaling}x/${spriteName}`);
       const buffer = await fs.readFile(filePath);
-      const png = (PNG as any).sync.read(buffer);
+      const png = PNG.sync.read(buffer);
 
       return {
         name: normalizeName(spriteName),
@@ -83,18 +83,18 @@ for (const scaling of [1, 2]) {
     const cssY = -y / scaling + offset['y'];
     cssRules.push(`.flag-${name}-${versionHash} {\n  background-position: ${cssX}px ${cssY}px;\n}`);
     // for some weird reasons image.bitblt is undefined so here is a little trick with bind (I hate classes)
-    (new PNG() as any).bitblt.bind(image)(sprite, 0, 0, image.width, image.height, x, y);
+    (new PNG()).bitblt.bind(image)(sprite, 0, 0, image.width, image.height, x, y);
   }
 
   const cssOutput = cssRules.join('\n');
 
-  const spriteBuffer = (PNG as any).sync.write(sprite);
+  const spriteBuffer = PNG.sync.write(sprite);
   const reducedBuffer = await imagemin.buffer(spriteBuffer, {
     plugins: [imageminPngquant({ quality: [0.6, 0.8] })],
   });
   await fs.writeFile(
     resolvePath(__dirname, `./lib/sprites/sprite@${scaling}x.png`),
-    reducedBuffer as any,
+    reducedBuffer,
   );
   await fs.writeFile(resolvePath(__dirname, `./lib/sprites/sprite@${scaling}x.css`), cssOutput);
 

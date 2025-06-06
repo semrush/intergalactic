@@ -1,5 +1,5 @@
 import Link from '@semcore/link';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import ColorLinksExample from './examples/color_links';
 import LinkAddonExample from './examples/link_addon';

@@ -1,5 +1,5 @@
 import { DataTable } from '@semcore/data-table';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import ColumnAlignmentExample from './examples/rows-columns-tests/column-alignment';
 import DefaultColumnWidthsExample from './examples/rows-columns-tests/column-expand';

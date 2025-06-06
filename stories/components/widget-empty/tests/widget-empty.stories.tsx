@@ -1,5 +1,5 @@
 import WidgetEmpty from '@semcore/widget-empty';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import ErrorStatesExample from './examples/error-states';
 import NoDataExample from './examples/nodata-states';

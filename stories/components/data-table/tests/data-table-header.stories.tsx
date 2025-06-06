@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import HeaderContentExample from './examples/header-tests/header-content';
 import MultiLevelExample from './examples/header-tests/multi-level-header';

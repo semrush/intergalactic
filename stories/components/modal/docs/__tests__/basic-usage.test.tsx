@@ -1,7 +1,6 @@
-import { expect, userEvent, within } from '@storybook/test';
+import { userEvent } from 'storybook/test';
 
-export async function BasicUsageTest({ canvasElement }: { canvasElement: HTMLElement }) {
-  const canvas = within(canvasElement);
+export async function BasicUsageTest() {
   await userEvent.keyboard('{Tab}');
   await userEvent.keyboard('{Tab}');
   await userEvent.keyboard('{Enter}');

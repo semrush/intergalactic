@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import CursorAnchoringExample from './examples/cursor-anchoring';
 import disableEnforceFocusExample from './examples/disableEnforceFocus';

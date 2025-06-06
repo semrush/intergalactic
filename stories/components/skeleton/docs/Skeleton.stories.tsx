@@ -1,5 +1,5 @@
 import Skeleton from '@semcore/skeleton';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import SkeletonExampleForChartExample from './examples/skeleton_examples_for_charts';
 import TextInitialLoadingExample from './examples/text_initial_loading';

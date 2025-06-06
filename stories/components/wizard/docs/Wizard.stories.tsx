@@ -1,5 +1,5 @@
 import Wizard from '@semcore/wizard';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { BasicExampleTest } from './__tests__/basic_example_test.test';
 import { CustomStepExampleTest } from './__tests__/custom_step_test.test';

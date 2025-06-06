@@ -1,5 +1,5 @@
 import DropdownMenu from '@semcore/dropdown-menu';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import OnVisibleExample from './examples/on-visible';
 import OnVisible2ndExample from './examples/on-visible-2nd';

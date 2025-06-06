@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { AutoSuggestTest } from './__tests__/autosuggest_example.test';
 import { ComboboxTest } from './__tests__/combobox_example.test';

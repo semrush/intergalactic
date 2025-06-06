@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { DefaultLogInFormTest } from './__tests__/DefaultLogInForm.test';
 import CheckboxAndRadioExample from './examples/checkbox-and-radio';

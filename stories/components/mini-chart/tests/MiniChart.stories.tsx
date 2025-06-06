@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import ScoreDonutsExample from './examples/score-donuts';
 import ScoreLinesExample from './examples/score-lines';

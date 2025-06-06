@@ -1,5 +1,5 @@
 import { DataTable } from '@semcore/data-table';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import AccordionWithChartExample from './examples/virtualization/accordion-inside-table';
 import DDSelectInCellExample from './examples/virtualization/dd-select-in-cell';

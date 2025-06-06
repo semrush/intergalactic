@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import A11yFormattingExample from './examples/d3-chart/a11y-formatting';
 import AdaptiveChartExample from './examples/d3-chart/adaptive-chart';

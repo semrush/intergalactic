@@ -182,6 +182,7 @@ class FeedbackRatingRoot extends Component<
           }}
           aria-describedby={config.description ? config.key + '-description' : undefined}
         >
+          {/* @ts-ignore */}
           {({ input }) => {
             if (config.type === 'textarea') {
               return (

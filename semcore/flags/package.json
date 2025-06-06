@@ -25,11 +25,11 @@
     "directory": "semcore/flags"
   },
   "devDependencies": {
-    "@semcore/testing-utils": "1.0.0",
+    "@semcore/core": "workspace:*",
+    "@semcore/testing-utils": "workspace:*",
     "@types/classnames": "2.2.6",
-
-    "imagemin": "8.0.1",
+    "imagemin": "9.0.1",
     "imagemin-pngquant": "9.0.2",
-    "pngjs": "6.0.0"
+    "pngjs": "7.0.0"
   }
 }

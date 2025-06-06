@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { BasicUsageTest } from './__tests__/add_filter_basic.test';
 import { playWrapper } from '../../../../utils/playWrapper';

@@ -1,4 +1,4 @@
-import { expect, userEvent, within, waitFor } from '@storybook/test';
+import { expect, userEvent, within, waitFor } from 'storybook/test';
 
 const expectFocus = (element: HTMLElement, focused: boolean) => {
   if (focused) {

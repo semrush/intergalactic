@@ -5,9 +5,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@storybook/components": "8.4.6",
-    "@storybook/icons": "1.2.12",
-    "@storybook/theming": "8.5.2",
+    "@storybook/icons": "1.4.0",
     "d3-scale": "3.3.0",
     "d3-shape": "3.2.0",
     "react-hook-form": "7.54.0",

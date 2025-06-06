@@ -19,13 +19,11 @@
     "@babel/preset-env": "7.19.1",
     "@babel/preset-react": "7.12.1",
     "cheerio": "1.0.0-rc.3",
-    "fs-extra": "8.1.0",
-    "glob": "7.1.4",
     "html-to-react": "1.5.0",
     "mri": "1.2.0"
   },
   "devDependencies": {
-    "@semcore/testing-utils": "^1.0.0",
+    "@semcore/testing-utils": "workspace:*",
     "babel-plugin-tester": "7.0.1"
   }
 }

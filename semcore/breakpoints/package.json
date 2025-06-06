@@ -25,6 +25,7 @@
     "directory": "semcore/breakpoints"
   },
   "devDependencies": {
+    "@semcore/core": "workspace:*",
     "@semcore/testing-utils": "workspace:*"
   }
 }

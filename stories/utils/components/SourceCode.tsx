@@ -1,7 +1,7 @@
-import { Source } from '@storybook/blocks';
-import { AddonPanel } from '@storybook/components';
-import { useStorybookApi, useStorybookState } from '@storybook/manager-api';
-import { useTheme } from '@storybook/theming';
+import { Source } from '@storybook/addon-docs/blocks';
+import { AddonPanel } from 'storybook/internal/components';
+import { useStorybookApi, useStorybookState } from 'storybook/manager-api';
+import { useTheme } from 'storybook/theming';
 import React from 'react';
 
 export const SP_ADDON_ID = 'storybook/source-tab';

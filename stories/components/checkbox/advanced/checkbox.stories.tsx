@@ -1,5 +1,5 @@
 import Checkbox from '@semcore/checkbox';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import AriaLabelPropsDrillingExample from './examples/aria_label_props_drilling';
 

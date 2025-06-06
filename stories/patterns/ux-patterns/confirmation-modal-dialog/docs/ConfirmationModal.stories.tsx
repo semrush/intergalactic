@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { ConfirmationModalDialogTest } from './__tests__/ConfirmationModalDialog.test';
 import ConfirmationModalEx from './examples/confirmation-modal-example';

@@ -11,6 +11,7 @@ import { mockIllustrationsRequest } from './shared/mockIllustrationsRequest';
 type GetAccessibilityViolations = (params: { page: Page }) => Promise<axe.AxeResults['violations']>;
 
 export const getAccessibilityViolations: GetAccessibilityViolations = async ({ page }) => {
+  // @ts-ignore
   const accessibilityScanResults = await new AxeBuilder({ page })
     .include('#root')
     .disableRules(['color-contrast'])

@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import NoticeBigIllustrationExample from './examples/notice_big_illustration';
 import NoticeMediumIllustrationExample from './examples/notice_medium_illustration';

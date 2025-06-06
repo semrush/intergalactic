@@ -93,7 +93,6 @@
     "picocolors": "1.0.0",
     "postcss": "8.4.33",
     "tsm": "2.2.2",
-    "typescript": "5.1.6",
     "unified": "10.1.2",
     "vitepress": "1.3.1"
   }

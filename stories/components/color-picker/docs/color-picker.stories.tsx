@@ -1,5 +1,5 @@
 import ColorPicker from '@semcore/color-picker';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import React from 'react';
 
 import { BasicExampleTest } from './__tests__/basic_example.test';

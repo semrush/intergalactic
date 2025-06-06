@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { WithErrorTest } from './__tests__/with-error.test';
 import WithErrorOnSendExample from './examples/with-error-on-send';

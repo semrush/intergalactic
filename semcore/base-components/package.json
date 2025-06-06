@@ -33,6 +33,7 @@
     "directory": "semcore/base-components"
   },
   "devDependencies": {
+    "@semcore/core": "workspace:*",
     "@semcore/testing-utils": "workspace:*",
     "@types/classnames": "2.2.6"
   }

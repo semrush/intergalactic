@@ -1,5 +1,5 @@
 import Tooltip from '@semcore/tooltip';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import BasicUsageExample from './examples/basic_usage';
 import CustomBgColorExample from './examples/custom_bg_color';

@@ -1,5 +1,5 @@
 import InputTags from '@semcore/input-tags';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import InnerFunctionExample from './children_wrapper/inner-function-cases';
 import TagsAndInputCasesExample from './children_wrapper/tags-and-input-cases';

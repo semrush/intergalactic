@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import AdvancedUsageExample from './examples/bar-horizontal-compact/advanced_usage';
 import BasicUsageExample from './examples/bar-horizontal-compact/basic_usage';

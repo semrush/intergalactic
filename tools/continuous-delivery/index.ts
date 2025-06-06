@@ -1,7 +1,6 @@
 import * as process from 'process';
 
 import {
-  patchReleaseChangelog,
   serializeReleaseChangelog,
   getReleaseChangelog,
 } from '@semcore/changelog-handler';
@@ -157,7 +156,6 @@ export {
   fetchFromNpm,
   formatMarkdown,
   collectPackages,
-  patchReleaseChangelog,
   serializeReleaseChangelog,
   publishReleaseNotes,
   getUnlockedPrerelease,

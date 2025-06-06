@@ -1,5 +1,5 @@
 import Skeleton from '@semcore/skeleton';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import ObserveParentSizeExample from './examples/observe-parent-size';
 import AreaChartExample from './examples/skeleton-in-charts/area-chart-skeleton';

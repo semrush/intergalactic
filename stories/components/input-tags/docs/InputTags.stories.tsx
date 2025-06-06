@@ -1,5 +1,5 @@
 import InputTags from '@semcore/input-tags';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import EnteringAndEditingTagsExample from './examples/entering_and_editing_tags';
 import SelectForTagFilteringExample from './examples/select_for_tag_filtering';

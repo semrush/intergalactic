@@ -82,7 +82,7 @@ export const collectPackages = async (inNpmVersions: {
         if (!knownPackages[dependency]) continue;
 
         const version = packageFile[dependenciesType as 'dependencies'][dependency];
-        if (!isValidSemver(version)) {
+        if (!isValidSemver(version) && version !== 'workspace:*') {
           throw new Error(
             `Invalid dependency "${dependency}" version "${version}" in ${packageFilePath}`,
           );
