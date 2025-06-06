@@ -1,22 +1,39 @@
 import { label, feature, story, suite, layer } from 'allure-js-commons';
-import { beforeEach } from 'vitest';
+import { test as baseTest } from 'vitest';
 
-beforeEach(async (context) => {
-  const filePath = (context.task.file?.name ?? '').split('/');
-  const component = filePath[filePath.length - 3] ?? '';
+const test = baseTest.extend<{
+  testHook: void;
+}>({
+  testHook: [
+    async function () {
+      // eslint-disable-next-line prefer-rest-params
+      const [task, use] = arguments;
 
-  const suit = 'Unit tests';
-  const storyName = context.task.name;
+      const filePath = (task.file?.name ?? '').split('/');
+      const component = filePath[filePath.length - 3] ?? '';
 
-  label('framework', 'Vitest');
-  await label('component', component);
-  await feature(suit);
-  await layer(suit);
-  await story(storyName);
-  await suite(suit);
+      const suit = 'Unit tests';
+      const storyName = task.name;
+
+      await label('framework', 'Vitest');
+      await label('component', component);
+      await feature(suit);
+      await layer(suit);
+      await story(storyName);
+      await suite(suit);
+
+      await use();
+    },
+    {
+      auto: true,
+    },
+  ],
 });
 
 export * from 'vitest';
+export {
+  test,
+};
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace

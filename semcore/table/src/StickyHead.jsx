@@ -1,5 +1,4 @@
 import React, { createContext } from 'react';
-
 import { createPortal } from 'react-dom';
 
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';

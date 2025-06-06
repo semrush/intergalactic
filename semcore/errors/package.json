@@ -32,7 +32,6 @@
     "directory": "semcore/errors"
   },
   "devDependencies": {
-
     "@semcore/testing-utils": "workspace:*"
   }
 }

@@ -32,7 +32,6 @@
     "directory": "semcore/input-tags"
   },
   "devDependencies": {
-
     "@semcore/testing-utils": "workspace:*",
     "@semcore/tooltip": "*",
     "@semcore/select": "*",

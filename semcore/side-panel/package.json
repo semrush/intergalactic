@@ -34,7 +34,6 @@
     "directory": "semcore/side-panel"
   },
   "devDependencies": {
-
     "@semcore/testing-utils": "workspace:*"
   }
 }

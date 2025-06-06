@@ -5,6 +5,7 @@ import VideoListL from '@semcore/icon/VideoList/l';
 import Tooltip, { Hint } from '@semcore/tooltip';
 import Badge from '@semcore/badge';
 import { Text } from '@semcore/typography';
+import React from 'react';
 
 const Demo = () => {
   return (

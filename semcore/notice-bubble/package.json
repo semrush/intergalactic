@@ -32,7 +32,6 @@
     "directory": "semcore/notice-bubble"
   },
   "devDependencies": {
-
     "@semcore/testing-utils": "workspace:*"
   }
 }

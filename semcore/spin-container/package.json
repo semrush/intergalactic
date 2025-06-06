@@ -30,7 +30,6 @@
     "directory": "semcore/spin-container"
   },
   "devDependencies": {
-
     "@semcore/testing-utils": "workspace:*"
   }
 }

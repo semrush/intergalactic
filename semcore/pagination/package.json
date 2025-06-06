@@ -35,7 +35,6 @@
     "directory": "semcore/pagination"
   },
   "devDependencies": {
-
     "@semcore/testing-utils": "workspace:*"
   }
 }

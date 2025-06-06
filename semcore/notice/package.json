@@ -33,7 +33,6 @@
     "directory": "semcore/notice"
   },
   "devDependencies": {
-
     "@semcore/testing-utils": "workspace:*"
   }
 }

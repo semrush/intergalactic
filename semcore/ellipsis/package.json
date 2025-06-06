@@ -24,7 +24,6 @@
     "@semcore/base-components": "^16.0.0"
   },
   "devDependencies": {
-
     "@semcore/testing-utils": "workspace:*"
   },
   "repository": {

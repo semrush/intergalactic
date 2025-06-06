@@ -65,22 +65,7 @@ export default defineConfig([
       // stylistic
       '@stylistic/jsx-quotes': ['error', 'prefer-single'],
       '@stylistic/operator-linebreak': ['error', 'after', { overrides: { '?': 'before', ':': 'before' } }],
-      // 'import/order': [
-      //   'error',
-      //   {
-      //     'groups': ['builtin', 'external', 'internal'],
-      //     'newlines-between': 'always',
-      //     'alphabetize': { order: 'asc', caseInsensitive: true },
-      //   },
-      // ],
-      // 'import/namespace': 'off',
-      // 'import/no-unresolved': 'off',
-      // 'sort-imports': ['error', {
-      //   ignoreCase: false,
-      //   ignoreDeclarationSort: false,
-      //   ignoreMemberSort: false,
-      //   allowSeparatedGroups: false,
-      // }],
+      '@stylistic/jsx-one-expression-per-line': ['error', { allow: 'single-line' }],
 
       // enable after migration
       '@typescript-eslint/ban-ts-comment': 'off',

@@ -28,7 +28,6 @@
     "directory": "semcore/textarea"
   },
   "devDependencies": {
-
     "@semcore/testing-utils": "workspace:*",
     "csstype": "3.1.3"
   }

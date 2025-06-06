@@ -28,7 +28,6 @@
     "directory": "semcore/tab-panel"
   },
   "devDependencies": {
-
     "@semcore/testing-utils": "workspace:*",
     "@semcore/icon": "*"
   }

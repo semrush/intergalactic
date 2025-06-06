@@ -1,6 +1,7 @@
 import { Component, sstyled, Root } from '@semcore/core';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import trottle from '@semcore/core/lib/utils/rafTrottle';
+import React from 'react';
 
 import createElement from './createElement';
 import style from './style/hover.shadow.css';

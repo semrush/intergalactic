@@ -1,5 +1,6 @@
 import { Component, sstyled } from '@semcore/core';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import React from 'react';
 
 import createElement from './createElement';
 import style from './style/reference.shadow.css';

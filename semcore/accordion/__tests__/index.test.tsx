@@ -63,6 +63,7 @@ describe('Accordion', () => {
               </Accordion.Item.Toggle>
               <Accordion.Item.Collapse>
                 Content of item
+                {' '}
                 {index}
               </Accordion.Item.Collapse>
             </Accordion.Item>
@@ -90,6 +91,7 @@ describe('Accordion', () => {
               </Accordion.Item.Toggle>
               <Accordion.Item.Collapse>
                 Content of item
+                {' '}
                 {index}
               </Accordion.Item.Collapse>
             </Accordion.Item>

@@ -29,6 +29,7 @@ const Demo = () => {
                 <Text noWrap={true}>
                   {' '}
                   NoWrapTrue
+                  {' '}
                   {props.value}
                 </Text>
 
@@ -42,6 +43,7 @@ const Demo = () => {
 
                 <Text noWrap={false}>
                   No Wrap False
+                  {' '}
                   {props.value}
                 </Text>
                 <Link

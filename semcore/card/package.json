@@ -32,7 +32,6 @@
     "directory": "semcore/card"
   },
   "devDependencies": {
-
     "@semcore/testing-utils": "workspace:*",
     "@semcore/typography": "*",
     "@semcore/icon": "*"

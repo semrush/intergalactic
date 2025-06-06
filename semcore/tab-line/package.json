@@ -29,7 +29,6 @@
     "directory": "semcore/tab-line"
   },
   "devDependencies": {
-
     "@semcore/testing-utils": "workspace:*"
   }
 }

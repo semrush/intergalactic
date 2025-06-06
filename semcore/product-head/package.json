@@ -28,7 +28,6 @@
     "directory": "semcore/product-head"
   },
   "devDependencies": {
-
     "@semcore/testing-utils": "workspace:*"
   }
 }

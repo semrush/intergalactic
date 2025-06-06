@@ -23,12 +23,10 @@ const fsExists = async (path: string) => {
 };
 
 const ensureDir = async (path: string) => {
-  const parts = path.split('/');
-  for (let i = 1; i <= parts.length; i++) {
-    const subPath = resolvePath(parts.slice(0, i).join('/'));
-    if (!(await fsExists(subPath))) {
-      await createDir(subPath);
-    }
+  const isExists = await fsExists(path);
+
+  if (!isExists) {
+    await createDir(path, { recursive: true });
   }
 };
 

@@ -27,7 +27,6 @@
     "@semcore/widget-empty": "16.0.1"
   },
   "devDependencies": {
-
     "@semcore/testing-utils": "workspace:*",
     "@semcore/base-trigger": "*",
     "@semcore/dropdown-menu": "*",

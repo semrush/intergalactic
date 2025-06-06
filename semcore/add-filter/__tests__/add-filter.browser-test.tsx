@@ -399,6 +399,7 @@ test.describe('Different types of filters', () => {
     await locators.addFilterInput('Keyword - broad match\n[Keyword] - exact match').fill('Test');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
+    await page.waitForTimeout(50);
     await expect(
       page.locator('[data-ui-name="FilterTrigger.Text"][placeholder="Exclude keywords"]'),
     ).toHaveText('Exclude: 1 keywords');
@@ -546,6 +547,7 @@ test.describe('Different types of filters', () => {
     await selectInputSearch.fill('Banana');
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('Enter');
+    await page.waitForTimeout(50);
     await expect(page).toHaveScreenshot();
     await expect(page.locator('[data-ui-name="FilterTrigger.Text"]')).toHaveText('Fruit: Banana');
     await expect(page.locator('[data-ui-name="FilterTrigger.TriggerButton"]')).toBeFocused();
@@ -662,6 +664,7 @@ test.describe('Different types of filters', () => {
     await page.keyboard.press('Enter');
     await locators.addFilterInput('Filter by position').fill('Test');
     await page.keyboard.press('Tab');
+    await page.waitForTimeout(50);
     await expect(page).toHaveScreenshot();
     await page.keyboard.press('Enter');
     await expect(locators.addFilterBtn).toBeFocused();
@@ -715,7 +718,7 @@ test.describe('Different types of filters', () => {
     await page.waitForTimeout(50);
     await page.keyboard.press('Enter');
     await page.keyboard.press('Tab');
-
+    await page.waitForTimeout(50);
     await expect(page).toHaveScreenshot();
     await page.keyboard.press('Enter');
     await expect(locators.addFilterBtn).toBeFocused();

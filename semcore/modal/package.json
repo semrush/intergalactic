@@ -34,7 +34,6 @@
     "directory": "semcore/modal"
   },
   "devDependencies": {
-
     "@semcore/testing-utils": "workspace:*"
   }
 }

@@ -57,7 +57,7 @@ describe('Select Trigger', () => {
     expect(spy).toHaveBeenCalledTimes(2);
   });
 
-  test.concurrent('Verify highlights selected item', async ({ expect }) => {
+  test('Verify highlights selected item', async ({ expect }) => {
     let highlightedIndex: number | null = null;
 
     const component = render(

@@ -29,7 +29,6 @@
     "directory": "semcore/input-number"
   },
   "devDependencies": {
-
     "@semcore/testing-utils": "workspace:*"
   }
 }

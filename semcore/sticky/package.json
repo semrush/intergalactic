@@ -28,7 +28,6 @@
     "directory": "semcore/sticky"
   },
   "devDependencies": {
-
     "@semcore/testing-utils": "workspace:*"
   }
 }

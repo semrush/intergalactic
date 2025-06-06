@@ -5,6 +5,7 @@ import { NoticeSmart } from '@semcore/notice';
 import SpinContainer from '@semcore/spin-container';
 import createFocusDecorator from 'final-form-focus';
 import { Field, Form } from 'react-final-form';
+import React from 'react';
 
 import { FeedbackItem } from './component/feedback-item/FeedbackItem';
 import { SubmitButton } from './component/submit-button/SubmitButton';

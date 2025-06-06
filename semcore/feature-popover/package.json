@@ -32,7 +32,6 @@
     "directory": "semcore/feature-popover"
   },
   "devDependencies": {
-
     "@semcore/testing-utils": "workspace:*",
     "@semcore/button": "*",
     "@semcore/typography": "*",

@@ -11,6 +11,7 @@ const Example = () => {
   return (
     <Button size={size}>
       Size
+      {' '}
       {size.toUpperCase()}
     </Button>
   );

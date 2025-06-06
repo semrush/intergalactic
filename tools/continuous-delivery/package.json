@@ -13,7 +13,6 @@
   "license": "MIT",
   "dependencies": {
     "@semcore/changelog-handler": "workspace:*",
-
     "@semcore/slack-integration": "workspace:*",
     "axios": "1.9.0",
     "compressing": "^1.10.3",
@@ -23,7 +22,6 @@
     "fs-extra": "9.0.1",
     "marked-ast": "0.3.0",
     "marked-ast-markdown": "2.1.0",
-    "node-fetch": "3.3.2",
     "p-limit": "4.0.0",
     "semver": "5.6.0",
     "simple-git": "3.16.0",

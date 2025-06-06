@@ -28,7 +28,6 @@
     "directory": "semcore/counter"
   },
   "devDependencies": {
-
     "@semcore/testing-utils": "workspace:*"
   }
 }

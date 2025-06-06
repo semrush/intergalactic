@@ -30,7 +30,6 @@
     "directory": "semcore/link"
   },
   "devDependencies": {
-
     "@semcore/testing-utils": "workspace:*",
     "@semcore/icon": "*"
   }
