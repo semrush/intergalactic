@@ -27,6 +27,7 @@
     "directory": "semcore/format-text"
   },
   "devDependencies": {
+    "@semcore/core": "workspace:*",
     "@semcore/testing-utils": "workspace:*"
   }
 }

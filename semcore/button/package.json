@@ -31,7 +31,8 @@
     "directory": "semcore/button"
   },
   "devDependencies": {
-    "@semcore/icon": "*",
+    "@semcore/core": "workspace:*",
+    "@semcore/icon": "workspace:*",
     "@semcore/testing-utils": "workspace:*"
   }
 }

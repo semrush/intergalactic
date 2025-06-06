@@ -28,6 +28,7 @@
     "directory": "semcore/progress-bar"
   },
   "devDependencies": {
+    "@semcore/core": "workspace:*",
     "@semcore/testing-utils": "workspace:*"
   }
 }

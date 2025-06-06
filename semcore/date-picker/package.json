@@ -41,6 +41,7 @@
     "directory": "semcore/date-picker"
   },
   "devDependencies": {
+    "@semcore/core": "workspace:*",
     "@semcore/testing-utils": "workspace:*"
   }
 }

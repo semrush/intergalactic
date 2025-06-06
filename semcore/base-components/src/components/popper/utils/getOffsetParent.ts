@@ -10,7 +10,7 @@ const getWindow = (node: any): any => {
 };
 
 const getNodeName = (element?: Node | Window): string => {
-  return element ? ((element as any).nodeName || '').toLowerCase() : null;
+  return element ? ((element as any).nodeName || '').toLowerCase() : '';
 };
 
 const getComputedStyle = (element: Element): CSSStyleDeclaration => {

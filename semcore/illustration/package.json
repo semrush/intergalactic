@@ -27,6 +27,7 @@
     "directory": "semcore/illustration"
   },
   "devDependencies": {
+    "@semcore/core": "workspace:*",
     "@semcore/testing-utils": "workspace:*",
     "@types/fs-extra": "8.1.0",
     "esbuild": "0.14.29",

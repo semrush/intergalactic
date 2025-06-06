@@ -29,9 +29,9 @@
     "directory": "semcore/pills"
   },
   "devDependencies": {
-
-    "@semcore/badge": "*",
-    "@semcore/icon": "*",
+    "@semcore/core": "workspace:*",
+    "@semcore/badge": "workspace:*",
+    "@semcore/icon": "workspace:*",
     "@semcore/testing-utils": "workspace:*"
   }
 }

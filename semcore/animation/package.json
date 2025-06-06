@@ -25,6 +25,7 @@
     "directory": "semcore/animation"
   },
   "devDependencies": {
+    "@semcore/core": "workspace:*",
     "@semcore/testing-utils": "workspace:*"
   }
 }

@@ -29,6 +29,7 @@
     "directory": "semcore/dropdown"
   },
   "devDependencies": {
+    "@semcore/core": "workspace:*",
     "@semcore/testing-utils": "workspace:*"
   }
 }

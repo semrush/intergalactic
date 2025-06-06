@@ -1,8 +1,6 @@
-import { readFile } from 'fs/promises';
 import os from 'os';
 import { relative as resolveRelativePath, resolve as resolvePath } from 'path';
 
-import { CommandOptions } from '@guidepup/guidepup';
 import type { VoiceOverPlaywright } from '@guidepup/playwright/lib/voiceOverTest';
 
 const darwin2macos: Record<number, string> = {

@@ -29,6 +29,7 @@
     "directory": "semcore/radio"
   },
   "devDependencies": {
+    "@semcore/core": "workspace:*",
     "@semcore/testing-utils": "workspace:*"
   }
 }

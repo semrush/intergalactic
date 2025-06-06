@@ -32,6 +32,7 @@
     "directory": "semcore/fullscreen-modal"
   },
   "devDependencies": {
+    "@semcore/core": "workspace:*",
     "@semcore/testing-utils": "workspace:*"
   }
 }

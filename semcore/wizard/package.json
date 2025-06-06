@@ -31,6 +31,7 @@
     "directory": "semcore/wizard"
   },
   "devDependencies": {
+    "@semcore/core": "workspace:*",
     "@semcore/testing-utils": "workspace:*"
   }
 }

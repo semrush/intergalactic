@@ -28,6 +28,7 @@
     "directory": "semcore/spin"
   },
   "devDependencies": {
+    "@semcore/core": "workspace:*",
     "@semcore/testing-utils": "workspace:*"
   }
 }

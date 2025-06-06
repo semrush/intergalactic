@@ -32,6 +32,7 @@
     "directory": "semcore/carousel"
   },
   "devDependencies": {
+    "@semcore/core": "workspace:*",
     "@semcore/testing-utils": "workspace:*"
   }
 }

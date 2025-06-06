@@ -31,6 +31,7 @@
     "directory": "semcore/tooltip"
   },
   "devDependencies": {
+    "@semcore/core": "workspace:*",
     "@semcore/testing-utils": "workspace:*",
     "@semcore/icon": "workspace:*",
     "@semcore/flex-box": "workspace:*"

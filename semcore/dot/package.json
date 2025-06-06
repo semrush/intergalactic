@@ -30,7 +30,8 @@
     "directory": "semcore/dot"
   },
   "devDependencies": {
-    "@semcore/button": "*",
+    "@semcore/core": "workspace:*",
+    "@semcore/button": "workspace:*",
     "@semcore/testing-utils": "workspace:*"
   }
 }

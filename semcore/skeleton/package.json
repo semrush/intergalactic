@@ -28,6 +28,7 @@
     "directory": "semcore/skeleton"
   },
   "devDependencies": {
+    "@semcore/core": "workspace:*",
     "@semcore/testing-utils": "workspace:*"
   }
 }

@@ -44,7 +44,7 @@
     "directory": "semcore/feedback-form"
   },
   "devDependencies": {
-
+    "@semcore/core": "workspace:*",
     "@types/final-form-focus": "1.1.7",
     "@semcore/testing-utils": "workspace:*"
   },

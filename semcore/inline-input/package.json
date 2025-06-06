@@ -26,9 +26,10 @@
     "@semcore/button": "16.0.1"
   },
   "devDependencies": {
+    "@semcore/core": "workspace:*",
     "@semcore/testing-utils": "workspace:*",
-    "@semcore/spin": "*",
-    "@semcore/tooltip": "*"
+    "@semcore/spin": "workspace:*",
+    "@semcore/tooltip": "workspace:*"
   },
   "peerDependencies": {
     "@semcore/base-components": "^16.0.0"

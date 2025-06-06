@@ -28,6 +28,7 @@
     "directory": "semcore/divider"
   },
   "devDependencies": {
+    "@semcore/core": "workspace:*",
     "@semcore/testing-utils": "workspace:*"
   }
 }

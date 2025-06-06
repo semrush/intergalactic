@@ -18,14 +18,14 @@
   },
   "dependencies": {
     "@formatjs/intl": "2.3.0",
-    "@semcore/divider": "16.0.1",
     "@semcore/animation": "16.0.1",
     "@semcore/checkbox": "16.0.1",
+    "@semcore/divider": "16.0.1",
     "@semcore/flex-box": "16.0.1",
-    "@semcore/popper": "16.0.1",
     "@semcore/icon": "16.2.0",
+    "@semcore/popper": "16.0.1",
     "@semcore/typography": "16.1.1",
-    "@types/d3-shape": "^3.1.0",
+    "@types/d3-shape": "^3.1.7",
     "@upsetjs/venn.js": "1.4.2",
     "d3-array": "3.1.6",
     "d3-interpolate": "3.0.1",
@@ -46,18 +46,18 @@
     "directory": "semcore/d3-chart"
   },
   "devDependencies": {
-    "@semcore/babel-plugin-react-semcore": "^4.2.1",
-    "@semcore/button": "*",
-    "@semcore/divider": "*",
-    "@semcore/checkbox": "*",
-    "@semcore/dropdown-menu": "*",
-    "@semcore/ellipsis": "*",
-    "@semcore/icon": "*",
+    "@semcore/core": "workspace:*",
+    "@semcore/babel-plugin-react-semcore": "^4.9.0",
+    "@semcore/button": "workspace:*",
+    "@semcore/checkbox": "workspace:*",
+    "@semcore/divider": "workspace:*",
+    "@semcore/dropdown-menu": "workspace:*",
+    "@semcore/ellipsis": "workspace:*",
+    "@semcore/icon": "workspace:*",
     "@semcore/testing-utils": "workspace:*",
-    "@semcore/typography": "*",
-    "@semcore/utils": "*",
-    "@types/d3-array": "^3.0.2",
-    "@types/d3-scale": "^4.0.2",
-    "@types/d3-transition": "^3.0.1"
+    "@semcore/typography": "workspace:*",
+    "@types/d3-array": "^3.2.1",
+    "@types/d3-scale": "^4.0.9",
+    "@types/d3-transition": "^3.0.9"
   }
 }

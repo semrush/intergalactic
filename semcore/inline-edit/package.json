@@ -21,6 +21,7 @@
     "@semcore/flex-box": "16.0.1"
   },
   "devDependencies": {
+    "@semcore/core": "workspace:*",
     "@semcore/testing-utils": "workspace:*"
   },
   "peerDependencies": {

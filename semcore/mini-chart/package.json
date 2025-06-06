@@ -26,6 +26,7 @@
     "directory": "semcore/mini-chart"
   },
   "devDependencies": {
+    "@semcore/core": "workspace:*",
     "@semcore/testing-utils": "workspace:*"
   }
 }

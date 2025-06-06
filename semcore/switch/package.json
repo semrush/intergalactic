@@ -29,6 +29,7 @@
     "directory": "semcore/switch"
   },
   "devDependencies": {
+    "@semcore/core": "workspace:*",
     "@semcore/testing-utils": "workspace:*"
   }
 }
