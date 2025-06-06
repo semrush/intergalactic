@@ -26,6 +26,13 @@ describe('Modal', () => {
     expect((getByTestId('modal').attributes as any)['data-name'].value).toBe('modal');
   });
 
+  test.sequential('Verify onClose event for Escape', () => {
+        const spy = vi.fn();
+        const { getByTestId } = render(<Modal onClose={spy} data-testid='modal' visible />);
+        fireEvent.keyDown(getByTestId('modal'), { key: 'Escape' });
+        expect(spy).toBeCalledWith('onEscape', expect.anything());
+      });
+
   test.sequential('Verify supports onClose for CloseIcons', () => {
     const spy = vi.fn();
     const { getByTitle } = render(<Modal onClose={spy} visible />);
