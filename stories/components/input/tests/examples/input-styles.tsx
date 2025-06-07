@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import Input from '@semcore/input';
+import Badge from '@semcore/badge';
 import Button from '@semcore/button';
-import { Text } from '@semcore/typography';
 import { Flex, Box } from '@semcore/flex-box';
 import Search from '@semcore/icon/Search/m';
-import Badge from '@semcore/badge';
+import Input from '@semcore/input';
+import { Text } from '@semcore/typography';
+import React, { useState } from 'react';
 
 const Demo = () => {
   return (

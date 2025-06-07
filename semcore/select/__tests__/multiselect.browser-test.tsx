@@ -1,6 +1,6 @@
+import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import type { Page, Locator } from '@semcore/testing-utils/playwright';
 import { expect, test } from '@semcore/testing-utils/playwright';
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 export function getSelectLocators(page: Page): {
   select: Locator;

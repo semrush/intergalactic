@@ -30,8 +30,10 @@ const test = baseTest.extend<{
   ],
 });
 
+// eslint-disable-next-line import/export
 export * from 'vitest';
 export {
+  // eslint-disable-next-line import/export
   test,
 };
 

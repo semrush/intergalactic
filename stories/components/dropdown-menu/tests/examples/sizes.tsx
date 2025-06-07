@@ -1,7 +1,7 @@
-import React from 'react';
-import DropdownMenu from '@semcore/dropdown-menu';
 import Button from '@semcore/button';
+import DropdownMenu from '@semcore/dropdown-menu';
 import { Flex } from '@semcore/flex-box';
+import React from 'react';
 
 const Demo = () => {
   return (

@@ -1,6 +1,5 @@
-import { axe } from '@semcore/testing-utils/axe';
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
-import { snapshot } from '@semcore/testing-utils/snapshot';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -8,8 +7,6 @@ import React from 'react';
 import Radio, { RadioGroup, inputProps } from '../src/Radio';
 
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
-
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('radio Dependency imports', () => {
   runDependencyCheckTests('radio');

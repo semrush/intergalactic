@@ -1,9 +1,10 @@
-import React from 'react';
-import DropdownMenu from '@semcore/dropdown-menu';
 import Button from '@semcore/button';
+import DropdownMenu from '@semcore/dropdown-menu';
 import { Flex } from '@semcore/flex-box';
-const menuItems: null[] = new Array(10).fill(null);
 import Trash from '@semcore/icon/Trash/m';
+import React from 'react';
+
+const menuItems: null[] = new Array(10).fill(null);
 
 const Demo = () => {
   const [selected, setSelected] = React.useState<number>(0);

@@ -1,10 +1,10 @@
-import React from 'react';
-import Tooltip, { Hint, DescriptionTooltip } from '@semcore/tooltip';
-import { Flex } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
-import Link from '@semcore/link';
 import Button, { ButtonLink } from '@semcore/button';
+import { Flex } from '@semcore/flex-box';
 import CheckAltM from '@semcore/icon/CheckAlt/m';
+import Link from '@semcore/link';
+import Tooltip, { Hint, DescriptionTooltip } from '@semcore/tooltip';
+import { Text } from '@semcore/typography';
+import React from 'react';
 
 const Demo = () => (
   <Flex direction='row' gap={40}>

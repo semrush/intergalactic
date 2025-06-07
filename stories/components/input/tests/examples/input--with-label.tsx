@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import Input from '@semcore/input';
-import { Text } from '@semcore/typography';
-import { Flex, Box } from '@semcore/flex-box';
-import Counter from '@semcore/counter';
-import Select from '@semcore/select';
 import { LinkTrigger } from '@semcore/base-trigger';
+import Counter from '@semcore/counter';
+import { Flex, Box } from '@semcore/flex-box';
+import Input from '@semcore/input';
+import Select from '@semcore/select';
+import { Text } from '@semcore/typography';
+import React, { useState } from 'react';
 
 const options = Array(6)
   .fill('')

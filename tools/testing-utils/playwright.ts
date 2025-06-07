@@ -72,6 +72,8 @@ const voiceOverTest = voiceOverBase.extend<{ testHook: void }>({
 });
 
 export type { Page };
+// eslint-disable-next-line import/export
 export * from '@playwright/test';
 export * from '@guidepup/playwright';
+// eslint-disable-next-line import/export
 export { AxeBuilder, test, voiceOverTest };

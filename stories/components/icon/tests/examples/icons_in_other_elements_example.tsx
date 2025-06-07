@@ -9,8 +9,6 @@ import Link from '@semcore/link';
 import Switch from '@semcore/switch';
 import { Hint, DescriptionTooltip } from '@semcore/tooltip';
 import { List } from '@semcore/ui/typography';
-
-// you only need to edit the paths to choose other icons
 import React from 'react';
 
 const Demo = () => {

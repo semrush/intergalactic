@@ -1,6 +1,7 @@
 import js from '@eslint/js';
 import stylistic from '@stylistic/eslint-plugin';
 import { defineConfig, globalIgnores } from 'eslint/config';
+import pluginImport from 'eslint-plugin-import';
 import pluginReact from 'eslint-plugin-react';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
@@ -28,6 +29,8 @@ export default defineConfig([
   { files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'], plugins: { js }, extends: ['js/recommended'] },
   pluginReact.configs.flat.recommended,
   tseslint.configs.recommended,
+  pluginImport.flatConfigs.recommended,
+  // { files: ['**/*.{ts,mts,cts,tsx}'], extends: [tseslint.configs.recommended] },
   {
     files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
     languageOptions: { globals: { ...globals.browser, ...globals.node }, ecmaVersion: 'latest', sourceType: 'module' },
@@ -63,6 +66,18 @@ export default defineConfig([
       '@stylistic/jsx-quotes': ['error', 'prefer-single'],
       '@stylistic/operator-linebreak': ['error', 'after', { overrides: { '?': 'before', ':': 'before' } }],
       '@stylistic/jsx-one-expression-per-line': ['error', { allow: 'single-line' }],
+      'import/order': [
+        'error',
+        {
+          'groups': ['builtin', 'external', 'internal'],
+          'newlines-between': 'always',
+          'alphabetize': { order: 'asc', caseInsensitive: true },
+        },
+      ],
+      'import/namespace': 'off',
+      'import/no-unresolved': 'off',
+      'import/named': 'off',
+      'import/no-named-as-default': 'off',
 
       // enable after migration
       '@typescript-eslint/ban-ts-comment': 'off',

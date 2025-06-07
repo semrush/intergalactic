@@ -1,13 +1,13 @@
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { snapshot } from '@semcore/testing-utils/snapshot';
+import { render, fireEvent, cleanup } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
-const { shouldSupportClassName, shouldSupportRef } = sharedTests;
-import { render, fireEvent, cleanup } from '@semcore/testing-utils/testing-library';
 
 import NoticeGlobal from '../src';
 
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
 describe('notice-global Dependency imports', () => {
   runDependencyCheckTests('notice-global');

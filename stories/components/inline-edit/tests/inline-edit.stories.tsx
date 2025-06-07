@@ -1,6 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-
 import InlineEdit from '@semcore/inline-edit';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import SimpleUseExample from './examples/test_use';
 

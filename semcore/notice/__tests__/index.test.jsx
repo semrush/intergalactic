@@ -1,14 +1,14 @@
 import { axe } from '@semcore/testing-utils/axe';
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { snapshot } from '@semcore/testing-utils/snapshot';
 import { render, cleanup } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import Notice, { NoticeSmart } from '../src';
-const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
 describe('notice Dependency imports', () => {
   runDependencyCheckTests('notice');

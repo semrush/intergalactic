@@ -1,12 +1,12 @@
-import React from 'react';
-import DropdownMenu from '@semcore/dropdown-menu';
-import Button from '@semcore/button';
-import Tooltip from '@semcore/tooltip';
 import Badge from '@semcore/badge';
-import DesktopIconM from '@semcore/icon/Desktop/m';
-import Flags, { iso2Name, type FlagsIso2 } from '@semcore/flags';
+import Button from '@semcore/button';
 import Counter, { AnimatedNumber } from '@semcore/counter';
+import DropdownMenu from '@semcore/dropdown-menu';
+import Flags, { iso2Name, type FlagsIso2 } from '@semcore/flags';
+import DesktopIconM from '@semcore/icon/Desktop/m';
 import Switch from '@semcore/switch';
+import Tooltip from '@semcore/tooltip';
+import React from 'react';
 
 const TooltipContent = () => {
   const tooltipIndex = React.useContext(DropdownMenu.selectedIndexContext);

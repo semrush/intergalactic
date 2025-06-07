@@ -1,6 +1,7 @@
 // https://vitepress.dev/guide/custom-theme
+import mediumZoom from 'medium-zoom';
+import { useRoute } from 'vitepress';
 import Theme from 'vitepress/theme';
-
 import './style.css';
 import { h, onMounted, watch, nextTick } from 'vue';
 
@@ -12,9 +13,6 @@ import Page404 from './Page404.vue';
 import PageTopTabs from './PageTopTabs.vue';
 import Sandbox from './Sandbox.vue';
 import TypesView from './TypesView.vue';
-
-import mediumZoom from 'medium-zoom';
-import { useRoute } from 'vitepress';
 
 export default {
   ...Theme,

@@ -1,11 +1,11 @@
-import React from 'react';
-import { Flex } from '@semcore/flex-box';
-import Select from '@semcore/select';
-import { LinkTrigger, ButtonTrigger } from '@semcore/base-trigger';
-import { Text } from '@semcore/typography';
-import LinkExternalM from '@semcore/icon/LinkExternal/m';
 import Badge from '@semcore/badge';
+import { LinkTrigger, ButtonTrigger } from '@semcore/base-trigger';
 import Dot from '@semcore/dot';
+import { Flex } from '@semcore/flex-box';
+import LinkExternalM from '@semcore/icon/LinkExternal/m';
+import Select from '@semcore/select';
+import { Text } from '@semcore/typography';
+import React from 'react';
 
 const Demo = () => (
   <Flex direction='row' gap={2}>

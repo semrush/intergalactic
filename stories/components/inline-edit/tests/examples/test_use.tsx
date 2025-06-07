@@ -1,6 +1,6 @@
-import React from 'react';
-import InlineEdit from '@semcore/inline-edit';
 import { Flex } from '@semcore/flex-box';
+import InlineEdit from '@semcore/inline-edit';
+import React from 'react';
 
 const Example = () => {
   return (

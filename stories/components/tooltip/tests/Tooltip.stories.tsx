@@ -1,9 +1,9 @@
 import Tooltip from '@semcore/tooltip';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
+import TooltipInteractionsExample from './examples/basic_usage';
 import InteractiveInTooltipsExample from './examples/interactive-in-tooltip';
 import TooltipStatesExample from './examples/tooltip-styles';
-import TooltipInteractionsExample from './examples/basic_usage';
 
 const meta: Meta<typeof Tooltip> = {
   title: 'Components/Tooltip/Tests',
