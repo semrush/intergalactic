@@ -1,5 +1,5 @@
-import { addons, types } from 'storybook/manager-api';
 import React from 'react';
+import { addons, types } from 'storybook/manager-api';
 
 import {
   ADDON_ID,

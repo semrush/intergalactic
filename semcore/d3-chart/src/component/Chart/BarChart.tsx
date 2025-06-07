@@ -7,7 +7,6 @@ import React from 'react';
 
 import type { BaseLegendProps } from './AbstractChart.type';
 import type { BarChartData, BarChartProps, BarChartType } from './BarChart.type';
-
 // @ts-ignore
 import { minMax, GroupBar, HoverRect, StackBar, Line } from '../..';
 import { AbstractChart } from './AbstractChart';

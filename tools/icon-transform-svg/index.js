@@ -1,15 +1,13 @@
 const path = require('path');
+const util = require('util');
 
+const babel = require('@babel/core');
 const cheerio = require('cheerio');
 const fs = require('fs-extra');
 const { glob } = require('glob');
 const { configFile } = require('mri')(process.argv.slice(2));
 
-const util = require('util');
-
 const config = require('./config');
-
-const babel = require('@babel/core');
 
 const outputFile = util.promisify(fs.outputFile);
 const readFile = util.promisify(fs.readFile);

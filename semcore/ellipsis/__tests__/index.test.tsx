@@ -1,8 +1,6 @@
 import { Box } from '@semcore/flex-box';
 import Link from '@semcore/link';
 import { axe } from '@semcore/testing-utils/axe';
-// @ts-ignore
-
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { snapshot } from '@semcore/testing-utils/snapshot';
 import { render, cleanup, fireEvent, act } from '@semcore/testing-utils/testing-library';

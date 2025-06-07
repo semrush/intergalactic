@@ -1,14 +1,23 @@
-import React from 'react';
-import { snapshot } from '@semcore/testing-utils/snapshot';
-const { shouldSupportClassName, shouldSupportRef } = sharedTests;
-
-import Button from '@semcore/button';
-import { I18nProvider } from '@semcore/core/lib/utils/enhances/WithI18n';
-import Ellipsis from '@semcore/ellipsis';
-import { Flex, Box } from '@semcore/flex-box';
-import LikeM from '@semcore/icon/Like/m';
 import Icon from '@semcore/icon/Video/m';
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { render, fireEvent, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import { scaleLinear, scaleBand } from 'd3-scale';
+import React from 'react';
+
+import {
+  Plot,
+  YAxis,
+  XAxis,
+  makeDataHintsContainer,
+  // @ts-ignore
+} from '../src';
+import { PlotA11yView } from '../src/a11y/PlotA11yView';
+import { getIndexFromData } from '../src/utils';
+
+const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
 const xScale = scaleLinear().range([10, 100]).domain([0, 10]);
 
@@ -22,47 +31,6 @@ const data = [...Array(10).keys()].map((d, i) => ({
 const PlotTest = React.forwardRef((props, ref) => (
   <Plot ref={ref} data={data} scale={[xScale, yScale]} width={100} height={100} {...props} />
 ));
-
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { render, fireEvent, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
-import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
-import { Text } from '@semcore/typography';
-import { scaleLinear, scaleBand } from 'd3-scale';
-import { curveCardinal } from 'd3-shape';
-
-import {
-  Plot,
-  YAxis,
-  XAxis,
-  Venn,
-  Bar,
-  StackBar,
-  colors,
-  Bubble,
-  ScatterPlot,
-  HoverLine,
-  HoverRect,
-  RadialTree,
-  Line,
-  Donut,
-  HorizontalBar,
-  CompactHorizontalBar,
-  GroupBar,
-  minMax,
-  Area,
-  StackedArea,
-  ReferenceLine,
-  ReferenceStripes,
-  ReferenceBackground,
-  Radar,
-  ChartLegend,
-  ChartLegendTable,
-  makeDataHintsContainer,
-  Chart,
-  // @ts-ignore
-} from '../src';
-import { PlotA11yView } from '../src/a11y/PlotA11yView';
-import { getIndexFromData } from '../src/utils';
 
 describe('d3-chart Dependency imports', () => {
   runDependencyCheckTests('d3-chart');

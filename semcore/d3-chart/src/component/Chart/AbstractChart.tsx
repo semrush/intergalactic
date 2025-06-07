@@ -7,7 +7,6 @@ import type { ScaleBand, ScaleLinear, ScaleTime } from 'd3-scale';
 import React from 'react';
 
 import type { BaseChartProps, BaseLegendProps, ListData, ObjectData } from './AbstractChart.type';
-
 // @ts-ignore
 import { Plot, XAxis, YAxis } from '../..';
 import { makeDataHintsContainer } from '../../a11y/hints';

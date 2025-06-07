@@ -1,14 +1,13 @@
+import Button from '@semcore/button';
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
-import { snapshot } from '@semcore/testing-utils/snapshot';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi, afterEach } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
-const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 import Dot from '../src';
 
-import Button from '@semcore/button';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
 describe('dot Dependency imports', () => {
   runDependencyCheckTests('dot');

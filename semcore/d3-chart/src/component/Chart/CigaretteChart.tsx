@@ -9,7 +9,6 @@ import { scaleBand, scaleLinear } from 'd3-scale';
 import React from 'react';
 
 import type { CigaretteChartData, CigaretteChartProps, CigaretteChartType } from './CigaretteChart.type';
-
 // @ts-ignore
 import { HoverRect, Plot } from '../..';
 import { AbstractChart } from './AbstractChart';

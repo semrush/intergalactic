@@ -1,6 +1,6 @@
-import React from 'react';
-import Link from '@semcore/link';
 import ChevronRightM from '@semcore/icon/ChevronRight/m';
+import Link from '@semcore/link';
+import React from 'react';
 
 const Demo = () => {
   return (

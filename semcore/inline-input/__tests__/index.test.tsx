@@ -1,5 +1,3 @@
-import InlineInput from '../src/InlineInput';
-
 import SerpM from '@semcore/icon/Serp/m';
 import { axe } from '@semcore/testing-utils/axe';
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
@@ -9,12 +7,14 @@ import { cleanup, fireEvent, render, act } from '@semcore/testing-utils/testing-
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
+import Input from '../src';
+import InlineInput from '../src/InlineInput';
+
 describe('inline-input Dependency imports', () => {
   runDependencyCheckTests('inline-input');
 });
 
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
-import Input from '../src';
 
 const makePlayground = () => (
   <>

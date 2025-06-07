@@ -1,9 +1,8 @@
+import Checkbox from '@semcore/checkbox';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import Checkbox from '@semcore/checkbox';
-
-import StatesExample from './examples/states';
 import GroupsExample from './examples/groups';
+import StatesExample from './examples/states';
 
 const meta: Meta<typeof Checkbox> = {
   title: 'Components/Checkbox/Tests',

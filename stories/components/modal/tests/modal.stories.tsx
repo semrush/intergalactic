@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+
 import ModalTestExample from './examples/modal';
 import ModalStatesExample from './examples/modal-duration';
 import ModalNestedExample from './examples/modal-nested';

@@ -1,8 +1,8 @@
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { snapshot } from '@semcore/testing-utils/snapshot';
 import { render, fireEvent, cleanup, act } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
-// import * as sharedTests from '@semcore/testing-utils/shared-tests';
 
 import {
   NoticeBubbleContainer,
@@ -10,8 +10,6 @@ import {
   NoticeBubble as NoticeBubbleImport,
   NoticeBubbleWarning as NoticeBubbleWarningImport,
 } from '../src';
-
-// const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
 const NoticeBubble = React.forwardRef((props: any, ref: React.Ref<HTMLElement>) => (
   <>
@@ -25,8 +23,6 @@ const NoticeBubble = React.forwardRef((props: any, ref: React.Ref<HTMLElement>) 
 //     <NoticeBubbleWarningImport ref={ref} style={{ marginBottom: 0 }} {...props} />
 //   </NoticeBubbleContainer>
 // ));
-
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('notice-bubble Dependency imports', () => {
   runDependencyCheckTests('notice-bubble');

@@ -1,11 +1,13 @@
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { cleanup, render, fireEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
-import { cleanup, render, fireEvent } from '@semcore/testing-utils/testing-library';
-const { shouldSupportClassName, shouldSupportRef } = sharedTests;
+
 import Button from '../../button/src';
 import Modal from '../src';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
 describe('modal Dependency imports', () => {
   runDependencyCheckTests('modal');

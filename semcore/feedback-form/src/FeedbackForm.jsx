@@ -4,8 +4,8 @@ import { Box } from '@semcore/flex-box';
 import { NoticeSmart } from '@semcore/notice';
 import SpinContainer from '@semcore/spin-container';
 import createFocusDecorator from 'final-form-focus';
-import { Field, Form } from 'react-final-form';
 import React from 'react';
+import { Field, Form } from 'react-final-form';
 
 import { FeedbackItem } from './component/feedback-item/FeedbackItem';
 import { SubmitButton } from './component/submit-button/SubmitButton';

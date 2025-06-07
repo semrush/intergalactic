@@ -1,6 +1,6 @@
-import React from 'react';
 import Checkbox from '@semcore/checkbox';
 import { Text } from '@semcore/typography';
+import React from 'react';
 
 const fieldsetStyle = { border: 'none' };
 const ulStyle = { margin: 0, padding: 0 };

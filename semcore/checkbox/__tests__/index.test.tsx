@@ -1,12 +1,12 @@
-import React from 'react';
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
-import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render } from '@semcore/testing-utils/testing-library';
-
-const { shouldSupportClassName, shouldSupportRef } = sharedTests;
+import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
+import React from 'react';
 
 import Checkbox from '../src';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
 describe('Checkbox Dependency imports', () => {
   runDependencyCheckTests('checkbox');

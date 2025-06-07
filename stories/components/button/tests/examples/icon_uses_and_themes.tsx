@@ -1,9 +1,9 @@
+import Badge from '@semcore/badge';
 import Button from '@semcore/button';
 import { Flex, Box } from '@semcore/flex-box';
-import VideoListM from '@semcore/icon/VideoList/m';
 import VideoListL from '@semcore/icon/VideoList/l';
+import VideoListM from '@semcore/icon/VideoList/m';
 import Tooltip, { Hint } from '@semcore/tooltip';
-import Badge from '@semcore/badge';
 import { Text } from '@semcore/typography';
 import React from 'react';
 

@@ -9,7 +9,6 @@ import type {
   CompactHorizontalBarChartProps,
   CompactHorizontalBarChartType,
 } from './CompactHorizontalBarChart.type';
-
 // @ts-ignore
 import { CompactHorizontalBar } from '../..';
 import { AbstractChart } from './AbstractChart';
