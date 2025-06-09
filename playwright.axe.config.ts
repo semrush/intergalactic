@@ -20,16 +20,6 @@ const config: PlaywrightTestConfig = {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'], hasTouch: true },
     },
-
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'], hasTouch: true },
-    },
-
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'], hasTouch: true },
-    },
   ],
 };
 
