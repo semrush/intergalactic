@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.1.2] - 2025-05-30
+
+### Changed
+
+- Deprecated `highlighted` property for `DropdownMenu.Item`.
+
 ## [16.1.1] - 2025-05-30
 
 ### Changed
