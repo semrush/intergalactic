@@ -7,7 +7,7 @@ import React from 'react';
 const maxValue = 2000;
 
 const Demo = () => {
-  const barRef = React.useRef(null);
+  const barRef = React.useRef<HTMLDivElement | null>(null);
   const [value, setValue] = React.useState(0);
 
   const restart = () => {

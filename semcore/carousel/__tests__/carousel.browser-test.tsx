@@ -4,7 +4,7 @@ import { expect, test } from '@semcore/testing-utils/playwright';
 test.describe('Carousel', () => {
   test('Zoom item after cyclic scroll', async ({ page }) => {
     const standPath =
-      'website/docs/components/carousel/examples/carousel_with_default_indicators.tsx';
+      'stories/components/carousel/docs/examples/carousel_with_default_indicators.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);

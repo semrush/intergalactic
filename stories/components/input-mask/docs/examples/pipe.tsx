@@ -4,8 +4,8 @@ import { Text } from '@semcore/typography';
 import React from 'react';
 
 const Demo = () => {
-  const expireDateInput = React.useRef(null);
-  const handleSuccess = React.useCallback(() => expireDateInput.current.focus(), []);
+  const expireDateInput = React.useRef<HTMLInputElement>(null);
+  const handleSuccess = React.useCallback(() => expireDateInput.current?.focus(), []);
 
   return (
     <Flex
@@ -81,7 +81,7 @@ const pipeExpireDate = (maskedValue: string, conf: { rawValue: string }) => {
     .map((chunk) => (chunk.includes('_') ? undefined : Number.parseInt(chunk, 10)));
   const currentYear = new Date().getFullYear() % 100;
   const currentMonth = new Date().getMonth() + 1;
-
+  if (month === undefined || year === undefined) return false;
   if (month > 12) return false;
   if (year === currentYear && month < currentMonth) return false;
   if (year < currentYear) return false;
