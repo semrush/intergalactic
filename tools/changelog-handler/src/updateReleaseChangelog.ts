@@ -12,9 +12,6 @@ const filename = fileURLToPath(import.meta.url);
 const releasePackageDir = resolvePath(filename, '../../../../semcore/ui/');
 
 export const updateReleaseChangelog = async () => {
-  const { packages: exportedPackages } = fs.readJSONSync(
-    resolvePath(releasePackageDir, 'components.json'),
-  );
   const releasePackageFilePath = resolvePath(releasePackageDir, 'package.json');
   let releasePackageFile = await fs.readJson(releasePackageFilePath);
   const packagePublishedData = await fetchFromNpm(['@semcore/ui']);
@@ -23,7 +20,7 @@ export const updateReleaseChangelog = async () => {
   const changelogPatch = await patchReleaseChangelog(
     currentVersion,
     currentDependencies,
-    exportedPackages,
+    Object.keys(releasePackageFile.dependencies),
   );
   const { changelogs: patchedReleaseChangelog, version: newVersion } = changelogPatch;
   const changelogMarkdownAst = serializeReleaseChangelog(patchedReleaseChangelog);

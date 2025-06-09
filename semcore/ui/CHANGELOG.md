@@ -1,3 +1,14 @@
+
+## [16.2.0] - 2025-05-30
+
+### @semcore/data-table
+
+- **Fixed** Animation for accordions in table.
+
+### @semcore/icon
+
+- **Added** New `ChartVenn` icon.
+
 ## [16.1.0] - 2025-05-22
 
 ### @semcore/icon

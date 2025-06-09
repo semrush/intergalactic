@@ -3,7 +3,10 @@ import * as process from 'process';
 import {
   serializeReleaseChangelog,
   getReleaseChangelog,
+  updateReleaseChangelog,
 } from '@semcore/changelog-handler';
+import { validateSlackIntegrationEnv } from '@semcore/slack-integration';
+import dotenv from 'dotenv';
 import semver from 'semver';
 
 import { collectPackages } from './src/collectPackages';
@@ -20,6 +23,8 @@ import { formatMarkdown, log } from './src/utils';
 import { getChangedFiles } from './src/utils/getChangedFiles';
 import { gitUtils } from './src/utils/gitUtils';
 import { NpmUtils } from './src/utils/npmUtils';
+
+dotenv.config();
 
 export const initPrerelease = async () => {
   const npmData = await fetchFromNpm();
@@ -42,6 +47,7 @@ export const initPrerelease = async () => {
       }),
     );
     await updateChangelogs(versionPatches.filter((patch) => patch.package.name !== '@semcore/ui'));
+    await updateReleaseChangelog();
 
     if (!versionPatches.find((patch) => patch.package.name === '@semcore/ui')) {
       const pkg = packages.find((pkg) => pkg.name === '@semcore/ui')!;
@@ -118,6 +124,19 @@ export const publishPrerelease = async () => {
   log('Updated versions to prerelease.');
 
   await NpmUtils.publish(updatedPackages, true);
+
+  if (!process.argv.includes('--dry-run') && prerelease) {
+    const releaseChangelog = await getReleaseChangelog();
+    const lastVersionChangelogs = releaseChangelog.changelogs.slice(0, 1);
+
+    const endpoints = process.env['PRIVATE_CHANNEL_SLACK_API']?.split(',') ?? ['fake-url'];
+
+    if (!process.argv.includes('--dry-run')) {
+      validateSlackIntegrationEnv(endpoints);
+    }
+
+    await sendMessageAboutRelease(prerelease, lastVersionChangelogs, endpoints);
+  }
 };
 
 export const publishRelease = async () => {
@@ -135,10 +154,15 @@ export const publishRelease = async () => {
   if (!process.argv.includes('--dry-run') && version) {
     const releaseChangelog = await getReleaseChangelog();
     const lastVersionChangelogs = releaseChangelog.changelogs.slice(0, 1);
+    const endpoints = process.env['SLACK_API_ENDPOINTS']?.split(',') ?? ['fake-url'];
 
     await publishReleaseNotes(version, lastVersionChangelogs);
 
-    await sendMessageAboutRelease(version, lastVersionChangelogs);
+    if (!process.argv.includes('--dry-run')) {
+      validateSlackIntegrationEnv(endpoints);
+    }
+
+    await sendMessageAboutRelease(version, lastVersionChangelogs, endpoints);
   }
 };
 

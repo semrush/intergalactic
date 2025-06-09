@@ -3,7 +3,7 @@ import { makeMessageFromChangelogs, sendMessage } from '@semcore/slack-integrati
 
 import { log } from './utils';
 
-export async function sendMessageAboutRelease(version: string, lastVersionChangelogs: Changelog[]) {
+export async function sendMessageAboutRelease(version: string, lastVersionChangelogs: Changelog[], endpoints: string[]) {
   log('Sending message to internal Slack...');
 
   try {
@@ -14,6 +14,7 @@ export async function sendMessageAboutRelease(version: string, lastVersionChange
       title,
       body,
       dryRun: false,
+      endpoints,
     });
     log('Sent message to internal Slack.');
     log('Release note is published.');
