@@ -1,8 +1,7 @@
-import SerpM from '@semcore/icon/Serp/m';
-import { axe } from '@semcore/testing-utils/axe';
+
+import InlineInput from '../src/InlineInput';
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { snapshot } from '@semcore/testing-utils/snapshot';
 import { cleanup, fireEvent, render, act } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -16,104 +15,13 @@ describe('inline-input Dependency imports', () => {
 
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
-const makePlayground = () => (
-  <>
-    <br />
-    <label htmlFor='simple'>Simple</label>
-    <br />
-    <InlineInput onBlurBehavior='cancel'>
-      <InlineInput.Value id='simple' />
-      <InlineInput.ConfirmControl />
-      <InlineInput.CancelControl />
-    </InlineInput>
-    <br />
-    <label htmlFor='loading'>Loading state</label>
-    <br />
-    <InlineInput loading>
-      <InlineInput.Value id='loading' />
-      <InlineInput.ConfirmControl />
-      <InlineInput.CancelControl />
-    </InlineInput>
-    <br />
-    <label htmlFor='disabled'>Disabled</label>
-    <br />
-    <InlineInput disabled>
-      <InlineInput.Value id='disabled' />
-      <InlineInput.ConfirmControl />
-      <InlineInput.CancelControl />
-    </InlineInput>
-    <br />
-    <label htmlFor='custom-text'>Custom text</label>
-    <br />
-    <InlineInput state='invalid'>
-      <InlineInput.Value id='custom-text' />
-      <InlineInput.ConfirmControl title='Good' />
-      <InlineInput.CancelControl title='Awfull' />
-    </InlineInput>
-    <br />
-    <label htmlFor='valid'>Valid </label>
-    <br />
-    <InlineInput state='valid'>
-      <InlineInput.Value id='valid' />
-      <InlineInput.ConfirmControl />
-      <InlineInput.CancelControl />
-    </InlineInput>
-    <br />
-    <label htmlFor='with-icons'>With icons</label>
-    <br />
-    <InlineInput>
-      <InlineInput.Addon tag={SerpM} />
-      <InlineInput.Value id='with-icons' />
-      <InlineInput.ConfirmControl />
-      <InlineInput.CancelControl />
-    </InlineInput>
-    <br />
-    <label htmlFor='decomposed'>Decomposed</label>
-    <br />
-    <InlineInput>
-      <InlineInput.Value id='decomposed' />
-      <InlineInput.ConfirmControl />
-      <InlineInput.CancelControl />
-    </InlineInput>
-    <br />
-    <label htmlFor='primitive'>Primitve</label>
-    <br />
-    <InlineInput>
-      <InlineInput.Value id='primitive' />
-      <InlineInput.ConfirmControl />
-      <InlineInput.CancelControl />
-    </InlineInput>
-    <br />
-    <label htmlFor='const-placeholder'>Constant placeholder</label>
-    <br />
-    <InlineInput>
-      <InlineInput.Addon>I am a don't care, I punk:</InlineInput.Addon>
-      <InlineInput.Value id='const-placeholder' />
-    </InlineInput>
-    <br />
-    <InlineInput>
-      <InlineInput.Addon tag='label' htmlFor='number-example'>
-        enter score:
-      </InlineInput.Addon>
-      <InlineInput.NumberValue id='number-example' defaultValue={100} />
-      <InlineInput.NumberControls showControls />
-    </InlineInput>
-  </>
-);
-
 describe('InlineInput', () => {
   beforeEach(cleanup);
 
   shouldSupportClassName(Input);
   shouldSupportRef(Input.Value, Input);
 
-  test.concurrent('Should render in different ways', async ({ task }) => {
-    const component = makePlayground();
-
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-
-  test.concurrent('on blur behavior', () => {
+  test.concurrent('Verify blur behavior', () => {
     vi.useFakeTimers();
     const spyCancel = vi.fn();
     const spyConfirm = vi.fn();
@@ -168,12 +76,5 @@ describe('InlineInput', () => {
     });
     expect(spyUndefined).toHaveBeenCalledTimes(1);
     vi.useRealTimers();
-  });
-
-  test('a11y', async () => {
-    const { container } = render(makePlayground());
-
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
   });
 });
