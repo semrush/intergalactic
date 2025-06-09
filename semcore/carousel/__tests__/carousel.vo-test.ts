@@ -7,7 +7,7 @@ test('Users can interact with Carousel via VoiceOver', async ({
   voiceOver: pureVoiceOver,
 }) => {
   const standPath =
-    'website/docs/components/carousel/examples/carousel_with_default_indicators.tsx';
+    'stories/components/carousel/docs/examples/carousel_with_default_indicators.tsx';
 
   const htmlContent = await e2eStandToHtml(standPath, 'en');
   await page.reload();
