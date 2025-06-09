@@ -1,5 +1,3 @@
-
-import InlineInput from '../src/InlineInput';
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, fireEvent, render, act } from '@semcore/testing-utils/testing-library';
