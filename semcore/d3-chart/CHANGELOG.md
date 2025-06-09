@@ -6,7 +6,10 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Legend for Bubble chart.
+- Legend for `Bubble` chart.
+
+### Added
+- New `Bubble` child component (`Bubble.Circle`) which incapsulates all the inner logic of how to draw a circle.
 
 ## [16.0.2] - 2025-05-30
 
