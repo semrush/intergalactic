@@ -14,9 +14,9 @@ tabs: Design('scroll-area'), A11y('scroll-area-a11y'), API('scroll-area-api'), E
 
 The ScrollArea consists of the following elements:
 
-- Container with content (`ScrollArea.Container`).
-- Scroll indicator (`ScrollArea.Bar`).
-- Slider (`ScrollArea.Bar.Slider`).
+1. Container with content (`ScrollArea.Container`).
+2. Scroll indicator (`ScrollArea.Bar`).
+3. Slider (`ScrollArea.Bar.Slider`).
 
 ## Appearance
 
@@ -35,14 +35,3 @@ Scrolling inside the block can be controlled by:
 - Arrow keys while focusing on an element.
 - Touchpad gestures.
 - Elements of a scrollbar such as sliders and buttons.
-
-<!-- @## Infinite scrolling
-
-With infinite scrolling content is loaded in portions. This type of scrolling is especially good if there is a lot of content on the page, and you don’t need to divide it into separate pages.
-
-::: tip
-_Infinite scrolling helps to build a narration and sends the user on a journey._
-
-(c) Roma Lysov 🤪 -->
-:::
-
