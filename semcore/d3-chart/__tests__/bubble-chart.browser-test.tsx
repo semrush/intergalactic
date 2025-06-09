@@ -1,5 +1,6 @@
 import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import { label } from 'allure-js-commons';
 
 test.describe('Bubble chart', () => {
   test('Verify bubble base example renders and tooltip works', async ({ page }) => {
@@ -8,7 +9,7 @@ test.describe('Bubble chart', () => {
     await page.setContent(htmlContent);
 
     const chart = page.locator('svg[data-ui-name="Plot"]').first();
-    const items = page.locator('[data-ui-name="Bubble"]');
+    const items = page.locator('[data-ui-name="Bubble.Circle"]');
     await expect(chart).toBeVisible();
 
     await test.step('Verify bubbles attributes', async () => {
@@ -34,7 +35,7 @@ test.describe('Bubble chart', () => {
     await page.setContent(htmlContent);
 
     const chart = page.locator('svg[data-ui-name="Plot"]');
-    const items = page.locator('[data-ui-name="Bubble"]');
+    const items = page.locator('[data-ui-name="Bubble.Circle"]');
     await expect(chart).toBeVisible();
 
     await test.step('Verify bubbles attributes', async () => {
@@ -64,14 +65,54 @@ test.describe('Bubble chart', () => {
     await expect(page).toHaveScreenshot();
   });
 
-  test('Verify legend and patter fill', async ({ page }) => {
+  test('Verify legend', async ({ page }) => {
     const standPath =
       'stories/components/d3-chart/docs/examples/bubble-chart/legend-and-pattern-fill.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
-    //only render because the fucnstionality doesnt work
 
-    await page.waitForTimeout(500);
-    await expect(page).toHaveScreenshot();
+    const labels = await page.locator('label[data-ui-name="Checkbox"]').all();
+    const items = await page.locator('g').all();
+
+    labels.forEach(async (label) => {
+      await expect(label, `The ${label} is unchecked`).toBeChecked();
+    });
+
+    items.forEach(async (item) => {
+      await expect(item, `The ${item} is hidden`).toBeVisible();
+    });
+
+    await test.step('Verify the first circle is hidden when the first legeng item is unckecked', async () => {
+      await labels[0].click();
+
+      await expect(labels[0], `The ${labels[0]} is still checked`).not.toBeChecked();
+      await expect(items[0], `The ${items[0]} is still visible`).toHaveCSS('display', 'none');
+
+      await page.waitForTimeout(500);
+      await expect(page).toHaveScreenshot('Bubble-chart-Verify-legend-first-case.png');
+    });
+
+    await test.step('Reset state before new case', async () => {
+      await labels[0].click();
+    });
+
+    await test.step('Verify the circles are hidden when the legend items are unchecked', async () => {
+      for (const label of labels) {
+        await label.click();
+      }
+
+      for (const label of labels) {
+        await expect(label, `The ${label} is still checked`).not.toBeChecked();
+      }
+
+      for (const item of items) {
+        await expect(item, `The ${items} is still visible`).toHaveCSS('display', 'none');
+      }
+
+      await page.waitForTimeout(500);
+      await expect(page).toHaveScreenshot('Bubble-chart-Verify-legend-second-case.png');
+    });
   });
+
+  // test('Verify pattern', async ({ page }) => {});
 });

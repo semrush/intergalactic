@@ -8,6 +8,7 @@ import Tooltip from './Tooltip';
 import { PatternFill } from './Pattern';
 
 import style from './style/bubble.shadow.css';
+import findComponent from '@semcore/core/lib/utils/findComponent';
 
 class BubbleRoot extends Component {
   static displayName = 'Bubble';
@@ -63,7 +64,7 @@ class BubbleRoot extends Component {
     this.animationCircle();
   }
 
-  renderCircle(d, i) {
+  getCircleProps() {
     const {
       color,
       scale,
@@ -82,85 +83,30 @@ class BubbleRoot extends Component {
       resolveColor,
       patterns,
     } = this.asProps;
-    const [xScale, yScale] = scale;
 
-    const SBubble = this.Element;
-    const SCenter = 'text';
-    const SLabel = 'text';
-    const z = getBubbleChartValueScale(data, value);
-
-    const margin = Math.min(xScale.range()[0], xScale.range()[1]);
-
-    const labelPosition =
-      size[0] - 2 * margin - (xScale(d[x]) + offset[0] + z(d[value])) < measureText(d[label])
-        ? 'right'
-        : 'left';
-    const labelDistance = {
-      right: xScale(d[x]) + offset[0] - z(d[value]),
-      left: xScale(d[x]) + offset[0] + z(d[value]),
-    }[labelPosition];
-
-    return sstyled(styles)(
-      <g
-        key={`circle(#${i})`}
-        onMouseMove={this.bindHandlerTooltip(true, this.props, { xIndex: i, index: i, patterns })}
-        onMouseLeave={this.bindHandlerTooltip(false, this.props, { xIndex: i, index: i, patterns })}
-      >
-        {markedCross && (
-          <SCenter
-            aria-hidden
-            x={xScale(d[x]) + offset[0]}
-            y={yScale(d[y]) + offset[1]}
-            dy='.3em'
-            clipPath={`url(#${uid})`}
-            color={resolveColor(d[color] ?? color)}
-            transparent={transparent}
-          >
-            &#43;
-          </SCenter>
-        )}
-        <SBubble
-          aria-hidden
-          id={`${uid}${uid}`}
-          index={i}
-          render='circle'
-          clipPath={`url(#${uid})`}
-          cx={xScale(d[x]) + offset[0]}
-          cy={yScale(d[y]) + offset[1]}
-          color={resolveColor(d[color])}
-          pattern={patterns ? `url(#${uid}-${i}-pattern)` : undefined}
-          r={z(d[value])}
-          use:duration={`${duration}ms`}
-          transparent={transparent}
-        />
-        {patterns && (
-          <PatternFill
-            id={`${uid}-${i}-pattern`}
-            patternKey={d[color]}
-            color={resolveColor(d[color])}
-            patterns={patterns}
-          />
-        )}
-        {d[label] && (
-          <SLabel
-            aria-hidden
-            x={labelDistance}
-            y={yScale(d[y]) + offset[1]}
-            dy='.3em'
-            clipPath={`url(#${uid})`}
-            position={labelPosition}
-            color={resolveColor(d[color])}
-            transparent={transparent}
-          >
-            {d[label]}
-          </SLabel>
-        )}
-      </g>,
-    );
+    return {
+      color,
+      scale,
+      x,
+      y,
+      offset,
+      styles,
+      uid,
+      duration,
+      value,
+      label,
+      markedCross,
+      size,
+      data,
+      transparent,
+      resolveColor,
+      patterns,
+      bindHandlerTooltip: this.bindHandlerTooltip.bind(this),
+    };
   }
 
   render() {
-    const { data, uid, scale, x, y, value } = this.asProps;
+    const { data, uid, scale, x, y, value, Children } = this.asProps;
     const [xScale, yScale] = scale;
     const xSize = Math.abs(xScale.range()[0] - xScale.range()[1]);
     const ySize = Math.abs(yScale.range()[0] - yScale.range()[1]);
@@ -170,9 +116,15 @@ class BubbleRoot extends Component {
     this.asProps.dataHintsHandler.specifyDataRowFields(x, y, value);
     this.asProps.dataHintsHandler.establishDataType('points-cloud');
 
+    const isAdvancedMode = Boolean(findComponent(Children, [Bubble.Circle.displayName]));
+
     return (
       <>
-        {data.map(this.renderCircle.bind(this))}
+        {isAdvancedMode ? (
+          <Children />
+        ) : (
+          data.map((_, idx) => <Bubble.Circle key={idx} index={idx} />)
+        )}
         <clipPath aria-hidden id={uid}>
           <rect x={xMargin} y={yMargin} width={`${xSize}px`} height={`${ySize}px`} />{' '}
         </clipPath>
@@ -186,8 +138,115 @@ const BubbleTooltip = (props) => {
   return sstyled(props.styles)(<SBubbleTooltip render={Tooltip} excludeAnchorProps />);
 };
 
+function BubbleCircle(props) {
+  const {
+    color,
+    scale,
+    x,
+    y,
+    offset,
+    styles,
+    uid,
+    duration,
+    value,
+    label,
+    markedCross,
+    size,
+    data,
+    transparent,
+    resolveColor,
+    patterns,
+    index,
+    bindHandlerTooltip,
+    Element,
+    visible = true,
+  } = props;
+  const circleData = data[index];
+
+  if (!circleData) return null;
+
+  const [xScale, yScale] = scale;
+
+  const SBubble = Element;
+  const SCenter = 'text';
+  const SLabel = 'text';
+  const z = getBubbleChartValueScale(data, value);
+
+  const margin = Math.min(xScale.range()[0], xScale.range()[1]);
+
+  const labelPosition =
+    size[0] - 2 * margin - (xScale(circleData[x]) + offset[0] + z(circleData[value])) <
+    measureText(circleData[label])
+      ? 'right'
+      : 'left';
+  const labelDistance = {
+    right: xScale(circleData[x]) + offset[0] - z(circleData[value]),
+    left: xScale(circleData[x]) + offset[0] + z(circleData[value]),
+  }[labelPosition];
+
+  return sstyled(styles)(
+    <g
+      key={`circle(#${index})`}
+      onMouseMove={bindHandlerTooltip(true, props, { xIndex: index, index, patterns })}
+      onMouseLeave={bindHandlerTooltip(false, props, { xIndex: index, index, patterns })}
+      visible={`${visible}`}
+    >
+      {markedCross && (
+        <SCenter
+          aria-hidden
+          x={xScale(circleData[x]) + offset[0]}
+          y={yScale(circleData[y]) + offset[1]}
+          dy='.3em'
+          clipPath={`url(#${uid})`}
+          color={resolveColor(circleData[color] ?? color)}
+          transparent={transparent}
+        >
+          &#43;
+        </SCenter>
+      )}
+      <SBubble
+        aria-hidden
+        id={`${uid}${uid}`}
+        index={index}
+        render='circle'
+        clipPath={`url(#${uid})`}
+        cx={xScale(circleData[x]) + offset[0]}
+        cy={yScale(circleData[y]) + offset[1]}
+        color={resolveColor(circleData[color])}
+        pattern={patterns ? `url(#${uid}-${index}-pattern)` : undefined}
+        r={z(circleData[value])}
+        use:duration={`${duration}ms`}
+        transparent={transparent}
+      />
+      {patterns && (
+        <PatternFill
+          id={`${uid}-${index}-pattern`}
+          patternKey={circleData[color]}
+          color={resolveColor(circleData[color])}
+          patterns={patterns}
+        />
+      )}
+      {circleData[label] && (
+        <SLabel
+          aria-hidden
+          x={labelDistance}
+          y={yScale(circleData[y]) + offset[1]}
+          dy='.3em'
+          clipPath={`url(#${uid})`}
+          position={labelPosition}
+          color={resolveColor(circleData[color])}
+          transparent={transparent}
+        >
+          {circleData[label]}
+        </SLabel>
+      )}
+    </g>,
+  );
+}
+
 const Bubble = createElement(BubbleRoot, {
   Tooltip: [BubbleTooltip, Tooltip._______childrenComponents],
+  Circle: BubbleCircle,
 });
 
 export default Bubble;

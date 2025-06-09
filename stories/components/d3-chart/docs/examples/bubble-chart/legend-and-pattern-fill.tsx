@@ -68,7 +68,11 @@ const Demo = () => {
         <XAxis>
           <XAxis.Ticks />
         </XAxis>
-        <Bubble x='x' y='y' value='value' label='label' color='color' />
+        <Bubble x='x' y='y' value='value' label='label' color='color'>
+          {legendItems.map(({ checked, id }, index) => (
+            <Bubble.Circle visible={checked} key={id} index={index} />
+          ))}
+        </Bubble>
         <Bubble.Tooltip>
           {({ index }) => {
             return {

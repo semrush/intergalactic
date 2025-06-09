@@ -51,6 +51,17 @@ declare const Bubble: IntergalacticD3Component<Intergalactic.Tag, BubbleProps, B
       index: number;
     }
   >;
+  Circle: IntergalacticD3Component<
+    'g',
+    {
+      /** Item data index */
+      index: number;
+
+      /** Item visibility */
+      visible?: boolean;
+    },
+    Context
+  >;
 };
 
 export default Bubble;
