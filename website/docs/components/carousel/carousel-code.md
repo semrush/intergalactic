@@ -8,7 +8,7 @@ tabs: Design('carousel'), A11y('carousel-a11y'), API('carousel-api'), Example('c
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/carousel_with_default_indicators.tsx';
+  export Demo from 'stories/components/carousel/docs/examples/carousel_with_default_indicators.tsx';
 </script>
 
 :::
@@ -18,7 +18,7 @@ tabs: Design('carousel'), A11y('carousel-a11y'), API('carousel-api'), Example('c
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/carousel_with_preview_indicators.tsx';
+  export Demo from 'stories/components/carousel/docs/examples/carousel_with_preview_indicators.tsx';
 </script>
 
 :::
@@ -28,7 +28,7 @@ tabs: Design('carousel'), A11y('carousel-a11y'), API('carousel-api'), Example('c
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/carousel_without_modal_window.tsx';
+  export Demo from 'stories/components/carousel/docs/examples/carousel_without_modal_window.tsx';
 </script>
 
 :::
@@ -38,7 +38,7 @@ tabs: Design('carousel'), A11y('carousel-a11y'), API('carousel-api'), Example('c
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/carousel_with_indicators_only.tsx';
+  export Demo from 'stories/components/carousel/docs/examples/carousel_with_indicators_only.tsx';
 </script>
 
 :::

@@ -7,7 +7,7 @@ tabs: Design('card'), A11y('card-a11y'), API('card-api'), Example('card-code'), 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/basic_example.tsx';
+  export Demo from 'stories/components/card/docs/examples/basic_example.tsx';
 </script>
 
 :::
@@ -17,7 +17,7 @@ tabs: Design('card'), A11y('card-a11y'), API('card-api'), Example('card-code'), 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/complex_example.tsx';
+  export Demo from 'stories/components/card/docs/examples/complex_example.tsx';
 </script>
 
 :::
@@ -27,7 +27,7 @@ tabs: Design('card'), A11y('card-a11y'), API('card-api'), Example('card-code'), 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/card_layout_for_tables.tsx';
+  export Demo from 'stories/components/card/docs/examples/card_layout_for_tables.tsx';
 </script>
 
 ::: -->
@@ -37,7 +37,7 @@ tabs: Design('card'), A11y('card-a11y'), API('card-api'), Example('card-code'), 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/ellipsis.tsx';
+  export Demo from 'stories/components/card/docs/examples/ellipsis.tsx';
 </script>
 
 :::

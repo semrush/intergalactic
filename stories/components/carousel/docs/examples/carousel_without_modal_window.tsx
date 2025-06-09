@@ -29,7 +29,7 @@ const Demo = () => (
           src={url}
           alt={altTexts[index]}
           aria-label={`Open in fullscreen ${altTexts[index]}`}
-          style={{ height: '100%', objectFit: 'cover' }}
+          style={{ height: '100%', width: '100%', objectFit: 'cover' }}
         />
       </Carousel.Item>
     ))}

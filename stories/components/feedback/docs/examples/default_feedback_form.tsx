@@ -54,7 +54,7 @@ class Feedback extends React.PureComponent<FeedbackProps> {
     }
   }
 
-  handleChange = (fn) => (_, e) => {
+  handleChange = (fn: (e: React.SyntheticEvent<HTMLInputElement>) => void) => (_: string, e: React.SyntheticEvent<HTMLInputElement>) => {
     fn(e);
     this.props.onChange(e, e.currentTarget.id);
   };
@@ -85,7 +85,7 @@ class Feedback extends React.PureComponent<FeedbackProps> {
               }}
               validateOnBlur={value.description === '' ? false : true}
             >
-              {({ input }) => (
+              {({ input }: any) => (
                 <Textarea
                   {...input}
                   autoFocus
@@ -106,7 +106,7 @@ class Feedback extends React.PureComponent<FeedbackProps> {
               initialValue=''
               validateOnBlur={value.email === '' ? false : true}
             >
-              {({ input }) => (
+              {({ input }: any) => (
                 <Input state={input.state}>
                   <Input.Value
                     {...input}
@@ -155,12 +155,12 @@ class FeedbackLink extends React.PureComponent {
     this.setState({ status: 'loading' });
   };
 
-  onChange = (e, trigger) => {
+  onChange = (e: React.SyntheticEvent<HTMLInputElement>, trigger: string) => {
     const { value } = e.currentTarget;
     this.setState({ value: { ...this.state.value, [trigger]: value } });
   };
 
-  requestServer = (status, time = 500, cb = () => {}) => {
+  requestServer = (status: string, time = 500, cb = () => {}) => {
     this.timeout = setTimeout(() => {
       this.setState({ status });
       cb();
@@ -194,6 +194,8 @@ class FeedbackLink extends React.PureComponent {
   }
 }
 
-const Demo = FeedbackLink;
+const Demo = () => {
+  return <FeedbackLink />;
+};
 
 export default Demo;
