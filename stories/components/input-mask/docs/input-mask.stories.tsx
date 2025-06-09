@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import AliasesExample from './examples/aliases';
 import InputMaskExample from './examples/inputmask';
-import PipeExample from './examples/inputmask';
+import PipeExample from './examples/pipe';
 
 const meta: Meta = {
   title: 'Components/Input-Mask/Documentation',
