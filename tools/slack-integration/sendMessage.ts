@@ -1,15 +1,13 @@
 import axios from 'axios';
-import dotenv from 'dotenv';
-
-import { validateSlackIntegrationEnv } from './validateEnv';
-dotenv.config();
 
 export const sendMessage = async ({
+  endpoints,
   title,
   body,
   dryRun,
   image,
 }: {
+  endpoints: string[];
   title: string;
   body: string;
   dryRun: boolean;
@@ -23,12 +21,6 @@ export const sendMessage = async ({
       `Empty title or body provided for slack update bot, got title: "${title}", body: "${body}"`,
     );
   }
-
-  if (!dryRun) {
-    validateSlackIntegrationEnv();
-  }
-
-  const endpoints = process.env['SLACK_API_ENDPOINTS']?.split(',') ?? ['fake-url'];
 
   return Promise.all(
     endpoints.map((endpointUrl) => {
