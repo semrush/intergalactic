@@ -26,7 +26,7 @@ test.describe('InlineInput', () => {
   });
 
   test('Inheriting text size', async ({ page }) => {
-    const standPath = 'stories/components/inline-edit/docs/examples/inheriting_text_size.tsx';
+    const standPath = 'stories/components/inline-input/docs/examples/inheriting_text_size.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -58,7 +58,7 @@ test.describe('InlineInput', () => {
   });
 
   test('Number only input', async ({ page }) => {
-    const standPath = 'stories/components/inline-edit/docs/examples/number-only_input.tsx';
+    const standPath = 'stories/components/inline-input/docs/examples/number-only_input.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);

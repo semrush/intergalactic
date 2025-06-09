@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import OnBlurExample from './examples/on-blur-behavior-test';
 import StatesExample from './examples/styles';
 import CustomTextExample from './examples/with-custom-text';
-import OnBlurExample from './examples/on-blur-behavior-test';
 
 const meta: Meta = {
   title: 'Components/Inline-Input/Tests',
