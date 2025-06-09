@@ -1,12 +1,12 @@
-import React from 'react';
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import React from 'react';
+
 import Input from '../src';
 
-import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
-
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('input Dependency imports', () => {
   runDependencyCheckTests('input');

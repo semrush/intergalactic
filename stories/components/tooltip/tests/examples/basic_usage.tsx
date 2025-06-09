@@ -1,19 +1,19 @@
-import React from 'react';
-import Tooltip, { Hint, DescriptionTooltip } from '@semcore/tooltip';
-import { Flex } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
-import Link from '@semcore/link';
 import Button, { ButtonLink } from '@semcore/button';
-import FileExportM from '@semcore/icon/FileExport/m';
+import { Flex } from '@semcore/flex-box';
 import CheckAltM from '@semcore/icon/CheckAlt/m';
+import FileExportM from '@semcore/icon/FileExport/m';
 import InfoM from '@semcore/icon/Info/m';
+import Link from '@semcore/link';
+import Tooltip, { Hint, DescriptionTooltip } from '@semcore/tooltip';
+import { Text } from '@semcore/typography';
+import React from 'react';
 
 const Demo = () => (
   <Flex gap={4} direction='column'>
     <Flex gap={4} alignItems='center'>
       Tooltip:
       <Tooltip
-      interaction='hover'
+        interaction='hover'
         tag={Link}
         href='https://google.com'
         title='Default tooltip contains short text explaining something about the trigger.'
@@ -28,7 +28,7 @@ const Demo = () => (
         addonLeft={FileExportM}
       />
       <Tooltip
-      interaction='focus'
+        interaction='focus'
         tag={Link}
         href='https://google.com'
         title='Default tooltip contains short text explaining something about the trigger.'
@@ -36,7 +36,7 @@ const Demo = () => (
         Focus
       </Tooltip>
       <Tooltip
-      interaction='none'
+        interaction='none'
         tag={Link}
         href='https://google.com'
         title='Default tooltip contains short text explaining something about the trigger.'
@@ -45,14 +45,17 @@ const Demo = () => (
       </Tooltip>
     </Flex>
     <Flex gap={4} alignItems='center'>
-    DescriptionTooltip:
-      <DescriptionTooltip  interaction='hover'>
-        <DescriptionTooltip.Trigger tag={ButtonLink} use={'secondary'}>
+      DescriptionTooltip:
+      <DescriptionTooltip interaction='hover'>
+        <DescriptionTooltip.Trigger tag={ButtonLink} use='secondary'>
           Hover
         </DescriptionTooltip.Trigger>
         <DescriptionTooltip.Popper aria-label='About fastest animals'>
           <Text tag='p' mb={3}>
-            The <Link href='https://en.wikipedia.org/wiki/Peregrine_falcon'>peregrine falcon</Link>{' '}
+            The
+            {' '}
+            <Link href='https://en.wikipedia.org/wiki/Peregrine_falcon'>peregrine falcon</Link>
+            {' '}
             is the fastest bird, and the fastest member of the animal kingdom, with a diving speed
             of over 300 km/h (190 mph).
           </Text>
@@ -62,7 +65,7 @@ const Demo = () => (
           </Text>
         </DescriptionTooltip.Popper>
       </DescriptionTooltip>
-      <DescriptionTooltip  interaction='click'>
+      <DescriptionTooltip interaction='click'>
         <DescriptionTooltip.Trigger
           tag={ButtonLink}
           addonLeft={InfoM}
@@ -72,8 +75,10 @@ const Demo = () => (
         <DescriptionTooltip.Popper aria-label='About peregrine falcon'>
           <Text tag='p' mb={3}>
             The peregrine falcon is the fastest aerial animal, fastest animal in flight, fastest
-            bird, and the overall fastest member of the{' '}
-            <Link href='https://en.wikipedia.org/wiki/Animal'>animal kingdom</Link>.
+            bird, and the overall fastest member of the
+            {' '}
+            <Link href='https://en.wikipedia.org/wiki/Animal'>animal kingdom</Link>
+            .
           </Text>
           <Text tag='p'>
             The peregrine achieves its highest velocity not in horizontal level flight, but during

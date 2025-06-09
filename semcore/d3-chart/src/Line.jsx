@@ -1,8 +1,13 @@
-import React from 'react';
-import { curveLinear, line as d3Line, area as d3Area, curveCardinal } from 'd3-shape';
 import { Component, sstyled } from '@semcore/core';
 import uniqueIDEnhancement, { useUID } from '@semcore/core/lib/utils/uniqueID';
+import { curveLinear, line as d3Line, area as d3Area, curveCardinal } from 'd3-shape';
+import React from 'react';
+
+import AnimatedClipPath from './AnimatedClipPath';
 import createElement from './createElement';
+import Dots from './Dots';
+import { resolvePatternDasharray } from './Pattern';
+import style from './style/line.shadow.css';
 import {
   definedData,
   definedNullData,
@@ -11,11 +16,6 @@ import {
   interpolateValue,
   getChartDefaultColorName,
 } from './utils';
-import Dots from './Dots';
-import AnimatedClipPath from './AnimatedClipPath';
-import { resolvePatternDasharray } from './Pattern';
-
-import style from './style/line.shadow.css';
 
 class LineRoot extends Component {
   static displayName = 'Line';

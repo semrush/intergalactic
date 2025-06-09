@@ -1,5 +1,6 @@
-import React from 'react';
 import { createComponent, Root, sstyled } from '@semcore/core';
+import React from 'react';
+
 import { Skeleton } from '../Skeleton';
 import styles from '../style/chart.shadow.css';
 
@@ -7,7 +8,7 @@ const patternBase64 = preval`
 module.exports = btoa(require('fs').readFileSync(__dirname + '/../svg/compact-horizontal-bar-chart.svg'))
 `;
 
-const CompactHorizontalBarChartSkeleton = (props) => {
+const CompactHorizontalBarChartSkeleton = (_props) => {
   const SChartSkeleton = Root;
   return sstyled(styles)(
     <SChartSkeleton

@@ -1,21 +1,21 @@
-import React from 'react';
 import { Plot, Bubble, XAxis, YAxis } from '@semcore/d3-chart';
-import { scaleLinear } from 'd3-scale';
 import { Text } from '@semcore/typography';
+import { scaleLinear } from 'd3-scale';
+import React from 'react';
 
 const Demo = () => {
   const MARGIN = 40;
-  const LEFT_MARGIN = 60;  
-  const BOTTOM_MARGIN = 60; 
+  const LEFT_MARGIN = 60;
+  const BOTTOM_MARGIN = 60;
   const width = 500;
   const height = 300;
 
   const xScale = scaleLinear()
-    .range([LEFT_MARGIN, width - MARGIN])  
+    .range([LEFT_MARGIN, width - MARGIN])
     .domain([-4, 14]);
 
   const yScale = scaleLinear()
-    .range([height - BOTTOM_MARGIN, MARGIN]) 
+    .range([height - BOTTOM_MARGIN, MARGIN])
     .domain([-4, 14]);
 
   return (
@@ -34,9 +34,21 @@ const Demo = () => {
             children: (
               <>
                 <Bubble.Tooltip.Title>Data</Bubble.Tooltip.Title>
-                <Text tag='div'>X axis {data[index].x}</Text>
-                <Text tag='div'>Y axis {data[index].y}</Text>
-                <Text tag='div'>Value {data[index].value}</Text>
+                <Text tag='div'>
+                  X axis
+                  {' '}
+                  {data[index].x}
+                </Text>
+                <Text tag='div'>
+                  Y axis
+                  {' '}
+                  {data[index].y}
+                </Text>
+                <Text tag='div'>
+                  Value
+                  {' '}
+                  {data[index].value}
+                </Text>
               </>
             ),
           };

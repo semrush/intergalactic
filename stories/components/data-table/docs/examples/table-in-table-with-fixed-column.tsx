@@ -1,12 +1,12 @@
-import React from 'react';
 import { DataTable, ACCORDION } from '@semcore/data-table';
+import React from 'react';
 
 const Demo = () => {
   return (
     <DataTable
       data={data}
-      aria-label={'Parent with fixed column'}
-      h={'100%'}
+      aria-label='Parent with fixed column'
+      h='100%'
       wMax={600}
       columns={[
         { name: 'keyword', children: 'Keyword', gtcWidth: '400px', fixed: 'left' },

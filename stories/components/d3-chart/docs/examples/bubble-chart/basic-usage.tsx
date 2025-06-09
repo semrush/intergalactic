@@ -1,8 +1,8 @@
-import React from 'react';
 import { Chart } from '@semcore/d3-chart';
+import React from 'react';
 
 const Demo = () => {
-  return <Chart.Bubble data={data} plotWidth={500} plotHeight={200} aria-label={'Bubble chart'} />;
+  return <Chart.Bubble data={data} plotWidth={500} plotHeight={200} aria-label='Bubble chart' />;
 };
 
 const data = [

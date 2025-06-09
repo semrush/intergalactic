@@ -1,8 +1,10 @@
-import esbuild from 'esbuild';
-import dotenv from 'dotenv';
 import http from 'http';
-import { websiteEsbuildConfig } from './esbuild.config';
+
+import dotenv from 'dotenv';
+import esbuild from 'esbuild';
 import picocolros from 'picocolors';
+
+import { websiteEsbuildConfig } from './esbuild.config';
 
 dotenv.config();
 

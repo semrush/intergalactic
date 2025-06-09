@@ -1,9 +1,9 @@
-import React from 'react';
-import NeighborLocation from '@semcore/ui/neighbor-location';
-import InputNumber from '@semcore/ui/input-number';
 import Button from '@semcore/ui/button';
 import { Flex } from '@semcore/ui/flex-box';
+import InputNumber from '@semcore/ui/input-number';
+import NeighborLocation from '@semcore/ui/neighbor-location';
 import { Text } from '@semcore/ui/typography';
+import React from 'react';
 
 const Demo = () => {
   const [value, setValue] = React.useState('');

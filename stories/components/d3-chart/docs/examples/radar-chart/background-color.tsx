@@ -1,6 +1,6 @@
-import React from 'react';
 import { Plot, Radar, colors } from '@semcore/d3-chart';
 import { scaleLinear } from 'd3-scale';
+import React from 'react';
 
 const Demo = () => {
   const width = 500;

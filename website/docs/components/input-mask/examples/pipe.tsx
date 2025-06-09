@@ -1,7 +1,7 @@
-import React from 'react';
 import { Box, Flex } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
 import InputMask from '@semcore/input-mask';
+import { Text } from '@semcore/typography';
+import React from 'react';
 
 const Demo = () => {
   const expireDateInput = React.useRef(null);
@@ -71,14 +71,14 @@ const pipeExpireDate = (maskedValue: string, conf: { rawValue: string }) => {
   }
 
   const indexesOfPipedChars = [];
-  const firstMonthDigit = parseInt(value[0], 10);
+  const firstMonthDigit = Number.parseInt(value[0], 10);
   if (firstMonthDigit > 1) {
     value = `0${value[0]}/${value.split('/')[1]}`;
     indexesOfPipedChars.push(0);
   }
   const [month, year] = value
     .split('/')
-    .map((chunk) => (chunk.includes('_') ? undefined : parseInt(chunk, 10)));
+    .map((chunk) => (chunk.includes('_') ? undefined : Number.parseInt(chunk, 10)));
   const currentYear = new Date().getFullYear() % 100;
   const currentMonth = new Date().getMonth() + 1;
 

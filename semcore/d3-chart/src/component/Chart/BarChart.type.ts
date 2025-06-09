@@ -1,9 +1,10 @@
-import React from 'react';
-import { Intergalactic } from '@semcore/core';
-import { Flex } from '@semcore/flex-box';
-import { ScaleBand, ScaleLinear, ScaleTime } from 'd3-scale';
-import { BaseChartProps } from './AbstractChart.type';
-import { LegendItemKey } from '../ChartLegend/LegendItem/LegendItem.type';
+import type { Intergalactic } from '@semcore/core';
+import type { Flex } from '@semcore/flex-box';
+import type { ScaleBand, ScaleLinear, ScaleTime } from 'd3-scale';
+import type React from 'react';
+
+import type { BaseChartProps } from './AbstractChart.type';
+import type { LegendItemKey } from '../ChartLegend/LegendItem/LegendItem.type';
 
 type TrendItem = {
   x: number;

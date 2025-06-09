@@ -1,6 +1,6 @@
-import React, { useRef } from 'react';
 import Button from '@semcore/button';
 import Popper from '@semcore/popper';
+import React, { useRef } from 'react';
 
 const style = { background: '#FFF', color: '#000', border: '1px solid #000', padding: '10px' };
 

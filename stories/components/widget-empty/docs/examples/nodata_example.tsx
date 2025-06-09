@@ -1,11 +1,11 @@
-import React from 'react';
-import Select from '@semcore/select';
-import { I18nProvider } from '@semcore/core/lib/utils/enhances/WithI18n';
-import { NoData } from '@semcore/widget-empty';
-import Card from '@semcore/card';
 import Button from '@semcore/button';
+import Card from '@semcore/card';
+import { I18nProvider } from '@semcore/core/lib/utils/enhances/WithI18n';
 import { Box } from '@semcore/flex-box';
+import Select from '@semcore/select';
 import { Text } from '@semcore/typography';
+import { NoData } from '@semcore/widget-empty';
+import React from 'react';
 
 const options = [
   'en',

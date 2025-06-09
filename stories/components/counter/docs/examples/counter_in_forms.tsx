@@ -1,8 +1,8 @@
-import React from 'react';
-import { Flex, ScreenReaderOnly } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
-import Textarea from '@semcore/textarea';
 import Counter from '@semcore/counter';
+import { Flex, ScreenReaderOnly } from '@semcore/flex-box';
+import Textarea from '@semcore/textarea';
+import { Text } from '@semcore/typography';
+import React from 'react';
 
 const maxSymbols = 150;
 
@@ -41,11 +41,11 @@ const Demo = () => {
   return (
     <Flex direction='column' w={350}>
       <Flex mb={2} justifyContent='space-between'>
-        <Flex alignItems={'center'}>
+        <Flex alignItems='center'>
           <Text size={200} tag='label' htmlFor='limited-text-field'>
             Project description
           </Text>
-          <Counter ml={1} theme={theme} id={'counter-for-textarea'}>
+          <Counter ml={1} theme={theme} id='counter-for-textarea'>
             {value.length}
             <span aria-hidden='true'>/</span>
             <ScreenReaderOnly>of</ScreenReaderOnly>
@@ -55,7 +55,7 @@ const Demo = () => {
             {theme === 'danger' && <ScreenReaderOnly>Limit is exceeded</ScreenReaderOnly>}
           </Counter>
         </Flex>
-        <Text size={200} color='text-secondary' id={'optional-for-textarea'}>
+        <Text size={200} color='text-secondary' id='optional-for-textarea'>
           optional
         </Text>
       </Flex>
@@ -65,8 +65,13 @@ const Demo = () => {
         aria-describedby='optional-for-textarea counter-for-textarea'
         onChange={handleChange}
       />
-      <ScreenReaderOnly aria-live={'polite'} aria-atomic={true}>
-        {valueLength} of {maxSymbols} allowed characters
+      <ScreenReaderOnly aria-live='polite' aria-atomic={true}>
+        {valueLength}
+        {' '}
+        of
+        {maxSymbols}
+        {' '}
+        allowed characters
         {valueLength >= 140 && valueLength <= 150 && (
           <ScreenReaderOnly>Limit is almost reached</ScreenReaderOnly>
         )}

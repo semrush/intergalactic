@@ -1,4 +1,5 @@
 import React from 'react';
+
 import canUseDOM from '../canUseDOM';
 import { useUID } from '../uniqueID';
 

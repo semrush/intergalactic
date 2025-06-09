@@ -1,5 +1,5 @@
-import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import { expect, test } from '@semcore/testing-utils/playwright';
 
 test.describe('Checkbox states and styles', () => {
   test('Verify all checkbox states', async ({ page }) => {
@@ -9,7 +9,7 @@ test.describe('Checkbox states and styles', () => {
     await page.setContent(htmlContent);
     const defaultFlex = page.locator('[data-testid="default"]');
     await test.step('Verify checkbox default states', async () => {
-      //verify L checkbox styles
+      // verify L checkbox styles
       await expect(defaultFlex.locator('[data-ui-name="Value.CheckMark"]').nth(2)).toHaveCSS(
         'height',
         '20px',
@@ -27,7 +27,7 @@ test.describe('Checkbox states and styles', () => {
         '16px',
       );
 
-      //verify M checkbox styles
+      // verify M checkbox styles
       await expect(defaultFlex.locator('[data-ui-name="Value.CheckMark"]').nth(3)).toHaveCSS(
         'height',
         '16px',

@@ -1,8 +1,8 @@
-import React from 'react';
-import Wizard from '@semcore/wizard';
 import Button from '@semcore/button';
 import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
+import Wizard from '@semcore/wizard';
+import React from 'react';
 
 const steps = [{ title: 'Location' }, { title: 'Keywords' }, { title: 'Schedule' }];
 
@@ -32,17 +32,17 @@ const Demo = () => {
         </Wizard.Sidebar>
         <Wizard.Content tag={Flex} direction='column' justifyContent='space-between'>
           <Wizard.Step step={1}>
-            <Text size={500} tag={'h3'}>
+            <Text size={500} tag='h3'>
               {steps[0].title}
             </Text>
           </Wizard.Step>
           <Wizard.Step step={2}>
-            <Text size={500} tag={'h3'}>
+            <Text size={500} tag='h3'>
               {steps[1].title}
             </Text>
           </Wizard.Step>
           <Wizard.Step step={3}>
-            <Text size={500} tag={'h3'}>
+            <Text size={500} tag='h3'>
               {steps[2].title}
             </Text>
           </Wizard.Step>
@@ -55,7 +55,7 @@ const Demo = () => {
             )}
             {step !== steps.length && (
               <Wizard.StepNext
-                ml={'auto'}
+                ml='auto'
                 onActive={() => setStep(step + 1)}
                 stepName={steps[step].title}
               />

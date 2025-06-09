@@ -1,6 +1,5 @@
-import { expect, voiceOverTest as test } from '@semcore/testing-utils/playwright';
-
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import { expect, voiceOverTest as test } from '@semcore/testing-utils/playwright';
 
 test.skip('Users can interact with DataTable virtual scroll via VoiceOver', async ({
   page,

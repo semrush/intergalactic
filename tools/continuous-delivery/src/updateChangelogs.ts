@@ -1,14 +1,17 @@
-import { VersionPatch } from './makeVersionPatches';
 import { resolve as resolvePath } from 'path';
-import fs from 'fs-extra';
+
+import type {
+  Changelog } from '@semcore/changelog-handler';
 import {
-  Changelog,
   componentChangelogParser,
   serializeComponentChangelog,
   toMarkdown,
   updateReleaseChangelog,
 } from '@semcore/changelog-handler';
 import dayjs from 'dayjs';
+import fs from 'fs-extra';
+
+import type { VersionPatch } from './makeVersionPatches';
 import { formatMarkdown, log } from './utils';
 
 export const updateChangelogs = async (versionPatches: VersionPatch[]) => {

@@ -1,10 +1,10 @@
-import React from 'react';
-import DnD from '@semcore/drag-and-drop';
 import Card from '@semcore/card';
-import { Flex } from '@semcore/flex-box';
 import { Chart } from '@semcore/d3-chart';
+import DnD from '@semcore/drag-and-drop';
+import { Flex } from '@semcore/flex-box';
 import MathPlusL from '@semcore/icon/MathPlus/l';
 import { Text } from '@semcore/typography';
+import React from 'react';
 
 const stableRandom = (seed: number) => {
   let randomIndex = seed;
@@ -33,7 +33,7 @@ const Widget: React.FC<{ title: string }> = ({ title }) => {
       <Card.Body>
         <Chart.Bar
           duration={0}
-          groupKey={'date'}
+          groupKey='date'
           data={data}
           plotWidth={200}
           plotHeight={200}
@@ -75,14 +75,18 @@ const Demo = () => {
   );
 
   return (
-    <DnD tag={Flex} flexWrap gap={4} onDnD={handleDnD} aria-label={'Draggable charts'}>
+    <DnD tag={Flex} flexWrap gap={4} onDnD={handleDnD} aria-label='Draggable charts'>
       {widgets.map((id, index) => {
         if (!id) {
           return (
-            <DnD.DropZone key={index} aria-label={`Drop zone ${index + 1}`} style={{
-              border: '1px dashed var(--intergalactic-border-primary, #c4c7cf)',
-              borderRadius: '6px',
-            }}>
+            <DnD.DropZone
+              key={index}
+              aria-label={`Drop zone ${index + 1}`}
+              style={{
+                border: '1px dashed var(--intergalactic-border-primary, #c4c7cf)',
+                borderRadius: '6px',
+              }}
+            >
               <Flex
                 alignItems='center'
                 gap={1}
@@ -109,9 +113,15 @@ const Demo = () => {
         const widget = widgetsSetup.find((widget) => widget.id === id)!;
 
         return (
-          <DnD.Draggable placement='top' key={id} aria-label={`${widget.title} widget`} h='100%' style={{
-            borderRadius: '6px',
-          }}>
+          <DnD.Draggable
+            placement='top'
+            key={id}
+            aria-label={`${widget.title} widget`}
+            h='100%'
+            style={{
+              borderRadius: '6px',
+            }}
+          >
             <Widget title={widget.title} />
           </DnD.Draggable>
         );

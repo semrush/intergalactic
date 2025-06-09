@@ -1,7 +1,7 @@
-import React from 'react';
+import { Flex } from '@semcore/flex-box';
 import InputTags from '@semcore/input-tags';
 import { Text } from '@semcore/typography';
-import { Flex } from '@semcore/flex-box';
+import React from 'react';
 
 const isValidEmail = (value: string) => /.+@.+\..+/i.test(value.toLowerCase());
 

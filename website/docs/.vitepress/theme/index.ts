@@ -1,17 +1,18 @@
 // https://vitepress.dev/guide/custom-theme
+import mediumZoom from 'medium-zoom';
+import { useRoute } from 'vitepress';
 import Theme from 'vitepress/theme';
 import './style.css';
-import Sandbox from './Sandbox.vue';
-import LegacyEmailsView from './LegacyEmailsView.vue';
-import PageTopTabs from './PageTopTabs.vue';
-import TypesView from './TypesView.vue';
-import Page404 from './Page404.vue';
+import { h, onMounted, watch, nextTick } from 'vue';
+
 import DevportalLogo from './DevportalLogo.vue';
 import DocFooter from './DocFooter.vue';
 import DosDonts from './DosDonts.vue';
-import mediumZoom from 'medium-zoom';
-import { h, onMounted, watch, nextTick } from 'vue';
-import { useRoute } from 'vitepress';
+import LegacyEmailsView from './LegacyEmailsView.vue';
+import Page404 from './Page404.vue';
+import PageTopTabs from './PageTopTabs.vue';
+import Sandbox from './Sandbox.vue';
+import TypesView from './TypesView.vue';
 
 export default {
   ...Theme,

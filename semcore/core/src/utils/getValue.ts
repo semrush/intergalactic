@@ -6,7 +6,7 @@ export default function getValue(obj: any, path: string | string[], def?: any) {
     paths
       .split('.')
       .filter(Boolean)
-      // biome-ignore lint/suspicious/noAssignInExpressions:
+
       .every((step: string) => (obj = obj[step]) !== undefined)
       ? obj
       : def

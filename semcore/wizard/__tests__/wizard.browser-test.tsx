@@ -1,12 +1,12 @@
-import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import { expect, test } from '@semcore/testing-utils/playwright';
 
 const locators = {
   trigger: (page: any, name = 'Open wizard') => page.getByRole('button', { name }),
-  modal: (page: any) => page.locator("div[data-ui-name='Wizard']"),
-  sidebar: (page: any) => page.locator("[data-ui-name='Wizard.Sidebar']"),
-  stepperTabs: (page: any) => page.locator("[data-ui-name='Wizard.Stepper']"),
-  contentPanel: (page: any) => page.locator("[data-ui-name='Wizard.Content']"),
+  modal: (page: any) => page.locator('div[data-ui-name=\'Wizard\']'),
+  sidebar: (page: any) => page.locator('[data-ui-name=\'Wizard.Sidebar\']'),
+  stepperTabs: (page: any) => page.locator('[data-ui-name=\'Wizard.Stepper\']'),
+  contentPanel: (page: any) => page.locator('[data-ui-name=\'Wizard.Content\']'),
   nextButton: (page: any, name: string) => page.getByRole('button', { name }),
   prevButton: (page: any, name: string) => page.getByRole('button', { name }),
   input: (page: any, name: string) => page.getByRole('textbox', { name }),
@@ -464,7 +464,7 @@ test.describe('Custom stepper example', () => {
     await test.step('Open modal using keyboard and verify focus', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
-      await page.waitForTimeout(50);
+      await page.waitForTimeout(150);
       await page.keyboard.press('Tab');
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowDown');
@@ -477,13 +477,13 @@ test.describe('Custom stepper example', () => {
     });
 
     await test.step('Verify step text changes when selection radios ', async () => {
-      await expect(page.locator("input[type='radio'][value='Manually']")).toBeFocused();
+      await expect(page.locator('input[type=\'radio\'][value=\'Manually\']')).toBeFocused();
       await page.keyboard.press('Space');
       await expect(lastStep).toHaveText(/2\.1.*Import source.*Manually/);
       await expect(page).toHaveScreenshot();
       await page.keyboard.press('ArrowDown');
       await expect(lastStep).toHaveText(/2\.1.*Import source.*From TXT/);
-      await expect(page.locator("input[type='radio'][value='From TXT']")).toBeFocused();
+      await expect(page.locator('input[type=\'radio\'][value=\'From TXT\']')).toBeFocused();
     });
 
     await test.step('Verify last step text not changes navigate to other step', async () => {

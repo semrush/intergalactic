@@ -1,15 +1,15 @@
-import React from 'react';
 import { Chart } from '@semcore/d3-chart';
+import React from 'react';
 
 const Demo = () => {
   return (
     <Chart.CompactHorizontalBar
-      y={'category'}
-      x={'value'}
+      y='category'
+      x='value'
       data={data}
       plotWidth={500}
       plotHeight={450}
-      aria-label={'CompactHorizontalBar chart'}
+      aria-label='CompactHorizontalBar chart'
     />
   );
 };

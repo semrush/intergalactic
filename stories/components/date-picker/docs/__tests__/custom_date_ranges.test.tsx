@@ -1,4 +1,4 @@
-import { expect, userEvent, within } from '@storybook/test';
+import { expect, userEvent, within } from 'storybook/test';
 
 export async function CustomDateRangesTest({ canvasElement }: { canvasElement: HTMLElement }) {
   const canvas = within(canvasElement);
@@ -10,5 +10,4 @@ export async function CustomDateRangesTest({ canvasElement }: { canvasElement: H
 
   const firstTrigger = triggers[2] as HTMLElement;
   await userEvent.click(firstTrigger);
-
 }

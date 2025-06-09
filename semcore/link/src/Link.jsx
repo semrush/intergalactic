@@ -1,13 +1,13 @@
-import React from 'react';
 import { createComponent, Component, Root, sstyled, CORE_INSTANCE } from '@semcore/core';
-import { Text } from '@semcore/typography';
+import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
+import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
+import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
+import hasLabels from '@semcore/core/lib/utils/hasLabels';
+import logger from '@semcore/core/lib/utils/logger';
 import { Box } from '@semcore/flex-box';
 import { Hint } from '@semcore/tooltip';
-import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
-import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
-import logger from '@semcore/core/lib/utils/logger';
-import hasLabels from '@semcore/core/lib/utils/hasLabels';
-import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
+import { Text } from '@semcore/typography';
+import React from 'react';
 
 import style from './style/link.shadow.css';
 
@@ -16,6 +16,7 @@ class RootLink extends Component {
   static defaultProps = {
     noWrap: true,
   };
+
   static style = style;
   static enhance = [keyboardFocusEnhance(), resolveColorEnhance()];
   containerRef = React.createRef();
@@ -78,7 +79,7 @@ class RootLink extends Component {
       addonRight: AddonRight,
       Children,
       title,
-      ['aria-label']: ariaLabel,
+      'aria-label': ariaLabel,
       hintPlacement,
     } = this.asProps;
     // @ts-ignore
@@ -86,34 +87,38 @@ class RootLink extends Component {
 
     const children = sstyled(styles)(
       <>
-        {AddonLeft ? (
-          <Link.Addon>
-            <AddonLeft />
-          </Link.Addon>
-        ) : null}
+        {AddonLeft
+          ? (
+              <Link.Addon>
+                <AddonLeft />
+              </Link.Addon>
+            )
+          : null}
         {addonTextChildren(Children, Link.Text, Link.Addon)}
-        {AddonRight ? (
-          <Link.Addon>
-            <AddonRight />
-          </Link.Addon>
-        ) : null}
+        {AddonRight
+          ? (
+              <Link.Addon>
+                <AddonRight />
+              </Link.Addon>
+            )
+          : null}
       </>,
     );
 
     const hintContent = title ?? ariaLabel ?? this.state.ariaLabelledByContent ?? '';
 
     const linkProps = {
-      role: 'link',
-      tabIndex: disabled ? -1 : 0,
+      'role': 'link',
+      'tabIndex': disabled ? -1 : 0,
       'use:href': disabled ? undefined : href,
       'visually-disabled': disabled,
-      render: Text,
+      'render': Text,
       'text-color': resolveColor(color),
-      tag: 'a',
-      noWrapText: noWrap,
+      'tag': 'a',
+      'noWrapText': noWrap,
       'use:noWrap': false,
-      ref: this.containerRef,
-      __excludeProps: ['disabled', 'aria-disabled'],
+      'ref': this.containerRef,
+      '__excludeProps': ['disabled', 'aria-disabled'],
     };
 
     const hintProps = {

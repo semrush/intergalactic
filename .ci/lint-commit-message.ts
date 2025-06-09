@@ -1,7 +1,9 @@
 #!/usr/bin/env tsm
 
 import fs from 'fs/promises';
+
 import pc from 'picocolors';
+
 import { allowedScopes } from '../tools/continuous-delivery/src/utils/allowedScopes';
 
 const commitMessageFilePath = [...process.argv].pop();
@@ -10,7 +12,6 @@ const commitMessage = await fs.readFile(commitMessageFilePath, 'utf-8');
 const commitTitle = commitMessage.split('\n')[0];
 
 const outputError = (message: string) => {
-  // biome-ignore lint/suspicious/noConsoleLog:
   console.log(
     `\n${pc.red('Invalid commit message!')} ${message}\nGot commit message: ${pc.gray(
       commitMessage,

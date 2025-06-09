@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import A11yFormattingExample from './examples/d3-chart/a11y-formatting';
 import AdaptiveChartExample from './examples/d3-chart/adaptive-chart';
@@ -18,7 +18,6 @@ import ReferenceLineExample from './examples/d3-chart/reference-line';
 import SynchronousChartsExample from './examples/d3-chart/synchronous-charts';
 import TooltipExample from './examples/d3-chart/tooltip';
 import TooltipControlExample from './examples/d3-chart/tooltip-control';
-
 
 const meta: Meta = {
   title: 'Components/d3Charts/Documentation/D3-Chart',

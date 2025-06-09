@@ -1,14 +1,14 @@
-import React from 'react';
 import { createComponent, Component, CONTEXT_COMPONENT, sstyled, Root } from '@semcore/core';
-import { Flex, Box, InvalidStateBox } from '@semcore/flex-box';
 import assignProps, { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import getInputProps, { inputProps } from '@semcore/core/lib/utils/inputProps';
+import logger from '@semcore/core/lib/utils/logger';
 import { useColorResolver } from '@semcore/core/lib/utils/use/useColorResolver';
+import { Flex, Box, InvalidStateBox } from '@semcore/flex-box';
+import { Text as TypographyText } from '@semcore/typography';
+import React from 'react';
 
 import style from './style/radio.shadow.css';
-import logger from '@semcore/core/lib/utils/logger';
-import { Text as TypographyText } from '@semcore/typography';
 
 class RadioGroupRoot extends Component {
   static displayName = 'RadioGroup';
@@ -114,14 +114,16 @@ class RadioRoot extends Component {
 
     return sstyled(styles)(
       <SRadio render={Box} tag='label' __excludeProps={['onChange', 'label', 'disabled']}>
-        {hasChildren ? (
-          <Children />
-        ) : (
-          <>
-            <Radio.Value />
-            <Radio.Text />
-          </>
-        )}
+        {hasChildren
+          ? (
+              <Children />
+            )
+          : (
+              <>
+                <Radio.Value />
+                <Radio.Text />
+              </>
+            )}
       </SRadio>,
     );
   }
@@ -132,6 +134,7 @@ class ValueRoot extends Component {
     includeInputProps: inputProps,
     defaultChecked: false,
   };
+
   static enhance = [resolveColorEnhance()];
   static displayName = 'Value';
   static contextType = RadioGroup[CONTEXT_COMPONENT];
@@ -163,7 +166,7 @@ class ValueRoot extends Component {
     };
 
     if (currentValue !== undefined) {
-      const { onChange, onClick } = this.props;
+      const { onChange } = this.props;
 
       controlProps.checked = currentValue === inputValue;
       controlProps.onChange = callAllEventHandlers(onChange, this.bindHandlerChange(inputValue));
@@ -187,7 +190,7 @@ class ValueRoot extends Component {
       ...other
     } = this.asProps;
     const [commonControlProps, radioMarkProps] = getInputProps(other, includeInputProps);
-    const { children, Children, ...propsWithoutChildren } = radioMarkProps;
+    const { children: _children, Children: _Children, ...propsWithoutChildren } = radioMarkProps;
     const inputValue = value ?? '';
 
     const markProps = {
@@ -217,6 +220,7 @@ class ValueRoot extends Component {
       this.asProps.hoistDisabled(this.asProps.disabled);
     }
   }
+
   componentDidMount() {
     if (this.asProps.rootDisabled !== this.asProps.disabled) {
       this.asProps.hoistDisabled(this.asProps.disabled);

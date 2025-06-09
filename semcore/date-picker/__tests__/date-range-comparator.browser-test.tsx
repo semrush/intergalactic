@@ -1,5 +1,5 @@
-import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import { expect, test } from '@semcore/testing-utils/playwright';
 
 test.describe('DateRangeComparator range', () => {
   test('Verify roles and attributes', async ({ page }) => {
@@ -681,7 +681,7 @@ test.describe('Date Range comparator with advanced use', () => {
 
 test.describe('Date range comparator props', () => {
   test('Verify all date range comparator props work good', async ({ page, browserName }) => {
-    if (browserName === 'webkit') return; //skipped for webkit because of unstable focus outline on the dialog
+    if (browserName === 'webkit') return; // skipped for webkit because of unstable focus outline on the dialog
     const standPath =
       'stories/components/date-picker/tests/examples/date-range-comparator-props.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');

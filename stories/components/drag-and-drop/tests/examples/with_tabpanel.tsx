@@ -1,8 +1,8 @@
-import React from 'react';
-import DnD from '@semcore/drag-and-drop';
-import TabPanel from '@semcore/tab-panel';
 import Counter from '@semcore/counter';
+import DnD from '@semcore/drag-and-drop';
 import Flag from '@semcore/flags';
+import TabPanel from '@semcore/tab-panel';
+import React from 'react';
 
 const renderTab = (tab: string) => {
   if (tab === 'overview') {
@@ -10,7 +10,9 @@ const renderTab = (tab: string) => {
   } else if (tab === 'activity') {
     return (
       <>
-        <TabPanel.Item.Text>Activity</TabPanel.Item.Text> <Counter>23</Counter>
+        <TabPanel.Item.Text>Activity</TabPanel.Item.Text>
+        {' '}
+        <Counter>23</Counter>
       </>
     );
   } else if (tab === 'users') {
@@ -66,7 +68,7 @@ const Demo = () => {
       value={currentTab}
       onChange={(tab: string | number | boolean) => setCurrentTab(tab.toString())}
       onDnD={handleDnD}
-      aria-label={'drag-and-drop container'}
+      aria-label='drag-and-drop container'
     >
       {tabs.map((tab) => (
         <DnD.Draggable

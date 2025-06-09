@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import BasicExample from './examples/radial-tree-chart/basic';
 import BasicUsageExample from './examples/radial-tree-chart/basic-usage';

@@ -1,8 +1,8 @@
-import React, { useCallback, useState } from 'react';
-import DropdownMenu from '@semcore/dropdown-menu';
 import Button from '@semcore/button';
+import DropdownMenu from '@semcore/dropdown-menu';
 import ChevronRightIcon from '@semcore/icon/ChevronRight/m';
 import Modal from '@semcore/ui/modal';
+import React, { useCallback, useState } from 'react';
 
 function SomeFeatureComponent() {
   const [visible, setVisible] = useState(false);

@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import KnownCountryAndNumberFormatExample from './examples/known_country_and_number_format';
 import KnownCountryButNumberFormatUnknownExample from './examples/known_country_but_the_number_format_is_unknown';

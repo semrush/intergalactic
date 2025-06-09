@@ -1,8 +1,9 @@
-import React from 'react';
 import { cleanup, fireEvent, render, act } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
-import Tooltip from '../src';
-import { waitFor } from '@storybook/test';
+import React from 'react';
+import { waitFor } from 'storybook/test';
+
+import Tooltip, { Hint, DescriptionTooltip } from '../src';
 
 describe('Tooltip', () => {
   beforeEach(cleanup);
@@ -107,8 +108,7 @@ describe('Tooltip', () => {
   });
 });
 
-//smoke for Hint и DescriptionTooltip
-import { Hint, DescriptionTooltip } from '../src';
+// smoke for Hint и DescriptionTooltip
 
 describe('Hint', () => {
   test('Verify supports ref', () => {

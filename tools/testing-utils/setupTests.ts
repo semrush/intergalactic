@@ -1,12 +1,13 @@
-import { expect, vi } from './vitest';
-import * as axeMatchers from 'vitest-axe/matchers';
 import {
   toHaveStyle,
   toHaveFocus,
   toHaveAttribute,
   toBeInTheDocument,
 } from '@testing-library/jest-dom/matchers';
+import * as axeMatchers from 'vitest-axe/matchers';
+
 import { toMatchImageSnapshot } from './toMatchImageSnapshot';
+import { expect, vi } from './vitest';
 expect.extend({
   toMatchImageSnapshot,
   toHaveStyle,

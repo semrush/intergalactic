@@ -1,8 +1,8 @@
-import React from 'react';
-import { Box } from '@semcore/flex-box';
 import Button from '@semcore/button';
 import Card from '@semcore/card';
+import { Box } from '@semcore/flex-box';
 import WidgetEmpty, { getIconPath } from '@semcore/widget-empty';
+import React from 'react';
 
 const Demo = () => {
   return (

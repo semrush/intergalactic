@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import DefaultSummaryExample from './examples/default-summary-example';
 import SummaryWithErrorExample from './examples/summary-with-error';

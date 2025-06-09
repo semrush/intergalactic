@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { InstantSearch } from 'react-instantsearch/dom';
-import { connectAutoComplete } from 'react-instantsearch/connectors';
-import algoliasearch from 'algoliasearch/lite';
-import { Text } from '@semcore/typography';
-import IconGroup, { IconGroups, ListIcons, IconDetailsPanel } from './icon-group';
-import Input from '@semcore/input';
 import { ButtonLink } from '@semcore/button';
-import { NoData } from '@semcore/widget-empty';
-import SearchM from '@semcore/icon/Search/m';
 import CloseM from '@semcore/icon/Close/m';
+import SearchM from '@semcore/icon/Search/m';
+import Input from '@semcore/input';
+import { Text } from '@semcore/typography';
+import { NoData } from '@semcore/widget-empty';
+import algoliasearch from 'algoliasearch/lite';
+import React, { useState, useEffect } from 'react';
+import { connectAutoComplete } from 'react-instantsearch/connectors';
+import { InstantSearch } from 'react-instantsearch/dom';
+
+import IconGroup, { IconGroups, ListIcons, IconDetailsPanel } from './icon-group';
 import { algoliaConfig } from '../../../algoliaConfig';
 import { logEvent } from '../../.vitepress/theme/amplitude/amplitude';
 
@@ -48,7 +49,7 @@ const SuggestSearch = connectAutoComplete(
           onChange={handleChangeValue}
           value={currentRefinement}
           placeholder='What icon are you looking for?'
-          aria-label={'Search icons'}
+          aria-label='Search icons'
           aria-describedby='search-message'
         />
         <Input.Addon
@@ -100,38 +101,42 @@ export default function ({ icons, old, json }) {
         setSelectedIcon={setSelectedIcon}
         ref={iconsContainerRef}
       >
-        {inputValue.length ? (
-          filterIcons.length ? (
-            <ListIcons data={filterIcons} aria-label={'Search results'} />
-          ) : (
-            <NoData
-              type='nothing-found'
-              description='Try entering another keyword, for example "key" or "play".'
-              style={{
-                borderRadius: 'var(--intergalactic-rounded-medium)',
-                border: 'solid 1px var(--intergalactic-border-secondary)',
-              }}
-              py={10}
-            />
-          )
-        ) : (
-          <>
-            <IconGroup title='Navigation' />
-            <IconGroup title='Action' />
-            <IconGroup title='Status' />
-            <IconGroup title='Social' />
-            <IconGroup title='File' />
-            <IconGroup title='Hardware' />
-            <IconGroup title='Format' />
-            <IconGroup title='Map' />
-            <IconGroup title='AI' />
-            <IconGroup title='SERP Features' />
-            <IconGroup title='Misc' />
-            {!old && <IconGroup title='Brand' />}
-            <IconGroup title='Color' />
-            <IconGroup title='Pay' />
-          </>
-        )}
+        {inputValue.length
+          ? (
+              filterIcons.length
+                ? (
+                    <ListIcons data={filterIcons} aria-label='Search results' />
+                  )
+                : (
+                    <NoData
+                      type='nothing-found'
+                      description='Try entering another keyword, for example "key" or "play".'
+                      style={{
+                        borderRadius: 'var(--intergalactic-rounded-medium)',
+                        border: 'solid 1px var(--intergalactic-border-secondary)',
+                      }}
+                      py={10}
+                    />
+                  )
+            )
+          : (
+              <>
+                <IconGroup title='Navigation' />
+                <IconGroup title='Action' />
+                <IconGroup title='Status' />
+                <IconGroup title='Social' />
+                <IconGroup title='File' />
+                <IconGroup title='Hardware' />
+                <IconGroup title='Format' />
+                <IconGroup title='Map' />
+                <IconGroup title='AI' />
+                <IconGroup title='SERP Features' />
+                <IconGroup title='Misc' />
+                {!old && <IconGroup title='Brand' />}
+                <IconGroup title='Color' />
+                <IconGroup title='Pay' />
+              </>
+            )}
         <IconDetailsPanel
           name={selectedIcon}
           visible={selectedIcon !== null}

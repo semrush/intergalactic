@@ -1,5 +1,5 @@
-import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import { expect, test } from '@semcore/testing-utils/playwright';
 
 const checkStyles = async (element: any, styles: Record<string, string>) => {
   for (const [property, value] of Object.entries(styles) as [string, string][]) {
@@ -50,7 +50,7 @@ test.describe('Accordion in table', () => {
     await page.waitForTimeout(350);
 
     await page.keyboard.press('ArrowDown');
-    //verify the focus not swicthed to other cells by arrows when chart is focused
+    // verify the focus not swicthed to other cells by arrows when chart is focused
     await page.keyboard.press('ArrowRight');
     await page.keyboard.press('ArrowLeft');
     await page.keyboard.press('ArrowDown');

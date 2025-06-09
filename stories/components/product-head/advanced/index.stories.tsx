@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
 import ProductHead from '@semcore/product-head';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import LongLongTitleExample from './examples/long-long-title';
 

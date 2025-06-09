@@ -1,5 +1,4 @@
-import React from 'react';
-import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import {
   cleanup,
   render,
@@ -7,10 +6,10 @@ import {
   userEvent,
   screen,
 } from '@semcore/testing-utils/testing-library';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import React from 'react';
 
 import Dropdown from '../src';
-
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('dropdown Dependency imports', () => {
   runDependencyCheckTests('dropdown');
@@ -24,11 +23,11 @@ describe('Dropdown', () => {
   test('Verify not open popper by keyboard enter if interaction none', async ({ expect }) => {
     const spy = vi.fn();
     render(
-      <Dropdown onVisibleChange={spy} interaction={'none'}>
+      <Dropdown onVisibleChange={spy} interaction='none'>
         <Dropdown.Trigger>
           <div tabIndex={0}>Select trigger</div>
         </Dropdown.Trigger>
-        <Dropdown.Popper aria-label={'Dropdown popper description'} p={4}>
+        <Dropdown.Popper aria-label='Dropdown popper description' p={4}>
           Content
         </Dropdown.Popper>
       </Dropdown>,

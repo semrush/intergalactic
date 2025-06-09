@@ -1,14 +1,14 @@
-import React from 'react';
 import { Chart, colors } from '@semcore/d3-chart';
+import React from 'react';
 
 const Demo = () => {
   return (
     <Chart.Radar
       data={data}
-      groupKey={'categories'}
+      groupKey='categories'
       plotWidth={400}
       plotHeight={400}
-      aria-label={'Radar chart'}
+      aria-label='Radar chart'
     />
   );
 };

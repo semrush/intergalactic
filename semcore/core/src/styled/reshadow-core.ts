@@ -105,11 +105,9 @@ const getStyles = () => ({
   },
 });
 
-/* eslint-disable no-undef */
 const clearStyles = () => {
   serverStyles = '';
 };
-/* eslint-disable no-undef */
 
 const RESHADOW_ID = '__reshadow__';
 
@@ -219,13 +217,12 @@ function map(element) {
   let vars = null;
   const uses = currStyles[KEYS.__use__] || {};
 
-  // biome-ignore lint/style/noArguments:
   const len = arguments.length;
 
   let useProps;
 
   for (let i = len - 1; i > 0; i--) {
-    // biome-ignore lint/style/noArguments:
+    // eslint-disable-next-line prefer-rest-params
     const currProps = arguments[i];
 
     if (!currProps) continue;

@@ -1,14 +1,14 @@
-import React from 'react';
-import { createComponent, Component, sstyled, Root } from '@semcore/core';
-import SearchM from '@semcore/icon/Search/m';
-import CloseM from '@semcore/icon/Close/m';
-import Input from '@semcore/input';
 import { ButtonLink } from '@semcore/button';
-import { selectContext } from './context';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
+import CloseM from '@semcore/icon/Close/m';
+import SearchM from '@semcore/icon/Search/m';
+import Input from '@semcore/input';
+import React from 'react';
 
+import { selectContext } from './context';
 import style from './style/input-search.shadow.css';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 class InputSearchRoot extends Component {
   static displayName = 'InputSearch';
@@ -20,6 +20,7 @@ class InputSearchRoot extends Component {
     i18n: localizedMessages,
     locale: 'en',
   };
+
   inputRef = React.createRef();
   closeIconRef = React.createRef();
 
@@ -47,22 +48,23 @@ class InputSearchRoot extends Component {
     const { value, onChange, getI18nText, children: hasChildren } = this.asProps;
     return {
       value,
-      onChange: hasChildren ? onChange : undefined,
-      autoFocus: true,
-      ref: this.inputRef,
-      placeholder: getI18nText('Select.InputSearch.Value:placeholder'),
+      'onChange': hasChildren ? onChange : undefined,
+      'autoFocus': true,
+      'ref': this.inputRef,
+      'placeholder': getI18nText('Select.InputSearch.Value:placeholder'),
       'aria-label': getI18nText('Select.InputSearch.Value:aria-label'),
     };
   }
+
   getClearProps() {
     const { value, getI18nText } = this.asProps;
     return {
-      ref: this.closeIconRef,
+      'ref': this.closeIconRef,
       /* hide through css because the width of the input changes */
-      hide: !value,
+      'hide': !value,
       'aria-hidden': !value,
       'aria-label': getI18nText('clearSearch'),
-      onClick: this.handleClear,
+      'onClick': this.handleClear,
     };
   }
 
@@ -73,15 +75,17 @@ class InputSearchRoot extends Component {
 
     return sstyled(styles)(
       <SInputSearch size={size || this.context.size || 'm'} styles={styles}>
-        {hasChildren ? (
-          <Children />
-        ) : (
-          <>
-            <InputSearch.SearchIcon />
-            <Value render={InputSearch.Value} />
-            <InputSearch.Clear />
-          </>
-        )}
+        {hasChildren
+          ? (
+              <Children />
+            )
+          : (
+              <>
+                <InputSearch.SearchIcon />
+                <Value render={InputSearch.Value} />
+                <InputSearch.Clear />
+              </>
+            )}
       </SInputSearch>,
     );
   }
@@ -104,7 +108,7 @@ const SearchValue = (props) => {
 const SearchClear = (props) => {
   const SSearchClear = Root;
   const { styles } = props;
-  return sstyled(styles)(<SSearchClear render={ButtonLink} addonLeft={CloseM} use={'secondary'} />);
+  return sstyled(styles)(<SSearchClear render={ButtonLink} addonLeft={CloseM} use='secondary' />);
 };
 
 const InputSearch = createComponent(InputSearchRoot, {

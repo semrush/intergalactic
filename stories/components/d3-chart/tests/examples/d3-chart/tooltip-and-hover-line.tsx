@@ -1,8 +1,8 @@
-import React from 'react';
 import { Plot, Line, XAxis, YAxis, HoverLine, minMax } from '@semcore/d3-chart';
 import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import { scaleLinear, scaleTime } from 'd3-scale';
+import React from 'react';
 
 function formatDate(value: any, options: any) {
   return new Intl.DateTimeFormat('en', options).format(value);
@@ -37,7 +37,7 @@ const Demo = () => {
           })}
         </XAxis.Ticks>
       </XAxis>
-      <HoverLine.Tooltip x="time" wMin={100}>
+      <HoverLine.Tooltip x='time' wMin={100}>
         {({ xIndex }) => ({
           children: (
             <>
@@ -48,7 +48,7 @@ const Demo = () => {
                   day: 'numeric',
                 })}
               </HoverLine.Tooltip.Title>
-              <Flex justifyContent="space-between">
+              <Flex justifyContent='space-between'>
                 <HoverLine.Tooltip.Dot mr={4}>Line</HoverLine.Tooltip.Dot>
                 <Text bold>{data[xIndex].line}</Text>
               </Flex>
@@ -57,7 +57,7 @@ const Demo = () => {
           ),
         })}
       </HoverLine.Tooltip>
-      <Line x="time" y="line">
+      <Line x='time' y='line'>
         <Line.Dots display />
       </Line>
     </Plot>
@@ -67,7 +67,7 @@ const Demo = () => {
 const startDate = new Date('2024-01-01');
 const data = Array.from({ length: 20 }, (_, i) => ({
   time: new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate() + i),
-  line: Math.sin(i / 3) * 4 + 5, 
+  line: Math.sin(i / 3) * 4 + 5,
 }));
 
 export default Demo;

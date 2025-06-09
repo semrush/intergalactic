@@ -1,11 +1,11 @@
-import React from 'react';
-import { createComponent, ComponentType, assignProps, Root, sstyled } from '@semcore/core';
-import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
-import { Trend, CommonTrendProps } from './Trend';
-import { Box } from '@semcore/flex-box';
-
-import style from '../skeleton/skeleton.shadow.css';
+import { createComponent, type ComponentType, assignProps, Root, sstyled } from '@semcore/core';
 import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
+import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
+import { Box } from '@semcore/flex-box';
+import React from 'react';
+
+import { Trend, type CommonTrendProps } from './Trend';
+import style from '../skeleton/skeleton.shadow.css';
 
 type BarItem = {
   /**
@@ -86,9 +86,9 @@ class TrendBarRoot extends Trend<TrendBarProps, typeof TrendBarRoot.enhance> {
               >
                 {animate && !loading && (
                   <animate
-                    attributeName={'y'}
+                    attributeName='y'
                     values={`${this.defaultHeight};${this.defaultHeight - barItem.value}`}
-                    dur={'500ms'}
+                    dur='500ms'
                   />
                 )}
               </rect>

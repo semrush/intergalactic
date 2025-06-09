@@ -1,14 +1,13 @@
-import React from 'react';
-import { snapshot } from '@semcore/testing-utils/snapshot';
-import Ellipsis from '../src';
 import { Box } from '@semcore/flex-box';
-import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
-import { render, cleanup, fireEvent, act } from '@semcore/testing-utils/testing-library';
-import { axe } from '@semcore/testing-utils/axe';
-// @ts-ignore
 import Link from '@semcore/link';
-
+import { axe } from '@semcore/testing-utils/axe';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { render, cleanup, fireEvent, act } from '@semcore/testing-utils/testing-library';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import React from 'react';
+
+import Ellipsis from '../src';
 
 describe('ellipsis Dependency imports', () => {
   runDependencyCheckTests('ellipsis');
@@ -60,6 +59,7 @@ const mockResizeObserver = (rect: { width?: number; height?: number }) => {
     observe() {
       this.cb([{ contentRect: rect }]);
     }
+
     unobserve() {}
     disconnect() {}
   }

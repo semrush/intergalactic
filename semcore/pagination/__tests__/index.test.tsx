@@ -1,13 +1,12 @@
-import React from 'react';
-import { snapshot } from '@semcore/testing-utils/snapshot';
-import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
-import { render, fireEvent, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
-
-import Return from '@semcore/icon/Return/m';
-import Pagination from '../src';
 import Button from '@semcore/button';
-
+import Return from '@semcore/icon/Return/m';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { render, fireEvent, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import React from 'react';
+
+import Pagination from '../src';
 
 describe('pagination Dependency imports', () => {
   runDependencyCheckTests('pagination');
@@ -28,7 +27,7 @@ describe('Pagination', () => {
         </div>
         <div>
           DE:
-          <Pagination locale={'de'} currentPage={12345} totalPages={222333}>
+          <Pagination locale='de' currentPage={12345} totalPages={222333}>
             <Pagination.PageInput />
             <Pagination.TotalPages />
           </Pagination>
@@ -330,10 +329,10 @@ describe('Pagination.PageInput.Value', () => {
           <Pagination.PageInput>
             <Pagination.PageInput.Value data-testid='value' />
             {/* @ts-ignore */}
-            <Pagination.PageInput.Addon data-testid={'selectPageButton'} tag={Return} interactive />
+            <Pagination.PageInput.Addon data-testid='selectPageButton' tag={Return} interactive />
           </Pagination.PageInput>
         </Pagination>
-        <Button data-testid={'testButton'}>test button</Button>
+        <Button data-testid='testButton'>test button</Button>
       </>,
     );
 
@@ -377,7 +376,7 @@ describe('Pagination.PageInput.Value', () => {
             <Pagination.PageInput>
               <Pagination.PageInput.Value data-testid='paginationValue' />
             </Pagination.PageInput>
-            <Pagination.TotalPages data-testid={'totalPagesValue'} />
+            <Pagination.TotalPages data-testid='totalPagesValue' />
           </Pagination>
         </>
       );

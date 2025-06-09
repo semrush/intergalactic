@@ -1,5 +1,5 @@
-import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import { expect, test } from '@semcore/testing-utils/playwright';
 
 test('Flags have correct role and aria-label', async ({ page }) => {
   const standPath = 'stories/components/flags/docs/examples/aria-label.tsx';

@@ -1,10 +1,10 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import ModalWithSelectExample from './examples/modal_with_select';
+import ModaliFrameExample from './examples/modal_iframe';
 import OpenModalDynamicallyExample from './examples/modal_open_dynamically';
 import ModalPreventFocusExample from './examples/modal_prevent_focus';
-import ModaliFrameExample from './examples/modal_iframe';
 import ModalIconExample from './examples/modal_with_int_icon';
+import ModalWithSelectExample from './examples/modal_with_select';
 import OutsideClickExample from './examples/outside_click';
 
 const meta: Meta = {

@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import AddingAWrapperExample from './examples/adding-a-wrapper';
 import GroupedButtonExample from './examples/grouped-buttons';

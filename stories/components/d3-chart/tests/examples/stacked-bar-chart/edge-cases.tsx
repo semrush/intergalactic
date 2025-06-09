@@ -1,6 +1,6 @@
-import React from 'react';
 import { Plot, YAxis, XAxis, StackBar } from '@semcore/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
+import React from 'react';
 
 const MARGIN = 40;
 const width = 500;
@@ -71,10 +71,10 @@ const Demo = () => {
         <XAxis>
           <XAxis.Ticks />
         </XAxis>
-        <StackBar x="time">
-          <StackBar.Bar y="stack1" color='green' duration={0} />
-          <StackBar.Bar y="stack2" color='blue' duration={0} />
-          <StackBar.Bar y="stack3" color='yellow' duration={0} />
+        <StackBar x='time'>
+          <StackBar.Bar y='stack1' color='green' duration={0} />
+          <StackBar.Bar y='stack2' color='blue' duration={0} />
+          <StackBar.Bar y='stack3' color='yellow' duration={0} />
         </StackBar>
       </Plot>
 
@@ -87,14 +87,13 @@ const Demo = () => {
         <XAxis>
           <XAxis.Ticks />
         </XAxis>
-        <StackBar x="time">
-          <StackBar.Bar y="stack1" duration={0} />
-          <StackBar.Bar y="stack2" color='yellow' duration={0} />
-          <StackBar.Bar y="stack3" color='blue' duration={0} hMin={5} />
+        <StackBar x='time'>
+          <StackBar.Bar y='stack1' duration={0} />
+          <StackBar.Bar y='stack2' color='yellow' duration={0} />
+          <StackBar.Bar y='stack3' color='blue' duration={0} hMin={5} />
         </StackBar>
       </Plot>
 
-   
       <Plot data={data2} scale={buildScales(data2, [-4, 4])} width={width} height={height}>
         <YAxis>
           <YAxis.Ticks />
@@ -103,10 +102,10 @@ const Demo = () => {
         <XAxis>
           <XAxis.Ticks />
         </XAxis>
-        <StackBar x="time">
-          <StackBar.Bar y="stack1" color='red' duration={0} />
-          <StackBar.Bar y="stack2" color='blue'  duration={0} />
-          <StackBar.Bar y="stack3" color='yellow'  duration={0} />
+        <StackBar x='time'>
+          <StackBar.Bar y='stack1' color='red' duration={0} />
+          <StackBar.Bar y='stack2' color='blue' duration={0} />
+          <StackBar.Bar y='stack3' color='yellow' duration={0} />
         </StackBar>
       </Plot>
     </>

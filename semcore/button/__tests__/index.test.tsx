@@ -1,20 +1,19 @@
+import { Flex } from '@semcore/flex-box';
+import NeighborLocation from '@semcore/neighbor-location';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { render } from '@semcore/testing-utils/testing-library';
+import { expect, test, describe } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
-import { snapshot } from '@semcore/testing-utils/snapshot';
-import { expect, test, describe } from '@semcore/testing-utils/vitest';
-import { render } from '@semcore/testing-utils/testing-library';
-
-import NeighborLocation from '@semcore/neighbor-location';
-import { Flex } from '@semcore/flex-box';
 import Button from '../src';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('Button Dependency imports', () => {
   runDependencyCheckTests('button');
 });
 
 describe('Button', () => {
-  test.concurrent('Verify loading attributes', () => {
+  test('Verify loading attributes', () => {
     const { queryByTestId } = render(
       <Button data-testid='button' loading>
         Text

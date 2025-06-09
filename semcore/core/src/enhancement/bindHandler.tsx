@@ -29,7 +29,7 @@ handlerBinder.hasher = new WeakMap();
 
 function Enhancement() {
   return {
-    condition: function (Component: any, isFunction: boolean) {
+    condition: function (_Component: any, isFunction: boolean) {
       return !isFunction;
     },
     init: function (this: any) {

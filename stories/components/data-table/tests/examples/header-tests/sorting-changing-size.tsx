@@ -1,6 +1,7 @@
-import React from 'react';
-import { DataTable, DataTableSort } from '@semcore/data-table';
+import type { DataTableSort } from '@semcore/data-table';
+import { DataTable } from '@semcore/data-table';
 import Ellipsis from '@semcore/ellipsis';
+import React from 'react';
 
 type SortableColumn = Exclude<keyof typeof data[0], 'keyword'>;
 
@@ -29,7 +30,7 @@ const Demo = () => {
       data={sortedData}
       sort={sort}
       onSortChange={setSort}
-      aria-label={'Sorting with change sortable column size'}
+      aria-label='Sorting with change sortable column size'
       columns={[
         { name: 'keyword', children: 'Keyword', justifyContent: 'left', sortable: true },
         {

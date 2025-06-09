@@ -1,8 +1,8 @@
-import React from 'react';
 import { Plot, StackBar, YAxis, XAxis, HoverRect, HorizontalBar } from '@semcore/d3-chart';
-import { scaleLinear, scaleBand } from 'd3-scale';
 import { Flex, Box } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
+import { scaleLinear, scaleBand } from 'd3-scale';
+import React from 'react';
 
 const stackedData = [
   { category: 'Category 1', stack1: 0.01, stack2: 0.03, stack3: 0.01 },
@@ -50,7 +50,7 @@ const Demo = () => {
     .paddingOuter(0.2);
 
   return (
-    <Flex direction='row' gap ={2}>
+    <Flex direction='row' gap={2}>
       {/* Stacked horizontal bar chart */}
       <Plot data={stackedData} scale={[xScaleStack, yScaleStack]} width={width} height={height}>
         <YAxis>
@@ -61,7 +61,7 @@ const Demo = () => {
           <XAxis.Grid />
         </XAxis>
 
-        <HoverRect y="category" />
+        <HoverRect y='category' />
 
         <HoverRect.Tooltip y='category' wMin={100}>
           {({ yIndex }) => {
@@ -72,15 +72,24 @@ const Demo = () => {
                   <HoverRect.Tooltip.Title>{item.category}</HoverRect.Tooltip.Title>
                   <Flex justifyContent='space-between'>
                     <HoverRect.Tooltip.Dot mr={4} style={{ backgroundColor: '#27ae60' }} />
-                    <Text bold>Stack 1: {item.stack1}</Text>
+                    <Text bold>
+                      Stack 1:
+                      {item.stack1}
+                    </Text>
                   </Flex>
                   <Flex mt={2} justifyContent='space-between'>
                     <HoverRect.Tooltip.Dot mr={4} style={{ backgroundColor: '#2980b9' }} />
-                    <Text bold>Stack 2: {item.stack2}</Text>
+                    <Text bold>
+                      Stack 2:
+                      {item.stack2}
+                    </Text>
                   </Flex>
                   <Flex mt={2} justifyContent='space-between'>
                     <HoverRect.Tooltip.Dot mr={4} style={{ backgroundColor: '#c0392b' }} />
-                    <Text bold>Stack 3: {item.stack3}</Text>
+                    <Text bold>
+                      Stack 3:
+                      {item.stack3}
+                    </Text>
                   </Flex>
                 </>
               ),
@@ -89,13 +98,15 @@ const Demo = () => {
         </HoverRect.Tooltip>
 
         <StackBar y='category'>
-          <StackBar.HorizontalBar x='stack1' color="#27ae60"  duration={0} />
-          <StackBar.HorizontalBar x='stack2' color="#2980b9" duration={0} />
-          <StackBar.HorizontalBar x='stack3' color="#c0392b"  duration={0} />
+          <StackBar.HorizontalBar x='stack1' color='#27ae60' duration={0} />
+          <StackBar.HorizontalBar x='stack2' color='#2980b9' duration={0} />
+          <StackBar.HorizontalBar x='stack3' color='#c0392b' duration={0} />
         </StackBar>
       </Plot>
 
-      <Box h={60} /> {/* Spacer */}
+      <Box h={60} />
+      {' '}
+      {/* Spacer */}
 
       {/* Single horizontal bar chart */}
       <Plot data={singleBarData} scale={[xScaleSingle, yScaleSingle]} width={width} height={height}>
@@ -107,7 +118,7 @@ const Demo = () => {
           <XAxis.Grid />
         </XAxis>
 
-        <HoverRect y="category" />
+        <HoverRect y='category' />
 
         <HoverRect.Tooltip y='category' wMin={100}>
           {({ yIndex }) => {

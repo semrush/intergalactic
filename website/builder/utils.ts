@@ -1,14 +1,13 @@
+import { createHash } from 'crypto';
 import { access as fsAccess } from 'fs/promises';
 
+import { toHtml } from 'hast-util-to-html';
+import type { Content as MarkdownToken, Root as MarkdownRoot } from 'mdast';
 import { fromMarkdown } from 'mdast-util-from-markdown';
-
-import { Content as MarkdownToken, Root as MarkdownRoot } from 'mdast';
-import { gfm } from 'micromark-extension-gfm';
 import { gfmFromMarkdown } from 'mdast-util-gfm';
 import { toHast } from 'mdast-util-to-hast';
-import { toHtml } from 'hast-util-to-html';
-import { createHash } from 'crypto';
 import type { HastNode } from 'mdast-util-to-hast/lib';
+import { gfm } from 'micromark-extension-gfm';
 
 const cyrillicFallback = {
   а: 'a',
@@ -38,9 +37,9 @@ const cyrillicFallback = {
   ч: 'ch',
   ш: 'sh',
   щ: 'shch',
-  ъ: "'",
+  ъ: '\'',
   ы: 'y',
-  ь: "'",
+  ь: '\'',
   э: 'e',
   ю: 'yu',
   я: 'ya',
@@ -125,7 +124,7 @@ export const markdownTokenToHtml = (
         return h(node, 'a', props, [{ type: 'text', value: text }]);
       },
       image: (h, node) => {
-        const props = { src: node.url, alt: node.alt, 'aria-hidden': 'true' };
+        const props = { 'src': node.url, 'alt': node.alt, 'aria-hidden': 'true' };
         return h(node, 'img', props);
       },
     },

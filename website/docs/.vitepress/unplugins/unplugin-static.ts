@@ -1,7 +1,8 @@
-import { Plugin } from 'esbuild';
 import { readFile } from 'fs/promises';
 import { resolve as resolvePath, dirname as resolveDirname } from 'path';
 import { fileURLToPath } from 'url';
+
+import { Plugin } from 'esbuild';
 import glob from 'fast-glob';
 import { createUnplugin } from 'unplugin';
 

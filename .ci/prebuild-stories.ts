@@ -1,8 +1,9 @@
-import glob from 'fast-glob';
-import ts from 'typescript';
-import { resolve, dirname } from 'path';
 import { readFileSync } from 'fs';
 import { readFile, writeFile } from 'fs/promises';
+import { resolve, dirname } from 'path';
+
+import glob from 'fast-glob';
+import ts from 'typescript';
 
 class SourceMapper {
   private importsMap = new Map<string, string>();
@@ -38,8 +39,7 @@ class SourceMapper {
             if (
               ts.isVariableDeclaration(declaration) &&
               declaration.type?.kind === ts.SyntaxKind.TypeReference &&
-              (declaration.type.getText() === 'Story' ||
-                declaration.type.getText() === 'StoryObj') &&
+              (declaration.type.getText() === 'Story' || declaration.type.getText() === 'StoryObj') &&
               declaration.initializer &&
               ts.isObjectLiteralExpression(declaration.initializer)
             ) {
@@ -104,7 +104,6 @@ class SourceMapper {
 async function run() {
   const files = await glob('./stories/**/*.stories.@(ts|tsx)');
 
-  // biome-ignore lint/suspicious/noConsoleLog:
   console.log('files to patch: ', files);
 
   for (const file of files) {

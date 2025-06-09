@@ -1,8 +1,9 @@
-import React from 'react';
-import BulkTextarea, { BulkTextareaProps, ErrorItem } from '@semcore/bulk-textarea';
+import type { BulkTextareaProps, ErrorItem } from '@semcore/bulk-textarea';
+import BulkTextarea from '@semcore/bulk-textarea';
+import Button from '@semcore/button';
 import { Box, Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
-import Button from '@semcore/button';
+import React from 'react';
 
 const validateRow = (row: string, rows: string[]) => {
   let isValid = true;
@@ -53,7 +54,7 @@ const Demo = (props: BulkTextareaProps<any>) => {
         onChange={setValue}
         lineValidation={validateRow}
         linesDelimiters={[',']}
-        placeholder={'Placeholder'}
+        placeholder='Placeholder'
         validateOn={['blurLine']}
         {...props}
         errors={errors}
@@ -70,14 +71,14 @@ const Demo = (props: BulkTextareaProps<any>) => {
         }}
       >
         <Flex alignItems='center' justifyContent='flex-start' mb={2} gap={1}>
-          <Text tag={'label'} size={200} id={'keywords-label'}>
+          <Text tag='label' size={200} id='keywords-label'>
             list of keywords
           </Text>
           <BulkTextarea.Counter />
         </Flex>
         <BulkTextarea.InputField
-          aria-labelledby={'keywords-label'}
-          commonErrorMessage={'some global error'}
+          aria-labelledby='keywords-label'
+          commonErrorMessage='some global error'
         />
         <Flex alignItems='center' justifyContent='space-between' mt={2}>
           <BulkTextarea.ErrorsNavigation />

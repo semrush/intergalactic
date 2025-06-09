@@ -1,8 +1,8 @@
-import React from 'react';
 import { Plot, Bubble, XAxis, YAxis, ChartLegend, makeDataHintsContainer } from '@semcore/d3-chart';
-import { scaleLinear } from 'd3-scale';
-import { Text } from '@semcore/typography';
 import { Flex } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
+import { scaleLinear } from 'd3-scale';
+import React from 'react';
 
 const dataHints = makeDataHintsContainer();
 
@@ -50,7 +50,7 @@ const Demo = () => {
         dataHints={dataHints}
         items={legendItems}
         patterns
-        aria-label={'Bubble chart legend'}
+        aria-label='Bubble chart legend'
         onChangeVisibleItem={handleChangeVisible}
       />
       <Plot
@@ -79,9 +79,21 @@ const Demo = () => {
               children: (
                 <>
                   <Bubble.Tooltip.Title>Data</Bubble.Tooltip.Title>
-                  <Text tag='div'>X axis {data[index].x}</Text>
-                  <Text tag='div'>Y axis {data[index].y}</Text>
-                  <Text tag='div'>Value {data[index].value}</Text>
+                  <Text tag='div'>
+                    X axis
+                    {' '}
+                    {data[index].x}
+                  </Text>
+                  <Text tag='div'>
+                    Y axis
+                    {' '}
+                    {data[index].y}
+                  </Text>
+                  <Text tag='div'>
+                    Value
+                    {' '}
+                    {data[index].value}
+                  </Text>
                 </>
               ),
             };

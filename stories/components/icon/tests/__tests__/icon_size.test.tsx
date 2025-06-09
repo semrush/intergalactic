@@ -1,4 +1,4 @@
-import { expect, userEvent, within } from '@storybook/test';
+import { expect, userEvent, within } from 'storybook/test';
 
 export async function iconSize({ canvasElement }: { canvasElement: HTMLElement }) {
   const canvas = within(canvasElement);
@@ -22,8 +22,8 @@ export async function iconSize({ canvasElement }: { canvasElement: HTMLElement }
   }
 
   const expectedNonInteractiveAttributes = [
-    { width: '16', height: '16', viewBox: '0 0 16 16', 'aria-hidden': 'true', tabindex: '-1' },
-    { width: '24', height: '24', viewBox: '0 0 24 24', 'aria-hidden': 'true', tabindex: '-1' },
+    { 'width': '16', 'height': '16', 'viewBox': '0 0 16 16', 'aria-hidden': 'true', 'tabindex': '-1' },
+    { 'width': '24', 'height': '24', 'viewBox': '0 0 24 24', 'aria-hidden': 'true', 'tabindex': '-1' },
   ];
   const svgNonInteractive = canvasElement.querySelectorAll('svg[aria-hidden="true"]');
   expect(svgNonInteractive.length).toBeGreaterThan(0);

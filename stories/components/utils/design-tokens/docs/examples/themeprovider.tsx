@@ -1,6 +1,6 @@
-import React from 'react';
 import Button from '@semcore/button';
 import { ThemeProvider } from '@semcore/core/lib/utils/ThemeProvider';
+import React from 'react';
 
 const violetPrimaryControlTheme = {
   '--intergalactic-control-primary-info': '#8649e1',

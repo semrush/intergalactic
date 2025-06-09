@@ -1,11 +1,11 @@
-import React from 'react';
-import DropdownMenu from '@semcore/dropdown-menu';
 import Button from '@semcore/button';
+import DropdownMenu from '@semcore/dropdown-menu';
+import FileExportM from '@semcore/icon/FileExport/m';
 import Link from '@semcore/link';
-import { Text } from '@semcore/typography';
 import Notice from '@semcore/notice';
 import SpinContainer from '@semcore/spin-container';
-import FileExportM from '@semcore/icon/FileExport/m';
+import { Text } from '@semcore/typography';
+import React from 'react';
 
 const Demo = () => {
   const [loading, setLoading] = React.useState(false);
@@ -23,7 +23,7 @@ const Demo = () => {
         </Button.Addon>
         <Button.Text>Export</Button.Text>
       </DropdownMenu.Trigger>
-      <DropdownMenu.Popper wMax='256px' aria-label={'Export options'}>
+      <DropdownMenu.Popper wMax='256px' aria-label='Export options'>
         <SpinContainer loading={loading}>
           <DropdownMenu.List>
             <DropdownMenu.Item onClick={handleClick}>Excel</DropdownMenu.Item>
@@ -46,7 +46,8 @@ const Demo = () => {
                 Export failed
               </Text>
               <Text>
-                If the problem persists, please contact us at{' '}
+                If the problem persists, please contact us at
+                {' '}
                 <Link inline href='mailto:feedback@semrush.com'>
                   feedback@semrush.com
                 </Link>

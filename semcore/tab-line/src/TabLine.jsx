@@ -1,9 +1,9 @@
-import React from 'react';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
-import { Box } from '@semcore/flex-box';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import a11yEnhance from '@semcore/core/lib/utils/enhances/a11yEnhance';
+import { Box } from '@semcore/flex-box';
 import NeighborLocation from '@semcore/neighbor-location';
+import React from 'react';
 
 import style from './style/tab-line.shadow.css';
 
@@ -28,6 +28,7 @@ class TabLineRoot extends Component {
     underlined: true,
     behavior: 'auto',
   };
+
   static enhance = [a11yEnhance(optionsA11yEnhance)];
   state = { animation: null };
   prevValue = undefined;
@@ -51,9 +52,11 @@ class TabLineRoot extends Component {
     }
     this.prevValue = this.asProps.value;
   }
+
   componentDidMount() {
     this.prevValue = this.asProps.value;
   }
+
   componentWillUnmount() {
     clearTimeout(this.animationStartTimeout);
   }
@@ -84,6 +87,7 @@ class TabLineRoot extends Component {
       this.setState({ animation: { ...this.state.animation, started: true } });
     }
   };
+
   handleAnimationEnd = () => {
     this.setState({ animation: null });
   };
@@ -92,16 +96,16 @@ class TabLineRoot extends Component {
     this.handlers.value(value, e);
   };
 
-  getItemProps(props, index) {
+  getItemProps(props, _index) {
     const { value, size } = this.asProps;
     const isSelected = value === props.value;
     return {
       size,
-      selected: isSelected,
-      onClick: this.bindHandlerClick(props.value),
-      tabIndex: isSelected ? 0 : -1,
+      'selected': isSelected,
+      'onClick': this.bindHandlerClick(props.value),
+      'tabIndex': isSelected ? 0 : -1,
       'aria-selected': isSelected,
-      ref: (node) => {
+      'ref': (node) => {
         this.itemRefs[props.value] = node;
       },
     };
@@ -166,8 +170,7 @@ function TabLineItem(props) {
             {addonTextChildren(Children, TabLine.Item.Text, TabLine.Item.Addon)}
             {addonRight ? <TabLine.Item.Addon tag={addonRight} /> : null}
           </STabLineItem>,
-        )
-      }
+        )}
     </NeighborLocation.Detect>
   );
 }

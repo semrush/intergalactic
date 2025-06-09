@@ -1,13 +1,12 @@
-import * as React from 'react';
-import { snapshot } from '@semcore/testing-utils/snapshot';
-import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import propsForElement from '@semcore/core/lib/utils/propsForElement';
-import Tag, { TagContainer } from '../src';
-
-import { render, fireEvent, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
-
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { render, fireEvent, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import * as React from 'react';
+
+import Tag, { TagContainer } from '../src';
 
 describe('tag Dependency imports', () => {
   runDependencyCheckTests('tag');
@@ -58,7 +57,7 @@ describe('Tag', () => {
 
   test.concurrent('Renders correctly with keyboardFocused', async ({ task }) => {
     const component = (
-      <Tag interactive id={'interactive-tag'}>
+      <Tag interactive id='interactive-tag'>
         <Tag.Text>Tag name</Tag.Text>
       </Tag>
     );
@@ -156,7 +155,7 @@ describe('Tag', () => {
   test('should work as Button from keyboard', async ({ expect }) => {
     const onClick = vi.fn();
     const { getByTestId } = render(
-      <Tag interactive onClick={onClick} data-testid={'tagAsButton'}>
+      <Tag interactive onClick={onClick} data-testid='tagAsButton'>
         some tag
       </Tag>,
     );
@@ -175,7 +174,7 @@ describe('Tag', () => {
   test('should call keydwon callback once per key down', async ({ expect }) => {
     const onKeyDown = vi.fn();
     const { getByTestId } = render(
-      <Tag interactive onKeyDown={onKeyDown} data-testid={'tagKeyboardTest'}>
+      <Tag interactive onKeyDown={onKeyDown} data-testid='tagKeyboardTest'>
         some tag
       </Tag>,
     );
@@ -476,7 +475,7 @@ describe('TagContainer', () => {
     const onClick = vi.fn();
     const { getByTestId } = render(
       <TagContainer>
-        <TagContainer.Tag interactive onClick={onClick} data-testid={'tagAsButton'}>
+        <TagContainer.Tag interactive onClick={onClick} data-testid='tagAsButton'>
           some tag
         </TagContainer.Tag>
       </TagContainer>,
@@ -497,7 +496,7 @@ describe('TagContainer', () => {
     const onKeyDown = vi.fn();
     const { getByTestId } = render(
       <TagContainer>
-        <TagContainer.Tag interactive onKeyDown={onKeyDown} data-testid={'tagKeyboardTest'}>
+        <TagContainer.Tag interactive onKeyDown={onKeyDown} data-testid='tagKeyboardTest'>
           some tag
         </TagContainer.Tag>
       </TagContainer>,

@@ -1,9 +1,9 @@
-import React from 'react';
 import { Plot, RadialTree } from '@semcore/d3-chart';
-import { scaleLinear } from 'd3-scale';
-import LikeM from '@semcore/icon/Like/m';
 import { Flex } from '@semcore/flex-box';
+import LikeM from '@semcore/icon/Like/m';
 import Select from '@semcore/select';
+import { scaleLinear } from 'd3-scale';
+import React from 'react';
 
 const movies = [
   { label: 'Action', key: 'action', color: '#008ff8' },

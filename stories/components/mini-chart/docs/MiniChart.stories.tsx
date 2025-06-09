@@ -1,7 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import BasicUsageExample from './examples/basic_usage';
 import BaseColorExample from './examples/base_color';
+import BasicUsageExample from './examples/basic_usage';
 
 const meta: Meta = {
   title: 'Components/MiniChart/Documentation',

@@ -1,5 +1,5 @@
-import { BoxProps } from '@semcore/flex-box';
-import { UnknownProperties, Intergalactic } from '@semcore/core';
+import type { UnknownProperties, Intergalactic } from '@semcore/core';
+import type { BoxProps } from '@semcore/flex-box';
 
 /** @deprecated */
 export interface IDividerProps extends DividerProps, UnknownProperties {}

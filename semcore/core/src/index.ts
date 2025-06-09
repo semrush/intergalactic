@@ -1,7 +1,4 @@
 /** ============================== core ============================== */
-import { createComponent, createBaseComponent, assignProps } from './coreFactory';
-import { sstyled } from './styled';
-import type { StyledProps } from './styled';
 import { Root, Component, Intergalactic, wrapIntergalacticComponent } from './core-types/Component';
 import type {
   PropGetterFn,
@@ -20,8 +17,11 @@ import {
   INHERITED_NAME,
 } from './core-types/symbols';
 import type { UnknownProperties } from './core-types/UnknownProperties';
-import register from './register';
+import { createComponent, createBaseComponent, assignProps } from './coreFactory';
 import { lastInteraction } from './LastInteractionType';
+import register from './register';
+import type { StyledProps } from './styled';
+import { sstyled } from './styled';
 
 export {
   sstyled,
@@ -29,21 +29,21 @@ export {
   createBaseComponent,
   Root,
   Component,
-  UnknownProperties,
+  type UnknownProperties,
   Intergalactic,
-  PropGetterFn,
-  IRootComponentProps,
-  ComponentType,
-  IRootComponentHandlers,
-  IComponentProps,
-  IFunctionProps,
+  type PropGetterFn,
+  type IRootComponentProps,
+  type ComponentType,
+  type IRootComponentHandlers,
+  type IComponentProps,
+  type IFunctionProps,
   CORE_INSTANCE,
   CREATE_COMPONENT,
   CONTEXT_COMPONENT,
   CHILDREN_COMPONENT,
   INHERITED_NAME,
-  ReturnEl,
-  StyledProps,
+  type ReturnEl,
+  type StyledProps,
   wrapIntergalacticComponent,
   assignProps,
   register,

@@ -1,4 +1,4 @@
-import { expect, userEvent, within } from '@storybook/test';
+import { expect, userEvent, within } from 'storybook/test';
 
 export async function CustomHeaderTest({ canvasElement }: { canvasElement: HTMLElement }) {
   const canvas = within(canvasElement);
@@ -9,5 +9,4 @@ export async function CustomHeaderTest({ canvasElement }: { canvasElement: HTMLE
   }
 
   await userEvent.click(triggers);
-
 }

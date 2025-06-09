@@ -1,9 +1,9 @@
-import React from 'react';
-import { DescriptionTooltip } from '@semcore/tooltip';
-import { Box, Flex } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
-import Link from '@semcore/link';
 import Button from '@semcore/button';
+import { Box, Flex } from '@semcore/flex-box';
+import Link from '@semcore/link';
+import { DescriptionTooltip } from '@semcore/tooltip';
+import { Text } from '@semcore/typography';
+import React from 'react';
 
 const Demo = () => {
   const [visible, setVisible] = React.useState(false);
@@ -13,14 +13,14 @@ const Demo = () => {
       <Flex>
         <DescriptionTooltip visible>
           <DescriptionTooltip.Trigger tag={Button}>Trigger</DescriptionTooltip.Trigger>
-          <DescriptionTooltip.Popper aria-label={'Popper description'}>
+          <DescriptionTooltip.Popper aria-label='Popper description'>
             Popper
           </DescriptionTooltip.Popper>
         </DescriptionTooltip>
         <Box mr={15} />
         <DescriptionTooltip visible strategy='fixed'>
           <DescriptionTooltip.Trigger tag={Button}>Trigger</DescriptionTooltip.Trigger>
-          <DescriptionTooltip.Popper aria-label={'Popper description'}>
+          <DescriptionTooltip.Popper aria-label='Popper description'>
             Fixed
           </DescriptionTooltip.Popper>
         </DescriptionTooltip>

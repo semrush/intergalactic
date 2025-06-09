@@ -1,8 +1,8 @@
-import React from 'react';
-import { Text } from '@semcore/typography';
-import { Flex } from '@semcore/flex-box';
 import Button from '@semcore/button';
+import { Flex } from '@semcore/flex-box';
 import Skeleton from '@semcore/skeleton';
+import { Text } from '@semcore/typography';
+import React from 'react';
 
 const Demo = () => {
   const [loading, setLoading] = React.useState(true);

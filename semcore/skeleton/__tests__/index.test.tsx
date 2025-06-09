@@ -1,6 +1,8 @@
-import * as React from 'react';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { snapshot } from '@semcore/testing-utils/snapshot';
 import { expect, test, describe } from '@semcore/testing-utils/vitest';
+import * as React from 'react';
+
 import Skeleton, {
   LineChartSkeleton,
   AreaChartSkeleton,
@@ -13,8 +15,6 @@ import Skeleton, {
   CompactHorizontalBarChartSkeleton,
   RadialTreeChartSkeleton,
 } from '../src';
-
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('skeleton Dependency imports', () => {
   runDependencyCheckTests('skeleton');

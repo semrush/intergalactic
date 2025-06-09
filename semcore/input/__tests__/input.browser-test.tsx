@@ -1,5 +1,5 @@
-import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import { expect, test } from '@semcore/testing-utils/playwright';
 
 test.describe('Input', () => {
   test('Verify focus returns on Clear Addon by mouse click in Dynamic dearch', async ({ page }) => {
@@ -204,12 +204,12 @@ test.describe('Input', () => {
     const inputLocator = await page.locator('input');
     const addon = page.locator('[data-ui-name="Input.Addon"]');
 
-    //input focused by click on the text addon
+    // input focused by click on the text addon
     await addon.first().click();
     await expect(inputLocator.first()).toBeFocused();
     await expect(addon.first()).not.toBeFocused();
     await page.keyboard.type('Hello world');
-    //input focused by click on the input
+    // input focused by click on the input
 
     await inputLocator.nth(1).click();
     await expect(inputLocator.first()).not.toBeFocused();
@@ -242,12 +242,12 @@ test.describe('Input', () => {
     const inputLocator = await page.locator('input');
     const addon = page.locator('[data-ui-name="Input.Addon"]');
 
-    //input focused by click on the text addon
+    // input focused by click on the text addon
     await addon.first().click();
     await expect(inputLocator.first()).toBeFocused();
     await expect(addon.first()).not.toBeFocused();
     await page.keyboard.type('Hello world');
-    //input focused by click on the input
+    // input focused by click on the input
 
     await inputLocator.nth(1).click();
     await expect(inputLocator.first()).not.toBeFocused();
@@ -301,19 +301,19 @@ test.describe('Styles and states', () => {
       screenshotsClip.width += 8;
       screenshotsClip.height += 8;
       await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-      //disabled not focused
+      // disabled not focused
       await page.keyboard.press('Tab');
       await expect(flex.locator('[placeholder="l-size"]')).toBeFocused();
 
-      //readOnly focused but without cursor
+      // readOnly focused but without cursor
       await page.keyboard.press('Tab');
       await expect(flex.locator('[placeholder="l-readOnly"]')).toBeFocused();
 
-      //invalid focused
+      // invalid focused
       await page.keyboard.press('Tab');
       await expect(page).toHaveScreenshot({ clip: screenshotsClip });
 
-      //valid focused
+      // valid focused
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
@@ -344,19 +344,19 @@ test.describe('Styles and states', () => {
       screenshotsClip.width += 8;
       screenshotsClip.height += 8;
       await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-      //disabled not focused
+      // disabled not focused
       await page.keyboard.press('Tab');
       await expect(flex.locator('[placeholder="l-size"]')).toBeFocused();
 
-      //readOnly focused but without cursor
+      // readOnly focused but without cursor
       await page.keyboard.press('Tab');
       await expect(flex.locator('[placeholder="l-readOnly"]')).toBeFocused();
 
-      //invalid focused
+      // invalid focused
       await page.keyboard.press('Tab');
       await expect(page).toHaveScreenshot({ clip: screenshotsClip });
 
-      //valid focused
+      // valid focused
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
@@ -373,19 +373,19 @@ test.describe('Styles and states', () => {
       screenshotsClip.width += 8;
       screenshotsClip.height += 8;
       await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-      //disabled not focused
+      // disabled not focused
       await page.keyboard.press('Tab');
       await expect(flex.locator('[placeholder="l-size"]')).toBeFocused();
 
-      //readOnly focused but without cursor
+      // readOnly focused but without cursor
       await page.keyboard.press('Tab');
       await expect(flex.locator('[placeholder="l-readOnly"]')).toBeFocused();
 
-      //invalid focused
+      // invalid focused
       await page.keyboard.press('Tab');
       await expect(page).toHaveScreenshot({ clip: screenshotsClip });
 
-      //valid focused
+      // valid focused
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
@@ -402,19 +402,19 @@ test.describe('Styles and states', () => {
       screenshotsClip.width += 8;
       screenshotsClip.height += 8;
       await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-      //disabled not focused
+      // disabled not focused
       await page.keyboard.press('Tab');
       await expect(flex.locator('[placeholder="l-size"]')).toBeFocused();
 
-      //readOnly focused but without cursor
+      // readOnly focused but without cursor
       await page.keyboard.press('Tab');
       await expect(flex.locator('[placeholder="l-readOnly"]')).toBeFocused();
 
-      //invalid focused
+      // invalid focused
       await page.keyboard.press('Tab');
       await expect(page).toHaveScreenshot({ clip: screenshotsClip });
 
-      //valid focused
+      // valid focused
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');

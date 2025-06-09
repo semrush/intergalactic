@@ -1,5 +1,5 @@
-import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import { expect, test } from '@semcore/testing-utils/playwright';
 
 test.describe('Venn chart', () => {
   test('Verify basic usage ', async ({ page }) => {
@@ -88,13 +88,13 @@ test.describe('Venn chart', () => {
     await page.waitForTimeout(500);
     await expect(page).toHaveScreenshot();
 
-    //switch orientation
+    // switch orientation
     const buttons = page.locator('[data-ui-name="Button"]');
     await buttons.first().click();
     await page.waitForTimeout(500);
     await expect(page).toHaveScreenshot();
 
-    //switch order
+    // switch order
     await buttons.nth(1).click();
     await page.waitForTimeout(500);
     await expect(page).toHaveScreenshot();

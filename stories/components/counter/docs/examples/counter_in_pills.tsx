@@ -1,6 +1,6 @@
-import React from 'react';
 import Pills from '@semcore/pills';
 import { Text } from '@semcore/typography';
+import React from 'react';
 
 const Demo = () => (
   <Pills defaultValue='all' aria-label='Pills with counters'>

@@ -1,6 +1,7 @@
 import React from 'react';
-import defaultDesignThemeJson from '../theme/themes/default';
+
 import { useContextTokens } from './ThemeProvider';
+import defaultDesignThemeJson from '../theme/themes/default';
 const defaultDesignThemeTokens = defaultDesignThemeJson as Record<string, string>;
 
 const zIndexStackingContext = React.createContext(0);
@@ -22,7 +23,7 @@ export const useZIndexStacking = (designToken?: ZIndexDesignTokens) => {
     const tokenName = designToken.startsWith('--intergalactic-')
       ? designToken
       : `--intergalactic-${designToken}`;
-    const tokenValue = parseInt(
+    const tokenValue = Number.parseInt(
       contextTokens?.[tokenName] || defaultDesignThemeTokens[tokenName],
       10,
     );

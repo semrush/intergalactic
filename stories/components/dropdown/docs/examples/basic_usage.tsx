@@ -1,7 +1,7 @@
-import React from 'react';
 import Button from '@semcore/button';
 import Dropdown from '@semcore/dropdown';
 import { Text } from '@semcore/typography';
+import React from 'react';
 
 const Demo = () => (
   <Dropdown>

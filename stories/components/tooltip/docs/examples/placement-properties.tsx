@@ -1,8 +1,8 @@
-import React from 'react';
-import { Box } from '@semcore/flex-box';
 import Button from '@semcore/button';
+import { Box } from '@semcore/flex-box';
+import type { Placement } from '@semcore/popper';
 import Tooltip from '@semcore/tooltip';
-import { Placement } from '@semcore/popper';
+import React from 'react';
 
 const styleBox = {
   display: 'grid',

@@ -1,15 +1,15 @@
-import React from 'react';
 import { Chart } from '@semcore/d3-chart';
+import React from 'react';
 
 const Demo = () => {
   return (
     <Chart.Bar
-      groupKey={'bar'}
+      groupKey='bar'
       data={data}
       plotWidth={500}
       plotHeight={200}
-      type={'stack'}
-      aria-label={'Stacked bar chart'}
+      type='stack'
+      aria-label='Stacked bar chart'
     />
   );
 };

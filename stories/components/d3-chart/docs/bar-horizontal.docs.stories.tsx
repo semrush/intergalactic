@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import BackgroundExample from './examples/bar-horizontal/background';
 import BarLabelsExample from './examples/bar-horizontal/bar-labels';

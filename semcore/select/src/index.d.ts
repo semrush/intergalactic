@@ -1,17 +1,19 @@
-import React from 'react';
-import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import DropdownMenu, {
+import type { ButtonTrigger, BaseTriggerProps, ButtonTriggerProps } from '@semcore/base-trigger';
+import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import type Divider from '@semcore/divider';
+import type Dropdown from '@semcore/dropdown';
+import type {
   DropdownMenuContext,
   DropdownMenuItemProps,
   DropdownMenuProps,
   DropdownMenuHandlers,
   DropdownMenuTriggerProps,
 } from '@semcore/dropdown-menu';
-import Dropdown from '@semcore/dropdown';
-import { ButtonTrigger, BaseTriggerProps, ButtonTriggerProps } from '@semcore/base-trigger';
-import Divider from '@semcore/divider';
-import Input, { InputValueProps } from '@semcore/input';
-import { BoxProps, Flex } from '@semcore/flex-box';
+import type DropdownMenu from '@semcore/dropdown-menu';
+import type { BoxProps, Flex } from '@semcore/flex-box';
+import type { InputValueProps } from '@semcore/input';
+import type Input from '@semcore/input';
+import type React from 'react';
 
 /** @deprecated */
 export interface ISelectInputSearch extends SelectInputSearch, UnknownProperties {}
@@ -131,9 +133,9 @@ type IntergalacticSelectComponent<PropsExtending = {}> = (<
     SelectContext,
     [handlers: SelectHandlers]
   > &
-    PropsExtending,
+  PropsExtending,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
-  Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', SelectProps>;
+Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', SelectProps>;
 
 declare const Select: IntergalacticSelectComponent & {
   Trigger: Intergalactic.Component<
@@ -178,7 +180,7 @@ declare const wrapSelect: <PropsExtending extends {}>(
     props: Intergalactic.InternalTypings.UntypeRefAndTag<
       Intergalactic.InternalTypings.ComponentPropsNesting<IntergalacticSelectComponent>
     > &
-      PropsExtending,
+    PropsExtending,
   ) => React.ReactNode,
 ) => IntergalacticSelectComponent<PropsExtending>;
 

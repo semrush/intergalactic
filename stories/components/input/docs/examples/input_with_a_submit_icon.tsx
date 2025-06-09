@@ -1,10 +1,10 @@
-import React from 'react';
-import Input from '@semcore/input';
 import { ButtonLink } from '@semcore/button';
-import CheckM from '@semcore/icon/Check/m';
-import { Text } from '@semcore/typography';
 import { Flex } from '@semcore/flex-box';
+import CheckM from '@semcore/icon/Check/m';
+import Input from '@semcore/input';
 import { Hint } from '@semcore/tooltip';
+import { Text } from '@semcore/typography';
+import React from 'react';
 
 const Demo = () => {
   const [value, setValue] = React.useState('');

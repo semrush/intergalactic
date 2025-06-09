@@ -1,12 +1,11 @@
-import React from 'react';
-import Button from '@semcore/button';
+import Button, { ButtonLink } from '@semcore/button';
 import { Flex } from '@semcore/flex-box';
-import NeighborLocation from '@semcore/neighbor-location';
+import ShowYesM from '@semcore/icon/ShowYes/m';
 import Input from '@semcore/input';
+import NeighborLocation from '@semcore/neighbor-location';
 import Select from '@semcore/select';
 import { Hint } from '@semcore/tooltip';
-import ShowYesM from '@semcore/icon/ShowYes/m';
-import { ButtonLink } from '@semcore/button';
+import React from 'react';
 
 const Demo = () => {
   return (
@@ -20,9 +19,9 @@ const Demo = () => {
       <NeighborLocation tag={Flex} role='group' aria-label='wrapped secondary buttons'>
         <Button>First</Button>
         <Input w={200}>
-          <Input.Value placeholder='Placeholder' aria-label={'input example'} />
+          <Input.Value placeholder='Placeholder' aria-label='input example' />
           <Input.Addon>
-            <Hint title={'Test hint'} tag={ButtonLink} use='secondary' addonLeft={ShowYesM} />
+            <Hint title='Test hint' tag={ButtonLink} use='secondary' addonLeft={ShowYesM} />
           </Input.Addon>
         </Input>
         <Button>Middle</Button>
@@ -37,7 +36,7 @@ const Demo = () => {
         />
         <Button>Last</Button>
         <Input w={100}>
-          <Input.Value placeholder='Placeholder' aria-label={'input example2'} />
+          <Input.Value placeholder='Placeholder' aria-label='input example2' />
         </Input>
       </NeighborLocation>
     </>

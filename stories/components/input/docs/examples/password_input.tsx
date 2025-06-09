@@ -1,11 +1,11 @@
-import React from 'react';
-import Input from '@semcore/input';
-import ShowYesM from '@semcore/icon/ShowYes/m';
-import ShowNoM from '@semcore/icon/ShowNo/m';
 import { ButtonLink } from '@semcore/button';
-import { Text } from '@semcore/typography';
 import { Flex } from '@semcore/flex-box';
+import ShowNoM from '@semcore/icon/ShowNo/m';
+import ShowYesM from '@semcore/icon/ShowYes/m';
+import Input from '@semcore/input';
 import { Hint } from '@semcore/tooltip';
+import { Text } from '@semcore/typography';
+import React from 'react';
 
 const Demo = () => {
   const [type, setType] = React.useState('password');

@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   Plot,
   GroupBar,
@@ -8,9 +7,10 @@ import {
   makeDataHintsContainer,
   ChartLegend,
 } from '@semcore/d3-chart';
-import { scaleLinear, scaleBand } from 'd3-scale';
 import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
+import { scaleLinear, scaleBand } from 'd3-scale';
+import React from 'react';
 
 const dataHints = makeDataHintsContainer();
 
@@ -72,7 +72,7 @@ const Demo = () => {
         onMouseEnterItem={handleMouseEnter}
         onMouseLeaveItem={handleMouseLeave}
         patterns
-        aria-label={'Horizontal bar chart legend'}
+        aria-label='Horizontal bar chart legend'
       />
       <Plot
         data={data}

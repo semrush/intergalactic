@@ -1,16 +1,16 @@
-import React from 'react';
-import { scaleLinear, scaleBand } from 'd3-scale';
 import { Bar, ResponsiveContainer, XAxis, Plot, YAxis } from '@semcore/d3-chart';
+import { scaleLinear, scaleBand } from 'd3-scale';
+import React from 'react';
 
 const Demo = () => {
   const [[width, height], setSize] = React.useState([0, 0]);
   const MARGIN = 40;
 
   const xScale = scaleBand()
-  .domain(data.map((d) => String(d.date_chart)))
-  .range([MARGIN, width - MARGIN])
-  .paddingInner(0.4)
-  .paddingOuter(0.2);
+    .domain(data.map((d) => String(d.date_chart)))
+    .range([MARGIN, width - MARGIN])
+    .paddingInner(0.4)
+    .paddingOuter(0.2);
 
   const yScale = scaleLinear()
     .domain([0, Math.max(...data.map((d) => d.download))])

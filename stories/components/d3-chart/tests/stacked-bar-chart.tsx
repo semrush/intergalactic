@@ -1,11 +1,10 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import BasicUsageExample from './examples/stacked-bar-chart/basic-usage';
+import EdgeCasesExample from './examples/stacked-bar-chart/edge-cases';
 import LegendAndPatternFillExample from './examples/stacked-bar-chart/legend-and-pattern-fill';
 import StackedBarChartExample from './examples/stacked-bar-chart/stacked-bar-chart';
 import StackedGroupedBarExample from './examples/stacked-bar-chart/stacked-grouped-bar';
-import EdgeCasesExample from './examples/stacked-bar-chart/edge-cases';
-
 
 const meta: Meta = {
   title: 'Components/d3Charts/Tests/Stacked-Bar-Chart',

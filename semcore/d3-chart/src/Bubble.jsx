@@ -1,14 +1,14 @@
-import React from 'react';
-import { transition } from 'd3-transition';
 import { Component, Root, sstyled } from '@semcore/core';
-import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import createElement from './createElement';
-import { getBubbleChartValueScale, measureText } from './utils';
-import Tooltip from './Tooltip';
-import { PatternFill } from './Pattern';
-
-import style from './style/bubble.shadow.css';
 import findComponent from '@semcore/core/lib/utils/findComponent';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import { transition } from 'd3-transition';
+import React from 'react';
+
+import createElement from './createElement';
+import { PatternFill } from './Pattern';
+import style from './style/bubble.shadow.css';
+import Tooltip from './Tooltip';
+import { getBubbleChartValueScale, measureText } from './utils';
 
 class BubbleRoot extends Component {
   static displayName = 'Bubble';
@@ -120,13 +120,16 @@ class BubbleRoot extends Component {
 
     return (
       <>
-        {isAdvancedMode ? (
-          <Children />
-        ) : (
-          data.map((_, idx) => <Bubble.Circle key={idx} index={idx} />)
-        )}
+        {isAdvancedMode
+          ? (
+              <Children />
+            )
+          : (
+              data.map((_, idx) => <Bubble.Circle key={idx} index={idx} />)
+            )}
         <clipPath aria-hidden id={uid}>
-          <rect x={xMargin} y={yMargin} width={`${xSize}px`} height={`${ySize}px`} />{' '}
+          <rect x={xMargin} y={yMargin} width={`${xSize}px`} height={`${ySize}px`} />
+          {' '}
         </clipPath>
       </>
     );
@@ -176,7 +179,7 @@ function BubbleCircle(props) {
 
   const labelPosition =
     size[0] - 2 * margin - (xScale(circleData[x]) + offset[0] + z(circleData[value])) <
-    measureText(circleData[label])
+      measureText(circleData[label])
       ? 'right'
       : 'left';
   const labelDistance = {
@@ -189,6 +192,7 @@ function BubbleCircle(props) {
       key={`circle(#${index})`}
       onMouseMove={bindHandlerTooltip(true, props, { xIndex: index, index, patterns })}
       onMouseLeave={bindHandlerTooltip(false, props, { xIndex: index, index, patterns })}
+      // eslint-disable-next-line react/no-unknown-property
       visible={`${visible}`}
     >
       {markedCross && (

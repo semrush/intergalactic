@@ -1,10 +1,12 @@
-import fs from 'fs/promises';
+import { execSync } from 'node:child_process';
+import fs from 'node:fs/promises';
+import { resolve as resolvePath } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
 import glob from 'fast-glob';
 import postcss from 'postcss';
 import valuesParser from 'postcss-value-parser';
-import { resolve as resolvePath } from 'path';
-import { fileURLToPath } from 'url';
-import { execSync } from 'child_process';
+
 import { processTokens, tokensToCss, tokensToJs, tokensToJson } from './utils';
 
 type Token = {
@@ -40,12 +42,13 @@ for (const theme of themes) {
   const { base, tokens } = JSON.parse(
     await fs.readFile(resolvePath(dirname, `./${theme}.json`), 'utf-8'),
   );
-
-  let { processedTokens, values, types, rawValues, descriptions } = processTokens(
+  const processed = processTokens(
     base,
     tokens,
     prefix,
   );
+  const { values, types, rawValues, descriptions } = processed;
+  let { processedTokens } = processed;
 
   for (const excludeToPath in excludeTokens) {
     const excludeList: string[] = excludeTokens[excludeToPath];
@@ -226,16 +229,13 @@ for (const theme of themes) {
 
     if (warning) {
       if (unusedVariables.length > 0) {
-        // biome-ignore lint/suspicious/noConsoleLog:
         console.log('Unused design tokens:');
-        // biome-ignore lint/suspicious/noConsoleLog:
+
         console.log(unusedVariables.join('\n'));
       }
       if (colorLiterals.length > 0) {
-        // biome-ignore lint/suspicious/noConsoleLog:
         console.log('Unexpected color literals:');
         for (const literal of colorLiterals) {
-          // biome-ignore lint/suspicious/noConsoleLog:
           console.log(`${literal.name} in ${literal.path}`);
         }
       }

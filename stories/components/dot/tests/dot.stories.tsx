@@ -1,12 +1,10 @@
-import type { Meta, StoryObj } from '@storybook/react';
-
 import Dot from '@semcore/dot';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import DotAnimationExample from './examples/different-sizes-and-positions';
 import DotLinkExample from './examples/different-sizes-and-positions-link';
+import LinkTriggerExample from './examples/different-sizes-and-positions-link-trigger';
 import DotPillExample from './examples/different-sizes-and-positions-pill';
-import LinkTriggerExample from './examples/different-sizes-and-positions copy';
-
 
 const meta: Meta<typeof Dot> = {
   title: 'Components/Dot/Tests',

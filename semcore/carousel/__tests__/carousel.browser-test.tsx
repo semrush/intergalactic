@@ -1,5 +1,5 @@
-import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import { expect, test } from '@semcore/testing-utils/playwright';
 
 test.describe('Carousel', () => {
   test('Zoom item after cyclic scroll', async ({ page }) => {
@@ -21,7 +21,6 @@ test.describe('Carousel', () => {
     await new Promise((resolve) => setTimeout(resolve, 100));
 
     const items = await page.locator('[data-ui-name="Carousel.Item"]').all();
-
     expect(items.length).toBe(3);
 
     for (const item of items) {
@@ -33,7 +32,7 @@ test.describe('Carousel', () => {
     }
 
     /** Need this to be sure that the image is loaded **/
-    await new Promise((resolve) => setTimeout(resolve, 400));
+    await new Promise((resolve) => setTimeout(resolve, 600));
     await expect(page).toHaveScreenshot();
   });
 });

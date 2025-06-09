@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import Input from "@semcore/input";
-import { Text } from "@semcore/typography";
-import { Flex, Box } from "@semcore/flex-box";
+import { LinkTrigger } from '@semcore/base-trigger';
 import Counter from '@semcore/counter';
+import { Flex, Box } from '@semcore/flex-box';
+import Input from '@semcore/input';
 import Select from '@semcore/select';
-import {  LinkTrigger } from '@semcore/base-trigger';
+import { Text } from '@semcore/typography';
+import React, { useState } from 'react';
 
 const options = Array(6)
   .fill('')
@@ -15,22 +15,21 @@ const options = Array(6)
   }));
 
 const Demo = () => {
-
   return (
     <Flex direction='row' gap={2}>
       <Flex direction='column' gap={2} mb={3} data-testid='Default'>
 
         <Flex direction='column' w={350}>
           <Flex mb={2} justifyContent='space-between'>
-            <Flex alignItems={'center'}>
+            <Flex alignItems='center'>
               <Text size={200} tag='label' htmlFor='limited-text-field'>
                 Project description
               </Text>
-              <Counter ml={1} id={'counter-for-textarea'}>
+              <Counter ml={1} id='counter-for-textarea'>
                 0/150
               </Counter>
             </Flex>
-            <Text size={200} color='text-secondary' id={'optional-for-textarea'}>
+            <Text size={200} color='text-secondary' id='optional-for-textarea'>
               optional
             </Text>
           </Flex>
@@ -46,15 +45,15 @@ const Demo = () => {
 
         <Flex direction='column' w={350}>
           <Flex mb={2} justifyContent='space-between'>
-            <Flex alignItems={'center'}>
+            <Flex alignItems='center'>
               <Text size={300} tag='label' htmlFor='limited-text-field'>
                 Project description
               </Text>
-              <Counter ml={1} id={'counter-for-textarea'}>
+              <Counter ml={1} id='counter-for-textarea'>
                 0/150
               </Counter>
             </Flex>
-            <Text size={200} color='text-secondary' id={'optional-for-textarea'}>
+            <Text size={200} color='text-secondary' id='optional-for-textarea'>
               optional
             </Text>
           </Flex>
@@ -68,18 +67,17 @@ const Demo = () => {
           </Input>
         </Flex>
 
-
         <Flex direction='column' w={350}>
           <Flex mb={2} justifyContent='space-between'>
-            <Flex alignItems={'center'}>
+            <Flex alignItems='center'>
               <Text size={200} tag='label' htmlFor='limited-text-field'>
                 Project description
               </Text>
-              <Counter ml={1} id={'counter-for-textarea'}>
+              <Counter ml={1} id='counter-for-textarea'>
                 0/150
               </Counter>
             </Flex>
-            <Text size={200} color='text-secondary' id={'optional-for-textarea'}>
+            <Text size={200} color='text-secondary' id='optional-for-textarea'>
               optional
             </Text>
           </Flex>
@@ -95,15 +93,15 @@ const Demo = () => {
 
         <Flex direction='column' w={350}>
           <Flex mb={2} justifyContent='space-between'>
-            <Flex alignItems={'center'}>
+            <Flex alignItems='center'>
               <Text size={300} tag='label' htmlFor='limited-text-field'>
                 Project description
               </Text>
-              <Counter ml={1} id={'counter-for-textarea'}>
+              <Counter ml={1} id='counter-for-textarea'>
                 0/150
               </Counter>
             </Flex>
-            <Text size={200} color='text-secondary' id={'optional-for-textarea'}>
+            <Text size={200} color='text-secondary' id='optional-for-textarea'>
               optional
             </Text>
           </Flex>
@@ -119,15 +117,15 @@ const Demo = () => {
 
         <Flex direction='column' w={350}>
           <Flex mb={2} justifyContent='space-between'>
-            <Flex alignItems={'center'}>
+            <Flex alignItems='center'>
               <Text size={200} tag='label' htmlFor='limited-text-field'>
                 Project description
               </Text>
-              <Counter ml={1} id={'counter-for-textarea'}>
+              <Counter ml={1} id='counter-for-textarea'>
                 0/150
               </Counter>
             </Flex>
-            <Text size={200} color='text-secondary' id={'optional-for-textarea'}>
+            <Text size={200} color='text-secondary' id='optional-for-textarea'>
               optional
             </Text>
           </Flex>
@@ -143,15 +141,15 @@ const Demo = () => {
 
         <Flex direction='column' w={350}>
           <Flex mb={2} justifyContent='space-between'>
-            <Flex alignItems={'center'}>
+            <Flex alignItems='center'>
               <Text size={300} tag='label' htmlFor='limited-text-field'>
                 Project description
               </Text>
-              <Counter ml={1} id={'counter-for-textarea'}>
+              <Counter ml={1} id='counter-for-textarea'>
                 0/150
               </Counter>
             </Flex>
-            <Text size={200} color='text-secondary' id={'optional-for-textarea'}>
+            <Text size={200} color='text-secondary' id='optional-for-textarea'>
               optional
             </Text>
           </Flex>
@@ -171,14 +169,14 @@ const Demo = () => {
 
         <Flex direction='column' w={350}>
           <Flex mb={2} justifyContent='space-between'>
-            <Flex alignItems={'center'}>
+            <Flex alignItems='center'>
               <Select tag={LinkTrigger} options={options} id='link-trigger-select' />
 
-              <Counter ml={1} id={'counter-for-textarea'}>
+              <Counter ml={1} id='counter-for-textarea'>
                 0/150
               </Counter>
             </Flex>
-            <Text size={200} color='text-secondary' id={'optional-for-textarea'}>
+            <Text size={200} color='text-secondary' id='optional-for-textarea'>
               optional
             </Text>
           </Flex>
@@ -194,14 +192,14 @@ const Demo = () => {
 
         <Flex direction='column' w={350}>
           <Flex mb={2} justifyContent='space-between'>
-            <Flex alignItems={'center'}>
+            <Flex alignItems='center'>
               <Select tag={LinkTrigger} options={options} id='link-trigger-select' />
 
-              <Counter ml={1} id={'counter-for-textarea'}>
+              <Counter ml={1} id='counter-for-textarea'>
                 0/150
               </Counter>
             </Flex>
-            <Text size={200} color='text-secondary' id={'optional-for-textarea'}>
+            <Text size={200} color='text-secondary' id='optional-for-textarea'>
               optional
             </Text>
           </Flex>
@@ -215,17 +213,16 @@ const Demo = () => {
           </Input>
         </Flex>
 
-
         <Flex direction='column' w={350}>
           <Flex mb={2} justifyContent='space-between'>
-            <Flex alignItems={'center'}>
+            <Flex alignItems='center'>
               <Select tag={LinkTrigger} options={options} id='link-trigger-select' />
 
-              <Counter ml={1} id={'counter-for-textarea'}>
+              <Counter ml={1} id='counter-for-textarea'>
                 0/150
               </Counter>
             </Flex>
-            <Text size={200} color='text-secondary' id={'optional-for-textarea'}>
+            <Text size={200} color='text-secondary' id='optional-for-textarea'>
               optional
             </Text>
           </Flex>
@@ -241,14 +238,14 @@ const Demo = () => {
 
         <Flex direction='column' w={350}>
           <Flex mb={2} justifyContent='space-between'>
-            <Flex alignItems={'center'}>
+            <Flex alignItems='center'>
               <Select tag={LinkTrigger} options={options} id='link-trigger-select' />
 
-              <Counter ml={1} id={'counter-for-textarea'}>
+              <Counter ml={1} id='counter-for-textarea'>
                 0/150
               </Counter>
             </Flex>
-            <Text size={200} color='text-secondary' id={'optional-for-textarea'}>
+            <Text size={200} color='text-secondary' id='optional-for-textarea'>
               optional
             </Text>
           </Flex>
@@ -264,14 +261,14 @@ const Demo = () => {
 
         <Flex direction='column' w={350}>
           <Flex mb={2} justifyContent='space-between'>
-            <Flex alignItems={'center'}>
+            <Flex alignItems='center'>
               <Select tag={LinkTrigger} options={options} id='link-trigger-select' />
 
-              <Counter ml={1} id={'counter-for-textarea'}>
+              <Counter ml={1} id='counter-for-textarea'>
                 0/150
               </Counter>
             </Flex>
-            <Text size={200} color='text-secondary' id={'optional-for-textarea'}>
+            <Text size={200} color='text-secondary' id='optional-for-textarea'>
               optional
             </Text>
           </Flex>
@@ -287,14 +284,14 @@ const Demo = () => {
 
         <Flex direction='column' w={350}>
           <Flex mb={2} justifyContent='space-between'>
-            <Flex alignItems={'center'}>
+            <Flex alignItems='center'>
               <Select tag={LinkTrigger} options={options} id='link-trigger-select' />
 
-              <Counter ml={1} id={'counter-for-textarea'}>
+              <Counter ml={1} id='counter-for-textarea'>
                 0/150
               </Counter>
             </Flex>
-            <Text size={200} color='text-secondary' id={'optional-for-textarea'}>
+            <Text size={200} color='text-secondary' id='optional-for-textarea'>
               optional
             </Text>
           </Flex>

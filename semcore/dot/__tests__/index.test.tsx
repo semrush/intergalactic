@@ -1,14 +1,13 @@
-import React from 'react';
-import { snapshot } from '@semcore/testing-utils/snapshot';
+import Button from '@semcore/button';
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
-import { expect, test, describe, beforeEach, vi, afterEach } from '@semcore/testing-utils/vitest';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render } from '@semcore/testing-utils/testing-library';
+import { expect, test, describe, beforeEach, vi, afterEach } from '@semcore/testing-utils/vitest';
+import React from 'react';
+
+import Dot from '../src';
 
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
-import Dot from '../src';
-import Button from '@semcore/button';
-
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('dot Dependency imports', () => {
   runDependencyCheckTests('dot');
@@ -49,7 +48,7 @@ describe('Dot', () => {
   test('Verify logs warning if no aria-label or aria-labelledby', () => {
     render(<Dot />);
     expect(console.warn).toHaveBeenCalledWith(
-      "[Dot]: 'aria-label' or 'aria-labelledby' are required for Dot component",
+      '[Dot]: \'aria-label\' or \'aria-labelledby\' are required for Dot component',
     );
   });
 });

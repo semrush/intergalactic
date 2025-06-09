@@ -1,7 +1,8 @@
-import React from 'react';
-import styles from './ComponentCard.module.css';
 import { Text } from '@semcore/typography';
 import staticFiles from '@static';
+import React from 'react';
+
+import styles from './ComponentCard.module.css';
 
 function ComponentCard({ image, text, disabled, href, type }) {
   const url = staticFiles[`${type}/${image}.svg`];

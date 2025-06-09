@@ -1,4 +1,4 @@
-import { expect, userEvent, within } from '@storybook/test';
+import { expect, userEvent, within } from 'storybook/test';
 
 export async function LinkTriggerTest({ canvasElement }: { canvasElement: HTMLElement }) {
   const canvas = within(canvasElement);
@@ -9,5 +9,5 @@ export async function LinkTriggerTest({ canvasElement }: { canvasElement: HTMLEl
     throw new Error('Section 1 not found');
   }
   await userEvent.click(linkTrigger1);
-  //await userEvent.click(linkTrigger2);
+  // await userEvent.click(linkTrigger2);
 }

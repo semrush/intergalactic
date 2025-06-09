@@ -1,8 +1,9 @@
-import { UnknownProperties } from '@semcore/core';
-import { Context } from './context';
-import { TooltipType } from './Tooltip';
-import { IntergalacticD3Component } from './Plot';
-import { PatternsConfig } from './Pattern';
+import type { UnknownProperties } from '@semcore/core';
+
+import type { Context } from './context';
+import type { PatternsConfig } from './Pattern';
+import type { IntergalacticD3Component } from './Plot';
+import type { TooltipType } from './Tooltip';
 
 /** @deprecated */
 export interface IDonutProps extends DonutProps, UnknownProperties {}

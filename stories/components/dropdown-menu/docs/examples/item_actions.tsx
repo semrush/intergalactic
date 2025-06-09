@@ -1,10 +1,10 @@
-import React from 'react';
+import Button from '@semcore/button';
 import DropdownMenu from '@semcore/dropdown-menu';
 import { Flex } from '@semcore/flex-box';
-import TrashM from '@semcore/icon/Trash/m';
-import PlusM from '@semcore/icon/MathPlus/m';
-import Button from '@semcore/button';
 import ChevronRightIcon from '@semcore/icon/ChevronRight/m';
+import PlusM from '@semcore/icon/MathPlus/m';
+import TrashM from '@semcore/icon/Trash/m';
+import React from 'react';
 
 const Demo = () => {
   return (
@@ -15,21 +15,21 @@ const Demo = () => {
         <DropdownMenu.Item>Menu item 2</DropdownMenu.Item>
 
         <DropdownMenu.Item>
-          <DropdownMenu inlineActions placement={'right'}>
+          <DropdownMenu inlineActions placement='right'>
             <Flex justifyContent='space-between'>
               <DropdownMenu.Item.Content tag={DropdownMenu.Trigger}>
                 Menu item 3
               </DropdownMenu.Item.Content>
               <DropdownMenu.Actions gap={1}>
-                <DropdownMenu.Item tag={Button} addonLeft={PlusM} title={'Add new'} />
-                <DropdownMenu.Item tag={Button} addonLeft={TrashM} title={'Delete'} />
+                <DropdownMenu.Item tag={Button} addonLeft={PlusM} title='Add new' />
+                <DropdownMenu.Item tag={Button} addonLeft={TrashM} title='Delete' />
               </DropdownMenu.Actions>
             </Flex>
           </DropdownMenu>
         </DropdownMenu.Item>
         <DropdownMenu.Item>
           <DropdownMenu
-            placement={'right-start'}
+            placement='right-start'
             interaction={DropdownMenu.nestedMenuInteraction}
             timeout={[0, 300]}
             offset={[-11, 12]}

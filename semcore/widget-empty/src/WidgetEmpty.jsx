@@ -1,8 +1,8 @@
-import React from 'react';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
-import { getIllustrationPath } from '@semcore/illustration';
-import { Box, Flex } from '@semcore/flex-box';
 import isNode from '@semcore/core/lib/utils/isNode';
+import { Box, Flex } from '@semcore/flex-box';
+import { getIllustrationPath } from '@semcore/illustration';
+import React from 'react';
 
 import style from './style/widget-empty.shadow.css';
 

@@ -1,17 +1,18 @@
-import React from 'react';
 import { createComponent } from '@semcore/core';
-import { ScaleLinear, scaleLinear, scaleTime } from 'd3-scale';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import { Text } from '@semcore/typography';
+import { type ScaleLinear, scaleLinear, scaleTime } from 'd3-scale';
+import React from 'react';
+
 // @ts-ignore
 import { minMax, ScatterPlot, getScatterPlotRadius } from '../..';
 import { AbstractChart } from './AbstractChart';
-import {
+import type { BaseChartProps, ListData } from './AbstractChart.type';
+import type {
   ScatterPlotChartData,
   ScatterPlotChartProps,
   ScatterPlotChartType,
 } from './ScatterPlotChart.type';
-import { Text } from '@semcore/typography';
-import { BaseChartProps, ListData } from './AbstractChart.type';
-import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 
 class ScatterPlotChartComponent extends AbstractChart<
@@ -120,8 +121,14 @@ class ScatterPlotChartComponent extends AbstractChart<
                 children: (
                   <>
                     <ScatterPlot.Tooltip.Dot color={item.color}>Data</ScatterPlot.Tooltip.Dot>
-                    <Text tag='div'>X axis {this.tooltipValueFormatter(data[index][x])}</Text>
-                    <Text tag='div'>Y axis {this.tooltipValueFormatter(data[index][y])}</Text>
+                    <Text tag='div'>
+                      X axis
+                      {this.tooltipValueFormatter(data[index][x])}
+                    </Text>
+                    <Text tag='div'>
+                      Y axis
+                      {this.tooltipValueFormatter(data[index][y])}
+                    </Text>
                   </>
                 ),
               };

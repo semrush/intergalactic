@@ -1,6 +1,6 @@
-import React from 'react';
-import rafTrottle from '@semcore/core/lib/utils/rafTrottle';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
+import rafTrottle from '@semcore/core/lib/utils/rafTrottle';
+import React from 'react';
 
 const DEFAULT_MEDIA = ['(min-width: 768px)', '(max-width: 767px)'];
 

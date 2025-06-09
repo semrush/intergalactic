@@ -1,4 +1,4 @@
-import { expect, userEvent, within } from '@storybook/test';
+import { expect, userEvent, within } from 'storybook/test';
 
 export async function WithErrorTest({ canvasElement }: { canvasElement: HTMLElement }) {
   const canvas = within(canvasElement);
@@ -8,6 +8,4 @@ export async function WithErrorTest({ canvasElement }: { canvasElement: HTMLElem
   await userEvent.keyboard('{ArrowRight}');
   await userEvent.keyboard('{Enter}');
   await userEvent.keyboard('{Enter}');
-
-  
 }

@@ -1,11 +1,11 @@
-import React from 'react';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
-import { Box } from '@semcore/flex-box';
-import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
+import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
+import { Box } from '@semcore/flex-box';
+import React from 'react';
 
 import style from './style/spin.shadow.css';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 class RootSpin extends Component {
   static displayName = 'Spin';

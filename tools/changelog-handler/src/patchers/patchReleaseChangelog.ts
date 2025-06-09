@@ -1,11 +1,13 @@
-import { getReleaseChangelog } from '../getReleaseChangelog';
-import { collectComponentChangelogs } from '../collectComponentChangelogs';
-import { Changelog } from '../types';
-import fs from 'fs-extra';
 import { resolve as resolvePath } from 'path';
-import dayjs from 'dayjs';
-import semver from 'semver';
 import { fileURLToPath } from 'url';
+
+import dayjs from 'dayjs';
+import fs from 'fs-extra';
+import semver from 'semver';
+
+import { collectComponentChangelogs } from '../collectComponentChangelogs';
+import { getReleaseChangelog } from '../getReleaseChangelog';
+import type { Changelog } from '../types';
 
 const filename = fileURLToPath(import.meta.url);
 

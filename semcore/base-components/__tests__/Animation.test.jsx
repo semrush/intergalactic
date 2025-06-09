@@ -1,6 +1,7 @@
 import { expect, test, describe } from '@semcore/testing-utils/vitest';
 import { render, screen } from '@testing-library/react';
 import React from 'react';
+
 import { Animation } from '../src';
 
 describe('Animation Component', () => {

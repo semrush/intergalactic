@@ -1,17 +1,18 @@
-import React from 'react';
 import { createComponent } from '@semcore/core';
-import { BaseLegendProps } from './AbstractChart.type';
-import { BarChartData, BarChartProps, BarChartType } from './BarChart.type';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import { Box, Flex } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
 import { scaleBand, scaleLinear, scaleTime } from 'd3-scale';
+import React from 'react';
+
+import type { BaseLegendProps } from './AbstractChart.type';
+import type { BarChartData, BarChartProps, BarChartType } from './BarChart.type';
 // @ts-ignore
 import { minMax, GroupBar, HoverRect, StackBar, Line } from '../..';
 import { AbstractChart } from './AbstractChart';
-import { BarProps } from '../../types';
-import { Box, Flex } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
-import { LegendItemKey } from '../ChartLegend/LegendItem/LegendItem.type';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
-import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import type { BarProps } from '../../types';
+import type { LegendItemKey } from '../ChartLegend/LegendItem/LegendItem.type';
 
 class BarChartComponent extends AbstractChart<
   BarChartData,
@@ -51,7 +52,7 @@ class BarChartComponent extends AbstractChart<
   }
 
   renderTrend(key: LegendItemKey) {
-    const { groupKey, type = 'group', invertAxis, trend } = this.asProps;
+    const { groupKey, invertAxis, trend } = this.asProps;
     const { withTrend } = this.state;
     const trendItem = trend?.[key];
 
@@ -62,7 +63,7 @@ class BarChartComponent extends AbstractChart<
           key={`${key}_${groupKey}`}
           x={invertAxis ? 'y' : 'x'}
           y={invertAxis ? 'x' : 'y'}
-          color={'wall'}
+          color='wall'
           style={{ strokeWidth: 3, strokeDasharray: 5 }}
         >
           <Line.Dots data={trendItem} display />

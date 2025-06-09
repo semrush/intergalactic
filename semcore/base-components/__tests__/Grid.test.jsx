@@ -1,10 +1,13 @@
-import React from 'react';
-import { snapshot } from '@semcore/testing-utils/snapshot';
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
-import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { snapshot } from '@semcore/testing-utils/snapshot';
 import { cleanup } from '@semcore/testing-utils/testing-library';
-const { shouldSupportClassName, shouldSupportRef } = sharedTests;
+import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
+import React from 'react';
+
 import { Col, Row } from '../src';
+
+const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
 const styleBox = {
   border: '3px solid #fff',
@@ -12,8 +15,6 @@ const styleBox = {
   padding: '16px 0',
   textAlign: 'center',
 };
-
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('grid Dependency imports', () => {
   runDependencyCheckTests('grid');

@@ -1,5 +1,3 @@
-import React from 'react';
-import { scaleLinear, scaleBand } from 'd3-scale';
 import {
   Bar,
   HoverLine,
@@ -10,6 +8,8 @@ import {
   YAxis,
   PlotEventEmitter,
 } from '@semcore/d3-chart';
+import { scaleLinear, scaleBand } from 'd3-scale';
+import React from 'react';
 
 const eventEmitter = new PlotEventEmitter();
 
@@ -47,12 +47,12 @@ const Demo = () => {
           <YAxis.Ticks />
           <YAxis.Grid />
         </YAxis>
-        <HoverLine.Tooltip x="date_chart" wMin={100}>
+        <HoverLine.Tooltip x='date_chart' wMin={100}>
           {({ xIndex }) => ({
             children: <>{data[xIndex]?.download}</>,
           })}
         </HoverLine.Tooltip>
-        <Line x="date_chart" y="download">
+        <Line x='date_chart' y='download'>
           <Line.Dots display />
         </Line>
       </Plot>
@@ -75,12 +75,12 @@ const Demo = () => {
             })}
           </XAxis.Ticks>
         </XAxis>
-        <HoverRect.Tooltip x="date_chart" wMin={100}>
+        <HoverRect.Tooltip x='date_chart' wMin={100}>
           {({ xIndex }) => ({
             children: <>{data[xIndex]?.download}</>,
           })}
         </HoverRect.Tooltip>
-        <Bar x="date_chart" y="download" />
+        <Bar x='date_chart' y='download' />
       </Plot>
     </>
   );
@@ -88,7 +88,7 @@ const Demo = () => {
 
 const data = [...Array(10).keys()].map((i) => ({
   download: 172 + 10 * i,
-  date_chart: String(1594791280000 + 1000000000 * i), 
+  date_chart: String(1594791280000 + 1000000000 * i),
 }));
 
 export default Demo;

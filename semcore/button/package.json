@@ -31,8 +31,8 @@
     "directory": "semcore/button"
   },
   "devDependencies": {
-    "@semcore/icon": "*",
-    "@semcore/testing-utils": "1.0.0",
-    "@types/react": "18.0.21"
+    "@semcore/core": "workspace:*",
+    "@semcore/icon": "workspace:*",
+    "@semcore/testing-utils": "workspace:*"
   }
 }

@@ -1,10 +1,10 @@
-import React, { cloneElement } from 'react';
-import { createComponent, IFunctionProps, Intergalactic, UnknownProperties } from '@semcore/core';
-import { getNodeByRef, NodeByRef, useForkRef } from '@semcore/core/lib/utils/ref';
-import ownerDocument from '@semcore/core/lib/utils/ownerDocument';
-import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
+import { createComponent, type IFunctionProps, type Intergalactic, type UnknownProperties } from '@semcore/core';
 import { getEventTarget } from '@semcore/core/lib/utils/getEventTarget';
+import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
+import ownerDocument from '@semcore/core/lib/utils/ownerDocument';
+import { getNodeByRef, type NodeByRef, useForkRef } from '@semcore/core/lib/utils/ref';
 import useEventCallback from '@semcore/core/lib/utils/use/useEventCallback';
+import React, { cloneElement } from 'react';
 
 /** @deprecated */
 export interface IOutsideClickProps extends OutsideClickProps, UnknownProperties {}

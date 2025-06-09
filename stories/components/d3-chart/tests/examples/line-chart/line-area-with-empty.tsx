@@ -1,7 +1,6 @@
-import React from 'react';
 import { Chart, Plot, YAxis, XAxis, Line, minMax } from '@semcore/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
-
+import React from 'react';
 
 const Demo = () => {
   const MARGIN = 40;
@@ -34,18 +33,16 @@ const Demo = () => {
 };
 
 const data = Array(20)
-      .fill({})
-      .map((d, i) => {
-        const y = i > 8 && i < 16 ? Math.abs(Math.sin(Math.exp(i))) * 10 : null;
+  .fill({})
+  .map((d, i) => {
+    const y = i > 8 && i < 16 ? Math.abs(Math.sin(Math.exp(i))) * 10 : null;
 
-        return {
-          x: i,
-          y,
-          y0: y ? y - 2 : null,
-          y1: y ? y + 2 : null,
-        };
-      });
-
-
+    return {
+      x: i,
+      y,
+      y0: y ? y - 2 : null,
+      y1: y ? y + 2 : null,
+    };
+  });
 
 export default Demo;

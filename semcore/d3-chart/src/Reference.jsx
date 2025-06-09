@@ -1,10 +1,10 @@
-import React from 'react';
 import { Component, sstyled } from '@semcore/core';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import createElement from './createElement';
-import { scaleOfBandwidth } from './utils';
+import React from 'react';
 
+import createElement from './createElement';
 import style from './style/reference.shadow.css';
+import { scaleOfBandwidth } from './utils';
 
 const side2direction = {
   left: 'vertical',

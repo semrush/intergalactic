@@ -1,7 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import FlexExample from './examples/flex';
 import BoxExample from './examples/box';
+import FlexExample from './examples/flex';
 
 const meta: Meta = {
   title: 'Components/FlexBox/Documentation',

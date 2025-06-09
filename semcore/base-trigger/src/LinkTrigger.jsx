@@ -1,10 +1,10 @@
-import React from 'react';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
+import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
+import { Box } from '@semcore/flex-box';
 import ChevronDown from '@semcore/icon/ChevronDown/m';
 import Spin from '@semcore/spin';
-import { Box } from '@semcore/flex-box';
-import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
+import React from 'react';
 
 import style from './style/link-trigger.shadow.css';
 
@@ -14,6 +14,7 @@ class RootLinkTrigger extends Component {
   static defaultProps = {
     size: 'm',
   };
+
   static enhance = [resolveColorEnhance()];
 
   getTextProps() {

@@ -1,11 +1,10 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import BasicUsageExample from './examples/venn-chart/basic-usage';
-import LegendAndPatternFillExample from './examples/venn-chart/legend-and-pattern-fill';
 import CustomIntersectionsStylesExample from './examples/venn-chart/custom-intersection-styles';
+import LegendAndPatternFillExample from './examples/venn-chart/legend-and-pattern-fill';
 import SettingOrientationExample from './examples/venn-chart/setting-orientation';
 import VennExample from './examples/venn-chart/venn';
-
 
 const meta: Meta = {
   title: 'Components/d3Charts/Documentation/Venn-Chart',

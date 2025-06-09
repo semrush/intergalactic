@@ -1,10 +1,10 @@
-import React from 'react';
-import Tooltip, { Hint, DescriptionTooltip } from '@semcore/tooltip';
-import { Flex } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
-import Link from '@semcore/link';
 import Button, { ButtonLink } from '@semcore/button';
+import { Flex } from '@semcore/flex-box';
 import CheckAltM from '@semcore/icon/CheckAlt/m';
+import Link from '@semcore/link';
+import Tooltip, { Hint, DescriptionTooltip } from '@semcore/tooltip';
+import { Text } from '@semcore/typography';
+import React from 'react';
 
 const Demo = () => (
   <Flex direction='row' gap={40}>
@@ -15,7 +15,7 @@ const Demo = () => (
         aria-hidden={false}
         placement='bottom'
         tag={CheckAltM}
-        theme="default"
+        theme='default'
         color='var(--intergalactic-icon-primary-success)'
       />
       <Hint
@@ -24,7 +24,7 @@ const Demo = () => (
         aria-hidden={false}
         placement='bottom'
         tag={CheckAltM}
-        theme="invert"
+        theme='invert'
       />
 
     </Flex>
@@ -36,7 +36,7 @@ const Demo = () => (
         aria-hidden={false}
         placement='bottom'
         tag={CheckAltM}
-        theme="default"
+        theme='default'
         color='var(--intergalactic-icon-primary-success)'
       />
       <Tooltip
@@ -45,7 +45,7 @@ const Demo = () => (
         aria-hidden={false}
         placement='bottom'
         tag={CheckAltM}
-        theme="invert"
+        theme='invert'
       />
       <Tooltip
         visible
@@ -53,7 +53,7 @@ const Demo = () => (
         aria-hidden={false}
         placement='bottom'
         tag={CheckAltM}
-        theme="warning"
+        theme='warning'
       />
 
       <Tooltip
@@ -64,11 +64,11 @@ const Demo = () => (
         tag={CheckAltM}
       />
 
-      <Tooltip visible placement='bottom' >
+      <Tooltip visible placement='bottom'>
         <Tooltip.Trigger>
           <Button type='button'>Test</Button>
         </Tooltip.Trigger>
-        <Tooltip.Popper arrowBgColor={'green'} arrowShadowColor={'grey'}>
+        <Tooltip.Popper arrowBgColor='green' arrowShadowColor='grey'>
           Tooltip green arrow
         </Tooltip.Popper>
       </Tooltip>
@@ -76,69 +76,89 @@ const Demo = () => (
     </Flex>
 
     <Flex direction='column' gap={20} mb={3} data-testid='Top'>
-      <DescriptionTooltip visible
+      <DescriptionTooltip
+        visible
         title='Tooltip default'
         aria-hidden={false}
         placement='bottom'
 
-        theme="default">
-        <DescriptionTooltip.Trigger tag={ButtonLink} use={'secondary'}>
+        theme='default'
+      >
+        <DescriptionTooltip.Trigger tag={ButtonLink} use='secondary'>
           DescriptionTooltip invert
         </DescriptionTooltip.Trigger>
         <DescriptionTooltip.Popper aria-label='About fastest animals'>
           <Text tag='p'>
-            The <Link href='https://en.wikipedia.org/wiki/Peregrine_falcon'>peregrine falcon</Link>{' '}
+            The
+            {' '}
+            <Link href='https://en.wikipedia.org/wiki/Peregrine_falcon'>peregrine falcon</Link>
+            {' '}
             is the fastest bird,
           </Text>
         </DescriptionTooltip.Popper>
       </DescriptionTooltip>
 
-      <DescriptionTooltip visible
+      <DescriptionTooltip
+        visible
         title='Tooltip default'
         aria-hidden={false}
         placement='bottom'
 
-        theme="invert">
-        <DescriptionTooltip.Trigger tag={ButtonLink} use={'secondary'}>
+        theme='invert'
+      >
+        <DescriptionTooltip.Trigger tag={ButtonLink} use='secondary'>
           DescriptionTooltip
         </DescriptionTooltip.Trigger>
         <DescriptionTooltip.Popper aria-label='About fastest animals'>
           <Text tag='p'>
-            The <Link href='https://en.wikipedia.org/wiki/Peregrine_falcon'>peregrine falcon</Link>{' '}
+            The
+            {' '}
+            <Link href='https://en.wikipedia.org/wiki/Peregrine_falcon'>peregrine falcon</Link>
+            {' '}
             is the fastest bird,
           </Text>
         </DescriptionTooltip.Popper>
       </DescriptionTooltip>
 
-      <DescriptionTooltip visible
+      <DescriptionTooltip
+        visible
         title='Tooltip default'
         aria-hidden={false}
         placement='bottom'
 
-        theme="warning">
-        <DescriptionTooltip.Trigger tag={ButtonLink} use={'secondary'}>
+        theme='warning'
+      >
+        <DescriptionTooltip.Trigger tag={ButtonLink} use='secondary'>
           DescriptionTooltip warning
         </DescriptionTooltip.Trigger>
         <DescriptionTooltip.Popper aria-label='About fastest animals'>
           <Text tag='p'>
-            The <Link href='https://en.wikipedia.org/wiki/Peregrine_falcon'>peregrine falcon</Link>{' '}
+            The
+            {' '}
+            <Link href='https://en.wikipedia.org/wiki/Peregrine_falcon'>peregrine falcon</Link>
+            {' '}
             is the fastest bird,
           </Text>
         </DescriptionTooltip.Popper>
       </DescriptionTooltip>
 
-      <DescriptionTooltip visible
+      <DescriptionTooltip
+        visible
         title='Tooltip default'
         aria-hidden={false}
         placement='bottom'
 
-        theme="warning">
-        <DescriptionTooltip.Trigger tag={ButtonLink} use={'secondary'}>
+        theme='warning'
+      >
+        <DescriptionTooltip.Trigger tag={ButtonLink} use='secondary'>
           DescriptionTooltip warning
         </DescriptionTooltip.Trigger>
-        <DescriptionTooltip.Popper aria-label='About fastest animals' arrowBgColor={'green'} arrowShadowColor={'grey'}>
+        <DescriptionTooltip.Popper aria-label='About fastest animals' arrowBgColor='green' arrowShadowColor='grey'>
           <Text tag='p'>
-            The <Link href='https://en.wikipedia.org/wiki/Peregrine_falcon'>peregrine falcon</Link>{' '}
+            The
+            {' '}
+            <Link href='https://en.wikipedia.org/wiki/Peregrine_falcon'>peregrine falcon</Link>
+            {' '}
             is the fastest bird,
           </Text>
         </DescriptionTooltip.Popper>

@@ -1,11 +1,11 @@
-import React from 'react';
+import { LinkTrigger } from '@semcore/base-trigger';
+import Button from '@semcore/button';
 import Card from '@semcore/card';
-import { Text } from '@semcore/typography';
 import { Flex } from '@semcore/flex-box';
 import Close from '@semcore/icon/Close/m';
 import Select from '@semcore/select';
-import { LinkTrigger } from '@semcore/base-trigger';
-import Button from '@semcore/button';
+import { Text } from '@semcore/typography';
+import React from 'react';
 
 const tooltipContent = `Hey! Don't forget to place some useful information here.`;
 const options = ['Mobile', 'Desktop', 'Tablet'].map((value) => ({

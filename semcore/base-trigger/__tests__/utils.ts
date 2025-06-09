@@ -1,5 +1,5 @@
-import type { Page } from 'playwright';
 import { expect } from '@semcore/testing-utils/playwright';
+import type { Page } from 'playwright';
 
 export const selectOption = async (page: Page): Promise<void> => {
   await page.keyboard.press('Tab');

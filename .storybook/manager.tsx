@@ -1,10 +1,11 @@
 import React from 'react';
+import { addons, types } from 'storybook/manager-api';
+
 import {
   ADDON_ID,
   InteractionToggle,
   TOOL_ID,
 } from '../stories/utils/components/InteractionToggle';
-import { addons, types } from '@storybook/manager-api';
 import { SP_ADDON_ID, SP_PANEL_ID, SourcePanel } from '../stories/utils/components/SourceCode';
 
 addons.register(ADDON_ID, () => {

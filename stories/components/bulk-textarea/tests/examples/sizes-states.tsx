@@ -1,7 +1,8 @@
-import React from 'react';
-import BulkTextarea, { BulkTextareaProps, ErrorItem } from '@semcore/bulk-textarea';
+import type { ErrorItem } from '@semcore/bulk-textarea';
+import BulkTextarea, { BulkTextareaProps } from '@semcore/bulk-textarea';
 import { Box, Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
+import React from 'react';
 
 const validateRow = (row: string, rows: string[]) => {
   let isValid = true;
@@ -37,21 +38,21 @@ const Demo = () => {
             readonly={true}
             lineValidation={validateRow}
             linesDelimiters={[',']}
-            placeholder={'Placeholder'}
+            placeholder='Placeholder'
             errors={errors}
             showErrors={showErrors}
             onErrorsChange={setErrors}
             onShowErrorsChange={setShowErrors}
           >
             <Flex alignItems='center' justifyContent='flex-start' mb={2} gap={1}>
-              <Text tag={'label'} size={200} id={'keywords-label'}>
+              <Text tag='label' size={200} id='keywords-label'>
                 Readonly state of bulk textarea
               </Text>
               <BulkTextarea.Counter />
             </Flex>
             <BulkTextarea.InputField
-              aria-labelledby={'keywords-label'}
-              commonErrorMessage={'some global error'}
+              aria-labelledby='keywords-label'
+              commonErrorMessage='some global error'
             />
             <Flex alignItems='center' justifyContent='space-between' mt={2}>
               <BulkTextarea.ErrorsNavigation />
@@ -71,21 +72,21 @@ const Demo = () => {
             lineValidation={validateRow}
             disabled={true}
             linesDelimiters={[',']}
-            placeholder={'Long Long Placeholder'}
+            placeholder='Long Long Placeholder'
             errors={errors}
             showErrors={showErrors}
             onErrorsChange={setErrors}
             onShowErrorsChange={setShowErrors}
           >
             <Flex alignItems='center' justifyContent='flex-start' mb={2} gap={1}>
-              <Text tag={'label'} size={200} id={'keywords-label'}>
+              <Text tag='label' size={200} id='keywords-label'>
                 Disabled state of bulk textarea
               </Text>
               <BulkTextarea.Counter />
             </Flex>
             <BulkTextarea.InputField
-              aria-labelledby={'keywords-label'}
-              commonErrorMessage={'some global error'}
+              aria-labelledby='keywords-label'
+              commonErrorMessage='some global error'
             />
             <Flex alignItems='center' justifyContent='space-between' mt={2}>
               <BulkTextarea.ErrorsNavigation />
@@ -99,21 +100,21 @@ const Demo = () => {
             value={value}
             onChange={setValue}
             lineValidation={validateRow}
-            placeholder={'Placeholder'}
+            placeholder='Placeholder'
             errors={errors}
             showErrors={showErrors}
             onErrorsChange={setErrors}
             onShowErrorsChange={setShowErrors}
           >
             <Flex alignItems='center' justifyContent='flex-start' mb={2} gap={1}>
-              <Text tag={'label'} id={'keywords-label'}>
+              <Text tag='label' id='keywords-label'>
                 Default props
               </Text>
               <BulkTextarea.Counter />
             </Flex>
             <BulkTextarea.InputField
-              aria-labelledby={'keywords-label'}
-              commonErrorMessage={'some global error'}
+              aria-labelledby='keywords-label'
+              commonErrorMessage='some global error'
             />
             <Flex alignItems='center' justifyContent='space-between' mt={2}>
               <BulkTextarea.ErrorsNavigation />
@@ -134,21 +135,21 @@ const Demo = () => {
             onChange={setValue}
             lineValidation={validateRow}
             linesDelimiters={[',']}
-            placeholder={'Placeholder'}
+            placeholder='Placeholder'
             errors={errors}
             showErrors={showErrors}
             onErrorsChange={setErrors}
             onShowErrorsChange={setShowErrors}
           >
             <Flex alignItems='center' justifyContent='flex-start' mb={2} gap={1}>
-              <Text tag={'label'} size={200} id={'keywords-label'}>
+              <Text tag='label' size={200} id='keywords-label'>
                 Active state of bulk textarea
               </Text>
               <BulkTextarea.Counter />
             </Flex>
             <BulkTextarea.InputField
-              aria-labelledby={'keywords-label'}
-              commonErrorMessage={'some global error'}
+              aria-labelledby='keywords-label'
+              commonErrorMessage='some global error'
             />
             <Flex alignItems='center' justifyContent='space-between' mt={2}>
               <BulkTextarea.ErrorsNavigation />
@@ -168,21 +169,21 @@ const Demo = () => {
             onChange={setValue}
             lineValidation={validateRow}
             linesDelimiters={[',']}
-            placeholder={'Long Long Long Placeholder Enter text here'}
+            placeholder='Long Long Long Placeholder Enter text here'
             errors={errors}
             showErrors={showErrors}
             onErrorsChange={setErrors}
             onShowErrorsChange={setShowErrors}
           >
             <Flex alignItems='center' justifyContent='flex-start' mb={2} gap={1}>
-              <Text tag={'label'} size={200} id={'keywords-label'}>
+              <Text tag='label' size={200} id='keywords-label'>
                 Active state of bulk textarea
               </Text>
               <BulkTextarea.Counter />
             </Flex>
             <BulkTextarea.InputField
-              aria-labelledby={'keywords-label'}
-              commonErrorMessage={'some global error'}
+              aria-labelledby='keywords-label'
+              commonErrorMessage='some global error'
             />
             <Flex alignItems='center' justifyContent='space-between' mt={2}>
               <BulkTextarea.ErrorsNavigation />
@@ -207,14 +208,14 @@ const Demo = () => {
             onShowErrorsChange={setShowErrors}
           >
             <Flex alignItems='center' justifyContent='flex-start' mb={2} gap={1}>
-              <Text tag={'label'} size={200} id={'keywords-label'}>
+              <Text tag='label' size={200} id='keywords-label'>
                 Active state of bulk textarea without Placeholder
               </Text>
               <BulkTextarea.Counter />
             </Flex>
             <BulkTextarea.InputField
-              aria-labelledby={'keywords-label'}
-              commonErrorMessage={'some global error'}
+              aria-labelledby='keywords-label'
+              commonErrorMessage='some global error'
             />
             <Flex alignItems='center' justifyContent='space-between' mt={2}>
               <BulkTextarea.ErrorsNavigation />

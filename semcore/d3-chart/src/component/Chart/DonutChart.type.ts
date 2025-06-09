@@ -1,8 +1,9 @@
-import React from 'react';
-import { Intergalactic } from '@semcore/core';
-import { Flex } from '@semcore/flex-box';
-import { ScaleLinear } from 'd3-scale';
-import { BaseChartProps } from './AbstractChart.type';
+import type { Intergalactic } from '@semcore/core';
+import type { Flex } from '@semcore/flex-box';
+import type { ScaleLinear } from 'd3-scale';
+import type React from 'react';
+
+import type { BaseChartProps } from './AbstractChart.type';
 
 export type DonutChartData = Record<string, number>;
 

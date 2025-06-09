@@ -1,16 +1,16 @@
-import React from 'react';
+import Checkbox from '@semcore/checkbox';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
+import React from 'react';
 
 import style from '../../style/checkbox-button.shadow.css';
-import Checkbox from '@semcore/checkbox';
-import { FeedbackRatingCheckboxProps } from '../feedback-rating/FeedbackRating.type';
+import type { FeedbackRatingCheckboxProps } from '../feedback-rating/FeedbackRating.type';
 
 class CheckboxButtonRoot extends Component<FeedbackRatingCheckboxProps> {
   static style = style;
 
   render() {
-    const { styles, id, label, type, focused, ...other } = this.asProps;
+    const { styles, id, label, type: _type, focused, ...other } = this.asProps;
     const autoFocus = focused ? 20 : false;
 
     const SCheckboxButton = Root;

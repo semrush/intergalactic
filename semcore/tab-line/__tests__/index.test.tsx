@@ -1,14 +1,14 @@
-import * as React from 'react';
-import { snapshot } from '@semcore/testing-utils/snapshot';
-import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import type { Intergalactic } from '@semcore/core';
 import propsForElement from '@semcore/core/lib/utils/propsForElement';
-import TabLine from '../src';
-
-import { render, fireEvent, cleanup } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
-import { Intergalactic } from '@semcore/core';
-import { assertType } from 'vitest';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { render, fireEvent, cleanup } from '@semcore/testing-utils/testing-library';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import * as React from 'react';
+import { assertType } from 'vitest';
+
+import TabLine from '../src';
 
 describe('tab-line Dependency imports', () => {
   runDependencyCheckTests('tab-line');
@@ -145,7 +145,7 @@ describe('TabLine', () => {
         <TabLine.Item value={1}>Item 1</TabLine.Item>
         <TabLine.Item value={2}>Item 2</TabLine.Item>
         <TabLine.Item value={3}>Item 3</TabLine.Item>
-        <TabLine.Item value={4} onClick={spyClick} data-testid={'tab-4'}>
+        <TabLine.Item value={4} onClick={spyClick} data-testid='tab-4'>
           Item 4
         </TabLine.Item>
       </TabLine>,
@@ -164,7 +164,7 @@ describe('TabLine', () => {
         <TabLine.Item value={1}>Item 1</TabLine.Item>
         <TabLine.Item value={2}>Item 2</TabLine.Item>
         <TabLine.Item value={3}>Item 3</TabLine.Item>
-        <TabLine.Item value={4} data-testid={'tab-4'} disabled>
+        <TabLine.Item value={4} data-testid='tab-4' disabled>
           Item 4
         </TabLine.Item>
       </TabLine>,
@@ -225,7 +225,7 @@ describe('TabLine', () => {
     const spy = vi.fn();
 
     const { getByTestId } = render(
-      <TabLine value={1 as number} onChange={spy} data-testid={'tab-root'}>
+      <TabLine value={1 as number} onChange={spy} data-testid='tab-root'>
         <TabLine.Item value={1}>Item 1</TabLine.Item>
         <TabLine.Item value={2}>Item 2</TabLine.Item>
         <TabLine.Item value={3}>Item 3</TabLine.Item>

@@ -1,5 +1,5 @@
-import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import { expect, test } from '@semcore/testing-utils/playwright';
 
 async function getColumnWidth(page: any, colIndex: any) {
   const column = await page.locator(`[aria-colindex="${colIndex}"][role="columnheader"]`);
@@ -27,8 +27,8 @@ test.describe('Base styles Primary Table', () => {
     await checkStyles(keywordHeader, {
       'font-size': '12px',
       'line-height': 'normal',
-      color: 'rgb(25, 27, 35)',
-      padding: '12px',
+      'color': 'rgb(25, 27, 35)',
+      'padding': '12px',
       'background-color': 'rgb(244, 245, 249)',
       'border-bottom': '1px solid rgb(224, 225, 233)',
     });
@@ -40,9 +40,9 @@ test.describe('Base styles Primary Table', () => {
     await checkStyles(firstCell, {
       'font-size': '14px',
       'border-bottom': '1px solid rgb(224, 225, 233)',
-      color: 'rgb(25, 27, 35)',
+      'color': 'rgb(25, 27, 35)',
       'background-color': 'rgb(255, 255, 255)',
-      padding: '12px',
+      'padding': '12px',
       'min-height': '45px',
     });
 
@@ -126,8 +126,8 @@ test.describe('Base styles Primary Table', () => {
     await checkStyles(keywordHeader, {
       'font-size': '12px',
       'line-height': 'normal',
-      color: 'rgb(25, 27, 35)',
-      padding: '12px 8px',
+      'color': 'rgb(25, 27, 35)',
+      'padding': '12px 8px',
       'background-color': 'rgb(244, 245, 249)',
       'border-bottom': '1px solid rgb(224, 225, 233)',
     });
@@ -136,8 +136,8 @@ test.describe('Base styles Primary Table', () => {
       'font-size': '14px',
       'border-bottom': '1px solid rgb(224, 225, 233)',
       'background-color': 'rgb(255, 255, 255)',
-      color: 'rgb(25, 27, 35)',
-      padding: '12px 8px',
+      'color': 'rgb(25, 27, 35)',
+      'padding': '12px 8px',
     });
 
     await firstCell.hover();
@@ -243,8 +243,8 @@ test.describe('Base styles Secondary Table', () => {
     await checkStyles(keywordHeader, {
       'font-size': '12px',
       'line-height': 'normal',
-      color: 'rgb(25, 27, 35)',
-      padding: '8px',
+      'color': 'rgb(25, 27, 35)',
+      'padding': '8px',
       'background-color': 'rgb(255, 255, 255)',
       'border-bottom': '1px solid rgb(169, 171, 182)',
     });
@@ -256,9 +256,9 @@ test.describe('Base styles Secondary Table', () => {
     await checkStyles(firstCell, {
       'font-size': '14px',
       'border-bottom': '1px solid rgb(224, 225, 233)',
-      color: 'rgb(25, 27, 35)',
+      'color': 'rgb(25, 27, 35)',
       'background-color': 'rgb(255, 255, 255)',
-      padding: '8px',
+      'padding': '8px',
     });
 
     await firstCell.hover();

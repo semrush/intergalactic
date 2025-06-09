@@ -1,12 +1,12 @@
-import React from 'react';
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
-import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render } from '@semcore/testing-utils/testing-library';
-
-const { shouldSupportClassName, shouldSupportRef } = sharedTests;
+import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
+import React from 'react';
 
 import Checkbox from '../src';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
 describe('Checkbox Dependency imports', () => {
   runDependencyCheckTests('checkbox');
@@ -27,14 +27,14 @@ describe('Checkbox', () => {
     async ({ expect }) => {
       const { getByTestId } = render(
         <Checkbox
-          aria-label={'test aria label'}
-          aria-labelledby={'test aria labelledby'}
-          aria-describedby={'test aria describedby'}
-          data-testid={'checkboxContainer'}
+          aria-label='test aria label'
+          aria-labelledby='test aria labelledby'
+          aria-describedby='test aria describedby'
+          data-testid='checkboxContainer'
         >
           <Checkbox.Value>
-            <Checkbox.Value.Control data-testid={'checkboxControl'} />
-            <Checkbox.Value.CheckMark data-testid={'checkboxCheckMark'} />
+            <Checkbox.Value.Control data-testid='checkboxControl' />
+            <Checkbox.Value.CheckMark data-testid='checkboxCheckMark' />
           </Checkbox.Value>
         </Checkbox>,
       );

@@ -1,9 +1,10 @@
 import { execSync } from 'child_process';
 import path from 'path';
-import fs from 'fs-extra';
-import glob from 'fast-glob';
 import { fileURLToPath } from 'url';
+
 import { fetchFromNpm, collectPackages } from '@semcore/continuous-delivery';
+import glob from 'fast-glob';
+import fs from 'fs-extra';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.resolve(filename, '..');

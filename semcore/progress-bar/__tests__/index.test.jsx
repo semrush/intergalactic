@@ -1,13 +1,13 @@
-import React from 'react';
-import { snapshot } from '@semcore/testing-utils/snapshot';
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
-import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { snapshot } from '@semcore/testing-utils/snapshot';
 import { cleanup, render } from '@semcore/testing-utils/testing-library';
+import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
+import React from 'react';
 
-const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 import ProgressBar from '../src';
 
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
 describe('progress-bar Dependency imports', () => {
   runDependencyCheckTests('progress-bar');
