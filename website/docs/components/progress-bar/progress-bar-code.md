@@ -21,7 +21,7 @@ By default, you should use `<ProgressBar/>`. However, you can customize progress
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/progress-bar/docs/examples/customizing_the_bar.js';
+  export Demo from 'stories/components/progress-bar/docs/examples/customizing_the_bar.tsx';
 </script>
 
 :::
