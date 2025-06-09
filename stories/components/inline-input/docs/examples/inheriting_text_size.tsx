@@ -9,7 +9,7 @@ const Example = () => {
   const [editingTitle, setEditingTitle] = React.useState(false);
   const [savingTitle, setSavingTitle] = React.useState(false);
   const stopEditing = () => setEditingTitle(false);
-  const handleTitle = (title) => {
+  const handleTitle = (title: any) => {
     setSavingTitle(true);
     /** Here we are doing some network activities */
     setTimeout(() => {
