@@ -45,7 +45,9 @@ export type InputMaskValueProps = InputValueProps & {
    */
   pipe?: (
     conformedValue: string,
-    config: {},
+    config: {
+      rawValue: string;
+    },
   ) => string | false | { value: string; indexesOfPipedChars: number[] };
   /**
    * @ignore
