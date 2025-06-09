@@ -1,6 +1,6 @@
-import React from 'react';
-import { List } from '@semcore/typography';
 import CheckM from '@semcore/icon/Check/m';
+import { List } from '@semcore/typography';
+import React from 'react';
 
 const Demo = () => (
   <div>
@@ -11,6 +11,6 @@ const Demo = () => (
       </List.Item>
     </List>
   </div>
-);   
+);
 
 export default Demo;

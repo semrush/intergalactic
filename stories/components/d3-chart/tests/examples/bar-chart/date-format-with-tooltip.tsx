@@ -1,8 +1,8 @@
-import React from 'react';
-import { scaleLinear, scaleBand } from 'd3-scale';
 import { Bar, ResponsiveContainer, XAxis, Plot, YAxis, HoverRect } from '@semcore/d3-chart';
 import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
+import { scaleLinear, scaleBand } from 'd3-scale';
+import React from 'react';
 
 const Demo = () => {
   const [[width, height], setSize] = React.useState([0, 0]);
@@ -13,8 +13,8 @@ const Demo = () => {
       const date = new Date(1594791280000 + 1000000000 * i);
       return {
         download: 172 + 10 * i,
-        date_chart: date.toISOString(), 
-        date_original: date, 
+        date_chart: date.toISOString(),
+        date_original: date,
         category: `Item ${i + 1}`,
         bar: `${172 + 10 * i}`,
       };
@@ -22,7 +22,7 @@ const Demo = () => {
   }, []);
 
   const xScale = scaleBand()
-    .domain(data.map((d) => d.date_chart)) 
+    .domain(data.map((d) => d.date_chart))
     .range([MARGIN, width - MARGIN])
     .paddingInner(0.4)
     .paddingOuter(0.2);
@@ -56,14 +56,14 @@ const Demo = () => {
             }}
           </XAxis.Ticks>
         </XAxis>
-        <HoverRect.Tooltip x="date_chart" wMin={100}>
+        <HoverRect.Tooltip x='date_chart' wMin={100}>
           {({ xIndex }) => {
             const item = data[xIndex];
             return {
               children: (
                 <>
                   <HoverRect.Tooltip.Title>{item.category}</HoverRect.Tooltip.Title>
-                  <Flex justifyContent="space-between">
+                  <Flex justifyContent='space-between'>
                     <HoverRect.Tooltip.Dot mr={4}>Bar</HoverRect.Tooltip.Dot>
                     <Text bold>{item.bar}</Text>
                   </Flex>
@@ -72,7 +72,7 @@ const Demo = () => {
             };
           }}
         </HoverRect.Tooltip>
-        <Bar x="date_chart" y="download" />
+        <Bar x='date_chart' y='download' />
       </Plot>
     </ResponsiveContainer>
   );

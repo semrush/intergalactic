@@ -6,7 +6,7 @@ COPY ./ ./
 COPY .git/ ./.git/
 
 RUN apk add git
-RUN npm install --global pnpm@8.11.0
+RUN npm install --global pnpm@10.11.1
 RUN pnpm install --frozen-lockfile --ignore-scripts
 RUN pnpm --filter utils run build
 RUN pnpm --filter core run build

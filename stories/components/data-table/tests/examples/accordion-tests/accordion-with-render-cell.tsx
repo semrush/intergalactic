@@ -1,11 +1,15 @@
-import React from 'react';
-import { DataTable, ACCORDION, DataTableData } from '@semcore/data-table';
 import { ButtonLink } from '@semcore/button';
+import type { DataTableData } from '@semcore/data-table';
+import { DataTable, ACCORDION } from '@semcore/data-table';
 import { NoData } from '@semcore/widget-empty';
+import React from 'react';
 
 const Demo = () => {
   return (
-    <DataTable data={data} aria-label={'Accordion inside table'} h={'100%'}
+    <DataTable
+      data={data}
+      aria-label='Accordion inside table'
+      h='100%'
       columns={[
         { name: 'keyword', children: 'Keyword', gtcWidth: 'minmax(60%, 80%)' },
         {
@@ -15,8 +19,8 @@ const Demo = () => {
             { name: 'kd', children: 'KD,%' },
             { name: 'cpc', children: 'CPC' },
             { name: 'vol', children: 'Vol.' },
-          ]
-        }
+          ],
+        },
       ]}
 
       renderCell={(props) => {

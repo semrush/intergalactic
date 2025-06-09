@@ -1,7 +1,7 @@
-import React from 'react';
-import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import { BoxProps } from '@semcore/flex-box';
-import { ButtonLinkComponent } from '@semcore/button';
+import type { ButtonLinkComponent } from '@semcore/button';
+import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import type { BoxProps } from '@semcore/flex-box';
+import type React from 'react';
 
 /** @deprecated */
 export interface IInlineInputProps extends InlineInputProps, UnknownProperties {}
@@ -106,7 +106,7 @@ export type InlineInputValueProps = BoxProps & {
 /** @deprecated */
 export interface IInlineInputConfirmControlProps
   extends InlineInputConfirmControlProps,
-    UnknownProperties {}
+  UnknownProperties {}
 export type InlineInputConfirmControlProps = BoxProps & {
   /**
    * Text of tooltip
@@ -122,7 +122,7 @@ export type InlineInputConfirmControlProps = BoxProps & {
 /** @deprecated */
 export interface IInlineInputCancelControlProps
   extends InlineInputCancelControlProps,
-    UnknownProperties {}
+  UnknownProperties {}
 export type InlineInputCancelControlProps = BoxProps & {
   /**
    * Text of tooltip

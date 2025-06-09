@@ -1,26 +1,27 @@
-import React from 'react';
 import { FadeInOut, Slide } from '@semcore/animation';
-import { createComponent, Component, sstyled, Root } from '@semcore/core';
-import Portal, { PortalProvider } from '@semcore/portal';
 import Button from '@semcore/button';
-import OutsideClick from '@semcore/outside-click';
-import CloseIcon from '@semcore/icon/Close/l';
-import fire from '@semcore/core/lib/utils/fire';
-import usePreventScroll from '@semcore/core/lib/utils/use/usePreventScroll';
-import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
-import style from './style/modal.shadow.css';
-import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import { Text } from '@semcore/typography';
-import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
-import { useFocusLock } from '@semcore/core/lib/utils/use/useFocusLock';
+import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
+import fire from '@semcore/core/lib/utils/fire';
 import { useContextTheme } from '@semcore/core/lib/utils/ThemeProvider';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { useColorResolver } from '@semcore/core/lib/utils/use/useColorResolver';
+import { useFocusLock } from '@semcore/core/lib/utils/use/useFocusLock';
+import usePreventScroll from '@semcore/core/lib/utils/use/usePreventScroll';
+import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
 import {
   ZIndexStackingContextProvider,
   useZIndexStacking,
 } from '@semcore/core/lib/utils/zIndexStacking';
+import CloseIcon from '@semcore/icon/Close/l';
+import OutsideClick from '@semcore/outside-click';
+import Portal, { PortalProvider } from '@semcore/portal';
+import { Text } from '@semcore/typography';
+import React from 'react';
+
+import style from './style/modal.shadow.css';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 class ModalRoot extends Component {
   static displayName = 'Modal';
@@ -35,12 +36,14 @@ class ModalRoot extends Component {
       prop: 'duration',
     }),
   ];
+
   static defaultProps = {
     closable: true,
     i18n: localizedMessages,
     locale: 'en',
     disablePreventScroll: false,
   };
+
   state = { hasTitle: false };
 
   handleKeyDown = (e) => {
@@ -75,7 +78,7 @@ class ModalRoot extends Component {
     return {
       visible,
       closable,
-      onKeyDown: this.handleKeyDown,
+      'onKeyDown': this.handleKeyDown,
       'aria-label': hasTitle ? undefined : getI18nText('title'),
       'aria-labelledby': hasTitle ? `igc-${uid}-title` : undefined,
       duration,
@@ -112,13 +115,15 @@ class ModalRoot extends Component {
 
     return (
       <Portal disablePortal={disablePortal} ignorePortalsStacking={ignorePortalsStacking}>
-        {advancedMode ? (
-          <Children />
-        ) : (
-          <Modal.Overlay>
-            <Root render={Modal.Window} />
-          </Modal.Overlay>
-        )}
+        {advancedMode
+          ? (
+              <Children />
+            )
+          : (
+              <Modal.Overlay>
+                <Root render={Modal.Window} />
+              </Modal.Overlay>
+            )}
       </Portal>
     );
   }
@@ -180,13 +185,15 @@ function Close(props) {
       theme={ghost ? 'invert' : 'muted'}
       aria-label={getI18nText('close')}
     >
-      {hasChildren ? (
-        <Children />
-      ) : (
-        <Button.Addon ml={'7px'} mr={'7px'}>
-          <CloseIcon title={getI18nText('close')} />
-        </Button.Addon>
-      )}
+      {hasChildren
+        ? (
+            <Children />
+          )
+        : (
+            <Button.Addon ml='7px' mr='7px'>
+              <CloseIcon title={getI18nText('close')} />
+            </Button.Addon>
+          )}
     </SClose>,
   );
 }

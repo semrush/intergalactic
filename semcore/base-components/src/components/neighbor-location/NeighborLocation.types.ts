@@ -1,5 +1,5 @@
-import React from 'react';
-import { UnknownProperties, Intergalactic, ReturnEl } from '@semcore/core';
+import type { UnknownProperties, Intergalactic, ReturnEl } from '@semcore/core';
+import type React from 'react';
 
 export type NeighborLocationUnion = 'right' | 'both' | 'left';
 
@@ -26,7 +26,7 @@ export type NeighborItemProps = {
 /** @deprecated */
 export interface INeighborLocationDetectProps
   extends NeighborLocationDetectProps,
-    UnknownProperties {}
+  UnknownProperties {}
 export type NeighborLocationDetectProps = NeighborItemProps & {
   children?:
     | React.ReactElement

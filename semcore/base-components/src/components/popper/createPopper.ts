@@ -11,6 +11,7 @@ import {
   arrow,
 } from '@popperjs/core';
 import maxSize from 'popper-max-size-modifier';
+
 import arrowOffset from './arrowOffset';
 import { applyMaxSize } from './modifiers/applyMaxSize';
 import { cursorAnchoringModifier } from './modifiers/cursorAnchoring';

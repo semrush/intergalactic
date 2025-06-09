@@ -1,14 +1,14 @@
-import React from 'react';
 import { Component, sstyled, Root } from '@semcore/core';
-import { Box } from '@semcore/flex-box';
-
-import style from './inputField.shadow.css';
-import { PopperContext } from '@semcore/popper';
-import Tooltip from '@semcore/tooltip';
-import { InputFieldProps, ErrorItem } from './InputField.types';
 import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import { Box } from '@semcore/flex-box';
+import type { PopperContext } from '@semcore/popper';
+import Tooltip from '@semcore/tooltip';
 import DOMPurify from 'dompurify';
+import React from 'react';
+
+import style from './inputField.shadow.css';
+import type { InputFieldProps, ErrorItem } from './InputField.types';
 
 type IndexKeys = 'keyboardLineIndex' | 'mouseLineIndex';
 
@@ -209,8 +209,8 @@ class InputField<T extends string | string[]> extends Component<
       this.errorByInteraction === 'keyboard'
         ? keyboardLineIndex
         : this.errorByInteraction === 'mouse'
-        ? mouseLineIndex
-        : -1;
+          ? mouseLineIndex
+          : -1;
     let errorItem: ErrorItem | undefined = errors[errorIndex];
 
     if (currentLineIndex !== -1) {
@@ -324,7 +324,7 @@ class InputField<T extends string | string[]> extends Component<
     }
   }
 
-  handleMouseLeave(event: MouseEvent): void {
+  handleMouseLeave(): void {
     if (this.changeTriggerTimeout) {
       clearTimeout(this.changeTriggerTimeout);
     }
@@ -392,7 +392,7 @@ class InputField<T extends string | string[]> extends Component<
         const firstNodeToInsert = listOfNodes.splice(0, 1)[0];
         const lastNodeToInsert = listOfNodes[listOfNodes.length - 1];
 
-        anchorNode.textContent = noEmptyLineBefore + firstNodeToInsert?.textContent ?? '';
+        anchorNode.textContent = noEmptyLineBefore + (firstNodeToInsert?.textContent ?? '');
 
         anchorNode.after(...listOfNodes);
 
@@ -552,7 +552,7 @@ class InputField<T extends string | string[]> extends Component<
     }
   }
 
-  handleFocus(event: FocusEvent) {
+  handleFocus() {
     this.isFocusing = true;
     this.errorByInteraction = 'keyboard';
 
@@ -740,9 +740,7 @@ class InputField<T extends string | string[]> extends Component<
           }, 0);
 
           this.toggleErrorsPopperByKeyboard(0);
-        }
-        // Backspace on selected few full rows
-        else if (
+        } else if (
           focusElement !== anchorElement &&
           focusElement instanceof Text &&
           anchorElement instanceof Text &&
@@ -750,7 +748,7 @@ class InputField<T extends string | string[]> extends Component<
           anchorElement?.textContent === anchorElement?.parentNode?.textContent &&
           anchorOffset === 0 &&
           focusOffset === focusElement?.parentNode?.textContent?.length
-        ) {
+        ) { // Backspace on selected few full rows
           event.preventDefault();
 
           const paragraphs = Array.from(this.textarea.children);
@@ -813,10 +811,10 @@ class InputField<T extends string | string[]> extends Component<
     return sstyled(styles)(
       <>
         <Tooltip
-          interaction={'none'}
+          interaction='none'
           placement={isCommonError ? 'right-start' : 'right'}
           visible={visibleErrorTooltip}
-          theme={'warning'}
+          theme='warning'
           offset={isCommonError ? undefined : [0, 26]}
           preventOverflow={{
             boundary: this.containerRef.current ?? undefined,
@@ -907,7 +905,7 @@ class InputField<T extends string | string[]> extends Component<
       let lines = 0;
       const { maxLines, linesCount } = this.asProps;
 
-      this.textarea.childNodes.forEach((node, index) => {
+      this.textarea.childNodes.forEach((node) => {
         if (node instanceof HTMLParagraphElement) {
           node.dataset.overMaxRows = 'false';
 
@@ -1188,6 +1186,7 @@ class InputField<T extends string | string[]> extends Component<
 
     textarea.removeEventListener('keydown', this.handleSelectAll);
   }
+
   private removeEventListeners(textarea: HTMLElement) {
     textarea.removeEventListener('paste', this.handlePaste);
     textarea.removeEventListener('input', this.handleChange);

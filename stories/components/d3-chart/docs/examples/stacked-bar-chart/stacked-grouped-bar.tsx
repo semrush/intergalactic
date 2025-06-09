@@ -1,8 +1,8 @@
-import React from 'react';
 import { Plot, YAxis, XAxis, StackGroupBar, HoverRect } from '@semcore/d3-chart';
-import { scaleLinear, scaleBand } from 'd3-scale';
 import { Box, Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
+import { scaleLinear, scaleBand } from 'd3-scale';
+import React from 'react';
 
 const Demo = () => {
   const MARGIN = 40;
@@ -67,10 +67,10 @@ const Demo = () => {
         }}
       </HoverRect.Tooltip>
       <StackGroupBar x='category'>
-        <StackGroupBar.Bar group='x' y={'a'} />
-        <StackGroupBar.Bar group='x' y={'b'} />
-        <StackGroupBar.Bar group='z' y={'c'} />
-        <StackGroupBar.Bar group='z' y={'d'} />
+        <StackGroupBar.Bar group='x' y='a' />
+        <StackGroupBar.Bar group='x' y='b' />
+        <StackGroupBar.Bar group='z' y='c' />
+        <StackGroupBar.Bar group='z' y='d' />
       </StackGroupBar>
     </Plot>
   );

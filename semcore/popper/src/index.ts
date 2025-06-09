@@ -1,5 +1,4 @@
 import { Popper, isInputTriggerTag } from '@semcore/base-components';
-
 import type {
   Placement,
   PopperContext,

@@ -1,5 +1,6 @@
+import type { DataTableSort } from '@semcore/data-table';
+import { DataTable } from '@semcore/data-table';
 import React from 'react';
-import { DataTable, DataTableSort } from '@semcore/data-table';
 
 type SortableColumn = Exclude<keyof typeof data[0], 'keyword'>;
 
@@ -32,7 +33,7 @@ const Demo = () => {
       data={sortedData}
       sort={sort}
       onSortChange={handleSortChange}
-      aria-label={'Expanding column'}
+      aria-label='Expanding column'
       columns={[
         { name: 'keyword', children: 'Keyword Keyword' },
         { name: 'kd', children: 'Difficulty Difficulty' },

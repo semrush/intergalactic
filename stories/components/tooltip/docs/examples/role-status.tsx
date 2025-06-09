@@ -1,7 +1,7 @@
-import React from 'react';
-import Tooltip from '@semcore/tooltip';
-import Input from '@semcore/input';
 import CheckAltM from '@semcore/icon/CheckAlt/m';
+import Input from '@semcore/input';
+import Tooltip from '@semcore/tooltip';
+import React from 'react';
 
 const Demo = () => {
   const [value, setValue] = React.useState('');
@@ -19,7 +19,9 @@ const Demo = () => {
 
   const content = (
     <p key={`1_${passed}`}>
-      {!passed ? '•' : <CheckAltM aria-hidden={false} aria-label='passed' />} Should contain min 5
+      {!passed ? '•' : <CheckAltM aria-hidden={false} aria-label='passed' />}
+      {' '}
+      Should contain min 5
       symbols
     </p>
   );

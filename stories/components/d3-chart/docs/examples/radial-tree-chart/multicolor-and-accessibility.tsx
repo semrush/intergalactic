@@ -1,7 +1,7 @@
-import React from 'react';
 import { Plot, RadialTree } from '@semcore/d3-chart';
-import { scaleLinear } from 'd3-scale';
 import LikeM from '@semcore/icon/Like/m';
+import { scaleLinear } from 'd3-scale';
+import React from 'react';
 
 const movies = [
   'Action',

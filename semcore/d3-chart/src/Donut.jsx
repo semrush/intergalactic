@@ -1,17 +1,17 @@
-import React from 'react';
-import { arc, pie } from 'd3-shape';
-import { interpolate } from 'd3-interpolate';
-import { transition } from 'd3-transition';
 import { Component, Root, sstyled } from '@semcore/core';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import createElement from './createElement';
-import { getChartDefaultColorName } from './utils';
-import Tooltip from './Tooltip';
-import { PatternFill } from './Pattern';
+import { interpolate } from 'd3-interpolate';
+import { arc, pie } from 'd3-shape';
+import { transition } from 'd3-transition';
+import React from 'react';
 
+import createElement from './createElement';
+import { PatternFill } from './Pattern';
 import style from './style/donut.shadow.css';
+import Tooltip from './Tooltip';
+import { getChartDefaultColorName } from './utils';
 
 const DEFAULT_INSTANCE = Symbol('DEFAULT_INSTANCE');
 

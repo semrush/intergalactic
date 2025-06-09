@@ -47,7 +47,7 @@ export default function shortDateRangeFormat(dates, { locale = 'en-US', ...optio
     }
 
     if (isSimilarYear) {
-      const { year, ...newOptions } = options;
+      const { year: _year, ...newOptions } = options;
       if (getDayJSLocale(locale) === 'en') {
         return `${new Intl.DateTimeFormat(locale, newOptions).format(
           normalizeDates[0],

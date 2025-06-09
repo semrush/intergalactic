@@ -1,9 +1,10 @@
-import React from 'react';
-import { stack as d3Stack } from 'd3-shape';
 import { Component } from '@semcore/core';
 import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
-import createElement from './createElement';
+import { stack as d3Stack } from 'd3-shape';
+import React from 'react';
+
 import Area from './Area';
+import createElement from './createElement';
 import { getChartDefaultColorName } from './utils';
 
 const DEFAULT_INSTANCE = Symbol('DEFAULT_INSTANCE');

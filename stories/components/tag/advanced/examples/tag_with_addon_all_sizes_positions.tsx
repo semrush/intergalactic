@@ -1,10 +1,10 @@
-import React from 'react';
-import Tag from '@semcore/tag';
 import { Flex } from '@semcore/flex-box';
-import SmileHappyM from '@semcore/icon/SmileHappy/m';
 import SmileHappyL from '@semcore/icon/SmileHappy/l';
-import SmileSadM from '@semcore/icon/SmileSad/m';
+import SmileHappyM from '@semcore/icon/SmileHappy/m';
 import SmileSadL from '@semcore/icon/SmileSad/l';
+import SmileSadM from '@semcore/icon/SmileSad/m';
+import Tag from '@semcore/tag';
+import React from 'react';
 
 const Demo = () => {
   return (
@@ -78,7 +78,7 @@ const Demo = () => {
           <Tag.Text>Tag</Tag.Text>
         </Tag>
       </Flex>
-      
+
       <Flex gap={1}>
         <Tag size='m' addonRight={SmileHappyM}>
           Tag
@@ -119,7 +119,7 @@ const Demo = () => {
         <Tag size='xl'>
           <Tag.Text>Tag</Tag.Text>
         </Tag>
-        
+
       </Flex>
 
     </Flex>

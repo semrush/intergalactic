@@ -1,8 +1,8 @@
-import React from 'react';
 import { DatePicker } from '@semcore/date-picker';
-import ProgressBar from '@semcore/progress-bar';
 import { Flex } from '@semcore/flex-box';
+import ProgressBar from '@semcore/progress-bar';
 import { Text } from '@semcore/typography';
+import React from 'react';
 
 const stableRandom = (randomIndex: number) => {
   return Math.abs(Math.sin(Math.PI * randomIndex * Math.cos(100 - randomIndex++)));
@@ -27,7 +27,7 @@ const Demo = () => {
                   const progress = stableRandom(i) * 100;
                   return (
                     <DatePicker.Calendar.Unit {...data} key={i}>
-                      <Flex direction='column' p={1} w={'100%'} alignItems='center'>
+                      <Flex direction='column' p={1} w='100%' alignItems='center'>
                         {data.children}
                         <ProgressBar
                           size='s'
@@ -40,8 +40,7 @@ const Demo = () => {
                       </Flex>
                     </DatePicker.Calendar.Unit>
                   );
-                })
-              }
+                })}
             </DatePicker.Calendar>
           </DatePicker.Popper>
         </DatePicker>

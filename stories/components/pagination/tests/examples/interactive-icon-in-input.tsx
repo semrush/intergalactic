@@ -1,7 +1,7 @@
-import React from 'react';
-import Pagination from '@semcore/pagination';
 import { Flex } from '@semcore/flex-box';
 import Return from '@semcore/icon/Return/m';
+import Pagination from '@semcore/pagination';
+import React from 'react';
 
 const Demo = () => {
   const [currentPage, setCurrentPage] = React.useState(1);

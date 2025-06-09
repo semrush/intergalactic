@@ -1,6 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
-
 import Ellipsis from '@semcore/ellipsis';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import AdvancedUseExample from './examples/advanced_use';
 import BasicUsageExample from './examples/basic_usage';

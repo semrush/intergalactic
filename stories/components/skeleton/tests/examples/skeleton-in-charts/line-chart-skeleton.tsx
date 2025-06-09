@@ -1,8 +1,8 @@
-import React from 'react';
 import Card from '@semcore/card';
 import {
   LineChartSkeleton,
 } from '@semcore/skeleton';
+import React from 'react';
 
 const Demo = () => {
   return (

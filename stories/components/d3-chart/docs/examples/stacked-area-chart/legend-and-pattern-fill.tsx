@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   Plot,
   XAxis,
@@ -9,28 +8,29 @@ import {
   makeDataHintsContainer,
   ChartLegend,
 } from '@semcore/d3-chart';
-import { scaleLinear } from 'd3-scale';
 import { Flex, Box } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
+import { scaleLinear } from 'd3-scale';
 import { curveCardinal } from 'd3-shape';
+import React from 'react';
 
 function formatDate(value: any, options: any) {
   return new Intl.DateTimeFormat('en', options).format(value);
 }
 
 const lineColors: Record<string, string> = {
-  '1': '--blue-300',
-  '2': '--green-200',
-  '3': '--orange-400',
+  1: '--blue-300',
+  2: '--green-200',
+  3: '--orange-400',
 };
 
 const dataHints = makeDataHintsContainer();
 
 type DataItem = {
   time: Date;
-  '1': number;
-  '2': number;
-  '3': number;
+  1: number;
+  2: number;
+  3: number;
 };
 
 const getDegaultLegendItems = () => {
@@ -41,7 +41,7 @@ const getDegaultLegendItems = () => {
         id: item,
         label: `Stack ${item}`,
         checked: true,
-        color: lineColors[item], 
+        color: lineColors[item],
       };
     });
 };
@@ -80,9 +80,9 @@ const Demo = () => {
       <ChartLegend
         dataHints={dataHints}
         items={legendItems}
-        shape={'Checkbox'}
+        shape='Checkbox'
         patterns
-        aria-label={'Stacked area chart legend'}
+        aria-label='Stacked area chart legend'
         onChangeVisibleItem={handleChangeVisible}
       />
       <Plot
@@ -107,7 +107,7 @@ const Demo = () => {
             })}
           </XAxis.Ticks>
         </XAxis>
-        <HoverLine.Tooltip x="time" wMin={100}>
+        <HoverLine.Tooltip x='time' wMin={100}>
           {({ xIndex }) => {
             return {
               children: (
@@ -122,17 +122,17 @@ const Demo = () => {
 
                   {legendItems.map((item) => {
                     return (
-                      <Flex key={item.id} justifyContent="space-between">
+                      <Flex key={item.id} justifyContent='space-between'>
                         <HoverLine.Tooltip.Dot mr={4} color={lineColors[item.id]}>
                           {item.label}
                         </HoverLine.Tooltip.Dot>
-                         {/* @ts-ignore */}
+                        {/* @ts-ignore */}
                         <Text bold>{data[xIndex][item.id as keyof DataItem]}</Text>
                       </Flex>
                     );
                   })}
 
-                  <Flex mt={2} justifyContent="space-between">
+                  <Flex mt={2} justifyContent='space-between'>
                     <Box mr={4}>Total</Box>
                     <Text bold>
                       {data[xIndex]['1'] + data[xIndex]['2'] + data[xIndex]['3']}
@@ -143,19 +143,21 @@ const Demo = () => {
             };
           }}
         </HoverLine.Tooltip>
-        <StackedArea x="time">
+        <StackedArea x='time'>
           {legendItems.map((item) =>
-            item.checked ? (
-              <StackedArea.Area
-                key={item.id}
-                y={item.id}
-                fill={`chart-palette-order-${item.id}`}
-                color={lineColors[item.id]}
-                curve={curveCardinal}
-              >
-                <StackedArea.Area.Dots />
-              </StackedArea.Area>
-            ) : null,
+            item.checked
+              ? (
+                  <StackedArea.Area
+                    key={item.id}
+                    y={item.id}
+                    fill={`chart-palette-order-${item.id}`}
+                    color={lineColors[item.id]}
+                    curve={curveCardinal}
+                  >
+                    <StackedArea.Area.Dots />
+                  </StackedArea.Area>
+                )
+              : null,
           )}
         </StackedArea>
       </Plot>

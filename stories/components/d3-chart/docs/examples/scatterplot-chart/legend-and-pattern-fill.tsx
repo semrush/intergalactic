@@ -1,6 +1,6 @@
-import React from 'react';
 import { Plot, ScatterPlot, XAxis, YAxis, minMax, ChartLegend } from '@semcore/d3-chart';
 import { scaleLinear } from 'd3-scale';
+import React from 'react';
 
 const getDegaultLegendItems = () => {
   return Object.keys(data[0])
@@ -48,10 +48,10 @@ const Demo = () => {
     <>
       <ChartLegend
         items={legendItems}
-        shape={'Checkbox'}
+        shape='Checkbox'
         patterns
         onChangeVisibleItem={handleChangeVisible}
-        aria-label={'Scatterplot legend'}
+        aria-label='Scatterplot legend'
       />
       <Plot scale={[xScale, yScale]} width={width} height={height} data={data} patterns={true}>
         <YAxis>
@@ -65,7 +65,7 @@ const Demo = () => {
           .filter((item) => item.checked)
           .map((item) => {
             return (
-              <ScatterPlot key={item.id} x={'x'} y={item.id} value={'value'} color={item.color} />
+              <ScatterPlot key={item.id} x='x' y={item.id} value='value' color={item.color} />
             );
           })}
       </Plot>

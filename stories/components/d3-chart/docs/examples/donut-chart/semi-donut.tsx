@@ -1,7 +1,7 @@
-import React from 'react';
 import { Plot, Donut } from '@semcore/d3-chart';
-import { Text } from '@semcore/typography';
 import { Flex } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
+import React from 'react';
 
 const Demo = () => {
   return (
@@ -26,7 +26,7 @@ const Demo = () => {
               <>
                 <Donut.Tooltip.Title>{name}</Donut.Tooltip.Title>
                 <Flex justifyContent='space-between'>
-                   {/* @ts-ignore */}
+                  {/* @ts-ignore */}
                   <Text bold>{data[dataKey]}</Text>
                 </Flex>
               </>

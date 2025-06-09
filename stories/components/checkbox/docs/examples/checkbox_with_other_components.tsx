@@ -1,10 +1,10 @@
-import React from 'react';
-import { Flex } from '@semcore/flex-box';
+import { ButtonLink } from '@semcore/button';
 import Checkbox from '@semcore/checkbox';
-import { DescriptionTooltip } from '@semcore/tooltip';
+import { Flex } from '@semcore/flex-box';
 import InfoM from '@semcore/icon/Info/m';
 import Link from '@semcore/link';
-import { ButtonLink } from '@semcore/button';
+import { DescriptionTooltip } from '@semcore/tooltip';
+import React from 'react';
 
 function noop(e: React.SyntheticEvent) {
   e.preventDefault();
@@ -22,7 +22,7 @@ const Demo = () => (
           color='icon-secondary-neutral'
           aria-label='Additional info'
         />
-        <DescriptionTooltip.Popper aria-label={'Additional info about checkbox item'}>
+        <DescriptionTooltip.Popper aria-label='Additional info about checkbox item'>
           Place an additional information here!
         </DescriptionTooltip.Popper>
       </DescriptionTooltip>

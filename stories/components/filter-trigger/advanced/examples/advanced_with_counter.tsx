@@ -1,7 +1,7 @@
-import React from 'react';
 import { FilterTrigger } from '@semcore/base-trigger';
-import Dropdown from '@semcore/dropdown';
 import Button from '@semcore/button';
+import Dropdown from '@semcore/dropdown';
+import React from 'react';
 
 const Demo = () => {
   const [filters, setFilters] = React.useState(0);

@@ -1,6 +1,6 @@
-import React from 'react';
 import { Chart } from '@semcore/d3-chart';
 import { curveCardinal } from 'd3-shape';
+import React from 'react';
 
 const formatDate = (type: 'axis' | 'tooltip') => (value: any) => {
   const options =
@@ -24,12 +24,12 @@ const Demo = () => {
       data={data}
       plotWidth={500}
       plotHeight={200}
-      groupKey={'time'}
+      groupKey='time'
       tooltipValueFormatter={formatDate('tooltip')}
       axisXValueFormatter={formatDate('axis')}
       stacked={true}
       curve={curveCardinal}
-      aria-label={'Stacked area chart'}
+      aria-label='Stacked area chart'
     />
   );
 };

@@ -1,6 +1,7 @@
-import React from 'react';
-import Components from './illustrations-view';
-import dataIllustrations from './illustrations-list';
-
 import icons from '@illustrations';
+import React from 'react';
+
+import dataIllustrations from './illustrations-list';
+import Components from './illustrations-view';
+
 export default () => <Components illustrations={icons} json={dataIllustrations} />;

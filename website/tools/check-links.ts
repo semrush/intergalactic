@@ -1,10 +1,11 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import markdownIt from 'markdown-it';
-import { JSDOM } from 'jsdom';
-import markdownItAnchor from 'markdown-it-anchor';
+
 import { slugify } from '@mdit-vue/shared';
+import { JSDOM } from 'jsdom';
+import markdownIt from 'markdown-it';
+import markdownItAnchor from 'markdown-it-anchor';
 
 const md = new markdownIt().use(markdownItAnchor, {
   slugify,
@@ -112,7 +113,6 @@ function checkLinks() {
 
       // Check if target file exists
       if (!fs.existsSync(targetFilePath)) {
-        // biome-ignore lint/suspicious/noConsoleLog:
         console.warn(`❌ [${fromFile}] → "${link}" — file not found: ${linkPath}`);
         hasErrors = true;
         continue;
@@ -122,7 +122,6 @@ function checkLinks() {
       if (anchor) {
         const anchors = fileAnchorMap[linkPath];
         if (!anchors || !anchors.includes(anchor)) {
-          // biome-ignore lint/suspicious/noConsoleLog:
           console.warn(
             `⚠️ [${fromFile}] → "${link}" — anchor "#${anchor}" not found in "${linkPath}"`,
           );
@@ -133,11 +132,9 @@ function checkLinks() {
   }
 
   if (hasErrors) {
-    // biome-ignore lint/suspicious/noConsoleLog:
     console.log('\n🔍 Check completed with errors.');
     process.exit(1);
   } else {
-    // biome-ignore lint/suspicious/noConsoleLog:
     console.log('✅ All links and anchors are valid.');
   }
 }

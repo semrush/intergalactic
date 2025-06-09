@@ -1,7 +1,7 @@
-import React from 'react';
 import { Plot, ScatterPlot, XAxis, YAxis, minMax } from '@semcore/d3-chart';
-import { scaleLinear } from 'd3-scale';
 import { Text } from '@semcore/typography';
+import { scaleLinear } from 'd3-scale';
+import React from 'react';
 
 const Demo = () => {
   const MARGIN = 40;
@@ -32,8 +32,14 @@ const Demo = () => {
             children: (
               <>
                 <ScatterPlot.Tooltip.Title>Data</ScatterPlot.Tooltip.Title>
-                <Text tag='div'>X axis {data[index].x}</Text>
-                <Text tag='div'>Y axis {data[index].y}</Text>
+                <Text tag='div'>
+                  X axis
+                  {data[index].x}
+                </Text>
+                <Text tag='div'>
+                  Y axis
+                  {data[index].y}
+                </Text>
               </>
             ),
           };

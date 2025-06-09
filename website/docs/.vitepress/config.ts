@@ -1,13 +1,15 @@
 import 'dotenv/config';
 
-import { defineConfig } from 'vitepress';
-import { configureMarkdownIt } from './markdown-it-config';
-import { viteConfig } from './vite.config';
-import { sideBarConfig } from './sidebarConfig';
-import { buildHooks } from './buildHooks';
-import { algoliaConfig } from '../../algoliaConfig';
-import { figmaIcon } from './figma-icon';
 import { resolve as resolvePath } from 'path';
+
+import { defineConfig } from 'vitepress';
+
+import { buildHooks } from './buildHooks';
+import { figmaIcon } from './figma-icon';
+import { configureMarkdownIt } from './markdown-it-config';
+import { sideBarConfig } from './sidebarConfig';
+import { viteConfig } from './vite.config';
+import { algoliaConfig } from '../../algoliaConfig';
 
 const gtmKey = 'GTM-PP7RKT7';
 

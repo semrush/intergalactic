@@ -1,11 +1,11 @@
-import React from 'react';
-import Select from '@semcore/select';
-import Input from '@semcore/input';
-import { ButtonLink } from '@semcore/button';
+import AddFilter from '@semcore/add-filter';
 import { FilterTrigger } from '@semcore/base-trigger';
+import { ButtonLink } from '@semcore/button';
 import CloseM from '@semcore/icon/Close/m';
 import SearchM from '@semcore/icon/Search/m';
-import AddFilter from '@semcore/add-filter';
+import Input from '@semcore/input';
+import Select from '@semcore/select';
+import React from 'react';
 
 type FilterData = Record<string, any>;
 
@@ -75,7 +75,9 @@ const Demo = () => {
           onClear={() => clearField('size')}
           aria-label='Size'
         >
-          <span aria-hidden>Size:</span> {filterData.size}
+          <span aria-hidden>Size:</span>
+          {' '}
+          {filterData.size}
         </Select.Trigger>
         <Select.Menu aria-label='Size'>
           {sizes.map((item, idx) => (
@@ -103,7 +105,12 @@ const Demo = () => {
                 clearField(name);
               }}
             >
-              <span aria-hidden>{name}:</span> {filterData[name]}
+              <span aria-hidden>
+                {name}
+                :
+              </span>
+              {' '}
+              {filterData[name]}
             </AddFilter.Select.Trigger>
             <AddFilter.Select.Menu aria-label={name}>
               {values.map((item, idx) => (

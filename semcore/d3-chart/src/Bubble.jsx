@@ -1,13 +1,13 @@
-import React from 'react';
-import { transition } from 'd3-transition';
 import { Component, Root, sstyled } from '@semcore/core';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import createElement from './createElement';
-import { getBubbleChartValueScale, measureText } from './utils';
-import Tooltip from './Tooltip';
-import { PatternFill } from './Pattern';
+import { transition } from 'd3-transition';
+import React from 'react';
 
+import createElement from './createElement';
+import { PatternFill } from './Pattern';
 import style from './style/bubble.shadow.css';
+import Tooltip from './Tooltip';
+import { getBubbleChartValueScale, measureText } from './utils';
 
 class BubbleRoot extends Component {
   static displayName = 'Bubble';
@@ -174,7 +174,8 @@ class BubbleRoot extends Component {
       <>
         {data.map(this.renderCircle.bind(this))}
         <clipPath aria-hidden id={uid}>
-          <rect x={xMargin} y={yMargin} width={`${xSize}px`} height={`${ySize}px`} />{' '}
+          <rect x={xMargin} y={yMargin} width={`${xSize}px`} height={`${ySize}px`} />
+          {' '}
         </clipPath>
       </>
     );

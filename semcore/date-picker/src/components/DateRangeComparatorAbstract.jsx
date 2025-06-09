@@ -1,18 +1,18 @@
-import React from 'react';
-import dayjs from 'dayjs';
-import { Component, Root, sstyled } from '@semcore/core';
-import Button from '@semcore/button';
-import { Flex } from '@semcore/flex-box';
-import Dropdown from '@semcore/dropdown';
-import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import { localizedMessages } from '../translations/__intergalactic-dynamic-locales';
-import shortDateRangeFormat from '../utils/shortDateRangeFormat';
-import Checkbox from '@semcore/checkbox';
 import { LinkTrigger } from '@semcore/base-trigger';
-import { includesDate } from '../utils/includesDate';
-import { formatDDMMYY, formatMMYY } from '../utils/formatDate';
+import Button from '@semcore/button';
+import Checkbox from '@semcore/checkbox';
+import { Component, Root, sstyled } from '@semcore/core';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import Dropdown from '@semcore/dropdown';
+import { Flex } from '@semcore/flex-box';
+import dayjs from 'dayjs';
+import React from 'react';
 
 import style from '../style/date-picker.shadow.css';
+import { localizedMessages } from '../translations/__intergalactic-dynamic-locales';
+import { formatDDMMYY, formatMMYY } from '../utils/formatDate';
+import { includesDate } from '../utils/includesDate';
+import shortDateRangeFormat from '../utils/shortDateRangeFormat';
 
 const INTERACTION_TAGS = ['INPUT'];
 const INTERACTION_KEYS = ['ArrowDown', 'Enter', ' '];
@@ -88,17 +88,17 @@ class DateRangeComparatorAbstract extends Component {
     return {
       periods,
       value,
-      onChange: (value) => {
+      'onChange': (value) => {
         if (focusedRange === 'compare') {
           this.handlers.preselectedCompare(value);
         } else {
           this.handlers.preselectedValue(value);
         }
       },
-      onHighlightedChange:
+      'onHighlightedChange':
         focusedRange === 'compare' ? onCompareHighlightedChange : onHighlightedChange,
       onDisplayedPeriodChange,
-      role: 'listbox',
+      'role': 'listbox',
       'aria-label': getI18nText('periods'),
     };
   }
@@ -117,16 +117,17 @@ class DateRangeComparatorAbstract extends Component {
     const { navigateStep } = this;
     return {
       getI18nText,
-      onClick: this.bindHandlerNavigateClick(-1),
+      'onClick': this.bindHandlerNavigateClick(-1),
       'aria-label': navigateStep === 'month' ? getI18nText('prevMonth') : getI18nText('prevYear'),
     };
   }
+
   getNextProps() {
     const { getI18nText } = this.asProps;
     const { navigateStep } = this;
     return {
       getI18nText,
-      onClick: this.bindHandlerNavigateClick(1),
+      'onClick': this.bindHandlerNavigateClick(1),
       'aria-label': navigateStep === 'month' ? getI18nText('nextMonth') : getI18nText('nextYear'),
     };
   }
@@ -345,7 +346,7 @@ class DateRangeComparatorAbstract extends Component {
     ];
   }
 
-  getTitleProps(props, index) {
+  getTitleProps(_props, index) {
     const { locale, displayedPeriod } = this.asProps;
     return {
       children: new Intl.DateTimeFormat(locale, { month: 'long', year: 'numeric' }).format(
@@ -460,7 +461,7 @@ class DateRangeComparatorAbstract extends Component {
   }
 
   getCompareToggleProps() {
-    const { getI18nText, value, compareToggle } = this.asProps;
+    const { getI18nText, compareToggle } = this.asProps;
 
     return {
       getI18nText,

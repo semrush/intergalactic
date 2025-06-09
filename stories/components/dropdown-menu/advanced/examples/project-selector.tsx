@@ -1,16 +1,16 @@
-import React from 'react';
-import DropdownMenu from '@semcore/dropdown-menu';
 import { ButtonTrigger } from '@semcore/base-trigger';
-import Divider from '@semcore/divider';
-import PlusM from '@semcore/icon/MathPlus/m';
-import SearchM from '@semcore/icon/Search/m';
-import CloseM from '@semcore/icon/Close/m';
-import { Flex, Box } from '@semcore/flex-box';
-import Input from '@semcore/input';
 import Button, { ButtonLink } from '@semcore/button';
+import Divider from '@semcore/divider';
+import DropdownMenu from '@semcore/dropdown-menu';
+import { Flex, Box } from '@semcore/flex-box';
+import CloseM from '@semcore/icon/Close/m';
+import PlusM from '@semcore/icon/MathPlus/m';
 import Pin from '@semcore/icon/Pin/m';
+import SearchM from '@semcore/icon/Search/m';
 import Settings from '@semcore/icon/Settings/m';
+import Input from '@semcore/input';
 import { Text } from '@semcore/typography';
+import React from 'react';
 import { FixedSizeList } from 'react-window';
 
 const projects = Array.from({ length: 100 }, (_, index) => `project ${index}`);
@@ -28,7 +28,7 @@ const Row = React.memo(({ index, style, data: { project, projects, setProject } 
         selected={project === projectName}
         index={index}
       >
-        <DropdownMenu inlineActions placement={'right'}>
+        <DropdownMenu inlineActions placement='right'>
           <Flex justifyContent='space-between'>
             <DropdownMenu.Item.Content tag={DropdownMenu.Trigger} h={20}>
               {projectName}
@@ -37,14 +37,14 @@ const Row = React.memo(({ index, style, data: { project, projects, setProject } 
               <DropdownMenu.Item
                 tag={Button}
                 addonLeft={Settings}
-                title={'Settings'}
+                title='Settings'
                 hintPlacement='right'
                 onClick={(e) => e.stopPropagation()}
               />
               <DropdownMenu.Item
                 tag={Button}
                 addonLeft={Pin}
-                title={'Pin'}
+                title='Pin'
                 hintPlacement='right'
                 onClick={(e) => e.stopPropagation()}
               />
@@ -94,7 +94,7 @@ const Demo = () => {
         {selectedProject ?? 'Select project'}
       </DropdownMenu.Trigger>
 
-      <DropdownMenu.Popper aria-label={'Select project popover'}>
+      <DropdownMenu.Popper aria-label='Select project popover'>
         <Box m={1}>
           <Input>
             <Input.Addon>
@@ -103,15 +103,15 @@ const Demo = () => {
             <Input.Value
               value={searchValue}
               onChange={setSearchValue}
-              aria-label={'Enter project name'}
+              aria-label='Enter project name'
             />
 
             {searchValue && (
               <Input.Addon>
                 <ButtonLink
                   addonLeft={CloseM}
-                  use={'secondary'}
-                  aria-label={'Clear'}
+                  use='secondary'
+                  aria-label='Clear'
                   onClick={() => setSearchValue('')}
                 />
               </Input.Addon>
@@ -134,10 +134,10 @@ const Demo = () => {
         </DropdownMenu.List>
         <Divider />
         <DropdownMenu.Item
-          role={'button'}
+          role='button'
           tabIndex={0}
           tag={Flex}
-          alignItems={'center'}
+          alignItems='center'
           aria-checked={undefined}
           onKeyDown={handleKeydownCreateButton}
         >

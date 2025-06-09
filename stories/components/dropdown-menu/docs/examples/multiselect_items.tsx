@@ -1,6 +1,6 @@
-import React from 'react';
-import DropdownMenu from '@semcore/dropdown-menu';
 import Button from '@semcore/button';
+import DropdownMenu from '@semcore/dropdown-menu';
+import React from 'react';
 
 const menuItems: null[] = new Array(10).fill(null);
 
@@ -10,8 +10,8 @@ const Demo = () => {
   return (
     <DropdownMenu selectable multiselect>
       <DropdownMenu.Trigger tag={Button}>Explore menu items</DropdownMenu.Trigger>
-      <DropdownMenu.Menu hMax={'180px'}>
-        <DropdownMenu.Group title={'List heading'} subTitle={'Subtitle'}>
+      <DropdownMenu.Menu hMax='180px'>
+        <DropdownMenu.Group title='List heading' subTitle='Subtitle'>
           {menuItems.map((_, index) => (
             <DropdownMenu.Item
               key={index}
@@ -24,7 +24,9 @@ const Demo = () => {
                 }
               }}
             >
-              Menu item {index + 1}
+              Menu item
+              {' '}
+              {index + 1}
             </DropdownMenu.Item>
           ))}
         </DropdownMenu.Group>

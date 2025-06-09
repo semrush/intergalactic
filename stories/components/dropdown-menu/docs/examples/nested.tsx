@@ -1,7 +1,7 @@
-import React from 'react';
-import DropdownMenu from '@semcore/dropdown-menu';
 import Button from '@semcore/button';
+import DropdownMenu from '@semcore/dropdown-menu';
 import ChevronRightIcon from '@semcore/icon/ChevronRight/m';
+import React from 'react';
 
 const Demo = () => {
   return (

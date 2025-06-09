@@ -1,7 +1,8 @@
 import React from 'react';
-import { useColorResolver } from '../use/useColorResolver';
-import { useForkRef } from '../ref';
+
 import assignProps from '../assignProps';
+import { useForkRef } from '../ref';
+import { useColorResolver } from '../use/useColorResolver';
 
 const resolveColorEnhance = () => {
   return (props: any) => {

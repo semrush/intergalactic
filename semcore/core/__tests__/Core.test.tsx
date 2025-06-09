@@ -1,11 +1,12 @@
-import React, { HTMLAttributes } from 'react';
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
-import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import type { HTMLAttributes } from 'react';
+import React from 'react';
 
 const { shouldSupportRef } = sharedTests;
-import { createComponent, createBaseComponent, Component, IComponentProps } from '../src';
-
+import type { IComponentProps } from '../src';
+import { createComponent, createBaseComponent, Component } from '../src';
 import { CORE_COMPONENT } from '../src/core-types/symbols';
 
 /*
@@ -119,7 +120,7 @@ function shouldSupportCallEnhanceWithProps(RootComponent: any, typeRootComponent
   test(`Should support call enhance with props and data-ui-name in ${typeRootComponent}`, () => {
     const spy = vi.fn();
     const props = {
-      children: 'test',
+      'children': 'test',
       'data-testid': 'core',
     };
     const enhance = (props: any) => {
@@ -265,7 +266,7 @@ describe('Root', () => {
         const { Root } = this;
         return (
           <div>
-            <Root data-testid={'root'} render={'div'} />
+            <Root data-testid='root' render='div' />
           </div>
         );
       }
@@ -284,8 +285,8 @@ describe('Root', () => {
         const { Root } = this;
         return (
           <Root
-            data-testid={'root'}
-            render={'div'}
+            data-testid='root'
+            render='div'
             id='root-test'
             className='root-test'
             style={{

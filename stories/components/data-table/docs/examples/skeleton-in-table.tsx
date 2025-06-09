@@ -1,8 +1,8 @@
-import React from 'react';
 import { DataTable } from '@semcore/data-table';
 import Skeleton from '@semcore/skeleton';
 import Button from '@semcore/ui/button';
 import { ScreenReaderOnly } from '@semcore/ui/flex-box';
+import React from 'react';
 
 function getSkeleton() {
   return ['keyword', 'kd', 'cpc', 'vol'].map((c) => ({
@@ -41,8 +41,8 @@ const Demo = () => {
       </ScreenReaderOnly>
       <DataTable
         data={data}
-        aria-label={'Loading using Skeleton'}
-        h={'auto'}
+        aria-label='Loading using Skeleton'
+        h='auto'
         columns={[
           { name: 'keyword', children: 'Keyword' },
           { name: 'kd', children: 'KD %' },

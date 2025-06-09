@@ -1,10 +1,9 @@
-import React from 'react';
-
-import cn from 'classnames';
-import { Properties, Property } from 'csstype';
-import propsForElement from '@semcore/core/lib/utils/propsForElement';
+import { sstyled, type UnknownProperties, type StyledProps } from '@semcore/core';
 import logger from '@semcore/core/lib/utils/logger';
-import { sstyled, UnknownProperties, StyledProps } from '@semcore/core';
+import propsForElement from '@semcore/core/lib/utils/propsForElement';
+import cn from 'classnames';
+import type { Properties, Property } from 'csstype';
+import React from 'react';
 
 import style from '../style/use-box.shadow.css';
 import { getAutoOrScaleIndent } from '../utils';
@@ -297,7 +296,7 @@ export default function useBox<T extends BoxProps>(
 
   logger.warn(
     css !== undefined,
-    "The 'css' property is deprecated, use 'style'",
+    'The \'css\' property is deprecated, use \'style\'',
     other['data-ui-name'] || 'Box',
   );
 
@@ -309,7 +308,7 @@ export default function useBox<T extends BoxProps>(
     Tag,
     {
       ref,
-      className:
+      'className':
         cn(
           styles.cn('SBox', {
             SBoxSizing: boxSizing,
@@ -318,7 +317,7 @@ export default function useBox<T extends BoxProps>(
           }).className,
           className,
         ) || undefined,
-      style: Object.assign({}, styleProp, css, indentStyles),
+      'style': Object.assign({}, styleProp, css, indentStyles),
       'data-ui-name': 'Box',
       ...propsForElement(other, Tag),
     },

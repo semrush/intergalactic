@@ -44,9 +44,9 @@
     "directory": "semcore/feedback-form"
   },
   "devDependencies": {
-    "@types/react": "18.0.21",
+    "@semcore/core": "workspace:*",
     "@types/final-form-focus": "1.1.7",
-    "@semcore/testing-utils": "1.0.0"
+    "@semcore/testing-utils": "workspace:*"
   },
   "overrides": {
     "final-form": {

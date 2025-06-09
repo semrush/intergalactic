@@ -1,5 +1,5 @@
 type AriaProps = {
-  title?: string;
+  'title'?: string;
   'aria-label'?: string;
   'aria-labelledby'?: string;
   'aria-describedby'?: string;

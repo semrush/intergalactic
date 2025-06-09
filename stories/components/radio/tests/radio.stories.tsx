@@ -1,13 +1,12 @@
-import type { Meta, StoryObj } from '@storybook/react';
 import Radio, { RadioGroup } from '@semcore/radio';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import RadioGroupLExample from './examples/radiogroup_example_L';
 import AdditionalPropsInputLExample from './examples/additional_props_for_input_L';
-import WithLinkInTextExample from './examples/radiogroup_example_with_link';
 import AdditionalPropsInputTooltipExample from './examples/additional_props_for_input_tooltip';
-
-import RadioGroupStatesExample from './examples/radiogroup_different_states';
 import SizesCheckedUncheckedExample from './examples/checked-and-focused-states';
+import RadioGroupStatesExample from './examples/radiogroup_different_states';
+import RadioGroupLExample from './examples/radiogroup_example_L';
+import WithLinkInTextExample from './examples/radiogroup_example_with_link';
 
 const meta: Meta<typeof Radio> = {
   title: 'Components/Radio/Tests',

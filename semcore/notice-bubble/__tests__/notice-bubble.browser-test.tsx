@@ -1,6 +1,6 @@
-import { expect, test } from '@semcore/testing-utils/playwright';
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import type { Page } from '@playwright/test';
+import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import { expect, test } from '@semcore/testing-utils/playwright';
 
 // Utility for setting up content
 async function setupPage(page: Page, standPath: string) {
@@ -35,12 +35,12 @@ test.describe('Basic notice with Interactive element', () => {
     await expect(locators.closeHint(page)).toBeVisible();
     await expect(page).toHaveScreenshot();
 
-    //the focus returns to the trigger by press enter
+    // the focus returns to the trigger by press enter
     await page.keyboard.press('Enter');
     const buttonTrigger = locators.buttonTrigger(page, 'Show basic notice');
     await expect(buttonTrigger).toBeFocused();
 
-    //еhe focus returns to the trigger by 2 escapes - 1st closes hint, 2nd-notice
+    // еhe focus returns to the trigger by 2 escapes - 1st closes hint, 2nd-notice
     await page.keyboard.press('Enter');
     await page.keyboard.press('Escape');
     await page.keyboard.press('Escape');
@@ -75,7 +75,7 @@ test.describe('Success notice without Interactive element ', () => {
   test('Open notice by keyboard click', async ({ page }) => {
     await setupPage(page, 'stories/components/notice-bubble/docs/examples/success_notice.tsx');
 
-    //the X button is not focused on the notice
+    // the X button is not focused on the notice
     await openNoticeByKeyboard(page);
     await new Promise((resolve) => setTimeout(resolve, 500));
     const successNotice = locators.successNotice(
@@ -107,7 +107,7 @@ test.describe('Success notice without Interactive element ', () => {
   test('Open 2 notices by 2 keyboard clicks - 2 enters', async ({ page }) => {
     await setupPage(page, 'stories/components/notice-bubble/docs/examples/success_notice.tsx');
 
-    //the focus is on the trigger always
+    // the focus is on the trigger always
     await openNoticeByKeyboard(page);
     await page.keyboard.press('Enter');
     await new Promise((resolve) => setTimeout(resolve, 500));

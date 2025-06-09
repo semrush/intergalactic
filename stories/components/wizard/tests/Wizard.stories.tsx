@@ -1,6 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
-
 import Wizard from '@semcore/wizard';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import SteppersAndButtonsStatesExample from './examples/steps_and_buttons_states';
 

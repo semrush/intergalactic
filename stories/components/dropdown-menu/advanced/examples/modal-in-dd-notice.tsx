@@ -1,11 +1,11 @@
-import React from 'react';
-import DropdownMenu from '@semcore/dropdown-menu';
 import Button from '@semcore/button';
-import { Text } from '@semcore/typography';
-import Notice from '@semcore/notice';
-import SpinContainer from '@semcore/spin-container';
+import DropdownMenu from '@semcore/dropdown-menu';
 import FileExportM from '@semcore/icon/FileExport/m';
 import Modal from '@semcore/modal';
+import Notice from '@semcore/notice';
+import SpinContainer from '@semcore/spin-container';
+import { Text } from '@semcore/typography';
+import React from 'react';
 
 const Demo = () => {
   const [loading, setLoading] = React.useState(false);

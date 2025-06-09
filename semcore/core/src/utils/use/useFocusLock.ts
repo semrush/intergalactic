@@ -1,10 +1,10 @@
-import canUseDOM from '../canUseDOM';
 import LocalReact from 'react';
 
+import canUseDOM from '../canUseDOM';
+import { addFocusBorders, removeFocusBorders } from '../focus-lock/focusBorders';
+import { getFocusableIn } from '../focus-lock/getFocusableIn';
 import { isFocusInside } from '../focus-lock/isFocusInside';
 import { setFocus } from '../focus-lock/setFocus';
-import { getFocusableIn } from '../focus-lock/getFocusableIn';
-import { addFocusBorders, removeFocusBorders } from '../focus-lock/focusBorders';
 
 export { isFocusInside, setFocus };
 

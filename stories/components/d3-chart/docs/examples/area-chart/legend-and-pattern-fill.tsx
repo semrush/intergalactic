@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   Plot,
   XAxis,
@@ -11,6 +10,7 @@ import {
 } from '@semcore/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import { curveCardinal } from 'd3-shape';
+import React from 'react';
 
 function formatDate(value: any, options: any) {
   return new Intl.DateTimeFormat('en', options).format(value);
@@ -63,7 +63,7 @@ const Demo = () => {
         items={legendItems}
         onChangeVisibleItem={handleChangeVisible}
         patterns
-        aria-label={'Area chart legend'}
+        aria-label='Area chart legend'
       />
       <Plot
         data={data}

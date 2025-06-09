@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/react';
-
 import FeaturePopover from '@semcore/feature-popover';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+
 import FeaturePopoverExample from './examples/Basic';
 
 const meta: Meta<typeof FeaturePopover> = {

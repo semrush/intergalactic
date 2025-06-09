@@ -1,13 +1,15 @@
-import { defineConfig } from 'vite';
-import { createUnplugin } from 'unplugin';
-import { resolveSemcoreSources } from './resolve-semcore-sources';
-import { loadSemcoreSources } from './load-semcore-sources';
-import pluginReact from '@vitejs/plugin-react';
 import { resolve as resolvePath } from 'path';
-import { unpluginIcons } from './unplugins/unplugin-icons';
-import { unpluginStatic } from './unplugins/unplugin-static';
-import { unpluginIllustrations } from './unplugins/unplugin-illustrations';
 import { fileURLToPath, URL } from 'url';
+
+import pluginReact from '@vitejs/plugin-react';
+import { createUnplugin } from 'unplugin';
+import { defineConfig } from 'vite';
+
+import { loadSemcoreSources } from './load-semcore-sources';
+import { resolveSemcoreSources } from './resolve-semcore-sources';
+import { unpluginIcons } from './unplugins/unplugin-icons';
+import { unpluginIllustrations } from './unplugins/unplugin-illustrations';
+import { unpluginStatic } from './unplugins/unplugin-static';
 
 export const viteConfig = defineConfig({
   base: '/intergalactic/',

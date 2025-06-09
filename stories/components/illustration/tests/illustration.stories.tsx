@@ -1,11 +1,9 @@
-import type { Meta, StoryObj } from '@storybook/react';
-
-import AllIllustrationGeneratedExample from './examples/all-illustration-generated';
-import SizesExample from './examples/illustration_sizes';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { CheckButtonsIllustrations } from './__tests__/all-allustrations-test.test';
+import AllIllustrationGeneratedExample from './examples/all-illustration-generated';
+import SizesExample from './examples/illustration_sizes';
 import { playWrapper } from '../../../utils/playWrapper';
-
 
 const meta: Meta = {
   title: 'Components/Illustration/Tests',

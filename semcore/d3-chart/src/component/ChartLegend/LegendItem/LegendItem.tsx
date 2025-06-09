@@ -1,19 +1,20 @@
-import React, { DOMAttributes } from 'react';
-import { createComponent, Component, sstyled, Root, IRootComponentProps } from '@semcore/core';
-import { Flex, Box } from '@semcore/flex-box';
 import Checkbox from '@semcore/checkbox';
+import { createComponent, Component, sstyled, Root, type IRootComponentProps } from '@semcore/core';
+import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import { Flex, Box } from '@semcore/flex-box';
 import { Text as TypographyText } from '@semcore/typography';
+import type { DOMAttributes } from 'react';
+import React from 'react';
 
 import style from './legend-item.shadow.css';
 import {
-  ShapeProps,
-  LegendItemProps,
-  LegendItemType,
-  LegendItem,
+  type ShapeProps,
+  type LegendItemProps,
+  type LegendItemType,
+  type LegendItem,
   StaticShapes,
 } from './LegendItem.type';
-import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
-import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { PatternSymbol } from '../../../Pattern';
 import { getChartDefaultColorName } from '../../../utils';
 
@@ -48,11 +49,11 @@ class LegendItemRoot extends Component<LegendItemProps, {}, {}, typeof enhance> 
       label,
       shape,
       checked,
-      color: resolveColor(color),
-      patternKey: color,
+      'color': resolveColor(color),
+      'patternKey': color,
       patterns,
       size,
-      onChange: (value: boolean) => {
+      'onChange': (value: boolean) => {
         onChangeLegendItem(id, value);
       },
       'aria-labelledby': shape === 'Checkbox' ? this.getUniqueID() : null,
@@ -69,7 +70,7 @@ class LegendItemRoot extends Component<LegendItemProps, {}, {}, typeof enhance> 
   }
 
   getLabelProps(): Omit<LegendItem, 'color'> & IRootComponentProps & { onClick: () => void } {
-    const { id, checked, color, onChangeLegendItem, shape, ...props } = this.asProps;
+    const { id, checked, color: _color, onChangeLegendItem, shape: _shape, ...props } = this.asProps;
 
     return {
       ...props,
@@ -157,7 +158,7 @@ function Shape(props: IRootComponentProps & ShapeProps & DOMAttributes<HTMLLabel
           aria-labelledby={props['aria-labelledby']}
         />
         {patterns && (
-          <Box mt={'2px'} mr={1}>
+          <Box mt='2px' mr={1}>
             <SPatternSymbol color={color} patternKey={patternKey} aria-hidden />
           </Box>
         )}
@@ -180,7 +181,7 @@ function Icon({ styles, children: hasChildren, Children }: IRootComponentProps) 
   }
 
   return sstyled(styles)(
-    <SIcon render={Box} tag={'span'}>
+    <SIcon render={Box} tag='span'>
       <Children />
     </SIcon>,
   );
@@ -195,7 +196,7 @@ function Label({ styles, children: hasChildren, Children }: IRootComponentProps)
   }
 
   return sstyled(styles)(
-    <SLabel render={TypographyText} use={'primary'}>
+    <SLabel render={TypographyText} use='primary'>
       <Children />
     </SLabel>,
   );
@@ -210,7 +211,7 @@ function AdditionalLabel({ styles, children: hasChildren, Children }: IRootCompo
   }
 
   return sstyled(styles)(
-    <SAdditionalLabel render={TypographyText} use={'secondary'}>
+    <SAdditionalLabel render={TypographyText} use='secondary'>
       <Children />
     </SAdditionalLabel>,
   );
@@ -225,7 +226,7 @@ function Count({ styles, children: hasChildren, Children }: IRootComponentProps)
   }
 
   return sstyled(styles)(
-    <SCount render={TypographyText} use={'secondary'}>
+    <SCount render={TypographyText} use='secondary'>
       <Children />
     </SCount>,
   );

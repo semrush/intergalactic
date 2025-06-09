@@ -1,7 +1,7 @@
-import React from 'react';
+import { Flex } from '@semcore/flex-box';
 import Select from '@semcore/select';
 import { Text } from '@semcore/typography';
-import { Flex } from '@semcore/flex-box';
+import React from 'react';
 
 const options = Array(5)
   .fill('')

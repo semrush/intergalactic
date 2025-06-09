@@ -1,6 +1,7 @@
 import path from 'path';
-import fs from 'fs-extra';
+
 import { expect, test, describe } from '@semcore/testing-utils/vitest';
+import fs from 'fs-extra';
 
 const packageJsonPath = path.resolve(__dirname, '../package.json');
 const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));

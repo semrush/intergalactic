@@ -1,8 +1,9 @@
 /// <reference types="vitest" />
-import AllureReporter from 'allure-vitest/reporter';
-import { defineConfig } from 'vitest/config';
-import babel from 'vite-plugin-babel';
 import { resolve as resolvePath } from 'path';
+
+import AllureReporter from 'allure-vitest/reporter';
+import babel from 'vite-plugin-babel';
+import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
   plugins: [
@@ -65,11 +66,11 @@ export default defineConfig({
       '.idea',
       '.git',
       '.cache',
-      'tools/*/__tests__/utils.ts'
+      'tools/*/__tests__/utils.ts',
     ],
     environment: 'jsdom',
-    setupFiles: ['allure-vitest/setup', resolvePath(__dirname, 'tools/testing-utils/setupTests')],
-    reporters: ["default", new AllureReporter({})],
+    setupFiles: [resolvePath(__dirname, 'tools/testing-utils/setupTests')],
+    reporters: ['default', new AllureReporter({})],
   },
   define: {
     'globalThis.__intergalacticFlagsBaseUrl': '"https://static.semrush.com/ui-kit/flags/"',
@@ -77,6 +78,7 @@ export default defineConfig({
 });
 
 declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace jest {
     interface Matchers<R> {
       toMatchImageSnapshot(task: any, options: any): R;

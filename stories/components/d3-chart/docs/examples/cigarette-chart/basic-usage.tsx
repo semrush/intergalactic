@@ -1,9 +1,9 @@
-import React from 'react';
 import { Chart } from '@semcore/d3-chart';
+import React from 'react';
 
 function Demo() {
   return (
-    <Chart.Cigarette data={data} plotWidth={400} plotHeight={28} aria-label={'Cigarette chart'} />
+    <Chart.Cigarette data={data} plotWidth={400} plotHeight={28} aria-label='Cigarette chart' />
   );
 }
 

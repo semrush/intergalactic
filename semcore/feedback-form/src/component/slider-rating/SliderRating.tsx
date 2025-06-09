@@ -1,9 +1,10 @@
-import React from 'react';
-import { createComponent, Component, Root, sstyled, Intergalactic } from '@semcore/core';
-import { Flex, Box, BoxProps } from '@semcore/flex-box';
-import style from '../../style/slider-rating.shadow.css';
-import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import { createComponent, Component, Root, sstyled, type Intergalactic } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import { Flex, Box, type BoxProps } from '@semcore/flex-box';
+import React from 'react';
+
+import style from '../../style/slider-rating.shadow.css';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 
 type SliderRatingProps = {
@@ -45,7 +46,7 @@ class SliderRatingRoot extends Component<
     locale: 'en',
   };
 
-  handleClick = (newValue: number) => (e: React.SyntheticEvent<SVGElement>) => {
+  handleClick = (newValue: number) => (_e: React.SyntheticEvent<SVGElement>) => {
     const { readonly } = this.asProps;
 
     if (!readonly) {
@@ -148,7 +149,7 @@ class SliderRatingRoot extends Component<
         <SSliderRating render={Flex} gap={1} role='img' aria-label={label}>
           {new Array(MAX).fill(null).map((_, index) => {
             return (
-              <Box key={index} position={'relative'}>
+              <Box key={index} position='relative'>
                 <SliderRating.Star />
               </Box>
             );
@@ -162,8 +163,8 @@ class SliderRatingRoot extends Component<
     const editModeLabel =
       hoverValue > 0 || value
         ? `${label}. ${getI18nText(
-            'FeedbackRating.SliderRating.ScreenReaderOnly.sliderDescriber',
-          )}.`
+          'FeedbackRating.SliderRating.ScreenReaderOnly.sliderDescriber',
+        )}.`
         : label;
 
     return sstyled(styles)(
@@ -173,7 +174,7 @@ class SliderRatingRoot extends Component<
         tabIndex={0}
         onMouseLeave={this.handleMouseLeave}
         onKeyDown={this.handleKeyDown}
-        role={'slider'}
+        role='slider'
         aria-orientation='horizontal'
         aria-valuemin={MIN}
         aria-valuemax={MAX}
@@ -182,7 +183,7 @@ class SliderRatingRoot extends Component<
       >
         {new Array(MAX).fill(null).map((_, index) => {
           return (
-            <Box key={index} position={'relative'}>
+            <Box key={index} position='relative'>
               <SliderRating.Star />
             </Box>
           );
@@ -197,7 +198,7 @@ function Star(props: StarProps) {
   return sstyled(props.styles)(
     <SStar
       render={Box}
-      tag={'svg'}
+      tag='svg'
       role='none'
       width='24'
       height='24'
@@ -205,15 +206,17 @@ function Star(props: StarProps) {
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
     >
-      {props.filled ? (
-        <path d='M11.646 1.214a.4.4 0 0 1 .708 0l3.314 6.293 7 1.214a.4.4 0 0 1 .219.673l-4.952 5.104 1.012 7.044a.4.4 0 0 1-.573.416L12 18.818l-6.374 3.14a.4.4 0 0 1-.572-.416l1.01-7.044-4.95-5.104a.4.4 0 0 1 .218-.673l7-1.214 3.314-6.293Z' />
-      ) : (
-        <path
-          d='M14.358 9.31 12 4.834 9.642 9.31l-4.985.864 3.526 3.634-.72 5.014L12 16.588l4.537 2.235-.72-5.014 3.526-3.634-4.985-.864Zm8.31-.59a.4.4 0 0 1 .219.674l-4.952 5.104 1.012 7.044a.4.4 0 0 1-.573.416L12 18.818l-6.374 3.14a.4.4 0 0 1-.572-.416l1.01-7.044-4.95-5.104a.4.4 0 0 1 .218-.673l7-1.214 3.314-6.293a.4.4 0 0 1 .708 0l3.314 6.293 7 1.214Z'
-          fillRule='evenodd'
-          clipRule='evenodd'
-        />
-      )}
+      {props.filled
+        ? (
+            <path d='M11.646 1.214a.4.4 0 0 1 .708 0l3.314 6.293 7 1.214a.4.4 0 0 1 .219.673l-4.952 5.104 1.012 7.044a.4.4 0 0 1-.573.416L12 18.818l-6.374 3.14a.4.4 0 0 1-.572-.416l1.01-7.044-4.95-5.104a.4.4 0 0 1 .218-.673l7-1.214 3.314-6.293Z' />
+          )
+        : (
+            <path
+              d='M14.358 9.31 12 4.834 9.642 9.31l-4.985.864 3.526 3.634-.72 5.014L12 16.588l4.537 2.235-.72-5.014 3.526-3.634-4.985-.864Zm8.31-.59a.4.4 0 0 1 .219.674l-4.952 5.104 1.012 7.044a.4.4 0 0 1-.573.416L12 18.818l-6.374 3.14a.4.4 0 0 1-.572-.416l1.01-7.044-4.95-5.104a.4.4 0 0 1 .218-.673l7-1.214 3.314-6.293a.4.4 0 0 1 .708 0l3.314 6.293 7 1.214Z'
+              fillRule='evenodd'
+              clipRule='evenodd'
+            />
+          )}
     </SStar>,
   );
 }

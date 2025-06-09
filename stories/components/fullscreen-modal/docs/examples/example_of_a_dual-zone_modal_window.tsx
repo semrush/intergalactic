@@ -1,10 +1,10 @@
-import React from 'react';
-import FullscreenModal from '@semcore/fullscreen-modal';
-import { Text } from '@semcore/typography';
 import Button from '@semcore/button';
 import Divider from '@semcore/divider';
+import FullscreenModal from '@semcore/fullscreen-modal';
 import ArrowLeftM from '@semcore/icon/ArrowLeft/m';
 import ArrowRightM from '@semcore/icon/ArrowRight/m';
+import { Text } from '@semcore/typography';
+import React from 'react';
 
 const Demo = () => {
   const [visible, setVisible] = React.useState(false);

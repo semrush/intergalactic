@@ -1,10 +1,9 @@
-import React from 'react';
 import { Root, sstyled } from '@semcore/core';
-import { Box } from '@semcore/flex-box';
 import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
+import { Box, ScreenReaderOnly } from '@semcore/flex-box';
 import CloseM from '@semcore/icon/Close/m';
-import { ScreenReaderOnly } from '@semcore/flex-box';
 import { Hint } from '@semcore/tooltip';
+import React from 'react';
 
 type ItemAsProps = {
   styles?: React.CSSProperties;

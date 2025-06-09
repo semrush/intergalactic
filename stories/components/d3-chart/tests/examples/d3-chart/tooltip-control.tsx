@@ -1,8 +1,8 @@
-import React from 'react';
 import { Plot, Line, XAxis, YAxis, HoverLine, minMax, PlotEventEmitter } from '@semcore/d3-chart';
 import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import { scaleLinear, scaleTime } from 'd3-scale';
+import React from 'react';
 
 function formatDate(value: any, options: any) {
   return new Intl.DateTimeFormat('en', options).format(value);
@@ -39,7 +39,7 @@ const Demo = () => {
 
   React.useEffect(() => {
     const unsubscribe = eventEmitter.subscribe('setTooltipPosition', (x, y) => {
-       {/* @ts-ignore */}
+      { /* @ts-ignore */ }
       const plotRect = plotRef.current?.getBoundingClientRect();
       if (x - plotRect.x < 150) {
         eventEmitter.emit('setTooltipPosition', plotRect.x + 150, y);

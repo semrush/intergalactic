@@ -1,4 +1,4 @@
-import { expect, within } from '@storybook/test';
+import { expect, within } from 'storybook/test';
 
 export async function ErrorExamplesTest({ canvasElement }: { canvasElement: HTMLElement }) {
   const canvas = within(canvasElement);

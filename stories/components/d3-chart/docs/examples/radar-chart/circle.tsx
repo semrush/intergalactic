@@ -1,7 +1,7 @@
-import React from 'react';
 import { Plot, Radar } from '@semcore/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import { curveCardinalClosed } from 'd3-shape';
+import React from 'react';
 
 const Demo = () => {
   const width = 500;

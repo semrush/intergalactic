@@ -1,10 +1,11 @@
 import * as path from 'path';
-import * as React from 'react';
-import { createRoot } from 'react-dom/client';
-import { act } from './testing-library';
 
 import playwright from 'playwright';
+import * as React from 'react';
+import { createRoot } from 'react-dom/client';
+
 import { mockIllustrationsRequest } from './shared/mockIllustrationsRequest';
+import { act } from './testing-library';
 
 let browser: playwright.Browser | null = null;
 

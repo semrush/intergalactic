@@ -1,7 +1,7 @@
-import React from 'react';
-import { Intergalactic, UnknownProperties } from '@semcore/core';
-import { TextProps } from '@semcore/typography';
-import { BoxProps } from '@semcore/flex-box';
+import type { Intergalactic, UnknownProperties } from '@semcore/core';
+import type { BoxProps } from '@semcore/flex-box';
+import type { TextProps } from '@semcore/typography';
+import type React from 'react';
 
 /** @deprecated */
 export interface ILinkProps extends LinkProps, UnknownProperties {}

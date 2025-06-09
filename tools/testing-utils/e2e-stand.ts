@@ -1,10 +1,11 @@
-import esbuild from 'esbuild';
 import os from 'os';
+import { dirname as resolveDirname, resolve as resolvePath } from 'path';
+
 import {
   esbuildPluginSemcore,
   esbuildPluginSemcoreSourcesResolve,
 } from '@semcore/esbuild-plugin-semcore';
-import { dirname as resolveDirname, resolve as resolvePath } from 'path';
+import esbuild from 'esbuild';
 
 export const e2eStandToHtml = async (standFilePath: string, locale: string) => {
   const standBundle = await esbuild.build({

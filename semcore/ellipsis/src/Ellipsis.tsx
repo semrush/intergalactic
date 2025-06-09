@@ -1,17 +1,17 @@
-import React, { RefObject } from 'react';
-import { createComponent, Component, Intergalactic, Root, sstyled } from '@semcore/core';
-import Tooltip, { TooltipProps } from '@semcore/tooltip';
-import { Box, BoxProps } from '@semcore/flex-box';
-import { useResizeObserver } from './useResizeObserver';
-import useEnhancedEffect from '@semcore/core/lib/utils/use/useEnhancedEffect';
+import { createComponent, Component, type Intergalactic, Root, sstyled } from '@semcore/core';
+import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import findComponent, { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
-
-import style from './style/ellipsis.shadow.css';
-import reactToText from '@semcore/core/lib/utils/reactToText';
 import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
 import pick from '@semcore/core/lib/utils/pick';
+import reactToText from '@semcore/core/lib/utils/reactToText';
 import { forkRef } from '@semcore/core/lib/utils/ref';
-import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
+import useEnhancedEffect from '@semcore/core/lib/utils/use/useEnhancedEffect';
+import { Box, type BoxProps } from '@semcore/flex-box';
+import Tooltip, { type TooltipProps } from '@semcore/tooltip';
+import React, { type RefObject } from 'react';
+
+import style from './style/ellipsis.shadow.css';
+import { useResizeObserver } from './useResizeObserver';
 
 type AsProps = {
   maxLine?: number;
@@ -59,7 +59,6 @@ type EllipsisProps = BoxProps &
     /**
      * Ref to the item that will be observed by ResizeObserver
      */
-    // eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
     containerRef?: RefObject<HTMLDivElement>;
     /**
      * Explicit sizes of container text should be trimmed in
@@ -199,7 +198,7 @@ class RootEllipsis extends Component<AsProps> {
       containerRect,
       containerRef,
       includeTooltipProps,
-      children,
+      children: _children,
       ...other
     } = this.asProps;
     const { visible } = this.state;
@@ -241,25 +240,29 @@ class RootEllipsis extends Component<AsProps> {
           {...tooltipProps}
           {...(advanceMode ? forcedAdvancedMode : noAdvancedMode)}
         >
-          {advanceMode ? (
-            <Children />
-          ) : (
-            <SEllipsis render={Box} ref={this.textRef} maxLine={maxLine} {...other}>
-              <Children />
-            </SEllipsis>
-          )}
+          {advanceMode
+            ? (
+                <Children />
+              )
+            : (
+                <SEllipsis render={Box} ref={this.textRef} maxLine={maxLine} {...other}>
+                  <Children />
+                </SEllipsis>
+              )}
         </SContainer>,
       );
     }
     return sstyled(styles)(
       <SNoTooltipContainer>
-        {advanceMode ? (
-          <Children />
-        ) : (
-          <SEllipsis render={Box} ref={this.textRef} maxLine={maxLine} {...other}>
-            <Children />
-          </SEllipsis>
-        )}
+        {advanceMode
+          ? (
+              <Children />
+            )
+          : (
+              <SEllipsis render={Box} ref={this.textRef} maxLine={maxLine} {...other}>
+                <Children />
+              </SEllipsis>
+            )}
       </SNoTooltipContainer>,
     );
   }

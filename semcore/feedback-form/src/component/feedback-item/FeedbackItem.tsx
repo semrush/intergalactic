@@ -1,10 +1,10 @@
+import { assignProps } from '@semcore/core';
+import pick from '@semcore/core/lib/utils/pick';
+import propsForElement from '@semcore/core/lib/utils/propsForElement';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import Tooltip from '@semcore/tooltip';
 import React from 'react';
 import { Field } from 'react-final-form';
-import Tooltip from '@semcore/tooltip';
-import pick from '@semcore/core/lib/utils/pick';
-import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import { assignProps } from '@semcore/core';
-import propsForElement from '@semcore/core/lib/utils/propsForElement';
 
 const deafultTooltipPropsList = [
   'title',
@@ -47,7 +47,7 @@ export function FeedbackItem({
         const inputProps = assignProps(
           {
             ...propsForElement(other),
-            state: errorState ? 'invalid' : 'normal',
+            'state': errorState ? 'invalid' : 'normal',
             'aria-invalid': errorState ? true : false,
             'aria-describedby': meta.active ? (errorState ? popperId : ariaDescribedBy) : undefined,
           },
@@ -80,7 +80,7 @@ export function FeedbackItem({
                   ...other,
                 })}
             </Tooltip.Trigger>
-            <Tooltip.Popper w={'100%'} id={popperId}>
+            <Tooltip.Popper w='100%' id={popperId}>
               {meta.error ?? lastErrorRef.current}
             </Tooltip.Popper>
           </Tooltip>

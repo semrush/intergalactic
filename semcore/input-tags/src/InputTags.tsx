@@ -1,27 +1,27 @@
-import React from 'react';
 import {
   createComponent,
   Component,
   sstyled,
   Root,
-  PropGetterFn,
-  UnknownProperties,
-  Intergalactic,
-  IRootComponentProps,
+  type PropGetterFn,
+  type UnknownProperties,
+  type Intergalactic,
+  type IRootComponentProps,
 } from '@semcore/core';
-import Input, { InputProps, InputValueProps } from '@semcore/input';
-import ScrollArea, { ScrollAreaProps } from '@semcore/scroll-area';
-import Tag, { TagProps, TagContainer, TagTextProps, TagContext } from '@semcore/tag';
-import fire from '@semcore/core/lib/utils/fire';
-import { ScreenReaderOnly } from '@semcore/flex-box';
-import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import Portal from '@semcore/portal';
-import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import { extractFrom, isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
+import fire from '@semcore/core/lib/utils/fire';
+import { getAccessibleName } from '@semcore/core/lib/utils/getAccessibleName';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import { ScreenReaderOnly } from '@semcore/flex-box';
+import Input, { type InputProps, type InputValueProps } from '@semcore/input';
+import Portal from '@semcore/portal';
+import ScrollArea, { type ScrollAreaProps } from '@semcore/scroll-area';
+import Tag, { type TagProps, TagContainer, type TagTextProps, type TagContext } from '@semcore/tag';
+import React from 'react';
 
 import style from './style/input-tag.shadow.css';
-import { extractFrom, isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
-import { getAccessibleName } from '@semcore/core/lib/utils/getAccessibleName';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 /** @deprecated */
 export interface IInputTagsValueProps extends InputTagsValueProps, UnknownProperties {}
@@ -189,17 +189,20 @@ class InputTags extends Component<IInputTagsProps> {
       },
     };
   }
+
   getTagTextProps(_: any, index: number) {
     return {
       uid: `${this.asProps.uid}-${index}`,
       getI18nText: this.asProps.getI18nText,
     };
   }
+
   getInputTagsContainerProps() {
     return {
       tagsContainerAriaLabel: this.state.tagsContainerAriaLabel,
     };
   }
+
   getTagContainerTextContentProps() {
     return {
       tabIndex: null,
@@ -278,7 +281,7 @@ class Value extends Component<IInputTagsValueProps> {
       spacerNode['innerText'] = placeholder;
       /* for [placeholder] {
           text-overflow: ellipsis;
-      }*/
+      } */
       magicOffset += 8;
     } else {
       spacerNode['innerText'] = value;
@@ -343,7 +346,7 @@ function InputTagContainer(props: any) {
 }
 function InputTagContainerTag(props: any) {
   const STag = Root;
-  const { getI18nText, editable } = props;
+  const { getI18nText } = props;
 
   const ref = React.useRef<HTMLElement>();
 

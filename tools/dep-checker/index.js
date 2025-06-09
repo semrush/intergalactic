@@ -1,6 +1,6 @@
 const { get } = require('axios');
 const { satisfies, diff, coerce, parse } = require('semver');
-
+// eslint-disable-next-line import/order
 const packagesRequire = require('require-all')({
   dirname: `${__dirname}/../../semcore`,
   filter: /package\.json$/,

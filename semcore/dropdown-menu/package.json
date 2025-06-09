@@ -35,10 +35,10 @@
     "directory": "semcore/dropdown-menu"
   },
   "devDependencies": {
-    "@types/react": "18.0.21",
+    "@semcore/core": "workspace:*",
     "@types/classnames": "2.2.6",
-    "@semcore/testing-utils": "1.0.0",
-    "@semcore/base-trigger": "4.26.1",
+    "@semcore/testing-utils": "workspace:*",
+    "@semcore/base-trigger": "workspace:*",
     "@semcore/icon": "workspace:*",
     "@semcore/button": "workspace:*"
   }

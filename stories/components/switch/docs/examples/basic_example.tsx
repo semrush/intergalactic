@@ -1,5 +1,5 @@
-import React from 'react';
 import Switch from '@semcore/switch';
+import React from 'react';
 
 const Demo = () => {
   return (

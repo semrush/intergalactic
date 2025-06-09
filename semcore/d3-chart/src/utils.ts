@@ -1,17 +1,17 @@
 import EventEmitter from '@semcore/core/lib/utils/eventEmitter';
-import { extent, bisector, Numeric } from 'd3-array';
+import { extent, bisector, type Numeric } from 'd3-array';
 import {
   scaleQuantize,
-  ScaleIdentity,
-  ScaleTime,
-  ScaleContinuousNumeric,
-  ScaleBand,
-  ScalePoint,
-  NumberValue,
+  type ScaleIdentity,
+  type ScaleTime,
+  type ScaleContinuousNumeric,
+  type ScaleBand,
+  type ScalePoint,
+  type NumberValue,
   scaleBand,
   scaleSqrt,
 } from 'd3-scale';
-import React from 'react';
+import type React from 'react';
 
 export const eventToPoint = (event: React.MouseEvent<HTMLElement>, svgRoot: SVGElement) => {
   const node = (event.currentTarget || event.target) as HTMLElement;
@@ -134,16 +134,12 @@ export const getIndexFromData = <
   if ('invert' in scale && typeof scale.invert === 'function' && Array.isArray(data)) {
     const bisect = bisector((d: { [key: string]: number }) => d[key]).center;
     return bisect(data, value);
-  }
-  // detect bar chart
-  else if ('step' in scale && typeof scale.step !== 'undefined' && Array.isArray(data)) {
+  } else if ('step' in scale && typeof scale.step !== 'undefined' && Array.isArray(data)) { // detect bar chart
     const index = data.findIndex((d) => d[key] === value);
     return index >= 0 ? index : null;
-  }
-  // detect cigarette chart
-  else if ('invert' in scale && typeof scale.invert === 'function' && !Array.isArray(data)) {
+  } else if ('invert' in scale && typeof scale.invert === 'function' && !Array.isArray(data)) { // detect cigarette chart
     const keys = Object.keys(data);
-    const domain = keys.map((key, index) => {
+    const domain = keys.map((_key, index) => {
       return keys.slice(0, index).reduce((acc, item) => {
         if (data[item] !== interpolateValue) {
           acc = acc + data[item];

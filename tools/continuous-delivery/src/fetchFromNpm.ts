@@ -1,6 +1,7 @@
 import axios from 'axios';
 import pLimit from 'p-limit';
 import semver from 'semver';
+
 import { log } from './utils';
 
 type PackageNpmRegistry = {
@@ -11,14 +12,14 @@ type PackageNpmRegistry = {
 
 export type ResponseNpmRegistry = {
   'dist-tags': { latest: string };
-  dist: { tarball: string };
-  versions: {
+  'dist': { tarball: string };
+  'versions': {
     [version: string]: PackageNpmRegistry;
   };
-  dependencies: {
+  'dependencies': {
     [name: string]: string;
   };
-  time: {
+  'time': {
     [versionName: string]: string;
   };
 };

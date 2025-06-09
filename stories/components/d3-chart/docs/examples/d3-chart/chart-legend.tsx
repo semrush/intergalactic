@@ -1,7 +1,7 @@
-import React from 'react';
 import { Line, minMax, XAxis, Plot, YAxis, ChartLegend } from '@semcore/d3-chart';
-import { scaleLinear } from 'd3-scale';
 import { Box } from '@semcore/flex-box';
+import { scaleLinear } from 'd3-scale';
+import React from 'react';
 
 const MAP_THEME = {
   line1: 'orange',
@@ -62,7 +62,7 @@ const Demo = () => {
           onChangeVisibleItem={handleChangeVisible}
           onMouseEnterItem={handleMouseEnter}
           onMouseLeaveItem={handleMouseLeave}
-          aria-label={'Chart legend aria label'}
+          aria-label='Chart legend aria label'
         />
       </Box>
       <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
@@ -74,15 +74,17 @@ const Demo = () => {
           <XAxis.Ticks />
         </XAxis>
         {legendItems.map((item, index) =>
-          item.checked ? (
-            <Line
-              key={item.id}
-              x="x"
-              y={item.id}
-              color={MAP_THEME[item.id]}
-              transparent={highlightedLine !== -1 && highlightedLine !== index}
-            />
-          ) : null,
+          item.checked
+            ? (
+                <Line
+                  key={item.id}
+                  x='x'
+                  y={item.id}
+                  color={MAP_THEME[item.id]}
+                  transparent={highlightedLine !== -1 && highlightedLine !== index}
+                />
+              )
+            : null,
         )}
       </Plot>
     </>

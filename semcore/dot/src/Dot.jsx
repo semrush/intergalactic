@@ -1,14 +1,13 @@
-import React from 'react';
-import { createComponent, Component, Root, sstyled } from '@semcore/core';
-import logger from '@semcore/core/lib/utils/logger';
-import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-
 import { Animation } from '@semcore/animation';
+import { createComponent, Component, Root, sstyled } from '@semcore/core';
+import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
+import logger from '@semcore/core/lib/utils/logger';
+import { contextThemeEnhance } from '@semcore/core/lib/utils/ThemeProvider';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
 import { Box } from '@semcore/flex-box';
 import Portal from '@semcore/portal';
-import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
-import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
-import { contextThemeEnhance } from '@semcore/core/lib/utils/ThemeProvider';
+import React from 'react';
 
 import style from './style/dot.shadow.css';
 
@@ -39,6 +38,7 @@ class Dot extends Component {
     size: 'm',
     keyframes: [styleDot['@enter'], styleDot['@exit']],
   };
+
   static enhance = [
     uniqueIDEnhancement(),
     cssVariableEnhance({
@@ -49,6 +49,7 @@ class Dot extends Component {
     }),
     contextThemeEnhance((props) => !props.hidden),
   ];
+
   ref = React.createRef();
 
   render() {
@@ -73,7 +74,7 @@ class Dot extends Component {
 
     logger.warn(
       !hasLabel,
-      "'aria-label' or 'aria-labelledby' are required for Dot component",
+      '\'aria-label\' or \'aria-labelledby\' are required for Dot component',
       this.asProps['data-ui-name'] || Dot.displayName,
     );
 

@@ -1,4 +1,4 @@
-import { DataTableData } from '../DataTable/DataTable.types';
+import type { DataTableData } from '../DataTable/DataTable.types';
 
 export class MergedRowsCell {
   public readonly value: any;

@@ -1,8 +1,9 @@
-import React from 'react';
 import { createBaseComponent, sstyled } from '@semcore/core';
+import { useForkRef } from '@semcore/core/lib/utils/ref';
+import React from 'react';
+
 import Animation from './Animation';
 import style from './style/keyframes.shadow.css';
-import { useForkRef } from '@semcore/core/lib/utils/ref';
 
 function Scale(props: any, ref: React.Ref<HTMLElement>) {
   const [placement, setPlacement] = React.useState(props.placement);

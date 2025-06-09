@@ -1,11 +1,11 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import AutomaticColumnSizeDetectionExample from './examples/automatic-column-size-detection';
 import ChangeInGeneralOffsetExamples from './examples/change-in-general-offset';
 import ChangeInGeneralGutterBetweenColumnsExample from './examples/change-in-the-general-gutter-between-the-columns';
 import ExampleUseExample from './examples/example-use';
-import ResponsiveAlternativeApiExample from './examples/responsive-alternative-api';
 import ResponsiveExample from './examples/responsive';
+import ResponsiveAlternativeApiExample from './examples/responsive-alternative-api';
 
 const meta: Meta = {
   title: 'Components/Grid/Documentation',

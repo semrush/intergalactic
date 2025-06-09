@@ -1,16 +1,19 @@
-import React from 'react';
-import { createComponent, Component, sstyled, Root } from '@semcore/core';
+import { createBreakpoints } from '@semcore/breakpoints';
 import Button from '@semcore/button';
-import Modal from '@semcore/modal';
-import { Box, Flex } from '@semcore/flex-box';
-import ChevronRight from '@semcore/icon/ChevronRight/l';
-import ChevronLeft from '@semcore/icon/ChevronLeft/l';
-import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
+import { findAllComponents } from '@semcore/core/lib/utils/findComponent';
 import logger from '@semcore/core/lib/utils/logger';
-import style from './style/carousel.shadow.css';
-import CarouselType, {
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import { Box, Flex } from '@semcore/flex-box';
+import type { BoxProps } from '@semcore/flex-box';
+import ChevronLeft from '@semcore/icon/ChevronLeft/l';
+import ChevronRight from '@semcore/icon/ChevronRight/l';
+import Modal from '@semcore/modal';
+import React from 'react';
+
+import type CarouselType from './Carousel.types';
+import type {
   CarouselProps,
   CarouselState,
   CarouselContext,
@@ -20,9 +23,8 @@ import CarouselType, {
   CarouselIndicatorsProps,
   CarouselIndicatorProps,
 } from './Carousel.types';
-import { BoxProps } from '@semcore/flex-box';
-import { findAllComponents } from '@semcore/core/lib/utils/findComponent';
-import { createBreakpoints } from '@semcore/breakpoints';
+import style from './style/carousel.shadow.css';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 const MAP_TRANSFORM: Record<string, 'left' | 'right'> = {
   ArrowLeft: 'left',
@@ -38,7 +40,7 @@ class CarouselRoot extends Component<
   CarouselProps,
   CarouselContext,
   CarouselState,
-  typeof enhance
+        typeof enhance
 > {
   static displayName = 'Carousel';
   static defaultProps = {
@@ -325,7 +327,7 @@ class CarouselRoot extends Component<
     };
   }
 
-  getItemProps(props: CarouselItemProps, index: number) {
+  getItemProps(_props: CarouselItemProps, index: number) {
     const { zoom } = this.asProps;
     const isCurrent = this.isSelected(index);
 
@@ -371,10 +373,10 @@ class CarouselRoot extends Component<
       disabled = selectedIndex === 0;
     }
     return {
-      onClick: this.bindHandlerClick('left'),
-      onKeyDown: this.bindHandlerKeydownControl('left'),
+      'onClick': this.bindHandlerClick('left'),
+      'onKeyDown': this.bindHandlerKeydownControl('left'),
       disabled,
-      label: getI18nText('prev'),
+      'label': getI18nText('prev'),
       'aria-controls': `igc-${uid}-carousel`,
     };
   }
@@ -388,10 +390,10 @@ class CarouselRoot extends Component<
     }
 
     return {
-      onClick: this.bindHandlerClick('right'),
-      onKeyDown: this.bindHandlerKeydownControl('right'),
+      'onClick': this.bindHandlerClick('right'),
+      'onKeyDown': this.bindHandlerKeydownControl('right'),
       disabled,
-      label: getI18nText('next'),
+      'label': getI18nText('next'),
       'aria-controls': `igc-${uid}-carousel`,
     };
   }
@@ -401,13 +403,13 @@ class CarouselRoot extends Component<
     const { getI18nText } = this.asProps;
 
     return {
-      items: items.map((item, key) => ({
+      'items': items.map((_item, key) => ({
         active: this.isSelected(key),
         onClick: this.bindHandlerClickIndicator(key),
         key,
       })),
-      role: 'tablist',
-      tabIndex: 0,
+      'role': 'tablist',
+      'tabIndex': 0,
       'aria-label': getI18nText('slides'),
     };
   }
@@ -417,7 +419,7 @@ class CarouselRoot extends Component<
     const { getI18nText } = this.asProps;
 
     return {
-      role: 'tab',
+      'role': 'tab',
       'aria-selected': isCurrent,
       'aria-controls': `igc-${this.asProps.uid}-carousel-item-${index}`,
       'aria-label': getI18nText('slide', { slideNumber: index + 1 }),
@@ -430,9 +432,9 @@ class CarouselRoot extends Component<
     const direction = selectedIndex > 0 ? 1 : -1;
     const count = items.length === 0 ? 0 : Math.floor(selectedIndex / items.length) * direction;
     const transform =
-      selectedIndex > 0 && selectedIndex < items.length
-        ? 0
-        : 100 * direction * count * items.length;
+            selectedIndex > 0 && selectedIndex < items.length
+              ? 0
+              : 100 * direction * count * items.length;
 
     return transform;
   }
@@ -502,14 +504,16 @@ class CarouselRoot extends Component<
               })}
             </SModalContainer>
           </SModalBox>
-          {isSmall ? (
-            <Flex justifyContent={'center'} mt={2}>
-              <Carousel.Prev inverted={true} />
-              <Carousel.Next inverted={true} />
-            </Flex>
-          ) : (
-            <Carousel.Next inverted={true} />
-          )}
+          {isSmall
+            ? (
+                <Flex justifyContent='center' mt={2}>
+                  <Carousel.Prev inverted={true} />
+                  <Carousel.Next inverted={true} />
+                </Flex>
+              )
+            : (
+                <Carousel.Next inverted={true} />
+              )}
         </Flex>
         {!isSmall && <Carousel.Indicators inverted={true} />}
       </Modal>,
@@ -546,39 +550,40 @@ class CarouselRoot extends Component<
         id={`igc-${uid}-carousel`}
         aria-roledescription={ariaRoledescription}
       >
-        {Controls.length === 0 ? (
-          <>
-            <Flex>
-              <Carousel.Prev />
-              <Carousel.ContentBox>
-                <Carousel.Container aria-label={ariaLabel}>
-                  <Children />
-                </Carousel.Container>
-              </Carousel.ContentBox>
-              <Carousel.Next />
-            </Flex>
-            {indicators === 'default' && <Carousel.Indicators />}
-            {indicators === 'preview' && (
-              <Carousel.Indicators>
-                {() =>
-                  ComponentItems.map((item, index) => (
-                    <Carousel.Indicator
-                      {...item.props}
-                      key={item.key}
-                      w={100}
-                      h={100}
-                      aria-roledescription='slide'
-                      active={this.isSelected(index)}
-                      onClick={this.bindHandlerClickIndicator(index)}
-                    />
-                  ))
-                }
-              </Carousel.Indicators>
+        {Controls.length === 0
+          ? (
+              <>
+                <Flex>
+                  <Carousel.Prev />
+                  <Carousel.ContentBox>
+                    <Carousel.Container aria-label={ariaLabel}>
+                      <Children />
+                    </Carousel.Container>
+                  </Carousel.ContentBox>
+                  <Carousel.Next />
+                </Flex>
+                {indicators === 'default' && <Carousel.Indicators />}
+                {indicators === 'preview' && (
+                  <Carousel.Indicators>
+                    {() =>
+                      ComponentItems.map((item, index) => (
+                        <Carousel.Indicator
+                          {...item.props}
+                          key={item.key}
+                          w={100}
+                          h={100}
+                          aria-roledescription='slide'
+                          active={this.isSelected(index)}
+                          onClick={this.bindHandlerClickIndicator(index)}
+                        />
+                      ))}
+                  </Carousel.Indicators>
+                )}
+              </>
+            )
+          : (
+              <Children />
             )}
-          </>
-        ) : (
-          <Children />
-        )}
         {hasZoom && (
           <BreakPoints>
             <BreakPoints.Context.Consumer>
@@ -614,7 +619,9 @@ class Item extends Component<CarouselItemProps> {
     const { toggleItem, transform } = this.props;
     const refItem = this.refItem.current;
 
-    toggleItem && refItem && toggleItem({ node: refItem });
+    if (toggleItem && refItem) {
+      toggleItem({ node: refItem });
+    }
 
     if (transform && refItem) {
       refItem.style.transform = `translateX(${transform}%)`;
@@ -625,7 +632,9 @@ class Item extends Component<CarouselItemProps> {
     const { toggleItem } = this.props;
     const refItem = this.refItem.current;
 
-    toggleItem && refItem && toggleItem({ node: refItem }, true);
+    if (toggleItem && refItem) {
+      toggleItem({ node: refItem }, true);
+    }
   }
 
   componentDidUpdate(prevProps: CarouselItemProps) {
@@ -664,18 +673,20 @@ const Prev = (props: CarouselButtonProps) => {
 
   return sstyled(styles)(
     <SPrev render={Box} top={top}>
-      {children ? (
-        <Children />
-      ) : (
-        <SPrevButton
-          addonLeft={ChevronLeft}
-          aria-label={label}
-          theme={inverted ? 'invert' : 'muted'}
-          use={'tertiary'}
-          size={'l'}
-          innerOutline
-        />
-      )}
+      {children
+        ? (
+            <Children />
+          )
+        : (
+            <SPrevButton
+              addonLeft={ChevronLeft}
+              aria-label={label}
+              theme={inverted ? 'invert' : 'muted'}
+              use='tertiary'
+              size='l'
+              innerOutline
+            />
+          )}
     </SPrev>,
   );
 };
@@ -687,18 +698,20 @@ const Next = (props: CarouselButtonProps) => {
 
   return sstyled(styles)(
     <SNext render={Box} top={top}>
-      {children ? (
-        <Children />
-      ) : (
-        <SNextButton
-          addonLeft={ChevronRight}
-          aria-label={label}
-          theme={inverted ? 'invert' : 'muted'}
-          use={'tertiary'}
-          size={'l'}
-          innerOutline
-        />
-      )}
+      {children
+        ? (
+            <Children />
+          )
+        : (
+            <SNextButton
+              addonLeft={ChevronRight}
+              aria-label={label}
+              theme={inverted ? 'invert' : 'muted'}
+              use='tertiary'
+              size='l'
+              innerOutline
+            />
+          )}
     </SNext>,
   );
 };

@@ -1,10 +1,10 @@
-import React from 'react';
 import Button from '@semcore/button';
-import Modal from '@semcore/modal';
-import { Text } from '@semcore/typography';
 import { Box } from '@semcore/flex-box';
 import Input from '@semcore/input';
+import Modal from '@semcore/modal';
 import Tooltip from '@semcore/tooltip';
+import { Text } from '@semcore/typography';
+import React from 'react';
 
 const Demo = () => {
   const [visible, setVisible] = React.useState(false);

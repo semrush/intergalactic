@@ -1,10 +1,10 @@
-import React from 'react';
-import Select from '@semcore/select';
-import Dropdown from '@semcore/dropdown';
 import BaseTrigger from '@semcore/base-trigger';
+import Dropdown from '@semcore/dropdown';
 import { Flex } from '@semcore/flex-box';
-import NeighborLocation from '@semcore/neighbor-location';
 import ChevronDownM from '@semcore/icon/ChevronDown/m';
+import NeighborLocation from '@semcore/neighbor-location';
+import Select from '@semcore/select';
+import React from 'react';
 
 const Demo = () => (
   <Flex direction='column' gap={3}>
@@ -31,14 +31,11 @@ const Demo = () => (
       <BaseTrigger empty state='valid' placeholder='Placeholder' data-test-id='placeholder-trigger-state-valid'>Button with placeholder</BaseTrigger>
       <BaseTrigger empty state='invalid' placeholder='Placeholder' data-test-id='placeholder-trigger-state-invalid'>Button with placeholder</BaseTrigger>
 
-    
-    
-
     </Flex>
     <Flex gap={2} justifyContent='flex-start'>
       <BaseTrigger aria-label='base trigger' data-test-id='text-addon-trigger-1'>
         <BaseTrigger.Text>Base trigger.Text</BaseTrigger.Text>
-        <BaseTrigger.Addon tag={ChevronDownM}  />
+        <BaseTrigger.Addon tag={ChevronDownM} />
       </BaseTrigger>
       <BaseTrigger aria-label='base trigger' disabled data-test-id='text-addon-trigger-2'>
         <BaseTrigger.Text>Base trigger.Text</BaseTrigger.Text>
@@ -57,7 +54,7 @@ const Demo = () => (
           </BaseTrigger>
         </Dropdown.Trigger>
       </Dropdown>
-          </Flex>
+    </Flex>
   </Flex>
 );
 

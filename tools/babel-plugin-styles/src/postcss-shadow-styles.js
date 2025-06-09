@@ -1,8 +1,9 @@
+const path = require('path');
+
 const Tokenizer = require('css-selector-tokenizer');
+const finderPackageJson = require('find-package-json');
 const ValueParser = require('postcss-value-parser');
 const stringHash = require('string-hash');
-const path = require('path');
-const finderPackageJson = require('find-package-json');
 
 const PLACEHOLDER_REPLACER = '_gg_';
 

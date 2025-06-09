@@ -1,8 +1,8 @@
-import React from 'react';
 import Button from '@semcore/button';
+import TrashIcon from '@semcore/icon/Trash/m';
 import Modal from '@semcore/modal';
 import { Text } from '@semcore/typography';
-import TrashIcon from '@semcore/icon/Trash/m';
+import React from 'react';
 
 const Demo = () => {
   const [visible, setVisible] = React.useState(false);

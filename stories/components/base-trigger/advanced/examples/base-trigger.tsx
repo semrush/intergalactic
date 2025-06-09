@@ -1,13 +1,13 @@
-import React from 'react';
-import Select from '@semcore/select';
-import Dropdown from '@semcore/dropdown';
 import BaseTrigger from '@semcore/base-trigger';
+import Button from '@semcore/button';
+import Divider from '@semcore/divider';
+import Dropdown from '@semcore/dropdown';
 import { Flex } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
 import ChevronDownM from '@semcore/icon/ChevronDown/m';
 import Radio from '@semcore/radio';
-import Divider from '@semcore/divider';
-import Button from '@semcore/button';
+import Select from '@semcore/select';
+import { Text } from '@semcore/typography';
+import React from 'react';
 
 const Demo = () => (
   <Flex gap={2}>
@@ -26,7 +26,7 @@ const Demo = () => (
 
     <BaseTrigger aria-label='base trigger'>
       <BaseTrigger.Text>Button</BaseTrigger.Text>
-      <BaseTrigger.Addon tag={ChevronDownM}/>
+      <BaseTrigger.Addon tag={ChevronDownM} />
     </BaseTrigger>
 
     <Dropdown>

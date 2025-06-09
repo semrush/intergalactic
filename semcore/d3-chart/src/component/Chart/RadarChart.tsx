@@ -1,12 +1,13 @@
-import React from 'react';
 import { createComponent } from '@semcore/core';
-import { scaleLinear, ScaleLinear } from 'd3-scale';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import { scaleLinear, type ScaleLinear } from 'd3-scale';
+import React from 'react';
+
 import { AbstractChart } from './AbstractChart';
-import { RadarChartData, RadarChartProps, RadarChartType } from './RadarChart.type';
+import type { RadarChartData, RadarChartProps, RadarChartType } from './RadarChart.type';
 // @ts-ignore
 import { Radar } from '../..';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
-import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 
 class RadarChartComponent extends AbstractChart<
   RadarChartData,
@@ -17,7 +18,7 @@ class RadarChartComponent extends AbstractChart<
 
   protected renderChart(): React.ReactNode {
     const { groupKey, showDots, circle } = this.asProps;
-    const { dataDefinitions, highlightedLine } = this.state;
+    const { dataDefinitions } = this.state;
 
     return (
       <Radar scale={this.xScale} type={circle ? 'circle' : undefined}>

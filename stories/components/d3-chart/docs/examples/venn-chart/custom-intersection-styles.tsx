@@ -1,5 +1,5 @@
-import React from 'react';
 import { Plot, Venn } from '@semcore/d3-chart';
+import React from 'react';
 
 const Demo = () => {
   return (
@@ -26,9 +26,9 @@ const Demo = () => {
 };
 
 const data = {
-  G: 200,
-  F: 200,
-  C: 200,
+  'G': 200,
+  'F': 200,
+  'C': 200,
   'G/F': 100,
   'G/C': 100,
   'F/C': 100,

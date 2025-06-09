@@ -1,15 +1,15 @@
-import React from 'react';
-import { snapshot } from '@semcore/testing-utils/snapshot';
-import * as sharedTests from '@semcore/testing-utils/shared-tests';
-import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
-import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
+import { Box, Flex } from '@semcore/flex-box';
 import { axe } from '@semcore/testing-utils/axe';
+import * as sharedTests from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import React from 'react';
+
+import Carousel from '../src';
 
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
-
-import { Box, Flex } from '@semcore/flex-box';
-import Carousel from '../src';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('Carousel Dependency imports', () => {
   runDependencyCheckTests('carousel');
@@ -359,8 +359,7 @@ describe('Carousel visual regression', () => {
                 w={100}
                 h={100}
               />
-            ))
-          }
+            ))}
         </Carousel.Indicators>
       </Carousel>
     );

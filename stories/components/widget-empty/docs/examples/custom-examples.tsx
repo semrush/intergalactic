@@ -1,6 +1,6 @@
-import React from 'react';
 import Card from '@semcore/card';
 import WidgetEmpty, { getIconPath } from '@semcore/widget-empty';
+import React from 'react';
 
 const Demo = () => {
   return (

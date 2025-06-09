@@ -1,7 +1,7 @@
-import React from 'react';
 import Button from '@semcore/button';
 import { Plot, Venn } from '@semcore/d3-chart';
 import { Flex } from '@semcore/flex-box';
+import React from 'react';
 
 const orders = [
   (val1: any, val2: any) => val2.radius - val1.radius,
@@ -34,8 +34,8 @@ const Demo = () => {
 };
 
 const data = {
-  F: 5,
-  S: 7,
+  'F': 5,
+  'S': 7,
   'F/S': 3,
 };
 

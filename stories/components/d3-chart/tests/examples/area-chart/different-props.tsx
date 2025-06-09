@@ -1,9 +1,9 @@
-import React from 'react';
 import { Chart, Area, Plot, YAxis, XAxis } from '@semcore/d3-chart';
-import { scaleTime, scaleLinear } from 'd3-scale';
-import { curveBasis, curveStep, curveCardinal } from 'd3-shape';
 import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
+import { scaleTime, scaleLinear } from 'd3-scale';
+import { curveBasis, curveStep, curveCardinal } from 'd3-shape';
+import React from 'react';
 
 function formatDate(value: Date) {
   const options = {
@@ -60,8 +60,8 @@ const Demo = () => {
         <Flex direction='column'>
           <Text> Сhart with dots and custom curve</Text>
           <Chart.Area
-            aria-label="Area with dots and custom curve"
-            groupKey="time"
+            aria-label='Area with dots and custom curve'
+            groupKey='time'
             data={data}
             plotWidth={500}
             plotHeight={200}
@@ -71,15 +71,15 @@ const Demo = () => {
             stacked={false}
             curve={curveBasis}
           >
-            <Area x="time" y="lineA" color="blue" />
-            <Area x="time" y="lineB" color="red" />
+            <Area x='time' y='lineA' color='blue' />
+            <Area x='time' y='lineB' color='red' />
           </Chart.Area>
         </Flex>
         <Flex direction='column'>
           <Text> No dots, stacked, with hidden line </Text>
           <Chart.Area
-            aria-label="Stacked chart with hidden line"
-            groupKey="time"
+            aria-label='Stacked chart with hidden line'
+            groupKey='time'
             data={data}
             plotWidth={500}
             plotHeight={200}
@@ -88,8 +88,8 @@ const Demo = () => {
             showDots={false}
             stacked={true}
           >
-            <Area x="time" y="lineA" color="blue" hide={true} />
-            <Area x="time" y="lineB" color="orange" />
+            <Area x='time' y='lineA' color='blue' hide={true} />
+            <Area x='time' y='lineB' color='orange' />
           </Chart.Area>
         </Flex>
       </Flex>
@@ -98,8 +98,8 @@ const Demo = () => {
           <Text>  Transparent area with animation duration and curveStep</Text>
 
           <Chart.Area
-            aria-label="Transparent area with animation"
-            groupKey="time"
+            aria-label='Transparent area with animation'
+            groupKey='time'
             data={data}
             plotWidth={500}
             plotHeight={200}
@@ -110,9 +110,9 @@ const Demo = () => {
             curve={curveStep}
           >
             <Area
-              x="time"
-              y="lineA"
-              color="green"
+              x='time'
+              y='lineA'
+              color='green'
               transparent={true}
               duration={1000}
             >
@@ -120,9 +120,9 @@ const Demo = () => {
               <Area.Null />
             </Area>
             <Area
-              x="time"
-              y="lineB"
-              color="purple"
+              x='time'
+              y='lineB'
+              color='purple'
               duration={500}
             />
           </Chart.Area>

@@ -1,11 +1,9 @@
-import type { Meta, StoryObj } from '@storybook/react';
-
 import Badge from '@semcore/badge';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import BadgeColorsExample from './examples/badge-colors';
 import BadgeBgExample from './examples/badge-bg-colors';
 import BadgeBoxPropsExample from './examples/badge-box-props';
-
+import BadgeColorsExample from './examples/badge-colors';
 
 const meta: Meta<typeof Badge> = {
   title: 'Components/Badge/Tests',

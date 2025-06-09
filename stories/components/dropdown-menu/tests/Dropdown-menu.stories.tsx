@@ -1,9 +1,14 @@
-import type { Meta, StoryObj } from '@storybook/react';
-
 import DropdownMenu from '@semcore/dropdown-menu';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
+import WidthExample from './examples/dd-width';
+import WithDividerExample from './examples/dd-with-divider';
+import ListItemsTypeExample from './examples/list_item_types';
 import OnVisibleExample from './examples/on-visible';
 import OnVisible2ndExample from './examples/on-visible-2nd';
+import SizesExample from './examples/sizes';
+import SizesMultiselectExample from './examples/sizes-multiselect';
+import SizesSelectableExample from './examples/sizes-selectable';
 import WithSearchExample from './examples/with-search';
 
 const meta: Meta<typeof DropdownMenu> = {
@@ -14,8 +19,32 @@ export default meta;
 
 type Story = StoryObj<typeof DropdownMenu>;
 
+export const WithDivider: Story = {
+  render: WithDividerExample,
+};
+
+export const ListItemsType: Story = {
+  render: ListItemsTypeExample,
+};
+
 export const OnVisible: Story = {
   render: OnVisibleExample,
+};
+
+export const SizesSelectable: Story = {
+  render: SizesSelectableExample,
+};
+
+export const SizesMultiselect: Story = {
+  render: SizesMultiselectExample,
+};
+
+export const Sizes: Story = {
+  render: SizesExample,
+};
+
+export const Width: Story = {
+  render: WidthExample,
 };
 
 export const WithSearch: Story = {

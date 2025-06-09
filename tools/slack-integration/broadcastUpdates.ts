@@ -1,8 +1,10 @@
-import { makeMessageFromChangelogs } from './makeMessage';
-import { Changelog, collectComponentChangelogs } from '@semcore/changelog-handler';
-import { sendMessage } from './sendMessage';
+import type { Changelog } from '@semcore/changelog-handler';
+import { collectComponentChangelogs } from '@semcore/changelog-handler';
 import dayjs from 'dayjs';
 import isBetween from 'dayjs/plugin/isBetween.js';
+
+import { makeMessageFromChangelogs } from './makeMessage';
+import { sendMessage } from './sendMessage';
 dayjs.extend(isBetween);
 
 const makeMessageTitle = (dateFrom: string, dateTo: string) => {

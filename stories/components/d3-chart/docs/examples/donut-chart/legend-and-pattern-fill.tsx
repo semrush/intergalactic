@@ -1,6 +1,6 @@
-import React from 'react';
 import { ChartLegend, Donut, makeDataHintsContainer, Plot } from '@semcore/d3-chart';
 import { Flex } from '@semcore/flex-box';
+import React from 'react';
 
 const dataHints = makeDataHintsContainer();
 
@@ -61,7 +61,7 @@ const Demo = () => {
         </Donut>
       </Plot>
       <ChartLegend
-        direction={'column'}
+        direction='column'
         wMin={100}
         items={legendItems}
         onChangeVisibleItem={handleChangeVisible}
@@ -69,7 +69,7 @@ const Demo = () => {
         onMouseLeaveItem={handleMouseLeave}
         dataHints={dataHints}
         patterns
-        aria-label={'Donut chart legend'}
+        aria-label='Donut chart legend'
       />
     </Flex>
   );

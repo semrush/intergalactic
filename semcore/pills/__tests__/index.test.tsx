@@ -1,20 +1,18 @@
-import React from 'react';
-import { snapshot } from '@semcore/testing-utils/snapshot';
-import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
-import Globe from '@semcore/icon/Globe/m';
 import Badge from '@semcore/badge';
-
-import { render, fireEvent, cleanup, act, userEvent } from '@semcore/testing-utils/testing-library';
+import type { Intergalactic } from '@semcore/core';
+import { Box } from '@semcore/flex-box';
+import Globe from '@semcore/icon/Globe/m';
+import ThumbDownM from '@semcore/icon/ThumbDown/m';
+import ThumbUpM from '@semcore/icon/ThumbUp/m';
 import { axe } from '@semcore/testing-utils/axe';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { render, fireEvent, cleanup, act, userEvent } from '@semcore/testing-utils/testing-library';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import React from 'react';
+import { assertType } from 'vitest';
 
 import Pills from '../src';
-import { Intergalactic } from '@semcore/core';
-import { assertType } from 'vitest';
-import ThumbUpM from '@semcore/icon/ThumbUp/m';
-import ThumbDownM from '@semcore/icon/ThumbDown/m';
-import { Box } from '@semcore/flex-box';
-
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('pills Dependency imports', () => {
   runDependencyCheckTests('pills');
@@ -46,7 +44,7 @@ describe('PillGroup', () => {
         <Pills.Item value={1}>1</Pills.Item>
         <Pills.Item value={2}>1</Pills.Item>
         <Pills.Item value={3}>1</Pills.Item>
-        <Pills.Item value={4} data-testid={'tab-4'}>
+        <Pills.Item value={4} data-testid='tab-4'>
           1
         </Pills.Item>
       </Pills>,
@@ -63,7 +61,7 @@ describe('PillGroup', () => {
         <Pills.Item value={1}>1</Pills.Item>
         <Pills.Item value={2}>1</Pills.Item>
         <Pills.Item value={3}>1</Pills.Item>
-        <Pills.Item value={4} onClick={spy} data-testid={'tab-4'}>
+        <Pills.Item value={4} onClick={spy} data-testid='tab-4'>
           1
         </Pills.Item>
       </Pills>,
@@ -81,7 +79,7 @@ describe('PillGroup', () => {
         <Pills.Item value={1}>1</Pills.Item>
         <Pills.Item value={2}>2</Pills.Item>
         <Pills.Item value={3}>3</Pills.Item>
-        <Pills.Item value={4} data-testid={'tab-4'} onClick={spyClick}>
+        <Pills.Item value={4} data-testid='tab-4' onClick={spyClick}>
           4
         </Pills.Item>
       </Pills>,
@@ -100,7 +98,7 @@ describe('PillGroup', () => {
         <Pills.Item value={1}>1</Pills.Item>
         <Pills.Item value={2}>3</Pills.Item>
         <Pills.Item value={3}>4</Pills.Item>
-        <Pills.Item value={3} data-testid={'tab-4'} disabled>
+        <Pills.Item value={3} data-testid='tab-4' disabled>
           4
         </Pills.Item>
       </Pills>,
@@ -119,10 +117,10 @@ describe('PillGroup', () => {
 
     const { getByTestId } = render(
       <Pills behavior='tabs' defaultValue={1} onChange={spy}>
-        <Pills.Item value={1} data-testid={'behavior=tabs_pill1'}>
+        <Pills.Item value={1} data-testid='behavior=tabs_pill1'>
           1
         </Pills.Item>
-        <Pills.Item value={2} data-testid={'behavior=tabs_pill2'}>
+        <Pills.Item value={2} data-testid='behavior=tabs_pill2'>
           2
         </Pills.Item>
         <Pills.Item value={3}>3</Pills.Item>
@@ -149,10 +147,10 @@ describe('PillGroup', () => {
 
     const { getByTestId } = render(
       <Pills behavior='radio' defaultValue={1} onChange={spy}>
-        <Pills.Item value={1} data-testid={'behavior=radio_pill1'}>
+        <Pills.Item value={1} data-testid='behavior=radio_pill1'>
           1
         </Pills.Item>
-        <Pills.Item value={2} data-testid={'behavior=radio_pill2'}>
+        <Pills.Item value={2} data-testid='behavior=radio_pill2'>
           2
         </Pills.Item>
         <Pills.Item value={3}>3</Pills.Item>
@@ -176,10 +174,10 @@ describe('PillGroup', () => {
 
     const { getByTestId } = render(
       <Pills behavior='tabs' defaultValue={1} onChange={spy}>
-        <Pills.Item value={1} data-testid={'behavior=manual_pill1'}>
+        <Pills.Item value={1} data-testid='behavior=manual_pill1'>
           1
         </Pills.Item>
-        <Pills.Item value={2} data-testid={'behavior=manual_pill2'}>
+        <Pills.Item value={2} data-testid='behavior=manual_pill2'>
           2
         </Pills.Item>
         <Pills.Item value={3}>3</Pills.Item>
@@ -203,10 +201,10 @@ describe('PillGroup', () => {
 
     const { getByTestId } = render(
       <Pills behavior='radio' defaultValue={1} onChange={spy}>
-        <Pills.Item value={1} data-testid={'behavior=auto_pill1'}>
+        <Pills.Item value={1} data-testid='behavior=auto_pill1'>
           1
         </Pills.Item>
-        <Pills.Item value={2} data-testid={'behavior=auto_pill2'}>
+        <Pills.Item value={2} data-testid='behavior=auto_pill2'>
           2
         </Pills.Item>
         <Pills.Item value={3}>3</Pills.Item>
@@ -228,7 +226,7 @@ describe('PillGroup', () => {
   test.concurrent('Should render correctly selected first with manual', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5 }}>
-        <Pills value={1} behavior={'manual'}>
+        <Pills value={1} behavior='manual'>
           <Pills.Item value={1} id='focused'>
             1
           </Pills.Item>
@@ -260,7 +258,7 @@ describe('PillGroup', () => {
   test.concurrent('Should render correctly selected with auto', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5 }}>
-        <Pills id={'focused'}>
+        <Pills id='focused'>
           <Pills.Item value={1}>1</Pills.Item>
           <Pills.Item value={2}>2</Pills.Item>
         </Pills>

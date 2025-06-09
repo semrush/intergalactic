@@ -1,11 +1,11 @@
-import * as React from 'react';
-import { snapshot } from '@semcore/testing-utils/snapshot';
-import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
-import Switch, { inputProps } from '../src';
-
-import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import * as React from 'react';
+
+import Switch, { inputProps } from '../src';
 
 describe('switch Dependency imports', () => {
   runDependencyCheckTests('switch');
@@ -53,17 +53,17 @@ describe('Switch', () => {
 
     const component = (
       <>
-        <Switch size={'m'}>
+        <Switch size='m'>
           <Switch.Addon>{longText}</Switch.Addon>
           <Switch.Value />
           <Switch.Addon>{longText}</Switch.Addon>
         </Switch>
-        <Switch size={'l'}>
+        <Switch size='l'>
           <Switch.Addon>{longText}</Switch.Addon>
           <Switch.Value checked />
           <Switch.Addon>{longText}</Switch.Addon>
         </Switch>
-        <Switch size={'xl'}>
+        <Switch size='xl'>
           <Switch.Addon>{longText}</Switch.Addon>
           <Switch.Value checked />
           <Switch.Addon>{longText}</Switch.Addon>

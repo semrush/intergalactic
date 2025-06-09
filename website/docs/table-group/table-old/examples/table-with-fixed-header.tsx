@@ -1,11 +1,11 @@
-import React from 'react';
-import Spin from '@semcore/spin';
-import ScrollArea from '@semcore/scroll-area';
-import { Text } from '@semcore/typography';
-import Table from '@semcore/table';
-import { Hint } from '@semcore/tooltip';
 import Checkbox from '@semcore/checkbox';
 import Link from '@semcore/link';
+import ScrollArea from '@semcore/scroll-area';
+import Spin from '@semcore/spin';
+import Table from '@semcore/table';
+import { Hint } from '@semcore/tooltip';
+import { Text } from '@semcore/typography';
+import React from 'react';
 
 function shuffle(a) {
   for (let i = a.length - 1; i > 0; i--) {
@@ -17,37 +17,37 @@ function shuffle(a) {
 
 let data = [
   {
-    keyword: 'ebay buy',
-    kd: '77.8',
-    cpc: '$1.25',
-    vol: '32,500,000',
-    diff: 0,
-    traffic: '< 0.01',
-    url: 'https://ebay.com',
+    'keyword': 'ebay buy',
+    'kd': '77.8',
+    'cpc': '$1.25',
+    'vol': '32,500,000',
+    'diff': 0,
+    'traffic': '< 0.01',
+    'url': 'https://ebay.com',
     'last update': new Intl.DateTimeFormat('en-US', { year: 'numeric', era: 'long' }).format(
       new Date('2019/11/12'),
     ),
   },
   {
-    keyword: 'www.ebay.com',
-    kd: '11.2',
-    cpc: '$3.4',
-    vol: '65,457,920',
-    diff: 0,
-    traffic: '< 0.01',
-    url: 'https://ebay.com',
+    'keyword': 'www.ebay.com',
+    'kd': '11.2',
+    'cpc': '$3.4',
+    'vol': '65,457,920',
+    'diff': 0,
+    'traffic': '< 0.01',
+    'url': 'https://ebay.com',
     'last update': new Intl.DateTimeFormat('en-US', { year: 'numeric', era: 'long' }).format(
       new Date('2019/11/12'),
     ),
   },
   {
-    keyword: 'www.ebay.com',
-    kd: '10',
-    cpc: '$0.65',
-    vol: '47,354,640',
-    diff: 0,
-    traffic: '< 0.01',
-    url: 'https://ebay.com',
+    'keyword': 'www.ebay.com',
+    'kd': '10',
+    'cpc': '$0.65',
+    'vol': '47,354,640',
+    'diff': 0,
+    'traffic': '< 0.01',
+    'url': 'https://ebay.com',
     'last update': new Intl.DateTimeFormat('en-US', { year: 'numeric', era: 'long' }).format(
       new Date('2019/11/12'),
     ),
@@ -82,7 +82,9 @@ const Demo = () => {
   const [top, setTop] = React.useState(0);
   React.useEffect(() => {
     const header = document.getElementsByTagName('header')[0];
-    header && setTop(header.offsetHeight);
+    if (header) {
+      setTop(header.offsetHeight);
+    }
   }, []);
 
   return (
@@ -100,7 +102,9 @@ const Demo = () => {
               <Table.CellHead width='200'>
                 <Hint title='Lorem ipsum'>
                   <span tabIndex={0}>
-                    Keyword <Text color='text-secondary'>(1 - 100)</Text>
+                    Keyword
+                    {' '}
+                    <Text color='text-secondary'>(1 - 100)</Text>
                   </span>
                 </Hint>
               </Table.CellHead>
@@ -108,10 +112,12 @@ const Demo = () => {
               {Object.keys(data[0])
                 .slice(1)
                 .map((name) => (
-                  <Table.CellHead width='200' align='right'>
+                  <Table.CellHead key={name} width='200' align='right'>
                     <Hint title='Lorem ipsum'>
                       <span tabIndex={0}>
-                        {name.toUpperCase()} {['kd', 'traffic'].includes(name) && '%'}
+                        {name.toUpperCase()}
+                        {' '}
+                        {['kd', 'traffic'].includes(name) && '%'}
                       </span>
                     </Hint>
                   </Table.CellHead>
@@ -137,7 +143,7 @@ const Demo = () => {
                 {Object.keys(data[0])
                   .slice(1)
                   .map((name) => (
-                    <Table.Cell align='right' theme={row.kd === '-' ? false : 'default'}>
+                    <Table.Cell key={name} align='right' theme={row.kd === '-' ? false : 'default'}>
                       {row[name]}
                     </Table.Cell>
                   ))}

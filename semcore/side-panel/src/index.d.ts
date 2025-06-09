@@ -1,10 +1,10 @@
-import React from 'react';
-import { PortalProps } from '@semcore/portal';
-import { FadeInOutProps, SlideProps } from '@semcore/animation';
-import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import { Box, BoxProps, Flex } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
-import Button from '@semcore/button';
+import type { FadeInOutProps, SlideProps } from '@semcore/animation';
+import type Button from '@semcore/button';
+import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import type { Box, BoxProps, Flex } from '@semcore/flex-box';
+import type { PortalProps } from '@semcore/portal';
+import type { Text } from '@semcore/typography';
+import type React from 'react';
 
 export type OnCloseTriggerType = 'onOutsideClick' | 'onEscape' | 'onCloseClick';
 export type OnCloseType = (

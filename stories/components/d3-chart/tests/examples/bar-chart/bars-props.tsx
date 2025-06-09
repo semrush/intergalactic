@@ -1,12 +1,10 @@
-import React from 'react';
 import { Chart, Plot, YAxis, XAxis, Bar } from '@semcore/d3-chart';
-import { scaleLinear, scaleBand } from 'd3-scale';
-import { Text } from '@semcore/typography';
 import { Flex } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
+import { scaleLinear, scaleBand } from 'd3-scale';
+import React from 'react';
 
 const Demo = () => {
-
-
   const MARGIN = 40;
   const width = 400;
   const height = 200;
@@ -39,7 +37,7 @@ const Demo = () => {
 
   return (
     <Flex direction='column'>
-      <Flex >
+      <Flex>
         <Flex direction='column'>
           <Text>With color</Text>
           <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
@@ -100,7 +98,6 @@ const Demo = () => {
           </Flex>
         </Flex>
 
-
         <Flex direction='column'>
           <Text>With transparent='true'</Text>
           <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
@@ -132,7 +129,10 @@ const Demo = () => {
 
       <Flex>
         <Flex direction='column'>
-          <Text>maxBarSize={6}</Text>
+          <Text>
+            maxBarSize=
+            {6}
+          </Text>
           <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
             <YAxis>
               <YAxis.Ticks />
@@ -159,7 +159,6 @@ const Demo = () => {
         </Flex>
       </Flex>
     </Flex>
-
 
   );
 };
@@ -189,6 +188,5 @@ const data1 = [
   { time: 3, stack1: null },
   { time: 4, stack1: -0 },
 ];
-
 
 export default Demo;

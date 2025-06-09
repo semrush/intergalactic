@@ -1,11 +1,11 @@
-import { PortalProps } from '@semcore/portal';
-import { UnknownProperties, Intergalactic } from '@semcore/core';
-import { BoxProps } from '@semcore/flex-box';
+import type { UnknownProperties, Intergalactic } from '@semcore/core';
+import type { BoxProps } from '@semcore/flex-box';
+import type { PortalProps } from '@semcore/portal';
 
 /** @deprecated */
 export interface INoticeBubbleContainerProps
   extends NoticeBubbleContainerProps,
-    UnknownProperties {}
+  UnknownProperties {}
 export type NoticeBubbleContainerProps = BoxProps &
   PortalProps & {
     /** Manager copy */

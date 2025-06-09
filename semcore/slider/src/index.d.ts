@@ -1,6 +1,6 @@
-import React from 'react';
-import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import { Box, BoxProps, FlexProps } from '@semcore/flex-box';
+import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import type { Box, BoxProps, FlexProps } from '@semcore/flex-box';
+import type React from 'react';
 
 type SliderValue = string | number;
 
@@ -20,7 +20,7 @@ export type SliderOption<OptionValue extends SliderValue> = {
 /** @deprecated */
 export interface ISliderProps<Value extends SliderValue = SliderValue>
   extends SliderProps<Value>,
-    UnknownProperties {}
+  UnknownProperties {}
 export type SliderProps<Value extends SliderValue = SliderValue> = BoxProps & {
   /** Numeric value
    */
@@ -65,7 +65,7 @@ type IntergalacticSliderComponent<PropsExtending = {}> = (<
   props: Intergalactic.InternalTypings.ComponentProps<Tag, 'div', SliderProps<Value>> &
     PropsExtending,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
-  Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', SliderProps>;
+Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', SliderProps>;
 
 declare const Slider: IntergalacticSliderComponent & {
   Knob: typeof Box;
@@ -84,7 +84,7 @@ declare const wrapSlider: <PropsExtending extends {}>(
     props: Intergalactic.InternalTypings.UntypeRefAndTag<
       Intergalactic.InternalTypings.ComponentPropsNesting<IntergalacticSliderComponent>
     > &
-      PropsExtending,
+    PropsExtending,
   ) => React.ReactNode,
 ) => IntergalacticSliderComponent<PropsExtending>;
 export { wrapSlider };

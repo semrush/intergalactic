@@ -1,8 +1,9 @@
-import React from 'react';
-import { describe, test, expect, beforeEach, vi } from '@semcore/testing-utils/vitest';
-import { render, cleanup, fireEvent } from '@semcore/testing-utils/testing-library';
-import Wizard from '../src';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { render, cleanup, fireEvent } from '@semcore/testing-utils/testing-library';
+import { describe, test, expect, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import React from 'react';
+
+import Wizard from '../src';
 
 describe('wizard Dependency imports', () => {
   runDependencyCheckTests('wizard');

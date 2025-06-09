@@ -1,5 +1,6 @@
-import { UnknownProperties, Intergalactic } from '@semcore/core';
-import { BoxProps } from '../flex-box';
+import type { UnknownProperties, Intergalactic } from '@semcore/core';
+
+import type { BoxProps } from '../flex-box';
 
 type CssTimingFunction =
   | 'ease'

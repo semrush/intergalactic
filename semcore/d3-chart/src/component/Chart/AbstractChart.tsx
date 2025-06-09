@@ -1,19 +1,20 @@
-import { makeDataHintsContainer } from '../../a11y/hints';
-import { LegendItem } from '../ChartLegend/LegendItem/LegendItem.type';
-import { ScaleBand, ScaleLinear, ScaleTime } from 'd3-scale';
-import { interpolateValue } from '../../utils';
-import React from 'react';
 import { Component, Root, sstyled } from '@semcore/core';
-import { BaseChartProps, BaseLegendProps, ListData, ObjectData } from './AbstractChart.type';
+import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
-import ChartLegend, { ChartLegendTable } from '../ChartLegend';
 import { Flex } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
+import type { ScaleBand, ScaleLinear, ScaleTime } from 'd3-scale';
+import React from 'react';
+
+import type { BaseChartProps, BaseLegendProps, ListData, ObjectData } from './AbstractChart.type';
 // @ts-ignore
 import { Plot, XAxis, YAxis } from '../..';
-import { Text } from '@semcore/typography';
-import { LegendFlexProps } from '../ChartLegend/LegendFlex/LegendFlex.type';
-import { LegendTableProps } from '../ChartLegend/LegendTable/LegendTable.type';
-import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
+import { makeDataHintsContainer } from '../../a11y/hints';
+import { interpolateValue } from '../../utils';
+import ChartLegend, { ChartLegendTable } from '../ChartLegend';
+import type { LegendFlexProps } from '../ChartLegend/LegendFlex/LegendFlex.type';
+import type { LegendItem } from '../ChartLegend/LegendItem/LegendItem.type';
+import type { LegendTableProps } from '../ChartLegend/LegendTable/LegendTable.type';
 
 type ChartState = {
   dataDefinitions: Array<LegendItem & { columns: React.ReactNode[] }>;
@@ -85,8 +86,8 @@ export abstract class AbstractChart<
         dataDefinition.additionalInfo = legendData.additionalInfo
           ? { label: legendData.additionalInfo }
           : legendData.count
-          ? { count: legendData.count }
-          : undefined;
+            ? { count: legendData.count }
+            : undefined;
       }
 
       if (legendData && 'columns' in legendData) {
@@ -113,7 +114,7 @@ export abstract class AbstractChart<
         const percent = value !== undefined ? ((value / total) * 100).toFixed(2) : undefined;
 
         dataDefinition.columns = [
-          <Text key={`${key}_percent`} use={'secondary'}>
+          <Text key={`${key}_percent`} use='secondary'>
             {percent !== undefined ? `${percent}%` : ''}
           </Text>,
           <Text key={`${key}_value`} use={value ? 'primary' : 'secondary'}>
@@ -360,22 +361,22 @@ export abstract class AbstractChart<
     };
 
     const commonLegendProps: LegendFlexProps | LegendTableProps = {
-      dataHints: this.dataHints,
-      items: dataDefinitions,
-      size: lProps.size,
-      shape: lProps.shape,
-      w: lProps.w,
-      h: lProps.h,
+      'dataHints': this.dataHints,
+      'items': dataDefinitions,
+      'size': lProps.size,
+      'shape': lProps.shape,
+      'w': lProps.w,
+      'h': lProps.h,
       patterns,
-      direction:
+      'direction':
         lProps.direction ?? (direction === 'row' || direction === 'row-reverse' ? 'column' : 'row'),
-      onChangeVisibleItem: lProps.disableSelectItems
+      'onChangeVisibleItem': lProps.disableSelectItems
         ? undefined
         : callAllEventHandlers(lProps.onChangeVisibleItem, this.handleChangeVisible),
-      onMouseEnterItem: lProps.disableHoverItems
+      'onMouseEnterItem': lProps.disableHoverItems
         ? undefined
         : callAllEventHandlers(lProps.onMouseEnterItem, this.handleMouseEnter),
-      onMouseLeaveItem: lProps.disableHoverItems
+      'onMouseLeaveItem': lProps.disableHoverItems
         ? undefined
         : callAllEventHandlers(lProps.onMouseLeaveItem, this.handleMouseLeave),
       'aria-label': this.getLegendAriaLabel(),
@@ -422,22 +423,26 @@ export abstract class AbstractChart<
       <>
         {showYAxis && (
           <YAxis>
-            {yTicks ? (
-              <YAxis.Ticks ticks={yTicks}>{childrenY}</YAxis.Ticks>
-            ) : (
-              <YAxis.Ticks>{childrenY}</YAxis.Ticks>
-            )}
+            {yTicks
+              ? (
+                  <YAxis.Ticks ticks={yTicks}>{childrenY}</YAxis.Ticks>
+                )
+              : (
+                  <YAxis.Ticks>{childrenY}</YAxis.Ticks>
+                )}
             {invertAxis !== true && (yTicks ? <YAxis.Grid ticks={yTicks} /> : <YAxis.Grid />)}
           </YAxis>
         )}
 
         {showXAxis && (
           <XAxis>
-            {xTicks ? (
-              <XAxis.Ticks ticks={xTicks}>{childrenX}</XAxis.Ticks>
-            ) : (
-              <XAxis.Ticks>{childrenX}</XAxis.Ticks>
-            )}
+            {xTicks
+              ? (
+                  <XAxis.Ticks ticks={xTicks}>{childrenX}</XAxis.Ticks>
+                )
+              : (
+                  <XAxis.Ticks>{childrenX}</XAxis.Ticks>
+                )}
             {invertAxis === true && (xTicks ? <XAxis.Grid ticks={xTicks} /> : <XAxis.Grid />)}
           </XAxis>
         )}
@@ -453,7 +458,7 @@ export abstract class AbstractChart<
     const { extractedAriaProps } = extractAriaProps(this.asProps);
 
     return sstyled(styles)(
-      <SChart render={Flex} gap={5} __excludeProps={['data']} role={'group'}>
+      <SChart render={Flex} gap={5} __excludeProps={['data']} role='group'>
         {this.renderLegend()}
         <Plot
           data={data}

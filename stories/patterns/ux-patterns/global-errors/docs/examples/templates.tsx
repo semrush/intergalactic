@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   AccessDenied,
   Maintenance,
@@ -6,11 +5,12 @@ import {
   PageNotFound,
   ProjectNotFound,
 } from '@semcore/errors';
+import React from 'react';
 
 const Demo = () => (
   <>
     <AccessDenied />
-    <Maintenance toolName={'Intergalactic'} />
+    <Maintenance toolName='Intergalactic' />
     <PageNotFound />
     <ProjectNotFound />
     <PageError />

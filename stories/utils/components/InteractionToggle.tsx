@@ -1,7 +1,7 @@
-import React, { useCallback } from 'react';
-
-import { IconButton } from '@storybook/components';
 import { PlayIcon, StopIcon } from '@storybook/icons';
+import React, { useCallback } from 'react';
+import { IconButton } from 'storybook/internal/components';
+
 import { isAutoPlay, toggleAutoPlay } from '../playWrapper';
 
 export const ADDON_ID = 'toggle-interaction';

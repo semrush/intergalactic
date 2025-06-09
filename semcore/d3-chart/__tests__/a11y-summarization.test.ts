@@ -1,16 +1,18 @@
 import { expect, test, describe } from '@semcore/testing-utils/vitest';
 
+import type {
+  DataStructureHints } from '../src/a11y/hints';
 import {
-  DataStructureHints,
   makeDataHintsContainer as makeHints,
   makeDataSummarizationConfig as makeConfig,
 } from '../src/a11y/hints';
-import {
+import type {
   AnalyzedData,
   ClusterNode,
   ComparisonNode,
+  Insight } from '../src/a11y/insights';
+import {
   extractDataInsights,
-  Insight,
 } from '../src/a11y/insights';
 import { serialize } from '../src/a11y/serialize';
 import { localizedMessages as translations } from '../src/a11y/translations/view/__intergalactic-dynamic-locales';
@@ -409,7 +411,7 @@ describe('Plot a11y summarization', () => {
 
 
 
-            
+
   BBBBB
   CCAABB  DD
   EEE
@@ -723,7 +725,7 @@ describe('Plot a11y summarization', () => {
     );
     expect(
       insights.find((insight) => insight.type === 'trend' && (insight as any).from >= 5) !==
-        undefined,
+      undefined,
     ).toBeTruthy();
   });
 
@@ -786,7 +788,6 @@ describe('Plot a11y summarization', () => {
     const length = text!.length;
 
     if (length >= limit) {
-      // biome-ignore lint/suspicious/noConsoleLog:
       console.log(
         `Expected summarization result for a huge count of insights be limited, for example, by ${limit} characters (got ${length})`,
       );
@@ -1213,7 +1214,6 @@ describe('Plot a11y summarization', () => {
     const unusedMessagesJoin = unusedMessages.join(', ');
 
     if (unusedMessagesCount !== 0) {
-      // biome-ignore lint/suspicious/noConsoleLog:
       console.log(
         `Expected all non-view translations messages be used (unused messages [${unusedMessagesCount}]: ${unusedMessagesJoin})`,
       );
@@ -1237,7 +1237,7 @@ describe('Plot a11y summarization', () => {
         translations: {
           ...translations.en,
           'time-series-local-trend': '%TREND%',
-          ellipsis: '%ELLIPSIS%',
+          'ellipsis': '%ELLIPSIS%',
         },
       },
     );
