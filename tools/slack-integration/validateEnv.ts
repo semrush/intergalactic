@@ -1,9 +1,4 @@
-import dotenv from 'dotenv';
-dotenv.config();
-
-export const validateSlackIntegrationEnv = () => {
-  const endpoints = process.env['SLACK_API_ENDPOINTS']?.split(',') ?? [];
-
+export const validateSlackIntegrationEnv = (endpoints: string[]) => {
   if (endpoints.length === 0) {
     throw new Error(
       'Slack integration expects env.SLACK_API_ENDPOINTS to be provided but got empty or non-existing value',
