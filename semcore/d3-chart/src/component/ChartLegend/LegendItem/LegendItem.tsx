@@ -43,7 +43,7 @@ class LegendItemRoot extends Component<LegendItemProps, {}, {}, typeof enhance> 
   }
 
   getShapeProps() {
-    const { checked, color, shape, label, id, size, resolveColor, patterns, onChangeLegendItem } =
+    const { checked, color, shape, label, id, size, resolveColor, patterns, onChangeLegendItem, onFocusLegendItem, onBlurLegendItem } =
       this.asProps;
     return {
       label,
@@ -56,6 +56,8 @@ class LegendItemRoot extends Component<LegendItemProps, {}, {}, typeof enhance> 
       'onChange': (value: boolean) => {
         onChangeLegendItem(id, value);
       },
+      'onFocus': () => onFocusLegendItem(id),
+      'onBlur': () => onBlurLegendItem(id),
       'aria-labelledby': shape === 'Checkbox' ? this.getUniqueID() : null,
     };
   }
@@ -133,6 +135,8 @@ function Shape(props: IRootComponentProps & ShapeProps & DOMAttributes<HTMLLabel
     children: hasChildren,
     patterns,
     onChange,
+    onFocus,
+    onBlur,
   } = props;
 
   if (hasChildren) {
@@ -155,6 +159,8 @@ function Shape(props: IRootComponentProps & ShapeProps & DOMAttributes<HTMLLabel
           checked={checked}
           theme={checked ? color : undefined}
           onChange={onChange}
+          onFocus={onFocus}
+          onBlur={onBlur}
           aria-labelledby={props['aria-labelledby']}
         />
         {patterns && (
