@@ -64,7 +64,28 @@ test.describe('Bubble chart', () => {
     await expect(page).toHaveScreenshot();
   });
 
-  test('Verify legend', async ({ page }) => {
+  test('Verify items when one legend item is unchecked', async ({ page }) => {
+    const standPath =
+      'stories/components/d3-chart/docs/examples/bubble-chart/legend-and-pattern-fill.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+
+    const label = await page.locator('label[data-ui-name="Checkbox"]').first();
+    const item = await page.locator('g').first();
+
+    await expect(label, `The ${label} is unchecked`).toBeChecked();
+    await expect(item, `The ${item} is hidden`).toBeVisible();
+
+    await label.click();
+
+    await expect(label, `The ${label} is still checked`).not.toBeChecked();
+    await expect(item, `The ${item} is still visible`).toHaveCSS('display', 'none');
+
+    await page.waitForTimeout(500);
+    await expect(page).toHaveScreenshot();
+  });
+
+  test('Verify items when all legend items are unchecked', async ({ page }) => {
     const standPath =
       'stories/components/d3-chart/docs/examples/bubble-chart/legend-and-pattern-fill.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -81,37 +102,39 @@ test.describe('Bubble chart', () => {
       await expect(item, `The ${item} is hidden`).toBeVisible();
     });
 
-    await test.step('Verify the first circle is hidden when the first legeng item is unckecked', async () => {
-      await labels[0].click();
+    for (const label of labels) {
+      await label.click();
+    }
 
-      await expect(labels[0], `The ${labels[0]} is still checked`).not.toBeChecked();
-      await expect(items[0], `The ${items[0]} is still visible`).toHaveCSS('display', 'none');
+    for (const label of labels) {
+      await expect(label, `The ${label} is still checked`).not.toBeChecked();
+    }
 
-      await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot('Bubble-chart-Verify-legend-first-case.png');
-    });
+    for (const item of items) {
+      await expect(item, `The ${items} is still visible`).toHaveCSS('display', 'none');
+    }
 
-    await test.step('Reset state before new case', async () => {
-      await labels[0].click();
-    });
-
-    await test.step('Verify the circles are hidden when the legend items are unchecked', async () => {
-      for (const label of labels) {
-        await label.click();
-      }
-
-      for (const label of labels) {
-        await expect(label, `The ${label} is still checked`).not.toBeChecked();
-      }
-
-      for (const item of items) {
-        await expect(item, `The ${items} is still visible`).toHaveCSS('display', 'none');
-      }
-
-      await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot('Bubble-chart-Verify-legend-second-case.png');
-    });
+    await page.waitForTimeout(500);
+    await expect(page).toHaveScreenshot();
   });
 
-  // test('Verify pattern', async ({ page }) => {});
+  test('Verify patterns', async ({ page }) => {
+    const standPath =
+      'stories/components/d3-chart/docs/examples/bubble-chart/legend-and-pattern-fill.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+
+    const getPatternId = (index: number) => `ui-kit-ra-${index}-pattern`;
+    const labelsCount = await page.locator('label[data-ui-name="Checkbox"]').count();
+
+    for (let i = 0; i < labelsCount; i++) {
+      const patternId = getPatternId(i);
+      const pattern = await page.$(`pattern[id=${patternId}]`);
+
+      expect(pattern, `Pattern ${i} is not visibile.`).toBeTruthy();
+    }
+
+    await page.screenshot();
+    await expect(page).toHaveScreenshot();
+  });
 });
