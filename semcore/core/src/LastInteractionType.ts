@@ -25,6 +25,13 @@ class LastInteractionType {
     return this.lastFocusSource === 'mouse';
   }
 
+  /**
+   * This is a method for internal usage in uikit only. Don't use it in your application.
+   */
+  public internalSetter(focusSource: 'mouse' | 'keyboard') {
+    this.lastFocusSource = focusSource;
+  }
+
   private handleMouseDown() {
     this.lastFocusSource = 'mouse';
   }

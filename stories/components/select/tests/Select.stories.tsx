@@ -6,6 +6,7 @@ import FocusExample from './examples/focus_interaction';
 import OnChangeInputSearchExample from './examples/on_change_input_search';
 import OnVisibleExample from './examples/on_visible';
 import OptionsExample from './examples/options';
+import ProgrammaticallyFocusExample from './examples/programmatically_focus';
 import TriggerExample from './examples/trigger';
 
 const meta: Meta<typeof Select> = {
@@ -34,4 +35,8 @@ export const OnVisible: Story = {
 
 export const OnChangeInputSearch: Story = {
   render: OnChangeInputSearchExample,
+};
+
+export const ProgrammaticallyFocus: Story = {
+  render: ProgrammaticallyFocusExample,
 };

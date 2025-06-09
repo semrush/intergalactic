@@ -606,7 +606,16 @@ function Trigger(props: PopperTriggerProps & IRootComponentProps & InnerPopperTr
   );
 
   React.useEffect(() => {
-    triggerRef.current?.addEventListener('focusin', handleFocus);
+    if (!triggerRef.current) return;
+
+    const originFocus = triggerRef.current.focus;
+
+    triggerRef.current.focus = function () {
+      lastInteraction.internalSetter('keyboard');
+      originFocus.apply(this);
+    };
+
+    triggerRef.current.addEventListener('focusin', handleFocus);
 
     return () => {
       triggerRef.current?.removeEventListener('focusin', handleFocus);
