@@ -69,7 +69,7 @@ const Demo = () => {
           </Select.Menu>
         </Select>
         <Tooltip.Popper>
-          Soime error message
+          Some error message
         </Tooltip.Popper>
       </Tooltip>
     </Flex>

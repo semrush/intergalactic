@@ -10,6 +10,15 @@ class LastInteractionType {
     if (canUseDOM()) {
       document.addEventListener('mousedown', this.handleMouseDown, { capture: true });
       document.addEventListener('keydown', this.handleKeyDown, { capture: true });
+
+      const originFocusHandler = HTMLElement.prototype.focus;
+      const instance = this;
+
+      HTMLElement.prototype.focus = function () {
+        instance.lastFocusSource = 'keyboard';
+
+        originFocusHandler.apply(this);
+      };
     }
   }
 
@@ -23,13 +32,6 @@ class LastInteractionType {
 
   public isMouse() {
     return this.lastFocusSource === 'mouse';
-  }
-
-  /**
-   * This is a method for internal usage in uikit only. Don't use it in your application.
-   */
-  public internalSetter(focusSource: 'mouse' | 'keyboard') {
-    this.lastFocusSource = focusSource;
   }
 
   private handleMouseDown() {
