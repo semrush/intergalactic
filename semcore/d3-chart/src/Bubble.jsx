@@ -101,7 +101,7 @@ class BubbleRoot extends Component {
       transparent,
       resolveColor,
       patterns,
-      bindHandlerTooltip: this.bindHandlerTooltip.bind(this),
+      bindHandlerTooltip: this.bindHandlerTooltip,
     };
   }
 
