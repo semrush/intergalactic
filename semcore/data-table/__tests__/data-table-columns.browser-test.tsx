@@ -7,6 +7,11 @@ async function getColumnWidth(page: any, colIndex: any) {
   return box ? box.width : 0;
 }
 
+const COLUMN_SORT_VALUE_TO_ARIA_SORT_VALUE_MAPPER: Record<string, string> = {
+  asc: 'ascending',
+  desc: 'descending',
+};
+
 test.describe('Columns', () => {
   test('Verify alingnment props', async ({ page }) => {
     const standPath =
@@ -149,5 +154,22 @@ test.describe('Columns', () => {
     const firstRow = page.locator('[data-ui-name="Body.Row"]').first();
     const firstCell = firstRow.locator('[data-ui-name="Body.Cell"]').nth(0);
     await expect(firstCell).toBeFocused();
+  });
+
+  test('Verify column\'s aria-sort attributes ', async ({ page }) => {
+    const standPath = 'stories/components/data-table/docs/examples/sorting.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const columns = await page.locator('[data-ui-name="Head.Column"]').all();
+    const [defaultSortColumnName, defaultSortValue] = ['kd', 'desc'];
+    for (const column of columns) {
+      const columnName = await column.getAttribute('name');
+
+      const columnAriaSort = defaultSortColumnName === columnName ? COLUMN_SORT_VALUE_TO_ARIA_SORT_VALUE_MAPPER[defaultSortValue] : 'none';
+
+      expect(column).toHaveAttribute('aria-sort', columnAriaSort);
+    }
   });
 });
