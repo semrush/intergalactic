@@ -8,21 +8,33 @@ test.describe('Bubble chart', () => {
     await page.setContent(htmlContent);
 
     const chart = page.locator('svg[data-ui-name="Plot"]').first();
-    const items = page.locator('[data-ui-name="Bubble.Circle"]');
+    const allitems = page.locator('[data-ui-name="Bubble.Circle"]');
+    const gCircle = page.locator('g[data-ui-name="Bubble.Circle"]');
+    const circleCircle = page.locator('circle[data-ui-name="Bubble.Circle"]');
+
     await expect(chart).toBeVisible();
 
+    await test.step('Verify citcles amount', async () => {
+      const gCount = await gCircle.count();
+      await expect(gCount).toBe(5);
+
+      const circleCount = await circleCircle.count();
+      await expect(circleCount).toBe(5);
+    });
+
     await test.step('Verify bubbles attributes', async () => {
-      const count = await items.count();
+      const count = await allitems.count();
 
       for (let i = 0; i < count; i++) {
-        const item = items.nth(i);
+        const item = allitems.nth(i);
         await expect(item).toHaveAttribute('aria-hidden', 'true');
         await expect(item).toHaveAttribute('value', 'value');
+        await expect(item).toHaveAttribute('label', 'label');
       }
     });
 
     await test.step('Verify tooltip on hover', async () => {
-      await items.nth(0).hover();
+      await circleCircle.nth(0).hover();
       await page.waitForTimeout(500);
       await expect(page).toHaveScreenshot();
     });
@@ -93,6 +105,17 @@ test.describe('Bubble chart', () => {
 
     const labels = await page.locator('label[data-ui-name="Checkbox"]').all();
     const items = await page.locator('g').all();
+
+    const gCircle = page.locator('g[data-ui-name="Bubble.Circle"]');
+    const circleCircle = page.locator('circle[data-ui-name="Bubble.Circle"]');
+
+    await test.step('Verify citcles amount', async () => {
+      const gCount = await gCircle.count();
+      await expect(gCount).toBe(5);
+
+      const circleCount = await circleCircle.count();
+      await expect(circleCount).toBe(5);
+    });
 
     for (const label of labels) {
       await expect(label, `The ${label} is unchecked`).toBeChecked();
