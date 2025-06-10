@@ -100,19 +100,35 @@ test.describe('Venn chart', () => {
     await expect(page).toHaveScreenshot();
   });
 
-  test('Verify venn legend and pattern fill', async ({ page, browserName }) => {
-    if (browserName === 'webkit') return;
+  test('Verify bar legend and pattern fill mouse interactions', async ({ page, browserName }) => {
     const standPath =
-      'stories/components/d3-chart/docs/examples/venn-chart/legend-and-pattern-fill.tsx';
+    'stories/components/d3-chart/docs/examples/venn-chart/legend-and-pattern-fill.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
-    await test.step('Verify looks good when some items disabled by keyboard', async () => {
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Space');
+    const chart = page.locator('svg[data-ui-name="Plot"]').first();
+    await expect(chart).toBeVisible();
+    const label = page.getByText('Good');
+    const label2 = page.getByText('Cheap');
 
+    await test.step('Verify higlights by hover on label', async () => {
+      await label.hover();
+      await page.waitForTimeout(500);
+      await expect(page).toHaveScreenshot();
+    });
+  });
+
+  test('Verify bar legend and pattern fill keyboard interactions', async ({ page, browserName }) => {
+    const standPath =
+    'stories/components/d3-chart/docs/examples/venn-chart/legend-and-pattern-fill.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+
+    const chart = page.locator('svg[data-ui-name="Plot"]').first();
+    await expect(chart).toBeVisible();
+
+    await test.step('Verify when focused', async () => {
       await page.keyboard.press('Tab');
-      await page.keyboard.press('Space');
       await page.waitForTimeout(500);
       await expect(page).toHaveScreenshot();
     });

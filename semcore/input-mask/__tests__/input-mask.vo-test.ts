@@ -6,7 +6,7 @@ test('Users can interact with InputMask via VoiceOver', async ({
   page,
   voiceOver: pureVoiceOver,
 }) => {
-  const standPath = 'website/docs/components/input-mask/examples/inputmask.tsx';
+  const standPath = 'stories/components/input-mask/docs/examples/inputmask.tsx';
   const htmlContent = await e2eStandToHtml(standPath, 'en');
 
   await page.setContent(htmlContent);

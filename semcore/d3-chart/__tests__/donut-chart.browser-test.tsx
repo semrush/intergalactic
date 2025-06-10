@@ -86,33 +86,55 @@ test.describe('Donut chart', () => {
     });
   });
 
-  test('Verify donut legend and pattern fill', async ({ page, browserName }) => {
+  test('Verify donut legend and pattern fill mouse interactions', async ({ page, browserName }) => {
     const standPath =
       'stories/components/d3-chart/tests/examples/donut-chart/legend-and-pattern-fill.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
+    const label = page.getByText('Category 1');
+    const label2 = page.getByText('Category 2');
+    const label3 = page.getByText('Category 3');
 
     await test.step('Verify higlights by hover on label', async () => {
-      const label = page.getByText('Category 1');
       await label.hover();
-      await page.waitForTimeout(500);
+      await page.waitForTimeout(200);
       await expect(page).toHaveScreenshot();
     });
 
-    if (browserName === 'webkit') return;
-    await test.step('Verify looks good when all items by keyboatd', async () => {
-      for (let i = 0; i < 7; i++) await page.keyboard.press('Tab');
-
-      await page.keyboard.press('Space');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Space');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Space');
-      await page.waitForTimeout(500);
+    await test.step('Verify not higlights by hover on unchecked label', async () => {
+      await label.click();
+      await label.hover();
+      await page.waitForTimeout(200);
       await expect(page).toHaveScreenshot();
+    });
 
+    await test.step('Verify looks good when all items uchecked', async () => {
+      await label3.click();
+      await label2.click();
+      await page.waitForTimeout(200);
+      await expect(page).toHaveScreenshot();
+    });
+  });
+
+  test('Verify donut legend and pattern fill keyboard interactions', async ({ page, browserName }) => {
+    const standPath =
+      'stories/components/d3-chart/tests/examples/donut-chart/legend-and-pattern-fill.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+    const label = page.getByText('Category 1');
+    const label2 = page.getByText('Category 2');
+    const label3 = page.getByText('Category 3');
+
+    await test.step('Verify highlighted by focus', async () => {
+      for (let i = 0; i < 7; i++) await page.keyboard.press('Tab');
+      await page.waitForTimeout(200);
+      await expect(page).toHaveScreenshot();
+    });
+
+    await test.step('Verify highlighted by check and unchecck', async () => {
       await page.keyboard.press('Space');
-      await page.waitForTimeout(500);
+      await page.keyboard.press('Space');
+      await page.waitForTimeout(200);
       await expect(page).toHaveScreenshot();
     });
   });

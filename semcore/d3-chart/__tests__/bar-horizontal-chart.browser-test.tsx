@@ -131,7 +131,7 @@ test.describe('Horizontal Bar chart', () => {
     await expect(page).toHaveScreenshot();
   });
 
-  test('Verify horizontal bar legend and pattern fill', async ({ page, browserName }) => {
+  test('Verify horizontal bar legend and pattern fill mouse interactions', async ({ page, browserName }) => {
     const standPath =
       'stories/components/d3-chart/tests/examples/bar-horizontal/legend-and-pattern-fill.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -139,22 +139,47 @@ test.describe('Horizontal Bar chart', () => {
 
     const chart = page.locator('svg[data-ui-name="Plot"]').first();
     await expect(chart).toBeVisible();
-    const label = page.getByText('Bar 2');
+    const label = page.getByText('Bar 1');
+    const label2 = page.getByText('Bar 2');
 
     await test.step('Verify higlights by hover on label', async () => {
       await label.hover();
-      await page.waitForTimeout(500);
+      await page.waitForTimeout(200);
       await expect(page).toHaveScreenshot();
     });
 
-    if (browserName === 'webkit') return;
-    await test.step('Verify looks good when all items disabledby keyboard', async () => {
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Space');
+    await test.step('Verify not higlights when uncheck iten and hoer it', async () => {
+      await label.click();
+      await label.hover();
+      await page.waitForTimeout(200);
+      await expect(page).toHaveScreenshot();
+    });
+  });
 
+  test('Verify horizontal bar legend and pattern fill keyboard interactions', async ({ page, browserName }) => {
+    const standPath =
+      'stories/components/d3-chart/tests/examples/bar-horizontal/legend-and-pattern-fill.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+
+    const chart = page.locator('svg[data-ui-name="Plot"]').first();
+    await expect(chart).toBeVisible();
+
+    await test.step('Verify highlighted when focused', async () => {
       await page.keyboard.press('Tab');
+      await expect(page).toHaveScreenshot();
+    });
+
+    await test.step('Verify highlighted when check and uncheck', async () => {
       await page.keyboard.press('Space');
-      await page.waitForTimeout(500);
+      await page.keyboard.press('Space');
+      await page.waitForTimeout(200);
+      await expect(page).toHaveScreenshot();
+    });
+
+    await test.step('Verify highlight when navigation next unchecked checkbox', async () => {
+      await page.keyboard.press('Tab');
+      await page.waitForTimeout(200);
       await expect(page).toHaveScreenshot();
     });
   });
