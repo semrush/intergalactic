@@ -18,8 +18,6 @@ import {
   interpolateValue,
 } from './utils';
 
-console.log(SvgElement);
-
 class AreaRoot extends Component {
   static displayName = 'Area';
   static style = style;
