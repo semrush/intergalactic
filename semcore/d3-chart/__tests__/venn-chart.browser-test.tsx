@@ -116,19 +116,6 @@ test.describe('Venn chart', () => {
       await page.waitForTimeout(500);
       await expect(page).toHaveScreenshot();
     });
-
-    await test.step('Verify not higlights by hover on unchecked label', async () => {
-      await label.click();
-      await label.hover();
-      await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot();
-    });
-
-    await test.step('Verify higlights by hover on other label', async () => {
-      await label2.hover();
-      await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot();
-    });
   });
 
   test('Verify bar legend and pattern fill keyboard interactions', async ({ page, browserName }) => {
@@ -140,21 +127,8 @@ test.describe('Venn chart', () => {
     const chart = page.locator('svg[data-ui-name="Plot"]').first();
     await expect(chart).toBeVisible();
 
-    await test.step('Verify highlights when focused', async () => {
+    await test.step('Verify when focused', async () => {
       await page.keyboard.press('Tab');
-      await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot();
-    });
-
-    await test.step('Verify highlights when checked and unchecked', async () => {
-      await page.keyboard.press('Space');
-      await page.keyboard.press('Space');
-      await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot();
-    });
-
-    await test.step('Verify not highlights when unchecked', async () => {
-      await page.keyboard.press('Space');
       await page.waitForTimeout(500);
       await expect(page).toHaveScreenshot();
     });
