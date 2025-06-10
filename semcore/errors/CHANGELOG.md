@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.3] - 2025-06-10
+
+### Changed
+
+- Left and right paddings for messages wider than 768px are now `(--intergalactic-spacing-8x), 32px` instead of `0`.
+
 ## [16.0.2] - 2025-05-30
 
 ### Changed

@@ -37,16 +37,6 @@
       "import": "./lib/esm/index.mjs",
       "types": "./lib/types/index.d.ts"
     },
-    "./color/YoutubeInvert/m": {
-      "require": "./color/YoutubeInvert/m/index.js",
-      "import": "./color/YoutubeInvert/m/index.mjs",
-      "types": "./color/YoutubeInvert/m/index.d.ts"
-    },
-    "./color/YoutubeInvert/l": {
-      "require": "./color/YoutubeInvert/l/index.js",
-      "import": "./color/YoutubeInvert/l/index.mjs",
-      "types": "./color/YoutubeInvert/l/index.d.ts"
-    },
     "./color/WooCommerceColored/m": {
       "require": "./color/WooCommerceColored/m/index.js",
       "import": "./color/WooCommerceColored/m/index.mjs",
@@ -57,15 +47,15 @@
       "import": "./color/WooCommerceColored/l/index.mjs",
       "types": "./color/WooCommerceColored/l/index.d.ts"
     },
-    "./color/WhatsApp/m": {
-      "require": "./color/WhatsApp/m/index.js",
-      "import": "./color/WhatsApp/m/index.mjs",
-      "types": "./color/WhatsApp/m/index.d.ts"
+    "./color/YoutubeInvert/m": {
+      "require": "./color/YoutubeInvert/m/index.js",
+      "import": "./color/YoutubeInvert/m/index.mjs",
+      "types": "./color/YoutubeInvert/m/index.d.ts"
     },
-    "./color/WhatsApp/l": {
-      "require": "./color/WhatsApp/l/index.js",
-      "import": "./color/WhatsApp/l/index.mjs",
-      "types": "./color/WhatsApp/l/index.d.ts"
+    "./color/YoutubeInvert/l": {
+      "require": "./color/YoutubeInvert/l/index.js",
+      "import": "./color/YoutubeInvert/l/index.mjs",
+      "types": "./color/YoutubeInvert/l/index.d.ts"
     },
     "./color/YoutubeColored/m": {
       "require": "./color/YoutubeColored/m/index.js",
@@ -97,6 +87,16 @@
       "import": "./color/WhatConvertsColored/l/index.mjs",
       "types": "./color/WhatConvertsColored/l/index.d.ts"
     },
+    "./color/WhatsApp/m": {
+      "require": "./color/WhatsApp/m/index.js",
+      "import": "./color/WhatsApp/m/index.mjs",
+      "types": "./color/WhatsApp/m/index.d.ts"
+    },
+    "./color/WhatsApp/l": {
+      "require": "./color/WhatsApp/l/index.js",
+      "import": "./color/WhatsApp/l/index.mjs",
+      "types": "./color/WhatsApp/l/index.d.ts"
+    },
     "./color/TikTokColoredInvert/m": {
       "require": "./color/TikTokColoredInvert/m/index.js",
       "import": "./color/TikTokColoredInvert/m/index.mjs",
@@ -106,36 +106,6 @@
       "require": "./color/TikTokColoredInvert/l/index.js",
       "import": "./color/TikTokColoredInvert/l/index.mjs",
       "types": "./color/TikTokColoredInvert/l/index.d.ts"
-    },
-    "./color/Snapchat/m": {
-      "require": "./color/Snapchat/m/index.js",
-      "import": "./color/Snapchat/m/index.mjs",
-      "types": "./color/Snapchat/m/index.d.ts"
-    },
-    "./color/Snapchat/l": {
-      "require": "./color/Snapchat/l/index.js",
-      "import": "./color/Snapchat/l/index.mjs",
-      "types": "./color/Snapchat/l/index.d.ts"
-    },
-    "./color/ShopifyColored/m": {
-      "require": "./color/ShopifyColored/m/index.js",
-      "import": "./color/ShopifyColored/m/index.mjs",
-      "types": "./color/ShopifyColored/m/index.d.ts"
-    },
-    "./color/ShopifyColored/l": {
-      "require": "./color/ShopifyColored/l/index.js",
-      "import": "./color/ShopifyColored/l/index.mjs",
-      "types": "./color/ShopifyColored/l/index.d.ts"
-    },
-    "./color/Salesforce/m": {
-      "require": "./color/Salesforce/m/index.js",
-      "import": "./color/Salesforce/m/index.mjs",
-      "types": "./color/Salesforce/m/index.d.ts"
-    },
-    "./color/Salesforce/l": {
-      "require": "./color/Salesforce/l/index.js",
-      "import": "./color/Salesforce/l/index.mjs",
-      "types": "./color/Salesforce/l/index.d.ts"
     },
     "./color/TikTokColored/m": {
       "require": "./color/TikTokColored/m/index.js",
@@ -147,6 +117,16 @@
       "import": "./color/TikTokColored/l/index.mjs",
       "types": "./color/TikTokColored/l/index.d.ts"
     },
+    "./color/ShopifyColored/m": {
+      "require": "./color/ShopifyColored/m/index.js",
+      "import": "./color/ShopifyColored/m/index.mjs",
+      "types": "./color/ShopifyColored/m/index.d.ts"
+    },
+    "./color/ShopifyColored/l": {
+      "require": "./color/ShopifyColored/l/index.js",
+      "import": "./color/ShopifyColored/l/index.mjs",
+      "types": "./color/ShopifyColored/l/index.d.ts"
+    },
     "./color/PipedriveColored/m": {
       "require": "./color/PipedriveColored/m/index.js",
       "import": "./color/PipedriveColored/m/index.mjs",
@@ -156,6 +136,26 @@
       "require": "./color/PipedriveColored/l/index.js",
       "import": "./color/PipedriveColored/l/index.mjs",
       "types": "./color/PipedriveColored/l/index.d.ts"
+    },
+    "./color/Salesforce/m": {
+      "require": "./color/Salesforce/m/index.js",
+      "import": "./color/Salesforce/m/index.mjs",
+      "types": "./color/Salesforce/m/index.d.ts"
+    },
+    "./color/Salesforce/l": {
+      "require": "./color/Salesforce/l/index.js",
+      "import": "./color/Salesforce/l/index.mjs",
+      "types": "./color/Salesforce/l/index.d.ts"
+    },
+    "./color/Snapchat/m": {
+      "require": "./color/Snapchat/m/index.js",
+      "import": "./color/Snapchat/m/index.mjs",
+      "types": "./color/Snapchat/m/index.d.ts"
+    },
+    "./color/Snapchat/l": {
+      "require": "./color/Snapchat/l/index.js",
+      "import": "./color/Snapchat/l/index.mjs",
+      "types": "./color/Snapchat/l/index.d.ts"
     },
     "./color/Moz/m": {
       "require": "./color/Moz/m/index.js",
@@ -197,16 +197,6 @@
       "import": "./color/Microsoft/l/index.mjs",
       "types": "./color/Microsoft/l/index.d.ts"
     },
-    "./color/MetaColored/m": {
-      "require": "./color/MetaColored/m/index.js",
-      "import": "./color/MetaColored/m/index.mjs",
-      "types": "./color/MetaColored/m/index.d.ts"
-    },
-    "./color/MetaColored/l": {
-      "require": "./color/MetaColored/l/index.js",
-      "import": "./color/MetaColored/l/index.mjs",
-      "types": "./color/MetaColored/l/index.d.ts"
-    },
     "./color/MicrosoftExchange/m": {
       "require": "./color/MicrosoftExchange/m/index.js",
       "import": "./color/MicrosoftExchange/m/index.mjs",
@@ -217,25 +207,15 @@
       "import": "./color/MicrosoftExchange/l/index.mjs",
       "types": "./color/MicrosoftExchange/l/index.d.ts"
     },
-    "./color/Mailchimp/m": {
-      "require": "./color/Mailchimp/m/index.js",
-      "import": "./color/Mailchimp/m/index.mjs",
-      "types": "./color/Mailchimp/m/index.d.ts"
+    "./color/MetaColored/m": {
+      "require": "./color/MetaColored/m/index.js",
+      "import": "./color/MetaColored/m/index.mjs",
+      "types": "./color/MetaColored/m/index.d.ts"
     },
-    "./color/Mailchimp/l": {
-      "require": "./color/Mailchimp/l/index.js",
-      "import": "./color/Mailchimp/l/index.mjs",
-      "types": "./color/Mailchimp/l/index.d.ts"
-    },
-    "./color/LinkedInColored/m": {
-      "require": "./color/LinkedInColored/m/index.js",
-      "import": "./color/LinkedInColored/m/index.mjs",
-      "types": "./color/LinkedInColored/m/index.d.ts"
-    },
-    "./color/LinkedInColored/l": {
-      "require": "./color/LinkedInColored/l/index.js",
-      "import": "./color/LinkedInColored/l/index.mjs",
-      "types": "./color/LinkedInColored/l/index.d.ts"
+    "./color/MetaColored/l": {
+      "require": "./color/MetaColored/l/index.js",
+      "import": "./color/MetaColored/l/index.mjs",
+      "types": "./color/MetaColored/l/index.d.ts"
     },
     "./color/Matomo/m": {
       "require": "./color/Matomo/m/index.js",
@@ -247,6 +227,16 @@
       "import": "./color/Matomo/l/index.mjs",
       "types": "./color/Matomo/l/index.d.ts"
     },
+    "./color/Mailchimp/m": {
+      "require": "./color/Mailchimp/m/index.js",
+      "import": "./color/Mailchimp/m/index.mjs",
+      "types": "./color/Mailchimp/m/index.d.ts"
+    },
+    "./color/Mailchimp/l": {
+      "require": "./color/Mailchimp/l/index.js",
+      "import": "./color/Mailchimp/l/index.mjs",
+      "types": "./color/Mailchimp/l/index.d.ts"
+    },
     "./color/JavaScript/m": {
       "require": "./color/JavaScript/m/index.js",
       "import": "./color/JavaScript/m/index.mjs",
@@ -257,15 +247,15 @@
       "import": "./color/JavaScript/l/index.mjs",
       "types": "./color/JavaScript/l/index.d.ts"
     },
-    "./color/LookerStudio/m": {
-      "require": "./color/LookerStudio/m/index.js",
-      "import": "./color/LookerStudio/m/index.mjs",
-      "types": "./color/LookerStudio/m/index.d.ts"
+    "./color/LinkedInColored/m": {
+      "require": "./color/LinkedInColored/m/index.js",
+      "import": "./color/LinkedInColored/m/index.mjs",
+      "types": "./color/LinkedInColored/m/index.d.ts"
     },
-    "./color/LookerStudio/l": {
-      "require": "./color/LookerStudio/l/index.js",
-      "import": "./color/LookerStudio/l/index.mjs",
-      "types": "./color/LookerStudio/l/index.d.ts"
+    "./color/LinkedInColored/l": {
+      "require": "./color/LinkedInColored/l/index.js",
+      "import": "./color/LinkedInColored/l/index.mjs",
+      "types": "./color/LinkedInColored/l/index.d.ts"
     },
     "./color/InstagramColored/m": {
       "require": "./color/InstagramColored/m/index.js",
@@ -277,6 +267,16 @@
       "import": "./color/InstagramColored/l/index.mjs",
       "types": "./color/InstagramColored/l/index.d.ts"
     },
+    "./color/LookerStudio/m": {
+      "require": "./color/LookerStudio/m/index.js",
+      "import": "./color/LookerStudio/m/index.mjs",
+      "types": "./color/LookerStudio/m/index.d.ts"
+    },
+    "./color/LookerStudio/l": {
+      "require": "./color/LookerStudio/l/index.js",
+      "import": "./color/LookerStudio/l/index.mjs",
+      "types": "./color/LookerStudio/l/index.d.ts"
+    },
     "./color/Hubspot/m": {
       "require": "./color/Hubspot/m/index.js",
       "import": "./color/Hubspot/m/index.mjs",
@@ -286,26 +286,6 @@
       "require": "./color/Hubspot/l/index.js",
       "import": "./color/Hubspot/l/index.mjs",
       "types": "./color/Hubspot/l/index.d.ts"
-    },
-    "./color/GoogleSheets/m": {
-      "require": "./color/GoogleSheets/m/index.js",
-      "import": "./color/GoogleSheets/m/index.mjs",
-      "types": "./color/GoogleSheets/m/index.d.ts"
-    },
-    "./color/GoogleSheets/l": {
-      "require": "./color/GoogleSheets/l/index.js",
-      "import": "./color/GoogleSheets/l/index.mjs",
-      "types": "./color/GoogleSheets/l/index.d.ts"
-    },
-    "./color/GoogleSearchConsole/m": {
-      "require": "./color/GoogleSearchConsole/m/index.js",
-      "import": "./color/GoogleSearchConsole/m/index.mjs",
-      "types": "./color/GoogleSearchConsole/m/index.d.ts"
-    },
-    "./color/GoogleSearchConsole/l": {
-      "require": "./color/GoogleSearchConsole/l/index.js",
-      "import": "./color/GoogleSearchConsole/l/index.mjs",
-      "types": "./color/GoogleSearchConsole/l/index.d.ts"
     },
     "./color/GoogleSlides/m": {
       "require": "./color/GoogleSlides/m/index.js",
@@ -317,6 +297,16 @@
       "import": "./color/GoogleSlides/l/index.mjs",
       "types": "./color/GoogleSlides/l/index.d.ts"
     },
+    "./color/GoogleSheets/m": {
+      "require": "./color/GoogleSheets/m/index.js",
+      "import": "./color/GoogleSheets/m/index.mjs",
+      "types": "./color/GoogleSheets/m/index.d.ts"
+    },
+    "./color/GoogleSheets/l": {
+      "require": "./color/GoogleSheets/l/index.js",
+      "import": "./color/GoogleSheets/l/index.mjs",
+      "types": "./color/GoogleSheets/l/index.d.ts"
+    },
     "./color/GoogleMyBusiness/m": {
       "require": "./color/GoogleMyBusiness/m/index.js",
       "import": "./color/GoogleMyBusiness/m/index.mjs",
@@ -327,6 +317,16 @@
       "import": "./color/GoogleMyBusiness/l/index.mjs",
       "types": "./color/GoogleMyBusiness/l/index.d.ts"
     },
+    "./color/GoogleSearchConsole/m": {
+      "require": "./color/GoogleSearchConsole/m/index.js",
+      "import": "./color/GoogleSearchConsole/m/index.mjs",
+      "types": "./color/GoogleSearchConsole/m/index.d.ts"
+    },
+    "./color/GoogleSearchConsole/l": {
+      "require": "./color/GoogleSearchConsole/l/index.js",
+      "import": "./color/GoogleSearchConsole/l/index.mjs",
+      "types": "./color/GoogleSearchConsole/l/index.d.ts"
+    },
     "./color/GoogleMail/m": {
       "require": "./color/GoogleMail/m/index.js",
       "import": "./color/GoogleMail/m/index.mjs",
@@ -336,6 +336,16 @@
       "require": "./color/GoogleMail/l/index.js",
       "import": "./color/GoogleMail/l/index.mjs",
       "types": "./color/GoogleMail/l/index.d.ts"
+    },
+    "./color/GoogleDataStudio/m": {
+      "require": "./color/GoogleDataStudio/m/index.js",
+      "import": "./color/GoogleDataStudio/m/index.mjs",
+      "types": "./color/GoogleDataStudio/m/index.d.ts"
+    },
+    "./color/GoogleDataStudio/l": {
+      "require": "./color/GoogleDataStudio/l/index.js",
+      "import": "./color/GoogleDataStudio/l/index.mjs",
+      "types": "./color/GoogleDataStudio/l/index.d.ts"
     },
     "./color/GoogleDocs/m": {
       "require": "./color/GoogleDocs/m/index.js",
@@ -356,16 +366,6 @@
       "require": "./color/GoogleDisplayVideoAds/l/index.js",
       "import": "./color/GoogleDisplayVideoAds/l/index.mjs",
       "types": "./color/GoogleDisplayVideoAds/l/index.d.ts"
-    },
-    "./color/GoogleDataStudio/m": {
-      "require": "./color/GoogleDataStudio/m/index.js",
-      "import": "./color/GoogleDataStudio/m/index.mjs",
-      "types": "./color/GoogleDataStudio/m/index.d.ts"
-    },
-    "./color/GoogleDataStudio/l": {
-      "require": "./color/GoogleDataStudio/l/index.js",
-      "import": "./color/GoogleDataStudio/l/index.mjs",
-      "types": "./color/GoogleDataStudio/l/index.d.ts"
     },
     "./color/GoogleColor/m": {
       "require": "./color/GoogleColor/m/index.js",
@@ -397,6 +397,16 @@
       "import": "./color/GoogleCloud/l/index.mjs",
       "types": "./color/GoogleCloud/l/index.d.ts"
     },
+    "./color/GoogleAnalytics/m": {
+      "require": "./color/GoogleAnalytics/m/index.js",
+      "import": "./color/GoogleAnalytics/m/index.mjs",
+      "types": "./color/GoogleAnalytics/m/index.d.ts"
+    },
+    "./color/GoogleAnalytics/l": {
+      "require": "./color/GoogleAnalytics/l/index.js",
+      "import": "./color/GoogleAnalytics/l/index.mjs",
+      "types": "./color/GoogleAnalytics/l/index.d.ts"
+    },
     "./color/GoogleAds/m": {
       "require": "./color/GoogleAds/m/index.js",
       "import": "./color/GoogleAds/m/index.mjs",
@@ -417,16 +427,6 @@
       "import": "./color/GitLab/l/index.mjs",
       "types": "./color/GitLab/l/index.d.ts"
     },
-    "./color/GitHub/m": {
-      "require": "./color/GitHub/m/index.js",
-      "import": "./color/GitHub/m/index.mjs",
-      "types": "./color/GitHub/m/index.d.ts"
-    },
-    "./color/GitHub/l": {
-      "require": "./color/GitHub/l/index.js",
-      "import": "./color/GitHub/l/index.mjs",
-      "types": "./color/GitHub/l/index.d.ts"
-    },
     "./color/GitHubInvert/m": {
       "require": "./color/GitHubInvert/m/index.js",
       "import": "./color/GitHubInvert/m/index.mjs",
@@ -437,25 +437,15 @@
       "import": "./color/GitHubInvert/l/index.mjs",
       "types": "./color/GitHubInvert/l/index.d.ts"
     },
-    "./color/GoogleAnalytics/m": {
-      "require": "./color/GoogleAnalytics/m/index.js",
-      "import": "./color/GoogleAnalytics/m/index.mjs",
-      "types": "./color/GoogleAnalytics/m/index.d.ts"
+    "./color/GitHub/m": {
+      "require": "./color/GitHub/m/index.js",
+      "import": "./color/GitHub/m/index.mjs",
+      "types": "./color/GitHub/m/index.d.ts"
     },
-    "./color/GoogleAnalytics/l": {
-      "require": "./color/GoogleAnalytics/l/index.js",
-      "import": "./color/GoogleAnalytics/l/index.mjs",
-      "types": "./color/GoogleAnalytics/l/index.d.ts"
-    },
-    "./color/Copilot/m": {
-      "require": "./color/Copilot/m/index.js",
-      "import": "./color/Copilot/m/index.mjs",
-      "types": "./color/Copilot/m/index.d.ts"
-    },
-    "./color/Copilot/l": {
-      "require": "./color/Copilot/l/index.js",
-      "import": "./color/Copilot/l/index.mjs",
-      "types": "./color/Copilot/l/index.d.ts"
+    "./color/GitHub/l": {
+      "require": "./color/GitHub/l/index.js",
+      "import": "./color/GitHub/l/index.mjs",
+      "types": "./color/GitHub/l/index.d.ts"
     },
     "./color/Figma/m": {
       "require": "./color/Figma/m/index.js",
@@ -466,6 +456,16 @@
       "require": "./color/Figma/l/index.js",
       "import": "./color/Figma/l/index.mjs",
       "types": "./color/Figma/l/index.d.ts"
+    },
+    "./color/Copilot/m": {
+      "require": "./color/Copilot/m/index.js",
+      "import": "./color/Copilot/m/index.mjs",
+      "types": "./color/Copilot/m/index.d.ts"
+    },
+    "./color/Copilot/l": {
+      "require": "./color/Copilot/l/index.js",
+      "import": "./color/Copilot/l/index.mjs",
+      "types": "./color/Copilot/l/index.d.ts"
     },
     "./color/Confluence/m": {
       "require": "./color/Confluence/m/index.js",
@@ -487,6 +487,16 @@
       "import": "./color/ConstantContactColored/l/index.mjs",
       "types": "./color/ConstantContactColored/l/index.d.ts"
     },
+    "./color/CallTrackingMetricsColored/m": {
+      "require": "./color/CallTrackingMetricsColored/m/index.js",
+      "import": "./color/CallTrackingMetricsColored/m/index.mjs",
+      "types": "./color/CallTrackingMetricsColored/m/index.d.ts"
+    },
+    "./color/CallTrackingMetricsColored/l": {
+      "require": "./color/CallTrackingMetricsColored/l/index.js",
+      "import": "./color/CallTrackingMetricsColored/l/index.mjs",
+      "types": "./color/CallTrackingMetricsColored/l/index.d.ts"
+    },
     "./color/CampaignMonitorColored/m": {
       "require": "./color/CampaignMonitorColored/m/index.js",
       "import": "./color/CampaignMonitorColored/m/index.mjs",
@@ -507,15 +517,15 @@
       "import": "./color/CallRailColored/l/index.mjs",
       "types": "./color/CallRailColored/l/index.d.ts"
     },
-    "./color/CallTrackingMetricsColored/m": {
-      "require": "./color/CallTrackingMetricsColored/m/index.js",
-      "import": "./color/CallTrackingMetricsColored/m/index.mjs",
-      "types": "./color/CallTrackingMetricsColored/m/index.d.ts"
+    "./color/Amazon/m": {
+      "require": "./color/Amazon/m/index.js",
+      "import": "./color/Amazon/m/index.mjs",
+      "types": "./color/Amazon/m/index.d.ts"
     },
-    "./color/CallTrackingMetricsColored/l": {
-      "require": "./color/CallTrackingMetricsColored/l/index.js",
-      "import": "./color/CallTrackingMetricsColored/l/index.mjs",
-      "types": "./color/CallTrackingMetricsColored/l/index.d.ts"
+    "./color/Amazon/l": {
+      "require": "./color/Amazon/l/index.js",
+      "import": "./color/Amazon/l/index.mjs",
+      "types": "./color/Amazon/l/index.d.ts"
     },
     "./color/BirdeyeColored/m": {
       "require": "./color/BirdeyeColored/m/index.js",
@@ -526,16 +536,6 @@
       "require": "./color/BirdeyeColored/l/index.js",
       "import": "./color/BirdeyeColored/l/index.mjs",
       "types": "./color/BirdeyeColored/l/index.d.ts"
-    },
-    "./color/Amazon/m": {
-      "require": "./color/Amazon/m/index.js",
-      "import": "./color/Amazon/m/index.mjs",
-      "types": "./color/Amazon/m/index.d.ts"
-    },
-    "./color/Amazon/l": {
-      "require": "./color/Amazon/l/index.js",
-      "import": "./color/Amazon/l/index.mjs",
-      "types": "./color/Amazon/l/index.d.ts"
     },
     "./color/Ahrefs/m": {
       "require": "./color/Ahrefs/m/index.js",
@@ -557,16 +557,6 @@
       "import": "./pay/WeChatPay/l/index.mjs",
       "types": "./pay/WeChatPay/l/index.d.ts"
     },
-    "./pay/PayPal/m": {
-      "require": "./pay/PayPal/m/index.js",
-      "import": "./pay/PayPal/m/index.mjs",
-      "types": "./pay/PayPal/m/index.d.ts"
-    },
-    "./pay/PayPal/l": {
-      "require": "./pay/PayPal/l/index.js",
-      "import": "./pay/PayPal/l/index.mjs",
-      "types": "./pay/PayPal/l/index.d.ts"
-    },
     "./pay/Visa/m": {
       "require": "./pay/Visa/m/index.js",
       "import": "./pay/Visa/m/index.mjs",
@@ -576,16 +566,6 @@
       "require": "./pay/Visa/l/index.js",
       "import": "./pay/Visa/l/index.mjs",
       "types": "./pay/Visa/l/index.d.ts"
-    },
-    "./pay/Mastercard/m": {
-      "require": "./pay/Mastercard/m/index.js",
-      "import": "./pay/Mastercard/m/index.mjs",
-      "types": "./pay/Mastercard/m/index.d.ts"
-    },
-    "./pay/Mastercard/l": {
-      "require": "./pay/Mastercard/l/index.js",
-      "import": "./pay/Mastercard/l/index.mjs",
-      "types": "./pay/Mastercard/l/index.d.ts"
     },
     "./pay/UnionPay/m": {
       "require": "./pay/UnionPay/m/index.js",
@@ -597,6 +577,26 @@
       "import": "./pay/UnionPay/l/index.mjs",
       "types": "./pay/UnionPay/l/index.d.ts"
     },
+    "./pay/Mastercard/m": {
+      "require": "./pay/Mastercard/m/index.js",
+      "import": "./pay/Mastercard/m/index.mjs",
+      "types": "./pay/Mastercard/m/index.d.ts"
+    },
+    "./pay/Mastercard/l": {
+      "require": "./pay/Mastercard/l/index.js",
+      "import": "./pay/Mastercard/l/index.mjs",
+      "types": "./pay/Mastercard/l/index.d.ts"
+    },
+    "./pay/PayPal/m": {
+      "require": "./pay/PayPal/m/index.js",
+      "import": "./pay/PayPal/m/index.mjs",
+      "types": "./pay/PayPal/m/index.d.ts"
+    },
+    "./pay/PayPal/l": {
+      "require": "./pay/PayPal/l/index.js",
+      "import": "./pay/PayPal/l/index.mjs",
+      "types": "./pay/PayPal/l/index.d.ts"
+    },
     "./pay/JCB/m": {
       "require": "./pay/JCB/m/index.js",
       "import": "./pay/JCB/m/index.mjs",
@@ -607,16 +607,6 @@
       "import": "./pay/JCB/l/index.mjs",
       "types": "./pay/JCB/l/index.d.ts"
     },
-    "./pay/Diners/m": {
-      "require": "./pay/Diners/m/index.js",
-      "import": "./pay/Diners/m/index.mjs",
-      "types": "./pay/Diners/m/index.d.ts"
-    },
-    "./pay/Diners/l": {
-      "require": "./pay/Diners/l/index.js",
-      "import": "./pay/Diners/l/index.mjs",
-      "types": "./pay/Diners/l/index.d.ts"
-    },
     "./pay/Discover/m": {
       "require": "./pay/Discover/m/index.js",
       "import": "./pay/Discover/m/index.mjs",
@@ -626,6 +616,16 @@
       "require": "./pay/Discover/l/index.js",
       "import": "./pay/Discover/l/index.mjs",
       "types": "./pay/Discover/l/index.d.ts"
+    },
+    "./pay/Diners/m": {
+      "require": "./pay/Diners/m/index.js",
+      "import": "./pay/Diners/m/index.mjs",
+      "types": "./pay/Diners/m/index.d.ts"
+    },
+    "./pay/Diners/l": {
+      "require": "./pay/Diners/l/index.js",
+      "import": "./pay/Diners/l/index.mjs",
+      "types": "./pay/Diners/l/index.d.ts"
     },
     "./pay/CreditCard/m": {
       "require": "./pay/CreditCard/m/index.js",
@@ -647,60 +647,60 @@
       "import": "./pay/AmericanExpress/l/index.mjs",
       "types": "./pay/AmericanExpress/l/index.d.ts"
     },
-    "./platform/SocialToolkit": {
-      "require": "./platform/SocialToolkit/index.js",
-      "import": "./platform/SocialToolkit/index.mjs",
-      "types": "./platform/SocialToolkit/index.d.ts"
-    },
     "./platform/TrafficMarketToolkit": {
       "require": "./platform/TrafficMarketToolkit/index.js",
       "import": "./platform/TrafficMarketToolkit/index.mjs",
       "types": "./platform/TrafficMarketToolkit/index.d.ts"
     },
-    "./platform/SEOToolkit": {
-      "require": "./platform/SEOToolkit/index.js",
-      "import": "./platform/SEOToolkit/index.mjs",
-      "types": "./platform/SEOToolkit/index.d.ts"
-    },
-    "./platform/PRToolkit": {
-      "require": "./platform/PRToolkit/index.js",
-      "import": "./platform/PRToolkit/index.mjs",
-      "types": "./platform/PRToolkit/index.d.ts"
+    "./platform/SocialToolkit": {
+      "require": "./platform/SocialToolkit/index.js",
+      "import": "./platform/SocialToolkit/index.mjs",
+      "types": "./platform/SocialToolkit/index.d.ts"
     },
     "./platform/ReportsToolkit": {
       "require": "./platform/ReportsToolkit/index.js",
       "import": "./platform/ReportsToolkit/index.mjs",
       "types": "./platform/ReportsToolkit/index.d.ts"
     },
+    "./platform/SEOToolkit": {
+      "require": "./platform/SEOToolkit/index.js",
+      "import": "./platform/SEOToolkit/index.mjs",
+      "types": "./platform/SEOToolkit/index.d.ts"
+    },
     "./platform/LocalToolkit": {
       "require": "./platform/LocalToolkit/index.js",
       "import": "./platform/LocalToolkit/index.mjs",
       "types": "./platform/LocalToolkit/index.d.ts"
+    },
+    "./platform/PRToolkit": {
+      "require": "./platform/PRToolkit/index.js",
+      "import": "./platform/PRToolkit/index.mjs",
+      "types": "./platform/PRToolkit/index.d.ts"
     },
     "./platform/HomePlatform": {
       "require": "./platform/HomePlatform/index.js",
       "import": "./platform/HomePlatform/index.mjs",
       "types": "./platform/HomePlatform/index.d.ts"
     },
-    "./platform/ContentToolkit": {
-      "require": "./platform/ContentToolkit/index.js",
-      "import": "./platform/ContentToolkit/index.mjs",
-      "types": "./platform/ContentToolkit/index.d.ts"
-    },
     "./platform/EnterpriseSolutions": {
       "require": "./platform/EnterpriseSolutions/index.js",
       "import": "./platform/EnterpriseSolutions/index.mjs",
       "types": "./platform/EnterpriseSolutions/index.d.ts"
     },
-    "./platform/AppCenter": {
-      "require": "./platform/AppCenter/index.js",
-      "import": "./platform/AppCenter/index.mjs",
-      "types": "./platform/AppCenter/index.d.ts"
+    "./platform/ContentToolkit": {
+      "require": "./platform/ContentToolkit/index.js",
+      "import": "./platform/ContentToolkit/index.mjs",
+      "types": "./platform/ContentToolkit/index.d.ts"
     },
     "./platform/AdsToolkit": {
       "require": "./platform/AdsToolkit/index.js",
       "import": "./platform/AdsToolkit/index.mjs",
       "types": "./platform/AdsToolkit/index.d.ts"
+    },
+    "./platform/AppCenter": {
+      "require": "./platform/AppCenter/index.js",
+      "import": "./platform/AppCenter/index.mjs",
+      "types": "./platform/AppCenter/index.d.ts"
     },
     "./platform/AIToolkit": {
       "require": "./platform/AIToolkit/index.js",
@@ -716,26 +716,6 @@
       "require": "./ZoomPlus/l/index.js",
       "import": "./ZoomPlus/l/index.mjs",
       "types": "./ZoomPlus/l/index.d.ts"
-    },
-    "./YoutubePlaceholder/m": {
-      "require": "./YoutubePlaceholder/m/index.js",
-      "import": "./YoutubePlaceholder/m/index.mjs",
-      "types": "./YoutubePlaceholder/m/index.d.ts"
-    },
-    "./YoutubePlaceholder/l": {
-      "require": "./YoutubePlaceholder/l/index.js",
-      "import": "./YoutubePlaceholder/l/index.mjs",
-      "types": "./YoutubePlaceholder/l/index.d.ts"
-    },
-    "./Yext/m": {
-      "require": "./Yext/m/index.js",
-      "import": "./Yext/m/index.mjs",
-      "types": "./Yext/m/index.d.ts"
-    },
-    "./Yext/l": {
-      "require": "./Yext/l/index.js",
-      "import": "./Yext/l/index.mjs",
-      "types": "./Yext/l/index.d.ts"
     },
     "./Youtube/m": {
       "require": "./Youtube/m/index.js",
@@ -757,6 +737,16 @@
       "import": "./ZoomMinus/l/index.mjs",
       "types": "./ZoomMinus/l/index.d.ts"
     },
+    "./YoutubePlaceholder/m": {
+      "require": "./YoutubePlaceholder/m/index.js",
+      "import": "./YoutubePlaceholder/m/index.mjs",
+      "types": "./YoutubePlaceholder/m/index.d.ts"
+    },
+    "./YoutubePlaceholder/l": {
+      "require": "./YoutubePlaceholder/l/index.js",
+      "import": "./YoutubePlaceholder/l/index.mjs",
+      "types": "./YoutubePlaceholder/l/index.d.ts"
+    },
     "./Wristwatch/m": {
       "require": "./Wristwatch/m/index.js",
       "import": "./Wristwatch/m/index.mjs",
@@ -766,6 +756,16 @@
       "require": "./Wristwatch/l/index.js",
       "import": "./Wristwatch/l/index.mjs",
       "types": "./Wristwatch/l/index.d.ts"
+    },
+    "./Yext/m": {
+      "require": "./Yext/m/index.js",
+      "import": "./Yext/m/index.mjs",
+      "types": "./Yext/m/index.d.ts"
+    },
+    "./Yext/l": {
+      "require": "./Yext/l/index.js",
+      "import": "./Yext/l/index.mjs",
+      "types": "./Yext/l/index.d.ts"
     },
     "./Wine/m": {
       "require": "./Wine/m/index.js",
@@ -787,6 +787,16 @@
       "import": "./Wordpress/l/index.mjs",
       "types": "./Wordpress/l/index.d.ts"
     },
+    "./VolumeUp/m": {
+      "require": "./VolumeUp/m/index.js",
+      "import": "./VolumeUp/m/index.mjs",
+      "types": "./VolumeUp/m/index.d.ts"
+    },
+    "./VolumeUp/l": {
+      "require": "./VolumeUp/l/index.js",
+      "import": "./VolumeUp/l/index.mjs",
+      "types": "./VolumeUp/l/index.d.ts"
+    },
     "./WebPages/m": {
       "require": "./WebPages/m/index.js",
       "import": "./WebPages/m/index.mjs",
@@ -796,16 +806,6 @@
       "require": "./WebPages/l/index.js",
       "import": "./WebPages/l/index.mjs",
       "types": "./WebPages/l/index.d.ts"
-    },
-    "./Warning/m": {
-      "require": "./Warning/m/index.js",
-      "import": "./Warning/m/index.mjs",
-      "types": "./Warning/m/index.d.ts"
-    },
-    "./Warning/l": {
-      "require": "./Warning/l/index.js",
-      "import": "./Warning/l/index.mjs",
-      "types": "./Warning/l/index.d.ts"
     },
     "./WebStories/m": {
       "require": "./WebStories/m/index.js",
@@ -817,15 +817,25 @@
       "import": "./WebStories/l/index.mjs",
       "types": "./WebStories/l/index.d.ts"
     },
-    "./VolumeUp/m": {
-      "require": "./VolumeUp/m/index.js",
-      "import": "./VolumeUp/m/index.mjs",
-      "types": "./VolumeUp/m/index.d.ts"
+    "./Warning/m": {
+      "require": "./Warning/m/index.js",
+      "import": "./Warning/m/index.mjs",
+      "types": "./Warning/m/index.d.ts"
     },
-    "./VolumeUp/l": {
-      "require": "./VolumeUp/l/index.js",
-      "import": "./VolumeUp/l/index.mjs",
-      "types": "./VolumeUp/l/index.d.ts"
+    "./Warning/l": {
+      "require": "./Warning/l/index.js",
+      "import": "./Warning/l/index.mjs",
+      "types": "./Warning/l/index.d.ts"
+    },
+    "./Vk/m": {
+      "require": "./Vk/m/index.js",
+      "import": "./Vk/m/index.mjs",
+      "types": "./Vk/m/index.d.ts"
+    },
+    "./Vk/l": {
+      "require": "./Vk/l/index.js",
+      "import": "./Vk/l/index.mjs",
+      "types": "./Vk/l/index.d.ts"
     },
     "./VideoStreaming/m": {
       "require": "./VideoStreaming/m/index.js",
@@ -857,16 +867,6 @@
       "import": "./VideoList/l/index.mjs",
       "types": "./VideoList/l/index.d.ts"
     },
-    "./Vk/m": {
-      "require": "./Vk/m/index.js",
-      "import": "./Vk/m/index.mjs",
-      "types": "./Vk/m/index.d.ts"
-    },
-    "./Vk/l": {
-      "require": "./Vk/l/index.js",
-      "import": "./Vk/l/index.mjs",
-      "types": "./Vk/l/index.d.ts"
-    },
     "./VideoCarousel/m": {
       "require": "./VideoCarousel/m/index.js",
       "import": "./VideoCarousel/m/index.mjs",
@@ -876,26 +876,6 @@
       "require": "./VideoCarousel/l/index.js",
       "import": "./VideoCarousel/l/index.mjs",
       "types": "./VideoCarousel/l/index.d.ts"
-    },
-    "./Veterinary/m": {
-      "require": "./Veterinary/m/index.js",
-      "import": "./Veterinary/m/index.mjs",
-      "types": "./Veterinary/m/index.d.ts"
-    },
-    "./Veterinary/l": {
-      "require": "./Veterinary/l/index.js",
-      "import": "./Veterinary/l/index.mjs",
-      "types": "./Veterinary/l/index.d.ts"
-    },
-    "./Value/m": {
-      "require": "./Value/m/index.js",
-      "import": "./Value/m/index.mjs",
-      "types": "./Value/m/index.d.ts"
-    },
-    "./Value/l": {
-      "require": "./Value/l/index.js",
-      "import": "./Value/l/index.mjs",
-      "types": "./Value/l/index.d.ts"
     },
     "./Video/m": {
       "require": "./Video/m/index.js",
@@ -917,15 +897,25 @@
       "import": "./VideoAlt/l/index.mjs",
       "types": "./VideoAlt/l/index.d.ts"
     },
-    "./UserSharedFirst/m": {
-      "require": "./UserSharedFirst/m/index.js",
-      "import": "./UserSharedFirst/m/index.mjs",
-      "types": "./UserSharedFirst/m/index.d.ts"
+    "./Veterinary/m": {
+      "require": "./Veterinary/m/index.js",
+      "import": "./Veterinary/m/index.mjs",
+      "types": "./Veterinary/m/index.d.ts"
     },
-    "./UserSharedFirst/l": {
-      "require": "./UserSharedFirst/l/index.js",
-      "import": "./UserSharedFirst/l/index.mjs",
-      "types": "./UserSharedFirst/l/index.d.ts"
+    "./Veterinary/l": {
+      "require": "./Veterinary/l/index.js",
+      "import": "./Veterinary/l/index.mjs",
+      "types": "./Veterinary/l/index.d.ts"
+    },
+    "./Value/m": {
+      "require": "./Value/m/index.js",
+      "import": "./Value/m/index.mjs",
+      "types": "./Value/m/index.d.ts"
+    },
+    "./Value/l": {
+      "require": "./Value/l/index.js",
+      "import": "./Value/l/index.mjs",
+      "types": "./Value/l/index.d.ts"
     },
     "./Vacation/m": {
       "require": "./Vacation/m/index.js",
@@ -936,6 +926,16 @@
       "require": "./Vacation/l/index.js",
       "import": "./Vacation/l/index.mjs",
       "types": "./Vacation/l/index.d.ts"
+    },
+    "./UserSharedFirst/m": {
+      "require": "./UserSharedFirst/m/index.js",
+      "import": "./UserSharedFirst/m/index.mjs",
+      "types": "./UserSharedFirst/m/index.d.ts"
+    },
+    "./UserSharedFirst/l": {
+      "require": "./UserSharedFirst/l/index.js",
+      "import": "./UserSharedFirst/l/index.mjs",
+      "types": "./UserSharedFirst/l/index.d.ts"
     },
     "./UserShared/m": {
       "require": "./UserShared/m/index.js",
@@ -957,36 +957,6 @@
       "import": "./UserDemo/l/index.mjs",
       "types": "./UserDemo/l/index.d.ts"
     },
-    "./UserGroup/m": {
-      "require": "./UserGroup/m/index.js",
-      "import": "./UserGroup/m/index.mjs",
-      "types": "./UserGroup/m/index.d.ts"
-    },
-    "./UserGroup/l": {
-      "require": "./UserGroup/l/index.js",
-      "import": "./UserGroup/l/index.mjs",
-      "types": "./UserGroup/l/index.d.ts"
-    },
-    "./Undo/m": {
-      "require": "./Undo/m/index.js",
-      "import": "./Undo/m/index.mjs",
-      "types": "./Undo/m/index.d.ts"
-    },
-    "./Undo/l": {
-      "require": "./Undo/l/index.js",
-      "import": "./Undo/l/index.mjs",
-      "types": "./Undo/l/index.d.ts"
-    },
-    "./Unarchive/m": {
-      "require": "./Unarchive/m/index.js",
-      "import": "./Unarchive/m/index.mjs",
-      "types": "./Unarchive/m/index.d.ts"
-    },
-    "./Unarchive/l": {
-      "require": "./Unarchive/l/index.js",
-      "import": "./Unarchive/l/index.mjs",
-      "types": "./Unarchive/l/index.d.ts"
-    },
     "./User/m": {
       "require": "./User/m/index.js",
       "import": "./User/m/index.mjs",
@@ -996,6 +966,16 @@
       "require": "./User/l/index.js",
       "import": "./User/l/index.mjs",
       "types": "./User/l/index.d.ts"
+    },
+    "./UserGroup/m": {
+      "require": "./UserGroup/m/index.js",
+      "import": "./UserGroup/m/index.mjs",
+      "types": "./UserGroup/m/index.d.ts"
+    },
+    "./UserGroup/l": {
+      "require": "./UserGroup/l/index.js",
+      "import": "./UserGroup/l/index.mjs",
+      "types": "./UserGroup/l/index.d.ts"
     },
     "./Unsplash/m": {
       "require": "./Unsplash/m/index.js",
@@ -1007,6 +987,16 @@
       "import": "./Unsplash/l/index.mjs",
       "types": "./Unsplash/l/index.d.ts"
     },
+    "./Undo/m": {
+      "require": "./Undo/m/index.js",
+      "import": "./Undo/m/index.mjs",
+      "types": "./Undo/m/index.d.ts"
+    },
+    "./Undo/l": {
+      "require": "./Undo/l/index.js",
+      "import": "./Undo/l/index.mjs",
+      "types": "./Undo/l/index.d.ts"
+    },
     "./TwitterCarousel/m": {
       "require": "./TwitterCarousel/m/index.js",
       "import": "./TwitterCarousel/m/index.mjs",
@@ -1016,6 +1006,16 @@
       "require": "./TwitterCarousel/l/index.js",
       "import": "./TwitterCarousel/l/index.mjs",
       "types": "./TwitterCarousel/l/index.d.ts"
+    },
+    "./Unarchive/m": {
+      "require": "./Unarchive/m/index.js",
+      "import": "./Unarchive/m/index.mjs",
+      "types": "./Unarchive/m/index.d.ts"
+    },
+    "./Unarchive/l": {
+      "require": "./Unarchive/l/index.js",
+      "import": "./Unarchive/l/index.mjs",
+      "types": "./Unarchive/l/index.d.ts"
     },
     "./Twitter/m": {
       "require": "./Twitter/m/index.js",
@@ -1047,16 +1047,6 @@
       "import": "./Trash/l/index.mjs",
       "types": "./Trash/l/index.d.ts"
     },
-    "./TopStories/m": {
-      "require": "./TopStories/m/index.js",
-      "import": "./TopStories/m/index.mjs",
-      "types": "./TopStories/m/index.d.ts"
-    },
-    "./TopStories/l": {
-      "require": "./TopStories/l/index.js",
-      "import": "./TopStories/l/index.mjs",
-      "types": "./TopStories/l/index.d.ts"
-    },
     "./Toxic/m": {
       "require": "./Toxic/m/index.js",
       "import": "./Toxic/m/index.mjs",
@@ -1067,15 +1057,15 @@
       "import": "./Toxic/l/index.mjs",
       "types": "./Toxic/l/index.d.ts"
     },
-    "./TimeNight/m": {
-      "require": "./TimeNight/m/index.js",
-      "import": "./TimeNight/m/index.mjs",
-      "types": "./TimeNight/m/index.d.ts"
+    "./TopStories/m": {
+      "require": "./TopStories/m/index.js",
+      "import": "./TopStories/m/index.mjs",
+      "types": "./TopStories/m/index.d.ts"
     },
-    "./TimeNight/l": {
-      "require": "./TimeNight/l/index.js",
-      "import": "./TimeNight/l/index.mjs",
-      "types": "./TimeNight/l/index.d.ts"
+    "./TopStories/l": {
+      "require": "./TopStories/l/index.js",
+      "import": "./TopStories/l/index.mjs",
+      "types": "./TopStories/l/index.d.ts"
     },
     "./TimeClock/m": {
       "require": "./TimeClock/m/index.js",
@@ -1087,6 +1077,16 @@
       "import": "./TimeClock/l/index.mjs",
       "types": "./TimeClock/l/index.d.ts"
     },
+    "./TimeNight/m": {
+      "require": "./TimeNight/m/index.js",
+      "import": "./TimeNight/m/index.mjs",
+      "types": "./TimeNight/m/index.d.ts"
+    },
+    "./TimeNight/l": {
+      "require": "./TimeNight/l/index.js",
+      "import": "./TimeNight/l/index.mjs",
+      "types": "./TimeNight/l/index.d.ts"
+    },
     "./TimeDay/m": {
       "require": "./TimeDay/m/index.js",
       "import": "./TimeDay/m/index.mjs",
@@ -1097,15 +1097,15 @@
       "import": "./TimeDay/l/index.mjs",
       "types": "./TimeDay/l/index.d.ts"
     },
-    "./Tile/m": {
-      "require": "./Tile/m/index.js",
-      "import": "./Tile/m/index.mjs",
-      "types": "./Tile/m/index.d.ts"
+    "./ThumbUp/m": {
+      "require": "./ThumbUp/m/index.js",
+      "import": "./ThumbUp/m/index.mjs",
+      "types": "./ThumbUp/m/index.d.ts"
     },
-    "./Tile/l": {
-      "require": "./Tile/l/index.js",
-      "import": "./Tile/l/index.mjs",
-      "types": "./Tile/l/index.d.ts"
+    "./ThumbUp/l": {
+      "require": "./ThumbUp/l/index.js",
+      "import": "./ThumbUp/l/index.mjs",
+      "types": "./ThumbUp/l/index.d.ts"
     },
     "./TikTok/m": {
       "require": "./TikTok/m/index.js",
@@ -1117,15 +1117,15 @@
       "import": "./TikTok/l/index.mjs",
       "types": "./TikTok/l/index.d.ts"
     },
-    "./ThumbUp/m": {
-      "require": "./ThumbUp/m/index.js",
-      "import": "./ThumbUp/m/index.mjs",
-      "types": "./ThumbUp/m/index.d.ts"
+    "./Tile/m": {
+      "require": "./Tile/m/index.js",
+      "import": "./Tile/m/index.mjs",
+      "types": "./Tile/m/index.d.ts"
     },
-    "./ThumbUp/l": {
-      "require": "./ThumbUp/l/index.js",
-      "import": "./ThumbUp/l/index.mjs",
-      "types": "./ThumbUp/l/index.d.ts"
+    "./Tile/l": {
+      "require": "./Tile/l/index.js",
+      "import": "./Tile/l/index.mjs",
+      "types": "./Tile/l/index.d.ts"
     },
     "./ThumbDown/m": {
       "require": "./ThumbDown/m/index.js",
@@ -1157,16 +1157,6 @@
       "import": "./TagFilled/l/index.mjs",
       "types": "./TagFilled/l/index.d.ts"
     },
-    "./Telescope/m": {
-      "require": "./Telescope/m/index.js",
-      "import": "./Telescope/m/index.mjs",
-      "types": "./Telescope/m/index.d.ts"
-    },
-    "./Telescope/l": {
-      "require": "./Telescope/l/index.js",
-      "import": "./Telescope/l/index.mjs",
-      "types": "./Telescope/l/index.d.ts"
-    },
     "./Tag/m": {
       "require": "./Tag/m/index.js",
       "import": "./Tag/m/index.mjs",
@@ -1187,15 +1177,15 @@
       "import": "./TackNo/l/index.mjs",
       "types": "./TackNo/l/index.d.ts"
     },
-    "./Tack/m": {
-      "require": "./Tack/m/index.js",
-      "import": "./Tack/m/index.mjs",
-      "types": "./Tack/m/index.d.ts"
+    "./Telescope/m": {
+      "require": "./Telescope/m/index.js",
+      "import": "./Telescope/m/index.mjs",
+      "types": "./Telescope/m/index.d.ts"
     },
-    "./Tack/l": {
-      "require": "./Tack/l/index.js",
-      "import": "./Tack/l/index.mjs",
-      "types": "./Tack/l/index.d.ts"
+    "./Telescope/l": {
+      "require": "./Telescope/l/index.js",
+      "import": "./Telescope/l/index.mjs",
+      "types": "./Telescope/l/index.d.ts"
     },
     "./Tablet/m": {
       "require": "./Tablet/m/index.js",
@@ -1206,6 +1196,16 @@
       "require": "./Tablet/l/index.js",
       "import": "./Tablet/l/index.mjs",
       "types": "./Tablet/l/index.d.ts"
+    },
+    "./Tack/m": {
+      "require": "./Tack/m/index.js",
+      "import": "./Tack/m/index.mjs",
+      "types": "./Tack/m/index.d.ts"
+    },
+    "./Tack/l": {
+      "require": "./Tack/l/index.js",
+      "import": "./Tack/l/index.mjs",
+      "types": "./Tack/l/index.d.ts"
     },
     "./Table/m": {
       "require": "./Table/m/index.js",
@@ -1267,16 +1267,6 @@
       "import": "./SortDesc/l/index.mjs",
       "types": "./SortDesc/l/index.d.ts"
     },
-    "./SortAsc/m": {
-      "require": "./SortAsc/m/index.js",
-      "import": "./SortAsc/m/index.mjs",
-      "types": "./SortAsc/m/index.d.ts"
-    },
-    "./SortAsc/l": {
-      "require": "./SortAsc/l/index.js",
-      "import": "./SortAsc/l/index.mjs",
-      "types": "./SortAsc/l/index.d.ts"
-    },
     "./Sport/m": {
       "require": "./Sport/m/index.js",
       "import": "./Sport/m/index.mjs",
@@ -1286,6 +1276,16 @@
       "require": "./Sport/l/index.js",
       "import": "./Sport/l/index.mjs",
       "types": "./Sport/l/index.d.ts"
+    },
+    "./SortAsc/m": {
+      "require": "./SortAsc/m/index.js",
+      "import": "./SortAsc/m/index.mjs",
+      "types": "./SortAsc/m/index.d.ts"
+    },
+    "./SortAsc/l": {
+      "require": "./SortAsc/l/index.js",
+      "import": "./SortAsc/l/index.mjs",
+      "types": "./SortAsc/l/index.d.ts"
     },
     "./Smoking/m": {
       "require": "./Smoking/m/index.js",
@@ -1297,16 +1297,6 @@
       "import": "./Smoking/l/index.mjs",
       "types": "./Smoking/l/index.d.ts"
     },
-    "./SmileSad/m": {
-      "require": "./SmileSad/m/index.js",
-      "import": "./SmileSad/m/index.mjs",
-      "types": "./SmileSad/m/index.d.ts"
-    },
-    "./SmileSad/l": {
-      "require": "./SmileSad/l/index.js",
-      "import": "./SmileSad/l/index.mjs",
-      "types": "./SmileSad/l/index.d.ts"
-    },
     "./SmileSimple/m": {
       "require": "./SmileSimple/m/index.js",
       "import": "./SmileSimple/m/index.mjs",
@@ -1316,6 +1306,16 @@
       "require": "./SmileSimple/l/index.js",
       "import": "./SmileSimple/l/index.mjs",
       "types": "./SmileSimple/l/index.d.ts"
+    },
+    "./SmileSad/m": {
+      "require": "./SmileSad/m/index.js",
+      "import": "./SmileSad/m/index.mjs",
+      "types": "./SmileSad/m/index.d.ts"
+    },
+    "./SmileSad/l": {
+      "require": "./SmileSad/l/index.js",
+      "import": "./SmileSad/l/index.mjs",
+      "types": "./SmileSad/l/index.d.ts"
     },
     "./SmileNeutral/m": {
       "require": "./SmileNeutral/m/index.js",
@@ -1337,16 +1337,6 @@
       "import": "./SmileHappy/l/index.mjs",
       "types": "./SmileHappy/l/index.d.ts"
     },
-    "./Skype/m": {
-      "require": "./Skype/m/index.js",
-      "import": "./Skype/m/index.mjs",
-      "types": "./Skype/m/index.d.ts"
-    },
-    "./Skype/l": {
-      "require": "./Skype/l/index.js",
-      "import": "./Skype/l/index.mjs",
-      "types": "./Skype/l/index.d.ts"
-    },
     "./Slack/m": {
       "require": "./Slack/m/index.js",
       "import": "./Slack/m/index.mjs",
@@ -1356,6 +1346,16 @@
       "require": "./Slack/l/index.js",
       "import": "./Slack/l/index.mjs",
       "types": "./Slack/l/index.d.ts"
+    },
+    "./Skype/m": {
+      "require": "./Skype/m/index.js",
+      "import": "./Skype/m/index.mjs",
+      "types": "./Skype/m/index.d.ts"
+    },
+    "./Skype/l": {
+      "require": "./Skype/l/index.js",
+      "import": "./Skype/l/index.mjs",
+      "types": "./Skype/l/index.d.ts"
     },
     "./Sitemap/m": {
       "require": "./Sitemap/m/index.js",
@@ -1367,26 +1367,6 @@
       "import": "./Sitemap/l/index.mjs",
       "types": "./Sitemap/l/index.d.ts"
     },
-    "./SimplifyText/m": {
-      "require": "./SimplifyText/m/index.js",
-      "import": "./SimplifyText/m/index.mjs",
-      "types": "./SimplifyText/m/index.d.ts"
-    },
-    "./SimplifyText/l": {
-      "require": "./SimplifyText/l/index.js",
-      "import": "./SimplifyText/l/index.mjs",
-      "types": "./SimplifyText/l/index.d.ts"
-    },
-    "./SideMenuLeft/m": {
-      "require": "./SideMenuLeft/m/index.js",
-      "import": "./SideMenuLeft/m/index.mjs",
-      "types": "./SideMenuLeft/m/index.d.ts"
-    },
-    "./SideMenuLeft/l": {
-      "require": "./SideMenuLeft/l/index.js",
-      "import": "./SideMenuLeft/l/index.mjs",
-      "types": "./SideMenuLeft/l/index.d.ts"
-    },
     "./SideMenuRight/m": {
       "require": "./SideMenuRight/m/index.js",
       "import": "./SideMenuRight/m/index.mjs",
@@ -1396,6 +1376,16 @@
       "require": "./SideMenuRight/l/index.js",
       "import": "./SideMenuRight/l/index.mjs",
       "types": "./SideMenuRight/l/index.d.ts"
+    },
+    "./SimplifyText/m": {
+      "require": "./SimplifyText/m/index.js",
+      "import": "./SimplifyText/m/index.mjs",
+      "types": "./SimplifyText/m/index.d.ts"
+    },
+    "./SimplifyText/l": {
+      "require": "./SimplifyText/l/index.js",
+      "import": "./SimplifyText/l/index.mjs",
+      "types": "./SimplifyText/l/index.d.ts"
     },
     "./ShowYes/m": {
       "require": "./ShowYes/m/index.js",
@@ -1407,45 +1397,15 @@
       "import": "./ShowYes/l/index.mjs",
       "types": "./ShowYes/l/index.d.ts"
     },
-    "./ShowNo/m": {
-      "require": "./ShowNo/m/index.js",
-      "import": "./ShowNo/m/index.mjs",
-      "types": "./ShowNo/m/index.d.ts"
+    "./SideMenuLeft/m": {
+      "require": "./SideMenuLeft/m/index.js",
+      "import": "./SideMenuLeft/m/index.mjs",
+      "types": "./SideMenuLeft/m/index.d.ts"
     },
-    "./ShowNo/l": {
-      "require": "./ShowNo/l/index.js",
-      "import": "./ShowNo/l/index.mjs",
-      "types": "./ShowNo/l/index.d.ts"
-    },
-    "./ShareAlt/m": {
-      "require": "./ShareAlt/m/index.js",
-      "import": "./ShareAlt/m/index.mjs",
-      "types": "./ShareAlt/m/index.d.ts"
-    },
-    "./ShareAlt/l": {
-      "require": "./ShareAlt/l/index.js",
-      "import": "./ShareAlt/l/index.mjs",
-      "types": "./ShareAlt/l/index.d.ts"
-    },
-    "./Share/m": {
-      "require": "./Share/m/index.js",
-      "import": "./Share/m/index.mjs",
-      "types": "./Share/m/index.d.ts"
-    },
-    "./Share/l": {
-      "require": "./Share/l/index.js",
-      "import": "./Share/l/index.mjs",
-      "types": "./Share/l/index.d.ts"
-    },
-    "./Settings/m": {
-      "require": "./Settings/m/index.js",
-      "import": "./Settings/m/index.mjs",
-      "types": "./Settings/m/index.d.ts"
-    },
-    "./Settings/l": {
-      "require": "./Settings/l/index.js",
-      "import": "./Settings/l/index.mjs",
-      "types": "./Settings/l/index.d.ts"
+    "./SideMenuLeft/l": {
+      "require": "./SideMenuLeft/l/index.js",
+      "import": "./SideMenuLeft/l/index.mjs",
+      "types": "./SideMenuLeft/l/index.d.ts"
     },
     "./ShortVideos/m": {
       "require": "./ShortVideos/m/index.js",
@@ -1457,6 +1417,46 @@
       "import": "./ShortVideos/l/index.mjs",
       "types": "./ShortVideos/l/index.d.ts"
     },
+    "./ShowNo/m": {
+      "require": "./ShowNo/m/index.js",
+      "import": "./ShowNo/m/index.mjs",
+      "types": "./ShowNo/m/index.d.ts"
+    },
+    "./ShowNo/l": {
+      "require": "./ShowNo/l/index.js",
+      "import": "./ShowNo/l/index.mjs",
+      "types": "./ShowNo/l/index.d.ts"
+    },
+    "./Share/m": {
+      "require": "./Share/m/index.js",
+      "import": "./Share/m/index.mjs",
+      "types": "./Share/m/index.d.ts"
+    },
+    "./Share/l": {
+      "require": "./Share/l/index.js",
+      "import": "./Share/l/index.mjs",
+      "types": "./Share/l/index.d.ts"
+    },
+    "./ShareAlt/m": {
+      "require": "./ShareAlt/m/index.js",
+      "import": "./ShareAlt/m/index.mjs",
+      "types": "./ShareAlt/m/index.d.ts"
+    },
+    "./ShareAlt/l": {
+      "require": "./ShareAlt/l/index.js",
+      "import": "./ShareAlt/l/index.mjs",
+      "types": "./ShareAlt/l/index.d.ts"
+    },
+    "./Settings/m": {
+      "require": "./Settings/m/index.js",
+      "import": "./Settings/m/index.mjs",
+      "types": "./Settings/m/index.d.ts"
+    },
+    "./Settings/l": {
+      "require": "./Settings/l/index.js",
+      "import": "./Settings/l/index.mjs",
+      "types": "./Settings/l/index.d.ts"
+    },
     "./Serp/m": {
       "require": "./Serp/m/index.js",
       "import": "./Serp/m/index.mjs",
@@ -1467,15 +1467,15 @@
       "import": "./Serp/l/index.mjs",
       "types": "./Serp/l/index.d.ts"
     },
-    "./SemrushRank/m": {
-      "require": "./SemrushRank/m/index.js",
-      "import": "./SemrushRank/m/index.mjs",
-      "types": "./SemrushRank/m/index.d.ts"
+    "./SeoQuake/m": {
+      "require": "./SeoQuake/m/index.js",
+      "import": "./SeoQuake/m/index.mjs",
+      "types": "./SeoQuake/m/index.d.ts"
     },
-    "./SemrushRank/l": {
-      "require": "./SemrushRank/l/index.js",
-      "import": "./SemrushRank/l/index.mjs",
-      "types": "./SemrushRank/l/index.d.ts"
+    "./SeoQuake/l": {
+      "require": "./SeoQuake/l/index.js",
+      "import": "./SeoQuake/l/index.mjs",
+      "types": "./SeoQuake/l/index.d.ts"
     },
     "./Sent/m": {
       "require": "./Sent/m/index.js",
@@ -1487,15 +1487,15 @@
       "import": "./Sent/l/index.mjs",
       "types": "./Sent/l/index.d.ts"
     },
-    "./SeoQuake/m": {
-      "require": "./SeoQuake/m/index.js",
-      "import": "./SeoQuake/m/index.mjs",
-      "types": "./SeoQuake/m/index.d.ts"
+    "./SemrushRank/m": {
+      "require": "./SemrushRank/m/index.js",
+      "import": "./SemrushRank/m/index.mjs",
+      "types": "./SemrushRank/m/index.d.ts"
     },
-    "./SeoQuake/l": {
-      "require": "./SeoQuake/l/index.js",
-      "import": "./SeoQuake/l/index.mjs",
-      "types": "./SeoQuake/l/index.d.ts"
+    "./SemrushRank/l": {
+      "require": "./SemrushRank/l/index.js",
+      "import": "./SemrushRank/l/index.mjs",
+      "types": "./SemrushRank/l/index.d.ts"
     },
     "./Semrush/m": {
       "require": "./Semrush/m/index.js",
@@ -1517,6 +1517,16 @@
       "import": "./Sellzone/l/index.mjs",
       "types": "./Sellzone/l/index.d.ts"
     },
+    "./SecurityNo/m": {
+      "require": "./SecurityNo/m/index.js",
+      "import": "./SecurityNo/m/index.mjs",
+      "types": "./SecurityNo/m/index.d.ts"
+    },
+    "./SecurityNo/l": {
+      "require": "./SecurityNo/l/index.js",
+      "import": "./SecurityNo/l/index.mjs",
+      "types": "./SecurityNo/l/index.d.ts"
+    },
     "./SeeResultsAbout/m": {
       "require": "./SeeResultsAbout/m/index.js",
       "import": "./SeeResultsAbout/m/index.mjs",
@@ -1536,16 +1546,6 @@
       "require": "./Search/l/index.js",
       "import": "./Search/l/index.mjs",
       "types": "./Search/l/index.d.ts"
-    },
-    "./SecurityNo/m": {
-      "require": "./SecurityNo/m/index.js",
-      "import": "./SecurityNo/m/index.mjs",
-      "types": "./SecurityNo/m/index.d.ts"
-    },
-    "./SecurityNo/l": {
-      "require": "./SecurityNo/l/index.js",
-      "import": "./SecurityNo/l/index.mjs",
-      "types": "./SecurityNo/l/index.d.ts"
     },
     "./Science/m": {
       "require": "./Science/m/index.js",
@@ -1587,16 +1587,6 @@
       "import": "./Rss/l/index.mjs",
       "types": "./Rss/l/index.d.ts"
     },
-    "./Robot/m": {
-      "require": "./Robot/m/index.js",
-      "import": "./Robot/m/index.mjs",
-      "types": "./Robot/m/index.d.ts"
-    },
-    "./Robot/l": {
-      "require": "./Robot/l/index.js",
-      "import": "./Robot/l/index.mjs",
-      "types": "./Robot/l/index.d.ts"
-    },
     "./Retweet/m": {
       "require": "./Retweet/m/index.js",
       "import": "./Retweet/m/index.mjs",
@@ -1607,15 +1597,15 @@
       "import": "./Retweet/l/index.mjs",
       "types": "./Retweet/l/index.d.ts"
     },
-    "./ResizeRow/m": {
-      "require": "./ResizeRow/m/index.js",
-      "import": "./ResizeRow/m/index.mjs",
-      "types": "./ResizeRow/m/index.d.ts"
+    "./Robot/m": {
+      "require": "./Robot/m/index.js",
+      "import": "./Robot/m/index.mjs",
+      "types": "./Robot/m/index.d.ts"
     },
-    "./ResizeRow/l": {
-      "require": "./ResizeRow/l/index.js",
-      "import": "./ResizeRow/l/index.mjs",
-      "types": "./ResizeRow/l/index.d.ts"
+    "./Robot/l": {
+      "require": "./Robot/l/index.js",
+      "import": "./Robot/l/index.mjs",
+      "types": "./Robot/l/index.d.ts"
     },
     "./Restaurant/m": {
       "require": "./Restaurant/m/index.js",
@@ -1637,6 +1627,16 @@
       "import": "./Return/l/index.mjs",
       "types": "./Return/l/index.d.ts"
     },
+    "./ResizeRow/m": {
+      "require": "./ResizeRow/m/index.js",
+      "import": "./ResizeRow/m/index.mjs",
+      "types": "./ResizeRow/m/index.d.ts"
+    },
+    "./ResizeRow/l": {
+      "require": "./ResizeRow/l/index.js",
+      "import": "./ResizeRow/l/index.mjs",
+      "types": "./ResizeRow/l/index.d.ts"
+    },
     "./ResizeCol/m": {
       "require": "./ResizeCol/m/index.js",
       "import": "./ResizeCol/m/index.mjs",
@@ -1646,6 +1646,16 @@
       "require": "./ResizeCol/l/index.js",
       "import": "./ResizeCol/l/index.mjs",
       "types": "./ResizeCol/l/index.d.ts"
+    },
+    "./Rephrase/m": {
+      "require": "./Rephrase/m/index.js",
+      "import": "./Rephrase/m/index.mjs",
+      "types": "./Rephrase/m/index.d.ts"
+    },
+    "./Rephrase/l": {
+      "require": "./Rephrase/l/index.js",
+      "import": "./Rephrase/l/index.mjs",
+      "types": "./Rephrase/l/index.d.ts"
     },
     "./Report/m": {
       "require": "./Report/m/index.js",
@@ -1667,16 +1677,6 @@
       "import": "./Reply/l/index.mjs",
       "types": "./Reply/l/index.d.ts"
     },
-    "./Rephrase/m": {
-      "require": "./Rephrase/m/index.js",
-      "import": "./Rephrase/m/index.mjs",
-      "types": "./Rephrase/m/index.d.ts"
-    },
-    "./Rephrase/l": {
-      "require": "./Rephrase/l/index.js",
-      "import": "./Rephrase/l/index.mjs",
-      "types": "./Rephrase/l/index.d.ts"
-    },
     "./Reload/m": {
       "require": "./Reload/m/index.js",
       "import": "./Reload/m/index.mjs",
@@ -1697,15 +1697,15 @@
       "import": "./Religion/l/index.mjs",
       "types": "./Religion/l/index.d.ts"
     },
-    "./RelatedSearches/m": {
-      "require": "./RelatedSearches/m/index.js",
-      "import": "./RelatedSearches/m/index.mjs",
-      "types": "./RelatedSearches/m/index.d.ts"
+    "./RelatedProducts/m": {
+      "require": "./RelatedProducts/m/index.js",
+      "import": "./RelatedProducts/m/index.mjs",
+      "types": "./RelatedProducts/m/index.d.ts"
     },
-    "./RelatedSearches/l": {
-      "require": "./RelatedSearches/l/index.js",
-      "import": "./RelatedSearches/l/index.mjs",
-      "types": "./RelatedSearches/l/index.d.ts"
+    "./RelatedProducts/l": {
+      "require": "./RelatedProducts/l/index.js",
+      "import": "./RelatedProducts/l/index.mjs",
+      "types": "./RelatedProducts/l/index.d.ts"
     },
     "./Redo/m": {
       "require": "./Redo/m/index.js",
@@ -1717,15 +1717,15 @@
       "import": "./Redo/l/index.mjs",
       "types": "./Redo/l/index.d.ts"
     },
-    "./RelatedProducts/m": {
-      "require": "./RelatedProducts/m/index.js",
-      "import": "./RelatedProducts/m/index.mjs",
-      "types": "./RelatedProducts/m/index.d.ts"
+    "./RelatedSearches/m": {
+      "require": "./RelatedSearches/m/index.js",
+      "import": "./RelatedSearches/m/index.mjs",
+      "types": "./RelatedSearches/m/index.d.ts"
     },
-    "./RelatedProducts/l": {
-      "require": "./RelatedProducts/l/index.js",
-      "import": "./RelatedProducts/l/index.mjs",
-      "types": "./RelatedProducts/l/index.d.ts"
+    "./RelatedSearches/l": {
+      "require": "./RelatedSearches/l/index.js",
+      "import": "./RelatedSearches/l/index.mjs",
+      "types": "./RelatedSearches/l/index.d.ts"
     },
     "./Redirect/m": {
       "require": "./Redirect/m/index.js",
@@ -1747,16 +1747,6 @@
       "import": "./Recreation/l/index.mjs",
       "types": "./Recreation/l/index.d.ts"
     },
-    "./Recent/m": {
-      "require": "./Recent/m/index.js",
-      "import": "./Recent/m/index.mjs",
-      "types": "./Recent/m/index.d.ts"
-    },
-    "./Recent/l": {
-      "require": "./Recent/l/index.js",
-      "import": "./Recent/l/index.mjs",
-      "types": "./Recent/l/index.d.ts"
-    },
     "./QuestionsAnswers/m": {
       "require": "./QuestionsAnswers/m/index.js",
       "import": "./QuestionsAnswers/m/index.mjs",
@@ -1766,6 +1756,16 @@
       "require": "./QuestionsAnswers/l/index.js",
       "import": "./QuestionsAnswers/l/index.mjs",
       "types": "./QuestionsAnswers/l/index.d.ts"
+    },
+    "./Recent/m": {
+      "require": "./Recent/m/index.js",
+      "import": "./Recent/m/index.mjs",
+      "types": "./Recent/m/index.d.ts"
+    },
+    "./Recent/l": {
+      "require": "./Recent/l/index.js",
+      "import": "./Recent/l/index.mjs",
+      "types": "./Recent/l/index.d.ts"
     },
     "./QuestionSerp/m": {
       "require": "./QuestionSerp/m/index.js",
@@ -1807,16 +1807,6 @@
       "import": "./PublicUtility/l/index.mjs",
       "types": "./PublicUtility/l/index.d.ts"
     },
-    "./PublicSafety/m": {
-      "require": "./PublicSafety/m/index.js",
-      "import": "./PublicSafety/m/index.mjs",
-      "types": "./PublicSafety/m/index.d.ts"
-    },
-    "./PublicSafety/l": {
-      "require": "./PublicSafety/l/index.js",
-      "import": "./PublicSafety/l/index.mjs",
-      "types": "./PublicSafety/l/index.d.ts"
-    },
     "./Prowly/m": {
       "require": "./Prowly/m/index.js",
       "import": "./Prowly/m/index.mjs",
@@ -1827,15 +1817,15 @@
       "import": "./Prowly/l/index.mjs",
       "types": "./Prowly/l/index.d.ts"
     },
-    "./PositionTop/m": {
-      "require": "./PositionTop/m/index.js",
-      "import": "./PositionTop/m/index.mjs",
-      "types": "./PositionTop/m/index.d.ts"
+    "./PublicSafety/m": {
+      "require": "./PublicSafety/m/index.js",
+      "import": "./PublicSafety/m/index.mjs",
+      "types": "./PublicSafety/m/index.d.ts"
     },
-    "./PositionTop/l": {
-      "require": "./PositionTop/l/index.js",
-      "import": "./PositionTop/l/index.mjs",
-      "types": "./PositionTop/l/index.d.ts"
+    "./PublicSafety/l": {
+      "require": "./PublicSafety/l/index.js",
+      "import": "./PublicSafety/l/index.mjs",
+      "types": "./PublicSafety/l/index.d.ts"
     },
     "./Printing/m": {
       "require": "./Printing/m/index.js",
@@ -1846,6 +1836,26 @@
       "require": "./Printing/l/index.js",
       "import": "./Printing/l/index.mjs",
       "types": "./Printing/l/index.d.ts"
+    },
+    "./PositionRight/m": {
+      "require": "./PositionRight/m/index.js",
+      "import": "./PositionRight/m/index.mjs",
+      "types": "./PositionRight/m/index.d.ts"
+    },
+    "./PositionRight/l": {
+      "require": "./PositionRight/l/index.js",
+      "import": "./PositionRight/l/index.mjs",
+      "types": "./PositionRight/l/index.d.ts"
+    },
+    "./PositionTop/m": {
+      "require": "./PositionTop/m/index.js",
+      "import": "./PositionTop/m/index.mjs",
+      "types": "./PositionTop/m/index.d.ts"
+    },
+    "./PositionTop/l": {
+      "require": "./PositionTop/l/index.js",
+      "import": "./PositionTop/l/index.mjs",
+      "types": "./PositionTop/l/index.d.ts"
     },
     "./Power/m": {
       "require": "./Power/m/index.js",
@@ -1867,16 +1877,6 @@
       "import": "./PositionMiddle/l/index.mjs",
       "types": "./PositionMiddle/l/index.d.ts"
     },
-    "./PositionRight/m": {
-      "require": "./PositionRight/m/index.js",
-      "import": "./PositionRight/m/index.mjs",
-      "types": "./PositionRight/m/index.d.ts"
-    },
-    "./PositionRight/l": {
-      "require": "./PositionRight/l/index.js",
-      "import": "./PositionRight/l/index.mjs",
-      "types": "./PositionRight/l/index.d.ts"
-    },
     "./PositionLeft/m": {
       "require": "./PositionLeft/m/index.js",
       "import": "./PositionLeft/m/index.mjs",
@@ -1886,16 +1886,6 @@
       "require": "./PositionLeft/l/index.js",
       "import": "./PositionLeft/l/index.mjs",
       "types": "./PositionLeft/l/index.d.ts"
-    },
-    "./Popup/m": {
-      "require": "./Popup/m/index.js",
-      "import": "./Popup/m/index.mjs",
-      "types": "./Popup/m/index.d.ts"
-    },
-    "./Popup/l": {
-      "require": "./Popup/l/index.js",
-      "import": "./Popup/l/index.mjs",
-      "types": "./Popup/l/index.d.ts"
     },
     "./PopupAlt/m": {
       "require": "./PopupAlt/m/index.js",
@@ -1907,6 +1897,16 @@
       "import": "./PopupAlt/l/index.mjs",
       "types": "./PopupAlt/l/index.d.ts"
     },
+    "./Popup/m": {
+      "require": "./Popup/m/index.js",
+      "import": "./Popup/m/index.mjs",
+      "types": "./Popup/m/index.d.ts"
+    },
+    "./Popup/l": {
+      "require": "./Popup/l/index.js",
+      "import": "./Popup/l/index.mjs",
+      "types": "./Popup/l/index.d.ts"
+    },
     "./PositionBottom/m": {
       "require": "./PositionBottom/m/index.js",
       "import": "./PositionBottom/m/index.mjs",
@@ -1916,16 +1916,6 @@
       "require": "./PositionBottom/l/index.js",
       "import": "./PositionBottom/l/index.mjs",
       "types": "./PositionBottom/l/index.d.ts"
-    },
-    "./PopularProducts/m": {
-      "require": "./PopularProducts/m/index.js",
-      "import": "./PopularProducts/m/index.mjs",
-      "types": "./PopularProducts/m/index.d.ts"
-    },
-    "./PopularProducts/l": {
-      "require": "./PopularProducts/l/index.js",
-      "import": "./PopularProducts/l/index.mjs",
-      "types": "./PopularProducts/l/index.d.ts"
     },
     "./PopularStores/m": {
       "require": "./PopularStores/m/index.js",
@@ -1947,25 +1937,15 @@
       "import": "./Plug/l/index.mjs",
       "types": "./Plug/l/index.d.ts"
     },
-    "./PinUsd/m": {
-      "require": "./PinUsd/m/index.js",
-      "import": "./PinUsd/m/index.mjs",
-      "types": "./PinUsd/m/index.d.ts"
+    "./PopularProducts/m": {
+      "require": "./PopularProducts/m/index.js",
+      "import": "./PopularProducts/m/index.mjs",
+      "types": "./PopularProducts/m/index.d.ts"
     },
-    "./PinUsd/l": {
-      "require": "./PinUsd/l/index.js",
-      "import": "./PinUsd/l/index.mjs",
-      "types": "./PinUsd/l/index.d.ts"
-    },
-    "./Pinterest/m": {
-      "require": "./Pinterest/m/index.js",
-      "import": "./Pinterest/m/index.mjs",
-      "types": "./Pinterest/m/index.d.ts"
-    },
-    "./Pinterest/l": {
-      "require": "./Pinterest/l/index.js",
-      "import": "./Pinterest/l/index.mjs",
-      "types": "./Pinterest/l/index.d.ts"
+    "./PopularProducts/l": {
+      "require": "./PopularProducts/l/index.js",
+      "import": "./PopularProducts/l/index.mjs",
+      "types": "./PopularProducts/l/index.d.ts"
     },
     "./Pins/m": {
       "require": "./Pins/m/index.js",
@@ -1977,6 +1957,26 @@
       "import": "./Pins/l/index.mjs",
       "types": "./Pins/l/index.d.ts"
     },
+    "./Pinterest/m": {
+      "require": "./Pinterest/m/index.js",
+      "import": "./Pinterest/m/index.mjs",
+      "types": "./Pinterest/m/index.d.ts"
+    },
+    "./Pinterest/l": {
+      "require": "./Pinterest/l/index.js",
+      "import": "./Pinterest/l/index.mjs",
+      "types": "./Pinterest/l/index.d.ts"
+    },
+    "./PinUsd/m": {
+      "require": "./PinUsd/m/index.js",
+      "import": "./PinUsd/m/index.mjs",
+      "types": "./PinUsd/m/index.d.ts"
+    },
+    "./PinUsd/l": {
+      "require": "./PinUsd/l/index.js",
+      "import": "./PinUsd/l/index.mjs",
+      "types": "./PinUsd/l/index.d.ts"
+    },
     "./PinNo/m": {
       "require": "./PinNo/m/index.js",
       "import": "./PinNo/m/index.mjs",
@@ -1987,16 +1987,6 @@
       "import": "./PinNo/l/index.mjs",
       "types": "./PinNo/l/index.d.ts"
     },
-    "./PinMap/m": {
-      "require": "./PinMap/m/index.js",
-      "import": "./PinMap/m/index.mjs",
-      "types": "./PinMap/m/index.d.ts"
-    },
-    "./PinMap/l": {
-      "require": "./PinMap/l/index.js",
-      "import": "./PinMap/l/index.mjs",
-      "types": "./PinMap/l/index.d.ts"
-    },
     "./PinList/m": {
       "require": "./PinList/m/index.js",
       "import": "./PinList/m/index.mjs",
@@ -2006,6 +1996,16 @@
       "require": "./PinList/l/index.js",
       "import": "./PinList/l/index.mjs",
       "types": "./PinList/l/index.d.ts"
+    },
+    "./PinMap/m": {
+      "require": "./PinMap/m/index.js",
+      "import": "./PinMap/m/index.mjs",
+      "types": "./PinMap/m/index.d.ts"
+    },
+    "./PinMap/l": {
+      "require": "./PinMap/l/index.js",
+      "import": "./PinMap/l/index.mjs",
+      "types": "./PinMap/l/index.d.ts"
     },
     "./Pin/m": {
       "require": "./Pin/m/index.js",
@@ -2077,16 +2077,6 @@
       "import": "./Phone/l/index.mjs",
       "types": "./Phone/l/index.d.ts"
     },
-    "./Pause/m": {
-      "require": "./Pause/m/index.js",
-      "import": "./Pause/m/index.mjs",
-      "types": "./Pause/m/index.d.ts"
-    },
-    "./Pause/l": {
-      "require": "./Pause/l/index.js",
-      "import": "./Pause/l/index.mjs",
-      "types": "./Pause/l/index.d.ts"
-    },
     "./Packaging/m": {
       "require": "./Packaging/m/index.js",
       "import": "./Packaging/m/index.mjs",
@@ -2097,15 +2087,15 @@
       "import": "./Packaging/l/index.mjs",
       "types": "./Packaging/l/index.d.ts"
     },
-    "./OrientationPortrait/m": {
-      "require": "./OrientationPortrait/m/index.js",
-      "import": "./OrientationPortrait/m/index.mjs",
-      "types": "./OrientationPortrait/m/index.d.ts"
+    "./Pause/m": {
+      "require": "./Pause/m/index.js",
+      "import": "./Pause/m/index.mjs",
+      "types": "./Pause/m/index.d.ts"
     },
-    "./OrientationPortrait/l": {
-      "require": "./OrientationPortrait/l/index.js",
-      "import": "./OrientationPortrait/l/index.mjs",
-      "types": "./OrientationPortrait/l/index.d.ts"
+    "./Pause/l": {
+      "require": "./Pause/l/index.js",
+      "import": "./Pause/l/index.mjs",
+      "types": "./Pause/l/index.d.ts"
     },
     "./OrientationLandscape/m": {
       "require": "./OrientationLandscape/m/index.js",
@@ -2117,6 +2107,16 @@
       "import": "./OrientationLandscape/l/index.mjs",
       "types": "./OrientationLandscape/l/index.d.ts"
     },
+    "./OrientationPortrait/m": {
+      "require": "./OrientationPortrait/m/index.js",
+      "import": "./OrientationPortrait/m/index.mjs",
+      "types": "./OrientationPortrait/m/index.d.ts"
+    },
+    "./OrientationPortrait/l": {
+      "require": "./OrientationPortrait/l/index.js",
+      "import": "./OrientationPortrait/l/index.mjs",
+      "types": "./OrientationPortrait/l/index.d.ts"
+    },
     "./Organic/m": {
       "require": "./Organic/m/index.js",
       "import": "./Organic/m/index.mjs",
@@ -2127,16 +2127,6 @@
       "import": "./Organic/l/index.mjs",
       "types": "./Organic/l/index.d.ts"
     },
-    "./OrganicCarousel/m": {
-      "require": "./OrganicCarousel/m/index.js",
-      "import": "./OrganicCarousel/m/index.mjs",
-      "types": "./OrganicCarousel/m/index.d.ts"
-    },
-    "./OrganicCarousel/l": {
-      "require": "./OrganicCarousel/l/index.js",
-      "import": "./OrganicCarousel/l/index.mjs",
-      "types": "./OrganicCarousel/l/index.d.ts"
-    },
     "./Opera/m": {
       "require": "./Opera/m/index.js",
       "import": "./Opera/m/index.mjs",
@@ -2146,6 +2136,16 @@
       "require": "./Opera/l/index.js",
       "import": "./Opera/l/index.mjs",
       "types": "./Opera/l/index.d.ts"
+    },
+    "./OrganicCarousel/m": {
+      "require": "./OrganicCarousel/m/index.js",
+      "import": "./OrganicCarousel/m/index.mjs",
+      "types": "./OrganicCarousel/m/index.d.ts"
+    },
+    "./OrganicCarousel/l": {
+      "require": "./OrganicCarousel/l/index.js",
+      "import": "./OrganicCarousel/l/index.mjs",
+      "types": "./OrganicCarousel/l/index.d.ts"
     },
     "./Oil/m": {
       "require": "./Oil/m/index.js",
@@ -2177,16 +2177,6 @@
       "import": "./Notification/l/index.mjs",
       "types": "./Notification/l/index.d.ts"
     },
-    "./Music/m": {
-      "require": "./Music/m/index.js",
-      "import": "./Music/m/index.mjs",
-      "types": "./Music/m/index.d.ts"
-    },
-    "./Music/l": {
-      "require": "./Music/l/index.js",
-      "import": "./Music/l/index.mjs",
-      "types": "./Music/l/index.d.ts"
-    },
     "./News/m": {
       "require": "./News/m/index.js",
       "import": "./News/m/index.mjs",
@@ -2197,15 +2187,15 @@
       "import": "./News/l/index.mjs",
       "types": "./News/l/index.d.ts"
     },
-    "./Museum/m": {
-      "require": "./Museum/m/index.js",
-      "import": "./Museum/m/index.mjs",
-      "types": "./Museum/m/index.d.ts"
+    "./Music/m": {
+      "require": "./Music/m/index.js",
+      "import": "./Music/m/index.mjs",
+      "types": "./Music/m/index.d.ts"
     },
-    "./Museum/l": {
-      "require": "./Museum/l/index.js",
-      "import": "./Museum/l/index.mjs",
-      "types": "./Museum/l/index.d.ts"
+    "./Music/l": {
+      "require": "./Music/l/index.js",
+      "import": "./Music/l/index.mjs",
+      "types": "./Music/l/index.d.ts"
     },
     "./MoveAlt/m": {
       "require": "./MoveAlt/m/index.js",
@@ -2217,6 +2207,16 @@
       "import": "./MoveAlt/l/index.mjs",
       "types": "./MoveAlt/l/index.d.ts"
     },
+    "./Mobile/m": {
+      "require": "./Mobile/m/index.js",
+      "import": "./Mobile/m/index.mjs",
+      "types": "./Mobile/m/index.d.ts"
+    },
+    "./Mobile/l": {
+      "require": "./Mobile/l/index.js",
+      "import": "./Mobile/l/index.mjs",
+      "types": "./Mobile/l/index.d.ts"
+    },
     "./MoneyCoins/m": {
       "require": "./MoneyCoins/m/index.js",
       "import": "./MoneyCoins/m/index.mjs",
@@ -2227,15 +2227,25 @@
       "import": "./MoneyCoins/l/index.mjs",
       "types": "./MoneyCoins/l/index.d.ts"
     },
-    "./Mobile/m": {
-      "require": "./Mobile/m/index.js",
-      "import": "./Mobile/m/index.mjs",
-      "types": "./Mobile/m/index.d.ts"
+    "./Museum/m": {
+      "require": "./Museum/m/index.js",
+      "import": "./Museum/m/index.mjs",
+      "types": "./Museum/m/index.d.ts"
     },
-    "./Mobile/l": {
-      "require": "./Mobile/l/index.js",
-      "import": "./Mobile/l/index.mjs",
-      "types": "./Mobile/l/index.d.ts"
+    "./Museum/l": {
+      "require": "./Museum/l/index.js",
+      "import": "./Museum/l/index.mjs",
+      "types": "./Museum/l/index.d.ts"
+    },
+    "./Military/m": {
+      "require": "./Military/m/index.js",
+      "import": "./Military/m/index.mjs",
+      "types": "./Military/m/index.d.ts"
+    },
+    "./Military/l": {
+      "require": "./Military/l/index.js",
+      "import": "./Military/l/index.mjs",
+      "types": "./Military/l/index.d.ts"
     },
     "./Microphone/m": {
       "require": "./Microphone/m/index.js",
@@ -2257,15 +2267,15 @@
       "import": "./Megaphone/l/index.mjs",
       "types": "./Megaphone/l/index.d.ts"
     },
-    "./Military/m": {
-      "require": "./Military/m/index.js",
-      "import": "./Military/m/index.mjs",
-      "types": "./Military/m/index.d.ts"
+    "./MathPlusAlt/m": {
+      "require": "./MathPlusAlt/m/index.js",
+      "import": "./MathPlusAlt/m/index.mjs",
+      "types": "./MathPlusAlt/m/index.d.ts"
     },
-    "./Military/l": {
-      "require": "./Military/l/index.js",
-      "import": "./Military/l/index.mjs",
-      "types": "./Military/l/index.d.ts"
+    "./MathPlusAlt/l": {
+      "require": "./MathPlusAlt/l/index.js",
+      "import": "./MathPlusAlt/l/index.mjs",
+      "types": "./MathPlusAlt/l/index.d.ts"
     },
     "./Medkit/m": {
       "require": "./Medkit/m/index.js",
@@ -2277,15 +2287,15 @@
       "import": "./Medkit/l/index.mjs",
       "types": "./Medkit/l/index.d.ts"
     },
-    "./MathPlusAlt/m": {
-      "require": "./MathPlusAlt/m/index.js",
-      "import": "./MathPlusAlt/m/index.mjs",
-      "types": "./MathPlusAlt/m/index.d.ts"
+    "./MathPlus/m": {
+      "require": "./MathPlus/m/index.js",
+      "import": "./MathPlus/m/index.mjs",
+      "types": "./MathPlus/m/index.d.ts"
     },
-    "./MathPlusAlt/l": {
-      "require": "./MathPlusAlt/l/index.js",
-      "import": "./MathPlusAlt/l/index.mjs",
-      "types": "./MathPlusAlt/l/index.d.ts"
+    "./MathPlus/l": {
+      "require": "./MathPlus/l/index.js",
+      "import": "./MathPlus/l/index.mjs",
+      "types": "./MathPlus/l/index.d.ts"
     },
     "./MathMinusAlt/m": {
       "require": "./MathMinusAlt/m/index.js",
@@ -2297,26 +2307,6 @@
       "import": "./MathMinusAlt/l/index.mjs",
       "types": "./MathMinusAlt/l/index.d.ts"
     },
-    "./Marine/m": {
-      "require": "./Marine/m/index.js",
-      "import": "./Marine/m/index.mjs",
-      "types": "./Marine/m/index.d.ts"
-    },
-    "./Marine/l": {
-      "require": "./Marine/l/index.js",
-      "import": "./Marine/l/index.mjs",
-      "types": "./Marine/l/index.d.ts"
-    },
-    "./MathPlus/m": {
-      "require": "./MathPlus/m/index.js",
-      "import": "./MathPlus/m/index.mjs",
-      "types": "./MathPlus/m/index.d.ts"
-    },
-    "./MathPlus/l": {
-      "require": "./MathPlus/l/index.js",
-      "import": "./MathPlus/l/index.mjs",
-      "types": "./MathPlus/l/index.d.ts"
-    },
     "./MathMinus/m": {
       "require": "./MathMinus/m/index.js",
       "import": "./MathMinus/m/index.mjs",
@@ -2326,16 +2316,6 @@
       "require": "./MathMinus/l/index.js",
       "import": "./MathMinus/l/index.mjs",
       "types": "./MathMinus/l/index.d.ts"
-    },
-    "./MailOpenFilled/m": {
-      "require": "./MailOpenFilled/m/index.js",
-      "import": "./MailOpenFilled/m/index.mjs",
-      "types": "./MailOpenFilled/m/index.d.ts"
-    },
-    "./MailOpenFilled/l": {
-      "require": "./MailOpenFilled/l/index.js",
-      "import": "./MailOpenFilled/l/index.mjs",
-      "types": "./MailOpenFilled/l/index.d.ts"
     },
     "./MailOpen/m": {
       "require": "./MailOpen/m/index.js",
@@ -2356,6 +2336,26 @@
       "require": "./MailFilled/l/index.js",
       "import": "./MailFilled/l/index.mjs",
       "types": "./MailFilled/l/index.d.ts"
+    },
+    "./Marine/m": {
+      "require": "./Marine/m/index.js",
+      "import": "./Marine/m/index.mjs",
+      "types": "./Marine/m/index.d.ts"
+    },
+    "./Marine/l": {
+      "require": "./Marine/l/index.js",
+      "import": "./Marine/l/index.mjs",
+      "types": "./Marine/l/index.d.ts"
+    },
+    "./MailOpenFilled/m": {
+      "require": "./MailOpenFilled/m/index.js",
+      "import": "./MailOpenFilled/m/index.mjs",
+      "types": "./MailOpenFilled/m/index.d.ts"
+    },
+    "./MailOpenFilled/l": {
+      "require": "./MailOpenFilled/l/index.js",
+      "import": "./MailOpenFilled/l/index.mjs",
+      "types": "./MailOpenFilled/l/index.d.ts"
     },
     "./Mail/m": {
       "require": "./Mail/m/index.js",
@@ -2397,15 +2397,15 @@
       "import": "./LockYes/l/index.mjs",
       "types": "./LockYes/l/index.d.ts"
     },
-    "./Logistic/m": {
-      "require": "./Logistic/m/index.js",
-      "import": "./Logistic/m/index.mjs",
-      "types": "./Logistic/m/index.d.ts"
+    "./LockNo/m": {
+      "require": "./LockNo/m/index.js",
+      "import": "./LockNo/m/index.mjs",
+      "types": "./LockNo/m/index.d.ts"
     },
-    "./Logistic/l": {
-      "require": "./Logistic/l/index.js",
-      "import": "./Logistic/l/index.mjs",
-      "types": "./Logistic/l/index.d.ts"
+    "./LockNo/l": {
+      "require": "./LockNo/l/index.js",
+      "import": "./LockNo/l/index.mjs",
+      "types": "./LockNo/l/index.d.ts"
     },
     "./ListNumber/m": {
       "require": "./ListNumber/m/index.js",
@@ -2417,15 +2417,15 @@
       "import": "./ListNumber/l/index.mjs",
       "types": "./ListNumber/l/index.d.ts"
     },
-    "./LockNo/m": {
-      "require": "./LockNo/m/index.js",
-      "import": "./LockNo/m/index.mjs",
-      "types": "./LockNo/m/index.d.ts"
+    "./Logistic/m": {
+      "require": "./Logistic/m/index.js",
+      "import": "./Logistic/m/index.mjs",
+      "types": "./Logistic/m/index.d.ts"
     },
-    "./LockNo/l": {
-      "require": "./LockNo/l/index.js",
-      "import": "./LockNo/l/index.mjs",
-      "types": "./LockNo/l/index.d.ts"
+    "./Logistic/l": {
+      "require": "./Logistic/l/index.js",
+      "import": "./Logistic/l/index.mjs",
+      "types": "./Logistic/l/index.d.ts"
     },
     "./ListBullet/m": {
       "require": "./ListBullet/m/index.js",
@@ -2447,16 +2447,6 @@
       "import": "./ListCheck/l/index.mjs",
       "types": "./ListCheck/l/index.d.ts"
     },
-    "./ListAddTop/m": {
-      "require": "./ListAddTop/m/index.js",
-      "import": "./ListAddTop/m/index.mjs",
-      "types": "./ListAddTop/m/index.d.ts"
-    },
-    "./ListAddTop/l": {
-      "require": "./ListAddTop/l/index.js",
-      "import": "./ListAddTop/l/index.mjs",
-      "types": "./ListAddTop/l/index.d.ts"
-    },
     "./ListAddCheck/m": {
       "require": "./ListAddCheck/m/index.js",
       "import": "./ListAddCheck/m/index.mjs",
@@ -2467,25 +2457,15 @@
       "import": "./ListAddCheck/l/index.mjs",
       "types": "./ListAddCheck/l/index.d.ts"
     },
-    "./LinkedIn/m": {
-      "require": "./LinkedIn/m/index.js",
-      "import": "./LinkedIn/m/index.mjs",
-      "types": "./LinkedIn/m/index.d.ts"
+    "./ListAddTop/m": {
+      "require": "./ListAddTop/m/index.js",
+      "import": "./ListAddTop/m/index.mjs",
+      "types": "./ListAddTop/m/index.d.ts"
     },
-    "./LinkedIn/l": {
-      "require": "./LinkedIn/l/index.js",
-      "import": "./LinkedIn/l/index.mjs",
-      "types": "./LinkedIn/l/index.d.ts"
-    },
-    "./LinkInternal/m": {
-      "require": "./LinkInternal/m/index.js",
-      "import": "./LinkInternal/m/index.mjs",
-      "types": "./LinkInternal/m/index.d.ts"
-    },
-    "./LinkInternal/l": {
-      "require": "./LinkInternal/l/index.js",
-      "import": "./LinkInternal/l/index.mjs",
-      "types": "./LinkInternal/l/index.d.ts"
+    "./ListAddTop/l": {
+      "require": "./ListAddTop/l/index.js",
+      "import": "./ListAddTop/l/index.mjs",
+      "types": "./ListAddTop/l/index.d.ts"
     },
     "./ListAddBottom/m": {
       "require": "./ListAddBottom/m/index.js",
@@ -2497,6 +2477,16 @@
       "import": "./ListAddBottom/l/index.mjs",
       "types": "./ListAddBottom/l/index.d.ts"
     },
+    "./LinkedIn/m": {
+      "require": "./LinkedIn/m/index.js",
+      "import": "./LinkedIn/m/index.mjs",
+      "types": "./LinkedIn/m/index.d.ts"
+    },
+    "./LinkedIn/l": {
+      "require": "./LinkedIn/l/index.js",
+      "import": "./LinkedIn/l/index.mjs",
+      "types": "./LinkedIn/l/index.d.ts"
+    },
     "./LinkExternal/m": {
       "require": "./LinkExternal/m/index.js",
       "import": "./LinkExternal/m/index.mjs",
@@ -2507,15 +2497,15 @@
       "import": "./LinkExternal/l/index.mjs",
       "types": "./LinkExternal/l/index.d.ts"
     },
-    "./LinkAltBroken/m": {
-      "require": "./LinkAltBroken/m/index.js",
-      "import": "./LinkAltBroken/m/index.mjs",
-      "types": "./LinkAltBroken/m/index.d.ts"
+    "./LinkInternal/m": {
+      "require": "./LinkInternal/m/index.js",
+      "import": "./LinkInternal/m/index.mjs",
+      "types": "./LinkInternal/m/index.d.ts"
     },
-    "./LinkAltBroken/l": {
-      "require": "./LinkAltBroken/l/index.js",
-      "import": "./LinkAltBroken/l/index.mjs",
-      "types": "./LinkAltBroken/l/index.d.ts"
+    "./LinkInternal/l": {
+      "require": "./LinkInternal/l/index.js",
+      "import": "./LinkInternal/l/index.mjs",
+      "types": "./LinkInternal/l/index.d.ts"
     },
     "./LinkAltHalf/m": {
       "require": "./LinkAltHalf/m/index.js",
@@ -2537,35 +2527,15 @@
       "import": "./Link/l/index.mjs",
       "types": "./Link/l/index.d.ts"
     },
-    "./LikeFilled/m": {
-      "require": "./LikeFilled/m/index.js",
-      "import": "./LikeFilled/m/index.mjs",
-      "types": "./LikeFilled/m/index.d.ts"
+    "./LinkAltBroken/m": {
+      "require": "./LinkAltBroken/m/index.js",
+      "import": "./LinkAltBroken/m/index.mjs",
+      "types": "./LinkAltBroken/m/index.d.ts"
     },
-    "./LikeFilled/l": {
-      "require": "./LikeFilled/l/index.js",
-      "import": "./LikeFilled/l/index.mjs",
-      "types": "./LikeFilled/l/index.d.ts"
-    },
-    "./Lightning/m": {
-      "require": "./Lightning/m/index.js",
-      "import": "./Lightning/m/index.mjs",
-      "types": "./Lightning/m/index.d.ts"
-    },
-    "./Lightning/l": {
-      "require": "./Lightning/l/index.js",
-      "import": "./Lightning/l/index.mjs",
-      "types": "./Lightning/l/index.d.ts"
-    },
-    "./LightningFilled/m": {
-      "require": "./LightningFilled/m/index.js",
-      "import": "./LightningFilled/m/index.mjs",
-      "types": "./LightningFilled/m/index.d.ts"
-    },
-    "./LightningFilled/l": {
-      "require": "./LightningFilled/l/index.js",
-      "import": "./LightningFilled/l/index.mjs",
-      "types": "./LightningFilled/l/index.d.ts"
+    "./LinkAltBroken/l": {
+      "require": "./LinkAltBroken/l/index.js",
+      "import": "./LinkAltBroken/l/index.mjs",
+      "types": "./LinkAltBroken/l/index.d.ts"
     },
     "./Like/m": {
       "require": "./Like/m/index.js",
@@ -2577,6 +2547,26 @@
       "import": "./Like/l/index.mjs",
       "types": "./Like/l/index.d.ts"
     },
+    "./LikeFilled/m": {
+      "require": "./LikeFilled/m/index.js",
+      "import": "./LikeFilled/m/index.mjs",
+      "types": "./LikeFilled/m/index.d.ts"
+    },
+    "./LikeFilled/l": {
+      "require": "./LikeFilled/l/index.js",
+      "import": "./LikeFilled/l/index.mjs",
+      "types": "./LikeFilled/l/index.d.ts"
+    },
+    "./LightningFilled/m": {
+      "require": "./LightningFilled/m/index.js",
+      "import": "./LightningFilled/m/index.mjs",
+      "types": "./LightningFilled/m/index.d.ts"
+    },
+    "./LightningFilled/l": {
+      "require": "./LightningFilled/l/index.js",
+      "import": "./LightningFilled/l/index.mjs",
+      "types": "./LightningFilled/l/index.d.ts"
+    },
     "./Law/m": {
       "require": "./Law/m/index.js",
       "import": "./Law/m/index.mjs",
@@ -2587,6 +2577,16 @@
       "import": "./Law/l/index.mjs",
       "types": "./Law/l/index.d.ts"
     },
+    "./Lightning/m": {
+      "require": "./Lightning/m/index.js",
+      "import": "./Lightning/m/index.mjs",
+      "types": "./Lightning/m/index.d.ts"
+    },
+    "./Lightning/l": {
+      "require": "./Lightning/l/index.js",
+      "import": "./Lightning/l/index.mjs",
+      "types": "./Lightning/l/index.d.ts"
+    },
     "./Laptop/m": {
       "require": "./Laptop/m/index.js",
       "import": "./Laptop/m/index.mjs",
@@ -2596,6 +2596,16 @@
       "require": "./Laptop/l/index.js",
       "import": "./Laptop/l/index.mjs",
       "types": "./Laptop/l/index.d.ts"
+    },
+    "./KeyHotkey/m": {
+      "require": "./KeyHotkey/m/index.js",
+      "import": "./KeyHotkey/m/index.mjs",
+      "types": "./KeyHotkey/m/index.d.ts"
+    },
+    "./KeyHotkey/l": {
+      "require": "./KeyHotkey/l/index.js",
+      "import": "./KeyHotkey/l/index.mjs",
+      "types": "./KeyHotkey/l/index.d.ts"
     },
     "./Language/m": {
       "require": "./Language/m/index.js",
@@ -2617,16 +2627,6 @@
       "import": "./KeyCmd/l/index.mjs",
       "types": "./KeyCmd/l/index.d.ts"
     },
-    "./KeyHotkey/m": {
-      "require": "./KeyHotkey/m/index.js",
-      "import": "./KeyHotkey/m/index.mjs",
-      "types": "./KeyHotkey/m/index.d.ts"
-    },
-    "./KeyHotkey/l": {
-      "require": "./KeyHotkey/l/index.js",
-      "import": "./KeyHotkey/l/index.mjs",
-      "types": "./KeyHotkey/l/index.d.ts"
-    },
     "./Key/m": {
       "require": "./Key/m/index.js",
       "import": "./Key/m/index.mjs",
@@ -2646,6 +2646,16 @@
       "require": "./InterestingFinds/l/index.js",
       "import": "./InterestingFinds/l/index.mjs",
       "types": "./InterestingFinds/l/index.d.ts"
+    },
+    "./Instagram/m": {
+      "require": "./Instagram/m/index.js",
+      "import": "./Instagram/m/index.mjs",
+      "types": "./Instagram/m/index.d.ts"
+    },
+    "./Instagram/l": {
+      "require": "./Instagram/l/index.js",
+      "import": "./Instagram/l/index.mjs",
+      "types": "./Instagram/l/index.d.ts"
     },
     "./Kebab/m": {
       "require": "./Kebab/m/index.js",
@@ -2667,26 +2677,6 @@
       "import": "./Jewelry/l/index.mjs",
       "types": "./Jewelry/l/index.d.ts"
     },
-    "./Instagram/m": {
-      "require": "./Instagram/m/index.js",
-      "import": "./Instagram/m/index.mjs",
-      "types": "./Instagram/m/index.d.ts"
-    },
-    "./Instagram/l": {
-      "require": "./Instagram/l/index.js",
-      "import": "./Instagram/l/index.mjs",
-      "types": "./Instagram/l/index.d.ts"
-    },
-    "./Infinity/m": {
-      "require": "./Infinity/m/index.js",
-      "import": "./Infinity/m/index.mjs",
-      "types": "./Infinity/m/index.d.ts"
-    },
-    "./Infinity/l": {
-      "require": "./Infinity/l/index.js",
-      "import": "./Infinity/l/index.mjs",
-      "types": "./Infinity/l/index.d.ts"
-    },
     "./Info/m": {
       "require": "./Info/m/index.js",
       "import": "./Info/m/index.mjs",
@@ -2696,16 +2686,6 @@
       "require": "./Info/l/index.js",
       "import": "./Info/l/index.mjs",
       "types": "./Info/l/index.d.ts"
-    },
-    "./IndentedResult/m": {
-      "require": "./IndentedResult/m/index.js",
-      "import": "./IndentedResult/m/index.mjs",
-      "types": "./IndentedResult/m/index.d.ts"
-    },
-    "./IndentedResult/l": {
-      "require": "./IndentedResult/l/index.js",
-      "import": "./IndentedResult/l/index.mjs",
-      "types": "./IndentedResult/l/index.d.ts"
     },
     "./Hourglass/m": {
       "require": "./Hourglass/m/index.js",
@@ -2717,15 +2697,25 @@
       "import": "./Hourglass/l/index.mjs",
       "types": "./Hourglass/l/index.d.ts"
     },
-    "./Home/m": {
-      "require": "./Home/m/index.js",
-      "import": "./Home/m/index.mjs",
-      "types": "./Home/m/index.d.ts"
+    "./Infinity/m": {
+      "require": "./Infinity/m/index.js",
+      "import": "./Infinity/m/index.mjs",
+      "types": "./Infinity/m/index.d.ts"
     },
-    "./Home/l": {
-      "require": "./Home/l/index.js",
-      "import": "./Home/l/index.mjs",
-      "types": "./Home/l/index.d.ts"
+    "./Infinity/l": {
+      "require": "./Infinity/l/index.js",
+      "import": "./Infinity/l/index.mjs",
+      "types": "./Infinity/l/index.d.ts"
+    },
+    "./IndentedResult/m": {
+      "require": "./IndentedResult/m/index.js",
+      "import": "./IndentedResult/m/index.mjs",
+      "types": "./IndentedResult/m/index.d.ts"
+    },
+    "./IndentedResult/l": {
+      "require": "./IndentedResult/l/index.js",
+      "import": "./IndentedResult/l/index.mjs",
+      "types": "./IndentedResult/l/index.d.ts"
     },
     "./Hotel/m": {
       "require": "./Hotel/m/index.js",
@@ -2737,15 +2727,15 @@
       "import": "./Hotel/l/index.mjs",
       "types": "./Hotel/l/index.d.ts"
     },
-    "./Health/m": {
-      "require": "./Health/m/index.js",
-      "import": "./Health/m/index.mjs",
-      "types": "./Health/m/index.d.ts"
+    "./Home/m": {
+      "require": "./Home/m/index.js",
+      "import": "./Home/m/index.mjs",
+      "types": "./Home/m/index.d.ts"
     },
-    "./Health/l": {
-      "require": "./Health/l/index.js",
-      "import": "./Health/l/index.mjs",
-      "types": "./Health/l/index.d.ts"
+    "./Home/l": {
+      "require": "./Home/l/index.js",
+      "import": "./Home/l/index.mjs",
+      "types": "./Home/l/index.d.ts"
     },
     "./Hashtag/m": {
       "require": "./Hashtag/m/index.js",
@@ -2757,6 +2747,16 @@
       "import": "./Hashtag/l/index.mjs",
       "types": "./Hashtag/l/index.d.ts"
     },
+    "./Health/m": {
+      "require": "./Health/m/index.js",
+      "import": "./Health/m/index.mjs",
+      "types": "./Health/m/index.d.ts"
+    },
+    "./Health/l": {
+      "require": "./Health/l/index.js",
+      "import": "./Health/l/index.mjs",
+      "types": "./Health/l/index.d.ts"
+    },
     "./GoogleGenerativeAI/m": {
       "require": "./GoogleGenerativeAI/m/index.js",
       "import": "./GoogleGenerativeAI/m/index.mjs",
@@ -2766,16 +2766,6 @@
       "require": "./GoogleGenerativeAI/l/index.js",
       "import": "./GoogleGenerativeAI/l/index.mjs",
       "types": "./GoogleGenerativeAI/l/index.d.ts"
-    },
-    "./Hamburger/m": {
-      "require": "./Hamburger/m/index.js",
-      "import": "./Hamburger/m/index.mjs",
-      "types": "./Hamburger/m/index.d.ts"
-    },
-    "./Hamburger/l": {
-      "require": "./Hamburger/l/index.js",
-      "import": "./Hamburger/l/index.mjs",
-      "types": "./Hamburger/l/index.d.ts"
     },
     "./GoogleBusinessProfile/m": {
       "require": "./GoogleBusinessProfile/m/index.js",
@@ -2787,15 +2777,15 @@
       "import": "./GoogleBusinessProfile/l/index.mjs",
       "types": "./GoogleBusinessProfile/l/index.d.ts"
     },
-    "./Google/m": {
-      "require": "./Google/m/index.js",
-      "import": "./Google/m/index.mjs",
-      "types": "./Google/m/index.d.ts"
+    "./Hamburger/m": {
+      "require": "./Hamburger/m/index.js",
+      "import": "./Hamburger/m/index.mjs",
+      "types": "./Hamburger/m/index.d.ts"
     },
-    "./Google/l": {
-      "require": "./Google/l/index.js",
-      "import": "./Google/l/index.mjs",
-      "types": "./Google/l/index.d.ts"
+    "./Hamburger/l": {
+      "require": "./Hamburger/l/index.js",
+      "import": "./Hamburger/l/index.mjs",
+      "types": "./Hamburger/l/index.d.ts"
     },
     "./Goblet/m": {
       "require": "./Goblet/m/index.js",
@@ -2806,6 +2796,26 @@
       "require": "./Goblet/l/index.js",
       "import": "./Goblet/l/index.mjs",
       "types": "./Goblet/l/index.d.ts"
+    },
+    "./Google/m": {
+      "require": "./Google/m/index.js",
+      "import": "./Google/m/index.mjs",
+      "types": "./Google/m/index.d.ts"
+    },
+    "./Google/l": {
+      "require": "./Google/l/index.js",
+      "import": "./Google/l/index.mjs",
+      "types": "./Google/l/index.d.ts"
+    },
+    "./GenderMale/m": {
+      "require": "./GenderMale/m/index.js",
+      "import": "./GenderMale/m/index.mjs",
+      "types": "./GenderMale/m/index.d.ts"
+    },
+    "./GenderMale/l": {
+      "require": "./GenderMale/l/index.js",
+      "import": "./GenderMale/l/index.mjs",
+      "types": "./GenderMale/l/index.d.ts"
     },
     "./Globe/m": {
       "require": "./Globe/m/index.js",
@@ -2827,16 +2837,6 @@
       "import": "./GenderFemale/l/index.mjs",
       "types": "./GenderFemale/l/index.d.ts"
     },
-    "./GenderMale/m": {
-      "require": "./GenderMale/m/index.js",
-      "import": "./GenderMale/m/index.mjs",
-      "types": "./GenderMale/m/index.d.ts"
-    },
-    "./GenderMale/l": {
-      "require": "./GenderMale/l/index.js",
-      "import": "./GenderMale/l/index.mjs",
-      "types": "./GenderMale/l/index.d.ts"
-    },
     "./Games/m": {
       "require": "./Games/m/index.js",
       "import": "./Games/m/index.mjs",
@@ -2846,16 +2846,6 @@
       "require": "./Games/l/index.js",
       "import": "./Games/l/index.mjs",
       "types": "./Games/l/index.d.ts"
-    },
-    "./Gambling/m": {
-      "require": "./Gambling/m/index.js",
-      "import": "./Gambling/m/index.mjs",
-      "types": "./Gambling/m/index.d.ts"
-    },
-    "./Gambling/l": {
-      "require": "./Gambling/l/index.js",
-      "import": "./Gambling/l/index.mjs",
-      "types": "./Gambling/l/index.d.ts"
     },
     "./Furniture/m": {
       "require": "./Furniture/m/index.js",
@@ -2877,15 +2867,15 @@
       "import": "./Funnel/l/index.mjs",
       "types": "./Funnel/l/index.d.ts"
     },
-    "./FormatAlignRight/m": {
-      "require": "./FormatAlignRight/m/index.js",
-      "import": "./FormatAlignRight/m/index.mjs",
-      "types": "./FormatAlignRight/m/index.d.ts"
+    "./Gambling/m": {
+      "require": "./Gambling/m/index.js",
+      "import": "./Gambling/m/index.mjs",
+      "types": "./Gambling/m/index.d.ts"
     },
-    "./FormatAlignRight/l": {
-      "require": "./FormatAlignRight/l/index.js",
-      "import": "./FormatAlignRight/l/index.mjs",
-      "types": "./FormatAlignRight/l/index.d.ts"
+    "./Gambling/l": {
+      "require": "./Gambling/l/index.js",
+      "import": "./Gambling/l/index.mjs",
+      "types": "./Gambling/l/index.d.ts"
     },
     "./Foursquare/m": {
       "require": "./Foursquare/m/index.js",
@@ -2897,6 +2887,16 @@
       "import": "./Foursquare/l/index.mjs",
       "types": "./Foursquare/l/index.d.ts"
     },
+    "./FormatAlignRight/m": {
+      "require": "./FormatAlignRight/m/index.js",
+      "import": "./FormatAlignRight/m/index.mjs",
+      "types": "./FormatAlignRight/m/index.d.ts"
+    },
+    "./FormatAlignRight/l": {
+      "require": "./FormatAlignRight/l/index.js",
+      "import": "./FormatAlignRight/l/index.mjs",
+      "types": "./FormatAlignRight/l/index.d.ts"
+    },
     "./FormatAlignLeft/m": {
       "require": "./FormatAlignLeft/m/index.js",
       "import": "./FormatAlignLeft/m/index.mjs",
@@ -2906,16 +2906,6 @@
       "require": "./FormatAlignLeft/l/index.js",
       "import": "./FormatAlignLeft/l/index.mjs",
       "types": "./FormatAlignLeft/l/index.d.ts"
-    },
-    "./FormatAlignJustify/m": {
-      "require": "./FormatAlignJustify/m/index.js",
-      "import": "./FormatAlignJustify/m/index.mjs",
-      "types": "./FormatAlignJustify/m/index.d.ts"
-    },
-    "./FormatAlignJustify/l": {
-      "require": "./FormatAlignJustify/l/index.js",
-      "import": "./FormatAlignJustify/l/index.mjs",
-      "types": "./FormatAlignJustify/l/index.d.ts"
     },
     "./FormatAlignCenter/m": {
       "require": "./FormatAlignCenter/m/index.js",
@@ -2927,15 +2917,15 @@
       "import": "./FormatAlignCenter/l/index.mjs",
       "types": "./FormatAlignCenter/l/index.d.ts"
     },
-    "./Formal/m": {
-      "require": "./Formal/m/index.js",
-      "import": "./Formal/m/index.mjs",
-      "types": "./Formal/m/index.d.ts"
+    "./FormatAlignJustify/m": {
+      "require": "./FormatAlignJustify/m/index.js",
+      "import": "./FormatAlignJustify/m/index.mjs",
+      "types": "./FormatAlignJustify/m/index.d.ts"
     },
-    "./Formal/l": {
-      "require": "./Formal/l/index.js",
-      "import": "./Formal/l/index.mjs",
-      "types": "./Formal/l/index.d.ts"
+    "./FormatAlignJustify/l": {
+      "require": "./FormatAlignJustify/l/index.js",
+      "import": "./FormatAlignJustify/l/index.mjs",
+      "types": "./FormatAlignJustify/l/index.d.ts"
     },
     "./Form/m": {
       "require": "./Form/m/index.js",
@@ -2957,6 +2947,26 @@
       "import": "./Food/l/index.mjs",
       "types": "./Food/l/index.d.ts"
     },
+    "./Formal/m": {
+      "require": "./Formal/m/index.js",
+      "import": "./Formal/m/index.mjs",
+      "types": "./Formal/m/index.d.ts"
+    },
+    "./Formal/l": {
+      "require": "./Formal/l/index.js",
+      "import": "./Formal/l/index.mjs",
+      "types": "./Formal/l/index.d.ts"
+    },
+    "./FolderOpen/m": {
+      "require": "./FolderOpen/m/index.js",
+      "import": "./FolderOpen/m/index.mjs",
+      "types": "./FolderOpen/m/index.d.ts"
+    },
+    "./FolderOpen/l": {
+      "require": "./FolderOpen/l/index.js",
+      "import": "./FolderOpen/l/index.mjs",
+      "types": "./FolderOpen/l/index.d.ts"
+    },
     "./FolderOpenFilled/m": {
       "require": "./FolderOpenFilled/m/index.js",
       "import": "./FolderOpenFilled/m/index.mjs",
@@ -2976,16 +2986,6 @@
       "require": "./FolderFilled/l/index.js",
       "import": "./FolderFilled/l/index.mjs",
       "types": "./FolderFilled/l/index.d.ts"
-    },
-    "./FolderOpen/m": {
-      "require": "./FolderOpen/m/index.js",
-      "import": "./FolderOpen/m/index.mjs",
-      "types": "./FolderOpen/m/index.d.ts"
-    },
-    "./FolderOpen/l": {
-      "require": "./FolderOpen/l/index.js",
-      "import": "./FolderOpen/l/index.mjs",
-      "types": "./FolderOpen/l/index.d.ts"
     },
     "./Fish/m": {
       "require": "./Fish/m/index.js",
@@ -3007,16 +3007,6 @@
       "import": "./Folder/l/index.mjs",
       "types": "./Folder/l/index.d.ts"
     },
-    "./Fire/m": {
-      "require": "./Fire/m/index.js",
-      "import": "./Fire/m/index.mjs",
-      "types": "./Fire/m/index.d.ts"
-    },
-    "./Fire/l": {
-      "require": "./Fire/l/index.js",
-      "import": "./Fire/l/index.mjs",
-      "types": "./Fire/l/index.d.ts"
-    },
     "./Firefox/m": {
       "require": "./Firefox/m/index.js",
       "import": "./Firefox/m/index.mjs",
@@ -3027,15 +3017,15 @@
       "import": "./Firefox/l/index.mjs",
       "types": "./Firefox/l/index.d.ts"
     },
-    "./Filter/m": {
-      "require": "./Filter/m/index.js",
-      "import": "./Filter/m/index.mjs",
-      "types": "./Filter/m/index.d.ts"
+    "./Fire/m": {
+      "require": "./Fire/m/index.js",
+      "import": "./Fire/m/index.mjs",
+      "types": "./Fire/m/index.d.ts"
     },
-    "./Filter/l": {
-      "require": "./Filter/l/index.js",
-      "import": "./Filter/l/index.mjs",
-      "types": "./Filter/l/index.d.ts"
+    "./Fire/l": {
+      "require": "./Fire/l/index.js",
+      "import": "./Fire/l/index.mjs",
+      "types": "./Fire/l/index.d.ts"
     },
     "./FindResultsOn/m": {
       "require": "./FindResultsOn/m/index.js",
@@ -3047,15 +3037,15 @@
       "import": "./FindResultsOn/l/index.mjs",
       "types": "./FindResultsOn/l/index.d.ts"
     },
-    "./FileUpload/m": {
-      "require": "./FileUpload/m/index.js",
-      "import": "./FileUpload/m/index.mjs",
-      "types": "./FileUpload/m/index.d.ts"
+    "./Filter/m": {
+      "require": "./Filter/m/index.js",
+      "import": "./Filter/m/index.mjs",
+      "types": "./Filter/m/index.d.ts"
     },
-    "./FileUpload/l": {
-      "require": "./FileUpload/l/index.js",
-      "import": "./FileUpload/l/index.mjs",
-      "types": "./FileUpload/l/index.d.ts"
+    "./Filter/l": {
+      "require": "./Filter/l/index.js",
+      "import": "./Filter/l/index.mjs",
+      "types": "./Filter/l/index.d.ts"
     },
     "./FileImport/m": {
       "require": "./FileImport/m/index.js",
@@ -3067,15 +3057,15 @@
       "import": "./FileImport/l/index.mjs",
       "types": "./FileImport/l/index.d.ts"
     },
-    "./FileDownload/m": {
-      "require": "./FileDownload/m/index.js",
-      "import": "./FileDownload/m/index.mjs",
-      "types": "./FileDownload/m/index.d.ts"
+    "./FileUpload/m": {
+      "require": "./FileUpload/m/index.js",
+      "import": "./FileUpload/m/index.mjs",
+      "types": "./FileUpload/m/index.d.ts"
     },
-    "./FileDownload/l": {
-      "require": "./FileDownload/l/index.js",
-      "import": "./FileDownload/l/index.mjs",
-      "types": "./FileDownload/l/index.d.ts"
+    "./FileUpload/l": {
+      "require": "./FileUpload/l/index.js",
+      "import": "./FileUpload/l/index.mjs",
+      "types": "./FileUpload/l/index.d.ts"
     },
     "./FileExport/m": {
       "require": "./FileExport/m/index.js",
@@ -3087,15 +3077,15 @@
       "import": "./FileExport/l/index.mjs",
       "types": "./FileExport/l/index.d.ts"
     },
-    "./FeaturedVideo/m": {
-      "require": "./FeaturedVideo/m/index.js",
-      "import": "./FeaturedVideo/m/index.mjs",
-      "types": "./FeaturedVideo/m/index.d.ts"
+    "./FileDownload/m": {
+      "require": "./FileDownload/m/index.js",
+      "import": "./FileDownload/m/index.mjs",
+      "types": "./FileDownload/m/index.d.ts"
     },
-    "./FeaturedVideo/l": {
-      "require": "./FeaturedVideo/l/index.js",
-      "import": "./FeaturedVideo/l/index.mjs",
-      "types": "./FeaturedVideo/l/index.d.ts"
+    "./FileDownload/l": {
+      "require": "./FileDownload/l/index.js",
+      "import": "./FileDownload/l/index.mjs",
+      "types": "./FileDownload/l/index.d.ts"
     },
     "./FeaturedImage/m": {
       "require": "./FeaturedImage/m/index.js",
@@ -3107,6 +3097,16 @@
       "import": "./FeaturedImage/l/index.mjs",
       "types": "./FeaturedImage/l/index.d.ts"
     },
+    "./FeaturedVideo/m": {
+      "require": "./FeaturedVideo/m/index.js",
+      "import": "./FeaturedVideo/m/index.mjs",
+      "types": "./FeaturedVideo/m/index.d.ts"
+    },
+    "./FeaturedVideo/l": {
+      "require": "./FeaturedVideo/l/index.js",
+      "import": "./FeaturedVideo/l/index.mjs",
+      "types": "./FeaturedVideo/l/index.d.ts"
+    },
     "./Favorite/m": {
       "require": "./Favorite/m/index.js",
       "import": "./Favorite/m/index.mjs",
@@ -3116,6 +3116,16 @@
       "require": "./Favorite/l/index.js",
       "import": "./Favorite/l/index.mjs",
       "types": "./Favorite/l/index.d.ts"
+    },
+    "./Fashion/m": {
+      "require": "./Fashion/m/index.js",
+      "import": "./Fashion/m/index.mjs",
+      "types": "./Fashion/m/index.d.ts"
+    },
+    "./Fashion/l": {
+      "require": "./Fashion/l/index.js",
+      "import": "./Fashion/l/index.mjs",
+      "types": "./Fashion/l/index.d.ts"
     },
     "./FavoriteFilled/m": {
       "require": "./FavoriteFilled/m/index.js",
@@ -3137,15 +3147,15 @@
       "import": "./Farm/l/index.mjs",
       "types": "./Farm/l/index.d.ts"
     },
-    "./Fashion/m": {
-      "require": "./Fashion/m/index.js",
-      "import": "./Fashion/m/index.mjs",
-      "types": "./Fashion/m/index.d.ts"
+    "./Facebook/m": {
+      "require": "./Facebook/m/index.js",
+      "import": "./Facebook/m/index.mjs",
+      "types": "./Facebook/m/index.d.ts"
     },
-    "./Fashion/l": {
-      "require": "./Fashion/l/index.js",
-      "import": "./Fashion/l/index.mjs",
-      "types": "./Fashion/l/index.d.ts"
+    "./Facebook/l": {
+      "require": "./Facebook/l/index.js",
+      "import": "./Facebook/l/index.mjs",
+      "types": "./Facebook/l/index.d.ts"
     },
     "./FacebookMessenger/m": {
       "require": "./FacebookMessenger/m/index.js",
@@ -3157,25 +3167,15 @@
       "import": "./FacebookMessenger/l/index.mjs",
       "types": "./FacebookMessenger/l/index.d.ts"
     },
-    "./Facebook/m": {
-      "require": "./Facebook/m/index.js",
-      "import": "./Facebook/m/index.mjs",
-      "types": "./Facebook/m/index.d.ts"
+    "./Expand/m": {
+      "require": "./Expand/m/index.js",
+      "import": "./Expand/m/index.mjs",
+      "types": "./Expand/m/index.d.ts"
     },
-    "./Facebook/l": {
-      "require": "./Facebook/l/index.js",
-      "import": "./Facebook/l/index.mjs",
-      "types": "./Facebook/l/index.d.ts"
-    },
-    "./ExpandAlt/m": {
-      "require": "./ExpandAlt/m/index.js",
-      "import": "./ExpandAlt/m/index.mjs",
-      "types": "./ExpandAlt/m/index.d.ts"
-    },
-    "./ExpandAlt/l": {
-      "require": "./ExpandAlt/l/index.js",
-      "import": "./ExpandAlt/l/index.mjs",
-      "types": "./ExpandAlt/l/index.d.ts"
+    "./Expand/l": {
+      "require": "./Expand/l/index.js",
+      "import": "./Expand/l/index.mjs",
+      "types": "./Expand/l/index.d.ts"
     },
     "./ExpandText/m": {
       "require": "./ExpandText/m/index.js",
@@ -3187,6 +3187,16 @@
       "import": "./ExpandText/l/index.mjs",
       "types": "./ExpandText/l/index.d.ts"
     },
+    "./ExpandAlt/m": {
+      "require": "./ExpandAlt/m/index.js",
+      "import": "./ExpandAlt/m/index.mjs",
+      "types": "./ExpandAlt/m/index.d.ts"
+    },
+    "./ExpandAlt/l": {
+      "require": "./ExpandAlt/l/index.js",
+      "import": "./ExpandAlt/l/index.mjs",
+      "types": "./ExpandAlt/l/index.d.ts"
+    },
     "./Exit/m": {
       "require": "./Exit/m/index.js",
       "import": "./Exit/m/index.mjs",
@@ -3197,26 +3207,6 @@
       "import": "./Exit/l/index.mjs",
       "types": "./Exit/l/index.d.ts"
     },
-    "./Expand/m": {
-      "require": "./Expand/m/index.js",
-      "import": "./Expand/m/index.mjs",
-      "types": "./Expand/m/index.d.ts"
-    },
-    "./Expand/l": {
-      "require": "./Expand/l/index.js",
-      "import": "./Expand/l/index.mjs",
-      "types": "./Expand/l/index.d.ts"
-    },
-    "./Event/m": {
-      "require": "./Event/m/index.js",
-      "import": "./Event/m/index.mjs",
-      "types": "./Event/m/index.d.ts"
-    },
-    "./Event/l": {
-      "require": "./Event/l/index.js",
-      "import": "./Event/l/index.mjs",
-      "types": "./Event/l/index.d.ts"
-    },
     "./Events/m": {
       "require": "./Events/m/index.js",
       "import": "./Events/m/index.mjs",
@@ -3226,16 +3216,6 @@
       "require": "./Events/l/index.js",
       "import": "./Events/l/index.mjs",
       "types": "./Events/l/index.d.ts"
-    },
-    "./Ellipsis/m": {
-      "require": "./Ellipsis/m/index.js",
-      "import": "./Ellipsis/m/index.mjs",
-      "types": "./Ellipsis/m/index.d.ts"
-    },
-    "./Ellipsis/l": {
-      "require": "./Ellipsis/l/index.js",
-      "import": "./Ellipsis/l/index.mjs",
-      "types": "./Ellipsis/l/index.d.ts"
     },
     "./Education/m": {
       "require": "./Education/m/index.js",
@@ -3256,6 +3236,26 @@
       "require": "./Edit/l/index.js",
       "import": "./Edit/l/index.mjs",
       "types": "./Edit/l/index.d.ts"
+    },
+    "./Event/m": {
+      "require": "./Event/m/index.js",
+      "import": "./Event/m/index.mjs",
+      "types": "./Event/m/index.d.ts"
+    },
+    "./Event/l": {
+      "require": "./Event/l/index.js",
+      "import": "./Event/l/index.mjs",
+      "types": "./Event/l/index.d.ts"
+    },
+    "./Ellipsis/m": {
+      "require": "./Ellipsis/m/index.js",
+      "import": "./Ellipsis/m/index.mjs",
+      "types": "./Ellipsis/m/index.d.ts"
+    },
+    "./Ellipsis/l": {
+      "require": "./Ellipsis/l/index.js",
+      "import": "./Ellipsis/l/index.mjs",
+      "types": "./Ellipsis/l/index.d.ts"
     },
     "./DropText/m": {
       "require": "./DropText/m/index.js",
@@ -3287,26 +3287,6 @@
       "import": "./DocumentPdf/l/index.mjs",
       "types": "./DocumentPdf/l/index.d.ts"
     },
-    "./DocumentSad/m": {
-      "require": "./DocumentSad/m/index.js",
-      "import": "./DocumentSad/m/index.mjs",
-      "types": "./DocumentSad/m/index.d.ts"
-    },
-    "./DocumentSad/l": {
-      "require": "./DocumentSad/l/index.js",
-      "import": "./DocumentSad/l/index.mjs",
-      "types": "./DocumentSad/l/index.d.ts"
-    },
-    "./DocumentExport/m": {
-      "require": "./DocumentExport/m/index.js",
-      "import": "./DocumentExport/m/index.mjs",
-      "types": "./DocumentExport/m/index.d.ts"
-    },
-    "./DocumentExport/l": {
-      "require": "./DocumentExport/l/index.js",
-      "import": "./DocumentExport/l/index.mjs",
-      "types": "./DocumentExport/l/index.d.ts"
-    },
     "./DocumentHappy/m": {
       "require": "./DocumentHappy/m/index.js",
       "import": "./DocumentHappy/m/index.mjs",
@@ -3317,15 +3297,15 @@
       "import": "./DocumentHappy/l/index.mjs",
       "types": "./DocumentHappy/l/index.d.ts"
     },
-    "./DocumentCheck/m": {
-      "require": "./DocumentCheck/m/index.js",
-      "import": "./DocumentCheck/m/index.mjs",
-      "types": "./DocumentCheck/m/index.d.ts"
+    "./DocumentSad/m": {
+      "require": "./DocumentSad/m/index.js",
+      "import": "./DocumentSad/m/index.mjs",
+      "types": "./DocumentSad/m/index.d.ts"
     },
-    "./DocumentCheck/l": {
-      "require": "./DocumentCheck/l/index.js",
-      "import": "./DocumentCheck/l/index.mjs",
-      "types": "./DocumentCheck/l/index.d.ts"
+    "./DocumentSad/l": {
+      "require": "./DocumentSad/l/index.js",
+      "import": "./DocumentSad/l/index.mjs",
+      "types": "./DocumentSad/l/index.d.ts"
     },
     "./DocumentDrop/m": {
       "require": "./DocumentDrop/m/index.js",
@@ -3337,6 +3317,16 @@
       "import": "./DocumentDrop/l/index.mjs",
       "types": "./DocumentDrop/l/index.d.ts"
     },
+    "./DocumentCheck/m": {
+      "require": "./DocumentCheck/m/index.js",
+      "import": "./DocumentCheck/m/index.mjs",
+      "types": "./DocumentCheck/m/index.d.ts"
+    },
+    "./DocumentCheck/l": {
+      "require": "./DocumentCheck/l/index.js",
+      "import": "./DocumentCheck/l/index.mjs",
+      "types": "./DocumentCheck/l/index.d.ts"
+    },
     "./DesktopChart/m": {
       "require": "./DesktopChart/m/index.js",
       "import": "./DesktopChart/m/index.mjs",
@@ -3347,15 +3337,15 @@
       "import": "./DesktopChart/l/index.mjs",
       "types": "./DesktopChart/l/index.d.ts"
     },
-    "./Cut/m": {
-      "require": "./Cut/m/index.js",
-      "import": "./Cut/m/index.mjs",
-      "types": "./Cut/m/index.d.ts"
+    "./DocumentExport/m": {
+      "require": "./DocumentExport/m/index.js",
+      "import": "./DocumentExport/m/index.mjs",
+      "types": "./DocumentExport/m/index.d.ts"
     },
-    "./Cut/l": {
-      "require": "./Cut/l/index.js",
-      "import": "./Cut/l/index.mjs",
-      "types": "./Cut/l/index.d.ts"
+    "./DocumentExport/l": {
+      "require": "./DocumentExport/l/index.js",
+      "import": "./DocumentExport/l/index.mjs",
+      "types": "./DocumentExport/l/index.d.ts"
     },
     "./Desktop/m": {
       "require": "./Desktop/m/index.js",
@@ -3377,15 +3367,15 @@
       "import": "./Document/l/index.mjs",
       "types": "./Document/l/index.d.ts"
     },
-    "./CursorDefault/m": {
-      "require": "./CursorDefault/m/index.js",
-      "import": "./CursorDefault/m/index.mjs",
-      "types": "./CursorDefault/m/index.d.ts"
+    "./Cut/m": {
+      "require": "./Cut/m/index.js",
+      "import": "./Cut/m/index.mjs",
+      "types": "./Cut/m/index.d.ts"
     },
-    "./CursorDefault/l": {
-      "require": "./CursorDefault/l/index.js",
-      "import": "./CursorDefault/l/index.mjs",
-      "types": "./CursorDefault/l/index.d.ts"
+    "./Cut/l": {
+      "require": "./Cut/l/index.js",
+      "import": "./Cut/l/index.mjs",
+      "types": "./Cut/l/index.d.ts"
     },
     "./CursorMove/m": {
       "require": "./CursorMove/m/index.js",
@@ -3396,6 +3386,16 @@
       "require": "./CursorMove/l/index.js",
       "import": "./CursorMove/l/index.mjs",
       "types": "./CursorMove/l/index.d.ts"
+    },
+    "./CursorDefault/m": {
+      "require": "./CursorDefault/m/index.js",
+      "import": "./CursorDefault/m/index.mjs",
+      "types": "./CursorDefault/m/index.d.ts"
+    },
+    "./CursorDefault/l": {
+      "require": "./CursorDefault/l/index.js",
+      "import": "./CursorDefault/l/index.mjs",
+      "types": "./CursorDefault/l/index.d.ts"
     },
     "./CurrencyUsd/m": {
       "require": "./CurrencyUsd/m/index.js",
@@ -3417,16 +3417,6 @@
       "import": "./Crown/l/index.mjs",
       "types": "./Crown/l/index.d.ts"
     },
-    "./Craft/m": {
-      "require": "./Craft/m/index.js",
-      "import": "./Craft/m/index.mjs",
-      "types": "./Craft/m/index.d.ts"
-    },
-    "./Craft/l": {
-      "require": "./Craft/l/index.js",
-      "import": "./Craft/l/index.mjs",
-      "types": "./Craft/l/index.d.ts"
-    },
     "./Crosshair/m": {
       "require": "./Crosshair/m/index.js",
       "import": "./Crosshair/m/index.mjs",
@@ -3437,15 +3427,15 @@
       "import": "./Crosshair/l/index.mjs",
       "types": "./Crosshair/l/index.d.ts"
     },
-    "./Copy/m": {
-      "require": "./Copy/m/index.js",
-      "import": "./Copy/m/index.mjs",
-      "types": "./Copy/m/index.d.ts"
+    "./Craft/m": {
+      "require": "./Craft/m/index.js",
+      "import": "./Craft/m/index.mjs",
+      "types": "./Craft/m/index.d.ts"
     },
-    "./Copy/l": {
-      "require": "./Copy/l/index.js",
-      "import": "./Copy/l/index.mjs",
-      "types": "./Copy/l/index.d.ts"
+    "./Craft/l": {
+      "require": "./Craft/l/index.js",
+      "import": "./Craft/l/index.mjs",
+      "types": "./Craft/l/index.d.ts"
     },
     "./Cosmetics/m": {
       "require": "./Cosmetics/m/index.js",
@@ -3457,15 +3447,25 @@
       "import": "./Cosmetics/l/index.mjs",
       "types": "./Cosmetics/l/index.d.ts"
     },
-    "./CollapseAlt/m": {
-      "require": "./CollapseAlt/m/index.js",
-      "import": "./CollapseAlt/m/index.mjs",
-      "types": "./CollapseAlt/m/index.d.ts"
+    "./Copy/m": {
+      "require": "./Copy/m/index.js",
+      "import": "./Copy/m/index.mjs",
+      "types": "./Copy/m/index.d.ts"
     },
-    "./CollapseAlt/l": {
-      "require": "./CollapseAlt/l/index.js",
-      "import": "./CollapseAlt/l/index.mjs",
-      "types": "./CollapseAlt/l/index.d.ts"
+    "./Copy/l": {
+      "require": "./Copy/l/index.js",
+      "import": "./Copy/l/index.mjs",
+      "types": "./Copy/l/index.d.ts"
+    },
+    "./Comics/m": {
+      "require": "./Comics/m/index.js",
+      "import": "./Comics/m/index.mjs",
+      "types": "./Comics/m/index.d.ts"
+    },
+    "./Comics/l": {
+      "require": "./Comics/l/index.js",
+      "import": "./Comics/l/index.mjs",
+      "types": "./Comics/l/index.d.ts"
     },
     "./ColumnTwo/m": {
       "require": "./ColumnTwo/m/index.js",
@@ -3477,6 +3477,16 @@
       "import": "./ColumnTwo/l/index.mjs",
       "types": "./ColumnTwo/l/index.d.ts"
     },
+    "./CollapseAlt/m": {
+      "require": "./CollapseAlt/m/index.js",
+      "import": "./CollapseAlt/m/index.mjs",
+      "types": "./CollapseAlt/m/index.d.ts"
+    },
+    "./CollapseAlt/l": {
+      "require": "./CollapseAlt/l/index.js",
+      "import": "./CollapseAlt/l/index.mjs",
+      "types": "./CollapseAlt/l/index.d.ts"
+    },
     "./ColumnThree/m": {
       "require": "./ColumnThree/m/index.js",
       "import": "./ColumnThree/m/index.mjs",
@@ -3486,16 +3496,6 @@
       "require": "./ColumnThree/l/index.js",
       "import": "./ColumnThree/l/index.mjs",
       "types": "./ColumnThree/l/index.d.ts"
-    },
-    "./Comics/m": {
-      "require": "./Comics/m/index.js",
-      "import": "./Comics/m/index.mjs",
-      "types": "./Comics/m/index.d.ts"
-    },
-    "./Comics/l": {
-      "require": "./Comics/l/index.js",
-      "import": "./Comics/l/index.mjs",
-      "types": "./Comics/l/index.d.ts"
     },
     "./Collapse/m": {
       "require": "./Collapse/m/index.js",
@@ -3537,6 +3537,26 @@
       "import": "./Chrome/l/index.mjs",
       "types": "./Chrome/l/index.d.ts"
     },
+    "./ChevronDown/m": {
+      "require": "./ChevronDown/m/index.js",
+      "import": "./ChevronDown/m/index.mjs",
+      "types": "./ChevronDown/m/index.d.ts"
+    },
+    "./ChevronDown/l": {
+      "require": "./ChevronDown/l/index.js",
+      "import": "./ChevronDown/l/index.mjs",
+      "types": "./ChevronDown/l/index.d.ts"
+    },
+    "./ChevronLeft/m": {
+      "require": "./ChevronLeft/m/index.js",
+      "import": "./ChevronLeft/m/index.mjs",
+      "types": "./ChevronLeft/m/index.d.ts"
+    },
+    "./ChevronLeft/l": {
+      "require": "./ChevronLeft/l/index.js",
+      "import": "./ChevronLeft/l/index.mjs",
+      "types": "./ChevronLeft/l/index.d.ts"
+    },
     "./ChevronUp/m": {
       "require": "./ChevronUp/m/index.js",
       "import": "./ChevronUp/m/index.mjs",
@@ -3557,36 +3577,6 @@
       "import": "./ChevronRight/l/index.mjs",
       "types": "./ChevronRight/l/index.d.ts"
     },
-    "./ChevronDown/m": {
-      "require": "./ChevronDown/m/index.js",
-      "import": "./ChevronDown/m/index.mjs",
-      "types": "./ChevronDown/m/index.d.ts"
-    },
-    "./ChevronDown/l": {
-      "require": "./ChevronDown/l/index.js",
-      "import": "./ChevronDown/l/index.mjs",
-      "types": "./ChevronDown/l/index.d.ts"
-    },
-    "./ChevronDoubleRight/m": {
-      "require": "./ChevronDoubleRight/m/index.js",
-      "import": "./ChevronDoubleRight/m/index.mjs",
-      "types": "./ChevronDoubleRight/m/index.d.ts"
-    },
-    "./ChevronDoubleRight/l": {
-      "require": "./ChevronDoubleRight/l/index.js",
-      "import": "./ChevronDoubleRight/l/index.mjs",
-      "types": "./ChevronDoubleRight/l/index.d.ts"
-    },
-    "./ChevronLeft/m": {
-      "require": "./ChevronLeft/m/index.js",
-      "import": "./ChevronLeft/m/index.mjs",
-      "types": "./ChevronLeft/m/index.d.ts"
-    },
-    "./ChevronLeft/l": {
-      "require": "./ChevronLeft/l/index.js",
-      "import": "./ChevronLeft/l/index.mjs",
-      "types": "./ChevronLeft/l/index.d.ts"
-    },
     "./ChevronDoubleUp/m": {
       "require": "./ChevronDoubleUp/m/index.js",
       "import": "./ChevronDoubleUp/m/index.mjs",
@@ -3596,16 +3586,6 @@
       "require": "./ChevronDoubleUp/l/index.js",
       "import": "./ChevronDoubleUp/l/index.mjs",
       "types": "./ChevronDoubleUp/l/index.d.ts"
-    },
-    "./ChevronDoubleLeft/m": {
-      "require": "./ChevronDoubleLeft/m/index.js",
-      "import": "./ChevronDoubleLeft/m/index.mjs",
-      "types": "./ChevronDoubleLeft/m/index.d.ts"
-    },
-    "./ChevronDoubleLeft/l": {
-      "require": "./ChevronDoubleLeft/l/index.js",
-      "import": "./ChevronDoubleLeft/l/index.mjs",
-      "types": "./ChevronDoubleLeft/l/index.d.ts"
     },
     "./ChevronDoubleDown/m": {
       "require": "./ChevronDoubleDown/m/index.js",
@@ -3617,15 +3597,25 @@
       "import": "./ChevronDoubleDown/l/index.mjs",
       "types": "./ChevronDoubleDown/l/index.d.ts"
     },
-    "./CheckAlt/m": {
-      "require": "./CheckAlt/m/index.js",
-      "import": "./CheckAlt/m/index.mjs",
-      "types": "./CheckAlt/m/index.d.ts"
+    "./ChevronDoubleLeft/m": {
+      "require": "./ChevronDoubleLeft/m/index.js",
+      "import": "./ChevronDoubleLeft/m/index.mjs",
+      "types": "./ChevronDoubleLeft/m/index.d.ts"
     },
-    "./CheckAlt/l": {
-      "require": "./CheckAlt/l/index.js",
-      "import": "./CheckAlt/l/index.mjs",
-      "types": "./CheckAlt/l/index.d.ts"
+    "./ChevronDoubleLeft/l": {
+      "require": "./ChevronDoubleLeft/l/index.js",
+      "import": "./ChevronDoubleLeft/l/index.mjs",
+      "types": "./ChevronDoubleLeft/l/index.d.ts"
+    },
+    "./ChevronDoubleRight/m": {
+      "require": "./ChevronDoubleRight/m/index.js",
+      "import": "./ChevronDoubleRight/m/index.mjs",
+      "types": "./ChevronDoubleRight/m/index.d.ts"
+    },
+    "./ChevronDoubleRight/l": {
+      "require": "./ChevronDoubleRight/l/index.js",
+      "import": "./ChevronDoubleRight/l/index.mjs",
+      "types": "./ChevronDoubleRight/l/index.d.ts"
     },
     "./Checkbox/m": {
       "require": "./Checkbox/m/index.js",
@@ -3636,6 +3626,16 @@
       "require": "./Checkbox/l/index.js",
       "import": "./Checkbox/l/index.mjs",
       "types": "./Checkbox/l/index.d.ts"
+    },
+    "./CheckAlt/m": {
+      "require": "./CheckAlt/m/index.js",
+      "import": "./CheckAlt/m/index.mjs",
+      "types": "./CheckAlt/m/index.d.ts"
+    },
+    "./CheckAlt/l": {
+      "require": "./CheckAlt/l/index.js",
+      "import": "./CheckAlt/l/index.mjs",
+      "types": "./CheckAlt/l/index.d.ts"
     },
     "./CheckDouble/m": {
       "require": "./CheckDouble/m/index.js",
@@ -3667,16 +3667,6 @@
       "import": "./ChatQuestion/l/index.mjs",
       "types": "./ChatQuestion/l/index.d.ts"
     },
-    "./ChatGPT/m": {
-      "require": "./ChatGPT/m/index.js",
-      "import": "./ChatGPT/m/index.mjs",
-      "types": "./ChatGPT/m/index.d.ts"
-    },
-    "./ChatGPT/l": {
-      "require": "./ChatGPT/l/index.js",
-      "import": "./ChatGPT/l/index.mjs",
-      "types": "./ChatGPT/l/index.d.ts"
-    },
     "./ChatPlus/m": {
       "require": "./ChatPlus/m/index.js",
       "import": "./ChatPlus/m/index.mjs",
@@ -3687,15 +3677,15 @@
       "import": "./ChatPlus/l/index.mjs",
       "types": "./ChatPlus/l/index.d.ts"
     },
-    "./ChatFilled/m": {
-      "require": "./ChatFilled/m/index.js",
-      "import": "./ChatFilled/m/index.mjs",
-      "types": "./ChatFilled/m/index.d.ts"
+    "./ChatGPT/m": {
+      "require": "./ChatGPT/m/index.js",
+      "import": "./ChatGPT/m/index.mjs",
+      "types": "./ChatGPT/m/index.d.ts"
     },
-    "./ChatFilled/l": {
-      "require": "./ChatFilled/l/index.js",
-      "import": "./ChatFilled/l/index.mjs",
-      "types": "./ChatFilled/l/index.d.ts"
+    "./ChatGPT/l": {
+      "require": "./ChatGPT/l/index.js",
+      "import": "./ChatGPT/l/index.mjs",
+      "types": "./ChatGPT/l/index.d.ts"
     },
     "./ChatCheck/m": {
       "require": "./ChatCheck/m/index.js",
@@ -3706,6 +3696,16 @@
       "require": "./ChatCheck/l/index.js",
       "import": "./ChatCheck/l/index.mjs",
       "types": "./ChatCheck/l/index.d.ts"
+    },
+    "./ChatFilled/m": {
+      "require": "./ChatFilled/m/index.js",
+      "import": "./ChatFilled/m/index.mjs",
+      "types": "./ChatFilled/m/index.d.ts"
+    },
+    "./ChatFilled/l": {
+      "require": "./ChatFilled/l/index.js",
+      "import": "./ChatFilled/l/index.mjs",
+      "types": "./ChatFilled/l/index.d.ts"
     },
     "./ChatAI/m": {
       "require": "./ChatAI/m/index.js",
@@ -3737,16 +3737,6 @@
       "import": "./ChartVenn/l/index.mjs",
       "types": "./ChartVenn/l/index.d.ts"
     },
-    "./ChartLine/m": {
-      "require": "./ChartLine/m/index.js",
-      "import": "./ChartLine/m/index.mjs",
-      "types": "./ChartLine/m/index.d.ts"
-    },
-    "./ChartLine/l": {
-      "require": "./ChartLine/l/index.js",
-      "import": "./ChartLine/l/index.mjs",
-      "types": "./ChartLine/l/index.d.ts"
-    },
     "./ChartPie/m": {
       "require": "./ChartPie/m/index.js",
       "import": "./ChartPie/m/index.mjs",
@@ -3756,6 +3746,16 @@
       "require": "./ChartPie/l/index.js",
       "import": "./ChartPie/l/index.mjs",
       "types": "./ChartPie/l/index.d.ts"
+    },
+    "./ChartLine/m": {
+      "require": "./ChartLine/m/index.js",
+      "import": "./ChartLine/m/index.mjs",
+      "types": "./ChartLine/m/index.d.ts"
+    },
+    "./ChartLine/l": {
+      "require": "./ChartLine/l/index.js",
+      "import": "./ChartLine/l/index.mjs",
+      "types": "./ChartLine/l/index.d.ts"
     },
     "./ChartBubble/m": {
       "require": "./ChartBubble/m/index.js",
@@ -3827,26 +3827,6 @@
       "import": "./Charge/l/index.mjs",
       "types": "./Charge/l/index.d.ts"
     },
-    "./Casual/m": {
-      "require": "./Casual/m/index.js",
-      "import": "./Casual/m/index.mjs",
-      "types": "./Casual/m/index.d.ts"
-    },
-    "./Casual/l": {
-      "require": "./Casual/l/index.js",
-      "import": "./Casual/l/index.mjs",
-      "types": "./Casual/l/index.d.ts"
-    },
-    "./Cart/m": {
-      "require": "./Cart/m/index.js",
-      "import": "./Cart/m/index.mjs",
-      "types": "./Cart/m/index.d.ts"
-    },
-    "./Cart/l": {
-      "require": "./Cart/l/index.js",
-      "import": "./Cart/l/index.mjs",
-      "types": "./Cart/l/index.d.ts"
-    },
     "./Cards/m": {
       "require": "./Cards/m/index.js",
       "import": "./Cards/m/index.mjs",
@@ -3857,6 +3837,16 @@
       "import": "./Cards/l/index.mjs",
       "types": "./Cards/l/index.d.ts"
     },
+    "./Casual/m": {
+      "require": "./Casual/m/index.js",
+      "import": "./Casual/m/index.mjs",
+      "types": "./Casual/m/index.d.ts"
+    },
+    "./Casual/l": {
+      "require": "./Casual/l/index.js",
+      "import": "./Casual/l/index.mjs",
+      "types": "./Casual/l/index.d.ts"
+    },
     "./CardUpdate/m": {
       "require": "./CardUpdate/m/index.js",
       "import": "./CardUpdate/m/index.mjs",
@@ -3866,6 +3856,16 @@
       "require": "./CardUpdate/l/index.js",
       "import": "./CardUpdate/l/index.mjs",
       "types": "./CardUpdate/l/index.d.ts"
+    },
+    "./Cart/m": {
+      "require": "./Cart/m/index.js",
+      "import": "./Cart/m/index.mjs",
+      "types": "./Cart/m/index.d.ts"
+    },
+    "./Cart/l": {
+      "require": "./Cart/l/index.js",
+      "import": "./Cart/l/index.mjs",
+      "types": "./Cart/l/index.d.ts"
     },
     "./CalendarCheck/m": {
       "require": "./CalendarCheck/m/index.js",
@@ -3887,6 +3887,16 @@
       "import": "./Car/l/index.mjs",
       "types": "./Car/l/index.d.ts"
     },
+    "./Calendar/m": {
+      "require": "./Calendar/m/index.js",
+      "import": "./Calendar/m/index.mjs",
+      "types": "./Calendar/m/index.d.ts"
+    },
+    "./Calendar/l": {
+      "require": "./Calendar/l/index.js",
+      "import": "./Calendar/l/index.mjs",
+      "types": "./Calendar/l/index.d.ts"
+    },
     "./Bulb/m": {
       "require": "./Bulb/m/index.js",
       "import": "./Bulb/m/index.mjs",
@@ -3906,16 +3916,6 @@
       "require": "./Briefcase/l/index.js",
       "import": "./Briefcase/l/index.mjs",
       "types": "./Briefcase/l/index.d.ts"
-    },
-    "./Calendar/m": {
-      "require": "./Calendar/m/index.js",
-      "import": "./Calendar/m/index.mjs",
-      "types": "./Calendar/m/index.d.ts"
-    },
-    "./Calendar/l": {
-      "require": "./Calendar/l/index.js",
-      "import": "./Calendar/l/index.mjs",
-      "types": "./Calendar/l/index.d.ts"
     },
     "./BracketsCurly/m": {
       "require": "./BracketsCurly/m/index.js",
@@ -3947,16 +3947,6 @@
       "import": "./BracketsAngle/l/index.mjs",
       "types": "./BracketsAngle/l/index.d.ts"
     },
-    "./BookmarkFilled/m": {
-      "require": "./BookmarkFilled/m/index.js",
-      "import": "./BookmarkFilled/m/index.mjs",
-      "types": "./BookmarkFilled/m/index.d.ts"
-    },
-    "./BookmarkFilled/l": {
-      "require": "./BookmarkFilled/l/index.js",
-      "import": "./BookmarkFilled/l/index.mjs",
-      "types": "./BookmarkFilled/l/index.d.ts"
-    },
     "./Bookmark/m": {
       "require": "./Bookmark/m/index.js",
       "import": "./Bookmark/m/index.mjs",
@@ -3966,6 +3956,16 @@
       "require": "./Bookmark/l/index.js",
       "import": "./Bookmark/l/index.mjs",
       "types": "./Bookmark/l/index.d.ts"
+    },
+    "./BookmarkFilled/m": {
+      "require": "./BookmarkFilled/m/index.js",
+      "import": "./BookmarkFilled/m/index.mjs",
+      "types": "./BookmarkFilled/m/index.d.ts"
+    },
+    "./BookmarkFilled/l": {
+      "require": "./BookmarkFilled/l/index.js",
+      "import": "./BookmarkFilled/l/index.mjs",
+      "types": "./BookmarkFilled/l/index.d.ts"
     },
     "./Book/m": {
       "require": "./Book/m/index.js",
@@ -3987,6 +3987,16 @@
       "import": "./Block/l/index.mjs",
       "types": "./Block/l/index.d.ts"
     },
+    "./Attach/m": {
+      "require": "./Attach/m/index.js",
+      "import": "./Attach/m/index.mjs",
+      "types": "./Attach/m/index.d.ts"
+    },
+    "./Attach/l": {
+      "require": "./Attach/l/index.js",
+      "import": "./Attach/l/index.mjs",
+      "types": "./Attach/l/index.d.ts"
+    },
     "./AttacheCase/m": {
       "require": "./AttacheCase/m/index.js",
       "import": "./AttacheCase/m/index.mjs",
@@ -4006,26 +4016,6 @@
       "require": "./AskAI/l/index.js",
       "import": "./AskAI/l/index.mjs",
       "types": "./AskAI/l/index.d.ts"
-    },
-    "./Attach/m": {
-      "require": "./Attach/m/index.js",
-      "import": "./Attach/m/index.mjs",
-      "types": "./Attach/m/index.d.ts"
-    },
-    "./Attach/l": {
-      "require": "./Attach/l/index.js",
-      "import": "./Attach/l/index.mjs",
-      "types": "./Attach/l/index.d.ts"
-    },
-    "./Arrows/m": {
-      "require": "./Arrows/m/index.js",
-      "import": "./Arrows/m/index.mjs",
-      "types": "./Arrows/m/index.d.ts"
-    },
-    "./Arrows/l": {
-      "require": "./Arrows/l/index.js",
-      "import": "./Arrows/l/index.mjs",
-      "types": "./Arrows/l/index.d.ts"
     },
     "./ArrowUp/m": {
       "require": "./ArrowUp/m/index.js",
@@ -4047,15 +4037,15 @@
       "import": "./ArrowRight/l/index.mjs",
       "types": "./ArrowRight/l/index.d.ts"
     },
-    "./ArrowDown/m": {
-      "require": "./ArrowDown/m/index.js",
-      "import": "./ArrowDown/m/index.mjs",
-      "types": "./ArrowDown/m/index.d.ts"
+    "./Arrows/m": {
+      "require": "./Arrows/m/index.js",
+      "import": "./Arrows/m/index.mjs",
+      "types": "./Arrows/m/index.d.ts"
     },
-    "./ArrowDown/l": {
-      "require": "./ArrowDown/l/index.js",
-      "import": "./ArrowDown/l/index.mjs",
-      "types": "./ArrowDown/l/index.d.ts"
+    "./Arrows/l": {
+      "require": "./Arrows/l/index.js",
+      "import": "./Arrows/l/index.mjs",
+      "types": "./Arrows/l/index.d.ts"
     },
     "./ArrowLeft/m": {
       "require": "./ArrowLeft/m/index.js",
@@ -4066,6 +4056,16 @@
       "require": "./ArrowLeft/l/index.js",
       "import": "./ArrowLeft/l/index.mjs",
       "types": "./ArrowLeft/l/index.d.ts"
+    },
+    "./ArrowDown/m": {
+      "require": "./ArrowDown/m/index.js",
+      "import": "./ArrowDown/m/index.mjs",
+      "types": "./ArrowDown/m/index.d.ts"
+    },
+    "./ArrowDown/l": {
+      "require": "./ArrowDown/l/index.js",
+      "import": "./ArrowDown/l/index.mjs",
+      "types": "./ArrowDown/l/index.d.ts"
     },
     "./Archive/m": {
       "require": "./Archive/m/index.js",
@@ -4087,16 +4087,6 @@
       "import": "./Architecture/l/index.mjs",
       "types": "./Architecture/l/index.d.ts"
     },
-    "./AppsBlock/m": {
-      "require": "./AppsBlock/m/index.js",
-      "import": "./AppsBlock/m/index.mjs",
-      "types": "./AppsBlock/m/index.d.ts"
-    },
-    "./AppsBlock/l": {
-      "require": "./AppsBlock/l/index.js",
-      "import": "./AppsBlock/l/index.mjs",
-      "types": "./AppsBlock/l/index.d.ts"
-    },
     "./Apple/m": {
       "require": "./Apple/m/index.js",
       "import": "./Apple/m/index.mjs",
@@ -4106,16 +4096,6 @@
       "require": "./Apple/l/index.js",
       "import": "./Apple/l/index.mjs",
       "types": "./Apple/l/index.d.ts"
-    },
-    "./Android/m": {
-      "require": "./Android/m/index.js",
-      "import": "./Android/m/index.mjs",
-      "types": "./Android/m/index.d.ts"
-    },
-    "./Android/l": {
-      "require": "./Android/l/index.js",
-      "import": "./Android/l/index.mjs",
-      "types": "./Android/l/index.d.ts"
     },
     "./Amp/m": {
       "require": "./Amp/m/index.js",
@@ -4127,6 +4107,26 @@
       "import": "./Amp/l/index.mjs",
       "types": "./Amp/l/index.d.ts"
     },
+    "./Android/m": {
+      "require": "./Android/m/index.js",
+      "import": "./Android/m/index.mjs",
+      "types": "./Android/m/index.d.ts"
+    },
+    "./Android/l": {
+      "require": "./Android/l/index.js",
+      "import": "./Android/l/index.mjs",
+      "types": "./Android/l/index.d.ts"
+    },
+    "./AppsBlock/m": {
+      "require": "./AppsBlock/m/index.js",
+      "import": "./AppsBlock/m/index.mjs",
+      "types": "./AppsBlock/m/index.d.ts"
+    },
+    "./AppsBlock/l": {
+      "require": "./AppsBlock/l/index.js",
+      "import": "./AppsBlock/l/index.mjs",
+      "types": "./AppsBlock/l/index.d.ts"
+    },
     "./AllDevices/m": {
       "require": "./AllDevices/m/index.js",
       "import": "./AllDevices/m/index.mjs",
@@ -4137,16 +4137,6 @@
       "import": "./AllDevices/l/index.mjs",
       "types": "./AllDevices/l/index.d.ts"
     },
-    "./Adult/m": {
-      "require": "./Adult/m/index.js",
-      "import": "./Adult/m/index.mjs",
-      "types": "./Adult/m/index.d.ts"
-    },
-    "./Adult/l": {
-      "require": "./Adult/l/index.js",
-      "import": "./Adult/l/index.mjs",
-      "types": "./Adult/l/index.d.ts"
-    },
     "./Airplane/m": {
       "require": "./Airplane/m/index.js",
       "import": "./Airplane/m/index.mjs",
@@ -4156,6 +4146,16 @@
       "require": "./Airplane/l/index.js",
       "import": "./Airplane/l/index.mjs",
       "types": "./Airplane/l/index.d.ts"
+    },
+    "./Adult/m": {
+      "require": "./Adult/m/index.js",
+      "import": "./Adult/m/index.mjs",
+      "types": "./Adult/m/index.d.ts"
+    },
+    "./Adult/l": {
+      "require": "./Adult/l/index.js",
+      "import": "./Adult/l/index.mjs",
+      "types": "./Adult/l/index.d.ts"
     },
     "./AdobeExperienceCloud/m": {
       "require": "./AdobeExperienceCloud/m/index.js",

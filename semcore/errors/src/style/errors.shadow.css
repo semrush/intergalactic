@@ -1,11 +1,7 @@
 SError {
-  padding: var(--intergalactic-spacing-20x, 80px) 0;
+  padding: var(--intergalactic-spacing-20x, 80px) var(--intergalactic-spacing-8x, 32px);
   margin: 0 auto;
   max-width: 960px;
-
-  @media (max-width: 768px) {
-    padding: var(--intergalactic-spacing-20x, 80px) var(--intergalactic-spacing-8x, 32px);
-  }
 
   @media (max-width: 320px) {
     padding: var(--intergalactic-spacing-10x, 40px) var(--intergalactic-spacing-5x, 20px) var(--intergalactic-spacing-20x, 80px);
