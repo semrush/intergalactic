@@ -188,11 +188,11 @@ function BubbleCircle(props) {
   }[labelPosition];
 
   return sstyled(styles)(
-    <g
+    <Element
+      render='g'
       key={`circle(#${index})`}
       onMouseMove={bindHandlerTooltip(true, props, { xIndex: index, index, patterns })}
       onMouseLeave={bindHandlerTooltip(false, props, { xIndex: index, index, patterns })}
-      // eslint-disable-next-line react/no-unknown-property
       visible={`${visible}`}
     >
       {markedCross && (
@@ -244,7 +244,7 @@ function BubbleCircle(props) {
           {circleData[label]}
         </SLabel>
       )}
-    </g>,
+    </Element>,
   );
 }
 
