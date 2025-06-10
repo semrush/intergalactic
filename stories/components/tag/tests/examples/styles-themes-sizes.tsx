@@ -1,10 +1,5 @@
-import Badge from '@semcore/badge';
-import Button from '@semcore/button';
 import { Flex, Box } from '@semcore/flex-box';
-import VideoListL from '@semcore/icon/VideoList/l';
-import VideoListM from '@semcore/icon/VideoList/m';
 import Tag, { TagContainer } from '@semcore/tag';
-import Tooltip, { Hint } from '@semcore/tooltip';
 import { Text } from '@semcore/typography';
 import React from 'react';
 

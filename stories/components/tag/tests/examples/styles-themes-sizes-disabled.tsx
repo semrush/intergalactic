@@ -1,22 +1,17 @@
-import Badge from '@semcore/badge';
-import Button from '@semcore/button';
 import { Flex, Box } from '@semcore/flex-box';
-import VideoListL from '@semcore/icon/VideoList/l';
-import VideoListM from '@semcore/icon/VideoList/m';
 import Tag, { TagContainer } from '@semcore/tag';
-import Tooltip, { Hint } from '@semcore/tooltip';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
 const Demo = () => {
   return (
     <Flex direction='row' gap={1}>
-      <Flex direction='column' gap={2} mb={3} data-testid='Primary-base' w={100}>
+      <Flex direction='column' gap={2} mb={3} data-testid='Primary-base' w={200}>
         <Text size={100}>Primary-base</Text>
-        <Tag size='m' theme='primary' color='gray-500' disabled>
+        <Tag size='m' theme='primary' color='gray-500' disabled interactive>
           M  gray
         </Tag>
-        <Tag size='l' theme='primary' color='gray-500' disabled>
+        <Tag size='l' theme='primary' color='gray-500' disabled interactive>
           L  gray
         </Tag>
         <Tag size='xl' theme='primary' color='gray-500' disabled>
@@ -104,20 +99,20 @@ const Demo = () => {
         </Tag>
 
         <Box style={{ backgroundColor: '#191B23' }} mb={3} p={1}>
-          <Tag size='m' theme='primary' color='white-500' mb={2} disabled>
+          <Tag size='m' theme='primary' color='white-500' mb={2} disabled w={150}>
             M  white
           </Tag>
-          <Tag size='l' theme='primary' color='white-500' mb={2} disabled>
+          <Tag size='l' theme='primary' color='white-500' mb={2} disabled w={150}>
             L  white
           </Tag>
-          <Tag size='xl' theme='primary' color='white-500' mb={2} disabled>
+          <Tag size='xl' theme='primary' color='white-500' mb={2} disabled w={150}>
             Xl  white
           </Tag>
 
         </Box>
       </Flex>
 
-      <Flex direction='column' gap={2} mb={3} data-testid='Secondary-base' w={100}>
+      <Flex direction='column' gap={2} mb={3} data-testid='Secondary-base' w={200}>
         <Text size={100}>Secondary-base</Text>
         <Tag size='m' theme='secondary' color='gray-500' disabled>
           M  gray
@@ -210,20 +205,20 @@ const Demo = () => {
         </Tag>
 
         <Box style={{ backgroundColor: '#191B23' }} mb={3} p={1}>
-          <Tag size='m' theme='secondary' color='white-500' mb={2} disabled>
+          <Tag size='m' theme='secondary' color='white-500' mb={2} disabled w={150}>
             M  white
           </Tag>
-          <Tag size='l' theme='secondary' color='white-500' mb={2} disabled>
+          <Tag size='l' theme='secondary' color='white-500' mb={2} disabled w={150}>
             L  white
           </Tag>
-          <Tag size='xl' theme='secondary' color='white-500' mb={2} disabled>
+          <Tag size='xl' theme='secondary' color='white-500' mb={2} disabled w={150}>
             Xl  white
           </Tag>
 
         </Box>
       </Flex>
 
-      <Flex direction='column' gap={2} mb={3} data-testid='additional-base' w={100}>
+      <Flex direction='column' gap={2} mb={3} data-testid='additional-base' w={200}>
         <Text size={100}>additional-base</Text>
         <Tag size='m' theme='additional' color='gray-500' disabled>
           M  gray
@@ -316,13 +311,13 @@ const Demo = () => {
         </Tag>
 
         <Box style={{ backgroundColor: '#191B23' }} mb={3} p={1}>
-          <Tag size='m' theme='additional' color='white-500' mb={2} disabled>
+          <Tag size='m' theme='additional' color='white-500' mb={2} disabled w={150}>
             M  white
           </Tag>
-          <Tag size='l' theme='additional' color='white-500' mb={2} disabled>
+          <Tag size='l' theme='additional' color='white-500' mb={2} disabled w={150}>
             L  white
           </Tag>
-          <Tag size='xl' theme='additional' color='white-500' mb={2} disabled>
+          <Tag size='xl' theme='additional' color='white-500' mb={2} disabled w={150}>
             Xl  white
           </Tag>
 
