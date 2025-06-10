@@ -1,0 +1,49 @@
+import { Area, minMax, Plot, XAxis, YAxis } from '@semcore/d3-chart';
+import { scaleLinear } from 'd3-scale';
+import { curveCardinal } from 'd3-shape';
+import React from 'react';
+
+const customLineStyles = { strokeWidth: 4, stroke: 'pink' };
+
+const Demo = () => {
+  const MARGIN = 40;
+  const width = 500;
+  const height = 300;
+
+  const xScale = scaleLinear()
+    .range([MARGIN, width - MARGIN])
+    .domain(minMax(data, 'x'));
+
+  const yScale = scaleLinear()
+    .range([height - MARGIN, MARGIN])
+    .domain([0, 10]);
+
+  return (
+    <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+      <YAxis>
+        <YAxis.Ticks />
+      </YAxis>
+      <XAxis>
+        <XAxis.Ticks />
+      </XAxis>
+      <Area x='x' y='y' curve={curveCardinal}>
+        <Area.Line style={customLineStyles} />
+      </Area>
+    </Plot>
+  );
+};
+
+const data = [
+  { x: 0, y: 2 },
+  { x: 1, y: 4 },
+  { x: 2, y: 6 },
+  { x: 3, y: 3 },
+  { x: 4, y: 5 },
+  { x: 5, y: 7 },
+  { x: 6, y: 6 },
+  { x: 7, y: 4 },
+  { x: 8, y: 2 },
+  { x: 9, y: 3 },
+];
+
+export default Demo;

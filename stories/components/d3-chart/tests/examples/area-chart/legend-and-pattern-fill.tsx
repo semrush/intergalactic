@@ -12,10 +12,6 @@ import { scaleLinear } from 'd3-scale';
 import { curveCardinal } from 'd3-shape';
 import React from 'react';
 
-function formatDate(value: any, options: any) {
-  return new Intl.DateTimeFormat('en', options).format(value);
-}
-
 const dataHints = makeDataHintsContainer();
 
 const Demo = () => {
@@ -34,15 +30,15 @@ const Demo = () => {
   const [legendItems, setLegendItems] = React.useState(
     Object.keys(data[0])
       .filter((name) => name !== 'time')
-      .map((item, index) => {
-        return {
-          id: item,
-          label: `Line ${index + 1}`,
-          checked: true,
-          color: `chart-palette-order-${index + 1}`,
-        };
-      }),
+      .map((item, index) => ({
+        id: item,
+        label: `Line ${index + 1}`,
+        checked: true,
+        color: `chart-palette-order-${index + 1}`,
+      })),
   );
+
+  const [highlightedLine, setHighlightedLine] = React.useState<number>(-1);
 
   const handleChangeVisible = React.useCallback((id: string, isVisible: boolean) => {
     setLegendItems((prevItems) => {
@@ -50,9 +46,18 @@ const Demo = () => {
         if (item.id === id) {
           item.checked = isVisible;
         }
+
         return item;
       });
     });
+  }, []);
+
+  const handleMouseEnter = React.useCallback((id: string) => {
+    setHighlightedLine(legendItems.findIndex((line) => line.id === id));
+  }, [legendItems]);
+
+  const handleMouseLeave = React.useCallback(() => {
+    setHighlightedLine(-1);
   }, []);
 
   return (
@@ -61,6 +66,8 @@ const Demo = () => {
         dataHints={dataHints}
         items={legendItems}
         onChangeVisibleItem={handleChangeVisible}
+        onMouseEnterItem={handleMouseEnter}
+        onMouseLeaveItem={handleMouseLeave}
         patterns
         aria-label='Area chart legend'
       />
@@ -79,57 +86,60 @@ const Demo = () => {
         <XAxis>
           <XAxis.Ticks ticks={data.map((d) => +d.time)}>
             {({ value }) => ({
-              children: formatDate(value, {
+              children: new Intl.DateTimeFormat('en', {
                 month: 'short',
                 day: 'numeric',
-              }),
+              }).format(value),
             })}
           </XAxis.Ticks>
         </XAxis>
-        {legendItems.map((item) =>
-          item.checked
-            ? (
-                <Area key={item.id} x='time' y={item.id} curve={curveCardinal} color={item.color}>
-                  <Area.Dots display />
-                </Area>
-              )
-            : null,
-        )}
+        {legendItems
+          .filter((item) => item.checked)
+          .map((item, index) => (
+            <Area
+              key={item.id}
+              x='time'
+              y={item.id}
+              curve={curveCardinal}
+              color={item.color}
+              transparent={highlightedLine !== -1 && highlightedLine !== index}
+            >
+              <Area.Dots display />
+            </Area>
+          ))}
       </Plot>
     </>
   );
 };
 
-const baseDate = new Date('2025-01-01T00:00:00Z');
-
 const data = [
   {
-    time: new Date(baseDate.getTime() + 5 * 60 * 60 * 1000),
+    time: new Date(Date.now() + 5 * 60 * 60 * 1000),
     line1: 5,
     line2: 3,
   },
   {
-    time: new Date(baseDate.getTime() + 10 * 60 * 60 * 1000),
+    time: new Date(Date.now() + 10 * 60 * 60 * 1000),
     line1: 8,
     line2: interpolateValue,
   },
   {
-    time: new Date(baseDate.getTime() + 15 * 60 * 60 * 1000),
+    time: new Date(Date.now() + 15 * 60 * 60 * 1000),
     line1: 4,
     line2: 8,
   },
   {
-    time: new Date(baseDate.getTime() + 20 * 60 * 60 * 1000),
+    time: new Date(Date.now() + 20 * 60 * 60 * 1000),
     line1: 5,
     line2: interpolateValue,
   },
   {
-    time: new Date(baseDate.getTime() + 25 * 60 * 60 * 1000),
+    time: new Date(Date.now() + 25 * 60 * 60 * 1000),
     line1: 5,
     line2: interpolateValue,
   },
   {
-    time: new Date(baseDate.getTime() + 30 * 60 * 60 * 1000),
+    time: new Date(Date.now() + 30 * 60 * 60 * 1000),
     line1: 3,
     line2: 1,
   },

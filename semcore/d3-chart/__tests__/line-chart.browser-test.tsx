@@ -212,15 +212,50 @@ test.describe('Line chart', () => {
     });
   });
 
-  test('Verify patterns and symbols for dots', async ({ page }) => {
+  test('Verify patterns and symbols for dots mouse interactions', async ({ page }) => {
     const standPath =
       'stories/components/d3-chart/tests/examples/line-chart/legend-and-symbols-for-dots.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
     const checkbox = page.locator('[data-ui-name="Checkbox"]');
 
-    await test.step('Verify disable highlights when hover the checkbox', async () => {
+    await test.step('Verify highlights when hover the checkbox', async () => {
       await checkbox.nth(1).hover();
+      await page.waitForTimeout(500);
+      await expect(page).toHaveScreenshot();
+    });
+
+    await test.step('Verify not highlights when hover unchecked checkbox', async () => {
+      await checkbox.nth(1).click();
+      await checkbox.nth(1).hover();
+      await page.waitForTimeout(500);
+      await expect(page).toHaveScreenshot();
+    });
+  });
+
+  test('Verify patterns and symbols for dots keyboard interactions', async ({ page }) => {
+    const standPath =
+      'stories/components/d3-chart/tests/examples/line-chart/legend-and-symbols-for-dots.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+    const checkbox = page.locator('[data-ui-name="Checkbox"]');
+
+    await test.step('Verify highlights when focus the checkbox', async () => {
+      await page.keyboard.press('Tab');
+      await page.waitForTimeout(500);
+      await expect(page).toHaveScreenshot();
+    });
+
+    await test.step('Verify highlights when check and uncheck the checkbox', async () => {
+      await page.keyboard.press('Space');
+      await page.keyboard.press('Space');
+      await page.waitForTimeout(500);
+      await expect(page).toHaveScreenshot();
+    });
+
+    await test.step('Verify highlights focus next checkbox', async () => {
+      await page.keyboard.press('Space');
+      await page.keyboard.press('Tab');
       await page.waitForTimeout(500);
       await expect(page).toHaveScreenshot();
     });
