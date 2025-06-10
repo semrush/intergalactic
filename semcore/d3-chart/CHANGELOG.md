@@ -17,6 +17,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Fixed
 
 - Legend item behavior when the it's in unchecked state but the chart line dedicated to it behaves as active.
+- Unsupported attributes on DOM nodes in `Area` chart.
 
 ## [16.0.2] - 2025-05-30
 
