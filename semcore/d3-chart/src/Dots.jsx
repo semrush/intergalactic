@@ -29,6 +29,8 @@ function Dots(props) {
   } = props;
   const bisect = bisector((d) => d[x]).center;
   const [activeIndex, setActiveIndex] = React.useState(null);
+  const patternKey = color || getChartDefaultColorName(0);
+  const svgPatternId = `template_${patternKey}`;
   const data = React.useMemo(
     () => props.data.filter((item) => item[y] !== interpolateValue),
     [props.data],
@@ -68,6 +70,11 @@ function Dots(props) {
     };
   }, [eventEmitter, scale, data, x, y]);
 
+  const [width, height] = getPatternSymbolSize({
+    patternKey,
+    patterns,
+  });
+
   const dots = data.reduce((acc, d, i) => {
     const isPrev = d3.defined()(data[i - 1] || {});
     const isNext = d3.defined()(data[i + 1] || {});
@@ -79,12 +86,6 @@ function Dots(props) {
     const radius = radiusBase * (active ? 5 / 4 : 1);
     if (!d3.defined()(d)) return acc;
     if (!visible) return acc;
-
-    const patternKey = color || getChartDefaultColorName(0);
-    const [width, height] = getPatternSymbolSize({
-      patternKey,
-      patterns,
-    });
 
     if (!patterns) {
       acc.push(
@@ -110,28 +111,36 @@ function Dots(props) {
       acc.push(
         sstyled(styles)(
           <SDot
-            render={PatternSymbol}
-            color={resolveColor(color)}
-            patternKey={patternKey}
-            patterns={patterns}
-            key={`${i}`}
+            key={i}
+            render='use'
+            href={`#${svgPatternId}`}
+            x={width + (d3.x()(d) - width / 2)}
+            y={d3.y()(d) - height / 2}
             value={d}
+            transparent={transparent}
+            radius={radius}
             visible={visible}
             active={active}
             hide={hide}
-            transparent={transparent}
-            x={d3.x()(d) - width / 2}
-            y={d3.y()(d) - height / 2}
-            radius={radius}
           />,
         ),
       );
     }
-    // acc.push(<PatternSymbol color={resolveColor(color)} patternKey={color} />);
     return acc;
   }, []);
   const SDots = 'g';
-  return sstyled(styles)(<SDots duration={`${duration}ms`}>{dots}</SDots>);
+  return sstyled(styles)(
+    <SDots duration={`${duration}ms`}>
+      <PatternSymbol
+        color={resolveColor(color)}
+        patternKey={color}
+        id={svgPatternId}
+        patterns={patterns}
+        x={-1 * width}
+      />
+      {dots}
+    </SDots>,
+  );
 }
 
 Dots.style = style;
