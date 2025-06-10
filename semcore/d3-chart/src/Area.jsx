@@ -85,7 +85,7 @@ class AreaRoot extends Component {
 
   render() {
     const SArea = this.Element;
-    const SAreaLine = 'path';
+    const SAreaLine = this.Element;
     const {
       styles,
       hide,
@@ -113,6 +113,7 @@ class AreaRoot extends Component {
       <>
         {!advancedMode && (
           <SAreaLine
+            render='path'
             aria-hidden
             clipPath={`url(#${uid}-animation)`}
             d={d3Line(data)}
