@@ -5,6 +5,7 @@ import { area, curveLinear, line } from 'd3-shape';
 import React from 'react';
 
 import AnimatedClipPath from './AnimatedClipPath';
+import { SvgElement } from './component/SvgElement';
 import createElement from './createElement';
 import Dots from './Dots';
 import { PatternFill } from './Pattern';
@@ -16,6 +17,8 @@ import {
   definedNullData,
   interpolateValue,
 } from './utils';
+
+console.log(SvgElement);
 
 class AreaRoot extends Component {
   static displayName = 'Area';
@@ -85,7 +88,7 @@ class AreaRoot extends Component {
 
   render() {
     const SArea = this.Element;
-    const SAreaLine = this.Element;
+    const SAreaLine = SvgElement;
     const {
       styles,
       hide,
@@ -113,7 +116,7 @@ class AreaRoot extends Component {
       <>
         {!advancedMode && (
           <SAreaLine
-            render='path'
+            tag='path'
             aria-hidden
             clipPath={`url(#${uid}-animation)`}
             d={d3Line(data)}
