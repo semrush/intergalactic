@@ -83,7 +83,7 @@ export type DropdownMenuItemProps = FlexProps & {
   disabled?: boolean;
   /**
    * Adds focus styles around
-   * @deprecated
+   * @deprecated set focus manually by `.focus()` method to the same behaviour
    */
   highlighted?: boolean;
   /**
