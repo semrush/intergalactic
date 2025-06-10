@@ -36,7 +36,7 @@ test.describe('Area chart', () => {
       }
     });
 
-    await test.step('Verify no tooltip shown on hover', async () => {
+    await test.step('Verify dot changes size on hover and no tooltip shown', async () => {
       await dots.nth(1).hover();
       await page.waitForTimeout(100);
       await expect(page).toHaveScreenshot();
