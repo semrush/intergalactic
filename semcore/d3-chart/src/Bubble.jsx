@@ -4,6 +4,7 @@ import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { transition } from 'd3-transition';
 import React from 'react';
 
+import { SvgElement } from './component/SvgElement';
 import createElement from './createElement';
 import { PatternFill } from './Pattern';
 import style from './style/bubble.shadow.css';
@@ -188,8 +189,8 @@ function BubbleCircle(props) {
   }[labelPosition];
 
   return sstyled(styles)(
-    <Element
-      render='g'
+    <SvgElement
+      tag='g'
       key={`circle(#${index})`}
       onMouseMove={bindHandlerTooltip(true, props, { xIndex: index, index, patterns })}
       onMouseLeave={bindHandlerTooltip(false, props, { xIndex: index, index, patterns })}
@@ -244,7 +245,7 @@ function BubbleCircle(props) {
           {circleData[label]}
         </SLabel>
       )}
-    </Element>,
+    </SvgElement>,
   );
 }
 
