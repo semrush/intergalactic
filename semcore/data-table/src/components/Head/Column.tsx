@@ -291,7 +291,7 @@ export class Column<D extends DataTableData> extends Component<
       ariaDescribedBy.push(`igc-table-${uid}-${parent.name}-group`);
     }
 
-    const ariaSortValue = sort?.[0] === name ? ARIA_SORT[sort?.[1] ?? 'none'] : ARIA_SORT.none;
+    const ariaSortValue = sort?.[0] === name ? ARIA_SORT[sort[1]] : ARIA_SORT.none;
 
     return sstyled(styles)(
       <SColumn
