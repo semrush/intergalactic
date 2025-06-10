@@ -44,9 +44,8 @@ test.describe('Area chart', () => {
 
     await test.step('Verify no unneeded attributes on DOM nodes', async () => {
       const pathsCount = await paths.count();
-      expect(pathsCount).toBe(2);
-      await expect(paths.nth(0)).not.toHaveAttribute('use:duration');
-      await expect(paths.nth(1)).not.toHaveAttribute('use:duration');
+      expect(pathsCount).toBe(1);
+      await expect(paths).not.toHaveAttribute('use:duration');
     });
   });
 
@@ -80,10 +79,18 @@ test.describe('Area chart', () => {
     await page.setContent(htmlContent);
 
     const chart = page.locator('svg[data-ui-name="Plot"]').first();
+    const paths = page.locator('path[data-ui-name="Area"]');
     await expect(chart).toBeVisible();
 
     await page.waitForTimeout(500);
     await expect(page).toHaveScreenshot();
+
+    await test.step('Verify no unneeded attributes on DOM nodes', async () => {
+      const pathsCount = await paths.count();
+      expect(pathsCount).toBe(2);
+      await expect(paths.nth(0)).not.toHaveAttribute('use:duration');
+      await expect(paths.nth(1)).not.toHaveAttribute('use:duration');
+    });
   });
 
   test('Verify legend and pattern fill mouse interactions', async ({ page, browserName }) => {
