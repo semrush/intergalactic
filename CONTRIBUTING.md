@@ -33,12 +33,10 @@ We appreciate your contributions and will review your pull request as soon as po
 
 ## Playground
 
-We have a robust playground designed for developing components. To get started:
-
-1. Run `pnpm start` and navigate to `http://localhost:2077` in your browser to access the playground.
-2. On the documentation website, copy example code by clicking the copy icon in the top-right corner of a code snippet. For instance, you can use [the Input component example](https://developer.semrush.com/intergalactic/components/input/input-code/#loading-state).
-3. Create a playground page using your favorite code editor (for example, `vi tools/playground/examples/input.tsx`) and paste the example code there.
-4. Return to `http://localhost:2077` and reload the page. The link to `input.tsx` will appear in the top panel. Edit the playground page code, and after making changes, reload the page to see your modifications.
+We use storybook for developing components.
+To get started: Run `pnpm storybook` and navigate to `http://localhost:6006` in your browser to access the playground.
+All our examples from the documentation are taken from the storybook stories, from the `docs` folder.
+Also in the component folders, there are also `test` and `advanced` folders - the names speak for themselves
 
 ## Tests
 
@@ -53,7 +51,7 @@ We use [vitest](https://vitest.dev/) for our testing needs.
 
 ## Formatting & linting
 
-We rely on [biome](https://biomejs.dev/) for formatting and linting. It is integrated into our Git hooks and also offers a [VS Code Extension](https://marketplace.visualstudio.com/items?itemName=biomejs.biome). It's going to get IntelliJ Platform LSP very soon: [https://github.com/biomejs/biome/pull/185](https://github.com/biomejs/biome/pull/185).
+We rely on [eslint](https://eslint.org/) for formatting and linting. It is integrated into our Git hooks and also offers a plugins for VSCode and Webstorm.
 
 ## Website
 
