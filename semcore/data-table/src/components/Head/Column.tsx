@@ -21,6 +21,7 @@ const SORTING_ICON: { [key in SortDirection]: typeof Icon } = {
 const ARIA_SORT = {
   desc: 'descending',
   asc: 'ascending',
+  none: 'none',
 } as const;
 
 const SORT_ICON_WIDTH = 20;
@@ -290,7 +291,7 @@ export class Column<D extends DataTableData> extends Component<
       ariaDescribedBy.push(`igc-table-${uid}-${parent.name}-group`);
     }
 
-    const ariaSortValue = sort?.[1] ? ARIA_SORT[sort[1]] : undefined;
+    const ariaSortValue = sort?.[0] === name ? ARIA_SORT[sort?.[1] ?? 'none'] : ARIA_SORT.none;
 
     return sstyled(styles)(
       <SColumn
