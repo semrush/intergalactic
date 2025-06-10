@@ -66,6 +66,16 @@ export type LegendItemProps = LegendItem & {
    * Handler for select/deselect legend item
    */
   onChangeLegendItem: (id: LegendItemKey, checked: boolean) => void;
+
+  /**
+   * Handler for focus legend item
+   */
+  onFocusLegendItem: (id: LegendItemKey) => void;
+
+  /**
+   * Handler for focus out legend item
+   */
+  onBlurLegendItem: (id: LegendItemKey) => void;
 };
 
 export type ShapeProps = LegendItem &

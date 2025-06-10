@@ -199,7 +199,7 @@ test.describe('Bar chart', () => {
       }
     });
 
-    await test.step('Verify looks good and tooltip shown on hover', async () => {
+    await test.step('Verify tooltip shown on hover', async () => {
       const box = await chart.boundingBox();
       if (!box) throw new Error('Bounding box not found');
 
@@ -215,7 +215,7 @@ test.describe('Bar chart', () => {
     });
   });
 
-  test('Verify bar legend and pattern fill', async ({ page, browserName }) => {
+  test('Verify bar legend and pattern fill mouse interaction', async ({ page, browserName }) => {
     const standPath =
       'stories/components/d3-chart/tests/examples/bar-chart/legend-and-pattern-fill.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -223,15 +223,22 @@ test.describe('Bar chart', () => {
 
     const chart = page.locator('svg[data-ui-name="Plot"]').first();
     await expect(chart).toBeVisible();
+    const label = page.getByText('Category 1');
+    const label2 = page.getByText('Category 2');
 
     await test.step('Verify higlights by hover on label', async () => {
-      const label = page.getByText('Category 1');
       await label.hover();
       await page.waitForTimeout(300);
       await expect(page).toHaveScreenshot();
     });
 
-    if (browserName === 'webkit') return;
+    await test.step('Verify not higlights by hover when unchecked', async () => {
+      await label.click();
+      await label.hover();
+      await page.waitForTimeout(300);
+      await expect(page).toHaveScreenshot();
+    });
+
     await test.step('Verify looks good when all items disabledby keyboatd', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Space');
@@ -248,6 +255,33 @@ test.describe('Bar chart', () => {
 
       await page.mouse.move(hoverX, hoverY);
       await page.waitForTimeout(500);
+      await expect(page).toHaveScreenshot();
+    });
+  });
+
+  test('Verify bar legend and pattern fill keyboard interaction', async ({ page, browserName }) => {
+    const standPath =
+      'stories/components/d3-chart/tests/examples/bar-chart/legend-and-pattern-fill.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+
+    const chart = page.locator('svg[data-ui-name="Plot"]').first();
+    await expect(chart).toBeVisible();
+    const label = page.getByText('Category 1');
+    const label2 = page.getByText('Category 2');
+
+    await test.step('Verify highlighted when focused', async () => {
+      await page.keyboard.press('Tab');
+      await expect(page).toHaveScreenshot();
+    });
+
+    await test.step('Verify highlighted when uchecked and checked', async () => {
+      await page.keyboard.press('Space');
+      await page.keyboard.press('Space');
+      await expect(page).toHaveScreenshot();
+    });
+    await test.step('Verify not highlighted when one left focused', async () => {
+      await page.keyboard.press('Tab');
       await expect(page).toHaveScreenshot();
     });
   });
