@@ -28,7 +28,7 @@ test.describe('Area chart', () => {
 
     await test.step('Verify dots presents and have correct attributes', async () => {
       const count = await dots.count();
-
+      await expect(count).toBe(10);
       for (let i = 0; i < count; i++) {
         const dot = dots.nth(i);
         await expect(dot).toHaveAttribute('aria-hidden', 'true');
