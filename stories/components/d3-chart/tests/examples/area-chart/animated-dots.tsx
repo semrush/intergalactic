@@ -12,13 +12,19 @@ import { scaleLinear } from 'd3-scale';
 import { curveCardinal } from 'd3-shape';
 import React from 'react';
 
-function formatDate(value: any, options: any) {
+function formatDate(value?: Date | number, options?: Intl.DateTimeFormatOptions) {
   return new Intl.DateTimeFormat('en', options).format(value);
 }
 
 const dataHints = makeDataHintsContainer();
-{ /* @ts-ignore */ }
-const DemoPattern = ({ data }) => {
+
+type DataItem = {
+  time: Date;
+  line1: number | typeof interpolateValue;
+  line2: number | typeof interpolateValue;
+};
+
+const DemoPattern: React.FC<{ data: DataItem[] }> = ({ data }) => {
   const MARGIN = 40;
   const width = 500;
   const height = 300;
@@ -109,8 +115,8 @@ const DemoPattern = ({ data }) => {
     </>
   );
 };
-{ /* @ts-ignore */ }
-const Demo = ({ data }) => {
+
+const Demo: React.FC<{ data: DataItem[] }> = ({ data }) => {
   const MARGIN = 40;
   const width = 500;
   const height = 300;
@@ -206,7 +212,7 @@ const getRandom = (min: any, max: any) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
-const getData = () => {
+const getData = (): DataItem[] => {
   return [
     {
       time: new Date(Date.now() + 5 * 60 * 60 * 1000),
