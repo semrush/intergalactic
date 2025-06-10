@@ -18,8 +18,8 @@ The state description should be brief. Two or three short sentences are usually 
 
 ### Margins
 
-- Margin between the illustration and the message is 40px.
-- Maximum width of the message is 640px. Top margin of the container with the message is 32px.
+- The space between the illustration and the message is `--intergalactic-spacing-10x`.
+- The message has a maximum width of 640px, with a top margin of `--intergalactic-spacing-8x` on its container.
 
 ![](static/ge-margins.png)
 
