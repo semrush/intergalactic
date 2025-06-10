@@ -329,7 +329,7 @@ test.describe('One level header - Sorting', () => {
       await page.keyboard.press('Tab');
       const button1 = getButton(getColumn(1));
       await expect(button1).toBeFocused();
-      await expect(button1).toHaveAttribute('aria-label', 'descending');
+      await expect(button1).toHaveAttribute('aria-label', 'none');
 
       await page.keyboard.press('Enter');
       await expect(button1).toHaveAttribute('aria-label', 'descending');
@@ -393,7 +393,7 @@ test.describe('One level header - Sorting', () => {
     const column1 = page.locator('[data-ui-name="Head.Column"][aria-colindex="1"]');
     const buttonLink1 = column1.locator('button[data-ui-name="ButtonLink"]');
     const column2 = page.locator('[data-ui-name="Head.Column"][aria-colindex="2"]');
-    const buttonLink2 = column1.locator('button[data-ui-name="ButtonLink"]');
+    const buttonLink2 = column2.locator('button[data-ui-name="ButtonLink"]');
 
     await test.step('Verify hover on column with not active sorting', async () => {
       await column1.hover();
@@ -665,7 +665,7 @@ test.describe('Multi level header - Sorting', () => {
 
     await test.step('Verify sorting interaction with mouse and keyboard', async () => {
       await page.keyboard.press('ArrowRight');
-      await expect(buttonLink2).toHaveAttribute('aria-label', 'ascending');
+      await expect(buttonLink2).toHaveAttribute('aria-label', 'none');
 
       await buttonLink2.click();
       await expect(buttonLink2).toHaveAttribute('aria-label', 'descending');
@@ -707,7 +707,7 @@ test.describe('Multi level header - Sorting', () => {
       );
       await cell2.hover();
       await expect(page).toHaveScreenshot();
-      await expect(buttonLink2).toHaveAttribute('aria-label', 'ascending');
+      await expect(buttonLink2).toHaveAttribute('aria-label', 'none');
       await buttonLink2.click();
       await expect(buttonLink2).toHaveAttribute('aria-label', 'descending');
     });
