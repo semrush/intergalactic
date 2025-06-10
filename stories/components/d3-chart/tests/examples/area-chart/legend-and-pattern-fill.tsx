@@ -46,15 +46,17 @@ const Demo = () => {
         if (item.id === id) {
           item.checked = isVisible;
         }
-
         return item;
       });
     });
   }, []);
 
-  const handleMouseEnter = React.useCallback((id: string) => {
-    setHighlightedLine(legendItems.findIndex((line) => line.id === id));
-  }, [legendItems]);
+  const handleMouseEnter = React.useCallback(
+    (id: string) => {
+      setHighlightedLine(legendItems.findIndex((line) => line.id === id));
+    },
+    [legendItems],
+  );
 
   const handleMouseLeave = React.useCallback(() => {
     setHighlightedLine(-1);
@@ -114,32 +116,32 @@ const Demo = () => {
 
 const data = [
   {
-    time: new Date(Date.now() + 5 * 60 * 60 * 1000),
+    time: new Date('2024-01-01T00:00:00Z'),
     line1: 5,
     line2: 3,
   },
   {
-    time: new Date(Date.now() + 10 * 60 * 60 * 1000),
+    time: new Date('2024-01-01T05:00:00Z'),
     line1: 8,
     line2: interpolateValue,
   },
   {
-    time: new Date(Date.now() + 15 * 60 * 60 * 1000),
+    time: new Date('2024-01-01T10:00:00Z'),
     line1: 4,
     line2: 8,
   },
   {
-    time: new Date(Date.now() + 20 * 60 * 60 * 1000),
+    time: new Date('2024-01-01T15:00:00Z'),
     line1: 5,
     line2: interpolateValue,
   },
   {
-    time: new Date(Date.now() + 25 * 60 * 60 * 1000),
+    time: new Date('2024-01-01T20:00:00Z'),
     line1: 5,
     line2: interpolateValue,
   },
   {
-    time: new Date(Date.now() + 30 * 60 * 60 * 1000),
+    time: new Date('2024-01-02T01:00:00Z'),
     line1: 3,
     line2: 1,
   },
