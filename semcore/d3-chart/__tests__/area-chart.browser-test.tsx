@@ -37,7 +37,7 @@ test.describe('Area chart', () => {
 
     await test.step('Verify no tooltip shown on hover', async () => {
       await dots.nth(1).hover();
-      await page.waitForTimeout(100);
+      await page.waitForTimeout(300);
       await expect(page).toHaveScreenshot();
     });
   });
@@ -55,7 +55,7 @@ test.describe('Area chart', () => {
   });
 
   test('Verify chart with custom line', async ({ page }) => {
-    const standPath = 'stories/components/d3-chart/docs/examples/area-chart/custom-line.tsx';
+    const standPath = 'stories/components/d3-chart/tests/examples/area-chart/custom-line.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
@@ -78,7 +78,31 @@ test.describe('Area chart', () => {
     await expect(page).toHaveScreenshot();
   });
 
-  test('Verify legend and pattern fill', async ({ page, browserName }) => {
+  test('Verify legend and pattern fill mouse interactions', async ({ page, browserName }) => {
+    const standPath =
+      'stories/components/d3-chart/tests/examples/area-chart/legend-and-pattern-fill.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+
+    const chart = page.locator('svg[data-ui-name="Plot"]').first();
+    await expect(chart).toBeVisible();
+    const label = page.getByText('Line 1');
+    const label2 = page.getByText('Line 2');
+
+    await test.step('Verify higlights by hover on label when checkbox is checked', async () => {
+      await label.hover();
+      await page.waitForTimeout(300);
+      await expect(page).toHaveScreenshot();
+    });
+
+    await test.step('Verify looks good when item unchecked and hover it', async () => {
+      await label.click();
+      await label.hover();
+      await expect(page).toHaveScreenshot();
+    });
+  });
+
+  test('Verify legend and pattern fill keyboard interactions', async ({ page, browserName }) => {
     const standPath =
       'stories/components/d3-chart/tests/examples/area-chart/legend-and-pattern-fill.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -87,18 +111,18 @@ test.describe('Area chart', () => {
     const chart = page.locator('svg[data-ui-name="Plot"]').first();
     await expect(chart).toBeVisible();
 
-    await test.step('Verify higlights by hover on label', async () => {
-      const label = page.getByText('Line 1');
-      await label.hover();
-      await page.waitForTimeout(300);
+    await test.step('Verify looks good when item focused', async () => {
+      await page.keyboard.press('Tab');
       await expect(page).toHaveScreenshot();
     });
 
-    if (browserName === 'webkit') return;
-
-    await test.step('Verify looks good when some items disabled by keyboard', async () => {
-      await page.keyboard.press('Tab');
+    await test.step('Verify looks good when item unchecked by ', async () => {
       await page.keyboard.press('Space');
+      await expect(page).toHaveScreenshot();
+    });
+
+    await test.step('Verify looks good when next item focused', async () => {
+      await page.keyboard.press('Tab');
       await expect(page).toHaveScreenshot();
     });
   });
