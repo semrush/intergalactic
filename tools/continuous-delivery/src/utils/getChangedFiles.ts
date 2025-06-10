@@ -11,6 +11,7 @@ export async function getChangedFiles(command = 'HEAD^1'): Promise<Set<string>> 
   packages.forEach((pack) => {
     if (pack.name !== '@semcore/ui') {
       const deps = Object.keys(pack.dependencies);
+      deps.push('@semcore/core'); // peer dependency for every package
       deps.forEach((dep) => {
         if (!dependencyGraph.has(dep)) {
           dependencyGraph.set(dep, new Set());
