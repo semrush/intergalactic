@@ -15,9 +15,9 @@ const Demo = () => {
           color='gray-500'
           size='m'
           theme='primary'
-          disabled
+
         >
-          <TagContainer.Tag>
+          <TagContainer.Tag disabled>
             <Tag.Addon>
               <SmileHappyM />
             </Tag.Addon>
@@ -32,9 +32,8 @@ const Demo = () => {
           color='gray-500'
           size='l'
           theme='primary'
-          disabled
         >
-          <TagContainer.Tag>
+          <TagContainer.Tag disabled>
             <Tag.Addon>
               <SmileHappyL />
             </Tag.Addon>
@@ -49,9 +48,8 @@ const Demo = () => {
           color='gray-500'
           size='xl'
           theme='primary'
-          disabled
         >
-          <TagContainer.Tag>
+          <TagContainer.Tag disabled>
             <Tag.Addon>
               <SmileHappyL />
             </Tag.Addon>
@@ -531,9 +529,8 @@ const Demo = () => {
           color='gray-500'
           size='m'
           theme='secondary'
-          disabled
         >
-          <TagContainer.Tag>
+          <TagContainer.Tag disabled>
             <Tag.Addon>
               <SmileHappyM />
             </Tag.Addon>
@@ -548,9 +545,8 @@ const Demo = () => {
           color='gray-500'
           size='l'
           theme='secondary'
-          disabled
         >
-          <TagContainer.Tag>
+          <TagContainer.Tag disabled>
             <Tag.Addon>
               <SmileHappyL />
             </Tag.Addon>
@@ -565,9 +561,8 @@ const Demo = () => {
           color='gray-500'
           size='xl'
           theme='secondary'
-          disabled
         >
-          <TagContainer.Tag>
+          <TagContainer.Tag disabled>
             <Tag.Addon>
               <SmileHappyL />
             </Tag.Addon>
