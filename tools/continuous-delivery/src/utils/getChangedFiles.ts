@@ -1,11 +1,12 @@
 import Git from 'simple-git';
 
+import type { Package } from '../collectPackages';
 import { collectPackages } from '../collectPackages';
 
 const git = Git();
 
 export async function getChangedFiles(command = 'HEAD^1'): Promise<Set<string>> {
-  const dependencyGraph = new Map<string, Set<string>>();
+  const dependencyMap = new Map<string, Set<string>>();
   const packages = await collectPackages({});
 
   packages.forEach((pack) => {
@@ -13,14 +14,11 @@ export async function getChangedFiles(command = 'HEAD^1'): Promise<Set<string>> 
       const deps = Object.keys(pack.dependencies);
 
       deps.forEach((dep) => {
-        if (!dependencyGraph.has(dep)) {
-          dependencyGraph.set(dep, new Set());
+        if (!dependencyMap.has(dep)) {
+          dependencyMap.set(dep, new Set());
         }
 
-        dependencyGraph.get(dep)?.add(pack.name);
-        if (pack.name === '@semcore/base-components') {
-          dependencyGraph.get(dep)?.add('@semcore/core');
-        }
+        dependencyMap.get(dep)?.add(pack.name);
       });
     }
   });
@@ -35,9 +33,16 @@ export async function getChangedFiles(command = 'HEAD^1'): Promise<Set<string>> 
 
       components.add(`@semcore/${packageName}`);
 
-      const dependentPackages = dependencyGraph.get(`@semcore/${packageName}`) ?? new Set();
-      for (const dep of dependentPackages) {
-        components.add(dep);
+      const dependentPackages = dependencyMap.get(`@semcore/${packageName}`) ?? new Set();
+      const stack = [...dependentPackages];
+
+      while (stack.length > 0) {
+        const current = stack.pop();
+        if (current && !components.has(current)) {
+          components.add(current);
+          const currentDependantPackages = dependencyMap.get(current) ?? new Set();
+          stack.push(...[...currentDependantPackages]);
+        }
       }
     }
     if (item.file.startsWith('stories/components')) {
