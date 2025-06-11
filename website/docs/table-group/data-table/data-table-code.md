@@ -6,7 +6,7 @@ tabs: Design('data-table'), A11y('data-table-a11y'), API('data-table-api'), Exam
 
 The `DataTable` component simplifies rendering of tabular data. It uses CSS grid for layout and doesn't rely on native tables.
 
-## Basic primary table
+## Primary table
 
 To render a table, provide the list of columns with their titles using `columns={columns}`, and the list of rows using `data={data}`.
 
@@ -18,7 +18,7 @@ To render a table, provide the list of columns with their titles using `columns=
 
 :::
 
-## Basic secondary table
+## Secondary table
 
 Use the secondary table to display small amounts of data in a compact layout.
 
@@ -43,6 +43,10 @@ Cell paddings can be reduced by adding the `compact` property.
 </script>
 
 :::
+
+### Table in card
+
+Use `sideIndents="wide"` when displaying a table in a card. Refer to the [Card layout for tables example](../../components/card/card-code#card-layout-for-tables).
 
 ### Borders
 
