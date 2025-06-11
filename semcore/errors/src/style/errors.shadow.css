@@ -1,5 +1,5 @@
 SError {
-  padding: var(--intergalactic-spacing-20x, 80px) var(--intergalactic-spacing-8x, 32px);
+  padding: var(--intergalactic-spacing-20x, 80px) var(--intergalactic-spacing-6x, 24px);
   margin: 0 auto;
   max-width: 960px;
 
