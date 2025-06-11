@@ -10,15 +10,6 @@ class LastInteractionType {
     if (canUseDOM()) {
       document.addEventListener('mousedown', this.handleMouseDown, { capture: true });
       document.addEventListener('keydown', this.handleKeyDown, { capture: true });
-
-      const originFocusHandler = HTMLElement.prototype.focus;
-      const instance = this;
-
-      HTMLElement.prototype.focus = function () {
-        instance.lastFocusSource = 'keyboard';
-
-        originFocusHandler.apply(this);
-      };
     }
   }
 
