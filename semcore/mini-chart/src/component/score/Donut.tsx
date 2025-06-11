@@ -40,13 +40,14 @@ class DonutRoot extends Component<ScoreDonutProps, {}, {}, typeof DonutRoot.enha
     const radius = isSemiDonut ? 9 : 10;
     const baseStrokeDasharray = isSemiDonut ? Math.PI * radius : Math.PI * 2 * radius;
     const valueStrokeDasharray = baseStrokeDasharray * (value / 100);
-    const greyStrokeDasharray = baseStrokeDasharray * ((100 - value) / 100);
+    const greyStrokeDasharray = baseStrokeDasharray - valueStrokeDasharray;
     const offsetPoint = isSemiDonut ? baseStrokeDasharray / (100 / 3) : baseStrokeDasharray / 100;
 
-    const strokeDasharrayBetweenSpaces = `${greyStrokeDasharray - 2 * offsetPoint} ${offsetPoint}`;
+    const greyStrokeDash = greyStrokeDasharray - 2 * offsetPoint;
+    const strokeDasharrayBetweenSpaces = `${greyStrokeDash} ${offsetPoint}`;
 
     let spaceStrokeDasharray = `${offsetPoint} ${
-      value < 99 ? `${strokeDasharrayBetweenSpaces}` : ''
+      greyStrokeDash >= 0 ? `${strokeDasharrayBetweenSpaces}` : ''
     } ${baseStrokeDasharray}`;
 
     if (isSemiDonut) {
