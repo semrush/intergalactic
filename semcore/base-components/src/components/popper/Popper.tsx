@@ -126,7 +126,7 @@ class PopperRoot extends Component<PopperProps, {}, {}, typeof PopperRoot.enhanc
     },
     hover: {
       trigger: [
-        ['onMouseEnter', 'onFocus', 'onTouchStart'],
+        ['onMouseEnter', 'onFocus', 'onKeyboardFocus', 'onTouchStart'],
         ['onMouseLeave', 'onBlur'],
       ],
       popper: [['onMouseEnter', 'onFocusCapture', 'onTouchStart'], ['onMouseLeave']],
@@ -581,15 +581,15 @@ class PopperRoot extends Component<PopperProps, {}, {}, typeof PopperRoot.enhanc
 
 function Trigger(props: PopperTriggerProps & IRootComponentProps & InnerPopperTriggerProps) {
   const STrigger = Root;
-  const { Children, highlighted, active, popperRef, forwardRef } = props;
+  const { Children, onKeyboardFocus, highlighted, active, popperRef, forwardRef } = props;
 
   const triggerRef = React.useRef<HTMLElement>();
 
   React.useEffect(() => {
     if (highlighted === true) {
-      triggerRef.current?.focus();
+      onKeyboardFocus({ currentTarget: triggerRef.current });
     }
-  }, [highlighted]);
+  }, [highlighted, onKeyboardFocus]);
 
   const activeRef = React.useRef(active);
   activeRef.current = active;

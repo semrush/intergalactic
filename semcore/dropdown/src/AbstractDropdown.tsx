@@ -72,20 +72,7 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
     return 'menuitem';
   }
 
-  handleClickTrigger = (_e: React.SyntheticEvent) => {
-    const { interaction, inlineActions } = this.asProps;
-
-    if (interaction === 'none' || inlineActions) return false;
-
-    setTimeout(() => {
-      const { visible, inlineActions } = this.asProps;
-      if (visible || inlineActions) {
-        this.afterOpenPopper();
-      }
-    }, 200); // because first will be executed onClick handler in popper
-  };
-
-  afterOpenPopper = () => {
+  protected afterOpenPopper() {
     const highlightedIndex = this.asProps.highlightedIndex ?? 0;
     const element = this.itemRefs[highlightedIndex];
     element?.focus();
@@ -103,7 +90,6 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
       'focusHint': visible && !disablePortal ? getI18nText('triggerHint') : undefined,
       'aria-haspopup': 'true',
       'aria-expanded': visible ? 'true' : 'false',
-      'onClick': this.handleClickTrigger,
       'ref': this.triggerRef,
     };
   }
@@ -277,15 +263,22 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
 
   protected handleOpenKeyDown(e: React.KeyboardEvent<HTMLElement>) {
     if (
-      this.asProps.visible !== true &&
-      ['ArrowDown', 'ArrowUp', 'Enter', ' '].includes(e.key) &&
+      ['Enter', ' ', 'ArrowDown', 'ArrowUp'].includes(e.key) &&
       !e.currentTarget.getAttribute('role')?.startsWith(this.childRole)
     ) {
-      if (['ArrowDown', 'ArrowUp'].includes(e.key)) {
-        this.handlers.visible(true);
-      }
+      if (this.asProps.visible !== true) {
+        if (['ArrowDown', 'ArrowUp'].includes(e.key)) {
+          this.handlers.visible(true);
+        }
 
-      this.handleClickTrigger(e);
+        setTimeout(() => {
+          this.afterOpenPopper();
+        }, 200);
+      } else {
+        if (['ArrowDown', 'ArrowUp'].includes(e.key)) {
+          this.afterOpenPopper();
+        }
+      }
     }
   }
 
