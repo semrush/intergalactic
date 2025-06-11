@@ -9,7 +9,7 @@ import StylesThemeSizesWithAddonAndCloseActiveExample from './examples/styles-th
 import StylesThemeSizesWithAddonAndCloseDisabledExample from './examples/styles-themes-sizes-with-addon-and-X-disabled';
 import StylesThemeSizesWithAddonAndCloseInteractiveExample from './examples/styles-themes-sizes-with-addon-and-X-interactive';
 import StylesThemeSizesWithAddonInteractiveExample from './examples/styles-themes-sizes-with-addon-interactive';
-import StylesThemeSizesWithIconAndDisabledXExample from './examples/styles-themes-sizes-with-icon-and-disabled-X';
+import StylesThemeSizesWithDisabledXExample from './examples/styles-themes-sizes-with-icon-and-disabled-X';
 import StylesThemeSizesWithIconAndXExample from './examples/styles-themes-sizes-with-icon-and-X';
 import StylesThemeSizesWithXExample from './examples/styles-themes-sizes-with-X';
 
@@ -57,8 +57,8 @@ export const StylesThemeSizesWithIconAndX: Story = {
   render: StylesThemeSizesWithIconAndXExample,
 };
 
-export const StylesThemeSizesWithIconAndDisabledX: Story = {
-  render: StylesThemeSizesWithIconAndDisabledXExample,
+export const StylesThemeSizesWithDisabledX: Story = {
+  render: StylesThemeSizesWithDisabledXExample,
 };
 
 export const StylesThemeSizesWithAddonInteractive: Story = {

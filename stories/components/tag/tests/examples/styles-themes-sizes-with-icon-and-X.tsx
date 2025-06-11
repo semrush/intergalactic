@@ -16,9 +16,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               M gray
@@ -34,9 +32,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               L gray
@@ -52,9 +48,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               XL gray
@@ -70,9 +64,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               M blue
@@ -88,9 +80,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               L blue
@@ -106,9 +96,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               XL blue
@@ -124,9 +112,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               M green
@@ -142,9 +128,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               L green
@@ -160,9 +144,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               XL green
@@ -178,9 +160,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               M salad
@@ -196,9 +176,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               L salad
@@ -214,9 +192,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               XL salad
@@ -232,9 +208,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               M orange
@@ -250,9 +224,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               L orange
@@ -268,9 +240,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               XL orange
@@ -286,9 +256,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               M yellow
@@ -304,9 +272,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               L yellow
@@ -322,9 +288,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               XL yellow
@@ -340,9 +304,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               M red
@@ -358,9 +320,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               L red
@@ -376,9 +336,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               XL red
@@ -394,9 +352,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               M pink
@@ -412,9 +368,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               L pink
@@ -430,9 +384,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               XL pink
@@ -448,9 +400,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               M violet
@@ -466,9 +416,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               L violet
@@ -484,9 +432,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               XL violet
@@ -503,9 +449,7 @@ const Demo = () => {
           >
             <TagContainer.Tag>
               <Tag.Circle>
-                <img
-                  src='https://picsum.photos/id/1025/28/28'
-                />
+                <div style={{ width: 100, height: 100, background: 'black' }} />
               </Tag.Circle>
               <Tag.Text>
                 M white
@@ -521,9 +465,7 @@ const Demo = () => {
           >
             <TagContainer.Tag>
               <Tag.Circle>
-                <img
-                  src='https://picsum.photos/id/1025/28/28'
-                />
+                <div style={{ width: 100, height: 100, background: 'black' }} />
               </Tag.Circle>
               <Tag.Text>
                 L white
@@ -539,9 +481,7 @@ const Demo = () => {
           >
             <TagContainer.Tag>
               <Tag.Circle>
-                <img
-                  src='https://picsum.photos/id/1025/28/28'
-                />
+                <div style={{ width: 100, height: 100, background: 'black' }} />
               </Tag.Circle>
               <Tag.Text>
                 XL white
@@ -562,9 +502,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               M gray
@@ -580,9 +518,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               L gray
@@ -598,9 +534,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               XL gray
@@ -616,9 +550,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               M blue
@@ -634,9 +566,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               L blue
@@ -652,9 +582,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               XL blue
@@ -670,9 +598,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               M green
@@ -688,9 +614,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               L green
@@ -706,9 +630,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               XL green
@@ -724,9 +646,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               M salad
@@ -742,9 +662,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               L salad
@@ -760,9 +678,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               XL salad
@@ -778,9 +694,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               M orange
@@ -796,9 +710,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               L orange
@@ -814,9 +726,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               XL orange
@@ -832,9 +742,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               M yellow
@@ -850,9 +758,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               L yellow
@@ -868,9 +774,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               XL yellow
@@ -886,9 +790,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               M red
@@ -904,9 +806,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               L red
@@ -922,9 +822,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               XL red
@@ -940,9 +838,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               M pink
@@ -958,9 +854,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               L pink
@@ -976,9 +870,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               XL pink
@@ -994,9 +886,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               M violet
@@ -1012,9 +902,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               L violet
@@ -1030,9 +918,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               XL violet
@@ -1049,9 +935,7 @@ const Demo = () => {
           >
             <TagContainer.Tag>
               <Tag.Circle>
-                <img
-                  src='https://picsum.photos/id/1025/28/28'
-                />
+                <div style={{ width: 100, height: 100, background: 'black' }} />
               </Tag.Circle>
               <Tag.Text>
                 M white
@@ -1067,9 +951,7 @@ const Demo = () => {
           >
             <TagContainer.Tag>
               <Tag.Circle>
-                <img
-                  src='https://picsum.photos/id/1025/28/28'
-                />
+                <div style={{ width: 100, height: 100, background: 'black' }} />
               </Tag.Circle>
               <Tag.Text>
                 L white
@@ -1085,9 +967,7 @@ const Demo = () => {
           >
             <TagContainer.Tag>
               <Tag.Circle>
-                <img
-                  src='https://picsum.photos/id/1025/28/28'
-                />
+                <div style={{ width: 100, height: 100, background: 'black' }} />
               </Tag.Circle>
               <Tag.Text>
                 XL white
@@ -1108,9 +988,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               M gray
@@ -1126,9 +1004,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               L gray
@@ -1144,9 +1020,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               XL gray
@@ -1162,9 +1036,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               M blue
@@ -1180,9 +1052,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               L blue
@@ -1198,9 +1068,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               XL blue
@@ -1216,9 +1084,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               M green
@@ -1234,9 +1100,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               L green
@@ -1252,9 +1116,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               XL green
@@ -1270,9 +1132,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               M salad
@@ -1288,9 +1148,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               L salad
@@ -1306,9 +1164,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               XL salad
@@ -1324,9 +1180,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               M orange
@@ -1342,9 +1196,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               L orange
@@ -1360,9 +1212,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               XL orange
@@ -1378,9 +1228,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               M yellow
@@ -1395,9 +1243,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               L yellow
@@ -1412,9 +1258,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               XL yellow
@@ -1429,9 +1273,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               M red
@@ -1446,9 +1288,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               L red
@@ -1463,9 +1303,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               XL red
@@ -1480,9 +1318,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               M pink
@@ -1497,9 +1333,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               L pink
@@ -1514,9 +1348,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               XL pink
@@ -1531,9 +1363,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               M violet
@@ -1548,9 +1378,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               L violet
@@ -1565,9 +1393,7 @@ const Demo = () => {
         >
           <TagContainer.Tag>
             <Tag.Circle>
-              <img
-                src='https://picsum.photos/id/1025/28/28'
-              />
+              <div style={{ width: 100, height: 100, background: 'black' }} />
             </Tag.Circle>
             <Tag.Text>
               XL violet
@@ -1583,9 +1409,7 @@ const Demo = () => {
           >
             <TagContainer.Tag>
               <Tag.Circle>
-                <img
-                  src='https://picsum.photos/id/1025/28/28'
-                />
+                <div style={{ width: 100, height: 100, background: 'black' }} />
               </Tag.Circle>
               <Tag.Text>
                 M white
@@ -1600,9 +1424,7 @@ const Demo = () => {
           >
             <TagContainer.Tag>
               <Tag.Circle>
-                <img
-                  src='https://picsum.photos/id/1025/28/28'
-                />
+                <div style={{ width: 100, height: 100, background: 'black' }} />
               </Tag.Circle>
               <Tag.Text>
                 L white
@@ -1617,9 +1439,7 @@ const Demo = () => {
           >
             <TagContainer.Tag>
               <Tag.Circle>
-                <img
-                  src='https://picsum.photos/id/1025/28/28'
-                />
+                <div style={{ width: 100, height: 100, background: 'black' }} />
               </Tag.Circle>
               <Tag.Text>
                 XL white

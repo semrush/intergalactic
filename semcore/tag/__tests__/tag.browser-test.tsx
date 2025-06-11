@@ -150,6 +150,7 @@ test.describe('Tags container sizes color and themes', () => {
   test('Verify TagContainer with icon and with close', async ({ page }) => {
     const standPath = 'stories/components/tag/tests/examples/styles-themes-sizes-with-icon-and-X.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
+
     await page.setContent(htmlContent);
     await page.setViewportSize({ width: 700, height: 1300 });
 
