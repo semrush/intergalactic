@@ -4,6 +4,10 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [16.1.2] - 2025-06-12
 
+### Changed
+
+- Deprecated `highlighted` property for `DropdownMenu.Item`.
+
 ### Fixed
 
 - Not focused on the first item in a nested menu, opened by press Enter.

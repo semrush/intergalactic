@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
+import AnimatedDotsExample from './examples/area-chart/animated-dots';
 import AreaExample from './examples/area-chart/area';
 import BasicUsageExample from './examples/area-chart/basic-usage';
 import CustomLineExample from './examples/area-chart/custom-line';
@@ -15,6 +16,10 @@ export default meta;
 
 export const DifferentProps: StoryObj = {
   render: DifferentPropsExample,
+};
+
+export const AnimatedDots: StoryObj = {
+  render: AnimatedDotsExample,
 };
 
 export const CustomLine: StoryObj = {
