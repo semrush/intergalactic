@@ -30,7 +30,7 @@ const Demo = () => {
         ml={4}
       />
       <Select
-        value={selectedProject?.id ?? null}
+        value={selectedProject?.id}
         onChange={handleSelect}
         placeholder='Select Project'
       >
