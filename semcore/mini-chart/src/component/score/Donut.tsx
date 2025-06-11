@@ -7,6 +7,7 @@ import React from 'react';
 
 import style from './donut.shadow.css';
 import type { CommonScoreProps } from './Score';
+import getScoreDonutFunctions from '../../utils/score.donut.functions';
 
 export type ScoreDonutProps = BoxProps & CommonScoreProps;
 
@@ -36,28 +37,27 @@ class DonutRoot extends Component<ScoreDonutProps, {}, {}, typeof DonutRoot.enha
       loading,
     } = this.asProps;
 
-    const strokeWidth = isSemiDonut ? 6 : 4;
-    const radius = isSemiDonut ? 9 : 10;
-    const baseStrokeDasharray = isSemiDonut ? Math.PI * radius : Math.PI * 2 * radius;
-    const valueStrokeDasharray = baseStrokeDasharray * (value / 100);
-    const greyStrokeDasharray = baseStrokeDasharray - valueStrokeDasharray;
-    const offsetPoint = isSemiDonut ? baseStrokeDasharray / (100 / 3) : baseStrokeDasharray / 100;
+    const {
+      getViewBox,
+      getStrokeWidth,
+      getRadius,
+      getBaseStrokeDashArray,
+      getStrokeDashArrayParts,
+      getStrokeDashOffsetBase,
+      getValueStrokeDashArray,
+      getGreyStrokeDashArray,
+    } = getScoreDonutFunctions(isSemiDonut);
 
-    const greyStrokeDash = greyStrokeDasharray - 2 * offsetPoint;
-    const strokeDasharrayBetweenSpaces = `${greyStrokeDash} ${offsetPoint}`;
+    const strokeWidth = getStrokeWidth();
+    const radius = getRadius();
+    const viewBox = getViewBox();
 
-    let spaceStrokeDasharray = `${offsetPoint} ${
-      greyStrokeDash >= 0 ? `${strokeDasharrayBetweenSpaces}` : ''
-    } ${baseStrokeDasharray}`;
+    const baseStrokeDashArray = getBaseStrokeDashArray(radius);
+    const valueStrokeDashArray = getValueStrokeDashArray(value, baseStrokeDashArray);
+    const greyStrokeDashArray = getGreyStrokeDashArray(baseStrokeDashArray, valueStrokeDashArray);
+    const spaceStrokeDashArray = getStrokeDashArrayParts(value, baseStrokeDashArray);
+    const strokeDashOffsetBase = getStrokeDashOffsetBase(value, baseStrokeDashArray);
 
-    if (isSemiDonut) {
-      spaceStrokeDasharray = `${offsetPoint} ${
-        value < 95 ? `${strokeDasharrayBetweenSpaces}` : ''
-      } ${baseStrokeDasharray}`;
-    }
-
-    const viewBox = isSemiDonut ? '0 0 24 12' : '0 0 24 24';
-    const strokeDashoffsetBase = -1 * (valueStrokeDasharray + (isSemiDonut ? offsetPoint : 0));
     const { __excludeProps, extractedAriaProps } = extractAriaProps(this.asProps);
 
     return sstyled(styles)(
@@ -78,9 +78,9 @@ class DonutRoot extends Component<ScoreDonutProps, {}, {}, typeof DonutRoot.enha
               strokeWidth={strokeWidth}
               stroke={resolveColor(baseBgColor)}
               strokeDasharray={
-                loading ? undefined : `${greyStrokeDasharray} ${baseStrokeDasharray}`
+                loading ? undefined : `${greyStrokeDashArray} ${baseStrokeDashArray}`
               }
-              strokeDashoffset={strokeDashoffsetBase}
+              strokeDashoffset={strokeDashOffsetBase}
             />
             {!loading && (
               <>
@@ -90,12 +90,12 @@ class DonutRoot extends Component<ScoreDonutProps, {}, {}, typeof DonutRoot.enha
                   r={radius}
                   strokeWidth={strokeWidth}
                   stroke={resolveColor(color)}
-                  strokeDasharray={`${valueStrokeDasharray} ${baseStrokeDasharray}`}
-                  strokeDashoffset={valueStrokeDasharray}
+                  strokeDasharray={`${valueStrokeDashArray} ${baseStrokeDashArray}`}
+                  strokeDashoffset={valueStrokeDashArray}
                 >
                   <animate
                     attributeName='stroke-dashoffset'
-                    values={`0;${valueStrokeDasharray}`}
+                    values={`0;${valueStrokeDashArray}`}
                   />
                 </circle>
                 {value !== 100 && !isSemiDonut && (
@@ -105,8 +105,8 @@ class DonutRoot extends Component<ScoreDonutProps, {}, {}, typeof DonutRoot.enha
                     r={radius}
                     strokeWidth={strokeWidth}
                     stroke={resolveColor('chart-grid-border')}
-                    strokeDasharray={spaceStrokeDasharray}
-                    strokeDashoffset={-1 * valueStrokeDasharray}
+                    strokeDasharray={spaceStrokeDashArray}
+                    strokeDashoffset={-1 * valueStrokeDashArray}
                   />
                 )}
               </>
