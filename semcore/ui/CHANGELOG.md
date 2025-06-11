@@ -1,3 +1,22 @@
+## [16.2.1] - 2025-06-11
+
+### @semcore/d3-chart
+
+- **Fixed** Legend item behavior when the it's in unchecked state but the chart line dedicated to it behaves as active.
+- **Fixed** Animation for `Dots` with pattern.
+- **Fixed** Unsupported attributes on DOM nodes in `Area` chart.
+
+### @semcore/data-table
+
+- **Fixed** Incorrect `aria-controls` attribute on Accordion button.
+
+### @semcore/dropdown-menu
+
+- **Changed** Deprecated `highlighted` property for `DropdownMenu.Item`.
+
+### @semcore/i18n-unplugin
+
+- **Fixed** Vite plugin.
 
 ## [16.2.0] - 2025-05-30
 
