@@ -7,10 +7,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Deprecated `highlighted` property for `DropdownMenu.Item`.
-
-### Fixed
-
-- Not focused on the first item in a nested menu, opened by press Enter.
+- Supported changing handlers in `Popper` with interaction `focus`.
 
 ## [16.1.1] - 2025-05-30
 

@@ -186,7 +186,7 @@ class DropdownMenuRoot extends AbstractDropdown {
       const show =
         (e.key === 'ArrowRight' && placement?.startsWith('right')) ||
         (e.key === 'ArrowLeft' && placement?.startsWith('left')) ||
-        (e.key === 'Enter' && !inlineActions);
+        ((e.key === 'Enter' || e.key === 'Space') && !inlineActions);
       const hide =
         (e.key === 'ArrowLeft' && placement?.startsWith('right')) ||
         (e.key === 'ArrowRight' && placement?.startsWith('left')) ||
