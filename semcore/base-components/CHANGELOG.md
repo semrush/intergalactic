@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.2] - 2025-06-12
+
+### Added
+
+- ResizeObserver for the `Wrapper` component.
+
 ## [16.0.1] - 2025-05-26
 
 ### Fixed
