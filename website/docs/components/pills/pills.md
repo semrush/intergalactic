@@ -147,6 +147,8 @@ In some products, pills can act as a block with shared metrics. Their difference
 
 ![](static/pills-summary.png)
 
+For a live example, refer to the [Custom pills](/components/pills/pills-code#custom-tabs).
+
 ## Interaction
 
 Table: States for Pills

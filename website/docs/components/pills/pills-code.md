@@ -28,7 +28,7 @@ Don't forget to add role `tabpanel` and `aria-labelledby` to the content of each
 
 :::
 
-## Custom tabs
+## Custom pills
 
 You can place additional information like some metrics inside `Pills.Item`. In this case, we recommend using Pills strictly as **tabs**.
 
