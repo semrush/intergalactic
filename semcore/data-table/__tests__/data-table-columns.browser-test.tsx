@@ -7,7 +7,7 @@ async function getColumnWidth(page: any, colIndex: any) {
   return box ? box.width : 0;
 }
 
-const COLUMN_SORT_VALUE_TO_ARIA_SORT_VALUE_MAPPER: Record<string, string> = {
+const COLUMN_SORT_TO_ARIA: Record<string, string> = {
   asc: 'ascending',
   desc: 'descending',
 };
@@ -167,7 +167,7 @@ test.describe('Columns', () => {
     for (const column of columns) {
       const columnName = await column.getAttribute('name');
 
-      const columnAriaSort = defaultSortColumnName === columnName ? COLUMN_SORT_VALUE_TO_ARIA_SORT_VALUE_MAPPER[defaultSortValue] : 'none';
+      const columnAriaSort = defaultSortColumnName === columnName ? COLUMN_SORT_TO_ARIA[defaultSortValue] : 'none';
 
       expect(column).toHaveAttribute('aria-sort', columnAriaSort);
     }
