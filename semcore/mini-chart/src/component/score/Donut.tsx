@@ -7,7 +7,7 @@ import React from 'react';
 
 import style from './donut.shadow.css';
 import type { CommonScoreProps } from './Score';
-import getScoreDonutFunctions from '../../utils/score.donut.functions';
+import { ScoreDonutUtils } from '../../utils/ScoreDonutUtils';
 
 export type ScoreDonutProps = BoxProps & CommonScoreProps;
 
@@ -37,27 +37,7 @@ class DonutRoot extends Component<ScoreDonutProps, {}, {}, typeof DonutRoot.enha
       loading,
     } = this.asProps;
 
-    const {
-      getViewBox,
-      getStrokeWidth,
-      getRadius,
-      getBaseStrokeDashArray,
-      getStrokeDashArrayParts,
-      getStrokeDashOffsetBase,
-      getValueStrokeDashArray,
-      getGreyStrokeDashArray,
-    } = getScoreDonutFunctions(isSemiDonut);
-
-    const strokeWidth = getStrokeWidth();
-    const radius = getRadius();
-    const viewBox = getViewBox();
-
-    const baseStrokeDashArray = getBaseStrokeDashArray(radius);
-    const valueStrokeDashArray = getValueStrokeDashArray(value, baseStrokeDashArray);
-    const greyStrokeDashArray = getGreyStrokeDashArray(baseStrokeDashArray, valueStrokeDashArray);
-    const spaceStrokeDashArray = getStrokeDashArrayParts(value, baseStrokeDashArray);
-    const strokeDashOffsetBase = getStrokeDashOffsetBase(value, baseStrokeDashArray);
-
+    const scoreDonut = new ScoreDonutUtils(value, isSemiDonut);
     const { __excludeProps, extractedAriaProps } = extractAriaProps(this.asProps);
 
     return sstyled(styles)(
@@ -65,7 +45,7 @@ class DonutRoot extends Component<ScoreDonutProps, {}, {}, typeof DonutRoot.enha
         <svg
           width='100%'
           height='100%'
-          viewBox={viewBox}
+          viewBox={scoreDonut.viewBox}
           fill='none'
           role='img'
           {...extractedAriaProps}
@@ -74,39 +54,39 @@ class DonutRoot extends Component<ScoreDonutProps, {}, {}, typeof DonutRoot.enha
             <circle
               cx='12'
               cy='12'
-              r={radius}
-              strokeWidth={strokeWidth}
+              r={scoreDonut.radius}
+              strokeWidth={scoreDonut.strokeWidth}
               stroke={resolveColor(baseBgColor)}
               strokeDasharray={
-                loading ? undefined : `${greyStrokeDashArray} ${baseStrokeDashArray}`
+                loading ? undefined : `${scoreDonut.greyStrokeDashArray} ${scoreDonut.baseStrokeDashArray}`
               }
-              strokeDashoffset={strokeDashOffsetBase}
+              strokeDashoffset={scoreDonut.strokeDashOffsetBase}
             />
             {!loading && (
               <>
                 <circle
                   cx='12'
                   cy='12'
-                  r={radius}
-                  strokeWidth={strokeWidth}
+                  r={scoreDonut.radius}
+                  strokeWidth={scoreDonut.strokeWidth}
                   stroke={resolveColor(color)}
-                  strokeDasharray={`${valueStrokeDashArray} ${baseStrokeDashArray}`}
-                  strokeDashoffset={valueStrokeDashArray}
+                  strokeDasharray={`${scoreDonut.valueStrokeDashArray} ${scoreDonut.baseStrokeDashArray}`}
+                  strokeDashoffset={scoreDonut.valueStrokeDashArray}
                 >
                   <animate
                     attributeName='stroke-dashoffset'
-                    values={`0;${valueStrokeDashArray}`}
+                    values={`0;${scoreDonut.valueStrokeDashArray}`}
                   />
                 </circle>
                 {value !== 100 && !isSemiDonut && (
                   <circle
                     cx='12'
                     cy='12'
-                    r={radius}
-                    strokeWidth={strokeWidth}
+                    r={scoreDonut.radius}
+                    strokeWidth={scoreDonut.strokeWidth}
                     stroke={resolveColor('chart-grid-border')}
-                    strokeDasharray={spaceStrokeDashArray}
-                    strokeDashoffset={-1 * valueStrokeDashArray}
+                    strokeDasharray={scoreDonut.strokeDashArrayParts}
+                    strokeDashoffset={-1 * scoreDonut.valueStrokeDashArray}
                   />
                 )}
               </>
