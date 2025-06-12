@@ -980,7 +980,7 @@ test.describe('Virtual scroll', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
-    const ddMenuTrigger = await page.locator('[data-ui-name="DropdownMenu.Trigger"]');
+    const ddMenuTrigger = page.locator('[data-ui-name="DropdownMenu.Trigger"]');
     await page.keyboard.press('Tab');
     await expect(ddMenuTrigger).toBeFocused();
     await page.keyboard.press('Enter');
