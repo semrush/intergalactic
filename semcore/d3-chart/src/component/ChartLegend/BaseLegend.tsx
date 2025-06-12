@@ -2,7 +2,7 @@ import { Component, type Intergalactic } from '@semcore/core';
 import type React from 'react';
 
 import type { LegendProps } from './BaseLegend.type';
-import type { LegendItemKey, LegendItemProps } from './LegendItem/LegendItem.type';
+import { StaticShapes, type LegendItemKey, type LegendItemProps, type ShapeType } from './LegendItem/LegendItem.type';
 import { makeDataHintsHandlers } from '../../a11y/hints';
 
 export abstract class BaseLegend<T extends LegendProps> extends Component<T> {
@@ -48,7 +48,7 @@ export abstract class BaseLegend<T extends LegendProps> extends Component<T> {
       size,
       onFocusLegendItem: this.onFocusLegendItem(line.checked),
       onBlurLegendItem: this.onBlurLegendItem,
-      onChangeLegendItem: this.onChangeLegendItem,
+      onChangeLegendItem: this.onChangeLegendItem(shape),
       onMouseEnter: line.checked ? this.bindOnMouseEnterItem(line.id) : undefined,
       onMouseLeave: this.bindOnMouseLeaveItem(line.id),
       style: { gridRowStart: `${index + 1}`, gridRowEnd: `${index + 2}` },
@@ -56,7 +56,9 @@ export abstract class BaseLegend<T extends LegendProps> extends Component<T> {
     };
   }
 
-  onChangeLegendItem = (id: LegendItemKey, checked: boolean) => {
+  onChangeLegendItem = (shape: ShapeType) => (id: LegendItemKey, checked: boolean) => {
+    if (shape !== 'Checkbox') return;
+
     this.props.onChangeVisibleItem?.(id, checked);
 
     if (checked) {

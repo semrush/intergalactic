@@ -14,6 +14,10 @@ SBubble {
   }
 }
 
+g[visible='false'] {
+  display: none;
+}
+
 SBubble[color] {
   fill: var(--color);
 }
