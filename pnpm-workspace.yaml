@@ -5,3 +5,6 @@ packages:
   - 'website'
   - 'stories'
   - vite-project
+
+linkWorkspacePackages: true
+preferWorkspacePackages: true
