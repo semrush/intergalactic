@@ -96,7 +96,7 @@ test.describe('Dropdown menu base', () => {
     const button = page.locator('button', { hasText: 'Actions' });
     const menu = page.getByRole('menu');
 
-    await test.step('Verify opens by mouse click on tirgger', async () => {
+    await test.step('Verify opens by mouse click on trigger', async () => {
       await button.click();
       await menu.waitFor();
       await expect(menu).toBeVisible();
@@ -494,8 +494,8 @@ test.describe('Nested menus with focusable elements', () => {
       await page.keyboard.press('Tab');
       await expect(ddMenu).toBeFocused();
       await page.keyboard.press('Enter');
+      await page.waitForSelector('text="Item 1"');
       await expect(ddMenu).not.toBeFocused();
-
       await expect(items.first()).toBeFocused();
       await expect(SubItem1).not.toBeVisible();
     });
@@ -503,12 +503,29 @@ test.describe('Nested menus with focusable elements', () => {
     await test.step('Verify 3rd item focused and 3rd submenu shown', async () => {
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowDown');
-      await page.waitForTimeout(500);
+      await page.waitForTimeout(50);
       await expect(items.nth(2)).toBeFocused();
     });
 
-    await test.step('Verify 1st item  submenu focused', async () => {
+    await test.step('Verify 1st item submenu focused when expanded by Enter', async () => {
       await page.keyboard.press('Enter');
+      await page.waitForSelector('text="Item 4.1.1"');
+      await expect(SubItem1).toBeVisible();
+      await expect(SubItem1).toBeFocused();
+    });
+
+    await test.step('Verify 1st item submenu focused when expanded by Space', async () => {
+      await page.keyboard.press('Escape');
+      await page.keyboard.press('Space');
+      await page.waitForSelector('text="Item 4.1.1"');
+      await expect(SubItem1).toBeVisible();
+      await expect(SubItem1).toBeFocused();
+    });
+
+    await test.step('Verify 1st item submenu focused when expanded by ArrowRight', async () => {
+      await page.keyboard.press('Escape');
+      await page.keyboard.press('ArrowRight');
+      await page.waitForSelector('text="Item 4.1.1"');
       await expect(SubItem1).toBeVisible();
       await expect(SubItem1).toBeFocused();
     });
