@@ -147,7 +147,13 @@ class SliderRoot extends Component {
 
   getNumericValue = () => {
     const { value, options, min, max, defaultValue } = this.asProps;
-    if (!options) return value;
+
+    if (!options) {
+      const numericValue = parseInt(value);
+
+      return isNaN(numericValue) ? defaultValue : numericValue;
+    };
+
     const resolvedIndex = options.findIndex((option) => option.value === value);
     if (resolvedIndex === -1) return defaultValue;
     if (resolvedIndex < min) return min;
