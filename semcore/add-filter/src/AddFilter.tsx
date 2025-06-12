@@ -100,8 +100,8 @@ class RootAddFilter extends Component<
     const { visibleFilters } = this.asProps;
     const deletedIndex = visibleFilters.findIndex((n) => n === name);
     setTimeout(() => {
-      const currentVisibleFiltersList = visibleFilters;
-      const focusFilterName = currentVisibleFiltersList.at(deletedIndex);
+      const { visibleFilters } = this.asProps;
+      const focusFilterName = visibleFilters.at(deletedIndex);
 
       const itemToFocus =
         this.filtersFocusMap.get(focusFilterName) ?? this.addFilterTrigger.current;
