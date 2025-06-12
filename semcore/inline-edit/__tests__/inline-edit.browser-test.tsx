@@ -13,11 +13,6 @@ test.describe('InlineEdit', () => {
     const inlineEditView = page.locator('[data-ui-name="InlineEdit.View"]');
     const inlineEditEdit = page.locator('[data-ui-name="InlineEdit.Edit"]');
     const randomText = Math.random().toString().substring(2);
-    const editIcons = inlineEditView.locator('svg');
-    const check = page.locator('[data-name="Check"]');
-    const close = page.locator('[data-name="Close"]');
-
-    const inlineEdit = page.locator('[data-ui-name="InlineEdit"]');
 
     await test.step('Verify inline view mode attributes', async () => {
       await expect(inlineEditView).toHaveAttribute('tabindex', '0');
