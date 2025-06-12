@@ -47,6 +47,17 @@ test.describe('Loading states', () => {
     }
   });
 
+  test('Verify table in card', async ({ page }) => {
+    const standPath = 'stories/components/card/docs/examples/card_layout_for_tables.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+    await page.keyboard.press('Tab');
+
+    await page.keyboard.press('ArrowDown');
+    await expect(page).toHaveScreenshot();
+  });
+
   test('Verify empty table state', async ({ page }) => {
     const standPath = 'stories/components/data-table/docs/examples/empty-table.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
