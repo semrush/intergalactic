@@ -294,7 +294,8 @@ describe('InputNumber', () => {
     await userEvent.keyboard('[Tab]');
     await userEvent.keyboard('1ytr');
     expect(input.value).toBe('1');
-    expect(spy).toBeCalled();
+    expect(spy).toBeCalledTimes(1);
+    expect(spy).toBeCalledWith('1', expect.anything());
   });
 
   test('Should not call onChange if the value ends with `-`', async () => {
