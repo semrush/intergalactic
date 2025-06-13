@@ -472,6 +472,24 @@ test.describe('Multi level Header', () => {
     await group4.evaluate((el) => window.getComputedStyle(el).borderLeftWidth === '0px');
   });
 
+  test('Verify multi level attributes', async ({ page }) => {
+    const standPath =
+      'stories/components/data-table/docs/examples/borders.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+
+    const headGroup = page.locator('[data-ui-name="Head.Group"]');
+    const headGoupColumn = headGroup.nth(0).locator('[data-ui-name="Head.Column"]');
+
+    const count = await headGoupColumn.count();
+    for (let i = 0; i < count; i++) {
+      await expect(headGoupColumn.nth(i)).toHaveAttribute('role', 'columnheader');
+      await expect(headGoupColumn.nth(i)).toHaveAttribute('aria-colindex', `${i + 2}`);
+      await expect(headGoupColumn.nth(i)).toHaveAttribute('aria-describedby');
+      await expect(headGoupColumn.nth(i)).toHaveAttribute('tabindex', '-1');
+    }
+  });
+
   test('Verify multi level looks good when it is sticky', async ({ page }) => {
     const standPath =
       'stories/components/data-table/tests/examples/header-tests/multi-level-header-sticky.tsx';

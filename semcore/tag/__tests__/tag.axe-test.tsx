@@ -10,6 +10,7 @@ test.describe('Tag', () => {
 
     expect(violations).toEqual([]);
   });
+
   test('Custom tag color', async ({ page }) => {
     const standPath = 'stories/components/tag/docs/examples/custom_tag_color.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -18,6 +19,7 @@ test.describe('Tag', () => {
 
     expect(violations).toEqual([]);
   });
+
   test('Editing tag', async ({ page }) => {
     const standPath = 'stories/components/tag/docs/examples/editing_tag.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -26,6 +28,7 @@ test.describe('Tag', () => {
 
     expect(violations).toEqual([]);
   });
+
   test('Grouping tags less', async ({ page }) => {
     const standPath = 'stories/components/tag/docs/examples/grouping_tags_less.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -34,6 +37,7 @@ test.describe('Tag', () => {
 
     expect(violations).toEqual([]);
   });
+
   test('Grouping tags more', async ({ page }) => {
     const standPath = 'stories/components/tag/docs/examples/grouping_tags_more.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -42,6 +46,7 @@ test.describe('Tag', () => {
 
     expect(violations).toEqual([]);
   });
+
   test('Removing tag', async ({ page }) => {
     const standPath = 'stories/components/tag/docs/examples/removing_tag.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -50,6 +55,7 @@ test.describe('Tag', () => {
 
     expect(violations).toEqual([]);
   });
+
   test('Tag addon', async ({ page }) => {
     const standPath = 'stories/components/tag/docs/examples/tag_addon.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
