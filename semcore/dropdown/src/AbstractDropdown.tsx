@@ -272,7 +272,9 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
         }
 
         setTimeout(() => {
-          this.afterOpenPopper();
+          if (this.asProps.visible) {
+            this.afterOpenPopper();
+          }
         }, 200);
       } else {
         if (['ArrowDown', 'ArrowUp'].includes(e.key)) {
