@@ -167,9 +167,12 @@ test.describe('Columns', () => {
     for (const column of columns) {
       const columnName = await column.getAttribute('name');
 
-      const columnAriaSort = defaultSortColumnName === columnName ? COLUMN_SORT_TO_ARIA[defaultSortValue] : 'none';
+      if (defaultSortColumnName === columnName) {
+        expect(column).toHaveAttribute('aria-sort', COLUMN_SORT_TO_ARIA[defaultSortValue]);
+        continue;
+      }
 
-      expect(column).toHaveAttribute('aria-sort', columnAriaSort);
+      expect(column).not.toHaveAttribute('aria-sort');
     }
   });
 });
