@@ -91,7 +91,6 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
       'aria-haspopup': 'true',
       'aria-expanded': visible ? 'true' : 'false',
       'ref': this.triggerRef,
-      'tabIndex': 0,
     };
   }
 
