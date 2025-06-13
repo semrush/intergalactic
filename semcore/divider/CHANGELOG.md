@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Divider styles for `invert` theme.
+- Divider styles for for `theme='invert'` & `use='primary'`.
 
 ## [16.0.1] - 2025-05-30
 
