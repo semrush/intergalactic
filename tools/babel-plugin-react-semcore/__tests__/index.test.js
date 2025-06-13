@@ -1,7 +1,7 @@
 import path from 'path';
 
+import { describe, it } from '@semcore/testing-utils/vitest';
 import pluginTester from 'babel-plugin-tester';
-import { describe, it } from 'vitest';
 
 const plugin = require('../src/index');
 
