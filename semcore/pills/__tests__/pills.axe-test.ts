@@ -1,7 +1,7 @@
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test, getAccessibilityViolations } from '@semcore/testing-utils/playwright';
 
-test.describe('Modal', () => {
+test.describe('Pills', () => {
   test('Basic example', async ({ page }) => {
     const standPath = 'stories/components/pills/docs/examples/basic_example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
