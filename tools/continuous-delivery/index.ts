@@ -124,19 +124,6 @@ export const publishPrerelease = async () => {
   log('Updated versions to prerelease.');
 
   await NpmUtils.publish(updatedPackages, true);
-
-  if (!process.argv.includes('--dry-run') && prerelease) {
-    const releaseChangelog = await getReleaseChangelog();
-    const lastVersionChangelogs = releaseChangelog.changelogs.slice(0, 1);
-
-    const endpoints = process.env['PRIVATE_CHANNEL_SLACK_API']?.split(',') ?? ['fake-url'];
-
-    if (!process.argv.includes('--dry-run')) {
-      validateSlackIntegrationEnv(endpoints);
-    }
-
-    await sendMessageAboutRelease(prerelease, lastVersionChangelogs, endpoints);
-  }
 };
 
 export const publishRelease = async () => {
@@ -176,6 +163,20 @@ export const getChangedPackages = async (base: string): Promise<string[]> => {
   });
 };
 
+const sendReleaseChangelog = async (endpoints: string[]) => {
+  const versionTag = await gitUtils.getCurrentTag();
+  const version = versionTag?.slice(1);
+
+  if (version && endpoints) {
+    const releaseChangelog = await getReleaseChangelog();
+    const lastVersionChangelogs = releaseChangelog.changelogs.slice(0, 1);
+
+    validateSlackIntegrationEnv(endpoints);
+
+    await sendMessageAboutRelease(version, lastVersionChangelogs, endpoints);
+  }
+};
+
 export {
   fetchFromNpm,
   formatMarkdown,
@@ -183,4 +184,5 @@ export {
   serializeReleaseChangelog,
   publishReleaseNotes,
   getUnlockedPrerelease,
+  sendReleaseChangelog,
 };

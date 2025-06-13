@@ -6,34 +6,26 @@ tabs: Design('global-errors'), A11y('global-errors-a11y'), API('global-errors-ap
 
 ## Description
 
-**Error message** is a component for displaying error message on the page. Use it for global error messages. Global errors is a pattern for pages blocking the user from working with the website, and informing why the system can't display the content. This pattern is also related to server errors, limitations, etc.
+**Error message** is a component for showing global error messages on a page. Use it when the user is blocked from interacting with the website and needs to know why. This pattern covers server errors, system limitations, and other issues preventing content from loading.
+
+::: tip
+The state description should be brief. Two or three short sentences are usually enough.
+:::
+
+![](static/ge-example.png)
 
 ## Appearance
 
-Composition, styles, and margins of the message:
-
-- For an image in svg format use `width: 240px`, `height: 240px`, `margin-right: 40px`.
-- For title use text with 36px size (`--fs-700`, `--lh-700`), `--text-primary` color and `margin-bottom: 16px`.
-- For message text use text with 14px size (`--fs-200`, `--lh-200`), `--text-primary` color and `margin-bottom: 24px`.
-- For CTA use buttons with L size (optional).
-- Captcha (optional).
-
-![](static/ge_margins.png)
-
-::: tip
-State description should be brief. Two or three small sentences usually are enough.
-:::
-
 ### Margins
 
-- Margin between the illustration and the message is 40px.
-- Maximum width of the message is 640px. Top margin of the container with the message is 32px.
+- The space between the illustration and the message is `--intergalactic-spacing-10x`.
+- The message has a maximum width of 640px, with a top margin of `--intergalactic-spacing-8x` on its container.
 
-![](static/ge_margins-2.png)
+![](static/ge-margins.png)
 
 ### Positioning on page
 
-The message is centered horizontally and vertically. Give a container with an error message a relative height – `height: 70vh`.
+Center the message on the page horizontally and vertically.
 
 ![](static/ge_page-not-found.png)
 
@@ -43,7 +35,6 @@ For screens less than 768px:
 
 - change layout of the message to vertical;
 - change illustration's size to 200px * 200px;
-- change margin between the illustration and a message from 40px to 8px;
 - stretch controls to the width of the content.
 
 ![](static/mobile.png)
@@ -356,18 +347,18 @@ There are two possible cases of the pattern's use:
 - As a state of the product.
 
 ::: tip
-The location is the same in both cases: the placeholder is centered vertically and horizontally on the page.
+The position is the same in both cases: the message is centered both vertically and horizontally on the page.
 :::
 
 | For the whole website                                | In the product                                             |
 | ---------------------------------------------------- | ---------------------------------------------------------- |
 | ![](static/ge_page-smthng.png) | ![](static/ge_under-maintenance.png) |
 
+
 ### Controls
 
-1. If the error is processed by Cloudflare, we don't add buttons.
+1. If the error is processed by Cloudflare, don't add buttons.
 2. In other cases, it's recommended to add controls allowing the user:
     - to leave the page, such as **Go to homepage**
     - to handle the problem and reload the page, such as **Reload page**, **Try again**, or **Submit**
 3. The **Contact us** button is only used for unexpected errors, so that the user can contact support and report the problem.
-

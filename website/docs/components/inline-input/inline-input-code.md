@@ -8,7 +8,7 @@ tabs: Design('inline-input'), A11y('inline-input-a11y'), API('inline-input-api')
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/basic_usage.tsx';
+  export Demo from 'stories/components/inline-input/docs/examples/basic_usage.tsx';
 </script>
 
 :::
@@ -20,7 +20,7 @@ Component vertical size is based on inherited text size. Horizontal size should 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/inheriting_text_size.tsx';
+  export Demo from 'stories/components/inline-input/docs/examples/inheriting_text_size.tsx';
 </script>
 
 :::
@@ -30,7 +30,7 @@ Component vertical size is based on inherited text size. Horizontal size should 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/number-only_input.tsx';
+  export Demo from 'stories/components/inline-input/docs/examples/number-only_input.tsx';
 </script>
 
 :::

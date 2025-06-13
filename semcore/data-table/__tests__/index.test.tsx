@@ -1,9 +1,8 @@
 import type { Intergalactic } from '@semcore/core';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, cleanup } from '@semcore/testing-utils/testing-library';
-import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import { expect, test, describe, beforeEach, vi, assertType } from '@semcore/testing-utils/vitest';
 import React, { useRef } from 'react';
-import { assertType } from 'vitest';
 
 import { DataTable } from '../src';
 
