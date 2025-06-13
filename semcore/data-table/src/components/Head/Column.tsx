@@ -278,9 +278,11 @@ export class Column<D extends DataTableData> extends Component<
     const { styles, sortable, sort, uid, name, parent, sortableColumnDescribeId, Children } =
       this.asProps;
 
-    const SSortIcon =
-      sort && sort[0] === name ? SORTING_ICON[sort[1]] : SORTING_ICON[this.defaultDirection];
-    const isSorted = sort?.[0] === name;
+    const [sortBy, sortDirection] = sort ?? [undefined, undefined];
+    const isSorted = sortBy === name && !!sortDirection;
+
+    const SSortIcon = isSorted ? SORTING_ICON[sortDirection] : SORTING_ICON[this.defaultDirection];
+
     const visibleSort = Boolean(sortable) && (this.state.sortVisible || isSorted);
 
     const ariaDescribedBy = [];
@@ -291,7 +293,10 @@ export class Column<D extends DataTableData> extends Component<
       ariaDescribedBy.push(`igc-table-${uid}-${parent.name}-group`);
     }
 
-    const ariaSortValue = sort?.[0] === name ? ARIA_SORT[sort[1]] : ARIA_SORT.none;
+    const sortedAriaValue = isSorted ? ARIA_SORT[sortDirection] : ARIA_SORT.none;
+    const ariaSortValue = sortable
+      ? sortedAriaValue
+      : undefined;
 
     return sstyled(styles)(
       <SColumn
