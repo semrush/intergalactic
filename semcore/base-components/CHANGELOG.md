@@ -6,7 +6,11 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- ResizeObserver for the `Wrapper` component.
+- ResizeObserver for the `Wrapper` component in the `ScrollArea`.
+
+### Changed
+
+- `keyboardFocus` to `focus` event for popper triggers with `hover` interaction.
 
 ## [16.0.1] - 2025-05-26
 

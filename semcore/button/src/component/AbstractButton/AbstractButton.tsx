@@ -125,6 +125,7 @@ export abstract class AbstractButton extends Component<Props, {}, {}> {
       'text-color': this.getTextColor(),
       'aria-busy': loading,
       '__excludeProps': ['title'],
+      'tabIndex': 0,
     };
 
     const hintProps = {
