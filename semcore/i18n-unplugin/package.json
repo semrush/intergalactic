@@ -1,7 +1,7 @@
 {
   "name": "@semcore/i18n-unplugin",
   "description": "Semrush i18n unplugin",
-  "version": "16.0.0",
+  "version": "16.0.1",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -25,7 +25,6 @@
   },
   "devDependencies": {
     "@semcore/testing-utils": "workspace:*",
-
     "@types/rollup": "^0.54.0",
     "@types/watchpack": "^2.4.4",
     "@types/webpack": "^5.28.5",
