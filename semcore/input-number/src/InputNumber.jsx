@@ -244,7 +244,7 @@ class Value extends Component {
       }
     }
 
-    const digits = /[0-9.-]+/.test(value);
+    const digits = /^[0-9.-]+$/.test(value);
 
     if (digits || value === '') {
       this.handlers.value(value, event);
@@ -462,6 +462,7 @@ class Value extends Component {
           min={min}
           max={max}
           step={step}
+          // type='number'
         />
       </>,
     );

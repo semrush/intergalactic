@@ -282,6 +282,19 @@ describe('InputNumber', () => {
     expect(input.value).toBe('12,344');
   });
 
+  test.concurrent('Should not accept letters after first digits', () => {
+    const spy = vi.fn();
+    const { getByTestId } = render(
+      <InputNumber>
+        <InputNumber.Value data-testid='input12' value='' onChange={spy} />
+      </InputNumber>,
+    );
+
+    const input = getByTestId('input12');
+    fireEvent.change(input, { target: { value: '1erew' } });
+    expect(spy).not.toBeCalled();
+  });
+
   test('Should not call onChange if the value ends with `-`', async () => {
     const spy = vi.fn();
     render(
