@@ -462,7 +462,6 @@ class Value extends Component {
           min={min}
           max={max}
           step={step}
-          // type='number'
         />
       </>,
     );
