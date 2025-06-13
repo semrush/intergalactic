@@ -85,7 +85,7 @@ const Demo = () => {
             key={name}
             name={name}
             displayName={name}
-            onChange={(v: any) => {
+            onChange={(v) => {
               if (typeof v === 'string') {
                 updateFilterData(v, name);
               }
