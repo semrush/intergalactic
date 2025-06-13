@@ -232,6 +232,14 @@ test.describe('Cells', () => {
       'stories/components/data-table/tests/examples/cells-tests/one-merged-cell.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
+    const cell = page.locator('[data-ui-name="Body.Cell"]');
+    await expect(cell).toHaveAttribute('data-grouped-by', 'colgroup');
+    await expect(cell).toHaveAttribute('scope', 'colgroup');
+    await expect(cell).toHaveAttribute('aria-colspan', '4');
+    await expect(cell).toHaveAttribute('aria-colindex', '1');
+    await expect(cell).toHaveAttribute('data-aria-level', '1');
+    await expect(cell).toHaveAttribute('role', 'gridcell');
+
     await page.keyboard.press('Tab');
     await page.keyboard.press('ArrowRight');
     await page.keyboard.press('ArrowRight');

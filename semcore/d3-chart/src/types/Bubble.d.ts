@@ -39,6 +39,14 @@ export type BubbleContext = {
   index: number;
 };
 
+export type BubbleCircleProps = {
+  /** Item data index */
+  index: number;
+
+  /** Item visibility */
+  visible?: boolean;
+};
+
 declare const Bubble: IntergalacticD3Component<Intergalactic.Tag, BubbleProps, BubbleContext> & {
   Tooltip: TooltipType<
     BubbleProps & {
@@ -51,6 +59,11 @@ declare const Bubble: IntergalacticD3Component<Intergalactic.Tag, BubbleProps, B
        */
       index: number;
     }
+  >;
+  Circle: IntergalacticD3Component<
+    'g',
+    BubbleCircleProps,
+    Context
   >;
 };
 
