@@ -188,4 +188,10 @@ test.describe('DataTable', () => {
 
     expect(violations).toEqual([]);
   });
+  test('table in card', async ({ page }) => {
+    const standPath = 'stories/components/card/docs/examples/card_layout_for_tables.tsx';
+    const violations = await checkAxe(page, standPath);
+
+    expect(violations).toEqual([]);
+  });
 });

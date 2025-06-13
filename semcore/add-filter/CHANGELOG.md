@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.3.0] - 2025-06-12
+
+### Added
+
+- Controlled mode for visibleFilters.
+
 ## [16.2.0] - 2025-05-30
 
 ### Changed

@@ -3,6 +3,7 @@ import * as path from 'node:path';
 import * as process from 'node:process';
 
 import glob from 'fast-glob';
+// eslint-disable-next-line no-restricted-imports
 import { test, expect } from 'vitest';
 
 async function extractImports(filePath: string) {

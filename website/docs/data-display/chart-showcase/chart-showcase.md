@@ -384,7 +384,7 @@ const group = {
   },
   areaStacked: {
     title: 'Stacked area chart',
-    route: '/intergalactic/data-display/stacked-area-chart//stacked-area-chart',
+    route: '/intergalactic/data-display/stacked-area-chart/stacked-area-chart',
     disabled: false,
     type: 'charts',
   },
@@ -698,7 +698,7 @@ const group = {
   },
   areaStacked: {
     title: 'Stacked area chart',
-    route: '/intergalactic/data-display/stacked-area-chart',
+    route: '/intergalactic/data-display/stacked-area-chart/stacked-area-chart',
     disabled: false,
     type: 'charts',
   },

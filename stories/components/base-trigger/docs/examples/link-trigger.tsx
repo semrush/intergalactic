@@ -4,21 +4,23 @@ import Select from '@semcore/select';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
-const Demo = () => (
-  <Flex gap={2}>
-    <Text size={200} tag='label' htmlFor='device-link-select'>
-      Device:
-    </Text>
-    <Select tag={LinkTrigger} options={devices} id='device-link-select' />
-    <Select
-      tag={LinkTrigger}
-      options={periods}
-      aria-label='Period'
-      placeholder='Select period'
-      ml={4}
-    />
-  </Flex>
-);
+const Demo = () => {
+  return (
+    <Flex gap={2}>
+      <Text size={200} tag='label' htmlFor='device-link-select'>
+        Device:
+      </Text>
+      <Select tag={LinkTrigger} options={devices} id='device-link-select' />
+      <Select
+        tag={LinkTrigger}
+        options={periods}
+        aria-label='Period'
+        placeholder='Select period'
+        ml={4}
+      />
+    </Flex>
+  );
+};
 
 const devices = ['Desktop', 'Mobile', 'Tablet'].map((item) => ({
   value: item,
