@@ -45,7 +45,7 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
     })),
   });
 
-    const color = select({
+  const color = theme === 'primary' ? select({
     key: 'color',
     defaultValue: 'gray-500',
     label: 'Color',
@@ -53,9 +53,9 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
       name: value,
       value,
     })),
-  });
+  }) : 'gray-500';
 
-    const interactive = bool({
+  const interactive = bool({
     key: 'interactive',
     defaultValue: false,
     label: 'Interactive',
@@ -95,7 +95,7 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
     <TagContainer
       interactive={interactive}
       theme={theme}
-      color={color}
+      {...(theme === 'primary' && { color })}
       size={size}
       disabled={disabled}
     >
