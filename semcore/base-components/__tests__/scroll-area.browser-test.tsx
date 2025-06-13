@@ -368,3 +368,19 @@ test.describe('ScrollArea - Horizontal scroll with Shadow and offset', () => {
     expect(mainMaxValue2).toEqual(mainMaxValue);
   });
 });
+
+test.describe('ScrollArea – Relative container height', () => {
+  test('ScrollArea scroll behavior with container height', async ({ page }) => {
+    const standPath =
+        'stories/components/scroll-area/advanced/examples/relative_container_height.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+    await page.setViewportSize({ width: 1600, height: 1200 });
+
+    await expect(page).toHaveScreenshot();
+
+    await page.setViewportSize({ width: 1600, height: 400 });
+    await expect(page).toHaveScreenshot();
+  });
+});
