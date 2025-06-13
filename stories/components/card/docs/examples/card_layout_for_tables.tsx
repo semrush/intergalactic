@@ -40,7 +40,7 @@ const data = [
 const Demo = () => (
   <Card>
     <Card.Header>
-      <Card.Title innerHint={tooltipContent} tag='h4' inline my={0}>
+      <Card.Title innerHint={tooltipContent} innerHintAriaLabel='info' tag='h4' inline my={0}>
         Card Title
       </Card.Title>
       <SettingsM
