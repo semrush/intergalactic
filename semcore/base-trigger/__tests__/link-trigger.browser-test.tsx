@@ -5,7 +5,7 @@ import { checkKeyboardNavigation } from './utils';
 
 test.describe('Link-trigger', () => {
   test.describe('Styles and a11y checks', () => {
-    test('Verify main styles and props', async ({ page }) => {
+    test('Verify base styles and props', async ({ page }) => {
       const standPath =
         'stories/components/base-trigger/tests/examples/link-trigger-all-states.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -29,6 +29,34 @@ test.describe('Link-trigger', () => {
       });
     });
 
+    test('Verify link trigger in select styles', async ({ page, browserName }) => {
+      const standPath =
+        'stories/components/base-trigger/tests/examples/link-trigger-with-select.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+      await page.setContent(htmlContent);
+
+      const linkTrigger = page.locator('[data-ui-name="LinkTrigger.Text"]');
+
+      await test.step('Base styles', async () => {
+        const count = await linkTrigger.count();
+        for (let i = 0; i < count; i++) {
+          await expect(linkTrigger.nth(i)).toHaveCSS('color', 'rgb(0, 109, 202)');
+          await expect(linkTrigger.nth(i)).not.toHaveCSS('border-color', 'rgb(4, 71, 146)');
+        }
+      });
+
+      if (browserName === 'firefox') return; // skipped in ff because hover works weird on playwright browser
+      await test.step('Hover styles', async () => {
+        const count = await linkTrigger.count();
+        for (let i = 0; i < count; i++) {
+          await linkTrigger.nth(i).hover();
+          await expect(linkTrigger.nth(i)).toHaveCSS('color', 'rgb(0, 109, 202)');
+          await expect(linkTrigger.nth(i)).toHaveCSS('border-color', 'rgb(4, 71, 146)');
+        }
+      });
+    });
+
     test('Verify main styles a11y attributes and focus', async ({ page }) => {
       const standPath =
         'stories/components/base-trigger/tests/examples/link-trigger-all-states.tsx';
@@ -39,12 +67,12 @@ test.describe('Link-trigger', () => {
       await test.step('Verify focus on Active and Disabled', async () => {
         await checkKeyboardNavigation(page, '[data-test-id]');
       });
+
       await test.step('Verify roles and attributes', async () => {
         const button = await page.locator('[data-test-id="link-trigger-active"]');
         await expect(button).toHaveAttribute('type', 'button');
 
         await expect(button).toHaveAttribute('tabindex', '0');
-
         const svg = button.locator('svg');
         await expect(svg).toBeVisible();
         await expect(svg).toHaveAttribute('tabindex', '-1');
