@@ -1,9 +1,40 @@
 import Card from '@semcore/card';
 import { DataTable } from '@semcore/data-table';
-import SettingsM from '@semcore/icon/Settings/m';
 import React from 'react';
 
-const tooltipContent = `Hey! Don't forget to place some useful information here.`;
+const Demo = () => (
+  <>
+    <style>
+      {`
+      #card-with-table {
+        padding: 0 0 var(--intergalactic-spacing-1x);
+      }
+      #card-with-table div[role="row"]:last-of-type div[role="gridcell"] {
+        border-bottom: none;
+      }
+    `}
+    </style>
+    <Card>
+      <Card.Header>
+        <Card.Title tag='h3'>Card Title</Card.Title>
+      </Card.Header>
+      <Card.Body id='card-with-table'>
+        <DataTable
+          data={data}
+          aria-label='Table in card'
+          sideIndents='wide'
+          columns={[
+            { name: 'keyword', children: 'Keyword' },
+            { name: 'kd', children: 'KD,%' },
+            { name: 'cpc', children: 'CPC' },
+            { name: 'vol', children: 'Vol.' },
+          ]}
+        />
+      </Card.Body>
+    </Card>
+  </>
+);
+
 const data = [
   {
     keyword: 'ebay buy',
@@ -36,37 +67,5 @@ const data = [
     vol: '21,644,290',
   },
 ];
-
-const Demo = () => (
-  <Card>
-    <Card.Header>
-      <Card.Title innerHint={tooltipContent} innerHintAriaLabel='info' tag='h4' inline my={0}>
-        Card Title
-      </Card.Title>
-      <SettingsM
-        style={{ float: 'right' }}
-        mt={1}
-        color='icon-secondary-neutral'
-        interactive
-        aria-label='Open settings'
-      />
-      <Card.Description my={0}>
-        This is a description with additional information or insights.
-      </Card.Description>
-    </Card.Header>
-    <Card.Body p='0 0 20px 0'>
-      <DataTable
-        data={data}
-        aria-label='Table in card'
-        columns={[
-          { name: 'keyword', children: 'Keyword' },
-          { name: 'kd', children: 'KD,%' },
-          { name: 'cpc', children: 'CPC' },
-          { name: 'vol', children: 'Vol.' },
-        ]}
-      />
-    </Card.Body>
-  </Card>
-);
 
 export default Demo;

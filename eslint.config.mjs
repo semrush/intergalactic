@@ -53,6 +53,19 @@ export default defineConfig([
       'react/no-unescaped-entities': 'off',
       'react/no-find-dom-node': 'off',
 
+      // IMPORTS
+      'no-restricted-imports': [
+        'error',
+        {
+          paths: [
+            {
+              name: 'vitest',
+              message: 'Please use @semcore/testing-utils/vitest instead of importing from vitest directly.',
+            },
+          ],
+        },
+      ],
+
       // TYPESCRIPT
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-empty-object-type': 'off',

@@ -24,36 +24,93 @@ test.describe('Base styles Primary Table', () => {
     const keywordHeader = page.locator('[data-ui-name="Head.Column"]').nth(0);
     const firstCell = page.locator('[data-ui-name="Body.Cell"]').first();
 
-    await checkStyles(keywordHeader, {
-      'font-size': '12px',
-      'line-height': 'normal',
-      'color': 'rgb(25, 27, 35)',
-      'padding': '12px',
-      'background-color': 'rgb(244, 245, 249)',
-      'border-bottom': '1px solid rgb(224, 225, 233)',
+    await test.step('Verify hovered header cell styles', async () => {
+      await checkStyles(keywordHeader, {
+        'font-size': '12px',
+        'line-height': 'normal',
+        'color': 'rgb(25, 27, 35)',
+        'padding': '12px',
+        'background-color': 'rgb(244, 245, 249)',
+        'border-bottom': '1px solid rgb(224, 225, 233)',
+      });
     });
 
-    await keywordHeader.hover();
-    if (browserName !== 'firefox')
-      await expect(keywordHeader).toHaveCSS('background-color', 'rgb(244, 245, 249)');
+    await test.step('Verify hovered header cell styles', async () => {
+      await keywordHeader.hover();
+      if (browserName !== 'firefox')
+        await expect(keywordHeader).toHaveCSS('background-color', 'rgb(244, 245, 249)');
 
-    await checkStyles(firstCell, {
-      'font-size': '14px',
-      'border-bottom': '1px solid rgb(224, 225, 233)',
-      'color': 'rgb(25, 27, 35)',
-      'background-color': 'rgb(255, 255, 255)',
-      'padding': '12px',
-      'min-height': '45px',
+      await checkStyles(firstCell, {
+        'font-size': '14px',
+        'border-bottom': '1px solid rgb(224, 225, 233)',
+        'color': 'rgb(25, 27, 35)',
+        'background-color': 'rgb(255, 255, 255)',
+        'padding': '12px',
+        'min-height': '45px',
+      });
     });
 
-    await firstCell.hover();
-    if (browserName !== 'firefox')
-      await expect(firstCell).toHaveCSS('background-color', 'rgb(240, 240, 244)');
+    await test.step('Verify body cell styles', async () => {
+      await firstCell.hover();
+      if (browserName !== 'firefox')
+        await expect(firstCell).toHaveCSS('background-color', 'rgb(240, 240, 244)');
 
-    await expect(page).toHaveScreenshot();
-    await page.keyboard.press('Tab');
-    if (browserName !== 'firefox')
-      await expect(firstCell).toHaveCSS('background-color', 'rgb(240, 240, 244)');
+      await expect(page).toHaveScreenshot();
+      await page.keyboard.press('Tab');
+      if (browserName !== 'firefox')
+        await expect(firstCell).toHaveCSS('background-color', 'rgb(240, 240, 244)');
+    });
+  });
+
+  test('Verify data table attributes', async ({ page, browserName }) => {
+    const standPath = 'stories/components/data-table/docs/examples/base.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+    const table = page.locator('[data-ui-name="DataTable"]');
+    await expect(table).toBeVisible();
+
+    const head = page.locator('[data-ui-name="DataTable.Head"]');
+    const row = page.locator('[data-ui-name="Body.Row"]');
+    const cells = page.locator('[data-ui-name="Body.Cell"]');
+    const headColumn = page.locator('[data-ui-name="Head.Column"]');
+
+    await test.step('Verify data table attributes', async () => {
+      await expect(table).toHaveAttribute('role', 'grid');
+      await expect(table).toHaveAttribute('aria-rowcount', '10');
+      await expect(table).toHaveAttribute('aria-colcount', '5');
+      await expect(table).toHaveAttribute('tabindex', '0');
+    });
+
+    await test.step('Verify data head attributes', async () => {
+      await expect(head).toHaveAttribute('role', 'row');
+      await expect(head).toHaveAttribute('aria-rowindex', '1');
+    });
+
+    await test.step('Verify data head columna atributes', async () => {
+      const count = await headColumn.count();
+      for (let i = 0; i < count; i++) {
+        await expect(headColumn.nth(i)).toHaveAttribute('role', 'columnheader');
+        await expect(headColumn.nth(i)).toHaveAttribute('aria-colindex', `${i + 1}`);
+        await expect(headColumn.nth(i)).toHaveAttribute('tabindex', '-1');
+      }
+    });
+
+    await test.step('Verify data body row attributes', async () => {
+      const count = await row.count();
+      for (let i = 0; i < count; i++) {
+        await expect(row.nth(i)).toHaveAttribute('role', 'row');
+        await expect(row.nth(i)).toHaveAttribute('aria-rowindex', `${i + 2}`);
+      }
+    });
+
+    await test.step('Verify data body cell attributes', async () => {
+      await expect(cells.nth(1)).toHaveAttribute('tabindex', '-1');
+      await expect(cells.nth(0)).toHaveAttribute('data-aria-level', '1');
+      await expect(cells.nth(1)).not.toHaveAttribute('data-aria-level');
+
+      await expect(cells.nth(1)).toHaveAttribute('role', 'gridcell');
+      await expect(cells.nth(1)).toHaveAttribute('aria-colindex');
+    });
   });
 
   test('Verify padding when sideIndent l is set', async ({ page, browserName }) => {
