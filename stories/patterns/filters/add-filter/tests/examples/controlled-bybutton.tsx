@@ -1,7 +1,6 @@
 import AddFilter from '@semcore/add-filter';
 import { Box, Flex } from '@semcore/base-components';
 import Button from '@semcore/button';
-import type { SelectValue } from '@semcore/select';
 import React from 'react';
 
 const defaultFilterData = {
@@ -86,7 +85,7 @@ const Demo = () => {
             key={name}
             name={name}
             displayName={name}
-            onChange={(v: SelectValue) => {
+            onChange={(v: any) => {
               if (typeof v === 'string') {
                 updateFilterData(v, name);
               }
