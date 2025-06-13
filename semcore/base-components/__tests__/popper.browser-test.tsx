@@ -363,38 +363,104 @@ test.describe('Popper', () => {
 
   test.describe('Interactions', () => {
     test.use({ hasTouch: true });
-    test('Hover - Verify popper appears by Hover', async ({ page }) => {
+    test('Hover - Verify popper appears by mouse interactions', async ({ page }) => {
       const standPath = 'stories/components/popper/tests/examples/interaction-hover.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
 
       await page.setContent(htmlContent);
 
-      const triggerLocator = await page.locator('text=Trigger');
-      const popperLocator = await page.locator('text=Popper');
+      await test.step('Verify appears on hover Tooltip.Trigger as Text', async () => {
+        const triggerLocator = await page.locator('text=Trigger');
+        const popperLocator = await page.locator('text=Popper');
 
-      const triggerRect = (await triggerLocator.boundingBox())!;
+        const triggerRect = (await triggerLocator.boundingBox())!;
 
-      await page.mouse.move(
-        triggerRect.x + triggerRect.width / 2,
-        triggerRect.y + triggerRect.height / 2,
-        { steps: 5 },
-      );
+        await page.mouse.move(
+          triggerRect.x + triggerRect.width / 2,
+          triggerRect.y + triggerRect.height / 2,
+          { steps: 5 },
+        );
 
-      await expect(popperLocator).toHaveCount(1);
-      await expect(popperLocator).not.toBeFocused();
+        await expect(popperLocator).toHaveCount(1);
+        await expect(popperLocator).not.toBeFocused();
+      });
+
+      await test.step('Verify appears on hover Tooltip.Trigger as Button', async () => {
+        const popper = await page.locator('[data-ui-name ="Popper.Popper"]');
+
+        const buttonTrigger = page.locator('[data-testid="button-hover"]');
+
+        await buttonTrigger.hover();
+        await expect(popper).toHaveCount(1);
+        await expect(popper).not.toBeFocused();
+        await expect(buttonTrigger).not.toBeFocused();
+      });
+
+      await test.step('Verify appears by click Button', async () => {
+        const popper = page.locator('[data-ui-name ="Popper.Popper"]');
+        const button = page.locator('[data-position="before-onFocus"]');
+        const trigger = page.locator('[data-testid="popper-onFocus"]');
+
+        await button.click();
+        await expect(popper).toHaveCount(1);
+        await expect(popper).not.toBeFocused();
+        await expect(trigger).toBeFocused();
+      });
     });
 
-    test.skip('Verify popper appears by Touch', async ({ page }) => {
+    test('Hover - Verify popper appears by keyboard interactions', async ({ page }) => {
+      const standPath = 'stories/components/popper/tests/examples/interaction-hover.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+      await page.setContent(htmlContent);
+
+      const popper = page.locator('[data-ui-name ="Popper.Popper"]');
+
+      await test.step('Verify appears on focus Tooltip.Trigger as button', async () => {
+        const buttonTrigger = page.locator('[data-testid="button-hover"]');
+
+        await page.keyboard.press('Tab');
+
+        await expect(popper).toHaveCount(0);
+        await expect(buttonTrigger).not.toBeFocused();
+
+        await page.keyboard.press('Tab');
+        await expect(buttonTrigger).toBeFocused();
+        await expect(popper).toHaveCount(1);
+        await expect(popper).not.toBeFocused();
+
+        await page.keyboard.press('Tab');
+        await expect(popper).toHaveCount(0);
+        await expect(buttonTrigger).not.toBeFocused();
+      });
+
+      await test.step('Verify appears by press Button', async () => {
+        const buttonBefore = page.locator('[data-position="before-onFocus"]');
+        const trigger = page.locator('[data-testid="popper-onFocus"]');
+
+        await page.keyboard.press('Tab');
+        await expect(buttonBefore).toBeFocused();
+        await expect(popper).toHaveCount(0);
+
+        await page.keyboard.press('Space');
+        await expect(buttonBefore).not.toBeFocused();
+        await expect(trigger).toBeFocused();
+        await expect(popper).toHaveCount(1);
+        await expect(popper).not.toBeFocused();
+      });
+    });
+
+    test('Hover - Verify popper appears by Touch', async ({ page, browserName }) => {
       const standPath = 'stories/components/popper/tests/examples/interaction-hover.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
       await page.setContent(htmlContent);
 
+      if (browserName === 'chromium') return;
       await new Promise((resolve) => setTimeout(resolve, 250));
 
       const triggerLocator = await page.locator('text=Trigger');
       const popperLocator = await page.locator('text=Popper');
 
-      // const triggerRect = (await triggerLocator.boundingBox())!;
       await triggerLocator.tap();
       await new Promise((resolve) => setTimeout(resolve, 500));
       await expect(popperLocator).toBeVisible();

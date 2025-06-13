@@ -393,7 +393,7 @@ test.describe('One level header - Sorting', () => {
     const column1 = page.locator('[data-ui-name="Head.Column"][aria-colindex="1"]');
     const buttonLink1 = column1.locator('button[data-ui-name="ButtonLink"]');
     const column2 = page.locator('[data-ui-name="Head.Column"][aria-colindex="2"]');
-    const buttonLink2 = column1.locator('button[data-ui-name="ButtonLink"]');
+    const buttonLink2 = column2.locator('button[data-ui-name="ButtonLink"]');
 
     await test.step('Verify hover on column with not active sorting', async () => {
       await column1.hover();

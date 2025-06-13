@@ -111,6 +111,9 @@ export type PopperTriggerProps = BoxProps & {
 };
 
 export type InnerPopperTriggerProps = React.HTMLAttributes<HTMLDivElement> & {
+  /**
+   * @deprecated
+   */
   onKeyboardFocus: (event?: { currentTarget?: HTMLElement }) => void;
   highlighted: boolean;
   active: boolean;
@@ -127,6 +130,9 @@ export type PopperPopperProps = BoxProps &
      */
     disableEnforceFocus?: boolean;
 
+    /**
+   * @deprecated
+   */
     keyboardFocused?: boolean;
 
     autoFocus?: boolean | 'enforced';

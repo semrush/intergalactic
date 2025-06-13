@@ -21,6 +21,16 @@ const Demo = () => {
     }
   };
 
+  const handleSliderInput = (value: number) => {
+    if (value > max || value < min) {
+      setError('Please enter a valid value');
+      setValue(value);
+    } else {
+      setError('');
+      setValue(value);
+    }
+  };
+
   return (
     <Flex direction='column'>
       <Text tag='label' size={200} htmlFor='slider-represantation'>
@@ -31,7 +41,7 @@ const Demo = () => {
           id='slider-represantation'
           mb={4}
           value={value}
-          onChange={setValue}
+          onChange={handleSliderInput}
           step={1}
           min={min}
           max={max}
