@@ -82,7 +82,7 @@ describe('InputTags', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test.concurrent('should call onClick', async () => {
+  test.concurrent('Verify calls onClick', async () => {
     const onClick = vi.fn();
     const { getByTestId } = render(
       <InputTags>
@@ -98,27 +98,5 @@ describe('InputTags', () => {
       fireEvent.keyDown(getByTestId('tag'), { key: 'Enter' });
     });
     expect(onClick).toHaveBeenCalledTimes(1);
-  });
-
-  test.skip('a11y', async () => {
-    vi.useFakeTimers();
-    const { container } = render(
-      <InputTags size='l'>
-        {['vk', 'fk', 'twitter', 'instagram'].map((tag, idx) => (
-          <InputTags.Tag theme='primary' editable data-id={idx} key={idx}>
-            <InputTags.Tag.Text>{tag}</InputTags.Tag.Text>
-            <InputTags.Tag.Close />
-          </InputTags.Tag>
-        ))}
-        <InputTags.Value aria-label='input with tags' value='' />
-      </InputTags>,
-    );
-    act(() => {
-      vi.runAllTimers();
-    });
-    vi.useRealTimers();
-
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
   });
 });
