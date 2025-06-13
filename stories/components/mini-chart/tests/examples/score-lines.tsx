@@ -4,13 +4,19 @@ import React from 'react';
 
 const Demo = () => {
   return (
-    <Box w='500px'>
+    <Box w='700px'>
       <Flex flexWrap={true} alignItems='flex-end'>
+        <MiniChart.ScoreLine value={0.5} w='80px' />
+      &nbsp;
         <MiniChart.ScoreLine value={30} w='80px' />
+        &nbsp;
+        <MiniChart.ScoreLine value={99} w='80px' />
         &nbsp;
         <MiniChart.ScoreLine loading={true} value={30} w='80px' />
         &nbsp;
         <MiniChart.ScoreLine segments={5} value={2} w='80px' />
+        &nbsp;
+        <MiniChart.ScoreLine segments={5} value={0} w='80px' />
         &nbsp;
         <MiniChart.ScoreLine loading={true} segments={5} value={2} w='80px' />
       </Flex>

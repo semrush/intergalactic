@@ -270,14 +270,6 @@ const group = {
     type: 'table',
 
   }, 
-  loading: {
-
-    title: 'Loading',
-    route: '/intergalactic/table-group/table-states/table-states#loading',
-    disabled: false,
-    type: 'table',
-
-  }, 
   noData: {
 
     title: 'No data',
@@ -293,23 +285,7 @@ const group = {
     disabled: false,
     type: 'table',
 
-  }, 
-  progressbar: {
-
-    title: 'Progressbar',
-    route: '/intergalactic/table-group/table-states/table-states#progressbar',
-    disabled: false,
-    type: 'table',
-
-  }, 
-  skeleton: {
-
-    title: 'Skeleton',
-    route: '/intergalactic/table-group/table-states/table-states#skeleton',
-    disabled: false,
-    type: 'table',
-
-  }, 
+  },
   error: {
 
     title: 'Something went wrong',
@@ -318,6 +294,30 @@ const group = {
     type: 'table',
 
   }, 
+  skeleton: {
+
+    title: 'Initial loading',
+    route: '/intergalactic/table-group/table-states/table-states#initial-loading',
+    disabled: false,
+    type: 'table',
+
+  },  
+  loading: {
+
+    title: 'Loading',
+    route: '/intergalactic/table-group/table-states/table-states#loading-filtered-or-sorted-data',
+    disabled: false,
+    type: 'table',
+
+  }, 
+  progressbar: {
+
+    title: 'Long loading',
+    route: '/intergalactic/table-group/table-states/table-states#long-loading',
+    disabled: false,
+    type: 'table',
+
+  },
 }; 
 
 const styles = `

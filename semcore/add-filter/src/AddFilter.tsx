@@ -10,7 +10,7 @@ import type { SelectProps } from '@semcore/select';
 import React from 'react';
 
 import type AddFilterType from './AddFilter.types';
-import type { AddFilterProps, AddFilterItemProps } from './AddFilter.types';
+import type { AddFilterProps, AddFilterItemProps, AddFilterKey } from './AddFilter.types';
 import AddFilterDropdown from './components/AddFilterDropdown';
 import AddFilterInput from './components/AddFilterInput';
 import AddFilterSelect from './components/AddFilterSelect';
@@ -21,8 +21,8 @@ type SelectItemProps = SelectProps & AddFilterItemProps;
 type AddFilterDropdownOption = { label: string; value: string };
 type AddFilterDropdownMenuProps = {
   options: AddFilterDropdownOption[];
-  toggleFieldVisibility: (name: string, status: boolean) => void;
-  visibleFilters: Set<string>;
+  toggleFieldVisibility: (name: AddFilterKey, status: boolean) => void;
+  visibleFilters: AddFilterKey[];
   getI18nText: (key: string) => string;
 };
 
@@ -33,7 +33,6 @@ type ClearAllFiltersButtonProps = {
 };
 
 type AddFilterState = {
-  visibleFilters: Set<string>;
   clearFiltersMessage: string;
 };
 
@@ -41,7 +40,10 @@ class RootAddFilter extends Component<
   AddFilterProps,
   {},
   AddFilterState,
-  typeof RootAddFilter.enhance
+  typeof RootAddFilter.enhance,
+  {
+    visibleFilters: Exclude<AddFilterProps['visibleFilters'], undefined>;
+  }
 > {
   addFilterTrigger = React.createRef<HTMLButtonElement>();
   filtersFocusMap: Map<string | undefined, HTMLElement> = new Map();
@@ -53,6 +55,7 @@ class RootAddFilter extends Component<
   static defaultProps = {
     i18n: localizedMessages,
     locale: 'en',
+    defaultVisibleFilters: [],
   };
 
   static componentsNames = ['AddFilter.Input', 'AddFilter.Select', 'AddFilter.Dropdown'];
@@ -73,11 +76,16 @@ class RootAddFilter extends Component<
     super(props);
 
     this.state = {
-      visibleFilters: new Set(),
       clearFiltersMessage: '',
     };
 
     this.addDropdownItems = RootAddFilter.getDefaultAddDropdownOptions(props.children);
+  }
+
+  uncontrolledProps() {
+    return {
+      visibleFilters: null,
+    };
   }
 
   componentWillUnmount() {
@@ -89,10 +97,11 @@ class RootAddFilter extends Component<
       return;
     }
 
-    const deletedIndex = Array.from(this.state.visibleFilters).findIndex((n) => n === name);
+    const { visibleFilters } = this.asProps;
+    const deletedIndex = visibleFilters.findIndex((n) => n === name);
     setTimeout(() => {
-      const currentVisibleFiltersList = Array.from(this.state.visibleFilters);
-      const focusFilterName = currentVisibleFiltersList.at(deletedIndex);
+      const { visibleFilters } = this.asProps;
+      const focusFilterName = visibleFilters.at(deletedIndex);
 
       const itemToFocus =
         this.filtersFocusMap.get(focusFilterName) ?? this.addFilterTrigger.current;
@@ -101,7 +110,7 @@ class RootAddFilter extends Component<
   }
 
   getVisibleFilters(allFilters: React.ReactElement<AddFilterItemProps>[]) {
-    return Array.from(this.state.visibleFilters).map((name) => {
+    return this.asProps.visibleFilters.map((name) => {
       return allFilters.find(({ props }) => props.name === name);
     });
   }
@@ -165,9 +174,7 @@ class RootAddFilter extends Component<
   }
 
   clearAll() {
-    this.setState({
-      visibleFilters: new Set(),
-    });
+    this.handlers.visibleFilters([]);
     this.props.onClearAll();
     this.announceClearMessageToSR();
 
@@ -188,14 +195,14 @@ class RootAddFilter extends Component<
   }
 
   toggleFieldVisibility(name: string, status: boolean) {
-    const visibleFilters = new Set(Array.from(this.state.visibleFilters));
+    const visibleFilters = new Set(this.asProps.visibleFilters);
     if (status) {
       visibleFilters.add(name);
     } else {
       visibleFilters.delete(name);
     }
 
-    this.setState({ visibleFilters });
+    this.handlers.visibleFilters(Array.from(visibleFilters));
   }
 
   hideFilter(name: string) {
@@ -203,14 +210,14 @@ class RootAddFilter extends Component<
   }
 
   getFilterSelectionMenuProps() {
-    const { getI18nText } = this.asProps;
+    const { getI18nText, visibleFilters } = this.asProps;
 
     return {
       ref: this.addFilterTrigger,
       options: this.addDropdownItems,
       toggleFieldVisibility: (name: string, status: boolean) =>
         this.toggleFieldVisibility(name, status),
-      visibleFilters: this.state.visibleFilters,
+      visibleFilters,
       getI18nText,
     };
   }
@@ -258,7 +265,7 @@ const AddFilterDropdownMenu = React.forwardRef<HTMLButtonElement, AddFilterDropd
 
     const optionsWithoutVisible = React.useMemo(() => {
       return options.filter((filter) => {
-        return !Array.from(visibleFilters).includes(filter.value);
+        return !visibleFilters.includes(filter.value);
       });
     }, [options, visibleFilters]);
 

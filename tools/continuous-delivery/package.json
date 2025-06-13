@@ -7,7 +7,8 @@
     "publish-prerelease": "bin/publish-prerelease.ts",
     "publish-release": "bin/publish-release.ts",
     "upload-static": "bin/upload-static.ts",
-    "pkg-diff": "bin/get-changed-packages.ts"
+    "pkg-diff": "bin/get-changed-packages.ts",
+    "send-prerelease-changelog": "bin/send-prerelease-changelog.ts"
   },
   "private": true,
   "license": "MIT",
