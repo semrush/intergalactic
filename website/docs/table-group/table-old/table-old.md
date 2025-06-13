@@ -6,7 +6,7 @@ tabs: Example('table-old'), API('table-old-api'), Changelog('table-old-changelog
 ---
 
 ::: warning
-:rotating_light: Library `@semcore/table` is deprecated. Use new library [@semcore/data-table](/table-group/data-table/data-table). It is based on `CSS-flex` technology and doesn't use native tables.
+:rotating_light: Library `@semcore/table` is deprecated. Use new library [@semcore/data-table](/table-group/data-table/data-table). It is based on the CSS grid and doesn't use native tables.
 :::
 
 ## Table with accordion
