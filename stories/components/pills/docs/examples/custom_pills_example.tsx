@@ -26,26 +26,26 @@ const Demo = () => {
         Average sleep per day
       </Text>
       <Pills mb={4} behavior='manual' value={tab} onChange={setTab} aria-labelledby='king-pills'>
-        <Pills.Item value={0} style={pillStyles} p={5} id='pills-tab-0'>
+        <Pills.Item value={0} style={pillStyles} p={5} id='custom-pills-tab-0'>
           <Pills.Item.Text tag={Flex} direction='column' m={0}>
             <Text mb={1}>Wombat</Text>
             <Text size={500} bold>16 hours</Text>
           </Pills.Item.Text>
         </Pills.Item>
-        <Pills.Item value={1} style={pillStyles} p={5} id='pills-tab-1'>
+        <Pills.Item value={1} style={pillStyles} p={5} id='custom-pills-tab-1'>
           <Pills.Item.Text tag={Flex} direction='column' m={0}>
             <Text mb={1}>Bat</Text>
             <Text size={500} bold>20 hours</Text>
           </Pills.Item.Text>
         </Pills.Item>
-        <Pills.Item value={2} style={pillStyles} p={5} id='pills-tab-2'>
+        <Pills.Item value={2} style={pillStyles} p={5} id='custom-pills-tab-2'>
           <Pills.Item.Text tag={Flex} direction='column' m={0}>
             <Text mb={1}>Koala</Text>
             <Text size={500} bold>22 hours</Text>
           </Pills.Item.Text>
         </Pills.Item>
       </Pills>
-      <Text size={300} role='tabpanel' aria-labelledby={`pills-tab-${tab}`}>
+      <Text size={300} role='tabpanel' aria-labelledby={`custom-pills-tab-${tab}`}>
         {contentBLocks[tab]}
       </Text>
     </Flex>
