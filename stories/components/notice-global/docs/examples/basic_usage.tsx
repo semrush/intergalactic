@@ -20,10 +20,10 @@ const Demo = () => {
 
   return (
     <Flex gap={2} alignItems='baseline'>
-      <Text size={200} tag='label' htmlFor='select-theme'>
+      <Text size={200} tag='label' id='select-theme'>
         Theme
       </Text>
-      <Select options={options} defaultValue={defaultTheme} onChange={setTheme} id='select-theme' />
+      <Select options={options} defaultValue={defaultTheme} onChange={setTheme} aria-labelledby='select-theme' />
       <Button onClick={() => setVisible(!visible)}>
         {visible ? 'Close' : 'Open'}
         {' '}
