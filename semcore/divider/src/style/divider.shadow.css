@@ -81,7 +81,7 @@ SDivider[orientation='vertical'] {
   flex-shrink: 0;
 }
 
-SDivider[theme]:not([theme='default'], [theme='default']) {
+SDivider[theme]:not([theme='default']):not([theme='invert']) {
   &[use='primary'] {
     background-color: var(--theme);
   }
