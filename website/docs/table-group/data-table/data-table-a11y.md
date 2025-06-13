@@ -39,7 +39,7 @@ The following list describes roles and attributes that the component already has
 | Attribute                          | Usage                                                                                                                     |
 | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
 | `role="columnheader"`              | Identifies an element as a column header cell, similar to the native `<th>` element with column scope.                    |
-| `aria-sort="ascending/descending/none"` | Indicates whether the column is sorted in ascending or descending order. Columns that aren't sorted at the moment will have `none` value.                                                 |
+| `aria-sort="ascending/descending"` | Indicates whether the column is sorted in ascending or descending order.                                                  |
 | `aria-describedby="PARENT_ID"`     | **Only for grouped columns.** Provides an accessible description for the nested header by referring to the parent header. |
 | `aria-describedby="SORTABLE_ID"`   | **Only for sortable columns.** Provides the `"sortable"` accessible description for the column header.                    |
 

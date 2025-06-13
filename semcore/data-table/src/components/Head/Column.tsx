@@ -21,7 +21,6 @@ const SORTING_ICON: { [key in SortDirection]: typeof Icon } = {
 const ARIA_SORT = {
   desc: 'descending',
   asc: 'ascending',
-  none: 'none',
 } as const;
 
 const SORT_ICON_WIDTH = 20;
@@ -286,17 +285,14 @@ export class Column<D extends DataTableData> extends Component<
     const visibleSort = Boolean(sortable) && (this.state.sortVisible || isSorted);
 
     const ariaDescribedBy = [];
-    if (isSorted) {
+    if (sortable) {
       ariaDescribedBy.push(sortableColumnDescribeId);
     }
     if (parent) {
       ariaDescribedBy.push(`igc-table-${uid}-${parent.name}-group`);
     }
 
-    const sortedAriaValue = isSorted ? ARIA_SORT[sortDirection] : ARIA_SORT.none;
-    const ariaSortValue = sortable
-      ? sortedAriaValue
-      : undefined;
+    const ariaSortValue = isSorted ? ARIA_SORT[sortDirection] : undefined;
 
     return sstyled(styles)(
       <SColumn
