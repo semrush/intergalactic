@@ -156,7 +156,7 @@ test.describe('Columns', () => {
     await expect(firstCell).toBeFocused();
   });
 
-  test('Verify column\'s aria-sort attributes ', async ({ page }) => {
+  test('Verify column\'s aria-sort and aria-describedby attributes ', async ({ page }) => {
     const standPath = 'stories/components/data-table/docs/examples/sorting.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
@@ -173,6 +173,7 @@ test.describe('Columns', () => {
       }
 
       expect(column).not.toHaveAttribute('aria-sort');
+      expect(column).toHaveAttribute('aria-describedby');
     }
   });
 });
