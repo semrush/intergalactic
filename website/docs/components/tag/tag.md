@@ -45,7 +45,7 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
     })),
   });
 
-  const color = theme === 'primary' ? select({
+  const color = select({
     key: 'color',
     defaultValue: 'gray-500',
     label: 'Color',
@@ -53,7 +53,9 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
       name: value,
       value,
     })),
-  }) : 'gray-500';
+    disabled: theme !== 'primary',
+    disabledValue: 'gray-500',
+  });
 
   const interactive = bool({
     key: 'interactive',
@@ -85,17 +87,19 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
     label: 'Circle Addon',
   });
 
-  const closeIcon = theme !== 'additional' ? bool({
+  const closeIcon = bool({
     key: 'close Icon',
     defaultValue: false,
     label: 'Close Button',
-  }) : false;
+    disabled: theme === 'additional',
+    disabledValue: false,
+  });
 
   return (
     <TagContainer
       interactive={interactive}
       theme={theme}
-      {...(theme === 'primary' && { color })}
+      color={color}
       size={size}
       disabled={disabled}
     >
@@ -114,7 +118,7 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
 
         <TagContainer.Tag.Text>Tag text</TagContainer.Tag.Text>
       </TagContainer.Tag>
-      {closeIcon && theme !== 'additional' && <TagContainer.Close />}
+      {closeIcon && <TagContainer.Close />}
     </TagContainer>
   );
 });
