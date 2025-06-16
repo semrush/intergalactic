@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.1] - 2025-06-16
+
+### Added
+
+- Tokens form basic pallet to themed .css files.
+
 ## [16.0.0] - 2025-05-19
 
 ### Added
