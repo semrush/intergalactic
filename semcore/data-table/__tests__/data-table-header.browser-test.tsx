@@ -329,7 +329,7 @@ test.describe('One level header - Sorting', () => {
       await page.keyboard.press('Tab');
       const button1 = getButton(getColumn(1));
       await expect(button1).toBeFocused();
-      await expect(button1).toHaveAttribute('aria-label', 'descending');
+      await expect(button1).not.toHaveAttribute('aria-label');
 
       await page.keyboard.press('Enter');
       await expect(button1).toHaveAttribute('aria-label', 'descending');
@@ -683,7 +683,7 @@ test.describe('Multi level header - Sorting', () => {
 
     await test.step('Verify sorting interaction with mouse and keyboard', async () => {
       await page.keyboard.press('ArrowRight');
-      await expect(buttonLink2).toHaveAttribute('aria-label', 'ascending');
+      await expect(buttonLink2).not.toHaveAttribute('aria-label');
 
       await buttonLink2.click();
       await expect(buttonLink2).toHaveAttribute('aria-label', 'descending');
@@ -725,7 +725,7 @@ test.describe('Multi level header - Sorting', () => {
       );
       await cell2.hover();
       await expect(page).toHaveScreenshot();
-      await expect(buttonLink2).toHaveAttribute('aria-label', 'ascending');
+      await expect(buttonLink2).not.toHaveAttribute('aria-label');
       await buttonLink2.click();
       await expect(buttonLink2).toHaveAttribute('aria-label', 'descending');
     });

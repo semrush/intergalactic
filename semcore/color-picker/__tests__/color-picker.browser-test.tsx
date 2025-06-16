@@ -735,7 +735,7 @@ test.describe('Color-picker', () => {
       await paletteItems.nth(1).click();
       await page.waitForTimeout(100);
       await locators.trigger.nth(1).click();
-      await page.waitForTimeout(100);
+      await page.getByRole('dialog').waitFor({ state: 'visible' });
       await expect(paletteItems.nth(1)).toHaveAttribute('aria-selected', 'true');
     });
   });

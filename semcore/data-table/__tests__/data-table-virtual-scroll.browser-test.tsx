@@ -12,7 +12,7 @@ test.describe('Vertical Scroll', () => {
     for (let i = 0; i < 100; i++) {
       await page.keyboard.press('ArrowDown');
     }
-    await page.waitForTimeout(500);
+    await page.waitForSelector('[role="gridcell"][data-ui-name="Body.Cell"][name="id"]:has-text("#100")', { state: 'visible' });
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
   });
 
