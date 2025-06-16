@@ -464,8 +464,8 @@
   {
     "name": "--intergalactic-violet-dusty-50",
     "type": "color",
-    "rawValue": "#E7E8F2",
-    "computedValue": "#E7E8F2",
+    "rawValue": "#F5F4FF",
+    "computedValue": "#F5F4FF",
     "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision.",
     "components": []
   },
@@ -4647,8 +4647,8 @@
   {
     "name": "--intergalactic-sidebar-nav-control-hover",
     "type": "color",
-    "rawValue": "{violet.dusty.50}",
-    "computedValue": "#E7E8F2",
+    "rawValue": "rgba({gray.100}, 0.7)",
+    "computedValue": "rgba(224, 225, 233, 0.7)",
     "components": []
   },
   {

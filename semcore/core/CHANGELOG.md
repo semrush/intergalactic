@@ -8,6 +8,10 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Tokens form basic pallet to themed .css files.
 
+### Changed
+
+- Value for `--intergalactic-sidebar-nav-control-hover` token (was updated to match gray palette) and fixed lightness for `--intergalactic-violet-dusty-50` token.
+
 ## [16.0.0] - 2025-05-19
 
 ### Added
