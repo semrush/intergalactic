@@ -16,7 +16,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Version patch update due to children dependencies update (`@semcore/flex-box` [16.0.1 ~> 16.0.2], `@semcore/popper` [16.0.1 ~> 16.0.2], `@semcore/portal` [16.0.1 ~> 16.0.2], `@semcore/base-components` [16.0.1 ~> 16.0.2]).
 
-
 ## [16.0.1] - 2025-05-30
 
 ### Changed
