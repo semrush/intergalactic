@@ -93,7 +93,7 @@ const Demo = () => {
           defaultValue='Add social media'
           ref={inputValueRef}
           id='add-new-social-media'
-          placeholder='Placeholder'
+          placeholder='Add social media'
         />
       </InputTags>
     </Flex>
