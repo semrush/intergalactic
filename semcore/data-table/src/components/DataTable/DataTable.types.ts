@@ -4,7 +4,7 @@ import type Tooltip from '@semcore/tooltip';
 
 import type { ACCORDION, ROW_GROUP, UNIQ_ROW_KEY } from './DataTable';
 import type { DataTableBodyProps } from '../Body/Body.types';
-import type { DTRow } from '../Body/Row.types';
+import type { DTRow, UniqRowKey } from '../Body/Row.types';
 import type { DataTableColumnProps } from '../Head/Column.types';
 
 /**
@@ -29,7 +29,7 @@ export type DataRowItem = {
   [key: string]: DTValue | undefined;
   [ACCORDION]?: React.ReactNode | DataTableData;
   [ROW_GROUP]?: DataTableData;
-  [UNIQ_ROW_KEY]?: string;
+  [UNIQ_ROW_KEY]?: UniqRowKey;
 };
 export interface DTValue {
   toString(): string;
@@ -116,12 +116,12 @@ export type DataTableProps<D extends DataTableData> = DataTableAriaProps &
     renderCell?: DataTableBodyProps['renderCell'];
 
     /**
-     * List of selected rows (indexes from data array)
+     * List of selected rows (uniqIds from data array)
      */
-    selectedRows?: number[];
+    selectedRows?: UniqRowKey[];
 
     onSelectedRowsChange?: (
-      selectedRows: number[],
+      selectedRows: UniqRowKey[],
       event?: React.SyntheticEvent<HTMLElement>,
       opts?: {
         selectedRowIndex: number;
