@@ -709,4 +709,65 @@ test.describe('Add remove edit and validate tags', () => {
     await page.keyboard.press('Enter');
     await expect(tag).toHaveCount(tagCountPrev + 1);
   });
+
+  test('Verify adding tags with custom delimiters', async ({ page }) => {
+    const standPath = 'stories/components/input-tags/tests/examples/entering_and_editing_tags-delimiters.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const tag = page.locator('li[data-ui-name="InputTags.Tag"]');
+    const inputText = page.locator('[data-ui-name="InputTags.Tag.Text"]');
+    const tagClose = page.locator('[data-ui-name="InputTags.Tag.Close"]');
+    const inputValue = page.locator('[data-ui-name="InputTags.Value"]');
+
+    await test.step('Verify adding new tag by entering custom delimiters', async () => {
+      await inputValue.click();
+      const count = await tag.count();
+      await page.keyboard.type('Test');
+      await page.keyboard.type(']');
+      await expect(tag).toHaveCount(count + 1);
+
+      await page.keyboard.type('Test2');
+      await page.keyboard.type('/');
+      await expect(inputText).toHaveCount(count + 2);
+
+      await page.keyboard.type('Social media with a very long name');
+      await page.keyboard.type(']');
+      await expect(inputText).toHaveCount(count + 3);
+      await expect(inputValue).toBeFocused();
+    });
+
+    await test.step('Verify default special symbols delimiters dont work', async () => {
+      const count = await tag.count();
+      await page.keyboard.type('Test');
+      await page.keyboard.type(',');
+      await expect(tag).toHaveCount(count);
+      await expect(inputValue).toHaveAttribute('value', 'Test,');
+
+      await page.keyboard.type(';');
+      await expect(inputText).toHaveCount(count);
+      await expect(inputValue).toHaveAttribute('value', 'Test,;');
+
+      await page.keyboard.type('|');
+      await expect(inputText).toHaveCount(count);
+      await expect(inputValue).toHaveAttribute('value', 'Test,;|');
+    });
+
+    await test.step('Verify enter adds tag', async () => {
+      const count = await tag.count();
+      await page.keyboard.press('Enter');
+      await expect(tag).toHaveCount(count + 1);
+      await expect(inputValue).toHaveAttribute('value', '');
+    });
+
+    await test.step('Verify Tab not adds tag', async () => {
+      const count = await tag.count();
+      await page.keyboard.type('Test');
+
+      await page.keyboard.press('Tab');
+      await expect(tag).toHaveCount(count);
+      await expect(inputValue).toHaveAttribute('value', 'Test');
+    });
+  });
 });
