@@ -6,7 +6,7 @@ describe('Score Donut Functions', () => {
   describe.each([true, false])('when isSemiDonut = %s', (isSemiDonut) => {
     it('returns correct value for divider when value is 50', () => {
       const scoreDonut = new ScoreDonutUtils(50, isSemiDonut);
-      const actualResult = scoreDonut.divider;
+      const actualResult = scoreDonut.hasDivider;
       const expectedResult = true;
 
       expect(actualResult).toBe(expectedResult);
@@ -14,7 +14,7 @@ describe('Score Donut Functions', () => {
 
     it('returns correct value for divider when value is 100', () => {
       const scoreDonut = new ScoreDonutUtils(100, isSemiDonut);
-      const actualResult = scoreDonut.divider;
+      const actualResult = scoreDonut.hasDivider;
       const expectedResult = false;
 
       expect(actualResult).toBe(expectedResult);
@@ -22,7 +22,7 @@ describe('Score Donut Functions', () => {
 
     it('returns correct value for divider when value is 0', () => {
       const scoreDonut = new ScoreDonutUtils(0, isSemiDonut);
-      const actualResult = scoreDonut.divider;
+      const actualResult = scoreDonut.hasDivider;
       const expectedResult = false;
 
       expect(actualResult).toBe(expectedResult);
@@ -133,6 +133,17 @@ describe('Score Donut Functions', () => {
       const actualResult = scoreDonut.strokeDashOffsetBase;
       const expectedResult = -valueStroke;
       const expectedResultSemiDonut = -1 * (valueStroke + offsetPoint);
+
+      expect(actualResult).toBe(isSemiDonut ? expectedResultSemiDonut : expectedResult);
+    });
+
+    it('calculates stroke dash offset base correctly for 0 value', () => {
+      const value = 0;
+      const scoreDonut = new ScoreDonutUtils(value, isSemiDonut);
+
+      const actualResult = scoreDonut.strokeDashOffsetBase;
+      const expectedResult = 0;
+      const expectedResultSemiDonut = 0;
 
       expect(actualResult).toBe(isSemiDonut ? expectedResultSemiDonut : expectedResult);
     });

@@ -10,7 +10,7 @@ export class ScoreDonutUtils {
     this.value = value;
   }
 
-  public get divider() {
+  public get hasDivider() {
     return ![0, 100].includes(this.value);
   }
 
@@ -53,6 +53,10 @@ export class ScoreDonutUtils {
   }
 
   public get strokeDashOffsetBase() {
+    const hasDivider = this.hasDivider;
+
+    if (!hasDivider) return 0;
+
     const valueStroke = this.valueStrokeDashArray;
     const offsetPoint = this.offsetPoint;
 
