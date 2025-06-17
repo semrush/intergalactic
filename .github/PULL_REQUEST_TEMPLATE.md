@@ -29,8 +29,6 @@
 <!--- Go over all the following points, and put an `x` in all the boxes that apply. -->
 <!--- If you're unsure about any of these, don't hesitate to ask. We're here to help! -->
 
-- [ ] My code follows the code style of this project.
-- [ ] I have updated the documentation accordingly or it's not required.
-- [ ] Unit tests are not broken.
+- [ ] I have updated the documentation accordingly.
 - [ ] I have added changelog note to corresponding `CHANGELOG.md` file with planned publish date.
-- [ ] I have added new unit tests on added of fixed functionality.
+- [ ] I have added new tests on added of fixed functionality.
