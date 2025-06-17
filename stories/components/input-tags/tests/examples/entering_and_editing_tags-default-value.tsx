@@ -87,7 +87,7 @@ const Demo = () => {
         ))}
         <InputTags.Value
 
-          value={value}
+          // value={value}
           onChange={setValue}
           onKeyDown={handleInputKeyDown}
           defaultValue='Add social media'
