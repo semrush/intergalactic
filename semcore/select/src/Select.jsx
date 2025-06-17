@@ -10,6 +10,7 @@ import Dropdown, { AbstractDropdown, enhance, selectedIndexContext } from '@semc
 import DropdownMenu from '@semcore/dropdown-menu';
 import { useBox } from '@semcore/flex-box';
 import { isInputTriggerTag } from '@semcore/popper';
+import { hideScrollBarsFromScreenReadersContext } from '@semcore/scroll-area';
 import cn from 'classnames';
 import React from 'react';
 
@@ -29,6 +30,12 @@ function isEmptyValue(value) {
 function getEmptyValue(multiselect) {
   return multiselect ? [] : null;
 }
+
+const ListBoxContextProvider = ({ children }) => (
+  <hideScrollBarsFromScreenReadersContext.Provider value={true}>
+    {children}
+  </hideScrollBarsFromScreenReadersContext.Provider>
+);
 
 class RootSelect extends AbstractDropdown {
   static displayName = 'Select';
@@ -247,7 +254,7 @@ class RootSelect extends AbstractDropdown {
       : value;
   }
 
-  bindHandlerOptionClick = (optionValue, _index) => (e) => {
+  bindHandlerOptionClick = (optionValue, index) => (e) => {
     let newValue = optionValue;
     const { value, multiselect } = this.asProps;
     if (Array.isArray(value)) {
@@ -257,6 +264,7 @@ class RootSelect extends AbstractDropdown {
         newValue = value.concat(optionValue);
       }
     }
+    this.handlers.highlightedIndex(index);
     this.handlers.value(newValue, e);
     if (!multiselect) {
       this.handlers.visible(false);
@@ -343,6 +351,34 @@ function Trigger({
   );
 }
 
+function Menu(props) {
+  const {
+    visible,
+    disablePortal,
+    ignorePortalsStacking,
+    disableEnforceFocus,
+    interaction,
+    autoFocus,
+    animationsDisabled,
+  } = props;
+  const popperProps = {
+    visible,
+    disablePortal,
+    ignorePortalsStacking,
+    disableEnforceFocus,
+    interaction,
+    autoFocus,
+    animationsDisabled,
+  };
+  return (
+    <ListBoxContextProvider>
+      <Select.Popper {...popperProps} role={null}>
+        <Root render={Select.List} />
+      </Select.Popper>
+    </ListBoxContextProvider>
+  );
+}
+
 const optionPropsContext = React.createContext({});
 function Option(props) {
   const SSelectOption = Root;
@@ -416,7 +452,7 @@ const Select = createComponent(
     ],
     Popper: Dropdown.Popper,
     List: DropdownMenu.List,
-    Menu: DropdownMenu.Menu,
+    Menu: Menu,
     Option: [
       Option,
       {
