@@ -263,7 +263,7 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
     });
   }
 
-  return { processedTokens, values, types, rawValues, descriptions };
+  return { processedTokens, values, types, rawValues, descriptions, basicTokens };
 };
 
 export const tokensToCss = (
