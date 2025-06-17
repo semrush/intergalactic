@@ -4,6 +4,30 @@ import { ScoreDonutUtils } from '../src/utils/ScoreDonutUtils';
 
 describe('Score Donut Functions', () => {
   describe.each([true, false])('when isSemiDonut = %s', (isSemiDonut) => {
+    it('returns correct value for divider when value is 50', () => {
+      const scoreDonut = new ScoreDonutUtils(50, isSemiDonut);
+      const actualResult = scoreDonut.divider;
+      const expectedResult = true;
+
+      expect(actualResult).toBe(expectedResult);
+    });
+
+    it('returns correct value for divider when value is 100', () => {
+      const scoreDonut = new ScoreDonutUtils(100, isSemiDonut);
+      const actualResult = scoreDonut.divider;
+      const expectedResult = false;
+
+      expect(actualResult).toBe(expectedResult);
+    });
+
+    it('returns correct value for divider when value is 0', () => {
+      const scoreDonut = new ScoreDonutUtils(0, isSemiDonut);
+      const actualResult = scoreDonut.divider;
+      const expectedResult = false;
+
+      expect(actualResult).toBe(expectedResult);
+    });
+
     it('returns correct viewBox', () => {
       const scoreDonut = new ScoreDonutUtils(0, isSemiDonut);
       const actualResult = scoreDonut.viewBox;

@@ -10,6 +10,10 @@ export class ScoreDonutUtils {
     this.value = value;
   }
 
+  public get divider() {
+    return ![0, 100].includes(this.value);
+  }
+
   public get viewBox() {
     return this.isSemiDonut ? '0 0 24 12' : '0 0 24 24';
   }

@@ -60,7 +60,7 @@ class DonutRoot extends Component<ScoreDonutProps, {}, {}, typeof DonutRoot.enha
               strokeDasharray={
                 loading ? undefined : `${scoreDonut.greyStrokeDashArray} ${scoreDonut.baseStrokeDashArray}`
               }
-              strokeDashoffset={scoreDonut.strokeDashOffsetBase}
+              strokeDashoffset={scoreDonut.divider ? scoreDonut.strokeDashOffsetBase : 0}
             />
             {!loading && (
               <>
@@ -78,7 +78,7 @@ class DonutRoot extends Component<ScoreDonutProps, {}, {}, typeof DonutRoot.enha
                     values={`0;${scoreDonut.valueStrokeDashArray}`}
                   />
                 </circle>
-                {value !== 100 && !isSemiDonut && (
+                {scoreDonut.divider && !isSemiDonut && (
                   <circle
                     cx='12'
                     cy='12'
