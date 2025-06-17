@@ -448,7 +448,7 @@ test.describe('One level header - Sorting', () => {
   });
 
   test('Verify sorting with undefined as default value', async ({ page }) => {
-    const standPath = 'stories/components/data-table/docs/examples/sorting-default-undefined.tsx';
+    const standPath = 'stories/components/data-table/tests/examples/header-tests/sorting-default-undefined.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
