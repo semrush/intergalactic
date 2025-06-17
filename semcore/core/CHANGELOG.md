@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Tokens form basic pallet to themed .css files.
+- Tokens form basic palette to themed .css files.
 
 ### Changed
 
