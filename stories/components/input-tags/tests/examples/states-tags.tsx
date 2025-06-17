@@ -9,7 +9,7 @@ const isValidEmail = (value: string) => /.+@.+\..+/i.test(value.toLowerCase());
 const Demo = () => {
   return (
     <Flex direction='column' gap={2}>
-      <Flex direction='column' gap={2} data-testid='normal-state' w={400}>
+      <Flex direction='column' gap={2} data-testid='normal-state' w={450}>
         <InputTags size='m' state='normal'>
           <InputTags.Tag editable={false} size='xl' interactive>
             <InputTags.Tag.Text>
@@ -146,7 +146,7 @@ const Demo = () => {
 
       </Flex>
 
-      <Flex direction='column' gap={2} data-testid='invalid-state' w={400}>
+      <Flex direction='column' gap={2} data-testid='invalid-state' w={500}>
         <InputTags size='m' state='invalid'>
           <InputTags.Tag editable={false} size='xl' interactive>
             <InputTags.Tag.Text>
@@ -263,7 +263,7 @@ const Demo = () => {
 
       </Flex>
 
-      <Flex direction='column' gap={2} data-testid='invalid-state' w={200}>
+      <Flex direction='column' gap={2} data-testid='invalid-state' w={250}>
         <InputTags size='m' state='valid'>
           <InputTags.Tag editable={false} size='xl' interactive>
             <InputTags.Tag.Text>
