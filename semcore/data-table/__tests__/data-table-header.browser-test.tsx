@@ -446,6 +446,21 @@ test.describe('One level header - Sorting', () => {
     expect(widthsAfterSecondSort[2]).toBeGreaterThan(initialWidths[2]);
     expect(widthsAfterSecondSort[3]).toEqual(initialWidths[3]);
   });
+
+  test('Verify sorting with undefined as default value', async ({ page }) => {
+    const standPath = 'stories/components/data-table/docs/examples/sorting-default-undefined.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+
+    const column1 = page.locator('[data-ui-name="Head.Column"][aria-colindex="1"]');
+    const buttonLink1 = column1.locator('button[data-ui-name="ButtonLink"]');
+
+    await column1.hover();
+    await buttonLink1.click();
+    await expect(buttonLink1).toHaveAttribute('aria-label', 'descending');
+    await buttonLink1.click();
+    await expect(buttonLink1).toHaveAttribute('aria-label', 'ascending');
+  });
 });
 
 test.describe('Multi level Header', () => {
