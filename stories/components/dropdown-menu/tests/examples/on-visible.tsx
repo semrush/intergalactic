@@ -19,7 +19,7 @@ const Demo = () => {
 
   return (
     <DropdownMenu onVisibleChange={handleVisiblity}>
-      <DropdownMenu.Trigger tag='button' data-testid='dd-button-trigger'>
+      <DropdownMenu.Trigger tag='button' tabIndex={0} data-testid='dd-button-trigger'>
         Trigger
       </DropdownMenu.Trigger>
       <DropdownMenu.Menu>

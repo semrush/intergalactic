@@ -841,4 +841,19 @@ test.describe('Focus interaction', () => {
     await page.keyboard.press('Space');
     await expect(menu).toBeVisible();
   });
+
+  test('Verify that select could be focused programmatically', async ({ page }) => {
+    const standPath = 'stories/components/select/tests/examples/programmatically_focus.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+    const setFocusButton = page.getByRole('button', { name: 'Set focus' });
+
+    await setFocusButton.click();
+
+    const errorTooltip = page.getByText('Some error message');
+    await errorTooltip.waitFor();
+
+    await expect(errorTooltip).toBeVisible();
+  });
 });

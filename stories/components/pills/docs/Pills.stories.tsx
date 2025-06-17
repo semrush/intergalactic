@@ -2,6 +2,7 @@ import Pills from '@semcore/pills';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import BasicUsageExample from './examples/basic_example';
+import CustomPillsExample from './examples/custom_pills_example';
 import TabsExample from './examples/tabs_example';
 
 const meta: Meta<typeof Pills> = {
@@ -18,4 +19,8 @@ export const BasicUsage: Story = {
 
 export const Tabs: Story = {
   render: TabsExample,
+};
+
+export const CustomPills: Story = {
+  render: CustomPillsExample,
 };

@@ -2,11 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [16.0.2] - 2025-06-13
+## [16.0.3] - 2025-06-17
 
 ### Fixed
 
 - Allowed entering non-numeric characters after in numeric input.
+
+## [16.0.2] - 2025-06-16
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/input` [16.0.1 ~> 16.0.2], `@semcore/flex-box` [16.0.1 ~> 16.0.2], `@semcore/base-components` [16.0.1 ~> 16.0.2]).
 
 ## [16.0.1] - 2025-05-30
 
