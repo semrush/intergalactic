@@ -10,6 +10,7 @@ import { localizedMessages } from './translations/__intergalactic-dynamic-locale
 
 type AbstractDDProps = {
   visible: boolean;
+  defaultHighlightedIndex: 0 | null;
   highlightedIndex: number | null;
   selectedIndex: number | null;
   placement: DropdownProps['placement'];
@@ -218,7 +219,7 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
     const visibilityChanged = visible !== prevProps.visible;
 
     if (visibilityChanged && !visible) {
-      this.handlers.highlightedIndex(null);
+      this.handlers.highlightedIndex(this.props.defaultHighlightedIndex);
       this.prevHighlightedIndex = null;
       // @ts-ignore
       this.highlightedItemRef.current = null;
