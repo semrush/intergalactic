@@ -38,7 +38,10 @@ class RootSelect extends AbstractDropdown {
 
   static defaultProps = (props) => {
     const hasInputSearch =
-      props.children && isAdvanceMode(props.children, [InputSearch.displayName], true);
+      props.children && isAdvanceMode(props.children, [
+        Select.InputSearch.displayName,
+        InputSearch.displayName,
+      ], true);
     const defaultIndex = hasInputSearch ? null : 0;
 
     return {
@@ -79,7 +82,10 @@ class RootSelect extends AbstractDropdown {
           if (visible === true) {
             const hasInputSearch = isAdvanceMode(
               this.asProps.Children,
-              [InputSearch.displayName],
+              [
+                Select.InputSearch.displayName,
+                InputSearch.displayName,
+              ],
               true,
             );
 
@@ -198,7 +204,6 @@ class RootSelect extends AbstractDropdown {
 
   getOptionProps(props, index) {
     const { value, highlightedIndex, size = 'm' } = this.asProps;
-    console.log(highlightedIndex);
     const highlighted =
       index === highlightedIndex && lastInteraction.isKeyboard() && !props.disabled;
     const selected = props.selected ?? isSelectedOption(value, props.value);
