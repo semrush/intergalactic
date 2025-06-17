@@ -1,3 +1,4 @@
+import { hideScrollBarsFromScreenReadersContext } from '@semcore/base-components';
 import { ButtonTrigger } from '@semcore/base-trigger';
 import { createComponent, Root, sstyled, lastInteraction } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
@@ -10,7 +11,6 @@ import Dropdown, { AbstractDropdown, enhance, selectedIndexContext } from '@semc
 import DropdownMenu from '@semcore/dropdown-menu';
 import { useBox } from '@semcore/flex-box';
 import { isInputTriggerTag } from '@semcore/popper';
-import { hideScrollBarsFromScreenReadersContext } from '@semcore/scroll-area';
 import cn from 'classnames';
 import React from 'react';
 
