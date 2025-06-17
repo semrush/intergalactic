@@ -13,26 +13,24 @@ test.describe('Input-Tags Styles', () => {
     const input_tags_m = page.locator('div[data-ui-name="InputTags"][class*="size_m"]');
     const input_tags_l = page.locator('div[data-ui-name="InputTags"][class*="size_l"]');
 
+    const inputValue = page.locator('[data-ui-name="InputTags.Value"]');
     await test.step('Verify all themes and sizes', async () => {
       await page.keyboard.press('Tab');
       await expect(page).toHaveScreenshot();
     });
 
-    await test.step('Verify invalid focused', async () => {
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
+    await test.step('Verify read only focus outline', async () => {
+      await inputValue.nth(2).click();
       await expect(page).toHaveScreenshot();
     });
 
-    await test.step('Verify valid focused', async () => {
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
+    await test.step('Verify invalid focus outline', async () => {
+      await inputValue.nth(5).click();
+      await expect(page).toHaveScreenshot();
+    });
+
+    await test.step('Verify valid focus outline', async () => {
+      await inputValue.nth(9).click();
       await expect(page).toHaveScreenshot();
     });
 
