@@ -2579,6 +2579,9 @@ importers:
         specifier: 1.8.11
         version: 1.8.11(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
     devDependencies:
+      '@semcore/testing-utils':
+        specifier: workspace:*
+        version: link:../tools/testing-utils
       '@types/d3-scale':
         specifier: 3.3.0
         version: 3.3.0
