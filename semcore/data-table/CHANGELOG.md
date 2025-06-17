@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.5] - 2025-06-17
+
+### Changed
+
+- Export `DataTableProp` and `DataTableChangeSort` types.
+- Added `null` as possible value for `DataRowItem`.
+
 ## [16.0.4] - 2025-05-30
 
 ### Fixed
