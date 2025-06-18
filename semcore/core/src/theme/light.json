@@ -791,7 +791,7 @@
         "description": "Border for controls with AI accent."
       },
       "ai-active": {
-        "value": "linear-gradient(90deg, {violet.300}, {blue.300})",
+        "value": "linear-gradient(90deg, {violet.400}, {blue.400})",
         "type": "color",
         "description": "Border for the active state of controls with AI accent."
       },

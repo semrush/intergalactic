@@ -261,7 +261,7 @@
   /* Border for controls with AI accent. */
   --intergalactic-border-ai: linear-gradient(90deg, #c695ff, #2bb3ff);
   /* Border for the active state of controls with AI accent. */
-  --intergalactic-border-ai-active: linear-gradient(90deg, #c695ff, #2bb3ff);
+  --intergalactic-border-ai-active: linear-gradient(90deg, #ab6cfe, #008ff8);
   /* Inverted version of the neutral primary border. Use it for borders on the dark or color background. */
   --intergalactic-border-primary-invert: #ffffff;
   /* Inverted version of the neutral secondary border. Use it for borders on the dark or color background. */

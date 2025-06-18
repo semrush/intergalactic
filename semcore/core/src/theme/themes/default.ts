@@ -165,7 +165,7 @@ export default {
   '--intergalactic-border-warning': '#ffb26e',
   '--intergalactic-border-warning-active': '#c33909',
   '--intergalactic-border-ai': 'linear-gradient(90deg, #c695ff, #2bb3ff)',
-  '--intergalactic-border-ai-active': 'linear-gradient(90deg, #c695ff, #2bb3ff)',
+  '--intergalactic-border-ai-active': 'linear-gradient(90deg, #ab6cfe, #008ff8)',
   '--intergalactic-border-primary-invert': '#ffffff',
   '--intergalactic-border-secondary-invert': 'rgba(255, 255, 255, 0.3)',
   '--intergalactic-border-tooltip-invert': '#6c6e79',
