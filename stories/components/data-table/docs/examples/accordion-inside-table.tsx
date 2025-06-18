@@ -14,6 +14,7 @@ const Demo = () => {
       columns={[
         { name: 'keyword', children: 'Keyword', gtcWidth: 'minmax(20%, 50%)' },
         {
+          name: 'group',
           children: 'Organic Sessions',
           borders: 'both',
           columns: [

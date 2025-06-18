@@ -1,13 +1,15 @@
 import { Flex } from '@semcore/flex-box';
 import InputTags from '@semcore/input-tags';
+import type { InputTagsTagProps } from '@semcore/input-tags';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
 const isValidEmail = (value: string) => /.+@.+\..+/i.test(value.toLowerCase());
 
 const defaultTags = ['bob@email.com', 'alice@domain.net', 'mary@website.com', 'steve@company.com'];
+type ExampleInputTagsProps = InputTagsTagProps;
 
-const Demo = () => {
+const Demo = (props: ExampleInputTagsProps) => {
   const [tags, setTags] = React.useState(defaultTags);
   const [value, setValue] = React.useState('');
 
@@ -46,11 +48,14 @@ const Demo = () => {
       <Text tag='label' size={300} htmlFor='email'>
         Participants
       </Text>
-      <InputTags mt={2} size='l' onAppend={handleAppendTags} onRemove={handleRemoveTag}>
+      <InputTags mt={2} onAppend={handleAppendTags} onRemove={handleRemoveTag}>
         {tags.map((tag, idx) => (
           <InputTags.Tag
             key={idx}
-            theme='primary'
+            size={props.size}
+            theme={props.theme}
+            disabled={props.disabled}
+            editable={props.editable}
             color={isValidEmail(tag) ? 'green-500' : 'red-500'}
           >
             <InputTags.Tag.Text>{tag}</InputTags.Tag.Text>
@@ -69,5 +74,14 @@ const Demo = () => {
     </Flex>
   );
 };
+
+export const defaultPropsEmail: ExampleInputTagsProps = {
+  size: 'l',
+  theme: 'primary',
+  disabled: false,
+  editable: undefined,
+};
+
+Demo.defaultProps = defaultPropsEmail;
 
 export default Demo;
