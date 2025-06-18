@@ -27,7 +27,7 @@ export const e2eStandToHtml = async (standFilePath: string, locale: string, prop
 
               ReactDOM.render(
                 <I18nProvider value='${locale}'>
-                  <App ${props ? Object.entries(props).map(([key, value]) => `${key}={${value}}`).join(' ') : ''} />
+                <App ${props ? Object.entries(props).map(([key, value]) => `${key}={${JSON.stringify(value)}}`).join(' ') : ''} />
                 </I18nProvider>,
                 document.querySelector('#root')
               );
