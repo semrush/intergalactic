@@ -1,8 +1,8 @@
 {
   "packageManager": "pnpm@10.11.1",
   "scripts": {
-    "dev": "pnpm --filter @semcore/playground run start",
-    "start": "pnpm --filter @semcore/playground run start",
+    "dev": "pnpm storybook",
+    "start": "pnpm storybook",
     "build": "pnpm run clean && pnpm --filter @semcore/core run build && pnpm build:icons && pnpm build:illustration && pnpm --filter @semcore/base-components run build && pnpm --filter @semcore/dropdown run build && pnpm --filter @semcore/* --filter !@semcore/icon --filter !@semcore/core --filter !@semcore/base-components --filter !@semcore/illustration --filter !@semcore/dropdown --filter !@semcore/ui run build",
     "process-theme": "tsm --require=./.ci/tsm-filter-warnings.js semcore/core/src/theme/processor.ts",
     "typecheck": "pnpm --filter @semcore/* --filter !@semcore/babel-plugin-root --filter !@semcore/babel-plugin-styles --filter !@semcore/babel-plugin-react-semcore --filter !@semcore/babel-preset-ui --filter !@semcore/testing-utils --filter !@semcore/email --filter !@semcore/dep-checker --filter !@semcore/icon-transform-svg --filter !@semcore/shadow-loader exec tsc --noEmit",
