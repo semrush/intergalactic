@@ -96,7 +96,9 @@ class RootSelect extends AbstractDropdown {
               true,
             );
 
-            const defaultIndex = hasInputSearch ? null : this.props.defaultHighlightedIndex;
+            const defaultIndex = hasInputSearch || lastInteraction.isMouse()
+              ? null
+              : this.props.defaultHighlightedIndex;
 
             this.handlers.highlightedIndex(defaultIndex);
 
