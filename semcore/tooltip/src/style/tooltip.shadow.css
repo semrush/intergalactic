@@ -11,7 +11,6 @@ STooltip {
   font-weight: normal;
   white-space: normal;
   box-shadow: var(--intergalactic-box-shadow-popper, 0px 1px 12px 0px rgba(25, 27, 35, 0.15));
-  width: 100%;
 }
 
 /* stylelint-disable-next-line no-duplicate-selectors */
@@ -146,6 +145,8 @@ STooltip[data-popper-placement^='right'] SArrow {
 
 STooltipPortalledWrapper {
   position: absolute;
-  width: 100%;
+  width: 100vw;
+  left: calc(-50vw + 50%);
+  max-width: 100%;
 }
 
