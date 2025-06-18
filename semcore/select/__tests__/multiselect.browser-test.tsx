@@ -247,4 +247,34 @@ test.describe('Options filtering', () => {
       }
     });
   });
+
+  test('Verify keyboard interactions after mouse interactions', async ({ page }) => {
+    const standPath = 'stories/components/select/docs/examples/multiselect.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+    const { select, label, menu, options, triggerText, list, selectTrigger } =
+            getSelectLocators(page);
+
+    await test.step('Verify menu opened by trigger click', async () => {
+      await select.click();
+      await options.first().waitFor();
+      await expect(menu).toBeVisible();
+    });
+
+    await test.step('Verify options selected and menu not closed by clicking on options', async () => {
+      await options.nth(1).click();
+      await options.nth(5).click();
+      await options.nth(3).click();
+
+      await expect(triggerText).toHaveText('Option 1, Option 5, Option 3');
+
+      await expect(menu).toBeVisible();
+    });
+
+    await test.step('Verify next option will be highlighted after pressing keydown', async () => {
+      await page.keyboard.press('ArrowDown');
+      await expect(options.nth(4)).toHaveClass(/highlighted/);
+    });
+  });
 });
