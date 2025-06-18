@@ -47,7 +47,7 @@ for (const theme of themes) {
     tokens,
     prefix,
   );
-  const { values, types, rawValues, descriptions } = processed;
+  const { values, types, rawValues, descriptions, basicTokens } = processed;
   let { processedTokens } = processed;
 
   for (const excludeToPath in excludeTokens) {
@@ -251,19 +251,21 @@ for (const theme of themes) {
     }[] = [];
 
     for (const token in values) {
-      const components = [
-        ...new Set((usages[token] ?? []).map((cssPath) => cssPath.split('/')[2])),
-      ];
-      components.sort((a, b) => a.localeCompare(b));
+      if (!basicTokens.has(token)) {
+        const components = [
+          ...new Set((usages[token] ?? []).map((cssPath) => cssPath.split('/')[2])),
+        ];
+        components.sort((a, b) => a.localeCompare(b));
 
-      designTokensDocumentation.push({
-        name: `--${prefix}-${token}`,
-        type: types[token],
-        rawValue: rawValues[token],
-        computedValue: values[token],
-        description: descriptions[token],
-        components,
-      });
+        designTokensDocumentation.push({
+          name: `--${prefix}-${token}`,
+          type: types[token],
+          rawValue: rawValues[token],
+          computedValue: values[token],
+          description: descriptions[token],
+          components,
+        });
+      }
     }
 
     const baseTokensDocumentation: Token[] = [];
