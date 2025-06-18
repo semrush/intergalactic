@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.2] - 2025-06-11
+
+### Fixed
+
+- Divider styles for for `theme='invert'` & `use='primary'`.
+
 ## [16.0.1] - 2025-05-30
 
 ### Changed

@@ -96,7 +96,7 @@ test.describe('Dropdown menu base', () => {
     const button = page.locator('button', { hasText: 'Actions' });
     const menu = page.getByRole('menu');
 
-    await test.step('Verify opens by mouse click on tirgger', async () => {
+    await test.step('Verify opens by mouse click on trigger', async () => {
       await button.click();
       await menu.waitFor();
       await expect(menu).toBeVisible();
@@ -127,6 +127,7 @@ test.describe('Dropdown menu base', () => {
       await page.keyboard.press('Enter');
       await menu.waitFor();
       await expect(menu).toBeVisible();
+      await expect(items.first()).toBeFocused();
     });
 
     await test.step('Verify closed by Escape', async () => {
@@ -138,6 +139,7 @@ test.describe('Dropdown menu base', () => {
       await page.keyboard.press('Space');
       await menu.waitFor();
       await expect(menu).toBeVisible();
+      await expect(items.first()).toBeFocused();
     });
 
     await test.step('Verify opens by ArrowDown', async () => {
@@ -492,8 +494,8 @@ test.describe('Nested menus with focusable elements', () => {
       await page.keyboard.press('Tab');
       await expect(ddMenu).toBeFocused();
       await page.keyboard.press('Enter');
+      await page.waitForSelector('text="Item 1"');
       await expect(ddMenu).not.toBeFocused();
-
       await expect(items.first()).toBeFocused();
       await expect(SubItem1).not.toBeVisible();
     });
@@ -501,12 +503,29 @@ test.describe('Nested menus with focusable elements', () => {
     await test.step('Verify 3rd item focused and 3rd submenu shown', async () => {
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowDown');
-      await page.waitForTimeout(500);
+      await page.waitForTimeout(50);
       await expect(items.nth(2)).toBeFocused();
     });
 
-    await test.step('Verify 1st item  submenu focused', async () => {
+    await test.step('Verify 1st item submenu focused when expanded by Enter', async () => {
       await page.keyboard.press('Enter');
+      await page.waitForSelector('text="Item 4.1.1"');
+      await expect(SubItem1).toBeVisible();
+      await expect(SubItem1).toBeFocused();
+    });
+
+    await test.step('Verify 1st item submenu focused when expanded by Space', async () => {
+      await page.keyboard.press('Escape');
+      await page.keyboard.press('Space');
+      await page.waitForSelector('text="Item 4.1.1"');
+      await expect(SubItem1).toBeVisible();
+      await expect(SubItem1).toBeFocused();
+    });
+
+    await test.step('Verify 1st item submenu focused when expanded by ArrowRight', async () => {
+      await page.keyboard.press('Escape');
+      await page.keyboard.press('ArrowRight');
+      await page.waitForSelector('text="Item 4.1.1"');
       await expect(SubItem1).toBeVisible();
       await expect(SubItem1).toBeFocused();
     });
@@ -669,8 +688,8 @@ test.describe('Selectable radio items', () => {
     await test.step('Verify opened by trigger click', async () => {
       await ddMenuTrigger.click();
       await menu.waitFor();
-      await expect(ddMenuTrigger).not.toBeFocused();
-      await expect(items.first()).toBeFocused();
+      await expect(ddMenuTrigger).toBeFocused();
+      await expect(items.first()).not.toBeFocused();
     });
 
     await test.step('Verify menu closed click on item', async () => {
@@ -961,7 +980,7 @@ test.describe('Virtual scroll', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
-    const ddMenuTrigger = await page.locator('[data-ui-name="DropdownMenu.Trigger"]');
+    const ddMenuTrigger = page.locator('[data-ui-name="DropdownMenu.Trigger"]');
     await page.keyboard.press('Tab');
     await expect(ddMenuTrigger).toBeFocused();
     await page.keyboard.press('Enter');
@@ -1013,7 +1032,7 @@ test.describe('Virtual scroll', () => {
 
     const ddMenuTrigger = await page.locator('[data-ui-name="DropdownMenu.Trigger"]');
     await ddMenuTrigger.click();
-    await expect(ddMenuTrigger).not.toBeFocused();
+    await expect(ddMenuTrigger).toBeFocused();
     const project33 = page.getByRole('menuitemradio', { name: 'project 33' });
     const project32 = page.getByRole('menuitemradio', { name: 'project 32' });
     await project33.waitFor({ state: 'visible' });
@@ -1024,20 +1043,20 @@ test.describe('Virtual scroll', () => {
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('ArrowDown');
-    const project36 = page.getByRole('menuitemradio', { name: 'project 36' });
-    await expect(project36).toBeFocused();
-    await expect(project36).toHaveAttribute('aria-checked', 'false');
-    await project36.click();
-    await expect(ddMenuTrigger).toHaveText('project 36');
+    const project35 = page.getByRole('menuitemradio', { name: 'project 35' });
+    await expect(project35).toBeFocused();
+    await expect(project35).toHaveAttribute('aria-checked', 'false');
+    await project35.click();
+    await expect(ddMenuTrigger).toHaveText('project 35');
     await ddMenuTrigger.click();
-    const project43 = page.locator(
-      '[data-ui-name="DropdownMenu.Item.Hint"]:has-text("project 43")',
+    const project42 = page.locator(
+      '[data-ui-name="DropdownMenu.Item.Hint"]:has-text("project 42")',
     );
 
-    await project43.scrollIntoViewIfNeeded();
+    await project42.scrollIntoViewIfNeeded();
     await page.waitForTimeout(200);
-    const project43item = page.getByRole('menuitemradio', { name: 'project 36' });
-    await expect(project43item).toBeVisible();
+    const project35item = page.getByRole('menuitemradio', { name: 'project 35' });
+    await expect(project35item).toBeVisible();
     if (browserName === 'firefox') return; // every scroll on ff differs on some pixels(not stable) so visual regression skipped for it
     await expect(page).toHaveScreenshot();
   });
