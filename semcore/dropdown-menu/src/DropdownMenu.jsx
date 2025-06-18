@@ -193,7 +193,7 @@ class DropdownMenuRoot extends AbstractDropdown {
         e.key === 'Escape';
       const isMenuItem = e.target.getAttribute('role')?.startsWith(super.childRole);
 
-      if (place === 'trigger' && (!visible || inlineActions) && show && isMenuItem) {
+      if (place === 'trigger' && show && isMenuItem) {
         this.handlers.visible(true);
         this.handlers.highlightedIndex(0);
         setTimeout(() => {
