@@ -16,7 +16,7 @@ const Demo = (props: ExampleInputTagsProps) => {
     'Instagram',
     'Social media with a very long name',
   ]);
-  const [value, setValue] = React.useState('');
+  const [value, setValue] = React.useState(props.value);
 
   const handleAppendTags = (newTags: string[]) => {
     setTags((tags) => [...tags, ...newTags]);
