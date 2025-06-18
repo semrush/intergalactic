@@ -4,6 +4,11 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [16.0.5] - 2025-06-20
 
+### Changed
+
+- Types for `defaultGridTemplateColumnWidth` set to string - any `grid-template-column` css value.
+- Added `name` to a column group type.
+
 ### Fixed
 
 - Table scrolls up a bit on every interaction in header.
