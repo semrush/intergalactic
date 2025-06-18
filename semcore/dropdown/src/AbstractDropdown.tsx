@@ -289,7 +289,7 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
 
   protected handleArrowKeyDown(e: React.KeyboardEvent<HTMLElement>) {
     const amountCount = e.shiftKey ? 5 : 1;
-    const { highlightedIndex, inlineActions } = this.asProps;
+    const { highlightedIndex, inlineActions, visible } = this.asProps;
 
     let amount: number | null = null;
 
@@ -333,7 +333,7 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
         break;
     }
 
-    if (amount !== null) {
+    if (visible && amount !== null) {
       const newHighlightedIndex = this.getHighlightedIndex(amount);
 
       if (
