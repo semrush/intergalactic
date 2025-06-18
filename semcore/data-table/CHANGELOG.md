@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.5] - 2025-06-20
+
+### Fixed
+
+- Table scrolls up a bit on every interaction in header.
+
 ## [16.0.4] - 2025-05-30
 
 ### Fixed

@@ -20,13 +20,13 @@ SScrollArea {
     }
 
     &[headerHeight] {
-      scroll-padding-top: var(--headerHeight);
+      scroll-margin-top: var(--headerHeight);
     }
     &[leftScrollPadding] {
-      scroll-padding-left: var(--leftScrollPadding);
+      scroll-margin-left: var(--leftScrollPadding);
     }
     &[rightScrollPadding] {
-      scroll-padding-right: var(--rightScrollPadding);
+      scroll-margin-right: var(--rightScrollPadding);
     }
   }
 
