@@ -145,8 +145,7 @@ STooltip[data-popper-placement^='right'] SArrow {
 
 STooltipPortalledWrapper {
   position: absolute;
-  width: 100vw;
-  left: calc(-50vw + 50%);
-  max-width: 100%;
+  width: 98vw;
+  left: calc(-49vw + 50%);
 }
 
