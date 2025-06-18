@@ -1,6 +1,6 @@
 import Ellipsis from '@semcore/ellipsis';
 import { Flex } from '@semcore/flex-box';
-import type { InputTagsProps, InputTagsValueProps } from '@semcore/input-tags';
+import type { InputTagsProps, InputTagsValueProps, InputTagsTagProps } from '@semcore/input-tags';
 import InputTags from '@semcore/input-tags';
 import { Text } from '@semcore/typography';
 import React from 'react';
@@ -70,7 +70,7 @@ const Demo = (props: ExampleInputTagsProps) => {
       <Text tag='label' size={300} htmlFor='add-new-social-media'>
         Social media
       </Text>
-      <InputTags mt={2} size={props.size} state={props.state} onAppend={handleAppendTags} onRemove={handleRemoveTag}>
+      <InputTags mt={2} size={props.size} state={props.state} delimiters={props.delimiters} onAppend={handleAppendTags} onRemove={handleRemoveTag}>
         {tags.map((tag, idx) => (
           <InputTags.Tag
             key={idx}
@@ -109,6 +109,7 @@ export const defaultProps: ExampleInputTagsProps = {
   defaultValue: undefined,
   state: undefined,
   disabled: false,
+  delimiters: undefined,
 };
 
 Demo.defaultProps = defaultProps;

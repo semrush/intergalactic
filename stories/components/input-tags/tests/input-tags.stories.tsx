@@ -2,9 +2,7 @@ import InputTags from '@semcore/input-tags';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import EnteringAndEditingTagsDefaultValueExample from './examples/entering_and_editing_tags-default-value';
-import EnteringAndEditingTagsDelimitersExample from './examples/entering_and_editing_tags-delimiters';
-import TagsStatesExample from './examples/states';
-import TagsWithAddonsExample from './examples/states-tags';
+import TagsWithAddonsExample, { defaultPropsEmail } from './examples/tags-with-addons';
 
 const meta: Meta<typeof InputTags> = {
   title: 'Components/InputTags/Tests',
@@ -12,20 +10,32 @@ const meta: Meta<typeof InputTags> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof InputTags>;
 
-export const TagsStates: Story = {
-  render: TagsStatesExample,
-};
-
-export const EnteringAndEditingTagsDefaultValue: Story = {
+export const EnteringAndEditingTagsDefaultValue: StoryObj<typeof InputTags> = {
   render: EnteringAndEditingTagsDefaultValueExample,
 };
 
-export const EnteringAndEditingTagsDelimiters: Story = {
-  render: EnteringAndEditingTagsDelimitersExample,
-};
-
-export const TagsWithAddons: Story = {
+export const TagsWithAddons: StoryObj<typeof defaultPropsEmail> = {
   render: TagsWithAddonsExample,
+  argTypes: {
+    size: {
+      control: { type: 'select' },
+      options: ['m', 'l', 'xl'],
+    },
+    interactive: {
+      control: { type: 'boolean' },
+    },
+    disabled: {
+      control: { type: 'boolean' },
+    },
+    theme: {
+      control: { type: 'select' },
+      options: ['primary', 'secondary', 'valid'],
+    },
+    color: {
+      control: { type: 'select' },
+      options: ['gray-500', 'blue-500', 'green-500', 'salad-500', 'orange-500', 'yellow-500', 'grredeen-500', 'pink-500', 'violet-500', 'white-500'],
+    },
+  },
+  args: defaultPropsEmail,
 };
