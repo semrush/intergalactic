@@ -284,7 +284,7 @@ test.describe('Visual tests', () => {
 
     test('Verify input tag with default value', async ({ page }) => {
       const standPath = 'stories/components/input-tags/docs/examples/entering_and_editing_tags.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en', { defaultValue: 'Test', value: undefined });
+      const htmlContent = await e2eStandToHtml(standPath, 'en', { defaultValue: 'default value add something', value: undefined });
 
       await page.setContent(htmlContent);
 
