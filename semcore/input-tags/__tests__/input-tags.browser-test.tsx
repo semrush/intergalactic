@@ -3,7 +3,27 @@ import { platform } from 'os';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
 
+const variables = [
+  { state: 'normal', size: 'm' },
+  { state: 'valid', size: 'm' },
+  { state: 'invalid', size: 'm' },
+  { state: 'normal', size: 'l' },
+  { state: 'valid', size: 'l' },
+  { state: 'invalid', size: 'l' },
+];
+
 test.describe('Input-Tags Styles', () => {
+  variables.forEach((item) => {
+    test(`Verify normal ${item.state} and ${item.size} size unfocused and focused`, async ({ page }) => {
+      const standPath = 'stories/components/input-tags/tests/examples/states.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en', item);
+
+      await page.setContent(htmlContent);
+
+      // todo tests
+    });
+  });
+
   test('Verify states and sized unfocused and focused', async ({ page }) => {
     const standPath = 'stories/components/input-tags/tests/examples/states.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
