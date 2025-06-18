@@ -1058,7 +1058,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
   private calculateRows(): Array<DTRow[] | DTRow> {
     const columns = this.columns;
     // @ts-ignore
-    const { data, uid } = this.props;
+    const { data, uid, uniqueRowKey } = this.props;
 
     const rows: Array<DTRow[] | DTRow> = [];
     const columnNames = columns.map((column: DTColumn) => column.name);
@@ -1094,7 +1094,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
         },
         {
           [UNIQ_ROW_KEY]:
-            row[UNIQ_ROW_KEY] || (`${uid}_${(rowIndex + id).toString(36)}` as UniqRowKey),
+            row[UNIQ_ROW_KEY] || (uniqueRowKey ? row[uniqueRowKey] : `${uid}_${(rowIndex + id).toString(36)}`) as UniqRowKey,
           [ROW_INDEX]: rowIndex,
         },
       );

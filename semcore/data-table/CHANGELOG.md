@@ -4,6 +4,10 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [16.0.5] - 2025-06-17
 
+### Added
+
+- `uniqueRowKey` property to define unique key in each row.
+
 ### Changed
 
 - `selectedRows` from indexes to `UNIQ_ROW_KEY` values.
