@@ -1621,7 +1621,7 @@
     "keyboard-focus-ai": {
       "value": {
         "width": "3px",
-        "color": "{keyboard-focus-invalid.outline}"
+        "color": "{keyboard-focus-ai.outline}"
       },
       "type": "border",
       "description": "Keyboard focus styles for elements with AI accent.",
