@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.5] - 2025-06-17
+
+### Changed
+
+- Types for `defaultGridTemplateColumnWidth` set to string - any `grid-template-column` css value.
+- Added `name` to a column group type.
+
 ## [16.0.4] - 2025-05-30
 
 ### Fixed
