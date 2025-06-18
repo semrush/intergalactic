@@ -1,4 +1,5 @@
 import { label, feature, story, suite, layer } from 'allure-js-commons';
+// eslint-disable-next-line no-restricted-imports
 import { test as baseTest } from 'vitest';
 
 const test = baseTest.extend<{
@@ -30,7 +31,7 @@ const test = baseTest.extend<{
   ],
 });
 
-// eslint-disable-next-line import/export
+// eslint-disable-next-line import/export, no-restricted-imports
 export * from 'vitest';
 export {
   // eslint-disable-next-line import/export

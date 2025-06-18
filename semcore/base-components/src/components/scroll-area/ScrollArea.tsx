@@ -295,6 +295,9 @@ class ScrollAreaRoot extends Component<ScrollAreaProps, {}, State, typeof Scroll
     if (this.$container) {
       this.observer?.observe(this.$container);
     }
+    if (this.$wrapper) {
+      this.observer?.observe(this.$wrapper);
+    }
 
     if (!this.asProps.disableAutofocusToContent) {
       this.hasAutoFocusToContent = true;

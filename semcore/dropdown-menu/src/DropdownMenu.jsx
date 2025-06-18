@@ -185,14 +185,15 @@ class DropdownMenuRoot extends AbstractDropdown {
 
       const show =
         (e.key === 'ArrowRight' && placement?.startsWith('right')) ||
-        (e.key === 'ArrowLeft' && placement?.startsWith('left'));
+        (e.key === 'ArrowLeft' && placement?.startsWith('left')) ||
+        ((e.key === 'Enter' || e.key === ' ') && !inlineActions);
       const hide =
         (e.key === 'ArrowLeft' && placement?.startsWith('right')) ||
         (e.key === 'ArrowRight' && placement?.startsWith('left')) ||
         e.key === 'Escape';
       const isMenuItem = e.target.getAttribute('role')?.startsWith(super.childRole);
 
-      if (place === 'trigger' && (!visible || inlineActions) && show && isMenuItem) {
+      if (place === 'trigger' && show && isMenuItem) {
         this.handlers.visible(true);
         this.handlers.highlightedIndex(0);
         setTimeout(() => {
