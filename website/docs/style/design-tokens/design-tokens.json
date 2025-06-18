@@ -117,6 +117,14 @@
     "components": []
   },
   {
+    "name": "--intergalactic-bg-primary-ai-hover-active",
+    "type": "color",
+    "rawValue": "linear-gradient(90deg, {violet.50}, {blue.50})",
+    "computedValue": "linear-gradient(90deg, #f9f2ff, #e9f7ff)",
+    "description": "Hover and active (selected) state of the background for banners and controls with AI accent.",
+    "components": []
+  },
+  {
     "name": "--intergalactic-bg-primary-muted",
     "type": "color",
     "rawValue": "{gray.500}",
@@ -345,6 +353,14 @@
     "rawValue": "{violet.200}",
     "computedValue": "#dcb8ff",
     "description": "Active (selected) state of the secondary background for the advertising message you want to accent.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-bg-secondary-ai",
+    "type": "color",
+    "rawValue": "linear-gradient(90deg, {violet.50}, {blue.50})",
+    "computedValue": "linear-gradient(90deg, #f9f2ff, #e9f7ff)",
+    "description": "Secondary background for the message with AI accent.",
     "components": []
   },
   {
@@ -828,6 +844,22 @@
     "components": []
   },
   {
+    "name": "--intergalactic-border-ai",
+    "type": "color",
+    "rawValue": "linear-gradient(90deg, {violet.300}, {blue.300})",
+    "computedValue": "linear-gradient(90deg, #c695ff, #2bb3ff)",
+    "description": "Subtle border for the message with AI accent.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-border-ai-active",
+    "type": "color",
+    "rawValue": "linear-gradient(90deg, {violet.300}, {blue.300})",
+    "computedValue": "linear-gradient(90deg, #c695ff, #2bb3ff)",
+    "description": "Active border for the message with AI accent.",
+    "components": []
+  },
+  {
     "name": "--intergalactic-border-primary-invert",
     "type": "color",
     "rawValue": "{gray.white}",
@@ -1032,7 +1064,7 @@
     "type": "color",
     "rawValue": "{violet.600}",
     "computedValue": "#5925ab",
-    "description": "Hover state of the advertising primary control.",
+    "description": "Background of the advertising primary control.",
     "components": [
       "wizard"
     ]
@@ -1042,7 +1074,7 @@
     "type": "color",
     "rawValue": "{violet.700}",
     "computedValue": "#421983",
-    "description": "Active (selected) state of the advertising primary control.",
+    "description": "Hover state of the advertising primary control.",
     "components": [
       "wizard"
     ]
@@ -1052,10 +1084,34 @@
     "type": "color",
     "rawValue": "{violet.500}",
     "computedValue": "#8649e1",
-    "description": "Background of the advertising primary control.",
+    "description": "Active (selected) state of the advertising primary control.",
     "components": [
       "wizard"
     ]
+  },
+  {
+    "name": "--intergalactic-control-primary-ai",
+    "type": "color",
+    "rawValue": "linear-gradient(90deg, {violet.400}, {blue.400})",
+    "computedValue": "linear-gradient(90deg, #ab6cfe, #008ff8)",
+    "description": "Background of the primary control with AI accent.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-control-primary-ai-hover",
+    "type": "color",
+    "rawValue": "linear-gradient(90deg, {violet.500}, {blue.500})",
+    "computedValue": "linear-gradient(90deg, #8649e1, #006dca)",
+    "description": "Hover state of the primary control with AI accent.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-control-primary-ai-active",
+    "type": "color",
+    "rawValue": "linear-gradient(90deg, {violet.600}, {blue.600})",
+    "computedValue": "linear-gradient(90deg, #5925ab, #044792)",
+    "description": "Active (selected) state of the primary control with AI accent.",
+    "components": []
   },
   {
     "name": "--intergalactic-control-primary-invert",
@@ -1375,6 +1431,22 @@
     "components": [
       "notice"
     ]
+  },
+  {
+    "name": "--intergalactic-icon-primary-ai",
+    "type": "color",
+    "rawValue": "{violet.500}",
+    "computedValue": "#8649e1",
+    "description": "Primary AI accent icon.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-icon-primary-ai-hover-active",
+    "type": "color",
+    "rawValue": "#6B3AB4",
+    "computedValue": "#6B3AB4",
+    "description": "Violet background color for the hover and active states of the primary AI accent icon. It’s created using a CSS filter with a brightness(0.8), applied to the violet-500 color.",
+    "components": []
   },
   {
     "name": "--intergalactic-icon-primary-invert",
@@ -2208,6 +2280,14 @@
     "rawValue": "0px 0px 0px 3px {keyboard-focus.outline-invert}",
     "computedValue": "0px 0px 0px 3px rgba(255, 255, 255, 0.7)",
     "description": "Default keyboard focus styles for using with dark background.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-keyboard-focus-ai-outline",
+    "type": "color",
+    "rawValue": "linear-gradient(90deg, rgba({violet.400}, 0.5), rgba({blue.400}, 0.5))",
+    "computedValue": "linear-gradient(90deg, rgba(171, 108, 254, 0.5), rgba(0, 143, 248, 0.5))",
+    "description": "Color for keyboard focus outline styles for elements with AI accent.",
     "components": []
   },
   {

@@ -12,19 +12,15 @@ import styles from './design-tokens.module.css';
 import { SearchInput } from './SearchInput.jsx';
 import { logEvent } from '../../docs/.vitepress/theme/amplitude/amplitude';
 
-export const ColorPreview = ({ color }) => {
-  if (!color.startsWith('#') && !color.startsWith('rgba(')) return null;
-
-  return (
-    <div
-      style={{
-        'background': color,
-        '--cell-bg-color': color,
-      }}
-      className={styles.colorPreview}
-    />
-  );
-};
+export const ColorPreview = ({ color }) => (
+  <div
+    style={{
+      background: color,
+      backgroundSize: color.startsWith('repeating-linear-gradient') ? '6px 6px' : undefined,
+    }}
+    className={styles.colorPreview}
+  />
+);
 
 let filteredTokensTimer = 0;
 let searchTimer = 0;
@@ -182,7 +178,7 @@ const DesignTokensTable = React.memo(({ filteredTokens }) => {
               className={styles.tokenValueWrapper}
             >
               <button type='button' className={styles.tokenValue} data-token-type='semanticToken'>
-                <ColorPreview color={props.row.computedValue} />
+                {props.row.type === 'color' && <ColorPreview color={props.row.computedValue} />}
                 {props.row.rawValue}
               </button>
             </Copy>

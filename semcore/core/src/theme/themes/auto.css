@@ -128,6 +128,8 @@
   --intergalactic-bg-primary-highlight: #fce081;
   /* Accent background for the advertising banners and controls. */
   --intergalactic-bg-primary-advertising: #421983;
+  /* Hover and active (selected) state of the background for banners and controls with AI accent. */
+  --intergalactic-bg-primary-ai-hover-active: linear-gradient(90deg, #f9f2ff, #e9f7ff);
   /* Accented muted background for a message with regular information. */
   --intergalactic-bg-primary-muted: #6c6e79;
   /* Inverted version of the primary background of the interface that contains the main data and information. */
@@ -178,6 +180,8 @@
   --intergalactic-bg-secondary-advertising-hover: #edd9ff;
   /* Active (selected) state of the secondary background for the advertising message you want to accent. */
   --intergalactic-bg-secondary-advertising-active: #dcb8ff;
+  /* Secondary background for the message with AI accent. */
+  --intergalactic-bg-secondary-ai: linear-gradient(90deg, #f9f2ff, #e9f7ff);
   /* Highlighting the search results. */
   --intergalactic-bg-highlight-results: rgba(239, 152, 0, 0.4);
   /* Focusing values in the input. */
@@ -254,6 +258,10 @@
   --intergalactic-border-warning: #ffb26e;
   /* Active border in components with warning intention. */
   --intergalactic-border-warning-active: #c33909;
+  /* Subtle border for the message with AI accent. */
+  --intergalactic-border-ai: linear-gradient(90deg, #c695ff, #2bb3ff);
+  /* Active border for the message with AI accent. */
+  --intergalactic-border-ai-active: linear-gradient(90deg, #c695ff, #2bb3ff);
   /* Inverted version of the neutral primary border. Use it for borders on the dark or color background. */
   --intergalactic-border-primary-invert: #ffffff;
   /* Inverted version of the neutral secondary border. Use it for borders on the dark or color background. */
@@ -292,12 +300,18 @@
   --intergalactic-control-primary-brand-hover: #c33909;
   /* Active state of the primary brand colored control. */
   --intergalactic-control-primary-brand-active: #8b1500;
-  /* Hover state of the advertising primary control. */
-  --intergalactic-control-primary-advertising: #5925ab;
-  /* Active (selected) state of the advertising primary control. */
-  --intergalactic-control-primary-advertising-hover: #421983;
   /* Background of the advertising primary control. */
+  --intergalactic-control-primary-advertising: #5925ab;
+  /* Hover state of the advertising primary control. */
+  --intergalactic-control-primary-advertising-hover: #421983;
+  /* Active (selected) state of the advertising primary control. */
   --intergalactic-control-primary-advertising-active: #8649e1;
+  /* Background of the primary control with AI accent. */
+  --intergalactic-control-primary-ai: linear-gradient(90deg, #ab6cfe, #008ff8);
+  /* Hover state of the primary control with AI accent. */
+  --intergalactic-control-primary-ai-hover: linear-gradient(90deg, #8649e1, #006dca);
+  /* Active (selected) state of the primary control with AI accent. */
+  --intergalactic-control-primary-ai-active: linear-gradient(90deg, #5925ab, #044792);
   /* Inverted background of the primary control. */
   --intergalactic-control-primary-invert: #ffffff;
   /* Hover state of the inverted primary control. */
@@ -360,6 +374,10 @@
   --intergalactic-icon-primary-warning: #ff642d;
   /* Orange background color for the hover and active states of the primary warning icon. It’s created using a CSS filter with a brightness(0.8), applied to the orange-500 color. */
   --intergalactic-icon-primary-warning-hover-active: #CC5024;
+  /* Primary AI accent icon. */
+  --intergalactic-icon-primary-ai: #8649e1;
+  /* Violet background color for the hover and active states of the primary AI accent icon. It’s created using a CSS filter with a brightness(0.8), applied to the violet-500 color. */
+  --intergalactic-icon-primary-ai-hover-active: #6B3AB4;
   /* Inverted version of the primary icon. */
   --intergalactic-icon-primary-invert: #ffffff;
   /* Hover and active (selected) states of the inverted version of the primary icon. */
@@ -530,6 +548,8 @@
   --intergalactic-keyboard-focus-valid: 0px 0px 0px 3px rgba(0, 159, 129, 0.5);
   /* Default keyboard focus styles for using with dark background. */
   --intergalactic-keyboard-focus-invert: 0px 0px 0px 3px rgba(255, 255, 255, 0.7);
+  /* Color for keyboard focus outline styles for elements with AI accent. */
+  --intergalactic-keyboard-focus-ai-outline: linear-gradient(90deg, rgba(171, 108, 254, 0.5), rgba(0, 143, 248, 0.5));
   /* Base font family. */
   --intergalactic-base: Inter;
   /* Use with font-size-800. */

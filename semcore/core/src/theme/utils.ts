@@ -97,7 +97,11 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
 
   const resolveColor = (color: string): string => {
     if (color.includes('linear-gradient')) {
-      return replaceColors(color);
+      if (color.includes('rgba')) {
+        return replaceColors(color);
+      } else {
+        return color.replace(/\{[a-z0-9.]+\}/g, resolveColor);
+      }
     }
     if (color.startsWith('rgba(') && color.endsWith(')')) {
       const lastComa = color.lastIndexOf(',');
