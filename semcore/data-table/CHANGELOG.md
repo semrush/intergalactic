@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.5] - 2025-06-18
+
+### Added
+
+- Ability to set `width` as `100%` and don't skip this value in scrollDirection calculation.
+
 ## [16.0.4] - 2025-05-30
 
 ### Fixed
