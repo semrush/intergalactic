@@ -683,6 +683,9 @@ test.describe('Different types of filters', () => {
     await locators.addFilterListItem('Device').click();
     await locators.addFilterSelectOption('Tablet').click();
     await locators.clearSelectButtons.hover();
+
+    await page.waitForTimeout(500);
+
     await expect(page).toHaveScreenshot();
   });
 
@@ -718,7 +721,7 @@ test.describe('Different types of filters', () => {
     await page.waitForTimeout(50);
     await page.keyboard.press('Enter');
     await page.keyboard.press('Tab');
-    await page.waitForTimeout(50);
+    await page.waitForTimeout(500);
     await expect(page).toHaveScreenshot();
     await page.keyboard.press('Enter');
     await expect(locators.addFilterBtn).toBeFocused();
