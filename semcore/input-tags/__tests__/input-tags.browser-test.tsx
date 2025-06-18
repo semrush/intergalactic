@@ -101,7 +101,7 @@ test.describe('Input-Tags Styles', () => {
   });
 });
 
-test.describe('Add remove edit and validate tags', () => {
+test.describe('Functional - Add remove edit and validate tags', () => {
   test('Verify tags can be added removed and edited by mouse', async ({ page }) => {
     const standPath = 'stories/components/input-tags/docs/examples/entering_and_editing_tags.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -126,17 +126,6 @@ test.describe('Add remove edit and validate tags', () => {
     await test.step('Verify focused and cursor set by click on label', async () => {
       await label.click();
       await expect(inputValue).toBeFocused();
-    });
-
-    await test.step('Verify tags hover states and ellipsis appearing', async () => {
-      await inputText.first().hover();
-      await expect(page).toHaveScreenshot();
-      await inputText.nth(4).hover();
-
-      await page.waitForSelector('text="Social media with a very long name"');
-      await expect(page).toHaveScreenshot();
-      await tagClose.first().hover();
-      await expect(page).toHaveScreenshot();
     });
 
     await test.step('Verify adding new tag by Space Tab Enter and ShiftTab', async () => {
@@ -193,7 +182,6 @@ test.describe('Add remove edit and validate tags', () => {
       await page.keyboard.type('TikTokTest');
       await inputText.nth(0).click();
       await expect(inputValue).toHaveAttribute('value', 'Social media with a very long name');
-      await expect(page).toHaveScreenshot();
 
       const count = await inputText.count();
       await expect(inputText.nth(count - 1)).toHaveText('TikTokTest');
@@ -225,7 +213,6 @@ test.describe('Add remove edit and validate tags', () => {
       await expect(inputValue).not.toBeFocused();
       await expect(inputText.first()).toBeFocused();
       await expect(tagClose.first()).not.toBeFocused();
-      await expect(page).toHaveScreenshot();
     });
 
     await test.step('Verify Tag Close can be focused by Tab', async () => {
@@ -386,16 +373,6 @@ test.describe('Add remove edit and validate tags', () => {
       // await expect(tag).toHaveCount(count + 4);
     });
 
-    await test.step('Verify Hover states', async () => {
-      const count = await tag.count();
-      await tagClose.first().hover();
-      await page.keyboard.press('Shift+Tab');
-      await tagClose.nth(count - 1).hover();
-      await expect(page).toHaveScreenshot();
-      await inputText.first().hover();
-      await expect(page).toHaveScreenshot();
-    });
-
     await test.step('Verify editing mode not enaled by click on text', async () => {
       await inputText.first().click();
 
@@ -489,9 +466,6 @@ test.describe('Add remove edit and validate tags', () => {
       await page.keyboard.type('|');
       await expect(inputText).toHaveCount(count + 3);
       await expect(inputValue).toBeFocused();
-      await page.keyboard.press('Shift+Tab');
-
-      await expect(page).toHaveScreenshot();
     });
   });
 
@@ -527,7 +501,6 @@ test.describe('Add remove edit and validate tags', () => {
         await expect(menus.nth(i)).not.toHaveClass(/highlighted/);
       }
       await expect(tag).toHaveCount(0);
-      await expect(page).toHaveScreenshot();
     });
 
     await test.step('Verify nothing found state', async () => {
@@ -548,7 +521,6 @@ test.describe('Add remove edit and validate tags', () => {
       await page.waitForSelector('text="LinkedIn"');
       await expect(inputValue).toBeFocused();
       await expect(menus.first()).toHaveClass(/highlighted/);
-      await expect(page).toHaveScreenshot();
     });
 
     await test.step('Verify menu item can be selected by click', async () => {
@@ -556,7 +528,6 @@ test.describe('Add remove edit and validate tags', () => {
       await menus.first().click();
       await expect(tag).toHaveCount(1);
       await expect(menus).toHaveCount(3);
-      await expect(page).toHaveScreenshot();
     });
 
     await test.step('Verify all menu items can be selected by click', async () => {
@@ -636,7 +607,6 @@ test.describe('Add remove edit and validate tags', () => {
       await page.keyboard.press('Space');
       await page.waitForSelector('text="Nothing found"');
       await expect(inputValue).toBeFocused();
-      await expect(page).toHaveScreenshot();
     });
 
     await test.step('Verify focus By Shift+Tab', async () => {
@@ -650,8 +620,6 @@ test.describe('Add remove edit and validate tags', () => {
       await expect(inputValue).not.toBeFocused();
       await expect(tagClose.nth(0)).toBeFocused();
       await expect(menus.nth(0)).toHaveClass(/highlighted/);
-
-      await expect(page).toHaveScreenshot();
     });
 
     await test.step('Verify focus By Tab', async () => {
@@ -689,25 +657,7 @@ test.describe('Add remove edit and validate tags', () => {
 
       await expect(menus).toHaveCount(0);
       await expect(tag).toHaveCount(4);
-      await expect(page).toHaveScreenshot();
     });
-  });
-
-  test('Verify input tag with default value', async ({ page }) => {
-    const standPath = 'stories/components/input-tags/tests/examples/entering_and_editing_tags-default-value.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    const tag = page.locator('li[data-ui-name="InputTags.Tag"]');
-    const label = page.locator('[data-ui-name="Text"]');
-
-    await expect(page).toHaveScreenshot();
-    await label.click();
-    await expect(page).toHaveScreenshot();
-    const tagCountPrev = await tag.count();
-    await page.keyboard.press('Enter');
-    await expect(tag).toHaveCount(tagCountPrev + 1);
   });
 
   test('Verify adding tags with custom delimiters', async ({ page }) => {
@@ -718,7 +668,6 @@ test.describe('Add remove edit and validate tags', () => {
 
     const tag = page.locator('li[data-ui-name="InputTags.Tag"]');
     const inputText = page.locator('[data-ui-name="InputTags.Tag.Text"]');
-    const tagClose = page.locator('[data-ui-name="InputTags.Tag.Close"]');
     const inputValue = page.locator('[data-ui-name="InputTags.Value"]');
 
     await test.step('Verify adding new tag by entering custom delimiters', async () => {
@@ -769,5 +718,151 @@ test.describe('Add remove edit and validate tags', () => {
       await expect(tag).toHaveCount(count);
       await expect(inputValue).toHaveAttribute('value', 'Test');
     });
+  });
+});
+
+test.describe('Visual - Add remove edit and validate tags', () => {
+  test('Verify tags can be added removed and edited by mouse', async ({ page }) => {
+    const standPath = 'stories/components/input-tags/docs/examples/entering_and_editing_tags.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const inputText = page.locator('[data-ui-name="InputTags.Tag.Text"]');
+    const tagClose = page.locator('[data-ui-name="InputTags.Tag.Close"]');
+    const label = page.locator('[data-ui-name="Text"]');
+
+    await test.step('Verify tags hover states and ellipsis appearing', async () => {
+      await label.click();
+      await inputText.first().hover();
+      await expect(page).toHaveScreenshot();
+      await inputText.nth(4).hover();
+
+      await page.waitForSelector('text="Social media with a very long name"');
+      await expect(page).toHaveScreenshot();
+      await tagClose.first().hover();
+      await expect(page).toHaveScreenshot();
+    });
+
+    await test.step('Verify adding and edditing by click on the tag', async () => {
+      await page.keyboard.type('TikTokTest');
+      await inputText.nth(0).click();
+      await expect(page).toHaveScreenshot();
+    });
+  });
+
+  test('Verify wrapping emails in tags without width limitation and email validation', async ({ page }) => {
+    const standPath = 'stories/components/input-tags/docs/examples/wrapping_email_in_tag.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const tag = page.locator('li[data-ui-name="InputTags.Tag"]');
+    const inputText = page.locator('[data-ui-name="InputTags.Tag.Text"]');
+    const tagClose = page.locator('[data-ui-name="InputTags.Tag.Close"]');
+    const inputValue = page.locator('[data-ui-name="InputTags.Value"]');
+
+    await test.step('Verify hover states', async () => {
+      await inputValue.click();
+      const count = await tag.count();
+      await page.keyboard.type('TestTestTestTestTestTestTestTestTestTestTestTest@Test.Test');
+      await page.keyboard.press('Enter');
+
+      await page.keyboard.type('Test2');
+      await page.keyboard.press('Tab');
+
+      await page.keyboard.type('Social media');
+      await page.keyboard.press('Shift+Tab');
+
+      await tagClose.first().hover();
+      await page.keyboard.press('Shift+Tab');
+      await tagClose.nth(count - 1).hover();
+      await expect(page).toHaveScreenshot();
+      await inputText.first().hover();
+      await expect(page).toHaveScreenshot();
+    });
+
+    await test.step('Verify focus on last X moves and looks good', async () => {
+      await page.keyboard.press('Shift+Tab');
+
+      await expect(page).toHaveScreenshot();
+    });
+  });
+
+  test('Verify Data from the select visual states when interacting by mouse', async ({ page }) => {
+    const standPath = 'stories/components/input-tags/docs/examples/select_for_tag_filtering.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const label = page.locator('[data-ui-name="Text"]');
+    const menus = page.locator('[data-ui-name="Select.Option"]');
+
+    await test.step('Verify focused and menu opened by click on label', async () => {
+      await label.click();
+      await page.waitForSelector('text="LinkedIn"');
+      await expect(page).toHaveScreenshot();
+    });
+
+    await test.step('Verify menu item focused when entered data', async () => {
+      await page.keyboard.press('Backspace');
+      await page.waitForSelector('text="TikTok"');
+      await expect(page).toHaveScreenshot();
+    });
+
+    await test.step('Verify menu item can be selected by click', async () => {
+      await menus.first().click();
+      await expect(page).toHaveScreenshot();
+    });
+  });
+
+  test('Verify Data from the select visual states when interacting by keyboard', async ({ page }) => {
+    const standPath = 'stories/components/input-tags/docs/examples/select_for_tag_filtering.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const menus = page.locator('[data-ui-name="Select.Option"]');
+
+    await test.step('Verify nothing found state', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await page.keyboard.press('Enter');
+      await page.keyboard.press('Space');
+      await page.waitForSelector('text="Nothing found"');
+      await expect(page).toHaveScreenshot();
+    });
+
+    await test.step('Verify focus By Shift+Tab', async () => {
+      await page.keyboard.press('Shift+Tab');
+      await page.keyboard.press('Shift+Tab');
+      await expect(page).toHaveScreenshot();
+    });
+
+    await test.step('Verify Adding tag', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      while (await menus.count() > 0) {
+        await page.keyboard.press('Enter');
+      }
+      await expect(page).toHaveScreenshot();
+    });
+  });
+
+  test('Verify input tag with default value', async ({ page }) => {
+    const standPath = 'stories/components/input-tags/tests/examples/entering_and_editing_tags-default-value.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const tag = page.locator('li[data-ui-name="InputTags.Tag"]');
+    const label = page.locator('[data-ui-name="Text"]');
+
+    await expect(page).toHaveScreenshot();
+    await label.click();
+    await expect(page).toHaveScreenshot();
+    const tagCountPrev = await tag.count();
+    await page.keyboard.press('Enter');
+    await expect(tag).toHaveCount(tagCountPrev + 1);
   });
 });

@@ -90,7 +90,6 @@ const Demo = () => {
           value={value}
           onChange={setValue}
           onKeyDown={handleInputKeyDown}
-          defaultValue='Add social media'
           ref={inputValueRef}
           id='add-new-social-media'
           placeholder='Add social media'
