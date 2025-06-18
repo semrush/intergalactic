@@ -128,7 +128,7 @@
   --intergalactic-bg-primary-highlight: #fce081;
   /* Accent background for the advertising banners and controls. */
   --intergalactic-bg-primary-advertising: #421983;
-  /* Hover and active (selected) state of the background for banners and controls with AI accent. */
+  /* Background for hover and active (selected) state of controls with AI accent. */
   --intergalactic-bg-primary-ai-hover-active: linear-gradient(90deg, #f9f2ff, #e9f7ff);
   /* Accented muted background for a message with regular information. */
   --intergalactic-bg-primary-muted: #6c6e79;
@@ -258,9 +258,9 @@
   --intergalactic-border-warning: #ffb26e;
   /* Active border in components with warning intention. */
   --intergalactic-border-warning-active: #c33909;
-  /* Subtle border for the message with AI accent. */
+  /* Border for controls with AI accent. */
   --intergalactic-border-ai: linear-gradient(90deg, #c695ff, #2bb3ff);
-  /* Active border for the message with AI accent. */
+  /* Border for the active state of controls with AI accent. */
   --intergalactic-border-ai-active: linear-gradient(90deg, #c695ff, #2bb3ff);
   /* Inverted version of the neutral primary border. Use it for borders on the dark or color background. */
   --intergalactic-border-primary-invert: #ffffff;

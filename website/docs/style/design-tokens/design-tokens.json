@@ -121,7 +121,7 @@
     "type": "color",
     "rawValue": "linear-gradient(90deg, {violet.50}, {blue.50})",
     "computedValue": "linear-gradient(90deg, #f9f2ff, #e9f7ff)",
-    "description": "Hover and active (selected) state of the background for banners and controls with AI accent.",
+    "description": "Background for hover and active (selected) state of controls with AI accent.",
     "components": []
   },
   {
@@ -848,7 +848,7 @@
     "type": "color",
     "rawValue": "linear-gradient(90deg, {violet.300}, {blue.300})",
     "computedValue": "linear-gradient(90deg, #c695ff, #2bb3ff)",
-    "description": "Subtle border for the message with AI accent.",
+    "description": "Border for controls with AI accent.",
     "components": []
   },
   {
@@ -856,7 +856,7 @@
     "type": "color",
     "rawValue": "linear-gradient(90deg, {violet.300}, {blue.300})",
     "computedValue": "linear-gradient(90deg, #c695ff, #2bb3ff)",
-    "description": "Active border for the message with AI accent.",
+    "description": "Border for the active state of controls with AI accent.",
     "components": []
   },
   {

@@ -456,7 +456,7 @@
         "ai-hover-active": {
           "value": "linear-gradient(90deg, {violet.50}, {blue.50})",
           "type": "color",
-          "description": "Hover and active (selected) state of the background for banners and controls with AI accent."
+          "description": "Background for hover and active (selected) state of controls with AI accent."
         },
         "muted": {
           "value": "{gray.500}",
@@ -788,12 +788,12 @@
       "ai": {
         "value": "linear-gradient(90deg, {violet.300}, {blue.300})",
         "type": "color",
-        "description": "Subtle border for the message with AI accent."
+        "description": "Border for controls with AI accent."
       },
       "ai-active": {
         "value": "linear-gradient(90deg, {violet.300}, {blue.300})",
         "type": "color",
-        "description": "Active border for the message with AI accent."
+        "description": "Border for the active state of controls with AI accent."
       },
       "primary-invert": {
         "value": "{gray.white}",
