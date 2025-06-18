@@ -17,5 +17,17 @@ const wrapDataTable = <PropsExtending extends {}>(
   ) => React.ReactNode,
 ): DataTableType => wrapper as any;
 
-export { DataTable, ACCORDION, ROW_GROUP, UNIQ_ROW_KEY, wrapDataTable };
-export type { DataTableSort, DataTableData };
+export {
+  DataTable,
+  ACCORDION,
+  ROW_GROUP,
+  /**
+   * @deprecated use property `uniqueRowKey` in DataTableProps to set key of unique value in your data.
+   */
+  UNIQ_ROW_KEY,
+  wrapDataTable,
+};
+export type {
+  DataTableSort,
+  DataTableData,
+};

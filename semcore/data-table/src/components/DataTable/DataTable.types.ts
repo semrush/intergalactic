@@ -118,7 +118,7 @@ export type DataTableProps<D extends DataTableData> = DataTableAriaProps &
     /**
    * Name of a unique key for each row data item
    */
-    uniqueRowKey?: string;
+    uniqueRowKey?: keyof D[number];
 
     /**
      * List of selected rows (uniqIds from a data array)
