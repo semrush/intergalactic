@@ -18,6 +18,7 @@ import MultiselectItemsExample from './examples/multiselect_items';
 import NestedExample from './examples/nested';
 import NestedWithFocusableExample from './examples/nested_with_focusable';
 import SelectableRadioItemsExample from './examples/selectable_radio_items';
+import StickyGroupsExample from './examples/sticky_groups';
 import TheSecondMethodExample from './examples/the_second_method';
 import { playWrapper } from '../../../utils/playWrapper';
 
@@ -72,4 +73,8 @@ export const SelectableRadioItems: Story = {
 export const MultiselectItems: Story = {
   render: MultiselectItemsExample,
   play: playWrapper(MultiselectItemsTest),
+};
+
+export const StickyGroups: Story = {
+  render: StickyGroupsExample,
 };

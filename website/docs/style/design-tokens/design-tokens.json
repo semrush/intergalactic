@@ -1604,7 +1604,9 @@
     "rawValue": "{gray.white}",
     "computedValue": "#ffffff",
     "description": "Default background color for the list item in the dropdown-menu.",
-    "components": []
+    "components": [
+      "dropdown"
+    ]
   },
   {
     "name": "--intergalactic-dropdown-menu-item-hover",
