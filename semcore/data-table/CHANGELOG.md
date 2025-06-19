@@ -6,6 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
+- Ability to set initial sort value as undefined.
 - Property `name` to a column group type.
 - Export for `DataTableProp` and `DataTableChangeSort` types.
 - `null` as possible value for `DataRowItem`.

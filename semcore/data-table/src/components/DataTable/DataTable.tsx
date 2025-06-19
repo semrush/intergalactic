@@ -359,7 +359,8 @@ class DataTableRoot<D extends DataTableData> extends Component<
   };
 
   hasFocusableInHeader = () => {
-    return this.headerRef.current && hasFocusableIn(this.headerRef.current);
+    return (this.headerRef.current && hasFocusableIn(this.headerRef.current)) ||
+      this.columns.some((column) => column.sortable);
   };
 
   onExpandRow = (expandedRow: DTRow) => {
