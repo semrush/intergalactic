@@ -24,6 +24,7 @@ type TokensInput = {
 
 export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: string) => {
   const values: { [tokenName: string]: string } = {};
+  const basicTokens = new Set<string>();
   const modifications: {
     [tokenName: string]: {
       type: 'lighten' | 'darken' | 'alpha';
@@ -55,13 +56,13 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
     }
     | DesignTokenTree;
   type DesignTokenTree = { [childrenNodeName: string]: DesignTokenNode };
-  const traverse = (node: DesignTokenNode, pathParts: string[] = []) => {
+  const traverse = (node: DesignTokenNode, pathParts: string[] = [], isBasic?: boolean) => {
     for (const key in node) {
       if (key === 'type') continue;
       if (key === 'value') continue;
       if (key === 'description') continue;
       if (key === '$extensions') continue;
-      traverse((node as any)[key], [...pathParts, key]);
+      traverse((node as any)[key], [...pathParts, key], isBasic);
     }
     if ('type' in node && typeof node.type === 'string') {
       const path = pathParts.join('-');
@@ -74,6 +75,9 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
         throw new Error(`Duplicated design token "${path}"`);
       }
       values[path] = node.value;
+      if (isBasic) {
+        basicTokens.add(path);
+      }
       if (typeof node.description === 'string') descriptions[path] = node.description;
       if (node.$extensions) {
         for (const extension in node.$extensions) {
@@ -88,6 +92,7 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
     }
   };
 
+  traverse(base, [], true);
   traverse(tokens);
 
   const resolveColor = (color: string): string => {
@@ -250,14 +255,15 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
 
   const processedTokens: { name: string; value: string; description: string }[] = [];
   for (const token in values) {
+    const isBase = basicTokens.has(token);
     processedTokens.push({
-      name: `--${prefix}-${token}`,
+      name: isBase ? `--${token}` : `--${prefix}-${token}`,
       description: descriptions[token],
       value: values[token],
     });
   }
 
-  return { processedTokens, values, types, rawValues, descriptions };
+  return { processedTokens, values, types, rawValues, descriptions, basicTokens };
 };
 
 export const tokensToCss = (

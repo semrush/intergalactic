@@ -6,6 +6,8 @@ import type {
   DataTableSort,
   DataTableType,
   DataTableData,
+  DataTableProps,
+  DataTableChangeSort,
 } from './components/DataTable/DataTable.types';
 
 const wrapDataTable = <PropsExtending extends {}>(
@@ -30,4 +32,6 @@ export {
 export type {
   DataTableSort,
   DataTableData,
+  DataTableProps,
+  DataTableChangeSort,
 };

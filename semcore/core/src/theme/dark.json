@@ -285,7 +285,7 @@
       },
       "dusty": {
         "50": {
-          "value": "#E7E8F2",
+          "value": "#F5F4FF",
           "type": "color",
           "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
         },
@@ -2415,7 +2415,7 @@
     },
     "sidebar-nav": {
       "control-hover": {
-        "value": "{violet.dusty.50}",
+        "value": "rgba({gray.100}, 0.7)",
         "type": "color"
       },
       "control-active": {
