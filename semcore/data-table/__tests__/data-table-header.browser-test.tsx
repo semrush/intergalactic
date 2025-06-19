@@ -703,7 +703,12 @@ test.describe('Multi level Header', () => {
     });
 
     await test.step('Verify no scroll when clicking on text', async () => {
+      const dataTable = page.locator('[data-ui-name="DataTable"]');
       const text = page.getByText('Cpc 1');
+      await text.click();
+      await dataTable.hover();
+      await page.mouse.wheel(0, 600);
+      await page.waitForTimeout(1000);
       await text.click();
       await expect(page).toHaveScreenshot();
     });
