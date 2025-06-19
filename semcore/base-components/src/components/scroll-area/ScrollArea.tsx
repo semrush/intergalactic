@@ -32,18 +32,32 @@ type State = {
   shadowVertical: boolean | string;
 };
 
-class ScrollAreaRoot extends Component<ScrollAreaProps, {}, State, typeof ScrollAreaRoot.enhance> {
+type DefaultProps = {
+  container: React.Ref<HTMLElement>;
+  inner: React.Ref<HTMLElement>;
+  tabIndex: number;
+  observeParentSize: boolean;
+  disableAutofocusToContent: boolean;
+  shadowSize: Exclude<ScrollAreaProps['shadowSize'], undefined>;
+  shadowTheme: Exclude<Required<ScrollAreaProps['shadowTheme']>, undefined>;
+};
+
+const DEFAULT_SHADOW_THEME = 'dark';
+
+class ScrollAreaRoot extends Component<ScrollAreaProps, {}, State, typeof ScrollAreaRoot.enhance, DefaultProps> {
   static displayName = 'ScrollArea';
 
   static style = style;
   static enhance = [uniqueIDEnhancement(), keyboardFocusEnhance()] as const;
 
-  static defaultProps = () => ({
+  static defaultProps: () => DefaultProps = () => ({
     container: React.createRef(),
     inner: React.createRef(),
     tabIndex: 0,
     observeParentSize: false,
     disableAutofocusToContent: false,
+    shadowSize: 5,
+    shadowTheme: DEFAULT_SHADOW_THEME,
   });
 
   hasAutoFocusToContent = false;
@@ -344,12 +358,23 @@ class ScrollAreaRoot extends Component<ScrollAreaProps, {}, State, typeof Scroll
       rightOffset,
       topOffset,
       bottomOffset,
+      shadowSize,
+      shadowTheme,
     } = this.asProps;
     const { shadowVertical, shadowHorizontal } = this.state;
 
     const advancedMode =
       forcedAdvancedMode ||
       isAdvanceMode(Children, [ScrollArea.Container.displayName, ScrollArea.Bar.displayName], true);
+
+    const horizontalShadowSize = typeof shadowSize === 'number' ? shadowSize : shadowSize.horizontal;
+    const verticalShadowSize = typeof shadowSize === 'number' ? shadowSize : shadowSize.vertical;
+    const horizontalShadowThemeTop = typeof shadowTheme === 'string' ? shadowTheme : shadowTheme.horizontalTop ?? DEFAULT_SHADOW_THEME;
+    const horizontalShadowThemeBottom = typeof shadowTheme === 'string' ? shadowTheme : shadowTheme.horizontalBottom ?? DEFAULT_SHADOW_THEME;
+    const verticalShadowThemeLeft = typeof shadowTheme === 'string' ? shadowTheme : shadowTheme.verticalLeft ?? DEFAULT_SHADOW_THEME;
+    const verticalShadowThemeRight = typeof shadowTheme === 'string' ? shadowTheme : shadowTheme.verticalRight ?? DEFAULT_SHADOW_THEME;
+
+    console.log(shadowVertical, shadowHorizontal, horizontalShadowThemeTop, horizontalShadowThemeBottom);
 
     return sstyled(styles)(
       <SScrollArea
@@ -380,6 +405,9 @@ class ScrollAreaRoot extends Component<ScrollAreaProps, {}, State, typeof Scroll
             position={shadowVertical}
             topOffset={topOffset ? `${topOffset}px` : undefined}
             bottomOffset={bottomOffset ? `${bottomOffset}px` : undefined}
+            themeTop={horizontalShadowThemeTop}
+            themeBottom={horizontalShadowThemeBottom}
+            size={`${verticalShadowSize}px`}
           />
         )}
         {shadowHorizontal && (
@@ -387,6 +415,9 @@ class ScrollAreaRoot extends Component<ScrollAreaProps, {}, State, typeof Scroll
             position={shadowHorizontal}
             leftOffset={leftOffset ? `${leftOffset}px` : undefined}
             rightOffset={rightOffset ? `${rightOffset}px` : undefined}
+            themeLeft={verticalShadowThemeLeft}
+            themeRight={verticalShadowThemeRight}
+            size={`${horizontalShadowSize}px`}
           />
         )}
       </SScrollArea>,

@@ -20,15 +20,6 @@ const groups = Array.from({ length: 10 }, (_, index) => {
   };
 });
 
-const Group = ({ title, projects }: typeof groups[number]) => {
-  return (
-    <DropdownMenu.Group title={title} sticky>
-      {projects.map((project, index) => (<Row key={`${title}_${project}`} index={index} data={{ project, projects }} />))}
-    </DropdownMenu.Group>
-  );
-};
-
-const listItemHeight = 52;
 const listHeight = 200;
 
 const Row = React.memo(({ index, style, data: { project, projects, setProject } }: any) => {
@@ -133,19 +124,14 @@ const Demo = () => {
           </Input>
         </Box>
 
-        <DropdownMenu.List hMax={listHeight + 41} topOffset={36}>
-          {groups.map((group, index) => (<Group key={index} title={group.title} projects={group.projects} />))}
-          {/* <FixedSizeList */}
-          {/*  ref={listRef} */}
-          {/*  height={projects.length > 7 ? listHeight : projects.length * listItemHeight} */}
-          {/*  width='100%' */}
-          {/*  itemCount={projects.length} */}
-          {/*  overscanCount={5} */}
-          {/*  itemSize={listItemHeight} */}
-          {/*  itemData={{ projects, project: selectedProject, setProject }} */}
-          {/* > */}
-          {/*  {Row} */}
-          {/* </FixedSizeList> */}
+        <DropdownMenu.List hMax={listHeight + 41} topOffset={36} shadowSize={5} shadowTheme={{ horizontalTop: 'dark', horizontalBottom: 'light' }}>
+          {groups.map((group, index) => {
+            return (
+              <DropdownMenu.Group key={index} title={group.title} sticky>
+                {group.projects.map((project, index) => (<Row key={`${group.title}_${project}`} index={index} data={{ project, projects: group.projects }} />))}
+              </DropdownMenu.Group>
+            );
+          })}
         </DropdownMenu.List>
         <Divider />
         <DropdownMenu.Item
