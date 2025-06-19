@@ -9,10 +9,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - Property `name` to a column group type.
 - Export for `DataTableProp` and `DataTableChangeSort` types.
 - `null` as possible value for `DataRowItem`.
+- `uniqueRowKey` property to define unique key in each row. `UNIQ_ROW_KEY` symbol was deprecated.
 
 ### Changed
 
 - Types for `defaultGridTemplateColumnWidth` set to string - any `grid-template-column` css value.
+- `selectedRows` from indexes to `UNIQ_ROW_KEY` values.
 
 ## [16.0.4] - 2025-05-30
 
