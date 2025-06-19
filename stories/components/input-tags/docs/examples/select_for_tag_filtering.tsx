@@ -71,7 +71,7 @@ const Demo = () => {
           {tags.map((tag, i) => (
             <InputTags.Tag key={i} theme='primary'>
               <InputTags.Tag.Text>{tag}</InputTags.Tag.Text>
-              <InputTags.Tag.Close onClick={onRemoveTag.bind(this, i)} />
+              <InputTags.Tag.Close onClick={(e) => onRemoveTag(i, e)} />
             </InputTags.Tag>
           ))}
           <InputTags.Value

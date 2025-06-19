@@ -7,7 +7,7 @@ import { Body } from './Body';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
 import type { DataTableRowProps, RowPropsInner } from './Row.types';
 import style from './style.shadow.css';
-import { ACCORDION, SELECT_ALL } from '../DataTable/DataTable';
+import { ACCORDION, SELECT_ALL, UNIQ_ROW_KEY } from '../DataTable/DataTable';
 import type { DTValue } from '../DataTable/DataTable.types';
 
 class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
@@ -92,6 +92,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
     }
 
     const accordionId = `${uid}_${ariaRowIndex + 1}`;
+    const rowUniqKey = row[UNIQ_ROW_KEY];
 
     return sstyled(styles)(
       <>
@@ -100,12 +101,12 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
           role='row'
           aria-rowindex={ariaRowIndex}
           accordionType={accordionType}
-          theme={selectedRows?.includes(rowIndex) ? 'info' : undefined}
+          theme={selectedRows?.includes(rowUniqKey) ? 'info' : undefined}
           use:expanded={expanded && !mergedRow}
         >
           {columns.map((column, i) => {
             if (selectedRows && i === 0) {
-              const checked = selectedRows.includes(rowIndex);
+              const checked = selectedRows.includes(rowUniqKey);
               return sstyled(styles)(
                 <SCheckboxCell
                   key={i}

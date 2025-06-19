@@ -51,7 +51,7 @@ export type RowPropsInner = JSX.IntrinsicElements['div'] & {
   gridTemplateColumns: string[];
   accordionDataGridArea: string;
 
-  selectedRows?: number[];
+  selectedRows?: UniqRowKey[];
   onSelectRow?: (
     isSelect: boolean,
     selectedRowIndex: number,
