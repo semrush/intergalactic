@@ -1,4 +1,5 @@
 import type { DTColumn } from './Column.types';
+import type { UniqRowKey } from '../Body/Row.types';
 import type { DataTableData, DataTableProps, DTUse } from '../DataTable/DataTable.types';
 
 export type DataTableHeadProps = {
@@ -40,7 +41,7 @@ export type HeadPropsInner<D extends DataTableData> = {
   sideIndents?: 'wide';
 
   totalRows: number;
-  selectedRows?: number[];
+  selectedRows?: UniqRowKey[];
   onChangeSelectAll?: (value: boolean, event?: React.SyntheticEvent<HTMLElement>) => void;
 
   getFixedStyle: (
