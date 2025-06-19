@@ -31,5 +31,5 @@ export type CellPropsInner = {
   virtualScroll: boolean;
   tableRef: React.RefObject<HTMLDivElement>;
   accordionDuration?: number | [number, number];
-  onClick: (e: React.SyntheticEvent, rowIndex: number, colIndex: number) => void;
+  onClick: (e: React.SyntheticEvent, opt: { rowIndex: number; colIndex: number; row: DTRow }) => void;
 };

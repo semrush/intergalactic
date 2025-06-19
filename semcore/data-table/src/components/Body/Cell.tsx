@@ -115,10 +115,10 @@ class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner>
     return { duration, delay };
   }
 
-  onClickCell = (e: React.SyntheticEvent) => {
-    const { rowIndex, columnIndex, onClick } = this.asProps;
+  handleClickCell = (e: React.SyntheticEvent) => {
+    const { rowIndex, columnIndex, onClick, row } = this.asProps;
 
-    onClick(e, rowIndex, columnIndex);
+    onClick(e, { rowIndex, colIndex: columnIndex, row });
   };
 
   render() {
@@ -177,7 +177,7 @@ class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner>
           tabIndex={-1}
           onKeyDown={this.handleKeyDown}
           onFocus={this.onFocusCell}
-          onClick={this.onClickCell}
+          use:onClick={this.handleClickCell}
           name={cellName.toString()}
           role='gridcell'
           aria-colindex={columnIndex + 1}
