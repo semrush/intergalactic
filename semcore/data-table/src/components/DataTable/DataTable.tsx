@@ -10,6 +10,7 @@ import { isFocusInside, hasFocusableIn } from '@semcore/core/lib/utils/use/useFo
 import { NoData } from '@semcore/widget-empty';
 import type { ReactElement } from 'react';
 import * as React from 'react';
+import init from 'typescript-plugin-css-modules';
 
 import style from './dataTable.shadow.css';
 import type {
@@ -292,8 +293,15 @@ class DataTableRoot<D extends DataTableData> extends Component<
       selectedRows,
       onSelectRow: this.handleSelectRow,
       getFixedStyle: this.getFixedStyle,
+      onCellClick: this.handleCellClick,
     };
   }
+
+  handleCellClick = (e: React.SyntheticEvent, rowIndex: number, colIndex: number) => {
+    if (lastInteraction.isMouse()) {
+      this.initFocusableCell([this.hasFocusableInHeader() ? rowIndex + 1 : rowIndex, colIndex]);
+    }
+  };
 
   handleSelectRow = (
     isSelected: boolean,
@@ -522,13 +530,18 @@ class DataTableRoot<D extends DataTableData> extends Component<
     }
   };
 
-  initFocusableCell = () => {
+  initFocusableCell(): void;
+  initFocusableCell(initCell: [row: number, cell: number]): void;
+  initFocusableCell(initCell?: [row: number, cell: number]) {
     const hasFocusable = this.hasFocusableInHeader();
 
+    const initRow = initCell?.[0] ?? 0;
+    const initCol = initCell?.[1] ?? 0;
+
     if (hasFocusable) {
-      this.focusedCell = [0, 0];
+      this.focusedCell = [initRow, initCol];
     } else {
-      this.focusedCell = [1, 0];
+      this.focusedCell = [initRow + 1, initCol];
     }
   };
 

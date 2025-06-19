@@ -17,6 +17,10 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - Types for `defaultGridTemplateColumnWidth` set to string - any `grid-template-column` css value.
 - `selectedRows` from indexes to `UNIQ_ROW_KEY` values.
 
+### Fixed
+
+- Interact with the table using the keyboard after clicking the mouse in a certain cell.
+
 ## [16.0.4] - 2025-05-30
 
 ### Fixed

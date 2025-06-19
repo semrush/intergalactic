@@ -186,6 +186,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, State, [], BodyPropsInn
       tableRef,
       flatRows,
       accordionDuration,
+      onCellClick,
     } = this.asProps;
     const SAccordionToggle = ButtonLink;
 
@@ -215,6 +216,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, State, [], BodyPropsInn
       tableRef,
       children: props.children ?? defaultRender(),
       accordionDuration,
+      onClick: onCellClick,
     };
 
     if (renderCell) {
