@@ -29,7 +29,7 @@ test.describe('Feedback form', () => {
   });
 
   test('Feedback yes-no', async ({ page }) => {
-    const standPath = 'stories/patterns/ux-patterns/feedback-yes-no/examples/docs/feedback-yes-no-example.tsx';
+    const standPath = 'stories/patterns/ux-patterns/feedback-yes-no/docs/examples/feedback-yes-no-example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
