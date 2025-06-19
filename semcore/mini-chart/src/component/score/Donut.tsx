@@ -78,7 +78,7 @@ class DonutRoot extends Component<ScoreDonutProps, {}, {}, typeof DonutRoot.enha
                     values={`0;${scoreDonut.valueStrokeDashArray}`}
                   />
                 </circle>
-                {value !== 100 && !isSemiDonut && (
+                {scoreDonut.hasDivider && !isSemiDonut && (
                   <circle
                     cx='12'
                     cy='12'

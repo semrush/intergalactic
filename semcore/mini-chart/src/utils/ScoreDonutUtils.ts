@@ -10,6 +10,10 @@ export class ScoreDonutUtils {
     this.value = value;
   }
 
+  public get hasDivider() {
+    return ![0, 100].includes(this.value);
+  }
+
   public get viewBox() {
     return this.isSemiDonut ? '0 0 24 12' : '0 0 24 24';
   }
@@ -49,6 +53,10 @@ export class ScoreDonutUtils {
   }
 
   public get strokeDashOffsetBase() {
+    const hasDivider = this.hasDivider;
+
+    if (!hasDivider) return 0;
+
     const valueStroke = this.valueStrokeDashArray;
     const offsetPoint = this.offsetPoint;
 

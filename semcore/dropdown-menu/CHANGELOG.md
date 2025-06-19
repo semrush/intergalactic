@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.1.3] - 2025-06-16
+
+### Fixed
+
+- Issue where users couldn't navigate to nested items with the keyboard when the parent item was hovered with the mouse.
+
 ## [16.1.2] - 2025-06-12
 
 ### Changed

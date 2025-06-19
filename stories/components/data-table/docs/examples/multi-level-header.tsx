@@ -9,6 +9,7 @@ const Demo = () => {
       columns={[
         { name: 'keyword', children: 'Keyword' },
         {
+          name: 'group',
           children: 'Organic Sessions',
           borders: 'both',
           columns: [
