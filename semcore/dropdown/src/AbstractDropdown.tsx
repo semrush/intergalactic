@@ -350,7 +350,9 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
           this.itemRefs[newHighlightedIndex]?.focus();
         }
       }
+    }
 
+    if (amount !== null) {
       e.preventDefault();
       e.stopPropagation();
     }
