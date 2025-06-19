@@ -26,7 +26,7 @@ export type DataTableChangeSort<Column> = (
 ) => void;
 
 export type DataRowItem = {
-  [key: string]: DTValue | undefined;
+  [key: string]: DTValue | undefined | null;
   [ACCORDION]?: React.ReactNode | DataTableData;
   [ROW_GROUP]?: DataTableData;
   [UNIQ_ROW_KEY]?: string;
@@ -59,10 +59,12 @@ export type DataTableProps<D extends DataTableData> = DataTableAriaProps &
     onSortChange?: DataTableChangeSort<keyof D[0]>;
 
     /**
-     *
+     * Value to describe width for each column. Could be overridden in the column.gtcWidth property.
+     * Use `auto` to automatically fit the table to the content,
+     * `1fr` for equal-width columns or any other value for the grid-template-column css property.
      * @default auto
      */
-    defaultGridTemplateColumnWidth?: 'auto' | '1fr';
+    defaultGridTemplateColumnWidth?: string;
 
     /**
      * Flag for compact view (fewer paddings)
@@ -156,6 +158,11 @@ export type ColumnItemConfig = Intergalactic.InternalTypings.EfficientOmit<
 };
 
 export type ColumnGroupConfig = {
+  /**
+   * Necessary to set a unique name for a group. (It will use as a React key).
+   */
+  name: string;
+
   borders?: 'both' | 'left' | 'right';
 
   fixed?: 'left' | 'right';

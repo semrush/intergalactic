@@ -105,8 +105,10 @@ class LineRoot extends Component<ScoreLineGaugeProps, {}, {}, typeof LineRoot.en
 }
 
 function Segment(props: InnerSegmentProps) {
-  const { styles } = props;
+  const { styles, value } = props;
   const SLineSegmentItem = Root;
+
+  if (!value) return null;
 
   return sstyled(styles)(<SLineSegmentItem render={Box} />);
 }

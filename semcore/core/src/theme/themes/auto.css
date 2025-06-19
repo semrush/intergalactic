@@ -1,4 +1,115 @@
 :root {
+  /* Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision. */
+  --gray-50: #f4f5f9;
+  /* Use only for light strokes and active backgrounds. Suitable for minimally visible elements. */
+  --gray-100: #e0e1e9;
+  --gray-200: #c4c7cf;
+  --gray-300: #a9abb6;
+  --gray-400: #8a8e9b;
+  --gray-500: #6c6e79;
+  --gray-600: #484a54;
+  --gray-700: #2b2e38;
+  --gray-800: #191b23;
+  --gray-white: #ffffff;
+  /* Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision. */
+  --blue-50: #e9f7ff;
+  /* Use only for light strokes and active backgrounds. Suitable for minimally visible elements. */
+  --blue-100: #c4e5fe;
+  --blue-200: #8ecdff;
+  --blue-300: #2bb3ff;
+  --blue-400: #008ff8;
+  --blue-500: #006dca;
+  --blue-600: #044792;
+  --blue-700: #002b5f;
+  --blue-800: #001b3d;
+  /* Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision. */
+  --green-50: #dbfee8;
+  /* Use only for light strokes and active backgrounds. Suitable for minimally visible elements. */
+  --green-100: #9ef2c9;
+  --green-200: #59ddaa;
+  --green-300: #00c192;
+  --green-400: #009f81;
+  --green-500: #007c65;
+  --green-600: #055345;
+  --green-700: #00342d;
+  --green-800: #00201e;
+  /* Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision. */
+  --red-50: #fff0f7;
+  /* Use only for light strokes and active backgrounds. Suitable for minimally visible elements. */
+  --red-100: #ffd7df;
+  --red-200: #ffaeb5;
+  --red-300: #ff8786;
+  --red-400: #ff4953;
+  --red-500: #d1002f;
+  --red-600: #8e0016;
+  --red-700: #58000a;
+  --red-800: #410101;
+  /* Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision. */
+  --orange-50: #fff3d9;
+  /* Use only for light strokes and active backgrounds. Suitable for minimally visible elements. */
+  --orange-100: #ffdca2;
+  --orange-200: #ffb26e;
+  --orange-300: #ff8c43;
+  --orange-400: #ff642d;
+  --orange-500: #c33909;
+  --orange-600: #8b1500;
+  --orange-700: #551200;
+  --orange-800: #351000;
+  /* Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision. */
+  --yellow-50: #fdf7c8;
+  /* Use only for light strokes and active backgrounds. Suitable for minimally visible elements. */
+  --yellow-100: #fce081;
+  --yellow-200: #fdc23c;
+  --yellow-300: #ef9800;
+  --yellow-400: #d87900;
+  --yellow-500: #a75800;
+  --yellow-600: #743a00;
+  --yellow-700: #462500;
+  --yellow-800: #2c1600;
+  /* Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision. */
+  --violet-50: #f9f2ff;
+  /* Use only for light strokes and active backgrounds. Suitable for minimally visible elements. */
+  --violet-100: #edd9ff;
+  --violet-200: #dcb8ff;
+  --violet-300: #c695ff;
+  --violet-400: #ab6cfe;
+  --violet-500: #8649e1;
+  --violet-600: #5925ab;
+  --violet-700: #421983;
+  --violet-800: #220358;
+  /* Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision. */
+  --violet-dusty-50: #F5F4FF;
+  /* Use only for light strokes and active backgrounds. Suitable for minimally visible elements. */
+  --violet-dusty-100: #E2DDFF;
+  --violet-dusty-200: #BCB1E9;
+  --violet-dusty-300: #A79CD6;
+  --violet-dusty-400: #9083C5;
+  --violet-dusty-500: #6D619F;
+  --violet-dusty-600: #4D407E;
+  --violet-dusty-700: #382E5E;
+  --violet-dusty-800: #1D113E;
+  /* Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision. */
+  --pink-50: #fff0ff;
+  /* Use only for light strokes and active backgrounds. Suitable for minimally visible elements. */
+  --pink-100: #ffd3ff;
+  --pink-200: #ffa9fa;
+  --pink-300: #f67cf2;
+  --pink-400: #e14adf;
+  --pink-500: #b229b9;
+  --pink-600: #7d0480;
+  --pink-700: #4d0050;
+  --pink-800: #340439;
+  /* Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision. */
+  --salad-50: #ecfbcd;
+  /* Use only for light strokes and active backgrounds. Suitable for minimally visible elements. */
+  --salad-100: #c7ee96;
+  --salad-200: #9bd85d;
+  --salad-300: #66c030;
+  --salad-400: #35a21e;
+  --salad-500: #0a7e22;
+  --salad-600: #005613;
+  --salad-700: #003509;
+  --salad-800: #002203;
   /* Primary background of the interface which contains the main data and information. */
   --intergalactic-bg-primary-neutral: #ffffff;
   /* Hover state of the primary background of the interface which contains the main data and information. */
@@ -711,7 +822,7 @@
   --intergalactic-header-bg: #382E5E;
   --intergalactic-header-border-primary: #382E5E;
   --intergalactic-header-border-secondary: rgba(255,255,255, 0.15);
-  --intergalactic-sidebar-nav-control-hover: #E7E8F2;
+  --intergalactic-sidebar-nav-control-hover: rgba(224, 225, 233, 0.7);
   --intergalactic-sidebar-nav-control-active: #E2DDFF;
   --intergalactic-sidebar-nav-control-text-normal: #6D619F;
   --intergalactic-sidebar-nav-control-text-active: #4D407E;
@@ -741,6 +852,117 @@
   --intergalactic-duration-counter: 200;
 }
 .dark {
+  /* Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision. */
+  --gray-50: #f4f5f9;
+  /* Use only for light strokes and active backgrounds. Suitable for minimally visible elements. */
+  --gray-100: #e0e1e9;
+  --gray-200: #c4c7cf;
+  --gray-300: #a9abb6;
+  --gray-400: #8a8e9b;
+  --gray-500: #6c6e79;
+  --gray-600: #484a54;
+  --gray-700: #2b2e38;
+  --gray-800: #191b23;
+  --gray-white: #ffffff;
+  /* Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision. */
+  --blue-50: #e9f7ff;
+  /* Use only for light strokes and active backgrounds. Suitable for minimally visible elements. */
+  --blue-100: #c4e5fe;
+  --blue-200: #8ecdff;
+  --blue-300: #2bb3ff;
+  --blue-400: #008ff8;
+  --blue-500: #006dca;
+  --blue-600: #044792;
+  --blue-700: #002b5f;
+  --blue-800: #001b3d;
+  /* Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision. */
+  --green-50: #dbfee8;
+  /* Use only for light strokes and active backgrounds. Suitable for minimally visible elements. */
+  --green-100: #9ef2c9;
+  --green-200: #59ddaa;
+  --green-300: #00c192;
+  --green-400: #009f81;
+  --green-500: #007c65;
+  --green-600: #055345;
+  --green-700: #00342d;
+  --green-800: #00201e;
+  /* Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision. */
+  --red-50: #fff0f7;
+  /* Use only for light strokes and active backgrounds. Suitable for minimally visible elements. */
+  --red-100: #ffd7df;
+  --red-200: #ffaeb5;
+  --red-300: #ff8786;
+  --red-400: #ff4953;
+  --red-500: #d1002f;
+  --red-600: #8e0016;
+  --red-700: #58000a;
+  --red-800: #410101;
+  /* Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision. */
+  --orange-50: #fff3d9;
+  /* Use only for light strokes and active backgrounds. Suitable for minimally visible elements. */
+  --orange-100: #ffdca2;
+  --orange-200: #ffb26e;
+  --orange-300: #ff8c43;
+  --orange-400: #ff642d;
+  --orange-500: #c33909;
+  --orange-600: #8b1500;
+  --orange-700: #551200;
+  --orange-800: #351000;
+  /* Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision. */
+  --yellow-50: #fdf7c8;
+  /* Use only for light strokes and active backgrounds. Suitable for minimally visible elements. */
+  --yellow-100: #fce081;
+  --yellow-200: #fdc23c;
+  --yellow-300: #ef9800;
+  --yellow-400: #d87900;
+  --yellow-500: #a75800;
+  --yellow-600: #743a00;
+  --yellow-700: #462500;
+  --yellow-800: #2c1600;
+  /* Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision. */
+  --violet-50: #f9f2ff;
+  /* Use only for light strokes and active backgrounds. Suitable for minimally visible elements. */
+  --violet-100: #edd9ff;
+  --violet-200: #dcb8ff;
+  --violet-300: #c695ff;
+  --violet-400: #ab6cfe;
+  --violet-500: #8649e1;
+  --violet-600: #5925ab;
+  --violet-700: #421983;
+  --violet-800: #220358;
+  /* Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision. */
+  --violet-dusty-50: #F5F4FF;
+  /* Use only for light strokes and active backgrounds. Suitable for minimally visible elements. */
+  --violet-dusty-100: #E2DDFF;
+  --violet-dusty-200: #BCB1E9;
+  --violet-dusty-300: #A79CD6;
+  --violet-dusty-400: #9083C5;
+  --violet-dusty-500: #6D619F;
+  --violet-dusty-600: #4D407E;
+  --violet-dusty-700: #382E5E;
+  --violet-dusty-800: #1D113E;
+  /* Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision. */
+  --pink-50: #fff0ff;
+  /* Use only for light strokes and active backgrounds. Suitable for minimally visible elements. */
+  --pink-100: #ffd3ff;
+  --pink-200: #ffa9fa;
+  --pink-300: #f67cf2;
+  --pink-400: #e14adf;
+  --pink-500: #b229b9;
+  --pink-600: #7d0480;
+  --pink-700: #4d0050;
+  --pink-800: #340439;
+  /* Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision. */
+  --salad-50: #ecfbcd;
+  /* Use only for light strokes and active backgrounds. Suitable for minimally visible elements. */
+  --salad-100: #c7ee96;
+  --salad-200: #9bd85d;
+  --salad-300: #66c030;
+  --salad-400: #35a21e;
+  --salad-500: #0a7e22;
+  --salad-600: #005613;
+  --salad-700: #003509;
+  --salad-800: #002203;
   /* Primary background of the interface which contains the main data and information. */
   --intergalactic-bg-primary-neutral: rgba(30, 34, 49, 1);
   /* Hover state of the primary background of the interface which contains the main data and information. */
@@ -1434,7 +1656,7 @@
   --intergalactic-header-bg: #382E5E;
   --intergalactic-header-border-primary: #382E5E;
   --intergalactic-header-border-secondary: rgba(255,255,255, 0.15);
-  --intergalactic-sidebar-nav-control-hover: #E7E8F2;
+  --intergalactic-sidebar-nav-control-hover: rgba(224, 225, 233, 0.7);
   --intergalactic-sidebar-nav-control-active: #E2DDFF;
   --intergalactic-sidebar-nav-control-text-normal: #6D619F;
   --intergalactic-sidebar-nav-control-text-active: #4D407E;
