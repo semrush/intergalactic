@@ -255,19 +255,21 @@ export class Column<D extends DataTableData> extends Component<
     const cellElement = e.currentTarget;
     const target = e.target;
 
-    this.setState({ sortVisible: true }, () => {
-      if (target === cellElement) {
-        const focusableChildren = Array.from(cellElement.children).flatMap((node) =>
-          getFocusableIn(node as HTMLElement),
-        );
+    if (lastInteraction.isKeyboard()) {
+      this.setState({ sortVisible: true }, () => {
+        if (target === cellElement) {
+          const focusableChildren = Array.from(cellElement.children).flatMap((node) =>
+            getFocusableIn(node as HTMLElement),
+          );
 
-        if (focusableChildren.length === 1) {
-          focusableChildren[0].focus();
-        } else if (focusableChildren.length > 1) {
-          this.lockedCell = [cellElement, false];
+          if (focusableChildren.length === 1) {
+            focusableChildren[0].focus();
+          } else if (focusableChildren.length > 1) {
+            this.lockedCell = [cellElement, false];
+          }
         }
-      }
-    });
+      });
+    }
   };
 
   render() {
