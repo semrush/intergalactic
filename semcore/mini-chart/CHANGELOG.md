@@ -2,10 +2,11 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [16.0.3] - 2025-06-16
+## [16.0.3] - 2025-06-18
 
 ### Fixed
 
+- Rendering issues in ScoreDonut and ScoreSemiDonut when value is 0.
 - ScoreLine rendered segments with zero value, causing unnecessary visual elements.
 
 ## [16.0.2] - 2025-06-11
