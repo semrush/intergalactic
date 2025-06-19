@@ -1,7 +1,20 @@
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
 
-test.describe('Notice', () => {
+test.describe('Notice - Functional', () => {
+  test('Verify Feedback notice closed by action button', async ({ page, browserName }) => {
+    const standPath = 'stories/patterns/ux-patterns/feedback-yes-no/docs/examples/feedback-yes-no-example.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+    const askMeLaterButton = page.getByRole('button', { name: 'Ask me later' });
+    await expect(page.locator('[data-ui-name="Notice"]')).toBeVisible();
+    await askMeLaterButton.click();
+    await expect(page.locator('[data-ui-name="Notice"]')).not.toBeVisible();
+  });
+});
+
+test.describe('Notice - Visual', () => {
   test('Verify roles and attributes ans styles', async ({ page, browserName }) => {
     const standPath = 'stories/components/notice/docs/examples/basic_notice.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -76,23 +89,39 @@ test.describe('Notice', () => {
     await expect(page).toHaveScreenshot();
   });
 
-  test('Verify Feedback notice styles and closing by action button', async ({ page, browserName }) => {
+  test('Verify Feedback notice ', async ({ page, browserName }) => {
     const standPath = 'stories/patterns/ux-patterns/feedback-yes-no/docs/examples/feedback-yes-no-example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
-    await page.setViewportSize({ width: 1600, height: 1000 });
-
     await expect(page).toHaveScreenshot();
-
-    const askMeLaterButton = page.getByRole('button', { name: 'Ask me later' });
-    await expect(page.locator('[data-ui-name="Notice"]')).toBeVisible();
-    await askMeLaterButton.click();
-    await expect(page.locator('[data-ui-name="Notice"]')).not.toBeVisible();
   });
 });
 
-test.describe('NoticeSmart', () => {
+test.describe('NoticeSmart - Vusial', () => {
+  test('Verify NoticeSmart after mouse and keyboard interactions', async ({ page, browserName }) => {
+    const standPath = 'stories/components/notice/docs/examples/noticesmart.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const closes = await page.locator('[data-ui-name="Notice.Close"]');
+    const closeNotif = page.getByText('Close notification');
+    await page.keyboard.press('Tab');
+    await closeNotif.first().waitFor({ state: 'visible' });
+
+    await closes.nth(1).hover();
+    await closeNotif.nth(1).waitFor({ state: 'visible' });
+    await expect(page).toHaveScreenshot();
+
+    await page.keyboard.press('Enter');
+    await closes.first().click();
+
+    await expect(page).toHaveScreenshot();
+  });
+});
+
+test.describe('NoticeSmart - Functional', () => {
   test('Verify NoticeSmart roles and attributes', async ({ page, browserName }) => {
     const standPath = 'stories/components/notice/docs/examples/noticesmart.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -116,7 +145,6 @@ test.describe('NoticeSmart', () => {
       expect(close).toHaveAttribute('aria-label', 'Close notification');
       expect(close).toHaveAttribute('tabindex', '0');
     }
-    await expect(page).toHaveScreenshot();
   });
 
   test('Verify NoticeSmart interactions', async ({ page, browserName }) => {
@@ -126,23 +154,14 @@ test.describe('NoticeSmart', () => {
     await page.setContent(htmlContent);
 
     const closes = await page.locator('[data-ui-name="Notice.Close"]');
-    const closeNotif = page.getByText('Close notification');
     await page.keyboard.press('Tab');
     await expect(closes.first()).toBeFocused();
-    await closeNotif.first().waitFor({ state: 'visible' });
-
-    await closes.nth(1).hover();
-    await closeNotif.nth(1).waitFor({ state: 'visible' });
-    await expect(page).toHaveScreenshot();
 
     await page.keyboard.press('Enter');
     await expect(page.getByLabel('New tool announcement')).not.toBeVisible();
-
     await closes.first().click();
     await expect(page.getByLabel('New feature announcement')).not.toBeVisible();
     await expect(page.getByLabel('New feature announcement')).not.toBeVisible();
     await expect(page.locator('[data-ui-name="Notice.Label"][color="muted"]')).not.toBeVisible();
-
-    await expect(page).toHaveScreenshot();
   });
 });
