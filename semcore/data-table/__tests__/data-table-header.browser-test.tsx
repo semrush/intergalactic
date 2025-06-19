@@ -689,7 +689,7 @@ test.describe('Multi level Header', () => {
     await test.step('Verify Select interaction', async () => {
       const selectTrigger = page.locator('[data-ui-name="Select"]');
       await selectTrigger.hover();
-      // shapshot
+      await expect(page).toHaveScreenshot();
       await selectTrigger.click();
 
       const option0 = page.getByRole('option', { name: 'Option 0' });
@@ -700,6 +700,12 @@ test.describe('Multi level Header', () => {
 
       await expect(option0).toBeHidden();
       await expect(selectTrigger).toHaveAttribute('value', '2');
+    });
+
+    await test.step('Verify no scroll when clicking on text', async () => {
+      const text = page.getByText('Cpc 1');
+      await text.click();
+      await expect(page).toHaveScreenshot();
     });
 
     await test.step('Verify checkbox interaction', async () => {
