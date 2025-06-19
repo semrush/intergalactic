@@ -230,10 +230,12 @@ class DataTableRoot<D extends DataTableData> extends Component<
       totalRows: this.totalRows,
       selectedRows: selectedRows,
       onChangeSelectAll: (value, e) => {
-        const selectedRowsIndexes = value
-          ? new Array(this.totalRows).fill(undefined).map((_, i) => i)
-          : [];
-        onSelectedRowsChange?.(selectedRowsIndexes, e);
+        if (value === false) {
+          onSelectedRowsChange?.([], e);
+        } else {
+          const selectedRows = this.flatRows.map((row) => row[UNIQ_ROW_KEY]);
+          onSelectedRowsChange?.(selectedRows, e);
+        }
       },
       getFixedStyle: this.getFixedStyle,
       ...headerProps,
@@ -304,10 +306,10 @@ class DataTableRoot<D extends DataTableData> extends Component<
     if (selectedRows && onSelectedRowsChange) {
       const newSelectedRows = new Set(selectedRows);
 
-      if (isSelected && !newSelectedRows.has(selectedRowIndex)) {
-        newSelectedRows.add(selectedRowIndex);
-      } else if (!isSelected && newSelectedRows.has(selectedRowIndex)) {
-        newSelectedRows.delete(selectedRowIndex);
+      if (isSelected && !newSelectedRows.has(row[UNIQ_ROW_KEY])) {
+        newSelectedRows.add(row[UNIQ_ROW_KEY]);
+      } else if (!isSelected && newSelectedRows.has(row[UNIQ_ROW_KEY])) {
+        newSelectedRows.delete(row[UNIQ_ROW_KEY]);
       }
 
       onSelectedRowsChange([...newSelectedRows], event, {
@@ -1056,7 +1058,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
   private calculateRows(): Array<DTRow[] | DTRow> {
     const columns = this.columns;
     // @ts-ignore
-    const { data, uid } = this.props;
+    const { data, uid, uniqueRowKey } = this.props;
 
     const rows: Array<DTRow[] | DTRow> = [];
     const columnNames = columns.map((column: DTColumn) => column.name);
@@ -1092,7 +1094,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
         },
         {
           [UNIQ_ROW_KEY]:
-            row[UNIQ_ROW_KEY] || (`${uid}_${(rowIndex + id).toString(36)}` as UniqRowKey),
+            row[UNIQ_ROW_KEY] || (uniqueRowKey ? row[uniqueRowKey] : `${uid}_${(rowIndex + id).toString(36)}`) as UniqRowKey,
           [ROW_INDEX]: rowIndex,
         },
       );

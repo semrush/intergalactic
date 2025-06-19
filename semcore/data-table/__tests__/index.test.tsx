@@ -4,7 +4,7 @@ import { render, cleanup } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi, assertType } from '@semcore/testing-utils/vitest';
 import React, { useRef } from 'react';
 
-import { DataTable } from '../src';
+import { DataTable, UNIQ_ROW_KEY } from '../src';
 
 describe('data-table Dependency imports', () => {
   runDependencyCheckTests('data-table');
@@ -55,14 +55,14 @@ describe('DataTable', () => {
     });
     test('selectedRows typing', () => {
       assertType<JSX.Element>(
-        <DataTable<{ id: number }[]>
-          data={[{ id: 1 }]}
+        <DataTable
+          data={[{ id: 1, [UNIQ_ROW_KEY]: 'key' }]}
           aria-label='label'
           columns={[]}
-          selectedRows={[0]}
+          selectedRows={['key']}
           onSelectedRowsChange={(rows, e, opts) => {
             // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-            rows; // number[]
+            rows; // string[]
             // eslint-disable-next-line @typescript-eslint/no-unused-expressions
             opts?.row.id; // should be number
           }}
