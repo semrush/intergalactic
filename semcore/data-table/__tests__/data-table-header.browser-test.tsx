@@ -329,7 +329,7 @@ test.describe('One level header - Sorting', () => {
       await page.keyboard.press('Tab');
       const button1 = getButton(getColumn(1));
       await expect(button1).toBeFocused();
-      await expect(button1).toHaveAttribute('aria-label', 'descending');
+      await expect(button1).not.toHaveAttribute('aria-label');
 
       await page.keyboard.press('Enter');
       await expect(button1).toHaveAttribute('aria-label', 'descending');
@@ -445,6 +445,67 @@ test.describe('One level header - Sorting', () => {
     expect(widthsAfterSecondSort[1]).toEqual(initialWidths[1]);
     expect(widthsAfterSecondSort[2]).toBeGreaterThan(initialWidths[2]);
     expect(widthsAfterSecondSort[3]).toEqual(initialWidths[3]);
+  });
+
+  test('Verify sorting with undefined as default value by mouse interactions', async ({ page }) => {
+    const standPath = 'stories/components/data-table/tests/examples/header-tests/sorting-default-undefined.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+
+    const columns = page.locator('[data-ui-name="Head.Column"]');
+    const buttonLink1 = columns.first().locator('button[data-ui-name="ButtonLink"]');
+
+    await columns.first().hover();
+    const count = await columns.count();
+    for (let i = 0; i < count; i++) {
+      await expect(columns.nth(i)).not.toHaveAttribute('aria-sort');
+    }
+    await expect(columns.first()).not.toHaveAttribute('aria-sort');
+
+    await buttonLink1.click();
+    await expect(buttonLink1).toHaveAttribute('aria-label', 'descending');
+    await expect(columns.first()).toHaveAttribute('aria-sort', 'descending');
+
+    await buttonLink1.click();
+    await expect(buttonLink1).toHaveAttribute('aria-label', 'ascending');
+    await expect(columns.first()).toHaveAttribute('aria-sort', 'ascending');
+    for (let i = 1; i < count; i++) {
+      await expect(columns.nth(i)).not.toHaveAttribute('aria-sort');
+    }
+  });
+
+  test('Verify sorting with undefined as default value by keyboard interactions', async ({ page }) => {
+    const standPath = 'stories/components/data-table/tests/examples/header-tests/sorting-default-undefined.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+
+    const columns = page.locator('[data-ui-name="Head.Column"]');
+    const buttonLink1 = columns.first().locator('button[data-ui-name="ButtonLink"]');
+    const buttonLink2 = columns.nth(1).locator('button[data-ui-name="ButtonLink"]');
+
+    await page.keyboard.press('Tab');
+    await expect(buttonLink1).toBeFocused();
+    const count = await columns.count();
+    for (let i = 0; i < count; i++) {
+      await expect(columns.nth(i)).not.toHaveAttribute('aria-sort');
+    }
+    await expect(columns.first()).not.toHaveAttribute('aria-sort');
+
+    await page.keyboard.press('ArrowDown');
+    await expect(page.locator('[data-ui-name="Body.Cell"][aria-colindex="1"]').first()).toBeFocused();
+
+    await page.keyboard.press('ArrowUp');
+    await expect(buttonLink1).toBeFocused();
+
+    await page.keyboard.press('ArrowRight');
+    await expect(buttonLink2).toBeFocused();
+    await page.keyboard.press('Enter');
+    await expect(buttonLink2).toHaveAttribute('aria-label', 'descending');
+    await expect(columns.nth(1)).toHaveAttribute('aria-sort', 'descending');
+
+    await buttonLink2.click();
+    await expect(buttonLink2).toHaveAttribute('aria-label', 'ascending');
+    await expect(columns.nth(1)).toHaveAttribute('aria-sort', 'ascending');
   });
 });
 
@@ -683,7 +744,7 @@ test.describe('Multi level header - Sorting', () => {
 
     await test.step('Verify sorting interaction with mouse and keyboard', async () => {
       await page.keyboard.press('ArrowRight');
-      await expect(buttonLink2).toHaveAttribute('aria-label', 'ascending');
+      await expect(buttonLink2).not.toHaveAttribute('aria-label');
 
       await buttonLink2.click();
       await expect(buttonLink2).toHaveAttribute('aria-label', 'descending');
@@ -725,7 +786,7 @@ test.describe('Multi level header - Sorting', () => {
       );
       await cell2.hover();
       await expect(page).toHaveScreenshot();
-      await expect(buttonLink2).toHaveAttribute('aria-label', 'ascending');
+      await expect(buttonLink2).not.toHaveAttribute('aria-label');
       await buttonLink2.click();
       await expect(buttonLink2).toHaveAttribute('aria-label', 'descending');
     });

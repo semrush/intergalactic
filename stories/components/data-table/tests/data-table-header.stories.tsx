@@ -8,6 +8,8 @@ import MultiLevelInteractiveExample from './examples/header-tests/multi-level-wi
 import SecondaryHeaderExample from './examples/header-tests/secondary-header';
 import SecondarySortingExample from './examples/header-tests/secondary-sorting';
 import SortingSizeExample from './examples/header-tests/sorting-changing-size';
+import SortingDefaultUndefinedExample from './examples/header-tests/sorting-default-undefined';
+import SortingInteractiveHeaderExample from './examples/header-tests/sorting-with-interactive';
 import InteractiveHeaderExample from './examples/header-tests/table-with-1tf-and diff-elements';
 
 const meta: Meta = {
@@ -19,6 +21,14 @@ type Story = StoryObj;
 
 export const SecondaryHeader: Story = {
   render: SecondaryHeaderExample,
+};
+
+export const SortingDefaultUndefined: Story = {
+  render: SortingDefaultUndefinedExample,
+};
+
+export const SortingInteractiveHeader: Story = {
+  render: SortingInteractiveHeaderExample,
 };
 
 export const SortingSize: Story = {

@@ -61,7 +61,9 @@
     "sitemap": "^7.1.2",
     "unplugin": "^1.16.1",
     "vue": "^3.5.16",
-    "whatwg-fetch": "3.6.2"
+    "whatwg-fetch": "3.6.2",
+    "@docsearch/css": "~3.6.0",
+    "@docsearch/js": "~3.6.0"
   },
   "devDependencies": {
     "@babel/core": "7.19.1",
