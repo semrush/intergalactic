@@ -10,6 +10,7 @@ import { localizedMessages } from './translations/__intergalactic-dynamic-locale
 
 type AbstractDDProps = {
   visible: boolean;
+  defaultHighlightedIndex: 0 | null;
   highlightedIndex: number | null;
   selectedIndex: number | null;
   placement: DropdownProps['placement'];
@@ -217,11 +218,13 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
     const { visible } = this.asProps;
     const visibilityChanged = visible !== prevProps.visible;
 
-    if (visibilityChanged && !visible && prevProps.visible !== undefined) {
-      this.handlers.highlightedIndex(null);
+    if (visibilityChanged && !visible) {
+      this.handlers.highlightedIndex(this.props.defaultHighlightedIndex);
       this.prevHighlightedIndex = null;
       // @ts-ignore
       this.highlightedItemRef.current = null;
+      this.itemProps = [];
+      this.itemRefs = [];
       if (
         this.popperRef.current &&
         this.triggerRef.current &&
@@ -286,7 +289,7 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
 
   protected handleArrowKeyDown(e: React.KeyboardEvent<HTMLElement>) {
     const amountCount = e.shiftKey ? 5 : 1;
-    const { highlightedIndex, inlineActions } = this.asProps;
+    const { highlightedIndex, inlineActions, visible } = this.asProps;
 
     let amount: number | null = null;
 
@@ -330,7 +333,7 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
         break;
     }
 
-    if (amount !== null) {
+    if (visible && amount !== null) {
       const newHighlightedIndex = this.getHighlightedIndex(amount);
 
       if (
@@ -347,7 +350,9 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
           this.itemRefs[newHighlightedIndex]?.focus();
         }
       }
+    }
 
+    if (amount !== null) {
       e.preventDefault();
       e.stopPropagation();
     }
