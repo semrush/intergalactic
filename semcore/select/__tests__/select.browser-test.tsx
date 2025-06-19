@@ -306,6 +306,15 @@ test.describe('Basic select', () => {
       await expect(menu).not.toBeVisible();
     });
 
+    await test.step('Verify 1st item highlighted when interacting by mouse and the by keyboard', async () => {
+      await select.click();
+      await page.keyboard.press('ArrowDown');
+      await expect(menu).toBeVisible();
+      await expect(options.first()).toHaveClass(/highlighted/);
+      await page.keyboard.press('Escape');
+      await expect(menu).not.toBeVisible();
+    });
+
     await test.step('Verify opens by Enter', async () => {
       await page.keyboard.press('Enter');
       await expect(menu).toBeVisible();
