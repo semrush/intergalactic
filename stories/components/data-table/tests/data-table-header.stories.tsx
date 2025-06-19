@@ -22,7 +22,7 @@ export const SecondaryHeader: Story = {
   render: SecondaryHeaderExample,
 };
 
-export const SortingInteractiveHeaderExample: Story = {
+export const SortingInteractiveHeader: Story = {
   render: SortingInteractiveHeaderExample,
 };
 
