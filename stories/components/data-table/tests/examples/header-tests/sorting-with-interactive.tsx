@@ -54,6 +54,7 @@ const Demo = () => {
                 color='icon-secondary-neutral'
                 aria-label='Additional info 1'
                 data-test-id='tooltip-with-interactive-el'
+                onClick={(e) => e.stopPropagation()}
               />
               <DescriptionTooltip.Popper aria-label='Additional info about item 1'>
                 Jesus Christ, Joe,
