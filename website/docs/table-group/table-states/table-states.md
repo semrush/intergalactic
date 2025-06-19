@@ -34,7 +34,7 @@ Omit [Pagination](/components/pagination/pagination) when loading the table for 
 
 ## Long loading
 
-If data gathering takes more than 1 minute, use the [ProgressBar](/components/progress-bar/progress-bar) to indicate that data is being collected. The progress bar should be sticky and centered relative to the scrolling screen.
+If data gathering takes more than 1 minute, use the [ProgressBar](/components/progress-bar/progress-bar) to indicate that data is being collected. The progress bar should be `sticky` and centered relative to the scrolling screen.
 
 ![](static/progress-bar.png)
 
@@ -50,7 +50,7 @@ Use [SpinContainer](/components/spin-container/spin-container) when filtering, s
 - Performing other data operations that don’t require a long wait
 - Searching in the table (if possible, continue displaying the search query)
 
-The loading message should be sticky and centered relative to the scrolling screen.
+The loading message should be `sticky` and centered relative to the scrolling screen.
 
 ![](static/sticky-loading-1.png)
 

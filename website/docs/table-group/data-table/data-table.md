@@ -16,7 +16,7 @@ Our design system has two table types:
 
 1. **Primary table** is the foundational table type for displaying large data volumes and complex functionality.
 ![](static/table-left.png)
-2. **Secondary table** is a table type designed for compactly displaying a small amount of data within widgets and [cards](/components/card/card). These tables usually have limited functionality, such as non-interactive sort indicators.
+2. **Secondary table** is a table type designed for compactly displaying a small amount of data within widgets and [cards](/components/card/card). These tables usually have a limited set of features, such as non-interactive sort indicators.
 ![](static/secondary-table.png)
 
 ### Paddings
@@ -59,7 +59,7 @@ Alternatively, if the space is limited, you can disable text wrap and truncate t
 
 ### Sticky header
 
-You can make the table header sticky, so that it stays visible when scrolling long tables.
+You can make the table header `sticky`, so that it stays visible when scrolling long tables.
 
 ::: tip
 Sticky header shouldn't have a shadow during scrolling.
@@ -125,7 +125,7 @@ If a cell is colored, it remains colored when you hover over it. Users shouldn't
 
 **Vertical alignment:** both table header and body cell content is always aligned to the top.
 
-**Horizontall alignment:** cell content both in table header and body is aligned according to the following rules.
+**Horizontall alignment:** align cell content both in the header and the body according to the following rules.
 
 ### Left-aligned
 
