@@ -34,6 +34,7 @@ const Demo = () => {
         { name: 'id', children: 'ID' },
         { name: 'keyword', children: 'Keyword', gtcWidth: '300px' },
         {
+          name: 'group',
           children: 'Organic Sessions',
           columns: [
             { name: 'kd', children: 'KD %' },

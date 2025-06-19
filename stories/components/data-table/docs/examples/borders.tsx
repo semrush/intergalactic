@@ -15,6 +15,7 @@ const Demo = () => {
           children: 'Keyword',
         },
         {
+          name: 'bordersGroup',
           borders: 'both',
           children: 'Organic Sessions',
           columns: [

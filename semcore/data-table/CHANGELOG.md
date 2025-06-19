@@ -2,12 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [16.0.5] - 2025-06-17
+## [16.0.5] - 2025-06-20
+
+### Added
+
+- Property `name` to a column group type.
+- Export for `DataTableProp` and `DataTableChangeSort` types.
+- `null` as possible value for `DataRowItem`.
 
 ### Changed
 
-- Export `DataTableProp` and `DataTableChangeSort` types.
-- Added `null` as possible value for `DataRowItem`.
+- Types for `defaultGridTemplateColumnWidth` set to string - any `grid-template-column` css value.
 
 ## [16.0.4] - 2025-05-30
 
