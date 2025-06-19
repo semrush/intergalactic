@@ -26,7 +26,7 @@ export type DataTableChangeSort<Column> = (
 ) => void;
 
 export type DataRowItem = {
-  [key: string]: DTValue | undefined;
+  [key: string]: DTValue | undefined | null;
   [ACCORDION]?: React.ReactNode | DataTableData;
   [ROW_GROUP]?: DataTableData;
   [UNIQ_ROW_KEY]?: string;
