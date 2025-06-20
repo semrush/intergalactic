@@ -9,6 +9,7 @@ import { MultiselectItemsTest } from './__tests__/multiselect_items.test';
 import { NestedTest } from './__tests__/nested.test';
 import { NestedWithFocusableTest } from './__tests__/nested_with_focusable.test';
 import { SelectableRadioTest } from './__tests__/selectable_radio_items.test';
+import { StickyGroupTest } from './__tests__/sticky_group.test';
 import { TheSecondMethodTest } from './__tests__/the_second_method.test';
 import BasicExample from './examples/basic';
 import DropdownMenuExample from './examples/dropdown-menu';
@@ -77,4 +78,5 @@ export const MultiselectItems: Story = {
 
 export const StickyGroups: Story = {
   render: StickyGroupsExample,
+  play: playWrapper(StickyGroupTest),
 };

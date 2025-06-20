@@ -4,6 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { AdvancedFilteringControlTest } from './__tests__/advanced_filtering_control.test';
 import { BasicUsageTest } from './__tests__/basic_usage.test';
 import { SortingMultiselectOptionsTest } from './__tests__/sorting_multiselect_options.test';
+import { StickyGroupTest } from './__tests__/sticky_group.test';
 import AdvancedFilteringControlExample from './examples/advanced_filtering_control';
 import BasicUsageExample from './examples/basic_usage';
 import ControlledAndUncontrolledModesExample from './examples/controlled_and_uncontrolled_modes';
@@ -85,4 +86,5 @@ export const TriggerCustomization: Story = {
 
 export const StickyGroups: Story = {
   render: StickyGroupsExample,
+  play: playWrapper(StickyGroupTest),
 };
