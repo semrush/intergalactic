@@ -146,6 +146,7 @@ function Window(props) {
       aria-modal={true}
       duration={duration}
       ref={windowRef}
+      tabIndex={-1}
     >
       <ZIndexStackingContextProvider designToken='z-index-modal'>
         <PortalProvider value={windowRef}>

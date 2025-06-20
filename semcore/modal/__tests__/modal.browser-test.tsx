@@ -51,6 +51,16 @@ test.describe('Modal interactions', () => {
       await expect(modal).toHaveCount(0);
       await expect(trigger).toBeFocused();
     });
+
+    await test.step('Verify modal closed when you firstly click on a modal and then pressing ESC', async () => {
+      await trigger.click();
+      await modal.waitFor({ state: 'attached' });
+
+      await modal.click();
+      await page.keyboard.press('Escape');
+
+      await expect(modal).toHaveCount(0);
+    });
   });
 
   test('Verify basic usage mouse interactions', async ({ page, browserName }) => {
