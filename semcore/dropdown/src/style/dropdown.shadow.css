@@ -161,5 +161,9 @@ SDropdownPopper {
     top: 0;
     background-color: var(--intergalactic-dropdown-menu-item, #ffffff);
     z-index: 1;
+
+    &:hover {
+      background-color: var(--intergalactic-dropdown-menu-item, #ffffff);
+    }
   }
 }
