@@ -117,11 +117,19 @@
     "components": []
   },
   {
+    "name": "--intergalactic-bg-primary-ai",
+    "type": "color",
+    "rawValue": "{gray.white}",
+    "computedValue": "#ffffff",
+    "description": "Primary background for controls with AI accent.",
+    "components": []
+  },
+  {
     "name": "--intergalactic-bg-primary-ai-hover-active",
     "type": "color",
     "rawValue": "linear-gradient(90deg, {violet.50}, {blue.50})",
     "computedValue": "linear-gradient(90deg, #f9f2ff, #e9f7ff)",
-    "description": "Background for hover and active (selected) state of controls with AI accent.",
+    "description": "Primary background for hover and active (selected) state of controls with AI accent.",
     "components": []
   },
   {

@@ -128,7 +128,9 @@
   --intergalactic-bg-primary-highlight: #fce081;
   /* Accent background for the advertising banners and controls. */
   --intergalactic-bg-primary-advertising: #421983;
-  /* Background for hover and active (selected) state of controls with AI accent. */
+  /* Primary background for controls with AI accent. */
+  --intergalactic-bg-primary-ai: #ffffff;
+  /* Primary background for hover and active (selected) state of controls with AI accent. */
   --intergalactic-bg-primary-ai-hover-active: linear-gradient(90deg, #f9f2ff, #e9f7ff);
   /* Accented muted background for a message with regular information. */
   --intergalactic-bg-primary-muted: #6c6e79;

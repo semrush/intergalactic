@@ -99,6 +99,7 @@ export default {
   '--intergalactic-bg-primary-warning': '#ff642d',
   '--intergalactic-bg-primary-highlight': '#fce081',
   '--intergalactic-bg-primary-advertising': '#421983',
+  '--intergalactic-bg-primary-ai': '#ffffff',
   '--intergalactic-bg-primary-ai-hover-active': 'linear-gradient(90deg, #f9f2ff, #e9f7ff)',
   '--intergalactic-bg-primary-muted': '#6c6e79',
   '--intergalactic-bg-primary-invert': '#191b23',
