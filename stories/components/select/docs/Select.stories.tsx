@@ -15,6 +15,7 @@ import OptionsExample from './examples/options';
 import OptionsFilteringExample from './examples/options_filtering';
 import RenderFunctionExample from './examples/render_function';
 import SortingMultiselectOptionsExample from './examples/sorting_multiselect_options';
+import StickyGroupsExample from './examples/sticky_groups';
 import TriggerCustomizationExample from './examples/trigger_customization';
 import TriggerCustomizationDeepExample from './examples/trigger_customization_deep';
 import { playWrapper } from '../../../utils/playWrapper';
@@ -80,4 +81,8 @@ export const TriggerCustomizationDeep: Story = {
 
 export const TriggerCustomization: Story = {
   render: TriggerCustomizationExample,
+};
+
+export const StickyGroups: Story = {
+  render: StickyGroupsExample,
 };

@@ -1,29 +1,31 @@
 import { ButtonTrigger } from '@semcore/base-trigger';
-import Button, { ButtonLink } from '@semcore/button';
+import Button from '@semcore/button';
 import Divider from '@semcore/divider';
 import DropdownMenu from '@semcore/dropdown-menu';
 import { Flex, Box } from '@semcore/flex-box';
-import CloseM from '@semcore/icon/Close/m';
 import EditM from '@semcore/icon/Edit/m';
 import PlusM from '@semcore/icon/MathPlus/m';
-import SearchM from '@semcore/icon/Search/m';
 import Settings from '@semcore/icon/Settings/m';
-import Input from '@semcore/input';
+import { InputSearch } from '@semcore/select';
 import { Text } from '@semcore/typography';
 import React from 'react';
-import type { FixedSizeList } from 'react-window';
 
-const groups = Array.from({ length: 3 }, (_, index) => {
+let index = 0;
+
+const groups = Array.from({ length: 3 }, (_, i) => {
   return {
-    title: `Group title ${index}`,
-    projects: Array.from({ length: 6 }, (_, index) => `project ${index}`),
+    title: `Group title ${i}`,
+    projects: Array.from({ length: 6 }, (_, j) => {
+      index++;
+      return `Project ${index}`;
+    }),
   };
 });
 
 const listHeight = 200;
 
-const Row = React.memo(({ index, style, data: { project, group, setProject, selectedProject } }: any) => {
-  const projectName = `Project ${index}`;
+const Row = React.memo(({ style, data: { project, setProject, selectedProject } }: any) => {
+  const projectName = project;
 
   return (
     <div style={style}>
@@ -89,37 +91,20 @@ const Demo = () => {
       </DropdownMenu.Trigger>
 
       <DropdownMenu.Popper aria-label='Select project popover'>
-        <Box m={1}>
-          <Input>
-            <Input.Addon>
-              <SearchM />
-            </Input.Addon>
-            <Input.Value
-              value={searchValue}
-              onChange={setSearchValue}
-              aria-label='Enter project name'
-            />
-
-            {searchValue && (
-              <Input.Addon>
-                <ButtonLink
-                  addonLeft={CloseM}
-                  use='secondary'
-                  aria-label='Clear'
-                  onClick={() => setSearchValue('')}
-                />
-              </Input.Addon>
-            )}
-          </Input>
-        </Box>
+        <InputSearch value={searchValue} onChange={setSearchValue} m={1} />
 
         <DropdownMenu.List hMax={listHeight + 41} topOffset={36} shadowSize={5} shadowTheme={{ horizontalTop: 'dark', horizontalBottom: 'light' }}>
           {groups.map((group, index) => {
-            return (
-              <DropdownMenu.Group key={index} title={group.title} sticky>
-                {group.projects.map((project, index) => (<Row key={`${group.title}_${project}`} index={index} data={{ project, group, setProject, selectedProject }} />))}
-              </DropdownMenu.Group>
-            );
+            if (group.projects.some((project) => {
+              return project.toLowerCase().includes(searchValue.toLowerCase());
+            }))
+              return (
+                <DropdownMenu.Group key={index} title={group.title} sticky>
+                  {group.projects
+                    .filter((project) => project.toLowerCase().includes(searchValue.toLowerCase()))
+                    .map((project, index) => (<Row key={`${group.title}_${project}`} data={{ project, setProject, selectedProject }} />))}
+                </DropdownMenu.Group>
+              );
           })}
         </DropdownMenu.List>
         <Divider />
