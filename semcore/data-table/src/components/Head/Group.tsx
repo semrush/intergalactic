@@ -57,7 +57,7 @@ export class Group extends Component<
     }
 
     return sstyled(styles)(
-      <SGroupContainer>
+      <SGroupContainer data-group-container>
         <SGroup render={Box} style={style} __excludeProps={['title']} id={this.groupId}>
           {withConfig ? children : title}
         </SGroup>

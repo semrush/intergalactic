@@ -1182,7 +1182,16 @@ class DataTableRoot<D extends DataTableData> extends Component<
     let height = 0;
 
     for (let i = 0; i < (header?.length ?? 0); i++) {
-      const columnHeight = header?.item(i)?.getBoundingClientRect().height;
+      const item = header?.item(i);
+      let columnHeight = item?.getBoundingClientRect().height;
+
+      if (item instanceof HTMLElement && item.dataset.groupContainer) {
+        const groupHeight = item.children.item(0)?.getBoundingClientRect().height ?? 0;
+        const cellHeight = item.children.item(1)?.getBoundingClientRect().height ?? 0;
+
+        columnHeight = groupHeight + cellHeight;
+      }
+
       if (columnHeight) {
         height = columnHeight;
         break;
