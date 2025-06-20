@@ -58,9 +58,9 @@ const Demo = () => {
       <Select.Trigger />
 
       <Select.Popper aria-label='Select project popover'>
-        <Select.InputSearch value={searchValue} onChange={setSearchValue} m={1} />
+        <Select.InputSearch value={searchValue} onChange={setSearchValue} m={1} aria-describedby={searchValue ? 'search-result' : undefined} />
 
-        <Select.List hMax={listHeight + 41} topOffset={36} shadowSize={5} shadowTheme={{ horizontalTop: 'dark', horizontalBottom: 'light' }}>
+        <Select.List aria-label='Projects' hMax={listHeight + 41} topOffset={36} shadowSize={5} shadowTheme={{ horizontalTop: 'dark', horizontalBottom: 'light' }}>
           {groups.map((group, index) => {
             if (group.projects.some((project) => {
               return project.toLowerCase().includes(searchValue.toLowerCase());

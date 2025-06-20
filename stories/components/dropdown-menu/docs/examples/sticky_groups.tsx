@@ -101,7 +101,7 @@ const Demo = () => {
       </DropdownMenu.Trigger>
 
       <DropdownMenu.Popper aria-label='Select project popover'>
-        <InputSearch value={searchValue} onChange={setSearchValue} m={1} />
+        <InputSearch value={searchValue} onChange={setSearchValue} m={1} autoFocus={false} aria-describedby={searchValue ? 'search-result' : undefined} />
 
         <DropdownMenu.List hMax={listHeight + 41} topOffset={36} shadowSize={5} shadowTheme={{ horizontalTop: 'dark', horizontalBottom: 'light' }}>
           {groups.map((group, index) => {

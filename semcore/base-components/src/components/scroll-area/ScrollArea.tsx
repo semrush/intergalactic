@@ -374,8 +374,6 @@ class ScrollAreaRoot extends Component<ScrollAreaProps, {}, State, typeof Scroll
     const verticalShadowThemeLeft = typeof shadowTheme === 'string' ? shadowTheme : shadowTheme.verticalLeft ?? DEFAULT_SHADOW_THEME;
     const verticalShadowThemeRight = typeof shadowTheme === 'string' ? shadowTheme : shadowTheme.verticalRight ?? DEFAULT_SHADOW_THEME;
 
-    console.log(shadowVertical, shadowHorizontal, horizontalShadowThemeTop, horizontalShadowThemeBottom);
-
     return sstyled(styles)(
       <SScrollArea
         render={Box}
