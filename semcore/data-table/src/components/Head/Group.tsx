@@ -20,7 +20,9 @@ export class Group extends Component<
   static enhance = [uniqueIDEnhancement()] as const;
 
   componentDidMount() {
-    this.forceUpdate();
+    setTimeout(() => {
+      this.forceUpdate();
+    }, 0);
   }
 
   get groupId() {
@@ -32,26 +34,30 @@ export class Group extends Component<
   render() {
     const SGroupContainer = Box;
     const SGroup = Root;
-    const { styles, Children, title, fixed, fixedColumnsMap, columns, withConfig } = this.asProps;
+    const { styles, Children, title, fixed, columns, withConfig, getFixedStyle } = this.asProps;
     const groupColumns = columns ?? [];
     const children = getOriginChildren(Children);
 
-    const firstName = withConfig ? groupColumns[0]?.name : children[0]?.props.name;
-    const lastName = withConfig
-      ? groupColumns[groupColumns.length - 1]?.name
-      : children[children.length - 1]?.props.name;
+    const firstColumn = groupColumns[0];
+    const lastColumn = groupColumns[groupColumns.length - 1];
 
     const style: any = {};
 
-    if (fixed === 'left' && firstName) {
-      style.left = fixedColumnsMap.get(firstName);
+    if (fixed === 'left' && firstColumn) {
+      const [name, value] = getFixedStyle(firstColumn);
+      if (name !== undefined && value !== undefined) {
+        style[name] = value;
+      }
     }
-    if (fixed === 'right') {
-      style.right = fixedColumnsMap.get(lastName);
+    if (fixed === 'right' && lastColumn) {
+      const [name, value] = getFixedStyle(lastColumn);
+      if (name !== undefined && value !== undefined) {
+        style[name] = value;
+      }
     }
 
     return sstyled(styles)(
-      <SGroupContainer>
+      <SGroupContainer data-group-container>
         <SGroup render={Box} style={style} __excludeProps={['title']} id={this.groupId}>
           {withConfig ? children : title}
         </SGroup>

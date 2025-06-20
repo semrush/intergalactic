@@ -18,6 +18,8 @@ export type DataTableGroupProps = {
 
 export type GroupPropsInner = {
   use: DTUse;
-  fixedColumnsMap: Map<string, any>;
   withConfig: boolean;
+  getFixedStyle: (
+    cell: Pick<DTColumn, 'name' | 'fixed'>,
+  ) => [side: 'left' | 'right', style: string | number] | [side: undefined, style: undefined];
 };

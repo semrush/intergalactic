@@ -23,21 +23,19 @@ class HeadRoot<D extends DataTableData> extends Component<
   static displayName = 'Head';
   static style = style;
 
-  fixedColumnsMap = new Map<string, any>();
-
   sortableColumnDescribeId() {
     const { uid } = this.asProps;
     return `${uid}-column-sortable-describer`;
   }
 
   getGroupProps(_: any, index: number) {
-    const { use, gridAreaGroupMap, children } = this.asProps;
+    const { use, gridAreaGroupMap, children, getFixedStyle } = this.asProps;
 
     return {
       use,
       gridArea: gridAreaGroupMap.get(index),
-      fixedColumnsMap: this.fixedColumnsMap,
       withConfig: children === undefined,
+      getFixedStyle,
     };
   }
 
@@ -71,8 +69,6 @@ class HeadRoot<D extends DataTableData> extends Component<
 
     if (name !== undefined && value !== undefined) {
       style[name] = value;
-
-      this.fixedColumnsMap.set(column.name, value);
     }
 
     return {
