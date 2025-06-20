@@ -245,6 +245,8 @@ export class Column<D extends DataTableData> extends Component<
       } else if (e.key === 'Enter') {
         this.lockedCell[1] = true;
         focusableChildren[0]?.focus();
+        e.preventDefault();
+        e.stopPropagation();
       } else if (e.key === 'Tab') {
         this.lockedCell[0]?.setAttribute('inert', '');
       }
