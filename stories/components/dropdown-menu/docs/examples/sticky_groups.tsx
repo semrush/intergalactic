@@ -2,7 +2,7 @@ import { ButtonTrigger } from '@semcore/base-trigger';
 import Button from '@semcore/button';
 import Divider from '@semcore/divider';
 import DropdownMenu from '@semcore/dropdown-menu';
-import { Flex, Box } from '@semcore/flex-box';
+import { Flex, Box, ScreenReaderOnly } from '@semcore/flex-box';
 import EditM from '@semcore/icon/Edit/m';
 import PlusM from '@semcore/icon/MathPlus/m';
 import Settings from '@semcore/icon/Settings/m';
@@ -78,6 +78,16 @@ const Demo = () => {
     }
   };
 
+  const filteredProjects = groups.reduce<string[]>((acc, { projects }) => {
+    projects.forEach((project) => {
+      if (project.toLowerCase().includes(searchValue.toLowerCase())) {
+        acc.push(project);
+      }
+    });
+
+    return acc;
+  }, []);
+
   return (
     <DropdownMenu
       selectable
@@ -106,6 +116,30 @@ const Demo = () => {
                 </DropdownMenu.Group>
               );
           })}
+
+          {filteredProjects.length
+            ? (
+                <ScreenReaderOnly id='search-result' aria-hidden='true'>
+                  {filteredProjects.length}
+                  {' '}
+                  result
+                  {filteredProjects.length > 1 && 's'}
+                  {' '}
+                  found
+                </ScreenReaderOnly>
+              )
+            : (
+                <Text
+                  tag='div'
+                  id='search-result'
+                  key='Nothing'
+                  p='6px 8px'
+                  size={200}
+                  use='secondary'
+                >
+                  Nothing found
+                </Text>
+              )}
         </DropdownMenu.List>
         <Divider />
         <DropdownMenu.Item
