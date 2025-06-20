@@ -362,5 +362,43 @@ test.describe('Fullscreen modal', () => {
       const backButton = page.locator('[data-ui-name="FullscreenModal.Back"]');
       await expect(backButton).toBeFocused();
     });
+
+    test('Verify there is only one closable element', async ({ page }) => {
+      const standPath = 'stories/components/fullscreen-modal/tests/examples/modal-props.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+      await page.setContent(htmlContent);
+
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+
+      await page.locator('[data-ui-name="FullscreenModal"]').waitFor();
+
+      const modalClose = page.locator('[data-ui-name="Modal.Close"]');
+      const fullScreenModalClose = page.locator('[data-ui-name="FullscreenModal.Close"]');
+
+      expect(await modalClose.count()).toBe(0);
+      expect(await fullScreenModalClose.count()).toBe(1);
+
+      expect(await fullScreenModalClose.first()).toBeVisible();
+    });
+
+    test('Verify there aren\'t closable elements', async ({ page }) => {
+      const standPath = 'stories/components/fullscreen-modal/tests/examples/modal-props.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en', { closable: false });
+
+      await page.setContent(htmlContent);
+
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+
+      await page.locator('[data-ui-name="FullscreenModal"]').waitFor();
+
+      const modalClose = page.locator('[data-ui-name="Modal.Close"]');
+      const fullScreenModalClose = page.locator('[data-ui-name="FullscreenModal.Close"]');
+
+      expect(await modalClose.count()).toBe(0);
+      expect(await fullScreenModalClose.count()).toBe(0);
+    });
   });
 });

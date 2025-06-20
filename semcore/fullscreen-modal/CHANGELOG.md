@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.1.3] - 2025-06-20
+
+### Fixed
+
+- Modal rendered duplicate Close buttons when `closable = true`.
+
 ## [16.1.2] - 2025-06-16
 
 ### Changed
