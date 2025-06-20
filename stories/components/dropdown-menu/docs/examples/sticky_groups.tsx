@@ -13,25 +13,25 @@ import { Text } from '@semcore/typography';
 import React from 'react';
 import type { FixedSizeList } from 'react-window';
 
-const groups = Array.from({ length: 10 }, (_, index) => {
+const groups = Array.from({ length: 3 }, (_, index) => {
   return {
     title: `Group ${index}`,
-    projects: Array.from({ length: 10 }, (_, index) => `project ${index}`),
+    projects: Array.from({ length: 6 }, (_, index) => `project ${index}`),
   };
 });
 
 const listHeight = 200;
 
-const Row = React.memo(({ index, style, data: { project, projects, setProject } }: any) => {
-  const projectName = projects[index];
+const Row = React.memo(({ index, style, data: { project, group, setProject } }: any) => {
+  const projectName = `${group.title}_${group.projects[index]}`;
 
   return (
     <div style={style}>
       <DropdownMenu.Item
         key={projectName}
         onClick={() => setProject(projectName)}
-        // selected={project === projectName}
-        index={index}
+        selected={project === projectName}
+        // index={index}
       >
         <DropdownMenu inlineActions placement='right'>
           <Flex justifyContent='space-between'>
@@ -63,19 +63,10 @@ const Row = React.memo(({ index, style, data: { project, projects, setProject } 
 });
 
 const Demo = () => {
-  const listRef = React.useRef<FixedSizeList>(null);
   const [searchValue, setSearchValue] = React.useState('');
   const [visible, setVisible] = React.useState(false);
   const [highlightedIndex, setHighlightedIndex] = React.useState<number | null>(null);
-  const [selectedProject, setProject] = React.useState<string | null>('project 33');
-
-  // React.useEffect(() => {
-  //   if (selectedProject && visible) {
-  //     const selectedIndex = projects.findIndex((p) => selectedProject === p);
-  //     setHighlightedIndex(selectedIndex);
-  //     listRef.current?.scrollToItem(selectedIndex, 'center');
-  //   }
-  // }, [projects, selectedProject, visible]);
+  const [selectedProject, setProject] = React.useState<string | null>('Group 2_project 5');
 
   const handleKeydownCreateButton = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' || e.key === ' ') {
@@ -89,7 +80,6 @@ const Demo = () => {
   return (
     <DropdownMenu
       selectable
-      itemsCount={100}
       visible={visible}
       onVisibleChange={setVisible}
       highlightedIndex={highlightedIndex}
@@ -128,7 +118,7 @@ const Demo = () => {
           {groups.map((group, index) => {
             return (
               <DropdownMenu.Group key={index} title={group.title} sticky>
-                {group.projects.map((project, index) => (<Row key={`${group.title}_${project}`} index={index} data={{ project, projects: group.projects }} />))}
+                {group.projects.map((project, index) => (<Row key={`${group.title}_${project}`} index={index} data={{ project, group, setProject }} />))}
               </DropdownMenu.Group>
             );
           })}
