@@ -109,4 +109,13 @@ test.describe('Dropdown-menu', () => {
 
     expect(await checkByAxe(page)).toEqual([]);
   });
+
+  test('Sticky group', async ({ page }) => {
+    const standPath = 'stories/components/dropdown-menu/docs/examples/sticky_groups.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    expect(await checkByAxe(page)).toEqual([]);
+  });
 });

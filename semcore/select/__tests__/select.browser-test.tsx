@@ -770,7 +770,7 @@ test.describe('Options filtering', () => {
     });
   });
 
-  test('Verify advances filterring control base actions', async ({ page }) => {
+  test('Verify advances filtering control base actions', async ({ page }) => {
     const standPath = 'stories/components/select/docs/examples/advanced_filtering_control.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
@@ -864,5 +864,58 @@ test.describe('Focus interaction', () => {
     await errorTooltip.waitFor();
 
     await expect(errorTooltip).toBeVisible();
+  });
+});
+
+test.describe('Sticky groups', () => {
+  test('Verify sticky groups mouse scroll', async ({ page, browserName }) => {
+    const standPath = 'stories/components/select/docs/examples/sticky_groups.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+    const { select, menu, options } = getSelectLocators(page);
+
+    await page.locator('[data-ui-name="Select.Trigger"]').click();
+    await options.first().waitFor({ state: 'visible' });
+
+    await options.first().hover();
+    await page.mouse.wheel(0, 2000);
+    await page.waitForTimeout(1000);
+    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+  });
+
+  test('Verify sticky groups keyboard scroll', async ({ page, browserName }) => {
+    const standPath = 'stories/components/select/docs/examples/sticky_groups.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+    const { select, menu, options } = getSelectLocators(page);
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+
+    await expect(page.locator('[data-ui-name="Select.InputSearch"]')).toBeFocused();
+    await page.keyboard.press('ArrowDown');
+    await expect(options.nth(1)).not.toHaveClass(/highlighted/);
+
+    for (let i = 0; i < 14; i++) {
+      await page.keyboard.press('ArrowDown');
+      await page.waitForTimeout(100);
+    }
+    await expect(options.nth(14)).toHaveClass(/highlighted/);
+
+    await page.keyboard.press('Enter');
+    await expect(options.nth(14)).not.toBeVisible();
+
+    await page.keyboard.press('Enter');
+    await options.nth(14).waitFor({ state: 'visible' });
+
+    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+    if (browserName !== 'chromium') return;
+    await expect(options.nth(14)).toHaveClass(/highlighted/);
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Tab');
+
+    await expect(page.locator('[data-ui-name="Select.InputSearch"]')).toBeFocused();
   });
 });
