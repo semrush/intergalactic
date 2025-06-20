@@ -239,6 +239,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
         }
       },
       getFixedStyle: this.getFixedStyle,
+      onCellClick: this.handleCellClick,
       ...headerProps,
     };
   }
@@ -297,9 +298,9 @@ class DataTableRoot<D extends DataTableData> extends Component<
     };
   }
 
-  handleCellClick = (e: React.SyntheticEvent, opt: { rowIndex: number; colIndex: number; row: DTRow }) => {
+  handleCellClick = (e: React.SyntheticEvent, opt: { rowIndex: number; colIndex: number; row?: DTRow }) => {
     if (lastInteraction.isMouse()) {
-      console.log('click on cell in data table handler');
+      console.log('click on cell in data table handler', opt);
       this.initFocusableCell([this.hasFocusableInHeader() ? opt.rowIndex + 1 : opt.rowIndex, opt.colIndex]);
     }
   };
@@ -538,8 +539,6 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
     const initRow = initCell?.[0] ?? 0;
     const initCol = initCell?.[1] ?? 0;
-
-    console.log(initCell);
 
     if (hasFocusable) {
       this.focusedCell = [initRow, initCol];

@@ -273,7 +273,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, State, [], BodyPropsInn
 
       const handleClick = (e: React.SyntheticEvent<HTMLButtonElement>) => {
         e.stopPropagation();
-
+        onCellClick(e, { colIndex: props.columnIndex, rowIndex, row });
         this.handleExpandRow(row, rowIndex);
       };
 

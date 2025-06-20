@@ -201,7 +201,7 @@ export class Column<D extends DataTableData> extends Component<
     }
   };
 
-  handleSortClick = (e: React.SyntheticEvent<HTMLButtonElement>) => {
+  handleSortClick = (e: React.SyntheticEvent<HTMLElement>) => {
     const { sort, onSortChange, name, sortable } = this.asProps;
 
     if (
@@ -270,6 +270,15 @@ export class Column<D extends DataTableData> extends Component<
     });
   };
 
+  handleClick = (e: React.SyntheticEvent<HTMLElement>) => {
+    const { sortable, onClick, columnIndex } = this.asProps;
+    if (sortable) {
+      this.handleSortClick(e);
+    }
+
+    onClick?.(e, { rowIndex: -1, colIndex: columnIndex });
+  };
+
   render() {
     const SColumn = Root;
     const SSortWrapper = 'div';
@@ -310,7 +319,7 @@ export class Column<D extends DataTableData> extends Component<
         innerOutline
         aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
         aria-sort={ariaSortValue}
-        onClick={sortable ? this.handleSortClick : undefined}
+        use:onClick={this.handleClick}
       >
         <Children />
 
