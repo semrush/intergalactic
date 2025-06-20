@@ -3,14 +3,13 @@ title: Table controls
 ---
 
 ::: tip
-For all main table styles and principles, refer to the [Table](/table-group/data-table/data-table).
+For all main table styles and principles, refer to [DataTable](/table-group/data-table/data-table).
 :::
 
 ## Description
 
 This documentation outlines elements and controls crucial for working with our tables.
 
-::: tip
 Users typically engage with tables for the following tasks:
 
 - Viewing data
@@ -21,45 +20,25 @@ Users typically engage with tables for the following tasks:
 
 Each of these tasks represents a distinct process that demands attention.
 
-<!-- _[Article by M. Grekov about UX tables that are used (in Russian)](https://designpub.ru/ux-%D1%82%D0%B0%D0%B1%D0%BB%D0%B8%D1%86-%D1%81-%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D0%BC%D0%B8-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D1%8E%D1%82-%D1%87%D0%B0%D1%81%D1%82%D1%8C-1-%D0%BF%D1%80%D0%BE%D1%81%D0%BC%D0%BE%D1%82%D1%80-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85-5ea60df37f12)_ -->
-:::
-
 ## Accordion
 
-A table row can expand like an [Accordion](/components/accordion/accordion), typically containing more detailed information like charts, text, or links.
+A table row can expand like [Accordion](/components/accordion/accordion), containing more detailed table data, charts, text, links, or other information.
 
 ::: tip
-If you have too much data inside such an accordion, we consider you to think about a separate page for it.
+If you have too much data inside an accordion, consider moving it to a separate page.
 :::
-
-- The accordion row should have a `ChevronRight` icon in the leftmost column to indicate expandability. Use icon with M size and `--icon-secondary-neutral` token for color.
-- The active state of an opened accordion row is highlighted with the `--table-td-cell-active` token.
-- When opened, the `ChevronRight` icon changes to `ChevronDown` of the same size and color.
-- Rows inside the accordion have specific styling to prevent visual merging when multiple rows are open. Use `--table-td-cell-accordion` for background-color and `--border-table-accent` for 1px solid border-bottom.
 
 ![](static/accordion.png)
 
-### Opening accordion from table cell
-
-If a table cell content (text, link, etc.) opens an accordion, place the `ChevronRight` icon next to it.
-
-![](static/accordion-2.png)
-
-The `active` state of the cell should be highlighted with `--table-td-cell-active` token, with the `ChevronRight` changing to `ChevronDown`.
+If the data inside an accordion is relevant only to a certain cell in a row, this single cell can function as the accordion trigger, instead of the entire row.
 
 ![](static/accordion-3.png)
 
 ## Checkboxes
 
-For selecting multiple rows and performing actions, add a [Checkbox](/components/checkbox/checkbox) in the leftmost cell of each row.
+Table rows can be selectable. In this case, each row, including the header, will have a [Checkbox](/components/checkbox/checkbox) at the beginning.
 
-The table header should have a main [Checkbox](/components/checkbox/checkbox) to highlight all rows on the page.
-
-![](static/selected-hover.png)
-
-[Checkbox](/components/checkbox/checkbox) must cover the entire cell as the target zone.
-
-![](static/checkbox-hover-zone.png)
+![](static/checkboxes.png)
 
 ### Row selection and pagination
 
@@ -95,7 +74,7 @@ If the action bar appears or disappears when the beginning of the table is scrol
 
 ### Styles
 
-Use `--bg-primary-neutral` token for background-color and `--border-secondary` token for 1px solid border-bottom.
+Use `--bg-primary-neutral` color for background and `--border-secondary` color for border-bottom.
 
 ### Actions and rules of use
 
@@ -112,7 +91,7 @@ Hovering over the header border changes the cursor to `col-resize`, with a borde
 
 ![](static/resize.png)
 
-The resizable area includes 1px border and 5px to the left of it.
+The interactive area includes the border itself and 5px to its left.
 
 ![](static/resize-click-zone.png)
 
@@ -122,23 +101,23 @@ Changing one column's size shouldn't affect others.
 
 ## Editing and adding content
 
-1. For inline editing add `Edit` icon which showed while user hovers over a table cell. Use icon with M size, `--icon-secondary-neutral` token for color and add `--spacing-1x` for `margin-left`.
+1. For inline editing, show an **Edit** icon-only [ButtonLink](../../components/button/button) while hovering over the row. Use `--icon-secondary-neutral` color and `--spacing-1x` for `margin-left`.
 
 ![](static/edit-1.png)
 
 ![](static/edit-2.png)
 
-2. Clicking on the `Edit` icon reveals [InlineInput](/components/inline-input/inline-input).
+2. Clicking on **Edit** reveals an [InlineInput](/components/inline-input/inline-input).
 
 ![](static/edit-3.png)
 
-If other clickable icons are present, position the edit icon closer to the text.
+If other actions are present in the same cell, **Edit** should be closer to the text.
 
 ![](static/edit-4.png)
 
 ## Highlighting content
 
-When searching a table, highlight matches in the data with `--bg-highlight-results` token for background-color.
+When searching in a table, highlight matches with `--bg-highlight-results` background-color.
 
 ![](static/table-highlight.png)
 
@@ -146,42 +125,38 @@ When searching a table, highlight matches in the data with `--bg-highlight-resul
 
 Links in cells can lead to internal pages or external resources:
 
-- For those which lead to the internal page, use the link/button, depending on the context.
-- For those which lead to the external resource, use `LinkExternal` icon with M size and `--icon-secondary-neutral` token for color.
+- For links leading to an internal page, use a link or a button, depending on the context.
+- For links leading to an external resource, add the `LinkExternal` icon at the end, with M size and `--icon-secondary-neutral` color.
 
 ## Long links and text
 
 Choose from three options based on context:
 
-### Wrap long text at the end with an ellipsis
+### Truncate text at the end
 
-- This solution is suitable for most of the tables, since data they contain usually occupies a single row.
+- This solution is suitable for most tables, since data they contain usually occupies a single row.
 - Show the full text in the tooltip while hovering over the text.
 
-![](static/text-1.png)
+![](static/ellipsis-end.png)
 
-![](static/text-2.png)
-
-### Wrap long text in the middle with an ellipsis
+### Truncate text in the middle
 
 - This option is suitable for URLs that differ in the last characters.
 - Show the full text in the tooltip while hovering over the text.
 
-![](static/text-3.png)
+![](static/ellipsis-middle.png)
 
-![](static/text-4.png)
-
-### Move long text to the next line
+### Wrap text to next line
 
 This option is suitable for cases when the table cell has more than one row of a data. For example, if there is a `row-span` with substrings in the row.
 
-![](static/text-5.png)
+![](static/text-wrap.png)
 
 ## Pagination
 
-If the table has more than one page, include [Pagination](/components/pagination/pagination) with a 16px margin between the table and pagination.
+If the table has more than one page, display [Pagination](/components/pagination/pagination) with a 16px margin between the table and pagination.
 
-If the table contains a small amount of data, show the pagination for one page.
+![](static/pagination.png)
 
 ::: tip
 Scroll the table to the first row when navigating pages or applying filters.
@@ -191,15 +166,15 @@ Scroll the table to the first row when navigating pages or applying filters.
 
 ### Sorting principles
 
-1. Columns that can be sorted must have `SortDesc`/`SortAsc` icon indicating sorting direction. It's shown while hovering over TH cell and is always shown for TH cell with `active` state. Use the `--icon-secondary-neutral-hover-active` token (same for active and hover icon states).
-
+1. Columns that can be sorted show a `SortDesc` icon on hover. Default sorting direction is descending.
+2. In an already sorted column, a `SortDesc` or a `SortAsc` icon is always visible and indicates the current sorting direction.
 ![](static/sorting1.png)
-
-2. Sorting icons should show the potential sorting direction, not the current state.
-3. Default sorting is descending order (`SortDesc`).
-4. If you can't sort data in the column, but you need to show which column is sorted (usually necessary in secondary tables), then add sorting icon in active state with `--icon-secondary-neutral-hover-active` token for color.
-
+3. You can indicate sorting in a column without providing the possibility to change the sorting (usually in secondary tables). In this case, the sorted column will always appear as active.
 ![](static/sorting2.png)
+4. When user sorts a column, sorting icons on other columns don’t change their direction.
+5. Sorting action reloads the table, returning user to the first row.
+6. Sorting is not available for parent header cells in multi-level headers.
+![](static/two-row-head.png)
 
 ::: tip
 If data in a column shouldn't be sorted, there should be no sorting icon at all.
@@ -207,30 +182,22 @@ If data in a column shouldn't be sorted, there should be no sorting icon at all.
 
 ### Click zone for sorting
 
-Table: Click zone for sorting
-
-| Case                                                                                  | Click zone                             |
-| ------------------------------------------------------------------------------------- | -------------------------------------- |
-| If there is a simple text/icon inside the cell.                                       | ![](static/hover-zone-1.png) |
-| If there is a control inside the cell (for example, [Select](/components/select/select)). | ![](static/hover-zone-2.png) |
-
-### Sorting behavior
-
-- If sorting in a column is active, the icon has an `active` state and shows the corresponding sorting direction.
-- When user selects a different column, icon on the selected column becomes active. Icons on other columns don’t change their direction.
-- Clicking on a sorting icon reloads the table, returning user to the first row of the table.
+- If a column header contains only non-interactive text or icons, the entire cell area serves as the target area for sorting.
+![](static/hover-zone-1.png)
+- If there is a control in the header, such as [Select](/components/select/select), it should be excluded from the sorting target area.
+![](static/hover-zone-2.png)
 
 ### Sorting direction
 
 Table: Sorting direction
 
-| Description | Ascending (SortAsc)                  | Descending (SortDesc)               |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ | ----------------------------------- |
-| **Icon**                                                                                                                                                                                                                         | ![](static/asc.png)          | ![](static/desc.png)       |
-| **Numbers**. Values `-`, `n/a`, `0`, etc. are smaller values.                                                                                                                                                                    | From smaller to larger – 0, 1, 2 → 9 | From larger to smaller – 9, 8, 7 → 0 |
-| **Texts**. If there are several languages in the table, it is recommended to divide them into groups and sort them according to the priority and user needs (it may also depend on the target audience, product specifics, etc.) | A to Z                               | Z to A                              |
-| **Statuses**. We recommend using gradations of the form: good/bad, necessary/not necessary, fresh/not fresh, higher/lower, etc.                               | At the discretion of UX and PO       | At the discretion of UX and PO      |
-| **Dates**                                                                                                                                                                                                                        | From a newer date to an older one    | From an older date to a newer one   |
+| Description                                                                                                                                                                                                                     | Ascending (SortAsc)                  | Descending (SortDesc)                |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ | ------------------------------------ |
+| **Icon**                                                                                                                                                                                                                        | ![](static/asc.png)                  | ![](static/desc.png)                 |
+| **Numbers**. Values `-`, `n/a`, `0`, etc. are smaller values.                                                                                                                                                                   | From smaller to larger – 0, 1, 2 → 9 | From larger to smaller – 9, 8, 7 → 0 |
+| **Texts**. If there are several languages in the table, it's recommended to divide them into groups and sort them according to the priority and user needs (it may also depend on the target audience, product specifics, etc.) | A to Z                               | Z to A                               |
+| **Statuses**. We recommend using gradations of the form: good/bad, necessary/not necessary, fresh/not fresh, higher/lower, etc.                                                                                                 | At the discretion of UX and PO       | At the discretion of UX and PO       |
+| **Dates**                                                                                                                                                                                                                       | From a newer date to an older one    | From an older date to a newer one    |
 
 ## Table settings and column manager
 
@@ -239,8 +206,8 @@ For complex tables you can add a list of table settings or column manager.
 ### Table settings
 
 - Place a list of settings inside such a control: from disabling columns to changing the appearance of the table.
-- Do not use it for changing columns order.
-- Avoid showing columns that cannot be hidden.
+- Don't use it for changing columns order.
+- Avoid showing columns that can't be hidden.
 
 ![](static/table-settings.png)
 
@@ -249,6 +216,6 @@ For complex tables you can add a list of table settings or column manager.
 Use it only to enable and disable columns. Show this with a counter inside the button.
 
 - Use it for changing the columns order.
-- Show columns that cannot be hidden as `disabled`.
+- Show columns that can't be hidden as `disabled`.
 
 ![](static/column-manager.png)
