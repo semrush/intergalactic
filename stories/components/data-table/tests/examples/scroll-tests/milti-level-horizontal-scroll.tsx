@@ -1,3 +1,4 @@
+import type { DataTableProps } from '@semcore/data-table';
 import { DataTable } from '@semcore/data-table';
 import AmazonM from '@semcore/icon/color/Amazon/m';
 import { Hint } from '@semcore/tooltip';
@@ -12,116 +13,122 @@ const Demo = () => {
         aria-label='Fixed multi level header with 2 scroll'
         defaultGridTemplateColumnWidth='1fr'
         hMax={500}
-        w={300}
+        w={700}
         headerProps={{
           sticky: true,
         }}
-        columns={[
-          {
-            fixed: 'left',
-            children: 'Group',
-            gtcWidth: '100px',
-            columns: [
-              {
-                name: 'kd',
-                children: (
-                  <>
-                    <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
-                    <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
-                  </>
-                ),
-
-              },
-              { name: 'cpc', children: 'CPC' },
-              { name: 'vol', children: 'Vol.' },
-
-            ],
-          },
-          {
-            children: 'Group',
-            gtcWidth: '100px',
-            columns: [
-              {
-                name: 'kd',
-                children: (
-                  <>
-                    <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
-                    <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
-                  </>
-                ),
-
-              },
-              { name: 'cpc', children: 'CPC' },
-              { name: 'vol', children: 'Vol.' },
-
-            ],
-          },
-          {
-            children: 'Group',
-            gtcWidth: '100px',
-            columns: [
-              {
-                name: 'kd',
-                children: (
-                  <>
-                    <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
-                    <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
-                  </>
-                ),
-
-              },
-              { name: 'cpc', children: 'CPC' },
-              { name: 'vol', children: 'Vol.' },
-
-            ],
-          },
-          {
-            children: 'Group',
-            gtcWidth: '100px',
-            columns: [
-              {
-                name: 'kd',
-                children: (
-                  <>
-                    <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
-                    <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
-                  </>
-                ),
-
-              },
-              { name: 'cpc', children: 'CPC' },
-              { name: 'vol', children: 'Vol.' },
-
-            ],
-          },
-
-          {
-            children: 'Group',
-            fixed: 'left',
-            gtcWidth: '100px',
-            columns: [
-              {
-                name: 'kd',
-                children: (
-                  <>
-                    <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
-                    <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
-                  </>
-                ),
-
-              },
-              { name: 'cpc', children: 'CPC' },
-              { name: 'vol', children: 'Vol.' },
-
-            ],
-          },
-
-        ]}
+        columns={columns}
       />
 
     </>
   );
 };
+
+const columns: DataTableProps<typeof data>['columns'] = [
+  {
+    name: '1',
+    children: 'Group1',
+    fixed: 'left',
+    columns: [
+      {
+        name: 'kd',
+        gtcWidth: '100px',
+        children: (
+          <>
+            <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+            <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+          </>
+        ),
+
+      },
+      { name: 'cpc', children: 'CPC', gtcWidth: '100px' },
+      { name: 'vol', children: 'Vol.', gtcWidth: '100px' },
+
+    ],
+  },
+  {
+    name: '2',
+    children: 'Group2',
+    fixed: 'left',
+    columns: [
+      {
+        name: 'kd2',
+        gtcWidth: '100px',
+        children: (
+          <>
+            <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+            <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+          </>
+        ),
+
+      },
+      { name: 'cpc2', children: 'CPC', gtcWidth: '100px' },
+      { name: 'vol2', children: 'Vol.', gtcWidth: '100px' },
+
+    ],
+  },
+  {
+    name: '3',
+    children: 'Group3',
+    columns: [
+      {
+        name: 'kd3',
+        gtcWidth: '100px',
+        children: (
+          <>
+            <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+            <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+          </>
+        ),
+
+      },
+      { name: 'cpc3', children: 'CPC', gtcWidth: '100px' },
+      { name: 'vol3', children: 'Vol.', gtcWidth: '100px' },
+
+    ],
+  },
+  {
+    name: '4',
+    children: 'Group4',
+    columns: [
+      {
+        name: 'kd4',
+        gtcWidth: '100px',
+        children: (
+          <>
+            <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+            <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+          </>
+        ),
+
+      },
+      { name: 'cpc4', children: 'CPC', gtcWidth: '100px' },
+      { name: 'vol4', children: 'Vol.', gtcWidth: '100px' },
+
+    ],
+  },
+
+  {
+    name: '5',
+    children: 'Group5',
+    columns: [
+      {
+        name: 'kd5',
+        gtcWidth: '100px',
+        children: (
+          <>
+            <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+            <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+          </>
+        ),
+
+      },
+      { name: 'cpc5', children: 'CPC', gtcWidth: '100px' },
+      { name: 'vol5', children: 'Vol.', gtcWidth: '100px' },
+
+    ],
+  },
+];
 
 const data = [
   {
