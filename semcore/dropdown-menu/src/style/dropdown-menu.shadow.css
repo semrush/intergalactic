@@ -9,7 +9,7 @@ SDropdownMenuList {
   color: var(--intergalactic-text-primary, #191b23);
 
   SBar {
-    z-index: 2;
+    z-index: 3;
   }
 
   SShadowHorizontal {
