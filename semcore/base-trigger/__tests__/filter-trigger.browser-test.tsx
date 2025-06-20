@@ -208,6 +208,7 @@ test.describe('Filter-trigger', () => {
       await expect(option1).toBeVisible();
       await expect(option1).not.toHaveClass(/highlighted/);
       await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
       const option2 = page.getByRole('option', { name: 'Gray' });
       await expect(option2).toHaveClass(/highlighted/);
 

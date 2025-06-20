@@ -1009,7 +1009,7 @@ test.describe('Virtual scroll', () => {
     await expect(project36).not.toBeFocused();
 
     await page.keyboard.press('Tab');
-    const input = page.locator('input[data-ui-name="Input.Value"]');
+    const input = page.locator('input[data-ui-name="InputSearch"]');
     await expect(input).toBeFocused();
     await expect(createProject).not.toBeFocused();
     await expect(project36).not.toBeFocused();

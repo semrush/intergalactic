@@ -1,5 +1,6 @@
 import { ButtonTrigger } from '@semcore/base-trigger';
 import Button from '@semcore/button';
+import { lastInteraction } from '@semcore/core';
 import Divider from '@semcore/divider';
 import DropdownMenu from '@semcore/dropdown-menu';
 import { Flex } from '@semcore/flex-box';
@@ -93,7 +94,7 @@ const Demo = () => {
       </DropdownMenu.Trigger>
 
       <DropdownMenu.Popper aria-label='Select project popover'>
-        <InputSearch value={searchValue} onChange={setSearchValue} m={1} />
+        <InputSearch value={searchValue} onChange={setSearchValue} m={1} autoFocus={false} />
 
         <DropdownMenu.List hMax={listHeight + 41}>
           <FixedSizeList
