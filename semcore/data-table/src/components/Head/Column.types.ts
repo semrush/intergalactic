@@ -1,4 +1,6 @@
-import {
+import type { Property } from 'csstype';
+
+import type {
   ColumnGroupConfig,
   ColumnItemConfig,
   DataTableData,
@@ -6,7 +8,6 @@ import {
   DTUse,
   SortDirection,
 } from '../DataTable/DataTable.types';
-import type { Property } from 'csstype';
 
 export type CommonColumnType = {
   /**

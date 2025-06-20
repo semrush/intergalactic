@@ -1,14 +1,13 @@
 import axios from 'axios';
-import dotenv from 'dotenv';
-import { validateSlackIntegrationEnv } from './validateEnv';
-dotenv.config();
 
 export const sendMessage = async ({
+  endpoints,
   title,
   body,
   dryRun,
   image,
 }: {
+  endpoints: string[];
   title: string;
   body: string;
   dryRun: boolean;
@@ -23,12 +22,6 @@ export const sendMessage = async ({
     );
   }
 
-  if (!dryRun) {
-    validateSlackIntegrationEnv();
-  }
-
-  const endpoints = process.env['SLACK_API_ENDPOINTS']?.split(',') ?? ['fake-url'];
-
   return Promise.all(
     endpoints.map((endpointUrl) => {
       let log = `Sending message to Slack\n===\nTitle: ${title}\nApi endpoint: ${endpointUrl}\n===\nMessage body is below:\n${body}\n===`;
@@ -36,11 +29,9 @@ export const sendMessage = async ({
         log += `\nImage: ${image.full} (thumb ${image.thumb})\n===`;
       }
 
-      // biome-ignore lint/suspicious/noConsoleLog:
       console.log(log);
 
       if (dryRun) {
-        // biome-ignore lint/suspicious/noConsoleLog:
         console.log('Sending is canceled due to dry run');
         return null;
       }

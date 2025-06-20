@@ -1,7 +1,7 @@
-import React from 'react';
+import Badge from '@semcore/badge';
 import Button from '@semcore/button';
-import Badge from '@semcore/ui/badge';
 import CheckM from '@semcore/icon/Check/m';
+import React from 'react';
 
 const Demo = () => {
   return (

@@ -1,7 +1,7 @@
-import React from 'react';
+import { Box } from '@semcore/flex-box';
 import Input from '@semcore/input';
 import { Text } from '@semcore/typography';
-import { Box } from '@semcore/flex-box';
+import React from 'react';
 
 const Demo = () => {
   return (

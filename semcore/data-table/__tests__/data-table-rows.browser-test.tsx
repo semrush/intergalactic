@@ -1,5 +1,5 @@
-import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import { expect, test } from '@semcore/testing-utils/playwright';
 
 test.describe('Rows', () => {
   test('Verify merged cells on Hover', async ({ page }) => {
@@ -27,6 +27,11 @@ test.describe('Rows', () => {
     const firstRow = page.locator('[data-ui-name="Body.Row"]').first();
     const firstMergedCell = firstRow.locator('[data-ui-name="Body.Cell"][aria-colindex="1"]');
     await expect(firstMergedCell).toBeFocused();
+    await expect(firstMergedCell).toHaveAttribute('tabindex', '-1');
+    await expect(firstMergedCell).toHaveAttribute('data-grouped-by', 'rowgroup');
+    await expect(firstMergedCell).toHaveAttribute('scope', 'rowgroup');
+    await expect(firstMergedCell).toHaveAttribute('aria-rowspan', '3');
+    await expect(firstMergedCell).toHaveAttribute('role', 'gridcell');
 
     const secondCell = firstRow.locator('[data-ui-name="Body.Cell"]').nth(1);
     await page.keyboard.press('ArrowRight');

@@ -13,14 +13,10 @@
 ## Install
 
 ```sh
-npm install intergalactic
+npm install @semcore/base-components
 ```
 
-## Usage
 
-```jsx
-import { Box, PortalProvider, ScrollArea } from '@semcore/base-components';
-```
 
 ## 👤 Author
 

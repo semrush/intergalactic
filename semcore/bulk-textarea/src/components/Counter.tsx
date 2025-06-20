@@ -1,8 +1,8 @@
-import React from 'react';
 import { Root } from '@semcore/core';
+import type { useI18n } from '@semcore/core/lib/utils/enhances/WithI18n';
+import CounterKit, { type CounterProps as CounterPropsKit } from '@semcore/counter';
 import { ScreenReaderOnly } from '@semcore/flex-box';
-import CounterKit, { CounterProps as CounterPropsKit } from '@semcore/counter';
-import { useI18n } from '@semcore/core/lib/utils/enhances/WithI18n';
+import React from 'react';
 
 export type CounterProps = {
   theme: CounterPropsKit['theme'];
@@ -17,7 +17,10 @@ export function Counter(props: CounterProps) {
   return (
     <Root render={CounterKit} ml={1} theme={theme}>
       {linesCount}
-      <span aria-hidden='true'>/{maxLines}</span>
+      <span aria-hidden='true'>
+        /
+        {maxLines}
+      </span>
       <ScreenReaderOnly>
         {getI18nText('BulkTextarea.Counter.ofAllowedRows:sr-message', { rowsNumber: maxLines })}
       </ScreenReaderOnly>

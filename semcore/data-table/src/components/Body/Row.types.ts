@@ -1,7 +1,8 @@
-import { DTValue, DTUse, DataTableData } from '../DataTable/DataTable.types';
-import { DTColumn } from '../Head/Column.types';
-import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
-import { ACCORDION, ROW_GROUP, ROW_INDEX, UNIQ_ROW_KEY } from '../DataTable/DataTable';
+import type { DataTableCellProps } from './Cell.types';
+import type { MergedColumnsCell, MergedRowsCell } from './MergedCells';
+import type { ACCORDION, ROW_GROUP, ROW_INDEX, UNIQ_ROW_KEY } from '../DataTable/DataTable';
+import type { DTValue, DTUse, DataTableData } from '../DataTable/DataTable.types';
+import type { DTColumn } from '../Head/Column.types';
 
 export type UniqRowKey = string;
 
@@ -17,6 +18,10 @@ export type DTRows = Array<DTRow | DTRow[]>;
 export type DataTableRowProps = {
   row: DTRow;
   mergedRow?: boolean;
+
+  isAccordionRow?: DataTableCellProps['isAccordionRow'];
+  animationExpand?: DataTableCellProps['animationExpand'];
+  accordionRowIndex?: DataTableCellProps['accordionRowIndex'];
 };
 
 export type RowPropsInner = JSX.IntrinsicElements['div'] & {
@@ -46,7 +51,7 @@ export type RowPropsInner = JSX.IntrinsicElements['div'] & {
   gridTemplateColumns: string[];
   accordionDataGridArea: string;
 
-  selectedRows?: number[];
+  selectedRows?: UniqRowKey[];
   onSelectRow?: (
     isSelect: boolean,
     selectedRowIndex: number,
@@ -56,6 +61,7 @@ export type RowPropsInner = JSX.IntrinsicElements['div'] & {
 
   inert?: '';
 
+  accordionDuration?: number | [number, number];
   onBackFromAccordion: (colIndex: number) => void;
 
   scrollAreaRef: React.RefObject<HTMLDivElement>;

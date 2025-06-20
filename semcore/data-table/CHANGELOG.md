@@ -2,6 +2,40 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.5] - 2025-06-20
+
+### Added
+
+- Ability to set initial sort value as undefined.
+- Ability to set `width` as `100%` and don't skip this value in scrollDirection calculation.
+- Property `name` to a column group type.
+- Export for `DataTableProp` and `DataTableChangeSort` types.
+- `null` as possible value for `DataRowItem`.
+- `uniqueRowKey` property to define unique key in each row. `UNIQ_ROW_KEY` symbol was deprecated.
+
+### Changed
+
+- Types for `defaultGridTemplateColumnWidth` set to string - any `grid-template-column` css value.
+- `selectedRows` from indexes to `UNIQ_ROW_KEY` values.
+
+## [16.0.4] - 2025-05-30
+
+### Fixed
+
+- Incorrect `aria-sort` attribute on Column item.
+
+## [16.0.3] - 2025-05-30
+
+### Fixed
+
+- Incorrect `aria-controls` attribute on Accordion button.
+
+## [16.0.2] - 2025-05-30
+
+### Fixed
+
+- Animation for accordions in table.
+
 ## [16.0.1] - 2025-05-21
 
 ### Fixed

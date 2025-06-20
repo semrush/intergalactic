@@ -1,6 +1,6 @@
-import React from 'react';
 import ColorPicker, { PaletteManager } from '@semcore/color-picker';
 import { Flex } from '@semcore/flex-box';
+import React from 'react';
 
 const Demo = () => {
   const [value, setValue] = React.useState('#98848D');
@@ -84,21 +84,21 @@ const Demo = () => {
             </PaletteManager.Colors>
 
             <PaletteManager.InputColor
-              defaultValue="#ABCDEF"
+              defaultValue='#ABCDEF'
               ref={inputRef}
-              //disabled
+              // disabled
               onAdd={handleAdd}
-              size="l"
-              state="normal"
+              size='l'
+              state='normal'
               colors={customColors}
             />
             <PaletteManager.InputColor
-              defaultValue="#ABCDEF"
+              defaultValue='#ABCDEF'
               ref={inputRef}
               disabled
               onAdd={handleAdd}
-              size="l"
-              state="normal"
+              size='l'
+              state='normal'
               colors={customColors}
             />
           </PaletteManager>

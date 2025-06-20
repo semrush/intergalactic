@@ -1,7 +1,7 @@
-import React from 'react';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
-import { Flex, Box } from '@semcore/flex-box';
 import reactToText from '@semcore/core/lib/utils/reactToText';
+import { Flex, Box } from '@semcore/flex-box';
+import React from 'react';
 
 import style from './style/slider.shadow.css';
 
@@ -147,7 +147,13 @@ class SliderRoot extends Component {
 
   getNumericValue = () => {
     const { value, options, min, max, defaultValue } = this.asProps;
-    if (!options) return value;
+
+    if (!options) {
+      const numericValue = parseInt(value);
+
+      return isNaN(numericValue) ? defaultValue : numericValue;
+    };
+
     const resolvedIndex = options.findIndex((option) => option.value === value);
     if (resolvedIndex === -1) return defaultValue;
     if (resolvedIndex < min) return min;

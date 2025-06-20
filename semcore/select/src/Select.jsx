@@ -1,23 +1,23 @@
-import React from 'react';
-import cn from 'classnames';
-import { createComponent, Root, sstyled, lastInteraction } from '@semcore/core';
-import DropdownMenu from '@semcore/dropdown-menu';
-import Dropdown, { AbstractDropdown, enhance, selectedIndexContext } from '@semcore/dropdown';
+import { hideScrollBarsFromScreenReadersContext } from '@semcore/base-components';
 import { ButtonTrigger } from '@semcore/base-trigger';
-import Divider from '@semcore/divider';
-import findComponent from '@semcore/core/lib/utils/findComponent';
-import logger from '@semcore/core/lib/utils/logger';
-import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
+import { createComponent, Root, sstyled, lastInteraction } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
-import InputSearch from './InputSearch';
-import { useBox } from '@semcore/flex-box';
-import { selectContext } from './context';
-import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-import { isInputTriggerTag } from '@semcore/popper';
-
-import style from './style/select.shadow.css';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
-import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
+import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
+import findComponent, { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
+import logger from '@semcore/core/lib/utils/logger';
+import Divider from '@semcore/divider';
+import Dropdown, { AbstractDropdown, enhance, selectedIndexContext } from '@semcore/dropdown';
+import DropdownMenu from '@semcore/dropdown-menu';
+import { useBox } from '@semcore/flex-box';
+import { isInputTriggerTag } from '@semcore/popper';
+import cn from 'classnames';
+import React from 'react';
+
+import { selectContext } from './context';
+import InputSearch from './InputSearch';
+import style from './style/select.shadow.css';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 function isSelectedOption(value, valueOption) {
   return Array.isArray(value) ? value.includes(valueOption) : valueOption === value;
@@ -31,6 +31,12 @@ function getEmptyValue(multiselect) {
   return multiselect ? [] : null;
 }
 
+const ListBoxContextProvider = ({ children }) => (
+  <hideScrollBarsFromScreenReadersContext.Provider value={true}>
+    {children}
+  </hideScrollBarsFromScreenReadersContext.Provider>
+);
+
 class RootSelect extends AbstractDropdown {
   static displayName = 'Select';
 
@@ -39,7 +45,10 @@ class RootSelect extends AbstractDropdown {
 
   static defaultProps = (props) => {
     const hasInputSearch =
-      props.children && isAdvanceMode(props.children, [Select.InputSearch.displayName], true);
+      props.children && isAdvanceMode(props.children, [
+        Select.InputSearch.displayName,
+        InputSearch.displayName,
+      ], true);
     const defaultIndex = hasInputSearch ? null : 0;
 
     return {
@@ -80,11 +89,16 @@ class RootSelect extends AbstractDropdown {
           if (visible === true) {
             const hasInputSearch = isAdvanceMode(
               this.asProps.Children,
-              [Select.InputSearch.displayName],
+              [
+                Select.InputSearch.displayName,
+                InputSearch.displayName,
+              ],
               true,
             );
 
-            const defaultIndex = hasInputSearch ? null : this.props.defaultHighlightedIndex;
+            const defaultIndex = hasInputSearch || lastInteraction.isMouse()
+              ? null
+              : this.props.defaultHighlightedIndex;
 
             this.handlers.highlightedIndex(defaultIndex);
 
@@ -135,7 +149,7 @@ class RootSelect extends AbstractDropdown {
 
     return {
       ...super.getTriggerProps(),
-      onKeyDown: callAllEventHandlers(
+      'onKeyDown': callAllEventHandlers(
         this.handlePreventCommonKeyDown.bind(this),
         this.handleOpenKeyDown.bind(this),
         this.handleArrowKeyDown.bind(this),
@@ -147,27 +161,27 @@ class RootSelect extends AbstractDropdown {
         visible && highlightedIndex !== null && this.itemRefs[highlightedIndex]
           ? `igc-${uid}-option-${highlightedIndex}`
           : undefined,
-      empty: isEmptyValue(value),
+      'empty': isEmptyValue(value),
       value,
       name,
-      $hiddenRef: forwardRef,
+      '$hiddenRef': forwardRef,
       multiselect,
       state,
       placeholder,
       disabled,
-      active: visible,
-      onClear: this.handlerClear,
-      children: this.renderChildrenTrigger(value, options),
+      'active': visible,
+      'onClear': this.handlerClear,
+      'children': this.renderChildrenTrigger(value, options),
       getI18nText,
 
-      onBlur: () => {
+      'onBlur': () => {
         // if popper is opened and we moved from the trigger in select - it means we moved on some controls in popper and should hide highlighted for the option
         if (this.asProps.visible) {
           this.prevHighlightedIndex = this.asProps.highlightedIndex;
           this.handlers.highlightedIndex(null);
         }
       },
-      onFocus: () => {
+      'onFocus': () => {
         // if popper is opened and we moved to the trigger in select - it means we moved from some controls in popper and should highlight the last highlighted option
         if (this.asProps.visible) {
           const index = this.prevHighlightedIndex;
@@ -209,9 +223,9 @@ class RootSelect extends AbstractDropdown {
       selected,
       'aria-selected': selected ? 'true' : 'false',
       'aria-disabled': props.disabled ? 'true' : 'false',
-      role: 'option',
-      onClick: this.bindHandlerOptionClick(props.value, index),
-      ref: (node) => this.itemRef(props, index, node),
+      'role': 'option',
+      'onClick': this.bindHandlerOptionClick(props.value, index),
+      'ref': (node) => this.itemRef(props, index, node),
       size,
     };
   }
@@ -226,7 +240,7 @@ class RootSelect extends AbstractDropdown {
   }
 
   getDividerProps() {
-    return { my: 1, 'aria-disabled': 'true' };
+    return { 'my': 1, 'aria-disabled': 'true' };
   }
 
   renderChildrenTrigger(value, options) {
@@ -258,6 +272,7 @@ class RootSelect extends AbstractDropdown {
         newValue = value.concat(optionValue);
       }
     }
+    this.handlers.highlightedIndex(index);
     this.handlers.value(newValue, e);
     if (!multiselect) {
       this.handlers.visible(false);
@@ -273,7 +288,7 @@ class RootSelect extends AbstractDropdown {
   };
 
   render() {
-    const { Children, options, multiselect, value, uid, forcedAdvancedMode, ...other } =
+    const { Children, options, multiselect, value: _value, uid, forcedAdvancedMode, ...other } =
       this.asProps;
     const advancedMode =
       forcedAdvancedMode ||
@@ -281,7 +296,7 @@ class RootSelect extends AbstractDropdown {
 
     logger.warn(
       options && advancedMode,
-      "Don't use at the same time 'options' property and '<Select.Trigger/>/<Select.Popper/>'",
+      'Don\'t use at the same time \'options\' property and \'<Select.Trigger/>/<Select.Popper/>\'',
       other['data-ui-name'] || Select.displayName,
     );
 
@@ -330,18 +345,45 @@ function Trigger({
       render={Dropdown.Trigger}
       tag={Tag}
       placeholder={getI18nText('selectPlaceholder')}
-      role={'combobox'}
+      role='combobox'
       aria-autocomplete={(hasInputTrigger && 'list') || undefined}
     >
       {addonTextChildren(
         Children,
-        Tag.Text || ButtonTrigger.Text,
-        Tag.Value || ButtonTrigger.Text,
+        Tag.Text || Tag.Value || ButtonTrigger.Text,
         Tag.Addon || ButtonTrigger.Addon,
         true,
       )}
       {name && <input type='hidden' defaultValue={value} name={name} ref={$hiddenRef} />}
     </SSelectTrigger>,
+  );
+}
+
+function Menu(props) {
+  const {
+    visible,
+    disablePortal,
+    ignorePortalsStacking,
+    disableEnforceFocus,
+    interaction,
+    autoFocus,
+    animationsDisabled,
+  } = props;
+  const popperProps = {
+    visible,
+    disablePortal,
+    ignorePortalsStacking,
+    disableEnforceFocus,
+    interaction,
+    autoFocus,
+    animationsDisabled,
+  };
+  return (
+    <ListBoxContextProvider>
+      <Select.Popper {...popperProps} role={null}>
+        <Root render={Select.List} />
+      </Select.Popper>
+    </ListBoxContextProvider>
   );
 }
 
@@ -356,13 +398,15 @@ function Option(props) {
   return sstyled(styles)(
     <SSelectOption render={Dropdown.Item}>
       <optionPropsContext.Provider value={props}>
-        {hasCheckbox && !hasContent ? (
-          <Select.Option.Content>
-            <Children />
-          </Select.Option.Content>
-        ) : (
-          <Children />
-        )}
+        {hasCheckbox && !hasContent
+          ? (
+              <Select.Option.Content>
+                <Children />
+              </Select.Option.Content>
+            )
+          : (
+              <Children />
+            )}
       </optionPropsContext.Provider>
     </SSelectOption>,
   );
@@ -416,7 +460,7 @@ const Select = createComponent(
     ],
     Popper: Dropdown.Popper,
     List: DropdownMenu.List,
-    Menu: DropdownMenu.Menu,
+    Menu: Menu,
     Option: [
       Option,
       {

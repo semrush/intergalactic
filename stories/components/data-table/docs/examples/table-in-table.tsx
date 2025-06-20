@@ -1,11 +1,11 @@
-import React from 'react';
 import { DataTable, ACCORDION } from '@semcore/data-table';
+import React from 'react';
 
 const Demo = () => {
   return (
     <DataTable
       data={data}
-      aria-label={'Parent'}
+      aria-label='Parent'
       columns={[
         { name: 'keyword', children: 'Keyword' },
         { name: 'kd', children: 'KD %' },

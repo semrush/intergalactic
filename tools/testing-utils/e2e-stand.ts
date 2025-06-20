@@ -1,12 +1,13 @@
-import esbuild from 'esbuild';
 import os from 'os';
+import { dirname as resolveDirname, resolve as resolvePath } from 'path';
+
 import {
   esbuildPluginSemcore,
   esbuildPluginSemcoreSourcesResolve,
 } from '@semcore/esbuild-plugin-semcore';
-import { dirname as resolveDirname, resolve as resolvePath } from 'path';
+import esbuild from 'esbuild';
 
-export const e2eStandToHtml = async (standFilePath: string, locale: string) => {
+export const e2eStandToHtml = async (standFilePath: string, locale: string, props?: Record<string, unknown>) => {
   const standBundle = await esbuild.build({
     entryPoints: ['@test-entrypoint'],
     plugins: [
@@ -26,7 +27,7 @@ export const e2eStandToHtml = async (standFilePath: string, locale: string) => {
 
               ReactDOM.render(
                 <I18nProvider value='${locale}'>
-                  <App />
+                <App ${props ? Object.entries(props).map(([key, value]) => `${key}={${JSON.stringify(value)}}`).join(' ') : ''} />
                 </I18nProvider>,
                 document.querySelector('#root')
               );

@@ -1,9 +1,8 @@
-import React from 'react';
+import { Flex, ScreenReaderOnly } from '@semcore/flex-box';
 import InputTags from '@semcore/input-tags';
-import { Text } from '@semcore/typography';
-import { Flex } from '@semcore/flex-box';
 import Select from '@semcore/select';
-import { ScreenReaderOnly } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
+import React from 'react';
 
 const tagsSelect = ['LinkedIn', 'Facebook', 'TikTok', 'Instagram'];
 
@@ -72,7 +71,7 @@ const Demo = () => {
           {tags.map((tag, i) => (
             <InputTags.Tag key={i} theme='primary'>
               <InputTags.Tag.Text>{tag}</InputTags.Tag.Text>
-              <InputTags.Tag.Close onClick={onRemoveTag.bind(this, i)} />
+              <InputTags.Tag.Close onClick={(e) => onRemoveTag(i, e)} />
             </InputTags.Tag>
           ))}
           <InputTags.Value
@@ -92,18 +91,23 @@ const Demo = () => {
             </Select.Option>
           ))}
           {tagsFilter.length !== 0 && valueInput !== '' && (
-            <ScreenReaderOnly id='search-result' aria-hidden={'true'}>
-              {tagsFilter.length} result{tagsFilter.length > 1 && 's'} found
+            <ScreenReaderOnly id='search-result' aria-hidden='true'>
+              {tagsFilter.length}
+              {' '}
+              result
+              {tagsFilter.length > 1 && 's'}
+              {' '}
+              found
             </ScreenReaderOnly>
           )}
           {tagsFilter.length === 0 && valueInput !== '' && (
             <Text
-              tag={'div'}
+              tag='div'
               id='search-result'
               key='Nothing'
-              p={'6px 8px'}
+              p='6px 8px'
               size={200}
-              use={'secondary'}
+              use='secondary'
             >
               Nothing found
             </Text>

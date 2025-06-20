@@ -1,7 +1,8 @@
-import React from 'react';
-import { Component, Intergalactic } from '@semcore/core';
-import { LegendItemKey, LegendItemProps } from './LegendItem/LegendItem.type';
-import { LegendProps } from './BaseLegend.type';
+import { Component, type Intergalactic } from '@semcore/core';
+import type React from 'react';
+
+import type { LegendProps } from './BaseLegend.type';
+import { StaticShapes, type LegendItemKey, type LegendItemProps, type ShapeType } from './LegendItem/LegendItem.type';
 import { makeDataHintsHandlers } from '../../a11y/hints';
 
 export abstract class BaseLegend<T extends LegendProps> extends Component<T> {
@@ -45,16 +46,38 @@ export abstract class BaseLegend<T extends LegendProps> extends Component<T> {
       ...line,
       shape,
       size,
-      onChangeLegendItem: this.onChangeLegendItem,
-      onMouseEnter: this.bindOnMouseEnterItem(line.id),
+      onFocusLegendItem: this.onFocusLegendItem(line.checked),
+      onBlurLegendItem: this.onBlurLegendItem,
+      onChangeLegendItem: this.onChangeLegendItem(shape),
+      onMouseEnter: line.checked ? this.bindOnMouseEnterItem(line.id) : undefined,
       onMouseLeave: this.bindOnMouseLeaveItem(line.id),
       style: { gridRowStart: `${index + 1}`, gridRowEnd: `${index + 2}` },
       patterns,
     };
   }
 
-  onChangeLegendItem = (id: LegendItemKey, checked: boolean) => {
+  onChangeLegendItem = (shape: ShapeType) => (id: LegendItemKey, checked: boolean) => {
+    if (shape !== 'Checkbox') return;
+
     this.props.onChangeVisibleItem?.(id, checked);
+
+    if (checked) {
+      this.props.onMouseEnterItem?.(id);
+    } else {
+      this.props.onMouseLeaveItem?.(id);
+    }
+  };
+
+  onFocusLegendItem = (checked: boolean) => (id: LegendItemKey) => {
+    if (!checked) {
+      return this.props.onMouseLeaveItem?.(id);
+    }
+
+    this.props.onMouseEnterItem?.(id);
+  };
+
+  onBlurLegendItem = (id: LegendItemKey) => {
+    this.props.onMouseLeaveItem?.(id);
   };
 
   bindOnMouseEnterItem = (id: LegendItemKey) => {

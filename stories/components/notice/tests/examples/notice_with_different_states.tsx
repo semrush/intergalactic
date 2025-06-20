@@ -1,181 +1,121 @@
-import React from 'react';
-import Notice from '@semcore/notice';
-import Question from '@semcore/icon/Question/m';
-import Warning from '@semcore/icon/Warning/m';
 import Button from '@semcore/button';
 import { Flex } from '@semcore/flex-box';
+import AlertM from '@semcore/icon/Book/m';
+import InfoM from '@semcore/icon/Info/m';
 import ThumbUpM from '@semcore/icon/ThumbUp/m';
-import Badge from '@semcore/badge';
+import Notice from '@semcore/notice';
+import React from 'react';
 
-const Demo = () => {
-  const [visible, setVisible] = React.useState<boolean>(true);
-
+const NoticeSmokeDemo = () => {
   return (
-    <Flex direction='column'>
-      <Notice visible={visible} aria-label='Leave feedback' mb={2} w={400}>
-        <Notice.Label mr={2}>
-          <Badge bg='gray-400' color='white'>
-            soon
-          </Badge>
-        </Notice.Label>
-        <Notice.Content display='flex'>
-          <Notice.Text>Your subscription has expired</Notice.Text>
-          <Notice.Actions mt={0}>
-            <Button mr={2} addonLeft={ThumbUpM}>
-              Yes
-            </Button>
-            <Button mr={2} addonLeft={ThumbUpM}>
-              No
-            </Button>
-          </Notice.Actions>
-        </Notice.Content>
-        <Notice.Close onClick={() => setVisible(false)} />
-      </Notice>
-
-      <Notice aria-label='Leave feedback' mb={2}>
-        <Notice.Label mr={2}>
-          <Question />
-        </Notice.Label>
-        <Notice.Content display='flex'>
-          <Notice.Text>Your subscription has expired</Notice.Text>
-          <Notice.Actions mt={0}>
-            <Button mr={2} addonLeft={ThumbUpM}>
-              Yes
-            </Button>
-            <Button mr={2} addonLeft={ThumbUpM}>
-              No
-            </Button>
-          </Notice.Actions>
-        </Notice.Content>
-      </Notice>
-
-      <Notice aria-label='Notice' mb={2}>
-        <Notice.Label>
-          <Question />
-        </Notice.Label>
-
-        <Notice.Content display='flex'>
-          <Notice.Title>Your subscription has expired</Notice.Title>
-          <Notice.Actions mt={0}>
-            <Button use='primary' mr={2}>
-              Button
-            </Button>
-            <Button mr={2}>Button</Button>
-          </Notice.Actions>
-        </Notice.Content>
-        <Notice.Close />
-      </Notice>
-
-      <Notice theme='warning' aria-label='New feature announcement' mb={2}>
-        <Notice.Label>
-          <Question />
-        </Notice.Label>
-
+    <Flex direction='column' gap={4}>
+      {/* 1. Minimal Notice */}
+      <Notice theme='info'>
         <Notice.Content>
-          <Notice.Title>Your subscription has expired</Notice.Title>
-
-          <Notice.Actions>
-            <Button use='primary' theme='success' mr={2}>
-              Button
-            </Button>
-            <Button>Button</Button>
-          </Notice.Actions>
+          <Notice.Text>This is an info notice</Notice.Text>
         </Notice.Content>
-        <Notice.Close />
       </Notice>
 
-      <Notice theme='danger' aria-label='New feature announcement' mb={2}>
-        <Notice.Label>
-          <Warning />
-        </Notice.Label>
-
-        <Notice.Content>
-          <Notice.Text>
-            49 out of your 50 projects are now locked. They will be deleted in 7 days (on August
-            22). To unlock your projects, please upgrade your subscription.Please tell us how to
-            improve something. 49 out of your Star Wars: The Force Awakens shattered box office
-            records upon its debut becoming the biggest film of all time in. The reports are based
-            on the data from the Russian Federation and the CIS.
-          </Notice.Text>
-
-          <Notice.Actions>
-            <Button use='primary' theme='danger' mr={2}>
-              Button
-            </Button>
-            <Button>Button</Button>
-          </Notice.Actions>
-        </Notice.Content>
-        <Notice.Close />
-      </Notice>
-
-      <Notice theme='success' aria-label='New feature announcement' mb={2}>
+      {/* 2. Full Featured Notice */}
+      <Notice theme='success' aria-label='Success Notice'>
         <Notice.Label>
           <ThumbUpM />
         </Notice.Label>
-
         <Notice.Content>
-          <Notice.Title>Your subscription has expired</Notice.Title>
+          <Notice.Title>Success!</Notice.Title>
+          <Notice.Text>Everything worked just fine.</Notice.Text>
+          <Notice.Actions>
+            <Button use='primary' theme='success' mr={2}>Okay</Button>
+            <Button>Cancel</Button>
+          </Notice.Actions>
+        </Notice.Content>
+        <Notice.Close />
+      </Notice>
 
+      {/* 3. Title only + Close */}
+      <Notice theme='warning'>
+        <Notice.Content>
+          <Notice.Title>Pay attention</Notice.Title>
+        </Notice.Content>
+        <Notice.Close />
+      </Notice>
+
+      {/* 4. Icon + Text only */}
+      <Notice theme='danger'>
+        <Notice.Label>
+          <AlertM />
+        </Notice.Label>
+        <Notice.Content>
+          <Notice.Text>Something went wrong.</Notice.Text>
+        </Notice.Content>
+      </Notice>
+
+      {/* 5. Actions only */}
+      <Notice theme='info'>
+        <Notice.Content>
+          <Notice.Actions>
+            <Button use='primary'>Retry</Button>
+          </Notice.Actions>
+        </Notice.Content>
+      </Notice>
+
+      {/* 6. No Content (edge case) */}
+      <Notice theme='warning'>
+        <Notice.Label>
+          <InfoM />
+        </Notice.Label>
+        <Notice.Close />
+      </Notice>
+
+      {/* 7. Long text, layout check */}
+      <Notice theme='danger' w={300} aria-label='Auto wrap test'>
+        <Notice.Content>
           <Notice.Text>
-            49 out of your 50 projects are now locked. They will be deleted in 7 days (on August
-            22). To unlock your projects, please upgrade your subscription.Please tell us how to
-            improve something. 49 out of your Star Wars: The Force Awakens shattered box office
-            records upon its debut becoming the biggest film of all time in. The reports are based
-            on the data from the Russian Federation and the CIS.
+            This is a very long message that should ideally wrap and not break layout or overflow.
+          </Notice.Text>
+        </Notice.Content>
+      </Notice>
+
+      {/* 8. Aria-live announcement */}
+      <Notice theme='info' aria-live='polite'>
+        <Notice.Content>
+          <Notice.Text>We'll notify you when it's ready.</Notice.Text>
+        </Notice.Content>
+      </Notice>
+
+      {/* 9. Custom style */}
+      <Notice style={{ backgroundColor: '#B388EB' }}>
+        <Notice.Label>Purple</Notice.Label>
+        <Notice.Content>
+          <Notice.Text>
+            Text Notice
           </Notice.Text>
         </Notice.Content>
         <Notice.Close />
       </Notice>
 
-      <Notice theme='success' aria-label='New feature announcement' mb={2}>
-        <Notice.Label>
-          <ThumbUpM />
-        </Notice.Label>
-
+      {/* 10. Custom style */}
+      <Notice duration={500}>
+        <Notice.Label>Duration</Notice.Label>
         <Notice.Content>
-          <Notice.Title>Your subscription has expired</Notice.Title>
+          <Notice.Text>
+            Text Notice
+          </Notice.Text>
         </Notice.Content>
         <Notice.Close />
       </Notice>
 
-      <Notice theme='success' aria-label='New feature announcement' mb={2} w={300}>
+      {/* 11. Hidden Notice */}
+      <Notice theme='success' aria-label='hidden Notice' hidden>
         <Notice.Label>
           <ThumbUpM />
         </Notice.Label>
-
         <Notice.Content>
-          <Notice.Title>Your subscription has expired</Notice.Title>
-
-          <Notice.Text>
-            49 out of your 50 projects are now locked. They will be deleted in 7 days (on August
-            22).
-          </Notice.Text>
+          <Notice.Title>Success!</Notice.Title>
+          <Notice.Text>Everything worked just fine.</Notice.Text>
           <Notice.Actions>
-            <Button use='primary' theme='success' mr={2}>
-              Button
-            </Button>
-            <Button>Button</Button>
-          </Notice.Actions>
-        </Notice.Content>
-      </Notice>
-
-      <Notice theme='success' aria-label='New feature announcement' mb={2} w={300}>
-        <Notice.Label>
-          <ThumbUpM />
-        </Notice.Label>
-
-        <Notice.Content>
-          <Notice.Title>Your subscription has expired</Notice.Title>
-
-          <Notice.Text>
-            49 out of your 50 projects are now locked. They will be deleted in 7 days (on August
-            22).
-          </Notice.Text>
-          <Notice.Actions>
-            <Button use='primary' theme='success' mr={2}>
-              Button
-            </Button>
-            <Button>Button</Button>
+            <Button use='primary' theme='success' mr={2}>Okay</Button>
+            <Button>Cancel</Button>
           </Notice.Actions>
         </Notice.Content>
         <Notice.Close />
@@ -184,4 +124,4 @@ const Demo = () => {
   );
 };
 
-export default Demo;
+export default NoticeSmokeDemo;

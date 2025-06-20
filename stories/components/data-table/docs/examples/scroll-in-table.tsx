@@ -1,11 +1,11 @@
-import React from 'react';
 import { DataTable } from '@semcore/data-table';
+import React from 'react';
 
 const Demo = () => {
   return (
     <DataTable
       data={data}
-      aria-label={'Scroll inside'}
+      aria-label='Scroll inside'
       hMax={200}
       wMax={400}
       columns={[

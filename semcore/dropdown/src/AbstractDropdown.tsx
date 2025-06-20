@@ -1,14 +1,16 @@
-import React from 'react';
 import { Component, lastInteraction } from '@semcore/core';
-import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-import { isFocusInside, setFocus } from '@semcore/core/lib/utils/use/useFocusLock';
-import { DropdownProps } from './index';
 import { getAccessibleName } from '@semcore/core/lib/utils/getAccessibleName';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import { isFocusInside, setFocus } from '@semcore/core/lib/utils/use/useFocusLock';
+import React from 'react';
+
+import type { DropdownProps } from './index';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 type AbstractDDProps = {
   visible: boolean;
+  defaultHighlightedIndex: 0 | null;
   highlightedIndex: number | null;
   selectedIndex: number | null;
   placement: DropdownProps['placement'];
@@ -71,20 +73,7 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
     return 'menuitem';
   }
 
-  handleClickTrigger = (e: React.SyntheticEvent) => {
-    const { interaction, inlineActions } = this.asProps;
-
-    if (interaction === 'none' || inlineActions) return false;
-
-    setTimeout(() => {
-      const { visible, inlineActions } = this.asProps;
-      if (visible || inlineActions) {
-        this.afterOpenPopper();
-      }
-    }, 200); // because first will be executed onClick handler in popper
-  };
-
-  afterOpenPopper = () => {
+  protected afterOpenPopper() {
     const highlightedIndex = this.asProps.highlightedIndex ?? 0;
     const element = this.itemRefs[highlightedIndex];
     element?.focus();
@@ -98,12 +87,11 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
 
     return {
       size,
-      id: `igc-${uid}-trigger`,
-      focusHint: visible && !disablePortal ? getI18nText('triggerHint') : undefined,
+      'id': `igc-${uid}-trigger`,
+      'focusHint': visible && !disablePortal ? getI18nText('triggerHint') : undefined,
       'aria-haspopup': 'true',
       'aria-expanded': visible ? 'true' : 'false',
-      onClick: this.handleClickTrigger,
-      ref: this.triggerRef,
+      'ref': this.triggerRef,
     };
   }
 
@@ -120,13 +108,13 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
       this.asProps;
 
     return {
-      ref: this.popperRef,
-      tabIndex: -1,
-      id: `igc-${uid}-popper`,
+      'ref': this.popperRef,
+      'tabIndex': -1,
+      'id': `igc-${uid}-popper`,
       disablePortal,
       ignorePortalsStacking,
-      focusMaster: interaction === 'click',
-      hideFocus: highlightedIndex !== null,
+      'focusMaster': interaction === 'click',
+      'hideFocus': highlightedIndex !== null,
       'use:autoFocus': false,
     };
   }
@@ -143,14 +131,14 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
     const role = this.childRole;
 
     return {
-      id: `igc-${uid}-option-${index}`,
+      'id': `igc-${uid}-option-${index}`,
       size,
       index,
-      onMouseEnter: () => {
+      'onMouseEnter': () => {
         this.handlers.selectedIndex(index);
       },
       role,
-      isMenuItemCheckbox: role === 'menuitemcheckbox',
+      'isMenuItemCheckbox': role === 'menuitemcheckbox',
       'aria-checked': role === 'menuitemcheckbox' || role === 'menuitemradio' ? false : undefined,
     };
   }
@@ -230,11 +218,13 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
     const { visible } = this.asProps;
     const visibilityChanged = visible !== prevProps.visible;
 
-    if (visibilityChanged && !visible && prevProps.visible !== undefined) {
-      this.handlers.highlightedIndex(null);
+    if (visibilityChanged && !visible) {
+      this.handlers.highlightedIndex(this.props.defaultHighlightedIndex);
       this.prevHighlightedIndex = null;
       // @ts-ignore
       this.highlightedItemRef.current = null;
+      this.itemProps = [];
+      this.itemRefs = [];
       if (
         this.popperRef.current &&
         this.triggerRef.current &&
@@ -261,6 +251,7 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
       if (e.key === 'Enter' && targetTagName === 'TEXTAREA') return false;
     }
   }
+
   protected handlePreventPopperKeyDown(e: React.KeyboardEvent<HTMLElement>) {
     if (e.target instanceof Element) {
       const targetTagName = e.target.tagName;
@@ -272,23 +263,33 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
         return false;
     }
   }
+
   protected handleOpenKeyDown(e: React.KeyboardEvent<HTMLElement>) {
     if (
-      this.asProps.visible !== true &&
-      ['ArrowDown', 'ArrowUp', 'Enter', ' '].includes(e.key) &&
+      ['Enter', ' ', 'ArrowDown', 'ArrowUp'].includes(e.key) &&
       !e.currentTarget.getAttribute('role')?.startsWith(this.childRole)
     ) {
-      if (['ArrowDown', 'ArrowUp'].includes(e.key)) {
-        this.handlers.visible(true);
-      }
+      if (this.asProps.visible !== true) {
+        if (['ArrowDown', 'ArrowUp'].includes(e.key)) {
+          this.handlers.visible(true);
+        }
 
-      this.handleClickTrigger(e);
+        setTimeout(() => {
+          if (this.asProps.visible) {
+            this.afterOpenPopper();
+          }
+        }, 200);
+      } else {
+        if (['ArrowDown', 'ArrowUp'].includes(e.key)) {
+          this.afterOpenPopper();
+        }
+      }
     }
   }
 
   protected handleArrowKeyDown(e: React.KeyboardEvent<HTMLElement>) {
     const amountCount = e.shiftKey ? 5 : 1;
-    const { highlightedIndex, inlineActions } = this.asProps;
+    const { highlightedIndex, inlineActions, visible } = this.asProps;
 
     let amount: number | null = null;
 
@@ -332,7 +333,7 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
         break;
     }
 
-    if (amount !== null) {
+    if (visible && amount !== null) {
       const newHighlightedIndex = this.getHighlightedIndex(amount);
 
       if (
@@ -349,7 +350,9 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
           this.itemRefs[newHighlightedIndex]?.focus();
         }
       }
+    }
 
+    if (amount !== null) {
       e.preventDefault();
       e.stopPropagation();
     }
@@ -369,11 +372,11 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
 
     return {
       size,
-      index: this.asProps.highlightedIndex,
-      tabIndex: -1,
-      ref: this.menuRef,
-      id: `igc-${uid}-list`,
-      role: this.role,
+      'index': this.asProps.highlightedIndex,
+      'tabIndex': -1,
+      'ref': this.menuRef,
+      'id': `igc-${uid}-list`,
+      'role': this.role,
       'aria-label': getAccessibleName(triggerElement),
     };
   }

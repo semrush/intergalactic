@@ -1,8 +1,9 @@
-import type { Meta, StoryObj } from '@storybook/react';
-
 import Tooltip from '@semcore/tooltip';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import BasicUsageExample from './examples/interactive-in-tooltip';
+import TooltipInteractionsExample from './examples/basic_usage';
+import InteractiveInTooltipsExample from './examples/interactive-in-tooltip';
+import TooltipStatesExample from './examples/tooltip-styles';
 
 const meta: Meta<typeof Tooltip> = {
   title: 'Components/Tooltip/Tests',
@@ -12,6 +13,14 @@ export default meta;
 
 type Story = StoryObj<typeof Tooltip>;
 
-export const BasicUsage: Story = {
-  render: BasicUsageExample,
+export const InteractiveInTooltips: Story = {
+  render: InteractiveInTooltipsExample,
+};
+
+export const TooltipStates: Story = {
+  render: TooltipStatesExample,
+};
+
+export const TooltipInteractions: Story = {
+  render: TooltipInteractionsExample,
 };

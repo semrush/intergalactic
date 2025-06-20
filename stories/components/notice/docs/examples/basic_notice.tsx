@@ -1,10 +1,10 @@
-import React from 'react';
-import Notice from '@semcore/notice';
-import Question from '@semcore/icon/Question/m';
-import Warning from '@semcore/icon/Warning/m';
 import Button from '@semcore/button';
 import { Flex } from '@semcore/flex-box';
+import Question from '@semcore/icon/Question/m';
 import ThumbUpM from '@semcore/icon/ThumbUp/m';
+import Warning from '@semcore/icon/Warning/m';
+import Notice from '@semcore/notice';
+import React from 'react';
 
 const Demo = () => (
   <Flex direction='column'>
@@ -34,7 +34,7 @@ const Demo = () => (
       <Notice.Close />
     </Notice>
 
-    <Notice theme='muted' aria-label='New feature announcement' mb={2}>
+    <Notice theme='muted' aria-label='New muted feature announcement' mb={2}>
       <Notice.Label>
         <Question />
       </Notice.Label>
@@ -60,7 +60,7 @@ const Demo = () => (
       <Notice.Close />
     </Notice>
 
-    <Notice theme='warning' aria-label='New feature announcement' mb={2}>
+    <Notice theme='warning' aria-label='New warning feature announcement' mb={2}>
       <Notice.Label>
         <Question />
       </Notice.Label>
@@ -86,7 +86,7 @@ const Demo = () => (
       <Notice.Close />
     </Notice>
 
-    <Notice theme='danger' aria-label='New feature announcement' mb={2}>
+    <Notice theme='danger' aria-label='New danger feature announcement' mb={2}>
       <Notice.Label>
         <Warning />
       </Notice.Label>
@@ -112,7 +112,7 @@ const Demo = () => (
       <Notice.Close />
     </Notice>
 
-    <Notice theme='success' aria-label='New feature announcement' mb={2}>
+    <Notice theme='success' aria-label='New success feature announcement' mb={2}>
       <Notice.Label>
         <ThumbUpM />
       </Notice.Label>

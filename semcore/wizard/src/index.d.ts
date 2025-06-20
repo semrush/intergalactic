@@ -1,8 +1,8 @@
-import React from 'react';
-import { UnknownProperties, Intergalactic } from '@semcore/core';
-import { Box, BoxProps } from '@semcore/flex-box';
-import { ButtonProps } from '@semcore/button';
-import { ModalProps } from '@semcore/modal';
+import type { ButtonProps } from '@semcore/button';
+import type { UnknownProperties, Intergalactic } from '@semcore/core';
+import type { Box, BoxProps } from '@semcore/flex-box';
+import type { ModalProps } from '@semcore/modal';
+import type React from 'react';
 
 export type WizardStep = string | number | boolean;
 
@@ -84,7 +84,7 @@ type IntergalacticWizardStepperComponent<PropsExtending = {}> = (<
   props: Intergalactic.InternalTypings.ComponentProps<Tag, 'div', WizardStepperProps<Value>> &
     PropsExtending,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
-  Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', WizardStepperProps>;
+Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', WizardStepperProps>;
 
 declare const Wizard: Intergalactic.Component<'div', WizardProps> & {
   Sidebar: Intergalactic.Component<'div', WizardSidebarProps>;
@@ -100,7 +100,7 @@ declare const wrapWizardStepper: <PropsExtending extends {}>(
     props: Intergalactic.InternalTypings.UntypeRefAndTag<
       Intergalactic.InternalTypings.ComponentPropsNesting<IntergalacticWizardStepperComponent>
     > &
-      PropsExtending,
+    PropsExtending,
   ) => React.ReactNode,
 ) => IntergalacticWizardStepperComponent<PropsExtending>;
 export { wrapWizardStepper };

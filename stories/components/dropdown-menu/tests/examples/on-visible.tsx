@@ -1,10 +1,10 @@
-import React from 'react';
 import Button from '@semcore/button';
 import Dropdown from '@semcore/dropdown';
-import { Text } from '@semcore/typography';
-import Tooltip from '@semcore/tooltip';
 import DropdownMenu from '@semcore/dropdown-menu';
 import FileExportM from '@semcore/icon/FileExport/m';
+import Tooltip from '@semcore/tooltip';
+import { Text } from '@semcore/typography';
+import React from 'react';
 
 const Demo = () => {
   const [visible, setVisible] = React.useState(false);
@@ -19,7 +19,7 @@ const Demo = () => {
 
   return (
     <DropdownMenu onVisibleChange={handleVisiblity}>
-      <DropdownMenu.Trigger tag='button' data-testid='dd-button-trigger'>
+      <DropdownMenu.Trigger tag='button' tabIndex={0} data-testid='dd-button-trigger'>
         Trigger
       </DropdownMenu.Trigger>
       <DropdownMenu.Menu>

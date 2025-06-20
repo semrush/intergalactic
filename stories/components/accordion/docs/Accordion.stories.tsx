@@ -1,15 +1,13 @@
-import type { Meta, StoryObj } from '@storybook/react';
-
 import Accrordion from '@semcore/accordion';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
+import { BasicUsageTest } from './__tests__/basic-usage.test';
 import BasicExample from './examples/basic_usage';
 import CustomStylesExample from './examples/custom_styles';
 import HeadingTagExample from './examples/heading_tag';
 import NonCompactExample from './examples/non_compact';
 import OneSectionOpeningExample from './examples/one_section_opening';
 import SeoExample from './examples/seo';
-
-import { BasicUsageTest } from './__tests__/basic-usage.test';
 import { playWrapper } from '../../../utils/playWrapper';
 
 const meta: Meta<typeof Accrordion> = {

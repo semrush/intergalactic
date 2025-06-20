@@ -1,5 +1,6 @@
 import cn from 'classnames';
-import React from 'react';
+import type React from 'react';
+
 /** @ts-ignore */
 import { getStyles as reshadowGetStyles } from './reshadow-core';
 
@@ -88,7 +89,7 @@ function getClassAndVars(styles: any, name: any, props: any) {
           acc[0][value] = Boolean(propValue ?? false);
         } else {
           // @ts-ignore
-          // biome-ignore lint/suspicious/noDoubleEquals:
+
           acc[0][value] = propValue == modValue;
         }
       }
@@ -137,7 +138,7 @@ function sstyled(styles = {}): ((ReactNode: any) => React.ReactNode) & {
   };
 }
 
-sstyled.css = function (css: any): { [key: string]: string } {
+sstyled.css = function (_css: any): { [key: string]: string } {
   throw new Error('Enable babel plugin');
 };
 sstyled.insert = insert;

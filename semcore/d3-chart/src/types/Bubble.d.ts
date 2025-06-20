@@ -1,8 +1,9 @@
-import { Intergalactic, UnknownProperties } from '@semcore/core';
-import { Context } from './context';
-import { TooltipType } from './Tooltip';
-import { IntergalacticD3Component } from './Plot';
-import { PatternsConfig } from './Pattern';
+import type { Intergalactic, UnknownProperties } from '@semcore/core';
+
+import type { Context } from './context';
+import type { PatternsConfig } from './Pattern';
+import type { IntergalacticD3Component } from './Plot';
+import type { TooltipType } from './Tooltip';
 
 /** @deprecated */
 export interface IBubbleProps extends BubbleProps, UnknownProperties {}
@@ -38,6 +39,14 @@ export type BubbleContext = {
   index: number;
 };
 
+export type BubbleCircleProps = {
+  /** Item data index */
+  index: number;
+
+  /** Item visibility */
+  visible?: boolean;
+};
+
 declare const Bubble: IntergalacticD3Component<Intergalactic.Tag, BubbleProps, BubbleContext> & {
   Tooltip: TooltipType<
     BubbleProps & {
@@ -50,6 +59,11 @@ declare const Bubble: IntergalacticD3Component<Intergalactic.Tag, BubbleProps, B
        */
       index: number;
     }
+  >;
+  Circle: IntergalacticD3Component<
+    'g',
+    BubbleCircleProps,
+    Context
   >;
 };
 

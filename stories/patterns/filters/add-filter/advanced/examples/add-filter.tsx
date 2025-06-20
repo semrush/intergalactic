@@ -1,16 +1,15 @@
-import React from 'react';
 import AddFilter from '@semcore/add-filter';
-import Select from '@semcore/select';
-import Button from '@semcore/button';
-import { Flex } from '@semcore/flex-box';
-import SearchM from '@semcore/icon/Search/m';
-import { ButtonLink } from '@semcore/button';
-import CloseM from '@semcore/icon/Close/m';
-import { Text } from '@semcore/typography';
-import Radio, { RadioGroup } from '@semcore/radio';
-import Textarea from '@semcore/textarea';
-import Input from '@semcore/input';
 import { FilterTrigger } from '@semcore/base-trigger';
+import Button, { ButtonLink } from '@semcore/button';
+import { Flex } from '@semcore/flex-box';
+import CloseM from '@semcore/icon/Close/m';
+import SearchM from '@semcore/icon/Search/m';
+import Input from '@semcore/input';
+import Radio, { RadioGroup } from '@semcore/radio';
+import Select from '@semcore/select';
+import Textarea from '@semcore/textarea';
+import { Text } from '@semcore/typography';
+import React from 'react';
 
 const selectOptions = [
   { value: 'Option 1', children: 'Option 1' },
@@ -134,7 +133,7 @@ const AddFilterExample = () => {
           onChange={(v: string) => {
             setFilterData({ ...filterData, name: v });
           }}
-          placeholder={'Filter by name'}
+          placeholder='Filter by name'
         />
         {Boolean(filterData['name']) && (
           <Input.Addon>
@@ -154,16 +153,16 @@ const AddFilterExample = () => {
         <Select
           placeholder='Everywhere'
           options={selectOptions}
-          neighborLocation={'right'}
+          neighborLocation='right'
           value={filterData.searchFullnameOption}
           onChange={(v: any) => {
             setFilterData({ ...filterData, searchFullnameOption: v });
           }}
           w={120}
         />
-        <Input w={125} neighborLocation={'both'}>
+        <Input w={125} neighborLocation='both'>
           <Input.Value
-            placeholder={'Filter by fullname'}
+            placeholder='Filter by fullname'
             onChange={(v) => {
               setFilterData({ ...filterData, fullname: v });
             }}
@@ -184,7 +183,7 @@ const AddFilterExample = () => {
             </Input.Addon>
           )}
         </Input>
-        <Button neighborLocation={'left'}>
+        <Button neighborLocation='left'>
           <Button.Addon>
             <SearchM />
           </Button.Addon>
@@ -204,7 +203,7 @@ const AddFilterExample = () => {
             return clearField('size');
           }}
         >
-          {'Size'}: {filterData.size}
+          Size: {filterData.size}
         </Select.Trigger>
         <Select.Menu>
           {sizes.map((item, idx) => (
@@ -248,7 +247,7 @@ const AddFilterExample = () => {
         </AddFilter.Dropdown.Popper>
       </AddFilter.Dropdown>
 
-      <AddFilter.Input name={'position'} displayName={'Position'} w={160}>
+      <AddFilter.Input name='position' displayName='Position' w={160}>
         <AddFilter.Input.Addon>
           <SearchM />
         </AddFilter.Input.Addon>
@@ -257,7 +256,7 @@ const AddFilterExample = () => {
           onChange={(v) => {
             setFilterData({ ...filterData, position: v });
           }}
-          placeholder={'Filter by position'}
+          placeholder='Filter by position'
         />
         {Boolean(filterData['position']) && (
           <AddFilter.Input.Addon>
@@ -286,7 +285,7 @@ const AddFilterExample = () => {
             clearField('device');
           }}
         >
-          {'Device'}: {filterData.device}
+          Device: {filterData.device}
         </AddFilter.Select.Trigger>
         <AddFilter.Select.Menu>
           {devices.map((item, idx) => (

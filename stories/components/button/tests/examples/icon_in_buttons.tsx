@@ -1,31 +1,31 @@
-import React from 'react';
 import Button from '@semcore/button';
-import VideoListM from '@semcore/icon/VideoList/m';
-import VideoListL from '@semcore/icon/VideoList/l';
 import { Flex } from '@semcore/flex-box';
+import VideoListL from '@semcore/icon/VideoList/l';
+import VideoListM from '@semcore/icon/VideoList/m';
+import React from 'react';
 
 const Demo = () => {
   return (
     <>
       <Flex columnGap={2} mb={4}>
         <Button addonLeft={VideoListM}>AddonLeftM</Button>
-        <Button addonLeft={VideoListL} size={'l'}>
+        <Button addonLeft={VideoListL} size='l'>
           AddonLeftL
         </Button>
 
         <Button addonRight={VideoListM}>AddonRightM</Button>
-        <Button addonRight={VideoListL} size={'l'}>
+        <Button addonRight={VideoListL} size='l'>
           AddonRightL
         </Button>
 
         <Button addonRight={VideoListM} addonLeft={VideoListM}>
           AddonRighLefttM
         </Button>
-        <Button addonRight={VideoListL} addonLeft={VideoListL} size={'l'}>
+        <Button addonRight={VideoListL} addonLeft={VideoListL} size='l'>
           AddonRightLeftL
         </Button>
 
-        <Button addonRight={VideoListL} addonLeft={VideoListM} size={'l'} disabled>
+        <Button addonRight={VideoListL} addonLeft={VideoListM} size='l' disabled>
           AddonRightLeftL
         </Button>
       </Flex>

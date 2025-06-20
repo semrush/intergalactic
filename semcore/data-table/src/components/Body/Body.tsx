@@ -1,26 +1,30 @@
-import * as React from 'react';
-import { Component, createComponent, Intergalactic, Root, sstyled } from '@semcore/core';
-import { BodyPropsInner, DataTableBodyProps } from './Body.types';
 import { Box } from '@semcore/base-components';
-import { Row } from './Row';
-
-import style from './style.shadow.css';
-import { Cell } from './Cell';
-import { DataTableRowProps, DTRow, RowPropsInner } from './Row.types';
-import { DataTableCellProps } from './Cell.types';
-import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
-import { ACCORDION, ROW_GROUP, ROW_INDEX, UNIQ_ROW_KEY } from '../DataTable/DataTable';
-import ChevronRightM from '@semcore/icon/ChevronRight/m';
 import { ButtonLink } from '@semcore/button';
-import { DTValue } from '../DataTable/DataTable.types';
-import Spin from '@semcore/spin';
-import { isInteractiveElement } from '@semcore/core/lib/utils/isInteractiveElement';
+import { Component, createComponent, type Intergalactic, Root, sstyled } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
+import { isInteractiveElement } from '@semcore/core/lib/utils/isInteractiveElement';
+import ChevronRightM from '@semcore/icon/ChevronRight/m';
+import Spin from '@semcore/spin';
+import * as React from 'react';
+
+import type { BodyPropsInner, DataTableBodyProps } from './Body.types';
+import { Cell } from './Cell';
+import type { DataTableCellProps } from './Cell.types';
+import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
+import { Row } from './Row';
+import type { DataTableRowProps, DTRow, RowPropsInner, UniqRowKey } from './Row.types';
+import style from './style.shadow.css';
+import { ACCORDION, ROW_GROUP, ROW_INDEX, UNIQ_ROW_KEY } from '../DataTable/DataTable';
+import type { DTValue } from '../DataTable/DataTable.types';
 
 const ROWS_BUFFER = 20;
 const APROX_ROWS_ON_PAGE = 20;
 
-class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner> {
+type State = {
+  expandedForAnimation: Set<UniqRowKey>;
+};
+
+class BodyRoot extends Component<DataTableBodyProps, {}, State, [], BodyPropsInner> {
   static displayName = 'Body';
   static style = style;
 
@@ -28,6 +32,10 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
 
   indexForDownIterate = 0;
   indexForUpIterate = 0;
+
+  state: State = {
+    expandedForAnimation: new Set(),
+  };
 
   handleRef = (index: number, row: DTRow) => (node: HTMLElement | null) => {
     if (!this.rowsHeightMap.has(index) && node) {
@@ -37,14 +45,43 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
   };
 
   handleExpandRow = (row: DTRow, index: number) => {
+    const { accordionDuration } = this.asProps;
+    const openDuration = Array.isArray(accordionDuration)
+      ? accordionDuration[0]
+      : accordionDuration ??
+        (Array.isArray(row[ACCORDION]) ? Math.min(50 * row[ACCORDION].length, 200) : 200);
+    const closeDuration = Array.isArray(accordionDuration)
+      ? accordionDuration[1]
+      : accordionDuration ??
+        (Array.isArray(row[ACCORDION]) ? Math.min(50 * row[ACCORDION].length, 200) : 200);
+
     setTimeout(() => {
       this.setRowHeight(index, row);
       for (let i = index; i < this.rowsHeightMap.size; i++) {
         this.setRowHeight(i, row);
       }
-    }, 300); // we need to calculate after expanding animation
+    }, openDuration + 100); // we need to calculate after expanding animation
 
-    this.asProps.onExpandRow(row);
+    if (this.asProps.expandedRows.has(row[UNIQ_ROW_KEY])) {
+      this.setState((prevState) => {
+        prevState.expandedForAnimation.add(row[UNIQ_ROW_KEY]);
+        return {
+          expandedForAnimation: new Set([...prevState.expandedForAnimation]),
+        };
+      });
+      setTimeout(() => {
+        this.asProps.onExpandRow(row);
+
+        this.setState((prevState) => {
+          prevState.expandedForAnimation.delete(row[UNIQ_ROW_KEY]);
+          return {
+            expandedForAnimation: new Set([...prevState.expandedForAnimation]),
+          };
+        });
+      }, closeDuration + 100); // we need to remove it from list of grid calculations after expanding animation
+    } else {
+      this.asProps.onExpandRow(row);
+    }
   };
 
   handleClickRow = (row: DTRow, index: number) => (e: React.SyntheticEvent<HTMLElement>) => {
@@ -52,6 +89,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
       this.handleExpandRow(row, index);
     }
   };
+
   handleClickCell = (row: DTRow, index: number) => (e: React.SyntheticEvent<HTMLElement>) => {
     if (!isInteractiveElement(e.target)) {
       this.handleExpandRow(row, index);
@@ -78,6 +116,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
       selectedRows,
       onSelectRow,
       getFixedStyle,
+      accordionDuration,
     } = this.asProps;
     const row = props.row;
     const index = row[ROW_INDEX];
@@ -101,8 +140,8 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
 
     const accordionDataGridArea = Array.isArray(row[ACCORDION])
       ? `${gridRowIndex + 1} / 1 / ${gridRowIndex + 1 + row[ACCORDION].length} / ${
-          columns.length + 1
-        }`
+        columns.length + 1
+      }`
       : `${gridRowIndex + 1} / 1 / ${gridRowIndex + 1} / ${columns.length + 1}`;
 
     return {
@@ -112,7 +151,9 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
       uid,
       gridTemplateAreas,
       gridTemplateColumns,
-      expanded: expandedRows?.has(row[UNIQ_ROW_KEY]),
+      expanded:
+        expandedRows?.has(row[UNIQ_ROW_KEY]) &&
+        !this.state.expandedForAnimation.has(row[UNIQ_ROW_KEY]),
       accordionDataGridArea,
       columns,
       rowIndex: index,
@@ -130,6 +171,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
       sideIndents,
       getFixedStyle,
       mergedRow: props.mergedRow,
+      accordionDuration,
     };
   }
 
@@ -143,6 +185,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
       virtualScroll,
       tableRef,
       flatRows,
+      accordionDuration,
     } = this.asProps;
     const SAccordionToggle = ButtonLink;
 
@@ -171,6 +214,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
       virtualScroll: Boolean(virtualScroll),
       tableRef,
       children: props.children ?? defaultRender(),
+      accordionDuration,
     };
 
     if (renderCell) {
@@ -201,7 +245,9 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
       value?.[ACCORDION] ||
       (cellValue instanceof MergedRowsCell && cellValue.accordion)
     ) {
-      let expanded = expandedRows?.has(props.row[UNIQ_ROW_KEY]);
+      let expanded =
+        expandedRows?.has(props.row[UNIQ_ROW_KEY]) &&
+        !this.state.expandedForAnimation.has(props.row[UNIQ_ROW_KEY]);
 
       if (cellValue instanceof MergedRowsCell && cellValue.accordion && props.row[ROW_GROUP]) {
         const mergedKeysSet = props.row[ROW_GROUP];
@@ -239,10 +285,10 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
             // @ts-ignore
             expanded={expanded}
             onClick={handleClick}
-            color={'--intergalactic-icon-primary-neutral'}
+            color='--intergalactic-icon-primary-neutral'
             aria-expanded={expanded}
             aria-describedby={props.id}
-            aria-controls={props.accordionId}
+            aria-controls={expanded ? props.accordionId : undefined}
           >
             <SAccordionToggle.Addon tag={ChevronRightM} />
           </SAccordionToggle>
@@ -391,7 +437,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
           if (Array.isArray(row)) {
             return sstyled(styles)(
               <SRowGroup
-                role={'rowgroup'}
+                role='rowgroup'
                 key={`gg_${row[0][UNIQ_ROW_KEY]}`}
                 ref={this.handleRef(startIndex + index, row[0])}
               >
@@ -422,9 +468,9 @@ class BodyRoot extends Component<DataTableBodyProps, {}, {}, [], BodyPropsInner>
             headerHeight={`${headerHeight}px`}
             tabIndex={-1}
             ref={spinnerRef}
-            role={'row'}
+            role='row'
           >
-            <Spin size={'xxl'} role={'gridcell'} />
+            <Spin size='xxl' role='gridcell' />
           </SSpinContainer>
         )}
       </SBody>,

@@ -1,3 +1,70 @@
+## [16.3.0] - 2025-06-16
+
+### @semcore/add-filter
+
+- **Added** Controlled mode for visibleFilters.
+
+### @semcore/base-components
+
+- **Added** ResizeObserver for the `Wrapper` component in the `ScrollArea`.
+- **Changed** `keyboardFocus` to `focus` event for popper triggers with `hover` interaction.
+
+### @semcore/d3-chart
+
+- **Fixed** Legend for `Bubble` chart.
+- **Added** New `Bubble` child component (`Bubble.Circle`) which incapsulates all the inner logic of how to draw a circle.
+- **Fixed** Legend item behavior when the it's in unchecked state but the chart line dedicated to it behaves as active.
+- **Fixed** Animation for `Dots` with pattern.
+- **Fixed** Unsupported attributes on DOM nodes in `Area` chart.
+
+### @semcore/data-table
+
+- **Fixed** Incorrect `aria-sort` attribute on Column item.
+- **Fixed** Incorrect `aria-controls` attribute on Accordion button.
+
+### @semcore/divider
+
+- **Fixed** Divider styles for for `theme='invert'` & `use='primary'`.
+
+### @semcore/dropdown
+
+- **Fixed** Keyboard interaction.
+
+### @semcore/dropdown-menu
+
+- **Changed** Deprecated `highlighted` property for `DropdownMenu.Item`.
+- **Changed** Supported changing handlers in `Popper` with interaction `focus`.
+
+### @semcore/errors
+
+- **Changed** Left and right paddings for messages wider than 768px are now `(--intergalactic-spacing-6x), 24px` instead of `0`.
+
+### @semcore/i18n-unplugin
+
+- **Fixed** Vite plugin.
+
+### @semcore/mini-chart
+
+- **Fixed** Score donut dissapears when value between 98 - 99 is passed.
+
+### @semcore/select
+
+- **Fixed** An issue with rendering custom child element in a trigger with `Text` or `Value` child element.
+
+### @semcore/slider
+
+- **Fixed** Slider knob did not move to max value or decrease when entering a value greater than max in the input, focusing the knob, and pressing the Left Arrow key.
+
+## [16.2.0] - 2025-05-30
+
+### @semcore/data-table
+
+- **Fixed** Animation for accordions in table.
+
+### @semcore/icon
+
+- **Added** New `ChartVenn` icon.
+
 ## [16.1.0] - 2025-05-22
 
 ### @semcore/icon

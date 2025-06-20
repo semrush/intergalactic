@@ -1,17 +1,18 @@
-import React from 'react';
 import { createComponent } from '@semcore/core';
-import { BaseChartProps, BaseLegendProps } from './AbstractChart.type';
-import {
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import { scaleBand, scaleLinear } from 'd3-scale';
+import React from 'react';
+
+import type { BaseChartProps, BaseLegendProps } from './AbstractChart.type';
+import type {
   CompactHorizontalBarChartData,
   CompactHorizontalBarChartProps,
   CompactHorizontalBarChartType,
 } from './CompactHorizontalBarChart.type';
-import { scaleBand, scaleLinear } from 'd3-scale';
 // @ts-ignore
 import { CompactHorizontalBar } from '../..';
 import { AbstractChart } from './AbstractChart';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
-import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 
 class CompactHorizontalBarChartComponent extends AbstractChart<
   CompactHorizontalBarChartData,

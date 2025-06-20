@@ -1,6 +1,7 @@
-import esbuild from 'esbuild';
-import { dirname as resolveDirname, resolve as resolvePath } from 'path';
 import { readFile } from 'fs/promises';
+import { dirname as resolveDirname, resolve as resolvePath } from 'path';
+
+import type esbuild from 'esbuild';
 
 type EsbuildResolver = (
   path: string,
@@ -14,7 +15,7 @@ const extractCssDependencies = async (
   const lines = contents.split('\n');
   const imports = lines
     .filter((line) => line.startsWith('@import '))
-    .map((line) => line.substring("@import '".length, line.length - "';".length));
+    .map((line) => line.substring('@import \''.length, line.length - '\';'.length));
   const dirname = resolveDirname(path);
   const resolvedImports = await Promise.all(
     imports.map((importPath) => resolver(importPath, { resolveDir: dirname })),

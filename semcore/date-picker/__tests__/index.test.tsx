@@ -1,9 +1,10 @@
-import React from 'react';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { snapshot } from '@semcore/testing-utils/snapshot';
-import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import { cleanup, render, fireEvent, act, userEvent } from '@semcore/testing-utils/testing-library';
-import { mockDate, RealDate } from './utils';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import React from 'react';
 
+import { mockDate, RealDate } from './utils';
 import {
   DatePicker,
   DateRangePicker,
@@ -11,8 +12,6 @@ import {
   DateRangeComparator,
   MonthDateRangeComparator,
 } from '../src';
-
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 
 describe('date-picker Dependency imports', () => {
   runDependencyCheckTests('date-picker');
@@ -122,7 +121,7 @@ describe('DateRangePicker', () => {
   test('Verify supports set custom displayPeriod after changed value date', () => {
     vi.useFakeTimers();
     const { getByText, getByLabelText } = render(
-      <DateRangePicker visible defaultDisplayedPeriod={'2021-09-10T12:00:00.808Z'} />,
+      <DateRangePicker visible defaultDisplayedPeriod='2021-09-10T12:00:00.808Z' />,
     );
     fireEvent.click(getByLabelText('Previous month'));
     // change visible
@@ -142,7 +141,7 @@ describe('DateRangePicker', () => {
         onPreselectedValueChange={onPreselectedValueChange}
       >
         <DateRangePicker.Trigger />
-        <DateRangePicker.Popper data-testid={'dd_popper'} />
+        <DateRangePicker.Popper data-testid='dd_popper' />
       </DateRangePicker>,
     );
 
@@ -173,8 +172,8 @@ describe('DateRangePicker', () => {
 
     const { getByTestId, getByText } = render(
       <DateRangePicker visible defaultDisplayedPeriod={new Date()}>
-        <DateRangePicker.Trigger data-testid={'dd_trigger'} />
-        <DateRangePicker.Popper data-testid={'dd_popper'} />
+        <DateRangePicker.Trigger data-testid='dd_trigger' />
+        <DateRangePicker.Popper data-testid='dd_popper' />
       </DateRangePicker>,
     );
 

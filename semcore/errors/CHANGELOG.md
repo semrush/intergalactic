@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.3] - 2025-06-10
+
+### Changed
+
+- Left and right paddings for messages wider than 768px are now `(--intergalactic-spacing-6x), 24px` instead of `0`.
+
+## [16.0.2] - 2025-05-30
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [16.0.0 ~> 16.0.1], `@semcore/base-components` [16.0.0 ~> 16.0.1]).
+
 ## [16.0.1] - 2025-05-23
 
 ### Changed

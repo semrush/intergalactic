@@ -10,7 +10,7 @@ const getWindow = (node: any): any => {
 };
 
 const getNodeName = (element?: Node | Window): string => {
-  return element ? ((element as any).nodeName || '').toLowerCase() : null;
+  return element ? ((element as any).nodeName || '').toLowerCase() : '';
 };
 
 const getComputedStyle = (element: Element): CSSStyleDeclaration => {
@@ -34,7 +34,7 @@ const getTrueOffsetParent = (element: HTMLElement): HTMLElement | null => {
 
   if (
     !isHTMLElement(element) ||
-    // biome-ignore lint/suspicious/noAssignInExpressions: <explanation>
+
     !(offsetParent = element.offsetParent) ||
     // https://github.com/popperjs/popper-core/issues/837
     (isFirefox() && getComputedStyle(offsetParent).position === 'fixed')

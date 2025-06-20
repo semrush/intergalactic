@@ -1,9 +1,9 @@
-import { expect, userEvent, within } from '@storybook/test';
+import { expect, userEvent, within } from 'storybook/test';
 
 export async function BasicUsageTest({ canvasElement }: { canvasElement: HTMLElement }) {
   const canvas = within(canvasElement);
 
-  //Interactions by the mouse
+  // Interactions by the mouse
   const addFilter = within(document.body).queryByText('Add filter');
 
   if (!addFilter) {

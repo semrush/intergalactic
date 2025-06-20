@@ -1,9 +1,9 @@
-import React from 'react';
 import { FilterTrigger } from '@semcore/base-trigger';
+import Button from '@semcore/button';
+import { Flex } from '@semcore/flex-box';
 import Select from '@semcore/select';
 import { Text } from '@semcore/typography';
-import { Flex } from '@semcore/flex-box';
-import Button from '@semcore/button';
+import React from 'react';
 
 const Demo = () => {
   const triggerRef = React.useRef<HTMLButtonElement>(null);

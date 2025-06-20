@@ -1,5 +1,5 @@
-import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import { expect, test } from '@semcore/testing-utils/playwright';
 
 test.describe('Loading states', () => {
   test('Verify loading state of table', async ({ page }) => {
@@ -45,6 +45,17 @@ test.describe('Loading states', () => {
       expect(ariaLabel).toBe('Loading…');
       expect(role).toBe('img');
     }
+  });
+
+  test('Verify table in card', async ({ page }) => {
+    const standPath = 'stories/components/card/docs/examples/card_layout_for_tables.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+    await page.keyboard.press('Tab');
+
+    await page.keyboard.press('ArrowDown');
+    await expect(page).toHaveScreenshot();
   });
 
   test('Verify empty table state', async ({ page }) => {

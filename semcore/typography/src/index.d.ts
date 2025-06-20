@@ -1,8 +1,7 @@
-import React from 'react';
-import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-
-import { Property } from 'csstype';
-import { BoxProps, Flex, FlexProps } from '@semcore/flex-box';
+import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import type { BoxProps, Flex, FlexProps } from '@semcore/flex-box';
+import type { Property } from 'csstype';
+import type React from 'react';
 
 /** @deprecated */
 export interface ITextProps extends TextProps, UnknownProperties {}

@@ -1,5 +1,6 @@
-import { log } from '../utils';
 import { execSync } from 'child_process';
+
+import { log } from '../utils';
 
 export class NpmUtils {
   public static async publish(packages: string[], prerelease?: boolean) {

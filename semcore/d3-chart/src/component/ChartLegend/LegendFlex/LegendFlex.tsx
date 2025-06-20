@@ -1,14 +1,15 @@
-import React from 'react';
-import { createComponent, sstyled, Root } from '@semcore/core';
-import { Flex } from '@semcore/flex-box';
-import style from './legend-flex.shadow.css';
-import { LegendFlexType, LegendFlexProps, TrendProps } from './LegendFlex.type';
-import { LegendItemComponent } from '../LegendItem/LegendItem';
-import Divider from '@semcore/divider';
 import Checkbox from '@semcore/checkbox';
-import { BaseLegend } from '../BaseLegend';
-import { localizedMessages } from '../../../translations/__intergalactic-dynamic-locales';
+import { createComponent, sstyled, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import Divider from '@semcore/divider';
+import { Flex } from '@semcore/flex-box';
+import React from 'react';
+
+import style from './legend-flex.shadow.css';
+import type { LegendFlexType, LegendFlexProps, TrendProps } from './LegendFlex.type';
+import { localizedMessages } from '../../../translations/__intergalactic-dynamic-locales';
+import { BaseLegend } from '../BaseLegend';
+import { LegendItemComponent } from '../LegendItem/LegendItem';
 
 class LegendFlexRoot extends BaseLegend<LegendFlexProps> {
   static displayName = 'LegendFlex';
@@ -29,7 +30,7 @@ class LegendFlexRoot extends BaseLegend<LegendFlexProps> {
       <Checkbox
         checked={trendIsVisible}
         onChange={onTrendIsVisibleChange}
-        theme={'gray-400'}
+        theme='gray-400'
         label={trendLabel ?? getI18nText('trend')}
         size={size}
       />
@@ -42,7 +43,7 @@ class LegendFlexRoot extends BaseLegend<LegendFlexProps> {
     const orientation = direction === 'row' ? 'vertical' : 'horizontal';
 
     return sstyled(styles)(
-      <SLegendFlex render={Flex} role={'group'}>
+      <SLegendFlex render={Flex} role='group'>
         {items.map(({ id }) => {
           return <Children key={id} />;
         })}

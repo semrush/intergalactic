@@ -1,8 +1,13 @@
-import { makeMessageFromChangelogs } from './makeMessage';
-import { Changelog, collectComponentChangelogs } from '@semcore/changelog-handler';
-import { sendMessage } from './sendMessage';
+import process from 'process';
+
+import type { Changelog } from '@semcore/changelog-handler';
+import { collectComponentChangelogs } from '@semcore/changelog-handler';
+import { validateSlackIntegrationEnv } from '@semcore/slack-integration';
 import dayjs from 'dayjs';
 import isBetween from 'dayjs/plugin/isBetween.js';
+
+import { makeMessageFromChangelogs } from './makeMessage';
+import { sendMessage } from './sendMessage';
 dayjs.extend(isBetween);
 
 const makeMessageTitle = (dateFrom: string, dateTo: string) => {
@@ -45,5 +50,9 @@ export const broadcastUpdates = async ({
   const title = makeMessageTitle(startDate, endDate);
   const body = makeMessageFromChangelogs(filteredChangelogs, true);
 
-  return await sendMessage({ title, body, dryRun });
+  const endpoints = process.env['SLACK_API_ENDPOINTS']?.split(',') ?? ['fake-url'];
+
+  validateSlackIntegrationEnv(endpoints);
+
+  return await sendMessage({ title, body, dryRun, endpoints });
 };

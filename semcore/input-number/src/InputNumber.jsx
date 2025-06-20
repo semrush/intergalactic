@@ -1,13 +1,13 @@
-import React from 'react';
-import { createComponent, Component, sstyled, Root } from '@semcore/core';
-import Input from '@semcore/input';
-import { IncrementIcon, DecrementIcon } from './buttons';
-import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
-
-import style from './style/input-number.shadow.css';
-import { forkRef } from '@semcore/core/lib/utils/ref';
+import { Component, createComponent, Root, sstyled } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import { forkRef } from '@semcore/core/lib/utils/ref';
+import Input from '@semcore/input';
+import React from 'react';
+
+import { DecrementIcon, IncrementIcon } from './buttons';
+import style from './style/input-number.shadow.css';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 export function parseValueWithMinMax(
   value,
@@ -244,7 +244,7 @@ class Value extends Component {
       }
     }
 
-    const digits = /[0-9.-]+/.test(value);
+    const digits = /^[0-9.-]+$/.test(value);
 
     if (digits || value === '') {
       this.handlers.value(value, event);
@@ -264,12 +264,10 @@ class Value extends Component {
     const { displayValue } = this.asProps;
 
     if (event.key === '.' || event.key === ',') {
-      // for the first decimal separator we should replace both ',' and '.' to '.' because of how js convert strings to numbers (with ',' it will be NaN)
+      // for the first decimal separator we should replace both ',' and '.' to '.' because of how js convert strings to numbers (with ',' it will be Number.NaN)
       if (value.indexOf(this.separatorDecimal) === -1 && event.key === ',') {
         event.currentTarget.value = value + '.';
-      }
-      // we could press decimal separator second time - prevent this '1.5.'
-      else if (value.indexOf(this.separatorDecimal) !== -1) {
+      } else if (value.indexOf(this.separatorDecimal) !== -1) { // we could press decimal separator second time - prevent this '1.5.'
         event.preventDefault();
         event.stopPropagation();
         return;

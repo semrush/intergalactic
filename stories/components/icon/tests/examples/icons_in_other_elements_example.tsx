@@ -1,17 +1,15 @@
-import React from 'react';
-import Button, { ButtonLink } from '@semcore/button';
 import { ButtonTrigger, LinkTrigger, FilterTrigger } from '@semcore/base-trigger';
-import { Hint, DescriptionTooltip } from '@semcore/tooltip';
+import Button, { ButtonLink } from '@semcore/button';
+import DropdownMenu from '@semcore/dropdown-menu';
 import { Flex, Box } from '@semcore/flex-box';
+import IconL from '@semcore/icon/ChartVenn/l';
+import IconM from '@semcore/icon/ChartVenn/m';
 import Input from '@semcore/input';
 import Link from '@semcore/link';
 import Switch from '@semcore/switch';
-import DropdownMenu from '@semcore/dropdown-menu';
+import { Hint, DescriptionTooltip } from '@semcore/tooltip';
 import { List } from '@semcore/ui/typography';
-
-// you only need to edit the paths to choose other icons
-import IconM from '@semcore/icon/ChartVenn/m';
-import IconL from '@semcore/icon/ChartVenn/l';
+import React from 'react';
 
 const Demo = () => {
   return (
@@ -131,23 +129,23 @@ const Demo = () => {
 
       <Flex columnGap={2} mb={4}>
         <Button addonLeft={IconM}>AddonLeftM</Button>
-        <Button addonLeft={IconL} size={'l'}>
+        <Button addonLeft={IconL} size='l'>
           AddonLeftL
         </Button>
 
         <Button addonRight={IconM}>AddonRightM</Button>
-        <Button addonRight={IconL} size={'l'}>
+        <Button addonRight={IconL} size='l'>
           AddonRightL
         </Button>
 
         <Button addonRight={IconM} addonLeft={IconM}>
           AddonRighLefttM
         </Button>
-        <Button addonRight={IconL} addonLeft={IconL} size={'l'}>
+        <Button addonRight={IconL} addonLeft={IconL} size='l'>
           AddonRightLeftL
         </Button>
 
-        <Button addonRight={IconL} addonLeft={IconM} size={'l'} disabled>
+        <Button addonRight={IconL} addonLeft={IconM} size='l' disabled>
           AddonRightLeftL
         </Button>
       </Flex>
@@ -202,13 +200,13 @@ const Demo = () => {
         <Link addonLeft={IconM} aria-label='addonLeft M' href='#' />
         <Link addonLeft={IconL} aria-label='addonLeft L' href='#' />
 
-        <Link href='#' tag={Hint} title={'tag={Hint} Go to the next pageM'}>
+        <Link href='#' tag={Hint} title='tag={Hint} Go to the next pageM'>
           <Link.Addon>
             <IconM />
           </Link.Addon>
         </Link>
 
-        <Link href='#' tag={Hint} title={'tag={Hint} Go to the next pageL'} color='text-critical'>
+        <Link href='#' tag={Hint} title='tag={Hint} Go to the next pageL' color='text-critical'>
           <Link.Addon>
             <IconL />
           </Link.Addon>
@@ -217,7 +215,7 @@ const Demo = () => {
         <Link
           href='#'
           tag={Hint}
-          title={'tag={Hint} Go to the next pageL'}
+          title='tag={Hint} Go to the next pageL'
           color='text-critical'
           disabled
         >

@@ -2,6 +2,25 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.3] - 2025-06-18
+
+### Fixed
+
+- Rendering issues in ScoreDonut and ScoreSemiDonut when value is 0.
+- ScoreLine rendered segments with zero value, causing unnecessary visual elements.
+
+## [16.0.2] - 2025-06-11
+
+### Fixed
+
+- Score donut dissapears when value between 98 - 99 is passed.
+
+## [16.0.1] - 2025-05-30
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/base-components` [16.0.0 ~> 16.0.1], `@semcore/flex-box` [16.0.0 ~> 16.0.1]).
+
 ## [16.0.0] - 2025-05-19
 
 ### Added

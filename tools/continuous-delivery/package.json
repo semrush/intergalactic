@@ -6,27 +6,21 @@
     "init-prerelease": "bin/init-prerelease.ts",
     "publish-prerelease": "bin/publish-prerelease.ts",
     "publish-release": "bin/publish-release.ts",
-    "upload-static": "bin/upload-static.ts"
+    "upload-static": "bin/upload-static.ts",
+    "pkg-diff": "bin/get-changed-packages.ts",
+    "send-prerelease-changelog": "bin/send-prerelease-changelog.ts"
   },
   "private": true,
   "license": "MIT",
   "dependencies": {
-    "@semcore/changelog-handler": "*",
-    "@semcore/slack-integration": "*",
-    "axios": "0.25.0",
-    "compressing": "^1.9.1",
+    "@semcore/changelog-handler": "workspace:*",
+    "@semcore/slack-integration": "workspace:*",
+    "axios": "1.9.0",
+    "compressing": "^1.10.3",
     "dayjs": "1.8.36",
-    "dotenv": "^16.0.3",
-    "execa": "6.1.0",
-    "fs-extra": "9.0.1",
     "marked-ast": "0.3.0",
     "marked-ast-markdown": "2.1.0",
-    "p-limit": "4.0.0",
-    "semver": "5.6.0",
-    "simple-git": "3.16.0",
-    "tsm": "2.2.2",
-    "intergalactic-migrate": "workspace:*",
-    "node-fetch": "3.3.2"
+    "p-limit": "4.0.0"
   },
   "scripts": {
     "start": "tsm --require=../../.ci/tsm-filter-warnings.js index.ts"

@@ -15,15 +15,16 @@ type TokensInput = {
   [nestedKey: string]:
     | TokensInput
     | {
-        value: string;
-        type: string;
-        description: string;
-        $extensions?: ExtensionsInput;
-      };
+      value: string;
+      type: string;
+      description: string;
+      $extensions?: ExtensionsInput;
+    };
 };
 
 export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: string) => {
   const values: { [tokenName: string]: string } = {};
+  const basicTokens = new Set<string>();
   const modifications: {
     [tokenName: string]: {
       type: 'lighten' | 'darken' | 'alpha';
@@ -41,27 +42,27 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
     | `{${string}.${string}}, ${number}`;
   type DesignTokenNode =
     | {
-        type: string;
-        value:
-          | string
-          | { [subTokens: string]: `{${string}}` }
-          | ColorPattern
-          | `{${string}}`
-          | `{${string}*${number}}`
-          | `${ColorPattern}; ${ColorPattern}`;
+      type: string;
+      value:
+        | string
+        | { [subTokens: string]: `{${string}}` }
+        | ColorPattern
+        | `{${string}}`
+        | `{${string}*${number}}`
+        | `${ColorPattern}; ${ColorPattern}`;
 
-        description?: string;
-        $extensions?: ExtensionsInput;
-      }
+      description?: string;
+      $extensions?: ExtensionsInput;
+    }
     | DesignTokenTree;
   type DesignTokenTree = { [childrenNodeName: string]: DesignTokenNode };
-  const traverse = (node: DesignTokenNode, pathParts: string[] = []) => {
+  const traverse = (node: DesignTokenNode, pathParts: string[] = [], isBasic?: boolean) => {
     for (const key in node) {
       if (key === 'type') continue;
       if (key === 'value') continue;
       if (key === 'description') continue;
       if (key === '$extensions') continue;
-      traverse((node as any)[key], [...pathParts, key]);
+      traverse((node as any)[key], [...pathParts, key], isBasic);
     }
     if ('type' in node && typeof node.type === 'string') {
       const path = pathParts.join('-');
@@ -74,6 +75,9 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
         throw new Error(`Duplicated design token "${path}"`);
       }
       values[path] = node.value;
+      if (isBasic) {
+        basicTokens.add(path);
+      }
       if (typeof node.description === 'string') descriptions[path] = node.description;
       if (node.$extensions) {
         for (const extension in node.$extensions) {
@@ -88,6 +92,7 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
     }
   };
 
+  traverse(base, [], true);
   traverse(tokens);
 
   const resolveColor = (color: string): string => {
@@ -96,7 +101,7 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
     }
     if (color.startsWith('rgba(') && color.endsWith(')')) {
       const lastComa = color.lastIndexOf(',');
-      const alpha = parseFloat(color.substring(lastComa + 1, color.length - 1));
+      const alpha = Number.parseFloat(color.substring(lastComa + 1, color.length - 1));
       if (Number.isNaN(alpha)) {
         throw new Error(`Unable to parse rgba of ${color}`);
       }
@@ -106,7 +111,7 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
       if (resolvedColor.startsWith('#')) {
         if (resolvedColor.length === 1 + 3) {
           resolvedColor = [resolvedColor[1], resolvedColor[2], resolvedColor[3]]
-            .map((hex) => parseInt(hex, 16))
+            .map((hex) => Number.parseInt(hex, 16))
             .join(', ');
         } else if (resolvedColor.length === 1 + 6) {
           resolvedColor = [
@@ -114,7 +119,7 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
             resolvedColor.substring(3, 5),
             resolvedColor.substring(5, 7),
           ]
-            .map((hex) => parseInt(hex, 16))
+            .map((hex) => Number.parseInt(hex, 16))
             .join(', ');
         } else {
           throw new Error(
@@ -135,8 +140,8 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
         baseColor.length === 4
           ? [baseColor[1], baseColor[2], baseColor[3]]
           : [baseColor.substring(1, 3), baseColor.substring(3, 5), baseColor.substring(5, 7)]
-      ).map((chunk) => parseInt(chunk, 16));
-      const a = parseFloat(color.split(', ')[1]);
+      ).map((chunk) => Number.parseInt(chunk, 16));
+      const a = Number.parseFloat(color.split(', ')[1]);
 
       return `rgba(${r}, ${g}, ${b}, ${a})`;
     }
@@ -170,7 +175,7 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
       if (!resolvedValue.endsWith('px')) {
         throw new Error(`Unsupported expression ${token}`);
       }
-      return `${parseFloat(resolvedValue) * parseFloat(factor)}px`;
+      return `${Number.parseFloat(resolvedValue) * Number.parseFloat(factor)}px`;
     } else if (token.includes('{') && token.includes('}')) {
       const reference = token
         .substring(token.indexOf('{') + 1, token.indexOf('}'))
@@ -250,14 +255,15 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
 
   const processedTokens: { name: string; value: string; description: string }[] = [];
   for (const token in values) {
+    const isBase = basicTokens.has(token);
     processedTokens.push({
-      name: `--${prefix}-${token}`,
+      name: isBase ? `--${token}` : `--${prefix}-${token}`,
       description: descriptions[token],
       value: values[token],
     });
   }
 
-  return { processedTokens, values, types, rawValues, descriptions };
+  return { processedTokens, values, types, rawValues, descriptions, basicTokens };
 };
 
 export const tokensToCss = (
@@ -286,7 +292,7 @@ export const tokensToJs = (tokens: { name: string; value: string; description: s
   for (const token of tokens) {
     jsLines.push(`  '${token.name}': '${token.value}',`);
   }
-  jsLines.push('}\n');
+  jsLines.push('};\n');
   return jsLines.join('\n');
 };
 

@@ -1,5 +1,5 @@
-import React from 'react';
 import propsForElement from '@semcore/core/lib/utils/propsForElement';
+import React from 'react';
 
 /**
  * Object that is fully describes the pattern
@@ -636,6 +636,7 @@ export const PatternFill = ({
     return () => (
       <pattern
         id={id}
+        // eslint-disable-next-line react/no-unknown-property
         fill={color}
         x='0'
         y='0'

@@ -1,7 +1,7 @@
-import React from 'react';
 import { DataTable } from '@semcore/data-table';
-import { Hint } from '@semcore/tooltip';
 import AmazonM from '@semcore/icon/color/Amazon/m';
+import { Hint } from '@semcore/tooltip';
+import React from 'react';
 
 const Demo = () => {
   return (
@@ -9,8 +9,9 @@ const Demo = () => {
     <>
       <DataTable
         data={data}
-        aria-label={'Fixed multi level header with 2 scroll'}
-        defaultGridTemplateColumnWidth={'1fr'} hMax={500}
+        aria-label='Fixed multi level header with 2 scroll'
+        defaultGridTemplateColumnWidth='1fr'
+        hMax={500}
         headerProps={{
           sticky: true,
         }}
@@ -26,14 +27,13 @@ const Demo = () => {
                     <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
                     <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
                   </>
-                )
-
+                ),
 
               },
               { name: 'cpc', children: 'CPC' },
               { name: 'vol', children: 'Vol.' },
 
-            ]
+            ],
           },
 
           { name: 'keyword', children: 'Keyword' },
@@ -42,7 +42,7 @@ const Demo = () => {
       />
 
     </>
-  )
+  );
 };
 
 const data = [

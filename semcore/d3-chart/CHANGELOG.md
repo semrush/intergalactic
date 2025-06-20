@@ -2,6 +2,30 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.4] - 2025-06-09
+
+### Fixed
+
+- Legend for `Bubble` chart.
+
+### Added
+
+- New `Bubble` child component (`Bubble.Circle`) which incapsulates all the inner logic of how to draw a circle.
+
+## [16.0.3] - 2025-06-05
+
+### Fixed
+
+- Legend item behavior when the it's in unchecked state but the chart line dedicated to it behaves as active.
+- Animation for `Dots` with pattern.
+- Unsupported attributes on DOM nodes in `Area` chart.
+
+## [16.0.2] - 2025-05-30
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [16.0.0 ~> 16.0.1], `@semcore/checkbox` [16.0.0 ~> 16.0.1], `@semcore/icon` [16.1.0 ~> 16.2.0], `@semcore/base-components` [16.0.0 ~> 16.0.1]).
+
 ## [16.0.1] - 2025-05-23
 
 ### Fixed

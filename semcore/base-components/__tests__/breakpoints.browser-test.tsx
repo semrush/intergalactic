@@ -1,5 +1,5 @@
-import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import { expect, test } from '@semcore/testing-utils/playwright';
 
 test.describe('Simple-use - Breakpoints Button Size', () => {
   const breakpoints = [
@@ -77,7 +77,7 @@ test.describe('Mocking - Breakpoints Text', () => {
       await page.waitForTimeout(100);
 
       const mediaTextLocator = page.locator('div', {
-        hasText: "Media matches '(max-width: 700px)'",
+        hasText: 'Media matches \'(max-width: 700px)\'',
       });
       await expect(mediaTextLocator.nth(1)).toBeVisible();
     });
@@ -101,7 +101,7 @@ test.describe('Custom media - Breakpoints Text', () => {
       await page.setContent(htmlContent);
 
       if (browserName !== 'webkit') {
-        //the webkit skipped temporary because it doesnt update the size, in debug mode all words well
+        // the webkit skipped temporary because it doesnt update the size, in debug mode all words well
         await page.setViewportSize({ width, height: 800 });
         await page.waitForTimeout(100);
 

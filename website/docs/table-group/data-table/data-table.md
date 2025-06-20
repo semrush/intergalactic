@@ -18,31 +18,26 @@ Our design system has two table types – [primary](../table-primary/table-prima
 
 Table: Common styles for table content
 
-| Content                   | Styles and tokens                                                                                                      |
-| ------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| Text in the header        | Use `--fs-100` and `--lh-100` tokens for font-size and line-height respectively, and `--text-primary` token for color. |
-| The text in the row       | Use `--fs-200` and `--lh-200` tokens for font-size and line-height respectively, and `--text-primary` token for color. |
-| Secondary text            | Use `--text-secondary` token for color.                                                                                |
-| Stand alone icon          | Icon with M size and `--icon-secondary-neutral` token for color.                                                       |
-| The icon next to the text | Icon with M size and `--icon-secondary-neutral` token for color.                                                       |
-| Header and cell checkbox  | Use [Checkbox](/components/checkbox/checkbox) with M size.                                                             |
+| Content                                     | Styles and tokens
+| ------------------------------------------- | ---------------------------------------------------------------------
+| The text in the row                         | Use `--fs-200` and `--lh-200` tokens for font-size and line-height respectively, and `--text-primary` token for color.
+| Secondary text                              | Use `--text-secondary` token for color.
+| Icon, either next to the text or standalone | Use M size and `--icon-secondary-neutral` token for color.
 
 ## Sorting
 
-For detailed information on sorting columns in the table, refer to [Table controls](/table-group/table-controls/table-controls).
+For detailed information on sorting columns in the table, refer to [Table controls](/table-group/table-controls/table-controls#sorting).
 
 ## Tooltip
 
-To display additional information about a column, use tooltip. It will appear by hovering over the column title.
+You can use tooltips to display additional information about columns. It will appear by hovering over the column title.
 
-### Conditions for tooltip appearance
-
-Table: Conditions for the tooltip appearance
+Table: Tooltips in Table header
 
 | Case                                                  | Appearance example        |
 | ----------------------------------------------------- | ------------------------- |
-| If text is too long and collapsed into an `ellipsis`. | ![](static/tooltip-1.png) |
-| If the column has additional explanatory information. | ![](static/tooltip-2.png) |
+| Use [Ellipsis](../../components/ellipsis/ellipsis.md) if the column title is too long and needs to be truncated.                        | ![](static/tooltip-1.png) |
+| Use [Tooltip](../../components/tooltip/tooltip.md) if the column has additional explanatory information. | ![](static/tooltip-2.png) |
 
 ## Table row states
 
@@ -79,12 +74,14 @@ Table: Hover styles for different cells
 | Loading                  | ![](static/loading-hover.png)  | Change opacity of the elements inside a row to `--disabled-opacity`. Spin has size XS.                                                                                                 |
 | Limit, limit hover       | ![](static/limit.png)          | For limiting rows use `--overlay-limitation-secondary` token. The `hover` state is the same as the default state has.                                                                  |
 
-### Hover for row-span and col-span
+### Hover and merged cells
 
-- Hovering over the parent column highlights all child rows.
-- Hovering over a child row highlights the parent column.
+- hovering over a child row highlights the parent cell
+- hovering over the parent cell highlights all child rows
 
-### Cells coloring
+![](static/merged-hover.png)
+
+### Cell coloring
 
 If a cell is colored, it remains colored when you hover over it. Users shouldn't lose information about the cell's color when hovering over a row.
 
@@ -127,19 +124,16 @@ Text inside cells in rows and headers is aligned according to these rules.
 - Decimal numbers
 - Tags/Badges (when marking the entire row)
 
-## Scroll bar
+## Horizontal scroll
 
-The most common case is scroll bar showed at the bottom of the table. Horizontal scrolling in our tables indicates hidden data beyond the viewport in wide tables. It's needed when:
+The most common case is a scroll bar shown at the bottom of the table. Horizontal scrolling in our tables indicates hidden data beyond the viewport in wide tables. It's needed when:
 
 - All table columns don't fit the viewport.
 - Adding a new column from the settings manager makes the table data exceed the viewport.
 - The screen where the user views the report is smaller than 992px.
 
 ::: tip
-Having a horizontal scroll in a large table isn't a bad practice; it's a familiar experience for most users (similar to Excel). It's wrong when adding columns to a table makes them unnecessarily narrow, without the need for scrolling.
-
-<!-- > [UX tables to work with (Russian)](https://designpub.ru/ux-%D1%82%D0%B0%D0%B1%D0%BB%D0%B8%D1%86-%D1%81-%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D0%BC%D0%B8-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D1%8E%D1%82-%D1%87%D0%B0%D1%81%D1%82%D1%8C-1-%D0%BF%D1%80%D0%BE%D1%81%D0%BC%D0%BE%D1%82%D1%80-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85-5ea60df37f12) -->
-
+Having a horizontal scroll in a large table isn't a bad practice; it's a familiar experience for most users (similar to Excel). Avoid making columns too narrow trying to fit them all on the screen, as it can make data less readable.
 :::
 
 ![](static/scroll-horizontal.png)

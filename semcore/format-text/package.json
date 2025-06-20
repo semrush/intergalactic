@@ -1,7 +1,7 @@
 {
   "name": "@semcore/format-text",
   "description": "Semrush FormatText Component",
-  "version": "16.0.1",
+  "version": "16.0.3",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.mjs",
   "typings": "lib/types/index.d.ts",
@@ -27,7 +27,7 @@
     "directory": "semcore/format-text"
   },
   "devDependencies": {
-    "@types/react": "18.0.21",
-    "@semcore/testing-utils": "1.0.0"
+    "@semcore/core": "workspace:*",
+    "@semcore/testing-utils": "workspace:*"
   }
 }

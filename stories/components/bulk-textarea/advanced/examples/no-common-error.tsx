@@ -1,7 +1,7 @@
-import React from 'react';
 import BulkTextarea from '@semcore/bulk-textarea';
 import { Box, Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
+import React from 'react';
 
 const validateRow = (line: string, lines: string[]) => {
   let isValid = true;
@@ -33,11 +33,11 @@ const Demo = () => {
         onChange={setValue}
         lineValidation={validateRow}
         maxLines={10}
-        size={'l'}
+        size='l'
         linesDelimiters={[',']}
         readonly={false}
         disabled={false}
-        placeholder={'Enter or paste a list using comma or Enter'}
+        placeholder='Enter or paste a list using comma or Enter'
         minRows={2}
         maxRows={10}
         validateOn={['blur']}
@@ -49,15 +49,15 @@ const Demo = () => {
         lineProcessing={lineProcessing}
       >
         <Flex alignItems='center' justifyContent='flex-start' mb={2} gap={1}>
-          <Text tag={'label'} size={300} id={'keywords-label'}>
+          <Text tag='label' size={300} id='keywords-label'>
             Favourite movies
           </Text>
           <BulkTextarea.Counter />
         </Flex>
         <BulkTextarea.InputField
-          aria-labelledby={'keywords-label'}
-          commonErrorMessage={''}
-          state={'normal'}
+          aria-labelledby='keywords-label'
+          commonErrorMessage=''
+          state='normal'
         />
         <Flex alignItems='center' justifyContent='space-between' mt={2}>
           <BulkTextarea.ErrorsNavigation />

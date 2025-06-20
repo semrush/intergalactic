@@ -1,17 +1,18 @@
-import React from 'react';
-import cn from 'classnames';
+import ButtonComponent from '@semcore/button';
 import { createComponent, sstyled, Root, lastInteraction } from '@semcore/core';
+import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
+import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
+import { forkRef } from '@semcore/core/lib/utils/ref';
+import { useUID } from '@semcore/core/lib/utils/uniqueID';
 import Dropdown, { AbstractDropdown, selectedIndexContext, enhance } from '@semcore/dropdown';
 import { Flex, useBox } from '@semcore/flex-box';
 import ScrollAreaComponent, { hideScrollBarsFromScreenReadersContext } from '@semcore/scroll-area';
-import { useUID } from '@semcore/core/lib/utils/uniqueID';
-import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-import style from './style/dropdown-menu.shadow.css';
-import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
-import { forkRef } from '@semcore/core/lib/utils/ref';
-import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
-import ButtonComponent from '@semcore/button';
 import { Text } from '@semcore/typography';
+import cn from 'classnames';
+import React from 'react';
+
+import style from './style/dropdown-menu.shadow.css';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 const ListBoxContextProvider = ({ children }) => (
   <hideScrollBarsFromScreenReadersContext.Provider value={true}>
@@ -97,7 +98,7 @@ class DropdownMenuRoot extends AbstractDropdown {
 
     return {
       ...super.getTriggerProps(),
-      onKeyDown: callAllEventHandlers(
+      'onKeyDown': callAllEventHandlers(
         this.handlePreventCommonKeyDown.bind(this),
         this.handleOpenKeyDown.bind(this),
         this.handleKeyDownForMenu('trigger'),
@@ -184,14 +185,15 @@ class DropdownMenuRoot extends AbstractDropdown {
 
       const show =
         (e.key === 'ArrowRight' && placement?.startsWith('right')) ||
-        (e.key === 'ArrowLeft' && placement?.startsWith('left'));
+        (e.key === 'ArrowLeft' && placement?.startsWith('left')) ||
+        ((e.key === 'Enter' || e.key === ' ') && !inlineActions);
       const hide =
         (e.key === 'ArrowLeft' && placement?.startsWith('right')) ||
         (e.key === 'ArrowRight' && placement?.startsWith('left')) ||
         e.key === 'Escape';
       const isMenuItem = e.target.getAttribute('role')?.startsWith(super.childRole);
 
-      if (place === 'trigger' && (!visible || inlineActions) && show && isMenuItem) {
+      if (place === 'trigger' && show && isMenuItem) {
         this.handlers.visible(true);
         this.handlers.highlightedIndex(0);
         setTimeout(() => {
@@ -453,7 +455,7 @@ function ItemHint({ styles }) {
   const SItemHint = Root;
   const { hintId } = React.useContext(menuItemContext);
 
-  return sstyled(styles)(<SItemHint render={Flex} id={hintId} aria-hidden={'true'} />);
+  return sstyled(styles)(<SItemHint render={Flex} id={hintId} aria-hidden='true' />);
 }
 
 /**
@@ -491,7 +493,7 @@ function NestingTrigger({ forwardRef }) {
       render={DropdownMenu.Item.Content}
       tag={DropdownMenu.Trigger}
       ref={forwardRef}
-      use:role={'menuitem'}
+      use:role='menuitem'
     />
   );
 }

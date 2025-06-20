@@ -1,12 +1,11 @@
-import type { Meta, StoryObj } from '@storybook/react';
-
 import WidgetEmpty from '@semcore/widget-empty';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
+import ErrorStatesExample from './examples/error-states';
+import NoDataExample from './examples/nodata-states';
 import WidgetEmptyCasesExample from './examples/widget-empty-states';
 import WidgetEmptyWithControlsCasesExample from './examples/widget-empty-with-controls';
 import WidgetEmptyWithLinksExample from './examples/widget-empty-withlink';
-import ErrorStatesExample from './examples/error-states';
-import NoDataExample from './examples/nodata-states';
 
 const meta: Meta<typeof WidgetEmpty> = {
   title: 'Components/WidgetEmpty/Tests',

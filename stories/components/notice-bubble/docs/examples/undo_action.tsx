@@ -1,7 +1,7 @@
-import React from 'react';
-import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/notice-bubble';
 import Button from '@semcore/button';
 import Link from '@semcore/link';
+import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/notice-bubble';
+import React from 'react';
 
 const manager = new NoticeBubbleManager();
 
@@ -11,7 +11,9 @@ const Demo = () => {
     manager.add({
       children: (
         <>
-          Link was moved to <Link href='#'>Cats from outer space group</Link>
+          Link was moved to
+          {' '}
+          <Link href='#'>Cats from outer space group</Link>
         </>
       ),
       action: <Button theme='invert'>Undo</Button>,

@@ -1,5 +1,5 @@
-import React from 'react';
 import { DataTable } from '@semcore/data-table';
+import React from 'react';
 
 const Demo = () => {
   return (
@@ -7,7 +7,7 @@ const Demo = () => {
       data={data}
       use='secondary'
       sort={['kd', 'desc']}
-      aria-label={'Secondary'}
+      aria-label='Secondary'
       columns={[
         { name: 'keyword', children: 'Keyword' },
         { name: 'kd', children: 'KD %' },

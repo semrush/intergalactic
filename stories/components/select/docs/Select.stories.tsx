@@ -1,7 +1,9 @@
-import type { Meta, StoryObj } from '@storybook/react';
-
 import Select from '@semcore/select';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
+import { AdvancedFilteringControlTest } from './__tests__/advanced_filtering_control.test';
+import { BasicUsageTest } from './__tests__/basic_usage.test';
+import { SortingMultiselectOptionsTest } from './__tests__/sorting_multiselect_options.test';
 import AdvancedFilteringControlExample from './examples/advanced_filtering_control';
 import BasicUsageExample from './examples/basic_usage';
 import ControlledAndUncontrolledModesExample from './examples/controlled_and_uncontrolled_modes';
@@ -13,13 +15,9 @@ import OptionsExample from './examples/options';
 import OptionsFilteringExample from './examples/options_filtering';
 import RenderFunctionExample from './examples/render_function';
 import SortingMultiselectOptionsExample from './examples/sorting_multiselect_options';
-import TriggerCustomizationDeepExample from './examples/trigger_customization_deep';
 import TriggerCustomizationExample from './examples/trigger_customization';
-
-import { BasicUsageTest } from './__tests__/basic_usage.test';
-import { AdvancedFilteringControlTest } from './__tests__/advanced_filtering_control.test';
+import TriggerCustomizationDeepExample from './examples/trigger_customization_deep';
 import { playWrapper } from '../../../utils/playWrapper';
-import { SortingMultiselectOptionsTest } from './__tests__/sorting_multiselect_options.test';
 
 const meta: Meta<typeof Select> = {
   title: 'Components/Select/Documentation',

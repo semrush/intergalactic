@@ -1,7 +1,8 @@
 import React from 'react';
+
 import assignProps from '../utils/assignProps';
-import useEnhancedEffect from '../utils/use/useEnhancedEffect';
 import pick from '../utils/pick';
+import useEnhancedEffect from '../utils/use/useEnhancedEffect';
 
 export const HOIST_CONTEXT = Symbol('HOIST_CONTEXT');
 const HOIST_SELF = Symbol('HOIST_SELF');
@@ -27,7 +28,7 @@ function Enhancement(childComponents: any, Context: any) {
         Boolean(Component.hoistProps?.length),
       );
     },
-    init: function (this: any, props: any, WrapperComponent: any, isFunction: boolean) {
+    init: function (this: any, _props: any, _WrapperComponent: any, isFunction: boolean) {
       if (isFunction) {
         // TODO: might breake rules of hooks (by lsroman)
         this[HOIST_SELF] = React.useState({});

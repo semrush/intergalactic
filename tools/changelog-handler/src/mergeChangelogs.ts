@@ -1,10 +1,12 @@
 import fs from 'fs/promises';
-import { componentChangelogParser } from './parsers/componentChangelogParser';
+
 import equal from 'fast-deep-equal';
-import { serializeComponentChangelog } from './serializers/serializeComponentChangelog';
 import { toMarkdown } from 'marked-ast-markdown';
-import { Changelog } from './types';
 import semver from 'semver';
+
+import { componentChangelogParser } from './parsers/componentChangelogParser';
+import { serializeComponentChangelog } from './serializers/serializeComponentChangelog';
+import type { Changelog } from './types';
 
 export const mergeChangelogs = async (
   aPath: string,
@@ -54,13 +56,12 @@ export const mergeChangelogs = async (
       output.push(bChangelog);
       bIndex--;
     } else {
-      // biome-ignore lint/suspicious/noConsoleLog:
       console.log('changelog a:');
-      // biome-ignore lint/suspicious/noConsoleLog:
+
       console.log(aChangelog);
-      // biome-ignore lint/suspicious/noConsoleLog:
+
       console.log('changelog b:');
-      // biome-ignore lint/suspicious/noConsoleLog:
+
       console.log(bChangelog);
       throw new Error(
         `Unable to handle merging of changelogs above from ${gitOursRef} merged into ${gitBaseRef}`,

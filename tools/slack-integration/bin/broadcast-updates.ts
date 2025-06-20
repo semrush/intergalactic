@@ -3,6 +3,7 @@
 const dryRun = process.argv.includes('--dry-run');
 
 import dayjs from 'dayjs';
+
 import { broadcastUpdates } from '../index';
 
 const endDate = dayjs().format('YYYY-MM-DD');

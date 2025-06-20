@@ -1,6 +1,7 @@
-import React from 'react';
-import { UnknownProperties } from '@semcore/core';
-import { IntergalacticD3Component } from './Plot';
+import type { UnknownProperties } from '@semcore/core';
+import type React from 'react';
+
+import type { IntergalacticD3Component } from './Plot';
 
 /** @deprecated */
 export interface IClipPath extends ClipPath, UnknownProperties {}

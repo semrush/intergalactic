@@ -1,6 +1,5 @@
-import { expect, voiceOverTest as test } from '@semcore/testing-utils/playwright';
-
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import { expect, voiceOverTest as test } from '@semcore/testing-utils/playwright';
 import { makeVoiceOverReporter } from '@semcore/testing-utils/vo-reporter';
 
 test('Users can interact with Carousel via VoiceOver', async ({
@@ -8,7 +7,7 @@ test('Users can interact with Carousel via VoiceOver', async ({
   voiceOver: pureVoiceOver,
 }) => {
   const standPath =
-    'website/docs/components/carousel/examples/carousel_with_default_indicators.tsx';
+    'stories/components/carousel/docs/examples/carousel_with_default_indicators.tsx';
 
   const htmlContent = await e2eStandToHtml(standPath, 'en');
   await page.reload();

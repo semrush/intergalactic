@@ -1,44 +1,41 @@
-import React from 'react';
-
+import type { Instance, Modifier } from '@popperjs/core/lib/types';
 import {
   createComponent,
   Component,
-  IRootComponentProps,
+  type IRootComponentProps,
   Root,
   sstyled,
   lastInteraction,
 } from '@semcore/core';
+import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
-import { Box } from '../flex-box';
-import { OutsideClick } from '../outside-click';
-import { Portal, PortalProvider } from '../portal';
-import { NeighborLocation } from '../neighbor-location';
+import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
+import { hasParent } from '@semcore/core/lib/utils/hasParent';
+import logger from '@semcore/core/lib/utils/logger';
+import pick from '@semcore/core/lib/utils/pick';
 import { setRef, forkRef } from '@semcore/core/lib/utils/ref';
+import { useContextTheme } from '@semcore/core/lib/utils/ThemeProvider';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import {
   useFocusLock,
   isFocusInside,
   setFocus,
   makeFocusLockSyntheticEvent,
 } from '@semcore/core/lib/utils/use/useFocusLock';
-import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
-import pick from '@semcore/core/lib/utils/pick';
-import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import { Scale, animationContext } from '../animation';
 import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
-import { useContextTheme } from '@semcore/core/lib/utils/ThemeProvider';
-import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
-import { hasParent } from '@semcore/core/lib/utils/hasParent';
-import logger from '@semcore/core/lib/utils/logger';
-
-import createPopper from './createPopper';
-
-import style from './style/popper.shadow.css';
 import {
   useZIndexStacking,
   ZIndexStackingContextProvider,
 } from '@semcore/core/lib/utils/zIndexStacking';
+import React from 'react';
 
-import {
+import { Scale, animationContext } from '../animation';
+import { Box } from '../flex-box';
+import { NeighborLocation } from '../neighbor-location';
+import { OutsideClick } from '../outside-click';
+import { Portal, PortalProvider } from '../portal';
+import createPopper from './createPopper';
+import type {
   InnerPopperPopperProps,
   InnerPopperTriggerProps,
   Popper as PopperType,
@@ -47,7 +44,7 @@ import {
   PopperProps,
   PopperTriggerProps,
 } from './Popper.types';
-import { Instance, Modifier } from '@popperjs/core/lib/types';
+import style from './style/popper.shadow.css';
 
 function isObject(obj: any) {
   return typeof obj === 'object' && !Array.isArray(obj);
@@ -129,7 +126,7 @@ class PopperRoot extends Component<PopperProps, {}, {}, typeof PopperRoot.enhanc
     },
     hover: {
       trigger: [
-        ['onMouseEnter', 'onKeyboardFocus', 'onTouchStart'],
+        ['onMouseEnter', 'onFocus', 'onKeyboardFocus', 'onTouchStart'],
         ['onMouseLeave', 'onBlur'],
       ],
       popper: [['onMouseEnter', 'onFocusCapture', 'onTouchStart'], ['onMouseLeave']],
@@ -355,6 +352,7 @@ class PopperRoot extends Component<PopperProps, {}, {}, typeof PopperRoot.enhanc
       this.bindHandlerChangeVisibleWithTimer(false, component, 'onKeyDown')(e);
     }
   };
+
   bindHandlerKeyDown = (
     onKeyDown: (event: React.KeyboardEvent) => void | false,
     component: PopperComponent,
@@ -563,16 +561,18 @@ class PopperRoot extends Component<PopperProps, {}, {}, typeof PopperRoot.enhanc
     const { Children, visible, root, onOutsideClick, excludeRefs = [] } = this.asProps;
     return (
       <>
-        {visible ? (
-          <OutsideClick
-            root={root}
-            excludeRefs={[this.triggerRef, this.popperRef, ...excludeRefs]}
-            onOutsideClick={callAllEventHandlers(
-              onOutsideClick,
-              this.bindHandlerChangeVisibleWithTimer(false),
-            )}
-          />
-        ) : null}
+        {visible
+          ? (
+              <OutsideClick
+                root={root}
+                excludeRefs={[this.triggerRef, this.popperRef, ...excludeRefs]}
+                onOutsideClick={callAllEventHandlers(
+                  onOutsideClick,
+                  this.bindHandlerChangeVisibleWithTimer(false),
+                )}
+              />
+            )
+          : null}
         <Children />
       </>
     );
@@ -589,29 +589,7 @@ function Trigger(props: PopperTriggerProps & IRootComponentProps & InnerPopperTr
     if (highlighted === true) {
       onKeyboardFocus({ currentTarget: triggerRef.current });
     }
-  }, [highlighted]);
-
-  const handleFocus = React.useCallback(
-    (e: FocusEvent) => {
-      if (
-        lastInteraction.isKeyboard() &&
-        triggerRef.current &&
-        (e.target instanceof HTMLElement || e.target instanceof SVGElement) &&
-        hasParent(e.target, triggerRef.current)
-      ) {
-        onKeyboardFocus?.();
-      }
-    },
-    [onKeyboardFocus, triggerRef.current],
-  );
-
-  React.useEffect(() => {
-    triggerRef.current?.addEventListener('focusin', handleFocus);
-
-    return () => {
-      triggerRef.current?.removeEventListener('focusin', handleFocus);
-    };
-  }, [triggerRef.current, handleFocus]);
+  }, [highlighted, onKeyboardFocus]);
 
   const activeRef = React.useRef(active);
   activeRef.current = active;

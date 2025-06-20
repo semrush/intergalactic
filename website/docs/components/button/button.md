@@ -183,9 +183,9 @@ const Preview = (preview) => {
         disabled={disabled}
         active={active}
       >
-        {beforeIcon && <ButtonLink.Addon>{renderIcon(beforeIcon && 'before', (parseInt(sizeLink, 10) > 300) )}</ButtonLink.Addon>}
+        {beforeIcon && <ButtonLink.Addon>{renderIcon(beforeIcon && 'before', (Number.parseInt(sizeLink, 10) > 300) )}</ButtonLink.Addon>}
         {(beforeIcon || afterIcon) && child ? <ButtonLink.Text>{child}</ButtonLink.Text> : child}
-        {afterIcon && <ButtonLink.Addon>{renderIcon(afterIcon && 'after', (parseInt(sizeLink, 10) > 300) )}</ButtonLink.Addon>}
+        {afterIcon && <ButtonLink.Addon>{renderIcon(afterIcon && 'after', (Number.parseInt(sizeLink, 10) > 300) )}</ButtonLink.Addon>}
       </ButtonLink>
   );
 };

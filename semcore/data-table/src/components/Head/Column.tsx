@@ -1,19 +1,19 @@
-import * as React from 'react';
-import { Component, Intergalactic, lastInteraction, Root, sstyled } from '@semcore/core';
-import { ColumnPropsInner, DataTableColumnProps } from './Column.types';
 import { Flex } from '@semcore/base-components';
-import SortDesc from '@semcore/icon/SortDesc/m';
-import SortAsc from '@semcore/icon/SortAsc/m';
-import { IconProps } from '@semcore/icon';
-
-import style from './style.shadow.css';
 import { ButtonLink } from '@semcore/button';
-import type { DataTableData, SortDirection } from '../DataTable/DataTable.types';
-import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
+import { Component, lastInteraction, Root, sstyled } from '@semcore/core';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
+import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
 import { isFocusInside } from '@semcore/core/lib/utils/focus-lock/isFocusInside';
+import type Icon from '@semcore/icon';
+import SortAsc from '@semcore/icon/SortAsc/m';
+import SortDesc from '@semcore/icon/SortDesc/m';
+import * as React from 'react';
 
-const SORTING_ICON: { [key in SortDirection]: Intergalactic.Component<'svg', IconProps> } = {
+import type { ColumnPropsInner, DataTableColumnProps } from './Column.types';
+import style from './style.shadow.css';
+import type { DataTableData, SortDirection } from '../DataTable/DataTable.types';
+
+const SORTING_ICON: { [key in SortDirection]: typeof Icon } = {
   desc: SortDesc,
   asc: SortAsc,
 } as const;
@@ -202,15 +202,15 @@ export class Column<D extends DataTableData> extends Component<
   };
 
   handleSortClick = (e: React.SyntheticEvent<HTMLButtonElement>) => {
-    const { sort, onSortChange, name } = this.asProps;
+    const { sort, onSortChange, name, sortable } = this.asProps;
 
     if (
       lastInteraction.isMouse() ||
       (lastInteraction.isKeyboard() && e.target === e.currentTarget)
     ) {
-      if (sort && onSortChange) {
+      if (sortable && onSortChange) {
         const sortDirection =
-          sort[0] === name ? reversedSortDirection[sort[1]] : this.defaultDirection;
+          sort?.[0] === name ? reversedSortDirection[sort[1]] : this.defaultDirection;
 
         onSortChange([name, sortDirection], e);
       }
@@ -277,26 +277,28 @@ export class Column<D extends DataTableData> extends Component<
     const { styles, sortable, sort, uid, name, parent, sortableColumnDescribeId, Children } =
       this.asProps;
 
-    const SSortIcon =
-      sort && sort[0] === name ? SORTING_ICON[sort[1]] : SORTING_ICON[this.defaultDirection];
-    const isSorted = sort?.[0] === name;
+    const [sortBy, sortDirection] = sort ?? [undefined, undefined];
+    const isSorted = sortBy === name && !!sortDirection;
+
+    const SSortIcon = isSorted ? SORTING_ICON[sortDirection] : SORTING_ICON[this.defaultDirection];
+
     const visibleSort = Boolean(sortable) && (this.state.sortVisible || isSorted);
 
     const ariaDescribedBy = [];
-    if (isSorted) {
+    if (sortable) {
       ariaDescribedBy.push(sortableColumnDescribeId);
     }
     if (parent) {
       ariaDescribedBy.push(`igc-table-${uid}-${parent.name}-group`);
     }
 
-    const ariaSortValue = sort?.[1] ? ARIA_SORT[sort[1]] : undefined;
+    const ariaSortValue = isSorted ? ARIA_SORT[sortDirection] : undefined;
 
     return sstyled(styles)(
       <SColumn
         render={Flex}
         ref={this.columnRef}
-        role={'columnheader'}
+        role='columnheader'
         tabIndex={-1}
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
@@ -317,7 +319,7 @@ export class Column<D extends DataTableData> extends Component<
             <SSortButton
               onClick={this.handleSortClick}
               aria-label={ariaSortValue}
-              color={'--intergalactic-icon-primary-neutral'}
+              color='--intergalactic-icon-primary-neutral'
             >
               <SSortButton.Addon tag={SSortIcon} />
             </SSortButton>

@@ -1,22 +1,23 @@
-import { expect, Locator, Page, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import type { Page } from '@semcore/testing-utils/playwright';
+import { expect, Locator, test } from '@semcore/testing-utils/playwright';
 
 const getLocators = (page: Page) => ({
   addFilterBtn: page.getByRole('button', { name: 'Add filter' }),
   clearAllBtn: page.getByRole('button', { name: 'Clear filters' }),
   input: page.locator('[data-ui-name="Input.Value"][placeholder="Filter by name"]'),
-  addFilterInput: (text: any) => page.getByPlaceholder(`${text}`),
-  addFilterListItem: (text: any) =>
+  addFilterInput: (text: string) => page.getByPlaceholder(`${text}`),
+  addFilterListItem: (text: string) =>
     page.locator(`div[data-ui-name="DropdownMenu.Item"]:has-text("${text}")`),
-  addFilterSelectTrigger: (placeholder: any) =>
+  addFilterSelectTrigger: (placeholder: string) =>
     page.locator(
       `div[data-ui-name="AddFilterSelect.Trigger"][placeholder="${placeholder}"] button[aria-expanded="true"]`,
     ),
-  addFilterSelectTriggerFilled: (placeholder: any) =>
+  addFilterSelectTriggerFilled: (placeholder: string) =>
     page.locator(`div[data-ui-name="FilterTrigger.Text"][placeholder="${placeholder}"]`),
-  addFilterSelectOption: (text: any) =>
+  addFilterSelectOption: (text: string) =>
     page.locator(`div[data-ui-name="AddFilterSelect.Option"]:has-text("${text}")`),
-  addFilterDropdownTrigger: (placeholder: any) =>
+  addFilterDropdownTrigger: (placeholder: string) =>
     page.locator(`div[data-ui-name="AddFilterDropdown.Trigger"][placeholder="${placeholder}"]`),
   clearInput: page.locator('[data-ui-name="AddFilterInput.Clear"]'),
   clearSelectButtons: page.locator('[data-ui-name="FilterTrigger.ClearButton"]'),
@@ -171,7 +172,7 @@ test.describe('Add filter button', () => {
     await expect(locators.addFilterBtn).toBeFocused();
     await page.keyboard.press('Enter');
     await page.waitForTimeout(500);
-    //await page.waitForSelector('div[data-ui-name="DropdownMenu.Item"]:has-text("Keywords")', { timeout: 5000 });
+    // await page.waitForSelector('div[data-ui-name="DropdownMenu.Item"]:has-text("Keywords")', { timeout: 5000 });
     await page.keyboard.press('ArrowDown');
     await page.waitForTimeout(200);
     await page.keyboard.press('ArrowDown');
@@ -398,6 +399,7 @@ test.describe('Different types of filters', () => {
     await locators.addFilterInput('Keyword - broad match\n[Keyword] - exact match').fill('Test');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
+    await page.waitForTimeout(50);
     await expect(
       page.locator('[data-ui-name="FilterTrigger.Text"][placeholder="Exclude keywords"]'),
     ).toHaveText('Exclude: 1 keywords');
@@ -545,6 +547,7 @@ test.describe('Different types of filters', () => {
     await selectInputSearch.fill('Banana');
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('Enter');
+    await page.waitForTimeout(50);
     await expect(page).toHaveScreenshot();
     await expect(page.locator('[data-ui-name="FilterTrigger.Text"]')).toHaveText('Fruit: Banana');
     await expect(page.locator('[data-ui-name="FilterTrigger.TriggerButton"]')).toBeFocused();
@@ -661,6 +664,7 @@ test.describe('Different types of filters', () => {
     await page.keyboard.press('Enter');
     await locators.addFilterInput('Filter by position').fill('Test');
     await page.keyboard.press('Tab');
+    await page.waitForTimeout(50);
     await expect(page).toHaveScreenshot();
     await page.keyboard.press('Enter');
     await expect(locators.addFilterBtn).toBeFocused();
@@ -714,9 +718,40 @@ test.describe('Different types of filters', () => {
     await page.waitForTimeout(50);
     await page.keyboard.press('Enter');
     await page.keyboard.press('Tab');
-
+    await page.waitForTimeout(50);
     await expect(page).toHaveScreenshot();
     await page.keyboard.press('Enter');
     await expect(locators.addFilterBtn).toBeFocused();
+  });
+});
+
+test.describe('Controlled mode', () => {
+  test('Verify add filter by visibleFilters prop', async ({ page }) => {
+    const standPath = 'stories/patterns/filters/add-filter/advanced/examples/controlled_add_filter.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+    const locators = getLocators(page);
+
+    await test.step('Add Color filter and fill value from addFilter button', async () => {
+      await locators.addFilterBtn.click();
+      await locators.addFilterListItem('Color').click();
+      await locators.addFilterSelectOption('Blue').click();
+      await expect(locators.addFilterBtn).not.toBeVisible();
+      await expect(locators.clearAllBtn).toBeVisible();
+      await expect(locators.addFilterSelectTriggerFilled('Color')).toHaveText('Color: Blue');
+    });
+
+    await locators.clearAllBtn.click();
+
+    await test.step('Add Color filter and fill value outside from addFilter component', async () => {
+      const cigaretteChartElement = page.locator(`div[data-ui-name="Cigarette.Bar"][aria-label="Colors"] path[color="blue-300"]`);
+      await cigaretteChartElement.click();
+      await expect(locators.addFilterBtn).not.toBeVisible();
+      await expect(locators.clearAllBtn).toBeVisible();
+      await expect(locators.addFilterSelectTriggerFilled('Color')).toHaveText('Color: Yellow');
+      await locators.clearAllBtn.click();
+      await expect(locators.addFilterBtn).toBeVisible();
+      await expect(locators.clearAllBtn).not.toBeVisible();
+    });
   });
 });

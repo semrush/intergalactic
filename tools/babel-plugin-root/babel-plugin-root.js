@@ -1,5 +1,5 @@
-const syntaxJsx = require('@babel/plugin-syntax-jsx').default;
 const { addNamed } = require('@babel/helper-module-imports');
+const syntaxJsx = require('@babel/plugin-syntax-jsx').default;
 
 const DEFAULT_OPTS = {
   fieldAssign: 'asProps',

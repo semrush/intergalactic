@@ -1,6 +1,7 @@
-import { Plugin } from 'esbuild';
-import { resolve as resolvePath } from 'path';
 import { access as fsAccess, stat as fsStat, readFile, readdir } from 'fs/promises';
+import { resolve as resolvePath } from 'path';
+
+import type { Plugin } from 'esbuild';
 
 const fsExists = async (path: string) => {
   try {

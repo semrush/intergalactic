@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { CONTEXT_COMPONENT, CHILDREN_COMPONENT } from '../core-types/symbols';
 
 const CHILDREN_SELF = Symbol('CHILDREN_SELF');

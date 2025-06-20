@@ -1,6 +1,7 @@
-import { Plugin } from 'esbuild';
 import { resolve as resolvePath, dirname as resolveDirname } from 'path';
 import { fileURLToPath } from 'url';
+
+import type { Plugin } from 'esbuild';
 import glob from 'fast-glob';
 
 const __dirname = resolveDirname(fileURLToPath(import.meta.url));

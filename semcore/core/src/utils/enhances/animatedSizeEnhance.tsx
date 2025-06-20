@@ -1,12 +1,13 @@
 import React from 'react';
+
+import type { UnknownProperties } from '../../core-types/UnknownProperties';
 import { useForkRef } from '../ref';
 import useEnhancedEffect from '../use/useEnhancedEffect';
-import { UnknownProperties } from '../../core-types/UnknownProperties';
 
 /** @deprecated */
 export interface IWithAnimatedSizeEnhanceProps
   extends WithAnimatedSizeEnhanceProps,
-    UnknownProperties {}
+  UnknownProperties {}
 export type WithAnimatedSizeEnhanceProps = {
   animationsDisabled?: boolean;
 };
@@ -42,6 +43,7 @@ function animatedSizeEnhance({
       const node = nodeRef.current;
       if (lastSizesRef.current.every((value) => value === undefined)) {
         for (let i = 0; i < animateProps.length; i++) {
+          // @ts-ignore
           lastSizesRef.current[i] = node.getBoundingClientRect()[animateProps[i]];
         }
         return;

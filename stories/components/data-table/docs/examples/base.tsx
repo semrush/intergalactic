@@ -1,13 +1,14 @@
-import React from 'react';
+import type { DataTableData } from '@semcore/data-table';
 import { DataTable } from '@semcore/data-table';
+import React from 'react';
 
 const Demo = () => {
   return (
     <DataTable
       data={data}
-      aria-label={'Basic table example'}
-      defaultGridTemplateColumnWidth={'auto'}
-      wMax={'800px'}
+      aria-label='Basic table example'
+      defaultGridTemplateColumnWidth='auto'
+      wMax='800px'
       headerProps={{
         sticky: true,
       }}
@@ -37,7 +38,7 @@ const Demo = () => {
   );
 };
 
-const data = [
+const data: DataTableData = [
   {
     keyword: 'ebay buy',
     kd: '77.8',
@@ -58,13 +59,13 @@ const data = [
   },
   {
     keyword: 'ebay buy',
-    kd: '-',
+    kd: null,
     cpc: '$0',
     vol: 'n/a',
   },
   {
     keyword: 'ebay buy',
-    kd: '75.89',
+    kd: 75.89,
     cpc: '$0',
     vol: '21,644,290',
   },
@@ -88,7 +89,7 @@ const data = [
   },
   {
     keyword: 'ebay buy',
-    kd: '-',
+    kd: null,
     cpc: '$0',
     vol: 'n/a',
   },

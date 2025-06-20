@@ -1,7 +1,8 @@
-import type { Intergalactic } from '../src';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { test, describe, assertType } from '@semcore/testing-utils/vitest';
 import * as React from 'react';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+
+import type { Intergalactic } from '../src';
 
 describe('Core Dependency imports', () => {
   runDependencyCheckTests('core');
@@ -107,7 +108,7 @@ describe('Core types', () => {
     >(
       props: Intergalactic.InternalTypings.ComponentProps<Tag, BaseTag, PillsProps<Value>>,
     ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
-      Intergalactic.InternalTypings.ComponentAdditive<BaseTag, BaseTag, PillsProps>;
+    Intergalactic.InternalTypings.ComponentAdditive<BaseTag, BaseTag, PillsProps>;
 
     const Link: Intergalactic.Component<'a', { xProp1: 1 }> = any;
     const Pills: IntergalacticPillsComponent<'div'> = any;

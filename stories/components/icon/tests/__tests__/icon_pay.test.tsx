@@ -1,4 +1,4 @@
-import { expect, userEvent, within } from '@storybook/test';
+import { expect, userEvent, within } from 'storybook/test';
 
 export async function iconPay({ canvasElement }: { canvasElement: HTMLElement }) {
   const canvas = within(canvasElement);
@@ -22,8 +22,8 @@ export async function iconPay({ canvasElement }: { canvasElement: HTMLElement })
   }
 
   const expectedNonInteractiveAttributes = [
-    { width: '21', height: '16', viewBox: '0 0 21 16', 'aria-hidden': 'true', tabindex: '-1' },
-    { width: '32', height: '24', viewBox: '0 0 32 24', 'aria-hidden': 'true', tabindex: '-1' },
+    { 'width': '21', 'height': '16', 'viewBox': '0 0 21 16', 'aria-hidden': 'true', 'tabindex': '-1' },
+    { 'width': '32', 'height': '24', 'viewBox': '0 0 32 24', 'aria-hidden': 'true', 'tabindex': '-1' },
   ];
   const svgNonInteractive = canvasElement.querySelectorAll('svg[aria-hidden="true"]');
   expect(svgNonInteractive.length).toBeGreaterThan(0);

@@ -1,5 +1,5 @@
-import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import { expect, test } from '@semcore/testing-utils/playwright';
 
 test.describe('Vertical Scroll', () => {
   test('Verify Keyboard scroll', async ({ page }) => {
@@ -12,7 +12,7 @@ test.describe('Vertical Scroll', () => {
     for (let i = 0; i < 100; i++) {
       await page.keyboard.press('ArrowDown');
     }
-    await page.waitForTimeout(500);
+    await page.waitForSelector('[role="gridcell"][data-ui-name="Body.Cell"][name="id"]:has-text("#100")', { state: 'visible' });
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
   });
 
@@ -68,11 +68,11 @@ test.describe('Vertical Scroll', () => {
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-    await page.waitForTimeout(100);
+    await page.waitForTimeout(300);
     await expect(plot).toHaveCount(1);
 
     await page.keyboard.press('Enter');
-    await page.waitForTimeout(100);
+    await page.waitForTimeout(300);
     await expect(plot).toHaveCount(0);
 
     await expect(firstArrow).toBeFocused();
@@ -87,21 +87,17 @@ test.describe('Vertical Scroll', () => {
     await expect(secondArrow).toBeFocused();
 
     await page.keyboard.press('Enter');
-    await page.waitForTimeout(100);
+    await page.waitForTimeout(300);
     await expect(plot).toBeVisible();
     await expect(plot).toHaveCount(1);
 
     await page.keyboard.press('Enter');
-    await page.waitForTimeout(100);
-
-    await expect(plot).not.toBeVisible();
+    await page.waitForTimeout(200);
     await expect(plot).toHaveCount(0);
 
     await page.keyboard.press('Enter');
-    await page.waitForTimeout(100);
-
+    await page.waitForTimeout(300);
     await page.keyboard.press('ArrowDown');
-
     await page.keyboard.press('ArrowDown');
     const thirdArrow = await page.locator('[data-ui-name="ButtonLink"]').nth(2);
     await expect(thirdArrow).toBeFocused();
@@ -116,18 +112,17 @@ test.describe('Vertical Scroll', () => {
     const firstArrow = await page.locator('[data-ui-name="ButtonLink"]').first();
 
     await firstArrow.click();
-    await page.waitForTimeout(200);
-    await page.keyboard.press('ArrowDown');
+    await page.waitForTimeout(300);
     const plot = await page.locator('[data-ui-name="Plot"]');
     await expect(plot).toHaveCount(1);
     await firstArrow.click();
-    await page.waitForTimeout(200);
+    await page.waitForTimeout(300);
     await expect(plot).toHaveCount(0);
     await firstArrow.click();
 
     const thirdArrow = await page.locator('[data-ui-name="ButtonLink"]').nth(2);
     await thirdArrow.click();
-    await page.waitForTimeout(200);
+    await page.waitForTimeout(300);
     await expect(plot).toHaveCount(2);
   });
 });

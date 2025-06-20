@@ -1,14 +1,14 @@
-import React from 'react';
 import { DataTable } from '@semcore/data-table';
+import React from 'react';
 
 const Demo = () => {
   return (
     <DataTable
       data={data}
-      aria-label={'Base table example'}
-      defaultGridTemplateColumnWidth={'auto'}
-      wMax={'800px'}
-      sideIndents={'wide'}
+      aria-label='Base table example'
+      defaultGridTemplateColumnWidth='auto'
+      wMax='800px'
+      sideIndents='wide'
       headerProps={{
         sticky: true,
       }}

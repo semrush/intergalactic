@@ -1,5 +1,6 @@
-import { expect, getAccessibilityViolations, test, Page } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import type { Page } from '@semcore/testing-utils/playwright';
+import { expect, getAccessibilityViolations, test } from '@semcore/testing-utils/playwright';
 
 async function checkAxe(page: Page, standPath: string) {
   const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -183,6 +184,12 @@ test.describe('DataTable', () => {
   });
   test('row with themes', async ({ page }) => {
     const standPath = 'stories/components/data-table/docs/examples/row-themes.tsx';
+    const violations = await checkAxe(page, standPath);
+
+    expect(violations).toEqual([]);
+  });
+  test('table in card', async ({ page }) => {
+    const standPath = 'stories/components/card/docs/examples/card_layout_for_tables.tsx';
     const violations = await checkAxe(page, standPath);
 
     expect(violations).toEqual([]);

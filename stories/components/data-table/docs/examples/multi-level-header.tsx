@@ -1,14 +1,15 @@
-import React from 'react';
 import { DataTable } from '@semcore/data-table';
+import React from 'react';
 
 const Demo = () => {
   return (
     <DataTable
       data={data}
-      aria-label={'Multi level header'}
+      aria-label='Multi level header'
       columns={[
         { name: 'keyword', children: 'Keyword' },
         {
+          name: 'group',
           children: 'Organic Sessions',
           borders: 'both',
           columns: [

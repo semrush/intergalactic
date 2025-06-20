@@ -26,4 +26,22 @@ import { Bubble } from '@semcore/ui/d3-chart';
 
 <TypesView type="BubbleProps" :types={...types} />
 
+## Bubble.Tooltip
+
+```js
+import { Bubble } from '@semcore/ui/d3-chart';
+
+<Bubble.Tooltip />;
+```
+
+## Bubble.Circle
+
+```js
+import { Bubble } from '@semcore/ui/d3-chart';
+
+<Bubble.Circle />;
+```
+
+<TypesView type="BubbleCircleProps" :types={...types} />
+
 <script setup>import { data as types } from '@types.data.ts';</script>

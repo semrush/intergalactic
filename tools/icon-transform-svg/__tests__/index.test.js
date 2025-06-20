@@ -1,8 +1,9 @@
+const { exec } = require('child_process');
 const path = require('path');
+
+const pluginTester = require('babel-plugin-tester');
 const fs = require('fs-extra');
 const glob = require('glob');
-const { exec } = require('child_process');
-const pluginTester = require('babel-plugin-tester');
 
 const rootPath = path.resolve(__dirname);
 

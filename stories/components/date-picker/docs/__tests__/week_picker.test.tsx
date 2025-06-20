@@ -1,4 +1,4 @@
-import { expect, userEvent, within } from '@storybook/test';
+import { expect, userEvent, within } from 'storybook/test';
 
 export async function WeekPickerTest({ canvasElement }: { canvasElement: HTMLElement }) {
   const canvas = within(canvasElement);
@@ -9,5 +9,4 @@ export async function WeekPickerTest({ canvasElement }: { canvasElement: HTMLEle
   }
 
   await userEvent.click(triggers);
-
 }

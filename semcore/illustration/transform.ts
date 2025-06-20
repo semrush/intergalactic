@@ -1,9 +1,10 @@
-import fs from 'fs-extra';
 import path, { resolve as resolvePath } from 'path';
-import svgToJsx from 'svg-to-jsx';
-import { Window } from 'happy-dom';
-import esbuild from 'esbuild';
+
 import ColorJSIO from 'colorjs.io';
+import esbuild from 'esbuild';
+import fs from 'fs-extra';
+import { Window } from 'happy-dom';
+import svgToJsx from 'svg-to-jsx';
 const Color = ColorJSIO as any;
 
 const illustrations = await fs.readdir('svg');
@@ -113,7 +114,7 @@ import { useColorResolver } from '@semcore/core/lib/utils/use/useColorResolver';
 const ${illustration} = ({${props.join(', ')}, ...props}, ref) => {
 ${prerenderLines.join('\n')}
   return (
-    <Box 
+    <Box
       ref={ref}
       width={width}
       height={height}
@@ -158,7 +159,7 @@ type IllustrationProps = BoxProps & {
     height?: string | number;
 }
 declare const Illustration: Intergalactic.Component<'svg', IllustrationProps>;
-export default Illustration;    
+export default Illustration;
 `;
 
     const { code: cjs } = await esbuild.transform(component, {
@@ -190,7 +191,7 @@ async function patchExports(illustrations: string[]) {
   const exports: Record<string, any> = {
     '.': {
       require: './lib/cjs/index.js',
-      import: './lib/es6/index.js',
+      import: './lib/esm/index.mjs',
       types: './lib/types/index.d.ts',
     },
   };
@@ -209,7 +210,6 @@ async function patchExports(illustrations: string[]) {
 
   await fs.writeJSON(packageJsonPath, packageJson, { spaces: 2 });
 
-  // biome-ignore lint/suspicious/noConsoleLog:
   console.log('Patched exports in package.json.');
 }
 

@@ -1,17 +1,17 @@
-import React from 'react';
+import { FadeInOut } from '@semcore/animation';
+import Button from '@semcore/button';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
+import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
+import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
+import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
 import { Flex } from '@semcore/flex-box';
 import CloseM from '@semcore/icon/Close/m';
-import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
-import { FadeInOut } from '@semcore/animation';
-import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
-import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
-import Button from '@semcore/button';
+import React from 'react';
 
 import style from './style/notice-global.shadow.css';
-import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 function isCustomTheme(theme) {
   return !['danger', 'warning', 'success', 'info', 'neutral'].includes(theme);
@@ -30,6 +30,7 @@ class NoticeGlobalRoot extends Component {
     }),
     resolveColorEnhance(),
   ];
+
   static defaultProps = {
     theme: 'neutral',
     i18n: localizedMessages,
@@ -72,13 +73,15 @@ class NoticeGlobalRoot extends Component {
         aria-live={isAssertive ? 'assertive' : 'polite'}
         aria-label={getI18nText(theme === 'danger' ? 'criticalNotification' : 'notification')}
       >
-        {advancedMode ? (
-          <Children />
-        ) : (
-          <NoticeGlobal.Content>
-            <Children />
-          </NoticeGlobal.Content>
-        )}
+        {advancedMode
+          ? (
+              <Children />
+            )
+          : (
+              <NoticeGlobal.Content>
+                <Children />
+              </NoticeGlobal.Content>
+            )}
         {closable && <NoticeGlobal.CloseIcon onClick={onClose} />}
       </SNoticeGlobal>,
     );

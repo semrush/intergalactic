@@ -1,6 +1,6 @@
+import { Box, type BoxProps } from '@semcore/base-components';
+import { createComponent, type UnknownProperties, Component, sstyled, Root } from '@semcore/core';
 import React from 'react';
-import { createComponent, UnknownProperties, Component, sstyled, Root } from '@semcore/core';
-import { Box, BoxProps } from '@semcore/base-components';
 
 import style from './style/sticky.shadow.css';
 
@@ -18,6 +18,7 @@ class StickyRoot extends Component<IStickyProps> {
   static defaultProps = {
     top: 0,
   };
+
   static style = style;
 
   render() {

@@ -1,7 +1,7 @@
-import React from 'react';
-import Dropdown from '@semcore/dropdown';
 import Button from '@semcore/button';
+import Dropdown from '@semcore/dropdown';
 import Link from '@semcore/link';
+import React from 'react';
 
 const items = ['set up first', 'set up second', 'set up third'];
 
@@ -14,9 +14,9 @@ const Demo = () => {
       visible={isItemsVisible && items.length > 0}
       onVisibleChange={setItemsVisible}
     >
-     <Dropdown.Trigger id='dropdown-basic' tag={Button} ml={2} >
-    disableEnforceFocus	 popper
-    </Dropdown.Trigger>
+      <Dropdown.Trigger id='dropdown-basic' tag={Button} ml={2}>
+        disableEnforceFocus popper
+      </Dropdown.Trigger>
       <Dropdown.Popper aria-labelledby='dropdown-basic'>
         <div>
           {items.map((item) => {

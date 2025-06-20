@@ -1,5 +1,5 @@
-import React from 'react';
 import TabPanel from '@semcore/tab-panel';
+import React from 'react';
 
 const Demo = () => {
   const [value, setValue] = React.useState(1);
@@ -31,7 +31,7 @@ const Demo = () => {
       </TabPanel>
       {
         [
-          <div id='tab-panel-1-1' role='tabpanel' aria-labelledby='tab-label-1-1' tabIndex={-1}>
+          <div key='tab-panel-1-1' id='tab-panel-1-1' role='tabpanel' aria-labelledby='tab-label-1-1' tabIndex={-1}>
             <h3>Cats</h3>
             <p>
               They are the only creatures that can simultaneously demand your attention and ignore
@@ -39,6 +39,7 @@ const Demo = () => {
             </p>
           </div>,
           <div
+            key='tab-panel-1-2'
             id='tab-panel-1-2'
             aria-hidden='true'
             role='tabpanel'
@@ -52,6 +53,7 @@ const Demo = () => {
             </p>
           </div>,
           <div
+            key='tab-panel-1-3'
             id='tab-panel-1-3'
             aria-hidden='true'
             role='tabpanel'

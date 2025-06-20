@@ -1,5 +1,5 @@
-import { expect, Page, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import { expect, Page, test } from '@semcore/testing-utils/playwright';
 
 async function checkAriaMaxValue(scrollBar: any) {
   await expect(scrollBar).toHaveAttribute('aria-valuemax');
@@ -242,7 +242,7 @@ test.describe('ScrollArea - Dynamic Virtual List', () => {
     await removeItemBtn.click();
     await removeItemBtn.click();
     await removeItemBtn.click();
-    await expect(page.locator('[data-ui-name="ScrollArea.Bar"]')).toHaveCount(0); //removes from DOM
+    await expect(page.locator('[data-ui-name="ScrollArea.Bar"]')).toHaveCount(0); // removes from DOM
   });
 });
 
@@ -366,5 +366,21 @@ test.describe('ScrollArea - Horizontal scroll with Shadow and offset', () => {
 
     const mainMaxValue2 = await checkAriaMaxValue(scrollBar);
     expect(mainMaxValue2).toEqual(mainMaxValue);
+  });
+});
+
+test.describe('ScrollArea – Relative container height', () => {
+  test('ScrollArea scroll behavior with container height', async ({ page }) => {
+    const standPath =
+        'stories/components/scroll-area/advanced/examples/relative_container_height.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+    await page.setViewportSize({ width: 1600, height: 1200 });
+
+    await expect(page).toHaveScreenshot();
+
+    await page.setViewportSize({ width: 1600, height: 400 });
+    await expect(page).toHaveScreenshot();
   });
 });

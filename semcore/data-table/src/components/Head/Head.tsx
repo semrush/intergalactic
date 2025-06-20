@@ -1,18 +1,17 @@
-import * as React from 'react';
-import { Component, createComponent, Intergalactic, Root, sstyled } from '@semcore/core';
-import { DataTableHeadProps, HeadPropsInner } from './Head.types';
 import { Box, ScreenReaderOnly } from '@semcore/base-components';
-import type Tooltip from '@semcore/tooltip';
-
-import style from './style.shadow.css';
-import { Column } from './Column';
-import { Group } from './Group';
-import { DataTableColumnProps } from './Column.types';
-import { DataTableGroupProps } from './Group.type';
-import { DataTableData } from '../DataTable/DataTable.types';
-import { DataTableInternal } from '../DataTable/DataTable';
-import { SELECT_ALL } from '../DataTable/DataTable';
 import Checkbox from '@semcore/checkbox';
+import { Component, createComponent, type Intergalactic, Root, sstyled } from '@semcore/core';
+import type Tooltip from '@semcore/tooltip';
+import React from 'react';
+
+import { Column } from './Column';
+import type { DataTableColumnProps } from './Column.types';
+import { Group } from './Group';
+import type { DataTableGroupProps } from './Group.type';
+import type { DataTableHeadProps, HeadPropsInner } from './Head.types';
+import style from './style.shadow.css';
+import { DataTableInternal, SELECT_ALL } from '../DataTable/DataTable';
+import type { DataTableData } from '../DataTable/DataTable.types';
 
 class HeadRoot<D extends DataTableData> extends Component<
   DataTableHeadProps,
@@ -80,15 +79,15 @@ class HeadRoot<D extends DataTableData> extends Component<
       use,
       'aria-colindex': index + 1,
       style,
-      gridArea: column.gridArea,
-      fixed: column.fixed,
+      'gridArea': column.gridArea,
+      'fixed': column.fixed,
       sticky,
-      borders: column.borders,
+      'borders': column.borders,
       sort,
       onSortChange,
-      parent: column.parent,
-      sortableColumnDescribeId: this.sortableColumnDescribeId(),
-      columnIndex: index,
+      'parent': column.parent,
+      'sortableColumnDescribeId': this.sortableColumnDescribeId(),
+      'columnIndex': index,
       tableRef,
       gridTemplateColumns,
       gridTemplateAreas,
@@ -137,26 +136,28 @@ class HeadRoot<D extends DataTableData> extends Component<
             </SHeadCheckboxCol>
           )}
 
-          {children ? (
-            <Children />
-          ) : (
-            <>
-              {treeColumns.map((column, i) => {
-                if ('columns' in column) {
-                  return (
-                    <DataTableInternal.Head.Group
-                      key={column.name}
-                      {...column}
-                      name={column.columns?.map((c) => c.name).join('/')}
-                      title={''}
-                    />
-                  );
-                }
+          {children
+            ? (
+                <Children />
+              )
+            : (
+                <>
+                  {treeColumns.map((column, _i) => {
+                    if ('columns' in column) {
+                      return (
+                        <DataTableInternal.Head.Group
+                          key={column.name}
+                          {...column}
+                          name={column.columns?.map((c) => c.name).join('/')}
+                          title=''
+                        />
+                      );
+                    }
 
-                return <DataTableInternal.Head.Column key={column.name} {...column} />;
-              })}
-            </>
-          )}
+                    return <DataTableInternal.Head.Column key={column.name} {...column} />;
+                  })}
+                </>
+              )}
         </SHead>
 
         <ScreenReaderOnly aria-hidden={true} id={this.sortableColumnDescribeId()}>

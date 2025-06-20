@@ -1,18 +1,18 @@
-import React from 'react';
 import BaseTrigger from '@semcore/base-trigger';
-import InputMask from '@semcore/input-mask';
-import Tooltip from '@semcore/tooltip';
+import { createComponent, Root, sstyled, Component } from '@semcore/core';
+import assignProps from '@semcore/core/lib/utils/assignProps';
+import useEnhancedEffect from '@semcore/core/lib/utils/use/useEnhancedEffect';
 import { Flex, Box } from '@semcore/flex-box';
 import Calendar from '@semcore/icon/Calendar/m';
-import { createComponent, Root, sstyled, Component } from '@semcore/core';
+import InputMask from '@semcore/input-mask';
 import NeighborLocation from '@semcore/neighbor-location';
-import { datesIntersects } from '../utils/datesIntersects';
-import { includesDate } from '../utils/includesDate';
+import Tooltip from '@semcore/tooltip';
 import dayjs from 'dayjs';
-import useEnhancedEffect from '@semcore/core/lib/utils/use/useEnhancedEffect';
+import React from 'react';
 
 import style from '../style/date-picker.shadow.css';
-import assignProps from '@semcore/core/lib/utils/assignProps';
+import { datesIntersects } from '../utils/datesIntersects';
+import { includesDate } from '../utils/includesDate';
 
 const defaultAllowedParts = { year: true, month: true, day: true };
 const exampleDate = new Date(2000, 4, 29);
@@ -27,26 +27,27 @@ class InputTriggerRoot extends Component {
 
   getSingleDateInputProps() {
     const {
-      children,
+      children: _children,
       id,
-      role,
+      role: _role,
       'aria-haspopup': ariaHasPopup,
       // 'aria-expanded': ariaExpanded,
-      'aria-label': ariaLabel,
-      style,
+      'aria-label': _ariaLabel,
+      style: _style,
       ...otherProps
     } = this.asProps;
     return { ...otherProps, ariaHasPopup, inputId: id };
   }
+
   getDateRangeProps() {
     const {
-      children,
+      children: _children,
       id,
-      role,
+      role: _rolw,
       'aria-haspopup': ariaHasPopup,
-      'aria-label': ariaLabel,
+      'aria-label': _ariaLabel,
       // 'aria-expanded': ariaExpanded,
-      style,
+      style: _style,
       ...otherProps
     } = this.asProps;
     return { ...otherProps, ariaHasPopup, inputId: id };
@@ -81,11 +82,13 @@ class SingleDateInputRoot extends Component {
     defaultDisabledDateInputAttempt: false,
     showError: true,
   };
+
   state = {
     errorText: null,
     showError: false,
     focused: false,
   };
+
   uncontrolledProps() {
     return {
       disabledDateInputAttempt: [
@@ -132,19 +135,19 @@ class SingleDateInputRoot extends Component {
       onChange,
       onDisplayedPeriodChange,
       locale,
-      w,
-      ariaHasPopup,
-      showError,
+      w: _w,
+      ariaHasPopup: _ariaHasPopup,
+      showError: _showError,
       ...otherProps
     } = this.asProps;
 
     return {
-      date: value,
-      onDateChange: onChange,
+      'date': value,
+      'onDateChange': onChange,
       onDisplayedPeriodChange,
       locale,
       'aria-haspopup': 'true',
-      onMaskPipeBlock: this.handleInputMaskPipeBlock,
+      'onMaskPipeBlock': this.handleInputMaskPipeBlock,
       ...otherProps,
     };
   }
@@ -198,12 +201,14 @@ class DateRangeRoot extends Component {
     defaultDisabledDateInputAttempt: false,
     showError: true,
   };
+
   state = {
     containerFocused: false,
     errorText: null,
     showError: false,
     lastChangedInput: 'from',
   };
+
   uncontrolledProps() {
     return {
       disabledDateInputAttempt: [
@@ -253,11 +258,13 @@ class DateRangeRoot extends Component {
       }, 0);
     }
   };
+
   handleToChange = (value, event) => {
     const { onChange } = this.asProps;
     const prevValue = [this.asProps.value?.[0] ?? null, this.asProps.value?.[1] ?? null];
     onChange([prevValue[0], value], event);
   };
+
   handleFromKeydown = (event) => {
     if (!this.toRef.current) return;
     if (!this.fromRef.current) return;
@@ -274,6 +281,7 @@ class DateRangeRoot extends Component {
       }, 0);
     }
   };
+
   handleToKeydown = (event) => {
     if (!this.toRef.current) return;
     if (!this.fromRef.current) return;
@@ -298,39 +306,41 @@ class DateRangeRoot extends Component {
       }, 0);
     }
   };
+
   handleInputMaskPipeBlock = (value) => {
     if (value === this.asProps.disabledDateInputAttempt) return;
     this.handlers.disabledDateInputAttempt(value);
   };
 
   getFromMaskedInputProps() {
-    const { value, locale, onDisplayedPeriodChange, ariaHasPopup, showError, ...otherProps } =
+    const { value, locale, onDisplayedPeriodChange, ariaHasPopup, showError: _showError, ...otherProps } =
       this.asProps;
 
     return assignProps(
       {
-        ref: this.fromRef,
-        date: value?.[0],
-        onDateChange: this.handleFromChange,
-        onKeyDown: this.handleFromKeydown,
+        'ref': this.fromRef,
+        'date': value?.[0],
+        'onDateChange': this.handleFromChange,
+        'onKeyDown': this.handleFromKeydown,
         locale,
-        flex: 1,
+        'flex': 1,
         onDisplayedPeriodChange,
         'aria-haspopup': ariaHasPopup,
-        onMaskPipeBlock: this.handleInputMaskPipeBlock,
-        containerFocused: this.state.containerFocused,
+        'onMaskPipeBlock': this.handleInputMaskPipeBlock,
+        'containerFocused': this.state.containerFocused,
       },
       otherProps,
     );
   }
+
   getToMaskedInputProps() {
     const {
       value,
       locale,
       onDisplayedPeriodChange,
       ariaHasPopup,
-      inputId,
-      showError,
+      inputId: _inputId,
+      showError: _showError,
       ...otherProps
     } = this.asProps;
     const ariaLabel = this.asProps.getI18nText('toDate', {
@@ -339,21 +349,22 @@ class DateRangeRoot extends Component {
 
     return assignProps(
       {
-        ref: this.toRef,
-        date: value?.[1],
-        onDateChange: this.handleToChange,
-        onKeyDown: this.handleToKeydown,
+        'ref': this.toRef,
+        'date': value?.[1],
+        'onDateChange': this.handleToChange,
+        'onKeyDown': this.handleToKeydown,
         locale,
-        flex: 1,
+        'flex': 1,
         onDisplayedPeriodChange,
         'aria-label': ariaLabel,
         'aria-haspopup': ariaHasPopup,
-        onMaskPipeBlock: this.handleInputMaskPipeBlock,
-        containerFocused: this.state.containerFocused,
+        'onMaskPipeBlock': this.handleInputMaskPipeBlock,
+        'containerFocused': this.state.containerFocused,
       },
       otherProps,
     );
   }
+
   getRangeSepProps() {
     const { value } = this.asProps;
 
@@ -361,9 +372,11 @@ class DateRangeRoot extends Component {
       fulfilled: !!(value && (value[0] || value[1])),
     };
   }
+
   handleFocus = () => {
     this.setState({ containerFocused: true });
   };
+
   handleBlur = () => {
     this.setState({ containerFocused: false });
   };
@@ -628,20 +641,20 @@ const MaskedInput = ({
       let { year, month, day } = parsed;
 
       if (allowedParts.month) {
-        if (month[0] !== '_' && parseInt(month[0], 10) > 1) {
+        if (month[0] !== '_' && Number.parseInt(month[0], 10) > 1) {
           month = `0${month[0]}`;
           indexesOfPipedChars.push(getOffsetTo('month'));
         }
         if (month === '00') month = '01';
-        if (month[0] !== '_' && month[1] !== '_' && parseInt(month, 10) > 12) return false;
+        if (month[0] !== '_' && month[1] !== '_' && Number.parseInt(month, 10) > 12) return false;
       }
       if (allowedParts.day) {
-        if (day[0] !== '_' && parseInt(day[0], 10) > 3) {
+        if (day[0] !== '_' && Number.parseInt(day[0], 10) > 3) {
           day = `0${day[0]}`;
           indexesOfPipedChars.push(getOffsetTo('day'));
         }
         if (day === '00') day = '01';
-        if (day[0] !== '_' && day[1] !== '_' && parseInt(day, 10) > 31) return false;
+        if (day[0] !== '_' && day[1] !== '_' && Number.parseInt(day, 10) > 31) return false;
       }
 
       year = year
@@ -667,9 +680,9 @@ const MaskedInput = ({
 
       if (fulfilled) {
         const date = new Date(0, 0, 0, 0, 0, 0, 0);
-        const yearParsed = allowedParts.year ? parseInt(year, 10) : 0;
-        const monthParsed = allowedParts.month ? parseInt(month, 10) - 1 : 0;
-        const dayParsed = allowedParts.day ? parseInt(day, 10) : 1;
+        const yearParsed = allowedParts.year ? Number.parseInt(year, 10) : 0;
+        const monthParsed = allowedParts.month ? Number.parseInt(month, 10) - 1 : 0;
+        const dayParsed = allowedParts.day ? Number.parseInt(day, 10) : 1;
 
         date.setFullYear(yearParsed, monthParsed, dayParsed);
 
@@ -679,7 +692,7 @@ const MaskedInput = ({
         }
 
         if (allowedParts.day) {
-          if (date.getDate() !== parseInt(day, 10)) {
+          if (date.getDate() !== Number.parseInt(day, 10)) {
             onMaskPipeBlock?.(date);
             return false;
           }
@@ -721,9 +734,9 @@ const MaskedInput = ({
       const fulfilled = yearFulfilled && monthFulfilled && dayFulfilled;
       if (fulfilled) {
         const date = new Date(0, 0, 0, 0, 0, 0, 0);
-        const yearParsed = allowedParts.year ? parseInt(year, 10) : 0;
-        const monthParsed = allowedParts.month ? parseInt(month, 10) - 1 : 0;
-        const dayParsed = allowedParts.day ? parseInt(day, 10) : 1;
+        const yearParsed = allowedParts.year ? Number.parseInt(year, 10) : 0;
+        const monthParsed = allowedParts.month ? Number.parseInt(month, 10) - 1 : 0;
+        const dayParsed = allowedParts.day ? Number.parseInt(day, 10) : 1;
 
         date.setFullYear(yearParsed, monthParsed, dayParsed);
 
@@ -739,9 +752,9 @@ const MaskedInput = ({
 
       if (yearFulfilled && allowedParts.year) {
         const date = new Date(0, 0, 0, 0, 0, 0, 0);
-        date.setFullYear(parseInt(year, 10));
+        date.setFullYear(Number.parseInt(year, 10));
         if (monthFulfilled && allowedParts.month) {
-          date.setMonth(parseInt(month, 10) - 1);
+          date.setMonth(Number.parseInt(month, 10) - 1);
         }
         onDisplayedPeriodChange(date);
       }
@@ -872,7 +885,7 @@ const MaskedInput = ({
       noHumanizedDate={!humanizedDate}
       animationsDisabled={animationsDisabled}
       inputRole={inputRole}
-      inputMode={'numeric'}
+      inputMode='numeric'
     >
       {humanizedDate && <SHumanizedDate>{humanizedDate}</SHumanizedDate>}
     </InputMask.Value>,

@@ -1,18 +1,18 @@
-import React from 'react';
-import { createComponent, Component, sstyled, Root } from '@semcore/core';
-import Modal from '@semcore/modal';
-import { Flex, Box } from '@semcore/flex-box';
-import CloseIcon from '@semcore/icon/Close/l';
-import ArrowLeft from '@semcore/icon/ArrowLeft/m';
-import { Text } from '@semcore/typography';
 import Button from '@semcore/button';
-import fire from '@semcore/core/lib/utils/fire';
-import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
+import fire from '@semcore/core/lib/utils/fire';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import { Flex, Box } from '@semcore/flex-box';
+import ArrowLeft from '@semcore/icon/ArrowLeft/m';
+import CloseIcon from '@semcore/icon/Close/l';
+import Modal from '@semcore/modal';
+import { Text } from '@semcore/typography';
+import React from 'react';
 
 import style from './style/fullscreen-modal.shadow.css';
-import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 class FullscreenModalRoot extends Component {
   static displayName = 'FullscreenModal';
@@ -22,6 +22,7 @@ class FullscreenModalRoot extends Component {
     i18n: localizedMessages,
     locale: 'en',
   };
+
   state = { hasTitle: false };
 
   bindHandlerClose = (trigger) => (e) => {
@@ -41,6 +42,7 @@ class FullscreenModalRoot extends Component {
       onClick: this.bindHandlerClose('onBackClick'),
     };
   }
+
   getTitleProps() {
     const { uid } = this.asProps;
     const setHasTitle = () => this.setState({ hasTitle: true });
@@ -109,7 +111,7 @@ function Body(props) {
 
 function Section(props) {
   const SSection = Root;
-  return sstyled(props.styles)(<SSection render={Box} tag={'section'} />);
+  return sstyled(props.styles)(<SSection render={Box} tag='section' />);
 }
 
 function Footer(props) {
@@ -122,7 +124,7 @@ function Close(props) {
   const { getI18nText } = props;
   return sstyled(props.styles)(
     <SClose render={Button} use='tertiary' size='l' theme='muted' aria-label={getI18nText('close')}>
-      <Button.Addon ml={'7px'} mr={'7px'}>
+      <Button.Addon ml='7px' mr='7px'>
         <CloseIcon title={getI18nText('close')} />
       </Button.Addon>
     </SClose>,

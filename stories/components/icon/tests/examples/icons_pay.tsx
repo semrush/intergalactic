@@ -1,11 +1,11 @@
-import React from 'react';
 import Button, { ButtonLink } from '@semcore/button';
-import { Hint } from '@semcore/tooltip';
-import PayPalM from '@semcore/icon/pay/PayPal/m';
-import PayPalL from '@semcore/icon/pay/PayPal/l';
 import { Flex } from '@semcore/flex-box';
-import AmericanExpressM from '@semcore/icon/pay/AmericanExpress/m';
 import AmericanExpressL from '@semcore/icon/pay/AmericanExpress/l';
+import AmericanExpressM from '@semcore/icon/pay/AmericanExpress/m';
+import PayPalL from '@semcore/icon/pay/PayPal/l';
+import PayPalM from '@semcore/icon/pay/PayPal/m';
+import { Hint } from '@semcore/tooltip';
+import React from 'react';
 
 const Demo = () => {
   return (

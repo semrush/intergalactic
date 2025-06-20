@@ -1,10 +1,11 @@
-import { Intergalactic } from '@semcore/core';
-import { BoxProps } from '@semcore/base-components';
-import { ACCORDION, ROW_GROUP, UNIQ_ROW_KEY } from './DataTable';
-import { DataTableColumnProps } from '../Head/Column.types';
-import { DataTableBodyProps } from '../Body/Body.types';
-import Tooltip from '@semcore/tooltip';
-import { DTRow } from '../Body/Row.types';
+import type { BoxProps } from '@semcore/base-components';
+import type { Intergalactic } from '@semcore/core';
+import type Tooltip from '@semcore/tooltip';
+
+import type { ACCORDION, ROW_GROUP, UNIQ_ROW_KEY } from './DataTable';
+import type { DataTableBodyProps } from '../Body/Body.types';
+import type { DTRow, UniqRowKey } from '../Body/Row.types';
+import type { DataTableColumnProps } from '../Head/Column.types';
 
 /**
  * Datatable must have an accessible name (aria-table-name).
@@ -13,7 +14,7 @@ import { DTRow } from '../Body/Row.types';
 export type DataTableAriaProps = Intergalactic.RequireAtLeastOne<{
   'aria-label'?: string;
   'aria-labelledby'?: string;
-  title?: string;
+  'title'?: string;
 }>;
 
 export type SortDirection = 'asc' | 'desc';
@@ -25,10 +26,10 @@ export type DataTableChangeSort<Column> = (
 ) => void;
 
 export type DataRowItem = {
-  [key: string]: DTValue | undefined;
+  [key: string]: DTValue | undefined | null;
   [ACCORDION]?: React.ReactNode | DataTableData;
   [ROW_GROUP]?: DataTableData;
-  [UNIQ_ROW_KEY]?: string;
+  [UNIQ_ROW_KEY]?: UniqRowKey;
 };
 export interface DTValue {
   toString(): string;
@@ -58,10 +59,12 @@ export type DataTableProps<D extends DataTableData> = DataTableAriaProps &
     onSortChange?: DataTableChangeSort<keyof D[0]>;
 
     /**
-     *
+     * Value to describe width for each column. Could be overridden in the column.gtcWidth property.
+     * Use `auto` to automatically fit the table to the content,
+     * `1fr` for equal-width columns or any other value for the grid-template-column css property.
      * @default auto
      */
-    defaultGridTemplateColumnWidth?: 'auto' | '1fr';
+    defaultGridTemplateColumnWidth?: string;
 
     /**
      * Flag for compact view (fewer paddings)
@@ -115,12 +118,17 @@ export type DataTableProps<D extends DataTableData> = DataTableAriaProps &
     renderCell?: DataTableBodyProps['renderCell'];
 
     /**
-     * List of selected rows (indexes from data array)
+   * Name of a unique key for each row data item
+   */
+    uniqueRowKey?: keyof D[number];
+
+    /**
+     * List of selected rows (uniqIds from a data array)
      */
-    selectedRows?: number[];
+    selectedRows?: UniqRowKey[];
 
     onSelectedRowsChange?: (
-      selectedRows: number[],
+      selectedRows: UniqRowKey[],
       event?: React.SyntheticEvent<HTMLElement>,
       opts?: {
         selectedRowIndex: number;
@@ -133,6 +141,12 @@ export type DataTableProps<D extends DataTableData> = DataTableAriaProps &
      * For custom empty data widget.
      */
     renderEmptyData?: () => React.ReactNode;
+
+    /**
+     * Duration for collapse/expand accordion rows in tables in ms.
+     * @default 200
+     */
+    accordionDuration?: number | [number, number];
   };
 
 export type ColumnItemConfig = Intergalactic.InternalTypings.EfficientOmit<
@@ -149,6 +163,11 @@ export type ColumnItemConfig = Intergalactic.InternalTypings.EfficientOmit<
 };
 
 export type ColumnGroupConfig = {
+  /**
+   * Necessary to set a unique name for a group. (It will use as a React key).
+   */
+  name: string;
+
   borders?: 'both' | 'left' | 'right';
 
   fixed?: 'left' | 'right';
@@ -174,4 +193,4 @@ export type DataTableType = (<Data extends DataTableData, Tag extends Intergalac
     'tag' | 'children'
   >,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
-  Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', DataTableProps<any>>;
+Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', DataTableProps<any>>;

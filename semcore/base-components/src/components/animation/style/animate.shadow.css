@@ -8,7 +8,6 @@ SAnimation {
 SAnimation[transition-based] {
   transition-timing-function: var(--timingFunction);
   transition-duration: var(--durationFinalize);
-  transition-delay: var(--delayFinalize);
 }
 
 SAnimation[visible] {
@@ -19,7 +18,6 @@ SAnimation[visible] {
 SAnimation[visible][transition-based] {
   transition-timing-function: var(--timingFunction);
   transition-duration: var(--durationInitialize);
-  transition-delay: var(--delayInitialize);
 }
 
 @media (prefers-reduced-motion) {
@@ -30,7 +28,6 @@ SAnimation[visible][transition-based] {
   SAnimation[transition-based] {
     transition-timing-function: none;
     transition-duration: none;
-    transition-delay: none;
   }
   SAnimation[visible] {
     animation-timing-function: step-end;
@@ -39,6 +36,5 @@ SAnimation[visible][transition-based] {
   SAnimation[visible][transition-based] {
     transition-timing-function: none;
     transition-duration: none;
-    transition-delay: none;
   }
 }

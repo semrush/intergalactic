@@ -1,7 +1,7 @@
 {
   "name": "@semcore/select",
   "description": "Semrush Select Component",
-  "version": "16.1.0",
+  "version": "16.1.2",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -16,16 +16,16 @@
     "types": "./lib/types/index.d.ts"
   },
   "dependencies": {
-    "@semcore/base-trigger": "16.1.0",
-    "@semcore/button": "16.0.0",
-    "@semcore/checkbox": "16.0.0",
-    "@semcore/divider": "16.0.0",
-    "@semcore/dropdown-menu": "16.1.0",
-    "@semcore/dropdown": "16.0.0",
-    "@semcore/icon": "16.1.0",
-    "@semcore/input": "16.0.0",
-    "@semcore/popper": "16.0.0",
-    "@semcore/flex-box": "16.0.0",
+    "@semcore/base-trigger": "16.2.1",
+    "@semcore/button": "16.0.2",
+    "@semcore/checkbox": "16.0.2",
+    "@semcore/divider": "16.0.2",
+    "@semcore/dropdown": "16.0.2",
+    "@semcore/dropdown-menu": "16.1.2",
+    "@semcore/flex-box": "16.0.2",
+    "@semcore/icon": "16.2.1",
+    "@semcore/input": "16.0.2",
+    "@semcore/popper": "16.0.2",
     "classnames": "2.2.6"
   },
   "peerDependencies": {
@@ -37,10 +37,10 @@
     "directory": "semcore/select"
   },
   "devDependencies": {
-    "@types/react": "18.0.21",
-    "@types/classnames": "2.2.6",
-    "@semcore/testing-utils": "1.0.0",
-    "@semcore/typography": "*",
-    "@semcore/flex-box": "*"
+    "@semcore/core": "workspace:*",
+    "@semcore/flex-box": "workspace:*",
+    "@semcore/testing-utils": "workspace:*",
+    "@semcore/typography": "workspace:*",
+    "@types/classnames": "2.2.6"
   }
 }

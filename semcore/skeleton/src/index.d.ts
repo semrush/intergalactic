@@ -1,6 +1,6 @@
-import { BoxProps } from '@semcore/flex-box';
-import { Intergalactic, UnknownProperties } from '@semcore/core';
-import { UniqueIDProps } from '@semcore/core/lib/utils/uniqueID';
+import type { Intergalactic, UnknownProperties } from '@semcore/core';
+import type { UniqueIDProps } from '@semcore/core/lib/utils/uniqueID';
+import type { BoxProps } from '@semcore/flex-box';
 
 /** @deprecated */
 export interface ISkeletonProps extends SkeletonProps, UnknownProperties {}

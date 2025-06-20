@@ -1,13 +1,13 @@
-import React from 'react';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
-import { Box, Flex, InvalidStateBox } from '@semcore/flex-box';
-import { Text as TypographyText } from '@semcore/typography';
-import { useColorResolver } from '@semcore/core/lib/utils/use/useColorResolver';
-import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import autoFocusEnhance from '@semcore/core/lib/utils/enhances/autoFocusEnhance';
+import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import getInputProps, { inputProps } from '@semcore/core/lib/utils/inputProps';
 import logger from '@semcore/core/lib/utils/logger';
+import { useColorResolver } from '@semcore/core/lib/utils/use/useColorResolver';
+import { Box, Flex, InvalidStateBox } from '@semcore/flex-box';
+import { Text as TypographyText } from '@semcore/typography';
+import React from 'react';
 
 import style from './style/checkbox.shadow.css';
 
@@ -20,6 +20,7 @@ class CheckboxRoot extends Component {
     state: 'normal',
     defaultChecked: false,
   };
+
   state = {
     hoistedDisabled: undefined,
   };
@@ -85,14 +86,16 @@ class CheckboxRoot extends Component {
           'aria-describedby',
         ]}
       >
-        {hasChildren ? (
-          <Children />
-        ) : (
-          <>
-            <Checkbox.Value />
-            <Checkbox.Text />
-          </>
-        )}
+        {hasChildren
+          ? (
+              <Children />
+            )
+          : (
+              <>
+                <Checkbox.Value />
+                <Checkbox.Text />
+              </>
+            )}
       </SLabel>,
     );
   }
@@ -110,6 +113,7 @@ class ValueRoot extends Component {
       ],
     };
   };
+
   static enhance = [autoFocusEnhance(), resolveColorEnhance()];
   static displayName = 'Value';
   static style = style;
@@ -151,7 +155,7 @@ class ValueRoot extends Component {
       ...other
     } = this.asProps;
     const [, checkMarkProps] = getInputProps(other, includeInputProps);
-    const { children, Children, ...propsWithoutChildren } = checkMarkProps;
+    const { children: _children, Children: _Children, ...propsWithoutChildren } = checkMarkProps;
     return {
       theme,
       size,
@@ -169,6 +173,7 @@ class ValueRoot extends Component {
       this.asProps.hoistDisabled(this.asProps.disabled);
     }
   }
+
   componentDidMount() {
     if (this.asProps.rootDisabled !== this.asProps.disabled) {
       this.asProps.hoistDisabled(this.asProps.disabled);

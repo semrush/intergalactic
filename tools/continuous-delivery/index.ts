@@ -1,23 +1,30 @@
-import { collectPackages } from './src/collectPackages';
-import { makeVersionPatches, orderedReleaseType } from './src/makeVersionPatches';
-import { fetchFromNpm } from './src/fetchFromNpm';
-import { updateVersions } from './src/updateVersions';
-import { updateChangelogs } from './src/updateChangelogs';
-import { syncCheck } from './src/syncCheck';
-import { formatMarkdown, log } from './src/utils';
-import { getUnlockedPrerelease } from './src/getUnlockedPrereelase';
-import { publishReleaseNotes } from './src/publishReleaseNotes';
+import * as process from 'process';
+
 import {
-  patchReleaseChangelog,
   serializeReleaseChangelog,
   getReleaseChangelog,
+  updateReleaseChangelog,
 } from '@semcore/changelog-handler';
+import { validateSlackIntegrationEnv } from '@semcore/slack-integration';
+import dotenv from 'dotenv';
 import semver from 'semver';
+
+import { collectPackages } from './src/collectPackages';
+import { fetchFromNpm } from './src/fetchFromNpm';
+import { getUnlockedPrerelease } from './src/getUnlockedPrereelase';
+import { closeTasks } from './src/intg-release/closeTasks';
+import { makeVersionPatches, orderedReleaseType } from './src/makeVersionPatches';
+import { publishReleaseNotes } from './src/publishReleaseNotes';
+import { sendMessageAboutRelease } from './src/sendMessageAboutRelease';
+import { syncCheck } from './src/syncCheck';
+import { updateChangelogs } from './src/updateChangelogs';
+import { updateVersions } from './src/updateVersions';
+import { formatMarkdown, log } from './src/utils';
+import { getChangedFiles } from './src/utils/getChangedFiles';
 import { gitUtils } from './src/utils/gitUtils';
 import { NpmUtils } from './src/utils/npmUtils';
-import * as process from 'process';
-import { closeTasks } from './src/intg-release/closeTasks';
-import { sendMessageAboutRelease } from './src/sendMessageAboutRelease';
+
+dotenv.config();
 
 export const initPrerelease = async () => {
   const npmData = await fetchFromNpm();
@@ -40,6 +47,7 @@ export const initPrerelease = async () => {
       }),
     );
     await updateChangelogs(versionPatches.filter((patch) => patch.package.name !== '@semcore/ui'));
+    await updateReleaseChangelog();
 
     if (!versionPatches.find((patch) => patch.package.name === '@semcore/ui')) {
       const pkg = packages.find((pkg) => pkg.name === '@semcore/ui')!;
@@ -133,10 +141,39 @@ export const publishRelease = async () => {
   if (!process.argv.includes('--dry-run') && version) {
     const releaseChangelog = await getReleaseChangelog();
     const lastVersionChangelogs = releaseChangelog.changelogs.slice(0, 1);
+    const endpoints = process.env['SLACK_API_ENDPOINTS']?.split(',') ?? ['fake-url'];
 
     await publishReleaseNotes(version, lastVersionChangelogs);
 
-    await sendMessageAboutRelease(version, lastVersionChangelogs);
+    if (!process.argv.includes('--dry-run')) {
+      validateSlackIntegrationEnv(endpoints);
+    }
+
+    await sendMessageAboutRelease(version, lastVersionChangelogs, endpoints);
+  }
+};
+
+export const getChangedPackages = async (base: string): Promise<string[]> => {
+  const changedPackages = await getChangedFiles(base);
+
+  return Array.from(changedPackages).map((pack) => {
+    const [scope, name] = pack.split('/');
+
+    return name;
+  });
+};
+
+const sendReleaseChangelog = async (endpoints: string[]) => {
+  const versionTag = await gitUtils.getCurrentTag();
+  const version = versionTag?.slice(1);
+
+  if (version && endpoints) {
+    const releaseChangelog = await getReleaseChangelog();
+    const lastVersionChangelogs = releaseChangelog.changelogs.slice(0, 1);
+
+    validateSlackIntegrationEnv(endpoints);
+
+    await sendMessageAboutRelease(version, lastVersionChangelogs, endpoints);
   }
 };
 
@@ -144,8 +181,8 @@ export {
   fetchFromNpm,
   formatMarkdown,
   collectPackages,
-  patchReleaseChangelog,
   serializeReleaseChangelog,
   publishReleaseNotes,
   getUnlockedPrerelease,
+  sendReleaseChangelog,
 };

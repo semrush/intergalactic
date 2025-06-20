@@ -13,7 +13,7 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/basic-usage.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/bubble-chart/basic-usage.tsx';
 </script>
 
 :::
@@ -28,7 +28,7 @@ You can see the mathematics, used in `Change.Bubble` to calculate common scale, 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/bubble-chart.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/bubble-chart/bubble-chart.tsx';
 </script>
 
 :::
@@ -40,7 +40,7 @@ If required, you can assign your own color to every circle in Bubble chart. For 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/color-customization.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/bubble-chart/color-customization.tsx';
 </script>
 
 :::
@@ -52,7 +52,7 @@ Note that for ChartLegend `patterns` property works only with default `shape={'C
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/legend-and-pattern-fill.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/bubble-chart/legend-and-pattern-fill.tsx';
 </script>
 
 :::
@@ -64,7 +64,7 @@ Use `BubbleChartSkeleton` for the initial chart loading.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/initial-data-loading.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/bubble-chart/initial-data-loading.tsx';
 </script>
 
 :::

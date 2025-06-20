@@ -1,16 +1,19 @@
-import { Intergalactic } from '@semcore/core';
-import { FlexProps } from '@semcore/flex-box';
-import Select from '@semcore/select';
-import Input from '@semcore/input';
-import Dropdown, { DropdownTriggerProps } from '@semcore/dropdown';
-import { FilterTrigger } from '@semcore/base-trigger';
-import { ButtonLink } from '@semcore/button';
+import type { FilterTrigger } from '@semcore/base-trigger';
+import type { ButtonLink } from '@semcore/button';
+import type { Intergalactic } from '@semcore/core';
+import type Dropdown from '@semcore/dropdown';
+import type { DropdownTriggerProps } from '@semcore/dropdown';
+import type { FlexProps } from '@semcore/flex-box';
+import type Input from '@semcore/input';
+import type Select from '@semcore/select';
+
+export type AddFilterKey = string;
 
 export type AddFilterItemProps = {
   /**
    * Non-persistent filter item unique `name`. Should be the same as related `key` in `FilterData` item related to Filter Control.
    */
-  name: string;
+  name: AddFilterKey;
   /**
    * Optional `displayName` to be displayed inside `Add filter` dropdown menu. If not specified, `name` will be used instead.
    */
@@ -57,6 +60,14 @@ export type AddFilterProps = FlexProps & {
    * `FilterData` object.
    */
   filterData: FilterData;
+  /**
+   * List of visible filters keys. Relative to the `name` in AddFilterItemProps.
+   */
+  visibleFilters?: AddFilterKey[];
+  /**
+   * Callback for handle changes in visible filters.
+   */
+  onVisibleFiltersChange?: (visibleFilters: AddFilterKey[]) => void;
 };
 
 declare const AddFilterType: Intergalactic.Component<'div', AddFilterProps> & {

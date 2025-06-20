@@ -1,4 +1,4 @@
-import { expect, userEvent, within } from '@storybook/test';
+import { expect, userEvent, within } from 'storybook/test';
 
 export async function DateRangeComparatorTest({ canvasElement }: { canvasElement: HTMLElement }) {
   const canvas = within(canvasElement);
@@ -16,5 +16,4 @@ export async function DateRangeComparatorTest({ canvasElement }: { canvasElement
   }
 
   await userEvent.click(triggersMonth);
-
 }

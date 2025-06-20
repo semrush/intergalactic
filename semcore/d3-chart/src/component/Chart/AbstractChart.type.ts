@@ -1,13 +1,14 @@
-import React from 'react';
-import { FlexProps } from '@semcore/flex-box';
-import { LegendItemKey } from '../ChartLegend/LegendItem/LegendItem.type';
-import Icon from '@semcore/icon';
-import { BaseChartLegendProps } from '../ChartLegend/BaseLegend.type';
-import { TrendProps } from '../ChartLegend/LegendFlex/LegendFlex.type';
-import { PatternsConfig } from '../../Pattern';
+import type { Intergalactic } from '@semcore/core';
+import type { FlexProps } from '@semcore/flex-box';
+import type Icon from '@semcore/icon';
+import type React from 'react';
+
+import type { PatternsConfig } from '../../Pattern';
 // @ts-ignore
-import { PlotSummarizerConfig } from '../../Plot';
-import { Intergalactic } from '@semcore/core';
+import type { PlotSummarizerConfig } from '../../Plot';
+import type { BaseChartLegendProps } from '../ChartLegend/BaseLegend.type';
+import type { TrendProps } from '../ChartLegend/LegendFlex/LegendFlex.type';
+import type { LegendItemKey } from '../ChartLegend/LegendItem/LegendItem.type';
 
 export type BaseLegendProps = BaseChartLegendProps & {
   /**
@@ -20,25 +21,25 @@ export type BaseLegendProps = BaseChartLegendProps & {
   disableSelectItems?: boolean;
 } & (
     | (TrendProps & {
-        /**
+      /**
          * How to render Legend - Flex view. Just list of legend items
          */
-        legendType?: never | 'Flex';
-        /**
+      legendType?: never | 'Flex';
+      /**
          * Config for Legend items
          */
-        legendMap?: LegendDataMap<'Flex'>;
-      })
+      legendMap?: LegendDataMap<'Flex'>;
+    })
     | {
-        /**
+      /**
          * How to render Legend - Table view. Table of legend items with some additional information in columns
          */
-        legendType: 'Table';
-        /**
+      legendType: 'Table';
+      /**
          * Config for Legend items
          */
-        legendMap?: LegendDataMap<'Table'>;
-      }
+      legendMap?: LegendDataMap<'Table'>;
+    }
   );
 
 export type ObjectData = Record<string, unknown>;
@@ -51,7 +52,7 @@ export type ListData = ObjectData[];
 export type AriaNameProps = Intergalactic.RequireAtLeastOne<{
   'aria-label'?: string;
   'aria-labelledby'?: string;
-  title?: string;
+  'title'?: string;
 }>;
 
 export type BaseChartProps<T extends ListData | ObjectData> = FlexProps &
@@ -148,26 +149,26 @@ export type BaseChartProps<T extends ListData | ObjectData> = FlexProps &
   } /**
    * By default, we show the Legend for all charts with more the one data item.
    * For hide the Legend, you should set showLegend prop to `false`.
-   */ & (
+  */ & (
     | {
-        /**
+      /**
          * Don't show legend
          */
-        showLegend?: false;
-        legendProps?: never;
-      }
+      showLegend?: false;
+      legendProps?: never;
+    }
     | {
-        /**
+      /**
          *  By default (if showLegend don't set), for one data item on chart,
          *  Legend component will be hide, and show for more then 1 data item.
          *  If set `true` - Legend component will show always.
          */
-        showLegend?: true;
-        /**
+      showLegend?: true;
+      /**
          * Props for Legend
          */
-        legendProps?: Partial<BaseLegendProps>;
-      }
+      legendProps?: Partial<BaseLegendProps>;
+    }
   );
 
 type LegendDataMap<T extends 'Flex' | 'Table'> = Record<

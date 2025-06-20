@@ -1,6 +1,6 @@
-import React from 'react';
 import LinkExternalM from '@semcore/icon/LinkExternal/m';
 import { Hint } from '@semcore/tooltip';
+import React from 'react';
 
 const Demo = () => (
   <Hint

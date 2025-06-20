@@ -1,9 +1,10 @@
-import { Flex } from '@semcore/flex-box';
-import { Intergalactic, Root } from '@semcore/core';
-import Icon from '@semcore/icon';
-import { Text } from '@semcore/typography';
-import { LSize } from '../BaseLegend.type';
-import { PatternsConfig } from '../../../Pattern';
+import type { Intergalactic, Root } from '@semcore/core';
+import type { Flex } from '@semcore/flex-box';
+import type Icon from '@semcore/icon';
+import type { Text } from '@semcore/typography';
+
+import type { PatternsConfig } from '../../../Pattern';
+import type { LSize } from '../BaseLegend.type';
 
 /**
  * Key of chart data item
@@ -65,20 +66,30 @@ export type LegendItemProps = LegendItem & {
    * Handler for select/deselect legend item
    */
   onChangeLegendItem: (id: LegendItemKey, checked: boolean) => void;
+
+  /**
+   * Handler for focus legend item
+   */
+  onFocusLegendItem: (id: LegendItemKey) => void;
+
+  /**
+   * Handler for focus out legend item
+   */
+  onBlurLegendItem: (id: LegendItemKey) => void;
 };
 
 export type ShapeProps = LegendItem &
   (
     | {
-        size: LSize;
-        shape: Exclude<ShapeType, 'Checkbox'>;
-      }
+      size: LSize;
+      shape: Exclude<ShapeType, 'Checkbox'>;
+    }
     | {
-        size: LSize;
-        shape: Extract<ShapeType, 'Checkbox'>;
-        onChange: (checked: boolean, e?: React.SyntheticEvent<HTMLInputElement>) => void;
-        'aria-labelledby'?: string;
-      }
+      'size': LSize;
+      'shape': Extract<ShapeType, 'Checkbox'>;
+      'onChange': (checked: boolean, e?: React.SyntheticEvent<HTMLInputElement>) => void;
+      'aria-labelledby'?: string;
+    }
   );
 
 export const StaticShapes = ['Circle', 'Line', 'Square', 'Pattern'] as const;

@@ -1,6 +1,5 @@
-import { expect, voiceOverTest as test } from '@semcore/testing-utils/playwright';
-
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import { expect, voiceOverTest as test } from '@semcore/testing-utils/playwright';
 import { makeVoiceOverReporter } from '@semcore/testing-utils/vo-reporter';
 
 test('Users can interact with Pills via VoiceOver', async ({ page, voiceOver: pureVoiceOver }) => {
@@ -17,7 +16,7 @@ test('Users can interact with Pills via VoiceOver', async ({ page, voiceOver: pu
   await voiceOver.interact();
   expect(await voiceOver.lastSpokenPhrase()).toBe('Like radio button, 1 of 3');
   await voiceOver.next();
-  expect(await voiceOver.lastSpokenPhrase()).toBe("Don't care selected radio button, 2 of 3");
+  expect(await voiceOver.lastSpokenPhrase()).toBe('Don\'t care selected radio button, 2 of 3');
   await voiceOver.next();
   expect(await voiceOver.lastSpokenPhrase()).toBe('Dislike radio button, 3 of 3');
   await voiceOver.act();

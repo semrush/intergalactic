@@ -1,9 +1,8 @@
-import type { Meta, StoryObj } from '@storybook/react';
-
 import InputNumber from '@semcore/input-number';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import BasicExample from './examples/basic_example';
 import AppearanceCustomizationExample from './examples/appearance_customization';
+import BasicExample from './examples/basic_example';
 import RangeOfValuesExample from './examples/range_of_values';
 
 const meta: Meta<typeof InputNumber> = {

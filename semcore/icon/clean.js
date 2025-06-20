@@ -26,7 +26,7 @@ const ignoreFiles = [
 const removeDir = async (dir) => {
   try {
     const allFiles = await readdir(dir);
-    const files = allFiles.filter((f) => !ignoreFiles.includes(f));
+    const files = allFiles.filter(f => !ignoreFiles.includes(f));
     await Promise.all(
       files.map(async (file) => {
         try {
@@ -34,10 +34,12 @@ const removeDir = async (dir) => {
           const stat = await lstat(p);
           if (stat.isDirectory()) {
             await removeDir(p);
-          } else {
+          }
+          else {
             await unlink(p);
           }
-        } catch (err) {
+        }
+        catch (err) {
           console.error(err);
         }
       }),
@@ -48,7 +50,8 @@ const removeDir = async (dir) => {
         force: true,
       });
     }
-  } catch (err) {
+  }
+  catch (err) {
     console.error(err);
   }
 };

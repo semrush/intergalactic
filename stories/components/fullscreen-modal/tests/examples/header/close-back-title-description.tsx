@@ -1,8 +1,7 @@
-import React from 'react';
-import FullscreenModal from '@semcore/fullscreen-modal';
 import Button from '@semcore/button';
+import FullscreenModal from '@semcore/fullscreen-modal';
 import { Text } from '@semcore/typography';
-
+import React from 'react';
 
 const Demo = () => {
   const [visible, setVisible] = React.useState(false);
@@ -15,9 +14,9 @@ const Demo = () => {
         <FullscreenModal.Back>Go to Tool Name</FullscreenModal.Back>
         <FullscreenModal.Header title='Modal Window Title Modal Window Title Modal Window Title Modal Window Title Modal Window Title Modal Window Title Modal Window Title Modal Window Title Modal Window Title Modal Window Title Modal Window Title Modal Window Title v' description='Additional information' />
         <FullscreenModal.Body>
-          <FullscreenModal.Section aria-label='Head content 1' >
+          <FullscreenModal.Section aria-label='Head content 1'>
             Head content 1
-            <Text >
+            <Text>
               The Intergalactic Design System uses two sets of design tokens: basic and semantic.
               Basic tokens set the main colors, while semantic tokens build on them. Changing the
               basic tokens lets you create new themes.

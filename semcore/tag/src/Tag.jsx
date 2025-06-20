@@ -1,16 +1,16 @@
-import React from 'react';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
-import { Box } from '@semcore/flex-box';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
-import logger from '@semcore/core/lib/utils/logger';
-import CloseM from '@semcore/icon/Close/m';
-import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
-import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
+import logger from '@semcore/core/lib/utils/logger';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import { Box } from '@semcore/flex-box';
+import CloseM from '@semcore/icon/Close/m';
+import React from 'react';
 
 import style from './style/tag.shadow.css';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 const legacyThemeRecommendedMigration = {
   primary: {
@@ -176,7 +176,7 @@ class RootTagContainer extends Component {
       size,
       theme,
       color,
-      id: `${id}-clear`,
+      'id': `${id}-clear`,
       'aria-labelledby': `${id}-clear ${id}-text`,
       'aria-label': getI18nText('remove'),
       resolveColor,
@@ -204,13 +204,15 @@ class RootTagContainer extends Component {
 
     return sstyled(styles)(
       <STagContainer render={Box}>
-        {advancedMode ? (
-          <Children />
-        ) : (
-          <TagContainer.Tag>
-            <Children />
-          </TagContainer.Tag>
-        )}
+        {advancedMode
+          ? (
+              <Children />
+            )
+          : (
+              <TagContainer.Tag>
+                <Children />
+              </TagContainer.Tag>
+            )}
       </STagContainer>,
     );
   }
@@ -253,7 +255,7 @@ class RootCloseTagContainer extends Component {
     return sstyled(styles)(
       <STagContainerClose
         render={Box}
-        tag={'button'}
+        tag='button'
         type='button'
         interactive={true}
         interactiveView={true}

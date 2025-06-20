@@ -1,7 +1,7 @@
 {
   "name": "@semcore/grid",
   "description": "Semrush Grid Component",
-  "version": "16.0.0",
+  "version": "16.0.2",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",

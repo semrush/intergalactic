@@ -1,11 +1,16 @@
-import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import { expect, test } from '@semcore/testing-utils/playwright';
 
 async function getColumnWidth(page: any, colIndex: any) {
   const column = await page.locator(`[aria-colindex="${colIndex}"][role="columnheader"]`);
   const box = await column.boundingBox();
   return box ? box.width : 0;
 }
+
+const COLUMN_SORT_TO_ARIA: Record<string, string> = {
+  asc: 'ascending',
+  desc: 'descending',
+};
 
 test.describe('Columns', () => {
   test('Verify alingnment props', async ({ page }) => {
@@ -149,5 +154,26 @@ test.describe('Columns', () => {
     const firstRow = page.locator('[data-ui-name="Body.Row"]').first();
     const firstCell = firstRow.locator('[data-ui-name="Body.Cell"]').nth(0);
     await expect(firstCell).toBeFocused();
+  });
+
+  test('Verify column\'s aria-sort and aria-describedby attributes ', async ({ page }) => {
+    const standPath = 'stories/components/data-table/docs/examples/sorting.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const columns = await page.locator('[data-ui-name="Head.Column"]').all();
+    const [defaultSortColumnName, defaultSortValue] = ['kd', 'desc'];
+    for (const column of columns) {
+      const columnName = await column.getAttribute('name');
+
+      if (defaultSortColumnName === columnName) {
+        expect(column).toHaveAttribute('aria-sort', COLUMN_SORT_TO_ARIA[defaultSortValue]);
+        continue;
+      }
+
+      expect(column).not.toHaveAttribute('aria-sort');
+      expect(column).toHaveAttribute('aria-describedby');
+    }
   });
 });

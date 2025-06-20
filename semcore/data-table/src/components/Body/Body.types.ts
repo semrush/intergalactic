@@ -1,7 +1,7 @@
-import { DTRow } from './Row.types';
-import { DTColumn } from '../Head/Column.types';
-import { DTUse, VirtualScroll } from '../DataTable/DataTable.types';
-import { Theme } from './Cell.types';
+import type { Theme } from './Cell.types';
+import type { DTRow, UniqRowKey } from './Row.types';
+import type { DTUse, VirtualScroll } from '../DataTable/DataTable.types';
+import type { DTColumn } from '../Head/Column.types';
 
 export type CellRenderProps = {
   dataKey: string;
@@ -53,7 +53,7 @@ export type BodyPropsInner = DataTableBodyProps & {
   renderCell?: (props: CellRenderProps) => React.ReactNode | Record<string, any>;
   onBackFromAccordion: (colIndex: number) => void;
   stickyHeader?: boolean;
-  selectedRows?: number[];
+  selectedRows?: UniqRowKey[];
   onSelectRow?: (
     isSelect: boolean,
     selectedRowIndex: number,
@@ -65,4 +65,5 @@ export type BodyPropsInner = DataTableBodyProps & {
   getFixedStyle: (
     cell: Pick<DTColumn, 'name' | 'fixed'>,
   ) => [side: 'left' | 'right', style: string | number] | [side: undefined, style: undefined];
+  accordionDuration?: number | [number, number];
 };

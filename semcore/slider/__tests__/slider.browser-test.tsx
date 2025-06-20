@@ -1,5 +1,5 @@
-import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import { expect, test } from '@semcore/testing-utils/playwright';
 
 test.describe('Slider', () => {
   test('Verify different states and types', async ({ page }) => {
@@ -160,7 +160,7 @@ test.describe('Slider', () => {
     await expect(input).toHaveValue('medium');
     await expect(slider).toHaveAttribute('aria-valuenow', '2');
 
-    //BUG - thpse actions dont work
+    // BUG - thpse actions dont work
     // await page.keyboard.press('Home');
     // await expect(slider).toHaveAttribute('aria-valuenow', '1');
 
@@ -236,5 +236,15 @@ test.describe('Slider', () => {
     await expect(input).toHaveValue('10');
     await expect(slider).toHaveAttribute('aria-valuenow', '10');
     await expect(inputValue).toHaveValue('10');
+
+    await page.keyboard.press('Tab');
+    inputValue.fill('110');
+    await expect(inputValue).toHaveAttribute('aria-invalid', 'true');
+    await page.keyboard.press('Shift+Tab');
+    await page.keyboard.press('ArrowLeft');
+    await expect(input).toHaveValue('100');
+    await expect(slider).toHaveAttribute('aria-valuenow', '100');
+    await expect(inputValue).toHaveValue('100');
+    await expect(inputValue).toHaveAttribute('aria-invalid', 'false');
   });
 });

@@ -1,5 +1,6 @@
+import type React from 'react';
+
 import { callAllEventHandlers } from '../assignProps';
-import React from 'react';
 
 type OnNeighborChange<P> = (neighborElement: HTMLElement, props: P) => void;
 type FindNeighbor = (

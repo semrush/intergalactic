@@ -1,8 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/react';
-
-import FiltersWithConditionsEx from './examples/filters-with-filter-conditions';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { AdvancedFiltersTest } from './__tests__/filters-with-filter-conditions.test';
+import FiltersWithConditionsEx from './examples/filters-with-filter-conditions';
 import { playWrapper } from '../../../../utils/playWrapper';
 
 const meta: Meta = {

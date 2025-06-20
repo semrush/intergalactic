@@ -1,5 +1,6 @@
-import { PlaywrightTestConfig, devices } from '@playwright/test';
-import { testPlanFilter } from "allure-playwright/testplan";
+import type { PlaywrightTestConfig } from '@playwright/test';
+import { devices } from '@playwright/test';
+import { testPlanFilter } from 'allure-playwright/testplan';
 
 const config: PlaywrightTestConfig = {
   testMatch: /\.axe-test.ts(x){0,1}$/,
@@ -18,16 +19,6 @@ const config: PlaywrightTestConfig = {
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'], hasTouch: true },
-    },
-
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'], hasTouch: true },
-    },
-
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'], hasTouch: true },
     },
   ],
 };

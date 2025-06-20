@@ -1,8 +1,18 @@
-import * as React from 'react';
-import { Component, createComponent, lastInteraction, Root, sstyled } from '@semcore/core';
 import { Box, ScreenReaderOnly, ScrollArea } from '@semcore/base-components';
+import { Component, createComponent, lastInteraction, Root, sstyled } from '@semcore/core';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import findComponent from '@semcore/core/lib/utils/findComponent';
+import { hasParent } from '@semcore/core/lib/utils/hasParent';
+import trottle from '@semcore/core/lib/utils/rafTrottle';
+import { forkRef } from '@semcore/core/lib/utils/ref';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import { isFocusInside, hasFocusableIn } from '@semcore/core/lib/utils/use/useFocusLock';
+import { NoData } from '@semcore/widget-empty';
+import type { ReactElement } from 'react';
+import * as React from 'react';
 
-import {
+import style from './dataTable.shadow.css';
+import type {
   DataTableProps,
   ColIndex,
   RowIndex,
@@ -12,28 +22,16 @@ import {
   ColumnItemConfig,
   DataRowItem,
 } from './DataTable.types';
-import { Head } from '../Head/Head';
-import { Body } from '../Body/Body';
-import { DataTableColumnProps, DTColumn } from '../Head/Column.types';
-
-import style from './dataTable.shadow.css';
-import { DTRow, UniqRowKey } from '../Body/Row.types';
-import { isFocusInside, hasFocusableIn } from '@semcore/core/lib/utils/use/useFocusLock';
-
-import { ReactElement } from 'react';
-import findComponent from '@semcore/core/lib/utils/findComponent';
-import { DataTableHeadProps, HeadPropsInner } from '../Head/Head.types';
-import { BodyPropsInner } from '../Body/Body.types';
-import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
-import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import { forkRef } from '@semcore/core/lib/utils/ref';
 import scrollStyles from '../../style/scroll-shadows.shadow.css';
-import { DataTableGroupProps } from '../Head/Group.type';
-import { hasParent } from '@semcore/core/lib/utils/hasParent';
-import trottle from '@semcore/core/lib/utils/rafTrottle';
+import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
+import { Body } from '../Body/Body';
+import type { BodyPropsInner } from '../Body/Body.types';
 import { MergedColumnsCell, MergedRowsCell } from '../Body/MergedCells';
-import { NoData } from '@semcore/widget-empty';
+import type { DTRow, UniqRowKey } from '../Body/Row.types';
+import type { DataTableColumnProps, DTColumn } from '../Head/Column.types';
+import type { DataTableGroupProps } from '../Head/Group.type';
+import { Head } from '../Head/Head';
+import type { DataTableHeadProps, HeadPropsInner } from '../Head/Head.types';
 
 export const ACCORDION = Symbol('accordion');
 export const ROW_GROUP = Symbol('ROW_GROUP');
@@ -67,7 +65,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
     defaultExpandedRows: new Set<string>(),
     defaultSelectedRows: undefined,
     h: 'fit-content',
-    renderEmptyData: () => <NoData py={10} type={'nothing-found'} description={''} w={'100%'} />,
+    renderEmptyData: () => <NoData py={10} type='nothing-found' description='' w='100%' />,
   };
 
   private columns: DTColumn[] = [];
@@ -232,10 +230,12 @@ class DataTableRoot<D extends DataTableData> extends Component<
       totalRows: this.totalRows,
       selectedRows: selectedRows,
       onChangeSelectAll: (value, e) => {
-        const selectedRowsIndexes = value
-          ? new Array(this.totalRows).fill(undefined).map((_, i) => i)
-          : [];
-        onSelectedRowsChange?.(selectedRowsIndexes, e);
+        if (value === false) {
+          onSelectedRowsChange?.([], e);
+        } else {
+          const selectedRows = this.flatRows.map((row) => row[UNIQ_ROW_KEY]);
+          onSelectedRowsChange?.(selectedRows, e);
+        }
       },
       getFixedStyle: this.getFixedStyle,
       ...headerProps,
@@ -257,9 +257,11 @@ class DataTableRoot<D extends DataTableData> extends Component<
       renderEmptyData,
       sideIndents,
       selectedRows,
+      accordionDuration,
     } = this.asProps;
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
     return {
+      accordionDuration,
       columns: this.columns,
       rows: this.rows,
       flatRows: this.flatRows,
@@ -299,15 +301,15 @@ class DataTableRoot<D extends DataTableData> extends Component<
     row: DTRow,
     event?: React.SyntheticEvent<HTMLElement>,
   ) => {
-    const { selectedRows, onSelectedRowsChange, data } = this.asProps;
+    const { selectedRows, onSelectedRowsChange } = this.asProps;
 
     if (selectedRows && onSelectedRowsChange) {
       const newSelectedRows = new Set(selectedRows);
 
-      if (isSelected && !newSelectedRows.has(selectedRowIndex)) {
-        newSelectedRows.add(selectedRowIndex);
-      } else if (!isSelected && newSelectedRows.has(selectedRowIndex)) {
-        newSelectedRows.delete(selectedRowIndex);
+      if (isSelected && !newSelectedRows.has(row[UNIQ_ROW_KEY])) {
+        newSelectedRows.add(row[UNIQ_ROW_KEY]);
+      } else if (!isSelected && newSelectedRows.has(row[UNIQ_ROW_KEY])) {
+        newSelectedRows.delete(row[UNIQ_ROW_KEY]);
       }
 
       onSelectedRowsChange([...newSelectedRows], event, {
@@ -351,11 +353,14 @@ class DataTableRoot<D extends DataTableData> extends Component<
   }
 
   getRow = (index: number) => {
-    return this.tableRef.current?.querySelector(`[aria-rowindex="${index + 1}"]`);
+    return this.tableRef.current?.querySelector(
+      `[aria-rowindex="${index + 1}"]:not([aria-hidden="true"])`,
+    );
   };
 
   hasFocusableInHeader = () => {
-    return this.headerRef.current && hasFocusableIn(this.headerRef.current);
+    return (this.headerRef.current && hasFocusableIn(this.headerRef.current)) ||
+      this.columns.some((column) => column.sortable);
   };
 
   onExpandRow = (expandedRow: DTRow) => {
@@ -410,7 +415,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
     const row = this.getRow(newRow);
     const cell = row?.querySelector(
-      `:scope > [role=gridcell][aria-colindex="${
+      `:scope > div > [role=gridcell][aria-colindex="${
         newCol + 1
       }"], :scope > [role=columnheader][aria-colindex="${
         newCol + 1
@@ -448,15 +453,16 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
       if (direction === 'left' || direction === 'right') {
         // we need to skip Collapse Element with one big component from keyboard left/right pressing
-        if (currentCell.parentElement?.dataset.uiName === 'Collapse') {
+        if (currentCell.parentElement?.parentElement?.dataset.uiName === 'Collapse') {
           return;
         }
 
         // left/right
         if (
           currentCell.dataset.groupedBy === 'colgroup' ||
-          Number(currentCell.parentElement?.getAttribute('aria-rowindex')) === 2 ||
-          Array.from(row?.children ?? []).indexOf(currentCell) > 0
+          Number(currentCell.parentElement?.parentElement?.getAttribute('aria-rowindex')) === 2 ||
+          (currentCell.parentElement &&
+            Array.from(row?.children ?? []).indexOf(currentCell.parentElement) > 0)
         ) {
           colI = direction === 'left' ? colI - 1 : colI + 1;
         } else {
@@ -555,10 +561,10 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
       if (!row && this.asProps.virtualScroll) {
         const firstAvailableCell = this.tableRef.current?.querySelector(`[role="gridcell"]`);
-        const firstAvailableRow = firstAvailableCell?.parentElement;
+        const firstAvailableRow = firstAvailableCell?.parentElement?.parentElement;
         if (firstAvailableCell && firstAvailableRow) {
-          const colIndex = (Number(firstAvailableCell.getAttribute('aria-colindex')) ?? 1) - 1;
-          const rowIndex = (Number(firstAvailableRow.getAttribute('aria-rowindex')) ?? 1) - 1;
+          const colIndex = Number(firstAvailableCell.getAttribute('aria-colindex') ?? 1) - 1;
+          const rowIndex = Number(firstAvailableRow.getAttribute('aria-rowindex') ?? 1) - 1;
 
           this.focusedCell[0] = rowIndex;
           this.focusedCell[1] = colIndex;
@@ -647,7 +653,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
     }
 
     let scrollDirection: 'both' | 'horizontal' | 'vertical' | undefined = undefined;
-    const hasWidthSettings = (Boolean(w) && w !== '100%') || Boolean(wMax);
+    const hasWidthSettings = Boolean(w) || Boolean(wMax);
     const hasHeightSettings = (Boolean(h) && h !== 'fit-content') || Boolean(hMax);
 
     if (hasWidthSettings && !hasHeightSettings) {
@@ -700,7 +706,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
             gridTemplateColumns={gridTemplateColumns.join(' ')}
             gridTemplateAreas={gridTemplateAreas.join(' ')}
             gridTemplateRows={gridTemplateRows}
-            w={'100%'}
+            w='100%'
             use:data={undefined}
             use:w={undefined}
             use:wMax={undefined}
@@ -709,14 +715,16 @@ class DataTableRoot<D extends DataTableData> extends Component<
             use:hMax={undefined}
             use:hMin={undefined}
           >
-            {children ? (
-              <Children />
-            ) : (
-              <>
-                <DataTableInternal.Head />
-                <DataTableInternal.Body />
-              </>
-            )}
+            {children
+              ? (
+                  <Children />
+                )
+              : (
+                  <>
+                    <DataTableInternal.Head />
+                    <DataTableInternal.Body />
+                  </>
+                )}
           </SDataTable>
         </ScrollArea.Container>
 
@@ -831,7 +839,6 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
     this.hasGroups = findComponent(HeadComponent.props.children, ['Head.Group']) !== undefined;
 
-    let columnIndex = 0;
     let groupIndex = 0;
     let gridColumnIndex = selectedRows ? 2 : 1;
 
@@ -903,7 +910,6 @@ class DataTableRoot<D extends DataTableData> extends Component<
           gridColumnIndex + 1
         }`;
 
-        columnIndex++;
         gridColumnIndex++;
 
         columns.push(col);
@@ -927,7 +933,6 @@ class DataTableRoot<D extends DataTableData> extends Component<
             }
 
             col.gridArea = `2 / ${gridColumnIndex} / 3 / ${gridColumnIndex + 1}`;
-            columnIndex++;
             gridColumnIndex++;
 
             columns.push(col);
@@ -947,7 +952,6 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
     this.hasGroups = columns.some((column) => 'columns' in column);
 
-    let columnIndex = 0;
     let groupIndex = 0;
     let gridColumnIndex = selectedRows ? 2 : 1;
 
@@ -1010,7 +1014,6 @@ class DataTableRoot<D extends DataTableData> extends Component<
           gridColumnIndex + 1
         }`;
 
-        columnIndex++;
         gridColumnIndex++;
 
         calculatedColumns.push(col);
@@ -1036,7 +1039,6 @@ class DataTableRoot<D extends DataTableData> extends Component<
           }
 
           col.gridArea = `2 / ${gridColumnIndex} / 3 / ${gridColumnIndex + 1}`;
-          columnIndex++;
           gridColumnIndex++;
 
           calculatedColumns.push(col);
@@ -1057,7 +1059,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
   private calculateRows(): Array<DTRow[] | DTRow> {
     const columns = this.columns;
     // @ts-ignore
-    const { data, uid } = this.props;
+    const { data, uid, uniqueRowKey } = this.props;
 
     const rows: Array<DTRow[] | DTRow> = [];
     const columnNames = columns.map((column: DTColumn) => column.name);
@@ -1093,7 +1095,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
         },
         {
           [UNIQ_ROW_KEY]:
-            row[UNIQ_ROW_KEY] || (`${uid}_${(rowIndex + id).toString(36)}` as UniqRowKey),
+            row[UNIQ_ROW_KEY] || (uniqueRowKey ? row[uniqueRowKey] : `${uid}_${(rowIndex + id).toString(36)}`) as UniqRowKey,
           [ROW_INDEX]: rowIndex,
         },
       );

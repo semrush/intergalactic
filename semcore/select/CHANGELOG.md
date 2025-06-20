@@ -2,6 +2,25 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.1.3] - 2025-06-17
+
+### Fixed
+
+- Issue where users navigate to the second option in select after opening.
+- Focus after selecting some option(s) in multiselect was on popper instead of trigger.
+
+## [16.1.2] - 2025-06-12
+
+### Fixed
+
+- An issue with rendering custom child element in a trigger with `Text` or `Value` child element.
+
+## [16.1.1] - 2025-05-30
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/base-trigger` [16.1.0 ~> 16.2.0], `@semcore/button` [16.0.0 ~> 16.0.1], `@semcore/checkbox` [16.0.0 ~> 16.0.1], `@semcore/divider` [16.0.0 ~> 16.0.1], `@semcore/dropdown-menu` [16.1.0 ~> 16.1.1], `@semcore/dropdown` [16.0.0 ~> 16.0.1], `@semcore/icon` [16.1.0 ~> 16.2.0], `@semcore/input` [16.0.0 ~> 16.0.1], `@semcore/popper` [16.0.0 ~> 16.0.1], `@semcore/flex-box` [16.0.0 ~> 16.0.1], `@semcore/base-components` [16.0.0 ~> 16.0.1]).
+
 ## [16.1.0] - 2025-05-23
 
 ### Changed

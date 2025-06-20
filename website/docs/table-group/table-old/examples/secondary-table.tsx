@@ -1,5 +1,5 @@
-import React from 'react';
 import Table from '@semcore/table';
+import React from 'react';
 
 const data = [
   {
@@ -54,7 +54,7 @@ const Demo = () => (
     </Table.Head>
     <Table.Body>
       {data.map((row) => (
-        <Table.Row>
+        <Table.Row key={row['keyword']}>
           {Object.keys(row).map((name) => (
             <Table.Cell key={row[name]}>{row[name]}</Table.Cell>
           ))}

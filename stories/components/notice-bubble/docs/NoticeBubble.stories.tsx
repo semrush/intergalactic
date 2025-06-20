@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import BasicNoticeExample from './examples/basic_notice';
 import CompletionStateExample from './examples/completion_state';

@@ -1,10 +1,10 @@
-import React from 'react';
-import { DataTable } from '@semcore/data-table';
-import { Box, Flex, ScreenReaderOnly } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
 import { Collapse } from '@semcore/animation';
 import Button from '@semcore/button';
 import { sstyled } from '@semcore/core';
+import { DataTable } from '@semcore/data-table';
+import { Box, Flex, ScreenReaderOnly } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
+import React from 'react';
 
 const style = sstyled.css`
   SDataTable > [aria-rowindex='1'] > div {
@@ -17,12 +17,12 @@ const style = sstyled.css`
 `;
 
 const Demo = () => {
-  const [selectedRows, setSelectedRows] = React.useState<number[]>([]);
+  const [selectedRows, setSelectedRows] = React.useState<string[]>([]);
   const [selectedRowsDisplay, setSelectedRowsDisplay] = React.useState(0);
   const [ariaMessage, setAriaMessage] = React.useState('');
   const tableRef = React.useRef<HTMLDivElement>(null);
 
-  const handleChangeSelectedRows = (value: number[]) => {
+  const handleChangeSelectedRows = (value: string[]) => {
     setSelectedRows(value);
     if (!selectedRows.length) setAriaMessage('Action bar appeared before the table');
     if (value.length) setSelectedRowsDisplay(value.length);
@@ -43,9 +43,9 @@ const Demo = () => {
       // need this for FF
       tabIndex={-1}
       wMax={800}
-      h={'100%'}
+      h='100%'
       hMax={400}
-      style={{ overflow: 'auto', scrollPaddingTop: !!selectedRows.length ? '44px' : undefined }}
+      style={{ overflow: 'auto', scrollPaddingTop: selectedRows.length ? '44px' : undefined }}
     >
       <ScreenReaderOnly role='status' aria-live='polite'>
         {ariaMessage}
@@ -67,7 +67,9 @@ const Demo = () => {
           }}
         >
           <Text size={200}>
-            Selected rows: <Text bold>{selectedRowsDisplay}</Text>
+            Selected rows:
+            {' '}
+            <Text bold>{selectedRowsDisplay}</Text>
           </Text>
           <Button use='tertiary' onClick={handleDeselectAll}>
             Deselect all
@@ -76,8 +78,8 @@ const Demo = () => {
       </Collapse>
       <DataTable
         data={data}
-        aria-label={'Table example with selectable rows'}
-        defaultGridTemplateColumnWidth={'auto'}
+        aria-label='Table example with selectable rows'
+        defaultGridTemplateColumnWidth='auto'
         selectedRows={selectedRows}
         onSelectedRowsChange={handleChangeSelectedRows}
         ref={tableRef}

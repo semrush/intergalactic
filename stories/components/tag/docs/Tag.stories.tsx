@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
 import Tag from '@semcore/tag';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import AddingTagExample from './examples/adding_tag';
 import CustomTagColorExample from './examples/custom_tag_color';
