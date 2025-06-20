@@ -6,6 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
+- Issue where users navigate to the second option in select after opening.
 - Focus after selecting some option(s) in multiselect was on popper instead of trigger.
 
 ## [16.1.2] - 2025-06-12

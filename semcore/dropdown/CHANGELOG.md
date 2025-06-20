@@ -8,6 +8,10 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - `sticky` property for Dropdown.Group.
 
+### Change
+
+- Clear highlightedIndex after closing popover to correct default value depend on type - `0` for DropdownMenu and `null` for Select.
+
 ## [16.0.2] - 2025-06-12
 
 ### Fixed

@@ -6,6 +6,8 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
+- Ability to set initial sort value as undefined.
+- Ability to set `width` as `100%` and don't skip this value in scrollDirection calculation.
 - Property `name` to a column group type.
 - Export for `DataTableProp` and `DataTableChangeSort` types.
 - `null` as possible value for `DataRowItem`.

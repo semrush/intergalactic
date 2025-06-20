@@ -202,15 +202,15 @@ export class Column<D extends DataTableData> extends Component<
   };
 
   handleSortClick = (e: React.SyntheticEvent<HTMLButtonElement>) => {
-    const { sort, onSortChange, name } = this.asProps;
+    const { sort, onSortChange, name, sortable } = this.asProps;
 
     if (
       lastInteraction.isMouse() ||
       (lastInteraction.isKeyboard() && e.target === e.currentTarget)
     ) {
-      if (sort && onSortChange) {
+      if (sortable && onSortChange) {
         const sortDirection =
-          sort[0] === name ? reversedSortDirection[sort[1]] : this.defaultDirection;
+          sort?.[0] === name ? reversedSortDirection[sort[1]] : this.defaultDirection;
 
         onSortChange([name, sortDirection], e);
       }
@@ -245,6 +245,8 @@ export class Column<D extends DataTableData> extends Component<
       } else if (e.key === 'Enter') {
         this.lockedCell[1] = true;
         focusableChildren[0]?.focus();
+        e.preventDefault();
+        e.stopPropagation();
       } else if (e.key === 'Tab') {
         this.lockedCell[0]?.setAttribute('inert', '');
       }
