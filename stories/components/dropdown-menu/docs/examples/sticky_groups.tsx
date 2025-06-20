@@ -22,7 +22,7 @@ const groups = Array.from({ length: 3 }, (_, index) => {
 
 const listHeight = 200;
 
-const Row = React.memo(({ index, style, data: { project, group, setProject } }: any) => {
+const Row = React.memo(({ index, style, data: { project, group, setProject, selectedProject } }: any) => {
   const projectName = `${group.title}_${group.projects[index]}`;
 
   return (
@@ -30,8 +30,7 @@ const Row = React.memo(({ index, style, data: { project, group, setProject } }: 
       <DropdownMenu.Item
         key={projectName}
         onClick={() => setProject(projectName)}
-        selected={project === projectName}
-        // index={index}
+        selected={selectedProject === projectName}
       >
         <DropdownMenu inlineActions placement='right'>
           <Flex justifyContent='space-between'>
@@ -118,7 +117,7 @@ const Demo = () => {
           {groups.map((group, index) => {
             return (
               <DropdownMenu.Group key={index} title={group.title} sticky>
-                {group.projects.map((project, index) => (<Row key={`${group.title}_${project}`} index={index} data={{ project, group, setProject }} />))}
+                {group.projects.map((project, index) => (<Row key={`${group.title}_${project}`} index={index} data={{ project, group, setProject, selectedProject }} />))}
               </DropdownMenu.Group>
             );
           })}
