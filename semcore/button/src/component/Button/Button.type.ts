@@ -24,7 +24,7 @@ type Use = 'primary' | 'secondary' | 'tertiary';
 type DeprecatedTheme = 'warning';
 
 /** Button theme */
-type Theme = 'info' | 'success' | 'brand' | 'danger' | 'muted' | 'invert';
+type Theme = 'info' | 'success' | 'brand' | 'danger' | 'ai' | 'muted' | 'invert';
 
 /** @deprecated */
 export interface IButtonProps extends ButtonProps, UnknownProperties {}

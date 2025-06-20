@@ -5,7 +5,7 @@ import type { Box, BoxProps } from '@semcore/flex-box';
 import type { IconProps } from '@semcore/icon';
 import type { Text } from '@semcore/typography';
 
-export type NoticeTheme = 'danger' | 'warning' | 'success' | 'info' | 'muted';
+export type NoticeTheme = 'danger' | 'warning' | 'success' | 'info' | 'muted' | 'ai';
 export type NoticeUse = 'primary' | 'secondary';
 
 /** @deprecated */

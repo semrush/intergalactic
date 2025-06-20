@@ -4,7 +4,7 @@ import type { BoxProps } from '@semcore/flex-box';
 import type { NeighborItemProps, NeighborLocationProps } from '@semcore/neighbor-location';
 import type React from 'react';
 
-export type SwitchTheme = 'info' | 'success' | string;
+export type SwitchTheme = 'info' | 'success' | 'ai' | string;
 
 /** @deprecated */
 export interface ISwitchProps extends SwitchProps, UnknownProperties {}

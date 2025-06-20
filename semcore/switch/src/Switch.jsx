@@ -10,7 +10,7 @@ import React from 'react';
 import style from './style/switch.shadow.css';
 
 function isCustomTheme(theme) {
-  return !['info', 'success'].includes(theme);
+  return !['info', 'success', 'ai'].includes(theme);
 }
 
 class Switch extends Component {

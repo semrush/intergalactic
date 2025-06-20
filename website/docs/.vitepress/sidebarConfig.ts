@@ -698,6 +698,11 @@ export const sideBarConfig: SidebarConfig = [
         collapsed: true,
         items: [
           {
+            link: '/patterns/ai-feature/ai-feature',
+            activeMatch: '/patterns/ai-feature/',
+            text: 'AI feature',
+          },
+          {
             link: '/patterns/modal-content/modal-content',
             text: 'Content in modal window',
           },

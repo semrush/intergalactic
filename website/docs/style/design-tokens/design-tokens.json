@@ -361,7 +361,9 @@
     "rawValue": "linear-gradient(90deg, {violet.50}, {blue.50})",
     "computedValue": "linear-gradient(90deg, #f9f2ff, #e9f7ff)",
     "description": "Secondary background for the message with AI accent.",
-    "components": []
+    "components": [
+      "notice"
+    ]
   },
   {
     "name": "--intergalactic-bg-highlight-results",
@@ -849,7 +851,9 @@
     "rawValue": "linear-gradient(90deg, {violet.300}, {blue.300})",
     "computedValue": "linear-gradient(90deg, #c695ff, #2bb3ff)",
     "description": "Border for controls with AI accent.",
-    "components": []
+    "components": [
+      "notice"
+    ]
   },
   {
     "name": "--intergalactic-border-ai-active",
@@ -1095,7 +1099,9 @@
     "rawValue": "linear-gradient(90deg, {violet.400}, {blue.400})",
     "computedValue": "linear-gradient(90deg, #ab6cfe, #008ff8)",
     "description": "Background of the primary control with AI accent.",
-    "components": []
+    "components": [
+      "switch"
+    ]
   },
   {
     "name": "--intergalactic-control-primary-ai-hover",
@@ -1111,7 +1117,9 @@
     "rawValue": "linear-gradient(90deg, {violet.600}, {blue.600})",
     "computedValue": "linear-gradient(90deg, #5925ab, #044792)",
     "description": "Active (selected) state of the primary control with AI accent.",
-    "components": []
+    "components": [
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-control-primary-invert",

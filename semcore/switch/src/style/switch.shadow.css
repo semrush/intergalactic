@@ -92,6 +92,10 @@ SToggle[checked][theme='success'] {
   color: var(--intergalactic-control-primary-success, #009f81);
   background-color: var(--intergalactic-control-primary-success, #009f81);
 }
+SToggle[checked][theme='ai'] {
+  color: var(--intergalactic-control-primary-info, #008ff8);
+  background-image: var(--intergalactic-control-primary-ai, linear-gradient(90deg, #ab6cfe, #008ff8));
+}
 
 SToggle[checked][theme='custom'] {
   color: var(--color);
