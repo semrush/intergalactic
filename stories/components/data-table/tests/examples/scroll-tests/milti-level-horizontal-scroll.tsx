@@ -16,6 +16,7 @@ const Demo = () => {
         w={700}
         headerProps={{
           sticky: true,
+          withScrollBar: true,
         }}
         columns={columns}
       />
@@ -49,7 +50,6 @@ const columns: DataTableProps<typeof data>['columns'] = [
   {
     name: '2',
     children: 'Group2',
-    fixed: 'left',
     columns: [
       {
         name: 'kd2',
@@ -110,6 +110,7 @@ const columns: DataTableProps<typeof data>['columns'] = [
 
   {
     name: '5',
+    fixed: 'right',
     children: 'Group5',
     columns: [
       {
