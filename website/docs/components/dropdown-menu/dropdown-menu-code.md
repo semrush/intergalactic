@@ -128,7 +128,7 @@ The component offers several options for laying out list item types:
 
 :::
 
-## Sticky groups in menu
+## Sticky groups titles
 
 ::: sandbox
 

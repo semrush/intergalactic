@@ -4,8 +4,8 @@ import Divider from '@semcore/divider';
 import DropdownMenu from '@semcore/dropdown-menu';
 import { Flex, Box } from '@semcore/flex-box';
 import CloseM from '@semcore/icon/Close/m';
+import EditM from '@semcore/icon/Edit/m';
 import PlusM from '@semcore/icon/MathPlus/m';
-import Pin from '@semcore/icon/Pin/m';
 import SearchM from '@semcore/icon/Search/m';
 import Settings from '@semcore/icon/Settings/m';
 import Input from '@semcore/input';
@@ -15,7 +15,7 @@ import type { FixedSizeList } from 'react-window';
 
 const groups = Array.from({ length: 3 }, (_, index) => {
   return {
-    title: `Group ${index}`,
+    title: `Group title ${index}`,
     projects: Array.from({ length: 6 }, (_, index) => `project ${index}`),
   };
 });
@@ -23,7 +23,7 @@ const groups = Array.from({ length: 3 }, (_, index) => {
 const listHeight = 200;
 
 const Row = React.memo(({ index, style, data: { project, group, setProject, selectedProject } }: any) => {
-  const projectName = `${group.title}_${group.projects[index]}`;
+  const projectName = `Project ${index}`;
 
   return (
     <div style={style}>
@@ -40,21 +40,21 @@ const Row = React.memo(({ index, style, data: { project, group, setProject, sele
             <DropdownMenu.Actions gap={2}>
               <DropdownMenu.Item
                 tag={Button}
-                addonLeft={Settings}
-                title='Settings'
+                addonLeft={EditM}
+                title='Edit project name'
                 hintPlacement='right'
                 onClick={(e) => e.stopPropagation()}
               />
               <DropdownMenu.Item
                 tag={Button}
-                addonLeft={Pin}
-                title='Pin'
+                addonLeft={Settings}
+                title='Settings'
                 hintPlacement='right'
                 onClick={(e) => e.stopPropagation()}
               />
             </DropdownMenu.Actions>
           </Flex>
-          <DropdownMenu.Item.Hint h={20}>{projectName}</DropdownMenu.Item.Hint>
+          <DropdownMenu.Item.Hint h={20}>Description</DropdownMenu.Item.Hint>
         </DropdownMenu>
       </DropdownMenu.Item>
     </div>
@@ -65,7 +65,7 @@ const Demo = () => {
   const [searchValue, setSearchValue] = React.useState('');
   const [visible, setVisible] = React.useState(false);
   const [highlightedIndex, setHighlightedIndex] = React.useState<number | null>(null);
-  const [selectedProject, setProject] = React.useState<string | null>('Group 2_project 5');
+  const [selectedProject, setProject] = React.useState<string | null>(null);
 
   const handleKeydownCreateButton = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' || e.key === ' ') {
