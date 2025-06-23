@@ -151,6 +151,8 @@ test.describe('InlineInput styles', () => {
     await page.waitForSelector('text="For love"');
     await expect(page).toHaveScreenshot();
 
+    await page.pause();
+
     await page.locator('[data-ui-name="InlineInput.CancelControl"]').hover();
     await page.waitForSelector('text="DRAIN THE SWAMP!"');
 

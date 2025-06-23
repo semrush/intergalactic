@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- `applyVariations` modifier for Popper.
+- `applyEndVariation` modifier for Popper.
 
 ## [16.0.2] - 2025-06-12
 
