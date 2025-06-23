@@ -35,7 +35,8 @@ figma.connect(
         title={props.title}
         theme={props.theme}
         placement={props.placement.placement}
-        tag={Link / Button}
+        tag={addonTag}
+        {...addonProps}
       />
     ),
   },

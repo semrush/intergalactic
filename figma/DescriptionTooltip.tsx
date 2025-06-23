@@ -26,9 +26,10 @@ figma.connect(
     example: (props) => (
       <DescriptionTooltip theme={props.nested.theme} placement={props.placement}>
         <DescriptionTooltip.Trigger
-          tag={ButtonLink}
           addonLeft={InfoM}
           aria-label={props.ariaLabel}
+          tag={ButtonLink}
+          {...addonProps}
         />
         <DescriptionTooltip.Popper>
           {props.nested.content}
