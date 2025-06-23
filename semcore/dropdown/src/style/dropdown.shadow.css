@@ -155,4 +155,15 @@ SDropdownPopper {
   SGroupHint {
     color: var(--intergalactic-text-secondary, #6c6e79);
   }
+
+  SDropdownItemContainer[sticky] {
+    position: sticky;
+    top: 0;
+    background-color: var(--intergalactic-dropdown-menu-item, #ffffff);
+    z-index: 2;
+
+    &:hover {
+      background-color: var(--intergalactic-dropdown-menu-item, #ffffff);
+    }
+  }
 }

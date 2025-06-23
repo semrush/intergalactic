@@ -201,7 +201,7 @@ export class Column<D extends DataTableData> extends Component<
     }
   };
 
-  handleSortClick = (e: React.SyntheticEvent<HTMLButtonElement>) => {
+  handleSortClick = (e: React.SyntheticEvent<HTMLElement>) => {
     const { sort, onSortChange, name, sortable } = this.asProps;
 
     if (
@@ -257,19 +257,30 @@ export class Column<D extends DataTableData> extends Component<
     const cellElement = e.currentTarget;
     const target = e.target;
 
-    this.setState({ sortVisible: true }, () => {
-      if (target === cellElement) {
-        const focusableChildren = Array.from(cellElement.children).flatMap((node) =>
-          getFocusableIn(node as HTMLElement),
-        );
+    if (lastInteraction.isKeyboard()) {
+      this.setState({ sortVisible: true }, () => {
+        if (target === cellElement) {
+          const focusableChildren = Array.from(cellElement.children).flatMap((node) =>
+            getFocusableIn(node as HTMLElement),
+          );
 
-        if (focusableChildren.length === 1) {
-          focusableChildren[0].focus();
-        } else if (focusableChildren.length > 1) {
-          this.lockedCell = [cellElement, false];
+          if (focusableChildren.length === 1) {
+            focusableChildren[0].focus();
+          } else if (focusableChildren.length > 1) {
+            this.lockedCell = [cellElement, false];
+          }
         }
-      }
-    });
+      });
+    }
+  };
+
+  handleClick = (e: React.SyntheticEvent<HTMLElement>) => {
+    const { sortable, onClick, columnIndex } = this.asProps;
+    if (sortable) {
+      this.handleSortClick(e);
+    }
+
+    onClick?.(e, { rowIndex: -1, colIndex: columnIndex });
   };
 
   render() {
@@ -312,7 +323,7 @@ export class Column<D extends DataTableData> extends Component<
         innerOutline
         aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
         aria-sort={ariaSortValue}
-        onClick={sortable ? this.handleSortClick : undefined}
+        use:onClick={this.handleClick}
       >
         <Children />
 

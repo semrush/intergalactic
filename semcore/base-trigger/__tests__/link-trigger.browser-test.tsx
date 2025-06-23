@@ -168,6 +168,7 @@ test.describe('Link-trigger', () => {
       const button = page.getByRole('combobox').first();
       await button.click();
       await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
       const option = page.getByRole('option', { name: 'Mobile' });
       await expect(option).toBeVisible();
       await expect(option).toHaveClass(/highlighted/);

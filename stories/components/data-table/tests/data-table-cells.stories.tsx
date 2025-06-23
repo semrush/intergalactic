@@ -2,6 +2,7 @@ import { DataTable } from '@semcore/data-table';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import CardFlagInCellExample from './examples/cells-tests/card-flag-in-cell';
+import CheckBoxExample from './examples/cells-tests/checkbox';
 import DDSelectInCellExample from './examples/cells-tests/dd-select-in-cell';
 import InteractiveCellsExample from './examples/cells-tests/interactive-elements-in-cells';
 import LongTextCellsExample from './examples/cells-tests/long-text-in-cells';
@@ -19,6 +20,10 @@ type Story = StoryObj<typeof DataTable>;
 
 export const CardFlagInCell: Story = {
   render: CardFlagInCellExample,
+};
+
+export const CheckBox: Story = {
+  render: CheckBoxExample,
 };
 
 export const MiniChartsInCells: Story = {

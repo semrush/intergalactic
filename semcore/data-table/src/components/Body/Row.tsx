@@ -194,7 +194,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
               column={{ name: ACCORDION }}
               position='sticky'
               left={0}
-              w={scrollAreaRef.current?.clientWidth}
+              w='100%'
               onKeyDown={this.handleBackFromAccordion}
             >
               {accordion}

@@ -459,6 +459,13 @@ test.describe('Accordion in table', () => {
       await page.waitForTimeout(100);
       await expect(page).toHaveScreenshot();
     });
+
+    await test.step('Verify accordion is responsive', async () => {
+      await page.keyboard.press('ArrowDown');
+      await page.setViewportSize({ width: 920, height: 1080 });
+      await page.waitForTimeout(100);
+      await expect(page).toHaveScreenshot();
+    });
   });
 
   test('Verify mouse inreaction when interactive element inside cell with toggle', async ({

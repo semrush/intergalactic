@@ -23,7 +23,7 @@ Table: Keyboard support
 
 ### Roles & attributes
 
-The following list describes roles and attributes that component already has.
+The following list describes roles and attributes that the component already has.
 
 Table: Default roles and attributes
 
