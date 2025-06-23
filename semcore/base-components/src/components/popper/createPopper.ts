@@ -1,6 +1,3 @@
-import type {
-  ModifierArguments,
-  ModifierPhases } from '@popperjs/core';
 import {
   popperGenerator,
   eventListeners,
