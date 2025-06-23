@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.3] - 2025-06-23
+
+### Added
+
+- `applyVariations` modifier for Popper.
+
 ## [16.0.2] - 2025-06-12
 
 ### Added
