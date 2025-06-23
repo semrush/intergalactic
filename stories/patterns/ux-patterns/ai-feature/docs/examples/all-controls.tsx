@@ -25,31 +25,28 @@ const Demo = () => {
   };
   return (
     <Flex gap={4} direction='column'>
-      <style>
-        {`
-          #secondary-button {
-            & [data-ui-name='Button.Addon'] {
-              color: var(--intergalactic-icon-primary-ai)
-            }
-          }
-        `}
-      </style>
       <Flex flexWrap gap={4}>
 
         <Button use='primary' theme='ai' addonLeft={SummaryAI}>
           Primary
         </Button>
 
-        <Button addonLeft={SummaryAI} id='secondary-button'>Secondary</Button>
+        <Button>
+          <Button.Addon tag={SummaryAI} color='icon-primary-ai' />
+          <Button.Text>Secondary</Button.Text>
+        </Button>
 
         <Pills defaultValue={1} aria-label='Pills with AI accent'>
           <Pills.Item value={1}>One</Pills.Item>
-          <Pills.Item value={2} addonLeft={SummaryAI}>Two</Pills.Item>
+          <Pills.Item value={2}>
+            <Pills.Item.Addon><SummaryAI color='icon-primary-ai' /></Pills.Item.Addon>
+            <Pills.Item.Text>Two</Pills.Item.Text>
+          </Pills.Item>
         </Pills>
 
         <Select onChange={setSelectValue}>
           <Select.Trigger aria-label='Select with AI theme' wMax={160} wMin={160}>
-            <Select.Trigger.Addon tag={SummaryAI} />
+            <Select.Trigger.Addon tag={SummaryAI} color='icon-primary-ai' />
             <Select.Trigger.Text>{selectValue}</Select.Trigger.Text>
           </Select.Trigger>
           <Select.Menu>
@@ -59,8 +56,8 @@ const Demo = () => {
           </Select.Menu>
         </Select>
 
-        <Input w={220}>
-          <Input.Addon tag={SummaryAI} />
+        <Input w={250}>
+          <Input.Addon><SummaryAI color='icon-primary-ai' /></Input.Addon>
           <Input.Value placeholder='Your domain' aria-label='Input with AI theme' />
           <Input.Addon><Badge>AI powered</Badge></Input.Addon>
         </Input>
@@ -122,7 +119,7 @@ const Demo = () => {
       <TabLine size='l' aria-label='Tab with AI accent' defaultValue={1}>
         <TabLine.Item value={1}>First option</TabLine.Item>
         <TabLine.Item value={2}>
-          <TabLine.Item.Addon tag={SummaryAI} />
+          <TabLine.Item.Addon tag={SummaryAI} color='icon-primary-ai' />
           <TabLine.Item.Text>Second option</TabLine.Item.Text>
         </TabLine.Item>
       </TabLine>
