@@ -1,5 +1,6 @@
 import type { Property } from 'csstype';
 
+import type { CellPropsInner } from '../Body/Cell.types';
 import type {
   ColumnGroupConfig,
   ColumnItemConfig,
@@ -84,4 +85,5 @@ export type ColumnPropsInner<D extends DataTableData> = {
   gridTemplateColumns: string[];
   gridTemplateAreas: string[];
   sticky: boolean;
+  onClick: CellPropsInner['onClick'];
 };

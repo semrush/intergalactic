@@ -53,6 +53,7 @@ class HeadRoot<D extends DataTableData> extends Component<
       selectedRows,
       h,
       getFixedStyle,
+      onCellClick,
     } = this.asProps;
     const column = columns[index];
 
@@ -88,6 +89,7 @@ class HeadRoot<D extends DataTableData> extends Component<
       gridTemplateColumns,
       gridTemplateAreas,
       h,
+      'onClick': onCellClick,
     };
   }
 
