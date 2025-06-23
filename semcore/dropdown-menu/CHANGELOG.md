@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.1.4] - 2025-06-20
+
+### Changed
+
+- Use parameterized ScrollArea instead of custom styles for shadows.
+
 ## [16.1.3] - 2025-06-16
 
 ### Fixed

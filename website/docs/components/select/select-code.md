@@ -189,3 +189,13 @@ This example shows how to implement "Select all" and "Deselect all" buttons usin
 </script>
 
 :::
+
+## Sticky groups titles
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/components/select/docs/examples/sticky_groups.tsx';
+</script>
+
+:::

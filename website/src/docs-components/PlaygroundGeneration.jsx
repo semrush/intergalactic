@@ -56,6 +56,12 @@ Playground.createWidget(
   'bool',
   ({ value, onChange, label, positiveLabel, negativeLabel, ...others }) => {
     const labelText = (value ? positiveLabel : negativeLabel) ?? label;
+    React.useEffect(() => {
+      if (others.disabled) {
+        onChange(others.disabledValue);
+      }
+    }, [others.disabled]);
+
     return (
       <label className={styles.field}>
         <div className={styles.label}>{labelText}</div>
@@ -88,6 +94,12 @@ Playground.createWidget(
 Playground.createWidget(
   'select',
   ({ value, onChange, label, options, positiveLabel, negativeLabel, ...others }) => {
+    React.useEffect(() => {
+      if (others.disabled) {
+        onChange(others.disabledValue);
+      }
+    }, [others.disabled]);
+
     return (
       <label className={styles.field}>
         <div className={styles.label}>{(value ? positiveLabel : negativeLabel) || label}</div>

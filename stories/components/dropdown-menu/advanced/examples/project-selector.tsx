@@ -1,14 +1,13 @@
 import { ButtonTrigger } from '@semcore/base-trigger';
-import Button, { ButtonLink } from '@semcore/button';
+import Button from '@semcore/button';
+import { lastInteraction } from '@semcore/core';
 import Divider from '@semcore/divider';
 import DropdownMenu from '@semcore/dropdown-menu';
-import { Flex, Box } from '@semcore/flex-box';
-import CloseM from '@semcore/icon/Close/m';
+import { Flex } from '@semcore/flex-box';
 import PlusM from '@semcore/icon/MathPlus/m';
 import Pin from '@semcore/icon/Pin/m';
-import SearchM from '@semcore/icon/Search/m';
 import Settings from '@semcore/icon/Settings/m';
-import Input from '@semcore/input';
+import { InputSearch } from '@semcore/select';
 import { Text } from '@semcore/typography';
 import React from 'react';
 import { FixedSizeList } from 'react-window';
@@ -95,29 +94,7 @@ const Demo = () => {
       </DropdownMenu.Trigger>
 
       <DropdownMenu.Popper aria-label='Select project popover'>
-        <Box m={1}>
-          <Input>
-            <Input.Addon>
-              <SearchM />
-            </Input.Addon>
-            <Input.Value
-              value={searchValue}
-              onChange={setSearchValue}
-              aria-label='Enter project name'
-            />
-
-            {searchValue && (
-              <Input.Addon>
-                <ButtonLink
-                  addonLeft={CloseM}
-                  use='secondary'
-                  aria-label='Clear'
-                  onClick={() => setSearchValue('')}
-                />
-              </Input.Addon>
-            )}
-          </Input>
-        </Box>
+        <InputSearch value={searchValue} onChange={setSearchValue} m={1} autoFocus={false} />
 
         <DropdownMenu.List hMax={listHeight + 41}>
           <FixedSizeList

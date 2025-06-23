@@ -384,6 +384,34 @@ test.describe('One level header - Sorting', () => {
     expect(afterSecondSortWidths[3]).toEqual(initialWidths[3]);
   });
 
+  test('Verify sorting  not activates interactive with interactive element in same cell', async ({ page }) => {
+    const standPath = 'stories/components/data-table/tests/examples/header-tests/sorting-with-interactive.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+
+    const popper = page.locator('[data-ui-name="DescriptionTooltip.Popper"]');
+    const trigger = page.locator('[data-ui-name="DescriptionTooltip.Trigger"]');
+    const column = page.locator('[data-ui-name="Head.Column"]');
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+
+    await expect(popper).not.toBeVisible();
+    await page.keyboard.press('Enter');
+    await expect(column.first()).not.toHaveAttribute('aria-sort');
+    await expect(popper).toBeVisible();
+    await expect(popper).toBeFocused();
+    await page.keyboard.press('Escape');
+    await expect(trigger).toBeFocused();
+
+    await page.keyboard.press('Escape');
+    await page.keyboard.press('ArrowRight');
+
+    await column.first().hover();
+    await trigger.click();
+    await expect(popper).toBeVisible();
+    await expect(column.first()).not.toHaveAttribute('aria-sort');
+  });
+
   test('Verify mouse sorting without changing size', async ({ page }) => {
     const standPath = 'stories/components/data-table/docs/examples/sorting.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -445,6 +473,67 @@ test.describe('One level header - Sorting', () => {
     expect(widthsAfterSecondSort[1]).toEqual(initialWidths[1]);
     expect(widthsAfterSecondSort[2]).toBeGreaterThan(initialWidths[2]);
     expect(widthsAfterSecondSort[3]).toEqual(initialWidths[3]);
+  });
+
+  test('Verify sorting with undefined as default value by mouse interactions', async ({ page }) => {
+    const standPath = 'stories/components/data-table/tests/examples/header-tests/sorting-default-undefined.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+
+    const columns = page.locator('[data-ui-name="Head.Column"]');
+    const buttonLink1 = columns.first().locator('button[data-ui-name="ButtonLink"]');
+
+    await columns.first().hover();
+    const count = await columns.count();
+    for (let i = 0; i < count; i++) {
+      await expect(columns.nth(i)).not.toHaveAttribute('aria-sort');
+    }
+    await expect(columns.first()).not.toHaveAttribute('aria-sort');
+
+    await buttonLink1.click();
+    await expect(buttonLink1).toHaveAttribute('aria-label', 'descending');
+    await expect(columns.first()).toHaveAttribute('aria-sort', 'descending');
+
+    await buttonLink1.click();
+    await expect(buttonLink1).toHaveAttribute('aria-label', 'ascending');
+    await expect(columns.first()).toHaveAttribute('aria-sort', 'ascending');
+    for (let i = 1; i < count; i++) {
+      await expect(columns.nth(i)).not.toHaveAttribute('aria-sort');
+    }
+  });
+
+  test('Verify sorting with undefined as default value by keyboard interactions', async ({ page }) => {
+    const standPath = 'stories/components/data-table/tests/examples/header-tests/sorting-default-undefined.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+
+    const columns = page.locator('[data-ui-name="Head.Column"]');
+    const buttonLink1 = columns.first().locator('button[data-ui-name="ButtonLink"]');
+    const buttonLink2 = columns.nth(1).locator('button[data-ui-name="ButtonLink"]');
+
+    await page.keyboard.press('Tab');
+    await expect(buttonLink1).toBeFocused();
+    const count = await columns.count();
+    for (let i = 0; i < count; i++) {
+      await expect(columns.nth(i)).not.toHaveAttribute('aria-sort');
+    }
+    await expect(columns.first()).not.toHaveAttribute('aria-sort');
+
+    await page.keyboard.press('ArrowDown');
+    await expect(page.locator('[data-ui-name="Body.Cell"][aria-colindex="1"]').first()).toBeFocused();
+
+    await page.keyboard.press('ArrowUp');
+    await expect(buttonLink1).toBeFocused();
+
+    await page.keyboard.press('ArrowRight');
+    await expect(buttonLink2).toBeFocused();
+    await page.keyboard.press('Enter');
+    await expect(buttonLink2).toHaveAttribute('aria-label', 'descending');
+    await expect(columns.nth(1)).toHaveAttribute('aria-sort', 'descending');
+
+    await buttonLink2.click();
+    await expect(buttonLink2).toHaveAttribute('aria-label', 'ascending');
+    await expect(columns.nth(1)).toHaveAttribute('aria-sort', 'ascending');
   });
 });
 
@@ -628,7 +717,7 @@ test.describe('Multi level Header', () => {
     await test.step('Verify Select interaction', async () => {
       const selectTrigger = page.locator('[data-ui-name="Select"]');
       await selectTrigger.hover();
-      // shapshot
+      await expect(page).toHaveScreenshot();
       await selectTrigger.click();
 
       const option0 = page.getByRole('option', { name: 'Option 0' });
@@ -639,6 +728,17 @@ test.describe('Multi level Header', () => {
 
       await expect(option0).toBeHidden();
       await expect(selectTrigger).toHaveAttribute('value', '2');
+    });
+
+    await test.step('Verify no scroll when clicking on text', async () => {
+      const dataTable = page.locator('[data-ui-name="DataTable"]');
+      const text = page.getByText('Cpc 1');
+      await text.click();
+      await dataTable.hover();
+      await page.mouse.wheel(0, 600);
+      await page.waitForTimeout(1000);
+      await text.click();
+      await expect(page).toHaveScreenshot();
     });
 
     await test.step('Verify checkbox interaction', async () => {

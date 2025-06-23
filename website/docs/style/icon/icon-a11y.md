@@ -8,7 +8,7 @@ tabs: Design('icon'), A11y('icon-a11y'), API('icon-api'), Example('icon-code'), 
 
 ### Roles and attributes
 
-The following list describes roles and attributes that component already has.
+The following list describes roles and attributes that the component already has.
 
 | Attribute            | Usage                                                                                                                                                                                                                     |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

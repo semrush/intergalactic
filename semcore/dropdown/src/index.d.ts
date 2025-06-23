@@ -60,6 +60,8 @@ export type DropdownGroupProps = BoxProps & {
   title: React.ReactNode;
   /** Subtitle for group of dropdown menu items */
   subTitle?: string;
+  /** Render group title as sticky element for nested items */
+  sticky?: boolean;
 };
 
 declare const Dropdown: Intergalactic.Component<

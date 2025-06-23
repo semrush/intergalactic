@@ -4,6 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { AdvancedFilteringControlTest } from './__tests__/advanced_filtering_control.test';
 import { BasicUsageTest } from './__tests__/basic_usage.test';
 import { SortingMultiselectOptionsTest } from './__tests__/sorting_multiselect_options.test';
+import { StickyGroupTest } from './__tests__/sticky_group.test';
 import AdvancedFilteringControlExample from './examples/advanced_filtering_control';
 import BasicUsageExample from './examples/basic_usage';
 import ControlledAndUncontrolledModesExample from './examples/controlled_and_uncontrolled_modes';
@@ -15,6 +16,7 @@ import OptionsExample from './examples/options';
 import OptionsFilteringExample from './examples/options_filtering';
 import RenderFunctionExample from './examples/render_function';
 import SortingMultiselectOptionsExample from './examples/sorting_multiselect_options';
+import StickyGroupsExample from './examples/sticky_groups';
 import TriggerCustomizationExample from './examples/trigger_customization';
 import TriggerCustomizationDeepExample from './examples/trigger_customization_deep';
 import { playWrapper } from '../../../utils/playWrapper';
@@ -80,4 +82,9 @@ export const TriggerCustomizationDeep: Story = {
 
 export const TriggerCustomization: Story = {
   render: TriggerCustomizationExample,
+};
+
+export const StickyGroups: Story = {
+  render: StickyGroupsExample,
+  play: playWrapper(StickyGroupTest),
 };
