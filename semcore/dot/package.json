@@ -1,7 +1,7 @@
 {
   "name": "@semcore/dot",
   "description": "Semrush Dot Component",
-  "version": "16.0.2",
+  "version": "16.0.3",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -17,9 +17,9 @@
     "types": "./lib/types/index.d.ts"
   },
   "dependencies": {
-    "@semcore/animation": "16.0.2",
-    "@semcore/flex-box": "16.0.2",
-    "@semcore/portal": "16.0.2"
+    "@semcore/animation": "16.0.3",
+    "@semcore/flex-box": "16.0.3",
+    "@semcore/portal": "16.0.3"
   },
   "peerDependencies": {
     "@semcore/base-components": "^16.0.0"
