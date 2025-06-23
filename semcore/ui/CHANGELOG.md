@@ -1,3 +1,56 @@
+## [16.4.0] - 2025-06-23
+
+### @semcore/base-components
+
+- **Added** New properties - `shadowSize` and `shadowTheme` for customize Shadows.
+
+### @semcore/core
+
+- **Added** Tokens form basic palette to themed .css files.
+- **Changed** Value for `--intergalactic-sidebar-nav-control-hover` token (was updated to match gray palette) and fixed lightness for `--intergalactic-violet-dusty-50` token.
+
+### @semcore/data-table
+
+- **Added** Ability to set initial sort value as undefined.
+- **Added** Ability to set `width` as `100%` and don't skip this value in scrollDirection calculation.
+- **Added** Property `name` to a column group type.
+- **Added** Export for `DataTableProp` and `DataTableChangeSort` types.
+- **Added** `null` as possible value for `DataRowItem`.
+- **Added** `uniqueRowKey` property to define unique key in each row. `UNIQ_ROW_KEY` symbol was deprecated.
+- **Changed** Types for `defaultGridTemplateColumnWidth` set to string - any `grid-template-column` css value.
+- **Changed** `selectedRows` from indexes to `UNIQ_ROW_KEY` values.
+- **Changed** Width of accordion is always `100%` instead of dynamic calculation.
+- **Fixed** Table scrolls up a bit on every interaction in header.
+- **Fixed** Interact with the table using the keyboard after clicking the mouse in a certain cell.
+
+### @semcore/dropdown
+
+- **Added** `sticky` property for Dropdown.Group.
+- **Change** Clear highlightedIndex after closing popover to correct default value depend on type - `0` for DropdownMenu and `null` for Select.
+
+### @semcore/dropdown-menu
+
+- **Changed** Use parameterized ScrollArea instead of custom styles for shadows.
+- **Fixed** Issue where users couldn't navigate to nested items with the keyboard when the parent item was hovered with the mouse.
+
+### @semcore/flags
+
+- **Added** `EU` (European Union) to the list of ISO2 codes.
+
+### @semcore/input-number
+
+- **Fixed** Allowed entering non-numeric characters after in numeric input.
+
+### @semcore/mini-chart
+
+- **Fixed** Rendering issues in ScoreDonut and ScoreSemiDonut when value is 0.
+- **Fixed** ScoreLine rendered segments with zero value, causing unnecessary visual elements.
+
+### @semcore/select
+
+- **Fixed** Issue where users navigate to the second option in select after opening.
+- **Fixed** Focus after selecting some option(s) in multiselect was on popper instead of trigger.
+
 ## [16.3.0] - 2025-06-16
 
 ### @semcore/add-filter

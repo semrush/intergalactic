@@ -22,9 +22,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Fixed
 
 - Table scrolls up a bit on every interaction in header.
-
-### Fixed
-
 - Interact with the table using the keyboard after clicking the mouse in a certain cell.
 
 ## [16.0.4] - 2025-05-30
