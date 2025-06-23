@@ -2205,7 +2205,6 @@
     "computedValue": "rgba(0, 143, 248, 0.5)",
     "description": "Color for default keyboard focus outline styles.",
     "components": [
-      "base-components",
       "format-text",
       "typography"
     ]

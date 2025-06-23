@@ -163,6 +163,7 @@ SButton[theme='primary-ai'] {
   &[active] {
     color: var(--intergalactic-text-primary-invert, #ffffff);
     background-image: var(--intergalactic-control-primary-ai-active, linear-gradient(90deg, #5925ab, #044792));
+    background-size: 100%;
   }
 }
 
