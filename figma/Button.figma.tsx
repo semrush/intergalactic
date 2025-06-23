@@ -50,21 +50,19 @@ figma.connect(
       }),
     },
     example: (props) => (
-      <>
-        <Button
-          size={props.size}
-          use={props.use}
-          theme={props.theme}
-          disabled={props.disabled}
-          active={props.active}
-          loading={props.loading}
-        >
-          <Button.Addon>{props.addonLeft}</Button.Addon>
-          {props.label}
-          <Button.Addon>{props.textAddon}</Button.Addon>
-          <Button.Addon>{props.addonRight}</Button.Addon>
-        </Button>
-      </>
+      <Button
+        size={props.size}
+        use={props.use}
+        theme={props.theme}
+        disabled={props.disabled}
+        active={props.active}
+        loading={props.loading}
+      >
+        <Button.Addon>{props.addonLeft}</Button.Addon>
+        {props.label}
+        <Button.Addon>{props.textAddon}</Button.Addon>
+        <Button.Addon>{props.addonRight}</Button.Addon>
+      </Button>
     ),
   },
 );
@@ -78,7 +76,6 @@ figma.connect(
 //       title: figma.textContent('title prop'),
 //     },
 //     example: (props) => (
-//       <>
 //         <Button
 //           size={props.size}
 //           use={props.use}
@@ -90,7 +87,6 @@ figma.connect(
 //         >
 //           <Button.Addon>{props.addonLeft}</Button.Addon>
 //         </Button>
-//       </>
 //     ),
 //   },
 // );
