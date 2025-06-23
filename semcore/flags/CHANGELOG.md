@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.1.0] - 2025-06-20
+
+### Added
+
+- `EU` (European Union) to the list of ISO2 codes.
+
 ## [16.0.2] - 2025-06-16
 
 ### Changed

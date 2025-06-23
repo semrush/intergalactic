@@ -17,6 +17,11 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Types for `defaultGridTemplateColumnWidth` set to string - any `grid-template-column` css value.
 - `selectedRows` from indexes to `UNIQ_ROW_KEY` values.
+- Width of accordion is always `100%` instead of dynamic calculation.
+
+### Fixed
+
+- Table scrolls up a bit on every interaction in header.
 
 ## [16.0.4] - 2025-05-30
 

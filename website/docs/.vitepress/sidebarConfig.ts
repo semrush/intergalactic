@@ -615,16 +615,6 @@ export const sideBarConfig: SidebarConfig = [
             text: 'DataTable',
           },
           {
-            link: '/table-group/table-primary/table-primary',
-            activeMatch: '/table-group/table-primary/',
-            text: 'Primary table',
-          },
-          {
-            link: '/table-group/table-secondary/table-secondary',
-            activeMatch: '/table-group/table-secondary/',
-            text: 'Secondary table',
-          },
-          {
             link: '/table-group/table-controls/table-controls',
             text: 'Table controls',
           },

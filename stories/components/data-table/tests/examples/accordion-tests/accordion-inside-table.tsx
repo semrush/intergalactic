@@ -15,6 +15,7 @@ const Demo = () => {
       columns={[
         { name: 'keyword', children: 'Keyword', gtcWidth: 'minmax(20%, 50%)' },
         {
+          name: 'group',
           children: 'Organic Sessions',
           borders: 'both',
           columns: [
@@ -48,20 +49,20 @@ const ChartExample = () => {
     .range([height - MARGIN, MARGIN])
     .domain([0, 10]);
   return (
-    // <ResponsiveContainer h={300} w={1000} style={{background: '#fff'}}>
-    <Plot data={dataChart} scale={[xScale, yScale]} width={width} height={height} style={{ background: '#fff' }}>
-      <YAxis>
-        <YAxis.Ticks />
-        <YAxis.Grid />
-      </YAxis>
-      <XAxis>
-        <XAxis.Ticks />
-      </XAxis>
-      <Line x='x' y='y'>
-        <Line.Dots display />
-      </Line>
-    </Plot>
-    // </ResponsiveContainer>
+    <ResponsiveContainer onResize={setSize} h={300} w='100%' style={{ background: '#fff' }}>
+      <Plot data={dataChart} scale={[xScale, yScale]} width={width} height={height} style={{ background: '#fff' }}>
+        <YAxis>
+          <YAxis.Ticks />
+          <YAxis.Grid />
+        </YAxis>
+        <XAxis>
+          <XAxis.Ticks />
+        </XAxis>
+        <Line x='x' y='y'>
+          <Line.Dots display />
+        </Line>
+      </Plot>
+    </ResponsiveContainer>
   );
 };
 
