@@ -10,7 +10,6 @@ import { isFocusInside, hasFocusableIn } from '@semcore/core/lib/utils/use/useFo
 import { NoData } from '@semcore/widget-empty';
 import type { ReactElement } from 'react';
 import * as React from 'react';
-import init from 'typescript-plugin-css-modules';
 
 import style from './dataTable.shadow.css';
 import type {
