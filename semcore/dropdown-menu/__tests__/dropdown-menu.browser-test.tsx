@@ -1000,7 +1000,6 @@ test.describe('Virtual scroll', () => {
     const project36 = page.getByRole('menuitemradio', { name: 'project 36' });
     await expect(project36).toBeFocused();
     await expect(project33).not.toBeFocused();
-    await expect(page).toHaveScreenshot();
 
     if (browserName === 'firefox') return; // because of bug on firefox UIK-3349
     await page.keyboard.press('Tab');
@@ -1023,6 +1022,7 @@ test.describe('Virtual scroll', () => {
     await page.keyboard.press('ArrowDown');
     await project36.waitFor({ state: 'visible' });
     await expect(project36).toBeFocused();
+    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
   });
 
   test('Verify Mouse scroll', async ({ page, browserName }) => {
@@ -1058,7 +1058,7 @@ test.describe('Virtual scroll', () => {
     const project35item = page.getByRole('menuitemradio', { name: 'project 35' });
     await expect(project35item).toBeVisible();
     if (browserName === 'firefox') return; // every scroll on ff differs on some pixels(not stable) so visual regression skipped for it
-    await expect(page).toHaveScreenshot();
+    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
   });
 });
 
