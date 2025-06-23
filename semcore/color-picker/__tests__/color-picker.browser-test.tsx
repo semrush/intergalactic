@@ -637,7 +637,7 @@ test.describe('Color-picker', () => {
     await test.step('Verify paletter manager when colors defaultColors and onColorsChange pre set', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
-      await page.waitForTimeout(100);
+      await locators.popper.waitFor({ state: 'visible' });
 
       const colorItems = page.locator(
         '[data-ui-name="ColorPicker.Colors"] [data-ui-name="ColorPicker.Item"]',
@@ -735,6 +735,7 @@ test.describe('Color-picker', () => {
       await paletteItems.nth(1).click();
       await page.waitForTimeout(100);
       await locators.trigger.nth(1).click();
+      await locators.popper.waitFor({ state: 'visible' });
       await page.getByRole('dialog').waitFor({ state: 'visible' });
       await expect(paletteItems.nth(1)).toHaveAttribute('aria-selected', 'true');
     });

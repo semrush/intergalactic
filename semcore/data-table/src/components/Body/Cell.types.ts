@@ -1,3 +1,5 @@
+import type * as React from 'react';
+
 import type { DTRow, DTRows } from './Row.types';
 import type { DTUse } from '../DataTable/DataTable.types';
 import type { DTColumn } from '../Head/Column.types';
@@ -29,4 +31,5 @@ export type CellPropsInner = {
   virtualScroll: boolean;
   tableRef: React.RefObject<HTMLDivElement>;
   accordionDuration?: number | [number, number];
+  onClick: (e: React.SyntheticEvent, opt: { rowIndex: number; colIndex: number; row?: DTRow }) => void;
 };

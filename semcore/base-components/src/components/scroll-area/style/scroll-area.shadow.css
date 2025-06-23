@@ -16,13 +16,41 @@ SShadowVertical {
   }
 }
 
-SShadowHorizontal {
-
+SShadowHorizontal[size] {
   &:before,
   &:after {
     top: 0;
-    width: 5px;
+    width: var(--size);
     height: 100%;
+  }
+
+  &[themeLeft='dark'] {
+    &:before {
+      background: var(--intergalactic-scroll-area-shadow-left,
+      linear-gradient(to right, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%));
+    }
+  }
+  &[themeRight='dark'] {
+    &:after {
+      background: var(--intergalactic-scroll-area-shadow-right,
+      linear-gradient(to left, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%));
+    }
+  }
+  &[themeLeft='light'] {
+    &:before {
+      background: var(
+        --intergalactic-scroll-area-dropdown-menu-left,
+        linear-gradient(to right, rgba(255, 255, 255, 1) 34.38%, rgba(255, 255, 255, 0) 100%)
+      );
+    }
+  }
+  &[themeRight='light'] {
+    &:after {
+      background: var(
+        --intergalactic-scroll-area-dropdown-menu-right,
+        linear-gradient(to left, rgba(255, 255, 255, 1) 34.38%, rgba(255, 255, 255, 0) 100%)
+      );
+    }
   }
 }
 
@@ -30,15 +58,11 @@ SShadowHorizontal[position='median'] {
   &:before {
     left: 0;
     display: block;
-    background: var(--intergalactic-scroll-area-shadow-left,
-    linear-gradient(to right, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%));
   }
 
   &:after {
     right: 0;
     display: block;
-    background: var(--intergalactic-scroll-area-shadow-right,
-    linear-gradient(to left, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%));
   }
 }
 
@@ -46,17 +70,19 @@ SShadowHorizontal[position='start'] {
   &:before {
     left: 0;
     display: block;
-    background: var(--intergalactic-scroll-area-shadow-left,
-    linear-gradient(to right, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%));
+  }
+  &:after {
+    background: none;
   }
 }
 
 SShadowHorizontal[position='end'] {
+  &:before {
+    background: none;
+  }
   &:after {
     right: 0;
     display: block;
-    background: var(--intergalactic-scroll-area-shadow-right,
-    linear-gradient(to left, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%));
   }
 }
 
@@ -68,13 +94,40 @@ SShadowHorizontal[rightOffset]:after {
   right: var(--rightOffset);
 }
 
-SShadowVertical {
-
+SShadowVertical[size] {
   &:before,
   &:after {
     left: 0;
     width: 100%;
-    height: 5px;
+    height: var(--size);
+  }
+  &[themeTop='dark'] {
+    &:before {
+      background: var(--intergalactic-scroll-area-shadow-top,
+      linear-gradient(to bottom, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%));
+    }
+  }
+  &[themeBottom='dark'] {
+    &:after {
+      background: var(--intergalactic-scroll-area-shadow-bottom,
+      linear-gradient(to top, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%));
+    }
+  }
+  &[themeTop='light'] {
+    &:before {
+      background: var(
+        --intergalactic-scroll-area-dropdown-menu-top,
+        linear-gradient(to bottom, rgba(255, 255, 255, 1) 34.38%, rgba(255, 255, 255, 0) 100%)
+      );
+    }
+  }
+  &[themeBottom='light'] {
+    &:after {
+      background: var(
+        --intergalactic-scroll-area-dropdown-menu-bottom,
+        linear-gradient(to top, rgba(255, 255, 255, 1) 34.38%, rgba(255, 255, 255, 0) 100%)
+      );
+    }
   }
 }
 
@@ -82,15 +135,11 @@ SShadowVertical[position='median'] {
   &:before {
     top: 0;
     display: block;
-    background: var(--intergalactic-scroll-area-shadow-top,
-    linear-gradient(to bottom, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%));
   }
 
   &:after {
     bottom: 0;
     display: block;
-    background: var(--intergalactic-scroll-area-shadow-bottom,
-    linear-gradient(to top, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%));
   }
 }
 
@@ -98,17 +147,19 @@ SShadowVertical[position='start'] {
   &:before {
     top: 0;
     display: block;
-    background: var(--intergalactic-scroll-area-shadow-top,
-    linear-gradient(to bottom, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%));
+  }
+  &:after {
+    background: none;
   }
 }
 
 SShadowVertical[position='end'] {
+  &:before {
+    background: none;
+  }
   &:after {
     bottom: 0;
     display: block;
-    background: var(--intergalactic-scroll-area-shadow-bottom,
-    linear-gradient(to top, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%));
   }
 }
 

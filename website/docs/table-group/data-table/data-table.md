@@ -6,44 +6,78 @@ tabs: Design('data-table'), A11y('data-table-a11y'), API('data-table-api'), Exam
 
 ## Description
 
-**DataTable** is a complex component designed for managing complex data lists.
+**DataTable** is a complex component designed for managing complex data grids.
 
 ## Appearance
 
 ### Types
 
-Our design system has two table types – [primary](../table-primary/table-primary) and [secondary](../table-secondary/table-secondary).
+Our design system has two table types:
 
-### Common styles for table content
+1. **Primary table** is the foundational table type for displaying large data volumes and complex functionality.
+![](static/table-left.png)
+2. **Secondary table** is a table type designed for compactly displaying a small amount of data within widgets and [cards](/components/card/card). These tables usually have a limited set of features, such as non-interactive sort indicators.
+![](static/secondary-table.png)
+
+### Paddings
+
+You can make a primary table more compact by using the `compact` property, which reduces left and right cell paddings to `--spacing-2x`.
+
+![](static/primary-compact-paddings.png)
+
+When displaying a table in a card, increase left and right cell paddings to `--spacing-5x`. In code, this can be enabled with the `sideIndents="wide"` property: find more details in the [Card layout for table example](../../components/card/card-code#card-layout-for-tables).
+
+![](static/table-in-card.png)
+
+### Table content styles
 
 Table: Common styles for table content
 
-| Content                                     | Styles and tokens
-| ------------------------------------------- | ---------------------------------------------------------------------
-| The text in the row                         | Use `--fs-200` and `--lh-200` tokens for font-size and line-height respectively, and `--text-primary` token for color.
-| Secondary text                              | Use `--text-secondary` token for color.
-| Icon, either next to the text or standalone | Use M size and `--icon-secondary-neutral` token for color.
+| Content                                     | Styles and tokens                                                                                                      |
+| ------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| Primary text                                | Use `--fs-200` and `--lh-200` tokens for font-size and line-height respectively, and `--text-primary` token for color. |
+| Secondary text                              | Use `--text-secondary` token for color.                                                                                |
+| Icon, either next to the text or standalone | Use M size and `--icon-secondary-neutral` token for color.                                                             |
+
+## Table header
+
+### Tooltip
+
+You can use [Tooltip](../../components/tooltip/tooltip.md) to display additional information about a column.
+
+![](static/tooltip-2.png)
+
+### Long titles
+
+By default, long column titles wrap to the next line.
+
+![](static/header-text-wrap.png)
+
+Alternatively, if the space is limited, you can disable text wrap and truncate the title with [Ellipsis](../../components/ellipsis/ellipsis.md), showing the full text on hover.
+
+![](static/tooltip-1.png)
+
+### Sticky header
+
+You can make the table header `sticky`, so that it stays visible when scrolling long tables.
+
+::: tip
+Sticky header shouldn't have a shadow during scrolling.
+:::
+
+![](static/th-styles-scroll.png)
+
+### Multi-level header
+
+Column headings can be grouped, resulting in a multi-level table header.
+
+![](static/two-row-head.png)
 
 ## Sorting
 
 For detailed information on sorting columns in the table, refer to [Table controls](/table-group/table-controls/table-controls#sorting).
 
-## Tooltip
-
-You can use tooltips to display additional information about columns. It will appear by hovering over the column title.
-
-Table: Tooltips in Table header
-
-| Case                                                  | Appearance example        |
-| ----------------------------------------------------- | ------------------------- |
-| Use [Ellipsis](../../components/ellipsis/ellipsis.md) if the column title is too long and needs to be truncated.                        | ![](static/tooltip-1.png) |
-| Use [Tooltip](../../components/tooltip/tooltip.md) if the column has additional explanatory information. | ![](static/tooltip-2.png) |
-
-## Table row states
-
-::: tip
-Hover state for a row is required for all table types.
-:::
+## Row states
 
 Hovering highlights information in large data volumes, making it easier to perform actions such as reading, deleting, or opening.
 
@@ -89,14 +123,16 @@ If a cell is colored, it remains colored when you hover over it. Users shouldn't
 
 ## Cell content alignment
 
-Text inside cells in rows and headers is aligned according to these rules.
+**Vertical alignment:** both table header and body cell content is always aligned to the top.
+
+**Horizontall alignment:** align cell content both in the header and the body according to the following rules.
 
 ### Left-aligned
 
 ![](static/table-left.png)
 
 - Text
-- The link (URL)
+- Link (URL)
 - Keyword
 - Code/Numbers/Hashes (text consisting of numbers, symbols, and letters)
 - Abbreviation

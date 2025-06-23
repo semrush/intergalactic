@@ -1692,7 +1692,9 @@
     "rawValue": "{gray.white}",
     "computedValue": "#ffffff",
     "description": "Default background color for the list item in the dropdown-menu.",
-    "components": []
+    "components": [
+      "dropdown"
+    ]
   },
   {
     "name": "--intergalactic-dropdown-menu-item-hover",
@@ -3444,7 +3446,7 @@
     "computedValue": "linear-gradient(to right, rgba(255, 255, 255, 1) 34.38%, rgba(255, 255, 255, 0) 100%)",
     "description": "Left-to-right fade shadow for the ScrollArea inside the DropdownMenu.",
     "components": [
-      "dropdown-menu"
+      "base-components"
     ]
   },
   {
@@ -3454,7 +3456,7 @@
     "computedValue": "linear-gradient(to left, rgba(255, 255, 255, 1) 34.38%, rgba(255, 255, 255, 0) 100%)",
     "description": "Right-to-left fade shadow for the ScrollArea inside the DropdownMenu.",
     "components": [
-      "dropdown-menu"
+      "base-components"
     ]
   },
   {
@@ -3464,7 +3466,7 @@
     "computedValue": "linear-gradient(to top, rgba(255, 255, 255, 1) 34.38%, rgba(255, 255, 255, 0) 100%)",
     "description": "Bottom-to-top fade shadow for the ScrollArea inside the DropdownMenu.",
     "components": [
-      "dropdown-menu"
+      "base-components"
     ]
   },
   {
@@ -3474,7 +3476,7 @@
     "computedValue": "linear-gradient(to bottom, rgba(255, 255, 255, 1) 34.38%, rgba(255, 255, 255, 0) 100%)",
     "description": "Top-to-bottom fade shadow for the ScrollArea inside the DropdownMenu.",
     "components": [
-      "dropdown-menu"
+      "base-components"
     ]
   },
   {
