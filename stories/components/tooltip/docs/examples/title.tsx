@@ -1,4 +1,4 @@
-import { Box, Flex } from '@semcore/flex-box';
+import { Box, Flex } from '@semcore/base-components';
 import Link from '@semcore/link';
 import { Hint } from '@semcore/tooltip';
 import React from 'react';

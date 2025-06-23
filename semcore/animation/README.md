@@ -1,6 +1,6 @@
-# DEPRECATED. Use functionality from `@semcore/core`.
+# @semcore/animation (DEPRECATED)
 
-# @semcore/animation
+## This package is deprecated. Use `@semcore/base-components`.
 
 [![version](https://img.shields.io/npm/v/@semcore/animation.svg)](https://www.npmjs.com/@semcore/animation)
 [![downloads](https://img.shields.io/npm/dt/@semcore/animation.svg)](https://www.npmjs.com/package/@semcore/animation)

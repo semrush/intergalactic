@@ -1,4 +1,6 @@
-# @semcore/scroll-area
+# @semcore/scroll-area (DEPRECATED)
+
+## This package is deprecated. Use `@semcore/base-components`.
 
 [![version](https://img.shields.io/npm/v/@semcore/scroll-area.svg)](https://www.npmjs.com/@semcore/scroll-area)
 [![downloads](https://img.shields.io/npm/dt/@semcore/scroll-area.svg)](https://www.npmjs.com/package/@semcore/scroll-area)

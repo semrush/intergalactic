@@ -1,4 +1,6 @@
-# @semcore/portal
+# @semcore/portal (DEPRECATED)
+
+## This package is deprecated. Use `@semcore/base-components`.
 
 [![version](https://img.shields.io/npm/v/@semcore/portal.svg)](https://www.npmjs.com/@semcore/portal)
 [![downloads](https://img.shields.io/npm/dt/@semcore/portal.svg)](https://www.npmjs.com/package/@semcore/portal)

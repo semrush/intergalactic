@@ -1,6 +1,6 @@
+import { Flex } from '@semcore/base-components';
 import Button from '@semcore/button';
 import DropdownMenu from '@semcore/dropdown-menu';
-import { Flex } from '@semcore/flex-box';
 import ChevronRightIcon from '@semcore/icon/ChevronRight/m';
 import PlusM from '@semcore/icon/MathPlus/m';
 import TrashM from '@semcore/icon/Trash/m';

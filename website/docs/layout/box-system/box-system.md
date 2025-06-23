@@ -6,7 +6,7 @@ tabs: Design('box-system'), API('box-api'), Changelog('box-changelog')
 
 ## Description
 
-**Flex-box** is a component for arranging and aligning elements in the interface.
+**Flex** and **Box** are components for arranging and aligning elements in the interface.
 
 ## Box
 

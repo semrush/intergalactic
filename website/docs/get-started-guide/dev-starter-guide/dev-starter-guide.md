@@ -23,7 +23,7 @@ npm install @semcore/ui
 
 :::
 
-After the installation, you can access each component at `intergalactic/{component_name}`.
+After the installation, you can access each component at `@semcore/{component_name}`.
 
 ## Key features
 
@@ -34,7 +34,7 @@ We have developed this design system with a strong focus on flexibility and ease
 Components often consist of complex HTML structures. To enhance flexibility, we provide a free template, allowing you to customize the internals of the components from the design system. Here's an example using the [Button](/components/button/button) component:
 
 ```jsx
-import Button from '@semcore/ui/button';
+import Button from '@semcore/button';
 
 <Button>
   <Button.Addon>
@@ -82,7 +82,7 @@ These handlers are especially convenient when using React hooks, as you no longe
 
 ```jsx
 import React from 'react';
-import Input from '@semcore/ui/input';
+import Input from '@semcore/input';
 
 export default () => {
   const [value, setValue] = React.useState('');
@@ -109,10 +109,10 @@ All our components return a DOM node in the `ref` property. This decision was ma
 
 ### Base component
 
-Underlying all our components is ["Box"](/layout/box-system/box-system), which serves as a foundational building block. By importing Box from `intergalactic/flex-box`, you can leverage its capabilities, including:
+Underlying all our components is ["Box"](/layout/box-system/box-system), which serves as a foundational building block.
 
 ```jsx
-import { Box } from '@semcore/ui/flex-box';
+import { Box } from '@semcore/base-components';
 ```
 
 `Box` allows you to:
@@ -154,7 +154,7 @@ Additionally, consider exploring the ["Flex"](/layout/box-system/box-system) com
 
 
 ```jsx
-import { Flex } from '@semcore/ui/flex-box';
+import { Flex } from '@semcore/ui/base-components';
 
 <Flex justifyContent="center" alignItems="center" />;
 ```

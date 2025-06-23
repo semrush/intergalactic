@@ -1,4 +1,4 @@
-import { Flex } from '@semcore/flex-box';
+import { Flex } from '@semcore/base-components';
 import SmileHappyM from '@semcore/icon/SmileHappy/m';
 import SmileSadM from '@semcore/icon/SmileSad/m';
 import Tag from '@semcore/tag';

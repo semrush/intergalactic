@@ -1,24 +1,12 @@
 ---
-title: NeighborLocation
+title: neighborLocation
 fileSource: neighbor-location
 tabs: Design('neighbor-location'), API('neighbor-location-api'), Changelog('neighbor-location-changelog')
 ---
 
-::: warning
-:rotating_light: `NeighborLocation` component is deprecated and will be removed in the next releases.
-
-:::
-::: tip
-Use property `neighborLocation` specification on components.
-
-We did this because of the unreliability of the API and the unpredictability of neighbor detection, especially in
-React 18's parallel render.
-:::
-
 ## Description
 
-**NeighborLocation** is a component for grouping components. It indicates where the component is in relation to its
-neighbors.
+**neighborLocation** is a property for grouping components visually. It indicates where the component is in relation to its neighbors.
 
 For example, you can group together:
 
@@ -26,7 +14,7 @@ For example, you can group together:
 - [Input](/components/input/input)
 - [Select](/components/select/select)
 
-You may also need a `flex-box` to align the components. For more information, see
+You may also need `flex-box` to align the components. For more information, see
 the [Flex-box and indent system](/layout/box-system/box-system).
 
 ## Grouped buttons
@@ -82,6 +70,12 @@ You can group input, select, and button.
 
 ## Adding wrapper
 
+::: warning
+:rotating_light: `NeighborLocation` wrapper component is deprecated and will be removed in the next releases, due to the unreliability of the API and the unpredictability of neighbor detection, especially in React 18's parallel render.
+
+Use the `neighborLocation` component property instead.
+:::
+
 By default, `<NeighborLocation/>` doesn't create an HTML wrapper, but you can pass the component tag you want.
 
 ::: tip
@@ -99,9 +93,13 @@ For the correct type mapping in the TC, you must also pass the interface.
 
 ## Using custom component
 
-You can apply `<NeighborLocation/>` to your components. You will need to use the component `<NeighborLocation.Detect/>`
-and
-then the `neighborLocation` prop will come to your component.
+::: warning
+:rotating_light: `NeighborLocation` wrapper component is deprecated and will be removed in the next releases, due to the unreliability of the API and the unpredictability of neighbor detection, especially in React 18's parallel render.
+
+Use the `neighborLocation` component property instead.
+:::
+
+You can apply `<NeighborLocation/>` to your components. You will need to use the component `<NeighborLocation.Detect/>` and then the `neighborLocation` prop will come to your component.
 
 ::: tip
 You can use the render function or the element will be cloned.

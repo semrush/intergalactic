@@ -1,7 +1,7 @@
+import { Flex } from '@semcore/base-components';
 import Button from '@semcore/button';
 import { DataTable } from '@semcore/data-table';
 import DropdownMenu from '@semcore/dropdown-menu';
-import { Flex } from '@semcore/flex-box';
 import FileExportM from '@semcore/icon/FileExport/m';
 import React from 'react';
 

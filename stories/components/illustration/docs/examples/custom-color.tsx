@@ -1,4 +1,4 @@
-import { Flex } from '@semcore/flex-box';
+import { Flex } from '@semcore/base-components';
 import Congrats from '@semcore/illustration/Congrats';
 import MailSent from '@semcore/illustration/MailSent';
 import React from 'react';

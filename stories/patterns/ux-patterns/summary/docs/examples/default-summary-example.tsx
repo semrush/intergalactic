@@ -1,6 +1,6 @@
+import { Flex } from '@semcore/base-components';
 import Button from '@semcore/button';
 import Divider from '@semcore/divider';
-import { Flex } from '@semcore/flex-box';
 import Info from '@semcore/icon/Info/m';
 import Link from '@semcore/link';
 import Skeleton from '@semcore/skeleton';

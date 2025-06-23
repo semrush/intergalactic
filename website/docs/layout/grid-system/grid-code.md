@@ -6,7 +6,7 @@ tabs: Design('grid-system'), API('grid-api'), Grid system('grid-code'), Changelo
 
 ## Description
 
-It's a component for building a 12-column grid.
+The grid system provides `Row` and `Col` components for building a 12-column grid.
 
 ::: tip
 In the product interface we use a 12-column grid with a fixed 24px gutter between columns. The columns stretch.

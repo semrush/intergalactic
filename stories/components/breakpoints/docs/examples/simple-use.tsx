@@ -1,4 +1,4 @@
-import Breakpoints from '@semcore/breakpoints';
+import { defaultBreakpoints as Breakpoints } from '@semcore/base-components';
 import Button from '@semcore/button';
 import React from 'react';
 

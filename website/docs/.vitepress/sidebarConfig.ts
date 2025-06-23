@@ -783,7 +783,7 @@ export const sideBarConfig: SidebarConfig = [
           {
             link: '/utils/neighbor-location/neighbor-location',
             activeMatch: '/utils/neighbor-location/',
-            text: 'NeighborLocation',
+            text: 'neighborLocation',
           },
           {
             link: '/utils/popper/popper',

@@ -26,7 +26,7 @@ const getImageName = (title) => {
   return name.charAt(0).toLowerCase() + name.slice(1);
 };
 
-import { Box } from '@semcore/flex-box';
+import { Box } from '@semcore/base-components';
 
 const group = {
   bar: {
@@ -127,7 +127,7 @@ const getImageName = (title) => {
   return name.charAt(0).toLowerCase() + name.slice(1);
 };
 
-import { Box } from '@semcore/flex-box';
+import { Box } from '@semcore/base-components';
 
 const group = {
   bar: {
@@ -235,7 +235,7 @@ const getImageName = (title) => {
   return name.charAt(0).toLowerCase() + name.slice(1);
 };
 
-import { Box } from '@semcore/flex-box';
+import { Box } from '@semcore/base-components';
 
 const group = {
   line: {
@@ -343,7 +343,7 @@ const getImageName = (title) => {
   return name.charAt(0).toLowerCase() + name.slice(1);
 };
 
-import { Box } from '@semcore/flex-box';
+import { Box } from '@semcore/base-components';
 
 const group = {
   donut: {
@@ -457,7 +457,7 @@ const getImageName = (title) => {
   return name.charAt(0).toLowerCase() + name.slice(1);
 };
 
-import { Box } from '@semcore/flex-box';
+import { Box } from '@semcore/base-components';
 
 const group = {
   bar: {
@@ -586,7 +586,7 @@ const getImageName = (title) => {
   return name.charAt(0).toLowerCase() + name.slice(1);
 };
 
-import { Box } from '@semcore/flex-box';
+import { Box } from '@semcore/base-components';
 
 const group = {
   venn: {
@@ -675,7 +675,7 @@ const getImageName = (title) => {
   return name.charAt(0).toLowerCase() + name.slice(1);
 };
 
-import { Box } from '@semcore/flex-box';
+import { Box } from '@semcore/base-components';
 
 const group = {
   bar: {
@@ -776,7 +776,7 @@ const getImageName = (title) => {
   return name.charAt(0).toLowerCase() + name.slice(1);
 };
 
-import { Box } from '@semcore/flex-box';
+import { Box } from '@semcore/base-components';
 
 const group = {
   choroplethMap: {

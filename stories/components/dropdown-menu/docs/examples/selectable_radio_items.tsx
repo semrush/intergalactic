@@ -1,6 +1,6 @@
+import { Flex } from '@semcore/base-components';
 import Button from '@semcore/button';
 import DropdownMenu from '@semcore/dropdown-menu';
-import { Flex } from '@semcore/flex-box';
 import Trash from '@semcore/icon/Trash/m';
 import React from 'react';
 

@@ -1,5 +1,5 @@
+import { Flex } from '@semcore/base-components';
 import Flags, { iso2Name, type FlagsIso2 } from '@semcore/flags';
-import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import React from 'react';
 

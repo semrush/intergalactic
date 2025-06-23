@@ -1,8 +1,8 @@
+import { Flex } from '@semcore/base-components';
 import Button, { ButtonLink } from '@semcore/button';
 import Counter from '@semcore/counter';
 import DnD from '@semcore/drag-and-drop';
 import DropdownMenu from '@semcore/dropdown-menu';
-import { Flex } from '@semcore/flex-box';
 import SettingsM from '@semcore/icon/Settings/m';
 import { Text } from '@semcore/typography';
 import React from 'react';
