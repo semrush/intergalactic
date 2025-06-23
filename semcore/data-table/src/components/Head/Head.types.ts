@@ -1,4 +1,5 @@
 import type { DTColumn } from './Column.types';
+import type { CellPropsInner } from '../Body/Cell.types';
 import type { UniqRowKey } from '../Body/Row.types';
 import type { DataTableData, DataTableProps, DTUse } from '../DataTable/DataTable.types';
 
@@ -47,4 +48,5 @@ export type HeadPropsInner<D extends DataTableData> = {
   getFixedStyle: (
     cell: Pick<DTColumn, 'name' | 'fixed'>,
   ) => [side: 'left' | 'right', style: string | number] | [side: undefined, style: undefined];
+  onCellClick: CellPropsInner['onClick'];
 };

@@ -35,16 +35,6 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
     'white',
   ];
 
-  const color = select({
-    key: 'color',
-    defaultValue: 'gray-500',
-    label: 'Color',
-    options: COLORS.map((value) => ({
-      name: value,
-      value,
-    })),
-  });
-
   const theme = select({
     key: 'theme',
     defaultValue: 'primary',
@@ -55,20 +45,16 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
     })),
   });
 
-  const addon = select({
-    key: 'addon',
-    defaultValue: 'none',
-    label: 'Addon',
-    options: ['none', 'Icon', 'Circle'].map((value) => ({
+  const color = select({
+    key: 'color',
+    defaultValue: 'gray-500',
+    label: 'Color',
+    options: COLORS.map((value) => ({
       name: value,
       value,
     })),
-  });
-
-  const closeIcon = bool({
-    key: 'close Icon',
-    defaultValue: false,
-    label: 'Close Button',
+    disabled: theme !== 'primary',
+    disabledValue: 'gray-500',
   });
 
   const interactive = bool({
@@ -87,6 +73,24 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
     key: 'disabled',
     defaultValue: false,
     label: 'Disabled',
+  });
+
+  const addon = select({
+    key: 'addon',
+    defaultValue: 'none',
+    label: 'Addon',
+    options: ['none', 'Icon', 'Circle'].map((value) => ({
+      name: value,
+      value,
+    })),
+  });
+
+  const closeIcon = bool({
+    key: 'close Icon',
+    defaultValue: false,
+    label: 'Close Button',
+    disabled: theme === 'additional',
+    disabledValue: false,
   });
 
   return (
@@ -212,7 +216,7 @@ You can set a maximum width for the tag. If the text of a tag exceeds this limit
 
 <!-- @## Minimizing number of tags
 
-In case you have a huge number of tags and don’t need to show them all at once, minimize them to a tag with three dots. When you click on it, all hidden tags will be opened.
+In case you have a huge number of tags and don't need to show them all at once, minimize them to a tag with three dots. When you click on it, all hidden tags will be opened.
 
 ::: tip
 Unfortunately, this solution can be found in several places so far.

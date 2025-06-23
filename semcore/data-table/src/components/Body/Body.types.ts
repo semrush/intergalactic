@@ -1,4 +1,6 @@
-import type { Theme } from './Cell.types';
+import type * as React from 'react';
+
+import type { CellPropsInner, Theme } from './Cell.types';
 import type { DTRow, UniqRowKey } from './Row.types';
 import type { DTUse, VirtualScroll } from '../DataTable/DataTable.types';
 import type { DTColumn } from '../Head/Column.types';
@@ -66,4 +68,5 @@ export type BodyPropsInner = DataTableBodyProps & {
     cell: Pick<DTColumn, 'name' | 'fixed'>,
   ) => [side: 'left' | 'right', style: string | number] | [side: undefined, style: undefined];
   accordionDuration?: number | [number, number];
+  onCellClick: CellPropsInner['onClick'];
 };
