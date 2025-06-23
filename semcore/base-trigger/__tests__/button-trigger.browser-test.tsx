@@ -178,6 +178,7 @@ test.describe('Button-trigger', () => {
       const button = page.getByRole('combobox');
       await button.click();
       await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
       const option = page.getByRole('option', { name: 'Option 1' });
       await expect(option).toBeVisible();
       await expect(option).toHaveClass(/highlighted/);

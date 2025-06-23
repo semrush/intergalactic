@@ -25,11 +25,7 @@ const Demo = () => {
       }),
     [sort],
   );
-  const numberFormat = React.useMemo(() => new Intl.NumberFormat('en-US'), []);
-  const currencyFormat = React.useMemo(
-    () => new Intl.NumberFormat('en-US', { currency: 'USD', style: 'currency' }),
-    [],
-  );
+  const [selectedRows, setSelectedRows] = React.useState<string[]>([]);
   return (
 
     <DataTable
@@ -43,11 +39,9 @@ const Demo = () => {
       headerProps={{
         sticky: true,
       }}
+      selectedRows={selectedRows}
+      onSelectedRowsChange={setSelectedRows}
       columns={[
-        {
-          name: 'hiddenColumn',
-          children: <Checkbox label='Option 1' />,
-        },
         {
           name: 'cpc',
           children: (
@@ -168,27 +162,16 @@ const Demo = () => {
       renderCell={(props) => {
         if (props.columnName === 'keyword') {
           return (
-            <>
-              <Checkbox label='Option 1' />
-              <ButtonLink
-                onClick={() => {
-                  alert(`Click row 
+            <ButtonLink
+              onClick={() => {
+                alert(`Click row
                  props: ${JSON.stringify(Object.keys(props), null, '  ')};
                  row: ${JSON.stringify(props.row, null, '  ')};
                  index: ${props.rowIndex};`);
-                }}
-              >
-                {props.value}
-              </ButtonLink>
-            </>
-          );
-        }
-        if (props.columnName === 'hiddenColumn') {
-          return (
-            <>
-              <Checkbox />
-
-            </>
+              }}
+            >
+              {props.value}
+            </ButtonLink>
           );
         }
         if (props.columnName === 'vol') {

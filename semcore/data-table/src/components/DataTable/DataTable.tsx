@@ -238,6 +238,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
         }
       },
       getFixedStyle: this.getFixedStyle,
+      onCellClick: this.handleCellClick,
       ...headerProps,
     };
   }
@@ -292,8 +293,16 @@ class DataTableRoot<D extends DataTableData> extends Component<
       selectedRows,
       onSelectRow: this.handleSelectRow,
       getFixedStyle: this.getFixedStyle,
+      onCellClick: this.handleCellClick,
     };
   }
+
+  handleCellClick = (e: React.SyntheticEvent, opt: { rowIndex: number; colIndex: number; row?: DTRow }) => {
+    if (lastInteraction.isMouse()) {
+      console.log('click on cell in data table handler', opt);
+      this.initFocusableCell([this.hasFocusableInHeader() ? opt.rowIndex + 1 : opt.rowIndex, opt.colIndex]);
+    }
+  };
 
   handleSelectRow = (
     isSelected: boolean,
@@ -522,13 +531,18 @@ class DataTableRoot<D extends DataTableData> extends Component<
     }
   };
 
-  initFocusableCell = () => {
+  initFocusableCell(): void;
+  initFocusableCell(initCell: [row: number, cell: number]): void;
+  initFocusableCell(initCell?: [row: number, cell: number]) {
     const hasFocusable = this.hasFocusableInHeader();
 
+    const initRow = initCell?.[0] ?? 0;
+    const initCol = initCell?.[1] ?? 0;
+
     if (hasFocusable) {
-      this.focusedCell = [0, 0];
+      this.focusedCell = [initRow, initCol];
     } else {
-      this.focusedCell = [1, 0];
+      this.focusedCell = [initRow + 1, initCol];
     }
   };
 
@@ -1182,7 +1196,16 @@ class DataTableRoot<D extends DataTableData> extends Component<
     let height = 0;
 
     for (let i = 0; i < (header?.length ?? 0); i++) {
-      const columnHeight = header?.item(i)?.getBoundingClientRect().height;
+      const item = header?.item(i);
+      let columnHeight = item?.getBoundingClientRect().height;
+
+      if (item instanceof HTMLElement && item.dataset.groupContainer) {
+        const groupHeight = item.children.item(0)?.getBoundingClientRect().height ?? 0;
+        const cellHeight = item.children.item(1)?.getBoundingClientRect().height ?? 0;
+
+        columnHeight = groupHeight + cellHeight;
+      }
+
       if (columnHeight) {
         height = columnHeight;
         break;

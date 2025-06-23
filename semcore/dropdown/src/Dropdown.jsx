@@ -156,7 +156,7 @@ function DropdownPopper({ styles }) {
 }
 
 function DropdownGroup(props) {
-  const { styles, title, Children, subTitle, size } = props;
+  const { styles, title, Children, subTitle, size, sticky } = props;
   const SGroup = Root;
   const SDropdownItemContainer = Dropdown.Item;
   const SGroupTitle = Flex;
@@ -169,11 +169,11 @@ function DropdownGroup(props) {
   };
   return sstyled(styles)(
     <>
-      <SDropdownItemContainer notInteractive aria-hidden='true' tabindex={-1} size={size}>
+      <SDropdownItemContainer notInteractive aria-hidden='true' tabindex={-1} size={size} sticky={sticky}>
         <SGroupTitle id={uidTitle}>{title}</SGroupTitle>
         {subTitle && <SGroupHint id={uidSubTitle}>{subTitle}</SGroupHint>}
       </SDropdownItemContainer>
-      <SGroup render={Box} role='group' {...groupAriaProps} __excludeProps={['title']}>
+      <SGroup render={Box} role='group' {...groupAriaProps} __excludeProps={['title', 'sticky']}>
         <Children />
       </SGroup>
     </>,

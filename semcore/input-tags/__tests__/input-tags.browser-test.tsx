@@ -709,9 +709,15 @@ test.describe('Functional tests', () => {
       await expect(inputValue).toBeFocused();
     });
 
-    await test.step('Verify menu item focused when entered data', async () => {
+    await test.step('Verify menu item not focused when entered data', async () => {
       await page.keyboard.press('Backspace');
       await page.waitForSelector('text="TikTok"');
+      await expect(inputValue).toBeFocused();
+      await expect(menus.first()).not.toHaveClass(/highlighted/);
+    });
+
+    await test.step('Verify menu item focused after press down', async () => {
+      await page.keyboard.press('ArrowDown');
       await expect(inputValue).toBeFocused();
       await expect(menus.first()).toHaveClass(/highlighted/);
     });
