@@ -2,6 +2,7 @@ import ButtonComponent from '@semcore/button';
 import { createComponent, sstyled, Root, lastInteraction } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
+import { setFocus } from '@semcore/core/lib/utils/focus-lock/setFocus';
 import { forkRef } from '@semcore/core/lib/utils/ref';
 import { useUID } from '@semcore/core/lib/utils/uniqueID';
 import Dropdown, { AbstractDropdown, selectedIndexContext, enhance } from '@semcore/dropdown';
@@ -211,7 +212,9 @@ class DropdownMenuRoot extends AbstractDropdown {
           (inlineActions && (e.key === 'Escape' || this.asProps.highlightedIndex === 0))
         ) {
           this.handlers.visible(false);
-          this.triggerRef.current?.focus();
+          if (this.triggerRef.current) {
+            setFocus(this.triggerRef.current);
+          }
 
           e.preventDefault();
           e.stopPropagation();
