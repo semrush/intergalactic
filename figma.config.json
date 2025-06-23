@@ -1,0 +1,17 @@
+{
+  "codeConnect": {
+    "include": ["figma/**/*.{tsx,jsx}", "semcore/**/*.{tsx,jsx,ts,js}"],
+    "label": "React",
+    "importPaths": {
+      "semcore/*": "@semcore/*"
+    },
+    "paths": {
+      "@semcore/icon/*": ["semcore/icon/*"],
+      "@semcore/illustration/*": ["semcore/illustration/*"],
+      "@semcore/button": ["semcore/button/src"],
+      "@semcore/ui/*": ["semcore/*/src"],
+      "@semcore/*": ["semcore/*/src"]
+    },
+    "interactiveSetupFigmaFileUrl": "https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring--%E2%9D%96-Core-Components?m=auto&node-id=10355-260538&t=fvHZdzdrBaexbYww-1"
+  }
+}
