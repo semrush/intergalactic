@@ -45,7 +45,10 @@ class RootSelect extends AbstractDropdown {
 
   static defaultProps = (props) => {
     const hasInputSearch =
-      props.children && isAdvanceMode(props.children, [Select.InputSearch.displayName], true);
+      props.children && isAdvanceMode(props.children, [
+        Select.InputSearch.displayName,
+        InputSearch.displayName,
+      ], true);
     const defaultIndex = hasInputSearch ? null : 0;
 
     return {
@@ -86,11 +89,16 @@ class RootSelect extends AbstractDropdown {
           if (visible === true) {
             const hasInputSearch = isAdvanceMode(
               this.asProps.Children,
-              [Select.InputSearch.displayName],
+              [
+                Select.InputSearch.displayName,
+                InputSearch.displayName,
+              ],
               true,
             );
 
-            const defaultIndex = hasInputSearch ? null : this.props.defaultHighlightedIndex;
+            const defaultIndex = hasInputSearch || lastInteraction.isMouse()
+              ? null
+              : this.props.defaultHighlightedIndex;
 
             this.handlers.highlightedIndex(defaultIndex);
 

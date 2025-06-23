@@ -306,6 +306,15 @@ test.describe('Basic select', () => {
       await expect(menu).not.toBeVisible();
     });
 
+    await test.step('Verify 1st item highlighted when interacting by mouse and the by keyboard', async () => {
+      await select.click();
+      await page.keyboard.press('ArrowDown');
+      await expect(menu).toBeVisible();
+      await expect(options.first()).toHaveClass(/highlighted/);
+      await page.keyboard.press('Escape');
+      await expect(menu).not.toBeVisible();
+    });
+
     await test.step('Verify opens by Enter', async () => {
       await page.keyboard.press('Enter');
       await expect(menu).toBeVisible();
@@ -327,29 +336,29 @@ test.describe('Basic select', () => {
     await test.step('Verify opens by ArrowUp', async () => {
       await page.keyboard.press('ArrowUp');
       await expect(menu).toBeVisible();
-      await expect(options.nth(5)).toHaveClass(/highlighted/);
+      await expect(options.first()).toHaveClass(/highlighted/);
     });
 
     await test.step('Verify Arrows navigation in menu', async () => {
       await page.keyboard.press('ArrowRight');
-      await expect(options.nth(5)).toHaveClass(/highlighted/);
+      await expect(options.nth(0)).toHaveClass(/highlighted/);
       await page.keyboard.press('ArrowLeft');
-      await expect(options.nth(5)).toHaveClass(/highlighted/);
+      await expect(options.nth(0)).toHaveClass(/highlighted/);
 
       await page.keyboard.press('ArrowDown');
-      await expect(options.nth(0)).toHaveClass(/highlighted/);
+      await expect(options.nth(1)).toHaveClass(/highlighted/);
     });
 
     await test.step('Verify Tab not removed focus outside menu', async () => {
       await page.keyboard.press('Tab');
-      await expect(options.nth(0)).toHaveClass(/highlighted/);
+      await expect(options.nth(1)).toHaveClass(/highlighted/);
     });
 
     await test.step('Verify space selects item and closes menu', async () => {
       await page.keyboard.press('Space');
       await expect(menu).not.toBeVisible();
-      await expect(select).toHaveAttribute('value', '0');
-      await expect(triggerText).toHaveText(/Option 0/);
+      await expect(select).toHaveAttribute('value', '1');
+      await expect(triggerText).toHaveText(/Option 1/);
       await expect(select).toBeFocused();
     });
 
@@ -359,8 +368,8 @@ test.describe('Basic select', () => {
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('Enter');
       await expect(menu).not.toBeVisible();
-      await expect(select).toHaveAttribute('value', '1');
-      await expect(triggerText).toHaveText(/Option 1/);
+      await expect(select).toHaveAttribute('value', '2');
+      await expect(triggerText).toHaveText(/Option 2/);
       await expect(select).toBeFocused();
     });
 
@@ -369,8 +378,8 @@ test.describe('Basic select', () => {
       await new Promise((resolve) => setTimeout(resolve, 500));
       await page.keyboard.press('Escape');
       await expect(menu).not.toBeVisible();
-      await expect(select).toHaveAttribute('value', '1');
-      await expect(triggerText).toHaveText(/Option 1/);
+      await expect(select).toHaveAttribute('value', '2');
+      await expect(triggerText).toHaveText(/Option 2/);
       await expect(select).toBeFocused();
     });
   });
@@ -461,29 +470,29 @@ test.describe('Basic select', () => {
     await test.step('Verify opens by ArrowUp', async () => {
       await page.keyboard.press('ArrowUp');
       await expect(menu).toBeVisible();
-      await expect(options.nth(5)).toHaveClass(/highlighted/);
+      await expect(options.first()).toHaveClass(/highlighted/);
     });
 
     await test.step('Verify Arrows navigation in menu', async () => {
       await page.keyboard.press('ArrowRight');
-      await expect(options.nth(5)).toHaveClass(/highlighted/);
+      await expect(options.first()).toHaveClass(/highlighted/);
       await page.keyboard.press('ArrowLeft');
-      await expect(options.nth(5)).toHaveClass(/highlighted/);
+      await expect(options.first()).toHaveClass(/highlighted/);
 
       await page.keyboard.press('ArrowDown');
-      await expect(options.nth(0)).toHaveClass(/highlighted/);
+      await expect(options.nth(1)).toHaveClass(/highlighted/);
     });
 
     await test.step('Verify Tab not removed focus outside menu', async () => {
       await page.keyboard.press('Tab');
-      await expect(options.nth(0)).toHaveClass(/highlighted/);
+      await expect(options.nth(1)).toHaveClass(/highlighted/);
     });
 
     await test.step('Verify space selects item and closes menu', async () => {
       await page.keyboard.press('Space');
       await expect(menu).not.toBeVisible();
-      await expect(select).toHaveAttribute('value', '0');
-      await expect(triggerText).toHaveText(/Label 0/);
+      await expect(select).toHaveAttribute('value', '1');
+      await expect(triggerText).toHaveText(/Label 1/);
       await expect(select).toBeFocused();
     });
 
@@ -493,8 +502,8 @@ test.describe('Basic select', () => {
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('Enter');
       await expect(menu).not.toBeVisible();
-      await expect(select).toHaveAttribute('value', '1');
-      await expect(triggerText).toHaveText(/Label 1/);
+      await expect(select).toHaveAttribute('value', '2');
+      await expect(triggerText).toHaveText(/Label 2/);
       await expect(select).toBeFocused();
     });
   });
