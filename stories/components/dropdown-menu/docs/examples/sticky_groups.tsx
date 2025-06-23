@@ -1,31 +1,38 @@
 import { ButtonTrigger } from '@semcore/base-trigger';
 import Button from '@semcore/button';
-import { lastInteraction } from '@semcore/core';
 import Divider from '@semcore/divider';
 import DropdownMenu from '@semcore/dropdown-menu';
-import { Flex } from '@semcore/flex-box';
+import { Flex, Box, ScreenReaderOnly } from '@semcore/flex-box';
+import EditM from '@semcore/icon/Edit/m';
 import PlusM from '@semcore/icon/MathPlus/m';
-import Pin from '@semcore/icon/Pin/m';
 import Settings from '@semcore/icon/Settings/m';
 import { InputSearch } from '@semcore/select';
 import { Text } from '@semcore/typography';
 import React from 'react';
-import { FixedSizeList } from 'react-window';
 
-const projects = Array.from({ length: 100 }, (_, index) => `project ${index}`);
-const listItemHeight = 52;
+let index = 0;
+
+const groups = Array.from({ length: 3 }, (_, i) => {
+  return {
+    title: `Group title ${i}`,
+    projects: Array.from({ length: 6 }, (_, j) => {
+      index++;
+      return `Project ${index}`;
+    }),
+  };
+});
+
 const listHeight = 200;
 
-const Row = React.memo(({ index, style, data: { project, projects, setProject } }: any) => {
-  const projectName = projects[index];
+const Row = React.memo(({ style, data: { project, setProject, selectedProject } }: any) => {
+  const projectName = project;
 
   return (
     <div style={style}>
       <DropdownMenu.Item
         key={projectName}
         onClick={() => setProject(projectName)}
-        selected={project === projectName}
-        index={index}
+        selected={selectedProject === projectName}
       >
         <DropdownMenu inlineActions placement='right'>
           <Flex justifyContent='space-between'>
@@ -35,21 +42,21 @@ const Row = React.memo(({ index, style, data: { project, projects, setProject } 
             <DropdownMenu.Actions gap={2}>
               <DropdownMenu.Item
                 tag={Button}
-                addonLeft={Settings}
-                title='Settings'
+                addonLeft={EditM}
+                title='Edit project name'
                 hintPlacement='right'
                 onClick={(e) => e.stopPropagation()}
               />
               <DropdownMenu.Item
                 tag={Button}
-                addonLeft={Pin}
-                title='Pin'
+                addonLeft={Settings}
+                title='Settings'
                 hintPlacement='right'
                 onClick={(e) => e.stopPropagation()}
               />
             </DropdownMenu.Actions>
           </Flex>
-          <DropdownMenu.Item.Hint h={20}>{projectName}</DropdownMenu.Item.Hint>
+          <DropdownMenu.Item.Hint h={20}>Description</DropdownMenu.Item.Hint>
         </DropdownMenu>
       </DropdownMenu.Item>
     </div>
@@ -57,19 +64,10 @@ const Row = React.memo(({ index, style, data: { project, projects, setProject } 
 });
 
 const Demo = () => {
-  const listRef = React.useRef<FixedSizeList>(null);
   const [searchValue, setSearchValue] = React.useState('');
   const [visible, setVisible] = React.useState(false);
   const [highlightedIndex, setHighlightedIndex] = React.useState<number | null>(null);
-  const [selectedProject, setProject] = React.useState<string | null>('project 33');
-
-  React.useEffect(() => {
-    if (selectedProject && visible) {
-      const selectedIndex = projects.findIndex((p) => selectedProject === p);
-      setHighlightedIndex(selectedIndex);
-      listRef.current?.scrollToItem(selectedIndex, 'center');
-    }
-  }, [projects, selectedProject, visible]);
+  const [selectedProject, setProject] = React.useState<string | null>(null);
 
   const handleKeydownCreateButton = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' || e.key === ' ') {
@@ -80,10 +78,19 @@ const Demo = () => {
     }
   };
 
+  const filteredProjects = groups.reduce<string[]>((acc, { projects }) => {
+    projects.forEach((project) => {
+      if (project.toLowerCase().includes(searchValue.toLowerCase())) {
+        acc.push(project);
+      }
+    });
+
+    return acc;
+  }, []);
+
   return (
     <DropdownMenu
       selectable
-      itemsCount={projects.length}
       visible={visible}
       onVisibleChange={setVisible}
       highlightedIndex={highlightedIndex}
@@ -94,20 +101,45 @@ const Demo = () => {
       </DropdownMenu.Trigger>
 
       <DropdownMenu.Popper aria-label='Select project popover'>
-        <InputSearch value={searchValue} onChange={setSearchValue} m={1} autoFocus={false} />
+        <InputSearch value={searchValue} onChange={setSearchValue} m={1} autoFocus={false} aria-describedby={searchValue ? 'search-result' : undefined} />
 
-        <DropdownMenu.List hMax={listHeight + 41}>
-          <FixedSizeList
-            ref={listRef}
-            height={projects.length > 7 ? listHeight : projects.length * listItemHeight}
-            width='100%'
-            itemCount={projects.length}
-            overscanCount={5}
-            itemSize={listItemHeight}
-            itemData={{ projects, project: selectedProject, setProject }}
-          >
-            {Row}
-          </FixedSizeList>
+        <DropdownMenu.List hMax={listHeight + 41} topOffset={36} shadowSize={5} shadowTheme={{ horizontalTop: 'dark', horizontalBottom: 'light' }}>
+          {groups.map((group, index) => {
+            if (group.projects.some((project) => {
+              return project.toLowerCase().includes(searchValue.toLowerCase());
+            }))
+              return (
+                <DropdownMenu.Group key={index} title={group.title} sticky>
+                  {group.projects
+                    .filter((project) => project.toLowerCase().includes(searchValue.toLowerCase()))
+                    .map((project, index) => (<Row key={`${group.title}_${project}`} data={{ project, setProject, selectedProject }} />))}
+                </DropdownMenu.Group>
+              );
+          })}
+
+          {filteredProjects.length
+            ? (
+                <ScreenReaderOnly id='search-result' aria-hidden='true'>
+                  {filteredProjects.length}
+                  {' '}
+                  result
+                  {filteredProjects.length > 1 && 's'}
+                  {' '}
+                  found
+                </ScreenReaderOnly>
+              )
+            : (
+                <Text
+                  tag='div'
+                  id='search-result'
+                  key='Nothing'
+                  p='6px 8px'
+                  size={200}
+                  use='secondary'
+                >
+                  Nothing found
+                </Text>
+              )}
         </DropdownMenu.List>
         <Divider />
         <DropdownMenu.Item
