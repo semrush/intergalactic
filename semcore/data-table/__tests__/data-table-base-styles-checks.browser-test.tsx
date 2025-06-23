@@ -244,12 +244,11 @@ test.describe('Base styles Primary Table', () => {
 
     await page.setContent(htmlContent);
 
-    const widths = await Promise.all([1, 2, 3, 4, 5].map((i) => getColumnWidth(page, i)));
+    const widths = await Promise.all([1, 2, 3, 4, 5, 6].map((i) => getColumnWidth(page, i)));
 
-    expect(widths[0]).toBeLessThanOrEqual(widths[1]);
-    expect(widths[0]).toBeCloseTo(widths[2], 1);
-    expect(widths[1]).toBeLessThanOrEqual(widths[4]);
-    expect(widths[1]).toBeLessThanOrEqual(widths[3]);
+    expect(widths[1]).toBeLessThanOrEqual(widths[2]);
+    expect(widths[1]).toBeCloseTo(widths[3], 1);
+    expect(widths[2]).toBeCloseTo(widths[5], 1);
   });
 });
 
