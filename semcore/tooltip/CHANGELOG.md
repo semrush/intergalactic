@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-* Page layout appeared shifted due to width/height changes.
+- Page layout appeared shifted due to width/height changes.
 
 ## [16.0.3] - 2025-06-23
 
