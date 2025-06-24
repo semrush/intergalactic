@@ -115,7 +115,12 @@ test.describe('NoticeSmart - Vusial', () => {
     await expect(page).toHaveScreenshot();
 
     await page.keyboard.press('Enter');
+
+    await page.waitForTimeout(500);
+
     await closes.first().click();
+
+    await page.waitForTimeout(500);
 
     await expect(page).toHaveScreenshot();
   });
