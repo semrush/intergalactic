@@ -17,12 +17,12 @@ const style = sstyled.css`
 `;
 
 const Demo = () => {
-  const [selectedRows, setSelectedRows] = React.useState<number[]>([]);
+  const [selectedRows, setSelectedRows] = React.useState<string[]>([]);
   const [selectedRowsDisplay, setSelectedRowsDisplay] = React.useState(0);
   const [ariaMessage, setAriaMessage] = React.useState('');
   const tableRef = React.useRef<HTMLDivElement>(null);
 
-  const handleChangeSelectedRows = (value: number[]) => {
+  const handleChangeSelectedRows = (value: string[]) => {
     setSelectedRows(value);
     if (!selectedRows.length) setAriaMessage('Action bar appeared before the table');
     if (value.length) setSelectedRowsDisplay(value.length);

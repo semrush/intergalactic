@@ -90,9 +90,9 @@ class BodyRoot extends Component<DataTableBodyProps, {}, State, [], BodyPropsInn
     }
   };
 
-  handleClickCell = (row: DTRow, index: number) => (e: React.SyntheticEvent<HTMLElement>) => {
+  handleClickCell = (e: React.SyntheticEvent<HTMLElement>, opt: { row: DTRow; rowIndex: number }) => {
     if (!isInteractiveElement(e.target)) {
-      this.handleExpandRow(row, index);
+      this.handleExpandRow(opt.row, opt.rowIndex);
     }
   };
 
@@ -186,6 +186,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, State, [], BodyPropsInn
       tableRef,
       flatRows,
       accordionDuration,
+      onCellClick,
     } = this.asProps;
     const SAccordionToggle = ButtonLink;
 
@@ -215,6 +216,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, State, [], BodyPropsInn
       tableRef,
       children: props.children ?? defaultRender(),
       accordionDuration,
+      onClick: onCellClick,
     };
 
     if (renderCell) {
@@ -235,7 +237,11 @@ class BodyRoot extends Component<DataTableBodyProps, {}, State, [], BodyPropsInn
         extraProps.children = external;
       } else {
         for (const key in external) {
-          extraProps[key] = external[key];
+          if (key === 'onClick') {
+            extraProps[key] = callAllEventHandlers(external[key], extraProps[key]);
+          } else {
+            extraProps[key] = external[key];
+          }
         }
       }
     }
@@ -267,14 +273,14 @@ class BodyRoot extends Component<DataTableBodyProps, {}, State, [], BodyPropsInn
 
       const handleClick = (e: React.SyntheticEvent<HTMLButtonElement>) => {
         e.stopPropagation();
-
+        onCellClick(e, { colIndex: props.columnIndex, rowIndex, row });
         this.handleExpandRow(row, rowIndex);
       };
 
       if (value?.[ACCORDION] || (cellValue instanceof MergedRowsCell && cellValue.accordion)) {
         extraProps.onClick = callAllEventHandlers(
           extraProps.onClick,
-          this.handleClickCell(row, rowIndex),
+          this.handleClickCell,
         );
       }
 

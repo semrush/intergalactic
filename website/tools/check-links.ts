@@ -37,6 +37,13 @@ function extractLinks(content: string) {
   const routeRegexp = /(?<!\/\/ *)route: '\/intergalactic(.+)'/;
 
   for (const token of tokens) {
+    let lines = '';
+    if (token.map) {
+      const [start, end] = token.map;
+      lines = `:${start + 1}`;
+      if (start + 1 !== end)
+        lines += `-${end}`;
+    }
     if (token.type === 'inline' && token.children) {
       let i = 0;
       for (const child of token.children) {
@@ -48,17 +55,17 @@ function extractLinks(content: string) {
           }
 
           const href = child.attrs.find((attr) => attr[0] === 'href');
-          if (href) links.push(href[1]);
+          if (href) links.push([href[1], lines]);
         } else if (child.type === 'text' && child.content.includes('route:')) {
           if (child.content.match(routeRegexp))
-            links.push(child.content.match(routeRegexp)[1]);
+            links.push([child.content.match(routeRegexp)[1], lines]);
         }
 
         i++;
       }
     } else if (token.type === 'code_block' && token.content.includes('route:')) {
       if (token.content.match(routeRegexp))
-        links.push(token.content.match(routeRegexp)[1]);
+        links.push([token.content.match(routeRegexp)[1], lines]);
     }
   }
 
@@ -99,7 +106,7 @@ function checkLinks() {
     const links = extractLinks(content);
     const fromFile = normalizePath(path.relative(docsDir, file));
 
-    for (const link of links) {
+    for (const [link, lines] of links) {
       if (link.startsWith('http') || link.startsWith('mailto:')) continue; // Skip external links
 
       const [linkPathRaw, anchor] = link.split('#');
@@ -120,7 +127,7 @@ function checkLinks() {
 
       // Check if target file exists
       if (!fs.existsSync(targetFilePath)) {
-        console.warn(`❌ [${fromFile}] → "${link}" — file not found: ${linkPath}`);
+        console.warn(`❌ [${fromFile}${lines}] → "${link}" — file not found: ${linkPath}`);
         hasErrors = true;
         continue;
       }

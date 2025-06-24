@@ -127,3 +127,13 @@ The component offers several options for laying out list item types:
 </script>
 
 :::
+
+## Sticky groups titles
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/components/dropdown-menu/docs/examples/sticky_groups.tsx';
+</script>
+
+:::
