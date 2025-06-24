@@ -18,14 +18,14 @@ figma.connect(
         active: true,
       }),
     },
-    example: (props) => (
+    example: ({ label, size, active }) => (
       <Tag
-        size={props.size}
+        size={size}
         theme='additional'
-        active={props.active}
+        active={active}
         addonLeft={MathPlusM}
       >
-        {props.label}
+        {label}
       </Tag>
     ),
   },

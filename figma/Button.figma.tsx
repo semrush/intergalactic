@@ -49,44 +49,20 @@ figma.connect(
         false: undefined,
       }),
     },
-    example: (props) => (
+    example: ({ size, use, theme, disabled, active, loading, addonLeft, label, textAddon, addonRight }) => (
       <Button
-        size={props.size}
-        use={props.use}
-        theme={props.theme}
-        disabled={props.disabled}
-        active={props.active}
-        loading={props.loading}
+        size={size}
+        use={use}
+        theme={theme}
+        disabled={disabled}
+        active={active}
+        loading={loading}
       >
-        <Button.Addon>{props.addonLeft}</Button.Addon>
-        {props.label}
-        <Button.Addon>{props.textAddon}</Button.Addon>
-        <Button.Addon>{props.addonRight}</Button.Addon>
+        <Button.Addon>{addonLeft}</Button.Addon>
+        {label}
+        <Button.Addon>{textAddon}</Button.Addon>
+        <Button.Addon>{addonRight}</Button.Addon>
       </Button>
     ),
   },
 );
-
-// figma.connect(
-//   Button,
-//   'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring--%E2%9D%96-Core-Components?node-id=10043-43724&t=fvHZdzdrBaexbYww-11',
-//   {
-//     props: {
-//       ...sharedProps,
-//       title: figma.textContent('title prop'),
-//     },
-//     example: (props) => (
-//         <Button
-//           size={props.size}
-//           use={props.use}
-//           theme={props.theme}
-//           disabled={props.disabled}
-//           active={props.active}
-//           loading={props.loading}
-//           title={props.title}
-//         >
-//           <Button.Addon>{props.addonLeft}</Button.Addon>
-//         </Button>
-//     ),
-//   },
-// );

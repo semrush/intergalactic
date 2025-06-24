@@ -32,22 +32,21 @@ figma.connect(
         true: figma.instance('{ ↳ AddonLeft }'),
         false: undefined,
       }),
-      // text: figma.textContent('ButtonLink')
       addonRight: figma.boolean('addon →', {
         true: figma.instance('{ ↳ AddonRight }'),
         false: undefined,
       }),
     },
-    example: (props) => (
+    example: ({ use, addonLeft, addonRight, active, disabled, label }) => (
       <ButtonLink
-        use={props.use}
-        disabled={props.disabled}
-        active={props.active}
-        addonLeft={props.addonLeft}
-        addonRight={props.addonRight}
+        use={use}
+        addonLeft={addonLeft}
+        addonRight={addonRight}
+        active={active}
+        disabled={disabled}
       // size={props.size}
       >
-        {props.label}
+        {label}
       </ButtonLink>
     ),
   },

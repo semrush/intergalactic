@@ -41,18 +41,18 @@ figma.connect(
       ...vanityProps,
       disabled: figma.boolean('disabled'),
     },
-    example: (props) => (
+    example: ({ size, theme, color, active, disabled, addonLeft, label, textAddon }) => (
       <Tag
-        size={props.size}
-        theme={props.theme}
-        color={props.color}
-        active={props.active}
-        disabled={props.disabled}
+        size={size}
+        theme={theme}
+        color={color}
+        active={active}
+        disabled={disabled}
       >
         <Tag.Circle><img src='#' /></Tag.Circle>
-        <Tag.Addon>{props.addonLeft}</Tag.Addon>
-        <Tag.Text>{props.label}</Tag.Text>
-        <Tag.Addon>{props.textAddon}</Tag.Addon>
+        <Tag.Addon>{addonLeft}</Tag.Addon>
+        <Tag.Text>{label}</Tag.Text>
+        <Tag.Addon>{textAddon}</Tag.Addon>
       </Tag>
     ),
   },
@@ -66,13 +66,13 @@ figma.connect(
     props: {
       ...vanityProps,
     },
-    example: (props) => (
-      <TagContainer theme={props.theme} color={props.color} size={props.size}>
+    example: ({ theme, color, size, addonLeft, label, textAddon }) => (
+      <TagContainer theme={theme} color={color} size={size}>
         <TagContainer.Tag>
           <Tag.Circle><img src='#' /></Tag.Circle>
-          <TagContainer.Tag.Addon>{props.addonLeft}</TagContainer.Tag.Addon>
-          <TagContainer.Tag.Text>{props.label}</TagContainer.Tag.Text>
-          <TagContainer.Tag.Addon>{props.textAddon}</TagContainer.Tag.Addon>
+          <TagContainer.Tag.Addon>{addonLeft}</TagContainer.Tag.Addon>
+          <TagContainer.Tag.Text>{label}</TagContainer.Tag.Text>
+          <TagContainer.Tag.Addon>{textAddon}</TagContainer.Tag.Addon>
         </TagContainer.Tag>
         <TagContainer.Close onClick={handleEditTag} />
       </TagContainer>

@@ -30,11 +30,11 @@ figma.connect(
         }),
       }),
     },
-    example: (props) => (
+    example: ({ title, theme, placement }) => (
       <Hint
-        title={props.title}
-        theme={props.theme}
-        placement={props.placement.placement}
+        title={title}
+        theme={theme}
+        placement={placement.placement}
         tag={addonTag}
         {...addonProps}
       />

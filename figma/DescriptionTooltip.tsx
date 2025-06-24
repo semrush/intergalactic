@@ -23,16 +23,16 @@ figma.connect(
         right: 'right',
       }),
     },
-    example: (props) => (
-      <DescriptionTooltip theme={props.nested.theme} placement={props.placement}>
+    example: ({ nested, placement, ariaLabel }) => (
+      <DescriptionTooltip theme={nested.theme} placement={placement}>
         <DescriptionTooltip.Trigger
           addonLeft={InfoM}
-          aria-label={props.ariaLabel}
+          aria-label={ariaLabel}
           tag={ButtonLink}
           {...addonProps}
         />
         <DescriptionTooltip.Popper>
-          {props.nested.content}
+          {nested.content}
         </DescriptionTooltip.Popper>
       </DescriptionTooltip>
     ),
