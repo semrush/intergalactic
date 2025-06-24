@@ -68,7 +68,7 @@ SBaseTrigger {
     &[active] {
       background:
         linear-gradient(white, white) padding-box,
-        var(--intergalactic-control-primary-ai-active, linear-gradient(90deg, #5925ab, #044792)) border-box; /* border */
+        var(--intergalactic-control-primary-ai-hover, linear-gradient(90deg, #8649e1, #006dca)) border-box;
       background-origin: border-box;
       background-clip: padding-box, border-box;
     }

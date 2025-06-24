@@ -131,7 +131,8 @@
     "computedValue": "linear-gradient(90deg, #f9f2ff, #e9f7ff)",
     "description": "Primary background for hover and active (selected) state of controls with AI accent.",
     "components": [
-      "base-trigger"
+      "base-trigger",
+      "pills"
     ]
   },
   {
@@ -519,6 +520,7 @@
     "computedValue": "#ffffff",
     "description": "Inverted version of the primary text.",
     "components": [
+      "badge",
       "button",
       "date-picker",
       "dot",
@@ -866,6 +868,7 @@
       "checkbox",
       "input",
       "notice",
+      "pills",
       "radio"
     ]
   },
@@ -1126,7 +1129,10 @@
     "rawValue": "linear-gradient(90deg, {violet.500}, {blue.500})",
     "computedValue": "linear-gradient(90deg, #8649e1, #006dca)",
     "description": "Hover state of the primary control with AI accent.",
-    "components": []
+    "components": [
+      "base-trigger",
+      "pills"
+    ]
   },
   {
     "name": "--intergalactic-control-primary-ai-active",
@@ -1135,7 +1141,6 @@
     "computedValue": "linear-gradient(90deg, #5925ab, #044792)",
     "description": "Active (selected) state of the primary control with AI accent.",
     "components": [
-      "base-trigger",
       "button"
     ]
   },

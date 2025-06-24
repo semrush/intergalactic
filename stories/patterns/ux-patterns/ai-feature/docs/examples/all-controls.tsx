@@ -38,7 +38,7 @@ const Demo = () => {
 
         <Pills defaultValue={1} aria-label='Pills with AI accent'>
           <Pills.Item value={1}>One</Pills.Item>
-          <Pills.Item value={2}>
+          <Pills.Item value={2} theme='ai'>
             <Pills.Item.Addon><SummaryAI color='icon-primary-ai' /></Pills.Item.Addon>
             <Pills.Item.Text>Two</Pills.Item.Text>
           </Pills.Item>
