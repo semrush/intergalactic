@@ -14,9 +14,9 @@ export const applyEndVariation: Modifier<'applyEndVariation', {}> = {
     const { rects: { popper, reference } } = state;
     const viewportWidth = window.visualViewport?.width ?? 0;
 
-    const popperPosiblePosition = (reference.x + reference.width / 2) + popper.width;
+    const popperPossibleEndPosition = reference.x + popper.width;
 
-    const shouldApplyEndVariation = (viewportWidth - popperPosiblePosition) <= 0;
+    const shouldApplyEndVariation = (viewportWidth - popperPossibleEndPosition) <= 0;
 
     if (!shouldApplyEndVariation) return;
 
