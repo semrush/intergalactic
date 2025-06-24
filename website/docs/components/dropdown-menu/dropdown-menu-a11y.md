@@ -26,7 +26,7 @@ When dropdown is closed, the focus stays on the trigger.
 
 ### Roles & attributes
 
-The following list describes roles and attributes that component already has.
+The following list describes roles and attributes that the component already has.
 
 | Component / element                              | Role / Attribute             | Usage                                                              |
 | ------------------------------------------------ | ---------------------------- | ------------------------------------------------------------------ |

@@ -1,4 +1,4 @@
-import { Plot, Line, XAxis, YAxis, minMax } from '@semcore/d3-chart';
+import { Plot, Line, XAxis, YAxis, ResponsiveContainer, minMax } from '@semcore/d3-chart';
 import type { DataTableData } from '@semcore/data-table';
 import { DataTable, ACCORDION } from '@semcore/data-table';
 import { scaleLinear } from 'd3-scale';
@@ -49,26 +49,26 @@ const ChartExample = () => {
     .range([height - MARGIN, MARGIN])
     .domain([0, 10]);
   return (
-    // <ResponsiveContainer h={300} w={1000} style={{background: '#fff'}}>
-    <Plot
-      data={dataChart}
-      scale={[xScale, yScale]}
-      width={width}
-      height={height}
-      style={{ background: '#fff' }}
-    >
-      <YAxis>
-        <YAxis.Ticks />
-        <YAxis.Grid />
-      </YAxis>
-      <XAxis>
-        <XAxis.Ticks />
-      </XAxis>
-      <Line x='x' y='y'>
-        <Line.Dots display />
-      </Line>
-    </Plot>
-    // </ResponsiveContainer>
+    <ResponsiveContainer onResize={setSize} h={300} w='100%' style={{ background: '#fff' }}>
+      <Plot
+        data={dataChart}
+        scale={[xScale, yScale]}
+        width={width}
+        height={height}
+        style={{ background: '#fff' }}
+      >
+        <YAxis>
+          <YAxis.Ticks />
+          <YAxis.Grid />
+        </YAxis>
+        <XAxis>
+          <XAxis.Ticks />
+        </XAxis>
+        <Line x='x' y='y'>
+          <Line.Dots display />
+        </Line>
+      </Plot>
+    </ResponsiveContainer>
   );
 };
 

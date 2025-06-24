@@ -2,11 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [16.1.3] - 2025-06-21
+## [16.1.4] - 2025-06-24
 
 ### Fixed
 
 - Modal doesn't close on ESC key press when no element inside is focused.
+
+## [16.1.3] - 2025-06-23
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [16.0.2 ~> 16.0.3], `@semcore/icon` [16.2.1 ~> 16.2.2], `@semcore/animation` [16.0.2 ~> 16.0.3], `@semcore/flex-box` [16.0.2 ~> 16.0.3], `@semcore/base-components` [16.0.2 ~> 16.1.0]).
 
 ## [16.1.2] - 2025-06-16
 

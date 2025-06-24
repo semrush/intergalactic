@@ -138,6 +138,7 @@ test.describe('Base-trigger', () => {
       const button = page.locator('[id="device-button-select"]');
       await button.click();
       await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
       const option = page.getByRole('option', { name: 'Desktop' });
       await expect(option).toBeVisible();
       await expect(option).toHaveClass(/highlighted/);

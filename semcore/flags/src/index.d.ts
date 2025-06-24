@@ -285,7 +285,6 @@ export declare const nameWithoutIso: {
   canary_islands: string;
   common_wealth: string;
   england: string;
-  european_union: string;
   mars: string;
   nagorno_karabakh: string;
   nato: string;
@@ -302,7 +301,6 @@ export declare const nameWithoutIso: {
   CANARY_ISLANDS: string;
   COMMON_WEALTH: string;
   ENGLAND: string;
-  EUROPEAN_UNION: string;
   MARS: string;
   NAGORNO_KARABAKH: string;
   NATO: string;
@@ -408,6 +406,7 @@ export type FlagsIso2 =
   | 'ER'
   | 'EE'
   | 'ET'
+  | 'EU'
   | 'FK'
   | 'FO'
   | 'FJ'

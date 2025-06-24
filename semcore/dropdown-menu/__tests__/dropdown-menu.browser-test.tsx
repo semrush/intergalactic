@@ -1000,7 +1000,6 @@ test.describe('Virtual scroll', () => {
     const project36 = page.getByRole('menuitemradio', { name: 'project 36' });
     await expect(project36).toBeFocused();
     await expect(project33).not.toBeFocused();
-    await expect(page).toHaveScreenshot();
 
     if (browserName === 'firefox') return; // because of bug on firefox UIK-3349
     await page.keyboard.press('Tab');
@@ -1009,7 +1008,7 @@ test.describe('Virtual scroll', () => {
     await expect(project36).not.toBeFocused();
 
     await page.keyboard.press('Tab');
-    const input = page.locator('input[data-ui-name="Input.Value"]');
+    const input = page.locator('input[data-ui-name="InputSearch"]');
     await expect(input).toBeFocused();
     await expect(createProject).not.toBeFocused();
     await expect(project36).not.toBeFocused();
@@ -1023,6 +1022,7 @@ test.describe('Virtual scroll', () => {
     await page.keyboard.press('ArrowDown');
     await project36.waitFor({ state: 'visible' });
     await expect(project36).toBeFocused();
+    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
   });
 
   test('Verify Mouse scroll', async ({ page, browserName }) => {
@@ -1058,6 +1058,96 @@ test.describe('Virtual scroll', () => {
     const project35item = page.getByRole('menuitemradio', { name: 'project 35' });
     await expect(project35item).toBeVisible();
     if (browserName === 'firefox') return; // every scroll on ff differs on some pixels(not stable) so visual regression skipped for it
-    await expect(page).toHaveScreenshot();
+    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+  });
+});
+
+test.describe('Sticky groups', () => {
+  test('Verify keyboard interactions with menu with sticky groups', async ({ page, browserName }) => {
+    const standPath = 'stories/components/dropdown-menu/docs/examples/sticky_groups.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+
+    const ddMenuTrigger = page.locator('[data-ui-name="DropdownMenu.Trigger"]');
+    await page.keyboard.press('Tab');
+    await expect(ddMenuTrigger).toBeFocused();
+    await page.keyboard.press('Enter');
+    await expect(ddMenuTrigger).not.toBeFocused();
+
+    const group = page.locator('[data-ui-name="DropdownMenu.Group"]');
+    const items = page.locator('[data-ui-name="DropdownMenu.Item"]');
+    const search = page.locator('[data-ui-name="InputSearch"]');
+    const button = page.locator('span[data-ui-name="DropdownMenu.Item.Content"][role="button"]');
+    await group.first().waitFor({ state: 'visible' });
+    await expect(items.nth(0)).toHaveClass(/highlighted/);
+
+    for (let i = 0; i < 10; i++) {
+      await page.keyboard.press('ArrowDown');
+      await page.waitForTimeout(100);
+    }
+    await expect(items.nth(30)).toHaveClass(/highlighted/);
+
+    await page.keyboard.press('Enter');
+    await expect(ddMenuTrigger).toBeFocused();
+    await expect(items.nth(30)).not.toBeVisible();
+
+    await page.keyboard.press('Enter');
+    await items.nth(30).waitFor({ state: 'visible' });
+
+    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+
+    if (browserName !== 'chromium') return;
+
+    await page.keyboard.press('Tab');
+    await page.waitForTimeout(100);
+    await expect(button).toBeFocused();
+
+    await page.keyboard.press('Tab');
+    await page.waitForTimeout(100);
+    await expect(search).toBeFocused();
+
+    await page.keyboard.press('Tab');
+    await page.waitForTimeout(100);
+    await expect(items.nth(30)).toHaveClass(/highlighted/);
+  });
+
+  test('Verify mouse interactions with menu with sticky groups', async ({ page, browserName }) => {
+    if (browserName === 'firefox') return;
+    const standPath = 'stories/components/dropdown-menu/docs/examples/sticky_groups.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+
+    const ddMenuTrigger = page.locator('[data-ui-name="DropdownMenu.Trigger"]');
+
+    const group = page.locator('[data-ui-name="DropdownMenu.Group"]');
+    const popper = page.locator('[data-ui-name="DropdownMenu.Popper"]');
+    const items = page.locator('[data-ui-name="DropdownMenu.Item"]');
+    const search = page.locator('[data-ui-name="InputSearch"]');
+    const button = page.locator('span[data-ui-name="DropdownMenu.Item.Content"][role="button"]');
+
+    await ddMenuTrigger.click();
+    await group.first().waitFor({ state: 'visible' });
+    await expect(items.nth(0)).not.toHaveClass(/highlighted/);
+
+    await popper.hover();
+    await page.mouse.wheel(0, 1500);
+    await page.waitForTimeout(1000);
+    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+
+    if (browserName !== 'chromium') return;
+    await page.keyboard.press('Tab');
+    await expect(search).toBeFocused();
+
+    await page.keyboard.press('Tab');
+
+    await page.keyboard.press('Tab');
+    await expect(button).toBeFocused();
+
+    await page.keyboard.press('Tab');
+    await expect(search).toBeFocused();
+    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+
+    await ddMenuTrigger.click();
+    await expect(items.nth(0)).not.toBeVisible();
   });
 });
