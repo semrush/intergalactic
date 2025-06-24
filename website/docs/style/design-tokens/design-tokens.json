@@ -863,6 +863,7 @@
     "description": "Border for controls with AI accent.",
     "components": [
       "base-trigger",
+      "input",
       "notice"
     ]
   },
