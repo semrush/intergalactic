@@ -9,7 +9,7 @@ export const applyEndVariation: Modifier<'applyEndVariation', {}> = {
   requiresIfExists: ['offset'],
   fn({ state }) {
     if (!supportedPlacements.includes(state.placement)) return;
-    if (!visualViewport?.width) return;
+    if (window.visualViewport?.width) return;
 
     const { rects: { popper, reference } } = state;
 
