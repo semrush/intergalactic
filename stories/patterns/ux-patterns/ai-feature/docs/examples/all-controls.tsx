@@ -56,7 +56,7 @@ const Demo = () => {
           </Select.Menu>
         </Select>
 
-        <Input w={250}>
+        <Input w={250} theme='ai'>
           <Input.Addon><SummaryAI color='icon-primary-ai' /></Input.Addon>
           <Input.Value placeholder='Your domain' aria-label='Input with AI theme' />
           <Input.Addon><Badge>AI powered</Badge></Input.Addon>
