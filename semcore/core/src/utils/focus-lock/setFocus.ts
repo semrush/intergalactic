@@ -25,6 +25,10 @@ const unsafeSetFocus = (
     target = focusable[focusable.length - 1];
   }
 
+  if (!target && previousActiveElement) {
+    previousActiveElement.focus(focusOptions);
+  }
+
   target?.focus(focusOptions);
 };
 

@@ -134,17 +134,7 @@ function Window(props) {
   const { Children, styles, visible, closable, duration } = props;
   const windowRef = React.useRef(null);
 
-  const setWindowRef = useCallback((node) => {
-    if (!node) return;
-
-    windowRef.current = node;
-
-    if (!visible) return;
-
-    node.focus();
-  }, []);
-
-  useFocusLock(windowRef, true, 'auto', !visible, true);
+  useFocusLock(windowRef, 'enforced', windowRef, !visible, true);
 
   return sstyled(styles)(
     <SWindow
@@ -155,7 +145,7 @@ function Window(props) {
       role='dialog'
       aria-modal={true}
       duration={duration}
-      ref={setWindowRef}
+      ref={windowRef}
       tabIndex={-1}
     >
       <ZIndexStackingContextProvider designToken='z-index-modal'>
