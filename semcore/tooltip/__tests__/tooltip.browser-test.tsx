@@ -8,8 +8,6 @@ test.describe('Styles', () => {
 
     await page.setContent(htmlContent);
 
-    await page.waitForTimeout(500);
-
     await expect(page).toHaveScreenshot();
 
     const hintPopper = page.locator('[data-ui-name="Hint.Popper"]');

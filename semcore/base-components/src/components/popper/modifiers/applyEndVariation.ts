@@ -9,14 +9,13 @@ export const applyEndVariation: Modifier<'applyEndVariation', {}> = {
   requiresIfExists: ['offset'],
   fn({ state }) {
     if (!supportedPlacements.includes(state.placement)) return;
-    if (window.visualViewport?.width) return;
+    if (!window.visualViewport?.width) return;
 
     const { rects: { popper, reference } } = state;
-    const viewportWidth = window.visualViewport?.width ?? 0;
 
     const popperPossibleEndPosition = reference.x + popper.width;
 
-    const shouldApplyEndVariation = (viewportWidth - popperPossibleEndPosition) <= 0;
+    const shouldApplyEndVariation = (window.visualViewport.width - popperPossibleEndPosition) <= 0;
 
     if (!shouldApplyEndVariation) return;
 
