@@ -18,7 +18,7 @@ import CloseIcon from '@semcore/icon/Close/l';
 import OutsideClick from '@semcore/outside-click';
 import Portal, { PortalProvider } from '@semcore/portal';
 import { Text } from '@semcore/typography';
-import React from 'react';
+import React, { useEffect, useCallback } from 'react';
 
 import style from './style/modal.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
@@ -134,6 +134,16 @@ function Window(props) {
   const { Children, styles, visible, closable, duration } = props;
   const windowRef = React.useRef(null);
 
+  const setWindowRef = useCallback((node) => {
+    if (!node) return;
+
+    windowRef.current = node;
+
+    if (!visible) return;
+
+    node.focus();
+  }, []);
+
   useFocusLock(windowRef, true, 'auto', !visible, true);
 
   return sstyled(styles)(
@@ -145,7 +155,7 @@ function Window(props) {
       role='dialog'
       aria-modal={true}
       duration={duration}
-      ref={windowRef}
+      ref={setWindowRef}
       tabIndex={-1}
     >
       <ZIndexStackingContextProvider designToken='z-index-modal'>
