@@ -1,6 +1,8 @@
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
-import type { Page } from '@semcore/testing-utils/playwright';
-import { expect, Locator, test } from '@semcore/testing-utils/playwright';
+import type { Page, Locator } from '@semcore/testing-utils/playwright';
+import { expect, test } from '@semcore/testing-utils/playwright';
+import { waitForAnimations } from '@tools/testing-utils/utils/waitForAnimations';
+import { waitForClassNameBeenApplied } from '@tools/testing-utils/utils/waitForClassNameBeenApplied';
 
 const getLocators = (page: Page) => ({
   addFilterBtn: page.getByRole('button', { name: 'Add filter' }),
@@ -700,7 +702,6 @@ test.describe('Different types of filters', () => {
     await page.keyboard.press('Enter');
     await page.locator('[data-ui-name="Select.Popper"]').waitFor();
     await page.keyboard.press('ArrowDown');
-    await page.waitForTimeout(50);
     await page.keyboard.press('Enter');
     await expect(locators.clearAllBtn).toBeVisible();
 
@@ -710,18 +711,19 @@ test.describe('Different types of filters', () => {
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-    await page.locator('[data-ui-name="DropdownMenu.Popper"]').waitFor();
+    const ddMenu = page.locator('[data-ui-name="DropdownMenu.Popper"]');
+    await waitForAnimations(ddMenu);
+
+    const ddMenuFirstItem = page.locator('[data-ui-name="DropdownMenu.Item"]').first();
+    await waitForClassNameBeenApplied(ddMenuFirstItem, 'highlighted');
+
     await page.keyboard.press('ArrowDown');
-    await page.waitForTimeout(50);
     await page.keyboard.press('ArrowDown');
-    await page.waitForTimeout(50);
     await page.keyboard.press('Enter');
-    await page.waitForTimeout(50);
     await page.keyboard.press('ArrowDown');
-    await page.waitForTimeout(50);
     await page.keyboard.press('Enter');
     await page.keyboard.press('Tab');
-    await page.waitForTimeout(50);
+    await page.locator('[data-ui-name="Hint.Popper"]').waitFor();
     await expect(page).toHaveScreenshot();
     await page.keyboard.press('Enter');
     await expect(locators.addFilterBtn).toBeFocused();
