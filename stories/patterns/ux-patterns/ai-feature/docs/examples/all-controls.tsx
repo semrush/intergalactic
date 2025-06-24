@@ -31,7 +31,7 @@ const Demo = () => {
           Primary
         </Button>
 
-        <Button>
+        <Button theme='ai'>
           <Button.Addon tag={SummaryAI} color='icon-primary-ai' />
           <Button.Text>Secondary</Button.Text>
         </Button>
@@ -45,7 +45,7 @@ const Demo = () => {
         </Pills>
 
         <Select onChange={setSelectValue}>
-          <Select.Trigger aria-label='Select with AI theme' wMax={160} wMin={160}>
+          <Select.Trigger theme='ai' aria-label='Select with AI theme' wMax={160} wMin={160}>
             <Select.Trigger.Addon tag={SummaryAI} color='icon-primary-ai' />
             <Select.Trigger.Text>{selectValue}</Select.Trigger.Text>
           </Select.Trigger>

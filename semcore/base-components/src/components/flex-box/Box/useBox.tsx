@@ -140,6 +140,12 @@ export type BoxProps = StyledProps & {
    */
   innerOutline?: boolean;
 
+  /**
+   * Property for set theme for change the style of outline focused elements.
+   * @default default
+   */
+  theme?: 'default' | 'ai';
+
   /** Property for specifying css properties in js
    * @deprecated v4.0.0 */
   css?: React.CSSProperties;
@@ -314,6 +320,7 @@ export default function useBox<T extends BoxProps>(
             SBoxSizing: boxSizing,
             SBoxInline: inline,
             SBoxInnerOutline: innerOutline,
+            SBoxAi: other.theme?.includes('ai'),
           }).className,
           className,
         ) || undefined,

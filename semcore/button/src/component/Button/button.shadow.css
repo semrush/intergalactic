@@ -149,14 +149,13 @@ SButton[theme='primary-ai'] {
     var(--intergalactic-violet-400, #ab6cfe),
     var(--intergalactic-blue-400, #008ff8)
   );
-  border: none;
-  background-position-x: 100%;
+  background-position-x: 99%;
   background-size: 300%;
   transition: background-position-x 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
 
   &:hover {
     color: var(--intergalactic-text-primary-invert, #ffffff);
-    background-position-x: 0%;
+    background-position-x: 1%;
   }
 
   &:active,

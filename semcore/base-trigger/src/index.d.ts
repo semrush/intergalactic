@@ -52,6 +52,12 @@ export interface IButtonTriggerProps extends ButtonTriggerProps, UnknownProperti
 export type ButtonTriggerProps = Omit<BaseTriggerProps, 'theme'> & {
   /** Sets the loading state */
   loading?: boolean;
+
+  /**
+   * Trigger theme.
+   * @default undefined.
+   */
+  theme?: 'ai';
 };
 
 /** @deprecated */

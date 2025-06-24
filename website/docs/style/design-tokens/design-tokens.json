@@ -130,7 +130,9 @@
     "rawValue": "linear-gradient(90deg, {violet.50}, {blue.50})",
     "computedValue": "linear-gradient(90deg, #f9f2ff, #e9f7ff)",
     "description": "Primary background for hover and active (selected) state of controls with AI accent.",
-    "components": []
+    "components": [
+      "base-trigger"
+    ]
   },
   {
     "name": "--intergalactic-bg-primary-muted",
@@ -860,6 +862,7 @@
     "computedValue": "linear-gradient(90deg, #c695ff, #2bb3ff)",
     "description": "Border for controls with AI accent.",
     "components": [
+      "base-trigger",
       "notice"
     ]
   },
@@ -1126,6 +1129,7 @@
     "computedValue": "linear-gradient(90deg, #5925ab, #044792)",
     "description": "Active (selected) state of the primary control with AI accent.",
     "components": [
+      "base-trigger",
       "button"
     ]
   },
@@ -2205,6 +2209,7 @@
     "computedValue": "rgba(0, 143, 248, 0.5)",
     "description": "Color for default keyboard focus outline styles.",
     "components": [
+      "base-components",
       "format-text",
       "typography"
     ]
