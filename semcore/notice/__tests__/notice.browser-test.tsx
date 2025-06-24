@@ -105,6 +105,8 @@ test.describe('NoticeSmart - Vusial', () => {
 
     await page.setContent(htmlContent);
 
+    const newFeatureNotice = page.locator('[aria-label="New feature announcement"]');
+    const newToolNotice = page.locator('[aria-label="New tool announcement"]');
     const closes = await page.locator('[data-ui-name="Notice.Close"]');
     const closeNotif = page.getByText('Close notification');
     await page.keyboard.press('Tab');
@@ -115,12 +117,9 @@ test.describe('NoticeSmart - Vusial', () => {
     await expect(page).toHaveScreenshot();
 
     await page.keyboard.press('Enter');
-
-    await page.waitForTimeout(500);
-
+    await newToolNotice.waitFor({ state: 'hidden' });
     await closes.first().click();
-
-    await page.waitForTimeout(500);
+    await newFeatureNotice.waitFor({ state: 'hidden' });
 
     await expect(page).toHaveScreenshot();
   });
