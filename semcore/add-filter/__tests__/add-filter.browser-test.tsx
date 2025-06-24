@@ -684,7 +684,7 @@ test.describe('Different types of filters', () => {
     await locators.addFilterSelectOption('Tablet').click();
     await locators.clearSelectButtons.hover();
 
-    await page.locator('[data-ui-name="Hint.Popper"]').waitFor({ state: 'attached' });
+    await page.locator('[data-ui-name="Hint.Popper"]').waitFor();
 
     await expect(page).toHaveScreenshot();
   });
@@ -698,7 +698,7 @@ test.describe('Different types of filters', () => {
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-    await page.locator('[data-ui-name="Select.Popper"]').waitFor({ state: 'attached' });
+    await page.locator('[data-ui-name="Select.Popper"]').waitFor();
     await page.keyboard.press('ArrowDown');
     await page.waitForTimeout(50);
     await page.keyboard.press('Enter');
@@ -710,7 +710,7 @@ test.describe('Different types of filters', () => {
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-    await page.locator('[data-ui-name="DropdownMenu.Popper"]').waitFor({ state: 'attached' });
+    await page.locator('[data-ui-name="DropdownMenu.Popper"]').waitFor();
     await page.keyboard.press('ArrowDown');
     await page.waitForTimeout(50);
     await page.keyboard.press('ArrowDown');
