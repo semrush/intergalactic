@@ -83,7 +83,7 @@ const Demo = () => {
             Radio button with AI accent
           </Text>
           <Flex gap={3} direction='column'>
-            <Radio value='1'>
+            <Radio value='1' theme='ai'>
               <Radio.Value />
               <Radio.Text>
                 First option
@@ -100,7 +100,7 @@ const Demo = () => {
           </Text>
           <List marker='' m={0} p={0}>
             <List.Item p={0} mb={2}>
-              <Checkbox>
+              <Checkbox theme='ai'>
                 <Checkbox.Value />
                 <Checkbox.Text>
                   First option

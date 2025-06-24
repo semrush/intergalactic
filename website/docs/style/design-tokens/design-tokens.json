@@ -863,8 +863,10 @@
     "description": "Border for controls with AI accent.",
     "components": [
       "base-trigger",
+      "checkbox",
       "input",
-      "notice"
+      "notice",
+      "radio"
     ]
   },
   {
@@ -873,7 +875,10 @@
     "rawValue": "linear-gradient(90deg, {violet.400}, {blue.400})",
     "computedValue": "linear-gradient(90deg, #ab6cfe, #008ff8)",
     "description": "Border for the active state of controls with AI accent.",
-    "components": []
+    "components": [
+      "checkbox",
+      "radio"
+    ]
   },
   {
     "name": "--intergalactic-border-primary-invert",
