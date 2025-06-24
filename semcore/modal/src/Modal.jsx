@@ -18,7 +18,7 @@ import CloseIcon from '@semcore/icon/Close/l';
 import OutsideClick from '@semcore/outside-click';
 import Portal, { PortalProvider } from '@semcore/portal';
 import { Text } from '@semcore/typography';
-import React, { useEffect, useCallback } from 'react';
+import React, { useCallback } from 'react';
 
 import style from './style/modal.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
