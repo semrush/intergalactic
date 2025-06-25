@@ -43,7 +43,7 @@ class AccentItemRoot extends Component {
   render() {
     const SAccentPill = Root;
 
-    return sstyled(style)(<SAccentPill render={Pills.Item} onClick={this.handleClick.bind(this)} />);
+    return sstyled(this.asProps.styles)(<SAccentPill render={Pills.Item} onClick={this.handleClick.bind(this)} />);
   }
 }
 

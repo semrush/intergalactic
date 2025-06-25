@@ -870,8 +870,7 @@
       "accent-feature",
       "checkbox",
       "notice",
-      "radio",
-      "tab-line"
+      "radio"
     ]
   },
   {
@@ -881,9 +880,9 @@
     "computedValue": "linear-gradient(90deg, #ab6cfe, #008ff8)",
     "description": "Border for the active state of controls with AI accent.",
     "components": [
+      "accent-feature",
       "checkbox",
-      "radio",
-      "tab-line"
+      "radio"
     ]
   },
   {
@@ -4222,6 +4221,7 @@
     "computedValue": "200",
     "description": "Use for small controls like Checkbox or Radio.",
     "components": [
+      "accent-feature",
       "checkbox",
       "dropdown",
       "feedback-form",

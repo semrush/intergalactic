@@ -1,0 +1,74 @@
+import type { IRootComponentProps } from '@semcore/core';
+import { Component, createComponent, Root, sstyled } from '@semcore/core';
+import SummaryAI from '@semcore/icon/SummaryAI/m';
+import Pills from '@semcore/pills';
+import TabLine from '@semcore/tab-line';
+import React from 'react';
+
+import style from './tabLine.shadow.css';
+import type { TabLineComponent } from './TabLine.type';
+import { Sparkle } from '../../inner-components/sparkle';
+
+class TabLineAFRoot extends Component {
+  static displayName = 'TabLineAF';
+
+  render() {
+    return (<Root render={TabLine} />);
+  }
+}
+
+function AccentItem(props: IRootComponentProps) {
+  const SAccentItem = Root;
+  return sstyled(props.styles)(<SAccentItem render={TabLine.Item} />);
+}
+
+class AccentItemRoot extends Component {
+  static displayName = 'AccentItem';
+  static style = style;
+
+  state = {
+    clicked: false,
+  };
+
+  handleClick(e: React.MouseEvent<HTMLButtonElement>) {
+    const { onClick } = this.asProps;
+
+    onClick?.(e);
+    this.setState({ clicked: false });
+    setTimeout(() => {
+      this.setState({ clicked: true });
+    });
+  }
+
+  getAddonProps() {
+    return {
+      clicked: this.state.clicked,
+    };
+  }
+
+  render() {
+    const SAccentItem = Root;
+
+    return sstyled(this.asProps.styles)(<SAccentItem render={TabLine.Item} onClick={this.handleClick.bind(this)} />);
+  }
+}
+
+function AccentAddon(props) {
+  const { clicked, animatedSparkleCount } = props;
+
+  return (
+    <Root render={TabLine.Item.Addon}>
+      <SummaryAI color='icon-primary-ai' />
+      {clicked && animatedSparkleCount && [...new Array(animatedSparkleCount)].map((_, index) => {
+        return (
+          <Sparkle key={index} index={index} num={animatedSparkleCount} />
+        );
+      })}
+    </Root>
+  );
+}
+
+export const TabLineAF = createComponent(TabLineAFRoot, {
+  Item: [TabLine.Item, { Text: TabLine.Item.Text, Addon: TabLine.Item.Addon }],
+  AccentItem: createComponent(AccentItemRoot, { Text: TabLine.Item.Text, Addon: AccentAddon }),
+}) as TabLineComponent;

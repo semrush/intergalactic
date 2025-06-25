@@ -69,31 +69,6 @@ STabLineItem {
     background-color: var(--intergalactic-border-info-active, #006dca);
   }
 
-  &[theme='ai'] {
-    &::after,
-    &:not(:focus-visible)::before {
-      opacity: 0;
-      transition: opacity calc(var(--intergalactic-duration-control, 200) * 1ms) ease-in-out;
-    }
-    &:not(:focus-visible)::before {
-      background: var(--intergalactic-border-ai, linear-gradient(90deg, #c695ff, #2bb3ff));
-    }
-    &::after {
-      background: var(--intergalactic-border-ai-active, linear-gradient(90deg, #ab6cfe, #008ff8));
-    }
-    &:hover:not(:focus-visible)::before {
-      opacity: 1;
-    }
-    &[selected]::after {
-      opacity: 1;
-    }
-
-    &:focus-visible::before {
-      padding-bottom: 6px;
-      height: auto;
-    }
-  }
-
   & SText:not(:last-child) {
     margin-right: var(--intergalactic-spacing-2x, 8px);
   }
@@ -109,10 +84,6 @@ SCaret {
   height: 3px;
   background: var(--intergalactic-border-info-active, #006dca);
   transition: calc(var(--intergalactic-duration-control, 200) * 1ms) all ease-in-out;
-
-  &[toTheme='ai'] {
-    background: var(--intergalactic-border-ai-active, linear-gradient(90deg, #ab6cfe, #008ff8));
-  }
 }
 
 STabLineItem[selected] {

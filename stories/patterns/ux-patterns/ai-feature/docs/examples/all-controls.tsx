@@ -1,17 +1,12 @@
-import { ButtonAF, PillsAF, SelectAF, InputAF, SwitchAF } from '@semcore/accent-feature';
+import { ButtonAF, PillsAF, SelectAF, InputAF, SwitchAF, TabLineAF } from '@semcore/accent-feature';
 import Badge from '@semcore/badge';
 import { Flex } from '@semcore/base-components';
 import Checkbox from '@semcore/checkbox';
 import { DataTable } from '@semcore/data-table';
 import type { DataTableSort } from '@semcore/data-table';
 import SummaryAI from '@semcore/icon/SummaryAI/m';
-import Input from '@semcore/input';
 import { NoticeSmart } from '@semcore/notice';
-// import Pills from '@semcore/pills';
 import Radio, { RadioGroup } from '@semcore/radio';
-import Select from '@semcore/select';
-import Switch from '@semcore/switch';
-import TabLine from '@semcore/tab-line';
 import { Text, List } from '@semcore/typography';
 import React from 'react';
 
@@ -117,14 +112,14 @@ const Demo = () => {
 
       </Flex>
 
-      <TabLine size='l' aria-label='Tab with AI accent' defaultValue={1}>
-        <TabLine.Item value={1}>First option</TabLine.Item>
-        <TabLine.Item value={2} theme='ai'>
-          <TabLine.Item.Addon tag={SummaryAI} color='icon-primary-ai' />
-          <TabLine.Item.Text>Second option</TabLine.Item.Text>
-        </TabLine.Item>
-        <TabLine.Item value={3}>Third option</TabLine.Item>
-      </TabLine>
+      <TabLineAF size='l' aria-label='Tab with AI accent' defaultValue={1}>
+        <TabLineAF.Item value={1}>First option</TabLineAF.Item>
+        <TabLineAF.AccentItem value={2}>
+          <TabLineAF.AccentItem.Addon animatedSparkleCount={5} />
+          <TabLineAF.AccentItem.Text>Second option</TabLineAF.AccentItem.Text>
+        </TabLineAF.AccentItem>
+        <TabLineAF.Item value={3}>Third option</TabLineAF.Item>
+      </TabLineAF>
 
       <DataTable
         data={data}
