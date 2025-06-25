@@ -60,7 +60,7 @@ figma.connect(
       >
         <Button.Addon>{addonLeft}</Button.Addon>
         {label}
-        <Button.Addon>{textAddon}</Button.Addon>
+        <Button.Text>{textAddon}</Button.Text>
         <Button.Addon>{addonRight}</Button.Addon>
       </Button>
     ),
