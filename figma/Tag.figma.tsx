@@ -26,9 +26,15 @@ const vanityProps = {
   }),
   addonLeft: figma.boolean('← addon', {
     true: figma.instance('{ ↳ AddonLeft }'),
+    false: undefined,
+  }),
+  circle: figma.boolean('← circle addon', {
+    true: figma.instance('{ TagCircle }'),
+    false: undefined,
   }),
   textAddon: figma.boolean('↳ textAddon', {
-    true: figma.instance('{ ↳ textAddon }'),
+    true: figma.textContent('{ ↳ textAddon }'),
+    false: undefined,
   }),
 };
 
@@ -41,7 +47,7 @@ figma.connect(
       ...vanityProps,
       disabled: figma.boolean('disabled'),
     },
-    example: ({ size, theme, color, active, disabled, addonLeft, label, textAddon }) => (
+    example: ({ size, theme, color, active, disabled, addonLeft, label, textAddon, circle }) => (
       <Tag
         size={size}
         theme={theme}
@@ -66,7 +72,7 @@ figma.connect(
     props: {
       ...vanityProps,
     },
-    example: ({ theme, color, size, addonLeft, label, textAddon }) => (
+    example: ({ theme, color, size, addonLeft, label, textAddon, circle }) => (
       <TagContainer theme={theme} color={color} size={size}>
         <TagContainer.Tag>
           <Tag.Circle><img src='#' /></Tag.Circle>
@@ -74,7 +80,7 @@ figma.connect(
           <TagContainer.Tag.Text>{label}</TagContainer.Tag.Text>
           <TagContainer.Tag.Addon>{textAddon}</TagContainer.Tag.Addon>
         </TagContainer.Tag>
-        <TagContainer.Close onClick={handleEditTag} />
+        <TagContainer.Close />
       </TagContainer>
     ),
   },

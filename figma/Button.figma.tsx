@@ -30,7 +30,6 @@ const sharedProps = {
     true: figma.instance('{ ↳ AddonLeft }'),
     false: undefined,
   }),
-
 };
 
 figma.connect(
@@ -59,8 +58,8 @@ figma.connect(
         loading={loading}
       >
         <Button.Addon>{addonLeft}</Button.Addon>
-        {label}
-        <Button.Text>{textAddon}</Button.Text>
+        <Button.Text>{label}</Button.Text>
+        <Button.Addon>{textAddon}</Button.Addon>
         <Button.Addon>{addonRight}</Button.Addon>
       </Button>
     ),
