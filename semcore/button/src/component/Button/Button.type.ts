@@ -47,7 +47,12 @@ export type ButtonChildren = {
   Addon: Intergalactic.Component<'span', ButtonAddonProps>;
 };
 
+export type ButtonAiAddonProps = ButtonAddonProps & {
+  animatedSparkleCount?: number;
+};
+
 export type ButtonComponent = Intergalactic.Component<'button', ButtonProps, ButtonContext> & {
   Text: Intergalactic.Component<'span', ButtonTextProps>;
   Addon: Intergalactic.Component<'span', ButtonAddonProps>;
+  AiAddon: Intergalactic.Component<'svg', ButtonAiAddonProps>;
 };

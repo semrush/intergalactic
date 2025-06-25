@@ -1,0 +1,24 @@
+SSparkle[angle][left][scale][duration] {
+  position: absolute;
+  left: var(--left);
+
+  transform: rotate(calc(1deg * var(--angle))) scale(var(--scale));
+
+  animation-name: sparkles;
+  animation-fill-mode: forwards;
+  animation-duration: var(--duration);
+
+  & path {
+    fill: var(--intergalactic-icon-primary-ai, #8649e1);
+  }
+}
+
+@keyframes sparkles {
+  50% {
+    transform: rotate(calc(1deg * var(--angle))) translateY(200%)
+      scale(var(--scale));
+  }
+  100% {
+    transform: rotate(calc(1deg * var(--angle))) translateY(200%) scale(0);
+  }
+}

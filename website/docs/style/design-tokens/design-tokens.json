@@ -1471,7 +1471,9 @@
     "rawValue": "{violet.500}",
     "computedValue": "#8649e1",
     "description": "Primary AI accent icon.",
-    "components": []
+    "components": [
+      "base-components"
+    ]
   },
   {
     "name": "--intergalactic-icon-primary-ai-hover-active",

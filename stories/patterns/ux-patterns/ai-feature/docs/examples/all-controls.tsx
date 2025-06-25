@@ -32,7 +32,7 @@ const Demo = () => {
         </Button>
 
         <Button theme='ai'>
-          <Button.Addon tag={SummaryAI} color='icon-primary-ai' />
+          <Button.AiAddon animatedSparkleCount={5} />
           <Button.Text>Secondary</Button.Text>
         </Button>
 
@@ -63,7 +63,8 @@ const Demo = () => {
         </Input>
 
         <Switch size='l' theme='ai'>
-          <Switch.Value defaultChecked={true} ml={0} />
+          <Switch.Value ml={0} />
+          <Switch.AnimatedSparkles count={5} />
           <Switch.Addon>Receive updates</Switch.Addon>
         </Switch>
 

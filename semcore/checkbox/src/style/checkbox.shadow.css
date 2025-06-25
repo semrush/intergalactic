@@ -189,19 +189,17 @@ SControl:focus-visible + SCheckbox[state='normal'][theme='ai']::before {
   inset: 0;
   margin: -3px;
   padding: 3px;
-  opacity: 0.8;
+  opacity: 0.5;
+  border-radius: 8px;
 
-  background-image: linear-gradient(
-    90deg,
-    var(--intergalactic-violet-400, #ab6cfe),
-    var(--intergalactic-blue-400, #008ff8)
-  );
+  background-image: var(--intergalactic-border-ai-active, linear-gradient(90deg, #ab6cfe, #008ff8));
   mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
   mask-composite: exclude;
 }
-
 SControl[checked]:focus-visible + SCheckbox[state='normal'][theme='ai']::before {
   mask: none;
+  opacity: 1;
+  border-width: 3px;
 }
 
 SCheckbox[state='normal'][theme='ai']::before {

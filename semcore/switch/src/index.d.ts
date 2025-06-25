@@ -57,9 +57,14 @@ export type SwitchContext = {
   getValueProps: PropGetterFn;
 };
 
+export type AnimatedSparklesProps = {
+  count: number;
+};
+
 declare const Switch: Intergalactic.Component<'div', SwitchProps, SwitchContext> & {
   Value: Intergalactic.Component<'input', SwitchValueProps, SwitchContext>;
   Addon: Intergalactic.Component<'div', SwitchAddonProps>;
+  AnimatedSparkles: Intergalactic.Component<'div', AnimatedSparklesProps>;
 };
 
 export { inputProps };

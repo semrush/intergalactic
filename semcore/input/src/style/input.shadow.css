@@ -161,8 +161,7 @@ SInput[theme='ai'] {
   & SOutline {
     background:
       linear-gradient(white, white) padding-box,
-      var(--intergalactic-border-ai, linear-gradient(90deg, #c695ff, #2bb3ff)
-    ) border-box; /* border */
+      var(--intergalactic-border-ai, linear-gradient(90deg, #c695ff, #2bb3ff)) border-box;
     background-origin: border-box;
     background-clip: padding-box, border-box;
     border-color: transparent;
@@ -180,7 +179,7 @@ SInput[theme='ai'] {
       margin: -3px;
       padding: 3px;
       border-radius: inherit;
-      opacity: 0.8;
+      opacity: 0.5;
 
       background-image: linear-gradient(
         90deg,

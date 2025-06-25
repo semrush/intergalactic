@@ -21,10 +21,13 @@ type Props = AbstractButtonProps<any, any, any>;
 export abstract class AbstractButton extends Component<Props, {}, {}> {
   static displayName = 'AbstractButton';
 
+  protected isMounted = false;
+
   containerRef = React.createRef<HTMLButtonElement>();
 
   state = {
     ariaLabelledByContent: null,
+    clicked: false,
   };
 
   protected abstract getTextColor(): string | undefined;
@@ -45,6 +48,7 @@ export abstract class AbstractButton extends Component<Props, {}, {}> {
   }
 
   componentDidMount() {
+    this.isMounted = true;
     if (process.env.NODE_ENV !== 'production') {
       logger.warn(
         this.containerRef.current && !hasLabels(this.containerRef.current) && !this.asProps.title,
@@ -70,6 +74,10 @@ export abstract class AbstractButton extends Component<Props, {}, {}> {
     }
   }
 
+  componentWillUnmount() {
+    this.isMounted = false;
+  }
+
   renderButton({ buttonProps, children }: any) {
     const { styles } = this.asProps;
     const SButton = Root;
@@ -91,6 +99,17 @@ export abstract class AbstractButton extends Component<Props, {}, {}> {
       </SButton>,
     );
   }
+
+  protected handleClick(e: React.MouseEvent<HTMLButtonElement>) {
+    this.asProps.onClick?.(e);
+
+    this.setState({ clicked: false });
+    setTimeout(() => {
+      if (this.isMounted) {
+        this.setState({ clicked: true });
+      }
+    });
+  };
 
   render() {
     const {
@@ -126,6 +145,7 @@ export abstract class AbstractButton extends Component<Props, {}, {}> {
       'aria-busy': loading,
       '__excludeProps': ['title'],
       'tabIndex': 0,
+      'use:onClick': this.handleClick.bind(this),
     };
 
     const hintProps = {
