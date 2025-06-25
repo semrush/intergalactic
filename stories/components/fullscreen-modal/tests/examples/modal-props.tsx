@@ -1,14 +1,16 @@
 import Button from '@semcore/button';
+import type { FullscreenModalProps } from '@semcore/fullscreen-modal';
 import FullscreenModal from '@semcore/fullscreen-modal';
 import React from 'react';
 
-const Demo = () => {
+const Demo = (props: FullscreenModalProps) => {
+  const { closable } = props;
   const [visible, setVisible] = React.useState(false);
 
   return (
     <>
       <Button onClick={() => setVisible(true)}>Open FullscreenModal</Button>
-      <FullscreenModal visible={visible} onClose={() => setVisible(false)} closable={true} duration={500} aria-describedby='my-modal-description'>
+      <FullscreenModal visible={visible} onClose={() => setVisible(false)} closable={closable} duration={500} aria-describedby='my-modal-description'>
         <FullscreenModal.Back>Go to Tool Name</FullscreenModal.Back>
         <FullscreenModal.Header
           title='Modal Window Title'
@@ -25,5 +27,11 @@ const Demo = () => {
     </>
   );
 };
+
+export const defaultProps: FullscreenModalProps = {
+  closable: true,
+};
+
+Demo.defaultProps = defaultProps;
 
 export default Demo;
