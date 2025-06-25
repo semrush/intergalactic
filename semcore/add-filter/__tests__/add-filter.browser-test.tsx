@@ -1,5 +1,5 @@
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
-import type { Page, Locator } from '@semcore/testing-utils/playwright';
+import type { Page } from '@semcore/testing-utils/playwright';
 import { expect, test } from '@semcore/testing-utils/playwright';
 
 const getLocators = (page: Page) => ({
@@ -709,7 +709,7 @@ test.describe('Different types of filters', () => {
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-    page.locator('[data-ui-name="DropdownMenu.Popper"]').waitFor();
+    await page.locator('[data-ui-name="DropdownMenu.Popper"]').waitFor();
     const ddMenuFirstItem = page.locator('[data-ui-name="DropdownMenu.Item"]').first();
     await expect(ddMenuFirstItem).toHaveClass(/highlighted/);
     await page.keyboard.press('ArrowDown');
