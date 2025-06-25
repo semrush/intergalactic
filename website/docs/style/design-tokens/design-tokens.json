@@ -869,7 +869,6 @@
     "components": [
       "accent-feature",
       "checkbox",
-      "input",
       "notice",
       "radio",
       "tab-line"

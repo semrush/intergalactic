@@ -1,4 +1,4 @@
-import { ButtonAF, PillsAF, SelectAF } from '@semcore/accent-feature';
+import { ButtonAF, PillsAF, SelectAF, InputAF } from '@semcore/accent-feature';
 import Badge from '@semcore/badge';
 import { Flex } from '@semcore/base-components';
 import Checkbox from '@semcore/checkbox';
@@ -56,11 +56,11 @@ const Demo = () => {
           </SelectAF.Menu>
         </SelectAF>
 
-        <Input w={250} theme='ai'>
-          <Input.Addon><SummaryAI color='icon-primary-ai' /></Input.Addon>
-          <Input.Value placeholder='Your domain' aria-label='Input with AI theme' />
-          <Input.Addon><Badge theme='ai'>AI powered</Badge></Input.Addon>
-        </Input>
+        <InputAF w={250}>
+          <InputAF.AccentAddon />
+          <InputAF.Value placeholder='Your domain' aria-label='Input with AI theme' />
+          <InputAF.Addon><Badge theme='ai'>AI powered</Badge></InputAF.Addon>
+        </InputAF>
 
         <Switch size='l' theme='ai'>
           <Switch.Value ml={0} />
