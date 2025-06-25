@@ -1,4 +1,4 @@
-import { Sparkle } from '@semcore/base-components';
+// import { Sparkle } from '@semcore/base-components';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
@@ -214,17 +214,17 @@ function Addon(props) {
   );
 }
 
-function AnimatedSparkles(props) {
-  return props.checked && [...new Array(props.count)].map((_, index) => {
-    return (
-      <Sparkle key={index} index={index} num={props.count} curve={9} />
-    );
-  });
-}
+// function AnimatedSparkles(props) {
+//   return props.checked && [...new Array(props.count)].map((_, index) => {
+//     return (
+//       <Sparkle key={index} index={index} num={props.count} curve={9} />
+//     );
+//   });
+// }
 
 export { inputProps };
 export default createComponent(Switch, {
   Value,
   Addon,
-  AnimatedSparkles,
+  // AnimatedSparkles,
 });

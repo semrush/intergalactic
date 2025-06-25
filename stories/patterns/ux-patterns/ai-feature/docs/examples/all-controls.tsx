@@ -1,6 +1,6 @@
+import { ButtonAF } from '@semcore/accent-feature';
 import Badge from '@semcore/badge';
 import { Flex } from '@semcore/base-components';
-import Button from '@semcore/button';
 import Checkbox from '@semcore/checkbox';
 import { DataTable } from '@semcore/data-table';
 import type { DataTableSort } from '@semcore/data-table';
@@ -27,14 +27,14 @@ const Demo = () => {
     <Flex gap={4} direction='column'>
       <Flex flexWrap gap={4}>
 
-        <Button use='primary' theme='ai' addonLeft={SummaryAI}>
+        <ButtonAF use='primary' addonLeft={SummaryAI}>
           Primary
-        </Button>
+        </ButtonAF>
 
-        <Button theme='ai'>
-          <Button.AiAddon animatedSparkleCount={5} />
-          <Button.Text>Secondary</Button.Text>
-        </Button>
+        <ButtonAF>
+          <ButtonAF.AccentAddon animatedSparkleCount={5} />
+          <ButtonAF.Text>Secondary</ButtonAF.Text>
+        </ButtonAF>
 
         <Pills defaultValue={1} aria-label='Pills with AI accent'>
           <Pills.Item value={1}>One</Pills.Item>
@@ -64,7 +64,7 @@ const Demo = () => {
 
         <Switch size='l' theme='ai'>
           <Switch.Value ml={0} />
-          <Switch.AnimatedSparkles count={5} />
+          {/* <Switch.AnimatedSparkles count={5} /> */}
           <Switch.Addon>Receive updates</Switch.Addon>
         </Switch>
 

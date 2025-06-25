@@ -27,7 +27,6 @@ export abstract class AbstractButton extends Component<Props, {}, {}> {
 
   state = {
     ariaLabelledByContent: null,
-    clicked: false,
   };
 
   protected abstract getTextColor(): string | undefined;
@@ -100,17 +99,6 @@ export abstract class AbstractButton extends Component<Props, {}, {}> {
     );
   }
 
-  protected handleClick(e: React.MouseEvent<HTMLButtonElement>) {
-    this.asProps.onClick?.(e);
-
-    this.setState({ clicked: false });
-    setTimeout(() => {
-      if (this.isMounted) {
-        this.setState({ clicked: true });
-      }
-    });
-  };
-
   render() {
     const {
       styles,
@@ -145,7 +133,6 @@ export abstract class AbstractButton extends Component<Props, {}, {}> {
       'aria-busy': loading,
       '__excludeProps': ['title'],
       'tabIndex': 0,
-      'use:onClick': this.handleClick.bind(this),
     };
 
     const hintProps = {

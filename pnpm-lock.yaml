@@ -300,6 +300,25 @@ importers:
         specifier: 2.8.0
         version: 2.8.0
 
+  semcore/accent-feature:
+    dependencies:
+      '@popperjs/core':
+        specifier: 2.11.5
+        version: 2.11.5
+      classnames:
+        specifier: 2.2.6
+        version: 2.2.6
+      csstype:
+        specifier: 3.1.3
+        version: 3.1.3
+      popper-max-size-modifier:
+        specifier: 0.2.0
+        version: 0.2.0(@popperjs/core@2.11.5)
+    devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
+
   semcore/accordion:
     dependencies:
       '@semcore/animation':

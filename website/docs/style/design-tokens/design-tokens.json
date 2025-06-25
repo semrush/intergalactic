@@ -402,6 +402,7 @@
     "computedValue": "#191b23",
     "description": "Primary text.",
     "components": [
+      "accent-feature",
       "accordion",
       "base-components",
       "base-trigger",
@@ -445,6 +446,7 @@
     "computedValue": "#6c6e79",
     "description": "Secondary text.",
     "components": [
+      "accent-feature",
       "breadcrumbs",
       "bulk-textarea",
       "button",
@@ -520,6 +522,7 @@
     "computedValue": "#ffffff",
     "description": "Inverted version of the primary text.",
     "components": [
+      "accent-feature",
       "badge",
       "button",
       "date-picker",
@@ -714,6 +717,7 @@
     "computedValue": "#c4c7cf",
     "description": "Neutral primary border.",
     "components": [
+      "accent-feature",
       "base-trigger",
       "bulk-textarea",
       "button",
@@ -1143,7 +1147,7 @@
     "computedValue": "linear-gradient(90deg, #5925ab, #044792)",
     "description": "Active (selected) state of the primary control with AI accent.",
     "components": [
-      "button"
+      "accent-feature"
     ]
   },
   {
@@ -1183,6 +1187,7 @@
     "computedValue": "rgba(138, 142, 155, 0.1)",
     "description": "Background of the regular secondary control.",
     "components": [
+      "accent-feature",
       "button"
     ]
   },
@@ -1193,6 +1198,7 @@
     "computedValue": "rgba(138, 142, 155, 0.2)",
     "description": "Hover state of the regular secondary control.",
     "components": [
+      "accent-feature",
       "button"
     ]
   },
@@ -1203,6 +1209,7 @@
     "computedValue": "rgba(138, 142, 155, 0.3)",
     "description": "Active (selected) state of the regular secondary control.",
     "components": [
+      "accent-feature",
       "button"
     ]
   },
@@ -1472,7 +1479,7 @@
     "computedValue": "#8649e1",
     "description": "Primary AI accent icon.",
     "components": [
-      "base-components"
+      "accent-feature"
     ]
   },
   {
