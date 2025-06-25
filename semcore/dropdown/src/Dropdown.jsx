@@ -109,7 +109,7 @@ class DropdownRoot extends Component {
 
     return {
       id: `igc-${uid}-popper`,
-      tabIndex: 0,
+      tabIndex: -1,
       role: 'dialog',
       disablePortal,
       ignorePortalsStacking,
