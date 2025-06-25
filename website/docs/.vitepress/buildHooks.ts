@@ -195,5 +195,44 @@ const buildEnd: UserConfig<DefaultTheme.Config>['buildEnd'] = async ({ outDir })
     });
   }
 };
+const transformPageData: UserConfig<DefaultTheme.Config>['transformPageData'] = (pageData) => {
+  const { filePath, frontmatter: { title, tabs } } = pageData;
 
-export const buildHooks = { transformHtml, buildEnd };
+  const [, folder, parentName, pageName] = filePath.match(/^([^/]+)\/([^/]+)\/([^/]+)$/) ?? [];
+
+  if (!folder || !parentName || !pageName) return;
+
+  // Special case for content folder.
+  if (folder === 'content') {
+    pageData.title = `Content: ${title}`;
+    return;
+  }
+
+  // If there aren't tabs just use the default behaviour.
+  if (!tabs) return;
+
+  const tabsArray = (tabs as string).split(', ');
+  const fileNames = tabsArray.map((tab) => {
+    const [, fileName] = tab.match(/\(['"]?([^'")]+)['"]?\)/) ?? [];
+
+    return fileName || tab;
+  });
+  const baseFileName = fileNames.find((name) => fileNames.every((f) => f.includes(name)));
+
+  const isBasePage = pageName.replace('.md', '') === baseFileName;
+
+  // For base page keep default behaviour.
+  if (isBasePage) return;
+
+  const [, suffix] = pageName.match(/-([a-z0-9]+)\.md$/i) ?? [];
+
+  if (!suffix) return;
+
+  const tabName = tabsArray.find((t) => t.includes(suffix))?.replace(/\(.*\)/, '');
+
+  if (!tabName) return;
+
+  pageData.title = `${title}: ${tabName}`;
+};
+
+export const buildHooks = { transformHtml, buildEnd, transformPageData };
