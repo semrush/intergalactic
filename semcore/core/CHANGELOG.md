@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.2] - 2025-06-25
+
+### Added
+
+- Container focus if there aren't focusable children while `autoFocus='enforced'`
+
 ## [16.0.1] - 2025-06-16
 
 ### Added

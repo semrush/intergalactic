@@ -134,7 +134,7 @@ function Window(props) {
   const { Children, styles, visible, closable, duration } = props;
   const windowRef = React.useRef(null);
 
-  useFocusLock(windowRef, 'enforced', windowRef, !visible, true);
+  useFocusLock(windowRef, 'enforced', 'auto', !visible, true);
 
   return sstyled(styles)(
     <SWindow

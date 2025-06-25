@@ -218,6 +218,11 @@ const useFocusLockHook = (
 
     if (autoFocus) {
       setTimeout(() => {
+        if (autoFocus === 'enforced' && focusableChildren.length === 0) {
+          trapRef.current?.focus();
+          return;
+        }
+
         setFocus(
           trapRef.current!,
           typeof returnFocusTo === 'object' ? returnFocusTo?.current : document.body,
