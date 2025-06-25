@@ -145,4 +145,5 @@ export default defineConfig({
 
   transformHtml: buildHooks.transformHtml,
   buildEnd: buildHooks.buildEnd,
+  transformPageData: buildHooks.transformPageData,
 });
