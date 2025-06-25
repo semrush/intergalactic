@@ -8,7 +8,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - `tabIndex` prop value to -1 since `autoFocus='enforced'`.
 
-
 ## [16.0.3] - 2025-06-20
 
 ### Added
