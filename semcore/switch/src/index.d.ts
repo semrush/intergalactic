@@ -4,7 +4,7 @@ import type { BoxProps } from '@semcore/flex-box';
 import type { NeighborItemProps, NeighborLocationProps } from '@semcore/neighbor-location';
 import type React from 'react';
 
-export type SwitchTheme = 'info' | 'success' | 'ai' | string;
+export type SwitchTheme = 'info' | 'success' | string;
 
 /** @deprecated */
 export interface ISwitchProps extends SwitchProps, UnknownProperties {}
@@ -57,14 +57,9 @@ export type SwitchContext = {
   getValueProps: PropGetterFn;
 };
 
-export type AnimatedSparklesProps = {
-  count: number;
-};
-
 declare const Switch: Intergalactic.Component<'div', SwitchProps, SwitchContext> & {
   Value: Intergalactic.Component<'input', SwitchValueProps, SwitchContext>;
   Addon: Intergalactic.Component<'div', SwitchAddonProps>;
-  AnimatedSparkles: Intergalactic.Component<'div', AnimatedSparklesProps>;
 };
 
 export { inputProps };

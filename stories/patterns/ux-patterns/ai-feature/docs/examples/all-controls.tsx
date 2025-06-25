@@ -1,4 +1,4 @@
-import { ButtonAF, PillsAF, SelectAF, InputAF } from '@semcore/accent-feature';
+import { ButtonAF, PillsAF, SelectAF, InputAF, SwitchAF } from '@semcore/accent-feature';
 import Badge from '@semcore/badge';
 import { Flex } from '@semcore/base-components';
 import Checkbox from '@semcore/checkbox';
@@ -62,11 +62,11 @@ const Demo = () => {
           <InputAF.Addon><Badge theme='ai'>AI powered</Badge></InputAF.Addon>
         </InputAF>
 
-        <Switch size='l' theme='ai'>
-          <Switch.Value ml={0} />
-          {/* <Switch.AnimatedSparkles count={5} /> */}
-          <Switch.Addon>Receive updates</Switch.Addon>
-        </Switch>
+        <SwitchAF size='l' theme='ai'>
+          <SwitchAF.Value ml={0} />
+          <SwitchAF.AnimatedSparkles count={5} />
+          <SwitchAF.Addon>Receive updates</SwitchAF.Addon>
+        </SwitchAF>
 
       </Flex>
 

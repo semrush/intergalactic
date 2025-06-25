@@ -92,10 +92,6 @@ SToggle[checked][theme='success'] {
   color: var(--intergalactic-control-primary-success, #009f81);
   background-color: var(--intergalactic-control-primary-success, #009f81);
 }
-SToggle[checked][theme='ai'] {
-  color: var(--intergalactic-control-primary-info, #008ff8);
-  background-image: var(--intergalactic-control-primary-ai, linear-gradient(90deg, #ab6cfe, #008ff8));
-}
 
 SToggle[checked][theme='custom'] {
   color: var(--color);
@@ -105,29 +101,6 @@ SToggle[checked][theme='custom'] {
 SToggle:has(SInput:focus-visible) {
   box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
 }
-SToggle[theme='ai']:has(SInput:focus-visible) {
-  box-shadow: none;
-
-  &::before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    inset: 0;
-    margin: -3px;
-    padding: 3px;
-    border-radius: inherit;
-    opacity: 0.5;
-
-    background-image: linear-gradient(
-      90deg,
-      var(--intergalactic-violet-400, #ab6cfe),
-      var(--intergalactic-blue-400, #008ff8)
-    );
-    mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
-    mask-composite: exclude;
-  }
-}
-
 
 SToggle[neighborLocation='left'] {
   margin-left: var(--intergalactic-spacing-2x, 8px);

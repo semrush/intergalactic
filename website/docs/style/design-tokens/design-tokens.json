@@ -964,6 +964,7 @@
     "computedValue": "#008ff8",
     "description": "Background of the regular primary control.",
     "components": [
+      "accent-feature",
       "button",
       "checkbox",
       "dropdown",
@@ -1123,7 +1124,7 @@
     "computedValue": "linear-gradient(90deg, #ab6cfe, #008ff8)",
     "description": "Background of the primary control with AI accent.",
     "components": [
-      "switch"
+      "accent-feature"
     ]
   },
   {
