@@ -372,7 +372,7 @@
     "computedValue": "linear-gradient(90deg, #f9f2ff, #e9f7ff)",
     "description": "Secondary background for the message with AI accent.",
     "components": [
-      "notice"
+      "accent-feature"
     ]
   },
   {
@@ -869,7 +869,6 @@
     "components": [
       "accent-feature",
       "checkbox",
-      "notice",
       "radio"
     ]
   },
@@ -1370,6 +1369,7 @@
     "computedValue": "#6c6e79",
     "description": "Primary neutral icon.",
     "components": [
+      "accent-feature",
       "accordion",
       "base-trigger",
       "carousel",
@@ -1387,6 +1387,7 @@
     "computedValue": "#565861",
     "description": "Gray background color for the hover and active states of the primary neutral icon. It’s created using a CSS filter with a brightness(0.8), applied to the gray-500 color.",
     "components": [
+      "accent-feature",
       "fullscreen-modal",
       "notice"
     ]

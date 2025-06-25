@@ -75,31 +75,6 @@ SNotice[theme='muted'] {
   }
 }
 
-SNotice[theme='ai'] {
-  background-image: var(--intergalactic-bg-secondary-ai, linear-gradient(90deg, #f9f2ff, #e9f7ff));
-  border-color: transparent;
-  background-clip: padding-box;
-  position: relative;
-
-  &:before {
-    content: '';
-    position: absolute;
-    top: 0; right: 0; bottom: 0; left: 0;
-    z-index: -1;
-    margin: -1px;
-    border-radius: inherit;
-    background: var(--intergalactic-border-ai, linear-gradient(90deg, #c695ff, #2bb3ff));
-  }
-
-  & SCloseIcon {
-    color: var(--intergalactic-icon-primary-neutral, #6c6e79);
-
-    &:hover {
-      color: var(--intergalactic-icon-primary-neutral-hover-active, #565861);
-    }
-  }
-}
-
 SContent {
   flex: 1 1 auto;
   width: 100%;

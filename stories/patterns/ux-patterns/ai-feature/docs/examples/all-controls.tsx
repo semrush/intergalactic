@@ -1,11 +1,10 @@
-import { ButtonAF, PillsAF, SelectAF, InputAF, SwitchAF, TabLineAF } from '@semcore/accent-feature';
+import { ButtonAF, PillsAF, SelectAF, InputAF, SwitchAF, TabLineAF, NoticeAF, BadgeAF } from '@semcore/accent-feature';
 import Badge from '@semcore/badge';
 import { Flex } from '@semcore/base-components';
 import Checkbox from '@semcore/checkbox';
 import { DataTable } from '@semcore/data-table';
 import type { DataTableSort } from '@semcore/data-table';
 import SummaryAI from '@semcore/icon/SummaryAI/m';
-import { NoticeSmart } from '@semcore/notice';
 import Radio, { RadioGroup } from '@semcore/radio';
 import { Text, List } from '@semcore/typography';
 import React from 'react';
@@ -54,7 +53,7 @@ const Demo = () => {
         <InputAF w={250}>
           <InputAF.AccentAddon />
           <InputAF.Value placeholder='Your domain' aria-label='Input with AI theme' />
-          <InputAF.Addon><Badge theme='ai'>AI powered</Badge></InputAF.Addon>
+          <InputAF.Addon><BadgeAF>AI powered</BadgeAF></InputAF.Addon>
         </InputAF>
 
         <SwitchAF size='l' theme='ai'>
@@ -65,9 +64,9 @@ const Demo = () => {
 
       </Flex>
 
-      <NoticeSmart theme='ai' closable aria-label='Notice with AI theme'>
+      <NoticeAF closable aria-label='Notice with AI theme'>
         How would you rate this update?
-      </NoticeSmart>
+      </NoticeAF>
 
       <Flex gap={12}>
 

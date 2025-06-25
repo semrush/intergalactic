@@ -1,7 +1,6 @@
 import type { IRootComponentProps } from '@semcore/core';
 import { Component, createComponent, Root, sstyled } from '@semcore/core';
 import SummaryAI from '@semcore/icon/SummaryAI/m';
-import Pills from '@semcore/pills';
 import TabLine from '@semcore/tab-line';
 import React from 'react';
 
