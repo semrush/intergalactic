@@ -869,7 +869,8 @@
       "input",
       "notice",
       "pills",
-      "radio"
+      "radio",
+      "tab-line"
     ]
   },
   {
@@ -880,7 +881,8 @@
     "description": "Border for the active state of controls with AI accent.",
     "components": [
       "checkbox",
-      "radio"
+      "radio",
+      "tab-line"
     ]
   },
   {

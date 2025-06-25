@@ -118,10 +118,11 @@ const Demo = () => {
 
       <TabLine size='l' aria-label='Tab with AI accent' defaultValue={1}>
         <TabLine.Item value={1}>First option</TabLine.Item>
-        <TabLine.Item value={2}>
+        <TabLine.Item value={2} theme='ai'>
           <TabLine.Item.Addon tag={SummaryAI} color='icon-primary-ai' />
           <TabLine.Item.Text>Second option</TabLine.Item.Text>
         </TabLine.Item>
+        <TabLine.Item value={3}>Third option</TabLine.Item>
       </TabLine>
 
       <DataTable

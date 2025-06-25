@@ -33,6 +33,7 @@ class TabLineRoot extends Component {
   state = { animation: null };
   prevValue = undefined;
   itemRefs = {};
+  itemProps = {};
   containerRef = React.createRef();
   animationStartTimeout = -1;
 
@@ -76,6 +77,8 @@ class TabLineRoot extends Component {
       toLeft: toRect.x - containerRect.x,
       toWidth: toRect.width,
       started: false,
+      fromTheme: this.itemProps[this.prevValue]?.theme,
+      toTheme: this.itemProps[this.asProps.value]?.theme,
     };
     this.setState({ animation });
     clearTimeout(this.animationStartTimeout);
@@ -107,6 +110,7 @@ class TabLineRoot extends Component {
       'aria-selected': isSelected,
       'ref': (node) => {
         this.itemRefs[props.value] = node;
+        this.itemProps[props.value] = props;
       },
     };
   }
@@ -116,6 +120,8 @@ class TabLineRoot extends Component {
     if (!animation) return {};
     if (animation.started) {
       return {
+        fromTheme: animation.fromTheme,
+        toTheme: animation.toTheme,
         style: {
           left: animation.toLeft,
           width: animation.toWidth,
@@ -124,6 +130,8 @@ class TabLineRoot extends Component {
       };
     } else {
       return {
+        fromTheme: animation.fromTheme,
+        toTheme: animation.toTheme,
         style: {
           left: animation.fromLeft,
           width: animation.fromWidth,
@@ -135,7 +143,7 @@ class TabLineRoot extends Component {
 
   render() {
     const STabLine = Root;
-    const SCaret = 'div';
+    const SCaret = Box;
     const { styles, Children, controlsLength } = this.asProps;
     const { animation } = this.state;
 
