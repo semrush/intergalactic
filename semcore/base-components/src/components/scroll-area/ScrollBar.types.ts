@@ -3,6 +3,8 @@ import type { NodeByRef } from '@semcore/core/lib/utils/ref';
 
 import type { Box, BoxProps } from '../flex-box';
 
+export type ShadowTheme = 'dark' | 'light';
+
 /** @deprecated */
 export interface IScrollAreaProps extends ScrollAreaProps, UnknownProperties {}
 export type ScrollAreaProps = BoxProps & {
@@ -41,6 +43,17 @@ export type ScrollAreaProps = BoxProps & {
   rightOffset?: number;
   bottomOffset?: number;
   leftOffset?: number;
+
+  /**
+   * Size for shadows in px.
+   * @default 5
+   */
+  shadowSize?: number | { horizontal: number; vertical: number };
+  /**
+   * Style for shadows (black or white).
+   * @default dark
+   */
+  shadowTheme?: ShadowTheme | { horizontalTop?: ShadowTheme; horizontalBottom?: ShadowTheme; verticalLeft?: ShadowTheme; verticalRight?: ShadowTheme };
 };
 
 /** @deprecated */

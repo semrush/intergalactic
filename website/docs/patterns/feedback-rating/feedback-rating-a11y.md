@@ -11,7 +11,7 @@ Find detailed information about the keyboard support for all form elements in th
 
 ### Roles and attributes
 
-The following list describes roles and attributes that component already has.
+The following list describes roles and attributes that the component already has.
 
 Table: Roles and attributes
 

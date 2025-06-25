@@ -25,7 +25,7 @@ Table: Keyboard support
 
 ### Roles and attributes
 
-The following list describes roles and attributes that component already has.
+The following list describes roles and attributes that the component already has.
 
 #### Trigger
 

@@ -80,6 +80,7 @@ class FullscreenModalRoot extends Component {
         <SFullscreenOverlay>
           <SFullscreenModal
             render={Modal.Window}
+            use:closable={false}
             aria-label={hasTitle ? undefined : getI18nText('title')}
             aria-labelledby={hasTitle ? `igc-${uid}-title` : undefined}
           >

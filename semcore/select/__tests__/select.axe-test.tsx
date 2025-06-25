@@ -213,6 +213,32 @@ test.describe('Select', () => {
       expect(violations).toEqual([]);
     }
   });
+
+  test('Sticky group', async ({ page }) => {
+    const standPath = 'stories/components/select/docs/examples/sticky_groups.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    // default check
+    {
+      const violations = await getAccessibilityViolations({ page });
+
+      expect(violations).toEqual([]);
+    }
+
+    // open select
+    {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+
+      await new Promise((resolve) => setTimeout(resolve, 100));
+
+      const violations = await getAccessibilityViolations({ page });
+
+      expect(violations).toEqual([]);
+    }
+  });
 });
 
 test.describe('Option', () => {
