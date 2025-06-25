@@ -48,31 +48,6 @@ SBaseTrigger {
     border-color: var(--intergalactic-border-info-active, #006dca);
     background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
   }
-
-  &[theme='ai'] {
-    border: 1px solid transparent;
-    background:
-      linear-gradient(white, white) padding-box,
-      var(--intergalactic-border-ai, linear-gradient(90deg, #c695ff, #2bb3ff)
-    ) border-box; /* border */
-    background-origin: border-box;
-    background-clip: padding-box, border-box;
-
-    &:hover {
-      background: var(--intergalactic-bg-primary-ai-hover-active, linear-gradient(90deg, #f9f2ff, #e9f7ff)) padding-box,
-        var(--intergalactic-border-ai, linear-gradient(90deg, #c695ff, #2bb3ff)
-      ) border-box;
-    }
-
-    &:active,
-    &[active] {
-      background:
-        linear-gradient(white, white) padding-box,
-        var(--intergalactic-control-primary-ai-hover, linear-gradient(90deg, #8649e1, #006dca)) border-box;
-      background-origin: border-box;
-      background-clip: padding-box, border-box;
-    }
-  }
 }
 
 SBaseTrigger[disabled] {

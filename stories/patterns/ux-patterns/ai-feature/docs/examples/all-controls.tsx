@@ -1,4 +1,4 @@
-import { ButtonAF, PillsAF } from '@semcore/accent-feature';
+import { ButtonAF, PillsAF, SelectAF } from '@semcore/accent-feature';
 import Badge from '@semcore/badge';
 import { Flex } from '@semcore/base-components';
 import Checkbox from '@semcore/checkbox';
@@ -44,17 +44,17 @@ const Demo = () => {
           </PillsAF.AccentItem>
         </PillsAF>
 
-        <Select onChange={setSelectValue}>
-          <Select.Trigger theme='ai' aria-label='Select with AI theme' wMax={160} wMin={160}>
-            <Select.Trigger.Addon tag={SummaryAI} color='icon-primary-ai' />
-            <Select.Trigger.Text>{selectValue}</Select.Trigger.Text>
-          </Select.Trigger>
-          <Select.Menu>
-            <Select.Option value='One'>One</Select.Option>
-            <Select.Option value='Two'>Two</Select.Option>
-            <Select.Option value='Three'>Three</Select.Option>
-          </Select.Menu>
-        </Select>
+        <SelectAF onChange={setSelectValue}>
+          <SelectAF.Trigger aria-label='Select with AI theme' wMax={160} wMin={160}>
+            <SelectAF.Trigger.Addon />
+            <SelectAF.Trigger.Text>{selectValue}</SelectAF.Trigger.Text>
+          </SelectAF.Trigger>
+          <SelectAF.Menu>
+            <SelectAF.Option value='One'>One</SelectAF.Option>
+            <SelectAF.Option value='Two'>Two</SelectAF.Option>
+            <SelectAF.Option value='Three'>Three</SelectAF.Option>
+          </SelectAF.Menu>
+        </SelectAF>
 
         <Input w={250} theme='ai'>
           <Input.Addon><SummaryAI color='icon-primary-ai' /></Input.Addon>
