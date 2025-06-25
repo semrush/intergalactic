@@ -210,13 +210,11 @@ const transformPageData: UserConfig<DefaultTheme.Config>['transformPageData'] = 
 
   if (!folder || !parentName || !pageName) return;
 
-  // Special case for content folder.
   if (folder === 'content') {
     pageData.title = `Content: ${title}`;
     return;
   }
 
-  // If there aren't tabs just use the default behaviour.
   if (!tabs) return;
 
   const tabsArray = (tabs as string).split(', ');
@@ -234,7 +232,6 @@ const transformPageData: UserConfig<DefaultTheme.Config>['transformPageData'] = 
 
   const isBasePage = pageName.replace('.md', '') === baseFileName;
 
-  // For base page keep default behaviour.
   if (isBasePage) return;
 
   /*
