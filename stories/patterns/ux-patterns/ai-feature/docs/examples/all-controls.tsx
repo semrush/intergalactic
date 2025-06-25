@@ -1,4 +1,4 @@
-import { ButtonAF } from '@semcore/accent-feature';
+import { ButtonAF, PillsAF } from '@semcore/accent-feature';
 import Badge from '@semcore/badge';
 import { Flex } from '@semcore/base-components';
 import Checkbox from '@semcore/checkbox';
@@ -7,7 +7,7 @@ import type { DataTableSort } from '@semcore/data-table';
 import SummaryAI from '@semcore/icon/SummaryAI/m';
 import Input from '@semcore/input';
 import { NoticeSmart } from '@semcore/notice';
-import Pills from '@semcore/pills';
+// import Pills from '@semcore/pills';
 import Radio, { RadioGroup } from '@semcore/radio';
 import Select from '@semcore/select';
 import Switch from '@semcore/switch';
@@ -36,13 +36,13 @@ const Demo = () => {
           <ButtonAF.Text>Secondary</ButtonAF.Text>
         </ButtonAF>
 
-        <Pills defaultValue={1} aria-label='Pills with AI accent'>
-          <Pills.Item value={1}>One</Pills.Item>
-          <Pills.Item value={2} theme='ai'>
-            <Pills.Item.Addon><SummaryAI color='icon-primary-ai' /></Pills.Item.Addon>
-            <Pills.Item.Text>Two</Pills.Item.Text>
-          </Pills.Item>
-        </Pills>
+        <PillsAF defaultValue={1} aria-label='Pills with AI accent'>
+          <PillsAF.Item value={1}>One</PillsAF.Item>
+          <PillsAF.AccentItem value={2}>
+            <PillsAF.AccentItem.Addon animatedSparkleCount={5} />
+            <PillsAF.AccentItem.Text>Two</PillsAF.AccentItem.Text>
+          </PillsAF.AccentItem>
+        </PillsAF>
 
         <Select onChange={setSelectValue}>
           <Select.Trigger theme='ai' aria-label='Select with AI theme' wMax={160} wMin={160}>

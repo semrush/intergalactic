@@ -1,11 +1,10 @@
 import Button from '@semcore/button';
-import type { Intergalactic } from '@semcore/core';
 import { createComponent, Root, sstyled, Component } from '@semcore/core';
 import SummaryAI from '@semcore/icon/SummaryAI/m';
 import React from 'react';
 
 import style from './button.shadow.css';
-import type { ButtonAccentAddonProps } from './Button.type';
+import type { ButtonAccentAddonProps, ButtonAccentComponent } from './Button.type';
 import { Sparkle } from '../../inner-components/sparkle';
 
 class ButtonAFRoot extends Component {
@@ -64,6 +63,4 @@ export const ButtonAF = createComponent(ButtonAFRoot, {
   Addon: Button.Addon,
   Text: Button.Text,
   AccentAddon,
-}) as typeof Button & {
-  AccentAddon: Intergalactic.Component<'div', ButtonAccentAddonProps>;
-};
+}) as ButtonAccentComponent;
