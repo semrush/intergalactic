@@ -1,8 +1,6 @@
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import type { Page, Locator } from '@semcore/testing-utils/playwright';
 import { expect, test } from '@semcore/testing-utils/playwright';
-import { waitForAnimations } from '@tools/testing-utils/utils/waitForAnimations';
-import { waitForClassNameBeenApplied } from '@tools/testing-utils/utils/waitForClassNameBeenApplied';
 
 const getLocators = (page: Page) => ({
   addFilterBtn: page.getByRole('button', { name: 'Add filter' }),
@@ -711,12 +709,9 @@ test.describe('Different types of filters', () => {
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-    const ddMenu = page.locator('[data-ui-name="DropdownMenu.Popper"]');
-    await waitForAnimations(ddMenu);
-
+    page.locator('[data-ui-name="DropdownMenu.Popper"]').waitFor();
     const ddMenuFirstItem = page.locator('[data-ui-name="DropdownMenu.Item"]').first();
-    await waitForClassNameBeenApplied(ddMenuFirstItem, 'highlighted');
-
+    await expect(ddMenuFirstItem).toHaveClass(/highlighted/);
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('Enter');
