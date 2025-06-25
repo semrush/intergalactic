@@ -65,7 +65,7 @@ Margins between the swatches must be [multiples of 4](/layout/box-system/box-sys
 
 ![](static/colorpicker-margins.png)
 
-## Color types
+## Color swatch types
 
 Color swatches can have one of the two types of appearance:
 
