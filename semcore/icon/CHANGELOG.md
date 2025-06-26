@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- `Close` and `Check` icons with L size. We made them a bit smaller so they will look a bit more elegant and align better with other icons from the same semantic group.
+- `Close` and `Check`. We made them a bit smaller so they will look a bit more elegant and align better with other icons from the same semantic group. We also tweaked thickness of the `Close` icon with M size a little bit.
 
 ## [16.2.2] - 2025-06-23
 
