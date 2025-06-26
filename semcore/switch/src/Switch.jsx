@@ -10,7 +10,7 @@ import React from 'react';
 import style from './style/switch.shadow.css';
 
 function isCustomTheme(theme) {
-  return !['info', 'success', 'ai'].includes(theme);
+  return !['info', 'success'].includes(theme);
 }
 
 class Switch extends Component {
@@ -56,17 +56,6 @@ class Switch extends Component {
     const { uid } = this.asProps;
 
     return { uid };
-  }
-
-  getAnimatedSparklesProps() {
-    const { theme, animateSparkleCount } = this.asProps;
-    const checked = this.inputRef.current?.checked;
-
-    return {
-      theme,
-      checked,
-      animateSparkleCount,
-    };
   }
 
   render() {

@@ -3,7 +3,7 @@ import type { BoxProps } from '@semcore/flex-box';
 
 /** @deprecated */
 export interface IBadgeProps extends BadgeProps, UnknownProperties {}
-export type BadgeProps = Omit<BoxProps, 'theme'> & {
+export type BadgeProps = BoxProps & {
   /** Fill color
    * @default gray-400
    * */
@@ -13,12 +13,6 @@ export type BadgeProps = Omit<BoxProps, 'theme'> & {
    * @default white
    * */
   color?: 'white' | 'gray20' | string;
-} | {
-  /**
-   * Theme for badge.
-   * @default undefined.
-   */
-  theme?: 'ai';
 };
 
 declare const Badge: Intergalactic.Component<'div', BadgeProps>;

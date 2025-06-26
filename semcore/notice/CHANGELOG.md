@@ -2,12 +2,6 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [16.2.0] - 2025-06-19
-
-### Added
-
-- `ai` theme.
-
 ## [16.1.2] - 2025-06-16
 
 ### Changed

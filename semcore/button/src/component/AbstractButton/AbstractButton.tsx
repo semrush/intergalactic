@@ -21,8 +21,6 @@ type Props = AbstractButtonProps<any, any, any>;
 export abstract class AbstractButton extends Component<Props, {}, {}> {
   static displayName = 'AbstractButton';
 
-  protected isMounted = false;
-
   containerRef = React.createRef<HTMLButtonElement>();
 
   state = {
@@ -47,7 +45,6 @@ export abstract class AbstractButton extends Component<Props, {}, {}> {
   }
 
   componentDidMount() {
-    this.isMounted = true;
     if (process.env.NODE_ENV !== 'production') {
       logger.warn(
         this.containerRef.current && !hasLabels(this.containerRef.current) && !this.asProps.title,
@@ -71,10 +68,6 @@ export abstract class AbstractButton extends Component<Props, {}, {}> {
         });
       }, 0);
     }
-  }
-
-  componentWillUnmount() {
-    this.isMounted = false;
   }
 
   renderButton({ buttonProps, children }: any) {

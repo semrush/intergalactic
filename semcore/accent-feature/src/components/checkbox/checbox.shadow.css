@@ -1,38 +1,38 @@
 SCheckboxAF {
-    input[data-ui-name="CheckboxAF.Value"]:focus-visible + [data-ui-name="Value.CheckMark"]::before {
-        box-shadow: none;
-        content: "";
-        position: absolute;
-        z-index: -1;
-        inset: 0;
-        margin: -3px;
-        padding: 1px;
-        opacity: 1;
-        border-width: 3px;
-        border-radius: var(--intergalactic-badge-rounded, 6px);
+  input[data-ui-name="CheckboxAF.Value"]:focus-visible + [data-ui-name="Value.CheckMark"]::before {
+    box-shadow: none;
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    margin: -3px;
+    padding: 1px;
+    opacity: 1;
+    border-width: 3px;
+    border-radius: var(--intergalactic-badge-rounded, 6px);
 
-        background: linear-gradient(90deg, var(--intergalactic-violet-400, #ab6cfe), var(--intergalactic-blue-400, #008ff8)) padding-box, var(--intergalactic-border-ai, linear-gradient(90deg, #c695ff, #2bb3ff)) border-box;
-        mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
-        mask-composite: exclude;
-    }
+    background: linear-gradient(90deg, var(--intergalactic-violet-400, #ab6cfe), var(--intergalactic-blue-400, #008ff8)) padding-box, var(--intergalactic-border-ai, linear-gradient(90deg, #c695ff, #2bb3ff)) border-box;
+    mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
+    mask-composite: exclude;
+  }
 
-    input[data-ui-name="CheckboxAF.Value"]:checked:focus-visible + [data-ui-name="Value.CheckMark"]::before {
-        mask: none;
-    }
+  input[data-ui-name="CheckboxAF.Value"]:checked:focus-visible + [data-ui-name="Value.CheckMark"]::before {
+    mask: none;
+  }
 
-    [data-ui-name="Value.CheckMark"]::before {
-        border-color: transparent;
-        background: linear-gradient(white, white) padding-box,
-        var(--intergalactic-border-ai, linear-gradient(90deg, #c695ff, #2bb3ff)
-        ) border-box;
-        background-origin: border-box;
-        background-clip: padding-box, border-box;
-    }
+  [data-ui-name="Value.CheckMark"]::before {
+    border-color: transparent;
+    background: linear-gradient(white, white) padding-box,
+      var(--intergalactic-border-ai, linear-gradient(90deg, #c695ff, #2bb3ff)
+    ) border-box;
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+  }
 
-    input[data-ui-name="CheckboxAF.Value"]:checked ~ [data-ui-name="Value.CheckMark"]::before {
-        border-color: transparent;
-        background: var(--intergalactic-border-ai-active, linear-gradient(90deg, #ab6cfe, #008ff8)) padding-box,
-        var(--intergalactic-border-ai, linear-gradient(90deg, #c695ff, #2bb3ff)
-        ) border-box;
-    }
+  input[data-ui-name="CheckboxAF.Value"]:checked ~ [data-ui-name="Value.CheckMark"]::before {
+    border-color: transparent;
+    background: var(--intergalactic-border-ai-active, linear-gradient(90deg, #ab6cfe, #008ff8)) padding-box,
+      var(--intergalactic-border-ai, linear-gradient(90deg, #c695ff, #2bb3ff)
+    ) border-box;
+  }
 }

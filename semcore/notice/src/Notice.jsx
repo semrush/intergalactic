@@ -15,7 +15,7 @@ import style from './style/notice.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 function isCustomTheme(theme) {
-  return !['danger', 'warning', 'success', 'info', 'muted', 'ai'].includes(theme);
+  return !['danger', 'warning', 'success', 'info', 'muted'].includes(theme);
 }
 
 class RootNotice extends Component {

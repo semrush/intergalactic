@@ -522,7 +522,6 @@
     "description": "Inverted version of the primary text.",
     "components": [
       "accent-feature",
-      "badge",
       "button",
       "date-picker",
       "dot",
@@ -867,9 +866,7 @@
     "computedValue": "linear-gradient(90deg, #c695ff, #2bb3ff)",
     "description": "Border for controls with AI accent.",
     "components": [
-      "accent-feature",
-      "checkbox",
-      "radio"
+      "accent-feature"
     ]
   },
   {
@@ -879,9 +876,7 @@
     "computedValue": "linear-gradient(90deg, #ab6cfe, #008ff8)",
     "description": "Border for the active state of controls with AI accent.",
     "components": [
-      "accent-feature",
-      "checkbox",
-      "radio"
+      "accent-feature"
     ]
   },
   {
@@ -3100,6 +3095,7 @@
     "computedValue": "6px",
     "description": "Use for rounding Badge.",
     "components": [
+      "accent-feature",
       "badge"
     ]
   },
