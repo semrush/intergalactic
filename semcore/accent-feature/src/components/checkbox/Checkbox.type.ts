@@ -1,4 +1,3 @@
-import type { Box } from '@semcore/base-components';
 import type {
   CheckboxContext,
   CheckboxProps,
@@ -7,8 +6,10 @@ import type {
 } from '@semcore/checkbox';
 import type { Intergalactic } from '@semcore/core';
 
+import type { AnimatedSparklesProps } from '../../inner-components/sparkle/AnimatedSparkles';
+
 export type CheckboxComponent = Intergalactic.Component<'label', CheckboxProps, CheckboxContext> & {
   Text: Intergalactic.Component<'span', CheckboxTextProps>;
   Value: Intergalactic.Component<'input', CheckboxValueProps>;
-  Addon: Intergalactic.Component<typeof Box, { animatedSparkleCount?: number }>;
+  AnimatedSparkles: Intergalactic.Component<'div', AnimatedSparklesProps>;
 };

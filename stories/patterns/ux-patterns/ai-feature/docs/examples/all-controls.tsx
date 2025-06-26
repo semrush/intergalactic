@@ -81,8 +81,9 @@ const Demo = () => {
               <RadioAF.Value />
               <RadioAF.Text>
                 First option
+                <SummaryAI color='icon-primary-ai' ml={2} style={{ verticalAlign: -2 }} />
               </RadioAF.Text>
-              <RadioAF.Addon animatedSparkleCount={5} />
+              <RadioAF.AnimatedSparkles count={5} />
             </RadioAF>
             <Radio value='2' label='Second option' />
           </Flex>
@@ -98,8 +99,9 @@ const Demo = () => {
                 <CheckboxAF.Value />
                 <CheckboxAF.Text>
                   First option
+                  <SummaryAI color='icon-primary-ai' ml={2} style={{ verticalAlign: -2 }} />
                 </CheckboxAF.Text>
-                <CheckboxAF.Addon animatedSparkleCount={5} />
+                <CheckboxAF.AnimatedSparkles count={5} />
               </CheckboxAF>
             </List.Item>
             <List.Item p={0}>

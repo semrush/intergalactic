@@ -7,6 +7,7 @@ import React from 'react';
 
 import style from './checbox.shadow.css';
 import type { CheckboxComponent } from './Checkbox.type';
+import { AnimatedSparkles } from '../../inner-components/sparkle/AnimatedSparkles';
 import Sparkle from '../../inner-components/sparkle/Sparkle';
 
 class CheckboxAFRoot extends Component {
@@ -26,19 +27,17 @@ class CheckboxAFRoot extends Component {
     };
   }
 
-  getAddonProps() {
+  getAnimatedSparklesProps() {
     const checked = this.inputRef.current?.checked;
 
     return {
-      checked,
+      show: checked,
     };
   }
 
   render() {
     const SCheckboxAF = Root;
     const { styles, Children, children: hasChildren } = this.asProps;
-
-    const hasAddon = findComponent(Children, [CheckboxAF.Addon.displayName]);
 
     return sstyled(styles)(
       <SCheckboxAF render={Checkbox}>
@@ -50,33 +49,13 @@ class CheckboxAFRoot extends Component {
                 <CheckboxAF.Text />
               </>
             )}
-        {!hasAddon && <CheckboxAF.Addon />}
       </SCheckboxAF>,
     );
   }
 }
 
-function Addon(props: IRootComponentProps & { animatedSparkleCount?: number; checked: boolean }) {
-  const { Children, children, animatedSparkleCount, checked } = props;
-
-  if (children !== undefined) {
-    return <Children />;
-  }
-
-  return (
-    <>
-      <SummaryAI color='icon-primary-ai' ml={2} style={{ verticalAlign: -2 }} />
-      {checked && [...new Array(animatedSparkleCount)].map((_, index) => {
-        return (
-          <Sparkle key={index} index={index} num={animatedSparkleCount!} curve={9} />
-        );
-      })}
-    </>
-  );
-}
-
 export const CheckboxAF = createComponent(CheckboxAFRoot, {
   Text: Checkbox.Text,
   Value: Checkbox.Value,
-  Addon,
+  AnimatedSparkles,
 }) as CheckboxComponent;

@@ -7,6 +7,7 @@ import React from 'react';
 
 import style from './radio.shadow.css';
 import type { RadioComponent } from './Radio.type';
+import { AnimatedSparkles } from '../../inner-components/sparkle/AnimatedSparkles';
 import Sparkle from '../../inner-components/sparkle/Sparkle';
 
 class RadioAFRoot extends Component {
@@ -26,19 +27,17 @@ class RadioAFRoot extends Component {
     };
   }
 
-  getAddonProps() {
+  getAnimatedSparklesProps() {
     const checked = this.inputRef.current?.checked;
 
     return {
-      checked,
+      show: checked,
     };
   }
 
   render() {
     const SRadioAF = Root;
     const { styles, Children, children: hasChildren } = this.asProps;
-
-    const hasAddon = findComponent(Children, [RadioAF.Addon.displayName]);
 
     return sstyled(styles)(
       <SRadioAF render={Radio}>
@@ -50,33 +49,13 @@ class RadioAFRoot extends Component {
                 <RadioAF.Text />
               </>
             )}
-        {!hasAddon && <RadioAF.Addon />}
       </SRadioAF>,
     );
   }
 }
 
-function Addon(props: IRootComponentProps & { animatedSparkleCount?: number; checked: boolean }) {
-  const { Children, children, animatedSparkleCount, checked } = props;
-
-  if (children !== undefined) {
-    return <Children />;
-  }
-
-  return (
-    <>
-      <SummaryAI color='icon-primary-ai' ml={2} style={{ verticalAlign: -2 }} />
-      {checked && [...new Array(animatedSparkleCount)].map((_, index) => {
-        return (
-          <Sparkle key={index} index={index} num={animatedSparkleCount!} curve={9} />
-        );
-      })}
-    </>
-  );
-}
-
 export const RadioAF = createComponent(RadioAFRoot, {
   Text: Radio.Text,
   Value: Radio.Value,
-  Addon,
+  AnimatedSparkles,
 }) as RadioComponent;

@@ -5,7 +5,7 @@ import React from 'react';
 
 import style from './tabLine.shadow.css';
 import type { TabLineComponent } from './TabLine.type';
-import { Sparkle } from '../../inner-components/sparkle';
+import { AnimatedSparkles } from '../../inner-components/sparkle/AnimatedSparkles';
 
 class TabLineAFRoot extends Component {
   static displayName = 'TabLineAF';
@@ -53,11 +53,7 @@ function AccentAddon(props) {
   return (
     <Root render={TabLine.Item.Addon}>
       <SummaryAI color='icon-primary-ai' />
-      {clicked && animatedSparkleCount && [...new Array(animatedSparkleCount)].map((_, index) => {
-        return (
-          <Sparkle key={index} index={index} num={animatedSparkleCount} />
-        );
-      })}
+      {animatedSparkleCount && <AnimatedSparkles show={clicked} count={animatedSparkleCount} />}
     </Root>
   );
 }

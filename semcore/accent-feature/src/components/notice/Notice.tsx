@@ -35,7 +35,7 @@ class NoticeAFRoot extends Component<NoticeSmartProps> {
     const { label, title, styles, actions, closable, onClose } = this.asProps;
 
     return sstyled(styles)(
-      <SNoticeAccent render={Notice} __excludeProps={['title']}>
+      <SNoticeAccent render={Notice} __excludeProps={['title']} use:theme={undefined}>
         {isNode(label) && <Notice.Label>{label}</Notice.Label>}
         <Notice.Content>
           {isNode(title) && <Notice.Title>{title}</Notice.Title>}

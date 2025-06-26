@@ -6,6 +6,7 @@ import React from 'react';
 import style from './button.shadow.css';
 import type { ButtonAccentAddonProps, ButtonAccentComponent } from './Button.type';
 import { Sparkle } from '../../inner-components/sparkle';
+import { AnimatedSparkles } from '../../inner-components/sparkle/AnimatedSparkles';
 
 class ButtonAFRoot extends Component {
   static displayName = 'ButtonAF';
@@ -50,11 +51,7 @@ function AccentAddon(props: ButtonAccentAddonProps & { clicked: boolean }) {
   return sstyled(props.styles)(
     <SAddon render={Button.Addon}>
       <SummaryAI color='icon-primary-ai' />
-      {clicked && animatedSparkleCount && [...new Array(animatedSparkleCount)].map((_, index) => {
-        return (
-          <Sparkle key={index} index={index} num={animatedSparkleCount} />
-        );
-      })}
+      {animatedSparkleCount && <AnimatedSparkles show={clicked} count={animatedSparkleCount} />}
     </SAddon>,
   );
 }

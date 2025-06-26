@@ -17,7 +17,6 @@ function SvgSparkle(props: SparkleProps) {
   const angle = (360 / num) * index + rand;
   const sin = Math.sin((Math.PI * angle) / 180);
   const x = curve ? Math.trunc(sin * -1 * curve) : 0;
-  const left = `${x + 14}px`;
   const odd = index % 2;
   const scale = 1 - odd * 0.3;
   const animationDuration = `${0.6 - odd * 0.2}s`;
@@ -25,7 +24,7 @@ function SvgSparkle(props: SparkleProps) {
   return sstyled(styles)(
     <SSparkle
       render='svg'
-      left={left}
+      left={x ? `${x + 14}px` : undefined}
       scale={scale}
       duration={animationDuration}
       angle={angle}

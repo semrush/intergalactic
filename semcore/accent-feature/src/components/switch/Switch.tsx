@@ -4,8 +4,8 @@ import Switch from '@semcore/switch';
 import React from 'react';
 
 import style from './switch.shadow.css';
-import type { AnimatedSparklesProps, SwitchComponent } from './Switch.type';
-import Sparkle from '../../inner-components/sparkle/Sparkle';
+import type { SwitchComponent } from './Switch.type';
+import { AnimatedSparkles } from '../../inner-components/sparkle/AnimatedSparkles';
 
 class SwitchAFRoot extends Component {
   static displayName = 'SwitchAF';
@@ -28,7 +28,8 @@ class SwitchAFRoot extends Component {
     const checked = this.inputRef.current?.checked;
 
     return {
-      checked,
+      show: checked,
+      curve: 9,
     };
   }
 
@@ -44,14 +45,6 @@ function Value(props: IRootComponentProps & { onChange: () => void }) {
   const SToggle = Root;
 
   return sstyled(props.styles)(<SToggle render={Switch.Value} onChange={props.onChange} />);
-}
-
-function AnimatedSparkles(props: AnimatedSparklesProps & { checked: boolean }) {
-  return props.checked && [...new Array(props.count)].map((_, index) => {
-    return (
-      <Sparkle key={index} index={index} num={props.count} curve={9} />
-    );
-  });
 }
 
 export const SwitchAF = createComponent(SwitchAFRoot, {
