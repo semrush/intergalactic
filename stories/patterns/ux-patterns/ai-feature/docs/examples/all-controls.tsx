@@ -1,5 +1,4 @@
-import { ButtonAF, PillsAF, SelectAF, InputAF, SwitchAF, TabLineAF, NoticeAF, BadgeAF } from '@semcore/accent-feature';
-import Badge from '@semcore/badge';
+import { ButtonAF, PillsAF, SelectAF, InputAF, SwitchAF, TabLineAF, NoticeAF, BadgeAF, RadioAF, CheckboxAF } from '@semcore/accent-feature';
 import { Flex } from '@semcore/base-components';
 import Checkbox from '@semcore/checkbox';
 import { DataTable } from '@semcore/data-table';
@@ -78,13 +77,13 @@ const Demo = () => {
             Radio button with AI accent
           </Text>
           <Flex gap={3} direction='column'>
-            <Radio value='1' theme='ai'>
-              <Radio.Value />
-              <Radio.Text>
+            <RadioAF value='1'>
+              <RadioAF.Value />
+              <RadioAF.Text>
                 First option
-                <SummaryAI color='icon-primary-ai' ml={2} style={{ verticalAlign: -2 }} />
-              </Radio.Text>
-            </Radio>
+              </RadioAF.Text>
+              <RadioAF.Addon animatedSparkleCount={5} />
+            </RadioAF>
             <Radio value='2' label='Second option' />
           </Flex>
         </RadioGroup>
@@ -95,13 +94,13 @@ const Demo = () => {
           </Text>
           <List marker='' m={0} p={0}>
             <List.Item p={0} mb={2}>
-              <Checkbox theme='ai'>
-                <Checkbox.Value />
-                <Checkbox.Text>
+              <CheckboxAF>
+                <CheckboxAF.Value />
+                <CheckboxAF.Text>
                   First option
-                  <SummaryAI color='icon-primary-ai' ml={2} style={{ verticalAlign: -2 }} />
-                </Checkbox.Text>
-              </Checkbox>
+                </CheckboxAF.Text>
+                <CheckboxAF.Addon animatedSparkleCount={5} />
+              </CheckboxAF>
             </List.Item>
             <List.Item p={0}>
               <Checkbox label='Second option' />

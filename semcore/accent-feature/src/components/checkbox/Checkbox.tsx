@@ -1,16 +1,16 @@
+import Checkbox from '@semcore/checkbox';
 import type { IRootComponentProps } from '@semcore/core';
 import { Component, createComponent, Root, sstyled } from '@semcore/core';
 import findComponent from '@semcore/core/lib/utils/findComponent';
 import SummaryAI from '@semcore/icon/SummaryAI/m';
-import Radio from '@semcore/radio';
 import React from 'react';
 
-import style from './radio.shadow.css';
-import type { RadioComponent } from './Radio.type';
+import style from './checbox.shadow.css';
+import type { CheckboxComponent } from './Checkbox.type';
 import Sparkle from '../../inner-components/sparkle/Sparkle';
 
-class RadioAFRoot extends Component {
-  static displayName = 'RadioAF';
+class CheckboxAFRoot extends Component {
+  static displayName = 'CheckboxAF';
   static style = style;
 
   inputRef = React.createRef<HTMLInputElement>();
@@ -35,23 +35,23 @@ class RadioAFRoot extends Component {
   }
 
   render() {
-    const SRadioAF = Root;
+    const SCheckboxAF = Root;
     const { styles, Children, children: hasChildren } = this.asProps;
 
-    const hasAddon = findComponent(Children, [RadioAF.Addon.displayName]);
+    const hasAddon = findComponent(Children, [CheckboxAF.Addon.displayName]);
 
     return sstyled(styles)(
-      <SRadioAF render={Radio}>
+      <SCheckboxAF render={Checkbox}>
         {hasChildren
           ? <Children />
           : (
               <>
-                <RadioAF.Value />
-                <RadioAF.Text />
+                <CheckboxAF.Value />
+                <CheckboxAF.Text />
               </>
             )}
-        {!hasAddon && <RadioAF.Addon />}
-      </SRadioAF>,
+        {!hasAddon && <CheckboxAF.Addon />}
+      </SCheckboxAF>,
     );
   }
 }
@@ -75,8 +75,8 @@ function Addon(props: IRootComponentProps & { animatedSparkleCount?: number; che
   );
 }
 
-export const RadioAF = createComponent(RadioAFRoot, {
-  Text: Radio.Text,
-  Value: Radio.Value,
+export const CheckboxAF = createComponent(CheckboxAFRoot, {
+  Text: Checkbox.Text,
+  Value: Checkbox.Value,
   Addon,
-}) as RadioComponent;
+}) as CheckboxComponent;

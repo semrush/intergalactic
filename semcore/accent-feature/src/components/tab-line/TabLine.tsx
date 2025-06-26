@@ -1,4 +1,3 @@
-import type { IRootComponentProps } from '@semcore/core';
 import { Component, createComponent, Root, sstyled } from '@semcore/core';
 import SummaryAI from '@semcore/icon/SummaryAI/m';
 import TabLine from '@semcore/tab-line';
@@ -10,15 +9,11 @@ import { Sparkle } from '../../inner-components/sparkle';
 
 class TabLineAFRoot extends Component {
   static displayName = 'TabLineAF';
+  static style = style;
 
   render() {
     return (<Root render={TabLine} />);
   }
-}
-
-function AccentItem(props: IRootComponentProps) {
-  const SAccentItem = Root;
-  return sstyled(props.styles)(<SAccentItem render={TabLine.Item} />);
 }
 
 class AccentItemRoot extends Component {

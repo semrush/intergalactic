@@ -7,18 +7,15 @@ SAccentItem {
   &:not(:focus-visible)::before {
     background: var(--intergalactic-border-ai, linear-gradient(90deg, #c695ff, #2bb3ff));
   }
-  &::after {
-    background: var(--intergalactic-border-ai-active, linear-gradient(90deg, #ab6cfe, #008ff8));
-  }
   &:hover:not(:focus-visible)::before {
     opacity: 1;
   }
   &[selected]::after {
     opacity: 1;
+    background: var(--intergalactic-border-ai-active, linear-gradient(90deg, #ab6cfe, #008ff8));
   }
 
   &:focus-visible::before {
-    padding-bottom: 6px;
     height: auto;
   }
 }

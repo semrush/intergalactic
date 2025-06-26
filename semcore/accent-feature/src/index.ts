@@ -6,3 +6,5 @@ export * from './components/switch/Switch';
 export * from './components/tab-line/TabLine';
 export * from './components/notice/Notice';
 export * from './components/badge/Badge';
+export * from './components/radio/Radio';
+export * from './components/checkbox/Checkbox';

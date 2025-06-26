@@ -6,7 +6,6 @@ SAccentPill {
   ) border-box;
   background-origin: border-box;
   background-clip: padding-box, border-box;
-  z-index: 1;
 
   &:hover {
     background: var(--intergalactic-bg-primary-ai-hover-active, linear-gradient(90deg, #f9f2ff, #e9f7ff)) padding-box,
@@ -21,3 +20,29 @@ SAccentPill {
     background-clip: padding-box, border-box;
   }
 }
+
+SAccentPill:focus-visible {
+    outline: none;
+    position: relative;
+    /*isolation: isolate;*/
+
+    &::before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        inset: 0;
+        margin: -4px;
+        padding: 4px;
+        border-radius: inherit;
+        opacity: 0.5;
+
+        background-image: linear-gradient(
+                90deg,
+                var(--intergalactic-violet-400, #ab6cfe),
+                var(--intergalactic-blue-400, #008ff8)
+        );
+        mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
+        mask-composite: exclude;
+    }
+}
+

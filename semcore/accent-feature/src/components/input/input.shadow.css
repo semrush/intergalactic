@@ -17,8 +17,8 @@ SInput[state='normal'] {
       position: absolute;
       z-index: -1;
       inset: 0;
-      margin: -3px;
-      padding: 3px;
+      margin: -4px;
+      padding: 4px;
       border-radius: inherit;
       opacity: 0.5;
 

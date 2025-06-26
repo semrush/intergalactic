@@ -181,44 +181,6 @@ SControl[indeterminate]~SCheckbox[theme][state='normal']:before {
   border-color: var(--theme);
 }
 
-SControl:focus-visible + SCheckbox[state='normal'][theme='ai']::before {
-  box-shadow: none;
-  content: "";
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  margin: -3px;
-  padding: 3px;
-  opacity: 0.5;
-  border-radius: 8px;
-
-  background-image: var(--intergalactic-border-ai-active, linear-gradient(90deg, #ab6cfe, #008ff8));
-  mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
-  mask-composite: exclude;
-}
-SControl[checked]:focus-visible + SCheckbox[state='normal'][theme='ai']::before {
-  mask: none;
-  opacity: 1;
-  border-width: 3px;
-}
-
-SCheckbox[state='normal'][theme='ai']::before {
-  border-color: transparent;
-  background:
-    linear-gradient(white, white) padding-box,
-    var(--intergalactic-border-ai, linear-gradient(90deg, #c695ff, #2bb3ff)
-  ) border-box;
-  background-origin: border-box;
-  background-clip: padding-box, border-box;
-}
-SControl[checked]~SCheckbox[state='normal'][theme='ai']::before {
-  border-color: transparent;
-  background:
-    var(--intergalactic-border-ai-active, linear-gradient(90deg, #ab6cfe, #008ff8)) padding-box,
-    var(--intergalactic-border-ai, linear-gradient(90deg, #c695ff, #2bb3ff)
-  ) border-box;
-}
-
 SInvalidPattern {
   height: calc(100% - 2px);
   margin: 1px 0 1px 1px;

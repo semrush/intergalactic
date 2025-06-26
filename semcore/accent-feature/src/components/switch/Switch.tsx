@@ -17,7 +17,9 @@ class SwitchAFRoot extends Component {
     return {
       ref: this.inputRef,
       onChange: () => {
-        this.forceUpdate();
+        setTimeout(() => {
+          this.forceUpdate();
+        });
       },
     };
   }
