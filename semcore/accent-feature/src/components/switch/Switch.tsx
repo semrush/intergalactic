@@ -30,6 +30,7 @@ class SwitchAFRoot extends Component {
     return {
       show: checked,
       curve: 9,
+      left: '14px',
     };
   }
 
