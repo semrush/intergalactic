@@ -320,20 +320,21 @@ test.describe('Color-picker', () => {
     await test.step('Verify hover on No background color ', async () => {
       const items = colorPoppers.first().getByRole('option');
       await items.first().hover();
-      await new Promise((resolve) => setTimeout(resolve, 300));
+      // await new Promise((resolve) => setTimeout(resolve, 300));
+      await page.locator('[data-ui-name="Hint.Popper"]').waitFor();
       await expect(page).toHaveScreenshot();
     });
 
     await test.step('Verify hover on text color ', async () => {
       const items = colorPoppers.nth(1).getByRole('option');
       await items.nth(2).hover();
-      await new Promise((resolve) => setTimeout(resolve, 500));
+      await page.locator('[data-ui-name="Hint.Popper"]').waitFor();
       await expect(page).toHaveScreenshot();
     });
 
     await test.step('Verify hover on Add color button ', async () => {
       await locators.addButton.first().hover();
-      await new Promise((resolve) => setTimeout(resolve, 500));
+      await page.locator('[data-ui-name="Hint.Popper"]').waitFor();
       await expect(page).toHaveScreenshot();
     });
   });
