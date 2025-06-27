@@ -6,7 +6,7 @@ import amplitudeHttp from './amplitude-client';
 const clickedPlaygrounds = new Set<string>();
 
 export const initAmplitude = () => {
-  const apiKey = '1e1d36fa96573d0839c6c3ccaffb7f62';
+  const apiKey = import.meta.env.VITE_AMPLITUDE_API_KEY;
 
   amplitudeHttp.init(apiKey);
 };
