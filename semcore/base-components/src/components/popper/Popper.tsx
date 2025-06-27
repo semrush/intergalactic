@@ -658,7 +658,6 @@ function PopperPopper(props: PopperPopperProps & IRootComponentProps & InnerPopp
   }, []);
 
   const [portalMounted, setPortalMounted] = React.useState(disablePortal);
-  // console.log('popper visible', visible);
   useFocusLock(
     ref,
     autoFocus ?? false,
