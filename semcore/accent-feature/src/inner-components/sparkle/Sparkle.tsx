@@ -8,6 +8,8 @@ type SparkleProps = {
   index: number;
   num: number;
   curve?: number;
+  top?: string;
+  left?: string;
 };
 
 function SvgSparkle(props: SparkleProps) {

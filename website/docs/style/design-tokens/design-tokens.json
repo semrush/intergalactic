@@ -2324,7 +2324,9 @@
     "rawValue": "linear-gradient(90deg, rgba({violet.400}, 0.5), rgba({blue.400}, 0.5))",
     "computedValue": "linear-gradient(90deg, rgba(171, 108, 254, 0.5), rgba(0, 143, 248, 0.5))",
     "description": "Color for keyboard focus outline styles for elements with AI accent.",
-    "components": []
+    "components": [
+      "accent-feature"
+    ]
   },
   {
     "name": "--intergalactic-base",
@@ -3082,6 +3084,7 @@
     "computedValue": "4px",
     "description": "Use for rounding addons and small controls like Checkbox.",
     "components": [
+      "accent-feature",
       "button",
       "checkbox",
       "dropdown",
@@ -3095,7 +3098,6 @@
     "computedValue": "6px",
     "description": "Use for rounding Badge.",
     "components": [
-      "accent-feature",
       "badge"
     ]
   },
@@ -3147,6 +3149,7 @@
     "computedValue": "6px",
     "description": "Use for rounding all form controls: Button, FilterTrigger, Input, Textarea, Pills, etc.",
     "components": [
+      "accent-feature",
       "base-components",
       "base-trigger",
       "bulk-textarea",

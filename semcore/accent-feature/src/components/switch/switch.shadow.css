@@ -14,13 +14,8 @@ SToggle:has(SInput:focus-visible) {
     margin: -4px;
     padding: 4px;
     border-radius: inherit;
-    opacity: 0.5;
 
-    background-image: linear-gradient(
-      90deg,
-      var(--intergalactic-violet-400, #ab6cfe),
-      var(--intergalactic-blue-400, #008ff8)
-    );
+    background-image: var(--intergalactic-keyboard-focus-ai-outline, linear-gradient(90deg, rgba(171, 108, 254, 0.5), rgba(0, 143, 248, 0.5)));
     mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
     mask-composite: exclude;
   }

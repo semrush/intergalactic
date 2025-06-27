@@ -9,15 +9,16 @@ SCheckboxAF {
     padding: 1px;
     opacity: 1;
     border-width: 3px;
-    border-radius: var(--intergalactic-badge-rounded, 6px);
+    border-radius: calc(var(--intergalactic-addon-rounded, 4px) + 3px);
 
-    background: linear-gradient(90deg, var(--intergalactic-violet-400, #ab6cfe), var(--intergalactic-blue-400, #008ff8)) padding-box, var(--intergalactic-border-ai, linear-gradient(90deg, #c695ff, #2bb3ff)) border-box;
+    background: var(--intergalactic-border-ai-active, linear-gradient(90deg, #ab6cfe, #008ff8)) padding-box, var(--intergalactic-keyboard-focus-ai-outline, linear-gradient(90deg, rgba(171, 108, 254, 0.5), rgba(0, 143, 248, 0.5))) border-box;
     mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
     mask-composite: exclude;
   }
 
   input[data-ui-name="CheckboxAF.Value"]:checked:focus-visible + [data-ui-name="Value.CheckMark"]::before {
     mask: none;
+    background: var(--intergalactic-border-ai-active, linear-gradient(90deg, #ab6cfe, #008ff8)) padding-box, var(--intergalactic-keyboard-focus-ai-outline, linear-gradient(90deg, rgba(171, 108, 254, 0.5), rgba(0, 143, 248, 0.5))) border-box;
   }
 
   [data-ui-name="Value.CheckMark"]::before {
@@ -32,7 +33,6 @@ SCheckboxAF {
   input[data-ui-name="CheckboxAF.Value"]:checked ~ [data-ui-name="Value.CheckMark"]::before {
     border-color: transparent;
     background: var(--intergalactic-border-ai-active, linear-gradient(90deg, #ab6cfe, #008ff8)) padding-box,
-      var(--intergalactic-border-ai, linear-gradient(90deg, #c695ff, #2bb3ff)
-    ) border-box;
+      var(--intergalactic-border-ai-active, linear-gradient(90deg, #ab6cfe, #008ff8)) border-box;
   }
 }

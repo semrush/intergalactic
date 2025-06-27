@@ -32,6 +32,8 @@ class CheckboxAFRoot extends Component {
 
     return {
       show: checked,
+      top: '5px',
+      left: '3px',
     };
   }
 

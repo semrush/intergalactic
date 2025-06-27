@@ -16,22 +16,27 @@ class RadioAFRoot extends Component {
 
   inputRef = React.createRef<HTMLInputElement>();
 
+  state = {
+    checked: false,
+  };
+
   getValueProps() {
     return {
       ref: this.inputRef,
       onChange: () => {
+        this.setState({ checked: false });
         setTimeout(() => {
-          this.forceUpdate();
+          this.setState({ checked: this.inputRef.current?.checked });
         });
       },
     };
   }
 
   getAnimatedSparklesProps() {
-    const checked = this.inputRef.current?.checked;
-
     return {
-      show: checked,
+      show: this.state.checked,
+      top: '5px',
+      left: '3px',
     };
   }
 
