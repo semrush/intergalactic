@@ -218,7 +218,7 @@ const useFocusLockHook = (
 
     if (autoFocus) {
       setTimeout(() => {
-        if (autoFocus === 'enforced' && focusableChildren.length === 0) {
+        if (autoFocus === 'enforced' && focusableChildren.length === 0 && focusMaster) {
           trapRef.current?.focus();
           return;
         }
