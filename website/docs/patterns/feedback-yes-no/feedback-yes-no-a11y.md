@@ -16,7 +16,7 @@ FeedbackYesNo form pattern consists of several components that have their own ac
 - [Notice](/components/notice/notice-a11y)
 - [Button](/components/button/button-a11y)
 - [Dropdown](/components/dropdown/dropdown-a11y)
-- [Feedback form](/components/feedback/feedback-form-a11y)
+- [Feedback form](/components/feedback-form/feedback-form-a11y)
 - [Typography](/style/typography/typography-a11y)
 
 ## Considerations for developers

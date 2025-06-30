@@ -54,13 +54,13 @@ Table: Breakpoints tokens
 | `--screen-small`       | 768px  | Phones and tablets.                      |
 | `--screen-medium`      | 1200px | Big tablets and desktop devices.         |
 
-Refer to [Breakpoints](/layout/breakpoints/breakpoints) and [Grid and page layout](/layout/grid-system/grid-system) for more information.
+Refer to [Breakpoints](/layout/breakpoints/breakpoints) and [Grid and page layout](/layout/grid-system/grid-system-layout) for more information.
 
 ## Grid system
 
 Our product interfaces use a 12-column grid with a 24px gutter. Some products use a flexible grid, while others use a fixed grid, depending on their needs. The standard design frame width for product pages is 1440px.
 
-Check out [Grid and page layout](/layout/grid-system/grid-system) for more details and code examples.
+Check out [Grid and page layout](/layout/grid-system/grid-system-layout) for more details and code examples.
 
 ## Charts
 

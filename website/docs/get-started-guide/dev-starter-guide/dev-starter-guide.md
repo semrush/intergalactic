@@ -1,6 +1,6 @@
 ---
 title: For developers
-tabs: Get started('dev-starter-guide'), For production('production-tips')
+tabs: Get started('dev-starter-guide'), Production optimization('production-tips')
 ---
 
 ## Introduction
@@ -23,7 +23,7 @@ npm install @semcore/ui
 
 :::
 
-After the installation, you can access each component at `intergalactic/{component_name}`.
+After the installation, you can access each component at `@semcore/{component_name}`.
 
 ## Key features
 
@@ -109,7 +109,7 @@ All our components return a DOM node in the `ref` property. This decision was ma
 
 ### Base component
 
-Underlying all our components is ["Box"](/layout/box-system/box-system), which serves as a foundational building block. By importing Box from `intergalactic/flex-box`, you can leverage its capabilities, including:
+Underlying all our components is [Box](/layout/box-system/box-system-api#box), which serves as a foundational building block. By importing Box from `@semcore/flex-box`, you can leverage its capabilities, including:
 
 ```jsx
 import { Box } from '@semcore/ui/flex-box';
@@ -150,7 +150,7 @@ import Button from '@semcore/ui/button';
 </Button>;
 ```
 
-Additionally, consider exploring the ["Flex"](/layout/box-system/box-system) component, which is a wrapper for `Box` and allows you to apply properties for **CSS Flexbox**:
+Additionally, consider exploring the [Flex](/layout/box-system/box-system-api#flex) component, which is a wrapper for `Box` and allows you to apply properties for **CSS Flexbox**:
 
 
 ```jsx
