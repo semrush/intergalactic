@@ -138,7 +138,7 @@ test.describe('Options filtering', () => {
     await test.step('Verify first option selected when expanded', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Space');
-      await new Promise((resolve) => setTimeout(resolve, 500));
+      await options.nth(1).waitFor({ state: 'visible' });
       await expect(selectTrigger).toBeFocused();
       await expect(options.first()).toHaveClass(/highlighted/);
     });
@@ -151,9 +151,9 @@ test.describe('Options filtering', () => {
 
     await test.step('Verify items sorted and divider whoen on 2nd expand', async () => {
       await page.keyboard.press('Escape');
-      await new Promise((resolve) => setTimeout(resolve, 300));
+      await options.nth(1).waitFor({ state: 'hidden' });
       await page.keyboard.press('Space');
-      await new Promise((resolve) => setTimeout(resolve, 500));
+      await options.nth(1).waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
     });
   });
