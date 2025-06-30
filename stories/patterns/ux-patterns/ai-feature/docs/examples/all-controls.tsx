@@ -55,17 +55,13 @@ const Demo = () => {
           <InputAF.Addon><BadgeAF>AI powered</BadgeAF></InputAF.Addon>
         </InputAF>
 
-        <SwitchAF size='l' theme='ai'>
+        <SwitchAF>
           <SwitchAF.Value ml={0} />
           <SwitchAF.AnimatedSparkles count={5} />
           <SwitchAF.Addon>Receive updates</SwitchAF.Addon>
         </SwitchAF>
 
       </Flex>
-
-      <NoticeAF closable aria-label='Notice with AI theme'>
-        How would you rate this update?
-      </NoticeAF>
 
       <Flex gap={12}>
 
@@ -81,7 +77,7 @@ const Demo = () => {
               <RadioAF.Value />
               <RadioAF.Text>
                 First option
-                <SummaryAI color='icon-primary-ai' ml={2} style={{ verticalAlign: -2 }} />
+                <SummaryAI color='icon-primary-ai' ml={2} style={{ verticalAlign: -3 }} />
               </RadioAF.Text>
               <RadioAF.AnimatedSparkles count={5} />
             </RadioAF>
@@ -99,13 +95,113 @@ const Demo = () => {
                 <CheckboxAF.Value />
                 <CheckboxAF.Text>
                   First option
-                  <SummaryAI color='icon-primary-ai' ml={2} style={{ verticalAlign: -2 }} />
+                  <SummaryAI color='icon-primary-ai' ml={2} style={{ verticalAlign: -3 }} />
                 </CheckboxAF.Text>
                 <CheckboxAF.AnimatedSparkles count={5} />
               </CheckboxAF>
             </List.Item>
             <List.Item p={0}>
               <Checkbox label='Second option' />
+            </List.Item>
+          </List>
+        </fieldset>
+
+      </Flex>
+
+      <TabLineAF size='m' aria-label='Tab with AI accent' defaultValue={1}>
+        <TabLineAF.Item value={1}>First option</TabLineAF.Item>
+        <TabLineAF.AccentItem value={2}>
+          <TabLineAF.AccentItem.Addon animatedSparkleCount={5} />
+          <TabLineAF.AccentItem.Text>Second option</TabLineAF.AccentItem.Text>
+        </TabLineAF.AccentItem>
+        <TabLineAF.Item value={3}>Third option</TabLineAF.Item>
+      </TabLineAF>
+
+      <Flex flexWrap gap={4} mt={4}>
+
+        <ButtonAF use='primary' addonLeft={SummaryAI} size='l'>
+          Primary
+        </ButtonAF>
+
+        <ButtonAF size='l'>
+          <ButtonAF.AccentAddon animatedSparkleCount={5} />
+          <ButtonAF.Text>Secondary</ButtonAF.Text>
+        </ButtonAF>
+
+        <PillsAF defaultValue={1} aria-label='Pills with AI accent' size='l'>
+          <PillsAF.Item value={1}>One</PillsAF.Item>
+          <PillsAF.AccentItem value={2}>
+            <PillsAF.AccentItem.Addon animatedSparkleCount={5} />
+            <PillsAF.AccentItem.Text>Two</PillsAF.AccentItem.Text>
+          </PillsAF.AccentItem>
+        </PillsAF>
+
+        <SelectAF onChange={setSelectValue} size='l'>
+          <SelectAF.Trigger aria-label='Select with AI theme' wMax={180} wMin={180}>
+            <SelectAF.Trigger.Addon />
+            <SelectAF.Trigger.Text>{selectValue}</SelectAF.Trigger.Text>
+          </SelectAF.Trigger>
+          <SelectAF.Menu>
+            <SelectAF.Option value='One'>One</SelectAF.Option>
+            <SelectAF.Option value='Two'>Two</SelectAF.Option>
+            <SelectAF.Option value='Three'>Three</SelectAF.Option>
+          </SelectAF.Menu>
+        </SelectAF>
+
+        <InputAF w={250} size='l'>
+          <InputAF.AccentAddon />
+          <InputAF.Value placeholder='Your domain' aria-label='Input with AI theme' />
+          <InputAF.Addon><BadgeAF>AI powered</BadgeAF></InputAF.Addon>
+        </InputAF>
+
+        <SwitchAF size='l'>
+          <SwitchAF.Value ml={0} />
+          <SwitchAF.AnimatedSparkles count={5} />
+          <SwitchAF.Addon>Receive updates</SwitchAF.Addon>
+        </SwitchAF>
+
+      </Flex>
+
+      <Flex gap={16}>
+
+        <RadioGroup
+          name='radio-l'
+          aria-labelledby='radioGroup-l'
+          size='l'
+        >
+          <Text id='radioGroup-l' size={300} mb={2}>
+            Radio button with AI accent
+          </Text>
+          <Flex gap={3} direction='column'>
+            <RadioAF value='1'>
+              <RadioAF.Value />
+              <RadioAF.Text>
+                First option
+                <SummaryAI color='icon-primary-ai' ml={2} style={{ verticalAlign: -2 }} />
+              </RadioAF.Text>
+              <RadioAF.AnimatedSparkles count={5} />
+            </RadioAF>
+            <Radio value='2' label='Second option' />
+          </Flex>
+        </RadioGroup>
+
+        <fieldset style={{ border: 'none' }}>
+          <Text tag='legend' size={300} mb={3}>
+            Checkbox with AI accent
+          </Text>
+          <List marker='' m={0} p={0}>
+            <List.Item p={0} mb={2}>
+              <CheckboxAF size='l'>
+                <CheckboxAF.Value />
+                <CheckboxAF.Text>
+                  First option
+                  <SummaryAI color='icon-primary-ai' ml={2} style={{ verticalAlign: -2 }} />
+                </CheckboxAF.Text>
+                <CheckboxAF.AnimatedSparkles count={5} />
+              </CheckboxAF>
+            </List.Item>
+            <List.Item p={0}>
+              <Checkbox size='l' label='Second option' />
             </List.Item>
           </List>
         </fieldset>
@@ -120,6 +216,10 @@ const Demo = () => {
         </TabLineAF.AccentItem>
         <TabLineAF.Item value={3}>Third option</TabLineAF.Item>
       </TabLineAF>
+
+      <NoticeAF closable aria-label='Notice with AI theme'>
+        How would you rate this update?
+      </NoticeAF>
 
       <DataTable
         data={data}
