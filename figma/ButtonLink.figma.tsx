@@ -29,8 +29,9 @@ figma.connect(
     },
     example: ({ use, addonLeft, addonRight, active, disabled, label }) => (
       <ButtonLink
-        use={use}
         size='fontSize'
+        use={use}
+        color='color-token'
         addonLeft={addonLeft}
         addonRight={addonRight}
         active={active}
