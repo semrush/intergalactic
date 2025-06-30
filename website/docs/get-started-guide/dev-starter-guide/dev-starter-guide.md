@@ -1,6 +1,6 @@
 ---
 title: For developers
-tabs: Get started('dev-starter-guide'), For production('production-tips')
+tabs: Get started('dev-starter-guide'), Production optimization('production-tips')
 ---
 
 ## Introduction
@@ -109,7 +109,7 @@ All our components return a DOM node in the `ref` property. This decision was ma
 
 ### Base component
 
-Underlying all our components is ["Box"](/layout/box-system/box-system), which serves as a foundational building block.
+Underlying all our components is [Box](/layout/box-system/box-system-api#box), which serves as a foundational building block.
 
 ```jsx
 import { Box } from '@semcore/base-components';
@@ -150,7 +150,7 @@ import Button from '@semcore/ui/button';
 </Button>;
 ```
 
-Additionally, consider exploring the ["Flex"](/layout/box-system/box-system) component, which is a wrapper for `Box` and allows you to apply properties for **CSS Flexbox**:
+Additionally, consider exploring the [Flex](/layout/box-system/box-system-api#flex) component, which is a wrapper for `Box` and allows you to apply properties for **CSS Flexbox**:
 
 
 ```jsx

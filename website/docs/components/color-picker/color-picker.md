@@ -61,7 +61,7 @@ The trigger for a ColorPicker is a Select with a circle as the leading addon, an
 
 The list of colors consists of color preview swatches that display all available color values.
 
-Margins between the swatches must be [multiples of 4](/layout/box-system/box-system#spacing-system). The default margin is 4px:
+Margins between the swatches must be [multiples of 4](/layout/box-system/box-system-spacing). The default margin is 4px:
 
 ![](static/colorpicker-margins.png)
 

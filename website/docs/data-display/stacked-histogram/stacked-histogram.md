@@ -2,7 +2,7 @@
 title: Stacked histogram chart
 fileSource: d3-chart
 disabled: true
-tabs: Design('stacked-histogram'), Changelog('d3-chart-changelog')
+tabs: Design('stacked-histogram'), Changelog('stacked-histogram-changelog')
 ---
 
 ::: info
