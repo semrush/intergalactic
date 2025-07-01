@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.6] - 2025-06-30
+
+### Fixed
+
+- a11y error - "SVG element missing accessible name".
+
+## [16.0.5] - 2025-06-23
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [16.0.2 ~> 16.0.3], `@semcore/checkbox` [16.0.2 ~> 16.0.3], `@semcore/base-components` [16.0.2 ~> 16.1.0]).
+
 ## [16.0.4] - 2025-06-09
 
 ### Fixed

@@ -160,6 +160,7 @@ test.describe('Fullscreen modal', () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
       const modal = page.locator('[data-ui-name="FullscreenModal"]');
+      await modal.waitFor();
       await expect(modal).toBeVisible();
 
       const closeButton = page.locator('[data-ui-name="FullscreenModal.Close"]');
@@ -173,7 +174,7 @@ test.describe('Fullscreen modal', () => {
       await expect(trigger).toBeFocused();
 
       await page.keyboard.press('Enter');
-      await page.waitForTimeout(100);
+      await modal.waitFor();
       await expect(modal).toBeVisible();
 
       await page.keyboard.press('Escape');
@@ -182,7 +183,7 @@ test.describe('Fullscreen modal', () => {
       await expect(trigger).toBeFocused();
 
       await page.keyboard.press('Enter');
-      await page.waitForTimeout(150);
+      await modal.waitFor();
       await page.keyboard.press('Tab');
       const backButton = page.locator('[data-ui-name="FullscreenModal.Back"]');
       await backButton.hover();
@@ -203,6 +204,7 @@ test.describe('Fullscreen modal', () => {
       const trigger = page.locator('[data-ui-name="Button"]');
       await trigger.click();
       const modal = page.locator('[data-ui-name="FullscreenModal"]');
+      await modal.waitFor();
       await expect(modal).toBeVisible();
 
       const closeButton = page.locator('[data-ui-name="FullscreenModal.Close"]');
@@ -210,6 +212,7 @@ test.describe('Fullscreen modal', () => {
       await expect(modal).not.toBeVisible();
 
       await trigger.click();
+      await modal.waitFor();
       await expect(modal).toBeVisible();
 
       const backButton = page.locator('[data-ui-name="FullscreenModal.Back"]');
@@ -217,6 +220,7 @@ test.describe('Fullscreen modal', () => {
       await expect(modal).not.toBeVisible();
 
       await trigger.click();
+      await modal.waitFor();
       await page.keyboard.press('Escape');
       await expect(modal).not.toBeVisible();
       await expect(trigger).toBeFocused();
@@ -231,8 +235,8 @@ test.describe('Fullscreen modal', () => {
       if (browserName === 'webkit') return;
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
-      await page.waitForTimeout(150);
       const modal = page.locator('[data-ui-name="FullscreenModal"]');
+      await modal.waitFor();
       await expect(modal).toBeVisible();
 
       const closeButton = page.locator('[data-ui-name="FullscreenModal.Close"]');
@@ -255,6 +259,25 @@ test.describe('Fullscreen modal', () => {
       await page.keyboard.press('Tab');
       await expect(closeButton).toBeFocused();
     });
+
+    test('Verify modal can be closed by ESC when no closable button', async ({ page }) => {
+      const standPath = 'stories/components/fullscreen-modal/tests/examples/modal-props.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en', { closable: false });
+
+      await page.setContent(htmlContent);
+      const modal = page.locator('[data-ui-name="FullscreenModal"]');
+      const trigger = page.locator('[data-ui-name="Button"]');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await modal.waitFor();
+      await page.keyboard.press('Escape');
+      await expect(modal).not.toBeVisible();
+
+      await trigger.click();
+      await modal.waitFor();
+      await page.keyboard.press('Escape');
+      await expect(modal).not.toBeVisible();
+    });
   });
 
   test.describe('Header, body and footer variations', () => {
@@ -266,8 +289,8 @@ test.describe('Fullscreen modal', () => {
       await page.setContent(htmlContent);
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
-      await page.waitForTimeout(250);
       const modal = page.locator('[data-ui-name="FullscreenModal"]');
+      await modal.waitFor();
       await expect(modal).toBeVisible();
 
       await page.keyboard.press('Tab');
@@ -289,8 +312,8 @@ test.describe('Fullscreen modal', () => {
       await page.setContent(htmlContent);
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
-      await page.waitForTimeout(250);
       const modal = page.locator('[data-ui-name="FullscreenModal"]');
+      await modal.waitFor();
       await expect(modal).toBeVisible();
 
       await page.keyboard.press('Tab');
@@ -312,8 +335,8 @@ test.describe('Fullscreen modal', () => {
       await page.setContent(htmlContent);
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
-      await page.waitForTimeout(250);
       const modal = page.locator('[data-ui-name="FullscreenModal"]');
+      await modal.waitFor();
       await expect(modal).toBeVisible();
       await page.locator('[data-ui-name="FullscreenModal.Title"]').hover();
       await expect(page.locator('[data-ui-name="Tooltip"]')).toHaveAttribute(
@@ -335,8 +358,8 @@ test.describe('Fullscreen modal', () => {
       await page.setContent(htmlContent);
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
-      await page.waitForTimeout(250);
       const modal = page.locator('[data-ui-name="FullscreenModal"]');
+      await modal.waitFor();
       await expect(modal).toBeVisible();
 
       const closeButton = page.locator('[data-ui-name="FullscreenModal.Close"]');
@@ -356,11 +379,49 @@ test.describe('Fullscreen modal', () => {
       await page.setContent(htmlContent);
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
-      await page.waitForTimeout(250);
       const modal = page.locator('[data-ui-name="FullscreenModal"]');
+      await modal.waitFor();
       await expect(modal).toBeVisible();
       const backButton = page.locator('[data-ui-name="FullscreenModal.Back"]');
       await expect(backButton).toBeFocused();
+    });
+
+    test('Verify there is only one closable element when closable = true and no Close button', async ({ page }) => {
+      const standPath = 'stories/components/fullscreen-modal/tests/examples/modal-props.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+      await page.setContent(htmlContent);
+
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+
+      await page.locator('[data-ui-name="FullscreenModal"]').waitFor();
+
+      const modalClose = page.locator('[data-ui-name="Modal.Close"]');
+      const fullScreenModalClose = page.locator('[data-ui-name="FullscreenModal.Close"]');
+
+      expect(await modalClose.count()).toBe(0);
+      expect(await fullScreenModalClose.count()).toBe(1);
+
+      expect(await fullScreenModalClose.first()).toBeVisible();
+    });
+
+    test('Verify no closable elements when closable = false and no Close button', async ({ page }) => {
+      const standPath = 'stories/components/fullscreen-modal/tests/examples/modal-props.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en', { closable: false });
+
+      await page.setContent(htmlContent);
+
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+
+      await page.locator('[data-ui-name="FullscreenModal"]').waitFor();
+
+      const modalClose = page.locator('[data-ui-name="Modal.Close"]');
+      const fullScreenModalClose = page.locator('[data-ui-name="FullscreenModal.Close"]');
+
+      expect(await modalClose.count()).toBe(0);
+      expect(await fullScreenModalClose.count()).toBe(0);
     });
   });
 });

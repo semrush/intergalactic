@@ -6,7 +6,7 @@ import amplitudeHttp from './amplitude-client';
 const clickedPlaygrounds = new Set<string>();
 
 export const initAmplitude = () => {
-  const apiKey = '1e1d36fa96573d0839c6c3ccaffb7f62';
+  const apiKey = import.meta.env.VITE_AMPLITUDE_API_KEY;
 
   amplitudeHttp.init(apiKey);
 };
@@ -46,45 +46,46 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
   if (!node) return;
   if (node.innerText) {
     if (node.innerText.toLowerCase() === 'get started')
-      return logEvent('button_get-started:click', { pathname });
+      return logEvent('button_get-started:click');
     if (node.innerText.toLowerCase() === 'explore github')
-      return logEvent('button_github:click', { pathname });
+      return logEvent('button_github:click');
   }
   if (findParent(node, (node) => node.classList.contains('VPHomeFeatures'))) {
     const feature = findParent(
       node,
-      (node) => node.tagName === 'A' && node.classList.contains('VPFeature'),
+      (node) => node.tagName === 'ARTICLE' && node.classList.contains('VPFeature'),
     );
+    const link = feature?.children.item(0);
 
     if (
-      feature?.getAttribute('href')?.includes('/components/components-showcase/components-showcase')
+      link?.getAttribute('href')?.includes('/components/components-showcase/components-showcase')
     ) {
-      return logEvent('card_components:click', { pathname });
+      return logEvent('card_components:click');
     }
-    if (feature?.getAttribute('href')?.includes('/data-display/chart-showcase/chart-showcase')) {
-      return logEvent('card_charts:click', { pathname });
+    if (link?.getAttribute('href')?.includes('/data-display/chart-showcase/chart-showcase')) {
+      return logEvent('card_charts:click');
     }
-    if (feature?.getAttribute('href')?.includes('/table-group/table-showcase/table-showcase')) {
-      return logEvent('card_tables:click', { pathname });
+    if (link?.getAttribute('href')?.includes('/table-group/table-showcase/table-showcase')) {
+      return logEvent('card_tables:click');
     }
-    if (feature?.getAttribute('href')?.includes('/style/icon/icon')) {
-      return logEvent('card_icons:click', { pathname });
+    if (link?.getAttribute('href')?.includes('/style/icon/icon')) {
+      return logEvent('card_icons:click');
     }
-    if (feature?.getAttribute('href')?.includes('/filter-group/filter-rules/filter-rules')) {
-      return logEvent('card_filters:click', { pathname });
+    if (link?.getAttribute('href')?.includes('/filter-group/filter-rules/filter-rules')) {
+      return logEvent('card_filters:click');
     }
-    if (feature?.getAttribute('href')?.includes('/patterns/modal-content/modal-content')) {
-      return logEvent('card_patterns:click', { pathname });
+    if (link?.getAttribute('href')?.includes('/patterns/modal-content/modal-content')) {
+      return logEvent('card_patterns:click');
     }
-    if (feature?.getAttribute('href')?.includes('/style/design-tokens/design-tokens')) {
-      return logEvent('card_tokens:click', { pathname });
+    if (link?.getAttribute('href')?.includes('/style/design-tokens/design-tokens')) {
+      return logEvent('card_tokens:click');
     }
-    if (feature?.getAttribute('href')?.includes('/core-principles/a11y/a11y')) {
-      return logEvent('card_a11y:click', { pathname });
+    if (link?.getAttribute('href')?.includes('/core-principles/a11y/a11y')) {
+      return logEvent('card_a11y:click');
     }
   }
   if (node.classList.contains('intergalactic-logo')) {
-    return logEvent('link_main:click', { pathname });
+    return logEvent('link_main:click');
   }
   if (node.classList.contains('devportal-logo')) {
     return logEvent('link_devportal:click', { pathname });
@@ -132,13 +133,10 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
     }
   }
   if (node.classList.contains('outline-link')) {
-    return logEvent('right_menu:click', { pathname, link: (node as any)?.href });
+    return logEvent('right_menu:click', { link: (node as any)?.href });
   }
   if (node.classList.contains('header-anchor')) {
-    return logEvent('title:click', { pathname, link: (node as any)?.href });
-  }
-  if (node.classList.contains('header-anchor')) {
-    return logEvent('title:click', { pathname, link: (node as any)?.href });
+    return logEvent('title:click', { link: (node as any)?.href });
   }
   if (node.textContent) {
     if (node.textContent?.toLowerCase().includes('edit this page on github')) {
@@ -146,19 +144,19 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
     }
     if (node.classList.contains('page-top-tabs-tab')) {
       if (node.textContent?.toLowerCase() === 'design') {
-        return logEvent('tab_design:click', { pathname });
+        return logEvent('tab_design:click', { link: pathname });
       }
       if (node.textContent?.toLowerCase() === 'a11y') {
-        return logEvent('tab_a11y:click', { pathname });
+        return logEvent('tab_a11y:click', { link: pathname });
       }
       if (node.textContent?.toLowerCase() === 'api') {
-        return logEvent('tab_api:click', { pathname });
+        return logEvent('tab_api:click', { link: pathname });
       }
       if (node.textContent?.toLowerCase() === 'example') {
-        return logEvent('tab_examples:click', { pathname });
+        return logEvent('tab_examples:click', { link: pathname });
       }
       if (node.textContent?.toLowerCase() === 'changelog') {
-        return logEvent('tab_changelog:click', { pathname });
+        return logEvent('tab_changelog:click', { link: pathname });
       }
     }
   }
@@ -221,7 +219,7 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
     if (searchItemA?.tagName === 'A') {
       const item = searchItemA.parentElement;
       const itemId = item.id.split('-');
-      const index = itemId[itemId.length - 1];
+      const index = Number(itemId[itemId.length - 1]);
 
       return logEvent('search:item_selected', {
         item: index + 1,
@@ -257,7 +255,7 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
     if (buttonElement) {
       const name = buttonElement.dataset.id;
 
-      return logEvent('illustration:click', { name, pathname });
+      return logEvent('illustration:click', { name });
     }
 
     const clearSearchButton = findParent(node, (node) => {
@@ -265,7 +263,7 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
     });
 
     if (clearSearchButton) {
-      return logEvent('illustration:clickClearSearch', { pathname });
+      return logEvent('illustration:clickClearSearch');
     }
 
     const triggerANode = findParent(node, (node) => {
@@ -275,7 +273,6 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
     if (triggerANode) {
       return logEvent('illustration:downloadSvg', {
         name: triggerANode.dataset.illustrationDownloadSvg,
-        pathname,
       });
     }
 
@@ -286,7 +283,6 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
     if (triggerButtonNode) {
       return logEvent('illustration:copyImport', {
         name: triggerButtonNode.dataset.illustrationCopyImport,
-        pathname,
       });
     }
   }
@@ -301,7 +297,7 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
     if (buttonElement) {
       const name = buttonElement.dataset.id;
 
-      return logEvent('icon:click', { name, pathname });
+      return logEvent('icon:click', { name });
     }
 
     const clearSearchButton = findParent(node, (node) => {
@@ -309,7 +305,7 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
     });
 
     if (clearSearchButton) {
-      return logEvent('icon:clickClearSearch', { pathname });
+      return logEvent('icon:clickClearSearch');
     }
 
     const triggerPillNode = findParent(node, (node) => {
@@ -320,13 +316,11 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
       return logEvent('icon:pillClick', {
         name: triggerPillNode.dataset.iconPillCopyImport,
         type: 'copyImport',
-        pathname,
       });
     } else if (triggerPillNode?.dataset.iconPillDownloadSvg) {
       return logEvent('icon:pillClick', {
         name: triggerPillNode.dataset.iconPillDownloadSvg,
         type: 'downloadSvg',
-        pathname,
       });
     }
 
@@ -341,7 +335,6 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
       return logEvent('icon:downloadSvg', {
         name: triggerNode.dataset.iconDownloadSvg,
         size: triggerNode.dataset.iconSize,
-        pathname,
       });
     }
 
@@ -349,7 +342,6 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
       return logEvent('icon:copyImport', {
         name: triggerNode.dataset.iconCopyImport,
         size: triggerNode.dataset.iconSize,
-        pathname,
       });
     }
   }
@@ -365,7 +357,7 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
     );
 
     if (baseTokenName) {
-      return logEvent('design-tokens:copyBaseTokenName', { value: node.textContent, pathname });
+      return logEvent('design-tokens:copyBaseTokenName', { value: node.textContent });
     }
 
     const baseTokenValue = findParent(
@@ -377,7 +369,7 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
     );
 
     if (baseTokenValue) {
-      return logEvent('design-tokens:copyBaseTokenValue', { value: node.textContent, pathname });
+      return logEvent('design-tokens:copyBaseTokenValue', { value: node.textContent });
     }
 
     const semanticTokenName = findParent(
@@ -389,7 +381,7 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
     );
 
     if (semanticTokenName) {
-      return logEvent('design-tokens:copySemanticTokenName', { value: node.textContent, pathname });
+      return logEvent('design-tokens:copySemanticTokenName', { value: node.textContent });
     }
 
     const semanticTokenValue = findParent(
@@ -403,7 +395,6 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
     if (semanticTokenValue) {
       return logEvent('design-tokens:copySemanticTokenValue', {
         value: node.textContent,
-        pathname,
       });
     }
 
@@ -415,7 +406,6 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
     if (semanticUsedInTooltip) {
       return logEvent('design-tokens:clickUsedInTooltip', {
         value: semanticUsedInTooltip.dataset.usedInTooltip,
-        pathname,
       });
     }
 
@@ -428,7 +418,6 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
       return logEvent('design-tokens:linkToComponent', {
         value: semanticLinkToComponent.dataset.linkInTooltip,
         componentName: semanticLinkToComponent.textContent,
-        pathname,
       });
     }
 
@@ -438,7 +427,7 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
     );
 
     if (clearSearchBaseTokens) {
-      return logEvent('design-tokens:clickClearSearchBaseTokens', { pathname });
+      return logEvent('design-tokens:clickClearSearchBaseTokens');
     }
 
     const clearSearchSemanticTokens = findParent(
@@ -447,7 +436,7 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
     );
 
     if (clearSearchSemanticTokens) {
-      return logEvent('design-tokens:clickClearSearchSemanticTokens', { pathname });
+      return logEvent('design-tokens:clickClearSearchSemanticTokens');
     }
   }
 
@@ -459,7 +448,7 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
     );
 
     if (baseTokensFileInput) {
-      return logEvent('designTokensInDev:uploadBaseTokensClick', { pathname });
+      return logEvent('designTokensInDev:uploadBaseTokensClick');
     }
 
     const designTokensFileInput = findParent(
@@ -468,7 +457,7 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
     );
 
     if (designTokensFileInput) {
-      return logEvent('designTokensInDev:uploadDesignTokensClick', { pathname });
+      return logEvent('designTokensInDev:uploadDesignTokensClick');
     }
 
     const copyButtonCss = findParent(
@@ -477,7 +466,7 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
     );
 
     if (copyButtonCss) {
-      return logEvent('designTokensInDev:copyButtonCssClick', { pathname });
+      return logEvent('designTokensInDev:copyButtonCssClick');
     }
 
     const copyButtonJson = findParent(
@@ -486,7 +475,7 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
     );
 
     if (copyButtonJson) {
-      return logEvent('designTokensInDev:copyButtonJsonClick', { pathname });
+      return logEvent('designTokensInDev:copyButtonJsonClick');
     }
   }
 
@@ -516,7 +505,7 @@ const handleChangeRoute = (to: string, from: string) => {
     (fromItems[2] !== toItems[2] || fromItems[3] !== toItems[3]) &&
     !['blog', 'bug-reporting', 'terms'].includes(toItems[2])
   ) {
-    return logEvent('left_menu-2-level:click', { pathname: from, link: to });
+    return logEvent('left_menu-2-level:click', { link: to });
   }
 };
 

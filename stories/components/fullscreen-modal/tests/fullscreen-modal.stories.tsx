@@ -7,7 +7,7 @@ import CloseBackTitleDescriptionExample from './examples/header/close-back-title
 import CloseInHeaderExample from './examples/header/close-in-header';
 import CloseTitleDescriptionExample from './examples/header/close-title-description';
 import TitleDescriptionExample from './examples/header/title-description';
-import ModalPropsExample from './examples/modal-props';
+import ModalPropsExample, { defaultProps } from './examples/modal-props';
 import WithSpinContainerExample from './examples/with-spin-container';
 
 const meta: Meta = {
@@ -24,6 +24,12 @@ export const WithSpinContainer: StoryObj = {
 
 export const ModalProps: StoryObj = {
   render: ModalPropsExample,
+  argTypes: {
+    closable: {
+      control: { type: 'boolean' },
+    },
+  },
+  args: defaultProps,
 };
 
 export const CloseTitleDescription: StoryObj = {
