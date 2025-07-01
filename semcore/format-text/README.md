@@ -1,6 +1,6 @@
-# DEPRECATED
+# @semcore/format-text (DEPRECATED)
 
-# @semcore/format-text
+## This package is deprecated. Use `@semcore/typography`.
 
 [![version](https://img.shields.io/npm/v/@semcore/format-text.svg)](https://www.npmjs.com/@semcore/format-text)
 [![downloads](https://img.shields.io/npm/dt/@semcore/format-text.svg)](https://www.npmjs.com/package/@semcore/format-text)

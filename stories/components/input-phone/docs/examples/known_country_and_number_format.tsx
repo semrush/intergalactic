@@ -1,10 +1,9 @@
+import { Box, Flex } from '@semcore/base-components';
 import { ButtonLink } from '@semcore/button';
 import Flag from '@semcore/flags';
-import { Box, Flex } from '@semcore/flex-box';
 import CloseM from '@semcore/icon/Close/m';
 import Input from '@semcore/input';
 import InputMask from '@semcore/input-mask';
-import NeighborLocation from '@semcore/neighbor-location';
 import Select from '@semcore/select';
 import { Text } from '@semcore/typography';
 import React from 'react';
@@ -80,70 +79,68 @@ const Demo = () => {
         Phone number
       </Text>
       <Box mt={2}>
-        <NeighborLocation controlsLength={2}>
-          <Select
-            value={country}
-            onChange={(newCountry: keyof typeof countries) => {
-              setCountry(newCountry);
-              const prefix = countries[newCountry].prefix;
-              setPhoneNumber(prefix);
-              setPhoneMask(`${prefix} (___)___-____`);
-              setTimeout(() => {
-                inputRef?.current?.focus();
-              }, 1);
-            }}
-          >
-            <Select.Trigger aria-label='Country code'>
-              <Select.Trigger.Addon mx={0}>
-                <Flag role='img' iso2={country} aria-label={countries[country].name} />
-              </Select.Trigger.Addon>
-            </Select.Trigger>
+        <Select
+          value={country}
+          onChange={(newCountry: keyof typeof countries) => {
+            setCountry(newCountry);
+            const prefix = countries[newCountry].prefix;
+            setPhoneNumber(prefix);
+            setPhoneMask(`${prefix} (___)___-____`);
+            setTimeout(() => {
+              inputRef?.current?.focus();
+            }, 1);
+          }}
+        >
+          <Select.Trigger aria-label='Country code' neighborLocation='right'>
+            <Select.Trigger.Addon mx={0}>
+              <Flag role='img' iso2={country} aria-label={countries[country].name} />
+            </Select.Trigger.Addon>
+          </Select.Trigger>
 
-            <Select.Menu>
-              {Object.keys(countries).map((country) => {
-                const countryKey = country as keyof typeof countries;
-                return (
-                  <Select.Option key={countryKey} value={countryKey}>
-                    <Text size={200} mr={2} aria-hidden='true'>
-                      <Flag iso2={countryKey} />
-                    </Text>
-                    <Text size={200} mr={2}>
-                      {countries[countryKey].name}
-                    </Text>
-                    <Text size={200} color='text-secondary'>
-                      {countries[countryKey].prefix}
-                    </Text>
-                  </Select.Option>
-                );
-              })}
-            </Select.Menu>
-          </Select>
-          <InputMask w={210}>
-            <InputMask.Value
-              id='phone-number-with-country-select'
-              ref={inputRef}
-              value={phoneNumber}
-              onChange={handleChange}
-              aliases={{ _: /\d/ }}
-              mask={phoneMask}
-              type='tel'
-              autoComplete='tel'
-              title='10 digits, without country code'
-              onKeyDown={handleKeyDown}
-              onClick={handleClick}
-            />
-            {phoneNumber !== prefix && (
-              <Input.Addon>
-                <ButtonLink
-                  use='secondary'
-                  addonLeft={CloseM}
-                  title='Clear'
-                  onClick={() => setPhoneNumber(prefix)}
-                />
-              </Input.Addon>
-            )}
-          </InputMask>
-        </NeighborLocation>
+          <Select.Menu>
+            {Object.keys(countries).map((country) => {
+              const countryKey = country as keyof typeof countries;
+              return (
+                <Select.Option key={countryKey} value={countryKey}>
+                  <Text size={200} mr={2} aria-hidden='true'>
+                    <Flag iso2={countryKey} />
+                  </Text>
+                  <Text size={200} mr={2}>
+                    {countries[countryKey].name}
+                  </Text>
+                  <Text size={200} color='text-secondary'>
+                    {countries[countryKey].prefix}
+                  </Text>
+                </Select.Option>
+              );
+            })}
+          </Select.Menu>
+        </Select>
+        <InputMask w={210} neighborLocation='left'>
+          <InputMask.Value
+            id='phone-number-with-country-select'
+            ref={inputRef}
+            value={phoneNumber}
+            onChange={handleChange}
+            aliases={{ _: /\d/ }}
+            mask={phoneMask}
+            type='tel'
+            autoComplete='tel'
+            title='10 digits, without country code'
+            onKeyDown={handleKeyDown}
+            onClick={handleClick}
+          />
+          {phoneNumber !== prefix && (
+            <Input.Addon>
+              <ButtonLink
+                use='secondary'
+                addonLeft={CloseM}
+                title='Clear'
+                onClick={() => setPhoneNumber(prefix)}
+              />
+            </Input.Addon>
+          )}
+        </InputMask>
       </Box>
     </Flex>
   );

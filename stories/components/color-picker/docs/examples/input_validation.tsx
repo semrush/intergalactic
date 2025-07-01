@@ -1,5 +1,5 @@
+import { Flex } from '@semcore/base-components';
 import ColorPicker, { PaletteManager } from '@semcore/color-picker';
-import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import React from 'react';
 

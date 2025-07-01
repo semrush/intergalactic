@@ -27,7 +27,7 @@ const Demo = () => {
             w={200}
             wMax={300}
             colors={customColors}
-            defaultColors={['#00FF00', '#0000FF']} // опционально, можно убрать, если не нужно
+            defaultColors={['#00FF00', '#0000FF']}
             onColorsChange={(newColors, event) => {
               console.log('Updated palette:', newColors);
               setCustomColors(newColors);
@@ -42,7 +42,7 @@ const Demo = () => {
       <Flex gap={5} flexWrap>
 
         <ColorPicker value={value} onChange={setValue}>
-          <ColorPicker.Trigger mt={2} id='player-1-color' />
+          <ColorPicker.Trigger mt={2} id='player-2-color' />
           <ColorPicker.Popper>
             <ColorPicker.Colors
               colors={[
@@ -61,7 +61,7 @@ const Demo = () => {
             <PaletteManager
               w={500}
               h={500}
-              defaultColors={['#00FF00', '#0000FF']} // опционально, можно убрать, если не нужно
+              defaultColors={['#00FF00', '#0000FF']}
               onColorsChange={(newColors, event) => {
                 console.log('Updated palette:', newColors);
                 setCustomColors(newColors);

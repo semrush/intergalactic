@@ -9,7 +9,7 @@ tabs: Design('breakpoints'), API('breakpoints-api'), Example('breakpoints-code')
 It is a functional wrapper over your application giving access to the context.
 
 ```jsx
-import Breakpoints from '@semcore/ui/breakpoints';
+import { defaultBreakpoints as Breakpoints } from '@semcore/base-components';
 
 <Breakpoints />;
 ```
@@ -19,7 +19,7 @@ import Breakpoints from '@semcore/ui/breakpoints';
 Is the React context.
 
 ```jsx
-import Breakpoints from '@semcore/ui/breakpoints';
+import { defaultBreakpoints as Breakpoints } from '@semcore/base-components';
 
 useContext(Breakpoints.Context);
 ```
@@ -29,7 +29,7 @@ useContext(Breakpoints.Context);
 It is an instance of the class for media queries.
 
 ```jsx
-import Breakpoints from '@semcore/ui/breakpoints';
+import { defaultBreakpoints as Breakpoints } from '@semcore/base-components';
 
 Breakpoints.mediaList.matches();
 Breakpoints.mediaList.addListener();

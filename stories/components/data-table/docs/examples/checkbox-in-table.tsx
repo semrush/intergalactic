@@ -1,8 +1,7 @@
-import { Collapse } from '@semcore/animation';
+import { Box, Flex, Collapse, ScreenReaderOnly } from '@semcore/base-components';
 import Button from '@semcore/button';
 import { sstyled } from '@semcore/core';
 import { DataTable } from '@semcore/data-table';
-import { Box, Flex, ScreenReaderOnly } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import React from 'react';
 

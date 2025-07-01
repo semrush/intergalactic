@@ -1,4 +1,6 @@
-# @semcore/breakpoints
+# @semcore/breakpoints (DEPRECATED)
+
+## This package is deprecated. Use `@semcore/base-components`.
 
 [![version](https://img.shields.io/npm/v/@semcore/breakpoints.svg)](https://www.npmjs.com/@semcore/breakpoints)
 [![downloads](https://img.shields.io/npm/dt/@semcore/breakpoints.svg)](https://www.npmjs.com/package/@semcore/breakpoints)

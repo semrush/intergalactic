@@ -1,4 +1,4 @@
-import { Flex } from '@semcore/flex-box';
+import { Flex } from '@semcore/base-components';
 import ThumbDownM from '@semcore/icon/ThumbDown/m';
 import ThumbUpM from '@semcore/icon/ThumbUp/m';
 import Pills from '@semcore/pills';

@@ -1,7 +1,6 @@
+import { Flex } from '@semcore/base-components';
 import Button from '@semcore/ui/button';
-import { Flex } from '@semcore/ui/flex-box';
 import InputNumber from '@semcore/ui/input-number';
-import NeighborLocation from '@semcore/ui/neighbor-location';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
@@ -22,24 +21,22 @@ const Demo = () => {
         Members count
       </Text>
       <Flex w={100} mt={2}>
-        <NeighborLocation>
-          <Button onClick={decrement} title='Decrease by 10'>
-            -
-          </Button>
-          <InputNumber>
-            <InputNumber.Value
-              placeholder='0'
-              ref={inputRef}
-              step={10}
-              value={value}
-              onChange={setValue}
-              id='alternative-example'
-            />
-          </InputNumber>
-          <Button onClick={increment} title='Increase by 10'>
-            +
-          </Button>
-        </NeighborLocation>
+        <Button onClick={decrement} title='Decrease by 10' neighborLocation='right'>
+          -
+        </Button>
+        <InputNumber neighborLocation='both'>
+          <InputNumber.Value
+            placeholder='0'
+            ref={inputRef}
+            step={10}
+            value={value}
+            onChange={setValue}
+            id='alternative-example'
+          />
+        </InputNumber>
+        <Button onClick={increment} title='Increase by 10' neighborLocation='left'>
+          +
+        </Button>
       </Flex>
     </>
   );

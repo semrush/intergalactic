@@ -1,4 +1,4 @@
-import { Box } from '@semcore/flex-box';
+import { Box } from '@semcore/base-components';
 import TimePicker from '@semcore/time-picker';
 import { Text } from '@semcore/typography';
 import React from 'react';

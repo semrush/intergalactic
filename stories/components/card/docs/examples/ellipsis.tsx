@@ -1,6 +1,6 @@
+import { Flex } from '@semcore/base-components';
 import Card from '@semcore/card';
 import Ellipsis from '@semcore/ellipsis';
-import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import React from 'react';
 

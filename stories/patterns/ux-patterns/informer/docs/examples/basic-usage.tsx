@@ -1,5 +1,5 @@
+import { Flex } from '@semcore/base-components';
 import { ButtonLink } from '@semcore/button';
-import { Flex } from '@semcore/flex-box';
 import InfoL from '@semcore/icon/Info/l';
 import InfoM from '@semcore/icon/Info/m';
 import Link from '@semcore/link';
