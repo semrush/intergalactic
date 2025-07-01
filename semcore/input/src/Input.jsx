@@ -23,8 +23,8 @@ class Input extends Component {
     this.inputRef.current?.focus();
   };
 
-  handleKeyDown = (event) => {
-    if (event.key === 'Enter') {
+  handleKeyUpAndDown = (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
       setTimeout(() => {
         if (document.activeElement === document.body) {
           this.inputRef.current?.focus();
@@ -84,7 +84,8 @@ class Input extends Component {
           sstyled(styles)(
             <SInput
               render={Box}
-              onKeyDown={this.handleKeyDown}
+              onKeyDown={this.handleKeyUpAndDown}
+              onKeyUp={this.handleKeyUpAndDown}
               neighborLocation={neighborLocation}
               __excludeProps={[
                 'role',
