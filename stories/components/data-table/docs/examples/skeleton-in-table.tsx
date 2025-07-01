@@ -1,7 +1,7 @@
 import { DataTable } from '@semcore/data-table';
 import Skeleton from '@semcore/skeleton';
+import { ScreenReaderOnly } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
-import { ScreenReaderOnly } from '@semcore/ui/flex-box';
 import React from 'react';
 
 function getSkeleton() {

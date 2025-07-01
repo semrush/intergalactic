@@ -1,4 +1,4 @@
-import { Flex } from '@semcore/flex-box';
+import { Flex } from '@semcore/base-components';
 import InputTags from '@semcore/input-tags';
 import type { InputTagsTagProps } from '@semcore/input-tags';
 import { Text } from '@semcore/typography';

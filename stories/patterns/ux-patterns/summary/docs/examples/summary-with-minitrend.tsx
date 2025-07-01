@@ -1,5 +1,5 @@
+import { Flex } from '@semcore/base-components';
 import Divider from '@semcore/divider';
-import { Flex } from '@semcore/flex-box';
 import Info from '@semcore/icon/Info/m';
 import Link from '@semcore/link';
 import MiniChart from '@semcore/mini-chart';

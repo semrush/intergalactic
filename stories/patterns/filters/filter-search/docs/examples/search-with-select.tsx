@@ -1,11 +1,9 @@
+import { Flex, Box } from '@semcore/base-components';
 import { ButtonLink } from '@semcore/button';
-import { Flex, Box } from '@semcore/flex-box';
 import CloseM from '@semcore/icon/Close/m';
 import Search from '@semcore/icon/Search/m';
 import Input from '@semcore/input';
-import NeighborLocation from '@semcore/neighbor-location';
 import Select from '@semcore/select';
-import { Hint } from '@semcore/tooltip';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
@@ -27,30 +25,28 @@ const Demo = () => {
         Filter backlinks
       </Text>
       <Box mt={2}>
-        <NeighborLocation>
-          <Select aria-label='Search scope' options={options} value={scope} onChange={setScope} />
-          <Input w={200}>
+        <Select aria-label='Search scope' options={options} value={scope} onChange={setScope} neighborLocation='right' />
+        <Input w={200} neighborLocation='left'>
+          <Input.Addon>
+            <Search />
+          </Input.Addon>
+          <Input.Value
+            value={value}
+            onChange={handleChange}
+            id='search-with-select-backlinks'
+            placeholder='Search'
+          />
+          {value && (
             <Input.Addon>
-              <Search />
+              <ButtonLink
+                use='secondary'
+                addonLeft={CloseM}
+                title='Clear'
+                onClick={handleClick}
+              />
             </Input.Addon>
-            <Input.Value
-              value={value}
-              onChange={handleChange}
-              id='search-with-select-backlinks'
-              placeholder='Search'
-            />
-            {value && (
-              <Input.Addon>
-                <ButtonLink
-                  use='secondary'
-                  addonLeft={CloseM}
-                  title='Clear'
-                  onClick={handleClick}
-                />
-              </Input.Addon>
-            )}
-          </Input>
-        </NeighborLocation>
+          )}
+        </Input>
       </Box>
     </Flex>
   );

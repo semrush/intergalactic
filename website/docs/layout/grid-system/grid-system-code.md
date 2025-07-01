@@ -4,7 +4,7 @@ fileSource: grid
 tabs: Page layout('grid-system-layout'), API('grid-system-api'), Example('grid-system-code'), Changelog('grid-system-changelog')
 ---
 
-`Grid` is a component for building a 12-column grid.
+The grid system provides `Row` and `Col` components for building a 12-column grid.
 
 ::: tip
 In the product interface we use a 12-column grid with a fixed 24px gutter between columns. The columns stretch.

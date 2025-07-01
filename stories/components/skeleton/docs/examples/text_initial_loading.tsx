@@ -1,5 +1,5 @@
+import { Flex } from '@semcore/base-components';
 import Button from '@semcore/button';
-import { Flex } from '@semcore/flex-box';
 import Skeleton from '@semcore/skeleton';
 import { Text } from '@semcore/typography';
 import React from 'react';

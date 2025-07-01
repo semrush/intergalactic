@@ -75,16 +75,14 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
     label: 'Disabled',
   });
 
-  const beforeIcon = bool({
-    key: 'before Icon',
-    defaultValue: false,
+  const addon = select({
+    key: 'addon',
+    defaultValue: 'none',
     label: 'Addon',
-  });
-
-  const imageIcon = bool({
-    key: 'image Icon',
-    defaultValue: false,
-    label: 'Circle Addon',
+    options: ['none', 'Icon', 'Circle'].map((value) => ({
+      name: value,
+      value,
+    })),
   });
 
   const closeIcon = bool({
@@ -104,13 +102,13 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
       disabled={disabled}
     >
       <TagContainer.Tag active={active}>
-        {imageIcon && (
+        {addon === 'Circle' && (
           <TagContainer.Tag.Circle>
             <img src='https://picsum.photos/id/1025/28/28' />
           </TagContainer.Tag.Circle>
         )}
 
-        {beforeIcon && (
+        {addon === 'Icon' && (
           <TagContainer.Tag.Addon>
             <EditM />
           </TagContainer.Tag.Addon>

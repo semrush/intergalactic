@@ -1,4 +1,6 @@
-# @semcore/flex-box
+# @semcore/flex-box (DEPRECATED)
+
+## This package is deprecated. Use `@semcore/base-components`.
 
 [![version](https://img.shields.io/npm/v/@semcore/flex-box.svg)](https://www.npmjs.com/@semcore/flex-box)
 [![downloads](https://img.shields.io/npm/dt/@semcore/flex-box.svg)](https://www.npmjs.com/package/@semcore/flex-box)

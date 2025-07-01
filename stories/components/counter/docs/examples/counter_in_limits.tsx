@@ -1,4 +1,4 @@
-import { Flex } from '@semcore/flex-box';
+import { Flex } from '@semcore/base-components';
 import WarningM from '@semcore/icon/Warning/m';
 import ProgressBar from '@semcore/progress-bar';
 import { Text } from '@semcore/typography';

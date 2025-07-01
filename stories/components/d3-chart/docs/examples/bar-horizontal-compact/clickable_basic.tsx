@@ -1,5 +1,5 @@
+import { Flex } from '@semcore/base-components';
 import { Chart } from '@semcore/d3-chart';
-import { Flex } from '@semcore/flex-box';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import React from 'react';
 

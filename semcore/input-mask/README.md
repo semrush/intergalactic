@@ -1,6 +1,4 @@
-# DEPRECATED
-
-# @semcore/input-mask
+# @semcore/input-mask (DEPRECATED)
 
 [![version](https://img.shields.io/npm/v/@semcore/input-mask.svg)](https://www.npmjs.com/@semcore/input-mask)
 [![downloads](https://img.shields.io/npm/dt/@semcore/input-mask.svg)](https://www.npmjs.com/package/@semcore/input-mask)

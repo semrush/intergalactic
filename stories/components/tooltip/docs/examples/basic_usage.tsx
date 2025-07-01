@@ -1,5 +1,5 @@
+import { Flex } from '@semcore/base-components';
 import Button, { ButtonLink } from '@semcore/button';
-import { Flex } from '@semcore/flex-box';
 import CheckAltM from '@semcore/icon/CheckAlt/m';
 import FileExportM from '@semcore/icon/FileExport/m';
 import InfoM from '@semcore/icon/Info/m';

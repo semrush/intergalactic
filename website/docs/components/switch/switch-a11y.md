@@ -26,4 +26,4 @@ You can add an external label to the Switch, just make sure the label and `Switc
 
 ## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
+Find more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).

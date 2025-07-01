@@ -1,6 +1,6 @@
+import { Flex } from '@semcore/base-components';
 import Button from '@semcore/button';
 import Card from '@semcore/card';
-import { Flex } from '@semcore/flex-box';
 import SettingsM from '@semcore/icon/Settings/m';
 import { Text } from '@semcore/typography';
 import React from 'react';

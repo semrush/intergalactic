@@ -9,7 +9,7 @@ tabs: Design('spin'), A11y('spin-a11y'), API('spin-api'), Example('spin-code'), 
 <script lang="tsx">
 import React from 'react';
 import Spin from '@semcore/ui/spin';
-import { Flex } from '@semcore/ui/flex-box';
+import { Flex } from '@semcore/ui/base-components';
 import { Text } from '@semcore/ui/typography';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 

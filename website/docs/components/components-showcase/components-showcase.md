@@ -12,7 +12,7 @@ const getImageName = (title) => {
   return name.charAt(0).toLowerCase() + name.slice(1);
 };
 
-import { Box } from '@semcore/flex-box';
+import { Box } from '@semcore/base-components';
 
 const group = {
   accordion: {

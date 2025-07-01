@@ -1,6 +1,6 @@
+import { Flex } from '@semcore/base-components';
 import Button from '@semcore/button';
 import Counter from '@semcore/counter';
-import { Flex } from '@semcore/flex-box';
 import InputTags from '@semcore/input-tags/';
 import Select from '@semcore/select';
 import Tooltip from '@semcore/tooltip';
