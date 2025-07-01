@@ -39,6 +39,62 @@ test.describe('Input', () => {
     await expect(inputLocator).toBeFocused();
   });
 
+  test('Verify focus return back to Input after Close button is closed by Enter', async ({ page }) => {
+    const standPath = 'stories/components/input/docs/examples/input_with_the_clearing_ability.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const input = await page.locator('input');
+    const addonButton = await page.locator('[data-ui-name="Input.Addon"] button');
+
+    await page.keyboard.press('Tab');
+    await expect(input).toBeFocused();
+
+    await page.keyboard.type('Focus test');
+    await addonButton.waitFor();
+
+    await page.keyboard.press('Tab');
+    await expect(input).not.toBeFocused();
+    await expect(addonButton).toBeFocused();
+
+    await page.keyboard.press('Enter');
+
+    await expect(input).toBeFocused();
+    await expect(addonButton).toBeHidden();
+    expect(await input.inputValue()).toBe('');
+
+    await expect(page).toHaveScreenshot();
+  });
+
+  test('Verify focus return back to Input after Close button is closed by Space', async ({ page }) => {
+    const standPath = 'stories/components/input/docs/examples/input_with_the_clearing_ability.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const input = await page.locator('input');
+    const addonButton = await page.locator('[data-ui-name="Input.Addon"] button');
+
+    await page.keyboard.press('Tab');
+    await expect(input).toBeFocused();
+
+    await page.keyboard.type('Focus test');
+    await addonButton.waitFor();
+
+    await page.keyboard.press('Tab');
+    await expect(input).not.toBeFocused();
+    await expect(addonButton).toBeFocused();
+
+    await page.keyboard.press('Space');
+
+    await expect(input).toBeFocused();
+    await expect(addonButton).toBeHidden();
+    expect(await input.inputValue()).toBe('');
+
+    await expect(page).toHaveScreenshot();
+  });
+
   test('Verify Input with submit button keyboard interactions', async ({ page }) => {
     const standPath = 'stories/components/input/docs/examples/input_with_a_submit_icon.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
