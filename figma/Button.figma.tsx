@@ -48,7 +48,7 @@ figma.connect(
       // For now, textAddon shows placeholder. Need to figure out how to show value from labelAddon here, and how to expand the component.
       textAddon: figma.enum('type', {
         default: figma.boolean('textAddon →', {
-          true: <Button.Addon><Text color='text-color-token'>{/* text addon */}</Text></Button.Addon>,
+          true: <Button.Addon><Text color='/* text-color-token */'>{/* text addon */}</Text></Button.Addon>,
           false: undefined,
         }),
       }),
