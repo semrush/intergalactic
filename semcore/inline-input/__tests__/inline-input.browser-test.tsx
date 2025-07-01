@@ -673,4 +673,41 @@ test.describe('InlineInput interactions', () => {
       await expect(value).toBeFocused();
     });
   });
+
+  test('Verify that elements are focusable when disabled = false', async ({ page }) => {
+    const standPath = 'stories/components/inline-input/tests/examples/basic_usage_with_props.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+
+    const input = page.locator('[data-ui-name="InlineInput.Value"]');
+    const confirmControl = page.locator('[data-ui-name="InlineInput.ConfirmControl"] button');
+    const cancelControl = page.locator('[data-ui-name="InlineInput.CancelControl"] button');
+
+    await page.keyboard.press('Tab');
+    await expect(input).toBeFocused();
+    await expect(page).toHaveScreenshot();
+
+    await page.keyboard.press('Tab');
+    await expect(input).not.toBeFocused();
+    await expect(confirmControl).toBeFocused();
+    await expect(page).toHaveScreenshot();
+
+    await page.keyboard.press('Tab');
+    await expect(input).not.toBeFocused();
+    await expect(confirmControl).not.toBeFocused();
+    await expect(cancelControl).toBeFocused();
+    await expect(page).toHaveScreenshot();
+  });
+
+  test('Verify that elements aren\'t focusable when disabled = true', async ({ page }) => {
+    const standPath = 'stories/components/inline-input/tests/examples/basic_usage_with_props.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en', { disabled: true });
+    await page.setContent(htmlContent);
+
+    const input = page.locator('[data-ui-name="InlineInput"]');
+
+    await page.keyboard.press('Tab');
+    await expect(input).not.toBeFocused();
+    await expect(page).toHaveScreenshot();
+  });
 });

@@ -119,9 +119,17 @@ class InlineInputBase extends Component<RootAsProps> {
   };
 
   componentDidMount() {
+    this.updateInert();
+
     if (!this.asProps.onBlurBehavior) return;
     document.body.addEventListener('mousedown', this.handleDocumentMouseDown);
     document.body.addEventListener('keydown', this.handleDocumentKeyDown);
+  }
+
+  componentDidUpdate(prevProps: Readonly<RootAsProps>): void {
+    if (prevProps.disabled === this.asProps.disabled) return;
+
+    this.updateInert();
   }
 
   componentWillUnmount() {
@@ -251,6 +259,18 @@ class InlineInputBase extends Component<RootAsProps> {
       this.lastHandledKeyboardEvent = Date.now();
     }
   };
+
+  private updateInert() {
+    const { disabled } = this.asProps;
+
+    if (!this.rootRef.current) return;
+
+    if (disabled) {
+      this.rootRef.current.setAttribute('inert', '');
+    } else {
+      this.rootRef.current.removeAttribute('inert');
+    }
+  }
 
   render() {
     const SInlineInput = Root;
