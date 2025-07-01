@@ -1,18 +1,17 @@
-import type { IRootComponentProps } from '@semcore/core';
-import { Component, createComponent, Root, sstyled } from '@semcore/core';
-import findComponent from '@semcore/core/lib/utils/findComponent';
-import SummaryAI from '@semcore/icon/SummaryAI/m';
-import Radio from '@semcore/radio';
+import { Component, createComponent, Root, sstyled, CONTEXT_COMPONENT } from '@semcore/core';
+import type { RadioProps } from '@semcore/radio';
+import Radio, { RadioGroup } from '@semcore/radio';
 import React from 'react';
 
 import style from './radio.shadow.css';
 import type { RadioComponent } from './Radio.type';
 import { AnimatedSparkles } from '../../inner-components/sparkle/AnimatedSparkles';
-import Sparkle from '../../inner-components/sparkle/Sparkle';
 
-class RadioAFRoot extends Component {
+class RadioAFRoot extends Component<RadioProps> {
   static displayName = 'RadioAF';
   static style = style;
+  // @ts-ignore
+  static contextType = RadioGroup[CONTEXT_COMPONENT];
 
   inputRef = React.createRef<HTMLInputElement>();
 
@@ -33,10 +32,14 @@ class RadioAFRoot extends Component {
   }
 
   getAnimatedSparklesProps() {
+    // @ts-ignore
+    const { size } = this.context;
+    const checked = this.state.checked;
+
     return {
-      show: this.state.checked,
-      top: '5px',
-      left: '3px',
+      show: checked,
+      top: size === 'l' ? '7px' : '5px',
+      left: size === 'l' ? '5px' : '3px',
     };
   }
 

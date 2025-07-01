@@ -1,3 +1,4 @@
+import type { CheckboxProps } from '@semcore/checkbox';
 import Checkbox from '@semcore/checkbox';
 import type { IRootComponentProps } from '@semcore/core';
 import { Component, createComponent, Root, sstyled } from '@semcore/core';
@@ -10,7 +11,7 @@ import type { CheckboxComponent } from './Checkbox.type';
 import { AnimatedSparkles } from '../../inner-components/sparkle/AnimatedSparkles';
 import Sparkle from '../../inner-components/sparkle/Sparkle';
 
-class CheckboxAFRoot extends Component {
+class CheckboxAFRoot extends Component<CheckboxProps> {
   static displayName = 'CheckboxAF';
   static style = style;
 
@@ -28,12 +29,13 @@ class CheckboxAFRoot extends Component {
   }
 
   getAnimatedSparklesProps() {
+    const { size } = this.asProps;
     const checked = this.inputRef.current?.checked;
 
     return {
       show: checked,
-      top: '5px',
-      left: '3px',
+      top: size === 'l' ? '7px' : '5px',
+      left: size === 'l' ? '5px' : '3px',
     };
   }
 

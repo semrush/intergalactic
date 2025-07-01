@@ -47,7 +47,7 @@ class AccentItemRoot extends Component {
   }
 }
 
-function AccentAddon(props) {
+function AccentAddon(props: { animatedSparkleCount?: number; clicked: boolean }) {
   const { clicked, animatedSparkleCount } = props;
 
   return (
