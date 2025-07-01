@@ -320,7 +320,6 @@ test.describe('Color-picker', () => {
     await test.step('Verify hover on No background color ', async () => {
       const items = colorPoppers.first().getByRole('option');
       await items.first().hover();
-      // await new Promise((resolve) => setTimeout(resolve, 300));
       await page.locator('[data-ui-name="Hint.Popper"]').waitFor();
       await expect(page).toHaveScreenshot();
     });
