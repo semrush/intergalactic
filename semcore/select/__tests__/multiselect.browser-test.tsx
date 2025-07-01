@@ -138,7 +138,7 @@ test.describe('Options filtering', () => {
     await test.step('Verify first option selected when expanded', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Space');
-      await options.nth(1).waitFor({ state: 'visible' });
+      await menu.waitFor({ state: 'visible' });
       await expect(selectTrigger).toBeFocused();
       await expect(options.first()).toHaveClass(/highlighted/);
     });
@@ -147,13 +147,15 @@ test.describe('Options filtering', () => {
       await options.nth(5).click();
       await options.nth(1).click();
       await options.nth(3).click();
+
+      await expect(triggerText).toHaveText('5, 1, 3');
     });
 
     await test.step('Verify items sorted and divider whoen on 2nd expand', async () => {
       await page.keyboard.press('Escape');
-      await options.nth(1).waitFor({ state: 'hidden' });
+      await menu.waitFor({ state: 'hidden' });
       await page.keyboard.press('Space');
-      await options.nth(1).waitFor({ state: 'visible' });
+      await menu.waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
     });
   });
