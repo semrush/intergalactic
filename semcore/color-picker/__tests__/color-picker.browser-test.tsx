@@ -729,13 +729,17 @@ test.describe('Color-picker', () => {
 
       await locators.inputColor.fill('888');
       await page.keyboard.press('Enter');
-      await page.waitForTimeout(100);
+      await page.waitForTimeout(200);
       await expect(paletteItems).toHaveCount(2);
+      await page.keyboard.press('Escape');
+      await paletteItems.nth(1).waitFor({ state: 'hidden' });
+
+      await page.keyboard.press('Enter');
+      await page.getByRole('dialog').waitFor({ state: 'visible' });
 
       await paletteItems.nth(1).click();
-      await page.waitForTimeout(100);
+      await paletteItems.nth(1).waitFor({ state: 'hidden' });
       await locators.trigger.nth(1).click();
-      await locators.popper.waitFor({ state: 'visible' });
       await page.getByRole('dialog').waitFor({ state: 'visible' });
       await expect(paletteItems.nth(1)).toHaveAttribute('aria-selected', 'true');
     });
