@@ -1,5 +1,5 @@
+import { Flex } from '@semcore/base-components';
 import Button from '@semcore/button';
-import { Flex } from '@semcore/flex-box';
 import MailSent from '@semcore/illustration/MailSent';
 import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/notice-bubble';
 import React from 'react';

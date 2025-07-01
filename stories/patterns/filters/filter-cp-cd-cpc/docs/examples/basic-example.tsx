@@ -1,9 +1,8 @@
+import { Flex } from '@semcore/ui/base-components';
 import { FilterTrigger } from '@semcore/ui/base-trigger';
 import Button from '@semcore/ui/button';
 import Dropdown from '@semcore/ui/dropdown';
-import { Flex } from '@semcore/ui/flex-box';
 import InputNumber from '@semcore/ui/input-number';
-import NeighborLocation from '@semcore/ui/neighbor-location';
 import { Text } from '@semcore/ui/typography';
 import React, { useState, useRef } from 'react';
 
@@ -54,35 +53,33 @@ const InputRange: React.FC<InputRangeProps> = ({ value: valueState, changeValue,
 
   return (
     <Flex {...other}>
-      <NeighborLocation>
-        <InputNumber>
-          <InputNumber.Value
-            min={minRange}
-            max={maxRange}
-            aria-label='From'
-            placeholder='From'
-            value={from}
-            onChange={handleChange('from')}
-            onBlur={handleBlur}
-            ref={fromRef}
-            autoFocus
-          />
-          <InputNumber.Controls />
-        </InputNumber>
-        <InputNumber>
-          <InputNumber.Value
-            min={minRange}
-            max={maxRange}
-            aria-label='To'
-            placeholder='To'
-            value={to}
-            onChange={handleChange('to')}
-            onBlur={handleBlur}
-            ref={toRef}
-          />
-          <InputNumber.Controls />
-        </InputNumber>
-      </NeighborLocation>
+      <InputNumber neighborLocation='right'>
+        <InputNumber.Value
+          min={minRange}
+          max={maxRange}
+          aria-label='From'
+          placeholder='From'
+          value={from}
+          onChange={handleChange('from')}
+          onBlur={handleBlur}
+          ref={fromRef}
+          autoFocus
+        />
+        <InputNumber.Controls />
+      </InputNumber>
+      <InputNumber neighborLocation='left'>
+        <InputNumber.Value
+          min={minRange}
+          max={maxRange}
+          aria-label='To'
+          placeholder='To'
+          value={to}
+          onChange={handleChange('to')}
+          onBlur={handleBlur}
+          ref={toRef}
+        />
+        <InputNumber.Controls />
+      </InputNumber>
     </Flex>
   );
 };

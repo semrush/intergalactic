@@ -1,5 +1,5 @@
+import { Flex, ScreenReaderOnly } from '@semcore/base-components';
 import Counter from '@semcore/counter';
-import { Flex, ScreenReaderOnly } from '@semcore/flex-box';
 import Textarea from '@semcore/textarea';
 import { Text } from '@semcore/typography';
 import React from 'react';

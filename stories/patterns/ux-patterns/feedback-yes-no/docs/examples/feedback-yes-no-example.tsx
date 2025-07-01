@@ -1,7 +1,7 @@
+import { Box, Flex } from '@semcore/base-components';
 import Button from '@semcore/button';
 import Dropdown from '@semcore/dropdown';
 import FeedbackForm from '@semcore/feedback-form';
-import { Box, Flex } from '@semcore/flex-box';
 import ThumbDownM from '@semcore/icon/ThumbDown/m';
 import ThumbUpM from '@semcore/icon/ThumbUp/m';
 import FeedbackIllustration from '@semcore/illustration/Feedback';

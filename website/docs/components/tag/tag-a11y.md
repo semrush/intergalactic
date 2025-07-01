@@ -46,4 +46,4 @@ To find more information on the ways to make your tags accessible by the keyboar
 
 ## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
+Find more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).

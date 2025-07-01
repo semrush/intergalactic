@@ -1,6 +1,6 @@
+import { Box } from '@semcore/base-components';
+import type { Placement } from '@semcore/base-components';
 import Button from '@semcore/button';
-import { Box } from '@semcore/flex-box';
-import type { Placement } from '@semcore/popper';
 import Tooltip from '@semcore/tooltip';
 import React from 'react';
 

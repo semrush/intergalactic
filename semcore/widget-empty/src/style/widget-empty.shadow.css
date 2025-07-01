@@ -15,6 +15,7 @@ SImage {
 }
 
 STitle {
+  text-align: center;
   color: var(--intergalactic-text-secondary, #6c6e79);
   font-size: var(--intergalactic-fs-300, 16px);
   line-height: var(--intergalactic-lh-300, 150%);

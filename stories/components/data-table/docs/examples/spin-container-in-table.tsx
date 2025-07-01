@@ -1,6 +1,6 @@
 import { DataTable } from '@semcore/data-table';
+import { ScreenReaderOnly } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
-import { ScreenReaderOnly } from '@semcore/ui/flex-box';
 import React from 'react';
 
 const Demo = (): any => {

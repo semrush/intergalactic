@@ -6,10 +6,10 @@ tabs: Design('popper'), API('popper-api'), Changelog('popper-changelog')
 
 ## Popper
 
-This is a wrapper for creating a context, which doesn't create additional nodes in the house.
+This is a wrapper for creating a context, which doesn't create additional nodes in the DOM.
 
 ```jsx
-import Popper from '@semcore/ui/popper';
+import Popper from '@semcore/base-components';
 <Popper />;
 ```
 
@@ -20,7 +20,7 @@ import Popper from '@semcore/ui/popper';
 The element to which `<Popper.Popper/>` will be attached.
 
 ```jsx
-import Popper from '@semcore/ui/popper';
+import Popper from '@semcore/base-components';
 <Popper.Trigger />;
 ```
 
@@ -31,7 +31,7 @@ import Popper from '@semcore/ui/popper';
 The element which will be attached to `<Popper.Trigger/>`.
 
 ```jsx
-import Popper from '@semcore/ui/popper';
+import Popper from '@semcore/base-components';
 <Popper.Popper />;
 ```
 

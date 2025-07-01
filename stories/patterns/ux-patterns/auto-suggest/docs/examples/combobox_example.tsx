@@ -1,4 +1,4 @@
-import { Box } from '@semcore/flex-box';
+import { Box } from '@semcore/base-components';
 import Input from '@semcore/input';
 import Select from '@semcore/select';
 import { Text } from '@semcore/typography';

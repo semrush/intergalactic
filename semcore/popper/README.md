@@ -1,4 +1,6 @@
-# @semcore/popper
+# @semcore/popper (DEPRECATED)
+
+## This package is deprecated. Use `@semcore/base-components`.
 
 [![version](https://img.shields.io/npm/v/@semcore/popper.svg)](https://www.npmjs.com/@semcore/popper)
 [![downloads](https://img.shields.io/npm/dt/@semcore/popper.svg)](https://www.npmjs.com/package/@semcore/popper)
