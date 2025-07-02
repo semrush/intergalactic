@@ -4,11 +4,15 @@ title: Figma libraries
 
 ## Introduction
 
-::: loom_video https://www.loom.com/share/9cdb9e91f56a4d50accd96f08c5e4d90?sid=a55dba9e-88b3-4d19-826f-60f3c8b5dcf5 :::
+::: loom_video Introduction to Intergalactic Figma Libraries
+https://www.loom.com/embed/9cdb9e91f56a4d50accd96f08c5e4d90
+:::
 
 ## Detaching and updating components
 
-::: loom_video https://www.loom.com/share/7955fcb33bad47a6bf73c131c14cc446 :::
+::: loom_video Detaching and updating components
+https://www.loom.com/embed/7955fcb33bad47a6bf73c131c14cc446
+:::
 
 ## Core libraries
 
@@ -18,25 +22,37 @@ title: Figma libraries
 - Charts: **[Internal](https://www.figma.com/file/eODzGSSSlI8fl0x5fsv9cf/%E2%9C%A8-Charts), [Public](https://www.figma.com/community/file/1104055641569356920)**
 - Table Components: **[Internal](https://www.figma.com/file/R3kShIAwBMr9K5XSqXuQ3R/%E2%9C%A8-Table-components?type=design&t=n91YMTeTXAEyz6Cp-6), [Public](https://www.figma.com/community/file/1274029407972533900/semrush-table-components-library)**
 
-::: loom_video https://www.loom.com/share/593126f16b494b719949649d1d7fa331 :::
+::: loom_video Core Libraries, part 1
+https://www.loom.com/embed/593126f16b494b719949649d1d7fa331
+:::
 
-::: loom_video https://www.loom.com/share/f31be4be9b9649899661b6139b31b3d7 :::
+::: loom_video Core Libraries, part 2
+https://www.loom.com/embed/f31be4be9b9649899661b6139b31b3d7
+:::
 
-::: loom_video https://www.loom.com/share/d2b51d7b370f4a7cabcca1b09b7910e6 :::
+::: loom_video Core Libraries, part 3
+https://www.loom.com/embed/d2b51d7b370f4a7cabcca1b09b7910e6
+:::
 
 ## Start designing with libraries
 
 How to start designing with the Intergalactic Design System Figma libraries? Where you should start from?
 
-::: loom_video https://www.loom.com/share/f63d948f2a6543e89d7b980033216098 :::
+::: loom_video How to start designing with Figma libraries
+https://www.loom.com/embed/f63d948f2a6543e89d7b980033216098
+:::
 
-::: loom_video https://www.loom.com/share/91042725e5f3425a80b62c1e82cab152 :::
+::: loom_video UX Patterns Figma library (for Semrush designers)
+https://www.loom.com/embed/91042725e5f3425a80b62c1e82cab152
+:::
 
 ## Charts library
 
 How to choose the right visualization for your task?
 
-::: loom_video https://www.loom.com/share/0793a430c4bb4784ad0bb6cec9199af5 :::
+::: loom_video Getting started with Charts library (and choosing data visualization)
+https://www.loom.com/embed/0793a430c4bb4784ad0bb6cec9199af5
+:::
 
 ## Additional libraries
 
