@@ -311,29 +311,30 @@ test.describe('Color-picker', () => {
     const locators = getColorPickerLocators(page);
     await page.setContent(htmlContent);
 
-    await new Promise((resolve) => setTimeout(resolve, 500));
+    const colorPoppers = page.getByRole('dialog');
+    await colorPoppers.nth(3).waitFor({ state: 'visible' });
+
     await test.step('Verify normal and active for background and text color', async () => {
       await expect(page).toHaveScreenshot();
     });
-    const colorPoppers = page.getByRole('dialog');
 
     await test.step('Verify hover on No background color ', async () => {
       const items = colorPoppers.first().getByRole('option');
       await items.first().hover();
-      await new Promise((resolve) => setTimeout(resolve, 300));
+      await page.getByText('Clear color').waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
     });
 
     await test.step('Verify hover on text color ', async () => {
       const items = colorPoppers.nth(1).getByRole('option');
-      await items.nth(2).hover();
-      await new Promise((resolve) => setTimeout(resolve, 500));
+      await items.nth(1).hover();
+      await page.getByText('#2BB3FF').waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
     });
 
     await test.step('Verify hover on Add color button ', async () => {
       await locators.addButton.first().hover();
-      await new Promise((resolve) => setTimeout(resolve, 500));
+      await new Promise((resolve) => setTimeout(resolve, 100));
       await expect(page).toHaveScreenshot();
     });
   });
