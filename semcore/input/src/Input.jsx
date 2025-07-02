@@ -25,8 +25,11 @@ class Input extends Component {
 
   handleClick = () => {
     if (!lastInteraction.isKeyboard) return;
-
-    this.inputRef.current?.focus();
+    setTimeout(() => {
+      if (document.activeElement === document.body) {
+        this.inputRef.current?.focus();
+      }
+    }, 0);
   };
 
   getAddonProps() {
@@ -34,6 +37,7 @@ class Input extends Component {
     return {
       disabled,
       onMouseDown: this.handleMouseDownAddon,
+      onKeyDown: this.handleKeyDown,
       onClick: this.handleClick,
       size,
     };
