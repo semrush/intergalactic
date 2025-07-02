@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.1.5] - 2025-06-23
+
+### Fixed
+
+- Missing focus outline in Safari during mixed mouse and keyboard interaction.
+
 ## [16.1.4] - 2025-06-20
 
 ### Changed

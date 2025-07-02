@@ -79,7 +79,7 @@ const DesignTokens = ({ tokens }) => {
 
     searchTimer = setTimeout(() => {
       logEvent('design-tokens:searchSemanticTokens', { value });
-    }, 500);
+    }, 400);
   };
 
   const handleChangeComponentFilter = (value) => {
