@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.4] - 2025-07-02
+
+### Fixed
+
+- Ellipsis with `trim=middle` cut off text at the end.
+
 ## [16.0.3] - 2025-06-23
 
 ### Changed

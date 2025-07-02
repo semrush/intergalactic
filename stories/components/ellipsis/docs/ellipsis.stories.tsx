@@ -1,23 +1,34 @@
-import Ellipsis from '@semcore/ellipsis';
+import Ellipsis, { type EllipsisProps } from '@semcore/ellipsis';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+export type ExampleEllipsisProps = EllipsisProps;
 
-import AdvancedUseExample from './examples/advanced_use';
+import AdvancedUseExample, { defaultProps as advancedDefaultProps } from './examples/advanced_use';
 import BasicUsageExample from './examples/basic_usage';
 import MultilineExample from './examples/multiline';
 import MultipleUseExample from './examples/multiple_use';
 import TooltipCursorAnchoringExample from './examples/tooltip-cursor-anchoring';
 import TrimmingTypeExample from './examples/trimming_type';
 
-const meta: Meta<typeof Ellipsis> = {
+const meta: Meta<ExampleEllipsisProps> = {
   title: 'Components/Ellipsis/Documentation',
   component: Ellipsis,
+  argTypes: {
+    trim: {
+      control: { type: 'select' },
+      options: ['end', 'middle'],
+    },
+    tooltip: {
+      control: { type: 'boolean' },
+    },
+  },
 };
 
 export default meta;
-type Story = StoryObj<typeof Ellipsis>;
+type Story = StoryObj<ExampleEllipsisProps>;
 
 export const AdvancedUse: Story = {
   render: AdvancedUseExample,
+  args: advancedDefaultProps,
 };
 
 export const BasicUsage: Story = {
