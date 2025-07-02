@@ -683,6 +683,9 @@ test.describe('Different types of filters', () => {
     await locators.addFilterListItem('Device').click();
     await locators.addFilterSelectOption('Tablet').click();
     await locators.clearSelectButtons.hover();
+
+    await page.locator('[data-ui-name="Hint.Popper"]').waitFor();
+
     await expect(page).toHaveScreenshot();
   });
 
@@ -695,7 +698,7 @@ test.describe('Different types of filters', () => {
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-    await page.waitForTimeout(500);
+    await page.locator('[data-ui-name="Select.Popper"]').waitFor();
     await page.keyboard.press('ArrowDown');
     await page.waitForTimeout(50);
     await page.keyboard.press('Enter');
@@ -707,7 +710,9 @@ test.describe('Different types of filters', () => {
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-    await page.waitForTimeout(500);
+    await page.locator('[data-ui-name="DropdownMenu.Popper"]').waitFor();
+    const ddMenuFirstItem = page.locator('[data-ui-name="DropdownMenu.Item"]').first();
+    await expect(ddMenuFirstItem).toHaveClass(/highlighted/);
     await page.keyboard.press('ArrowDown');
     await page.waitForTimeout(50);
     await page.keyboard.press('ArrowDown');
@@ -718,7 +723,7 @@ test.describe('Different types of filters', () => {
     await page.waitForTimeout(50);
     await page.keyboard.press('Enter');
     await page.keyboard.press('Tab');
-    await page.waitForTimeout(50);
+    await page.locator('[data-ui-name="Hint.Popper"]').waitFor();
     await expect(page).toHaveScreenshot();
     await page.keyboard.press('Enter');
     await expect(locators.addFilterBtn).toBeFocused();

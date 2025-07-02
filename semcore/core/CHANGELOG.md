@@ -6,6 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
+- `useScrollBarWidth` hook.
 - Container focus if there aren't focusable children while `autoFocus='enforced'`
 
 ## [16.0.2] - 2025-06-23
