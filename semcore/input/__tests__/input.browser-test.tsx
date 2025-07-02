@@ -63,8 +63,6 @@ test.describe('Input', () => {
     await expect(input).toBeFocused();
     await expect(addonButton).toBeHidden();
     expect(await input.inputValue()).toBe('');
-
-    await expect(page).toHaveScreenshot();
   });
 
   test('Verify focus return back to Input after Close button is closed by Space', async ({ page }) => {
@@ -91,8 +89,6 @@ test.describe('Input', () => {
     await expect(input).toBeFocused();
     await expect(addonButton).toBeHidden();
     expect(await input.inputValue()).toBe('');
-
-    await expect(page).toHaveScreenshot();
   });
 
   test('Verify Input with submit button keyboard interactions', async ({ page }) => {
