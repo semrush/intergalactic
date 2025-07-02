@@ -26,7 +26,7 @@ class Input extends Component {
   handleClick = () => {
     if (!lastInteraction.isKeyboard) return;
 
-    this.inputRef.current.focus();
+    this.inputRef.current?.focus();
   };
 
   getAddonProps() {
