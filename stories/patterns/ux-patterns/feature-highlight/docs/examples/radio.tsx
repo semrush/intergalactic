@@ -11,6 +11,7 @@ const Demo = () => (
     <RadioGroup
       name='radio'
       aria-labelledby='radioGroup'
+      defaultValue={2}
     >
       <Text id='radioGroup' size={200} mb={2}>
         Highlighted radio button
@@ -18,11 +19,11 @@ const Demo = () => (
       <Flex gap={3} direction='column'>
         <RadioFH value={1}>
           <RadioFH.Value />
+          <RadioFH.AnimatedSparkles count={5} />
           <RadioFH.Text>
             First option
-            <SummaryAI color='icon-primary-ai' ml={2} style={{ verticalAlign: -3 }} />
+            <SummaryAI color='--intergalactic-icon-primary-ai' ml={2} style={{ verticalAlign: -3 }} />
           </RadioFH.Text>
-          <RadioFH.AnimatedSparkles count={5} />
         </RadioFH>
         <Radio value={2} label='Second option' />
       </Flex>
@@ -43,7 +44,7 @@ const Demo = () => (
           <RadioFH.AnimatedSparkles count={5} />
           <RadioFH.Text>
             First option
-            <SummaryAI color='icon-primary-ai' ml={2} style={{ verticalAlign: -2 }} />
+            <SummaryAI color='--intergalactic-icon-primary-ai' ml={2} style={{ verticalAlign: -2 }} />
           </RadioFH.Text>
         </RadioFH>
         <Radio value={2} label='Second option' />

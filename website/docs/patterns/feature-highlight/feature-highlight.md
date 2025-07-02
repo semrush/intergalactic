@@ -32,9 +32,9 @@ To highlight a [Button](../../components/button/button), use the `ButtonFH` comp
 
 For the primary button, use the standard addon.
 
-For the secondary button, use the special icon addon (`HighlightAddon` component), which has a built-in click animation.
+For the secondary button, use the special icon addon (`ButtonFH.Addon` component), which has a built-in click animation.
 
-You can change the number of animated sparkles (`animatedSparkleCount` prop) or disable the animation (`animatedSparkleCount={0}`).
+You can change the number of animated sparkles (`animatedSparkleCount` prop) or disable the animation (set `animatedSparkleCount` to `0` or `undefined`).
 
 ::: sandbox
 
@@ -48,9 +48,9 @@ You can change the number of animated sparkles (`animatedSparkleCount` prop) or 
 
 To highlight a [Checkbox](../../components/checkbox/checkbox), use the `CheckboxFH` component.
 
-You can add animation on click (`AnimatedSparkles` component). You can change the number of animated sparkles (`count` prop).
+You can enable animation on click (`AnimatedSparkles` component). It's possible to change the number of animated sparkles (`count` prop).
 
-You can add more accent by displaying the `SummaryAI` icon with the `icon-primary-ai` color after the text label.
+You can add more accent by displaying the `SummaryAI` icon with the `--intergalactic-icon-primary-ai` color after the text label.
 
 ::: sandbox
 
@@ -62,7 +62,7 @@ You can add more accent by displaying the `SummaryAI` icon with the `icon-primar
 
 ## DataTable
 
-To highlight a [table column](../../table-group/data-table/data-table), display the `SummaryAI` icon with the `icon-primary-ai` color in the column header.
+To highlight a [table column](../../table-group/data-table/data-table), display the `SummaryAI` icon with the `--intergalactic-icon-primary-ai` color in the column header.
 
 ::: sandbox
 
@@ -76,7 +76,7 @@ To highlight a [table column](../../table-group/data-table/data-table), display 
 
 To highlight an [Input](../../components/input/input), use the `InputFH` component.
 
-You can add more accent by using the special icon addon (`HighlightAddon` component) and/or the special badge (`BadgeFH` component).
+You can add more accent by using the special icon addon (`InputFH.Addon` component) and/or the special badge (`BadgeFH` component).
 
 ::: sandbox
 
@@ -104,7 +104,7 @@ To highlight a [Pills.Item](../../components/pills/pills), use the `PillsFH` com
 
 You can add more accent by using the special icon addon (`HighlightedItem.Addon` component), which has a built-in click animation.
 
-You can change the number of animated sparkles (`animatedSparkleCount` prop) or disable the animation (`animatedSparkleCount={0}`).
+It's possible to change the number of animated sparkles (`animatedSparkleCount` prop) or disable the animation (set `animatedSparkleCount` to `0` or `undefined`).
 
 ::: sandbox
 
@@ -118,9 +118,9 @@ You can change the number of animated sparkles (`animatedSparkleCount` prop) or 
 
 To highlight a [Radio button](../../components/radio/radio), use the `RadioFH` component.
 
-You can add animation on click (`AnimatedSparkles` component). You can change the number of animated sparkles (`count` prop).
+You can enable animation on click (`AnimatedSparkles` component). It's possible to change the number of animated sparkles (`count` prop).
 
-You can add more accent by displaying the `SummaryAI` icon with the `icon-primary-ai` color after the text label.
+You can add more accent by displaying the `SummaryAI` icon with the `--intergalactic-icon-primary-ai` color after the text label.
 
 ::: sandbox
 
@@ -148,9 +148,9 @@ You can add more accent by using the special icon addon (`SelectFH.Trigger.Addon
 
 To highlight a [Switch](../../components/switch/switch), use the `SwitchFH` component.
 
-You can add animation on click (`AnimatedSparkles` component). You can change the number of animated sparkles (`count` prop).
+You can enable animation on click (`AnimatedSparkles` component). It's possible to change the number of animated sparkles (`count` prop).
 
-You can add more accent by displaying the `SummaryAI` icon with the `icon-primary-ai` color after the text label.
+You can add more accent by displaying the `SummaryAI` icon with the `--intergalactic-icon-primary-ai` color after the text label.
 
 ::: sandbox
 
@@ -166,7 +166,7 @@ To highlight a [TabLine.Item](../../components/tab-line/tab-line), use the `TabL
 
 You can add more accent by using the special icon addon (`HighlightedItem.Addon` component) before the text, and/or the special badge (`BadgeFH` component) after the text.
 
-The icon addon has a built-in animation. You can change the number of animated sparkles (`animatedSparkleCount` prop) or disable the animation (`animatedSparkleCount={0}`).
+The icon addon has a built-in animation. You can change the number of animated sparkles (`animatedSparkleCount` prop) or disable the animation (set `animatedSparkleCount` to `0` or `undefined`).
 
 ::: sandbox
 
