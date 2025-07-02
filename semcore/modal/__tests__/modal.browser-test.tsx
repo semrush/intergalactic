@@ -170,6 +170,71 @@ test.describe('Modal interactions', () => {
     });
   });
 
+  test('Verify modal without interactive elements inside mouse interactions', async ({ page, browserName }) => {
+    const standPath = 'stories/components/modal/tests/examples/modal-without-focusable.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+    const modal = page.locator('[data-ui-name="Modal"]');
+    const trigger = page.getByRole('button', { name: 'Open modal' });
+    const overlay = page.locator('[data-ui-name="Modal.Overlay"]');
+
+    await test.step('Verify opens click on trigger', async () => {
+      await trigger.click();
+      await modal.waitFor({ state: 'visible' });
+      await expect(modal).toHaveCount(1);
+    });
+
+    await test.step('Verify closed by clicking outside modal', async () => {
+      const overlayBox = await overlay.boundingBox();
+      if (overlayBox) {
+        await page.mouse.click(overlayBox.x + 5, overlayBox.y + 5);
+      }
+      await modal.waitFor({ state: 'hidden' });
+      await expect(modal).toHaveCount(0);
+    });
+
+    await test.step('Verify not closed when clicking inside modal', async () => {
+      await trigger.click();
+      await modal.waitFor({ state: 'visible' });
+      const modalBox = await modal.boundingBox();
+      if (modalBox) {
+        await page.mouse.click(modalBox.x + modalBox.width / 2, modalBox.y + modalBox.height / 2);
+      }
+      await expect(modal).toBeVisible();
+    });
+
+    await test.step('Verify closes by Pressing Escape', async () => {
+      await page.keyboard.press('Escape');
+      await modal.waitFor({ state: 'hidden' });
+      await expect(modal).toHaveCount(0);
+      await expect(trigger).toBeFocused();
+    });
+  });
+
+  test('Verify modal without interactive elements inside keyboard interactions', async ({ page, browserName }) => {
+    const standPath = 'stories/components/modal/tests/examples/modal-without-focusable.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+    const modal = page.locator('[data-ui-name="Modal"]');
+    const trigger = page.getByRole('button', { name: 'Open modal' });
+
+    await test.step('Verify opens click on trigger', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await modal.waitFor({ state: 'visible' });
+      await expect(modal).toHaveCount(1);
+    });
+
+    await test.step('Verify closes by Pressing Escape', async () => {
+      await page.keyboard.press('Escape');
+      await modal.waitFor({ state: 'hidden' });
+      await expect(modal).toHaveCount(0);
+      await expect(trigger).toBeFocused();
+    });
+  });
+
   test('Verify modal in modal mouse interactions', async ({ page, browserName }) => {
     const standPath =
       'stories/components/modal/docs/examples/modal_window_inside_a_modal_window.tsx';
