@@ -37,7 +37,6 @@ class Input extends Component {
     return {
       disabled,
       onMouseDown: this.handleMouseDownAddon,
-      onKeyDown: this.handleKeyDown,
       onClick: this.handleClick,
       size,
     };
