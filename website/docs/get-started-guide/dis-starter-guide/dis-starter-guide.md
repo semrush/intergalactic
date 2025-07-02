@@ -6,17 +6,17 @@ title: For designers
 
 <!-- Welcome to a series of quick video guides to help you get started with the Intergalactic Design System for your product designs. -->
 
-::: loom_video https://www.loom.com/share/70c05f1fbadc457ebcd74af6c31bfbe7?sid=d13fc781-66aa-4fb8-8758-aeba64bb67a8 :::
+::: loom_video Introduction to Intergalactic Design System
+https://www.loom.com/embed/70c05f1fbadc457ebcd74af6c31bfbe7
+:::
 
 <!-- ## How to contribute?
 
 If you're interested in contributing to the Intergalactic Design System, check out this video.
 
-::: loom_video https://www.loom.com/share/2d935c96e823486384cf22142418a72b ::: -->
+::: loom_video https://www.loom.com/embed/2d935c96e823486384cf22142418a72b ::: -->
 
 ## Principles
-
-<!-- ::: loom_video https://www.loom.com/share/7fe17765621346ddbbf0b32c7d57d6bb ::: -->
 
 Great data visualization is key to our UI, so handle charts and tables with care.
 
