@@ -127,9 +127,9 @@ class InlineInputBase extends Component<RootAsProps> {
   }
 
   componentDidUpdate(prevProps: Readonly<RootAsProps>): void {
-    if (prevProps.disabled === this.asProps.disabled) return;
-
-    this.updateInert();
+    if (prevProps.disabled !== this.asProps.disabled) {
+      this.updateInert();
+    }
   }
 
   componentWillUnmount() {

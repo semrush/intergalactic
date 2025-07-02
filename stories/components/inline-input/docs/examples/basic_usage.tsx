@@ -1,7 +1,10 @@
 import InlineInput from '@semcore/inline-input';
+import type { InlineInputProps } from 'inline-input/lib/types';
 import React from 'react';
 
-const Example = () => {
+const BasicUsage = (props: InlineInputProps) => {
+  const { disabled } = props;
+
   return (
     <InlineInput
       w={300}
@@ -9,6 +12,7 @@ const Example = () => {
       onCancel={console.log}
       onChange={console.log}
       onConfirm={console.log}
+      disabled={disabled}
     >
       <InlineInput.Addon htmlFor='basic-example' tag='label'>
         User name:
@@ -20,6 +24,10 @@ const Example = () => {
   );
 };
 
-const Demo = Example;
+export const basicUsageDefaultProps: InlineInputProps = {
+  disabled: false,
+};
 
-export default Demo;
+BasicUsage.defaultProps = basicUsageDefaultProps;
+
+export default BasicUsage;
