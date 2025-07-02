@@ -7,6 +7,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Fixed
 
 - Ellipsis with `trim=middle` cut off text at the end.
+- Incorrect cropping with different font-size.
 
 ## [16.0.3] - 2025-06-23
 
