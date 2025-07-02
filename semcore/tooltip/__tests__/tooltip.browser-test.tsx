@@ -16,6 +16,10 @@ test.describe('Styles', () => {
 
     const descriptionTooltipPopper = page.locator('[data-ui-name="DescriptionTooltip.Popper"]');
 
+    await hintPopper.first().waitFor();
+
+    await expect(page).toHaveScreenshot();
+
     await test.step('Verify hint popper styles', async () => {
       const count1 = await hintPopper.count();
       for (let i = 0; i < count1; i++) {
