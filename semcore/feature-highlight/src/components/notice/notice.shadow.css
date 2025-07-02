@@ -1,5 +1,5 @@
 SHighlightedNotice {
-  background-image: var(--intergalactic-bg-secondary-ai, linear-gradient(90deg, #f9f2ff, #e9f7ff));
+  background-image: var(--intergalactic-bg-secondary-fh, linear-gradient(90deg, #f9f2ff, #e9f7ff));
   border-color: transparent;
   background-clip: padding-box;
   position: relative;
@@ -12,10 +12,8 @@ SHighlightedNotice {
     margin: -1px;
     border-radius: inherit;
 
-    background: var(--intergalactic-border-ai, linear-gradient(90deg, #c695ff, #2bb3ff)
-  ) border-box, var(--intergalactic-border-ai-active, linear-gradient(90deg, #ab6cfe, #008ff8)) padding-box;
-
-    /*background: var(--intergalactic-border-ai, linear-gradient(90deg, #c695ff, #2bb3ff));*/
+    background: var(--intergalactic-border-fh, linear-gradient(90deg, #c695ff, #2bb3ff)
+  ) border-box, var(--intergalactic-border-fh-active, linear-gradient(90deg, #ab6cfe, #008ff8)) padding-box;
   }
 
   & SCloseIcon {

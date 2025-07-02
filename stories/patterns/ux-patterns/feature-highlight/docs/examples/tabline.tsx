@@ -3,7 +3,7 @@ import { TabLineFH, BadgeFH } from '@semcore/feature-highlight';
 import React from 'react';
 
 const Demo = () => (
-  <Flex direction='column' gap={4} alignItems='start'>
+  <Flex direction='column' gap={4}>
 
     <TabLineFH size='m' aria-label='Tabs with highlighted item' defaultValue={1}>
       <TabLineFH.Item value={1}>First option</TabLineFH.Item>

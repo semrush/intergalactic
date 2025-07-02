@@ -4152,107 +4152,107 @@
     "components": []
   },
   {
-    "name": "--intergalactic-bg-primary-ai",
+    "name": "--intergalactic-bg-primary-fh",
     "type": "color",
     "rawValue": "{gray.white}",
     "computedValue": "#ffffff",
-    "description": "Primary background for controls with AI accent.",
+    "description": "Primary background for highlighted controls.",
     "components": []
   },
   {
-    "name": "--intergalactic-bg-primary-ai-hover-active",
+    "name": "--intergalactic-bg-primary-fh-hover-active",
     "type": "color",
     "rawValue": "linear-gradient(90deg, {violet.50}, {blue.50})",
     "computedValue": "linear-gradient(90deg, #f9f2ff, #e9f7ff)",
-    "description": "Primary background for hover and active (selected) state of controls with AI accent.",
+    "description": "Primary background for hover and active (selected) state of highlighted controls.",
     "components": [
       "feature-highlight"
     ]
   },
   {
-    "name": "--intergalactic-bg-secondary-ai",
+    "name": "--intergalactic-bg-secondary-fh",
     "type": "color",
     "rawValue": "linear-gradient(90deg, {violet.50}, {blue.50})",
     "computedValue": "linear-gradient(90deg, #f9f2ff, #e9f7ff)",
-    "description": "Secondary background for the message with AI accent.",
+    "description": "Secondary background for the highlighted message.",
     "components": [
       "feature-highlight"
     ]
   },
   {
-    "name": "--intergalactic-border-ai",
+    "name": "--intergalactic-border-fh",
     "type": "color",
     "rawValue": "linear-gradient(90deg, {violet.300}, {blue.300})",
     "computedValue": "linear-gradient(90deg, #c695ff, #2bb3ff)",
-    "description": "Border for controls with AI accent.",
+    "description": "Border for highlighted controls.",
     "components": [
       "feature-highlight"
     ]
   },
   {
-    "name": "--intergalactic-border-ai-active",
+    "name": "--intergalactic-border-fh-active",
     "type": "color",
     "rawValue": "linear-gradient(90deg, {violet.400}, {blue.400})",
     "computedValue": "linear-gradient(90deg, #ab6cfe, #008ff8)",
-    "description": "Border for the active state of controls with AI accent.",
+    "description": "Border for the active state of highlighted controls.",
     "components": [
       "feature-highlight"
     ]
   },
   {
-    "name": "--intergalactic-control-primary-ai",
+    "name": "--intergalactic-control-primary-fh",
     "type": "color",
     "rawValue": "linear-gradient(90deg, {violet.400}, {blue.400})",
     "computedValue": "linear-gradient(90deg, #ab6cfe, #008ff8)",
-    "description": "Background of the primary control with AI accent.",
+    "description": "Background of the highlighted primary control.",
     "components": [
       "feature-highlight"
     ]
   },
   {
-    "name": "--intergalactic-control-primary-ai-hover",
+    "name": "--intergalactic-control-primary-fh-hover",
     "type": "color",
     "rawValue": "linear-gradient(90deg, {violet.500}, {blue.500})",
     "computedValue": "linear-gradient(90deg, #8649e1, #006dca)",
-    "description": "Hover state of the primary control with AI accent.",
+    "description": "Hover state of the highlighted primary control.",
     "components": [
       "feature-highlight"
     ]
   },
   {
-    "name": "--intergalactic-control-primary-ai-active",
+    "name": "--intergalactic-control-primary-fh-active",
     "type": "color",
     "rawValue": "linear-gradient(90deg, {violet.600}, {blue.600})",
     "computedValue": "linear-gradient(90deg, #5925ab, #044792)",
-    "description": "Active (selected) state of the primary control with AI accent.",
+    "description": "Active (selected) state of the highlighted primary control.",
     "components": [
       "feature-highlight"
     ]
   },
   {
-    "name": "--intergalactic-icon-primary-ai",
+    "name": "--intergalactic-icon-primary-fh",
     "type": "color",
     "rawValue": "{violet.500}",
     "computedValue": "#8649e1",
-    "description": "Primary AI accent icon.",
+    "description": "Primary highlighted icon.",
     "components": [
       "feature-highlight"
     ]
   },
   {
-    "name": "--intergalactic-icon-primary-ai-hover-active",
+    "name": "--intergalactic-icon-primary-fh-hover-active",
     "type": "color",
     "rawValue": "#6B3AB4",
     "computedValue": "#6B3AB4",
-    "description": "Violet background color for the hover and active states of the primary AI accent icon. It’s created using a CSS filter with a brightness(0.8), applied to the violet-500 color.",
+    "description": "Violet background color for the hover and active states of the primary highlighted icon. It’s created using a CSS filter with a brightness(0.8), applied to the violet-500 color.",
     "components": []
   },
   {
-    "name": "--intergalactic-keyboard-focus-ai-outline",
+    "name": "--intergalactic-keyboard-focus-fh-outline",
     "type": "color",
     "rawValue": "linear-gradient(90deg, rgba({violet.400}, 0.5), rgba({blue.400}, 0.5))",
     "computedValue": "linear-gradient(90deg, rgba(171, 108, 254, 0.5), rgba(0, 143, 248, 0.5))",
-    "description": "Color for keyboard focus outline styles for elements with AI accent.",
+    "description": "Color for keyboard focus outline styles for highlighted controls.",
     "components": [
       "feature-highlight"
     ]

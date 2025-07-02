@@ -19,7 +19,7 @@ const Demo = () => (
             <CheckboxFH.AnimatedSparkles count={5} />
             <CheckboxFH.Text>
               First option
-              <SummaryAI color='--intergalactic-icon-primary-ai' ml={2} style={{ verticalAlign: -3 }} />
+              <SummaryAI color='--intergalactic-icon-primary-fh' ml={2} style={{ verticalAlign: -3 }} />
             </CheckboxFH.Text>
           </CheckboxFH>
         </List.Item>
@@ -40,7 +40,7 @@ const Demo = () => (
             <CheckboxFH.AnimatedSparkles count={5} />
             <CheckboxFH.Text>
               First option
-              <SummaryAI color='--intergalactic-icon-primary-ai' ml={2} style={{ verticalAlign: -2 }} />
+              <SummaryAI color='--intergalactic-icon-primary-fh' ml={2} style={{ verticalAlign: -2 }} />
             </CheckboxFH.Text>
           </CheckboxFH>
         </List.Item>

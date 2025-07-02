@@ -13,7 +13,7 @@ class ButtonFHRoot extends Component {
   static style = style;
 
   static defaultProps = {
-    theme: 'ai',
+    theme: 'fh',
   };
 
   state = {
@@ -54,7 +54,7 @@ function HighlightAddon(props: HighLightedButtonAddonProps & { clicked: boolean 
         ? (<Children />)
         : (
             <>
-              <SummaryAI color='--intergalactic-icon-primary-ai' />
+              <SummaryAI color='--intergalactic-icon-primary-fh' />
               {animatedSparkleCount && <AnimatedSparkles show={clicked} count={animatedSparkleCount} />}
             </>
           )}

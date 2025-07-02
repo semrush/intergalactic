@@ -56,7 +56,7 @@ function HighlightedItemAddon(props: HighlightedItemAddonProps & { clicked: bool
         ? (<Children />)
         : (
             <>
-              <SummaryAI color='--intergalactic-icon-primary-ai' />
+              <SummaryAI color='--intergalactic-icon-primary-fh' />
               {clicked && animatedSparkleCount && [...new Array(animatedSparkleCount)].map((_, index) => {
                 return (
                   <Sparkle key={index} index={index} num={animatedSparkleCount} />
