@@ -302,18 +302,39 @@ importers:
 
   semcore/accent-feature:
     dependencies:
-      '@popperjs/core':
-        specifier: 2.11.5
-        version: 2.11.5
-      classnames:
-        specifier: 2.2.6
-        version: 2.2.6
-      csstype:
-        specifier: 3.1.3
-        version: 3.1.3
-      popper-max-size-modifier:
-        specifier: 0.2.0
-        version: 0.2.0(@popperjs/core@2.11.5)
+      '@semcore/badge':
+        specifier: ^16.0.0
+        version: link:../badge
+      '@semcore/base-trigger':
+        specifier: ^16.0.0
+        version: link:../base-trigger
+      '@semcore/button':
+        specifier: ^16.0.0
+        version: link:../button
+      '@semcore/checkbox':
+        specifier: ^16.0.0
+        version: link:../checkbox
+      '@semcore/input':
+        specifier: ^16.0.0
+        version: link:../input
+      '@semcore/notice':
+        specifier: ^16.0.0
+        version: link:../notice
+      '@semcore/pills':
+        specifier: ^16.0.0
+        version: link:../pills
+      '@semcore/radio':
+        specifier: ^16.0.0
+        version: link:../radio
+      '@semcore/select':
+        specifier: ^16.0.0
+        version: link:../select
+      '@semcore/switch':
+        specifier: ^16.0.0
+        version: link:../switch
+      '@semcore/tab-line':
+        specifier: ^16.0.0
+        version: link:../tab-line
     devDependencies:
       '@semcore/base-components':
         specifier: workspace:*
