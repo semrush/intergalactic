@@ -1,8 +1,7 @@
+import { Portal, Flex } from '@semcore/base-components';
 import Button from '@semcore/button';
-import { Flex } from '@semcore/flex-box';
 import type { NoticeGlobalTheme } from '@semcore/notice-global';
 import NoticeGlobal from '@semcore/notice-global';
-import Portal from '@semcore/portal';
 import Select from '@semcore/select';
 import { Text } from '@semcore/typography';
 import React from 'react';

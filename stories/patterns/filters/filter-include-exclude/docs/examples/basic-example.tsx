@@ -1,8 +1,8 @@
-import { ScreenReaderOnly } from '@semcore/ui/flex-box';
+import { ScreenReaderOnly } from '@semcore/ui/base-components';
+import { Flex } from 'intergalactic/base-components';
 import { FilterTrigger } from 'intergalactic/base-trigger';
 import Button from 'intergalactic/button';
 import Dropdown from 'intergalactic/dropdown';
-import { Flex } from 'intergalactic/flex-box';
 import Radio, { RadioGroup } from 'intergalactic/radio';
 import Textarea from 'intergalactic/textarea';
 import { Text } from 'intergalactic/typography';

@@ -6,7 +6,7 @@ import amplitudeHttp from './amplitude-client';
 const clickedPlaygrounds = new Set<string>();
 
 export const initAmplitude = () => {
-  const apiKey = '1e1d36fa96573d0839c6c3ccaffb7f62';
+  const apiKey = import.meta.env.VITE_AMPLITUDE_API_KEY;
 
   amplitudeHttp.init(apiKey);
 };
@@ -88,7 +88,7 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
     return logEvent('link_main:click');
   }
   if (node.classList.contains('devportal-logo')) {
-    return logEvent('link_devportal:click');
+    return logEvent('link_devportal:click', { pathname });
   }
   if (findParent(node, (node) => node.classList.contains('VPNavBarSearch'))) {
     return logEvent('search:click', { pathname });
@@ -219,7 +219,7 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
     if (searchItemA?.tagName === 'A') {
       const item = searchItemA.parentElement;
       const itemId = item.id.split('-');
-      const index = itemId[itemId.length - 1];
+      const index = Number(itemId[itemId.length - 1]);
 
       return logEvent('search:item_selected', {
         item: index + 1,

@@ -1,5 +1,5 @@
+import { Flex, ScreenReaderOnly } from '@semcore/base-components';
 import Button from '@semcore/button';
-import { Flex, ScreenReaderOnly } from '@semcore/flex-box';
 import Radio, { RadioGroup } from '@semcore/radio';
 import Select from '@semcore/select';
 import { Text } from '@semcore/typography';

@@ -3,7 +3,7 @@ To remove after merge of https://github.com/vuejs/vitepress/issues/2257
 Same to https://github.com/vuejs/vitepress/blob/main/src/client/theme-default/components/VPSidebarItem.vue but also support `activeMatch`
 -->
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 import type { DefaultTheme } from 'vitepress/theme'
 import { useSidebarControl } from 'vitepress/dist/client/theme-default/composables/sidebar.js';
 import VPIconChevronRight from 'vitepress/dist/client/theme-default/components/icons/VPIconChevronRight.vue';
@@ -25,8 +25,8 @@ const computeChildrenActiveMatch = (item: Item) => {
 }
 
 const { page } = useData();
-const activeMatch = computed(() => computeActiveMatch(props.item));
 
+const activeMatch = computed(() => computeActiveMatch(props.item));
 const activeMatchedChildrenUncollapse = ref(computeChildrenActiveMatch(props.item))
 
 const {
@@ -38,6 +38,10 @@ const {
   hasChildren,
   toggle,
 } = useSidebarControl(computed(() => props.item))
+
+watch(page, () => {
+  activeMatchedChildrenUncollapse.value = computeChildrenActiveMatch(props.item);
+})
 
 const sectionTag = computed(() => (hasChildren.value ? 'section' : `div`))
 

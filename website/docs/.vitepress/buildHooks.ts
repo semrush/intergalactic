@@ -195,5 +195,65 @@ const buildEnd: UserConfig<DefaultTheme.Config>['buildEnd'] = async ({ outDir })
     });
   }
 };
+const transformPageData: UserConfig<DefaultTheme.Config>['transformPageData'] = (pageData) => {
+  const { filePath, frontmatter: { title, tabs } } = pageData;
 
-export const buildHooks = { transformHtml, buildEnd };
+  /*
+    This regex matches a string consisting of exactly three segments separated by slashes (/), where each segment does not contain a slash.
+    Input: 'components/breadcrumbs/breadcrumbs-code.md'
+    Output:
+      folder - components
+      parentName - breadcrumbs
+      pageName - breadcrumbs-code.md
+  */
+  const [, folder, parentName, pageName] = filePath.match(/^([^/]+)\/([^/]+)\/([^/]+)$/) ?? [];
+
+  if (!folder || !parentName || !pageName) return;
+
+  if (folder === 'content') {
+    pageData.title = `Content: ${title}`;
+    return;
+  }
+
+  if (!tabs) return;
+
+  const tabsArray = (tabs as string).split(', ');
+  const fileNames = tabsArray.map((tab) => {
+    /*
+      This regex matches a function-like pattern with optional quotes around the argument inside parentheses, and captures the argument value.
+      Input: Design('breadcrumbs')
+      Output: breadcrumbs
+    */
+    const [, fileName] = tab.match(/\(['"]?([^'")]+)['"]?\)/) ?? [];
+
+    return fileName || tab;
+  });
+  const baseFileName = fileNames.find((name) => fileNames.every((f) => f.includes(name)));
+
+  const isBasePage = pageName.replace('.md', '') === baseFileName;
+
+  if (isBasePage) return;
+
+  /*
+    Matches strings ending with "-slug.md", where "slug" contains only letters and digits. It's case-insensitive.
+    Input: breadcrumbs-changelog.md
+    Output: changelog
+  */
+  const [, suffix] = pageName.match(/-([a-z0-9]+)\.md$/i) ?? [];
+
+  if (!suffix) return;
+
+  /*
+    This regex matches a pair of parentheses with anything inside, including empty content or multiple characters.
+    It replaces the content inside parentheses + parentheses itself to empty string
+    Input: Design('breadcrumbs')
+    Output: Design
+  */
+  const tabName = tabsArray.find((t) => t.includes(suffix))?.replace(/\(.*\)/, '');
+
+  if (!tabName) return;
+
+  pageData.title = `${title}: ${tabName}`;
+};
+
+export const buildHooks = { transformHtml, buildEnd, transformPageData };

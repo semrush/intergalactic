@@ -12,7 +12,7 @@ import React from 'react';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 import NoticeGlobal from '@semcore/ui/notice-global';
-import { Box } from '@semcore/ui/flex-box';
+import { Box } from '@semcore/ui/base-components';
 
 const THEME = ['neutral', 'info', 'success', 'warning', 'danger'];
 

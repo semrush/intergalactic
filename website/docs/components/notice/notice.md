@@ -13,7 +13,7 @@ import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 import Notice from '@semcore/ui/notice';
 import { Text } from '@semcore/ui/typography';
-import { Box } from '@semcore/ui/flex-box';
+import { Box } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import QuestionAltM from '@semcore/ui/icon/Question/m';
 

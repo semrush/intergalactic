@@ -2,7 +2,7 @@
 title: Chart legend
 fileSource: d3-chart
 docs: true
-tabs: Design('chart-legend'), API('chart-legend-api'), Example('chart-legend-code'), Changelog('d3-chart-changelog')
+tabs: Design('chart-legend'), API('chart-legend-api'), Example('chart-legend-code'), Changelog('chart-legend-changelog')
 ---
 
 ::: react-view

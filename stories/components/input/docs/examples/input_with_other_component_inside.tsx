@@ -1,5 +1,5 @@
 import Badge from '@semcore/badge';
-import { Box } from '@semcore/flex-box';
+import { Box } from '@semcore/base-components';
 import Input from '@semcore/input';
 import Tag from '@semcore/tag';
 import { Text } from '@semcore/typography';

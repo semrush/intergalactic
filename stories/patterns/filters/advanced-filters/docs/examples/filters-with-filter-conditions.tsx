@@ -1,8 +1,8 @@
+import { Flex, ScreenReaderOnly } from '@semcore/base-components';
 import { FilterTrigger } from '@semcore/base-trigger';
 import Button from '@semcore/button';
 import Divider from '@semcore/divider';
 import Dropdown from '@semcore/dropdown';
-import { Flex, ScreenReaderOnly } from '@semcore/flex-box';
 import CloseM from '@semcore/icon/Close/m';
 import MathPlusM from '@semcore/icon/MathPlus/m';
 import TrashM from '@semcore/icon/Trash/m';

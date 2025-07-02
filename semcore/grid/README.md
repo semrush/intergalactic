@@ -1,4 +1,6 @@
-# @semcore/grid
+# @semcore/grid (DEPRECATED)
+
+## This package is deprecated. Use `@semcore/base-components`.
 
 [![version](https://img.shields.io/npm/v/@semcore/grid.svg)](https://www.npmjs.com/@semcore/grid)
 [![downloads](https://img.shields.io/npm/dt/@semcore/grid.svg)](https://www.npmjs.com/package/@semcore/grid)

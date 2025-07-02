@@ -1,6 +1,6 @@
+import { Flex } from '@semcore/base-components';
 import { FilterTrigger } from '@semcore/base-trigger';
 import Button from '@semcore/button';
-import { Flex } from '@semcore/flex-box';
 import Select from '@semcore/select';
 import { Text } from '@semcore/typography';
 import React from 'react';

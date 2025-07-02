@@ -1,4 +1,4 @@
-import { ScreenReaderOnly, Flex } from '@semcore/flex-box';
+import { ScreenReaderOnly, Flex } from '@semcore/base-components';
 import Select, { InputSearch } from '@semcore/select';
 import { Text } from '@semcore/typography';
 import React from 'react';

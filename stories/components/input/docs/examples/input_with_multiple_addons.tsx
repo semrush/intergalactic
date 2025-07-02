@@ -1,5 +1,5 @@
+import { Box } from '@semcore/base-components';
 import { ButtonLink } from '@semcore/button';
-import { Box } from '@semcore/flex-box';
 import CloseM from '@semcore/icon/Close/m';
 import ShowNoM from '@semcore/icon/ShowNo/m';
 import ShowYesM from '@semcore/icon/ShowYes/m';

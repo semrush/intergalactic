@@ -32,7 +32,7 @@ const SuggestSearch = connectAutoComplete(
       clearTimeout(searchTimer);
       searchTimer = setTimeout(() => {
         logEvent('illustration:search', { value });
-      }, 500);
+      }, 400);
 
       return refine(value);
     };

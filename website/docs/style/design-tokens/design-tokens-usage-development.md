@@ -75,7 +75,7 @@ Design token JSON-files [produced by Tokens Studio Figma plugin](https://www.fig
 import React from 'react';
 import '@semcore/core/lib/themes/default.css'; /** TO REMOVE WHEN THEME PR WILL BE MERGED */
 import Button from '@semcore/button';
-import { Box } from '@semcore/flex-box';
+import { Box } from '@semcore/base-components';
 import CheckM from '@semcore/icon/Check/m';
 import CopyM from '@semcore/icon/Copy/m';
 import cx from 'classnames';
