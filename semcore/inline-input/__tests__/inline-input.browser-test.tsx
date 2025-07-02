@@ -685,10 +685,13 @@ test.describe('InlineInput interactions', () => {
 
     await page.keyboard.press('Tab');
     await expect(input).toBeFocused();
+    await expect(confirmControl).not.toBeFocused();
+    await expect(cancelControl).not.toBeFocused();
 
     await page.keyboard.press('Tab');
     await expect(input).not.toBeFocused();
     await expect(confirmControl).toBeFocused();
+    await expect(cancelControl).not.toBeFocused();
 
     await page.keyboard.press('Tab');
     await expect(input).not.toBeFocused();
@@ -701,13 +704,18 @@ test.describe('InlineInput interactions', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en', { disabled: true });
     await page.setContent(htmlContent);
 
-    const input = page.locator('[data-ui-name="InlineInput"]');
-    const value = page.locator('[data-ui-name="InlineInput.Value"]');
+    const input = page.locator('[data-ui-name="InlineInput.Value"]');
+    const confirmControl = page.locator('[data-ui-name="InlineInput.ConfirmControl"] button');
+    const cancelControl = page.locator('[data-ui-name="InlineInput.CancelControl"] button');
 
-    await page.keyboard.press('Tab');
-    await expect(value).not.toBeFocused();
+    for (let i = 0; i < 3; i++) {
+      await page.keyboard.press('Tab');
+      await expect(input).not.toBeFocused();
+      await expect(confirmControl).not.toBeFocused();
+      await expect(cancelControl).not.toBeFocused();
+    }
 
     await input.click({ force: true });
-    await expect(value).not.toBeFocused();
+    await expect(input).not.toBeFocused();
   });
 });
