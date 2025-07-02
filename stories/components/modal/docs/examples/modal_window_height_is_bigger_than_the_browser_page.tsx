@@ -1,5 +1,5 @@
+import { Flex } from '@semcore/base-components';
 import Button from '@semcore/button';
-import { Flex } from '@semcore/flex-box';
 import Modal from '@semcore/modal';
 import React, { useState } from 'react';
 

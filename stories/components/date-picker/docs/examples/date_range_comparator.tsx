@@ -1,5 +1,5 @@
+import { Flex } from '@semcore/base-components';
 import { DateRangeComparator, MonthDateRangeComparator } from '@semcore/date-picker';
-import { Flex } from '@semcore/flex-box';
 import React from 'react';
 
 const Demo = () => {

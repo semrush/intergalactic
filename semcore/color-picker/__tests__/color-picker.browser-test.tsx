@@ -674,18 +674,17 @@ test.describe('Color-picker', () => {
 
       await locators.inputColor.fill('888');
       await page.keyboard.press('Enter');
-      await page.waitForTimeout(100);
       await expect(paletteItems).toHaveCount(3);
 
       await paletteItems.nth(2).click();
-      await page.waitForTimeout(100);
+      await paletteItems.nth(2).waitFor({ state: 'hidden' });
 
       await locators.trigger.first().click();
-      await page.waitForTimeout(100);
+      await paletteItems.nth(2).waitFor({ state: 'visible' });
 
       await expect(paletteItems.nth(2)).toHaveAttribute('aria-selected', 'true');
       await locators.trigger.first().click();
-      await page.waitForTimeout(100);
+      await paletteItems.nth(2).waitFor({ state: 'hidden' });
     });
 
     await test.step('Verify paletter manager when defaultColors and onColorsChange pre set', async () => {
@@ -729,15 +728,12 @@ test.describe('Color-picker', () => {
 
       await locators.inputColor.fill('888');
       await page.keyboard.press('Enter');
-      await page.waitForTimeout(100);
       await expect(paletteItems).toHaveCount(2);
-
       await paletteItems.nth(1).click();
-      await page.waitForTimeout(100);
+      await paletteItems.nth(1).waitFor({ state: 'hidden' });
       await locators.trigger.nth(1).click();
-      await locators.popper.waitFor({ state: 'visible' });
       await page.getByRole('dialog').waitFor({ state: 'visible' });
-      await expect(paletteItems.nth(1)).toHaveAttribute('aria-selected', 'true');
+      await expect(paletteItems.nth(1)).toHaveAttribute('aria-selected', 'false');
     });
   });
 

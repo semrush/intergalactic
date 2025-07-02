@@ -1,7 +1,7 @@
+import { Flex } from '@semcore/base-components';
 import Button from '@semcore/button';
 import Checkbox from '@semcore/checkbox';
 import { DatePicker } from '@semcore/date-picker';
-import { Flex } from '@semcore/flex-box';
 import TimePicker from '@semcore/time-picker';
 import { Text } from '@semcore/typography';
 import React from 'react';

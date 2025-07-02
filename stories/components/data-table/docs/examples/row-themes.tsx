@@ -1,5 +1,5 @@
+import { Box } from '@semcore/base-components';
 import { DataTable } from '@semcore/data-table';
-import { Box } from '@semcore/flex-box';
 import React from 'react';
 
 const styles = ['success', 'info', 'muted', 'warning', 'danger'];

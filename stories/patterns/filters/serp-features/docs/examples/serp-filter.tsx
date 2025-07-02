@@ -1,9 +1,8 @@
+import { Flex, Box, ScreenReaderOnly, ScrollArea, hideScrollBarsFromScreenReadersContext } from '@semcore/base-components';
 import { FilterTrigger } from '@semcore/base-trigger';
 import Button, { ButtonLink } from '@semcore/button';
 import Ellipsis from '@semcore/ellipsis';
-import { Flex, Box, ScreenReaderOnly } from '@semcore/flex-box';
 import ReloadIcon from '@semcore/icon/Reload/m';
-import ScrollAreaComponent, { hideScrollBarsFromScreenReadersContext } from '@semcore/scroll-area';
 import Select, { InputSearch } from '@semcore/select';
 import { Text } from '@semcore/typography';
 import React from 'react';
@@ -228,7 +227,7 @@ const Demo = () => {
                   </Select.Option>
                 )}
                 <hideScrollBarsFromScreenReadersContext.Provider value={true}>
-                  <ScrollAreaComponent
+                  <ScrollArea
                     shadow={true}
                     hMax='224px'
                     wMin='224px'
@@ -236,7 +235,7 @@ const Demo = () => {
                     p={0}
                     orientation='vertical'
                   >
-                    <ScrollAreaComponent.Container tabIndex={undefined}>
+                    <ScrollArea.Container tabIndex={undefined}>
                       {options.map((option) => {
                         return (
                           <Select.Option
@@ -276,9 +275,9 @@ const Demo = () => {
                               Nothing found
                             </Text>
                           )}
-                    </ScrollAreaComponent.Container>
-                    <ScrollAreaComponent.Bar orientation='vertical' />
-                  </ScrollAreaComponent>
+                    </ScrollArea.Container>
+                    <ScrollArea.Bar orientation='vertical' />
+                  </ScrollArea>
                 </hideScrollBarsFromScreenReadersContext.Provider>
 
                 {/* <Select.Divider mt={0} role={''} use:aria-orientation={undefined} /> */}

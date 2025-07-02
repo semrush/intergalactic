@@ -1,6 +1,6 @@
+import { Flex } from '@semcore/base-components';
 import Checkbox from '@semcore/checkbox';
 import { Donut, Plot } from '@semcore/d3-chart';
-import { Flex } from '@semcore/flex-box';
 import React from 'react';
 
 const data = { a: 3, b: 1, c: 2 };

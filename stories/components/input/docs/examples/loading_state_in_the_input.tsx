@@ -1,4 +1,4 @@
-import { Box, ScreenReaderOnly } from '@semcore/flex-box';
+import { Box, ScreenReaderOnly } from '@semcore/base-components';
 import Input from '@semcore/input';
 import Spin from '@semcore/spin';
 import { Text } from '@semcore/typography';

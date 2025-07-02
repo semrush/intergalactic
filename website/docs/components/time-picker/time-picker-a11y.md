@@ -1,5 +1,6 @@
 ---
 title: TimePicker
+titleTemplate: :title A11y | Intergalactic Design System
 fileSource: time-picker
 a11y: AA
 tabs: Design('time-picker'), A11y('time-picker-a11y'), API('time-picker-api'), Example('time-picker-code'), Changelog('time-picker-changelog')
@@ -49,4 +50,4 @@ Table: Roles and attributes
 
 ## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
+Find more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).

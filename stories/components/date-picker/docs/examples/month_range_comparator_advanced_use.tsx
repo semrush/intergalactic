@@ -1,5 +1,5 @@
+import { Flex } from '@semcore/base-components';
 import { MonthDateRangeComparator } from '@semcore/date-picker';
-import { Flex } from '@semcore/flex-box';
 import WarningIcon from '@semcore/icon/Warning/m';
 import Notice from '@semcore/notice';
 import { Text } from '@semcore/typography';

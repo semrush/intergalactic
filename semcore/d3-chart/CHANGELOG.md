@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.6] - 2025-06-30
+
+### Fixed
+
+- a11y error - "SVG element missing accessible name".
+
 ## [16.0.5] - 2025-06-23
 
 ### Changed

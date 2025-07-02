@@ -1,5 +1,5 @@
+import { Flex } from '@semcore/base-components';
 import Button from '@semcore/button';
-import { Flex } from '@semcore/flex-box';
 import QuestionAltM from '@semcore/icon/Question/m';
 import ThumbUpM from '@semcore/icon/ThumbUp/m';
 import WarningM from '@semcore/icon/Warning/m';

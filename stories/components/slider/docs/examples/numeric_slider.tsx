@@ -1,4 +1,4 @@
-import { Box, Flex } from '@semcore/flex-box';
+import { Box, Flex } from '@semcore/base-components';
 import InputNumber from '@semcore/input-number';
 import Slider from '@semcore/slider';
 import Tooltip from '@semcore/tooltip';

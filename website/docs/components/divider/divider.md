@@ -9,7 +9,7 @@ tabs: Design('divider'), A11y('divider-a11y'), API('divider-api'), Example('divi
 <script lang="tsx">
 import React from 'react';
 import Divider from '@semcore/ui/divider';
-import { Flex } from '@semcore/ui/flex-box';
+import { Flex } from '@semcore/ui/base-components';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 const USE = ['primary', 'secondary'];

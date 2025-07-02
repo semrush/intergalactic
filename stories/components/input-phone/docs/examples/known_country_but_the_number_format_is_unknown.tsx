@@ -1,6 +1,6 @@
+import { Flex } from '@semcore/base-components';
 import { ButtonLink } from '@semcore/button';
 import Flag, { iso2Name } from '@semcore/flags';
-import { Flex } from '@semcore/flex-box';
 import CloseM from '@semcore/icon/Close/m';
 import Input from '@semcore/input';
 import { Text } from '@semcore/typography';

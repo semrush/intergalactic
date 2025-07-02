@@ -1,4 +1,4 @@
-import { createBreakpoints } from '@semcore/breakpoints';
+import { createBreakpoints } from '@semcore/base-components';
 import React from 'react';
 
 const meadiaQueries = [

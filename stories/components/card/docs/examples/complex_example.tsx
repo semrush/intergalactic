@@ -1,7 +1,7 @@
+import { Flex } from '@semcore/base-components';
 import { LinkTrigger } from '@semcore/base-trigger';
 import Button from '@semcore/button';
 import Card from '@semcore/card';
-import { Flex } from '@semcore/flex-box';
 import Close from '@semcore/icon/Close/m';
 import Select from '@semcore/select';
 import { Text } from '@semcore/typography';

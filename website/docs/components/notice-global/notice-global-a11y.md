@@ -31,4 +31,4 @@ Table: Roles & attributes
 
 ## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
+Find more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).

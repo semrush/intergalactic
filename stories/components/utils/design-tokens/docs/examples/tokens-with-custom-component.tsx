@@ -1,5 +1,5 @@
+import { Box, Flex } from '@semcore/base-components';
 import { ThemeProvider } from '@semcore/core/lib/utils/ThemeProvider';
-import { Box, Flex } from '@semcore/flex-box';
 import Switch from '@semcore/switch';
 import React from 'react';
 
