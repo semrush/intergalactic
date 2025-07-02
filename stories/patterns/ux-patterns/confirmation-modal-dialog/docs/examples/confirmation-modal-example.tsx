@@ -5,7 +5,6 @@ import Modal from '@semcore/modal';
 import Tooltip from '@semcore/tooltip';
 import { Text, List } from '@semcore/typography';
 import React from 'react';
-import '@semcore/core/lib/theme/themes/default.css';
 import type { SubmitHandler } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
 

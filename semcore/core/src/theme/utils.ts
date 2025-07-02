@@ -22,9 +22,10 @@ type TokensInput = {
     };
 };
 
-export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: string) => {
+export const processTokens = (base: TokensInput, tokens: TokensInput, featureHighlight: TokensInput, prefix: string) => {
   const values: { [tokenName: string]: string } = {};
   const basicTokens = new Set<string>();
+  const highlightTokens = new Set<string>();
   const modifications: {
     [tokenName: string]: {
       type: 'lighten' | 'darken' | 'alpha';
@@ -56,13 +57,13 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
     }
     | DesignTokenTree;
   type DesignTokenTree = { [childrenNodeName: string]: DesignTokenNode };
-  const traverse = (node: DesignTokenNode, pathParts: string[] = [], isBasic?: boolean) => {
+  const traverse = (node: DesignTokenNode, pathParts: string[] = [], setToAdd?: Set<string>) => {
     for (const key in node) {
       if (key === 'type') continue;
       if (key === 'value') continue;
       if (key === 'description') continue;
       if (key === '$extensions') continue;
-      traverse((node as any)[key], [...pathParts, key], isBasic);
+      traverse((node as any)[key], [...pathParts, key], setToAdd);
     }
     if ('type' in node && typeof node.type === 'string') {
       const path = pathParts.join('-');
@@ -75,9 +76,8 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
         throw new Error(`Duplicated design token "${path}"`);
       }
       values[path] = node.value;
-      if (isBasic) {
-        basicTokens.add(path);
-      }
+      setToAdd?.add(path);
+
       if (typeof node.description === 'string') descriptions[path] = node.description;
       if (node.$extensions) {
         for (const extension in node.$extensions) {
@@ -92,8 +92,9 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
     }
   };
 
-  traverse(base, [], true);
+  traverse(base, [], basicTokens);
   traverse(tokens);
+  traverse(featureHighlight, [], highlightTokens);
 
   const resolveColor = (color: string): string => {
     if (color.includes('linear-gradient')) {
@@ -258,16 +259,18 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
   }
 
   const processedTokens: { name: string; value: string; description: string }[] = [];
+  const highlightsTokens: { name: string; value: string; description: string }[] = [];
+
   for (const token in values) {
     const isBase = basicTokens.has(token);
-    processedTokens.push({
+    (highlightTokens.has(token) ? highlightsTokens : processedTokens).push({
       name: isBase ? `--${token}` : `--${prefix}-${token}`,
       description: descriptions[token],
       value: values[token],
     });
   }
 
-  return { processedTokens, values, types, rawValues, descriptions, basicTokens };
+  return { processedTokens, highlightsTokens, values, types, rawValues, descriptions, basicTokens };
 };
 
 export const tokensToCss = (

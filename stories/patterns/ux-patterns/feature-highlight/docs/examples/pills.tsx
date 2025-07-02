@@ -1,27 +1,27 @@
-import { PillsAF } from '@semcore/accent-feature';
 import { Flex } from '@semcore/base-components';
+import { PillsFH } from '@semcore/feature-highlight';
 import React from 'react';
 
 const Demo = () => (
   <Flex direction='column' gap={4} alignItems='start'>
 
-    <PillsAF defaultValue={1} aria-label='Pills with highlighted item'>
-      <PillsAF.Item value={1}>One</PillsAF.Item>
-      <PillsAF.AccentItem value={2}>
-        <PillsAF.AccentItem.Addon animatedSparkleCount={5} />
-        <PillsAF.AccentItem.Text>Two</PillsAF.AccentItem.Text>
-      </PillsAF.AccentItem>
-      <PillsAF.Item value={3}>Three</PillsAF.Item>
-    </PillsAF>
+    <PillsFH defaultValue={1} aria-label='Pills with highlighted item'>
+      <PillsFH.Item value={1}>One</PillsFH.Item>
+      <PillsFH.HighlightedItem value={2}>
+        <PillsFH.HighlightedItem.Addon animatedSparkleCount={5} />
+        <PillsFH.HighlightedItem.Text>Two</PillsFH.HighlightedItem.Text>
+      </PillsFH.HighlightedItem>
+      <PillsFH.Item value={3}>Three</PillsFH.Item>
+    </PillsFH>
 
-    <PillsAF defaultValue={3} aria-label='Large pills with highlighted item' size='l'>
-      <PillsAF.Item value={1}>One</PillsAF.Item>
-      <PillsAF.Item value={2}>Two</PillsAF.Item>
-      <PillsAF.AccentItem value={3}>
-        <PillsAF.AccentItem.Addon animatedSparkleCount={5} />
-        <PillsAF.AccentItem.Text>Three</PillsAF.AccentItem.Text>
-      </PillsAF.AccentItem>
-    </PillsAF>
+    <PillsFH defaultValue={3} aria-label='Large pills with highlighted item' size='l'>
+      <PillsFH.Item value={1}>One</PillsFH.Item>
+      <PillsFH.Item value={2}>Two</PillsFH.Item>
+      <PillsFH.HighlightedItem value={3}>
+        <PillsFH.HighlightedItem.Addon animatedSparkleCount={5} />
+        <PillsFH.HighlightedItem.Text>Three</PillsFH.HighlightedItem.Text>
+      </PillsFH.HighlightedItem>
+    </PillsFH>
 
   </Flex>
 );

@@ -1,8 +1,8 @@
-import { BadgeAF } from '@semcore/accent-feature';
+import { BadgeFH } from '@semcore/feature-highlight';
 import React from 'react';
 
 const Demo = () => (
-  <BadgeAF>AI-powered</BadgeAF>
+  <BadgeFH>AI-powered</BadgeFH>
 );
 
 export default Demo;

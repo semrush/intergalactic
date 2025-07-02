@@ -453,16 +453,6 @@
           "type": "color",
           "description": "Accent background for the advertising banners and controls."
         },
-        "ai": {
-          "value": "{gray.white}",
-          "type": "color",
-          "description": "Primary background for controls with AI accent."
-        },
-        "ai-hover-active": {
-          "value": "linear-gradient(90deg, {violet.50}, {blue.50})",
-          "type": "color",
-          "description": "Primary background for hover and active (selected) state of controls with AI accent."
-        },
         "muted": {
           "value": "{gray.500}",
           "type": "color",
@@ -589,11 +579,6 @@
           "value": "{violet.200}",
           "type": "color",
           "description": "Active (selected) state of the secondary background for the advertising message you want to accent."
-        },
-        "ai": {
-          "value": "linear-gradient(90deg, {violet.50}, {blue.50})",
-          "type": "color",
-          "description": "Secondary background for the message with AI accent."
         }
       },
       "highlight-results": {
@@ -790,16 +775,6 @@
         "type": "color",
         "description": "Active border in components with warning intention."
       },
-      "ai": {
-        "value": "linear-gradient(90deg, {violet.300}, {blue.300})",
-        "type": "color",
-        "description": "Border for controls with AI accent."
-      },
-      "ai-active": {
-        "value": "linear-gradient(90deg, {violet.400}, {blue.400})",
-        "type": "color",
-        "description": "Border for the active state of controls with AI accent."
-      },
       "primary-invert": {
         "value": "{gray.white}",
         "type": "color",
@@ -912,21 +887,6 @@
           "value": "{violet.500}",
           "type": "color",
           "description": "Active (selected) state of the advertising primary control."
-        },
-        "ai": {
-          "value": "linear-gradient(90deg, {violet.400}, {blue.400})",
-          "type": "color",
-          "description": "Background of the primary control with AI accent."
-        },
-        "ai-hover": {
-          "value": "linear-gradient(90deg, {violet.500}, {blue.500})",
-          "type": "color",
-          "description": "Hover state of the primary control with AI accent."
-        },
-        "ai-active": {
-          "value": "linear-gradient(90deg, {violet.600}, {blue.600})",
-          "type": "color",
-          "description": "Active (selected) state of the primary control with AI accent."
         },
         "invert": {
           "value": "{gray.white}",
@@ -1090,16 +1050,6 @@
           "value": "#CC5024",
           "type": "color",
           "description": "Orange background color for the hover and active states of the primary warning icon. It’s created using a CSS filter with a brightness(0.8), applied to the orange-500 color."
-        },
-        "ai": {
-          "value": "{violet.500}",
-          "type": "color",
-          "description": "Primary AI accent icon."
-        },
-        "ai-hover-active": {
-          "value": "#6B3AB4",
-          "type": "color",
-          "description": "Violet background color for the hover and active states of the primary AI accent icon. It’s created using a CSS filter with a brightness(0.8), applied to the violet-500 color."
         },
         "invert": {
           "value": "{gray.white}",
@@ -1622,19 +1572,6 @@
       "value": "0px 0px 0px 3px {keyboard-focus.outline-invert}",
       "type": "boxShadow",
       "description": "Default keyboard focus styles for using with dark background."
-    },
-    "keyboard-focus-ai": {
-      "value": {
-        "width": "3px",
-        "color": "{keyboard-focus-ai.outline}"
-      },
-      "type": "border",
-      "description": "Keyboard focus styles for elements with AI accent.",
-      "outline": {
-        "value": "linear-gradient(90deg, rgba({violet.400}, 0.5), rgba({blue.400}, 0.5))",
-        "type": "color",
-        "description": "Color for keyboard focus outline styles for elements with AI accent."
-      }
     },
     "base": {
       "value": "Inter",
@@ -2601,6 +2538,87 @@
         "value": "{duration.fast}",
         "type": "other",
         "description": "Use for Summary or Counter."
+      }
+    }
+  },
+  "featureHighlight": {
+    "bg": {
+      "primary": {
+        "ai": {
+          "value": "{gray.white}",
+          "type": "color",
+          "description": "Primary background for controls with AI accent."
+        },
+        "ai-hover-active": {
+          "value": "linear-gradient(90deg, {violet.50}, {blue.50})",
+          "type": "color",
+          "description": "Primary background for hover and active (selected) state of controls with AI accent."
+        }
+      },
+      "secondary": {
+        "ai": {
+          "value": "linear-gradient(90deg, {violet.50}, {blue.50})",
+          "type": "color",
+          "description": "Secondary background for the message with AI accent."
+        }
+      }
+    },
+    "border": {
+      "ai": {
+        "value": "linear-gradient(90deg, {violet.300}, {blue.300})",
+        "type": "color",
+        "description": "Border for controls with AI accent."
+      },
+      "ai-active": {
+        "value": "linear-gradient(90deg, {violet.400}, {blue.400})",
+        "type": "color",
+        "description": "Border for the active state of controls with AI accent."
+      }
+    },
+    "control": {
+      "primary": {
+        "ai": {
+          "value": "linear-gradient(90deg, {violet.400}, {blue.400})",
+          "type": "color",
+          "description": "Background of the primary control with AI accent."
+        },
+        "ai-hover": {
+          "value": "linear-gradient(90deg, {violet.500}, {blue.500})",
+          "type": "color",
+          "description": "Hover state of the primary control with AI accent."
+        },
+        "ai-active": {
+          "value": "linear-gradient(90deg, {violet.600}, {blue.600})",
+          "type": "color",
+          "description": "Active (selected) state of the primary control with AI accent."
+        }
+      }
+    },
+    "icon": {
+      "primary": {
+        "ai": {
+          "value": "{violet.500}",
+          "type": "color",
+          "description": "Primary AI accent icon."
+        },
+        "ai-hover-active": {
+          "value": "#6B3AB4",
+          "type": "color",
+          "description": "Violet background color for the hover and active states of the primary AI accent icon. It’s created using a CSS filter with a brightness(0.8), applied to the violet-500 color."
+        }
+      }
+    },
+    "keyboard-focus-ai": {
+      "value": {
+        "width": "3px",
+        "color": "{keyboard-focus-ai.outline}"
+      },
+      "type": "border",
+      "description": "Keyboard focus styles for elements with AI accent.",
+      "outline": {
+        "value": "linear-gradient(90deg, rgba({violet.400}, 0.5), rgba({blue.400}, 0.5))",
+        "type": "color",
+        "description": "Color for keyboard focus outline styles for elements with AI accent."
       }
     }
   }

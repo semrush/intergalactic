@@ -1,6 +1,6 @@
-import { CheckboxAF } from '@semcore/accent-feature';
 import { Flex } from '@semcore/base-components';
 import Checkbox from '@semcore/checkbox';
+import { CheckboxFH } from '@semcore/feature-highlight';
 import SummaryAI from '@semcore/icon/SummaryAI/m';
 import { Text, List } from '@semcore/typography';
 import React from 'react';
@@ -14,14 +14,14 @@ const Demo = () => (
       </Text>
       <List marker='' m={0} p={0}>
         <List.Item p={0} mb={2}>
-          <CheckboxAF>
-            <CheckboxAF.Value />
-            <CheckboxAF.AnimatedSparkles count={5} />
-            <CheckboxAF.Text>
+          <CheckboxFH>
+            <CheckboxFH.Value />
+            <CheckboxFH.AnimatedSparkles count={5} />
+            <CheckboxFH.Text>
               First option
               <SummaryAI color='icon-primary-ai' ml={2} style={{ verticalAlign: -3 }} />
-            </CheckboxAF.Text>
-          </CheckboxAF>
+            </CheckboxFH.Text>
+          </CheckboxFH>
         </List.Item>
         <List.Item p={0}>
           <Checkbox label='Second option' />
@@ -35,14 +35,14 @@ const Demo = () => (
       </Text>
       <List marker='' m={0} p={0}>
         <List.Item p={0} mb={2}>
-          <CheckboxAF size='l'>
-            <CheckboxAF.Value checked />
-            <CheckboxAF.AnimatedSparkles count={5} />
-            <CheckboxAF.Text>
+          <CheckboxFH size='l'>
+            <CheckboxFH.Value checked />
+            <CheckboxFH.AnimatedSparkles count={5} />
+            <CheckboxFH.Text>
               First option
               <SummaryAI color='icon-primary-ai' ml={2} style={{ verticalAlign: -2 }} />
-            </CheckboxAF.Text>
-          </CheckboxAF>
+            </CheckboxFH.Text>
+          </CheckboxFH>
         </List.Item>
         <List.Item p={0}>
           <Checkbox size='l' label='Second option' />

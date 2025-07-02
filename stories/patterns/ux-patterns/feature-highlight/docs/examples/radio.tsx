@@ -1,5 +1,5 @@
-import { RadioAF } from '@semcore/accent-feature';
 import { Flex } from '@semcore/base-components';
+import { RadioFH } from '@semcore/feature-highlight';
 import SummaryAI from '@semcore/icon/SummaryAI/m';
 import Radio, { RadioGroup } from '@semcore/radio';
 import { Text } from '@semcore/typography';
@@ -16,14 +16,14 @@ const Demo = () => (
         Highlighted radio button
       </Text>
       <Flex gap={3} direction='column'>
-        <RadioAF value={1}>
-          <RadioAF.Value />
-          <RadioAF.Text>
+        <RadioFH value={1}>
+          <RadioFH.Value />
+          <RadioFH.Text>
             First option
             <SummaryAI color='icon-primary-ai' ml={2} style={{ verticalAlign: -3 }} />
-          </RadioAF.Text>
-          <RadioAF.AnimatedSparkles count={5} />
-        </RadioAF>
+          </RadioFH.Text>
+          <RadioFH.AnimatedSparkles count={5} />
+        </RadioFH>
         <Radio value={2} label='Second option' />
       </Flex>
     </RadioGroup>
@@ -38,14 +38,14 @@ const Demo = () => (
         Large highlighted radio button
       </Text>
       <Flex gap={3} direction='column'>
-        <RadioAF value={1}>
-          <RadioAF.Value />
-          <RadioAF.AnimatedSparkles count={5} />
-          <RadioAF.Text>
+        <RadioFH value={1}>
+          <RadioFH.Value />
+          <RadioFH.AnimatedSparkles count={5} />
+          <RadioFH.Text>
             First option
             <SummaryAI color='icon-primary-ai' ml={2} style={{ verticalAlign: -2 }} />
-          </RadioAF.Text>
-        </RadioAF>
+          </RadioFH.Text>
+        </RadioFH>
         <Radio value={2} label='Second option' />
       </Flex>
     </RadioGroup>

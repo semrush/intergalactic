@@ -117,24 +117,6 @@
     "components": []
   },
   {
-    "name": "--intergalactic-bg-primary-ai",
-    "type": "color",
-    "rawValue": "{gray.white}",
-    "computedValue": "#ffffff",
-    "description": "Primary background for controls with AI accent.",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-bg-primary-ai-hover-active",
-    "type": "color",
-    "rawValue": "linear-gradient(90deg, {violet.50}, {blue.50})",
-    "computedValue": "linear-gradient(90deg, #f9f2ff, #e9f7ff)",
-    "description": "Primary background for hover and active (selected) state of controls with AI accent.",
-    "components": [
-      "accent-feature"
-    ]
-  },
-  {
     "name": "--intergalactic-bg-primary-muted",
     "type": "color",
     "rawValue": "{gray.500}",
@@ -366,16 +348,6 @@
     "components": []
   },
   {
-    "name": "--intergalactic-bg-secondary-ai",
-    "type": "color",
-    "rawValue": "linear-gradient(90deg, {violet.50}, {blue.50})",
-    "computedValue": "linear-gradient(90deg, #f9f2ff, #e9f7ff)",
-    "description": "Secondary background for the message with AI accent.",
-    "components": [
-      "accent-feature"
-    ]
-  },
-  {
     "name": "--intergalactic-bg-highlight-results",
     "type": "color",
     "rawValue": "rgba({yellow.300}, 0.4)",
@@ -401,7 +373,6 @@
     "computedValue": "#191b23",
     "description": "Primary text.",
     "components": [
-      "accent-feature",
       "accordion",
       "base-components",
       "base-trigger",
@@ -416,6 +387,7 @@
       "dropdown",
       "dropdown-menu",
       "errors",
+      "feature-highlight",
       "feature-popover",
       "format-text",
       "fullscreen-modal",
@@ -445,7 +417,6 @@
     "computedValue": "#6c6e79",
     "description": "Secondary text.",
     "components": [
-      "accent-feature",
       "breadcrumbs",
       "bulk-textarea",
       "button",
@@ -455,6 +426,7 @@
       "date-picker",
       "dropdown",
       "dropdown-menu",
+      "feature-highlight",
       "flags",
       "format-text",
       "fullscreen-modal",
@@ -521,10 +493,10 @@
     "computedValue": "#ffffff",
     "description": "Inverted version of the primary text.",
     "components": [
-      "accent-feature",
       "button",
       "date-picker",
       "dot",
+      "feature-highlight",
       "notice-bubble",
       "notice-global",
       "tag",
@@ -715,7 +687,6 @@
     "computedValue": "#c4c7cf",
     "description": "Neutral primary border.",
     "components": [
-      "accent-feature",
       "base-trigger",
       "bulk-textarea",
       "button",
@@ -725,6 +696,7 @@
       "date-picker",
       "divider",
       "dropdown",
+      "feature-highlight",
       "feedback-form",
       "fullscreen-modal",
       "inline-input",
@@ -860,26 +832,6 @@
     "components": []
   },
   {
-    "name": "--intergalactic-border-ai",
-    "type": "color",
-    "rawValue": "linear-gradient(90deg, {violet.300}, {blue.300})",
-    "computedValue": "linear-gradient(90deg, #c695ff, #2bb3ff)",
-    "description": "Border for controls with AI accent.",
-    "components": [
-      "accent-feature"
-    ]
-  },
-  {
-    "name": "--intergalactic-border-ai-active",
-    "type": "color",
-    "rawValue": "linear-gradient(90deg, {violet.400}, {blue.400})",
-    "computedValue": "linear-gradient(90deg, #ab6cfe, #008ff8)",
-    "description": "Border for the active state of controls with AI accent.",
-    "components": [
-      "accent-feature"
-    ]
-  },
-  {
     "name": "--intergalactic-border-primary-invert",
     "type": "color",
     "rawValue": "{gray.white}",
@@ -957,10 +909,10 @@
     "computedValue": "#008ff8",
     "description": "Background of the regular primary control.",
     "components": [
-      "accent-feature",
       "button",
       "checkbox",
       "dropdown",
+      "feature-highlight",
       "radio",
       "select",
       "slider",
@@ -1111,36 +1063,6 @@
     ]
   },
   {
-    "name": "--intergalactic-control-primary-ai",
-    "type": "color",
-    "rawValue": "linear-gradient(90deg, {violet.400}, {blue.400})",
-    "computedValue": "linear-gradient(90deg, #ab6cfe, #008ff8)",
-    "description": "Background of the primary control with AI accent.",
-    "components": [
-      "accent-feature"
-    ]
-  },
-  {
-    "name": "--intergalactic-control-primary-ai-hover",
-    "type": "color",
-    "rawValue": "linear-gradient(90deg, {violet.500}, {blue.500})",
-    "computedValue": "linear-gradient(90deg, #8649e1, #006dca)",
-    "description": "Hover state of the primary control with AI accent.",
-    "components": [
-      "accent-feature"
-    ]
-  },
-  {
-    "name": "--intergalactic-control-primary-ai-active",
-    "type": "color",
-    "rawValue": "linear-gradient(90deg, {violet.600}, {blue.600})",
-    "computedValue": "linear-gradient(90deg, #5925ab, #044792)",
-    "description": "Active (selected) state of the primary control with AI accent.",
-    "components": [
-      "accent-feature"
-    ]
-  },
-  {
     "name": "--intergalactic-control-primary-invert",
     "type": "color",
     "rawValue": "{gray.white}",
@@ -1177,8 +1099,8 @@
     "computedValue": "rgba(138, 142, 155, 0.1)",
     "description": "Background of the regular secondary control.",
     "components": [
-      "accent-feature",
-      "button"
+      "button",
+      "feature-highlight"
     ]
   },
   {
@@ -1188,8 +1110,8 @@
     "computedValue": "rgba(138, 142, 155, 0.2)",
     "description": "Hover state of the regular secondary control.",
     "components": [
-      "accent-feature",
-      "button"
+      "button",
+      "feature-highlight"
     ]
   },
   {
@@ -1199,8 +1121,8 @@
     "computedValue": "rgba(138, 142, 155, 0.3)",
     "description": "Active (selected) state of the regular secondary control.",
     "components": [
-      "accent-feature",
-      "button"
+      "button",
+      "feature-highlight"
     ]
   },
   {
@@ -1364,11 +1286,11 @@
     "computedValue": "#6c6e79",
     "description": "Primary neutral icon.",
     "components": [
-      "accent-feature",
       "accordion",
       "base-trigger",
       "carousel",
       "drag-and-drop",
+      "feature-highlight",
       "format-text",
       "fullscreen-modal",
       "notice",
@@ -1382,7 +1304,7 @@
     "computedValue": "#565861",
     "description": "Gray background color for the hover and active states of the primary neutral icon. It’s created using a CSS filter with a brightness(0.8), applied to the gray-500 color.",
     "components": [
-      "accent-feature",
+      "feature-highlight",
       "fullscreen-modal",
       "notice"
     ]
@@ -1463,24 +1385,6 @@
     "components": [
       "notice"
     ]
-  },
-  {
-    "name": "--intergalactic-icon-primary-ai",
-    "type": "color",
-    "rawValue": "{violet.500}",
-    "computedValue": "#8649e1",
-    "description": "Primary AI accent icon.",
-    "components": [
-      "accent-feature"
-    ]
-  },
-  {
-    "name": "--intergalactic-icon-primary-ai-hover-active",
-    "type": "color",
-    "rawValue": "#6B3AB4",
-    "computedValue": "#6B3AB4",
-    "description": "Violet background color for the hover and active states of the primary AI accent icon. It’s created using a CSS filter with a brightness(0.8), applied to the violet-500 color.",
-    "components": []
   },
   {
     "name": "--intergalactic-icon-primary-invert",
@@ -2319,16 +2223,6 @@
     "components": []
   },
   {
-    "name": "--intergalactic-keyboard-focus-ai-outline",
-    "type": "color",
-    "rawValue": "linear-gradient(90deg, rgba({violet.400}, 0.5), rgba({blue.400}, 0.5))",
-    "computedValue": "linear-gradient(90deg, rgba(171, 108, 254, 0.5), rgba(0, 143, 248, 0.5))",
-    "description": "Color for keyboard focus outline styles for elements with AI accent.",
-    "components": [
-      "accent-feature"
-    ]
-  },
-  {
     "name": "--intergalactic-base",
     "type": "fontFamilies",
     "rawValue": "Inter",
@@ -3084,10 +2978,10 @@
     "computedValue": "4px",
     "description": "Use for rounding addons and small controls like Checkbox.",
     "components": [
-      "accent-feature",
       "button",
       "checkbox",
       "dropdown",
+      "feature-highlight",
       "select"
     ]
   },
@@ -3149,7 +3043,6 @@
     "computedValue": "6px",
     "description": "Use for rounding all form controls: Button, FilterTrigger, Input, Textarea, Pills, etc.",
     "components": [
-      "accent-feature",
       "base-components",
       "base-trigger",
       "bulk-textarea",
@@ -3157,6 +3050,7 @@
       "carousel",
       "date-picker",
       "dropdown-menu",
+      "feature-highlight",
       "input",
       "pills",
       "select",
@@ -4221,9 +4115,9 @@
     "computedValue": "200",
     "description": "Use for small controls like Checkbox or Radio.",
     "components": [
-      "accent-feature",
       "checkbox",
       "dropdown",
+      "feature-highlight",
       "feedback-form",
       "radio",
       "slider",
@@ -4256,5 +4150,111 @@
     "computedValue": "200",
     "description": "Use for Summary or Counter.",
     "components": []
+  },
+  {
+    "name": "--intergalactic-bg-primary-ai",
+    "type": "color",
+    "rawValue": "{gray.white}",
+    "computedValue": "#ffffff",
+    "description": "Primary background for controls with AI accent.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-bg-primary-ai-hover-active",
+    "type": "color",
+    "rawValue": "linear-gradient(90deg, {violet.50}, {blue.50})",
+    "computedValue": "linear-gradient(90deg, #f9f2ff, #e9f7ff)",
+    "description": "Primary background for hover and active (selected) state of controls with AI accent.",
+    "components": [
+      "feature-highlight"
+    ]
+  },
+  {
+    "name": "--intergalactic-bg-secondary-ai",
+    "type": "color",
+    "rawValue": "linear-gradient(90deg, {violet.50}, {blue.50})",
+    "computedValue": "linear-gradient(90deg, #f9f2ff, #e9f7ff)",
+    "description": "Secondary background for the message with AI accent.",
+    "components": [
+      "feature-highlight"
+    ]
+  },
+  {
+    "name": "--intergalactic-border-ai",
+    "type": "color",
+    "rawValue": "linear-gradient(90deg, {violet.300}, {blue.300})",
+    "computedValue": "linear-gradient(90deg, #c695ff, #2bb3ff)",
+    "description": "Border for controls with AI accent.",
+    "components": [
+      "feature-highlight"
+    ]
+  },
+  {
+    "name": "--intergalactic-border-ai-active",
+    "type": "color",
+    "rawValue": "linear-gradient(90deg, {violet.400}, {blue.400})",
+    "computedValue": "linear-gradient(90deg, #ab6cfe, #008ff8)",
+    "description": "Border for the active state of controls with AI accent.",
+    "components": [
+      "feature-highlight"
+    ]
+  },
+  {
+    "name": "--intergalactic-control-primary-ai",
+    "type": "color",
+    "rawValue": "linear-gradient(90deg, {violet.400}, {blue.400})",
+    "computedValue": "linear-gradient(90deg, #ab6cfe, #008ff8)",
+    "description": "Background of the primary control with AI accent.",
+    "components": [
+      "feature-highlight"
+    ]
+  },
+  {
+    "name": "--intergalactic-control-primary-ai-hover",
+    "type": "color",
+    "rawValue": "linear-gradient(90deg, {violet.500}, {blue.500})",
+    "computedValue": "linear-gradient(90deg, #8649e1, #006dca)",
+    "description": "Hover state of the primary control with AI accent.",
+    "components": [
+      "feature-highlight"
+    ]
+  },
+  {
+    "name": "--intergalactic-control-primary-ai-active",
+    "type": "color",
+    "rawValue": "linear-gradient(90deg, {violet.600}, {blue.600})",
+    "computedValue": "linear-gradient(90deg, #5925ab, #044792)",
+    "description": "Active (selected) state of the primary control with AI accent.",
+    "components": [
+      "feature-highlight"
+    ]
+  },
+  {
+    "name": "--intergalactic-icon-primary-ai",
+    "type": "color",
+    "rawValue": "{violet.500}",
+    "computedValue": "#8649e1",
+    "description": "Primary AI accent icon.",
+    "components": [
+      "feature-highlight"
+    ]
+  },
+  {
+    "name": "--intergalactic-icon-primary-ai-hover-active",
+    "type": "color",
+    "rawValue": "#6B3AB4",
+    "computedValue": "#6B3AB4",
+    "description": "Violet background color for the hover and active states of the primary AI accent icon. It’s created using a CSS filter with a brightness(0.8), applied to the violet-500 color.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-keyboard-focus-ai-outline",
+    "type": "color",
+    "rawValue": "linear-gradient(90deg, rgba({violet.400}, 0.5), rgba({blue.400}, 0.5))",
+    "computedValue": "linear-gradient(90deg, rgba(171, 108, 254, 0.5), rgba(0, 143, 248, 0.5))",
+    "description": "Color for keyboard focus outline styles for elements with AI accent.",
+    "components": [
+      "feature-highlight"
+    ]
   }
 ]

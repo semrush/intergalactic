@@ -1,38 +1,37 @@
-import { SwitchAF } from '@semcore/accent-feature';
 import { Flex } from '@semcore/base-components';
+import { SwitchFH } from '@semcore/feature-highlight';
 import SummaryAI from '@semcore/icon/SummaryAI/m';
-import Switch from '@semcore/switch';
 import React from 'react';
 
 const Demo = () => (
   <Flex direction='column' gap={4}>
 
-    <SwitchAF>
-      <SwitchAF.Value ml={0} />
-      <SwitchAF.AnimatedSparkles count={5} />
-      <SwitchAF.Addon>
+    <SwitchFH>
+      <SwitchFH.Value ml={0} />
+      <SwitchFH.AnimatedSparkles count={5} />
+      <SwitchFH.Addon>
         Medium switch
-        <SummaryAI color='icon-primary-ai' ml={2} style={{ verticalAlign: 'middle' }} />
-      </SwitchAF.Addon>
-    </SwitchAF>
+        <SummaryAI color='--intergalactic-icon-primary-ai' ml={2} style={{ verticalAlign: 'middle' }} />
+      </SwitchFH.Addon>
+    </SwitchFH>
 
-    <SwitchAF size='l'>
-      <SwitchAF.Value defaultChecked ml={0} />
-      <SwitchAF.AnimatedSparkles count={5} />
-      <SwitchAF.Addon>
+    <SwitchFH size='l'>
+      <SwitchFH.Value defaultChecked ml={0} />
+      <SwitchFH.AnimatedSparkles count={5} />
+      <SwitchFH.Addon>
         Large switch
-        <SummaryAI color='icon-primary-ai' ml={2} style={{ verticalAlign: -3 }} />
-      </SwitchAF.Addon>
-    </SwitchAF>
+        <SummaryAI color='--intergalactic-icon-primary-ai' ml={2} style={{ verticalAlign: -3 }} />
+      </SwitchFH.Addon>
+    </SwitchFH>
 
-    <SwitchAF size='xl'>
-      <SwitchAF.Value ml={0} />
-      <SwitchAF.AnimatedSparkles count={5} />
-      <SwitchAF.Addon>
+    <SwitchFH size='xl'>
+      <SwitchFH.Value ml={0} />
+      <SwitchFH.AnimatedSparkles count={5} />
+      <SwitchFH.Addon>
         Extra large switch
-        <SummaryAI color='icon-primary-ai' ml={2} style={{ verticalAlign: -3 }} />
-      </SwitchAF.Addon>
-    </SwitchAF>
+        <SummaryAI color='--intergalactic-icon-primary-ai' ml={2} style={{ verticalAlign: -3 }} />
+      </SwitchFH.Addon>
+    </SwitchFH>
 
   </Flex>
 );

@@ -1,10 +1,10 @@
-import { NoticeAF } from '@semcore/accent-feature';
+import { NoticeFH } from '@semcore/feature-highlight';
 import React from 'react';
 
 const Demo = () => (
-  <NoticeAF closable aria-label='Highlighted notice'>
+  <NoticeFH closable aria-label='Highlighted notice'>
     We have a new feature!
-  </NoticeAF>
+  </NoticeFH>
 );
 
 export default Demo;

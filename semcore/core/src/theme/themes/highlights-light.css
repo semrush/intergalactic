@@ -1,0 +1,24 @@
+:root {
+  /* Primary background for controls with AI accent. */
+  --intergalactic-bg-primary-ai: #ffffff;
+  /* Primary background for hover and active (selected) state of controls with AI accent. */
+  --intergalactic-bg-primary-ai-hover-active: linear-gradient(90deg, #f9f2ff, #e9f7ff);
+  /* Secondary background for the message with AI accent. */
+  --intergalactic-bg-secondary-ai: linear-gradient(90deg, #f9f2ff, #e9f7ff);
+  /* Border for controls with AI accent. */
+  --intergalactic-border-ai: linear-gradient(90deg, #c695ff, #2bb3ff);
+  /* Border for the active state of controls with AI accent. */
+  --intergalactic-border-ai-active: linear-gradient(90deg, #ab6cfe, #008ff8);
+  /* Background of the primary control with AI accent. */
+  --intergalactic-control-primary-ai: linear-gradient(90deg, #ab6cfe, #008ff8);
+  /* Hover state of the primary control with AI accent. */
+  --intergalactic-control-primary-ai-hover: linear-gradient(90deg, #8649e1, #006dca);
+  /* Active (selected) state of the primary control with AI accent. */
+  --intergalactic-control-primary-ai-active: linear-gradient(90deg, #5925ab, #044792);
+  /* Primary AI accent icon. */
+  --intergalactic-icon-primary-ai: #8649e1;
+  /* Violet background color for the hover and active states of the primary AI accent icon. It’s created using a CSS filter with a brightness(0.8), applied to the violet-500 color. */
+  --intergalactic-icon-primary-ai-hover-active: #6B3AB4;
+  /* Color for keyboard focus outline styles for elements with AI accent. */
+  --intergalactic-keyboard-focus-ai-outline: linear-gradient(90deg, rgba(171, 108, 254, 0.5), rgba(0, 143, 248, 0.5));
+}
