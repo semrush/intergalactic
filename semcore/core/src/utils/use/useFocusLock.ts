@@ -183,7 +183,7 @@ const useFocusLockHook = (
     if (returnFocusTo === 'auto' && autoTriggerRef.current) {
       const autoTrigger = autoTriggerRef.current;
       setTimeout(() => {
-        if (focusMastersStackCount !== focusMastersStack.length) {
+        if (focusMastersStackCount !== focusMastersStack.length || autoFocus === 'enforced') {
           setFocus(autoTrigger, trapNode);
         }
       }, 0);
