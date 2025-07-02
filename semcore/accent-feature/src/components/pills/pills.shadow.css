@@ -6,6 +6,7 @@ SAccentPill {
   ) border-box;
   background-origin: border-box;
   background-clip: padding-box, border-box;
+  z-index: 1;
 
   &:hover {
     background: var(--intergalactic-bg-primary-ai-hover-active, linear-gradient(90deg, #f9f2ff, #e9f7ff)) padding-box,
