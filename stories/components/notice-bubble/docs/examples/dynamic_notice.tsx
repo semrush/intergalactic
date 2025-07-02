@@ -1,5 +1,5 @@
+import { Flex } from '@semcore/base-components';
 import Button from '@semcore/button';
-import { Flex } from '@semcore/flex-box';
 import ReloadM from '@semcore/icon/Reload/m';
 import WarningM from '@semcore/icon/Warning/m';
 import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/notice-bubble';

@@ -12,7 +12,7 @@ const getImageName = (title) => {
   return name.charAt(0).toLowerCase() + name.slice(1);
 };
 
-import { Box } from '@semcore/flex-box';
+import { Box } from '@semcore/base-components';
 
 const group = {
   accordion: {
@@ -136,7 +136,7 @@ const group = {
   },
   feedback: {
     title: 'Feedback',
-    route: '/intergalactic/components/feedback/feedback',
+    route: '/intergalactic/components/feedback-form/feedback-form',
     disabled: false,
     type: 'components',
   },

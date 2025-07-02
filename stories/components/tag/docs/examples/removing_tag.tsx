@@ -1,4 +1,4 @@
-import { Box } from '@semcore/flex-box';
+import { Box } from '@semcore/base-components';
 import { TagContainer } from '@semcore/tag';
 import React from 'react';
 

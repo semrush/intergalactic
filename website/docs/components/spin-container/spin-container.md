@@ -11,7 +11,7 @@ import React from 'react';
 import SpinContainer from '@semcore/ui/spin-container';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 import Input from '@semcore/ui/input';
-import { Flex } from '@semcore/ui/flex-box';
+import { Flex } from '@semcore/ui/base-components';
 import { Text } from '@semcore/ui/typography';
 
 const playground = (createGroupWidgets) => {

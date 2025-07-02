@@ -1,5 +1,5 @@
+import { Flex } from '@semcore/base-components';
 import Ellipsis from '@semcore/ellipsis';
-import { Flex } from '@semcore/flex-box';
 import type { InputTagsProps, InputTagsValueProps, InputTagsTagProps } from '@semcore/input-tags';
 import InputTags from '@semcore/input-tags';
 import { Text } from '@semcore/typography';

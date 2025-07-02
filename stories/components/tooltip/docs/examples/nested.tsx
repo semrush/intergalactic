@@ -1,5 +1,5 @@
+import { Box, Flex } from '@semcore/base-components';
 import { ButtonLink } from '@semcore/button';
-import { Box, Flex } from '@semcore/flex-box';
 import Tooltip from '@semcore/tooltip';
 import React from 'react';
 

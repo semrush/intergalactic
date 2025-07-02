@@ -1,4 +1,6 @@
-# @semcore/neighbor-location
+# @semcore/neighbor-location (DEPRECATED)
+
+## This package is deprecated. Use `@semcore/base-components`.
 
 [![version](https://img.shields.io/npm/v/@semcore/neighbor-location.svg)](https://www.npmjs.com/@semcore/neighbor-location)
 [![downloads](https://img.shields.io/npm/dt/@semcore/neighbor-location.svg)](https://www.npmjs.com/package/@semcore/neighbor-location)

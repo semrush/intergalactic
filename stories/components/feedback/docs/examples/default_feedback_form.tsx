@@ -1,7 +1,7 @@
+import { Box, Flex } from '@semcore/base-components';
 import { ButtonLink } from '@semcore/button';
 import Dropdown from '@semcore/dropdown';
 import FeedbackForm from '@semcore/feedback-form';
-import { Box, Flex } from '@semcore/flex-box';
 import ChatM from '@semcore/icon/Chat/m';
 import Input from '@semcore/input';
 import Link from '@semcore/link';

@@ -34,4 +34,4 @@ See detailed information about the keyboard support for the inputs in the [Keybo
 
 ## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
+Find more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).

@@ -689,6 +689,7 @@ export const PatternSymbol: React.FC<
         viewBox={viewBox}
         strokeWidth='1'
         {...propsForElement(props, 'svg')}
+        aria-hidden={true}
       >
         {children}
       </svg>

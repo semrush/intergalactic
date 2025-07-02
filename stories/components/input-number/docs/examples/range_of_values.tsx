@@ -1,6 +1,5 @@
-import { Flex } from '@semcore/flex-box';
+import { Flex } from '@semcore/base-components';
 import InputNumber from '@semcore/input-number';
-import NeighborLocation from '@semcore/neighbor-location';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
@@ -28,32 +27,30 @@ const Demo = () => {
         </Text>
       </Text>
       <Flex w='20%' mt={2}>
-        <NeighborLocation>
-          <InputNumber>
-            <InputNumber.Value
-              min={min}
-              max={max}
-              value={from}
-              onChange={setFrom}
-              onBlur={handleBlur}
-              placeholder={min.toString()}
-              id='basic-example-from'
-            />
-            <InputNumber.Controls />
-          </InputNumber>
-          <InputNumber>
-            <InputNumber.Value
-              min={min}
-              max={max}
-              value={to}
-              onChange={setTo}
-              onBlur={handleBlur}
-              placeholder={max.toString()}
-              id='basic-example-to'
-            />
-            <InputNumber.Controls />
-          </InputNumber>
-        </NeighborLocation>
+        <InputNumber neighborLocation='right'>
+          <InputNumber.Value
+            min={min}
+            max={max}
+            value={from}
+            onChange={setFrom}
+            onBlur={handleBlur}
+            placeholder={min.toString()}
+            id='basic-example-from'
+          />
+          <InputNumber.Controls />
+        </InputNumber>
+        <InputNumber neighborLocation='left'>
+          <InputNumber.Value
+            min={min}
+            max={max}
+            value={to}
+            onChange={setTo}
+            onBlur={handleBlur}
+            placeholder={max.toString()}
+            id='basic-example-to'
+          />
+          <InputNumber.Controls />
+        </InputNumber>
       </Flex>
     </>
   );

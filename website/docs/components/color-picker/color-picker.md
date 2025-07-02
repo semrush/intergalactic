@@ -36,75 +36,66 @@ const App = PlaygroundGeneration(Preview);
 
 **ColorPicker** is a component that allows the user selecting a color from a given list or input a custom color using its HEX code.
 
-**ColorPicker contains:**
+## Component composition
 
-- Trigger
-- List of ColorPicker.Items
-- Input (optional)
+![](static/color-picker-composition.png)
+
+`ColorPicker` consists of the following:
+
+- `ColorPicker.Trigger`
+- `ColorPicker.Popper`
+- `ColorPicker.Colors`: list of predefined colors
+- `PaletteManager` (optional): container for user's custom colors, which includes:
+  - `PaletteManager.Colors`: list of added colors
+  - `PaletteManager.InputColor`: set of controls for adding new colors
 
 ## Appearance
 
 ### Trigger
 
-The trigger for a ColorPicker is a Select with a circle as the leading addon, and has 16px * 16px size.
+The trigger for a ColorPicker is a Select with a circle as the leading addon, and has 16px * 16px size.
 
 ![](static/trigger-size.png)
 
-### Item
-
-ColorPicker item has 28px * 28px size.
-
-![](static/colorpicker-item-size.png)
-
 ### List of colors
 
-A list of colors can include either a single ColorPicker.Item or multiple ones, which are preview swatches that display all available color values.
+The list of colors consists of color preview swatches that display all available color values.
 
-Table: List of colors and its items
-
-| ColorPicker.Item     | List of ColorPicker.Items                             |
-| -------------------- | ----------------------------------------------------- |
-| ![](static/colorpicker-item-bg-default.png) | ![](static/colorpicker-inline.png) |
-
-Margin between the items must be [multiples of 4](/layout/box-system/box-system#spacing-system). The default recommended margins are 4px:
+Margins between the swatches must be [multiples of 4](/layout/box-system/box-system-spacing). The default margin is 4px:
 
 ![](static/colorpicker-margins.png)
 
-## Item types
+## Color swatch types
 
-An item can have two different types:
+Color swatches can have one of the two types of appearance:
 
-Table: Color items
+Table: Color types
 
-| Type            | Appearance example                                                             | Usage                                                                                                                 |
-| --------------- | ------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
-| Item for background color | ![](static/colorpicker-item-bg-default.png) | Use for changing the background color. For example, a user can pick colors to visually separate their competitors. |
-| Item for text color      | ![](static/colorpicker-item-text-default.png)    | Use for changing the Tag color, for example                                                                                             |
+| Type             | Appearance example                            | Usage                                                                                                              |
+| ---------------- | --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| Background color | ![](static/colorpicker-item-bg-default.png)   | Use for changing the background color. For example, a user can pick colors to visually separate their competitors. |
+| Text color       | ![](static/colorpicker-item-text-default.png) | Use for changing the Tag color, for example                                                                        |
 
 ## Dropdown
 
 ### Width and height
 
-**The recommended width of a dropdown is 188px.** The height of a dropdown list depends on its content.
+**The recommended width of the dropdown is 188px.** The height of the dropdown depends on its content.
 
-Showing all available colors in the DropdownMenu is crucial, however, if a user has added more than 20 custom colors, a scrollbar should be displayed.
+Showing all available colors in the dropdown is crucial. However, if there's more than 5 rows of colors, you should limit the height and display a scrollbar.
 
 Table: DropdownMenu appearance
 
-| DropdownMenu                  | DropdownMenu with more than 20 colors |
-| ----------------------------- | ------------------------------------- |
-| ![](static/dropdown-menu.png) | ![](static/scroll.png)                |
-
-### Margins and paddings
-
-![](static/colorpicker-margins-paddings.png)
+| Default dropdown              | Dropdown with more than 5 rows of colors |
+| ----------------------------- | ---------------------------------------- |
+| ![](static/dropdown-menu.png) | ![](static/scroll.png)                   |
 
 ## Interaction
 
 - In the hover state, trigger has a `border: 1px solid var(--border-secondary)`.
 - In the active state, trigger changes its border color to `var(--border-info-active)`.
 
-### Default item
+### Default color
 
 Table: Color item states
 
@@ -115,7 +106,7 @@ Table: Color item states
 | No background color | ![](static/colorpicker-item-nocolor-default.png) | ![](static/colorpicker-item-nocolor-hover.png) | ![](static/colorpicker-item-nocolor-active.png)| Use when no color is selected.|
 | No text color | ![](static/colorpicker-item-text-nocolor-default.png) | ![](static/colorpicker-item-text-nocolor-hover.png) | ![](static/colorpicker-item-text-nocolor-active.png)| Use when no color is selected.|
 
-### Item for custom colors
+### Custom color
 
 Table: Custom color item states
 
@@ -124,13 +115,13 @@ Table: Custom color item states
 | Background color | ![](static/colorpicker-item-custom-default.png) | ![](static/colorpicker-item-custom-hover.png) | ![](static/colorpicker-item-custom-active.png)      | Use for changing the background color of other components.|
 | Text color | ![](static/colorpicker-item-custom-text-default.png) | ![](static/colorpicker-item-custom-text-hover.png) | ![](static/colorpicker-item-custom-text-active.png) | Use for changing the text and background colors of other components.|
 
-### Item for adding colors
+### Adding colors
 
 Table: States of item for adding colors
 
-| Item type | Normal | Hover | Active | Usage |
-| ------------------- | ------------------------------- | -------------------------- | ----------------------- | -------------------- |
-| Add color button | ![](static/btn-add-default.png) | ![](static/btn-add-hover.png) | ![](static/btn-add-active.png)| Use Button with icon and change border-radius to 50%.|
+| Item type            | Normal                          | Hover                         | Active                         | Usage                                        |
+| -------------------- | ------------------------------- | ----------------------------- | ------------------------------ | -------------------------------------------- |
+| **Add color** button | ![](static/btn-add-default.png) | ![](static/btn-add-hover.png) | ![](static/btn-add-active.png) | A tertiary button with `border-radius: 50%`. |
 
 ## Custom colors (optional)
 
@@ -170,7 +161,9 @@ Components that you can use as a trigger for the ColorPicker:
 
 ![](static/color-picker-triggers.png)
 
-`ColorPicker.Item` can be placed inside other components, such as:
+<!-- ColorPicker.Item is now deprecated -->
+
+<!-- `ColorPicker.Item` can be placed inside other components, such as:
 
 - [Button](/components/button/button)
 - [FilterTrigger](/components/filter-trigger/filter-trigger)
@@ -180,5 +173,5 @@ Components that you can use as a trigger for the ColorPicker:
 - [TabPanel](/components/tab-panel/tab-panel)
 - [Tag](/components/tag/tag)
 
-![](static/color-picker-places.png)
+![](static/color-picker-places.png) -->
 

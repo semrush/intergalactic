@@ -51,7 +51,7 @@ test.describe('Link-trigger', () => {
         const count = await linkTrigger.count();
         for (let i = 0; i < count; i++) {
           await linkTrigger.nth(i).hover();
-          await expect(linkTrigger.nth(i)).toHaveCSS('color', 'rgb(0, 109, 202)');
+          await expect(linkTrigger.nth(i)).toHaveCSS('color', 'rgb(4, 71, 146)');
           await expect(linkTrigger.nth(i)).toHaveCSS('border-color', 'rgb(4, 71, 146)');
         }
       });

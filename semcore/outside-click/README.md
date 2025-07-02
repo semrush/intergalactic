@@ -1,4 +1,6 @@
-# @semcore/outside-click
+# @semcore/outside-click (DEPRECATED)
+
+## This package is deprecated. Use `@semcore/base-components`.
 
 [![version](https://img.shields.io/npm/v/@semcore/outside-click.svg)](https://www.npmjs.com/@semcore/outside-click)
 [![downloads](https://img.shields.io/npm/dt/@semcore/outside-click.svg)](https://www.npmjs.com/package/@semcore/outside-click)

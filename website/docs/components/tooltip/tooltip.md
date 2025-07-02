@@ -11,7 +11,7 @@ import React from 'react';
 
 import Button from '@semcore/ui/button';
 import Tooltip, { Hint, DescriptionTooltip } from '@semcore/ui/tooltip';
-import { Box, Flex } from '@semcore/ui/flex-box';
+import { Box, Flex } from '@semcore/ui/base-components';
 import { Text } from '@semcore/ui/typography';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 import Link from '@semcore/ui/link';

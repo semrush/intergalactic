@@ -1,6 +1,7 @@
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import type { Page, Locator } from '@semcore/testing-utils/playwright';
 import { expect, test } from '@semcore/testing-utils/playwright';
+import { browser } from 'globals';
 
 export function getSelectLocators(page: Page): {
   select: Locator;
@@ -128,7 +129,7 @@ test.describe('Options filtering', () => {
     });
   });
 
-  test('Verify multiselect with divider and sorting in menu', async ({ page }) => {
+  test('Verify multiselect with divider and sorting in menu', async ({ page, browserName }) => {
     const standPath = 'stories/components/select/docs/examples/sorting_multiselect_options.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
@@ -138,22 +139,27 @@ test.describe('Options filtering', () => {
     await test.step('Verify first option selected when expanded', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Space');
-      await new Promise((resolve) => setTimeout(resolve, 500));
+      await menu.waitFor({ state: 'visible' });
       await expect(selectTrigger).toBeFocused();
       await expect(options.first()).toHaveClass(/highlighted/);
     });
 
     await test.step('Verify options selected by click', async () => {
+      if (browserName === 'firefox') {
+        await new Promise((resolve) => setTimeout(resolve, 200));
+      }
       await options.nth(5).click();
       await options.nth(1).click();
       await options.nth(3).click();
+
+      await expect(triggerText).toHaveText('5, 1, 3');
     });
 
     await test.step('Verify items sorted and divider whoen on 2nd expand', async () => {
       await page.keyboard.press('Escape');
-      await new Promise((resolve) => setTimeout(resolve, 300));
+      await menu.waitFor({ state: 'hidden' });
       await page.keyboard.press('Space');
-      await new Promise((resolve) => setTimeout(resolve, 500));
+      await menu.waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
     });
   });

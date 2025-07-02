@@ -6,17 +6,17 @@ title: For designers
 
 <!-- Welcome to a series of quick video guides to help you get started with the Intergalactic Design System for your product designs. -->
 
-::: loom_video https://www.loom.com/share/70c05f1fbadc457ebcd74af6c31bfbe7?sid=d13fc781-66aa-4fb8-8758-aeba64bb67a8 :::
+::: loom_video Introduction to Intergalactic Design System
+https://www.loom.com/embed/70c05f1fbadc457ebcd74af6c31bfbe7
+:::
 
 <!-- ## How to contribute?
 
 If you're interested in contributing to the Intergalactic Design System, check out this video.
 
-::: loom_video https://www.loom.com/share/2d935c96e823486384cf22142418a72b ::: -->
+::: loom_video https://www.loom.com/embed/2d935c96e823486384cf22142418a72b ::: -->
 
 ## Principles
-
-<!-- ::: loom_video https://www.loom.com/share/7fe17765621346ddbbf0b32c7d57d6bb ::: -->
 
 Great data visualization is key to our UI, so handle charts and tables with care.
 
@@ -54,13 +54,13 @@ Table: Breakpoints tokens
 | `--screen-small`       | 768px  | Phones and tablets.                      |
 | `--screen-medium`      | 1200px | Big tablets and desktop devices.         |
 
-Refer to [Breakpoints](/layout/breakpoints/breakpoints) and [Grid and page layout](/layout/grid-system/grid-system) for more information.
+Refer to [Breakpoints](/layout/breakpoints/breakpoints) and [Grid and page layout](/layout/grid-system/grid-system-layout) for more information.
 
 ## Grid system
 
 Our product interfaces use a 12-column grid with a 24px gutter. Some products use a flexible grid, while others use a fixed grid, depending on their needs. The standard design frame width for product pages is 1440px.
 
-Check out [Grid and page layout](/layout/grid-system/grid-system) for more details and code examples.
+Check out [Grid and page layout](/layout/grid-system/grid-system-layout) for more details and code examples.
 
 ## Charts
 

@@ -308,12 +308,18 @@ test.describe('Pattern fills, dots and lines', () => {
 
     for (let i = 0; i < count; i++) {
       const pattern = patterns.nth(i);
-
       await expect(pattern).toHaveAttribute('patternUnits', 'userSpaceOnUse');
       await expect(pattern).toHaveAttribute('width', '12');
       await expect(pattern).toHaveAttribute('height', '12');
       await expect(pattern).toHaveAttribute('x', '0');
       await expect(pattern).toHaveAttribute('y', '0');
+    }
+
+    const patterDots = page.locator('[data-ui-name="Area.Dots"][svg]');
+    const count1 = await patterDots.count();
+    for (let i = 0; i < count1; i++) {
+      const patterDot = patterDots.nth(i);
+      await expect(patterDot).toHaveAttribute('aria-hidden', 'true');
     }
   });
 
