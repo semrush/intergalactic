@@ -38,6 +38,7 @@
     "@semcore/dropdown-menu": "16.0.0",
     "@semcore/ellipsis": "16.0.0",
     "@semcore/errors": "16.0.0",
+    "@semcore/feature-highlight": "16.0.0",
     "@semcore/feature-popover": "16.0.0",
     "@semcore/feedback-form": "16.0.0",
     "@semcore/flags": "16.0.0",

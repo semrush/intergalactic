@@ -300,49 +300,6 @@ importers:
         specifier: 2.8.0
         version: 2.8.0
 
-  semcore/feature-highlight:
-    dependencies:
-      '@semcore/badge':
-        specifier: ^16.0.0
-        version: link:../badge
-      '@semcore/base-trigger':
-        specifier: ^16.0.0
-        version: link:../base-trigger
-      '@semcore/button':
-        specifier: ^16.0.0
-        version: link:../button
-      '@semcore/checkbox':
-        specifier: ^16.0.0
-        version: link:../checkbox
-      '@semcore/input':
-        specifier: ^16.0.0
-        version: link:../input
-      '@semcore/notice':
-        specifier: ^16.0.0
-        version: link:../notice
-      '@semcore/pills':
-        specifier: ^16.0.0
-        version: link:../pills
-      '@semcore/radio':
-        specifier: ^16.0.0
-        version: link:../radio
-      '@semcore/select':
-        specifier: ^16.0.0
-        version: link:../select
-      '@semcore/switch':
-        specifier: ^16.0.0
-        version: link:../switch
-      '@semcore/tab-line':
-        specifier: ^16.0.0
-        version: link:../tab-line
-      '@semcore/typography':
-        specifier: ^16.0.0
-        version: link:../typography
-    devDependencies:
-      '@semcore/base-components':
-        specifier: workspace:*
-        version: link:../base-components
-
   semcore/accordion:
     dependencies:
       '@semcore/animation':
@@ -1166,6 +1123,49 @@ importers:
       '@semcore/testing-utils':
         specifier: workspace:*
         version: link:../../tools/testing-utils
+
+  semcore/feature-highlight:
+    dependencies:
+      '@semcore/badge':
+        specifier: ^16.0.0
+        version: link:../badge
+      '@semcore/base-trigger':
+        specifier: ^16.0.0
+        version: link:../base-trigger
+      '@semcore/button':
+        specifier: ^16.0.0
+        version: link:../button
+      '@semcore/checkbox':
+        specifier: ^16.0.0
+        version: link:../checkbox
+      '@semcore/input':
+        specifier: ^16.0.0
+        version: link:../input
+      '@semcore/notice':
+        specifier: ^16.0.0
+        version: link:../notice
+      '@semcore/pills':
+        specifier: ^16.0.0
+        version: link:../pills
+      '@semcore/radio':
+        specifier: ^16.0.0
+        version: link:../radio
+      '@semcore/select':
+        specifier: ^16.0.0
+        version: link:../select
+      '@semcore/switch':
+        specifier: ^16.0.0
+        version: link:../switch
+      '@semcore/tab-line':
+        specifier: ^16.0.0
+        version: link:../tab-line
+      '@semcore/typography':
+        specifier: ^16.0.0
+        version: link:../typography
+    devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
 
   semcore/feature-popover:
     dependencies:
@@ -2378,6 +2378,9 @@ importers:
       '@semcore/errors':
         specifier: 16.0.0
         version: 16.0.0(@semcore/base-components@16.0.0(@semcore/core@semcore+core))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@semcore/feature-highlight':
+        specifier: 16.0.0
+        version: link:../feature-highlight
       '@semcore/feature-popover':
         specifier: 16.0.0
         version: 16.0.0(@semcore/base-components@16.0.0(@semcore/core@semcore+core))
