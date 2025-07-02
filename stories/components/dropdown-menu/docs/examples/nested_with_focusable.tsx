@@ -1,10 +1,9 @@
+import { Box } from '@semcore/base-components';
 import Button from '@semcore/button';
 import Divider from '@semcore/divider';
 import DropdownMenu from '@semcore/dropdown-menu';
-import { Box } from '@semcore/flex-box';
 import ChevronRightIcon from '@semcore/icon/ChevronRight/m';
 import InputNumber from '@semcore/input-number';
-import NeighborLocation from '@semcore/neighbor-location';
 import React from 'react';
 
 const options = ['Item 1', 'Item 2', 'Item 3'];
@@ -37,16 +36,14 @@ const Demo = () => {
                   </DropdownMenu.List>
                   <Divider my={1} />
                   <Box p={2}>
-                    <NeighborLocation>
-                      <InputNumber w='50%'>
-                        <InputNumber.Value min={min} max={max} placeholder={min.toString()} />
-                        <InputNumber.Controls />
-                      </InputNumber>
-                      <InputNumber w='50%'>
-                        <InputNumber.Value min={min} max={max} placeholder={max.toString()} />
-                        <InputNumber.Controls />
-                      </InputNumber>
-                    </NeighborLocation>
+                    <InputNumber w='50%' neighborLocation='right'>
+                      <InputNumber.Value min={min} max={max} placeholder={min.toString()} />
+                      <InputNumber.Controls />
+                    </InputNumber>
+                    <InputNumber w='50%' neighborLocation='left'>
+                      <InputNumber.Value min={min} max={max} placeholder={max.toString()} />
+                      <InputNumber.Controls />
+                    </InputNumber>
                     <Button w='100%' mt={1} use='primary'>
                       Apply
                     </Button>

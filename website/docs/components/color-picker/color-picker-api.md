@@ -35,7 +35,7 @@ import ColorPicker from '@semcore/ui/color-picker';
 
 ## ColorPicker.Colors
 
-Group of ColorPicker.Items.
+List of colors in `ColorPicker`.
 
 ```jsx
 import ColorPicker from '@semcore/ui/color-picker';
@@ -45,6 +45,10 @@ import ColorPicker from '@semcore/ui/color-picker';
 <TypesView type="ColorsProps" :types={...types} />
 
 ## ColorPicker.Item
+
+::: warning
+`ColorPicker.Item` is deprecated. Use `ColorPicker.Colors`.
+:::
 
 One unit of `<ColorPicker.Colors />`. ColorPicker.Item is a swatch preview that allows a user to see what color is currently selected.
 
@@ -68,7 +72,7 @@ import { PaletteManager } from '@semcore/ui/color-picker';
 
 ## PaletteManager.Colors
 
-Group of PaletteManager.Items.
+List of colors in `PaletteManager`.
 
 ```jsx
 import { PaletteManager } from '@semcore/ui/color-picker';
@@ -78,6 +82,10 @@ import { PaletteManager } from '@semcore/ui/color-picker';
 <TypesView type="ColorsCustomProps" :types={...types} />
 
 ## PaletteManager.Item
+
+::: warning
+`PaletteManager.Item` is deprecated. Use `PaletteManager.Colors`.
+:::
 
 One unit of `<PaletteManager.Colors />`. PaletteManager.Item is a swatch preview that allows a user to see what color is currently selected.
 

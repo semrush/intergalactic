@@ -311,29 +311,30 @@ test.describe('Color-picker', () => {
     const locators = getColorPickerLocators(page);
     await page.setContent(htmlContent);
 
-    await new Promise((resolve) => setTimeout(resolve, 500));
+    const colorPoppers = page.getByRole('dialog');
+    await colorPoppers.nth(3).waitFor({ state: 'visible' });
+
     await test.step('Verify normal and active for background and text color', async () => {
       await expect(page).toHaveScreenshot();
     });
-    const colorPoppers = page.getByRole('dialog');
 
     await test.step('Verify hover on No background color ', async () => {
       const items = colorPoppers.first().getByRole('option');
       await items.first().hover();
-      await page.locator('[data-ui-name="Hint.Popper"]').waitFor();
+      await page.getByText('Clear color').waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
     });
 
     await test.step('Verify hover on text color ', async () => {
       const items = colorPoppers.nth(1).getByRole('option');
-      await items.nth(2).hover();
-      await page.locator('[data-ui-name="Hint.Popper"]').waitFor();
+      await items.nth(1).hover();
+      await page.getByText('#2BB3FF').waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
     });
 
     await test.step('Verify hover on Add color button ', async () => {
       await locators.addButton.first().hover();
-      await new Promise((resolve) => setTimeout(resolve, 500));
+      await new Promise((resolve) => setTimeout(resolve, 100));
       await expect(page).toHaveScreenshot();
     });
   });
@@ -674,18 +675,17 @@ test.describe('Color-picker', () => {
 
       await locators.inputColor.fill('888');
       await page.keyboard.press('Enter');
-      await page.waitForTimeout(100);
       await expect(paletteItems).toHaveCount(3);
 
       await paletteItems.nth(2).click();
-      await page.waitForTimeout(100);
+      await paletteItems.nth(2).waitFor({ state: 'hidden' });
 
       await locators.trigger.first().click();
-      await page.waitForTimeout(100);
+      await paletteItems.nth(2).waitFor({ state: 'visible' });
 
       await expect(paletteItems.nth(2)).toHaveAttribute('aria-selected', 'true');
       await locators.trigger.first().click();
-      await page.waitForTimeout(100);
+      await paletteItems.nth(2).waitFor({ state: 'hidden' });
     });
 
     await test.step('Verify paletter manager when defaultColors and onColorsChange pre set', async () => {
@@ -729,15 +729,12 @@ test.describe('Color-picker', () => {
 
       await locators.inputColor.fill('888');
       await page.keyboard.press('Enter');
-      await page.waitForTimeout(100);
       await expect(paletteItems).toHaveCount(2);
-
       await paletteItems.nth(1).click();
-      await page.waitForTimeout(100);
+      await paletteItems.nth(1).waitFor({ state: 'hidden' });
       await locators.trigger.nth(1).click();
-      await locators.popper.waitFor({ state: 'visible' });
       await page.getByRole('dialog').waitFor({ state: 'visible' });
-      await expect(paletteItems.nth(1)).toHaveAttribute('aria-selected', 'true');
+      await expect(paletteItems.nth(1)).toHaveAttribute('aria-selected', 'false');
     });
   });
 

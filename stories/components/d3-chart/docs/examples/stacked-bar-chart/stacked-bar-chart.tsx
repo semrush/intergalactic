@@ -1,5 +1,5 @@
+import { Box, Flex } from '@semcore/base-components';
 import { Plot, StackBar, YAxis, XAxis, HoverRect } from '@semcore/d3-chart';
-import { Box, Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import React from 'react';

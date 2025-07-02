@@ -7,12 +7,12 @@ test.describe('Styles', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
-
-    await expect(page).toHaveScreenshot();
-
     const hintPopper = page.locator('[data-ui-name="Hint.Popper"]');
 
     const tooltipPopper = page.locator('[data-ui-name="Tooltip.Popper"]');
+    await tooltipPopper.nth(3).waitFor({ state: 'visible' });
+
+    await expect(page).toHaveScreenshot();
 
     const descriptionTooltipPopper = page.locator('[data-ui-name="DescriptionTooltip.Popper"]');
 

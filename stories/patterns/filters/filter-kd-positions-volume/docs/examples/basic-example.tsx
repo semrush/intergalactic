@@ -1,9 +1,8 @@
+import { Flex } from '@semcore/base-components';
 import { FilterTrigger } from '@semcore/base-trigger';
 import Button from '@semcore/button';
 import Divider from '@semcore/divider';
-import { Flex } from '@semcore/flex-box';
 import InputNumber from '@semcore/input-number';
-import NeighborLocation from '@semcore/neighbor-location';
 import Select from '@semcore/select';
 import { Text } from '@semcore/typography';
 import React, { useState, useRef } from 'react';
@@ -57,32 +56,30 @@ const InputRange: React.FC<InputRangeProps> = ({ value: valueState, changeValue,
 
   return (
     <Flex {...other}>
-      <NeighborLocation>
-        <InputNumber>
-          <InputNumber.Value
-            min={minRange}
-            aria-label='From'
-            placeholder='From'
-            value={from}
-            onChange={handleChange('from')}
-            onBlur={handleBlur}
-            ref={fromRef}
-          />
-          <InputNumber.Controls />
-        </InputNumber>
-        <InputNumber>
-          <InputNumber.Value
-            min={minRange}
-            aria-label='To'
-            placeholder='To'
-            value={to}
-            onChange={handleChange('to')}
-            onBlur={handleBlur}
-            ref={toRef}
-          />
-          <InputNumber.Controls />
-        </InputNumber>
-      </NeighborLocation>
+      <InputNumber neighborLocation='right'>
+        <InputNumber.Value
+          min={minRange}
+          aria-label='From'
+          placeholder='From'
+          value={from}
+          onChange={handleChange('from')}
+          onBlur={handleBlur}
+          ref={fromRef}
+        />
+        <InputNumber.Controls />
+      </InputNumber>
+      <InputNumber neighborLocation='left'>
+        <InputNumber.Value
+          min={minRange}
+          aria-label='To'
+          placeholder='To'
+          value={to}
+          onChange={handleChange('to')}
+          onBlur={handleBlur}
+          ref={toRef}
+        />
+        <InputNumber.Controls />
+      </InputNumber>
     </Flex>
   );
 };

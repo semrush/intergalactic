@@ -64,4 +64,4 @@ technologies being used can achieve the visual presentation, text is used to con
 
 ## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
+Find more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).

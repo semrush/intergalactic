@@ -1,5 +1,5 @@
+import { Flex } from '@semcore/base-components';
 import { MonthPicker, MonthRangePicker } from '@semcore/date-picker';
-import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import React from 'react';
 

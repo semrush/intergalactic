@@ -1,4 +1,4 @@
-import { Box } from '@semcore/flex-box';
+import { Box } from '@semcore/base-components';
 import Slider from '@semcore/slider';
 import { Text } from '@semcore/typography';
 import React from 'react';

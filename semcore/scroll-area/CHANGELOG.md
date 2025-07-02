@@ -24,7 +24,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Deprecated
 
-- Import it from `@semcore/core`.
+- Import it from `@semcore/base-components`.
 
 ## [5.45.4] - 2025-05-13
 

@@ -1,6 +1,6 @@
+import { Box } from '@semcore/base-components';
 import Button from '@semcore/button';
 import Card from '@semcore/card';
-import { Box } from '@semcore/flex-box';
 import WidgetEmpty, { getIconPath } from '@semcore/widget-empty';
 import React from 'react';
 

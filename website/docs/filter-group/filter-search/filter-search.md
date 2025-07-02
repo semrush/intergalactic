@@ -58,7 +58,7 @@ Slow but accurate user assistant, searches by button or by clicking "Enter".
 - filters are limited;
 - there is a lot of data and each filter application is a long and expensive query.
 
-Use [NeighborLocation](/utils/neighbor-location/neighbor-location) to "glue" multiple controls.
+Use [neighborLocation](/utils/neighbor-location/neighbor-location) to "glue" multiple controls.
 
 | State       | Appearance example                                        | Description                                                                                                                                                                                                                                        |
 | ----------- | --------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
