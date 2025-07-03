@@ -41,6 +41,7 @@
     "directory": "semcore/feature-highlight"
   },
   "devDependencies": {
-    "@semcore/base-components": "workspace:*"
+    "@semcore/base-components": "workspace:*",
+    "@semcore/testing-utils": "workspace:*"
   }
 }
