@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.2.3] - 2025-07-03
+
+### Changed
+
+- Inconsistent border color in disabled state for `neighborLocation=left`.
+
 ## [16.2.2] - 2025-06-23
 
 ### Changed
