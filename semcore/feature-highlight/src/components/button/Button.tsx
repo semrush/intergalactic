@@ -55,7 +55,7 @@ function HighlightAddon(props: HighLightedButtonAddonProps & { clicked: boolean 
         : (
             <>
               <SummaryAI color='--intergalactic-icon-primary-feature-highlight' />
-              {animatedSparkleCount && <AnimatedSparkles show={clicked} count={animatedSparkleCount} />}
+              <AnimatedSparkles show={clicked} count={animatedSparkleCount} />
             </>
           )}
     </SAddon>,

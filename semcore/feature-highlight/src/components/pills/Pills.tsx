@@ -6,7 +6,7 @@ import React from 'react';
 
 import style from './pills.shadow.css';
 import type { HighlightedItemAddonProps, HighlightedPillComponent } from './Pills.type';
-import { Sparkle } from '../../inner-components/sparkle';
+import { AnimatedSparkles } from '../../inner-components/sparkle/AnimatedSparkles';
 
 class PillsFHRoot extends Component {
   static displayName = 'PillsFH';
@@ -57,11 +57,7 @@ function HighlightedItemAddon(props: HighlightedItemAddonProps & { clicked: bool
         : (
             <>
               <SummaryAI color='--intergalactic-icon-primary-feature-highlight' />
-              {clicked && animatedSparkleCount && [...new Array(animatedSparkleCount)].map((_, index) => {
-                return (
-                  <Sparkle key={index} index={index} num={animatedSparkleCount} />
-                );
-              })}
+              <AnimatedSparkles show={clicked} count={animatedSparkleCount} />
             </>
           )}
     </Pills.Item.Addon>

@@ -58,7 +58,7 @@ function HighlightedAddon(props: { animatedSparkleCount?: number; clicked: boole
         : (
             <>
               <SummaryAI color='--intergalactic-icon-primary-feature-highlight' />
-              {animatedSparkleCount && <AnimatedSparkles show={clicked} count={animatedSparkleCount} />}
+              <AnimatedSparkles show={clicked} count={animatedSparkleCount} />
             </>
           )}
     </Root>
