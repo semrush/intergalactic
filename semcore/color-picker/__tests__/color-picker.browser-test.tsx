@@ -334,6 +334,7 @@ test.describe('Color-picker', () => {
 
     await test.step('Verify hover on Add color button ', async () => {
       await locators.addButton.first().hover();
+      // TODO: Button hover doesn't work.
       await new Promise((resolve) => setTimeout(resolve, 100));
       await expect(page).toHaveScreenshot();
     });
