@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.2.3] - 2025-06-24
+
+### Changed
+
+- `Close` and `Check`. We made them a bit smaller so they will look a bit more elegant and align better with other icons from the same semantic group. We also tweaked thickness of the `Close` icon with M size a little bit.
+
 ## [16.2.2] - 2025-06-23
 
 ### Changed
