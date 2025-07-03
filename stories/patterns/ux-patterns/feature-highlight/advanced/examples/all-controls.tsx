@@ -39,7 +39,7 @@ const Demo = (props: ExampleButtonHihlightProps) => {
           </PillsFH.HighlightedItem>
         </PillsFH>
 
-        <SelectFH onChange={setSelectValue} disabled={props.disabled}>
+        <SelectFH onChange={setSelectValue} disabled={props.disabled} size={props.size} state={props.state}>
           <SelectFH.Trigger aria-label='Select with AI theme' wMax={160} wMin={160}>
             <SelectFH.Trigger.Addon />
             <SelectFH.Trigger.Text>{selectValue}</SelectFH.Trigger.Text>
@@ -51,7 +51,7 @@ const Demo = (props: ExampleButtonHihlightProps) => {
           </SelectFH.Menu>
         </SelectFH>
 
-        <InputFH w={250} disabled={props.disabled}>
+        <InputFH w={250} disabled={props.disabled} size={props.size} state={props.state}>
           <InputFH.Addon />
           <InputFH.Value placeholder='Your domain' aria-label='Input with AI theme' />
           <InputFH.Addon><BadgeFH>AI powered</BadgeFH></InputFH.Addon>
@@ -59,7 +59,7 @@ const Demo = (props: ExampleButtonHihlightProps) => {
 
         <SwitchFH size={props.size}>
           <SwitchFH.Value ml={0} disabled={props.disabled} checked={props.checked} />
-          <SwitchFH.AnimatedSparkles animatedSparkleCount={props.animatedSparkleCount} />
+          <SwitchFH.AnimatedSparkles count={5} />
           <SwitchFH.Addon>Receive updates</SwitchFH.Addon>
         </SwitchFH>
 
