@@ -1,4 +1,4 @@
-SHighlightedButton[theme='primary-fh'] {
+SHighlightedButton[theme='primary-highlighted'] {
   color: var(--intergalactic-text-primary-invert, #ffffff);
   background-image: linear-gradient(
     90deg,
@@ -19,12 +19,12 @@ SHighlightedButton[theme='primary-fh'] {
   &:active,
   &[active] {
     color: var(--intergalactic-text-primary-invert, #ffffff);
-    background-image: var(--intergalactic-control-primary-fh-active, linear-gradient(90deg, #5925ab, #044792));
+    background-image: var(--intergalactic-control-primary-feature-highlight-active, linear-gradient(90deg, #5925ab, #044792));
     background-size: 100%;
   }
 }
 
-SHighlightedButton[theme='secondary-fh'] {
+SHighlightedButton[theme='secondary-highlighted'] {
   color: var(--intergalactic-text-secondary, #6c6e79);
   border-color: var(--intergalactic-border-primary, #c4c7cf);
   background-color: var(--intergalactic-control-secondary-neutral, rgba(138, 142, 155, 0.1));
@@ -57,7 +57,7 @@ SHighlightedButton:focus-visible {
     padding: 4px;
     border-radius: calc(var(--intergalactic-control-rounded, 6px) + 3px);
 
-    background-image: var(--intergalactic-keyboard-focus-fh-outline, linear-gradient(90deg, rgba(171, 108, 254, 0.5), rgba(0, 143, 248, 0.5)));
+    background-image: var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg, rgba(171, 108, 254, 0.5), rgba(0, 143, 248, 0.5)));
     mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
     mask-composite: exclude;
   }

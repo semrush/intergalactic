@@ -77,7 +77,7 @@ const Demo = () => {
               <RadioFH.Value />
               <RadioFH.Text>
                 First option
-                <SummaryAI color='--intergalactic-icon-primary-ai' ml={2} style={{ verticalAlign: -3 }} />
+                <SummaryAI color='--intergalactic-icon-primary-feature-highlight' ml={2} style={{ verticalAlign: -3 }} />
               </RadioFH.Text>
               <RadioFH.AnimatedSparkles count={5} />
             </RadioFH>
@@ -95,7 +95,7 @@ const Demo = () => {
                 <CheckboxFH.Value />
                 <CheckboxFH.Text>
                   First option
-                  <SummaryAI color='--intergalactic-icon-primary-ai' ml={2} style={{ verticalAlign: -3 }} />
+                  <SummaryAI color='--intergalactic-icon-primary-feature-highlight' ml={2} style={{ verticalAlign: -3 }} />
                 </CheckboxFH.Text>
                 <CheckboxFH.AnimatedSparkles count={5} />
               </CheckboxFH>
@@ -177,7 +177,7 @@ const Demo = () => {
               <RadioFH.Value />
               <RadioFH.Text>
                 First option
-                <SummaryAI color='--intergalactic-icon-primary-ai' ml={2} style={{ verticalAlign: -2 }} />
+                <SummaryAI color='--intergalactic-icon-primary-feature-highlight' ml={2} style={{ verticalAlign: -2 }} />
               </RadioFH.Text>
               <RadioFH.AnimatedSparkles count={5} />
             </RadioFH>
@@ -195,7 +195,7 @@ const Demo = () => {
                 <CheckboxFH.Value />
                 <CheckboxFH.Text>
                   First option
-                  <SummaryAI color='--intergalactic-icon-primary-ai' ml={2} style={{ verticalAlign: -2 }} />
+                  <SummaryAI color='--intergalactic-icon-primary-feature-highlight' ml={2} style={{ verticalAlign: -2 }} />
                 </CheckboxFH.Text>
                 <CheckboxFH.AnimatedSparkles count={5} />
               </CheckboxFH>
@@ -252,7 +252,7 @@ const columnsPrimary = [
     name: 'kd',
     children: (
       <>
-        <SummaryAI color='--intergalactic-icon-primary-ai' />
+        <SummaryAI color='--intergalactic-icon-primary-feature-highlight' />
         KD %
       </>
     ),
@@ -277,7 +277,7 @@ const columnsSecondary = [
     name: 'kd',
     children: (
       <>
-        <SummaryAI color='--intergalactic-icon-primary-ai' />
+        <SummaryAI color='--intergalactic-icon-primary-feature-highlight' />
         KD %
       </>
     ),

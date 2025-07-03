@@ -5,14 +5,14 @@ SHighlightedItem {
     transition: opacity calc(var(--intergalactic-duration-control, 200) * 1ms) ease-in-out;
   }
   &:not(:focus-visible)::before {
-    background: var(--intergalactic-border-fh, linear-gradient(90deg, #c695ff, #2bb3ff));
+    background: var(--intergalactic-border-feature-highlight, linear-gradient(90deg, #c695ff, #2bb3ff));
   }
   &:hover:not(:focus-visible)::before {
     opacity: 1;
   }
   &[selected]::after {
     opacity: 1;
-    background: var(--intergalactic-border-fh-active, linear-gradient(90deg, #ab6cfe, #008ff8));
+    background: var(--intergalactic-border-feature-highlight-active, linear-gradient(90deg, #ab6cfe, #008ff8));
   }
 
   &:focus-visible::before {
@@ -21,5 +21,5 @@ SHighlightedItem {
 }
 
 SHighlightedCared {
-  background: var(--intergalactic-border-fh-active, linear-gradient(90deg, #ab6cfe, #008ff8));
+  background: var(--intergalactic-border-feature-highlight-active, linear-gradient(90deg, #ab6cfe, #008ff8));
 }

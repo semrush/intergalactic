@@ -22,7 +22,7 @@ const Demo = () => (
           <RadioFH.AnimatedSparkles count={5} />
           <RadioFH.Text>
             First option
-            <SummaryAI color='--intergalactic-icon-primary-fh' ml={2} style={{ verticalAlign: -3 }} />
+            <SummaryAI color='--intergalactic-icon-primary-feature-highlight' ml={2} style={{ verticalAlign: -3 }} />
           </RadioFH.Text>
         </RadioFH>
         <Radio value={2} label='Second option' />
@@ -44,7 +44,7 @@ const Demo = () => (
           <RadioFH.AnimatedSparkles count={5} />
           <RadioFH.Text>
             First option
-            <SummaryAI color='--intergalactic-icon-primary-fh' ml={2} style={{ verticalAlign: -2 }} />
+            <SummaryAI color='--intergalactic-icon-primary-feature-highlight' ml={2} style={{ verticalAlign: -2 }} />
           </RadioFH.Text>
         </RadioFH>
         <Radio value={2} label='Second option' />

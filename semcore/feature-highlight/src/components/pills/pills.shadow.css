@@ -2,21 +2,21 @@ SHighlightedPill {
   border: 1px solid transparent;
   background:
     linear-gradient(white, white) padding-box,
-    var(--intergalactic-border-fh, linear-gradient(90deg, #c695ff, #2bb3ff)
+    var(--intergalactic-border-feature-highlight, linear-gradient(90deg, #c695ff, #2bb3ff)
   ) border-box;
   background-origin: border-box;
   background-clip: padding-box, border-box;
   z-index: 1;
 
   &:hover {
-    background: var(--intergalactic-bg-primary-fh-hover-active, linear-gradient(90deg, #f9f2ff, #e9f7ff)) padding-box,
-      var(--intergalactic-border-fh, linear-gradient(90deg, #c695ff, #2bb3ff)
+    background: var(--intergalactic-bg-primary-feature-highlight-hover-active, linear-gradient(90deg, #f9f2ff, #e9f7ff)) padding-box,
+      var(--intergalactic-border-feature-highlight, linear-gradient(90deg, #c695ff, #2bb3ff)
     ) border-box;
   }
   &[selected] {
     background:
-      var(--intergalactic-bg-primary-fh-hover-active, linear-gradient(90deg, #f9f2ff, #e9f7ff)) padding-box,
-      var(--intergalactic-control-primary-fh-hover, linear-gradient(90deg, #8649e1, #006dca)) border-box;
+      var(--intergalactic-bg-primary-feature-highlight-hover-active, linear-gradient(90deg, #f9f2ff, #e9f7ff)) padding-box,
+      var(--intergalactic-control-primary-feature-highlight-hover, linear-gradient(90deg, #8649e1, #006dca)) border-box;
     background-origin: border-box;
     background-clip: padding-box, border-box;
     border-color: transparent;
@@ -37,7 +37,7 @@ SHighlightedPill:focus-visible {
     padding: 4px;
     border-radius: calc(var(--intergalactic-control-rounded, 6px) + 3px);
 
-    background-image: var(--intergalactic-keyboard-focus-fh-outline, linear-gradient(90deg, rgba(171, 108, 254, 0.5), rgba(0, 143, 248, 0.5)));
+    background-image: var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg, rgba(171, 108, 254, 0.5), rgba(0, 143, 248, 0.5)));
     mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
     mask-composite: exclude;
   }

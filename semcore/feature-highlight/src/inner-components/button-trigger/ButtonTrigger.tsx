@@ -20,7 +20,7 @@ class ButtonTriggerFHRoot extends Component {
 }
 
 function Addon() {
-  return <Root render={ButtonTrigger.Addon} tag={SummaryAI} color='--intergalactic-icon-primary-fh' />;
+  return <Root render={ButtonTrigger.Addon} tag={SummaryAI} color='--intergalactic-icon-primary-feature-highlight' />;
 }
 
 export const ButtonTriggerFH = createComponent(ButtonTriggerFHRoot, {

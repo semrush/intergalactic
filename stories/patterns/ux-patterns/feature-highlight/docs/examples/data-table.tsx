@@ -29,7 +29,7 @@ const Demo = () => {
             name: 'kd',
             children: (
               <>
-                <SummaryAI color='--intergalactic-icon-primary-fh' />
+                <SummaryAI color='--intergalactic-icon-primary-feature-highlight' />
                 KD %
               </>
             ),
@@ -60,7 +60,7 @@ const Demo = () => {
             name: 'kd',
             children: (
               <>
-                <SummaryAI color='--intergalactic-icon-primary-fh' />
+                <SummaryAI color='--intergalactic-icon-primary-feature-highlight' />
                 KD %
               </>
             ),

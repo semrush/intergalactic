@@ -22,7 +22,7 @@ function HighlightAddon(props: IRootComponentProps) {
   const { Children, children: hasChildren } = props;
   return (
     <Root render={Input.Addon}>
-      {hasChildren ? (<Children />) : (<SummaryAI color='--intergalactic-icon-primary-fh' />)}
+      {hasChildren ? (<Children />) : (<SummaryAI color='--intergalactic-icon-primary-feature-highlight' />)}
     </Root>
   );
 }

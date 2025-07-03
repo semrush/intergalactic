@@ -11,7 +11,7 @@ const Demo = () => (
       <SwitchFH.AnimatedSparkles count={5} />
       <SwitchFH.Addon>
         Medium switch
-        <SummaryAI color='--intergalactic-icon-primary-fh' ml={2} style={{ verticalAlign: 'middle' }} />
+        <SummaryAI color='--intergalactic-icon-primary-feature-highlight' ml={2} style={{ verticalAlign: 'middle' }} />
       </SwitchFH.Addon>
     </SwitchFH>
 
@@ -20,7 +20,7 @@ const Demo = () => (
       <SwitchFH.AnimatedSparkles count={5} />
       <SwitchFH.Addon>
         Large switch
-        <SummaryAI color='--intergalactic-icon-primary-fh' ml={2} style={{ verticalAlign: -3 }} />
+        <SummaryAI color='--intergalactic-icon-primary-feature-highlight' ml={2} style={{ verticalAlign: -3 }} />
       </SwitchFH.Addon>
     </SwitchFH>
 
@@ -29,7 +29,7 @@ const Demo = () => (
       <SwitchFH.AnimatedSparkles count={5} />
       <SwitchFH.Addon>
         Extra large switch
-        <SummaryAI color='--intergalactic-icon-primary-fh' ml={2} style={{ verticalAlign: -3 }} />
+        <SummaryAI color='--intergalactic-icon-primary-feature-highlight' ml={2} style={{ verticalAlign: -3 }} />
       </SwitchFH.Addon>
     </SwitchFH>
 

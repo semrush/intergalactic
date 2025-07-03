@@ -4152,7 +4152,7 @@
     "components": []
   },
   {
-    "name": "--intergalactic-bg-primary-fh",
+    "name": "--intergalactic-bg-primary-feature-highlight",
     "type": "color",
     "rawValue": "{gray.white}",
     "computedValue": "#ffffff",
@@ -4160,7 +4160,7 @@
     "components": []
   },
   {
-    "name": "--intergalactic-bg-primary-fh-hover-active",
+    "name": "--intergalactic-bg-primary-feature-highlight-hover-active",
     "type": "color",
     "rawValue": "linear-gradient(90deg, {violet.50}, {blue.50})",
     "computedValue": "linear-gradient(90deg, #f9f2ff, #e9f7ff)",
@@ -4170,7 +4170,7 @@
     ]
   },
   {
-    "name": "--intergalactic-bg-secondary-fh",
+    "name": "--intergalactic-bg-secondary-feature-highlight",
     "type": "color",
     "rawValue": "linear-gradient(90deg, {violet.50}, {blue.50})",
     "computedValue": "linear-gradient(90deg, #f9f2ff, #e9f7ff)",
@@ -4180,7 +4180,7 @@
     ]
   },
   {
-    "name": "--intergalactic-border-fh",
+    "name": "--intergalactic-border-feature-highlight",
     "type": "color",
     "rawValue": "linear-gradient(90deg, {violet.300}, {blue.300})",
     "computedValue": "linear-gradient(90deg, #c695ff, #2bb3ff)",
@@ -4190,7 +4190,7 @@
     ]
   },
   {
-    "name": "--intergalactic-border-fh-active",
+    "name": "--intergalactic-border-feature-highlight-active",
     "type": "color",
     "rawValue": "linear-gradient(90deg, {violet.400}, {blue.400})",
     "computedValue": "linear-gradient(90deg, #ab6cfe, #008ff8)",
@@ -4200,7 +4200,7 @@
     ]
   },
   {
-    "name": "--intergalactic-control-primary-fh",
+    "name": "--intergalactic-control-primary-feature-highlight",
     "type": "color",
     "rawValue": "linear-gradient(90deg, {violet.400}, {blue.400})",
     "computedValue": "linear-gradient(90deg, #ab6cfe, #008ff8)",
@@ -4210,7 +4210,7 @@
     ]
   },
   {
-    "name": "--intergalactic-control-primary-fh-hover",
+    "name": "--intergalactic-control-primary-feature-highlight-hover",
     "type": "color",
     "rawValue": "linear-gradient(90deg, {violet.500}, {blue.500})",
     "computedValue": "linear-gradient(90deg, #8649e1, #006dca)",
@@ -4220,7 +4220,7 @@
     ]
   },
   {
-    "name": "--intergalactic-control-primary-fh-active",
+    "name": "--intergalactic-control-primary-feature-highlight-active",
     "type": "color",
     "rawValue": "linear-gradient(90deg, {violet.600}, {blue.600})",
     "computedValue": "linear-gradient(90deg, #5925ab, #044792)",
@@ -4230,7 +4230,7 @@
     ]
   },
   {
-    "name": "--intergalactic-icon-primary-fh",
+    "name": "--intergalactic-icon-primary-feature-highlight",
     "type": "color",
     "rawValue": "{violet.500}",
     "computedValue": "#8649e1",
@@ -4240,7 +4240,7 @@
     ]
   },
   {
-    "name": "--intergalactic-icon-primary-fh-hover-active",
+    "name": "--intergalactic-icon-primary-feature-highlight-hover-active",
     "type": "color",
     "rawValue": "#6B3AB4",
     "computedValue": "#6B3AB4",
@@ -4248,7 +4248,7 @@
     "components": []
   },
   {
-    "name": "--intergalactic-keyboard-focus-fh-outline",
+    "name": "--intergalactic-keyboard-focus-feature-highlight-outline",
     "type": "color",
     "rawValue": "linear-gradient(90deg, rgba({violet.400}, 0.5), rgba({blue.400}, 0.5))",
     "computedValue": "linear-gradient(90deg, rgba(171, 108, 254, 0.5), rgba(0, 143, 248, 0.5))",

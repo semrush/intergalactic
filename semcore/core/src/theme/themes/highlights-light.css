@@ -1,24 +1,24 @@
 :root {
   /* Primary background for highlighted controls. */
-  --intergalactic-bg-primary-fh: #ffffff;
+  --intergalactic-bg-primary-feature-highlight: #ffffff;
   /* Primary background for hover and active (selected) state of highlighted controls. */
-  --intergalactic-bg-primary-fh-hover-active: linear-gradient(90deg, #f9f2ff, #e9f7ff);
+  --intergalactic-bg-primary-feature-highlight-hover-active: linear-gradient(90deg, #f9f2ff, #e9f7ff);
   /* Secondary background for the highlighted message. */
-  --intergalactic-bg-secondary-fh: linear-gradient(90deg, #f9f2ff, #e9f7ff);
+  --intergalactic-bg-secondary-feature-highlight: linear-gradient(90deg, #f9f2ff, #e9f7ff);
   /* Border for highlighted controls. */
-  --intergalactic-border-fh: linear-gradient(90deg, #c695ff, #2bb3ff);
+  --intergalactic-border-feature-highlight: linear-gradient(90deg, #c695ff, #2bb3ff);
   /* Border for the active state of highlighted controls. */
-  --intergalactic-border-fh-active: linear-gradient(90deg, #ab6cfe, #008ff8);
+  --intergalactic-border-feature-highlight-active: linear-gradient(90deg, #ab6cfe, #008ff8);
   /* Background of the highlighted primary control. */
-  --intergalactic-control-primary-fh: linear-gradient(90deg, #ab6cfe, #008ff8);
+  --intergalactic-control-primary-feature-highlight: linear-gradient(90deg, #ab6cfe, #008ff8);
   /* Hover state of the highlighted primary control. */
-  --intergalactic-control-primary-fh-hover: linear-gradient(90deg, #8649e1, #006dca);
+  --intergalactic-control-primary-feature-highlight-hover: linear-gradient(90deg, #8649e1, #006dca);
   /* Active (selected) state of the highlighted primary control. */
-  --intergalactic-control-primary-fh-active: linear-gradient(90deg, #5925ab, #044792);
+  --intergalactic-control-primary-feature-highlight-active: linear-gradient(90deg, #5925ab, #044792);
   /* Primary highlighted icon. */
-  --intergalactic-icon-primary-fh: #8649e1;
+  --intergalactic-icon-primary-feature-highlight: #8649e1;
   /* Violet background color for the hover and active states of the primary highlighted icon. It’s created using a CSS filter with a brightness(0.8), applied to the violet-500 color. */
-  --intergalactic-icon-primary-fh-hover-active: #6B3AB4;
+  --intergalactic-icon-primary-feature-highlight-hover-active: #6B3AB4;
   /* Color for keyboard focus outline styles for highlighted controls. */
-  --intergalactic-keyboard-focus-fh-outline: linear-gradient(90deg, rgba(171, 108, 254, 0.5), rgba(0, 143, 248, 0.5));
+  --intergalactic-keyboard-focus-feature-highlight-outline: linear-gradient(90deg, rgba(171, 108, 254, 0.5), rgba(0, 143, 248, 0.5));
 }
