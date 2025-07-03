@@ -55,13 +55,14 @@ const Demo = (props: ExampleButtonHihlightProps) => {
             <SelectFH.Option value='Three'>Three</SelectFH.Option>
           </SelectFH.Menu>
         </SelectFH>
+        <Flex flexWrap gap={4} data-testid='input'>
 
-        <InputFH w={250} disabled={props.disabled} size={props.size} state={props.state}>
-          <InputFH.Addon />
-          <InputFH.Value placeholder='Your domain' aria-label='Input with AI theme' />
-          <InputFH.Addon><BadgeFH>AI powered</BadgeFH></InputFH.Addon>
-        </InputFH>
-
+          <InputFH w={250} disabled={props.disabled} size={props.size} state={props.state}>
+            <InputFH.Addon />
+            <InputFH.Value placeholder='Your domain' aria-label='Input with AI theme' />
+            <InputFH.Addon><BadgeFH>AI powered</BadgeFH></InputFH.Addon>
+          </InputFH>
+        </Flex>
         <SwitchFH size={props.size}>
           <SwitchFH.Value ml={0} disabled={props.disabled} checked={props.checked} />
           <SwitchFH.AnimatedSparkles count={5} />

@@ -52,10 +52,10 @@ test.describe('Feature highlight', () => {
 
   test.describe('Pills styles', () => {
     const variables = [
-      { disabled: false, size: 'm' },
-      { disabled: false, size: 'l' },
-      { disabled: true, size: 'm' },
-      { disabled: true, size: 'l' },
+      { disabled: false, size: 'm', animatedSparkleCount: 0 },
+      { disabled: false, size: 'l', animatedSparkleCount: 0 },
+      { disabled: true, size: 'm', animatedSparkleCount: 0 },
+      { disabled: true, size: 'l', animatedSparkleCount: 0 },
     ];
 
     variables.forEach((item) => {
@@ -130,6 +130,176 @@ test.describe('Feature highlight', () => {
 
           await page.keyboard.press('ArrowDown');
           await page.keyboard.press('Enter');
+          await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+        }
+      });
+    });
+  });
+
+  test.describe('Input styles', () => {
+    const variables = [
+      { disabled: false, size: 'm', state: 'normal' },
+      { disabled: false, size: 'm', state: 'valid' },
+      { disabled: false, size: 'l', state: 'invalid' },
+      { disabled: true, size: 'm', state: 'normal' },
+    ];
+
+    variables.forEach((item) => {
+      test(`Verify Input ${item.disabled} ${item.size} ${item.state}`, async ({ page }) => {
+        const standPath = 'stories/patterns/ux-patterns/feature-highlight/advanced/examples/all-controls.tsx';
+        const htmlContent = await e2eStandToHtml(standPath, 'en', item);
+
+        await page.setContent(htmlContent);
+
+        const input = page.locator('[data-ui-name="InputFH.Value"]');
+        const flex = page.locator('[data-testid="input"]');
+        const screenshotsClip = (await flex.first().boundingBox())!;
+        screenshotsClip.x -= 4;
+        screenshotsClip.y -= 4;
+        screenshotsClip.width += 8;
+        screenshotsClip.height += 8;
+
+        const isDisabled = await input.first().getAttribute('disabled');
+
+        if (isDisabled !== null) {
+          await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+          return;
+        } else {
+          await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+          await page.keyboard.press('Tab');
+          await page.keyboard.press('Tab');
+          await page.keyboard.press('Tab');
+          await page.keyboard.press('Tab');
+          await page.keyboard.press('Tab');
+          await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+        }
+      });
+    });
+  });
+
+  test.describe('Switch styles', () => {
+    const variables = [
+      { disabled: true, size: 'm', checked: true },
+      { disabled: false, size: 'm', checked: true },
+      { disabled: false, size: 'l', checked: true },
+      { disabled: true, size: 'xl', checked: true },
+    ];
+
+    variables.forEach((item) => {
+      test(`Verify Switch ${item.disabled} ${item.size} ${item.checked}`, async ({ page }) => {
+        const standPath = 'stories/patterns/ux-patterns/feature-highlight/advanced/examples/all-controls.tsx';
+        const htmlContent = await e2eStandToHtml(standPath, 'en', item);
+
+        await page.setContent(htmlContent);
+
+        const input = page.locator('[data-ui-name="SwitchFH"]');
+        const screenshotsClip = (await input.first().boundingBox())!;
+        screenshotsClip.x -= 4;
+        screenshotsClip.y -= 4;
+        screenshotsClip.width += 8;
+        screenshotsClip.height += 8;
+
+        const isDisabled = await input.first().getAttribute('disabled');
+
+        if (isDisabled !== null) {
+          await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+          return;
+        } else {
+          await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+          await page.keyboard.press('Tab');
+          await page.keyboard.press('Tab');
+          await page.keyboard.press('Tab');
+          await page.keyboard.press('Tab');
+          await page.keyboard.press('Tab');
+          await page.keyboard.press('Tab');
+          await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+        }
+      });
+    });
+  });
+
+  test.describe('Radio styles', () => {
+    const variables = [
+      { disabled: true, size: 'm', state: 'normal' },
+      { disabled: false, size: 'l', state: 'normal' },
+      { disabled: false, size: 'm', state: 'invalid' },
+    ];
+
+    variables.forEach((item) => {
+      test(`Verify Radio ${item.disabled} ${item.size} ${item.state}`, async ({ page }) => {
+        const standPath = 'stories/patterns/ux-patterns/feature-highlight/advanced/examples/all-controls.tsx';
+        const htmlContent = await e2eStandToHtml(standPath, 'en', item);
+
+        await page.setContent(htmlContent);
+
+        const radio = page.locator('[data-ui-name="RadioGroup"]');
+        const screenshotsClip = (await radio.first().boundingBox())!;
+        screenshotsClip.x -= 4;
+        screenshotsClip.y -= 4;
+        screenshotsClip.width += 8;
+        screenshotsClip.height += 8;
+
+        const isDisabled = await radio.first().getAttribute('disabled');
+
+        if (isDisabled !== null) {
+          await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+          return;
+        } else {
+          await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+          await page.keyboard.press('Tab');
+          await page.keyboard.press('Tab');
+          await page.keyboard.press('Tab');
+          await page.keyboard.press('Tab');
+          await page.keyboard.press('Tab');
+          await page.keyboard.press('Tab');
+          await page.keyboard.press('Tab');
+          await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+          await page.keyboard.press('Space');
+          await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+        }
+      });
+    });
+  });
+
+  test.describe('Checkbox styles', () => {
+    const variables = [
+      { disabled: true, size: 'm', state: 'normal', checked: true },
+      { disabled: false, size: 'l', state: 'normal', checked: true },
+      { disabled: false, size: 'm', state: 'invalid', checked: false },
+    ];
+
+    variables.forEach((item) => {
+      test(`Verify Checkbox ${item.disabled} ${item.size} ${item.state}`, async ({ page }) => {
+        const standPath = 'stories/patterns/ux-patterns/feature-highlight/advanced/examples/all-controls.tsx';
+        const htmlContent = await e2eStandToHtml(standPath, 'en', item);
+
+        await page.setContent(htmlContent);
+
+        const fieldset = page.locator('fieldset');
+        const screenshotsClip = (await fieldset.first().boundingBox())!;
+        screenshotsClip.x -= 4;
+        screenshotsClip.y -= 4;
+        screenshotsClip.width += 8;
+        screenshotsClip.height += 8;
+
+        const checkbox = page.locator('[data-ui-name="CheckboxFH"]');
+
+        const isDisabled = await checkbox.first().getAttribute('disabled');
+
+        if (isDisabled !== null) {
+          await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+          return;
+        } else {
+          await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+          await page.keyboard.press('Tab');
+          await page.keyboard.press('Tab');
+          await page.keyboard.press('Tab');
+          await page.keyboard.press('Tab');
+          await page.keyboard.press('Tab');
+          await page.keyboard.press('Tab');
+          await page.keyboard.press('Tab');
+          await page.keyboard.press('Tab');
+          await page.keyboard.press('Tab');
           await expect(page).toHaveScreenshot({ clip: screenshotsClip });
         }
       });

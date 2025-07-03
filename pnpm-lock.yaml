@@ -1166,6 +1166,9 @@ importers:
       '@semcore/base-components':
         specifier: workspace:*
         version: link:../base-components
+      '@semcore/testing-utils':
+        specifier: workspace:*
+        version: link:../../tools/testing-utils
 
   semcore/feature-popover:
     dependencies:
