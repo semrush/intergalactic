@@ -1,5 +1,5 @@
 SHighlightedRadio {
-    position: relative;
+  position: relative;
 }
 
 SHighlightedRadio:not([state="invalid"]) {
