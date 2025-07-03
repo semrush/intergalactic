@@ -1,6 +1,8 @@
-SHighlightedRadio:not([state="invalid"]) {
-  position: relative;
+SHighlightedRadio {
+    position: relative;
+}
 
+SHighlightedRadio:not([state="invalid"]) {
   input[data-ui-name="RadioFH.Value"]:focus-visible + [data-ui-name="Value.RadioMark"]::before {
     box-shadow: none;
     border-color: transparent;
