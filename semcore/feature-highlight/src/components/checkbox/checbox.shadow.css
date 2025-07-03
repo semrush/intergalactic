@@ -1,4 +1,4 @@
-SHighlightedCheckbox {
+SHighlightedCheckbox:not([state="invalid"]) {
   input[data-ui-name="CheckboxFH.Value"]:focus-visible + [data-ui-name="Value.CheckMark"]::before {
     box-shadow: none;
     content: "";

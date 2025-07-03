@@ -1,4 +1,4 @@
-SHighlightedButtonTrigger {
+SHighlightedButtonTrigger:not([state="invalid"]) {
   border: 1px solid transparent;
   background:
     linear-gradient(white, white) padding-box,
@@ -24,7 +24,7 @@ SHighlightedButtonTrigger {
   }
 }
 
-SHighlightedButtonTrigger:focus-visible {
+SHighlightedButtonTrigger:not([state="invalid"]):focus-visible {
   outline: none;
   position: relative;
   border-color: transparent;
