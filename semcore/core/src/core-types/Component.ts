@@ -103,9 +103,10 @@ abstract class RootComponent<
   State = {},
   Enhance extends readonly ((...args: any[]) => any)[] = [],
   InnerProps = {},
+  Handlers extends IRootComponentHandlers = IRootComponentHandlers,
 > extends PureComponent<Props, State> {
-  get handlers(): Readonly<IRootComponentHandlers> {
-    return {};
+  get handlers(): Readonly<Handlers> {
+    return {} as Readonly<Handlers>;
   }
 
   get asProps() {

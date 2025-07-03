@@ -8,16 +8,16 @@ type EllipsisSettings = {
 };
 
 export function useEllipsis(ref: React.RefObject<HTMLElement>, props: EllipsisSettings) {
-  console.log('useEllipsis', ref.current, props);
+  // console.log('useEllipsis', ref.current, props);
   if (props.trim === undefined) {
     props.trim = 'end';
   }
 
   const blockWidth = useResizeObserver(ref).width;
-  console.log(blockWidth);
+  // console.log(blockWidth);
 
   React.useEffect(() => {
-    console.log('useEllipsisEffect', ref.current, props);
+    // console.log('useEllipsisEffect', ref.current, props);
     if (!ref.current) return;
 
     ref.current.style.setProperty('overflow', 'hidden');
@@ -47,6 +47,6 @@ export function useEllipsis(ref: React.RefObject<HTMLElement>, props: EllipsisSe
       ref.current.innerHTML = `<span style="overflow: hidden; text-overflow: ellipsis">${begining}</span><span>${tail}</span>`;
     }
 
-    ref.current.title = ref.current.textContent ?? '';
+    // ref.current.title = ref.current.textContent ?? '';
   }, [ref.current, props.trim, props.maxLine, blockWidth]);
 }
