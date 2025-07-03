@@ -1,5 +1,5 @@
-import { Flex } from '@semcore/base-components';
-import { RadioFH } from '@semcore/feature-highlight';
+import { Flex, ScreenReaderOnly } from '@semcore/base-components';
+import { RadioFH, BadgeFH } from '@semcore/feature-highlight';
 import SummaryAI from '@semcore/icon/SummaryAI/m';
 import Radio, { RadioGroup } from '@semcore/radio';
 import { Text } from '@semcore/typography';
@@ -16,15 +16,25 @@ const Demo = () => (
       <Text id='radioGroup' size={200} mb={2}>
         Highlighted radio button
       </Text>
-      <Flex gap={3} direction='column'>
+      <Flex gap={3} direction='column' alignItems='start'>
         <RadioFH value={1}>
-          <RadioFH.Value />
+          <RadioFH.Value>
+            <Radio.Value.Control aria-describedby='radio-aria-desc' />
+            <Radio.Value.RadioMark />
+          </RadioFH.Value>
           <RadioFH.AnimatedSparkles count={5} />
           <RadioFH.Text>
             First option
-            <SummaryAI color='--intergalactic-icon-primary-feature-highlight' ml={2} style={{ verticalAlign: -3 }} />
+            <SummaryAI
+              color='--intergalactic-icon-primary-feature-highlight'
+              ml={2}
+              style={{ verticalAlign: -3 }}
+            />
           </RadioFH.Text>
         </RadioFH>
+        <ScreenReaderOnly id='radio-aria-desc'>
+          Powered by AI
+        </ScreenReaderOnly>
         <Radio value={2} label='Second option' />
       </Flex>
     </RadioGroup>
@@ -38,13 +48,13 @@ const Demo = () => (
       <Text id='radioGroup-l' size={300} mb={2}>
         Large highlighted radio button
       </Text>
-      <Flex gap={3} direction='column'>
+      <Flex gap={3} direction='column' alignItems='start'>
         <RadioFH value={1}>
           <RadioFH.Value />
           <RadioFH.AnimatedSparkles count={5} />
           <RadioFH.Text>
             First option
-            <SummaryAI color='--intergalactic-icon-primary-feature-highlight' ml={2} style={{ verticalAlign: -2 }} />
+            <BadgeFH ml={2}>AI-powered</BadgeFH>
           </RadioFH.Text>
         </RadioFH>
         <Radio value={2} label='Second option' />

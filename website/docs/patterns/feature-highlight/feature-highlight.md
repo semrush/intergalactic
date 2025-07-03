@@ -12,7 +12,8 @@ All components from the `FeatureHighlight` package are wrappers over our standar
 
 * Make sure there's no more than 1–2 highlighted features on the page at the same time.
 * Replace the highlighted control with its standard version after approximately a month of promotion.
-* If there's an animation on click, disable it after the user has activated the control several times.
+* For controls with animation on click, consider turning off the animation after several clicks if the control is likely to be clicked multiple times.
+* If the control's text doesn't mention the promotion, add an accessible description. Refer to the examples in the following sections.
 
 ## Badge
 
@@ -36,6 +37,8 @@ For the secondary button, use the special icon addon (`ButtonFH.Addon` component
 
 You can change the number of animated sparkles (`animatedSparkleCount` prop) or disable the animation (set `animatedSparkleCount` to `0` or `undefined`).
 
+If the control's text doesn't mention the promotion, add an accessible description with `aria-describedby` and `ScreenReaderOnly`.
+
 ::: sandbox
 
 <script lang="tsx">
@@ -52,6 +55,8 @@ You can enable animation on click (`AnimatedSparkles` component). It's possible 
 
 You can add more accent by displaying the `SummaryAI` icon with the `--intergalactic-icon-primary-feature-highlight` color after the text label.
 
+If the control's label doesn't mention the promotion, add an accessible description with `aria-describedby` and `ScreenReaderOnly`.
+
 ::: sandbox
 
 <script lang="tsx">
@@ -63,6 +68,8 @@ You can add more accent by displaying the `SummaryAI` icon with the `--intergala
 ## DataTable
 
 To highlight a [table column](../../table-group/data-table/data-table), display the `SummaryAI` icon with the `--intergalactic-icon-primary-feature-highlight` color in the column header.
+
+If the column title doesn't mention the promotion, add a `ScreenReaderOnly` text to the column header.
 
 ::: sandbox
 
@@ -77,6 +84,8 @@ To highlight a [table column](../../table-group/data-table/data-table), display 
 To highlight an [Input](../../components/input/input), use the `InputFH` component.
 
 You can add more accent by using the special icon addon (`InputFH.Addon` component) and/or the special badge (`BadgeFH` component).
+
+If the control's label doesn't mention the promotion, add an accessible description by connecting the control with the badge or the `ScreenReaderOnly` text via `aria-describedby`.
 
 ::: sandbox
 
@@ -106,6 +115,8 @@ You can add more accent by using the special icon addon (`HighlightedItem.Addon`
 
 It's possible to change the number of animated sparkles (`animatedSparkleCount` prop) or disable the animation (set `animatedSparkleCount` to `0` or `undefined`).
 
+If the control's text or badge doesn't mention the promotion, add an accessible description with `aria-describedby` and `ScreenReaderOnly`.
+
 ::: sandbox
 
 <script lang="tsx">
@@ -122,6 +133,8 @@ You can enable animation on click (`AnimatedSparkles` component). It's possible 
 
 You can add more accent by displaying the `SummaryAI` icon with the `--intergalactic-icon-primary-feature-highlight` color after the text label.
 
+If the control's label doesn't mention the promotion, add an accessible description with `aria-describedby` and `ScreenReaderOnly`.
+
 ::: sandbox
 
 <script lang="tsx">
@@ -135,6 +148,8 @@ You can add more accent by displaying the `SummaryAI` icon with the `--intergala
 To highlight a [Select](../../components/select/select), use the `SelectFH` component.
 
 You can add more accent by using the special icon addon (`SelectFH.Trigger.Addon` component).
+
+If the control's text or badge doesn't mention the promotion, add an accessible description with `aria-describedby` and `ScreenReaderOnly`.
 
 ::: sandbox
 
@@ -152,6 +167,8 @@ You can enable animation on click (`AnimatedSparkles` component). It's possible 
 
 You can add more accent by displaying the `SummaryAI` icon with the `--intergalactic-icon-primary-feature-highlight` color after the text label.
 
+If the control's label doesn't mention the promotion, add an accessible description with `aria-describedby` and `ScreenReaderOnly`.
+
 ::: sandbox
 
 <script lang="tsx">
@@ -167,6 +184,8 @@ To highlight a [TabLine.Item](../../components/tab-line/tab-line), use the `TabL
 You can add more accent by using the special icon addon (`HighlightedItem.Addon` component) before the text, and/or the special badge (`BadgeFH` component) after the text.
 
 The icon addon has a built-in animation. You can change the number of animated sparkles (`animatedSparkleCount` prop) or disable the animation (set `animatedSparkleCount` to `0` or `undefined`).
+
+If the control's text or badge doesn't mention the promotion, add an accessible description with `aria-describedby` and `ScreenReaderOnly`.
 
 ::: sandbox
 
