@@ -32,9 +32,9 @@ const Demo = () => {
         <SelectFH.Trigger aria-label='Large highlighted select'>
           <SelectFH.Trigger.Addon />
           <SelectFH.Trigger.Text>{selectValueL}</SelectFH.Trigger.Text>
-          <Select.Trigger.Addon ml={2}>
+          <SelectFH.Trigger.Addon ml={2}>
             <BadgeFH>AI-powered</BadgeFH>
-          </Select.Trigger.Addon>
+          </SelectFH.Trigger.Addon>
         </SelectFH.Trigger>
         <SelectFH.Menu>
           <SelectFH.Option value='One'>One</SelectFH.Option>
