@@ -22,12 +22,8 @@ class RadioFHRoot extends Component<RadioProps> {
   getValueProps() {
     return {
       ref: this.inputRef,
-      onChange: () => {
-        this.setState({ checked: false });
-        setTimeout(() => {
-          this.setState({ checked: this.inputRef.current?.checked });
-        });
-      },
+      onChange: this.setChecked, // for click by label / programmatically changed
+      onClick: this.setChecked, // for click by radio
     };
   }
 
@@ -42,6 +38,13 @@ class RadioFHRoot extends Component<RadioProps> {
       left: size === 'l' ? '5px' : '3px',
     };
   }
+
+  setChecked = () => {
+    this.setState({ checked: false });
+    setTimeout(() => {
+      this.setState({ checked: this.inputRef.current?.checked });
+    });
+  };
 
   render() {
     const SHighlightedRadio = Root;
