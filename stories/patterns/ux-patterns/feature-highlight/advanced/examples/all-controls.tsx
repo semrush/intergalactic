@@ -8,7 +8,9 @@ import Radio, { RadioGroup } from '@semcore/radio';
 import { Text, List } from '@semcore/typography';
 import React from 'react';
 
-const Demo = () => {
+export type ExampleButtonHihlightProps = { disabled: boolean; state: any; checked: any; active: boolean; loading: boolean; animatedSparkleCount: number; size: any };
+
+const Demo = (props: ExampleButtonHihlightProps) => {
   const [selectValue, setSelectValue] = React.useState('');
   const [sort, setSort] = React.useState<DataTableSort<keyof typeof data[0]>>(['cpc', 'desc']);
   const handleSortChange: (sort: DataTableSort<string>, e?: React.SyntheticEvent) => void = (
@@ -20,24 +22,24 @@ const Demo = () => {
     <Flex gap={4} direction='column'>
       <Flex flexWrap gap={4}>
 
-        <ButtonFH use='primary' addonLeft={SummaryAI}>
+        <ButtonFH use='primary' addonLeft={SummaryAI} disabled={props.disabled} size={props.size} active={props.active} loading={props.loading}>
           Primary
         </ButtonFH>
 
-        <ButtonFH>
-          <ButtonFH.Addon animatedSparkleCount={5} />
+        <ButtonFH size={props.size} disabled={props.disabled} active={props.active} loading={props.loading}>
+          <ButtonFH.Addon animatedSparkleCount={props.animatedSparkleCount} />
           <ButtonFH.Text>Secondary</ButtonFH.Text>
         </ButtonFH>
 
-        <PillsFH defaultValue={1} aria-label='Pills with AI accent'>
-          <PillsFH.Item value={1}>One</PillsFH.Item>
-          <PillsFH.HighlightedItem value={2}>
-            <PillsFH.HighlightedItem.Addon animatedSparkleCount={5} />
+        <PillsFH defaultValue={1} aria-label='Pills with AI accent' size={props.size}>
+          <PillsFH.Item value={1} disabled={props.disabled}>One</PillsFH.Item>
+          <PillsFH.HighlightedItem value={2} disabled={props.disabled}>
+            <PillsFH.HighlightedItem.Addon animatedSparkleCount={props.animatedSparkleCount} />
             <PillsFH.HighlightedItem.Text>Two</PillsFH.HighlightedItem.Text>
           </PillsFH.HighlightedItem>
         </PillsFH>
 
-        <SelectFH onChange={setSelectValue}>
+        <SelectFH onChange={setSelectValue} disabled={props.disabled}>
           <SelectFH.Trigger aria-label='Select with AI theme' wMax={160} wMin={160}>
             <SelectFH.Trigger.Addon />
             <SelectFH.Trigger.Text>{selectValue}</SelectFH.Trigger.Text>
@@ -49,15 +51,15 @@ const Demo = () => {
           </SelectFH.Menu>
         </SelectFH>
 
-        <InputFH w={250}>
+        <InputFH w={250} disabled={props.disabled}>
           <InputFH.Addon />
           <InputFH.Value placeholder='Your domain' aria-label='Input with AI theme' />
           <InputFH.Addon><BadgeFH>AI powered</BadgeFH></InputFH.Addon>
         </InputFH>
 
-        <SwitchFH>
-          <SwitchFH.Value ml={0} />
-          <SwitchFH.AnimatedSparkles count={5} />
+        <SwitchFH size={props.size}>
+          <SwitchFH.Value ml={0} disabled={props.disabled} checked={props.checked} />
+          <SwitchFH.AnimatedSparkles animatedSparkleCount={props.animatedSparkleCount} />
           <SwitchFH.Addon>Receive updates</SwitchFH.Addon>
         </SwitchFH>
 
@@ -66,6 +68,8 @@ const Demo = () => {
       <Flex gap={12}>
 
         <RadioGroup
+          size={props.size}
+          disabled={props.disabled}
           name='radio'
           aria-labelledby='radioGroup'
         >
@@ -73,7 +77,7 @@ const Demo = () => {
             Radio button with AI accent
           </Text>
           <Flex gap={3} direction='column'>
-            <RadioFH value='1'>
+            <RadioFH value='1' checked={props.checked} state={props.state}>
               <RadioFH.Value />
               <RadioFH.Text>
                 First option
@@ -81,7 +85,7 @@ const Demo = () => {
               </RadioFH.Text>
               <RadioFH.AnimatedSparkles count={5} />
             </RadioFH>
-            <Radio value='2' label='Second option' />
+            <Radio value='2' label='Second option' state={props.state} />
           </Flex>
         </RadioGroup>
 
@@ -91,7 +95,7 @@ const Demo = () => {
           </Text>
           <List marker='' m={0} p={0}>
             <List.Item p={0} mb={2}>
-              <CheckboxFH>
+              <CheckboxFH size={props.size} state={props.state} checked={props.checked} disabled={props.disabled}>
                 <CheckboxFH.Value />
                 <CheckboxFH.Text>
                   First option
@@ -100,21 +104,21 @@ const Demo = () => {
                 <CheckboxFH.AnimatedSparkles count={5} />
               </CheckboxFH>
             </List.Item>
-            <List.Item p={0}>
-              <Checkbox label='Second option' />
+            <List.Item p={0} size={props.size}>
+              <Checkbox label='Second option' size={props.size} state={props.state} checked={props.checked} disabled={props.disabled} />
             </List.Item>
           </List>
         </fieldset>
 
       </Flex>
 
-      <TabLineFH size='m' aria-label='Tab with AI accent' defaultValue={1}>
-        <TabLineFH.Item value={1}>First option</TabLineFH.Item>
-        <TabLineFH.HighlightedItem value={2}>
-          <TabLineFH.HighlightedItem.Addon animatedSparkleCount={5} />
+      <TabLineFH aria-label='Tab with AI accent' defaultValue={1} size={props.size}>
+        <TabLineFH.Item value={1} disabled={props.disabled}>First option</TabLineFH.Item>
+        <TabLineFH.HighlightedItem value={2} disabled={props.disabled}>
+          <TabLineFH.HighlightedItem.Addon animatedSparkleCount={props.animatedSparkleCount} />
           <TabLineFH.HighlightedItem.Text>Second option</TabLineFH.HighlightedItem.Text>
         </TabLineFH.HighlightedItem>
-        <TabLineFH.Item value={3}>Third option</TabLineFH.Item>
+        <TabLineFH.Item value={3} disabled={props.disabled}>Third option</TabLineFH.Item>
       </TabLineFH>
 
       <Flex flexWrap gap={4} mt={4}>
@@ -124,14 +128,14 @@ const Demo = () => {
         </ButtonFH>
 
         <ButtonFH size='l'>
-          <ButtonFH.Addon animatedSparkleCount={5} />
+          <ButtonFH.Addon animatedSparkleCount={props.animatedSparkleCount} />
           <ButtonFH.Text>Secondary</ButtonFH.Text>
         </ButtonFH>
 
         <PillsFH defaultValue={1} aria-label='Pills with AI accent' size='l'>
           <PillsFH.Item value={1}>One</PillsFH.Item>
           <PillsFH.HighlightedItem value={2}>
-            <PillsFH.HighlightedItem.Addon animatedSparkleCount={5} />
+            <PillsFH.HighlightedItem.Addon animatedSparkleCount={props.animatedSparkleCount} />
             <PillsFH.HighlightedItem.Text>Two</PillsFH.HighlightedItem.Text>
           </PillsFH.HighlightedItem>
         </PillsFH>
@@ -211,7 +215,7 @@ const Demo = () => {
       <TabLineFH size='l' aria-label='Tab with AI accent' defaultValue={1}>
         <TabLineFH.Item value={1}>First option</TabLineFH.Item>
         <TabLineFH.HighlightedItem value={2}>
-          <TabLineFH.HighlightedItem.Addon animatedSparkleCount={5} />
+          <TabLineFH.HighlightedItem.Addon animatedSparkleCount={props.animatedSparkleCount} />
           <TabLineFH.HighlightedItem.Text>Second option</TabLineFH.HighlightedItem.Text>
         </TabLineFH.HighlightedItem>
         <TabLineFH.Item value={3}>Third option</TabLineFH.Item>
@@ -240,6 +244,18 @@ const Demo = () => {
     </Flex>
   );
 };
+
+export const defaultProps: ExampleButtonHihlightProps = {
+  disabled: false,
+  checked: undefined,
+  loading: false,
+  active: false,
+  state: undefined,
+  animatedSparkleCount: 5,
+  size: 'm',
+};
+
+Demo.defaultProps = defaultProps;
 
 type SortableColumn = Exclude<keyof typeof data[0], 'keyword'>;
 

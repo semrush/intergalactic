@@ -13,7 +13,7 @@ import SwitchExample from './examples/switch';
 import TablineExample from './examples/tabline';
 
 const meta: Meta = {
-  title: 'Patterns/UX Patterns/Feature Highlight',
+  title: 'Patterns/UX Patterns/Feature Highlight/Documentation',
 };
 
 export const Badge: StoryObj = {
