@@ -3,7 +3,7 @@ import Checkbox from '@semcore/checkbox';
 import { Component, createComponent, Root, sstyled } from '@semcore/core';
 import React from 'react';
 
-import style from './checbox.shadow.css';
+import style from './checkbox.shadow.css';
 import type { HighlightedCheckboxComponent } from './Checkbox.type';
 import { AnimatedSparkles } from '../../inner-components/sparkle/AnimatedSparkles';
 

@@ -25,6 +25,7 @@ function SvgSparkle(props: SparkleProps) {
 
   return sstyled(styles)(
     <SSparkle
+      aria-hidden={true}
       render='svg'
       use:left={x ? `${x + 14}px` : left}
       scale={scale}
