@@ -56,6 +56,11 @@
       "import": "./lib/utils/focus-lock/isFocusInside.mjs",
       "types": "./lib/utils/focus-lock/isFocusInside.d.ts"
     },
+    "./lib/utils/focus-lock/setFocus": {
+      "require": "./lib/utils/focus-lock/setFocus.js",
+      "import": "./lib/utils/focus-lock/setFocus.mjs",
+      "types": "./lib/utils/focus-lock/setFocus.d.ts"
+    },
     "./lib/utils/enhances/a11yEnhance": {
       "require": "./lib/utils/enhances/a11yEnhance.js",
       "import": "./lib/utils/enhances/a11yEnhance.mjs",
