@@ -4,6 +4,9 @@ import React from 'react';
 
 const Demo = () => (
   <Flex direction='column' gap={4} alignItems='start'>
+    <ScreenReaderOnly id='pills-aria-desc'>
+      Powered by AI
+    </ScreenReaderOnly>
 
     <PillsFH defaultValue={1} aria-label='Pills with highlighted item'>
       <PillsFH.Item value={1}>One</PillsFH.Item>
@@ -14,9 +17,6 @@ const Demo = () => (
         <PillsFH.HighlightedItem.Addon animatedSparkleCount={5} />
         <PillsFH.HighlightedItem.Text>Two</PillsFH.HighlightedItem.Text>
       </PillsFH.HighlightedItem>
-      <ScreenReaderOnly id='pills-aria-desc'>
-        Powered by AI
-      </ScreenReaderOnly>
       <PillsFH.Item value={3}>Three</PillsFH.Item>
     </PillsFH>
 
