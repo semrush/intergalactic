@@ -39,15 +39,16 @@ const autoTheme: Record<string, { name: string; value: string; description: stri
 
 for (const theme of themes) {
   const prefix = 'intergalactic';
-  const { base, tokens } = JSON.parse(
+  const { base, tokens, featureHighlight } = JSON.parse(
     await fs.readFile(resolvePath(dirname, `./${theme}.json`), 'utf-8'),
   );
   const processed = processTokens(
     base,
     tokens,
+    featureHighlight,
     prefix,
   );
-  const { values, types, rawValues, descriptions, basicTokens } = processed;
+  const { values, types, rawValues, descriptions, basicTokens, highlightsTokens } = processed;
   let { processedTokens } = processed;
 
   for (const excludeToPath in excludeTokens) {
@@ -76,6 +77,14 @@ for (const theme of themes) {
     tokensToCss(processedTokens),
   );
   await writeIfChanged(`./semcore/core/src/theme/themes/${theme}.ts`, tokensToJs(processedTokens));
+
+  if (highlightsTokens.length > 0) {
+    await writeIfChanged(
+      `./semcore/core/src/theme/themes/highlights-${theme}.css`,
+      tokensToCss(highlightsTokens),
+    );
+    await writeIfChanged(`./semcore/core/src/theme/themes/highlights-${theme}.ts`, tokensToJs(highlightsTokens));
+  }
 
   autoTheme[theme] = processedTokens;
 

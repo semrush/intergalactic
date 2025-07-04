@@ -37,6 +37,10 @@
       "require": "./lib/theme/themes/auto.css",
       "import": "./lib/theme/themes/auto.css"
     },
+    "./lib/theme/themes/highlights-light.css": {
+      "require": "./lib/theme/themes/highlights-light.css",
+      "import": "./lib/theme/themes/highlights-light.css"
+    },
     "./lib/utils/focus-lock/getFocusableIn": {
       "require": "./lib/utils/focus-lock/getFocusableIn.js",
       "import": "./lib/utils/focus-lock/getFocusableIn.mjs",

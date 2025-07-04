@@ -1,0 +1,41 @@
+SHighlightedInput[state='normal'] {
+  & SOutline {
+    background:
+      linear-gradient(white, white) padding-box,
+      var(--intergalactic-border-feature-highlight, linear-gradient(90deg, #c695ff, #2bb3ff)) border-box;
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    border-color: transparent;
+  }
+
+  &:has(SValue:focus-visible) SOutline {
+    box-shadow: none;
+    border-color: transparent;
+
+    &::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      margin: -4px;
+      padding: 4px;
+      border-radius: calc(var(--intergalactic-control-rounded, 6px) + 3px);
+
+      background-image: var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg, rgba(171, 108, 254, 0.5), rgba(0, 143, 248, 0.5)));
+      mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
+      mask-composite: exclude;
+    }
+  }
+
+  &[neighborLocation='left']:has(SValue:focus-visible) SOutline::before {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  &[neighborLocation='right']:has(SValue:focus-visible) SOutline::before {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  &[neighborLocation='both']:has(SValue:focus-visible) SOutline::before {
+    border-radius: 0;
+  }
+}
