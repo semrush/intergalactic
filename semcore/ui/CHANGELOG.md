@@ -1,3 +1,43 @@
+## [16.4.1] - 2025-07-04
+
+### @semcore/core
+
+- **Added** `useScrollBarWidth` hook.
+- **Added** Container focus if there aren't focusable children while `autoFocus='enforced'`
+- **Added** `focusVisible` option to `setFocus` util method with value from last interaction type.
+
+### @semcore/d3-chart
+
+- **Fixed** a11y error - "SVG element missing accessible name".
+
+### @semcore/dropdown-menu
+
+- **Fixed** Missing focus outline in Safari during mixed mouse and keyboard interaction.
+
+### @semcore/feature-highlight
+
+- **Added** Feature highlight implementation.
+
+### @semcore/fullscreen-modal
+
+- **Fixed** Modal rendered duplicate Close buttons when `closable = true`.
+
+### @semcore/icon
+
+- **Changed** `Close` and `Check`. We made them a bit smaller so they will look a bit more elegant and align better with other icons from the same semantic group. We also tweaked thickness of the `Close` icon with M size a little bit.
+
+### @semcore/modal
+
+- **Fixed** Modal doesn't close on ESC key press when no element inside is focused.
+
+### @semcore/tooltip
+
+- **Fixed** Page layout appeared shifted due to width/height changes.
+
+### @semcore/widget-empty
+
+- **Changed** Text align for `WidgetEmpty.Title` to be always centered.
+
 ## [16.4.0] - 2025-06-23
 
 ### @semcore/base-components
