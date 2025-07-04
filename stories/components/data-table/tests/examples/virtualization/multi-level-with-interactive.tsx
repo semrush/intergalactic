@@ -65,6 +65,7 @@ const Demo = () => {
         },
         {
           children: 'Group',
+          name: 'group',
           columns: [
             {
               name: 'kd',
