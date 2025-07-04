@@ -1,6 +1,7 @@
 import type { ButtonLinkComponent } from '@semcore/button';
 import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
 import type { BoxProps } from '@semcore/flex-box';
+import type { InputNumberControlsProps } from '@semcore/input-number';
 import type React from 'react';
 
 /** @deprecated */
@@ -157,6 +158,6 @@ declare const InlineInput: Intergalactic.Component<'div', InlineInputProps, Inli
     InlineInputProps
   >;
   NumberValue: Intergalactic.Component<'div', {}, InlineInputProps>;
-  NumberControls: Intergalactic.Component<'div', {}, InlineInputProps>;
+  NumberControls: Intergalactic.Component<'div', {}, InlineInputProps & InputNumberControlsProps>;
 };
 export default InlineInput;
