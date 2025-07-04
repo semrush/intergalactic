@@ -158,6 +158,6 @@ declare const InlineInput: Intergalactic.Component<'div', InlineInputProps, Inli
     InlineInputProps
   >;
   NumberValue: Intergalactic.Component<'div', {}, InlineInputProps>;
-  NumberControls: Intergalactic.Component<'div', {}, InlineInputProps & InputNumberControlsProps>;
+  NumberControls: Intergalactic.Component<'div', InputNumberControlsProps, InlineInputProps>;
 };
 export default InlineInput;
