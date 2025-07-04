@@ -11,6 +11,7 @@ import Tooltip, { type TooltipProps } from '@semcore/tooltip';
 import React, { type RefObject } from 'react';
 
 import style from './style/ellipsis.shadow.css';
+import { isTextOverflowing } from './useEllipsis';
 import { useResizeObserver } from './useResizeObserver';
 
 type AsProps = {
@@ -91,57 +92,6 @@ const defaultTooltipProps = [
   'cursorAnchoring',
 ];
 
-const createMeasurerElement = (element: HTMLDivElement, text?: string) => {
-  const styleElement = window.getComputedStyle(element, null);
-  const temporaryElement = document.createElement('temporary-block');
-  temporaryElement.style.display = styleElement.getPropertyValue('display');
-  temporaryElement.style.padding = styleElement.getPropertyValue('padding');
-  temporaryElement.style.position = 'absolute';
-  temporaryElement.style.right = '0%';
-  temporaryElement.style.bottom = '0%';
-  temporaryElement.style.visibility = 'hidden';
-  temporaryElement.style.fontFamily = styleElement.getPropertyValue('font-family');
-  temporaryElement.style.fontSize = styleElement.getPropertyValue('font-size');
-  temporaryElement.style.fontWeight = styleElement.getPropertyValue('font-weight');
-  temporaryElement.style.lineHeight = styleElement.getPropertyValue('line-height');
-  temporaryElement.style.whiteSpace = styleElement.getPropertyValue('white-space');
-  temporaryElement.style.wordWrap = styleElement.getPropertyValue('word-wrap');
-
-  temporaryElement.style.fontFeatureSettings =
-    styleElement.getPropertyValue('font-feature-settings');
-  temporaryElement.style.fontVariantNumeric = styleElement.getPropertyValue('font-variant-numeric');
-
-  temporaryElement.innerHTML = text ?? element.innerHTML;
-  return temporaryElement;
-};
-
-function isTextOverflowing(element: HTMLDivElement, multiline: boolean, text?: string): boolean {
-  if (!element) return false;
-
-  const { height: currentHeight, width: currentWidth } = element.getBoundingClientRect();
-  const measuringElement = createMeasurerElement(element, text);
-  let isOverflowing = false;
-
-  document.body.appendChild(measuringElement);
-  if (multiline) {
-    measuringElement.style.width = `${currentWidth}px`;
-
-    const width = measuringElement.scrollWidth;
-    const height = measuringElement.getBoundingClientRect().height;
-
-    if (Math.ceil(currentHeight) < height || Math.ceil(currentWidth) < width) {
-      isOverflowing = true;
-    }
-  } else {
-    measuringElement.style.whiteSpace = 'nowrap';
-    isOverflowing = Math.ceil(currentWidth) < measuringElement.getBoundingClientRect().width;
-  }
-
-  document.body.removeChild(measuringElement);
-
-  return isOverflowing;
-}
-
 const forcedAdvancedMode = { forcedAdvancedMode: true } as any;
 const noAdvancedMode = {} as any;
 
@@ -164,7 +114,7 @@ class RootEllipsis extends Component<AsProps> {
   showTooltip() {
     const { maxLine = 1, Children } = this.asProps;
     const text = reactToText(getOriginChildren(Children));
-    return isTextOverflowing(this.textRef.current!, maxLine > 1, text);
+    return isTextOverflowing(this.textRef.current, maxLine > 1, text);
   }
 
   handlerVisibleChange = (visible: boolean) => {

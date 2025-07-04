@@ -20,20 +20,12 @@ function getTextDecoration(underline, lineThrough) {
 
 function Text(props, ref) {
   const SText = Root;
-  const { color, underline, lineThrough, ellipsisProps = {}, children } = props;
+  const { color, underline, lineThrough, ellipsis = {}, children } = props;
   const textDecoration = getTextDecoration(underline, lineThrough);
   const resolveColor = useColorResolver();
   const innerRef = React.useRef(null);
-  const popperRef = React.useRef(null);
 
-  useEllipsis(innerRef, {
-    ...ellipsisProps,
-    popperRef,
-  });
-
-  React.useEffect(() => {
-    console.log(popperRef);
-  }, []);
+  const showTooltip = useEllipsis(innerRef, ellipsis);
 
   return sstyled(styles)(
     <>
@@ -45,7 +37,7 @@ function Text(props, ref) {
         use:decoration={textDecoration}
         use:color={resolveColor(color)}
       />
-      <HintPopper triggerRef={innerRef}>{children}</HintPopper>
+      {showTooltip && <HintPopper triggerRef={innerRef}>{children}</HintPopper>}
     </>,
   );
 }

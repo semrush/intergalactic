@@ -56,8 +56,6 @@ class HintPopperRoot extends Component<Props, {}, {}, [], {}, Handlers> {
     setTimeout(() => {
       const popperElement = this.hintRef.current;
       if (popperElement) {
-        popperElement.style.display = 'block';
-
         computePosition(node, popperElement, {
           placement: placement,
           middleware: [offset(6), flip(), shift({ padding: 4 })],
@@ -66,13 +64,14 @@ class HintPopperRoot extends Component<Props, {}, {}, [], {}, Handlers> {
             left: `${x}px`,
             top: `${y}px`,
           });
+          popperElement.style.visibility = 'visible';
         });
       }
     });
   }
 
   private hideHint(node: HTMLElement): void {
-    this.hintRef.current?.style.setProperty('display', 'none');
+    this.hintRef.current?.style.setProperty('visibility', 'hidden');
     this.handlers.visible(false);
   }
 

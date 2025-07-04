@@ -7,28 +7,91 @@ type EllipsisSettings = {
   maxLine?: number;
 };
 
-export function useEllipsis(ref: React.RefObject<HTMLElement>, props: EllipsisSettings) {
-  // console.log('useEllipsis', ref.current, props);
-  if (props.trim === undefined) {
-    props.trim = 'end';
+function createMeasurerElement(element: HTMLElement, text?: string) {
+  const styleElement = window.getComputedStyle(element, null);
+  const temporaryElement = document.createElement('temporary-block');
+  temporaryElement.style.display = styleElement.getPropertyValue('display');
+  temporaryElement.style.padding = styleElement.getPropertyValue('padding');
+  temporaryElement.style.position = 'absolute';
+  temporaryElement.style.right = '0%';
+  temporaryElement.style.bottom = '0%';
+  temporaryElement.style.visibility = 'hidden';
+  temporaryElement.style.fontFamily = styleElement.getPropertyValue('font-family');
+  temporaryElement.style.fontSize = styleElement.getPropertyValue('font-size');
+  temporaryElement.style.fontWeight = styleElement.getPropertyValue('font-weight');
+  temporaryElement.style.lineHeight = styleElement.getPropertyValue('line-height');
+  temporaryElement.style.whiteSpace = styleElement.getPropertyValue('white-space');
+  temporaryElement.style.wordWrap = styleElement.getPropertyValue('word-wrap');
+
+  temporaryElement.style.fontFeatureSettings =
+    styleElement.getPropertyValue('font-feature-settings');
+  temporaryElement.style.fontVariantNumeric = styleElement.getPropertyValue('font-variant-numeric');
+
+  temporaryElement.innerHTML = text ?? element.innerHTML;
+  return temporaryElement;
+}
+
+export function isTextOverflowing(element: HTMLElement | null, multiline: boolean, text?: string): boolean {
+  if (!element) return false;
+
+  const { height: currentHeight, width: currentWidth } = element.getBoundingClientRect();
+  const measuringElement = createMeasurerElement(element, text);
+  let isOverflowing = false;
+
+  document.body.appendChild(measuringElement);
+  if (multiline) {
+    measuringElement.style.width = `${currentWidth}px`;
+
+    const width = measuringElement.scrollWidth;
+    const height = measuringElement.getBoundingClientRect().height;
+
+    if (Math.ceil(currentHeight) < height || Math.ceil(currentWidth) < width) {
+      isOverflowing = true;
+    }
+  } else {
+    measuringElement.style.whiteSpace = 'nowrap';
+    isOverflowing = Math.ceil(currentWidth) < measuringElement.getBoundingClientRect().width;
   }
 
-  const blockWidth = useResizeObserver(ref).width;
-  // console.log(blockWidth);
+  document.body.removeChild(measuringElement);
+
+  return isOverflowing;
+}
+
+export function useEllipsis(ref: React.RefObject<HTMLElement>, props: EllipsisSettings | false): boolean {
+  const [hasTooltip, setHasTooltip] = React.useState(false);
+
+  const maxLine = props === false ? undefined : (props.maxLine ?? 1);
+  const trim = props === false ? undefined : (props.trim ?? 'end');
 
   React.useEffect(() => {
-    // console.log('useEllipsisEffect', ref.current, props);
     if (!ref.current) return;
-
+    if (trim === undefined || maxLine === undefined) {
+      setHasTooltip(false);
+      return;
+    };
     ref.current.style.setProperty('overflow', 'hidden');
     ref.current.style.setProperty('white-space', 'pre');
     ref.current.style.setProperty('display', 'inherit');
+    ref.current.style.setProperty('width', '100%');
 
-    if (props.trim === 'end') {
+    const showTooltip = isTextOverflowing(ref.current, maxLine > 1);
+    setHasTooltip(showTooltip);
+  }, [ref.current, trim, maxLine]);
+
+  const blockWidth = useResizeObserver(ref, hasTooltip ? undefined : { width: 0 }).width;
+
+  React.useEffect(() => {
+    if (!ref.current || !hasTooltip) return;
+    if (trim === undefined || maxLine === undefined) {
+      return;
+    }
+
+    if (trim === 'end') {
       ref.current.style.setProperty('text-overflow', 'ellipsis');
     }
 
-    if (props.trim === 'middle') {
+    if (trim === 'middle') {
       ref.current.style.setProperty('display', 'flex');
 
       const styleElement = window.getComputedStyle(ref.current);
@@ -46,7 +109,7 @@ export function useEllipsis(ref: React.RefObject<HTMLElement>, props: EllipsisSe
 
       ref.current.innerHTML = `<span style="overflow: hidden; text-overflow: ellipsis">${begining}</span><span>${tail}</span>`;
     }
+  }, [ref.current, trim, maxLine, hasTooltip, blockWidth]);
 
-    // ref.current.title = ref.current.textContent ?? '';
-  }, [ref.current, props.trim, props.maxLine, blockWidth]);
+  return hasTooltip;
 }

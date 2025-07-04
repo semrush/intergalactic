@@ -44,6 +44,19 @@ export type TextProps = BoxProps & {
   use?: 'primary' | 'secondary';
   /** Makes text semi-transparent to indicate disabled state */
   disabled?: boolean;
+
+  ellipsis?: false | {
+    /**
+     * Rows count in multiline Ellipsis
+     * @default 1
+     */
+    maxLine?: number;
+    /**
+     * Trimming type
+     * @default end
+     */
+    trim?: 'end' | 'middle';
+  };
 };
 
 /** @deprecated */

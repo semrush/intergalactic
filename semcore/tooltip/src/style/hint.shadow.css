@@ -9,5 +9,7 @@ SHintPopper {
   padding: 5px;
   border-radius: 4px;
   font-size: 90%;
-  display: none;
+  max-width: 340px;
+  word-break: break-all;
+  visibility: hidden;
 }
