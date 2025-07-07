@@ -7,6 +7,7 @@ figma.connect(
   'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/%E2%9D%96-Core-Components-(Refactoring)?node-id=10059-44175&t=hkjybGSILqRb6bQU-4',
   {
     props: {
+      label: figma.textContent('↳ text'),
       bg: figma.enum('type', {
         '🔵 admin': figma.boolean('invert', { false: 'blue-400', true: 'white' }),
         '🔴 alpha': figma.boolean('invert', { false: 'red-400', true: 'white' }),
@@ -19,6 +20,6 @@ figma.connect(
         true: 'text-primary',
       }),
     },
-    example: (props) => <Badge {...props}>{/* text */}</Badge>,
+    example: ({ label, bg, color }) => <Badge bg={bg} color={color}>{label}</Badge>,
   },
 );

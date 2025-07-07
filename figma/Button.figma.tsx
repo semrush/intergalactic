@@ -34,6 +34,7 @@ figma.connect(
       }),
 
       // Cannot be used with the current structure.
+      // These mappings show instances and text content, but they are not working with conditional rendering for now. So I'm leaving them for possible future updates from Code Connect.
       // label: figma.textContent('↳ text'),
       // labelAddon: figma.textContent('↳ textAddon'),
 
