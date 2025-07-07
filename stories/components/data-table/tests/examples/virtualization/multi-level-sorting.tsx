@@ -39,6 +39,7 @@ const Demo = () => {
       data={sortedData}
       columns={[
         {
+          name: 'organicSessions',
           children: 'Organic Sessions',
           borders: 'left',
           columns: [
@@ -59,6 +60,7 @@ const Demo = () => {
         },
         { name: 'keyword', children: 'Keyword', sortable: true },
         {
+          name: 'organicSessions2',
           children: 'Organic Sessions Organic Sessions Organic SessionsOrganic Sessions Organic Sessions Organic Sessions',
           borders: 'both',
           columns: [
@@ -79,6 +81,7 @@ const Demo = () => {
         },
         { name: 'other', children: 'Other' },
         {
+          name: 'organicSessions3',
           children: 'Organic Sessions',
           borders: 'right',
           columns: [

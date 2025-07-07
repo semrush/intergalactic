@@ -9,6 +9,7 @@ function App() {
   const variableColumns = arr(numColumns, (i) => ({
     key: `variable_${i}`, // Comment out to see React complaining about dupe empty keys
     children: `Variable Column ${i}`,
+    name: `group${i}`,
     columns: [
       { name: `variable_${i}_a`, children: 'A' },
       { name: `variable_${i}_b`, children: 'B' },

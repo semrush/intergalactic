@@ -14,6 +14,7 @@ const Demo = () => {
         h={200}
         columns={[
           {
+            name: 'group1',
             children: 'Borders right Fixed left',
             borders: 'right',
             fixed: 'left',
@@ -25,6 +26,7 @@ const Demo = () => {
           { name: 'cpc', children: 'CPC', gtcWidth: '350px' },
 
           {
+            name: 'group2',
             children: 'Borders left Fixed right',
             borders: 'left',
             fixed: 'right',
@@ -48,6 +50,7 @@ const Demo = () => {
         }}
         columns={[
           {
+            name: 'group1',
             children: 'Borders right Fixed left',
             borders: 'right',
             fixed: 'left',
@@ -60,6 +63,7 @@ const Demo = () => {
           { name: 'cpc', children: 'CPC', gtcWidth: '350px' },
 
           {
+            name: 'group2',
             children: 'Borders left Fixed right',
             borders: 'left',
             fixed: 'right',

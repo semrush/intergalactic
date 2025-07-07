@@ -82,7 +82,7 @@ SCaret {
   position: absolute;
   bottom: -1px;
   height: 3px;
-  background-color: var(--intergalactic-border-info-active, #006dca);
+  background: var(--intergalactic-border-info-active, #006dca);
   transition: calc(var(--intergalactic-duration-control, 200) * 1ms) all ease-in-out;
 }
 

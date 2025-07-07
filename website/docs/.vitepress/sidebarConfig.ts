@@ -710,6 +710,11 @@ export const sideBarConfig: SidebarConfig = [
             text: 'Export',
           },
           {
+            link: '/patterns/feature-highlight/feature-highlight',
+            activeMatch: '/patterns/feature-highlight/',
+            text: 'Feature highlight',
+          },
+          {
             link: '/patterns/feedback-rating/feedback-rating',
             activeMatch: '/patterns/feedback-rating/',
             text: 'FeedbackRating',

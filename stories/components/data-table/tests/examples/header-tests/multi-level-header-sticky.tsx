@@ -18,6 +18,7 @@ const Demo = () => {
         columns={[
           { name: 'other', children: 'Other' },
           {
+            name: 'group1',
             children: 'Group',
             columns: [
               {
