@@ -17,6 +17,7 @@ const Demo = () => {
         columns={[
           { name: 'other', children: 'Other' },
           {
+            name: 'group1',
             children: 'Borders left',
             borders: 'left',
             columns: [
@@ -41,6 +42,7 @@ const Demo = () => {
 
           { name: 'keyword', children: 'Keyword' },
           {
+            name: 'group2',
             children: (
               <Ellipsis>Borders both - Organic Sessions rganic Sessions rganic Sessions</Ellipsis>
             ),
@@ -68,6 +70,7 @@ const Demo = () => {
           { name: 'other', children: 'Other' },
 
           {
+            name: 'group3',
             children: 'Borders right',
             borders: 'right',
             columns: [
@@ -92,6 +95,7 @@ const Demo = () => {
           { name: 'other', children: 'Other' },
 
           {
+            name: 'group4',
             children: 'Borders default',
             columns: [
               {
