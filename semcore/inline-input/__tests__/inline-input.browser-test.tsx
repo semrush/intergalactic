@@ -3,140 +3,83 @@ import { platform } from 'os';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
 
-test.describe('InlineInput styles', () => {
-  test('Verify states and styles', async ({ page }) => {
-    const standPath = 'stories/components/inline-input/tests/examples/styles.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-    await page.setViewportSize({ width: 1600, height: 800 });
+test.describe('Vusual tests', () => {
+  const variablesActive = [
+    { disabled: false, loading: false, state: 'normal', defaultValue: 'Joe John', placeholder: 'Placeholder' },
+    { disabled: false, loading: false, state: 'valid', defaultValue: null, placeholder: 'Placeholder' },
+    { disabled: false, loading: false, state: 'invalid', defaultValue: 'Joe John', placeholder: null },
+  ];
+  variablesActive.forEach((item) => {
+    test(`Verify active state=${item.state}  default-value = ${item.defaultValue} placeholder = ${item.placeholder} styles and focus`, async ({ page }) => {
+      const standPath = 'stories/components/inline-input/tests/examples/styles.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en', item);
 
-    await test.step('Verify default with controls', async () => {
+      await page.setContent(htmlContent);
+
       const flex = await page.locator('[data-testid="default"]');
       const value = flex.locator('[data-ui-name="InlineInput.Value"]');
       const confirm = flex.locator('[data-ui-name="InlineInput.ConfirmControl"]');
       const cancel = flex.locator('[data-ui-name="InlineInput.CancelControl"]');
 
-      const screenshotsClip = (await flex.first().boundingBox())!;
-      screenshotsClip.x -= 4;
-      screenshotsClip.y -= 4;
-      screenshotsClip.width += 8;
-      screenshotsClip.height += 8;
-
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-
-      await page.keyboard.press('Tab');
-
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-
       await expect(value.first()).toHaveCSS('padding', '0px 4px');
       await expect(confirm.first()).toHaveCSS('padding', '0px 4px');
       await expect(cancel.first()).toHaveCSS('padding', '0px 4px');
-    });
 
-    await test.step('Verify default with addon', async () => {
+      await expect(page).toHaveScreenshot();
+    });
+  });
+
+  const variablesDisabled = [
+    { disabled: true, loading: false, state: 'normal', defaultValue: 'Joe John', placeholder: 'Placeholder' },
+    { disabled: true, loading: false, state: 'valid', defaultValue: null, placeholder: 'Placeholder' },
+    { disabled: true, loading: false, state: 'invalid', defaultValue: 'Joe John', placeholder: null },
+  ];
+  variablesDisabled.forEach((item) => {
+    test(`Verify disabled state=${item.state}  default-value = ${item.defaultValue} placeholder = ${item.placeholder} styles and focus`, async ({ page }) => {
+      const standPath = 'stories/components/inline-input/tests/examples/styles.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en', item);
+
+      await page.setContent(htmlContent);
+
       const flex = await page.locator('[data-testid="addons"]');
       const value = flex.locator('[data-ui-name="InlineInput.Value"]');
       const confirm = flex.locator('[data-ui-name="InlineInput.ConfirmControl"]');
       const cancel = flex.locator('[data-ui-name="InlineInput.CancelControl"]');
       const addon = flex.locator('[data-ui-name="InlineInput.Addon"]');
-
-      const screenshotsClip = (await flex.first().boundingBox())!;
-      screenshotsClip.x -= 4;
-      screenshotsClip.y -= 4;
-      screenshotsClip.width += 8;
-      screenshotsClip.height += 8;
-
-      await value.first().click();
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-
       await page.keyboard.press('Tab');
-
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+      await expect(page).toHaveScreenshot();
 
       await expect(value.first()).toHaveCSS('padding', '0px 4px');
       await expect(confirm.first()).toHaveCSS('padding', '0px 4px');
       await expect(cancel.first()).toHaveCSS('padding', '0px 4px');
       await expect(addon.first()).toHaveCSS('padding', '0px 4px');
     });
+  });
 
-    await test.step('Verify default with addon', async () => {
+  const variablesLoading = [
+    { disabled: false, loading: true, state: 'normal', defaultValue: 'Joe John', placeholder: 'Placeholder' },
+    { disabled: false, loading: true, state: 'valid', defaultValue: null, placeholder: 'Placeholder' },
+    { disabled: false, loading: true, state: 'invalid', defaultValue: 'Joe John', placeholder: null },
+  ];
+  variablesLoading.forEach((item) => {
+    test(`Verify loading state=${item.state}  default-value = ${item.defaultValue} placeholder = ${item.placeholder} styles and focus`, async ({ page }) => {
+      const standPath = 'stories/components/inline-input/tests/examples/styles.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en', item);
+
+      await page.setContent(htmlContent);
+
       const flex = await page.locator('[data-testid="no-controls"]');
       const value = flex.locator('[data-ui-name="InlineInput.Value"]');
       const input = flex.locator('[data-ui-name="InlineInput"]');
       const inputLine = flex.locator('div[class*="Underline"]');
-
-      const screenshotsClip = (await flex.first().boundingBox())!;
-      screenshotsClip.x -= 4;
-      screenshotsClip.y -= 4;
-      screenshotsClip.width += 8;
-      screenshotsClip.height += 8;
-
-      await value.first().click();
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-
       await page.keyboard.press('Tab');
-
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-
-      await page.keyboard.press('Tab');
-
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-
-      await page.keyboard.press('Tab');
-
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+      await expect(page).toHaveScreenshot();
 
       await expect(value.first()).toHaveCSS('padding', '0px 4px');
       await expect(input.first()).toHaveCSS('align-items', 'center');
       await expect(input.first()).toHaveCSS('vertical-align', 'middle');
       await expect(input.first()).toHaveCSS('padding', '1px');
       await expect(input.first()).toHaveCSS('background-color', 'rgb(255, 255, 255)');
-      await expect(inputLine.first()).toHaveCSS('border-bottom', '1px solid rgb(196, 199, 207)');
     });
   });
 
@@ -156,9 +99,120 @@ test.describe('InlineInput styles', () => {
 
     await expect(page).toHaveScreenshot();
   });
+
+  test('Verify Basic usage mouse interactions', async ({ page }) => {
+    const standPath = 'stories/components/inline-input/docs/examples/basic_usage.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+
+    const inlineInput = page.locator('[data-ui-name="InlineInput"]');
+    const addon = page.locator('[data-ui-name="InlineInput.Addon"]');
+    const value = page.locator('[data-ui-name="InlineInput.Value"]');
+
+    const save = inlineInput.locator('[data-ui-name="InlineInput.ConfirmControl"]');
+    const cancel = inlineInput.locator('[data-ui-name="InlineInput.CancelControl"]');
+
+    await test.step('Verify Hint shown on Hover and Focus is on Input', async () => {
+      await expect(value).toHaveAttribute('value', 'John Doe');
+
+      await addon.click();
+      await save.hover();
+      await page.waitForSelector('text="Save"');
+
+      await expect(page).toHaveScreenshot();
+    });
+  });
+
+  test('Verify Basic usage keyboard interactions', async ({ page }) => {
+    const standPath = 'stories/components/inline-input/docs/examples/basic_usage.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+
+    const inlineInput = page.locator('[data-ui-name="InlineInput"]');
+    const addon = page.locator('[data-ui-name="InlineInput.Addon"]');
+    const value = page.locator('[data-ui-name="InlineInput.Value"]');
+
+    const save = inlineInput.getByLabel('Save');
+    const cancel = inlineInput.getByLabel('Cancel');
+
+    await test.step('Verify input focues when pressing Tab', async () => {
+      await expect(value).toHaveAttribute('value', 'John Doe');
+
+      await page.keyboard.press('Tab');
+      await expect(page).toHaveScreenshot();
+    });
+
+    await test.step('Verify addons focused and Hint shown when pressing Tab', async () => {
+      await page.keyboard.press('Tab');
+      await page.waitForSelector('text="Save"');
+      await expect(page).toHaveScreenshot();
+    });
+  });
+
+  test('Verify Inheriting text size', async ({ page }) => {
+    const standPath = 'stories/components/inline-input/docs/examples/inheriting_text_size.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+
+    const inlineEditView = page.locator('[data-ui-name="InlineEdit.View"]');
+    const inlineInput = page.locator('[data-ui-name="InlineInput"]');
+    const value = page.locator('[data-ui-name="InlineInput.Value"]');
+    const spinLocator = page.locator('[data-ui-name="Spin"]');
+
+    await test.step('Verify view when activating inline input', async () => {
+      await expect(inlineInput).toHaveCount(0);
+      await inlineEditView.click();
+      await expect(value).toBeFocused();
+      await expect(inlineInput).toHaveCount(1);
+
+      if (platform() === 'darwin') {
+        await page.keyboard.press('Meta+A');
+      } else {
+        await page.keyboard.press('Control+A');
+      }
+
+      await page.keyboard.type('Once upon a time in a distant galaxy far, far away, there existed a legendary creature known as the Intergalactic Whale.');
+
+      await expect(page).toHaveScreenshot();
+    });
+
+    await test.step('Verify size changes according to entered content', async () => {
+      await page.keyboard.press('Enter');
+      await expect(value).not.toBeFocused();
+      await expect(spinLocator).toBeVisible({ timeout: 1500 });
+      await inlineEditView.click();
+
+      await expect(page).toHaveScreenshot();
+    });
+  });
+
+  test('Verify Number-only input keyboard interactions', async ({ page }) => {
+    const standPath = 'stories/components/inline-input/docs/examples/number-only_input.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+
+    const inlineInput = page.locator('[data-ui-name="InlineInput"]');
+    const value = page.locator('[data-ui-name="InlineInput.NumberValue"]');
+
+    const save = inlineInput.getByLabel('Save');
+
+    await test.step('Verify input focues when pressing Tab and hint shown on Hover', async () => {
+      await expect(value).toHaveAttribute('value', '100');
+      await page.keyboard.press('Tab');
+      await save.hover();
+      await page.waitForSelector('text="Save"');
+      await expect(page).toHaveScreenshot();
+    });
+
+    await test.step('Verify addons focused when pressing Tab', async () => {
+      await page.keyboard.press('Tab');
+      await page.waitForSelector('text="Save"');
+      await expect(page).toHaveScreenshot();
+    });
+  });
 });
 
-test.describe('InlineInput interactions', () => {
+test.describe('Functional tests', () => {
   test('Verify onBlurBehavior by mouse', async ({ page }) => {
     const standPath = 'stories/components/inline-input/tests/examples/on-blur-behavior-test.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -422,14 +476,8 @@ test.describe('InlineInput interactions', () => {
 
     await test.step('Verify input focuses when clicking on addon', async () => {
       await expect(value).toHaveAttribute('value', 'John Doe');
-
       await addon.click();
-
       await expect(value).toBeFocused();
-      await save.hover();
-      await page.waitForSelector('text="Save"');
-
-      await expect(page).toHaveScreenshot();
     });
 
     await test.step('Verify focuse removes when clicking on button', async () => {
@@ -469,8 +517,6 @@ test.describe('InlineInput interactions', () => {
 
       await page.keyboard.press('Tab');
       await expect(value).toBeFocused();
-
-      await expect(page).toHaveScreenshot();
     });
 
     await test.step('Verify stay focused when clicking on Escape', async () => {
@@ -496,7 +542,6 @@ test.describe('InlineInput interactions', () => {
       await expect(value).not.toBeFocused();
       await expect(save).toBeFocused();
       await page.waitForSelector('text="Save"');
-      await expect(page).toHaveScreenshot();
       await page.keyboard.press('Tab');
       await expect(value).not.toBeFocused();
       await expect(save).not.toBeFocused();
@@ -508,47 +553,6 @@ test.describe('InlineInput interactions', () => {
       await save.hover();
       await expect(value).not.toBeFocused();
       await expect(save).toBeFocused();
-    });
-  });
-
-  test('Verify Inheriting text size', async ({ page }) => {
-    const standPath = 'stories/components/inline-input/docs/examples/inheriting_text_size.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-
-    const inlineEditView = page.locator('[data-ui-name="InlineEdit.View"]');
-    const inlineInput = page.locator('[data-ui-name="InlineInput"]');
-    const addon = page.locator('[data-ui-name="InlineInput.Addon"]');
-    const value = page.locator('[data-ui-name="InlineInput.Value"]');
-    const spinLocator = page.locator('[data-ui-name="Spin"]');
-
-    const save = inlineInput.locator('[data-ui-name="InlineInput.ConfirmControl"]');
-    const cancel = inlineInput.locator('[data-ui-name="InlineInput.CancelControl"]');
-
-    await test.step('Verify view when activating inline input', async () => {
-      await expect(inlineInput).toHaveCount(0);
-      await inlineEditView.click();
-      await expect(value).toBeFocused();
-      await expect(inlineInput).toHaveCount(1);
-
-      if (platform() === 'darwin') {
-        await page.keyboard.press('Meta+A');
-      } else {
-        await page.keyboard.press('Control+A');
-      }
-
-      await page.keyboard.type('Once upon a time in a distant galaxy far, far away, there existed a legendary creature known as the Intergalactic Whale.');
-
-      await expect(page).toHaveScreenshot();
-    });
-
-    await test.step('Verify size changes according to entered content', async () => {
-      await page.keyboard.press('Enter');
-      await expect(value).not.toBeFocused();
-      await expect(spinLocator).toBeVisible({ timeout: 1500 });
-      await inlineEditView.click();
-
-      await expect(page).toHaveScreenshot();
     });
   });
 
@@ -567,14 +571,8 @@ test.describe('InlineInput interactions', () => {
 
     await test.step('Verify input focues when clicking on addon', async () => {
       await expect(value).toHaveAttribute('value', '100');
-
       await addon.click();
-
       await expect(value).toBeFocused();
-      await save.hover();
-      await page.waitForSelector('text="Save"');
-
-      await expect(page).toHaveScreenshot();
     });
 
     await test.step('Verify focus moved when clicking on button', async () => {
@@ -633,10 +631,6 @@ test.describe('InlineInput interactions', () => {
 
       await page.keyboard.press('Tab');
       await expect(value).toBeFocused();
-      await save.hover();
-      await page.waitForSelector('text="Save"');
-
-      await expect(page).toHaveScreenshot();
     });
 
     await test.step('Verify focused when clicking on Escape', async () => {
@@ -667,10 +661,53 @@ test.describe('InlineInput interactions', () => {
       await expect(value).not.toBeFocused();
       await expect(save).toBeFocused();
       await page.waitForSelector('text="Save"');
-      await expect(page).toHaveScreenshot();
-
       await page.keyboard.press('Shift+Tab');
       await expect(value).toBeFocused();
     });
+  });
+
+  test('Verify that elements are focusable when disabled = false', async ({ page }) => {
+    const standPath = 'stories/components/inline-input/docs/examples/basic_usage.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+
+    const input = page.locator('[data-ui-name="InlineInput.Value"]');
+    const confirmControl = page.locator('[data-ui-name="InlineInput.ConfirmControl"] button');
+    const cancelControl = page.locator('[data-ui-name="InlineInput.CancelControl"] button');
+
+    await page.keyboard.press('Tab');
+    await expect(input).toBeFocused();
+    await expect(confirmControl).not.toBeFocused();
+    await expect(cancelControl).not.toBeFocused();
+
+    await page.keyboard.press('Tab');
+    await expect(input).not.toBeFocused();
+    await expect(confirmControl).toBeFocused();
+    await expect(cancelControl).not.toBeFocused();
+
+    await page.keyboard.press('Tab');
+    await expect(input).not.toBeFocused();
+    await expect(confirmControl).not.toBeFocused();
+    await expect(cancelControl).toBeFocused();
+  });
+
+  test('Verify that elements aren\'t focusable when disabled = true', async ({ page }) => {
+    const standPath = 'stories/components/inline-input/docs/examples/basic_usage.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en', { disabled: true });
+    await page.setContent(htmlContent);
+
+    const input = page.locator('[data-ui-name="InlineInput.Value"]');
+    const confirmControl = page.locator('[data-ui-name="InlineInput.ConfirmControl"] button');
+    const cancelControl = page.locator('[data-ui-name="InlineInput.CancelControl"] button');
+
+    for (let i = 0; i < 3; i++) {
+      await page.keyboard.press('Tab');
+      await expect(input).not.toBeFocused();
+      await expect(confirmControl).not.toBeFocused();
+      await expect(cancelControl).not.toBeFocused();
+    }
+
+    await input.click({ force: true });
+    await expect(input).not.toBeFocused();
   });
 });
