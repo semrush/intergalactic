@@ -292,11 +292,11 @@
   --intergalactic-control-primary-brand-hover: #c33909;
   /* Active state of the primary brand colored control. */
   --intergalactic-control-primary-brand-active: #8b1500;
-  /* Hover state of the advertising primary control. */
-  --intergalactic-control-primary-advertising: #5925ab;
-  /* Active (selected) state of the advertising primary control. */
-  --intergalactic-control-primary-advertising-hover: #421983;
   /* Background of the advertising primary control. */
+  --intergalactic-control-primary-advertising: #5925ab;
+  /* Hover state of the advertising primary control. */
+  --intergalactic-control-primary-advertising-hover: #421983;
+  /* Active (selected) state of the advertising primary control. */
   --intergalactic-control-primary-advertising-active: #8649e1;
   /* Inverted background of the primary control. */
   --intergalactic-control-primary-invert: #ffffff;

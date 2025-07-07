@@ -1,8 +1,6 @@
 import Icon from '@semcore/icon';
 import React from 'react';
 
-import '@semcore/core/lib/theme/themes/default.css';
-
 const Demo = () => {
   return (
     <>

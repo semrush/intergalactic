@@ -1,7 +1,7 @@
 {
   "name": "@semcore/core",
   "description": "Semrush Core Component",
-  "version": "16.0.1",
+  "version": "16.0.3",
   "main": "lib/index.js",
   "module": "lib/index.mjs",
   "typings": "lib/index.d.ts",
@@ -37,6 +37,10 @@
       "require": "./lib/theme/themes/auto.css",
       "import": "./lib/theme/themes/auto.css"
     },
+    "./lib/theme/themes/highlights-light.css": {
+      "require": "./lib/theme/themes/highlights-light.css",
+      "import": "./lib/theme/themes/highlights-light.css"
+    },
     "./lib/utils/focus-lock/getFocusableIn": {
       "require": "./lib/utils/focus-lock/getFocusableIn.js",
       "import": "./lib/utils/focus-lock/getFocusableIn.mjs",
@@ -51,6 +55,11 @@
       "require": "./lib/utils/focus-lock/isFocusInside.js",
       "import": "./lib/utils/focus-lock/isFocusInside.mjs",
       "types": "./lib/utils/focus-lock/isFocusInside.d.ts"
+    },
+    "./lib/utils/focus-lock/setFocus": {
+      "require": "./lib/utils/focus-lock/setFocus.js",
+      "import": "./lib/utils/focus-lock/setFocus.mjs",
+      "types": "./lib/utils/focus-lock/setFocus.d.ts"
     },
     "./lib/utils/enhances/a11yEnhance": {
       "require": "./lib/utils/enhances/a11yEnhance.js",
@@ -291,6 +300,11 @@
       "require": "./lib/utils/zIndexStacking.js",
       "import": "./lib/utils/zIndexStacking.mjs",
       "types": "./lib/utils/zIndexStacking.d.ts"
+    },
+    "./lib/utils/use/useScrollBarWidth": {
+      "require": "./lib/utils/use/useScrollBarWidth.js",
+      "import": "./lib/utils/use/useScrollBarWidth.mjs",
+      "types": "./lib/utils/use/useScrollBarWidth.d.ts"
     }
   },
   "dependencies": {

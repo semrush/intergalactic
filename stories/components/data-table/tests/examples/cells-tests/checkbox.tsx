@@ -12,7 +12,7 @@ const columns = [
 ];
 
 const Demo = () => {
-  const [selectedRows, setSelectedRows] = React.useState<number[]>([]);
+  const [selectedRows, setSelectedRows] = React.useState<string[]>([]);
   const [sort, setSort] = React.useState<DataTableSort<'id' | 'name'>>();
 
   return (
