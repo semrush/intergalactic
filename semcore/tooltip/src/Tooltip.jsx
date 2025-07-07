@@ -3,6 +3,7 @@ import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEn
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 import logger from '@semcore/core/lib/utils/logger';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import { useScrollBarWidth } from '@semcore/core/lib/utils/use/useScrollBarWidth';
 import {
   useZIndexStacking,
   ZIndexStackingContextProvider,
@@ -174,6 +175,8 @@ function TooltipPopper(props) {
     };
   }, [visible]);
 
+  const scrollBarWidth = useScrollBarWidth();
+
   if (!visible && !isVisible) {
     return null;
   }
@@ -185,6 +188,10 @@ function TooltipPopper(props) {
           role={ariaLive === 'polite' ? 'status' : undefined}
           aria-live={ariaLive}
           zIndex={zIndex}
+          style={{
+            width: scrollBarWidth ? `calc(100vw - ${scrollBarWidth}px)` : '100vw',
+            left: scrollBarWidth ? `calc(-50vw + ${scrollBarWidth / 2}px + 50%)` : 'calc(-50vw + 50%)',
+          }}
         >
           <STooltip
             use:visible={visible && isVisible}

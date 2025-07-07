@@ -134,7 +134,7 @@ function Window(props) {
   const { Children, styles, visible, closable, duration } = props;
   const windowRef = React.useRef(null);
 
-  useFocusLock(windowRef, true, 'auto', !visible, true);
+  useFocusLock(windowRef, 'enforced', 'auto', !visible, true);
 
   return sstyled(styles)(
     <SWindow
@@ -146,6 +146,7 @@ function Window(props) {
       aria-modal={true}
       duration={duration}
       ref={windowRef}
+      tabIndex={-1}
     >
       <ZIndexStackingContextProvider designToken='z-index-modal'>
         <PortalProvider value={windowRef}>

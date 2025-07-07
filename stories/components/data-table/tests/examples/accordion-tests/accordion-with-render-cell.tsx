@@ -13,6 +13,7 @@ const Demo = () => {
       columns={[
         { name: 'keyword', children: 'Keyword', gtcWidth: 'minmax(60%, 80%)' },
         {
+          name: 'group1',
           children: 'Organic Sessions',
           borders: 'both',
           columns: [
@@ -28,7 +29,7 @@ const Demo = () => {
           return (
             <ButtonLink
               onClick={() => {
-                alert(`Click row 
+                alert(`Click row
                             props: ${JSON.stringify(Object.keys(props), null, '  ')};
                             row: ${JSON.stringify(props.row, null, '  ')};
                             index: ${props.rowIndex};`);

@@ -1,0 +1,22 @@
+SToggle[checked] {
+  color: var(--intergalactic-control-primary-info, #008ff8);
+  background-image: var(--intergalactic-control-primary-feature-highlight, linear-gradient(90deg, #ab6cfe, #008ff8));
+}
+
+SToggle:has(SInput:focus-visible) {
+  box-shadow: none;
+
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    margin: -4px;
+    padding: 4px;
+    border-radius: inherit;
+
+    background-image: var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg, rgba(171, 108, 254, 0.5), rgba(0, 143, 248, 0.5)));
+    mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
+    mask-composite: exclude;
+  }
+}
