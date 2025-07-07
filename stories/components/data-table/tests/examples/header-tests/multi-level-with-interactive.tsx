@@ -61,6 +61,7 @@ const Demo = () => {
           gtcWidth: '300px',
         },
         {
+          name: 'group1',
           children: 'Group',
           columns: [
             {

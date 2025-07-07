@@ -135,7 +135,7 @@ class TabLineRoot extends Component {
 
   render() {
     const STabLine = Root;
-    const SCaret = 'div';
+    const SCaret = Box;
     const { styles, Children, controlsLength } = this.asProps;
     const { animation } = this.state;
 

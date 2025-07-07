@@ -1,0 +1,31 @@
+SSparkle {
+  position: absolute;
+
+  & path {
+    fill: var(--intergalactic-icon-primary-feature-highlight, #8649e1);
+  }
+}
+
+SSparkle[angle][scale][duration] {
+  transform: rotate(calc(1deg * var(--angle))) scale(var(--scale));
+
+  animation-name: sparkles;
+  animation-fill-mode: forwards;
+  animation-duration: var(--duration);
+}
+
+@keyframes sparkles {
+  50% {
+    transform: rotate(calc(1deg * var(--angle))) translateY(200%)
+      scale(var(--scale));
+  }
+  100% {
+    transform: rotate(calc(1deg * var(--angle))) translateY(200%) scale(0);
+  }
+}
+SSparkle[left] {
+  left: var(--left);
+}
+SSparkle[top] {
+  top: var(--top);
+}

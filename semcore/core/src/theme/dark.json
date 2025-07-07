@@ -2502,5 +2502,6 @@
         "description": "Use for Summary or Counter."
       }
     }
-  }
+  },
+  "featureHighlight": {}
 }
