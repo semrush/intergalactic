@@ -18,7 +18,7 @@ test.describe('Input', () => {
     await expect(inputLocator).toBeFocused();
   });
 
-  test('Verify focus returns on Clear addin by keyboard interaction in Dynamic dearch', async ({
+  test('Verify focus returns on Clear addon by keyboard interaction in Dynamic dearch', async ({
     page,
   }) => {
     const standPath = 'stories/patterns/filters/filter-search/docs/examples/dynamic_search.tsx';
@@ -39,7 +39,7 @@ test.describe('Input', () => {
     await expect(inputLocator).toBeFocused();
   });
 
-  test('Verify focus return back to Input after Close button is closed by Enter', async ({ page }) => {
+  test('Verify focus return back to Input after keyboard interactions with Close button', async ({ page }) => {
     const standPath = 'stories/components/input/docs/examples/input_with_the_clearing_ability.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
@@ -47,48 +47,37 @@ test.describe('Input', () => {
 
     const input = await page.locator('input');
     const addonButton = await page.locator('[data-ui-name="Input.Addon"] button');
+    await test.step('Verify focus return back to Input by Enter press on Close button', async () => {
+      await page.keyboard.press('Tab');
+      await expect(input).toBeFocused();
 
-    await page.keyboard.press('Tab');
-    await expect(input).toBeFocused();
+      await page.keyboard.type('Focus test');
+      await addonButton.waitFor();
 
-    await page.keyboard.type('Focus test');
-    await addonButton.waitFor();
+      await page.keyboard.press('Tab');
+      await expect(input).not.toBeFocused();
+      await expect(addonButton).toBeFocused();
 
-    await page.keyboard.press('Tab');
-    await expect(input).not.toBeFocused();
-    await expect(addonButton).toBeFocused();
+      await page.keyboard.press('Enter');
 
-    await page.keyboard.press('Enter');
+      await expect(input).toBeFocused();
+      await expect(addonButton).toBeHidden();
+      expect(await input.inputValue()).toBe('');
+    });
+    await test.step('Verify focus return back to Input by Enter press on Close button ', async () => {
+      await page.keyboard.type('Focus test');
+      await addonButton.waitFor();
 
-    await expect(input).toBeFocused();
-    await expect(addonButton).toBeHidden();
-    expect(await input.inputValue()).toBe('');
-  });
+      await page.keyboard.press('Tab');
+      await expect(input).not.toBeFocused();
+      await expect(addonButton).toBeFocused();
 
-  test('Verify focus return back to Input after Close button is closed by Space', async ({ page }) => {
-    const standPath = 'stories/components/input/docs/examples/input_with_the_clearing_ability.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+      await page.keyboard.press('Space');
 
-    await page.setContent(htmlContent);
-
-    const input = await page.locator('input');
-    const addonButton = await page.locator('[data-ui-name="Input.Addon"] button');
-
-    await page.keyboard.press('Tab');
-    await expect(input).toBeFocused();
-
-    await page.keyboard.type('Focus test');
-    await addonButton.waitFor();
-
-    await page.keyboard.press('Tab');
-    await expect(input).not.toBeFocused();
-    await expect(addonButton).toBeFocused();
-
-    await page.keyboard.press('Space');
-
-    await expect(input).toBeFocused();
-    await expect(addonButton).toBeHidden();
-    expect(await input.inputValue()).toBe('');
+      await expect(input).toBeFocused();
+      await expect(addonButton).toBeHidden();
+      expect(await input.inputValue()).toBe('');
+    });
   });
 
   test('Verify Input with submit button keyboard interactions', async ({ page }) => {
@@ -98,24 +87,39 @@ test.describe('Input', () => {
     await page.setContent(htmlContent);
     const inputLocator = await page.locator('input');
     const hint = page.locator('[data-ui-name="Hint"]');
+    await test.step('Verify focus return back to Input by Enter press on Submit button ', async () => {
+      await page.keyboard.press('Tab');
+      await expect(inputLocator).toBeFocused();
+      await expect(inputLocator).toHaveAttribute('type', 'text');
 
-    await page.keyboard.press('Tab');
-    await expect(inputLocator).toBeFocused();
-    await expect(inputLocator).toHaveAttribute('type', 'text');
+      await page.keyboard.type('Hello world');
+      await expect(await inputLocator.inputValue()).toBe('Hello world');
 
-    await page.keyboard.type('Hello world');
-    await expect(await inputLocator.inputValue()).toBe('Hello world');
+      await page.keyboard.press('Tab');
+      await expect(hint).toBeFocused();
+      await page.waitForSelector('text="Submit"');
 
-    await page.keyboard.press('Tab');
-    await expect(hint).toBeFocused();
-    await page.waitForSelector('text="Submit"');
+      await expect(page).toHaveScreenshot();
+      await page.keyboard.press('Enter');
 
-    await expect(page).toHaveScreenshot();
-    await page.keyboard.down('Enter');
+      await expect(await inputLocator.inputValue()).toBe('');
+      await expect(inputLocator).toBeFocused();
+      await expect(hint).not.toBeVisible();
+    });
 
-    await expect(await inputLocator.inputValue()).toBe('');
-    await expect(inputLocator).toBeFocused();
-    await expect(hint).not.toBeVisible();
+    await test.step('Verify focus return back to Input by Space press on Submit button ', async () => {
+      await page.keyboard.type('Hello world');
+      await expect(await inputLocator.inputValue()).toBe('Hello world');
+
+      await page.keyboard.press('Tab');
+      await expect(hint).toBeFocused();
+      await page.waitForSelector('text="Submit"');
+      await page.keyboard.press('Space');
+
+      await expect(await inputLocator.inputValue()).toBe('');
+      await expect(inputLocator).toBeFocused();
+      await expect(hint).not.toBeVisible();
+    });
   });
 
   test('Verify Input with submit button mouse interactions', async ({ page }) => {
