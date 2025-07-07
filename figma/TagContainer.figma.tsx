@@ -1,12 +1,12 @@
 import figma from '@figma/code-connect';
-import Tag from '@semcore/tag';
+import { TagContainer } from '@semcore/tag';
 import React from 'react';
 
 figma.connect(
-  Tag,
+  TagContainer,
   'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring--%E2%9D%96-Core-Components?node-id=44497-213147&t=0hjqYEp7RXqjnbR7-11',
   {
-    variant: { 'close button': 'false' },
+    variant: { 'close button': 'true' },
     props: {
       label: figma.textContent('↳ text'),
       size: figma.enum('size', {
@@ -46,29 +46,26 @@ figma.connect(
       // }),
 
       addonLeft: figma.boolean('← addon', {
-        true: <Tag.Addon>{/* addon */}</Tag.Addon>,
+        true: <TagContainer.Tag.Addon>{/* addon */}</TagContainer.Tag.Addon>,
       }),
       circle: figma.boolean('← circle addon', {
-        true: <Tag.Circle><img src='https://...' /></Tag.Circle>,
+        true: <TagContainer.Tag.Circle><img src='#' /></TagContainer.Tag.Circle>,
       }),
       textAddon: figma.boolean('↳ textAddon', {
-        true: <Tag.Addon>{/* text addon */}</Tag.Addon>,
+        true: <TagContainer.Tag.Addon>{/* text addon */}</TagContainer.Tag.Addon>,
       }),
     },
 
-    example: ({ label, size, theme, color, active, disabled, addonLeft, textAddon, circle }) => (
-      <Tag
-        size={size}
-        theme={theme}
-        color={color}
-        active={active}
-        disabled={disabled}
-      >
-        {circle}
-        {addonLeft}
-        <Tag.Text>{label}</Tag.Text>
-        {textAddon}
-      </Tag>
+    example: ({ label, theme, color, size, addonLeft, textAddon, circle, active, disabled }) => (
+      <TagContainer theme={theme} color={color} size={size} active={active} disabled={disabled}>
+        <TagContainer.Tag>
+          {circle}
+          {addonLeft}
+          <TagContainer.Tag.Text>{label}</TagContainer.Tag.Text>
+          {textAddon}
+        </TagContainer.Tag>
+        <TagContainer.Close />
+      </TagContainer>
     ),
   },
 );

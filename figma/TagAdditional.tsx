@@ -1,5 +1,5 @@
 import figma from '@figma/code-connect';
-// import MathPlusM from '@semcore/icon/Math/m';
+import MathPlusM from '@semcore/icon/Math/m';
 import Tag from '@semcore/tag';
 import React from 'react';
 

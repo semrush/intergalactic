@@ -32,29 +32,57 @@ figma.connect(
       disabled: figma.enum('state', {
         disabled: true,
       }),
-      label: figma.textContent('↳ text'),
-      labelAddon: figma.textContent('↳ textAddon'),
 
-      addonLeft: figma.boolean('← addon', {
-        true: figma.instance('{ ↳ AddonLeft }'),
-        false: undefined,
+      // Cannot be used with the current structure.
+      // label: figma.textContent('↳ text'),
+      // labelAddon: figma.textContent('↳ textAddon'),
+
+      // addonLeft: figma.boolean('← addon', {
+      //   true: figma.instance('{ ↳ Addon L }'),
+      //   false: undefined,
+      // }),
+
+      // addonRight: figma.boolean('addon →', {
+      //   true: figma.instance('{ ↳ Addon R }'),
+      //   false: undefined,
+      // }),
+
+      // addonLeft: figma.boolean('← addon', {
+      //   true: <Button.Addon>{/* addon */}</Button.Addon>,
+      // }),
+
+      // addonRight: figma.boolean('addon →', {
+      //   true: <Button.Addon>{/* addon */}</Button.Addon>,
+      // }),
+
+      addonLeft: figma.enum('type', {
+        default: figma.boolean('← addon', {
+          true: <Button.Addon>{/* addon */}</Button.Addon>,
+        }),
+      }),
+      addonRight: figma.enum('type', {
+        default: figma.boolean('addon →', {
+          true: <Button.Addon>{/* addon */}</Button.Addon>,
+        }),
       }),
 
-      addonRight: figma.boolean('addon →', {
-        true: figma.instance('{ ↳ AddonRight }'),
-        false: undefined,
+      content: figma.enum('type', {
+        default: figma.boolean('← addon', {
+          true: <Button.Text>{/* button label */}</Button.Text>,
+          false: figma.boolean('addon →', {
+            true: <Button.Text>{/* button label */}</Button.Text>,
+            false: '{/* button label */}',
+          }),
+        }),
       }),
 
       // For now, textAddon shows placeholder. Need to figure out how to show value from labelAddon here, and how to expand the component.
-      textAddon: figma.enum('type', {
-        default: figma.boolean('textAddon →', {
-          true: <Button.Addon><Text color='/* text-color-token */'>{/* text addon */}</Text></Button.Addon>,
-          false: undefined,
-        }),
+      textAddon: figma.boolean('textAddon →', {
+        true: <Button.Addon><Text color='/* text-color-token */'>{/* text addon */}</Text></Button.Addon>,
       }),
     },
 
-    example: ({ size, use, theme, disabled, active, loading, addonLeft, label, textAddon, addonRight }) => (
+    example: ({ size, use, theme, disabled, active, loading, addonLeft, content, textAddon, addonRight }) => (
       <Button
         size={size}
         use={use}
@@ -62,12 +90,11 @@ figma.connect(
         disabled={disabled}
         active={active}
         loading={loading}
-
-        addonLeft={addonLeft}
-        addonRight={addonRight}
       >
-        {label}
+        {addonLeft}
+        {content}
         {textAddon}
+        {addonRight}
       </Button>
     ),
   },

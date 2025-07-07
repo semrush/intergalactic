@@ -29,7 +29,7 @@ figma.connect(Button, 'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refa
       disabled: true,
     }),
     addonLeft: figma.boolean('← addon', {
-      true: figma.instance('{ ↳ AddonLeft }'),
+      true: figma.instance('{ ↳ Addon L }'),
       false: undefined,
     }),
   },

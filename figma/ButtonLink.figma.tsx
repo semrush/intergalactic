@@ -19,11 +19,11 @@ figma.connect(
         active: true,
       }),
       addonLeft: figma.boolean('← addon', {
-        true: figma.instance('{ ↳ AddonLeft }'),
+        true: figma.instance('{ ↳ Addon L }'),
         false: undefined,
       }),
       addonRight: figma.boolean('addon →', {
-        true: figma.instance('{ ↳ AddonRight }'),
+        true: figma.instance('{ ↳ Addon R }'),
         false: undefined,
       }),
     },
