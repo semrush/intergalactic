@@ -17,6 +17,22 @@ export const BasicUsage: StoryObj<typeof basicUsageDefaultProps> = {
     disabled: {
       control: { type: 'boolean' },
     },
+    loading: {
+      control: { type: 'boolean' },
+    },
+    autoFocus: {
+      control: { type: 'boolean' },
+    },
+    state: {
+      control: { type: 'select' },
+      options: ['normal', 'valid', 'invalid'],
+    },
+    defaultValue: {
+      control: { type: 'text' },
+    },
+    placeholder: {
+      control: { type: 'text' },
+    },
   },
   args: basicUsageDefaultProps,
 };

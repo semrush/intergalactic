@@ -3,7 +3,7 @@ import type { InlineInputProps } from 'inline-input/lib/types';
 import React from 'react';
 
 const BasicUsage = (props: InlineInputProps) => {
-  const { disabled } = props;
+  const { disabled, loading, state, autoFocus, defaultValue, placeholder } = props;
 
   return (
     <InlineInput
@@ -13,11 +13,13 @@ const BasicUsage = (props: InlineInputProps) => {
       onChange={console.log}
       onConfirm={console.log}
       disabled={disabled}
+      loading={loading}
+      state={state}
     >
       <InlineInput.Addon htmlFor='basic-example' tag='label'>
         User name:
       </InlineInput.Addon>
-      <InlineInput.Value id='basic-example' defaultValue='John Doe' />
+      <InlineInput.Value id='basic-example' defaultValue={defaultValue} autoFocus={autoFocus} />
       <InlineInput.ConfirmControl />
       <InlineInput.CancelControl />
     </InlineInput>
@@ -26,6 +28,10 @@ const BasicUsage = (props: InlineInputProps) => {
 
 export const basicUsageDefaultProps: InlineInputProps = {
   disabled: false,
+  loading: undefined,
+  state: undefined,
+  autoFocus: undefined,
+  defaultValue: 'John Doe',
 };
 
 BasicUsage.defaultProps = basicUsageDefaultProps;
