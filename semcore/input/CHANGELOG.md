@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Focus is lost when user activates Close button with Space key.
+- Focus is lost when user activates Close button with `Space` key.
 
 ## [16.0.4] - 2025-07-04
 
