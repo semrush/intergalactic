@@ -62,4 +62,17 @@ test.describe('Rows', () => {
     await page.keyboard.press('ArrowLeft');
     await expect(MergedCellSecondRow).toBeFocused();
   });
+
+  test('Verify hover effect for empty state', async ({ page }) => {
+    const standPath = 'stories/components/data-table/docs/examples/empty-table.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const firstRow = page.locator('[data-ui-name="Body.Row"]').first();
+    const firstCell = page.locator('[data-ui-name="Body.Cell"]').first();
+
+    await firstRow.hover();
+    await expect(firstCell).toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
+  });
 });
