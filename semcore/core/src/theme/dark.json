@@ -2503,5 +2503,85 @@
       }
     }
   },
-  "featureHighlight": {}
+  "featureHighlight": {
+    "bg": {
+      "primary": {
+        "feature-highlight": {
+          "value": "rgba(30, 34, 49, 1)",
+          "type": "color",
+          "description": "Primary background for highlighted controls."
+        },
+        "feature-highlight-hover-active": {
+          "value": "linear-gradient(90deg, {violet.50}, {blue.50})",
+          "type": "color",
+          "description": "Primary background for hover and active (selected) state of highlighted controls."
+        }
+      },
+      "secondary": {
+        "feature-highlight": {
+          "value": "linear-gradient(90deg, {violet.50}, {blue.50})",
+          "type": "color",
+          "description": "Secondary background for the highlighted message."
+        }
+      }
+    },
+    "border": {
+      "feature-highlight": {
+        "value": "linear-gradient(90deg, {violet.300}, {blue.300})",
+        "type": "color",
+        "description": "Border for highlighted controls."
+      },
+      "feature-highlight-active": {
+        "value": "linear-gradient(90deg, {violet.400}, {blue.400})",
+        "type": "color",
+        "description": "Border for the active state of highlighted controls."
+      }
+    },
+    "control": {
+      "primary": {
+        "feature-highlight": {
+          "value": "linear-gradient(90deg, {violet.400}, {blue.400})",
+          "type": "color",
+          "description": "Background of the highlighted primary control."
+        },
+        "feature-highlight-hover": {
+          "value": "linear-gradient(90deg, {violet.500}, {blue.500})",
+          "type": "color",
+          "description": "Hover state of the highlighted primary control."
+        },
+        "feature-highlight-active": {
+          "value": "linear-gradient(90deg, {violet.600}, {blue.600})",
+          "type": "color",
+          "description": "Active (selected) state of the highlighted primary control."
+        }
+      }
+    },
+    "icon": {
+      "primary": {
+        "feature-highlight": {
+          "value": "{violet.500}",
+          "type": "color",
+          "description": "Primary highlighted icon."
+        },
+        "feature-highlight-hover-active": {
+          "value": "#6B3AB4",
+          "type": "color",
+          "description": "Violet background color for the hover and active states of the primary highlighted icon. It’s created using a CSS filter with a brightness(0.8), applied to the violet-500 color."
+        }
+      }
+    },
+    "keyboard-focus-feature-highlight": {
+      "value": {
+        "width": "3px",
+        "color": "{keyboard-focus-feature-highlight.outline}"
+      },
+      "type": "border",
+      "description": "Keyboard focus styles for highlighted controls.",
+      "outline": {
+        "value": "linear-gradient(90deg, rgba({violet.400}, 0.5), rgba({blue.400}, 0.5))",
+        "type": "color",
+        "description": "Color for keyboard focus outline styles for highlighted controls."
+      }
+    }
+  }
 }
