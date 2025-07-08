@@ -1,24 +1,53 @@
 import { Box } from '@semcore/base-components';
+import type { TextareaProps } from '@semcore/textarea';
 import Textarea from '@semcore/textarea';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
-const Demo = () => (
-  <div>
-    <Text tag='label' size={200} htmlFor='autoscalable-textarea'>
-      Textarea with automatic height
-    </Text>
-    <Box mt={2}>
-      <Textarea
-        w={500}
-        minRows={2}
-        maxRows={10}
-        id='autoscalable-textarea'
-        name='autoscalable-textarea'
-        placeholder='Try entering a lot of lines'
-      />
-    </Box>
-  </div>
-);
+type ExampleTextareaProps = TextareaProps & { placeholder: any; disabled: any; readOnly: any; autoFocus: any };
+
+const Demo = (props: ExampleTextareaProps) => {
+  return (
+    <div>
+      <Text tag='label' size={200} htmlFor='autoscalable-textarea'>
+        Textarea with automatic height
+      </Text>
+      <Box mt={2}>
+        <Textarea
+          w={500}
+          value={props.value}
+          defaultValue={props.defaultValue}
+          placeholder={props.placeholder}
+          state={props.state}
+          size={props.size}
+          resize={props.resize}
+          disabled={props.disabled}
+          readOnly={props.readOnly}
+          minRows={props.minRows}
+          maxRows={props.maxRows}
+          autoFocus={props.autoFocus}
+          id='autoscalable-textarea'
+          name='autoscalable-textarea'
+        />
+      </Box>
+    </div>
+  );
+};
+
+export const defaultProps: ExampleTextareaProps = {
+  value: undefined,
+  defaultValue: undefined,
+  placeholder: 'Try entering a lot of lines',
+  state: undefined,
+  size: undefined,
+  resize: undefined,
+  disabled: false,
+  readOnly: undefined,
+  minRows: 2,
+  maxRows: 10,
+  autoFocus: false,
+};
+
+Demo.defaultProps = defaultProps;
 
 export default Demo;
