@@ -47,6 +47,10 @@ SCollapseRow > SCellWrapper > SCell:not([theme]), SRow[isAccordionRow] > SCellWr
 
 /* we need a media query here because of the postcssHoverMediaFeature plugin. it doesn't handle this type of selectors correctly */
 @media (hover: hover) {
+  SRow[isEmptyRow] > SCellWrapper > SCell {
+    background-color: unset !important;
+  }
+
   SRow:not([accordionType='row'][expanded]):hover > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]),
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]),
   SRowGroup:has(SCell:hover) > SRow > SCellWrapper > SCell[data-grouped-by='rowgroup']:not([theme]):not([expanded][withAccordion]) {

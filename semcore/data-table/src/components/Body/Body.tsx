@@ -437,7 +437,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, State, [], BodyPropsInn
 
     return sstyled(styles)(
       <SBody render={Box} __excludeProps={['data']}>
-        {emptyRow && <Body.Row row={emptyRow} />}
+        {emptyRow && <Body.Row row={emptyRow} isEmptyRow />}
         {typeof virtualScroll === 'boolean' && rowMarginTop && <Box h={rowMarginTop} />}
         {rowsToRender.map((row, index) => {
           if (Array.isArray(row)) {

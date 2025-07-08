@@ -22,6 +22,7 @@ export type DataTableRowProps = {
   isAccordionRow?: DataTableCellProps['isAccordionRow'];
   animationExpand?: DataTableCellProps['animationExpand'];
   accordionRowIndex?: DataTableCellProps['accordionRowIndex'];
+  isEmptyRow?: boolean;
 };
 
 export type RowPropsInner = JSX.IntrinsicElements['div'] & {
