@@ -91,6 +91,8 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
   private headerNodesMap = new Map();
 
+  private persistedSelectedRows = new Set<UniqRowKey>();
+
   constructor(props: DataTableProps<D>) {
     super(props);
 
@@ -119,11 +121,15 @@ class DataTableRoot<D extends DataTableData> extends Component<
   }
 
   componentDidMount() {
-    const { headerProps, loading } = this.asProps;
+    const { headerProps, loading, selectedRows } = this.asProps;
     if ((headerProps?.sticky && !headerProps.h) || loading || this.columns.some((c) => c.fixed)) {
       requestAnimationFrame(() => {
         this.forceUpdate();
       });
+    }
+
+    if (selectedRows && selectedRows.length > 0) {
+      selectedRows.forEach(this.persistedSelectedRows.add, this.persistedSelectedRows);
     }
   }
 
@@ -145,6 +151,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
         this.setSelectAllMessage(true);
       } else if (prevProps.selectedRows.length > 0 && selectedRows.length === 0) {
         this.setSelectAllMessage(false);
+        this.persistedSelectedRows.clear();
       }
     }
   }
@@ -228,14 +235,14 @@ class DataTableRoot<D extends DataTableData> extends Component<
       gridTemplateAreas,
       sideIndents,
       totalRows: this.totalRows,
-      selectedRows: selectedRows,
+      selectedRows,
+      persistedSelectedRows: this.persistedSelectedRows,
+      flatRows: this.flatRows,
       onChangeSelectAll: (value, e) => {
-        if (value === false) {
-          onSelectedRowsChange?.([], e);
-        } else {
-          const selectedRows = this.flatRows.map((row) => row[UNIQ_ROW_KEY]);
-          onSelectedRowsChange?.(selectedRows, e);
-        }
+        const selectedRows = this.flatRows.map((row) => row[UNIQ_ROW_KEY]);
+        selectedRows.forEach(value ? this.persistedSelectedRows.add : this.persistedSelectedRows.delete, this.persistedSelectedRows);
+
+        onSelectedRowsChange?.([...this.persistedSelectedRows], e);
       },
       getFixedStyle: this.getFixedStyle,
       onCellClick: this.handleCellClick,
@@ -312,21 +319,15 @@ class DataTableRoot<D extends DataTableData> extends Component<
   ) => {
     const { selectedRows, onSelectedRowsChange } = this.asProps;
 
-    if (selectedRows && onSelectedRowsChange) {
-      const newSelectedRows = new Set(selectedRows);
+    if (!selectedRows || !onSelectedRowsChange) return;
 
-      if (isSelected && !newSelectedRows.has(row[UNIQ_ROW_KEY])) {
-        newSelectedRows.add(row[UNIQ_ROW_KEY]);
-      } else if (!isSelected && newSelectedRows.has(row[UNIQ_ROW_KEY])) {
-        newSelectedRows.delete(row[UNIQ_ROW_KEY]);
-      }
-
-      onSelectedRowsChange([...newSelectedRows], event, {
-        selectedRowIndex,
-        isSelected,
-        row,
-      });
+    if (this.persistedSelectedRows.has(row[UNIQ_ROW_KEY])) {
+      this.persistedSelectedRows.delete(row[UNIQ_ROW_KEY]);
+    } else {
+      this.persistedSelectedRows.add(row[UNIQ_ROW_KEY]);
     }
+
+    onSelectedRowsChange([...this.persistedSelectedRows], event, { selectedRowIndex, isSelected, row });
   };
 
   setSelectAllMessage = (selectedAll: boolean) => {

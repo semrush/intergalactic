@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.7] - 2025-07-08
+
+### Fixed
+
+- Incorrect 'Select all' checkbox behavior with pagination.
+
 ## [16.0.6] - 2025-07-04
 
 ### Changed

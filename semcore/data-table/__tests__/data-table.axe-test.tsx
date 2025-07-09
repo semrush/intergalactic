@@ -171,7 +171,7 @@ test.describe('DataTable', () => {
     expect(violations).toEqual([]);
   });
   test('checkbox in table', async ({ page }) => {
-    const standPath = 'stories/components/data-table/docs/examples/checkbox-in-table.tsx';
+    const standPath = 'stories/components/data-table/tests/examples/checkbox-tests/checkbox-in-table.tsx';
     const violations = await checkAxe(page, standPath);
 
     expect(violations).toEqual([]);
