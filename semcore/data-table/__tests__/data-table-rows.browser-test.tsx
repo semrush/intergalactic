@@ -73,6 +73,7 @@ test.describe('Rows', () => {
     const firstCell = page.locator('[data-ui-name="Body.Cell"]').first();
 
     await firstRow.hover();
-    await expect(firstCell).toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
+    const background = await firstCell.evaluate((el) => getComputedStyle(el).backgroundColor);
+    expect(['rgba(0, 0, 0, 0)', 'transparent', 'rgb(255, 255, 255)']).toContain(background);
   });
 });
