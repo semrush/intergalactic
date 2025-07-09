@@ -2,17 +2,19 @@ import Button from '@semcore/button';
 import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/notice-bubble';
 import Spin from '@semcore/spin';
 import React from 'react';
+type NoConnectionNoticeBubbleProps = { initialAnimation: any; duration: any; type: any; focusLock: any };
 
 const manager = new NoticeBubbleManager();
 
-const Demo = () => {
+const Demo = (props: NoConnectionNoticeBubbleProps) => {
   const handleClick = () => {
     manager.add({
       icon: <Spin size='xs' theme='invert' />,
       children: 'Server connection lost. Reconnecting...',
-      type: 'warning',
-      initialAnimation: true,
-      duration: 10000,
+      initialAnimation: props.initialAnimation,
+      duration: props.duration,
+      type: props.type,
+      focusLock: props.focusLock,
     });
   };
 
@@ -23,5 +25,14 @@ const Demo = () => {
     </>
   );
 };
+
+export const defaultProps: NoConnectionNoticeBubbleProps = {
+  initialAnimation: true,
+  duration: 10000,
+  type: 'warning',
+  focusLock: undefined,
+};
+
+Demo.defaultProps = defaultProps;
 
 export default Demo;
