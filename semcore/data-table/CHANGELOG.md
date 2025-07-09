@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.7] - 2025-07-09
+
+### Fixed
+
+-  Header glitches in loading state with sticky header.
+
 ## [16.0.6] - 2025-07-04
 
 ### Changed
