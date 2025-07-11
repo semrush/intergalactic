@@ -7,22 +7,22 @@ import React from 'react';
 import Error, { getIconPath } from '../Error';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
-class RootProjectNotFound extends Component {
+class RootFolderNotFound extends Component {
   static displayName = 'Maintenance';
   static enhance = [i18nEnhance(localizedMessages)];
   static defaultProps = {
     i18n: localizedMessages,
     locale: 'en',
     icon: getIconPath('project_not_found'),
-    projectsLink: '/projects',
+    foldersLink: '/projects', // will change
     contactsLink: '/company/contacts',
     supportTeamLink: '/kb/support', // might change
     titleTag: 'h2',
   };
 
   render() {
-    const { Children, getI18nText, projectsLink, contactsLink, supportTeamLink, titleTag } =
-      this.asProps;
+    const { Children, getI18nText, foldersLink, contactsLink, supportTeamLink, titleTag } = this.asProps;
+    console.log(supportTeamLink);
     const text = getI18nText('text', { url: supportTeamLink });
     return (
       <Root render={Error}>
@@ -30,8 +30,8 @@ class RootProjectNotFound extends Component {
         <Error.Description tag={FormatText} size='l' dangerouslySetInnerHTML={{ __html: text }} />
         <Children />
         <Error.Controls>
-          <Button tag='a' type='none' size='l' use='primary' theme='info' href={projectsLink}>
-            {getI18nText('btnProjects')}
+          <Button tag='a' type='none' size='l' use='primary' theme='info' href={foldersLink}>
+            {getI18nText('btnFolders')}
           </Button>
           <Button size='l' tag='a' type='none' href={contactsLink}>
             {getI18nText('btnContacts')}
@@ -42,4 +42,4 @@ class RootProjectNotFound extends Component {
   }
 }
 
-export default createComponent(RootProjectNotFound);
+export default createComponent(RootFolderNotFound);

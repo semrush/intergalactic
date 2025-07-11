@@ -1,5 +1,6 @@
 import {
   AccessDenied,
+  FolderNotFound,
   Maintenance,
   PageError,
   PageNotFound,
@@ -10,6 +11,7 @@ import React from 'react';
 const Demo = () => (
   <>
     <AccessDenied />
+    <FolderNotFound />
     <Maintenance toolName='Intergalactic' />
     <PageNotFound />
     <ProjectNotFound />

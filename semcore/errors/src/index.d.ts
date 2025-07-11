@@ -23,15 +23,46 @@ export type ErrorsContext = {
   getControlsProps: PropGetterFn;
 };
 
+export type FolderNotFoundProps = WithI18nEnhanceProps & {
+  /**
+   * Link to the folders (will change)
+   * @default /projects
+   */
+  foldersLink?: string;
+  /**
+   * URL for the "Contact us" button
+   * @default /company/contacts
+   */
+  contactsLink?: string;
+  /**
+   * URL for the "Support Team" link
+   * @default /kb/support
+   */
+  supportTeamLink?: string;
+  /**
+   * HTML tag of the error title
+   * @default h2
+   */
+  titleTag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'p';
+};
+
 /** @deprecated */
 export interface IProjectNotFoundProps extends ProjectNotFoundProps, UnknownProperties {}
 export type ProjectNotFoundProps = WithI18nEnhanceProps & {
   /**
-   * Link to the projects
+   * URL for the "Go to Projects" button
    * @default /projects
    */
   projectsLink?: string;
+  /**
+   * URL for the "Contact us" button
+   * @default /company/contacts
+   */
   contactsLink?: string;
+  /**
+   * URL for the "Support Team" link
+   * @default /kb/support
+   */
   supportTeamLink?: string;
   /**
    * HTML tag of the error title
@@ -110,6 +141,7 @@ declare const Error: Intergalactic.Component<'div', ErrorsProps, ErrorsContext> 
   Controls: typeof Box;
 };
 declare const ProjectNotFound: Intergalactic.Component<'div', ProjectNotFoundProps & ErrorsProps>;
+declare const FolderNotFound: Intergalactic.Component<'div', FolderNotFoundProps & ErrorsProps>;
 declare const PageNotFound: Intergalactic.Component<'div', PageNotFoundProps & ErrorsProps>;
 declare const PageError: Intergalactic.Component<'div', PageErrorProps & ErrorsProps>;
 declare const Maintenance: Intergalactic.Component<'div', MaintenanceProps & ErrorsProps>;
@@ -117,4 +149,4 @@ declare const AccessDenied: Intergalactic.Component<'div', AccessDeniedProps & E
 declare const getIconPath: (name: iconNamesErrors) => string;
 
 export default Error;
-export { ProjectNotFound, PageNotFound, PageError, Maintenance, AccessDenied, getIconPath };
+export { ProjectNotFound, FolderNotFound, PageNotFound, PageError, Maintenance, AccessDenied, getIconPath };

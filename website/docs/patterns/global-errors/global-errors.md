@@ -57,6 +57,34 @@ It looks like this page doesn't exist. Try going back or click the button below 
 
 Go to homepage (if not logged in, it leads you to the main Semrush; if logged in, it leads you to the Dashboard).
 
+## Folder not found
+
+::: warning
+update illustration and link to library, replace projects mentions
+:::
+
+![](static/ge_project-not-found.png)
+
+**Title**
+
+Folder not found
+
+**Message**
+
+We cannot find the folder you’re trying to access. Check one of the following issues:
+
+- The folder may have been deleted or there is an error in the URL entered.
+- You may not have permission to view the folder. Please request access from the folder owner.
+
+You can find all your folders ???
+
+If you have any other problems with access to the folder, please contact our [Support Team](https://www.semrush.com/kb/support/).
+
+**Controls**
+
+- Go to ??? (leads you to ???).
+- Contact us (sends the user to the [contact page](https://www.semrush.com/company/contact/)).
+
 ## Project not found
 
 ![](static/ge_project-not-found.png)

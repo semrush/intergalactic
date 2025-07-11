@@ -21,6 +21,7 @@ npm install @semcore/errors
 ```jsx
 import Error, {
   AccessDenied,
+  FolderNotFound,
   Maintenance,
   PageError,
   PageNotFound,
