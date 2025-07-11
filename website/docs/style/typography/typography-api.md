@@ -52,17 +52,8 @@ import { Blockquote } from '@semcore/typography';
 
 ## FormatText
 
-A wrapper component required to add styles to native tags.
-
-::: tip
-Note that the component is in another package `intergalactic/format-text`.
+::: warning
+`FormatText` is deprecated. To style native tags, wrap them in `Text`. Refer to the [Native typography tags example](./typography-code#native-typography-tags)
 :::
-
-```jsx
-import FormatText from '@semcore/format-text';
-<FormatText />;
-```
-
-<TypesView type="FormatTextProps" :types={...types} />
 
 <script setup>import { data as types } from '@types.data.ts';</script>
