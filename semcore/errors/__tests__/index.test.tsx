@@ -7,6 +7,7 @@ import React from 'react';
 
 import Error, {
   AccessDenied,
+  FolderNotFound,
   getIconPath,
   Maintenance,
   PageError,
@@ -90,6 +91,11 @@ describe('Error', () => {
 
   test.concurrent('Render correctly AccessDenied', async ({ task }) => {
     const component = <AccessDenied />;
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  });
+
+  test.concurrent('Render correctly FolderNotFound', async ({ task }) => {
+    const component = <FolderNotFound />;
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
