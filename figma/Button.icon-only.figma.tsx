@@ -2,8 +2,8 @@ import figma from '@figma/code-connect/react';
 import Button from '@semcore/button';
 import React from 'react';
 
-figma.connect(Button, 'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring--%E2%9D%96-Core-Components?node-id=10043-43724&t=fvHZdzdrBaexbYww-11', {
-  variant: { type: 'icon only' },
+figma.connect(Button, 'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10043-43724&t=nVbIFrY5EvgteOqk-11', {
+  variant: { iconOnly: 'true' },
   props: {
     size: figma.enum('size', {
       L: 'l',

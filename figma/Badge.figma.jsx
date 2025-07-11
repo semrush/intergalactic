@@ -20,6 +20,6 @@ figma.connect(
         true: 'text-primary',
       }),
     },
-    example: ({ label, bg, color }) => <Badge bg={bg} color={color}>{label}</Badge>,
+    example: (props) => <Badge {...props}>{props.label}</Badge>,
   },
 );

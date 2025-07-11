@@ -5,9 +5,9 @@ import React from 'react';
 
 figma.connect(
   Button,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring--%E2%9D%96-Core-Components?node-id=10043-43724&t=fvHZdzdrBaexbYww-11',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10043-43724&t=nVbIFrY5EvgteOqk-11',
   {
-    variant: { type: 'default' },
+    variant: { iconOnly: 'false' },
     props: {
       size: figma.enum('size', {
         L: 'l',
@@ -56,19 +56,19 @@ figma.connect(
       //   true: <Button.Addon>{/* addon */}</Button.Addon>,
       // }),
 
-      addonLeft: figma.enum('type', {
-        default: figma.boolean('← addon', {
+      addonLeft: figma.enum('iconOnly', {
+        false: figma.boolean('← addon', {
           true: <Button.Addon>{/* addon */}</Button.Addon>,
         }),
       }),
-      addonRight: figma.enum('type', {
-        default: figma.boolean('addon →', {
+      addonRight: figma.enum('iconOnly', {
+        false: figma.boolean('addon →', {
           true: <Button.Addon>{/* addon */}</Button.Addon>,
         }),
       }),
 
-      content: figma.enum('type', {
-        default: figma.boolean('← addon', {
+      content: figma.enum('iconOnly', {
+        false: figma.boolean('← addon', {
           true: <Button.Text>{/* button label */}</Button.Text>,
           false: figma.boolean('addon →', {
             true: <Button.Text>{/* button label */}</Button.Text>,
