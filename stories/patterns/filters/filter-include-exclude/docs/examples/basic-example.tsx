@@ -1,4 +1,4 @@
-import { ScreenReaderOnly } from '@semcore/ui/base-components';
+import { ScreenReaderOnly } from '@semcore/base-components';
 import { Flex } from 'intergalactic/base-components';
 import { FilterTrigger } from 'intergalactic/base-trigger';
 import Button from 'intergalactic/button';
