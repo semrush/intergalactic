@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.1.5] - 2025-07-14
+
+### Changed
+
+-  Type description for `CarouselProps`.
+
 ## [16.1.4] - 2025-07-04
 
 ### Changed

@@ -88,10 +88,13 @@ export type DataTableProps<D extends DataTableData> = DataTableAriaProps &
      */
     expandedRows?: Set<string>;
 
+    /** Configuration for virtual scroll */
     virtualScroll?: VirtualScroll;
 
+    /** Configuration for table columns including headers, sorting, and layout */
     columns: ColumnsConfig;
 
+    /** Configuration for sticky headers, height, scroll bars, etc. */
     headerProps?: {
       /**
        * Sticky header
@@ -113,10 +116,10 @@ export type DataTableProps<D extends DataTableData> = DataTableAriaProps &
       withScrollBar?: boolean;
     };
 
+    /** Function to add custom props to rows */
     rowProps?: DataTableBodyProps['rowProps'];
-
+    /** Custom cell renderer function */
     renderCell?: DataTableBodyProps['renderCell'];
-
     /**
    * Name of a unique key for each row data item
    */
@@ -127,6 +130,7 @@ export type DataTableProps<D extends DataTableData> = DataTableAriaProps &
      */
     selectedRows?: UniqRowKey[];
 
+    /** Callback when row selection changes */
     onSelectedRowsChange?: (
       selectedRows: UniqRowKey[],
       event?: React.SyntheticEvent<HTMLElement>,

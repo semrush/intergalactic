@@ -7,8 +7,11 @@ import type { BaseChartProps } from './AbstractChart.type';
 export type VennChartData = Record<string, number>;
 
 export type VennChartProps = BaseChartProps<VennChartData> & {
+  /** Internal */
   groupKey?: never;
+  /** Custom x-axis scale */
   xScale?: ScaleLinear<any, any>;
+  /** Custom y-axis scale */
   yScale?: ScaleLinear<any, any>;
 };
 

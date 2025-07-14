@@ -18,8 +18,11 @@ export type BubbleChartData = Array<{
 }>;
 
 export type BubbleChartProps = BaseChartProps<BubbleChartData> & {
+  /** Field name that groups the data points */
   groupKey?: never;
+  /** Custom x-axis scale */
   xScale?: ScaleLinear<any, any>;
+  /** Custom y-axis scale */
   yScale?: ScaleLinear<any, any>;
 };
 

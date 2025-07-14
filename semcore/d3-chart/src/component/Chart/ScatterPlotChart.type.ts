@@ -8,9 +8,13 @@ import type { interpolateValue } from '../../utils';
 export type ScatterPlotChartData = Array<Record<string, number | typeof interpolateValue | Date>>;
 
 export type ScatterPlotChartProps = BaseChartProps<ScatterPlotChartData> & {
+  /** Field name that groups the data points */
   groupKey: string;
+  /** Custom x-axis scale */
   xScale?: ScaleLinear<any, any> | ScaleTime<any, any>;
+  /** Custom y-axis scale */
   yScale?: ScaleLinear<any, any>;
+  /**  Optional field name for additional value data */
   valueKey?: string;
 };
 

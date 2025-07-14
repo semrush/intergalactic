@@ -31,7 +31,9 @@ export type ProjectNotFoundProps = WithI18nEnhanceProps & {
    * @default /projects
    */
   projectsLink?: string;
+  /** Link to contact support */
   contactsLink?: string;
+  /** Link to support team */
   supportTeamLink?: string;
   /**
    * HTML tag of the error title

@@ -7,8 +7,11 @@ import type { BaseChartProps } from './AbstractChart.type';
 export type HistogramChartData = Array<Record<string, number | Date>>;
 
 export type HistogramChartProps = BaseChartProps<HistogramChartData> & {
+  /** Field name that groups the data points */
   groupKey: string;
+  /** Custom x-axis scale */
   xScale?: ScaleBand<any> | ScaleTime<any, any>;
+  /** Custom y-axis scale */
   yScale?: ScaleLinear<any, any>;
 };
 

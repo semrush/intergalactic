@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.8] - 2025-07-14
+
+### Changed
+
+- Type description for `PlotProps`/`ReferenceLineProps`/`AreaChartProps`/`BarChartProps`/`BubbleChartProps`/`CigaretteChartProps`/`DonutChartProps`/`HistogramChartProps`/`LineChartProps`/`RadialTreeProps`/`ScatterPlotChartProps`/`VennChartProps`/`CompactHorizontalBarChartProps`.
+
 ## [16.0.7] - 2025-07-03
 
 ### Fixed

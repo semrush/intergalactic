@@ -13,6 +13,7 @@ export type WizardProps = ModalProps & {
    * Active step value
    */
   step: WizardStep;
+  /** Specifies the locale for i18n support */
   locale?: string;
 };
 
@@ -60,20 +61,24 @@ export type WizardStepperProps<T extends WizardStep = WizardStep> = BoxProps & {
    *  Is the step completed
    */
   completed?: boolean;
-
+  /** Disables interaction with the stepper */
   disabled?: boolean;
 };
 
 export type WizardStepBackProps<T extends WizardStep = WizardStep> = ButtonProps & {
+  /** Callback invoked when navigating to the previous step */
   onActive?:
     | ((step: T, e: React.SyntheticEvent<HTMLElement>) => void)
     | React.Dispatch<React.SetStateAction<T>>;
+  /** Step name being navigated to */
   stepName?: string;
 };
 export type WizardStepNextProps<T extends WizardStep = WizardStep> = ButtonProps & {
+  /** Callback invoked when navigating to the next step */
   onActive?:
     | ((step: T, e: React.SyntheticEvent<HTMLElement>) => void)
     | React.Dispatch<React.SetStateAction<T>>;
+  /** Step name being navigated to */
   stepName?: string;
 };
 

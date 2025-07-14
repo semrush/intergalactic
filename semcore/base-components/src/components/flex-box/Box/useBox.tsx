@@ -154,9 +154,9 @@ export type BoxProps = StyledProps & {
   bottom?: number | string;
   /** CSS `right` property */
   right?: number | string;
-
+  /** CSS `zIndex` property */
   zIndex?: number;
-
+  /** Box content */
   children?: React.ReactNode;
 };
 
