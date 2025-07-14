@@ -50,19 +50,11 @@ export type FolderNotFoundProps = WithI18nEnhanceProps & {
 export interface IProjectNotFoundProps extends ProjectNotFoundProps, UnknownProperties {}
 export type ProjectNotFoundProps = WithI18nEnhanceProps & {
   /**
-   * URL for the "Go to Projects" button
+   * Link to the projects
    * @default /projects
    */
   projectsLink?: string;
-  /**
-   * URL for the "Contact us" button
-   * @default /company/contacts
-   */
   contactsLink?: string;
-  /**
-   * URL for the "Support Team" link
-   * @default /kb/support
-   */
   supportTeamLink?: string;
   /**
    * HTML tag of the error title
