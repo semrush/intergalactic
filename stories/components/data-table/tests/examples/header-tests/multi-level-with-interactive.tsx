@@ -46,7 +46,6 @@ const Demo = () => {
   return (
 
     <DataTable
-      loading
       data={data}
       aria-label='Base table example'
       defaultGridTemplateColumnWidth='auto'
