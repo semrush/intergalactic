@@ -17,7 +17,7 @@ tabs: Design('tag'), A11y('tag-a11y'), API('tag-api'), Example('tag-code'), Chan
 Accepts all `Box` properties.
 
 ```jsx
-import { TagContainer } from '@semcore/ui/tag';
+import { TagContainer } from '@semcore/tag';
 <TagContainer.Close />;
 ```
 
@@ -28,7 +28,7 @@ The addon inside the tag (most commonly an icon) sets the correct indents depend
 It takes all the properties of the `Box`.
 
 ```jsx
-import Tag from '@semcore/ui/tag';
+import Tag from '@semcore/tag';
 <Tag.Addon />;
 ```
 
@@ -39,7 +39,7 @@ This ordinary text sets the appropriate indents depending on the size. If a simp
 It takes all the properties of the `Box`.
 
 ```jsx
-import Tag from '@semcore/ui/tag';
+import Tag from '@semcore/tag';
 <Tag.Text />;
 ```
 
@@ -50,7 +50,7 @@ A special addon for round elements inside a tag (most often a picture) places th
 It accepts all `Box` properties.
 
 ```jsx
-import Tag from '@semcore/ui/tag';
+import Tag from '@semcore/tag';
 <Tag.Circle />;
 ```
 
