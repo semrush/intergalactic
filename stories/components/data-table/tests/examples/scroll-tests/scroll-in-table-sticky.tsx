@@ -1,13 +1,16 @@
 import { DataTable } from '@semcore/data-table';
 import React from 'react';
 
-const Demo = () => {
+export type ExampleDataTableProps = { loading: any };
+
+const Demo = (props: ExampleDataTableProps) => {
   return (
     <DataTable
       data={data}
       aria-label='Scroll inside'
       wMax={800}
       hMax={200}
+      loading={props.loading}
       headerProps={{ sticky: true }}
       columns={[
         { name: 'keyword', children: 'Keyword' },
@@ -81,5 +84,11 @@ const data = [
     vol: '21,644,290',
   },
 ];
+
+export const defaultProps: ExampleDataTableProps = {
+  loading: undefined,
+};
+
+Demo.defaultProps = defaultProps;
 
 export default Demo;

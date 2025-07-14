@@ -2,7 +2,9 @@ import { DataTable } from '@semcore/data-table';
 import { Box } from '@semcore/flex-box';
 import React from 'react';
 
-const Demo = () => {
+export type ExampleDataTableProps = { loading: any };
+
+const Demo = (props: ExampleDataTableProps) => {
   return (
     <Box style={{ overflow: 'auto', scrollPaddingTop: '200px' }} h='70vh' tabIndex={-1}>
       <Box h={100} style={{ background: 'red' }} />
@@ -11,6 +13,7 @@ const Demo = () => {
         data={data}
         aria-label='Scroll inside'
         wMin={1000}
+        loading={props.loading}
         headerProps={{
           sticky: true,
           top: 100,
@@ -209,5 +212,11 @@ const data = [
     vol: '21,644,290',
   },
 ];
+
+export const defaultProps: ExampleDataTableProps = {
+  loading: undefined,
+};
+
+Demo.defaultProps = defaultProps;
 
 export default Demo;
