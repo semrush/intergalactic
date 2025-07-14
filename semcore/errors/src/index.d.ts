@@ -25,18 +25,8 @@ export type ErrorsContext = {
 
 export type FolderNotFoundProps = WithI18nEnhanceProps & {
   /**
-   * Link to the folders (will change)
-   * @default /projects
-   */
-  foldersLink?: string;
-  /**
-   * URL for the "Contact us" button
-   * @default /company/contacts
-   */
-  contactsLink?: string;
-  /**
    * URL for the "Support Team" link
-   * @default /kb/support
+   * @default /company/contacts/
    */
   supportTeamLink?: string;
   /**
