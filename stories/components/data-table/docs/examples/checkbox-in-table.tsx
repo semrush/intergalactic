@@ -28,70 +28,74 @@ const Demo = () => {
     return () => clearTimeout(timer);
   }, [ariaMessage]);
 
-  const limit = 5;
-  const tableData = data.slice(currentPage * limit, currentPage * limit + limit);
+  const perPage = [5, 3, 7, 10];
+  const totalPages = perPage.length;
+
+  const offset = perPage.slice(0, currentPage).reduce((sum, val) => sum + val, 0);
+  const currentLimit = perPage[currentPage] || 0;
+  const tableData = data.slice(offset, offset + currentLimit);
 
   return (
-    <Box
-      // need this for FF
-      tabIndex={-1}
-      wMax={800}
-      h='100%'
-      hMax={250}
-      style={{ overflow: 'auto', scrollPaddingTop: selectedRows.length ? '44px' : undefined }}
-    >
-      <ScreenReaderOnly role='status' aria-live='polite'>
-        {ariaMessage}
-      </ScreenReaderOnly>
-      <Collapse
-        visible={!!selectedRows.length}
-        duration={150}
-        style={{ position: 'sticky', top: 0, zIndex: 2 }}
+    <>
+      <Box
+        tabIndex={-1}
+        wMax={800}
+        h='100%'
+        hMax={250}
+        style={{ overflow: 'auto', scrollPaddingTop: selectedRows.length ? '44px' : undefined }}
       >
-        <Flex
-          role='region'
-          aria-label='Table action bar'
-          alignItems='center'
-          gap={6}
-          py={2}
-          px={3}
-          style={{
-            backgroundColor: 'var(--intergalactic-bg-primary-neutral, #ffffff)',
-          }}
+        <ScreenReaderOnly role='status' aria-live='polite'>
+          {ariaMessage}
+        </ScreenReaderOnly>
+
+        <Collapse
+          visible={!!selectedRows.length}
+          duration={150}
+          style={{ position: 'sticky', top: 0, zIndex: 2 }}
         >
-          <Text size={200}>
-            Selected rows:
-            {' '}
-            <Text bold>{selectedRowsDisplay}</Text>
-          </Text>
-          <Button use='tertiary' onClick={handleDeselectAll}>
-            Deselect all
-          </Button>
-        </Flex>
-      </Collapse>
-      <DataTable
-        data={tableData}
-        aria-label='Table example with selectable rows'
-        defaultGridTemplateColumnWidth='auto'
-        selectedRows={selectedRows}
-        onSelectedRowsChange={handleChangeSelectedRows}
-        ref={tableRef}
-        headerProps={{ sticky: true, top: selectedRows.length ? 44 : 0 }}
-        columns={[
-          { name: 'keyword', children: 'Keyword' },
-          { name: 'kd', children: 'KD %' },
-          { name: 'cpc', children: 'CPC' },
-          { name: 'vol', children: 'Vol.' },
-        ]}
-        uniqueRowKey='id'
-      />
+          <Flex
+            role='region'
+            aria-label='Table action bar'
+            alignItems='center'
+            gap={6}
+            py={2}
+            px={3}
+            style={{ backgroundColor: 'var(--intergalactic-bg-primary-neutral, #ffffff)' }}
+          >
+            <Text size={200}>
+              Selected rows: <Text bold>{selectedRowsDisplay}</Text>
+            </Text>
+            <Button use='tertiary' onClick={handleDeselectAll}>
+              Deselect all
+            </Button>
+          </Flex>
+        </Collapse>
+
+        <DataTable
+          data={tableData}
+          aria-label='Table example with selectable rows'
+          defaultGridTemplateColumnWidth='auto'
+          selectedRows={selectedRows}
+          onSelectedRowsChange={handleChangeSelectedRows}
+          ref={tableRef}
+          headerProps={{ sticky: true, top: selectedRows.length ? 44 : 0 }}
+          columns={[
+            { name: 'keyword', children: 'Keyword' },
+            { name: 'kd', children: 'KD %' },
+            { name: 'cpc', children: 'CPC' },
+            { name: 'vol', children: 'Vol.' },
+          ]}
+          uniqueRowKey='id'
+        />
+
+      </Box>
       <Pagination
         mt={4}
-        totalPages={Math.ceil(data.length / limit)}
+        totalPages={totalPages}
         currentPage={currentPage + 1}
         onCurrentPageChange={(page) => setCurrentPage(page - 1)}
       />
-    </Box>
+    </>
   );
 };
 

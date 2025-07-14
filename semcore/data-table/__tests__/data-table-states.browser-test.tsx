@@ -81,7 +81,7 @@ test.describe('Loading states', () => {
 
 test.describe('Additional states', () => {
   test('Verify table with checkbox attributes and mouse interaction', async ({ page }) => {
-    const standPath = 'stories/components/data-table/tests/examples/checkbox-tests/checkbox-in-table.tsx';
+    const standPath = 'stories/components/data-table/tests/examples/table-states-tests/checkbox-in-table.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -109,7 +109,7 @@ test.describe('Additional states', () => {
       }
     });
 
-    await test.step('Verify  action bar when one checkbox is selected', async () => {
+    await test.step('Verify action bar when one checkbox is selected', async () => {
       firstColumnCells.nth(3).click();
       await expect(actionBar).toBeVisible();
       await expect(actionBar).toHaveAttribute('role', 'region');
@@ -128,7 +128,7 @@ test.describe('Additional states', () => {
   });
 
   test('Verify table with checkbox keyboard interaction', async ({ page, browserName }) => {
-    const standPath = 'stories/components/data-table/tests/examples/checkbox-tests/checkbox-in-table.tsx';
+    const standPath = 'stories/components/data-table/tests/examples/table-states-tests/checkbox-in-table.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
