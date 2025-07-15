@@ -87,7 +87,7 @@ SCollapseRow > SCellWrapper > SCell:not([theme]), SRow[isAccordionRow] > SCellWr
 
   /* WARNING THEME */
   SRow:hover:not([isNonInteractive]) > SCellWrapper > SCell[theme='warning'],
-  SRow[theme='warning']:hover > SCellWrapper > SCell:not([theme]),
+  SRow[theme='warning']:hover:not([isNonInteractive]) > SCellWrapper > SCell:not([theme]),
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow:not([isNonInteractive]) > SCellWrapper > SCell[theme='warning'],
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow[theme='warning']:not([isNonInteractive]) > SCellWrapper > SCell:not([theme]),
   SRowGroup:has(SCell:hover) > SRow:not([isNonInteractive]) > SCellWrapper > SCell[data-grouped-by='rowgroup'][theme='warning'],
