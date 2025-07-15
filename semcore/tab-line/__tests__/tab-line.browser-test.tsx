@@ -267,4 +267,22 @@ test.describe('Functional', () => {
       .poll(() => messages)
       .toContain('Tab changed to facebook');
   });
+
+  test('Verify tabs activation by mouse and keyboard', async ({ page }) => {
+    const standPath = 'stories/components/tab-line/tests/examples/tab_line_item_addons_and_props.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en', { behavior: 'auto' });
+
+    await page.setContent(htmlContent);
+    const tabLines = page.locator('[data-ui-name="TabLine.Item"]');
+    await tabLines.nth(1).click();
+    await page.keyboard.press('ArrowRight');
+    await expect(tabLines.nth(2)).toBeFocused();
+    await expect(page.getByRole('tabpanel')).toHaveAttribute('aria-labelledby', 'tab-label-tw');
+    await expect(tabLines.nth(2)).toHaveAttribute('aria-selected', 'true');
+
+    await tabLines.nth(1).click();
+    await expect(tabLines.nth(1)).toBeFocused();
+    await expect(page.getByRole('tabpanel')).toHaveAttribute('aria-labelledby', 'tab-label-ig');
+    await expect(tabLines.nth(1)).toHaveAttribute('aria-selected', 'true');
+  });
 });
