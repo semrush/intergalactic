@@ -29,7 +29,7 @@ describe('TabLine', () => {
 
   beforeEach(cleanup);
 
-  test.concurrent('Verify supports onChange callback', () => {
+  test('Verify supports onChange callback', () => {
     const spyChange = vi.fn();
     const spyClick = vi.fn();
     const { getByTestId } = render(
@@ -48,7 +48,7 @@ describe('TabLine', () => {
     expect(spyChange).lastCalledWith(4, expect.any(Object));
   });
 
-  test.concurrent('Verify not supports clicks on disabled tab', () => {
+  test('Verify not supports clicks on disabled tab', () => {
     const spy = vi.fn();
 
     const { getByTestId } = render(
@@ -65,22 +65,5 @@ describe('TabLine', () => {
     fireEvent.click(getByTestId('tab-4'));
 
     expect(spy).toHaveBeenCalledTimes(0);
-  });
-
-  // js-dom not supported element.click
-  test.skip('Verify support navigation with keyboard', async () => {
-    const spy = vi.fn();
-
-    const { getByTestId } = render(
-      <TabLine value={1 as number} onChange={spy} data-testid='tab-root'>
-        <TabLine.Item value={1}>Item 1</TabLine.Item>
-        <TabLine.Item value={2}>Item 2</TabLine.Item>
-        <TabLine.Item value={3}>Item 3</TabLine.Item>
-      </TabLine>,
-    );
-
-    fireEvent.keyDown(getByTestId('tab-root'), { keyCode: 39 });
-
-    expect(spy).lastCalledWith(2, expect.any(Object));
   });
 });
