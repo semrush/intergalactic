@@ -4,28 +4,26 @@ import type { BoxProps } from '@semcore/flex-box';
 import FacebookM from '@semcore/icon/Facebook/m';
 import InstagramM from '@semcore/icon/Instagram/m';
 import TwitterM from '@semcore/icon/Twitter/m';
-import TabLine from '@semcore/tab-line';
-import type { TabLineProps, TabLineItemProps } from '@semcore/tab-line';
+import TabPanel from '@semcore/tab-panel';
+import type { TabPanelProps, TabPanelItemProps } from '@semcore/tab-panel';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
-type TabLineDefProps = TabLineProps & BoxProps & TabLineItemProps;
+type TabPanelDefProps = TabPanelProps & BoxProps & TabPanelItemProps;
 
-const Demo = (props: TabLineDefProps) => {
+const Demo = (props: TabPanelDefProps) => {
   const [value, setValue] = React.useState<string | number | boolean>(2);
 
   return (
     <>
-      <TabLine
+      <TabPanel
         w={props.w}
-        size={props.size}
-        underlined={props.underlined}
         behavior={props.behavior}
         value={value}
-        onChange={(val: string | number | boolean) => setValue(val)}
+        onChange={(val: any) => setValue(val)}
         aria-label='Social network reports'
       >
-        <TabLine.Item
+        <TabPanel.Item
           value='facebook'
           selected={props.selected}
           disabled={props.disabled}
@@ -33,41 +31,41 @@ const Demo = (props: TabLineDefProps) => {
           aria-controls={value === 'facebook' ? 'tab-panel-fb' : undefined}
           id='tab-label-fb'
         >
-          <TabLine.Item.Text>Facebook</TabLine.Item.Text>
-          <TabLine.Item.Addon>
+          <TabPanel.Item.Text>Facebook</TabPanel.Item.Text>
+          <TabPanel.Item.Addon>
             <FacebookM />
-          </TabLine.Item.Addon>
-        </TabLine.Item>
-        <TabLine.Item
+          </TabPanel.Item.Addon>
+        </TabPanel.Item>
+        <TabPanel.Item
           value={2}
           disabled={props.disabled}
           aria-controls={value === 2 ? 'tab-panel-ig' : undefined}
           id='tab-label-ig'
         >
-          <TabLine.Item.Addon>
+          <TabPanel.Item.Addon>
             <InstagramM />
-          </TabLine.Item.Addon>
-          <TabLine.Item.Text>Instagram</TabLine.Item.Text>
-          <TabLine.Item.Addon>
+          </TabPanel.Item.Addon>
+          <TabPanel.Item.Text>Instagram</TabPanel.Item.Text>
+          <TabPanel.Item.Addon>
             <Badge bg='green-400'>new</Badge>
-          </TabLine.Item.Addon>
-        </TabLine.Item>
-        <TabLine.Item
+          </TabPanel.Item.Addon>
+        </TabPanel.Item>
+        <TabPanel.Item
           value={true}
           disabled={props.disabled}
           aria-controls={value === true ? 'tab-panel-tw' : undefined}
           id='tab-label-tw'
         >
-          <TabLine.Item.Addon>
+          <TabPanel.Item.Addon>
             <TwitterM />
-          </TabLine.Item.Addon>
-          <TabLine.Item.Text>Twitter</TabLine.Item.Text>
-          <TabLine.Item.Addon>
+          </TabPanel.Item.Addon>
+          <TabPanel.Item.Text>Twitter</TabPanel.Item.Text>
+          <TabPanel.Item.Addon>
             <Text>Twitter</Text>
-          </TabLine.Item.Addon>
-        </TabLine.Item>
+          </TabPanel.Item.Addon>
+        </TabPanel.Item>
 
-        <TabLine.Item
+        <TabPanel.Item
           value={3}
           disabled={props.disabled}
           aria-controls={value === true ? 'tab-panel-tw3' : undefined}
@@ -75,34 +73,34 @@ const Demo = (props: TabLineDefProps) => {
           addonRight={TwitterM}
         >
 
-          <TabLine.Item.Text>Twitter3</TabLine.Item.Text>
+          <TabPanel.Item.Text>Twitter3</TabPanel.Item.Text>
 
-        </TabLine.Item>
+        </TabPanel.Item>
 
-        <TabLine.Item
+        <TabPanel.Item
           value={false}
           disabled={props.disabled}
           aria-controls={value === true ? 'tab-panel-tw2' : undefined}
           id='tab-label-tw2'
         >
-          <TabLine.Item.Addon>
+          <TabPanel.Item.Addon>
             <Counter>32</Counter>
-          </TabLine.Item.Addon>
-          <TabLine.Item.Text>Twitter2</TabLine.Item.Text>
+          </TabPanel.Item.Addon>
+          <TabPanel.Item.Text>Twitter2</TabPanel.Item.Text>
 
-        </TabLine.Item>
+        </TabPanel.Item>
 
-        <TabLine.Item
+        <TabPanel.Item
           value={4}
           disabled={props.disabled}
           aria-controls={value === true ? 'tab-panel-tw2' : undefined}
           id='tab-label-tw2'
         >
 
-          <TabLine.Item.Text>Twitter4</TabLine.Item.Text>
+          <TabPanel.Item.Text>Twitter4</TabPanel.Item.Text>
 
-        </TabLine.Item>
-      </TabLine>
+        </TabPanel.Item>
+      </TabPanel>
 
       {value === 'facebook' && (
         <div
@@ -168,11 +166,9 @@ const Demo = (props: TabLineDefProps) => {
   );
 };
 
-export const defaultProps: TabLineDefProps = {
-  size: 'm',
+export const defaultProps: TabPanelDefProps = {
   behavior: undefined,
   disabled: false,
-  underlined: undefined,
   selected: undefined,
   w: undefined,
 };
