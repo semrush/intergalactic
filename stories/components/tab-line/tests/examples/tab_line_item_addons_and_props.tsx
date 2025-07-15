@@ -5,11 +5,11 @@ import FacebookM from '@semcore/icon/Facebook/m';
 import InstagramM from '@semcore/icon/Instagram/m';
 import TwitterM from '@semcore/icon/Twitter/m';
 import TabLine from '@semcore/tab-line';
-import type { TabLineProps } from '@semcore/tab-line';
+import type { TabLineProps, TabLineItemProps } from '@semcore/tab-line';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
-type TabLineDefProps = TabLineProps & BoxProps;
+type TabLineDefProps = TabLineProps & BoxProps & TabLineItemProps;
 
 const Demo = (props: TabLineDefProps) => {
   const [value, setValue] = React.useState<string | number | boolean>(2);
@@ -22,7 +22,7 @@ const Demo = (props: TabLineDefProps) => {
         underlined={props.underlined}
         behavior={props.behavior}
         value={value}
-        onChange={(val: string | number | boolean) => setValue(val)}
+        onChange={(val: any) => setValue(val)}
         aria-label='Social network reports'
       >
         <TabLine.Item
