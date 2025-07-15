@@ -2,6 +2,7 @@ import { DataTable } from '@semcore/data-table';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import CheckboxInTableDemo from './examples/table-states-tests/checkbox-in-table.tsx';
+import CheckboxWithPaginationAndDiffRowsAmountExample from './examples/table-states-tests/checkbox-pagination-diff-rows-count.tsx';
 import EmptyStateSortableExample from './examples/table-states-tests/empty-sortable';
 import LoadingPaginationExample from './examples/table-states-tests/loading-in-pagination';
 import LoadingScrollExample from './examples/table-states-tests/loading-in-scroll';
@@ -31,6 +32,10 @@ export const EmptyStateSortable: Story = {
 
 export const CheckboxInTable: Story = {
   render: CheckboxInTableDemo,
+};
+
+export const CheckboxWithPaginationAndDiffRowsAmount: Story = {
+  render: CheckboxWithPaginationAndDiffRowsAmountExample,
 };
 
 export const LoadingWithScrollAndButton: Story = {

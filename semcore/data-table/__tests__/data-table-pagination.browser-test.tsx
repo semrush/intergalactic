@@ -32,7 +32,7 @@ test.describe('Pagination', () => {
   });
 
   test('Verify checkbox selection works correctly by mouse interaction', async ({ page }) => {
-    const standPath = 'stories/components/data-table/docs/examples/checkbox-in-table.tsx';
+    const standPath = 'stories/components/data-table/tests/examples/table-states-tests/checkbox-pagination-diff-rows-count.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -98,7 +98,7 @@ test.describe('Pagination', () => {
   });
 
   test('Verify checkbox selection works correctly by keyboard interaction', async ({ page, browserName }) => {
-    const standPath = 'stories/components/data-table/docs/examples/checkbox-in-table.tsx';
+    const standPath = 'stories/components/data-table/tests/examples/table-states-tests/checkbox-pagination-diff-rows-count.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
