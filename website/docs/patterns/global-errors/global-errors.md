@@ -36,8 +36,7 @@ For viewports less than 648px in width:
 
 ![](static/ge_not-found.png)
 
-<!-- update all links to new components -->
-Illustration can be found in the [internal Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2482%3A102726).
+Illustration can be found in the [internal Figma library](https://www.figma.com/design/EWdX1ly5KsoNu8sywYJdKk/%F0%9F%92%A0-UX-Patterns?node-id=12537-41788).
 
 ::: info We got lost
 It looks like this page doesn't exist.<br>
@@ -51,7 +50,7 @@ Try going back or click the button below and we'll take you home.<br><br>
 
 ![](static/ge_project-not-found.png)
 
-Illustration can be found in the [internal Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2482%3A105405).
+Illustration can be found in the [internal Figma library](https://www.figma.com/design/EWdX1ly5KsoNu8sywYJdKk/%F0%9F%92%A0-UX-Patterns?node-id=12537-41788).
 
 ::: info Project not found
 
@@ -77,7 +76,7 @@ If you have any other problems with access to the project, please contact our [S
 
 ![](static/ge_smthng.png)
 
-Illustration can be found in the [internal Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A102761).
+Illustration can be found in the [internal Figma library](https://www.figma.com/design/EWdX1ly5KsoNu8sywYJdKk/%F0%9F%92%A0-UX-Patterns?node-id=12537-41788).
 
 ::: info Something went wrong
 
@@ -94,7 +93,7 @@ Please try again later.
 
 ![](static/ge_smthng-we-know.png)
 
-Illustration can be found in the [internal Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A105950).
+Illustration can be found in the [internal Figma library](https://www.figma.com/design/EWdX1ly5KsoNu8sywYJdKk/%F0%9F%92%A0-UX-Patterns?node-id=12537-41788).
 
 ::: info Something went wrong
 
@@ -112,7 +111,7 @@ Please try again later or contact the [Support Team](https://www.semrush.com/com
 
 ![](static/ge_under-maintenance-2.png)
 
-Illustration can be found in the [internal Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A107925).
+Illustration can be found in the [internal Figma library](https://www.figma.com/design/EWdX1ly5KsoNu8sywYJdKk/%F0%9F%92%A0-UX-Patterns?node-id=12537-41788).
 
 ::: info {product name} is under maintenance
 
@@ -129,7 +128,7 @@ Please come back later.
 
 ![](static/ge_access-login.png)
 
-Illustration can be found in the [internal Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A115802).
+Illustration can be found in the [internal Figma library](https://www.figma.com/design/EWdX1ly5KsoNu8sywYJdKk/%F0%9F%92%A0-UX-Patterns?node-id=12537-41788).
 
 ::: info Log in to view the page
 
@@ -147,7 +146,7 @@ Please log in or sign up to view the page.
 
 ![](static/ge_access-denied.png)
 
-Illustration can be found in the [internal Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A118562).
+Illustration can be found in the [internal Figma library](https://www.figma.com/design/EWdX1ly5KsoNu8sywYJdKk/%F0%9F%92%A0-UX-Patterns?node-id=12537-41788).
 
 ::: info You’ve found the secret page
 
@@ -164,7 +163,7 @@ Go back to the previous page or visit our homepage.
 
 ![](static/ge_connection-was-lost.png)
 
-Illustration can be found in the [internal Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A110472).
+Illustration can be found in the [internal Figma library](https://www.figma.com/design/EWdX1ly5KsoNu8sywYJdKk/%F0%9F%92%A0-UX-Patterns?node-id=12537-41788).
 
 ::: info Connection was lost
 
@@ -182,7 +181,7 @@ Reconnect and reload the page.
 
 ![](static/ge_connection-timed-out.png)
 
-Illustration can be found in the [internal Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A113086).
+Illustration can be found in the [internal Figma library](https://www.figma.com/design/EWdX1ly5KsoNu8sywYJdKk/%F0%9F%92%A0-UX-Patterns?node-id=12537-41788).
 
 ::: info Connection timed out
 
@@ -198,7 +197,7 @@ The initial connection between Cloudflare’s network and the origin web server 
 
 ![](static/ge_blocked-request.png)
 
-Illustration can be found in the [internal Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2842%3A114910).
+Illustration can be found in the [internal Figma library](https://www.figma.com/design/EWdX1ly5KsoNu8sywYJdKk/%F0%9F%92%A0-UX-Patterns?node-id=12537-41788).
 
 ::: info The request feels... off
 
@@ -220,7 +219,7 @@ This is the 400 error page. Try one of the following:
 
 ![](static/ge_confirmation-captcha.png)
 
-Illustration can be found in the [internal Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A123668).
+Illustration can be found in the [internal Figma library](https://www.figma.com/design/EWdX1ly5KsoNu8sywYJdKk/%F0%9F%92%A0-UX-Patterns?node-id=12537-41788).
 
 ::: info Confirm you are a real person
 
@@ -240,7 +239,7 @@ or
 
 ![](static/ge_no-payment.png)
 
-Illustration can be found in the [internal Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A128860).
+Illustration can be found in the [internal Figma library](https://www.figma.com/design/EWdX1ly5KsoNu8sywYJdKk/%F0%9F%92%A0-UX-Patterns?node-id=12537-41788).
 
 ::: info Your payment cannot be accepted
 
@@ -256,7 +255,7 @@ Unfortunately, we don’t accept payments from {country}.
 
 ![](static/ge_dns-resolution.png)
 
-Illustration can be found in the [internal Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2482%3A94736).
+Illustration can be found in the [internal Figma library](https://www.figma.com/design/EWdX1ly5KsoNu8sywYJdKk/%F0%9F%92%A0-UX-Patterns?node-id=12537-41788).
 
 ::: info DNS resolution error
 
