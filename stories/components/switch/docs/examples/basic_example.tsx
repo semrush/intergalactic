@@ -1,13 +1,26 @@
 import Switch from '@semcore/switch';
+import type { SwitchProps, SwitchValueProps } from '@semcore/switch';
 import React from 'react';
 
-const Demo = () => {
+type SwitchExampleProps = SwitchProps & SwitchValueProps;
+
+const Demo = (props: SwitchExampleProps) => {
   return (
-    <Switch size='l' theme='success'>
-      <Switch.Value defaultChecked={true} ml={0} />
+    <Switch size={props.size} theme={props.theme}>
+      <Switch.Value defaultChecked={props.defaultChecked} ml={0} checked={props.checked} disabled={props.disabled} />
       <Switch.Addon>Receive updates</Switch.Addon>
     </Switch>
   );
 };
+
+export const defaultProps: SwitchExampleProps = {
+  size: 'l',
+  theme: 'success',
+  disabled: false,
+  checked: undefined,
+  defaultChecked: true,
+};
+
+Demo.defaultProps = defaultProps;
 
 export default Demo;

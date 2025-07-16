@@ -1,5 +1,3 @@
-import CheckM from '@semcore/icon/Check/m';
-import CloseM from '@semcore/icon/Close/m';
 import Switch from '@semcore/switch';
 import type { SwitchProps, SwitchValueProps } from '@semcore/switch';
 import React from 'react';
@@ -7,13 +5,19 @@ import React from 'react';
 type SwitchExampleProps = SwitchProps & SwitchValueProps;
 
 const Demo = (props: SwitchExampleProps) => {
-  const [value, setValue] = React.useState(true);
   return (
-    <Switch size={props.size} theme={props.theme} disabled={props.disabled}>
-      <Switch.Value checked={value} onChange={setValue}>
-        {value ? <CheckM /> : <CloseM />}
-      </Switch.Value>
-      <Switch.Addon>Autosave</Switch.Addon>
+    <Switch size={props.size} theme={props.theme}>
+      <Switch.Value
+        defaultChecked={props.defaultChecked}
+        ml={0}
+        checked={props.checked}
+        disabled={props.disabled}
+        name='newsletter'
+        value='yes'
+        required
+        includeInputProps={['name', 'value', 'required']}
+      />
+      <Switch.Addon>Receive updates</Switch.Addon>
     </Switch>
   );
 };
@@ -22,6 +26,8 @@ export const defaultProps: SwitchExampleProps = {
   size: 'l',
   theme: 'success',
   disabled: false,
+  checked: undefined,
+  defaultChecked: true,
 };
 
 Demo.defaultProps = defaultProps;
