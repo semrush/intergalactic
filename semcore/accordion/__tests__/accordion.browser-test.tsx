@@ -350,4 +350,31 @@ test.describe('Functional', () => {
     await page.keyboard.press('Enter');
     await expect(itemCollapse).toHaveCount(1);
   });
+
+  test('Verify values with different types', async ({ page }) => {
+    const standPath = 'stories/components/accordion/tests/examples/values.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+
+    const toggles = page.locator('h3[data-ui-name="Item.Toggle"]');
+
+    await expect(page.locator('[data-test-id="number"]')).toBeVisible();
+    await expect(page.locator('[data-test-id="string"]')).toBeVisible();
+    await expect(page.locator('[data-test-id="null"]')).toBeVisible();
+    await expect(page.locator('[data-test-id="array"]')).not.toBeVisible();
+
+    await toggles.first().click();
+    await toggles.nth(1).click();
+    await toggles.nth(2).click();
+    await expect(page.locator('[data-test-id="number"]')).not.toBeVisible();
+    await expect(page.locator('[data-test-id="string"]')).not.toBeVisible();
+    await expect(page.locator('[data-test-id="null"]')).not.toBeVisible();
+  });
+
+  test('Verify default value', async ({ page }) => {
+    const standPath = 'stories/components/accordion/tests/examples/default-values.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+    await expect(page.locator('[data-test-id="default-value"]')).toBeVisible();
+  });
 });
