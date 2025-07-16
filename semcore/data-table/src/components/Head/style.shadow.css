@@ -2,6 +2,10 @@ SHead, SGroupContainer {
   display: contents;
 }
 
+SHead > SColumn {
+  transition: top 150ms ease-out;
+}
+
 SHead[sticky] SColumn, SHead[sticky] SGroup {
   position: sticky;
   top: 0;
