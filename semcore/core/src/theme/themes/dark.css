@@ -126,6 +126,8 @@
   --intergalactic-bg-primary-warning: #ff642d;
   /* Accent background of the information you want to highlight. */
   --intergalactic-bg-primary-highlight: #fce081;
+  /* Subtle background of the information you want to highlight. */
+  --intergalactic-bg-primary-highlight-secondary: #1D113E;
   /* Accent background for the advertising banners and controls. */
   --intergalactic-bg-primary-advertising: #421983;
   /* Accented muted background for a message with regular information. */
@@ -404,8 +406,16 @@
   --intergalactic-dropdown-menu-item-selected: rgba(66, 103, 123, 1);
   /* Hover state for the selected state of the default background color for the list item in the dropdown-menu. */
   --intergalactic-dropdown-menu-item-selected-hover: rgba(75, 117, 139, 1);
+  /* Color of the FeaturePopover background. */
+  --intergalactic-feature-popover-bg: #fce081;
   /* Color of the outer border of the FeaturePopover.Spot. */
-  --intergalactic-feature-popover-dot-outer-border: rgba(252, 224, 129, 0.3);
+  --intergalactic-feature-popover-dot-outer-border: #fce081;
+  /* Color of the FeaturePopover background with secondary use. */
+  --intergalactic-feature-popover-bg-secondary: #1D113E;
+  /* Color of the FeaturePopover.Spot for FeaturePopover with subtle theme. */
+  --intergalactic-feature-popover-dot-secondary: #00c192;
+  /* Color of the outer border of the FeaturePopover.Spot for FeaturePopover with subtle theme. */
+  --intergalactic-feature-popover-dot-subtle-outer-border: #00c192;
   /* Background color of the ProgressBar. */
   --intergalactic-progress-bar-bg: #484a54;
   /* Hover state of the background color of the ProgressBar. */

@@ -448,6 +448,11 @@
           "type": "color",
           "description": "Accent background of the information you want to highlight."
         },
+        "highlight-secondary": {
+          "value": "{violet.dusty.800}",
+          "type": "color",
+          "description": "Subtle background of the information you want to highlight."
+        },
         "advertising": {
           "value": "{violet.700}",
           "type": "color",
@@ -1195,10 +1200,30 @@
       }
     },
     "feature-popover": {
-      "dot-outer-border": {
+      "bg": {
         "value": "{bg.primary.highlight}",
         "type": "color",
+        "description": "Color of the FeaturePopover background."
+      },
+      "dot-outer-border": {
+        "value": "{feature-popover.bg}",
+        "type": "color",
         "description": "Color of the outer border of the FeaturePopover.Spot."
+      },
+      "bg-secondary": {
+        "value": "{bg.primary.highlight-secondary}",
+        "type": "color",
+        "description": "Color of the FeaturePopover background with secondary use."
+      },
+      "dot-secondary": {
+        "value": "{green.300}",
+        "type": "color",
+        "description": "Color of the FeaturePopover.Spot for FeaturePopover with subtle theme."
+      },
+      "dot-subtle-outer-border": {
+        "value": "{feature-popover.dot-secondary}",
+        "type": "color",
+        "description": "Color of the outer border of the FeaturePopover.Spot for FeaturePopover with subtle theme."
       }
     },
     "progress-bar": {

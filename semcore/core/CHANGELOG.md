@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.1.0] - 2025-07-15
+
+### Added
+
+- New tokens for FeaturePopover's new theme styles: `bg-primary-highlight-subtle`, `feature-popover-bg`, `feature-popover-bg-secondary`, `feature-popover-dot-secondary`, `feature-popover-dot-secondary-outer-border`.
+
 ## [16.0.4] - 2025-07-07
 
 ### Added
