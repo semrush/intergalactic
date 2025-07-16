@@ -16,13 +16,6 @@ The state description should be brief. Two or three short sentences are usually 
 
 ## Appearance
 
-### Margins
-
-- The space between the illustration and the message is `--intergalactic-spacing-10x`.
-- The message has a maximum width of 640px, with a top margin of `--intergalactic-spacing-8x` on its container.
-
-![](static/ge-margins.png)
-
 ### Positioning on page
 
 Center the message on the page horizontally and vertically.
@@ -31,11 +24,11 @@ Center the message on the page horizontally and vertically.
 
 ### Appearance on small screens
 
-For screens less than 768px:
+For viewports less than 648px in width:
 
-- change layout of the message to vertical;
-- change illustration's size to 200px * 200px;
-- stretch controls to the width of the content.
+- message layout changes to vertical
+- illustration's size changes to 200px * 200px
+- message paddings are reduced
 
 ![](static/mobile.png)
 
@@ -43,45 +36,39 @@ For screens less than 768px:
 
 ![](static/ge_not-found.png)
 
-Illustration can be found in the [internal Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2482%3A102726).
+Illustration can be found in the [internal Figma library](https://www.figma.com/design/EWdX1ly5KsoNu8sywYJdKk/%F0%9F%92%A0-UX-Patterns?node-id=12537-41788).
 
-**Title**
+::: info We got lost
+It looks like this page doesn't exist.<br>
+Try going back or click the button below and we'll take you home.<br><br>
 
-We got lost
-
-**Message**
-
-It looks like this page doesn't exist. Try going back or click the button below and we'll take you home.
-
-**Controls**
-
-Go to homepage (if not logged in, it leads you to the main Semrush; if logged in, it leads you to the Dashboard).
+**Controls:**
+- Go to homepage (when logged out, leads to the main Semrush; when logged in, leads to the Dashboard)
+:::
 
 ## Project not found
 
 ![](static/ge_project-not-found.png)
 
-Illustration can be found in the [internal Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2482%3A105405).
+Illustration can be found in the [internal Figma library](https://www.figma.com/design/EWdX1ly5KsoNu8sywYJdKk/%F0%9F%92%A0-UX-Patterns?node-id=12537-41788).
 
-**Title**
-
-Project not found
-
-**Message**
+::: info Project not found
 
 We cannot find the project you’re trying to access. Check one of the following issues:
 
 - The project may have been deleted or there is an error in the URL entered.
-- Maybe you don’t have permission to view the project. Please request access from the project owner.
+- You may not have permission to view the project. Please request access from the project owner.
 
 You can find all your projects on the Projects page.
 
-If you have any other problems with access to the project, please contact our [Support Team](https://www.semrush.com/kb/support/).
+If you have any other problems with access to the project, please contact our [Support Team](https://www.semrush.com/company/contacts/).
+<br><br>
 
-**Controls**
+**Controls:**
 
-- Go to Projects (leads you to the projects page).
-- Contact us (sends the user to the [support page](https://www.semrush.com/kb/support/)).
+- Go to Projects (leads to the projects page)
+- [Contact us](https://www.semrush.com/company/contacts/)
+:::
 
 ## Something went wrong
 
@@ -89,128 +76,114 @@ If you have any other problems with access to the project, please contact our [S
 
 ![](static/ge_smthng.png)
 
-Illustration can be found in the [internal Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A102761).
+Illustration can be found in the [internal Figma library](https://www.figma.com/design/EWdX1ly5KsoNu8sywYJdKk/%F0%9F%92%A0-UX-Patterns?node-id=12537-41788).
 
-**Title**
+::: info Something went wrong
 
-Something went wrong
+Don't worry though, we are aware of the issue and are working to fix it.<br>
+Please try again later.
+<br><br>
 
-**Message**
+**Controls:**
 
-We are aware of the issue and are working to fix it. Please try again later or contact the [Support Team](mailto:semrush-email@semrush.com).
-
-**Controls**
-
-Reload page (refreshes the page).
+- Try again (reloads the page)
+:::
 
 ### Known problem
 
 ![](static/ge_smthng-we-know.png)
 
-Illustration can be found in the [internal Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A105950).
+Illustration can be found in the [internal Figma library](https://www.figma.com/design/EWdX1ly5KsoNu8sywYJdKk/%F0%9F%92%A0-UX-Patterns?node-id=12537-41788).
 
-**Title**
+::: info Something went wrong
 
-Something went wrong
+We are aware of the issue and are working to fix it.<br>
+Please try again later or contact the [Support Team](https://www.semrush.com/company/contacts/).
+<br><br>
 
-**Message**
+**Controls:**
 
-Don't worry though, we are aware of the issue and are working to fix it.
-
-Please try again later.
-
-**Controls**
-
-Try again (refreshes the page).
+- Reload page
+- [Contact us](https://www.semrush.com/company/contacts/)
+:::
 
 ## Under maintenance
 
 ![](static/ge_under-maintenance-2.png)
 
-Illustration can be found in the [internal Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A107925).
+Illustration can be found in the [internal Figma library](https://www.figma.com/design/EWdX1ly5KsoNu8sywYJdKk/%F0%9F%92%A0-UX-Patterns?node-id=12537-41788).
 
-**Title**
+::: info {product name} is under maintenance
 
-{product name} is under maintenance
+We are doing our best to fix it as soon as possible.<br>
+Please come back later.
+<br><br>
 
-**Message**
+**Controls:**
 
-We are doing our best to fix it as soon as possible. Please come back later.
-
-**Controls**
-
-Go to homepage (if not logged in, it leads you to the main Semrush; if logged in, it leads you to the Dashboard).
+- Go to homepage (when logged out, leads to the main Semrush; when logged in, leads to the Dashboard)
+:::
 
 ## Log in to access
 
 ![](static/ge_access-login.png)
 
-Illustration can be found in the [internal Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A115802).
+Illustration can be found in the [internal Figma library](https://www.figma.com/design/EWdX1ly5KsoNu8sywYJdKk/%F0%9F%92%A0-UX-Patterns?node-id=12537-41788).
 
-**Title**
+::: info Log in to view the page
 
-Log in to view the page
+It seems that you were lost in space.<br>
+Please log in or sign up to view the page.
+<br><br>
 
-**Message**
+**Controls:**
 
-It seems that you were lost in space. Please log in or sign up to view the page.
-
-**Controls**
-
-- The "Log in" button leads to a page with a login form.
-- The "Sign up" button leads to the same page, but with the registration form.
+- Log in (leads to the log-in page)
+- Sign up (leads to the sign-up page)
+:::
 
 ## Access denied
 
 ![](static/ge_access-denied.png)
 
-Illustration can be found in the [internal Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A118562).
+Illustration can be found in the [internal Figma library](https://www.figma.com/design/EWdX1ly5KsoNu8sywYJdKk/%F0%9F%92%A0-UX-Patterns?node-id=12537-41788).
 
-**Title**
+::: info You’ve found the secret page
 
-You’ve found the secret page
-
-**Message**
-
-You’re missing the administrator permissions to access this page.
+You’re missing the permissions to access this page.<br>
 Go back to the previous page or visit our homepage.
+<br><br>
 
-**Controls**
+**Controls:**
 
-Go to homepage (if not logged in, it leads you to the main Semrush; if logged in, it leads you to the Dashboard).
+* Go to homepage (when logged out, leads to the main Semrush; when logged in, leads to the Dashboard)
+:::
 
 ## Connection was lost
 
 ![](static/ge_connection-was-lost.png)
 
-Illustration can be found in the [internal Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A110472).
+Illustration can be found in the [internal Figma library](https://www.figma.com/design/EWdX1ly5KsoNu8sywYJdKk/%F0%9F%92%A0-UX-Patterns?node-id=12537-41788).
 
-**Title**
+::: info Connection was lost
 
-Connection was lost
-
-**Message**
-
-There seems to be a problem with your internet connection.
-
+There seems to be a problem with your internet connection.<br>
 Reconnect and reload the page.
+<br><br>
 
-**Controls**
+**Controls:**
 
-- Reload page (refreshes the page).
-- or wait {XX}s
+- Reload page
+- or wait **{XX}s** (counts down to 0 and reloads the page automatically)
+:::
 
 ## Connection timed out
 
 ![](static/ge_connection-timed-out.png)
 
-Illustration can be found in the [internal Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A113086).
+Illustration can be found in the [internal Figma library](https://www.figma.com/design/EWdX1ly5KsoNu8sywYJdKk/%F0%9F%92%A0-UX-Patterns?node-id=12537-41788).
 
-**Title**
-
-Connection timed out
-
-**Message**
+::: info Connection timed out
 
 The initial connection between Cloudflare’s network and the origin web server timed out. As a result, the webpage cannot be displayed.
 
@@ -218,28 +191,27 @@ The initial connection between Cloudflare’s network and the origin web server 
 - Your IP address: \{84.52.114.132\}
 - Error reference number: 522
 - Cloudflare Location POP: \{undef\}
+:::
 
 ## Blocked (Bad) request
 
 ![](static/ge_blocked-request.png)
 
-Illustration can be found in the [internal Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2842%3A114910).
+Illustration can be found in the [internal Figma library](https://www.figma.com/design/EWdX1ly5KsoNu8sywYJdKk/%F0%9F%92%A0-UX-Patterns?node-id=12537-41788).
 
-**Title**
-
-The request feels... off
-
-**Message**
+::: info The request feels... off
 
 This is the 400 error page. Try one of the following:
 
 1. Make sure the URL is correct.
 2. Clear cookies or turn off your browser extensions.
+<br><br>
 
-**Controls**
+**Controls:**
 
-- Go to homepage (if not logged in, it leads you to the main Semrush; if logged in, it leads you to the Dashboard).
-- Contact support.
+- Go to homepage (when logged out, leads to the main Semrush; when logged in, leads to the Dashboard)
+- [Contact support](https://www.semrush.com/company/contacts/)
+:::
 
 ## Confirmation
 
@@ -247,72 +219,67 @@ This is the 400 error page. Try one of the following:
 
 ![](static/ge_confirmation-captcha.png)
 
-Illustration can be found in the [internal Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A123668).
+Illustration can be found in the [internal Figma library](https://www.figma.com/design/EWdX1ly5KsoNu8sywYJdKk/%F0%9F%92%A0-UX-Patterns?node-id=12537-41788).
 
-**Title**
+::: info Confirm you are a real person
 
-Confirm you are a real person
-
-**Message**
-
-We need to make sure you’re not a robot.
-
+We need to make sure you’re not a robot.<br>
 Please complete the security check, and we’ll be out of your way.
+<br><br>
 
-**Controls**
+**Controls:**
 
-- Submit (confirms the action, then we take the user to the page where they were going).
-- Captcha (confirms the action, then we take the user to the page where they were going).
+- Submit (confirms the action, then we take the user to the page where they were going)
+
+or
+- Captcha (confirms the action, then we take the user to the page where they were going)
+:::
 
 ## Payment cannot be accepted
 
 ![](static/ge_no-payment.png)
 
-Illustration can be found in the [internal Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A128860).
+Illustration can be found in the [internal Figma library](https://www.figma.com/design/EWdX1ly5KsoNu8sywYJdKk/%F0%9F%92%A0-UX-Patterns?node-id=12537-41788).
 
-**Title**
+::: info Your payment cannot be accepted
 
-Your payment cannot be accepted
+Unfortunately, we don’t accept payments from {country}.
+<br><br>
 
-**Message**
+**Controls:**
 
-Unfortunately, we don’t accept payments from {Russian Federation}.
-
-**Controls**
-
-Go to Dashboard (leads user to the Dashboard)..
+- Go to homepage
+:::
 
 ## DNS Resolution Error
 
 ![](static/ge_dns-resolution.png)
 
-Illustration can be found in the [internal Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2482%3A94736).
+Illustration can be found in the [internal Figma library](https://www.figma.com/design/EWdX1ly5KsoNu8sywYJdKk/%F0%9F%92%A0-UX-Patterns?node-id=12537-41788).
 
-**Title**
+::: info DNS resolution error
 
-DNS resolution error
-
-**Message**
-
-You've requested a page on a website ([cloudflarepreview.com](http://cloudflarepreview.com/)) that is on the Cloudflare network. Cloudflare is currently unable to resolve your requested domain ([cloudflarepreview.com](http://cloudflarepreview.com/)). There are two potential causes of this:
+You've requested a page on a website (cloudflarepreview.com) that is on the Cloudflare network. Cloudflare is currently unable to resolve your requested domain (cloudflarepreview.com). There are two potential causes of this:
 
 - Most likely: if the owner just signed up for Cloudflare it can take a few minutes for the website's information to be distributed to our global network.
 
 - Less likely: something is wrong with this site's configuration. Usually this happens when accounts have been signed up with a partner organization (for example, a hosting provider) and the provider's DNS fails.
+<br><br>
 
-  - Ray ID: \{000000000000000\}
+- Ray ID: \{000000000000000\}
 
-  - Timestamp: \{Thu, 01-Jan-70 00:00:00 GMT\}
+- Timestamp: \{Thu, 01-Jan-70 00:00:00 GMT\}
 
-  - Your IP address: \{84.52.114.132\}
+- Your IP address: \{84.52.114.132\}
 
-  - Requested URL: \{example.URL/foo\}
+- Requested URL: \{example.URL/foo\}
 
-  - Error reference number: 1001
+- Error reference number: 1001
 
-  - Server ID: \{FL_FOO\}
+- Server ID: \{FL_FOO\}
 
-  - User-Agent: \{Example\}
+- User-Agent: \{Example\}
+:::
 
 ## Global errors usage
 
@@ -335,7 +302,6 @@ In case of a state caused by security reasons:
 Additional situations where the state blocks all content and restricts access to it:
 
 - Your account has been deleted
-- Project not found
 - Under maintenance
 - Your payment cannot be accepted
 
