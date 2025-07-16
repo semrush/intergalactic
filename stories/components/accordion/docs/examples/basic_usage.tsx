@@ -11,10 +11,10 @@ const Demo = (props: ExampleAccordionProps) => {
   const [value, onChange] = React.useState([0]);
 
   return (
-    <Accordion value={value} onChange={(value: any) => onChange(value)} duration={props.duration} use={props.use} w={props.w} h={props.h}>
+    <Accordion value={value} onChange={(value: any) => onChange(value)} duration={props.duration} use={props.use}>
       {[...new Array(3)].map((_, index) => (
         <Accordion.Item value={index} key={index} disabled={index === 2}>
-          <Accordion.Item.Toggle pb={2}>
+          <Accordion.Item.Toggle pb={2} w={props.w} h={props.h}>
             <Accordion.Item.ToggleButton>
               <Accordion.Item.Chevron mr={2} />
               Section
