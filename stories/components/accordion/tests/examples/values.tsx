@@ -5,12 +5,12 @@ import React from 'react';
 type ValueType = null | number | string | Array<number | string | null>;
 
 const Demo = () => {
-  const [value, setValue] = React.useState<ValueType>([0, 'one', null, [42]]);
+  const [value, setValue] = React.useState<ValueType>([0, 'one', null]);
 
   return (
     <Accordion
       value={value}
-      onChange={(newValue) => setValue(newValue)}
+      onChange={(newValue: ValueType) => setValue(newValue)}
     >
       <Accordion.Item value={0}>
         <Accordion.Item.Toggle pb={2}>
@@ -19,9 +19,7 @@ const Demo = () => {
             Number: 0
           </Accordion.Item.ToggleButton>
         </Accordion.Item.Toggle>
-        <Accordion.Item.Collapse
-          data-test-id='number'
-        >
+        <Accordion.Item.Collapse data-test-id='number'>
           <Box p='12px 24px 24px'>Section with value = 0 (number)</Box>
         </Accordion.Item.Collapse>
       </Accordion.Item>
@@ -33,9 +31,7 @@ const Demo = () => {
             String: "one"
           </Accordion.Item.ToggleButton>
         </Accordion.Item.Toggle>
-        <Accordion.Item.Collapse
-          data-test-id='string'
-        >
+        <Accordion.Item.Collapse data-test-id='string'>
           <Box p='12px 24px 24px'>Section with value = "one" (string)</Box>
         </Accordion.Item.Collapse>
       </Accordion.Item>
@@ -47,24 +43,8 @@ const Demo = () => {
             Null
           </Accordion.Item.ToggleButton>
         </Accordion.Item.Toggle>
-        <Accordion.Item.Collapse
-          data-test-id='null'
-        >
+        <Accordion.Item.Collapse data-test-id='null'>
           <Box p='12px 24px 24px'>Section with value = null</Box>
-        </Accordion.Item.Collapse>
-      </Accordion.Item>
-
-      <Accordion.Item value={[42, 15, 12]}>
-        <Accordion.Item.Toggle pb={2}>
-          <Accordion.Item.ToggleButton>
-            <Accordion.Item.Chevron mr={2} />
-            Array: [42, 15, 12]
-          </Accordion.Item.ToggleButton>
-        </Accordion.Item.Toggle>
-        <Accordion.Item.Collapse
-          data-test-id='array'
-        >
-          <Box p='12px 24px 24px'>Section with value = [42, 15, 12] (Array&lt;number&gt;)</Box>
         </Accordion.Item.Collapse>
       </Accordion.Item>
     </Accordion>

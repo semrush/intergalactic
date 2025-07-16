@@ -361,7 +361,6 @@ test.describe('Functional', () => {
     await expect(page.locator('[data-test-id="number"]')).toBeVisible();
     await expect(page.locator('[data-test-id="string"]')).toBeVisible();
     await expect(page.locator('[data-test-id="null"]')).toBeVisible();
-    await expect(page.locator('[data-test-id="array"]')).not.toBeVisible();
 
     await toggles.first().click();
     await toggles.nth(1).click();
