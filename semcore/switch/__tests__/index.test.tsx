@@ -1,5 +1,4 @@
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { snapshot } from '@semcore/testing-utils/snapshot';
 import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import * as React from 'react';

@@ -16,7 +16,7 @@ const Demo = (props: SwitchExampleProps) => {
 export const defaultProps: SwitchExampleProps = {
   size: 'l',
   theme: 'success',
-  disabled: false,
+  disabled: undefined,
   checked: undefined,
   defaultChecked: true,
 };

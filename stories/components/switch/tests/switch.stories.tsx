@@ -73,9 +73,6 @@ export const LongText: StoryObj<typeof LongTextProps> = {
     checked: {
       control: { type: 'boolean' },
     },
-    defaultChecked: {
-      control: { type: 'boolean' },
-    },
     theme: {
       control: { type: 'select' },
       options: ['info', 'success', 'blanchedalmond', 'dark-violet', '#3eeb4c'],

@@ -9,8 +9,8 @@ type SwitchExampleProps = SwitchProps & SwitchValueProps;
 const Demo = (props: SwitchExampleProps) => {
   const [value, setValue] = React.useState(true);
   return (
-    <Switch size={props.size} theme={props.theme} disabled={props.disabled}>
-      <Switch.Value checked={value} onChange={setValue}>
+    <Switch size={props.size} theme={props.theme}>
+      <Switch.Value checked={value} onChange={setValue} disabled={props.disabled}>
         {value ? <CheckM /> : <CloseM />}
       </Switch.Value>
       <Switch.Addon>Autosave</Switch.Addon>

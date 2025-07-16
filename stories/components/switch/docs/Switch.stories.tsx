@@ -42,7 +42,7 @@ export const BasicWithIcon: StoryObj<typeof BasicWithIconProps> = {
   argTypes: {
     size: {
       control: { type: 'select' },
-      options: ['m', 'l', 'xl'],
+      options: ['l', 'xl'],
     },
     disabled: {
       control: { type: 'boolean' },
