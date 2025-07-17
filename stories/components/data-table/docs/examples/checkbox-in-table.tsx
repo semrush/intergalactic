@@ -37,7 +37,7 @@ const Demo = () => {
         // need this for FF
         tabIndex={-1}
         wMax={800}
-        h={300}
+        h={250}
         style={{ overflow: 'auto', scrollPaddingTop: selectedRows.length ? '44px' : undefined }}
       >
         <ScreenReaderOnly role='status' aria-live='polite'>
@@ -45,7 +45,7 @@ const Demo = () => {
         </ScreenReaderOnly>
         <Collapse
           visible={!!selectedRows.length}
-          duration={150}
+          duration={200}
           style={{ position: 'sticky', top: 0, zIndex: 2 }}
         >
           <Flex

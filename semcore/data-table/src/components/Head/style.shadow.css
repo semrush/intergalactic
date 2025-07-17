@@ -3,8 +3,7 @@ SHead, SGroupContainer {
 }
 
 SHead > SColumn {
-  transition: top var(--intergalactic-duration-fast) ease-out;
-  transition-delay: 80ms;
+  transition: top var(--intergalactic-duration-fast, 200) ease-out;
 }
 
 SHead[sticky] SColumn, SHead[sticky] SGroup {

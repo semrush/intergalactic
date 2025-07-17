@@ -4,6 +4,10 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [16.0.7] - 2025-07-08
 
+### Added
+
+- Transition for the table header's `top` attribute.
+
 ### Fixed
 
 - Incorrect 'Select all' checkbox behavior with pagination.
