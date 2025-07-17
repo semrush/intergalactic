@@ -309,7 +309,6 @@ test.describe('Functional', () => {
     await page.setContent(htmlContent);
 
     const toggles = page.locator('h3[data-ui-name="Item.Toggle"]');
-    const toggleButtons = page.locator('[data-ui-name="Item.ToggleButton"]');
     const itemCollapse = page.locator('[data-ui-name="Item.Collapse"]');
 
     const collapse = page.locator('[data-ui-name="Item.Collapse"]');
@@ -331,7 +330,6 @@ test.describe('Functional', () => {
     await page.setContent(htmlContent);
 
     const toggles = page.locator('h3[data-ui-name="Item.Toggle"]');
-    const toggleButtons = toggles.locator('[data-ui-name="Item.ToggleButton"]');
     const itemCollapse = page.locator('[data-ui-name="Item.Collapse"]');
     const buttons = page.locator('[data-ui-name="Button"]');
 
@@ -363,7 +361,6 @@ test.describe('Functional', () => {
 
     await toggles.first().click();
     await toggles.nth(1).click();
-    await toggles.nth(2).click();
     await expect(page.locator('[data-test-id="number"]')).not.toBeVisible();
     await expect(page.locator('[data-test-id="string"]')).not.toBeVisible();
   });
