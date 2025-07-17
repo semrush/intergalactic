@@ -37,8 +37,7 @@ const Demo = () => {
         // need this for FF
         tabIndex={-1}
         wMax={800}
-        h='100%'
-        hMax={300}
+        h={300}
         style={{ overflow: 'auto', scrollPaddingTop: selectedRows.length ? '44px' : undefined }}
       >
         <ScreenReaderOnly role='status' aria-live='polite'>
@@ -121,8 +120,6 @@ const data = [
   { id: '21', keyword: 'download spotify premium', kd: '58', cpc: '$4.75', vol: '26,800' },
   { id: '22', keyword: 'buy dell laptop', kd: '53.1', cpc: '$5.40', vol: '19,600' },
   { id: '23', keyword: 'gap kids sale', kd: '34', cpc: '$1.10', vol: '5,300' },
-  { id: '24', keyword: 'www.shein.com', kd: '69.8', cpc: '$3.95', vol: 'n/a' },
-  { id: '25', keyword: 'mcdonalds delivery app', kd: '29', cpc: '$2.05', vol: '14,200' },
 ];
 
 export default Demo;
