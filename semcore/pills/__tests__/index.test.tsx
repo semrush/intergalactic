@@ -18,16 +18,16 @@ describe('pills Dependency imports', () => {
 });
 
 describe('PillGroup', () => {
-  describe('types', () => {
+  describe('Types', () => {
     const any: any = null;
-    test('props nesting', () => {
+    test('Verify props nesting', () => {
       const Link: Intergalactic.Component<'a', { xProp1: 1 }> = any;
 
       assertType<JSX.Element>(<Pills tag={Link} href='https://google.com' xProp1={1} />);
       // @ts-expect-error
       assertType<JSX.Element>(<Pills href='https://google.com' />);
     });
-    test('value&onChange relation', () => {
+    test('Verify value&onChange relation', () => {
       assertType<JSX.Element>(<Pills value={1} onChange={(value: number) => {}} />);
       // @ts-expect-error
       assertType<JSX.Element>(<Pills value={1} onChange={(value: string) => {}} />);
@@ -36,7 +36,7 @@ describe('PillGroup', () => {
 
   beforeEach(cleanup);
 
-  test.concurrent('Should support onChange callback', () => {
+  test.concurrent('Verify supports onChange callback', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Pills value={1 as number} onChange={spy}>
@@ -53,7 +53,7 @@ describe('PillGroup', () => {
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
-  test('Should support onClick on Pill', () => {
+  test('Verify supports onClick on Pill', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Pills value={1}>
@@ -70,7 +70,7 @@ describe('PillGroup', () => {
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
-  test('Should not call PillGroup onChange after falsy onClick on Pill', () => {
+  test('Verify not calls PillGroup onChange after falsy onClick on Pill', () => {
     const spy = vi.fn();
     const spyClick = vi.fn(() => false);
     const { getByTestId } = render(
@@ -89,7 +89,7 @@ describe('PillGroup', () => {
     expect(spyClick).toHaveBeenCalledTimes(1);
   });
 
-  test('Should not support clicks on disabled tab', () => {
+  test('Verify not supports clicks on disabled tab', () => {
     const spy = vi.fn();
 
     const { getByTestId } = render(
