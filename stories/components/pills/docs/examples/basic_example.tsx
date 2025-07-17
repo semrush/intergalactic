@@ -2,10 +2,12 @@ import { Flex } from '@semcore/base-components';
 import ThumbDownM from '@semcore/icon/ThumbDown/m';
 import ThumbUpM from '@semcore/icon/ThumbUp/m';
 import Pills from '@semcore/pills';
+import type { PillsProps, PillProps } from '@semcore/pills';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
-const Demo = () => {
+type PillExampleProps = PillsProps & PillProps;
+const Demo = (props: PillExampleProps) => {
   const [choice, setChoice] = React.useState(null);
 
   return (
@@ -13,7 +15,7 @@ const Demo = () => {
       <Text size={200} id='pills-basic-usage'>
         Your opinion
       </Text>
-      <Pills mt={2} value={choice} onChange={setChoice} aria-labelledby='pills-basic-usage'>
+      <Pills mt={2} value={choice} onChange={setChoice} aria-labelledby='pills-basic-usage' size={props.size} disabled={props.disabled} behavior={props.behavior}>
         <Pills.Item value='like'>
           <Pills.Item.Addon tag={ThumbUpM} />
           <Pills.Item.Text>Like</Pills.Item.Text>
@@ -27,5 +29,13 @@ const Demo = () => {
     </Flex>
   );
 };
+
+export const defaultProps: PillExampleProps = {
+  size: undefined,
+  disabled: undefined,
+  behavior: undefined,
+};
+
+Demo.defaultProps = defaultProps;
 
 export default Demo;
