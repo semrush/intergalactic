@@ -233,11 +233,29 @@ test.describe('Functional', () => {
     await page.setContent(htmlContent);
 
     const pillsItem = page.locator('[data-ui-name="Pills.Item"]');
+    const pills = page.locator('[data-ui-name="Pills"]');
+
+    await test.step('Verify tablist roles and attributes', async () => {
+      await expect(pills).toHaveAttribute('role', 'radiogroup');
+      await expect(pills).toHaveAttribute('tabindex', '0');
+      await expect(pills).toHaveAttribute('aria-labelledby');
+    });
 
     await test.step('Verify arrows switch to the next tab and not activate them', async () => {
       await pillsItem.nth(2).click();
       await expect(pillsItem.nth(2)).toHaveAttribute('aria-checked', 'true');
       await expect(pillsItem.nth(1)).toHaveAttribute('aria-checked', 'false');
+    });
+
+    await test.step('Verify pills attributes', async () => {
+      const count = await pillsItem.count();
+      for (let i = 0; i < count; i++) {
+        await expect(pillsItem.nth(i)).toHaveAttribute('type', 'button');
+        await expect(pillsItem.nth(i)).toHaveAttribute('role', 'radio');
+      }
+      await expect(pillsItem.nth(0)).toHaveAttribute('tabindex', '-1');
+      await expect(pillsItem.nth(1)).toHaveAttribute('tabindex', '-1');
+      await expect(pillsItem.nth(2)).toHaveAttribute('tabindex', '0');
     });
   });
 });

@@ -33,7 +33,7 @@ const Demo = (props: PillExampleProps) => {
 export const defaultProps: PillExampleProps = {
   size: 'm',
   disabled: undefined,
-  behavior: undefined,
+  behavior: 'auto',
 };
 
 Demo.defaultProps = defaultProps;
