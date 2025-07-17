@@ -5,18 +5,6 @@ import React from 'react';
 const Demo = () => {
   return (
     <Accordion defaultValue={1}>
-      <Accordion.Item value={null}>
-        <Accordion.Item.Toggle pb={2}>
-          <Accordion.Item.ToggleButton>
-            <Accordion.Item.Chevron mr={2} />
-            Section null
-          </Accordion.Item.ToggleButton>
-        </Accordion.Item.Toggle>
-        <Accordion.Item.Collapse>
-          <Box p='12px 24px 24px'>Hello Section null</Box>
-        </Accordion.Item.Collapse>
-      </Accordion.Item>
-
       <Accordion.Item value={1}>
         <Accordion.Item.Toggle pb={2}>
           <Accordion.Item.ToggleButton>

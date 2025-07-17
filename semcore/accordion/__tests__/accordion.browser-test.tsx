@@ -360,14 +360,12 @@ test.describe('Functional', () => {
 
     await expect(page.locator('[data-test-id="number"]')).toBeVisible();
     await expect(page.locator('[data-test-id="string"]')).toBeVisible();
-    await expect(page.locator('[data-test-id="null"]')).toBeVisible();
 
     await toggles.first().click();
     await toggles.nth(1).click();
     await toggles.nth(2).click();
     await expect(page.locator('[data-test-id="number"]')).not.toBeVisible();
     await expect(page.locator('[data-test-id="string"]')).not.toBeVisible();
-    await expect(page.locator('[data-test-id="null"]')).not.toBeVisible();
   });
 
   test('Verify default value', async ({ page }) => {

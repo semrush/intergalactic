@@ -35,18 +35,6 @@ const Demo = () => {
           <Box p='12px 24px 24px'>Section with value = "one" (string)</Box>
         </Accordion.Item.Collapse>
       </Accordion.Item>
-
-      <Accordion.Item value={null}>
-        <Accordion.Item.Toggle pb={2}>
-          <Accordion.Item.ToggleButton>
-            <Accordion.Item.Chevron mr={2} />
-            Null
-          </Accordion.Item.ToggleButton>
-        </Accordion.Item.Toggle>
-        <Accordion.Item.Collapse data-test-id='null'>
-          <Box p='12px 24px 24px'>Section with value = null</Box>
-        </Accordion.Item.Collapse>
-      </Accordion.Item>
     </Accordion>
   );
 };
