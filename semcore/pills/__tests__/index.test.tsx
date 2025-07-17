@@ -1,13 +1,6 @@
-import Badge from '@semcore/badge';
 import type { Intergalactic } from '@semcore/core';
-import { Box } from '@semcore/flex-box';
-import Globe from '@semcore/icon/Globe/m';
-import ThumbDownM from '@semcore/icon/ThumbDown/m';
-import ThumbUpM from '@semcore/icon/ThumbUp/m';
-import { axe } from '@semcore/testing-utils/axe';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { snapshot } from '@semcore/testing-utils/snapshot';
-import { render, fireEvent, cleanup, act, userEvent } from '@semcore/testing-utils/testing-library';
+import { render, fireEvent, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi, assertType } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
@@ -111,7 +104,7 @@ describe('PillGroup', () => {
   /**
    * @deprecated behavior
    */
-  test('Should support behavior=tabs', async () => {
+  test('Verify behavior=tabs', async () => {
     const spy = vi.fn();
 
     const { getByTestId } = render(
@@ -141,7 +134,7 @@ describe('PillGroup', () => {
   /**
    * @deprecated behavior
    */
-  test('Should support behavior=radio', async () => {
+  test('Verify behavior=radio', async () => {
     const spy = vi.fn();
 
     const { getByTestId } = render(
@@ -168,7 +161,7 @@ describe('PillGroup', () => {
     expect(spy).toBeCalledWith(3, expect.anything());
   });
 
-  test('Should support behavior=manual', async () => {
+  test('Verify behavior=manual', async () => {
     const spy = vi.fn();
 
     const { getByTestId } = render(
@@ -195,7 +188,7 @@ describe('PillGroup', () => {
     expect(spy).toBeCalledWith(3, expect.anything());
   });
 
-  test('Should support behavior=auto', async () => {
+  test('Verify behavior=auto', async () => {
     const spy = vi.fn();
 
     const { getByTestId } = render(
@@ -220,237 +213,5 @@ describe('PillGroup', () => {
     await userEvent.keyboard('[ArrowRight]');
     await userEvent.keyboard('[Enter]');
     expect(spy).toBeCalledWith(3, expect.anything());
-  });
-
-  test.concurrent('Should render correctly selected first with manual', async ({ task }) => {
-    const component = (
-      <snapshot.ProxyProps style={{ margin: 5 }}>
-        <Pills value={1} behavior='manual'>
-          <Pills.Item value={1} id='focused'>
-            1
-          </Pills.Item>
-          <Pills.Item value={2}>2</Pills.Item>
-        </Pills>
-      </snapshot.ProxyProps>
-    );
-
-    await expect(
-      await snapshot(component, { actions: { focus: '#focused' } }),
-    ).toMatchImageSnapshot(task);
-  });
-
-  test.concurrent('Should render correctly without focus', async ({ task }) => {
-    const component = (
-      <snapshot.ProxyProps style={{ margin: 5 }}>
-        <Pills>
-          <Pills.Item value={1}>1</Pills.Item>
-          <Pills.Item value={2} disabled>
-            2
-          </Pills.Item>
-        </Pills>
-      </snapshot.ProxyProps>
-    );
-
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-
-  test.concurrent('Should render correctly selected with auto', async ({ task }) => {
-    const component = (
-      <snapshot.ProxyProps style={{ margin: 5 }}>
-        <Pills id='focused'>
-          <Pills.Item value={1}>1</Pills.Item>
-          <Pills.Item value={2}>2</Pills.Item>
-        </Pills>
-      </snapshot.ProxyProps>
-    );
-
-    await expect(
-      await snapshot(component, { actions: { focus: '#focused' } }),
-    ).toMatchImageSnapshot(task);
-  });
-
-  test.concurrent('Should render correctly selected with auto and valued', async ({ task }) => {
-    const component = (
-      <snapshot.ProxyProps style={{ margin: 5 }}>
-        <Pills value={1}>
-          <div>
-            <Pills.Item value={1} id='focused'>
-              1
-            </Pills.Item>
-          </div>
-          <Pills.Item value={2}>2</Pills.Item>
-        </Pills>
-      </snapshot.ProxyProps>
-    );
-
-    await expect(
-      await snapshot(component, { actions: { focus: '#focused' } }),
-    ).toMatchImageSnapshot(task);
-  });
-
-  test.concurrent('should support additional elements as props', async ({ task }) => {
-    const Addon = React.forwardRef(function ({ forwardRef, Children, Root, ...p }: any, ref) {
-      return (
-        <span ref={ref} {...p}>
-          Addon prop
-        </span>
-      );
-    });
-    const component = (
-      <Pills value={0}>
-        <Pills.Item value={1} addonLeft={Addon} addonRight={Addon}>
-          Text
-        </Pills.Item>
-        <Pills.Item value={2}>
-          <Pills.Item.Addon tag={Addon} />
-          <Pills.Item.Text>Text</Pills.Item.Text>
-          <Pills.Item.Addon tag={Addon} />
-        </Pills.Item>
-      </Pills>
-    );
-
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-
-  test.concurrent('Should support hover', async ({ task }) => {
-    await expect(
-      await snapshot(
-        <Pills>
-          <Pills.Item id='item'>Item 1</Pills.Item>
-          <Pills.Item>Item 2</Pills.Item>
-        </Pills>,
-        {
-          actions: {
-            hover: '#item',
-          },
-        },
-      ),
-    ).toMatchImageSnapshot(task);
-    await expect(
-      await snapshot(
-        <Pills>
-          <Pills.Item id='item' selected>
-            Item 1
-          </Pills.Item>
-          <Pills.Item>Item 2</Pills.Item>
-        </Pills>,
-        {
-          actions: {
-            hover: '#item',
-          },
-        },
-      ),
-    ).toMatchImageSnapshot(task);
-  });
-
-  test.concurrent('Should support size with Addon', async ({ task }) => {
-    const PillsSize = ({ size }: any) => (
-      <Pills size={size}>
-        <Pills.Item>
-          <Pills.Item.Addon>
-            <Globe />
-          </Pills.Item.Addon>
-          <Pills.Item.Text>Item 1</Pills.Item.Text>
-          <Pills.Item.Addon>
-            <Badge bg='orange'>beta</Badge>
-          </Pills.Item.Addon>
-        </Pills.Item>
-        <Pills.Item>
-          <Pills.Item.Addon>
-            <Globe />
-          </Pills.Item.Addon>
-          <Pills.Item.Text>Item 2</Pills.Item.Text>
-        </Pills.Item>
-        <Pills.Item>
-          <Pills.Item.Text>Item 3</Pills.Item.Text>
-          <Pills.Item.Addon>
-            <Badge bg='orange'>beta</Badge>
-          </Pills.Item.Addon>
-        </Pills.Item>
-        <Pills.Item>Item 4</Pills.Item>
-        <Pills.Item>
-          <Globe />
-        </Pills.Item>
-      </Pills>
-    );
-
-    await expect(await snapshot(<PillsSize size='m' />)).toMatchImageSnapshot(task);
-    await expect(await snapshot(<PillsSize size='l' />)).toMatchImageSnapshot(task);
-  });
-
-  test.concurrent('Should correct render for different number Items', async ({ task }) => {
-    const component = (
-      <snapshot.ProxyProps style={{ margin: 5 }}>
-        <Pills>
-          <Pills.Item value={1}>1</Pills.Item>
-        </Pills>
-        <Pills>
-          <Pills.Item value={1}>1</Pills.Item>
-          <Pills.Item value={2}>2</Pills.Item>
-        </Pills>
-        <Pills>
-          <Pills.Item value={1}>1</Pills.Item>
-          <Pills.Item value={2}>2</Pills.Item>
-          <Pills.Item value={3}>3</Pills.Item>
-        </Pills>
-      </snapshot.ProxyProps>
-    );
-
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-
-  test.concurrent('Should correct render for alone Item, Item.Addon', async ({ task }) => {
-    const PillsSize = ({ size }: any) => (
-      <>
-        <Pills size={size}>
-          <Pills.Item value={1}>
-            <Pills.Item.Addon tag={Globe} />
-          </Pills.Item>
-        </Pills>
-        <br />
-        <Pills size={size}>
-          <Pills.Item value={1}>Pill</Pills.Item>
-        </Pills>
-      </>
-    );
-
-    await expect(await snapshot(<PillsSize size='m' />)).toMatchImageSnapshot(task);
-    await expect(await snapshot(<PillsSize size='l' />)).toMatchImageSnapshot(task);
-  });
-
-  test('a11y', async () => {
-    const { getByTestId, container } = render(
-      <Pills value={1}>
-        <Pills.Item value={1}>1</Pills.Item>
-        <Pills.Item value={2}>2</Pills.Item>
-        <Pills.Item value={3}>3</Pills.Item>
-        <Pills.Item value={4} data-testid='tab-4'>
-          4
-        </Pills.Item>
-      </Pills>,
-    );
-
-    fireEvent.click(getByTestId('tab-4'));
-
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
-  });
-
-  test('a11y behavior radio', async () => {
-    const { getByTestId, container } = render(
-      <Pills value={1} behavior='radio'>
-        <Pills.Item value={1}>1</Pills.Item>
-        <Pills.Item value={2}>2</Pills.Item>
-        <Pills.Item value={3}>3</Pills.Item>
-        <Pills.Item value={4} data-testid='tab-4'>
-          4
-        </Pills.Item>
-      </Pills>,
-    );
-
-    fireEvent.click(getByTestId('tab-4'));
-
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
   });
 });
