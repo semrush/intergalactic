@@ -10,10 +10,12 @@ SContainer {
   transition: transform var(--duration) ease-in-out;
 }
 
-SContentBox, SModalBox {
+SContentBox,
+SModalBox {
   position: relative;
   overflow: hidden;
   border-radius: var(--intergalactic-surface-rounded, 6px);
+
   &:has(SItem:focus-visible) {
     &:after {
       content: '';
@@ -47,6 +49,7 @@ SItem {
 SItem[zoomIn] {
   cursor: zoom-in;
 }
+
 SItem[zoomOut] {
   cursor: zoom-out;
 }
@@ -57,6 +60,14 @@ SIndicators {
   margin: var(--intergalactic-spacing-4x, 16px) 3px 3px 3px;
   outline: none;
   position: relative;
+
+  &:focus-visible {
+    outline-color: var(--intergalactic-keyboard-focus-outline, #008ff8);
+    outline-style: solid;
+    outline-width: 2px;
+    outline-offset: 0px;
+    transition: all 100ms ease-in-out;
+  }
 }
 
 SIndicator {
@@ -92,7 +103,8 @@ SNext {
   cursor: pointer;
   color: var(--intergalactic-icon-primary-neutral, #6c6e79);
 
-  SPrevButton span:has(> svg:only-child), SNextButton span:has(> svg:only-child) {
+  SPrevButton span:has(> svg:only-child),
+  SNextButton span:has(> svg:only-child) {
     margin-left: calc(2 * var(--intergalactic-spacing-1x, 4px) - 1px);
     margin-right: calc(2 * var(--intergalactic-spacing-1x, 4px) - 1px);
   }
@@ -101,6 +113,7 @@ SNext {
 SPrev {
   margin-right: var(--intergalactic-spacing-2x, 8px);
 }
+
 SNext {
   margin-left: var(--intergalactic-spacing-2x, 8px);
 }

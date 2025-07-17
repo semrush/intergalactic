@@ -107,7 +107,12 @@ SAddon[disabled] {
 
 SUnderline:has(input:focus-visible) {
   border-bottom-color: var(--intergalactic-border-info-active, #006dca);
-  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
+  outline-color: var(--intergalactic-keyboard-focus-outline, #008ff8);
+  outline-style: solid;
+  outline-width: 2px;
+  outline-offset: 2px;
+  z-index: -1;
+  transition: all 100ms ease-in-out;
 }
 
 SInlineInput[state='valid'] SUnderline {
@@ -116,7 +121,12 @@ SInlineInput[state='valid'] SUnderline {
 
 SInlineInput[state='valid'] SUnderline:has(input:focus-visible) {
   border-bottom-color: var(--intergalactic-border-success-active, #007c65);
-  box-shadow: var(--intergalactic-keyboard-focus-valid, 0px 0px 0px 3px rgba(0, 159, 129, 0.5));
+  outline-color: var(--intergalactic-keyboard-focus-valid-outline, #009f81);
+  outline-style: solid;
+  outline-width: 2px;
+  outline-offset: 2px;
+  z-index: -1;
+  transition: all 100ms ease-in-out;
 }
 
 SInlineInput[state='invalid'] SUnderline {
@@ -125,13 +135,17 @@ SInlineInput[state='invalid'] SUnderline {
 
 SInlineInput[state='invalid'] SUnderline:has(input:focus-visible) {
   border-bottom-color: var(--intergalactic-border-critical-active, #d1002f);
-  box-shadow: var(--intergalactic-keyboard-focus-invalid, 0px 0px 0px 3px rgba(255, 73, 83, 0.5));
+  outline-color: var(--intergalactic-keyboard-focus-invalid-outline, #ff4953);
+  outline-style: solid;
+  outline-width: 2px;
+  outline-offset: 2px;
+  z-index: -1;
+  transition: all 100ms ease-in-out;
 }
 
 SValue:focus~SControls {
   display: flex;
 }
-
 
 SInvalidPattern {
   margin-left: -1px;

@@ -69,6 +69,7 @@ SSwitch[disabled] {
   & SToggle {
     cursor: default;
   }
+
   & SAddon {
     cursor: default;
   }
@@ -88,6 +89,7 @@ SToggle[checked][theme='info'] {
   color: var(--intergalactic-control-primary-info, #008ff8);
   background-color: var(--intergalactic-control-primary-info, #008ff8);
 }
+
 SToggle[checked][theme='success'] {
   color: var(--intergalactic-control-primary-success, #009f81);
   background-color: var(--intergalactic-control-primary-success, #009f81);
@@ -99,7 +101,12 @@ SToggle[checked][theme='custom'] {
 }
 
 SToggle:has(SInput:focus-visible) {
-  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
+  outline-color: var(--intergalactic-keyboard-focus-outline, #008ff8);
+  outline-style: solid;
+  outline-width: 2px;
+  outline-offset: 2px;
+  z-index: -1;
+  transition: all 100ms ease-in-out;
 }
 
 SToggle[neighborLocation='left'] {
@@ -123,14 +130,17 @@ SSlider {
   display: flex;
   align-items: center;
   justify-content: space-around;
+
   &[checked] {
     transform: translateX(50%) scaleX(1);
   }
+
   pointer-events: none;
 }
 
 SToggle[active] SSlider {
   transform: translateX(-50%) scaleX(1.15) translateX(1px);
+
   &[checked] {
     transform: translateX(50%) scaleX(1.15) translateX(-1px);
   }
@@ -161,6 +171,7 @@ SSwitch[checked] {
   & SAddon[neighborLocation='right'] {
     color: var(--intergalactic-text-secondary, #6c6e79);
   }
+
   & SAddon[neighborLocation='right']:nth-last-child(2) {
     color: var(--intergalactic-text-primary, #191b23);
   }

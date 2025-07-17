@@ -13,6 +13,7 @@ SDropdownMenuList {
   }
 
   SShadowHorizontal {
+
     &:before,
     &:after {
       border-radius: var(--intergalactic-control-rounded, 6px);
@@ -20,6 +21,7 @@ SDropdownMenuList {
   }
 
   SShadowVertical {
+
     &:before,
     &:after {
       border-radius: var(--intergalactic-control-rounded, 6px);
@@ -31,7 +33,8 @@ SDropdownMenuItemContainer[nesting-trigger] {
   justify-content: space-between;
 }
 
-SDropdownMenuItemAddon, SItemContentText {
+SDropdownMenuItemAddon,
+SItemContentText {
   display: inline-flex;
   margin-left: var(--intergalactic-spacing-1x, 4px);
   margin-right: var(--intergalactic-spacing-1x, 4px);
@@ -51,6 +54,7 @@ SDropdownMenuNesting[size='m'] {
   padding: 0;
 }
 
+/* What we need these rules for? */
 SDropdownMenuNesting[highlighted] {
   z-index: 1;
   box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5)) inset;

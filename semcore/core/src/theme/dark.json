@@ -1509,38 +1509,38 @@
       }
     },
     "keyboard-focus": {
-      "value": "0px 0px 0px 3px {keyboard-focus.outline-invert}",
+      "value": "0px 0px 0px 3px rgba({keyboard-focus.outline}, 0.5)",
       "type": "boxShadow",
-      "description": "Default keyboard focus styles.",
+      "description": "Default keyboard focus box-shadow styles.",
       "outline": {
-        "value": "rgba({gray.white}, 0.7)",
+        "value": "{blue.300}",
         "type": "color",
         "description": "Color for default keyboard focus outline styles."
       },
       "outline-invert": {
-        "value": "rgba({gray.white}, 0.7)",
+        "value": "rgba({gray.white}, 0.8)",
         "type": "color",
         "description": "Color for default keyboard focus outline styles to use on the dark and color background."
       }
     },
     "keyboard-focus-invalid": {
-      "value": "0px 0px 0px 3px {keyboard-focus-invalid.outline}",
+      "value": "0px 0px 0px 3px rgba({keyboard-focus-invalid.outline}, 0.5)",
       "type": "boxShadow",
       "description": "Keyboard focus styles for elements with invalid state.",
       "outline": {
-        "value": "rgba({red.400}, 0.8)",
+        "value": "{red.300}",
         "type": "color",
-        "description": "Color of keyboard focus outline styles for elements with invalid state."
+        "description": "Color for keyboard focus outline styles for elements with invalid state."
       }
     },
     "keyboard-focus-valid": {
-      "value": "0px 0px 0px 3px {keyboard-focus-valid.outline}",
+      "value": "0px 0px 0px 3px rgba({keyboard-focus-valid.outline}, 0.5)",
       "type": "boxShadow",
       "description": "Keyboard focus styles for elements with valid state.",
       "outline": {
-        "value": "rgba({green.400}, 0.8)",
+        "value": "{green.300}",
         "type": "color",
-        "description": "Color of keyboard focus outline styles for elements with valid state."
+        "description": "Color for keyboard focus outline styles for elements with valid state."
       }
     },
     "keyboard-focus-invert": {

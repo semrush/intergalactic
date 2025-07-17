@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.2.0] - 2025-07-17
+
+### Changed
+
+- Styles for `:focus` and `:focus-visible`.
+- Styles for highlighted `CalendarUnit`.
+
 ## [16.1.4] - 2025-07-04
 
 ### Changed

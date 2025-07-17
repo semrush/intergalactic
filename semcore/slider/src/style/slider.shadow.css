@@ -22,9 +22,16 @@ SSlider {
     background-color: var(--intergalactic-border-primary, #c4c7cf);
   }
 
-  &:active SKnob, &:focus-visible SKnob {
-    box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
+  &:active SKnob,
+  &:focus-visible SKnob {
+    outline-color: var(--intergalactic-keyboard-focus-outline, #008ff8);
+    outline-style: solid;
+    outline-width: 2px;
+    outline-offset: 2px;
+    z-index: 1;
+    transition: all 100ms ease-in-out;
   }
+
   &:focus {
     outline: none;
   }

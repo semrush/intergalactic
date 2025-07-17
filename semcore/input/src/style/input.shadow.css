@@ -13,7 +13,7 @@ SInput {
     border-radius: var(--intergalactic-control-rounded, 6px);
     -webkit-box-shadow: 0 0 0 30px rgb(250, 255, 189) inset;
 
-    & ~ SOutline {
+    &~SOutline {
       background-color: rgb(250, 255, 189);
     }
   }
@@ -41,7 +41,7 @@ SValue {
     color: var(--intergalactic-text-placeholder, #8a8e9b);
   }
 
-  &:not(:disabled):read-only ~ SOutline {
+  &:not(:disabled):read-only~SOutline {
     background: var(--intergalactic-bg-secondary-neutral, #f4f5f9);
   }
 
@@ -51,7 +51,8 @@ SValue {
   }
 }
 
-SInput[disabled] SOutline, SValue:disabled ~ SOutline {
+SInput[disabled] SOutline,
+SValue:disabled~SOutline {
 
   opacity: var(--intergalactic-disabled-opacity, 0.3);
   cursor: default;
@@ -97,6 +98,7 @@ SAddon[disabled] {
 SAddon[size='m']:not(SButton) {
   padding: 0 var(--intergalactic-spacing-2x, 8px);
 }
+
 SAddon[size='l']:not(SButton) {
   padding: 0 var(--intergalactic-spacing-2x, 8px) 0 var(--intergalactic-spacing-3x, 12px);
 }
@@ -108,6 +110,7 @@ SInput SAddon:nth-last-child(2) {
 SValue[size='m'] {
   padding: 0 var(--intergalactic-spacing-2x, 8px);
 }
+
 SValue[size='l'] {
   padding: 0 var(--intergalactic-spacing-3x, 12px);
 }
@@ -133,9 +136,15 @@ SInput[state='normal'] {
 
   &:has(SValue:focus-visible) SOutline {
     border-color: var(--intergalactic-border-info-active, #006dca);
-    box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
+    outline-color: var(--intergalactic-keyboard-focus-outline, #008ff8);
+    outline-style: solid;
+    outline-width: 2px;
+    outline-offset: 2px;
+    z-index: -1;
+    transition: all 100ms ease-in-out;
   }
 }
+
 SInput[state='valid'] {
   & SOutline {
     border-color: var(--intergalactic-border-success-active, #007c65);
@@ -146,6 +155,7 @@ SInput[state='valid'] {
     box-shadow: var(--intergalactic-keyboard-focus-valid, 0px 0px 0px 3px rgba(0, 159, 129, 0.5));
   }
 }
+
 SInput[state='invalid'] {
   & SOutline {
     border-color: var(--intergalactic-border-critical-active, #d1002f);
@@ -163,12 +173,14 @@ SInput[neighborLocation='right'] {
     border-bottom-right-radius: 0;
   }
 }
+
 SInput[neighborLocation='both'] {
   & SOutline {
     border-radius: 0;
     border-left: none;
   }
 }
+
 SInput[neighborLocation='left'] {
   & SOutline {
     border-top-left-radius: 0;

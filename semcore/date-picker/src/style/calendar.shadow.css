@@ -70,7 +70,12 @@ SCalendarUnit {
   }
 
   &:focus-visible {
-    outline: none;
+    outline-color: var(--intergalactic-keyboard-focus-outline, #008ff8);
+    outline-style: solid;
+    outline-width: 2px;
+    outline-offset: 2px;
+    z-index: 1;
+    transition: all 100ms ease-in-out;
   }
 }
 
@@ -108,7 +113,7 @@ SCalendarUnit[selected] {
 }
 
 SCalendarUnit[highlighted] {
-  background-color: var(--intergalactic-date-picker-cell-range-hover, #8ecdff);
+  background-color: var(--intergalactic-date-picker-cell-range, #c4e5fe);
   border-radius: 0;
   transition: color 0.15s, background 0.15s, box-shadow 0.15s, border-radius 0s 0s;
   color: var(--intergalactic-text-primary, #191b23);
@@ -237,19 +242,22 @@ SCalendarUnit[disabled] {
 }
 
 SCalendar:focus {
-  outline: none;
   & SCalendarUnit[highlighted] {
     z-index: 1;
-    box-shadow: var(
-      --intergalactic-keyboard-focus,
-      0px 0px 0px 3px rgba(0, 143, 248, 0.5)
-    );
+    outline-color: var(--intergalactic-keyboard-focus-outline, #008ff8);
+    outline-style: solid;
+    outline-width: 2px;
+    outline-offset: 2px;
+    transition: all 100ms ease-in-out;
   }
+
   &:not(&:has(SCalendarUnit[highlighted])) {
-    box-shadow: var(
-      --intergalactic-keyboard-focus,
-      0px 0px 0px 3px rgba(0, 143, 248, 0.5)
-    );
+    outline-color: var(--intergalactic-keyboard-focus-outline, #008ff8);
+    outline-style: solid;
+    outline-width: 2px;
+    outline-offset: 4px;
+    transition: all 100ms ease-in-out;
+    border-radius: var(--intergalactic-surface-rounded, 6px);
   }
 }
 

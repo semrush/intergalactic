@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.2.0] - 2025-07-17
+
+### Changed
+
+- Styles for `:focus-visible` in Box.
+
 ## [16.1.1] - 2025-07-04
 
 ### Changed

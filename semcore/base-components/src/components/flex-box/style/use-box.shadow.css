@@ -1,10 +1,10 @@
-
 SBox:focus-visible {
-  outline-color: var(--intergalactic-keyboard-focus-outline, rgba(0, 143, 248, 0.5));
+  outline-color: var(--intergalactic-keyboard-focus-outline, #008ff8);
   outline-style: solid;
-  outline-width: 3px;
-  outline-offset: 0;
+  outline-width: 2px;
+  outline-offset: 2px;
   z-index: 1;
+  transition: all 100ms ease-in-out;
 }
 
 SBoxInnerOutline:focus-visible {

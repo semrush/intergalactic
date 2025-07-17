@@ -10,12 +10,16 @@ SPopper {
   &:active,
   &:hover,
   &:focus {
-    outline: 0;
     text-decoration: none;
   }
 
   &:focus {
-    box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
+    outline-color: var(--intergalactic-keyboard-focus-outline, #008ff8);
+    outline-style: solid;
+    outline-width: 2px;
+    outline-offset: 2px;
+    z-index: -1;
+    transition: all 100ms ease-in-out;
   }
 }
 

@@ -2123,20 +2123,30 @@
   {
     "name": "--intergalactic-keyboard-focus-outline",
     "type": "color",
-    "rawValue": "rgba({blue.400}, 0.5)",
-    "computedValue": "rgba(0, 143, 248, 0.5)",
+    "rawValue": "{blue.400}",
+    "computedValue": "#008ff8",
     "description": "Color for default keyboard focus outline styles.",
     "components": [
       "base-components",
+      "bulk-textarea",
+      "carousel",
+      "checkbox",
+      "date-picker",
+      "dropdown",
       "format-text",
+      "inline-input",
+      "input",
+      "radio",
+      "slider",
+      "switch",
       "typography"
     ]
   },
   {
     "name": "--intergalactic-keyboard-focus-outline-invert",
     "type": "color",
-    "rawValue": "rgba({gray.white}, 0.7)",
-    "computedValue": "rgba(255, 255, 255, 0.7)",
+    "rawValue": "rgba({gray.white}, 0.8)",
+    "computedValue": "rgba(255, 255, 255, 0.8)",
     "description": "Color for default keyboard focus outline styles to use on the dark and color background.",
     "components": [
       "wizard"
@@ -2145,72 +2155,63 @@
   {
     "name": "--intergalactic-keyboard-focus",
     "type": "boxShadow",
-    "rawValue": "0px 0px 0px 3px {keyboard-focus.outline}",
+    "rawValue": "0px 0px 0px 3px rgba({keyboard-focus.outline}, 0.5)",
     "computedValue": "0px 0px 0px 3px rgba(0, 143, 248, 0.5)",
     "description": "Default keyboard focus box-shadow styles.",
     "components": [
       "base-components",
-      "bulk-textarea",
       "carousel",
-      "checkbox",
       "d3-chart",
-      "date-picker",
-      "dropdown",
       "dropdown-menu",
       "fullscreen-modal",
-      "inline-input",
-      "input",
       "input-tags",
-      "radio",
-      "slider",
-      "switch",
       "tag"
     ]
   },
   {
     "name": "--intergalactic-keyboard-focus-invalid-outline",
     "type": "color",
-    "rawValue": "rgba({red.400}, 0.5)",
-    "computedValue": "rgba(255, 73, 83, 0.5)",
+    "rawValue": "{red.400}",
+    "computedValue": "#ff4953",
     "description": "Color for keyboard focus outline styles for elements with invalid state.",
     "components": [
       "base-trigger",
+      "bulk-textarea",
+      "checkbox",
+      "inline-input",
+      "radio",
       "textarea"
     ]
   },
   {
     "name": "--intergalactic-keyboard-focus-invalid",
     "type": "boxShadow",
-    "rawValue": "0px 0px 0px 3px {keyboard-focus-invalid.outline}",
+    "rawValue": "0px 0px 0px 3px rgba({keyboard-focus-invalid.outline}, 0.5)",
     "computedValue": "0px 0px 0px 3px rgba(255, 73, 83, 0.5)",
     "description": "Keyboard focus styles for elements with invalid state.",
     "components": [
-      "bulk-textarea",
-      "checkbox",
-      "inline-input",
-      "input",
-      "radio"
+      "input"
     ]
   },
   {
     "name": "--intergalactic-keyboard-focus-valid-outline",
     "type": "color",
-    "rawValue": "rgba({green.400}, 0.5)",
-    "computedValue": "rgba(0, 159, 129, 0.5)",
+    "rawValue": "{green.400}",
+    "computedValue": "#009f81",
     "description": "Color for keyboard focus outline styles for elements with valid state.",
     "components": [
+      "inline-input",
       "textarea"
     ]
   },
   {
     "name": "--intergalactic-keyboard-focus-valid",
     "type": "boxShadow",
-    "rawValue": "0px 0px 0px 3px {keyboard-focus-valid.outline}",
+    "rawValue": "0px 0px 0px 3px rgba({keyboard-focus-valid.outline}, 0.5)",
     "computedValue": "0px 0px 0px 3px rgba(0, 159, 129, 0.5)",
     "description": "Keyboard focus styles for elements with valid state.",
     "components": [
       "bulk-textarea",
-      "inline-input",
       "input"
     ]
   },
@@ -2218,7 +2219,7 @@
     "name": "--intergalactic-keyboard-focus-invert",
     "type": "boxShadow",
     "rawValue": "0px 0px 0px 3px {keyboard-focus.outline-invert}",
-    "computedValue": "0px 0px 0px 3px rgba(255, 255, 255, 0.7)",
+    "computedValue": "0px 0px 0px 3px rgba(255, 255, 255, 0.8)",
     "description": "Default keyboard focus styles for using with dark background.",
     "components": []
   },
@@ -3081,6 +3082,7 @@
     "components": [
       "card",
       "carousel",
+      "date-picker",
       "feedback-form",
       "notice"
     ]
