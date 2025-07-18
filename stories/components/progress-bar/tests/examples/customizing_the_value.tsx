@@ -6,7 +6,7 @@ import React from 'react';
 type ProgressBarExampleProps = ValueProps;
 const Demo = (props: ProgressBarExampleProps) => {
   return (
-    <Box style={{ backgroundColor: '#191B23' }} h={50}>
+    <Box>
 
       <ProgressBar tabIndex={0} aria-label='Custom theme example'>
         <ProgressBar.Value value={props.value} size={props.size} theme={props.theme} duration={props.duration} />
