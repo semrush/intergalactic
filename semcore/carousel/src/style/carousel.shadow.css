@@ -17,17 +17,9 @@ SModalBox {
   border-radius: var(--intergalactic-surface-rounded, 6px);
 
   &:has(SItem:focus-visible) {
-    &:after {
-      content: '';
-      display: block;
-      position: absolute;
-      box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
-      z-index: 1;
-      width: calc(100% - 3px * 2);
-      height: calc(100% - 3px * 2);
-      top: 3px;
-      left: 3px;
-    }
+    outline: 2px solid var(--intergalactic-keyboard-focus-outline, #008ff8);
+    outline-offset: 2px;
+    transition: all calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
   }
 }
 
@@ -66,7 +58,7 @@ SIndicators {
     outline-style: solid;
     outline-width: 2px;
     outline-offset: 0px;
-    transition: all 100ms ease-in-out;
+    transition: all calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
   }
 }
 

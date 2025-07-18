@@ -2160,7 +2160,6 @@
     "description": "Default keyboard focus box-shadow styles.",
     "components": [
       "base-components",
-      "carousel",
       "d3-chart",
       "dropdown-menu",
       "fullscreen-modal",
@@ -2179,6 +2178,7 @@
       "bulk-textarea",
       "checkbox",
       "inline-input",
+      "input",
       "radio",
       "textarea"
     ]
@@ -2189,9 +2189,7 @@
     "rawValue": "0px 0px 0px 3px rgba({keyboard-focus-invalid.outline}, 0.5)",
     "computedValue": "0px 0px 0px 3px rgba(255, 73, 83, 0.5)",
     "description": "Keyboard focus styles for elements with invalid state.",
-    "components": [
-      "input"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-keyboard-focus-valid-outline",
@@ -2200,7 +2198,9 @@
     "computedValue": "#009f81",
     "description": "Color for keyboard focus outline styles for elements with valid state.",
     "components": [
+      "bulk-textarea",
       "inline-input",
+      "input",
       "textarea"
     ]
   },
@@ -2210,10 +2210,7 @@
     "rawValue": "0px 0px 0px 3px rgba({keyboard-focus-valid.outline}, 0.5)",
     "computedValue": "0px 0px 0px 3px rgba(0, 159, 129, 0.5)",
     "description": "Keyboard focus styles for elements with valid state.",
-    "components": [
-      "bulk-textarea",
-      "input"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-keyboard-focus-invert",
@@ -4088,8 +4085,19 @@
     "computedValue": "100",
     "description": "Should be used for simpler effects and relatively small-sized animations (such as fades or color changes)",
     "components": [
+      "base-components",
+      "bulk-textarea",
+      "carousel",
+      "checkbox",
       "data-table",
-      "drag-and-drop"
+      "date-picker",
+      "drag-and-drop",
+      "dropdown",
+      "inline-input",
+      "input",
+      "radio",
+      "slider",
+      "switch"
     ]
   },
   {

@@ -69,21 +69,16 @@ SDropdownPopper {
   SDropdownItem[highlighted]:not(SDropdownItem[isMenuItemCheckbox]),
   SDropdownItem[highlighted][isMenuItemCheckbox] {
     z-index: 1;
-    outline-color: var(--intergalactic-keyboard-focus-outline, #008ff8);
-    outline-style: solid;
-    outline-width: 2px;
+    outline: 2px solid var(--intergalactic-keyboard-focus-outline, #008ff8);
     outline-offset: 2px;
-    transition: all 100ms ease-in-out;
+    transition: all calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
   }
 
   SDropdownItem[highlighted]:not(SDropdownItem[isMenuItemCheckbox]):not(button),
   SDropdownItem[highlighted][isMenuItemCheckbox]:not(button) {
-    outline-color: var(--intergalactic-keyboard-focus-outline, #008ff8);
-    outline-style: solid;
-    outline-width: 2px;
+    outline: 2px solid var(--intergalactic-keyboard-focus-outline, #008ff8);
     outline-offset: -2px;
-    z-index: 1;
-    transition: all 100ms ease-in-out;
+    transition: all calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
   }
 
   SDropdownItem[disabled] {

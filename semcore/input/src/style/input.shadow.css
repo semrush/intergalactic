@@ -136,12 +136,9 @@ SInput[state='normal'] {
 
   &:has(SValue:focus-visible) SOutline {
     border-color: var(--intergalactic-border-info-active, #006dca);
-    outline-color: var(--intergalactic-keyboard-focus-outline, #008ff8);
-    outline-style: solid;
-    outline-width: 2px;
+    outline: 2px solid var(--intergalactic-keyboard-focus-outline, #008ff8);
     outline-offset: 2px;
-    z-index: -1;
-    transition: all 100ms ease-in-out;
+    transition: all calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
   }
 }
 
@@ -152,7 +149,9 @@ SInput[state='valid'] {
 
   &:has(SValue:focus-visible) SOutline {
     border-color: var(--intergalactic-border-success-active, #007c65);
-    box-shadow: var(--intergalactic-keyboard-focus-valid, 0px 0px 0px 3px rgba(0, 159, 129, 0.5));
+    outline: 2px solid var(--intergalactic-keyboard-focus-valid-outline, #009f81);
+    outline-offset: 2px;
+    transition: all calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
   }
 }
 
@@ -163,7 +162,9 @@ SInput[state='invalid'] {
 
   &:has(SValue:focus-visible) SOutline {
     border-color: var(--intergalactic-border-critical-active, #d1002f);
-    box-shadow: var(--intergalactic-keyboard-focus-invalid, 0px 0px 0px 3px rgba(255, 73, 83, 0.5));
+    outline: 2px solid var(--intergalactic-keyboard-focus-invalid-outline, #ff4953);
+    outline-offset: 2px;
+    transition: all calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
   }
 }
 

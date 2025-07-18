@@ -1,6 +1,7 @@
 SCalendar {
   display: flex;
   flex-direction: column;
+  border-radius: var(--intergalactic-surface-rounded, 6px);
 }
 
 SGridDays {
@@ -70,12 +71,9 @@ SCalendarUnit {
   }
 
   &:focus-visible {
-    outline-color: var(--intergalactic-keyboard-focus-outline, #008ff8);
-    outline-style: solid;
-    outline-width: 2px;
+    outline: 2px solid var(--intergalactic-keyboard-focus-outline, #008ff8);
     outline-offset: 2px;
-    z-index: 1;
-    transition: all 100ms ease-in-out;
+    transition: all calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
   }
 }
 
@@ -244,19 +242,15 @@ SCalendarUnit[disabled] {
 SCalendar:focus {
   & SCalendarUnit[highlighted] {
     z-index: 1;
-    outline-color: var(--intergalactic-keyboard-focus-outline, #008ff8);
-    outline-style: solid;
-    outline-width: 2px;
+    outline: 2px solid var(--intergalactic-keyboard-focus-outline, #008ff8);
     outline-offset: 2px;
-    transition: all 100ms ease-in-out;
+    transition: all calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
   }
 
   &:not(&:has(SCalendarUnit[highlighted])) {
-    outline-color: var(--intergalactic-keyboard-focus-outline, #008ff8);
-    outline-style: solid;
-    outline-width: 2px;
+    outline: 2px solid var(--intergalactic-keyboard-focus-outline, #008ff8);
     outline-offset: 4px;
-    transition: all 100ms ease-in-out;
+    transition: all calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
     border-radius: var(--intergalactic-surface-rounded, 6px);
   }
 }
