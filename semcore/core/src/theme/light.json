@@ -2616,7 +2616,7 @@
       "type": "border",
       "description": "Keyboard focus styles for highlighted controls.",
       "outline": {
-        "value": "linear-gradient(90deg, rgba({violet.400}, 0.5), rgba({blue.400}, 0.5))",
+        "value": "linear-gradient(90deg, {violet.400}, {blue.400})",
         "type": "color",
         "description": "Color for keyboard focus outline styles for highlighted controls."
       }

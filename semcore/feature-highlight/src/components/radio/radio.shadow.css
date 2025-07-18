@@ -3,39 +3,51 @@ SHighlightedRadio {
 }
 
 SHighlightedRadio:not([state="invalid"]) {
-  input[data-ui-name="RadioFH.Value"]:focus-visible + [data-ui-name="Value.RadioMark"]::before {
-    box-shadow: none;
-    border-color: transparent;
+  [data-ui-name="Value.RadioMark"]::before {
     content: "";
     position: absolute;
     z-index: -1;
     inset: 0;
-    margin: -3px;
+    margin: 0;
     padding: 1px;
     opacity: 1;
-    border-width: 3px;
-
-    background: var(--intergalactic-border-feature-highlight-active, linear-gradient(90deg, #ab6cfe, #008ff8)) padding-box, var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg, rgba(171, 108, 254, 0.5), rgba(0, 143, 248, 0.5))) border-box;
-    mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
-    mask-composite: exclude;
-  }
-
-  input[data-ui-name="RadioFH.Value"]:checked:focus-visible + [data-ui-name="Value.RadioMark"]::before {
-    mask: none;
-    background: var(--intergalactic-border-feature-highlight-active, linear-gradient(90deg, #ab6cfe, #008ff8)) padding-box, var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg, rgba(171, 108, 254, 0.5), rgba(0, 143, 248, 0.5))) border-box;
-  }
-
-  input[data-ui-name="RadioFH.Value"] + [data-ui-name="Value.RadioMark"]::before {
-    /*SValue[state='normal']::before {*/
+    border-width: 1px;
+    transform: scale(1);
+    pointer-events: none;
     border-color: transparent;
+
     background: linear-gradient(white, white) padding-box,
-      var(--intergalactic-border-feature-highlight, linear-gradient(90deg, #c695ff, #2bb3ff)
-    ) border-box;
+      var(--intergalactic-border-feature-highlight, linear-gradient(90deg, #c695ff, #2bb3ff)) border-box;
     background-origin: border-box;
     background-clip: padding-box, border-box;
+
+    transition:
+      margin calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
+      opacity calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
+      transform calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
+      border-width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
   }
 
-  input[data-ui-name="RadioFH.Value"]:checked:not(:focus-visible) + [data-ui-name="Value.RadioMark"]::before {
+  input[data-ui-name="RadioFH.Value"]:focus-visible+[data-ui-name="Value.RadioMark"]::before {
+    box-shadow: none;
+    border-color: transparent;
+    margin: -2px;
+    opacity: 1;
+    transform: scale(1);
+    border-width: 3px;
+    background: var(--intergalactic-border-feature-highlight-active, linear-gradient(90deg, #ab6cfe, #008ff8)) padding-box, var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg, #ab6cfe, #008ff8)) border-box;
+    mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
+    mask-composite: exclude;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+  }
+
+  input[data-ui-name="RadioFH.Value"]:checked:focus-visible+[data-ui-name="Value.RadioMark"]::before {
+    mask: none;
+    background: var(--intergalactic-border-feature-highlight-active, linear-gradient(90deg, #ab6cfe, #008ff8)) padding-box, var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg, #ab6cfe, #008ff8)) border-box;
+  }
+
+  input[data-ui-name="RadioFH.Value"]:checked:not(:focus-visible)+[data-ui-name="Value.RadioMark"]::before {
     border-color: transparent;
     background: var(--intergalactic-border-feature-highlight-active, linear-gradient(90deg, #ab6cfe, #008ff8)) padding-box,
       var(--intergalactic-border-feature-highlight-active, linear-gradient(90deg, #ab6cfe, #008ff8)) border-box;

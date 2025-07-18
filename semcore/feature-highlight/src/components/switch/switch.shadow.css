@@ -1,3 +1,32 @@
+SToggle {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    margin: 0;
+    padding: 2px;
+    border-radius: inherit;
+
+    background-image: var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg, #ab6cfe, #008ff8));
+    mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
+    mask-composite: exclude;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+
+    opacity: 0;
+    transform: scale(0.96);
+    pointer-events: none;
+
+    transition:
+      margin calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
+      opacity calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
+      transform calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
+  }
+}
+
 SToggle[checked] {
   color: var(--intergalactic-control-primary-info, #008ff8);
   background-image: var(--intergalactic-control-primary-feature-highlight, linear-gradient(90deg, #ab6cfe, #008ff8));
@@ -5,18 +34,11 @@ SToggle[checked] {
 
 SToggle:has(SInput:focus-visible) {
   box-shadow: none;
+  outline: none;
 
   &::before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    inset: 0;
-    margin: -4px;
-    padding: 4px;
-    border-radius: inherit;
-
-    background-image: var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg, rgba(171, 108, 254, 0.5), rgba(0, 143, 248, 0.5)));
-    mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
-    mask-composite: exclude;
+    margin: -6px;
+    opacity: 1;
+    transform: scale(1);
   }
 }

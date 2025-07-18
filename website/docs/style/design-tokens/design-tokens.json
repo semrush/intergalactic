@@ -4094,6 +4094,7 @@
       "date-picker",
       "drag-and-drop",
       "dropdown",
+      "feature-highlight",
       "inline-input",
       "input",
       "radio",
@@ -4261,8 +4262,8 @@
   {
     "name": "--intergalactic-keyboard-focus-feature-highlight-outline",
     "type": "color",
-    "rawValue": "linear-gradient(90deg, rgba({violet.400}, 0.5), rgba({blue.400}, 0.5))",
-    "computedValue": "linear-gradient(90deg, rgba(171, 108, 254, 0.5), rgba(0, 143, 248, 0.5))",
+    "rawValue": "linear-gradient(90deg, {violet.400}, {blue.400})",
+    "computedValue": "linear-gradient(90deg, #ab6cfe, #008ff8)",
     "description": "Color for keyboard focus outline styles for highlighted controls.",
     "components": [
       "feature-highlight"

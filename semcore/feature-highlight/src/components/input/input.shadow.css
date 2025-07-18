@@ -6,36 +6,56 @@ SHighlightedInput[state='normal'] {
     background-origin: border-box;
     background-clip: padding-box, border-box;
     border-color: transparent;
-  }
-
-  &:has(SValue:focus-visible) SOutline {
-    box-shadow: none;
-    border-color: transparent;
 
     &::before {
       content: "";
       position: absolute;
       z-index: -1;
       inset: 0;
-      margin: -4px;
-      padding: 4px;
+      margin: 0;
+      padding: 2px;
       border-radius: calc(var(--intergalactic-control-rounded, 6px) + 3px);
 
-      background-image: var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg, rgba(171, 108, 254, 0.5), rgba(0, 143, 248, 0.5)));
+      background-image: var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg, #ab6cfe, #008ff8));
       mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
       mask-composite: exclude;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+
+      opacity: 0;
+      transform: scale(0.96);
+      pointer-events: none;
+
+      transition:
+        margin calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
+        opacity calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
+        transform calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
     }
   }
 
-  &[neighborLocation='left']:has(SValue:focus-visible) SOutline::before {
+  &[neighborLocation='left'] SOutline::before {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }
-  &[neighborLocation='right']:has(SValue:focus-visible) SOutline::before {
+
+  &[neighborLocation='right'] SOutline::before {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
-  &[neighborLocation='both']:has(SValue:focus-visible) SOutline::before {
+
+  &[neighborLocation='both'] SOutline::before {
     border-radius: 0;
+  }
+
+  &:has(SValue:focus-visible) SOutline {
+    box-shadow: none;
+    outline: none;
+    border-color: transparent;
+
+    &::before {
+      margin: -6px;
+      opacity: 1;
+      transform: scale(1);
+    }
   }
 }

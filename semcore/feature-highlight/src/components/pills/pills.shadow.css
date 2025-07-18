@@ -2,17 +2,57 @@ SHighlightedPill {
   border: 1px solid transparent;
   background:
     linear-gradient(white, white) padding-box,
-    var(--intergalactic-border-feature-highlight, linear-gradient(90deg, #c695ff, #2bb3ff)
-  ) border-box;
+    var(--intergalactic-border-feature-highlight, linear-gradient(90deg, #c695ff, #2bb3ff)) border-box;
   background-origin: border-box;
   background-clip: padding-box, border-box;
   z-index: 1;
+  position: relative;
+  /*isolation: isolate;*/
+
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    margin: 0;
+    padding: 2px;
+    border-radius: calc(var(--intergalactic-control-rounded, 6px) + 3px);
+
+    background-image: var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg, #ab6cfe, #008ff8));
+    mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
+    mask-composite: exclude;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+
+    opacity: 0;
+    transform: scale(0.96);
+    pointer-events: none;
+
+    transition:
+      margin calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
+      opacity calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
+      transform calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
+  }
+
+  &[neighborLocation='left']::before {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  &[neighborLocation='right']::before {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  &[neighborLocation='both']::before {
+    border-radius: 0;
+  }
 
   &:hover {
     background: var(--intergalactic-bg-primary-feature-highlight-hover-active, linear-gradient(90deg, #f9f2ff, #e9f7ff)) padding-box,
-      var(--intergalactic-border-feature-highlight, linear-gradient(90deg, #c695ff, #2bb3ff)
-    ) border-box;
+      var(--intergalactic-border-feature-highlight, linear-gradient(90deg, #c695ff, #2bb3ff)) border-box;
   }
+
   &[selected] {
     background:
       var(--intergalactic-bg-primary-feature-highlight-hover-active, linear-gradient(90deg, #f9f2ff, #e9f7ff)) padding-box,
@@ -25,33 +65,10 @@ SHighlightedPill {
 
 SHighlightedPill:focus-visible {
   outline: none;
-  position: relative;
-  /*isolation: isolate;*/
 
   &::before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    inset: 0;
-    margin: -4px;
-    padding: 4px;
-    border-radius: calc(var(--intergalactic-control-rounded, 6px) + 3px);
-
-    background-image: var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg, rgba(171, 108, 254, 0.5), rgba(0, 143, 248, 0.5)));
-    mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
-    mask-composite: exclude;
-  }
-
-  &[neighborLocation='left']::before {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-  }
-  &[neighborLocation='right']::before {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-  &[neighborLocation='both']::before {
-    border-radius: 0;
+    margin: -6px;
+    opacity: 1;
+    transform: scale(1);
   }
 }
-
