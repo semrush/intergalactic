@@ -3,6 +3,7 @@
 SPlot {
   overflow: hidden;
 }
+
 SPlot:active,
 SPlot:focus {
   outline: 0;
@@ -14,6 +15,8 @@ foreignObject[data-aria-only] {
 }
 
 SPlot[keyboardFocused] {
-  border: 1px solid var(--intergalactic-chart-palette-order-9, #008ff8);
-  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
+  outline: 2px solid var(--intergalactic-keyboard-focus-outline, #008ff8);
+  outline-offset: 2px;
+  transition: all calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
+  border-radius: var(--intergalactic-surface-rounded, 6px);
 }

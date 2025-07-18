@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.1.0] - 2025-07-17
+
+### Changed
+
+- Focus styles for `Plot`.
+
 ## [16.0.7] - 2025-07-03
 
 ### Fixed
