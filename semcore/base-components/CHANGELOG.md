@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Styles for `:focus-visible` in Box.
+- Styles for `:focus-visible` in Box and ScrollArea.
 
 ## [16.1.1] - 2025-07-04
 
