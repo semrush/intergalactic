@@ -2,8 +2,8 @@ import { ButtonTrigger, LinkTrigger, FilterTrigger } from '@semcore/base-trigger
 import Button, { ButtonLink } from '@semcore/button';
 import DropdownMenu from '@semcore/dropdown-menu';
 import { Flex, Box } from '@semcore/flex-box';
-import IconL from '@semcore/icon/Check/m';
-import IconM from '@semcore/icon/Close/m';
+import IconL from '@semcore/icon/Gift/l';
+import IconM from '@semcore/icon/Gift/m';
 import Input from '@semcore/input';
 import Link from '@semcore/link';
 import Switch from '@semcore/switch';
@@ -259,36 +259,42 @@ const Demo = () => {
       <Flex mt={10}>
         <TagContainer theme='primary' size='m' mr={1}>
           <TagContainer.Tag>
+            <TagContainer.Tag.Addon><IconM /></TagContainer.Tag.Addon>
             <TagContainer.Tag.Text>Tag text</TagContainer.Tag.Text>
           </TagContainer.Tag>
           <TagContainer.Close />
         </TagContainer>
         <TagContainer theme='primary' size='l' mr={1}>
           <TagContainer.Tag>
+            <TagContainer.Tag.Addon><IconM /></TagContainer.Tag.Addon>
             <TagContainer.Tag.Text>Tag text</TagContainer.Tag.Text>
           </TagContainer.Tag>
           <TagContainer.Close />
         </TagContainer>
         <TagContainer theme='primary' color='green-500' size='m' mr={1}>
           <TagContainer.Tag>
+            <TagContainer.Tag.Addon><IconM /></TagContainer.Tag.Addon>
             <TagContainer.Tag.Text>Tag text</TagContainer.Tag.Text>
           </TagContainer.Tag>
           <TagContainer.Close />
         </TagContainer>
         <TagContainer theme='primary' color='green-500' size='l' mr={1}>
           <TagContainer.Tag>
+            <TagContainer.Tag.Addon><IconM /></TagContainer.Tag.Addon>
             <TagContainer.Tag.Text>Tag text</TagContainer.Tag.Text>
           </TagContainer.Tag>
           <TagContainer.Close />
         </TagContainer>
         <TagContainer theme='secondary' size='m' mr={1}>
           <TagContainer.Tag>
+            <TagContainer.Tag.Addon><IconM /></TagContainer.Tag.Addon>
             <TagContainer.Tag.Text>Tag text</TagContainer.Tag.Text>
           </TagContainer.Tag>
           <TagContainer.Close />
         </TagContainer>
         <TagContainer theme='secondary' size='l' mr={1}>
           <TagContainer.Tag>
+            <TagContainer.Tag.Addon><IconM /></TagContainer.Tag.Addon>
             <TagContainer.Tag.Text>Tag text</TagContainer.Tag.Text>
           </TagContainer.Tag>
           <TagContainer.Close />
