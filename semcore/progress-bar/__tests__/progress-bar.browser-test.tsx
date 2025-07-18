@@ -54,8 +54,8 @@ test.describe('Visual', () => {
   });
 
   const variablesValue = [
-    { theme: 'invert', size: 's' },
-    { theme: 'dark', size: 'm' },
+    { theme: 'inviolet-500', size: 's' },
+    { theme: 'violet-100', size: 'm' },
     { theme: 'violet-100', size: 'l' },
   ];
   variablesValue.forEach((item) => {

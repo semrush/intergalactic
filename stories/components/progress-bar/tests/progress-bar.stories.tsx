@@ -25,6 +25,9 @@ export const CustomizingTheBar1: StoryObj<typeof CustomizingTheBarProps> = {
     value: {
       control: { type: 'number' },
     },
+    duration: {
+      control: { type: 'number' },
+    },
   },
   args: CustomizingTheBarProps,
 };
@@ -41,6 +44,9 @@ export const CustomizingTheValue: StoryObj<typeof CustomizingTheValueProps> = {
       options: ['invert', 'dark', 'violet-500'],
     },
     value: {
+      control: { type: 'number' },
+    },
+    duration: {
       control: { type: 'number' },
     },
   },
