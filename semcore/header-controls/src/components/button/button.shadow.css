@@ -1,0 +1,84 @@
+@import '../vars.css';
+
+SHeaderButton[size='m'] {
+  /* disable-tokens-validator */
+  height: var(--intergalactic-header-control-m, 32px);
+  /* disable-tokens-validator */
+  min-width: var(--intergalactic-header-control-m, 32px);
+  /* we should have min-width in the default button styles, instead of the only-child margin calculations */
+}
+
+SAddon {
+  &:not(:only-child):first-child {
+    margin-left: var(--intergalactic-spacing-3x, 12px);
+  }
+
+  &:not(:only-child):last-child {
+    margin-right: var(--intergalactic-spacing-3x, 12px);
+  }
+}
+
+SText {
+  margin-left: var(--intergalactic-spacing-2x, 8px);
+  margin-right: var(--intergalactic-spacing-2x, 8px);
+
+  &:first-child {
+    margin-left: var(--intergalactic-spacing-3x, 12px);
+  }
+  &:last-child {
+    margin-right: var(--intergalactic-spacing-3x, 12px);
+  }
+}
+
+SHeaderButton[neighborLocation='both'],
+SHeaderButton[neighborLocation='left'] {
+  &:after {
+    /* disable-tokens-validator */
+    background-color: var(--intergalactic-border-primary-header);
+  }
+}
+
+SHeaderButton[theme='secondary-invert'] {
+  /* disable-tokens-validator */
+  background-color: var(--intergalactic-control-secondary-header);
+  /* disable-tokens-validator */
+  border-color: var(--intergalactic-border-primary-header);
+  
+  &:hover {
+    /* disable-tokens-validator */
+    background-color: var(--intergalactic-control-secondary-header-hover);
+  }
+  
+  &:active {
+    /* disable-tokens-validator */
+    background-color: var(--intergalactic-control-secondary-header-active);
+  }
+
+  &[neighborLocation='both'],
+  &[neighborLocation='left'] {
+    &:after {
+      /* disable-tokens-validator */
+      background-color: var(--intergalactic-border-secondary-header);
+    }
+  }
+
+  :not(SButton) + &[neighborLocation='left'],
+  :not(SButton) + &[neighborLocation='both'] {
+    /* disable-tokens-validator */
+    border-left-color: var(--intergalactic-border-secondary-header);
+  }
+}
+
+SHeaderButton[theme='tertiary-invert'] {
+  &:not(:hover, :active) {
+    color: var(--intergalactic-text-secondary-invert, rgba(255, 255, 255, 0.8));
+  }
+  &:hover {
+    /* disable-tokens-validator */
+    background-color: var(--intergalactic-control-tertiary-header-hover);
+  }
+  &:active {
+    /* disable-tokens-validator */
+    background-color: var(--intergalactic-control-tertiary-header-active);
+  }
+}

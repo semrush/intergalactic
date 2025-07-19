@@ -13,7 +13,7 @@ Addons can be added:
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/button/docs/examples/addons.tsx';
+  export Demo from 'stories/components/header-controls/tests/examples/header-controls.tsx';
 </script>
 
 :::

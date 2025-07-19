@@ -1,0 +1,28 @@
+@import '../vars.css';
+
+SHeaderInput[size='m'] {
+  /* disable-tokens-validator */
+  height: var(--intergalactic-header-control-m);
+}
+
+SHeaderInput:not(:has(SValue:focus)) {
+  &:not(:hover) SOutline {
+    /* disable-tokens-validator */
+    background: var(--intergalactic-control-secondary-header);
+  }
+  &:hover SOutline {
+    /* disable-tokens-validator */
+    background: var(--intergalactic-control-secondary-header-hover);
+  }
+  &[state='normal'] SOutline {
+    /* disable-tokens-validator */
+    border-color: var(--intergalactic-border-primary-header);
+  }
+}
+
+SValue:not(:focus) {
+  &::placeholder {
+    /* disable-tokens-validator */
+    color: var(--intergalactic-text-placeholder-header);
+  }
+}

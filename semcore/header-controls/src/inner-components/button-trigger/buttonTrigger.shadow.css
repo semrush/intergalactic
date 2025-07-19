@@ -1,0 +1,19 @@
+@import '../../components/vars.css';
+
+SHeaderButtonTrigger {
+
+  /* disable-tokens-validator */
+  background-color: var(--intergalactic-control-secondary-header);
+  /* disable-tokens-validator */
+  border-color: var(--intergalactic-border-primary-header);
+  color: var(--intergalactic-text-primary-invert, #ffffff);
+  &:hover {
+    /* disable-tokens-validator */
+    background-color: var(--intergalactic-control-secondary-header-hover);
+  }
+}
+
+SHeaderButtonTrigger[size='m'] {
+  /* disable-tokens-validator */
+  height: var(--intergalactic-header-control-m);
+}

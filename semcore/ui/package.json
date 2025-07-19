@@ -46,6 +46,7 @@
     "@semcore/format-text": "16.0.0",
     "@semcore/fullscreen-modal": "16.0.0",
     "@semcore/grid": "16.0.0",
+    "@semcore/header-controls": "16.0.0",
     "@semcore/i18n-unplugin": "16.0.0",
     "@semcore/icon": "16.0.0",
     "@semcore/illustration": "16.0.0",

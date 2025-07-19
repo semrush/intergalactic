@@ -497,6 +497,7 @@
       "date-picker",
       "dot",
       "feature-highlight",
+      "header-controls",
       "notice-bubble",
       "notice-global",
       "tag",
@@ -510,7 +511,9 @@
     "rawValue": "{gray.white}, 0.8",
     "computedValue": "rgba(255, 255, 255, 0.8)",
     "description": "Inverted version of the secondary text.",
-    "components": []
+    "components": [
+      "header-controls"
+    ]
   },
   {
     "name": "--intergalactic-text-link",
@@ -2740,6 +2743,7 @@
       "feedback-form",
       "format-text",
       "fullscreen-modal",
+      "header-controls",
       "input",
       "input-tags",
       "modal",
@@ -2785,6 +2789,7 @@
       "feedback-form",
       "format-text",
       "fullscreen-modal",
+      "header-controls",
       "input",
       "modal",
       "notice",

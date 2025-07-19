@@ -1,0 +1,49 @@
+SHeaderButton, SHeaderInput, SHeaderButtonTrigger {
+  /* ====== REMOVE ALL COMMENTS AFTER REVIEW ====== */
+  
+  /* I decided to add new semantic tokens locally for convenience,
+  you can either add them to the token list, or remove them and instead
+  define the corresponding CSS properties with raw values */
+
+  --intergalactic-header-control-m: var(--intergalactic-spacing-8x, 32px);
+  --intergalactic-border-primary-header: transparent;
+  --intergalactic-border-secondary-header: rgba(255, 255, 255, 0.15); /* white 0.15 */
+  --intergalactic-control-secondary-header: #4D407E; /* violet-dusty-600 */
+  --intergalactic-control-secondary-header-hover: #6D619F; /* violet-dusty-500 */
+  /* disable-tokens-validator */
+  --intergalactic-control-secondary-header-active: hsl(from var(--intergalactic-control-secondary-header-hover) h s calc(l * 1.15));
+  /* relative color support is around 80% on desktop globally, but we probably can
+  skip adding a fallback because the active state is not that critical */
+  --intergalactic-control-tertiary-header-hover: #4D407E; /* violet-dusty-600 */
+  --intergalactic-control-tertiary-header-active: #6D619F; /* violet-dusty-500 */
+  --intergalactic-text-placeholder-header: rgba(255, 255, 255, 0.8);
+
+  /*
+  --violet-dusty-400: #9083C5;
+  --violet-dusty-500: #6D619F;
+  --violet-dusty-600: #4D407E;
+  */
+}
+
+
+/* ====================== NOTES ====================== */
+
+/* 1. Issues with theme processing
+
+  - if we redefine imported tokens locally, fallbacks stay the same (i.e. if import fails, styles will break)
+  - we don't process base tokens
+  - we don't process local tokens (defined in this file)
+  */
+
+  
+/* 2. Alternative for active state (instead of relative color)
+  support is much better - 97%, but requires changing border and border-radius */
+
+/* border: none;
+  SInner {
+    border-radius: inherit;
+  }
+  &[theme='secondary-invert']:active SInner {
+    backdrop-filter: brightness(1.25) saturate(0.8);
+  } */
+
