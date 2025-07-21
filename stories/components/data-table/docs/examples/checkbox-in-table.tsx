@@ -15,7 +15,7 @@ const style = sstyled.css`
   }
 `;
 
-export type ExampleDataTableProps = { loading: any };
+export type ExampleDataTableProps = { loading: boolean };
 
 const Demo = (props: ExampleDataTableProps) => {
   const [selectedRows, setSelectedRows] = React.useState<string[]>([]);
@@ -255,7 +255,7 @@ const data = [
 ];
 
 export const defaultProps: ExampleDataTableProps = {
-  loading: undefined,
+  loading: false,
 };
 
 Demo.defaultProps = defaultProps;
