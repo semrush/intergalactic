@@ -28,7 +28,7 @@ export type LineProps = Context & {
   /** Enables charts patterns that enhances charts accessibility */
   patterns?: PatternsConfig;
   /** Callback triggered when a user clicks on a line */
-  onClick: (index: number, event: React.SyntheticEvent) => void;
+  onClick?: (index: number, event: React.SyntheticEvent) => void;
 };
 
 /** @deprecated */

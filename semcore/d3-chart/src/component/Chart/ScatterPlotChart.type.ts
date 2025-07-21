@@ -13,7 +13,7 @@ export type ScatterPlotChartProps = BaseChartProps<ScatterPlotChartData> & {
   yScale?: ScaleLinear<any, any>;
   valueKey?: string;
   /** Callback triggered when a user clicks on a scatter item */
-  onClickScatterItem: (index: number, event: React.SyntheticEvent) => void;
+  onClickScatterItem?: (index: number, event: React.SyntheticEvent) => void;
 };
 
 export type ScatterPlotChartType = Intergalactic.Component<typeof Flex, ScatterPlotChartProps>;

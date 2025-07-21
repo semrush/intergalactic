@@ -29,7 +29,7 @@ export type DonutProps = Context & {
   /** Enables charts patterns that enhances charts accessibility */
   patterns?: PatternsConfig;
   /** Callback triggered when a user clicks on a pie */
-  onClick: (key: string, event: React.SyntheticEvent) => void;
+  onClick?: (key: string, event: React.SyntheticEvent) => void;
 };
 
 /** @deprecated */

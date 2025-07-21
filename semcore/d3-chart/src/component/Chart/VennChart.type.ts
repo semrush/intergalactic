@@ -13,7 +13,7 @@ export type VennChartProps = BaseChartProps<VennChartData> & {
   xScale?: ScaleLinear<any, any>;
   yScale?: ScaleLinear<any, any>;
   /** Callback triggered when a user clicks on a circle */
-  onClickVennItem: (key: DataKey, e: React.SyntheticEvent) => void;
+  onClickVennItem?: (key: DataKey, e: React.SyntheticEvent) => void;
 };
 
 export type VennChartType = Intergalactic.Component<typeof Flex, VennChartProps>;

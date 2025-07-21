@@ -27,7 +27,7 @@ export type AreaProps = Context & {
   /** Enables charts patterns that enhances charts accessibility */
   patterns?: PatternsConfig;
   /** Callback triggered when a user clicks on a chart at a position corresponding to a data item */
-  onClick: (index: number, event: React.SyntheticEvent) => void;
+  onClick?: (index: number, event: React.SyntheticEvent) => void;
 };
 
 /** @deprecated */

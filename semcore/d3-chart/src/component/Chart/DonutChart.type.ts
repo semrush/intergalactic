@@ -17,7 +17,7 @@ export type DonutChartProps = BaseChartProps<DonutChartData> & {
   halfsize?: boolean;
   innerLabel?: React.ReactNode;
   /** Callback triggered when a user clicks on a pie */
-  onClickPie: (key: DataKey, e: React.SyntheticEvent) => void;
+  onClickPie?: (key: DataKey, e: React.SyntheticEvent) => void;
 };
 
 export type DonutChartType = Intergalactic.Component<typeof Flex, DonutChartProps>;

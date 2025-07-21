@@ -24,7 +24,7 @@ export type LineChartProps = BaseChartProps<LineChartData> & {
   curve?: CurveFactory;
   areaCurve?: CurveFactory;
   /** Callback triggered when a user clicks on a line */
-  onClickLine: (index: number, event: React.SyntheticEvent) => void;
+  onClickLine?: (index: number, event: React.SyntheticEvent) => void;
 };
 
 export type LineChartType = Intergalactic.Component<typeof Flex, LineChartProps>;

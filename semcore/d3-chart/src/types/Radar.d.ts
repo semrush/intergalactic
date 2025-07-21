@@ -40,7 +40,7 @@ export type RadarProps = Context & {
   /** Enables charts patterns that enhances charts accessibility */
   patterns?: PatternsConfig;
   /** Callback triggered when a user clicks on a chart at a position corresponding to a category */
-  onClick: (index: number, e: React.SyntheticEvent) => void;
+  onClick?: (index: number, e: React.SyntheticEvent) => void;
 };
 
 /** @deprecated */
