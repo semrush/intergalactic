@@ -25,8 +25,10 @@ test.describe('Visual tests', () => {
       await expect(header).toHaveCSS('padding-bottom', '8px');
     });
 
-    await test.step('Verify title margin', async () => {
+    await test.step('Verify title styles', async () => {
       await expect(title).toHaveCSS('margin-right', '4px');
+      await expect(title).toHaveCSS('font-size', '16px');
+      await expect(title).toHaveCSS('font-weight', '700');
     });
 
     await test.step('Verify description margin', async () => {
@@ -53,20 +55,14 @@ test.describe('Visual tests', () => {
 
     await test.step('Verify button with hint and description tooltip on focus in header', async () => {
       await page.keyboard.press('Tab');
-      await page.locator('[data-ui-name="Tooltip"]').waitFor({ state: 'visible' });
+      await page.getByText('Settings').waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
       await page.keyboard.press('Shift+Tab');
-      await page.locator('[data-ui-name="DescriptionTooltip.Popper]').waitFor({ state: 'visible' });
+      await page.keyboard.press('Space');
+      await page.locator('[data-ui-name="DescriptionTooltip.Popper"]').waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
     });
   });
-
-  const breakpoints = [
-    { width: 320, expectedSize: 'L', expectedHeight: '40px' },
-    { width: 768, expectedSize: 'M', expectedHeight: '28px' },
-    { width: 1200, expectedSize: 'M', expectedHeight: '28px' },
-    { width: 1920, expectedSize: 'M', expectedHeight: '28px' },
-  ];
 
   test('Verify card with ellipsis width:1200, height: 800', async ({ page }) => {
     const standPath = 'stories/components/card/docs/examples/ellipsis.tsx';
@@ -74,15 +70,10 @@ test.describe('Visual tests', () => {
     await page.setContent(htmlContent);
 
     await page.setViewportSize({ width: 1200, height: 800 });
-
-    const header = page.locator('[data-ui-name="Card.Header"]');
-    const description = page.locator('[data-ui-name="Card.Description"]');
     const title = page.locator('[data-ui-name="Card.Title"]');
-    const body = page.locator('[data-ui-name="Card.Body"]');
-    const descriptionTooltipTrigger = page.locator('[data-ui-name="DescriptionTooltip.Trigger"]');
 
     await title.hover();
-    await expect(page.locator('[data-ui-name="Tooltip"]')).not.toBeVisible();
+    await expect(page).toHaveScreenshot();
   });
 
   test('Verify card with ellipsis width:768, height: 800', async ({ page }) => {
@@ -91,304 +82,179 @@ test.describe('Visual tests', () => {
     await page.setContent(htmlContent);
 
     await page.setViewportSize({ width: 768, height: 800 });
-
-    const header = page.locator('[data-ui-name="Card.Header"]');
-    const description = page.locator('[data-ui-name="Card.Description"]');
     const title = page.locator('[data-ui-name="Card.Title"]');
-    const body = page.locator('[data-ui-name="Card.Body"]');
-    const descriptionTooltipTrigger = page.locator('[data-ui-name="DescriptionTooltip.Trigger"]');
 
     await title.hover();
     await page.locator('[data-ui-name="Tooltip"]').first().waitFor({ state: 'visible' });
     await expect(page.locator('[data-ui-name="Tooltip"]').first()).toBeVisible();
     await expect(page).toHaveScreenshot();
   });
+
+  test('Verify complex card styles', async ({ page }) => {
+    const standPath = 'stories/components/card/docs/examples/complex_example.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Space');
+    await page.locator('[data-ui-name="Select.Option"]').first().waitFor({ state: 'visible' });
+    await page.keyboard.press('Space');
+    await page.locator('[data-ui-name="Select.Option"]').first().waitFor({ state: 'hidden' });
+    await expect(page).toHaveScreenshot();
+  });
+
+  test('Verify card with different card componens styles', async ({ page }) => {
+    const standPath = 'stories/components/card/tests/examples/different-cards.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+
+    await test.step('Verify card only component', async () => {
+      const card = await page.locator('[data-testid="card-only"]');
+      const screenshotsClip = (await card.first().boundingBox())!;
+      screenshotsClip.x -= 4;
+      screenshotsClip.y -= 4;
+      screenshotsClip.width += 8;
+      screenshotsClip.height += 8;
+
+      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+    });
+
+    await test.step('Verify card description component', async () => {
+      const card = await page.locator('[data-testid="card-description"]');
+      const screenshotsClip = (await card.first().boundingBox())!;
+      screenshotsClip.x -= 4;
+      screenshotsClip.y -= 4;
+      screenshotsClip.width += 8;
+      screenshotsClip.height += 8;
+
+      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+    });
+
+    await test.step('Verify card title hintAfter component', async () => {
+      const card = await page.locator('[data-testid="card-title-hintAfter"]');
+      const screenshotsClip = (await card.first().boundingBox())!;
+      screenshotsClip.x -= 4;
+      screenshotsClip.y -= 4;
+      screenshotsClip.width += 8;
+      screenshotsClip.height += 8;
+
+      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+    });
+
+    await test.step('Verify card title  description content hintAfter component', async () => {
+      const card = await page.locator('[data-testid="card-title-description-hintAfter"]');
+      const screenshotsClip = (await card.first().boundingBox())!;
+      screenshotsClip.x -= 4;
+      screenshotsClip.y -= 4;
+      screenshotsClip.width += 8;
+      screenshotsClip.height += 8;
+
+      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+    });
+
+    await test.step('Verify card title  description content innterHint component', async () => {
+      const card = await page.locator('[data-testid="card-title-description-innterHint"]');
+      const screenshotsClip = (await card.first().boundingBox())!;
+      screenshotsClip.x -= 4;
+      screenshotsClip.y -= 4;
+      screenshotsClip.width += 8;
+      screenshotsClip.height += 8;
+
+      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+    });
+
+    await test.step('Verify card title  description content hintAfter innterHint component', async () => {
+      const card = await page.locator('[data-testid="card-title-content-hintAfter-innerHint"]');
+      const screenshotsClip = (await card.first().boundingBox())!;
+      screenshotsClip.x -= 4;
+      screenshotsClip.y -= 4;
+      screenshotsClip.width += 8;
+      screenshotsClip.height += 8;
+
+      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+    });
+
+    await test.step('Verify card title description content innterHint tag component', async () => {
+      const card = await page.locator('[data-testid="card-title-description-content-innerHint-tag-text-styles"]');
+      const screenshotsClip = (await card.first().boundingBox())!;
+      screenshotsClip.x -= 4;
+      screenshotsClip.y -= 4;
+      screenshotsClip.width += 8;
+      screenshotsClip.height += 8;
+
+      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+    });
+
+    await test.step('Verify card header title description body component', async () => {
+      const card = await page.locator('[data-testid="data-testid="card-header-title-desription-body"]');
+      const screenshotsClip = (await card.first().boundingBox())!;
+      screenshotsClip.x -= 4;
+      screenshotsClip.y -= 4;
+      screenshotsClip.width += 8;
+      screenshotsClip.height += 8;
+
+      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+    });
+
+    await test.step('Verify card heder pills body component', async () => {
+      const card = await page.locator('[data-testid="card-header-pills-body"]');
+      const screenshotsClip = (await card.first().boundingBox())!;
+      screenshotsClip.x -= 4;
+      screenshotsClip.y -= 4;
+      screenshotsClip.width += 8;
+      screenshotsClip.height += 8;
+
+      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+    });
+  });
 });
 
-test.describe('Functional tests', () => {
-  test('Verify tags can be added removed and edited by mouse', async ({ page }) => {
-    const standPath = 'stories/components/input-tags/docs/examples/entering_and_editing_tags.tsx';
+test.describe('Functional', () => {
+  test('Verify base example keyboard interactions', async ({ page }) => {
+    const standPath = 'stories/components/card/docs/examples/basic_example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
 
-    const ul = page.locator('ul');
-    const inputText = page.locator('[data-ui-name="InputTags.Tag.Text"]');
-    const tagClose = page.locator('[data-ui-name="InputTags.Tag.Close"]');
-    const label = page.locator('[data-ui-name="Text"]');
-    const inputValue = page.locator('[data-ui-name="InputTags.Value"]');
+    const descriptionTooltipTrigger = page.locator('[data-ui-name="DescriptionTooltip.Trigger"]');
+    const descriptionTooltipPopper = page.locator('[data-ui-name="DescriptionTooltip.Popper"]');
 
-    await test.step('Verify attributes', async () => {
-      await expect(ul).toHaveAttribute('aria-label', 'Social media');
-      const count = await inputText.count();
-      for (let i = 0; i < count; i++) {
-        await expect(inputText.nth(i)).toHaveAttribute('aria-describedby');
-        await expect(inputText.nth(i)).toHaveAttribute('tabindex', '0');
-      }
-    });
-
-    await test.step('Verify focused and cursor set by click on label', async () => {
-      await label.click();
-      await expect(inputValue).toBeFocused();
-    });
-
-    await test.step('Verify adding new tag by Space Tab Enter and ShiftTab', async () => {
-      const count = await inputText.count();
-      await page.keyboard.type('Test');
-      await page.keyboard.press('Enter');
-      await expect(inputText).toHaveCount(count + 1);
-
-      await page.keyboard.type('Test2');
+    await test.step('Verify tooltip not shown when trigger is focused', async () => {
       await page.keyboard.press('Tab');
-      await expect(inputText).toHaveCount(count + 2);
+      await expect(descriptionTooltipTrigger).toBeFocused();
+      await expect(descriptionTooltipPopper).not.toBeVisible();
+    });
 
-      await page.keyboard.type('Social media with a very long name');
-      await page.keyboard.press('Shift+Tab');
-      await expect(inputText).toHaveCount(count + 3);
-
-      await page.keyboard.type('Hello');
+    await test.step('Verify tooltip shown on space', async () => {
       await page.keyboard.press('Space');
-      await page.keyboard.press('Space');
-      await expect(inputText).toHaveCount(count + 4);
+      await page.locator('[data-ui-name="DescriptionTooltip.Popper"]').waitFor({ state: 'visible' });
+      await expect(descriptionTooltipTrigger).not.toBeFocused();
+      await expect(descriptionTooltipPopper).toBeFocused();
     });
 
-    await test.step('Verify editing mode enaled by click on text', async () => {
-      await inputText.first().click();
-      await expect(inputValue).toHaveAttribute('value', 'TikTok');
-      await inputText.nth(2).click();
-      await expect(inputValue).toHaveAttribute('value', 'Instagram');
+    await test.step('Verify tooltip hidden on Escape', async () => {
+      await page.keyboard.press('Escape');
+      await page.locator('[data-ui-name="DescriptionTooltip.Popper"]').waitFor({ state: 'hidden' });
+      await expect(descriptionTooltipTrigger).toBeFocused();
+    });
 
-      // editing and save
-      await page.keyboard.type('Test');
+    await test.step('Verify tooltip opened on Enter', async () => {
       await page.keyboard.press('Enter');
-      const count = await inputText.count();
-      await expect(inputText.nth(count - 1)).toHaveText('InstagramTest');
-
-      // no edit and press enter
-      await inputText.first().click();
-      await page.keyboard.press('Enter');
-      await expect(inputText.nth(count - 1)).toHaveText('Facebook');
-
-      /// ctrl a and remove editing
-      await inputText.first().click();
-
-      if (platform() === 'darwin') {
-        await page.keyboard.press('Meta+A');
-      } else {
-        await page.keyboard.press('Control+A');
-      }
-      await page.keyboard.press('Backspace');
-      await page.keyboard.press('Enter');
-      await expect(inputValue).toHaveAttribute('value', '');
+      await page.locator('[data-ui-name="DescriptionTooltip.Popper"]').waitFor({ state: 'visible' });
+      await expect(descriptionTooltipTrigger).not.toBeFocused();
+      await expect(descriptionTooltipPopper).toBeFocused();
     });
 
-    await test.step('Verify adding and edditing by click on the tag', async () => {
-      await page.keyboard.type('TikTokTest');
-      await inputText.nth(0).click();
-      await expect(inputValue).toHaveAttribute('value', 'Social media with a very long name');
-
-      const count = await inputText.count();
-      await expect(inputText.nth(count - 1)).toHaveText('TikTokTest');
-      await page.keyboard.press('Enter');
-    });
-
-    await test.step('Verify tag removes by click X', async () => {
-      while (await tagClose.count() > 0) {
-        await tagClose.first().click();
-      }
-
-      await expect(tagClose).toHaveCount(0);
-    });
-  });
-
-  test('Verify tags can be added removed and edited by keyboard', async ({ page }) => {
-    const standPath = 'stories/components/input-tags/docs/examples/entering_and_editing_tags.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    const tag = page.locator('li[data-ui-name="InputTags.Tag"]');
-    const inputText = page.locator('[data-ui-name="InputTags.Tag.Text"]');
-    const tagClose = page.locator('[data-ui-name="InputTags.Tag.Close"]');
-    const inputValue = page.locator('[data-ui-name="InputTags.Value"]');
-
-    await test.step('Verify 1st Tag Text focused by Tab', async () => {
+    await test.step('Verify tooltip hidden by Tab', async () => {
       await page.keyboard.press('Tab');
-      await expect(inputValue).not.toBeFocused();
-      await expect(inputText.first()).toBeFocused();
-      await expect(tagClose.first()).not.toBeFocused();
+      await page.locator('[data-ui-name="DescriptionTooltip.Popper"]').waitFor({ state: 'hidden' });
+      await expect(descriptionTooltipTrigger).toBeFocused();
     });
 
-    await test.step('Verify Tag Close can be focused by Tab', async () => {
+    await test.step('Next control focused by tab', async () => {
       await page.keyboard.press('Tab');
-      await expect(inputValue).not.toBeFocused();
-      await expect(inputText.first()).not.toBeFocused();
-      await expect(tagClose.first()).toBeFocused();
-    });
-
-    await test.step('Verify removing 1st tag by Enter', async () => {
-      const initialCount = await tag.count();
-
-      await page.keyboard.press('Enter');
-      const newCount = await tag.count();
-
-      expect(newCount).toBe(initialCount - 1);
-
-      await expect(inputValue).not.toBeFocused();
-      await expect(inputText.first()).not.toBeFocused();
-      await expect(tagClose.first()).toBeFocused();
-    });
-
-    await test.step('Verify removing 1st tag by Space', async () => {
-      const initialCount = await tag.count();
-
-      await page.keyboard.press('Space');
-      const newCount = await tag.count();
-
-      expect(newCount).toBe(initialCount - 1);
-
-      await expect(inputValue).not.toBeFocused();
-      await expect(inputText.first()).not.toBeFocused();
-      await expect(tagClose.first()).toBeFocused();
-    });
-
-    await test.step('Verify Tag Text focused by Shift+ Tab', async () => {
-      await page.keyboard.press('Shift+Tab');
-      await expect(inputValue).not.toBeFocused();
-      await expect(inputText.first()).toBeFocused();
-      await expect(tagClose.first()).not.toBeFocused();
-    });
-
-    await test.step('Verify next Tag Text focused by Tab', async () => {
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-
-      await expect(inputValue).not.toBeFocused();
-      await expect(inputText.nth(1)).toBeFocused();
-      await expect(tagClose.nth(1)).not.toBeFocused();
-    });
-
-    await test.step('Verify input tag focused and сursor in value by tab', async () => {
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await expect(inputValue).toBeFocused();
-      await expect(inputValue).toBeFocused();
-    });
-
-    await test.step('Verify adding new tag by entering special symbols', async () => {
-      const count = await tag.count();
-      await page.keyboard.type('Test');
-      await page.keyboard.type(',');
-      await expect(tag).toHaveCount(count + 1);
-
-      await page.keyboard.type('Test2');
-      await page.keyboard.type(';');
-      await expect(inputText).toHaveCount(count + 2);
-
-      await page.keyboard.type('Social media with a very long name');
-      await page.keyboard.type('|');
-      await expect(inputText).toHaveCount(count + 3);
-      await expect(inputValue).toBeFocused();
-    });
-
-    await test.step('Verify editing mode when press Enter or Space on tag Text', async () => {
-      await page.keyboard.press('Shift+Tab');
-      await page.keyboard.press('Shift+Tab');
-      const count1 = await tag.count();
-      await expect(inputText.nth(count1 - 1)).toBeFocused();
-
-      await page.keyboard.press('Enter');
-
-      await expect(inputValue).toHaveAttribute('value', 'Social media with a very long name');
-      await expect(tag).toHaveCount(count1 - 1);
-      await page.keyboard.type('Test2');
-      await page.keyboard.press('|');
-      await expect(inputText.nth(count1 - 1)).toHaveText('Social media with a very long nameTest2');
-      await expect(tag).toHaveCount(count1);
-
-      await page.keyboard.press('Shift+Tab');
-      await page.keyboard.press('Shift+Tab');
-      await expect(inputValue).not.toBeFocused();
-      await page.keyboard.press('Space');
-      await expect(inputValue).toHaveAttribute('value', 'Social media with a very long nameTest2 ');
-
-      if (platform() === 'darwin') {
-        await page.keyboard.press('Meta+A');
-      } else {
-        await page.keyboard.press('Control+A');
-      }
-      await page.keyboard.press('Backspace');
-      await expect(inputValue).toHaveAttribute('value', '');
-    });
-
-    await test.step('Verify editing mode By press Backspace', async () => {
-      const count1 = await tag.count();
-
-      await page.keyboard.press('Backspace');
-      await expect(tag).toHaveCount(count1 - 1);
-
-      await expect(inputValue).toHaveAttribute('value', 'Test2 ');
-
-      await page.keyboard.press('Backspace');
-      await page.keyboard.press('Backspace');
-      await page.keyboard.press('|');
-      await expect(inputText.nth(count1 - 1)).toHaveText('Test');
-    });
-  });
-
-  test('Verify wrapping emails in tags without width limitation and email validation mouse interactions', async ({ page }) => {
-    const standPath = 'stories/components/input-tags/docs/examples/wrapping_email_in_tag.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    const ul = page.locator('ul');
-    const tag = page.locator('li[data-ui-name="InputTags.Tag"]');
-    const inputText = page.locator('[data-ui-name="InputTags.Tag.Text"]');
-    const tagClose = page.locator('[data-ui-name="InputTags.Tag.Close"]');
-    const label = page.locator('[data-ui-name="Text"]');
-    const inputValue = page.locator('[data-ui-name="InputTags.Value"]');
-
-    await test.step('Verify focused and cursor set by click on input value', async () => {
-      await inputValue.click();
-      await expect(inputValue).toBeFocused();
-    });
-
-    await test.step('Verify adding correct and wrong emails tag by Space Tab Enter and ShiftTab', async () => {
-      const count = await tag.count();
-      await page.keyboard.type('TestTestTestTestTestTestTestTestTestTestTestTest@Test.Test');
-      await page.keyboard.press('Enter');
-      await expect(tag).toHaveCount(count + 1);
-
-      await page.keyboard.type('Test2');
-      await page.keyboard.press('Tab');
-      await expect(tag).toHaveCount(count + 2);
-
-      await page.keyboard.type('Social media');
-      await page.keyboard.press('Shift+Tab');
-      await expect(tag).toHaveCount(count + 3);
-
-      // 2 spaces don't work in this examples, possibly bug in the example
-      // await page.keyboard.type('Hello@gmail.com');
-      // await page.keyboard.press('Space');
-      // await page.keyboard.press('Space');
-      // await expect(tag).toHaveCount(count + 4);
-    });
-
-    await test.step('Verify editing mode not enaled by click on text', async () => {
-      await inputText.first().click();
-
-      await expect(inputValue).toHaveAttribute('value', '');
-    });
-
-    await test.step('Verify tag removes by click X', async () => {
-      while (await tagClose.count() > 0) {
-        await tagClose.first().click();
-      }
-
-      await expect(tagClose).toHaveCount(0);
+      await expect(page.locator('[data-ui-name="Button"]')).toBeFocused();
     });
   });
 
