@@ -76,7 +76,7 @@ const Demo = () => {
           selectedRows={selectedRows}
           onSelectedRowsChange={handleChangeSelectedRows}
           ref={tableRef}
-          headerProps={{ sticky: true, top: selectedRows.length ? 44 : 0 }}
+          headerProps={{ sticky: true, top: selectedRows.length ? 44 : 0, animationDuration: 200 }}
           columns={[
             { name: 'keyword', children: 'Keyword' },
             { name: 'kd', children: 'KD %' },

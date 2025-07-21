@@ -2,8 +2,8 @@ SHead, SGroupContainer {
   display: contents;
 }
 
-SHead > SColumn {
-  transition: top var(--intergalactic-duration-fast, 200) ease-out;
+SHead[animationDuration] > SColumn {
+  transition: top var(--animationDuration) ease-out;
 }
 
 SHead[sticky] SColumn, SHead[sticky] SGroup {

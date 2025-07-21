@@ -110,22 +110,28 @@ class HeadRoot<D extends DataTableData> extends Component<
   }
 
   get isIndeterminate() {
-    const { flatRows, persistedSelectedRows } = this.asProps;
+    const { flatRows, selectedRows } = this.asProps;
 
-    return flatRows.some((row) => persistedSelectedRows.has(row[UNIQ_ROW_KEY]));
+    return flatRows.some((row) => selectedRows?.includes(row[UNIQ_ROW_KEY]));
   }
 
   render() {
     const SHead = Root;
     const SHeadCheckboxCol = Head.Column;
-    const { Children, styles, getI18nText, children, treeColumns, selectedRows, sticky } = this.asProps;
+    const { Children, styles, getI18nText, children, treeColumns, selectedRows, sticky, animationDuration } = this.asProps;
 
     const areAllRowsSelected = this.areAllRowsSelected;
     const indeterminate = this.isIndeterminate && !areAllRowsSelected;
 
     return sstyled(styles)(
       <>
-        <SHead render={Box} role='row' aria-rowindex={1} sticky={sticky}>
+        <SHead
+          render={Box}
+          role='row'
+          aria-rowindex={1}
+          sticky={sticky}
+          animationDuration={animationDuration ? `${animationDuration}ms` : undefined}
+        >
           {selectedRows && (
             <SHeadCheckboxCol
               name={SELECT_ALL.toString()}

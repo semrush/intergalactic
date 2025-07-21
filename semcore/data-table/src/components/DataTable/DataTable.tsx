@@ -91,8 +91,6 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
   private headerNodesMap = new Map();
 
-  private persistedSelectedRows = new Set<UniqRowKey>();
-
   constructor(props: DataTableProps<D>) {
     super(props);
 
@@ -127,10 +125,6 @@ class DataTableRoot<D extends DataTableData> extends Component<
         this.forceUpdate();
       });
     }
-
-    if (selectedRows && selectedRows.length > 0) {
-      selectedRows.forEach(this.persistedSelectedRows.add, this.persistedSelectedRows);
-    }
   }
 
   componentDidUpdate(prevProps: any) {
@@ -151,7 +145,6 @@ class DataTableRoot<D extends DataTableData> extends Component<
         this.setSelectAllMessage(true);
       } else if (prevProps.selectedRows.length > 0 && selectedRows.length === 0) {
         this.setSelectAllMessage(false);
-        this.persistedSelectedRows.clear();
       }
     }
   }
@@ -236,13 +229,18 @@ class DataTableRoot<D extends DataTableData> extends Component<
       sideIndents,
       totalRows: this.totalRows,
       selectedRows,
-      persistedSelectedRows: this.persistedSelectedRows,
       flatRows: this.flatRows,
       onChangeSelectAll: (value, e) => {
-        const selectedRows = this.flatRows.map((row) => row[UNIQ_ROW_KEY]);
-        selectedRows.forEach(value ? this.persistedSelectedRows.add : this.persistedSelectedRows.delete, this.persistedSelectedRows);
+        const mappedFlatRows = this.flatRows.map((r) => r[UNIQ_ROW_KEY]);
+        const selectedRowsSet = new Set(selectedRows);
 
-        onSelectedRowsChange?.([...this.persistedSelectedRows], e);
+        if (value) {
+          mappedFlatRows.forEach(selectedRowsSet.add, selectedRowsSet);
+        } else {
+          mappedFlatRows.forEach(selectedRowsSet.delete, selectedRowsSet);
+        }
+
+        onSelectedRowsChange?.(Array.from(selectedRowsSet), e);
       },
       getFixedStyle: this.getFixedStyle,
       onCellClick: this.handleCellClick,
@@ -321,13 +319,15 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
     if (!selectedRows || !onSelectedRowsChange) return;
 
-    if (this.persistedSelectedRows.has(row[UNIQ_ROW_KEY])) {
-      this.persistedSelectedRows.delete(row[UNIQ_ROW_KEY]);
+    const selectedRowsSet = new Set(selectedRows);
+
+    if (selectedRowsSet.has(row[UNIQ_ROW_KEY])) {
+      selectedRowsSet.delete(row[UNIQ_ROW_KEY]);
     } else {
-      this.persistedSelectedRows.add(row[UNIQ_ROW_KEY]);
+      selectedRowsSet.add(row[UNIQ_ROW_KEY]);
     }
 
-    onSelectedRowsChange([...this.persistedSelectedRows], event, { selectedRowIndex, isSelected, row });
+    onSelectedRowsChange(Array.from(selectedRowsSet), event, { selectedRowIndex, isSelected, row });
   };
 
   setSelectAllMessage = (selectedAll: boolean) => {

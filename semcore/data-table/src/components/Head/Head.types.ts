@@ -22,6 +22,9 @@ export type DataTableHeadProps = {
 
   /** Enable scroll bar element in header */
   withScrollBar?: boolean;
+
+  /** Animation duration for a top property. When it's set adds animation for top changes */
+  animationDuration?: number;
 };
 
 export type HeadPropsInner<D extends DataTableData> = {
@@ -45,7 +48,6 @@ export type HeadPropsInner<D extends DataTableData> = {
   selectedRows?: UniqRowKey[];
   onChangeSelectAll?: (value: boolean, event?: React.SyntheticEvent<HTMLElement>) => void;
   flatRows: DTRow[];
-  persistedSelectedRows: Set<UniqRowKey>;
 
   getFixedStyle: (
     cell: Pick<DTColumn, 'name' | 'fixed'>,
