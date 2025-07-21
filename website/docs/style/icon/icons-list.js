@@ -1141,6 +1141,12 @@ const iconsList = {
       tags: ['fire', 'flame', 'огонь', 'danger', 'опасность', 'foster'],
     },
     {
+      name: 'Gift',
+      size: ['l', 'm'],
+      group: 'Status',
+      tags: ['gift', 'present', 'box', 'tie', 'bow', 'free', 'подарок', 'бантик', 'коробка', 'бесплатно'],
+    },
+    {
       name: 'Globe',
       size: ['l', 'm'],
       group: 'Status',
