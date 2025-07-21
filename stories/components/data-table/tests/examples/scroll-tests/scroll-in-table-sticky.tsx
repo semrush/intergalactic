@@ -1,7 +1,7 @@
 import { DataTable } from '@semcore/data-table';
 import React from 'react';
 
-export type ExampleDataTableProps = { loading: any };
+export type ExampleDataTableProps = { loading: boolean };
 
 const Demo = (props: ExampleDataTableProps) => {
   return (
@@ -86,7 +86,7 @@ const data = [
 ];
 
 export const defaultProps: ExampleDataTableProps = {
-  loading: undefined,
+  loading: false,
 };
 
 Demo.defaultProps = defaultProps;
