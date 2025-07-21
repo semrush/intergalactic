@@ -26,6 +26,7 @@ function Dots(props) {
     radius: radiusBase = 4,
     resolveColor,
     patterns,
+    onClick,
   } = props;
   const bisect = bisector((d) => d[x]).center;
   const [activeIndex, setActiveIndex] = React.useState(null);
@@ -52,6 +53,19 @@ function Dots(props) {
     }),
     [],
   );
+
+  const handlerOnClick = React.useCallback((e) => {
+    e.stopPropagation();
+
+    if (!onClick) return;
+
+    const [xScale] = scale;
+    const [pX] = eventToPoint(e, rootRef.current);
+    const vX = invert(xScale, pX);
+    const index = bisect(data, vX);
+
+    onClick(index, e);
+  }, [scale, data]);
 
   React.useEffect(() => {
     const unsubscribeMouseMoveRoot = eventEmitter.subscribe('onMouseMoveChart', (e) => {
@@ -130,7 +144,7 @@ function Dots(props) {
   }, []);
   const SDots = 'g';
   return sstyled(styles)(
-    <SDots duration={`${duration}ms`}>
+    <SDots duration={`${duration}ms`} onClickCapture={handlerOnClick}>
       <PatternSymbol
         color={resolveColor(color)}
         patternKey={color}

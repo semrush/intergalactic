@@ -5,7 +5,9 @@ import type React from 'react';
 
 import type { BaseChartProps } from './AbstractChart.type';
 
-export type DonutChartData = Record<string, number>;
+export type DataKey = string;
+
+export type DonutChartData = Record<DataKey, number>;
 
 export type DonutChartProps = BaseChartProps<DonutChartData> & {
   groupKey?: never;
@@ -14,6 +16,8 @@ export type DonutChartProps = BaseChartProps<DonutChartData> & {
   innerRadius?: number;
   halfsize?: boolean;
   innerLabel?: React.ReactNode;
+  /** Callback triggered when a user clicks on a pie */
+  onClickPie: (key: DataKey, e: React.SyntheticEvent) => void;
 };
 
 export type DonutChartType = Intergalactic.Component<typeof Flex, DonutChartProps>;

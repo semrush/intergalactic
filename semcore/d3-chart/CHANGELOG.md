@@ -2,6 +2,19 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.1.0] - 2025-07-23
+
+### Added
+
+- `onClickArea` handler for `Chart.Area`.
+- `onClickBubble` handler for `Chart.Bubble`.
+- `onClickPie` handler for `Chart.Donut`.
+- `onClickLine` handler for `Chart.Line`.
+- `onClickRadar` handler for `Chart.Radar`.
+- `onClickScatterItem` handler for `Chart.ScatterPlot`.
+- `onClickVennItem` handler for `Chart.Venn`.
+- `onClick` handlers for `Area`, `Bubble`, `Donut`, `Dots`, `Line`, `Radar`, `ScatterPlot`, `Venn`.
+
 ## [16.0.7] - 2025-07-03
 
 ### Fixed
