@@ -7,6 +7,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Added
 
 - Transition for the table header's `top` attribute.
+- New header prop `animationDuration`.
 
 ### Fixed
 

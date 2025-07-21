@@ -4077,9 +4077,7 @@
     "rawValue": "200",
     "computedValue": "200",
     "description": "Should be used for more complex effects (such as Dropdown or Accordion)",
-    "components": [
-      "data-table"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-duration-extra-fast",
