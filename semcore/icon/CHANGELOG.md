@@ -2,6 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.4.0] - 2025-07-21
+
+### Added
+
+- New icons: `TextBold`, `TextItalic`, `TextQuotes` and `TextUnderline`.
+
+### Changed
+
+- `Text` icon to visually match new text format icons.
+- `MathPlus` icon.
+
 ## [16.3.0] - 2025-07-18
 
 ### Added
