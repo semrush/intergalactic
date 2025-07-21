@@ -25,7 +25,7 @@ export type BulkTextareaProps<T extends string | string[]> = {
   minRows?: InputFieldProps<T>['minRows'];
   /** Maximum number of rows to display */
   maxRows?: InputFieldProps<T>['maxRows'];
-  /** A moment when a validation occurs */
+  /** An event when a validation occurs */
   validateOn?: InputFieldProps<T>['validateOn'];
   /** A function to valide the line */
   lineValidation?: InputFieldProps<T>['lineValidation'];
