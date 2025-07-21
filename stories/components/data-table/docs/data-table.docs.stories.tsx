@@ -6,7 +6,7 @@ import AccessToSetOfCellsExample from './examples/access-to-set-of-cells';
 import AccordionInsideTableExample from './examples/accordion-inside-table';
 import BaseExample from './examples/base';
 import BordersExample from './examples/borders';
-import CheckboxInTableExample from './examples/checkbox-in-table';
+import CheckboxInTableExample, { defaultProps as CheckboxInTableProps } from './examples/checkbox-in-table';
 import ColumnAlignmentExample from './examples/column-alignment';
 import ColumnSizeExample from './examples/column-sizes';
 import ColumnsMergingExample from './examples/columns-merging';
@@ -60,8 +60,14 @@ export const Borders: Story = {
   render: BordersExample,
 };
 
-export const CheckboxInTable: Story = {
+export const CheckboxInTable: StoryObj<typeof CheckboxInTableProps> = {
   render: CheckboxInTableExample,
+  argTypes: {
+    animationDuration: {
+      control: { type: 'number' },
+    },
+  },
+  args: CheckboxInTableProps,
 };
 
 export const ColumnAlignment: Story = {

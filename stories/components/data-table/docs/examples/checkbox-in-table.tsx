@@ -5,7 +5,9 @@ import Pagination from '@semcore/pagination';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
-const Demo = () => {
+type CheckboxExampleProps = { animationDuration: number };
+
+const Demo = (props: CheckboxExampleProps) => {
   const [selectedRows, setSelectedRows] = React.useState<string[]>([]);
   const [selectedRowsDisplay, setSelectedRowsDisplay] = React.useState(0);
   const [ariaMessage, setAriaMessage] = React.useState('');
@@ -76,7 +78,11 @@ const Demo = () => {
           selectedRows={selectedRows}
           onSelectedRowsChange={handleChangeSelectedRows}
           ref={tableRef}
-          headerProps={{ sticky: true, top: selectedRows.length ? 44 : 0, animationDuration: 200 }}
+          headerProps={{
+            sticky: true,
+            top: selectedRows.length ? 44 : 0,
+            animationDuration: props.animationDuration,
+          }}
           columns={[
             { name: 'keyword', children: 'Keyword' },
             { name: 'kd', children: 'KD %' },
@@ -121,5 +127,11 @@ const data = [
   { id: '22', keyword: 'buy dell laptop', kd: '53.1', cpc: '$5.40', vol: '19,600' },
   { id: '23', keyword: 'gap kids sale', kd: '34', cpc: '$1.10', vol: '5,300' },
 ];
+
+export const defaultProps: CheckboxExampleProps = {
+  animationDuration: 200,
+};
+
+Demo.defaultProps = defaultProps;
 
 export default Demo;
