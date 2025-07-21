@@ -48,7 +48,7 @@ Write your own styles for our components using one of the following methods:
 * CSS-in-JS
 
 ```jsx
-import { sstyled } from '@semcore/ui/core';
+import { sstyled } from '@semcore/core';
 const styles = sstyled.css`
   SWhatever {
     some-styles: 'Cool';
@@ -71,7 +71,7 @@ import styles from './custom.shadow.css';
 Pass the new styles to the `styles` property of our component:
 
 ```jsx
-import Button from '@semcore/ui/Button';
+import Button from '@semcore/button';
 export default (props) => <Button styles={styles} {...props} />;
 ```
 
@@ -90,8 +90,8 @@ Look at the source of styles in GitHub, styles are written in the same format.
 **You can use variables as properties:**
 
 ```jsx
-import { sstyled } from '@semcore/ui/core';
-import Button from '@semcore/ui/button';
+import { sstyled } from '@semcore/core';
+import Button from '@semcore/button';
 
 const styles = sstyled.css`
   SButton {

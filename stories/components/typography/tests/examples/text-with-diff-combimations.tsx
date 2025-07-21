@@ -1,4 +1,3 @@
-import { Flex, Box } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import React from 'react';
 

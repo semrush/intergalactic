@@ -2,6 +2,15 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.1.0] - 2025-07-14
+
+### Changed
+
+- Mobile breakpoint from 320px to 648px and other minor CSS changes to eliminate any implicit intermediate states.
+- Added `flex-wrap` to `Error.Controls` for better layout on small screens.
+- Default URL for the "Support Team" link from an email to "/company/contacts" in `ProjectNotFound`.
+- Slightly changed the grammar in the English text in `ProjectNotFound`.
+
 ## [16.0.5] - 2025-07-04
 
 ### Changed
