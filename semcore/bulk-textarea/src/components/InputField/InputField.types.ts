@@ -1,5 +1,3 @@
-/* eslint-disable @stylistic/quote-props */
-
 type PasteProps = {
   /**
    * @default '\n'
@@ -167,7 +165,7 @@ export type InputFieldProps<T extends string | string[]> = {
    * Internal
    */
   onErrorIndexChange: (errorIndex: number) => void;
-
+} & {
   /**
    * Internal
    */
