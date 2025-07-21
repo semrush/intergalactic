@@ -130,7 +130,7 @@ class HeadRoot<D extends DataTableData> extends Component<
           role='row'
           aria-rowindex={1}
           sticky={sticky}
-          animationDuration={animationDuration ? `${animationDuration}ms` : undefined}
+          use:animationDuration={animationDuration ? `${animationDuration}ms` : undefined}
         >
           {selectedRows && (
             <SHeadCheckboxCol
