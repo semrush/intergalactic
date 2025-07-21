@@ -129,7 +129,6 @@ class LineRoot extends Component {
           d={d3(data)}
           use:duration={`${duration}ms`}
           strokeDasharray={patterns ? resolvePatternDasharray(patternKey, patterns) : undefined}
-          __excludeProps={['onClick']}
           onClickCapture={this.handlerOnClick.bind(this)}
         />
         {duration && (

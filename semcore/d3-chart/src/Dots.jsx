@@ -65,7 +65,7 @@ function Dots(props) {
     const index = bisect(data, vX);
 
     onClick(index, e);
-  }, [scale, data]);
+  }, [scale, data, onClick]);
 
   React.useEffect(() => {
     const unsubscribeMouseMoveRoot = eventEmitter.subscribe('onMouseMoveChart', (e) => {
