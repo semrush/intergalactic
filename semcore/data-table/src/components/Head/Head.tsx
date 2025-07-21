@@ -125,7 +125,7 @@ class HeadRoot<D extends DataTableData> extends Component<
 
     return sstyled(styles)(
       <>
-        <SHead render={Box} role='row' aria-rowindex={1} use:sticky={sticky}>
+        <SHead render={Box} role='row' aria-rowindex={1} sticky={sticky}>
           {selectedRows && (
             <SHeadCheckboxCol
               name={SELECT_ALL.toString()}
