@@ -16,7 +16,7 @@ class RootProjectNotFound extends Component {
     icon: getIconPath('project_not_found'),
     projectsLink: '/projects',
     contactsLink: '/company/contacts',
-    supportTeamLink: 'mailto:mail@semrush.com',
+    supportTeamLink: '/company/contacts',
     titleTag: 'h2',
   };
 

@@ -126,6 +126,7 @@ class DonutRoot extends Component {
       d3ArcOut,
       duration: 500,
       paddingAngle,
+      innerRadius,
     };
   };
 

@@ -6,7 +6,7 @@ tabs: Design('notice'), A11y('notice-a11y'), API('notice-api'), Example('notice-
 ## Notice
 
 ```jsx
-import Notice from '@semcore/ui/notice';
+import Notice from '@semcore/notice';
 <Notice />;
 ```
 
@@ -17,7 +17,7 @@ import Notice from '@semcore/ui/notice';
 The component is inherited from `Box` and is used to insert a label in the left part of the notice (usually, an icon).
 
 ```jsx
-import Notice from '@semcore/ui/notice';
+import Notice from '@semcore/notice';
 <Notice.label />;
 ```
 
@@ -26,7 +26,7 @@ import Notice from '@semcore/ui/notice';
 The component is inherited from `Box` and is used to insert control components in the lower part of the notice. Usually, it's a button or a group of buttons.
 
 ```jsx
-import Notice from '@semcore/ui/notice';
+import Notice from '@semcore/notice';
 <Notice.Actions />;
 ```
 
@@ -35,7 +35,7 @@ import Notice from '@semcore/ui/notice';
 The component is inherited from `Box` and is used to insert content in the notice.
 
 ```jsx
-import Notice from '@semcore/ui/notice';
+import Notice from '@semcore/notice';
 <Notice.Content />;
 ```
 
@@ -44,7 +44,7 @@ import Notice from '@semcore/ui/notice';
 The component is inherited from `Button` and is used to insert the **Close** button.
 
 ```jsx
-import Notice from '@semcore/ui/notice';
+import Notice from '@semcore/notice';
 <Notice.Close />;
 ```
 
@@ -53,7 +53,7 @@ import Notice from '@semcore/ui/notice';
 The text content of the notice. Inherited from `Text`.
 
 ```jsx
-import Notice from '@semcore/ui/notice';
+import Notice from '@semcore/notice';
 <Notice.Text />;
 ```
 
@@ -62,7 +62,7 @@ import Notice from '@semcore/ui/notice';
 The title of the notice. Inherited from `Text`.
 
 ```jsx
-import Notice from '@semcore/ui/notice';
+import Notice from '@semcore/notice';
 <Notice.Title />;
 ```
 
@@ -71,7 +71,7 @@ import Notice from '@semcore/ui/notice';
 A more convenient component version with posibility to define features through props. For more details, [refer to the example](./notice-code#noticesmart).
 
 ```jsx
-import { NoticeSmart } from '@semcore/ui/notice';
+import { NoticeSmart } from '@semcore/notice';
 <NoticeSmart />;
 ```
 

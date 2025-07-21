@@ -64,18 +64,30 @@ test.describe('Loading states', () => {
 
     await page.setContent(htmlContent);
 
-    const rowCell = page.locator('div[data-ui-name="Body.Cell"]');
-
-    await expect(rowCell).toHaveAttribute('tabindex', '-1');
-    await expect(rowCell).toHaveAttribute('data-grouped-by', 'colgroup');
-    await expect(rowCell).toHaveAttribute('scope', 'colgroup');
-    await expect(rowCell).toHaveAttribute('aria-colspan', '5');
-
+    const cells = page.locator('div[data-ui-name="Body.Cell"]');
+    const firstRow = page.locator('[data-ui-name="Body.Row"]').first();
     const noData = page.locator('[data-ui-name="WidgetNoData"]');
-    await expect(noData).toHaveAttribute('role', 'status');
 
-    await page.keyboard.press('Tab');
-    await expect(page).toHaveScreenshot();
+    await test.step('Verify empty state attributes', async () => {
+      await expect(cells).toHaveAttribute('tabindex', '-1');
+      await expect(cells).toHaveAttribute('data-grouped-by', 'colgroup');
+      await expect(cells).toHaveAttribute('scope', 'colgroup');
+      await expect(cells).toHaveAttribute('aria-colspan', '5');
+      await expect(noData).toHaveAttribute('role', 'status');
+    });
+
+    await test.step('Verify styles on hover', async () => {
+      await firstRow.hover();
+      const background = await cells.first().evaluate((el) => getComputedStyle(el).backgroundColor);
+      expect(['rgba(0, 0, 0, 0)', 'transparent', 'rgb(255, 255, 255)']).toContain(background);
+    });
+
+    await test.step('Verify empty state focus styles', async () => {
+      await page.keyboard.press('Tab');
+      const background2 = await cells.first().evaluate((el) => getComputedStyle(el).backgroundColor);
+      expect(['rgba(0, 0, 0, 0)', 'transparent', 'rgb(255, 255, 255)']).toContain(background2);
+      await expect(page).toHaveScreenshot();
+    });
   });
 });
 
