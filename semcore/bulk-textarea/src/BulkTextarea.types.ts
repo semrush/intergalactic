@@ -9,7 +9,7 @@ import type { InputFieldProps } from './components/InputField/InputField';
 export type BulkTextareaProps<T extends string | string[]> = {
   /** The current value */
   value?: InputFieldProps<T>['value'];
-  /** Callback when the value changes */
+  /** Callback triggered when the onBlur event is emmited */
   onChange?: InputFieldProps<T>['onBlur'];
   /** Placeholder text */
   placeholder?: InputFieldProps<T>['placeholder'];
