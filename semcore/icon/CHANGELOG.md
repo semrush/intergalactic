@@ -11,6 +11,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - `Text` icon to visually match new text format icons.
+- `MathPlus` icon.
 
 ## [16.3.0] - 2025-07-18
 
