@@ -2807,6 +2807,16 @@
       "import": "./Globe/l/index.mjs",
       "types": "./Globe/l/index.d.ts"
     },
+    "./Gift/m": {
+      "require": "./Gift/m/index.js",
+      "import": "./Gift/m/index.mjs",
+      "types": "./Gift/m/index.d.ts"
+    },
+    "./Gift/l": {
+      "require": "./Gift/l/index.js",
+      "import": "./Gift/l/index.mjs",
+      "types": "./Gift/l/index.d.ts"
+    },
     "./Google/m": {
       "require": "./Google/m/index.js",
       "import": "./Google/m/index.mjs",

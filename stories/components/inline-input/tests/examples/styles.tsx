@@ -1,122 +1,46 @@
 import { Flex } from '@semcore/flex-box';
 import SerpM from '@semcore/icon/Serp/m';
 import InlineInput from '@semcore/inline-input';
-import { Text } from '@semcore/typography';
+import type { InlineInputProps } from 'inline-input/lib/types';
+import type { InputNumberControlsProps } from 'input-number/lib/types';
 import React from 'react';
 
-const Example = () => {
+type ExampleInputTagsProps = InlineInputProps & InputNumberControlsProps;
+
+const Styles = (props: ExampleInputTagsProps) => {
+  const { disabled, loading, state, autoFocus, defaultValue, placeholder, showControls, onBlurBehavior } = props;
+
   return (
     <Flex direction='row' gap={2}>
       <Flex direction='column' gap={2} w={300} data-testid='default'>
         <label htmlFor='simple'>Default</label>
 
         <Flex direction='row' gap={2}>
-          <Text size={300} w={150}>Simple</Text>
-          <InlineInput onBlurBehavior='cancel' placeholder='Placeholder'>
-            <InlineInput.Value id='simple' autoFocus defaultValue='Default value' />
+          <InlineInput onBlurBehavior={onBlurBehavior} disabled={disabled} loading={loading} state={state}>
+            <InlineInput.Value id='simple' defaultValue={defaultValue} autoFocus={autoFocus} placeholder={placeholder} />
             <InlineInput.ConfirmControl />
             <InlineInput.CancelControl />
           </InlineInput>
         </Flex>
 
         <Flex direction='row' gap={2}>
-          <Text size={300} w={150}>Invalid</Text>
-          <InlineInput onBlurBehavior='confirm' state='invalid'>
-            <InlineInput.Value id='invalid' placeholder='Placeholder' />
-            <InlineInput.ConfirmControl />
-            <InlineInput.CancelControl />
-          </InlineInput>
-        </Flex>
-
-        <Flex direction='row' gap={2}>
-          <Text size={300} w={150}>Valid</Text>
-          <InlineInput onBlurBehavior='none' state='valid'>
-            <InlineInput.Value id='valid' loading />
-            <InlineInput.ConfirmControl />
-            <InlineInput.CancelControl />
-          </InlineInput>
-        </Flex>
-
-        <Flex direction='row' gap={2}>
-          <Text size={300} w={250}>Simple loading</Text>
-          <InlineInput onBlurBehavior='cancel' loading placeholder='Placeholder'>
-            <InlineInput.Value id='loading' />
-            <InlineInput.ConfirmControl />
-            <InlineInput.CancelControl />
-          </InlineInput>
-        </Flex>
-
-        <Flex direction='row' gap={2}>
-          <Text size={300} w={250}>Invalid loading</Text>
-          <InlineInput onBlurBehavior='cancel' loading state='invalid'>
-            <InlineInput.Value id='invalid-loading' />
-            <InlineInput.ConfirmControl />
-            <InlineInput.CancelControl />
-          </InlineInput>
-        </Flex>
-
-        <Flex direction='row' gap={2}>
-          <Text size={300} w={250}>Valid loading</Text>
-          <InlineInput onBlurBehavior='cancel' loading state='valid'>
-            <InlineInput.Value id='valid-loading' placeholder='Placeholder' />
-            <InlineInput.ConfirmControl />
-            <InlineInput.CancelControl />
-          </InlineInput>
-        </Flex>
-
-        <Flex direction='row' gap={2}>
-          <Text size={300} w={250}>Value disabled</Text>
-          <InlineInput onBlurBehavior='cancel'>
-            <InlineInput.Value id='disabled' disabled />
-            <InlineInput.ConfirmControl />
-            <InlineInput.CancelControl />
-          </InlineInput>
-        </Flex>
-
-        <Flex direction='row' gap={2}>
-          <Text size={300} w={250}>Invalid disabled</Text>
-          <InlineInput onBlurBehavior='cancel' disabled state='invalid'>
-            <InlineInput.Value id='invalid-disabled' placeholder='Placeholder' />
-            <InlineInput.ConfirmControl />
-            <InlineInput.CancelControl />
-          </InlineInput>
-        </Flex>
-
-        <Flex direction='row' gap={2}>
-          <Text size={300} w={250}>Valid disabled</Text>
-          <InlineInput onBlurBehavior='cancel' disabled state='valid'>
-            <InlineInput.Value id='valid-disabled' />
-            <InlineInput.ConfirmControl />
-            <InlineInput.CancelControl />
-          </InlineInput>
-        </Flex>
-
-        <Flex direction='row' gap={2}>
-          <label htmlFor='primitive'>Primitve</label>
-          <br />
-          <InlineInput>
-            <InlineInput.Value id='primitive' placeholder='Placeholder' />
-            <InlineInput.ConfirmControl />
-            <InlineInput.CancelControl />
-          </InlineInput>
-          <br />
-        </Flex>
-
-        <Flex direction='row' gap={2}>
-          <Text size={300} w={150}>Constant placeholder</Text>
-          <InlineInput w={100}>
+          <InlineInput onBlurBehavior={onBlurBehavior} state={state} loading={loading}>
             <InlineInput.Addon>I don't care, I punk:</InlineInput.Addon>
-            <InlineInput.Value id='const-placeholder' />
+            <InlineInput.Value id='constant-placeholder' defaultValue={defaultValue} disabled={disabled} placeholder={placeholder} />
+            <InlineInput.ConfirmControl />
+            <InlineInput.CancelControl />
           </InlineInput>
         </Flex>
 
         <Flex direction='row' gap={2}>
-          <InlineInput>
+          <InlineInput onBlurBehavior={onBlurBehavior} disabled={disabled} loading={loading} state={state}>
             <InlineInput.Addon tag='label' htmlFor='number-example'>
               Enter score:
             </InlineInput.Addon>
             <InlineInput.NumberValue id='number-example' defaultValue={100} />
-            <InlineInput.NumberControls showControls />
+            <InlineInput.NumberControls showControls={false} />
+            <InlineInput.ConfirmControl />
+            <InlineInput.CancelControl />
           </InlineInput>
         </Flex>
       </Flex>
@@ -125,118 +49,26 @@ const Example = () => {
         <label htmlFor='simple'>With addon</label>
 
         <Flex direction='row' gap={2}>
-          <Text size={300} w={150}>Simple</Text>
-          <InlineInput onBlurBehavior='cancel'>
+          <InlineInput onBlurBehavior={onBlurBehavior} disabled={disabled} loading={loading} state={state}>
             <InlineInput.Addon tag={SerpM} />
-            <InlineInput.Value id='simple' placeholder='Placeholder' />
+            <InlineInput.Value id='simple' defaultValue={defaultValue} placeholder={placeholder} />
             <InlineInput.ConfirmControl />
             <InlineInput.CancelControl />
           </InlineInput>
         </Flex>
 
         <Flex direction='row' gap={2}>
-          <Text size={300} w={150}>Invalid</Text>
-          <InlineInput onBlurBehavior='cancel' state='invalid'>
-            <InlineInput.Addon tag={SerpM} />
-            <InlineInput.Value id='invalid' placeholder='Placeholder' />
-            <InlineInput.ConfirmControl />
-            <InlineInput.CancelControl />
-          </InlineInput>
-        </Flex>
-
-        <Flex direction='row' gap={2}>
-          <Text size={300} w={150}>Valid</Text>
-          <InlineInput onBlurBehavior='cancel' state='valid'>
-            <InlineInput.Addon tag={SerpM} />
-            <InlineInput.Value id='valid' />
-            <InlineInput.ConfirmControl />
-            <InlineInput.CancelControl />
-          </InlineInput>
-        </Flex>
-
-        <Flex direction='row' gap={2}>
-          <Text size={300} w={250}>Simple loading</Text>
-          <InlineInput onBlurBehavior='cancel' loading>
-            <InlineInput.Addon tag={SerpM} />
-            <InlineInput.Value id='loading' placeholder='Placeholder' />
-            <InlineInput.ConfirmControl />
-            <InlineInput.CancelControl />
-          </InlineInput>
-        </Flex>
-
-        <Flex direction='row' gap={2}>
-          <Text size={300} w={250}>Invalid loading</Text>
-          <InlineInput onBlurBehavior='cancel' loading state='invalid'>
-            <InlineInput.Addon tag={SerpM} />
-            <InlineInput.Value id='invalid-loading' placeholder='Placeholder' />
-            <InlineInput.ConfirmControl />
-            <InlineInput.CancelControl />
-          </InlineInput>
-        </Flex>
-
-        <Flex direction='row' gap={2}>
-          <Text size={300} w={250}>Valid loading</Text>
-          <InlineInput onBlurBehavior='cancel' loading state='valid'>
-            <InlineInput.Addon tag={SerpM} />
-            <InlineInput.Value id='valid-loading' />
-            <InlineInput.ConfirmControl />
-            <InlineInput.CancelControl />
-          </InlineInput>
-        </Flex>
-
-        <Flex direction='row' gap={2}>
-          <Text size={300} w={250}>Simple disabled</Text>
-          <InlineInput onBlurBehavior='cancel' disabled>
-            <InlineInput.Addon tag={SerpM} />
-            <InlineInput.Value id='disabled' />
-            <InlineInput.ConfirmControl />
-            <InlineInput.CancelControl />
-          </InlineInput>
-        </Flex>
-
-        <Flex direction='row' gap={2}>
-          <Text size={300} w={250}>Invalid disabled</Text>
-          <InlineInput onBlurBehavior='cancel' disabled state='invalid'>
-            <InlineInput.Addon tag={SerpM} />
-            <InlineInput.Value id='invalid-disabled' placeholder='Placeholder' />
-            <InlineInput.ConfirmControl />
-            <InlineInput.CancelControl />
-          </InlineInput>
-        </Flex>
-
-        <Flex direction='row' gap={2}>
-          <Text size={300} w={250}>Valid disabled</Text>
-          <InlineInput onBlurBehavior='cancel' disabled state='valid'>
-            <InlineInput.Addon tag={SerpM} />
-            <InlineInput.Value id='valid-disabled' />
-            <InlineInput.ConfirmControl />
-            <InlineInput.CancelControl />
-          </InlineInput>
-        </Flex>
-
-        <Flex direction='row' gap={2}>
-          <label htmlFor='primitive'>Primitve</label>
-          <br />
-          <InlineInput>
-            <InlineInput.Addon tag={SerpM} />
-            <InlineInput.Value id='primitive' />
-            <InlineInput.ConfirmControl />
-            <InlineInput.CancelControl />
-          </InlineInput>
-          <br />
-        </Flex>
-
-        <Flex direction='row' gap={2}>
-          <Text size={300} w={150}>Constant placeholder</Text>
-          <InlineInput w={100}>
+          <InlineInput onBlurBehavior={onBlurBehavior} disabled={disabled} loading={loading} state={state}>
             <InlineInput.Addon tag={SerpM} />
             <InlineInput.Addon>I don't care, I punk:</InlineInput.Addon>
             <InlineInput.Value id='const-placeholder' />
+            <InlineInput.ConfirmControl />
+            <InlineInput.CancelControl />
           </InlineInput>
         </Flex>
 
         <Flex direction='row' gap={2}>
-          <InlineInput>
+          <InlineInput onBlurBehavior={onBlurBehavior} disabled={disabled} loading={loading} state={state}>
             <InlineInput.Addon tag={SerpM} />
             <InlineInput.Addon tag='label' htmlFor='number-example'>
               Enter score:
@@ -251,79 +83,20 @@ const Example = () => {
         <label htmlFor='simple'>No controls</label>
 
         <Flex direction='row' gap={2}>
-          <Text size={300} w={150}>Simple</Text>
-          <InlineInput onBlurBehavior='cancel'>
-            <InlineInput.Value id='simple' placeholder='Placeholder' />
+          <InlineInput onBlurBehavior={onBlurBehavior} disabled={disabled} loading={loading} state={state}>
+            <InlineInput.Value id='simple' defaultValue={defaultValue} placeholder={placeholder} />
           </InlineInput>
         </Flex>
 
         <Flex direction='row' gap={2}>
-          <Text size={300} w={150}>Invalid</Text>
-          <InlineInput onBlurBehavior='cancel' state='invalid'>
-            <InlineInput.Value id='invalid' placeholder='Placeholder' />
+          <InlineInput onBlurBehavior={onBlurBehavior} disabled={disabled} loading={loading} state={state}>
+            <InlineInput.Addon>I don't care, I punk:</InlineInput.Addon>
+            <InlineInput.Value id='const-placeholder' />
           </InlineInput>
         </Flex>
 
         <Flex direction='row' gap={2}>
-          <Text size={300} w={150}>Valid</Text>
-          <InlineInput onBlurBehavior='cancel' state='valid'>
-            <InlineInput.Value id='valid' />
-          </InlineInput>
-        </Flex>
-
-        <Flex direction='row' gap={2}>
-          <Text size={300} w={250}>Simple loading</Text>
-          <InlineInput onBlurBehavior='cancel' loading>
-            <InlineInput.Value id='loading' placeholder='Placeholder' />
-          </InlineInput>
-        </Flex>
-
-        <Flex direction='row' gap={2}>
-          <Text size={300} w={250}>Invalid loading</Text>
-          <InlineInput onBlurBehavior='cancel' loading state='invalid'>
-            <InlineInput.Value id='invalid-loading' placeholder='Placeholder' />
-          </InlineInput>
-        </Flex>
-
-        <Flex direction='row' gap={2}>
-          <Text size={300} w={250}>Valid loading</Text>
-          <InlineInput onBlurBehavior='cancel' loading state='valid'>
-            <InlineInput.Value id='valid-loading' />
-          </InlineInput>
-        </Flex>
-
-        <Flex direction='row' gap={2}>
-          <Text size={300} w={250}>Simple disabled</Text>
-          <InlineInput onBlurBehavior='cancel' disabled>
-            <InlineInput.Value id='disabled' />
-          </InlineInput>
-        </Flex>
-
-        <Flex direction='row' gap={2}>
-          <Text size={300} w={250}>Invalid disabled</Text>
-          <InlineInput onBlurBehavior='cancel' disabled state='invalid'>
-            <InlineInput.Value id='invalid-disabled' placeholder='Placeholder' />
-          </InlineInput>
-        </Flex>
-
-        <Flex direction='row' gap={2}>
-          <Text size={300} w={250}>Valid disabled</Text>
-          <InlineInput onBlurBehavior='cancel' disabled state='valid'>
-            <InlineInput.Value id='valid-disabled' />
-          </InlineInput>
-        </Flex>
-
-        <Flex direction='row' gap={2}>
-          <label htmlFor='primitive'>Primitve</label>
-          <br />
-          <InlineInput>
-            <InlineInput.Value id='primitive' />
-          </InlineInput>
-          <br />
-        </Flex>
-
-        <Flex direction='row' gap={2}>
-          <InlineInput>
+          <InlineInput onBlurBehavior={onBlurBehavior} disabled={disabled} loading={loading} state={state}>
             <InlineInput.Addon tag={SerpM} />
             <InlineInput.Addon tag='label' htmlFor='number-example'>
               Enter score:
@@ -337,6 +110,17 @@ const Example = () => {
   );
 };
 
-const Demo = Example;
+export const stylesDefaultProps: ExampleInputTagsProps = {
+  disabled: false,
+  loading: undefined,
+  state: undefined,
+  autoFocus: true,
+  defaultValue: 'John Doe',
+  placeholder: 'Placeholder',
+  showControls: true,
+  onBlurBehavior: 'none',
+};
 
-export default Demo;
+Styles.defaultProps = stylesDefaultProps;
+
+export default Styles;

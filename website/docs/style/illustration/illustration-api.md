@@ -6,7 +6,7 @@ tabs: Design('illustration'), A11y('illustration-a11y'), API('illustration-api')
 ## Illustration
 
 ```jsx
-import Coffee from '@semcore/ui/illustration/Coffee';
+import Coffee from '@semcore/illustration/Coffee';
 <Coffee />;
 ```
 
@@ -17,7 +17,7 @@ import Coffee from '@semcore/ui/illustration/Coffee';
 Any illustration can be obtained using a template.
 
 ```js
-import IllustrationName from '@semcore/ui/illustration/illustrationName';
+import IllustrationName from '@semcore/illustration/illustrationName';
 ```
 
 ## getIllustrationPath
