@@ -94,8 +94,7 @@ SDropdownPopper {
     min-height: 40px;
 
     &[isMenuItemCheckbox] {
-      padding-left: calc(var(--intergalactic-spacing-3x, 12px) * 2 + 16px + 2px);
-      /* padding*2 (parent item and from checkbox to content) + checkboxWidth + border*2 */
+      padding-left: calc(var(--intergalactic-spacing-3x, 12px) * 2 + 16px + 2px); /* padding*2 (parent item and from checkbox to content) + checkboxWidth + border*2 */
 
       &::before,
       &::after {
@@ -114,8 +113,7 @@ SDropdownPopper {
     min-height: 32px;
 
     &[isMenuItemCheckbox] {
-      padding-left: calc(var(--intergalactic-spacing-2x, 8px) * 2 + 16px + 2px);
-      /* padding*2 (parent item and from checkbox to content) + checkboxWidth + border*2 */
+      padding-left: calc(var(--intergalactic-spacing-2x, 8px) * 2 + 16px + 2px); /* padding*2 (parent item and from checkbox to content) + checkboxWidth + border*2 */
 
       &::before,
       &::after {

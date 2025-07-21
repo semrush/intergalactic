@@ -2134,6 +2134,7 @@
       "d3-chart",
       "date-picker",
       "dropdown",
+      "dropdown-menu",
       "format-text",
       "inline-input",
       "input",
@@ -2144,23 +2145,12 @@
     ]
   },
   {
-    "name": "--intergalactic-keyboard-focus-outline-invert",
-    "type": "color",
-    "rawValue": "rgba({gray.white}, 0.8)",
-    "computedValue": "rgba(255, 255, 255, 0.8)",
-    "description": "Color for default keyboard focus outline styles to use on the dark and color background.",
-    "components": [
-      "wizard"
-    ]
-  },
-  {
     "name": "--intergalactic-keyboard-focus",
     "type": "boxShadow",
     "rawValue": "0px 0px 0px 3px rgba({keyboard-focus.outline}, 0.5)",
     "computedValue": "0px 0px 0px 3px rgba(0, 143, 248, 0.5)",
     "description": "Default keyboard focus box-shadow styles.",
     "components": [
-      "dropdown-menu",
       "fullscreen-modal",
       "input-tags",
       "tag"
@@ -2212,9 +2202,19 @@
     "components": []
   },
   {
+    "name": "--intergalactic-keyboard-focus-invert-outline",
+    "type": "color",
+    "rawValue": "rgba({gray.white}, 0.8)",
+    "computedValue": "rgba(255, 255, 255, 0.8)",
+    "description": "Color for default keyboard focus outline styles to use on the dark and color background.",
+    "components": [
+      "wizard"
+    ]
+  },
+  {
     "name": "--intergalactic-keyboard-focus-invert",
     "type": "boxShadow",
-    "rawValue": "0px 0px 0px 3px {keyboard-focus.outline-invert}",
+    "rawValue": "0px 0px 0px 3px {keyboard-focus-invert.outline}",
     "computedValue": "0px 0px 0px 3px rgba(255, 255, 255, 0.8)",
     "description": "Default keyboard focus styles for using with dark background.",
     "components": []
@@ -4094,6 +4094,7 @@
       "date-picker",
       "drag-and-drop",
       "dropdown",
+      "dropdown-menu",
       "feature-highlight",
       "inline-input",
       "input",

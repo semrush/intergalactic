@@ -1516,11 +1516,6 @@
         "value": "{blue.300}",
         "type": "color",
         "description": "Color for default keyboard focus outline styles."
-      },
-      "outline-invert": {
-        "value": "rgba({gray.white}, 0.8)",
-        "type": "color",
-        "description": "Color for default keyboard focus outline styles to use on the dark and color background."
       }
     },
     "keyboard-focus-invalid": {
@@ -1544,9 +1539,14 @@
       }
     },
     "keyboard-focus-invert": {
-      "value": "0px 0px 0px 3px {keyboard-focus.outline-invert}",
+      "value": "0px 0px 0px 3px {keyboard-focus-invert.outline}",
       "type": "boxShadow",
-      "description": "Default keyboard focus styles for using with dark background."
+      "description": "Default keyboard focus styles for using with dark background.",
+      "outline": {
+        "value": "rgba({gray.white}, 0.8)",
+        "type": "color",
+        "description": "Color for default keyboard focus outline styles to use on the dark and color background."
+      }
     },
     "base": {
       "value": "Inter",
