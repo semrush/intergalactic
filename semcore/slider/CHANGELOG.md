@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.5] - 2025-07-07
+
+### Fixed
+
+- `Slider` didn't respond to Home and End keyboard keys.
+
 ## [16.0.4] - 2025-07-04
 
 ### Changed
