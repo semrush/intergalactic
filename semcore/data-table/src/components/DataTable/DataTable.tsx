@@ -299,7 +299,6 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
   handleCellClick = (e: React.SyntheticEvent, opt: { rowIndex: number; colIndex: number; row?: DTRow }) => {
     if (lastInteraction.isMouse()) {
-      console.log('click on cell in data table handler', opt);
       this.initFocusableCell([this.hasFocusableInHeader() ? opt.rowIndex + 1 : opt.rowIndex, opt.colIndex]);
     }
   };

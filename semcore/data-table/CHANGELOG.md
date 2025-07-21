@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.8] - 2025-07-21
+
+### Fixed
+
+- Usage of `changeSortSize` property with multiple columns.
+
 ## [16.0.7] - 2025-07-08
 
 ### Fixed
