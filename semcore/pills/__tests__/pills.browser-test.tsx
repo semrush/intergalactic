@@ -113,6 +113,14 @@ test.describe('Visual', () => {
     await page.setContent(htmlContent);
     await expect(page).toHaveScreenshot();
   });
+
+  test('Verify pills with counter', async ({ page }) => {
+    const standPath = 'stories/components/counter/docs/examples/counter_in_pills.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+    await expect(page).toHaveScreenshot();
+  });
 });
 
 test.describe('Functional', () => {
