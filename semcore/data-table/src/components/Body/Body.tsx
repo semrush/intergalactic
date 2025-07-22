@@ -1,18 +1,18 @@
 import { Box } from '@semcore/base-components';
 import { ButtonLink } from '@semcore/button';
-import { Component, createComponent, type Intergalactic, Root, sstyled } from '@semcore/core';
+import { Component, createComponent, Root, sstyled } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import { isInteractiveElement } from '@semcore/core/lib/utils/isInteractiveElement';
 import ChevronRightM from '@semcore/icon/ChevronRight/m';
 import Spin from '@semcore/spin';
 import * as React from 'react';
 
-import type { BodyPropsInner, DataTableBodyProps } from './Body.types';
+import type { BodyPropsInner, DataTableBodyProps, DataTableBodyType } from './Body.types';
 import { Cell } from './Cell';
-import type { DataTableCellProps } from './Cell.types';
+import type { DataTableCellProps, DataTableCellType } from './Cell.types';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
 import { Row } from './Row';
-import type { DataTableRowProps, DTRow, RowPropsInner, UniqRowKey } from './Row.types';
+import type { DataTableRowType, DTRow, RowPropsInner } from './Row.types';
 import style from './style.shadow.css';
 import { ACCORDION, ROW_GROUP, ROW_INDEX, UNIQ_ROW_KEY } from '../DataTable/DataTable';
 import type { DTValue } from '../DataTable/DataTable.types';
@@ -20,11 +20,11 @@ import type { DTValue } from '../DataTable/DataTable.types';
 const ROWS_BUFFER = 20;
 const APROX_ROWS_ON_PAGE = 20;
 
-type State = {
-  expandedForAnimation: Set<UniqRowKey>;
+type State<DataKeyType> = {
+  expandedForAnimation: Set<DataKeyType>;
 };
 
-class BodyRoot extends Component<DataTableBodyProps, {}, State, [], BodyPropsInner> {
+class BodyRoot<DataKeyType> extends Component<DataTableBodyProps<DataKeyType>, {}, State<DataKeyType>, [], BodyPropsInner<DataKeyType>> {
   static displayName = 'Body';
   static style = style;
 
@@ -33,18 +33,18 @@ class BodyRoot extends Component<DataTableBodyProps, {}, State, [], BodyPropsInn
   indexForDownIterate = 0;
   indexForUpIterate = 0;
 
-  state: State = {
+  state: State<DataKeyType> = {
     expandedForAnimation: new Set(),
   };
 
-  handleRef = (index: number, row: DTRow) => (node: HTMLElement | null) => {
+  handleRef = (index: number, row: DTRow<DataKeyType>) => (node: HTMLElement | null) => {
     if (!this.rowsHeightMap.has(index) && node) {
       this.rowsHeightMap.set(index, [0, 0, node]);
       this.setRowHeight(index, row);
     }
   };
 
-  handleExpandRow = (row: DTRow, index: number) => {
+  handleExpandRow = (row: DTRow<DataKeyType>, index: number) => {
     const { accordionDuration } = this.asProps;
     const openDuration = Array.isArray(accordionDuration)
       ? accordionDuration[0]
@@ -84,19 +84,19 @@ class BodyRoot extends Component<DataTableBodyProps, {}, State, [], BodyPropsInn
     }
   };
 
-  handleClickRow = (row: DTRow, index: number) => (e: React.SyntheticEvent<HTMLElement>) => {
+  handleClickRow = (row: DTRow<DataKeyType>, index: number) => (e: React.SyntheticEvent<HTMLElement>) => {
     if (!isInteractiveElement(e.target)) {
       this.handleExpandRow(row, index);
     }
   };
 
-  handleClickCell = (e: React.SyntheticEvent<HTMLElement>, opt: { row: DTRow; rowIndex: number }) => {
+  handleClickCell = (e: React.SyntheticEvent<HTMLElement>, opt: { row: DTRow<DataKeyType>; rowIndex: number }) => {
     if (!isInteractiveElement(e.target)) {
       this.handleExpandRow(opt.row, opt.rowIndex);
     }
   };
 
-  getRowProps(props: { row: DTRow; mergedRow?: boolean }): RowPropsInner {
+  getRowProps(props: { row: DTRow<DataKeyType>; mergedRow?: boolean }): RowPropsInner<DataKeyType> {
     const {
       use,
       gridTemplateAreas,
@@ -175,7 +175,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, State, [], BodyPropsInn
     };
   }
 
-  getCellProps(props: DataTableCellProps) {
+  getCellProps(props: DataTableCellProps<DataKeyType>) {
     const {
       use,
       renderCell,
@@ -422,7 +422,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, State, [], BodyPropsInn
     startIndex = startIndex === -1 ? 0 : startIndex;
     const rowMarginTop = this.rowsHeightMap.get(startIndex - 1)?.[1];
 
-    let emptyRow: DTRow | null = null;
+    let emptyRow: DTRow<string> | null = null;
 
     if (rowsToRender.length === 0) {
       emptyRow = {
@@ -450,7 +450,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, State, [], BodyPropsInn
                 {row.map((item, i) => {
                   return (
                     <Body.Row
-                      key={item[UNIQ_ROW_KEY]}
+                      key={item[UNIQ_ROW_KEY]?.toString()}
                       row={item}
                       mergedRow={i > 0 ? true : false}
                     />
@@ -461,7 +461,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, State, [], BodyPropsInn
           }
           return (
             <Body.Row
-              key={row[UNIQ_ROW_KEY]}
+              key={row[UNIQ_ROW_KEY]?.toString()}
               row={row}
               ref={virtualScroll ? this.handleRef(startIndex + index, row) : undefined}
             />
@@ -494,7 +494,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, State, [], BodyPropsInn
     );
   }
 
-  private setRowHeight(index: number, row: DTRow) {
+  private setRowHeight(index: number, row: DTRow<DataKeyType>) {
     const { expandedRows } = this.asProps;
     const node = this.rowsHeightMap.get(index)?.[2];
     const firstChild =
@@ -515,7 +515,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, State, [], BodyPropsInn
 export const Body = createComponent(BodyRoot, {
   Row,
   Cell,
-}) as Intergalactic.Component<'div', DataTableBodyProps> & {
-  Row: Intergalactic.Component<'div', DataTableRowProps>;
-  Cell: Intergalactic.Component<'div', DataTableCellProps>;
+}) as DataTableBodyType & {
+  Row: DataTableRowType;
+  Cell: DataTableCellType;
 };

@@ -36,13 +36,17 @@ type State = {
   sortVisible: boolean;
 };
 
-export class Column<D extends DataTableData> extends Component<
-  DataTableColumnProps,
-  {},
-  {},
-  [],
-  ColumnPropsInner<D>
-> {
+export class Column<
+  Data extends DataTableData,
+  DataKey extends keyof Data[number],
+  DataKeyType extends Data[number][DataKey],
+> extends Component<
+    DataTableColumnProps,
+    {},
+    {},
+    [],
+    ColumnPropsInner<Data, DataKey, DataKeyType>
+  > {
   static displayName = 'Column';
   static style = style;
 
@@ -74,7 +78,7 @@ export class Column<D extends DataTableData> extends Component<
     }
   }
 
-  componentDidUpdate(prevProps: DataTableColumnProps & ColumnPropsInner<D>): void {
+  componentDidUpdate(prevProps: DataTableColumnProps & ColumnPropsInner<Data, DataKey, DataKeyType>): void {
     if (
       this.asProps.changeSortSize &&
       canUseDOM() &&

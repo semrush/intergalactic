@@ -1,13 +1,14 @@
+import type { Intergalactic } from '@semcore/ui/core';
 import type * as React from 'react';
 
 import type { CellPropsInner, Theme } from './Cell.types';
-import type { DTRow, UniqRowKey } from './Row.types';
+import type { DTRow } from './Row.types';
 import type { DTUse, VirtualScroll } from '../DataTable/DataTable.types';
 import type { DTColumn } from '../Head/Column.types';
 
-export type CellRenderProps = {
+export type CellRenderProps<DataKeyType> = {
   dataKey: string;
-  row: DTRow;
+  row: DTRow<DataKeyType>;
   column: DTColumn;
   rowIndex: number;
   columnIndex: number;
@@ -18,20 +19,20 @@ export type CellRenderProps = {
   isMergedColumns: boolean;
 };
 
-export type DataTableBodyProps = {
+export type DataTableBodyProps<DataKeyType> = {
   renderCell?: (
-    props: CellRenderProps,
+    props: CellRenderProps<DataKeyType>,
   ) => React.ReactNode | (Record<string, any> & { theme?: Theme });
 
   rowProps?: (
-    row: DTRow,
+    row: DTRow<DataKeyType>,
     rowIndex: number,
   ) => (Record<string, any> & { theme?: Theme }) | undefined;
 };
 
-export type BodyPropsInner = DataTableBodyProps & {
-  rows: Array<DTRow | DTRow[]>;
-  flatRows: DTRow[];
+export type BodyPropsInner<DataKeyType> = DataTableBodyProps<DataKeyType> & {
+  rows: Array<DTRow<DataKeyType> | DTRow<DataKeyType>[]>;
+  flatRows: DTRow<DataKeyType>[];
   columns: DTColumn[];
   use: DTUse;
   compact: boolean;
@@ -40,8 +41,8 @@ export type BodyPropsInner = DataTableBodyProps & {
   loading?: boolean;
   headerHeight: number;
   getI18nText: (key: string) => string;
-  expandedRows: Set<string>;
-  onExpandRow: (row: DTRow) => void;
+  expandedRows: Set<DataKeyType>;
+  onExpandRow: (row: DTRow<DataKeyType>) => void;
   spinnerRef: React.RefObject<HTMLDivElement>;
   tableContainerRef: React.RefObject<HTMLDivElement>;
   tableRef: React.RefObject<HTMLDivElement>;
@@ -51,15 +52,15 @@ export type BodyPropsInner = DataTableBodyProps & {
   virtualScroll?: VirtualScroll;
   hasGroups: boolean;
   uid: string;
-  rowProps?: (row: DTRow, rowIndex: number) => Record<string, any> | undefined;
-  renderCell?: (props: CellRenderProps) => React.ReactNode | Record<string, any>;
+  rowProps?: (row: DTRow<DataKeyType>, rowIndex: number) => Record<string, any> | undefined;
+  renderCell?: (props: CellRenderProps<DataKeyType>) => React.ReactNode | Record<string, any>;
   onBackFromAccordion: (colIndex: number) => void;
   stickyHeader?: boolean;
-  selectedRows?: UniqRowKey[];
+  selectedRows?: DataKeyType[];
   onSelectRow?: (
     isSelect: boolean,
     selectedRowIndex: number,
-    row: DTRow,
+    row: DTRow<DataKeyType>,
     event?: React.SyntheticEvent<HTMLElement>,
   ) => void;
   renderEmptyData: () => React.ReactNode;
@@ -68,5 +69,13 @@ export type BodyPropsInner = DataTableBodyProps & {
     cell: Pick<DTColumn, 'name' | 'fixed'>,
   ) => [side: 'left' | 'right', style: string | number] | [side: undefined, style: undefined];
   accordionDuration?: number | [number, number];
-  onCellClick: CellPropsInner['onClick'];
+  onCellClick: CellPropsInner<DataKeyType>['onClick'];
 };
+
+export type DataTableBodyType = (<
+  DataKeyType,
+  Tag extends Intergalactic.Tag = 'div',
+>(
+  props: Intergalactic.InternalTypings.ComponentProps<Tag, 'div', DataTableBodyProps<DataKeyType>>
+) => Intergalactic.InternalTypings.ComponentRenderingResults) &
+Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', DataTableBodyProps<any>>;

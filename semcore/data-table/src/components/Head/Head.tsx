@@ -13,13 +13,17 @@ import style from './style.shadow.css';
 import { DataTableInternal, SELECT_ALL } from '../DataTable/DataTable';
 import type { DataTableData } from '../DataTable/DataTable.types';
 
-class HeadRoot<D extends DataTableData> extends Component<
-  DataTableHeadProps,
-  {},
-  {},
-  [],
-  HeadPropsInner<D>
-> {
+class HeadRoot<
+  Data extends DataTableData,
+  DataKey extends keyof Data[number],
+  DataKeyType extends Data[number][DataKey],
+> extends Component<
+    DataTableHeadProps,
+    {},
+    {},
+    [],
+    HeadPropsInner<Data, DataKey, DataKeyType>
+  > {
   static displayName = 'Head';
   static style = style;
 

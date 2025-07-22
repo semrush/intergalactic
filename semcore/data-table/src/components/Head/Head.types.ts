@@ -1,6 +1,5 @@
 import type { DTColumn } from './Column.types';
 import type { CellPropsInner } from '../Body/Cell.types';
-import type { UniqRowKey } from '../Body/Row.types';
 import type { DataTableData, DataTableProps, DTUse } from '../DataTable/DataTable.types';
 
 export type DataTableHeadProps = {
@@ -24,14 +23,18 @@ export type DataTableHeadProps = {
   withScrollBar?: boolean;
 };
 
-export type HeadPropsInner<D extends DataTableData> = {
+export type HeadPropsInner<
+  Data extends DataTableData,
+  DataKey extends keyof Data[number],
+  DataKeyType extends Data[number][DataKey],
+> = {
   use: DTUse;
   tableRef: React.RefObject<HTMLElement>;
   columns: DTColumn[];
   treeColumns: DTColumn[];
   compact: boolean;
-  sort?: DataTableProps<D>['sort'];
-  onSortChange?: DataTableProps<D>['onSortChange'];
+  sort?: DataTableProps<Data, DataKey, DataKeyType>['sort'];
+  onSortChange?: DataTableProps<Data, DataKey, DataKeyType>['onSortChange'];
   getI18nText: (key: string) => string;
   uid: string;
   ref: React.RefObject<HTMLDivElement>;
@@ -42,11 +45,11 @@ export type HeadPropsInner<D extends DataTableData> = {
   sideIndents?: 'wide';
 
   totalRows: number;
-  selectedRows?: UniqRowKey[];
+  selectedRows?: DataKeyType[];
   onChangeSelectAll?: (value: boolean, event?: React.SyntheticEvent<HTMLElement>) => void;
 
   getFixedStyle: (
     cell: Pick<DTColumn, 'name' | 'fixed'>,
   ) => [side: 'left' | 'right', style: string | number] | [side: undefined, style: undefined];
-  onCellClick: CellPropsInner['onClick'];
+  onCellClick: CellPropsInner<DataKeyType>['onClick'];
 };

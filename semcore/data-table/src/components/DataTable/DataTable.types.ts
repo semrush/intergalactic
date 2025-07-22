@@ -4,7 +4,7 @@ import type Tooltip from '@semcore/tooltip';
 
 import type { ACCORDION, ROW_GROUP, UNIQ_ROW_KEY } from './DataTable';
 import type { DataTableBodyProps } from '../Body/Body.types';
-import type { DTRow, UniqRowKey } from '../Body/Row.types';
+import type { DTRow } from '../Body/Row.types';
 import type { DataTableColumnProps } from '../Head/Column.types';
 
 /**
@@ -29,7 +29,7 @@ export type DataRowItem = {
   [key: string]: DTValue | undefined | null;
   [ACCORDION]?: React.ReactNode | DataTableData;
   [ROW_GROUP]?: DataTableData;
-  [UNIQ_ROW_KEY]?: UniqRowKey;
+  [UNIQ_ROW_KEY]?: string;
 };
 export interface DTValue {
   toString(): string;
@@ -41,10 +41,14 @@ export type DTUse = 'primary' | 'secondary';
 
 export type Sizes = Pick<BoxProps, 'w' | 'wMax' | 'wMin' | 'h' | 'hMax' | 'hMin'>;
 
-export type DataTableProps<D extends DataTableData> = DataTableAriaProps &
+export type DataTableProps<
+  Data extends DataTableData,
+  DataKey extends keyof Data[number],
+  DataKeyType extends Data[number][DataKey],
+> = DataTableAriaProps &
   Sizes & {
     /** Data for table */
-    data: D;
+    data: Data;
     /** Count of total rows if table using virtual scroll. Needs for accessibility */
     totalRows?: number;
 
@@ -54,9 +58,9 @@ export type DataTableProps<D extends DataTableData> = DataTableAriaProps &
     use?: DTUse;
 
     /** Active sort object */
-    sort?: DataTableSort<keyof D[0]>;
+    sort?: DataTableSort<keyof Data[0]>;
     /** Handler call when request will change sort */
-    onSortChange?: DataTableChangeSort<keyof D[0]>;
+    onSortChange?: DataTableChangeSort<keyof Data[0]>;
 
     /**
      * Value to describe width for each column. Could be overridden in the column.gtcWidth property.
@@ -86,7 +90,7 @@ export type DataTableProps<D extends DataTableData> = DataTableAriaProps &
     /**
      * Set of expanded rows (uniq id from them)
      */
-    expandedRows?: Set<string>;
+    expandedRows?: Set<DataKeyType>;
 
     virtualScroll?: VirtualScroll;
 
@@ -113,27 +117,27 @@ export type DataTableProps<D extends DataTableData> = DataTableAriaProps &
       withScrollBar?: boolean;
     };
 
-    rowProps?: DataTableBodyProps['rowProps'];
+    rowProps?: DataTableBodyProps<DataKeyType>['rowProps'];
 
-    renderCell?: DataTableBodyProps['renderCell'];
+    renderCell?: DataTableBodyProps<DataKeyType>['renderCell'];
 
     /**
    * Name of a unique key for each row data item
    */
-    uniqueRowKey?: keyof D[number];
+    uniqueRowKey?: DataKey;
 
     /**
      * List of selected rows (uniqIds from a data array)
      */
-    selectedRows?: UniqRowKey[];
+    selectedRows?: DataKeyType[];
 
     onSelectedRowsChange?: (
-      selectedRows: UniqRowKey[],
+      selectedRows: DataKeyType[],
       event?: React.SyntheticEvent<HTMLElement>,
       opts?: {
         selectedRowIndex: number;
         isSelected: boolean;
-        row: DTRow;
+        row: DTRow<DataKeyType>;
       },
     ) => void;
 
@@ -187,10 +191,15 @@ export type VirtualScroll =
 export type RowIndex = number;
 export type ColIndex = number;
 
-export type DataTableType = (<Data extends DataTableData, Tag extends Intergalactic.Tag = 'div'>(
+export type DataTableType = (<
+  Data extends DataTableData,
+  DataKey extends keyof Data[number],
+  DataKeyType extends Data[number][DataKey],
+  Tag extends Intergalactic.Tag = 'div',
+>(
   props: Intergalactic.InternalTypings.EfficientOmit<
-    Intergalactic.InternalTypings.ComponentProps<Tag, 'div', DataTableProps<Data>>,
+    Intergalactic.InternalTypings.ComponentProps<Tag, 'div', DataTableProps<Data, DataKey, DataKeyType>>,
     'tag' | 'children'
-  >,
+  >
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
-Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', DataTableProps<any>>;
+Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', DataTableProps<any, any, any>>;

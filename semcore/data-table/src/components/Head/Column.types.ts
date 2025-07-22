@@ -72,11 +72,15 @@ export type DataTableColumnProps = CommonColumnType & {
   changeSortSize?: boolean;
 };
 
-export type ColumnPropsInner<D extends DataTableData> = {
+export type ColumnPropsInner<
+  Data extends DataTableData,
+  DataKey extends keyof Data[number],
+  DataKeyType extends Data[number][DataKey],
+> = {
   use: DTUse;
   borders?: 'both' | 'left' | 'right';
-  sort?: DataTableProps<D>['sort'];
-  onSortChange?: DataTableProps<D>['onSortChange'];
+  sort?: DataTableProps<Data, DataKey, DataKeyType>['sort'];
+  onSortChange?: DataTableProps<Data, DataKey, DataKeyType>['onSortChange'];
   uid: string;
   parent?: DTColumn;
   sortableColumnDescribeId: string;
@@ -85,5 +89,5 @@ export type ColumnPropsInner<D extends DataTableData> = {
   gridTemplateColumns: string[];
   gridTemplateAreas: string[];
   sticky: boolean;
-  onClick: CellPropsInner['onClick'];
+  onClick: CellPropsInner<DataKeyType>['onClick'];
 };

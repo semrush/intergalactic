@@ -8,6 +8,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Row hover effect for empty state.
 - Header glitches in loading state with sticky header.
+- Incorrect type for `selectedRows/onSelectedRowsChange` when uniqueRowKey is not a string.
 
 ## [16.0.6] - 2025-07-04
 
