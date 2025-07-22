@@ -4,7 +4,7 @@ import Textarea from '@semcore/textarea';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
-type ExampleTextareaProps = TextareaProps & { placeholder: any; disabled: any; readOnly: any; autoFocus: any };
+type ExampleTextareaProps = TextareaProps & { placeholder: string; disabled: boolean; readOnly: boolean; autoFocus: boolean };
 
 const Demo = (props: ExampleTextareaProps) => {
   return (
