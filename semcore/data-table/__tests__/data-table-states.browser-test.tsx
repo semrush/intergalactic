@@ -22,6 +22,22 @@ test.describe('Loading states', () => {
     await expect(page).toHaveScreenshot();
   });
 
+  test('Verify loading state in with sticky header', async ({ page }) => {
+    const standPath = 'stories/components/data-table/docs/examples/checkbox-in-table.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en', { loading: true });
+
+    await page.setContent(htmlContent);
+
+    await expect(page).toHaveScreenshot();
+
+    const firstHeader = page.locator('[data-ui-name="Head.Column"][aria-colindex="1"]');
+    const headerCheckbox = firstHeader.locator('[data-ui-name="Value.CheckMark"]');
+
+    await headerCheckbox.click();
+    await page.getByRole('button', { name: 'Deselect all' }).waitFor({ state: 'visible' });
+    await expect(page).toHaveScreenshot();
+  });
+
   test('Verify skeleton in table', async ({ page }) => {
     const standPath = 'stories/components/data-table/docs/examples/skeleton-in-table.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');

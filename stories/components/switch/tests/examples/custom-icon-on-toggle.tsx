@@ -1,0 +1,24 @@
+import Switch from '@semcore/switch';
+import type { SwitchProps, SwitchValueProps } from '@semcore/switch';
+import React from 'react';
+
+type SwitchExampleProps = SwitchProps & SwitchValueProps;
+
+const Demo = (props: SwitchExampleProps) => {
+  return (
+    <Switch size={props.size}>
+      <Switch.Value theme={props.theme} checked={props.checked} disabled={props.disabled}>$</Switch.Value>
+    </Switch>
+  );
+};
+
+export const defaultProps: SwitchExampleProps = {
+  size: 'l',
+  theme: 'success',
+  disabled: false,
+  checked: undefined,
+};
+
+Demo.defaultProps = defaultProps;
+
+export default Demo;

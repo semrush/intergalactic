@@ -66,6 +66,7 @@ export const CheckboxInTable: StoryObj<typeof CheckboxInTableProps> = {
     animationDuration: {
       control: { type: 'number' },
     },
+    loading: { control: 'boolean' },
   },
   args: CheckboxInTableProps,
 };
