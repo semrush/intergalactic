@@ -32,7 +32,7 @@ const sharedArgTypes = {
   focusLock: {
     control: { type: 'boolean' },
   },
-};
+} as const;
 
 export const BasicNotice: StoryObj<typeof BasicNoticeProps> = {
   render: BasicNoticeExample,
