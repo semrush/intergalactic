@@ -5,7 +5,7 @@ import { Box } from '@semcore/base-components';
 import type { BoxProps } from '@semcore/flex-box';
 import React from 'react';
 
-type ExampleAccordionProps = AccordionProps & { duration: any } & CollapseProps & BoxProps;
+type ExampleAccordionProps = AccordionProps & { duration?: number } & CollapseProps & BoxProps;
 
 const Demo = (props: ExampleAccordionProps) => {
   const [value, onChange] = React.useState([0]);
