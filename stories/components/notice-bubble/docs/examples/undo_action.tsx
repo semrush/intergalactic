@@ -44,7 +44,7 @@ export const defaultProps: UndoActionNoticeBubbleProps = {
   initialAnimation: true,
   duration: 0,
   type: 'info',
-  focusLock: undefined,
+  focusLock: false,
 };
 
 Demo.defaultProps = defaultProps;
