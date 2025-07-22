@@ -130,6 +130,7 @@ class LineRoot extends Component {
           use:duration={`${duration}ms`}
           strokeDasharray={patterns ? resolvePatternDasharray(patternKey, patterns) : undefined}
           onClickCapture={this.handlerOnClick.bind(this)}
+          pointerEvents='stroke'
         />
         {duration && (
           <AnimatedClipPath
