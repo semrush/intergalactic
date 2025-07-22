@@ -75,6 +75,7 @@ class VennRoot extends Component {
       uid: `${this.asProps.uid}-${index}`,
       patterns: this.asProps.patterns,
       minRadius: this.asProps.minRadius,
+      onClick: this.handlerOnClick(props.dataKey).bind(this),
     };
   }
 
@@ -98,12 +99,25 @@ class VennRoot extends Component {
       onMouseLeave: this.bindHandlerTooltip(false, props, tooltipProps),
       transparent,
       resolveColor: this.asProps.resolveColor,
+      onClick: this.handlerOnClick(props.dataKey).bind(this),
     };
   }
 
   renderElement = React.forwardRef((props, ref) => {
     return <FadeInOut aria-hidden ref={ref} tag='g' visible {...props} />;
   });
+
+  handlerOnClick(dataKey) {
+    return (e) => {
+      e.stopPropagation();
+
+      const { onClick } = this.asProps;
+
+      if (!onClick) return;
+
+      onClick(dataKey, e);
+    };
+  }
 
   render() {
     const Element = this.Element;
@@ -134,6 +148,7 @@ function Circle({
   uid,
   patterns,
   minRadius,
+  onClick,
 }) {
   dataHintsHandler.describeValueEntity(dataKey, name);
 
@@ -153,6 +168,7 @@ function Circle({
           r={radius}
           transparent={transparent}
           use:duration={`${duration}ms`}
+          onClickCapture={onClick}
         />,
       )}
       {patterns && (
@@ -176,6 +192,7 @@ function Intersection(props) {
     dataKey,
     dataHintsHandler,
     transparent,
+    onClick,
   } = props;
   dataHintsHandler.describeValueEntity(dataKey, name);
 
@@ -191,6 +208,7 @@ function Intersection(props) {
       render={renderIntersection}
       d={intersectionAreaPath(data)}
       transparent={transparent}
+      onClickCapture={onClick}
     />,
   );
 }

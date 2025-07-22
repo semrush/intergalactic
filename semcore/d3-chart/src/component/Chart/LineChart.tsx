@@ -56,7 +56,7 @@ class LineChartComponent extends AbstractChart<
   }
 
   protected renderChart() {
-    const { groupKey, curve, showDots, area, areaCurve } = this.asProps;
+    const { groupKey, curve, showDots, area, areaCurve, onClickLine } = this.asProps;
     const { dataDefinitions, highlightedLine } = this.state;
 
     return dataDefinitions.map((item, index) => {
@@ -69,6 +69,7 @@ class LineChartComponent extends AbstractChart<
             color={item.color}
             transparent={highlightedLine !== -1 && highlightedLine !== index}
             curve={curve}
+            onClick={onClickLine}
           >
             {showDots && <Line.Dots display />}
             {area?.[item.id] && (

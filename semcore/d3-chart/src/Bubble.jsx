@@ -65,6 +65,16 @@ class BubbleRoot extends Component {
     this.animationCircle();
   }
 
+  handlerOnClick(index) {
+    return (e) => {
+      e.stopPropagation();
+
+      const { onClick } = this.asProps;
+
+      onClick?.(index, e);
+    };
+  }
+
   getCircleProps() {
     const {
       color,
@@ -103,6 +113,7 @@ class BubbleRoot extends Component {
       resolveColor,
       patterns,
       bindHandlerTooltip: this.bindHandlerTooltip,
+      onClick: this.handlerOnClick.bind(this),
     };
   }
 
@@ -164,6 +175,7 @@ function BubbleCircle(props) {
     bindHandlerTooltip,
     Element,
     visible = true,
+    onClick,
   } = props;
   const circleData = data[index];
 
@@ -192,6 +204,7 @@ function BubbleCircle(props) {
     <SvgElement
       tag='g'
       key={`circle(#${index})`}
+      onClickCapture={onClick(index)}
       onMouseMove={bindHandlerTooltip(true, props, { xIndex: index, index, patterns })}
       onMouseLeave={bindHandlerTooltip(false, props, { xIndex: index, index, patterns })}
       visible={`${visible}`}
