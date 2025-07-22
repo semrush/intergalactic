@@ -153,7 +153,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- `aria-*` attributes for svg from parent group for all simple charts (Chart.-).
+- `aria-*` attributes for svg from parent group for all simple charts (Chart.*).
 - `aria-label=Chart` by default for all advanced charts (Plot...).
 
 ## [3.58.1] - 2024-12-05
