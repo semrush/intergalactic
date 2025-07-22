@@ -8,6 +8,10 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Row hover effect for empty state.
 
+### Added
+
+- RawData to `CellRenderProps`.
+
 ## [16.0.6] - 2025-07-04
 
 ### Changed

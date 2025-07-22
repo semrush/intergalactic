@@ -187,6 +187,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, State, [], BodyPropsInn
       flatRows,
       accordionDuration,
       onCellClick,
+      rawData,
     } = this.asProps;
     const SAccordionToggle = ButtonLink;
 
@@ -220,6 +221,12 @@ class BodyRoot extends Component<DataTableBodyProps, {}, State, [], BodyPropsInn
     };
 
     if (renderCell) {
+      let rowRawData = rawData[props.rowIndex];
+
+      if (props.accordionRowIndex && rowRawData[ACCORDION] && Array.isArray(rowRawData[ACCORDION])) {
+        rowRawData = rowRawData[ACCORDION][props.accordionRowIndex];
+      }
+
       const external = renderCell({
         columnName: props.column.name,
         row: props.row,
@@ -231,6 +238,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, State, [], BodyPropsInn
         value: React.isValidElement(value) ? value : value?.toString() ?? '',
         isMergedRows,
         isMergedColumns,
+        rawData: rowRawData,
       });
 
       if (this.isReactNode(external) || Array.isArray(external)) {
