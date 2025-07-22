@@ -5,11 +5,12 @@ test.describe('Visual', () => {
   const breakpoints = [
     { width: 320 },
     { width: 768 },
+    { width: 1280 },
     { width: 1920 },
   ];
 
   breakpoints.forEach(({ width }) => {
-    test(`Verify base example looks good on eeach screen width ${width}px`, async ({ page }) => {
+    test(`Verify base example looks good on screen width ${width}px`, async ({ page }) => {
       const standPath = 'stories/components/product-head/docs/examples/extended_example.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
       await page.setContent(htmlContent);
