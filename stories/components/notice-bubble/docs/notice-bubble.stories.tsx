@@ -6,8 +6,7 @@ import DynamicNoticeExample, { defaultProps as DynamicNoticeProps } from './exam
 import FailureNoticeExample, { defaultProps as FailureNoticeProps } from './examples/failure_notice';
 import NoConnectionNoticeExample, { defaultProps as NoConnectionNoticeBubbleProps } from './examples/no_connection_notice';
 import NoConnectionNoticeWithActionExample, { defaultProps as NoConnectionActionNoticeBubbleProps } from './examples/no_connection_notice_with_action';
-import type { defaultProps as NotInPortalNoticeBubbleProps } from './examples/noticebubble_not_in_portal';
-import NoticebubbleNotInPortalExample from './examples/noticebubble_not_in_portal';
+import NoticebubbleNotInPortalExample, { defaultProps as NotInPortalNoticeBubbleProps } from './examples/noticebubble_not_in_portal';
 import ReloadActionExample, { defaultProps as ReloadActionNoticeBubbleProps } from './examples/reload_action';
 import ReplaceLastNoticeExample, { defaultProps as ReplaceLastNoticeBubbleProps } from './examples/replace_last_notice';
 import SpecialEventsNoticeExample, { defaultProps as SpecialEventsNoticeBubbleProps } from './examples/special_events_notice';
@@ -19,242 +18,90 @@ const meta: Meta = {
 };
 export default meta;
 
+const sharedArgTypes = {
+  initialAnimation: {
+    control: { type: 'boolean' },
+  },
+  duration: {
+    control: { type: 'number' },
+  },
+  type: {
+    control: { type: 'select' },
+    options: ['info', 'warning', 'none'],
+  },
+  focusLock: {
+    control: { type: 'boolean' },
+  },
+};
+
 export const BasicNotice: StoryObj<typeof BasicNoticeProps> = {
   render: BasicNoticeExample,
-  argTypes: {
-    initialAnimation: {
-      control: { type: 'boolean' },
-    },
-    duration: {
-      control: { type: 'number' },
-    },
-    type: {
-      control: { type: 'select' },
-      options: ['info', 'warning', 'none'],
-    },
-    focusLock: {
-      control: { type: 'boolean' },
-    },
-  },
+  argTypes: sharedArgTypes,
   args: BasicNoticeProps,
 };
 
 export const CompletionState: StoryObj<typeof CompletionNoticeProps> = {
   render: CompletionStateExample,
-  argTypes: {
-    initialAnimation: {
-      control: { type: 'boolean' },
-    },
-    duration: {
-      control: { type: 'number' },
-    },
-    type: {
-      control: { type: 'select' },
-      options: ['info', 'warning', 'none'],
-    },
-    focusLock: {
-      control: { type: 'boolean' },
-    },
-  },
+  argTypes: sharedArgTypes,
   args: CompletionNoticeProps,
 };
 
 export const DynamicNotice: StoryObj<typeof DynamicNoticeProps> = {
   render: DynamicNoticeExample,
-  argTypes: {
-    initialAnimation: {
-      control: { type: 'boolean' },
-    },
-    duration: {
-      control: { type: 'number' },
-    },
-    type: {
-      control: { type: 'select' },
-      options: ['info', 'warning', 'none'],
-    },
-    focusLock: {
-      control: { type: 'boolean' },
-    },
-  },
+  argTypes: sharedArgTypes,
   args: DynamicNoticeProps,
 };
 
 export const FailureNotice: StoryObj<typeof FailureNoticeProps> = {
   render: FailureNoticeExample,
-  argTypes: {
-    initialAnimation: {
-      control: { type: 'boolean' },
-    },
-    duration: {
-      control: { type: 'number' },
-    },
-    type: {
-      control: { type: 'select' },
-      options: ['info', 'warning', 'none'],
-    },
-    focusLock: {
-      control: { type: 'boolean' },
-    },
-  },
+  argTypes: sharedArgTypes,
   args: FailureNoticeProps,
 };
 
 export const NoConnectionNotice: StoryObj<typeof NoConnectionNoticeBubbleProps> = {
   render: NoConnectionNoticeExample,
-  argTypes: {
-    initialAnimation: {
-      control: { type: 'boolean' },
-    },
-    duration: {
-      control: { type: 'number' },
-    },
-    type: {
-      control: { type: 'select' },
-      options: ['info', 'warning', 'none'],
-    },
-    focusLock: {
-      control: { type: 'boolean' },
-    },
-  },
+  argTypes: sharedArgTypes,
   args: NoConnectionNoticeBubbleProps,
 };
 
 export const NoConnectionNoticeWithAction: StoryObj<typeof NoConnectionActionNoticeBubbleProps> = {
   render: NoConnectionNoticeWithActionExample,
-  argTypes: {
-    initialAnimation: {
-      control: { type: 'boolean' },
-    },
-    duration: {
-      control: { type: 'number' },
-    },
-    type: {
-      control: { type: 'select' },
-      options: ['info', 'warning', 'none'],
-    },
-    focusLock: {
-      control: { type: 'boolean' },
-    },
-  },
+  argTypes: sharedArgTypes,
   args: NoConnectionActionNoticeBubbleProps,
 };
 
 export const NoticebubbleNotInPortal: StoryObj<typeof NotInPortalNoticeBubbleProps> = {
   render: NoticebubbleNotInPortalExample,
-  argTypes: {
-    initialAnimation: {
-      control: { type: 'boolean' },
-    },
-    duration: {
-      control: { type: 'number' },
-    },
-    type: {
-      control: { type: 'select' },
-      options: ['info', 'warning', 'none'],
-    },
-    focusLock: {
-      control: { type: 'boolean' },
-    },
-  },
-  args: NoConnectionActionNoticeBubbleProps,
+  argTypes: sharedArgTypes,
+  args: NotInPortalNoticeBubbleProps,
 };
 
 export const ReloadAction: StoryObj<typeof ReloadActionNoticeBubbleProps> = {
   render: ReloadActionExample,
-  argTypes: {
-    initialAnimation: {
-      control: { type: 'boolean' },
-    },
-    duration: {
-      control: { type: 'number' },
-    },
-    type: {
-      control: { type: 'select' },
-      options: ['info', 'warning', 'none'],
-    },
-    focusLock: {
-      control: { type: 'boolean' },
-    },
-  },
+  argTypes: sharedArgTypes,
   args: ReloadActionNoticeBubbleProps,
 };
 
 export const SpecialEventsNotice: StoryObj<typeof SpecialEventsNoticeBubbleProps> = {
   render: SpecialEventsNoticeExample,
-  argTypes: {
-    initialAnimation: {
-      control: { type: 'boolean' },
-    },
-    duration: {
-      control: { type: 'number' },
-    },
-    type: {
-      control: { type: 'select' },
-      options: ['info', 'warning', 'none'],
-    },
-    focusLock: {
-      control: { type: 'boolean' },
-    },
-  },
+  argTypes: sharedArgTypes,
   args: SpecialEventsNoticeBubbleProps,
 };
 
 export const SuccessNotice: StoryObj<typeof SuccessNoticeBubbleProps> = {
   render: SuccessNoticeExample,
-  argTypes: {
-    initialAnimation: {
-      control: { type: 'boolean' },
-    },
-    duration: {
-      control: { type: 'number' },
-    },
-    type: {
-      control: { type: 'select' },
-      options: ['info', 'warning', 'none'],
-    },
-    focusLock: {
-      control: { type: 'boolean' },
-    },
-  },
+  argTypes: sharedArgTypes,
   args: SuccessNoticeBubbleProps,
 };
 
 export const ReplaceLastNotice: StoryObj<typeof ReplaceLastNoticeBubbleProps> = {
   render: ReplaceLastNoticeExample,
-  argTypes: {
-    initialAnimation: {
-      control: { type: 'boolean' },
-    },
-    duration: {
-      control: { type: 'number' },
-    },
-    type: {
-      control: { type: 'select' },
-      options: ['info', 'warning', 'none'],
-    },
-    focusLock: {
-      control: { type: 'boolean' },
-    },
-  },
+  argTypes: sharedArgTypes,
   args: ReplaceLastNoticeBubbleProps,
 };
 
 export const UndoAction: StoryObj<typeof UndoActionNoticeBubbleProps> = {
   render: UndoActionExample,
-  argTypes: {
-    initialAnimation: {
-      control: { type: 'boolean' },
-    },
-    duration: {
-      control: { type: 'number' },
-    },
-    type: {
-      control: { type: 'select' },
-      options: ['info', 'warning', 'none'],
-    },
-    focusLock: {
-      control: { type: 'boolean' },
-    },
-  },
+  argTypes: sharedArgTypes,
   args: UndoActionNoticeBubbleProps,
 };

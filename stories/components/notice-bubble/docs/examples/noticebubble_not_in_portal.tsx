@@ -2,7 +2,7 @@ import Button from '@semcore/button';
 import Link from '@semcore/link';
 import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/notice-bubble';
 import React from 'react';
-type NotInPortalNoticeBubbleProps = { initialAnimation: any; duration: any; type: any; focusLock: any };
+type NotInPortalNoticeBubbleProps = { initialAnimation: boolean; duration: number; type: 'info' | 'warning'; focusLock: boolean };
 
 const manager = new NoticeBubbleManager();
 
@@ -47,7 +47,7 @@ export const defaultProps: NotInPortalNoticeBubbleProps = {
   initialAnimation: true,
   duration: 300000,
   type: 'info',
-  focusLock: undefined,
+  focusLock: false,
 };
 
 Demo.defaultProps = defaultProps;

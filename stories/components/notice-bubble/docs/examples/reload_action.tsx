@@ -3,7 +3,7 @@ import ReloadM from '@semcore/icon/Reload/m';
 import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/notice-bubble';
 import React from 'react';
 
-type ReloadActionNoticeBubbleProps = { initialAnimation: any; duration: any; type: any; focusLock: any };
+type ReloadActionNoticeBubbleProps = { initialAnimation: boolean; duration: number; type: 'info' | 'warning'; focusLock: boolean };
 
 const manager = new NoticeBubbleManager();
 
@@ -43,7 +43,7 @@ export const defaultProps: ReloadActionNoticeBubbleProps = {
   initialAnimation: true,
   duration: 0,
   type: 'info',
-  focusLock: undefined,
+  focusLock: false,
 };
 
 Demo.defaultProps = defaultProps;

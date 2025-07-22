@@ -2,7 +2,7 @@ import Button from '@semcore/button';
 import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/notice-bubble';
 import React from 'react';
 
-type ReplaceLastNoticeBubbleProps = { initialAnimation: any; duration: any; type: any; focusLock: any };
+type ReplaceLastNoticeBubbleProps = { initialAnimation: boolean; duration: number; type: 'info' | 'warning'; focusLock: boolean };
 let counter = 0;
 
 const manager = new NoticeBubbleManager();
@@ -32,7 +32,7 @@ export const defaultProps: ReplaceLastNoticeBubbleProps = {
   initialAnimation: true,
   duration: 0,
   type: 'info',
-  focusLock: undefined,
+  focusLock: false,
 };
 
 Demo.defaultProps = defaultProps;

@@ -3,7 +3,7 @@ import ReloadM from '@semcore/icon/Reload/m';
 import WarningM from '@semcore/icon/Warning/m';
 import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/notice-bubble';
 import React from 'react';
-type FailtureNoticeBubbleProps = { initialAnimation: any; duration: any; type: any; focusLock: any };
+type FailtureNoticeBubbleProps = { initialAnimation: boolean; duration: number; type: 'info' | 'warning'; focusLock: boolean };
 
 const manager = new NoticeBubbleManager();
 
@@ -44,7 +44,7 @@ export const defaultProps: FailtureNoticeBubbleProps = {
   initialAnimation: true,
   duration: 0,
   type: 'info',
-  focusLock: undefined,
+  focusLock: false,
 };
 
 Demo.defaultProps = defaultProps;

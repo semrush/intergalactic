@@ -2,7 +2,7 @@ import Button from '@semcore/button';
 import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/notice-bubble';
 import Spin from '@semcore/spin';
 import React from 'react';
-type NoConnectionNoticeBubbleProps = { initialAnimation: any; duration: any; type: any; focusLock: any };
+type NoConnectionNoticeBubbleProps = { initialAnimation: boolean; duration: number; type: 'info' | 'warning'; focusLock: boolean };
 
 const manager = new NoticeBubbleManager();
 
@@ -30,7 +30,7 @@ export const defaultProps: NoConnectionNoticeBubbleProps = {
   initialAnimation: true,
   duration: 10000,
   type: 'warning',
-  focusLock: undefined,
+  focusLock: false,
 };
 
 Demo.defaultProps = defaultProps;

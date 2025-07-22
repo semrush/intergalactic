@@ -4,7 +4,7 @@ import MailSent from '@semcore/illustration/MailSent';
 import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/notice-bubble';
 import React from 'react';
 
-type SpecialEventsNoticeBubbleProps = { initialAnimation: any; duration: any; type: any; focusLock: any };
+type SpecialEventsNoticeBubbleProps = { initialAnimation: boolean; duration: number; type: 'info' | 'warning'; focusLock: boolean };
 
 const manager = new NoticeBubbleManager();
 
@@ -36,7 +36,7 @@ export const defaultProps: SpecialEventsNoticeBubbleProps = {
   initialAnimation: true,
   duration: 10000,
   type: 'info',
-  focusLock: undefined,
+  focusLock: false,
 };
 
 Demo.defaultProps = defaultProps;

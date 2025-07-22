@@ -75,7 +75,7 @@ export const defaultProps: DynamicNoticeBubbleProps = {
   initialAnimation: true,
   duration: 20000,
   type: 'info',
-  focusLock: undefined,
+  focusLock: false,
 };
 
 Demo.defaultProps = defaultProps;
