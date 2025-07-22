@@ -42,7 +42,7 @@ export const defaultProps: ExampleTextareaProps = {
   size: undefined,
   resize: undefined,
   disabled: false,
-  readOnly: undefined,
+  readOnly: false,
   minRows: 2,
   maxRows: 10,
   autoFocus: false,
