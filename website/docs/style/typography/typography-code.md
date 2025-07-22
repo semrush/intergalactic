@@ -57,7 +57,7 @@ You can add custom bullets to our `List.Item` component.
 
 ## Native typography tags
 
-To style native tags, use the `Text` component from the `@semcore/typography` package.
+To style native tags, use the `Text` component from the `@semcore/typography` package with `formatTags=true` property.
 
 Styling third-party HTML is acceptable, but for other cases, we recommend using the `Text` component without native tags inside.
 

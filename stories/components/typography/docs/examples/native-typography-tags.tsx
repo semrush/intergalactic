@@ -2,7 +2,7 @@ import { Text } from '@semcore/typography';
 import React from 'react';
 
 const Demo = () => (
-  <Text>
+  <Text formatTags={true}>
     <h1>
       H1,
       {' '}
