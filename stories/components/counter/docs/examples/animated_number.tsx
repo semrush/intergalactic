@@ -2,7 +2,7 @@ import Button from '@semcore/button';
 import { AnimatedNumber } from '@semcore/counter';
 import React from 'react';
 
-type AnimatedNumberBaseProps = { duration: any; delay: any };
+type AnimatedNumberBaseProps = { duration?: number; delay?: number };
 const Demo = (props: AnimatedNumberBaseProps) => {
   const [value, setValue] = React.useState(20);
   const handleClick = () => {
