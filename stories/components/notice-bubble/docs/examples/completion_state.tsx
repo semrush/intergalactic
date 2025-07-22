@@ -35,7 +35,7 @@ export const defaultProps: CompletionNoticeBubbleProps = {
   initialAnimation: true,
   duration: 4000,
   type: 'info',
-  focusLock: undefined,
+  focusLock: false,
 };
 
 Demo.defaultProps = defaultProps;
