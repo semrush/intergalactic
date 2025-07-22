@@ -4,9 +4,15 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [16.0.7] - 2025-07-23
 
+### Added
+
+- Transition for the table header's `top` attribute.
+- New header prop `animationDuration`.
+
 ### Fixed
 
 - Row hover effect for empty state.
+- Incorrect 'Select all' checkbox behavior with pagination.
 - Header glitches in loading state with sticky header.
 
 ## [16.0.6] - 2025-07-04

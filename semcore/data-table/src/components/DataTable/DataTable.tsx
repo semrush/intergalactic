@@ -119,7 +119,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
   }
 
   componentDidMount() {
-    const { headerProps, loading } = this.asProps;
+    const { headerProps, loading, selectedRows } = this.asProps;
     if ((headerProps?.sticky && !headerProps.h) || loading || this.columns.some((c) => c.fixed)) {
       requestAnimationFrame(() => {
         this.forceUpdate();
@@ -228,14 +228,19 @@ class DataTableRoot<D extends DataTableData> extends Component<
       gridTemplateAreas,
       sideIndents,
       totalRows: this.totalRows,
-      selectedRows: selectedRows,
+      selectedRows,
+      flatRows: this.flatRows,
       onChangeSelectAll: (value, e) => {
-        if (value === false) {
-          onSelectedRowsChange?.([], e);
+        const mappedFlatRows = this.flatRows.map((r) => r[UNIQ_ROW_KEY]);
+        const selectedRowsSet = new Set(selectedRows);
+
+        if (value) {
+          mappedFlatRows.forEach(selectedRowsSet.add, selectedRowsSet);
         } else {
-          const selectedRows = this.flatRows.map((row) => row[UNIQ_ROW_KEY]);
-          onSelectedRowsChange?.(selectedRows, e);
+          mappedFlatRows.forEach(selectedRowsSet.delete, selectedRowsSet);
         }
+
+        onSelectedRowsChange?.(Array.from(selectedRowsSet), e);
       },
       getFixedStyle: this.getFixedStyle,
       onCellClick: this.handleCellClick,
@@ -312,21 +317,17 @@ class DataTableRoot<D extends DataTableData> extends Component<
   ) => {
     const { selectedRows, onSelectedRowsChange } = this.asProps;
 
-    if (selectedRows && onSelectedRowsChange) {
-      const newSelectedRows = new Set(selectedRows);
+    if (!selectedRows || !onSelectedRowsChange) return;
 
-      if (isSelected && !newSelectedRows.has(row[UNIQ_ROW_KEY])) {
-        newSelectedRows.add(row[UNIQ_ROW_KEY]);
-      } else if (!isSelected && newSelectedRows.has(row[UNIQ_ROW_KEY])) {
-        newSelectedRows.delete(row[UNIQ_ROW_KEY]);
-      }
+    const selectedRowsSet = new Set(selectedRows);
 
-      onSelectedRowsChange([...newSelectedRows], event, {
-        selectedRowIndex,
-        isSelected,
-        row,
-      });
+    if (selectedRowsSet.has(row[UNIQ_ROW_KEY])) {
+      selectedRowsSet.delete(row[UNIQ_ROW_KEY]);
+    } else {
+      selectedRowsSet.add(row[UNIQ_ROW_KEY]);
     }
+
+    onSelectedRowsChange(Array.from(selectedRowsSet), event, { selectedRowIndex, isSelected, row });
   };
 
   setSelectAllMessage = (selectedAll: boolean) => {

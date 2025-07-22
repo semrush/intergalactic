@@ -63,6 +63,9 @@ export const Borders: Story = {
 export const CheckboxInTable: StoryObj<typeof CheckboxInTableProps> = {
   render: CheckboxInTableExample,
   argTypes: {
+    animationDuration: {
+      control: { type: 'number' },
+    },
     loading: { control: 'boolean' },
   },
   args: CheckboxInTableProps,
