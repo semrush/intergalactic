@@ -30,7 +30,7 @@ export const defaultProps: SuccessNoticeBubbleProps = {
   initialAnimation: true,
   duration: 5000,
   type: 'info',
-  focusLock: undefined,
+  focusLock: false,
 };
 
 Demo.defaultProps = defaultProps;
