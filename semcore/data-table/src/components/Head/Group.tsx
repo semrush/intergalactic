@@ -36,7 +36,6 @@ export class Group extends Component<
     const SGroup = Root;
     const { styles, Children, title, fixed, columns, withConfig, getFixedStyle } = this.asProps;
     const groupColumns = columns ?? [];
-    const children = getOriginChildren(Children);
 
     const firstColumn = groupColumns[0];
     const lastColumn = groupColumns[groupColumns.length - 1];
@@ -44,13 +43,13 @@ export class Group extends Component<
     const style: any = {};
 
     if (fixed === 'left' && firstColumn) {
-      const [name, value] = getFixedStyle(firstColumn);
+      const [name, value] = getFixedStyle({ name: firstColumn.name, fixed: 'left' });
       if (name !== undefined && value !== undefined) {
         style[name] = value;
       }
     }
     if (fixed === 'right' && lastColumn) {
-      const [name, value] = getFixedStyle(lastColumn);
+      const [name, value] = getFixedStyle({ name: lastColumn.name, fixed: 'right' });
       if (name !== undefined && value !== undefined) {
         style[name] = value;
       }
@@ -58,9 +57,6 @@ export class Group extends Component<
 
     return sstyled(styles)(
       <SGroupContainer data-group-container>
-        <SGroup render={Box} style={style} __excludeProps={['title']} id={this.groupId}>
-          {withConfig ? children : title}
-        </SGroup>
         {withConfig
           ? (
               groupColumns.map((column, _i) => {
@@ -76,6 +72,9 @@ export class Group extends Component<
           : (
               <Children />
             )}
+        <SGroup render={Box} style={style} __excludeProps={['title']} id={this.groupId}>
+          {withConfig ? <Children /> : title}
+        </SGroup>
       </SGroupContainer>,
     );
   }
