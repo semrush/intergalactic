@@ -1,8 +1,11 @@
+import Badge from '@semcore/badge';
 import { Flex } from '@semcore/base-components';
+import Globe from '@semcore/icon/Globe/m';
 import ThumbDownM from '@semcore/icon/ThumbDown/m';
 import ThumbUpM from '@semcore/icon/ThumbUp/m';
 import Pills from '@semcore/pills';
 import type { PillsProps, PillProps } from '@semcore/pills';
+import Spin from '@semcore/spin';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
@@ -19,11 +22,28 @@ const Demo = (props: PillExampleProps) => {
         <Pills.Item value='like'>
           <Pills.Item.Addon tag={ThumbUpM} />
           <Pills.Item.Text>Like</Pills.Item.Text>
+          <Pills.Item.Addon tag={ThumbUpM} />
         </Pills.Item>
         <Pills.Item value={null}>Don't care</Pills.Item>
-        <Pills.Item value='dislike'>
-          <Pills.Item.Addon tag={ThumbDownM} />
+        <Pills.Item value='dislike' addonLeft={ThumbDownM}>
           <Pills.Item.Text>Dislike</Pills.Item.Text>
+        </Pills.Item>
+        <Pills.Item value={1}>
+          <Pills.Item.Addon tag={Globe} />
+        </Pills.Item>
+        <Pills.Item value={1}>
+          <Pills.Item.Addon>
+            <Pills.Item.Text>Badge</Pills.Item.Text>
+            <Badge bg='blue-400'>admin</Badge>
+          </Pills.Item.Addon>
+        </Pills.Item>
+        <Pills.Item value={2} addonRight={Globe}>
+        </Pills.Item>
+        <Pills.Item value={1} disabled>
+          <Pills.Item.Addon>
+            <Pills.Item.Text>Spin</Pills.Item.Text>
+            <Spin size='s' />
+          </Pills.Item.Addon>
         </Pills.Item>
       </Pills>
     </Flex>
@@ -33,7 +53,7 @@ const Demo = (props: PillExampleProps) => {
 export const defaultProps: PillExampleProps = {
   size: 'm',
   disabled: undefined,
-  behavior: 'auto',
+  behavior: undefined,
 };
 
 Demo.defaultProps = defaultProps;
