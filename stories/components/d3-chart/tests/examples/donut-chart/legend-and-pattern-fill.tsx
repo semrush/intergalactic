@@ -39,12 +39,15 @@ const Demo = () => {
   const handleMouseLeave = React.useCallback(() => {
     setHighlightedLine(-1);
   }, []);
+  const onClickHandler = () => {
+    console.log('Clicked donut chart');
+  };
 
   return (
     <>
       <Flex direction='row' gap={5} mb={4}>
         <Plot width={width} height={height} data={data} dataHints={dataHints} patterns>
-          <Donut innerRadius={height / 2 - 50}>
+          <Donut innerRadius={height / 2 - 50} onClick={onClickHandler}>
             {legendItems.filter((item) => item.checked).length === 0 && <Donut.EmptyData />}
             {legendItems.map((item, index) => {
               return (

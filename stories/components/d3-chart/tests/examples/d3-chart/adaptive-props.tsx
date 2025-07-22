@@ -13,6 +13,9 @@ const Demo = () => {
     .range([height - MARGIN, MARGIN])
     .domain([0, 10]);
 
+  const onClickHandler = () => {
+    console.log('Clicked dots');
+  };
   return (
     <Flex direction='column'>
       <ResponsiveContainer h={300} onResize={setSize}>
@@ -25,7 +28,7 @@ const Demo = () => {
             <XAxis.Ticks />
           </XAxis>
           <Line x='x' y='y'>
-            <Line.Dots display />
+            <Line.Dots display onClick={onClickHandler} />
           </Line>
         </Plot>
       </ResponsiveContainer>
