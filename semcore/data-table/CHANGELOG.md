@@ -2,11 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [16.0.7] - 2025-07-08
+## [16.0.7] - 2025-07-23
 
 ### Fixed
 
 - Row hover effect for empty state.
+- Header glitches in loading state with sticky header.
 
 ## [16.0.6] - 2025-07-04
 

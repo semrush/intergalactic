@@ -22,6 +22,22 @@ test.describe('Loading states', () => {
     await expect(page).toHaveScreenshot();
   });
 
+  test('Verify loading state in with sticky header', async ({ page }) => {
+    const standPath = 'stories/components/data-table/docs/examples/checkbox-in-table.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en', { loading: true });
+
+    await page.setContent(htmlContent);
+
+    await expect(page).toHaveScreenshot();
+
+    const firstHeader = page.locator('[data-ui-name="Head.Column"][aria-colindex="1"]');
+    const headerCheckbox = firstHeader.locator('[data-ui-name="Value.CheckMark"]');
+
+    await headerCheckbox.click();
+    await page.getByRole('button', { name: 'Deselect all' }).waitFor({ state: 'visible' });
+    await expect(page).toHaveScreenshot();
+  });
+
   test('Verify skeleton in table', async ({ page }) => {
     const standPath = 'stories/components/data-table/docs/examples/skeleton-in-table.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -163,7 +179,7 @@ test.describe('Additional states', () => {
 
     await test.step('Verify all checkoxes checked by activating header ', async () => {
       await page.keyboard.press('Space');
-      await page.waitForTimeout(150);
+      await page.getByRole('button', { name: 'Deselect all' }).waitFor({ state: 'visible' });
       const classAttr = await headerCheckbox.getAttribute('class');
       expect(classAttr).toContain('checked');
       await expect(actionBar).toBeVisible();
@@ -185,12 +201,12 @@ test.describe('Additional states', () => {
 
     await test.step('Verify panel appears by activating at least one checkbox ', async () => {
       await page.keyboard.press('Space');
-      await page.waitForTimeout(200);
+      await page.getByRole('button', { name: 'Deselect all' }).waitFor({ state: 'hidden' });
       await expect(actionBar).toBeHidden();
 
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('Space');
-      await page.waitForTimeout(150);
+      await page.getByRole('button', { name: 'Deselect all' }).waitFor({ state: 'visible' });
       await expect(actionBar).toBeVisible();
 
       const checkbox = firstColumnCells
@@ -218,7 +234,7 @@ test.describe('Additional states', () => {
       await expect(button).toBeFocused();
 
       await page.keyboard.press('Space');
-      await page.waitForTimeout(150);
+      await page.getByRole('button', { name: 'Deselect all' }).waitFor({ state: 'hidden' });
       await expect(actionBar).toBeHidden();
       await expect(cell).toBeFocused();
     });

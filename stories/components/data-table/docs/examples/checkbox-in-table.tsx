@@ -15,7 +15,9 @@ const style = sstyled.css`
   }
 `;
 
-const Demo = () => {
+export type ExampleDataTableProps = { loading: boolean };
+
+const Demo = (props: ExampleDataTableProps) => {
   const [selectedRows, setSelectedRows] = React.useState<string[]>([]);
   const [selectedRowsDisplay, setSelectedRowsDisplay] = React.useState(0);
   const [ariaMessage, setAriaMessage] = React.useState('');
@@ -78,6 +80,7 @@ const Demo = () => {
       <DataTable
         data={data}
         aria-label='Table example with selectable rows'
+        loading={props.loading}
         defaultGridTemplateColumnWidth='auto'
         selectedRows={selectedRows}
         onSelectedRowsChange={handleChangeSelectedRows}
@@ -250,5 +253,11 @@ const data = [
     vol: '21,644,290',
   },
 ];
+
+export const defaultProps: ExampleDataTableProps = {
+  loading: false,
+};
+
+Demo.defaultProps = defaultProps;
 
 export default Demo;
