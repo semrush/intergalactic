@@ -5,7 +5,7 @@ import WarningM from '@semcore/icon/Warning/m';
 import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/notice-bubble';
 import Spin from '@semcore/spin';
 import React from 'react';
-type DynamicNoticeBubbleProps = { initialAnimation: any; duration: any; type: any; focusLock: any };
+type DynamicNoticeBubbleProps = { initialAnimation: boolean; duration: number; type: 'info' | 'warning'; focusLock: boolean };
 
 const manager = new NoticeBubbleManager();
 
