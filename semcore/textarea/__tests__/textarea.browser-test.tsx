@@ -79,7 +79,7 @@ test.describe('Functional', () => {
     await page.setContent(htmlContent);
     const textarea = await page.locator('[data-ui-name="Textarea"]');
     const label = page.locator('label');
-    await test.step('Verify textarea focused when perssing TABt', async () => {
+    await test.step('Verify textarea focused when perssing TAB', async () => {
       await page.keyboard.press('Tab');
       await expect(textarea).toBeFocused();
     });
