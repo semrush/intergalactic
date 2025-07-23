@@ -1,7 +1,7 @@
 {
   "name": "@semcore/sticky",
   "description": "Semrush Sticky Component",
-  "version": "16.0.4",
+  "version": "16.0.5",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -17,7 +17,7 @@
     "types": "./lib/types/index.d.ts"
   },
   "dependencies": {
-    "@semcore/flex-box": "16.0.4"
+    "@semcore/flex-box": "16.0.5"
   },
   "peerDependencies": {
     "@semcore/base-components": "^16.0.0"
