@@ -67,7 +67,7 @@ class VennChartComponent extends AbstractChart<
   }
 
   renderChart() {
-    const { data } = this.asProps;
+    const { data, onClickVennItem } = this.asProps;
     const { dataDefinitions, highlightedLine } = this.state;
 
     const checkedLegendItems = dataDefinitions.filter((item) => item.checked);
@@ -91,7 +91,7 @@ class VennChartComponent extends AbstractChart<
     }, []);
 
     return (
-      <Venn>
+      <Venn onClick={onClickVennItem}>
         {checkedLegendItems.map((item, index) => {
           return (
             <Venn.Circle

@@ -2,6 +2,10 @@ import { Chart } from '@semcore/d3-chart';
 import React from 'react';
 
 const Demo = () => {
+  const onClickHandler = () => {
+    console.log('Clicked line chart');
+  };
+
   return (
     <>
       <Chart.Line
@@ -11,6 +15,8 @@ const Demo = () => {
         groupKey='x'
         xTicksCount={data.length / 2}
         aria-label='Line chart'
+        onClickLine={onClickHandler}
+
       />
       <Chart.Line
         alignItems='center'
@@ -22,6 +28,7 @@ const Demo = () => {
         xTicksCount={data.length / 2}
         aria-label='Line chart with showDots prop'
         showTotalInTooltip
+        onClickLine={onClickHandler}
         legendProps={{
           direction: 'column',
           disableHoverItems: true,

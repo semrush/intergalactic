@@ -1,6 +1,7 @@
 import { Component, sstyled } from '@semcore/core';
 import findComponent from '@semcore/core/lib/utils/findComponent';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import { bisector } from 'd3-array';
 import { area, curveLinear, line } from 'd3-shape';
 import React from 'react';
 
@@ -16,6 +17,8 @@ import {
   getNullData,
   definedNullData,
   interpolateValue,
+  eventToPoint,
+  invert,
 } from './utils';
 
 class AreaRoot extends Component {
@@ -44,7 +47,7 @@ class AreaRoot extends Component {
   };
 
   getDotsProps() {
-    const { x, y, color, d3Line, transparent, resolveColor, patterns } = this.asProps;
+    const { x, y, color, d3Line, transparent, resolveColor, patterns, onClick } = this.asProps;
     const data = this.asProps.data.filter((item) => item[y] !== interpolateValue);
 
     return {
@@ -56,6 +59,7 @@ class AreaRoot extends Component {
       resolveColor,
       transparent,
       patterns,
+      onClick,
     };
   }
 
@@ -82,6 +86,20 @@ class AreaRoot extends Component {
       resolveColor,
       duration,
     };
+  }
+
+  handlerOnClick(e) {
+    e.stopPropagation();
+
+    const { rootRef, scale: [xScale], data, x, onClick } = this.asProps;
+
+    if (!onClick) return;
+
+    const [pX] = eventToPoint(e, rootRef.current);
+    const vX = invert(xScale, pX);
+    const index = bisector((d) => d[x]).center(data, vX);
+
+    onClick(index, e);
   }
 
   render() {
@@ -133,6 +151,7 @@ class AreaRoot extends Component {
           color={resolveColor(color)}
           use:duration={`${duration}ms`}
           transparent={transparent}
+          onClickCapture={this.handlerOnClick.bind(this)}
         />
         {duration && <AnimatedClipPath duration={duration} id={uid} width={0} height={size[1]} />}
         {patterns && (

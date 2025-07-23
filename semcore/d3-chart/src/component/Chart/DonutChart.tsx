@@ -54,13 +54,13 @@ class DonutChartComponent extends AbstractChart<
   }
 
   renderChart() {
-    const { innerRadius, halfsize, innerLabel } = this.asProps;
+    const { innerRadius, halfsize, innerLabel, onClickPie } = this.asProps;
     const { dataDefinitions, highlightedLine } = this.state;
 
     const checkedLegendItems = dataDefinitions.filter((item) => item.checked);
 
     return (
-      <Donut halfsize={halfsize} innerRadius={innerRadius}>
+      <Donut onClick={onClickPie} halfsize={halfsize} innerRadius={innerRadius}>
         {checkedLegendItems.length === 0 && <Donut.EmptyData />}
         {checkedLegendItems.map((item, index) => {
           return (
