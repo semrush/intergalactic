@@ -9,7 +9,7 @@ import {
   ZIndexStackingContextProvider,
 } from '@semcore/core/lib/utils/zIndexStacking';
 import { Box } from '@semcore/flex-box';
-import Popper from '@semcore/popper';
+import PopperOrigin from '@semcore/popper';
 import Portal from '@semcore/portal';
 import React from 'react';
 
@@ -28,6 +28,7 @@ const defaultProps = {
   focusLoop: false,
   liveRegion: true,
 };
+const Popper = PopperOrigin.newInstance();
 
 class TooltipRoot extends Component {
   static displayName = 'Tooltip';
