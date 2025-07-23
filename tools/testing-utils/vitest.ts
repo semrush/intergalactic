@@ -20,7 +20,7 @@ const test = baseTest.extend<{
       await label('component', componentName);
       await subSuite(subSuiteName);
       await story(task.name);
-      await suite(subSuiteName);
+      await suite(componentName);
       await layer(subSuiteName);
 
       await use();
