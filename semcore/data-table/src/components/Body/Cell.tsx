@@ -10,7 +10,7 @@ import style from './style.shadow.css';
 
 const DEFAULT_ROW_DURATION = 50;
 
-class CellRoot<DataKeyType> extends Component<DataTableCellProps<DataKeyType>, {}, {}, [], CellPropsInner<DataKeyType>> {
+class CellRoot<UniqKeyType> extends Component<DataTableCellProps<UniqKeyType>, {}, {}, [], CellPropsInner<UniqKeyType>> {
   static displayName = 'Cell';
   static style = style;
 

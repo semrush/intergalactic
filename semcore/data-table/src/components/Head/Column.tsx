@@ -38,14 +38,14 @@ type State = {
 
 export class Column<
   Data extends DataTableData,
-  DataKey extends keyof Data[number],
-  DataKeyType extends Data[number][DataKey],
+  UniqKey extends keyof Data[number],
+  UniqKeyType extends Data[number][UniqKey],
 > extends Component<
     DataTableColumnProps,
     {},
     {},
     [],
-    ColumnPropsInner<Data, DataKey, DataKeyType>
+    ColumnPropsInner<Data, UniqKey, UniqKeyType>
   > {
   static displayName = 'Column';
   static style = style;
@@ -78,7 +78,7 @@ export class Column<
     }
   }
 
-  componentDidUpdate(prevProps: DataTableColumnProps & ColumnPropsInner<Data, DataKey, DataKeyType>): void {
+  componentDidUpdate(prevProps: DataTableColumnProps & ColumnPropsInner<Data, UniqKey, UniqKeyType>): void {
     if (
       this.asProps.changeSortSize &&
       canUseDOM() &&

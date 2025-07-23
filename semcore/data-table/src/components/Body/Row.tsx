@@ -10,7 +10,7 @@ import style from './style.shadow.css';
 import { ACCORDION, SELECT_ALL, UNIQ_ROW_KEY } from '../DataTable/DataTable';
 import type { DTValue } from '../DataTable/DataTable.types';
 
-class RowRoot<DataKeyType> extends Component<DataTableRowProps<DataKeyType>, {}, {}, [], RowPropsInner<DataKeyType>> {
+class RowRoot<UniqKeyType> extends Component<DataTableRowProps<UniqKeyType>, {}, {}, [], RowPropsInner<UniqKeyType>> {
   static displayName = 'Row';
   static style = style;
 

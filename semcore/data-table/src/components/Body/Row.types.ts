@@ -6,26 +6,26 @@ import type { ACCORDION, ROW_GROUP, ROW_INDEX, UNIQ_ROW_KEY } from '../DataTable
 import type { DTValue, DTUse, DataTableData } from '../DataTable/DataTable.types';
 import type { DTColumn } from '../Head/Column.types';
 
-export type DTRow<DataKeyType> = {
-  [UNIQ_ROW_KEY]: DataKeyType;
+export type DTRow<UniqKeyType> = {
+  [UNIQ_ROW_KEY]: UniqKeyType;
   [ROW_INDEX]: number;
   [key: string]: DTValue | MergedRowsCell | MergedColumnsCell;
   [ACCORDION]?: React.ReactNode | DataTableData | undefined;
-  [ROW_GROUP]?: Set<DataKeyType>;
+  [ROW_GROUP]?: Set<UniqKeyType>;
 };
-export type DTRows<DataKeyType> = Array<DTRow<DataKeyType> | DTRow<DataKeyType>[]>;
+export type DTRows<UniqKeyType> = Array<DTRow<UniqKeyType> | DTRow<UniqKeyType>[]>;
 
-export type DataTableRowProps<DataKeyType> = {
-  row: DTRow<DataKeyType>;
+export type DataTableRowProps<UniqKeyType> = {
+  row: DTRow<UniqKeyType>;
   mergedRow?: boolean;
 
-  isAccordionRow?: DataTableCellProps<DataKeyType>['isAccordionRow'];
-  animationExpand?: DataTableCellProps<DataKeyType>['animationExpand'];
-  accordionRowIndex?: DataTableCellProps<DataKeyType>['accordionRowIndex'];
+  isAccordionRow?: DataTableCellProps<UniqKeyType>['isAccordionRow'];
+  animationExpand?: DataTableCellProps<UniqKeyType>['animationExpand'];
+  accordionRowIndex?: DataTableCellProps<UniqKeyType>['accordionRowIndex'];
   isNonInteractive?: boolean;
 };
 
-export type RowPropsInner<DataKeyType> = JSX.IntrinsicElements['div'] & {
+export type RowPropsInner<UniqKeyType> = JSX.IntrinsicElements['div'] & {
   use: DTUse;
   /**
    * Expanded flag for rows with accordion
@@ -39,24 +39,24 @@ export type RowPropsInner<DataKeyType> = JSX.IntrinsicElements['div'] & {
   mergedRow?: boolean;
 
   columns: DTColumn[];
-  row: DTRow<DataKeyType> | DTRow<DataKeyType>[];
-  rows: DTRows<DataKeyType>;
+  row: DTRow<UniqKeyType> | DTRow<UniqKeyType>[];
+  rows: DTRows<UniqKeyType>;
   rowIndex: number; // from 0
   ariaRowIndex: number; // from 1 + 1 header
   gridRowIndex: number; // from 1 + 1 (or 2 if it has group) header
 
-  expandedRows: Set<DataKeyType>;
-  onExpandRow: (expandedRow: DTRow<DataKeyType>) => void;
+  expandedRows: Set<UniqKeyType>;
+  onExpandRow: (expandedRow: DTRow<UniqKeyType>) => void;
 
   gridTemplateAreas: string[];
   gridTemplateColumns: string[];
   accordionDataGridArea: string;
 
-  selectedRows?: DataKeyType[];
+  selectedRows?: UniqKeyType[];
   onSelectRow?: (
     isSelect: boolean,
     selectedRowIndex: number,
-    row: DTRow<DataKeyType>,
+    row: DTRow<UniqKeyType>,
     event?: React.SyntheticEvent<HTMLElement>,
   ) => void;
 
@@ -73,7 +73,7 @@ export type RowPropsInner<DataKeyType> = JSX.IntrinsicElements['div'] & {
   ) => [side: 'left' | 'right', style: string | number] | [side: undefined, style: undefined];
 };
 
-export type DataTableRowType = (<DataKeyType, Tag extends Intergalactic.Tag = 'div'>(
-  props: Intergalactic.InternalTypings.ComponentProps<Tag, 'div', DataTableRowProps<DataKeyType>>
+export type DataTableRowType = (<UniqKeyType, Tag extends Intergalactic.Tag = 'div'>(
+  props: Intergalactic.InternalTypings.ComponentProps<Tag, 'div', DataTableRowProps<UniqKeyType>>
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
 Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', DataTableRowProps<any>>;

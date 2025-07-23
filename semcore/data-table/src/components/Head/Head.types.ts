@@ -25,16 +25,16 @@ export type DataTableHeadProps = {
 
 export type HeadPropsInner<
   Data extends DataTableData,
-  DataKey extends keyof Data[number],
-  DataKeyType extends Data[number][DataKey],
+  UniqKey extends keyof Data[number],
+  UniqKeyType extends Data[number][UniqKey],
 > = {
   use: DTUse;
   tableRef: React.RefObject<HTMLElement>;
   columns: DTColumn[];
   treeColumns: DTColumn[];
   compact: boolean;
-  sort?: DataTableProps<Data, DataKey, DataKeyType>['sort'];
-  onSortChange?: DataTableProps<Data, DataKey, DataKeyType>['onSortChange'];
+  sort?: DataTableProps<Data, UniqKey, UniqKeyType>['sort'];
+  onSortChange?: DataTableProps<Data, UniqKey, UniqKeyType>['onSortChange'];
   getI18nText: (key: string) => string;
   uid: string;
   ref: React.RefObject<HTMLDivElement>;
@@ -45,11 +45,11 @@ export type HeadPropsInner<
   sideIndents?: 'wide';
 
   totalRows: number;
-  selectedRows?: DataKeyType[];
+  selectedRows?: UniqKeyType[];
   onChangeSelectAll?: (value: boolean, event?: React.SyntheticEvent<HTMLElement>) => void;
 
   getFixedStyle: (
     cell: Pick<DTColumn, 'name' | 'fixed'>,
   ) => [side: 'left' | 'right', style: string | number] | [side: undefined, style: undefined];
-  onCellClick: CellPropsInner<DataKeyType>['onClick'];
+  onCellClick: CellPropsInner<UniqKeyType>['onClick'];
 };

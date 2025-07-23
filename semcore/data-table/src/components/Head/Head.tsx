@@ -15,14 +15,14 @@ import type { DataTableData } from '../DataTable/DataTable.types';
 
 class HeadRoot<
   Data extends DataTableData,
-  DataKey extends keyof Data[number],
-  DataKeyType extends Data[number][DataKey],
+  UniqKey extends keyof Data[number],
+  UniqKeyType extends Data[number][UniqKey],
 > extends Component<
     DataTableHeadProps,
     {},
     {},
     [],
-    HeadPropsInner<Data, DataKey, DataKeyType>
+    HeadPropsInner<Data, UniqKey, UniqKeyType>
   > {
   static displayName = 'Head';
   static style = style;

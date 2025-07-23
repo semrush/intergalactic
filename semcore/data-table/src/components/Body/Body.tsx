@@ -20,11 +20,11 @@ import type { DTValue } from '../DataTable/DataTable.types';
 const ROWS_BUFFER = 20;
 const APROX_ROWS_ON_PAGE = 20;
 
-type State<DataKeyType> = {
-  expandedForAnimation: Set<DataKeyType>;
+type State<UniqKeyType> = {
+  expandedForAnimation: Set<UniqKeyType>;
 };
 
-class BodyRoot<DataKeyType> extends Component<DataTableBodyProps<DataKeyType>, {}, State<DataKeyType>, [], BodyPropsInner<DataKeyType>> {
+class BodyRoot<UniqKeyType> extends Component<DataTableBodyProps<UniqKeyType>, {}, State<UniqKeyType>, [], BodyPropsInner<UniqKeyType>> {
   static displayName = 'Body';
   static style = style;
 
@@ -33,18 +33,18 @@ class BodyRoot<DataKeyType> extends Component<DataTableBodyProps<DataKeyType>, {
   indexForDownIterate = 0;
   indexForUpIterate = 0;
 
-  state: State<DataKeyType> = {
+  state: State<UniqKeyType> = {
     expandedForAnimation: new Set(),
   };
 
-  handleRef = (index: number, row: DTRow<DataKeyType>) => (node: HTMLElement | null) => {
+  handleRef = (index: number, row: DTRow<UniqKeyType>) => (node: HTMLElement | null) => {
     if (!this.rowsHeightMap.has(index) && node) {
       this.rowsHeightMap.set(index, [0, 0, node]);
       this.setRowHeight(index, row);
     }
   };
 
-  handleExpandRow = (row: DTRow<DataKeyType>, index: number) => {
+  handleExpandRow = (row: DTRow<UniqKeyType>, index: number) => {
     const { accordionDuration } = this.asProps;
     const openDuration = Array.isArray(accordionDuration)
       ? accordionDuration[0]
@@ -84,19 +84,19 @@ class BodyRoot<DataKeyType> extends Component<DataTableBodyProps<DataKeyType>, {
     }
   };
 
-  handleClickRow = (row: DTRow<DataKeyType>, index: number) => (e: React.SyntheticEvent<HTMLElement>) => {
+  handleClickRow = (row: DTRow<UniqKeyType>, index: number) => (e: React.SyntheticEvent<HTMLElement>) => {
     if (!isInteractiveElement(e.target)) {
       this.handleExpandRow(row, index);
     }
   };
 
-  handleClickCell = (e: React.SyntheticEvent<HTMLElement>, opt: { row: DTRow<DataKeyType>; rowIndex: number }) => {
+  handleClickCell = (e: React.SyntheticEvent<HTMLElement>, opt: { row: DTRow<UniqKeyType>; rowIndex: number }) => {
     if (!isInteractiveElement(e.target)) {
       this.handleExpandRow(opt.row, opt.rowIndex);
     }
   };
 
-  getRowProps(props: { row: DTRow<DataKeyType>; mergedRow?: boolean }): RowPropsInner<DataKeyType> {
+  getRowProps(props: { row: DTRow<UniqKeyType>; mergedRow?: boolean }): RowPropsInner<UniqKeyType> {
     const {
       use,
       gridTemplateAreas,
@@ -175,7 +175,7 @@ class BodyRoot<DataKeyType> extends Component<DataTableBodyProps<DataKeyType>, {
     };
   }
 
-  getCellProps(props: DataTableCellProps<DataKeyType>) {
+  getCellProps(props: DataTableCellProps<UniqKeyType>) {
     const {
       use,
       renderCell,
@@ -494,7 +494,7 @@ class BodyRoot<DataKeyType> extends Component<DataTableBodyProps<DataKeyType>, {
     );
   }
 
-  private setRowHeight(index: number, row: DTRow<DataKeyType>) {
+  private setRowHeight(index: number, row: DTRow<UniqKeyType>) {
     const { expandedRows } = this.asProps;
     const node = this.rowsHeightMap.get(index)?.[2];
     const firstChild =

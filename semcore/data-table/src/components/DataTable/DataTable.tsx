@@ -49,14 +49,14 @@ type State = {
 
 class DataTableRoot<
   Data extends DataTableData,
-  DataKey extends keyof Data[number],
-  DataKeyType extends Data[number][DataKey],
+  UniqKey extends keyof Data[number],
+  UniqKeyType extends Data[number][UniqKey],
 > extends Component<
-    DataTableProps<Data, DataKey, DataKeyType>,
+    DataTableProps<Data, UniqKey, UniqKeyType>,
     {},
     {},
   typeof DataTableRoot.enhance,
-  { use: DTRow<DataKeyType>; expandedRows: Set<DataKeyType>; renderEmptyData: () => React.ReactNode }
+  { use: DTRow<UniqKeyType>; expandedRows: Set<UniqKeyType>; renderEmptyData: () => React.ReactNode }
   > {
   static displayName = 'DataTable';
   static style = style;
@@ -88,14 +88,14 @@ class DataTableRoot<
   private gridAreaGroupMap = new Map<number, string>();
 
   private columnsSplitter = '/';
-  private rows: Array<DTRow<DataKeyType> | DTRow<DataKeyType>[]> = [];
-  private flatRows: DTRow<DataKeyType>[] = [];
+  private rows: Array<DTRow<UniqKeyType> | DTRow<UniqKeyType>[]> = [];
+  private flatRows: DTRow<UniqKeyType>[] = [];
 
   private selectAllMessageTimer = 0;
 
   private headerNodesMap = new Map();
 
-  constructor(props: DataTableProps<Data, DataKey, DataKeyType>) {
+  constructor(props: DataTableProps<Data, UniqKey, UniqKeyType>) {
     super(props);
 
     if (props.children) {
@@ -201,7 +201,7 @@ class DataTableRoot<
     };
   }
 
-  getHeadProps(): HeadPropsInner<Data, DataKey, DataKeyType> {
+  getHeadProps(): HeadPropsInner<Data, UniqKey, UniqKeyType> {
     const {
       use,
       compact,
@@ -247,7 +247,7 @@ class DataTableRoot<
     };
   }
 
-  getBodyProps(): BodyPropsInner<DataKeyType> {
+  getBodyProps(): BodyPropsInner<UniqKeyType> {
     const {
       use,
       compact,
@@ -301,7 +301,7 @@ class DataTableRoot<
     };
   }
 
-  handleCellClick = (e: React.SyntheticEvent, opt: { rowIndex: number; colIndex: number; row?: DTRow<DataKeyType> }) => {
+  handleCellClick = (e: React.SyntheticEvent, opt: { rowIndex: number; colIndex: number; row?: DTRow<UniqKeyType> }) => {
     if (lastInteraction.isMouse()) {
       console.log('click on cell in data table handler', opt);
       this.initFocusableCell([this.hasFocusableInHeader() ? opt.rowIndex + 1 : opt.rowIndex, opt.colIndex]);
@@ -311,7 +311,7 @@ class DataTableRoot<
   handleSelectRow = (
     isSelected: boolean,
     selectedRowIndex: number,
-    row: DTRow<DataKeyType>,
+    row: DTRow<UniqKeyType>,
     event?: React.SyntheticEvent<HTMLElement>,
   ) => {
     const { selectedRows, onSelectedRowsChange } = this.asProps;
@@ -376,7 +376,7 @@ class DataTableRoot<
       this.columns.some((column) => column.sortable);
   };
 
-  onExpandRow = (expandedRow: DTRow<DataKeyType>) => {
+  onExpandRow = (expandedRow: DTRow<UniqKeyType>) => {
     const { expandedRows } = this.asProps;
     if (expandedRows.has(expandedRow[UNIQ_ROW_KEY])) {
       expandedRows.delete(expandedRow[UNIQ_ROW_KEY]);
@@ -1074,12 +1074,12 @@ class DataTableRoot<
     return [calculatedColumns, treeColumns];
   }
 
-  private calculateRows(): Array<DTRow<DataKeyType>[] | DTRow<DataKeyType>> {
+  private calculateRows(): Array<DTRow<UniqKeyType>[] | DTRow<UniqKeyType>> {
     const columns = this.columns;
     // @ts-ignore
     const { data, uid, uniqueRowKey } = this.props;
 
-    const rows: Array<DTRow<DataKeyType>[] | DTRow<DataKeyType>> = [];
+    const rows: Array<DTRow<UniqKeyType>[] | DTRow<UniqKeyType>> = [];
     const columnNames = columns.map((column: DTColumn) => column.name);
 
     let rowIndex = 0;
@@ -1088,7 +1088,7 @@ class DataTableRoot<
 
     const makeDtRow = (row: DataRowItem, excludeColumns?: string[]) => {
       const columns = new Set(columnNames);
-      const dtRow = Object.entries(row).reduce<DTRow<DataKeyType>>(
+      const dtRow = Object.entries(row).reduce<DTRow<UniqKeyType>>(
         (acc, [key, value]) => {
           const columnsToRow = key.split(this.columnsSplitter);
 
@@ -1139,10 +1139,10 @@ class DataTableRoot<
       const groupedRows: DataTableData | undefined = row[ROW_GROUP];
 
       if (groupedRows) {
-        const innerRows: DTRow<DataKeyType>[] & { [ACCORDION]?: React.ReactElement } = [];
+        const innerRows: DTRow<UniqKeyType>[] & { [ACCORDION]?: React.ReactElement } = [];
 
         const groupedKeys: string[] = [];
-        const groupedRowData = Object.entries(row).reduce<Omit<DTRow<DataKeyType>, symbol>>(
+        const groupedRowData = Object.entries(row).reduce<Omit<DTRow<UniqKeyType>, symbol>>(
           (acc, [key, value]) => {
             acc[key] = new MergedRowsCell(value, groupedRows.length, row[ACCORDION]);
             groupedKeys.push(key);
@@ -1155,7 +1155,7 @@ class DataTableRoot<
         );
 
         groupedRows.forEach((childRow, index) => {
-          let dtRow: DTRow<DataKeyType>;
+          let dtRow: DTRow<UniqKeyType>;
           if (index === 0) {
             const rowData = {
               ...childRow,

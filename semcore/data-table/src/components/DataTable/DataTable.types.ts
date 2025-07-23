@@ -43,8 +43,8 @@ export type Sizes = Pick<BoxProps, 'w' | 'wMax' | 'wMin' | 'h' | 'hMax' | 'hMin'
 
 export type DataTableProps<
   Data extends DataTableData,
-  DataKey extends keyof Data[number],
-  DataKeyType extends Data[number][DataKey],
+  UniqKey extends keyof Data[number],
+  UniqKeyType extends Data[number][UniqKey],
 > = DataTableAriaProps &
   Sizes & {
     /** Data for table */
@@ -90,7 +90,7 @@ export type DataTableProps<
     /**
      * Set of expanded rows (uniq id from them)
      */
-    expandedRows?: Set<DataKeyType>;
+    expandedRows?: Set<UniqKeyType>;
 
     virtualScroll?: VirtualScroll;
 
@@ -117,27 +117,27 @@ export type DataTableProps<
       withScrollBar?: boolean;
     };
 
-    rowProps?: DataTableBodyProps<DataKeyType>['rowProps'];
+    rowProps?: DataTableBodyProps<UniqKeyType>['rowProps'];
 
-    renderCell?: DataTableBodyProps<DataKeyType>['renderCell'];
+    renderCell?: DataTableBodyProps<UniqKeyType>['renderCell'];
 
     /**
    * Name of a unique key for each row data item
    */
-    uniqueRowKey?: DataKey;
+    uniqueRowKey?: UniqKey;
 
     /**
      * List of selected rows (uniqIds from a data array)
      */
-    selectedRows?: DataKeyType[];
+    selectedRows?: UniqKeyType[];
 
     onSelectedRowsChange?: (
-      selectedRows: DataKeyType[],
+      selectedRows: UniqKeyType[],
       event?: React.SyntheticEvent<HTMLElement>,
       opts?: {
         selectedRowIndex: number;
         isSelected: boolean;
-        row: DTRow<DataKeyType>;
+        row: DTRow<UniqKeyType>;
       },
     ) => void;
 
@@ -193,12 +193,12 @@ export type ColIndex = number;
 
 export type DataTableType = (<
   Data extends DataTableData,
-  DataKey extends keyof Data[number],
-  DataKeyType extends Data[number][DataKey],
+  UniqKey extends keyof Data[number],
+  UniqKeyType extends Data[number][UniqKey],
   Tag extends Intergalactic.Tag = 'div',
 >(
   props: Intergalactic.InternalTypings.EfficientOmit<
-    Intergalactic.InternalTypings.ComponentProps<Tag, 'div', DataTableProps<Data, DataKey, DataKeyType>>,
+    Intergalactic.InternalTypings.ComponentProps<Tag, 'div', DataTableProps<Data, UniqKey, UniqKeyType>>,
     'tag' | 'children'
   >
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &

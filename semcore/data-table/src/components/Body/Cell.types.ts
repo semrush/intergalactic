@@ -7,10 +7,10 @@ import type { DTColumn } from '../Head/Column.types';
 
 export type Theme = 'muted' | 'info' | 'success' | 'warning' | 'danger';
 
-export type DataTableCellProps<DataKeyType> = {
+export type DataTableCellProps<UniqKeyType> = {
   id: string;
   accordionId: string;
-  row: DTRow<DataKeyType>;
+  row: DTRow<UniqKeyType>;
   rowIndex: number;
   column: DTColumn;
   columnIndex: number;
@@ -23,19 +23,19 @@ export type DataTableCellProps<DataKeyType> = {
   isAccordionRow?: boolean;
   animationExpand?: boolean;
   accordionRowIndex?: number;
-  rows: DTRows<DataKeyType>;
+  rows: DTRows<UniqKeyType>;
 };
 
-export type CellPropsInner<DataKeyType> = {
+export type CellPropsInner<UniqKeyType> = {
   use: DTUse;
 
   virtualScroll: boolean;
   tableRef: React.RefObject<HTMLDivElement>;
   accordionDuration?: number | [number, number];
-  onClick: (e: React.SyntheticEvent, opt: { rowIndex: number; colIndex: number; row?: DTRow<DataKeyType> }) => void;
+  onClick: (e: React.SyntheticEvent, opt: { rowIndex: number; colIndex: number; row?: DTRow<UniqKeyType> }) => void;
 };
 
-export type DataTableCellType = (<DataKeyType, Tag extends Intergalactic.Tag = 'div'>(
-  props: Intergalactic.InternalTypings.ComponentProps<Tag, 'div', DataTableCellProps<DataKeyType>>
+export type DataTableCellType = (<UniqKeyType, Tag extends Intergalactic.Tag = 'div'>(
+  props: Intergalactic.InternalTypings.ComponentProps<Tag, 'div', DataTableCellProps<UniqKeyType>>
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
 Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', DataTableCellProps<any>>;
