@@ -272,7 +272,10 @@ class BodyRoot extends Component<DataTableBodyProps, {}, State, [], BodyPropsInn
       };
 
       if (value?.[ACCORDION] || (cellValue instanceof MergedRowsCell && cellValue.accordion)) {
-        extraProps.onClick = handleClick;
+        extraProps.onClick = callAllEventHandlers(
+          extraProps.onClick,
+          handleClick,
+        );
       }
 
       extraProps.children = sstyled(styles)(
