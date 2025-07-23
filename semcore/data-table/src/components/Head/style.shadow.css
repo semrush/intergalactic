@@ -2,6 +2,10 @@ SHead, SGroupContainer {
   display: contents;
 }
 
+SHead[animationDuration] > SColumn {
+  transition: top var(--animationDuration) ease-out;
+}
+
 SHead[sticky] SColumn, SHead[sticky] SGroup {
   position: sticky;
   top: 0;

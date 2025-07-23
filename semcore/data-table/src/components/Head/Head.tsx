@@ -10,7 +10,7 @@ import { Group } from './Group';
 import type { DataTableGroupProps } from './Group.type';
 import type { DataTableHeadProps, HeadPropsInner } from './Head.types';
 import style from './style.shadow.css';
-import { DataTableInternal, SELECT_ALL } from '../DataTable/DataTable';
+import { DataTableInternal, SELECT_ALL, UNIQ_ROW_KEY } from '../DataTable/DataTable';
 import type { DataTableData } from '../DataTable/DataTable.types';
 
 class HeadRoot<
@@ -107,25 +107,42 @@ class HeadRoot<
     this.asProps.onChangeSelectAll?.(value, event);
   };
 
+  get areAllRowsSelected() {
+    const { selectedRows, flatRows } = this.asProps;
+
+    return flatRows.every((row) => selectedRows?.includes(row[UNIQ_ROW_KEY]));
+  }
+
+  get isIndeterminate() {
+    const { flatRows, selectedRows } = this.asProps;
+
+    return flatRows.some((row) => selectedRows?.includes(row[UNIQ_ROW_KEY]));
+  }
+
   render() {
     const SHead = Root;
     const SHeadCheckboxCol = Head.Column;
-    const { Children, styles, getI18nText, children, treeColumns, selectedRows, totalRows } =
-      this.asProps;
+    const { Children, styles, getI18nText, children, treeColumns, selectedRows, sticky, animationDuration } = this.asProps;
 
-    const checked = selectedRows && selectedRows.length === totalRows && totalRows > 0;
-    const indeterminate = selectedRows && selectedRows.length > 0 && !checked;
+    const areAllRowsSelected = this.areAllRowsSelected;
+    const indeterminate = this.isIndeterminate && !areAllRowsSelected;
 
     return sstyled(styles)(
       <>
-        <SHead render={Box} role='row' aria-rowindex={1}>
+        <SHead
+          render={Box}
+          role='row'
+          aria-rowindex={1}
+          sticky={sticky}
+          use:animationDuration={animationDuration ? `${animationDuration}ms` : undefined}
+        >
           {selectedRows && (
             <SHeadCheckboxCol
               name={SELECT_ALL.toString()}
-              onClick={this.handleClickSelectAll(!checked)}
+              onClick={this.handleClickSelectAll(!areAllRowsSelected)}
             >
               <Checkbox
-                checked={checked}
+                checked={areAllRowsSelected}
                 indeterminate={indeterminate}
                 aria-label={getI18nText('DataTable.Header.selectAllCheckbox:aria-label')}
                 onChange={this.handleSelectAll}

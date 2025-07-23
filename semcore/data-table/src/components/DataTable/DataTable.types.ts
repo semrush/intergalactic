@@ -6,6 +6,7 @@ import type { ACCORDION, ROW_GROUP, UNIQ_ROW_KEY } from './DataTable';
 import type { DataTableBodyProps } from '../Body/Body.types';
 import type { DTRow } from '../Body/Row.types';
 import type { DataTableColumnProps } from '../Head/Column.types';
+import type { DataTableHeadProps } from '../Head/Head.types';
 
 /**
  * Datatable must have an accessible name (aria-table-name).
@@ -96,26 +97,7 @@ export type DataTableProps<
 
     columns: ColumnsConfig;
 
-    headerProps?: {
-      /**
-       * Sticky header
-       * @default false
-       */
-      sticky?: boolean;
-
-      /**
-       * Height of header in px. It's better to set it to improve performance with sticky header.
-       */
-      h?: number;
-
-      /**
-       * offset for sticky header
-       */
-      top?: number;
-
-      /** Enable scroll bar element in header */
-      withScrollBar?: boolean;
-    };
+    headerProps?: DataTableHeadProps;
 
     rowProps?: DataTableBodyProps<UniqKeyType>['rowProps'];
 

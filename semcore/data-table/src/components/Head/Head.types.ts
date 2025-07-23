@@ -1,5 +1,6 @@
 import type { DTColumn } from './Column.types';
 import type { CellPropsInner } from '../Body/Cell.types';
+import type { DTRow } from '../Body/Row.types';
 import type { DataTableData, DataTableProps, DTUse } from '../DataTable/DataTable.types';
 
 export type DataTableHeadProps = {
@@ -21,6 +22,9 @@ export type DataTableHeadProps = {
 
   /** Enable scroll bar element in header */
   withScrollBar?: boolean;
+
+  /** Animation duration for a top property. When it's set adds animation for top changes */
+  animationDuration?: number;
 };
 
 export type HeadPropsInner<
@@ -47,6 +51,7 @@ export type HeadPropsInner<
   totalRows: number;
   selectedRows?: UniqKeyType[];
   onChangeSelectAll?: (value: boolean, event?: React.SyntheticEvent<HTMLElement>) => void;
+  flatRows: DTRow<UniqKeyType>[];
 
   getFixedStyle: (
     cell: Pick<DTColumn, 'name' | 'fixed'>,

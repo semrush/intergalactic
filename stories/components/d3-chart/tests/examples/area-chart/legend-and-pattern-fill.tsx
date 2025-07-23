@@ -62,6 +62,13 @@ const Demo = () => {
     setHighlightedLine(-1);
   }, []);
 
+  const onClickHandler = (index: number, event: React.SyntheticEvent) => {
+    const clickedItem = data[index];
+    console.log('Clicked area chart point:');
+    console.log('→ Index:', index);
+    console.log('→ Data item:', clickedItem);
+    console.log('→ Event:', event);
+  };
   return (
     <>
       <ChartLegend
@@ -105,6 +112,7 @@ const Demo = () => {
               curve={curveCardinal}
               color={item.color}
               transparent={highlightedLine !== -1 && highlightedLine !== index}
+              onClick={onClickHandler}
             >
               <Area.Dots display />
             </Area>
