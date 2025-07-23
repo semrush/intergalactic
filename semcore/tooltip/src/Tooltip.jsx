@@ -1,4 +1,4 @@
-import { createComponent, Component, CREATE_COMPONENT, sstyled, Root } from '@semcore/core';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 import logger from '@semcore/core/lib/utils/logger';
@@ -9,13 +9,11 @@ import {
   ZIndexStackingContextProvider,
 } from '@semcore/core/lib/utils/zIndexStacking';
 import { Box } from '@semcore/flex-box';
-import PopperOrigin from '@semcore/popper';
+import Popper from '@semcore/popper';
 import Portal from '@semcore/portal';
 import React from 'react';
 
 import style from './style/tooltip.shadow.css';
-
-const Popper = PopperOrigin[CREATE_COMPONENT]();
 
 const defaultProps = {
   placement: 'top',
