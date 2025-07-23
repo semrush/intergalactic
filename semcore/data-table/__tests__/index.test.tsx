@@ -5,6 +5,7 @@ import { expect, test, describe, beforeEach, vi, assertType } from '@semcore/tes
 import React, { useRef } from 'react';
 
 import { DataTable, UNIQ_ROW_KEY } from '../src';
+import type { CellRenderProps } from '../src/components/Body/Body.types';
 
 describe('data-table Dependency imports', () => {
   runDependencyCheckTests('data-table');
@@ -135,5 +136,34 @@ describe('DataTable.Cell', () => {
 
     render(<Test />);
     expect(spy).toBeCalled();
+  });
+
+  test('Should support rawData in custom renderCell function', () => {
+    const spy = vi.fn();
+    const dataItem = { keyword: 'test', kd: '1', vol: null };
+
+    const Test = () => {
+      const customCellRender = (props: CellRenderProps) => {
+        spy(props.rawData);
+
+        return props.defaultRender();
+      };
+
+      return (
+        <DataTable
+          data={[dataItem]}
+          aria-label='table'
+          columns={[
+            { name: 'keyword', children: 'Keyword' },
+            { name: 'kd', children: 'KD' },
+            { name: 'vol', children: 'Vol.' },
+          ]}
+          renderCell={customCellRender}
+        />
+      );
+    };
+
+    render(<Test />);
+    expect(spy).toBeCalledWith({ ...dataItem });
   });
 });

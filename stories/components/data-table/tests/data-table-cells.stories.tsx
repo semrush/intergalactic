@@ -9,7 +9,6 @@ import LongTextCellsExample from './examples/cells-tests/long-text-in-cells';
 import MiniChartsInCellsExample from './examples/cells-tests/mini-chart-inline-edit-in-cell';
 import MergedScrolledRowExample from './examples/cells-tests/one-big-merged-row-and-scroll';
 import OneMergedCellExample from './examples/cells-tests/one-merged-cell';
-import RenderCellRawValueExample from './examples/cells-tests/render-cell-raw-data';
 
 const meta: Meta<typeof DataTable> = {
   title: 'Components/DataTable/Tests/Cells',
@@ -25,10 +24,6 @@ export const CardFlagInCell: Story = {
 
 export const CheckBox: Story = {
   render: CheckBoxExample,
-};
-
-export const RenderCellRawValue: Story = {
-  render: RenderCellRawValueExample,
 };
 
 export const MiniChartsInCells: Story = {
