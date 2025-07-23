@@ -144,7 +144,7 @@ type InlineInputCtx = {
   getValueProps: PropGetterFn;
 };
 
-declare const InlineInput: Intergalactic.Component<'div', InlineInputProps, InlineInputCtx> & {
+export type InlineInputComponent = Intergalactic.Component<'div', InlineInputProps, InlineInputCtx> & {
   Addon: Intergalactic.Component<'div', InlineInputAddonProps, InlineInputProps>;
   Value: Intergalactic.Component<'input', InlineInputValueProps, InlineInputProps>;
   ConfirmControl: Intergalactic.Component<
@@ -160,4 +160,3 @@ declare const InlineInput: Intergalactic.Component<'div', InlineInputProps, Inli
   NumberValue: Intergalactic.Component<'div', {}, InlineInputProps>;
   NumberControls: Intergalactic.Component<'div', InputNumberControlsProps, InlineInputProps>;
 };
-export default InlineInput;
