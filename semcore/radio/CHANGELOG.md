@@ -7,6 +7,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Styles for `:focus-visible`.
+- Border color for checked Checkbox in `focus` state.
 
 ## [16.0.4] - 2025-07-04
 

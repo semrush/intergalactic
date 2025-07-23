@@ -3,6 +3,21 @@ SHighlightedRadio {
 }
 
 SHighlightedRadio:not([state="invalid"]) {
+  [data-ui-name="Value.RadioMark"] {
+    border: 1px solid transparent;
+    border-radius: 50%;
+    background: linear-gradient(white, white) padding-box,
+      var(--intergalactic-border-feature-highlight, linear-gradient(90deg, #c695ff, #2bb3ff)) border-box;
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+  }
+
+  input[data-ui-name="RadioFH.Value"]:checked + [data-ui-name="Value.RadioMark"] {
+    border-color: transparent;
+    background: var(--intergalactic-border-feature-highlight-active, linear-gradient(90deg, #ab6cfe, #008ff8)) padding-box,
+      var(--intergalactic-border-feature-highlight-active, linear-gradient(90deg, #ab6cfe, #008ff8)) border-box;
+  }
+
   [data-ui-name="Value.RadioMark"]::before {
     content: "";
     position: absolute;
@@ -10,28 +25,25 @@ SHighlightedRadio:not([state="invalid"]) {
     inset: 0;
     margin: 0;
     padding: 1px;
-    opacity: 1;
-    border-width: 1px;
-    transform: scale(1);
+    opacity: 0;
+    border-radius: 50%;
+    transform: scale(0.9);
     pointer-events: none;
-    border-color: transparent;
+    background-image: var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg, #ab6cfe, #008ff8));
 
-    background: linear-gradient(white, white) padding-box,
-      var(--intergalactic-border-feature-highlight, linear-gradient(90deg, #c695ff, #2bb3ff)) border-box;
-    background-origin: border-box;
-    background-clip: padding-box, border-box;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
+    mask-composite: exclude;
 
     transition:
       margin calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
       opacity calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
-      transform calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
-      border-width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
+      transform calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
   }
 
   input[data-ui-name="RadioFH.Value"]:focus-visible+[data-ui-name="Value.RadioMark"]::before {
-    box-shadow: none;
-    border-color: transparent;
-    margin: -2px;
+    margin: -5px;
     opacity: 1;
     transform: scale(1);
     border-width: 3px;
@@ -43,13 +55,14 @@ SHighlightedRadio:not([state="invalid"]) {
   }
 
   input[data-ui-name="RadioFH.Value"]:checked:focus-visible+[data-ui-name="Value.RadioMark"]::before {
-    mask: none;
-    background: var(--intergalactic-border-feature-highlight-active, linear-gradient(90deg, #ab6cfe, #008ff8)) padding-box, var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg, #ab6cfe, #008ff8)) border-box;
+    margin: -5px;
+    opacity: 1;
+    transform: scale(1);
   }
 
   input[data-ui-name="RadioFH.Value"]:checked:not(:focus-visible)+[data-ui-name="Value.RadioMark"]::before {
-    border-color: transparent;
-    background: var(--intergalactic-border-feature-highlight-active, linear-gradient(90deg, #ab6cfe, #008ff8)) padding-box,
-      var(--intergalactic-border-feature-highlight-active, linear-gradient(90deg, #ab6cfe, #008ff8)) border-box;
+    margin: 0;
+    opacity: 0;
+    transform: scale(0.9);
   }
 }

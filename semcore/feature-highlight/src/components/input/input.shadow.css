@@ -14,7 +14,7 @@ SHighlightedInput[state='normal'] {
       inset: 0;
       margin: 0;
       padding: 2px;
-      border-radius: calc(var(--intergalactic-control-rounded, 6px) + 3px);
+      border-radius: var(--intergalactic-control-rounded, 6px);
 
       background-image: var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg, #ab6cfe, #008ff8));
       mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
@@ -23,13 +23,11 @@ SHighlightedInput[state='normal'] {
       -webkit-mask-composite: xor;
 
       opacity: 0;
-      transform: scale(0.96);
       pointer-events: none;
 
       transition:
         margin calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
         opacity calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
-        transform calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
     }
   }
 
@@ -53,9 +51,8 @@ SHighlightedInput[state='normal'] {
     border-color: transparent;
 
     &::before {
-      margin: -6px;
+      margin: -2px;
       opacity: 1;
-      transform: scale(1);
     }
   }
 }

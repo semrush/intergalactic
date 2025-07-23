@@ -104,11 +104,6 @@ SControl {
   clip: rect(1px, 1px, 1px, 1px);
 }
 
-SControl:checked~SValue::before {
-  border-color: var(--intergalactic-control-primary-info, #008ff8);
-  background-color: var(--intergalactic-control-primary-info, #008ff8);
-}
-
 SControl:checked~SValue[size='m']::after {
   width: 6px;
   height: 6px;
@@ -124,6 +119,12 @@ SControl:focus-visible+SValue[state='normal']::before {
   outline: 2px solid var(--intergalactic-keyboard-focus-outline, #008ff8);
   outline-offset: 2px;
   transition: all calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
+}
+
+SControl:checked~SValue::before,
+SControl:checked:focus-visible~SValue::before {
+  border-color: var(--intergalactic-control-primary-info, #008ff8);
+  background-color: var(--intergalactic-control-primary-info, #008ff8);
 }
 
 SControl:focus-visible+SValue[state='invalid']::before {
