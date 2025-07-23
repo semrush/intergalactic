@@ -1,4 +1,4 @@
-import type { Intergalactic } from '@semcore/ui/core';
+import type { Intergalactic } from '@semcore/core';
 import type * as React from 'react';
 
 import type { DTRow, DTRows } from './Row.types';

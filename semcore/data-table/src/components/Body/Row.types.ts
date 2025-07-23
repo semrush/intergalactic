@@ -1,4 +1,4 @@
-import type { Intergalactic } from '@semcore/ui/core';
+import type { Intergalactic } from '@semcore/core';
 
 import type { DataTableCellProps } from './Cell.types';
 import type { MergedColumnsCell, MergedRowsCell } from './MergedCells';
