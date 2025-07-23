@@ -35,7 +35,7 @@ SHighlightedRadio:not([state="invalid"]) {
     opacity: 1;
     transform: scale(1);
     border-width: 3px;
-    background: var(--intergalactic-border-feature-highlight-active, linear-gradient(90deg, #ab6cfe, #008ff8)) padding-box, var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg, #ab6cfe, #008ff8)) border-box;
+    background: linear-gradient(white, white) padding-box, var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg, #ab6cfe, #008ff8)) border-box;
     mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
     mask-composite: exclude;
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);

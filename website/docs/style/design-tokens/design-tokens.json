@@ -2141,6 +2141,7 @@
       "radio",
       "slider",
       "switch",
+      "textarea",
       "typography"
     ]
   },
@@ -4100,7 +4101,8 @@
       "input",
       "radio",
       "slider",
-      "switch"
+      "switch",
+      "textarea"
     ]
   },
   {
