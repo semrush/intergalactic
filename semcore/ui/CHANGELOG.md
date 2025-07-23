@@ -1,3 +1,64 @@
+## [16.5.0] - 2025-07-23
+
+### @semcore/base-trigger
+
+- **Changed** Inconsistent border color in disabled state for `neighborLocation=left`.
+
+### @semcore/bulk-textarea
+
+- **Fixed** Missing type names for `InputFieldProps` on API page for Bulk Textarea due to ESLint fixes.
+
+### @semcore/core
+
+- **Added** `featureHighlight` tokens to dark.json.
+
+### @semcore/d3-chart
+
+- **Added** `onClickArea` handler for `Chart.Area`.
+- **Added** `onClickBubble` handler for `Chart.Bubble`.
+- **Added** `onClickPie` handler for `Chart.Donut`.
+- **Added** `onClickLine` handler for `Chart.Line`.
+- **Added** `onClickRadar` handler for `Chart.Radar`.
+- **Added** `onClickScatterItem` handler for `Chart.ScatterPlot`.
+- **Added** `onClickVennItem` handler for `Chart.Venn`.
+- **Added** `onClick` handlers for `Area`, `Bubble`, `Donut`, `Dots`, `Line`, `Radar`, `ScatterPlot`, `Venn`.
+- **Fixed** Tooltip in Compact Horizontal Bar always shows data from the first bar.
+- **Fixed** Donut chart hover issues when paddingAngle is set without innerRadius.
+
+### @semcore/data-table
+
+- **Added** Transition for the table header's `top` attribute.
+- **Added** New header prop `animationDuration`.
+- **Fixed** Row hover effect for empty state.
+- **Fixed** Incorrect 'Select all' checkbox behavior with pagination.
+- **Fixed** Header glitches in loading state with sticky header.
+
+### @semcore/errors
+
+- **Changed** Mobile breakpoint from 320px to 648px and other minor CSS changes to eliminate any implicit intermediate states.
+- **Changed** Added `flex-wrap` to `Error.Controls` for better layout on small screens.
+- **Changed** Default URL for the "Support Team" link from an email to "/company/contacts" in `ProjectNotFound`.
+- **Changed** Slightly changed the grammar in the English text in `ProjectNotFound`.
+
+### @semcore/icon
+
+- **Added** New icons: `TextBold`, `TextItalic`, `TextQuotes` and `TextUnderline`.
+- **Changed** `Text` icon to visually match new text format icons.
+- **Changed** `MathPlus` icon.
+- **Added** New `Gift` icon.
+
+### @semcore/inline-input
+
+- **Fixed** Inline input and its actions are focusable even when disabled.
+
+### @semcore/input
+
+- **Fixed** Focus is lost when user activates Close button with `Space` key.
+
+### @semcore/slider
+
+- **Fixed** `Slider` didn't respond to Home and End keyboard keys.
+
 ## [16.4.1] - 2025-07-04
 
 ### @semcore/core
