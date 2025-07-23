@@ -137,12 +137,8 @@ class TooltipRoot extends Component {
   }
 }
 
-function PopperTrigger(props) {
-  const { Element: STrigger, styles } = props;
-
-  return sstyled(styles)(
-    <STrigger render={Popper.Trigger} />,
-  );
+function PopperTrigger() {
+  return <Root render={Popper.Trigger} />;
 }
 
 function PopperPopper(props) {
