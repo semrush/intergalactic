@@ -43,15 +43,15 @@ test.describe('List', () => {
 
     await page.setContent(htmlContent);
 
-    const list = await page.locator('[data-ui-name="List"]').first();
+    const list = await page.locator('ul[data-ui-name="List"]').first();
     await expect(list).toHaveAttribute('role', 'list');
 
-    const listItems = await page.locator('[data-ui-name="List.Item"]');
+    const listItems = await page.locator('li[data-ui-name="List.Item"]');
     for (let i = 0; i < (await listItems.count()); i++) {
       await expect(listItems.nth(i)).toHaveAttribute('role', 'listitem');
     }
 
-    const markers = await page.locator('[class*="SMarker"]');
+    const markers = await page.locator('span[class*="SMarker"]');
 
     await expect(markers).toHaveCount((await listItems.count()) - 1);
 
