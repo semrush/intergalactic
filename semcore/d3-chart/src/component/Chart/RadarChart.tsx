@@ -17,11 +17,11 @@ class RadarChartComponent extends AbstractChart<
   static enhance = [i18nEnhance(localizedMessages)] as const;
 
   protected renderChart(): React.ReactNode {
-    const { groupKey, showDots, circle } = this.asProps;
+    const { groupKey, showDots, circle, onClickRadar } = this.asProps;
     const { dataDefinitions } = this.state;
 
     return (
-      <Radar scale={this.xScale} type={circle ? 'circle' : undefined}>
+      <Radar onClick={onClickRadar} scale={this.xScale} type={circle ? 'circle' : undefined}>
         <Radar.Axis dataKey={groupKey}>
           <Radar.Axis.Ticks />
           <Radar.Axis.Labels />

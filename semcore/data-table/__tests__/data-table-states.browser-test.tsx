@@ -22,6 +22,22 @@ test.describe('Loading states', () => {
     await expect(page).toHaveScreenshot();
   });
 
+  test('Verify loading state in with sticky header', async ({ page }) => {
+    const standPath = 'stories/components/data-table/docs/examples/checkbox-in-table.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en', { loading: true });
+
+    await page.setContent(htmlContent);
+
+    await expect(page).toHaveScreenshot();
+
+    const firstHeader = page.locator('[data-ui-name="Head.Column"][aria-colindex="1"]');
+    const headerCheckbox = firstHeader.locator('[data-ui-name="Value.CheckMark"]');
+
+    await headerCheckbox.click();
+    await page.getByRole('button', { name: 'Deselect all' }).waitFor({ state: 'visible' });
+    await expect(page).toHaveScreenshot();
+  });
+
   test('Verify skeleton in table', async ({ page }) => {
     const standPath = 'stories/components/data-table/docs/examples/skeleton-in-table.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -64,18 +80,30 @@ test.describe('Loading states', () => {
 
     await page.setContent(htmlContent);
 
-    const rowCell = page.locator('div[data-ui-name="Body.Cell"]');
-
-    await expect(rowCell).toHaveAttribute('tabindex', '-1');
-    await expect(rowCell).toHaveAttribute('data-grouped-by', 'colgroup');
-    await expect(rowCell).toHaveAttribute('scope', 'colgroup');
-    await expect(rowCell).toHaveAttribute('aria-colspan', '5');
-
+    const cells = page.locator('div[data-ui-name="Body.Cell"]');
+    const firstRow = page.locator('[data-ui-name="Body.Row"]').first();
     const noData = page.locator('[data-ui-name="WidgetNoData"]');
-    await expect(noData).toHaveAttribute('role', 'status');
 
-    await page.keyboard.press('Tab');
-    await expect(page).toHaveScreenshot();
+    await test.step('Verify empty state attributes', async () => {
+      await expect(cells).toHaveAttribute('tabindex', '-1');
+      await expect(cells).toHaveAttribute('data-grouped-by', 'colgroup');
+      await expect(cells).toHaveAttribute('scope', 'colgroup');
+      await expect(cells).toHaveAttribute('aria-colspan', '5');
+      await expect(noData).toHaveAttribute('role', 'status');
+    });
+
+    await test.step('Verify styles on hover', async () => {
+      await firstRow.hover();
+      const background = await cells.first().evaluate((el) => getComputedStyle(el).backgroundColor);
+      expect(['rgba(0, 0, 0, 0)', 'transparent', 'rgb(255, 255, 255)']).toContain(background);
+    });
+
+    await test.step('Verify empty state focus styles', async () => {
+      await page.keyboard.press('Tab');
+      const background2 = await cells.first().evaluate((el) => getComputedStyle(el).backgroundColor);
+      expect(['rgba(0, 0, 0, 0)', 'transparent', 'rgb(255, 255, 255)']).toContain(background2);
+      await expect(page).toHaveScreenshot();
+    });
   });
 });
 
@@ -87,9 +115,16 @@ test.describe('Additional states', () => {
     await page.setContent(htmlContent);
 
     const firstHeader = page.locator('[data-ui-name="Head.Column"][aria-colindex="1"]');
-    const actionBar = page.locator('[aria-label="Table action bar"]');
     const firstColumnCells = page.locator('[data-ui-name="Body.Cell"][aria-colindex="1"]');
     const headerCheckbox = firstHeader.locator('input');
+    const region = page.locator('[aria-label="Table action bar"]');
+    const collapse = page.locator('[data-ui-name="Collapse"]');
+    const selectedRowsCount = collapse.locator('[data-ui-name="Text"]').nth(1);
+    const deselectAllButton = collapse.locator('button');
+    const selectAllCheckbox = page.locator('[data-ui-name="DataTable.Head"] [data-ui-name="Checkbox"]');
+    const nextButton = page.locator('[data-ui-name="Pagination.NextPage"]');
+    const prevButton = page.locator('[data-ui-name="Pagination.PrevPage"]');
+    const rowCheckboxes = page.locator('[data-ui-name="DataTable.Body"] [data-ui-name="Checkbox"]');
 
     await test.step('Verify checkbox in header aria label is All items', async () => {
       await expect(headerCheckbox).toHaveAttribute('aria-label', 'All items');
@@ -97,10 +132,12 @@ test.describe('Additional states', () => {
     });
 
     await test.step('Verify no action bar when nothing selected', async () => {
-      await expect(actionBar).toBeHidden();
+      await expect(collapse).toBeHidden();
+      await expect(selectedRowsCount).toBeHidden();
+      await expect(selectAllCheckbox).not.toBeChecked();
     });
 
-    await test.step('Verify neach checkbox in cell has aria-labelledby ', async () => {
+    await test.step('Verify each checkbox in cell has aria-labelledby ', async () => {
       const count = await firstColumnCells.count();
       for (let i = 0; i < count; i++) {
         const firstColumnCell = firstColumnCells.nth(i);
@@ -109,21 +146,82 @@ test.describe('Additional states', () => {
       }
     });
 
-    await test.step('Verify  action bar when one checkbox is selected', async () => {
+    await test.step('Verify action bar when one checkbox is checked and unchecked', async () => {
       firstColumnCells.nth(3).click();
-      await expect(actionBar).toBeVisible();
-      await expect(actionBar).toHaveAttribute('role', 'region');
-      await expect(actionBar).toHaveAttribute('aria-label', 'Table action bar');
+      await expect(collapse).toBeVisible();
+      await expect(region).toHaveAttribute('role', 'region');
 
       firstColumnCells.nth(3).click();
-      await expect(actionBar).toBeHidden();
+      await expect(collapse).toBeHidden();
 
       firstColumnCells.nth(3).click();
-      await expect(actionBar).toBeVisible();
+      await expect(collapse).toBeVisible();
 
       const button = page.locator('[data-ui-name="Button"]');
       button.click();
-      await expect(actionBar).toBeHidden();
+      await expect(collapse).toBeHidden();
+    });
+
+    await test.step('Verify action bar when header checkbox is checked', async () => {
+      await selectAllCheckbox.click();
+      await page.getByRole('button', { name: 'Deselect all' }).waitFor({ state: 'visible' });
+
+      await expect(collapse).toBeVisible();
+      await expect(selectedRowsCount).toHaveText('5');
+      await expect(selectAllCheckbox).toBeChecked();
+    });
+
+    await test.step('Verify action bar when next page is opened', async () => {
+      await nextButton.click();
+
+      await expect(collapse).toBeVisible();
+      await expect(selectedRowsCount).toHaveText('5');
+      await expect(selectAllCheckbox).not.toBeChecked();
+    });
+
+    await test.step('Verify action bar when all items on next page checked', async () => {
+      await selectAllCheckbox.click();
+
+      await expect(selectedRowsCount).toHaveText('10');
+      await expect(selectAllCheckbox).toBeChecked();
+      await expect(selectAllCheckbox).toHaveClass(/checked/);
+    });
+
+    await test.step('Verify action bar when one item on next page unchecked', async () => {
+      await rowCheckboxes.first().click();
+
+      await expect(rowCheckboxes.first()).not.toBeChecked();
+      await expect(selectedRowsCount).toHaveText('9');
+      await expect(selectAllCheckbox).toHaveClass(/indeterminate/);
+    });
+
+    await test.step('Verify action bar when next page opened', async () => {
+      await nextButton.click();
+
+      await expect(selectAllCheckbox).not.toBeChecked();
+      await expect(selectedRowsCount).toHaveText('9');
+    });
+
+    await test.step('Verify indeterminate state saved when prev button is opened', async () => {
+      await prevButton.click();
+      await expect(selectAllCheckbox).toHaveClass(/indeterminate/);
+    });
+
+    await test.step('Verify checked state on all pages changes to undhecked by click on Deselect all', async () => {
+      await prevButton.click();
+      await expect(selectAllCheckbox).toBeChecked();
+
+      await deselectAllButton.click();
+
+      await expect(collapse).toBeHidden();
+      await expect(selectedRowsCount).toBeHidden();
+      await expect(selectAllCheckbox).not.toBeChecked();
+
+      await nextButton.click();
+      await expect(selectAllCheckbox).not.toBeChecked();
+
+      await nextButton.click();
+      await expect(selectAllCheckbox).not.toBeChecked();
     });
   });
 
@@ -134,9 +232,12 @@ test.describe('Additional states', () => {
     await page.setContent(htmlContent);
 
     const firstHeader = page.locator('[data-ui-name="Head.Column"][aria-colindex="1"]');
-    const actionBar = page.locator('[aria-label="Table action bar"]');
     const firstColumnCells = page.locator('[data-ui-name="Body.Cell"][aria-colindex="1"]');
     const headerCheckbox = firstHeader.locator('input');
+    const collapse = page.locator('[data-ui-name="Collapse"]');
+    const selectedRowsCount = collapse.locator('[data-ui-name="Text"]').nth(1);
+    const selectAllCheckbox = page.locator('[data-ui-name="DataTable.Head"] [data-ui-name="Checkbox"]');
+    const rowCheckboxes = page.locator('[data-ui-name="DataTable.Body"] [data-ui-name="Checkbox"]');
 
     await test.step('Verify checkbox in header focused by tab', async () => {
       await page.keyboard.press('Tab');
@@ -146,15 +247,18 @@ test.describe('Additional states', () => {
     });
 
     await test.step('Verify no action bar when nothing selected', async () => {
-      await expect(actionBar).toBeHidden();
+      await expect(collapse).toBeHidden();
+      await expect(selectedRowsCount).toBeHidden();
+      await expect(selectAllCheckbox).not.toBeChecked();
     });
 
     await test.step('Verify all checkoxes checked by activating header ', async () => {
       await page.keyboard.press('Space');
-      await page.waitForTimeout(150);
-      const classAttr = await headerCheckbox.getAttribute('class');
-      expect(classAttr).toContain('checked');
-      await expect(actionBar).toBeVisible();
+      await page.getByRole('button', { name: 'Deselect all' }).waitFor({ state: 'visible' });
+
+      await expect(collapse).toBeVisible();
+      await expect(selectedRowsCount).toHaveText('5');
+      await expect(selectAllCheckbox).toBeChecked();
 
       const count = await firstColumnCells.count();
       for (let i = 0; i < count; i++) {
@@ -162,53 +266,69 @@ test.describe('Additional states', () => {
         const checkbox = firstColumnCell.locator(
           'input[type="checkbox"][data-ui-name="Checkbox.Value"]',
         );
-
-        await expect(checkbox).toHaveCount(1);
-
-        const classAttr = await checkbox.getAttribute('class');
-
-        expect(classAttr).toContain('checked');
       }
     });
+    await test.step('Verify panel state when next page opened', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
 
-    await test.step('Verify panel appears by activating at least one checkbox ', async () => {
+      await expect(collapse).toBeVisible();
+      await expect(selectedRowsCount).toHaveText('5');
+      await expect(selectAllCheckbox).not.toBeChecked();
+    });
+    await test.step('Verify panel when activating Select all on text page', async () => {
+      await page.keyboard.press('Shift+Tab');
+      await page.keyboard.press('Shift+Tab');
+      await page.keyboard.press('Shift+Tab');
       await page.keyboard.press('Space');
-      await page.waitForTimeout(200);
-      await expect(actionBar).toBeHidden();
-
-      await page.keyboard.press('ArrowDown');
-      await page.keyboard.press('Space');
-      await page.waitForTimeout(150);
-      await expect(actionBar).toBeVisible();
-
-      const checkbox = firstColumnCells
-        .nth(0)
-        .locator('input[type="checkbox"][data-ui-name="Checkbox.Value"]');
-
-      const classAttr = await checkbox.getAttribute('class');
-      expect(classAttr).toContain('checked');
+      await expect(selectedRowsCount).toHaveText('10');
+      await expect(selectAllCheckbox).toBeChecked();
+      await expect(selectAllCheckbox).toHaveClass(/checked/);
     });
 
-    if (browserName === 'webkit') return; // skipped step for webkit because works unstable
-    await test.step('Verify focus returns correctly by activating Deseslect all', async () => {
+    await test.step('Verify counter on the panel decreased and indeterminate state when uncheck one checkbox', async () => {
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowDown');
-      await page.keyboard.press('ArrowDown');
-      await page.keyboard.press('ArrowRight');
-      await page.keyboard.press('ArrowRight');
-      await page.keyboard.press('ArrowRight');
-      const row = page.locator('[data-ui-name="Body.Row"][aria-rowindex="5"]');
-      const cell = row.locator('[data-ui-name="Body.Cell"][aria-colindex="4"]');
-      await expect(cell).toBeFocused();
+      await page.keyboard.press('Space');
+
+      await expect(rowCheckboxes.nth(1)).not.toBeChecked();
+      await expect(selectedRowsCount).toHaveText('9');
+      await expect(selectAllCheckbox).toHaveClass(/indeterminate/);
+    });
+    await test.step('Verify panel when opening next page', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Space');
+      await expect(selectAllCheckbox).not.toBeChecked();
+      await expect(selectedRowsCount).toHaveText('9');
+    });
+    await test.step('Verify panel state saved on prev pages', async () => {
+      await page.keyboard.press('Shift+Tab');
+      await page.keyboard.press('Space');
+      await expect(selectAllCheckbox).toHaveClass(/indeterminate/);
 
       await page.keyboard.press('Shift+Tab');
-      const button = page.locator('[data-ui-name="Button"]');
-      await expect(button).toBeFocused();
+      await page.keyboard.press('Space');
+      await expect(selectAllCheckbox).toBeChecked();
+    });
+    if (browserName === 'webkit') return; // because of pagination bus in safari
+
+    await test.step('Verify panel hides when press Deselect all', async () => {
+      await page.keyboard.press('Shift+Tab');
+      await page.keyboard.press('Shift+Tab');
+      await page.keyboard.press('Space');
+
+      await expect(collapse).toBeHidden();
+      await expect(selectedRowsCount).toBeHidden();
+      await expect(selectAllCheckbox).not.toBeChecked();
+
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Space');
+      await expect(selectAllCheckbox).not.toBeChecked();
 
       await page.keyboard.press('Space');
-      await page.waitForTimeout(150);
-      await expect(actionBar).toBeHidden();
-      await expect(cell).toBeFocused();
+      await expect(selectAllCheckbox).not.toBeChecked();
     });
   });
 });

@@ -55,6 +55,18 @@ class ScatterPlotRoot extends Component {
     this.animationCircle();
   }
 
+  handlerOnClick(index) {
+    return (e) => {
+      e.stopPropagation();
+
+      const { onClick } = this.asProps;
+
+      if (!onClick) return;
+
+      onClick(index, e);
+    };
+  }
+
   renderCircle(d, i) {
     const {
       color,
@@ -86,6 +98,7 @@ class ScatterPlotRoot extends Component {
         key={`circle(#${i})`}
         onMouseMove={this.bindHandlerTooltip(true, this.props, { xIndex: i, index: i, patterns })}
         onMouseLeave={this.bindHandlerTooltip(false, this.props, { xIndex: i, index: i, patterns })}
+        onClickCapture={this.handlerOnClick(i)}
       >
         <SScatterPlot
           aria-hidden

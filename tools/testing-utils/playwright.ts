@@ -1,7 +1,13 @@
 import AxeBuilder from '@axe-core/playwright';
 import { voiceOverTest as voiceOverBase } from '@guidepup/playwright';
 import { test as base } from '@playwright/test';
-import { allure } from 'allure-playwright';
+import {
+  label,
+  feature,
+  story,
+  suite,
+  layer,
+} from 'allure-js-commons';
 import type axe from 'axe-core';
 import type { Page } from 'playwright';
 import type { TestInfo } from 'playwright/types/test';
@@ -34,26 +40,35 @@ export const skipButtonComboboxDiscernibleErrors = (v: axe.Result) => {
 
 // eslint-disable-next-line no-empty-pattern
 const beforeEachTests = async ({}, use: () => Promise<void>, testInfo: TestInfo) => {
-  let layer = 'Other tests';
-  const testFilePath = testInfo.file.split('/');
-  const fileName = testFilePath[testFilePath.length - 1];
-  const component = testFilePath[testFilePath.length - 3];
-  const suite = fileName.split('.')[1];
+  const filePathParts = testInfo.file.split('/');
 
-  if (suite.includes('browser')) {
-    layer = 'Browser tests';
-  } else if (suite.includes('axe')) {
-    layer = 'Axe tests';
-  } else if (suite.includes('vo')) {
-    layer = 'Voice over tests';
+  const testsIndex = filePathParts.findIndex((part) => part === '__tests__');
+
+  const component = testsIndex > 0 ? filePathParts[testsIndex - 1] : 'unknown-component';
+
+  const fileName = testsIndex !== -1 ? filePathParts[testsIndex + 1] : '';
+
+  const suiteName = fileName.split('.')[1] ?? 'unknown';
+
+  let layerName = 'Other tests';
+  if (suiteName.includes('browser')) {
+    layerName = 'Browser tests';
+  } else if (suiteName.includes('axe')) {
+    layerName = 'Axe tests';
+  } else if (suiteName.includes('vo')) {
+    layerName = 'Voice over tests';
   }
 
-  await allure.label('framework', 'Playwright');
-  await allure.label('component', component);
-  await allure.layer(layer);
-  await allure.subSuite(suite);
-  await allure.parentSuite(layer);
-  await allure.story(testInfo.title);
+  const storyParts = testInfo.titlePath.length > 1 ? testInfo.titlePath.slice(1) : [testInfo.title];
+  const storyName = storyParts.join(' > ');
+
+  label('feature', suiteName);
+  label('component', component);
+  story(storyName);
+  feature(suiteName);
+  suite(component);
+  layer(layerName);
+
   await use();
 };
 
