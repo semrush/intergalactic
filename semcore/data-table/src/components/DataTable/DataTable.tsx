@@ -119,7 +119,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
   }
 
   componentDidMount() {
-    const { headerProps, loading } = this.asProps;
+    const { headerProps, loading, selectedRows } = this.asProps;
     if ((headerProps?.sticky && !headerProps.h) || loading || this.columns.some((c) => c.fixed)) {
       requestAnimationFrame(() => {
         this.forceUpdate();
@@ -228,14 +228,19 @@ class DataTableRoot<D extends DataTableData> extends Component<
       gridTemplateAreas,
       sideIndents,
       totalRows: this.totalRows,
-      selectedRows: selectedRows,
+      selectedRows,
+      flatRows: this.flatRows,
       onChangeSelectAll: (value, e) => {
-        if (value === false) {
-          onSelectedRowsChange?.([], e);
+        const mappedFlatRows = this.flatRows.map((r) => r[UNIQ_ROW_KEY]);
+        const selectedRowsSet = new Set(selectedRows);
+
+        if (value) {
+          mappedFlatRows.forEach(selectedRowsSet.add, selectedRowsSet);
         } else {
-          const selectedRows = this.flatRows.map((row) => row[UNIQ_ROW_KEY]);
-          onSelectedRowsChange?.(selectedRows, e);
+          mappedFlatRows.forEach(selectedRowsSet.delete, selectedRowsSet);
         }
+
+        onSelectedRowsChange?.(Array.from(selectedRowsSet), e);
       },
       getFixedStyle: this.getFixedStyle,
       onCellClick: this.handleCellClick,
@@ -311,21 +316,17 @@ class DataTableRoot<D extends DataTableData> extends Component<
   ) => {
     const { selectedRows, onSelectedRowsChange } = this.asProps;
 
-    if (selectedRows && onSelectedRowsChange) {
-      const newSelectedRows = new Set(selectedRows);
+    if (!selectedRows || !onSelectedRowsChange) return;
 
-      if (isSelected && !newSelectedRows.has(row[UNIQ_ROW_KEY])) {
-        newSelectedRows.add(row[UNIQ_ROW_KEY]);
-      } else if (!isSelected && newSelectedRows.has(row[UNIQ_ROW_KEY])) {
-        newSelectedRows.delete(row[UNIQ_ROW_KEY]);
-      }
+    const selectedRowsSet = new Set(selectedRows);
 
-      onSelectedRowsChange([...newSelectedRows], event, {
-        selectedRowIndex,
-        isSelected,
-        row,
-      });
+    if (selectedRowsSet.has(row[UNIQ_ROW_KEY])) {
+      selectedRowsSet.delete(row[UNIQ_ROW_KEY]);
+    } else {
+      selectedRowsSet.add(row[UNIQ_ROW_KEY]);
     }
+
+    onSelectedRowsChange(Array.from(selectedRowsSet), event, { selectedRowIndex, isSelected, row });
   };
 
   setSelectAllMessage = (selectedAll: boolean) => {
@@ -963,7 +964,11 @@ class DataTableRoot<D extends DataTableData> extends Component<
   private calculateColumnsFromConfig(): [DTColumn[], DTColumn[]] {
     const { columns, data, selectedRows } = this.props;
 
-    this.hasGroups = columns.some((column) => 'columns' in column);
+    this.hasGroups = columns.some((column) => {
+      return 'columns' in column && column.columns.some((col) => {
+        return col.children !== null;
+      });
+    });
 
     let groupIndex = 0;
     let gridColumnIndex = selectedRows ? 2 : 1;
@@ -989,6 +994,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
       parent?: DTColumn,
       isFirst?: boolean,
       isLast?: boolean,
+      hasGroups?: boolean,
     ): DTColumn => {
       const leftBordersFromParent =
         isFirst && (parent?.borders === 'both' || parent?.borders === 'left') ? 'left' : undefined;
@@ -1000,7 +1006,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
         name: childIsColumn(columnElement) ? columnElement.name : '',
         gtcWidth: childIsColumn(columnElement) ? calculateGridTemplateColumn(columnElement) : '',
-        fixed: columnElement.fixed ?? parent?.fixed,
+        fixed: columnElement.fixed ?? (hasGroups ? parent?.fixed : undefined),
         borders: columnElement.borders ?? leftBordersFromParent ?? rightBordersFromParent,
         parent,
       } as DTColumn;
@@ -1037,21 +1043,23 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
         const initGridColumn = gridColumnIndex;
 
+        const groupedRow = this.hasGroups ? 2 : 1;
+
         Group.columns = [];
         Group.children = child.children;
         child.columns.forEach((child, j) => {
           const isFirst = j === 0;
           const isLast = j === childCount - 1;
-          const col = makeColumn(child, Group, isFirst, isLast);
+          const col = makeColumn(child, Group, isFirst, isLast, this.hasGroups);
 
           if (i === 0 && j === 0 && data.some((d) => d[ACCORDION])) {
             gridColumnIndex++;
-            col.gridArea = `2 / ${gridColumnIndex - 1} / 3 / ${gridColumnIndex + 1}`;
+            col.gridArea = `${groupedRow} / ${gridColumnIndex - 1} / ${groupedRow + 1} / ${gridColumnIndex + 1}`;
           } else {
-            col.gridArea = `2 / ${gridColumnIndex} / 3 / ${gridColumnIndex + 1}`;
+            col.gridArea = `${groupedRow} / ${gridColumnIndex} / ${groupedRow + 1} / ${gridColumnIndex + 1}`;
           }
 
-          col.gridArea = `2 / ${gridColumnIndex} / 3 / ${gridColumnIndex + 1}`;
+          col.gridArea = `${groupedRow} / ${gridColumnIndex} / ${groupedRow + 1} / ${gridColumnIndex + 1}`;
           gridColumnIndex++;
 
           calculatedColumns.push(col);

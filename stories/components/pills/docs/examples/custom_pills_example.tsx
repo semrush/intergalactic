@@ -1,5 +1,6 @@
 import { Flex } from '@semcore/base-components';
 import Pills from '@semcore/pills';
+import type { PillsProps, PillProps } from '@semcore/pills';
 import { Text } from '@semcore/typography';
 import React from 'react';
 import type { CSSProperties } from 'react';
@@ -17,7 +18,8 @@ const pillStyles: CSSProperties = {
   whiteSpace: 'normal',
 } as const;
 
-const Demo = () => {
+type PillExampleProps = PillsProps & PillProps;
+const Demo = (props: PillExampleProps) => {
   const [tab, setTab] = React.useState<number>(0);
 
   return (
@@ -25,7 +27,7 @@ const Demo = () => {
       <Text size={300} semibold id='king-pills'>
         Average sleep per day
       </Text>
-      <Pills mb={4} behavior='manual' value={tab} onChange={setTab} aria-labelledby='king-pills'>
+      <Pills mb={4} value={tab} onChange={setTab} aria-labelledby='king-pills' size={props.size} disabled={props.disabled} behavior={props.behavior}>
         <Pills.Item value={0} style={pillStyles} p={5} id='custom-pills-tab-0'>
           <Pills.Item.Text tag={Flex} direction='column' m={0}>
             <Text mb={1}>Wombat</Text>
@@ -51,5 +53,13 @@ const Demo = () => {
     </Flex>
   );
 };
+
+export const defaultProps: PillExampleProps = {
+  size: 'm',
+  disabled: undefined,
+  behavior: 'manual',
+};
+
+Demo.defaultProps = defaultProps;
 
 export default Demo;

@@ -93,10 +93,11 @@ class BubbleChartComponent extends AbstractChart<
   }
 
   renderChart() {
+    const { onClickBubble } = this.asProps;
     const { dataDefinitions } = this.state;
 
     return (
-      <Bubble x='x' y='y' value='value' color='color' label='label'>
+      <Bubble onClick={onClickBubble} x='x' y='y' value='value' color='color' label='label'>
         {dataDefinitions.map(({ checked, id }, index) => (
           <Bubble.Circle visible={checked} key={id} index={index} />
         ))}

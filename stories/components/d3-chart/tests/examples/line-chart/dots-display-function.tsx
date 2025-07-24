@@ -21,6 +21,10 @@ const Demo = () => {
     .range([height - MARGIN, MARGIN])
     .domain([0, 10]);
 
+  const onClickHandler = () => {
+    console.log('Clicked line chart');
+  };
+
   return (
     <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
       <YAxis>
@@ -30,7 +34,7 @@ const Demo = () => {
       <XAxis>
         <XAxis.Ticks />
       </XAxis>
-      <Line x='x' y='y' curve={curveCardinal}>
+      <Line x='x' y='y' curve={curveCardinal} onClick={onClickHandler}>
         <Line.Dots display={displayDots} />
       </Line>
     </Plot>

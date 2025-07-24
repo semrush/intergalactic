@@ -15,6 +15,8 @@ export type AreaChartProps = BaseChartProps<AreaChartData> & {
   showDots?: boolean;
   curve?: CurveFactory;
   stacked?: boolean;
+  /** Callback triggered when a user clicks on a chart at a position corresponding to a data item */
+  onClickArea?: (index: number, event: React.SyntheticEvent) => void;
 };
 
 export type AreaChartType = Intergalactic.Component<typeof Flex, AreaChartProps>;

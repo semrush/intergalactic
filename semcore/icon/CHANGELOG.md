@@ -2,6 +2,29 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.5.0] - 2025-07-24
+
+### Added
+
+- New `AISEOToolkit` icon.
+
+## [16.4.0] - 2025-07-21
+
+### Added
+
+- New icons: `TextBold`, `TextItalic`, `TextQuotes` and `TextUnderline`.
+
+### Changed
+
+- `Text` icon to visually match new text format icons.
+- `MathPlus` icon.
+
+## [16.3.0] - 2025-07-18
+
+### Added
+
+- New `Gift` icon.
+
 ## [16.2.3] - 2025-06-24
 
 ### Changed
