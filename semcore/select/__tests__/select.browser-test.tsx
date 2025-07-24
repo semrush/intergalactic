@@ -299,6 +299,7 @@ test.describe('Basic select', () => {
       await page.keyboard.press('Tab');
       await expect(select).toBeFocused();
       await page.keyboard.press('Space');
+      await menu.waitFor({ state: 'visible' });
       await expect(menu).toBeVisible();
       await expect(options.first()).toHaveClass(/highlighted/);
 
@@ -308,8 +309,9 @@ test.describe('Basic select', () => {
 
     await test.step('Verify 1st item highlighted when interacting by mouse and the by keyboard', async () => {
       await select.click();
-      await page.keyboard.press('ArrowDown');
+      await menu.waitFor({ state: 'visible' });
       await expect(menu).toBeVisible();
+      await page.keyboard.press('ArrowDown');
       await expect(options.first()).toHaveClass(/highlighted/);
       await page.keyboard.press('Escape');
       await expect(menu).not.toBeVisible();
@@ -317,6 +319,7 @@ test.describe('Basic select', () => {
 
     await test.step('Verify opens by Enter', async () => {
       await page.keyboard.press('Enter');
+      await menu.waitFor({ state: 'visible' });
       await expect(menu).toBeVisible();
       await expect(options.first()).toHaveClass(/highlighted/);
 
@@ -326,6 +329,7 @@ test.describe('Basic select', () => {
 
     await test.step('Verify opens by ArrowDown', async () => {
       await page.keyboard.press('ArrowDown');
+      await menu.waitFor({ state: 'visible' });
       await expect(menu).toBeVisible();
       await expect(options.first()).toHaveClass(/highlighted/);
 
@@ -335,6 +339,7 @@ test.describe('Basic select', () => {
 
     await test.step('Verify opens by ArrowUp', async () => {
       await page.keyboard.press('ArrowUp');
+      await menu.waitFor({ state: 'visible' });
       await expect(menu).toBeVisible();
       await expect(options.first()).toHaveClass(/highlighted/);
     });

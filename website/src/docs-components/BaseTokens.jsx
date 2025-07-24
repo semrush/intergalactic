@@ -41,7 +41,7 @@ const BaseTokens = ({ tokens }) => {
 
     searchTimer = setTimeout(() => {
       logEvent('design-tokens:searchBaseTokens', { value });
-    }, 500);
+    }, 400);
   };
 
   return (

@@ -1,7 +1,7 @@
-import { Box } from 'intergalactic/base-components';
-import Input from 'intergalactic/input';
-import Select from 'intergalactic/select';
-import { Text } from 'intergalactic/typography';
+import { Box } from '@semcore/base-components';
+import Input from '@semcore/input';
+import Select from '@semcore/select';
+import { Text } from '@semcore/typography';
 import React from 'react';
 
 const Highlight = ({ highlight, children }: { highlight: string; children: string }) => {

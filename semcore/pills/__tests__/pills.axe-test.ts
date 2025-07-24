@@ -18,4 +18,13 @@ test.describe('Pills', () => {
     const violations = await getAccessibilityViolations({ page });
     expect(violations).toEqual([]);
   });
+
+  test('Custom pills example', async ({ page }) => {
+    const standPath = 'stories/components/pills/docs/examples/custom_pills_example.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+
+    const violations = await getAccessibilityViolations({ page });
+    expect(violations).toEqual([]);
+  });
 });

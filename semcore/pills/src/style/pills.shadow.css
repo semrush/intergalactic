@@ -48,10 +48,10 @@ SPill {
 SPill[selected] {
   background: var(--intergalactic-control-secondary-info, rgba(0, 143, 248, 0.1));
   border-color: var(--intergalactic-border-info-active, #006dca);
-  z-index: 2;
+  z-index: 3;
 }
 SPill:focus-visible, SPill:hover, SPill:active {
-  z-index: 1;
+  z-index: 2;
 }
 
 SPill[disabled] {

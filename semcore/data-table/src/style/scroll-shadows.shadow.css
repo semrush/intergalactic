@@ -6,19 +6,27 @@ SScrollArea {
 
     &[scrollDirection='both'] {
       overflow: auto;
+
+      &[loading] {
+        overflow: hidden;
+      }
     }
     &[scrollDirection='horizontal'] {
       overflow-x: auto;
       overflow-y: unset;
+
+      &[loading] {
+        overflow: hidden;
+      }
     }
     &[scrollDirection='vertical'] {
       overflow-x: unset;
       overflow-y: auto;
-    }
-    &[loading] {
-      overflow: hidden;
-    }
 
+      &[loading] {
+        overflow: hidden;
+      }
+    }
     &[headerHeight] {
       scroll-padding-top: var(--headerHeight);
     }

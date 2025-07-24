@@ -12,6 +12,7 @@ import Spin from '@semcore/spin';
 import type { ITooltipProps } from '@semcore/tooltip';
 import React from 'react';
 
+import type { InlineInputComponent } from './index.type';
 import style from './style/inline-input.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
@@ -119,9 +120,17 @@ class InlineInputBase extends Component<RootAsProps> {
   };
 
   componentDidMount() {
+    this.updateInert();
+
     if (!this.asProps.onBlurBehavior) return;
     document.body.addEventListener('mousedown', this.handleDocumentMouseDown);
     document.body.addEventListener('keydown', this.handleDocumentKeyDown);
+  }
+
+  componentDidUpdate(prevProps: Readonly<RootAsProps>): void {
+    if (prevProps.disabled !== this.asProps.disabled) {
+      this.updateInert();
+    }
   }
 
   componentWillUnmount() {
@@ -251,6 +260,18 @@ class InlineInputBase extends Component<RootAsProps> {
       this.lastHandledKeyboardEvent = Date.now();
     }
   };
+
+  private updateInert() {
+    const { disabled } = this.asProps;
+
+    if (!this.rootRef.current) return;
+
+    if (disabled) {
+      this.rootRef.current.setAttribute('inert', '');
+    } else {
+      this.rootRef.current.removeAttribute('inert');
+    }
+  }
 
   render() {
     const SInlineInput = Root;
@@ -420,6 +441,6 @@ const InlineInput = createComponent(InlineInputBase, {
   CancelControl,
   NumberValue,
   NumberControls,
-}) as any;
+}) as InlineInputComponent;
 
 export default InlineInput;

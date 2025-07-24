@@ -2,12 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [16.0.4] - 2025-07-02
+## [16.0.6] - 2025-08-08
 
 ### Fixed
 
 - Ellipsis with `trim=middle` cut off text at the end.
 - Incorrect cropping with different font-size.
+
+## [16.0.5] - 2025-07-23
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/tooltip` [16.0.4 ~> 16.0.5], `@semcore/base-components` [16.1.1 ~> 16.1.2]).
+
+## [16.0.4] - 2025-07-04
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/tooltip` [16.0.3 ~> 16.0.4], `@semcore/base-components` [16.1.0 ~> 16.1.1]).
 
 ## [16.0.3] - 2025-06-23
 

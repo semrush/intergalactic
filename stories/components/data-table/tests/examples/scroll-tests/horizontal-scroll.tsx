@@ -49,6 +49,7 @@ const Demo = () => {
         columns={[
           { name: 'keyword', children: 'Keyword', gtcWidth: '200px' },
           {
+            name: 'group1',
             children: 'Organic Sessions',
             borders: 'both',
             columns: [
@@ -65,6 +66,7 @@ const Demo = () => {
 
         columns={[
           {
+            name: 'group1',
             children: 'Organic Sessions',
             borders: 'both',
             columns: [

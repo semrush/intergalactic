@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import BasicUsageExample from './examples/basic_usage';
+import BasicUsageExample, { basicUsageDefaultProps } from './examples/basic_usage';
 import InheritingTextSizeExample from './examples/inheriting_text_size';
 import NumberOnlyInputExample from './examples/number-only_input';
 
@@ -11,8 +11,30 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj;
 
-export const BasicUsage: Story = {
+export const BasicUsage: StoryObj<typeof basicUsageDefaultProps> = {
   render: BasicUsageExample,
+  argTypes: {
+    disabled: {
+      control: { type: 'boolean' },
+    },
+    loading: {
+      control: { type: 'boolean' },
+    },
+    autoFocus: {
+      control: { type: 'boolean' },
+    },
+    state: {
+      control: { type: 'select' },
+      options: ['normal', 'valid', 'invalid'],
+    },
+    defaultValue: {
+      control: { type: 'text' },
+    },
+    placeholder: {
+      control: { type: 'text' },
+    },
+  },
+  args: basicUsageDefaultProps,
 };
 
 export const InheritingTextSize: Story = {

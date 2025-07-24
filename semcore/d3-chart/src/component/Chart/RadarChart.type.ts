@@ -13,6 +13,8 @@ export type RadarChartProps = BaseChartProps<RadarChartData> & {
   yScale?: never;
   showDots?: boolean;
   circle?: boolean;
+  /** Callback triggered when a user clicks on a chart at a position corresponding to a category */
+  onClickRadar?: (index: number, e: React.SyntheticEvent) => void;
 };
 
 export type RadarChartType = Intergalactic.Component<typeof Flex, RadarChartProps>;

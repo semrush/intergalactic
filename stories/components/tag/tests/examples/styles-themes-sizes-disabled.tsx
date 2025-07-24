@@ -1,5 +1,5 @@
 import { Flex, Box } from '@semcore/flex-box';
-import Tag, { TagContainer } from '@semcore/tag';
+import Tag from '@semcore/tag';
 import { Text } from '@semcore/typography';
 import React from 'react';
 

@@ -128,7 +128,20 @@ class SliderRoot extends Component {
   handleDragStart = () => false;
 
   handleKeyDown = (event) => {
-    if (!['ArrowLeft', 'ArrowUp', 'ArrowRight', 'ArrowDown'].includes(event.key)) return;
+    if (['ArrowLeft', 'ArrowUp', 'ArrowRight', 'ArrowDown'].includes(event.key)) {
+      this.handleSlideStep(event);
+    }
+
+    if (event.key === 'Home') {
+      this.slideToMinValue(event);
+    }
+
+    if (event.key === 'End') {
+      this.slideToMaxValue(event);
+    }
+  };
+
+  handleSlideStep(event) {
     event.preventDefault();
 
     const { min, max, step, options } = this.asProps;
@@ -143,7 +156,33 @@ class SliderRoot extends Component {
     } else {
       this.handlers.value(value, event);
     }
-  };
+  }
+
+  slideToMinValue(event) {
+    event.preventDefault();
+
+    const { min, options } = this.asProps;
+    let value = min;
+
+    if (options) {
+      value = options[0].value;
+    }
+
+    this.handlers.value(value, event);
+  }
+
+  slideToMaxValue(event) {
+    event.preventDefault();
+
+    const { max, options } = this.asProps;
+    let value = max;
+
+    if (options) {
+      value = options[options.length - 1].value;
+    }
+
+    this.handlers.value(value, event);
+  }
 
   getNumericValue = () => {
     const { value, options, min, max, defaultValue } = this.asProps;

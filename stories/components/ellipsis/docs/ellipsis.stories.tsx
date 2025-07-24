@@ -3,8 +3,8 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 export type ExampleEllipsisProps = EllipsisProps;
 
 import AdvancedUseExample, { defaultProps as advancedDefaultProps } from './examples/advanced_use';
-import BasicUsageExample from './examples/basic_usage';
-import MultilineExample from './examples/multiline';
+import BasicUsageExample, { defaultProps as basicDefaultProps } from './examples/basic_usage';
+import MultilineExample, { defaultProps as multilineDefaultProps } from './examples/multiline';
 import MultipleUseExample from './examples/multiple_use';
 import TooltipCursorAnchoringExample from './examples/tooltip-cursor-anchoring';
 import TrimmingTypeExample from './examples/trimming_type';
@@ -20,6 +20,9 @@ const meta: Meta<ExampleEllipsisProps> = {
     tooltip: {
       control: { type: 'boolean' },
     },
+    maxLine: {
+      control: { type: 'number' },
+    },
   },
 };
 
@@ -33,10 +36,12 @@ export const AdvancedUse: Story = {
 
 export const BasicUsage: Story = {
   render: BasicUsageExample,
+  args: basicDefaultProps,
 };
 
 export const Multiline: Story = {
   render: MultilineExample,
+  args: multilineDefaultProps,
 };
 
 export const MultipleUse: Story = {

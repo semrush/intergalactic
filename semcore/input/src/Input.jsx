@@ -1,4 +1,4 @@
-import { createComponent, Component, sstyled, Root } from '@semcore/core';
+import { createComponent, Component, sstyled, Root, lastInteraction } from '@semcore/core';
 import autoFocusEnhance from '@semcore/core/lib/utils/enhances/autoFocusEnhance';
 import { Box, InvalidStateBox } from '@semcore/flex-box';
 import NeighborLocation from '@semcore/neighbor-location';
@@ -23,14 +23,13 @@ class Input extends Component {
     this.inputRef.current?.focus();
   };
 
-  handleKeyDown = (event) => {
-    if (event.key === 'Enter') {
-      setTimeout(() => {
-        if (document.activeElement === document.body) {
-          this.inputRef.current?.focus();
-        }
-      }, 10);
-    }
+  handleClick = () => {
+    if (!lastInteraction.isKeyboard) return;
+    setTimeout(() => {
+      if (document.activeElement === document.body) {
+        this.inputRef.current?.focus();
+      }
+    }, 0);
   };
 
   getAddonProps() {
@@ -38,6 +37,7 @@ class Input extends Component {
     return {
       disabled,
       onMouseDown: this.handleMouseDownAddon,
+      onClick: this.handleClick,
       size,
     };
   }
@@ -84,7 +84,6 @@ class Input extends Component {
           sstyled(styles)(
             <SInput
               render={Box}
-              onKeyDown={this.handleKeyDown}
               neighborLocation={neighborLocation}
               __excludeProps={[
                 'role',

@@ -1,3 +1,4 @@
+import { lastInteraction } from '../../LastInteractionType';
 import canUseDOM from '../canUseDOM';
 import { getFocusableIn } from './getFocusableIn';
 
@@ -25,7 +26,11 @@ const unsafeSetFocus = (
     target = focusable[focusable.length - 1];
   }
 
-  target?.focus(focusOptions);
+  target?.focus({
+    // @ts-ignore. set focus-visible in FF and Safari
+    focusVisible: lastInteraction.isKeyboard(),
+    ...focusOptions,
+  });
 };
 
 /** "safe" focus movement means that function wrapper tries
