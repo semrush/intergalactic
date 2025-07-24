@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.8] - 2025-08-08
+
+### Added
+
+- `overflow=hidden` for `CellWrapper`.
+
+### Changed
+
+- `overflow` for `Body.Cell` to default.
+
 ## [16.0.7] - 2025-07-23
 
 ### Added
