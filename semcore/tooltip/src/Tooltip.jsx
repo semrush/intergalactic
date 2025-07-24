@@ -1,4 +1,4 @@
-import { createComponent, Component, CREATE_COMPONENT, sstyled, Root } from '@semcore/core';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 import logger from '@semcore/core/lib/utils/logger';
@@ -15,8 +15,6 @@ import React from 'react';
 
 import style from './style/tooltip.shadow.css';
 
-const Popper = PopperOrigin[CREATE_COMPONENT]();
-
 const defaultProps = {
   placement: 'top',
   interaction: 'hover',
@@ -30,6 +28,7 @@ const defaultProps = {
   focusLoop: false,
   liveRegion: true,
 };
+const Popper = PopperOrigin.newInstance();
 
 class TooltipRoot extends Component {
   static displayName = 'Tooltip';

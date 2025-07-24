@@ -1,6 +1,5 @@
 import { Flex, ScreenReaderOnly } from '@semcore/base-components';
 import { SelectFH, BadgeFH } from '@semcore/feature-highlight';
-import Select from '@semcore/select';
 import React from 'react';
 
 const Demo = () => {

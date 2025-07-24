@@ -2,163 +2,520 @@ import type { Page } from '@playwright/test';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
 
-// Utility for setting up content
-async function setupPage(page: Page, standPath: string) {
-  const htmlContent = await e2eStandToHtml(standPath, 'en');
-  await page.setContent(htmlContent);
-}
-
-// Reusable keyboard actions
-async function openNoticeByKeyboard(page: Page) {
-  await page.keyboard.press('Tab');
-  await page.keyboard.press('Enter');
-}
-
 const locators = {
   closeButton: (page: Page) => page.getByLabel('Close'),
   closeHint: (page: Page) => page.getByText('Close'),
   buttonTrigger: (page: Page, text: string) =>
     page.locator(`[data-ui-name="Button"]`, { hasText: text }),
-  successNotice: (page: Page, text: string) =>
-    page.locator(`div[data-ui-name="Flex"] div[class^='___SMessage']`, { hasText: text }),
+  link: (page: Page) =>
+    page.locator(`[data-ui-name="Link"]`),
 };
 
-test.describe('Basic notice with Interactive element', () => {
-  test('Open notice by keyboard click', async ({ page }) => {
-    await setupPage(page, 'stories/components/notice-bubble/docs/examples/basic_notice.tsx');
+test.describe('Functional', () => {
+  test('Verify Notice with interactiove inside keyboard interactions when focusLock = undefined', async ({ page, browserName }) => {
+    const standPath = 'stories/components/notice-bubble/docs/examples/basic_notice.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en', {
+      initialAnimation: true,
+      duration: 0,
+      type: 'info',
+      focusLock: undefined,
+    });
 
-    // the X button focused on the notice with interactive element
-    await openNoticeByKeyboard(page);
-    await new Promise((resolve) => setTimeout(resolve, 500));
-    await expect(locators.closeButton(page)).toBeFocused();
-    await new Promise((resolve) => setTimeout(resolve, 250));
-    await expect(locators.closeHint(page)).toBeVisible();
-    await expect(page).toHaveScreenshot();
-
-    // the focus returns to the trigger by press enter
-    await page.keyboard.press('Enter');
+    await page.setContent(htmlContent);
     const buttonTrigger = locators.buttonTrigger(page, 'Show basic notice');
-    await expect(buttonTrigger).toBeFocused();
+    const noticeBubbleContainer = page.locator('[data-ui-name="NoticeBubbleContainer"]');
 
-    // еhe focus returns to the trigger by 2 escapes - 1st closes hint, 2nd-notice
-    await page.keyboard.press('Enter');
-    await page.keyboard.press('Escape');
-    await page.keyboard.press('Escape');
-    await new Promise((resolve) => setTimeout(resolve, 100));
-    await expect(buttonTrigger).toBeFocused();
+    await test.step('Verify close button focused and hint shown when notice opened by keyboard', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await locators.closeButton(page).waitFor({ state: 'visible' });
+      await expect(locators.closeButton(page)).toBeFocused();
+      await locators.closeHint(page).waitFor({ state: 'visible' });
+      await expect(locators.closeHint(page)).toBeVisible();
+      await expect(noticeBubbleContainer).toHaveAttribute('role', 'region');
+      await expect(noticeBubbleContainer).toHaveAttribute('aria-label', 'Notifications');
+      await expect(noticeBubbleContainer.locator('div').first()).toHaveAttribute('aria-live', 'polite');
+    });
+
+    await test.step('Verify focus goes to the next focusable element inside motice by TAB', async () => {
+      await page.keyboard.press('Tab');
+      await expect(locators.link(page)).toBeFocused();
+      await page.keyboard.press('Shift+Tab');
+      await expect(locators.closeButton(page)).toBeFocused();
+    });
+
+    await test.step('Verify focus returns to the trigger by pessing Enter on the Close button', async () => {
+      await page.keyboard.press('Enter');
+      await locators.closeButton(page).waitFor({ state: 'hidden' });
+      await expect(buttonTrigger).toBeFocused();
+    });
+
+    await test.step('Verify focus returns to the trigger be Escape', async () => {
+      await page.keyboard.press('Enter');
+      await locators.closeButton(page).waitFor({ state: 'visible' });
+      await locators.closeHint(page).waitFor({ state: 'visible' });
+      await page.keyboard.press('Escape');
+      await locators.closeHint(page).waitFor({ state: 'hidden' });
+      await page.keyboard.press('Escape');
+      await locators.closeButton(page).waitFor({ state: 'hidden' });
+      await expect(buttonTrigger).toBeFocused();
+    });
+
+    await test.step('Verify shift tab returns focus to the trigger and 2 notices can appear', async () => {
+      await page.keyboard.press('Enter');
+      await locators.closeButton(page).waitFor({ state: 'visible' });
+      await locators.closeHint(page).waitFor({ state: 'visible' });
+      await page.keyboard.press('Shift+Tab');
+      await locators.closeHint(page).waitFor({ state: 'hidden' });
+      await expect(buttonTrigger).toBeFocused();
+      await page.keyboard.press('Enter');
+      await locators.closeHint(page).first().waitFor({ state: 'visible' });
+
+      await expect(locators.closeButton(page)).toHaveCount(2);
+
+      await expect(locators.closeButton(page).nth(1)).toBeFocused();
+    });
+
+    if (browserName === 'firefox') return; // works unstable in playwright ff browser
+    await test.step('Verify focus cat go outside the notice because focusLock is undefined', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await expect(locators.closeButton(page).nth(0)).not.toBeFocused();
+      await expect(locators.closeButton(page).nth(1)).not.toBeFocused();
+      await expect(locators.link(page).nth(1)).not.toBeFocused();
+      await expect(locators.closeButton(page).nth(1)).toBeVisible();
+    });
   });
 
-  test('Open notice by mouse click', async ({ page }) => {
-    await setupPage(page, 'stories/components/notice-bubble/docs/examples/basic_notice.tsx');
+  test('Verify Notice with interactiove inside keyboard interactions when focusLock = true', async ({ page, browserName }) => {
+    const standPath = 'stories/components/notice-bubble/docs/examples/basic_notice.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en', {
+      initialAnimation: true,
+      duration: 0,
+      type: 'info',
+      focusLock: true,
+    });
 
+    await page.setContent(htmlContent);
     const buttonTrigger = locators.buttonTrigger(page, 'Show basic notice');
+
+    await test.step('Verify close button focused and hint shown when notice opened by keyboard', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await locators.closeButton(page).waitFor({ state: 'visible' });
+      await expect(locators.closeButton(page)).toBeFocused();
+      await locators.closeHint(page).waitFor({ state: 'visible' });
+      await expect(locators.closeHint(page)).toBeVisible();
+    });
+
+    await test.step('Verify focus not move outside the notice by TAB', async () => {
+      await page.keyboard.press('Tab');
+      await expect(locators.link(page)).toBeFocused();
+      await page.keyboard.press('Tab');
+      await expect(locators.closeButton(page)).toBeFocused();
+      await page.keyboard.press('Tab');
+      await expect(locators.link(page)).toBeFocused();
+      await page.keyboard.press('Shift+Tab');
+      await expect(locators.closeButton(page)).toBeFocused();
+    });
+
+    await test.step('Verify focus returns to the trigger by pessing Enter on the Close button', async () => {
+      await page.keyboard.press('Enter');
+      await locators.closeButton(page).waitFor({ state: 'hidden' });
+      await expect(buttonTrigger).toBeFocused();
+    });
+
+    await test.step('Verify focus returns to the trigger be Escape', async () => {
+      await page.keyboard.press('Enter');
+      await locators.closeButton(page).waitFor({ state: 'visible' });
+      await locators.closeHint(page).waitFor({ state: 'visible' });
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Escape');
+      await locators.closeHint(page).waitFor({ state: 'hidden' });
+      await page.keyboard.press('Escape');
+      await locators.closeButton(page).waitFor({ state: 'hidden' });
+      await expect(buttonTrigger).toBeFocused();
+    });
+  });
+
+  test('Verify Notice with interactiove inside mouse interactions', async ({ page, browserName }) => {
+    const standPath = 'stories/components/notice-bubble/docs/examples/basic_notice.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en', {
+      initialAnimation: true,
+      duration: 0,
+      type: 'info',
+      focusLock: false,
+    });
+
+    await page.setContent(htmlContent);
+    const buttonTrigger = locators.buttonTrigger(page, 'Show basic notice');
+
+    await test.step('Verify notice shown when click on th trigger', async () => {
+      await buttonTrigger.click();
+      await locators.closeButton(page).waitFor({ state: 'visible' });
+      await locators.closeHint(page).waitFor({ state: 'visible' });
+      await expect(locators.closeHint(page)).toBeVisible(); // bug UIK-3926
+    });
+
+    await test.step('Verify secong notice shown when click on th trigger', async () => {
+      await buttonTrigger.click();
+      await locators.closeButton(page).nth(1).waitFor({ state: 'visible' });
+      await locators.closeHint(page).waitFor({ state: 'visible' });
+      await expect(locators.closeHint(page)).toBeVisible(); // bug UIK-3926
+      await expect(locators.closeButton(page)).toHaveCount(2);
+    });
+
+    await test.step('Verify focus returns to the trigger be Escape', async () => {
+      await page.keyboard.press('Escape');
+      await locators.closeHint(page).waitFor({ state: 'hidden' });
+      await page.keyboard.press('Escape');
+      await locators.closeButton(page).nth(1).waitFor({ state: 'hidden' });
+      await expect(buttonTrigger).toBeFocused();
+      await expect(locators.closeButton(page)).toHaveCount(1);
+    });
+  });
+
+  test('Verify Notice without interactive with duration keyboard interactions', async ({ page, browserName }) => {
+    const standPath = 'stories/components/notice-bubble/docs/examples/completion_state.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en', {
+      initialAnimation: true,
+      duration: 500,
+      type: 'info',
+      focusLock: true,
+    });
+
+    await page.setContent(htmlContent);
+    const buttonTrigger = locators.buttonTrigger(page, 'Show notice with completion state');
+
+    await test.step('Verify multiple notices can be opened by keyboard and focus on trigger', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await locators.closeButton(page).waitFor({ state: 'visible' });
+      await expect(locators.closeButton(page)).not.toBeFocused();
+      await expect(locators.closeHint(page)).not.toBeVisible();
+      await expect(buttonTrigger).toBeFocused();
+      await page.keyboard.press('Enter');
+      await locators.closeButton(page).nth(1).waitFor({ state: 'visible' });
+      await page.keyboard.press('Space');
+      await locators.closeButton(page).nth(2).waitFor({ state: 'visible' });
+      await expect(locators.closeButton(page)).toHaveCount(3);
+      await expect(buttonTrigger).toBeFocused();
+    });
+
+    await test.step('Verrify notices close after durattion passed', async () => {
+      await new Promise((resolve) => setTimeout(resolve, 500));
+      await expect(buttonTrigger).toBeFocused();
+      await expect(locators.closeButton(page)).toHaveCount(0);
+    });
+  });
+
+  test('Verify Notice without interactive with duration mouse interactions', async ({ page, browserName }) => {
+    const standPath = 'stories/components/notice-bubble/docs/examples/completion_state.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en', {
+      initialAnimation: false,
+      duration: 500,
+      type: 'info',
+      focusLock: false,
+    });
+
+    await page.setContent(htmlContent);
+    const buttonTrigger = locators.buttonTrigger(page, 'Show notice with completion state');
+
+    await test.step('Verify multiple notices can be opened by mouse click', async () => {
+      await buttonTrigger.click();
+      await locators.closeButton(page).waitFor({ state: 'visible' });
+      await expect(locators.closeButton(page)).not.toBeFocused();
+      await expect(locators.closeHint(page)).not.toBeVisible();
+      await buttonTrigger.click();
+      await locators.closeButton(page).nth(1).waitFor({ state: 'visible' });
+      await buttonTrigger.click();
+      await locators.closeButton(page).nth(2).waitFor({ state: 'visible' });
+      await expect(locators.closeButton(page)).toHaveCount(3);
+    });
+
+    await test.step('Verify notices close after durattion passed', async () => {
+      await new Promise((resolve) => setTimeout(resolve, 500));
+      await expect(buttonTrigger).toBeFocused();
+      await expect(locators.closeButton(page)).toHaveCount(0);
+    });
+
+    await test.step('Verify notice not closed by timeout when hoverred by mouse', async () => {
+      await buttonTrigger.click();
+      await expect(locators.closeButton(page)).toHaveCount(1);
+      await locators.closeButton(page).hover();
+      await new Promise((resolve) => setTimeout(resolve, 600));
+      await expect(buttonTrigger).toBeFocused();
+      await expect(locators.closeButton(page)).toHaveCount(1);
+    });
+
+    await test.step('Verify duration timer starts from the begin and notice closed after when unhover the notice', async () => {
+      await buttonTrigger.hover();
+      await new Promise((resolve) => setTimeout(resolve, 400));
+      await expect(locators.closeButton(page)).toHaveCount(1);
+      await new Promise((resolve) => setTimeout(resolve, 150));
+      await expect(locators.closeButton(page)).toHaveCount(0);
+    });
+  });
+
+  test('Verify Replace last notice by keyboard', async ({ page }) => {
+    const standPath = 'stories/components/notice-bubble/docs/examples/replace_last_notice.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en', {
+      initialAnimation: false,
+      duration: 0,
+      type: 'info',
+      focusLock: false,
+    });
+
+    await page.setContent(htmlContent);
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+
+    const noticeBubble = page.locator('[data-ui-name="NoticeBubbleContainer"]');
+    await page.waitForSelector('text="Link 1 was moved to "Cats from outer space""');
+    await expect(noticeBubble).toHaveCount(1);
+    await expect(noticeBubble).toContainText('Link 1 was moved to');
+    await page.keyboard.press('Enter');
+    await page.waitForSelector('text="Link 2 was moved to "Cats from outer space""');
+    await expect(noticeBubble).toContainText('Link 2 was moved to');
+    await expect(noticeBubble).toHaveCount(1);
+  });
+
+  test('Verify Replace last notice by mouse', async ({ page }) => {
+    const standPath = 'stories/components/notice-bubble/docs/examples/replace_last_notice.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en', {
+      initialAnimation: true,
+      duration: 0,
+      type: 'info',
+      focusLock: false,
+    });
+
+    await page.setContent(htmlContent);
+    const buttonTrigger = locators.buttonTrigger(page, 'Show basic notice');
+
     await buttonTrigger.click();
-    await new Promise((resolve) => setTimeout(resolve, 100));
-    await expect(page).toHaveScreenshot();
+    const noticeBubble = page.locator('[data-ui-name="NoticeBubbleContainer"]');
+    await page.waitForSelector('text="Link 1 was moved to "Cats from outer space""');
+    await expect(noticeBubble).toHaveCount(1);
+    await expect(noticeBubble).toContainText('Link 1 was moved to');
+    await buttonTrigger.click();
+    await page.waitForSelector('text="Link 2 was moved to "Cats from outer space""');
+    await expect(noticeBubble).toContainText('Link 2 was moved to');
+    await expect(noticeBubble).toHaveCount(1);
   });
+});
 
-  test('Open 2 notices by 2 keyboard clicks - return focus by shift tab', async ({ page }) => {
-    await setupPage(page, 'stories/components/notice-bubble/docs/examples/basic_notice.tsx');
+test.describe('Visual', () => {
+  test('Verify Basic notice', async ({ page, browserName }) => {
+    const standPath = 'stories/components/notice-bubble/docs/examples/basic_notice.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en', {
+      initialAnimation: true,
+      duration: 0,
+      type: 'info',
+      focusLock: undefined,
+    });
 
-    await openNoticeByKeyboard(page);
-    await new Promise((resolve) => setTimeout(resolve, 500));
+    await page.setContent(htmlContent);
+    const buttonTrigger = locators.buttonTrigger(page, 'Show basic notice');
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+    await locators.closeButton(page).waitFor({ state: 'visible' });
+    await locators.closeHint(page).waitFor({ state: 'visible' });
+    await expect(page).toHaveScreenshot();
     await page.keyboard.press('Shift+Tab');
-    await expect(locators.buttonTrigger(page, 'Show basic notice')).toBeFocused();
+    await locators.closeHint(page).waitFor({ state: 'hidden' });
     await page.keyboard.press('Enter');
-    await new Promise((resolve) => setTimeout(resolve, 200));
-    await expect(locators.closeHint(page)).toBeVisible();
-    await expect(page).toHaveScreenshot();
-  });
-});
-
-test.describe('Success notice without Interactive element ', () => {
-  test('Open notice by keyboard click', async ({ page }) => {
-    await setupPage(page, 'stories/components/notice-bubble/docs/examples/success_notice.tsx');
-
-    // the X button is not focused on the notice
-    await openNoticeByKeyboard(page);
-    await new Promise((resolve) => setTimeout(resolve, 500));
-    const successNotice = locators.successNotice(
-      page,
-      'Keyword was successfully moved to Keyword Analyzer!',
-    );
-    const buttonTrigger = locators.buttonTrigger(page, 'Show success notice');
-    await expect(successNotice).toBeVisible();
-    const closeButton = locators.closeButton(page);
-    await expect(closeButton).not.toBeFocused();
-    await expect(buttonTrigger).toBeFocused();
+    await locators.closeHint(page).first().waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
   });
 
-  test('Open notice by mouse click', async ({ page }) => {
-    await setupPage(page, 'stories/components/notice-bubble/docs/examples/success_notice.tsx');
+  test('Verify Notice with Undo action', async ({ page, browserName }) => {
+    const standPath = 'stories/components/notice-bubble/docs/examples/undo_action.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en', {
+      initialAnimation: true,
+      duration: 0,
+      type: 'info',
+      focusLock: true,
+    });
 
-    const buttonText = locators.buttonTrigger(page, 'Show success notice');
-    await buttonText.click();
-    await new Promise((resolve) => setTimeout(resolve, 500));
-    const successNotice = locators.successNotice(
-      page,
-      'Keyword was successfully moved to Keyword Analyzer!',
-    );
-    await expect(successNotice).toBeVisible();
-    await expect(page).toHaveScreenshot();
-  });
+    await page.setContent(htmlContent);
 
-  test('Open 2 notices by 2 keyboard clicks - 2 enters', async ({ page }) => {
-    await setupPage(page, 'stories/components/notice-bubble/docs/examples/success_notice.tsx');
-
-    // the focus is on the trigger always
-    await openNoticeByKeyboard(page);
+    await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-    await new Promise((resolve) => setTimeout(resolve, 500));
+    await locators.closeButton(page).waitFor({ state: 'visible' });
+    await locators.closeHint(page).waitFor({ state: 'visible' });
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Tab');
+    await locators.closeHint(page).waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
   });
-});
 
-test.describe('Replace last notice', () => {
-  test('The notice is visible and replaces by keyboard', async ({ page }) => {
-    await setupPage(page, 'stories/components/notice-bubble/docs/examples/replace_last_notice.tsx');
+  test('Verify Notice not in portal', async ({ page, browserName }) => {
+    const standPath = 'stories/components/notice-bubble/docs/examples/noticebubble_not_in_portal.tsx';
 
-    await openNoticeByKeyboard(page);
-    await new Promise((resolve) => setTimeout(resolve, 500));
-    const noticeBubble = page.locator('[data-ui-name="NoticeBubbleContainer"]');
-    await expect(noticeBubble).toBeVisible();
-    await expect(noticeBubble).toContainText('Link 1 was moved to');
-    await page.keyboard.press('Enter');
-    await new Promise((resolve) => setTimeout(resolve, 500));
-    await expect(noticeBubble).toContainText('Link 2 was moved to');
-  });
+    const htmlContent = await e2eStandToHtml(standPath, 'en', {
+      initialAnimation: true,
+      duration: 0,
+      type: 'info',
+      focusLock: false,
+    });
 
-  test('The notice is visible and replaces by mouse', async ({ page }) => {
-    await setupPage(page, 'stories/components/notice-bubble/docs/examples/replace_last_notice.tsx');
-
+    await page.setContent(htmlContent);
     const buttonTrigger = locators.buttonTrigger(page, 'Show basic notice');
+
     await buttonTrigger.click();
-    await new Promise((resolve) => setTimeout(resolve, 200));
-    const noticeBubble = page.locator('[data-ui-name="NoticeBubbleContainer"]');
-    await expect(noticeBubble).toBeVisible();
-    await expect(noticeBubble).toContainText('Link 1 was moved to');
     await buttonTrigger.click();
-    await new Promise((resolve) => setTimeout(resolve, 200));
-    await expect(noticeBubble).toContainText('Link 2 was moved to');
+    await buttonTrigger.click();
+    await locators.closeButton(page).nth(2).waitFor({ state: 'visible' });
+    await locators.closeHint(page).waitFor({ state: 'visible' });
+    await expect(page).toHaveScreenshot();
   });
-});
 
-test.describe('Notice with illustration', () => {
-  test('The illustraction looks good and positioned correclty', async ({ page }) => {
-    await setupPage(
-      page,
-      'stories/components/notice-bubble/docs/examples/special_events_notice.tsx',
-    );
+  test('Verify Notice with Reload action', async ({ page, browserName }) => {
+    const standPath = 'stories/components/notice-bubble/docs/examples/reload_action.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en', {
+      initialAnimation: true,
+      duration: 0,
+      type: 'info',
+      focusLock: true,
+    });
 
-    await openNoticeByKeyboard(page);
-    await new Promise((resolve) => setTimeout(resolve, 250));
+    await page.setContent(htmlContent);
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+    await locators.closeButton(page).waitFor({ state: 'visible' });
+    await locators.closeHint(page).waitFor({ state: 'visible' });
+    await page.keyboard.press('Tab');
+    await expect(page).toHaveScreenshot();
+  });
+
+  test('Verify Notice with Completion state', async ({ page, browserName }) => {
+    const standPath = 'stories/components/notice-bubble/docs/examples/completion_state.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en', {
+      initialAnimation: true,
+      duration: 0,
+      type: 'info',
+      focusLock: false,
+    });
+
+    await page.setContent(htmlContent);
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+    await page.keyboard.press('Enter');
+    await page.keyboard.press('Enter');
+    await locators.closeButton(page).nth(2).waitFor({ state: 'visible' });
+    await expect(page).toHaveScreenshot();
+  });
+
+  test('Verify Notice with Success state', async ({ page, browserName }) => {
+    const standPath = 'stories/components/notice-bubble/docs/examples/success_notice.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en', {
+      initialAnimation: true,
+      duration: 0,
+      type: 'info',
+      focusLock: false,
+    });
+
+    await page.setContent(htmlContent);
+    const buttonTrigger = locators.buttonTrigger(page, 'Show success notice');
+    await buttonTrigger.click();
+    await locators.closeButton(page).waitFor({ state: 'visible' });
+    await expect(page).toHaveScreenshot();
+  });
+
+  test('Verify Notice with Failture state', async ({ page, browserName }) => {
+    const standPath = 'stories/components/notice-bubble/docs/examples/failure_notice.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en', {
+      initialAnimation: true,
+      duration: 0,
+      type: 'info',
+      focusLock: false,
+    });
+
+    await page.setContent(htmlContent);
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+    await locators.closeButton(page).waitFor({ state: 'visible' });
+    await locators.closeHint(page).waitFor({ state: 'visible' });
+    await expect(page).toHaveScreenshot();
+  });
+
+  test('Verify Notice with Loading state', async ({ page, browserName }) => {
+    const standPath = 'stories/components/notice-bubble/docs/examples/dynamic_notice.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en', {
+      initialAnimation: true,
+      duration: 0,
+      type: 'info',
+      focusLock: false,
+    });
+
+    await page.setContent(htmlContent);
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+    await locators.closeButton(page).waitFor({ state: 'visible' });
+    await locators.closeHint(page).waitFor({ state: 'visible' });
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+    await page.locator('[data-ui-name="Spin"]').waitFor({ state: 'visible' });
+    await expect(page).toHaveScreenshot();
+    await page.waitForSelector('text="Try again"');
+    await page.keyboard.press('Tab');
+    await expect(page).toHaveScreenshot();
+  });
+
+  test('Verify notice with illustration', async ({ page }) => {
+    const standPath = 'stories/components/notice-bubble/docs/examples/special_events_notice.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en', {
+      initialAnimation: true,
+      duration: 0,
+      type: 'info',
+      focusLock: false,
+    });
+    await page.setContent(htmlContent);
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+    await locators.closeButton(page).waitFor({ state: 'visible' });
     const mailSentIcon = page.locator('svg[data-ui-name="MailSent"]');
-
-    // Validate the dimensions of the SVG
     await expect(mailSentIcon).toHaveAttribute('width', '80');
     await expect(mailSentIcon).toHaveAttribute('height', '80');
-    await new Promise((resolve) => setTimeout(resolve, 250));
+    await expect(page).toHaveScreenshot();
+  });
+
+  test('Verify Warning notice without interactive element', async ({ page }) => {
+    const standPath = 'stories/components/notice-bubble/docs/examples/no_connection_notice.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en', {
+      initialAnimation: true,
+      duration: 0,
+      type: 'warning',
+      focusLock: false,
+    });
+    await page.setContent(htmlContent);
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+    await locators.closeButton(page).waitFor({ state: 'visible' });
+    await expect(page).toHaveScreenshot();
+  });
+
+  test('Verify Warning notice with interactive element', async ({ page }) => {
+    const standPath = 'stories/components/notice-bubble/docs/examples/no_connection_notice_with_action.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en', {
+      initialAnimation: true,
+      duration: 0,
+      type: 'warning',
+      focusLock: false,
+    });
+    await page.setContent(htmlContent);
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+    await locators.closeButton(page).waitFor({ state: 'visible' });
+    await locators.closeHint(page).waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
   });
 });

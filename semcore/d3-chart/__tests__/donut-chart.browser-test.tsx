@@ -53,15 +53,33 @@ test.describe('Donut chart', () => {
       }
     });
 
-    await test.step('Verify pie with tooltip hihlights on hover', async () => {
-      await pies.nth(5).hover();
-      await page.waitForTimeout(500);
+    await test.step('Verify pie on hover when no innerRadius with paddingAngle', async () => {
+      await pies.nth(1).hover();
+      await page.waitForSelector('text="Pie 2"');
       await expect(page).toHaveScreenshot();
     });
 
-    await test.step('Verify pie with without animation not changes size by hover', async () => {
+    await test.step('Verify pie on hover when innerRadius and paddingAngle', async () => {
+      await pies.nth(5).hover();
+      await page.waitForSelector('text="Pie 3"');
+      await expect(page).toHaveScreenshot();
+    });
+
+    await test.step('Verify pie on hover when innerRadius', async () => {
+      await pies.nth(7).hover();
+      await page.waitForSelector('text="Pie 2"');
+      await expect(page).toHaveScreenshot();
+    });
+
+    await test.step('Verify pie on hover when outerRadius no animation', async () => {
       await pies.nth(10).hover();
-      await page.waitForTimeout(500);
+      await page.waitForSelector('text="Pie 2"');
+      await expect(page).toHaveScreenshot();
+    });
+
+    await test.step('Verify pie on hover when outerRadius', async () => {
+      await pies.nth(13).hover();
+      await page.waitForSelector('text="Pie 2"');
       await expect(page).toHaveScreenshot();
     });
   });

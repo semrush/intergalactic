@@ -1,10 +1,9 @@
 import Button, { ButtonLink } from '@semcore/button';
 import { Flex } from '@semcore/flex-box';
-import CheckAltM from '@semcore/icon/CheckAlt/m';
 import FileExportM from '@semcore/icon/FileExport/m';
 import InfoM from '@semcore/icon/Info/m';
 import Link from '@semcore/link';
-import Tooltip, { Hint, DescriptionTooltip } from '@semcore/tooltip';
+import Tooltip, { DescriptionTooltip } from '@semcore/tooltip';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
