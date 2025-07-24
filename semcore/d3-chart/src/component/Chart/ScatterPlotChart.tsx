@@ -91,13 +91,13 @@ class ScatterPlotChartComponent extends AbstractChart<
   }
 
   protected renderChart() {
-    const { groupKey, valueKey } = this.asProps;
+    const { groupKey, valueKey, onClickScatterItem } = this.asProps;
     const { dataDefinitions } = this.state;
 
     return dataDefinitions.map((item) => {
       return (
         item.checked && (
-          <ScatterPlot x={groupKey} y={item.id} key={item.id} color={item.color} value={valueKey} />
+          <ScatterPlot onClick={onClickScatterItem} x={groupKey} y={item.id} key={item.id} color={item.color} value={valueKey} />
         )
       );
     });

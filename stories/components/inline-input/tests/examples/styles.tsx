@@ -1,8 +1,8 @@
 import { Flex } from '@semcore/flex-box';
 import SerpM from '@semcore/icon/Serp/m';
 import InlineInput from '@semcore/inline-input';
-import type { InlineInputProps } from 'inline-input/lib/types';
-import type { InputNumberControlsProps } from 'input-number/lib/types';
+import type { InlineInputProps } from '@semcore/inline-input';
+import type { InputNumberControlsProps } from '@semcore/input-number';
 import React from 'react';
 
 type ExampleInputTagsProps = InlineInputProps & InputNumberControlsProps;
