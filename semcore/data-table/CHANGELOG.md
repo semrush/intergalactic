@@ -6,6 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
+- Ability to set columns into one grouped column.
 - `line-height` for `Head.Column` items.
 
 ## [16.0.7] - 2025-07-23
