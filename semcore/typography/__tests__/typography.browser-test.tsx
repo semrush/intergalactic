@@ -93,3 +93,21 @@ test.describe('Text', () => {
     await expect(page).toHaveScreenshot();
   });
 });
+
+test.describe('Counter and typograohy', () => {
+  test('Verify counter in limits', async ({ page }) => {
+    const standPath = 'stories/components/counter/docs/examples/counter_in_limits.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+    await expect(page).toHaveScreenshot();
+  });
+
+  test('Verify counter and typoghraphy', async ({ page }) => {
+    const standPath = 'stories/components/counter/docs/examples/counter_and_typography.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+    await expect(page).toHaveScreenshot();
+  });
+});
