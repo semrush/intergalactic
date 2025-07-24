@@ -104,9 +104,7 @@
     "rawValue": "{yellow.100}",
     "computedValue": "#fce081",
     "description": "Accent background of the information you want to highlight.",
-    "components": [
-      "feature-popover"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-bg-primary-highlight-secondary",
@@ -1663,41 +1661,43 @@
     "type": "color",
     "rawValue": "{bg.primary.highlight}",
     "computedValue": "#fce081",
-    "description": "Color of the FeaturePopover background.",
-    "components": []
+    "description": "Color of the FeaturePopover background with accent theme.",
+    "components": [
+      "feature-popover"
+    ]
   },
   {
     "name": "--intergalactic-feature-popover-dot-outer-border",
     "type": "color",
     "rawValue": "{feature-popover.bg}",
     "computedValue": "#fce081",
-    "description": "Color of the outer border of the FeaturePopover.Spot.",
+    "description": "Color of the outer border of the FeaturePopover.Spot for FeaturePopover with accent theme.",
     "components": [
       "feature-popover"
     ]
   },
   {
-    "name": "--intergalactic-feature-popover-bg-secondary",
+    "name": "--intergalactic-feature-popover-bg-neutral",
     "type": "color",
-    "rawValue": "{bg.primary.highlight-secondary}",
+    "rawValue": "{violet.dusty.800}",
     "computedValue": "#1D113E",
-    "description": "Color of the FeaturePopover background with secondary use.",
+    "description": "Color of the FeaturePopover background with neutral theme.",
     "components": []
   },
   {
-    "name": "--intergalactic-feature-popover-dot-secondary",
+    "name": "--intergalactic-feature-popover-dot-neutral",
     "type": "color",
     "rawValue": "{green.300}",
     "computedValue": "#00c192",
-    "description": "Color of the FeaturePopover.Spot for FeaturePopover with subtle theme.",
+    "description": "Color of the FeaturePopover.Spot for FeaturePopover with neutral theme.",
     "components": []
   },
   {
-    "name": "--intergalactic-feature-popover-dot-subtle-outer-border",
+    "name": "--intergalactic-feature-popover-dot-neutral-outer-border",
     "type": "color",
-    "rawValue": "{feature-popover.dot-secondary}",
+    "rawValue": "{feature-popover.dot-neutral}",
     "computedValue": "#00c192",
-    "description": "Color of the outer border of the FeaturePopover.Spot for FeaturePopover with subtle theme.",
+    "description": "Color of the outer border of the FeaturePopover.Spot for FeaturePopover with neutral theme.",
     "components": []
   },
   {

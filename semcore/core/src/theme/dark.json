@@ -1195,27 +1195,27 @@
       "bg": {
         "value": "{bg.primary.highlight}",
         "type": "color",
-        "description": "Color of the FeaturePopover background."
+        "description": "Color of the FeaturePopover background with accent theme."
       },
       "dot-outer-border": {
         "value": "{feature-popover.bg}",
         "type": "color",
-        "description": "Color of the outer border of the FeaturePopover.Spot."
+        "description": "Color of the outer border of the FeaturePopover.Spot for FeaturePopover with accent theme."
       },
-      "bg-secondary": {
-        "value": "{bg.primary.highlight-secondary}",
+      "bg-neutral": {
+        "value": "{violet.dusty.800}",
         "type": "color",
-        "description": "Color of the FeaturePopover background with secondary use."
+        "description": "Color of the FeaturePopover background with neutral theme."
       },
-      "dot-secondary": {
+      "dot-neutral": {
         "value": "{green.300}",
         "type": "color",
-        "description": "Color of the FeaturePopover.Spot for FeaturePopover with subtle theme."
+        "description": "Color of the FeaturePopover.Spot for FeaturePopover with neutral theme."
       },
-      "dot-subtle-outer-border": {
-        "value": "{feature-popover.dot-secondary}",
+      "dot-neutral-outer-border": {
+        "value": "{feature-popover.dot-neutral}",
         "type": "color",
-        "description": "Color of the outer border of the FeaturePopover.Spot for FeaturePopover with subtle theme."
+        "description": "Color of the outer border of the FeaturePopover.Spot for FeaturePopover with neutral theme."
       }
     },
     "progress-bar": {

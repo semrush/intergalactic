@@ -5,7 +5,7 @@ SFeaturePopover {
   padding-left: var(--intergalactic-spacing-4x, 16px);
   border-radius: var(--intergalactic-popper-rounded, 6px);
   box-sizing: border-box;
-  background-color: var(--intergalactic-bg-primary-highlight, #fce081);
+  background-color: var(--intergalactic-feature-popover-bg, #fce081);
   color: var(--intergalactic-text-primary, #191b23);
   box-shadow: var(--intergalactic-box-shadow-popper, 0px 1px 12px 0px rgba(25, 27, 35, 0.15));
   position: relative;
@@ -84,7 +84,7 @@ SSpot {
     border-radius: 50%;
     width: 12px;
     height: 12px;
-    background-color: var(--intergalactic-bg-primary-highlight, #fce081);
+    background-color: var(--intergalactic-feature-popover-bg, #fce081);
   }
 }
 
