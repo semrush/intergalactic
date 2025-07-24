@@ -57,6 +57,9 @@ export class Group extends Component<
 
     return sstyled(styles)(
       <SGroupContainer data-group-container>
+        <SGroup render={Box} style={style} __excludeProps={['title']} id={this.groupId}>
+          {withConfig ? <Children /> : title}
+        </SGroup>
         {withConfig
           ? (
               groupColumns.map((column, _i) => {
@@ -72,9 +75,6 @@ export class Group extends Component<
           : (
               <Children />
             )}
-        <SGroup render={Box} style={style} __excludeProps={['title']} id={this.groupId}>
-          {withConfig ? <Children /> : title}
-        </SGroup>
       </SGroupContainer>,
     );
   }

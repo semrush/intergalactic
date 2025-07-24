@@ -7,6 +7,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Added
 
 - `featureHighlight` tokens to dark.json.
+- `newInstance` method for create new component instances from the existing.
 
 ## [16.0.3] - 2025-07-02
 
