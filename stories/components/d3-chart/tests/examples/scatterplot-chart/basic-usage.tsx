@@ -2,6 +2,9 @@ import { Chart } from '@semcore/d3-chart';
 import React from 'react';
 
 const Demo = () => {
+  const onClickHandler = () => {
+    console.log('Clicked scatterplot item');
+  };
   return (
     <Chart.ScatterPlot
       data={data}
@@ -9,6 +12,7 @@ const Demo = () => {
       plotHeight={300}
       groupKey='x'
       aria-label='ScatterPlot chart'
+      onClickScatterItem={onClickHandler}
     />
   );
 };

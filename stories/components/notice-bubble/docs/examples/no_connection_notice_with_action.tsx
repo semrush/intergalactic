@@ -2,10 +2,11 @@ import Button from '@semcore/button';
 import ReloadM from '@semcore/icon/Reload/m';
 import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/notice-bubble';
 import React from 'react';
+type NoConnectionActionNoticeBubbleProps = { initialAnimation: boolean; duration: number; type: 'info' | 'warning'; focusLock: boolean };
 
 const manager = new NoticeBubbleManager();
 
-const Demo = () => {
+const Demo = (props: NoConnectionActionNoticeBubbleProps) => {
   const openButtonRef = React.useRef<HTMLButtonElement>(null);
   const handleClick = () => {
     manager.add({
@@ -15,9 +16,10 @@ const Demo = () => {
           Reload the page
         </Button>
       ),
-      type: 'warning',
-      initialAnimation: true,
-      duration: 0,
+      initialAnimation: props.initialAnimation,
+      duration: props.duration,
+      type: props.type,
+      focusLock: props.focusLock,
       onClose: () => {
         setTimeout(() => {
           openButtonRef.current?.focus();
@@ -35,5 +37,14 @@ const Demo = () => {
     </>
   );
 };
+
+export const defaultProps: NoConnectionActionNoticeBubbleProps = {
+  initialAnimation: true,
+  duration: 0,
+  type: 'warning',
+  focusLock: false,
+};
+
+Demo.defaultProps = defaultProps;
 
 export default Demo;

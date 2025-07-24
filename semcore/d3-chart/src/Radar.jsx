@@ -175,7 +175,75 @@ class RadarRoot extends Component {
       offset: this.offset,
       categories: this.asProps.data[this.categoriesKey],
       angleOffset: this.asProps.angleOffset,
+      getIndex: this.getIndex.bind(this),
+      getPolygon: this.getPolygon.bind(this),
+      getPie: this.getPie.bind(this),
     };
+  }
+
+  getIndex(point) {
+    const { data, type } = this.asProps;
+    const categories = data[this.categoriesKey];
+
+    let index;
+    if (type === 'circle') {
+      index = categories.findIndex((_c, i) => pieContains(this.getPie(i), point));
+    } else {
+      index = categories.findIndex((_c, i) => polygonContains(this.getPolygon(i), point));
+    }
+    return index === -1 ? null : index;
+  }
+
+  getPolygon(index) {
+    const { data, size, angleOffset } = this.asProps;
+    const offset = this.offset;
+    const categories = data[this.categoriesKey];
+    const total = categories.length;
+    const diam = Math.min(size[0], size[1]);
+    const radius = diam / 2 - offset;
+    const prevIndex = (index - 1 + total) % total;
+    const nextIndex = (index + 1 + total) % total;
+    const [prevX1, prevY1] = getRadianPosition(prevIndex, radius, total, angleOffset);
+    const [x, y] = getRadianPosition(index, radius, total, angleOffset);
+    const [nextX1, nextY1] = getRadianPosition(nextIndex, radius, total, angleOffset);
+    return [
+      [0, 0],
+      [(prevX1 + x) / 2, (prevY1 + y) / 2],
+      [x, y],
+      [(nextX1 + x) / 2, (nextY1 + y) / 2],
+    ];
+  }
+
+  getPie(index) {
+    const { data, size, angleOffset } = this.asProps;
+    const categories = data[this.categoriesKey];
+    const offset = this.offset;
+    const angle = (Math.PI * 2) / categories.length;
+    const radius = Math.min(size[0], size[1]) / 2 - offset;
+    return [
+      index * angle - angle / 2 - angleOffset,
+      (index + 1) * angle - angle / 2 - angleOffset,
+      radius,
+    ];
+  }
+
+  handlerOnClick(e) {
+    e.stopPropagation();
+
+    const { rootRef, size, onClick } = this.asProps;
+
+    if (!onClick) return;
+
+    const [pointX, pointY] = eventToPoint(e, rootRef.current);
+    const r = Math.min(size[0], size[1]) / 2;
+    const centerX = pointX - r;
+    const centerY = pointY - r;
+
+    const index = this.getIndex([centerX, centerY]);
+
+    if (index === null) return;
+
+    onClick(index, e);
   }
 
   render() {
@@ -206,6 +274,7 @@ class RadarRoot extends Component {
         render='g'
         childrenPosition='inside'
         transform={`translate(${width / 2},${height / 2})`}
+        onClickCapture={this.handlerOnClick.bind(this)}
       />,
     );
   }
@@ -537,55 +606,15 @@ class Hover extends Component {
     return () => ({ width: 0, height: 0, top: y, right: x, bottom: y, left: x });
   }
 
-  getPolygon(index) {
-    const { categories, size, offset, angleOffset } = this.asProps;
-    const total = categories.length;
-    const diam = Math.min(size[0], size[1]);
-    const radius = diam / 2 - offset;
-    const prevIndex = (index - 1 + total) % total;
-    const nextIndex = (index + 1 + total) % total;
-    const [prevX1, prevY1] = getRadianPosition(prevIndex, radius, total, angleOffset);
-    const [x, y] = getRadianPosition(index, radius, total, angleOffset);
-    const [nextX1, nextY1] = getRadianPosition(nextIndex, radius, total, angleOffset);
-    return [
-      [0, 0],
-      [(prevX1 + x) / 2, (prevY1 + y) / 2],
-      [x, y],
-      [(nextX1 + x) / 2, (nextY1 + y) / 2],
-    ];
-  }
-
-  getPie(index) {
-    const { categories, size, offset, angleOffset } = this.asProps;
-    const angle = (Math.PI * 2) / categories.length;
-    const radius = Math.min(size[0], size[1]) / 2 - offset;
-    return [
-      index * angle - angle / 2 - angleOffset,
-      (index + 1) * angle - angle / 2 - angleOffset,
-      radius,
-    ];
-  }
-
-  getIndex(point) {
-    const { categories, type } = this.asProps;
-    let index;
-    if (type === 'circle') {
-      index = categories.findIndex((_c, i) => pieContains(this.getPie(i), point));
-    } else {
-      index = categories.findIndex((_c, i) => polygonContains(this.getPolygon(i), point));
-    }
-    return index === -1 ? null : index;
-  }
-
   handlerMouseMoveRoot = trottle((e) => {
-    const { eventEmitter, size, rootRef, patterns } = this.asProps;
+    const { eventEmitter, size, rootRef, patterns, getIndex } = this.asProps;
     const point = eventToPoint(e, rootRef.current);
     const diam = Math.min(size[0], size[1]);
     const centerX = point[0] - diam / 2;
     const centerY = point[1] - diam / 2;
     const { clientX, clientY } = e;
 
-    const index = this.getIndex([centerX, centerY]);
+    const index = getIndex([centerX, centerY]);
 
     this.setState({ index }, () => {
       eventEmitter.emit('setTooltipPosition', clientX, clientY);
@@ -622,13 +651,13 @@ class Hover extends Component {
   }
 
   render() {
-    const { styles, type } = this.asProps;
+    const { styles, type, getPie, getPolygon } = this.asProps;
     const { index } = this.state;
     const SPieRect = this.Element;
 
     if (index !== null) {
       if (type === 'circle') {
-        const [startAngle, endAngle, radius] = this.getPie(index);
+        const [startAngle, endAngle, radius] = getPie(index);
         const circle = arc()
           .innerRadius(0)
           .outerRadius(radius)
@@ -646,7 +675,7 @@ class Hover extends Component {
           <SPieRect
             render='path'
             // @ts-ignore
-            d={line()(this.getPolygon(index))}
+            d={line()(getPolygon(index))}
           />,
         );
       }

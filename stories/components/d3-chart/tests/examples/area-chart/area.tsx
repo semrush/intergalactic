@@ -20,6 +20,14 @@ const Demo = () => {
     .range([height - MARGIN, MARGIN])
     .domain([0, 10]);
 
+  const onClickHandler = (index: number, event: React.SyntheticEvent) => {
+    const clickedItem = data[index];
+    console.log('Clicked area chart point:');
+    console.log('→ Index:', index);
+    console.log('→ Data item:', clickedItem);
+    console.log('→ Event:', event);
+  };
+
   return (
     <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
       <YAxis>
@@ -36,7 +44,7 @@ const Demo = () => {
           })}
         </XAxis.Ticks>
       </XAxis>
-      <Area x='time' y='line' curve={curveCardinal}>
+      <Area x='time' y='line' curve={curveCardinal} onClick={onClickHandler}>
         <Area.Dots display />
       </Area>
     </Plot>
