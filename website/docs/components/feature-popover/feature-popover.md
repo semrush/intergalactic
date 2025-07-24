@@ -69,7 +69,7 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
       </FeaturePopover.Trigger>
       <FeaturePopover.Popper closeIcon={closeIcon} wMax={250} aria-label="New feature">
         <Text size={200}>
-          With this new feature, users can now enjoy improved user experience, or expanded capabilities.
+          Use this popover to highlight new product features and guide users through them.
         </Text>
       </FeaturePopover.Popper>
     </FeaturePopover>
@@ -100,15 +100,24 @@ Component consists of the following:
 - `FeaturePopover.Spot`
 - `FeaturePopover.Popper`
 - `closeIcon` property (for `FeaturePopover.Popper`)
+- `FeaturePopover.StepCounter`
 - Content
 
 ## Appearance
 
+### Themes
+
+This component has two themes:
+
+Table: FeaturePopover themes
+| `theme`   | Appearance example            | When to use                                                                                 |
+|-----------|-------------------------------|---------------------------------------------------------------------------------------------|
+| `accent`  | ![](static/accent-theme.png)  | Use this theme to highlight new features and for onboarding related to them in the product. |
+| `neutral` | ![](static/neutral-theme.png) | Use this theme only for global Semrush onboarding.                                          |
+
 ### Spot
 
-The animated spot is always located in the lower corner of the element you want to draw attention to.
-
-![](static/spotlight-sizes.png)
+The animated spot is always located in the corner of the element you want to draw attention to.
 
 ![](static/spotlight-dot.png)
 
@@ -137,23 +146,30 @@ Two buttons are always placed under the message.
 - By clicking the "Got it" button FeaturePopover closes forever.
 - By clicking the "Remind me later" button FeaturePopover closes until the next user session.
 
+### Step counter
+
+You can enable the step counter to show the user how many messages they need to read. We recommend turning it on for walkthroughs when you need to guide the user through several features or changes in a row.
+
+![](static/neutral-theme.png)
+
 ### Illustration
 
-You can use the default illustration, or your own. The illustration should help the user to understand the basic idea of the feature being advertised. It can also be animated if it makes it easier to understand the feature.
+You can add an illustration to your FeaturePopover to help the user to understand the basic idea of your message. It can also be animated if it makes it easier to understand the feature.
 
 Table: FeaturePopover illustration sizes
 
-| Illustration size       | Illustration example              |
-| ----------------------- | --------------------------------- |
-| Small, 40px * 40px      | ![](static/spotlight-default.png) |
-| Medium, 80px * 80px     | ![](static/spotlight-big.png)     |
+| Illustration size  | Illustration example              |
+|--------------------|-----------------------------------|
+| Small, 40px * 40px | ![](static/spotlight-default.png) |
+| Large, 80px * 80px | ![](static/spotlight-big.png)     |
 
 ### Maximum width
 
 You can use `wMax` property to set the maximum width of the FeaturePopover's popper. But we recommend to set the following widths:
 
-- 350px for FeaturePopover with small illustration.
-- 550px for FeaturePopover with medium illustration.
+- 350px for FeaturePopover without illustration.
+- 400px for FeaturePopover with step counter.
+- 550px for FeaturePopover with big illustration.
 
 ### Content indents
 
