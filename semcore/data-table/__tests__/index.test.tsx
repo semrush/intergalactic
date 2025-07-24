@@ -139,12 +139,12 @@ describe('DataTable.Cell', () => {
   });
 
   test('Should support rawData in custom renderCell function', () => {
-    const spy = vi.fn();
+    const checkRowData = vi.fn();
     const dataItem = { keyword: 'test', kd: '1', vol: null };
 
-    const Test = () => {
+    const RawDataTest = () => {
       const customCellRender = (props: CellRenderProps) => {
-        spy(props.rawData);
+        checkRowData(props.rawData);
 
         return props.defaultRender();
       };
@@ -163,7 +163,7 @@ describe('DataTable.Cell', () => {
       );
     };
 
-    render(<Test />);
-    expect(spy).toBeCalledWith({ ...dataItem });
+    render(<RawDataTest />);
+    expect(checkRowData).toBeCalledWith({ ...dataItem });
   });
 });

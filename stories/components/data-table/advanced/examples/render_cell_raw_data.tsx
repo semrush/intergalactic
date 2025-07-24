@@ -49,6 +49,7 @@ const Demo = () => {
   return (
     <DataTable
       data={data}
+      aria-label='custom render cell raw data'
       columns={[
         {
           name: 'keyword',
