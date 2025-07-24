@@ -90,6 +90,13 @@ class BodyRoot extends Component<DataTableBodyProps, {}, State, [], BodyPropsInn
     }
   };
 
+  handleClickCell = (e: React.SyntheticEvent<HTMLElement>, opt: { row: DTRow; rowIndex: number }) => {
+    if (!isInteractiveElement(e.target)) {
+      console.log(opt);
+      this.handleExpandRow(opt.row, opt.rowIndex);
+    }
+  };
+
   getRowProps(props: { row: DTRow; mergedRow?: boolean }): RowPropsInner {
     const {
       use,
@@ -211,6 +218,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, State, [], BodyPropsInn
       children: props.children ?? defaultRender(),
       accordionDuration,
       onClick: onCellClick,
+      flatRows: this.asProps.flatRows,
     };
 
     if (renderCell) {
@@ -274,7 +282,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, State, [], BodyPropsInn
       if (value?.[ACCORDION] || (cellValue instanceof MergedRowsCell && cellValue.accordion)) {
         extraProps.onClick = callAllEventHandlers(
           extraProps.onClick,
-          handleClick,
+          this.handleClickCell,
         );
       }
 

@@ -32,4 +32,5 @@ export type CellPropsInner = {
   tableRef: React.RefObject<HTMLDivElement>;
   accordionDuration?: number | [number, number];
   onClick: (e: React.SyntheticEvent, opt: { rowIndex: number; colIndex: number; row?: DTRow }) => void;
+  flatRows: DTRow[];
 };
