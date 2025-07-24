@@ -2,11 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [16.3.0] - 2025-07-17
+24## [16.3.0] - 2025-07-24
 
 ### Changed
 
 - Styles for `:focus`.
+
+## [16.2.4] - 2025-07-10
+
+### Fixed
+
+- Missing type names for `InputFieldProps` on API page for Bulk Textarea due to ESLint fixes.
 
 ## [16.2.3] - 2025-07-04
 

@@ -2,12 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [16.2.0] - 2025-07-17
+## [16.2.0] - 2025-07-24
 
 ### Changed
 
 - Styles for `:focus` and `:focus-visible`.
 - Styles for highlighted `CalendarUnit`.
+
+## [16.1.5] - 2025-07-23
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/base-trigger` [16.2.3 ~> 16.2.4], `@semcore/button` [16.0.4 ~> 16.0.5], `@semcore/icon` [16.2.3 ~> 16.4.0], `@semcore/input` [16.0.4 ~> 16.0.5], `@semcore/checkbox` [16.0.4 ~> 16.0.5], `@semcore/tooltip` [16.0.4 ~> 16.0.5], `@semcore/base-components` [16.1.1 ~> 16.1.2]).
 
 ## [16.1.4] - 2025-07-04
 

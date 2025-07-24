@@ -2,10 +2,11 @@ import Button from '@semcore/button';
 import Link from '@semcore/link';
 import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/notice-bubble';
 import React from 'react';
+type UndoActionNoticeBubbleProps = { initialAnimation: boolean; duration: number; type: 'info' | 'warning'; focusLock: boolean };
 
 const manager = new NoticeBubbleManager();
 
-const Demo = () => {
+const Demo = (props: UndoActionNoticeBubbleProps) => {
   const openButtonRef = React.useRef<HTMLButtonElement>(null);
   const handleClick = () => {
     manager.add({
@@ -17,8 +18,10 @@ const Demo = () => {
         </>
       ),
       action: <Button theme='invert'>Undo</Button>,
-      initialAnimation: true,
-      duration: 0,
+      initialAnimation: props.initialAnimation,
+      duration: props.duration,
+      type: props.type,
+      focusLock: props.focusLock,
       onClose: () => {
         setTimeout(() => {
           openButtonRef.current?.focus();
@@ -36,5 +39,14 @@ const Demo = () => {
     </>
   );
 };
+
+export const defaultProps: UndoActionNoticeBubbleProps = {
+  initialAnimation: true,
+  duration: 0,
+  type: 'info',
+  focusLock: false,
+};
+
+Demo.defaultProps = defaultProps;
 
 export default Demo;

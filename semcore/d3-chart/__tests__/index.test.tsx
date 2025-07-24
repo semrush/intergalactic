@@ -2,7 +2,7 @@ import Icon from '@semcore/icon/Video/m';
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { snapshot } from '@semcore/testing-utils/snapshot';
-import { render, fireEvent, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
+import { render, fireEvent, cleanup, queryAllByAttribute, queryByAttribute, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import React from 'react';
@@ -12,6 +12,7 @@ import {
   YAxis,
   XAxis,
   makeDataHintsContainer,
+  Chart,
   // @ts-ignore
 } from '../src';
 import { PlotA11yView } from '../src/a11y/PlotA11yView';
@@ -19,17 +20,85 @@ import { getIndexFromData } from '../src/utils';
 
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
-const xScale = scaleLinear().range([10, 100]).domain([0, 10]);
+const width = 500;
+const height = 500;
+const date = new Date();
 
+const xScale = scaleLinear().range([10, 100]).domain([0, 10]);
 const yScale = scaleLinear().range([100, 10]).domain([0, 10]);
 
-const data = [...Array(10).keys()].map((d, i) => ({
-  x: i,
-  y: Math.abs(Math.sin(Math.exp(i))) * i,
-}));
+const ChartOptions = {
+  area: {
+    data: Array(10)
+      .fill({})
+      .map(() => {
+        return {
+          time: new Date(date.setDate(date.getDate() + 5)),
+          line: Math.random() * 10,
+        };
+      }),
+  },
+  bubble: {
+    data: [
+      { x: 2, y: 3, value: 5040, label: 'label 1' },
+      { x: 1, y: 9, value: 40, label: 'label 2' },
+      { x: 6, y: 2, value: 45634, label: 'label 3' },
+      { x: 4, y: 7, value: 245, label: 'label 4' },
+      { x: 9, y: 5, value: 7462, label: 'label 5' },
+    ],
+  },
+  donut: {
+    data: {
+      a: 3,
+      b: 1,
+      c: 2,
+    },
+  },
+  line: {
+    data: Array(20)
+      .fill({})
+      .map((_, i) => ({
+        x: i,
+        y: Math.random() * 10,
+      })),
+  },
+  radar: {
+    data: {
+      categories: ['Variable 1', 'Variable 2', 'Variable 3', 'Variable 4', 'Variable 5', 'Variable 6'],
+      data_1: [1, 3, 5, 5, 9, 2],
+      data_2: [5, 2, 1, 2, 7, 6],
+    },
+  },
+  scatterPlot: {
+    data: Array(20)
+      .fill({})
+      .map((_, i) => ({
+        x: i,
+        y: Math.random() * 10,
+      })),
+  },
+  venn: {
+    data: {
+      'G': 200,
+      'F': 200,
+      'C': 500,
+      'U': 1,
+      'G/F': 100,
+      'G/C': 100,
+      'F/C': 100,
+      'G/F/C': 100,
+    },
+    legendMap: {
+      G: { label: 'Good' },
+      F: { label: 'Fast' },
+      C: { label: 'Clean' },
+      U: { label: 'Uniq' },
+    },
+  },
+};
 
 const PlotTest = React.forwardRef((props, ref) => (
-  <Plot ref={ref} data={data} scale={[xScale, yScale]} width={100} height={100} {...props} />
+  <Plot ref={ref} data={ChartOptions.line.data} scale={[xScale, yScale]} width={100} height={100} {...props} />
 ));
 
 describe('d3-chart Dependency imports', () => {
@@ -59,7 +128,7 @@ describe('YAxis', () => {
       expect.assertions(2);
 
       render(
-        <Plot data={data} scale={[xScale, yScale]} width={100} height={100}>
+        <Plot data={ChartOptions.line.data} scale={[xScale, yScale]} width={100} height={100}>
           <YAxis ticks={[0, 1]}>
             <YAxis.Grid>
               {(props: any) => {
@@ -79,7 +148,7 @@ describe('YAxis', () => {
       expect.assertions(2);
 
       render(
-        <Plot data={data} scale={[xScale, yScale]} width={100} height={100}>
+        <Plot data={ChartOptions.line.data} scale={[xScale, yScale]} width={100} height={100}>
           <YAxis ticks={[0, 1]}>
             <YAxis.Ticks>
               {(props: any) => {
@@ -95,7 +164,7 @@ describe('YAxis', () => {
 
   test.concurrent('should support set data-ui-name for Line.Ticks', () => {
     const { queryByTestId } = render(
-      <Plot data={data} scale={[xScale, yScale]} width={100} height={100}>
+      <Plot data={ChartOptions.line.data} scale={[xScale, yScale]} width={100} height={100}>
         <YAxis ticks={[0]}>
           <YAxis.Ticks data-testid='test' />
         </YAxis>
@@ -107,7 +176,7 @@ describe('YAxis', () => {
 
   test.sequential('should support change tag YAxis.Ticks', () => {
     const { queryByTestId } = render(
-      <Plot data={data} scale={[xScale, yScale]} width={100} height={100}>
+      <Plot data={ChartOptions.line.data} scale={[xScale, yScale]} width={100} height={100}>
         <YAxis ticks={[0]}>
           <YAxis.Ticks data-testid='test' tag='foreignObject' />
         </YAxis>
@@ -135,7 +204,7 @@ describe('XAxis', () => {
     eventEmitter.emit = vi.fn();
     const { getAllByTestId } = render(
       <Plot
-        data={data}
+        data={ChartOptions.line.data}
         scale={[xScale, yScale]}
         width={100}
         height={130}
@@ -182,7 +251,7 @@ describe('XAxis', () => {
       };
 
       const component = (
-        <Plot data={data} scale={[xScale, yScale]} width={120} height={130}>
+        <Plot data={ChartOptions.line.data} scale={[xScale, yScale]} width={120} height={130}>
           <XAxis>
             <XAxis.Ticks ticks={xScale.ticks(5)} childrenPosition='below'>
               {({ value, x, y, index }: any) => ({
@@ -318,5 +387,370 @@ describe('Focus skip to content after plot', () => {
     await userEvent.keyboard('[Enter]');
 
     expect(getByTestId('focusableElement-2')).toHaveFocus();
+  });
+});
+
+describe('Chart.Area', () => {
+  beforeEach(cleanup);
+
+  test.concurrent('should call onClickArea and return correct data index', async () => {
+    const onClickHandler = vi.fn();
+
+    const { container } = render(
+      <Chart.Area
+        groupKey='time'
+        data={ChartOptions.area.data}
+        plotWidth={width}
+        plotHeight={height}
+        aria-label='Area chart'
+        onClickArea={onClickHandler}
+        showDots
+      />,
+    );
+
+    const dots = queryAllByAttribute('data-ui-name', container, 'Area.Dots');
+    const dotsCoords = dots.map((dot) => ({
+      x: parseFloat(dot.getAttribute('cx') || '0'),
+      y: parseFloat(dot.getAttribute('cy') || '0'),
+    }));
+
+    const firstCallIndex = 0;
+    const secondCallIndex = dots.length - 1;
+
+    [firstCallIndex, secondCallIndex].forEach((index) => {
+      fireEvent.click(dots[index], {
+        clientX: dotsCoords[index].x,
+        clientY: dotsCoords[index].y,
+      });
+    });
+
+    expect(onClickHandler).toHaveBeenCalledTimes(2);
+    expect(onClickHandler.mock.calls[0][0]).toBe(firstCallIndex);
+    expect(onClickHandler.mock.calls[1][0]).toBe(secondCallIndex);
+  });
+
+  test.concurrent('should not throw if onClickArea is not provided', () => {
+    const { container } = render(
+      <Chart.Area
+        groupKey='time'
+        data={ChartOptions.area.data}
+        plotWidth={width}
+        plotHeight={height}
+        aria-label='Area chart'
+        showDots
+      />,
+    );
+    const dots = queryAllByAttribute('data-ui-name', container, 'Area.Dots');
+    expect(dots.length).toBeGreaterThan(0);
+
+    expect(() => fireEvent.click(dots[0])).not.toThrow();
+  });
+});
+
+describe('Chart.Bubble', () => {
+  beforeEach(cleanup);
+
+  test.concurrent('should call onClickBubble and return correct data index', () => {
+    const onClickHandler = vi.fn();
+
+    const { container } = render(
+      <Chart.Bubble onClickBubble={onClickHandler} data={ChartOptions.bubble.data} plotWidth={width} plotHeight={height} aria-label='Bubble chart' />,
+    );
+
+    const bubbles = queryAllByAttribute('data-ui-name', container, 'Bubble.Circle');
+    expect(bubbles.length).toBeGreaterThan(0);
+
+    const bubblesCords = bubbles.map((bubble) => ({
+      x: parseFloat(bubble.getAttribute('cx') || '0'),
+      y: parseFloat(bubble.getAttribute('cy') || '0'),
+    }));
+
+    const firstCallIndex = 0;
+    const secondCallIndex = bubbles.length - 1;
+
+    [firstCallIndex, secondCallIndex].forEach((index) => {
+      fireEvent.click(bubbles[index], {
+        clientX: bubblesCords[index].x,
+        clientY: bubblesCords[index].y,
+      });
+    });
+
+    expect(onClickHandler).toHaveBeenCalledTimes(2);
+    expect(onClickHandler.mock.calls[0][0]).toBe(firstCallIndex);
+    expect(onClickHandler.mock.calls[1][0]).toBe(secondCallIndex);
+  });
+
+  test.concurrent('should not throw if onClickBubble is not provided', () => {
+    const { container } = render(
+      <Chart.Bubble data={ChartOptions.bubble.data} plotWidth={width} plotHeight={height} aria-label='Bubble chart' />,
+    );
+
+    const bubbles = queryAllByAttribute('data-ui-name', container, 'Bubble.Circle');
+    expect(bubbles.length).toBeGreaterThan(0);
+
+    expect(() => fireEvent.click(bubbles[0])).not.toThrow();
+  });
+});
+
+describe('Chart.Donut', () => {
+  beforeEach(cleanup);
+
+  test.concurrent('should call onClickPie and return correct data key', () => {
+    const onClickHandler = vi.fn();
+
+    const { container } = render(
+      <Chart.Donut onClickPie={onClickHandler} plotWidth={width} plotHeight={height} data={ChartOptions.donut.data} aria-label='Donut chart' />,
+    );
+
+    const pies = queryAllByAttribute('data-ui-name', container, 'Donut.Pie');
+
+    expect(pies.length).toBe(Object.keys(ChartOptions.donut.data).length);
+
+    fireEvent.click(pies[0]);
+    fireEvent.click(pies[pies.length - 1]);
+
+    expect(onClickHandler).toBeCalledTimes(2);
+    expect(onClickHandler.mock.calls[0][0]).toBe('a');
+    expect(onClickHandler.mock.calls[1][0]).toBe('c');
+  });
+
+  test.concurrent('should not throw if onClickPie is not provided', () => {
+    const { container } = render(
+      <Chart.Donut plotWidth={width} plotHeight={height} data={ChartOptions.donut.data} aria-label='Donut chart' />,
+    );
+
+    const pies = queryAllByAttribute('data-ui-name', container, 'Donut.Pie');
+    expect(pies.length).toBeGreaterThan(0);
+
+    expect(() => fireEvent.click(pies[0])).not.toThrow();
+  });
+});
+
+describe('Chart.Line', () => {
+  beforeEach(cleanup);
+
+  test.concurrent('should call onClickLine and return correct data index', () => {
+    const onClickHandler = vi.fn();
+
+    const { container } = render(
+      <Chart.Line
+        data={ChartOptions.line.data}
+        plotWidth={width}
+        plotHeight={height}
+        groupKey='x'
+        xTicksCount={ChartOptions.line.data.length / 2}
+        aria-label='Line chart'
+        onClickLine={onClickHandler}
+        showDots
+      />,
+    );
+
+    const dots = queryAllByAttribute('data-ui-name', container, 'Line.Dots');
+    expect(dots.length).toBe(ChartOptions.line.data.length);
+
+    const dotsCoords = dots.map((dot) => ({
+      x: parseFloat(dot.getAttribute('cx') || '0'),
+      y: parseFloat(dot.getAttribute('cy') || '0'),
+    }));
+
+    const firstCallIndex = 0;
+    const secondCallIndex = dots.length - 1;
+
+    [firstCallIndex, secondCallIndex].forEach((index) => {
+      fireEvent.click(dots[index], {
+        clientX: dotsCoords[index].x,
+        clientY: dotsCoords[index].y,
+      });
+    });
+
+    expect(onClickHandler).toHaveBeenCalledTimes(2);
+    expect(onClickHandler.mock.calls[0][0]).toBe(firstCallIndex);
+    expect(onClickHandler.mock.calls[1][0]).toBe(secondCallIndex);
+  });
+
+  test.concurrent('should not throw if onClickLine is not provided', () => {
+    const { container } = render(
+      <Chart.Line
+        data={ChartOptions.line.data}
+        plotWidth={width}
+        plotHeight={height}
+        groupKey='x'
+        xTicksCount={ChartOptions.line.data.length / 2}
+        aria-label='Line chart'
+        showDots
+      />,
+    );
+
+    const dots = queryAllByAttribute('data-ui-name', container, 'Line.Dots');
+    expect(dots.length).toBeGreaterThan(0);
+
+    expect(() => fireEvent.click(dots[0])).not.toThrow();
+  });
+});
+
+describe('Chart.Radar', () => {
+  beforeEach(cleanup);
+
+  test.concurrent('should call onClickRadar and return correct data index', () => {
+    const onClickHandler = vi.fn();
+
+    const { container } = render(
+      <Chart.Radar
+        data={ChartOptions.radar.data}
+        groupKey='categories'
+        plotWidth={width}
+        plotHeight={height}
+        aria-label='Radar chart'
+        onClickRadar={onClickHandler}
+      />,
+    );
+
+    const radar = queryByAttribute('data-ui-name', container, 'Line');
+    expect(radar).toBeTruthy();
+
+    // idk, just simulated the way the first and second segments are clicked.
+    fireEvent.click(radar!, { clientX: 250, clientY: 125 });
+    fireEvent.click(radar!, { clientX: 375, clientY: 200 });
+
+    expect(onClickHandler).toBeCalledTimes(2);
+    expect(onClickHandler.mock.calls[0][0]).toBe(0);
+    expect(onClickHandler.mock.calls[1][0]).toBe(1);
+  });
+
+  test.concurrent('should not throw if onClickRadar is not provided', () => {
+    const { container } = render(
+      <Chart.Radar
+        data={ChartOptions.radar.data}
+        groupKey='categories'
+        plotWidth={width}
+        plotHeight={height}
+        aria-label='Radar chart'
+      />,
+    );
+
+    const radar = queryByAttribute('data-ui-name', container, 'Line');
+    expect(radar).toBeTruthy();
+
+    expect(() => fireEvent.click(radar!, { clientX: 250, clientY: 125 })).not.toThrow();
+  });
+});
+
+describe('Chart.ScatterPlot', () => {
+  beforeEach(cleanup);
+
+  test.concurrent('should call onClickScatterItem and return correct data index', () => {
+    const onClickHandler = vi.fn();
+
+    const { container } = render(
+      <Chart.ScatterPlot
+        data={ChartOptions.scatterPlot.data}
+        plotWidth={width}
+        plotHeight={height}
+        groupKey='x'
+        aria-label='ScatterPlot chart'
+        onClickScatterItem={onClickHandler}
+      />,
+    );
+
+    const scatterItems = queryAllByAttribute('data-ui-name', container, 'ScatterPlot');
+    expect(scatterItems.length).toBe(ChartOptions.scatterPlot.data.length);
+
+    const scatterItemsCoords = scatterItems.map((si) => ({
+      x: parseFloat(si.getAttribute('cx') || '0'),
+      y: parseFloat(si.getAttribute('cy') || '0'),
+    }));
+
+    const firstCallIndex = 0;
+    const secondCallIndex = scatterItems.length - 1;
+
+    [firstCallIndex, secondCallIndex].forEach((index) => {
+      fireEvent.click(scatterItems[index], {
+        clientX: scatterItemsCoords[index].x,
+        clientY: scatterItemsCoords[index].y,
+      });
+    });
+
+    expect(onClickHandler).toHaveBeenCalledTimes(2);
+    expect(onClickHandler.mock.calls[0][0]).toBe(firstCallIndex);
+    expect(onClickHandler.mock.calls[1][0]).toBe(secondCallIndex);
+  });
+
+  test.concurrent('should not throw if onClickScatterItem is not provided', () => {
+    const { container } = render(
+      <Chart.ScatterPlot
+        data={ChartOptions.scatterPlot.data}
+        plotWidth={width}
+        plotHeight={height}
+        groupKey='x'
+        aria-label='ScatterPlot chart'
+      />,
+    );
+
+    const scatterItems = queryAllByAttribute('data-ui-name', container, 'ScatterPlot');
+    expect(scatterItems.length).toBe(ChartOptions.scatterPlot.data.length);
+
+    expect(() => fireEvent.click(scatterItems[0])).not.toThrow();
+  });
+});
+
+describe('Chart.Venn', () => {
+  beforeEach(cleanup);
+
+  test.concurrent('should call onClickVennItem and return correct data key', () => {
+    const onClickHandler = vi.fn();
+
+    const { container } = render(
+      <Chart.Venn
+        data={ChartOptions.venn.data}
+        plotWidth={width}
+        plotHeight={height}
+        legendProps={{
+          legendMap: ChartOptions.venn.legendMap,
+        }}
+        aria-label='Venn chart'
+        onClickVennItem={onClickHandler}
+      />,
+    );
+
+    const circles = queryAllByAttribute('data-ui-name', container, 'Venn.Circle');
+    expect(circles.length).toBe(Object.keys(ChartOptions.venn.legendMap).length);
+
+    const circlesCoords = circles.map((circle) => ({
+      x: parseFloat(circle.getAttribute('cx') || '0'),
+      y: parseFloat(circle.getAttribute('cy') || '0'),
+    }));
+
+    const firstCallIndex = 0;
+    const secondCallIndex = circles.length - 1;
+
+    [firstCallIndex, secondCallIndex].forEach((index) => {
+      fireEvent.click(circles[index], {
+        clientX: circlesCoords[index].x,
+        clientY: circlesCoords[index].y,
+      });
+    });
+
+    expect(onClickHandler).toHaveBeenCalledTimes(2);
+    expect(onClickHandler.mock.calls[0][0]).toBe('G');
+    expect(onClickHandler.mock.calls[1][0]).toBe('U');
+  });
+
+  test.concurrent('should not throw if onClickVennItem is not provided', () => {
+    const { container } = render(
+      <Chart.Venn
+        data={ChartOptions.venn.data}
+        plotWidth={width}
+        plotHeight={height}
+        legendProps={{
+          legendMap: ChartOptions.venn.legendMap,
+        }}
+        aria-label='Venn chart'
+      />,
+    );
+
+    const circles = queryAllByAttribute('data-ui-name', container, 'Venn.Circle');
+    expect(circles.length).toBe(Object.keys(ChartOptions.venn.legendMap).length);
+
+    expect(() => fireEvent.click(circles[0])).not.toThrow();
   });
 });

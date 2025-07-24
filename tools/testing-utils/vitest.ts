@@ -1,4 +1,4 @@
-import { label, feature, story, suite, layer } from 'allure-js-commons';
+import { label, story, suite, layer, subSuite } from 'allure-js-commons';
 // eslint-disable-next-line no-restricted-imports
 import { test as baseTest } from 'vitest';
 
@@ -10,18 +10,18 @@ const test = baseTest.extend<{
       // eslint-disable-next-line prefer-rest-params
       const [task, use] = arguments;
 
-      const filePath = (task.file?.name ?? '').split('/');
-      const component = filePath[filePath.length - 3] ?? '';
+      const filePathParts = (task.file?.name ?? '').split('/');
 
-      const suit = 'Unit tests';
-      const storyName = task.name;
+      const componentName = filePathParts[filePathParts.length - 3] ?? '';
+
+      const subSuiteName = 'Unit tests';
 
       await label('framework', 'Vitest');
-      await label('component', component);
-      await feature(suit);
-      await layer(suit);
-      await story(storyName);
-      await suite(suit);
+      await label('component', componentName);
+      await subSuite(subSuiteName);
+      await story(task.name);
+      await suite(componentName);
+      await layer(subSuiteName);
 
       await use();
     },
