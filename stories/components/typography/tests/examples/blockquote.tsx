@@ -1,9 +1,10 @@
-import { Blockquote, List, Text } from '@semcore/typography';
+import { Blockquote } from '@semcore/typography';
+import type { BlockquoteProps } from '@semcore/typography';
 import React from 'react';
 
-const Demo = () => (
+const Demo = (props: BlockquoteProps) => (
   <div>
-    <Blockquote author='Roy Batty' my={4.5}>
+    <Blockquote author={props.author} my={4.5}>
       I've seen things you people wouldn't believe. Attack ships on fire off the shoulder of Orion.
       I watched C-beams glitter in the dark near the Tannhäuser Gate. All those moments will be lost
       in time, like tears in rain. Time to die.
@@ -16,5 +17,11 @@ const Demo = () => (
     </Blockquote>
   </div>
 );
+
+export const defaultProps: BlockquoteProps = {
+  author: 'Roy Batty',
+};
+
+Demo.defaultProps = defaultProps;
 
 export default Demo;
