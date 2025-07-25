@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.5.0] - 2025-07-24
+
+### Added
+
+- New `AISEOToolkit` icon.
+
 ## [16.4.0] - 2025-07-21
 
 ### Added

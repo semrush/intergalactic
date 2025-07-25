@@ -40,11 +40,12 @@ const Demo = () => {
           style: { whiteSpace: 'nowrap' },
           borders: 'both',
           sortable: true,
+          changeSortSize: true,
         },
         {
           name: 'cpc',
           children: 'CPC',
-          gtcWidth: 'minmax(0, 60px)',
+          gtcWidth: 'minmax(60px, 66px)',
           borders: 'right',
           sortable: true,
           changeSortSize: true,
