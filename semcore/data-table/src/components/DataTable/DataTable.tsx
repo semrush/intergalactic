@@ -264,6 +264,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
       sideIndents,
       selectedRows,
       accordionDuration,
+      data: rawData,
     } = this.asProps;
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
     return {
@@ -299,6 +300,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
       onSelectRow: this.handleSelectRow,
       getFixedStyle: this.getFixedStyle,
       onCellClick: this.handleCellClick,
+      rawData,
     };
   }
 
