@@ -108,10 +108,21 @@ export class Column<D extends DataTableData> extends Component<
     } else if (sort?.[0] !== name) {
       setTimeout(() => {
         if (tableRef.current) {
-          tableRef.current.style.setProperty(
-            'grid-template-columns',
-            gridTemplateColumns.join(' '),
-          );
+          const currentGridTemplateColumns = tableRef.current.style.getPropertyValue('grid-template-columns');
+
+          if (currentGridTemplateColumns) {
+            tableRef.current.style.setProperty(
+              'grid-template-columns',
+              currentGridTemplateColumns.split(' ')
+                .map((gtcWidth, index) => {
+                  if (index === columnIndex) {
+                    return gridTemplateColumns[index];
+                  }
+                  return gtcWidth;
+                })
+                .join(' '),
+            );
+          }
         }
       });
     }

@@ -1,5 +1,6 @@
 import { Flex } from '@semcore/flex-box';
 import AdsToolkit from '@semcore/icon/platform/AdsToolkit';
+import AISEOToolkit from '@semcore/icon/platform/AISEOToolkit';
 import AIToolkit from '@semcore/icon/platform/AIToolkit';
 import AppCenter from '@semcore/icon/platform/AppCenter';
 import ContentToolkit from '@semcore/icon/platform/ContentToolkit';
@@ -21,6 +22,8 @@ const Demo = () => {
         <Hint tag={HomePlatform} interactive title='Home' color='icon-secondary-neutral' />
 
         <Hint tag={SEOToolkit} interactive title='SEO Toolkit' color='icon-secondary-neutral' />
+
+        <Hint tag={AISEOToolkit} interactive title='AI SEO Toolkit' color='icon-secondary-neutral' />
 
         <Hint
           tag={TrafficMarketToolkit}

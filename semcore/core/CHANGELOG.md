@@ -2,11 +2,31 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.4] - 2025-07-07
+
+### Added
+
+- `featureHighlight` tokens to dark.json.
+- `newInstance` method for create new component instances from the existing.
+
+## [16.0.3] - 2025-07-02
+
+### Added
+
+- `useScrollBarWidth` hook.
+- Container focus if there aren't focusable children while `autoFocus='enforced'`
+
+## [16.0.2] - 2025-06-23
+
+### Added
+
+- `focusVisible` option to `setFocus` util method with value from last interaction type.
+
 ## [16.0.1] - 2025-06-16
 
 ### Added
 
-- Tokens form basic palette to themed .css files.
+- Tokens from basic palette to themed .css files.
 
 ### Changed
 

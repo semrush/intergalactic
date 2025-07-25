@@ -152,6 +152,11 @@ SBaseTrigger[neighborLocation='left'] {
   border-bottom-left-radius: 0;
   /* disable-tokens-validator */
   margin-left: -1px;
+
+  &[disabled] {
+    border-left: none;
+    margin-left: 0;
+  }
 }
 
 SText[display-placeholder] {

@@ -18,6 +18,10 @@ const Demo = () => {
     .range([height - BOTTOM_MARGIN, MARGIN])
     .domain([-4, 14]);
 
+  const onClickHandler = () => {
+    console.log('Clicked bubble chart');
+  };
+
   return (
     <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
       <YAxis>
@@ -27,7 +31,7 @@ const Demo = () => {
       <XAxis>
         <XAxis.Ticks />
       </XAxis>
-      <Bubble x='x' y='y' value='value' />
+      <Bubble x='x' y='y' value='value' onClick={onClickHandler} />
       <Bubble.Tooltip>
         {({ index }) => {
           return {

@@ -1,8 +1,9 @@
-import { createComponent, Component, CREATE_COMPONENT, sstyled, Root } from '@semcore/core';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 import logger from '@semcore/core/lib/utils/logger';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import { useScrollBarWidth } from '@semcore/core/lib/utils/use/useScrollBarWidth';
 import {
   useZIndexStacking,
   ZIndexStackingContextProvider,
@@ -13,8 +14,6 @@ import Portal from '@semcore/portal';
 import React from 'react';
 
 import style from './style/tooltip.shadow.css';
-
-const Popper = PopperOrigin[CREATE_COMPONENT]();
 
 const defaultProps = {
   placement: 'top',
@@ -29,6 +28,7 @@ const defaultProps = {
   focusLoop: false,
   liveRegion: true,
 };
+const Popper = PopperOrigin.newInstance();
 
 class TooltipRoot extends Component {
   static displayName = 'Tooltip';
@@ -174,6 +174,8 @@ function TooltipPopper(props) {
     };
   }, [visible]);
 
+  const scrollBarWidth = useScrollBarWidth();
+
   if (!visible && !isVisible) {
     return null;
   }
@@ -185,6 +187,10 @@ function TooltipPopper(props) {
           role={ariaLive === 'polite' ? 'status' : undefined}
           aria-live={ariaLive}
           zIndex={zIndex}
+          style={{
+            width: scrollBarWidth ? `calc(100vw - ${scrollBarWidth}px)` : '100vw',
+            left: scrollBarWidth ? `calc(-50vw + ${scrollBarWidth / 2}px + 50%)` : 'calc(-50vw + 50%)',
+          }}
         >
           <STooltip
             use:visible={visible && isVisible}

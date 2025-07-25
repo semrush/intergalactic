@@ -143,7 +143,7 @@ import { Box } from '@semcore/base-components';
 `Box` serves as the foundation for other components, making its features available throughout the entire library. For example:
 
 ```jsx
-import Button from '@semcore/ui/button';
+import Button from '@semcore/button';
 
 <Button tag="a" mb={2} w="200px">
   Still Box 🙀
@@ -154,7 +154,7 @@ Additionally, consider exploring the [Flex](/layout/box-system/box-system-api#fl
 
 
 ```jsx
-import { Flex } from '@semcore/ui/base-components';
+import { Flex } from '@semcore/base-components';
 
 <Flex justifyContent="center" alignItems="center" />;
 ```

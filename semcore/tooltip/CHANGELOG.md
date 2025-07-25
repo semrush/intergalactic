@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.5] - 2025-07-28
+
+### Fixed
+
+- Error with `CREATE_COMPONENT` symbol and different core versions for Popper and Tooltip packages.
+
+## [16.0.4] - 2025-06-23
+
+### Fixed
+
+- Page layout appeared shifted due to width/height changes.
+
 ## [16.0.3] - 2025-06-23
 
 ### Changed
