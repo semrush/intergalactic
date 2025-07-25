@@ -215,7 +215,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, State, [], BodyPropsInn
       use,
       virtualScroll: Boolean(virtualScroll),
       tableRef,
-      children: props.children ?? defaultRender(),
+      children: props?.children ?? defaultRender(),
       accordionDuration,
       onClick: onCellClick,
     };
