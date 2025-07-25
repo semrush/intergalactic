@@ -5,12 +5,13 @@ import WarningM from '@semcore/icon/Warning/m';
 import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/notice-bubble';
 import Spin from '@semcore/spin';
 import React from 'react';
+type DynamicNoticeBubbleProps = { initialAnimation: boolean; duration: number; type: 'info' | 'warning'; focusLock: boolean };
 
 const manager = new NoticeBubbleManager();
 
 let notice: any = null;
 
-const Demo = () => {
+const Demo = (props: DynamicNoticeBubbleProps) => {
   const openButtonRef = React.useRef<HTMLButtonElement>(null);
   const tryAgain = async () => {
     if (!notice) return;
@@ -48,8 +49,10 @@ const Demo = () => {
           Try again
         </Button>
       ),
-      initialAnimation: true,
-      duration: 20000,
+      initialAnimation: props.initialAnimation,
+      duration: props.duration,
+      type: props.type,
+      focusLock: props.focusLock,
       onClose: () => {
         setTimeout(() => {
           openButtonRef.current?.focus();
@@ -67,5 +70,14 @@ const Demo = () => {
     </>
   );
 };
+
+export const defaultProps: DynamicNoticeBubbleProps = {
+  initialAnimation: true,
+  duration: 20000,
+  type: 'info',
+  focusLock: false,
+};
+
+Demo.defaultProps = defaultProps;
 
 export default Demo;
