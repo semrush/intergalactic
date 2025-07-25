@@ -2,18 +2,36 @@ import { Flex, Box } from '@semcore/base-components';
 import Button from '@semcore/button';
 import DropdownMenu from '@semcore/dropdown-menu';
 import FeaturePopover from '@semcore/feature-popover';
+import type { FeaturePopoverPopperProps } from '@semcore/feature-popover';
 import FileExport from '@semcore/icon/FileExport/m';
+import type { PopperProps, PopperTriggerProps, PopperPopperProps } from '@semcore/popper';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
-const Demo = () => {
+type ExampleProps = FeaturePopoverPopperProps & PopperProps & PopperTriggerProps & PopperPopperProps;
+const Demo = (props: ExampleProps) => {
   const [visible, setVisible] = React.useState(true);
   const handleVisibleChange = (visible: boolean) => () => setVisible(visible);
 
   return (
     <Flex gap={2}>
-      <FeaturePopover visible={visible} onVisibleChange={setVisible} disablePortal>
-        <FeaturePopover.Trigger>
+      <FeaturePopover
+        visible={visible}
+        onVisibleChange={setVisible}
+        disablePortal
+        placement={props.placement}
+        interaction={props.interaction}
+        timeout={props.timeout}
+        defaultVisible={props.defaultVisible}
+        disabled={props.disabled}
+        disableEnforceFocus={props.disableEnforceFocus}
+        focusLoop={props.focusLoop}
+        explicitTriggerSet={props.explicitTriggerSet}
+        cursorAnchoring={props.cursorAnchoring}
+        popperMargin={props.popperMargin}
+
+      >
+        <FeaturePopover.Trigger disableEnforceFocus={props.disableEnforceFocus}>
           <DropdownMenu onVisibleChange={handleVisibleChange(false)}>
             <DropdownMenu.Trigger tag={Button} addonLeft={FileExport}>
               Export
@@ -25,7 +43,7 @@ const Demo = () => {
           </DropdownMenu>
           {visible && <FeaturePopover.Spot />}
         </FeaturePopover.Trigger>
-        <FeaturePopover.Popper closeIcon wMax={350} aria-label='New feature: Export'>
+        <FeaturePopover.Popper closeIcon={props.closeIcon} wMax={350} aria-label='New feature: Export'>
           <Flex alignItems='start'>
             <Box
               w={40}
@@ -60,5 +78,21 @@ const Demo = () => {
     </Flex>
   );
 };
+
+export const defaultProps: ExampleProps = {
+  placement: undefined,
+  interaction: undefined,
+  timeout: undefined,
+  defaultVisible: undefined,
+  disabled: false,
+  disableEnforceFocus: false,
+  focusLoop: false,
+  explicitTriggerSet: false,
+  cursorAnchoring: false,
+  popperMargin: undefined,
+  closeIcon: true,
+};
+
+Demo.defaultProps = defaultProps;
 
 export default Demo;
