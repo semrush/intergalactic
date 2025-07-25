@@ -340,7 +340,7 @@ class InputField<T extends string | string[]> extends Component<
     }
   }
 
-  handlePaste(event: ClipboardEvent) {
+  async handlePaste(event: ClipboardEvent) {
     event.preventDefault();
     const { validateOn } = this.asProps;
     const value = event.clipboardData?.getData('text/plain');
@@ -401,14 +401,14 @@ class InputField<T extends string | string[]> extends Component<
           textNode = lastNodeToInsert.childNodes.item(0);
           position = (lastNodeToInsert.textContent ?? '').length;
 
-          this.validateLine(lastNodeToInsert);
+          await this.validateLine(lastNodeToInsert);
           this.setErrorIndex(lastNodeToInsert);
         } else {
           position = (anchorNode.textContent ?? '').length;
           anchorNode.textContent = (anchorNode.textContent ?? '') + noEmptyLineAfter;
           textNode = anchorNode.childNodes.item(0);
 
-          this.validateLine(anchorNode);
+          await this.validateLine(anchorNode);
           this.setErrorIndex(anchorNode);
         }
       }
@@ -428,7 +428,7 @@ class InputField<T extends string | string[]> extends Component<
     }
   }
 
-  handleChange(event: Event) {
+  async handleChange(event: Event) {
     const target = event.target;
     if (target instanceof HTMLDivElement && event instanceof InputEvent) {
       const nodes = this.textarea.childNodes;
@@ -506,7 +506,7 @@ class InputField<T extends string | string[]> extends Component<
         }
 
         const { errors, showErrors } = this.asProps;
-        const isValid = this.validateLine(rowNode);
+        const isValid = await this.validateLine(rowNode);
         this.recalculateErrors();
         this.setErrorIndex(rowNode);
 
@@ -583,7 +583,7 @@ class InputField<T extends string | string[]> extends Component<
     }, 200);
   }
 
-  handleKeyDown(event: KeyboardEvent) {
+  async handleKeyDown(event: KeyboardEvent) {
     this.errorByInteraction = 'keyboard';
     const { linesDelimiters } = this.asProps;
 
@@ -636,10 +636,10 @@ class InputField<T extends string | string[]> extends Component<
 
           this.setSelection(row, 0, 0);
 
-          this.validateLine(currentNode);
-          this.validateLine(row);
+          await this.validateLine(currentNode);
+          await this.validateLine(row);
           if (currentNode.previousSibling) {
-            this.validateLine(currentNode.previousSibling);
+            await this.validateLine(currentNode.previousSibling);
           }
           this.setErrorIndex(row);
 
@@ -729,7 +729,7 @@ class InputField<T extends string | string[]> extends Component<
             this.setSelection(this.textarea, 0, 0);
           } else {
             currentNode.innerHTML = this.emptyLineValue;
-            this.validateLine(currentNode);
+            await this.validateLine(currentNode);
           }
 
           this.setErrorIndex(currentNode);
@@ -779,7 +779,7 @@ class InputField<T extends string | string[]> extends Component<
               }
             }
 
-            this.validateLine(currentNode);
+            await this.validateLine(currentNode);
           }
 
           this.setErrorIndex(currentNode);
@@ -853,7 +853,7 @@ class InputField<T extends string | string[]> extends Component<
     const delimiter = pasteProps?.delimiter ?? this.delimiter;
     const lines: string[] = Array.isArray(value) ? value : value.split(delimiter);
 
-    lines.forEach((line, index) => {
+    lines.forEach(async (line, index) => {
       const preparedLine = lineProcessing(line, index, lines.length);
 
       if ((preparedLine === '' && skipEmptyLines === false) || preparedLine !== '') {
@@ -872,7 +872,7 @@ class InputField<T extends string | string[]> extends Component<
 
         listOfNodes.push(node);
 
-        this.validateLine(node);
+        await this.validateLine(node);
       }
     });
 
@@ -1050,10 +1050,10 @@ class InputField<T extends string | string[]> extends Component<
     }
   }
 
-  private validateLine(node: Node): boolean {
+  private async validateLine(node: Node): Promise<boolean> {
     const { lineValidation } = this.asProps;
     if (lineValidation && node instanceof HTMLElement) {
-      const { isValid, errorMessage } = lineValidation(node.textContent ?? '', this.getValues());
+      const { isValid, errorMessage } = await lineValidation(node.textContent ?? '', this.getValues());
 
       if (!isValid) {
         node.setAttribute('aria-invalid', 'true');
@@ -1066,7 +1066,7 @@ class InputField<T extends string | string[]> extends Component<
       return isValid;
     }
 
-    return true;
+    return Promise.resolve(true);
   }
 
   private setSelection(

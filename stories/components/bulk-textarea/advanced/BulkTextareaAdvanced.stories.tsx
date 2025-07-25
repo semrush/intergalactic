@@ -1,6 +1,7 @@
 import BulkTextarea from '@semcore/bulk-textarea';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
+import AsyncValidationExample from './examples/async-validation';
 import EmptyValuesInPasteRowExample from './examples/empty-values-in-paste-row';
 import EncodeOnChangeValueExample from './examples/encode-onchange-value';
 import NoCommonErrorExample from './examples/no-common-error';
@@ -22,4 +23,8 @@ export const EmptyValuesInPasteRow: StoryObj<typeof BulkTextarea> = {
 
 export const EncodeOnChangeValue: StoryObj<typeof BulkTextarea> = {
   render: EncodeOnChangeValueExample,
+};
+
+export const AsyncValidation: StoryObj<typeof BulkTextarea> = {
+  render: AsyncValidationExample,
 };

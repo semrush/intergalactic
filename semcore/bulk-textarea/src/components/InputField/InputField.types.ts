@@ -81,7 +81,7 @@ export type InputFieldProps<T extends string | string[]> = {
   /**
    * Function to validate line
    */
-  lineValidation?: (line: string, lines: string[]) => { isValid: boolean; errorMessage: string };
+  lineValidation?: (line: string, lines: string[]) => { isValid: boolean; errorMessage: string } | Promise<{ isValid: boolean; errorMessage: string }>;
 
   /**
    * Message for display error about whole field, not only one line.
