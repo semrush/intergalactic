@@ -1,17 +1,12 @@
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
+import type { Page } from '@semcore/testing-utils/playwright';
 
-async function getColumnWidth(page: any, colIndex: any) {
-  const column = await page.locator(`[aria-colindex="${colIndex}"][role="columnheader"]`);
+async function getColumnWidth(page: Page, colIndex: any): Promise<number> {
+  const column = page.locator(`[aria-colindex="${colIndex}"][role="columnheader"]`);
   const box = await column.boundingBox();
   return box ? box.width : 0;
 }
-
-const checkStyles = async (element: any, styles: Record<string, string>) => {
-  for (const [property, value] of Object.entries(styles) as [string, string][]) {
-    await expect(element).toHaveCSS(property, value);
-  }
-};
 
 test.describe('One level Header', () => {
   test('Verify keyboard interactions when no interactive elements in header', async ({
@@ -362,26 +357,48 @@ test.describe('One level header - Sorting', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
-    const initialWidths = await Promise.all([1, 2, 3, 4].map((i) => getColumnWidth(page, i)));
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Enter');
-    const afterFirstSortWidths = await Promise.all(
-      [1, 2, 3, 4].map((i) => getColumnWidth(page, i)),
-    );
-    expect(afterFirstSortWidths).toEqual(initialWidths);
+    const kdMaxWidth = 68;
+    const cpcMaxWidth = 66;
+    const volMaxWidth = 120;
 
-    await page.keyboard.press('ArrowRight');
-    await page.keyboard.press('ArrowRight');
-    await page.keyboard.press('Space');
+    {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
 
-    const afterSecondSortWidths = await Promise.all(
-      [1, 2, 3, 4].map((i) => getColumnWidth(page, i)),
-    );
+      const kdWidth = await getColumnWidth(page, 2);
+      const cpcWidth = await getColumnWidth(page, 3);
+      const volWidth = await getColumnWidth(page, 4);
 
-    expect(afterSecondSortWidths[0]).toBeLessThanOrEqual(initialWidths[0]);
-    expect(afterSecondSortWidths[1]).toEqual(initialWidths[1]);
-    expect(afterSecondSortWidths[2]).toBeGreaterThan(initialWidths[2]);
-    expect(afterSecondSortWidths[3]).toEqual(initialWidths[3]);
+      expect(kdWidth).toEqual(kdMaxWidth);
+      expect(cpcWidth).toEqual(cpcMaxWidth);
+      expect(volWidth).toEqual(volMaxWidth);
+    }
+
+    {
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('Space');
+
+      const kdWidth = await getColumnWidth(page, 2);
+      const cpcWidth = await getColumnWidth(page, 3);
+      const volWidth = await getColumnWidth(page, 4);
+
+      expect(kdWidth).toBeGreaterThan(kdMaxWidth);
+      expect(cpcWidth).toEqual(cpcMaxWidth);
+      expect(volWidth).toEqual(volMaxWidth);
+    }
+
+    {
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('Space');
+
+      const kdWidth = await getColumnWidth(page, 2);
+      const cpcWidth = await getColumnWidth(page, 3);
+      const volWidth = await getColumnWidth(page, 4);
+
+      expect(kdWidth).toEqual(kdMaxWidth);
+      expect(cpcWidth).toBeGreaterThanOrEqual(cpcMaxWidth);
+      expect(volWidth).toEqual(volMaxWidth);
+    }
   });
 
   test('Verify sorting  not activates interactive with interactive element in same cell', async ({ page }) => {
@@ -453,26 +470,49 @@ test.describe('One level header - Sorting', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
-    const initialWidths = await Promise.all([1, 2, 3, 4].map((i) => getColumnWidth(page, i)));
     const column1 = page.locator('[data-ui-name="Head.Column"][aria-colindex="1"]');
-    await column1.click();
-
-    const widthsAfterFirstSort = await Promise.all(
-      [1, 2, 3, 4].map((i) => getColumnWidth(page, i)),
-    );
-    expect(widthsAfterFirstSort).toEqual(initialWidths);
-
+    const column2 = page.locator('[data-ui-name="Head.Column"][aria-colindex="2"]');
     const column3 = page.locator('[data-ui-name="Head.Column"][aria-colindex="3"]');
-    await column3.click();
 
-    const widthsAfterSecondSort = await Promise.all(
-      [1, 2, 3, 4].map((i) => getColumnWidth(page, i)),
-    );
+    const kdMaxWidth = 68;
+    const cpcMaxWidth = 66;
+    const volMaxWidth = 120;
 
-    expect(widthsAfterSecondSort[0]).toBeLessThan(initialWidths[0]);
-    expect(widthsAfterSecondSort[1]).toEqual(initialWidths[1]);
-    expect(widthsAfterSecondSort[2]).toBeGreaterThan(initialWidths[2]);
-    expect(widthsAfterSecondSort[3]).toEqual(initialWidths[3]);
+    {
+      await column1.click();
+
+      const kdWidth = await getColumnWidth(page, 2);
+      const cpcWidth = await getColumnWidth(page, 3);
+      const volWidth = await getColumnWidth(page, 4);
+
+      expect(kdWidth).toEqual(kdMaxWidth);
+      expect(cpcWidth).toEqual(cpcMaxWidth);
+      expect(volWidth).toEqual(volMaxWidth);
+    }
+
+    {
+      await column2.click();
+
+      const kdWidth = await getColumnWidth(page, 2);
+      const cpcWidth = await getColumnWidth(page, 3);
+      const volWidth = await getColumnWidth(page, 4);
+
+      expect(kdWidth).toBeGreaterThan(kdMaxWidth);
+      expect(cpcWidth).toEqual(cpcMaxWidth);
+      expect(volWidth).toEqual(volMaxWidth);
+    }
+
+    {
+      await column3.click();
+
+      const kdWidth = await getColumnWidth(page, 2);
+      const cpcWidth = await getColumnWidth(page, 3);
+      const volWidth = await getColumnWidth(page, 4);
+
+      expect(kdWidth).toEqual(kdMaxWidth);
+      expect(cpcWidth).toBeGreaterThanOrEqual(cpcMaxWidth);
+      expect(volWidth).toEqual(volMaxWidth);
+    }
   });
 
   test('Verify sorting with undefined as default value by mouse interactions', async ({ page }) => {
