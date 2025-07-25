@@ -25,7 +25,7 @@ const Demo = () => {
   );
 
   return (
-    <DataTable<typeof data>
+    <DataTable
       data={sortedData}
       sort={sort}
       onSortChange={setSort}
