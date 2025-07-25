@@ -20,7 +20,6 @@ const meta: Meta<EllipsisProps> = {
     },
     maxLine: {
       control: { type: 'number' },
-      if: { arg: 'trim', eq: 'end' },
     },
   },
 };
