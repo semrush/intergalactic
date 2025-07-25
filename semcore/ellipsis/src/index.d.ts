@@ -10,6 +10,7 @@ export type EllipsisProps = BoxProps &
   Partial<TooltipProps> & {
     /**
      * Rows count in multiline Ellipsis
+     * Acceptable only for `trim = end`
      * @default 1
      */
     maxLine?: number;
