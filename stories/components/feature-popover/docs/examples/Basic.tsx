@@ -25,7 +25,7 @@ const Demo = () => {
           </DropdownMenu>
           {visible && <FeaturePopover.Spot />}
         </FeaturePopover.Trigger>
-        <FeaturePopover.Popper closeIcon wMax={400} aria-label='New feature: Export' style={{ width: '400px' }}>
+        <FeaturePopover.Popper closeIcon w={400} aria-label='New feature: Export'>
           <Flex alignItems='start'>
             <Box
               w={40}
