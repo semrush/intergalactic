@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import React from 'react';
 
 import { CounterInFiltersTest } from './__tests__/counter_in_filters.test';
-import AnimatedNumberExample from './examples/animated_number';
+import AnimatedNumberExample, { defaultProps as AnimatedNumberProps } from './examples/animated_number';
 import CounterAndTypographyExample from './examples/counter_and_typography';
 import CounterInButtonExample from './examples/counter_in_button';
 import CounterInDotExample from './examples/counter_in_dot';
@@ -22,8 +22,17 @@ export default meta;
 
 type Story = StoryObj<typeof Counter>;
 
-export const AnimatedNumber: Story = {
+export const AnimatedNumber: StoryObj<typeof AnimatedNumberProps> = {
   render: AnimatedNumberExample,
+  argTypes: {
+    duration: {
+      control: { type: 'number' },
+    },
+    delay: {
+      control: { type: 'number' },
+    },
+  },
+  args: AnimatedNumberProps,
 };
 
 export const CounterAndTypography: Story = {

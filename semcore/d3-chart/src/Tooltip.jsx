@@ -137,6 +137,10 @@ class TooltipRoot extends Component {
   }
 }
 
+function PopperTrigger() {
+  return <Root render={Popper.Trigger} />;
+}
+
 function PopperPopper(props) {
   const { Element: STooltip, styles, $visible, x, y } = props;
 
@@ -208,7 +212,7 @@ function Footer(props) {
 Footer.style = style;
 
 const Tooltip = createElement(TooltipRoot, {
-  Trigger: Popper.Trigger,
+  Trigger: PopperTrigger,
   Popper: PopperPopper,
   Title,
   Footer,
