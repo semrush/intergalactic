@@ -122,7 +122,7 @@ class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner>
     const cell = row[column.name];
     if (cell instanceof MergedRowsCell) {
       const rIndex = rowIndex + cell.rowsCount - 1;
-      const row = flatRows.find((row) => row[ROW_INDEX] === rIndex);
+      const row = flatRows[rIndex];
 
       if (!row) return;
 
