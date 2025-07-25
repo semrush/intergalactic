@@ -19,7 +19,7 @@ const Demo = (props: EllipsisProps) => {
     </Text>
   );
 };
-export const defaultProps: ExampleEllipsisProps = {
+export const defaultProps: EllipsisProps = {
   trim: 'middle',
   tooltip: true,
   maxLine: 1,
