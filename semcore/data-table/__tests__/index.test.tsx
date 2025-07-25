@@ -25,14 +25,14 @@ describe('DataTable', () => {
     });
     test('typed data', () => {
       assertType<JSX.Element>(
-        <DataTable<{ a: number; b: number; c: number }[]>
+        <DataTable<{ a: number; b: number; c: number }[], 'a', number>
           data={[{ a: 1, b: 2, c: 3 }]}
           aria-label='table label'
           columns={[]}
         />,
       );
       assertType<JSX.Element>(
-        <DataTable<{ a: string; b: string; c: string }[]>
+        <DataTable<{ a: string; b: string; c: string }[], 'a', string>
           // @ts-expect-error
           data={[{ a: 1, b: 2, c: 3 }]}
           aria-label='table label'
@@ -41,7 +41,7 @@ describe('DataTable', () => {
     });
     test('sort typing', () => {
       assertType<JSX.Element>(
-        <DataTable<{ id: number; name: string }[]>
+        <DataTable<{ id: number; name: string }[], 'id', number>
           data={[{ id: 1, name: 'test' }]}
           aria-label='label'
           columns={[]}
@@ -53,25 +53,40 @@ describe('DataTable', () => {
         />,
       );
     });
-    test('selectedRows typing', () => {
+    test('selectedRows/onSelectedRowsChange typing', () => {
+      const onSelectedRowsChange = (rows: string) => {};
+
       assertType<JSX.Element>(
         <DataTable
-          data={[{ id: 1, [UNIQ_ROW_KEY]: 'key' }]}
+          data={[{ id: 1 }]}
           aria-label='label'
           columns={[]}
-          selectedRows={['key']}
+          selectedRows={[1]}
+          uniqueRowKey='id'
           onSelectedRowsChange={(rows, e, opts) => {
             // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-            rows; // string[]
+            rows; // number[]
             // eslint-disable-next-line @typescript-eslint/no-unused-expressions
             opts?.row.id; // should be number
           }}
         />,
       );
+      assertType<JSX.Element>(
+        <DataTable
+          data={[{ id: 1 }]}
+          aria-label='label'
+          columns={[]}
+          // @ts-expect-error
+          selectedRows={['1']}
+          uniqueRowKey='id'
+          // @ts-expect-error
+          onSelectedRowsChange={onSelectedRowsChange}
+        />,
+      );
     });
     test('virtualScroll typing', () => {
       assertType<JSX.Element>(
-        <DataTable<{ id: number }[]>
+        <DataTable<{ id: number }[], 'id', number>
           data={[{ id: 1 }]}
           aria-label='label'
           columns={[]}
@@ -80,7 +95,7 @@ describe('DataTable', () => {
       );
 
       assertType<JSX.Element>(
-        <DataTable<{ id: number }[]>
+        <DataTable<{ id: number }[], 'id', number>
           data={[{ id: 1 }]}
           aria-label='label'
           columns={[]}
@@ -89,7 +104,7 @@ describe('DataTable', () => {
       );
 
       assertType<JSX.Element>(
-        <DataTable<{ id: number }[]>
+        <DataTable<{ id: number }[], 'id', number>
           data={[{ id: 1 }]}
           aria-label='label'
           columns={[]}
