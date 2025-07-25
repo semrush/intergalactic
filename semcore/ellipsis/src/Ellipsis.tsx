@@ -302,7 +302,11 @@ const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
   const SContainerMiddle = Tooltip;
   const SAdvancedModeContainerMiddle = Tooltip;
   const displayedSymbols = React.useMemo(
-    () => Math.round(blockWidth / symbolWidth),
+    () => {
+      const displayedSymbols = Math.round(blockWidth / symbolWidth);
+
+      return displayedSymbols % 2 === 0 ? displayedSymbols : displayedSymbols - 1;
+    },
     [blockWidth, symbolWidth],
   );
 
