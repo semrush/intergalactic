@@ -188,7 +188,6 @@ class RootEllipsis extends Component<AsProps> {
   render() {
     const SEllipsis = this.Root;
     const SContainer = Tooltip;
-    const SNoTooltipContainer = Box;
     const {
       styles,
       Children,
@@ -232,28 +231,14 @@ class RootEllipsis extends Component<AsProps> {
         </EllipsisMiddle>,
       );
     }
-    if (tooltip) {
-      return sstyled(styles)(
-        <SContainer
-          interaction='hover'
-          title={!advanceMode ? text : undefined}
-          {...tooltipProps}
-          {...(advanceMode ? forcedAdvancedMode : noAdvancedMode)}
-        >
-          {advanceMode
-            ? (
-                <Children />
-              )
-            : (
-                <SEllipsis render={Box} ref={this.textRef} maxLine={maxLine} {...other}>
-                  <Children />
-                </SEllipsis>
-              )}
-        </SContainer>,
-      );
-    }
+
     return sstyled(styles)(
-      <SNoTooltipContainer>
+      <SContainer
+        interaction={tooltip ? 'hover' : 'none'}
+        title={!advanceMode ? text : undefined}
+        {...tooltipProps}
+        {...(advanceMode ? forcedAdvancedMode : noAdvancedMode)}
+      >
         {advanceMode
           ? (
               <Children />
@@ -263,7 +248,7 @@ class RootEllipsis extends Component<AsProps> {
                 <Children />
               </SEllipsis>
             )}
-      </SNoTooltipContainer>,
+      </SContainer>,
     );
   }
 }
