@@ -13,11 +13,6 @@ SEllipsis {
   white-space: pre;
 }
 
-SEllipsis[middle-mod] {
-  display: flex;
-  overflow: hidden;
-}
-
 SEllipsis[maxLine] {
   display: -webkit-box;
   -webkit-line-clamp: var(--maxLine);
@@ -25,6 +20,11 @@ SEllipsis[maxLine] {
   overflow: hidden;
   white-space: normal;
   overflow-wrap: break-word;
+}
+
+SEllipsis[middle-mod] {
+  display: flex;
+  overflow: hidden;
 }
 
 SContainerMiddle> :has(SBeginning),
