@@ -7,8 +7,16 @@ import React from 'react';
 const Demo = (props: EllipsisProps) => {
   return (
     <Box w={220}>
-      <Link inline href='https://developer.semrush.com/intergalactic/components/ellipsis/ellipsis'>
-        <Link.Text tag={Ellipsis} trim={props.trim} tooltip={props.tooltip} maxLine={props.maxLine}>
+      <Link
+        inline
+        href='https://developer.semrush.com/intergalactic/components/ellipsis/ellipsis'
+      >
+        <Link.Text
+          tag={Ellipsis}
+          trim={props.trim}
+          tooltip={props.tooltip}
+          maxLine={props.maxLine}
+        >
           https://developer.semrush.com/intergalactic/components/ellipsis/ellipsis
         </Link.Text>
       </Link>
@@ -17,8 +25,8 @@ const Demo = (props: EllipsisProps) => {
 };
 
 export const defaultProps: EllipsisProps = {
-  trim: 'end',
-  tooltip: true,
+  trim: undefined,
+  tooltip: undefined,
   maxLine: undefined,
 };
 

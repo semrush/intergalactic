@@ -20,7 +20,7 @@ const Demo = (props: EllipsisProps) => {
 
 export const defaultProps: EllipsisProps = {
   trim: 'middle',
-  tooltip: true,
+  tooltip: undefined,
   maxLine: undefined,
 };
 
