@@ -125,7 +125,5 @@ declare const DescriptionTooltip: Intergalactic.Component<
   Popper: Intergalactic.Component<'div', DescriptionTooltipPopperProps, TooltipContext>;
 };
 
-declare const HintPopper: Intergalactic.Component<'div', {}>;
-
 export default Tooltip;
-export { Hint, DescriptionTooltip, HintPopper };
+export { Hint, DescriptionTooltip };

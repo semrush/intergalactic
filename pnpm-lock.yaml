@@ -393,6 +393,9 @@ importers:
 
   semcore/base-components:
     dependencies:
+      '@floating-ui/dom':
+        specifier: 1.7.2
+        version: 1.7.2
       '@popperjs/core':
         specifier: 2.11.5
         version: 2.11.5
@@ -2253,9 +2256,6 @@ importers:
 
   semcore/tooltip:
     dependencies:
-      '@floating-ui/dom':
-        specifier: 1.7.2
-        version: 1.7.2
       '@semcore/base-components':
         specifier: ^16.0.0
         version: 16.0.0(@semcore/core@semcore+core)

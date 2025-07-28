@@ -9,7 +9,7 @@
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "pnpm semcore-builder --source=js,ts && pnpm vite build",
+    "build": "pnpm semcore-builder --source=js && pnpm vite build",
     "test": "jest --no-cache"
   },
   "exports": {
@@ -18,7 +18,6 @@
     "types": "./lib/types/index.d.ts"
   },
   "dependencies": {
-    "@floating-ui/dom": "1.7.2",
     "@semcore/flex-box": "16.0.5",
     "@semcore/popper": "16.0.5",
     "@semcore/portal": "16.0.5"

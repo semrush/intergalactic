@@ -1,5 +1,6 @@
+import { useResizeObserver } from '@semcore/base-components';
 import { DataTable } from '@semcore/data-table';
-import Ellipsis, { useResizeObserver } from '@semcore/ellipsis';
+import Ellipsis from '@semcore/ellipsis';
 import LinkExternalM from '@semcore/icon/LinkExternal/m';
 import Link from '@semcore/link';
 import React from 'react';

@@ -157,6 +157,12 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
     };
   }
 
+  getItemTextProps(_: any, index: number) {
+    return {
+      index,
+    };
+  }
+
   scrollToNode(node: Element | null, withAnimation = false) {
     if (node) {
       // @ts-ignore

@@ -82,8 +82,8 @@ const Demo = (props: ExampleInputTagsProps) => {
             onKeyDown={handleTagKeyDown}
             active={false}
           >
-            <InputTags.Tag.Text>
-              <Ellipsis wMax={100}>{tag}</Ellipsis>
+            <InputTags.Tag.Text wMax={100}>
+              {tag}
             </InputTags.Tag.Text>
             {!props.disabled && <InputTags.Tag.Close onClick={handleCloseTag} />}
           </InputTags.Tag>

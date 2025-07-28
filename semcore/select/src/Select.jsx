@@ -466,6 +466,7 @@ const Select = createComponent(
       {
         Addon: DropdownMenu.Item.Addon,
         Content: DropdownMenu.Item.Content,
+        Text: DropdownMenu.Item.Text,
         Hint: DropdownMenu.Item.Hint,
         Checkbox,
       },

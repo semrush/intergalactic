@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.2.0] - 2025-08-08
+
+### Added
+
+- `Select.Option.Text` component. Use it if you have an options that should be ellipsized.
+
 ## [16.1.5] - 2025-07-23
 
 ### Changed

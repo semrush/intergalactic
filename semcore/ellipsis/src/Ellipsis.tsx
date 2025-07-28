@@ -1,3 +1,4 @@
+import { isTextOverflowing, useResizeObserver } from '@semcore/base-components';
 import { createComponent, Component, type Intergalactic, Root, sstyled } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import findComponent, { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
@@ -11,8 +12,6 @@ import Tooltip, { type TooltipProps } from '@semcore/tooltip';
 import React, { type RefObject } from 'react';
 
 import style from './style/ellipsis.shadow.css';
-import { isTextOverflowing } from './useEllipsis';
-import { useResizeObserver } from './useResizeObserver';
 
 type AsProps = {
   maxLine?: number;

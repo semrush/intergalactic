@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useResizeObserver } from './useResizeObserver';
 
-type EllipsisSettings = {
+export type EllipsisSettings = {
   trim?: 'end' | 'middle';
   maxLine?: number;
 };
@@ -59,7 +59,7 @@ export function isTextOverflowing(element: HTMLElement | null, multiline: boolea
 }
 
 export function useEllipsis(ref: React.RefObject<HTMLElement>, props: EllipsisSettings | false): boolean {
-  const [hasTooltip, setHasTooltip] = React.useState(false);
+  const [isEllipsized, setIsEllipsized] = React.useState(false);
 
   const maxLine = props === false ? undefined : (props.maxLine ?? 1);
   const trim = props === false ? undefined : (props.trim ?? 'end');
@@ -67,22 +67,21 @@ export function useEllipsis(ref: React.RefObject<HTMLElement>, props: EllipsisSe
   React.useEffect(() => {
     if (!ref.current) return;
     if (trim === undefined || maxLine === undefined) {
-      setHasTooltip(false);
+      setIsEllipsized(false);
       return;
     };
     ref.current.style.setProperty('overflow', 'hidden');
+    ref.current.style.setProperty('text-overflow', 'hidden');
     ref.current.style.setProperty('white-space', 'pre');
-    ref.current.style.setProperty('display', 'inherit');
-    ref.current.style.setProperty('width', '100%');
 
-    const showTooltip = isTextOverflowing(ref.current, maxLine > 1);
-    setHasTooltip(showTooltip);
+    const isEllipsized = isTextOverflowing(ref.current, maxLine > 1);
+    setIsEllipsized(isEllipsized);
   }, [ref.current, trim, maxLine]);
 
-  const blockWidth = useResizeObserver(ref, hasTooltip ? undefined : { width: 0 }).width;
+  const blockWidth = useResizeObserver(ref, isEllipsized ? undefined : { width: 0 }).width;
 
   React.useEffect(() => {
-    if (!ref.current || !hasTooltip) return;
+    if (!ref.current || !isEllipsized) return;
     if (trim === undefined || maxLine === undefined) {
       return;
     }
@@ -101,15 +100,18 @@ export function useEllipsis(ref: React.RefObject<HTMLElement>, props: EllipsisSe
       document.body.appendChild(dateSpan);
       const symbolWidth = dateSpan.getBoundingClientRect().width;
       dateSpan.remove();
+
       const displayedSymbols = Math.round(blockWidth / symbolWidth);
+      const evenDisplayedSymbols = displayedSymbols % 2 === 0 ? displayedSymbols : displayedSymbols - 1;
+
       const text = ref.current.textContent ?? '';
 
-      const begining = text.substring(0, text.length - displayedSymbols / 2 - 1);
-      const tail = text.substring(text.length - displayedSymbols / 2 - 1);
+      const begining = text.substring(0, text.length - evenDisplayedSymbols / 2 - 1);
+      const tail = text.substring(text.length - evenDisplayedSymbols / 2 - 1);
 
       ref.current.innerHTML = `<span style="overflow: hidden; text-overflow: ellipsis">${begining}</span><span>${tail}</span>`;
     }
-  }, [ref.current, trim, maxLine, hasTooltip, blockWidth]);
+  }, [ref.current, trim, maxLine, isEllipsized, blockWidth]);
 
-  return hasTooltip;
+  return isEllipsized;
 }

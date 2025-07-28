@@ -1,9 +1,8 @@
+import { useEllipsis, Hint } from '@semcore/base-components';
 import { createBaseComponent, Root, sstyled } from '@semcore/core';
 import { forkRef } from '@semcore/core/lib/utils/ref';
 import { useColorResolver } from '@semcore/core/lib/utils/use/useColorResolver';
-import { useEllipsis } from '@semcore/ellipsis';
 import { Box } from '@semcore/flex-box';
-import { HintPopper } from '@semcore/tooltip';
 import React from 'react';
 
 import styles from './style/text.shadow.css';
@@ -20,12 +19,12 @@ function getTextDecoration(underline, lineThrough) {
 
 function Text(props, ref) {
   const SText = Root;
-  const { color, underline, lineThrough, ellipsis = {}, children } = props;
+  const { color, underline, lineThrough, ellipsis = false, hintProps, children } = props;
   const textDecoration = getTextDecoration(underline, lineThrough);
   const resolveColor = useColorResolver();
   const innerRef = React.useRef(null);
 
-  const showTooltip = useEllipsis(innerRef, ellipsis);
+  const showHint = useEllipsis(innerRef, ellipsis === true ? {} : ellipsis);
 
   return sstyled(styles)(
     <>
@@ -37,7 +36,7 @@ function Text(props, ref) {
         use:decoration={textDecoration}
         use:color={resolveColor(color)}
       />
-      {showTooltip && <HintPopper triggerRef={innerRef}>{children}</HintPopper>}
+      {showHint && <Hint triggerRef={innerRef} {...hintProps}>{children}</Hint>}
     </>,
   );
 }

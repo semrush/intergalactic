@@ -4,6 +4,10 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [16.0.6] - 2025-08-08
 
+### Deprecated
+
+- ??? discuss the text.
+
 ### Fixed
 
 - Ellipsis with `trim=middle` cut off text at the end.

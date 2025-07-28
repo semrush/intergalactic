@@ -13,3 +13,11 @@ SHintPopper {
   word-break: break-all;
   visibility: hidden;
 }
+
+SHintArrow {
+  position: absolute;
+  background: #222;
+  width: 8px;
+  height: 8px;
+  transform: rotate(45deg);
+}

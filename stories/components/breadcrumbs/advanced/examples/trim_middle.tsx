@@ -1,16 +1,30 @@
+import { useEllipsis, Hint } from '@semcore/base-components';
+import type { BreadcrumbsItemProps } from '@semcore/breadcrumbs';
 import Breadcrumbs from '@semcore/breadcrumbs';
-import Ellipsis from '@semcore/ellipsis';
 import React from 'react';
+
+const BreadcrumbsItem = (props: BreadcrumbsItemProps & { href?: string; role?: string }) => {
+  const ref = React.useRef<HTMLDivElement | null>(null);
+
+  const showTooltip = useEllipsis(ref, { trim: 'middle' });
+
+  return (
+    <>
+      <Breadcrumbs.Item tag='div' ref={ref} {...props} />
+      {showTooltip && <Hint triggerRef={ref}>{props.children}</Hint>}
+    </>
+  );
+};
 
 const Demo = () => (
   <Breadcrumbs w={600}>
-    <Breadcrumbs.Item tag={Ellipsis} trim='middle' active={false} href='#' role='link'>
+    <BreadcrumbsItem active={false} href='#' role='link'>
       Ellipsis
-    </Breadcrumbs.Item>
-    <Breadcrumbs.Item tag={Ellipsis} trim='middle' active={false} href='#' role='link'>
+    </BreadcrumbsItem>
+    <BreadcrumbsItem active={false} href='#' role='link'>
       This title is longer than a giraffe's neck, I bet it's been doing neck workouts!
-    </Breadcrumbs.Item>
-    <Breadcrumbs.Item active>Current page</Breadcrumbs.Item>
+    </BreadcrumbsItem>
+    <BreadcrumbsItem active>Current page</BreadcrumbsItem>
   </Breadcrumbs>
 );
 export default Demo;

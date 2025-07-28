@@ -32,7 +32,7 @@ SDropdownMenuItemContainer[nesting-trigger] {
 }
 
 SDropdownMenuItemAddon, SItemContentText {
-  display: inline-flex;
+  display: inline-flex; /* todo: Brauer Ilia - why? should be changed to inline/inline-block for SItemContentText */
   margin-left: var(--intergalactic-spacing-1x, 4px);
   margin-right: var(--intergalactic-spacing-1x, 4px);
 

@@ -6,7 +6,7 @@ import React from 'react';
 const Demo = (props: EllipsisProps) => {
   return (
     <Box w={220}>
-      <Link w={220} href='https://developer.semrush.com/intergalactic/components/ellipsis/ellipsis'>
+      <Link w={220} href='https://developer.semrush.com/intergalactic/components/ellipsis/ellipsis' ellipsis={{ ...props }}>
         <Link.Text>
           https://developer.semrush.com/intergalactic/components/ellipsis/ellipsis
         </Link.Text>

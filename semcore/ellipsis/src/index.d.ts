@@ -48,5 +48,4 @@ declare const Ellipsis: Intergalactic.Component<'div', EllipsisProps> & {
   Popper: typeof Tooltip.Popper;
 };
 
-export { useResizeObserver };
 export default Ellipsis;

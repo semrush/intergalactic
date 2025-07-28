@@ -1,5 +1,5 @@
+import type { BoxProps, Flex, FlexProps, EllipsisSettings, HintPopperProps } from '@semcore/base-components';
 import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import type { BoxProps, Flex, FlexProps } from '@semcore/flex-box';
 import type { Property } from 'csstype';
 import type React from 'react';
 
@@ -8,7 +8,10 @@ export interface ITextProps extends TextProps, UnknownProperties {}
 export type TextProps = BoxProps & {
   /** Font size and line-heights */
   size?: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800;
-  /** The text will not be wrapped on a new line and will be cut off with ellipsis */
+  /**
+   * The text will not be wrapped on a new line and will be cut off with ellipsis
+   * @deprecated use ellipsis prop instead
+   **/
   noWrap?: boolean;
   /** CSS property `font-weight: 700;` */
   bold?: boolean;
@@ -44,19 +47,10 @@ export type TextProps = BoxProps & {
   use?: 'primary' | 'secondary';
   /** Makes text semi-transparent to indicate disabled state */
   disabled?: boolean;
-
-  ellipsis?: false | {
-    /**
-     * Rows count in multiline Ellipsis
-     * @default 1
-     */
-    maxLine?: number;
-    /**
-     * Trimming type
-     * @default end
-     */
-    trim?: 'end' | 'middle';
-  };
+  /** The text will not be wrapped on a new line and will be cut off with ellipsis. Also, it will show a hint with full text. */
+  ellipsis?: true | EllipsisSettings;
+  /** Settings for a hint with full text (cropped by ellipsis) */
+  hintProps?: Omit<HintPopperProps, 'children'>;
 };
 
 /** @deprecated */

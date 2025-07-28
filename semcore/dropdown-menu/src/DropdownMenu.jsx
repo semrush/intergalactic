@@ -1,3 +1,4 @@
+import { useEllipsis, Flex, useBox, Hint, ScrollArea, hideScrollBarsFromScreenReadersContext } from '@semcore/base-components';
 import ButtonComponent from '@semcore/button';
 import { createComponent, sstyled, Root, lastInteraction } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
@@ -6,8 +7,6 @@ import { setFocus } from '@semcore/core/lib/utils/focus-lock/setFocus';
 import { forkRef } from '@semcore/core/lib/utils/ref';
 import { useUID } from '@semcore/core/lib/utils/uniqueID';
 import Dropdown, { AbstractDropdown, selectedIndexContext, enhance } from '@semcore/dropdown';
-import { Flex, useBox } from '@semcore/flex-box';
-import ScrollAreaComponent, { hideScrollBarsFromScreenReadersContext } from '@semcore/scroll-area';
 import { Text } from '@semcore/typography';
 import cn from 'classnames';
 import React from 'react';
@@ -252,14 +251,14 @@ class DropdownMenuRoot extends AbstractDropdown {
 
 function List({ styles, Children }) {
   const SDropdownMenuList = Root;
-  const SBar = ScrollAreaComponent.Bar;
+  const SBar = ScrollArea.Bar;
 
   return sstyled(styles)(
     <ListBoxContextProvider>
-      <SDropdownMenuList render={ScrollAreaComponent} shadow={true} shadowSize={16} shadowTheme='light'>
-        <ScrollAreaComponent.Container tabIndex={undefined}>
+      <SDropdownMenuList render={ScrollArea} shadow={true} shadowSize={16} shadowTheme='light'>
+        <ScrollArea.Container tabIndex={undefined}>
           <Children />
-        </ScrollAreaComponent.Container>
+        </ScrollArea.Container>
         <SBar orientation='horizontal' />
         <SBar orientation='vertical' />
       </SDropdownMenuList>
@@ -450,9 +449,18 @@ function ItemContent({ styles }) {
   );
 }
 
-function ItemContentText({ styles }) {
+function ItemContentText({ styles, Children, ellipsis = false, index }) {
   const SItemContentText = Root;
-  return sstyled(styles)(<SItemContentText render={Text} />);
+  const innerRef = React.useRef(null);
+  const selectedCtx = React.useContext(selectedIndexContext);
+  const showHint = useEllipsis(innerRef, ellipsis === true ? {} : ellipsis);
+
+  return sstyled(styles)(
+    <>
+      <SItemContentText render={Text} ref={innerRef} use:ellipsis={false} />
+      {showHint && index === selectedCtx && <Hint triggerRef={innerRef} placement='right' visible><Children /></Hint>}
+    </>,
+  );
 }
 
 function ItemHint({ styles }) {
@@ -465,7 +473,7 @@ function ItemHint({ styles }) {
 /**
  * @deprecated Use Item hint
  */
-function Hint(props) {
+function DeprecatedHint(props) {
   const SDropdownMenuItemContainer = Root;
   return sstyled(props.styles)(
     <SDropdownMenuItemContainer render={Dropdown.Item} variant='hint' />,
@@ -516,7 +524,7 @@ const DropdownMenu = createComponent(
      */
     Nesting: [Nesting, { Trigger: NestingTrigger, Addon }],
     ItemTitle: Title,
-    ItemHint: Hint,
+    ItemHint: DeprecatedHint,
     Group: Dropdown.Group,
   },
   {

@@ -1,3 +1,4 @@
+import { useEllipsis, Hint } from '@semcore/base-components';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
@@ -7,7 +8,7 @@ import logger from '@semcore/core/lib/utils/logger';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { Box } from '@semcore/flex-box';
 import CloseM from '@semcore/icon/Close/m';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import style from './style/tag.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
@@ -37,6 +38,8 @@ class RootTag extends Component {
     locale: 'en',
   };
 
+  tagRef = React.createRef();
+
   constructor(props) {
     super(props);
 
@@ -61,6 +64,7 @@ class RootTag extends Component {
       tabIndex: -1,
       id: `${id}-text`,
       role: undefined,
+      tagRef: this.tagRef,
     };
   }
 
@@ -95,20 +99,23 @@ class RootTag extends Component {
     const isInteractive = !disabled && interactive;
 
     return sstyled(styles)(
-      <STag
-        render={Box}
-        id={id}
-        use:interactive={isInteractive}
-        use:interactiveView={isInteractiveView}
-        tag-color={resolveColor(color)}
-        onKeyDown={this.handleKeyDown}
-        use:tabIndex={isInteractive ? 0 : -1}
-        role={isInteractive ? 'button' : undefined}
-      >
-        {addonLeft ? <Tag.Addon tag={addonLeft} /> : null}
-        {addonTextChildren(Children, Tag.Text, [Tag.Addon, TagContainer.Circle])}
-        {addonRight ? <Tag.Addon tag={addonRight} /> : null}
-      </STag>,
+      <>
+        <STag
+          render={Box}
+          id={id}
+          use:interactive={isInteractive}
+          use:interactiveView={isInteractiveView}
+          tag-color={resolveColor(color)}
+          onKeyDown={this.handleKeyDown}
+          use:tabIndex={isInteractive ? 0 : -1}
+          role={isInteractive ? 'button' : undefined}
+          ref={this.tagRef}
+        >
+          {addonLeft ? <Tag.Addon tag={addonLeft} /> : null}
+          {addonTextChildren(Children, Tag.Text, [Tag.Addon, TagContainer.Circle])}
+          {addonRight ? <Tag.Addon tag={addonRight} /> : null}
+        </STag>
+      </>,
     );
   }
 }
@@ -281,8 +288,16 @@ function TagContainerCircle(props) {
 
 function Text(props) {
   const SText = Root;
-  const { styles } = props;
-  return sstyled(styles)(<SText render={Box} tag='span' />);
+  const innerRef = React.useRef(null);
+  const { styles, Children, tagRef } = props;
+  const showHint = useEllipsis(innerRef, {});
+
+  return sstyled(styles)(
+    <>
+      <SText render={Box} tag='span' ref={innerRef} />
+      {showHint && <Hint triggerRef={tagRef}><Children /></Hint>}
+    </>,
+  );
 }
 
 function Addon(props) {

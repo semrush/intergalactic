@@ -1,7 +1,6 @@
 import { Flex, Box, ScreenReaderOnly, ScrollArea, hideScrollBarsFromScreenReadersContext } from '@semcore/base-components';
 import { FilterTrigger } from '@semcore/base-trigger';
 import Button, { ButtonLink } from '@semcore/button';
-import Ellipsis from '@semcore/ellipsis';
 import ReloadIcon from '@semcore/icon/Reload/m';
 import Select, { InputSearch } from '@semcore/select';
 import { Text } from '@semcore/typography';
@@ -223,7 +222,7 @@ const Demo = () => {
                     onClick={isAllSelected ? handleDeselectAll : handleSelectAll}
                     disabled={value.length === 1 && value[0] === '%none%'}
                   >
-                    <Text color='text-link'>{isAllSelected ? 'Deselect all' : 'Select all'}</Text>
+                    <Select.Option.Text color='text-link'>{isAllSelected ? 'Deselect all' : 'Select all'}</Select.Option.Text>
                   </Select.Option>
                 )}
                 <hideScrollBarsFromScreenReadersContext.Provider value={true}>
@@ -245,10 +244,7 @@ const Demo = () => {
                             disabled={value.length === 1 && value[0] === '%none%'}
                           >
                             <Select.Option.Checkbox />
-                            <Ellipsis placement='right'>
-                              <Ellipsis.Content flex='auto'>{option.label}</Ellipsis.Content>
-                              <Ellipsis.Popper wMin={300}>{option.label}</Ellipsis.Popper>
-                            </Ellipsis>
+                            <Select.Option.Text display='inline-block' ellipsis={true}>{option.label}</Select.Option.Text>
                           </Select.Option>
                         );
                       })}

@@ -13,6 +13,7 @@ import type DropdownMenu from '@semcore/dropdown-menu';
 import type { BoxProps, Flex } from '@semcore/flex-box';
 import type { InputValueProps } from '@semcore/input';
 import type Input from '@semcore/input';
+import type { Text } from '@semcore/typography';
 import type React from 'react';
 
 /** @deprecated */
@@ -160,6 +161,7 @@ declare const Select: IntergalacticSelectComponent & {
     Addon: typeof DropdownMenu.Item.Addon;
     Checkbox: Intergalactic.Component<'div', SelectOptionCheckboxProps>;
     Content: typeof Flex;
+    Text: typeof Text;
     Hint: typeof Flex;
   };
   /**
