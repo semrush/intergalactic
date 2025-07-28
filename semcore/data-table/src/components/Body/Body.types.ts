@@ -3,7 +3,7 @@ import type * as React from 'react';
 
 import type { CellPropsInner, Theme } from './Cell.types';
 import type { DTRow } from './Row.types';
-import type { DTUse, VirtualScroll } from '../DataTable/DataTable.types';
+import type { DataRowItem, DTUse, VirtualScroll } from '../DataTable/DataTable.types';
 import type { DTColumn } from '../Head/Column.types';
 
 export type CellRenderProps<UniqKeyType> = {
@@ -17,6 +17,7 @@ export type CellRenderProps<UniqKeyType> = {
   defaultRender: () => React.ReactNode;
   isMergedRows: boolean;
   isMergedColumns: boolean;
+  rawData: DataRowItem;
 };
 
 export type DataTableBodyProps<UniqKeyType> = {
@@ -70,6 +71,7 @@ export type BodyPropsInner<UniqKeyType> = DataTableBodyProps<UniqKeyType> & {
   ) => [side: 'left' | 'right', style: string | number] | [side: undefined, style: undefined];
   accordionDuration?: number | [number, number];
   onCellClick: CellPropsInner<UniqKeyType>['onClick'];
+  rawData: DataRowItem[];
 };
 
 export type DataTableBodyType = (<
