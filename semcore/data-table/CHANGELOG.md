@@ -2,11 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [16.0.8] - 2025-08-08
+## [16.0.8] - 2025-08-07
 
 ### Added
 
+- Ability to set columns into one grouped column.
+- RawData to `CellRenderProps`.
 - `overflow=hidden` for `CellWrapper`.
+
+### Fixed
+
+- Usage of `changeSortSize` property with multiple columns.
 
 ### Changed
 

@@ -1,7 +1,7 @@
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
 
-test.describe('Blockquote', () => {
+test.describe('Blockquote - Visual', () => {
   test('Verify Blockquote looks good with and without author props', async ({ page }) => {
     const standPath = 'stories/components/typography/tests/examples/blockquote.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -29,8 +29,22 @@ test.describe('Blockquote', () => {
   });
 });
 
-test.describe('List', () => {
+test.describe('List- Visual', () => {
   test('Verify List supports custom marker and Item content ', async ({ page }) => {
+    const standPath = 'stories/components/typography/docs/examples/list-with-custom-bullets.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+    await expect(page).toHaveScreenshot();
+  });
+
+  test('Verify format text nested lists', async ({ page }) => {
+    const standPath = 'stories/components/typography/docs/examples/formattext-nested-lists.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+    await expect(page).toHaveScreenshot();
+  });
+
+  test('Verify List with custom bullets ', async ({ page }) => {
     const standPath = 'stories/components/typography/docs/examples/list-with-custom-content.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
@@ -43,15 +57,15 @@ test.describe('List', () => {
 
     await page.setContent(htmlContent);
 
-    const list = await page.locator('[data-ui-name="List"]').first();
+    const list = await page.locator('ul[data-ui-name="List"]').first();
     await expect(list).toHaveAttribute('role', 'list');
 
-    const listItems = await page.locator('[data-ui-name="List.Item"]');
+    const listItems = await page.locator('li[data-ui-name="List.Item"]');
     for (let i = 0; i < (await listItems.count()); i++) {
       await expect(listItems.nth(i)).toHaveAttribute('role', 'listitem');
     }
 
-    const markers = await page.locator('[class*="SMarker"]');
+    const markers = await page.locator('span[class*="SMarker"]');
 
     await expect(markers).toHaveCount((await listItems.count()) - 1);
 
@@ -63,8 +77,8 @@ test.describe('List', () => {
   });
 });
 
-test.describe('Text', () => {
-  test('Verify bold, semibold, medium, italic, underline, monospace, lineThrough, uppercase, lowercase, capitalize, color styles', async ({
+test.describe('Text - Visual', () => {
+  test('Verify text styles with tags', async ({
     page,
   }) => {
     const standPath = 'stories/components/typography/docs/examples/text-styles.tsx';
@@ -73,24 +87,65 @@ test.describe('Text', () => {
     await expect(page).toHaveScreenshot();
   });
 
-  test('Verify size and font-weight work well for headers and paragrapsh', async ({ page }) => {
-    const standPath =
-      'stories/components/typography/tests/examples/text-font-size-and-weight-headers-and-paragrapsh.tsx';
+  test('Verify Additional information styles', async ({
+    page,
+  }) => {
+    const standPath = 'stories/components/typography/docs/examples/additional-information.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
-
     await page.setContent(htmlContent);
-
     await expect(page).toHaveScreenshot();
   });
 
-  test('Verify fontSize, lineHeight, textAlign, use, disabled, noWrap props', async ({ page }) => {
-    const standPath =
-      'stories/components/typography/tests/examples/text-with-diff-combimations.tsx';
+  test('Verify Native typography tags', async ({
+    page,
+  }) => {
+    const standPath = 'stories/components/typography/docs/examples/native-typography-tags.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
-
     await page.setContent(htmlContent);
-
     await expect(page).toHaveScreenshot();
+  });
+
+  const cases = [
+    // noWrap condition
+    { noWrap: true, display: 'block', w: 100, size: 900 },
+
+    // textAlign condition
+    { textAlign: 'left', display: 'block', inline: true, w: 200 },
+    { textAlign: 'center', display: 'block', inline: true, w: 200 },
+    { textAlign: 'right', display: 'block', inline: true, w: 200 },
+
+    // size and fontSize together
+    { size: 100, fontSize: 20 },
+
+    // main coverage
+    { bold: true, italic: false, size: 200, use: 'primary' },
+    { bold: false, italic: true, size: 300 },
+    { semibold: true, lowercase: true, size: 400 },
+    { semibold: false, medium: true, size: 500 },
+    { underline: true, lineThrough: false, size: 600 },
+    { underline: false, lineThrough: true, size: 700 },
+    { uppercase: true, size: 800 },
+    { capitalize: true, use: 'secondary' },
+    { color: 'red', fontSize: '20px' },
+    { lineHeight: '20px', fontWeight: 900, fontSize: '40px' },
+    { inline: true, monospace: true, fontSize: '60px' },
+    { use: 'secondary', capitalize: true, disabled: true },
+  ];
+
+  cases.forEach((item) => {
+    const title = 'Verify Text with ' + Object.entries(item)
+      .filter(([_, value]) => value !== undefined)
+      .map(([key, value]) => `${key}=${value}`)
+      .join(', ');
+
+    test(title, async ({ page }) => {
+      const standPath =
+        'stories/components/typography/tests/examples/text-with-diff-combimations.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en', item);
+
+      await page.setContent(htmlContent);
+      await expect(page).toHaveScreenshot();
+    });
   });
 });
 

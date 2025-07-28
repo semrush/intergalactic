@@ -264,6 +264,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
       sideIndents,
       selectedRows,
       accordionDuration,
+      data: rawData,
     } = this.asProps;
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
     return {
@@ -299,12 +300,12 @@ class DataTableRoot<D extends DataTableData> extends Component<
       onSelectRow: this.handleSelectRow,
       getFixedStyle: this.getFixedStyle,
       onCellClick: this.handleCellClick,
+      rawData,
     };
   }
 
   handleCellClick = (e: React.SyntheticEvent, opt: { rowIndex: number; colIndex: number; row?: DTRow }) => {
     if (lastInteraction.isMouse()) {
-      console.log('click on cell in data table handler', opt);
       this.initFocusableCell([this.hasFocusableInHeader() ? opt.rowIndex + 1 : opt.rowIndex, opt.colIndex]);
     }
   };
@@ -965,7 +966,11 @@ class DataTableRoot<D extends DataTableData> extends Component<
   private calculateColumnsFromConfig(): [DTColumn[], DTColumn[]] {
     const { columns, data, selectedRows } = this.props;
 
-    this.hasGroups = columns.some((column) => 'columns' in column);
+    this.hasGroups = columns.some((column) => {
+      return 'columns' in column && column.columns.some((col) => {
+        return col.children !== null;
+      });
+    });
 
     let groupIndex = 0;
     let gridColumnIndex = selectedRows ? 2 : 1;
@@ -991,6 +996,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
       parent?: DTColumn,
       isFirst?: boolean,
       isLast?: boolean,
+      hasGroups?: boolean,
     ): DTColumn => {
       const leftBordersFromParent =
         isFirst && (parent?.borders === 'both' || parent?.borders === 'left') ? 'left' : undefined;
@@ -1002,7 +1008,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
         name: childIsColumn(columnElement) ? columnElement.name : '',
         gtcWidth: childIsColumn(columnElement) ? calculateGridTemplateColumn(columnElement) : '',
-        fixed: columnElement.fixed ?? parent?.fixed,
+        fixed: columnElement.fixed ?? (hasGroups ? parent?.fixed : undefined),
         borders: columnElement.borders ?? leftBordersFromParent ?? rightBordersFromParent,
         parent,
       } as DTColumn;
@@ -1039,21 +1045,23 @@ class DataTableRoot<D extends DataTableData> extends Component<
 
         const initGridColumn = gridColumnIndex;
 
+        const groupedRow = this.hasGroups ? 2 : 1;
+
         Group.columns = [];
         Group.children = child.children;
         child.columns.forEach((child, j) => {
           const isFirst = j === 0;
           const isLast = j === childCount - 1;
-          const col = makeColumn(child, Group, isFirst, isLast);
+          const col = makeColumn(child, Group, isFirst, isLast, this.hasGroups);
 
           if (i === 0 && j === 0 && data.some((d) => d[ACCORDION])) {
             gridColumnIndex++;
-            col.gridArea = `2 / ${gridColumnIndex - 1} / 3 / ${gridColumnIndex + 1}`;
+            col.gridArea = `${groupedRow} / ${gridColumnIndex - 1} / ${groupedRow + 1} / ${gridColumnIndex + 1}`;
           } else {
-            col.gridArea = `2 / ${gridColumnIndex} / 3 / ${gridColumnIndex + 1}`;
+            col.gridArea = `${groupedRow} / ${gridColumnIndex} / ${groupedRow + 1} / ${gridColumnIndex + 1}`;
           }
 
-          col.gridArea = `2 / ${gridColumnIndex} / 3 / ${gridColumnIndex + 1}`;
+          col.gridArea = `${groupedRow} / ${gridColumnIndex} / ${groupedRow + 1} / ${gridColumnIndex + 1}`;
           gridColumnIndex++;
 
           calculatedColumns.push(col);
