@@ -7,7 +7,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Added
 
 - Ability to set columns into one grouped column.
+- RawData to `CellRenderProps`.
 - `line-height` for `Head.Column` items.
+
+### Fixed
+
+- Usage of `changeSortSize` property with multiple columns.
 
 ## [16.0.7] - 2025-07-23
 
