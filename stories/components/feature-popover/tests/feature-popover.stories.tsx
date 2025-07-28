@@ -49,7 +49,7 @@ const baseArgTypes = {
   popperMargin: { control: { type: 'number' } },
   closeIcon: { control: { type: 'boolean' } },
   duration: { control: { type: 'number' } },
-};
+} as const;
 
 export const FeaturePopoverProps: StoryObj<typeof ExampleProps> = {
   render: FeaturePopoverExample,
