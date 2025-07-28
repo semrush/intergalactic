@@ -34,11 +34,11 @@ const dataToLzCompressedJson = (data) => {
 
 const { playgroundId, htmlCode: codeEncoded, rawCode: rawCodeEncoded, hideCode: hideCodeEncoded, stylesIsolation } = defineProps({ playgroundId: String, htmlCode: String, rawCode: String, hideCode: String, stylesIsolation: Boolean })
 const htmlCode = computed(() => {
-  let code = atob(codeEncoded!).replace(/intergalactic\//g, "@semcore/ui/");
+  let code = atob(codeEncoded!);
   return code.replace('tabindex="0" v-pre=""><code>', 'v-pre=""><code>');
 });
 const codesandboxUrl = computed(() => {
-  let code = rawCode.replace(/'intergalactic\//g, "'@semcore/ui/");
+  let code = rawCode;
   const dependencies = {};
   const lines = code!.split('\n');
   for (const line of lines) {
