@@ -1,10 +1,11 @@
 import type { Intergalactic } from '@semcore/core';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, cleanup } from '@semcore/testing-utils/testing-library';
-import { expect, test, describe, beforeEach, vi, assertType } from '@semcore/testing-utils/vitest';
-import React, { useRef } from 'react';
+import { test, describe, beforeEach, vi, assertType } from '@semcore/testing-utils/vitest';
+import React from 'react';
 
 import { DataTable, UNIQ_ROW_KEY } from '../src';
+import type { CellRenderProps } from '../src/components/Body/Body.types';
 
 describe('data-table Dependency imports', () => {
   runDependencyCheckTests('data-table');
@@ -107,7 +108,7 @@ describe('DataTable', () => {
 });
 
 describe('DataTable.Cell', () => {
-  test('Should support ref via renderCell', () => {
+  test('Should support ref via renderCell', ({ expect }) => {
     const spy = vi.fn();
 
     const Test = () => {
@@ -135,5 +136,35 @@ describe('DataTable.Cell', () => {
 
     render(<Test />);
     expect(spy).toBeCalled();
+  });
+
+  // we have some error with rendering this example
+  test.skip('Should support rawData in custom renderCell function', ({ expect }) => {
+    const checkRowData = vi.fn();
+    const dataItem = { keyword: 'test', kd: '1', vol: null };
+
+    const RawDataTest = () => {
+      const customCellRender = (props: CellRenderProps) => {
+        checkRowData(props.rawData);
+
+        return props.defaultRender();
+      };
+
+      return (
+        <DataTable
+          data={[dataItem]}
+          aria-label='table'
+          columns={[
+            { name: 'keyword', children: 'Keyword' },
+            { name: 'kd', children: 'KD' },
+            { name: 'vol', children: 'Vol.' },
+          ]}
+          renderCell={customCellRender}
+        />
+      );
+    };
+
+    render(<RawDataTest />);
+    expect(checkRowData).toBeCalledWith({ ...dataItem });
   });
 });

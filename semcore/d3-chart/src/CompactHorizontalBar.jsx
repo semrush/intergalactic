@@ -31,6 +31,10 @@ class CompactHorizontalBarRoot extends Component {
     color: 'chart-palette-order-1',
   };
 
+  state = {
+    indexToHover: null,
+  };
+
   getBarProps(_props, index) {
     return {
       index,
@@ -134,17 +138,19 @@ class CompactHorizontalBarRoot extends Component {
 
   getHoverProps(_props, index) {
     const { data } = this.asProps;
+
     return {
       data,
       getBarData: (index) => this.computeBarData(data[index], index),
       render: index === 0,
+      updateIndexToHover: (index) => this.setState({ indexToHover: index }),
     };
   }
 
   getTooltipProps(_props, index) {
     return {
       render: index === 0,
-      index,
+      index: this.state.indexToHover,
     };
   }
 
@@ -399,7 +405,7 @@ class Hover extends Component {
   }
 
   handlerMouseMoveRoot = trottle((e) => {
-    const { eventEmitter, rootRef, patterns } = this.asProps;
+    const { eventEmitter, rootRef, patterns, updateIndexToHover } = this.asProps;
     const point = eventToPoint(e, rootRef.current);
     const { clientX, clientY } = e;
 
@@ -409,12 +415,16 @@ class Hover extends Component {
       eventEmitter.emit('setTooltipPosition', clientX, clientY);
       eventEmitter.emit('setTooltipRenderingProps', {}, { index, patterns });
       eventEmitter.emit('setTooltipVisible', index !== null);
+      updateIndexToHover(index);
     });
   });
 
   handlerMouseLeaveRoot = trottle(() => {
+    const { updateIndexToHover } = this.asProps;
+
     this.setState({ index: null }, () => {
       this.asProps.eventEmitter.emit('setTooltipVisible', false);
+      updateIndexToHover(null);
     });
   });
 

@@ -11,6 +11,13 @@ function formatDate(value: any) {
 }
 
 const Demo = () => {
+  const onClickHandler = (index: number, event: React.SyntheticEvent) => {
+    const clickedItem = data[index];
+    console.log('Clicked area chart point:');
+    console.log('→ Index:', index);
+    console.log('→ Data item:', clickedItem);
+    console.log('→ Event:', event);
+  };
   return (
     <Chart.Area
       groupKey='time'
@@ -19,6 +26,7 @@ const Demo = () => {
       plotHeight={200}
       tooltipValueFormatter={formatDate}
       aria-label='Area chart'
+      onClickArea={onClickHandler}
     />
   );
 };

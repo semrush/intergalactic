@@ -5,7 +5,7 @@ tabs: Design('typography'), A11y('typography-a11y'), API('typography-api'), Exam
 
 ## Text
 
-It's a main component for text in our interfaces. By default, this is a `span` tag.
+The main component for handling typography in our interfaces. Renders as a `span` tag by default.
 
 ```jsx
 import { Text } from '@semcore/typography';
@@ -16,19 +16,22 @@ import { Text } from '@semcore/typography';
 
 ## List
 
-A list tagged with ʻul`. It's possible to set a custom marker for all items.
+A list rendered with the `ul` tag. You can set a custom marker for all list items.
 
 ```jsx
 import { List } from '@semcore/typography';
 <List />;
 ```
 
+::: info
+The `size` property of this component only accepts the values `100`, `200`, and `300`.
+:::
+
 <TypesView type="ListProps" :types={...types} />
 
 ## List.Item
 
-A list item tagged with `li`. It's possible to set a custom marker.
-Also, it is possible to customise content with `<List.Item.Content />`;
+A list item rendered with the `li` tag. You can set a custom marker and customize the content using `<List.Item.Content />`.
 
 ```jsx
 import { List } from '@semcore/typography';
@@ -41,7 +44,7 @@ import { List } from '@semcore/typography';
 
 ## Blockquote
 
-Quotes from great people 🙊
+A component for displaying quoted text.
 
 ```jsx
 import { Blockquote } from '@semcore/typography';

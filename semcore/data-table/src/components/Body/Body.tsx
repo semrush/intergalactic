@@ -187,6 +187,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, State, [], BodyPropsInn
       flatRows,
       accordionDuration,
       onCellClick,
+      rawData,
     } = this.asProps;
     const SAccordionToggle = ButtonLink;
 
@@ -214,12 +215,18 @@ class BodyRoot extends Component<DataTableBodyProps, {}, State, [], BodyPropsInn
       use,
       virtualScroll: Boolean(virtualScroll),
       tableRef,
-      children: props.children ?? defaultRender(),
+      children: props?.children ?? defaultRender(),
       accordionDuration,
       onClick: onCellClick,
     };
 
     if (renderCell) {
+      let rowRawData = rawData[props.rowIndex];
+
+      if (props.accordionRowIndex && rowRawData[ACCORDION] && Array.isArray(rowRawData[ACCORDION])) {
+        rowRawData = rowRawData[ACCORDION][props.accordionRowIndex];
+      }
+
       const external = renderCell({
         columnName: props.column.name,
         row: props.row,
@@ -231,6 +238,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, State, [], BodyPropsInn
         value: React.isValidElement(value) ? value : value?.toString() ?? '',
         isMergedRows,
         isMergedColumns,
+        rawData: rowRawData,
       });
 
       if (this.isReactNode(external) || Array.isArray(external)) {
@@ -437,7 +445,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, State, [], BodyPropsInn
 
     return sstyled(styles)(
       <SBody render={Box} __excludeProps={['data']}>
-        {emptyRow && <Body.Row row={emptyRow} />}
+        {emptyRow && <Body.Row row={emptyRow} isNonInteractive />}
         {typeof virtualScroll === 'boolean' && rowMarginTop && <Box h={rowMarginTop} />}
         {rowsToRender.map((row, index) => {
           if (Array.isArray(row)) {

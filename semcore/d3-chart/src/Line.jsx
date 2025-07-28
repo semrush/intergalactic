@@ -1,5 +1,6 @@
 import { Component, sstyled } from '@semcore/core';
 import uniqueIDEnhancement, { useUID } from '@semcore/core/lib/utils/uniqueID';
+import { bisector } from 'd3-array';
 import { curveLinear, line as d3Line, area as d3Area, curveCardinal } from 'd3-shape';
 import React from 'react';
 
@@ -15,6 +16,8 @@ import {
   getNullData,
   interpolateValue,
   getChartDefaultColorName,
+  eventToPoint,
+  invert,
 } from './utils';
 
 class LineRoot extends Component {
@@ -35,7 +38,7 @@ class LineRoot extends Component {
   };
 
   getDotsProps() {
-    const { x, y, d3, color, resolveColor, duration, transparent, patterns } = this.asProps;
+    const { x, y, d3, color, resolveColor, duration, transparent, patterns, onClick } = this.asProps;
     return {
       x,
       y,
@@ -45,6 +48,7 @@ class LineRoot extends Component {
       duration,
       transparent,
       patterns,
+      onClick,
     };
   }
 
@@ -74,6 +78,20 @@ class LineRoot extends Component {
       duration,
       scale,
     };
+  }
+
+  handlerOnClick(e) {
+    e.stopPropagation();
+
+    const { rootRef, scale: [xScale], data, x, onClick } = this.asProps;
+
+    if (!onClick) return;
+
+    const [pX] = eventToPoint(e, rootRef.current);
+    const vX = invert(xScale, pX);
+    const index = bisector((d) => d[x]).center(data, vX);
+
+    onClick(index, e);
   }
 
   render() {
@@ -111,6 +129,8 @@ class LineRoot extends Component {
           d={d3(data)}
           use:duration={`${duration}ms`}
           strokeDasharray={patterns ? resolvePatternDasharray(patternKey, patterns) : undefined}
+          onClickCapture={this.handlerOnClick.bind(this)}
+          pointerEvents='stroke'
         />
         {duration && (
           <AnimatedClipPath
