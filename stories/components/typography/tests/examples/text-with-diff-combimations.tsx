@@ -8,7 +8,7 @@ const Demo = (props: ExmapleProps) => (
   <>
     <div style={{ width: 200 }}>
       <Text
-        tag='h1'
+
         size={props.size}
         noWrap={props.noWrap}
         display={props.display}
