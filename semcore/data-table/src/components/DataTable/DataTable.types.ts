@@ -175,8 +175,8 @@ export type ColIndex = number;
 
 export type DataTableType = (<
   Data extends DataTableData,
-  UniqKey extends keyof Data[number],
-  UniqKeyType extends Data[number][UniqKey],
+  UniqKey extends keyof Data[number] = keyof Data[number],
+  UniqKeyType extends Data[number][UniqKey] = Data[number][UniqKey],
   Tag extends Intergalactic.Tag = 'div',
 >(
   props: Intergalactic.InternalTypings.EfficientOmit<

@@ -26,14 +26,14 @@ describe('DataTable', () => {
     });
     test('typed data', () => {
       assertType<JSX.Element>(
-        <DataTable<{ a: number; b: number; c: number }[], 'a', number>
+        <DataTable<{ a: number; b: number; c: number }[]>
           data={[{ a: 1, b: 2, c: 3 }]}
           aria-label='table label'
           columns={[]}
         />,
       );
       assertType<JSX.Element>(
-        <DataTable<{ a: string; b: string; c: string }[], 'a', string>
+        <DataTable<{ a: string; b: string; c: string }[]>
           // @ts-expect-error
           data={[{ a: 1, b: 2, c: 3 }]}
           aria-label='table label'
@@ -42,7 +42,7 @@ describe('DataTable', () => {
     });
     test('sort typing', () => {
       assertType<JSX.Element>(
-        <DataTable<{ id: number; name: string }[], 'id', number>
+        <DataTable<{ id: number; name: string }[]>
           data={[{ id: 1, name: 'test' }]}
           aria-label='label'
           columns={[]}
@@ -87,7 +87,7 @@ describe('DataTable', () => {
     });
     test('virtualScroll typing', () => {
       assertType<JSX.Element>(
-        <DataTable<{ id: number }[], 'id', number>
+        <DataTable<{ id: number }[]>
           data={[{ id: 1 }]}
           aria-label='label'
           columns={[]}
@@ -96,7 +96,7 @@ describe('DataTable', () => {
       );
 
       assertType<JSX.Element>(
-        <DataTable<{ id: number }[], 'id', number>
+        <DataTable<{ id: number }[]>
           data={[{ id: 1 }]}
           aria-label='label'
           columns={[]}
@@ -159,7 +159,7 @@ describe('DataTable.Cell', () => {
     const dataItem = { keyword: 'test', kd: '1', vol: null };
 
     const RawDataTest = () => {
-      const customCellRender = (props: CellRenderProps) => {
+      const customCellRender = (props: CellRenderProps<string | null>) => {
         checkRowData(props.rawData);
 
         return props.defaultRender();
