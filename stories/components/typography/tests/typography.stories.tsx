@@ -90,6 +90,9 @@ export const TextProps: StoryObj<typeof DifferentTextProps> = {
     inline: {
       control: { type: 'boolean' },
     },
+    formatTags: {
+      control: { type: 'boolean' },
+    },
   },
   args: DifferentTextProps,
 };
