@@ -264,11 +264,13 @@ class DataTableRoot<D extends DataTableData> extends Component<
       sideIndents,
       selectedRows,
       accordionDuration,
+      accordionMode,
       data: rawData,
     } = this.asProps;
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
     return {
       accordionDuration,
+      accordionMode,
       columns: this.columns,
       rows: this.rows,
       flatRows: this.flatRows,
@@ -375,16 +377,18 @@ class DataTableRoot<D extends DataTableData> extends Component<
   };
 
   onExpandRow = (expandedRow: DTRow) => {
-    const { expandedRows } = this.asProps;
+    const { expandedRows, onAccordionToggle } = this.asProps;
     if (expandedRows.has(expandedRow[UNIQ_ROW_KEY])) {
       expandedRows.delete(expandedRow[UNIQ_ROW_KEY]);
 
       setTimeout(() => {
         this.handlers.expandedRows(new Set([...expandedRows]));
       }, 300);
+      onAccordionToggle?.('close', expandedRow[ROW_INDEX]);
     } else {
       expandedRows.add(expandedRow[UNIQ_ROW_KEY]);
       this.handlers.expandedRows(new Set([...expandedRows]));
+      onAccordionToggle?.('open', expandedRow[ROW_INDEX]);
     }
   };
 

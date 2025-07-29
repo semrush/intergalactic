@@ -2,10 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [16.0.8] - 2025-08-07
+## [16.1.0] - 2025-08-08
 
 ### Added
 
+- `accordionMode` property to only one accordion is open at a time.
+- `onAccordionToggle` to listen for open/close accordion events.
 - Ability to set columns into one grouped column.
 - RawData to `CellRenderProps`.
 

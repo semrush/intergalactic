@@ -1,5 +1,6 @@
 import { DataTable } from '@semcore/data-table';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { fn } from 'storybook/test';
 
 import AccessToCellsExample from './examples/access-to-cells';
 import AccessToSetOfCellsExample from './examples/access-to-set-of-cells';
@@ -27,7 +28,8 @@ import SkeletonInTableExample from './examples/skeleton-in-table';
 import SortingExample from './examples/sorting';
 import SortingChangingSizeExample from './examples/sorting-changing-size';
 import SpinContainerInTableExample from './examples/spin-container-in-table';
-import TableInTableExample from './examples/table-in-table';
+import type { TableInTableProps } from './examples/table-in-table';
+import TableInTableExample, { tableInTableDefaultProps } from './examples/table-in-table';
 import TableInTableWithFixedColumnExample from './examples/table-in-table-with-fixed-column';
 import VirtualScrollInTableExample from './examples/virtual-scroll-in-table';
 import VirtualScrollInTableDifferentHeightExample from './examples/virtual-scroll-in-table-different-height';
@@ -151,8 +153,12 @@ export const SortingChangingSize: Story = {
   render: SortingChangingSizeExample,
 };
 
-export const TableInTable: Story = {
+export const TableInTable: StoryObj<TableInTableProps> = {
   render: TableInTableExample,
+  args: {
+    ...tableInTableDefaultProps,
+    onAccordionToggle: fn(),
+  },
 };
 
 export const TableInTableWithFixedColumn: Story = {
