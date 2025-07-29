@@ -218,6 +218,7 @@ class BodyRoot extends Component<DataTableBodyProps, {}, State, [], BodyPropsInn
       children: props?.children ?? defaultRender(),
       accordionDuration,
       onClick: onCellClick,
+      flatRows: this.asProps.flatRows,
     };
 
     if (renderCell) {
