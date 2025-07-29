@@ -123,11 +123,11 @@ class PaginationRoot extends Component {
       currentPage,
       disabled,
       onClick: () => {
-        const nextPage = currentPage - 1;
+        const followingPage = currentPage - 1;
 
-        this.handlePageChange(nextPage);
+        this.handlePageChange(followingPage);
 
-        if (nextPage <= 1) {
+        if (followingPage <= 1) {
           this.returnLostFocusTo(this.nextPageButtonRef);
         }
       },
@@ -144,11 +144,11 @@ class PaginationRoot extends Component {
       currentPage,
       disabled,
       onClick: () => {
-        const nextPage = currentPage + 1;
+        const followingPage = currentPage + 1;
 
-        this.handlePageChange(nextPage);
+        this.handlePageChange(followingPage);
 
-        if (nextPage >= totalPages) {
+        if (followingPage >= totalPages) {
           this.returnLostFocusTo(this.prevPageButtonRef);
         }
       },
