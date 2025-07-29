@@ -62,7 +62,7 @@ SCollapseRow > SCellWrapper > SCell:not([theme]), SRow[isAccordionRow] > SCellWr
   SRowGroup:has(SCell:hover) > SRow[theme='muted']:not([isNonInteractive]) > SCellWrapper > SCell[data-grouped-by='rowgroup']:not([theme]) {
     /* The color is hardcoded because need hex(in figma rgba) */
     /* disable-tokens-validator */
-    background-color: var(--intergalactic-table-td-cell-hover, #f0f0f4);
+    background-color: var(--intergalactic-table-td-cell-hover, #f0f0f4) !important;
   }
 
   /* INFO THEME */
@@ -72,7 +72,7 @@ SCollapseRow > SCellWrapper > SCell:not([theme]), SRow[isAccordionRow] > SCellWr
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow[theme='info']:not([isNonInteractive]) > SCellWrapper > SCell:not([theme]),
   SRowGroup:has(SCell:hover) > SRow:not([isNonInteractive]) > SCellWrapper > SCell[data-grouped-by='rowgroup'][theme='info'],
   SRowGroup:has(SCell:hover) > SRow[theme='info']:not([isNonInteractive]) > SCellWrapper > SCell[data-grouped-by='rowgroup']:not([theme]) {
-    background-color: var(--intergalactic-table-td-cell-selected-hover, #c4e5fe);
+    background-color: var(--intergalactic-table-td-cell-selected-hover, #c4e5fe) !important;
   }
 
   /* SUCCESS THEME */
@@ -82,7 +82,7 @@ SCollapseRow > SCellWrapper > SCell:not([theme]), SRow[isAccordionRow] > SCellWr
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow[theme='success']:not([isNonInteractive]) > SCellWrapper > SCell:not([theme]),
   SRowGroup:has(SCell:hover) > SRow:not([isNonInteractive]) > SCellWrapper > SCell[data-grouped-by='rowgroup'][theme='success'],
   SRowGroup:has(SCell:hover) > SRow[theme='success']:not([isNonInteractive]) > SCellWrapper > SCell[data-grouped-by='rowgroup']:not([theme]) {
-    background-color: var(--intergalactic-table-td-cell-new-hover, #9ef2c9);
+    background-color: var(--intergalactic-table-td-cell-new-hover, #9ef2c9) !important;
   }
 
   /* WARNING THEME */
@@ -92,7 +92,7 @@ SCollapseRow > SCellWrapper > SCell:not([theme]), SRow[isAccordionRow] > SCellWr
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow[theme='warning']:not([isNonInteractive]) > SCellWrapper > SCell:not([theme]),
   SRowGroup:has(SCell:hover) > SRow:not([isNonInteractive]) > SCellWrapper > SCell[data-grouped-by='rowgroup'][theme='warning'],
   SRowGroup:has(SCell:hover) > SRow[theme='warning']:not([isNonInteractive]) > SCellWrapper > SCell[data-grouped-by='rowgroup']:not([theme]) {
-    background-color: var(--intergalactic-table-td-cell-warning-hover, #ffdca2);
+    background-color: var(--intergalactic-table-td-cell-warning-hover, #ffdca2) !important;
   }
 
   /* DANGER THEME */
@@ -102,7 +102,7 @@ SCollapseRow > SCellWrapper > SCell:not([theme]), SRow[isAccordionRow] > SCellWr
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow[theme='danger']:not([isNonInteractive]) > SCellWrapper > SCell:not([theme]),
   SRowGroup:has(SCell:hover) > SRow:not([isNonInteractive]) > SCellWrapper > SCell[data-grouped-by='rowgroup'][theme='danger'],
   SRowGroup:has(SCell:hover) > SRow[theme='danger']:not([isNonInteractive]) > SCellWrapper > SCell[data-grouped-by='rowgroup']:not([theme]) {
-    background-color: var(--intergalactic-table-td-cell-critical-hover, #ffd7df);
+    background-color: var(--intergalactic-table-td-cell-critical-hover, #ffd7df) !important;
   }
 }
 

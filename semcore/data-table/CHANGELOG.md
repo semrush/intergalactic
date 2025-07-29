@@ -12,6 +12,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Fixed
 
 - Usage of `changeSortSize` property with multiple columns.
+- Hover styles aren't applied to themed cells.
 
 ## [16.0.7] - 2025-07-23
 
