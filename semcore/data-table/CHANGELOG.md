@@ -8,6 +8,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Ability to set columns into one grouped column.
 - RawData to `CellRenderProps`.
+- `textAlign` property to all column cells.
 
 ### Fixed
 

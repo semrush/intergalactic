@@ -191,6 +191,7 @@ class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner>
           alignItems={column.alignItems}
           alignContent={column.alignContent}
           justifyContent={column.justifyContent}
+          textAlign={column.textAlign}
         >
           <Children />
         </SCell>

@@ -899,6 +899,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
         alignItems: columnElement.props.alignItems,
         alignContent: columnElement.props.alignContent,
         justifyContent: columnElement.props.justifyContent,
+        textAlign: columnElement.props.textAlign,
         children: '',
       };
 
