@@ -13,6 +13,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
+- `z-index` of expanded accordions and spinner container.
 - Usage of `changeSortSize` property with multiple columns.
 
 ## [16.0.7] - 2025-07-23

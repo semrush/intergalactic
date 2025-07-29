@@ -4,7 +4,8 @@ import { fn } from 'storybook/test';
 
 import AccessToCellsExample from './examples/access-to-cells';
 import AccessToSetOfCellsExample from './examples/access-to-set-of-cells';
-import AccordionInsideTableExample from './examples/accordion-inside-table';
+import type { AccordionInTableProps } from './examples/accordion-inside-table';
+import AccordionInsideTableExample, { accordionInsideTableDefaultProps } from './examples/accordion-inside-table';
 import BaseExample from './examples/base';
 import BordersExample from './examples/borders';
 import CheckboxInTableExample, { defaultProps as CheckboxInTableProps } from './examples/checkbox-in-table';
@@ -54,8 +55,9 @@ export const AccessToSetOfCells: Story = {
   render: AccessToSetOfCellsExample,
 };
 
-export const AccordionInsideTable: Story = {
+export const AccordionInsideTable: StoryObj<AccordionInTableProps> = {
   render: AccordionInsideTableExample,
+  args: accordionInsideTableDefaultProps,
 };
 
 export const Borders: Story = {

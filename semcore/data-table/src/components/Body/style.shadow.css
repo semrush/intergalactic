@@ -250,6 +250,7 @@ SSpinContainer {
   align-items: center;
   justify-content: center;
   background-color: var(--intergalactic-overlay-limitation-secondary, rgba(255, 255, 255, 0.85));
+  z-index: 5;
 }
 SSpinContainer[headerHeight] {
   top: var(--headerHeight);

@@ -1,12 +1,17 @@
 import { Plot, Line, XAxis, YAxis, ResponsiveContainer, minMax } from '@semcore/d3-chart';
-import type { DataTableData } from '@semcore/data-table';
+import type { DataTableData, DataTableProps } from '@semcore/data-table';
 import { DataTable, ACCORDION } from '@semcore/data-table';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 
-const Demo = () => {
+export type AccordionInTableProps = {
+  loading: boolean;
+};
+
+const Demo = (props: AccordionInTableProps) => {
   return (
     <DataTable
+      loading={props.loading}
       data={data}
       aria-label='Accordion inside table'
       h='100%'
@@ -27,6 +32,12 @@ const Demo = () => {
     />
   );
 };
+
+export const accordionInsideTableDefaultProps = {
+  loading: false,
+};
+
+Demo.defaultProps = accordionInsideTableDefaultProps;
 
 const ChartExample = () => {
   const [[width, height], setSize] = React.useState([600, 300]);
