@@ -4,6 +4,12 @@ fileSource: ellipsis
 tabs: Design('ellipsis'), A11y('ellipsis-a11y'), API('ellipsis-api'), Example('ellipsis-code'), Changelog('ellipsis-changelog')
 ---
 
+::: warning
+`Ellipsis` is deprecated and will be removed in the next major release.
+
+Check out the [new approach](/utils/ellipsis/ellipsis) to text cropping.
+:::
+
 ::: react-view
 
 <script lang="tsx">

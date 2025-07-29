@@ -3,7 +3,16 @@ import React from 'react';
 import { useResizeObserver } from './useResizeObserver';
 
 export type EllipsisSettings = {
+  /**
+   * Trimming type
+   * @default end
+   */
   trim?: 'end' | 'middle';
+  /**
+   * Rows count in multiline Ellipsis
+   * Acceptable only for `trim = end`
+   * @default 1
+   */
   maxLine?: number;
 };
 

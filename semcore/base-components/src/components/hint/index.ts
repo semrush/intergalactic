@@ -1,7 +1,7 @@
 import { Hint } from './Hint';
-import type { HintPopperProps } from './Hint';
+import type { SimpleHintPopperProps } from './Hint';
 
 export { Hint };
 export type {
-  HintPopperProps,
+  SimpleHintPopperProps,
 };

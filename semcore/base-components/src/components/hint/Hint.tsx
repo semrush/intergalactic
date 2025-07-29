@@ -10,17 +10,34 @@ type Handlers = {
   visible: (visible: boolean) => void;
 };
 
-export type HintPopperProps = {
-  visible?: boolean;
+export type SimpleHintPopperProps = {
+  /** Ref to the trigger element */
   triggerRef: React.RefObject<HTMLElement>;
-  children: React.ReactNode;
+  /**
+   * The position of the popper relative to the trigger that called it.
+   * @default auto
+   */
   placement?: Placement;
+  /**
+   * Timer to show and hide the popper
+   * @default [100, 50]
+   */
   timeout?: number | [number, number];
+  /** Hint content */
+  children: React.ReactNode;
+
+  /** Popper visibility value */
+  visible?: boolean;
+  /** Default popper visibility
+   * @default false */
+  defaultVisible?: boolean;
+  /** Function called when visibility changes */
+  onVisibleChange?: (visible: boolean, e?: Event) => boolean | void;
 };
 
-type HintComponent = Intergalactic.Component<'div', HintPopperProps>;
+type HintComponent = Intergalactic.Component<'div', SimpleHintPopperProps>;
 
-class HintPopperRoot extends Component<HintPopperProps, {}, {}, [], { timeout: [number, number] }, Handlers> {
+class HintPopperRoot extends Component<SimpleHintPopperProps, {}, {}, [], { timeout: [number, number] }, Handlers> {
   public readonly hintRef = React.createRef<HTMLElement>();
   private readonly arrowRef = React.createRef<HTMLDivElement>();
 
@@ -32,7 +49,7 @@ class HintPopperRoot extends Component<HintPopperProps, {}, {}, [], { timeout: [
     timeout: [100, 50],
   };
 
-  constructor(props: HintPopperProps) {
+  constructor(props: SimpleHintPopperProps) {
     super(props);
 
     this.handleFocus = this.handleFocus.bind(this);
@@ -71,7 +88,7 @@ class HintPopperRoot extends Component<HintPopperProps, {}, {}, [], { timeout: [
     this.hideHint();
   }
 
-  componentDidUpdate(prevProps: HintPopperProps) {
+  componentDidUpdate(prevProps: SimpleHintPopperProps) {
     if (prevProps.visible !== this.props.visible || prevProps.triggerRef.current !== this.props.triggerRef.current) {
       const trigger = this.asProps.triggerRef.current;
 
