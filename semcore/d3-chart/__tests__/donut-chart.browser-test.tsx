@@ -156,6 +156,50 @@ test.describe('Donut chart', () => {
       await expect(page).toHaveScreenshot();
     });
   });
+
+  test('Verify donut showLegend prop interaction', async ({ page }) => {
+    const standPath =
+      'stories/components/d3-chart/tests/examples/donut-chart/donut-show-legend-prop.tsx';
+    const props: {
+      showLegend?: boolean;
+      data: { [key: string]: number };
+    } = {
+      showLegend: undefined,
+      data: {
+        a: 1,
+        b: 2,
+      },
+    };
+
+    let htmlContent = await e2eStandToHtml(standPath, 'en', props);
+    await page.setContent(htmlContent);
+    let legend = page.getByLabel('Chart legend');
+    await expect(legend).toBeVisible();
+
+    props.showLegend = false;
+    htmlContent = await e2eStandToHtml(standPath, 'en', props);
+    await page.setContent(htmlContent);
+    legend = page.getByLabel('Chart legend');
+    await expect(legend).toBeHidden();
+
+    props.showLegend = undefined;
+    props.data = {
+      a: 1,
+    };
+    htmlContent = await e2eStandToHtml(standPath, 'en', props);
+    await page.setContent(htmlContent);
+    legend = page.getByLabel('Chart legend');
+    await expect(legend).toBeHidden();
+
+    props.showLegend = true;
+    props.data = {
+      a: 1,
+    };
+    htmlContent = await e2eStandToHtml(standPath, 'en', props);
+    await page.setContent(htmlContent);
+    legend = page.getByLabel('Chart legend');
+    await expect(legend).toBeVisible();
+  });
 });
 
 test.describe('Semi donut chart', () => {
