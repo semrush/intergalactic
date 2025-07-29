@@ -25,6 +25,9 @@ export type DataTableHeadProps = {
 
   /** Animation duration for a top property. When it's set adds animation for top changes */
   animationDuration?: number;
+
+  /** Outer ref for the header */
+  ref?: React.Ref<HTMLDivElement>;
 };
 
 export type HeadPropsInner<D extends DataTableData> = {
@@ -37,7 +40,7 @@ export type HeadPropsInner<D extends DataTableData> = {
   onSortChange?: DataTableProps<D>['onSortChange'];
   getI18nText: (key: string) => string;
   uid: string;
-  ref: React.RefObject<HTMLDivElement>;
+  ref: React.Ref<HTMLDivElement>;
 
   gridAreaGroupMap: Map<number, string>;
   gridTemplateColumns: string[];

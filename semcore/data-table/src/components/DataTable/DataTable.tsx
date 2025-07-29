@@ -213,6 +213,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
 
     return {
+      ...headerProps,
       columns: this.columns,
       treeColumns: this.treeColumns,
       use,
@@ -222,7 +223,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
       onSortChange,
       getI18nText,
       uid,
-      ref: this.headerRef,
+      ref: headerProps?.ref ? forkRef(this.headerRef, headerProps.ref) : this.headerRef,
       gridAreaGroupMap: this.gridAreaGroupMap,
       gridTemplateColumns,
       gridTemplateAreas,
@@ -244,7 +245,6 @@ class DataTableRoot<D extends DataTableData> extends Component<
       },
       getFixedStyle: this.getFixedStyle,
       onCellClick: this.handleCellClick,
-      ...headerProps,
     };
   }
 
