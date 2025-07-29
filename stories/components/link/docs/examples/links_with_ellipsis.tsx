@@ -6,14 +6,14 @@ import { Text } from '@semcore/typography';
 import React from 'react';
 
 const Demo = () => {
-  const lintRef = React.useRef(null);
+  const linkRef = React.useRef(null);
   return (
     <Flex>
       <Text flex='0 0 auto'>Sep 3</Text>
       <Divider mx={4} orientation='vertical' />
-      <Link w={500} wMin={0} href='#' ref={lintRef}>
+      <Link w={500} wMin={0} href='#' ref={linkRef}>
         <Flex alignItems='center'>
-          <Link.Text w={480} tag={Text} display='inline-block' ellipsis={true} hintProps={{ triggerRef: lintRef }}>
+          <Link.Text w={480} tag={Text} display='inline-block' ellipsis={true} hintProps={{ triggerRef: linkRef }}>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque iusto, sed!
             Asperiores, consectetur deserunt et ipsam omnis quae repellendus velit veniam.
             Asperiores dicta dolor ducimus enim fugit laborum minima reprehenderit?

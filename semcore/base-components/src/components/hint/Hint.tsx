@@ -32,6 +32,15 @@ class HintPopperRoot extends Component<HintPopperProps, {}, {}, [], { timeout: [
     timeout: [100, 50],
   };
 
+  constructor(props: HintPopperProps) {
+    super(props);
+
+    this.handleFocus = this.handleFocus.bind(this);
+    this.handleBlur = this.handleBlur.bind(this);
+    this.handleMouseEnter = this.handleMouseEnter.bind(this);
+    this.handleMouseLeave = this.handleMouseLeave.bind(this);
+  }
+
   uncontrolledProps() {
     return {
       visible: null,
@@ -41,10 +50,10 @@ class HintPopperRoot extends Component<HintPopperProps, {}, {}, [], { timeout: [
   componentDidMount() {
     const trigger = this.asProps.triggerRef.current;
 
-    trigger?.addEventListener('focus', this.handleFocus.bind(this));
-    trigger?.addEventListener('blur', this.handleBlur.bind(this));
-    trigger?.addEventListener('mouseenter', this.handleMouseEnter.bind(this));
-    trigger?.addEventListener('mouseleave', this.handleMouseLeave.bind(this));
+    trigger?.addEventListener('focus', this.handleFocus);
+    trigger?.addEventListener('blur', this.handleBlur);
+    trigger?.addEventListener('mouseenter', this.handleMouseEnter);
+    trigger?.addEventListener('mouseleave', this.handleMouseLeave);
 
     if (this.asProps.visible && trigger) {
       this.showHint(trigger);
@@ -54,10 +63,10 @@ class HintPopperRoot extends Component<HintPopperProps, {}, {}, [], { timeout: [
   componentWillUnmount() {
     const trigger = this.asProps.triggerRef.current;
 
-    trigger?.removeEventListener('focus', this.handleFocus.bind(this));
-    trigger?.removeEventListener('blur', this.handleBlur.bind(this));
-    trigger?.removeEventListener('mouseenter', this.handleMouseEnter.bind(this));
-    trigger?.removeEventListener('mouseleave', this.handleMouseLeave.bind(this));
+    trigger?.removeEventListener('focus', this.handleFocus);
+    trigger?.removeEventListener('blur', this.handleBlur);
+    trigger?.removeEventListener('mouseenter', this.handleMouseEnter);
+    trigger?.removeEventListener('mouseleave', this.handleMouseLeave);
 
     this.hideHint();
   }
