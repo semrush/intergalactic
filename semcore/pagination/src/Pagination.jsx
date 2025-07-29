@@ -199,7 +199,10 @@ class PaginationRoot extends Component {
       totalPages,
       children: formatter.format(totalPages),
       isLastOrSingle: currentPage === totalPages,
-      onClick: () => this.handlePageChange(totalPages),
+      onClick: () => {
+        this.handlePageChange(totalPages);
+        this.returnLostFocusTo(this.prevPageButtonRef);
+      },
       getI18nText,
       size,
     };
