@@ -1,5 +1,5 @@
 import { Plot, Line, XAxis, YAxis, ResponsiveContainer, minMax } from '@semcore/d3-chart';
-import type { DataTableData, DataTableProps } from '@semcore/data-table';
+import type { DataTableData } from '@semcore/data-table';
 import { DataTable, ACCORDION } from '@semcore/data-table';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';

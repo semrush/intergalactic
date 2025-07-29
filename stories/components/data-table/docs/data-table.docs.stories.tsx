@@ -31,7 +31,7 @@ import SortingChangingSizeExample from './examples/sorting-changing-size';
 import SpinContainerInTableExample from './examples/spin-container-in-table';
 import type { TableInTableProps } from './examples/table-in-table';
 import TableInTableExample, { tableInTableDefaultProps } from './examples/table-in-table';
-import TableInTableWithFixedColumnExample from './examples/table-in-table-with-fixed-column';
+import TableInTableWithFixedColumnExample, { accordionTableDefaultProps } from './examples/table-in-table-with-fixed-column';
 import VirtualScrollInTableExample from './examples/virtual-scroll-in-table';
 import VirtualScrollInTableDifferentHeightExample from './examples/virtual-scroll-in-table-different-height';
 
@@ -163,8 +163,9 @@ export const TableInTable: StoryObj<TableInTableProps> = {
   },
 };
 
-export const TableInTableWithFixedColumn: Story = {
+export const TableInTableWithFixedColumn: StoryObj<AccordionInTableProps> = {
   render: TableInTableWithFixedColumnExample,
+  args: accordionTableDefaultProps,
 };
 
 export const VirtualScrollInTable: Story = {
