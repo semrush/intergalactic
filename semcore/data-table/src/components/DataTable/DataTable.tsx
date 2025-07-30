@@ -756,14 +756,14 @@ class DataTableRoot<D extends DataTableData> extends Component<
           <ScrollArea.Bar
             orientation='horizontal'
             top={topOffset - SCROLL_BAR_HEIGHT}
-            zIndex={10}
+            zIndex={20}
           />
         )}
 
         {!loading && (
           <>
-            <ScrollArea.Bar orientation='horizontal' zIndex={10} />
-            <ScrollArea.Bar orientation='vertical' zIndex={10} />
+            <ScrollArea.Bar orientation='horizontal' zIndex={20} />
+            <ScrollArea.Bar orientation='vertical' zIndex={20} />
           </>
         )}
 
