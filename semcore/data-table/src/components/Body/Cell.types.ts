@@ -33,6 +33,7 @@ export type CellPropsInner<UniqKeyType> = {
   tableRef: React.RefObject<HTMLDivElement>;
   accordionDuration?: number | [number, number];
   onClick: (e: React.SyntheticEvent, opt: { rowIndex: number; colIndex: number; row?: DTRow<UniqKeyType> }) => void;
+  flatRows: DTRow<UniqKeyType>[];
 };
 
 export type DataTableCellType = (<UniqKeyType, Tag extends Intergalactic.Tag = 'div'>(
