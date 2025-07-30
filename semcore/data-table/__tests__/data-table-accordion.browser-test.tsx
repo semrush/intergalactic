@@ -360,7 +360,7 @@ test.describe('Accordion in table', () => {
   test('Verify table in table keyboard navigation when accordionMode=independent', async ({ page }) => {
     let messages: string[] = [];
     page.on('console', (msg) => {
-      if (msg.type() === 'log') {
+      if (msg.type() === 'log' && msg.text().startsWith('Accordion')) {
         messages.push(msg.text());
       }
     });
@@ -462,7 +462,7 @@ test.describe('Accordion in table', () => {
   test('Verify table in table mouse navigation when accordionMode=independent', async ({ page }) => {
     let messages: string[] = [];
     page.on('console', (msg) => {
-      if (msg.type() === 'log') {
+      if (msg.type() === 'log' && msg.text().startsWith('Accordion')) {
         messages.push(msg.text());
       }
     });
@@ -526,7 +526,7 @@ test.describe('Accordion in table', () => {
   test('Verify table in table keyboard navigation when accordionMode=toggle', async ({ page }) => {
     let messages: string[] = [];
     page.on('console', (msg) => {
-      if (msg.type() === 'log') {
+      if (msg.type() === 'log' && msg.text().startsWith('Accordion')) {
         messages.push(msg.text());
       }
     });
@@ -623,7 +623,7 @@ test.describe('Accordion in table', () => {
   test('Verify table in table mouse navigation when accordionMode=toggle', async ({ page }) => {
     let messages: string[] = [];
     page.on('console', (msg) => {
-      if (msg.type() === 'log') {
+      if (msg.type() === 'log' && msg.text().startsWith('Accordion')) {
         messages.push(msg.text());
       }
     });
