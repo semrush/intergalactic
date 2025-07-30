@@ -15,6 +15,8 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - `z-index` of expanded accordions and spinner container.
 - Usage of `changeSortSize` property with multiple columns.
+- Accordion content expands with visual issues when clicking on a merged cell.
+- Incorrect type for `selectedRows/onSelectedRowsChange` when `uniqueRowKey` type is not a string.
 
 ## [16.0.7] - 2025-07-23
 
