@@ -391,7 +391,7 @@ test.describe('Accordion in table', () => {
       await expect(cellinLastRow).toBeFocused();
     });
 
-    await test.step('Verify it is possible to scroll the last cell by keyboard when accordion expanded', async () => {
+    await test.step('Verify it is possible to scroll the last cell by keyboard when first accordion expanded', async () => {
       await page.keyboard.press('ArrowUp');
       await page.keyboard.press('ArrowUp');
       await page.keyboard.press('ArrowUp');
@@ -412,7 +412,7 @@ test.describe('Accordion in table', () => {
       await expect(cellinLastRow).toBeFocused();
     });
 
-    await test.step('Verify it is possible to scroll the last cell by keyboard when accordion expanded', async () => {
+    await test.step('Verify it is possible to scroll the last cell by keyboard when second accordion expanded', async () => {
       messages = [];
       await page.keyboard.press('ArrowUp');
       await page.keyboard.press('ArrowUp');
@@ -432,7 +432,7 @@ test.describe('Accordion in table', () => {
       await expect(cellinLastRow).toBeFocused();
     });
 
-    await test.step('Verify it is possible to scroll the last cell by keyboard when accordion expanded', async () => {
+    await test.step('Verify no issues with keyboard navigation up when second accordion just collapsed', async () => {
       messages = [];
 
       for (let i = 0; i < 6; i++) await page.keyboard.press('ArrowUp');
@@ -459,22 +459,88 @@ test.describe('Accordion in table', () => {
     });
   });
 
+  test('Verify table in table mouse navigation when accordionMode=independent', async ({ page }) => {
+    let messages: string[] = [];
+    page.on('console', (msg) => {
+      if (msg.type() === 'log') {
+        messages.push(msg.text());
+      }
+    });
+
+    const standPath = 'stories/components/data-table/docs/examples/table-in-table.tsx';
+
+    const htmlContent = await e2eStandToHtml(standPath, 'en', {
+      accordionMode: 'independent',
+      onAccordionToggle: 'function(type, rowIndex) { console.log("Accordion " + type + " for row #" + rowIndex); }',
+    });
+
+    await page.setContent(htmlContent);
+
+    await test.step('Verify accordion expands by toggle click', async () => {
+      await page.locator('[data-ui-name="ButtonLink"]').first().click();
+      const accordionRow = page.locator('[aria-rowindex="5"][aria-level="2"]');
+      await accordionRow.waitFor({ state: 'visible' });
+      expect(messages.length).toBe(1);
+      expect(messages).toEqual(['Accordion open for row #0']);
+    });
+
+    await test.step('Verify accordion expands cell click', async () => {
+      messages = [];
+      const row = page.locator('[aria-rowindex="6"]');
+      await row.locator('[data-ui-name="Body.Cell"][aria-colindex="2"]').first().click();
+      const accordionRow = page.locator('[aria-rowindex="9"][aria-level="2"]');
+      await accordionRow.waitFor({ state: 'visible' });
+      expect(messages.length).toBe(1);
+      expect(messages).toEqual(['Accordion open for row #1']);
+    });
+
+    await test.step('Verify accordion collapses by toggle click', async () => {
+      messages = [];
+      await page.locator('[data-ui-name="ButtonLink"]').first().click();
+      const accordionRow = page.locator('[aria-rowindex="5"][aria-level="2"]');
+      await accordionRow.waitFor({ state: 'hidden' });
+      await page.waitForEvent('console', {
+        predicate: (msg) => msg.type() === 'log' && msg.text() === 'Accordion close for row #0',
+        timeout: 200,
+      });
+      expect(messages.length).toBe(1);
+      expect(messages).toEqual(['Accordion close for row #0']);
+    });
+
+    await test.step('Verify accordion collapses cell click', async () => {
+      messages = [];
+      const row = page.locator('[aria-rowindex="3"]');
+      await row.locator('[data-ui-name="Body.Cell"][aria-colindex="1"]').first().click();
+
+      const accordionRow = page.locator('[aria-rowindex="6"][aria-level="2"]');
+      await accordionRow.waitFor({ state: 'hidden' });
+      await page.waitForEvent('console', {
+        predicate: (msg) => msg.type() === 'log' && msg.text() === 'Accordion close for row #1',
+        timeout: 200,
+      });
+      expect(messages.length).toBe(1);
+      expect(messages).toEqual(['Accordion close for row #1']);
+    });
+  });
+
   test('Verify table in table keyboard navigation when accordionMode=toggle', async ({ page }) => {
-    const messages: string[] = [];
+    let messages: string[] = [];
     page.on('console', (msg) => {
       if (msg.type() === 'log') {
         messages.push(msg.text());
       }
     });
     const standPath = 'stories/components/data-table/docs/examples/table-in-table.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en', { accordionMode: 'toggle' });
-
+    const htmlContent = await e2eStandToHtml(standPath, 'en', {
+      accordionMode: 'toggle',
+      onAccordionToggle: 'function(type, rowIndex) { console.log("Accordion " + type + " for row #" + rowIndex); }',
+    });
     await page.setContent(htmlContent);
 
     const rows = page.locator('[data-ui-name="Body.Row"]');
     await page.keyboard.press('Tab');
 
-    await test.step('Verify it is possible to scroll the last cell by keyboard when accordion collapsed', async () => {
+    await test.step('Verify it is possible to scroll the last cell by keyboard', async () => {
       const rowCount = await rows.count();
 
       for (let i = 0; i < rowCount; i++) {
@@ -488,7 +554,7 @@ test.describe('Accordion in table', () => {
       await expect(cellinLastRow).toBeFocused();
     });
 
-    await test.step('Verify it is possible to scroll the last cell by keyboard when accordion expanded', async () => {
+    await test.step('Verify keyboard navigation in table works well when one accordion axpanded', async () => {
       await page.keyboard.press('ArrowUp');
       await page.keyboard.press('ArrowUp');
       await page.keyboard.press('ArrowUp');
@@ -497,8 +563,9 @@ test.describe('Accordion in table', () => {
       const accordionRow = page.locator('[aria-rowindex="5"][aria-level="2"]');
 
       await accordionRow.waitFor({ state: 'visible' });
+      expect(messages.length).toBe(1);
+      expect(messages).toEqual(['Accordion open for row #0']);
       for (let i = 0; i < 7; i++) await page.keyboard.press('ArrowDown');
-
       const lastRow = page.locator('[data-ui-name="Body.Row"][aria-rowindex="9"]');
       const cellinLastRow = lastRow.locator(
         '[data-ui-name="Body.Cell"][aria-colindex="1"][data-aria-level="1"]',
@@ -507,13 +574,17 @@ test.describe('Accordion in table', () => {
       await expect(cellinLastRow).toBeFocused();
     });
 
-    await test.step('Verify it is possible to scroll the last cell by keyboard when accordion expanded', async () => {
+    await test.step('Verofy forst accordion closed when second is collapsed and keyboard navigation not broken', async () => {
+      messages = [];
       await page.keyboard.press('ArrowUp');
       await page.keyboard.press('ArrowUp');
       await page.keyboard.press('ArrowUp');
       await page.keyboard.press('Enter');
       const accordionRow = page.locator('[aria-rowindex="6"][aria-level="2"]');
       await accordionRow.waitFor({ state: 'visible' });
+      expect(messages.length).toBe(2);
+      expect(messages).toEqual(['Accordion open for row #1',
+        'Accordion close for row #0']);
       for (let i = 0; i < 6; i++) await page.keyboard.press('ArrowDown');
 
       const lastRow = page.locator('[data-ui-name="Body.Row"][aria-rowindex="9"]');
@@ -524,17 +595,65 @@ test.describe('Accordion in table', () => {
       await expect(cellinLastRow).toBeFocused();
     });
 
-    await test.step('Verify it is possible to scroll the last cell by keyboard when accordion expanded', async () => {
+    await test.step('Verify keyboard navigation not broken when second accordion just expanded', async () => {
+      messages = [];
+
       for (let i = 0; i < 6; i++) await page.keyboard.press('ArrowUp');
       await page.keyboard.press('Enter');
       const accordionRow = page.locator('[aria-rowindex="6"][aria-level="2"]');
       await accordionRow.waitFor({ state: 'hidden' });
+      await page.waitForEvent('console', {
+        predicate: (msg) => msg.type() === 'log' && msg.text() === 'Accordion close for row #1',
+        timeout: 200,
+      });
+      expect(messages.length).toBe(1);
+      expect(messages).toEqual(['Accordion close for row #1']);
+      messages = [];
       await page.keyboard.press('Enter');
       await accordionRow.waitFor({ state: 'visible' });
 
-      await page.keyboard.press('ArrowUp');
+      expect(messages.length).toBe(1);
+      expect(messages).toEqual(['Accordion open for row #1']);
 
+      await page.keyboard.press('ArrowUp');
       await expect(page.locator('[data-ui-name="ButtonLink"]').first()).toBeFocused();
+    });
+  });
+
+  test('Verify table in table mouse navigation when accordionMode=toggle', async ({ page }) => {
+    let messages: string[] = [];
+    page.on('console', (msg) => {
+      if (msg.type() === 'log') {
+        messages.push(msg.text());
+      }
+    });
+
+    const standPath = 'stories/components/data-table/docs/examples/table-in-table.tsx';
+
+    const htmlContent = await e2eStandToHtml(standPath, 'en', {
+      accordionMode: 'toggle',
+      onAccordionToggle: 'function(type, rowIndex) { console.log("Accordion " + type + " for row #" + rowIndex); }',
+    });
+
+    await page.setContent(htmlContent);
+
+    await test.step('Verify accordion expands by toggle click', async () => {
+      await page.locator('[data-ui-name="ButtonLink"]').first().click();
+      const accordionRow = page.locator('[aria-rowindex="5"][aria-level="2"]');
+      await accordionRow.waitFor({ state: 'visible' });
+      expect(messages.length).toBe(1);
+      expect(messages).toEqual(['Accordion open for row #0']);
+    });
+
+    await test.step('Verify accordion expands cell click and prev accordion closed', async () => {
+      messages = [];
+      const row = page.locator('[aria-rowindex="6"]');
+      await row.locator('[data-ui-name="Body.Cell"][aria-colindex="2"]').first().click();
+      const accordionRow = page.locator('[aria-rowindex="6"][aria-level="2"]');
+      await accordionRow.waitFor({ state: 'visible' });
+
+      expect(messages.length).toBe(2);
+      expect(messages).toEqual(['Accordion open for row #1', 'Accordion close for row #0']);
     });
   });
 
