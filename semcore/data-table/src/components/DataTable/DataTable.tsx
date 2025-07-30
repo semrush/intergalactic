@@ -399,6 +399,8 @@ class DataTableRoot<D extends DataTableData> extends Component<
   ) => {
     const hasFocusable = this.hasFocusableInHeader();
 
+    console.log(hasFocusable, rowIndex, colIndex, colIndex);
+
     const maxCol = this.columns.length - 1;
     const maxRow = this.totalRows || 1;
 
@@ -437,6 +439,8 @@ class DataTableRoot<D extends DataTableData> extends Component<
       }"], :scope > div > [role=columnheader][aria-colindex="${newCol + 1}"]`,
     );
 
+    console.log(row, cell);
+
     if (cell instanceof HTMLElement && currentCell !== cell) {
       this.focusedCell = [newRow, newCol];
 
@@ -453,7 +457,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
       if (headerCell !== cell && describedBy) {
         cell.setAttribute('aria-describedby', describedBy);
       }
-
+      console.log(cell);
       cell?.focus();
 
       if (newRow !== 0) {
