@@ -377,7 +377,7 @@ class DataTableRoot<D extends DataTableData> extends Component<
   };
 
   onExpandRow = (expandedRow: DTRow) => {
-    const { expandedRows, onAccordionToggle } = this.asProps;
+    const { expandedRows, onAccordionToggle, accordionMode } = this.asProps;
     if (expandedRows.has(expandedRow[UNIQ_ROW_KEY])) {
       expandedRows.delete(expandedRow[UNIQ_ROW_KEY]);
 
@@ -390,9 +390,11 @@ class DataTableRoot<D extends DataTableData> extends Component<
       this.handlers.expandedRows(new Set([...expandedRows]));
       onAccordionToggle?.('open', expandedRow[ROW_INDEX]);
 
-      const rowIndex = expandedRow[ROW_INDEX];
-      const colIndex = this.focusedCell[1];
-      this.initFocusableCell([this.hasFocusableInHeader() ? rowIndex + 1 : rowIndex, colIndex]);
+      if (accordionMode === 'toggle') {
+        const rowIndex = expandedRow[ROW_INDEX];
+        const colIndex = this.focusedCell[1];
+        this.initFocusableCell([this.hasFocusableInHeader() ? rowIndex + 1 : rowIndex, colIndex]);
+      }
     }
   };
 
