@@ -78,7 +78,7 @@ class BodyRoot<UniqKeyType> extends Component<DataTableBodyProps<UniqKeyType>, {
     }
   };
 
-  closeAccordion = (row: DTRow, closeDuration: number) => {
+  closeAccordion = (row: DTRow<UniqKeyType>, closeDuration: number) => {
     const { onExpandRow } = this.asProps;
 
     this.setState((prevState) => {

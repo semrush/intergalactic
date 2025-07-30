@@ -69,10 +69,10 @@ export type BodyPropsInner<UniqKeyType> = DataTableBodyProps<UniqKeyType> & {
   getFixedStyle: (
     cell: Pick<DTColumn, 'name' | 'fixed'>,
   ) => [side: 'left' | 'right', style: string | number] | [side: undefined, style: undefined];
-  accordionDuration?: DataTableProps<any>['accordionDuration'];
+  accordionDuration?: DataTableProps<any, any, any>['accordionDuration'];
   onCellClick: CellPropsInner<UniqKeyType>['onClick'];
   rawData: DataRowItem[];
-  accordionMode?: DataTableProps<any>['accordionMode'];
+  accordionMode?: DataTableProps<any, any, any>['accordionMode'];
 };
 
 export type DataTableBodyType = (<
