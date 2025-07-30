@@ -11,7 +11,7 @@ import { ROW_INDEX } from '../DataTable/DataTable';
 
 const DEFAULT_ROW_DURATION = 50;
 
-class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner> {
+class CellRoot<UniqKeyType> extends Component<DataTableCellProps<UniqKeyType>, {}, {}, [], CellPropsInner<UniqKeyType>> {
   static displayName = 'Cell';
   static style = style;
 
