@@ -389,6 +389,10 @@ class DataTableRoot<D extends DataTableData> extends Component<
       expandedRows.add(expandedRow[UNIQ_ROW_KEY]);
       this.handlers.expandedRows(new Set([...expandedRows]));
       onAccordionToggle?.('open', expandedRow[ROW_INDEX]);
+
+      const rowIndex = expandedRow[ROW_INDEX];
+      const colIndex = this.focusedCell[1];
+      this.initFocusableCell([this.hasFocusableInHeader() ? rowIndex + 1 : rowIndex, colIndex]);
     }
   };
 
