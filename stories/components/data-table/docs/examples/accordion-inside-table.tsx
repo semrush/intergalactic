@@ -78,7 +78,10 @@ const data: DataTableData = [
     kd: '77.8',
     cpc: '$1.25',
     vol: '32,500,000',
-    [ACCORDION]: <ChartExample />,
+    [ACCORDION]: {
+      p: 0,
+      children: <ChartExample />,
+    },
   },
   {
     keyword: 'www.ebay.com',

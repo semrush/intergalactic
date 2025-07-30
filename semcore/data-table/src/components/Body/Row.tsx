@@ -94,6 +94,8 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
     const accordionId = `${uid}_${ariaRowIndex + 1}`;
     const rowUniqKey = row[UNIQ_ROW_KEY];
 
+    console.log(accordion);
+
     return sstyled(styles)(
       <>
         <SRow
@@ -170,7 +172,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
           })}
         </SRow>
 
-        {React.isValidElement(accordion) && (
+        {(React.isValidElement(accordion) || 'children' in accordion) && (
           <SCollapseRow
             key={rowIndex}
             role='row'
@@ -196,8 +198,9 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
               left={0}
               w='100%'
               onKeyDown={this.handleBackFromAccordion}
+              {...accordion}
             >
-              {accordion}
+              {React.isValidElement(accordion) ? accordion : accordion.children}
             </SCell>
           </SCollapseRow>
         )}
