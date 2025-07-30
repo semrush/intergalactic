@@ -17,7 +17,6 @@ const Demo = (props: ExampleDonutShowLegendProps) => {
         data={data}
         aria-label='Donut chart'
         showLegend={showLegend}
-        legendProps={{ legendType: 'Flex' }}
       />
     </div>
   );
