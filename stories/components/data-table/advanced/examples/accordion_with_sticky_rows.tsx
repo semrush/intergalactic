@@ -54,7 +54,7 @@ const Demo = (props: accordionStickyProps) => {
             style: {
               position: 'sticky',
               top: `${headerHeight}px`,
-              zIndex: '20',
+              zIndex: '10',
             },
           };
         }
