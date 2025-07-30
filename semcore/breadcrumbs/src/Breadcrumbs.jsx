@@ -45,7 +45,7 @@ function Item(props) {
   const itemRef = React.useRef();
 
   const SBreadcrumbsItem = Root;
-  const { styles, separator, active, disabled, href, tabIndex, tag, Children, ellipsis = false } = props;
+  const { styles, separator, active, disabled, href, tabIndex, tag, Children, ellipsis = false, hintProps } = props;
   const SSeparator = 'div';
   const SListItem = 'li';
 
@@ -64,7 +64,7 @@ function Item(props) {
         />
       </SListItem>
       <SSeparator aria-hidden='true'>{separator}</SSeparator>
-      {showHint && (<Hint triggerRef={itemRef}><Children /></Hint>)}
+      {showHint && (<Hint triggerRef={itemRef} {...hintProps}><Children /></Hint>)}
     </>,
   );
 }

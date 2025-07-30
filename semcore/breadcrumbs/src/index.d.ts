@@ -1,4 +1,4 @@
-import type { EllipsisSettings } from '@semcore/base-components';
+import type { EllipsisSettings, SimpleHintPopperProps } from '@semcore/base-components';
 import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
 import type { BoxProps } from '@semcore/flex-box';
 
@@ -23,6 +23,7 @@ export type BreadcrumbsItemProps = BoxProps & {
    * @default false
    */
   ellipsis?: true | EllipsisSettings;
+  hintProps?: SimpleHintPopperProps;
 };
 
 /** @deprecated */

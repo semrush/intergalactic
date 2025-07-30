@@ -1,4 +1,4 @@
-import type { EllipsisSettings } from '@semcore/base-components';
+import type { EllipsisSettings, SimpleHintPopperProps } from '@semcore/base-components';
 import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
 import type { BoxProps } from '@semcore/flex-box';
 import type { IconProps } from '@semcore/icon';
@@ -83,6 +83,7 @@ export type TagTextProps = BoxProps & {
    * @default true
    */
   ellipsis?: false | EllipsisSettings;
+  hintProps?: SimpleHintPopperProps;
 };
 
 declare const Tag: Intergalactic.Component<'div', TagProps, TagContext> & {

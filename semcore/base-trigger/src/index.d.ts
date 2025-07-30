@@ -1,4 +1,4 @@
-import type { EllipsisSettings } from '@semcore/base-components';
+import type { EllipsisSettings, SimpleHintPopperProps } from '@semcore/base-components';
 import type { UnknownProperties, Intergalactic } from '@semcore/core';
 import type { WithAnimatedSizeEnhanceProps } from '@semcore/core/lib/utils/enhances/animatedSizeEnhance';
 import type { DotProps } from '@semcore/dot';
@@ -82,7 +82,7 @@ export type FilterTriggerCounterProps = {
 };
 
 declare const BaseTrigger: Intergalactic.Component<'div', BaseTriggerProps> & {
-  Text: Intergalactic.Component<Box, { ellipsis?: EllipsisSettings | true }>;
+  Text: Intergalactic.Component<Box, { ellipsis?: EllipsisSettings | true; hintProps?: SimpleHintPopperProps }>;
   Addon: typeof Box;
 };
 

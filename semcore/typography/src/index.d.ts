@@ -1,4 +1,4 @@
-import type { BoxProps, Flex, FlexProps, EllipsisSettings, HintPopperProps } from '@semcore/base-components';
+import type { BoxProps, Flex, FlexProps, EllipsisSettings, SimpleHintPopperProps } from '@semcore/base-components';
 import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
 import type { Property } from 'csstype';
 import type React from 'react';
@@ -50,7 +50,7 @@ export type TextProps = BoxProps & {
   /** The text will not be wrapped on a new line and will be cut off with ellipsis. Also, it will show a hint with full text. */
   ellipsis?: true | EllipsisSettings;
   /** Settings for a hint with full text (cropped by ellipsis) */
-  hintProps?: Omit<HintPopperProps, 'children'>;
+  hintProps?: Omit<SimpleHintPopperProps, 'children'>;
 };
 
 /** @deprecated */

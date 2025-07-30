@@ -57,7 +57,7 @@ class RootLinkTrigger extends Component {
 function Text(props) {
   const SText = Root;
   const textRef = React.useRef();
-  const { children, styles, empty, placeholder, triggerRef, ellipsis = false } = props;
+  const { children, styles, empty, placeholder, triggerRef, ellipsis = false, hintProps } = props;
   const content = empty ? placeholder : children;
   const showHint = useEllipsis(textRef, ellipsis);
 
@@ -66,7 +66,7 @@ function Text(props) {
       <SText render={Box} display-placeholder={empty} ref={textRef} use:ellipsis={false}>
         {content}
       </SText>
-      {showHint && (<Hint triggerRef={triggerRef}>{content}</Hint>)}
+      {showHint && (<Hint triggerRef={triggerRef} {...hintProps}>{content}</Hint>)}
     </>,
   );
 }
