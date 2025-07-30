@@ -9,7 +9,7 @@ export interface IEllipsisProps extends EllipsisProps, UnknownProperties {}
 export type EllipsisProps = BoxProps &
   Partial<TooltipProps> & {
     /**
-     * Rows count in multiline Ellipsis
+     * Rows count in multiline Ellipsis.
      * Acceptable only for `trim = end`
      * @default 1
      */
