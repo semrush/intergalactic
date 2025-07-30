@@ -36,6 +36,7 @@
     "@semcore/button": "workspace:*",
     "@semcore/dropdown-menu": "workspace:*",
     "@semcore/testing-utils": "workspace:*",
-    "@semcore/typography": "workspace:*"
+    "@semcore/typography": "workspace:*",
+    "@popperjs/core": "2.11.5"
   }
 }
