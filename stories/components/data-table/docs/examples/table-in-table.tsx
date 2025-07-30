@@ -3,8 +3,8 @@ import { DataTable, ACCORDION } from '@semcore/data-table';
 import React from 'react';
 
 export type TableInTableProps = {
-  accordionMode: DataTableProps<typeof data>['accordionMode'];
-  onAccordionToggle?: DataTableProps<typeof data>['onAccordionToggle'];
+  accordionMode: DataTableProps<typeof data, any, any>['accordionMode'];
+  onAccordionToggle?: DataTableProps<typeof data, any, any>['onAccordionToggle'];
 };
 
 const Demo = (props: TableInTableProps) => {
