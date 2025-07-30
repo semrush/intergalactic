@@ -15,7 +15,8 @@ import AccordionWithMoreExample from './examples/accordion-tests/accrodion-with-
 import AccordionWithSelectExample from './examples/accordion-tests/accrodion-with-select';
 import ColoredAccordionExample from './examples/accordion-tests/colored-accordion';
 import TabeInTableAnimationTestExample from './examples/accordion-tests/table-in-table-animation-test';
-import TabeInTableFixedColumnExample from './examples/accordion-tests/table-in-table-with-fixed-column';
+import TabeInTableFixedColumnExample, { tableInTableFixedColumnDefaultProps } from './examples/accordion-tests/table-in-table-with-fixed-column';
+import type { TableInTableFixedColumnProps } from './examples/accordion-tests/table-in-table-with-fixed-column';
 import TabeInTableSortableExample from './examples/accordion-tests/table-in-table-with-sorting';
 
 const meta: Meta<typeof DataTable> = {
@@ -30,7 +31,6 @@ export const AccordionWithChartAndButton: StoryObj<AccordionWithButtonProps> = {
   render: AccordionWithChartAndButtonExample,
   args: {
     ...accordionWithDefaultProps,
-    onAccordionToggle: fn(),
   },
 };
 
@@ -38,7 +38,6 @@ export const AnimationDurationTest: StoryObj<TableInTableProps> = {
   render: AnimationDurationTestExample,
   args: {
     ...tableInTableDefaultProps,
-    onAccordionToggle: fn(),
   },
 };
 
@@ -78,8 +77,11 @@ export const AccordionWithFixedColumn: Story = {
   render: AccordionWithFixedColumnExample,
 };
 
-export const TabeInTableFixedColumn: Story = {
+export const TabeInTableFixedColumn: StoryObj<TableInTableFixedColumnProps> = {
   render: TabeInTableFixedColumnExample,
+  args: {
+    ...tableInTableFixedColumnDefaultProps,
+  },
 };
 
 export const ColoredAccordion: Story = {

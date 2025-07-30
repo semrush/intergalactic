@@ -5,7 +5,6 @@ import { NoData } from '@semcore/widget-empty';
 import React from 'react';
 export type TableInTableProps = {
   accordionMode: DataTableProps<typeof data>['accordionMode'];
-  onAccordionToggle?: DataTableProps<typeof data>['onAccordionToggle'];
 };
 
 const ChartExample1 = () => {
@@ -20,9 +19,8 @@ const Demo = (props: TableInTableProps) => {
       aria-label='Parent'
       h='100%'
       data={data}
-      accordionDuration={900}
+      accordionDuration={400}
       accordionMode={props.accordionMode}
-      onAccordionToggle={props.onAccordionToggle}
       columns={[
         { name: 'keyword', children: 'Keyword', gtcWidth: '200px', fixed: 'left' },
         { name: 'kd', children: 'KD,%', gtcWidth: '200px' },
