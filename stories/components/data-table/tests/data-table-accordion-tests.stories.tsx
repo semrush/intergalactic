@@ -1,8 +1,11 @@
 import { DataTable } from '@semcore/data-table';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { fn } from 'storybook/test';
 
-import AnimationDurationTestExample from './examples/accordion-tests/accordion-duration';
-import AccordionWithChartAndButtonExample from './examples/accordion-tests/accordion-inside-table';
+import AnimationDurationTestExample, { tableInTableDefaultProps } from './examples/accordion-tests/accordion-duration';
+import type { TableInTableProps } from './examples/accordion-tests/accordion-duration';
+import AccordionWithChartAndButtonExample, { accordionWithDefaultProps } from './examples/accordion-tests/accordion-inside-table';
+import type { AccordionWithButtonProps } from './examples/accordion-tests/accordion-inside-table';
 import AccordionWithFixedColumnExample from './examples/accordion-tests/accordion-with-fixed-column';
 import HorizontalScrollExample from './examples/accordion-tests/accordion-with-horizontal-scroll';
 import AccordionWithInlineEditExample from './examples/accordion-tests/accordion-with-inline-edit';
@@ -23,12 +26,20 @@ const meta: Meta<typeof DataTable> = {
 export default meta;
 type Story = StoryObj<typeof DataTable>;
 
-export const AccordionWithChartAndButton: Story = {
+export const AccordionWithChartAndButton: StoryObj<AccordionWithButtonProps> = {
   render: AccordionWithChartAndButtonExample,
+  args: {
+    ...accordionWithDefaultProps,
+    onAccordionToggle: fn(),
+  },
 };
 
-export const AnimationDurationTest: Story = {
+export const AnimationDurationTest: StoryObj<TableInTableProps> = {
   render: AnimationDurationTestExample,
+  args: {
+    ...tableInTableDefaultProps,
+    onAccordionToggle: fn(),
+  },
 };
 
 export const TabeInTableAnimationTest: Story = {
