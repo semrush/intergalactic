@@ -26,6 +26,7 @@
     "@semcore/icon": "16.4.0",
     "@semcore/input": "16.0.5",
     "@semcore/popper": "16.0.5",
+    "@semcore/typography": "16.1.5",
     "classnames": "2.2.6"
   },
   "peerDependencies": {
@@ -40,7 +41,6 @@
     "@semcore/core": "workspace:*",
     "@semcore/flex-box": "workspace:*",
     "@semcore/testing-utils": "workspace:*",
-    "@semcore/typography": "workspace:*",
     "@types/classnames": "2.2.6"
   }
 }
