@@ -8,15 +8,19 @@ const Demo = () => {
       aria-label='Column alignment'
       columns={[
         { name: 'keyword', children: 'Key word Keyw ord Keyw ord', gtcWidth: '80px' },
-        { name: 'kd', children: 'KD,%', justifyContent: 'center' },
-        { name: 'cpc', children: 'CPC', justifyContent: 'flex-start' },
-        { name: 'vol', children: 'Vol.', justifyContent: 'flex-end' },
-        { name: 'kd', children: 'KD,% KD,% ', alignItems: 'center', gtcWidth: '80px' },
-        { name: 'cpc', children: 'CPC CPC CPC', alignItems: 'flex-end', gtcWidth: '80px' },
-        { name: 'vol', children: 'Vol. Vol. Vol.', alignItems: 'flex-start', gtcWidth: '80px' },
-        { name: 'kd', children: 'KD,% KD,% ', gtcWidth: '80px', alignContent: 'center', flexWrap: true },
-        { name: 'cpc', children: 'CPC CPC CPC', gtcWidth: '80px', alignContent: 'flex-start', flexWrap: true },
-        { name: 'vol', children: 'Vol. Vol. Vol.', gtcWidth: '80px', textAlign: 'end', flexWrap: true },
+        { name: 'kd', children: 'justify Content: center', justifyContent: 'center', gtcWidth: '80px' },
+        { name: 'cpc', children: 'justify Content: flex-start', justifyContent: 'flex-start', gtcWidth: '80px' },
+        { name: 'vol', children: 'justify Content: flex-end', justifyContent: 'flex-end', gtcWidth: '80px' },
+        { name: 'kd', children: 'alignItems: center ', alignItems: 'center', gtcWidth: '80px' },
+        { name: 'cpc', children: 'alignItems: flex-end', alignItems: 'flex-end', gtcWidth: '80px' },
+        { name: 'vol', children: 'alignItems: flex-start', alignItems: 'flex-start', gtcWidth: '80px' },
+        { name: 'kd', children: 'alignContent: center ', gtcWidth: '80px', alignContent: 'center', flexWrap: true },
+        { name: 'cpc', children: 'alignContent: flex-start', gtcWidth: '80px', alignContent: 'flex-start', flexWrap: true },
+        { name: 'cpc', children: 'alignContent: flex-end', gtcWidth: '80px', alignContent: 'flex-end', flexWrap: true },
+        { name: 'vol', children: 'textAlign: end', gtcWidth: '80px', textAlign: 'end' },
+        { name: 'vol', children: 'textAlign: start', gtcWidth: '80px', textAlign: 'start' },
+        { name: 'vol', children: 'textAlign: center', gtcWidth: '80px', textAlign: 'center', flexWrap: true },
+
       ]}
     />
   );

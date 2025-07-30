@@ -56,7 +56,9 @@ test.describe('Columns', () => {
     await checkProperty(6, { alignItems: 'flex-end' });
     await checkProperty(7, { alignItems: 'flex-start' });
 
-    await checkProperty(10, { textAlign: 'end' });
+    await checkProperty(11, { textAlign: 'end' });
+    await checkProperty(12, { textAlign: 'start' });
+    await checkProperty(13, { textAlign: 'center' });
 
     await expect(page).toHaveScreenshot();
   });
