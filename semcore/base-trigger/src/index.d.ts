@@ -82,7 +82,7 @@ export type FilterTriggerCounterProps = {
 };
 
 declare const BaseTrigger: Intergalactic.Component<'div', BaseTriggerProps> & {
-  Text: Intergalactic.Component<Box, { ellipsis?: EllipsisSettings | true; hintProps?: SimpleHintPopperProps }>;
+  Text: Intergalactic.Component<typeof Box, { ellipsis?: EllipsisSettings | true; hintProps?: SimpleHintPopperProps }>;
   Addon: typeof Box;
 };
 
