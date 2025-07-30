@@ -1,9 +1,8 @@
-import { DataTable, ACCORDION, DataTableSort, UNIQ_ROW_KEY } from '@semcore/data-table';
-import Ellipsis, { useResizeObserver } from '@semcore/ellipsis';
+import { DataTable, ACCORDION, UNIQ_ROW_KEY } from '@semcore/data-table';
+import { Text } from '@semcore/typography';
 import { NoData } from '@semcore/widget-empty';
 import React from 'react';
 
-type SortableColumn = Exclude<keyof typeof data[0], 'keyword'>;
 const ChartExample1 = () => {
   return (
     <NoData type='nothing-found' my={7} mx='auto'>
@@ -28,9 +27,6 @@ const Demo = () => {
 };
 
 const ChartExample = () => {
-  const containerRef = React.useRef(null);
-  const containerRect = useResizeObserver(containerRef);
-
   return (
     <DataTable
       data={data1}
@@ -39,15 +35,15 @@ const ChartExample = () => {
         { name: 'keyword', children: 'Keyword' },
         { name: 'kd', children: 'KD,%' },
         { name: 'cpc', children: 'CPC' },
-        { name: 'vol', children: 'Vol.', gtcWidth: '100px', ref: containerRef },
+        { name: 'vol', children: 'Vol.', gtcWidth: '100px' },
       ]}
       expandedRows={new Set()}
       renderCell={(props) => {
         if (props.columnName === 'vol') {
           return (
-            <Ellipsis trim='middle' containerRect={containerRect} containerRef={containerRef}>
+            <Text ellipsis={{ trim: 'middle' }} display='block'>
               {props.value}
-            </Ellipsis>
+            </Text>
           );
         }
 

@@ -1,6 +1,5 @@
 import { LinkTrigger } from '@semcore/base-trigger';
 import { ButtonLink } from '@semcore/button';
-import Ellipsis from '@semcore/ellipsis';
 import { Flex, Box } from '@semcore/flex-box';
 import BookM from '@semcore/icon/Book/m';
 import Chat from '@semcore/icon/Chat/m';
@@ -19,11 +18,11 @@ const Demo = () => {
       <Header mx={8}>
         <Header.Row>
           <Title toolName='Tool Name:'>
-            <Text color='text-secondary' noWrap tag={Flex} mr={4}>
-              <Ellipsis trim='end'>
+            <Text color='text-secondary' tag={Flex} mr={4}>
+              <Text ellipsis={true}>
                 Domain.com Domain.com Domain.com Domain.com Domain.com Domain.com Domain.com
                 Domain.com Domain.com Domain.com
-              </Ellipsis>
+              </Text>
               <ButtonLink addonLeft={EditM} aria-label='Hint for button-link' />
             </Text>
           </Title>

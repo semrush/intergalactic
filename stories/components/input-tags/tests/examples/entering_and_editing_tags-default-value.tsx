@@ -1,4 +1,3 @@
-import Ellipsis from '@semcore/ellipsis';
 import { Flex } from '@semcore/flex-box';
 import InputTags from '@semcore/input-tags';
 import { Text } from '@semcore/typography';
@@ -79,8 +78,8 @@ const Demo = () => {
             onKeyDown={handleTagKeyDown}
             active={false}
           >
-            <InputTags.Tag.Text>
-              <Ellipsis wMax={100}>{tag}</Ellipsis>
+            <InputTags.Tag.Text wMax={100}>
+              {tag}
             </InputTags.Tag.Text>
             <InputTags.Tag.Close onClick={handleCloseTag} />
           </InputTags.Tag>

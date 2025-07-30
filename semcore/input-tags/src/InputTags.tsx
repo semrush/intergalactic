@@ -393,7 +393,7 @@ export default createComponent(InputTags, {
   Value: typeof Input.Value;
   TagsContainer: Intergalactic.Component<'ul'>;
   Tag: Intergalactic.Component<'div', InputTagsTagProps> & {
-    Text: Intergalactic.Component<'div', TagProps, TagContext> & {
+    Text: Intergalactic.Component<'div', TagProps & TagTextProps, TagContext> & {
       Content: Intergalactic.Component<'div', TagTextProps>;
     };
     Close: typeof TagContainer.Close;

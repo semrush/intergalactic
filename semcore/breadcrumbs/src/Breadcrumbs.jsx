@@ -1,3 +1,4 @@
+import { Hint, useEllipsis } from '@semcore/base-components';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { Box } from '@semcore/flex-box';
@@ -40,35 +41,38 @@ class Breadcrumbs extends Component {
   }
 }
 
-class Item extends Component {
-  static defaultProps = {
-    tag: 'a',
-    locale: 'en',
-    tabIndex: 0,
-  };
+function Item(props) {
+  const itemRef = React.useRef();
 
-  render() {
-    const SBreadcrumbsItem = Root;
-    const { styles, separator, active, disabled, href, tabIndex, tag } = this.asProps;
-    const SSeparator = 'div';
-    const SListItem = 'li';
+  const SBreadcrumbsItem = Root;
+  const { styles, separator, active, disabled, href, tabIndex, tag, Children, ellipsis = false } = props;
+  const SSeparator = 'div';
+  const SListItem = 'li';
 
-    return sstyled(styles)(
-      <>
-        <SListItem>
-          <SBreadcrumbsItem
-            render={Box}
-            use:tabIndex={active || disabled ? -1 : tabIndex}
-            use:href={!active && !disabled ? href : undefined}
-            aria-current={active ? 'page' : undefined}
-            use:tag={active ? 'span' : tag}
-          />
-        </SListItem>
-        <SSeparator aria-hidden='true'>{separator}</SSeparator>
-      </>,
-    );
-  }
+  const showHint = useEllipsis(itemRef, ellipsis);
+
+  return sstyled(styles)(
+    <>
+      <SListItem>
+        <SBreadcrumbsItem
+          render={Box}
+          use:tabIndex={active || disabled ? -1 : tabIndex}
+          use:href={!active && !disabled ? href : undefined}
+          aria-current={active ? 'page' : undefined}
+          use:tag={active ? 'span' : tag}
+          ref={itemRef}
+        />
+      </SListItem>
+      <SSeparator aria-hidden='true'>{separator}</SSeparator>
+      {showHint && (<Hint triggerRef={itemRef}><Children /></Hint>)}
+    </>,
+  );
 }
+Item.defaultProps = {
+  tag: 'a',
+  locale: 'en',
+  tabIndex: 0,
+};
 
 export default createComponent(Breadcrumbs, {
   Item,

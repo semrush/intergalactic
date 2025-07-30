@@ -1,5 +1,4 @@
 import { DataTable } from '@semcore/data-table';
-import Ellipsis from '@semcore/ellipsis';
 import AmazonM from '@semcore/icon/color/Amazon/m';
 import WhatsAppM from '@semcore/icon/color/WhatsApp/m';
 import { Hint } from '@semcore/tooltip';
@@ -41,7 +40,7 @@ const Demo = () => {
           {
             name: 'keyword', gtcWidth: '65px', sortable: true,
             children: (
-              <Text noWrap>
+              <Text ellipsis={true}>
                 ,
                 Keyword
                 <Text color='text-secondary'>(Keyword 1-100)</Text>
@@ -63,7 +62,7 @@ const Demo = () => {
             name: 'cpc', gtcWidth: '85px',
             children: (
               <>
-                <Ellipsis>Difficulty Difficulty</Ellipsis>
+                <Text ellipsis={true}>Difficulty Difficulty</Text>
                 <Hint tag={WhatsAppM} title='AmazonM non interactive' color='icon-secondary-neutral' />
                 <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
               </>

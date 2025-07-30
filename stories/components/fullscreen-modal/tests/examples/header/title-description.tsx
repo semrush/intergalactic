@@ -1,5 +1,4 @@
 import Button from '@semcore/button';
-import Ellipsis from '@semcore/ellipsis';
 import FullscreenModal from '@semcore/fullscreen-modal';
 import React from 'react';
 
@@ -12,7 +11,7 @@ const Demo = () => {
 
       <FullscreenModal disablePortal visible={visible} onClose={() => setVisible(false)}>
         <FullscreenModal.Header>
-          <FullscreenModal.Title tag={Ellipsis} w={200}>Go to Tool Name Go to Tool Name</FullscreenModal.Title>
+          <FullscreenModal.Title ellipsis={true} w={200}>Go to Tool Name Go to Tool Name</FullscreenModal.Title>
           <FullscreenModal.Description w={500}>Heading 6, 16px Heading 6, 16px Heading 6, 16px Heading 6, 16px Heading 6, 16px Heading 6, 16px</FullscreenModal.Description>
         </FullscreenModal.Header>
         <FullscreenModal.Body />

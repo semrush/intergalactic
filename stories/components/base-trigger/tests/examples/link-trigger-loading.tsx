@@ -1,6 +1,6 @@
 import { LinkTrigger } from '@semcore/base-trigger';
-import Ellipsis from '@semcore/ellipsis';
 import { Flex } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
 import React from 'react';
 
 const Demo = () => (
@@ -18,11 +18,11 @@ const Demo = () => (
 
       <LinkTrigger w={150} loading color='red' data-test-id='link-trigger-normal-state'>
         {' '}
-        <Ellipsis>
+        <LinkTrigger.Text tag={Text} ellipsis={true}>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores atque autem
           commodi, doloribus ex harum inventore modi praesentium quam ratione reprehenderit rerum
           tempore voluptas. Aliquam eos expedita illo quasi unde!
-        </Ellipsis>
+        </LinkTrigger.Text>
       </LinkTrigger>
     </Flex>
 

@@ -1,3 +1,4 @@
+import type { EllipsisSettings } from '@semcore/base-components';
 import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
 import type { BoxProps } from '@semcore/flex-box';
 
@@ -17,6 +18,11 @@ export type BreadcrumbsItemProps = BoxProps & {
   /** The property is responsible for the activity of the element */
   active?: boolean;
   locale?: string;
+  /**
+   * Ellipsis settings
+   * @default false
+   */
+  ellipsis?: true | EllipsisSettings;
 };
 
 /** @deprecated */

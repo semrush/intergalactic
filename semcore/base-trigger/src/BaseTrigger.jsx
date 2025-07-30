@@ -1,3 +1,4 @@
+import { Hint, useEllipsis } from '@semcore/base-components';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import animatedSizeEnhance from '@semcore/core/lib/utils/enhances/animatedSizeEnhance';
@@ -30,11 +31,14 @@ class RootBaseTrigger extends Component {
     empty: false,
   };
 
+  triggerRef = React.createRef();
+
   getTextProps() {
     const { placeholder, empty } = this.asProps;
     return {
       placeholder,
       empty,
+      triggerRef: this.triggerRef,
     };
   }
 
@@ -62,6 +66,7 @@ class RootBaseTrigger extends Component {
               tabIndex={0}
               neighborLocation={neighborLocation}
               state={theme}
+              ref={this.triggerRef}
             >
               {state === 'invalid' && <SInvalidPattern size={size} />}
               <SInner>
@@ -76,12 +81,18 @@ class RootBaseTrigger extends Component {
 
 function Text(props) {
   const SText = Root;
-  const { children, styles, empty, placeholder } = props;
+  const textRef = React.useRef();
+  const { children, styles, empty, placeholder, triggerRef, ellipsis = false } = props;
+  const content = empty ? placeholder : children;
+  const showHint = useEllipsis(textRef, ellipsis);
 
   return sstyled(styles)(
-    <SText render={Box} display-placeholder={empty} aria-hidden={empty}>
-      {empty ? placeholder : children}
-    </SText>,
+    <>
+      <SText render={Box} display-placeholder={empty} aria-hidden={empty} ref={textRef} use:ellipsis={false}>
+        {content}
+      </SText>
+      {showHint && (<Hint triggerRef={triggerRef}>{content}</Hint>)}
+    </>,
   );
 }
 

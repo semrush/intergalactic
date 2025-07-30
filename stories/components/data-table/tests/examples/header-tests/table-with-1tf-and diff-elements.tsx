@@ -2,7 +2,6 @@ import { ButtonLink } from '@semcore/button';
 import Checkbox from '@semcore/checkbox';
 import type { DataTableSort } from '@semcore/data-table';
 import { DataTable } from '@semcore/data-table';
-import Ellipsis from '@semcore/ellipsis';
 import InfoM from '@semcore/icon/Info/m';
 import LinkExternalM from '@semcore/icon/LinkExternal/m';
 import Link from '@semcore/link';
@@ -177,9 +176,9 @@ const Demo = () => {
         if (props.columnName === 'vol') {
           return (
             <>
-              <Ellipsis trim='middle'>
+              <Text ellipsis={{ trim: 'middle' }}>
                 {props.value}
-              </Ellipsis>
+              </Text>
             </>
           );
         }

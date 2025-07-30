@@ -1,6 +1,5 @@
 import type { DataTableSort } from '@semcore/data-table';
 import { DataTable } from '@semcore/data-table';
-import Ellipsis from '@semcore/ellipsis';
 import AmazonM from '@semcore/icon/color/Amazon/m';
 import WhatsAppM from '@semcore/icon/color/WhatsApp/m';
 import { Hint } from '@semcore/tooltip';
@@ -54,7 +53,7 @@ const Demo = () => {
           name: 'kd',
           children: (
             <>
-              <Ellipsis>Difficulty</Ellipsis>
+              <Text ellipsis={true}>Difficulty</Text>
               <Hint tag={WhatsAppM} title='WhatsApp icon' color='icon-secondary-neutral' />
               <Hint tag={AmazonM} title='Amazon icon' color='icon-secondary-neutral' />
             </>

@@ -1,8 +1,8 @@
 import Button from '@semcore/button';
-import Ellipsis from '@semcore/ellipsis';
 import FileExportM from '@semcore/icon/FileExport/m';
 import SidePanel from '@semcore/side-panel';
 import Tooltip from '@semcore/tooltip';
+import { Text } from '@semcore/typography';
 import React from 'react';
 
 const Demo = () => {
@@ -14,7 +14,7 @@ const Demo = () => {
       <SidePanel visible={visible} onClose={() => setVisible(false)} aria-label='My side panel'>
         <SidePanel.Header>
           <SidePanel.Back>Go to Tool Name</SidePanel.Back>
-          <SidePanel.Title w={100}><Ellipsis>Heading 6, 16px Heading 6, 16px</Ellipsis></SidePanel.Title>
+          <SidePanel.Title w={100} ellipsis={true}>Heading 6, 16px Heading 6, 16px</SidePanel.Title>
         </SidePanel.Header>
         <SidePanel.Body>
           Content

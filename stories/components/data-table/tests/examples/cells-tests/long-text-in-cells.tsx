@@ -1,6 +1,5 @@
 import Button from '@semcore/button';
 import { DataTable } from '@semcore/data-table';
-import Ellipsis from '@semcore/ellipsis';
 import { Flex } from '@semcore/flex-box';
 import CheckM from '@semcore/icon/Check/m';
 import InfoM from '@semcore/icon/Info/m';
@@ -61,10 +60,10 @@ const Demo = () => {
           if (props.columnName === 'vol') {
             return (
               <>
-                <Ellipsis>
+                <Text ellipsis={true}>
                   {' '}
                   {props.value}
-                </Ellipsis>
+                </Text>
                 <Link
                   href='#'
                   target='_blank'

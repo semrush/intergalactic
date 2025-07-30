@@ -1,7 +1,5 @@
 import { ButtonTrigger } from '@semcore/base-trigger';
 import DropdownMenu from '@semcore/dropdown-menu';
-import Ellipsis from '@semcore/ellipsis';
-import Select from '@semcore/select';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
@@ -10,30 +8,27 @@ const Demo = () => {
     <>
       <DropdownMenu>
         <DropdownMenu.Trigger tag={ButtonTrigger}>
-          <ButtonTrigger.Text w={150} tag={Text} size={400}>
-            <Ellipsis trim='middle'>Dat First List</Ellipsis>
+          <ButtonTrigger.Text w={150} tag={Text} size={400} ellipsis={{ trim: 'middle' }}>
+            Dat First List
           </ButtonTrigger.Text>
         </DropdownMenu.Trigger>
         <br />
         <br />
         <DropdownMenu.Trigger tag={ButtonTrigger}>
-          <ButtonTrigger.Text w={150} tag={Text} size={400} data-test-id='ellipsis-middle'>
-            <Ellipsis trim='middle'>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores atque autem
-              commodi, doloribus ex harum inventore modi praesentium quam ratione reprehenderit rerum
-              tempore voluptas. Aliquam eos expedita illo quasi unde!
-            </Ellipsis>
+          <ButtonTrigger.Text w={150} tag={Text} size={400} data-test-id='ellipsis-middle' ellipsis={{ trim: 'middle' }}>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores atque autem
+            commodi, doloribus ex harum inventore modi praesentium quam ratione reprehenderit rerum
+            tempore voluptas. Aliquam eos expedita illo quasi unde!
           </ButtonTrigger.Text>
         </DropdownMenu.Trigger>
         <br />
         <br />
         <DropdownMenu.Trigger tag={ButtonTrigger}>
-          <ButtonTrigger.Text w={150} tag={Text} size={400}>
-            <Ellipsis>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores atque autem
-              commodi, doloribus ex harum inventore modi praesentium quam ratione reprehenderit rerum
-              tempore voluptas. Aliquam eos expedita illo quasi unde!
-            </Ellipsis>
+          <ButtonTrigger.Text w={150} tag={Text} size={400} ellipsis={true}>
+
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores atque autem
+            commodi, doloribus ex harum inventore modi praesentium quam ratione reprehenderit rerum
+            tempore voluptas. Aliquam eos expedita illo quasi unde!
           </ButtonTrigger.Text>
         </DropdownMenu.Trigger>
         <DropdownMenu.Menu>
@@ -47,11 +42,11 @@ const Demo = () => {
       <br />
       <br />
       <ButtonTrigger w={100} data-test-id='active-trigger'>
-        <Ellipsis>
+        <ButtonTrigger.Text ellipsis={true}>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores atque autem
           commodi, doloribus ex harum inventore modi praesentium quam ratione reprehenderit rerum
           tempore voluptas. Aliquam eos expedita illo quasi unde!
-        </Ellipsis>
+        </ButtonTrigger.Text>
       </ButtonTrigger>
 
     </>

@@ -1,8 +1,8 @@
 import { DataTable } from '@semcore/data-table';
 import LinkExternalM from '@semcore/icon/LinkExternal/m';
-import Ellipsis from '@semcore/ui/ellipsis';
 import { Flex } from '@semcore/ui/flex-box';
 import Link from '@semcore/ui/link';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {
@@ -16,7 +16,7 @@ const Demo = () => {
       renderCell={(props) => {
         return (
           <Flex>
-            <Ellipsis>{props.value}</Ellipsis>
+            <Text ellipsis={true}>{props.value}</Text>
             <Link
               href='#'
               target='_blank'

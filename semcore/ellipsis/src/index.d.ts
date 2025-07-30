@@ -49,3 +49,5 @@ declare const Ellipsis: Intergalactic.Component<'div', EllipsisProps> & {
 };
 
 export default Ellipsis;
+
+export { useResizeObserver };

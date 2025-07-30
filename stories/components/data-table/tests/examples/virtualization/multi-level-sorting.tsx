@@ -1,6 +1,5 @@
 import type { DataTableSort } from '@semcore/data-table';
 import { DataTable } from '@semcore/data-table';
-import Ellipsis from '@semcore/ellipsis';
 import AmazonM from '@semcore/icon/color/Amazon/m';
 import { Hint } from '@semcore/tooltip';
 import { Text } from '@semcore/typography';
@@ -70,7 +69,7 @@ const Demo = () => {
               gtcWidth: '100px',
               children: (
                 <>
-                  <Ellipsis>Kd Organic Sessions</Ellipsis>
+                  <Text ellipsis={true}>Kd Organic Sessions</Text>
                   <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
                 </>
               ),

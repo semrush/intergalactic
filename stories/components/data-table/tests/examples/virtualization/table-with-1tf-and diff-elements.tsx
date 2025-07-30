@@ -1,7 +1,6 @@
 import { ButtonLink } from '@semcore/button';
 import Checkbox from '@semcore/checkbox';
 import { DataTable } from '@semcore/data-table';
-import Ellipsis from '@semcore/ellipsis';
 import InfoM from '@semcore/icon/Info/m';
 import LinkExternalM from '@semcore/icon/LinkExternal/m';
 import Link from '@semcore/link';
@@ -150,7 +149,7 @@ const Demo = () => {
               <Checkbox label='Option 1' />
               <ButtonLink
                 onClick={() => {
-                  alert(`Click row 
+                  alert(`Click row
                  props: ${JSON.stringify(Object.keys(props), null, '  ')};
                  row: ${JSON.stringify(props.row, null, '  ')};
                  index: ${props.rowIndex};`);
@@ -172,9 +171,9 @@ const Demo = () => {
         if (props.columnName === 'vol') {
           return (
             <>
-              <Ellipsis trim='middle'>
+              <Text ellipsis={{ trim: 'middle' }}>
                 {props.value}
-              </Ellipsis>
+              </Text>
             </>
           );
         }

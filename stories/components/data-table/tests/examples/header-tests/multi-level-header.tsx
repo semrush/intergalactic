@@ -1,5 +1,4 @@
 import { DataTable } from '@semcore/data-table';
-import Ellipsis from '@semcore/ellipsis';
 import AmazonM from '@semcore/icon/color/Amazon/m';
 import { Hint } from '@semcore/tooltip';
 import { Text } from '@semcore/typography';
@@ -44,7 +43,7 @@ const Demo = () => {
           {
             name: 'group2',
             children: (
-              <Ellipsis>Borders both - Organic Sessions rganic Sessions rganic Sessions</Ellipsis>
+              <Text ellipsis={true}>Borders both - Organic Sessions rganic Sessions rganic Sessions</Text>
             ),
             borders: 'both',
             columns: [
@@ -53,9 +52,9 @@ const Demo = () => {
                 gtcWidth: '100px',
                 children: (
                   <>
-                    <Ellipsis>
+                    <Text ellipsis={true}>
                       Kd Organic Sessions Organic Sessions
-                    </Ellipsis>
+                    </Text>
                     <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
                   </>
                 ),

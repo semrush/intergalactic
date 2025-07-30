@@ -289,8 +289,8 @@ function TagContainerCircle(props) {
 function Text(props) {
   const SText = Root;
   const innerRef = React.useRef(null);
-  const { styles, Children, tagRef } = props;
-  const showHint = useEllipsis(innerRef, {});
+  const { styles, Children, tagRef, ellipsis = true } = props;
+  const showHint = useEllipsis(innerRef, ellipsis);
 
   return sstyled(styles)(
     <>

@@ -1,7 +1,6 @@
 import Button, { ButtonLink } from '@semcore/button';
 import Checkbox from '@semcore/checkbox';
 import { DataTable } from '@semcore/data-table';
-import Ellipsis from '@semcore/ellipsis';
 import { Flex } from '@semcore/flex-box';
 import CheckM from '@semcore/icon/Check/m';
 import InfoM from '@semcore/icon/Info/m';
