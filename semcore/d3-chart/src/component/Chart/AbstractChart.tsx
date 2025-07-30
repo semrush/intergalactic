@@ -33,7 +33,6 @@ export abstract class AbstractChart<
     showXAxis: true,
     showYAxis: true,
     showTooltip: true,
-    showLegend: true,
   };
 
   /**
