@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.1.6] - 2025-08-07
+
+### Fixed
+
+- Focus loss in Safari when navigating to first/last page with pagination buttons.
+
 ## [16.1.5] - 2025-07-23
 
 ### Changed
