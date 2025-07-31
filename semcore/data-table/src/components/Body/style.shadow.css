@@ -18,6 +18,7 @@ SRow[gridArea], SCellWrapper[gridArea], SCollapseRow[gridArea] {
 
 SCellWrapper {
   height: 100%;
+  overflow: hidden;
 }
 
 SCollapseRow[gridArea] > SCellWrapper > SCell,
@@ -155,7 +156,6 @@ SCell {
   color: var(--intergalactic-text-primary, #191b23);
   box-sizing: border-box;
   border-bottom: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
-  overflow: hidden;
   white-space: pre-wrap;
   word-break: break-word;
   font-variant-numeric: tabular-nums;
