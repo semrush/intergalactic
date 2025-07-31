@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.6.0] - 2025-07-30
+
+### Added
+
+- New `CollapseList` icon.
+
 ## [16.5.0] - 2025-07-24
 
 ### Added
