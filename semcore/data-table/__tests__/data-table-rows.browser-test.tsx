@@ -62,4 +62,23 @@ test.describe('Rows', () => {
     await page.keyboard.press('ArrowLeft');
     await expect(MergedCellSecondRow).toBeFocused();
   });
+
+  test('Verify colored rows', async ({ page, browserName }) => {
+    const standPath = 'stories/components/data-table/docs/examples/row-themes.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('ArrowRight');
+    await page.keyboard.press('ArrowRight');
+    await page.keyboard.press('ArrowDown');
+    await expect(page).toHaveScreenshot();
+
+    if (browserName === 'firefox') return;
+    const row = page.locator('[role="gridcell"][aria-colindex="1"]');
+    const rowsCount = await row.count();
+    for (let i = 0; i < rowsCount; i++) {
+      await row.nth(i).hover({ force: true });
+      await expect(page).toHaveScreenshot();
+    }
+  });
 });

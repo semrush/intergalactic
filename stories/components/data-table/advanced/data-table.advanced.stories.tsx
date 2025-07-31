@@ -6,6 +6,7 @@ import AccordionWithStickyRowsExample from './examples/accordion_with_sticky_row
 import FakeMultiLineHeaderExample from './examples/fake-multi-level-header';
 import FixedColumnsWithDiffWidthsExample from './examples/fixed_columns_with_diff_widths';
 import LinkInTableExample from './examples/link_in_table';
+import OverflowInCellsExample from './examples/overflow_in_cells';
 import RenderCellRawValueExample from './examples/render_cell_raw_data';
 import RowCellStatesExample from './examples/row_cell_states';
 import SideIndentsExample from './examples/side-indents';
@@ -40,6 +41,10 @@ export const RowCellStates: Story = {
 
 export const SideIndents: Story = {
   render: SideIndentsExample,
+};
+
+export const OverflowInCells: Story = {
+  render: OverflowInCellsExample,
 };
 
 export const FakeMultiLineHeader: Story = {
